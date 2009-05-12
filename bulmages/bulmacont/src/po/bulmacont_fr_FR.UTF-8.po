@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-02-26 01:04+0100\n"
+"POT-Creation-Date: 2009-05-12 23:58+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -16,9 +16,9 @@ msgstr ""
 msgid "\""
 msgstr "\""
 
-#: ui_bctipoivabase.h:269 ui_bcaboutbase.h:306 ui_bcasientoduplicarbase.h:238
-#: ui_bcamortizacionbase..h:687 ui_bccuentabase.h:870 ui_bcasientointeligentebase.h:216
-#: bcmodelo300imprimir2ps.cpp:160
+#: ui_bccuentabase.h:870 ui_bcasientointeligentebase.h:216
+#: ui_bcaboutbase.h:306 ui_bctipoivabase.h:269 ui_bcasientoduplicarbase.h:238
+#: ui_bcamortizacionbase.h:687 bcmodelo300imprimir2ps.cpp:160
 msgid "&Aceptar"
 msgstr "&Accepter"
 
@@ -27,8 +27,8 @@ msgid "&Acerca de"
 msgstr "&Au sujet de"
 
 #: ui_bcbulmacontbase.h:382
-msgid "&Acerca de BulmaCont"
-msgstr "&Au sujet de Bulmacont"
+msgid "&Acerca de Iglues/BulmaCont"
+msgstr ""
 
 #: ui_bcbulmacontbase.h:369
 msgid "&Actualizar"
@@ -47,11 +47,11 @@ msgstr "&Assiettes"
 msgid "&Bloquear fechas/Crear ejercicio"
 msgstr "&Bloquer dates"
 
-#: bccentrocosteview.cpp:267 bccanalview.cpp:213
+#: bccanalview.cpp:213 bccentrocosteview.cpp:267
 msgid "&Borrar"
 msgstr "&Éraser"
 
-#: ui_bcamortizacionbase..h:681
+#: ui_bcamortizacionbase.h:681
 msgid "&Calcular"
 msgstr "&Calculer"
 
@@ -63,15 +63,18 @@ msgstr "&Canal par défaut"
 msgid "&Canales"
 msgstr "&Canaux"
 
-#: ui_bcdiarioprintbase.h:158 ui_bccuentasanualesprintbase.h:202 ui_bctipoivabase.h:270
-#: ui_bcextractoimprimirbase.h:140 ui_bcamortizacionbase..h:688 ui_bccuentabase.h:871
-#: ui_bcasientointeligentebase.h:218 ui_bcmasapatrimoniallistbase.h:123 bccentrocosteview.cpp:168
-#: bccentrocosteview.cpp:267 bcmodelo300imprimir2ps.cpp:170 bccanalview.cpp:108 bccanalview.cpp:186
-#: bccanalview.cpp:213 bccanalview.cpp:238
+#: ui_bcdiarioprintbase.h:158 ui_bccuentabase.h:871
+#: ui_bcmasapatrimoniallistbase.h:123 ui_bcasientointeligentebase.h:218
+#: ui_bctipoivabase.h:270 ui_bccuentasanualesimprimirbase.h:202
+#: ui_bcamortizacionbase.h:688 ui_bcextractoimprimirbase.h:140
+#: bccanalview.cpp:108 bccanalview.cpp:186 bccanalview.cpp:213
+#: bccanalview.cpp:238 bcmodelo300imprimir2ps.cpp:170
+#: bccentrocosteview.cpp:168 bccentrocosteview.cpp:267
 msgid "&Cancelar"
 msgstr "&Cancéler"
 
-#: ui_bcasientoduplicarbase.h:239 ui_bccanalbase.h:245 ui_bcformapagobase.h:309
+#: ui_bcformapagobase.h:309 ui_bccanalbase.h:245
+#: ui_bcasientoduplicarbase.h:239
 msgid "&Cerrar"
 msgstr "&Fermer"
 
@@ -84,7 +87,7 @@ msgstr "Concept"
 msgid "&Datos contables"
 msgstr "&Données contables"
 
-#: ui_bcamortizacionbase..h:677
+#: ui_bcamortizacionbase.h:677
 msgid "&Decremental"
 msgstr "&Décremental"
 
@@ -116,8 +119,8 @@ msgstr "&Format d'apprentissaje"
 msgid "&Gasto"
 msgstr "Dé&pense"
 
-#: ui_bcbulmacontbase.h:368 bccentrocosteview.cpp:168 bccanalview.cpp:108
-#: bccanalview.cpp:186 bcconfiguracionview.cpp:118
+#: ui_bcbulmacontbase.h:368 bcconfiguracionview.cpp:118 bccanalview.cpp:108
+#: bccanalview.cpp:186 bccentrocosteview.cpp:168
 msgid "&Guardar"
 msgstr "&Garder"
 
@@ -125,7 +128,8 @@ msgstr "&Garder"
 msgid "&Herramientas"
 msgstr "&Outils"
 
-#: ui_bcdiarioprintbase.h:157 ui_bcextractoimprimirbase.h:139 ui_bcbulmacontbase.h:367
+#: ui_bcdiarioprintbase.h:157 ui_bcbulmacontbase.h:367
+#: ui_bcextractoimprimirbase.h:139
 msgid "&Imprimir"
 msgstr "&Imprimer"
 
@@ -133,12 +137,12 @@ msgstr "&Imprimer"
 msgid "&Imputacion"
 msgstr "&Imputation"
 
-#: ui_bcdiariobase.h:385 ui_bcextractobase.h:630
+#: ui_bcextractobase.h:636 ui_bcdiariobase.h:385
 #, fuzzy
 msgid "&Incluir asientos abiertos"
 msgstr "&Inclure assiettes ouvertes"
 
-#: ui_bcamortizacionbase..h:678
+#: ui_bcamortizacionbase.h:678
 msgid "&Incremental"
 msgstr "&Incrémental"
 
@@ -235,7 +239,7 @@ msgstr "&Remplacer comptes"
 msgid "&Texto Plano"
 msgstr "&Texte plat"
 
-#: ui_bcextractobase.h:639
+#: ui_bcextractobase.h:645
 msgid "&Todos"
 msgstr "&Touts"
 
@@ -259,8 +263,8 @@ msgstr ")"
 msgid "0123456789"
 msgstr "0123456789"
 
-#: ui_bccentrocostebase.h:273 ui_bcplancontablelistbase.h:360 ui_bccuentalistbase.h:261
-#: ui_bcbloqueafechabase.h:146
+#: ui_bccuentalistbase.h:261 ui_bccentrocostebase.h:273
+#: ui_bcbloqueafechabase.h:146 ui_bcplancontablelistbase.h:360
 msgid "1"
 msgstr ""
 
@@ -378,11 +382,11 @@ msgstr "Avril"
 msgid "Abrir asiento"
 msgstr "Ouvrir assiette"
 
-#: ui_bccuentasanualesprintbase.h:201
+#: ui_bccuentasanualesimprimirbase.h:201
 msgid "Acep&tar"
 msgstr "Accep&ter"
 
-#: ui_uivisorempresas.h:68 ui_bccambiacuentabase.h:241 ui_bcmasapatrimonialbase.h:348
+#: ui_bccambiacuentabase.h:241 ui_bcmasapatrimonialbase.h:348
 msgid "Aceptar"
 msgstr "Accepter"
 
@@ -390,13 +394,13 @@ msgstr "Accepter"
 msgid "Acerca de BulmaCont"
 msgstr "Au sujet de Bulmacont"
 
-#: ui_bcdiariobase.h:372 ui_bcdiariobase.h:377 ui_bcextractobase.h:675
-#: ui_bcextractobase.h:680 ui_bcasientolistbase.h:466 ui_bcasientolistbase.h:471
+#: ui_bcextractobase.h:682 ui_bcextractobase.h:687 ui_bcdiariobase.h:372
+#: ui_bcdiariobase.h:377 ui_bcasientolistbase.h:466 ui_bcasientolistbase.h:471
 msgid "Actualizar"
 msgstr "Actualiser"
 
-#: ui_bcplancontablelistbase.h:349 ui_bcplancontablelistbase.h:354 ui_bccuentalistbase.h:246
-#: ui_bccuentalistbase.h:251
+#: ui_bccuentalistbase.h:246 ui_bccuentalistbase.h:251
+#: ui_bcplancontablelistbase.h:349 ui_bcplancontablelistbase.h:354
 msgid "Actualizar listado"
 msgstr "Actualiser liste"
 
@@ -425,19 +429,15 @@ msgstr "Ajouter exercice"
 msgid "Agrupacion"
 msgstr "Agroupement"
 
-#: ui_bcamortizacionbase..h:660
+#: ui_bcamortizacionbase.h:660
 msgid "Agrupacion:"
 msgstr "Groupement:"
-
-#: ui_uiconfiguracion.h:472
-msgid "Almacenes"
-msgstr "Magasins"
 
 #: ui_bccuentabase.h:838
 msgid "Alt+B"
 msgstr "Alt+B"
 
-#: ui_bcamortizacionbase..h:682 ui_bccuentabase.h:846
+#: ui_bccuentabase.h:846 ui_bcamortizacionbase.h:682
 msgid "Alt+C"
 msgstr "Alt+C"
 
@@ -445,7 +445,7 @@ msgstr "Alt+C"
 msgid "Alt+G"
 msgstr "Alt+G"
 
-#: ui_bcamortizacionbase..h:679 ui_bccuentabase.h:843
+#: ui_bccuentabase.h:843 ui_bcamortizacionbase.h:679
 msgid "Alt+I"
 msgstr "Alt+I"
 
@@ -453,15 +453,15 @@ msgstr "Alt+I"
 msgid "Alt+P"
 msgstr "Alt+P"
 
-#: ui_bcamortizacionbase..h:686
+#: ui_bcamortizacionbase.h:686
 msgid "Amor&tizacion"
 msgstr "Amor&tissement"
 
-#: ui_bcamortizacionbase..h:634 bcamortizacionview.cpp:55
+#: ui_bcamortizacionbase.h:634 bcamortizacionview.cpp:55
 msgid "Amortizacion"
 msgstr "Amortissement"
 
-#: ui_bcamortizacionbase..h:684
+#: ui_bcamortizacionbase.h:684
 msgid "Amortizado:"
 msgstr "Amortissé:"
 
@@ -469,32 +469,19 @@ msgstr "Amortissé:"
 msgid "Anterior"
 msgstr "Précédent"
 
-#: ui_bcamortizacionbase..h:665 bcamortizacionview.cpp:246 bcamortizacionview.cpp:273
-#: bcamortizacionview.cpp:301 bcamortizacionview.cpp:332
+#: ui_bcamortizacionbase.h:665 bcamortizacionview.cpp:246
+#: bcamortizacionview.cpp:273 bcamortizacionview.cpp:301
+#: bcamortizacionview.cpp:332
 msgid "Anual"
 msgstr "Annuel"
 
-#: ui_bcextractobase.h:638
+#: ui_bcextractobase.h:644
 msgid "Ap&untes punteados"
 msgstr "No&tes pointées"
 
-#: ui_uiconfiguracion.h:451
-#, fuzzy
-msgid "Apellido 1º:"
-msgstr "Noms:"
-
-#: ui_uiconfiguracion.h:452
-#, fuzzy
-msgid "Apellido 2º:"
-msgstr "Noms:"
-
-#: ui_bcasientobase.h:634
+#: ui_bcasientobase.h:637
 msgid "Apertura"
 msgstr "Ouverture"
-
-#: ui_uiconfiguracion.h:407 ui_uiconfiguracion.h:459
-msgid "Aplicar"
-msgstr "Apliquer"
 
 #: ui_bcasientointeligentebase.h:211
 msgid "Aplicar Asiento Inteligente"
@@ -508,19 +495,19 @@ msgstr "Notes"
 msgid "Apuntes &contables"
 msgstr "Notes &comptables"
 
-#: ui_bcextractobase.h:637
+#: ui_bcextractobase.h:643
 msgid "Apuntes &no punteados"
 msgstr "Notes sa&ns pointaje"
 
-#: ui_bcdiariobase.h:382 ui_bcextractobase.h:631
+#: ui_bcextractobase.h:637 ui_bcdiariobase.h:382
 msgid "Apuntes con contrapartida:"
 msgstr "Notes avec contrepartie:"
 
-#: ui_bcdiariobase.h:383 ui_bcextractobase.h:629
+#: ui_bcextractobase.h:635 ui_bcdiariobase.h:383
 msgid "Apuntes con saldo inferior a:"
 msgstr "Notes avec solde inférieure à:"
 
-#: ui_bcdiariobase.h:384 ui_bcextractobase.h:628
+#: ui_bcextractobase.h:634 ui_bcdiariobase.h:384
 msgid "Apuntes con saldo superior a:"
 msgstr "Notes avec solde supérieure à:"
 
@@ -532,8 +519,8 @@ msgstr "Archive"
 msgid "Articulos"
 msgstr "Articles"
 
-#: ui_bcasientobase.h:489 bcextractosubform.cpp:49 bcasientointeligenteview.cpp:58
-#: bcdiariosubform.cpp:37
+#: ui_bcasientobase.h:489 bcextractosubform.cpp:49
+#: bcasientointeligenteview.cpp:58 bcdiariosubform.cpp:37
 msgid "Asiento"
 msgstr "Assiette"
 
@@ -603,7 +590,7 @@ msgstr ""
 "Avis: Le numéro de compte bancaire introduit\n"
 "ne correspond pas avec un CCC correct."
 
-#: ui_bccuentasanualesprintbase.h:194 ui_bcmasapatrimoniallistbase.h:127
+#: ui_bcmasapatrimoniallistbase.h:127 ui_bccuentasanualesimprimirbase.h:194
 msgid "Balance"
 msgstr "Balance"
 
@@ -612,7 +599,7 @@ msgstr "Balance"
 msgid "Banco de la cuenta"
 msgstr "Données du compte:"
 
-#: ui_bccuentabase.h:839 bccuentaview.cpp:48 bcplancontablelistview.cpp:62
+#: ui_bccuentabase.h:839 bcplancontablelistview.cpp:62 bccuentaview.cpp:48
 msgid "Bloqueada"
 msgstr "Bloquée"
 
@@ -630,26 +617,17 @@ msgstr "Bloquer dates"
 msgid "Bloquear fechas"
 msgstr "&Bloquer dates"
 
-#: ui_uiconfiguracion.h:430
-msgid "Borra por completo una empresa"
-msgstr "Éraser complètement une entreprise"
-
 #: bcasientolistsubform.cpp:40
 msgid "Borrador"
 msgstr "Brouillon"
 
-#: ui_uiconfiguracion.h:456 ui_bcmasapatrimoniallistbase.h:125
+#: ui_bcmasapatrimoniallistbase.h:125
 msgid "Borrar"
-msgstr "Éraser"
-
-#: ui_uiconfiguracion.h:433
-#, fuzzy
-msgid "Borrar Empresa"
 msgstr "Éraser"
 
 #: ui_bcamortizacionlistbase.h:147 ui_bcamortizacionlistbase.h:152
 #: ui_bcamortizacionlistbase.h:159 ui_bcamortizacionlistbase.h:164
-#: ui_bcamortizacionbase..h:649 ui_bcamortizacionbase..h:654
+#: ui_bcamortizacionbase.h:649 ui_bcamortizacionbase.h:654
 #, fuzzy
 msgid "Borrar amortizacion"
 msgstr "Eraser amortissement"
@@ -660,8 +638,8 @@ msgid "Borrar articulo"
 msgstr "Eraser amortissement"
 
 #: ui_bcasientobase.h:573 ui_bcasientobase.h:578 bcamortizacionview.cpp:386
-#: bcamortizacionview.cpp:427 bcamortizacionview.cpp:436 bcamortizacionview.cpp:443
-#: bcasientoform.cpp:159
+#: bcamortizacionview.cpp:427 bcamortizacionview.cpp:436
+#: bcamortizacionview.cpp:443 bcasientoform.cpp:159
 msgid "Borrar asiento"
 msgstr "Éraser assiette"
 
@@ -673,8 +651,8 @@ msgstr "Éraser channel"
 msgid "Borrar centro de coste"
 msgstr "Éraser centre de finances"
 
-#: ui_bcplancontablelistbase.h:303 ui_bcplancontablelistbase.h:308 ui_bccuentabase.h:826
-#: bcplancontablelistview.cpp:408
+#: ui_bccuentabase.h:826 ui_bcplancontablelistbase.h:303
+#: ui_bcplancontablelistbase.h:308 bcplancontablelistview.cpp:408
 msgid "Borrar cuenta"
 msgstr "Éraser compte"
 
@@ -686,13 +664,9 @@ msgstr "Éraser quote"
 msgid "Borrar forma de pago"
 msgstr "Éraser forme de payement"
 
-#: ui_bcextractobase.h:719 ui_bcextractobase.h:724 bcextractoview.cpp:542
+#: ui_bcextractobase.h:726 ui_bcextractobase.h:731 bcextractoview.cpp:547
 msgid "Borrar punteo"
 msgstr "Éraser pointaje"
-
-#: ui_bcbulmacontbase.h:337
-msgid "BulmaCont - Contabilidad GPL"
-msgstr "Bulmacont - Comptabilité GPL"
 
 #: ui_bccuentalistbase.h:255
 msgid "Buscar:"
@@ -721,7 +695,7 @@ msgstr "C.P.:"
 msgid "CIF de la cuenta"
 msgstr "Nom du compte"
 
-#: bcmasapatrimoniallistview.cpp:133 bcplancontablelistview.cpp:88
+#: bcplancontablelistview.cpp:88 bcmasapatrimoniallistview.cpp:133
 msgid "CODIGO"
 msgstr "Code"
 
@@ -742,7 +716,7 @@ msgstr "Changer compte"
 msgid "Cambinado barra de estado..."
 msgstr "Changeant barre d'état..."
 
-#: bcextractosubform.cpp:68 bcasientosubform.cpp:50 bccanalview.cpp:36
+#: bcextractosubform.cpp:68 bccanalview.cpp:36 bcasientosubform.cpp:50
 #: bcdiariosubform.cpp:51
 msgid "Canal"
 msgstr "Canal"
@@ -755,7 +729,7 @@ msgstr "Canal:"
 msgid "Canales"
 msgstr "Canaux"
 
-#: ui_bcmodelo300base.h:208 ui_uivisorempresas.h:69 ui_bcregistroivaimprimirbase.h:225
+#: ui_bcmodelo300base.h:208 ui_bcregistroivaimprimirbase.h:225
 #: ui_bcmasapatrimonialbase.h:349
 msgid "Cancelar"
 msgstr "Annuler"
@@ -764,31 +738,26 @@ msgstr "Annuler"
 msgid "Cantidad"
 msgstr "Cantité"
 
-#: bcextractoview.cpp:472
+#: bcextractoview.cpp:477
 #, fuzzy
 msgid "Cargando Extracto de Cuentas"
 msgstr "Extract de comptes"
+
+#: main.cxx:161
+msgid "Cargando plugins"
+msgstr ""
 
 #: ui_bccuentabase.h:820
 msgid "Cargar Asiento"
 msgstr "Charger assiette"
 
-#: ui_bcextractobase.h:708 ui_bcextractobase.h:713 bcextractoview.cpp:570
+#: ui_bcextractobase.h:715 ui_bcextractobase.h:720 bcextractoview.cpp:575
 msgid "Cargar punteo"
 msgstr "Charger pointaje"
 
-#: ui_bcextractobase.h:686 ui_bcextractobase.h:691
+#: ui_bcextractobase.h:693 ui_bcextractobase.h:698
 msgid "Casacion"
 msgstr "Cassation"
-
-#: ui_uiconfiguracion.h:391
-msgid "Castellano"
-msgstr ""
-
-#: ui_uiconfiguracion.h:390
-#, fuzzy
-msgid "Català"
-msgstr "Canal"
 
 #: bcextractosubform.cpp:71 bcdiariosubform.cpp:53
 msgid "Centro Coste"
@@ -827,8 +796,9 @@ msgstr "Centre de finnace"
 msgid "Centros de cos&te"
 msgstr "Cen&tre de finnace"
 
-#: ui_bccambiacuentabase.h:242 ui_bccentrocostebase.h:289 ui_bcbloqueafechabase.h:152
-#: ui_bccentrocosteseleccionarbase.h:98 ui_bccanalseleccionarbase.h:97
+#: ui_bccanalseleccionarbase.h:97 ui_bccambiacuentabase.h:242
+#: ui_bccentrocostebase.h:289 ui_bcbloqueafechabase.h:152
+#: ui_bccentrocosteseleccionarbase.h:98
 msgid "Cerrar"
 msgstr "Fermer"
 
@@ -841,18 +811,13 @@ msgstr "Férmer assiette"
 msgid "Cerrar asiento"
 msgstr "Férmer assiette"
 
-#: ui_bcasientobase.h:637
+#: ui_bcasientobase.h:636
 msgid "Cierre"
 msgstr "Fermeture"
 
 #: bcasientolistsubform.cpp:45
 msgid "Clase"
 msgstr "Classe"
-
-#: ui_uiconfiguracion.h:421
-#, fuzzy
-msgid "Clonar Empresa"
-msgstr "Entreprise"
 
 #: bcasientosubform.cpp:41
 msgid "Codigo"
@@ -863,7 +828,7 @@ msgstr "Code"
 msgid "Codigo Cuenta"
 msgstr "Code compte"
 
-#: bccuentaview.cpp:44 bcplancontablelistview.cpp:62
+#: bcplancontablelistview.cpp:62 bccuentaview.cpp:44
 msgid "Codigo cuenta"
 msgstr "Code compte"
 
@@ -875,7 +840,7 @@ msgstr "Code compte courant.:"
 msgid "Codigo:"
 msgstr "Code:"
 
-#: bcextractosubform.cpp:66 bcasientosubform.cpp:48 bcdiariosubform.cpp:44
+#: bcextractosubform.cpp:66 bcasientosubform.cpp:48 bcdiariosubform.cpp:45
 msgid "Comentario"
 msgstr "Comentaire"
 
@@ -900,7 +865,7 @@ msgstr "Comentaires:"
 msgid "Compilado usando la version de QT:"
 msgstr "Compilé usant la version de QT:"
 
-#: ui_modelo347base.h:255 ui_bcmodelo347listbase.h:272
+#: ui_bcmodelo347listbase.h:272
 msgid "Compras"
 msgstr "Achats"
 
@@ -908,7 +873,7 @@ msgstr "Achats"
 msgid "Concepto"
 msgstr "Concept"
 
-#: bcasientosubform.cpp:44 bcdiariosubform.cpp:41
+#: bcasientosubform.cpp:44 bcdiariosubform.cpp:42
 msgid "Concepto contable"
 msgstr "Concept comptable"
 
@@ -916,39 +881,25 @@ msgstr "Concept comptable"
 msgid "Conciliacion"
 msgstr "Conciliation"
 
-#: ui_bcbulmacontbase.h:339 ui_bcbulmacontbase.h:342 ui_uiconfiguracion.h:386
+#: ui_bcbulmacontbase.h:339 ui_bcbulmacontbase.h:342
 #: bcconfiguracionview.cpp:38
 msgid "Configuracion"
 msgstr "Configuration"
 
-#: ui_bcextractobase.h:664 ui_bcextractobase.h:669 ui_bcasientolistbase.h:455
-#: ui_bcasientolistbase.h:460 ui_bcasientobase.h:562 ui_bcasientobase.h:567
+#: ui_bcextractobase.h:671 ui_bcextractobase.h:676 ui_bcasientobase.h:562
+#: ui_bcasientobase.h:567 ui_bcasientolistbase.h:455
+#: ui_bcasientolistbase.h:460
 msgid "Configurar"
 msgstr "Configurer"
 
-#: ui_bcdiariobase.h:361 ui_bcdiariobase.h:366 ui_bccuentalistbase.h:235
-#: ui_bccuentalistbase.h:240
+#: ui_bccuentalistbase.h:235 ui_bccuentalistbase.h:240 ui_bcdiariobase.h:361
+#: ui_bcdiariobase.h:366
 msgid "Configurar listado"
 msgstr "Configurer liste"
-
-#: ui_uiconfiguracion.h:468
-#, fuzzy
-msgid "Contabilidad"
-msgstr ""
-"#-#-#-#-#  bulmacont_fr_FR.UTF-8.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"Cantité\n"
-"#-#-#-#-#  bulmafact_fr_FR.UTF-8.po  #-#-#-#-#\n"
-"Cantitée"
 
 #: bcasientosubform.cpp:47 bcdiariosubform.cpp:49 bcdiariosubform.cpp:50
 msgid "Contrapartida"
 msgstr "contrepartie"
-
-#: ui_uiconfiguracion.h:439
-msgid ""
-"Copia de Seguridad\n"
-" (BACKUP)"
-msgstr ""
 
 #: bcbulmacont.cpp:644
 msgid "Copiando la seleccion al portapapeles..."
@@ -962,25 +913,9 @@ msgstr "Courier électronique:"
 msgid "Cortando seleccion..."
 msgstr "Coupant sélection..."
 
-#: ui_uiconfiguracion.h:412
-msgid "Crea un nuevo ejercicio contable"
-msgstr ""
-
-#: ui_uiconfiguracion.h:424
-msgid "Crea una empresa nueva sin datos"
-msgstr "Créer une entreprise nouvelle sans données"
-
-#: ui_uiconfiguracion.h:418
-msgid "Crea una nueva empresa identica a otra existente"
-msgstr ""
-
 #: bcmodelo300imprimir2ps.cpp:170
 msgid "Creando formulario"
 msgstr "Faisant formulaire"
-
-#: ui_uiconfiguracion.h:427
-msgid "Crear Nueva Empresa"
-msgstr ""
 
 #: ui_bcbulmacontbase.h:359 ui_bcasientobase.h:501
 msgid "Ctrl+A"
@@ -990,9 +925,9 @@ msgstr "Ctrl+A"
 msgid "Ctrl+C"
 msgstr "Ctrl+C"
 
-#: ui_bcamortizacionlistbase.h:156 ui_bccentrocostebase.h:270 ui_bcplancontablelistbase.h:312
-#: ui_bcasientobase.h:582 ui_bcasientobase.h:594 ui_bcamortizacionbase..h:658
-#: ui_bccuentabase.h:830
+#: ui_bccuentabase.h:830 ui_bccentrocostebase.h:270
+#: ui_bcplancontablelistbase.h:312 ui_bcamortizacionlistbase.h:156
+#: ui_bcamortizacionbase.h:658 ui_bcasientobase.h:582 ui_bcasientobase.h:594
 msgid "Ctrl+D"
 msgstr "Ctrl+D"
 
@@ -1004,7 +939,7 @@ msgstr "Ctrl+E"
 msgid "Ctrl+End"
 msgstr "Ctrl+End"
 
-#: ui_modelo347base.h:250 ui_bcmodelo347listbase.h:267
+#: ui_bcmodelo347listbase.h:267
 msgid "Ctrl+F"
 msgstr "Ctrl+F"
 
@@ -1024,12 +959,13 @@ msgstr "Ctrl+L"
 msgid "Ctrl+M"
 msgstr "Ctrl+M"
 
-#: ui_bcamortizacionlistbase.h:144 ui_bccentrocostebase.h:268 ui_bcplancontablelistbase.h:288
-#: ui_bcbloqueafechabase.h:145 ui_bcasientobase.h:547
+#: ui_bccentrocostebase.h:268 ui_bcbloqueafechabase.h:145
+#: ui_bcplancontablelistbase.h:288 ui_bcamortizacionlistbase.h:144
+#: ui_bcasientobase.h:547
 msgid "Ctrl+N"
 msgstr "Ctrl+N"
 
-#: ui_modelo347base.h:237 ui_bcmodelo347listbase.h:254 ui_bcplancontablelistbase.h:324
+#: ui_bcmodelo347listbase.h:254 ui_bcplancontablelistbase.h:324
 msgid "Ctrl+P"
 msgstr "Ctrl+P"
 
@@ -1045,14 +981,16 @@ msgstr "Ctrl+PgUp"
 msgid "Ctrl+Q"
 msgstr "Ctrl+Q"
 
-#: ui_bccentrocostebase.h:272 ui_bcconfiguracionbase.h:252 ui_bcasientobase.h:525
-#: ui_bcamortizacionbase..h:646 ui_bccuentabase.h:811 ui_bcasientointeligentebase.h:212
+#: ui_bcconfiguracionbase.h:252 ui_bccuentabase.h:811
+#: ui_bcasientointeligentebase.h:212 ui_bccentrocostebase.h:272
+#: ui_bcamortizacionbase.h:646 ui_bcasientobase.h:525
 msgid "Ctrl+S"
 msgstr "Ctrl+S"
 
-#: ui_bcbuscarcuentabase.h:88 ui_bccuentabase.h:804 ui_bcmasapatrimonialbase.h:351
-#: bctipoivaview.cpp:46 bcextractosubform.cpp:48 bccuentaview.cpp:38
-#: bcplancontablelistview.cpp:55 bcdiariosubform.cpp:39
+#: ui_bcbuscarcuentabase.h:88 ui_bccuentabase.h:804
+#: ui_bcmasapatrimonialbase.h:351 bctipoivaview.cpp:46
+#: bcplancontablelistview.cpp:55 bccuentaview.cpp:38 bcextractosubform.cpp:48
+#: bcdiariosubform.cpp:39
 msgid "Cuenta"
 msgstr "Compte"
 
@@ -1068,19 +1006,23 @@ msgstr "Compte Origine"
 msgid "Cuenta a devolver:"
 msgstr "Compte à rembourser:"
 
-#: ui_bcamortizacionbase..h:671
+#: bcasientoview.cpp:941
+msgid "Cuenta de Regularizacion incorrecta. Revise la configuracion"
+msgstr ""
+
+#: ui_bcamortizacionbase.h:671
 msgid "Cuenta de activo:"
 msgstr "Compte d'actif:"
 
-#: ui_bcamortizacionbase..h:674
+#: ui_bcamortizacionbase.h:674
 msgid "Cuenta de amortizacion:"
 msgstr "Compte d'amortissement:"
 
-#: ui_bcextractobase.h:635
+#: ui_bcextractobase.h:641
 msgid "Cuenta final:"
 msgstr "Compte finale:"
 
-#: ui_bcextractobase.h:634
+#: ui_bcextractobase.h:640
 msgid "Cuenta inicial:"
 msgstr "Compte initiale:"
 
@@ -1088,7 +1030,7 @@ msgstr "Compte initiale:"
 msgid "Cuenta padre:"
 msgstr "Compte père:"
 
-#: ui_bctipoivabase.h:268 ui_bcextractobase.h:624
+#: ui_bcextractobase.h:630 ui_bctipoivabase.h:268
 msgid "Cuenta:"
 msgstr "Compte:"
 
@@ -1100,18 +1042,9 @@ msgstr "Comptes Annuelles"
 msgid "Cuentas a&nuales"
 msgstr "Comptes a&nnuelles"
 
-#: ui_bcamortizacionbase..h:683
+#: ui_bcamortizacionbase.h:683
 msgid "Cuotas:"
 msgstr "Quotes:"
-
-#: ui_uivisorempresas.h:48 ui_uivisorempresas.h:72
-msgid "DBname"
-msgstr ""
-
-#: ui_uiconfiguracion.h:449
-#, fuzzy
-msgid "Datos Usuario"
-msgstr "Dates bancaires:"
 
 #: ui_bccuentabase.h:831
 #, fuzzy
@@ -1130,12 +1063,12 @@ msgstr "Données de la liste:"
 msgid "Datos:"
 msgstr "Données:"
 
-#: bcextractosubform.cpp:54 bccuentaview.cpp:53 bcasientosubform.cpp:45
-#: bcasientolistsubform.cpp:42 bcplancontablelistview.cpp:62 bcdiariosubform.cpp:42
+#: bcplancontablelistview.cpp:62 bccuentaview.cpp:53 bcextractosubform.cpp:54
+#: bcasientosubform.cpp:45 bcdiariosubform.cpp:43 bcasientolistsubform.cpp:42
 msgid "Debe"
 msgstr "Débit"
 
-#: ui_bcextractobase.h:626
+#: ui_bcextractobase.h:632
 msgid "Debe inicial:"
 msgstr "Débit initial:"
 
@@ -1143,17 +1076,12 @@ msgstr "Débit initial:"
 msgid "Debe seleccionar una cuenta"
 msgstr "Vous devez sélectionner un compte"
 
-#: ui_bcextractobase.h:729 ui_bccuentabase.h:855
+#: ui_bcextractobase.h:736 ui_bccuentabase.h:855
 msgid "Debe:"
 msgstr "Débit:"
 
-#: ui_uiconfiguracion.h:408 ui_uiconfiguracion.h:460
-#, fuzzy
-msgid "Desacer"
-msgstr "Remise"
-
-#: bccentrocosteview.cpp:50 bccentrocosteview.cpp:76 bcextractosubform.cpp:50
-#: bccuentaview.cpp:45 bcdiariosubform.cpp:40
+#: bccuentaview.cpp:45 bcextractosubform.cpp:50 bcdiariosubform.cpp:40
+#: bccentrocosteview.cpp:50 bccentrocosteview.cpp:76
 msgid "Descripcion"
 msgstr "description"
 
@@ -1167,7 +1095,7 @@ msgstr "Description d'un Compte"
 msgid "Descripcion Asiento"
 msgstr "Déscription de l'assiette"
 
-#: bcdiariosubform.cpp:48
+#: bcdiariosubform.cpp:41
 msgid "Descripcion de Cuenta"
 msgstr "Description d'un Compte"
 
@@ -1200,9 +1128,9 @@ msgstr "Désirez vous creer une nouvelle assiette dans cette position?"
 msgid "Desea guardar los cambios."
 msgstr "Désirez vous garder les changements."
 
-#: bccentrocosteview.cpp:167 bccentrocosteview.cpp:227 bctipoivaview.cpp:110
-#: bctipoivaview.cpp:153 bccanalview.cpp:237 bcconfiguracionview.cpp:117
-#: bcformapagoview.cpp:147 bcformapagoview.cpp:209
+#: bcconfiguracionview.cpp:117 bctipoivaview.cpp:110 bctipoivaview.cpp:153
+#: bcformapagoview.cpp:147 bcformapagoview.cpp:209 bccanalview.cpp:237
+#: bccentrocosteview.cpp:167 bccentrocosteview.cpp:227
 msgid "Desea guardar los cambios?"
 msgstr "Désirez vous garder les changes?"
 
@@ -1263,11 +1191,6 @@ msgstr "Direction:"
 msgid "Documento:"
 msgstr "Document:"
 
-#: ui_uiconfiguracion.h:457
-#, fuzzy
-msgid "Duplicar"
-msgstr "Apliquer"
-
 #: ui_bccuentabase.h:814
 msgid "Duplicar Asiento"
 msgstr "Doubler assiette"
@@ -1299,8 +1222,7 @@ msgstr "Éditer compte"
 msgid "Editar cuenta"
 msgstr "Éditer client"
 
-#: ui_uivisorempresas.h:47 ui_uivisorempresas.h:71 bcamortizacionview.cpp:78
-#: bcbloqueafechaview.cpp:115
+#: bcamortizacionview.cpp:78 bcbloqueafechaview.cpp:115
 msgid "Ejercicio"
 msgstr "Exercice"
 
@@ -1308,11 +1230,11 @@ msgstr "Exercice"
 msgid "Ejercicios ya contemplado"
 msgstr ""
 
-#: bcasientoform.cpp:408
+#: bcasientoform.cpp:411
 msgid "El asiento se ha guardado correctamente."
 msgstr "L'assiette est gardée correctement."
 
-#: bcplancontablelistview.cpp:545 bcplancontablelistview.cpp:564
+#: bcplancontablelistview.cpp:544 bcplancontablelistview.cpp:563
 msgid "Elija el archivo"
 msgstr "Choisisser l'archive"
 
@@ -1324,10 +1246,6 @@ msgstr "Au banc"
 #: bcbloqueafechaview.cpp:191
 msgid "Enero"
 msgstr "Janvier"
-
-#: ui_uiconfiguracion.h:393
-msgid "English"
-msgstr ""
 
 #: bccuentaview.cpp:56
 #, fuzzy
@@ -1352,6 +1270,10 @@ msgstr "Éraser centre de finances"
 msgid "Error en la carga de la amortizacion"
 msgstr "Erreur à la charge de l'amortissement"
 
+#: main.cxx:190
+msgid "Error inesperado en BulmaCont, el programa se cerrara."
+msgstr ""
+
 #: bccanalview.cpp:190
 #, fuzzy
 msgid "Escriba su descripcion"
@@ -1373,7 +1295,7 @@ msgstr "Exporter comptes"
 msgid "Extender asiento"
 msgstr "Étendre assiette"
 
-#: ui_bcextractobase.h:622 bcextractoview.cpp:55
+#: ui_bcextractobase.h:628 bcextractoview.cpp:55
 msgid "Extracto de Cuentas"
 msgstr "Extract de comptes"
 
@@ -1385,8 +1307,8 @@ msgstr "F1"
 msgid "F11"
 msgstr "F11"
 
-#: ui_modelo347base.h:243 ui_bcmodelo347listbase.h:260 ui_bcamortizacionlistbase.h:168
-#: ui_bcdiariobase.h:381 ui_bcplancontablelistbase.h:358
+#: ui_bcmodelo347listbase.h:260 ui_bcplancontablelistbase.h:358
+#: ui_bcamortizacionlistbase.h:168 ui_bcdiariobase.h:381
 msgid "F5"
 msgstr "F5"
 
@@ -1394,17 +1316,12 @@ msgstr "F5"
 msgid "Factura"
 msgstr "Facture"
 
-#: ui_uiconfiguracion.h:470
-#, fuzzy
-msgid "Facturacion"
-msgstr "Facturé"
-
 #: bcbloqueafechaview.cpp:187
 msgid "Febrero"
 msgstr "Février"
 
-#: bcextractosubform.cpp:47 bcasientosubform.cpp:40 bccompany.cpp:815
-#: bcasientolistsubform.cpp:38 bcdiariosubform.cpp:38
+#: bccompany.cpp:815 bcextractosubform.cpp:47 bcasientosubform.cpp:40
+#: bcdiariosubform.cpp:38 bcasientolistsubform.cpp:38
 msgid "Fecha"
 msgstr "Date"
 
@@ -1425,7 +1342,7 @@ msgstr "Date de la 1ère quote"
 msgid "Fecha 1a cuota"
 msgstr "Date de la 1ère quote"
 
-#: ui_bcamortizacionbase..h:670
+#: ui_bcamortizacionbase.h:670
 msgid "Fecha 1ª cuota:"
 msgstr "Date 1ère quote:"
 
@@ -1434,13 +1351,13 @@ msgstr "Date 1ère quote:"
 msgid "Fecha Factura"
 msgstr "Date de la 1ère quote"
 
-#: ui_bccuentasanualesprintbase.h:197 ui_bccuentasanualesprintbase.h:200
 #: ui_bccambiacuentabase.h:237 ui_bcregistroivaimprimirbase.h:217
+#: ui_bccuentasanualesimprimirbase.h:197 ui_bccuentasanualesimprimirbase.h:200
 msgid "Fecha Final"
 msgstr "Date finale"
 
-#: ui_bccuentasanualesprintbase.h:196 ui_bccuentasanualesprintbase.h:199
 #: ui_bccambiacuentabase.h:238 ui_bcregistroivaimprimirbase.h:215
+#: ui_bccuentasanualesimprimirbase.h:196 ui_bccuentasanualesimprimirbase.h:199
 msgid "Fecha Inicial"
 msgstr "Date initiale"
 
@@ -1454,7 +1371,7 @@ msgstr "Date d'achat:"
 msgid "Fecha con la que quedara el asiento:"
 msgstr "Date qui restera avec l'assiette:"
 
-#: ui_bcamortizacionbase..h:662
+#: ui_bcamortizacionbase.h:662
 #, fuzzy
 msgid "Fecha de compra:"
 msgstr "Date de l'achat"
@@ -1482,8 +1399,7 @@ msgstr "Date finale:"
 msgid "Fecha final regularizacion:"
 msgstr "Assiette de &régularization"
 
-#: ui_modelo347base.h:253 ui_bcmodelo347listbase.h:269 ui_bcdiariobase.h:387
-#: ui_bcextractobase.h:633
+#: ui_bcextractobase.h:639 ui_bcmodelo347listbase.h:269 ui_bcdiariobase.h:387
 #, fuzzy
 msgid "Fecha final:"
 msgstr "Date &finale:"
@@ -1503,8 +1419,8 @@ msgstr "Date initiale:"
 msgid "Fecha inicial regularizacion:"
 msgstr "Date initiale:"
 
-#: ui_modelo347base.h:251 ui_bcmodelo347listbase.h:270 ui_bcdiariobase.h:386
-#: ui_bcextractobase.h:632 ui_bcasientoduplicarbase.h:230
+#: ui_bcextractobase.h:638 ui_bcmodelo347listbase.h:270 ui_bcdiariobase.h:386
+#: ui_bcasientoduplicarbase.h:230
 #, fuzzy
 msgid "Fecha inicial:"
 msgstr "Date &initiale:"
@@ -1558,7 +1474,7 @@ msgstr "Format &normal"
 msgid "Formato del listado:"
 msgstr "Format de la liste:"
 
-#: ui_bcextractoimprimirbase.h:135 ui_bcregistroivaimprimirbase.h:220
+#: ui_bcregistroivaimprimirbase.h:220 ui_bcextractoimprimirbase.h:135
 msgid "Formato:"
 msgstr "Format:"
 
@@ -1566,25 +1482,11 @@ msgstr "Format:"
 msgid "Formulario 300"
 msgstr "Formulaire 300"
 
-#: ui_uiconfiguracion.h:392
-msgid "Français"
-msgstr ""
-
-#: ui_uiconfiguracion.h:397
-#, fuzzy
-msgid "Fuente:"
-msgstr "Compte:"
-
 #: ui_bccentrocostebase.h:287 ui_bcmasapatrimonialbase.h:361
 msgid "General"
 msgstr "Général"
 
-#: ui_uiconfiguracion.h:387
-#, fuzzy
-msgid "Generalidades"
-msgstr "Général"
-
-#: bcextractoview.cpp:836
+#: bcextractoview.cpp:841
 #, fuzzy
 msgid "Generando Extracto "
 msgstr "Extract de comptes"
@@ -1605,11 +1507,6 @@ msgstr "Générer de toute façon"
 msgid "Grupo"
 msgstr "Groupe"
 
-#: ui_uiconfiguracion.h:436
-#, fuzzy
-msgid "Guarda una copia de seguridad de una empresa"
-msgstr "Propriétées de l'entreprise"
-
 #: ui_bcconfiguracionbase.h:243 ui_bcconfiguracionbase.h:248
 msgid "Guardar"
 msgstr "Garder"
@@ -1618,7 +1515,7 @@ msgstr "Garder"
 msgid "Guardar Libro Diario"
 msgstr "Garder journal"
 
-#: ui_bcamortizacionbase..h:637 ui_bcamortizacionbase..h:642
+#: ui_bcamortizacionbase.h:637 ui_bcamortizacionbase.h:642
 msgid "Guardar amortizacion"
 msgstr "Garder amortissement"
 
@@ -1655,7 +1552,7 @@ msgstr "Garder forme de payement"
 msgid "Guardar libro diario"
 msgstr "Garder journal"
 
-#: ui_bcextractobase.h:697 ui_bcextractobase.h:702 bcextractoview.cpp:504
+#: ui_bcextractobase.h:704 ui_bcextractobase.h:709 bcextractoview.cpp:509
 msgid "Guardar punteo"
 msgstr "Garder pointaje"
 
@@ -1671,16 +1568,16 @@ msgstr "HT&ML"
 msgid "HTML"
 msgstr "HTML"
 
-#: bcextractosubform.cpp:55 bccuentaview.cpp:54 bcasientosubform.cpp:46
-#: bcasientolistsubform.cpp:43 bcplancontablelistview.cpp:62 bcdiariosubform.cpp:43
+#: bcplancontablelistview.cpp:62 bccuentaview.cpp:54 bcextractosubform.cpp:55
+#: bcasientosubform.cpp:46 bcdiariosubform.cpp:44 bcasientolistsubform.cpp:43
 msgid "Haber"
 msgstr "Crédit"
 
-#: ui_bcextractobase.h:625
+#: ui_bcextractobase.h:631
 msgid "Haber inicial:"
 msgstr "Crédit initial:"
 
-#: ui_bcextractobase.h:730 ui_bccuentabase.h:856
+#: ui_bcextractobase.h:737 ui_bccuentabase.h:856
 msgid "Haber:"
 msgstr "Crédit:"
 
@@ -1692,7 +1589,7 @@ msgstr ""
 msgid "ID Canal"
 msgstr "ID Canal"
 
-#: bccuentalistview.cpp:386 bccuentaview.cpp:43 bcplancontablelistview.cpp:62
+#: bccuentalistview.cpp:386 bcplancontablelistview.cpp:62 bccuentaview.cpp:43
 msgid "ID cuenta"
 msgstr "Id compte"
 
@@ -1705,7 +1602,8 @@ msgstr "idtypetva"
 msgid "Id"
 msgstr "Id"
 
-#: bcamortizacionview.cpp:71 bcamortizacionview.cpp:83 bcamortizacionlistview.cpp:47
+#: bcamortizacionlistview.cpp:47 bcamortizacionview.cpp:71
+#: bcamortizacionview.cpp:83
 msgid "Id amortizacion"
 msgstr "Id amortissement"
 
@@ -1713,7 +1611,7 @@ msgstr "Id amortissement"
 msgid "Id apunte"
 msgstr "Id note"
 
-#: bcamortizacionview.cpp:81 bcasientoform.cpp:45 bcasientosubform.cpp:57
+#: bcamortizacionview.cpp:81 bcasientosubform.cpp:57 bcasientoform.cpp:45
 #: bcasientolistsubform.cpp:44
 msgid "Id asiento"
 msgstr "Id assiette"
@@ -1722,7 +1620,7 @@ msgstr "Id assiette"
 msgid "Id borrador"
 msgstr "Ib brouillon"
 
-#: bccentrocosteview.cpp:76 bcasientosubform.cpp:52
+#: bcasientosubform.cpp:52 bccentrocosteview.cpp:76
 #, fuzzy
 msgid "Id centro de coste"
 msgstr ""
@@ -1766,8 +1664,8 @@ msgstr "Régistre de TVA"
 msgid "Identificador"
 msgstr "Identifieur"
 
-#: ui_uiconfiguracion.h:396
-msgid "Idioma:"
+#: ui_bcbulmacontbase.h:337
+msgid "Iglues/BulmaCont - Contabilidad GPL"
 msgstr ""
 
 #: ui_bcasientobase.h:608 ui_bcasientobase.h:613
@@ -1778,11 +1676,11 @@ msgstr "Importer assiette"
 msgid "Importar cuentas"
 msgstr "Importer comptes"
 
-#: ui_modelo347base.h:252 ui_bcmodelo347listbase.h:268
+#: ui_bcmodelo347listbase.h:268
 msgid "Importe:"
 msgstr "Montant:"
 
-#: ui_bccuentasanualesprintbase.h:193
+#: ui_bccuentasanualesimprimirbase.h:193
 #, fuzzy
 msgid "Impresion de Balances"
 msgstr "Impressión de Balances"
@@ -1802,10 +1700,10 @@ msgstr "Impression de l'extrait"
 msgid "Impresion del Registro de IVA"
 msgstr "Impression de régistre de TVA"
 
-#: ui_modelo347base.h:233 ui_modelo347base.h:246 ui_bcmodelo347listbase.h:250
-#: ui_bcdiariobase.h:339 ui_bcdiariobase.h:344 ui_bcextractobase.h:642
-#: ui_bcextractobase.h:647 ui_bcasientolistbase.h:433 ui_bcasientolistbase.h:438
-#: ui_bcregistroivaimprimirbase.h:224
+#: ui_bcextractobase.h:649 ui_bcextractobase.h:654
+#: ui_bcmodelo347listbase.h:250 ui_bcregistroivaimprimirbase.h:224
+#: ui_bcdiariobase.h:339 ui_bcdiariobase.h:344 ui_bcasientolistbase.h:433
+#: ui_bcasientolistbase.h:438
 msgid "Imprimir"
 msgstr "Imprimer"
 
@@ -1817,7 +1715,7 @@ msgstr "Imprimer comptes"
 msgid "Imprimir listado"
 msgstr "Imprimer relevé"
 
-#: bccuentaview.cpp:47 bcplancontablelistview.cpp:62
+#: bcplancontablelistview.cpp:62 bccuentaview.cpp:47
 msgid "Imputacion"
 msgstr "Imputation"
 
@@ -1844,7 +1742,7 @@ msgstr "Information de type de TVA:"
 msgid "Inicializando asientos"
 msgstr "Liste d'assiettes"
 
-#: main.cxx:167
+#: main.cxx:173
 msgid "Inicializando componentes"
 msgstr ""
 
@@ -1861,7 +1759,7 @@ msgstr ""
 msgid "Inicializando extracto"
 msgstr ""
 
-#: main.cxx:97
+#: main.cxx:105
 msgid "Iniciando clases"
 msgstr "Initiant classes"
 
@@ -1877,7 +1775,7 @@ msgstr "Inserrant le contenu du bloc-notes..."
 msgid "Introduzca Ejercicio a Crear"
 msgstr ""
 
-#: ui_bccentrocosteseleccionarbase.h:95 ui_bccanalseleccionarbase.h:95
+#: ui_bccanalseleccionarbase.h:95 ui_bccentrocosteseleccionarbase.h:95
 msgid "Invertir"
 msgstr "Inverter"
 
@@ -1893,16 +1791,16 @@ msgstr "Juin"
 msgid "La fecha inicial es posterior a la fecha final."
 msgstr "La date initiale est postérieure à la date finale."
 
-#: main.cxx:161
+#: main.cxx:167
 msgid "Lanzando plugins"
 msgstr ""
 
-#: main.cxx:127
+#: main.cxx:131
 #, fuzzy
 msgid "Leyendo configuracion"
 msgstr "Configuration"
 
-#: ui_bcamortizacionbase..h:680
+#: ui_bcamortizacionbase.h:680
 msgid "Li&neal"
 msgstr "Li&néal"
 
@@ -1913,11 +1811,6 @@ msgstr "&Journal"
 #: ui_bcbulmacontbase.h:360
 msgid "Libro &Mayor"
 msgstr "&Gran livre"
-
-#: ui_uiconfiguracion.h:266 ui_uiconfiguracion.h:464
-#, fuzzy
-msgid "Lista de Usuarios"
-msgstr " Listes de banques:"
 
 #: ui_bcbulmacontbase.h:393
 msgid "Listado &347"
@@ -1936,17 +1829,13 @@ msgstr "Listage de clients"
 msgid "Listado de cuentas"
 msgstr "Liste de comptes"
 
-#: ui_modelo347base.h:230 ui_bcmodelo347listbase.h:247
+#: ui_bcmodelo347listbase.h:247
 msgid "Listado para el modelo 347"
 msgstr "Liste pour le modèle 347"
 
-#: ui_listadocuentas1.h:61
-#, fuzzy
-msgid "Listados de Cuentas"
-msgstr "Liste de comptes"
-
-#: bcbulmacont.cpp:595 bcbulmacont.cpp:621 bcbulmacont.cpp:633 bcbulmacont.cpp:645
-#: bcbulmacont.cpp:657 bcbulmacont.cpp:675 bcbulmacont.cpp:693
+#: bcbulmacont.cpp:595 bcbulmacont.cpp:621 bcbulmacont.cpp:633
+#: bcbulmacont.cpp:645 bcbulmacont.cpp:657 bcbulmacont.cpp:675
+#: bcbulmacont.cpp:693
 msgid "Listo."
 msgstr "Prêt."
 
@@ -1961,10 +1850,6 @@ msgstr ""
 "Éssayer de le charger de www.impots.gouv.fr et garder-le dans\n"
 "/usr/shate/bulmages/formularios/ oú dans\n"
 "~/.bulmages/formularios/."
-
-#: ui_uiconfiguracion.h:453
-msgid "Login:"
-msgstr ""
 
 #: ui_bcasientoduplicarbase.h:237
 msgid "Mantener distacia entre fechas"
@@ -1998,8 +1883,9 @@ msgstr "Masses patrimoniales"
 msgid "Mayo"
 msgstr "Mai"
 
-#: ui_bcamortizacionbase..h:668 bcamortizacionview.cpp:248 bcamortizacionview.cpp:275
-#: bcamortizacionview.cpp:303 bcamortizacionview.cpp:334
+#: ui_bcamortizacionbase.h:668 bcamortizacionview.cpp:248
+#: bcamortizacionview.cpp:275 bcamortizacionview.cpp:303
+#: bcamortizacionview.cpp:334
 msgid "Mensual"
 msgstr "Mensuel"
 
@@ -2007,7 +1893,7 @@ msgstr "Mensuel"
 msgid "Metodo"
 msgstr "métode"
 
-#: ui_bcamortizacionbase..h:675
+#: ui_bcamortizacionbase.h:675
 msgid "Metodo:"
 msgstr "Métode:"
 
@@ -2029,8 +1915,8 @@ msgid "Mostrar / Ocultar Detalle"
 msgstr "Montrer/oculter détail"
 
 #: bcextractosubform.cpp:94 bcextractosubform.cpp:111 bcasientosubform.cpp:89
-#: bcasientosubform.cpp:106 bcasientolistsubform.cpp:77
-#: bcasientolistsubform.cpp:94 bcdiariosubform.cpp:96 bcdiariosubform.cpp:113
+#: bcasientosubform.cpp:106 bcdiariosubform.cpp:96 bcdiariosubform.cpp:113
+#: bcasientolistsubform.cpp:77 bcasientolistsubform.cpp:94
 msgid "Mostrar asiento"
 msgstr "Montrer assiette"
 
@@ -2049,35 +1935,31 @@ msgstr "Montrer extrait (jour)"
 msgid "Mostrar diario (mes)"
 msgstr "Montrer extrait (mois)"
 
-#: bcasientosubform.cpp:93 bcasientosubform.cpp:112
-#: bcasientolistsubform.cpp:81 bcasientolistsubform.cpp:100 bcdiariosubform.cpp:100
-#: bcdiariosubform.cpp:119
+#: bcasientosubform.cpp:93 bcasientosubform.cpp:112 bcdiariosubform.cpp:100
+#: bcdiariosubform.cpp:119 bcasientolistsubform.cpp:81
+#: bcasientolistsubform.cpp:100
 msgid "Mostrar extracto (ano)"
 msgstr "Montrer extrait (année)"
 
-#: bcasientosubform.cpp:91 bcasientosubform.cpp:108
-#: bcasientolistsubform.cpp:79 bcasientolistsubform.cpp:96 bcdiariosubform.cpp:98
-#: bcdiariosubform.cpp:115
+#: bcasientosubform.cpp:91 bcasientosubform.cpp:108 bcdiariosubform.cpp:98
+#: bcdiariosubform.cpp:115 bcasientolistsubform.cpp:79
+#: bcasientolistsubform.cpp:96
 msgid "Mostrar extracto (dia)"
 msgstr "Montrer extrait (jour)"
 
-#: bcasientosubform.cpp:92 bcasientosubform.cpp:110
-#: bcasientolistsubform.cpp:80 bcasientolistsubform.cpp:98 bcdiariosubform.cpp:99
-#: bcdiariosubform.cpp:117
+#: bcasientosubform.cpp:92 bcasientosubform.cpp:110 bcdiariosubform.cpp:99
+#: bcdiariosubform.cpp:117 bcasientolistsubform.cpp:80
+#: bcasientolistsubform.cpp:98
 msgid "Mostrar extracto (mes)"
 msgstr "Montrer extrait (mois)"
 
-#: ui_bcextractobase.h:653 ui_bcextractobase.h:658
+#: ui_bcextractobase.h:660 ui_bcextractobase.h:665
 msgid "Mostrar/Oculatar filtro"
 msgstr "Montrer/cacher filtre"
 
 #: ui_bcdiariobase.h:350 ui_bcdiariobase.h:355
 msgid "Mostrar/ocultar filtro"
 msgstr "Montrer/cacher filtre"
-
-#: ui_uiconfiguracion.h:399
-msgid "Muestra 0123..."
-msgstr ""
 
 #: bcamortizacionview.cpp:66
 msgid "NIF del proveedor"
@@ -2124,14 +2006,9 @@ msgstr "Nondébit"
 msgid "Nohaber"
 msgstr "noncrédit"
 
-#: ui_uiconfiguracion.h:405
-#, fuzzy
-msgid "Nom Empresa"
-msgstr "Entreprise"
-
-#: ui_uivisorempresas.h:46 ui_uivisorempresas.h:70 ui_bcmasapatrimonialbase.h:350
-#: bccentrocosteview.cpp:49 bccentrocosteview.cpp:76 bcamortizacionlistview.cpp:48
-#: bcconfiguracionview.cpp:191
+#: ui_bcmasapatrimonialbase.h:350 bcconfiguracionview.cpp:191
+#: bcamortizacionlistview.cpp:48 bccentrocosteview.cpp:49
+#: bccentrocosteview.cpp:76
 msgid "Nombre"
 msgstr "Nom"
 
@@ -2157,14 +2034,9 @@ msgstr "Nom de l'amortissement"
 msgid "Nombre de la cuenta"
 msgstr "Nom du compte"
 
-#: ui_bcextractobase.h:627
+#: ui_bcextractobase.h:633
 msgid "Nombre de la cuenta:"
 msgstr "Nom du compte"
-
-#: ui_uiconfiguracion.h:402
-#, fuzzy
-msgid "Nombre de la empresa"
-msgstr "&Nom d'entrepirise:"
 
 #: ui_bccuentabase.h:858
 msgid "Nombre de la entidad:"
@@ -2178,12 +2050,12 @@ msgstr "Nom de la forme de payement:"
 msgid "Nombre del proveedor"
 msgstr "Nom du fournisseur"
 
-#: ui_bctipoivabase.h:266 ui_bccentrocostebase.h:285 ui_bccanalbase.h:243
-#: ui_bcamortizacionbase..h:659 ui_bccuentabase.h:833 ui_uiconfiguracion.h:450
+#: ui_bccuentabase.h:833 ui_bccentrocostebase.h:285 ui_bctipoivabase.h:266
+#: ui_bccanalbase.h:243 ui_bcamortizacionbase.h:659
 msgid "Nombre:"
 msgstr "Nom:"
 
-#: ui_bcasientobase.h:635
+#: ui_bcasientobase.h:634
 msgid "Normal"
 msgstr "Normal"
 
@@ -2205,14 +2077,9 @@ msgstr "Nom compte"
 msgid "Nueva forma de pago"
 msgstr "Nouvelle forme de payement"
 
-#: ui_uiconfiguracion.h:458 ui_bcmasapatrimoniallistbase.h:124
+#: ui_bcmasapatrimoniallistbase.h:124
 msgid "Nuevo"
 msgstr "Nouveau"
-
-#: ui_uiconfiguracion.h:415
-#, fuzzy
-msgid "Nuevo Ejercicio"
-msgstr "Exercice"
 
 #: ui_bcasientobase.h:528 ui_bcasientobase.h:533 ui_bcasientobase.h:538
 #: ui_bcasientobase.h:543
@@ -2246,7 +2113,7 @@ msgstr "Numéro de quotes"
 msgid "Numero de plazos:"
 msgstr "Numéro de délai:"
 
-#: ui_bcamortizacionbase..h:661
+#: ui_bcamortizacionbase.h:661
 msgid "Nº de cuotas:"
 msgstr "Nº de quotes:"
 
@@ -2254,11 +2121,16 @@ msgstr "Nº de quotes:"
 msgid "Octubre"
 msgstr "Octobre"
 
+#: ui_bcextractobase.h:646
+msgid "Ocultar aperturas y cierres"
+msgstr ""
+
 #: ui_bccuentabase.h:836
 msgid "Opciones de cuenta:"
 msgstr "Options de compte:"
 
-#: bcextractosubform.cpp:73 bcasientosubform.cpp:55 bcasientolistsubform.cpp:37
+#: bcextractosubform.cpp:73 bcasientosubform.cpp:55
+#: bcasientolistsubform.cpp:37
 msgid "Orden"
 msgstr "Ordre"
 
@@ -2289,10 +2161,6 @@ msgstr "Origine:"
 msgid "Origen:"
 msgstr "Origine:"
 
-#: ui_uiconfiguracion.h:474
-msgid "Otros"
-msgstr ""
-
 #: bccuentaview.cpp:46
 msgid "Padre"
 msgstr "Père"
@@ -2312,11 +2180,7 @@ msgstr ""
 "nous devez sortir du programme et reentrer\n"
 "Sortir maintenant?"
 
-#: ui_uiconfiguracion.h:454
-msgid "Password:"
-msgstr ""
-
-#: ui_bcamortizacionbase..h:685
+#: ui_bcamortizacionbase.h:685
 msgid "Pendiente:"
 msgstr "en suspens:"
 
@@ -2324,7 +2188,7 @@ msgstr "en suspens:"
 msgid "Periodicidad"
 msgstr "Périodicitée"
 
-#: ui_bcamortizacionbase..h:672
+#: ui_bcamortizacionbase.h:672
 msgid "Periodicidad:"
 msgstr "Périodicité:"
 
@@ -2340,7 +2204,7 @@ msgstr "Personalisée"
 msgid "Plan &contable"
 msgstr "Plan &comptable"
 
-#: bcplancontablelistview.cpp:547 bcplancontablelistview.cpp:566
+#: bcplancontablelistview.cpp:546 bcplancontablelistview.cpp:565
 msgid "Plan contable (*.xml)"
 msgstr "Plan comptable (*.xml)"
 
@@ -2365,11 +2229,11 @@ msgstr "Peuple:"
 msgid "Ponga el anyo:"
 msgstr "Au banc"
 
-#: ui_bcamortizacionbase..h:676
+#: ui_bcamortizacionbase.h:676
 msgid "Porcent&ual"
 msgstr "Taxa&ge"
 
-#: bccentrocosteview.cpp:58 bctipoivaview.cpp:45
+#: bctipoivaview.cpp:45 bccentrocosteview.cpp:58
 #, fuzzy
 msgid "Porcentaje"
 msgstr "Pourcentaje:"
@@ -2383,14 +2247,9 @@ msgstr "Pourcentaje"
 msgid "Postscript"
 msgstr "Postscript"
 
-#: ui_bccuentasanualesprintbase.h:195
+#: ui_bccuentasanualesimprimirbase.h:195
 msgid "Primer Periodo"
 msgstr "Premier Période"
-
-#: ui_uiconfiguracion.h:241 ui_uiconfiguracion.h:461
-#, fuzzy
-msgid "Privilegio"
-msgstr "Prix"
 
 #: ui_bcconfiguracionbase.h:239
 msgid "Propiedades de la empresa"
@@ -2412,15 +2271,15 @@ msgstr "Province:"
 msgid "Punteo"
 msgstr "Pointaje"
 
-#: bcextractoview.cpp:572
+#: bcextractoview.cpp:577
 msgid "Punteo (*.pto);;Todos los archivos (*)"
 msgstr ""
 
-#: ui_bcextractobase.h:636
+#: ui_bcextractobase.h:642
 msgid "Punteo:"
 msgstr "Pointaje:"
 
-#: bcextractoview.cpp:506
+#: bcextractoview.cpp:511
 msgid "Punteos (*.pto)"
 msgstr "Pointajes (*.pto)"
 
@@ -2428,37 +2287,22 @@ msgstr "Pointajes (*.pto)"
 msgid "Quitar"
 msgstr "Enlever"
 
-#: ui_modelo347base.h:240 ui_bcmodelo347listbase.h:257
+#: ui_bcmodelo347listbase.h:257
 msgid "Recalcular"
 msgstr "Recalculer"
-
-#: ui_uiconfiguracion.h:244 ui_uiconfiguracion.h:462
-msgid "Recurso"
-msgstr ""
 
 #: ui_bccuentabase.h:840
 #, fuzzy
 msgid "Reg&ularizacion"
 msgstr "Régularisation"
 
-#: ui_bcasientobase.h:636 bccuentaview.cpp:51 bcplancontablelistview.cpp:62
+#: ui_bcasientobase.h:635 bcplancontablelistview.cpp:62 bccuentaview.cpp:51
 msgid "Regularizacion"
 msgstr "Régularisation"
 
 #: ui_bcmasapatrimonialbase.h:360
 msgid "Restan"
 msgstr "Soustraient"
-
-#: ui_uiconfiguracion.h:443
-#, fuzzy
-msgid "Restaura la copia de seguridad de una empresa"
-msgstr "Propriétées de l'entreprise"
-
-#: ui_uiconfiguracion.h:446
-msgid ""
-"Restaurar copia\n"
-" (RESTORE)"
-msgstr ""
 
 #: ui_bcasientointeligentebase.h:217
 #, fuzzy
@@ -2469,7 +2313,7 @@ msgstr "Soustraient"
 msgid "S&ubcuentas"
 msgstr "S&ubcomptes"
 
-#: ui_bccentrocosteseleccionarbase.h:96 ui_bccanalseleccionarbase.h:94
+#: ui_bccanalseleccionarbase.h:94 ui_bccentrocosteseleccionarbase.h:96
 #, fuzzy
 msgid "S. Nada"
 msgstr ""
@@ -2478,7 +2322,7 @@ msgstr ""
 "#-#-#-#-#  bulmacont2_fr.po (PACKAGE VERSION)  #-#-#-#-#\n"
 "S. Rien"
 
-#: ui_bccentrocosteseleccionarbase.h:97 ui_bccanalseleccionarbase.h:96
+#: ui_bccanalseleccionarbase.h:96 ui_bccentrocosteseleccionarbase.h:97
 msgid "S. Todo"
 msgstr "S. Tout"
 
@@ -2486,11 +2330,11 @@ msgstr "S. Tout"
 msgid "Saldo"
 msgstr "Solde"
 
-#: ui_bcextractobase.h:623
+#: ui_bcextractobase.h:629
 msgid "Saldo inicial:"
 msgstr "Solde intiale:"
 
-#: ui_bcextractobase.h:731 ui_bcasientobase.h:639
+#: ui_bcextractobase.h:738 ui_bcasientobase.h:639
 msgid "Saldo:"
 msgstr "Solde:"
 
@@ -2498,17 +2342,11 @@ msgstr "Solde:"
 msgid "Saldos:"
 msgstr "Soldes:"
 
-#: ui_uiconfiguracion.h:406 ui_uiconfiguracion.h:455 ui_uiconfiguracion.h:467
-#: ui_uiconfiguracion.h:469 ui_uiconfiguracion.h:471 ui_uiconfiguracion.h:473
-#, fuzzy
-msgid "Salir"
-msgstr "&Sortir"
-
 #: bcconfiguracionview.cpp:158
 msgid "Salir del programa"
 msgstr "Sortir du programme"
 
-#: bcextractoview.cpp:543
+#: bcextractoview.cpp:548
 #, fuzzy
 msgid ""
 "Se dispone a borrar el punteo. Este "
@@ -2520,7 +2358,7 @@ msgstr ""
 "Ce change est irrécupérable si vous ne l'avez pas garder.\n"
 "Désirez vous continuer?"
 
-#: bcextractoview.cpp:554
+#: bcextractoview.cpp:559
 msgid "Se ha producido un error"
 msgstr ""
 
@@ -2572,7 +2410,7 @@ msgstr ""
 "On va à éraser le type de TVA.\n"
 "Ca peut occasionner des pertes de données."
 
-#: ui_bccuentasanualesprintbase.h:198
+#: ui_bccuentasanualesimprimirbase.h:198
 msgid "Segundo Periodo"
 msgstr "Deuxième Période"
 
@@ -2584,11 +2422,6 @@ msgstr "Sélection"
 #, fuzzy
 msgid "Seleccione periodo de declaracion"
 msgstr "Sélectionner période de déclaration"
-
-#: ui_uivisorempresas.h:67
-#, fuzzy
-msgid "Seleciona Empresa"
-msgstr "Séléctionner une entreprise"
 
 #: ui_bccanalseleccionarbase.h:93
 #, fuzzy
@@ -2605,8 +2438,9 @@ msgstr "Sélecteur de clients"
 msgid "Selector de articulos"
 msgstr "Sélecteur de Channeaux"
 
-#: ui_bcamortizacionbase..h:666 bcamortizacionview.cpp:250 bcamortizacionview.cpp:277
-#: bcamortizacionview.cpp:305 bcamortizacionview.cpp:336
+#: ui_bcamortizacionbase.h:666 bcamortizacionview.cpp:250
+#: bcamortizacionview.cpp:277 bcamortizacionview.cpp:305
+#: bcamortizacionview.cpp:336
 msgid "Semestral"
 msgstr "Semestriel"
 
@@ -2638,10 +2472,6 @@ msgstr "Submenu de comptabilitée"
 msgid "Suman"
 msgstr "Additionent"
 
-#: ui_uiconfiguracion.h:398
-msgid "Tamanyo:"
-msgstr ""
-
 #: bccuentaview.cpp:59
 #, fuzzy
 msgid "Telefono de la cuenta"
@@ -2655,7 +2485,7 @@ msgstr "Téléphone du fournisseur"
 msgid "Telefono:"
 msgstr "Téléphone:"
 
-#: bccompany.cpp:265
+#: main.cxx:179 bccompany.cpp:265
 msgid "Terminado"
 msgstr "Fini"
 
@@ -2722,15 +2552,15 @@ msgstr "Tous avec la même date"
 msgid "Todos los asientos"
 msgstr "On à rangé les assiettes"
 
-#: ui_bcdiariobase.h:388 ui_bcasientolistbase.h:429 ui_bcasientobase.h:640
+#: ui_bcdiariobase.h:388 ui_bcasientobase.h:640 ui_bcasientolistbase.h:429
 msgid "Total Debe:"
 msgstr "Total Débit:"
 
-#: ui_bcdiariobase.h:389 ui_bcasientolistbase.h:430 ui_bcasientobase.h:641
+#: ui_bcdiariobase.h:389 ui_bcasientobase.h:641 ui_bcasientolistbase.h:430
 msgid "Total Haber:"
 msgstr "Total débit:"
 
-#: ui_bcextractobase.h:728
+#: ui_bcextractobase.h:735
 msgid "Totales:"
 msgstr "Totaux:"
 
@@ -2738,8 +2568,9 @@ msgstr "Totaux:"
 msgid "Tratamiento de la fecha:"
 msgstr "Traitement de la date:"
 
-#: ui_bcamortizacionbase..h:667 bcamortizacionview.cpp:252 bcamortizacionview.cpp:279
-#: bcamortizacionview.cpp:307 bcamortizacionview.cpp:338
+#: ui_bcamortizacionbase.h:667 bcamortizacionview.cpp:252
+#: bcamortizacionview.cpp:279 bcamortizacionview.cpp:307
+#: bcamortizacionview.cpp:338
 msgid "Trimestral"
 msgstr "Trimestriel"
 
@@ -2747,19 +2578,11 @@ msgstr "Trimestriel"
 msgid "URL de la pagina web:"
 msgstr "URL de la page web:"
 
-#: ui_uiconfiguracion.h:466
-msgid "Usuarios"
-msgstr ""
-
-#: ui_uiconfiguracion.h:448
-msgid "Utilidades"
-msgstr ""
-
 #: bcconfiguracionview.cpp:192
 msgid "Valor"
 msgstr "Valeur"
 
-#: ui_bcamortizacionbase..h:673
+#: ui_bcamortizacionbase.h:673
 msgid "Valor de compra:"
 msgstr "Valeur de l'achat:"
 
@@ -2771,7 +2594,7 @@ msgstr "Valeur de l'achat"
 msgid "Ventana"
 msgstr "Fenêtre"
 
-#: ui_modelo347base.h:254 ui_bcmodelo347listbase.h:271
+#: ui_bcmodelo347listbase.h:271
 msgid "Ventas"
 msgstr "Ventes"
 
@@ -2796,11 +2619,11 @@ msgstr " Revenir"
 msgid "Web de la cuenta"
 msgstr "Nom du compte"
 
-#: bcmasapatrimonialview.cpp:45
+#: bcmasapatrimonial.cpp:45
 msgid "codigo"
 msgstr "Code"
 
-#: bcextractosubform.cpp:59 bcdiariosubform.cpp:46
+#: bcextractosubform.cpp:59 bcdiariosubform.cpp:47
 msgid "codigoborrador"
 msgstr "codebrouillon"
 
@@ -2816,7 +2639,7 @@ msgstr "dec_canal"
 msgid "desc_coste"
 msgstr "dec_finnance"
 
-#: bcmasapatrimonialview.cpp:45
+#: bcmasapatrimonial.cpp:45
 msgid "descripcion"
 msgstr "description"
 
@@ -2828,15 +2651,17 @@ msgstr "idnote"
 msgid "idasiento"
 msgstr "idassiette"
 
-#: bcdiariosubform.cpp:45
+#: bcdiariosubform.cpp:46
 msgid "idborrador"
 msgstr "idbrouillon"
 
-#: bcextractosubform.cpp:70 bcdiariosubform.cpp:59 bccentrocosteseleccionarview.cpp:43
+#: bcextractosubform.cpp:70 bcdiariosubform.cpp:59
+#: bccentrocosteseleccionarview.cpp:43
 msgid "idc_coste"
 msgstr "idc_finnance"
 
-#: bcextractosubform.cpp:67 bcdiariosubform.cpp:58 bccanalseleccionarview.cpp:45
+#: bcextractosubform.cpp:67 bccanalseleccionarview.cpp:45
+#: bcdiariosubform.cpp:58
 msgid "idcanal"
 msgstr "idcanal"
 
@@ -2848,13 +2673,9 @@ msgstr "idcompte"
 msgid "iddiario"
 msgstr "idjournal"
 
-#: bcmasapatrimonialview.cpp:45
+#: bcmasapatrimonial.cpp:45
 msgid "identificador"
 msgstr "Identifieur"
-
-#: ui_uiconfiguracion.h:247 ui_uiconfiguracion.h:463
-msgid "idprv"
-msgstr ""
 
 #: bcdiariosubform.cpp:57
 msgid "idregistroiva"
@@ -2863,11 +2684,6 @@ msgstr "idregistretva"
 #: bcextractosubform.cpp:72 bcdiariosubform.cpp:56
 msgid "idtipoiva"
 msgstr "idtypetva"
-
-#: ui_uiconfiguracion.h:269 ui_uiconfiguracion.h:465
-#, fuzzy
-msgid "idusuario"
-msgstr "idjournal"
 
 #: bcextractosubform.cpp:69
 msgid "marcaconciliacion"
@@ -2881,16 +2697,11 @@ msgstr "nom_channel"
 msgid "nom_coste"
 msgstr "nom_finnance"
 
-#: ui_listadocuentas1.h:62 ui_listadocuentas1.h:63
-#, fuzzy
-msgid "tab"
-msgstr "tavoir"
-
-#: bcmasapatrimonialview.cpp:45
+#: bcmasapatrimonial.cpp:45
 msgid "tipo"
 msgstr "Type"
 
-#: bcextractosubform.cpp:63 bcdiariosubform.cpp:47
+#: bcextractosubform.cpp:63 bcdiariosubform.cpp:48
 msgid "tipocuenta"
 msgstr "tipecompte"
 
@@ -2910,6 +2721,9 @@ msgstr "y   ( >="
 #: ui_bcasientolistbase.h:427
 msgid "y <="
 msgstr "y <="
+
+#~ msgid "&Acerca de BulmaCont"
+#~ msgstr "&Au sujet de Bulmacont"
 
 #~ msgid "&Balance de Cuentas"
 #~ msgstr "&Balance de comptes"
@@ -2970,6 +2784,20 @@ msgstr "y <="
 #~ msgid "Ajustar columnas"
 #~ msgstr "Ajuster colonnes"
 
+#~ msgid "Almacenes"
+#~ msgstr "Magasins"
+
+#, fuzzy
+#~ msgid "Apellido 1º:"
+#~ msgstr "Noms:"
+
+#, fuzzy
+#~ msgid "Apellido 2º:"
+#~ msgstr "Noms:"
+
+#~ msgid "Aplicar"
+#~ msgstr "Apliquer"
+
 #~ msgid "Balance &jerarquico de Sumas y Saldos"
 #~ msgstr "Balance &hiérarchique d'Additions et Soldes"
 
@@ -2981,6 +2809,13 @@ msgstr "y <="
 
 #~ msgid "Balance jerárquico"
 #~ msgstr "Bilan hiérarchique"
+
+#~ msgid "Borra por completo una empresa"
+#~ msgstr "Éraser complètement une entreprise"
+
+#, fuzzy
+#~ msgid "Borrar Empresa"
+#~ msgstr "Éraser"
 
 #~ msgid "Borrar albaran"
 #~ msgstr "Éraser bulletin"
@@ -2994,17 +2829,36 @@ msgstr "y <="
 #~ msgid "Borrar tipo de IVA"
 #~ msgstr "Éraser type de TVA"
 
+#~ msgid "BulmaCont - Contabilidad GPL"
+#~ msgstr "Bulmacont - Comptabilité GPL"
+
 #~ msgid "Búsqueda:"
 #~ msgstr "Recherche:"
 
 #~ msgid "Calibrando los lasers del lector de CD"
 #~ msgstr "Calibration des lasers du lecteur CD"
 
+#, fuzzy
+#~ msgid "Català"
+#~ msgstr "Canal"
+
+#, fuzzy
+#~ msgid "Clonar Empresa"
+#~ msgstr "Entreprise"
+
 #~ msgid "Comprobando la disquetera y la memoria fisica"
 #~ msgstr "Vérification de l'unité de disque et la mémoire fisique"
 
 #~ msgid "Comprobando nivel de combustible"
 #~ msgstr "Vñerifiant niveau de combustible"
+
+#, fuzzy
+#~ msgid "Contabilidad"
+#~ msgstr ""
+#~ "#-#-#-#-#  bulmacont_fr_FR.UTF-8.po (PACKAGE VERSION)  #-#-#-#-#\n"
+#~ "Cantité\n"
+#~ "#-#-#-#-#  bulmafact_fr_FR.UTF-8.po  #-#-#-#-#\n"
+#~ "Cantitée"
 
 #~ msgid "Contabilidad GPL - Version 0.9.3 -"
 #~ msgstr "Comptabilité GPL - Version 0.9.3 -"
@@ -3015,6 +2869,9 @@ msgstr "y <="
 #~ msgid "Crackeando BulmaCont"
 #~ msgstr "Crackant BulmaCont"
 
+#~ msgid "Crea una empresa nueva sin datos"
+#~ msgstr "Créer une entreprise nouvelle sans données"
+
 #~ msgid "Ctrl+B"
 #~ msgstr "Ctrl+B"
 
@@ -3023,6 +2880,10 @@ msgstr "y <="
 
 #~ msgid "Código Inicial\n"
 #~ msgstr "Code initial"
+
+#, fuzzy
+#~ msgid "Datos Usuario"
+#~ msgstr "Dates bancaires:"
 
 #~ msgid "Debe ejercicio"
 #~ msgstr "Débit execice"
@@ -3033,14 +2894,26 @@ msgstr "y <="
 #~ msgid "Denominacion"
 #~ msgstr "Dénomination"
 
+#, fuzzy
+#~ msgid "Desacer"
+#~ msgstr "Remise"
+
 #~ msgid "Descripción:"
 #~ msgstr "Description:"
+
+#, fuzzy
+#~ msgid "Duplicar"
+#~ msgstr "Apliquer"
 
 #~ msgid "Dí&gitos de cuentas"
 #~ msgstr "Di&gits des comptes"
 
 #~ msgid "Dígitos estanda&r"
 #~ msgstr "Digits standa&rd"
+
+#, fuzzy
+#~ msgid "Facturacion"
+#~ msgstr "Facturé"
 
 #~ msgid "Fecha con la que quedará el asiento:"
 #~ msgstr "Date qui restera avec l'assiette:"
@@ -3051,6 +2924,14 @@ msgstr "y <="
 #~ msgid "Flusheando datos con vidas inteligentes superiores"
 #~ msgstr "Flushant données avec ntélligences supérieures"
 
+#, fuzzy
+#~ msgid "Fuente:"
+#~ msgstr "Compte:"
+
+#, fuzzy
+#~ msgid "Generalidades"
+#~ msgstr "Général"
+
 #~ msgid "Golpecitos de reajuste del HD"
 #~ msgstr "Pichenette de réajuste du HD"
 
@@ -3059,6 +2940,10 @@ msgstr "y <="
 
 #~ msgid "Grupo:"
 #~ msgstr "Groupe:"
+
+#, fuzzy
+#~ msgid "Guarda una copia de seguridad de una empresa"
+#~ msgstr "Propriétées de l'entreprise"
 
 #~ msgid "Guardar balance"
 #~ msgstr "Garder balance"
@@ -3108,6 +2993,14 @@ msgstr "y <="
 #~ msgid "Información del tipo de IVA:"
 #~ msgstr "Information de type de TVA:"
 
+#, fuzzy
+#~ msgid "Lista de Usuarios"
+#~ msgstr " Listes de banques:"
+
+#, fuzzy
+#~ msgid "Listados de Cuentas"
+#~ msgstr "Liste de comptes"
+
 #~ msgid "Listo"
 #~ msgstr "Prêt"
 
@@ -3141,14 +3034,30 @@ msgstr "y <="
 #~ msgid "Nivel:"
 #~ msgstr "Niveau:"
 
+#, fuzzy
+#~ msgid "Nom Empresa"
+#~ msgstr "Entreprise"
+
+#, fuzzy
+#~ msgid "Nombre de la empresa"
+#~ msgstr "&Nom d'entrepirise:"
+
 #~ msgid "Nueva amortización"
 #~ msgstr "Nouveau amortissement"
+
+#, fuzzy
+#~ msgid "Nuevo Ejercicio"
+#~ msgstr "Exercice"
 
 #~ msgid "Organización en &cascada"
 #~ msgstr "Organisation en &cascade"
 
 #~ msgid "Permutando las tablas de particion del Sistema Operativo"
 #~ msgstr "Permutant les tables de partition du SO"
+
+#, fuzzy
+#~ msgid "Privilegio"
+#~ msgstr "Prix"
 
 #~ msgid "Probando la velocidad del ventilador de la CPU y su frecuencia"
 #~ msgstr "Éssayant la vitesse du ventilateur de la CPU et sa fréquence"
@@ -3168,6 +3077,10 @@ msgstr "y <="
 #~ msgid "Regularización"
 #~ msgstr "Régularisation"
 
+#, fuzzy
+#~ msgid "Restaura la copia de seguridad de una empresa"
+#~ msgstr "Propriétées de l'entreprise"
+
 #~ msgid "Saldo anterior"
 #~ msgstr "Solde antérieure"
 
@@ -3179,6 +3092,10 @@ msgstr "y <="
 
 #~ msgid "Saldo periodo"
 #~ msgstr "Solde période"
+
+#, fuzzy
+#~ msgid "Salir"
+#~ msgstr "&Sortir"
 
 #~ msgid ""
 #~ "Se va a borrar la cuenta,\n"
@@ -3209,6 +3126,10 @@ msgstr "y <="
 
 #~ msgid "Seleccione periodo de declaración"
 #~ msgstr "Sélectionner période de déclaration"
+
+#, fuzzy
+#~ msgid "Seleciona Empresa"
+#~ msgstr "Séléctionner une entreprise"
 
 #~ msgid "Sincronizando fases Alfa Beta"
 #~ msgstr "Sincro des fase Alfa Beta"
@@ -3252,6 +3173,10 @@ msgstr "y <="
 #~ msgid "ejsaldo"
 #~ msgstr "ejsolde"
 
+#, fuzzy
+#~ msgid "idusuario"
+#~ msgstr "idjournal"
+
 #~ msgid "node&be"
 #~ msgstr "nedo&ispas"
 
@@ -3260,6 +3185,10 @@ msgstr "y <="
 
 #~ msgid "orden"
 #~ msgstr "Ordre"
+
+#, fuzzy
+#~ msgid "tab"
+#~ msgstr "tavoir"
 
 #~ msgid "tdebe"
 #~ msgstr "tdois"

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-02-26 01:14+0100\n"
+"POT-Creation-Date: 2009-05-12 23:58+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -114,19 +114,19 @@ msgstr ""
 "#-#-#-#-#  pluginabrevs.pot (PACKAGE VERSION)  #-#-#-#-#\n"
 "#-#-#-#-#  bulmages_suite.pot (PACKAGE VERSION)  #-#-#-#-#\n"
 
-#: ui_pagobase.h:342
+#: ui_pagobase.h:341
 msgid "&Aceptar"
 msgstr "&Aceptar"
 
-#: ui_pagobase.h:343
+#: ui_pagobase.h:342
 msgid "&Cancelar"
 msgstr "&Cancelar"
 
-#: pluginpagos.cpp:104
+#: pluginbf_proveedorpago.cpp:104
 msgid "&Nuevo pago a proveedor"
 msgstr "&Nuevo pago a proveedor"
 
-#: pluginpagos.cpp:96
+#: pluginbf_proveedorpago.cpp:96
 msgid "&Pagos a proveedores"
 msgstr "&Pagos a proveedores"
 
@@ -138,16 +138,16 @@ msgstr "Actualizar listado"
 msgid "Apellidos trabajador"
 msgstr "Apellidos trabajador"
 
-#: pagoslist.cpp:254 pagoview.cpp:68
+#: pagoview.cpp:68 pagoslist.cpp:254
 msgid "Banco"
 msgstr "Banco"
 
-#: ui_pagoslistbase.h:372 ui_pagobase.h:341
+#: ui_pagoslistbase.h:372 ui_pagobase.h:340
 msgid "Banco:"
 msgstr "Banco:"
 
-#: ui_pagoslistbase.h:402 ui_pagoslistbase.h:407 ui_pagobase.h:326
-#: ui_pagobase.h:331
+#: ui_pagoslistbase.h:402 ui_pagoslistbase.h:407 ui_pagobase.h:325
+#: ui_pagobase.h:330
 msgid "Borrar pago"
 msgstr "Borrar pago"
 
@@ -159,7 +159,7 @@ msgstr "Buscar:"
 msgid "C.I.F. proveedor"
 msgstr "C.I.F. proveedor"
 
-#: pagoslist.cpp:253 pagoview.cpp:66
+#: pagoview.cpp:66 pagoslist.cpp:253
 msgid "Cantidad"
 msgstr "Cantidad"
 
@@ -179,7 +179,7 @@ msgstr "Configurar listado"
 msgid "Debe seleccionar una linea"
 msgstr "Debe seleccionar una linea"
 
-#: ui_pagobase.h:338
+#: ui_pagobase.h:337
 msgid "Descripcion del pago:"
 msgstr "Descripcion del pago:"
 
@@ -199,11 +199,11 @@ msgstr "Error al borrar el pago"
 msgid "Error al crear el pago"
 msgstr "Error al crear el pago"
 
-#: pagoslist.cpp:252 pagoview.cpp:64
+#: pagoview.cpp:64 pagoslist.cpp:252
 msgid "Fecha de pago"
 msgstr "Fecha de pago"
 
-#: ui_pagobase.h:336
+#: ui_pagobase.h:335
 msgid "Fecha de pago:"
 msgstr "Fecha de pago:"
 
@@ -219,15 +219,15 @@ msgstr "Fecha inicial:"
 msgid "Filtrar pagos"
 msgstr "Filtrar pagos"
 
-#: ui_pagobase.h:315 ui_pagobase.h:320
+#: ui_pagobase.h:314 ui_pagobase.h:319
 msgid "Guardar pago"
 msgstr "Guardar pago"
 
-#: pagoslist.cpp:246 pagoview.cpp:61
+#: pagoview.cpp:61 pagoslist.cpp:246
 msgid "Id pago"
 msgstr "Id pago"
 
-#: pagoslist.cpp:247 pagoview.cpp:62
+#: pagoview.cpp:62 pagoslist.cpp:247
 msgid "Id proveedor"
 msgstr "Id proveedor"
 
@@ -251,7 +251,8 @@ msgstr "Nombre proveedor"
 msgid "Nuevo pago"
 msgstr "Nuevo pago"
 
-#: pluginpagos.cpp:106 pluginpagos.cpp:107 ui_pagobase.h:311
+#: pluginbf_proveedorpago.cpp:106 pluginbf_proveedorpago.cpp:107
+#: ui_pagobase.h:310
 msgid "Nuevo pago a proveedor"
 msgstr "Nuevo pago a proveedor"
 
@@ -259,8 +260,8 @@ msgstr "Nuevo pago a proveedor"
 msgid "Pago"
 msgstr "Pago"
 
-#: pagoslist.cpp:187 pluginpagos.cpp:98 pluginpagos.cpp:99
-#: ui_pagoslistbase.h:371
+#: pagoslist.cpp:187 pluginbf_proveedorpago.cpp:98
+#: pluginbf_proveedorpago.cpp:99 ui_pagoslistbase.h:371
 msgid "Pagos a proveedores"
 msgstr "Pagos a proveedores"
 
@@ -280,19 +281,19 @@ msgstr "Prevision pago"
 msgid "Previsiones de Pago"
 msgstr "Previsiones de Pago"
 
-#: pagoslist.cpp:49 pagoslist.cpp:74 pagoview.cpp:71
+#: pagoview.cpp:71 pagoslist.cpp:49 pagoslist.cpp:74
 msgid "Proveedor:"
 msgstr "Proveedor:"
 
-#: ui_pagobase.h:337
+#: ui_pagobase.h:336
 msgid "Provision de fondos"
 msgstr "Provision de fondos"
 
-#: pagoslist.cpp:255 pagoview.cpp:65
+#: pagoview.cpp:65 pagoslist.cpp:255
 msgid "Referencia de pago"
 msgstr "Referencia de pago"
 
-#: ui_pagobase.h:335
+#: ui_pagobase.h:334
 msgid "Referencia:"
 msgstr "Referencia:"
 
@@ -300,7 +301,7 @@ msgstr "Referencia:"
 msgid "Telefono proveedor"
 msgstr "Telefono proveedor"
 
-#: ui_pagobase.h:339
+#: ui_pagobase.h:338
 msgid "Total pago:"
 msgstr "Total pago:"
 

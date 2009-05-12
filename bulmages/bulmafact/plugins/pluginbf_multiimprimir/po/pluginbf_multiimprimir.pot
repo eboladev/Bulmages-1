@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-02-15 23:50+0100\n"
+"POT-Creation-Date: 2009-05-12 23:58+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -20,27 +20,27 @@ msgstr ""
 msgid "Imprimir elementos seleccionados"
 msgstr ""
 
-#: impmultqtoolbutton.cpp:164 impmultqtoolbutton.cpp:775
+#: impmultqtoolbutton.cpp:164 impmultqtoolbutton.cpp:784
 msgid "no se pudo crear instancia de factura"
 msgstr ""
 
-#: impmultqtoolbutton.cpp:200 impmultqtoolbutton.cpp:681
-#: impmultqtoolbutton.cpp:726
+#: impmultqtoolbutton.cpp:200 impmultqtoolbutton.cpp:690
+#: impmultqtoolbutton.cpp:735
 msgid "no se pudo crear instancia de pedido cliente"
 msgstr ""
 
-#: impmultqtoolbutton.cpp:236
+#: impmultqtoolbutton.cpp:237
 msgid "no se pudo crear instancia de albaran"
 msgstr ""
 
-#: impmultqtoolbutton.cpp:447 impmultqtoolbutton.cpp:448
+#: impmultqtoolbutton.cpp:456 impmultqtoolbutton.cpp:457
 msgid "Invertir seleccion de elementos"
 msgstr ""
 
-#: impmultqtoolbutton.cpp:595 impmultqtoolbutton.cpp:596
+#: impmultqtoolbutton.cpp:604 impmultqtoolbutton.cpp:605
 msgid "Enviar elementos seleccionados por e-mail"
 msgstr ""
 
-#: impmultqtoolbutton.cpp:637
+#: impmultqtoolbutton.cpp:646
 msgid "no se pudo crear instancia de presupuesto"
 msgstr ""

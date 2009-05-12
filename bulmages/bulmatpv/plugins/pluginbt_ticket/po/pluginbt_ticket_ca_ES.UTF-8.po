@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-02-26 01:29+0100\n"
+"POT-Creation-Date: 2009-05-12 23:58+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,27 +18,31 @@ msgstr ""
 "#-#-#-#-#  bulmalib_ca_ES.UTF-8.po (PACKAGE VERSION)  #-#-#-#-#\n"
 "X-Generator: Translate Toolkit 1.1.1\n"
 
-#: ui_mticketbase.h:148 ui_mticketbase.h:153
+#: ui_mticketbase.h:186
+msgid "..."
+msgstr "..."
+
+#: ui_mticketbase.h:166 ui_mticketbase.h:171
 msgid "Bajar"
 msgstr "Baixa"
 
-#: ui_mticketbase.h:159 ui_mticketbase.h:164
+#: ui_mticketbase.h:177 ui_mticketbase.h:182
 msgid "Borrar articulo"
 msgstr "Esborra article"
 
-#: ui_mticketbase.h:123
+#: ui_mticketbase.h:141
 msgid "Form"
 msgstr "Form"
 
-#: ui_mticketbase.h:126 ui_mticketbase.h:131
+#: ui_mticketbase.h:144 ui_mticketbase.h:149
 #, fuzzy
 msgid "Imprimir ticket"
 msgstr "Imprimeix comptes"
 
-#: ui_mticketbase.h:137 ui_mticketbase.h:142
+#: ui_mticketbase.h:155 ui_mticketbase.h:160
 msgid "Subir"
 msgstr "Puja"
 
-#: pluginticketbasico.cpp:53
+#: pluginticketbasico.cpp:54
 msgid "Ticket"
 msgstr ""

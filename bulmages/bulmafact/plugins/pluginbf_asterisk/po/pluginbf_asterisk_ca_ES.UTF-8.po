@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-02-26 01:12+0100\n"
+"POT-Creation-Date: 2009-05-12 23:58+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,78 +18,78 @@ msgstr ""
 "#-#-#-#-#  bulmalib_ca_ES.UTF-8.po (PACKAGE VERSION)  #-#-#-#-#\n"
 "X-Generator: Translate Toolkit 1.1.1\n"
 
-#: pluginasterisk.cpp:101
+#: pluginbf_asterisk.cpp:101
 #, fuzzy
 msgid "Almacen"
 msgstr "<LI> Magatzem <B>"
 
-#: pluginasterisk.cpp:165
+#: pluginbf_asterisk.cpp:165
 msgid "Apellidos"
 msgstr "Cognoms"
 
-#: pluginasterisk.cpp:102
+#: pluginbf_asterisk.cpp:102
 #, fuzzy
 msgid "Apertura manyanas"
 msgstr "Obertura"
 
-#: pluginasterisk.cpp:104
+#: pluginbf_asterisk.cpp:104
 #, fuzzy
 msgid "Apertura tardes"
 msgstr "Obertura"
 
-#: pluginasterisk.cpp:106 pluginasterisk.cpp:166
+#: pluginbf_asterisk.cpp:106 pluginbf_asterisk.cpp:166
 #, fuzzy
 msgid "Audicion"
 msgstr "Agrupació"
 
-#: pluginasterisk.cpp:103
+#: pluginbf_asterisk.cpp:103
 #, fuzzy
 msgid "Cierre manyanas"
 msgstr "Tancament"
 
-#: pluginasterisk.cpp:105
+#: pluginbf_asterisk.cpp:105
 #, fuzzy
 msgid "Cierre tardes"
 msgstr "Tancament"
 
-#: pluginasterisk.cpp:128
+#: pluginbf_asterisk.cpp:128
 #, fuzzy
 msgid "Extension."
 msgstr "Atenció "
 
-#: pluginasterisk.cpp:99 pluginasterisk.cpp:162
+#: pluginbf_asterisk.cpp:99 pluginbf_asterisk.cpp:162
 msgid "Fecha"
 msgstr "Data"
 
-#: pluginasterisk.cpp:100 pluginasterisk.cpp:163
+#: pluginbf_asterisk.cpp:100 pluginbf_asterisk.cpp:163
 #, fuzzy
 msgid "Hora"
 msgstr "Normal"
 
-#: pluginasterisk.cpp:107 pluginasterisk.cpp:167
+#: pluginbf_asterisk.cpp:107 pluginbf_asterisk.cpp:167
 #, fuzzy
 msgid "Id almacen"
 msgstr "<LI> Magatzem <B>"
 
-#: pluginasterisk.cpp:109 pluginasterisk.cpp:169
+#: pluginbf_asterisk.cpp:109 pluginbf_asterisk.cpp:169
 #, fuzzy
 msgid "Id trabajador"
 msgstr "Id esborrany"
 
-#: pluginasterisk.cpp:108 pluginasterisk.cpp:168
+#: pluginbf_asterisk.cpp:108 pluginbf_asterisk.cpp:168
 #, fuzzy
 msgid "Id validacion"
 msgstr "Id amortizació"
 
-#: pluginasterisk.cpp:53
+#: pluginbf_asterisk.cpp:53
 msgid "Password."
 msgstr ""
 
-#: pluginasterisk.cpp:164
+#: pluginbf_asterisk.cpp:164
 msgid "Trabajador"
 msgstr "Treballador"
 
-#: pluginasterisk.cpp:54
+#: pluginbf_asterisk.cpp:54
 #, fuzzy
 msgid "Valida siempre."
 msgstr "&Validar"

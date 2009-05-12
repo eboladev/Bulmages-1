@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-02-26 01:18+0100\n"
+"POT-Creation-Date: 2009-05-12 23:58+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -54,7 +54,7 @@ msgstr ""
 "#-#-#-#-#  bulmalib_ca_ES.UTF-8.po (PACKAGE VERSION)  #-#-#-#-#\n"
 "&Cancel·lar"
 
-#: plugincompraventa.cpp:78
+#: pluginbf_compraventa.cpp:78
 #, fuzzy
 msgid "&CompraVenta"
 msgstr "Comentari"
@@ -154,7 +154,7 @@ msgstr "Comentaris:"
 msgid "Compra Venta"
 msgstr "Importa comptes"
 
-#: plugincompraventa.cpp:79 plugincompraventa.cpp:80
+#: pluginbf_compraventa.cpp:79 pluginbf_compraventa.cpp:80
 #, fuzzy
 msgid "CompraVenta"
 msgstr "Comentari"
@@ -192,7 +192,7 @@ msgstr "Error al crear l'albarà a client"
 msgid "Error inesperado"
 msgstr "inserit"
 
-#: compraventaview.cpp:714
+#: compraventaview.cpp:715
 msgid "Error inesperado en la impresion"
 msgstr ""
 
@@ -360,7 +360,7 @@ msgstr "Telèfon del proveïdor"
 msgid "Telefono de contacto:"
 msgstr "Telèfon del proveïdor"
 
-#: compraventaview.cpp:710
+#: compraventaview.cpp:711
 msgid "Tiene que guardar el documento antes de poder procesarlo."
 msgstr ""
 

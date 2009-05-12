@@ -39,10 +39,7 @@
 #include "bcbulmacont.h"
 #include "datosview.h"
 
-
-
 extern "C" MY_EXPORT int entryPoint ( BcBulmaCont * );
-
 
 
 //Cuentas Anuales Abreviadas Asociación Sin Lucro CAAASL

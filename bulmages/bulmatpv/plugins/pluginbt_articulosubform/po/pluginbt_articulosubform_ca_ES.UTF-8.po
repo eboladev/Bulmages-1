@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-02-26 01:06+0100\n"
+"POT-Creation-Date: 2009-05-12 23:58+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,16 +18,16 @@ msgstr ""
 "#-#-#-#-#  bulmalib_ca_ES.UTF-8.po (PACKAGE VERSION)  #-#-#-#-#\n"
 "X-Generator: Translate Toolkit 1.1.1\n"
 
-#: ui_articleslistbase1.h:247 ui_articleslistbase1.h:252
+#: ui_articulosubformbase.h:248 ui_articulosubformbase.h:253
 msgid "Actualizar listado"
 msgstr "Actual·litza llistat"
 
-#: ui_articleslistbase1.h:221
+#: ui_articulosubformbase.h:222
 #, fuzzy
 msgid "Alt+O"
 msgstr "Alt+I"
 
-#: ui_articleslistbase1.h:217
+#: ui_articulosubformbase.h:218
 #, fuzzy
 msgid "Articulos"
 msgstr "<P> Article <B>"
@@ -37,7 +37,7 @@ msgstr "<P> Article <B>"
 msgid "Borrar articulo"
 msgstr "Esborra amortització"
 
-#: ui_articleslistbase1.h:256
+#: ui_articulosubformbase.h:257
 msgid "Buscar:"
 msgstr "Cerca:"
 
@@ -45,7 +45,7 @@ msgstr "Cerca:"
 msgid "Codigo completo del articulo"
 msgstr "Codi complet de l'article"
 
-#: ui_articleslistbase1.h:236 ui_articleslistbase1.h:241
+#: ui_articulosubformbase.h:237 ui_articulosubformbase.h:242
 msgid "Configurar listado"
 msgstr "Configura llistat"
 
@@ -73,7 +73,7 @@ msgstr "Disposable en estoc"
 msgid "Editar articulo"
 msgstr "<HR><B>Tractant Article"
 
-#: ui_articleslistbase1.h:225 ui_articleslistbase1.h:230
+#: ui_articulosubformbase.h:226 ui_articulosubformbase.h:231
 #, fuzzy
 msgid "Filtrar listado"
 msgstr "Configura llistat"
@@ -97,11 +97,11 @@ msgstr "Observacions sobre l'article"
 msgid "P.V.P. articulo"
 msgstr "<P> Article <B>"
 
-#: ui_articleslistbase1.h:220
+#: ui_articulosubformbase.h:221
 msgid "S&olo presentables"
 msgstr "S&olament presentables"
 
-#: ui_articleslistbase1.h:218
+#: ui_articulosubformbase.h:219
 #, fuzzy
 msgid "Solo usados"
 msgstr "Bloquejat"

@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-02-26 01:27+0100\n"
+"POT-Creation-Date: 2009-05-12 23:58+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -59,7 +59,7 @@ msgstr ""
 msgid "&Detalle"
 msgstr "&Detalls"
 
-#: plugininventario.cpp:78
+#: pluginbf_inventario.cpp:78
 #, fuzzy
 msgid "&Inventarios"
 msgstr ""
@@ -72,13 +72,13 @@ msgstr ""
 msgid "Actualizar listado"
 msgstr "Actual·litza llistat"
 
-#: plugininventario.cpp:122
+#: pluginbf_inventario.cpp:122
 #, fuzzy
 msgid "Almacen"
 msgstr "<LI> Magatzem <B>"
 
-#: inventarioview.cpp:105 ui_inventariosbase.h:187 ui_inventariosbase.h:192
-#: ui_inventariobase.h:308 ui_inventariobase.h:313
+#: inventarioview.cpp:105 ui_inventariobase.h:308 ui_inventariobase.h:313
+#: ui_inventariosbase.h:187 ui_inventariosbase.h:192
 #, fuzzy
 msgid "Borrar inventario"
 msgstr "Esborra assentament"
@@ -136,17 +136,17 @@ msgstr "Configura llistat"
 msgid "Guardar inventario"
 msgstr "Desa assentament"
 
-#: plugininventario.cpp:126
+#: pluginbf_inventario.cpp:126
 #, fuzzy
 msgid "ID Trabajador"
 msgstr "Treballador"
 
-#: plugininventario.cpp:125
+#: pluginbf_inventario.cpp:125
 #, fuzzy
 msgid "ID Validacion"
 msgstr "Id amortizació"
 
-#: plugininventario.cpp:123
+#: pluginbf_inventario.cpp:123
 #, fuzzy
 msgid "Id Almacen"
 msgstr "<LI> Magatzem <B>"
@@ -182,7 +182,7 @@ msgstr "Imprimeix la comanda"
 msgid "Inventario"
 msgstr "Comentari"
 
-#: plugininventario.cpp:79 plugininventario.cpp:80
+#: pluginbf_inventario.cpp:79 pluginbf_inventario.cpp:80
 #, fuzzy
 msgid "Inventarios"
 msgstr ""
@@ -196,11 +196,11 @@ msgstr ""
 msgid "Listado de inventarios"
 msgstr "Llistat d'assentaments"
 
-#: plugininventario.cpp:124
+#: pluginbf_inventario.cpp:124
 msgid "Minimo"
 msgstr ""
 
-#: plugininventario.cpp:118
+#: pluginbf_inventario.cpp:118
 #, fuzzy
 msgid "Minimos almacen"
 msgstr "<HR><B>Tractant magatzem"
@@ -253,7 +253,7 @@ msgstr "S"
 msgid "Stock anterior"
 msgstr "Stock anterior"
 
-#: plugininventario.cpp:211
+#: pluginbf_inventario.cpp:211
 msgid "Stock minimo superado"
 msgstr "Stock mnim revisat"
 

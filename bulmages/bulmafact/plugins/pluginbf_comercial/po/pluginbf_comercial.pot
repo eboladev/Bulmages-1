@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-02-15 23:45+0100\n"
+"POT-Creation-Date: 2009-05-12 23:58+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -147,26 +147,6 @@ msgstr ""
 msgid "Estado"
 msgstr ""
 
-#: comercialbf.cpp:66
-msgid "Zona comercial"
-msgstr ""
-
-#: comercialbf.cpp:67
-msgid "Fecha base"
-msgstr ""
-
-#: comercialbf.cpp:68
-msgid "Periodo"
-msgstr ""
-
-#: comercialbf.cpp:69
-msgid "Comentarios para el comercial"
-msgstr ""
-
-#: comercialbf.cpp:74
-msgid "&Comercial"
-msgstr ""
-
 #: rutacomerciallist.cpp:155 rutacomerciallist.cpp:169
 msgid "Nueva incidencia comercial"
 msgstr ""
@@ -249,6 +229,26 @@ msgstr ""
 
 #: rutacomerciallist.cpp:304
 msgid "Hora de la incidencia"
+msgstr ""
+
+#: pluginbf_comercial.cpp:66
+msgid "Zona comercial"
+msgstr ""
+
+#: pluginbf_comercial.cpp:67
+msgid "Fecha base"
+msgstr ""
+
+#: pluginbf_comercial.cpp:68
+msgid "Periodo"
+msgstr ""
+
+#: pluginbf_comercial.cpp:69
+msgid "Comentarios para el comercial"
+msgstr ""
+
+#: pluginbf_comercial.cpp:74
+msgid "&Comercial"
 msgstr ""
 
 #: ui_rutacomercialbase.h:220

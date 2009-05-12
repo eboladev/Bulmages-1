@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-02-26 01:17+0100\n"
+"POT-Creation-Date: 2009-05-12 23:58+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -114,82 +114,82 @@ msgstr ""
 "#-#-#-#-#  pluginabrevs.pot (PACKAGE VERSION)  #-#-#-#-#\n"
 "#-#-#-#-#  bulmages_suite.pot (PACKAGE VERSION)  #-#-#-#-#\n"
 
-#: pluginclientprov.cpp:65
+#: pluginbf_clienteproveedor.cpp:65
 msgid "Banco proveedor"
 msgstr "Banco proveedor"
 
-#: pluginclientprov.cpp:63
+#: pluginbf_clienteproveedor.cpp:63
 msgid "C.I.F. del proveedor"
 msgstr "C.I.F. del proveedor"
 
-#: pluginclientprov.cpp:75
+#: pluginbf_clienteproveedor.cpp:75
 msgid "Codigo"
 msgstr "Codigo"
 
-#: pluginclientprov.cpp:64
+#: pluginbf_clienteproveedor.cpp:64
 msgid "Codigo cliente"
 msgstr "Codigo cliente"
 
-#: pluginclientprov.cpp:69
+#: pluginbf_clienteproveedor.cpp:69
 msgid "Codigo postal"
 msgstr "Codigo postal"
 
-#: pluginclientprov.cpp:74
+#: pluginbf_clienteproveedor.cpp:74
 msgid "Comentarios"
 msgstr "Comentarios"
 
-#: pluginclientprov.cpp:66
+#: pluginbf_clienteproveedor.cpp:66
 msgid "Direccion"
 msgstr "Direccion"
 
-#: pluginclientprov.cpp:72
+#: pluginbf_clienteproveedor.cpp:72
 msgid "Direccion electronica"
 msgstr "Direccion electronica"
 
-#: pluginclientprov.cpp:60
+#: pluginbf_clienteproveedor.cpp:60
 msgid "ID proveedor"
 msgstr "ID proveedor"
 
-#: pluginclientprov.cpp:79
+#: pluginbf_clienteproveedor.cpp:79
 msgid "IRPF"
 msgstr "IRPF"
 
-#: pluginclientprov.cpp:77
+#: pluginbf_clienteproveedor.cpp:77
 msgid "Id forma de pago"
 msgstr "Id forma de pago"
 
-#: pluginclientprov.cpp:62
+#: pluginbf_clienteproveedor.cpp:62
 msgid "Nombre alternativo del proveedor"
 msgstr "Nombre alternativo del proveedor"
 
-#: pluginclientprov.cpp:61
+#: pluginbf_clienteproveedor.cpp:61
 msgid "Nombre del proveedor"
 msgstr "Nombre del proveedor"
 
-#: pluginclientprov.cpp:71
+#: pluginbf_clienteproveedor.cpp:71
 msgid "Numero de fax"
 msgstr "Numero de fax"
 
-#: pluginclientprov.cpp:70
+#: pluginbf_clienteproveedor.cpp:70
 msgid "Numero de telefono"
 msgstr "Numero de telefono"
 
-#: pluginclientprov.cpp:67
+#: pluginbf_clienteproveedor.cpp:67
 msgid "Poblacion"
 msgstr "Poblacion"
 
-#: pluginclientprov.cpp:68
+#: pluginbf_clienteproveedor.cpp:68
 msgid "Provincia"
 msgstr "Provincia"
 
-#: pluginclientprov.cpp:78
+#: pluginbf_clienteproveedor.cpp:78
 msgid "Recargo de equivalencia"
 msgstr "Recargo de equivalencia"
 
-#: pluginclientprov.cpp:76
+#: pluginbf_clienteproveedor.cpp:76
 msgid "Regimen fiscal"
 msgstr "Regimen fiscal"
 
-#: pluginclientprov.cpp:73
+#: pluginbf_clienteproveedor.cpp:73
 msgid "URL"
 msgstr "URL"

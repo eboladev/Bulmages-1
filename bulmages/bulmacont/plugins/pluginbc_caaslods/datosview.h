@@ -37,6 +37,35 @@ public:
     DatosView ( BlMainCompany *emp = NULL, QWidget *parent = 0, Qt::WFlags f = 0, edmode modo = BL_EDIT_MODE);
     ~DatosView();
     virtual void on_mui_aceptar_clicked();
+
+// mui_fechainicialactual
+// mui_fechafinalactual
+// mui_fechainicialanterior
+// mui_fechafinalanterior
+// Message from Tomeu at 20:38:21 
+// on_fechainicial_valueChanged( QString fecha)
+// 
+//  
+// Message from Tomeu at 20:38:31 
+// on la variable fecha conté el valor actual del camp
+// 
+//  
+// Message from lepalom@jabber.cc at 20:38:55 
+// i com es diu el valor del camp?
+//  
+// Message from Tomeu at 20:39:01 
+// i se dispara cada cop que el valor del camp canvia
+// 
+//  
+// Message from Tomeu at 20:39:24 
+// fechainicial->text()
+// 
+//  
+// Message from Tomeu at 20:39:35 
+// també funciona fechainicial->date()
+// 
+// 
+
 };
 
 #endif

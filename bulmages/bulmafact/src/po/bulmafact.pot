@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-02-15 23:44+0100\n"
+"POT-Creation-Date: 2009-05-12 23:58+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -16,32 +16,180 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: main.cxx:82
+#: main.cxx:103
 msgid "Iniciando clases"
 msgstr ""
 
-#: main.cxx:122
+#: main.cxx:129
 msgid "Leyendo configuracion"
 msgstr ""
 
-#: main.cxx:153
+#: main.cxx:159
 msgid "Cargando plugins"
 msgstr ""
 
-#: main.cxx:159
+#: main.cxx:165
 msgid "Lanzando plugins"
 msgstr ""
 
-#: main.cxx:165
+#: main.cxx:171
 msgid "Inicializando componentes"
 msgstr ""
 
-#: main.cxx:171
+#: main.cxx:177
 msgid "Terminado"
 msgstr ""
 
-#: main.cxx:182
+#: main.cxx:188
 msgid "Error inesperado en BulmaFact. El programa se cerrara."
+msgstr ""
+
+#: ui_bfaboutbase.h:284
+msgid "Acerca de Iglues/BulmaFact"
+msgstr ""
+
+#: ui_bfaboutbase.h:286
+msgid "Facturacion GPL - Version 0.11.1 -"
+msgstr ""
+
+#: ui_bfaboutbase.h:287
+msgid "&Acerca de"
+msgstr ""
+
+#: ui_bfaboutbase.h:288
+msgid ""
+"<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/"
+"REC-html40/strict.dtd\">\n"
+"<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css"
+"\">\n"
+"p, li { white-space: pre-wrap; }\n"
+"</style></head><body style=\" font-family:'Sans Serif'; font-size:7pt; font-"
+"weight:400; font-style:normal;\">\n"
+"<p style=\"-qt-paragraph-type:empty; margin-top:12px; margin-bottom:12px; "
+"margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-"
+"size:9pt;\"></p></body></html>"
+msgstr ""
+
+#: ui_bfaboutbase.h:293
+msgid "A&utores"
+msgstr ""
+
+#: ui_bfaboutbase.h:294
+msgid "Sopor&te"
+msgstr ""
+
+#: ui_bfaboutbase.h:295
+msgid "Acuerdo de &licencia"
+msgstr ""
+
+#: ui_bfaboutbase.h:296
+msgid "&Cerrar"
+msgstr ""
+
+#: ui_bfseriefacturabase.h:82
+msgid "Series de factura"
+msgstr ""
+
+#: ui_bfseriefacturabase.h:83 ui_bfconfiguracionbase.h:119
+msgid "&Cancelar"
+msgstr ""
+
+#: ui_bfseriefacturabase.h:84 ui_bfconfiguracionbase.h:118
+msgid "&Aceptar"
+msgstr ""
+
+#: ui_bfbulmafactbase.h:149
+msgid "Iglues/BulmaFact - Facturacion GPL"
+msgstr ""
+
+#: ui_bfbulmafactbase.h:150
+msgid "&Salir del programa"
+msgstr ""
+
+#: ui_bfbulmafactbase.h:151
+msgid "Ctrl+Q"
+msgstr ""
+
+#: ui_bfbulmafactbase.h:152
+msgid "&Propiedades de la empresa..."
+msgstr ""
+
+#: ui_bfbulmafactbase.h:155 ui_bfconfiguracionbase.h:117
+msgid "Propiedades de la empresa"
+msgstr ""
+
+#: ui_bfbulmafactbase.h:158
+msgid "Ventana &completa"
+msgstr ""
+
+#: ui_bfbulmafactbase.h:159
+msgid "F11"
+msgstr ""
+
+#: ui_bfbulmafactbase.h:160
+msgid "&Acerca de Iglues/BulmaFact"
+msgstr ""
+
+#: ui_bfbulmafactbase.h:161
+msgid "&Documentacion"
+msgstr ""
+
+#: ui_bfbulmafactbase.h:162
+msgid "F1"
+msgstr ""
+
+#: ui_bfbulmafactbase.h:163
+msgid "&Indexador"
+msgstr ""
+
+#: ui_bfbulmafactbase.h:164 ui_bfbulmafactbase.h:167
+msgid "Indexador"
+msgstr ""
+
+#: ui_bfbulmafactbase.h:170
+msgid "Ctrl+I"
+msgstr ""
+
+#: ui_bfbulmafactbase.h:171
+msgid "Organizacio&n en cascada"
+msgstr ""
+
+#: ui_bfbulmafactbase.h:172
+msgid "Ordenar &ventanas"
+msgstr ""
+
+#: ui_bfbulmafactbase.h:173 ui_bfbulmafactbase.h:174
+msgid "Paises / Provincias"
+msgstr ""
+
+#: ui_bfbulmafactbase.h:177
+msgid "Paises y provincias"
+msgstr ""
+
+#: ui_bfbulmafactbase.h:180
+msgid "A&yuda"
+msgstr ""
+
+#: ui_bfbulmafactbase.h:181
+msgid "E&mpresa"
+msgstr ""
+
+#: ui_bfbulmafactbase.h:182
+msgid "Maest&ro"
+msgstr ""
+
+#: ui_bfbulmafactbase.h:183
+msgid "Venta&na"
+msgstr ""
+
+#: ui_bfbulmafactbase.h:184 ui_bfbulmafactbase.h:187 ui_bfbulmafactbase.h:192
+#: ui_bfbulmafactbase.h:197 ui_bfbulmafactbase.h:202 ui_bfbulmafactbase.h:207
+msgid "Listados"
+msgstr ""
+
+#: ui_bfbulmafactbase.h:210 ui_bfbulmafactbase.h:213 ui_bfbulmafactbase.h:218
+#: ui_bfbulmafactbase.h:223 ui_bfbulmafactbase.h:228 ui_bfbulmafactbase.h:233
+msgid "Fichas"
 msgstr ""
 
 #: ui_bfbuscarreferenciabase.h:89 ui_bfbuscararticulobase.h:92
@@ -65,353 +213,61 @@ msgstr ""
 msgid "Articulo"
 msgstr ""
 
-#: ui_bancobase.h:401 ui_bfbulmafactbase.h:213
-msgid "Bancos"
+#: bfclientealbarandescuentosubform.cpp:41
+msgid "Id descuento"
 msgstr ""
 
-#: ui_bancobase.h:402
-msgid "Informacion del banco:"
+#: bfclientealbarandescuentosubform.cpp:42
+msgid "Concepto descuento"
 msgstr ""
 
-#: ui_bancobase.h:403
-msgid "D.C.:"
+#: bfclientealbarandescuentosubform.cpp:43 bfproveedoralbaransubform.cpp:56
+#: bfclientealbaransubform.cpp:54
+msgid "% Descuento"
 msgstr ""
 
-#: ui_bancobase.h:404
-msgid "Numero de cuenta:"
+#: bfclientealbarandescuentosubform.cpp:44 bfproveedoralbaransubform.cpp:57
+#: bfclientealbaransubform.cpp:55
+msgid "Id albaran"
 msgstr ""
 
-#: ui_bancobase.h:405
-msgid "Fax:"
+#: bfinformereferencia.cpp:142 bfinformereferencia.cpp:212
+msgid "Pres."
 msgstr ""
 
-#: ui_bancobase.h:406
-msgid ""
-"<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/"
-"REC-html40/strict.dtd\">\n"
-"<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css"
-"\">\n"
-"p, li { white-space: pre-wrap; }\n"
-"</style></head><body style=\" font-family:'Sans Serif'; font-size:10pt; font-"
-"weight:400; font-style:normal;\">\n"
-"<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; "
-"margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-"
-"size:9pt;\"></p></body></html>"
+#: bfinformereferencia.cpp:143 bfinformereferencia.cpp:175
+#: bfinformereferencia.cpp:213 bfinformereferencia.cpp:260
+msgid "Pedido"
 msgstr ""
 
-#: ui_bancobase.h:411
-msgid "Razon Social:"
+#: bfinformereferencia.cpp:144 bfinformereferencia.cpp:176
+#: bfinformereferencia.cpp:214 bfinformereferencia.cpp:261
+msgid "Entregado"
 msgstr ""
 
-#: ui_bancobase.h:412
-msgid "Contacto:"
+#: bfinformereferencia.cpp:145 bfinformereferencia.cpp:177
+#: bfinformereferencia.cpp:215 bfinformereferencia.cpp:262
+msgid "Facturado"
 msgstr ""
 
-#: ui_bancobase.h:413
-msgid "URL:"
+#: bfinformereferencia.cpp:216
+msgid "Cobrado"
 msgstr ""
 
-#: ui_bancobase.h:414
-msgid "E-mail:"
+#: bfinformereferencia.cpp:263
+msgid "Pagado"
 msgstr ""
 
-#: ui_bancobase.h:415
-msgid "Telefono:"
+#: bfconfiguracionview.cpp:51
+msgid "Configuracion"
 msgstr ""
 
-#: ui_bancobase.h:416
-msgid "Poblacion:"
+#: bfconfiguracionview.cpp:89
+msgid "Nombre"
 msgstr ""
 
-#: ui_bancobase.h:417
-msgid "Direccion"
-msgstr ""
-
-#: ui_bancobase.h:418
-msgid "Comentarios:"
-msgstr ""
-
-#: ui_bancobase.h:419
-msgid "Entidad:"
-msgstr ""
-
-#: ui_bancobase.h:420
-msgid "Sucursal:"
-msgstr ""
-
-#: ui_bancobase.h:421
-msgid "C.P.:"
-msgstr ""
-
-#: ui_bancobase.h:424 ui_bancobase.h:429
-msgid "Borrar trabajador"
-msgstr ""
-
-#: ui_bancobase.h:435 ui_bancobase.h:440
-msgid "Guardar trabajador"
-msgstr ""
-
-#: ui_bancobase.h:446 ui_bancobase.h:451
-msgid "Nuevo trabajador"
-msgstr ""
-
-#: ui_bancobase.h:455
-msgid "Lista de bancos:"
-msgstr ""
-
-#: ui_listalmacenbase.h:116
-msgid "Almacenes"
-msgstr ""
-
-#: ui_listalmacenbase.h:117 ui_bfseriefacturabase.h:84 ui_fpagobase.h:341
-#: ui_bfconfiguracionbase.h:118
-msgid "&Aceptar"
-msgstr ""
-
-#: ui_listalmacenbase.h:118 ui_bfseriefacturabase.h:83 ui_fpagobase.h:342
-#: ui_bfconfiguracionbase.h:119
-msgid "&Cancelar"
-msgstr ""
-
-#: ui_bfseriefacturabase.h:82
-msgid "Series de factura"
-msgstr ""
-
-#: ui_bfaboutbase.h:285
-msgid "Acerca de BulmaFact"
-msgstr ""
-
-#: ui_bfaboutbase.h:287
-msgid "Facturacion GPL - Version 0.11.1 -"
-msgstr ""
-
-#: ui_bfaboutbase.h:288
-msgid "&Acerca de"
-msgstr ""
-
-#: ui_bfaboutbase.h:289
-msgid ""
-"<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/"
-"REC-html40/strict.dtd\">\n"
-"<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css"
-"\">\n"
-"p, li { white-space: pre-wrap; }\n"
-"</style></head><body style=\" font-family:'Sans Serif'; font-size:10pt; font-"
-"weight:400; font-style:normal;\">\n"
-"<p style=\"-qt-paragraph-type:empty; margin-top:12px; margin-bottom:12px; "
-"margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-"
-"size:9pt;\"></p></body></html>"
-msgstr ""
-
-#: ui_bfaboutbase.h:294
-msgid "A&utores"
-msgstr ""
-
-#: ui_bfaboutbase.h:295
-msgid "Sopor&te"
-msgstr ""
-
-#: ui_bfaboutbase.h:296
-msgid "Acuerdo de &licencia"
-msgstr ""
-
-#: ui_bfaboutbase.h:297
-msgid "&Cerrar"
-msgstr ""
-
-#: ui_fpagobase.h:297
-msgid "Formas de pago"
-msgstr ""
-
-#: ui_fpagobase.h:298
-msgid "Informacion de la forma de pago:"
-msgstr ""
-
-#: ui_fpagobase.h:299
-msgid "Plazo primer recibo (dias):"
-msgstr ""
-
-#: ui_fpagobase.h:300
-msgid "Descuento:"
-msgstr ""
-
-#: ui_fpagobase.h:301
-msgid "Numero de plazos:"
-msgstr ""
-
-#: ui_fpagobase.h:302
-msgid "Plazo entre recibos (dias):"
-msgstr ""
-
-#: ui_fpagobase.h:303
-msgid "Nombre de la forma de pago:"
-msgstr ""
-
-#: ui_fpagobase.h:304
-msgid "Tipo plazo entre recibos:"
-msgstr ""
-
-#: ui_fpagobase.h:305
-msgid "Tipo plazo primer pago:"
-msgstr ""
-
-#: ui_fpagobase.h:306
-msgid "Forma de pago:"
-msgstr ""
-
-#: ui_fpagobase.h:310 ui_fpagobase.h:315
-msgid "Nueva forma de pago"
-msgstr ""
-
-#: ui_fpagobase.h:321 ui_fpagobase.h:326
-msgid "Borrar forma de pago"
-msgstr ""
-
-#: ui_fpagobase.h:332 ui_fpagobase.h:337 fpagoview.cpp:155
-msgid "Guardar forma de pago"
-msgstr ""
-
-#: ui_bfconfiguracionbase.h:117 ui_bfbulmafactbase.h:193
-msgid "Propiedades de la empresa"
-msgstr ""
-
-#: ui_bfbulmafactbase.h:187
-msgid "BulmaFact - Facturacion GPL"
-msgstr ""
-
-#: ui_bfbulmafactbase.h:188
-msgid "&Salir del programa"
-msgstr ""
-
-#: ui_bfbulmafactbase.h:189
-msgid "Ctrl+Q"
-msgstr ""
-
-#: ui_bfbulmafactbase.h:190
-msgid "&Propiedades de la empresa..."
-msgstr ""
-
-#: ui_bfbulmafactbase.h:196
-msgid "Se&ries de factura"
-msgstr ""
-
-#: ui_bfbulmafactbase.h:197
-msgid "Ventana &completa"
-msgstr ""
-
-#: ui_bfbulmafactbase.h:198
-msgid "F11"
-msgstr ""
-
-#: ui_bfbulmafactbase.h:199
-msgid "&Acerca de BulmaFact"
-msgstr ""
-
-#: ui_bfbulmafactbase.h:200 ui_bfbulmafactbase.h:253 ui_bfbulmafactbase.h:256
-#: ui_bfbulmafactbase.h:261 ui_bfbulmafactbase.h:266 ui_bfbulmafactbase.h:271
-#: ui_bfbulmafactbase.h:276
-msgid "Fichas"
-msgstr ""
-
-#: ui_bfbulmafactbase.h:201
-msgid "&Formas de pago"
-msgstr ""
-
-#: ui_bfbulmafactbase.h:202
-msgid "&Almacenes"
-msgstr ""
-
-#: ui_bfbulmafactbase.h:203
-msgid "&Documentacion"
-msgstr ""
-
-#: ui_bfbulmafactbase.h:204
-msgid "F1"
-msgstr ""
-
-#: ui_bfbulmafactbase.h:205
-msgid "&Indexador"
-msgstr ""
-
-#: ui_bfbulmafactbase.h:206 ui_bfbulmafactbase.h:209
-msgid "Indexador"
-msgstr ""
-
-#: ui_bfbulmafactbase.h:212
-msgid "Ctrl+I"
-msgstr ""
-
-#: ui_bfbulmafactbase.h:214
-msgid "Organizacio&n en cascada"
-msgstr ""
-
-#: ui_bfbulmafactbase.h:215
-msgid "Ordenar &ventanas"
-msgstr ""
-
-#: ui_bfbulmafactbase.h:216 ui_bfbulmafactbase.h:217
-msgid "Paises / Provincias"
-msgstr ""
-
-#: ui_bfbulmafactbase.h:220
-msgid "Paises y provincias"
-msgstr ""
-
-#: ui_bfbulmafactbase.h:223
-msgid "A&yuda"
-msgstr ""
-
-#: ui_bfbulmafactbase.h:224
-msgid "E&mpresa"
-msgstr ""
-
-#: ui_bfbulmafactbase.h:225
-msgid "Maest&ro"
-msgstr ""
-
-#: ui_bfbulmafactbase.h:226
-msgid "Venta&na"
-msgstr ""
-
-#: ui_bfbulmafactbase.h:227 ui_bfbulmafactbase.h:230 ui_bfbulmafactbase.h:235
-#: ui_bfbulmafactbase.h:240 ui_bfbulmafactbase.h:245 ui_bfbulmafactbase.h:250
-msgid "Listados"
-msgstr ""
-
-#: company.cpp:130
-msgid "Facturacion GPL"
-msgstr ""
-
-#: bancoview.cpp:42
-msgid "Banco"
-msgstr ""
-
-#: bancoview.cpp:168
-msgid "Error al guardar"
-msgstr ""
-
-#: bancoview.cpp:184
-msgid "Guardar datos del trabajador"
-msgstr ""
-
-#: bancoview.cpp:185
-msgid "Desea guardar los cambios?"
-msgstr ""
-
-#: bancoview.cpp:186
-msgid "&Si"
-msgstr ""
-
-#: bancoview.cpp:186
-msgid "&No"
-msgstr ""
-
-#: bancoview.cpp:216
-msgid "Error inesperado el crear el Banco"
-msgstr ""
-
-#: bancoview.cpp:244
-msgid "Error inesperado al borrar el banco"
+#: bfconfiguracionview.cpp:90
+msgid "Valor"
 msgstr ""
 
 #: bfproveedoralbaransubform.cpp:47 bfclientealbaransubform.cpp:45
@@ -450,16 +306,6 @@ msgstr ""
 msgid "% R.E."
 msgstr ""
 
-#: bfproveedoralbaransubform.cpp:56 bfclientealbarandescuentosubform.cpp:43
-#: bfclientealbaransubform.cpp:54
-msgid "% Descuento"
-msgstr ""
-
-#: bfproveedoralbaransubform.cpp:57 bfclientealbarandescuentosubform.cpp:44
-#: bfclientealbaransubform.cpp:55
-msgid "Id albaran"
-msgstr ""
-
 #: bfproveedoralbaransubform.cpp:58 bfclientealbaransubform.cpp:56
 msgid "Orden"
 msgstr ""
@@ -476,48 +322,6 @@ msgstr ""
 msgid "Descripcion serie factura"
 msgstr ""
 
-#: bfsubform.cpp:227
-msgid ""
-"El codigo del articulo no existe.\n"
-"ATENCION: No se guadara bien el documento hasta que sea valido."
-msgstr ""
-
-#: listalmacenview.cpp:49
-msgid "Almacen"
-msgstr ""
-
-#: listalmacenview.cpp:70
-msgid "Error al guardar los almacenes"
-msgstr ""
-
-#: listalmacenview.cpp:96
-msgid "Id almacen"
-msgstr ""
-
-#: listalmacenview.cpp:97
-msgid "Codigo almacen"
-msgstr ""
-
-#: listalmacenview.cpp:98
-msgid "Nombre almacen"
-msgstr ""
-
-#: bfbuscarfamilia.cpp:36
-msgid "Familia:"
-msgstr ""
-
-#: bfaboutview.cpp:41
-msgid "Compilado usando la version de QT:"
-msgstr ""
-
-#: bfclientealbarandescuentosubform.cpp:41
-msgid "Id descuento"
-msgstr ""
-
-#: bfclientealbarandescuentosubform.cpp:42
-msgid "Concepto descuento"
-msgstr ""
-
 #: bfclientealbaransubform.cpp:48
 msgid "Nº linea"
 msgstr ""
@@ -526,7 +330,7 @@ msgstr ""
 msgid "P.V.P."
 msgstr ""
 
-#: bfclientealbaransubform.cpp:52 fichabf.cpp:383
+#: bfclientealbaransubform.cpp:52 bfform.cpp:461
 msgid "I.V.A."
 msgstr ""
 
@@ -534,95 +338,22 @@ msgstr ""
 msgid "% Recargo E.Q."
 msgstr ""
 
-#: bfconfiguracionview.cpp:51
-msgid "Configuracion"
-msgstr ""
-
-#: bfconfiguracionview.cpp:89
-msgid "Nombre"
-msgstr ""
-
-#: bfconfiguracionview.cpp:90
-msgid "Valor"
-msgstr ""
-
-#: fichabf.cpp:336
-msgid "Descuento"
-msgstr ""
-
-#: fichabf.cpp:337
-msgid "Porcentaje"
-msgstr ""
-
-#: fichabf.cpp:338
-msgid "Total Desc."
-msgstr ""
-
-#: fichabf.cpp:369
-msgid "Base Imponible"
-msgstr ""
-
-#: fichabf.cpp:398
-msgid "R.E."
-msgstr ""
-
-#: fichabf.cpp:405
-msgid "I.R.P.F (-"
-msgstr ""
-
-#: fichabf.cpp:409
-msgid "Total"
-msgstr ""
-
-#: fichabf.cpp:847
-msgid "Tiene que guardar el documento antes de poder procesarlo."
-msgstr ""
-
-#: fichabf.cpp:851
-msgid "Error inesperado en la impresion"
-msgstr ""
-
-#: bfinformereferencia.cpp:142 bfinformereferencia.cpp:212
-msgid "Pres."
-msgstr ""
-
-#: bfinformereferencia.cpp:143 bfinformereferencia.cpp:175
-#: bfinformereferencia.cpp:213 bfinformereferencia.cpp:260
-msgid "Pedido"
-msgstr ""
-
-#: bfinformereferencia.cpp:144 bfinformereferencia.cpp:176
-#: bfinformereferencia.cpp:214 bfinformereferencia.cpp:261
-msgid "Entregado"
-msgstr ""
-
-#: bfinformereferencia.cpp:145 bfinformereferencia.cpp:177
-#: bfinformereferencia.cpp:215 bfinformereferencia.cpp:262
-msgid "Facturado"
-msgstr ""
-
-#: bfinformereferencia.cpp:216
-msgid "Cobrado"
-msgstr ""
-
-#: bfinformereferencia.cpp:263
-msgid "Pagado"
-msgstr ""
-
 #: bfbuscartipoarticulo.cpp:37
 msgid "Tipo Articulo:"
 msgstr ""
 
-#: fpagoview.cpp:41
-msgid "Forma de Pago"
+#: bfbuscarfamilia.cpp:36
+msgid "Familia:"
 msgstr ""
 
-#: fpagoview.cpp:156
-msgid "Desea guardar los cambios."
+#: bfsubform.cpp:225
+msgid ""
+"El codigo del articulo no existe.\n"
+"ATENCION: No se guadara bien el documento hasta que sea valido."
 msgstr ""
 
-#: fpagoview.cpp:211
-msgid "Error al intentar borrar la forma de pago"
+#: bfaboutview.cpp:40
+msgid "Compilado usando la version de QT:"
 msgstr ""
 
 #: bfbuscarreferencia.cpp:65
@@ -631,4 +362,44 @@ msgstr ""
 
 #: bfbuscarreferencia.cpp:66
 msgid "Referencia"
+msgstr ""
+
+#: bfcompany.cpp:98
+msgid "Facturacion GPL"
+msgstr ""
+
+#: bfform.cpp:412
+msgid "Descuento"
+msgstr ""
+
+#: bfform.cpp:413
+msgid "Porcentaje"
+msgstr ""
+
+#: bfform.cpp:414
+msgid "Total Desc."
+msgstr ""
+
+#: bfform.cpp:447
+msgid "Base Imponible"
+msgstr ""
+
+#: bfform.cpp:476
+msgid "R.E."
+msgstr ""
+
+#: bfform.cpp:483
+msgid "I.R.P.F (-"
+msgstr ""
+
+#: bfform.cpp:487
+msgid "Total"
+msgstr ""
+
+#: bfform.cpp:925
+msgid "Tiene que guardar el documento antes de poder procesarlo."
+msgstr ""
+
+#: bfform.cpp:929
+msgid "Error inesperado en la impresion"
 msgstr ""

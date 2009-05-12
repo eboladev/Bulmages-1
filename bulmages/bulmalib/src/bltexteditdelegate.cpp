@@ -65,7 +65,7 @@ bool BlTextEditDelegate::eventFilter ( QObject *obj, QEvent *event )
               switch ( key ) {
                 case Qt::Key_Return:
                 case Qt::Key_Enter:
-                      mensajeInfo("BlTextEditDelegate::eventFilter Se ha pulsado return");
+                      mensajeInfo( _ ("BlTextEditDelegate::eventFilter Se ha pulsado return"));
                       event->ignore();
                       return TRUE;
                     break;

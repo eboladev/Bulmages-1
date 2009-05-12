@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-02-15 23:43+0100\n"
+"POT-Creation-Date: 2009-05-12 23:58+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -92,23 +92,23 @@ msgstr ""
 msgid "Ver extracto (este anyo)"
 msgstr ""
 
-#: pluginbalancetree.cpp:88
+#: pluginbc_balancearbol.cpp:88
 msgid "menuVentana"
 msgstr ""
 
-#: pluginbalancetree.cpp:92
+#: pluginbc_balancearbol.cpp:92
 msgid "&Ver"
 msgstr ""
 
-#: pluginbalancetree.cpp:96
+#: pluginbc_balancearbol.cpp:96
 msgid "&Balance jerarquico"
 msgstr ""
 
-#: pluginbalancetree.cpp:97
+#: pluginbc_balancearbol.cpp:97
 msgid "Permite realizar balances"
 msgstr ""
 
-#: pluginbalancetree.cpp:98
+#: pluginbc_balancearbol.cpp:98
 msgid "Podra disponer de la informacion del balance"
 msgstr ""
 

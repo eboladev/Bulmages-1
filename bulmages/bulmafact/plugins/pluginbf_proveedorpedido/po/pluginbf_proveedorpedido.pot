@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-02-15 23:52+0100\n"
+"POT-Creation-Date: 2009-05-12 23:58+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -182,8 +182,8 @@ msgstr ""
 msgid "Pedidos no procesados"
 msgstr ""
 
-#: pedidosproveedorlist.cpp:188 pluginpedidoprov.cpp:99
-#: pluginpedidoprov.cpp:100 ui_pedidosproveedorlistbase.h:355
+#: pedidosproveedorlist.cpp:188 pluginbf_proveedorpedido.cpp:99
+#: pluginbf_proveedorpedido.cpp:100 ui_pedidosproveedorlistbase.h:355
 msgid "Pedidos a proveedores"
 msgstr ""
 
@@ -231,15 +231,15 @@ msgstr ""
 msgid "Comentario pedido proveedor"
 msgstr ""
 
-#: pluginpedidoprov.cpp:97
+#: pluginbf_proveedorpedido.cpp:97
 msgid "&Pedidos a proveedores"
 msgstr ""
 
-#: pluginpedidoprov.cpp:105
+#: pluginbf_proveedorpedido.cpp:105
 msgid "&Nuevo Pedido a Proveedor"
 msgstr ""
 
-#: pluginpedidoprov.cpp:107 pluginpedidoprov.cpp:108
+#: pluginbf_proveedorpedido.cpp:107 pluginbf_proveedorpedido.cpp:108
 #: ui_pedidosproveedorlistbase.h:364 ui_pedidosproveedorlistbase.h:369
 #: ui_pedidoproveedorbase.h:657
 msgid "Nuevo pedido a proveedor"

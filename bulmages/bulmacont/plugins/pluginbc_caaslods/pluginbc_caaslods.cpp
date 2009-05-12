@@ -46,7 +46,6 @@ pluginBC_caaslODS::pluginBC_caaslODS()
     _depura ( "END pluginBC_caaslODS::pluginBC_caaslODS", 0 );
 }
 
-
 ///
 /**
 **/
@@ -174,39 +173,34 @@ OK, aqui poden haver passat 3 coses.
 **/
 void pluginBC_caaslODS::formDatosBalance ( QString informe )
 {
-    _depura ( "pluginBC_caaslODS::formDatosBalance", 0 );
-    int resultado;
+      _depura ( "pluginBC_caaslODS::formDatosBalance", 0 );
 
+      QDialog *diag = new QDialog ( 0 );
+      diag->setModal ( true );
+      diag->setGeometry ( QRect ( 0, 0, 450, 350 ) );
+      centrarEnPantalla ( diag );
 
+      DatosView *pidefechas = new DatosView ( g_comp, diag, 0, BL_SELECT_MODE );
 
-        QDialog *diag = new QDialog ( 0 );
-        diag->setModal ( true );
-        diag->setGeometry ( QRect ( 0, 0, 450, 350 ) );
-        centrarEnPantalla ( diag );
+      pidefechas->m_informe = informe;
 
-        DatosView *pidefechas = new DatosView ( g_comp, diag, 0, BL_SELECT_MODE );
+      /// Creamos un layout donde estara el contenido de la ventana y la ajustamos al QDialog
+      /// para que sea redimensionable y aparezca el titulo de la ventana.
+      QHBoxLayout *layout = new QHBoxLayout;
+      layout->addWidget ( pidefechas );
+      layout->setMargin ( 0 );
+      layout->setSpacing ( 0 );
+      diag->setLayout ( layout );
+      diag->setWindowTitle ( pidefechas->windowTitle() );
+      
+      pidefechas->connect ( pidefechas->mui_aceptar, SIGNAL ( clicked () ), diag, SLOT ( accept() ) );
+      pidefechas->connect ( pidefechas->mui_cancelar, SIGNAL ( clicked () ), diag, SLOT ( accept() ) );
+      
+      diag->exec();
+      
+      delete diag;
 
-        pidefechas->m_informe = informe;
-
-
-
-        /// Creamos un layout donde estara el contenido de la ventana y la ajustamos al QDialog
-        /// para que sea redimensionable y aparezca el titulo de la ventana.
-        QHBoxLayout *layout = new QHBoxLayout;
-        layout->addWidget ( pidefechas );
-        layout->setMargin ( 0 );
-        layout->setSpacing ( 0 );
-        diag->setLayout ( layout );
-        diag->setWindowTitle ( pidefechas->windowTitle() );
-
-        pidefechas->connect ( pidefechas->mui_aceptar, SIGNAL ( clicked () ), diag, SLOT ( accept() ) );
-        pidefechas->connect ( pidefechas->mui_cancelar, SIGNAL ( clicked () ), diag, SLOT ( accept() ) );
-
-        diag->exec();
-
-        delete diag;
-
-    _depura ( "END pluginBC_caaslODS::formDatosBalance", 0 );
+      _depura ( "END pluginBC_caaslODS::formDatosBalance", 0 );
 }
 
 
@@ -288,11 +282,9 @@ int entryPoint ( BcBulmaCont *bcont )
 {
     _depura ( "Estoy dentro del plugin\n", 0 );
 
-    g_comp = bcont->empresaactual();
-
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale ( LC_ALL, "" );
-    bindtextdomain ( "pluginbc_caaslods", g_confpr->valor ( CONF_DIR_TRADUCCION ).toAscii().constData() );
+    bindtextdomain ( "plugincanualesods", g_confpr->valor ( CONF_DIR_TRADUCCION ).toAscii().constData() );
 
     pluginBC_caaslODS *plug = new pluginBC_caaslODS();
     plug->inicializa ( bcont );
@@ -302,59 +294,43 @@ int entryPoint ( BcBulmaCont *bcont )
 }
 
 
-
 // CAnuales CAAASL, CAPGC07, CAPYMES08, CAPGC08, CAAPGC08}
+//Cuentas Anuales Abreviadas Asociacion Sin Lucro CAAASL
+//Cuentas Anuales Plan General Contable hasta 2007 CAPGC07
+//Cuentas Anuales PYMES 2008 CAPYMES08
+//Cuentas Anuales Plan General Contable 2008 CAPGC08
+//Cuentas Anuales Abreviadas Plan General Contable 2008 CAAPGC08
+
+  
 
 void pluginBC_caaslODS::balsitCAAASL ()
 {
-
-	formDatosBalance("inf_canuales1.pys");
-/*
-    CAnuales CA = CAAASL;
-    mensajeAdvertenciaPGC ( CA );
-    if ( formDatosBalance ( CA ) && Arboles() )
-        balanceSituacionODS ( CA );
-*/
+   mensajeAdvertenciaPGC ((CAnuales)CAAASL);
+	formDatosBalance("inf_caaasl.pys");
 }
 
 void pluginBC_caaslODS::balsitCAPGC07 ()
 {
-/*
-    CAnuales CA = CAPGC07;
-    mensajeAdvertenciaPGC ( CA );
-    if ( formDatosBalance ( CA ) && Arboles() )
-        balanceSituacionODS ( CA );
-*/
+   mensajeAdvertenciaPGC ( (CAnuales)CAPGC07);
+   formDatosBalance("inf_capgc07.pys");
 }
 
 void pluginBC_caaslODS::balsitCAPYMES08 ()
 {
-/*
-    CAnuales CA = CAPYMES08;
-    mensajeAdvertenciaPGC ( CA );
-    if ( formDatosBalance ( CA ) && Arboles() )
-        balanceSituacionODS ( CA );
-*/
+   mensajeAdvertenciaPGC ( (CAnuales)CAPYMES08);
+   formDatosBalance("inf_capymes08.pys");
 }
 
 void pluginBC_caaslODS::balsitCAPGC08()
 {
-/*
-    CAnuales CA = CAPGC08;
-    mensajeAdvertenciaPGC ( CA );
-    if ( formDatosBalance ( CA ) && Arboles() )
-        balanceSituacionODS ( CA );
-*/
+   mensajeAdvertenciaPGC ( (CAnuales)CAPGC08 );
+   formDatosBalance("inf_capgc08.pys");
 }
 
 void pluginBC_caaslODS::balsitCAAPGC08()
 {
-/*
-    CAnuales CA = CAAPGC08;
-    mensajeAdvertenciaPGC ( CA );
-    if ( formDatosBalance ( CA ) && Arboles() )
-        balanceSituacionODS ( CA );
-*/
+   mensajeAdvertenciaPGC ( (CAnuales)CAAPGC08 );
+   formDatosBalance("inf_caapgc08.pys");
 }
 
 void pluginBC_caaslODS::mensajeAdvertenciaPGC ( CAnuales tipus )

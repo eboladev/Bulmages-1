@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-02-15 23:52+0100\n"
+"POT-Creation-Date: 2009-05-12 23:58+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -16,25 +16,9 @@ msgstr ""
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: pluginprofesor.cpp:96
-msgid "&Profesores"
-msgstr ""
-
-#: pluginprofesor.cpp:98 pluginprofesor.cpp:99 profesoreslist.cpp:144
+#: profesoreslist.cpp:144 pluginbf_profesor.cpp:101 pluginbf_profesor.cpp:102
 #: ui_profesoreslistbase.h:308
 msgid "Profesores"
-msgstr ""
-
-#: pluginprofesor.cpp:104
-msgid "&Nuevo Profesor"
-msgstr ""
-
-#: pluginprofesor.cpp:106 pluginprofesor.cpp:107
-msgid "Nuevo profesor"
-msgstr ""
-
-#: pluginprofesor.cpp:112
-msgid "About FAPAC"
 msgstr ""
 
 #: profesoreslist.cpp:160
@@ -83,6 +67,22 @@ msgstr ""
 
 #: profesorview.cpp:97
 msgid "Tiene que guardar el documento antes de poder imprimirlo."
+msgstr ""
+
+#: pluginbf_profesor.cpp:99
+msgid "&Profesores"
+msgstr ""
+
+#: pluginbf_profesor.cpp:107
+msgid "&Nuevo profesor"
+msgstr ""
+
+#: pluginbf_profesor.cpp:109 pluginbf_profesor.cpp:110
+msgid "Nuevo profesor"
+msgstr ""
+
+#: pluginbf_profesor.cpp:115
+msgid "About FAPAC"
 msgstr ""
 
 #: ui_profesorbase.h:468 ui_profesoreslistbase.h:317

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-02-26 01:18+0100\n"
+"POT-Creation-Date: 2009-05-12 23:58+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -122,7 +122,7 @@ msgstr "&Aceptar"
 msgid "&Cancelar"
 msgstr "&Cancelar"
 
-#: plugincompraventa.cpp:78
+#: pluginbf_compraventa.cpp:78
 msgid "&CompraVenta"
 msgstr "&CompraVenta"
 
@@ -203,7 +203,7 @@ msgstr "Comentarios publicos:"
 msgid "Compra Venta"
 msgstr "Compra Venta"
 
-#: plugincompraventa.cpp:79 plugincompraventa.cpp:80
+#: pluginbf_compraventa.cpp:79 pluginbf_compraventa.cpp:80
 msgid "CompraVenta"
 msgstr "CompraVenta"
 
@@ -235,7 +235,7 @@ msgstr "Error al crear el albaran a cliente"
 msgid "Error inesperado"
 msgstr "Error inesperado"
 
-#: compraventaview.cpp:714
+#: compraventaview.cpp:715
 msgid "Error inesperado en la impresion"
 msgstr "Error inesperado en la impresion"
 
@@ -383,7 +383,7 @@ msgstr "Telefono de contacto"
 msgid "Telefono de contacto:"
 msgstr "Telefono de contacto:"
 
-#: compraventaview.cpp:710
+#: compraventaview.cpp:711
 msgid "Tiene que guardar el documento antes de poder procesarlo."
 msgstr "Tiene que guardar el documento antes de poder procesarlo."
 

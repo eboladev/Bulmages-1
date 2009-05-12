@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-02-15 23:52+0100\n"
+"POT-Creation-Date: 2009-05-12 23:58+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -128,7 +128,7 @@ msgstr ""
 msgid "Comentarios"
 msgstr ""
 
-#: pedidoclienteview.cpp:70 ui_pedidoclientebase.h:692
+#: pedidoclienteview.cpp:70 ui_pedidoclientebase.h:686
 msgid "Procesado"
 msgstr ""
 
@@ -171,23 +171,6 @@ msgstr ""
 msgid "Error inesperado"
 msgstr ""
 
-#: pluginpedido.cpp:98
-msgid "&Pedidos de clientes"
-msgstr ""
-
-#: pluginpedido.cpp:100 pluginpedido.cpp:101 pedidosclientelist.cpp:241
-#: ui_pedidosclientelistbase.h:376
-msgid "Pedidos de clientes"
-msgstr ""
-
-#: pluginpedido.cpp:106
-msgid "&Nueva pedido de cliente"
-msgstr ""
-
-#: pluginpedido.cpp:108 pluginpedido.cpp:109
-msgid "Nueva pedido de cliente"
-msgstr ""
-
 #: pedidosclientelist.cpp:110
 msgid "Todos los pedidos"
 msgstr ""
@@ -202,6 +185,11 @@ msgstr ""
 
 #: pedidosclientelist.cpp:229
 msgid "Error al cargar el pedido cliente"
+msgstr ""
+
+#: pedidosclientelist.cpp:241 pluginbf_clientepedido.cpp:100
+#: pluginbf_clientepedido.cpp:101 ui_pedidosclientelistbase.h:376
+msgid "Pedidos de clientes"
 msgstr ""
 
 #: pedidosclientelist.cpp:255
@@ -252,114 +240,123 @@ msgstr ""
 msgid "ID almacen"
 msgstr ""
 
-#: ui_pedidoclientebase.h:644
+#: pluginbf_clientepedido.cpp:98
+msgid "&Pedidos de clientes"
+msgstr ""
+
+#: pluginbf_clientepedido.cpp:106
+msgid "&Nuevo pedido de cliente"
+msgstr ""
+
+#: pluginbf_clientepedido.cpp:108 pluginbf_clientepedido.cpp:109
+#: ui_pedidoclientebase.h:638
 msgid "Nuevo pedido de cliente"
 msgstr ""
 
-#: ui_pedidoclientebase.h:647 ui_pedidoclientebase.h:652
+#: ui_pedidoclientebase.h:641 ui_pedidoclientebase.h:646
 msgid "Guardar pedido"
 msgstr ""
 
-#: ui_pedidoclientebase.h:658 ui_pedidoclientebase.h:663
+#: ui_pedidoclientebase.h:652 ui_pedidoclientebase.h:657
 #: ui_pedidosclientelistbase.h:407 ui_pedidosclientelistbase.h:412
 msgid "Borrar pedido"
 msgstr ""
 
-#: ui_pedidoclientebase.h:669 ui_pedidoclientebase.h:674
+#: ui_pedidoclientebase.h:663 ui_pedidoclientebase.h:668
 msgid "Imprimir pedido"
 msgstr ""
 
-#: ui_pedidoclientebase.h:678 ui_presupuestoclientebase.h:761
+#: ui_pedidoclientebase.h:672 ui_presupuestoclientebase.h:758
 msgid "Referencia:"
 msgstr ""
 
-#: ui_pedidoclientebase.h:681 ui_pedidoclientebase.h:686
+#: ui_pedidoclientebase.h:675 ui_pedidoclientebase.h:680
 msgid "Mostrar/ocultar cabecera"
 msgstr ""
 
-#: ui_pedidoclientebase.h:690 ui_presupuestoclientebase.h:774
+#: ui_pedidoclientebase.h:684 ui_presupuestoclientebase.h:771
 msgid "Descripcion:"
 msgstr ""
 
-#: ui_pedidoclientebase.h:691
+#: ui_pedidoclientebase.h:685
 msgid "Numero de pedido:"
 msgstr ""
 
-#: ui_pedidoclientebase.h:693 ui_presupuestoclientebase.h:777
+#: ui_pedidoclientebase.h:687 ui_presupuestoclientebase.h:774
 msgid "Trabajador:"
 msgstr ""
 
-#: ui_pedidoclientebase.h:694 ui_presupuestoclientebase.h:778
+#: ui_pedidoclientebase.h:688 ui_presupuestoclientebase.h:775
 msgid "Fecha de creacion:"
 msgstr ""
 
-#: ui_pedidoclientebase.h:695 ui_presupuestoclientebase.h:780
+#: ui_pedidoclientebase.h:689 ui_presupuestoclientebase.h:777
 msgid "Persona de contacto:"
 msgstr ""
 
-#: ui_pedidoclientebase.h:696 ui_presupuestoclientebase.h:781
+#: ui_pedidoclientebase.h:690 ui_presupuestoclientebase.h:778
 msgid "Forma de pago:"
 msgstr ""
 
-#: ui_pedidoclientebase.h:697 ui_presupuestoclientebase.h:782
+#: ui_pedidoclientebase.h:691 ui_presupuestoclientebase.h:779
 msgid "Telefono de contacto:"
 msgstr ""
 
-#: ui_pedidoclientebase.h:698 ui_presupuestoclientebase.h:783
+#: ui_pedidoclientebase.h:692 ui_presupuestoclientebase.h:780
 msgid "Almacen:"
 msgstr ""
 
-#: ui_pedidoclientebase.h:699 ui_presupuestoclientebase.h:784
+#: ui_pedidoclientebase.h:693 ui_presupuestoclientebase.h:781
 msgid "&Detalle"
 msgstr ""
 
-#: ui_pedidoclientebase.h:700 ui_presupuestoclientebase.h:785
+#: ui_pedidoclientebase.h:694 ui_presupuestoclientebase.h:782
 msgid "Desc&uentos"
 msgstr ""
 
-#: ui_pedidoclientebase.h:701
+#: ui_pedidoclientebase.h:695
 msgid "&Comentarios"
 msgstr ""
 
-#: ui_pedidoclientebase.h:702 ui_presupuestoclientebase.h:787
+#: ui_pedidoclientebase.h:696 ui_presupuestoclientebase.h:784
 msgid "Descuentos:"
 msgstr ""
 
-#: ui_pedidoclientebase.h:703 ui_presupuestoclientebase.h:788
+#: ui_pedidoclientebase.h:697 ui_presupuestoclientebase.h:785
 msgid "Base imponible:"
 msgstr ""
 
-#: ui_pedidoclientebase.h:704 ui_presupuestoclientebase.h:789
+#: ui_pedidoclientebase.h:698 ui_presupuestoclientebase.h:786
 msgid "I.R.P.F.:"
 msgstr ""
 
-#: ui_pedidoclientebase.h:705 ui_presupuestoclientebase.h:790
+#: ui_pedidoclientebase.h:699 ui_presupuestoclientebase.h:787
 msgid "Impuestos:"
 msgstr ""
 
-#: ui_pedidoclientebase.h:706 ui_presupuestoclientebase.h:791
+#: ui_pedidoclientebase.h:700 ui_presupuestoclientebase.h:788
 msgid "R.E.:"
 msgstr ""
 
-#: ui_pedidoclientebase.h:707 ui_pedidosclientelistbase.h:466
-#: ui_presupuestoslistbase.h:451 ui_presupuestoclientebase.h:792
+#: ui_pedidoclientebase.h:701 ui_pedidosclientelistbase.h:466
+#: ui_presupuestoslistbase.h:451 ui_presupuestoclientebase.h:789
 msgid "Total:"
 msgstr ""
 
-#: ui_pedidoclientebase.h:708 ui_pedidoclientebase.h:709
-#: ui_pedidoclientebase.h:710 ui_pedidoclientebase.h:711
-#: ui_pedidoclientebase.h:712 ui_pedidoclientebase.h:713
-#: ui_presupuestoclientebase.h:793 ui_presupuestoclientebase.h:794
-#: ui_presupuestoclientebase.h:795 ui_presupuestoclientebase.h:796
-#: ui_presupuestoclientebase.h:797 ui_presupuestoclientebase.h:798
+#: ui_pedidoclientebase.h:702 ui_pedidoclientebase.h:703
+#: ui_pedidoclientebase.h:704 ui_pedidoclientebase.h:705
+#: ui_pedidoclientebase.h:706 ui_pedidoclientebase.h:707
+#: ui_presupuestoclientebase.h:790 ui_presupuestoclientebase.h:791
+#: ui_presupuestoclientebase.h:792 ui_presupuestoclientebase.h:793
+#: ui_presupuestoclientebase.h:794 ui_presupuestoclientebase.h:795
 msgid "0.00"
 msgstr ""
 
-#: ui_pedidoclientebase.h:714 ui_presupuestoclientebase.h:799
+#: ui_pedidoclientebase.h:708 ui_presupuestoclientebase.h:796
 msgid "&Aceptar"
 msgstr ""
 
-#: ui_pedidoclientebase.h:715 ui_presupuestoclientebase.h:800
+#: ui_pedidoclientebase.h:709 ui_presupuestoclientebase.h:797
 msgid "&Cancelar"
 msgstr ""
 
@@ -392,7 +389,7 @@ msgid "Ctrl+E"
 msgstr ""
 
 #: ui_pedidosclientelistbase.h:416 ui_presupuestoslistbase.h:400
-#: ui_presupuestoclientebase.h:748
+#: ui_presupuestoclientebase.h:745
 msgid "Ctrl+D"
 msgstr ""
 
@@ -402,7 +399,7 @@ msgid "Imprimir listado"
 msgstr ""
 
 #: ui_pedidosclientelistbase.h:428 ui_presupuestoslistbase.h:412
-#: ui_presupuestoclientebase.h:760
+#: ui_presupuestoclientebase.h:757
 msgid "Ctrl+P"
 msgstr ""
 
@@ -450,46 +447,46 @@ msgid "Editar presupuesto"
 msgstr ""
 
 #: ui_presupuestoslistbase.h:391 ui_presupuestoslistbase.h:396
-#: ui_presupuestoclientebase.h:739 ui_presupuestoclientebase.h:744
+#: ui_presupuestoclientebase.h:736 ui_presupuestoclientebase.h:741
 msgid "Borrar presupuesto"
 msgstr ""
 
-#: ui_presupuestoclientebase.h:724
+#: ui_presupuestoclientebase.h:721
 msgid "Nuevo presupuesto a cliente"
 msgstr ""
 
-#: ui_presupuestoclientebase.h:727 ui_presupuestoclientebase.h:732
+#: ui_presupuestoclientebase.h:724 ui_presupuestoclientebase.h:729
 msgid "Guardar presupuesto"
 msgstr ""
 
-#: ui_presupuestoclientebase.h:736
+#: ui_presupuestoclientebase.h:733
 msgid "Ctrl+S"
 msgstr ""
 
-#: ui_presupuestoclientebase.h:751 ui_presupuestoclientebase.h:756
+#: ui_presupuestoclientebase.h:748 ui_presupuestoclientebase.h:753
 msgid "Imprimir presupuesto"
 msgstr ""
 
-#: ui_presupuestoclientebase.h:764 ui_presupuestoclientebase.h:769
+#: ui_presupuestoclientebase.h:761 ui_presupuestoclientebase.h:766
 msgid "Mostrar/Ocultar cabecera"
 msgstr ""
 
-#: ui_presupuestoclientebase.h:773
+#: ui_presupuestoclientebase.h:770
 msgid "Ctrl+G"
 msgstr ""
 
-#: ui_presupuestoclientebase.h:775
+#: ui_presupuestoclientebase.h:772
 msgid "Numero de presupuesto:"
 msgstr ""
 
-#: ui_presupuestoclientebase.h:776
+#: ui_presupuestoclientebase.h:773
 msgid "Pro&cesado"
 msgstr ""
 
-#: ui_presupuestoclientebase.h:779
+#: ui_presupuestoclientebase.h:776
 msgid "Fecha de vencimiento:"
 msgstr ""
 
-#: ui_presupuestoclientebase.h:786
+#: ui_presupuestoclientebase.h:783
 msgid "Datos &generales"
 msgstr ""

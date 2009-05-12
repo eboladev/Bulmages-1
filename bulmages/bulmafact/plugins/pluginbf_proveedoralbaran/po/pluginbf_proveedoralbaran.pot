@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-02-15 23:52+0100\n"
+"POT-Creation-Date: 2009-05-12 23:58+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -179,23 +179,6 @@ msgstr ""
 msgid "Error inesperado"
 msgstr ""
 
-#: pluginalbaranprov.cpp:96
-msgid "&Albaranes de proveedores"
-msgstr ""
-
-#: pluginalbaranprov.cpp:98 pluginalbaranprov.cpp:99
-msgid "Albaranes de proveedores"
-msgstr ""
-
-#: pluginalbaranprov.cpp:104
-msgid "&Nuevo albaran de proveedor"
-msgstr ""
-
-#: pluginalbaranprov.cpp:106 pluginalbaranprov.cpp:107
-#: ui_albaranproveedorbase.h:570
-msgid "Nuevo albaran de proveedor"
-msgstr ""
-
 #: listdescalbaranprovview.cpp:40
 msgid "Id descuento"
 msgstr ""
@@ -210,6 +193,23 @@ msgstr ""
 
 #: listdescalbaranprovview.cpp:43
 msgid "Id albaran"
+msgstr ""
+
+#: pluginbf_proveedoralbaran.cpp:96
+msgid "&Albaranes de proveedores"
+msgstr ""
+
+#: pluginbf_proveedoralbaran.cpp:98 pluginbf_proveedoralbaran.cpp:99
+msgid "Albaranes de proveedores"
+msgstr ""
+
+#: pluginbf_proveedoralbaran.cpp:104
+msgid "&Nuevo albaran de proveedor"
+msgstr ""
+
+#: pluginbf_proveedoralbaran.cpp:106 pluginbf_proveedoralbaran.cpp:107
+#: ui_albaranproveedorbase.h:570
+msgid "Nuevo albaran de proveedor"
 msgstr ""
 
 #: ui_albaranesproveedorlistbase.h:421

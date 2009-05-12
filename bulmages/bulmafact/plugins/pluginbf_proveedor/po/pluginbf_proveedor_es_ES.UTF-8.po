@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-02-26 01:14+0100\n"
+"POT-Creation-Date: 2009-05-12 23:58+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -151,8 +151,8 @@ msgid "&Nombre empresa:"
 msgstr "&Nombre empresa:"
 
 #: pluginbf_proveedor.cpp:104
-msgid "&Nuevo Proveedor"
-msgstr "&Nuevo Proveedor"
+msgid "&Nuevo proveedor"
+msgstr "&Nuevo proveedor"
 
 #: pluginbf_proveedor.cpp:96
 msgid "&Proveedores"
@@ -455,3 +455,6 @@ msgstr "Ver"
 #: ui_proveditbase.h:821
 msgid "Vigentes"
 msgstr "Vigentes"
+
+#~ msgid "&Nuevo Proveedor"
+#~ msgstr "&Nuevo Proveedor"

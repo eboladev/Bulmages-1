@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-02-15 23:46+0100\n"
+"POT-Creation-Date: 2009-05-12 23:58+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -30,7 +30,10 @@ msgid "&Nuevo Articulo"
 msgstr ""
 
 #: pluginbf_articulo.cpp:135 pluginbf_articulo.cpp:136
-msgid "Nuevo cliente"
+#: pluginbf_articulo.cpp:388 pluginbf_articulo.cpp:413
+#: ui_articleeditbase.h:580 ui_articleslistbase.h:292
+#: ui_articleslistbase.h:297
+msgid "Nuevo articulo"
 msgstr ""
 
 #: pluginbf_articulo.cpp:142
@@ -47,6 +50,15 @@ msgstr ""
 
 #: pluginbf_articulo.cpp:153 pluginbf_articulo.cpp:154 ui_familiasbase.h:320
 msgid "Familias"
+msgstr ""
+
+#: pluginbf_articulo.cpp:390 pluginbf_articulo.cpp:407 articulolist.cpp:290
+#: ui_articleslistbase.h:303 ui_articleslistbase.h:308
+msgid "Editar articulo"
+msgstr ""
+
+#: pluginbf_articulo.cpp:392 pluginbf_articulo.cpp:411
+msgid "Seleccionar articulo"
 msgstr ""
 
 #: articuloview.cpp:58
@@ -186,10 +198,6 @@ msgstr ""
 
 #: articulolist.cpp:239 articulolist.cpp:264
 msgid "Clientes (*.xml)"
-msgstr ""
-
-#: articulolist.cpp:290 ui_articleslistbase.h:303 ui_articleslistbase.h:308
-msgid "Editar articulo"
 msgstr ""
 
 #: articulolist.cpp:311
@@ -367,11 +375,6 @@ msgstr ""
 
 #: ui_familiasbase.h:387 ui_articleeditbase.h:639 ui_tiposarticulobase.h:241
 msgid "&Cancelar"
-msgstr ""
-
-#: ui_articleeditbase.h:580 ui_articleslistbase.h:292
-#: ui_articleslistbase.h:297
-msgid "Nuevo articulo"
 msgstr ""
 
 #: ui_articleeditbase.h:584 ui_articleeditbase.h:589

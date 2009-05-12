@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-02-26 01:06+0100\n"
+"POT-Creation-Date: 2009-05-12 23:58+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,12 +18,12 @@ msgstr ""
 "#-#-#-#-#  bulmalib_ca_ES.UTF-8.po (PACKAGE VERSION)  #-#-#-#-#\n"
 "X-Generator: Translate Toolkit 1.1.1\n"
 
-#: pluginbalancetree.cpp:96
+#: pluginbc_balancearbol.cpp:96
 #, fuzzy
 msgid "&Balance jerarquico"
 msgstr "Balanç jeràrquic"
 
-#: pluginbalancetree.cpp:92
+#: pluginbc_balancearbol.cpp:92
 msgid "&Ver"
 msgstr "&Veure"
 
@@ -126,12 +126,12 @@ msgstr ""
 msgid "Nombre de la cuenta"
 msgstr "Nom del compte"
 
-#: pluginbalancetree.cpp:97
+#: pluginbc_balancearbol.cpp:97
 #, fuzzy
 msgid "Permite realizar balances"
 msgstr "Actualitza balanç"
 
-#: pluginbalancetree.cpp:98
+#: pluginbc_balancearbol.cpp:98
 msgid "Podra disponer de la informacion del balance"
 msgstr ""
 
@@ -192,7 +192,7 @@ msgstr "Veure extracte (aquest dia)"
 msgid "Ver extracto (este mes)"
 msgstr "Veure extracte (aquest mes)"
 
-#: pluginbalancetree.cpp:88
+#: pluginbc_balancearbol.cpp:88
 #, fuzzy
 msgid "menuVentana"
 msgstr "Finestre"

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-02-26 01:05+0100\n"
+"POT-Creation-Date: 2009-05-12 23:58+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -118,11 +118,11 @@ msgstr ""
 msgid "Form"
 msgstr "Form"
 
-#: admin.cpp:17
+#: admin.cpp:20
 msgid "Realmente desea Realizar la Z?"
 msgstr "Realmente desea Realizar la Z?"
 
-#: admin.cpp:34
+#: admin.cpp:37
 msgid "Realmente desea abandonar el programa?"
 msgstr "Realmente desea abandonar el programa?"
 
@@ -130,7 +130,7 @@ msgstr "Realmente desea abandonar el programa?"
 msgid "SALIR"
 msgstr "SALIR"
 
-#: admin.cpp:16 admin.cpp:33
+#: admin.cpp:19 admin.cpp:36
 msgid "Salir"
 msgstr "Salir"
 

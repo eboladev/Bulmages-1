@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-02-15 23:52+0100\n"
+"POT-Creation-Date: 2009-05-12 23:58+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -156,23 +156,6 @@ msgstr ""
 msgid "Total "
 msgstr ""
 
-#: pluginfacturaprov.cpp:96
-msgid "&Facturas proveedores"
-msgstr ""
-
-#: pluginfacturaprov.cpp:98 pluginfacturaprov.cpp:99 facturasplist.cpp:267
-#: ui_facturasplistbase.h:372
-msgid "Facturas de proveedores"
-msgstr ""
-
-#: pluginfacturaprov.cpp:104
-msgid "&Nueva factura de proveedor"
-msgstr ""
-
-#: pluginfacturaprov.cpp:106 pluginfacturaprov.cpp:107 ui_facturapbase.h:572
-msgid "Nueva factura de proveedor"
-msgstr ""
-
 #: listdescfacturaprovview.cpp:40
 msgid "Id descuento"
 msgstr ""
@@ -239,6 +222,11 @@ msgstr ""
 msgid "Error al borrar la factura de proveedor"
 msgstr ""
 
+#: facturasplist.cpp:267 pluginbf_proveedorfactura.cpp:98
+#: pluginbf_proveedorfactura.cpp:99 ui_facturasplistbase.h:372
+msgid "Facturas de proveedores"
+msgstr ""
+
 #: facturasplist.cpp:351
 msgid "Referencia factura"
 msgstr ""
@@ -273,6 +261,19 @@ msgstr ""
 
 #: facturasplist.cpp:363
 msgid "Impuestos"
+msgstr ""
+
+#: pluginbf_proveedorfactura.cpp:96
+msgid "&Facturas proveedores"
+msgstr ""
+
+#: pluginbf_proveedorfactura.cpp:104
+msgid "&Nueva factura de proveedor"
+msgstr ""
+
+#: pluginbf_proveedorfactura.cpp:106 pluginbf_proveedorfactura.cpp:107
+#: ui_facturapbase.h:572
+msgid "Nueva factura de proveedor"
 msgstr ""
 
 #: ui_facturasplistbase.h:373

@@ -1786,7 +1786,7 @@ QString BlSubForm::dbValue ( const QString &campo, int row )
         _depura ( "END BlSubForm::dbValue", 0 );
         return rec->dbValue ( campo );
     } catch ( ... ) {
-        mensajeInfo ( "Fila inexistente" );
+        mensajeInfo ( _ ("Fila inexistente" ));
         throw - 1;
     }
 }
@@ -1812,7 +1812,7 @@ void BlSubForm::setDbValue ( const QString &campo, int row, const QString &valor
         rec->setDbValue ( campo, valor );
         _depura ( "END BlSubForm::setDbValue", 0 );
     } catch ( ... ) {
-        mensajeInfo ( "Fila inexistente" );
+        mensajeInfo ( _ ("Fila inexistente" ) );
         throw - 1;
     }
 }
@@ -1883,7 +1883,7 @@ int BlSubForm::guardar()
             throw - 1;
         } // end if
     } catch ( ... ) {
-        mensajeError ( "Error inesperado en el guardado. [BlSubForm::guardar]" );
+        mensajeError ( _ ("Error inesperado en el guardado. [BlSubForm::guardar]" ) );
         throw - 1;
     } // end try
     return -1;
@@ -1920,7 +1920,7 @@ int BlSubForm::borrar()
         _depura ( "END BlSubForm::borrar", 0 );
         return error;
     } catch ( ... ) {
-        mensajeError ( "Error al borrar. [BlSubForm::borrar]" );
+        mensajeError ( _ ("Error al borrar. [BlSubForm::borrar]" ));
         return -1;
     } // end try
 }
@@ -1978,7 +1978,7 @@ int BlSubForm::borrar ( int row )
         return 0;
 
     } catch ( ... ) {
-        mensajeInfo ( "Error al intentar borrar" );
+        mensajeInfo ( _ ("Error al intentar borrar" ) );
         _depura ( "BlSubForm::borrar error al borrar", 3 );
         throw - 1;
     } // end try
@@ -2309,7 +2309,7 @@ void BlSubForm::on_mui_confquery_clicked()
 {
     _depura ( "BlSubForm::on_mui_confquery_clicked ", 0 );
     if ( mainCompany() == NULL ) {
-        mensajeInfo ( "no se ha inicializado bien la clase" );
+        mensajeInfo ( _ ("no se ha inicializado bien la clase" ) );
         return;
     } // end if
     mui_paginaact->setValue ( 1 );
@@ -2327,7 +2327,7 @@ void BlSubForm::confquery()
 {
     _depura ( "BlSubForm::confquery", 0 );
     if ( mainCompany() == NULL ) {
-        mensajeInfo ( "no se ha inicializado bien la clase" );
+        mensajeInfo ( _ ("no se ha inicializado bien la clase" ) );
         return;
     } // end if
 

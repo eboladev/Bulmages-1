@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-02-15 23:52+0100\n"
+"POT-Creation-Date: 2009-05-12 23:58+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -16,11 +16,11 @@ msgstr ""
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: plugincompraventa.cpp:78
+#: pluginbf_compraventa.cpp:78
 msgid "&CompraVenta"
 msgstr ""
 
-#: plugincompraventa.cpp:79 plugincompraventa.cpp:80
+#: pluginbf_compraventa.cpp:79 pluginbf_compraventa.cpp:80
 msgid "CompraVenta"
 msgstr ""
 
@@ -168,11 +168,11 @@ msgid ""
 "Desea abrirla para verificar?"
 msgstr ""
 
-#: compraventaview.cpp:710
+#: compraventaview.cpp:711
 msgid "Tiene que guardar el documento antes de poder procesarlo."
 msgstr ""
 
-#: compraventaview.cpp:714
+#: compraventaview.cpp:715
 msgid "Error inesperado en la impresion"
 msgstr ""
 

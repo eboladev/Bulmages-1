@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-02-26 01:29+0100\n"
+"POT-Creation-Date: 2009-05-12 23:58+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,89 +18,89 @@ msgstr ""
 "#-#-#-#-#  bulmalib_ca_ES.UTF-8.po (PACKAGE VERSION)  #-#-#-#-#\n"
 "X-Generator: Translate Toolkit 1.1.1\n"
 
-#: ui_tecladonumericobase.h:356
+#: ui_tecladonumericobase.h:357
 msgid "+"
 msgstr "+"
 
-#: ui_tecladonumericobase.h:357
+#: ui_tecladonumericobase.h:358
 msgid "-"
 msgstr "-"
 
-#: ui_tecladonumericobase.h:366
+#: ui_tecladonumericobase.h:367
 msgid "."
 msgstr "."
 
-#: ui_tecladonumericobase.h:363
+#: ui_tecladonumericobase.h:364
 msgid "0"
 msgstr "0"
 
-#: ui_tecladonumericobase.h:364
+#: ui_tecladonumericobase.h:365
 msgid "00"
 msgstr "00"
 
-#: ui_tecladonumericobase.h:351
+#: ui_tecladonumericobase.h:352
 msgid "1"
 msgstr "1"
 
-#: ui_tecladonumericobase.h:349
+#: ui_tecladonumericobase.h:350
 #, fuzzy
 msgid "2"
 msgstr "F2"
 
-#: ui_tecladonumericobase.h:347
+#: ui_tecladonumericobase.h:348
 msgid "3"
 msgstr ""
 
-#: ui_tecladonumericobase.h:353
+#: ui_tecladonumericobase.h:354
 msgid "4"
 msgstr ""
 
-#: ui_tecladonumericobase.h:354
+#: ui_tecladonumericobase.h:355
 #, fuzzy
 msgid "5"
 msgstr "F5"
 
-#: ui_tecladonumericobase.h:355
+#: ui_tecladonumericobase.h:356
 msgid "6"
 msgstr ""
 
-#: ui_tecladonumericobase.h:352
+#: ui_tecladonumericobase.h:353
 msgid "7"
 msgstr ""
 
-#: ui_tecladonumericobase.h:350
+#: ui_tecladonumericobase.h:351
 msgid "8"
 msgstr ""
 
-#: ui_tecladonumericobase.h:348
+#: ui_tecladonumericobase.h:349
 msgid "9"
 msgstr ""
 
-#: ui_tecladonumericobase.h:360
+#: ui_tecladonumericobase.h:361
 msgid "ARTIC"
 msgstr "ARTIC"
 
-#: ui_tecladonumericobase.h:359
+#: ui_tecladonumericobase.h:360
 msgid "C"
 msgstr "C"
 
-#: ui_tecladonumericobase.h:361
+#: ui_tecladonumericobase.h:362
 msgid "CANT"
 msgstr "CANT"
 
-#: ui_tecladonumericobase.h:358
+#: ui_tecladonumericobase.h:359
 msgid "DEL"
 msgstr "DEL"
 
-#: ui_tecladonumericobase.h:346
+#: ui_tecladonumericobase.h:347
 msgid "Form"
 msgstr "Form"
 
-#: ui_tecladonumericobase.h:365
+#: ui_tecladonumericobase.h:366
 msgid "MESA"
 msgstr "TAULA"
 
-#: ui_tecladonumericobase.h:362
+#: ui_tecladonumericobase.h:363
 msgid "PRECIO"
 msgstr "PREU"
 

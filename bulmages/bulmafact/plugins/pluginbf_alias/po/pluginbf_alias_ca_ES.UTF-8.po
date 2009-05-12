@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-02-26 01:05+0100\n"
+"POT-Creation-Date: 2009-05-12 23:58+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,17 +18,17 @@ msgstr ""
 "#-#-#-#-#  bulmalib_ca_ES.UTF-8.po (PACKAGE VERSION)  #-#-#-#-#\n"
 "X-Generator: Translate Toolkit 1.1.1\n"
 
-#: pluginalias.cpp:109
+#: pluginbf_alias.cpp:112
 #, fuzzy
 msgid "Alias"
 msgstr "Aplicar"
 
-#: pluginalias.cpp:110
+#: pluginbf_alias.cpp:113
 #, fuzzy
 msgid "Id articulo"
 msgstr "<P> Article <B>"
 
-#: pluginalias.cpp:111
+#: pluginbf_alias.cpp:114
 #, fuzzy
 msgid "Id validacion"
 msgstr "Id amortizació"

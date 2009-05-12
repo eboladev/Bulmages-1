@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-02-15 23:52+0100\n"
+"POT-Creation-Date: 2009-05-12 23:58+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -16,82 +16,82 @@ msgstr ""
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: pluginclientprov.cpp:60
+#: pluginbf_clienteproveedor.cpp:60
 msgid "ID proveedor"
 msgstr ""
 
-#: pluginclientprov.cpp:61
+#: pluginbf_clienteproveedor.cpp:61
 msgid "Nombre del proveedor"
 msgstr ""
 
-#: pluginclientprov.cpp:62
+#: pluginbf_clienteproveedor.cpp:62
 msgid "Nombre alternativo del proveedor"
 msgstr ""
 
-#: pluginclientprov.cpp:63
+#: pluginbf_clienteproveedor.cpp:63
 msgid "C.I.F. del proveedor"
 msgstr ""
 
-#: pluginclientprov.cpp:64
+#: pluginbf_clienteproveedor.cpp:64
 msgid "Codigo cliente"
 msgstr ""
 
-#: pluginclientprov.cpp:65
+#: pluginbf_clienteproveedor.cpp:65
 msgid "Banco proveedor"
 msgstr ""
 
-#: pluginclientprov.cpp:66
+#: pluginbf_clienteproveedor.cpp:66
 msgid "Direccion"
 msgstr ""
 
-#: pluginclientprov.cpp:67
+#: pluginbf_clienteproveedor.cpp:67
 msgid "Poblacion"
 msgstr ""
 
-#: pluginclientprov.cpp:68
+#: pluginbf_clienteproveedor.cpp:68
 msgid "Provincia"
 msgstr ""
 
-#: pluginclientprov.cpp:69
+#: pluginbf_clienteproveedor.cpp:69
 msgid "Codigo postal"
 msgstr ""
 
-#: pluginclientprov.cpp:70
+#: pluginbf_clienteproveedor.cpp:70
 msgid "Numero de telefono"
 msgstr ""
 
-#: pluginclientprov.cpp:71
+#: pluginbf_clienteproveedor.cpp:71
 msgid "Numero de fax"
 msgstr ""
 
-#: pluginclientprov.cpp:72
+#: pluginbf_clienteproveedor.cpp:72
 msgid "Direccion electronica"
 msgstr ""
 
-#: pluginclientprov.cpp:73
+#: pluginbf_clienteproveedor.cpp:73
 msgid "URL"
 msgstr ""
 
-#: pluginclientprov.cpp:74
+#: pluginbf_clienteproveedor.cpp:74
 msgid "Comentarios"
 msgstr ""
 
-#: pluginclientprov.cpp:75
+#: pluginbf_clienteproveedor.cpp:75
 msgid "Codigo"
 msgstr ""
 
-#: pluginclientprov.cpp:76
+#: pluginbf_clienteproveedor.cpp:76
 msgid "Regimen fiscal"
 msgstr ""
 
-#: pluginclientprov.cpp:77
+#: pluginbf_clienteproveedor.cpp:77
 msgid "Id forma de pago"
 msgstr ""
 
-#: pluginclientprov.cpp:78
+#: pluginbf_clienteproveedor.cpp:78
 msgid "Recargo de equivalencia"
 msgstr ""
 
-#: pluginclientprov.cpp:79
+#: pluginbf_clienteproveedor.cpp:79
 msgid "IRPF"
 msgstr ""

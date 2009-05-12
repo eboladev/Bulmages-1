@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-02-26 01:04+0100\n"
+"POT-Creation-Date: 2009-05-12 23:58+0200\n"
 "PO-Revision-Date: 2009-01-26 09:32+0100\n"
 "Language-Team:  <es@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -13,7 +13,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: KBabel 1.11.4\n"
 
-#: bfproveedoralbaransubform.cpp:56 bfclientealbarandescuentosubform.cpp:43
+#: bfclientealbarandescuentosubform.cpp:43 bfproveedoralbaransubform.cpp:56
 #: bfclientealbaransubform.cpp:54
 msgid "% Descuento"
 msgstr "% Discount"
@@ -34,19 +34,19 @@ msgstr "% Surcharge E.Q."
 msgid "&Aceptar"
 msgstr "&Accept"
 
-#: ui_bfaboutbase.h:288
+#: ui_bfaboutbase.h:287
 msgid "&Acerca de"
 msgstr "&About"
 
 #: ui_bfbulmafactbase.h:160
-msgid "&Acerca de BulmaFact"
-msgstr "&About BulmaFact"
+msgid "&Acerca de Iglues/BulmaFact"
+msgstr ""
 
 #: ui_bfseriefacturabase.h:83 ui_bfconfiguracionbase.h:119
 msgid "&Cancelar"
 msgstr "&Cancel"
 
-#: ui_bfaboutbase.h:297
+#: ui_bfaboutbase.h:296
 msgid "&Cerrar"
 msgstr "&Close"
 
@@ -66,21 +66,21 @@ msgstr "&Properties of the company..."
 msgid "&Salir del programa"
 msgstr "&To leave the program"
 
-#: ui_bfaboutbase.h:289
+#: ui_bfaboutbase.h:288
 msgid ""
 "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/"
 "REC-html40/strict.dtd\">\n"
 "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css"
 "\">\n"
 "p, li { white-space: pre-wrap; }\n"
-"</style></head><body style=\" font-family:'Sans Serif'; font-size:10pt; font-"
+"</style></head><body style=\" font-family:'Sans Serif'; font-size:7pt; font-"
 "weight:400; font-style:normal;\">\n"
 "<p style=\"-qt-paragraph-type:empty; margin-top:12px; margin-bottom:12px; "
 "margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-"
 "size:9pt;\"></p></body></html>"
 msgstr ""
 
-#: ui_bfaboutbase.h:294
+#: ui_bfaboutbase.h:293
 msgid "A&utores"
 msgstr "A&uthors"
 
@@ -92,11 +92,11 @@ msgstr "A&id"
 msgid "Abre todos los documentos con esta referencia"
 msgstr ""
 
-#: ui_bfaboutbase.h:285
-msgid "Acerca de BulmaFact"
-msgstr "About BulmaFact"
+#: ui_bfaboutbase.h:284
+msgid "Acerca de Iglues/BulmaFact"
+msgstr ""
 
-#: ui_bfaboutbase.h:296
+#: ui_bfaboutbase.h:295
 msgid "Acuerdo de &licencia"
 msgstr "Licensing &agreement"
 
@@ -109,19 +109,15 @@ msgstr "Article"
 msgid "Articulo:"
 msgstr "Article:"
 
-#: fichabf.cpp:369
+#: bfform.cpp:447
 msgid "Base Imponible"
 msgstr "Tax basis"
-
-#: ui_bfbulmafactbase.h:149
-msgid "BulmaFact - Facturacion GPL"
-msgstr "BulmaFact - Invoicing GPL"
 
 #: bfproveedoralbaransubform.cpp:52 bfclientealbaransubform.cpp:50
 msgid "Cantidad"
 msgstr "Amount"
 
-#: main.cxx:153
+#: main.cxx:159
 msgid "Cargando plugins"
 msgstr ""
 
@@ -137,7 +133,7 @@ msgstr "Complete code article"
 msgid "Codigo serie factura"
 msgstr "Code series invoices"
 
-#: bfaboutview.cpp:41
+#: bfaboutview.cpp:40
 msgid "Compilado usando la version de QT:"
 msgstr "Compiled using the QT version:"
 
@@ -165,7 +161,7 @@ msgstr "Description"
 msgid "Descripcion serie factura"
 msgstr "Description series invoices"
 
-#: fichabf.cpp:336
+#: bfform.cpp:412
 msgid "Descuento"
 msgstr "Discount"
 
@@ -173,7 +169,7 @@ msgstr "Discount"
 msgid "E&mpresa"
 msgstr "C&ompany"
 
-#: bfsubform.cpp:227
+#: bfsubform.cpp:225
 msgid ""
 "El codigo del articulo no existe.\n"
 "ATENCION: No se guadara bien el documento hasta que sea valido."
@@ -184,11 +180,11 @@ msgstr ""
 msgid "Entregado"
 msgstr "Given"
 
-#: main.cxx:182
+#: main.cxx:188
 msgid "Error inesperado en BulmaFact. El programa se cerrara."
 msgstr "Unexpected error in BulmaFact. The program was closed."
 
-#: fichabf.cpp:851
+#: bfform.cpp:929
 msgid "Error inesperado en la impresion"
 msgstr ""
 
@@ -204,7 +200,7 @@ msgstr "F11"
 msgid "Facturacion GPL"
 msgstr ""
 
-#: ui_bfaboutbase.h:287
+#: ui_bfaboutbase.h:286
 msgid "Facturacion GPL - Version 0.11.1 -"
 msgstr ""
 
@@ -222,19 +218,19 @@ msgstr "Family:"
 msgid "Fichas"
 msgstr "Cards"
 
-#: ui_bfbuscararticulobase.h:92 ui_bfbuscarreferenciabase.h:89
+#: ui_bfbuscarreferenciabase.h:89 ui_bfbuscararticulobase.h:92
 msgid "Form1"
 msgstr "Form1"
 
-#: fichabf.cpp:405
+#: bfform.cpp:483
 msgid "I.R.P.F (-"
 msgstr "I.R.P.F (-"
 
-#: fichabf.cpp:383 bfclientealbaransubform.cpp:52
+#: bfclientealbaransubform.cpp:52 bfform.cpp:461
 msgid "I.V.A."
 msgstr "I.V.A."
 
-#: bfproveedoralbaransubform.cpp:57 bfclientealbarandescuentosubform.cpp:44
+#: bfclientealbarandescuentosubform.cpp:44 bfproveedoralbaransubform.cpp:57
 #: bfclientealbaransubform.cpp:55
 msgid "Id albaran"
 msgstr "Id letters patent"
@@ -245,6 +241,10 @@ msgstr "Id article"
 
 #: bfclientealbarandescuentosubform.cpp:41
 msgid "Id descuento"
+msgstr ""
+
+#: ui_bfbulmafactbase.h:149
+msgid "Iglues/BulmaFact - Facturacion GPL"
 msgstr ""
 
 #: ui_bfbulmafactbase.h:164 ui_bfbulmafactbase.h:167
@@ -259,19 +259,19 @@ msgstr ""
 msgid "Informe por referencia"
 msgstr ""
 
-#: main.cxx:165
+#: main.cxx:171
 msgid "Inicializando componentes"
 msgstr ""
 
-#: main.cxx:82
+#: main.cxx:103
 msgid "Iniciando clases"
 msgstr "Initiating classes"
 
-#: main.cxx:159
+#: main.cxx:165
 msgid "Lanzando plugins"
 msgstr ""
 
-#: main.cxx:122
+#: main.cxx:129
 msgid "Leyendo configuracion"
 msgstr "Reading configuration"
 
@@ -333,7 +333,7 @@ msgstr ""
 msgid "Pedido"
 msgstr "Order"
 
-#: fichabf.cpp:337
+#: bfform.cpp:413
 msgid "Porcentaje"
 msgstr "Percentage"
 
@@ -345,11 +345,11 @@ msgstr "Price"
 msgid "Pres."
 msgstr "Pres."
 
-#: ui_bfconfiguracionbase.h:117 ui_bfbulmafactbase.h:155
+#: ui_bfbulmafactbase.h:155 ui_bfconfiguracionbase.h:117
 msgid "Propiedades de la empresa"
 msgstr "Properties of the company"
 
-#: fichabf.cpp:398
+#: bfform.cpp:476
 msgid "R.E."
 msgstr "R.E."
 
@@ -365,15 +365,15 @@ msgstr ""
 msgid "Series de factura"
 msgstr "Series of invoice"
 
-#: ui_bfaboutbase.h:295
+#: ui_bfaboutbase.h:294
 msgid "Sopor&te"
 msgstr "Soppor&te"
 
-#: main.cxx:171
+#: main.cxx:177
 msgid "Terminado"
 msgstr "Finished"
 
-#: fichabf.cpp:847
+#: bfform.cpp:925
 msgid "Tiene que guardar el documento antes de poder procesarlo."
 msgstr ""
 
@@ -382,11 +382,11 @@ msgstr ""
 msgid "Tipo Articulo:"
 msgstr "Article Type "
 
-#: fichabf.cpp:409
+#: bfform.cpp:487
 msgid "Total"
 msgstr "Total"
 
-#: fichabf.cpp:338
+#: bfform.cpp:414
 msgid "Total Desc."
 msgstr "Desc Total."
 
@@ -401,6 +401,9 @@ msgstr "Wind&ow"
 #: ui_bfbulmafactbase.h:158
 msgid "Ventana &completa"
 msgstr "Complete &window"
+
+#~ msgid "&Acerca de BulmaFact"
+#~ msgstr "&About BulmaFact"
 
 #~ msgid "&Almacenes"
 #~ msgstr "&Warehouses"
@@ -457,6 +460,9 @@ msgstr "Complete &window"
 
 #~ msgid "Abreviacion"
 #~ msgstr "Abbreviation"
+
+#~ msgid "Acerca de BulmaFact"
+#~ msgstr "About BulmaFact"
 
 #~ msgid "Activar el &control de stock."
 #~ msgstr "Activate the stock &control."
@@ -520,6 +526,9 @@ msgstr "Complete &window"
 
 #~ msgid "Borrar trabajador"
 #~ msgstr "Erase worker"
+
+#~ msgid "BulmaFact - Facturacion GPL"
+#~ msgstr "BulmaFact - Invoicing GPL"
 
 #~ msgid "Buscar:"
 #~ msgstr "Look for:"

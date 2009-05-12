@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-02-26 01:04+0100\n"
+"POT-Creation-Date: 2009-05-12 23:58+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -122,54 +122,6 @@ msgstr "&Acerca de"
 msgid "&Cerrar"
 msgstr "&Cerrar"
 
-#: ui_tpvdlg.h:366
-msgid "."
-msgstr "."
-
-#: ui_tpvdlg.h:367
-msgid "0"
-msgstr "0"
-
-#: ui_tpvdlg.h:371
-msgid "00"
-msgstr "00"
-
-#: ui_tpvdlg.h:356
-msgid "1"
-msgstr "1"
-
-#: ui_tpvdlg.h:368
-msgid "2"
-msgstr "2"
-
-#: ui_tpvdlg.h:359
-msgid "3"
-msgstr "3"
-
-#: ui_tpvdlg.h:360
-msgid "4"
-msgstr "4"
-
-#: ui_tpvdlg.h:362
-msgid "5"
-msgstr "5"
-
-#: ui_tpvdlg.h:357
-msgid "6"
-msgstr "6"
-
-#: ui_tpvdlg.h:358
-msgid "7"
-msgstr "7"
-
-#: ui_tpvdlg.h:370
-msgid "8"
-msgstr "8"
-
-#: ui_tpvdlg.h:365
-msgid "9"
-msgstr "9"
-
 #: ui_btaboutbase.h:279
 msgid ""
 "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/"
@@ -194,21 +146,9 @@ msgstr ""
 "margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-"
 "size:9pt;\"></p></body></html>"
 
-#: ui_tpvdlg.h:376
-msgid "<p align=\"right\">Codigo</p>"
-msgstr "<p align=\"right\">Codigo</p>"
-
-#: ui_tpvdlg.h:377
-msgid "<p align=\"right\">Total:</p>"
-msgstr "<p align=\"right\">Total:</p>"
-
 #: ui_btaboutbase.h:284
 msgid "A&utores"
 msgstr "A&utores"
-
-#: ui_tpvdlg.h:364
-msgid "ATRÁS"
-msgstr "ATRÁS"
 
 #: ui_btaboutbase.h:275
 msgid "Acerca de BulmaFact"
@@ -222,7 +162,7 @@ msgstr "Acuerdo de &licencia"
 msgid "Administrador"
 msgstr "Administrador"
 
-#: btticket.cpp:49
+#: btticket.cpp:51
 msgid "Almacen"
 msgstr "Almacen"
 
@@ -230,27 +170,15 @@ msgstr "Almacen"
 msgid "Anyadir"
 msgstr "Anyadir"
 
-#: ui_tpvdlg.h:361
-msgid "BORRAR"
-msgstr "BORRAR"
-
 #: ui_btbulmatpvbase.h:95
 msgid "Borrar"
 msgstr "Borrar"
 
-#: ui_tpvdlg.h:355 ui_btbulmatpvbase.h:87
-msgid "BulmaTPV"
-msgstr "BulmaTPV"
-
-#: ui_tpvdlg.h:372
-msgid "Cambio Operador"
-msgstr "Cambio Operador"
-
-#: ui_tpvdlg.h:380 btticket.cpp:86
+#: btticket.cpp:89
 msgid "Cantidad"
 msgstr "Cantidad"
 
-#: main.cxx:140
+#: main.cxx:160
 msgid "Cargando plugins"
 msgstr "Cargando plugins"
 
@@ -258,15 +186,11 @@ msgstr "Cargando plugins"
 msgid "Cerrar"
 msgstr "Cerrar"
 
-#: btticket.cpp:48
+#: btticket.cpp:50
 msgid "Cliente"
 msgstr "Cliente"
 
-#: ui_tpvdlg.h:378
-msgid "Codigo"
-msgstr "Codigo"
-
-#: btticket.cpp:94
+#: btticket.cpp:97
 msgid "Codigo articulo"
 msgstr "Codigo articulo"
 
@@ -274,19 +198,19 @@ msgstr "Codigo articulo"
 msgid "Compilado usando la version de QT:"
 msgstr "Compilado usando la version de QT:"
 
-#: ui_tpvdlg.h:379 btticket.cpp:42
+#: btticket.cpp:44
 msgid "Descripcion"
 msgstr "Descripcion"
 
-#: ui_tpvdlg.h:381 btticket.cpp:89
+#: btticket.cpp:92
 msgid "Descuento"
 msgstr "Descuento"
 
-#: btticket.cpp:941
+#: btticket.cpp:982
 msgid "El ticket esta vacio."
 msgstr "El ticket esta vacio."
 
-#: main.cxx:173
+#: main.cxx:189
 msgid "Error inesperado en BulmaTPV. El programa se cerrara."
 msgstr "Error inesperado en BulmaTPV. El programa se cerrara."
 
@@ -298,35 +222,35 @@ msgstr "Estadisticas"
 msgid "Facturacion GPL - Version 0.10.1 -"
 msgstr "Facturacion GPL - Version 0.10.1 -"
 
-#: btticket.cpp:46
+#: btticket.cpp:48
 msgid "Hora"
 msgstr "Hora"
 
-#: btticket.cpp:88
+#: btticket.cpp:91
 msgid "IVA"
 msgstr "IVA"
 
-#: btticket.cpp:84
+#: btticket.cpp:87
 msgid "Id Albaran"
 msgstr "Id Albaran"
 
-#: btticket.cpp:44
+#: btticket.cpp:46
 msgid "Id albaran"
 msgstr "Id albaran"
 
-#: btticket.cpp:93
+#: btticket.cpp:96
 msgid "Id articulo"
 msgstr "Id articulo"
 
-#: btticket.cpp:45
+#: btticket.cpp:47
 msgid "Id fechaalbaran"
 msgstr "Id fechaalbaran"
 
-#: btticket.cpp:53
+#: btticket.cpp:55
 msgid "Id forma de pago"
 msgstr "Id forma de pago"
 
-#: btticket.cpp:85
+#: btticket.cpp:88
 msgid "Id lalbaran"
 msgstr "Id lalbaran"
 
@@ -334,7 +258,11 @@ msgstr "Id lalbaran"
 msgid "Identificacion"
 msgstr "Identificacion"
 
-#: main.cxx:152
+#: ui_btbulmatpvbase.h:87
+msgid "Iglues/BtBulmaTPV"
+msgstr "Iglues/BulmaTPV"
+
+#: main.cxx:172
 msgid "Inicializando componentes"
 msgstr "Inicializando componentes"
 
@@ -342,15 +270,15 @@ msgstr "Inicializando componentes"
 msgid "Inicializando listado de articulos"
 msgstr "Inicializando listado de articulos"
 
-#: main.cxx:70
+#: main.cxx:104
 msgid "Iniciando clases"
 msgstr "Iniciando clases"
 
-#: main.cxx:146
+#: main.cxx:166
 msgid "Lanzando plugins"
 msgstr "Lanzando plugins"
 
-#: main.cxx:109
+#: main.cxx:130
 msgid "Leyendo configuracion"
 msgstr "Leyendo configuracion"
 
@@ -358,23 +286,19 @@ msgstr "Leyendo configuracion"
 msgid "Modificar"
 msgstr "Modificar"
 
-#: ui_tpvdlg.h:363
-msgid "NO"
-msgstr "NO"
-
-#: btticket.cpp:43
+#: btticket.cpp:45
 msgid "Nombre"
 msgstr "Nombre"
 
-#: btticket.cpp:95 btticket.cpp:96
+#: btticket.cpp:98 btticket.cpp:99
 msgid "Nombre articulo"
 msgstr "Nombre articulo"
 
-#: btticket.cpp:50
+#: btticket.cpp:52
 msgid "Num"
 msgstr "Num"
 
-#: btticket.cpp:90
+#: btticket.cpp:93
 msgid "Orden"
 msgstr "Orden"
 
@@ -382,7 +306,7 @@ msgstr "Orden"
 msgid "Pendiente"
 msgstr "Pendiente"
 
-#: btticket.cpp:87
+#: btticket.cpp:90
 msgid "Precio"
 msgstr "Precio"
 
@@ -390,24 +314,16 @@ msgstr "Precio"
 msgid "Preferencias"
 msgstr "Preferencias"
 
-#: btticket.cpp:51
+#: btticket.cpp:53
 msgid "Referencia"
 msgstr "Referencia"
 
-#: btticket.cpp:91
+#: btticket.cpp:94
 msgid "Req. eq."
 msgstr "Req. eq."
 
-#: ui_tpvdlg.h:369
-msgid "SI"
-msgstr "SI"
-
-#: ui_tpvdlg.h:373
-msgid "Seleccion Cliente"
-msgstr "Seleccion Cliente"
-
 #: ui_btbulmatpvbase.h:88
-msgid "Sobre BulmaTPV"
+msgid "Sobre BtBulmaTPV"
 msgstr "Sobre BulmaTPV"
 
 #: ui_btbulmatpvbase.h:89
@@ -422,7 +338,7 @@ msgstr "Sobre Qt"
 msgid "Sopor&te"
 msgstr "Sopor&te"
 
-#: main.cxx:158
+#: main.cxx:178
 msgid "Terminado"
 msgstr "Terminado"
 
@@ -430,17 +346,85 @@ msgstr "Terminado"
 msgid "Terminal Punto de Venta GPL"
 msgstr "Terminal Punto de Venta GPL"
 
-#: btticket.cpp:52
+#: btticket.cpp:54
 msgid "Ticket"
 msgstr "Ticket"
 
-#: btticket.cpp:47
+#: btticket.cpp:49
 msgid "Trabajador"
 msgstr "Trabajador"
 
-#: ui_tpvdlg.h:374 ui_tpvdlg.h:375
-msgid "pushButton18"
-msgstr "pushButton18"
+#~ msgid "."
+#~ msgstr "."
+
+#~ msgid "0"
+#~ msgstr "0"
+
+#~ msgid "00"
+#~ msgstr "00"
+
+#~ msgid "1"
+#~ msgstr "1"
+
+#~ msgid "2"
+#~ msgstr "2"
+
+#~ msgid "3"
+#~ msgstr "3"
+
+#~ msgid "4"
+#~ msgstr "4"
+
+#~ msgid "5"
+#~ msgstr "5"
+
+#~ msgid "6"
+#~ msgstr "6"
+
+#~ msgid "7"
+#~ msgstr "7"
+
+#~ msgid "8"
+#~ msgstr "8"
+
+#~ msgid "9"
+#~ msgstr "9"
+
+#~ msgid "<p align=\"right\">Codigo</p>"
+#~ msgstr "<p align=\"right\">Codigo</p>"
+
+#~ msgid "<p align=\"right\">Total:</p>"
+#~ msgstr "<p align=\"right\">Total:</p>"
+
+#~ msgid "ATRÁS"
+#~ msgstr "ATRÁS"
+
+#~ msgid "BORRAR"
+#~ msgstr "BORRAR"
+
+#~ msgid "BulmaTPV"
+#~ msgstr "BulmaTPV"
+
+#~ msgid "Cambio Operador"
+#~ msgstr "Cambio Operador"
 
 #~ msgid "Cargando traducciones"
 #~ msgstr "Cargando traducciones"
+
+#~ msgid "Codigo"
+#~ msgstr "Codigo"
+
+#~ msgid "NO"
+#~ msgstr "NO"
+
+#~ msgid "SI"
+#~ msgstr "SI"
+
+#~ msgid "Seleccion Cliente"
+#~ msgstr "Seleccion Cliente"
+
+#~ msgid "Sobre BulmaTPV"
+#~ msgstr "Sobre BulmaTPV"
+
+#~ msgid "pushButton18"
+#~ msgstr "pushButton18"

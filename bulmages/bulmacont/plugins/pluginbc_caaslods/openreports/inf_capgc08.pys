@@ -4,8 +4,6 @@
 #Uso: 
 
 ###########################################################################
-#   Copyright (C) 2008 by Arturo Martin Llado                             #
-#   amartin@conetxia.com                                                  #
 #                                                                         #
 #   This program is free software; you can redistribute it and/or modify  #
 #   it under the terms of the GNU General Public License as published by  #
@@ -23,37 +21,37 @@
 #   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             #
 ###########################################################################
 
-# title="Cuentas Anuales 1"
-
+# title="Cuentas Anuales Plan General Contable 2008"
+# CAPGC08
 import psycopg2
 import psycopg2.extras
 import ooolib
 import os
 import sys
 
-
+encoding = 'UTF-8'
 
 def saldoCuenta(cuenta):
-	global conn
-	query =  "SELECT coalesce((SUM(apunte.debe) - SUM(apunte.haber)), 0) AS saldo FROM cuenta LEFT JOIN apunte ON apunte.idcuenta = cuenta.idcuenta WHERE cuenta.codigo like '" +  str(cuenta)  + "%' AND fecha >= '[fechaactual]' AND fecha <= '[fechaanterior]' AND apunte.conceptocontable not ilike '%%asiento%%cierre%%' and apunte.conceptocontable not ilike '%%asiento%%regularizaci%%'" 
+   global conn
+   query =  "SELECT coalesce((SUM(apunte.debe) - SUM(apunte.haber)), 0) AS saldo FROM cuenta LEFT JOIN apunte ON apunte.idcuenta = cuenta.idcuenta WHERE cuenta.codigo like '" +  str(cuenta)  + "%' AND fecha >= '[fechainicialactual]' AND fecha <= '[fechafinalactual]' AND apunte.conceptocontable not ilike '%%asiento%%cierre%%' and apunte.conceptocontable not ilike '%%asiento%%regularizaci%%'" 
 
-	cur1 = conn.cursor(cursor_factory=psycopg2.extras.DictCursor)
-	
-	cur1.execute(query)
-	totalsaldos = cur1.fetchall()
-	for totalsaldo in totalsaldos:
-		return float(totalsaldo['saldo'])
+   cur1 = conn.cursor(cursor_factory=psycopg2.extras.DictCursor)
+   
+   cur1.execute(query)
+   totalsaldos = cur1.fetchall()
+   for totalsaldo in totalsaldos:
+      return float(totalsaldo['saldo'])
 
 def saldoCuentaAnt(cuenta):
-	global conn
-	query =  "SELECT coalesce((SUM(apunte.debe) - SUM(apunte.haber)), 0) AS saldo FROM cuenta LEFT JOIN apunte ON apunte.idcuenta = cuenta.idcuenta WHERE cuenta.codigo like '" +  str(cuenta)  + "%' AND fecha >= '[fechaactual]'::date - '1 year'::interval AND fecha <= '[fechaanterior]'::date - '1 year'::interval AND apunte.conceptocontable not ilike '%%asiento%%cierre%%' and apunte.conceptocontable not ilike '%%asiento%%regularizaci%%'" 
+   global conn
+   query =  "SELECT coalesce((SUM(apunte.debe) - SUM(apunte.haber)), 0) AS saldo FROM cuenta LEFT JOIN apunte ON apunte.idcuenta = cuenta.idcuenta WHERE cuenta.codigo like '" +  str(cuenta)  + "%' AND fecha >= '[fechainicialanterior]' AND fecha <= '[fechafinalanterior]'AND apunte.conceptocontable not ilike '%%asiento%%cierre%%' and apunte.conceptocontable not ilike '%%asiento%%regularizaci%%'" 
 
-	cur1 = conn.cursor(cursor_factory=psycopg2.extras.DictCursor)
-	
-	cur1.execute(query)
-	totalsaldos = cur1.fetchall()
-	for totalsaldo in totalsaldos:
-		return float(totalsaldo['saldo'])
+   cur1 = conn.cursor(cursor_factory=psycopg2.extras.DictCursor)
+   
+   cur1.execute(query)
+   totalsaldos = cur1.fetchall()
+   for totalsaldo in totalsaldos:
+      return float(totalsaldo['saldo'])
 
 
 
@@ -783,7 +781,7 @@ doc.set_column_property(2, 'width', '5in')
 
 
 doc.set_cell_property('bold', True)
-doc.set_cell_value(2,2, 'string', 'CUENTA DE PERDIDAS Y GANANCIAS CORRESPONDIENTE AL EJERCICIO TERMINADO')
+doc.set_cell_value(2,2, 'string', 'CUENTA DE PÉRDIDAS Y GANANCIAS CORRESPONDIENTE AL EJERCICIO TERMINADO')
 doc.set_cell_value(2,4, 'string', 'PERDIDAS_Y_GANANCIAS')
 
 
@@ -1232,7 +1230,7 @@ doc.set_cell_property('bold', False)
 
 
 doc.set_cell_property('bold', True)
-doc.set_cell_value(2,27, 'string', 'C) Total transferencias a la cuenta de perdidas y ganancias (VI+VII+VIII+IX)')
+doc.set_cell_value(2,27, 'string', 'C) Total transferencias a la cuenta de pérdidas y ganancias (VI+VII+VIII+IX)')
 doc.set_cell_value(4,27, 'formula', '=D20+D23+D24+D25')
 doc.set_cell_value(5,27, 'formula', '=E20+E23+E24+E25')
 doc.set_cell_property('bold', False)
@@ -1249,7 +1247,7 @@ doc.set_cell_property('bold', False)
 
 # Guardamos el documento
 #doc.save("/tmp/inf_cuentacliente.ods")
-doc.save("inf_canuales1.ods")
+doc.save("inf_capgc08.ods")
 #os.system('oocalc /tmp/inf_cuentacliente.ods')
 
 conn.close()

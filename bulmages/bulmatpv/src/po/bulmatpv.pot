@@ -8,190 +8,48 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-02-15 23:53+0100\n"
+"POT-Creation-Date: 2009-05-12 23:58+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: main.cxx:70
+#: main.cxx:104
 msgid "Iniciando clases"
 msgstr ""
 
-#: main.cxx:109
+#: main.cxx:130
 msgid "Leyendo configuracion"
 msgstr ""
 
-#: main.cxx:140
+#: main.cxx:160
 msgid "Cargando plugins"
 msgstr ""
 
-#: main.cxx:146
+#: main.cxx:166
 msgid "Lanzando plugins"
 msgstr ""
 
-#: main.cxx:152
+#: main.cxx:172
 msgid "Inicializando componentes"
 msgstr ""
 
-#: main.cxx:158
+#: main.cxx:178
 msgid "Terminado"
 msgstr ""
 
-#: main.cxx:173
+#: main.cxx:189
 msgid "Error inesperado en BulmaTPV. El programa se cerrara."
 msgstr ""
 
-#: ui_tpvdlg.h:355 ui_btbulmatpvbase.h:87
-msgid "BulmaTPV"
-msgstr ""
-
-#: ui_tpvdlg.h:356
-msgid "1"
-msgstr ""
-
-#: ui_tpvdlg.h:357
-msgid "6"
-msgstr ""
-
-#: ui_tpvdlg.h:358
-msgid "7"
-msgstr ""
-
-#: ui_tpvdlg.h:359
-msgid "3"
-msgstr ""
-
-#: ui_tpvdlg.h:360
-msgid "4"
-msgstr ""
-
-#: ui_tpvdlg.h:361
-msgid "BORRAR"
-msgstr ""
-
-#: ui_tpvdlg.h:362
-msgid "5"
-msgstr ""
-
-#: ui_tpvdlg.h:363
-msgid "NO"
-msgstr ""
-
-#: ui_tpvdlg.h:364
-msgid "ATRÁS"
-msgstr ""
-
-#: ui_tpvdlg.h:365
-msgid "9"
-msgstr ""
-
-#: ui_tpvdlg.h:366
-msgid "."
-msgstr ""
-
-#: ui_tpvdlg.h:367
-msgid "0"
-msgstr ""
-
-#: ui_tpvdlg.h:368
-msgid "2"
-msgstr ""
-
-#: ui_tpvdlg.h:369
-msgid "SI"
-msgstr ""
-
-#: ui_tpvdlg.h:370
-msgid "8"
-msgstr ""
-
-#: ui_tpvdlg.h:371
-msgid "00"
-msgstr ""
-
-#: ui_tpvdlg.h:372
-msgid "Cambio Operador"
-msgstr ""
-
-#: ui_tpvdlg.h:373
-msgid "Seleccion Cliente"
-msgstr ""
-
-#: ui_tpvdlg.h:374 ui_tpvdlg.h:375
-msgid "pushButton18"
-msgstr ""
-
-#: ui_tpvdlg.h:376
-msgid "<p align=\"right\">Codigo</p>"
-msgstr ""
-
-#: ui_tpvdlg.h:377
-msgid "<p align=\"right\">Total:</p>"
-msgstr ""
-
-#: ui_tpvdlg.h:378
-msgid "Codigo"
-msgstr ""
-
-#: ui_tpvdlg.h:379 btticket.cpp:42
-msgid "Descripcion"
-msgstr ""
-
-#: ui_tpvdlg.h:380 btticket.cpp:86
-msgid "Cantidad"
-msgstr ""
-
-#: ui_tpvdlg.h:381 btticket.cpp:89
-msgid "Descuento"
-msgstr ""
-
-#: ui_btaboutbase.h:275
-msgid "Acerca de BulmaFact"
-msgstr ""
-
-#: ui_btaboutbase.h:277
-msgid "Facturacion GPL - Version 0.10.1 -"
-msgstr ""
-
-#: ui_btaboutbase.h:278
-msgid "&Acerca de"
-msgstr ""
-
-#: ui_btaboutbase.h:279
-msgid ""
-"<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/"
-"REC-html40/strict.dtd\">\n"
-"<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css"
-"\">\n"
-"p, li { white-space: pre-wrap; }\n"
-"</style></head><body style=\" font-family:'Sans Serif'; font-size:10pt; font-"
-"weight:400; font-style:normal;\">\n"
-"<p style=\"-qt-paragraph-type:empty; margin-top:12px; margin-bottom:12px; "
-"margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-"
-"size:9pt;\"></p></body></html>"
-msgstr ""
-
-#: ui_btaboutbase.h:284
-msgid "A&utores"
-msgstr ""
-
-#: ui_btaboutbase.h:285
-msgid "Sopor&te"
-msgstr ""
-
-#: ui_btaboutbase.h:286
-msgid "Acuerdo de &licencia"
-msgstr ""
-
-#: ui_btaboutbase.h:287
-msgid "&Cerrar"
+#: ui_btbulmatpvbase.h:87
+msgid "Iglues/BtBulmaTPV"
 msgstr ""
 
 #: ui_btbulmatpvbase.h:88
-msgid "Sobre BulmaTPV"
+msgid "Sobre BtBulmaTPV"
 msgstr ""
 
 #: ui_btbulmatpvbase.h:89
@@ -238,98 +96,152 @@ msgstr ""
 msgid "Administrador"
 msgstr ""
 
-#: btaboutview.cpp:38
-msgid "Compilado usando la version de QT:"
+#: ui_btaboutbase.h:275
+msgid "Acerca de BulmaFact"
 msgstr ""
 
-#: btticket.cpp:43
-msgid "Nombre"
+#: ui_btaboutbase.h:277
+msgid "Facturacion GPL - Version 0.10.1 -"
 msgstr ""
 
-#: btticket.cpp:44
-msgid "Id albaran"
+#: ui_btaboutbase.h:278
+msgid "&Acerca de"
 msgstr ""
 
-#: btticket.cpp:45
-msgid "Id fechaalbaran"
+#: ui_btaboutbase.h:279
+msgid ""
+"<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/"
+"REC-html40/strict.dtd\">\n"
+"<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css"
+"\">\n"
+"p, li { white-space: pre-wrap; }\n"
+"</style></head><body style=\" font-family:'Sans Serif'; font-size:10pt; font-"
+"weight:400; font-style:normal;\">\n"
+"<p style=\"-qt-paragraph-type:empty; margin-top:12px; margin-bottom:12px; "
+"margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-"
+"size:9pt;\"></p></body></html>"
 msgstr ""
 
-#: btticket.cpp:46
-msgid "Hora"
+#: ui_btaboutbase.h:284
+msgid "A&utores"
 msgstr ""
 
-#: btticket.cpp:47
-msgid "Trabajador"
+#: ui_btaboutbase.h:285
+msgid "Sopor&te"
 msgstr ""
 
-#: btticket.cpp:48
-msgid "Cliente"
+#: ui_btaboutbase.h:286
+msgid "Acuerdo de &licencia"
 msgstr ""
 
-#: btticket.cpp:49
-msgid "Almacen"
+#: ui_btaboutbase.h:287
+msgid "&Cerrar"
 msgstr ""
 
-#: btticket.cpp:50
-msgid "Num"
-msgstr ""
-
-#: btticket.cpp:51
-msgid "Referencia"
-msgstr ""
-
-#: btticket.cpp:52
-msgid "Ticket"
-msgstr ""
-
-#: btticket.cpp:53
-msgid "Id forma de pago"
-msgstr ""
-
-#: btticket.cpp:84
-msgid "Id Albaran"
-msgstr ""
-
-#: btticket.cpp:85
-msgid "Id lalbaran"
-msgstr ""
-
-#: btticket.cpp:87
-msgid "Precio"
-msgstr ""
-
-#: btticket.cpp:88
-msgid "IVA"
-msgstr ""
-
-#: btticket.cpp:90
-msgid "Orden"
-msgstr ""
-
-#: btticket.cpp:91
-msgid "Req. eq."
-msgstr ""
-
-#: btticket.cpp:93
-msgid "Id articulo"
-msgstr ""
-
-#: btticket.cpp:94
-msgid "Codigo articulo"
-msgstr ""
-
-#: btticket.cpp:95 btticket.cpp:96
-msgid "Nombre articulo"
-msgstr ""
-
-#: btticket.cpp:941
-msgid "El ticket esta vacio."
-msgstr ""
-
-#: empresatpv.cpp:77
+#: btcompany.cpp:77
 msgid "Inicializando listado de articulos"
 msgstr ""
 
-#: empresatpv.cpp:100
+#: btcompany.cpp:100
 msgid "Terminal Punto de Venta GPL"
+msgstr ""
+
+#: btticket.cpp:44
+msgid "Descripcion"
+msgstr ""
+
+#: btticket.cpp:45
+msgid "Nombre"
+msgstr ""
+
+#: btticket.cpp:46
+msgid "Id albaran"
+msgstr ""
+
+#: btticket.cpp:47
+msgid "Id fechaalbaran"
+msgstr ""
+
+#: btticket.cpp:48
+msgid "Hora"
+msgstr ""
+
+#: btticket.cpp:49
+msgid "Trabajador"
+msgstr ""
+
+#: btticket.cpp:50
+msgid "Cliente"
+msgstr ""
+
+#: btticket.cpp:51
+msgid "Almacen"
+msgstr ""
+
+#: btticket.cpp:52
+msgid "Num"
+msgstr ""
+
+#: btticket.cpp:53
+msgid "Referencia"
+msgstr ""
+
+#: btticket.cpp:54
+msgid "Ticket"
+msgstr ""
+
+#: btticket.cpp:55
+msgid "Id forma de pago"
+msgstr ""
+
+#: btticket.cpp:87
+msgid "Id Albaran"
+msgstr ""
+
+#: btticket.cpp:88
+msgid "Id lalbaran"
+msgstr ""
+
+#: btticket.cpp:89
+msgid "Cantidad"
+msgstr ""
+
+#: btticket.cpp:90
+msgid "Precio"
+msgstr ""
+
+#: btticket.cpp:91
+msgid "IVA"
+msgstr ""
+
+#: btticket.cpp:92
+msgid "Descuento"
+msgstr ""
+
+#: btticket.cpp:93
+msgid "Orden"
+msgstr ""
+
+#: btticket.cpp:94
+msgid "Req. eq."
+msgstr ""
+
+#: btticket.cpp:96
+msgid "Id articulo"
+msgstr ""
+
+#: btticket.cpp:97
+msgid "Codigo articulo"
+msgstr ""
+
+#: btticket.cpp:98 btticket.cpp:99
+msgid "Nombre articulo"
+msgstr ""
+
+#: btticket.cpp:982
+msgid "El ticket esta vacio."
+msgstr ""
+
+#: btaboutview.cpp:38
+msgid "Compilado usando la version de QT:"
 msgstr ""

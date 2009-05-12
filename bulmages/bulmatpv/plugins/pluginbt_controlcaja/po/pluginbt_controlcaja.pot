@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-02-15 23:53+0100\n"
+"POT-Creation-Date: 2009-05-12 23:58+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -16,15 +16,15 @@ msgstr ""
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: admin.cpp:16 admin.cpp:33
+#: admin.cpp:19 admin.cpp:36
 msgid "Salir"
 msgstr ""
 
-#: admin.cpp:17
+#: admin.cpp:20
 msgid "Realmente desea Realizar la Z?"
 msgstr ""
 
-#: admin.cpp:34
+#: admin.cpp:37
 msgid "Realmente desea abandonar el programa?"
 msgstr ""
 

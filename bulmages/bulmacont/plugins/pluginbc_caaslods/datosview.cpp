@@ -30,12 +30,19 @@ DatosView::DatosView ( BlMainCompany *emp, QWidget *parent , Qt::WFlags f , edmo
     _depura ( "DatosView::DatosView", 0 );
 
     setupUi ( this );
-       setTitleName ( _ ( "Cuenta" ) );
-        setDbTableName ( "cuenta" );
-        setDbFieldId ( "idcuenta" );
-        addDbField ( "idcuenta", BlDbField::DbDate, BlDbField::DbNoSave, _ ( "Fecha Actual" ) );
-        addDbField ( "fechaactual", BlDbField::DbDate, BlDbField::DbNoSave, _ ( "Fecha Actual" ) );
-        addDbField ( "fechaanterior", BlDbField::DbDate, BlDbField::DbNoSave, _ ( "Fecha Anterior" ) );
+    setTitleName ( _ ( "Cuenta" ) );
+    setDbTableName ( "cuenta" );
+    setDbFieldId ( "idcuenta" );
+    addDbField ( "idcuenta", BlDbField::DbDate, BlDbField::DbNoSave, _ ( "Id cuenta" ) );
+    addDbField ( "fechainicialactual", BlDbField::DbDate, BlDbField::DbNoSave, _ ( "Fecha Inicial Actual" ) );
+    addDbField ( "fechafinalactual", BlDbField::DbDate, BlDbField::DbNoSave, _ ( "Fecha Final Actual" ) );
+    addDbField ( "fechainicialanterior", BlDbField::DbDate, BlDbField::DbNoSave, _ ( "Fecha Inicial Anterior" ) );
+    addDbField ( "fechafinalanterior", BlDbField::DbDate, BlDbField::DbNoSave, _ ( "Fecha Final Anterior" ) );
+
+// mui_fechainicialactual
+// mui_fechafinalactual
+// mui_fechainicialanterior
+// mui_fechafinalanterior
 
     _depura ( "END DatosView::DatosView", 0 );
 }
@@ -56,19 +63,31 @@ void DatosView::on_mui_aceptar_clicked() {
    bool resultado = true; 
    recogeValores();
 
-   QString fechaactual = dbValue("fechaactual");
-   QString fechaanterior = dbValue("fechaanterior");
+   QString fechaInicialActual = dbValue("fechainicialactual");
+   QString fechaFinalActual = dbValue("fechafinalactual");
+   QString fechaInicialAnterior = dbValue("fechainicialanteiror");
+   QString fechaFinalAnterior = dbValue("fechafinalanterior");
 
-
-   if ( fechaactual.isEmpty() ) {
-        mensajeError ( _ ( "ERROR: Debe introducir una fecha en el balance actual." ) );
+   if ( fechaInicialActual.isEmpty() ) {
+        mensajeError ( _ ( "ERROR: Debe introducir una fecha inicial del balance actual." ) );
         resultado = false;
     } else {
-        if ( fechaanterior.isEmpty() ) {
-            mensajeError ( _ ( "ERROR: Debe introducir una fecha en el balance anterior." ) );
+        if ( fechaFinalActual.isEmpty() ) {
+            mensajeError ( _ ( "ERROR: Debe introducir una fecha final del balance actual." ) );
             resultado = false;
         }
-    } // end if
+         else {
+            if ( fechaInicialAnterior.isEmpty() ) {
+               mensajeError ( _ ( "ERROR: Debe introducir una fecha inicial del balance anterior." ) );
+               resultado = false;
+            } else {
+            if ( fechaFinalAnterior.isEmpty() ) {
+               mensajeError ( _ ( "ERROR: Debe introducir una fecha final del balance anterior." ) );
+               resultado = false;
+            }
+         }
+    }
+   } // end if
 
    // Se pulso el boton 'cancelar'
    if ( resultado ) {

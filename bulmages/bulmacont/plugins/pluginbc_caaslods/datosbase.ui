@@ -5,8 +5,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>459</width>
-    <height>210</height>
+    <width>452</width>
+    <height>297</height>
    </rect>
   </property>
   <property name="windowTitle" >
@@ -22,73 +22,39 @@
    <item row="0" column="0" >
     <widget class="QGroupBox" name="groupBox" >
      <property name="title" >
-      <string>Ejercicio actual:</string>
+      <string>Periodo actual:</string>
      </property>
-     <layout class="QGridLayout" >
-      <property name="margin" >
-       <number>9</number>
-      </property>
-      <property name="spacing" >
-       <number>6</number>
-      </property>
+     <layout class="QFormLayout" name="formLayout" >
       <item row="0" column="0" >
        <widget class="QLabel" name="label" >
         <property name="frameShape" >
          <enum>QFrame::NoFrame</enum>
         </property>
         <property name="text" >
-         <string>Fecha balance:</string>
+         <string>Fecha inicial del balance:</string>
         </property>
        </widget>
       </item>
       <item row="0" column="1" >
-       <widget class="BlDateSearch" name="mui_fechaactual" />
+       <widget class="BlDateSearch" name="mui_fechainicialactual" />
       </item>
-     </layout>
-    </widget>
-   </item>
-   <item row="1" column="0" >
-    <widget class="QGroupBox" name="groupBox_2" >
-     <property name="title" >
-      <string>Ejercicio anterior:</string>
-     </property>
-     <layout class="QGridLayout" >
-      <property name="margin" >
-       <number>9</number>
-      </property>
-      <property name="spacing" >
-       <number>6</number>
-      </property>
-      <item row="0" column="0" >
-       <widget class="QLabel" name="label_3" >
+      <item row="1" column="0" >
+       <widget class="QLabel" name="label_2" >
         <property name="frameShape" >
          <enum>QFrame::NoFrame</enum>
         </property>
         <property name="text" >
-         <string>Fecha balance:</string>
+         <string>Fecha final del balance:</string>
         </property>
        </widget>
       </item>
-      <item row="0" column="1" >
-       <widget class="BlDateSearch" name="mui_fechaanterior" />
+      <item row="1" column="1" >
+       <widget class="BlDateSearch" name="mui_fechafinalactual" />
       </item>
      </layout>
     </widget>
    </item>
-   <item row="2" column="0" >
-    <spacer>
-     <property name="orientation" >
-      <enum>Qt::Vertical</enum>
-     </property>
-     <property name="sizeHint" stdset="0" >
-      <size>
-       <width>441</width>
-       <height>31</height>
-      </size>
-     </property>
-    </spacer>
-   </item>
-   <item row="3" column="0" >
+   <item row="4" column="0" >
     <layout class="QHBoxLayout" >
      <property name="spacing" >
       <number>5</number>
@@ -124,6 +90,41 @@
       </widget>
      </item>
     </layout>
+   </item>
+   <item row="3" column="0" >
+    <widget class="QGroupBox" name="groupBox_2" >
+     <property name="title" >
+      <string>Periodo anterior:</string>
+     </property>
+     <layout class="QFormLayout" name="formLayout_2" >
+      <item row="0" column="0" >
+       <widget class="QLabel" name="label_3" >
+        <property name="frameShape" >
+         <enum>QFrame::NoFrame</enum>
+        </property>
+        <property name="text" >
+         <string>Fecha inicial del balance:</string>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="1" >
+       <widget class="BlDateSearch" name="mui_fechainicialanterior" />
+      </item>
+      <item row="1" column="0" >
+       <widget class="QLabel" name="label_4" >
+        <property name="frameShape" >
+         <enum>QFrame::NoFrame</enum>
+        </property>
+        <property name="text" >
+         <string>Fecha final del balance:</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="1" >
+       <widget class="BlDateSearch" name="mui_fechafinalanterior" />
+      </item>
+     </layout>
+    </widget>
    </item>
   </layout>
  </widget>

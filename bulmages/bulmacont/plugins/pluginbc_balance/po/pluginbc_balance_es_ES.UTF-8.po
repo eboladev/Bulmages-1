@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-02-26 01:06+0100\n"
+"POT-Creation-Date: 2009-05-12 23:58+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -114,7 +114,7 @@ msgstr ""
 "#-#-#-#-#  pluginabrevs.pot (PACKAGE VERSION)  #-#-#-#-#\n"
 "#-#-#-#-#  bulmages_suite.pot (PACKAGE VERSION)  #-#-#-#-#\n"
 
-#: pluginbalance.cpp:91
+#: pluginbc_balance.cpp:91
 msgid "&Balance jerarquico"
 msgstr "&Balance jerarquico"
 
@@ -130,7 +130,7 @@ msgstr "&Kugar"
 msgid "&Texto Plano"
 msgstr "&Texto Plano"
 
-#: pluginbalance.cpp:87
+#: pluginbc_balance.cpp:87
 msgid "&Ver"
 msgstr "&Ver"
 
@@ -226,11 +226,11 @@ msgstr "Ctrl+F"
 msgid "Ctrl+P"
 msgstr "Ctrl+P"
 
-#: ui_balancetreebase.h:409 ui_balancebase.h:451
+#: ui_balancebase.h:451 ui_balancetreebase.h:409
 msgid "Cuenta final:"
 msgstr "Cuenta final:"
 
-#: ui_balancetreebase.h:412 ui_balancebase.h:449
+#: ui_balancebase.h:449 ui_balancetreebase.h:412
 msgid "Cuenta inicial:"
 msgstr "Cuenta inicial:"
 
@@ -258,19 +258,19 @@ msgstr "Denominacion"
 msgid "F5"
 msgstr "F5"
 
-#: ui_balanceprintbase.h:308 ui_balancesprintdlg.h:199
+#: ui_balancesprintdlg.h:199 ui_balanceprintbase.h:308
 msgid "Fecha Final"
 msgstr "Fecha Final"
 
-#: ui_balanceprintbase.h:306 ui_balancesprintdlg.h:198
+#: ui_balancesprintdlg.h:198 ui_balanceprintbase.h:306
 msgid "Fecha Inicial"
 msgstr "Fecha Inicial"
 
-#: ui_balancetreebase.h:410 ui_balancebase.h:450
+#: ui_balancebase.h:450 ui_balancetreebase.h:410
 msgid "Fecha final:"
 msgstr "Fecha final:"
 
-#: ui_balancetreebase.h:411 ui_balancebase.h:448
+#: ui_balancebase.h:448 ui_balancetreebase.h:411
 msgid "Fecha inicial:"
 msgstr "Fecha inicial:"
 
@@ -339,15 +339,15 @@ msgstr "Incluir &niveles superiores."
 msgid "Nivel de Cuentas"
 msgstr "Nivel de Cuentas"
 
-#: ui_balancetreebase.h:413 ui_balancebase.h:452
+#: ui_balancebase.h:452 ui_balancetreebase.h:413
 msgid "Nivel:"
 msgstr "Nivel:"
 
-#: pluginbalance.cpp:92
+#: pluginbc_balance.cpp:92
 msgid "Permite realizar balances"
 msgstr "Permite realizar balances"
 
-#: pluginbalance.cpp:93
+#: pluginbc_balance.cpp:93
 msgid "Podra disponer de la informacion del balance"
 msgstr "Podra disponer de la informacion del balance"
 
@@ -367,11 +367,11 @@ msgstr "Saldo "
 msgid "Saldo anterior"
 msgstr "Saldo anterior"
 
-#: ui_balancetreebase.h:415 ui_balancebase.h:458
+#: ui_balancebase.h:458 ui_balancetreebase.h:415
 msgid "Saldo anterior:"
 msgstr "Saldo anterior:"
 
-#: ui_balancetreebase.h:418 ui_balancebase.h:456
+#: ui_balancebase.h:456 ui_balancetreebase.h:418
 msgid "Saldo:"
 msgstr "Saldo:"
 
@@ -415,7 +415,7 @@ msgstr "ejsaldo"
 msgid "idcuenta"
 msgstr "idcuenta"
 
-#: pluginbalance.cpp:83
+#: pluginbc_balance.cpp:83
 msgid "menuVentana"
 msgstr "menuVentana"
 

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-02-26 01:14+0100\n"
+"POT-Creation-Date: 2009-05-12 23:58+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -122,7 +122,7 @@ msgstr "% Descuento"
 msgid "&Aceptar"
 msgstr "&Aceptar"
 
-#: pluginalbaranprov.cpp:96
+#: pluginbf_proveedoralbaran.cpp:96
 msgid "&Albaranes de proveedores"
 msgstr "&Albaranes de proveedores"
 
@@ -142,7 +142,7 @@ msgstr "&Detalle"
 msgid "&No"
 msgstr "&No"
 
-#: pluginalbaranprov.cpp:104
+#: pluginbf_proveedoralbaran.cpp:104
 msgid "&Nuevo albaran de proveedor"
 msgstr "&Nuevo albaran de proveedor"
 
@@ -172,7 +172,7 @@ msgstr "Albaran de proveedor existente"
 msgid "Albaranes de proveedor"
 msgstr "Albaranes de proveedor"
 
-#: pluginalbaranprov.cpp:98 pluginalbaranprov.cpp:99
+#: pluginbf_proveedoralbaran.cpp:98 pluginbf_proveedoralbaran.cpp:99
 msgid "Albaranes de proveedores"
 msgstr "Albaranes de proveedores"
 
@@ -196,8 +196,8 @@ msgstr "Base imponible"
 msgid "Base imponible:"
 msgstr "Base imponible:"
 
-#: ui_albaranproveedorbase.h:586 ui_albaranproveedorbase.h:591
 #: ui_albaranesproveedorlistbase.h:452 ui_albaranesproveedorlistbase.h:457
+#: ui_albaranproveedorbase.h:586 ui_albaranproveedorbase.h:591
 msgid "Borrar albaran"
 msgstr "Borrar albaran"
 
@@ -225,7 +225,7 @@ msgstr "Configurar listado"
 msgid "Ctrl+B"
 msgstr "Ctrl+B"
 
-#: ui_albaranproveedorbase.h:595 ui_albaranesproveedorlistbase.h:461
+#: ui_albaranesproveedorlistbase.h:461 ui_albaranproveedorbase.h:595
 msgid "Ctrl+D"
 msgstr "Ctrl+D"
 
@@ -417,7 +417,7 @@ msgstr "Nombre del proveedor"
 msgid "Nuevo albaran"
 msgstr "Nuevo albaran"
 
-#: pluginalbaranprov.cpp:106 pluginalbaranprov.cpp:107
+#: pluginbf_proveedoralbaran.cpp:106 pluginbf_proveedoralbaran.cpp:107
 #: ui_albaranproveedorbase.h:570
 msgid "Nuevo albaran de proveedor"
 msgstr "Nuevo albaran de proveedor"

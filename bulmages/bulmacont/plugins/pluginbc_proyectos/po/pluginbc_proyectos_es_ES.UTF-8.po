@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-02-26 01:27+0100\n"
+"POT-Creation-Date: 2009-05-12 23:58+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -122,7 +122,7 @@ msgstr "&Aceptar"
 msgid "&Cancelar"
 msgstr "&Cancelar"
 
-#: pluginproyectos.cpp:75
+#: pluginbc_proyectos.cpp:75
 msgid "&Proyectos"
 msgstr "&Proyectos"
 
@@ -157,7 +157,7 @@ msgstr "Codigo"
 msgid "Comentarios"
 msgstr "Comentarios"
 
-#: ui_proyectobase.h:265 ui_proyectobase.h:277 ui_listproyectosbase.h:159
+#: ui_listproyectosbase.h:159 ui_proyectobase.h:265 ui_proyectobase.h:277
 msgid "Ctrl+D"
 msgstr "Ctrl+D"
 
@@ -269,11 +269,11 @@ msgstr "Precio Und"
 msgid "Proyecto"
 msgstr "Proyecto"
 
-#: pluginproyectos.cpp:76 pluginproyectos.cpp:77
+#: pluginbc_proyectos.cpp:76 pluginbc_proyectos.cpp:77
 msgid "Proyectos"
 msgstr "Proyectos"
 
-#: pluginproyectos.cpp:116
+#: pluginbc_proyectos.cpp:116
 msgid "Proyectos asociados"
 msgstr "Proyectos asociados"
 

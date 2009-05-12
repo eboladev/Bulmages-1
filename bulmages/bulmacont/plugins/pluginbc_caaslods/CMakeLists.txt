@@ -22,7 +22,7 @@
 ###########################################
 # Plugin for bulmacont                    #
 ###########################################
-# plugincanualesods
+# pluginbc_caaslods
 
 set (plugin pluginbc_caaslods)
 set (docs README.es) #add the README.nn files

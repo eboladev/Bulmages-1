@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-02-26 01:14+0100\n"
+"POT-Creation-Date: 2009-05-12 23:58+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -50,7 +50,7 @@ msgstr ""
 "#-#-#-#-#  - (PACKAGE VERSION)  #-#-#-#-#\n"
 "&Accepta"
 
-#: pluginalbaranprov.cpp:96
+#: pluginbf_proveedoralbaran.cpp:96
 #, fuzzy
 msgid "&Albaranes de proveedores"
 msgstr "Nom del proveïdor"
@@ -82,7 +82,7 @@ msgstr "&Detalls"
 msgid "&No"
 msgstr "&No"
 
-#: pluginalbaranprov.cpp:104
+#: pluginbf_proveedoralbaran.cpp:104
 #, fuzzy
 msgid "&Nuevo albaran de proveedor"
 msgstr "Nom del proveïdor"
@@ -116,7 +116,7 @@ msgstr "El magatzem del pressupost no existeix<BR>"
 msgid "Albaranes de proveedor"
 msgstr "Nom del proveïdor"
 
-#: pluginalbaranprov.cpp:98 pluginalbaranprov.cpp:99
+#: pluginbf_proveedoralbaran.cpp:98 pluginbf_proveedoralbaran.cpp:99
 #, fuzzy
 msgid "Albaranes de proveedores"
 msgstr "Nom del proveïdor"
@@ -145,8 +145,8 @@ msgstr "Empreses disponibles:"
 msgid "Base imponible:"
 msgstr "Empreses disponibles:"
 
-#: ui_albaranproveedorbase.h:586 ui_albaranproveedorbase.h:591
 #: ui_albaranesproveedorlistbase.h:452 ui_albaranesproveedorlistbase.h:457
+#: ui_albaranproveedorbase.h:586 ui_albaranproveedorbase.h:591
 msgid "Borrar albaran"
 msgstr "Esborra albarà"
 
@@ -176,7 +176,7 @@ msgstr "Configura llistat"
 msgid "Ctrl+B"
 msgstr "Ctrl+B"
 
-#: ui_albaranproveedorbase.h:595 ui_albaranesproveedorlistbase.h:461
+#: ui_albaranesproveedorlistbase.h:461 ui_albaranproveedorbase.h:595
 msgid "Ctrl+D"
 msgstr "Ctrl+D"
 
@@ -395,7 +395,7 @@ msgstr "Nom del proveïdor"
 msgid "Nuevo albaran"
 msgstr "Esborra albarà"
 
-#: pluginalbaranprov.cpp:106 pluginalbaranprov.cpp:107
+#: pluginbf_proveedoralbaran.cpp:106 pluginbf_proveedoralbaran.cpp:107
 #: ui_albaranproveedorbase.h:570
 #, fuzzy
 msgid "Nuevo albaran de proveedor"

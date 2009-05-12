@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-02-15 23:53+0100\n"
+"POT-Creation-Date: 2009-05-12 23:58+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -20,86 +20,86 @@ msgstr ""
 msgid "Teclado"
 msgstr ""
 
-#: ui_tecladonumericobase.h:684
+#: ui_tecladonumericobase.h:347
 msgid "Form"
 msgstr ""
 
-#: ui_tecladonumericobase.h:685
+#: ui_tecladonumericobase.h:348
 msgid "3"
 msgstr ""
 
-#: ui_tecladonumericobase.h:686
+#: ui_tecladonumericobase.h:349
 msgid "9"
 msgstr ""
 
-#: ui_tecladonumericobase.h:687
+#: ui_tecladonumericobase.h:350
 msgid "2"
 msgstr ""
 
-#: ui_tecladonumericobase.h:688
+#: ui_tecladonumericobase.h:351
 msgid "8"
 msgstr ""
 
-#: ui_tecladonumericobase.h:689
+#: ui_tecladonumericobase.h:352
 msgid "1"
 msgstr ""
 
-#: ui_tecladonumericobase.h:690
+#: ui_tecladonumericobase.h:353
 msgid "7"
 msgstr ""
 
-#: ui_tecladonumericobase.h:691
+#: ui_tecladonumericobase.h:354
 msgid "4"
 msgstr ""
 
-#: ui_tecladonumericobase.h:692
+#: ui_tecladonumericobase.h:355
 msgid "5"
 msgstr ""
 
-#: ui_tecladonumericobase.h:693
+#: ui_tecladonumericobase.h:356
 msgid "6"
 msgstr ""
 
-#: ui_tecladonumericobase.h:694
+#: ui_tecladonumericobase.h:357
 msgid "+"
 msgstr ""
 
-#: ui_tecladonumericobase.h:695
+#: ui_tecladonumericobase.h:358
 msgid "-"
 msgstr ""
 
-#: ui_tecladonumericobase.h:696
+#: ui_tecladonumericobase.h:359
 msgid "DEL"
 msgstr ""
 
-#: ui_tecladonumericobase.h:697
+#: ui_tecladonumericobase.h:360
 msgid "C"
 msgstr ""
 
-#: ui_tecladonumericobase.h:698
+#: ui_tecladonumericobase.h:361
 msgid "ARTIC"
 msgstr ""
 
-#: ui_tecladonumericobase.h:699
+#: ui_tecladonumericobase.h:362
 msgid "CANT"
 msgstr ""
 
-#: ui_tecladonumericobase.h:700
+#: ui_tecladonumericobase.h:363
 msgid "PRECIO"
 msgstr ""
 
-#: ui_tecladonumericobase.h:701
+#: ui_tecladonumericobase.h:364
 msgid "0"
 msgstr ""
 
-#: ui_tecladonumericobase.h:702
+#: ui_tecladonumericobase.h:365
 msgid "00"
 msgstr ""
 
-#: ui_tecladonumericobase.h:703
+#: ui_tecladonumericobase.h:366
 msgid "MESA"
 msgstr ""
 
-#: ui_tecladonumericobase.h:704
+#: ui_tecladonumericobase.h:367
 msgid "."
 msgstr ""

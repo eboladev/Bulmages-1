@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-02-26 01:06+0100\n"
+"POT-Creation-Date: 2009-05-12 23:58+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -114,11 +114,11 @@ msgstr ""
 "#-#-#-#-#  pluginabrevs.pot (PACKAGE VERSION)  #-#-#-#-#\n"
 "#-#-#-#-#  bulmages_suite.pot (PACKAGE VERSION)  #-#-#-#-#\n"
 
-#: pluginbalancetree.cpp:96
+#: pluginbc_balancearbol.cpp:96
 msgid "&Balance jerarquico"
 msgstr "&Balance jerarquico"
 
-#: pluginbalancetree.cpp:92
+#: pluginbc_balancearbol.cpp:92
 msgid "&Ver"
 msgstr "&Ver"
 
@@ -210,11 +210,11 @@ msgstr "Nivel:"
 msgid "Nombre de la cuenta"
 msgstr "Nombre de la cuenta"
 
-#: pluginbalancetree.cpp:97
+#: pluginbc_balancearbol.cpp:97
 msgid "Permite realizar balances"
 msgstr "Permite realizar balances"
 
-#: pluginbalancetree.cpp:98
+#: pluginbc_balancearbol.cpp:98
 msgid "Podra disponer de la informacion del balance"
 msgstr "Podra disponer de la informacion del balance"
 
@@ -270,6 +270,6 @@ msgstr "Ver extracto (este dia)"
 msgid "Ver extracto (este mes)"
 msgstr "Ver extracto (este mes)"
 
-#: pluginbalancetree.cpp:88
+#: pluginbc_balancearbol.cpp:88
 msgid "menuVentana"
 msgstr "menuVentana"

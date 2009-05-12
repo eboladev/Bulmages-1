@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-02-26 01:27+0100\n"
+"POT-Creation-Date: 2009-05-12 23:58+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -26,7 +26,7 @@ msgstr "&Accepta"
 msgid "&Cancelar"
 msgstr "&Cancel·la"
 
-#: pluginproyectos.cpp:75
+#: pluginbc_proyectos.cpp:75
 #, fuzzy
 msgid "&Proyectos"
 msgstr "Paràmetres"
@@ -74,7 +74,7 @@ msgstr ""
 "#-#-#-#-#  bulmacont_ca.po (PACKAGE VERSION)  #-#-#-#-#\n"
 "Comentaris"
 
-#: ui_proyectobase.h:265 ui_proyectobase.h:277 ui_listproyectosbase.h:159
+#: ui_listproyectosbase.h:159 ui_proyectobase.h:265 ui_proyectobase.h:277
 msgid "Ctrl+D"
 msgstr "Ctrl+D"
 
@@ -226,12 +226,12 @@ msgstr "Adreça:"
 msgid "Proyecto"
 msgstr "Propietari"
 
-#: pluginproyectos.cpp:76 pluginproyectos.cpp:77
+#: pluginbc_proyectos.cpp:76 pluginbc_proyectos.cpp:77
 #, fuzzy
 msgid "Proyectos"
 msgstr "Paràmetres"
 
-#: pluginproyectos.cpp:116
+#: pluginbc_proyectos.cpp:116
 #, fuzzy
 msgid "Proyectos asociados"
 msgstr "Paràmetres"

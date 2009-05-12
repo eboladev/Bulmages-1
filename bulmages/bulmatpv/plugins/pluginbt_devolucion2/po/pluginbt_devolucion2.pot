@@ -8,17 +8,13 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-02-15 23:54+0100\n"
+"POT-Creation-Date: 2009-05-12 23:59+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
-
-#: plugindevolucion2.cpp:83
-msgid "Articulo"
-msgstr ""
 
 #: devolucion2.cpp:228 devolucion2.cpp:243
 msgid "Unds."
@@ -42,6 +38,10 @@ msgstr ""
 
 #: devolucion2.cpp:441
 msgid "NO IMPLEMENTADO"
+msgstr ""
+
+#: pluginbt_devolucion2.cpp:83
+msgid "Articulo"
 msgstr ""
 
 #: ui_devolucion.h:378

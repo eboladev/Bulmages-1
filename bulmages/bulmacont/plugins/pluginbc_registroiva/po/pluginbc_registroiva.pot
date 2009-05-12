@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-02-15 23:43+0100\n"
+"POT-Creation-Date: 2009-05-12 23:58+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -174,24 +174,24 @@ msgstr ""
 msgid "docprevcobro"
 msgstr ""
 
-#: pluginregistroiva.cpp:99
+#: pluginbc_registroiva.cpp:99
 msgid "&Registro de IVA"
 msgstr ""
 
-#: pluginregistroiva.cpp:100 pluginregistroiva.cpp:101
+#: pluginbc_registroiva.cpp:100 pluginbc_registroiva.cpp:101
 #: regivaqtoolbutton.cpp:74 regivaqtoolbutton.cpp:75
 msgid "Registro de IVA"
 msgstr ""
 
-#: pluginregistroiva.cpp:103
+#: pluginbc_registroiva.cpp:103
 msgid "&Cobros y pagos"
 msgstr ""
 
-#: pluginregistroiva.cpp:104 pluginregistroiva.cpp:105
+#: pluginbc_registroiva.cpp:104 pluginbc_registroiva.cpp:105
 msgid "Cobros y pagos"
 msgstr ""
 
-#: pluginregistroiva.cpp:216
+#: pluginbc_registroiva.cpp:216
 msgid "Debe seleccionar un apunte"
 msgstr ""
 

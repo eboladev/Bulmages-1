@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-02-26 01:17+0100\n"
+"POT-Creation-Date: 2009-05-12 23:58+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,31 +18,31 @@ msgstr ""
 "#-#-#-#-#  bulmalib_ca_ES.UTF-8.po (PACKAGE VERSION)  #-#-#-#-#\n"
 "X-Generator: Translate Toolkit 1.1.1\n"
 
-#: pluginclientprov.cpp:65
+#: pluginbf_clienteproveedor.cpp:65
 #, fuzzy
 msgid "Banco proveedor"
 msgstr "<HR><B>Trotant el proveïdor"
 
-#: pluginclientprov.cpp:63
+#: pluginbf_clienteproveedor.cpp:63
 #, fuzzy
 msgid "C.I.F. del proveedor"
 msgstr "NIF del proveïdor"
 
-#: pluginclientprov.cpp:75
+#: pluginbf_clienteproveedor.cpp:75
 msgid "Codigo"
 msgstr "Codi"
 
-#: pluginclientprov.cpp:64
+#: pluginbf_clienteproveedor.cpp:64
 #, fuzzy
 msgid "Codigo cliente"
 msgstr "Codi compte"
 
-#: pluginclientprov.cpp:69
+#: pluginbf_clienteproveedor.cpp:69
 #, fuzzy
 msgid "Codigo postal"
 msgstr "Codi compte"
 
-#: pluginclientprov.cpp:74
+#: pluginbf_clienteproveedor.cpp:74
 #, fuzzy
 msgid "Comentarios"
 msgstr ""
@@ -51,66 +51,66 @@ msgstr ""
 "#-#-#-#-#  bulmacont_ca.po (PACKAGE VERSION)  #-#-#-#-#\n"
 "Comentaris"
 
-#: pluginclientprov.cpp:66
+#: pluginbf_clienteproveedor.cpp:66
 #, fuzzy
 msgid "Direccion"
 msgstr "Adreça:"
 
-#: pluginclientprov.cpp:72
+#: pluginbf_clienteproveedor.cpp:72
 #, fuzzy
 msgid "Direccion electronica"
 msgstr "Correo electrònic:"
 
-#: pluginclientprov.cpp:60
+#: pluginbf_clienteproveedor.cpp:60
 #, fuzzy
 msgid "ID proveedor"
 msgstr "NIF del proveïdor"
 
-#: pluginclientprov.cpp:79
+#: pluginbf_clienteproveedor.cpp:79
 msgid "IRPF"
 msgstr "IRPF"
 
-#: pluginclientprov.cpp:77
+#: pluginbf_clienteproveedor.cpp:77
 #, fuzzy
 msgid "Id forma de pago"
 msgstr "<LI> Forma de pagament <B>"
 
-#: pluginclientprov.cpp:62
+#: pluginbf_clienteproveedor.cpp:62
 #, fuzzy
 msgid "Nombre alternativo del proveedor"
 msgstr "Nom del proveïdor"
 
-#: pluginclientprov.cpp:61
+#: pluginbf_clienteproveedor.cpp:61
 msgid "Nombre del proveedor"
 msgstr "Nom del proveïdor"
 
-#: pluginclientprov.cpp:71
+#: pluginbf_clienteproveedor.cpp:71
 #, fuzzy
 msgid "Numero de fax"
 msgstr "Nombre de quotes"
 
-#: pluginclientprov.cpp:70
+#: pluginbf_clienteproveedor.cpp:70
 #, fuzzy
 msgid "Numero de telefono"
 msgstr "Nombre de quotes"
 
-#: pluginclientprov.cpp:67
+#: pluginbf_clienteproveedor.cpp:67
 #, fuzzy
 msgid "Poblacion"
 msgstr "Paginació"
 
-#: pluginclientprov.cpp:68
+#: pluginbf_clienteproveedor.cpp:68
 msgid "Provincia"
 msgstr "Provincia"
 
-#: pluginclientprov.cpp:78
+#: pluginbf_clienteproveedor.cpp:78
 msgid "Recargo de equivalencia"
 msgstr ""
 
-#: pluginclientprov.cpp:76
+#: pluginbf_clienteproveedor.cpp:76
 msgid "Regimen fiscal"
 msgstr "Règim fiscal"
 
-#: pluginclientprov.cpp:73
+#: pluginbf_clienteproveedor.cpp:73
 msgid "URL"
 msgstr "URL"

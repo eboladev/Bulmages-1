@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-02-26 01:05+0100\n"
+"POT-Creation-Date: 2009-05-12 23:57+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -35,7 +35,7 @@ msgstr "CLIENT"
 msgid "El ticket esta vacio. No se puede aparcar."
 msgstr "&No."
 
-#: ui_ticketsbase.h:57 ui_abrevsbase.h:93 ui_trabajadoresbase.h:70
+#: ui_trabajadoresbase.h:70 ui_abrevsbase.h:93 ui_ticketsbase.h:57
 msgid "Form"
 msgstr "Form"
 

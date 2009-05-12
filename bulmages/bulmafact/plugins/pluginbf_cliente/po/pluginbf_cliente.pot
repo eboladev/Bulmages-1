@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-02-15 23:45+0100\n"
+"POT-Creation-Date: 2009-05-12 23:58+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -128,19 +128,19 @@ msgstr ""
 msgid "Tiene que guardar el documento antes de poder imprimirlo."
 msgstr ""
 
-#: pluginbf_cliente.cpp:97
+#: pluginbf_cliente.cpp:96
 msgid "&Clientes"
 msgstr ""
 
-#: pluginbf_cliente.cpp:99 pluginbf_cliente.cpp:100 ui_clientslistbase.h:261
+#: pluginbf_cliente.cpp:98 pluginbf_cliente.cpp:99 ui_clientslistbase.h:261
 msgid "Clientes"
 msgstr ""
 
-#: pluginbf_cliente.cpp:105
-msgid "&Nuevo Cliente"
+#: pluginbf_cliente.cpp:104
+msgid "&Nuevo cliente"
 msgstr ""
 
-#: pluginbf_cliente.cpp:107 pluginbf_cliente.cpp:108 clientslist.cpp:237
+#: pluginbf_cliente.cpp:106 pluginbf_cliente.cpp:107 clientslist.cpp:237
 msgid "Nuevo cliente"
 msgstr ""
 

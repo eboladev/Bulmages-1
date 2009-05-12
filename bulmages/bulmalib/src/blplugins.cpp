@@ -93,7 +93,7 @@ void BlPlugins::cargaLibs ( const QString &libs )
             } // end if
         } // end for
         if ( ! cargado ) {
-            mensajeInfo ( "No se ha podido cargar la libreria: " + *it );
+            mensajeInfo ( _ ("No se ha podido cargar la libreria: " ) + *it );
         } // end if
     } // end for
     _depura ( "END BlPlugins::cargaLibs", 0 );

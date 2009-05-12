@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-02-26 01:21+0100\n"
+"POT-Creation-Date: 2009-05-12 23:58+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,7 +18,7 @@ msgstr ""
 "#-#-#-#-#  bulmalib_ca_ES.UTF-8.po (PACKAGE VERSION)  #-#-#-#-#\n"
 "X-Generator: Translate Toolkit 1.1.1\n"
 
-#: plugincorrector.cpp:71
+#: pluginbc_corrector.cpp:71
 msgid "&Corrector"
 msgstr "&Corrector"
 
@@ -55,11 +55,11 @@ msgstr "Codi:"
 msgid "Configurar"
 msgstr "Arranjament"
 
-#: plugincorrector.cpp:55 ui_correctorbase.h:92
+#: pluginbc_corrector.cpp:55 ui_correctorbase.h:92
 msgid "Corrector"
 msgstr "Corrector"
 
-#: plugincorrector.cpp:75
+#: pluginbc_corrector.cpp:75
 msgid ""
 "Corrector.\n"
 "\n"
@@ -77,7 +77,7 @@ msgstr "Corregeix"
 msgid "Deben existir registros que cumplan esta condicion en el periodo"
 msgstr ""
 
-#: plugincorrector.cpp:74
+#: pluginbc_corrector.cpp:74
 msgid "Muestra/oculta el corrector"
 msgstr ""
 

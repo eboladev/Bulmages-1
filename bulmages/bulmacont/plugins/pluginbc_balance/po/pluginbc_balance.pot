@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-02-15 23:44+0100\n"
+"POT-Creation-Date: 2009-05-12 23:58+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -124,23 +124,23 @@ msgstr ""
 msgid "Ver configurador de subformulario"
 msgstr ""
 
-#: pluginbalance.cpp:83
+#: pluginbc_balance.cpp:83
 msgid "menuVentana"
 msgstr ""
 
-#: pluginbalance.cpp:87
+#: pluginbc_balance.cpp:87
 msgid "&Ver"
 msgstr ""
 
-#: pluginbalance.cpp:91
+#: pluginbc_balance.cpp:91
 msgid "&Balance jerarquico"
 msgstr ""
 
-#: pluginbalance.cpp:92
+#: pluginbc_balance.cpp:92
 msgid "Permite realizar balances"
 msgstr ""
 
-#: pluginbalance.cpp:93
+#: pluginbc_balance.cpp:93
 msgid "Podra disponer de la informacion del balance"
 msgstr ""
 

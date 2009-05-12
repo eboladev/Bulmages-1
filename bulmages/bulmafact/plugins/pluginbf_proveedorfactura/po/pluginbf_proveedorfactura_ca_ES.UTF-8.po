@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-02-26 01:14+0100\n"
+"POT-Creation-Date: 2009-05-12 23:58+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -72,7 +72,7 @@ msgstr ""
 msgid "&Detalle"
 msgstr "&Detalls"
 
-#: pluginfacturaprov.cpp:96
+#: pluginbf_proveedorfactura.cpp:96
 #, fuzzy
 msgid "&Facturas proveedores"
 msgstr "<HR><B>Trotant el proveïdor"
@@ -81,7 +81,7 @@ msgstr "<HR><B>Trotant el proveïdor"
 msgid "&No"
 msgstr "&No"
 
-#: pluginfacturaprov.cpp:104
+#: pluginbf_proveedorfactura.cpp:104
 #, fuzzy
 msgid "&Nueva factura de proveedor"
 msgstr "Nova forma de pagament"
@@ -240,7 +240,7 @@ msgstr "Descripció"
 msgid "Descuen&tos"
 msgstr "Document:"
 
-#: facturapview.cpp:399 listlinfacturapview.cpp:57
+#: listlinfacturapview.cpp:57 facturapview.cpp:399
 #, fuzzy
 msgid "Descuento"
 msgstr "Document:"
@@ -298,8 +298,8 @@ msgstr "<HR><B>Trotant el proveïdor"
 msgid "Factura de proveedor existente"
 msgstr "Factura de proveïdor existent"
 
-#: pluginfacturaprov.cpp:98 pluginfacturaprov.cpp:99 facturasplist.cpp:267
-#: ui_facturasplistbase.h:372
+#: facturasplist.cpp:267 pluginbf_proveedorfactura.cpp:98
+#: pluginbf_proveedorfactura.cpp:99 ui_facturasplistbase.h:372
 #, fuzzy
 msgid "Facturas de proveedores"
 msgstr "NIF del proveïdor"
@@ -366,7 +366,7 @@ msgstr "IVA "
 msgid "Id descuento"
 msgstr "Id compte"
 
-#: facturasplist.cpp:352 listdescfacturaprovview.cpp:43
+#: listdescfacturaprovview.cpp:43 facturasplist.cpp:352
 #, fuzzy
 msgid "Id factura"
 msgstr "Factura"
@@ -434,7 +434,8 @@ msgstr "Nom del proveïdor"
 msgid "Nueva factura"
 msgstr "Nova facturació"
 
-#: pluginfacturaprov.cpp:106 pluginfacturaprov.cpp:107 ui_facturapbase.h:572
+#: pluginbf_proveedorfactura.cpp:106 pluginbf_proveedorfactura.cpp:107
+#: ui_facturapbase.h:572
 #, fuzzy
 msgid "Nueva factura de proveedor"
 msgstr "Nova forma de pagament"

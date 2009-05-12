@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-02-26 01:12+0100\n"
+"POT-Creation-Date: 2009-05-12 23:58+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -54,12 +54,12 @@ msgstr ""
 "#-#-#-#-#  bulmalib_ca_ES.UTF-8.po (PACKAGE VERSION)  #-#-#-#-#\n"
 "&Cancel·lar"
 
-#: plugincobros.cpp:97
+#: pluginbf_clientecobro.cpp:97
 #, fuzzy
 msgid "&Cobros a clientes"
 msgstr "&Cobraments i pagaments"
 
-#: plugincobros.cpp:105
+#: pluginbf_clientecobro.cpp:105
 #, fuzzy
 msgid "&Nuevo cobro a cliente"
 msgstr "Nou assentament"
@@ -115,7 +115,8 @@ msgstr "Pendent:"
 msgid "Cobro"
 msgstr "Cobrament"
 
-#: cobroslist.cpp:181 plugincobros.cpp:99 plugincobros.cpp:100
+#: cobroslist.cpp:181 pluginbf_clientecobro.cpp:99
+#: pluginbf_clientecobro.cpp:100
 msgid "Cobros a clientes"
 msgstr "Cobraments a clients"
 
@@ -306,7 +307,7 @@ msgstr "Nom del proveïdor"
 msgid "Nuevo cobro"
 msgstr "Nou"
 
-#: plugincobros.cpp:107 plugincobros.cpp:108
+#: pluginbf_clientecobro.cpp:107 pluginbf_clientecobro.cpp:108
 #, fuzzy
 msgid "Nuevo cobro a cliente"
 msgstr "Nou assentament"
@@ -345,7 +346,7 @@ msgstr "Referència de cobrament"
 msgid "Referencia:"
 msgstr "Referència:"
 
-#: cobroview.cpp:121
+#: cobroview.cpp:122
 msgid "Tiene que guardar el documento antes de poder imprimirlo."
 msgstr ""
 
