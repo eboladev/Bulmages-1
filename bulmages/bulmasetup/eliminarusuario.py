@@ -5,37 +5,22 @@ import os
 from PyQt4.QtGui import *
 from PyQt4.QtCore import *
 from eliminarusuariobase import *
+from empresa import Empresa
+from config import *
 # Libreria de acceso a bases de datos PostgreSQL
 import psycopg2
 
-class EliminarUsuario(QtGui.QDialog, Ui_EliminarUsuario):
+class EliminarUsuario(Ui_EliminarUsuario, Empresa):
 
     def __init__(self, parent = None):
-        QtGui.QDialog.__init__(self,parent)
-	self.setupUi(self)
-	self.process = QtCore.QProcess()
+        Empresa.__init__(self,parent)
+        self.setupUi(self)
+        self.process = QtCore.QProcess()
         self.initListaUsuarios()
 
     def initListaUsuarios(self):
-        try:
-            # Aqui puede verse que hace falta agregar al usuario root como
-            # superusuario de bases de datos de postgres para que este script
-            # funcione correctamente. Con el usuario postgres basta con poner:
-            # createuser root
-            conn = psycopg2.connect("dbname='template1' user='root'")
-        except:
-            print "Fallo en la conexion con PostgreSQL."
-            sys.exit()
-
-        cur = conn.cursor()
-        
-        try:
-            cur.execute("SELECT * FROM pg_user")
-        except:
-            print "Fallo en la consulta para obtener los usuarios de PostgreSQL del sistema."
-            sys.exit()
-            
-        usuarios = cur.fetchall()
+        self.conectar('template1')
+        usuarios = self.execute("SELECT * FROM pg_user")
         texto = ""
         
         # Rellenamos la lista con los usuarios de PostgreSQL

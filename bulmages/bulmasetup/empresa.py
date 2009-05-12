@@ -70,6 +70,12 @@ class Empresa(QtGui.QDialog, PluginsBulmaSetup):
 	    return None
         return self.cur.fetchall()
         
+    def executeprocess(self, proceso):
+        try:
+            self.cur.execute(proceso)
+        except:
+            print "Fallo al ejecutar: " + proceso
+            
     def executeone(self, query):
         try:
             self.cur.execute(query)

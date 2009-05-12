@@ -17,7 +17,7 @@ from bulmasetupbase import *
 from PyQt4 import *
 from nuevousuario import NuevoUsuario
 from eliminarusuario import EliminarUsuario
-#from editarusuario import EditarUsuario
+from editarusuario import EditarUsuario
 from modificarusuario import ModificarUsuario
 from nuevafacturacion import NuevaFacturacion
 from nuevacontabilidad import NuevaContabilidad
@@ -57,9 +57,9 @@ class HelloWindow(QtGui.QMainWindow, Ui_MainWindow, PluginsBulmaSetup):
 	    win.exec_()
             
         # Evento al hacer clic en el Boton para crear un nuevo usuario
-    #def on_editar_usuario_released(self):
-            #win = EditarUsuario()
-            #win.exec_()
+    def on_editar_usuario_released(self):
+            win = EditarUsuario()
+            win.exec_()
             
         # Evento al hacer clic en el Boton para crear un nuevo usuario
     def on_eliminar_usuario_released(self):

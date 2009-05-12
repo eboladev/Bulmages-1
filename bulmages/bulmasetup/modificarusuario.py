@@ -75,14 +75,12 @@ class ModificarUsuario(Ui_ModificarUsuario, Empresa):
             
             if (temp.isSelected()):
                 dbase = temp.text()
+                if dbase.contains("BulmaFact  -  "):
+                    dbase.remove("BulmaFact  -  ")
+                if dbase.contains("BulmaCont  -  "):
+                    dbase.remove("BulmaCont  -  ")
                 break
-                        
-        if dbase.contains("BulmaFact  -  "):
-            dbase.remove("BulmaFact  -  ")
-            
-        if dbase.contains("BulmaCont  -  "):
-            dbase.remove("BulmaCont  -  ")
-            
+
         self.initListaUsuarios()
 
     def initListaUsuarios(self):
@@ -110,11 +108,10 @@ class ModificarUsuario(Ui_ModificarUsuario, Empresa):
             temp = self.listWidgetUser.item(x)
                 
             if (temp.isSelected()):
-                username = temp.text()
+                self.username = temp.text()
+                if self.username.contains("  (su)"):
+                    self.username.remove("  (su)")
                 break
-
-        if username.contains("  (su)"):
-            username.remove("  (su)")
             
         self.tabWidget.setTabEnabled(1, True)
         self.capturaDatabase
