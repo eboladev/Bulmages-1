@@ -51,7 +51,12 @@ BlArgParser::BlArgParser( int argc, char **argv )
             m_host = argument;
          break;
          case 'p':
-            m_port = argument;
+            // Tomar el número de puerto sólo si es un número
+            bool ok;
+            argument.toInt(&ok, 10);
+            if ( ok ) {
+               m_port = argument;
+            } // end if
          break;
          case 'U':
             m_userName = argument;
