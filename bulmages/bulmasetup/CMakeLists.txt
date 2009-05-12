@@ -31,7 +31,7 @@ install(FILES ${CMAKE_BINARY_DIR}/bulmasetup.py DESTINATION bin RENAME bulmasetu
 install(FILES ${CMAKE_BINARY_DIR}/config.py DESTINATION share/bulmages/bulmasetup)
 
 
-file(GLOB py_files *.py)
+file(GLOB py_files *.py *.qm)
 install(FILES ${py_files} 
 		DESTINATION share/bulmages/bulmasetup)
 

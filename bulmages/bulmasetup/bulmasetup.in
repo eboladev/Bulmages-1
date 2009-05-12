@@ -93,6 +93,16 @@ class HelloWindow(QtGui.QMainWindow, Ui_MainWindow, PluginsBulmaSetup):
 	    
 def main(args):
     app=QtGui.QApplication(args)
+
+    locale = QtCore.QLocale()
+    country = str(locale.name().left(2))
+
+
+    translator = QtCore.QTranslator()
+    translator.load("@CMAKE_INSTALL_PREFIX@/share/bulmages/bulmasetup/bulmasetup_"+country+".qm")
+    app.installTranslator(translator)
+
+
     win=HelloWindow()
     win.show()
     # Envio de señal para cerrar la ventana principal de BulmaSetup
