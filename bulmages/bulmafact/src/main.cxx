@@ -1,6 +1,9 @@
 /***************************************************************************
  *   Copyright (C) 2004 by Tomeu Borras Riera                              *
  *   tborras@conetxia.com                                                  *
+  *   Copyright (C) 2009 by Aron Galdon                               *
+ *   auryn@wanadoo.es                                               *
+ *   http://www.iglues.org                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
  *   it under the terms of the GNU General Public License as published by  *
@@ -18,48 +21,46 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#include <QTextCodec>
-#include <QLocale>
+/// Faltan el sistema de log ctlog.
+
+/// Los datos de ejecuci&oacute;n del programa son sencillos.
+/** La ejecuci&oacute;n primero crea e inicializa los objetos configuraci&oacute;n,
+    idioma, blsplashscreen, etc. Interpreta posibles argumentos de l&iacute;nea de comandos.
+    Luego intenta entrar en el sistema de base de datos.
+    Y por &uacute;ltimo crea el objeto del tipo \ref BfBulmaFact que es la aplicaci&oacute;n
+    de ventanas. */
+
 #include <QDir>
-#include <QtDBus/QtDBus>
-#include <QtDBus/QDBusConnection>
+#include <QString>
+#include <QTextCodec>
 
-#include "blapplication.h"
-#include "blconfiguration.h"
-#include "blplugins.h"
 #include "bfbulmafact.h"
-#include "blsplashscreen.h"
-#include "bldblogindialog.h"
-#include "blfunctions.h"
-#include "blfixed.h"
+#include "blapplication.h"
 #include "blargparser.h"
+#include "blconfiguration.h"
+#include "bldblogindialog.h"
 #include "blplugins.h"
-#include "blconfig.h"
-#include "bli18n.h"
+#include "blsplashscreen.h"
 
-//#include "dbusobject.h"
-
-#ifdef WIN32
-#define CONFGLOBAL "C:\\bulmages\\bulmafact_"
-#else
 #define CONFGLOBAL CONFIG_DIR_CONFIG + QString("bulmafact_")
-#endif
-
-
 
 
 /// Inicio de ejecucion del programa.
 /// NOTA: En el main no se puede utilizar _depura ya que puede que no este bien inicializado g_confpr.
 int main ( int argc, char **argv )
 {
-   /// Puntero a BfBulmaFact
+   bool valorSalida = 0;
+
+   /// Objetos que se crear&aacute;n en esta funci&oacute;n
    BfBulmaFact *bges;
+   BlArgParser *argParser;
+   BlDbLoginDialog *login1;
+   BlSplashScreen *splashScr;
+
    try {
       fprintf ( stderr, "--> MAIN::Iniciando el programa. <--\n" );
       Q_INIT_RESOURCE ( bulmages );
-
       /// Leemos la configuracion que luego podremos usar siempre.
-      //        g_confpr = new BlConfiguration ( "bulmafact" );
       initConfiguration ("bulmafact");
 
       /// Inicializa el sistema de traducciones 'gettext'.
@@ -71,18 +72,17 @@ int main ( int argc, char **argv )
       g_theApp = new BlApplication ( argc, argv );
 
       /// Preparamos el sistema de plugins.
-      //        g_plugins = new BlPlugins();
       initPlugins();
 
-      /// Definimos la codificacion a Unicode.
+      /// Definimos la codificaci&oacute;n a Unicode.
       QTextCodec::setCodecForCStrings ( QTextCodec::codecForName ( "UTF-8" ) );
       QTextCodec::setCodecForLocale ( QTextCodec::codecForName ( "UTF-8" ) );
 
       g_theApp->setFont ( QFont ( g_confpr->valor ( CONF_FONTFAMILY_BULMAGES ).toAscii().constData(), atoi ( g_confpr->valor ( CONF_FONTSIZE_BULMAGES ).toAscii().constData() ) ) );
 
       /// Interpretar tomar los valores pasados por l&iacute;nea de comandos.
-      BlArgParser *argParser = new BlArgParser( g_theApp->argc(), g_theApp->argv() );
-      //   QTextStream(stdout)<<"DbName ["<<argParser->DbName()<<"] Host ["<<argParser->Host()<<"] Port ["<<argParser->Port()<<"] UserName ["<<argParser->UserName()<<"] Version ["<<argParser->ShowVersion()<<"] AskPassword ["<<argParser->AskPassword()<<"] ShowHelp ["<<argParser->ShowHelp()<<"]"<<endl;
+      argParser = new BlArgParser( g_theApp->argc(), g_theApp->argv() );
+
       if( ! argParser->Host().isEmpty() ) {
          g_confpr->setValor( CONF_SERVIDOR, argParser->Host() );
       } // end if
@@ -113,17 +113,17 @@ int main ( int argc, char **argv )
       } // end if
 
       /// Cargamos el BlSplashScreen.
-      BlSplashScreen *splashScr = new BlSplashScreen ( g_confpr->valor ( CONF_SPLASH_BULMAFACT ), "Iglues/BulmaFact", CONFIG_VERSION );
+      splashScr = new BlSplashScreen ( g_confpr->valor ( CONF_SPLASH_BULMAFACT ), "Iglues/BulmaFact", CONFIG_VERSION );
       splashScr->mensaje ( _( "Iniciando clases" ) );
       splashScr->setBarraProgreso ( 1 );
 
       /// Preguntar el nombre de usuario y/o contrase&ntilde;a en caso necesario.
-      BlDbLoginDialog *login1 = new BlDbLoginDialog ( 0, "" );
+      login1 = new BlDbLoginDialog ( 0, "" );
       if ( !login1->authOK() || argParser->AskPassword() ) {
          if( !argParser->UserName().isEmpty() ) {
             login1->m_login->setText( argParser->UserName() );
             login1->m_password->setFocus();
-        } // end if
+         } // end if
          login1->exec();
       } // end if
       /// Si la autentificacion falla una segunda vez abortamos el programa.
@@ -136,6 +136,9 @@ int main ( int argc, char **argv )
       bges->hide();
       g_main = bges;
 
+      /// No se va a usar m&aacute;s el gestor de argumentos.
+      delete argParser;
+
       splashScr->show();
       splashScr->mensaje ( _( "Leyendo configuracion" ) );
       splashScr->setBarraProgreso ( 2 );
@@ -145,7 +148,7 @@ int main ( int argc, char **argv )
       QDir archivoConf;
       if ( !archivoConf.exists ( confEsp ) ) {
          QString mensaje = "--> El archivo '" + confEsp + "' no existe. <--\n";
-         fprintf ( stderr,"%s", mensaje.toAscii().constData() );
+         fprintf ( stderr, "%s", mensaje.toAscii().constData() );
       } else {
          g_confpr->leeconfig ( confEsp );
       } // end if
@@ -154,7 +157,6 @@ int main ( int argc, char **argv )
       if ( QColor(g_confpr->valor ( CONF_BACKGROUND_COLOR )).isValid() ) {
          bges->workspace()->setBackground(QBrush(QColor( g_confpr->valor ( CONF_BACKGROUND_COLOR ) )));
       } // end if
-
 
       // Pone la imagen de fondo del workspace si esta definido y es una imagen valida.
       if ( !QImage(g_confpr->valor ( CONF_BACKGROUND_IMAGE )).isNull() ) {
@@ -192,7 +194,7 @@ int main ( int argc, char **argv )
       delete splashScr;
       bges->show();
 
-      g_theApp->exec();
+      valorSalida = g_theApp->exec();
 
       /// Disparamos los plugins con entryPoint.
       g_plugins->lanza ( "exitPoint", bges );
@@ -200,12 +202,11 @@ int main ( int argc, char **argv )
       mensajeInfo ( _( "Error inesperado en BulmaFact. El programa se cerrara." ) );
    } // end try
 
-   fprintf ( stderr, "--> MAIN::Cerrando el programa. <--\n" );
    /// Liberamos memoria.
    delete bges;
    delete g_theApp;
    delete g_confpr;
 
-   return 0;
+   fprintf ( stderr, "--> MAIN::Cerrando el programa. <--\n" );
+   return valorSalida;
 }
-
