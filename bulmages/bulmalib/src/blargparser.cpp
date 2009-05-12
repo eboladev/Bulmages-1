@@ -27,7 +27,8 @@
 \param argv
 **/
 BlArgParser::BlArgParser( int argc, char **argv )
-   : m_dbName( "" )
+   : m_executable( argv[0] )
+   , m_dbName( "" )
    , m_host( "" )
    , m_port( "" )
    , m_userName( "" )
@@ -44,22 +45,22 @@ BlArgParser::BlArgParser( int argc, char **argv )
 
       /// Usar como un valor si la iteraci&oacute;n anterior ha activado un type_arg
       switch(type_arg) {
-         case 'd':
-            m_dbName = argument;
+      case 'd':
+         m_dbName = argument;
          break;
-         case 'h':
-            m_host = argument;
+      case 'h':
+         m_host = argument;
          break;
-         case 'p':
-            // Tomar el número de puerto sólo si es un número
-            bool ok;
-            argument.toInt(&ok, 10);
-            if ( ok ) {
-               m_port = argument;
-            } // end if
+      case 'p':
+         // Tomar el número de puerto sólo si es un número
+         bool ok;
+         argument.toInt(&ok, 10);
+         if ( ok ) {
+            m_port = argument;
+         } // end if
          break;
-         case 'U':
-            m_userName = argument;
+      case 'U':
+         m_userName = argument;
          break;
       }
 
@@ -91,4 +92,35 @@ BlArgParser::BlArgParser( int argc, char **argv )
    } // end for
 
    _depura ( "END BlArgParser::BlArgParser", 0 );
+}
+
+
+/// Mostar la ayuda si se debe hacer y devolver true si se hizo.
+bool BlArgParser::ShowHelp()
+{
+   if( m_showHelp ) {
+      QTextStream(stdout)
+            <<"Usage: "<<m_executable<<" [OPTION]"<<endl
+            <<"-d, --dbname NAME     Database name"<<endl
+            <<"-h, --host ADDRESS    Server name or IP"<<endl
+            <<"-p, --port PORT       Port number"<<endl
+            <<"-U, --username NAME   User name"<<endl
+            <<"-W, --password        Force password asking"<<endl
+            <<"-V, --version         Show current version number, then exit"<<endl
+            <<"-?, --help            Show this help, then exit"<<endl;
+   }
+
+   return( m_showHelp );
+}
+
+
+/// Mostar la versi&oacute;n si se debe hacer y devolver true si se hizo.
+bool BlArgParser::ShowVersion()
+{
+   if( m_showVersion || m_showHelp ) {
+      QTextStream(stdout)
+            <<"BulmaGes "<<CONFIG_VERSION<<endl;
+   }
+
+   return( m_showVersion );
 }

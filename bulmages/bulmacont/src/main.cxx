@@ -92,22 +92,8 @@ int main ( int argc, char **argv )
          g_confpr->setValor( CONF_PUERTO, argParser->Port() );
       } // end if
 
-      /// Mostrar las opciones de l&iacute;nea de comandos.
-      if( argParser->ShowHelp() ) {
-         QTextStream(stdout)
-               <<"Usage: bulmacont [OPTION]"<<endl
-               <<"-d, --dbname NAME     Database name"<<endl
-               <<"-h, --host ADDRESS    Server name or IP"<<endl
-               <<"-p, --port PORT       Port number"<<endl
-               <<"-U, --username NAME   User name"<<endl
-               <<"-W, --password        Force password asking"<<endl
-               <<"-V, --version         Show current version number, then exit"<<endl
-               <<"-?, --help            Show this help, then exit"<<endl;
-      } // end if
-
       /// Salir ordenadamente del programa si s&oacute;lo se ha pedido ver la ayuda o la versi&oacute;n.
-      if( argParser->ShowHelp() || argParser->ShowVersion() ) {
-         QTextStream(stdout)<<"BulmaGes "<<CONFIG_VERSION<<endl;
+      if( argParser->ShowHelp() | argParser->ShowVersion() ) {
          delete argParser;
          delete g_theApp;
          delete g_confpr;

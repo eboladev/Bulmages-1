@@ -24,6 +24,7 @@
 
 #include <QString>
 #include <QTextStream>
+#include "blconfiguration.h"
 #include "blfunctions.h"
 
 class BlArgParser
@@ -39,6 +40,7 @@ public:
    bool ShowHelp();
  private:
     QString m_dbName;
+    QString m_executable;
     QString m_host;
     QString m_port;
     QString m_userName;
@@ -70,16 +72,6 @@ inline QString BlArgParser::UserName()
 inline bool BlArgParser::AskPassword()
 {
    return( m_askPassword );
-}
-
-inline bool BlArgParser::ShowVersion()
-{
-   return( m_showVersion );
-}
-
-inline bool BlArgParser::ShowHelp()
-{
-   return( m_showHelp );
 }
 
 #endif // BLARGPARSER_H
