@@ -54,7 +54,7 @@ RecibosList::RecibosList ( QWidget *parent, Qt::WFlags flag, edmode editmodo )
     setSubForm ( mui_list );
     hideBusqueda();
     iniciaForm();
-
+    
     _depura ( "END RecibosList::RecibosList", 0 );
 }
 
@@ -85,6 +85,9 @@ RecibosList::RecibosList ( BfCompany *comp, QWidget *parent, Qt::WFlags flag, ed
         
     hideBusqueda();
     iniciaForm();
+    
+    mui_idbanco->setMainCompany ( comp );
+    mui_idbanco->setidbanco ( "" );
     
     /// Hacemos el tratamiento de los permisos que desabilita botones en caso de no haber suficientes permisos.
     trataPermisos ( "recibo" );
@@ -126,7 +129,7 @@ void RecibosList::presentar()
     _depura ( "RecibosList::presentar", 0 );
     
     if ( mainCompany() != NULL ) {
-        mui_list->cargar ( "SELECT * FROM recibo LEFT JOIN forma_pago ON recibo.idforma_pago = forma_pago.idforma_pago LEFT JOIN cliente ON recibo.idcliente = cliente.idcliente WHERE 1 = 1 " + generaFiltro() );
+        mui_list->cargar ( "SELECT * FROM recibo LEFT JOIN forma_pago ON recibo.idforma_pago = forma_pago.idforma_pago LEFT JOIN cliente ON recibo.idcliente = cliente.idcliente LEFT JOIN banco ON recibo.idbanco = banco.idbanco WHERE 1 = 1 " + generaFiltro() );
     } // end if
     
     _depura ( "END RecibosList::presentar", 0 );
@@ -159,7 +162,10 @@ QString RecibosList::generaFiltro()
 
     if ( m_fechafin->text() != "" )
         filtro += " AND fecharecibo <= '" + m_fechafin->text() + "' ";
-
+            
+    if ( mui_idbanco->idbanco() != "" )
+        filtro += " AND banco.idbanco = " + mui_idbanco->idbanco();
+        
     _depura ( "END RecibosList::generaFiltro", 0 );
     
     return ( filtro );

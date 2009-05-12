@@ -2,6 +2,9 @@
  *   Copyright (C) 2009 by Tomeu Borras Riera                              *
  *   tborras@conetxia.com                                                  *
  *                                                                         *
+ *   Copyright (C) 2009 by Tomeu Borras Riera                              *
+ *   tborras@conetxia.com                                                  *
+ *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
  *   it under the terms of the GNU General Public License as published by  *
  *   the Free Software Foundation; either version 2 of the License, or     *
@@ -27,7 +30,6 @@
 #include "reciboslist.h"
 #include "emitirrecibosview.h"
 
-
 RecibosList *g_recibosList = NULL;
 
 ///
@@ -39,7 +41,6 @@ MyPlugProf::MyPlugProf()
     _depura ( "END MyPlugProf::MyPlugProf", 0 );
 }
 
-
 ///
 /**
 **/
@@ -49,17 +50,18 @@ MyPlugProf::~MyPlugProf()
     _depura ( "END MyPlugProf::~MyPlugProf", 0 );
 }
 
-
 ///
 /**
 **/
 void MyPlugProf::elslot()
 {
     _depura ( "MyPlugProf::elslot", 0 );
+    
     if ( g_recibosList ) {
         g_recibosList->hide();
         g_recibosList->show();
-    }// end if
+    } // end if
+    
     _depura ( "END MyPlugProf::elslot", 0 );
 }
 
@@ -69,9 +71,11 @@ void MyPlugProf::elslot()
 void MyPlugProf::elslot1()
 {
     _depura ( "MyPlugProf::elslot1", 0 );
+    
     ReciboView * bud = new ReciboView ( ( BfCompany * ) mainCompany(), NULL );
     mainCompany() ->m_pWorkspace->addWindow ( bud );
     bud->show();
+    
     _depura ( "END MyPlugProf::elslot1", 0 );
 }
 
@@ -82,12 +86,13 @@ void MyPlugProf::elslot1()
 void MyPlugProf::elslot2()
 {
     _depura ( "MyPlugProf::elslot2", 0 );
+    
     EmitirRecibosView * bud = new EmitirRecibosView ( ( BfCompany * ) mainCompany(), NULL );
     mainCompany() ->m_pWorkspace->addWindow ( bud );
     bud->show();
+    
     _depura ( "END MyPlugProf::elslot2", 0 );
 }
-
 
 ///
 /**
@@ -123,7 +128,7 @@ void MyPlugProf::inicializa ( BfBulmaFact *bges )
         connect ( nuevoRecibo, SIGNAL ( activated() ), this, SLOT ( elslot1() ) );
 
 
-        QAction *emitirRecibos = new QAction ( _ ( "&Emitir Recibos Periodo" ), 0 );
+        QAction *emitirRecibos = new QAction ( _ ( "Recibos &Automaticos" ), 0 );
         emitirRecibos->setIcon ( QIcon ( QString::fromUtf8 ( ":/Images/supplier-delivery-note-to-invoice.svg" ) ) );
         emitirRecibos->setStatusTip ( _ ( "Emitir recibos" ) );
         emitirRecibos->setWhatsThis ( _ ( "Emitir recibos" ) );
@@ -131,10 +136,10 @@ void MyPlugProf::inicializa ( BfBulmaFact *bges )
         bges->Fichas->addAction ( emitirRecibos );
         connect ( emitirRecibos, SIGNAL ( activated() ), this, SLOT ( elslot2() ) );
 
-    }// end if
+    } // end if
+    
     _depura ( "END MyPlugProf::inicializa", 0 );
 }
-
 
 ///
 /**
@@ -151,9 +156,9 @@ int entryPoint ( BfBulmaFact *bges )
 
     MyPlugProf *plug = new MyPlugProf();
     plug->inicializa ( bges );
+    
     return 0;
 }
-
 
 int BfCompany_createMainWindows_Post ( BfCompany *comp )
 {
@@ -162,5 +167,6 @@ int BfCompany_createMainWindows_Post ( BfCompany *comp )
         comp->m_pWorkspace->addWindow ( g_recibosList );
         g_recibosList->hide();
     }// end if
+    
     return 0;
 }

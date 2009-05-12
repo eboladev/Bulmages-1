@@ -14,7 +14,7 @@
    <string>Bancos</string>
   </property>
   <property name="windowIcon" >
-   <iconset resource="../../bulmages.qrc" >
+   <iconset>
     <normaloff>:/Images/bank.svg</normaloff>:/Images/bank.svg</iconset>
   </property>
   <layout class="QGridLayout" >
@@ -163,8 +163,8 @@
          <string>&lt;!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0//EN" "http://www.w3.org/TR/REC-html40/strict.dtd">
 &lt;html>&lt;head>&lt;meta name="qrichtext" content="1" />&lt;style type="text/css">
 p, li { white-space: pre-wrap; }
-&lt;/style>&lt;/head>&lt;body style=" font-family:'Sans Serif'; font-size:10pt; font-weight:400; font-style:normal;">
-&lt;p style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:9pt;">&lt;/p>&lt;/body>&lt;/html></string>
+&lt;/style>&lt;/head>&lt;body style=" font-family:'DejaVu Sans'; font-size:9pt; font-weight:400; font-style:normal;">
+&lt;p style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:'Sans Serif';">&lt;/p>&lt;/body>&lt;/html></string>
         </property>
        </widget>
       </item>
@@ -375,7 +375,7 @@ p, li { white-space: pre-wrap; }
         </size>
        </property>
        <property name="pixmap" >
-        <pixmap resource="../../bulmages.qrc" >:/Images/bank.svg</pixmap>
+        <pixmap>:/Images/bank.svg</pixmap>
        </property>
        <property name="scaledContents" >
         <bool>true</bool>
@@ -428,10 +428,10 @@ p, li { white-space: pre-wrap; }
            </size>
           </property>
           <property name="toolTip" >
-           <string>Borrar trabajador</string>
+           <string>Borrar banco</string>
           </property>
           <property name="whatsThis" >
-           <string>Borrar trabajador</string>
+           <string>Borrar banco</string>
           </property>
           <property name="text" >
            <string/>
@@ -463,16 +463,16 @@ p, li { white-space: pre-wrap; }
            </size>
           </property>
           <property name="toolTip" >
-           <string>Guardar trabajador</string>
+           <string>Guardar banco</string>
           </property>
           <property name="whatsThis" >
-           <string>Guardar trabajador</string>
+           <string>Guardar banco</string>
           </property>
           <property name="text" >
            <string/>
           </property>
           <property name="icon" >
-           <iconset resource="../../bulmages.qrc" >
+           <iconset>
             <normaloff>:/Images/edit-save.svg</normaloff>:/Images/edit-save.svg</iconset>
           </property>
           <property name="iconSize" >
@@ -498,16 +498,16 @@ p, li { white-space: pre-wrap; }
            </size>
           </property>
           <property name="toolTip" >
-           <string>Nuevo trabajador</string>
+           <string>Nuevo banco</string>
           </property>
           <property name="whatsThis" >
-           <string>Nuevo trabajador</string>
+           <string>Nuevo banco</string>
           </property>
           <property name="text" >
            <string/>
           </property>
           <property name="icon" >
-           <iconset resource="../../bulmages.qrc" >
+           <iconset>
             <normaloff>:/Images/document-new.svg</normaloff>:/Images/document-new.svg</iconset>
           </property>
           <property name="iconSize" >

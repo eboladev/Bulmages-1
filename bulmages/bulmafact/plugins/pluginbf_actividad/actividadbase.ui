@@ -1,8 +1,9 @@
-<ui version="4.0" >
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
  <author>Alvaro de Miguel</author>
  <class>ActividadBase</class>
- <widget class="QWidget" name="ActividadBase" >
-  <property name="geometry" >
+ <widget class="QWidget" name="ActividadBase">
+  <property name="geometry">
    <rect>
     <x>0</x>
     <y>0</y>
@@ -10,191 +11,191 @@
     <height>532</height>
    </rect>
   </property>
-  <property name="minimumSize" >
+  <property name="minimumSize">
    <size>
     <width>500</width>
     <height>150</height>
    </size>
   </property>
-  <property name="windowTitle" >
+  <property name="windowTitle">
    <string>Nueva Actividad</string>
   </property>
-  <property name="windowIcon" >
-   <iconset resource="../pluginbf_profesor/gestionaula.qrc" >
+  <property name="windowIcon">
+   <iconset resource="../pluginbf_profesor/gestionaula.qrc">
     <normaloff>:/ImgGestionAula/icons/actividad.svg</normaloff>:/ImgGestionAula/icons/actividad.svg</iconset>
   </property>
-  <layout class="QVBoxLayout" name="verticalLayout" >
+  <layout class="QVBoxLayout" name="verticalLayout">
    <item>
-    <layout class="QHBoxLayout" >
-     <property name="spacing" >
+    <layout class="QHBoxLayout">
+     <property name="spacing">
       <number>5</number>
      </property>
-     <property name="margin" >
+     <property name="margin">
       <number>0</number>
      </property>
      <item>
-      <widget class="QLabel" name="label" >
-       <property name="minimumSize" >
+      <widget class="QLabel" name="label">
+       <property name="minimumSize">
         <size>
          <width>48</width>
          <height>48</height>
         </size>
        </property>
-       <property name="maximumSize" >
+       <property name="maximumSize">
         <size>
          <width>48</width>
          <height>48</height>
         </size>
        </property>
-       <property name="text" >
+       <property name="text">
         <string/>
        </property>
-       <property name="pixmap" >
-        <pixmap resource="../pluginbf_profesor/gestionaula.qrc" >:/ImgGestionAula/icons/actividad.svg</pixmap>
+       <property name="pixmap">
+        <pixmap resource="../pluginbf_profesor/gestionaula.qrc">:/ImgGestionAula/icons/actividad.svg</pixmap>
        </property>
-       <property name="scaledContents" >
+       <property name="scaledContents">
         <bool>true</bool>
        </property>
       </widget>
      </item>
      <item>
-      <widget class="QFrame" name="frame" >
-       <property name="frameShape" >
+      <widget class="QFrame" name="frame">
+       <property name="frameShape">
         <enum>QFrame::StyledPanel</enum>
        </property>
-       <property name="frameShadow" >
+       <property name="frameShadow">
         <enum>QFrame::Raised</enum>
        </property>
-       <layout class="QHBoxLayout" >
-        <property name="spacing" >
+       <layout class="QHBoxLayout">
+        <property name="spacing">
          <number>5</number>
         </property>
-        <property name="margin" >
+        <property name="margin">
          <number>5</number>
         </property>
         <item>
-         <widget class="QToolButton" name="mui_guardar" >
-          <property name="minimumSize" >
+         <widget class="QToolButton" name="mui_guardar">
+          <property name="minimumSize">
            <size>
             <width>32</width>
             <height>32</height>
            </size>
           </property>
-          <property name="maximumSize" >
+          <property name="maximumSize">
            <size>
             <width>32</width>
             <height>32</height>
            </size>
           </property>
-          <property name="toolTip" >
-           <string>Guardar cobro</string>
+          <property name="toolTip">
+           <string>Guardar actividad</string>
           </property>
-          <property name="whatsThis" >
-           <string>Guardar cobro</string>
+          <property name="whatsThis">
+           <string>Guardar actividad</string>
           </property>
-          <property name="text" >
+          <property name="text">
            <string/>
           </property>
-          <property name="icon" >
-           <iconset resource="../../../bulmages.qrc" >
+          <property name="icon">
+           <iconset resource="../../../bulmages.qrc">
             <normaloff>:/Images/edit-save.svg</normaloff>:/Images/edit-save.svg</iconset>
           </property>
-          <property name="iconSize" >
+          <property name="iconSize">
            <size>
             <width>32</width>
             <height>32</height>
            </size>
           </property>
-          <property name="shortcut" >
+          <property name="shortcut">
            <string>Ctrl+S</string>
           </property>
          </widget>
         </item>
         <item>
-         <widget class="QToolButton" name="mui_borrar" >
-          <property name="minimumSize" >
+         <widget class="QToolButton" name="mui_borrar">
+          <property name="minimumSize">
            <size>
             <width>32</width>
             <height>32</height>
            </size>
           </property>
-          <property name="maximumSize" >
+          <property name="maximumSize">
            <size>
             <width>32</width>
             <height>32</height>
            </size>
           </property>
-          <property name="toolTip" >
-           <string>Borrar cobro</string>
+          <property name="toolTip">
+           <string>Borrar actividad</string>
           </property>
-          <property name="whatsThis" >
-           <string>Borrar cobro</string>
+          <property name="whatsThis">
+           <string>Borrar actividad</string>
           </property>
-          <property name="text" >
+          <property name="text">
            <string/>
           </property>
-          <property name="icon" >
-           <iconset resource="../../../bulmages.qrc" >
+          <property name="icon">
+           <iconset resource="../../../bulmages.qrc">
             <normaloff>:/Images/edit-delete.svg</normaloff>:/Images/edit-delete.svg</iconset>
           </property>
-          <property name="iconSize" >
+          <property name="iconSize">
            <size>
             <width>32</width>
             <height>32</height>
            </size>
           </property>
-          <property name="shortcut" >
+          <property name="shortcut">
            <string>Ctrl+D</string>
           </property>
          </widget>
         </item>
         <item>
-         <widget class="QToolButton" name="mui_imprimir" >
-          <property name="minimumSize" >
+         <widget class="QToolButton" name="mui_imprimir">
+          <property name="minimumSize">
            <size>
             <width>32</width>
             <height>32</height>
            </size>
           </property>
-          <property name="maximumSize" >
+          <property name="maximumSize">
            <size>
             <width>32</width>
             <height>32</height>
            </size>
           </property>
-          <property name="toolTip" >
-           <string>Borrar cobro</string>
+          <property name="toolTip">
+           <string>Imprimir actividad</string>
           </property>
-          <property name="whatsThis" >
-           <string>Borrar cobro</string>
+          <property name="whatsThis">
+           <string>Imprimir actividad</string>
           </property>
-          <property name="text" >
+          <property name="text">
            <string/>
           </property>
-          <property name="icon" >
-           <iconset resource="../../../bulmages.qrc" >
+          <property name="icon">
+           <iconset resource="../../../bulmages.qrc">
             <normaloff>:/Images/document-print.svg</normaloff>:/Images/document-print.svg</iconset>
           </property>
-          <property name="iconSize" >
+          <property name="iconSize">
            <size>
             <width>32</width>
             <height>32</height>
            </size>
           </property>
-          <property name="shortcut" >
+          <property name="shortcut">
            <string>Ctrl+I</string>
           </property>
          </widget>
         </item>
         <item>
          <spacer>
-          <property name="orientation" >
+          <property name="orientation">
            <enum>Qt::Horizontal</enum>
           </property>
-          <property name="sizeType" >
+          <property name="sizeType">
            <enum>QSizePolicy::Expanding</enum>
           </property>
-          <property name="sizeHint" stdset="0" >
+          <property name="sizeHint" stdset="0">
            <size>
             <width>41</width>
             <height>34</height>
@@ -208,50 +209,50 @@
     </layout>
    </item>
    <item>
-    <widget class="QTabWidget" name="mui_tab" >
-     <property name="enabled" >
+    <widget class="QTabWidget" name="mui_tab">
+     <property name="enabled">
       <bool>true</bool>
      </property>
-     <property name="currentIndex" >
-      <number>0</number>
+     <property name="currentIndex">
+      <number>2</number>
      </property>
-     <widget class="QWidget" name="Tab1" >
-      <attribute name="title" >
+     <widget class="QWidget" name="Tab1">
+      <attribute name="title">
        <string>&amp;Datos generales</string>
       </attribute>
-      <layout class="QGridLayout" name="_2" >
-       <property name="margin" >
+      <layout class="QGridLayout" name="_2">
+       <property name="margin">
         <number>5</number>
        </property>
-       <property name="spacing" >
+       <property name="spacing">
         <number>5</number>
        </property>
-       <item row="0" column="0" >
-        <widget class="QLabel" name="textLabel2_5" >
-         <property name="text" >
+       <item row="0" column="0">
+        <widget class="QLabel" name="textLabel2_5">
+         <property name="text">
           <string>Codigo Actividad</string>
          </property>
-         <property name="alignment" >
+         <property name="alignment">
           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
          </property>
-         <property name="buddy" >
+         <property name="buddy">
           <cstring>mui_codigoactividad</cstring>
          </property>
         </widget>
        </item>
-       <item row="0" column="1" >
-        <widget class="QLineEdit" name="mui_codigoactividad" >
-         <property name="maxLength" >
+       <item row="0" column="1">
+        <widget class="QLineEdit" name="mui_codigoactividad">
+         <property name="maxLength">
           <number>200</number>
          </property>
         </widget>
        </item>
-       <item row="0" column="2" >
+       <item row="0" column="2">
         <spacer>
-         <property name="orientation" >
+         <property name="orientation">
           <enum>Qt::Horizontal</enum>
          </property>
-         <property name="sizeHint" stdset="0" >
+         <property name="sizeHint" stdset="0">
           <size>
            <width>40</width>
            <height>20</height>
@@ -259,72 +260,72 @@
          </property>
         </spacer>
        </item>
-       <item row="1" column="0" >
-        <widget class="QLabel" name="textLabel2_2" >
-         <property name="text" >
+       <item row="1" column="0">
+        <widget class="QLabel" name="textLabel2_2">
+         <property name="text">
           <string>Nombre completo:</string>
          </property>
-         <property name="alignment" >
+         <property name="alignment">
           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
          </property>
-         <property name="buddy" >
+         <property name="buddy">
           <cstring>mui_nombreactividad</cstring>
          </property>
         </widget>
        </item>
-       <item row="1" column="1" colspan="4" >
-        <widget class="QLineEdit" name="mui_nombreactividad" >
-         <property name="maxLength" >
+       <item row="1" column="1" colspan="4">
+        <widget class="QLineEdit" name="mui_nombreactividad">
+         <property name="maxLength">
           <number>100</number>
          </property>
         </widget>
        </item>
-       <item row="2" column="0" >
-        <widget class="QLabel" name="textLabel2_2_2" >
-         <property name="text" >
+       <item row="2" column="0">
+        <widget class="QLabel" name="textLabel2_2_2">
+         <property name="text">
           <string>Lugar</string>
          </property>
-         <property name="alignment" >
+         <property name="alignment">
           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
          </property>
-         <property name="buddy" >
+         <property name="buddy">
           <cstring>mui_corpcliente</cstring>
          </property>
         </widget>
        </item>
-       <item row="2" column="1" colspan="4" >
-        <widget class="QLineEdit" name="mui_corpcliente" >
-         <property name="maxLength" >
+       <item row="2" column="1" colspan="4">
+        <widget class="QLineEdit" name="mui_corpcliente">
+         <property name="maxLength">
           <number>200</number>
          </property>
         </widget>
        </item>
-       <item row="3" column="0" >
-        <widget class="QLabel" name="textLabel2_6" >
-         <property name="text" >
+       <item row="3" column="0">
+        <widget class="QLabel" name="textLabel2_6">
+         <property name="text">
           <string>Direccion:</string>
          </property>
-         <property name="alignment" >
+         <property name="alignment">
           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
          </property>
-         <property name="buddy" >
+         <property name="buddy">
           <cstring>mui_dircliente</cstring>
          </property>
         </widget>
        </item>
-       <item row="3" column="1" colspan="3" >
-        <widget class="QLineEdit" name="mui_dircliente" >
-         <property name="maxLength" >
+       <item row="3" column="1" colspan="3">
+        <widget class="QLineEdit" name="mui_dircliente">
+         <property name="maxLength">
           <number>100</number>
          </property>
         </widget>
        </item>
-       <item row="10" column="1" >
+       <item row="10" column="1">
         <spacer>
-         <property name="orientation" >
+         <property name="orientation">
           <enum>Qt::Vertical</enum>
          </property>
-         <property name="sizeHint" stdset="0" >
+         <property name="sizeHint" stdset="0">
           <size>
            <width>20</width>
            <height>40</height>
@@ -332,15 +333,15 @@
          </property>
         </spacer>
        </item>
-       <item row="9" column="1" colspan="2" >
-        <widget class="BlSearchWidget" native="1" name="mui_idprofesor" >
-         <property name="sizePolicy" >
-          <sizepolicy vsizetype="Fixed" hsizetype="Expanding" >
+       <item row="9" column="1" colspan="2">
+        <widget class="BlSearchWidget" name="mui_idprofesor" native="true">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
            <horstretch>0</horstretch>
            <verstretch>0</verstretch>
           </sizepolicy>
          </property>
-         <property name="minimumSize" >
+         <property name="minimumSize">
           <size>
            <width>150</width>
            <height>100</height>
@@ -348,160 +349,160 @@
          </property>
         </widget>
        </item>
-       <item row="4" column="1" >
-        <widget class="QCheckBox" name="mui_recargoeqcliente" >
-         <property name="text" >
+       <item row="4" column="1">
+        <widget class="QCheckBox" name="mui_recargoeqcliente">
+         <property name="text">
           <string>Vigente</string>
          </property>
         </widget>
        </item>
-       <item row="5" column="1" >
-        <widget class="BlComboBox" name="mui_idtipoactividad" />
+       <item row="5" column="1">
+        <widget class="BlComboBox" name="mui_idtipoactividad"/>
        </item>
-       <item row="5" column="0" >
-        <widget class="QLabel" name="label_2" >
-         <property name="text" >
+       <item row="5" column="0">
+        <widget class="QLabel" name="label_2">
+         <property name="text">
           <string>Tipo de Actividad</string>
          </property>
         </widget>
        </item>
-       <item row="6" column="1" >
-        <widget class="QLineEdit" name="mui_precioactividad" />
+       <item row="6" column="1">
+        <widget class="QLineEdit" name="mui_precioactividad"/>
        </item>
-       <item row="6" column="0" >
-        <widget class="QLabel" name="label_3" >
-         <property name="text" >
+       <item row="6" column="0">
+        <widget class="QLabel" name="label_3">
+         <property name="text">
           <string>Precio Cuota</string>
          </property>
         </widget>
        </item>
-       <item row="7" column="1" >
-        <widget class="BlDateSearch" name="mui_finicialactividad" />
+       <item row="7" column="1">
+        <widget class="BlDateSearch" name="mui_finicialactividad"/>
        </item>
-       <item row="8" column="1" >
-        <widget class="BlDateSearch" name="mui_ffinalactividad" />
+       <item row="8" column="1">
+        <widget class="BlDateSearch" name="mui_ffinalactividad"/>
        </item>
-       <item row="7" column="0" >
-        <widget class="QLabel" name="label_4" >
-         <property name="text" >
+       <item row="7" column="0">
+        <widget class="QLabel" name="label_4">
+         <property name="text">
           <string>Fecha Inicial</string>
          </property>
         </widget>
        </item>
-       <item row="8" column="0" >
-        <widget class="QLabel" name="label_5" >
-         <property name="text" >
+       <item row="8" column="0">
+        <widget class="QLabel" name="label_5">
+         <property name="text">
           <string>Fecha Final</string>
          </property>
         </widget>
        </item>
       </layout>
      </widget>
-     <widget class="QWidget" name="tabOtros" >
-      <attribute name="title" >
+     <widget class="QWidget" name="tabOtros">
+      <attribute name="title">
        <string>Otros datos</string>
       </attribute>
-      <layout class="QGridLayout" name="_3" >
-       <property name="margin" >
+      <layout class="QGridLayout" name="_3">
+       <property name="margin">
         <number>5</number>
        </property>
-       <property name="spacing" >
+       <property name="spacing">
         <number>5</number>
        </property>
-       <item row="0" column="0" colspan="3" >
-        <widget class="QFrame" name="m_frameplugin" >
-         <property name="frameShape" >
+       <item row="0" column="0" colspan="3">
+        <widget class="QFrame" name="m_frameplugin">
+         <property name="frameShape">
           <enum>QFrame::StyledPanel</enum>
          </property>
-         <property name="frameShadow" >
+         <property name="frameShadow">
           <enum>QFrame::Raised</enum>
          </property>
         </widget>
        </item>
-       <item row="1" column="0" colspan="2" >
-        <widget class="QLabel" name="textLabel2_4_2_2" >
-         <property name="text" >
+       <item row="1" column="0" colspan="2">
+        <widget class="QLabel" name="textLabel2_4_2_2">
+         <property name="text">
           <string>Comentarios:</string>
          </property>
-         <property name="buddy" >
+         <property name="buddy">
           <cstring>mui_comentcliente</cstring>
          </property>
         </widget>
        </item>
-       <item row="2" column="0" colspan="3" >
-        <widget class="QTextEdit" name="mui_comentcliente" >
-         <property name="sizePolicy" >
-          <sizepolicy vsizetype="Expanding" hsizetype="Expanding" >
+       <item row="2" column="0" colspan="3">
+        <widget class="QTextEdit" name="mui_comentcliente">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
            <horstretch>0</horstretch>
            <verstretch>0</verstretch>
           </sizepolicy>
          </property>
-         <property name="tabChangesFocus" >
+         <property name="tabChangesFocus">
           <bool>true</bool>
          </property>
         </widget>
        </item>
       </layout>
      </widget>
-     <widget class="QWidget" name="tab_3" >
-      <attribute name="title" >
+     <widget class="QWidget" name="tab_3">
+      <attribute name="title">
        <string>Alumnos</string>
       </attribute>
-      <layout class="QGridLayout" name="gridLayout_3" >
-       <item row="0" column="0" >
-        <widget class="ListAlumnosActividadView" name="mui_alumnosList" />
+      <layout class="QGridLayout" name="gridLayout_3">
+       <item row="0" column="0">
+        <widget class="ListAlumnosActividadView" name="mui_alumnosList"/>
        </item>
       </layout>
      </widget>
-     <widget class="QWidget" name="tab_4" >
-      <attribute name="title" >
+     <widget class="QWidget" name="tab_4">
+      <attribute name="title">
        <string>Asistencias</string>
       </attribute>
-      <layout class="QGridLayout" name="gridLayout_4" >
-       <item row="0" column="0" >
-        <widget class="QTableWidget" name="tableWidget_2" />
+      <layout class="QGridLayout" name="gridLayout_4">
+       <item row="0" column="0">
+        <widget class="QTableWidget" name="tableWidget_2"/>
        </item>
       </layout>
      </widget>
-     <widget class="QWidget" name="tab" >
-      <attribute name="title" >
+     <widget class="QWidget" name="tab">
+      <attribute name="title">
        <string>Calendario</string>
       </attribute>
-      <layout class="QGridLayout" name="gridLayout" >
-       <item row="0" column="0" >
-        <widget class="QCalendarWidget" name="calendarWidget" />
+      <layout class="QGridLayout" name="gridLayout">
+       <item row="0" column="0">
+        <widget class="QCalendarWidget" name="calendarWidget"/>
        </item>
       </layout>
      </widget>
-     <widget class="QWidget" name="tab_2" >
-      <attribute name="title" >
+     <widget class="QWidget" name="tab_2">
+      <attribute name="title">
        <string>BLMonthCalendar</string>
       </attribute>
-      <layout class="QGridLayout" name="gridLayout_2" >
-       <item row="0" column="0" >
-        <widget class="BLMonthCalendar" native="1" name="widget" />
+      <layout class="QGridLayout" name="gridLayout_2">
+       <item row="0" column="0">
+        <widget class="BLMonthCalendar" name="widget" native="true"/>
        </item>
       </layout>
      </widget>
     </widget>
    </item>
    <item>
-    <layout class="QHBoxLayout" >
-     <property name="spacing" >
+    <layout class="QHBoxLayout">
+     <property name="spacing">
       <number>5</number>
      </property>
-     <property name="margin" >
+     <property name="margin">
       <number>0</number>
      </property>
      <item>
       <spacer>
-       <property name="orientation" >
+       <property name="orientation">
         <enum>Qt::Horizontal</enum>
        </property>
-       <property name="sizeType" >
+       <property name="sizeType">
         <enum>QSizePolicy::Expanding</enum>
        </property>
-       <property name="sizeHint" stdset="0" >
+       <property name="sizeHint" stdset="0">
         <size>
          <width>201</width>
          <height>27</height>
@@ -510,15 +511,15 @@
       </spacer>
      </item>
      <item>
-      <widget class="QPushButton" name="mui_aceptar" >
-       <property name="text" >
+      <widget class="QPushButton" name="mui_aceptar">
+       <property name="text">
         <string>&amp;Aceptar</string>
        </property>
       </widget>
      </item>
      <item>
-      <widget class="QPushButton" name="mui_cancelar" >
-       <property name="text" >
+      <widget class="QPushButton" name="mui_cancelar">
+       <property name="text">
         <string>&amp;Cancelar</string>
        </property>
       </widget>
@@ -527,7 +528,7 @@
    </item>
   </layout>
  </widget>
- <layoutdefault spacing="4" margin="3" />
+ <layoutdefault spacing="4" margin="3"/>
  <customwidgets>
   <customwidget>
    <class>BLMonthCalendar</class>
@@ -557,8 +558,8 @@
   </customwidget>
  </customwidgets>
  <resources>
-  <include location="../../../bulmages.qrc" />
-  <include location="../pluginbf_profesor/gestionaula.qrc" />
+  <include location="../../../bulmages.qrc"/>
+  <include location="../pluginbf_profesor/gestionaula.qrc"/>
  </resources>
  <connections/>
 </ui>

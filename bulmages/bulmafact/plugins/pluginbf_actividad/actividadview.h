@@ -1,6 +1,10 @@
 /***************************************************************************
- *   Copyright (C) 2004 by Tomeu Borras Riera                              *
+ *   Copyright (C) 2009 by Tomeu Borras Riera                              *
  *   tborras@conetxia.com                                                  *
+ *   http://www.iglues.org                                                 *
+ *                                                                         *
+ *   Copyright (C) 2009 by Arturo Martin Llado                             *
+ *   amartin@conetxia.com                                                  *
  *   http://www.iglues.org                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -26,18 +30,14 @@
 #include <QLabel>
 #include <QCheckBox>
 
-
 #include "blpostgresqlclient.h"
 #include "bldatesearch.h"
 #include "bldialogchanges.h"
 #include "bfform.h"
 
-
 class BfCompany;
 
-
 extern "C++" class BusquedaProfesor;
-
 
 /// Muestra y administra las l&iacute;neas de detalle de una contrato a un cliente.
 /** */
@@ -51,7 +51,6 @@ public:
 public slots:
     virtual void cargar ( QString idcontrato );
 };
-
 
 #include "ui_actividadbase.h"
 

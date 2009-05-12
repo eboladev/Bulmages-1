@@ -1,7 +1,9 @@
 /***************************************************************************
- *   Copyright (C) 2004 by Tomeu Borras Riera                              *
+ *   Copyright (C) 2009 by Tomeu Borras Riera                              *
  *   tborras@conetxia.com                                                  *
- *   http://www.iglues.org                                                 *
+ *                                                                         *
+ *   Copyright (C) 2009 by Arturo Martin Llado                             *
+ *   amartin@conetxia.com                                                  *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
  *   it under the terms of the GNU General Public License as published by  *
@@ -26,18 +28,14 @@
 #include <QLabel>
 #include <QCheckBox>
 
-
 #include "blpostgresqlclient.h"
 #include "bldatesearch.h"
 #include "bldialogchanges.h"
 #include "bfform.h"
 
-
 class BfCompany;
 
-
 extern "C++" class BusquedaProfesor;
-
 
 #include "ui_emitirrecibosbase.h"
 
