@@ -59,11 +59,8 @@ BcDiarioView::BcDiarioView ( BcCompany  *emp, QWidget *parent, int )
     mui_contrapartida->setMainCompany ( emp );
     /// Iniciamos los componentes de la fecha para que al principio aparezcan
     /// como el a&ntilde;o inicial.
-    char cadena[10];
-    sprintf ( cadena, "%2.2d/%2.2d/%4.4d", 1, 1, QDate::currentDate().year() );
-    mui_fechainicial->setText ( cadena );
-    sprintf ( cadena, "%2.2d/%2.2d/%4.4d", 31, 12, QDate::currentDate().year() );
-    mui_fechafinal->setText ( cadena );
+    mui_fechainicial->setText ( "01/01/" + QString::number(QDate::currentDate().year()) );
+    mui_fechafinal->setText ( "31/12/" + QString::number(QDate::currentDate().year()) );
     meteWindow ( windowTitle(), this );
     _depura ( "END BcDiarioView::BcDiarioView", 0 );
 }

@@ -215,28 +215,14 @@ int BcCompany::createMainWindows ( BlSplashScreen *splash )
         extracto = new BcExtractoView ( this, 0 );
         m_pWorkspace->addWindow ( extracto );
 
+
         /// pb = 20%
         splash->mensaje ( _ ( "Inicializando diario" ) );
         splash->setBarraProgreso ( 20 );
         m_progressbar->setValue ( 20 );
         diario = new BcDiarioView ( this, 0 );
         m_pWorkspace->addWindow ( diario );
-        /*
-                /// pb = 35%
-                splash->mensaje ( _( "Inicializando balance" ) );
-                splash->setBarraProgreso ( 35 );
-                m_progressbar->setValue ( 35 );
-                balance = new BalanceView ( this, 0 );
-                m_pWorkspace->addWindow ( balance );
-        */
-        /// pb = 50%
-        /*
-                    splash->mensaje( _( "Inicializando balance jerarquico"));
-                    splash->setBarraProgreso(50);
-                    m_progressbar->setValue(50);
-                    balance1 = new BalanceTreeView(this, 0);
-                    m_pWorkspace->addWindow(balance1);
-        */
+        
 
         /// pb = 60%
         splash->mensaje ( _ ( "Inicializando asientos" ) );
