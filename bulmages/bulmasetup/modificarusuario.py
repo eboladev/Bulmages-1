@@ -152,46 +152,47 @@ class ModificarUsuario(Ui_ModificarUsuario, Empresa):
         
     def actualizarCheckboxTable(self):
         temp = self.listWidgetTable.currentItem()
-        table = temp.text()
+        if (temp != None):
+           table = temp.text()
         
-        #Conectamos con la base de datos
-        self.conectar(str(dbase))
-        permiso = self.executeone("select has_table_privilege('" + str(username) + "', '" + str(table) + "', 'select');")
+           #Conectamos con la base de datos
+           self.conectar(str(dbase))
+           permiso = self.executeone("select has_table_privilege('" + str(username) + "', '" + str(table) + "', 'select');")
 
-        if str(permiso) == "(True,)":
-            self.checkBox_select.setCheckState(Qt.Checked)
-        else:
-            self.checkBox_select.setCheckState(Qt.Unchecked)    
+           if str(permiso) == "(True,)":
+               self.checkBox_select.setCheckState(Qt.Checked)
+           else:
+               self.checkBox_select.setCheckState(Qt.Unchecked)    
             
-        permiso = self.executeone("select has_table_privilege('" + str(username) + "', '" + str(table) + "', 'insert');")
-        if str(permiso) == "(True,)":
-            self.checkBox_insert.setCheckState(Qt.Checked)
-        else:
-            self.checkBox_insert.setCheckState(Qt.Unchecked)
+           permiso = self.executeone("select has_table_privilege('" + str(username) + "', '" + str(table) + "', 'insert');")
+           if str(permiso) == "(True,)":
+               self.checkBox_insert.setCheckState(Qt.Checked)
+           else:
+               self.checkBox_insert.setCheckState(Qt.Unchecked)
             
-        permiso = self.executeone("select has_table_privilege('" + str(username) + "', '" + str(table) + "', 'update');")
-        if str(permiso) == "(True,)":
-            self.checkBox_update.setCheckState(Qt.Checked)
-        else:
-            self.checkBox_update.setCheckState(Qt.Unchecked)
+           permiso = self.executeone("select has_table_privilege('" + str(username) + "', '" + str(table) + "', 'update');")
+           if str(permiso) == "(True,)":
+               self.checkBox_update.setCheckState(Qt.Checked)
+           else:
+               self.checkBox_update.setCheckState(Qt.Unchecked)
 
-        permiso = self.executeone("select has_table_privilege('" + str(username) + "', '" + str(table) + "', 'delete');")
-        if str(permiso) == "(True,)":
-            self.checkBox_delete.setCheckState(Qt.Checked)
-        else:
-            self.checkBox_delete.setCheckState(Qt.Unchecked)        
+           permiso = self.executeone("select has_table_privilege('" + str(username) + "', '" + str(table) + "', 'delete');")
+           if str(permiso) == "(True,)":
+               self.checkBox_delete.setCheckState(Qt.Checked)
+           else:
+               self.checkBox_delete.setCheckState(Qt.Unchecked)        
 
-        permiso = self.executeone("select has_table_privilege('" + str(username) + "', '" + str(table) + "', 'references');")
-        if str(permiso) == "(True,)":
-            self.checkBox_references.setCheckState(Qt.Checked)
-        else:
-            self.checkBox_references.setCheckState(Qt.Unchecked)              
+           permiso = self.executeone("select has_table_privilege('" + str(username) + "', '" + str(table) + "', 'references');")
+           if str(permiso) == "(True,)":
+               self.checkBox_references.setCheckState(Qt.Checked)
+           else:
+               self.checkBox_references.setCheckState(Qt.Unchecked)              
 
-        permiso = self.executeone("select has_table_privilege('" + str(username) + "', '" + str(table) + "', 'trigger');")
-        if str(permiso) == "(True,)":
-            self.checkBox_trigger.setCheckState(Qt.Checked)
-        else:
-            self.checkBox_trigger.setCheckState(Qt.Unchecked)   
+           permiso = self.executeone("select has_table_privilege('" + str(username) + "', '" + str(table) + "', 'trigger');")
+           if str(permiso) == "(True,)":
+               self.checkBox_trigger.setCheckState(Qt.Checked)
+           else:
+               self.checkBox_trigger.setCheckState(Qt.Unchecked)   
         
     def checkBox_change(self):
         if (self.checkBox_all.isChecked()):

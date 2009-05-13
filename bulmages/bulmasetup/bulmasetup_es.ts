@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE TS><TS version="1.1" language="es">
+<!DOCTYPE TS>
+<TS version="2.0" language="es">
 <defaultcodec></defaultcodec>
 <context>
     <name>EliminarUsuario</name>
@@ -67,32 +68,32 @@
     <message>
         <location filename="bulmasetupbase.py" line="137"/>
         <source>BulmaSetup</source>
-        <translation type="unfinished">BulmaSetup</translation>
+        <translation>BulmaSetup</translation>
     </message>
-    <message encoding="UTF-8">
+    <message utf8="true">
         <location filename="bulmasetupbase.py" line="138"/>
         <source>Gestión de Usuarios</source>
-        <translation type="unfinished">Gestión de usuarios</translation>
+        <translation>Gestión de usuarios</translation>
     </message>
     <message>
         <location filename="bulmasetupbase.py" line="139"/>
         <source>Nuevos Usuario de PostgreSQL</source>
-        <translation type="unfinished">Añadir usuario/s a PostgreSQL</translation>
+        <translation>Añadir usuario/s a PostgreSQL</translation>
     </message>
     <message>
         <location filename="bulmasetupbase.py" line="140"/>
         <source>Editar Usuarios de PostgreSQL</source>
-        <translation type="unfinished">Editar usuario/s de PostgreSQL</translation>
+        <translation>Editar usuario/s de PostgreSQL</translation>
     </message>
     <message>
         <location filename="bulmasetupbase.py" line="141"/>
         <source>Eliminar Usuario de PostgreSQL</source>
-        <translation type="unfinished">Eliminar usuario/s de PostgreSQL</translation>
+        <translation>Eliminar usuario/s de PostgreSQL</translation>
     </message>
     <message>
         <location filename="bulmasetupbase.py" line="142"/>
         <source>Modificar Permisos de PostgreSQL</source>
-        <translation type="unfinished">Modificar permisos de usuario/s para PostgreSQL</translation>
+        <translation>Modificar permisos de usuario/s</translation>
     </message>
     <message>
         <location filename="bulmasetupbase.py" line="149"/>
@@ -103,38 +104,38 @@ p, li { white-space: pre-wrap; }
 &lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;/p&gt;
 &lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Administracion de Bases&lt;/p&gt;
 &lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;de Datos para BulmaGes&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished">&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+        <translation>&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
 p, li { white-space: pre-wrap; }&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;Sans Serif&apos;; font-size:9pt; font-weight:400; font-style:normal; text-decoration:none;&quot;&gt;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;BulmaSetup v 0.11&lt;/span&gt;&lt;/p&gt;&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;/p&gt;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Administración de Bases&lt;/p&gt;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;de Datos para BulmaGes&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
-    <message encoding="UTF-8">
+    <message utf8="true">
         <location filename="bulmasetupbase.py" line="150"/>
         <source>Gestión de Empresas</source>
-        <translation type="unfinished">Gestión de empresas</translation>
+        <translation>Gestión de empresas</translation>
     </message>
     <message>
         <location filename="bulmasetupbase.py" line="151"/>
         <source>Nueva Empresa de Contabilidad</source>
-        <translation type="unfinished">Nueva empresa de contabilidad</translation>
+        <translation>Crear empresa de contabilidad</translation>
     </message>
-    <message encoding="UTF-8">
+    <message utf8="true">
         <location filename="bulmasetupbase.py" line="152"/>
         <source>Nueva Empresa de Facturación / TPV</source>
-        <translation type="unfinished">Nueva empresa de facturación y/o TPV</translation>
+        <translation>Crear empresa de facturación y/o TPV</translation>
     </message>
     <message>
         <location filename="bulmasetupbase.py" line="153"/>
         <source>Administrar Empresas Existentes</source>
-        <translation type="unfinished">Administrar empresas existentes</translation>
+        <translation>Administrar empresas existentes</translation>
     </message>
     <message>
         <location filename="bulmasetupbase.py" line="154"/>
         <source>Restaurar una Copia de Seguridad</source>
-        <translation type="unfinished">Restaurar una copia de seguridad</translation>
+        <translation>Restaurar una copia de seguridad</translation>
     </message>
     <message>
         <location filename="bulmasetupbase.py" line="155"/>
         <source>Salir</source>
-        <translation type="unfinished">Salir</translation>
+        <translation>Salir</translation>
     </message>
 </context>
 <context>
@@ -187,47 +188,47 @@ p, li { white-space: pre-wrap; }&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot;
     <message>
         <location filename="modificarcontabilidadbase.py" line="167"/>
         <source>Plugin</source>
-        <translation type="unfinished">&lt;i&gt;Plug-in&lt;/i&gt;</translation>
+        <translation>Plug-in</translation>
     </message>
     <message>
         <location filename="modificarcontabilidadbase.py" line="168"/>
         <source>Descripcion</source>
-        <translation type="unfinished">Descripción</translation>
+        <translation>Descripción</translation>
     </message>
     <message>
         <location filename="modificarcontabilidadbase.py" line="169"/>
         <source>Version Instalada</source>
-        <translation type="unfinished">Versión instalada</translation>
+        <translation>Versión instalada</translation>
     </message>
     <message>
         <location filename="modificarcontabilidadbase.py" line="170"/>
         <source>Plugins BulmaCont</source>
-        <translation type="unfinished">&lt;i&gt;Plug-in&lt;/i&gt; BulmaCont</translation>
+        <translation>Plug-in BulmaCont</translation>
     </message>
     <message>
         <location filename="modificarcontabilidadbase.py" line="171"/>
         <source>Consola</source>
-        <translation type="unfinished">Consola</translation>
+        <translation>Consola</translation>
     </message>
     <message>
         <location filename="modificarcontabilidadbase.py" line="172"/>
         <source>Aplicar cambios</source>
-        <translation type="unfinished">Aplicar cambios</translation>
+        <translation>Aplicar cambios</translation>
     </message>
     <message>
         <location filename="modificarcontabilidadbase.py" line="173"/>
         <source>Hacer copia de seguridad</source>
-        <translation type="unfinished">Realizar una copia de seguridad</translation>
+        <translation>Realizar una copia de seguridad</translation>
     </message>
     <message>
         <location filename="modificarcontabilidadbase.py" line="174"/>
         <source>Cerrar</source>
-        <translation type="unfinished">Cerrar</translation>
+        <translation>Cerrar</translation>
     </message>
     <message>
         <location filename="modificarcontabilidadbase.py" line="175"/>
         <source>Administrar Permisos</source>
-        <translation type="unfinished">Administrar permisos</translation>
+        <translation>Administrar permisos</translation>
     </message>
 </context>
 <context>
@@ -285,27 +286,27 @@ p, li { white-space: pre-wrap; }&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot;
     <message>
         <location filename="modificarfacturacionbase.py" line="202"/>
         <source>Plugin</source>
-        <translation type="unfinished">&lt;i&gt;Plug-in&lt;/i&gt;</translation>
+        <translation>Plug-in</translation>
     </message>
     <message>
         <location filename="modificarfacturacionbase.py" line="203"/>
         <source>Descripcion</source>
-        <translation type="unfinished">Descripción</translation>
+        <translation>Descripción</translation>
     </message>
     <message>
         <location filename="modificarfacturacionbase.py" line="204"/>
         <source>Version Instalada</source>
-        <translation type="unfinished">Versión instalada</translation>
+        <translation>Versión instalada</translation>
     </message>
     <message>
         <location filename="modificarfacturacionbase.py" line="201"/>
         <source>Plugins BulmaFact</source>
-        <translation type="unfinished">&lt;i&gt;Plug-in&lt;/i&gt; para BulmaFact</translation>
+        <translation>Plug-in para BulmaFact</translation>
     </message>
     <message>
         <location filename="modificarfacturacionbase.py" line="205"/>
         <source>Plugins BulmaTPV</source>
-        <translation type="unfinished">&lt;i&gt;Plug-in&lt;/i&gt; para BulmaTPV</translation>
+        <translation>Plug-in para BulmaTPV</translation>
     </message>
     <message>
         <location filename="modificarfacturacionbase.py" line="206"/>

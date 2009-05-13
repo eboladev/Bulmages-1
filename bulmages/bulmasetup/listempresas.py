@@ -35,28 +35,20 @@ class ListEmpresas(Ui_ListEmpresasBase, Empresa):
         
         for row in self.databases:
             if (str(row[0]) != 'template0' and str(row[0]) != 'template1' ):
+                self.mui_listado.hideRow(self.i)
                 self.conectar(str(row[0]))
-                print str(row[0])
-                nombre = self.executeone('SELECT valor FROM configuracion where nombre =\'NombreEmpresa\'')
-                tipo = self.executeone('SELECT valor FROM configuracion where nombre =\'Tipo\'')
-                databaserevision = self.executeone('SELECT valor FROM configuracion where nombre =\'DatabaseRevision\'')
-                print nombre
-                print tipo
-                print databaserevision
-                if (nombre != None and tipo != None and databaserevision != None):
-                  print nombre
-                  print tipo
-                  print databaserevision
-                
-                  self.mui_listado.setItem(self.i, 0 , QTableWidgetItem(str(nombre[0])))
-                  self.mui_listado.setItem(self.i, 1 , QTableWidgetItem(row[0]))
-                  self.mui_listado.setItem(self.i, 2 , QTableWidgetItem(str(tipo[0])))
-                  self.mui_listado.setItem(self.i, 3 , QTableWidgetItem(str(databaserevision[0])))
-                else:
-                  self.mui_listado.hideRow(self.i)
+                existconf = self.executeone('SELECT * FROM pg_tables WHERE tablename=\'configuracion\'')
+                if existconf != None:
+                   nombre = self.executeone('SELECT valor FROM configuracion where nombre =\'NombreEmpresa\'')
+                   tipo = self.executeone('SELECT valor FROM configuracion where nombre =\'Tipo\'')
+                   databaserevision = self.executeone('SELECT valor FROM configuracion where nombre =\'DatabaseRevision\'')
+                   if (nombre != None and tipo != None and databaserevision != None):
+                     self.mui_listado.setItem(self.i, 0 , QTableWidgetItem(str(nombre[0])))
+                     self.mui_listado.setItem(self.i, 1 , QTableWidgetItem(row[0]))
+                     self.mui_listado.setItem(self.i, 2 , QTableWidgetItem(str(tipo[0])))
+                     self.mui_listado.setItem(self.i, 3 , QTableWidgetItem(str(databaserevision[0])))
+                     self.mui_listado.showRow(self.i)
                 self.desconectar()
-            else:
-              self.mui_listado.hideRow(self.i)
             self.i = self.i + 1
                             
         # Ponemos la pestanya principal como la visible
