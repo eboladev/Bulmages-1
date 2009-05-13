@@ -32,6 +32,9 @@ class ModificarContabilidad(Contabilidad):
         self.writecommand(self.process.readAllStandardOutput())
 
     def on_mui_aceptar_released(self):
+        # Ponemos la pestanya de consola como la visible
+        self.tabWidget.setCurrentIndex(1)
+
         if (self.mui_actualizarDB.checkState() == Qt.Checked ):
             self.actualizarDatabase()
         self.mui_textBrowser.clear()

@@ -22,9 +22,14 @@ class NuevaContabilidad(Contabilidad):
     self.mui_nomdb.setReadOnly(False)
     
   def on_mui_aceptar_released(self):
+  
+    # Ponemos la pestanya de consola como la visible
+    self.tabWidget.setCurrentIndex(1)
+
     self.mui_textBrowser.clear()
 
     self.nomdb = self.mui_nomdb.text()
+    self.database = self.nomdb
 
     # Creamos la base de datos
     self.command = 'su postgres -c "createdb -E UNICODE ' + self.nomdb +'"'
