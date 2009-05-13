@@ -87,7 +87,8 @@ FacturaView::FacturaView ( BfCompany *comp, QWidget *parent )
         m_descuentos->setMainCompany ( comp );
         mui_codigoserie_factura->setMainCompany ( comp );
         mui_reffactura->setMainCompany ( comp );
-
+        mui_idtrabajador->setMainCompany ( comp );
+      
         /// Inicializamos BfForm.
         setListaLineas ( subform2 );
         setListaDescuentos ( m_descuentos );
@@ -102,6 +103,7 @@ FacturaView::FacturaView ( BfCompany *comp, QWidget *parent )
         mui_idalmacen->setId ( "" );
         mui_codigoserie_factura->setId ( "" );
         mui_idforma_pago->setId ( "" );
+        mui_idtrabajador->setFieldValue ( "0" );
 
         m_totalBases->setReadOnly ( TRUE );
         m_totalBases->setAlignment ( Qt::AlignRight );

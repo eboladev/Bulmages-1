@@ -48,12 +48,14 @@ CobroView::CobroView ( BfCompany *comp, QWidget *parent )
         mui_idcliente->setMainCompany ( comp );
         mui_refcobro->setMainCompany ( comp );
         mui_idbanco->setMainCompany ( comp );
-
+        mui_idtrabajador->setMainCompany ( comp );
+      
         /// Establecemos los parametros de busqueda del Cliente
         mui_idcliente->setLabel ( _ ( "Cliente:" ) );
         mui_idcliente->setTableName ( "cliente" );
         mui_idcliente->m_valores["cifcliente"] = "";
         mui_idcliente->m_valores["nomcliente"] = "";
+        mui_idtrabajador->setFieldValue ( "0" );
 
         setTitleName ( _ ( "Cobro" ) );
         setDbTableName ( "cobro" );
@@ -67,6 +69,7 @@ CobroView::CobroView ( BfCompany *comp, QWidget *parent )
         addDbField ( "cantcobro", BlDbField::DbNumeric, BlDbField::DbNotNull, _ ( "Total cobro" ) );
         addDbField ( "comentcobro", BlDbField::DbVarChar, BlDbField::DbNothing, _ ( "Descripcion del cobro" ) );
         addDbField ( "idbanco", BlDbField::DbInt, BlDbField::DbNothing, _ ( "Banco" ) );
+        addDbField ( "idtrabajador", BlDbField::DbInt, BlDbField::DbNothing, _ ( "Trabajador" ) );
 
         meteWindow ( windowTitle(), this, FALSE );
         pintar();

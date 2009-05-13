@@ -108,7 +108,7 @@ void CobrosList::presentar()
 {
     _depura ( "CobrosList::presentar", 0 );
     if ( mainCompany() != NULL ) {
-        mui_list->cargar ( "SELECT * FROM cobro NATURAL LEFT JOIN cliente NATURAL LEFT JOIN trabajador NATURAL LEFT JOIN banco WHERE 1 = 1 " + generaFiltro() );
+        mui_list->cargar ( "SELECT * FROM cobro NATURAL LEFT JOIN cliente LEFT JOIN trabajador ON trabajador.idtrabajador = cobro.idtrabajador NATURAL LEFT JOIN banco WHERE 1 = 1 " + generaFiltro() );
         /// Hacemos el calculo del total.
         BlFixed total = mui_list->sumarCampo ( "cantcobro" );
         m_total->setText ( total.toQString() );
