@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: bulmages_suite_es_ES.UTF-8\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
 "POT-Creation-Date: 2009-05-12 23:57+0200\n"
-"PO-Revision-Date: 2009-05-09 22:31+0200\n"
+"PO-Revision-Date: 2009-05-13 23:46+0200\n"
 "Last-Translator: \n"
 "Language-Team: Spanish <kde-i18n-doc@kde.org>\n"
 "MIME-Version: 1.0\n"
@@ -138,9 +138,8 @@ msgid "&Balance jerarquico"
 msgstr "&Balance jerárquico"
 
 #: pluginbf_banco.cpp:82
-#, fuzzy
 msgid "&Bancos"
-msgstr "Bancos"
+msgstr "&Bancos"
 
 #: ui_bcbulmacontbase.h:373
 msgid "&Bloquear fechas/Crear ejercicio"
@@ -653,9 +652,8 @@ msgid "&Salir del programa"
 msgstr "&Salir del programa"
 
 #: pluginbf_seriesfactura.cpp:81
-#, fuzzy
 msgid "&Series de factura"
-msgstr "Series de factura"
+msgstr "&Series de factura"
 
 #: blform.cpp:373 bcasientoview.cpp:333 bccanalview.cpp:238 tarifaview.cpp:244
 #: incidenciacomercialview.cpp:106 rutacomercialincview.cpp:80
@@ -1231,7 +1229,6 @@ msgid "9. Imputacion de subvenciones de inmovilizado no financiero y otras."
 msgstr "9. Imputación de subvenciones de inmovilizado no financiero y otras."
 
 #: ui_bancobase.h:406
-#, fuzzy
 msgid ""
 "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/"
 "REC-html40/strict.dtd\">\n"
@@ -2147,9 +2144,8 @@ msgid "Bloquear fechas"
 msgstr "Bloquear fechas"
 
 #: pluginbloqconf.cpp:132
-#, fuzzy
 msgid "Bloqueo Configuracion"
-msgstr "Configuración"
+msgstr "Bloqueo de la configuración"
 
 #: bcasientolistsubform.cpp:40 registroiva.cpp:51
 msgid "Borrador"
@@ -2249,9 +2245,8 @@ msgid "Borrar asiento"
 msgstr "Borrar asiento"
 
 #: ui_bancobase.h:424 ui_bancobase.h:429
-#, fuzzy
 msgid "Borrar banco"
-msgstr "Borrar pago"
+msgstr "Borrar banco"
 
 #: bccanalview.cpp:211
 msgid "Borrar canal"
@@ -5732,9 +5727,8 @@ msgid "Guardar asiento"
 msgstr "Guardar asiento"
 
 #: ui_bancobase.h:435 ui_bancobase.h:440
-#, fuzzy
 msgid "Guardar banco"
-msgstr "Guardar pago"
+msgstr "Guardar banco"
 
 #: bcconfiguracionview.cpp:116
 msgid "Guardar cambios"
@@ -7859,9 +7853,8 @@ msgid "Nuevo asiento"
 msgstr "Nuevo asiento"
 
 #: ui_bancobase.h:446 ui_bancobase.h:451
-#, fuzzy
 msgid "Nuevo banco"
-msgstr "Nuevo alumno"
+msgstr "Nuevo banco"
 
 #: bccanalview.cpp:190
 msgid "Nuevo canal"
