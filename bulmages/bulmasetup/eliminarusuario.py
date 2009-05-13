@@ -26,11 +26,10 @@ class EliminarUsuario(Ui_EliminarUsuario, Empresa):
         # Rellenamos la lista con los usuarios de PostgreSQL
         for row in usuarios:
             texto = row[0]
-            
-            if (row[3] == True):
-                texto = texto + "  (su)"
-            
-            self.listWidget.addItem(QString(texto))
+            if (str(texto) != 'root') and (str(texto) != 'postgres'):
+                if (row[3] == True):
+                    texto = texto + "  (su)"                
+                self.listWidget.addItem(QString(texto))
             
     def on_mui_eliminarusuario_released(self):
         

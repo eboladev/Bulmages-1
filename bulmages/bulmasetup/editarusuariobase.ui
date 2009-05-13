@@ -16,16 +16,10 @@
     <verstretch>0</verstretch>
    </sizepolicy>
   </property>
-  <property name="minimumSize">
-   <size>
-    <width>293</width>
-    <height>218</height>
-   </size>
-  </property>
   <property name="maximumSize">
    <size>
-    <width>293</width>
-    <height>218</height>
+    <width>400</width>
+    <height>320</height>
    </size>
   </property>
   <property name="windowTitle">
@@ -35,7 +29,7 @@
    <iconset resource="resources.qrc">
     <normaloff>:/images/bulmasetup_editarusuario.xpm</normaloff>:/images/bulmasetup_editarusuario.xpm</iconset>
   </property>
-  <layout class="QGridLayout" name="gridLayout_3">
+  <layout class="QGridLayout" name="gridLayout_4">
    <item row="0" column="0">
     <widget class="QListWidget" name="listWidget">
      <property name="minimumSize">
@@ -47,23 +41,23 @@
     </widget>
    </item>
    <item row="0" column="1">
-    <layout class="QGridLayout" name="gridLayout_2">
-     <item row="0" column="0">
-      <widget class="QRadioButton" name="Radial_su">
-       <property name="font">
-        <font>
-         <weight>75</weight>
-         <bold>true</bold>
-        </font>
-       </property>
-       <property name="text">
-        <string>Super Usuario</string>
-       </property>
-      </widget>
-     </item>
-     <item row="1" column="0">
-      <layout class="QGridLayout" name="gridLayout">
+    <layout class="QGridLayout" name="gridLayout_3">
+     <item row="0" column="0" colspan="3">
+      <layout class="QGridLayout" name="gridLayout_2">
        <item row="0" column="0">
+        <widget class="QCheckBox" name="Radial_su">
+         <property name="font">
+          <font>
+           <weight>75</weight>
+           <bold>true</bold>
+          </font>
+         </property>
+         <property name="text">
+          <string>Super Usuario</string>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="0">
         <widget class="QCheckBox" name="CheckBox_password">
          <property name="font">
           <font>
@@ -76,12 +70,29 @@
          </property>
         </widget>
        </item>
-       <item row="1" column="0">
-        <widget class="QLineEdit" name="lineEdit"/>
+       <item row="2" column="0">
+        <layout class="QGridLayout" name="gridLayout">
+         <item row="0" column="0">
+          <widget class="QLineEdit" name="lineEdit"/>
+         </item>
+         <item row="0" column="1">
+          <spacer name="horizontalSpacer_3">
+           <property name="orientation">
+            <enum>Qt::Horizontal</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>40</width>
+             <height>20</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+        </layout>
        </item>
       </layout>
      </item>
-     <item row="2" column="0">
+     <item row="1" column="1">
       <spacer name="verticalSpacer_2">
        <property name="orientation">
         <enum>Qt::Vertical</enum>
@@ -94,7 +105,20 @@
        </property>
       </spacer>
      </item>
-     <item row="3" column="0">
+     <item row="2" column="0" rowspan="2">
+      <spacer name="horizontalSpacer">
+       <property name="orientation">
+        <enum>Qt::Horizontal</enum>
+       </property>
+       <property name="sizeHint" stdset="0">
+        <size>
+         <width>40</width>
+         <height>20</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+     <item row="2" column="1">
       <widget class="QPushButton" name="aplicar_cambios">
        <property name="text">
         <string>Aplicar</string>
@@ -105,7 +129,20 @@
        </property>
       </widget>
      </item>
-     <item row="4" column="0">
+     <item row="2" column="2" rowspan="2">
+      <spacer name="horizontalSpacer_2">
+       <property name="orientation">
+        <enum>Qt::Horizontal</enum>
+       </property>
+       <property name="sizeHint" stdset="0">
+        <size>
+         <width>40</width>
+         <height>20</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+     <item row="3" column="1">
       <widget class="QPushButton" name="mui_cancelar">
        <property name="text">
         <string>Salir</string>
