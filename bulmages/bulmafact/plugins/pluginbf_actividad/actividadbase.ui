@@ -425,12 +425,12 @@
           <string>Comentarios:</string>
          </property>
          <property name="buddy">
-          <cstring>mui_comentcliente</cstring>
+          <cstring>mui_comentariosactividad</cstring>
          </property>
         </widget>
        </item>
        <item row="2" column="0" colspan="3">
-        <widget class="QTextEdit" name="mui_comentcliente">
+        <widget class="QTextEdit" name="mui_comentariosactividad">
          <property name="sizePolicy">
           <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
            <horstretch>0</horstretch>

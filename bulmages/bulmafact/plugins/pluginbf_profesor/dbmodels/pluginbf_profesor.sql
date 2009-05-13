@@ -212,6 +212,7 @@ BEGIN
             nombreactividad VARCHAR NOT NULL,
             precioactividad NUMERIC (12,2),
             vigenteactividad BOOLEAN NOT NULL DEFAULT false,
+            comentariosactividad TEXT,
             finicialactividad DATE,
             ffinalactividad DATE
         );
