@@ -45,7 +45,7 @@ class ModificarUsuario(Ui_ModificarUsuario, Empresa):
                     
                 # Rellenamos la lista de bases de datos.
                 if str(tipo) == "('BulmaFact',)":
-                    texto = "BulmaFact  -  " + str(row[0])            
+                    texto = "BulmaFact   -  " + str(row[0])            
                     self.listWidgetDatabase.addItem(QString(texto))
                     
                 if str(tipo) == "('BulmaCont',)":
@@ -65,8 +65,8 @@ class ModificarUsuario(Ui_ModificarUsuario, Empresa):
             
             if (temp.isSelected()):
                 dbase = temp.text()
-                if dbase.contains("BulmaFact  -  "):
-                    dbase.remove("BulmaFact  -  ")
+                if dbase.contains("BulmaFact   -  "):
+                    dbase.remove("BulmaFact   -  ")
                 if dbase.contains("BulmaCont  -  "):
                     dbase.remove("BulmaCont  -  ")
                 break
