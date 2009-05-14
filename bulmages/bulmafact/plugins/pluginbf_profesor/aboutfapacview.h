@@ -1,9 +1,7 @@
 /***************************************************************************
- *   Copyright (C) 2009 by Tomeu Borras Riera                              *
- *   tborras@conetxia.com                                                  *
- *                                                                         *
  *   Copyright (C) 2009 by Arturo Martin Llado                             *
  *   amartin@conetxia.com                                                  *
+ *   http://www.iglues.org                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
  *   it under the terms of the GNU General Public License as published by  *
@@ -21,36 +19,24 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#ifdef Q_WS_WIN
-# define MY_EXPORT __declspec(dllexport)
-#else
-# define MY_EXPORT
-#endif
+#ifndef ABOUTFAPACVIEW_H
+#define ABOUTFAPACVIEW_H
 
-#include "blpostgresqlclient.h"
-#include "bfbulmafact.h"
-#include "blwidget.h"
-#include "bfbuscarreferencia.h"
-#include "blsearchwidget.h"
+#include <QDialog>
 
-extern "C" MY_EXPORT int entryPoint ( BfBulmaFact * );
-extern "C" MY_EXPORT int BfCompany_createMainWindows_Post(BfCompany *);
-extern "C" MY_EXPORT int Busqueda_on_mui_buscar_clicked(BlSearchWidget *);
+#include "blfunctions.h"
+#include <ui_aboutfapacbase.h>
 
-class MyPlugProf : public QObject, BlMainCompanyPointer
+class BF_EXPORT AboutFapacView : public QDialog, private Ui::AboutFapacBase
 {
     Q_OBJECT
 
 public:
-    BfBulmaFact *m_bges;
-
-public:
-    MyPlugProf();
-    ~MyPlugProf();
-    void inicializa ( BfBulmaFact * );
-
-public slots:
-    void elslot();
-    void elslot1();
-    void elslot2();
+    /// Constructor de la clase que hace todas las inicializaciones y muestra el dise&ntilde;o hecho en aboutfapacbase.ui.
+    AboutFapacView ( QDialog *parent = 0 );
+    /// Destructor de la clase. Destruye todas las reservas de memoria din&aacute;mica que se hayan podido realizar.
+    ~AboutFapacView();
 };
+
+#endif
+

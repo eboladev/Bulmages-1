@@ -56,6 +56,17 @@ BEGIN
         CREATE TABLE profesor (
             idprofesor SERIAL PRIMARY KEY,
             nombreprofesor VARCHAR NOT NULL,
+            dniprofesor VARCHAR,
+            dirprofesor VARCHAR,
+            cpprofesor VARCHAR,
+            poblprofesor VARCHAR,
+            telprofesor VARCHAR,
+            faxprofesor VARCHAR,
+            movilprofesor VARCHAR,
+            mailprofesor VARCHAR,
+            urlprofesor VARCHAR,
+            estudiosprofesor TEXT,
+            comentprofesor TEXT,
             idprovincia INTEGER REFERENCES provincia(idprovincia)
         );
 
@@ -84,20 +95,20 @@ BEGIN
     
     SELECT INTO as * FROM pg_attribute WHERE attname = ''apellido1alumno'';
     IF NOT FOUND THEN
-            ALTER TABLE alumno ADD COLUMN apellido1alumno VARCHAR;
-            ALTER TABLE alumno ADD COLUMN fechanacimientoalumno DATE;
+        ALTER TABLE alumno ADD COLUMN apellido1alumno VARCHAR;
+        ALTER TABLE alumno ADD COLUMN fechanacimientoalumno DATE;
     END IF;
     
     SELECT INTO as * FROM pg_attribute WHERE attname = ''apellido2alumno'';
     IF NOT FOUND THEN
-            ALTER TABLE alumno ADD COLUMN apellido2alumno VARCHAR;
-            ALTER TABLE alumno ADD COLUMN diralumno VARCHAR;
-            ALTER TABLE alumno ADD COLUMN cpalumno VARCHAR;
-            ALTER TABLE alumno ADD COLUMN municipioalumno VARCHAR;
-            ALTER TABLE alumno ADD COLUMN observalumno VARCHAR;
-            ALTER TABLE alumno ADD COLUMN telalumno VARCHAR;
-            ALTER TABLE alumno ADD COLUMN movilalumno VARCHAR;
-            ALTER TABLE alumno ADD COLUMN emailalumno VARCHAR;
+        ALTER TABLE alumno ADD COLUMN apellido2alumno VARCHAR;
+        ALTER TABLE alumno ADD COLUMN diralumno VARCHAR;
+        ALTER TABLE alumno ADD COLUMN cpalumno VARCHAR;
+        ALTER TABLE alumno ADD COLUMN municipioalumno VARCHAR;
+        ALTER TABLE alumno ADD COLUMN observalumno VARCHAR;
+        ALTER TABLE alumno ADD COLUMN telalumno VARCHAR;
+        ALTER TABLE alumno ADD COLUMN movilalumno VARCHAR;
+        ALTER TABLE alumno ADD COLUMN emailalumno VARCHAR;
     END IF;
 
     SELECT INTO as * FROM pg_tables  WHERE tablename=''recibo'';
@@ -192,7 +203,6 @@ BEGIN
             cantcuota NUMERIC (12,2)
         );
     END IF;
-
 
     SELECT INTO as * FROM pg_tables  WHERE tablename=''tipoactividad'';
     IF NOT FOUND THEN

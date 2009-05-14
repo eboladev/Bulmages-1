@@ -1,7 +1,9 @@
 /***************************************************************************
- *   Copyright (C) 2004 by Tomeu Borras Riera                              *
+ *   Copyright (C) 2009 by Tomeu Borras Riera                              *
  *   tborras@conetxia.com                                                  *
- *   http://www.iglues.org                                                 *
+ *                                                                         *
+ *   Copyright (C) 2009 by Arturo Martin Llado                             *
+ *   tborras@conetxia.com                                                  *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
  *   it under the terms of the GNU General Public License as published by  *
@@ -19,8 +21,8 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#ifndef COBROSLIST_H
-#define COBROSLIST_H
+#ifndef PROFESORES_H
+#define PROFESORES_H
 
 #include <QLineEdit>
 
@@ -29,8 +31,7 @@
 #include "bfsubform.h"
 #include "blformlist.h"
 
-
-/** Subformulario especializado en el trabajo con Cobros.
+/** Subformulario especializado en el trabajo con Profesores.
 */
 class ProfesoresListSubForm : public BfSubForm
 {
@@ -41,11 +42,9 @@ public:
     ~ProfesoresListSubForm();
 };
 
-
 #include "ui_profesoreslistbase.h"
 
-
-/** Clase que presenta el listado de Cobros.
+/** Clase que presenta el listado de Profesores.
     Deriva de la clase BlFormList para estandarizacion de Formularios.
     Controla los eventos y la sincronizacion del listado con el filtrado. */
 class ProfesoresList : public BlFormList, public Ui_ProfesoresListBase
@@ -53,7 +52,7 @@ class ProfesoresList : public BlFormList, public Ui_ProfesoresListBase
     Q_OBJECT
 
 private:
-    /// Almacena (En el modo seleccion) el identificador del cobro seleccionado.
+    /// Almacena (En el modo seleccion) el identificador del profesor seleccionado.
     QString mdb_idprofesor;
 
 public:

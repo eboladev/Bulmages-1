@@ -1,6 +1,9 @@
 /***************************************************************************
- *   Copyright (C) 2004 by Tomeu Borras Riera                              *
+ *   Copyright (C) 2009 by Tomeu Borras Riera                              *
  *   tborras@conetxia.com                                                  *
+ *                                                                         *
+ *   Copyright (C) 2009 by Arturo Martin Llado                             *
+ *   amartin@conetxia.com                                                  *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
  *   it under the terms of the GNU General Public License as published by  *
@@ -31,7 +34,6 @@
 #include "bldatesearch.h"
 #include "blfunctions.h"
 
-
 /** inicializa todos los componentes de la clase.
     Resetea el sistema de control de cambios para que considere que no hay cambios por parte del usuario.
     Mete la ventana en el workSpace.
@@ -40,7 +42,9 @@ ProfesorView::ProfesorView ( BfCompany *comp, QWidget *parent )
         : BfForm ( comp, parent )
 {
     _depura ( "ProfesorView::ProfesorView", 0 );
+    
     setAttribute ( Qt::WA_DeleteOnClose );
+    
     try {
         setupUi ( this );
         centrarEnPantalla ( this );
@@ -50,7 +54,17 @@ ProfesorView::ProfesorView ( BfCompany *comp, QWidget *parent )
         setDbFieldId ( "idprofesor" );
         addDbField ( "idprofesor", BlDbField::DbInt, BlDbField::DbPrimaryKey, _ ( "ID profesor" ) );
         addDbField ( "nombreprofesor", BlDbField::DbVarChar, BlDbField::DbNothing, _ ( "Nombre del profesor" ) );
-
+        addDbField ( "dniprofesor", BlDbField::DbVarChar, BlDbField::DbNothing, _ ( "DNI del profesor" ) );
+        addDbField ( "dirprofesor", BlDbField::DbVarChar, BlDbField::DbNothing, _ ( "Direccion del profesor" ) );
+        addDbField ( "cpprofesor", BlDbField::DbVarChar, BlDbField::DbNothing, _ ( "CP del profesor" ) );
+        addDbField ( "poblprofesor", BlDbField::DbVarChar, BlDbField::DbNothing, _ ( "Poblacion del profesor" ) );
+        addDbField ( "telprofesor", BlDbField::DbVarChar, BlDbField::DbNothing, _ ( "Telefono del profesor" ) );
+        addDbField ( "faxprofesor", BlDbField::DbVarChar, BlDbField::DbNothing, _ ( "Fax del profesor" ) );
+        addDbField ( "movilprofesor", BlDbField::DbVarChar, BlDbField::DbNothing, _ ( "Movil del profesor" ) );
+        addDbField ( "mailprofesor", BlDbField::DbVarChar, BlDbField::DbNothing, _ ( "eMail del profesor" ) );
+        addDbField ( "urlprofesor", BlDbField::DbVarChar, BlDbField::DbNothing, _ ( "Web del profesor" ) );
+        addDbField ( "estudiosprofesor", BlDbField::DbVarChar, BlDbField::DbNothing, _ ( "Estudios del profesor" ) );
+        addDbField ( "comentprofesor", BlDbField::DbVarChar, BlDbField::DbNothing, _ ( "Comentarios del profesor" ) );
 
         /// Datos por defecto.
         mui_idprovincia->setMainCompany ( mainCompany() );
@@ -68,9 +82,9 @@ ProfesorView::ProfesorView ( BfCompany *comp, QWidget *parent )
     } catch ( ... ) {
         mensajeInfo ( _ ( "Error al crear el profesor" ), this );
     } // end try
+    
     _depura ( "END ProfesorView::ProfesorView", 0 );
 }
-
 
 /** No precisa acciones adicionales en el destructor.
 */
@@ -80,15 +94,15 @@ ProfesorView::~ProfesorView()
     _depura ( "END ProfesorView::~ProfesorView", 0 );
 }
 
-
 QString ProfesorView::nombrePlantilla ( void )
 {
-    return QString ( "recibo" );
+    return QString ( "profesor" );
 }
 
 void ProfesorView::imprimir()
 {
     _depura ( "ProfesorView::imprimir", 0 );
+    
     /// Comprobamos que se disponen de los datos minimos para imprimir el recibo.
     QString SQLQuery = "";
 
@@ -97,22 +111,22 @@ void ProfesorView::imprimir()
         mensajeInfo ( _ ( "Tiene que guardar el documento antes de poder imprimirlo." ), this );
         return;
     }
+    
     /// Disparamos los plugins
     int res = g_plugins->lanza ( "CoboView_on_mui_imprimir_clicked", this );
     if ( res != 0 ) {
         return;
     } // end if
+    
     BfForm::imprimir();
 
     _depura ( "END ProfesorView::imprimir", 0 );
 }
 
-
 int ProfesorView::guardarPost()
 {
-    _depura ( " ProfesorView::guardarPost", 0 );
+    _depura ( "ProfesorView::guardarPost", 0 );
 
     _depura ( "END ProfesorView::guardarPost", 0 );
 
 }
-

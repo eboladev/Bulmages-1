@@ -1,8 +1,9 @@
 <RCC>
-  <qresource prefix="/ImgGestionAula" lang="ImgGestionAula" >
+  <qresource prefix="/ImgGestionAula" lang="ImgGestionAula">
     <file>icons/profesor.gif</file>
     <file>icons/alumno.svg</file>
     <file>icons/tutor.svg</file>
     <file>icons/actividad.svg</file>
+    <file>icons/fapac_logo.png</file>
   </qresource>
 </RCC>

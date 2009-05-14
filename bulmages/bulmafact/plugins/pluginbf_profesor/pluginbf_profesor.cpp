@@ -1,6 +1,9 @@
 /***************************************************************************
- *   Copyright (C) 2005 by Tomeu Borras Riera                              *
+ *   Copyright (C) 2009 by Tomeu Borras Riera                              *
  *   tborras@conetxia.com                                                  *
+ *                                                                         *
+ *   Copyright (C) 2009 by Arturo Martin Llado                             *
+ *   amartin@conetxia.com                                                  *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
  *   it under the terms of the GNU General Public License as published by  *
@@ -25,8 +28,7 @@
 #include "blfunctions.h"
 #include "profesorview.h"
 #include "profesoreslist.h"
-
-
+#include "aboutfapacview.h"
 
 ProfesoresList *g_profesoresList = NULL;
 
@@ -39,7 +41,6 @@ MyPlugProf::MyPlugProf()
     _depura ( "END MyPlugProf::MyPlugProf", 0 );
 }
 
-
 ///
 /**
 **/
@@ -49,17 +50,18 @@ MyPlugProf::~MyPlugProf()
     _depura ( "END MyPlugProf::~MyPlugProf", 0 );
 }
 
-
 ///
 /**
 **/
 void MyPlugProf::elslot()
 {
     _depura ( "MyPlugProf::elslot", 0 );
+    
     if ( g_profesoresList ) {
         g_profesoresList->hide();
         g_profesoresList->show();
-    }// end if
+    } // end if
+    
     _depura ( "END MyPlugProf::elslot", 0 );
 }
 
@@ -69,13 +71,26 @@ void MyPlugProf::elslot()
 void MyPlugProf::elslot1()
 {
     _depura ( "MyPlugProf::elslot1", 0 );
+    
     ProfesorView * bud = new ProfesorView ( ( BfCompany * ) mainCompany(), NULL );
     mainCompany() ->m_pWorkspace->addWindow ( bud );
     bud->show();
+    
     _depura ( "END MyPlugProf::elslot1", 0 );
 }
 
-
+///
+/**
+**/
+void MyPlugProf::elslot2()
+{
+    _depura ( "MyPlugProf::elslot2", 0 );
+    
+    AboutFapacView *afv = new AboutFapacView();
+    afv->show();
+    
+    _depura ( "END MyPlugProf::elslot2", 0 );
+}
 
 ///
 /**
@@ -85,13 +100,13 @@ void MyPlugProf::inicializa ( BfBulmaFact *bges )
 {
     _depura ( "MyPlugProf::inicializa", 0 );
 
-    if ( bges->getcompany()->hasTablePrivilege ( "cobro", "SELECT" ) ) {
+    if ( bges->getcompany()->hasTablePrivilege ( "profesor", "SELECT" ) ) {
 
-        /// Miramos si existe un menu Ventas
+        /// Miramos si existe un menu Docencia
         QMenu *pPluginMenu = bges->newMenu ( "&Docencia", "menuDocencia", "menuMaestro" );
 
-	/// Agregamos un separador
-	pPluginMenu->addSeparator();
+        /// Agregamos un separador
+        pPluginMenu->addSeparator();
 
         /// El men&uacute; de Tarifas en la secci&oacute;n de art&iacute;culos.
         m_bges = bges;
@@ -113,17 +128,15 @@ void MyPlugProf::inicializa ( BfBulmaFact *bges )
         connect ( npago, SIGNAL ( activated() ), this, SLOT ( elslot1() ) );
 
         QAction *nfapac = new QAction ( _ ( "About FAPAC" ), 0 );
+        nfapac->setStatusTip ( _ ( "About FAPAC" ) );
+        nfapac->setWhatsThis ( _ ( "About FAPAC" ) );
         bges->menuAcerca_de->addAction ( nfapac );
+        connect ( nfapac, SIGNAL ( activated() ), this, SLOT ( elslot2() ) );
 
-
-
-    }// end if
+    } // end if
+    
     _depura ( "END MyPlugProf::inicializa", 0 );
 }
-
-
-
-
 
 ///
 /**
@@ -132,7 +145,7 @@ void MyPlugProf::inicializa ( BfBulmaFact *bges )
 **/
 int entryPoint ( BfBulmaFact *bges )
 {
-    _depura ( "Punto de Entrada del plugin de Profesores\n", 0 );
+    _depura ( "Punto de Entrada del plugin de Profesores", 0 );
 
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale ( LC_ALL, "" );
@@ -140,25 +153,32 @@ int entryPoint ( BfBulmaFact *bges )
 
     MyPlugProf *plug = new MyPlugProf();
     plug->inicializa ( bges );
+    
+    _depura ( "END Punto de Entrada del plugin de Profesores", 0 );
+    
     return 0;
 }
 
-
 int BfCompany_createMainWindows_Post ( BfCompany *comp )
 {
+    _depura ( "BfCompany_createMainWindows_Post", 0 );
+
     if ( comp->hasTablePrivilege ( "profesor", "SELECT" ) ) {
         g_profesoresList = new ProfesoresList ( comp, NULL );
         comp->m_pWorkspace->addWindow ( g_profesoresList );
         g_profesoresList->hide();
-    }// end if
+    } // end if
+    
+    _depura ( "END BfCompany_createMainWindows_Post", 0 );
+    
     return 0;
 }
 
-
 int Busqueda_on_mui_buscar_clicked ( BlSearchWidget *busq )
 {
-    if ( busq->tableName() == "profesor" ) {
+    _depura ( "Busqueda_on_mui_buscar_clicked", 0 );
 
+    if ( busq->tableName() == "profesor" ) {
 
         QDialog *diag = new QDialog ( 0 );
         diag->setModal ( true );
@@ -178,15 +198,19 @@ int Busqueda_on_mui_buscar_clicked ( BlSearchWidget *busq )
         diag->setWindowTitle ( clients->windowTitle() );
 
         diag->exec();
+        
         if ( clients->idprofesor() != "" ) {
             busq->setId ( clients->idprofesor() );
         } // end if
+        
         delete diag;
 
-
         return 1;
+        
     } // end if
+    
+    _depura ( "END Busqueda_on_mui_buscar_clicked", 0 );
+    
     return 0;
 
 }
-

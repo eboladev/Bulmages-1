@@ -14,7 +14,7 @@
     <pageTemplate id="main">
     
         <!-- FRAME DE CONTENIDOS -->
-        <frame id="column" x1="1.3cm" y1="5cm" width="18.7cm" height="17cm"/>
+        <frame id="column" x1="1.3cm" y1="5cm" width="18.7cm" height="16cm"/>
         
         <pageGraphics>
             
@@ -32,13 +32,15 @@
             <!--<stroke color="black" />-->
             <!--<circle x="127.5" y="672.75" radius="1in" fill="yes" stroke="no" />-->
             
-<!--IF QUERY="SELECT * FROM ACTIVIDAD, PROFESOR WHERE ACTIVIDAD.idprofesor = PROFESOR.idprofesor AND idactividad = [idactividad]"-->
-<!--QUERY="SELECT * FROM actividad, profesor WHERE actividad.idprofesor = profesor.idprofesor AND idactividad=[idactividad]"-->
+<!--IF QUERY="SELECT * FROM ACTIVIDAD, PROFESOR, TIPOACTIVIDAD WHERE ACTIVIDAD.idtipoactividad = TIPOACTIVIDAD.idtipoactividad AND ACTIVIDAD.idprofesor = PROFESOR.idprofesor AND idactividad = [idactividad]"-->
+<!--QUERY="SELECT * FROM actividad, profesor, tipoactividad WHERE actividad.idtipoactividad = tipoactividad.idtipoactividad AND actividad.idprofesor = profesor.idprofesor AND idactividad=[idactividad]"-->
             
             <setFont name="Helvetica" size="22"/>
             <drawString x="1.5cm" y="24cm">FICHA DE ACTIVIDAD: [nombreactividad]</drawString>
             <setFont name="Helvetica" size="13"/>
-            <drawString x="1.5cm" y="23.2cm">Profesor: [nombreprofesor]</drawString>
+            <drawString x="1.5cm" y="23.2cm">Tipo: [nombretipoactividad]</drawString>
+            <drawString x="1.5cm" y="22.4cm">Profesor: [nombreprofesor]</drawString>
+            <drawString x="1.5cm" y="21.6cm">Periodo (inicio | fin): [finicialactividad] | [ffinalactividad]</drawString>
             
 <!--END QUERY-->
 <!--END IF QUERY-->
@@ -63,7 +65,6 @@
         <lineStyle colorName="black" kind="GRID" />
     </blockTableStyle>
         
-    
 </stylesheet>
 
 <!--
@@ -100,6 +101,10 @@
 
     <para>[comentariosactividad]</para>
     
+    <spacer length="0.5cm" />
+    
+    <para style="titulo"><b>Precio de la cuota:</b> [precioactividad] €</para>
+        
     <spacer length="0.5cm" />
     
     <para style="titulo"><b>Calendario:</b></para>
