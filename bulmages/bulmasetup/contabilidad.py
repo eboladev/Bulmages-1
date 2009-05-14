@@ -258,10 +258,11 @@ class Contabilidad(Ui_ModificarContabilidadBase, Empresa):
                  # Escribimos la configuracion de plugins.
                  self.terminador = ""
                  self.out << "CONF_PLUGINS_BULMACONT   "
-
-              self.writecommand('Hay que actualizar ' + self.pluginsbulmacont[self.i][0])
-              self.out << self.terminador << self.pluginsbulmacont[self.i][1]
-              self.terminador = "; \\\n";
+	      # Si hay que aplicar un plugin entonces lo escribimos
+	      if (self.pluginsbulmacont[self.i][1] != 'None' and len(self.pluginsbulmacont[self.i][1]) > 3):
+		self.writecommand('Hay que actualizar ' + self.pluginsbulmacont[self.i][0])
+		self.out << self.terminador << self.pluginsbulmacont[self.i][1]
+		self.terminador = "; \\\n";
           self.i = self.i + 1
         self.x = self.x + 1
       self.out << "\n"

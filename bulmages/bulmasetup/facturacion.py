@@ -124,10 +124,11 @@ class Facturacion(Ui_ModificarFacturacionBase, Empresa):
                  # Escribimos la configuracion de plugins.
                  self.terminador = ""
                  self.out << "CONF_PLUGINS_BULMAFACT   "
-
-              self.writecommand('Hay que actualizar ' + self.pluginsbulmafact[self.i][0])
-              self.out << self.terminador << self.pluginsbulmafact[self.i][1]
-              self.terminador = "; \\\n";
+	      # Si hay que aplicar un plugin entonces lo escribimos
+	      if (self.pluginsbulmafact[self.i][1] != 'None' and len(self.pluginsbulmafact[self.i][1]) > 3):
+		self.writecommand('Hay que actualizar ' + self.pluginsbulmafact[self.i][0])
+		self.out << self.terminador << self.pluginsbulmafact[self.i][1]
+		self.terminador = "; \\\n";
           self.i = self.i + 1
         self.x = self.x + 1
       self.out << "\n"
@@ -195,8 +196,11 @@ class Facturacion(Ui_ModificarFacturacionBase, Empresa):
                     self.nuevo = 0
                     self.out << "CONF_PLUGINS_BULMATPV   "
                   self.writecommand('Ha que actualizar ' + self.pluginsbulmatpv[self.i][0])
-                  self.out << self.terminador << self.pluginsbulmatpv[self.i][1]
-                  self.terminador = "; \\\n";
+		  # Si hay que aplicar un plugin entonces lo escribimos
+		  if (self.pluginsbulmatpv[self.i][1] != 'None' and len(self.pluginsbulmatpv[self.i][1]) > 3):
+		    self.writecommand('Hay que actualizar ' + self.pluginsbulmatpv[self.i][0])
+		    self.out << self.terminador << self.pluginsbulmatpv[self.i][1]
+		    self.terminador = "; \\\n";
               self.i = self.i + 1
           self.x = self.x + 1
         self.out << "\n"

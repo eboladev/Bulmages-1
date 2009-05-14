@@ -6,7 +6,7 @@
 
 Nombre: Datos de inicializacion
 
-Biblioteca:
+Biblioteca: None
 
 Descripción: <H1>Datos Iniciales</H1>
 <P>Introduce las provincias, los tipos de IVA, Formas de pago mas comunes, El Cliente varios, el articulo generico, etc.</P>
