@@ -21,7 +21,7 @@
  ***************************************************************************/
 #include <QToolButton>
 
-#include "pluginalmacen.h"
+#include "pluginbf_almacenamplia.h"
 #include "bfcompany.h"
 #include "almaceneslistview.h"
 
@@ -36,7 +36,7 @@ int entryPoint ( BfBulmaFact * )
 
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale ( LC_ALL, "" );
-    bindtextdomain ( "pluginalmacen", g_confpr->valor ( CONF_DIR_TRADUCCION ).toAscii().constData() );
+    bindtextdomain ( "pluginbf_almacenamplia", g_confpr->valor ( CONF_DIR_TRADUCCION ).toAscii().constData() );
 
     return 0;
 }

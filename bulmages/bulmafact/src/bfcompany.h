@@ -33,7 +33,6 @@
 #include "blsplashscreen.h"
 
 
-class orderslist;
 class BfBulmaFact;
 
 

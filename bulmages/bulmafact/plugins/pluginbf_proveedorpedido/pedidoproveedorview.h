@@ -38,7 +38,7 @@
 #include "bfform.h"
 #include "pdefs.h"
 
-class company;
+class BfCompany;
 
 
 /// Muestra y administra la ventana con la informaci&oacute;n de un pedido a proveedor.

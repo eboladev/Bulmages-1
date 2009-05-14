@@ -39,13 +39,13 @@
 
 #include <QtGui>
 
-#include "bulmages.h"
+#include "bgbulmages.h"
 
 
 int main ( int argc, char **argv )
 {
 
-    Q_INIT_RESOURCE(bulmages);
+    Q_INIT_RESOURCE(bgbulmages);
 
     QApplication app(argc, argv);
 
@@ -56,7 +56,7 @@ int main ( int argc, char **argv )
     }
     QApplication::setQuitOnLastWindowClosed(false);
 
-    BulmaGes bges;
+    BgBulmaGes bges;
     bges.hide();
 
     return app.exec();

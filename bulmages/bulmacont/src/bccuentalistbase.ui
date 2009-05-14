@@ -349,14 +349,14 @@
     </widget>
    </item>
    <item row="2" column="0" >
-    <widget class="CuentaListSubForm" name="mui_list" />
+    <widget class="BcCuentaListSubForm" name="mui_list" />
    </item>
   </layout>
  </widget>
  <layoutdefault spacing="3" margin="5" />
  <customwidgets>
   <customwidget>
-   <class>CuentaListSubForm</class>
+   <class>BcCuentaListSubForm</class>
    <extends>QTableWidget</extends>
    <header>bccuentalistview.h</header>
   </customwidget>

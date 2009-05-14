@@ -6,7 +6,7 @@
 
 Nombre: Listas de Precios
 
-Biblioteca: libpluginresarticulos.so
+Biblioteca: libpluginbf_resumenarticulo.so
 
 Descripción: <H1>Listas de Precios</H1>
 <P>Permite el control de listas de precios a las que se suscribe cada cliente.</P>

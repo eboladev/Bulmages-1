@@ -375,10 +375,10 @@ QString BcCuentaListView::codigocuenta()
 /**
 \param parent
 **/
-CuentaListSubForm::CuentaListSubForm ( QWidget *parent, const char * )
+BcCuentaListSubForm::BcCuentaListSubForm ( QWidget *parent, const char * )
         : BcSubForm ( parent )
 {
-    _depura ( "CuentaListSubForm::CuentaListSubForm", 0 );
+    _depura ( "BcCuentaListSubForm::BcCuentaListSubForm", 0 );
     setDbTableName ( "cuenta" );
     setDbFieldId ( "idcuenta" );
 
@@ -398,8 +398,8 @@ CuentaListSubForm::CuentaListSubForm ( QWidget *parent, const char * )
     setDelete ( FALSE );
     setSortingEnabled ( TRUE );
     /// Disparamos los plugins.
-    g_plugins->lanza ( "CuentaListSubForm_CuentaListSubForm_Post", this );
-    _depura ( "END CuentaListSubForm::CuentaListSubForm", 0 );
+    g_plugins->lanza ( "BcCuentaListSubForm_BcCuentaListSubForm_Post", this );
+    _depura ( "END BcCuentaListSubForm::BcCuentaListSubForm", 0 );
 }
 
 
@@ -407,10 +407,10 @@ CuentaListSubForm::CuentaListSubForm ( QWidget *parent, const char * )
 /**
 **/
 
-CuentaListSubForm::~CuentaListSubForm()
+BcCuentaListSubForm::~BcCuentaListSubForm()
 {
-    _depura ( "CuentaListSubForm::~CuentaListSubForm", 0 );
-    _depura ( "END CuentaListSubForm::~CuentaListSubForm", 0 );
+    _depura ( "BcCuentaListSubForm::~BcCuentaListSubForm", 0 );
+    _depura ( "END BcCuentaListSubForm::~BcCuentaListSubForm", 0 );
 
 }
 

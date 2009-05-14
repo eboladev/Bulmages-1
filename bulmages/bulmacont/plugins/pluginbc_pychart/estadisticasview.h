@@ -23,7 +23,7 @@
 #include "blpostgresqlclient.h"
 
 
-class empresa;
+class BcCompany;
 
 
 class estadisticasview : public estadisticasdlg

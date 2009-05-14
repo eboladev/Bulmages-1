@@ -20,7 +20,7 @@
 
 #include <stdio.h>
 
-#include "pluginresarticulos.h"
+#include "pluginbf_resumenarticulo.h"
 #include "bfcompany.h"
 #include "blfunctions.h"
 #include "listlresarticulo.h"
@@ -37,7 +37,7 @@ int entryPoint ( BfBulmaFact *bges )
 
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale ( LC_ALL, "" );
-    bindtextdomain ( "pluginresarticulos", g_confpr->valor ( CONF_DIR_TRADUCCION ).toAscii().constData() );
+    bindtextdomain ( "pluginbf_resumenarticulo", g_confpr->valor ( CONF_DIR_TRADUCCION ).toAscii().constData() );
 
     return 0;
 }

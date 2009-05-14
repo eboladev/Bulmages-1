@@ -18,6 +18,8 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
+#include "stdio.h"
+
 #include <Qt>
 #include <QObject>
 #include <qnamespace.h>
@@ -25,12 +27,11 @@
 #include <QTextStream>
 #include <QDomDocument>
 
-#include "stdio.h"
 #include "blcompanydialog.h"
-#include "bfcompany.h"
 #include "blfunctions.h"
-#include "bfconfiguracionview.h"
 #include "blplugins.h"
+#include "bfcompany.h"
+#include "bfconfiguracionview.h"
 #include "bfbulmafact.h"
 
 

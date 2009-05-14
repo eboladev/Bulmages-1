@@ -119,7 +119,7 @@ bool BlArgParser::ShowVersion()
 {
    if( m_showVersion || m_showHelp ) {
       QTextStream(stdout)
-            <<"BulmaGes "<<CONFIG_VERSION<<endl;
+            <<" "<<CONFIG_VERSION<<endl;
    }
 
    return( m_showVersion );

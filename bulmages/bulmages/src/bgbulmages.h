@@ -37,8 +37,8 @@
 **
 ****************************************************************************/
 
-#ifndef BULMAGES_H
-#define BULMAGES_H
+#ifndef BGBULMAGES_H
+#define BGBULMAGES_H
 
 #include <QObject>
 #include <QSystemTrayIcon>
@@ -46,16 +46,16 @@
 #include <QMenu>
 #include <QString>
 
-#include "ui_bulmagesbase.h"
+#include "ui_bgbulmagesbase.h"
 
 
-class BulmaGes : public QDialog, private Ui::BulmaGesBase
+class BgBulmaGes : public QDialog, private Ui::BgBulmaGesBase
 {
     Q_OBJECT
 
 public:
-    BulmaGes();
-    ~BulmaGes();
+    BgBulmaGes();
+    ~BgBulmaGes();
 
 private:
     void createTrayIcon();

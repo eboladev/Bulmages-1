@@ -38,7 +38,7 @@
 #include "bfform.h"
 
 
-class company;
+class BfCompany;
 
 
 /// Muestra el albar&aacute;n a cliente.

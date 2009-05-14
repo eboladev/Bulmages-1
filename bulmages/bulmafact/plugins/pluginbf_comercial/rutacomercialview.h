@@ -32,7 +32,7 @@
 #include "bldialogchanges.h"
 
 
-class company;
+class BfCompany;
 
 
 class RutaComercialView : public RutaComercial, public Ui_RutaComercialBase

@@ -48,6 +48,12 @@ BlConfiguration BL_EXPORT *g_confpr = NULL;
 void initConfiguration ( QString config )
 {
     g_confpr = new BlConfiguration ( config );
+
+	/// Inicializa el sistema de traducciones 'gettext'.
+	setlocale(LC_ALL, "");
+	bindtextdomain ("bulmalib", g_confpr->valor(CONF_DIR_TRADUCCION).toAscii().constData());
+	textdomain ("bulmalib");
+	fprintf(stderr, g_confpr->valor(CONF_DIR_TRADUCCION).toAscii().constData());
 }
 
 /// Constructor de la clase que hace directamente la lectura de los posibles

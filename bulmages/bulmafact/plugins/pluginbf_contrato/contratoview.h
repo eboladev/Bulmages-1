@@ -35,7 +35,7 @@
 #include "bfform.h"
 
 
-class company;
+class BfCompany;
 
 /// Administra el detalle del listado de facturas a clientes.
 /** */

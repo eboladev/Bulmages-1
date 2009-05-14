@@ -29,13 +29,13 @@
 
 /**
 */
-class BC_EXPORT CuentaListSubForm : public BcSubForm
+class BC_EXPORT BcCuentaListSubForm : public BcSubForm
 {
     Q_OBJECT
 
 public:
-    CuentaListSubForm ( QWidget *parent = 0, const char *name = 0 );
-    ~CuentaListSubForm();
+    BcCuentaListSubForm ( QWidget *parent = 0, const char *name = 0 );
+    ~BcCuentaListSubForm();
 };
 
 

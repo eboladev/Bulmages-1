@@ -6,7 +6,7 @@
 
 Nombre: Ampliación de Almacenes
 
-Biblioteca: libpluginalmacen.so
+Biblioteca: libpluginbf_almacenamplia.so
 
 Descripción: <H1>Ampliacion de Almacenes</H1>
 <P>Crea la ficha de almacenes y amplia la información que en ella se presenta.

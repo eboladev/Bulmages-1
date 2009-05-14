@@ -29,7 +29,7 @@
 #include "iva.h"
 
 
-class empresa;
+class BcCompany;
 
 
 class ListIvaView : public QTableWidget, public ListIva

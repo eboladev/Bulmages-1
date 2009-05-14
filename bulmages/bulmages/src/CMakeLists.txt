@@ -8,9 +8,9 @@ file(GLOB bulmages_UIS *.ui)
 
 set(bulmagesEx main.cxx)
 
-set(bulmages_RCCS bulmages.qrc)
+set(bulmages_RCCS bgbulmages.qrc)
 
-set(bulmages_MOCS bulmages.h)
+set(bulmages_MOCS bgbulmages.h)
 
 set(QT_USE_QTASSISTANT true)
 set(QT_USE_QTXML true)

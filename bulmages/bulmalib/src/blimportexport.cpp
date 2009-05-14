@@ -682,7 +682,7 @@ int BlImportExport::bulmafact2XML ( QFile &xmlfile, unsigned long long int tipo 
     QTextStream stream ( &xmlfile );
     stream << "<?xml version=\"1.0\" encoding = \"iso-8859-1\"?>\n"
     "<!DOCTYPE FUGIT>\n"
-    "<FUGIT version='0.3.1' origen='BulmaGes'"
+    "<FUGIT version='0.3.1' origen=''"
     " date='" << QDate().toString ( Qt::ISODate ) << "'>\n";
 
     if ( tipo & IMPORT_FORMAS_PAGO ) {
@@ -1256,7 +1256,7 @@ int BlImportExport::bulmages2XML ( QFile &xmlfile, unsigned long long int tipo )
     QTextStream stream ( &xmlfile );
     stream << "<?xml version=\"1.0\" encoding = \"iso-8859-1\"?>\n"
     "<!DOCTYPE FUGIT>\n"
-    "<FUGIT version='0.3.1' origen='BulmaGes'"
+    "<FUGIT version='0.3.1' origen=''"
     " date='" << QDate().toString ( Qt::ISODate ) << "'>\n";
 
     /// Comprobamos que tenemos que importar cuentas o no

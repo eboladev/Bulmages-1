@@ -33,7 +33,7 @@
 #include "bldialogchanges.h"
 
 
-class empresa;
+class BcCompany;
 
 
 class myRegIVA : public QObject

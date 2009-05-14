@@ -35,7 +35,7 @@
 
 #include "ui_listtipostrabajobase.h"
 
-class company;
+class BfCompany;
 
 /// Muestra y administra el listado de almacenes.
 /** */

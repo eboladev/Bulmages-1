@@ -33,7 +33,7 @@
 #include "resmensualdlg1.h"
 #endif
 
-class empresa;
+class BcCompany;
 
 
 class resmensualview : public resmensualdlg

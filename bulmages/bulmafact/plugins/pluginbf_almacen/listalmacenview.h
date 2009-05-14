@@ -34,7 +34,7 @@
 #include "bfform.h"
 
 
-class company;
+class BfCompany;
 
 
 /// Muestra y administra las l&iacute;neas de detalle del listado de almacenes.

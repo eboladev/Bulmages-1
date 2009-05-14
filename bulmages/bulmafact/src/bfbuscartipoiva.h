@@ -30,7 +30,7 @@
 #include "blwidget.h"
 
 
-class company;
+class BfCompany;
 
 
 /// Permite buscar y seleccionar un trabajador.

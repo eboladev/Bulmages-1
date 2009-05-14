@@ -22,14 +22,15 @@
 #ifndef BCAMORTIZACIONVIEW_H
 #define BCAMORTIZACIONVIEW_H
 
+#include "bldefs.h"
+#include "bldb.h"
 #include "blpostgresqlclient.h"
 #include "bldialogchanges.h"
 #include "bcsubform.h"
-#include "bldb.h"
 #include "bcform.h"
-#include "bldefs.h"
 
-class empresa;
+
+class BcCompany;
 
 
 class BC_EXPORT BcAmortizacionSubForm : public BcSubForm

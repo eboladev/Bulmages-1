@@ -25,12 +25,12 @@
 #include <QFile>
 #include <QMessageBox>
 
-#include "bulmages.h"
+#include "bgbulmages.h"
 
-BulmaGes::BulmaGes()
+BgBulmaGes::BgBulmaGes()
 {
     setupUi ( this );
-    setWindowTitle ( "Lanzador BulmaGes" );
+    setWindowTitle ( "Lanzador BgBulmaGes" );
 
     createTrayIcon();
     trayIcon->setIcon ( QIcon ( ":/images/iconbulmages.svg" ) );
@@ -38,42 +38,42 @@ BulmaGes::BulmaGes()
 }
 
 
-BulmaGes::~BulmaGes()
+BgBulmaGes::~BgBulmaGes()
 {
 }
 
 
-void BulmaGes::on_mui_lanzabulmacont_clicked()
+void BgBulmaGes::on_mui_lanzabulmacont_clicked()
 {
     launchBulmaCont();
 }
 
 
-void BulmaGes::on_mui_lanzabulmafact_clicked()
+void BgBulmaGes::on_mui_lanzabulmafact_clicked()
 {
     launchBulmaFact();
 }
 
 
-void BulmaGes::on_mui_lanzabulmatpv_clicked()
+void BgBulmaGes::on_mui_lanzabulmatpv_clicked()
 {
     launchBulmaTPV();
 }
 
 
-void BulmaGes::on_mui_lanzabulmasetup_clicked()
+void BgBulmaGes::on_mui_lanzabulmasetup_clicked()
 {
     launchBulmaSetup();
 }
 
 
-void BulmaGes::on_mui_cerrar_clicked()
+void BgBulmaGes::on_mui_cerrar_clicked()
 {
     hide();
 }
 
 
-void BulmaGes::activado ( QSystemTrayIcon::ActivationReason reason )
+void BgBulmaGes::activado ( QSystemTrayIcon::ActivationReason reason )
 {
 
     if ( reason == QSystemTrayIcon::Trigger ) {
@@ -84,7 +84,7 @@ void BulmaGes::activado ( QSystemTrayIcon::ActivationReason reason )
 }
 
 
-void BulmaGes::createTrayIcon()
+void BgBulmaGes::createTrayIcon()
 {
     QAction *bulmaContAction;
     QAction *bulmaFactAction;
@@ -126,28 +126,28 @@ void BulmaGes::createTrayIcon()
 }
 
 
-void BulmaGes::launchBulmaCont()
+void BgBulmaGes::launchBulmaCont()
 {
     hide();
     runCommand ( "bulmacont" );
 }
 
 
-void BulmaGes::launchBulmaFact()
+void BgBulmaGes::launchBulmaFact()
 {
     hide();
     runCommand ( "bulmafact" );
 }
 
 
-void BulmaGes::launchBulmaTPV()
+void BgBulmaGes::launchBulmaTPV()
 {
     hide();
     runCommand ( "bulmatpv" );
 }
 
 
-void BulmaGes::launchBulmaSetup()
+void BgBulmaGes::launchBulmaSetup()
 {
     hide();
     /// Entre distintas versiones de KDE el kdesudo cambia de nombre.
@@ -165,7 +165,7 @@ void BulmaGes::launchBulmaSetup()
 }
 
 
-void BulmaGes::runCommand ( QString command )
+void BgBulmaGes::runCommand ( QString command )
 {
     command = command + QString ( " &" );
     system ( command.toAscii().constData() );

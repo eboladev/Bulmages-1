@@ -25,10 +25,10 @@
 
 QString BlI18n ( const char *cadena, int )
 {
-//    QString salida = QString(textdomain(NULL)) + QString(" - ") + QString(gettext(cadena)) + QString("\n");
-//    fprintf(stderr, salida.toAscii());
+/// Depuracion:
+// QString salida = "*" + QString(textdomain(NULL)) + QString(" - ") + QString(gettext(cadena)) + QString("\n");
+// fprintf(stderr, salida.toAscii());
 
-//
 #ifdef WIN32
     return ( cadena );
 #else
@@ -39,13 +39,10 @@ QString BlI18n ( const char *cadena, int )
 
 QString BlI18n ( const char *domain, const char *cadena )
 {
-//    QString salida = QString(domain) + QString(" - ") + QString(dgettext(domain, cadena)) + QString("\n");
-//    fprintf(stderr, salida.toAscii());
+/// Depuracion:
+// QString salida = QString(domain) + QString(" - ") + QString(dgettext(domain, cadena)) + QString("\n");
+// fprintf(stderr, salida.toAscii());
 
-
-//    return QString(dgettext(domain, cadena));
-
-    return cadena;
 #ifdef WIN32
     return ( cadena );
 #else

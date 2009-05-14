@@ -30,7 +30,7 @@
 #include "blsearchwidget.h"
 
 
-class company;
+class BfCompany;
 
 
 class BF_EXPORT BfBuscarArticuloDelegate : public BlComboBox

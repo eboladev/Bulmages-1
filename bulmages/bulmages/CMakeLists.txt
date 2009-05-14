@@ -1,4 +1,4 @@
-PROJECT(BulmaGes)
+PROJECT(BgBulmaGes)
 
 add_subdirectory(src)
 

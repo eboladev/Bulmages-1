@@ -1,16 +1,16 @@
 ###########################################
 # Plugin for bulmafact                    #
 ###########################################
-#pluginresarticulos
+#pluginbf_resumenarticulo
 
-set (plugin pluginresarticulos)
+set (plugin pluginbf_resumenarticulo)
 set (docs README.es)
 
 file(GLOB plugin_SRC *.c *.cpp *.cxx)
 file(GLOB plugin_MOCS *.hpp *.h)
 
 # Exclude files with no QObject macro.
-file(GLOB plugin_NO_MOCS pluginresarticulos.h)
+file(GLOB plugin_NO_MOCS pluginbf_resumenarticulo.h)
 list(REMOVE_ITEM plugin_MOCS ${plugin_NO_MOCS})
 
 file(GLOB plugin_UIS *.ui)

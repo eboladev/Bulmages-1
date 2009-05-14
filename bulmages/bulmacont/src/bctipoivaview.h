@@ -28,7 +28,7 @@
 #include "bcform.h"
 
 
-class empresa;
+class BcCompany;
 
 
 /// Esta clase hace el mantenimiento de la tabla de Tipos de IVA.
