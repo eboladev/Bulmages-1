@@ -432,7 +432,7 @@ void BfForm::trataTagsBf ( QString &buff, int tipoEscape )
         fitxersortidatxt = "";
         QString tr1 = ""; /// Rellena el primer tr de titulares.
         QString tr2 = ""; /// Rellena el segundo tr de cantidades.
-        fitxersortidatxt += "<blockTable style=\"tabladescuento\" colWidths=\"8cm,2cm\" repeatRows=\"1\" >\n";
+        fitxersortidatxt += "<blockTable style=\"tabladescuento\" repeatRows=\"1\" >\n";
         BlFixed totbaseimp ( "0.00" );
         BlFixed parbaseimp ( "0.00" );
         BlFixed totdesc ( "0.00" );
