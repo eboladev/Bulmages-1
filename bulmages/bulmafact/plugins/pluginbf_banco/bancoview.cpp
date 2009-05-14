@@ -114,6 +114,7 @@ void BancoView::on_mui_lista_currentItemChanged ( QListWidgetItem *cur, QListWid
     mui_dcbanco->setText ( m_cursorbancos->valor ( "dcbanco", row ) );
     mui_comentbanco->setText ( m_cursorbancos->valor ( "comentbanco", row ) );
     mui_webbanco->setText ( m_cursorbancos->valor ( "webbanco", row ) );
+    mui_sufijobanco->setValue ( m_cursorbancos->valorInt ( "sufijobanco", row ) );
     m_item = cur;
     /// Comprobamos cual es la cadena inicial.
     dialogChanges_cargaInicial();
@@ -144,6 +145,7 @@ int BancoView::guardar()
         query += ", dcbanco='" + mainCompany() ->sanearCadena ( mui_dcbanco->text() ) + "'";
         query += ", comentbanco='" + mainCompany() ->sanearCadena ( mui_comentbanco->toPlainText() ) + "'";
         query += ",  webbanco='" + mainCompany() ->sanearCadena ( mui_webbanco->text() ) + "'";
+        query += ",  sufijobanco=" +  mui_sufijobanco->cleanText() ;
         query += " WHERE idbanco=" + mainCompany() ->sanearCadena ( mdb_idbanco );
 
         int error = mainCompany() ->runQuery ( query );

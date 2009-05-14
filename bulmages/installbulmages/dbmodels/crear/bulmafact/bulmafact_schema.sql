@@ -156,6 +156,7 @@ CREATE TABLE almacen (
 -- dcbanco: Digito de control de la cuenta bancaria.
 -- comentbanco: Comentario de la entidad bancaria.
 -- webbanco: Direccion web de la entidad bancaria.
+-- sufijo: código diferente para cada entitat receptora de ficheros de remesas de recibos q19
 \echo -n ':: Banco ... '
 CREATE TABLE banco (
     idbanco serial PRIMARY KEY,
@@ -172,7 +173,8 @@ CREATE TABLE banco (
     numcuentabanco  character varying(17),
     dcbanco character varying(2),
     comentbanco character varying,
-    webbanco character varying(100)
+    webbanco character varying(100),
+    sufijobanco numeric(3,0)
 );
 
 

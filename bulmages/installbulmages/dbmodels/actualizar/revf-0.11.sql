@@ -135,6 +135,38 @@ BEGIN
 END;
 ' LANGUAGE plpgsql;
 
+
+-- =====================================================================================
+
+-- corregeixo calcul que multiplicava factor d'iva per factor de recarrec d'equivalencia
+-- cosa qe eliminava o reduia massa els impostos
+CREATE OR REPLACE FUNCTION calcimpuestosfactura(integer) RETURNS numeric(12, 2)
+AS '
+DECLARE
+    idp ALIAS FOR $1;
+    total numeric(12, 2);
+    res RECORD;
+
+BEGIN
+    total := 0;
+   FOR res IN SELECT cantlfactura * pvplfactura * (1 - descuentolfactura / 100) * ((ivalfactura+reqeqlfactura) / 100)  AS subtotal1 FROM lfactura WHERE idfactura = idp LOOP
+	total := total + res.subtotal1;
+    END LOOP;
+    FOR res IN SELECT proporciondfactura FROM dfactura WHERE idfactura = idp LOOP
+	total := total * (1 - res.proporciondfactura / 100);
+    END LOOP;
+    RETURN total;
+END;
+' LANGUAGE plpgsql;
+
+-- para remesas de recibos a bancos en fornato q19
+ALTER TABLE banco
+  ADD COLUMN sufijobanco numeric(3,0) ;
+
+-- para compatibilidad con las bd de la branch docsMonolitic que usaban idbanco en lugar de 
+-- sufijo
+UPDATE banco set sufijobanco = idbanco;
+
 -- =====================================================================================
 
 -- Agregamos nuevos parametros de configuracion
@@ -145,9 +177,9 @@ DECLARE
 BEGIN
 	SELECT INTO as * FROM configuracion WHERE nombre = ''DatabaseRevision'';
 	IF FOUND THEN
-		UPDATE CONFIGURACION SET valor = ''0.11.1-0002'' WHERE nombre = ''DatabaseRevision'';
+		UPDATE CONFIGURACION SET valor = ''0.11.1-0003'' WHERE nombre = ''DatabaseRevision'';
 	ELSE
-		INSERT INTO configuracion (nombre, valor) VALUES (''DatabaseRevision'', ''0.11.1-0002'');
+		INSERT INTO configuracion (nombre, valor) VALUES (''DatabaseRevision'', ''0.11.1-0003'');
 	END IF;
 	RETURN 0;
 END;
