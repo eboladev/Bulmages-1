@@ -59,7 +59,7 @@ class ModificarFacturacion( Facturacion):
 
 def main(args):
     app=QtGui.QApplication(args)
-    win=ModificarFacturacion('superpruebas')
+    win=ModificarFacturacion('bulmafact')
     win.exec_()
     sys.exit(app.exec_())
 

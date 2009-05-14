@@ -239,7 +239,9 @@ class Facturacion(Ui_ModificarFacturacionBase, Empresa):
          self.j = self.j + 1
 
    def on_mui_plugins_cellClicked(self, row, col):
-      self.mui_descripcion.setText(self.mui_plugins.item(row,1).text())
+      # Escribimos la descripcion
+      self.mui_descripcion.setText(self.mui_plugins.item(row,1).text() + "<b>" + self.pluginsbulmafact[row][1] + "</b><br>"+ self.pluginsbulmafact[row][3] + "<br>" + self.pluginsbulmafact[row][4]+ "<br>" + self.pluginsbulmafact[row][8]+ "<br>" + self.pluginsbulmafact[row][9])
+
       if (self.semaforo == 1):
          # Marcamos las dependencias
          self.i = 0
@@ -262,7 +264,9 @@ class Facturacion(Ui_ModificarFacturacionBase, Empresa):
             self.i = self.i +1
 
    def on_mui_plugins1_cellClicked(self, row, col):
-      self.mui_descripcion.setText(self.mui_plugins1.item(row,1).text())
+      # Ponemos la descripcion en el cuadro de texto
+      self.mui_descripcion.setText(self.mui_plugins1.item(row,1).text() + "<b>" + self.pluginsbulmatpv[row][1] + "</b><br>"+ self.pluginsbulmatpv[row][3] + "<br>" + self.pluginsbulmatpv[row][4]+ "<br>" + self.pluginsbulmatpv[row][8]+ "<br>" + self.pluginsbulmatpv[row][9])
+      
       if (self.semaforo == 1):
          # Marcamos las dependencias
          self.i = 0

@@ -175,7 +175,9 @@ class Contabilidad(Ui_ModificarContabilidadBase, Empresa):
          self.j = self.j + 1
 
    def on_mui_plugins_cellClicked(self, row, col):
-      self.mui_descripcion.setText(self.mui_plugins.item(row,1).text())
+      # Ponemos la descripcion en el cuadro de texto
+      self.mui_descripcion.setText(self.mui_plugins.item(row,1).text() + "<b>" + self.pluginsbulmacont[row][1] + "</b><br>"+ self.pluginsbulmacont[row][3] + "<br>" + self.pluginsbulmacont[row][4]+ "<br>" + self.pluginsbulmacont[row][8]+ "<br>" + self.pluginsbulmacont[row][9])
+
       if (self.semaforo == 1):
          # Marcamos las dependencias
          self.i = 0
