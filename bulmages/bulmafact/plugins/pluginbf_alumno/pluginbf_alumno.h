@@ -28,10 +28,13 @@
 #include "bfbulmafact.h"
 #include "blwidget.h"
 #include "bfbuscarreferencia.h"
-
+#include "bfsubform.h"
 
 extern "C" MY_EXPORT int entryPoint ( BfBulmaFact * );
 extern "C" MY_EXPORT int BfCompany_createMainWindows_Post(BfCompany *);
+
+extern "C" MY_EXPORT int BfSubForm_pressedAsterisk(BfSubForm *);
+// extern "C" MY_EXPORT int BlSubForm_BlSubForm_Post ( BlSubForm * );
 
 
 class MyPlugProf : public QObject, BlMainCompanyPointer

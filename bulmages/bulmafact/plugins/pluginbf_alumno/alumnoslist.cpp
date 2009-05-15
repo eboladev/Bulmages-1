@@ -73,11 +73,21 @@ AlumnosList::AlumnosList ( BfCompany *comp, QWidget *parent, Qt::WFlags flag, ed
     setSubForm ( mui_list );
     presentar();
     mdb_idalumno = "";
-    if ( modoEdicion() )
+
+    if ( modoEdicion() ) {
         mainCompany() ->meteWindow ( windowTitle(), this );
+    } else {
+        setWindowTitle ( _ ( "Selector de alumnos" ) );
+        mui_editar->setHidden ( TRUE );
+        mui_crear->setHidden ( TRUE );
+        mui_borrar->setHidden ( TRUE );
+        mui_imprimir->setHidden ( TRUE );
+    } // end if
+
+
     hideBusqueda();
     /// Hacemos el tratamiento de los permisos que desabilita botones en caso de no haber suficientes permisos.
-    trataPermisos ( "cobro" );
+    trataPermisos ( "alumno" );
     _depura ( "END AlumnosList::AlumnosList", 0 );
 }
 
@@ -195,6 +205,7 @@ void AlumnosList::editar ( int )
             mainCompany() ->m_pWorkspace->addWindow ( bud );
             bud->show();
         } else {
+	    close();
             emit ( selected ( mdb_idalumno ) );
         } // end if
     } catch ( ... ) {

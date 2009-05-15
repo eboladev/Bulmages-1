@@ -166,3 +166,41 @@ int BfCompany_createMainWindows_Post ( BfCompany *comp )
     }// end if
     return 0;
 }
+
+
+int BfSubForm_pressedAsterisk ( BfSubForm *sub )
+{
+
+    if ( sub->m_campoactual->nomcampo() != "nombrealumno" ) {
+        _depura ( "END BfSubForm::pressedAsterisk", 0 );
+        return 0;
+    } // end if
+
+    AlumnosList *artlist = new AlumnosList ( ( BfCompany * ) sub->mainCompany(), NULL, 0, BL_SELECT_MODE );
+    /// Esto es convertir un QWidget en un sistema modal de dialogo.
+    sub->setEnabled ( false );
+    artlist->show();
+    while ( !artlist->isHidden() )
+        g_theApp->processEvents();
+    sub->setEnabled ( true );
+    QString idAlumno = artlist->idalumno();
+    delete artlist;
+
+    /// Si no tenemos un idarticulo salimos ya que significa que no se ha seleccionado ninguno.
+    if ( idAlumno == "" ) {
+        _depura ( "END BfSubForm::pressedAsterisk", 0 );
+        return 0;
+    } // end if
+
+    BlDbRecordSet *cur = sub->mainCompany() ->loadQuery ( "SELECT * FROM alumno WHERE idalumno = " + idAlumno );
+    if ( !cur->eof() ) {
+        sub->m_registrolinea->setDbValue ( "idalumno", idAlumno );
+        sub->m_registrolinea->setDbValue ( "nombrealumno", cur->valor ( "nombrealumno" ) );
+    } // end if
+    delete cur;
+
+    return 0;
+}
+
+
+
