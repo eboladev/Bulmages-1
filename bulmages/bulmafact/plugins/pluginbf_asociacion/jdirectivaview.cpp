@@ -1,6 +1,9 @@
 /***************************************************************************
- *   Copyright (C) 2004 by Tomeu Borras Riera                              *
+ *   Copyright (C) 2009 by Tomeu Borras Riera                              *
  *   tborras@conetxia.com                                                  *
+ *                                                                         *
+ *   Copyright (C) 2009 by Arturo Martin Llado                             *
+ *   amartin@conetxia.com                                                  *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
  *   it under the terms of the GNU General Public License as published by  *
@@ -31,7 +34,6 @@
 #include "bldatesearch.h"
 #include "blfunctions.h"
 
-
 /** inicializa todos los componentes de la clase.
     Resetea el sistema de control de cambios para que considere que no hay cambios por parte del usuario.
     Mete la ventana en el workSpace.
@@ -40,7 +42,9 @@ JDirectivaView::JDirectivaView ( BfCompany *comp, QWidget *parent )
         : BfForm ( comp, parent )
 {
     _depura ( "JDirectivaView::JDirectivaView", 0 );
+    
     setAttribute ( Qt::WA_DeleteOnClose );
+    
     try {
         setupUi ( this );
         centrarEnPantalla ( this );
@@ -75,9 +79,9 @@ JDirectivaView::JDirectivaView ( BfCompany *comp, QWidget *parent )
     } catch ( ... ) {
         mensajeInfo ( _ ( "Error al crear el jdirectiva" ), this );
     } // end try
+    
     _depura ( "END JDirectivaView::JDirectivaView", 0 );
 }
-
 
 /** No precisa acciones adicionales en el destructor.
 */
@@ -90,6 +94,9 @@ JDirectivaView::~JDirectivaView()
 
 QString JDirectivaView::nombrePlantilla ( void )
 {
+    _depura ( "JDirectivaView::~nombrePlantilla", 0 );
+    _depura ( "END JDirectivaView::~nombrePlantilla", 0 );
+    
     return QString ( "jdirectiva" );
 }
 
@@ -97,6 +104,7 @@ QString JDirectivaView::nombrePlantilla ( void )
 void JDirectivaView::imprimir()
 {
     _depura ( "JDirectivaView::imprimir", 0 );
+    
     /// Comprobamos que se disponen de los datos minimos para imprimir el jdirectiva.
     QString SQLQuery = "";
 
@@ -105,42 +113,40 @@ void JDirectivaView::imprimir()
         mensajeInfo ( _ ( "Tiene que guardar el documento antes de poder imprimirlo." ), this );
         return;
     }
+    
     /// Disparamos los plugins
     int res = g_plugins->lanza ( "JDirectivaView_on_mui_imprimir_clicked", this );
     if ( res != 0 ) {
         return;
     } // end if
+    
     BfForm::imprimir();
 
     _depura ( "END JDirectivaView::imprimir", 0 );
 }
 
-
 int JDirectivaView::guardarPost()
 {
-    _depura ( " JDirectivaView::guardarPost", 0 );
+    _depura ( "JDirectivaView::guardarPost", 0 );
+    
     mui_list->setColumnValue("idjdirectiva", dbValue("idjdirectiva") );
     mui_list->guardar();
+    
     _depura ( "END JDirectivaView::guardarPost", 0 );
 }
 
-
 int JDirectivaView::borrarPre()
 {
-
     return 0;
 }
-
-
 
 int JDirectivaView::cargarPost ( QString id )
 {
-    _depura ( " JDirectivaView::cargarPost", 0 );
+    _depura ( "JDirectivaView::cargarPost", 0 );
+    
     mui_list->cargar("SELECT * FROM miembrojdirectiva NATURAL LEFT JOIN cliente WHERE idjdirectiva = " + id);
+    
     _depura ( "END JDirectivaView::cargarPost", 0 );
+    
     return 0;
 }
-
-
-
-

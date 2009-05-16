@@ -300,12 +300,11 @@ void BfForm::trataTagsBf ( QString &buff, int tipoEscape )
         /// Contador que sirve para poner lineas de mas en caso de que sea preciso.
         BlDbSubFormRecord *linea;
 
-	/// Si no hay lista de lineas salimos.
-	if (!m_listalineas) {
-	  _depura ( "END BfForm::trataTagsBf", 0 );
-	  return;
-	} // end if
-
+        /// Si no hay lista de lineas salimos.
+        if (!m_listalineas) {
+            _depura ( "END BfForm::trataTagsBf", 0 );
+            return;
+        } // end if
 
 	/// Expresion regular para saber los parametros de STORY.
  	QRegExp rx("\\[story(.*)\\]");
@@ -526,8 +525,8 @@ void BfForm::trataTagsBf ( QString &buff, int tipoEscape )
         if ( cur ) delete cur;
         throw ( -1 );
     }
-    _depura ( "END BfForm::trataTagsBf", 0 );
 
+    _depura ( "END BfForm::trataTagsBf", 0 );
 }
 
 

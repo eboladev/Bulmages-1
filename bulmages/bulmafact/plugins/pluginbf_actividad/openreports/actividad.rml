@@ -71,7 +71,7 @@
     Aquí va el contenido del documento.
     No puede estar vacío.
 -->
-<story>
+<story>    
     <para style="titulo"><b>Listado de alumnos</b></para>
     
     <spacer length="0.5cm" />

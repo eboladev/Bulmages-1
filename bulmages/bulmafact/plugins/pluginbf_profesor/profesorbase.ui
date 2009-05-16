@@ -223,7 +223,7 @@
       <bool>true</bool>
      </property>
      <property name="currentIndex">
-      <number>0</number>
+      <number>2</number>
      </property>
      <widget class="QWidget" name="Tab1">
       <attribute name="title">
@@ -502,15 +502,18 @@
       <attribute name="title">
        <string>Estudios</string>
       </attribute>
-      <layout class="QVBoxLayout" name="verticalLayout_2">
-       <item>
+      <layout class="QGridLayout" name="gridLayout_2">
+       <property name="margin">
+        <number>5</number>
+       </property>
+       <item row="0" column="0">
         <widget class="QLabel" name="label_2">
          <property name="text">
           <string>Estudios:</string>
          </property>
         </widget>
        </item>
-       <item>
+       <item row="1" column="0">
         <widget class="QTextEdit" name="mui_estudiosprofesor"/>
        </item>
       </layout>
