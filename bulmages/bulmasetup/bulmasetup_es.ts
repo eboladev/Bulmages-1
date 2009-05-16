@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE TS><TS version="1.1" language="es">
+<!DOCTYPE TS>
+<TS version="2.0" language="es">
 <defaultcodec></defaultcodec>
 <context>
     <name>EliminarUsuario</name>
@@ -69,7 +70,7 @@
         <source>BulmaSetup</source>
         <translation>BulmaSetup</translation>
     </message>
-    <message encoding="UTF-8">
+    <message utf8="true">
         <location filename="bulmasetupbase.py" line="138"/>
         <source>Gestión de Usuarios</source>
         <translation>Gestión de usuarios</translation>
@@ -106,7 +107,7 @@ p, li { white-space: pre-wrap; }
         <translation>&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
 p, li { white-space: pre-wrap; }&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;Sans Serif&apos;; font-size:9pt; font-weight:400; font-style:normal; text-decoration:none;&quot;&gt;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;BulmaSetup v 0.11&lt;/span&gt;&lt;/p&gt;&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;/p&gt;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Administración de bases&lt;/p&gt;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;de datos para BulmaGes&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
-    <message encoding="UTF-8">
+    <message utf8="true">
         <location filename="bulmasetupbase.py" line="150"/>
         <source>Gestión de Empresas</source>
         <translation>Gestión de empresas</translation>
@@ -116,7 +117,7 @@ p, li { white-space: pre-wrap; }&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot;
         <source>Nueva Empresa de Contabilidad</source>
         <translation>Crear empresa de contabilidad</translation>
     </message>
-    <message encoding="UTF-8">
+    <message utf8="true">
         <location filename="bulmasetupbase.py" line="152"/>
         <source>Nueva Empresa de Facturación / TPV</source>
         <translation>Crear empresa de facturación y/o TPV</translation>
@@ -275,7 +276,7 @@ p, li { white-space: pre-wrap; }&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot;
     <message>
         <location filename="modificarfacturacionbase.py" line="196"/>
         <source>Mostrar todos los plugins o solo los instalados</source>
-        <translation>Mostrar todos los &lt;i&gt;plug-in&lt;/i&gt; o solamente los instalados</translation>
+        <translation>Mostrar sólo los modulos instalados</translation>
     </message>
     <message>
         <location filename="modificarfacturacionbase.py" line="197"/>

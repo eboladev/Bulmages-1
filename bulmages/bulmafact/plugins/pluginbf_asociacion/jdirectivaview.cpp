@@ -93,6 +93,7 @@ QString JDirectivaView::nombrePlantilla ( void )
     return QString ( "jdirectiva" );
 }
 
+
 void JDirectivaView::imprimir()
 {
     _depura ( "JDirectivaView::imprimir", 0 );

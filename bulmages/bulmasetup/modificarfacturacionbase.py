@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'modificarfacturacionbase.ui'
 #
-# Created: Thu May 14 23:05:16 2009
+# Created: Sat May 16 20:43:56 2009
 #      by: PyQt4 UI code generator 4.4.4
 #
 # WARNING! All changes made in this file will be lost!
@@ -62,15 +62,8 @@ class Ui_ModificarFacturacionBase(object):
         self.verticalLayout_2.addLayout(self.gridLayout)
         self.groupBox = QtGui.QGroupBox(ModificarFacturacionBase)
         self.groupBox.setObjectName("groupBox")
-        self.horizontalLayout_2 = QtGui.QHBoxLayout(self.groupBox)
-        self.horizontalLayout_2.setSpacing(0)
-        self.horizontalLayout_2.setMargin(0)
-        self.horizontalLayout_2.setObjectName("horizontalLayout_2")
-        self.mui_vertodos = QtGui.QCheckBox(self.groupBox)
-        self.mui_vertodos.setObjectName("mui_vertodos")
-        self.horizontalLayout_2.addWidget(self.mui_vertodos)
-        spacerItem = QtGui.QSpacerItem(43, 20, QtGui.QSizePolicy.Expanding, QtGui.QSizePolicy.Minimum)
-        self.horizontalLayout_2.addItem(spacerItem)
+        self.verticalLayout_4 = QtGui.QVBoxLayout(self.groupBox)
+        self.verticalLayout_4.setObjectName("verticalLayout_4")
         self.horizontalLayout = QtGui.QHBoxLayout()
         self.horizontalLayout.setSpacing(0)
         self.horizontalLayout.setObjectName("horizontalLayout")
@@ -80,7 +73,12 @@ class Ui_ModificarFacturacionBase(object):
         self.mui_categoria = QtGui.QComboBox(self.groupBox)
         self.mui_categoria.setObjectName("mui_categoria")
         self.horizontalLayout.addWidget(self.mui_categoria)
-        self.horizontalLayout_2.addLayout(self.horizontalLayout)
+        spacerItem = QtGui.QSpacerItem(40, 20, QtGui.QSizePolicy.Expanding, QtGui.QSizePolicy.Minimum)
+        self.horizontalLayout.addItem(spacerItem)
+        self.verticalLayout_4.addLayout(self.horizontalLayout)
+        self.mui_vertodos = QtGui.QCheckBox(self.groupBox)
+        self.mui_vertodos.setObjectName("mui_vertodos")
+        self.verticalLayout_4.addWidget(self.mui_vertodos)
         self.verticalLayout_2.addWidget(self.groupBox)
         self.tabWidget = QtGui.QTabWidget(ModificarFacturacionBase)
         self.tabWidget.setObjectName("tabWidget")
@@ -210,8 +208,8 @@ class Ui_ModificarFacturacionBase(object):
         self.label_3.setText(QtGui.QApplication.translate("ModificarFacturacionBase", "Version de la Base de Datos", None, QtGui.QApplication.UnicodeUTF8))
         self.mui_soporteTPV.setText(QtGui.QApplication.translate("ModificarFacturacionBase", "Instalar Soporte para TPV en esta empresa", None, QtGui.QApplication.UnicodeUTF8))
         self.groupBox.setTitle(QtGui.QApplication.translate("ModificarFacturacionBase", "Opciones de Filtrado de Plugins", None, QtGui.QApplication.UnicodeUTF8))
-        self.mui_vertodos.setText(QtGui.QApplication.translate("ModificarFacturacionBase", "Mostrar todos los plugins o solo los instalados", None, QtGui.QApplication.UnicodeUTF8))
         self.label_5.setText(QtGui.QApplication.translate("ModificarFacturacionBase", "Categoria ", None, QtGui.QApplication.UnicodeUTF8))
+        self.mui_vertodos.setText(QtGui.QApplication.translate("ModificarFacturacionBase", "Mostrar todos los plugins o solo los instalados", None, QtGui.QApplication.UnicodeUTF8))
         self.mui_plugins.horizontalHeaderItem(0).setText(QtGui.QApplication.translate("ModificarFacturacionBase", "Plugin", None, QtGui.QApplication.UnicodeUTF8))
         self.mui_plugins.horizontalHeaderItem(1).setText(QtGui.QApplication.translate("ModificarFacturacionBase", "Descripcion", None, QtGui.QApplication.UnicodeUTF8))
         self.mui_plugins.horizontalHeaderItem(2).setText(QtGui.QApplication.translate("ModificarFacturacionBase", "Version Instalada", None, QtGui.QApplication.UnicodeUTF8))
