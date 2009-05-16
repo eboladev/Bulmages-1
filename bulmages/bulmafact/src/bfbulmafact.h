@@ -60,7 +60,7 @@ public:
     QProgressBar *m_pb;
 
 public slots:
-    virtual void closeEvent ( QCloseEvent * );
+    virtual void closeEvent ( QCloseEvent *event );
     virtual void s_FPago();
     virtual void s_ventanaCompleta();
     virtual void s_About();

@@ -39,7 +39,7 @@
 #include "bfaboutview.h"
 #include "blperiodicitycombobox.h"
 #include "blplugins.h"
-
+#include "blfunctions.h"
 
 /** Prepara la pantalla principal para que tenga todos los componentes.
     Crea el workspace y lo inicializa.
@@ -176,9 +176,25 @@ void BfBulmaFact::s_About()
 */
 /**
 **/
-void BfBulmaFact::closeEvent ( QCloseEvent * )
+void BfBulmaFact::closeEvent ( QCloseEvent *event )
 {
     _depura ( "BfBulmaFact::closeEvent", 0 );
+
+
+
+    /// Antes de salir hacemos un mensaje de advertencia.
+    QMessageBox msgBox;
+    msgBox.setText(_("Seguro que desea abandonar el programa "));
+    msgBox.setInformativeText(_("Se perderan los camibos no guardados"));
+    msgBox.setStandardButtons( QMessageBox::Close | QMessageBox::Cancel);
+    msgBox.setDefaultButton(QMessageBox::Cancel);
+    int ret = msgBox.exec();
+
+    if (ret == QMessageBox::Cancel) {
+      event->ignore();
+      _depura ( "END BfBulmaFact::closeEvent", 0 );
+      return;
+    }
 
     g_plugins->lanza ( "BfBulmaFact_closeEvent", this );
 

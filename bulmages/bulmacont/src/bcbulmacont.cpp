@@ -796,9 +796,26 @@ void BcBulmaCont::slotWindowNewWindow()
 ///
 /**
 **/
-void BcBulmaCont::closeEvent ( QCloseEvent * )
+void BcBulmaCont::closeEvent ( QCloseEvent *event )
 {
     _depura ( "BcBulmaCont::closeEvent", 0 );
+
+
+    /// Antes de salir hacemos un mensaje de advertencia.
+    QMessageBox msgBox;
+    msgBox.setText(_("Seguro que desea abandonar el programa "));
+    msgBox.setInformativeText(_("Se perderan los camibos no guardados"));
+    msgBox.setStandardButtons( QMessageBox::Close | QMessageBox::Cancel);
+    msgBox.setDefaultButton(QMessageBox::Cancel);
+    int ret = msgBox.exec();
+
+    if (ret == QMessageBox::Cancel) {
+      event->ignore();
+      _depura ( "END BfBulmaFact::closeEvent", 0 );
+      return;
+    }
+
+
 
     g_plugins->lanza ( "BcBulmaCont_closeEvent", this );
 

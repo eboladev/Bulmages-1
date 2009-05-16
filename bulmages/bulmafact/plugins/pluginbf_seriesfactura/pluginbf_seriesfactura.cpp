@@ -78,13 +78,13 @@ void MyPlugSeriesFactura::inicializa ( BfBulmaFact *bges )
 
         m_bges = bges;
         setMainCompany ( bges->getcompany() );
-        QAction *planCuentas = new QAction ( _ ( "&Series de factura" ), 0 );
-        //planCuentas->setIcon(QIcon ( QString::fromUtf8 ( ":/Images/employee-list.svg" ) ));
-        planCuentas->setStatusTip ( _ ( "Series de factura" ) );
-        planCuentas->setWhatsThis ( _ ( "Series de factura" ) );
-        pPluginMenu->addAction ( planCuentas );
-        bges->Listados->addAction ( planCuentas );
-        connect ( planCuentas, SIGNAL ( activated() ), this, SLOT ( elslot1() ) );
+        QAction *seriesFactura = new QAction ( _ ( "&Series de factura" ), 0 );
+        seriesFactura->setIcon(QIcon ( QString::fromUtf8 ( ":/Images/client-invoice-series.svg" ) ));
+        seriesFactura->setStatusTip ( _ ( "Series de factura" ) );
+        seriesFactura->setWhatsThis ( _ ( "Series de factura" ) );
+        pPluginMenu->addAction ( seriesFactura );
+        bges->Listados->addAction ( seriesFactura );
+        connect ( seriesFactura, SIGNAL ( activated() ), this, SLOT ( elslot1() ) );
 
     }// end if
     _depura ( "END MyPlugSeriesFactura::inicializa", 0 );

@@ -39,6 +39,7 @@
 	<file alias="client-delivery-note-list.svg">images/oxygen/actions/client_delivery_note_list.svg</file>
 	<file alias="client-invoice.svg">images/oxygen/actions/client_invoice.svg</file>
 	<file alias="client-invoice-list.svg">images/oxygen/actions/client_invoice_list.svg</file>
+	<file alias="client-invoice-series.svg">images/oxygen/actions/client_invoice_series.svg</file>
 	<file alias="vat.svg">images/oxygen/actions/vat.svg</file>
 	<file alias="vat-list.svg">images/oxygen/actions/vat.svg</file>
 	<file alias="employee-list.svg">images/oxygen/actions/employee_list.svg</file>
