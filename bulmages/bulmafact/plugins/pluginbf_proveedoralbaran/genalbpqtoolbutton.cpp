@@ -72,8 +72,8 @@ void GenAlbProQToolButton::setBoton()
     _depura ( "GenAlbProQToolButton::setBoton", 0 );
     connect ( this, SIGNAL ( clicked() ), this, SLOT ( click() ) );
     setObjectName ( QString::fromUtf8 ( "exporta" ) );
-    setStatusTip ( "Generar Factura Proveedor" );
-    setToolTip ( "Generar Factura Proveedor" );
+    setStatusTip ( _("Generar Albaran Proveedor") );
+    setToolTip ( _("Generar Albaran Proveedor") );
     setMinimumSize ( QSize ( 32, 32 ) );
     setMaximumSize ( QSize ( 32, 32 ) );
     setIcon ( QIcon ( QString::fromUtf8 ( ":/Images/supplier-delivery-note.svg" ) ) );

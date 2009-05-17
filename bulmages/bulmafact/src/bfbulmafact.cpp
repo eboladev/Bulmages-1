@@ -185,7 +185,7 @@ void BfBulmaFact::closeEvent ( QCloseEvent *event )
     /// Antes de salir hacemos un mensaje de advertencia.
     QMessageBox msgBox;
     msgBox.setText(_("Seguro que desea abandonar el programa "));
-    msgBox.setInformativeText(_("Se perderan los camibos no guardados"));
+    msgBox.setInformativeText(_("Se perderan los cambios no guardados"));
     msgBox.setStandardButtons( QMessageBox::Close | QMessageBox::Cancel);
     msgBox.setDefaultButton(QMessageBox::Cancel);
     int ret = msgBox.exec();
