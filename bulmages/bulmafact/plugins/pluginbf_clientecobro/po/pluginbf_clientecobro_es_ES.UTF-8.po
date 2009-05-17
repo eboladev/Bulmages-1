@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-05-12 23:58+0200\n"
+"POT-Creation-Date: 2009-05-16 15:34+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -114,11 +114,15 @@ msgstr ""
 "#-#-#-#-#  pluginabrevs.pot (PACKAGE VERSION)  #-#-#-#-#\n"
 "#-#-#-#-#  bulmages_suite.pot (PACKAGE VERSION)  #-#-#-#-#\n"
 
-#: ui_cobrobase.h:410
+#: ui_cobrobase.h:438
+msgid "#mui_idcliente{min-height: 3em; } #mui_idcliente * {min-height: 0px; }"
+msgstr ""
+
+#: ui_cobrobase.h:443
 msgid "&Aceptar"
 msgstr "&Aceptar"
 
-#: ui_cobrobase.h:411
+#: ui_cobrobase.h:444
 msgid "&Cancelar"
 msgstr "&Cancelar"
 
@@ -138,16 +142,16 @@ msgstr "Actualizar listado"
 msgid "Apellidos del trabajador"
 msgstr "Apellidos del trabajador"
 
-#: cobroview.cpp:69 cobroslist.cpp:318
+#: cobroview.cpp:71 cobroslist.cpp:318
 msgid "Banco"
 msgstr "Banco"
 
-#: ui_cobroslistbase.h:374 ui_cobrobase.h:409
+#: ui_cobroslistbase.h:374 ui_cobrobase.h:441
 msgid "Banco:"
 msgstr "Banco:"
 
 #: cobroslist.cpp:255 ui_cobroslistbase.h:407 ui_cobroslistbase.h:412
-#: ui_cobrobase.h:381 ui_cobrobase.h:386 ui_cobrobase.h:393 ui_cobrobase.h:398
+#: ui_cobrobase.h:412 ui_cobrobase.h:417 ui_cobrobase.h:424 ui_cobrobase.h:429
 msgid "Borrar cobro"
 msgstr "Borrar cobro"
 
@@ -163,20 +167,20 @@ msgstr "C.I.F."
 msgid "Cantidad"
 msgstr "Cantidad"
 
-#: cobroview.cpp:62
+#: cobroview.cpp:64
 msgid "Cliente"
 msgstr "Cliente"
 
-#: cobroview.cpp:53 cobroslist.cpp:51 cobroslist.cpp:79
+#: cobroview.cpp:54 cobroslist.cpp:51 cobroslist.cpp:79
 msgid "Cliente:"
 msgstr "Cliente:"
 
-#: cobroview.cpp:58
+#: cobroview.cpp:60
 msgid "Cobro"
 msgstr "Cobro"
 
-#: cobroslist.cpp:181 pluginbf_clientecobro.cpp:99
-#: pluginbf_clientecobro.cpp:100
+#: pluginbf_clientecobro.cpp:99 pluginbf_clientecobro.cpp:100
+#: cobroslist.cpp:181
 msgid "Cobros a clientes"
 msgstr "Cobros a clientes"
 
@@ -204,7 +208,7 @@ msgstr "Configurar listado"
 msgid "Ctrl+B"
 msgstr "Ctrl+B"
 
-#: ui_cobroslistbase.h:416 ui_cobrobase.h:390
+#: ui_cobroslistbase.h:416 ui_cobrobase.h:421
 msgid "Ctrl+D"
 msgstr "Ctrl+D"
 
@@ -216,7 +220,7 @@ msgstr "Ctrl+E"
 msgid "Ctrl+F"
 msgstr "Ctrl+F"
 
-#: ui_cobrobase.h:402
+#: ui_cobrobase.h:433
 msgid "Ctrl+I"
 msgstr "Ctrl+I"
 
@@ -228,7 +232,7 @@ msgstr "Ctrl+N"
 msgid "Ctrl+P"
 msgstr "Ctrl+P"
 
-#: ui_cobrobase.h:378
+#: ui_cobrobase.h:409
 msgid "Ctrl+S"
 msgstr "Ctrl+S"
 
@@ -240,11 +244,11 @@ msgstr "Debe seleccionar una fila primero"
 msgid "Debe seleccionar una linea"
 msgstr "Debe seleccionar una linea"
 
-#: cobroview.cpp:68
+#: cobroview.cpp:70
 msgid "Descripcion del cobro"
 msgstr "Descripcion del cobro"
 
-#: ui_cobrobase.h:407
+#: ui_cobrobase.h:439
 msgid "Descripcion del cobro:"
 msgstr "Descripcion del cobro:"
 
@@ -260,7 +264,7 @@ msgstr "Editar cobro"
 msgid "Error al borrar el cobro a cliente"
 msgstr "Error al borrar el cobro a cliente"
 
-#: cobroview.cpp:75
+#: cobroview.cpp:78
 msgid "Error al crear el cobro"
 msgstr "Error al crear el cobro"
 
@@ -272,19 +276,19 @@ msgstr "F5"
 msgid "Fecha de cobro"
 msgstr "Fecha de cobro"
 
-#: cobroview.cpp:65 cobroslist.cpp:316
+#: cobroview.cpp:67 cobroslist.cpp:316
 msgid "Fecha de vencimiento"
 msgstr "Fecha de vencimiento"
 
-#: ui_cobrobase.h:406
+#: ui_cobrobase.h:437
 msgid "Fecha de vencimiento:"
 msgstr "Fecha de vencimiento:"
 
-#: cobroview.cpp:64
+#: cobroview.cpp:66
 msgid "Fecha del cobro"
 msgstr "Fecha del cobro"
 
-#: ui_cobrobase.h:404
+#: ui_cobrobase.h:435
 msgid "Fecha del cobro:"
 msgstr "Fecha del cobro:"
 
@@ -300,7 +304,7 @@ msgstr "Fecha inicial:"
 msgid "Filtrar cobros"
 msgstr "Filtrar cobros"
 
-#: ui_cobrobase.h:369 ui_cobrobase.h:374
+#: ui_cobrobase.h:400 ui_cobrobase.h:405
 msgid "Guardar cobro"
 msgstr "Guardar cobro"
 
@@ -316,7 +320,7 @@ msgstr "ID cobro"
 msgid "ID trabajador"
 msgstr "ID trabajador"
 
-#: cobroview.cpp:61
+#: cobroview.cpp:63
 msgid "Id cobro"
 msgstr "Id cobro"
 
@@ -340,7 +344,7 @@ msgstr "Nuevo cobro"
 msgid "Nuevo cobro a cliente"
 msgstr "Nuevo cobro a cliente"
 
-#: ui_cobrobase.h:365
+#: ui_cobrobase.h:396
 msgid "Nuevo cobro de cliente"
 msgstr "Nuevo cobro de cliente"
 
@@ -348,7 +352,7 @@ msgstr "Nuevo cobro de cliente"
 msgid "Numero de telefono"
 msgstr "Numero de telefono"
 
-#: cobroview.cpp:63
+#: cobroview.cpp:65
 msgid "Prevision"
 msgstr "Prevision"
 
@@ -356,11 +360,11 @@ msgstr "Prevision"
 msgid "Prevision de cobro"
 msgstr "Prevision de cobro"
 
-#: ui_cobrobase.h:405
+#: ui_cobrobase.h:436
 msgid "Provision de fondos"
 msgstr "Provision de fondos"
 
-#: cobroview.cpp:66
+#: cobroview.cpp:68
 msgid "Referencia"
 msgstr "Referencia"
 
@@ -368,22 +372,30 @@ msgstr "Referencia"
 msgid "Referencia del cobro"
 msgstr "Referencia del cobro"
 
-#: ui_cobrobase.h:403
+#: ui_cobrobase.h:434
 msgid "Referencia:"
 msgstr "Referencia:"
 
-#: cobroview.cpp:122
+#: cobroview.cpp:125
 msgid "Tiene que guardar el documento antes de poder imprimirlo."
 msgstr "Tiene que guardar el documento antes de poder imprimirlo."
 
-#: cobroview.cpp:67
+#: cobroview.cpp:69
 msgid "Total cobro"
 msgstr "Total cobro"
 
-#: ui_cobrobase.h:408
+#: ui_cobrobase.h:440
 msgid "Total cobro:"
 msgstr "Total cobro:"
 
 #: ui_cobroslistbase.h:379
 msgid "Total:"
 msgstr "Total:"
+
+#: cobroview.cpp:72
+msgid "Trabajador"
+msgstr "Trabajador"
+
+#: ui_cobrobase.h:442
+msgid "Trabajador:"
+msgstr "Trabajador:"

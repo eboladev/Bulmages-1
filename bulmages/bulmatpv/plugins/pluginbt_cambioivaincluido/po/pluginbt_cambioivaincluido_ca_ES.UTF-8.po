@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-05-12 23:59+0200\n"
+"POT-Creation-Date: 2009-05-16 15:47+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -37,11 +37,11 @@ msgstr "F2"
 
 #: ui_cambiobase.h:517
 msgid "3"
-msgstr ""
+msgstr "3"
 
 #: ui_cambiobase.h:512
 msgid "4"
-msgstr ""
+msgstr "4"
 
 #: ui_cambiobase.h:513
 #, fuzzy
@@ -50,23 +50,23 @@ msgstr "F5"
 
 #: ui_cambiobase.h:514
 msgid "6"
-msgstr ""
+msgstr "6"
 
 #: ui_cambiobase.h:509
 msgid "7"
-msgstr ""
+msgstr "7"
 
 #: ui_cambiobase.h:510
 msgid "8"
-msgstr ""
+msgstr "8"
 
 #: ui_cambiobase.h:511
 msgid "9"
-msgstr ""
+msgstr "9"
 
 #: ui_cambiobase.h:508
 msgid "A devolver:"
-msgstr ""
+msgstr "A retornar:"
 
 #: ui_cambiobase.h:520
 msgid "C"

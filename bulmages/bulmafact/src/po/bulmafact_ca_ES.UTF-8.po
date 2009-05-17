@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-05-12 23:58+0200\n"
+"POT-Creation-Date: 2009-05-16 14:44+0200\n"
 "PO-Revision-Date: 2009-01-26 09:35+0100\n"
 "Language-Team:  <es@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -13,8 +13,8 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: KBabel 1.11.4\n"
 
-#: bfclientealbarandescuentosubform.cpp:43 bfproveedoralbaransubform.cpp:56
-#: bfclientealbaransubform.cpp:54
+#: bfclientealbaransubform.cpp:54 bfclientealbarandescuentosubform.cpp:43
+#: bfproveedoralbaransubform.cpp:56
 msgid "% Descuento"
 msgstr "% Descompte"
 
@@ -30,7 +30,7 @@ msgstr "% R.E."
 msgid "% Recargo E.Q."
 msgstr "% Recarreg E.Q."
 
-#: ui_bfseriefacturabase.h:84 ui_bfconfiguracionbase.h:118
+#: ui_bfconfiguracionbase.h:118 ui_bfseriefacturabase.h:84
 msgid "&Aceptar"
 msgstr "&Accepta"
 
@@ -42,7 +42,7 @@ msgstr "&Sobre "
 msgid "&Acerca de Iglues/BulmaFact"
 msgstr "&Quant a Iglues/BulmaFact"
 
-#: ui_bfseriefacturabase.h:83 ui_bfconfiguracionbase.h:119
+#: ui_bfconfiguracionbase.h:119 ui_bfseriefacturabase.h:83
 msgid "&Cancelar"
 msgstr "&Cancel·la"
 
@@ -79,6 +79,16 @@ msgid ""
 "margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-"
 "size:9pt;\"></p></body></html>"
 msgstr ""
+"<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/"
+"REC-html40/strict.dtd\">\n"
+"<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css"
+"\">\n"
+"p, li { white-space: pre-wrap; }\n"
+"</style></head><body style=\" font-family:'Sans Serif'; font-size:7pt; font-"
+"weight:400; font-style:normal;\">\n"
+"<p style=\"-qt-paragraph-type:empty; margin-top:12px; margin-bottom:12px; "
+"margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-"
+"size:9pt;\"></p></body></html>"
 
 #: ui_bfaboutbase.h:293
 msgid "A&utores"
@@ -109,11 +119,11 @@ msgstr "Article"
 msgid "Articulo:"
 msgstr "Article:"
 
-#: bfform.cpp:447
+#: bfform.cpp:452
 msgid "Base Imponible"
 msgstr "Base Imponible"
 
-#: bfproveedoralbaransubform.cpp:52 bfclientealbaransubform.cpp:50
+#: bfclientealbaransubform.cpp:50 bfproveedoralbaransubform.cpp:52
 msgid "Cantidad"
 msgstr "Quantitat"
 
@@ -125,7 +135,7 @@ msgstr "Carregant plugins"
 msgid "Cobrado"
 msgstr "Cobrat"
 
-#: bfproveedoralbaransubform.cpp:48 bfclientealbaransubform.cpp:46
+#: bfclientealbaransubform.cpp:46 bfproveedoralbaransubform.cpp:48
 msgid "Codigo completo articulo"
 msgstr "Codi complet article"
 
@@ -153,7 +163,7 @@ msgstr "Ctrl+I"
 msgid "Ctrl+Q"
 msgstr "Ctrl+Q"
 
-#: bfproveedoralbaransubform.cpp:51 bfclientealbaransubform.cpp:49
+#: bfclientealbaransubform.cpp:49 bfproveedoralbaransubform.cpp:51
 msgid "Descripcion"
 msgstr "Descripció"
 
@@ -161,7 +171,7 @@ msgstr "Descripció"
 msgid "Descripcion serie factura"
 msgstr "Descripció sèrie factura"
 
-#: bfform.cpp:412
+#: bfform.cpp:417
 msgid "Descuento"
 msgstr "Descompte"
 
@@ -185,7 +195,7 @@ msgstr "Entregat"
 msgid "Error inesperado en BulmaFact. El programa se cerrara."
 msgstr "Error inesperat en BulmaFact. El programa se tancarà."
 
-#: bfform.cpp:929
+#: bfform.cpp:934
 msgid "Error inesperado en la impresion"
 msgstr ""
 
@@ -197,7 +207,7 @@ msgstr "F1"
 msgid "F11"
 msgstr "F11"
 
-#: bfcompany.cpp:98
+#: bfcompany.cpp:99
 msgid "Facturacion GPL"
 msgstr "Facturació GPL"
 
@@ -223,20 +233,20 @@ msgstr "Fitxes"
 msgid "Form1"
 msgstr "Form1"
 
-#: bfform.cpp:483
+#: bfform.cpp:488
 msgid "I.R.P.F (-"
 msgstr "I.R.P.F (-"
 
-#: bfclientealbaransubform.cpp:52 bfform.cpp:461
+#: bfform.cpp:466 bfclientealbaransubform.cpp:52
 msgid "I.V.A."
 msgstr "I.V.A."
 
-#: bfclientealbarandescuentosubform.cpp:44 bfproveedoralbaransubform.cpp:57
-#: bfclientealbaransubform.cpp:55
+#: bfclientealbaransubform.cpp:55 bfclientealbarandescuentosubform.cpp:44
+#: bfproveedoralbaransubform.cpp:57
 msgid "Id albaran"
 msgstr "ID albarà"
 
-#: bfproveedoralbaransubform.cpp:47 bfclientealbaransubform.cpp:45
+#: bfclientealbaransubform.cpp:45 bfproveedoralbaransubform.cpp:47
 msgid "Id articulo"
 msgstr "ID article"
 
@@ -291,7 +301,7 @@ msgstr "Mest&re"
 msgid "Nombre"
 msgstr "Nom"
 
-#: bfproveedoralbaransubform.cpp:49 bfclientealbaransubform.cpp:47
+#: bfclientealbaransubform.cpp:47 bfproveedoralbaransubform.cpp:49
 msgid "Nombre articulo"
 msgstr "Nom article"
 
@@ -303,7 +313,7 @@ msgstr "Número de línia"
 msgid "Nº linea"
 msgstr ""
 
-#: bfproveedoralbaransubform.cpp:58 bfclientealbaransubform.cpp:56
+#: bfclientealbaransubform.cpp:56 bfproveedoralbaransubform.cpp:58
 msgid "Orden"
 msgstr "Ordre"
 
@@ -336,7 +346,7 @@ msgstr ""
 msgid "Pedido"
 msgstr "Comanda"
 
-#: bfform.cpp:413
+#: bfform.cpp:418
 msgid "Porcentaje"
 msgstr "Percentatge"
 
@@ -348,11 +358,11 @@ msgstr "Preu"
 msgid "Pres."
 msgstr "Pres."
 
-#: ui_bfbulmafactbase.h:155 ui_bfconfiguracionbase.h:117
+#: ui_bfconfiguracionbase.h:117 ui_bfbulmafactbase.h:155
 msgid "Propiedades de la empresa"
 msgstr "Propietats de l'empresa"
 
-#: bfform.cpp:476
+#: bfform.cpp:481
 msgid "R.E."
 msgstr "R.E."
 
@@ -376,7 +386,7 @@ msgstr "Supor&t"
 msgid "Terminado"
 msgstr "Terminat"
 
-#: bfform.cpp:925
+#: bfform.cpp:930
 msgid "Tiene que guardar el documento antes de poder procesarlo."
 msgstr ""
 
@@ -385,11 +395,11 @@ msgstr ""
 msgid "Tipo Articulo:"
 msgstr "Tipus Articles"
 
-#: bfform.cpp:487
+#: bfform.cpp:492
 msgid "Total"
 msgstr "Total"
 
-#: bfform.cpp:414
+#: bfform.cpp:419
 msgid "Total Desc."
 msgstr "Total Desc."
 

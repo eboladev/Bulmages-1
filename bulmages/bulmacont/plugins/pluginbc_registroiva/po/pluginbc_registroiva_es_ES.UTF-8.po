@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-05-12 23:58+0200\n"
+"POT-Creation-Date: 2009-05-16 14:36+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -376,8 +376,8 @@ msgstr "IVA repercutido:"
 msgid "IVA soportado:"
 msgstr "IVA soportado:"
 
-#: ui_listregistroivabase.h:356 ui_listregistroivabase.h:359
-#: ui_registroivabase.h:625
+#: ui_registroivabase.h:625 ui_listregistroivabase.h:356
+#: ui_listregistroivabase.h:359
 msgid "IVA:"
 msgstr "IVA:"
 

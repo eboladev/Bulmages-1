@@ -68,7 +68,6 @@ int main ( int argc, char **argv )
       /// Inicializa el sistema de traducciones 'gettext'.
       setlocale(LC_ALL, "");
       bindtextdomain ("bulmacont", g_confpr->valor(CONF_DIR_TRADUCCION).toAscii().constData());
-      std::cout << "Directori de catalegs " << g_confpr->valor(CONF_DIR_TRADUCCION).toAscii().constData() << std::endl;
       textdomain ("bulmacont");
 
       /// Iniciamos la clase QApplication para el uso de las Qt.

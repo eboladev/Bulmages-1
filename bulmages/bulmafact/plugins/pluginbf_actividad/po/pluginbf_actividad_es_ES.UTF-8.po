@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-05-12 23:58+0200\n"
+"POT-Creation-Date: 2009-05-16 15:41+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -232,6 +232,10 @@ msgstr "Código"
 msgid "Codigo Actividad"
 msgstr "Codigo Actividad"
 
+#: actividadview.cpp:64
+msgid "Comentarios"
+msgstr "Comentarios"
+
 #: ui_convocatoriabase.h:453 ui_actividadbase.h:466
 msgid "Comentarios:"
 msgstr "Comentarios:"
@@ -316,7 +320,7 @@ msgstr "Error al borrar el tipo actividad"
 msgid "Error al borrar el cobro a cliente"
 msgstr "Error al borrar el cobro a cliente"
 
-#: convocatoriaview.cpp:67 actividadview.cpp:87
+#: convocatoriaview.cpp:67 actividadview.cpp:89
 msgid "Error al crear el actividad"
 msgstr "Error al crear el actividad"
 
@@ -393,11 +397,11 @@ msgstr "ID actividad"
 msgid "ID tipo actividad"
 msgstr "ID tipo actividad"
 
-#: actividadview.cpp:183
+#: actividadview.cpp:185
 msgid "Id Actividad"
 msgstr "ID actividad"
 
-#: actividadview.cpp:181
+#: actividadview.cpp:183
 msgid "Id alumno"
 msgstr "ID alumno"
 
@@ -405,7 +409,7 @@ msgstr "ID alumno"
 msgid "Id profesor"
 msgstr "Id profesor"
 
-#: actividadview.cpp:180
+#: actividadview.cpp:182
 msgid "Identificador"
 msgstr "Identificador"
 
@@ -430,7 +434,7 @@ msgstr "Lugar"
 msgid "Nombre"
 msgstr "Nombre"
 
-#: actividadview.cpp:182
+#: actividadview.cpp:184
 msgid "Nombre alumno"
 msgstr "Nombre alumno"
 
@@ -487,11 +491,11 @@ msgstr "Profesor"
 msgid "Profesor Encargado"
 msgstr "Profesor Encargado"
 
-#: convocatoriaview.cpp:59 actividadview.cpp:71
+#: convocatoriaview.cpp:59 actividadview.cpp:73
 msgid "Profesor:"
 msgstr "Profesor:"
 
-#: convocatoriaview.cpp:95 actividadview.cpp:118
+#: convocatoriaview.cpp:95 actividadview.cpp:120
 msgid "Tiene que guardar el documento antes de poder imprimirlo."
 msgstr "Tiene que guardar el documento antes de poder imprimirlo."
 
@@ -512,7 +516,7 @@ msgstr "Tipo actividad"
 msgid "Tipos de Actividad"
 msgstr "Tipos de actividad"
 
-#: ui_convocatoriabase.h:450 ui_actividadbase.h:460
+#: actividadview.cpp:63 ui_convocatoriabase.h:450 ui_actividadbase.h:460
 msgid "Vigente"
 msgstr "Vigente"
 

@@ -167,42 +167,6 @@ OK, aqui poden haver passat 3 coses.
 
 
 
-///
-/**
-\return
-**/
-void pluginBC_caaslODS::formDatosBalance ( QString informe )
-{
-      _depura ( "pluginBC_caaslODS::formDatosBalance", 0 );
-
-      QDialog *diag = new QDialog ( 0 );
-      diag->setModal ( true );
-      diag->setGeometry ( QRect ( 0, 0, 450, 350 ) );
-      centrarEnPantalla ( diag );
-
-      DatosView *pidefechas = new DatosView ( g_comp, diag, 0, BL_SELECT_MODE );
-
-      pidefechas->m_informe = informe;
-
-      /// Creamos un layout donde estara el contenido de la ventana y la ajustamos al QDialog
-      /// para que sea redimensionable y aparezca el titulo de la ventana.
-      QHBoxLayout *layout = new QHBoxLayout;
-      layout->addWidget ( pidefechas );
-      layout->setMargin ( 0 );
-      layout->setSpacing ( 0 );
-      diag->setLayout ( layout );
-      diag->setWindowTitle ( pidefechas->windowTitle() );
-      
-      pidefechas->connect ( pidefechas->mui_aceptar, SIGNAL ( clicked () ), diag, SLOT ( accept() ) );
-      pidefechas->connect ( pidefechas->mui_cancelar, SIGNAL ( clicked () ), diag, SLOT ( accept() ) );
-      
-      diag->exec();
-      
-      delete diag;
-
-      _depura ( "END pluginBC_caaslODS::formDatosBalance", 0 );
-}
-
 
 //Cuentas Anuales Abreviadas Asociacion Sin Lucro CAAASL
 //Cuentas Anuales Plan General Contable hasta 2007 CAPGC07
@@ -284,7 +248,7 @@ int entryPoint ( BcBulmaCont *bcont )
 
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale ( LC_ALL, "" );
-    bindtextdomain ( "plugincanualesods", g_confpr->valor ( CONF_DIR_TRADUCCION ).toAscii().constData() );
+    bindtextdomain ( "pluginbc_caaslods", g_confpr->valor ( CONF_DIR_TRADUCCION ).toAscii().constData() );
 
     pluginBC_caaslODS *plug = new pluginBC_caaslODS();
     plug->inicializa ( bcont );
@@ -370,5 +334,44 @@ void pluginBC_caaslODS::mensajeAdvertenciaPGC ( CAnuales tipus )
     }
 
     mensajeAviso ( _ ( "Advertencia: ha escojido las " ) + pgc + _ ( "El resultado solo sera correcto si coincide con el plan contable de su empresa." ) );
+}
+
+///
+/**
+\return
+**/
+void pluginBC_caaslODS::formDatosBalance ( QString informe )
+{
+      _depura ( "pluginBC_caaslODS::formDatosBalance", 0 );
+
+      QDialog *diag = new QDialog ( 0 );
+      diag->setModal ( true );
+      diag->setGeometry ( QRect ( 0, 0, 450, 350 ) );
+      centrarEnPantalla ( diag );
+
+      DatosView *pidefechas = new DatosView ( g_comp, diag, 0, BL_SELECT_MODE );
+
+      pidefechas->m_informe = informe;
+
+      /// Creamos un layout donde estara el contenido de la ventana y la ajustamos al QDialog
+      /// para que sea redimensionable y aparezca el titulo de la ventana.
+      QHBoxLayout *layout = new QHBoxLayout;
+      layout->addWidget ( pidefechas );
+      layout->setMargin ( 0 );
+      layout->setSpacing ( 0 );
+      diag->setLayout ( layout );
+      diag->setWindowTitle ( pidefechas->windowTitle() );
+      
+      pidefechas->connect ( pidefechas->mui_aceptar, SIGNAL ( clicked () ), diag, SLOT ( accept() ) );
+      pidefechas->connect ( pidefechas->mui_cancelar, SIGNAL ( clicked () ), diag, SLOT ( accept() ) );
+      
+      while(!pidefechas->resultado)
+      {
+         diag->exec();
+      }
+      
+      delete diag;
+
+      _depura ( "END pluginBC_caaslODS::formDatosBalance", 0 );
 }
 

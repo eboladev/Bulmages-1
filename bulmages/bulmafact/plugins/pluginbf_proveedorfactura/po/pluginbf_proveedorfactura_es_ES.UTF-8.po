@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-05-12 23:58+0200\n"
+"POT-Creation-Date: 2009-05-16 15:34+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -336,8 +336,8 @@ msgstr "Factura Proveedor"
 msgid "Factura de proveedor existente"
 msgstr "Factura de proveedor existente"
 
-#: facturasplist.cpp:267 pluginbf_proveedorfactura.cpp:98
-#: pluginbf_proveedorfactura.cpp:99 ui_facturasplistbase.h:372
+#: pluginbf_proveedorfactura.cpp:98 pluginbf_proveedorfactura.cpp:99
+#: facturasplist.cpp:267 ui_facturasplistbase.h:372
 msgid "Facturas de proveedores"
 msgstr "Facturas de proveedores"
 

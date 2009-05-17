@@ -19,6 +19,8 @@
  ***************************************************************************/
 
 #include "datosview.h"
+#include <iostream>
+#include <iomanip>
 
 
 ///
@@ -28,6 +30,7 @@
 DatosView::DatosView ( BlMainCompany *emp, QWidget *parent , Qt::WFlags f , edmode modo ) : BlForm ( emp, parent, f, modo )
 {
     _depura ( "DatosView::DatosView", 0 );
+    resultado = false; 
 
     setupUi ( this );
     setTitleName ( _ ( "Cuenta" ) );
@@ -60,13 +63,19 @@ DatosView::~DatosView()
 
 
 void DatosView::on_mui_aceptar_clicked() {
-   bool resultado = true; 
+  
    recogeValores();
+   resultado = true;
 
    QString fechaInicialActual = dbValue("fechainicialactual");
    QString fechaFinalActual = dbValue("fechafinalactual");
-   QString fechaInicialAnterior = dbValue("fechainicialanteiror");
+   QString fechaInicialAnterior = dbValue("fechainicialanterior");
    QString fechaFinalAnterior = dbValue("fechafinalanterior");
+   
+//    std::cout << "fechaInicialActual = " << fechaInicialActual.toAscii().constData() << std::endl;
+//    std::cout << "fechaFinalActual = " << fechaFinalActual.toAscii().constData() << std::endl;
+//    std::cout << "fechaInicialAnterior = " << fechaInicialAnterior.toAscii().constData() << std::endl;
+//    std::cout << "fechaFinalAnterior = " << fechaFinalAnterior.toAscii().constData() << std::endl;
 
    if ( fechaInicialActual.isEmpty() ) {
         mensajeError ( _ ( "ERROR: Debe introducir una fecha inicial del balance actual." ) );
@@ -93,6 +102,12 @@ void DatosView::on_mui_aceptar_clicked() {
    if ( resultado ) {
       if ( generaRML ( m_informe ) )
       {
+         BlProgressBar barra;
+         barra.setRange ( 0, 21 );
+         barra.setValue ( 0 );
+         barra.show();
+         barra.setText ( _ ( "Calculando Balance y Resultados" ) );
+
          QString archivod = m_informe;
          QString archivo =  m_informe.left ( m_informe.size() - 4 );
          invocaPYS ( archivo );
@@ -101,4 +116,10 @@ void DatosView::on_mui_aceptar_clicked() {
          mensajeError ( _("ERROR: Ha habido un error generando el informe"));
       }
    }
+   
+}
+
+void DatosView::on_mui_cancelar_clicked()
+{
+   resultado = true;
 }

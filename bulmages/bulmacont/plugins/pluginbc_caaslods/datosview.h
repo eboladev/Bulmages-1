@@ -26,17 +26,19 @@
 
 #include "blform.h"
 #include "ui_datosbase.h"
-
+#include "blprogressbar.h"
 
 class DatosView : public BlForm, public Ui_datosBase
 {
     Q_OBJECT
 public:
     QString m_informe;
+    bool resultado; 
 public:
     DatosView ( BlMainCompany *emp = NULL, QWidget *parent = 0, Qt::WFlags f = 0, edmode modo = BL_EDIT_MODE);
     ~DatosView();
     virtual void on_mui_aceptar_clicked();
+    virtual void on_mui_cancelar_clicked();
 
 // mui_fechainicialactual
 // mui_fechafinalactual

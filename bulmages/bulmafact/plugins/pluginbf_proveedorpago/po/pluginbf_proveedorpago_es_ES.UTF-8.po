@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-05-12 23:58+0200\n"
+"POT-Creation-Date: 2009-05-16 15:34+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -260,8 +260,8 @@ msgstr "Nuevo pago a proveedor"
 msgid "Pago"
 msgstr "Pago"
 
-#: pagoslist.cpp:187 pluginbf_proveedorpago.cpp:98
-#: pluginbf_proveedorpago.cpp:99 ui_pagoslistbase.h:371
+#: pluginbf_proveedorpago.cpp:98 pluginbf_proveedorpago.cpp:99
+#: pagoslist.cpp:187 ui_pagoslistbase.h:371
 msgid "Pagos a proveedores"
 msgstr "Pagos a proveedores"
 

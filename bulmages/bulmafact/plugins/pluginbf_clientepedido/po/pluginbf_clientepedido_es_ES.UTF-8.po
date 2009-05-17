@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-05-12 23:58+0200\n"
+"POT-Creation-Date: 2009-05-16 15:34+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -505,8 +505,8 @@ msgstr "Pedido Cliente"
 msgid "Pedido ya existe"
 msgstr "Pedido ya existe"
 
-#: pedidosclientelist.cpp:241 pluginbf_clientepedido.cpp:100
-#: pluginbf_clientepedido.cpp:101 ui_pedidosclientelistbase.h:376
+#: pluginbf_clientepedido.cpp:100 pluginbf_clientepedido.cpp:101
+#: pedidosclientelist.cpp:241 ui_pedidosclientelistbase.h:376
 msgid "Pedidos de clientes"
 msgstr "Pedidos de clientes"
 

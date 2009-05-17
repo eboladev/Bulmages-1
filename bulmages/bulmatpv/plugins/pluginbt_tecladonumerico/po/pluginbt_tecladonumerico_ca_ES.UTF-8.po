@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-05-12 23:58+0200\n"
+"POT-Creation-Date: 2009-05-16 15:42+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -49,11 +49,11 @@ msgstr "F2"
 
 #: ui_tecladonumericobase.h:348
 msgid "3"
-msgstr ""
+msgstr "3"
 
 #: ui_tecladonumericobase.h:354
 msgid "4"
-msgstr ""
+msgstr "4"
 
 #: ui_tecladonumericobase.h:355
 #, fuzzy
@@ -62,19 +62,19 @@ msgstr "F5"
 
 #: ui_tecladonumericobase.h:356
 msgid "6"
-msgstr ""
+msgstr "6"
 
 #: ui_tecladonumericobase.h:353
 msgid "7"
-msgstr ""
+msgstr "7"
 
 #: ui_tecladonumericobase.h:351
 msgid "8"
-msgstr ""
+msgstr "8"
 
 #: ui_tecladonumericobase.h:349
 msgid "9"
-msgstr ""
+msgstr "9"
 
 #: ui_tecladonumericobase.h:361
 msgid "ARTIC"

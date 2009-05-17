@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-05-12 23:58+0200\n"
+"POT-Creation-Date: 2009-05-16 15:38+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -138,7 +138,7 @@ msgstr "&Datos generales"
 msgid "&Nuevo alumno"
 msgstr "&Nuevo alumno"
 
-#: alumnoview.cpp:53 alumnoslist.cpp:264
+#: alumnoview.cpp:53 alumnoslist.cpp:275
 msgid "1er apellido"
 msgstr ""
 
@@ -146,7 +146,7 @@ msgstr ""
 msgid "1er. apellido:"
 msgstr "1.<sup>er</sup> apellido:"
 
-#: alumnoview.cpp:54 alumnoslist.cpp:265
+#: alumnoview.cpp:54 alumnoslist.cpp:276
 msgid "2o apellido"
 msgstr ""
 
@@ -170,7 +170,7 @@ msgstr "Actualizar listado"
 msgid "Alumno"
 msgstr "Alumno"
 
-#: alumnoslist.cpp:144 pluginbf_alumno.cpp:113 pluginbf_alumno.cpp:114
+#: pluginbf_alumno.cpp:113 pluginbf_alumno.cpp:114 alumnoslist.cpp:154
 #: ui_alumnoslistbase.h:308
 msgid "Alumnos"
 msgstr "Alumnos"
@@ -179,7 +179,7 @@ msgstr "Alumnos"
 msgid "Banco:"
 msgstr "Banco:"
 
-#: alumnoslist.cpp:218 ui_alumnoslistbase.h:341 ui_alumnoslistbase.h:346
+#: alumnoslist.cpp:229 ui_alumnoslistbase.h:341 ui_alumnoslistbase.h:346
 msgid "Borrar Alumno"
 msgstr "Borrar Alumno"
 
@@ -196,7 +196,7 @@ msgstr "Borrar imagen"
 msgid "Buscar:"
 msgstr "Buscar:"
 
-#: alumnoview.cpp:56 alumnoslist.cpp:267
+#: alumnoview.cpp:56 alumnoslist.cpp:278
 msgid "CP"
 msgstr ""
 
@@ -273,15 +273,15 @@ msgstr "Cuotas por alumno"
 msgid "CuotasPorAlumno"
 msgstr "Cuotas por alumno"
 
-#: alumnoslist.cpp:201
+#: alumnoslist.cpp:212
 msgid "Debe seleccionar una fila primero"
 msgstr "Debe seleccionar una fila primero"
 
-#: alumnoslist.cpp:160
+#: alumnoslist.cpp:170
 msgid "Debe seleccionar una linea"
 msgstr "Debe seleccionar una linea"
 
-#: alumnoview.cpp:55 alumnoslist.cpp:266
+#: alumnoview.cpp:55 alumnoslist.cpp:277
 msgid "Direccion"
 msgstr "Dirección"
 
@@ -293,11 +293,11 @@ msgstr "Direccion:"
 msgid "E-Mail"
 msgstr ""
 
-#: alumnoslist.cpp:217 ui_alumnoslistbase.h:329 ui_alumnoslistbase.h:334
+#: alumnoslist.cpp:228 ui_alumnoslistbase.h:329 ui_alumnoslistbase.h:334
 msgid "Editar Alumno"
 msgstr "Editar Alumno"
 
-#: alumnoslist.cpp:174
+#: alumnoslist.cpp:184
 msgid "Error al borrar el cobro a cliente"
 msgstr "Error al borrar el cobro a cliente"
 
@@ -309,7 +309,7 @@ msgstr "Error al crear el alumno"
 msgid "Error al guardar las cuotas"
 msgstr "Error al guardar las cuotas"
 
-#: alumnoslist.cpp:269
+#: alumnoslist.cpp:280
 msgid "F. Nacimiento"
 msgstr ""
 
@@ -349,7 +349,7 @@ msgstr "Guardar cobro"
 msgid "Id actividad"
 msgstr "ID actividad"
 
-#: alumnoview.cpp:51 alumnoview.cpp:178 alumnoview.cpp:211 alumnoslist.cpp:262
+#: alumnoview.cpp:51 alumnoview.cpp:178 alumnoview.cpp:211 alumnoslist.cpp:273
 msgid "Id alumno"
 msgstr "Id alumno"
 
@@ -369,7 +369,7 @@ msgstr "Imprimir listado"
 msgid "Movil"
 msgstr ""
 
-#: alumnoview.cpp:57 alumnoslist.cpp:268
+#: alumnoview.cpp:57 alumnoslist.cpp:279
 msgid "Municipio"
 msgstr ""
 
@@ -377,7 +377,7 @@ msgstr ""
 msgid "N.I.F:"
 msgstr "N.I.F.:"
 
-#: alumnoslist.cpp:263
+#: alumnoslist.cpp:274
 msgid "Nombre"
 msgstr "Nombre"
 
@@ -432,6 +432,10 @@ msgstr "Provincia"
 #: ui_alumnobase.h:540
 msgid "Provincia:"
 msgstr "Provincia:"
+
+#: alumnoslist.cpp:80
+msgid "Selector de alumnos"
+msgstr ""
 
 #: alumnoview.cpp:58
 msgid "Telefono"

@@ -23,7 +23,7 @@ add_subdirectory(pluginbc_corrector)
 add_subdirectory(pluginbc_example)
 add_subdirectory(pluginbc_depuracion)
 add_subdirectory(pluginbc_balancearbol)
-add_subdirectory(pluginbc_cuentasanuales2ods)
+#add_subdirectory(pluginbc_cuentasanuales2ods) deprecated
 add_subdirectory(pluginbc_caaslods)
 add_subdirectory(pluginbc_balance)
 add_subdirectory(pluginbc_cuentaresumen)

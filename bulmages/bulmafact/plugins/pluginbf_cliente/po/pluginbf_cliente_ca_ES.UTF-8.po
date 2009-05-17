@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-05-12 23:58+0200\n"
+"POT-Creation-Date: 2009-05-16 14:52+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -47,7 +47,7 @@ msgstr "&Dades comptables"
 
 #: pluginbf_cliente.cpp:104
 msgid "&Nuevo cliente"
-msgstr ""
+msgstr "&Nou client"
 
 #: ui_clientslistbase.h:331 ui_clientslistbase.h:336
 msgid "Actualizar listado"

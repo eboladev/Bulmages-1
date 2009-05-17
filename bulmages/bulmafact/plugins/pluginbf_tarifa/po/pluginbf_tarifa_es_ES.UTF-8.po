@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-05-12 23:58+0200\n"
+"POT-Creation-Date: 2009-05-16 14:49+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -245,8 +245,8 @@ msgstr "Tarifa"
 msgid "Tarifa edicion"
 msgstr "Tarifa edicion"
 
-#: tarifalistview.cpp:43 pluginbf_tarifa.cpp:82 pluginbf_tarifa.cpp:83
-#: pluginbf_tarifa.cpp:166 ui_tarifalistbase.h:146
+#: pluginbf_tarifa.cpp:82 pluginbf_tarifa.cpp:83 pluginbf_tarifa.cpp:166
+#: tarifalistview.cpp:43 ui_tarifalistbase.h:146
 msgid "Tarifas"
 msgstr "Tarifas"
 
