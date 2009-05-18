@@ -2,25 +2,30 @@
  *   Copyright (C) 2006 by IGLUES                                               *
  *   info@bulmages.org                                                          *
  *   Created by Pablo Alvarez de Sotomayor Posadillo <i02sopop@gmail.com>       *
- *   Copyright (C) 2009 by Aron Galdon                               *
- *   auryn@wanadoo.es                                               *
- *   http://www.iglues.org                                                 *
- *                                                                         *
- *   This program is free software; you can redistribute it and/or modify  *
- *   it under the terms of the GNU General Public License as published by  *
- *   the Free Software Foundation; either version 2 of the License, or     *
- *   (at your option) any later version.                                   *
- *                                                                         *
- *   This program is distributed in the hope that it will be useful,       *
- *   but WITHOUT ANY WARRANTY; without even the implied warranty of        *
- *   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the         *
- *   GNU General Public License for more details.                          *
- *                                                                         *
- *   You should have received a copy of the GNU General Public License     *
- *   along with this program; if not, write to the                         *
- *   Free Software Foundation, Inc.,                                       *
- *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
- ***************************************************************************/
+ *                                                                              *
+ *   Copyright (C) 2009 by Aron Galdon                                          *
+ *   auryn@wanadoo.es                                                           *
+ *   http://www.iglues.org                                                      *
+ *                                                                              *
+ *   Copyright (C) 2009 by Arturo Martin Llado                                  *
+ *   auryn@wanadoo.es                                                           *
+ *   http://www.iglues.org                                                      *
+ *                                                                              *
+ *   This program is free software; you can redistribute it and/or modify       *
+ *   it under the terms of the GNU General Public License as published by       *
+ *   the Free Software Foundation; either version 2 of the License, or          *
+ *   (at your option) any later version.                                        *
+ *                                                                              *
+ *   This program is distributed in the hope that it will be useful,            *
+ *   but WITHOUT ANY WARRANTY; without even the implied warranty of             *
+ *   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the              *
+ *   GNU General Public License for more details.                               *
+ *                                                                              *
+ *   You should have received a copy of the GNU General Public License          *
+ *   along with this program; if not, write to the                              *
+ *   Free Software Foundation, Inc.,                                            *
+ *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.                  *
+ ********************************************************************************/
 
 /// Faltan el sistema de log ctlog.
 
@@ -45,148 +50,178 @@
 
 #define CONFGLOBAL CONFIG_DIR_CONFIG + QString("bulmatpv_")
 
-
 /// Inicio de ejecucion del programa.
 /// NOTA: En el main no se puede utilizar _depura ya que puede que no este bien inicializado g_confpr.
 int main ( int argc, char **argv )
 {
-   bool valorSalida = 0;
+    bool valorSalida = 0;
 
-   /// Objetos que se crear&aacute;n en esta funci&oacute;n
-   BtBulmaTPV *bges;
-   BlArgParser *argParser;
-   BlDbLoginDialog *login1;
-   BlSplashScreen *splashScr;
+    /// Objetos que se crear&aacute;n en esta funci&oacute;n
+    BtBulmaTPV *bges;
+    BlArgParser *argParser;
+    BlDbLoginDialog *login1;
+    BlSplashScreen *splashScr;
 
-   try {
-      fprintf ( stderr, "--> MAIN::Iniciando el programa. <--\n" );
-      Q_INIT_RESOURCE ( bulmages );
-      /// Leemos la configuracion que luego podremos usar siempre.
-      initConfiguration ("bulmatpv");
+    try {
+        fprintf ( stderr, "--> MAIN::Iniciando el programa. <--\n" );
+        Q_INIT_RESOURCE ( bulmages );
+        /// Leemos la configuracion que luego podremos usar siempre.
+        initConfiguration ("bulmatpv");
 
-      /// Inicializa el sistema de traducciones 'gettext'.
-      setlocale(LC_ALL, "");
-      bindtextdomain ("bulmatpv", g_confpr->valor(CONF_DIR_TRADUCCION).toAscii().constData());
-      textdomain ("bulmatpv");
+        /// Inicializa el sistema de traducciones 'gettext'.
+        setlocale(LC_ALL, "");
+        bindtextdomain ("bulmatpv", g_confpr->valor(CONF_DIR_TRADUCCION).toAscii().constData());
+        textdomain ("bulmatpv");
 
-      /// Iniciamos la clase QApplication para el uso de las Qt.
-      g_theApp = new BlApplication ( argc, argv );
+        /// Iniciamos la clase QApplication para el uso de las Qt.
+        g_theApp = new BlApplication ( argc, argv );
 
-      /// Preparamos el sistema de plugins.
-      initPlugins();
+        /// Preparamos el sistema de plugins.
+        initPlugins();
 
-      /// Definimos la codificaci&oacute;n a Unicode.
-      QTextCodec::setCodecForCStrings ( QTextCodec::codecForName ( "UTF-8" ) );
-      QTextCodec::setCodecForLocale ( QTextCodec::codecForName ( "UTF-8" ) );
+        /// Definimos la codificaci&oacute;n a Unicode.
+        QTextCodec::setCodecForCStrings ( QTextCodec::codecForName ( "UTF-8" ) );
+        QTextCodec::setCodecForLocale ( QTextCodec::codecForName ( "UTF-8" ) );
 
-      g_theApp->setFont ( QFont ( g_confpr->valor ( CONF_FONTFAMILY_BULMAGES ).toAscii().constData(), atoi ( g_confpr->valor ( CONF_FONTSIZE_BULMAGES ).toAscii().constData() ) ) );
+        g_theApp->setFont ( QFont ( g_confpr->valor ( CONF_FONTFAMILY_BULMAGES ).toAscii().constData(), atoi ( g_confpr->valor ( CONF_FONTSIZE_BULMAGES ).toAscii().constData() ) ) );
 
-      /// Interpretar tomar los valores pasados por l&iacute;nea de comandos.
-      argParser = new BlArgParser( g_theApp->argc(), g_theApp->argv() );
+        /// Interpretar tomar los valores pasados por l&iacute;nea de comandos.
+        argParser = new BlArgParser( g_theApp->argc(), g_theApp->argv() );
 
-      if( ! argParser->Host().isEmpty() ) {
-         g_confpr->setValor( CONF_SERVIDOR, argParser->Host() );
-      } // end if
-      if( ! argParser->Port().isEmpty() ) {
-         g_confpr->setValor( CONF_PUERTO, argParser->Port() );
-      } // end if
+        if( ! argParser->Host().isEmpty() ) {
+            g_confpr->setValor( CONF_SERVIDOR, argParser->Host() );
+        } // end if
+        
+        if( ! argParser->Port().isEmpty() ) {
+            g_confpr->setValor( CONF_PUERTO, argParser->Port() );
+        } // end if
 
-      /// Salir ordenadamente del programa si s&oacute;lo se ha pedido ver la ayuda o la versi&oacute;n.
-      if( argParser->ShowHelp() | argParser->ShowVersion() ) {
-         delete argParser;
-         delete g_theApp;
-         delete g_confpr;
-         return 0;
-      } // end if
+        /// Salir ordenadamente del programa si s&oacute;lo se ha pedido ver la ayuda o la versi&oacute;n.
+        if ( argParser->ShowHelp() | argParser->ShowVersion() ) {
+            delete argParser;
+            delete g_theApp;
+            delete g_confpr;
+            return 0;
+        } // end if
 
-      /// Cargamos el BlSplashScreen.
-      splashScr = new BlSplashScreen ( g_confpr->valor ( CONF_SPLASH_BULMATPV ), "Iglues/BulmaTpv", CONFIG_VERSION );
-      splashScr->mensaje ( _( "Iniciando clases" ) );
-      splashScr->setBarraProgreso ( 1 );
+        /// Cargamos el BlSplashScreen.
+        splashScr = new BlSplashScreen ( g_confpr->valor ( CONF_SPLASH_BULMATPV ), "Iglues/BulmaTpv", CONFIG_VERSION );
+        splashScr->mensaje ( _( "Iniciando clases" ) );
+        splashScr->setBarraProgreso ( 1 );
 
-      /// Preguntar el nombre de usuario y/o contrase&ntilde;a en caso necesario.
-      login1 = new BlDbLoginDialog ( 0, "" );
-      if ( !login1->authOK() || argParser->AskPassword() ) {
-         if( !argParser->UserName().isEmpty() ) {
-            login1->m_login->setText( argParser->UserName() );
-            login1->m_password->setFocus();
-         } // end if
-         login1->exec();
-      } // end if
-      /// Si la autentificacion falla una segunda vez abortamos el programa.
-      if ( !login1->authOK() ) {
-         exit ( 1 );
-      } // end if
-      delete login1;
+        /// Preguntar el nombre de usuario y/o contrase&ntilde;a en caso necesario.
+        login1 = new BlDbLoginDialog ( 0, "" );
+        if ( !login1->authOK() || argParser->AskPassword() ) {
+            if ( !argParser->UserName().isEmpty() ) {
+                login1->m_login->setText( argParser->UserName() );
+                login1->m_password->setFocus();
+            } // end if
+            login1->exec();
+        } // end if
+        
+        /// Si la autentificacion falla una segunda vez abortamos el programa.
+        if ( !login1->authOK() ) {
+            exit ( 1 );
+        } // end if
+        
+        delete login1;
 
-      bges = new BtBulmaTPV ( argParser->DbName() );
-      bges->hide();
-      g_main = bges;
+        bges = new BtBulmaTPV ( argParser->DbName() );
+        bges->hide();
+        g_main = bges;
 
-      /// No se va a usar m&aacute;s el gestor de argumentos.
-      delete argParser;
+        /// No se va a usar m&aacute;s el gestor de argumentos.
+        delete argParser;
 
-      splashScr->show();
-      splashScr->mensaje ( _( "Leyendo configuracion" ) );
-      splashScr->setBarraProgreso ( 2 );
+        splashScr->show();
+        splashScr->mensaje ( _( "Leyendo configuracion" ) );
+        splashScr->setBarraProgreso ( 2 );
 
-      /// Leemos la configuracion especifica de la base de datos que se ha abierto.
-      QString confEsp = CONFGLOBAL + bges->empresaTPV()->dbName() + ".conf";
-      QDir archivoConf;
-      if ( !archivoConf.exists ( confEsp ) ) {
-         QString mensaje = "--> El archivo '" + confEsp + "' no existe. <--\n";
-         fprintf ( stderr, "%s", mensaje.toAscii().constData() );
-      } else {
-         g_confpr->leeconfig ( confEsp );
-      } // end if
+        /// Leemos la configuracion especifica de la base de datos que se ha abierto.
+        QString confEsp = CONFGLOBAL + bges->empresaTPV()->dbName() + ".conf";
+        QDir archivoConf;
+        
+        if ( !archivoConf.exists ( confEsp ) ) {
+            QString mensaje = "--> El archivo '" + confEsp + "' no existe. <--\n";
+            fprintf ( stderr, "%s", mensaje.toAscii().constData() );
+        } else {
+            g_confpr->leeconfig ( confEsp );
+        } // end if
 
-      // Pone el color de fondo del workspace si esta definido y es un color valido.
-      if ( QColor(g_confpr->valor ( CONF_BACKGROUND_COLOR )).isValid() ) {
-         bges->workspace()->setBackground(QBrush(QColor( g_confpr->valor ( CONF_BACKGROUND_COLOR ) )));
-      } // end if
+        // Pone el color de fondo del workspace si esta definido y es un color valido.
+        if ( QColor(g_confpr->valor ( CONF_BACKGROUND_COLOR )).isValid() ) {
+            bges->workspace()->setBackground(QBrush(QColor( g_confpr->valor ( CONF_BACKGROUND_COLOR ) )));
+        } // end if
 
-      // Pone la imagen de fondo del workspace si esta definido y es una imagen valida.
-      if ( !QImage(g_confpr->valor ( CONF_BACKGROUND_IMAGE )).isNull() ) {
-         bges->workspace()->setBackground(QBrush( QImage(g_confpr->valor ( CONF_BACKGROUND_IMAGE )) ));
-      } // end if
+        // Pone la imagen de fondo del workspace si esta definido y es una imagen valida.
+        if ( !QImage(g_confpr->valor ( CONF_BACKGROUND_IMAGE )).isNull() ) {
+            bges->workspace()->setBackground(QBrush( QImage(g_confpr->valor ( CONF_BACKGROUND_IMAGE )) ));
+        } // end if
 
-      /// Hacemos la carga de las hojas de estilo.
-      QFile arch(g_confpr->valor(CONF_STYLESHEET));
-      if (arch.open(QIODevice::ReadOnly | QIODevice::Text)) {
-         QString style = arch.readAll();
-         g_theApp->setStyleSheet(style);
-      } // end if
+        /// Hacemos la carga de las hojas de estilo.
+        QFile arch(g_confpr->valor(CONF_STYLESHEET));
+        if (arch.open(QIODevice::ReadOnly | QIODevice::Text)) {
+            QString style = arch.readAll();
+            g_theApp->setStyleSheet(style);
+        } // end if
 
-      splashScr->mensaje ( _( "Cargando plugins" ) );
-      splashScr->setBarraProgreso ( 10 );
+        splashScr->mensaje ( _( "Cargando plugins" ) );
+        splashScr->setBarraProgreso ( 10 );
 
-      /// Hacemos la carga de las librerias que contienen los plugins.
-      g_plugins->cargaLibs ( g_confpr->valor ( CONF_PLUGINS_BULMATPV ) );
+        /// Hacemos la carga de las librerias que contienen los plugins.
+        g_plugins->cargaLibs ( g_confpr->valor ( CONF_PLUGINS_BULMATPV ) );
 
-      splashScr->mensaje ( _( "Lanzando plugins" ) );
-      splashScr->setBarraProgreso ( 20 );
+        splashScr->mensaje ( _( "Lanzando plugins" ) );
+        splashScr->setBarraProgreso ( 20 );
 
-      /// Disparamos los plugins con entryPoint.
-      g_plugins->lanza ( "entryPoint", bges );
+        /// Disparamos los plugins con entryPoint.
+        g_plugins->lanza ( "entryPoint", bges );
 
-      splashScr->mensaje ( _( "Inicializando componentes" ) );
-      splashScr->setBarraProgreso ( 30 );
+        splashScr->mensaje ( _( "Inicializando componentes" ) );
+        splashScr->setBarraProgreso ( 30 );
 
-      /// Lanzamos la creacion de las ventanas principales.
-      bges->createMainWindows ( splashScr );
+        /// Lanzamos la creacion de las ventanas principales.
+        bges->createMainWindows ( splashScr );
 
-      splashScr->mensaje ( _( "Terminado" ) );
-      splashScr->setBarraProgreso ( 100 );
+        splashScr->mensaje ( _( "Terminado" ) );
+        splashScr->setBarraProgreso ( 100 );
+        
+        delete splashScr;
+        
+        // Bloqueamos el esquema de ventanas si asi se nos pide
+        if (g_confpr->valor(CONF_BLOCK_WINDOWS) == "TRUE") {
+        
+            QList<QDockWidget *> dockedList = bges->findChildren<QDockWidget *>();
+            int listItems = dockedList.count();
+            
+            QDockWidget *dock = NULL;
+            splashScr->mensaje ( _( "Lanzando plugins" ) );
+            splashScr->setBarraProgreso ( 20 );
+            
+            for (int i = 0; i < listItems; i++) {
+            
+                dock = dockedList.value(i);
+                dock->setFeatures(QDockWidget::NoDockWidgetFeatures);
+            
+            }
+        
+        } // end if
+        
+        // Ponemos el TPV en modo a pantalla completa si asi se nos pide
+        if (g_confpr->valor(CONF_TPV_FULLSCREEN) == "TRUE") {
+            bges->showFullScreen();
+        } else {
+            bges->showMaximized();
+        } // end if
+        
+        bges->show();
 
-      delete splashScr;
-      bges->show();
+        valorSalida = g_theApp->exec();
 
-      valorSalida = g_theApp->exec();
-
-      /// Disparamos los plugins con entryPoint.
-      g_plugins->lanza ( "exitPoint", bges );
+        /// Disparamos los plugins con entryPoint.
+        g_plugins->lanza ( "exitPoint", bges );
    } catch ( ... ) {
-      mensajeInfo ( _( "Error inesperado en BulmaTPV. El programa se cerrara." ) );
+        mensajeInfo ( _( "Error inesperado en BulmaTPV. El programa se cerrara." ) );
    } // end try
 
    /// Liberamos memoria.
@@ -195,5 +230,6 @@ int main ( int argc, char **argv )
    delete g_confpr;
 
    fprintf ( stderr, "--> MAIN::Cerrando el programa. <--\n" );
+   
    return valorSalida;
 }
