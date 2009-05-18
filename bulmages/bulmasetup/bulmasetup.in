@@ -17,6 +17,7 @@ from bulmasetupbase import *
 from PyQt4 import *
 from nuevousuario import NuevoUsuario
 from eliminarusuario import EliminarUsuario
+from eliminarempresa import EliminarEmpresa
 from editarusuario import EditarUsuario
 from modificarusuario import ModificarUsuario
 from nuevafacturacion import NuevaFacturacion
@@ -38,6 +39,7 @@ class HelloWindow(QtGui.QMainWindow, Ui_MainWindow, PluginsBulmaSetup):
             self.permisos_usuario.setEnabled(True)
 	    self.mui_crearbulmafact.setEnabled(True)
 	    self.mui_crearbulmacont.setEnabled(True)
+            self.eliminar_empresa.setEnabled(True)
 	    self.mui_adminempresas.setEnabled(True)
 	    self.mui_restbackup.setEnabled(True)
 	else:
@@ -48,6 +50,7 @@ class HelloWindow(QtGui.QMainWindow, Ui_MainWindow, PluginsBulmaSetup):
 	    self.mui_gestionusuarios.setEnabled(False)
 	    self.mui_crearbulmafact.setEnabled(False)
 	    self.mui_crearbulmacont.setEnabled(False)
+            self.eliminar_empresa.setEnabled(False)
 	    self.mui_adminempresas.setEnabled(False)
 	    self.mui_restbackup.setEnabled(False)
             
@@ -80,6 +83,11 @@ class HelloWindow(QtGui.QMainWindow, Ui_MainWindow, PluginsBulmaSetup):
     def on_mui_crearbulmacont_released(self):
 	    win = NuevaContabilidad()
 	    win.exec_()
+            
+        # Evento al hacer clck en el Boton para eliminar Empresas
+    def on_eliminar_empresa_released(self):
+            win = EliminarEmpresa()
+            win.exec_()
 	    
         # Evento al hacer clic en el Boton para Administrar una Empresa ya existente
     def on_mui_adminempresas_released(self):

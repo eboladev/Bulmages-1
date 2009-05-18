@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>480</width>
-    <height>300</height>
+    <width>400</width>
+    <height>404</height>
    </rect>
   </property>
   <property name="sizePolicy">
@@ -18,125 +18,115 @@
   </property>
   <property name="minimumSize">
    <size>
-    <width>480</width>
+    <width>400</width>
     <height>300</height>
    </size>
   </property>
-  <property name="maximumSize">
-   <size>
-    <width>480</width>
-    <height>300</height>
-   </size>
+  <property name="font">
+   <font>
+    <kerning>true</kerning>
+   </font>
   </property>
   <property name="windowTitle">
    <string>Eliminar Empresa</string>
   </property>
   <property name="windowIcon">
    <iconset resource="resources.qrc">
-    <normaloff>:/images/bulmasetup_empresabase.xpm</normaloff>:/images/bulmasetup_empresabase.xpm</iconset>
+    <normaloff>:/images/bulmasetup_eliminarempresa.xpm</normaloff>:/images/bulmasetup_eliminarempresa.xpm</iconset>
   </property>
-  <layout class="QGridLayout" name="gridLayout_2">
+  <layout class="QGridLayout" name="gridLayout">
    <item row="0" column="0">
     <widget class="QLabel" name="label">
+     <property name="font">
+      <font>
+       <weight>75</weight>
+       <bold>true</bold>
+       <strikeout>false</strikeout>
+       <kerning>true</kerning>
+      </font>
+     </property>
      <property name="text">
-      <string>Bases de Datos de BulmaFact</string>
+      <string>Doble clic en la Empresa que deseas eliminar</string>
      </property>
     </widget>
-   </item>
-   <item row="0" column="1">
-    <widget class="QLabel" name="label_2">
-     <property name="text">
-      <string>Bases de Datos de BulmaCont</string>
-     </property>
-    </widget>
-   </item>
-   <item row="0" column="2" rowspan="2">
-    <layout class="QGridLayout" name="gridLayout">
-     <item row="0" column="0">
-      <spacer name="horizontalSpacer">
-       <property name="orientation">
-        <enum>Qt::Horizontal</enum>
-       </property>
-       <property name="sizeHint" stdset="0">
-        <size>
-         <width>13</width>
-         <height>275</height>
-        </size>
-       </property>
-      </spacer>
-     </item>
-     <item row="0" column="1">
-      <layout class="QVBoxLayout" name="verticalLayout">
-       <item>
-        <spacer name="verticalSpacer_2">
-         <property name="orientation">
-          <enum>Qt::Vertical</enum>
-         </property>
-         <property name="sizeHint" stdset="0">
-          <size>
-           <width>20</width>
-           <height>40</height>
-          </size>
-         </property>
-        </spacer>
-       </item>
-       <item>
-        <widget class="QPushButton" name="eliminar_empresa">
-         <property name="text">
-          <string>Eliminar</string>
-         </property>
-         <property name="icon">
-          <iconset resource="resources.qrc">
-           <normaloff>:/images/bulmasetup_empresabase.xpm</normaloff>:/images/bulmasetup_empresabase.xpm</iconset>
-         </property>
-        </widget>
-       </item>
-       <item>
-        <widget class="QPushButton" name="mui_cancelar">
-         <property name="text">
-          <string>Salir</string>
-         </property>
-         <property name="icon">
-          <iconset resource="resources.qrc">
-           <normaloff>:/images/bulmasetup_exit.png</normaloff>:/images/bulmasetup_exit.png</iconset>
-         </property>
-        </widget>
-       </item>
-       <item>
-        <spacer name="verticalSpacer">
-         <property name="orientation">
-          <enum>Qt::Vertical</enum>
-         </property>
-         <property name="sizeHint" stdset="0">
-          <size>
-           <width>20</width>
-           <height>40</height>
-          </size>
-         </property>
-        </spacer>
-       </item>
-      </layout>
-     </item>
-     <item row="0" column="2">
-      <spacer name="horizontalSpacer_2">
-       <property name="orientation">
-        <enum>Qt::Horizontal</enum>
-       </property>
-       <property name="sizeHint" stdset="0">
-        <size>
-         <width>13</width>
-         <height>275</height>
-        </size>
-       </property>
-      </spacer>
-     </item>
-    </layout>
    </item>
    <item row="1" column="0">
-    <widget class="QListWidget" name="listWidgetFact"/>
+    <widget class="QTableWidget" name="lista_empresas">
+     <property name="focusPolicy">
+      <enum>Qt::ClickFocus</enum>
+     </property>
+     <property name="horizontalScrollBarPolicy">
+      <enum>Qt::ScrollBarAsNeeded</enum>
+     </property>
+     <property name="autoScroll">
+      <bool>true</bool>
+     </property>
+     <property name="editTriggers">
+      <set>QAbstractItemView::NoEditTriggers</set>
+     </property>
+     <property name="tabKeyNavigation">
+      <bool>false</bool>
+     </property>
+     <property name="showDropIndicator" stdset="0">
+      <bool>false</bool>
+     </property>
+     <property name="dragDropOverwriteMode">
+      <bool>false</bool>
+     </property>
+     <property name="alternatingRowColors">
+      <bool>true</bool>
+     </property>
+     <property name="selectionMode">
+      <enum>QAbstractItemView::SingleSelection</enum>
+     </property>
+     <property name="selectionBehavior">
+      <enum>QAbstractItemView::SelectRows</enum>
+     </property>
+     <property name="textElideMode">
+      <enum>Qt::ElideLeft</enum>
+     </property>
+     <property name="verticalScrollMode">
+      <enum>QAbstractItemView::ScrollPerItem</enum>
+     </property>
+     <property name="showGrid">
+      <bool>true</bool>
+     </property>
+     <property name="gridStyle">
+      <enum>Qt::DotLine</enum>
+     </property>
+     <property name="wordWrap">
+      <bool>true</bool>
+     </property>
+     <property name="cornerButtonEnabled">
+      <bool>true</bool>
+     </property>
+     <column>
+      <property name="text">
+       <string>Nombre</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>Base de Datos</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>Tipo</string>
+      </property>
+     </column>
+    </widget>
    </item>
-   <item row="1" column="1">
-    <widget class="QListWidget" name="listWidgetCont"/>
+   <item row="2" column="0">
+    <widget class="QPushButton" name="mui_cancelar">
+     <property name="text">
+      <string>Salir</string>
+     </property>
+     <property name="icon">
+      <iconset resource="resources.qrc">
+       <normaloff>:/images/bulmasetup_exit.png</normaloff>:/images/bulmasetup_exit.png</iconset>
+     </property>
+    </widget>
    </item>
   </layout>
  </widget>
