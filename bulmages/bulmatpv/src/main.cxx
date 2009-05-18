@@ -195,8 +195,6 @@ int main ( int argc, char **argv )
             int listItems = dockedList.count();
             
             QDockWidget *dock = NULL;
-            splashScr->mensaje ( _( "Lanzando plugins" ) );
-            splashScr->setBarraProgreso ( 20 );
             
             for (int i = 0; i < listItems; i++) {
             
