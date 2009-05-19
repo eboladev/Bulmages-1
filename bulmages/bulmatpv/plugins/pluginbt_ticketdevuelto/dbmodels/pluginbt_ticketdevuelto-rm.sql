@@ -1,3 +1,4 @@
+
 --
 -- Modificacion de campos y funciones de la BD para la adaptacion para tallas y colores.
 --
@@ -86,7 +87,7 @@ DECLARE
 BEGIN
 	SELECT INTO bs * FROM configuracion WHERE nombre=''PluginBt_TicketDevuelto'';
 	IF FOUND THEN
-		DELEET FROM CONFIGURACION WHERE nombre=''PluginBt_TicketDevuelto'';
+		DELETE FROM CONFIGURACION WHERE nombre=''PluginBt_TicketDevuelto'';
 	END IF;
 	RETURN 0;
 END;
