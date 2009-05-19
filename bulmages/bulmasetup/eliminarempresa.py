@@ -59,7 +59,6 @@ class EliminarEmpresa(Ui_EliminarEmpresa, Empresa):
         if respuesta == Yes:
             self.proceso = QtCore.QProcess()
             command = 'su postgres -c "dropdb ' + str(self.lista_empresas.item(row,1).text()) + '"'
-            print command
             self.proceso.start(command)
             self.proceso.waitForFinished(-1)
                     
