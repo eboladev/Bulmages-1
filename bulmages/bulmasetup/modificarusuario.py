@@ -123,6 +123,14 @@ class ModificarUsuario(Ui_ModificarUsuario, Empresa):
         for row in tablas:
             texto = row[0]                        
             self.listWidgetTable.addItem(QString(texto))
+
+        tablas = self.execute("SELECT relname FROM pg_class WHERE relkind = 'S' AND relname NOT LIKE ('pg_%') AND relname NOT LIKE ('sql_%') AND relname LIKE ('%_seq') ORDER BY relname")
+              
+        # Rellenamos la lista con los usuarios de PostgreSQL
+        for row in tablas:
+            texto = row[0]                        
+            self.listWidgetTable.addItem(QString(texto))
+
         
     def on_seleccionarTablas_released(self):
         numero = self.listWidgetTable.count()
@@ -292,13 +300,14 @@ class ModificarUsuario(Ui_ModificarUsuario, Empresa):
                 actual = actual + mas
                 self.progress.setValue(actual)
 
-                if (self.checkBox_insert.isChecked()):
-                    self.execComand('psql ' + str(dbase) + ' -c "GRANT insert on ' + str(table) + ' to ' + str(username) + '"')
-                else:
-                    self.execComand('psql ' + str (dbase) + ' -c "REVOKE insert on ' + str(table) + ' from ' + str(username) + '"')
-                    
-                actual = actual + mas
-                self.progress.setValue(actual)
+		if (str(table)[-4:] != '_seq'):
+		  if (self.checkBox_insert.isChecked()):
+		      self.execComand('psql ' + str(dbase) + ' -c "GRANT insert on ' + str(table) + ' to ' + str(username) + '"')
+		  else:
+		      self.execComand('psql ' + str (dbase) + ' -c "REVOKE insert on ' + str(table) + ' from ' + str(username) + '"')
+		      
+		  actual = actual + mas
+		  self.progress.setValue(actual)
 
                 if (self.checkBox_update.isChecked()):
                     self.execComand('psql ' + str(dbase) + ' -c "GRANT update on ' + str(table) + ' to ' + str(username) + '"')
@@ -308,29 +317,34 @@ class ModificarUsuario(Ui_ModificarUsuario, Empresa):
                 actual = actual + mas
                 self.progress.setValue(actual)
 
-                if (self.checkBox_delete.isChecked()):
-                    self.execComand('psql ' + str(dbase) + ' -c "GRANT delete on ' + str(table) + ' to ' + str(username) + '"')
-                else:
-                    self.execComand('psql ' + str(dbase) + ' -c "REVOKE delete on ' + str(table) + ' from ' + str(username) + '"')
-                    
-                actual = actual + mas
-                self.progress.setValue(actual)
 
-                if (self.checkBox_references.isChecked()):
-                    self.execComand('psql ' + str(dbase) + ' -c "GRANT references on ' + str(table) + ' to ' + str(username) + '"')
-                else:
-                    self.execComand('psql ' + str(dbase) + ' -c "REVOKE references on ' + str(table) + ' from ' + str(username) + '"')
-                    
-                actual = actual + mas
-                self.progress.setValue(actual)
+		if (str(table)[-4:] != '_seq'):
+		  if (self.checkBox_delete.isChecked()):
+		      self.execComand('psql ' + str(dbase) + ' -c "GRANT delete on ' + str(table) + ' to ' + str(username) + '"')
+		  else:
+		      self.execComand('psql ' + str(dbase) + ' -c "REVOKE delete on ' + str(table) + ' from ' + str(username) + '"')
+		      
+		  actual = actual + mas
+		  self.progress.setValue(actual)
 
-                if (self.checkBox_trigger.isChecked()):
-                    self.execComand('psql ' + str(dbase) + ' -c "GRANT trigger on ' + str(table) + ' to ' + str(username) + '"')
-                else:
-                    self.execComand('psql ' + str(dbase) + ' -c "REVOKE trigger on ' + str(table) + ' from ' + str(username) + '"')
-                    
-                actual = actual + mas
-                self.progress.setValue(actual)
+
+		if (str(table)[-4:] != '_seq'):
+		  if (self.checkBox_references.isChecked()):
+		      self.execComand('psql ' + str(dbase) + ' -c "GRANT references on ' + str(table) + ' to ' + str(username) + '"')
+		  else:
+		      self.execComand('psql ' + str(dbase) + ' -c "REVOKE references on ' + str(table) + ' from ' + str(username) + '"')
+		      
+		  actual = actual + mas
+		  self.progress.setValue(actual)
+
+		if (str(table)[-4:] != '_seq'):
+		  if (self.checkBox_trigger.isChecked()):
+		      self.execComand('psql ' + str(dbase) + ' -c "GRANT trigger on ' + str(table) + ' to ' + str(username) + '"')
+		  else:
+		      self.execComand('psql ' + str(dbase) + ' -c "REVOKE trigger on ' + str(table) + ' from ' + str(username) + '"')
+		      
+		  actual = actual + mas
+		  self.progress.setValue(actual)
         self.progress.hide()
                     
         # LAS SIGUIENTES 80 LINEAS ES LO MISMO QUE LO ANTERIOR, PERO SE CONCEDEN LOS PERMISOS 
