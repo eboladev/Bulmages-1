@@ -246,6 +246,8 @@ int entryPoint ( BcBulmaCont *bcont )
 {
     _depura ( "Estoy dentro del plugin\n", 0 );
 
+    g_comp = bcont->empresaactual();
+
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale ( LC_ALL, "" );
     bindtextdomain ( "pluginbc_caaslods", g_confpr->valor ( CONF_DIR_TRADUCCION ).toAscii().constData() );

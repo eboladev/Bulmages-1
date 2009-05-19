@@ -1180,8 +1180,11 @@ QString BlForm::trataExists ( const QString &query, const QString &datos )
 
 int BlForm::generaRML ( void )
 {
+    _depura ( "BlForm::generaRML", 0 );
     BlDbRecord::generaRML();
+    _depura ( "END BlForm::generaRML", 0 );
 }
+
 ///
 /**
 **/
