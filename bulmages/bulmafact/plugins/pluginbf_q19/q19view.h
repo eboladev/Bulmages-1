@@ -33,7 +33,7 @@
 #include "bldialogchanges.h"
 #include "bfform.h"
 #include "facturaslist.h"
-
+#include "q19writer.h"
 
 class BfCompany;
 
@@ -51,13 +51,18 @@ public:
     FacturasList *m_facturasList;
     Q19View ( FacturasList *,  BfCompany *, QWidget * );
     ~Q19View();
-    QByteArray cobroQ19 ( QTextStream &, QString );
-    QByteArray cabeceraPresentador ( QTextStream &, QString );
-    QByteArray cabeceraOrdenante ( QTextStream &, QString );
-    QByteArray totalOrdenante ( QTextStream &, QString, QString, QString );
-    QByteArray totalGeneral ( QTextStream &, QString , QString , QString  );
+
     /// Como ya es un signaling slot en la clase ficha no se delcara como slot.
     virtual void on_mui_aceptar_clicked();
+
+ public slots:
+   void on_mui_buscararchivo_clicked();
+ 
+ private:
+     Q19Writer *m_q19;
+     QString ids;
+     void idsFacturas ( void );
+
 };
 
 #endif

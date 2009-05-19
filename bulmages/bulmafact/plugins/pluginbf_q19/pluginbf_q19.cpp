@@ -26,6 +26,7 @@
 #include "blfunctions.h"
 #include "q19qtoolbutton.h"
 #include "q19qtoolbutton1.h"
+#include "q19textcodec.h"
 #include "bfbulmafact.h"
 
 
@@ -36,7 +37,7 @@
 int entryPoint ( BfBulmaFact * )
 {
     _depura ( "Estoy dentro del plugin de Q19", 0 );
-
+    new Q19TextCodec(); // no us espanteu, els codecs els arxiva i destrueix QT (espero)
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale ( LC_ALL, "" );
     bindtextdomain ( "pluginbf_q19", g_confpr->valor ( CONF_DIR_TRADUCCION ).toAscii().constData() );

@@ -25,12 +25,8 @@
 #include <QString>
 #include "bfcompany.h"
 #include "blfunctions.h"
-#include <QtXml/QDomDocument>
-#include <QMap>
-#include <QString>
-#include <QDataStream>
 #include "cobroslist.h"
-
+#include "q19writer.h"
 
 class Q19QToolButton : public QToolButton
 {
@@ -39,16 +35,12 @@ class Q19QToolButton : public QToolButton
 private:
     BfCompany *m_companyact;
     CobrosList     *m_cobrosList;
+    Q19Writer *m_q19;
 
 public:
     Q19QToolButton ( CobrosList *cob = NULL, QWidget *parent = NULL );
     ~Q19QToolButton();
     void setBoton();
-    QByteArray cobroQ19 ( QDataStream &, QString );
-    QByteArray cabeceraPresentador ( QDataStream &, QString );
-    QByteArray cabeceraOrdenante ( QDataStream &, QString );
-    QByteArray totalOrdenante ( QDataStream &, QString, QString, QString );
-    QByteArray totalGeneral ( QDataStream &, QString, QString, QString );
 
 public slots:
     virtual void click();

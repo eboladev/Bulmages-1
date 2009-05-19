@@ -1,0 +1,639 @@
+/***************************************************************************
+ *   Copyright: Xavi Drudis Ferran <xdrudis@tinet.cat>, (C) 2009
+ *   (this is a new file built from the previous work of Tomeu Borras Riera, 
+ *   Arturo Martin Llado, and the IGLUES organization in general           *
+ *                                                                         *
+ *   This program is free software; you can redistribute it and/or modify  *
+ *   it under the terms of the GNU General Public License as published by  *
+ *   the Free Software Foundation; either version 3 of the License, or     *
+ *   (at your option) any later version.                                   *
+ *                                                                         *
+ *   This program is distributed in the hope that it will be useful,       *
+ *   but WITHOUT ANY WARRANTY; without even the implied warranty of        *
+ *   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the         *
+ *   GNU General Public License for more details.                          *
+ *                                                                         *
+ *   You should have received a copy of the GNU General Public License     *
+ *   along with this program; if not, write to the                         *
+ *   Free Software Foundation, Inc.,                                       *
+ *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
+ ***************************************************************************/
+
+#include <QWidget>
+#include "q19writer.h"
+
+/// Necesarios para importacion de efactura
+#include <QString>
+#include <QFileDialog>
+#include "blfixed.h"
+#include "bfcompany.h"
+
+
+///
+/**
+\param cob
+\param parent
+**/
+Q19Writer::Q19Writer ( BfCompany *emp ) : QObject()
+{
+
+	_depura ( "Q19Writer::Q19Writer", 0 );
+	m_empresa = emp;
+	regex=QRegExp ( "(.{1,40})\\s(.*)",Qt::CaseInsensitive,QRegExp::RegExp2 );
+	_depura ( "END Q19Writer::Q19Writer", 0 );
+}
+
+
+///
+/**
+**/
+Q19Writer::~Q19Writer()
+{
+	_depura ( "Q19Writer::~Q19Writer", 0 );
+	_depura ( "END Q19Writer::~Q19Writer", 0 );
+}
+
+
+QWidget *Q19Writer::parentWidget( )
+{
+	return 0; // els dialegs son application modal
+}
+
+///
+/**
+\return
+**/
+void Q19Writer::genera ( BlDbRecordSet  *curcobro, QString fileName , QStringList *idsGenerats)
+{
+      _depura ( "Q19Writer::genera", 0 );
+      QString refActual ( "cap rebut" );
+      if (fileName.length()==0) {
+          fileName = QFileDialog::getSaveFileName ( parentWidget(), _ ( "Fichero de remesa bancaria (Cuaderno 19)" ),
+                       "",
+                       _ ( "*.q19;;*" ) );
+      }
+      _depura("nom de fitxer ",0,fileName);
+      if (fileName.length()>0) { // else ha apretat cancel·lar
+       
+	try
+	{
+		int cobraments=curcobro->numregistros();
+		_depura ( "nom de fitxer ",0,fileName );
+		BlDbRecordSet  *curbanc;
+		/*
+		http://www.cam.es/1/empresas/servicios/pdf/c19.pdf
+		"    Dentro de cada Cliente Ordenante, todos los registros individuales debera'n
+		figurar en el soporte clasificados ascendentemente por el nu'mero de Entidad-
+		Oficina de adeudo, Referencia y Co'digo de dato, terminando con un registro de
+		<<Total Ordenante>>. Al final llevara' un registro de <<Total General>>.
+		"
+		Per'o cada idbanco (de fet cada entitat, per'o no filem tan prim) requereix un
+		fitxer, perqu'e no portar'as a un banc els rebuts que vols cobrar per un altre.
+		I la data de c'arrec va a la capc,alera d'ordenant, per tant hem d'ordenar primer
+		per banc i data i despre's pel que demana als rebuts d'un ordenant. Farem tantes capc,aleres
+		d'ordenant com dates encara que sempre sigui el mateix ordenant.
+
+		*/
+		bool bancUnic = ( curcobro->valor ( "idbanco",0 ) == curcobro->valor ( "idbanco",curcobro->numregistros()-1 ) );
+		_depura ( "bancUnic=",0,bancUnic?"si":"no" );
+		QString idbanc ( "" );
+		QFile file;
+		QTextStream out ( &file );
+		/*
+		   http://www.cam.es/1/empresas/servicios/pdf/c19.pdf
+		   - Codigo ASCII ( en mayusculas) (caracter 165= enye).
+		   - Registros de longitud fija (162 bytes).
+		   - Formato MS-DOS secuencial tipo texto.
+		   En canvi un fitxer de mostra generat amb un programa que do'na el banc
+		   te' 162 car'acters + \x0a , que no e's un salt de li'nia MSDOS. Ni se' si
+		   un fitxer de registres de longitud fixa necessita  salts de li'nia per a res.
+		*/
+		out.setCodec ( "Q19" );
+		QString sufijo;
+		QDate fechaCargo = ( curcobro->eof() ?
+		                     QDate()
+		                     : QDate::fromString ( curcobro->valor ( "fechavenccobro" ),"dd/MM/yyyy" ) ) ;
+		BlFixed impOrdenante ( 0,2 );
+		BlFixed impPresentador ( 0,2 );
+		QString resultats ( "" );
+		int registrosOrdenante=0;
+		int registrosPresentador=0;
+		int cobramentsOrdenante=0;
+		int cobramentsPresentador=0;
+		int ordenants=0;
+		int sensebanc=0;
+		int sensevenc=0;
+		while ( !curcobro->eof() )
+		{
+			if ( QDate::fromString ( curcobro->valor ( "fechavenccobro" ),"dd/MM/yyyy" ).isValid() )
+			{
+				if ( ( !curcobro->valor ( "idbanco" ).isNull() ) && ( curcobro->valor ( "idbanco" ).length() >0 ) )
+				{
+
+					if ( QDate::fromString ( curcobro->valor ( "fechavenccobro" ),"dd/MM/yyyy" ) != fechaCargo )
+					{
+						registrosPresentador++;
+						registrosOrdenante++;
+						totalOrdenante ( out, sufijo , curbanc, impOrdenante,
+						                 cobramentsOrdenante, registrosOrdenante );
+						ordenants++;
+					}
+					if ( curcobro->valor ( "idbanco" ) != idbanc )
+					{
+						// canvi de banc on cobrem els rebuts, canvi de fitxer
+						idbanc=curcobro->valor ( "idbanco" );
+						if ( file.handle() !=-1 )
+						{
+							registrosPresentador++;
+							totalPresentador ( out, sufijo, curbanc, impPresentador, cobramentsPresentador, registrosPresentador , ordenants );
+							resultats += _ ( "\n%3 : %1 recibos, %2 EUR. " ).arg ( cobramentsPresentador ).arg ( impPresentador.toQString() ).arg ( file.fileName() );
+							file.close();
+							delete curbanc;
+
+						}
+						curbanc = m_empresa->loadQuery ( "SELECT * FROM banco WHERE idbanco = $1",1,&idbanc );
+                                                sufijo = curbanc->valor("sufijobanco");
+						if ( bancUnic )
+						{
+							file.setFileName ( fileName );
+							_depura ( "creare' ",0,fileName );
+						}
+						else
+						{
+							QString nomNou = fileName;
+							QRegExp ext ( "(\\..*)$" );
+							QString extensio ( "" );
+							if ( ext.indexIn ( nomNou ) >=0 )
+							{
+								extensio = ext.cap ( 1 );
+							}
+							nomNou.replace ( ext,"" );
+							nomNou+="_"+curbanc->valor ( "nombanco" ).replace ( QRegExp ( "[^a-zA-Z0-9_]" ),"-" )
+							        +extensio;
+							file.setFileName ( nomNou );
+							_depura ( "creare' el nom que m'he muntat: ",0,fileName );
+						}
+						if ( !file.open ( QIODevice::WriteOnly | QIODevice::Text ) )
+							return;
+						cabeceraPresentador ( out, sufijo , curbanc );
+						cobramentsPresentador=0;
+						registrosPresentador=1;
+						impPresentador=0;
+						ordenants=0;
+						fechaCargo=QDate::fromString ( curcobro->valor ( "fechavenccobro" ),"dd/MM/yyyy" ) ;
+					}
+					if ( ( QDate::fromString ( curcobro->valor ( "fechavenccobro" ),"dd/MM/yyyy" ) != fechaCargo ) || ( registrosPresentador==1 ) )
+					{
+						fechaCargo = QDate::fromString ( curcobro->valor ( "fechavenccobro" ),"dd/MM/yyyy" );
+						registrosPresentador++;
+						cabeceraOrdenante ( out, sufijo , curbanc, fechaCargo );
+						cobramentsOrdenante=0;
+						registrosOrdenante=1;
+						impOrdenante=0;
+					}
+
+					refActual=curcobro->valor ( "refcobro" );
+					int registres = cobroQ19 ( out, sufijo, curcobro );
+                                        if (idsGenerats) 
+                                        { 
+                                           idsGenerats->append(curcobro->valor("idcobro"));
+                                        }
+					registrosOrdenante+=registres;
+					registrosPresentador+=registres;
+					cobramentsOrdenante++;
+					cobramentsPresentador++;
+					impOrdenante=impOrdenante+BlFixed ( curcobro->valor ( "cantcobro" ) );
+					impPresentador=impPresentador+BlFixed ( curcobro->valor ( "cantcobro" ) );
+				}
+				else
+				{
+					sensebanc++;
+				}
+			}
+			else
+			{
+				sensevenc++;
+			}
+			curcobro->nextRecord();
+		}
+		if ( file.handle() !=-1 )
+		{
+			registrosPresentador++;
+			registrosOrdenante++;
+			totalOrdenante ( out, sufijo , curbanc, impOrdenante, cobramentsOrdenante, registrosOrdenante );
+			ordenants++;
+						
+			registrosPresentador++;
+                        totalPresentador ( out, sufijo, curbanc, impPresentador, cobramentsPresentador, registrosPresentador , ordenants );
+			resultats += _ ( "\n%3 : %1 recibos, %2 EUR. " ).arg ( cobramentsPresentador ).arg ( impPresentador.toQString() ).arg ( file.fileName() );
+			file.close();
+			delete curbanc;
+
+		}
+		if ( ( sensevenc>0 ) || ( sensebanc>0 ) )
+		{
+			QMessageBox::warning ( parentWidget(),_ ( "Remesa parcialmente generada" ),
+			                       _ ( "Excluidos %3 de %2 recibos por falta de fecha de vencimiento y otros %1 por falta de banco" ).arg ( sensebanc ).arg ( cobraments ).arg ( sensevenc ) );
+		}
+		QMessageBox::information ( parentWidget(),_ ( "Fichero(s) generado(s)" ),_ ( "Tiene los siguientes ficheros de recibos para los bancos:\n%1" ).arg ( resultats ) );
+	}
+	catch ( QString e )
+	{
+		_depura ( "Error ",0,refActual+":"+e );
+		QMessageBox::critical ( parentWidget(),_ ( "Remesa mal generada" ),_( "%2\n.El fichero de remesa bancaria generado no es aprovechable. Ha fallado la generacion en el recibo con referencia %1" ).arg ( refActual ).arg ( e ) );
+                if (idsGenerats) 
+                {
+                     idsGenerats->clear();
+                }
+	}
+      }
+	_depura ( "END Q19Writer::genera", 0 );
+}
+
+QString Q19Writer::nifOrdenante ( void )
+{
+	if ( m_nif.isNull() )
+	{
+		BlDbRecordSet *cur = m_empresa ->loadQuery ( "SELECT * FROM configuracion WHERE nombre='CIF'" );
+		m_nif = cur->valor ( "valor" );
+		delete cur;
+		if ( m_nif.isNull() )
+		{
+			throw _ ( "Falta NIF de su empresa" ) +"\n"+
+			_ ( "No podemos generar remesas bancarias hasta que entre el NIF de su empresa en Propiedades de Empresa" );
+
+		}
+		m_nif.replace ( "\x0a"," " );
+	}
+	return m_nif;
+}
+
+QString Q19Writer::nifPresentador ( void )
+{
+	return nifOrdenante();
+}
+
+QString Q19Writer::nombreEmpresa ( void )
+{
+	if ( m_nombreOrdenante.isNull() )
+	{
+		BlDbRecordSet *cur = m_empresa ->loadQuery ( "SELECT * FROM configuracion WHERE nombre='NombreEmpresa'" );
+		m_nombreOrdenante = cur->valor ( "valor" );
+		delete cur;
+		if ( m_nombreOrdenante.isNull() )
+		{
+			throw _ ( "Falta el nombre de su empresa" ) +"\n"+tr ( "No podemos generar remesas bancarias hasta que entre el nombre de su empresa en Propiedades de Empresa" );
+		}
+		m_nombreOrdenante.replace ( "\x0a"," " );
+	}
+	return m_nombreOrdenante;
+}
+QString Q19Writer::nombrePresentador ( void )
+{
+	return nombreEmpresa();
+}
+
+QString Q19Writer::nombreOrdenante ( void )
+{
+	return nombreEmpresa();
+}
+
+///
+/**
+  longitud >0 alineació dreta i <0 alineació esquerra
+**/
+QString  Q19Writer::comprova ( QString text, int longitud, QString nom, QChar farciment )
+{
+	if ( text.size() > abs ( longitud ) )
+	{
+                m_nif=QString();
+                m_nombreOrdenante=QString();
+		throw        _ ( "Datos de recibos incorrectos" ) + "\n" +
+		_ ( "%1 (%2) supera la longitud maxima (%3 caracteres)" )   .arg ( nom ).arg ( text ).arg ( abs ( longitud ) );
+	}
+	return QString ( "%1" ).arg ( text,longitud,farciment ).replace ( "\x0a"," " ) ;
+}
+
+///
+/**
+\param out stream de sortida, que ja ha de saber traduir la codificació a q19
+\param sufijo:   la norma 19 el descriu així
+   CLIENTE ORDENANTE:
+se identifica por un código de dos partes: Número de Identificación Fiscal (
+N.I.F.) y Sufijo (Número de tres cifras que identifica los diferentes tipos de
+facturación del cliente y/o los diferentes centros emisores de soportes o
+ficheros de facturación).
+El NIF deberá ser el mismo y el Sufijo distinto cuando la facturación sea
+repartida entre varias Entidades Receptoras, asignando un Sufijo distinto a
+cada Entidad.
+\param curbanco cursor sobre el registre de banc que rebrà els ingressos.
+\return
+**/
+void Q19Writer::cabeceraPresentador ( QTextStream &out, QString sufijo , BlDbRecordSet *curbanco )
+{
+	_depura ( "Q19Writer::cabeceraPresentador", 0 );
+
+	/// CABECERA PRESENTADOR
+	/// Generamos la cabecera presentador
+
+
+	/// Registro en Euros. Longitud: 2
+	out << ( "51" )  // pàg. 25 diu 01, pàg. 17 diu 51
+	/// Registro de codigo de dato: 80. Longitud: 2
+	<< ( "80" )
+	/// Codigo de presentador (NIF + Sufijo alineado a la derecha y rellenado con ceros) Longitud: 12
+	<< comprova ( nifPresentador(),9,_ ( "El CIF del presentador (propiedades de Empresa)" ),'0' )
+	<< sufijo.rightJustified ( 3,'0',true )
+	/// Fecha de emision del archivo
+	<< ( QDate::currentDate().toString ( "ddMMyy" ) )
+	/// Espacio libre Longitud: 6
+	<< QString ( 6,' ' )
+	/// Nombre del cliente Presentador Longitud: 40
+	<< nombrePresentador().leftJustified ( 40,' ',true )
+	/// Espacio libre Longitud: 20
+	<< QString ( 20,' ' )
+	/// Entidad Receptora del fichero Longitud: 4
+	<< comprova ( curbanco->valor ( "codentidadbanco" ),-4,_ ( "Su entidad bancaria" ),'0' )
+	/// Oficina Receptora del fichero Longitud: 4
+	<< comprova ( curbanco->valor ( "codagenciabanco" ),-4,_ ( "Su oficina bancaria" ),'0' )
+	/// Espacio libre Longitud: 12
+	<<  QString ( 12, ' ' )
+	/// Espacio libre Longitud: 40
+	<< QString ( 40, ' ' )
+	/// Espacio libre Longitud: 14
+	<< QString ( 14, ' ' )
+	/// Hi ha d'haver salts de línia o no?. Un fitxer d'exemple que tinc en porta.
+	<< "\x0a";
+	_depura ( "END Q19Writer::cabeceraPresentador", 0 );
+}
+
+
+///
+/**
+\param out
+\param idcobro
+\return
+**/
+void Q19Writer::cabeceraOrdenante ( QTextStream &out, QString sufijo , BlDbRecordSet *curbanco, QDate fechaCargo )
+{
+	_depura ( "Q19Writer::cabeceraOrdenante", 0 );
+
+	/// GENERAMOS LA CABECERA ORDENANTE
+	/// REGISTRO DEL ORDENANTE
+	/// Registro en Euros. Longitud: 2
+	out << ( "53" )  // pàg. 18 diu 53 , pàg. 25 diu 03
+	/// Registro de codigo de dato: 80. Longitud: 2
+	<< ( "80" )
+
+	/// Codigo de ordenante (NIF + Sufijo alineado a la derecha y rellenado con ceros) Longitud: 12
+	<< comprova ( nifOrdenante(),9,tr ( "El CIF del ordenante" ),'0' )
+	<< sufijo.rightJustified ( 3,'0',true )
+
+	/// Fecha de emision del archivo
+	<< ( QDate::currentDate().toString ( "ddMMyy" ) )
+	/// Fecha de cargo
+	<< ( fechaCargo.toString ( "ddMMyy" ) )
+	/// Nombre del cliente Ordenante Longitud: 40
+	<< nombreOrdenante().leftJustified ( 40,' ',true )
+	/// Entidad Receptora del fichero Longitud: 4
+	<< comprova ( curbanco->valor ( "codentidadbanco" ),-4,tr ( "Su entidad bancaria" ),'0' )
+	/// Oficina Receptora del fichero Longitud: 4
+	<< comprova ( curbanco->valor ( "codagenciabanco" ),-4,tr ( "Su oficina bancaria" ),'0' )
+	/// DC Receptora del fichero Longitud: 2
+	<< comprova ( curbanco->valor ( "dcbanco" ) ,-2,
+	              tr ( "Los digitos de control de su cuenta bancaria" ),'0' )
+	/// Oficina Receptora del fichero Longitud: 10
+	<< comprova ( curbanco->valor ( "numcuentabanco" ), -10,
+	              tr ( "Su numero de cuenta bancaria" ) ,'0' )
+	/// Espacio libre Longitud: 8
+	<<  QString ( 8, ' ' )
+	/// Procedimiento de realizacion del adeudo (01 o 02) Longitud: 2
+	<< "01"
+	/// Espacio libre Longitud: 10
+	<< QString ( 10, ' ' )
+	/// Espacio libre Longitud: 40
+	<< QString ( 40, ' ' )
+	/// Espacio libre Longitud: 14
+	<< QString ( 14, ' ' )
+	<< "\x0a";
+}
+
+QString Q19Writer::import ( BlDbRecordSet *cur, QString nomcamp, int longitud )
+{
+
+	return import ( BlFixed ( cur->valor ( nomcamp ) ),longitud ) ;
+}
+
+QString Q19Writer::import ( BlFixed f, int longitud )
+{
+
+	f.setprecision ( 2 );
+	QString res = QString::number ( f.value );
+	if ( f.value < 0 )
+	{
+		throw tr ( "Datos incorrectos" ) +"\n"+tr ( "Importe negativo (%1) ! " ).arg ( f.toQString() );
+	}
+	if ( res.length() >longitud )
+	{
+		throw tr ( "Datos incorrectos" ) +"\n"+tr ( "Importe excesivo (%1) !. El limite son %2 digitos, incluyendo los 2 decimales " ).arg ( f.toQString() ).arg ( abs ( longitud ) );
+	}
+	return res.rightJustified ( longitud,'0',true );
+}
+
+///
+/**
+\param out
+\param idcobro
+\return
+**/
+int Q19Writer::cobroQ19 ( QTextStream &out, QString sufijo,   BlDbRecordSet *curcobro )
+{
+	_depura ( "Q19Writer::cobroQ19", 0 );
+	QString bancocliente = curcobro->valor ( "bancocliente" ).remove ( QRegExp ( "[^0-9]" ) );
+	if ( bancocliente.size() != 20 )
+	{
+		throw _ ( "Datos incorrectos" ) +"\n"+
+		_ ( "Banco de Cliente '%1'  (para mi '%2') invalido en el recibo con id %3 (ref. %4), para cliente %5 (%6)" )
+		.arg ( curcobro->valor ( "bancocliente" ) )
+		.arg ( bancocliente )
+		.arg ( curcobro->valor ( "idcobro" ) )
+		.arg ( curcobro->valor ( "refcobro" ) )
+		.arg ( curcobro->valor ( "nomcliente" ) )
+		.arg ( curcobro->valor ( "idcliente" ) );
+	}
+	QString concepte = ( // "Ref:" + curcobro->valor ( "refcobro" )
+	                     // +". "+
+                             curcobro->valor ( "comentcobro" ) ).simplified();
+	int i=0;
+	for ( i=0; ( i<=5 ) && ( (i==0) || (concepte.length() >0) );i++ )   //núm de registres d'aquest rebut depen de long de concepte
+	{
+		/// CABECERA INDIVIDUAL OBLIGATORIO
+		/// Registro en Euros. Longitud: 2
+		out <<  "56" //pàg 18 diu 56, pàg. 25 diu 06
+		/// Registro de codigo de dato: 80. Longitud: 2
+		<< ( 80+i )
+
+		/// Codigo de ordenante (NIF + Sufijo alineado a la derecha y rellenado con ceros) Longitud: 12
+		<< comprova ( nifOrdenante(),9,_ ( "El CIF del ordenante" ),'0' )
+		<< sufijo.rightJustified ( 3,'0',true )
+		/// Codigo de referencia Longitud: 12
+		<< curcobro->valor ( "idcliente" ).rightJustified ( 12, '0',true );
+
+		if ( i==0 ) // registre individual obligatori
+		{
+			/// Nombre del titular de la domiciliacion: 40
+			out << curcobro->valor ( "nomcliente" ).replace ( "\x0a"," " ).leftJustified ( 40, ' ', true )
+			/// Entidad domiciliacion del fichero Longitud: 4
+			/// Oficina domiciliacion del fichero Longitud: 4
+			/// DC domiciliacion del fichero Longitud: 2
+			/// Oficina domiciliacion del fichero Longitud: 10
+			<< bancocliente
+
+			/// Total Importe domiciliacion Longitud: 10
+			<< import ( curcobro, "cantcobro" , 10 )
+
+			/// Código para devoluciones: 6
+			<< curcobro->valor ( "idcobro" ).leftJustified ( 6, ' ', true )
+			/// Código para referencia interna
+			<< curcobro->valor ( "idcobro" ).leftJustified ( 10, ' ', true )
+			/// Primer campo de concepto Longitud: 40
+			<< concepte.leftJustified ( 40, ' ',true )
+
+			/// Espacio libre Longitud: 8
+			<< QString ( 8, ' ' )
+			<< "\x0a";
+			concepte = concepte.mid ( 40 );
+		}
+		else   // registre opcional i-éssim, per si no hi cap el concepte. Passem de 6é registre opcional.
+		{
+			// i==0 -> segon, tercer, quart camp de concepte, i==2 ->  cinquè, sisè, setè camp de concepte ...
+			for ( int numCamp = ( ( i-1 ) *3 ) + 2; numCamp < i*3+2; numCamp++ )
+			{
+				_depura ( "opcional inici ",0," numCamp="+QString::number ( numCamp )
+				          +" concepte='"+concepte+"'" );
+				bool finalLinia= ( ( concepte.length() >40 ) && ( numCamp % 2 ==0 ) );
+				if ( finalLinia ) // cada camp és mitja línia, a final de línia partim per espai en blanc
+				{
+					//final de línia.
+					if ( finalLinia=regex.exactMatch ( concepte ) )
+					{
+						out << regex.cap ( 1 ).leftJustified ( 40,' ',true );
+						concepte = regex.cap ( 2 );
+					} // else hi ha més de 40 caracters sense un espai, tractem com si fos principi de linia
+
+				}
+				_depura ( "opcional mig ",0," numCamp="+QString::number ( numCamp )
+				          +" concepte='"+concepte+"'" );
+
+				if ( !finalLinia )
+				{
+					out << concepte.leftJustified ( 40, ' ',true );
+					concepte = concepte.mid ( 40 );
+				}
+				_depura ( "opcional fi ",0," numCamp="+QString::number ( numCamp )
+				          +" concepte='"+concepte+"'" );
+
+			} // fi for camps del registre
+			/// Espacio libre Longitud: 14
+			out << QString ( 14, ' ' )
+			<< "\x0a";
+
+		} // fi else registre opcional
+
+	} //fi for i registres del rebut
+	_depura ( "END Q19Writer::cobroQ19", 0 );
+	return i;
+}
+
+
+///
+/**
+\param out
+\param importes
+\param ordenantes
+\param registros
+\return
+**/
+void Q19Writer::totalOrdenante ( QTextStream &out,  QString sufijo , BlDbRecordSet *curbanco,
+                                 BlFixed importes, int rebuts, int registros )
+{
+	_depura ( "Q19Writer::totalOrdenante", 0 );
+	/// CABECERA TOTAL ORDENANTE
+	/// Registro en Euros. Longitud: 2
+	out << "58" // pàg. 28 diu 08, pàg. 23 diu 58
+	/// Registro de codigo de dato: 80. Longitud: 2
+	<<"80"
+	/// Codigo de presentador (NIF + Sufijo alineado a la derecha y rellenado con ceros) Longitud: 12
+	<< comprova ( nifOrdenante(),9,tr ( "El CIF del ordenante" ),'0' )
+	<< sufijo.rightJustified ( 3,'0',true )
+
+	/// Espacio libre Longitud: 12
+	/// Espacio libre Longitud: 40
+	/// Espacio libre Longitud: 20
+
+	<< QString ( 12+40+20, ' ' )
+
+	/// Suma de Importes del Ordenante Longitud: 10
+	<< import ( importes,10 )
+
+	/// Espacio libre Longitud: 6
+	<< QString ( 6, ' ' )
+
+	/// Numero de domiciliaciones del ordenante : 10
+	<< QString::number ( rebuts ).rightJustified ( 10, '0',true )
+
+	/// Numero total registros del ordenante : 10
+	<< QString::number ( registros ).rightJustified ( 10, '0',true )
+
+	/// Espacio libre Longitud: 20
+	/// Espacio libre Longitud: 18
+	<< QString ( 20+18, ' ' )
+	<<"\x0a";
+	_depura ( "END Q19Writer::totalOrdenante", 0 );
+
+}
+
+
+void Q19Writer::totalPresentador ( QTextStream &out,  QString sufijo , BlDbRecordSet *curbanco,
+                                   BlFixed importes, int rebuts, int registros , int ordenants )
+{
+	_depura ( "Q19Writer::totalPresentador", 0 );
+	/// CABECERA TOTAL ORDENANTE
+	/// Registro en Euros. Longitud: 2
+	out << "59" //pàg. 24 diu 59,pàg. 29 diu 09
+	/// Registro de codigo de dato: 80. Longitud: 2
+	<<"80"
+	/// Codigo de presentador (NIF + Sufijo alineado a la derecha y rellenado con ceros) Longitud: 12
+	<< comprova ( nifPresentador(),9,_ ( "El CIF del presentador (propiedades de Empresa)" ),'0' )
+	<< sufijo.rightJustified ( 3,'0',true )
+
+	/// Espacio libre Longitud: 12
+	/// Espacio libre Longitud: 40
+
+	<< QString ( 12+40, ' ' )
+	/// Num ordenants
+	<< QString::number ( ordenants ).rightJustified ( 4,'0',true )
+	/// Espacio libre Longitud: 16
+	<< QString ( 16, ' ' )
+
+	/// Suma de Importes del Ordenante Longitud: 10
+	<< import ( importes,10 )
+
+	/// Espacio libre Longitud: 6
+	<< QString ( 6, ' ' )
+
+	/// Numero de domiciliaciones del ordenante : 10
+	<< QString::number ( rebuts ).rightJustified ( 10, '0',true )
+
+	/// Numero total registros del ordenante : 10
+	<< QString::number ( registros ).rightJustified ( 10, '0',true )
+
+	/// Espacio libre Longitud: 20
+	/// Espacio libre Longitud: 18
+	<< QString ( 20+18, ' ' )
+	<<"\x0a";
+	_depura ( "END Q19Writer::totalPresentador", 0 );
+
+}
+
+
