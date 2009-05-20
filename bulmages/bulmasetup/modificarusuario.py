@@ -96,6 +96,7 @@ class ModificarUsuario(Ui_ModificarUsuario, Empresa):
     def capturaUsuario(self): 
         # Vaciamos la lista de tablas, ya que esta se regenera cada vez que cambiamos el usuario seleccionado
         self.listWidgetTable.clear()
+        self.listWidgetSecuencias.clear()
         # Pasamos el nombre del usuario seleccionado en listWidgetUser a la variable username
         numero = self.listWidgetUser.count()
         temp = QtGui.QListWidgetItem()
