@@ -1,237 +1,288 @@
-<ui version="4.0" >
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
  <class>ModificarUsuario</class>
- <widget class="QDialog" name="ModificarUsuario" >
-  <property name="geometry" >
+ <widget class="QDialog" name="ModificarUsuario">
+  <property name="geometry">
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>613</width>
-    <height>480</height>
+    <width>592</width>
+    <height>510</height>
    </rect>
   </property>
-  <property name="windowTitle" >
+  <property name="windowTitle">
    <string>Modificar Permisos de Usuario</string>
   </property>
-  <property name="windowIcon" >
-   <iconset resource="resources.qrc" >
+  <property name="windowIcon">
+   <iconset resource="resources.qrc">
     <normaloff>:/images/bulmasetup_editarusuario.xpm</normaloff>:/images/bulmasetup_editarusuario.xpm</iconset>
   </property>
-  <layout class="QGridLayout" name="gridLayout_3" >
-   <item row="0" column="0" >
-    <widget class="QTabWidget" name="tabWidget" >
-     <property name="currentIndex" >
-      <number>0</number>
+  <layout class="QGridLayout" name="gridLayout_3">
+   <item row="1" column="0">
+    <layout class="QHBoxLayout" name="horizontalLayout_2">
+     <item>
+      <spacer name="horizontalSpacer_4">
+       <property name="orientation">
+        <enum>Qt::Horizontal</enum>
+       </property>
+       <property name="sizeHint" stdset="0">
+        <size>
+         <width>128</width>
+         <height>17</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+     <item>
+      <widget class="QPushButton" name="mui_salir">
+       <property name="minimumSize">
+        <size>
+         <width>200</width>
+         <height>0</height>
+        </size>
+       </property>
+       <property name="text">
+        <string>Salir</string>
+       </property>
+       <property name="icon">
+        <iconset resource="resources.qrc">
+         <normaloff>:/images/bulmasetup_exit.png</normaloff>:/images/bulmasetup_exit.png</iconset>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <spacer name="horizontalSpacer_5">
+       <property name="orientation">
+        <enum>Qt::Horizontal</enum>
+       </property>
+       <property name="sizeHint" stdset="0">
+        <size>
+         <width>128</width>
+         <height>17</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+    </layout>
+   </item>
+   <item row="0" column="0">
+    <widget class="QTabWidget" name="tabWidget">
+     <property name="tabShape">
+      <enum>QTabWidget::Rounded</enum>
      </property>
-     <widget class="QWidget" name="tab" >
-      <attribute name="title" >
+     <property name="currentIndex">
+      <number>1</number>
+     </property>
+     <widget class="QWidget" name="tab">
+      <attribute name="title">
        <string>Usuario / Base de Datos</string>
       </attribute>
-      <layout class="QGridLayout" name="gridLayout" >
-       <item row="0" column="0" >
-        <widget class="QLabel" name="label" >
-         <property name="font" >
+      <layout class="QGridLayout" name="gridLayout">
+       <item row="0" column="0">
+        <widget class="QLabel" name="label">
+         <property name="font">
           <font>
            <weight>75</weight>
            <bold>true</bold>
           </font>
          </property>
-         <property name="text" >
+         <property name="text">
           <string>Selecciona una Base de Datos</string>
          </property>
         </widget>
        </item>
-       <item row="0" column="1" >
-        <widget class="QLabel" name="label_2" >
-         <property name="font" >
+       <item row="0" column="1">
+        <widget class="QLabel" name="label_2">
+         <property name="font">
           <font>
            <weight>75</weight>
            <bold>true</bold>
           </font>
          </property>
-         <property name="text" >
+         <property name="text">
           <string>Selecciona un Usuario</string>
          </property>
         </widget>
        </item>
-       <item row="1" column="0" >
-        <widget class="QListWidget" name="listWidgetDatabase" />
+       <item row="1" column="0">
+        <widget class="QListWidget" name="listWidgetDatabase"/>
        </item>
-       <item row="1" column="1" >
-        <widget class="QListWidget" name="listWidgetUser" />
+       <item row="1" column="1">
+        <widget class="QListWidget" name="listWidgetUser"/>
        </item>
       </layout>
      </widget>
-     <widget class="QWidget" name="tab_3" >
-      <attribute name="title" >
-       <string>Permisos</string>
+     <widget class="QWidget" name="tab_3">
+      <attribute name="title">
+       <string>Permisos de Tablas</string>
       </attribute>
-      <layout class="QGridLayout" name="gridLayout_2" >
-       <item row="0" column="0" >
-        <widget class="QLabel" name="label_3" >
-         <property name="maximumSize" >
+      <layout class="QGridLayout" name="gridLayout_2">
+       <item row="0" column="0">
+        <widget class="QLabel" name="label_3">
+         <property name="maximumSize">
           <size>
            <width>400</width>
            <height>16777215</height>
           </size>
          </property>
-         <property name="font" >
+         <property name="font">
           <font>
            <weight>75</weight>
            <bold>true</bold>
           </font>
          </property>
-         <property name="text" >
+         <property name="text">
           <string>Selecciona  la(s) Tabla(s) donde deseas asignar los permisos</string>
          </property>
         </widget>
        </item>
-       <item rowspan="3" row="0" column="1" >
-        <widget class="QGroupBox" name="groupBox" >
-         <property name="sizePolicy" >
-          <sizepolicy vsizetype="Expanding" hsizetype="Expanding" >
+       <item row="0" column="1" rowspan="3">
+        <widget class="QGroupBox" name="groupBox">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
            <horstretch>0</horstretch>
            <verstretch>0</verstretch>
           </sizepolicy>
          </property>
-         <property name="minimumSize" >
+         <property name="minimumSize">
           <size>
            <width>200</width>
            <height>0</height>
           </size>
          </property>
-         <property name="title" >
+         <property name="title">
           <string>Permisos</string>
          </property>
-         <layout class="QGridLayout" name="gridLayout_4" >
-          <item row="0" column="0" >
-           <widget class="QLabel" name="label_5" >
-            <property name="font" >
+         <layout class="QGridLayout" name="gridLayout_4">
+          <item row="0" column="0">
+           <widget class="QLabel" name="label_5">
+            <property name="font">
              <font>
               <weight>75</weight>
               <bold>true</bold>
              </font>
             </property>
-            <property name="text" >
-             <string>Selecciona permisos para la Base de Datos</string>
+            <property name="text">
+             <string>Selecciona permisos para la BD</string>
             </property>
            </widget>
           </item>
-          <item row="1" column="0" >
-           <widget class="QCheckBox" name="checkBox_dball" >
-            <property name="font" >
+          <item row="1" column="0">
+           <widget class="QCheckBox" name="checkBox_dball">
+            <property name="font">
              <font>
               <weight>75</weight>
               <bold>true</bold>
               <underline>false</underline>
              </font>
             </property>
-            <property name="text" >
+            <property name="text">
              <string>GRANT ALL</string>
             </property>
            </widget>
           </item>
-          <item row="2" column="0" >
-           <widget class="QCheckBox" name="checkBox_dbrevoke" >
-            <property name="font" >
+          <item row="2" column="0">
+           <widget class="QCheckBox" name="checkBox_dbrevoke">
+            <property name="font">
              <font>
               <weight>75</weight>
               <bold>true</bold>
              </font>
             </property>
-            <property name="text" >
+            <property name="text">
              <string>REVOKE ALL</string>
             </property>
            </widget>
           </item>
-          <item row="3" column="0" >
-           <widget class="QCheckBox" name="checkBox_create" >
-            <property name="text" >
+          <item row="4" column="0">
+           <widget class="QCheckBox" name="checkBox_create">
+            <property name="text">
              <string>CREATE</string>
             </property>
            </widget>
           </item>
-          <item row="4" column="0" >
-           <widget class="QCheckBox" name="checkBox_temporary" >
-            <property name="text" >
+          <item row="5" column="0">
+           <widget class="QCheckBox" name="checkBox_temporary">
+            <property name="text">
              <string>TEMPORARY</string>
             </property>
            </widget>
           </item>
-          <item row="5" column="0" >
-           <widget class="QLabel" name="label_4" >
-            <property name="font" >
+          <item row="7" column="0">
+           <widget class="QLabel" name="label_4">
+            <property name="font">
              <font>
               <weight>75</weight>
               <bold>true</bold>
              </font>
             </property>
-            <property name="text" >
-             <string>Permisos para la tabla / tablas</string>
+            <property name="text">
+             <string>Permisos para la(s) tabla(s)</string>
             </property>
            </widget>
           </item>
-          <item row="6" column="0" >
-           <widget class="QCheckBox" name="checkBox_select" >
-            <property name="text" >
+          <item row="11" column="0">
+           <widget class="QCheckBox" name="checkBox_select">
+            <property name="text">
              <string>SELECT</string>
             </property>
            </widget>
           </item>
-          <item row="7" column="0" >
-           <widget class="QCheckBox" name="checkBox_insert" >
-            <property name="text" >
+          <item row="12" column="0">
+           <widget class="QCheckBox" name="checkBox_insert">
+            <property name="text">
              <string>INSERT</string>
             </property>
            </widget>
           </item>
-          <item row="8" column="0" >
-           <widget class="QCheckBox" name="checkBox_update" >
-            <property name="text" >
+          <item row="13" column="0">
+           <widget class="QCheckBox" name="checkBox_update">
+            <property name="text">
              <string>UPDATE</string>
             </property>
            </widget>
           </item>
-          <item row="9" column="0" >
-           <widget class="QCheckBox" name="checkBox_delete" >
-            <property name="text" >
+          <item row="14" column="0">
+           <widget class="QCheckBox" name="checkBox_delete">
+            <property name="text">
              <string>DELETE</string>
             </property>
            </widget>
           </item>
-          <item row="10" column="0" >
-           <widget class="QCheckBox" name="checkBox_trigger" >
-            <property name="text" >
+          <item row="15" column="0">
+           <widget class="QCheckBox" name="checkBox_trigger">
+            <property name="text">
              <string>TRIGGER</string>
             </property>
            </widget>
           </item>
-          <item row="11" column="0" >
-           <widget class="QCheckBox" name="checkBox_references" >
-            <property name="text" >
+          <item row="16" column="0">
+           <widget class="QCheckBox" name="checkBox_references">
+            <property name="text">
              <string>REFERENCES</string>
             </property>
            </widget>
           </item>
-          <item row="12" column="0" >
-           <widget class="QCheckBox" name="checkBox_all" >
-            <property name="font" >
+          <item row="17" column="0">
+           <widget class="QCheckBox" name="checkBox_select_all">
+            <property name="font">
              <font>
               <weight>75</weight>
               <bold>true</bold>
               <underline>false</underline>
              </font>
             </property>
-            <property name="text" >
+            <property name="text">
              <string>SELECCIONAR TODOS</string>
             </property>
            </widget>
           </item>
-          <item row="13" column="0" >
-           <spacer name="verticalSpacer" >
-            <property name="orientation" >
+          <item row="18" column="0">
+           <spacer name="verticalSpacer">
+            <property name="orientation">
              <enum>Qt::Vertical</enum>
             </property>
-            <property name="sizeHint" stdset="0" >
+            <property name="sizeHint" stdset="0">
              <size>
               <width>20</width>
               <height>236</height>
@@ -239,44 +290,101 @@
             </property>
            </spacer>
           </item>
-          <item row="14" column="0" >
-           <widget class="QPushButton" name="mui_guardar" >
-            <property name="text" >
+          <item row="19" column="0">
+           <widget class="QPushButton" name="mui_guardar">
+            <property name="text">
              <string>Asignar Permisos</string>
             </property>
-            <property name="icon" >
-             <iconset resource="resources.qrc" >
+            <property name="icon">
+             <iconset resource="resources.qrc">
               <normaloff>:/images/bulmasetup_aceptar.xpm</normaloff>:/images/bulmasetup_aceptar.xpm</iconset>
             </property>
            </widget>
           </item>
+          <item row="8" column="0">
+           <widget class="QCheckBox" name="checkBox_all">
+            <property name="font">
+             <font>
+              <weight>75</weight>
+              <bold>true</bold>
+              <underline>false</underline>
+             </font>
+            </property>
+            <property name="text">
+             <string>GRANT ALL</string>
+            </property>
+           </widget>
+          </item>
+          <item row="9" column="0">
+           <widget class="QCheckBox" name="checkBox_revoke">
+            <property name="font">
+             <font>
+              <weight>75</weight>
+              <bold>true</bold>
+             </font>
+            </property>
+            <property name="text">
+             <string>REVOKE ALL</string>
+            </property>
+           </widget>
+          </item>
+          <item row="10" column="0">
+           <widget class="Line" name="line_2">
+            <property name="orientation">
+             <enum>Qt::Horizontal</enum>
+            </property>
+           </widget>
+          </item>
+          <item row="3" column="0">
+           <widget class="Line" name="line_3">
+            <property name="orientation">
+             <enum>Qt::Horizontal</enum>
+            </property>
+           </widget>
+          </item>
+          <item row="6" column="0">
+           <spacer name="verticalSpacer_3">
+            <property name="orientation">
+             <enum>Qt::Vertical</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>20</width>
+              <height>236</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
          </layout>
         </widget>
        </item>
-       <item row="1" column="0" >
-        <widget class="QListWidget" name="listWidgetTable" >
-         <property name="maximumSize" >
+       <item row="1" column="0">
+        <widget class="QListWidget" name="listWidgetTable">
+         <property name="maximumSize">
           <size>
            <width>165000</width>
            <height>16777215</height>
           </size>
          </property>
-         <property name="font" >
+         <property name="font">
           <font>
            <weight>75</weight>
            <bold>true</bold>
           </font>
          </property>
+         <property name="selectionMode">
+          <enum>QAbstractItemView::MultiSelection</enum>
+         </property>
         </widget>
        </item>
-       <item row="2" column="0" >
-        <layout class="QHBoxLayout" name="horizontalLayout" >
+       <item row="2" column="0">
+        <layout class="QHBoxLayout" name="horizontalLayout">
          <item>
-          <spacer name="horizontalSpacer" >
-           <property name="orientation" >
+          <spacer name="horizontalSpacer">
+           <property name="orientation">
             <enum>Qt::Horizontal</enum>
            </property>
-           <property name="sizeHint" stdset="0" >
+           <property name="sizeHint" stdset="0">
             <size>
              <width>40</width>
              <height>20</height>
@@ -285,24 +393,24 @@
           </spacer>
          </item>
          <item>
-          <widget class="QPushButton" name="seleccionarTablas" >
-           <property name="font" >
+          <widget class="QPushButton" name="seleccionarTablas">
+           <property name="font">
             <font>
              <weight>75</weight>
              <bold>true</bold>
             </font>
            </property>
-           <property name="text" >
+           <property name="text">
             <string>Seleccionar todas las tablas</string>
            </property>
           </widget>
          </item>
          <item>
-          <spacer name="horizontalSpacer_2" >
-           <property name="orientation" >
+          <spacer name="horizontalSpacer_2">
+           <property name="orientation">
             <enum>Qt::Horizontal</enum>
            </property>
-           <property name="sizeHint" stdset="0" >
+           <property name="sizeHint" stdset="0">
             <size>
              <width>40</width>
              <height>20</height>
@@ -311,24 +419,24 @@
           </spacer>
          </item>
          <item>
-          <widget class="QPushButton" name="deseleccionarTablas" >
-           <property name="font" >
+          <widget class="QPushButton" name="deseleccionarTablas">
+           <property name="font">
             <font>
              <weight>75</weight>
              <bold>true</bold>
             </font>
            </property>
-           <property name="text" >
+           <property name="text">
             <string>Deseleccionar todas las tablas</string>
            </property>
           </widget>
          </item>
          <item>
-          <spacer name="horizontalSpacer_3" >
-           <property name="orientation" >
+          <spacer name="horizontalSpacer_3">
+           <property name="orientation">
             <enum>Qt::Horizontal</enum>
            </property>
-           <property name="sizeHint" stdset="0" >
+           <property name="sizeHint" stdset="0">
             <size>
              <width>40</width>
              <height>20</height>
@@ -340,69 +448,288 @@
        </item>
       </layout>
      </widget>
-     <widget class="QWidget" name="tab_2" >
-      <attribute name="title" >
+     <widget class="QWidget" name="tab_4">
+      <attribute name="title">
+       <string>Permisos de Secuencias</string>
+      </attribute>
+      <layout class="QGridLayout" name="gridLayout_6">
+       <item row="0" column="0">
+        <widget class="QLabel" name="label_8">
+         <property name="maximumSize">
+          <size>
+           <width>400</width>
+           <height>16777215</height>
+          </size>
+         </property>
+         <property name="font">
+          <font>
+           <weight>75</weight>
+           <bold>true</bold>
+          </font>
+         </property>
+         <property name="text">
+          <string>Selecciona  la(s) Secuencia(s) donde deseas asignar los permisos</string>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="1" rowspan="3">
+        <widget class="QGroupBox" name="groupBox_2">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="minimumSize">
+          <size>
+           <width>200</width>
+           <height>0</height>
+          </size>
+         </property>
+         <property name="title">
+          <string>Permisos</string>
+         </property>
+         <layout class="QGridLayout" name="gridLayout_5">
+          <item row="6" column="0">
+           <widget class="QCheckBox" name="checkBox_select2">
+            <property name="text">
+             <string>SELECT</string>
+            </property>
+           </widget>
+          </item>
+          <item row="8" column="0">
+           <widget class="QCheckBox" name="checkBox_update2">
+            <property name="text">
+             <string>UPDATE</string>
+            </property>
+           </widget>
+          </item>
+          <item row="9" column="0">
+           <widget class="QCheckBox" name="checkBox_select_all_2">
+            <property name="font">
+             <font>
+              <weight>75</weight>
+              <bold>true</bold>
+              <underline>false</underline>
+             </font>
+            </property>
+            <property name="text">
+             <string>SELECCIONAR TODOS</string>
+            </property>
+           </widget>
+          </item>
+          <item row="10" column="0">
+           <spacer name="verticalSpacer_2">
+            <property name="orientation">
+             <enum>Qt::Vertical</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>20</width>
+              <height>236</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+          <item row="11" column="0">
+           <widget class="QPushButton" name="mui_guardar_seq">
+            <property name="text">
+             <string>Asignar Permisos</string>
+            </property>
+            <property name="icon">
+             <iconset resource="resources.qrc">
+              <normaloff>:/images/bulmasetup_aceptar.xpm</normaloff>:/images/bulmasetup_aceptar.xpm</iconset>
+            </property>
+           </widget>
+          </item>
+          <item row="3" column="0">
+           <widget class="QCheckBox" name="checkBox_revoke_2">
+            <property name="font">
+             <font>
+              <weight>75</weight>
+              <bold>true</bold>
+             </font>
+            </property>
+            <property name="text">
+             <string>REVOKE ALL</string>
+            </property>
+           </widget>
+          </item>
+          <item row="2" column="0">
+           <widget class="QCheckBox" name="checkBox_all_2">
+            <property name="font">
+             <font>
+              <weight>75</weight>
+              <bold>true</bold>
+              <underline>false</underline>
+             </font>
+            </property>
+            <property name="text">
+             <string>GRANT ALL</string>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="0">
+           <widget class="QLabel" name="label_6">
+            <property name="font">
+             <font>
+              <weight>75</weight>
+              <bold>true</bold>
+             </font>
+            </property>
+            <property name="text">
+             <string>Selecciona permisos</string>
+            </property>
+           </widget>
+          </item>
+          <item row="4" column="0">
+           <widget class="Line" name="line">
+            <property name="font">
+             <font>
+              <weight>50</weight>
+              <bold>false</bold>
+             </font>
+            </property>
+            <property name="lineWidth">
+             <number>1</number>
+            </property>
+            <property name="midLineWidth">
+             <number>0</number>
+            </property>
+            <property name="orientation">
+             <enum>Qt::Horizontal</enum>
+            </property>
+           </widget>
+          </item>
+          <item row="5" column="0">
+           <widget class="QCheckBox" name="checkBox_usage">
+            <property name="text">
+             <string>USAGE</string>
+            </property>
+           </widget>
+          </item>
+          <item row="0" column="0">
+           <spacer name="verticalSpacer_4">
+            <property name="orientation">
+             <enum>Qt::Vertical</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>20</width>
+              <height>236</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+         </layout>
+        </widget>
+       </item>
+       <item row="1" column="0">
+        <widget class="QListWidget" name="listWidgetSecuencias">
+         <property name="maximumSize">
+          <size>
+           <width>165000</width>
+           <height>16777215</height>
+          </size>
+         </property>
+         <property name="font">
+          <font>
+           <weight>75</weight>
+           <bold>true</bold>
+          </font>
+         </property>
+         <property name="selectionMode">
+          <enum>QAbstractItemView::MultiSelection</enum>
+         </property>
+        </widget>
+       </item>
+       <item row="2" column="0">
+        <layout class="QHBoxLayout" name="horizontalLayout_3">
+         <item>
+          <spacer name="horizontalSpacer_6">
+           <property name="orientation">
+            <enum>Qt::Horizontal</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>40</width>
+             <height>20</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+         <item>
+          <widget class="QPushButton" name="seleccionarSeq">
+           <property name="font">
+            <font>
+             <weight>75</weight>
+             <bold>true</bold>
+            </font>
+           </property>
+           <property name="text">
+            <string>Seleccionar todas</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <spacer name="horizontalSpacer_7">
+           <property name="orientation">
+            <enum>Qt::Horizontal</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>40</width>
+             <height>20</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+         <item>
+          <widget class="QPushButton" name="deseleccionarSeq">
+           <property name="font">
+            <font>
+             <weight>75</weight>
+             <bold>true</bold>
+            </font>
+           </property>
+           <property name="text">
+            <string>Deseleccionar todas</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <spacer name="horizontalSpacer_8">
+           <property name="orientation">
+            <enum>Qt::Horizontal</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>40</width>
+             <height>20</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+        </layout>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QWidget" name="tab_2">
+      <attribute name="title">
        <string>Consola</string>
       </attribute>
-      <layout class="QVBoxLayout" name="verticalLayout" >
+      <layout class="QVBoxLayout" name="verticalLayout">
        <item>
-        <widget class="QTextBrowser" name="mui_textBrowser" />
+        <widget class="QTextBrowser" name="mui_textBrowser"/>
        </item>
       </layout>
      </widget>
     </widget>
    </item>
-   <item row="1" column="0" >
-    <layout class="QHBoxLayout" name="horizontalLayout_2" >
-     <item>
-      <spacer name="horizontalSpacer_4" >
-       <property name="orientation" >
-        <enum>Qt::Horizontal</enum>
-       </property>
-       <property name="sizeHint" stdset="0" >
-        <size>
-         <width>128</width>
-         <height>17</height>
-        </size>
-       </property>
-      </spacer>
-     </item>
-     <item>
-      <widget class="QPushButton" name="mui_salir" >
-       <property name="minimumSize" >
-        <size>
-         <width>200</width>
-         <height>0</height>
-        </size>
-       </property>
-       <property name="text" >
-        <string>Salir</string>
-       </property>
-       <property name="icon" >
-        <iconset resource="resources.qrc" >
-         <normaloff>:/images/bulmasetup_exit.png</normaloff>:/images/bulmasetup_exit.png</iconset>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <spacer name="horizontalSpacer_5" >
-       <property name="orientation" >
-        <enum>Qt::Horizontal</enum>
-       </property>
-       <property name="sizeHint" stdset="0" >
-        <size>
-         <width>128</width>
-         <height>17</height>
-        </size>
-       </property>
-      </spacer>
-     </item>
-    </layout>
-   </item>
   </layout>
  </widget>
  <resources>
-  <include location="resources.qrc" />
+  <include location="resources.qrc"/>
  </resources>
  <connections>
   <connection>
@@ -411,11 +738,11 @@
    <receiver>ModificarUsuario</receiver>
    <slot>close()</slot>
    <hints>
-    <hint type="sourcelabel" >
+    <hint type="sourcelabel">
      <x>495</x>
      <y>361</y>
     </hint>
-    <hint type="destinationlabel" >
+    <hint type="destinationlabel">
      <x>296</x>
      <y>202</y>
     </hint>

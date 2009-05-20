@@ -14,19 +14,26 @@ class ModificarUsuario(Ui_ModificarUsuario, Empresa):
     def __init__(self, parent = None):
         Empresa.__init__(self,parent)
         self.setupUi(self)
+        self.proceso = QtCore.QProcess()
         self.inicio()
         global username
 
     def inicio(self): 
         self.tabWidget.setTabEnabled(1, False)
         self.tabWidget.setTabEnabled(2, False)
+        self.tabWidget.setTabEnabled(3, False)
         self.tabWidget.setCurrentIndex(0)
         self.initListaDatabase()
-        self.listWidgetTable.setSelectionMode(self.listWidgetTable.MultiSelection)
 
-        self.connect(self.checkBox_all, SIGNAL("stateChanged(int)"), self.checkBox_change)
+        self.connect(self.checkBox_select_all, SIGNAL("stateChanged(int)"), self.checkBox_todos)
+        self.connect(self.checkBox_select_all_2, SIGNAL("stateChanged(int)"), self.checkBox_todos_2)
         self.connect(self.checkBox_dball, SIGNAL("stateChanged(int)"), self.checkBox_dball_Change)
         self.connect(self.checkBox_dbrevoke, SIGNAL("stateChanged(int)"), self.checkBox_dbrevoke_Change)
+        self.connect(self.checkBox_all, SIGNAL("stateChanged(int)"), self.checkBox_all_Change)
+        self.connect(self.checkBox_revoke, SIGNAL("stateChanged(int)"), self.checkBox_revoke_Change)
+        self.connect(self.checkBox_all_2, SIGNAL("stateChanged(int)"), self.checkBox_all_2_Change)
+        self.connect(self.checkBox_revoke_2, SIGNAL("stateChanged(int)"), self.checkBox_revoke_2_Change)
+        self.connect(self.proceso, SIGNAL("readyReadStandardError()"), self.readErrors)
         self.connect(self.listWidgetDatabase, SIGNAL("itemSelectionChanged()"), self.capturaDatabase)
         self.connect(self.listWidgetUser, SIGNAL("itemSelectionChanged()"), self.capturaUsuario)
         self.connect(self.listWidgetTable, SIGNAL("itemSelectionChanged()"), self.actualizarCheckboxTable)
@@ -104,8 +111,10 @@ class ModificarUsuario(Ui_ModificarUsuario, Empresa):
                 break
             
         self.tabWidget.setTabEnabled(1, True)
+        self.tabWidget.setTabEnabled(2, True)
         self.capturaDatabase
         self.initListaTablas()
+        self.initListaSecuencias()
         self.actualizarCheckboxDB()
         
         for x in range (numero):
@@ -119,17 +128,19 @@ class ModificarUsuario(Ui_ModificarUsuario, Empresa):
         self.conectar(str(dbase))
         tablas = self.execute("SELECT relname FROM pg_class WHERE relkind = 'r' AND relname NOT LIKE ('pg_%') AND relname NOT LIKE ('sql_%') ORDER BY relname")
               
-        # Rellenamos la lista con los usuarios de PostgreSQL
+        # Rellenamos la lista con lablas de la base de datos seleccionada
         for row in tablas:
             texto = row[0]                        
             self.listWidgetTable.addItem(QString(texto))
-
-        tablas = self.execute("SELECT relname FROM pg_class WHERE relkind = 'S' AND relname NOT LIKE ('pg_%') AND relname NOT LIKE ('sql_%') AND relname LIKE ('%_seq') ORDER BY relname")
-              
-        # Rellenamos la lista con los usuarios de PostgreSQL
-        for row in tablas:
+   
+    def initListaSecuencias(self):
+        self.conectar(str(dbase))
+        secuencias = self.execute("SELECT relname FROM pg_class WHERE relkind = 'S' AND relname NOT LIKE ('pg_%') AND relname NOT LIKE ('sql_%') AND relname LIKE ('%_seq') ORDER BY relname")
+                  
+        # Rellenamos la lista con las secuencias
+        for row in secuencias:
             texto = row[0]                        
-            self.listWidgetTable.addItem(QString(texto))
+            self.listWidgetSecuencias.addItem(QString(texto))
 
         
     def on_seleccionarTablas_released(self):
@@ -141,6 +152,16 @@ class ModificarUsuario(Ui_ModificarUsuario, Empresa):
         numero = self.listWidgetTable.count()
         for x in range (numero):
             self.listWidgetTable.item(x).setSelected(False)
+            
+    def on_seleccionarSeq_released(self):
+        numero = self.listWidgetSecuencias.count()
+        for x in range (numero):
+            self.listWidgetSecuencias.item(x).setSelected(True)
+
+    def on_deseleccionarSeq_released(self):
+        numero = self.listWidgetSecuencias.count()
+        for x in range (numero):
+            self.listWidgetSecuencias.item(x).setSelected(False)
 
     def actualizarCheckboxDB(self):
         #Conectamos con la base de datos
@@ -155,55 +176,55 @@ class ModificarUsuario(Ui_ModificarUsuario, Empresa):
         if str(permiso) == "(True,)":
             self.checkBox_temporary.setCheckState(Qt.Checked)
         else:
-            self.checkBox_temporary.setCheckState(Qt.Unchecked) 
+            self.checkBox_temporary.setCheckState(Qt.Unchecked)
 
         
     def actualizarCheckboxTable(self):
         temp = self.listWidgetTable.currentItem()
         if (temp != None):
-           table = temp.text()
-        
-           #Conectamos con la base de datos
-           self.conectar(str(dbase))
-           permiso = self.executeone("select has_table_privilege('" + str(username) + "', '" + str(table) + "', 'select');")
-
-           if str(permiso) == "(True,)":
-               self.checkBox_select.setCheckState(Qt.Checked)
-           else:
-               self.checkBox_select.setCheckState(Qt.Unchecked)    
+            table = temp.text()
             
-           permiso = self.executeone("select has_table_privilege('" + str(username) + "', '" + str(table) + "', 'insert');")
-           if str(permiso) == "(True,)":
-               self.checkBox_insert.setCheckState(Qt.Checked)
-           else:
-               self.checkBox_insert.setCheckState(Qt.Unchecked)
-            
-           permiso = self.executeone("select has_table_privilege('" + str(username) + "', '" + str(table) + "', 'update');")
-           if str(permiso) == "(True,)":
-               self.checkBox_update.setCheckState(Qt.Checked)
-           else:
-               self.checkBox_update.setCheckState(Qt.Unchecked)
+            #Conectamos con la base de datos
+            self.conectar(str(dbase))
+            permiso = self.executeone("select has_table_privilege('" + str(username) + "', '" + str(table) + "', 'select');")
 
-           permiso = self.executeone("select has_table_privilege('" + str(username) + "', '" + str(table) + "', 'delete');")
-           if str(permiso) == "(True,)":
-               self.checkBox_delete.setCheckState(Qt.Checked)
-           else:
-               self.checkBox_delete.setCheckState(Qt.Unchecked)        
+            if str(permiso) == "(True,)":
+                self.checkBox_select.setCheckState(Qt.Checked)
+            else:
+                self.checkBox_select.setCheckState(Qt.Unchecked)    
+                
+            permiso = self.executeone("select has_table_privilege('" + str(username) + "', '" + str(table) + "', 'insert');")
+            if str(permiso) == "(True,)":
+                self.checkBox_insert.setCheckState(Qt.Checked)
+            else:
+                self.checkBox_insert.setCheckState(Qt.Unchecked)
+                
+            permiso = self.executeone("select has_table_privilege('" + str(username) + "', '" + str(table) + "', 'update');")
+            if str(permiso) == "(True,)":
+                self.checkBox_update.setCheckState(Qt.Checked)
+            else:
+                self.checkBox_update.setCheckState(Qt.Unchecked)
 
-           permiso = self.executeone("select has_table_privilege('" + str(username) + "', '" + str(table) + "', 'references');")
-           if str(permiso) == "(True,)":
-               self.checkBox_references.setCheckState(Qt.Checked)
-           else:
-               self.checkBox_references.setCheckState(Qt.Unchecked)              
+            permiso = self.executeone("select has_table_privilege('" + str(username) + "', '" + str(table) + "', 'delete');")
+            if str(permiso) == "(True,)":
+                self.checkBox_delete.setCheckState(Qt.Checked)
+            else:
+                self.checkBox_delete.setCheckState(Qt.Unchecked)        
 
-           permiso = self.executeone("select has_table_privilege('" + str(username) + "', '" + str(table) + "', 'trigger');")
-           if str(permiso) == "(True,)":
-               self.checkBox_trigger.setCheckState(Qt.Checked)
-           else:
-               self.checkBox_trigger.setCheckState(Qt.Unchecked)   
+            permiso = self.executeone("select has_table_privilege('" + str(username) + "', '" + str(table) + "', 'references');")
+            if str(permiso) == "(True,)":
+                self.checkBox_references.setCheckState(Qt.Checked)
+            else:
+                self.checkBox_references.setCheckState(Qt.Unchecked)              
+
+            permiso = self.executeone("select has_table_privilege('" + str(username) + "', '" + str(table) + "', 'trigger');")
+            if str(permiso) == "(True,)":
+                self.checkBox_trigger.setCheckState(Qt.Checked)
+            else:
+                self.checkBox_trigger.setCheckState(Qt.Unchecked)   
         
-    def checkBox_change(self):
-        if (self.checkBox_all.isChecked()):
+    def checkBox_todos(self):
+        if (self.checkBox_select_all.isChecked()):
             self.checkBox_select.setCheckState(Qt.Checked)
             self.checkBox_insert.setCheckState(Qt.Checked)
             self.checkBox_update.setCheckState(Qt.Checked)
@@ -218,6 +239,16 @@ class ModificarUsuario(Ui_ModificarUsuario, Empresa):
             self.checkBox_references.setCheckState(Qt.Unchecked)
             self.checkBox_trigger.setCheckState(Qt.Unchecked)
             
+    def checkBox_todos_2(self):
+        if (self.checkBox_select_all_2.isChecked()):
+            self.checkBox_usage.setCheckState(Qt.Checked)
+            self.checkBox_select2.setCheckState(Qt.Checked)
+            self.checkBox_update2.setCheckState(Qt.Checked)
+        else:
+            self.checkBox_usage.setCheckState(Qt.Unchecked)
+            self.checkBox_select2.setCheckState(Qt.Unchecked)
+            self.checkBox_update2.setCheckState(Qt.Unchecked)
+            
     def checkBox_dball_Change(self):
         if (self.checkBox_dball.isChecked()):
             self.checkBox_dbrevoke.setCheckState(Qt.Unchecked)
@@ -229,12 +260,47 @@ class ModificarUsuario(Ui_ModificarUsuario, Empresa):
             self.checkBox_dball.setCheckState(Qt.Unchecked)
             self.checkBox_create.setCheckState(Qt.Unchecked)
             self.checkBox_temporary.setCheckState(Qt.Unchecked)
-
+            
+    def checkBox_all_Change(self):
+        if (self.checkBox_all.isChecked()):
+            self.checkBox_revoke.setCheckState(Qt.Unchecked)
+            self.checkBox_select.setCheckState(Qt.Checked)
+            self.checkBox_insert.setCheckState(Qt.Checked)
+            self.checkBox_update.setCheckState(Qt.Checked)
+            self.checkBox_delete.setCheckState(Qt.Checked)
+            self.checkBox_references.setCheckState(Qt.Checked)
+            self.checkBox_trigger.setCheckState(Qt.Checked)
+            
+    def checkBox_revoke_Change(self):
+        if (self.checkBox_revoke.isChecked()):
+            self.checkBox_all.setCheckState(Qt.Unchecked)
+            self.checkBox_select.setCheckState(Qt.Unchecked)
+            self.checkBox_insert.setCheckState(Qt.Unchecked)
+            self.checkBox_update.setCheckState(Qt.Unchecked)
+            self.checkBox_delete.setCheckState(Qt.Unchecked)
+            self.checkBox_references.setCheckState(Qt.Unchecked)
+            self.checkBox_trigger.setCheckState(Qt.Unchecked)
+            
+    def checkBox_all_2_Change(self):
+        if (self.checkBox_all_2.isChecked()):
+            self.checkBox_revoke_2.setCheckState(Qt.Unchecked)
+            self.checkBox_select2.setCheckState(Qt.Checked)
+            self.checkBox_usage.setCheckState(Qt.Checked)
+            self.checkBox_update2.setCheckState(Qt.Checked)
+            
+    def checkBox_revoke_2_Change(self):
+        if (self.checkBox_revoke_2.isChecked()):
+            self.checkBox_all_2.setCheckState(Qt.Unchecked)
+            self.checkBox_select2.setCheckState(Qt.Unchecked)
+            self.checkBox_usage.setCheckState(Qt.Unchecked)
+            self.checkBox_update2.setCheckState(Qt.Unchecked)
+            
     def on_mui_guardar_released(self):
         # Activo y cambio a la 3ª pestaña del programa, la consola. para poder ver el resultado de los comandos
-        self.tabWidget.setTabEnabled(2, True)
-        self.tabWidget.setCurrentIndex(2)
-        self.writeDB()
+        self.tabWidget.setTabEnabled(3, True)
+        self.tabWidget.setCurrentIndex(3)
+        self.mui_textBrowser.clear()
+        self.writeDB()        
 
         #Creamos la bara de progreso
         self.progress = QtGui.QProgressBar(self)
@@ -258,32 +324,23 @@ class ModificarUsuario(Ui_ModificarUsuario, Empresa):
         #Empezamos a conceder permisos, primero a la base de datos seleccionada.
         if (self.checkBox_dball.isChecked()):
             self.execComand('psql template1 -c "GRANT all on database ' + str(dbase) +  ' to ' + str(username) + '"')
-            
-        self.progress.setValue(actual)
 
         if (self.checkBox_dbrevoke.isChecked()):
             self.execComand('psql template1 -c "REVOKE all on database ' + str(dbase) + ' from ' + str(username) + '"')
-            
-        self.progress.setValue(actual)
 
         if (self.checkBox_create.isChecked()):
             self.execComand('psql template1 -c "GRANT create on database ' + str(dbase) + ' to ' + str(username) + '"')
         else:
             self.execComand('psql template1 -c "REVOKE create on database ' + str(dbase) + ' from ' + str(username) + '"')
-
-        self.progress.setValue(actual)
             
         if (self.checkBox_temporary.isChecked()):
             self.execComand('psql template1 -c "GRANT temporary on database ' + str(dbase) + ' to ' + str(username) + '"')
         else:
             self.execComand('psql template1 -c "REVOKE temporary on database ' + str(dbase) + ' from ' + str(username) + '"')
             
-        self.progress.setValue(actual)
-            
-        global table
-
         #Ahora pasamos a conceder los permisos por cada tabla seleccionada en la lista.
         numero = self.listWidgetTable.count()
+        global table
 
         for x in range (numero):
             temp = self.listWidgetTable.item(x)
@@ -291,6 +348,14 @@ class ModificarUsuario(Ui_ModificarUsuario, Empresa):
             if (temp.isSelected()):
                 table = temp.text()
                 self.writeTable()
+        
+                if (self.checkBox_all.isChecked()):
+                    self.execComand('psql ' + str(dbase) + ' -c "GRANT all on ' + str(table) +  ' to ' + str(username) + '"')
+                    self.progress.setValue(1)
+
+                if (self.checkBox_revoke.isChecked()):
+                    self.execComand('psql ' + str(dbase) + ' -c "REVOKE all on ' + str(table) + ' from ' + str(username) + '"')
+                    self.progress.setValue(1)
         
                 if (self.checkBox_select.isChecked()):
                     self.execComand('psql ' + str(dbase) + ' -c "GRANT select on ' + str(table) + ' to ' + str(username) + '"')
@@ -300,14 +365,13 @@ class ModificarUsuario(Ui_ModificarUsuario, Empresa):
                 actual = actual + mas
                 self.progress.setValue(actual)
 
-		if (str(table)[-4:] != '_seq'):
-		  if (self.checkBox_insert.isChecked()):
-		      self.execComand('psql ' + str(dbase) + ' -c "GRANT insert on ' + str(table) + ' to ' + str(username) + '"')
-		  else:
-		      self.execComand('psql ' + str (dbase) + ' -c "REVOKE insert on ' + str(table) + ' from ' + str(username) + '"')
-		      
-		  actual = actual + mas
-		  self.progress.setValue(actual)
+                if (self.checkBox_insert.isChecked()):
+                    self.execComand('psql ' + str(dbase) + ' -c "GRANT insert on ' + str(table) + ' to ' + str(username) + '"')
+                else:
+                    self.execComand('psql ' + str (dbase) + ' -c "REVOKE insert on ' + str(table) + ' from ' + str(username) + '"')
+                    
+                actual = actual + mas
+                self.progress.setValue(actual)
 
                 if (self.checkBox_update.isChecked()):
                     self.execComand('psql ' + str(dbase) + ' -c "GRANT update on ' + str(table) + ' to ' + str(username) + '"')
@@ -318,38 +382,36 @@ class ModificarUsuario(Ui_ModificarUsuario, Empresa):
                 self.progress.setValue(actual)
 
 
-		if (str(table)[-4:] != '_seq'):
-		  if (self.checkBox_delete.isChecked()):
-		      self.execComand('psql ' + str(dbase) + ' -c "GRANT delete on ' + str(table) + ' to ' + str(username) + '"')
-		  else:
-		      self.execComand('psql ' + str(dbase) + ' -c "REVOKE delete on ' + str(table) + ' from ' + str(username) + '"')
-		      
-		  actual = actual + mas
-		  self.progress.setValue(actual)
+                if (self.checkBox_delete.isChecked()):
+                    self.execComand('psql ' + str(dbase) + ' -c "GRANT delete on ' + str(table) + ' to ' + str(username) + '"')
+                else:
+                    self.execComand('psql ' + str(dbase) + ' -c "REVOKE delete on ' + str(table) + ' from ' + str(username) + '"')
+                    
+                actual = actual + mas
+                self.progress.setValue(actual)
 
 
-		if (str(table)[-4:] != '_seq'):
-		  if (self.checkBox_references.isChecked()):
-		      self.execComand('psql ' + str(dbase) + ' -c "GRANT references on ' + str(table) + ' to ' + str(username) + '"')
-		  else:
-		      self.execComand('psql ' + str(dbase) + ' -c "REVOKE references on ' + str(table) + ' from ' + str(username) + '"')
-		      
-		  actual = actual + mas
-		  self.progress.setValue(actual)
+                if (self.checkBox_references.isChecked()):
+                    self.execComand('psql ' + str(dbase) + ' -c "GRANT references on ' + str(table) + ' to ' + str(username) + '"')
+                else:
+                    self.execComand('psql ' + str(dbase) + ' -c "REVOKE references on ' + str(table) + ' from ' + str(username) + '"')
+                    
+                actual = actual + mas
+                self.progress.setValue(actual)
 
-		if (str(table)[-4:] != '_seq'):
-		  if (self.checkBox_trigger.isChecked()):
-		      self.execComand('psql ' + str(dbase) + ' -c "GRANT trigger on ' + str(table) + ' to ' + str(username) + '"')
-		  else:
-		      self.execComand('psql ' + str(dbase) + ' -c "REVOKE trigger on ' + str(table) + ' from ' + str(username) + '"')
-		      
-		  actual = actual + mas
-		  self.progress.setValue(actual)
+                if (self.checkBox_trigger.isChecked()):
+                    self.execComand('psql ' + str(dbase) + ' -c "GRANT trigger on ' + str(table) + ' to ' + str(username) + '"')
+                else:
+                    self.execComand('psql ' + str(dbase) + ' -c "REVOKE trigger on ' + str(table) + ' from ' + str(username) + '"')
+                    
+                actual = actual + mas
+                self.progress.setValue(actual)
         self.progress.hide()
+        self.tabWidget.setCurrentIndex(1)
                     
         # LAS SIGUIENTES 80 LINEAS ES LO MISMO QUE LO ANTERIOR, PERO SE CONCEDEN LOS PERMISOS 
         # A TRAVES DE UNA CONEXION DIRECTA CON POSTGRES, QUE SERIA LO CORRECTO, COMO NO FUNCIONA
-        # PASO A APLICAR LOS PERMISOS DIRECTAMENTE CON COMANDOS DESDE EL SHELL,
+        # PASO A APLICAR LOS PERMISOS DIRECTAMENTE CON COMANDOS DESDE CONSOLA,
         # PROVISIONALEMENTE, HASTA ENCONTRAR PORQUE NO FUNCIONA HACIENDOLO CON CONEXIONES A POSTGRES.
                     
         #try:
@@ -429,18 +491,90 @@ class ModificarUsuario(Ui_ModificarUsuario, Empresa):
             #except:
                 #print "Se produjo un error al intentar cambiar los permisos (temporary) de las bases de datos de PostgreSQL."
                 #sys.exit()
+                
+    def on_mui_guardar_seq_released(self):    
+    
+        # Activo y cambio a la 3ª pestaña del programa, la consola. para poder ver el resultado de los comandos
+        self.tabWidget.setTabEnabled(3, True)
+        self.tabWidget.setCurrentIndex(3)
+        self.mui_textBrowser.clear()
+        self.writeDB()
+
+        #Creamos la bara de progreso
+        self.progress = QtGui.QProgressBar(self)
+        self.progress.setGeometry(self.width() / 2 -100, self.height() /2 -10, 200, 20)
+        self.progress.show()
+
+        #Calculamos el % de aumento de la barra de progreso
+        total_seq = 0.0
+        numero = self.listWidgetSecuencias.count()
+
+        for x in range (numero):
+            temp = self.listWidgetSecuencias.item(x)
+            
+            if (temp.isSelected()):
+                total_seq = total_seq + 1.0
+         
+        actual = 0.0
+        if (total_seq != 0.0):
+            mas = 100.0/(total_seq*3.0)
+    
+        #Ahora pasamos a conceder los permisos por cada tabla seleccionada en la lista.
+        numero = self.listWidgetSecuencias.count()
+        global seq
+
+        for x in range (numero):
+            temp = self.listWidgetSecuencias.item(x)
+            
+            if (temp.isSelected()):
+                seq = temp.text()
+                self.writeSeq()
+                        
+                if (self.checkBox_all_2.isChecked()):
+                    self.execComand('psql ' + str(dbase) + ' -c "GRANT all on ' + str(seq) +  ' to ' + str(username) + '"')
+                    self.progress.setValue(actual)
+
+                if (self.checkBox_revoke_2.isChecked()):
+                    self.execComand('psql ' + str(dbase) + ' -c "REVOKE all on ' + str(seq) + ' from ' + str(username) + '"')
+                    self.progress.setValue(actual)
+                
+                if (self.checkBox_usage.isChecked()):
+                    self.execComand('psql ' + str(dbase) + ' -c "GRANT usage on ' + str(seq) + ' to ' + str(username) + '"')
+                else:
+                    self.execComand('psql ' + str (dbase) + ' -c "REVOKE usage on ' + str(seq) + ' from ' + str(username) + '"')
+                    
+                actual = actual + mas
+                self.progress.setValue(actual)
+        
+                if (self.checkBox_select.isChecked()):
+                    self.execComand('psql ' + str(dbase) + ' -c "GRANT select on ' + str(seq) + ' to ' + str(username) + '"')
+                else:
+                    self.execComand('psql ' + str(dbase) + ' -c "REVOKE select on ' + str(seq) + ' from ' + str(username) + '"')
+                    
+                actual = actual + mas
+                self.progress.setValue(actual)
+
+                if (self.checkBox_update2.isChecked()):
+                    self.execComand('psql ' + str(dbase) + ' -c "GRANT update on ' + str(seq) + ' to ' + str(username) + '"')
+                else:
+                    self.execComand('psql ' + str(dbase) + ' -c "REVOKE update on ' + str(seq) + ' from ' + str(username) + '"')
+                    
+                actual = actual + mas
+                self.progress.setValue(actual)
+        self.progress.hide()
+        self.tabWidget.setCurrentIndex(2)
 
     def execComand(self, command):
         self.writecommand(command)
-        self.process.start(command)
-        self.process.waitForFinished(-1)
-        return QString(self.process.readAllStandardOutput())
+        self.proceso.start(command)
+        self.proceso.waitForFinished(-1)
+        return QString(self.proceso.readAllStandardOutput())
         
     def readOutput(self):
-        self.mui_textBrowser.append(QString(self.process.readAllStandardOutput()))
+        self.mui_textBrowser.append(QString(self.proceso.readAllStandardOutput()))
 
     def readErrors(self):
-        self.mui_textBrowser.append("<font color =\"#FF0000\">" + QString(self.process.readAllStandardError()) + "</font>")
+        self.mui_textBrowser.append("<font color =\"#FF0000\">" + QString(self.proceso.readAllStandardError()) + "</font>")
 
     def writecommand(self, command):
         self.mui_textBrowser.append("<font color =\"#0000FF\">" + str(command) + "</font>")
@@ -450,7 +584,10 @@ class ModificarUsuario(Ui_ModificarUsuario, Empresa):
         
     def writeTable(self):
         self.mui_textBrowser.append("<font color =\"#008000\">---- Aplicando permisos en la tabla " + str(table) + " a " + str(username) + " ----</font>")
-            
+         
+    def writeSeq(self):
+        self.mui_textBrowser.append("<font color =\"#008000\">---- Aplicando permisos en la secuencia " + str(seq) + " a " + str(username) + " ----</font>")
+
 def main(args):
     app=QtGui.QApplication(args)
     win=ModificarUsuario()
