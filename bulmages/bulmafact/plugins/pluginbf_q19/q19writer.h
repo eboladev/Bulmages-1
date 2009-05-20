@@ -51,7 +51,7 @@ private:
 
 	///
 	/**
-  		longitud >0 alineació dreta i <0 alineació esquerra
+  		longitud >0 alineacio dreta i <0 alineacio esquerra
 	**/
 	QString comprova(QString text, int longitud, QString nom, QChar farciment=' ' ) ;
     QString import(BlDbRecordSet *cur, QString nomcamp, int longitud) ;
@@ -64,7 +64,7 @@ protected:
 	///
 	/**
 	\param out stream de sortida, que ja ha de saber traduir la codificacio' a q19
-	\param sufijo:   la norma 19 el descriu així
+	\param sufijo:   la norma 19 el descriu aixi
 	   CLIENTE ORDENANTE:
 	se identifica por un co'digo de dos partes: Nu'mero de Identificacio'n Fiscal (
 	N.I.F.) y Sufijo (Nu'mero de tres cifras que identifica los diferentes tipos de
@@ -109,14 +109,14 @@ public:
 "idcobro"  es fa servir pel codi de refer'encia interna de rebut i de devolucio'
 "nomcliente"  qui paga
 "refcobro"  es posa al principi del concepte
-i no passa res si hi ha més columnes
+i no passa res si hi ha mes columnes
 els registres han de venir ordenats per 
 idbanco,fechavenccobro,entitat de bancocliente,oficina de bancocliente,idcliente
 per exemple, serviria
 SELECT * FROM cobro NATURAL LEFT JOIN cliente WHERE idcobro IN (...) ORDER BY cobro.idbanco,fechavenccobro,substring(cliente.bancocliente from 1 for 8),cliente.idcliente
 
 Si li passes idsGenerats afegeix els ids dels registres correctament generats al
-fitxer q19. Per'o si hi ha alguna excepció interna per dades incorrectes, treu
+fitxer q19. Per'o si hi ha alguna excepcio interna per dades incorrectes, treu
 un quadre de dialeg i esborra el idsGenerats, tant els ids que havia posat com
 els que hi pogue's haver d'abans.
 

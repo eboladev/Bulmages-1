@@ -54,6 +54,7 @@ public:
 
     /// Como ya es un signaling slot en la clase ficha no se delcara como slot.
     virtual void on_mui_aceptar_clicked();
+    virtual void closeEvent ( QCloseEvent * );
 
  public slots:
    void on_mui_buscararchivo_clicked();
@@ -62,7 +63,6 @@ public:
      Q19Writer *m_q19;
      QString ids;
      void idsFacturas ( void );
-
 };
 
 #endif

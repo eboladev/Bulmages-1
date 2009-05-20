@@ -1,4 +1,4 @@
-//Fitxer generat automàticament. Jo de tu no el modificaria.
+//Fitxer generat automaticament. Jo de tu no el modificaria.
 // Pots modificar ./gen_taula_h.pl i regenerar-lo.
 char taula[] = {
 ' ',' ',' ',' ',' ',' ',' ',' '

@@ -73,7 +73,7 @@ void Q19Writer::genera ( BlDbRecordSet  *curcobro, QString fileName , QStringLis
                        _ ( "*.q19;;*" ) );
       }
       _depura("nom de fitxer ",0,fileName);
-      if (fileName.length()>0) { // else ha apretat cancel·lar
+      if (fileName.length()>0) { // else ha apretat cancel?lar
        
 	try
 	{
@@ -300,7 +300,7 @@ QString Q19Writer::nombreOrdenante ( void )
 
 ///
 /**
-  longitud >0 alineació dreta i <0 alineació esquerra
+  longitud >0 alineacio dreta i <0 alineacio esquerra
 **/
 QString  Q19Writer::comprova ( QString text, int longitud, QString nom, QChar farciment )
 {
@@ -316,17 +316,17 @@ QString  Q19Writer::comprova ( QString text, int longitud, QString nom, QChar fa
 
 ///
 /**
-\param out stream de sortida, que ja ha de saber traduir la codificació a q19
-\param sufijo:   la norma 19 el descriu així
+\param out stream de sortida, que ja ha de saber traduir la codificacio a q19
+\param sufijo:   la norma 19 el descriu aixi
    CLIENTE ORDENANTE:
-se identifica por un código de dos partes: Número de Identificación Fiscal (
-N.I.F.) y Sufijo (Número de tres cifras que identifica los diferentes tipos de
-facturación del cliente y/o los diferentes centros emisores de soportes o
-ficheros de facturación).
-El NIF deberá ser el mismo y el Sufijo distinto cuando la facturación sea
+se identifica por un codigo de dos partes: Numero de Identificacion Fiscal (
+N.I.F.) y Sufijo (Numero de tres cifras que identifica los diferentes tipos de
+facturacion del cliente y/o los diferentes centros emisores de soportes o
+ficheros de facturacion).
+El NIF debera ser el mismo y el Sufijo distinto cuando la facturacion sea
 repartida entre varias Entidades Receptoras, asignando un Sufijo distinto a
 cada Entidad.
-\param curbanco cursor sobre el registre de banc que rebrà els ingressos.
+\param curbanco cursor sobre el registre de banc que rebra els ingressos.
 \return
 **/
 void Q19Writer::cabeceraPresentador ( QTextStream &out, QString sufijo , BlDbRecordSet *curbanco )
@@ -338,7 +338,7 @@ void Q19Writer::cabeceraPresentador ( QTextStream &out, QString sufijo , BlDbRec
 
 
 	/// Registro en Euros. Longitud: 2
-	out << ( "51" )  // pàg. 25 diu 01, pàg. 17 diu 51
+	out << ( "51" )  // pag. 25 diu 01, pag. 17 diu 51
 	/// Registro de codigo de dato: 80. Longitud: 2
 	<< ( "80" )
 	/// Codigo de presentador (NIF + Sufijo alineado a la derecha y rellenado con ceros) Longitud: 12
@@ -362,7 +362,7 @@ void Q19Writer::cabeceraPresentador ( QTextStream &out, QString sufijo , BlDbRec
 	<< QString ( 40, ' ' )
 	/// Espacio libre Longitud: 14
 	<< QString ( 14, ' ' )
-	/// Hi ha d'haver salts de línia o no?. Un fitxer d'exemple que tinc en porta.
+	/// Hi ha d'haver salts de linia o no?. Un fitxer d'exemple que tinc en porta.
 	<< "\x0a";
 	_depura ( "END Q19Writer::cabeceraPresentador", 0 );
 }
@@ -381,7 +381,7 @@ void Q19Writer::cabeceraOrdenante ( QTextStream &out, QString sufijo , BlDbRecor
 	/// GENERAMOS LA CABECERA ORDENANTE
 	/// REGISTRO DEL ORDENANTE
 	/// Registro en Euros. Longitud: 2
-	out << ( "53" )  // pàg. 18 diu 53 , pàg. 25 diu 03
+	out << ( "53" )  // pag. 18 diu 53 , pag. 25 diu 03
 	/// Registro de codigo de dato: 80. Longitud: 2
 	<< ( "80" )
 
@@ -465,11 +465,11 @@ int Q19Writer::cobroQ19 ( QTextStream &out, QString sufijo,   BlDbRecordSet *cur
 	                     // +". "+
                              curcobro->valor ( "comentcobro" ) ).simplified();
 	int i=0;
-	for ( i=0; ( i<=5 ) && ( (i==0) || (concepte.length() >0) );i++ )   //núm de registres d'aquest rebut depen de long de concepte
+	for ( i=0; ( i<=5 ) && ( (i==0) || (concepte.length() >0) );i++ )   //num de registres d'aquest rebut depen de long de concepte
 	{
 		/// CABECERA INDIVIDUAL OBLIGATORIO
 		/// Registro en Euros. Longitud: 2
-		out <<  "56" //pàg 18 diu 56, pàg. 25 diu 06
+		out <<  "56" //pag 18 diu 56, pag. 25 diu 06
 		/// Registro de codigo de dato: 80. Longitud: 2
 		<< ( 80+i )
 
@@ -492,9 +492,9 @@ int Q19Writer::cobroQ19 ( QTextStream &out, QString sufijo,   BlDbRecordSet *cur
 			/// Total Importe domiciliacion Longitud: 10
 			<< import ( curcobro, "cantcobro" , 10 )
 
-			/// Código para devoluciones: 6
+			/// Codigo para devoluciones: 6
 			<< curcobro->valor ( "idcobro" ).leftJustified ( 6, ' ', true )
-			/// Código para referencia interna
+			/// Codigo para referencia interna
 			<< curcobro->valor ( "idcobro" ).leftJustified ( 10, ' ', true )
 			/// Primer campo de concepto Longitud: 40
 			<< concepte.leftJustified ( 40, ' ',true )
@@ -504,22 +504,22 @@ int Q19Writer::cobroQ19 ( QTextStream &out, QString sufijo,   BlDbRecordSet *cur
 			<< "\x0a";
 			concepte = concepte.mid ( 40 );
 		}
-		else   // registre opcional i-éssim, per si no hi cap el concepte. Passem de 6é registre opcional.
+		else   // registre opcional i-essim, per si no hi cap el concepte. Passem de 6e registre opcional.
 		{
-			// i==0 -> segon, tercer, quart camp de concepte, i==2 ->  cinquè, sisè, setè camp de concepte ...
+			// i==0 -> segon, tercer, quart camp de concepte, i==2 ->  cinque, sise, sete camp de concepte ...
 			for ( int numCamp = ( ( i-1 ) *3 ) + 2; numCamp < i*3+2; numCamp++ )
 			{
 				_depura ( "opcional inici ",0," numCamp="+QString::number ( numCamp )
 				          +" concepte='"+concepte+"'" );
 				bool finalLinia= ( ( concepte.length() >40 ) && ( numCamp % 2 ==0 ) );
-				if ( finalLinia ) // cada camp és mitja línia, a final de línia partim per espai en blanc
+				if ( finalLinia ) // cada camp es mitja linia, a final de linia partim per espai en blanc
 				{
-					//final de línia.
+					//final de linia.
 					if ( finalLinia=regex.exactMatch ( concepte ) )
 					{
 						out << regex.cap ( 1 ).leftJustified ( 40,' ',true );
 						concepte = regex.cap ( 2 );
-					} // else hi ha més de 40 caracters sense un espai, tractem com si fos principi de linia
+					} // else hi ha mes de 40 caracters sense un espai, tractem com si fos principi de linia
 
 				}
 				_depura ( "opcional mig ",0," numCamp="+QString::number ( numCamp )
@@ -560,7 +560,7 @@ void Q19Writer::totalOrdenante ( QTextStream &out,  QString sufijo , BlDbRecordS
 	_depura ( "Q19Writer::totalOrdenante", 0 );
 	/// CABECERA TOTAL ORDENANTE
 	/// Registro en Euros. Longitud: 2
-	out << "58" // pàg. 28 diu 08, pàg. 23 diu 58
+	out << "58" // pag. 28 diu 08, pag. 23 diu 58
 	/// Registro de codigo de dato: 80. Longitud: 2
 	<<"80"
 	/// Codigo de presentador (NIF + Sufijo alineado a la derecha y rellenado con ceros) Longitud: 12
@@ -600,7 +600,7 @@ void Q19Writer::totalPresentador ( QTextStream &out,  QString sufijo , BlDbRecor
 	_depura ( "Q19Writer::totalPresentador", 0 );
 	/// CABECERA TOTAL ORDENANTE
 	/// Registro en Euros. Longitud: 2
-	out << "59" //pàg. 24 diu 59,pàg. 29 diu 09
+	out << "59" //pag. 24 diu 59,pag. 29 diu 09
 	/// Registro de codigo de dato: 80. Longitud: 2
 	<<"80"
 	/// Codigo de presentador (NIF + Sufijo alineado a la derecha y rellenado con ceros) Longitud: 12

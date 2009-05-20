@@ -101,7 +101,7 @@ void Q19QToolButton::click()
  
        m_companyact = ( BfCompany * ) m_cobrosList->mainCompany();
  
-       _depura("buscaré ids ",0,ids);
+       _depura("buscare ids ",0,ids);
        BlDbRecordSet *curcobro = m_companyact->loadQuery ( "SELECT cantcobro,'Ref:'||coalesce(refcobro,'')||'.'||coalesce(comentcobro,'') as comentcobro, fechavenccobro, cobro.idbanco, cobro.idcliente, idcobro, refcobro, cliente.* FROM cobro NATURAL LEFT JOIN cliente WHERE idcobro IN (" + ids +") ORDER BY cobro.idbanco,fechavenccobro,substring(cliente.bancocliente from 1 for 8),cliente.idcliente " );
        QStringList ids;
        m_q19->genera(curcobro,QString(""),&ids);

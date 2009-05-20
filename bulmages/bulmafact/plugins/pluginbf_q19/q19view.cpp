@@ -165,7 +165,7 @@ void Q19View::on_mui_aceptar_clicked()
                                "'||coalesce(to_char("+fechacargo+",'\\1'),'')||'");
 
 
-              // per omissió "FRA %serie%num %desc "
+              // per omissio "FRA %serie%num %desc "
                          
               BlDbRecordSet *cur = mainCompany()->loadQuery (
                                    " select "
@@ -194,5 +194,12 @@ void Q19View::on_mui_aceptar_clicked()
     _depura ( "END Q19View::on_mui_aceptar_clicked", 0 );
 }
 
+
+void Q19View::closeEvent ( QCloseEvent *e ) {
+  //no hay nada que guardar
+   _depura ( "Q19View::closeEvent", 0, windowTitle() );
+   
+   _depura ( "END Q19View::closeEvent", 0 );
+}
 
 
