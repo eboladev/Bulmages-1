@@ -2946,7 +2946,6 @@ bool BlSubFormDelegate::eventFilter ( QObject *obj, QEvent *event )
                if (mod & Qt::ShiftModifier) {
                    obj->event ( event );
                } else {
-		   ((QWidget*)obj)->clearFocus();
                    QApplication::sendEvent ( m_subform->mui_list, event );
                } // end if
                 return TRUE;
