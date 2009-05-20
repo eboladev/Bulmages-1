@@ -66,9 +66,19 @@ void BfBuscarSerieFactura::setId ( QString codigo )
 {
     _depura ( "BfBuscarSerieFactura::setcodigoserie_factura", 0 );
     /// Si lo que se pasa como serie es un valor malo cogemos la serie de factura por defecto.
+    /// Prevalece el valor de la configuracion en la base de datos sobre el valor en el archivo de configuracion.
+
     if ( codigo.isEmpty() || codigo == "0" ) {
         codigo = g_confpr->valor ( CONF_SERIE_FACTURA_DEFECTO );
     } // end if
+
+    BlDbRecordSet *cur = mainCompany() ->loadQuery ( "SELECT * FROM configuracion WHERE nombre ='SerieFacturaDefecto'" );
+    if ( !cur ) return;
+    if ( !cur->eof() ) {
+        codigo = cur->valor ( "valor" );
+    } // end if
+    delete cur;
+
 
     if ( m_comboRecordSet != NULL )
         delete m_comboRecordSet;
