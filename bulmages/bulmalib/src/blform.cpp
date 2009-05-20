@@ -824,8 +824,10 @@ void BlForm::substrVars ( QString &buff, int tipoEscape )
 
     /// Buscamos parametros en el query y los ponemos.
     QRegExp rx ( "\\[(\\w*)\\]" );
+    QString tmp;
     while ( ( pos = rx.indexIn ( buff, pos ) ) != -1 ) {
         if ( exists ( rx.cap ( 1 ) ) ) {
+                        
             switch ( tipoEscape ) {
             case 1:
                 buff.replace ( pos, rx.matchedLength(), xmlEscape ( dbValue ( rx.cap ( 1 ) ) ) );
@@ -961,7 +963,7 @@ int BlForm::trataTags ( QString &buff, int tipoEscape )
     } // end while
 
     /// Tratamos las variables establecidas.
-    substrVars ( buff );
+    substrVars ( buff, tipoEscape );
 
 
 
@@ -1100,7 +1102,7 @@ QString BlForm::trataQuery ( const QString &query, const QString &datos, int tip
     QString query1 = query;
 
     /// Buscamos parametros en el query y los ponemos.
-    substrVars ( query1 );
+    substrVars ( query1, tipoEscape );
 
     /// Cargamos el query y lo recorremos
     result = trataCursor ( mainCompany() ->loadQuery ( query1 ), datos, tipoEscape );
@@ -1113,7 +1115,7 @@ QString BlForm::trataCursor ( BlDbRecordSet *cur, const QString &datos, int tipo
 {
     _depura ( "BlForm::trataCursor", 0 );
     QString result = "";
-
+    
     if ( !cur ) {
         _depura ( "END BlForm::trataCursor", 0 , "cur==NULL" );
         return "";
