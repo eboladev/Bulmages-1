@@ -25,9 +25,7 @@
 #include "bfform.h"
 #include "blplugins.h"
 
-
 class BlFixed;
-
 
 ///
 /**
@@ -40,11 +38,12 @@ BfForm::BfForm ( BfCompany *comp, QWidget *parent, Qt::WFlags f, edmode modo )
         : BlForm ( comp, parent, f, modo )
 {
     _depura ( "BfForm::BfForm", 0 );
+    
     m_listalineas = NULL;
     m_listadescuentos = NULL;
+    
     _depura ( "END BfForm::BfForm", 0 );
 }
-
 
 ///
 /**
@@ -53,10 +52,11 @@ BfForm::BfForm ( BfCompany *comp, QWidget *parent, Qt::WFlags f, edmode modo )
 BfForm::~BfForm()
 {
     _depura ( "BfForm::~BfForm", 0, this->windowTitle() );
+    
     mainCompany() ->sacaWindow ( this );
+    
     _depura ( "END BfForm::~BfForm", 0 );
 }
-
 
 ///
 /**
@@ -66,6 +66,7 @@ BfCompany * BfForm::mainCompany()
 {
     _depura ( "BfForm::getcompany", 0 );
     _depura ( "END BfForm::getcompany", 0 );
+    
     return ( BfCompany * ) BlForm::mainCompany();
 }
 
@@ -79,14 +80,17 @@ BfCompany * BfForm::mainCompany()
 void BfForm::calculaypintatotales()
 {
     _depura ( "BfForm::calculaypintatotales", 0 );
+    
     base basesimp;
     base basesimpreqeq;
     BlDbSubFormRecord *linea;
+    
     /// Impresion de los contenidos.
     QString l;
     BlFixed irpf ( "0" );
 
     BlDbRecordSet *cur = mainCompany() ->loadQuery ( "SELECT * FROM configuracion WHERE nombre = 'IRPF'" );
+    
     if ( cur ) {
         if ( !cur->eof() ) {
             irpf = BlFixed ( cur->valor ( "valor" ) );
@@ -105,6 +109,7 @@ void BfForm::calculaypintatotales()
     } // end if
 
     BlFixed descuentolinea ( "0.00" );
+    
     for ( int i = 0; i < m_listalineas->rowCount(); ++i ) {
         linea = m_listalineas->lineaat ( i );
         BlFixed cant ( linea->dbValue ( "cant" + m_listalineas->tableName() ).toAscii().constData() );
@@ -119,6 +124,7 @@ void BfForm::calculaypintatotales()
 
     BlFixed basei ( "0.00" );
     base::Iterator it;
+    
     for ( it = basesimp.begin(); it != basesimp.end(); ++it ) {
         basei = basei + it.value();
     } // end for
@@ -126,6 +132,7 @@ void BfForm::calculaypintatotales()
     /// Calculamos el total de los descuentos.
     BlFixed porcentt ( "0.00" );
     BlDbSubFormRecord *linea1;
+    
     if ( m_listadescuentos->rowCount() ) {
         for ( int i = 0; i < m_listadescuentos->rowCount(); ++i ) {
             linea1 = m_listadescuentos->lineaat ( i );
@@ -137,20 +144,27 @@ void BfForm::calculaypintatotales()
     /// Calculamos el total de base imponible.
     BlFixed totbaseimp ( "0.00" );
     BlFixed parbaseimp ( "0.00" );
+    
     for ( it = basesimp.begin(); it != basesimp.end(); ++it ) {
+    
         if ( porcentt > BlFixed ( "0.00" ) ) {
             parbaseimp = it.value() - it.value() * porcentt / 100;
         } else {
             parbaseimp = it.value();
         } // end if
+        
         totbaseimp = totbaseimp + parbaseimp;
+        
     } // end for
 
     /// Calculamos el total de IVA.
     BlFixed totiva ( "0.00" );
     BlFixed pariva ( "0.00" );
+    
     for ( it = basesimp.begin(); it != basesimp.end(); ++it ) {
+    
         BlFixed piva ( it.key().toAscii().constData() );
+        
         if ( porcentt > BlFixed ( "0.00" ) ) {
             QString evpariva = "( 1 - " + porcentt.toQString() + " / 100 ) * " + it.value().toQString() + " * " + piva.toQString() + " / 100";
             QString tot = mainCompany()->PGEval ( evpariva );
@@ -161,27 +175,34 @@ void BfForm::calculaypintatotales()
             QString tot = mainCompany()->PGEval ( evpariva );
             pariva = BlFixed ( tot );
         } // end if
+        
         totiva = totiva + pariva;
+        
     } // end for
 
     /// Calculamos el total de recargo de equivalencia.
     BlFixed totreqeq ( "0.00" );
     BlFixed parreqeq ( "0.00" );
+    
     for ( it = basesimpreqeq.begin(); it != basesimpreqeq.end(); ++it ) {
+    
         BlFixed preqeq ( it.key().toAscii().constData() );
+        
         if ( porcentt > BlFixed ( "0.00" ) ) {
             parreqeq = ( it.value() - it.value() * porcentt / 100 ) * preqeq / 100;
         } else {
             parreqeq = it.value() * preqeq / 100;
         } // end if
+        
         totreqeq = totreqeq + parreqeq;
+        
     } // end for
 
     BlFixed totirpf = totbaseimp * irpf / 100;
     pintatotales ( totiva, totbaseimp, totiva + totbaseimp + totreqeq - totirpf, ( basei * porcentt / 100 ) + descuentolinea, totirpf, totreqeq );
+    
     _depura ( "END BfForm::calculaypintatotales", 0 );
 }
-
 
 /// Busca strings del tipo [xxxx] entro del texto pasado y los sustituye
 /// Por valores existentes en la base de datos.
@@ -191,11 +212,13 @@ void BfForm::calculaypintatotales()
 int BfForm::trataTags ( QString &buff, int tipoEscape )
 {
     _depura ( "BfForm::trataTags", 0 );
+    
     int pos =  0;
 
     /// Buscamos algo de lineas de detalle
     QRegExp rx ( "<!--\\s*LINEAS\\s*DETALLE\\s*-->(.*)<!--\\s*END\\s*LINEAS\\s*DETALLE\\s*-->" );
     rx.setMinimal ( TRUE );
+    
     while ( ( pos = rx.indexIn ( buff, pos ) ) != -1 ) {
         QString ldetalle = trataLineasDetalle ( rx.cap ( 1 ), tipoEscape );
         buff.replace ( pos, rx.matchedLength(), ldetalle );
@@ -206,6 +229,7 @@ int BfForm::trataTags ( QString &buff, int tipoEscape )
     pos = 0;
     QRegExp rx3 ( "<!--\\s*IF\\s*DESCUENTOS\\s*-->(.*)<!--\\s*END\\s*IF\\s*DESCUENTOS\\s*-->" );
     rx3.setMinimal ( TRUE );
+    
     while ( ( pos = rx3.indexIn ( buff, pos ) ) != -1 ) {
         if ( m_listadescuentos->rowCount() - 1 <= 0 ) {
             buff.replace ( pos, rx3.matchedLength(), "" );
@@ -219,6 +243,7 @@ int BfForm::trataTags ( QString &buff, int tipoEscape )
     pos = 0;
     QRegExp rx2 ( "<!--\\s*LINEAS\\s*DESCUENTO\\s*-->(.*)<!--\\s*END\\s*LINEAS\\s*DESCUENTO\\s*-->" );
     rx2.setMinimal ( TRUE );
+    
     while ( ( pos = rx2.indexIn ( buff, pos ) ) != -1 ) {
         QString ldetalle = trataLineasDescuento ( rx2.cap ( 1 ), tipoEscape );
         buff.replace ( pos, rx2.matchedLength(), ldetalle );
@@ -229,6 +254,7 @@ int BfForm::trataTags ( QString &buff, int tipoEscape )
     pos = 0;
     QRegExp rx5 ( "<!--\\s*TOTALES\\s*-->(.*)<!--\\s*END\\s*TOTALES\\s*-->" );
     rx5.setMinimal ( TRUE );
+    
     while ( ( pos = rx5.indexIn ( buff, pos ) ) != -1 ) {
         QString ldetalle = trataTotales ( rx5.cap ( 1 ), 1 );
         buff.replace ( pos, rx5.matchedLength(), ldetalle );
@@ -238,6 +264,7 @@ int BfForm::trataTags ( QString &buff, int tipoEscape )
     pos = 0;
     QRegExp rx6 ( "<!--\\s*TOTREQ\\s*-->(.*)<!--\\s*END\\s*TOTREQ\\s*-->" );
     rx6.setMinimal ( TRUE );
+    
     while ( ( pos = rx6.indexIn ( buff, pos ) ) != -1 ) {
         QString ldetalle = trataTotales ( rx6.cap ( 1 ), 2 );
         buff.replace ( pos, rx6.matchedLength(), ldetalle );
@@ -247,10 +274,11 @@ int BfForm::trataTags ( QString &buff, int tipoEscape )
     int ret = BlForm::trataTags ( buff, tipoEscape );
 
     trataTagsBf ( buff, tipoEscape );
+    
     _depura ( "END BfForm::trataTags", 0 );
+    
     return ret;
 }
-
 
 void BfForm::trataTagsBf ( QString &buff, int tipoEscape )
 {
@@ -258,12 +286,16 @@ void BfForm::trataTagsBf ( QString &buff, int tipoEscape )
 
     QString fitxersortidatxt = "";
     BlDbRecordSet *cur = NULL;
+    
     try {
+    
         base basesimp;
         base basesimpreqeq;
 
         BlFixed irpf ( "0" );
+        
         cur = mainCompany() ->loadQuery ( "SELECT * FROM configuracion WHERE nombre = 'IRPF'" );
+        
         if ( cur ) {
             if ( !cur->eof() ) {
                 irpf = BlFixed ( cur->valor ( "valor" ) );
@@ -306,105 +338,104 @@ void BfForm::trataTagsBf ( QString &buff, int tipoEscape )
             return;
         } // end if
 
-	/// Expresion regular para saber los parametros de STORY.
- 	QRegExp rx("\\[story(.*)\\]");
-	rx.setMinimal(true);
-	rx.setCaseSensitivity(Qt::CaseInsensitive);
+        /// Expresion regular para saber los parametros de STORY.
+        QRegExp rx("\\[story(.*)\\]");
+        rx.setMinimal(true);
+        rx.setCaseSensitivity(Qt::CaseInsensitive);
 
-	/// Sustituye todas las ocurrencias de STORY.
- 	int pos = 0;
- 	while (( pos = rx.indexIn ( buff, pos )) != -1 ) {
+        /// Sustituye todas las ocurrencias de STORY.
+        int pos = 0;
+        
+        while (( pos = rx.indexIn ( buff, pos )) != -1 ) {
 
-		/// Extrae los parametros de STORY.
-		QStringList parametros_story = rx.cap(1).toLower().split(",");
+            /// Extrae los parametros de STORY.
+            QStringList parametros_story = rx.cap(1).toLower().split(",");
 
-		/// Si STORY tiene parametros se crean las columnas en el orden indicado.
-		/// Si no tiene parametros se escriben unas columnas predeterminadas.
-		/// parametros_story siempre tiene, al menos, 1 elemento aunque no se hayan
-		/// especificado parametros. Por eso tenemos que hacer unas pocas comprobaciones mas.
-		if ((parametros_story.count() >= 1) && (parametros_story[0].trimmed() != "")) {
+            /// Si STORY tiene parametros se crean las columnas en el orden indicado.
+            /// Si no tiene parametros se escriben unas columnas predeterminadas.
+            /// parametros_story siempre tiene, al menos, 1 elemento aunque no se hayan
+            /// especificado parametros. Por eso tenemos que hacer unas pocas comprobaciones mas.
+            if ((parametros_story.count() >= 1) && (parametros_story[0].trimmed() != "")) {
 
-			/// Recorre las lineas del documento
-			for ( int i = 0; i < ( m_listalineas->rowCount() - 1 ); ++i ) {
+                /// Recorre las lineas del documento
+                for ( int i = 0; i < ( m_listalineas->rowCount() - 1 ); ++i ) {
 
-				linea = m_listalineas->lineaat ( i );
-				BlFixed base = BlFixed ( linea->dbValue ( "cant" + m_listalineas->tableName() ).toAscii().constData() ) * BlFixed ( linea->dbValue ( "pvp" + m_listalineas->tableName() ).toAscii().constData() );
-				fitxersortidatxt += "<tr>\n";
-				/// Recorre todos los parametros
-				for (int j = 0; j < parametros_story.count(); ++j ) {
-		
-					if ( parametros_story[j].trimmed() == "codigocompletoarticulo" ){
-						///Impresion del codigo de los articulos
-						fitxersortidatxt += "    <td>" + genEscape ( linea->dbValue ( "codigocompletoarticulo" ), tipoEscape ) + "</td>\n";
-					} // end if
-		
-					if ( parametros_story[j].trimmed() == "desc" + m_tablename ){
-						///Impresion del descripcion de los articulos
-						fitxersortidatxt += "    <td><para style=\"paragrafo\">" + genEscape ( linea->dbValue ( "desc" + m_listalineas->tableName() ), tipoEscape ).replace ( QChar ( '\n' ), "<br/>" ) + "</para></td>\n";
-					} // end if
-		
-					if ( parametros_story[j].trimmed() == "cant" + m_tablename ){
-						///Impresion de las candidad de los articulos
-						fitxersortidatxt += "    <td>" + linea->dbValue ( "cant" + m_listalineas->tableName() ) + "</td>\n";
-					} // end if
-		
-					if ( parametros_story[j].trimmed() == "pvp" + m_tablename ){
-						///Impresion del precio de los articulos
-						fitxersortidatxt += "    <td>" + l.sprintf ( "%s", genEscape ( linea->dbValue ( "pvp" + m_listalineas->tableName() ), tipoEscape ).toAscii().constData() ) + "</td>\n";
-					} // end if
-		
-					if ( parametros_story[j].trimmed() == "descuento" + m_tablename ){
-						///Impresion del subtotal de los articulos
-						fitxersortidatxt += "    <td>" + l.sprintf ( "%s", genEscape ( linea->dbValue ( "descuento" + m_listalineas->tableName() ), tipoEscape ).toAscii().constData() ) + " %</td>\n";
-					} // end if
+                    linea = m_listalineas->lineaat ( i );
+                    BlFixed base = BlFixed ( linea->dbValue ( "cant" + m_listalineas->tableName() ).toAscii().constData() ) * BlFixed ( linea->dbValue ( "pvp" + m_listalineas->tableName() ).toAscii().constData() );
+                    fitxersortidatxt += "<tr>\n";
+                    
+                    /// Recorre todos los parametros
+                    for (int j = 0; j < parametros_story.count(); ++j ) {
+            
+                        if ( parametros_story[j].trimmed() == "codigocompletoarticulo" ){
+                            ///Impresion del codigo de los articulos
+                            fitxersortidatxt += "    <td>" + genEscape ( linea->dbValue ( "codigocompletoarticulo" ), tipoEscape ) + "</td>\n";
+                        } // end if
+            
+                        if ( parametros_story[j].trimmed() == "desc" + m_tablename ){
+                            ///Impresion del descripcion de los articulos
+                            fitxersortidatxt += "    <td><para style=\"paragrafo\">" + genEscape ( linea->dbValue ( "desc" + m_listalineas->tableName() ), tipoEscape ).replace ( QChar ( '\n' ), "<br/>" ) + "</para></td>\n";
+                        } // end if
+            
+                        if ( parametros_story[j].trimmed() == "cant" + m_tablename ){
+                            ///Impresion de las candidad de los articulos
+                            fitxersortidatxt += "    <td>" + linea->dbValue ( "cant" + m_listalineas->tableName() ) + "</td>\n";
+                        } // end if
+            
+                        if ( parametros_story[j].trimmed() == "pvp" + m_tablename ){
+                            ///Impresion del precio de los articulos
+                            fitxersortidatxt += "    <td>" + l.sprintf ( "%s", genEscape ( linea->dbValue ( "pvp" + m_listalineas->tableName() ), tipoEscape ).toAscii().constData() ) + "</td>\n";
+                        } // end if
+            
+                        if ( parametros_story[j].trimmed() == "descuento" + m_tablename ){
+                            ///Impresion del subtotal de los articulos
+                            fitxersortidatxt += "    <td>" + l.sprintf ( "%s", genEscape ( linea->dbValue ( "descuento" + m_listalineas->tableName() ), tipoEscape ).toAscii().constData() ) + " %</td>\n";
+                        } // end if
 
-					if ( parametros_story[j].trimmed() == "subtotal" + m_tablename ){
-						///Impresion del subtotal de los articulos
-						fitxersortidatxt += "    <td>" + l.sprintf ( "%s", ( base - base * BlFixed ( linea->dbValue ( "descuento" + m_listalineas->tableName() ) ) / 100 ).toQString().toAscii().constData() ) + "</td>\n";
-					} // end if
-		
-				} //end for
-		
-				fitxersortidatxt += "</tr>\n";
+                        if ( parametros_story[j].trimmed() == "subtotal" + m_tablename ){
+                            ///Impresion del subtotal de los articulos
+                            fitxersortidatxt += "    <td>" + l.sprintf ( "%s", ( base - base * BlFixed ( linea->dbValue ( "descuento" + m_listalineas->tableName() ) ) / 100 ).toQString().toAscii().constData() ) + "</td>\n";
+                        } // end if
+            
+                    } //end for
+            
+                    fitxersortidatxt += "</tr>\n";
 
-			} // end for
+                } // end for
 
-			buff.replace ( pos, rx.matchedLength(), fitxersortidatxt );
-			pos += rx.matchedLength();
+                buff.replace ( pos, rx.matchedLength(), fitxersortidatxt );
+                pos += rx.matchedLength();
 
-		} else {
+            } else {
 
-			/// Impresion de las lineas
-			for ( int i = 0; i < ( m_listalineas->rowCount() - 1 ); ++i ) {
-				linea = m_listalineas->lineaat ( i );
-				BlFixed base = BlFixed ( linea->dbValue ( "cant" + m_listalineas->tableName() ).toAscii().constData() ) * BlFixed ( linea->dbValue ( "pvp" + m_listalineas->tableName() ).toAscii().constData() );
-				///Impresion de los contenidos
-				fitxersortidatxt += "<tr>";
-				fitxersortidatxt += "    <td>" + genEscape ( linea->dbValue ( "codigocompletoarticulo" ), tipoEscape ) + "</td>\n";
-				fitxersortidatxt += "    <td><para style=\"paragrafo\">" + genEscape ( linea->dbValue ( "desc" + m_listalineas->tableName() ), tipoEscape ).replace ( QChar ( '\n' ), "<br/>" ) + "</para></td>\n";
-				fitxersortidatxt += "    <td>" + linea->dbValue ( "cant" + m_listalineas->tableName() ) + "</td>\n";
-				fitxersortidatxt += "    <td>" + l.sprintf ( "%s", genEscape ( linea->dbValue ( "pvp" + m_listalineas->tableName() ), tipoEscape ).toAscii().constData() ) + "</td>\n";
-				fitxersortidatxt += "    <td>" + l.sprintf ( "%s", genEscape ( linea->dbValue ( "descuento" + m_listalineas->tableName() ), tipoEscape ).toAscii().constData() ) + " %</td>\n";
-				fitxersortidatxt += "    <td>" + l.sprintf ( "%s", ( base - base * BlFixed ( linea->dbValue ( "descuento" + m_listalineas->tableName() ) ) / 100 ).toQString().toAscii().constData() ) + "</td>\n";
-				fitxersortidatxt += "</tr>";
-			} // end for
-		
-			buff.replace ( "[story]", fitxersortidatxt );
+                /// Impresion de las lineas
+                for ( int i = 0; i < ( m_listalineas->rowCount() - 1 ); ++i ) {
+                    linea = m_listalineas->lineaat ( i );
+                    BlFixed base = BlFixed ( linea->dbValue ( "cant" + m_listalineas->tableName() ).toAscii().constData() ) * BlFixed ( linea->dbValue ( "pvp" + m_listalineas->tableName() ).toAscii().constData() );
+                    ///Impresion de los contenidos
+                    fitxersortidatxt += "<tr>";
+                    fitxersortidatxt += "    <td>" + genEscape ( linea->dbValue ( "codigocompletoarticulo" ), tipoEscape ) + "</td>\n";
+                    fitxersortidatxt += "    <td><para style=\"paragrafo\">" + genEscape ( linea->dbValue ( "desc" + m_listalineas->tableName() ), tipoEscape ).replace ( QChar ( '\n' ), "<br/>" ) + "</para></td>\n";
+                    fitxersortidatxt += "    <td>" + linea->dbValue ( "cant" + m_listalineas->tableName() ) + "</td>\n";
+                    fitxersortidatxt += "    <td>" + l.sprintf ( "%s", genEscape ( linea->dbValue ( "pvp" + m_listalineas->tableName() ), tipoEscape ).toAscii().constData() ) + "</td>\n";
+                    fitxersortidatxt += "    <td>" + l.sprintf ( "%s", genEscape ( linea->dbValue ( "descuento" + m_listalineas->tableName() ), tipoEscape ).toAscii().constData() ) + " %</td>\n";
+                    fitxersortidatxt += "    <td>" + l.sprintf ( "%s", ( base - base * BlFixed ( linea->dbValue ( "descuento" + m_listalineas->tableName() ) ) / 100 ).toQString().toAscii().constData() ) + "</td>\n";
+                    fitxersortidatxt += "</tr>";
+                } // end for
+            
+                buff.replace ( "[story]", fitxersortidatxt );
 
-		} // end if
+            } // end if
 
-	} // end while
+        } // end while
 
-
-	/// calculamos las bases
-	for ( int i = 0; i < ( m_listalineas->rowCount() - 1 ); ++i ) {
-
-		linea = m_listalineas->lineaat ( i );
-		BlFixed base = BlFixed ( linea->dbValue ( "cant" + m_listalineas->tableName() ).toAscii().constData() ) * BlFixed ( linea->dbValue ( "pvp" + m_listalineas->tableName() ).toAscii().constData() );
-		basesimp[linea->dbValue ( "iva"+m_listalineas->tableName() ) ] = basesimp[linea->dbValue ( "iva"+m_listalineas->tableName() ) ] + base - base * BlFixed ( linea->dbValue ( "descuento" + m_listalineas->tableName() ).toAscii().constData() ) / 100;
-		basesimpreqeq[linea->dbValue ( "reqeq" + m_listalineas->tableName() ) ] = basesimpreqeq[linea->dbValue ( "reqeq"+m_listalineas->tableName() ) ] + base - base * BlFixed ( linea->dbValue ( "descuento" + m_listalineas->tableName() ).toAscii().constData() ) / 100;
-	} // end for
-
+        /// calculamos las bases
+        for ( int i = 0; i < ( m_listalineas->rowCount() - 1 ); ++i ) {
+            linea = m_listalineas->lineaat ( i );
+            BlFixed base = BlFixed ( linea->dbValue ( "cant" + m_listalineas->tableName() ).toAscii().constData() ) * BlFixed ( linea->dbValue ( "pvp" + m_listalineas->tableName() ).toAscii().constData() );
+            basesimp[linea->dbValue ( "iva"+m_listalineas->tableName() ) ] = basesimp[linea->dbValue ( "iva"+m_listalineas->tableName() ) ] + base - base * BlFixed ( linea->dbValue ( "descuento" + m_listalineas->tableName() ).toAscii().constData() ) / 100;
+            basesimpreqeq[linea->dbValue ( "reqeq" + m_listalineas->tableName() ) ] = basesimpreqeq[linea->dbValue ( "reqeq"+m_listalineas->tableName() ) ] + base - base * BlFixed ( linea->dbValue ( "descuento" + m_listalineas->tableName() ).toAscii().constData() ) / 100;
+        } // end for
 
         BlFixed basei ( "0.00" );
         base::Iterator it;
@@ -417,14 +448,18 @@ void BfForm::trataTagsBf ( QString &buff, int tipoEscape )
         fitxersortidatxt = "";
         BlFixed porcentt ( "0.00" );
         BlDbSubFormRecord *linea1;
-        if ( m_listadescuentos )
+        
+        if ( m_listadescuentos ) {
+            
             if ( m_listadescuentos->rowCount() - 1 ) {
+            
                 fitxersortidatxt += "<blockTable style=\"tabladescuento\">\n";
                 fitxersortidatxt += "<tr>\n";
                 fitxersortidatxt += "    <td>" + genEscape ( _ ( "Descuento" ), tipoEscape ) + "</td>\n";
                 fitxersortidatxt += "    <td>" + genEscape ( _ ( "Porcentaje" ), tipoEscape ) + "</td>\n";
                 fitxersortidatxt += "    <td>" + genEscape ( _ ( "Total Desc." ), tipoEscape ) + "</td>\n";
                 fitxersortidatxt += "</tr>\n";
+                
                 for ( int i = 0; i < ( m_listadescuentos->rowCount() - 1 ); ++i ) {
                     linea1 = m_listadescuentos->lineaat ( i );
                     porcentt = porcentt + BlFixed ( linea1->dbValue ( "proporcion" + m_listadescuentos->tableName() ).toAscii().constData() );
@@ -434,11 +469,14 @@ void BfForm::trataTagsBf ( QString &buff, int tipoEscape )
                     fitxersortidatxt += "    <td>" + genEscape ( l.sprintf ( "-%s", ( BlFixed ( linea1->dbValue ( "proporcion" + m_listadescuentos->tableName() ) ) * basei / 100 ).toQString().toAscii().constData() ), tipoEscape ) + "</td>\n";
                     fitxersortidatxt += "</tr>";
                 } // end for
+                
                 fitxersortidatxt += "</blockTable>\n";
+                
             } // end if
+            
+        } // end if
+        
         buff.replace ( "[descuentos]", fitxersortidatxt );
-
-
 
         /// Impresion de las bases imponibles.
         fitxersortidatxt = "";
@@ -448,49 +486,63 @@ void BfForm::trataTagsBf ( QString &buff, int tipoEscape )
         BlFixed totbaseimp ( "0.00" );
         BlFixed parbaseimp ( "0.00" );
         BlFixed totdesc ( "0.00" );
+        
         for ( it = basesimp.begin(); it != basesimp.end(); ++it ) {
+        
             if ( porcentt > 0 ) {
                 parbaseimp = it.value() - it.value() * porcentt / 100;
                 totdesc = totdesc + it.value() * porcentt / 100;
             } else {
                 parbaseimp = it.value();
             } // end if
+            
             totbaseimp = totbaseimp + parbaseimp;
             tr1 += "    <td>" + genEscape ( _ ( "Base Imponible" ) + " " + genEscape ( it.key() ), tipoEscape ) + " %</td>\n";
             tr2 += "    <td>" + l.sprintf ( " %s ", parbaseimp.toQString().toAscii().constData() ) + "</td>\n";
+            
         } // end for
 
         /// Impresion de los IVAS.
         BlFixed totiva ( "0.0" );
         BlFixed pariva ( "0.0" );
+        
         for ( it = basesimp.begin(); it != basesimp.end(); ++it ) {
+        
             if ( porcentt > 0 ) {
                 pariva = ( it.value() - it.value() * porcentt / 100 ) * BlFixed ( it.key() ) / 100;
             } else {
                 pariva = it.value() * BlFixed ( it.key() ) / 100;
             } // end if
+            
             totiva = totiva + pariva;
             tr1 += "    <td>" + genEscape ( _ ( "I.V.A." ), tipoEscape ) + " " + genEscape ( it.key(), tipoEscape ) + " %</td>\n";
             tr2 += "    <td>" + l.sprintf ( " %s ", genEscape ( pariva.toQString(), tipoEscape ).toAscii().constData() ) + "</td>\n";
+            
         } // end for
 
         /// Impresion de los Recargos de Equivalencia.
         BlFixed totreqeq ( "0.0" );
         BlFixed parreqeq ( "0.0" );
+        
         for ( it = basesimpreqeq.begin(); it != basesimpreqeq.end(); ++it ) {
+        
             if ( porcentt > 0 ) {
                 parreqeq = ( it.value() - it.value() * porcentt / 100 ) * BlFixed ( it.key() ) / 100;
             } else {
                 parreqeq = it.value() * BlFixed ( it.key() ) / 100;
             } // end if
+            
             totreqeq = totreqeq + parreqeq;
+            
             if ( parreqeq > 0 ) {
                 tr1 += "    <td>" + _ ( "R.E." ) + " " + genEscape ( it.key(), tipoEscape ) + " %</td>\n";
                 tr2 += "    <td>" + l.sprintf ( " %s ", parreqeq.toQString().toAscii().constData() ) + "</td>\n";
             } // end if
+            
         } // end for
 
         BlFixed totirpf = totbaseimp * irpf / 100;
+        
         if ( totirpf > 0 ) {
             tr1 += "    <td>" + genEscape ( _ ( "I.R.P.F (-" ) + " " +  irpf.toQString() + ") %", tipoEscape ) + "</td>\n";
             tr2 += "    <td>" + genEscape ( l.sprintf ( " %s ", totirpf.toQString().toAscii().constData() ), tipoEscape ) + "</td>\n";
@@ -522,13 +574,14 @@ void BfForm::trataTagsBf ( QString &buff, int tipoEscape )
 // que C++ ya haria el delete solito y si
 // no es asi, porque en generaRML había dos catchs y solo uno hacia delete?
     } catch ( ... ) {
+    
         if ( cur ) delete cur;
         throw ( -1 );
+        
     }
 
     _depura ( "END BfForm::trataTagsBf", 0 );
 }
-
 
 /// Trata las lineas de detalle encontradas dentro de los tags <!--LINEAS DETALLE-->
 /**
@@ -538,12 +591,15 @@ void BfForm::trataTagsBf ( QString &buff, int tipoEscape )
 QString BfForm::trataLineasDetalle ( const QString &det, int tipoEscape )
 {
     _depura ( "BfForm::trataLineasDetalle", 0 );
+    
     QString result = "";
 
     /// Contador que sirve para poner lineas de mas en caso de que sea preciso.
     BlDbSubFormRecord *linea;
+    
     /// Impresion de las lineas
     for ( int i = 0; i < ( m_listalineas->rowCount() - 1 ); ++i ) {
+    
         QString salidatemp = det;
         linea = m_listalineas->lineaat ( i );
         BlFixed base = BlFixed ( linea->dbValue ( "cant" + m_listalineas->tableName() ).toAscii().constData() ) * BlFixed ( linea->dbValue ( "pvp" + m_listalineas->tableName() ).toAscii().constData() );
@@ -553,6 +609,7 @@ QString BfForm::trataLineasDetalle ( const QString &det, int tipoEscape )
         QString desc = linea->dbValue ( "desc" + m_listalineas->tableName() );
         QStringList descp = desc.split ( "\n" );
         QString desc1 = "";
+        
         for ( int i = 0; i < descp.size(); ++i ) {
             if ( descp[i] != "" ) {
                 if ( descp[i].startsWith ( " " ) ) {
@@ -578,6 +635,7 @@ QString BfForm::trataLineasDetalle ( const QString &det, int tipoEscape )
         /// Buscamos cadenas perdidas adicionales que puedan quedar por poner.
         QRegExp rx ( "\\[(\\w*)\\]" );
         int pos =  0;
+        
         while ( ( pos = rx.indexIn ( salidatemp, pos ) ) != -1 ) {
             if ( linea->exists ( rx.cap ( 1 ) ) ) {
                 salidatemp.replace ( pos, rx.matchedLength(), genEscape ( linea->dbValue ( rx.cap ( 1 ) ), tipoEscape ) );
@@ -588,12 +646,13 @@ QString BfForm::trataLineasDetalle ( const QString &det, int tipoEscape )
         } // end while
 
         result += salidatemp;
+        
     } // end for
 
     _depura ( "END BfForm::trataLineasDetalle", 0 );
+    
     return result;
 }
-
 
 /// Trata las lineas de descuento encontradas dentro de los tags <!--LINEAS DESCUENTO-->
 /**
@@ -603,6 +662,7 @@ QString BfForm::trataLineasDetalle ( const QString &det, int tipoEscape )
 QString BfForm::trataLineasDescuento ( const QString &det, int tipoEscape )
 {
     _depura ( "BfForm::trataLineasDescuento", 0 );
+    
     QString result = "";
 
     base basesimp;
@@ -610,6 +670,7 @@ QString BfForm::trataLineasDescuento ( const QString &det, int tipoEscape )
 
     /// Calculamos la base imponible
     BlDbSubFormRecord *linea;
+    
     /// Impresion de las lineas
     for ( int i = 0; i < ( m_listalineas->rowCount() - 1 ); ++i ) {
         linea = m_listalineas->lineaat ( i );
@@ -621,14 +682,17 @@ QString BfForm::trataLineasDescuento ( const QString &det, int tipoEscape )
 
     BlFixed basei ( "0.00" );
     base::Iterator it;
+    
     for ( it = basesimp.begin(); it != basesimp.end(); ++it ) {
         basei = basei + it.value();
     } // end for
 
     /// Contador que sirve para poner lineas de mas en caso de que sea preciso.
     BlDbSubFormRecord *linea1;
+    
     /// Impresion de las lineas
     for ( int i = 0; i < ( m_listadescuentos->rowCount() - 1 ); ++i ) {
+    
         QString salidatemp = det;
         linea1 = m_listadescuentos->lineaat ( i );
         QString l;
@@ -639,6 +703,7 @@ QString BfForm::trataLineasDescuento ( const QString &det, int tipoEscape )
         /// Buscamos cadenas perdidas adicionales que puedan quedar por poner.
         QRegExp rx ( "\\[(\\w*)\\]" );
         int pos =  0;
+        
         while ( ( pos = rx.indexIn ( salidatemp, pos ) ) != -1 ) {
             if ( linea1->exists ( rx.cap ( 1 ) ) ) {
                 salidatemp.replace ( pos, rx.matchedLength(), genEscape ( linea1->dbValue ( rx.cap ( 1 ) ), tipoEscape ) );
@@ -649,11 +714,13 @@ QString BfForm::trataLineasDescuento ( const QString &det, int tipoEscape )
         } // end while
 
         result += salidatemp;
+        
     } // end for
+    
     _depura ( "END BfForm::trataLineasDescuento", 0 );
+    
     return result;
 }
-
 
 /** Calcula los totales de factura, descuentos e impuestos y invoca al metodo de pintaTotales para
     que se pinten dichos valores en la impresion.
@@ -664,11 +731,13 @@ QString BfForm::trataLineasDescuento ( const QString &det, int tipoEscape )
 QString BfForm::trataTotales ( const QString &det, int bimporeq )
 {
     _depura ( "BfForm::trataTotales", 0 );
+    
     QString result = "";
     QString salidatemp = "";
     base basesimp;
     base basesimpreqeq;
     BlDbSubFormRecord *linea;
+    
     /// Impresion de los contenidos.
     QString l;
     BlFixed irpf ( "0" );
@@ -692,6 +761,7 @@ QString BfForm::trataTotales ( const QString &det, int bimporeq )
     } // end if
 
     BlFixed descuentolinea ( "0.00" );
+    
     /// Iteramos para cada linea para saber totales.
     for ( int i = 0; i < m_listalineas->rowCount() - 1; ++i ) {
         linea = m_listalineas->lineaat ( i );
@@ -707,6 +777,7 @@ QString BfForm::trataTotales ( const QString &det, int bimporeq )
 
     BlFixed basei ( "0.00" );
     base::Iterator it;
+    
     for ( it = basesimp.begin(); it != basesimp.end(); ++it ) {
         basei = basei + it.value();
     } // end for
@@ -714,6 +785,7 @@ QString BfForm::trataTotales ( const QString &det, int bimporeq )
     /// Calculamos el total de los descuentos.
     BlFixed porcentt ( "0.00" );
     BlDbSubFormRecord *linea1;
+    
     if ( m_listadescuentos->rowCount() ) {
         for ( int i = 0; i < m_listadescuentos->rowCount(); ++i ) {
             linea1 = m_listadescuentos->lineaat ( i );
@@ -726,21 +798,28 @@ QString BfForm::trataTotales ( const QString &det, int bimporeq )
     BlFixed totbaseimp ( "0.00" );
     BlFixed parbaseimp ( "0.00" );
     BlFixed totdesc ( "0.00" );
+    
     for ( it = basesimp.begin(); it != basesimp.end(); ++it ) {
+    
         if ( porcentt > BlFixed ( "0.00" ) ) {
             parbaseimp = it.value() - it.value() * porcentt / 100;
             totdesc = totdesc + it.value() * porcentt / 100;
         } else {
             parbaseimp = it.value();
         } // end if
+        
         totbaseimp = totbaseimp + parbaseimp;
+        
     } // end for
 
     /// Calculamos el total de IVA.
     BlFixed totiva ( "0.00" );
     BlFixed pariva ( "0.00" );
+    
     for ( it = basesimp.begin(); it != basesimp.end(); ++it ) {
+    
         BlFixed piva ( it.key().toAscii().constData() );
+        
         if ( porcentt > BlFixed ( "0.00" ) ) {
             QString evpariva = "( 1 - " + porcentt.toQString() + " / 100 ) * " + it.value().toQString() + " * " + piva.toQString() + " / 100";
             QString tot = mainCompany()->PGEval ( evpariva );
@@ -748,20 +827,27 @@ QString BfForm::trataTotales ( const QString &det, int bimporeq )
         } else {
             pariva = it.value() * piva / 100;
         } // end if
+        
         totiva = totiva + pariva;
+        
     } // end for
 
     /// Calculamos el total de recargo de equivalencia.
     BlFixed totreqeq ( "0.00" );
     BlFixed parreqeq ( "0.00" );
+    
     for ( it = basesimpreqeq.begin(); it != basesimpreqeq.end(); ++it ) {
+    
         BlFixed preqeq ( it.key().toAscii().constData() );
+        
         if ( porcentt > BlFixed ( "0.00" ) ) {
             parreqeq = ( it.value() - it.value() * porcentt / 100 ) * preqeq / 100;
         } else {
             parreqeq = it.value() * preqeq / 100;
         } // end if
+        
         totreqeq = totreqeq + parreqeq;
+        
     } // end for
 
     BlFixed totirpf = totbaseimp * irpf / 100;
@@ -772,110 +858,124 @@ QString BfForm::trataTotales ( const QString &det, int bimporeq )
     base::Iterator at;
 
     switch ( bimporeq ) {
-    case 1:
-        /// Sustituye Bases Imponibles de cada tipo de IVA.
+        case 1:
+            /// Sustituye Bases Imponibles de cada tipo de IVA.
 
-        /// Comprueba que haya elementos. Si no sustituye con ceros.
-        if ( basesimp.isEmpty() ) {
-            salidatemp = det;
-
-            salidatemp.replace ( "[bimp]", cero );
-            salidatemp.replace ( "[tbimp]", cero );
-            salidatemp.replace ( "[iva]", cero );
-            salidatemp.replace ( "[tiva]", cero );
-            salidatemp.replace ( "[irpf]", cero );
-            salidatemp.replace ( "[tirpf]", cero );
-            salidatemp.replace ( "[totalre]", cero );
-            salidatemp.replace ( "[teoricbimp]", cero );
-            salidatemp.replace ( "[totalbimp]", cero );
-            salidatemp.replace ( "[totaldesc]", cero );
-            salidatemp.replace ( "[totaliva]", cero );
-            salidatemp.replace ( "[total]", cero );
-
-            result += salidatemp;
-
-        } else {
-            for ( ot = basesimp.begin(); ot != basesimp.end(); ++ot ) {
-
+            /// Comprueba que haya elementos. Si no sustituye con ceros.
+            if ( basesimp.isEmpty() ) {
+            
                 salidatemp = det;
-                if ( porcentt > BlFixed ( "0.00" ) ) {
-                    parbaseimp = ot.value() - ot.value() * porcentt / 100;
-                } else {
-                    parbaseimp = ot.value();
-                } // end if
-                salidatemp.replace ( "[bimp]", parbaseimp.toQString() );
-                salidatemp.replace ( "[tbimp]", ot.key() );
 
-                BlFixed piva ( ot.key().toAscii().constData() );
-                if ( porcentt > BlFixed ( "0.00" ) ) {
-                    pariva = ( ot.value() - ot.value() * porcentt / 100 ) * piva / 100;
-                } else {
-                    pariva = ot.value() * piva / 100;
-                } // end if
-
-                salidatemp.replace ( "[iva]", pariva.toQString() );
-                salidatemp.replace ( "[tiva]", ot.key() );
-                salidatemp.replace ( "[irpf]", totirpf.toQString() );
-                salidatemp.replace ( "[tirpf]", irpf.toQString() );
-                salidatemp.replace ( "[totalre]", totreqeq.toQString() );
-                salidatemp.replace ( "[teoricbimp]", basei.toQString() );
-                salidatemp.replace ( "[totalbimp]", totbaseimp.toQString() );
-                salidatemp.replace ( "[totaldesc]", totdesc.toQString() );
-                salidatemp.replace ( "[totaliva]", totiva.toQString() );
-                salidatemp.replace ( "[total]", ( totiva + totbaseimp + totreqeq - totirpf ).toQString().toAscii().constData() );
+                salidatemp.replace ( "[bimp]", cero );
+                salidatemp.replace ( "[tbimp]", cero );
+                salidatemp.replace ( "[iva]", cero );
+                salidatemp.replace ( "[tiva]", cero );
+                salidatemp.replace ( "[irpf]", cero );
+                salidatemp.replace ( "[tirpf]", cero );
+                salidatemp.replace ( "[totalre]", cero );
+                salidatemp.replace ( "[teoricbimp]", cero );
+                salidatemp.replace ( "[totalbimp]", cero );
+                salidatemp.replace ( "[totaldesc]", cero );
+                salidatemp.replace ( "[totaliva]", cero );
+                salidatemp.replace ( "[total]", cero );
 
                 result += salidatemp;
-            } // end for
-        } // end if
 
-        break;
+            } else {
+            
+                for ( ot = basesimp.begin(); ot != basesimp.end(); ++ot ) {
 
-    case 2:
-        /// Sustituye Recargos de equivalencia
+                    salidatemp = det;
+                    if ( porcentt > BlFixed ( "0.00" ) ) {
+                        parbaseimp = ot.value() - ot.value() * porcentt / 100;
+                    } else {
+                        parbaseimp = ot.value();
+                    } // end if
+                    salidatemp.replace ( "[bimp]", parbaseimp.toQString() );
+                    salidatemp.replace ( "[tbimp]", ot.key() );
 
-        /// Comprueba que haya elementos. Si no sustituye con ceros.
-        if ( basesimpreqeq.isEmpty() ) {
-            salidatemp = det;
-            salidatemp.replace ( "[re]", cero );
-            salidatemp.replace ( "[tre]", cero );
+                    BlFixed piva ( ot.key().toAscii().constData() );
+                    if ( porcentt > BlFixed ( "0.00" ) ) {
+                        pariva = ( ot.value() - ot.value() * porcentt / 100 ) * piva / 100;
+                    } else {
+                        pariva = ot.value() * piva / 100;
+                    } // end if
 
-            result += salidatemp;
+                    salidatemp.replace ( "[iva]", pariva.toQString() );
+                    salidatemp.replace ( "[tiva]", ot.key() );
+                    salidatemp.replace ( "[irpf]", totirpf.toQString() );
+                    salidatemp.replace ( "[tirpf]", irpf.toQString() );
+                    salidatemp.replace ( "[totalre]", totreqeq.toQString() );
+                    salidatemp.replace ( "[teoricbimp]", basei.toQString() );
+                    salidatemp.replace ( "[totalbimp]", totbaseimp.toQString() );
+                    salidatemp.replace ( "[totaldesc]", totdesc.toQString() );
+                    salidatemp.replace ( "[totaliva]", totiva.toQString() );
+                    salidatemp.replace ( "[total]", ( totiva + totbaseimp + totreqeq - totirpf ).toQString().toAscii().constData() );
 
-        } else {
-            for ( at = basesimpreqeq.begin(); at != basesimpreqeq.end(); ++at ) {
+                    result += salidatemp;
+                } // end for
+                
+            } // end if
 
+            break;
+
+        case 2:
+            /// Sustituye Recargos de equivalencia
+
+            /// Comprueba que haya elementos. Si no sustituye con ceros.
+            if ( basesimpreqeq.isEmpty() ) {
+            
                 salidatemp = det;
-                BlFixed preqeq ( at.key().toAscii().constData() );
-
-                if ( porcentt > BlFixed ( "0.00" ) ) {
-                    parreqeq = ( at.value() - at.value() * porcentt / 100 ) * preqeq / 100;
-                } else {
-                    parreqeq = at.value() * preqeq / 100;
-                } // end if
-
-                salidatemp.replace ( "[re]", parreqeq.toQString() );
-                salidatemp.replace ( "[tre]", at.key() );
+                salidatemp.replace ( "[re]", cero );
+                salidatemp.replace ( "[tre]", cero );
 
                 result += salidatemp;
-            } // end for
-        } // end if
-        break;
+
+            } else {
+            
+                for ( at = basesimpreqeq.begin(); at != basesimpreqeq.end(); ++at ) {
+
+                    salidatemp = det;
+                    BlFixed preqeq ( at.key().toAscii().constData() );
+
+                    if ( porcentt > BlFixed ( "0.00" ) ) {
+                        parreqeq = ( at.value() - at.value() * porcentt / 100 ) * preqeq / 100;
+                    } else {
+                        parreqeq = at.value() * preqeq / 100;
+                    } // end if
+
+                    salidatemp.replace ( "[re]", parreqeq.toQString() );
+                    salidatemp.replace ( "[tre]", at.key() );
+
+                    result += salidatemp;
+                } // end for
+                
+            } // end if
+            
+            break;
 
     } // end switch
 
     _depura ( "END BfForm::trataTotales", 0 );
+    
     return result;
 }
 
-
 int BfForm::generaRML ( void )
 {
+    _depura ( "BfForm::generaRML(void)", 0 );
+    
     BlForm::generaRML();
+    
+    _depura ( "END BfForm::generaRML(void)", 0 );
 }
 
 
 QString BfForm::nombrePlantilla ( void )
 {
+    _depura ( "BfForm::nombrePlantilla", 0 );
+    _depura ( "END BfForm::nombrePlantilla", 0 );
+    
     return m_tablename;
 }
 
@@ -886,7 +986,8 @@ QString BfForm::nombrePlantilla ( void )
 **/
 int BfForm::generaRML ( const QString &arch )
 {
-    _depura ( "BfForm::generaRML", 0, arch );
+    _depura ( "BfForm::generaRML, con argumento const QString &arch", 0, arch );
+    
     try {
 
         if ( dbValue ( "id" + m_tablename ).isEmpty() && dbValue ( "num" + m_tablename ).isEmpty() ) {
@@ -901,7 +1002,8 @@ int BfForm::generaRML ( const QString &arch )
 
         BlForm::generaRML ( arch );
 
-        _depura ( "END BfForm::generaRML", 0 );
+        _depura ( "END BfForm::generaRML, con argumento const QString &arch", 0 );
+        
         return 1;
 
     } catch ( int e ) {
@@ -914,7 +1016,6 @@ int BfForm::generaRML ( const QString &arch )
     } // end try
 }
 
-
 ///
 /**
 \return
@@ -922,6 +1023,7 @@ int BfForm::generaRML ( const QString &arch )
 void BfForm::imprimir()
 {
     _depura ( "BfForm::imprimir", 0 );
+    
     try {
         /// Disparamos los plugins
         int res = g_plugins->lanza ( "BfForm_imprimir", this );
@@ -944,7 +1046,6 @@ void BfForm::imprimir()
     } // end try
 }
 
-
 ///
 /**
 \param form
@@ -952,7 +1053,9 @@ void BfForm::imprimir()
 void BfForm::setListaLineas ( BfSubForm *form )
 {
     _depura ( "BfForm::setListaLineas", 0 );
+    
     m_listalineas = form;
+    
     _depura ( "END BfForm::setListaLineas", 0 );
 }
 
@@ -963,10 +1066,11 @@ void BfForm::setListaLineas ( BfSubForm *form )
 void BfForm::setListaDescuentos ( BfSubForm *form )
 {
     _depura ( "BfForm::setListaDescuentos", 0 );
+    
     m_listadescuentos = form;
+    
     _depura ( "END BfForm::setListaDescuentos", 0 );
 }
-
 
 ///
 /**
@@ -976,9 +1080,9 @@ BfSubForm* BfForm::getlistalineas()
 {
     _depura ( "BfForm::getlistalineas", 0 );
     _depura ( "END BfForm::getlistalineas", 0 );
+    
     return m_listalineas;
 }
-
 
 ///
 /**
@@ -988,6 +1092,6 @@ BfSubForm* BfForm::getlistadescuentos()
 {
     _depura ( "BfForm::getlistadescuentos", 0 );
     _depura ( "END BfForm::getlistadescuentos", 0 );
+    
     return m_listadescuentos;
 }
-
