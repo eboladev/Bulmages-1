@@ -222,6 +222,9 @@ void GenAlbQToolButton::generarFactura1()
         bud->calculaypintatotales();
         bud->show();
 
+	/// Procesamos el pedido
+	fpv->mui_procesadopedidocliente->setChecked(TRUE);
+
     } catch ( ... ) {
         mensajeInfo ( _ ( "Error inesperado" ), this );
         if ( cur ) delete cur;
@@ -350,6 +353,9 @@ void GenAlbQToolButton::generarFactura2()
         bud->pintar();
         bud->calculaypintatotales();
         bud->show();
+
+	/// Procesamos el presupuesto
+	fpv->mui_procesadopresupuesto->setChecked(TRUE);
 
     } catch ( ... ) {
         mensajeInfo ( _ ( "Error inesperado" ), this );

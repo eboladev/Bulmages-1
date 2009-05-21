@@ -214,6 +214,9 @@ void GenPedQToolButton::generarFactura1()
         bud->calculaypintatotales();
         bud->show();
 
+	/// Procesamos el presupuesto
+	fpv->mui_procesadopresupuesto->setChecked(TRUE);
+
     } catch ( ... ) {
         mensajeInfo ( _ ( "Error inesperado" ), this );
         if ( cur ) delete cur;

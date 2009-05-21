@@ -185,6 +185,7 @@ void GenFacQToolButton::generarFactura()
         fpv->recogeValores();
         bud->setDbValue ( "comentfactura", fpv->dbValue ( "comentalbaran" ) );
         bud->setDbValue ( "idforma_pago", fpv->dbValue ( "idforma_pago" ) );
+	bud->setDbValue ( "descfactura", fpv->dbValue ( "descalbaran" ) );
         bud->setDbValue ( "reffactura", fpv->dbValue ( "refalbaran" ) );
         bud->setDbValue ( "idcliente", fpv->dbValue ( "idcliente" ) );
         bud->setDbValue ( "idalmacen", fpv->dbValue ( "idalmacen" ) );
@@ -224,10 +225,12 @@ void GenFacQToolButton::generarFactura()
             } // end if
         } // end for
 
+	/// Pintamos y presentamos.
         bud->pintar();
         bud->calculaypintatotales();
         bud->show();
 
+	/// Ponemos el albaran como procesado.
         fpv->mui_procesadoalbaran->setChecked ( TRUE );
 
     } catch ( ... ) {
@@ -355,6 +358,9 @@ void GenFacQToolButton::generarFactura1()
         bud->pintar();
         bud->calculaypintatotales();
         bud->show();
+
+	/// Marcamos el pedido como procesado
+	fpv->mui_procesadopedidocliente->setChecked(TRUE);
 
     } catch ( ... ) {
         mensajeInfo ( _ ( "Error inesperado" ), this );
@@ -484,6 +490,10 @@ void GenFacQToolButton::generarFactura2()
         bud->pintar();
         bud->calculaypintatotales();
         bud->show();
+
+	/// Procesamos el presupuesto
+	fpv->mui_procesadopresupuesto->setChecked(TRUE);
+
 
     } catch ( ... ) {
         mensajeInfo ( _ ( "Error inesperado" ), this );
@@ -628,6 +638,8 @@ void AgFacQToolButton::generarFactura()
     } // end for
     bud->calculaypintatotales();
     bud->show();
+
+    /// Procesamos el albaran
     fpv->mui_procesadoalbaran->setChecked ( TRUE );
 
     _depura ( "END AgFacQToolButton::generarFactura", 0 );

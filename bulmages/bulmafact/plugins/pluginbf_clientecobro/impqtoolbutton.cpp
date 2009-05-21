@@ -137,6 +137,10 @@ void GenCobroQToolButton::click()
             bud->pintar();
             bud->show();
         } // end if
+
+	/// Marcamnos la factura como procesada ya que el cobro es inicialmente por el importe total
+	fpv->mui_procesadafactura->setChecked(TRUE);
+
     }// end if
 
 
@@ -175,7 +179,7 @@ void GenCobroQToolButton::click()
         } // end if
         delete cur;
 
-        /// Creacion de un cobro nuevo a partir de la factura.
+        /// Creacion de un cobro nuevo a partir del albaran
         if ( nuevo ) {
             CobroView *bud = new CobroView ( ( BfCompany * ) fpv->mainCompany(), 0 );
             fpv->mainCompany() ->m_pWorkspace->addWindow ( bud );
