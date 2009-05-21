@@ -240,25 +240,25 @@ class Facturacion(Ui_ModificarFacturacionBase, Empresa):
 
    def on_mui_plugins_cellClicked(self, row, col):
       # Escribimos la descripcion
-      self.mui_descripcion.setText(self.mui_plugins.item(row,1).text() + "<b>" + self.pluginsbulmafact[row][1] + "</b><br>"+ self.pluginsbulmafact[row][3] + "<br>" + self.pluginsbulmafact[row][4]+ "<br>" + self.pluginsbulmafact[row][8]+ "<br>" + self.pluginsbulmafact[row][9])
+      self.mui_descripcion.setText(self.mui_plugins.item(row,1).text() + "<b>" + self.pluginsbulmafact[row][1] + "</b><br>"+ self.pluginsbulmafact[row][3] + "<br>" + self.pluginsbulmafact[row][4] + "<br><b>Categorias:</b> " + self.pluginsbulmafact[row][8]+ "<br><br>" + self.pluginsbulmafact[row][9] + "<b>Dependencias:</b> " + self.pluginsbulmafact[row][5] + "<br><br><b>Incompatibilidades:</b> " + self.pluginsbulmafact[row][6])
 
       if (self.semaforo == 1):
          # Marcamos las dependencias
          self.i = 0
          while (self.i < self.mui_plugins.rowCount()):
             if (self.mui_plugins.item(self.i, 0).checkState() == Qt.Checked):
-               self.arr = self.pluginsbulmafact[self.i][5].split(QString(","))
+               self.arr = self.pluginsbulmafact[self.i][5].replace(' ;',';').replace('; ',';').split(QString(";"))
                for self.dep in self.arr:
                   self.marcar(self.dep)
             self.i = self.i +1
          # Desmarcamos las incompatibilidades
-         self.arr = self.pluginsbulmafact[row][6].split(QString(","))
+         self.arr = self.pluginsbulmafact[row][6].replace(' ;',';').replace('; ',';').split(QString(";"))
          for self.dep in self.arr:
             self.desmarcar(self.dep)
          self.i = 0
          while (self.i < self.mui_plugins.rowCount()):
             if (self.mui_plugins.item(self.i, 0).checkState() == Qt.Checked):
-               self.arr = self.pluginsbulmafact[self.i][6].split(QString(","))
+               self.arr = self.pluginsbulmafact[self.i][6].replace(' ;',';').replace('; ',';').split(QString(";"))
                for self.dep in self.arr:
                   self.desmarcar(self.dep)
             self.i = self.i +1
@@ -272,17 +272,17 @@ class Facturacion(Ui_ModificarFacturacionBase, Empresa):
          self.i = 0
          while (self.i < self.mui_plugins1.rowCount()):
             if (self.mui_plugins1.item(self.i, 0).checkState() == Qt.Checked):
-               self.arr = self.pluginsbulmatpv[self.i][5].split(QString(","))
+               self.arr = self.pluginsbulmatpv[self.i][5].replace(' ;',';').replace('; ',';').split(QString(";"))
                for self.dep in self.arr:
                   self.marcar(self.dep)
             self.i = self.i +1
          # Desmarcamos las incompatibilidades
-         self.arr = self.pluginsbulmatpv[row][6].split(QString(","))
+         self.arr = self.pluginsbulmatpv[row][6].replace(' ;',';').replace('; ',';').split(QString(";"))
          for self.dep in self.arr:
             self.desmarcar(self.dep)
          while (self.i < self.mui_plugins1.rowCount()):
             if (self.mui_plugins1.item(self.i, 0).checkState() == Qt.Checked):
-               self.arr = self.pluginsbulmatpv[self.i][6].split(QString(","))
+               self.arr = self.pluginsbulmatpv[self.i][6].replace(' ;',';').replace('; ',';').split(QString(";"))
                for self.dep in self.arr:
                   self.desmarcar(self.dep)
             self.i = self.i +1

@@ -1,4 +1,4 @@
-#######
+bu#######
 #Plugins
 #######
 #README.es
@@ -18,7 +18,7 @@ ArchivoSQLpatch:
 
 ArchivoSQLdeins: 
 
-Dependencias:
+Dependencias: libpluginbf_trabajador.so; libpluginbf_almacen.so; libpluginbf_formasdepago.so; libpluginbf_cliente.so
 
 Incompatibles:
 
