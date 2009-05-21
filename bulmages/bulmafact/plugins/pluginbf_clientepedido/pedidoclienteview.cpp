@@ -86,7 +86,7 @@ PedidoClienteView::PedidoClienteView ( BfCompany *comp, QWidget *parent )
         setListaDescuentos ( m_descuentos );
         mui_idforma_pago->setId ( "" );
         mui_idalmacen->setId ( "" );
-        mui_idtrabajador->setId ( "" );
+        mui_idtrabajador->setId ( "0" );
         /// Establecemos los parametros de busqueda del Cliente
         mui_idcliente->setLabel ( _ ( "Cliente:" ) );
         mui_idcliente->setTableName ( "cliente" );

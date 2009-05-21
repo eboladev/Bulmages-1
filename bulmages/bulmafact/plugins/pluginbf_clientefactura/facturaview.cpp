@@ -103,7 +103,7 @@ FacturaView::FacturaView ( BfCompany *comp, QWidget *parent )
         mui_idalmacen->setId ( "" );
         mui_codigoserie_factura->setId ( "" );
         mui_idforma_pago->setId ( "" );
-        mui_idtrabajador->setFieldValue ( "0" );
+        mui_idtrabajador->setId ( "0" );
 
         m_totalBases->setReadOnly ( TRUE );
         m_totalBases->setAlignment ( Qt::AlignRight );

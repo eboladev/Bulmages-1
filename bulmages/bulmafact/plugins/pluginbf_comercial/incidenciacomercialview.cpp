@@ -122,7 +122,7 @@ void IncidenciaComercialView::setMainCompany ( BfCompany *comp )
     BlMainCompanyPointer::setMainCompany ( comp );
     mui_idcliente->setMainCompany ( comp );
     mui_idtrabajador->setMainCompany ( comp );
-    mui_idtrabajador->setId ( "" );
+    mui_idtrabajador->setId ( "0" );
     _depura ( "END IncidenciaComercialView::setcompany", 0 );
 
 }

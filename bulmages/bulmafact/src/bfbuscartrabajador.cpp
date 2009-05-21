@@ -68,7 +68,7 @@ void BfBuscarTrabajador::setId ( QString idtrabajador )
     _depura ( "BfBuscarTrabajador::setidtrabajador", 0 );
 
     /// Si lo que se pasa como forma de pago es un valor malo cogemos la forma de pago por defecto.
-    if ( idtrabajador.isEmpty() || idtrabajador == "0" ) {
+    if ( idtrabajador == "0" ) {
         idtrabajador = g_confpr->valor ( CONF_IDTRABAJADOR_DEFECTO );
     } // end if
 
