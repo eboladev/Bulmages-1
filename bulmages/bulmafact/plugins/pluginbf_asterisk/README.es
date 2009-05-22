@@ -21,7 +21,7 @@ ArchivoSQLpatch: pluginbf_asterisk.sql
 
 ArchivoSQLdeins: pluginbf_asterisk-rm.sql
 
-Dependencias: libpluginalmacen.so libplugincuadrante.so
+Dependencias: libpluginbf_almacen.so; libpluginbf_cuadrante.so
 
 Incompatibles:
 

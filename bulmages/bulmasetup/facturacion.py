@@ -240,7 +240,7 @@ class Facturacion(Ui_ModificarFacturacionBase, Empresa):
 
    def on_mui_plugins_cellClicked(self, row, col):
       # Escribimos la descripcion
-      self.mui_descripcion.setText(self.mui_plugins.item(row,1).text() + "<b>" + self.pluginsbulmafact[row][1] + "</b><br>"+ self.pluginsbulmafact[row][3] + "<br>" + self.pluginsbulmafact[row][4] + "<br><b>Categorias:</b> " + self.pluginsbulmafact[row][8]+ "<br><br>" + self.pluginsbulmafact[row][9] + "<b>Dependencias:</b> " + self.pluginsbulmafact[row][5] + "<br><br><b>Incompatibilidades:</b> " + self.pluginsbulmafact[row][6])
+      self.mui_descripcion.setText(self.mui_plugins.item(row,1).text() + "<b>" + self.pluginsbulmafact[row][1] + "</b><br>"+ self.pluginsbulmafact[row][3] + "<br>" + self.pluginsbulmafact[row][4] + "<br><b>Categorias:</b> " + self.pluginsbulmafact[row][8]+ "<br>" + self.pluginsbulmafact[row][9] + "<br><b>Dependencias:</b> " + self.pluginsbulmafact[row][5] + "<br><br><b>Incompatibilidades:</b> " + self.pluginsbulmafact[row][6])
 
       if (self.semaforo == 1):
          # Marcamos las dependencias

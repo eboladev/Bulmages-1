@@ -19,7 +19,7 @@ ArchivoSQLpatch: pluginbf_contrato.sql
 
 ArchivoSQLdeins: pluginbf_contrato-rm.sql
 
-Dependencias:
+Dependencias: libpluginbf_cliente.so
 
 Incompatibles:
 
