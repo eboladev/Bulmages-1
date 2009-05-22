@@ -159,11 +159,6 @@ BfBuscarTipoIVADelegate::BfBuscarTipoIVADelegate ( QWidget *parent )
 BfBuscarTipoIVADelegate::~BfBuscarTipoIVADelegate()
 {
     _depura ( "BfBuscarTipoIVADelegate::~BfBuscarTipoIVADelegate", 0 );
-
-    if ( m_comboRecordSet != NULL ) {
-        delete m_comboRecordSet;
-    } // end if
-
     _depura ( "END BfBuscarTipoIVADelegate::~BfBuscarTipoIVADelegate", 0 );
 }
 
