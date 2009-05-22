@@ -77,11 +77,13 @@ DECLARE
 	asf RECORD;
 	txt TEXT;
 BEGIN
+    IF (select count(*) from pg_proc where proname = 'crearef') THEN
 	SELECT INTO asf REGEXP_REPLACE(prosrc,'-- MODIFICACION PLUGINCONTRATOS.*-- END MODIFICACION PLUGINCONTRATOS','','g') AS prosrc FROM pg_proc WHERE proname='crearef';
 	txt := E'CREATE OR REPLACE FUNCTION crearef() RETURNS character varying(15) AS $BB$ ' || asf.prosrc || E' $BB$ LANGUAGE \'plpgsql\' ;';
 	RAISE NOTICE '%', txt;
 	EXECUTE txt;
-	RETURN 0;
+    END IF;
+    RETURN 0;
 END;
 $BODY$
 LANGUAGE plpgsql;

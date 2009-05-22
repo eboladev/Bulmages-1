@@ -82,10 +82,12 @@ DECLARE
 	asf RECORD;
 	txt TEXT;
 BEGIN
-	SELECT INTO asf REGEXP_REPLACE(prosrc,'-- MODIFICACION PLUGINDEVOLUCION2.*-- END MODIFICACION PLUGINDEVOLUCION2','','g') AS prosrc FROM pg_proc WHERE proname='crearef';
-	txt := E'CREATE OR REPLACE FUNCTION crearef() RETURNS character varying(15) AS $BB$ ' || asf.prosrc || E' $BB$ LANGUAGE \'plpgsql\' ;';
-	RAISE NOTICE '%', txt;
-	EXECUTE txt;
+	IF (select count(*) from pg_proc where proname='crearef') THEN
+	  SELECT INTO asf REGEXP_REPLACE(prosrc,'-- MODIFICACION PLUGINDEVOLUCION2.*-- END MODIFICACION PLUGINDEVOLUCION2','','g') AS prosrc FROM pg_proc WHERE proname='crearef';
+	  txt := E'CREATE OR REPLACE FUNCTION crearef() RETURNS character varying(15) AS $BB$ ' || asf.prosrc || E' $BB$ LANGUAGE \'plpgsql\' ;';
+	  RAISE NOTICE '%', txt;
+	  EXECUTE txt;
+	END IF;
 	RETURN 0;
 END;
 $BODY$
