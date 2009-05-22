@@ -18,7 +18,7 @@ ArchivoSQLpatch: pluginbf_inventario.sql
 
 ArchivoSQLdeins: pluginbf_inventario-rm.sql
 
-Dependencias:
+Dependencias: libpluginbf_articulo.so; libpluginbf_almacen.so
 
 Incompatibles:
 

@@ -9,7 +9,7 @@ Nombre: Demostración del funcionamiento de los plugins
 Biblioteca: libpluginbf_example.so
 
 Descripción: <H1>Ejemplo</H1>
-<P>Sirve para demostrar el funcionamiento de los plugins. Es, principalmente
+<P>Sirve para demostrar el funcionamiento de los plugins.<br><br>Es, principalmente
 un ejemplo de programacion.</P>
 <HR>
 

@@ -9,7 +9,7 @@ Nombre: Corrector de Facturacion
 Biblioteca: libpluginbf_corrector.so
 
 Descripción: <H1>Corrector de Facturacion</H1>
-<P>Efectura tests sobre la facturacion para encontrar errores.</P>
+<P>Efectua tests sobre la facturacion para encontrar errores.</P>
 <HR>
 
 ParmBD:

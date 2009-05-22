@@ -18,7 +18,7 @@ ArchivoSQLpatch: pluginbf_tipotrabajo.sql
 
 ArchivoSQLdeins: pluginbf_tipotrabajo-rm.sql
 
-Dependencias:
+Dependencias: libpluginbf_trabajador.so; libpluginbf_cuadrante.so
 
 Incompatibles:
 

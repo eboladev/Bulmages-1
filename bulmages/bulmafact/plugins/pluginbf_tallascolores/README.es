@@ -19,7 +19,7 @@ ArchivoSQLpatch: pluginbf_tc_articulos.sql
 
 ArchivoSQLdeins: pluginbf_tc_articulos-rm.sql
 
-Dependencias:
+Dependencias: libpluginbf_articulo.so
 
 Incompatibles:
 

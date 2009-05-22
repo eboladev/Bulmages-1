@@ -9,7 +9,7 @@ Nombre: IVA y Tasas de IVA
 Biblioteca: libpluginbf_iva.so
 
 Descripción: <H1>IVA</H1>
-<P>Gestionar los Impuestos.</P>
+<P>Gestionar los Impuestos sobre el Valor Añadido.</P>
 <HR>
 
 ParmBD:

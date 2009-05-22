@@ -9,7 +9,7 @@ Nombre: Factura Electronica de Bulmafact
 Biblioteca: libpluginbf_efactura.so
 
 Descripción: <H1>Codigos de Barras</H1>
-<P>Permite el envio de facturas electronicas desde BulmaFact</P>
+<P>Permite la exportacion e importacion de facturas en formato UBL 1.0 desde BulmaFact.</P>
 <HR>
 
 ParmBD: 

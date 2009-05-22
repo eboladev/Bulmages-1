@@ -6,7 +6,7 @@
 
 Nombre: Crear etiquetas
 
-Biblioteca: libpluginbf_etiquetado.so
+Biblioteca: libpluginbf_etiquetas.so
 
 Descripción: <H1>Crear etiquetas</H1> 
 <P>Permite la creación de etiquetas para los artículos, la etiqueta es personalizable mediante el archivo RML correspondiente.<br>Útil en comercios donde hay que etiquetar los productos.</P>
@@ -21,7 +21,7 @@ ArchivoSQLdeins:
 
 Dependencias: libpluginbf_articulo.so
 
-Incompatibles: libpluginbf_etiquetas.so
+Incompatibles: libpluginbf_etiquetado.so
 
 Categorias: Experimentales;
 
