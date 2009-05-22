@@ -53,11 +53,11 @@ public:
     ~BancoView();
     bool trataModificado();
     virtual int guardar();
-    virtual void on_mui_borrar_clicked();
+    virtual void on_mui_borrar_released();
 
 private slots:
     virtual void on_mui_lista_currentItemChanged ( QListWidgetItem *cur, QListWidgetItem *prev );
-    virtual void on_mui_nuevo_clicked();
+    virtual void on_mui_nuevo_released();
 };
 
 #endif

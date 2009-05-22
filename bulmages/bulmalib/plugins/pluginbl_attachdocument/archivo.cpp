@@ -60,7 +60,7 @@ Archivo::~Archivo()
     _depura ( "END Archivo::~Archivo", 0 );
 }
 
-void Archivo::on_mui_buscarArchivo_clicked()
+void Archivo::on_mui_buscarArchivo_released()
 {
 
     QString fileName = QFileDialog::getOpenFileName ( this, _ ( "Open file" ), "", _ ( "All files (*)" ) );
@@ -69,9 +69,9 @@ void Archivo::on_mui_buscarArchivo_clicked()
 
 /** No precisa acciones adicionales en el destructor.
 */
-void Archivo::on_mui_aceptar_clicked()
+void Archivo::on_mui_aceptar_released()
 {
-    _depura ( "Archivo::on_mui_aceptar_clicked", 0 );
+    _depura ( "Archivo::on_mui_aceptar_released", 0 );
     /*
         QFile file ( mui_archivo->text() );
         if ( !file.open ( QIODevice::ReadOnly | QIODevice::Text ) )
@@ -89,5 +89,5 @@ void Archivo::on_mui_aceptar_clicked()
         mainCompany()->commit();
         file.close();
     */
-    _depura ( "END Archivo::on_mui_aceptar_clicked", 0 );
+    _depura ( "END Archivo::on_mui_aceptar_released", 0 );
 }

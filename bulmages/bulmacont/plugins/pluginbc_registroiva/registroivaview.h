@@ -145,7 +145,7 @@ private:
     void cargarComboFPago ( QString );
 
 public slots:
-    virtual void on_mui_generarPrevisiones_clicked();
+    virtual void on_mui_generarPrevisiones_released();
     /// Este slot se activa cuando hay cambios en los subformularios.
     virtual void on_mui_listIva_editFinish ( int, int ) {
         _depura ( "RegistroIvaView::on_mui_listIva_editFinish", 0 );

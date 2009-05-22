@@ -48,23 +48,23 @@ datosView::~datosView()
 ///
 /**
 **/
-void datosView::on_mui_cancelar_clicked()
+void datosView::on_mui_cancelar_released()
 {
-    _depura ( "datosView::on_mui_cancelar_clicked", 0 );
+    _depura ( "datosView::on_mui_cancelar_released", 0 );
     close();
     setResult ( Rejected );
-    _depura ( "END datosView::on_mui_cancelar_clicked", 0 );
+    _depura ( "END datosView::on_mui_cancelar_released", 0 );
 }
 
 
 ///
 /**
 **/
-void datosView::on_mui_aceptar_clicked()
+void datosView::on_mui_aceptar_released()
 {
-    _depura ( "datosView::on_mui_aceptar_clicked", 0 );
+    _depura ( "datosView::on_mui_aceptar_released", 0 );
     close();
     setResult ( Accepted );
-    _depura ( "END datosView::on_mui_aceptar_clicked", 0 );
+    _depura ( "END datosView::on_mui_aceptar_released", 0 );
 }
 

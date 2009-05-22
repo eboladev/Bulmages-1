@@ -41,7 +41,7 @@ extern "C" MY_EXPORT int entryPoint ( BfBulmaFact * );
 extern "C" MY_EXPORT int AlmacenView_AlmacenView ( AlmacenView * );
 extern "C" MY_EXPORT int TrabajadorView_TrabajadorView ( TrabajadorView * );
 extern "C" MY_EXPORT int TrabajadorView_on_mui_lista_currentItemChanged_Post ( TrabajadorView *trab );
-extern "C" MY_EXPORT int TrabajadorView_on_mui_guardar_clicked ( TrabajadorView *trab );
+extern "C" MY_EXPORT int TrabajadorView_on_mui_guardar_released ( TrabajadorView *trab );
 
 
 

@@ -126,8 +126,8 @@ public:
     /// La funci&oacute;n sirve para especificar el modo de funcionamiento de los asientos
     /// intelgientes. Consultar la variable m&eacute;todo para m&aacute;s detalles.
     void setmodo ( int i );
-    void on_mui_aceptar_clicked();
-    virtual void on_mui_guardar_clicked();
+    void on_mui_aceptar_released();
+    virtual void on_mui_guardar_released();
 
 public slots:
     void eturn_numero();

@@ -215,19 +215,19 @@ void MTicket::pintar()
     _depura ( "END MTicket::pintar", 0 );
 }
 
-void MTicket::on_mui_subir_clicked()
+void MTicket::on_mui_subir_released()
 {
     /// Simulamos la pulsacion de la tecla arriba
     ( ( BtCompany * ) mainCompany() )->pulsaTecla ( Qt::Key_Up );
 }
 
-void MTicket::on_mui_bajar_clicked()
+void MTicket::on_mui_bajar_released()
 {
     /// Simulamos la pulsacion de la tecla abajo
     ( ( BtCompany * ) mainCompany() )->pulsaTecla ( Qt::Key_Down );
 }
 
-void MTicket::on_mui_borrar_clicked()
+void MTicket::on_mui_borrar_released()
 {
     BtTicket * tick = ( ( BtCompany * ) mainCompany() )->ticketActual();
     tick->ponerCantidad ( "0" );
@@ -235,7 +235,7 @@ void MTicket::on_mui_borrar_clicked()
     pintar();
 }
 
-void MTicket::on_mui_imprimir_clicked()
+void MTicket::on_mui_imprimir_released()
 {
     /// Llamamos al atajo de teclado que llama a BtTicket::imprimir()
     ( ( BtCompany * ) mainCompany() )->pulsaTecla ( Qt::Key_F2 );

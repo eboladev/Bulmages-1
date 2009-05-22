@@ -194,9 +194,9 @@ void CuadranteView::inicializaCuadrante ( const QDate &dateorig )
 /**
 \param date
 **/
-void CuadranteView::on_mui_calendario_clicked ( const QDate &date )
+void CuadranteView::on_mui_calendario_released ( const QDate &date )
 {
-    _depura ( "CuadranteView::on_mui_calendario_clicked", 0, date.toString ( "dd/MM/yyyy" ) );
+    _depura ( "CuadranteView::on_mui_calendario_released", 0, date.toString ( "dd/MM/yyyy" ) );
     inicializaCuadrante ( date );
 }
 
@@ -225,7 +225,7 @@ void CuadranteView::on_mui_listtrabajadores_itemDoubleClicked ( QTreeWidgetItem 
 ///
 /**
 **/
-void CuadranteView::on_mui_editar_clicked()
+void CuadranteView::on_mui_editar_released()
 {
     _depura ( "editar cuadrante", 0 );
     Cuadrante1View *cuad = new Cuadrante1View ( mainCompany(), 0 );
@@ -271,29 +271,29 @@ void CuadranteView::on_mui_calendario_customContextMenuRequested ( const QPoint 
 ///
 /**
 **/
-void CuadranteView::on_mui_actualizar_clicked()
+void CuadranteView::on_mui_actualizar_released()
 {
-    _depura ( "CuadranteView::on_mui_actualizar_clicked", 0 );
+    _depura ( "CuadranteView::on_mui_actualizar_released", 0 );
     inicializaTrabajadores();
     inicializaCuadrante ( mui_calendario->selectedDate() );
-    _depura ( "CuadranteView::on_mui_actualizar_clicked", 0 );
+    _depura ( "CuadranteView::on_mui_actualizar_released", 0 );
 }
 
 
 ///
 /**
 **/
-void CuadranteView::on_mui_limpiar_clicked()
+void CuadranteView::on_mui_limpiar_released()
 {
-    _depura ( "CuadranteView::on_mui_limpiar_clicked", 0 );
+    _depura ( "CuadranteView::on_mui_limpiar_released", 0 );
     QDate date = mui_calendario->selectedDate().addDays ( -mui_calendario->selectedDate().dayOfWeek() + 1 );
     QDate datefin = date.addDays ( 6 );
     QString query = "DELETE FROM horario WHERE idcuadrante IN (SELECT idcuadrante FROM cuadrante WHERE fechacuadrante >= '" + date.toString ( "dd/MM/yyyy" ) + "' AND fechacuadrante <='" + datefin.toString ( "dd/MM/yyyy" ) + "')";
     mainCompany() ->runQuery ( query );
     query = "DELETE FROM cuadrante WHERE fechacuadrante >= '" + date.toString ( "dd/MM/yyyy" ) + "' AND fechacuadrante <='" + datefin.toString ( "dd/MM/yyyy" ) + "'";
     mainCompany() ->runQuery ( query );
-    on_mui_actualizar_clicked();
-    _depura ( "CuadranteView::on_mui_limpiar_clicked", 0 );
+    on_mui_actualizar_released();
+    _depura ( "CuadranteView::on_mui_limpiar_released", 0 );
 }
 
 
@@ -301,9 +301,9 @@ void CuadranteView::on_mui_limpiar_clicked()
 ///
 /**
 **/
-void CuadranteView::on_mui_duplicar_clicked()
+void CuadranteView::on_mui_duplicar_released()
 {
-    _depura ( "CuadranteView::on_mui_limpiar_clicked", 0 );
+    _depura ( "CuadranteView::on_mui_limpiar_released", 0 );
     for ( QDate date = mui_calendario->selectedDate().addDays ( -mui_calendario->selectedDate().dayOfWeek() + 1 )
                        ; date <= mui_calendario->selectedDate().addDays ( -mui_calendario->selectedDate().dayOfWeek() + 7 )
             ; date = date.addDays ( 1 ) ) {
@@ -345,17 +345,17 @@ void CuadranteView::on_mui_duplicar_clicked()
 
 
     } // end for
-    on_mui_actualizar_clicked();
-    _depura ( "CuadranteView::on_mui_limpiar_clicked", 0 );
+    on_mui_actualizar_released();
+    _depura ( "CuadranteView::on_mui_limpiar_released", 0 );
 }
 
 
 ///
 /**
 **/
-void CuadranteView::on_mui_imprimir_clicked()
+void CuadranteView::on_mui_imprimir_released()
 {
-    _depura ( "CuadranteView::on_mui_imprimir_clicked", 0 );
+    _depura ( "CuadranteView::on_mui_imprimir_released", 0 );
 
     QString archivo = g_confpr->valor ( CONF_DIR_OPENREPORTS ) + "cuadrante.rml";
     QString archivod = g_confpr->valor ( CONF_DIR_USER ) + "cuadrante.rml";
@@ -437,7 +437,7 @@ void CuadranteView::on_mui_imprimir_clicked()
         file.close();
     } // end if
     invocaPDF ( "cuadrante" );
-    _depura ( "END CuadranteView::on_mui_imprimir_clicked", 0 );
+    _depura ( "END CuadranteView::on_mui_imprimir_released", 0 );
 
 }
 

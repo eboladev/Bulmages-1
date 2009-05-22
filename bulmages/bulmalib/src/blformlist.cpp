@@ -227,9 +227,8 @@ void BlFormList::setSubForm ( BlSubForm *list )
 void BlFormList::on_m_filtro_textChanged ( const QString &text )
 {
     _depura ( "BlFormList::on_m_filtro_textChanged", 0 );
-
     if ( text.size() >= 3 ) {
-        on_mui_actualizar_clicked();
+        on_mui_actualizar_released();
     } // end if
     _depura ( "END BlFormList::on_m_filtro_textChanged", 0 );
 }
@@ -245,7 +244,7 @@ void BlFormList::on_m_filtro_editingFinished()
     QLineEdit *line = findChild<QLineEdit *> ( "m_filtro" );
     if ( line->text() != valant ) {
         valant = line->text();
-        on_mui_actualizar_clicked();
+        on_mui_actualizar_released();
     } // end if
     _depura ( "END BlFormList::on_m_filtro_editFinished", 0 );
 }
@@ -258,57 +257,55 @@ void BlFormList::on_m_filtro_editingFinished()
 */
 void BlFormList::on_m_filtro_returnPressed()
 {
-    _depura ( "BlFormList::on_mui_importar_clicked", 0 );
-
+    _depura ( "BlFormList::on_mui_importar_released", 0 );
     if ( m_listado->lista()->count() == 1 ) {
         editar ( 0 );
-    }
-
-    _depura ( "END BlFormList::on_mui_importar_clicked", 0 );
+    } // end if
+    _depura ( "END BlFormList::on_mui_importar_released", 0 );
 }
 
 
 ///
 /**
 **/
-void BlFormList::on_mui_actualizar_clicked()
+void BlFormList::on_mui_actualizar_released()
 {
-    _depura ( "BlFormList::on_mui_actualizar_clicked", 0 );
+    _depura ( "BlFormList::on_mui_actualizar_released", 0 );
     presentar();
-    _depura ( "END BlFormList::on_mui_actualizar_clicked", 0 );
+    _depura ( "END BlFormList::on_mui_actualizar_released", 0 );
 }
 
 
 ///
 /**
 **/
-void BlFormList::on_mui_imprimir_clicked()
+void BlFormList::on_mui_imprimir_released()
 {
-    _depura ( "BlFormList::on_mui_imprimir_clicked", 0 );
+    _depura ( "BlFormList::on_mui_imprimir_released", 0 );
     imprimir();
-    _depura ( "END BlFormList::on_mui_imprimir_clicked", 0 );
+    _depura ( "END BlFormList::on_mui_imprimir_released", 0 );
 }
 
 
 ///
 /**
 **/
-void BlFormList::on_mui_crear_clicked()
+void BlFormList::on_mui_crear_released()
 {
-    _depura ( "BlFormList::on_mui_crear_clicked", 0 );
+    _depura ( "BlFormList::on_mui_crear_released", 0 );
     crear();
-    _depura ( "END BlFormList::on_mui_crear_clicked", 0 );
+    _depura ( "END BlFormList::on_mui_crear_released", 0 );
 }
 
 
 ///
 /**
 **/
-void BlFormList::on_mui_borrar_clicked()
+void BlFormList::on_mui_borrar_released()
 {
-    _depura ( "BlFormList::on_mui_borrar_clicked", 0 );
+    _depura ( "BlFormList::on_mui_borrar_released", 0 );
     borrar();
-    _depura ( "END BlFormList::on_mui_borrar_clicked", 0 );
+    _depura ( "END BlFormList::on_mui_borrar_released", 0 );
 }
 
 
@@ -318,7 +315,7 @@ void BlFormList::on_mui_borrar_clicked()
 /**
 \return
 **/
-void BlFormList::on_mui_editar_clicked()
+void BlFormList::on_mui_editar_released()
 {
     _depura ( "ArticuloList::INIT_s_editArticle", 0 );
     int a = m_listado->currentRow();
@@ -378,9 +375,9 @@ void BlFormList::submenu ( const QPoint & )
     QAction *del = popup->addAction ( _ ( "Borrar" ) );
     QAction *opcion = popup->exec ( QCursor::pos() );
     if ( opcion == del )
-        on_mui_borrar_clicked();
+        on_mui_borrar_released();
     if ( opcion == edit )
-        on_mui_editar_clicked();
+        on_mui_editar_released();
     delete popup;
 }
 

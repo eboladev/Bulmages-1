@@ -78,9 +78,9 @@ BcCuentasAnualesImprimirView::~BcCuentasAnualesImprimirView()
 /**
 \return
 **/
-void BcCuentasAnualesImprimirView::on_mui_aceptar_clicked()
+void BcCuentasAnualesImprimirView::on_mui_aceptar_released()
 {
-    _depura ( "BcCuentasAnualesImprimirView::on_mui_aceptar_clicked", 0 );
+    _depura ( "BcCuentasAnualesImprimirView::on_mui_aceptar_released", 0 );
     QString finicial = mui_fechainicial->text();
     QString ffinal = mui_fechafinal->text();
     QString finicial1 = mui_fechainicial1->text();
@@ -172,7 +172,7 @@ void BcCuentasAnualesImprimirView::on_mui_aceptar_clicked()
         hojas->nextRecord();
     } // end while
     mainCompany() ->commit();
-    asientoReg->on_mui_borrar_clicked ( FALSE ); /// borramos el asiento temporal creado indicando que no queremos confirmacion
+    asientoReg->on_mui_borrar_released ( FALSE ); /// borramos el asiento temporal creado indicando que no queremos confirmacion
 
     /// Para el segundo periodo, calculamos el asiento de REGULARIZACION que nos guarda el resultado en la 129
     ( ( BcCompany * ) mainCompany() ) ->regularizaempresa ( finicial1, ffinal1 );
@@ -190,7 +190,7 @@ void BcCuentasAnualesImprimirView::on_mui_aceptar_clicked()
     } // end while
     delete hojas;
     mainCompany() ->commit();
-    asientoReg->on_mui_borrar_clicked ( FALSE ); /// borramos indicando que no queremos confirmacion
+    asientoReg->on_mui_borrar_released ( FALSE ); /// borramos indicando que no queremos confirmacion
 
     QDomNodeList lcuentas = m_doc.elementsByTagName ( "CUENTA" );
     for ( int i = 0; i < lcuentas.count(); i++ ) {
@@ -237,7 +237,7 @@ void BcCuentasAnualesImprimirView::on_mui_aceptar_clicked()
 
     /// Una vez que tenemos el objeto bien generado y a punto pasamos a la generacion del PDF.
     imprimir ( finicial, ffinal, finicial1, ffinal1 );
-    _depura ( "END BcCuentasAnualesImprimirView::on_mui_aceptar_clicked", 0 );
+    _depura ( "END BcCuentasAnualesImprimirView::on_mui_aceptar_released", 0 );
 }
 
 

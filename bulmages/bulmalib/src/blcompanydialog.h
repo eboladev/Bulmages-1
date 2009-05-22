@@ -61,7 +61,7 @@ public slots:
     /// Este SLOT se activa al seleccionar una compa&ntilde;ia y pulsar INTRO.
     virtual void accept();
     /// This SLOT searches in the databases of postgres all the companies needed.
-    virtual void on_mui_actualizar_clicked();
+    virtual void on_mui_actualizar_released();
 
 private:
     /// Se usa para almacenar el nombre de la base de datos seleccionada.

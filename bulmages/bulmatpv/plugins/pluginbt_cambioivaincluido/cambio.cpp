@@ -116,18 +116,18 @@ void Cambio::on_mui_pago_textChanged()
 }
 
 
-void Cambio::on_mui_cancelar_clicked()
+void Cambio::on_mui_cancelar_released()
 {
     m_value = -1;
     ( ( QDialog * ) parent() )->accept();
 }
 
-void Cambio::on_mui_cobrar_clicked()
+void Cambio::on_mui_cobrar_released()
 {
     ( ( QDialog * ) parent() )->accept();
 }
 
-void Cambio::on_mui_visa_clicked()
+void Cambio::on_mui_visa_released()
 {
     ( ( BtCompany * ) mainCompany() )->ticketActual()->setDbValue ( "idforma_pago", g_confpr->valor ( CONF_IDFORMA_PAGO_VISA ) );
     ( ( QDialog * ) parent() )->accept();

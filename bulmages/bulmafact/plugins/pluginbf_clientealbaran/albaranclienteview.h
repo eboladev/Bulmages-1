@@ -61,9 +61,9 @@ public:
 public slots:
     /// Este slot se activa cuando hay cambios en los subformularios.
     virtual void s_pintaTotales();
-    virtual void on_mui_verpedidocliente_clicked();
-    virtual void on_mui_facturar_clicked();
-    virtual void on_mui_agregarafactura_clicked();
+    virtual void on_mui_verpedidocliente_released();
+    virtual void on_mui_facturar_released();
+    virtual void on_mui_agregarafactura_released();
     virtual void on_m_descuentos_editFinish ( int, int );
     virtual void on_subform2_editFinish ( int, int );
     virtual void on_mui_idcliente_valueChanged ( QString id );

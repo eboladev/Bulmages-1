@@ -83,7 +83,7 @@ Q19View::~Q19View()
  
  //aquest pobre ignorant no sap fer-ho de cap altra manera. No hi hauria d'haver
  // un widget a qt per editar un nom de fitxer? 
- void Q19View::on_mui_buscararchivo_clicked()
+ void Q19View::on_mui_buscararchivo_released()
  {
     QString fileName =  QFileDialog::getSaveFileName ( this, _ ( "Fichero q19 a generar para el banco " ),
                                                          "",
@@ -121,9 +121,9 @@ Q19View::~Q19View()
 ///
 /**
 **/
-void Q19View::on_mui_aceptar_clicked()
+void Q19View::on_mui_aceptar_released()
 {
-    _depura ( "Q19View::on_mui_aceptar_clicked", 0 );
+    _depura ( "Q19View::on_mui_aceptar_released", 0 );
     try {
 
 
@@ -191,7 +191,7 @@ void Q19View::on_mui_aceptar_clicked()
     } catch ( ... ) {
        _depura ( "Error al generar remesa bancaria", 2 );
     } // end try
-    _depura ( "END Q19View::on_mui_aceptar_clicked", 0 );
+    _depura ( "END Q19View::on_mui_aceptar_released", 0 );
 }
 
 

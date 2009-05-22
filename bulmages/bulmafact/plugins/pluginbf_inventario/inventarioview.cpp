@@ -67,9 +67,9 @@ InventarioView::~InventarioView()
 /**
 \return
 **/
-void InventarioView::on_mui_guardar2_clicked()
+void InventarioView::on_mui_guardar2_released()
 {
-    _depura ( "InventarioView::on_mui_guardar2_clicked", 0 );
+    _depura ( "InventarioView::on_mui_guardar2_released", 0 );
     if ( mui_nominventario->text() == "" ) {
         mensajeInfo ( _ ( "Tiene que escribir una descripcion de inventario antes de guardar" ) );
         return;
@@ -77,7 +77,7 @@ void InventarioView::on_mui_guardar2_clicked()
     setfechainventario ( mui_fechainventario->text() );
     setnominventario ( mui_nominventario->text() );
     Inventario::guardar();
-    _depura ( "END InventarioView::on_mui_guardar2_clicked", 0 );
+    _depura ( "END InventarioView::on_mui_guardar2_released", 0 );
 }
 
 
@@ -97,9 +97,9 @@ int InventarioView::sacaWindow()
 /// Esta funci&oacute;n se ejecuta cuando se ha pulsado sobre el bot&oacute;n de borrar.
 /**
 **/
-void InventarioView::on_mui_borrar2_clicked()
+void InventarioView::on_mui_borrar2_released()
 {
-    _depura ( "InventarioView::on_mui_borrar2_clicked", 0 );
+    _depura ( "InventarioView::on_mui_borrar2_released", 0 );
     if ( dbValue ( "idinventario" ) != "" ) {
         if ( QMessageBox::question ( this,
                                      _ ( "Borrar inventario" ),
@@ -108,7 +108,7 @@ void InventarioView::on_mui_borrar2_clicked()
             Inventario::borrar();
         } // end if
     } // end if
-    _depura ( "END InventarioView::on_mui_borrar2_clicked", 0 );
+    _depura ( "END InventarioView::on_mui_borrar2_released", 0 );
 }
 
 
@@ -149,26 +149,26 @@ void InventarioView::pintanominventario ( QString id )
 ///
 /**
 **/
-void InventarioView::on_mui_aceptar_clicked()
+void InventarioView::on_mui_aceptar_released()
 {
-    _depura ( "InventarioView::on_mui_aceptar_clicked", 0 );
+    _depura ( "InventarioView::on_mui_aceptar_released", 0 );
     setfechainventario ( mui_fechainventario->text() );
     setnominventario ( mui_nominventario->text() );
     if ( !Inventario::guardar() ) {
         close();
     } // end if
-    _depura ( "END InventarioView::on_mui_aceptar_clicked", 0 );
+    _depura ( "END InventarioView::on_mui_aceptar_released", 0 );
 }
 
 
 ///
 /**
 **/
-void InventarioView::on_mui_pregenerar_clicked()
+void InventarioView::on_mui_pregenerar_released()
 {
-    _depura ( "InventarioView::on_mui_pregenerar_clicked", 0 );
+    _depura ( "InventarioView::on_mui_pregenerar_released", 0 );
     pregenerar();
-    _depura ( "END InventarioView::on_mui_pregenerar_clicked", 0 );
+    _depura ( "END InventarioView::on_mui_pregenerar_released", 0 );
 }
 
 ///

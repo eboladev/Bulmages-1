@@ -73,10 +73,10 @@ EFactura::~EFactura()
 /// Funcionalidad del boton guardar
 /**
 **/
-void EFactura::on_mui_guardar_clicked()
+void EFactura::on_mui_guardar_released()
 {
 
-    _depura ( "EFactura::on_mui_guardar_clicked", 0 );
+    _depura ( "EFactura::on_mui_guardar_released", 0 );
 
     QString query;
 
@@ -102,16 +102,16 @@ void EFactura::on_mui_guardar_clicked()
     query += "')";
     mainCompany() ->runQuery ( query );
 
-    _depura ( "END EFactura::on_mui_guardar_clicked", 0 );
+    _depura ( "END EFactura::on_mui_guardar_released", 0 );
 }
 
 
 /// Funcionalidad del boton Examinar en el apartado del certificado
 /**
 */
-void EFactura::on_mui_examinaECertificado_clicked()
+void EFactura::on_mui_examinaECertificado_released()
 {
-    _depura ( "EFactura::on_mui_examinar_clicked", 0 );
+    _depura ( "EFactura::on_mui_examinar_released", 0 );
 
     QString s = QFileDialog::getOpenFileName (
                     this,
@@ -125,16 +125,16 @@ void EFactura::on_mui_examinaECertificado_clicked()
     if ( s != "" )
         mui_ficheroECertificado->setText ( s );
 
-    _depura ( "END EFactura::on_mui_examinar_clicked", 0 );
+    _depura ( "END EFactura::on_mui_examinar_released", 0 );
 }
 
 
 /// Funcionalidad del boton cancelar
 /**
 **/
-void EFactura::on_mui_cancelar_clicked()
+void EFactura::on_mui_cancelar_released()
 {
-    _depura ( "EFactura::on_mui_cancelar_clicked", 0 );
+    _depura ( "EFactura::on_mui_cancelar_released", 0 );
 
 //  QString query = "SELECT * FROM configuracion";
 //  BlDbRecordSet *cur = mainCompany()->loadQuery(query);
@@ -150,5 +150,5 @@ void EFactura::on_mui_cancelar_clicked()
 //  mainCompany()->begin();
 //  mainCompany()->runQuery(query);
 //  mainCompany()->rollback();
-    _depura ( "END EFactura::on_mui_cancelar_clicked", 0 );
+    _depura ( "END EFactura::on_mui_cancelar_released", 0 );
 }

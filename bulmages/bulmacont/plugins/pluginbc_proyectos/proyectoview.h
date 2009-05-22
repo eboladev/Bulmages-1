@@ -43,7 +43,7 @@ public:
     int guardarPost();
 
 public slots:
-    void on_mui_geninforme_clicked();
+    void on_mui_geninforme_released();
 
 signals:
     void save();

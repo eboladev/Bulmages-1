@@ -43,7 +43,7 @@ BcModelo347ListView::BcModelo347ListView ( BcCompany *emp, QString ejerActual, Q
     finicial->setText ( normalizafecha ( "01/01/" + ejerActual ).toString ( "dd/MM/yyyy" ) );
     ffinal->setText ( normalizafecha ( "31/12/" + ejerActual ).toString ( "dd/MM/yyyy" ) );
     /// Carga las tablas en pantalla.
-    on_m_boton_recalcular_clicked();
+    on_m_boton_recalcular_released();
     centrarEnPantalla ( this );
     _depura ( "END BcModelo347ListView::BcModelo347ListView", 0 );
 }
@@ -63,7 +63,7 @@ BcModelo347ListView::~BcModelo347ListView()
 ///
 /**
 **/
-void BcModelo347ListView::on_m_boton_recalcular_clicked()
+void BcModelo347ListView::on_m_boton_recalcular_released()
 {
     _depura ( "BcModelo347ListView::click_recargar", 0 );
 
@@ -156,7 +156,7 @@ void BcModelo347ListView::on_m_boton_recalcular_clicked()
 ///
 /**
 **/
-void BcModelo347ListView::on_m_boton_imprimir_clicked()
+void BcModelo347ListView::on_m_boton_imprimir_released()
 {
     _depura ( "BcModelo347ListView::click_imprimir", 0 );
     int i, numventas, numcompras;

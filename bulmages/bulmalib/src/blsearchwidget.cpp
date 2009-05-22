@@ -189,11 +189,11 @@ void BlSearchWidget::setFieldValue ( QString campo, QString val )
 /** Resetea el valor del 'id_profesor' y vacia la informacion del formulario.
     Es util sobre todo el los filtros por profesor para anular el filtro.
 */
-void BlSearchWidget::on_mui_borrar_clicked()
+void BlSearchWidget::on_mui_eliminar_released()
 {
-    _depura ( "BlSearchWidget::on_mui_borrar_clicked", 0 );
+    _depura ( "BlSearchWidget::on_mui_eliminar_released", 0 );
     setId ( "" );
-    _depura ( "END BlSearchWidget::on_mui_borrar_clicked", 0 );
+    _depura ( "END BlSearchWidget::on_mui_eliminar_released", 0 );
 }
 
 
@@ -205,12 +205,12 @@ void BlSearchWidget::on_mui_borrar_clicked()
 */
 /**
 **/
-void BlSearchWidget::on_mui_buscar_clicked()
+void BlSearchWidget::on_mui_buscar_released()
 {
-    _depura ( "BlSearchWidget::on_mui_buscar_clicked", 0 );
+    _depura ( "BlSearchWidget::on_mui_buscar_released", 0 );
     /// Disparamos los plugins
-    int res = g_plugins->lanza ( "Busqueda_on_mui_buscar_clicked", this );
-    _depura ( "END BlSearchWidget::on_mui_buscar_clicked", 0 );
+    int res = g_plugins->lanza ( "Busqueda_on_mui_buscar_released", this );
+    _depura ( "END BlSearchWidget::on_mui_buscar_released", 0 );
 }
 
 

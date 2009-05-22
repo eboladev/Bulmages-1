@@ -112,11 +112,11 @@ BalanceView::~BalanceView()
 ///
 /**
 **/
-void BalanceView::on_mui_actualizar_clicked()
+void BalanceView::on_mui_actualizar_released()
 {
-    _depura ( "BalanceView::on_mui_actualizar_clicked", 0 );
+    _depura ( "BalanceView::on_mui_actualizar_released", 0 );
     accept();
-    _depura ( "END BalanceView::on_mui_actualizar_clicked", 0 );
+    _depura ( "END BalanceView::on_mui_actualizar_released", 0 );
 }
 
 
@@ -422,10 +422,10 @@ void BalanceView::accept()
 **/
 void BalanceView::imprimir()
 {
-    _depura ( "BalanceView::on_mui_imprimir_clicked", 0 );
+    _depura ( "BalanceView::on_mui_imprimir_released", 0 );
     BalancePrintView *balan = new BalancePrintView ( mainCompany() );
     balan->inicializa1 ( m_codigoinicial->text(), m_codigofinal->text(), m_fechainicial1->text(), m_fechafinal1->text(), FALSE );
     balan->exec();
-    _depura ( "END BalanceView::on_mui_imprimir_clicked", 0 );
+    _depura ( "END BalanceView::on_mui_imprimir_released", 0 );
 }
 

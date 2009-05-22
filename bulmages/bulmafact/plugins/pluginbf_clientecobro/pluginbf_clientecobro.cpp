@@ -167,7 +167,7 @@ int ClienteView_cargarPost_Post ( ClienteView *prov )
 }// end if
 
 
-int BfBuscarReferencia_on_mui_abrirtodo_clicked_Post ( BfBuscarReferencia *ref )
+int BfBuscarReferencia_on_mui_abrirtodo_released_Post ( BfBuscarReferencia *ref )
 {
     QString SQLQuery = "SELECT * FROM cobro WHERE refcobro = '" + ref->mui_referencia->text() + "'";
     BlDbRecordSet *cur = ref->mainCompany() ->loadQuery ( SQLQuery );

@@ -106,9 +106,9 @@ void BalancePrintView::inicializa1 ( QString codinicial1, QString codfinal1, QSt
 /// Se ha pulsado sobre el bot&oacute;n aceptar del formulario.8
 /**
 **/
-void BalancePrintView::on_mui_imprimir_clicked()
+void BalancePrintView::on_mui_imprimir_released()
 {
-    _depura ( "BalancePrintView::on_mui_imprimir_clicked", 0 );
+    _depura ( "BalancePrintView::on_mui_imprimir_released", 0 );
     if ( radiotexto->isChecked() )
         presentar ( "txt" );
     if ( radiohtml->isChecked() )
@@ -117,7 +117,7 @@ void BalancePrintView::on_mui_imprimir_clicked()
         presentar ( "rtk" );
     if ( radiokugar->isChecked() )
         presentar ( "kugar" );
-    _depura ( "END BalancePrintView::on_mui_imprimir_clicked", 0 );
+    _depura ( "END BalancePrintView::on_mui_imprimir_released", 0 );
 }
 
 
@@ -421,13 +421,13 @@ void BalancePrintView::presentar ( const char* tipus )
 /** Presenta la ventana de selecci&oacute;n de canales \ref BcCanalSeleccionarView. */
 /**
 **/
-void BalancePrintView::on_mui_canales_clicked()
+void BalancePrintView::on_mui_canales_released()
 {
-    _depura ( "BalancePrintView::on_mui_canales_clicked", 0 );
+    _depura ( "BalancePrintView::on_mui_canales_released", 0 );
     BcCanalSeleccionarView *selcanales = ( ( BcCompany * ) mainCompany() ) ->getselcanales();
     selcanales->exec();
     selcanales->firstcanal();
-    _depura ( "END BalancePrintView::on_mui_canales_clicked", 0 );
+    _depura ( "END BalancePrintView::on_mui_canales_released", 0 );
 }
 
 
@@ -436,12 +436,12 @@ void BalancePrintView::on_mui_canales_clicked()
 /** Presenta la ventana de selecci&oacute;n de centros de coste \ref BcCentroCosteSeleccionarView. */
 /**
 **/
-void BalancePrintView::on_mui_ccostes_clicked()
+void BalancePrintView::on_mui_ccostes_released()
 {
-    _depura ( "BalancePrintView::on_mui_ccostes_clicked", 0 );
+    _depura ( "BalancePrintView::on_mui_ccostes_released", 0 );
     BcCentroCosteSeleccionarView *selccostes = ( ( BcCompany * ) mainCompany() ) ->getselccostes();
     selccostes->exec();
     selccostes->firstccoste();
-    _depura ( "END BalancePrintView::on_mui_ccostes_clicked", 0 );
+    _depura ( "END BalancePrintView::on_mui_ccostes_released", 0 );
 }
 

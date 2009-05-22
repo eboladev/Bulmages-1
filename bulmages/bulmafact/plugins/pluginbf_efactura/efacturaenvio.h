@@ -39,9 +39,9 @@ public:
     ~EFacturaEnvio();
 
 // public slots:
-//  virtual void on_mui_examinaECertificado_clicked();
-//  virtual void on_mui_cancelar_clicked();
-//  virtual void on_mui_guardar_clicked();
+//  virtual void on_mui_examinaECertificado_released();
+//  virtual void on_mui_cancelar_released();
+//  virtual void on_mui_guardar_released();
 };
 
 #endif

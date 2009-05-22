@@ -229,7 +229,7 @@ void FacturasProveedorList::editar ( int row )
 
 /** SLOT que responde a la pulsacion del boton mui_borrar en el formulario.
     Crea una instancia de \ref FacturaProveedorView carga el elemento seleccionado
-    y lanza el metodo \ref FacturaProveedorView::on_mui_borrar_clicked()
+    y lanza el metodo \ref FacturaProveedorView::on_mui_borrar_released()
     Una vez borrado recarga el listado para que se actualicen los cambios. */
 ///
 /**
@@ -247,7 +247,7 @@ void FacturasProveedorList::borrar()
         mdb_idfacturap = mui_list->dbValue ( "idfacturap" );
         FacturaProveedorView *bud = new FacturaProveedorView ( ( BfCompany * ) mainCompany(), 0 );
         bud->cargar ( mdb_idfacturap );
-        bud->on_mui_borrar_clicked();
+        bud->on_mui_borrar_released();
         delete bud;
         presentar();
     } catch ( ... ) {
@@ -263,9 +263,9 @@ void FacturasProveedorList::borrar()
 **/
 void FacturasProveedorList::imprimir()
 {
-    _depura ( "FacturasProveedorList::on_mui_imprimir_clicked", 0 );
+    _depura ( "FacturasProveedorList::on_mui_imprimir_released", 0 );
     mui_list->imprimirPDF ( _ ( "Facturas de proveedores" ) );
-    _depura ( "END FacturasProveedorList::on_mui_imprimir_clicked", 0 );
+    _depura ( "END FacturasProveedorList::on_mui_imprimir_released", 0 );
 }
 
 

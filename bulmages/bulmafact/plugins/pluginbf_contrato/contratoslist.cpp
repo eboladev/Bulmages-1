@@ -151,15 +151,15 @@ void ContratosList::editar ( int row )
 /**
 \return
 **/
-void ContratosList::on_mui_editar_clicked()
+void ContratosList::on_mui_editar_released()
 {
-    _depura ( "ContratosList::on_mui_editar_clicked", 0 );
+    _depura ( "ContratosList::on_mui_editar_released", 0 );
     if ( mui_list->currentRow() < 0 ) {
         _depura ( "Debe seleccionar un elemento", 2 );
         return;
     } // end if
     editar ( mui_list->currentRow() );
-    _depura ( "END ContratosList::on_mui_editar_clicked", 0 );
+    _depura ( "END ContratosList::on_mui_editar_released", 0 );
 }
 
 
@@ -168,11 +168,11 @@ void ContratosList::on_mui_editar_clicked()
 */
 /**
 **/
-void ContratosList::on_mui_imprimir_clicked()
+void ContratosList::on_mui_imprimir_released()
 {
-    _depura ( "ContratosList::on_mui_imprimir_clicked", 0 );
+    _depura ( "ContratosList::on_mui_imprimir_released", 0 );
     mui_list->imprimirPDF ( _ ( "Listado de Contratos" ) );
-    _depura ( "ContratosList::on_mui_imprimir_clicked", 0 );
+    _depura ( "ContratosList::on_mui_imprimir_released", 0 );
 }
 
 
@@ -184,9 +184,9 @@ void ContratosList::on_mui_imprimir_clicked()
 */
 /**
 **/
-void ContratosList::on_mui_borrar_clicked()
+void ContratosList::on_mui_borrar_released()
 {
-    _depura ( "ContratosList::on_mui_borrar_clicked", 0 );
+    _depura ( "ContratosList::on_mui_borrar_released", 0 );
     try {
         /*
                 QString idcontrato = mui_list->dbValue("idcontrato");
@@ -195,14 +195,14 @@ void ContratosList::on_mui_borrar_clicked()
                     delete cli;
                     throw -1;
                 } // end if
-                cli->on_mui_borrar_clicked();
+                cli->on_mui_borrar_released();
                 delete cli;
                 presenta();
         */
     } catch ( ... ) {
         mensajeInfo ( _ ( "Error al borrar un contrato" ) );
     } // end try
-    _depura ( "END:ContratosList::on_mui_borrar_clicked", 0 );
+    _depura ( "END:ContratosList::on_mui_borrar_released", 0 );
 }
 
 
@@ -313,7 +313,7 @@ void ContratosList::on_m_filtro_textChanged ( const QString &text )
 {
     _depura ( "ContratosList::on_m_filtro_textChanged", 0 );
     if ( text.size() >= 3 ) {
-        on_mui_actualizar_clicked();
+        on_mui_actualizar_released();
     } // end if
     _depura ( "END ContratosList::on_m_filtro_textChanged", 0 );
 }
@@ -324,32 +324,32 @@ void ContratosList::on_m_filtro_textChanged ( const QString &text )
 void ContratosList::on_mui_list_itemDoubleClicked ( QTableWidgetItem * )
 {
     _depura ( "ContratosList::on_mui_list_itemDoubleClicked", 0 );
-    on_mui_editar_clicked();
+    on_mui_editar_released();
     _depura ( "END ContratosList::on_mui_list_itemDoubleClicked", 0 );
 }
 
 /// SLOT automatico que se ejecuta al pulsar sobre el boton de crear en la botonera
 /**
 **/
-void ContratosList::on_mui_crear_clicked()
+void ContratosList::on_mui_crear_released()
 {
-    _depura ( "ContratosList::on_mui_crear_clicked", 0 );
+    _depura ( "ContratosList::on_mui_crear_released", 0 );
     ContratoView *prov = new ContratoView ( ( BfCompany * ) mainCompany() );
     prov->cargar ( "0" );
     mainCompany() ->m_pWorkspace->addWindow ( prov );
     prov->show();
-    _depura ( "END ContratosList::on_mui_crear_clicked", 0 );
+    _depura ( "END ContratosList::on_mui_crear_released", 0 );
 }
 
 
 /// SLOT automatico que se ejecuta al pulsar sobre el boton de actualizar en la botonera
 /**
 **/
-void ContratosList::on_mui_actualizar_clicked()
+void ContratosList::on_mui_actualizar_released()
 {
-    _depura ( "ContratosList::on_mui_actualizar_clicked", 0 );
+    _depura ( "ContratosList::on_mui_actualizar_released", 0 );
     presenta();
-    _depura ( "END ContratosList::on_mui_actualizar_clicked", 0 );
+    _depura ( "END ContratosList::on_mui_actualizar_released", 0 );
 }
 
 /// SLOT automatico que se ejecuta al pulsar sobre el boton configurar en la botonera
@@ -371,7 +371,7 @@ void ContratosList::on_mui_configurar_toggled ( bool checked )
 /// SLOT automatico que se ejecuta al pulsar sobre el boton de facturar en la botonera
 /** Realiza la facturacion pendiente de todos los contratos indicados.
 **/
-void ContratosList::on_mui_facturar_clicked()
+void ContratosList::on_mui_facturar_released()
 {
     _depura ( "ContratosList::on_mui_facturar", 0 );
     BlDbRecordSet *cur = NULL;
@@ -389,7 +389,7 @@ void ContratosList::on_mui_facturar_clicked()
                 delete prov;
             } // end if
 //        mainCompany() ->m_pWorkspace->addWindow ( prov );
-            prov->on_mui_facturar_clicked();
+            prov->on_mui_facturar_released();
             delete prov;
 
             cur->nextRecord();

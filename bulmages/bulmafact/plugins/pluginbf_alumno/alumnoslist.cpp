@@ -176,7 +176,7 @@ void AlumnosList::borrar()
             AlumnoView * cv = new AlumnoView ( ( BfCompany * ) mainCompany(), 0 );
             if ( cv->cargar ( mdb_idalumno ) )
                 throw - 1;
-            cv->on_mui_borrar_clicked();
+            cv->on_mui_borrar_released();
             cv->close();
         } // end if
         presentar();
@@ -229,9 +229,9 @@ void AlumnosList::submenu ( const QPoint & )
     QAction *del = popup->addAction ( _ ( "Borrar Alumno" ) );
     QAction *opcion = popup->exec ( QCursor::pos() );
     if ( opcion == del )
-        on_mui_borrar_clicked();
+        on_mui_borrar_released();
     if ( opcion == edit )
-        on_mui_editar_clicked();
+        on_mui_editar_released();
     delete popup;
     _depura ( "AlumnosList::on_mui_list_customContextMenuRequested", 0 );
 }

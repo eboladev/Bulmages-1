@@ -212,7 +212,7 @@ void ZList::borrar()
                 mainCompany()->pWorkspace()->addWindow(alm);
     //            alm->show();
                 alm->cargar(m_idz);
-         alm->on_mui_borrar_clicked();
+         alm->on_mui_borrar_released();
          alm->close();
 
             } // end if

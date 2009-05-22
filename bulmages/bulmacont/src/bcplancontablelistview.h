@@ -71,7 +71,7 @@ public:
     BcPlanContableListView ( BcCompany *, QWidget *parent = 0, Qt::WFlags flag = 0, edmode editmode = BL_EDIT_MODE );
     ~BcPlanContableListView();
     int inicializa();
-    virtual void on_mui_borrar_clicked();
+    virtual void on_mui_borrar_released();
 
 private:
     void inicializatabla();
@@ -82,14 +82,14 @@ private slots:
 
 public slots:
     virtual void on_mui_tablacuentas_cellDoubleClicked ( int row, int );
-    virtual void on_mui_editar_clicked();
-    virtual void on_mui_crear_clicked();
+    virtual void on_mui_editar_released();
+    virtual void on_mui_crear_released();
     virtual void on_mui_busqueda_textChanged ( const QString & );
     virtual void on_mui_busqueda_editFinished();
     virtual bool eventFilter ( QObject *, QEvent * );
-    virtual void on_mui_exportar_clicked();
-    virtual void on_mui_importar_clicked();
-    virtual void on_mui_actualizar_clicked();
+    virtual void on_mui_exportar_released();
+    virtual void on_mui_importar_released();
+    virtual void on_mui_actualizar_released();
 
 signals:
     void selected ( QString );

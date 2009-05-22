@@ -23,7 +23,7 @@ Devolucion::Devolucion ( BtCompany *emp, QWidget *parent ) : BlWidget ( emp, par
 Devolucion::~Devolucion()
 {}
 
-void Devolucion::on_mui_devolver_clicked()
+void Devolucion::on_mui_devolver_released()
 {
     m_ticket->guardar();
     m_ticket->imprimir();
@@ -31,13 +31,13 @@ void Devolucion::on_mui_devolver_clicked()
 }
 
 
-void Devolucion::on_mui_cancelar_clicked()
+void Devolucion::on_mui_cancelar_released()
 {
     m_value = -1;
     ( ( QDialog * ) parent() )->accept();
 }
 
-void Devolucion::on_mui_vale_clicked()
+void Devolucion::on_mui_vale_released()
 {
 
     struct empresastr {

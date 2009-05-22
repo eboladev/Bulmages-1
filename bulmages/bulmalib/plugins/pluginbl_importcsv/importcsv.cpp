@@ -62,7 +62,7 @@ ImportCSV::~ImportCSV()
     _depura ( "END ImportCSV::~ImportCSV", 0 );
 }
 
-void ImportCSV::on_mui_buscarArchivo_clicked()
+void ImportCSV::on_mui_buscarArchivo_released()
 {
 
     QString fileName = QFileDialog::getOpenFileName ( this, _ ( "Open file" ), "", _ ( "All files (*)" ) );
@@ -71,9 +71,9 @@ void ImportCSV::on_mui_buscarArchivo_clicked()
 
 /** No precisa acciones adicionales en el destructor.
 */
-void ImportCSV::on_mui_aceptar_clicked()
+void ImportCSV::on_mui_aceptar_released()
 {
-    _depura ( "ImportCSV::on_mui_aceptar_clicked", 0 );
+    _depura ( "ImportCSV::on_mui_aceptar_released", 0 );
     mensajeInfo ( "aceptar pulsado" );
 
     QFile file ( mui_archivo->text() );
@@ -92,7 +92,7 @@ void ImportCSV::on_mui_aceptar_clicked()
     mainCompany()->commit();
     file.close();
 
-    _depura ( "END ImportCSV::on_mui_aceptar_clicked", 0 );
+    _depura ( "END ImportCSV::on_mui_aceptar_released", 0 );
 }
 
 void ImportCSV::on_mui_cabeceras_stateChanged ( int state )

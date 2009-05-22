@@ -10,12 +10,12 @@ Cobrar::Cobrar ( BtCompany *emp, QWidget *parent ) : BlWidget ( emp, parent )
 Cobrar::~Cobrar()
 {}
 
-void Cobrar::on_mui_cobrar_clicked()
+void Cobrar::on_mui_cobrar_released()
 {
     ( ( BtCompany * ) mainCompany() ) ->pulsaTecla ( Qt::Key_F1 );
 }
 
-void Cobrar::on_mui_abrircajon_clicked()
+void Cobrar::on_mui_abrircajon_released()
 {
     ( ( BtCompany * ) mainCompany() ) ->pulsaTecla ( Qt::Key_F3 );
 }

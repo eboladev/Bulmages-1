@@ -180,7 +180,7 @@ void ActividadesList::borrar()
             ActividadView * cv = new ActividadView ( ( BfCompany * ) mainCompany(), 0 );
             if ( cv->cargar ( mdb_idactividad ) )
                 throw - 1;
-            cv->on_mui_borrar_clicked();
+            cv->on_mui_borrar_released();
             cv->close();
         } // end if
         presentar();
@@ -238,10 +238,10 @@ void ActividadesList::submenu ( const QPoint & )
     QAction *opcion = popup->exec ( QCursor::pos() );
     
     if ( opcion == del )
-        on_mui_borrar_clicked();
+        on_mui_borrar_released();
         
     if ( opcion == edit )
-        on_mui_editar_clicked();
+        on_mui_editar_released();
         
     delete popup;
     

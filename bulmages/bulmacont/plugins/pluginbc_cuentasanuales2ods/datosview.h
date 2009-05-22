@@ -36,8 +36,8 @@ public:
     ~datosView();
 
 public slots:
-    void on_mui_cancelar_clicked();
-    void on_mui_aceptar_clicked();
+    void on_mui_cancelar_released();
+    void on_mui_aceptar_released();
 };
 
 #endif

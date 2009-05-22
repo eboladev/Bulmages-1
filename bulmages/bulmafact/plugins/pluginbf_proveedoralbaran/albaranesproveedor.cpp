@@ -339,7 +339,7 @@ void AlbaranesProveedor::borrar()
             if ( apv->cargar ( mdb_idalbaranp ) ) {
                 throw - 1;
             } // end if
-            apv->on_mui_borrar_clicked();
+            apv->on_mui_borrar_released();
             apv->close();
         } // end if
         presentar();

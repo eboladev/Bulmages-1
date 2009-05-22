@@ -63,7 +63,7 @@ Abrevs::~Abrevs()
     delete m_doc2;
 }
 
-void Abrevs::on_mui_teclado_clicked()
+void Abrevs::on_mui_teclado_released()
 {
 
     if ( m_doc2->isVisible() ) {
@@ -74,7 +74,7 @@ void Abrevs::on_mui_teclado_clicked()
     }// end if
 }
 
-void Abrevs::on_mui_usuario_clicked()
+void Abrevs::on_mui_usuario_released()
 {
 
     /// Vamos a probar con un docwindow.
@@ -93,7 +93,7 @@ void Abrevs::on_mui_usuario_clicked()
 //    trab->setWindowModality(Qt::WindowModal);
 }
 
-void Abrevs::on_mui_aparcar_clicked()
+void Abrevs::on_mui_aparcar_released()
 {
     BtCompany * emp = ( BtCompany * ) mainCompany();
     // El nombre del ticket no puede estar vacio.
@@ -130,7 +130,7 @@ void Abrevs::on_mui_aparcar_clicked()
     tick->pintar();
 }
 
-void Abrevs::on_mui_recuperar_clicked()
+void Abrevs::on_mui_recuperar_released()
 {
 
     Tickets * trab = new Tickets ( mainCompany(), 0 );
@@ -138,7 +138,7 @@ void Abrevs::on_mui_recuperar_clicked()
 }
 
 
-void Abrevs::on_mui_cliente_clicked()
+void Abrevs::on_mui_cliente_released()
 {
     BtCompany * emp = ( BtCompany * ) mainCompany();
 

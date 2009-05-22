@@ -83,7 +83,7 @@ public:
 public slots:
     virtual void on_subform2_itemDoubleClicked ( QTableWidgetItem * );
     virtual void on_m_cliente_valueChanged ( QString id );
-    virtual void on_mui_facturar_clicked();
+    virtual void on_mui_facturar_released();
 };
 
 #endif

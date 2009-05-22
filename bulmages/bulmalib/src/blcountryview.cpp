@@ -116,7 +116,7 @@ void BlCountryView::on_mui_list_itemClicked ( QTableWidgetItem * )
                                     _ ( "Guardar pais" ),
                                     _ ( "Desea guardar los cambios?" ),
                                     _ ( "&Guardar" ), _ ( "&Cancelar" ), 0, 0, 1 ) == 0 ) {
-            on_mui_guardar_clicked();
+            on_mui_guardar_released();
         } // end if
     } // end if
     m_countryId = previdpais;
@@ -153,7 +153,7 @@ void BlCountryView::mostrarplantilla()
 **/
 int BlCountryView::guardar()
 {
-    _depura ( "BlCountryView::on_mui_guardar_clicked", 0 );
+    _depura ( "BlCountryView::on_mui_guardar_released", 0 );
     QString id;
 
     if ( dbValue ( "idpais" ).isEmpty() ) {
@@ -170,7 +170,7 @@ int BlCountryView::guardar()
         dialogChanges_cargaInicial();
         pintar();
     }
-    _depura ( "END BlCountryView::on_mui_guardar_clicked", 0 );
+    _depura ( "END BlCountryView::on_mui_guardar_released", 0 );
     return 0;
 }
 
@@ -178,9 +178,9 @@ int BlCountryView::guardar()
 ///
 /**
 **/
-void BlCountryView::on_mui_crear_clicked()
+void BlCountryView::on_mui_crear_released()
 {
-    _depura ( "BlCountryView::on_mui_crear_clicked", 0 );
+    _depura ( "BlCountryView::on_mui_crear_released", 0 );
     try {
         /// Si se ha modificado el contenido advertimos y guardamos.
         if ( dialogChanges_hayCambios() ) {
@@ -189,7 +189,7 @@ void BlCountryView::on_mui_crear_clicked()
                                         _ ( "Desea guardar los cambios?" ),
                                         QMessageBox::Ok,
                                         QMessageBox::Cancel ) == QMessageBox::Ok ) {
-                on_mui_guardar_clicked();
+                on_mui_guardar_released();
             } // end if
         } // end if
 
@@ -201,7 +201,7 @@ void BlCountryView::on_mui_crear_clicked()
         pintar();
         mui_list->setCurrentItem ( mui_list->rowCount(), 1 );
         mostrarplantilla();
-        _depura ( "END BlCountryView::on_mui_crear_clicked", 0 );
+        _depura ( "END BlCountryView::on_mui_crear_released", 0 );
     } catch ( ... ) {
         mensajeInfo ( _ ( "Error al crear el banco" ) );
         mainCompany() ->rollback();
@@ -212,9 +212,9 @@ void BlCountryView::on_mui_crear_clicked()
 ///
 /**
 **/
-void BlCountryView::on_mui_borrar_clicked()
+void BlCountryView::on_mui_borrar_released()
 {
-    _depura ( "BlCountryView::on_mui_borrar_clicked", 0 );
+    _depura ( "BlCountryView::on_mui_borrar_released", 0 );
     if ( m_countryId == "" | m_countryId == "0" ) {
         mensajeInfo ( _ ( "Debe seleccionar un elemento de la lista" ) );
         return;
@@ -238,7 +238,7 @@ void BlCountryView::on_mui_borrar_clicked()
             mainCompany() ->rollback();
         } // end try
     } // end switch
-    _depura ( "END BlCountryView::on_mui_borrar_clicked", 0 );
+    _depura ( "END BlCountryView::on_mui_borrar_released", 0 );
 }
 
 

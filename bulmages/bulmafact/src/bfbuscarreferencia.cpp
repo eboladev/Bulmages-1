@@ -57,9 +57,9 @@ BfBuscarReferencia::~BfBuscarReferencia()
 */
 /**
 **/
-void BfBuscarReferencia::on_mui_informe_clicked()
+void BfBuscarReferencia::on_mui_informe_released()
 {
-    _depura ( "BfBuscarReferencia::on_mui_buscar_clicked\n", 0 );
+    _depura ( "BfBuscarReferencia::on_mui_buscar_released\n", 0 );
 
     BlForm newfich ( mainCompany(), NULL );
     newfich.setTitleName ( _ ( "Informe" ) );
@@ -69,7 +69,7 @@ void BfBuscarReferencia::on_mui_informe_clicked()
         invocaPDF ( "informereferencia" );
     } // end if
 
-    _depura ( "END BfBuscarReferencia::on_mui_buscar_clicked\n", 0 );
+    _depura ( "END BfBuscarReferencia::on_mui_buscar_released\n", 0 );
 
 }
 
@@ -111,9 +111,9 @@ void BfBuscarReferencia::on_mui_rferencia_returnPressed()
 */
 /**
 **/
-void BfBuscarReferencia::on_mui_abrirtodo_clicked()
+void BfBuscarReferencia::on_mui_abrirtodo_released()
 {
-    _depura ( "BusquedddaReferencia::on_mui_abrirtodo_clicked", 0 );
+    _depura ( "BusquedddaReferencia::on_mui_abrirtodo_released", 0 );
     /// Empezamos con los presupuestos.
     /*
         QString SQLQuery = "SELECT * FROM presupuesto WHERE refpresupuesto = '" + mui_referencia->text() + "'";
@@ -216,9 +216,9 @@ void BfBuscarReferencia::on_mui_abrirtodo_clicked()
         } // end while
         delete cur;
     */
-    g_plugins->lanza ( "BfBuscarReferencia_on_mui_abrirtodo_clicked_Post", this );
+    g_plugins->lanza ( "BfBuscarReferencia_on_mui_abrirtodo_released_Post", this );
 
-    _depura ( "END BfBuscarReferencia::on_mui_abrirtodo_clicked", 0 );
+    _depura ( "END BfBuscarReferencia::on_mui_abrirtodo_released", 0 );
 }
 
 

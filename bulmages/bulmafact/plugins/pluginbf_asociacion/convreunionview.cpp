@@ -125,7 +125,7 @@ void ConvReunionView::imprimir()
         return;
     } // end if
     /// Disparamos los plugins
-    int res = g_plugins->lanza ( "ConvReunionView_on_mui_imprimir_clicked", this );
+    int res = g_plugins->lanza ( "ConvReunionView_on_mui_imprimir_released", this );
     if ( res != 0 ) {
     	_depura ( "END ConvReunionView::imprimir", 0 );
         return;
@@ -166,7 +166,7 @@ int ConvReunionView::cargarPost ( QString id )
 }
 
 
-void ConvReunionView::on_mui_email_clicked (  )
+void ConvReunionView::on_mui_email_released (  )
 {
     _depura ( " ConvReunionView::cargarPost", 0 );
 //    cad = "kmail -s \" El Subject\" --body \" Adjunto remito \n Atentamente\n\" --attach " + g_confpr->valor ( CONF_DIR_USER ) + doc + num + ".pdf " + email;
@@ -187,8 +187,8 @@ void ConvReunionView::on_mui_email_clicked (  )
     _depura ( "END ConvReunionView::cargarPost", 0 );
 }
 
-void ConvReunionView::on_m_agregarconvocados_clicked() {
-    _depura ( "ConvReunionView::on_m_agregarconvocados_clicked", 0 );
+void ConvReunionView::on_m_agregarconvocados_released() {
+    _depura ( "ConvReunionView::on_m_agregarconvocados_released", 0 );
     BlDbSubFormRecord *linea1;
 
     /// Luego segun el tipo de agregados seleccionados habra que modificar el query.
@@ -208,7 +208,7 @@ void ConvReunionView::on_m_agregarconvocados_clicked() {
     } // end while
     delete cur;
 
-    _depura ( "END ConvReunionView::on_m_agregarconvocados_clicked", 0 );
+    _depura ( "END ConvReunionView::on_m_agregarconvocados_released", 0 );
 
 }
 

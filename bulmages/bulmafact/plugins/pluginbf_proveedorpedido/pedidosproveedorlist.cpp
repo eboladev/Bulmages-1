@@ -209,7 +209,7 @@ void PedidosProveedorList::borrar()
             if ( ppv->cargar ( mdb_idpedidoproveedor ) ) {
                 throw - 1;
             } // end if
-            ppv->on_mui_borrar_clicked();
+            ppv->on_mui_borrar_released();
             ppv->close();
         } // end if
         presentar();

@@ -113,7 +113,7 @@ void FPagoView::on_mui_lista_currentItemChanged ( QListWidgetItem *cur, QListWid
 **/
 int FPagoView::guardar()
 {
-    _depura ( "FPagoView::on_mui_guardar_clicked", 0 );
+    _depura ( "FPagoView::on_mui_guardar_released", 0 );
     if ( mdb_idforma_pago == "" || mdb_idforma_pago == "0" ) return 0;
     try {
         QString query = "UPDATE forma_pago SET descforma_pago = '" +
@@ -133,7 +133,7 @@ int FPagoView::guardar()
         /// Emitimos la senyal apropiada en el qapplication2
         g_theApp->tablaCambiada1 ( "forma_pago" );
 
-        _depura ( "END FPagoView::on_mui_guardar_clicked", 0 );
+        _depura ( "END FPagoView::on_mui_guardar_released", 0 );
         return 0;
     } catch ( ... ) {
         _depura ( "error guardando la forma de pago", 1 );
@@ -156,7 +156,7 @@ bool FPagoView::trataModificado()
                                     _ ( "Desea guardar los cambios." ),
                                     QMessageBox::Ok,
                                     QMessageBox::Cancel ) == QMessageBox::Ok )
-            on_mui_guardar_clicked();
+            on_mui_guardar_released();
         _depura ( "END FPagoView::trataModificado", 0 );
         return ( TRUE );
     } // end if
@@ -169,9 +169,9 @@ bool FPagoView::trataModificado()
 /**
 \return
 **/
-void FPagoView::on_mui_crear_clicked()
+void FPagoView::on_mui_crear_released()
 {
-    _depura ( "FPagoView::on_mui_crear_clicked", 0 );
+    _depura ( "FPagoView::on_mui_crear_released", 0 );
     /// Si se ha modificado el contenido advertimos y guardamos.
     trataModificado();
     QString query = "INSERT INTO forma_pago (descforma_pago, dias1tforma_pago, descuentoforma_pago) VALUES ('NUEVA FORMA DE PAGO', 0, 0)";
@@ -186,7 +186,7 @@ void FPagoView::on_mui_crear_clicked()
     mdb_idforma_pago = cur->valor ( "idFPagoView" );
     delete cur;
     pintar();
-    _depura ( "END FPagoView::on_mui_crear_clicked", 0 );
+    _depura ( "END FPagoView::on_mui_crear_released", 0 );
 }
 
 
@@ -195,9 +195,9 @@ void FPagoView::on_mui_crear_clicked()
 /**
 \return
 **/
-void FPagoView::on_mui_borrar_clicked()
+void FPagoView::on_mui_borrar_released()
 {
-    _depura ( "FPagoView::on_mui_borrar_clicked", 0 );
+    _depura ( "FPagoView::on_mui_borrar_released", 0 );
     trataModificado();
     try {
         mainCompany() ->begin();
@@ -206,7 +206,7 @@ void FPagoView::on_mui_borrar_clicked()
         mainCompany() ->commit();
         pintar();
         groupBox1->setDisabled ( TRUE );
-        _depura ( "END FPagoView::on_mui_borrar_clicked", 0 );
+        _depura ( "END FPagoView::on_mui_borrar_released", 0 );
     } catch ( ... ) {
         mensajeInfo ( _ ( "Error al intentar borrar la forma de pago" ) );
         mainCompany() ->rollback();
@@ -241,12 +241,12 @@ void FPagoView::setModoEdicion()
 /**
 \return
 **/
-void FPagoView::on_mui_aceptar_clicked()
+void FPagoView::on_mui_aceptar_released()
 {
-    _depura ( "FPagoView::on_mui_aceptar_clicked", 0 );
+    _depura ( "FPagoView::on_mui_aceptar_released", 0 );
     trataModificado();
     close();
-    _depura ( "END FPagoView::on_mui_aceptar_clicked", 0 );
+    _depura ( "END FPagoView::on_mui_aceptar_released", 0 );
 }
 
 

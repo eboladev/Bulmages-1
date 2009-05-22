@@ -239,13 +239,13 @@ void AlmacenesListView::borrar()
             mainCompany() ->pWorkspace() ->addWindow ( alm );
 //            alm->show();
             alm->cargar ( m_idalmacen );
-            alm->on_mui_borrar_clicked();
+            alm->on_mui_borrar_released();
             alm->close();
             /*
                         PresupuestoView *pv = ((BfCompany *)mainCompany())->nuevoPresupuestoView();
                         if (pv->cargar(m_idalmacen))
                             throw -1;
-                        pv->on_mui_borrar_clicked();
+                        pv->on_mui_borrar_released();
                         pv->close();
             */
         } // end if

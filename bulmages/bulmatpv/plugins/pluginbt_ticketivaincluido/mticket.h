@@ -44,10 +44,10 @@ public:
     virtual void pintar();
 
 public slots:
-    virtual void on_mui_subir_clicked();
-    virtual void on_mui_bajar_clicked();
-    virtual void on_mui_borrar_clicked();
-    virtual void on_mui_imprimir_clicked();
+    virtual void on_mui_subir_released();
+    virtual void on_mui_bajar_released();
+    virtual void on_mui_borrar_released();
+    virtual void on_mui_imprimir_released();
     
 };
 

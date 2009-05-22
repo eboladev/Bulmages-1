@@ -106,15 +106,15 @@ public:
 public slots:
     virtual void on_m_filtro_textChanged ( const QString &text ) {
         if ( text.size() >= 3 )
-            on_mui_actualizar_clicked();
+            on_mui_actualizar_released();
     };
-    virtual void on_mui_actualizar_clicked() {
+    virtual void on_mui_actualizar_released() {
         presenta();
     }
-    virtual void on_mui_crear_clicked() {
+    virtual void on_mui_crear_released() {
 //        mainCompany() ->s_newFacturaCli();
     };
-    virtual void on_mui_imprimir_clicked();
+    virtual void on_mui_imprimir_released();
     virtual void on_mui_configurar_toggled ( bool checked ) {
         if ( checked ) {
             mui_list->showConfig();

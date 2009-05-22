@@ -65,7 +65,7 @@ public:
     ~BfConfiguracionView();
 
 public slots:
-    virtual void on_mui_aceptar_clicked() {
+    virtual void on_mui_aceptar_released() {
         mui_listado->guardar();
         close();
     };

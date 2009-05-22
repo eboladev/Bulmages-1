@@ -596,7 +596,7 @@ void AgFacQToolButton::generarFactura()
 
     /// Hacemos que las opciones de filtrado del listado ya est&eacute;n bien.
     fac->m_cliente->setId ( fpv->dbValue ( "idcliente" ) );
-    fac->on_mui_actualizar_clicked();
+    fac->on_mui_actualizar_released();
 
     /// Lanzamos el di&aacute;logo.
     diag->exec();

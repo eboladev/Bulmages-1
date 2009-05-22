@@ -71,9 +71,9 @@ RutaComercialIncView::~RutaComercialIncView()
 ///
 /**
 **/
-void RutaComercialIncView::on_mui_borrar_clicked()
+void RutaComercialIncView::on_mui_borrar_released()
 {
-    _depura ( "RutaComercialIncView::on_mui_borrar_clicked\n", 0 );
+    _depura ( "RutaComercialIncView::on_mui_borrar_released\n", 0 );
     if ( QMessageBox::warning ( this,
                                 _ ( "BulmaFact - Rutas comerciales" ),
                                 _ ( "Desea borrar esta ruta?" ),
@@ -81,7 +81,7 @@ void RutaComercialIncView::on_mui_borrar_clicked()
         mui_rutacomercial->borrar();
         mui_incidenciacomercial->borrar();
     } // end if
-    _depura ( "END RutaComercialIncView::on_mui_borrar_clicked\n", 0 );
+    _depura ( "END RutaComercialIncView::on_mui_borrar_released\n", 0 );
 }
 
 
@@ -107,12 +107,12 @@ void RutaComercialIncView::pintar()
 ///
 /**
 **/
-void RutaComercialIncView::on_mui_guardar_clicked()
+void RutaComercialIncView::on_mui_guardar_released()
 {
-    _depura ( "RutaComercialIncView::on_mui_guardar_clicked", 0 );
+    _depura ( "RutaComercialIncView::on_mui_guardar_released", 0 );
     mui_rutacomercial->guardar();
     mui_incidenciacomercial->guardar();
-    _depura ( "END RutaComercialIncView::on_mui_guardar_clicked", 0 );
+    _depura ( "END RutaComercialIncView::on_mui_guardar_released", 0 );
 }
 
 
@@ -137,11 +137,11 @@ int RutaComercialIncView::cargar ( QString id, QString id1 )
 ///
 /**
 **/
-void RutaComercialIncView::on_mui_aceptar_clicked()
+void RutaComercialIncView::on_mui_aceptar_released()
 {
-    _depura ( "RutaComercialIncView::on_mui_aceptar_clicked", 0 );
-    on_mui_guardar_clicked();
+    _depura ( "RutaComercialIncView::on_mui_aceptar_released", 0 );
+    on_mui_guardar_released();
     close();
-    _depura ( "END RutaComercialIncView::on_mui_aceptar_clicked", 0 );
+    _depura ( "END RutaComercialIncView::on_mui_aceptar_released", 0 );
 }
 

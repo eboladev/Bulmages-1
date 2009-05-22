@@ -445,10 +445,10 @@ BcAboutView::~BcAboutView()
 ///
 /**
 **/
-void BcAboutView::on_mui_aceptar_clicked()
+void BcAboutView::on_mui_aceptar_released()
 {
-    _depura ( "BcAboutView::on_mui_aceptar_clicked", 0 );
+    _depura ( "BcAboutView::on_mui_aceptar_released", 0 );
     close();
-    _depura ( "END BcAboutView::on_mui_aceptar_clicked", 0 );
+    _depura ( "END BcAboutView::on_mui_aceptar_released", 0 );
 }
 

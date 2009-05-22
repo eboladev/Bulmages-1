@@ -143,11 +143,11 @@ QString MovimientosView::generaFiltro()
 ///
 /**
 **/
-void MovimientosView::on_mui_imprimir_clicked()
+void MovimientosView::on_mui_imprimir_released()
 {
-    _depura ( "MovimientosView::on_mui_imprimir_clicked", 0 );
+    _depura ( "MovimientosView::on_mui_imprimir_released", 0 );
     mui_list->imprimirPDF ( _ ( "Facturas a clientes" ) );
-    _depura ( "MovimientosView::on_mui_imprimir_clicked", 0 );
+    _depura ( "MovimientosView::on_mui_imprimir_released", 0 );
 }
 
 

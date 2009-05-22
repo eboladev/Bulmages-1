@@ -49,11 +49,11 @@ public:
     int guardar();
     int cargarcomboiva ( QString );
     QString formaQuery ( QString );
-    void on_mui_borrar_clicked();
+    void on_mui_borrar_released();
 
 public slots:
-    virtual void on_mui_crear_clicked();
-    virtual void on_mui_actualizar_clicked();
+    virtual void on_mui_crear_released();
+    virtual void on_mui_actualizar_released();
 
 signals:
      void guardartarifa();

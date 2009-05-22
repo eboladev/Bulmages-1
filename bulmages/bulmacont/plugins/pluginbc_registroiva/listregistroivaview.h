@@ -62,7 +62,7 @@ public slots:
     virtual void on_mui_tablasoportado_pintaMenu ( QMenu *menu );
     virtual void on_mui_tablasoportado_trataMenu ( QAction *ac );
     virtual void on_mui_tablarepercutido_trataMenu ( QAction *ac );
-    virtual void on_mui_actualizar_clicked();
+    virtual void on_mui_actualizar_released();
     virtual void boton_print();
     virtual void on_mui_list_editFinished ( int, int ) {}
     ;

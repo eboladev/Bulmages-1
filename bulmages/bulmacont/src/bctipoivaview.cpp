@@ -110,7 +110,7 @@ void BcTipoIVAView::mostrarplantilla ( int pos )
                                     _ ( "Desea guardar los cambios?" ),
                                     QMessageBox::Ok,
                                     QMessageBox::Cancel ) == QMessageBox::Ok )
-            on_mui_guardar_clicked();
+            on_mui_guardar_released();
     } // end if
     if ( mui_comboTipoIVA->count() > 0 ) {
         if ( pos != 0 )
@@ -142,9 +142,9 @@ void BcTipoIVAView::on_mui_comboTipoIVA_currentIndexChanged ( int )
 /** Inserta en la tabla de IVAs. */
 /**
 **/
-void BcTipoIVAView::on_mui_crear_clicked()
+void BcTipoIVAView::on_mui_crear_released()
 {
-    _depura ( "BcTipoIVAView::on_mui_nuevo2_clicked()", 0 );
+    _depura ( "BcTipoIVAView::on_mui_nuevo2_released()", 0 );
     try {
         /// Si se ha modificado el contenido advertimos y guardamos.
         if ( dialogChanges_hayCambios() && m_curtipoiva->numregistros() != 0 ) {
@@ -153,7 +153,7 @@ void BcTipoIVAView::on_mui_crear_clicked()
                                         _ ( "Desea guardar los cambios?" ),
                                         QMessageBox::Ok,
                                         QMessageBox::Cancel ) == QMessageBox::Ok )
-                on_mui_guardar_clicked();
+                on_mui_guardar_released();
         } // end if
 
         if ( mui_idcuenta->text() == "" ) {
@@ -177,6 +177,6 @@ void BcTipoIVAView::on_mui_crear_clicked()
         mainCompany() ->rollback();
         return;
     } // end try
-    _depura ( "END BcTipoIVAView::on_mui_crear_clicked()", 0 );
+    _depura ( "END BcTipoIVAView::on_mui_crear_released()", 0 );
 }
 

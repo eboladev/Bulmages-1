@@ -58,7 +58,7 @@ cobropagoview::cobropagoview ( BcCompany *emp, QWidget *parent )
     mui_listado->setInsert ( FALSE );
     /// Dejamos de inicializar el listado.
     m_cuenta->setMainCompany ( emp );
-    on_mui_actualizar_clicked();
+    on_mui_actualizar_released();
     m_companyact->meteWindow ( windowTitle(), this );
     _depura ( "END cobropagoview::cobropagoview", 0 );
 }
@@ -78,7 +78,7 @@ cobropagoview::~cobropagoview()
 /// SLOT que responde a la pulsacion del boton de actualizar.
 /**
 **/
-void cobropagoview::on_mui_actualizar_clicked()
+void cobropagoview::on_mui_actualizar_released()
 {
     _depura ( "cobropagoview::s_actualizar", 0 );
 

@@ -126,7 +126,7 @@ void CobroView::imprimir()
         return;
     }
     /// Disparamos los plugins
-    int res = g_plugins->lanza ( "CoboView_on_mui_imprimir_clicked", this );
+    int res = g_plugins->lanza ( "CoboView_on_mui_imprimir_released", this );
     if ( res != 0 ) {
         return;
     } // end if

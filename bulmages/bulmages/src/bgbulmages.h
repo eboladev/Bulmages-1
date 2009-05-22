@@ -69,11 +69,11 @@ private slots:
     void launchBulmaCont();
     void launchBulmaTPV();
     void launchBulmaSetup();
-    void on_mui_lanzabulmacont_clicked();
-    void on_mui_lanzabulmafact_clicked();
-    void on_mui_lanzabulmatpv_clicked();
-    void on_mui_lanzabulmasetup_clicked();
-    void on_mui_cerrar_clicked();
+    void on_mui_lanzabulmacont_released();
+    void on_mui_lanzabulmafact_released();
+    void on_mui_lanzabulmatpv_released();
+    void on_mui_lanzabulmasetup_released();
+    void on_mui_cerrar_released();
 };
 
 #endif

@@ -79,22 +79,22 @@ BcDiarioView::~BcDiarioView()
 
 /**
 **/
-void BcDiarioView::on_mui_actualizar_clicked()
+void BcDiarioView::on_mui_actualizar_released()
 {
-    _depura ( "BcDiarioView::on_mui_actualizar_clicked", 0 );
+    _depura ( "BcDiarioView::on_mui_actualizar_released", 0 );
     accept();
-    _depura ( "END BcDiarioView::on_mui_actualizar_clicked", 0 );
+    _depura ( "END BcDiarioView::on_mui_actualizar_released", 0 );
 }
 
 
 ///
 /**
 **/
-void BcDiarioView::on_mui_configurar_clicked()
+void BcDiarioView::on_mui_configurar_released()
 {
-    _depura ( "BcDiarioView::on_mui_configurar_clicked", 0 );
+    _depura ( "BcDiarioView::on_mui_configurar_released", 0 );
     mui_list->showConfig();
-    _depura ( "END BcDiarioView::on_mui_configurar_clicked", 0 );
+    _depura ( "END BcDiarioView::on_mui_configurar_released", 0 );
 }
 
 
@@ -291,10 +291,10 @@ void BcDiarioView::presentar()
 /// Boton de impresion del diario.
 /**
 **/
-void BcDiarioView::on_mui_imprimir_clicked()
+void BcDiarioView::on_mui_imprimir_released()
 {
-    _depura ( "BcDiarioView::on_mui_imprimir_clicked", 0 );
+    _depura ( "BcDiarioView::on_mui_imprimir_released", 0 );
     mui_list->imprimirPDF ( "diario" );
-    _depura ( "END BcDiarioView::on_mui_imprimir_clicked", 0 );
+    _depura ( "END BcDiarioView::on_mui_imprimir_released", 0 );
 }
 

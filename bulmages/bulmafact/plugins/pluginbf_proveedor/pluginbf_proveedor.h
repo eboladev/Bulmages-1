@@ -27,7 +27,7 @@
 
 extern "C" MY_EXPORT int entryPoint ( BfBulmaFact * );
 extern "C" MY_EXPORT int BfCompany_createMainWindows_Post(BfCompany *);
-extern "C" MY_EXPORT int Busqueda_on_mui_buscar_clicked(BlSearchWidget *);
+extern "C" MY_EXPORT int Busqueda_on_mui_buscar_released(BlSearchWidget *);
 extern "C" MY_EXPORT int SNewProveedorView (BfCompany *);
 
 

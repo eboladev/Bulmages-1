@@ -53,11 +53,11 @@ public:
     ~Q19View();
 
     /// Como ya es un signaling slot en la clase ficha no se delcara como slot.
-    virtual void on_mui_aceptar_clicked();
+    virtual void on_mui_aceptar_released();
     virtual void closeEvent ( QCloseEvent * );
 
  public slots:
-   void on_mui_buscararchivo_clicked();
+   void on_mui_buscararchivo_released();
  
  private:
      Q19Writer *m_q19;

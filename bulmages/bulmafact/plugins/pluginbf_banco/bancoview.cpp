@@ -128,7 +128,7 @@ void BancoView::on_mui_lista_currentItemChanged ( QListWidgetItem *cur, QListWid
 **/
 int BancoView::guardar()
 {
-    _depura ( "BancoView::on_mui_guardar_clicked", 0 );
+    _depura ( "BancoView::on_mui_guardar_released", 0 );
     try {
         QString query = "UPDATE banco SET ";
         query += "nombanco='" + mainCompany() ->sanearCadena ( mui_nombanco->text() ) + "'";
@@ -164,7 +164,7 @@ int BancoView::guardar()
         } // end if
         /// Comprobamos cual es la cadena inicial.
         dialogChanges_cargaInicial();
-        _depura ( "END BancoView::on_mui_guardar_clicked", 0 );
+        _depura ( "END BancoView::on_mui_guardar_released", 0 );
         return 0;
     } catch ( ... ) {
         mensajeInfo ( _ ( "Error al guardar" ) );
@@ -186,7 +186,7 @@ bool BancoView::trataModificado()
                                     _ ( "Guardar datos del trabajador" ),
                                     _ ( "Desea guardar los cambios?" ),
                                     _ ( "&Si" ), _ ( "&No" ), 0, 0, 1 ) == 0 )
-            on_mui_guardar_clicked();
+            on_mui_guardar_released();
         return ( TRUE );
     } // end if
     _depura ( "END BancoView::trataModificado", 0 );
@@ -199,9 +199,9 @@ bool BancoView::trataModificado()
 /**
 \return
 **/
-void BancoView::on_mui_nuevo_clicked()
+void BancoView::on_mui_nuevo_released()
 {
-    _depura ( "BancoView::on_mui_nuevo_clicked", 0 );
+    _depura ( "BancoView::on_mui_nuevo_released", 0 );
     try {
         /// Si se ha modificado el contenido advertimos y guardamos.
         trataModificado();
@@ -213,7 +213,7 @@ void BancoView::on_mui_nuevo_clicked()
         mdb_idbanco = cur->valor ( "idbanco" );
         delete cur;
         pintar();
-        _depura ( "END BancoView::on_mui_nuevo_clicked", 0 );
+        _depura ( "END BancoView::on_mui_nuevo_released", 0 );
     } catch ( ... ) {
         mensajeInfo ( _ ( "Error inesperado el crear el Banco" ) );
         mainCompany() ->rollback();
@@ -226,9 +226,9 @@ void BancoView::on_mui_nuevo_clicked()
 /**
 \return
 **/
-void BancoView::on_mui_borrar_clicked()
+void BancoView::on_mui_borrar_released()
 {
-    _depura ( "BancoView::on_mui_borrar_clicked", 0 );
+    _depura ( "BancoView::on_mui_borrar_released", 0 );
     if ( mdb_idbanco == "" ) return;
     try {
         trataModificado();
@@ -241,7 +241,7 @@ void BancoView::on_mui_borrar_clicked()
         } // end if
         mainCompany() ->commit();
         pintar();
-        _depura ( "END BancoView::on_mui_borrar_clicked", 0 );
+        _depura ( "END BancoView::on_mui_borrar_released", 0 );
     } catch ( ... ) {
         mensajeInfo ( _ ( "Error inesperado al borrar el banco" ) );
         mainCompany() ->rollback();

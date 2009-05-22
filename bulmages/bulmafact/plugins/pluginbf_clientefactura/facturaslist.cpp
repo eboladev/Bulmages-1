@@ -236,9 +236,9 @@ void FacturasList::editar ( int row )
 **/
 void FacturasList::imprimir()
 {
-    _depura ( "FacturasList::on_mui_imprimir_clicked", 0 );
+    _depura ( "FacturasList::on_mui_imprimir_released", 0 );
     mui_list->imprimirPDF ( _ ( "Facturas a clientes" ) );
-    _depura ( "FacturasList::on_mui_imprimir_clicked", 0 );
+    _depura ( "FacturasList::on_mui_imprimir_released", 0 );
 }
 
 
@@ -265,7 +265,7 @@ void FacturasList::borrar()
             FacturaView * fv = new FacturaView ( ( BfCompany * ) mainCompany() );
             if ( fv->cargar ( mdb_idfactura ) )
                 throw - 1;
-            fv->on_mui_borrar_clicked();
+            fv->on_mui_borrar_released();
             fv->close();
         } // end if
         presentar();

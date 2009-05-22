@@ -155,7 +155,7 @@ ArticuloList::~ArticuloList()
 **/
 void ArticuloList::borrar()
 {
-    _depura ( "ArticuloList::on_mui_borrar_clicked", 0 );
+    _depura ( "ArticuloList::on_mui_borrar_released", 0 );
     int a = mui_list->currentRow();
     if ( a < 0 ) {
         mensajeInfo ( _ ( "Tiene que seleccionar un articulo" ) );
@@ -173,7 +173,7 @@ void ArticuloList::borrar()
                 throw - 1;
             presentar();
         } // end if
-        _depura ( "END ArticuloList::on_mui_borrar_clicked", 0 );
+        _depura ( "END ArticuloList::on_mui_borrar_released", 0 );
     } catch ( ... ) {
         mensajeInfo ( _ ( "Error al borrar el articulo" ) );
     } // end try
@@ -230,9 +230,9 @@ void ArticuloList::imprimir()
 /// SLOT que exporta el listado de articulos a formato XML.
 /**
 **/
-void ArticuloList::on_mui_exportar_clicked()
+void ArticuloList::on_mui_exportar_released()
 {
-    _depura ( "ArticuloList::on_mui_exportar_clicked", 0 );
+    _depura ( "ArticuloList::on_mui_exportar_released", 0 );
     QFile filexml ( QFileDialog::getSaveFileName ( this,
                     _ ( "Elija el archivo" ),
                     g_confpr->valor ( CONF_DIR_USER ),
@@ -245,7 +245,7 @@ void ArticuloList::on_mui_exportar_clicked()
         _depura ( "ERROR AL ABRIR EL ARCHIVO\n", 2 );
     } // end if
 
-    _depura ( "END ArticuloList::on_mui_exportar_clicked", 0 );
+    _depura ( "END ArticuloList::on_mui_exportar_released", 0 );
 }
 
 
@@ -255,7 +255,7 @@ void ArticuloList::on_mui_exportar_clicked()
 */
 /**
 **/
-void ArticuloList::on_mui_importar_clicked()
+void ArticuloList::on_mui_importar_released()
 {
     _depura ( "ArticuloList::INIT_s_importar", 0 );
     QFile filexml ( QFileDialog::getOpenFileName ( this,
@@ -291,9 +291,9 @@ void ArticuloList::submenu ( const QPoint & )
     QAction *del = popup->addAction ( _ ( "Borrar articulo" ) );
     QAction *opcion = popup->exec ( QCursor::pos() );
     if ( opcion == del )
-        on_mui_borrar_clicked();
+        on_mui_borrar_released();
     if ( opcion == edit )
-        on_mui_editar_clicked();
+        on_mui_editar_released();
     delete popup;
 }
 

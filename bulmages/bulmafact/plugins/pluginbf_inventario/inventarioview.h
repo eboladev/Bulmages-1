@@ -48,10 +48,10 @@ public:
     virtual int cargar ( QString id );
 
 public slots:
-    virtual void on_mui_guardar2_clicked();
-    virtual void on_mui_aceptar_clicked();
-    virtual void on_mui_borrar2_clicked();
-    virtual void on_mui_pregenerar_clicked();
+    virtual void on_mui_guardar2_released();
+    virtual void on_mui_aceptar_released();
+    virtual void on_mui_borrar2_released();
+    virtual void on_mui_pregenerar_released();
     virtual void on_mui_actualizar_released();
 };
 

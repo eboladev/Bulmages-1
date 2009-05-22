@@ -84,7 +84,7 @@ public:
     void pinta();
 
 public slots:
-    virtual void on_mui_buscar_clicked();
+    virtual void on_mui_buscar_released();
     virtual void s_searchCuenta();
     virtual void on_mui_codigocuenta_textChanged ( const QString &q );
     virtual void on_mui_codigocuenta_editingFinished();

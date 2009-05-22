@@ -219,7 +219,7 @@ void RecibosList::borrar()
             ReciboView * cv = new ReciboView ( ( BfCompany * ) mainCompany(), 0 );
             if ( cv->cargar ( mdb_idrecibo ) )
                 throw - 1;
-            cv->on_mui_borrar_clicked();
+            cv->on_mui_borrar_released();
             cv->close();
         } // end if
         presentar();
@@ -275,10 +275,10 @@ void RecibosList::submenu ( const QPoint & )
     QAction *opcion = popup->exec ( QCursor::pos() );
     
     if ( opcion == del )
-        on_mui_borrar_clicked();
+        on_mui_borrar_released();
         
     if ( opcion == edit )
-        on_mui_editar_clicked();
+        on_mui_editar_released();
         
     delete popup;
     

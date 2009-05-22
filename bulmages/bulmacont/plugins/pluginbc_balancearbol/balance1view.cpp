@@ -601,32 +601,32 @@ void BalanceTreeView::contextmenu ( const QPoint &point )
 **/
 void BalanceTreeView::imprimir()
 {
-    _depura ( "BalanceTreeView::on_mui_imprimir_clicked", 0 );
+    _depura ( "BalanceTreeView::on_mui_imprimir_released", 0 );
 //      QString queryalance();
 //
     generaRML ( "balance.rml" );
     invocaPDF ( "balance" );
 
-    _depura ( "END BalanceTreeView::on_mui_imprimir_clicked", 0 );
+    _depura ( "END BalanceTreeView::on_mui_imprimir_released", 0 );
 }
 
 
 ///
 /**
 **/
-void BalanceTreeView::on_mui_actualizar_clicked()
+void BalanceTreeView::on_mui_actualizar_released()
 {
-    _depura ( "BalanceTreeView::on_mui_actualizar_clicked", 0 );
+    _depura ( "BalanceTreeView::on_mui_actualizar_released", 0 );
     presentar();
-    _depura ( "END BalanceTreeView::on_mui_actualizar_clicked", 0 );
+    _depura ( "END BalanceTreeView::on_mui_actualizar_released", 0 );
 }
 
 ///
 /**
 **/
-void BalanceTreeView::on_mui_hojacalculo_clicked()
+void BalanceTreeView::on_mui_hojacalculo_released()
 {
-    _depura ( "BalanceTreeView::on_mui_hojacalculo_clicked", 0 );
+    _depura ( "BalanceTreeView::on_mui_hojacalculo_released", 0 );
 
 //     QString query;
 //     int num1;
@@ -736,6 +736,6 @@ void BalanceTreeView::on_mui_hojacalculo_clicked()
 //     cadena = "kspread " + g_confpr->valor ( CONF_DIR_USER ) + "listadosxc.sxc &";
 //     system ( cadena.toAscii() );
 
-    _depura ( "END BalanceTreeView::on_mui_hojacalculo_clicked", 0 );
+    _depura ( "END BalanceTreeView::on_mui_hojacalculo_released", 0 );
 }
 

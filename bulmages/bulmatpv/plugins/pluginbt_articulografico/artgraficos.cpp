@@ -49,12 +49,12 @@ void ArtGraficos::on_mui_list_cellClicked ( int row, int column )
     } // end if
 }
 
-void ArtGraficos::on_mui_botonSiguiente_clicked()
+void ArtGraficos::on_mui_botonSiguiente_released()
 {
     muestraPantalla ( m_pantallaActual + 1 );
 }
 
-void ArtGraficos::on_mui_botonAnterior_clicked()
+void ArtGraficos::on_mui_botonAnterior_released()
 {
     muestraPantalla ( m_pantallaActual - 1 );
 }

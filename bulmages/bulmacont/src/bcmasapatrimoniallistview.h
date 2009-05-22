@@ -62,10 +62,10 @@ public:
 
 public slots:
     virtual void dbtabla ( int, int, int, const QPoint & );
-    virtual void on_mui_nuevo_clicked();
-    virtual void on_mui_borrar_clicked();
-    virtual void on_mui_editar_clicked();
-    virtual void on_mui_cancelar_clicked();
+    virtual void on_mui_nuevo_released();
+    virtual void on_mui_borrar_released();
+    virtual void on_mui_editar_released();
+    virtual void on_mui_cancelar_released();
 };
 
 #endif

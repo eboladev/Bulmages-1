@@ -292,7 +292,7 @@ void AlbaranClienteList::borrar()
             AlbaranClienteView * acv = new AlbaranClienteView ( ( BfCompany * ) mainCompany(), 0 );
             if ( acv->cargar ( mdb_idalbaran ) )
                 throw - 1;
-            acv->on_mui_borrar_clicked();
+            acv->on_mui_borrar_released();
             acv->close();
         } // end if
         presentar();

@@ -53,7 +53,7 @@ private:
 
 private slots:
     virtual void on_mui_comboTipoIVA_currentIndexChanged ( int );
-    virtual void on_mui_crear_clicked();
+    virtual void on_mui_crear_released();
 };
 
 #endif

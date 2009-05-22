@@ -128,7 +128,7 @@ void Z2ZView::calculaTotalTickets()
 }
 
 
-void Z2ZView::on_mui_traspasar_clicked()
+void Z2ZView::on_mui_traspasar_released()
 {
 
     BlDbRecordSet *cur4 = NULL;

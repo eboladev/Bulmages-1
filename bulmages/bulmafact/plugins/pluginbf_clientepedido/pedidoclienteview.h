@@ -61,8 +61,8 @@ public:
 public slots:
 
     virtual void s_pintaTotales();
-    virtual void on_mui_verpresupuesto_clicked();
-    virtual void on_mui_pasaraalbaran_clicked();
+    virtual void on_mui_verpresupuesto_released();
+    virtual void on_mui_pasaraalbaran_released();
     virtual void on_m_descuentos_editFinish ( int, int );
     virtual void on_subform3_editFinish ( int, int );
     virtual void on_mui_idcliente_valueChanged ( QString id );

@@ -156,7 +156,7 @@ int ProyectoView::guardarPost()
 /**
 \return
 **/
-void ProyectoView::on_mui_geninforme_clicked()
+void ProyectoView::on_mui_geninforme_released()
 {
     int row = 1;
 

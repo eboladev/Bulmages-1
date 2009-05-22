@@ -65,11 +65,11 @@ public:
     BcConfiguracionView ( BcCompany *emp, QWidget *parent = 0 );
     ~BcConfiguracionView();
     int inicializa();
-    virtual void on_mui_guardar_clicked();
+    virtual void on_mui_guardar_released();
 
 public slots:
     virtual bool close();
-    virtual void on_mui_modificarplan_clicked();
+    virtual void on_mui_modificarplan_released();
 };
 
 #endif

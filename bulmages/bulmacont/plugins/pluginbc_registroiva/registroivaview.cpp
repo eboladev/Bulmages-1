@@ -149,8 +149,8 @@ void RegistroIvaView::cargarComboFPago ( QString idfpago )
 }
 
 /*
-void RegistroIvaView::on_mui_borrar_clicked() {
-    _depura("RegistroIvaView::on_mui_borrar_clicked",0);
+void RegistroIvaView::on_mui_borrar_released() {
+    _depura("RegistroIvaView::on_mui_borrar_released",0);
     if (QMessageBox::warning(this,
                              _("BulmaCont - Registro Factura"),
                              _("Desea borrar este registro"),
@@ -159,7 +159,7 @@ void RegistroIvaView::on_mui_borrar_clicked() {
         mui_listIva->borrar();
         borrar();
     } // end if
-    _depura("END RegistroIvaView::on_mui_borrar_clicked", 0);
+    _depura("END RegistroIvaView::on_mui_borrar_released", 0);
 }
 */
 
@@ -233,9 +233,9 @@ int RegistroIvaView::guardar()
     Falta usar las cuentas de servicio para saber si es cobro o pago. */
 /**
 **/
-void RegistroIvaView::on_mui_generarPrevisiones_clicked()
+void RegistroIvaView::on_mui_generarPrevisiones_released()
 {
-    _depura ( "RegistroIvaView::on_mui_generarPrevisiones_clicked", 0 );
+    _depura ( "RegistroIvaView::on_mui_generarPrevisiones_released", 0 );
     QString snumpagos = m_cursorFPago->valor ( "nplazosfpago", m_fPago->currentIndex() );
     QString splazoprimerpago = m_cursorFPago->valor ( "plazoprimerpagofpago", m_fPago->currentIndex() );
     QString splazoentrerecibo = m_cursorFPago->valor ( "plazoentrerecibofpago", m_fPago->currentIndex() );
@@ -267,6 +267,6 @@ void RegistroIvaView::on_mui_generarPrevisiones_clicked()
         fpcobro = fpcobro.addDays ( plazoentrerecibo );
         mui_listPrevCobro->nuevoRegistro();
     } // end for
-    _depura ( "END RegistroIvaView::on_mui_generarPrevisiones_clicked", 0 );
+    _depura ( "END RegistroIvaView::on_mui_generarPrevisiones_released", 0 );
 }
 

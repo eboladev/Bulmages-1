@@ -217,7 +217,7 @@ int BcAmortizacionView::cargar ( QString idamortizacion )
 ///
 /**
 **/
-void BcAmortizacionView::on_mui_btcalcular_clicked()
+void BcAmortizacionView::on_mui_btcalcular_released()
 {
     _depura ( "BcAmortizacionView::calculaamortizacion", 0 );
     /// Para hacer el c&iacute;rculo de los plazos de cada amortizaci&oacute;n
@@ -422,7 +422,7 @@ void BcAmortizacionSubForm::procesaMenu ( QAction *opcion )
             mainCompany() ->runQuery ( query );
             mainCompany() ->commit();
         } // end if
-        on_mui_confquery_clicked();
+        on_mui_confquery_released();
     } // end if
     if ( opcion->text() == _ ( "Ver asiento" ) || opcion->text() == _ ( "Borrar asiento" ) ) {
         /// Si se va a mostrar el asiento, o se va a borrar.
@@ -442,7 +442,7 @@ void BcAmortizacionSubForm::procesaMenu ( QAction *opcion )
     } // end if
     if ( opcion->text() == _ ( "Borrar asiento" ) ) {
         /// Si se va a borrar el asiento.
-        ( ( BcCompany * ) mainCompany() ) ->intapuntsempresa() ->on_mui_borrar_clicked();
+        ( ( BcCompany * ) mainCompany() ) ->intapuntsempresa() ->on_mui_borrar_released();
     } // end if
     if ( opcion->text() == _ ( "Generar asiento" ) ) {
         /// Se va a generar el asiento.
@@ -487,7 +487,7 @@ void BcAmortizacionSubForm::procesaMenu ( QAction *opcion )
         nueva->setmodo ( 1 );
         mainCompany() ->pWorkspace() ->addWindow ( nueva );
         nueva->show();
-        nueva->on_mui_aceptar_clicked();
+        nueva->on_mui_aceptar_released();
 
         /// Cogemos los datos del asiento recien creado.
         int numasiento1 = ( ( BcCompany * ) mainCompany() ) ->intapuntsempresa() ->idasiento().toInt();
@@ -505,6 +505,6 @@ void BcAmortizacionSubForm::procesaMenu ( QAction *opcion )
         SQLQuery = "UPDATE linamortizacion set idasiento = " + QString::number ( numasiento1 ) + " WHERE idlinamortizacion = " + idlinamortizacion;
         mainCompany() ->runQuery ( SQLQuery );
     } // end if
-//    on_mui_confquery_clicked();
+//    on_mui_confquery_released();
 }
 

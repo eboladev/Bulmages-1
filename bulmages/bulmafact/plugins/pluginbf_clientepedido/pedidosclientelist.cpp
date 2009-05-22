@@ -262,7 +262,7 @@ void PedidosClienteList::borrar()
             if ( pcv->cargar ( m_idpedidocliente ) ) {
                 throw - 1;
             } // end if
-            pcv->on_mui_borrar_clicked();
+            pcv->on_mui_borrar_released();
             pcv->close();
         } // end if
         presentar();

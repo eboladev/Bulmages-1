@@ -320,7 +320,7 @@ bool FamiliasView::trataModificado()
                                     _ ( "Desea guardar los cambios?" ),
                                     QMessageBox::Ok,
                                     QMessageBox::Cancel ) == QMessageBox::Ok ) {
-            on_mui_guardar_clicked();
+            on_mui_guardar_released();
         } // end if
     } // end if
     _depura ( "END FamiliasView::trataModificado", 0 );
@@ -400,9 +400,9 @@ void FamiliasView::pintar ( QTreeWidgetItem *it )
 /// Inserta en la tabla de Familias
 /**
 **/
-void FamiliasView::on_mui_crear_clicked()
+void FamiliasView::on_mui_crear_released()
 {
-    _depura ( "FamiliasView::on_mui_crear_clicked", 0 );
+    _depura ( "FamiliasView::on_mui_crear_released", 0 );
     try {
         mainCompany()->begin();
         /// Si se ha modificado el contenido advertimos y guardamos.
@@ -425,7 +425,7 @@ void FamiliasView::on_mui_crear_clicked()
         m_idfamilia = cur->valor ( "idfamilia" );
         delete cur;
         pintar();
-        _depura ( "END FamiliasView::on_mui_crear_clicked", 0 );
+        _depura ( "END FamiliasView::on_mui_crear_released", 0 );
     } catch ( ... ) {
         mainCompany()->rollback();
         mensajeInfo ( _ ( "Error al crear la familia" ) );
@@ -438,9 +438,9 @@ void FamiliasView::on_mui_crear_clicked()
 /**
 **/
 /** No es necesario con las Qt 4.4
-void FamiliasView::on_mui_crearRaiz_clicked()
+void FamiliasView::on_mui_crearRaiz_released()
 {
-    _depura ( "FamiliasView::on_mui_crearRaiz_clicked", 0 );
+    _depura ( "FamiliasView::on_mui_crearRaiz_released", 0 );
     try {
         mainCompany()->begin();
         /// Si se ha modificado el contenido advertimos y guardamos.
@@ -457,7 +457,7 @@ void FamiliasView::on_mui_crearRaiz_clicked()
         m_idfamilia = cur->valor ( "idfamilia" );
         delete cur;
         pintar();
-        _depura ( "END FamiliasView::on_mui_crearRaiz_clicked", 0 );
+        _depura ( "END FamiliasView::on_mui_crearRaiz_released", 0 );
     } catch ( ... ) {
         mainCompany()->rollback();
         mensajeInfo ( _("Error al crear la familia") );
@@ -470,9 +470,9 @@ void FamiliasView::on_mui_crearRaiz_clicked()
 ///
 /**
 **/
-void FamiliasView::on_mui_borrar_clicked()
+void FamiliasView::on_mui_borrar_released()
 {
-    _depura ( "FamiliasView::on_mui_borrar_clicked", 0 );
+    _depura ( "FamiliasView::on_mui_borrar_released", 0 );
 
     int val = QMessageBox::question ( this,
                                       _ ( "Borrar" ) + " " + windowTitle(),
@@ -488,7 +488,7 @@ void FamiliasView::on_mui_borrar_clicked()
             mensajeInfo ( windowTitle() + " " + _ ( "no se ha podido borrar" ) );
         } // end if
     } // end if
-    _depura ( "END FamiliasView::on_mui_borrar_clicked", 0 );
+    _depura ( "END FamiliasView::on_mui_borrar_released", 0 );
 }
 
 
@@ -525,9 +525,9 @@ int FamiliasView::borrar()
 ///
 /**
 **/
-void FamiliasView::on_mui_imprimir_clicked()
+void FamiliasView::on_mui_imprimir_released()
 {
-    _depura ( "FamiliasView::on_mui_imprimir_clicked", 0 );
+    _depura ( "FamiliasView::on_mui_imprimir_released", 0 );
 
     QString archivo = g_confpr->valor ( CONF_DIR_OPENREPORTS ) + "familias.rml";
     QString archivod = g_confpr->valor ( CONF_DIR_USER ) + "familias.rml";
@@ -588,24 +588,24 @@ void FamiliasView::on_mui_imprimir_clicked()
         file.close();
     } // end if
     invocaPDF ( "familias" );
-    _depura ( "END FamiliasView::on_mui_imprimir_clicked", 0 );
+    _depura ( "END FamiliasView::on_mui_imprimir_released", 0 );
 }
 
 
 ///
 /**
 **/
-void FamiliasView::on_mui_aceptar_clicked()
+void FamiliasView::on_mui_aceptar_released()
 {
-    _depura ( "FamiliasView::on_mui_aceptar_clicked", 0 );
+    _depura ( "FamiliasView::on_mui_aceptar_released", 0 );
     QTreeWidgetItem *it = m_listFamilias->currentItem();
     if ( it ) {
         m_idfamilia = it->text ( COL_IDFAMILIA );
     } else {
         m_idfamilia = "";
     } // end if
-    BfForm::on_mui_aceptar_clicked();
-    _depura ( "END FamiliasView::on_mui_aceptar_clicked", 0 );
+    BfForm::on_mui_aceptar_released();
+    _depura ( "END FamiliasView::on_mui_aceptar_released", 0 );
 }
 
 

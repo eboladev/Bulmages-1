@@ -36,7 +36,7 @@ extern "C" MY_EXPORT_CLIENTEPRESUPUESTO int entryPoint ( BfBulmaFact * );
 extern "C" MY_EXPORT_CLIENTEPRESUPUESTO int BfCompany_createMainWindows_Post(BfCompany *);
 extern "C" MY_EXPORT_CLIENTEPRESUPUESTO int ClienteView_ClienteView_Post (ClienteView *);
 extern "C" MY_EXPORT_CLIENTEPRESUPUESTO int ClienteView_cargarPost_Post (ClienteView *);
-extern "C" MY_EXPORT_CLIENTEPRESUPUESTO int BfBuscarReferencia_on_mui_abrirtodo_clicked_Post (BfBuscarReferencia *);
+extern "C" MY_EXPORT_CLIENTEPRESUPUESTO int BfBuscarReferencia_on_mui_abrirtodo_released_Post (BfBuscarReferencia *);
 extern "C" MY_EXPORT_CLIENTEPRESUPUESTO int PedidoClienteView_PedidoClienteView ( PedidoClienteView * );
 
 

@@ -39,7 +39,7 @@ extern "C" MY_EXPORT_CLIENTEFACTURA int entryPoint ( BfBulmaFact * );
 extern "C" MY_EXPORT_CLIENTEFACTURA int BfCompany_createMainWindows_Post(BfCompany *);
 extern "C" MY_EXPORT_CLIENTEFACTURA int ClienteView_ClienteView_Post (ClienteView *);
 extern "C" MY_EXPORT_CLIENTEFACTURA int ClienteView_cargarPost_Post (ClienteView *);
-extern "C" MY_EXPORT_CLIENTEFACTURA int BfBuscarReferencia_on_mui_abrirtodo_clicked_Post (BfBuscarReferencia *);
+extern "C" MY_EXPORT_CLIENTEFACTURA int BfBuscarReferencia_on_mui_abrirtodo_released_Post (BfBuscarReferencia *);
 extern "C" MY_EXPORT_CLIENTEFACTURA int AlbaranClienteView_AlbaranClienteView ( AlbaranClienteView * );
 extern "C" MY_EXPORT_CLIENTEFACTURA int PedidoClienteView_PedidoClienteView ( PedidoClienteView * );
 extern "C" MY_EXPORT_CLIENTEFACTURA int PresupuestoView_PresupuestoView ( PresupuestoView * );

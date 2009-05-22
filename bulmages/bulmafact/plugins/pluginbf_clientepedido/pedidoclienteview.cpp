@@ -149,11 +149,11 @@ void PedidoClienteView::pintatotales ( BlFixed iva, BlFixed base, BlFixed total,
 ///
 /**
 **/
-void PedidoClienteView::on_mui_verpresupuesto_clicked()
+void PedidoClienteView::on_mui_verpresupuesto_released()
 {
-    _depura ( "PedidoClienteView::on_mui_verpresupuesto_clicked", 0 );
+    _depura ( "PedidoClienteView::on_mui_verpresupuesto_released", 0 );
 
-    _depura ( "END PedidoClienteView::on_mui_verpresupuesto_clicked", 0 );
+    _depura ( "END PedidoClienteView::on_mui_verpresupuesto_released", 0 );
 }
 
 
@@ -354,11 +354,11 @@ void PedidoClienteView::s_pintaTotales()
 ///
 /**
 **/
-void PedidoClienteView::on_mui_pasaraalbaran_clicked()
+void PedidoClienteView::on_mui_pasaraalbaran_released()
 {
-    _depura ( "PedidoClienteView::on_mui_pasaraalbaran_clicked", 0 );
+    _depura ( "PedidoClienteView::on_mui_pasaraalbaran_released", 0 );
     generarAlbaran();
-    _depura ( "END PedidoClienteView::on_mui_pasaraalbaran_clicked", 0 );
+    _depura ( "END PedidoClienteView::on_mui_pasaraalbaran_released", 0 );
 }
 
 

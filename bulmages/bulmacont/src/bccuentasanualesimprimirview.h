@@ -62,7 +62,7 @@ public:
     void imprimir ( QString, QString, QString, QString );
 
 public slots:
-    virtual void on_mui_aceptar_clicked();
+    virtual void on_mui_aceptar_released();
 };
 
 #endif

@@ -173,11 +173,11 @@ void BcBuscarCuenta::showNombre()
 ///
 /**
 **/
-void BcBuscarCuenta::on_mui_buscar_clicked()
+void BcBuscarCuenta::on_mui_buscar_released()
 {
-    _depura ( "BcBuscarCuenta::on_mui_buscar_clicked" );
+    _depura ( "BcBuscarCuenta::on_mui_buscar_released" );
     s_searchCuenta();
-    _depura ( "END BcBuscarCuenta::on_mui_buscar_clicked" );
+    _depura ( "END BcBuscarCuenta::on_mui_buscar_released" );
 }
 
 
@@ -354,7 +354,7 @@ void BcBuscarCuenta::s_codigocuentatextChanged ( const QString &val )
 
     /// Comprobamos si se ha pulsado el * y entonces hacemos la busqueda
     if ( val == "*" ) {
-        on_mui_buscar_clicked();
+        on_mui_buscar_released();
         _depura ( "END BcBuscarCuenta::s_codigocuentatextChanged", 0 );
         return;
     } // end if

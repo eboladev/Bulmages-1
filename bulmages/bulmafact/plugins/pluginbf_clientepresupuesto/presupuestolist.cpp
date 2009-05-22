@@ -316,7 +316,7 @@ void PresupuestoList::borrar()
             PresupuestoView * pv = new PresupuestoView ( ( BfCompany * ) mainCompany(), 0 );
             if ( pv->cargar ( m_idpresupuesto ) )
                 throw - 1;
-            pv->on_mui_borrar_clicked();
+            pv->on_mui_borrar_released();
             pv->close();
         } // end if
         presentar();

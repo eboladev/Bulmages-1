@@ -164,7 +164,7 @@ void ComisionesList::borrar()
             ComisionView * cv = new ComisionView ( ( BfCompany * ) mainCompany(), 0 );
             if ( cv->cargar ( mdb_idcomision ) )
                 throw - 1;
-            cv->on_mui_borrar_clicked();
+            cv->on_mui_borrar_released();
             cv->close();
         } // end if
         presentar();
@@ -216,9 +216,9 @@ void ComisionesList::submenu ( const QPoint & )
     QAction *del = popup->addAction ( _ ( "Borrar Junta" ) );
     QAction *opcion = popup->exec ( QCursor::pos() );
     if ( opcion == del )
-        on_mui_borrar_clicked();
+        on_mui_borrar_released();
     if ( opcion == edit )
-        on_mui_editar_clicked();
+        on_mui_editar_released();
     delete popup;
     _depura ( "ComisionesList::on_mui_list_customContextMenuRequested", 0 );
 }

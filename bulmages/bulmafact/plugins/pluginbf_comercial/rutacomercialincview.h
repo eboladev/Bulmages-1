@@ -43,10 +43,10 @@ public:
     virtual void pintar();
 
 public slots:
-    virtual void on_mui_guardar_clicked();
+    virtual void on_mui_guardar_released();
     virtual int cargar ( QString id, QString id1 );
-    virtual void on_mui_borrar_clicked();
-    virtual void on_mui_aceptar_clicked();
+    virtual void on_mui_borrar_released();
+    virtual void on_mui_aceptar_released();
 };
 
 #endif

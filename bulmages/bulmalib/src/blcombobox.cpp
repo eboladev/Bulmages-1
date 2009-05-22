@@ -64,9 +64,11 @@ BlComboBox::~BlComboBox()
 **/
 void BlComboBox::onTablaCambiada ( const QString &t )
 {
+    _depura ( "BlComboBox::onTablaCambiada", 0 );
     if ( m_table == t ) {
         setId ( id() );
     } // end if
+    _depura ( "END BlComboBox::onTablaCambiada", 0 );
 }
 
 

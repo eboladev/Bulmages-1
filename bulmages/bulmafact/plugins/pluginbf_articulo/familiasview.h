@@ -58,16 +58,16 @@ public:
     QString nombreFamilia();
     void pintar ( QTreeWidgetItem * );
     virtual int borrar();
-    virtual void on_mui_aceptar_clicked();
-    virtual void on_mui_borrar_clicked();
-    virtual void on_mui_imprimir_clicked();
+    virtual void on_mui_aceptar_released();
+    virtual void on_mui_borrar_released();
+    virtual void on_mui_imprimir_released();
     virtual int guardar();
 
 public slots:
     virtual void pintar();
     virtual void on_m_listFamilias_itemDoubleClicked ( QTreeWidgetItem * );
     virtual void on_m_listFamilias_currentItemChanged ( QTreeWidgetItem *current, QTreeWidgetItem *previous );
-    virtual void on_mui_crear_clicked();
+    virtual void on_mui_crear_released();
 
 signals:
     void selected ( QString );

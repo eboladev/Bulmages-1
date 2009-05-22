@@ -311,7 +311,7 @@ void BlCompanyDialog::cargaArchivo()
     /// Comprobamos la existencia del directorio personalizado de BulmaG&eacute;s. Y si no...
     if ( !QFile::exists ( dir1 ) )
         /// Hacemos una recarga de mui_empresas porque sabemos a que ha cambiado el listado.
-        on_mui_actualizar_clicked();
+        on_mui_actualizar_released();
     // end if
 
     QFile file ( dir1 );
@@ -473,11 +473,11 @@ void BlCompanyDialog::trataEmpresa ( QString empresa, QFile *file )
 /// archivo 'LISTEMPRESAS'.
 /**
 **/
-void BlCompanyDialog::on_mui_actualizar_clicked()
+void BlCompanyDialog::on_mui_actualizar_released()
 {
-    _depura ( "BlCompanyDialog::on_mui_actualizar_clicked", 0 );
+    _depura ( "BlCompanyDialog::on_mui_actualizar_released", 0 );
     guardaArchivo();
-    _depura ( "END BlCompanyDialog::on_mui_actualizar_clicked", 0 );
+    _depura ( "END BlCompanyDialog::on_mui_actualizar_released", 0 );
 }
 
 

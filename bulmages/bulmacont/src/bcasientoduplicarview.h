@@ -43,7 +43,7 @@ public:
     void inicializa ( QString, QString );
 
 public slots:
-    virtual void on_mui_aceptar_clicked();
+    virtual void on_mui_aceptar_released();
     virtual void lostFocus();
 };
 

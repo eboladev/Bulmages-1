@@ -65,8 +65,8 @@ public:
     virtual void setTableName(QString tableName);
 
 public slots:
-    virtual void on_mui_buscar_clicked();
-    virtual void on_mui_borrar_clicked();
+    virtual void on_mui_buscar_released();
+    virtual void on_mui_eliminar_released();
     virtual void on_m_inputBusqueda_textChanged ( const QString & );
     virtual void on_m_inputBusqueda_editingFinished();
 

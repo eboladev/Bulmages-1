@@ -58,7 +58,7 @@ BcFormaPagoView::BcFormaPagoView ( BcCompany *emp, QWidget *parent )
 BcFormaPagoView::~BcFormaPagoView()
 {
     _depura ( "BcFormaPagoView::~BcFormaPagoView", 0 );
-    on_mui_guardar_clicked();
+    on_mui_guardar_released();
     if ( m_curfpago != NULL ) {
         delete m_curfpago;
     } /// end if
@@ -146,7 +146,7 @@ void BcFormaPagoView::mostrarplantilla ( int pos )
                                     _ ( "Guardar forma de pago" ),
                                     _ ( "Desea guardar los cambios?" ),
                                     QMessageBox::Ok, QMessageBox::Cancel ) == QMessageBox::Ok )
-            on_mui_guardar_clicked();
+            on_mui_guardar_released();
     } // end if
     if ( mui_comboFPago->count() > 0 ) {
         if ( pos != 0 ) {
@@ -184,13 +184,13 @@ void BcFormaPagoView::cambiacombo ( int )
 **/
 int BcFormaPagoView::guardar()
 {
-    _depura ( "BcFormaPagoView::on_mui_guardarFPago_clicked", 0 );
+    _depura ( "BcFormaPagoView::on_mui_guardarFPago_released", 0 );
     QString idfpago = m_curfpago->valor ( "idfpago", m_posactual );
     QString query = "UPDATE fpago SET nomfpago = '" + mui_nombreFPago->text() + "', nplazosfpago = " + mui_numeroPlazos->text() + " , plazoprimerpagofpago = " + mui_plazoPrimerPago->text() + ", plazoentrerecibofpago = " + mui_plazoEntreRecibos->text() + " WHERE idfpago = " + m_curfpago->valor ( "idfpago", m_posactual );
     mainCompany() ->runQuery ( query );
     dialogChanges_cargaInicial();
     pintar ( m_curfpago->valor ( "idfpago", m_posactual ) );
-    _depura ( "END BcFormaPagoView::on_mui_guardarFPago_clicked", 0 );
+    _depura ( "END BcFormaPagoView::on_mui_guardarFPago_released", 0 );
     return 0;
 }
 
@@ -199,7 +199,7 @@ int BcFormaPagoView::guardar()
 /// de IVAs.
 /**
 **/
-void BcFormaPagoView::on_mui_crear_clicked()
+void BcFormaPagoView::on_mui_crear_released()
 {
     _depura ( "BcFormaPagoView::crear", 0 );
     /// Si se ha modificado el contenido advertimos y guardamos.
@@ -208,7 +208,7 @@ void BcFormaPagoView::on_mui_crear_clicked()
                                     _ ( "Guardar forma de pago" ),
                                     _ ( "Desea guardar los cambios?" ),
                                     QMessageBox::Ok, QMessageBox::Cancel ) == QMessageBox::Ok )
-            on_mui_guardar_clicked();
+            on_mui_guardar_released();
     } // end if
     try {
         QString query = "INSERT INTO fpago (nomfpago, nplazosfpago, plazoprimerpagofpago, plazoentrerecibofpago) VALUES ('" + _ ( "Nueva forma de pago" ) + "', 0, 0, 0)";
@@ -231,7 +231,7 @@ void BcFormaPagoView::on_mui_crear_clicked()
 /**
 \returns
 **/
-void BcFormaPagoView::on_mui_borrar_clicked()
+void BcFormaPagoView::on_mui_borrar_released()
 {
     _depura ( "BcFormaPagoView::borrar", 0 );
     if ( mui_comboFPago->currentIndex() == -1 ) {

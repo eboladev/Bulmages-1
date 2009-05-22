@@ -51,9 +51,9 @@ private:
     void presentar ( const char * tipus );
 
 private slots:
-    virtual void on_mui_imprimir_clicked();
-    virtual void on_mui_canales_clicked();
-    virtual void on_mui_ccostes_clicked();
+    virtual void on_mui_imprimir_released();
+    virtual void on_mui_canales_released();
+    virtual void on_mui_ccostes_released();
 };
 
 #endif

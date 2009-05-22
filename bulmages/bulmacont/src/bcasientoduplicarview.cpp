@@ -96,9 +96,9 @@ void DuplicarAsientoView::lostFocus()
 ///
 /**
 **/
-void DuplicarAsientoView::on_mui_aceptar_clicked()
+void DuplicarAsientoView::on_mui_aceptar_released()
 {
-    _depura ( "DuplicarAsientoView::on_mui_aceptar_clicked", 0 );
+    _depura ( "DuplicarAsientoView::on_mui_aceptar_released", 0 );
     QString asientoi = aoinicial->text();
     QString asientof = aofinal->text();
     QString query1, query2;
@@ -188,6 +188,6 @@ void DuplicarAsientoView::on_mui_aceptar_clicked()
     delete curasiento;
     mainCompany() ->commit();
     done ( 1 );
-    _depura ( "END DuplicarAsientoView::on_mui_aceptar_clicked", 0 );
+    _depura ( "END DuplicarAsientoView::on_mui_aceptar_released", 0 );
 }
 

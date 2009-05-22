@@ -37,8 +37,8 @@ public:
 public:
     DatosView ( BlMainCompany *emp = NULL, QWidget *parent = 0, Qt::WFlags f = 0, edmode modo = BL_EDIT_MODE);
     ~DatosView();
-    virtual void on_mui_aceptar_clicked();
-    virtual void on_mui_cancelar_clicked();
+    virtual void on_mui_aceptar_released();
+    virtual void on_mui_cancelar_released();
 
 // mui_fechainicialactual
 // mui_fechafinalactual

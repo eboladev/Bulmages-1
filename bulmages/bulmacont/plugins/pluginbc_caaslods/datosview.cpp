@@ -62,7 +62,7 @@ DatosView::~DatosView()
 
 
 
-void DatosView::on_mui_aceptar_clicked() {
+void DatosView::on_mui_aceptar_released() {
   
    recogeValores();
    resultado = true;
@@ -119,7 +119,7 @@ void DatosView::on_mui_aceptar_clicked() {
    
 }
 
-void DatosView::on_mui_cancelar_clicked()
+void DatosView::on_mui_cancelar_released()
 {
    resultado = true;
 }

@@ -72,8 +72,8 @@ public:
     void submenu ( const QPoint & );
 
 public slots:
-    virtual void on_mui_exportar_clicked();
-    virtual void on_mui_importar_clicked();
+    virtual void on_mui_exportar_released();
+    virtual void on_mui_importar_released();
 
 signals:
     void selected ( QString );

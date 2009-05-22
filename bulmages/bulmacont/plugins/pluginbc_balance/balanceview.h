@@ -67,7 +67,7 @@ private:
     void presentarSyS ( QString, QString, QString, QString, int, int, bool );
 
 public slots:
-    void on_mui_actualizar_clicked();
+    void on_mui_actualizar_released();
 };
 
 #endif

@@ -57,9 +57,9 @@ public:
     QString nomcanal();
 
 public slots:
-    void on_mui_todo_clicked();
-    void on_mui_nada_clicked();
-    void on_mui_invertir_clicked();
+    void on_mui_todo_released();
+    void on_mui_nada_released();
+    void on_mui_invertir_released();
 };
 
 #endif

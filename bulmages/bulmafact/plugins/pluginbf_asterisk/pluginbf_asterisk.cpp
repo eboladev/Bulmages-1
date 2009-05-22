@@ -183,7 +183,7 @@ int AlmacenView_AlmacenView ( AlmacenView *alm )
 \param trab
 \return
 **/
-int TrabajadorView_on_mui_guardar_clicked ( TrabajadorView *trab )
+int TrabajadorView_on_mui_guardar_released ( TrabajadorView *trab )
 {
 
     QLineEdit * l = trab->findChild<QLineEdit *> ( "mui_passasterisktrabajador" );

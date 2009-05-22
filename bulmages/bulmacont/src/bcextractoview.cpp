@@ -113,20 +113,20 @@ void BcExtractoView::on_mui_list_cellDoubleClicked ( int, int columna )
 ///
 /**
 **/
-void BcExtractoView::on_mui_actualizar_clicked()
+void BcExtractoView::on_mui_actualizar_released()
 {
-    _depura ( "BcExtractoView::on_mui_actualizar_clicked", 0 );
+    _depura ( "BcExtractoView::on_mui_actualizar_released", 0 );
     accept();
-    _depura ( "END BcExtractoView::on_mui_actualizar_clicked", 0 );
+    _depura ( "END BcExtractoView::on_mui_actualizar_released", 0 );
 }
 
 
 ///
-void BcExtractoView::on_mui_configurar_clicked()
+void BcExtractoView::on_mui_configurar_released()
 {
-    _depura ( "BcExtractoView::on_mui_configurar_clicked", 0 );
+    _depura ( "BcExtractoView::on_mui_configurar_released", 0 );
     mui_list->showConfig();
-    _depura ( "END BcExtractoView::on_mui_configurar_clicked", 0 );
+    _depura ( "END BcExtractoView::on_mui_configurar_released", 0 );
 }
 
 
@@ -288,11 +288,11 @@ void BcExtractoView::ajustes()
 **/
 int BcExtractoView::guardar()
 {
-    _depura ( "BcExtractoView::on_mui_guardar_clicked", 0 );
+    _depura ( "BcExtractoView::on_mui_guardar_released", 0 );
     if ( mui_asAbiertos->isChecked() ) return 0;
     mui_list->guardar();
     return 0;
-    _depura ( "END BcExtractoView::on_mui_guardar_clicked", 0 );
+    _depura ( "END BcExtractoView::on_mui_guardar_released", 0 );
 
 }
 
@@ -465,9 +465,9 @@ void BcExtractoView::inicializa1 ( QString codinicial, QString codfinal, QString
 /// Realiza la casacion de los apuntes.
 /**
 **/
-void BcExtractoView::on_mui_casacion_clicked()
+void BcExtractoView::on_mui_casacion_released()
 {
-    _depura ( "BcExtractoView::on_mui_casacion_clicked", 0 );
+    _depura ( "BcExtractoView::on_mui_casacion_released", 0 );
     try {
         QString query = "SELECT * FROM apunte WHERE punteo = FALSE AND haber <> 0 AND idcuenta = " + m_cursorcta->valor ( "idcuenta" ) + " ORDER BY fecha";
         BlDbRecordSet *curshaber = mainCompany() ->loadQuery ( query );
@@ -495,16 +495,16 @@ void BcExtractoView::on_mui_casacion_clicked()
     } catch ( ... ) {
         mensajeError ( "Se produjo un error en la casacion" );
     } // end try
-    _depura ( "END BcExtractoView::on_mui_casacion_clicked", 0 );
+    _depura ( "END BcExtractoView::on_mui_casacion_released", 0 );
 }
 
 
 /// Guarda el punteo en disco para poder recuperarlo despues
 /**
 **/
-void BcExtractoView::on_mui_guardarpunteo_clicked()
+void BcExtractoView::on_mui_guardarpunteo_released()
 {
-    _depura ( "BcExtractoView::on_mui_guardarpunteo_clicked", 0 );
+    _depura ( "BcExtractoView::on_mui_guardarpunteo_released", 0 );
     QString fn = QFileDialog::getSaveFileName ( this,
                  _ ( "Guardar punteo" ),
                  g_confpr->valor ( CONF_DIR_USER ),
@@ -529,7 +529,7 @@ void BcExtractoView::on_mui_guardarpunteo_clicked()
             fclose ( mifile );
         } // end if
     } // end if
-    _depura ( "END BcExtractoView::on_mui_guardarpunteo_clicked", 0 );
+    _depura ( "END BcExtractoView::on_mui_guardarpunteo_released", 0 );
 }
 
 
@@ -539,9 +539,9 @@ void BcExtractoView::on_mui_guardarpunteo_clicked()
     Por supuesto cuando se pulsa dicho bot&oacute;n se borra el punteo. */
 /**
 **/
-void BcExtractoView::on_mui_borrapunteo_clicked()
+void BcExtractoView::on_mui_borrapunteo_released()
 {
-    _depura ( "BcExtractoView::on_mui_borrapunteo_clicked", 0 );
+    _depura ( "BcExtractoView::on_mui_borrapunteo_released", 0 );
     try {
         int valor = QMessageBox::warning ( 0,
                                            _ ( "Borrar punteo" ),
@@ -558,7 +558,7 @@ void BcExtractoView::on_mui_borrapunteo_clicked()
     } catch ( ... ) {
         mensajeInfo ( _ ( "Se ha producido un error" ) );
     } // end try
-    _depura ( "END BcExtractoView::on_mui_borrapunteo_clicked", 0 );
+    _depura ( "END BcExtractoView::on_mui_borrapunteo_released", 0 );
 }
 
 
@@ -567,9 +567,9 @@ void BcExtractoView::on_mui_borrapunteo_clicked()
     borrador.
     Para ello es preciso que no se hayan abierto y cerrado los asientos correspondientes
     ya que en dicho caso la carga del punteo no funciona correctamente. */
-void BcExtractoView::on_mui_cargarpunteos_clicked()
+void BcExtractoView::on_mui_cargarpunteos_released()
 {
-    _depura ( "BcExtractoView::on_mui_cargarpunteos_clicked", 0 );
+    _depura ( "BcExtractoView::on_mui_cargarpunteos_released", 0 );
     try {
         QString fn = QFileDialog::getOpenFileName ( this,
                      _ ( "Cargar punteo" ),
@@ -600,7 +600,7 @@ void BcExtractoView::on_mui_cargarpunteos_clicked()
         mensajeInfo ( "Error en la carga del punteo" );
         mainCompany()->rollback();
     } // end try
-    _depura ( "END BcExtractoView::on_mui_cargarpunteos_clicked", 0 );
+    _depura ( "END BcExtractoView::on_mui_cargarpunteos_released", 0 );
 }
 
 
@@ -792,9 +792,9 @@ QString BcExtractoView::imprimeExtractoCuenta ( QString idcuenta )
 /// Slot que responde a la Impresion del extracto
 /**
 **/
-void BcExtractoView::on_mui_imprimir_clicked()
+void BcExtractoView::on_mui_imprimir_released()
 {
-    _depura ( "BcExtractoView::on_mui_imprimir_clicked", 0 );
+    _depura ( "BcExtractoView::on_mui_imprimir_released", 0 );
     QString finicial = m_fechainicial1->text();
     QString ffinal = m_fechafinal1->text();
     QString archivo = g_confpr->valor ( CONF_DIR_OPENREPORTS ) + "extracto.rml";
@@ -888,5 +888,5 @@ void BcExtractoView::on_mui_imprimir_clicked()
     } // end if
     /// Crea el pdf y lo muestra.
     invocaPDF ( "extracto" );
-    _depura ( "END BcExtractoView::on_mui_imprimir_clicked", 0 );
+    _depura ( "END BcExtractoView::on_mui_imprimir_released", 0 );
 }

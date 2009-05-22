@@ -106,7 +106,7 @@ void BcCanalView::on_mui_idcanal_valueChanged ( QString numcombo )
                                     _ ( "Guardar canal" ),
                                     _ ( "Desea guardar los cambios." ),
                                     _ ( "&Guardar" ), _ ( "&Cancelar" ), 0 , 0, 1 ) == 0 )
-            on_mui_guardar_clicked();
+            on_mui_guardar_released();
     } // end if
 
     /// Comprueba que el ID del 'combobox' este en la primera posicion '--' y deshabilita los
@@ -154,9 +154,9 @@ void BcCanalView::mostrarplantilla()
 ///
 /**
 **/
-void BcCanalView::on_mui_guardar_clicked()
+void BcCanalView::on_mui_guardar_released()
 {
-    _depura ( "BcCanalView::on_mui_guardar_clicked", 0 );
+    _depura ( "BcCanalView::on_mui_guardar_released", 0 );
     QString nom = mui_nomcanal->text();
     QString desc = mui_desccanal->toPlainText();
     QString query;
@@ -168,23 +168,23 @@ void BcCanalView::on_mui_guardar_clicked()
     mainCompany() ->runQuery ( query );
     dialogChanges_cargaInicial();
     pintar();
-    _depura ( "END BcCanalView::on_mui_guardar_clicked", 0 );
+    _depura ( "END BcCanalView::on_mui_guardar_released", 0 );
 }
 
 
 ///
 /**
 **/
-void BcCanalView::on_mui_crear_clicked()
+void BcCanalView::on_mui_crear_released()
 {
-    _depura ( "BcCanalView::on_mui_crear_clicked", 0 );
+    _depura ( "BcCanalView::on_mui_crear_released", 0 );
     /// Si se ha modificado el contenido advertimos y guardamos.
     if ( dialogChanges_hayCambios() ) {
         if ( QMessageBox::warning ( this,
                                     _ ( "Guardar canal" ),
                                     _ ( "Desea guardar los cambios." ),
                                     _ ( "&Guardar" ), _ ( "&Cancelar" ), 0 , 0, 1 ) == 0 )
-            on_mui_guardar_clicked();
+            on_mui_guardar_released();
     } // end if
     QString query = "";
     QTextStream ( &query ) << "INSERT INTO canal (nombre, descripcion) VALUES ('" << _ ( "Nuevo canal" ) << "', '" << _ ( "Escriba su descripcion" ) << "')";
@@ -197,16 +197,16 @@ void BcCanalView::on_mui_crear_clicked()
     delete cur;
     mainCompany() ->commit();
     pintar();
-    _depura ( "END BcCanalView::on_mui_crear_clicked", 0 );
+    _depura ( "END BcCanalView::on_mui_crear_released", 0 );
 }
 
 
 ///
 /**
 **/
-void BcCanalView::on_mui_borrar_clicked()
+void BcCanalView::on_mui_borrar_released()
 {
-    _depura ( "BcCanalView::on_mui_borrar_clicked", 0 );
+    _depura ( "BcCanalView::on_mui_borrar_released", 0 );
     switch ( QMessageBox::warning ( this,
                                     _ ( "Borrar canal" ),
                                     _ ( "Se va a borrar este canal.\nEsto puede ocasionar perdida de datos." ),
@@ -220,7 +220,7 @@ void BcCanalView::on_mui_borrar_clicked()
         idcanal = 0;
         pintar();
     } // end switch
-    _depura ( "END BcCanalView::on_mui_borrar_clicked", 0 );
+    _depura ( "END BcCanalView::on_mui_borrar_released", 0 );
 }
 
 
@@ -237,7 +237,7 @@ void BcCanalView::closeEvent ( QCloseEvent *e )
                                          _ ( "Desea guardar los cambios?" ),
                                          _ ( "&Si" ), _ ( "&No" ), _ ( "&Cancelar" ), 0, 2 );
         if ( val == 0 )
-            on_mui_guardar_clicked();
+            on_mui_guardar_released();
         if ( val == 2 )
             e->ignore();
     } // end if
