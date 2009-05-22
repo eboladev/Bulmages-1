@@ -45,7 +45,7 @@ ConvReunionView::ConvReunionView ( BfCompany *comp, QWidget *parent )
         setupUi ( this );
         centrarEnPantalla ( this );
 
-        setTitleName ( _ ( "ConvReunion" ) );
+        setTitleName ( _ ( "Convocatoria de reunion" ) );
         setDbTableName ( "reunion" );
         setDbFieldId ( "idreunion" );
         addDbField ( "idreunion", BlDbField::DbInt, BlDbField::DbPrimaryKey, _ ( "ID reunion" ) );
@@ -238,8 +238,3 @@ int ConvReunionView::junta() {
     _depura ( "END ConvReunionView::junta", 0 );
 
 }
-
-
-
-
-

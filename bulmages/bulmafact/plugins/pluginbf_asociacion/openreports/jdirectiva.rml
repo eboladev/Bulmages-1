@@ -32,7 +32,6 @@
             <!--<stroke color="black" />-->
             <!--<circle x="127.5" y="672.75" radius="1in" fill="yes" stroke="no" />-->
             
-<!--IF QUERY="SELECT * FROM JDIRECTIVA WHERE idjdirectiva = [idjdirectiva]"-->
 <!--QUERY="SELECT * FROM jdirectiva WHERE idjdirectiva = [idjdirectiva]"-->
             
             <setFont name="Helvetica" size="22"/>
@@ -40,7 +39,6 @@
             <setFont name="Helvetica" size="13"/>
             
 <!--END QUERY-->
-<!--END IF QUERY-->
             
         </pageGraphics>
         
@@ -81,8 +79,7 @@
             <td>Nombre</td>
         </tr>
             
-<!--IF QUERY="SELECT * FROM JDIRECTIVA, MIEMBROJDIRECTIVA, CLIENTE WHERE JDIRECTIVA.idjdirectiva = MIEMBROJDIRECTIVA.idjdirectiva AND MIEMBROJDIRECTIVA.idcliente = CLIENTE.idcliente AND JDIRECTIVA.idjdirectiva = [idjdirectiva]"-->
-<!--QUERY="SELECT * FROM jdirectiva, miembrojdirectiva, cliente WHERE jdirectiva.idjdirectiva = miembrojdirectiva.idjdirectiva AND miembrojdirectiva.idcliente = cliente.idcliente AND jdirectiva.idjdirectiva = [idjdirectiva]"-->
+<!--QUERY="SELECT * FROM jdirectiva, miembrojdirectiva, cliente WHERE jdirectiva.idjdirectiva = miembrojdirectiva.idjdirectiva AND miembrojdirectiva.idcliente = cliente.idcliente AND jdirectiva.idjdirectiva = [idjdirectiva] ORDER BY miembrojdirectiva.cargomiembrojdirectiva"-->
 
         <tr>
             <td>[cargomiembrojdirectiva]</td>
@@ -90,10 +87,8 @@
         </tr>
         
 <!--END QUERY-->
-<!--END IF QUERY-->
 
     </blockTable>
-    
 </story>
 
 </document>

@@ -227,6 +227,16 @@ BEGIN
             ffinalactividad DATE
         );
     END IF;
+    
+    SELECT INTO as * FROM pg_tables  WHERE tablename=''faltaasistenciaalumnoactividad'';
+    IF NOT FOUND THEN
+        CREATE TABLE faltaasistenciaalumnoactividad (
+            idfaltaasistenciaalumnoactividad SERIAL PRIMARY KEY,
+            idactividad INTEGER REFERENCES actividad(idactividad),
+            idalumno INTEGER REFERENCES alumno(idalumno),
+            cantidadfaltaasistenciaalumnoactividad INTEGER DEFAULT 0
+        );
+    END IF;
 
     SELECT INTO as attname, relname FROM pg_attribute LEFT JOIN pg_class ON pg_attribute.attrelid=pg_class.oid WHERE attname=''idtipoactividad'' AND relname=''actividad'';
     IF NOT FOUND THEN
@@ -306,8 +316,8 @@ BEGIN
             tiporeunion VARCHAR NOT NULL,
             fecha1convocatoriareunion date DEFAULT now() NOT NULL,
             fecha2convocatoriareunion date DEFAULT now() NOT NULL,
-            hora1convocatoriareunion date DEFAULT now() NOT NULL,
-            hora2convocatoriareunion date DEFAULT now() NOT NULL,
+            hora1convocatoriareunion varchar NOT NULL,
+            hora2convocatoriareunion varchar NOT NULL,
             conceptoreunion TEXT,
             resolucionreunion TEXT
         );
@@ -315,8 +325,8 @@ BEGIN
 
     SELECT INTO as attname, relname FROM pg_attribute LEFT JOIN pg_class ON pg_attribute.attrelid=pg_class.oid WHERE attname=''hora1convocatoriareunion'' AND relname=''reunion'';
     IF NOT FOUND THEN
-        ALTER TABLE reunion ADD COLUMN hora1convocatoriareunion time;
-        ALTER TABLE reunion ADD COLUMN hora2convocatoriareunion time;
+        ALTER TABLE reunion ADD COLUMN hora1convocatoriareunion varchar NOT NULL;
+        ALTER TABLE reunion ADD COLUMN hora2convocatoriareunion varchar NOT NULL;
     END IF;
 
     SELECT INTO as attname, relname FROM pg_attribute LEFT JOIN pg_class ON pg_attribute.attrelid=pg_class.oid WHERE attname=''resolucionreunion'' AND relname=''reunion'';

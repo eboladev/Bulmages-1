@@ -1,51 +1,106 @@
-<?xml version="1.0" encoding="utf-8" standalone="no" ?>
+<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
 <!DOCTYPE document SYSTEM "rml_1_0.dtd">
+<!--
+    Esquema de documento RML:
+    template/stylesheet/story
+-->
 <document>
-<template pageSize="(21cm, 29.7cm)" leftMargin="0cm" rightMargin="0cm" topMargin="1.0cm" bottomMargin="2.0cm" title="Reunion" author="Tomeu Borras" allowSplitting="20">
-	<pageTemplate id="main">
-		<pageGraphics>
-		<!-- include src="[CONF_DIR_OPENREPORTS]plantilla.rml"/ -->
 
-
-		<fill color="(0,0,0)"/>	
-		<stroke color="(0,0,0)"/>
-		<setFont name="Helvetica" size="22"/>
-		<drawString x="1.5cm" y="26.5cm">CONVOCATORIA REUNION</drawString>
-
-		<setFont name="Helvetica" size="14"/>
-		<drawString x="1.5cm" y="25cm">Fecha: [fecha1convocatoriareunion]</drawString>
-		<drawString x="1.5cm" y="24cm">Fecha: [tiporeunion]</drawString>
-		</pageGraphics>
-		<!-- FRAME DE CONTENIDOS -->
-		<frame id="column" x1="1cm" y1="5cm" width="19cm" height="15cm"/>
-	</pageTemplate>
-
+<!--
+    Aquí van los elementos gráficos de la página (headers, footers, frames, etc...).
+    No puede estar vacío.
+-->
+<template pageSize="(21cm, 29.7cm)" leftMargin="0cm" rightMargin="0cm" topMargin="1.0cm" bottomMargin="2.0cm" title="Ficha de Junta Directiva" author="Arturo Martin Llado" allowSplitting="20">
+    <pageTemplate id="main">
+    
+        <!-- FRAME DE CONTENIDOS -->
+        <frame id="column" x1="1.3cm" y1="5cm" width="18.7cm" height="16cm"/>
+        
+        <pageGraphics>
+            
+            <!-- EL LOGO DE CABECERA -->
+            <image x="1cm" y="25.9cm" width="11cm" file="logo.jpg"/>
+    
+            <!-- EL PIE DE PAGINA -->
+            <setFont name="Helvetica" size="8"/>
+            <drawString x="7.3cm" y="1.2cm">www.iglues.org :: info@iglues.org</drawString>             
+            <drawString x="0.3cm" y="0.2cm">Estas plantillas son de demostracion.</drawString>
+            
+            <!-- Color del relleno de las figuras -->
+            <!--<fill color="red" />-->
+            <!-- Color del borde de las figuras -->
+            <!--<stroke color="black" />-->
+            <!--<circle x="127.5" y="672.75" radius="1in" fill="yes" stroke="no" />-->
+            
+<!--QUERY="SELECT * FROM reunion WHERE idreunion = [idreunion]"-->
+            
+            <setFont name="Helvetica" size="22"/>
+            <drawString x="1.5cm" y="24cm">CONVOCATORIA DE REUNIÓN</drawString>
+            <setFont name="Helvetica" size="16"/>
+            <drawString x="1.5cm" y="23cm">- 1ª convocatoria: [fecha1convocatoriareunion] a las [hora1convocatoriareunion]</drawString>
+            <drawString x="1.5cm" y="22.3cm">- 2ª convocatoria: [fecha2convocatoriareunion] a las [hora2convocatoriareunion]</drawString>
+            <drawString x="1.5cm" y="21.6cm">- Tipo de reunión: [tiporeunion]</drawString>
+            <setFont name="Helvetica" size="13"/>
+            
+<!--END QUERY-->
+            
+        </pageGraphics>
+        
+    </pageTemplate>
 </template>
 
-<!-- include src="[CONF_DIR_OPENREPORTS]estilos.rml"/ -->
+<!--
+    Aquí los estilos. Es obligatorio que estén, aunque no haya contenido en ellos.
+-->
+<stylesheet>
+    
+    <paraStyle name="titulo"
+        fontName="Helvetica"
+        fontSize="18"
+    />
+    
+    <blockTableStyle id="tablaMiembros">
+        <blockFont name="Helvetica" />
+        <!--<blockBackground colorName="gray" start="0,0" stop="1,0" />-->
+        <blockBackground colorName="gray" start="0,0" stop="0,0" />
+        <lineStyle colorName="black" kind="GRID" />
+    </blockTableStyle>
+        
+</stylesheet>
 
+<!--
+    Aquí va el contenido del documento.
+    No puede estar vacío.
+-->
 <story>
+<!--QUERY="SELECT * FROM reunion WHERE idreunion = [idreunion]"-->
+    <para>[resolucionreunion]</para><spacer length="0.5cm" />
+<!--END QUERY-->
+    <para style="titulo"><b>Convocados</b></para>
+    
+    <spacer length="0.5cm" />
+    
+    <blockTable style="tablaMiembros" colWidths="18.2cm" repeatRows="0">
+    
+        <tr>
+            <td>Nombre</td>
+        </tr>
+            
+<!--QUERY="SELECT * FROM reunion, asistentereunion, cliente WHERE reunion.idreunion = asistentereunion.idreunion AND asistentereunion.idcliente = cliente.idcliente AND reunion.idreunion = [idreunion] ORDER BY cliente.nomcliente"-->
 
-[conceptoreunion]
+        <tr>
+            <td>[nomcliente]</td>
+        </tr>
+        
+<!--END QUERY-->
 
-[resolucionreunion]
-
-<H1>Orden del Dia</H1>
-
-<!--QUERY="SELECT * FROM ordendiareunion WHERE idreunion = 1"-->
-<blockTable colWidths="18.55cm">
-<tr>
-<td>[conceptoordendiareunion]</td>
-</tr>
-<tr>
-<td>[textoordendiareunion]</td>
-</tr>
-<tr>
-<td>[resolucionordendiareunion]</td>
-</tr>
-</blockTable>
-<!-- END QUERY-->
-
-
+    </blockTable>
+    
+    <spacer length="0.5cm" />
+    
+    <para style="titulo"><b>Orden del día</b></para>
+    
+    
 </story>
+
 </document>

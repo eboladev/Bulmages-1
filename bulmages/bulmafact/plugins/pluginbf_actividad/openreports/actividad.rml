@@ -32,7 +32,6 @@
             <!--<stroke color="black" />-->
             <!--<circle x="127.5" y="672.75" radius="1in" fill="yes" stroke="no" />-->
             
-<!--IF QUERY="SELECT * FROM ACTIVIDAD, PROFESOR, TIPOACTIVIDAD WHERE ACTIVIDAD.idtipoactividad = TIPOACTIVIDAD.idtipoactividad AND ACTIVIDAD.idprofesor = PROFESOR.idprofesor AND idactividad = [idactividad]"-->
 <!--QUERY="SELECT * FROM actividad, profesor, tipoactividad WHERE actividad.idtipoactividad = tipoactividad.idtipoactividad AND actividad.idprofesor = profesor.idprofesor AND idactividad=[idactividad]"-->
             
             <setFont name="Helvetica" size="22"/>
@@ -43,7 +42,6 @@
             <drawString x="1.5cm" y="21.6cm">Periodo (inicio | fin): [finicialactividad] | [ffinalactividad]</drawString>
             
 <!--END QUERY-->
-<!--END IF QUERY-->
             
         </pageGraphics>
         
@@ -78,7 +76,6 @@
     
     <blockTable style="tablaAlumnos" colWidths="18.2cm">
             
-<!--IF QUERY="SELECT * FROM ALUMNO, ALUMNOACTIVIDAD WHERE ALUMNOACTIVIDAD.idalumno = ALUMNO.idalumno AND ALUMNOACTIVIDAD.idactividad = [idactividad]"-->
 <!--QUERY="SELECT * FROM alumno, alumnoactividad WHERE alumnoactividad.idalumno = alumno.idalumno AND alumnoactividad.idactividad=[idactividad]"-->
 
         <tr>
@@ -86,11 +83,9 @@
         </tr>
         
 <!--END QUERY-->
-<!--END IF QUERY-->
 
     </blockTable>
     
-<!--IF QUERY="SELECT * FROM ACTIVIDAD WHERE idactividad = [idactividad]"-->
 <!--QUERY="SELECT * FROM actividad WHERE idactividad=[idactividad]"-->
 
     <spacer length="0.5cm" />
@@ -110,7 +105,6 @@
     <para style="titulo"><b>Calendario:</b></para>
 
 <!--END QUERY-->
-<!--END IF QUERY-->
     
 </story>
 

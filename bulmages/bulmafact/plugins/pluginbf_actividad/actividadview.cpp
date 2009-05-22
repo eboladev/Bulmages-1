@@ -67,6 +67,7 @@ ActividadView::ActividadView ( BfCompany *comp, QWidget *parent )
 
         /// Inicializamos el subformulario de alumnos
         mui_alumnosList->setMainCompany ( comp );
+        mui_faltasAsistenciaList->setMainCompany ( comp );
 
         /// Establecemos los parametros de busqueda de Profesor
         mui_idprofesor->setMainCompany ( comp );
@@ -139,6 +140,9 @@ int ActividadView::guardarPost()
     mui_alumnosList->setColumnValue ( "idactividad", dbValue ( "idactividad" ) );
     mui_alumnosList->guardar();
     
+    mui_faltasAsistenciaList->setColumnValue ( "idactividad", dbValue ( "idactividad" ) );
+    mui_faltasAsistenciaList->guardar();
+    
     _depura ( "END ActividadView::guardarPost", 0 );
 }
 
@@ -159,6 +163,7 @@ int ActividadView::cargarPost ( QString id )
     _depura ( "ActividadView::cargarPost", 0 );
 
     mui_alumnosList->cargar ( id );
+    mui_faltasAsistenciaList->cargar ( id );
 
     _depura ( "END ActividadView::cargarPost", 0 );
     
@@ -166,7 +171,7 @@ int ActividadView::cargarPost ( QString id )
 }
 
 /// =============================================================================
-///                    SUBFORMULARIO
+///                    SUBFORMULARIOS
 /// =============================================================================
 
 ///
@@ -192,13 +197,48 @@ ListAlumnosActividadView::ListAlumnosActividadView ( QWidget *parent ) : BfSubFo
 
 ///
 /**
-\param idcontrato
+\param idactividad
 **/
 void ListAlumnosActividadView::cargar ( QString idactividad )
 {
     _depura ( "ListAlumnosActividadView::cargar", 0 );
     
-    BlSubForm::cargar ( "SELECT * FROM alumnoactividad LEFT JOIN alumno ON alumnoactividad.idalumno = alumno.idalumno  WHERE alumnoactividad.idactividad=" + idactividad  );
+    BlSubForm::cargar ( "SELECT * FROM alumnoactividad LEFT JOIN alumno ON alumnoactividad.idalumno = alumno.idalumno WHERE alumnoactividad.idactividad=" + idactividad  );
+    
+    _depura ( "END ListAlumnosActividadView::cargar", 0 );
+}
+
+///
+/**
+\param parent
+**/
+ListFaltasAsistenciaActividadView::ListFaltasAsistenciaActividadView ( QWidget *parent ) : BfSubForm ( parent )
+{
+    _depura ( "ListAlumnosActividadView::ListAlumnosActividadView", 0 );
+    
+    setDbTableName ( "faltaasistenciaalumnoactividad" );
+    setDbFieldId ( "idfaltaasistenciaalumnoactividad" );
+    addSubFormHeader ( "idfaltaasistenciaalumnoactividad", BlDbField::DbInt, BlDbField::DbPrimaryKey , BlSubFormHeader::DbHideView, _ ( "Identificador" ) );
+    addSubFormHeader ( "idalumno", BlDbField::DbInt, BlDbField::DbNotNull | BlDbField::DbRequired , BlSubFormHeader::DbHideView, _ ( "Id alumno" ) );
+    addSubFormHeader ( "idactividad", BlDbField::DbInt, BlDbField::DbNotNull | BlDbField::DbRequired, BlSubFormHeader::DbHideView, _ ( "Id Actividad" ) );
+    addSubFormHeader ( "nombrealumno", BlDbField::DbVarChar, BlDbField::DbNotNull | BlDbField::DbRequired, BlSubFormHeader::DbNone, _ ( "Nombre alumno" ) );
+    addSubFormHeader ( "cantidadfaltaasistenciaalumnoactividad", BlDbField::DbInt, BlDbField::DbNotNull | BlDbField::DbRequired , BlSubFormHeader::DbNone, _ ( "Numero de faltas" ) );
+
+    setInsert ( TRUE );
+    setOrdenEnabled ( TRUE );
+    
+    _depura ( "END ListAlumnosActividadView::ListAlumnosActividadView", 0 );
+}
+
+///
+/**
+\param idactividad
+**/
+void ListFaltasAsistenciaActividadView::cargar ( QString idactividad )
+{
+    _depura ( "ListAlumnosActividadView::cargar", 0 );
+    
+    BlSubForm::cargar ( "SELECT * FROM faltaasistenciaalumnoactividad LEFT JOIN alumno ON faltaasistenciaalumnoactividad.idalumno = alumno.idalumno WHERE faltaasistenciaalumnoactividad.idactividad=" + idactividad  );
     
     _depura ( "END ListAlumnosActividadView::cargar", 0 );
 }

@@ -71,7 +71,7 @@ JDirectivaView::JDirectivaView ( BfCompany *comp, QWidget *parent )
         mui_list->setDelete ( TRUE );
         mui_list->setSortingEnabled ( FALSE );
         
-        mui_list->cargar("SELECT * from miembrojdirectiva NATURAL LEFT JOIN cliente WHERE 1 = 2");
+        mui_list->cargar("SELECT * from miembrojdirectiva NATURAL LEFT JOIN cliente WHERE 1 = 1");
         
         meteWindow ( windowTitle(), this, FALSE );
         pintar();

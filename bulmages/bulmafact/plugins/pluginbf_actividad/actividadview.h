@@ -39,7 +39,7 @@ class BfCompany;
 
 extern "C++" class BusquedaProfesor;
 
-/// Muestra y administra las l&iacute;neas de detalle de una contrato a un cliente.
+/// Muestra y administra los alumnos de una actividad.
 /** */
 class ListAlumnosActividadView : public BfSubForm
 {
@@ -49,7 +49,20 @@ public:
     ListAlumnosActividadView ( QWidget *parent = 0 );
     ~ListAlumnosActividadView() {};
 public slots:
-    virtual void cargar ( QString idcontrato );
+    virtual void cargar ( QString idactividad );
+};
+
+/// Muestra y administra las faltas de asistencia de una actividad.
+/** */
+class ListFaltasAsistenciaActividadView : public BfSubForm
+{
+    Q_OBJECT
+
+public:
+    ListFaltasAsistenciaActividadView ( QWidget *parent = 0 );
+    ~ListFaltasAsistenciaActividadView() {};
+public slots:
+    virtual void cargar ( QString idactividad );
 };
 
 #include "ui_actividadbase.h"
