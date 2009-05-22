@@ -19,9 +19,9 @@ ArchivoSQLpatch: pluginbf_alias.sql
 
 ArchivoSQLdeins: pluginbf_alias-rm.sql
 
-Dependencias:
+Dependencias: libpluginbf_articulo.so
 
-Incompatibles:
+Incompatibles: 
 
 Categorias: Utilidades genericas;
 
