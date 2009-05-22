@@ -88,13 +88,25 @@ void EmailThunderbirdQToolButton::click()
     _depura ( "EmailThunderbirdQToolButton::click", 0 );
 
     if ( m_presupuestoView != NULL ) {
+    
         m_companyact = m_presupuestoView->mainCompany();
-
+        
         QString id = m_presupuestoView->dbValue ( "idpresupuesto" );
         QString num = m_presupuestoView->dbValue ( "numpresupuesto" );
         QString ref = m_presupuestoView->dbValue ( "refpresupuesto" );
         QString idcliente = m_presupuestoView->dbValue ( "idcliente" );
         QString query = "SELECT mailcliente from cliente WHERE idcliente=" + idcliente;
+        
+        if (id == "") {
+            mensajeInfo("Este presupuesto aún no se ha guardado en la base de datos. Por favor, guárdelo e inténtelo de nuevo.");
+            return;
+        }
+        
+        if (idcliente == "") {
+            mensajeInfo("No hay seleccionado ningún cliente en el presupuesto. Por favor, selecciónelo e inténtelo de nuevo.");
+            return;
+        }
+        
         BlDbRecordSet *curs = m_companyact->loadQuery ( query );
         QString email = curs->valor ( "mailcliente" );
 
@@ -108,17 +120,29 @@ void EmailThunderbirdQToolButton::click()
 
             system ( cad.toAscii().data() );
         } // end if
+        
     } // end if
 
     if ( m_pedidoClienteView != NULL ) {
+    
         m_companyact = m_pedidoClienteView->mainCompany();
 
         QString id = m_pedidoClienteView->dbValue ( "idpedidocliente" );
         QString num = m_pedidoClienteView->dbValue ( "numpedidocliente" );
         QString ref = m_pedidoClienteView->dbValue ( "refpedidocliente" );
-
         QString idcliente = m_pedidoClienteView->dbValue ( "idcliente" );
         QString query = "SELECT mailcliente from cliente WHERE idcliente=" + idcliente;
+        
+        if (id == "") {
+            mensajeInfo("Este pedido aún no se ha guardado en la base de datos. Por favor, guárdelo e inténtelo de nuevo.");
+            return;
+        }
+        
+        if (idcliente == "") {
+            mensajeInfo("No hay seleccionado ningún cliente en el pedido. Por favor, selecciónelo e inténtelo de nuevo.");
+            return;
+        }
+        
         BlDbRecordSet *curs = m_companyact->loadQuery ( query );
         QString email = curs->valor ( "mailcliente" );
 
@@ -132,17 +156,29 @@ void EmailThunderbirdQToolButton::click()
 
             system ( cad.toAscii().data() );
         } // end if
+        
     } // end if
 
     if ( m_albaranClienteView != NULL ) {
+    
         m_companyact = m_albaranClienteView->mainCompany();
 
         QString id = m_albaranClienteView->dbValue ( "idalbaran" );
         QString num = m_albaranClienteView->dbValue ( "numalbaran" );
         QString ref = m_albaranClienteView->dbValue ( "refalbaran" );
-
         QString idcliente = m_albaranClienteView->dbValue ( "idcliente" );
         QString query = "SELECT mailcliente from cliente WHERE idcliente=" + idcliente;
+        
+        if (id == "") {
+            mensajeInfo("Este albaran aún no se ha guardado en la base de datos. Por favor, guárdelo e inténtelo de nuevo.");
+            return;
+        }
+        
+        if (idcliente == "") {
+            mensajeInfo("No hay seleccionado ningún cliente en el albarán. Por favor, selecciónelo e inténtelo de nuevo.");
+            return;
+        }
+        
         BlDbRecordSet *curs = m_companyact->loadQuery ( query );
         QString email = curs->valor ( "mailcliente" );
 
@@ -156,9 +192,11 @@ void EmailThunderbirdQToolButton::click()
 
             system ( cad.toAscii().data() );
         } // end if
+        
     } // end if
 
     if ( m_facturaView != NULL ) {
+    
         m_companyact = m_facturaView->mainCompany();
 
         QString id = m_facturaView->dbValue ( "idfactura" );
@@ -166,9 +204,19 @@ void EmailThunderbirdQToolButton::click()
         QString serie = m_facturaView->dbValue ( "codigoserie_factura" );
         QString ref = m_facturaView->dbValue ( "reffactura" );
         QString fecha = m_facturaView->dbValue ( "ffactura" );
-
         QString idcliente = m_facturaView->dbValue ( "idcliente" );
         QString query = "SELECT mailcliente from cliente WHERE idcliente=" + idcliente;
+        
+        if (id == "") {
+            mensajeInfo("Este presupuesto aún no se ha guardado en la base de datos. Por favor, guárdelo e inténtelo de nuevo.");
+            return;
+        }
+        
+        if (idcliente == "") {
+            mensajeInfo("No hay seleccionado ningún cliente en el presupuesto. Por favor, selecciónelo e inténtelo de nuevo.");
+            return;
+        }
+        
         BlDbRecordSet *curs = m_companyact->loadQuery ( query );
         QString email = curs->valor ( "mailcliente" );
 
