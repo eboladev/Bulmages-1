@@ -405,7 +405,7 @@
          </widget>
         </item>
         <item>
-         <widget class="QToolButton" name="mui_eliminar">
+         <widget class="QToolButton" name="mui_borrar">
           <property name="minimumSize">
            <size>
             <width>32</width>

@@ -70,7 +70,6 @@ public:
     void crear();
     void editar ( int );
     void submenu ( const QPoint & );
-
 signals:
     /// Estando en modo seleccion al seleccionar un elemento se emite esta se&ntilde;al.
     void selected ( QString );

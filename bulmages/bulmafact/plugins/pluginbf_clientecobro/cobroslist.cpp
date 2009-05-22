@@ -87,6 +87,7 @@ CobrosList::CobrosList ( BfCompany *comp, QWidget *parent, Qt::WFlags flag, edmo
     hideBusqueda();
     /// Hacemos el tratamiento de los permisos que desabilita botones en caso de no haber suficientes permisos.
     trataPermisos ( "cobro" );
+
     _depura ( "END CobrosList::CobrosList", 0 );
 }
 
@@ -287,9 +288,10 @@ QString CobrosList::idcobro()
 **/
 void CobrosList::setidcliente ( QString val )
 {
+    _depura ( "CobrosList::setidcliente", 0 );
     m_cliente->setId ( val );
+    _depura ( "END CobrosList::setidcliente", 0 );
 }
-
 
 /// =============================================================================
 ///                    SUBFORMULARIO
