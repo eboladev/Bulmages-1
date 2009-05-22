@@ -5,9 +5,9 @@
 
 \echo ":: Establecemos los mensajes minimos a avisos y otros parametros ... "
 \echo -n ":: "
--- SET client_min_messages TO WARNING;
--- SET log_min_messages TO WARNING;
--- SET log_error_verbosity TO TERSE;
+SET client_min_messages TO WARNING;
+SET log_min_messages TO WARNING;
+SET log_error_verbosity TO TERSE;
 BEGIN;
 
 --
