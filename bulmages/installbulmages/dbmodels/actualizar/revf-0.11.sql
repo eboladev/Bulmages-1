@@ -160,12 +160,25 @@ END;
 ' LANGUAGE plpgsql;
 
 -- para remesas de recibos a bancos en fornato q19
-ALTER TABLE banco
-  ADD COLUMN sufijobanco numeric(3,0) ;
-
+\echo -n ':: Agrega el campo de sufijo en la ficha de banco ... '
+CREATE OR REPLACE FUNCTION aux() RETURNS INTEGER AS '
+DECLARE
+        bs RECORD;
+BEGIN
+	SELECT INTO bs * FROM pg_attribute WHERE attname=''sufijobanco'';
+	IF NOT FOUND THEN
+           ALTER TABLE banco  ADD COLUMN sufijobanco numeric(3,0) ;
 -- para compatibilidad con las bd de la branch docsMonolitic que usaban idbanco en lugar de 
 -- sufijo
-UPDATE banco set sufijobanco = idbanco;
+           UPDATE banco set sufijobanco = idbanco ;
+	END IF;
+
+	RETURN 0;
+END;
+' LANGUAGE plpgsql;
+SELECT aux();
+DROP FUNCTION aux() CASCADE;
+
 
 -- =====================================================================================
 
