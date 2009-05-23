@@ -674,10 +674,12 @@ int BlForm::cargar ( QString id, bool paint )
 	  wtitle = wtitle + "[" + dbValue ( "num" + m_tablename) + "]";
 	} else	if ( exists ("ref" + m_tablename)) {
 	  wtitle = wtitle + "["+ dbValue ("ref" + m_tablename) + "]";
-	} else if ( exists ( "cod" + m_tablename)) {
-	  wtitle = wtitle + "[" + dbValue ( "cod" + m_tablename) + "]";
+	} else if ( exists ( "cif" + m_tablename)) {
+	  wtitle = wtitle + "[" + dbValue( "cif" + m_tablename) + "]";
 	} else if ( exists ( "nom" + m_tablename)) {
 	  wtitle = wtitle + "[" +  dbValue( "nom" + m_tablename) + "]";
+	} else if ( exists ( "cod" + m_tablename)) {
+	  wtitle = wtitle + "[" + dbValue ( "cod" + m_tablename) + "]";
 	} else {
 	  wtitle = wtitle + dbValue ( m_campoid );
 	} // end if

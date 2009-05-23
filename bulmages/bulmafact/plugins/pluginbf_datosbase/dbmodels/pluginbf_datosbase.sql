@@ -76,7 +76,7 @@ BEGIN
 	        INSERT INTO tasa_iva (idtipo_iva, porcentasa_iva, fechatasa_iva, porcentretasa_iva) VALUES (bs.idtipo_iva, 7, '01/01/1973', 2);
 	    END IF;
 
-	    SELECT INTO bs idtipo_iva FROM tipo_iva WHERE desctipo_iva='Normal';
+	    SELECT INTO bs idtipo_iva FROM tipo_iva WHERE desctipo_iva='General';
 	    IF FOUND THEN
 	        INSERT INTO tasa_iva (idtipo_iva, porcentasa_iva, fechatasa_iva, porcentretasa_iva) VALUES (bs.idtipo_iva, 16, '01/01/1973', 4);
  	    END IF;
