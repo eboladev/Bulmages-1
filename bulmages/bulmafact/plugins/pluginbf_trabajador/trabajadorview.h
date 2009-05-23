@@ -35,10 +35,12 @@ class TrabajadorView : public BfForm, public Ui_TrabajadorBase
 {
     Q_OBJECT
 
-private:
-    BlDbRecordSet *m_cursortrabajadores;
+public:
     /// Indica cual es el objeto que se esta mostrando.
     QString mdb_idtrabajador;
+
+private:
+    BlDbRecordSet *m_cursortrabajadores;
     /// Indica el archivo de imagen que se esta mostrando. Y si se ha cambiado la imagen
     /// tambien lo indica.
     QString m_archivoimagen;

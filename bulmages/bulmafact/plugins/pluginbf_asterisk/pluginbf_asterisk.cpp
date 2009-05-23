@@ -197,12 +197,12 @@ int TrabajadorView_on_mui_guardar_released ( TrabajadorView *trab )
     } else {
         query += "FALSE";
     } // end if
-    query += " WHERE idtrabajador=" + trab->mainCompany() ->sanearCadena ( trab->idtrabajador() );
+    query += " WHERE idtrabajador=" + trab->mainCompany() ->sanearCadena ( trab->mdb_idtrabajador );
     trab->mainCompany() ->begin();
     trab->mainCompany() ->runQuery ( query );
 
     BfSubForm *l1 = trab->findChild<BfSubForm *> ( "m_validacionestrab" );
-    l1->setColumnValue ( "idtrabajador", trab->idtrabajador() );
+    l1->setColumnValue ( "idtrabajador", trab->mdb_idtrabajador );
     l1->guardar();
     trab->mainCompany() ->commit();
     return 0;
@@ -219,7 +219,7 @@ int TrabajadorView_on_mui_lista_currentItemChanged_Post ( TrabajadorView *trab )
     QLineEdit * l = trab->findChild<QLineEdit *> ( "mui_passasterisktrabajador" );
     QCheckBox * l9 = trab->findChild<QCheckBox *> ( "mui_validasiempreasterisktrabajador" );
 
-    BlDbRecordSet *cur = trab->mainCompany() ->loadQuery ( "SELECT passasterisktrabajador, validasiempreasterisktrabajador FROM trabajador WHERE idtrabajador = " + trab->idtrabajador() );
+    BlDbRecordSet *cur = trab->mainCompany() ->loadQuery ( "SELECT passasterisktrabajador, validasiempreasterisktrabajador FROM trabajador WHERE idtrabajador = " + trab->mdb_idtrabajador );
     if ( !cur->eof() ) {
         l->setText ( cur->valor ( "passasterisktrabajador" ) );
         l9->setChecked ( ( cur->valor ( "validasiempreasterisktrabajador" ) == "t" ) );
@@ -228,7 +228,7 @@ int TrabajadorView_on_mui_lista_currentItemChanged_Post ( TrabajadorView *trab )
 
     /// Cargamos las validaciones de asterisk.
     BfSubForm *l1 = trab->findChild<BfSubForm *> ( "m_validacionestrab" );
-    l1->cargar ( "SELECT * FROM valasterisk NATURAL LEFT JOIN almacen WHERE idtrabajador = " + trab->idtrabajador() + " ORDER BY fechavalasterisk, horavalasterisk" );
+    l1->cargar ( "SELECT * FROM valasterisk NATURAL LEFT JOIN almacen WHERE idtrabajador = " + trab->mdb_idtrabajador + " ORDER BY fechavalasterisk, horavalasterisk" );
 
     return 0;
 }

@@ -230,12 +230,16 @@ class Facturacion(Ui_ModificarFacturacionBase, Empresa):
       self.j = 0
       for self.it in self.pluginsbulmatpv:
          if (self.pluginsbulmatpv[self.j][1] == plug):
-            self.mui_plugins1.item(self.j,0).setCheckState(Qt.Unchecked)
+	    if ( self.mui_plugins1.item(self.j,0).checkState() == Qt.Checked):
+	       print "Este plugin entra en conflicto con otros"
+	       self.mui_plugins1.item(self.j,0).setCheckState(Qt.Unchecked)
          self.j = self.j + 1
       self.j = 0
       for self.it in self.pluginsbulmafact:
          if (self.pluginsbulmafact[self.j][1] == plug):
-            self.mui_plugins.item(self.j,0).setCheckState(Qt.Unchecked)
+	    if ( self.mui_plugins.item(self.j,0).checkState() == Qt.Checked):
+	       print "Este plugin entra en conflicto con otros"
+	       self.mui_plugins.item(self.j,0).setCheckState(Qt.Unchecked)
          self.j = self.j + 1
 
    def on_mui_plugins_cellClicked(self, row, col):
@@ -264,8 +268,8 @@ class Facturacion(Ui_ModificarFacturacionBase, Empresa):
             self.i = self.i +1
 
    def on_mui_plugins1_cellClicked(self, row, col):
-      # Ponemos la descripcion en el cuadro de texto
-      self.mui_descripcion.setText(self.mui_plugins1.item(row,1).text() + "<b>" + self.pluginsbulmatpv[row][1] + "</b><br>"+ self.pluginsbulmatpv[row][3] + "<br>" + self.pluginsbulmatpv[row][4]+ "<br>" + self.pluginsbulmatpv[row][8]+ "<br>" + self.pluginsbulmatpv[row][9])
+      # Escribimos la descripcion
+      self.mui_descripcion.setText(self.mui_plugins1.item(row,1).text() + "<b>" + self.pluginsbulmatpv[row][1] + "</b><br>"+ self.pluginsbulmatpv[row][3] + "<br>" + self.pluginsbulmatpv[row][4] + "<br><b>Categorias:</b> " + self.pluginsbulmatpv[row][8]+ "<br>" + self.pluginsbulmatpv[row][9] + "<br><b>Dependencias:</b> " + self.pluginsbulmatpv[row][5] + "<br><br><b>Incompatibilidades:</b> " + self.pluginsbulmatpv[row][6])
       
       if (self.semaforo == 1):
          # Marcamos las dependencias

@@ -987,7 +987,7 @@ void BlDbRecord::imprimir()
 
     if ( generaRML() ) {
         invocaPDF ( nombrePlantilla() );
-    }
+    } // end if
 
     _depura ( "END BlDbRecord::imprimir", 0 );
 }

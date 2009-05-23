@@ -70,7 +70,7 @@ if(APPLE)
 endif(APPLE)
 
 add_library(${plugin} SHARED ${plugin_SRC} ${plugin_MOC_SRCS}
-	${plugin_UIS_H} ${plugin_SRCS} ${plugin_MOCS} ${pluginprofesor_RCC_SRCS})
+	${plugin_UIS_H} ${plugin_SRCS} ${plugin_MOCS})
 
 
 set_target_properties( ${plugin} PROPERTIES 

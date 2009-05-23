@@ -267,8 +267,11 @@ int TrabajadorView_TrabajadorView ( TrabajadorView *trab )
 int TrabajadorView_on_mui_lista_currentItemChanged_Post ( TrabajadorView *trab )
 {
     _depura ( "TrabajadorView_on_mui_lista_currentItemChanged_Post", 0 );
+
     BfSubForm *l = trab->findChild<BfSubForm *> ( "m_ausencias" );
-    l->cargar ( "SELECT * FROM ausencia WHERE idtrabajador = " + trab->idtrabajador() );
+    if (l) {
+      l->cargar ( "SELECT * FROM ausencia WHERE idtrabajador = " + trab->mdb_idtrabajador );
+    } // end if
     _depura ( "END TrabajadorView_on_mui_lista_currentItemChanged_Post", 0 );
     return 0;
 }
@@ -282,8 +285,10 @@ int TrabajadorView_on_mui_lista_currentItemChanged_Post ( TrabajadorView *trab )
 int TrabajadorView_on_mui_guardar_released ( TrabajadorView *trab )
 {
     BfSubForm * l = trab->findChild<BfSubForm *> ( "m_ausencias" );
-    l->setColumnValue ( "idtrabajador", trab->idtrabajador() );
-    l->guardar();
+    if (l) {
+      l->setColumnValue ( "idtrabajador", trab->mdb_idtrabajador );
+      l->guardar();
+    } // end if
     return 0;
 }
 

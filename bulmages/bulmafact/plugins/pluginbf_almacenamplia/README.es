@@ -21,7 +21,7 @@ ArchivoSQLdeins:
 
 Dependencias: libpluginbf_almacen.so
 
-Incompatibles:
+Incompatibles: 
 
 Categorias: Facturacion avanzada; Experimentales;
 
