@@ -72,13 +72,14 @@ void BfBuscarSerieFactura::setId ( QString codigo )
         codigo = g_confpr->valor ( CONF_SERIE_FACTURA_DEFECTO );
     } // end if
 
-    BlDbRecordSet *cur = mainCompany() ->loadQuery ( "SELECT * FROM configuracion WHERE nombre ='SerieFacturaDefecto'" );
-    if ( !cur ) return;
-    if ( !cur->eof() ) {
-        codigo = cur->valor ( "valor" );
+    if ( codigo.isEmpty() || codigo == "0" ) {
+      BlDbRecordSet *cur = mainCompany() ->loadQuery ( "SELECT * FROM configuracion WHERE nombre ='SerieFacturaDefecto'" );
+      if ( !cur ) return;
+      if ( !cur->eof() ) {
+	  codigo = cur->valor ( "valor" );
+      } // end if
+      delete cur;
     } // end if
-    delete cur;
-
 
     if ( m_comboRecordSet != NULL )
         delete m_comboRecordSet;
