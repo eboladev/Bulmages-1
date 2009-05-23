@@ -22,7 +22,8 @@ set(QT_USE_QTASSISTANT true)
 set(QT_USE_QTXML true)
 
 
-configure_file( ${CMAKE_CURRENT_SOURCE_DIR}/css/${plugin}.css.in ${plugin}.css @ONLY)
+configure_file( ${CMAKE_CURRENT_SOURCE_DIR}/css/${plugin}_es_ES.css.in ${plugin}_es_ES.css @ONLY)
+configure_file( ${CMAKE_CURRENT_SOURCE_DIR}/css/${plugin}_ca_ES.css.in ${plugin}_ca_ES.css @ONLY)
 
 
 INCLUDE( ${QT_USE_FILE} )
@@ -120,7 +121,11 @@ endforeach(dfile in ${docs})
 
 add_dependencies(${plugin} bulmafact bulmalib pluginbf_clientepresupuesto pluginbf_clientepedido)
 
-FILE(READ ${CMAKE_BINARY_DIR}/${plugin}.css VAR_CSS)
-FILE(APPEND ${CMAKE_BINARY_DIR}/css/bulmafact.css "${VAR_CSS}" )
+FILE(READ ${CMAKE_BINARY_DIR}/${plugin}_es_ES.css VAR_CSS_es_ES)
+FILE(APPEND ${CMAKE_BINARY_DIR}/css/bulmafact_es_ES.css "${VAR_CSS_es_ES}" )
+
+FILE(READ ${CMAKE_BINARY_DIR}/${plugin}_ca_ES.css VAR_CSS_ca_ES)
+FILE(APPEND ${CMAKE_BINARY_DIR}/css/bulmafact_ca_ES.css "${VAR_CSS_ca_ES}" )
+
 
 install(DIRECTORY images DESTINATION share/bulmages PATTERN ".svn" EXCLUDE)

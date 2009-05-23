@@ -30,7 +30,7 @@
 BgBulmaGes::BgBulmaGes()
 {
     setupUi ( this );
-    setWindowTitle ( "Lanzador BgBulmaGes" );
+    setWindowTitle ( "Lanzador BulmaGes" );
 
     createTrayIcon();
     trayIcon->setIcon ( QIcon ( ":/images/iconbulmages.svg" ) );
