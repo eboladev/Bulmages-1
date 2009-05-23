@@ -136,6 +136,8 @@ void CobroView::imprimir()
 }
 
 
+/** Cuando hacemos un cobro y el valor del cobro es igual por referencia que todas las facturas
+     con la misma referencia se procesan dichas facturas **/
 int CobroView::guardarPost()
 {
     _depura ( "CobroView::guardarPost", 0 );
@@ -149,7 +151,6 @@ int CobroView::guardarPost()
     if ( cur->valor ( "total" ) == cur1->valor ( "totalc" ) ) {
         mensajeInfo ( _("Toda la referencia esta cobrada. Se procesaran todos los documentos con esta referencia") );
         QString query2 = "UPDATE factura set procesadafactura = TRUE WHERE reffactura='" + dbValue ( "refcobro" ) + "'";
-	mensajeInfo(query2);
         mainCompany()->runQuery ( query2 );
     } // end if
     delete cur;

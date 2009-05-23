@@ -57,6 +57,7 @@ BEGIN
 	SELECT INTO ds * FROM tipo_iva;
 	IF NOT FOUND THEN
             INSERT INTO tipo_iva (desctipo_iva) VALUES ('Exento');
+            INSERT INTO tipo_iva (desctipo_iva) VALUES ('Super Reducido');
             INSERT INTO tipo_iva (desctipo_iva) VALUES ('Reducido');
             INSERT INTO tipo_iva (desctipo_iva) VALUES ('Normal');
 	
@@ -64,6 +65,11 @@ BEGIN
             IF FOUND THEN
 		INSERT INTO tasa_iva (idtipo_iva, porcentasa_iva, fechatasa_iva, porcentretasa_iva) VALUES (bs.idtipo_iva, 0, '01/01/1973', 0);
     	    END IF;
+
+            SELECT INTO bs idtipo_iva FROM tipo_iva WHERE desctipo_iva='Super Reducido';
+	    IF FOUND THEN
+	        INSERT INTO tasa_iva (idtipo_iva, porcentasa_iva, fechatasa_iva, porcentretasa_iva) VALUES (bs.idtipo_iva, 4, '01/01/1973', 0.5);
+	    END IF;
 
             SELECT INTO bs idtipo_iva FROM tipo_iva WHERE desctipo_iva='Reducido';
 	    IF FOUND THEN
@@ -101,10 +107,21 @@ BEGIN
 	    INSERT INTO trabajador (nomtrabajador) VALUES ('Sin Definir');
 	END IF;
 	
+
+	SELECT INTO ds * from forma_pago;
+	IF NOT FOUND THEN
+	    INSERT INTO forma_pago (descforma_pago) VALUES ('Efectivo');
+	    INSERT INTO forma_pago (descforma_pago) VALUES ('Cheque');
+	    INSERT INTO forma_pago (descforma_pago) VALUES ('Tarjeta');
+	    INSERT INTO forma_pago (descforma_pago) VALUES ('Pagaré');
+	    INSERT INTO forma_pago (descforma_pago) VALUES ('Transferencia');
+	END IF;
+
 	SELECT INTO ds * FROM serie_factura;
 	IF NOT FOUND THEN
 	    INSERT INTO serie_factura (codigoserie_factura, descserie_factura) VALUES ('DD', 'Principal');
 	    INSERT INTO serie_factura (codigoserie_factura, descserie_factura) VALUES ('REC', 'Rectificativa');
+	    INSERT INTO serie_factura (codigoserie_factura, descserie_factura) VALUES ('BBB', 'Facturación de Pruebas');
 	END IF;
 	
 	SELECT INTO ds * FROM pais;
@@ -112,14 +129,14 @@ BEGIN
 	    INSERT INTO pais (descpais, cod2pais, cod3pais) VALUES ('España','es','esp');
 	    SELECT INTO bs idpais FROM pais WHERE cod2pais = 'es';
 	    IF FOUND THEN
-		INSERT INTO provincia (idpais, provincia) VALUES (bs.idpais, 'Alava');
+		INSERT INTO provincia (idpais, provincia) VALUES (bs.idpais, 'Araba');
 		INSERT INTO provincia (idpais, provincia) VALUES (bs.idpais, 'Albacete');
 		INSERT INTO provincia (idpais, provincia) VALUES (bs.idpais, 'Alicante');
 		INSERT INTO provincia (idpais, provincia) VALUES (bs.idpais, 'Almería');
 		INSERT INTO provincia (idpais, provincia) VALUES (bs.idpais, 'Asturias');
 		INSERT INTO provincia (idpais, provincia) VALUES (bs.idpais, 'Avila');
 		INSERT INTO provincia (idpais, provincia) VALUES (bs.idpais, 'Badajoz');
-		INSERT INTO provincia (idpais, provincia) VALUES (bs.idpais, 'Baleares');
+		INSERT INTO provincia (idpais, provincia) VALUES (bs.idpais, 'Illes Balears');
 		INSERT INTO provincia (idpais, provincia) VALUES (bs.idpais, 'Barcelona');
 		INSERT INTO provincia (idpais, provincia) VALUES (bs.idpais, 'Burgos');
 		INSERT INTO provincia (idpais, provincia) VALUES (bs.idpais, 'Cáceres');
@@ -129,30 +146,30 @@ BEGIN
 		INSERT INTO provincia (idpais, provincia) VALUES (bs.idpais, 'Ceuta');
 		INSERT INTO provincia (idpais, provincia) VALUES (bs.idpais, 'Ciudad Real');
 		INSERT INTO provincia (idpais, provincia) VALUES (bs.idpais, 'Córdoba');
-		INSERT INTO provincia (idpais, provincia) VALUES (bs.idpais, 'Coruña, La');
+		INSERT INTO provincia (idpais, provincia) VALUES (bs.idpais, 'A Coruña');
 		INSERT INTO provincia (idpais, provincia) VALUES (bs.idpais, 'Cuenca');
-		INSERT INTO provincia (idpais, provincia) VALUES (bs.idpais, 'Gerona');
+		INSERT INTO provincia (idpais, provincia) VALUES (bs.idpais, 'Girona');
 		INSERT INTO provincia (idpais, provincia) VALUES (bs.idpais, 'Granada');
 		INSERT INTO provincia (idpais, provincia) VALUES (bs.idpais, 'Guadalajara');
-		INSERT INTO provincia (idpais, provincia) VALUES (bs.idpais, 'Guipuzcoa');
+		INSERT INTO provincia (idpais, provincia) VALUES (bs.idpais, 'Gipuzcoa');
 		INSERT INTO provincia (idpais, provincia) VALUES (bs.idpais, 'Huelva');
 		INSERT INTO provincia (idpais, provincia) VALUES (bs.idpais, 'Huesca');
 		INSERT INTO provincia (idpais, provincia) VALUES (bs.idpais, 'Jaen');
 		INSERT INTO provincia (idpais, provincia) VALUES (bs.idpais, 'León');
-		INSERT INTO provincia (idpais, provincia) VALUES (bs.idpais, 'Lérida');
+		INSERT INTO provincia (idpais, provincia) VALUES (bs.idpais, 'Lleida');
 		INSERT INTO provincia (idpais, provincia) VALUES (bs.idpais, 'Lugo');
 		INSERT INTO provincia (idpais, provincia) VALUES (bs.idpais, 'Madrid');
 		INSERT INTO provincia (idpais, provincia) VALUES (bs.idpais, 'Málaga');
 		INSERT INTO provincia (idpais, provincia) VALUES (bs.idpais, 'Melilla');
 		INSERT INTO provincia (idpais, provincia) VALUES (bs.idpais, 'Murcia');
 		INSERT INTO provincia (idpais, provincia) VALUES (bs.idpais, 'Navarra');
-		INSERT INTO provincia (idpais, provincia) VALUES (bs.idpais, 'Orense');
+		INSERT INTO provincia (idpais, provincia) VALUES (bs.idpais, 'Ourense');
 		INSERT INTO provincia (idpais, provincia) VALUES (bs.idpais, 'Palencia');
 		INSERT INTO provincia (idpais, provincia) VALUES (bs.idpais, 'Palmas (Las)');
 		INSERT INTO provincia (idpais, provincia) VALUES (bs.idpais, 'Pontevedra');
 		INSERT INTO provincia (idpais, provincia) VALUES (bs.idpais, 'Rioja (La)');
 		INSERT INTO provincia (idpais, provincia) VALUES (bs.idpais, 'Salamanca');
-		INSERT INTO provincia (idpais, provincia) VALUES (bs.idpais, 'S.C.Tenerife');
+		INSERT INTO provincia (idpais, provincia) VALUES (bs.idpais, 'S.C.de Tenerife');
 		INSERT INTO provincia (idpais, provincia) VALUES (bs.idpais, 'Segovia');
 		INSERT INTO provincia (idpais, provincia) VALUES (bs.idpais, 'Sevilla');
 		INSERT INTO provincia (idpais, provincia) VALUES (bs.idpais, 'Soria');
@@ -161,7 +178,7 @@ BEGIN
 		INSERT INTO provincia (idpais, provincia) VALUES (bs.idpais, 'Toledo');
 		INSERT INTO provincia (idpais, provincia) VALUES (bs.idpais, 'Valencia');
 		INSERT INTO provincia (idpais, provincia) VALUES (bs.idpais, 'Valladolid');
-		INSERT INTO provincia (idpais, provincia) VALUES (bs.idpais, 'Vizcaya');
+		INSERT INTO provincia (idpais, provincia) VALUES (bs.idpais, 'Bizkaia');
 		INSERT INTO provincia (idpais, provincia) VALUES (bs.idpais, 'Zamora');
 		INSERT INTO provincia (idpais, provincia) VALUES (bs.idpais, 'Zaragoza');
 	    END IF;
