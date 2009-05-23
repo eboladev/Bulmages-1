@@ -9,7 +9,7 @@ Nombre: Tipos de Trabajo
 Biblioteca: libpluginbf_tipostrabajo.so
 
 Descripción: <H1>Tipos de Trabajo</H1>
-<P>Permite organizar los trabajadores en sus distintas áreas de operacion o conocimiento. Sive para clasificar los trabajadores en grupos que serán utilizados en la generación de cuadrantes.</P>
+<P>Permite organizar los trabajadores en sus distintas áreas de operacion o conocimiento. Sirve para clasificar los trabajadores en grupos que serán utilizados en la generación de cuadrantes.</P>
 <HR>
 
 ParmBD: PluginBf_TipoTrabajo
