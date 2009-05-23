@@ -16,9 +16,9 @@ ArchivoSQLpatch:
 
 ArchivoSQLdeins: 
 
-Dependencias: libplugintpv.so
+Dependencias: 
 
-Incompatibles:
+Incompatibles: libpluginbt_ivaincluido.so;libpluginbt_ticketivaincluido.so
 
 Orden: 4
 

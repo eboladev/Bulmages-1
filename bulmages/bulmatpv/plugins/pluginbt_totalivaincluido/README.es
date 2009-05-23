@@ -4,9 +4,9 @@
 #README.es
 #20080501 
 
-Nombre: Presentación del totall ticket en pantalla
+Nombre: Total ticket en pantalla (IVA Inc.)
 
-Biblioteca: libplugintotal.so
+Biblioteca: libpluginbt_totalivaincluido.so
 
 Descripción: Muestra el total del ticket en pantalla
 
@@ -16,9 +16,9 @@ ArchivoSQLpatch:
 
 ArchivoSQLdeins: 
 
-Dependencias:
+Dependencias: libpluginbt_ivaincluido.so
 
-Incompatibles:
+Incompatibles: libpluginbt_total.so
 
 Orden:
 

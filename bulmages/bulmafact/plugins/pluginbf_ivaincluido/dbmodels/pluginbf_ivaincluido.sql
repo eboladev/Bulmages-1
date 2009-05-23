@@ -84,13 +84,13 @@ DROP FUNCTION aux() CASCADE;
 --
 CREATE OR REPLACE FUNCTION actualizarevision() RETURNS INTEGER AS '
 DECLARE
-	as RECORD;
+	asd RECORD;
 BEGIN
-	SELECT INTO as * FROM configuracion WHERE nombre=''PluginBf_-IVAIncluido'';
+	SELECT INTO asd * FROM configuracion WHERE nombre=''PluginBf_IVAIncluido'';
 	IF FOUND THEN
-		UPDATE CONFIGURACION SET valor=''0.10.1-0002'' WHERE nombre=''PluginBf_IVAIncluido'';
+		UPDATE configuracion SET valor=''0.11.1-0000'' WHERE nombre=''PluginBf_IVAIncluido'';
 	ELSE
-		INSERT INTO configuracion (nombre, valor) VALUES (''PluginBf_IVAIncluido'', ''0.10.1-0002'');
+		INSERT INTO configuracion (nombre, valor) VALUES (''PluginBf_IVAIncluido'', ''0.11.1-0000'');
 	END IF;
 	RETURN 0;
 END;

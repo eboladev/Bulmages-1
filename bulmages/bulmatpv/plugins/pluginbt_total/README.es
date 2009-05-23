@@ -4,7 +4,7 @@
 #README.es
 #20080501 
 
-Nombre: Presentación del total ticket en pantalla.
+Nombre: Total ticket en pantalla.
 
 Biblioteca: libpluginbt_total.so
 
@@ -19,8 +19,8 @@ ArchivoSQLdeins:
 
 Dependencias:
 
-Incompatibles:
+Incompatibles: libpluginbt_ivaincluido.so
 
 Orden:
 
-Comentarios: Ideal para bares, cafeterías y restaurantes.
+Comentarios: Ideal para tiendas.

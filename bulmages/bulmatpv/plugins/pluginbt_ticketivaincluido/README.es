@@ -4,7 +4,7 @@
 #README.es
 #20080501 
 
-Nombre: Presentación de ticket en pantalla con IVA incluido.
+Nombre: Ticket en pantalla (IVA inc.)
 
 Biblioteca: libpluginbt_ticketivaincluido.so
 
@@ -16,7 +16,7 @@ ArchivoSQLpatch:
 
 ArchivoSQLdeins: 
 
-Dependencias: libplugintpv.so
+Dependencias: libpluginbt_ivaincluido.so
 
 Incompatibles:
 

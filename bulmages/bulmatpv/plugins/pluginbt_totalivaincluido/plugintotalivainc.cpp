@@ -85,9 +85,9 @@ int exitPoint ( BtBulmaTPV *tpv )
     return 0;
 }
 
-int Ticket_pintar ( BtTicket *tick )
+int BtTicket_pintar ( BtTicket *tick )
 {
-    _depura ( "plugintotal::Ticket_pintar", 0 );
+    _depura ( "plugintotal::BtTicket_pintar", 0 );
 
     base basesimp;
     base basesimpreqeq;
