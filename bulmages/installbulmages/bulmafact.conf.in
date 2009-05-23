@@ -60,7 +60,7 @@ CONF_BACKGROUND_IMAGE      @CMAKE_INSTALL_PREFIX@/share/bulmages/images/bulmafac
 
 
 # Hoja de estilo a utilizar
-CONF_STYLESHEET                 @CMAKE_INSTALL_PREFIX@/share/bulmages/css/bulmafact.css
+CONF_STYLESHEET                 @CMAKE_INSTALL_PREFIX@/share/bulmages/css/bulmafact_es_ES.css
 
 
 # NOTA PARA DESARROLLADORES:

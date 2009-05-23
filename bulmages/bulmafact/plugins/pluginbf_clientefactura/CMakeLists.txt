@@ -8,6 +8,12 @@ ADD_DEFINITIONS(-D${plugin})
 
 set (docs README.es)
 
+
+
+configure_file( ${CMAKE_CURRENT_SOURCE_DIR}/css/${plugin}_es_ES.css.in ${plugin}_es_ES.css @ONLY)
+configure_file( ${CMAKE_CURRENT_SOURCE_DIR}/css/${plugin}_ca_ES.css.in ${plugin}_ca_ES.css @ONLY)
+
+
 file(GLOB plugin_SRC *.c *.cpp *.cxx)
 file(GLOB plugin_MOCS *.hpp *.h)
 file(GLOB plugin_UIS *.ui ../pluginbf_clientealbaran/*.ui ../pluginbf_clientepedido/*.ui)
@@ -104,3 +110,13 @@ foreach(dfile ${docs})
 endforeach(dfile in ${docs})
 
 add_dependencies(${plugin} bulmafact bulmalib pluginbf_clientepresupuesto pluginbf_clientealbaran pluginbf_clientepedido)
+
+
+FILE(READ ${CMAKE_BINARY_DIR}/${plugin}_es_ES.css VAR_CSS_es_ES)
+FILE(APPEND ${CMAKE_BINARY_DIR}/css/bulmafact_es_ES.css "${VAR_CSS_es_ES}" )
+
+FILE(READ ${CMAKE_BINARY_DIR}/${plugin}_ca_ES.css VAR_CSS_ca_ES)
+FILE(APPEND ${CMAKE_BINARY_DIR}/css/bulmafact_ca_ES.css "${VAR_CSS_ca_ES}" )
+
+
+install(DIRECTORY images DESTINATION share/bulmages PATTERN ".svn" EXCLUDE)
