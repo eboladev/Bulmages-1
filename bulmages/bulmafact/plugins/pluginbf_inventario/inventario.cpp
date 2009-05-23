@@ -98,8 +98,6 @@ void Inventario::pintaInventario()
     pintaidinventario ( dbValue ( "idinventario" ) );
     pintanominventario ( dbValue ( "nominventario" ) );
     pintafechainventario ( dbValue ( "fechainventario" ) );
-    /// Pinta el subformulario de detalle del Inventario.
-    //listalineas->pintaListControlStock();
 }
 
 

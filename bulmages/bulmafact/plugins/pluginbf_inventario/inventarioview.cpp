@@ -199,7 +199,7 @@ int InventarioView::cargar ( QString idbudget )
 
     QString SQLQuery = "SELECT * FROM ";
     SQLQuery += " (SELECT idarticulo, idalmacen, nomarticulo, nomalmacen, codigocompletoarticulo, codigoalmacen, idfamilia FROM articulo, almacen) AS t1 ";
-    SQLQuery += " LEFT JOIN (SELECT punteocontrolstock,stockantcontrolstock, stocknewcontrolstock, idarticulo AS idarticulopk, idalmacen AS idalmacenpk, idinventario FROM controlstock WHERE idinventario = " + idbudget + ") AS t2 ON t1.idarticulo = t2.idarticulopk AND t1.idalmacen = t2.idalmacenpk ";
+    SQLQuery += " LEFT JOIN (SELECT punteocontrolstock, COALESCE(stockantcontrolstock, 0) AS stockantcontrolstock, stocknewcontrolstock, idarticulo AS idarticulopk, idalmacen AS idalmacenpk, idinventario FROM controlstock WHERE idinventario = " + idbudget + ") AS t2 ON t1.idarticulo = t2.idarticulopk AND t1.idalmacen = t2.idalmacenpk ";
 
     if ( mui_idfamilia->idfamilia() != "" ) {
         SQLQuery += " WHERE t1.idfamilia = " + mui_idfamilia->idfamilia();

@@ -36,37 +36,17 @@ ListControlStockView::ListControlStockView ( QWidget *parent, const char * )
     addSubFormHeader ( "nomalmacen", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _ ( "Nombre almacen" ) );
     addSubFormHeader ( "codigocompletoarticulo", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _ ( "Codigo completo articulo" ) );
     addSubFormHeader ( "nomarticulo", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _ ( "Nombre articulo" ) );
-    addSubFormHeader ( "stockantcontrolstock", BlDbField::DbNumeric, BlDbField::DbNothing, BlSubFormHeader::DbNoWrite, _ ( "Stock anterior" ) );
+    addSubFormHeader ( "stockantcontrolstock", BlDbField::DbNumeric, BlDbField::DbNothing, BlSubFormHeader::DbNone, _ ( "Stock anterior" ) );
     addSubFormHeader ( "stocknewcontrolstock", BlDbField::DbNumeric, BlDbField::DbRequired, BlSubFormHeader::DbNone, _ ( "Stock revisado" ) );
-    addSubFormHeader ( "idarticulo", BlDbField::DbInt, BlDbField::DbPrimaryKey, BlSubFormHeader::DbNone | BlSubFormHeader::DbHideView, _ ( "Id articulo" ) );
-    addSubFormHeader ( "idalmacen", BlDbField::DbInt, BlDbField::DbPrimaryKey, BlSubFormHeader::DbNone | BlSubFormHeader::DbHideView, "Id almacen" );
-    addSubFormHeader ( "idinventario", BlDbField::DbInt, BlDbField::DbPrimaryKey, BlSubFormHeader::DbNone | BlSubFormHeader::DbHideView, "Id inventario" );
+    addSubFormHeader ( "idarticulo", BlDbField::DbInt, BlDbField::DbPrimaryKey, BlSubFormHeader::DbNoWrite | BlSubFormHeader::DbHideView, _ ( "Id articulo" ) );
+    addSubFormHeader ( "idalmacen", BlDbField::DbInt, BlDbField::DbPrimaryKey, BlSubFormHeader::DbNoWrite | BlSubFormHeader::DbHideView, "Id almacen" );
+    addSubFormHeader ( "idinventario", BlDbField::DbInt, BlDbField::DbPrimaryKey, BlSubFormHeader::DbNoWrite | BlSubFormHeader::DbHideView, "Id inventario" );
     addSubFormHeader ( "idarticulopk", BlDbField::DbInt, BlDbField::DbNoSave | BlDbField::DbDupPrimaryKey, BlSubFormHeader::DbNone | BlSubFormHeader::DbHideView | BlSubFormHeader::DbDisableView, "idarticulo" );
     addSubFormHeader ( "idalmacenpk", BlDbField::DbInt,  BlDbField::DbNoSave | BlDbField::DbDupPrimaryKey, BlSubFormHeader::DbNone | BlSubFormHeader::DbHideView | BlSubFormHeader::DbDisableView, "idalmacen" );
-//    addSubFormHeader("idinventariopk", BlDbField::DbInt,  BlDbField::DbNoSave | BlDbField::DbDupPrimaryKey, BlSubFormHeader::DbNone | BlSubFormHeader::DbHideView | BlSubFormHeader::DbDisableView, "idinventario");
     setInsert ( FALSE );
     _depura ( "END ListControlStockView::ListControlStockView", 0 );
 }
 
-
-///
-/**
-\param idinventario
-**/
-/*
-void ListControlStockView::cargar ( int idinventario )
-{
-    _depura ( "ListControlStockView::cargar", 0 );
-    mdb_idinventario = QString::number(idinventario);
-    QString SQLQuery = "SELECT * FROM ";
-    SQLQuery += " (SELECT idarticulo, idalmacen, nomarticulo, nomalmacen, codigocompletoarticulo, codigoalmacen FROM articulo, almacen) AS t1 ";
-    SQLQuery += " LEFT JOIN (SELECT punteocontrolstock,stockantcontrolstock, stocknewcontrolstock, idarticulo AS idarticulopk, idalmacen AS idalmacenpk, idinventario FROM controlstock WHERE idinventario = " + mdb_idinventario + ") AS t2 ON t1.idarticulo = t2.idarticulopk AND t1.idalmacen = t2.idalmacenpk ";
-
-    SQLQuery += " ORDER BY codigoalmacen, codigocompletoarticulo";
-    BfSubForm::cargar ( SQLQuery );
-    _depura ( "END ListControlStockView::cargar", 0 );
-}
-*/
 
 ///
 /**

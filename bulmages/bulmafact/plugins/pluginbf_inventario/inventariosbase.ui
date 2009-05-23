@@ -1,11 +1,12 @@
-<ui version="4.0" >
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
  <author>Tomeu Borras Riera</author>
  <class>InventariosBase</class>
- <widget class="QWidget" name="InventariosBase" >
-  <property name="enabled" >
+ <widget class="QWidget" name="InventariosBase">
+  <property name="enabled">
    <bool>true</bool>
   </property>
-  <property name="geometry" >
+  <property name="geometry">
    <rect>
     <x>0</x>
     <y>0</y>
@@ -13,90 +14,93 @@
     <height>490</height>
    </rect>
   </property>
-  <property name="windowTitle" >
+  <property name="windowTitle">
    <string>Listado de inventarios</string>
   </property>
-  <property name="windowIcon" >
-   <iconset resource="../../../bulmages.qrc" >
+  <property name="windowIcon">
+   <iconset resource="../../../bulmages.qrc">
     <normaloff>:/Images/product-list.svg</normaloff>:/Images/product-list.svg</iconset>
   </property>
-  <layout class="QVBoxLayout" >
-   <property name="spacing" >
+  <layout class="QVBoxLayout">
+   <property name="spacing">
     <number>5</number>
    </property>
-   <property name="margin" >
+   <property name="margin">
     <number>5</number>
    </property>
    <item>
-    <layout class="QHBoxLayout" >
-     <property name="spacing" >
+    <layout class="QHBoxLayout">
+     <property name="spacing">
       <number>6</number>
      </property>
-     <property name="margin" >
+     <property name="margin">
       <number>0</number>
      </property>
      <item>
-      <widget class="QLabel" name="label" >
-       <property name="minimumSize" >
+      <widget class="QLabel" name="label">
+       <property name="minimumSize">
         <size>
          <width>48</width>
          <height>48</height>
         </size>
        </property>
-       <property name="maximumSize" >
+       <property name="maximumSize">
         <size>
          <width>48</width>
          <height>48</height>
         </size>
        </property>
-       <property name="pixmap" >
-        <pixmap resource="../../../bulmages.qrc" >:/Images/product-list.svg</pixmap>
+       <property name="pixmap">
+        <pixmap resource="../../../bulmages.qrc">:/Images/product-list.svg</pixmap>
+       </property>
+       <property name="scaledContents">
+        <bool>true</bool>
        </property>
       </widget>
      </item>
      <item>
-      <widget class="QFrame" name="m_botonera" >
-       <property name="frameShape" >
+      <widget class="QFrame" name="m_botonera">
+       <property name="frameShape">
         <enum>QFrame::StyledPanel</enum>
        </property>
-       <property name="frameShadow" >
+       <property name="frameShadow">
         <enum>QFrame::Raised</enum>
        </property>
-       <layout class="QHBoxLayout" >
-        <property name="spacing" >
+       <layout class="QHBoxLayout">
+        <property name="spacing">
          <number>5</number>
         </property>
-        <property name="margin" >
+        <property name="margin">
          <number>5</number>
         </property>
         <item>
-         <widget class="QToolButton" name="mui_crear" >
-          <property name="minimumSize" >
+         <widget class="QToolButton" name="mui_crear">
+          <property name="minimumSize">
            <size>
             <width>32</width>
             <height>32</height>
            </size>
           </property>
-          <property name="maximumSize" >
+          <property name="maximumSize">
            <size>
             <width>32</width>
             <height>32</height>
            </size>
           </property>
-          <property name="toolTip" >
+          <property name="toolTip">
            <string>Nuevo inventario</string>
           </property>
-          <property name="whatsThis" >
+          <property name="whatsThis">
            <string>Nuevo inventario</string>
           </property>
-          <property name="text" >
+          <property name="text">
            <string/>
           </property>
-          <property name="icon" >
-           <iconset resource="../../../bulmages.qrc" >
+          <property name="icon">
+           <iconset resource="../../../bulmages.qrc">
             <normaloff>:/Images/document-new.svg</normaloff>:/Images/document-new.svg</iconset>
           </property>
-          <property name="iconSize" >
+          <property name="iconSize">
            <size>
             <width>32</width>
             <height>32</height>
@@ -105,33 +109,33 @@
          </widget>
         </item>
         <item>
-         <widget class="QToolButton" name="mui_editar" >
-          <property name="minimumSize" >
+         <widget class="QToolButton" name="mui_editar">
+          <property name="minimumSize">
            <size>
             <width>32</width>
             <height>32</height>
            </size>
           </property>
-          <property name="maximumSize" >
+          <property name="maximumSize">
            <size>
             <width>32</width>
             <height>32</height>
            </size>
           </property>
-          <property name="toolTip" >
+          <property name="toolTip">
            <string>Editar inventario</string>
           </property>
-          <property name="whatsThis" >
+          <property name="whatsThis">
            <string>Editar inventario</string>
           </property>
-          <property name="text" >
+          <property name="text">
            <string/>
           </property>
-          <property name="icon" >
-           <iconset resource="../../../bulmages.qrc" >
+          <property name="icon">
+           <iconset resource="../../../bulmages.qrc">
             <normaloff>:/Images/document-open.svg</normaloff>:/Images/document-open.svg</iconset>
           </property>
-          <property name="iconSize" >
+          <property name="iconSize">
            <size>
             <width>32</width>
             <height>32</height>
@@ -140,33 +144,33 @@
          </widget>
         </item>
         <item>
-         <widget class="QToolButton" name="mui_borrar2" >
-          <property name="minimumSize" >
+         <widget class="QToolButton" name="mui_borrar2">
+          <property name="minimumSize">
            <size>
             <width>32</width>
             <height>32</height>
            </size>
           </property>
-          <property name="maximumSize" >
+          <property name="maximumSize">
            <size>
             <width>32</width>
             <height>32</height>
            </size>
           </property>
-          <property name="toolTip" >
+          <property name="toolTip">
            <string>Borrar inventario</string>
           </property>
-          <property name="whatsThis" >
+          <property name="whatsThis">
            <string>Borrar inventario</string>
           </property>
-          <property name="text" >
+          <property name="text">
            <string/>
           </property>
-          <property name="icon" >
+          <property name="icon">
            <iconset>
             <normaloff>:Images/edit-delete.svg</normaloff>:Images/edit-delete.svg</iconset>
           </property>
-          <property name="iconSize" >
+          <property name="iconSize">
            <size>
             <width>32</width>
             <height>32</height>
@@ -175,33 +179,33 @@
          </widget>
         </item>
         <item>
-         <widget class="QToolButton" name="mui_imprimir" >
-          <property name="minimumSize" >
+         <widget class="QToolButton" name="mui_imprimir">
+          <property name="minimumSize">
            <size>
             <width>32</width>
             <height>32</height>
            </size>
           </property>
-          <property name="maximumSize" >
+          <property name="maximumSize">
            <size>
             <width>32</width>
             <height>32</height>
            </size>
           </property>
-          <property name="toolTip" >
+          <property name="toolTip">
            <string>Imprimir Stocks Actuales</string>
           </property>
-          <property name="whatsThis" >
+          <property name="whatsThis">
            <string>Imprimir Stocks Actuales</string>
           </property>
-          <property name="text" >
+          <property name="text">
            <string/>
           </property>
-          <property name="icon" >
-           <iconset resource="../../../bulmages.qrc" >
+          <property name="icon">
+           <iconset resource="../../../bulmages.qrc">
             <normaloff>:/Images/document-print.svg</normaloff>:/Images/document-print.svg</iconset>
           </property>
-          <property name="iconSize" >
+          <property name="iconSize">
            <size>
             <width>32</width>
             <height>32</height>
@@ -210,33 +214,33 @@
          </widget>
         </item>
         <item>
-         <widget class="QToolButton" name="mui_actualizar" >
-          <property name="minimumSize" >
+         <widget class="QToolButton" name="mui_actualizar">
+          <property name="minimumSize">
            <size>
             <width>32</width>
             <height>32</height>
            </size>
           </property>
-          <property name="maximumSize" >
+          <property name="maximumSize">
            <size>
             <width>32</width>
             <height>32</height>
            </size>
           </property>
-          <property name="toolTip" >
+          <property name="toolTip">
            <string>Imprimir Stocks Actuales</string>
           </property>
-          <property name="whatsThis" >
+          <property name="whatsThis">
            <string>Imprimir Stocks Actuales</string>
           </property>
-          <property name="text" >
+          <property name="text">
            <string/>
           </property>
-          <property name="icon" >
-           <iconset resource="../../../bulmages.qrc" >
+          <property name="icon">
+           <iconset resource="../../../bulmages.qrc">
             <normaloff>:/Images/view-refresh.svg</normaloff>:/Images/view-refresh.svg</iconset>
           </property>
-          <property name="iconSize" >
+          <property name="iconSize">
            <size>
             <width>32</width>
             <height>32</height>
@@ -246,13 +250,13 @@
         </item>
         <item>
          <spacer>
-          <property name="orientation" >
+          <property name="orientation">
            <enum>Qt::Horizontal</enum>
           </property>
-          <property name="sizeType" >
+          <property name="sizeType">
            <enum>QSizePolicy::Expanding</enum>
           </property>
-          <property name="sizeHint" stdset="0" >
+          <property name="sizeHint" stdset="0">
            <size>
             <width>351</width>
             <height>34</height>
@@ -266,18 +270,18 @@
     </layout>
    </item>
    <item>
-    <widget class="QLabel" name="pixmapLabel1" >
-     <property name="scaledContents" >
+    <widget class="QLabel" name="pixmapLabel1">
+     <property name="scaledContents">
       <bool>true</bool>
      </property>
     </widget>
    </item>
    <item>
-    <widget class="InventariosSubForm" name="mui_listado" />
+    <widget class="InventariosSubForm" name="mui_listado"/>
    </item>
   </layout>
  </widget>
- <layoutdefault spacing="2" margin="2" />
+ <layoutdefault spacing="2" margin="2"/>
  <customwidgets>
   <customwidget>
    <class>InventariosSubForm</class>
@@ -286,7 +290,7 @@
   </customwidget>
  </customwidgets>
  <resources>
-  <include location="../../../bulmages.qrc" />
+  <include location="../../../bulmages.qrc"/>
  </resources>
  <connections/>
 </ui>

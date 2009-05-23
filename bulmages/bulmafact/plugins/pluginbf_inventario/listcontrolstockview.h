@@ -38,7 +38,6 @@ public:
     ListControlStockView ( QWidget *parent = 0, const char *name = 0 );
     ~ListControlStockView();
     virtual int borrar();
-//    virtual void cargar ( int );
     virtual int guardar();
     virtual void pregenerar();
 };

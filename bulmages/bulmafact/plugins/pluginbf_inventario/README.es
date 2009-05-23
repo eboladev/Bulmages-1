@@ -4,7 +4,7 @@
 #README.es
 #20080501
 
-Nombre: Gestión de Inventarios.
+Nombre: Inventarios.
 
 Biblioteca: libpluginbf_inventario.so
 
