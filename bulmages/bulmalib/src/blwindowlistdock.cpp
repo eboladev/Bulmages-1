@@ -94,10 +94,22 @@ void BlListWidgetItem::setNombre ( QString m )
 {
     _depura ( "BlListWidgetItem::setNombre", 0 );
     m_nombre = m;
-    setText ( m );
+//    setText ( m );
     _depura ( "END BlListWidgetItem::setNombre", 0 );
 }
 
+
+///
+/**
+\param m
+**/
+void BlListWidgetItem::setTitulo ( QString titulo )
+{
+    _depura ( "BlListWidgetItem::setTitulo", 0 );
+    m_titulo = titulo;
+    setText ( titulo );
+    _depura ( "END BlListWidgetItem::setTitulo", 0 );
+}
 
 ///
 /**
@@ -273,10 +285,16 @@ void BlWindowListDock::vaciarCompleto()
 \param compdup
 \return
 **/
-int BlWindowListDock::meteWindow ( QString nombre, QObject *obj, bool compdup )
+int BlWindowListDock::meteWindow ( QString nombre, QObject *obj, bool compdup, QString titulo )
 {
     _depura ( "BlWindowListDock::meteWindow", 0, nombre );
     try {
+
+
+	/// Comprobamos que haya un titulo y de no ser el caso se pone como titulo el nombre
+	if (titulo == "") 
+	  titulo = nombre;
+
         int i = 0;
         while ( i < m_listBox->count() ) {
             BlListWidgetItem * m = ( BlListWidgetItem * ) m_listBox->item ( i );
@@ -284,6 +302,7 @@ int BlWindowListDock::meteWindow ( QString nombre, QObject *obj, bool compdup )
             if ( m->object() == obj ) {
                 _depura ( "END BlWindowListDock::meteWindow", 0, "Ya existe" + nombre );
                 m->setNombre ( nombre );
+		m->setTitulo ( titulo );
                 return 0;
             } // end if
 
@@ -302,6 +321,7 @@ int BlWindowListDock::meteWindow ( QString nombre, QObject *obj, bool compdup )
             BlListWidgetItem *m = new BlListWidgetItem ( m_listBox, icon );
             m->setObject ( obj );
             m->setNombre ( nombre );
+	    m->setTitulo ( titulo );
         } // end if
     } catch ( ... ) {
         _depura ( "END BlWindowListDock::meteWindow", 0, " ventana duplicada" );

@@ -411,11 +411,11 @@ int BlForm::sacaWindow()
 \param obj
 \param compdup
 **/
-void BlForm::meteWindow ( QString nom, QObject *obj, bool compdup )
+void BlForm::meteWindow ( QString nom, QObject *obj, bool compdup, QString titulo )
 {
     _depura ( "BlForm::meteWindow", 0 );
     if ( mainCompany() != NULL ) {
-        mainCompany() ->meteWindow ( nom, obj, compdup );
+        mainCompany() ->meteWindow ( nom, obj, compdup, titulo );
     } // end if
 
     /// De Forma rapida hacemos un tratamiento de los permisos
@@ -666,7 +666,23 @@ int BlForm::cargar ( QString id, bool paint )
         /// Lanzamos los plugins.
         if ( g_plugins->lanza ( "BlForm_cargar", this ) ) return 0;
         cargarPost ( id );
-        setWindowTitle ( m_title + " " + dbValue ( m_campoid ) );
+
+
+	/// Buscamos un titulo adecuado segun los valores que contenga la tabla.
+	QString wtitle = m_title + " ";
+	if (exists("num" + m_tablename)) {
+	  wtitle = wtitle + "[" + dbValue ( "num" + m_tablename) + "]";
+	} else	if ( exists ("ref" + m_tablename)) {
+	  wtitle = wtitle + "["+ dbValue ("ref" + m_tablename) + "]";
+	} else if ( exists ( "cod" + m_tablename)) {
+	  wtitle = wtitle + "[" + dbValue ( "cod" + m_tablename) + "]";
+	} else if ( exists ( "nom" + m_tablename)) {
+	  wtitle = wtitle + "[" +  dbValue( "nom" + m_tablename) + "]";
+	} else {
+	  wtitle = wtitle + dbValue ( m_campoid );
+	} // end if
+
+        setWindowTitle ( wtitle );
         /// Activamos documentos adicionales
         activaDocumentos();
 
@@ -675,7 +691,7 @@ int BlForm::cargar ( QString id, bool paint )
         } // end if
 
         dialogChanges_cargaInicial();
-        meteWindow ( windowTitle(), this );
+        meteWindow ( m_title + dbValue(m_campoid), this, TRUE, wtitle );
     } catch ( ... ) {
         _depura ( "END BlForm::cargar", 0, "Error en la carga" );
         return -1;

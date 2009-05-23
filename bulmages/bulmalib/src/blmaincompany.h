@@ -56,7 +56,7 @@ public:
     BlWorkspace *pWorkspace();
     void setWorkspace ( BlWorkspace *qw );
     void setProgressBar ( QProgressBar *pb );
-    int meteWindow ( QString nom, QObject *obj, bool compdup = TRUE );
+    int meteWindow ( QString nom, QObject *obj, bool compdup = TRUE, QString titulo = "" );
     int seleccionaWindow ( QString nom, QObject *obj );
     int deSeleccionaWindow();
     void sacaWindow ( QObject *nom );

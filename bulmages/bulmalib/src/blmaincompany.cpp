@@ -92,11 +92,11 @@ void BlMainCompany::setProgressBar ( QProgressBar *pb )
 \param compdup
 \return
 **/
-int BlMainCompany::meteWindow ( QString nom, QObject *obj, bool compdup )
+int BlMainCompany::meteWindow ( QString nom, QObject *obj, bool compdup, QString titulo )
 {
     _depura ( "BlMainCompany::meteWindow", 0 );
     _depura ( "END BlMainCompany::meteWindow", 0 );
-    return m_listventanas->meteWindow ( nom, obj, compdup );
+    return m_listventanas->meteWindow ( nom, obj, compdup, titulo );
 }
 
 

@@ -44,6 +44,7 @@ class BL_EXPORT BlListWidgetItem : public QListWidgetItem
 private:
     QObject *m_obj;
     QString m_nombre;
+    QString m_titulo;
     BlListWidget *m_list;
 
 public:
@@ -51,6 +52,7 @@ public:
     ~BlListWidgetItem();
     void setObject ( QObject *m );
     void setNombre ( QString m );
+    void setTitulo (QString titulo);
     QObject *object();
     QString nombre();
 };
@@ -72,7 +74,7 @@ public:
     ~BlWindowListDock();
 
 public:
-    int meteWindow ( QString, QObject *, bool compdup = TRUE );
+    int meteWindow ( QString, QObject *, bool compdup = TRUE, QString titulo="" );
     int seleccionaWindow ( QString, QObject * );
     int deSeleccionaWindow();
     void sacaWindow ( QObject * );
