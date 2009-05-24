@@ -20,6 +20,8 @@ Dependencias: libpluginbt_ivaincluido.so
 
 Incompatibles:
 
+Categorias: Experimentales;IVA incluido;
+
 Orden: 4
 
 Comentarios: Ideal para bares, cafeterías y restaurantes.

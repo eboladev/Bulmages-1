@@ -22,7 +22,7 @@ Dependencias:
 
 Incompatibles:
 
-Categorias: Facturacion avanzada; Experimentales;
+Categorias: Experimentales;IVA incluido;
 
 Orden: 610
 

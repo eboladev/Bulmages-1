@@ -23,4 +23,7 @@ Incompatibles:
 
 Orden:
 
+Categorias: Experimentales;IVA incluido;
+
+
 Comentarios: Ideal para meter los codigos de barras como alias y poder tickarlos.

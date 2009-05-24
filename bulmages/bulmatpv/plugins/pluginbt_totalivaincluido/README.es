@@ -22,4 +22,7 @@ Incompatibles: libpluginbt_total.so
 
 Orden:
 
+Categorias: Experimentales;IVA incluido;
+
+
 Comentarios: Ideal para Bares, Cafeterias y Restaurantes.
