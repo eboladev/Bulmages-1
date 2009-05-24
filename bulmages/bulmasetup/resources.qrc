@@ -24,5 +24,7 @@
 	<file>trash_user_postgresql.svg</file>
 	<file>manage_company.svg</file>
 	<file>trash_company.svg</file>
+	<file>backup_database.svg</file>
+	<file>restore_database.svg</file>
     </qresource>
 </RCC>

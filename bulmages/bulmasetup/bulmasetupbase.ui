@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>732</width>
+    <width>778</width>
     <height>400</height>
    </rect>
   </property>
@@ -283,11 +283,11 @@ p, li { white-space: pre-wrap; }
             <enum>Qt::LeftToRight</enum>
            </property>
            <property name="text">
-            <string>Restaurar una Copia de Seguridad</string>
+            <string>Restaurar copia de seguridad</string>
            </property>
            <property name="icon">
             <iconset resource="resources.qrc">
-             <normaloff>:/images/bulmasetup_cargarempresa.xpm</normaloff>:/images/bulmasetup_cargarempresa.xpm</iconset>
+             <normaloff>:/images/restore_database.svg</normaloff>:/images/restore_database.svg</iconset>
            </property>
            <property name="iconSize">
             <size>

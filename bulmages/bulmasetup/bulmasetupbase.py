@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'bulmasetupbase.ui'
 #
-# Created: Sun May 24 14:08:27 2009
+# Created: Sun May 24 22:15:58 2009
 #      by: PyQt4 UI code generator 4.4.4
 #
 # WARNING! All changes made in this file will be lost!
@@ -12,7 +12,7 @@ from PyQt4 import QtCore, QtGui
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
-        MainWindow.resize(732, 400)
+        MainWindow.resize(778, 400)
         MainWindow.setMinimumSize(QtCore.QSize(732, 400))
         icon = QtGui.QIcon()
         icon.addPixmap(QtGui.QPixmap(":/images/iglues.org.svg"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
@@ -121,7 +121,7 @@ class Ui_MainWindow(object):
         self.mui_restbackup.setFocusPolicy(QtCore.Qt.NoFocus)
         self.mui_restbackup.setLayoutDirection(QtCore.Qt.LeftToRight)
         icon8 = QtGui.QIcon()
-        icon8.addPixmap(QtGui.QPixmap(":/images/bulmasetup_cargarempresa.xpm"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        icon8.addPixmap(QtGui.QPixmap(":/images/restore_database.svg"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         self.mui_restbackup.setIcon(icon8)
         self.mui_restbackup.setIconSize(QtCore.QSize(32, 32))
         self.mui_restbackup.setObjectName("mui_restbackup")
@@ -166,7 +166,7 @@ class Ui_MainWindow(object):
         self.mui_crearbulmafact.setText(QtGui.QApplication.translate("MainWindow", "Nueva Empresa de Facturación / TPV", None, QtGui.QApplication.UnicodeUTF8))
         self.mui_adminempresas.setText(QtGui.QApplication.translate("MainWindow", "Administrar Empresas Existentes", None, QtGui.QApplication.UnicodeUTF8))
         self.eliminar_empresa.setText(QtGui.QApplication.translate("MainWindow", "Eliminar Empresas Existentes", None, QtGui.QApplication.UnicodeUTF8))
-        self.mui_restbackup.setText(QtGui.QApplication.translate("MainWindow", "Restaurar una Copia de Seguridad", None, QtGui.QApplication.UnicodeUTF8))
+        self.mui_restbackup.setText(QtGui.QApplication.translate("MainWindow", "Restaurar copia de seguridad", None, QtGui.QApplication.UnicodeUTF8))
         self.mui_salir.setText(QtGui.QApplication.translate("MainWindow", "Salir", None, QtGui.QApplication.UnicodeUTF8))
 
 import resources_rc

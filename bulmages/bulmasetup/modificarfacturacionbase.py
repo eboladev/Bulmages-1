@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'modificarfacturacionbase.ui'
 #
-# Created: Sat May 16 20:43:56 2009
+# Created: Sun May 24 22:18:47 2009
 #      by: PyQt4 UI code generator 4.4.4
 #
 # WARNING! All changes made in this file will be lost!
@@ -12,7 +12,7 @@ from PyQt4 import QtCore, QtGui
 class Ui_ModificarFacturacionBase(object):
     def setupUi(self, ModificarFacturacionBase):
         ModificarFacturacionBase.setObjectName("ModificarFacturacionBase")
-        ModificarFacturacionBase.resize(1009, 608)
+        ModificarFacturacionBase.resize(932, 477)
         sizePolicy = QtGui.QSizePolicy(QtGui.QSizePolicy.Preferred, QtGui.QSizePolicy.Preferred)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
@@ -178,7 +178,7 @@ class Ui_ModificarFacturacionBase(object):
         self.horizontalLayout_3.addWidget(self.mui_permisos)
         self.mui_hacerbackup = QtGui.QPushButton(ModificarFacturacionBase)
         icon5 = QtGui.QIcon()
-        icon5.addPixmap(QtGui.QPixmap(":/images/bulmasetup_save.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        icon5.addPixmap(QtGui.QPixmap(":/images/backup_database.svg"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         self.mui_hacerbackup.setIcon(icon5)
         self.mui_hacerbackup.setObjectName("mui_hacerbackup")
         self.horizontalLayout_3.addWidget(self.mui_hacerbackup)

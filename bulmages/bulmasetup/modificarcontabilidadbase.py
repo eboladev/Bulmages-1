@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'modificarcontabilidadbase.ui'
 #
-# Created: Thu May 14 23:24:22 2009
+# Created: Sun May 24 22:19:45 2009
 #      by: PyQt4 UI code generator 4.4.4
 #
 # WARNING! All changes made in this file will be lost!
@@ -151,7 +151,7 @@ class Ui_ModificarContabilidadBase(object):
         self.horizontalLayout_3.addWidget(self.mui_permisos)
         self.mui_hacerbackup = QtGui.QPushButton(ModificarContabilidadBase)
         icon4 = QtGui.QIcon()
-        icon4.addPixmap(QtGui.QPixmap(":/images/bulmasetup_save.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        icon4.addPixmap(QtGui.QPixmap(":/images/backup_database.svg"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         self.mui_hacerbackup.setIcon(icon4)
         self.mui_hacerbackup.setObjectName("mui_hacerbackup")
         self.horizontalLayout_3.addWidget(self.mui_hacerbackup)
