@@ -19,5 +19,10 @@
         <file>iconbulmacont.svg</file>
         <file>iconbulmatpv.svg</file>
         <file>terminal.png</file>
+	<file>add_user_postgresql.svg</file>
+	<file>edit_user_postgresql.svg</file>
+	<file>trash_user_postgresql.svg</file>
+	<file>manage_company.svg</file>
+	<file>trash_company.svg</file>
     </qresource>
 </RCC>
