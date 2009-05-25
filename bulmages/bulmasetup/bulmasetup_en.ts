@@ -1,19 +1,80 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS><TS version="1.1">
 <context>
+    <name>EditarUsuario</name>
+    <message>
+        <location filename="editarusuariobase.py" line="83"/>
+        <source>Editar Usuario</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="editarusuariobase.py" line="84"/>
+        <source>Super Usuario</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="editarusuariobase.py" line="85"/>
+        <source>Cambiar Password</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="editarusuariobase.py" line="86"/>
+        <source>Aplicar</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="editarusuariobase.py" line="87"/>
+        <source>Salir</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>EliminarEmpresa</name>
+    <message>
+        <location filename="eliminarempresabase.py" line="76"/>
+        <source>Eliminar Empresa</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="eliminarempresabase.py" line="77"/>
+        <source>Doble clic en la Empresa que deseas eliminar</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="eliminarempresabase.py" line="78"/>
+        <source>Nombre</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="eliminarempresabase.py" line="79"/>
+        <source>Base de Datos</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="eliminarempresabase.py" line="80"/>
+        <source>Tipo</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="eliminarempresabase.py" line="81"/>
+        <source>Salir</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>EliminarUsuario</name>
     <message>
-        <location filename="eliminarusuariobase.ui" line="31"/>
+        <location filename="eliminarusuariobase.py" line="64"/>
         <source>Eliminar Usuario</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="eliminarusuariobase.ui" line="76"/>
+        <location filename="eliminarusuariobase.py" line="65"/>
         <source>Eliminar</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="eliminarusuariobase.ui" line="87"/>
+        <location filename="eliminarusuariobase.py" line="66"/>
         <source>Salir</source>
         <translation type="unfinished"></translation>
     </message>
@@ -21,42 +82,42 @@
 <context>
     <name>ListEmpresasBase</name>
     <message>
-        <location filename="listempresasbase.ui" line="26"/>
+        <location filename="listempresasbase.py" line="88"/>
         <source>Listado de Empresas</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="listempresasbase.ui" line="99"/>
+        <location filename="listempresasbase.py" line="89"/>
         <source>Nombre</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="listempresasbase.ui" line="104"/>
+        <location filename="listempresasbase.py" line="90"/>
         <source>Base de Datos</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="listempresasbase.ui" line="109"/>
+        <location filename="listempresasbase.py" line="91"/>
         <source>Tipo</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="listempresasbase.ui" line="114"/>
+        <location filename="listempresasbase.py" line="92"/>
         <source>Version</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="listempresasbase.ui" line="44"/>
+        <location filename="listempresasbase.py" line="93"/>
         <source>Listado Empresas</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="listempresasbase.ui" line="127"/>
+        <location filename="listempresasbase.py" line="94"/>
         <source>Consola</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="listempresasbase.ui" line="144"/>
+        <location filename="listempresasbase.py" line="95"/>
         <source>Cerrar</source>
         <translation type="unfinished"></translation>
     </message>
@@ -64,37 +125,32 @@
 <context>
     <name>MainWindow</name>
     <message>
-        <location filename="bulmasetupbase.ui" line="26"/>
+        <location filename="bulmasetupbase.py" line="151"/>
         <source>BulmaSetup</source>
         <translation type="unfinished"></translation>
     </message>
     <message encoding="UTF-8">
-        <location filename="bulmasetupbase.ui" line="65"/>
+        <location filename="bulmasetupbase.py" line="159"/>
         <source>Gestión de Usuarios</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="bulmasetupbase.ui" line="77"/>
+        <location filename="bulmasetupbase.py" line="160"/>
         <source>Nuevos Usuario de PostgreSQL</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="bulmasetupbase.ui" line="100"/>
+        <location filename="bulmasetupbase.py" line="161"/>
         <source>Editar Usuarios de PostgreSQL</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="bulmasetupbase.ui" line="123"/>
-        <source>Eliminar Usuario de PostgreSQL</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="bulmasetupbase.ui" line="146"/>
+        <location filename="bulmasetupbase.py" line="162"/>
         <source>Modificar Permisos de PostgreSQL</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="bulmasetupbase.ui" line="166"/>
+        <location filename="bulmasetupbase.py" line="158"/>
         <source>&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
 p, li { white-space: pre-wrap; }
 &lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;Sans Serif&apos;; font-size:9pt; font-weight:400; font-style:normal; text-decoration:none;&quot;&gt;
@@ -105,125 +161,135 @@ p, li { white-space: pre-wrap; }
         <translation type="unfinished"></translation>
     </message>
     <message encoding="UTF-8">
-        <location filename="bulmasetupbase.ui" line="182"/>
+        <location filename="bulmasetupbase.py" line="164"/>
         <source>Gestión de Empresas</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="bulmasetupbase.ui" line="194"/>
+        <location filename="bulmasetupbase.py" line="165"/>
         <source>Nueva Empresa de Contabilidad</source>
         <translation type="unfinished"></translation>
     </message>
     <message encoding="UTF-8">
-        <location filename="bulmasetupbase.ui" line="217"/>
+        <location filename="bulmasetupbase.py" line="166"/>
         <source>Nueva Empresa de Facturación / TPV</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="bulmasetupbase.ui" line="240"/>
+        <location filename="bulmasetupbase.py" line="167"/>
         <source>Administrar Empresas Existentes</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="bulmasetupbase.ui" line="263"/>
-        <source>Restaurar una Copia de Seguridad</source>
+        <location filename="bulmasetupbase.py" line="170"/>
+        <source>Salir</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="bulmasetupbase.ui" line="298"/>
-        <source>Salir</source>
+        <location filename="bulmasetupbase.py" line="163"/>
+        <source>Eliminar Usuarios de PostgreSQL</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="bulmasetupbase.py" line="168"/>
+        <source>Eliminar Empresas Existentes</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="bulmasetupbase.py" line="169"/>
+        <source>Restaurar copia de seguridad</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
     <name>ModificarContabilidadBase</name>
     <message>
-        <location filename="modificarcontabilidadbase.ui" line="26"/>
+        <location filename="modificarcontabilidadbase.py" line="176"/>
         <source>Contabilidad</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="modificarcontabilidadbase.ui" line="42"/>
+        <location filename="modificarcontabilidadbase.py" line="177"/>
         <source>Nombre Empresa</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="modificarcontabilidadbase.ui" line="67"/>
+        <location filename="modificarcontabilidadbase.py" line="189"/>
         <source>..</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="modificarcontabilidadbase.ui" line="83"/>
+        <location filename="modificarcontabilidadbase.py" line="178"/>
         <source>Nombre Base de Datos</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="modificarcontabilidadbase.ui" line="100"/>
+        <location filename="modificarcontabilidadbase.py" line="179"/>
         <source>Actualizar Base de Datos</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="modificarcontabilidadbase.ui" line="110"/>
+        <location filename="modificarcontabilidadbase.py" line="180"/>
         <source>Version de la Base de Datos</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="modificarcontabilidadbase.ui" line="124"/>
+        <location filename="modificarcontabilidadbase.py" line="181"/>
         <source>Opciones de Filtrado de Plugins</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="modificarcontabilidadbase.ui" line="136"/>
+        <location filename="modificarcontabilidadbase.py" line="182"/>
         <source>Mostrar todos los plugins o solo los instalados</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="modificarcontabilidadbase.ui" line="161"/>
+        <location filename="modificarcontabilidadbase.py" line="183"/>
         <source>Categoria </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="modificarcontabilidadbase.ui" line="209"/>
+        <location filename="modificarcontabilidadbase.py" line="184"/>
         <source>Plugin</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="modificarcontabilidadbase.ui" line="214"/>
+        <location filename="modificarcontabilidadbase.py" line="185"/>
         <source>Descripcion</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="modificarcontabilidadbase.ui" line="219"/>
+        <location filename="modificarcontabilidadbase.py" line="186"/>
         <source>Version Instalada</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="modificarcontabilidadbase.ui" line="187"/>
+        <location filename="modificarcontabilidadbase.py" line="187"/>
         <source>Plugins BulmaCont</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="modificarcontabilidadbase.ui" line="232"/>
+        <location filename="modificarcontabilidadbase.py" line="188"/>
         <source>Consola</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="modificarcontabilidadbase.ui" line="245"/>
+        <location filename="modificarcontabilidadbase.py" line="190"/>
         <source>Aplicar cambios</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="modificarcontabilidadbase.ui" line="256"/>
+        <location filename="modificarcontabilidadbase.py" line="192"/>
         <source>Hacer copia de seguridad</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="modificarcontabilidadbase.ui" line="267"/>
+        <location filename="modificarcontabilidadbase.py" line="193"/>
         <source>Cerrar</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="modificarcontabilidadbase.ui" line="278"/>
+        <location filename="modificarcontabilidadbase.py" line="191"/>
         <source>Administrar Permisos</source>
         <translation type="unfinished"></translation>
     </message>
@@ -231,102 +297,102 @@ p, li { white-space: pre-wrap; }
 <context>
     <name>ModificarFacturacionBase</name>
     <message>
-        <location filename="modificarfacturacionbase.ui" line="26"/>
+        <location filename="modificarfacturacionbase.py" line="204"/>
         <source>Nueva Facturacion</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="modificarfacturacionbase.ui" line="42"/>
+        <location filename="modificarfacturacionbase.py" line="205"/>
         <source>Nombre Empresa</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="modificarfacturacionbase.ui" line="67"/>
+        <location filename="modificarfacturacionbase.py" line="222"/>
         <source>..</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="modificarfacturacionbase.ui" line="83"/>
+        <location filename="modificarfacturacionbase.py" line="206"/>
         <source>Nombre Base de Datos</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="modificarfacturacionbase.ui" line="100"/>
+        <location filename="modificarfacturacionbase.py" line="207"/>
         <source>Actualizar Base de Datos</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="modificarfacturacionbase.ui" line="110"/>
+        <location filename="modificarfacturacionbase.py" line="208"/>
         <source>Version de la Base de Datos</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="modificarfacturacionbase.ui" line="124"/>
+        <location filename="modificarfacturacionbase.py" line="209"/>
         <source>Instalar Soporte para TPV en esta empresa</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="modificarfacturacionbase.ui" line="134"/>
+        <location filename="modificarfacturacionbase.py" line="210"/>
         <source>Opciones de Filtrado de Plugins</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="modificarfacturacionbase.ui" line="146"/>
+        <location filename="modificarfacturacionbase.py" line="212"/>
         <source>Mostrar todos los plugins o solo los instalados</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="modificarfacturacionbase.ui" line="171"/>
+        <location filename="modificarfacturacionbase.py" line="211"/>
         <source>Categoria </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="modificarfacturacionbase.ui" line="264"/>
+        <location filename="modificarfacturacionbase.py" line="217"/>
         <source>Plugin</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="modificarfacturacionbase.ui" line="269"/>
+        <location filename="modificarfacturacionbase.py" line="218"/>
         <source>Descripcion</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="modificarfacturacionbase.ui" line="274"/>
+        <location filename="modificarfacturacionbase.py" line="219"/>
         <source>Version Instalada</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="modificarfacturacionbase.ui" line="197"/>
+        <location filename="modificarfacturacionbase.py" line="216"/>
         <source>Plugins BulmaFact</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="modificarfacturacionbase.ui" line="242"/>
+        <location filename="modificarfacturacionbase.py" line="220"/>
         <source>Plugins BulmaTPV</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="modificarfacturacionbase.ui" line="287"/>
+        <location filename="modificarfacturacionbase.py" line="221"/>
         <source>Consola</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="modificarfacturacionbase.ui" line="306"/>
+        <location filename="modificarfacturacionbase.py" line="223"/>
         <source>Aplicar cambios</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="modificarfacturacionbase.ui" line="317"/>
+        <location filename="modificarfacturacionbase.py" line="226"/>
         <source>Cerrar</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="modificarfacturacionbase.ui" line="334"/>
+        <location filename="modificarfacturacionbase.py" line="224"/>
         <source>Administrar Permisos</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="modificarfacturacionbase.ui" line="345"/>
+        <location filename="modificarfacturacionbase.py" line="225"/>
         <source>Hacer copia de seguridad</source>
         <translation type="unfinished"></translation>
     </message>
@@ -334,145 +400,180 @@ p, li { white-space: pre-wrap; }
 <context>
     <name>ModificarUsuario</name>
     <message>
-        <location filename="modificarusuariobase.ui" line="13"/>
+        <location filename="modificarusuariobase.py" line="345"/>
         <source>Modificar Permisos de Usuario</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="modificarusuariobase.ui" line="39"/>
+        <location filename="modificarusuariobase.py" line="347"/>
         <source>Selecciona una Base de Datos</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="modificarusuariobase.ui" line="52"/>
+        <location filename="modificarusuariobase.py" line="348"/>
         <source>Selecciona un Usuario</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="modificarusuariobase.ui" line="27"/>
+        <location filename="modificarusuariobase.py" line="349"/>
         <source>Usuario / Base de Datos</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="modificarusuariobase.ui" line="84"/>
+        <location filename="modificarusuariobase.py" line="350"/>
         <source>Selecciona  la(s) Tabla(s) donde deseas asignar los permisos</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="modificarusuariobase.ui" line="103"/>
+        <location filename="modificarusuariobase.py" line="372"/>
         <source>Permisos</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="modificarusuariobase.ui" line="115"/>
-        <source>Selecciona permisos para la Base de Datos</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="modificarusuariobase.ui" line="129"/>
+        <location filename="modificarusuariobase.py" line="378"/>
         <source>GRANT ALL</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="modificarusuariobase.ui" line="142"/>
+        <location filename="modificarusuariobase.py" line="377"/>
         <source>REVOKE ALL</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="modificarusuariobase.ui" line="149"/>
+        <location filename="modificarusuariobase.py" line="355"/>
         <source>CREATE</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="modificarusuariobase.ui" line="156"/>
+        <location filename="modificarusuariobase.py" line="356"/>
         <source>TEMPORARY</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="modificarusuariobase.ui" line="169"/>
-        <source>Permisos para la tabla / tablas</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="modificarusuariobase.ui" line="176"/>
+        <location filename="modificarusuariobase.py" line="373"/>
         <source>SELECT</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="modificarusuariobase.ui" line="183"/>
+        <location filename="modificarusuariobase.py" line="359"/>
         <source>INSERT</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="modificarusuariobase.ui" line="190"/>
+        <location filename="modificarusuariobase.py" line="374"/>
         <source>UPDATE</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="modificarusuariobase.ui" line="197"/>
+        <location filename="modificarusuariobase.py" line="361"/>
         <source>DELETE</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="modificarusuariobase.ui" line="204"/>
+        <location filename="modificarusuariobase.py" line="362"/>
         <source>TRIGGER</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="modificarusuariobase.ui" line="211"/>
+        <location filename="modificarusuariobase.py" line="363"/>
         <source>REFERENCES</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="modificarusuariobase.ui" line="225"/>
+        <location filename="modificarusuariobase.py" line="375"/>
         <source>SELECCIONAR TODOS</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="modificarusuariobase.ui" line="245"/>
+        <location filename="modificarusuariobase.py" line="376"/>
         <source>Asignar Permisos</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="modificarusuariobase.ui" line="296"/>
+        <location filename="modificarusuariobase.py" line="368"/>
         <source>Seleccionar todas las tablas</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="modificarusuariobase.ui" line="322"/>
+        <location filename="modificarusuariobase.py" line="369"/>
         <source>Deseleccionar todas las tablas</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="modificarusuariobase.ui" line="345"/>
+        <location filename="modificarusuariobase.py" line="384"/>
         <source>Consola</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="modificarusuariobase.ui" line="379"/>
+        <location filename="modificarusuariobase.py" line="346"/>
         <source>Salir</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="modificarusuariobase.py" line="352"/>
+        <source>Selecciona permisos para la BD</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="modificarusuariobase.py" line="357"/>
+        <source>Permisos para la(s) tabla(s)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="modificarusuariobase.py" line="370"/>
+        <source>Permisos de Tablas</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="modificarusuariobase.py" line="371"/>
+        <source>Selecciona  la(s) Secuencia(s) donde deseas asignar los permisos</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="modificarusuariobase.py" line="379"/>
+        <source>Selecciona permisos</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="modificarusuariobase.py" line="380"/>
+        <source>USAGE</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="modificarusuariobase.py" line="381"/>
+        <source>Seleccionar todas</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="modificarusuariobase.py" line="382"/>
+        <source>Deseleccionar todas</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="modificarusuariobase.py" line="383"/>
+        <source>Permisos de Secuencias</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
     <name>NuevoUsuario</name>
     <message>
-        <location filename="nuevousuariobase.ui" line="28"/>
+        <location filename="nuevousuariobase.py" line="67"/>
         <source>Nuevo Usuario</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="nuevousuariobase.ui" line="40"/>
+        <location filename="nuevousuariobase.py" line="68"/>
         <source>Nombre</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="nuevousuariobase.ui" line="53"/>
+        <location filename="nuevousuariobase.py" line="69"/>
         <source>Password</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="nuevousuariobase.ui" line="77"/>
+        <location filename="nuevousuariobase.py" line="70"/>
         <source>Super Usuario</source>
         <translation type="unfinished"></translation>
     </message>
@@ -480,32 +581,32 @@ p, li { white-space: pre-wrap; }
 <context>
     <name>RestBackupBase</name>
     <message>
-        <location filename="restbackupbase.ui" line="25"/>
+        <location filename="restbackupbase.py" line="55"/>
         <source>Restaurar Backup</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="restbackupbase.ui" line="35"/>
+        <location filename="restbackupbase.py" line="56"/>
         <source>Base de Datos a crear</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="restbackupbase.ui" line="48"/>
+        <location filename="restbackupbase.py" line="57"/>
         <source>Archivo a Restaurar</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="restbackupbase.ui" line="58"/>
+        <location filename="restbackupbase.py" line="58"/>
         <source>...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="restbackupbase.ui" line="65"/>
+        <location filename="restbackupbase.py" line="59"/>
         <source>Aceptar</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="restbackupbase.ui" line="72"/>
+        <location filename="restbackupbase.py" line="60"/>
         <source>Cancelar</source>
         <translation type="unfinished"></translation>
     </message>
