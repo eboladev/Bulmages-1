@@ -234,7 +234,7 @@ BEGIN
             idfaltaasistenciaalumnoactividad SERIAL PRIMARY KEY,
             idactividad INTEGER REFERENCES actividad(idactividad),
             idalumno INTEGER REFERENCES alumno(idalumno),
-            cantidadfaltaasistenciaalumnoactividad INTEGER DEFAULT 0
+            fechafaltaasistenciaalumnoactividad DATE NOT NULL DEFAULT now()
         );
     END IF;
 
