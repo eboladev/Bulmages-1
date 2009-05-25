@@ -5,34 +5,35 @@ import os
 from PyQt4.QtGui import *
 from PyQt4.QtCore import *
 from nuevousuariobase import *
+from empresa import Empresa
+from config import *
+import psycopg2
 
-class NuevoUsuario(QtGui.QDialog, Ui_NuevoUsuario):
+class NuevoUsuario(Ui_NuevoUsuario, Empresa):
 
     def __init__(self, parent = None):
-        QtGui.QDialog.__init__(self,parent)
+        Empresa.__init__(self,parent)
 	self.setupUi(self)
-	self.process = QtCore.QProcess()	
+	self.proceso = QtCore.QProcess()	
 	
     def on_mui_botonera_accepted(self):
 	# Creamos el usuario
-        self.flag = ""
         
         if (self.mui_superusuario.isChecked()):
-            self.flag = " -s"
+            self.execComando("su postgres -c \"createuser -s -d -r  \'" + self.mui_nombre.text() + "\'\"")
         else:
-            self.flag = " -S"
-           
-	self.command = 'su postgres -c "createuser' + str(self.flag) + ' -d -r  \'' + self.mui_nombre.text().replace('\\','\\\\').replace('\'','\\\'') +'\'"'
-	self.process.start(self.command)
-	self.process.waitForFinished(-1)
-
+            self.execComando("su postgres -c \"createuser -S -d -r  \'" + self.mui_nombre.text() + "\'\"")
+            
 	# Cambiamos el password del usuario
-	self.subcomand = 'ALTER USER "' +self.mui_nombre.text().replace('"','""')+ '" WITH PASSWORD E\'' +self.mui_password.text().replace('\\','\\\\').replace('\'','\\\'') +'\' ;'
-	self.command = 'su postgres -c \'' + ('psql template1 -c \"' +self.subcomand.replace('\\','\\\\').replace('`','\\`').replace('$','\\$').replace('\n','\\\n').replace('"','\\"')+ '\"' ).replace('\'','\'"\'"\'')+'\''
-        os.system(self.command.toAscii().data())
-	
-	self.accept()
-
+        self.execComando("psql template1 -c \"ALTER ROLE " + self.mui_nombre.text() + " WITH PASSWORD '" + self.mui_password.text() + "'\"")
+        
+        # Y como ya hemos acabado, cerramos la aplicacion.
+        self.accept()
+        
+    def execComando(self, command):
+        self.proceso.start(command)
+        self.proceso.waitForFinished(-1)
+        
 def main(args):
     app=QtGui.QApplication(args)
     win=NuevoUsuario()
