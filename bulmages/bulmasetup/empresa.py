@@ -24,13 +24,13 @@ class Empresa(QtGui.QDialog, PluginsBulmaSetup):
         Si no existe, saltara un QMessageBox preguntando si se quiere crear el usuario ROOT."""
         
         try:
-            conn = psycopg2.connect("dbname='template1' user='root'")
+            conn = psycopg2.connect("dbname='template1' user='root' password='password'")
             conn.close()
         except:
             Yes = 'Si'
             No = 'No'
             message = QtGui.QMessageBox(self)
-            message.setText('Desea agregar el usuario <b>root</b> a PostgreSQL? \n \n Este usuario es necesario para poder administrar PostgreSQL.')
+            message.setText('Desea agregar el usuario <b>root</b> a PostgreSQL? \n \n Este usuario es necesario para poder administrar PostgreSQL. La contraseá de este usuario sera \'password\'. Borre este usuario al terminar la configuracion.')
             message.setWindowTitle('Atencion!')
             message.setIcon(QtGui.QMessageBox.Warning)
             message.addButton(Yes, QtGui.QMessageBox.AcceptRole)
@@ -41,13 +41,14 @@ class Empresa(QtGui.QDialog, PluginsBulmaSetup):
                 comandoroot = "su postgres -c \"createuser -s root\""
                 self.process.start(comandoroot)
                 self.process.waitForFinished(-1)
+		self.execQuerySinConsola ("ALTER USER ROOT WITH password 'password'")
             else:
                 print "Para poder modificar los permisos de las bases de datos es necesario agregar el usuario ROOT a PostgreSQL"
                 print "Cerrando la aplicacion"
                 sys.exit()
                 
         try:
-            conn = psycopg2.connect("dbname='template1' user='root'")
+            conn = psycopg2.connect("dbname='template1' user='root' password='password'")
         except:
             print "Error"
             sys.exit()
@@ -62,7 +63,7 @@ class Empresa(QtGui.QDialog, PluginsBulmaSetup):
 
     def conectar(self, db):
         try:
-            self.conn = psycopg2.connect("dbname='" + db + "' user='root'")
+            self.conn = psycopg2.connect("dbname='" + db + "' user='root'" + "password='password'")
         except:
             print "Error en la conexion con la base de datos " + db
             sys.exit()
@@ -112,6 +113,16 @@ class Empresa(QtGui.QDialog, PluginsBulmaSetup):
             return QString(self.process.readAllStandardOutput())
         return QString('')
    
+    def execQuerySinConsola(self, query):
+        if (self.database != ''):
+            self.subcomand = query
+            self.guardaQuery(self.subcomand)
+            self.command = 'su postgres -c \"psql -t -f /tmp/query.sql template1\"'
+            self.process.start(self.command)
+            self.process.waitForFinished(-1)
+        return QString('')
+
+
     def readOutput(self):
         self.mui_textBrowser.append(QString(self.process.readAllStandardOutput()))
 
