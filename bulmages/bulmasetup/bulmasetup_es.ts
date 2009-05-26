@@ -248,12 +248,12 @@ p, li { white-space: pre-wrap; }&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot;
     <message>
         <location filename="modificarcontabilidadbase.py" line="181"/>
         <source>Opciones de Filtrado de Plugins</source>
-        <translation>Opciones de filtrado de &lt;i&gt;plug-ins&lt;/i&gt;</translation>
+        <translation>Opciones de filtrado de plug-ins</translation>
     </message>
     <message>
         <location filename="modificarcontabilidadbase.py" line="182"/>
         <source>Mostrar todos los plugins o solo los instalados</source>
-        <translation>Mostrar todos los &lt;i&gt;plug-ins&lt;/i&gt; o solamente los instalados</translation>
+        <translation>Mostrar todos los plug-ins o solamente los instalados</translation>
     </message>
     <message>
         <location filename="modificarcontabilidadbase.py" line="183"/>
@@ -278,7 +278,7 @@ p, li { white-space: pre-wrap; }&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot;
     <message>
         <location filename="modificarcontabilidadbase.py" line="187"/>
         <source>Plugins BulmaCont</source>
-        <translation>&lt;i&gt;Plug-in&lt;/i&gt; de BulmaCont</translation>
+        <translation>Plug-in de BulmaCont</translation>
     </message>
     <message>
         <location filename="modificarcontabilidadbase.py" line="188"/>
@@ -346,7 +346,7 @@ p, li { white-space: pre-wrap; }&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot;
     <message>
         <location filename="modificarfacturacionbase.py" line="210"/>
         <source>Opciones de Filtrado de Plugins</source>
-        <translation>Opciones de filtrado de &lt;i&gt;plug-in&lt;/i&gt;</translation>
+        <translation>Opciones de filtrado de plug-in</translation>
     </message>
     <message>
         <location filename="modificarfacturacionbase.py" line="212"/>
@@ -376,12 +376,12 @@ p, li { white-space: pre-wrap; }&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot;
     <message>
         <location filename="modificarfacturacionbase.py" line="216"/>
         <source>Plugins BulmaFact</source>
-        <translation>&lt;i&gt;Plug-in&lt;/i&gt; para BulmaFact</translation>
+        <translation>Plug-ins para BulmaFact</translation>
     </message>
     <message>
         <location filename="modificarfacturacionbase.py" line="220"/>
         <source>Plugins BulmaTPV</source>
-        <translation>&lt;i&gt;Plug-in&lt;/i&gt; para BulmaTPV</translation>
+        <translation>Plug-ins para BulmaTPV</translation>
     </message>
     <message>
         <location filename="modificarfacturacionbase.py" line="221"/>
