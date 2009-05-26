@@ -79,6 +79,16 @@
         <translation type="unfinished"></translation>
     </message>
 </context>
+<context encoding="UTF-8">
+    <name>Empresa</name>
+    <message encoding="UTF-8">
+        <location filename="empresa.py" line="33"/>
+        <source>Desea agregar el usuario &lt;b&gt;root&lt;/b&gt; a PostgreSQL? 
+ 
+ Este usuario es necesario para poder administrar PostgreSQL. La contraseá de este usuario sera &apos;password&apos;. Borre este usuario al terminar la configuracion.</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
 <context>
     <name>ListEmpresasBase</name>
     <message>
