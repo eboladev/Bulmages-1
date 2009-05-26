@@ -51,27 +51,27 @@ public:
 
 inline QString BlArgParser::DbName()
 {
-   return( m_dbName );
+   return m_dbName;
 }
 
 inline QString BlArgParser::Host()
 {
-      return( m_host );
+      return m_host;
 }
 
 inline QString BlArgParser::Port()
 {
-      return( m_port );
+      return m_port;
 }
 
 inline QString BlArgParser::UserName()
 {
-      return( m_userName );
+      return m_userName;
 }
 
 inline bool BlArgParser::AskPassword()
 {
-   return( m_askPassword );
+   return m_askPassword;
 }
 
 #endif // BLARGPARSER_H

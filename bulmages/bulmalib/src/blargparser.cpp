@@ -119,7 +119,7 @@ bool BlArgParser::ShowVersion()
 {
    if( m_showVersion || m_showHelp ) {
       QTextStream(stdout)
-            <<" "<<CONFIG_VERSION<<endl;
+            <<m_executable<<" "<<CONFIG_VERSION<<endl;
    }
 
    return( m_showVersion );
