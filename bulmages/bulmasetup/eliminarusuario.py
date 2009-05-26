@@ -35,17 +35,13 @@ class EliminarUsuario(Ui_EliminarUsuario, Empresa):
         
         Yes = 'Si'
         No = 'No'
-        respuesta = False
-        
         message = QtGui.QMessageBox(self)
         message.setText('Seguro que deseas eliminar el usuario ?')
         message.setWindowTitle('Confirmacion')
         message.setIcon(QtGui.QMessageBox.Question)
         message.addButton(Yes, QtGui.QMessageBox.AcceptRole)
         message.addButton(No, QtGui.QMessageBox.RejectRole)
-        
         message.exec_()
-        
         respuesta = message.clickedButton().text()
         
         if respuesta == Yes:

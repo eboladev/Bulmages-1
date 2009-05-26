@@ -22,6 +22,7 @@ class Facturacion(Ui_ModificarFacturacionBase, Empresa):
 
       # Hacemos un Show y así el padre recupera el control.
       self.show()
+
       self.inicializar()
 
    def inicializar(self):
@@ -194,7 +195,7 @@ class Facturacion(Ui_ModificarFacturacionBase, Empresa):
                   if (self.nuevo == 1):
                     self.nuevo = 0
                     self.out << "CONF_PLUGINS_BULMATPV   "
-                  self.writecommand('Ha que actualizar ' + self.pluginsbulmatpv[self.i][0])
+                  self.writecommand('Hay que actualizar ' + self.pluginsbulmatpv[self.i][0])
 		  # Si hay que aplicar un plugin entonces lo escribimos
 		  if (self.pluginsbulmatpv[self.i][1] != 'None' and len(self.pluginsbulmatpv[self.i][1]) > 3):
 		    self.writecommand('Hay que actualizar ' + self.pluginsbulmatpv[self.i][0])
@@ -230,68 +231,106 @@ class Facturacion(Ui_ModificarFacturacionBase, Empresa):
       for self.it in self.pluginsbulmatpv:
          if (self.pluginsbulmatpv[self.j][1] == plug):
 	    if ( self.mui_plugins1.item(self.j,0).checkState() == Qt.Checked):
-	       #print "Este plugin entra en conflicto con otros"
+	       print "Este plugin entra en conflicto con otros"
 	       self.mui_plugins1.item(self.j,0).setCheckState(Qt.Unchecked)
          self.j = self.j + 1
       self.j = 0
       for self.it in self.pluginsbulmafact:
          if (self.pluginsbulmafact[self.j][1] == plug):
 	    if ( self.mui_plugins.item(self.j,0).checkState() == Qt.Checked):
-	       #print "Este plugin entra en conflicto con otros"
+	       print "Este plugin entra en conflicto con otros"
 	       self.mui_plugins.item(self.j,0).setCheckState(Qt.Unchecked)
          self.j = self.j + 1
-
-   def on_mui_plugins_cellClicked(self, row, col):
+         
+   def on_mui_plugins_cellPressed(self, row, col):
+      self.estado = self.mui_plugins.item(row,0).checkState()
       # Escribimos la descripcion
       self.mui_descripcion.setText(self.mui_plugins.item(row,1).text() + "<b>" + self.pluginsbulmafact[row][1] + "</b><br>"+ self.pluginsbulmafact[row][3] + "<br>" + self.pluginsbulmafact[row][4] + "<br><b>Categorias:</b> " + self.pluginsbulmafact[row][8]+ "<br>" + self.pluginsbulmafact[row][9] + "<br><b>Dependencias:</b> " + self.pluginsbulmafact[row][5] + "<br><br><b>Incompatibilidades:</b> " + self.pluginsbulmafact[row][6])
+     
+   def on_mui_plugins_cellClicked(self, row, col):       
 
-      if (self.semaforo == 1):
-         # Marcamos las dependencias
-         self.i = 0
-         while (self.i < self.mui_plugins.rowCount()):
-            if (self.mui_plugins.item(self.i, 0).checkState() == Qt.Checked):
-               self.arr = self.pluginsbulmafact[self.i][5].replace(' ;',';').replace('; ',';').split(QString(";"))
-               # Comprobamos que la lista de dependencias del plugin no este vacia
-               if self.arr != ['']:
-                for self.dep in self.arr:
-                    self.marcar(self.dep)
-            self.i = self.i +1
-         # Desmarcamos las incompatibilidades
-         self.i = 0
-         while (self.i < self.mui_plugins.rowCount()):
-            if (self.mui_plugins.item(self.i, 0).checkState() == Qt.Checked):
-               self.arr = self.pluginsbulmafact[self.i][6].replace(' ;',';').replace('; ',';').split(QString(";"))
-                # Comprobamos que la lista de incompatibilidades del plugin no este vacia y lanzamos un mensaje de confirmacion.
-               if self.arr != ['']:
-                for self.dep in self.arr:
-                    self.desmarcar(self.dep)
-            self.i = self.i +1
-
-   def on_mui_plugins1_cellClicked(self, row, col):
+    if (self.semaforo == 1):
+        if (self.estado != self.mui_plugins.item(row,0).checkState()):
+            # Marcamos las dependencias
+            #self.i = 0
+            #while (self.i < self.mui_plugins.rowCount()):
+            if (self.mui_plugins.item(row, 0).checkState() == Qt.Checked):
+                self.arr = self.pluginsbulmafact[row][5].replace(' ;',';').replace('; ',';').split(QString(";"))
+                if self.arr != ['']:
+                    Yes = 'Si'
+                    No = 'No'
+                    message = QtGui.QMessageBox(self)
+                    message.setText('El plugin <b>' +str(self.pluginsbulmafact[row][1] + "</b> tiene dependencias. Quieres instalarlas?"))
+                    message.setWindowTitle('Atencion!')
+                    message.setIcon(QtGui.QMessageBox.Warning)
+                    message.addButton(Yes, QtGui.QMessageBox.AcceptRole)
+                    message.addButton(No, QtGui.QMessageBox.RejectRole)
+                    message.exec_()
+                    respuesta = message.clickedButton().text()
+                    if respuesta == Yes:
+                        for self.dep in self.arr:
+                            self.marcar(self.dep)
+                #self.i = self.i +1
+            # Desmarcamos las incompatibilidades
+            if (self.mui_plugins.item(row, 0).checkState() == Qt.Checked):
+                self.arr = self.pluginsbulmafact[row][6].replace(' ;',';').replace('; ',';').split(QString(";"))
+                if self.arr != ['']:
+                    Yes = 'Si'
+                    No = 'No'
+                    message = QtGui.QMessageBox(self)
+                    message.setText('El plugin <b>' +str(self.pluginsbulmafact[row][1] + "</b> tiene incompatibilidades. Quieres desinstalarlas?"))
+                    message.setWindowTitle('Atencion!')
+                    message.setIcon(QtGui.QMessageBox.Warning)
+                    message.addButton(Yes, QtGui.QMessageBox.AcceptRole)
+                    message.addButton(No, QtGui.QMessageBox.RejectRole)
+                    message.exec_()
+                    respuesta = message.clickedButton().text()
+                    if respuesta == Yes:
+                        for self.dep in self.arr:
+                            self.desmarcar(self.dep)
+                            
+   def on_mui_plugins1_cellPressed(self, row, col):
+      self.estado = self.mui_plugins1.item(row,0).checkState()
       # Escribimos la descripcion
       self.mui_descripcion.setText(self.mui_plugins1.item(row,1).text() + "<b>" + self.pluginsbulmatpv[row][1] + "</b><br>"+ self.pluginsbulmatpv[row][3] + "<br>" + self.pluginsbulmatpv[row][4] + "<br><b>Categorias:</b> " + self.pluginsbulmatpv[row][8]+ "<br>" + self.pluginsbulmatpv[row][9] + "<br><b>Dependencias:</b> " + self.pluginsbulmatpv[row][5] + "<br><br><b>Incompatibilidades:</b> " + self.pluginsbulmatpv[row][6])
       
+   def on_mui_plugins1_cellClicked(self, row, col):
       if (self.semaforo == 1):
-         # Marcamos las dependencias
-         self.i = 0
-         while (self.i < self.mui_plugins1.rowCount()):
-            if (self.mui_plugins1.item(self.i, 0).checkState() == Qt.Checked):
-               self.arr = self.pluginsbulmatpv[self.i][5].replace(' ;',';').replace('; ',';').split(QString(";"))
-                # Comprobamos que la lista de dependencias del plugin no este vacia
-               if self.arr != ['']:
-                for self.dep in self.arr:
-                    self.marcar(self.dep)
-            self.i = self.i +1
-         # Desmarcamos las incompatibilidades
-         self.i = 0
-         while (self.i < self.mui_plugins1.rowCount()):
-            if (self.mui_plugins1.item(self.i, 0).checkState() == Qt.Checked):
-               self.arr = self.pluginsbulmatpv[self.i][6].replace(' ;',';').replace('; ',';').split(QString(";"))
-                # Comprobamos que la lista de incompatibilidades del plugin no este vacia y lanzamos un mensaje de confirmacion.
-               if self.arr != ['']:
-                for self.dep in self.arr:
-                    self.desmarcar(self.dep)
-            self.i = self.i +1
+        if (self.estado != self.mui_plugins1.item(row,0).checkState()):
+            # Marcamos las dependencias
+            if (self.mui_plugins1.item(row, 0).checkState() == Qt.Checked):
+                self.arr = self.pluginsbulmatpv[row][5].replace(' ;',';').replace('; ',';').split(QString(";"))
+                if self.arr != ['']:
+                    Yes = 'Si'
+                    No = 'No'
+                    message = QtGui.QMessageBox(self)
+                    message.setText('El plugin <b>' +str(self.pluginsbulmatpv[row][1] + "</b> tiene dependencias. Quieres instalarlas?"))
+                    message.setWindowTitle('Atencion!')
+                    message.setIcon(QtGui.QMessageBox.Warning)
+                    message.addButton(Yes, QtGui.QMessageBox.AcceptRole)
+                    message.addButton(No, QtGui.QMessageBox.RejectRole)
+                    message.exec_()
+                    respuesta = message.clickedButton().text()
+                    if respuesta == Yes:
+                        for self.dep in self.arr:
+                            self.marcar(self.dep)
+            # Desmarcamos las incompatibilidades
+            if (self.mui_plugins1.item(row, 0).checkState() == Qt.Checked):
+                self.arr = self.pluginsbulmatpv[row][6].replace(' ;',';').replace('; ',';').split(QString(";"))
+                if self.arr != ['']:
+                    Yes = 'Si'
+                    No = 'No'
+                    message = QtGui.QMessageBox(self)
+                    message.setText('El plugin <b>' +str(self.pluginsbulmatpv[row][1] + "</b> tiene incompatibilidades. Quieres desinstalarlas?"))
+                    message.setWindowTitle('Atencion!')
+                    message.setIcon(QtGui.QMessageBox.Warning)
+                    message.addButton(Yes, QtGui.QMessageBox.AcceptRole)
+                    message.addButton(No, QtGui.QMessageBox.RejectRole)
+                    message.exec_()
+                    respuesta = message.clickedButton().text()
+                    if respuesta == Yes:
+                        for self.dep in self.arr:
+                            self.desmarcar(self.dep)
             
    def actualizarPlugins(self):
       self.writecommand('ACTUALIZANDO PLUGINS')

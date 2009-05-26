@@ -27,8 +27,17 @@ class Empresa(QtGui.QDialog, PluginsBulmaSetup):
             conn = psycopg2.connect("dbname='template1' user='root'")
             conn.close()
         except:
-            reply = QtGui.QMessageBox.question(self, 'Atencion!', "Desea agregar el usuario <b>root</b> a PostgreSQL?\n\nEste usuario es necesario para poder administrar los permisos.", QtGui.QMessageBox.Yes, QtGui.QMessageBox.No)
-            if reply == QtGui.QMessageBox.Yes:
+            Yes = 'Si'
+            No = 'No'
+            message = QtGui.QMessageBox(self)
+            message.setText('Desea agregar el usuario <b>root</b> a PostgreSQL? \n \n Este usuario es necesario para poder administrar PostgreSQL.')
+            message.setWindowTitle('Atencion!')
+            message.setIcon(QtGui.QMessageBox.Warning)
+            message.addButton(Yes, QtGui.QMessageBox.AcceptRole)
+            message.addButton(No, QtGui.QMessageBox.RejectRole)
+            message.exec_()
+            respuesta = message.clickedButton().text()
+            if respuesta == Yes:
                 comandoroot = "su postgres -c \"createuser -s root\""
                 self.process.start(comandoroot)
                 self.process.waitForFinished(-1)
