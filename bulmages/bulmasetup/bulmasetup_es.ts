@@ -1,31 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS><TS version="1.1" language="es">
+<defaultcodec></defaultcodec>
 <context>
     <name>EditarUsuario</name>
     <message>
         <location filename="editarusuariobase.py" line="83"/>
         <source>Editar Usuario</source>
-        <translation type="unfinished"></translation>
+        <translation>Editar usuario</translation>
     </message>
     <message>
         <location filename="editarusuariobase.py" line="84"/>
         <source>Super Usuario</source>
-        <translation type="unfinished">Superusuario (administrador)</translation>
+        <translation>Superusuario (administrador)</translation>
     </message>
     <message>
         <location filename="editarusuariobase.py" line="85"/>
         <source>Cambiar Password</source>
-        <translation type="unfinished"></translation>
+        <translation>Cambiar contraseña</translation>
     </message>
     <message>
         <location filename="editarusuariobase.py" line="86"/>
         <source>Aplicar</source>
-        <translation type="unfinished"></translation>
+        <translation>Aplicar</translation>
     </message>
     <message>
         <location filename="editarusuariobase.py" line="87"/>
         <source>Salir</source>
-        <translation type="unfinished">Salir</translation>
+        <translation>Salir</translation>
     </message>
 </context>
 <context>
@@ -33,32 +34,32 @@
     <message>
         <location filename="eliminarempresabase.py" line="76"/>
         <source>Eliminar Empresa</source>
-        <translation type="unfinished"></translation>
+        <translation>Eliminar empresa</translation>
     </message>
     <message>
         <location filename="eliminarempresabase.py" line="77"/>
         <source>Doble clic en la Empresa que deseas eliminar</source>
-        <translation type="unfinished"></translation>
+        <translation>Haz doble clic en la empresa que deseas eliminar</translation>
     </message>
     <message>
         <location filename="eliminarempresabase.py" line="78"/>
         <source>Nombre</source>
-        <translation type="unfinished">Nombre</translation>
+        <translation>Nombre</translation>
     </message>
     <message>
         <location filename="eliminarempresabase.py" line="79"/>
         <source>Base de Datos</source>
-        <translation type="unfinished">Base de datos</translation>
+        <translation>Base de datos</translation>
     </message>
     <message>
         <location filename="eliminarempresabase.py" line="80"/>
         <source>Tipo</source>
-        <translation type="unfinished">Tipo</translation>
+        <translation>Tipo</translation>
     </message>
     <message>
         <location filename="eliminarempresabase.py" line="81"/>
         <source>Salir</source>
-        <translation type="unfinished">Salir</translation>
+        <translation>Salir</translation>
     </message>
 </context>
 <context>
@@ -199,17 +200,17 @@ p, li { white-space: pre-wrap; }&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot;
     <message>
         <location filename="bulmasetupbase.py" line="163"/>
         <source>Eliminar Usuarios de PostgreSQL</source>
-        <translation type="unfinished"></translation>
+        <translation>Eliminar usuario/s de PostgreSQL</translation>
     </message>
     <message>
         <location filename="bulmasetupbase.py" line="168"/>
         <source>Eliminar Empresas Existentes</source>
-        <translation type="unfinished"></translation>
+        <translation>Eliminar empresas existentes</translation>
     </message>
     <message>
         <location filename="bulmasetupbase.py" line="169"/>
         <source>Restaurar copia de seguridad</source>
-        <translation type="unfinished"></translation>
+        <translation>Restaurar copia/s de seguridad</translation>
     </message>
 </context>
 <context>
@@ -533,47 +534,47 @@ p, li { white-space: pre-wrap; }&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot;
     <message>
         <location filename="modificarusuariobase.py" line="352"/>
         <source>Selecciona permisos para la BD</source>
-        <translation type="unfinished"></translation>
+        <translation>Selecciona permisos para la BB.DD.</translation>
     </message>
     <message>
         <location filename="modificarusuariobase.py" line="357"/>
         <source>Permisos para la(s) tabla(s)</source>
-        <translation type="unfinished"></translation>
+        <translation>Permisos para la/s tabla/s</translation>
     </message>
     <message>
         <location filename="modificarusuariobase.py" line="370"/>
         <source>Permisos de Tablas</source>
-        <translation type="unfinished"></translation>
+        <translation>Permisos para la/s tabla/s</translation>
     </message>
     <message>
         <location filename="modificarusuariobase.py" line="371"/>
         <source>Selecciona  la(s) Secuencia(s) donde deseas asignar los permisos</source>
-        <translation type="unfinished"></translation>
+        <translation>Selecciona  la/s secuencia/s donde deseas asignar los permisos</translation>
     </message>
     <message>
         <location filename="modificarusuariobase.py" line="379"/>
         <source>Selecciona permisos</source>
-        <translation type="unfinished"></translation>
+        <translation>Selecciona los permisos</translation>
     </message>
     <message>
         <location filename="modificarusuariobase.py" line="380"/>
         <source>USAGE</source>
-        <translation type="unfinished"></translation>
+        <translation>USAGE</translation>
     </message>
     <message>
         <location filename="modificarusuariobase.py" line="381"/>
         <source>Seleccionar todas</source>
-        <translation type="unfinished"></translation>
+        <translation>Seleccionar todas</translation>
     </message>
     <message>
         <location filename="modificarusuariobase.py" line="382"/>
         <source>Deseleccionar todas</source>
-        <translation type="unfinished"></translation>
+        <translation>Deseleccionar todas</translation>
     </message>
     <message>
         <location filename="modificarusuariobase.py" line="383"/>
         <source>Permisos de Secuencias</source>
-        <translation type="unfinished"></translation>
+        <translation>Permisos de secuencias</translation>
     </message>
 </context>
 <context>

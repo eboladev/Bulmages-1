@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: bulmages_suite_es_ES.UTF-8\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
 "POT-Creation-Date: 2009-05-17 21:30+0200\n"
-"PO-Revision-Date: 2009-05-20 00:24+0200\n"
-"Last-Translator: Xavi Drudis Ferran\n"
+"PO-Revision-Date: 2009-05-26 14:43+0200\n"
+"Last-Translator: Raul Martinez i Peris\n"
 "Language-Team: American English <kde-i18n-doc@kde.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -60,7 +60,7 @@ msgstr "% R.E."
 
 #: listlinfacturapview.cpp:56
 msgid "% Recargo"
-msgstr "% Recargo"
+msgstr "% Recargo E."
 
 #: listlinpresupuestoview.cpp:54 listlinfacturaview.cpp:55
 #: listlinpedidoclienteview.cpp:54 bfclientealbaransubform.cpp:53
@@ -146,7 +146,7 @@ msgstr "&Amortizaciones"
 
 #: ui_proveditbase.h:797
 msgid "&Aplicar Recargo de Equivalencia."
-msgstr "&Aplicar Recargo de equivalencia."
+msgstr "&Aplicar recargo de equivalencia."
 
 #: pluginbf_articulo.cpp:125
 msgid "&Articulos"
@@ -162,7 +162,7 @@ msgstr "&Balance jerárquico"
 
 #: ui_bcbulmacontbase.h:372
 msgid "&Bloquear fechas/Crear ejercicio"
-msgstr "&Bloquear fechas/Crear ejercicio"
+msgstr "&Bloquear fechas/crear ejercicio"
 
 #: blcountryview.cpp:225 bccanalview.cpp:213 bccentrocosteview.cpp:267
 msgid "&Borrar"
@@ -606,7 +606,7 @@ msgstr "&Plantilla:"
 
 #: pluginbc_example.cpp:84
 msgid "&Plugin"
-msgstr "<I>&Plug-in</I>"
+msgstr "&Plug-in"
 
 #: pluginbf_clientepresupuesto.cpp:100
 msgid "&Presupuestos a clientes"
@@ -630,11 +630,11 @@ msgstr "&Proyectos"
 
 #: pluginbf_example.cpp:89
 msgid "&Prueba de plugin"
-msgstr "&Prueba de <I>plug-in</I>"
+msgstr "&Prueba de plug-in"
 
 #: pluginbc_example.cpp:85
 msgid "&Prueba de plugin BcBulmaCont"
-msgstr "&Prueba de <I>plugin</I> <B>BcBulmaCont</B>"
+msgstr "&Prueba de plugin BulmaCont"
 
 #: ui_bcbulmacontbase.h:370
 msgid "&Recalcular saldos iniciales"
@@ -1648,11 +1648,11 @@ msgstr "Activa/desactiva el modo de depuración"
 
 #: ui_articleeditbase.h:619
 msgid "Activar el &control de stock."
-msgstr "Activar el &control de <i>stock</i>."
+msgstr "Activar el &control de stock"
 
 #: ui_articleeditbase.h:617
 msgid "Activar el control de stock para este articulo."
-msgstr "Activar el control de <i>stock</i> para este artículo."
+msgstr "Activar el control de stock para este artículo."
 
 #: actividadview.cpp:52
 msgid "Actividad"
@@ -2811,7 +2811,7 @@ msgstr "Cargando subformulario "
 
 #: main.cxx:168 main.cxx:159 main.cxx:161
 msgid "Cargando plugins"
-msgstr "Cargando <i>plug-ins</i>"
+msgstr "Cargando plug-ins"
 
 #: ui_bccuentabase.h:816
 msgid "Cargar Asiento"
@@ -4211,7 +4211,7 @@ msgstr "Dirección:"
 
 #: articulolisttpv.cpp:249 articulolist.cpp:377
 msgid "Disponible en stock"
-msgstr "Disponible en <i>stock</i>"
+msgstr "Disponible en stock"
 
 #: pluginbl_embed.cpp:135 pluginbl_embed.cpp:136
 msgid "Dockear Aplicacion"
@@ -4247,7 +4247,7 @@ msgstr "E-&mail:"
 
 #: alumnoview.cpp:61
 msgid "E-Mail"
-msgstr ""
+msgstr "Correo-E:"
 
 #: bccuentaview.cpp:63
 msgid "E-Mail de la cuenta"
@@ -4280,19 +4280,19 @@ msgstr "ERROR: Debe introducir una fecha en el balance anterior."
 
 #: datosview.cpp:85
 msgid "ERROR: Debe introducir una fecha final del balance actual."
-msgstr ""
+msgstr "ERROR: Debe introducir una fecha final del balance actual."
 
 #: datosview.cpp:94
 msgid "ERROR: Debe introducir una fecha final del balance anterior."
-msgstr ""
+msgstr "ERROR: Debe introducir una fecha final del balance anterior."
 
 #: datosview.cpp:81
 msgid "ERROR: Debe introducir una fecha inicial del balance actual."
-msgstr ""
+msgstr "ERROR: Debe introducir una fecha inicial del balance actual."
 
 #: datosview.cpp:90
 msgid "ERROR: Debe introducir una fecha inicial del balance anterior."
-msgstr ""
+msgstr "ERROR: Debe introducir una fecha inicial del balance anterior."
 
 #: pluginbc_cuentasanuales2ods.cpp:372 pluginbc_cuentasanuales2ods.cpp:597
 #: pluginbc_caaslods.cpp:332
@@ -4301,7 +4301,7 @@ msgstr "ERROR: Función no implementada todavía."
 
 #: datosview.cpp:116
 msgid "ERROR: Ha habido un error generando el informe"
-msgstr ""
+msgstr "ERROR: Ha habido un error generando el informe."
 
 #: pluginbc_cuentasanuales2ods.cpp:390
 msgid "ERROR: No se ha podido crear el archivo"
@@ -4877,7 +4877,7 @@ msgstr "Error inesperado"
 
 #: main.cxx:190
 msgid "Error inesperado en BulmaCont, el programa se cerrara."
-msgstr ""
+msgstr "Error inesperado en BulmaCont, el programa se cerrará."
 
 #: main.cxx:188
 msgid "Error inesperado en BulmaFact. El programa se cerrara."
@@ -4889,7 +4889,7 @@ msgstr "Error inesperado en BulmaTPV. El programa se cerrará."
 
 #: blsubform.cpp:1886
 msgid "Error inesperado en el guardado. [BlSubForm::guardar]"
-msgstr ""
+msgstr "ERROR: Debe introducir una fecha final del balance anterior."
 
 #: compraventaview.cpp:715 bfform.cpp:943
 msgid "Error inesperado en la impresion"
@@ -4957,19 +4957,19 @@ msgstr "Estado de la incidencia:"
 
 #: pluginbf_abrereferencia.cpp:36
 msgid "Estoy dentro del plugin de Abertura de Referencia"
-msgstr "Estoy dentro del <i>plug-in</i> de Apertura de referencia"
+msgstr "Estoy dentro del plug-in de apertura de referencia"
 
 #: ui_profesorbase.h:487
 msgid "Estudios"
-msgstr ""
+msgstr "Estudios:"
 
 #: profesorview.cpp:66
 msgid "Estudios del profesor"
-msgstr ""
+msgstr "Estudios del profesor:"
 
 #: ui_profesorbase.h:486
 msgid "Estudios:"
-msgstr ""
+msgstr "Estudios:"
 
 #: q19writer.cpp:236
 #, qt-format
@@ -5109,7 +5109,7 @@ msgstr "Extracto de cuentas"
 
 #: alumnoslist.cpp:280
 msgid "F. Nacimiento"
-msgstr ""
+msgstr "Fecha de nacimiento"
 
 #: ui_bfbulmafactbase.h:161 ui_bcbulmacontbase.h:380
 msgid "F1"
@@ -5302,11 +5302,11 @@ msgstr "Fecha final"
 
 #: datosview.cpp:41
 msgid "Fecha Final Actual"
-msgstr ""
+msgstr "Fecha final actual"
 
 #: datosview.cpp:43
 msgid "Fecha Final Anterior"
-msgstr ""
+msgstr "Fecha final anterior"
 
 #: actividadview.cpp:61 actividadeslist.cpp:296 ui_actividadbase.h:442
 #: ui_balanceprintbase.h:307 ui_balancesprintdlg.h:199 ui_cobropagobase.h:399
@@ -5317,15 +5317,15 @@ msgstr "Fecha inicial"
 
 #: datosview.cpp:40
 msgid "Fecha Inicial Actual"
-msgstr ""
+msgstr "Fecha inicial actual"
 
 #: datosview.cpp:42
 msgid "Fecha Inicial Anterior"
-msgstr ""
+msgstr "Fecha inicial anterior"
 
 #: alumnoview.cpp:62
 msgid "Fecha Nacimiento"
-msgstr ""
+msgstr "Fecha de nacimiento"
 
 #: albaranproveedorview.cpp:59 compraventaview.cpp:68
 msgid "Fecha albaran proveedor"
@@ -5475,7 +5475,7 @@ msgstr "Fecha final ausencia"
 
 #: ui_datosbase.h:150 ui_datosbase.h:155
 msgid "Fecha final del balance:"
-msgstr ""
+msgstr "Fecha final del balance:"
 
 #: bccompany.cpp:776
 msgid "Fecha final ejercicio:"
@@ -5512,7 +5512,7 @@ msgstr "Fecha inicial ausencia"
 
 #: ui_datosbase.h:149 ui_datosbase.h:154
 msgid "Fecha inicial del balance:"
-msgstr ""
+msgstr "Fecha inicial del balance:"
 
 #: bccompany.cpp:767
 msgid "Fecha inicial ejercicio:"
@@ -5546,7 +5546,7 @@ msgstr "Fecha inventario"
 
 #: ui_alumnobase.h:520
 msgid "Fecha nacimiento:"
-msgstr ""
+msgstr "Fecha de nacimiento:"
 
 #: pedidosproveedorlist.cpp:315 pedidoproveedorview.cpp:58
 msgid "Fecha pedido proveedor"
@@ -5820,7 +5820,7 @@ msgstr "Generando informe"
 
 #: genalbpqtoolbutton.cpp:75 genalbpqtoolbutton.cpp:76
 msgid "Generar Albaran Proveedor"
-msgstr ""
+msgstr "Generar albarán de proveedor"
 
 #: ui_cobropagobase.h:362 ui_cobropagobase.h:365
 msgid "Generar Asiento"
@@ -5852,7 +5852,7 @@ msgstr "Gestión de cobros y pagos"
 
 #: ui_aboutfapacbase.h:152
 msgid "Girona"
-msgstr ""
+msgstr "Girona"
 
 #: ui_balancebase.h:441
 msgid "GroupBox"
@@ -5902,7 +5902,7 @@ msgstr "Guardar tipo de artículo"
 
 #: ui_actividadbase.h:412 ui_actividadbase.h:415
 msgid "Guardar actividad"
-msgstr ""
+msgstr "Guardar actividad"
 
 #: ui_albaranproveedorbase.h:572 ui_albaranproveedorbase.h:575
 #: ui_albaranclientebase.h:700 ui_albaranclientebase.h:703
@@ -6815,7 +6815,7 @@ msgstr "Imprimir listado"
 #: ui_inventariosbase.h:186 ui_inventariosbase.h:189 ui_inventariosbase.h:193
 #: ui_inventariosbase.h:196
 msgid "Imprimir Stocks Actuales"
-msgstr "Imprimir <i>stocks</i> actuales"
+msgstr "Imprimir stocks actuales"
 
 #: ticketqtoolbutton.cpp:80 ticketqtoolbutton.cpp:81 ticketqtoolbutton.cpp:65
 #: ticketqtoolbutton.cpp:66
@@ -6824,7 +6824,7 @@ msgstr "Imprimir ticket"
 
 #: ui_actividadbase.h:428 ui_actividadbase.h:431
 msgid "Imprimir actividad"
-msgstr ""
+msgstr "Imprimir actividad"
 
 #: ui_albaranclientebase.h:714 ui_albaranclientebase.h:717
 #: ui_compraventabase.h:836 ui_compraventabase.h:839 ui_balancetreebase.h:385
@@ -6913,7 +6913,7 @@ msgstr "Imputación"
 
 #: ui_familiasbase.h:363
 msgid "Imputacion Contable"
-msgstr ""
+msgstr "Imputación contable"
 
 #: articuloview.cpp:73
 msgid "Inactivo"
@@ -6941,7 +6941,7 @@ msgstr "Incluir &niveles superiores."
 
 #: articuloview.cpp:67
 msgid "Incluir en control de stock"
-msgstr "Incluir en control de <i>stock</i>"
+msgstr "Incluir en control de stock"
 
 #: articuloview.cpp:66
 msgid "Incluir en presentaciones"
@@ -7141,7 +7141,7 @@ msgstr "Lanzador BulmaGes"
 
 #: main.cxx:174 main.cxx:165 main.cxx:167
 msgid "Lanzando plugins"
-msgstr "Lanzando <i>plug-ins</i>"
+msgstr "Lanzando plug-ins"
 
 #: main.cxx:137 main.cxx:129 main.cxx:131
 msgid "Leyendo configuracion"
@@ -7245,7 +7245,7 @@ msgstr "Listo."
 
 #: ui_aboutfapacbase.h:153
 msgid "Lleida"
-msgstr ""
+msgstr "Lleida"
 
 #: bcmodelo300imprimir2ps.cpp:156
 msgid ""
@@ -7256,8 +7256,8 @@ msgid ""
 msgstr ""
 "Lo siento, no encuentro el formulario original en pdf.\n"
 "Pruebe a descargarlo desde www.aeat.es y guárdelo en\n"
-"<b>/usr/share/bulmages/formularios/</b> o en\n"
-"<b>~/.bulmages/formularios/</b>"
+"/usr/share/bulmages/formularios/ o en\n"
+"~/.bulmages/formularios/"
 
 #: movimientosview.cpp:181
 msgid "Lote"
@@ -7471,11 +7471,11 @@ msgstr "Motivo"
 
 #: alumnoview.cpp:59
 msgid "Movil"
-msgstr ""
+msgstr "Móvil"
 
 #: profesorview.cpp:63
 msgid "Movil del profesor"
-msgstr ""
+msgstr "Móvil del profesor"
 
 #: ui_movimientosbase.h:265
 msgid "Movimientos"
@@ -7487,7 +7487,7 @@ msgstr "Muestra que es esto"
 
 #: pluginbf_example.cpp:90 pluginbc_example.cpp:86
 msgid "Muestra statustip"
-msgstr "Muestra <i>status</i>"
+msgstr "Muestra status"
 
 #: pluginbc_corrector.cpp:74
 msgid "Muestra/oculta el corrector"
@@ -7499,7 +7499,7 @@ msgstr "Muestra/oculta el resumen de cuenta"
 
 #: alumnoview.cpp:57 alumnoslist.cpp:279
 msgid "Municipio"
-msgstr ""
+msgstr "Municipio"
 
 #: ui_facturabase.h:725
 msgid "N&umero de factura:"
@@ -8345,7 +8345,7 @@ msgstr "Ocultar panel"
 
 #: ui_bcextractobase.h:647
 msgid "Ocultar aperturas y cierres"
-msgstr ""
+msgstr "Ocultar aperturas y cierres"
 
 #: blfunctions.cpp:530
 msgid "Omitir &clase"
@@ -8637,11 +8637,11 @@ msgstr "Período a declarar"
 
 #: ui_datosbase.h:148
 msgid "Periodo actual:"
-msgstr ""
+msgstr "Período actual:"
 
 #: ui_datosbase.h:153
 msgid "Periodo anterior:"
-msgstr ""
+msgstr "Período anterior:"
 
 #: ui_comercialclientebase.h:137
 msgid "Periodo de visitas:"
@@ -8714,7 +8714,7 @@ msgstr "Población almacén"
 
 #: profesorview.cpp:60
 msgid "Poblacion del profesor"
-msgstr ""
+msgstr "Población del profesor"
 
 #: ui_profesorbase.h:469 ui_clientebase.h:588 ui_alumnobase.h:525
 #: ui_tutorbase.h:512 ui_bccuentabase.h:860
@@ -9016,7 +9016,7 @@ msgstr "Prueba de plugin BcBulmaCont."
 
 #: pluginbf_example.cpp:116
 msgid "Prueba de plugin para BfBulmaFact."
-msgstr "Prueba de <i>plug-in</i> para BulmaFact."
+msgstr "Prueba de plug-in para BulmaFact."
 
 #: listcontrolstockview.cpp:34
 msgid "Punteado"
@@ -9624,23 +9624,23 @@ msgstr "Sopor&te"
 
 #: bccentrocosteseleccionarview.cpp:43 bccanalseleccionarview.cpp:45
 msgid "Status"
-msgstr "<i>Status</i>"
+msgstr "Status"
 
 #: articuloview.cpp:72
 msgid "Stock"
-msgstr "<i>Stock</i>"
+msgstr "Stock"
 
 #: listcontrolstockview.cpp:39
 msgid "Stock anterior"
-msgstr "<i>Stock</i> anterior"
+msgstr "Stock anterior"
 
 #: pluginbf_inventario.cpp:211
 msgid "Stock minimo superado"
-msgstr "<i>Stock</i> mínimo superado"
+msgstr "Stock mínimo superado"
 
 #: listcontrolstockview.cpp:40
 msgid "Stock revisado"
-msgstr "<i>Stock</i> revisado"
+msgstr "Stock revisado"
 
 #: q19writer.cpp:356
 msgid "Su entidad bancaria"
@@ -9718,7 +9718,7 @@ msgstr "Tarifas"
 
 #: ui_aboutfapacbase.h:154
 msgid "Tarragona"
-msgstr ""
+msgstr "Tarragona"
 
 #: listtasaivaview.cpp:49
 msgid "Tasa IVA"
@@ -9761,7 +9761,7 @@ msgstr "Teléfono de la cuenta"
 
 #: profesorview.cpp:61
 msgid "Telefono del profesor"
-msgstr ""
+msgstr "Teléfono del profesor"
 
 #: bcamortizacionview.cpp:69
 msgid "Telefono del proveedor"
@@ -10083,7 +10083,7 @@ msgstr "Total pagos"
 
 #: ui_z2zbase.h:387
 msgid "Total Tickets"
-msgstr "Total <i>Tickets</i>"
+msgstr "Total tickets"
 
 #: ui_z2zbase.h:388
 msgid "Total Traspasable"
@@ -10545,7 +10545,7 @@ msgstr "Web de la cuenta"
 
 #: profesorview.cpp:65
 msgid "Web del profesor"
-msgstr ""
+msgstr "Web del profesor"
 
 #: ui_adminbase.h:74
 msgid "X"
@@ -10569,7 +10569,7 @@ msgstr "Ya existe este artículo."
 
 #: abrevs.cpp:117
 msgid "Ya existe un ticket aparcado con el mismo nombre."
-msgstr "Ya existe un <i>ticket</i> aparcado con el mismo nombre."
+msgstr "Ya existe un ticket aparcado con el mismo nombre."
 
 #: ui_adminbase.h:75
 msgid "Z"
@@ -10780,7 +10780,7 @@ msgstr "docprevcobro"
 
 #: profesorview.cpp:64
 msgid "eMail del profesor"
-msgstr ""
+msgstr "Correo-E del profesor"
 
 #: balancesubform.cpp:44
 msgid "ejdebe"
