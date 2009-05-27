@@ -30,7 +30,7 @@ class Empresa(QtGui.QDialog, PluginsBulmaSetup):
             Yes = 'Si'
             No = 'No'
             message = QtGui.QMessageBox(self)
-            message.setText(QtGui.QApplication.translate("Empresa", "Desea agregar el usuario <b>root</b> a PostgreSQL? \n \n Este usuario es necesario para poder administrar PostgreSQL. La contraseá de este usuario sera \'password\'. Borre este usuario al terminar la configuracion.", None, QtGui.QApplication.UnicodeUTF8))
+            message.setText(QtGui.QApplication.translate("Empresa", "Desea agregar el usuario <b>root</b> a PostgreSQL?<br>Este usuario es necesario para poder administrar PostgreSQL.<br>La contrase&ntilde;a de este usuario sera \'password\'.<br><u><b>Borre este usuario al terminar la configuracion de BulmaGes, ya que genera un grave agujero de seguridad.</b></u>", None, QtGui.QApplication.UnicodeUTF8))
             message.setWindowTitle('Atencion!')
             message.setIcon(QtGui.QMessageBox.Warning)
             message.addButton(Yes, QtGui.QMessageBox.AcceptRole)

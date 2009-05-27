@@ -21,7 +21,7 @@ ArchivoSQLdeins:
 
 Dependencias:
 
-Incompatibles: libpluginbt_ivaincluido.so
+Incompatibles: libpluginbt_ivaincluido.so; libpluginbt_totalivaincluido.so
 
 Orden:
 
