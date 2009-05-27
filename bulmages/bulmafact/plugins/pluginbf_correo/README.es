@@ -9,8 +9,7 @@ Nombre: Envio de documentos por e-mail
 Biblioteca: libpluginbf_correo.so
 
 Descripción: <H1>Envios por e-mail</H1>
-<P>Permite enviar, mediante un botón nuevo en las fichas, los documentos impresos por e-mail directamente. Al pulsar sobre le botón de enviar por e-mail se abre el kmail con un texto y el documento adjunto</P>
-<HR>
+<P>Permite enviar, mediante un botón nuevo en las fichas, los documentos impresos por e-mail directamente. Al pulsar sobre le botón de enviar por e-mail se abre el kmail con un texto y el documento adjunto</P><HR>
 
 ParmBD: 
 

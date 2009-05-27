@@ -8,8 +8,10 @@ Nombre: Búsqueda de clientes en el TPV.
 
 Biblioteca: libpluginbuscacliente.so
 
-Descripción: Muestra una ventana de diálogo de búsqueda de clientes sobre el que podemos escribir el
-nombre o código del cliente.
+Descripción: <H1>Búsqueda de clientes en el TPV</H1>
+<P>Muestra una ventana de diálogo de búsqueda de clientes sobre el que podemos escribir el
+nombre o código del cliente.</P>
+<HR>
 
 ParmBD: 
 

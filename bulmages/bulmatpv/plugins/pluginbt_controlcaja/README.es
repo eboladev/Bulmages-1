@@ -8,7 +8,9 @@ Nombre: Administracion del TPV (X Y Z)
 
 Biblioteca: libpluginbt_controlcaja.so
 
-Descripción: Control de caja, generación de las X y las Z.
+Descripción: <H1>Administración del TPV (X y Z)</H1>
+<P>Control de caja, generación de las X y las Z.</P>
+<HR>
 
 ParmBD: 
 

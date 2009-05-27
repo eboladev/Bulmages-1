@@ -8,8 +8,10 @@ Nombre: Parrilla gráfica
 
 Biblioteca: libpluginbt_articulografico.so
 
-Descripción: Presentación de los articulos en forma de parrilla de elementos. Convierte BulmaTPV en el
-TPV de restauración.
+Descripción: <H1>Parrilla gráfica</H1>
+<P>Presentación de los articulos en forma de parrilla de elementos. Convierte BulmaTPV en el
+TPV de restauración.</P>
+<HR>
 
 ParmBD: 
 

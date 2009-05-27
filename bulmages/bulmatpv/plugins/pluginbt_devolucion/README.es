@@ -8,7 +8,9 @@ Nombre: Plugin de Devoluciones
 
 Biblioteca: libpluginbt_devolucion.so
 
-Descripción: Presenta la ventana de devolucion de material. Y genera vales de devolucion o abonos de dinero.
+Descripción: <H1>Plugin de Devoluciones</H1>
+<P>Presenta la ventana de devolucion de material. Y genera vales de devolucion o abonos de dinero.</P>
+<HR>
 
 ParmBD: 
 

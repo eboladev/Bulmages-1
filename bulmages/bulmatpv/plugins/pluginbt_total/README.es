@@ -8,8 +8,10 @@ Nombre: Total ticket en pantalla.
 
 Biblioteca: libpluginbt_total.so
 
-Descripción: Muestra el total del ticket en pantalla y botones para registrar el cobro, imprimir ticket y
-abrir el cajón portamonedas.
+Descripción: <H1>Total Ticket en Pantalla</H1>
+<P>Muestra el total del ticket en pantalla y botones para registrar el cobro, imprimir ticket y
+abrir el cajón portamonedas.</P>
+<HR>
 
 ParmBD: 
 

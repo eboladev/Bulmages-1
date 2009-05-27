@@ -8,8 +8,10 @@ Nombre: Búsqueda de artículos en el TPV.
 
 Biblioteca: libpluginbt_buscaarticulo.so
 
-Descripción: Muestra una ventana de diálogo de búsqueda de artículos sobre el que podemos escribir el
-nombre o código del artículo.
+Descripción: <H1>Búsqueda de artículos en el TPV</H1>
+<P>Muestra una ventana de diálogo de búsqueda de artículos sobre el que podemos escribir el
+nombre o código del artículo.</P>
+<HR>
 
 ParmBD: 
 

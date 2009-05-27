@@ -8,8 +8,10 @@ Nombre: Introduccion de articulos con subformulario
 
 Biblioteca: libpluginbt_articulosubform.so
 
-Descripción: Permite la introduccion de los componentes del ticket en forma de subformulario.
-Es incompatible con pluginartgraficos Ya que desempeñan la misma función.
+Descripción: <H1>Introduccion de articulos con subformulario</H1>
+<P>Permite la introduccion de los componentes del ticket en forma de subformulario.
+Es incompatible con pluginartgraficos Ya que desempeñan la misma función.</P>
+<HR>
 
 ParmBD: 
 

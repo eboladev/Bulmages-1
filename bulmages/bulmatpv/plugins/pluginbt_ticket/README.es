@@ -8,7 +8,9 @@ Nombre: Presentación de ticket en pantalla.
 
 Biblioteca: libpluginbt_ticket.so
 
-Descripción: Muestra la composición del ticket en pantalla, permitiendo la fácil edición del mismo.
+Descripción: <H1>Presentación de ticket en pantalla</H1>
+<P>Muestra la composición del ticket en pantalla, permitiendo la fácil edición del mismo.</P>
+<HR>
 
 ParmBD: 
 

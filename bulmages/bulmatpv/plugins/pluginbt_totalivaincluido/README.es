@@ -8,7 +8,9 @@ Nombre: Total ticket en pantalla (IVA Inc.)
 
 Biblioteca: libpluginbt_totalivaincluido.so
 
-Descripción: Muestra el total del ticket en pantalla
+Descripción: <H1>Total Ticket en Pantalla (IVA Inc.)</H1>
+<P>Muestra el total del ticket en pantalla</P>
+<HR>
 
 ParmBD: 
 

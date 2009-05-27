@@ -8,7 +8,9 @@ Nombre: Alias TPV Tallas y Colores
 
 Biblioteca: libpluginbt_aliastallasycolores.so
 
-Descripción: Permite la introduccion de articulos con alias. Requiere la instalacion de tallas y colores en la empresa..
+Descripción: <H1>Alias TPV Tallas y Colores</H1>
+<P>Permite la introduccion de articulos con alias. Requiere la instalacion de tallas y colores en la empresa.</P>
+<HR>
 
 ParmBD: 
 
@@ -16,7 +18,7 @@ ArchivoSQLpatch:
 
 ArchivoSQLdeins: 
 
-Dependencias:
+Dependencias: libpluginbf_tallascolores.so
 
 Incompatibles:
 

@@ -8,11 +8,9 @@ Nombre: Cuentas Anuales
 
 Biblioteca: libpluginbc_caaslods.so
 
-Descripción:<H1>Cuentas Anuales</H1>
-<P>Permite obtener un balance de cuentas anuales para los planes
-contables españoles del 2008: Cuentas Anuales, Abreviadas y de PYMES. Y para
-los planes contables anteriores al 2008: Cuentas Anuales y Abreviadas de
-Asociaciones sin lucro. </P>
+Descripción: <H1>Cuentas Anuales</H1>
+<P>Permite obtener un balance de cuentas anuales para los planes contables españoles del 2008: Cuentas Anuales, Abreviadas y de PYMES. Y para los planes contables anteriores al 2008: Cuentas Anuales y Abreviadas de Asociaciones sin lucro. </P>
+<HR>
 
 ParmBD: -
 

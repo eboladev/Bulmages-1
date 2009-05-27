@@ -8,7 +8,9 @@ Nombre: Gestion de bancos
 
 Biblioteca: libpluginbf_banco.so
 
-Descripción: Gestionar los bancos.
+Descripción: <H1>Gestion de bancos</H1>
+<P>Gestionar los bancos.</P>
+<HR>
 
 ParmBD:
 

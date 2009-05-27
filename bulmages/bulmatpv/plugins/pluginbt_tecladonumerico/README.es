@@ -8,8 +8,10 @@ Nombre: Teclado Numérico
 
 Biblioteca: libpluginbt_tecladonumerico.so
 
-Descripción: Muestra el teclado numérico en un docket con los principales botones de uso.
-Ideal para pantallas táctiles.
+Descripción: <H1>Teclado Numérico</H1>
+<P>Muestra el teclado numérico en un docket con los principales botones de uso.
+Ideal para pantallas táctiles.</P>
+<HR>
 
 ParmBD: 
 

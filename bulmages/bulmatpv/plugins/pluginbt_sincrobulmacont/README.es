@@ -8,7 +8,9 @@ Nombre: Sincronización con BulmaCont
 
 Biblioteca: 
 
-Descripción: Permite la sincronización del TPV con Bulmacont
+Descripción: <H1>Sincronización con BulmaCont</H1>
+<P>Permite la sincronización del TPV con Bulmacont</P>
+<HR>
 
 ParmBD: PluginBt_SincroBulmaCont
 

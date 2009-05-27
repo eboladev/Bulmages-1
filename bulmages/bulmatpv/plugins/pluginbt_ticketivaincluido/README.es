@@ -8,7 +8,9 @@ Nombre: Ticket en pantalla (IVA inc.)
 
 Biblioteca: libpluginbt_ticketivaincluido.so
 
-Descripción: Muestra la composición del ticket en pantalla, permitiendo la fácil edición del mismo.
+Descripción: <H1>Ticket en pantalla (IVA inc.)</H1>
+<P>Muestra la composición del ticket en pantalla, permitiendo la fácil edición del mismo.</P>
+<HR>
 
 ParmBD: 
 

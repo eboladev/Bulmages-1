@@ -8,7 +8,9 @@ Nombre: Cobro de tickets
 
 Biblioteca: libpluginbt_cobrar.so
 
-Descripción: Muestra una ventana para registrar el cobro de un ticket.
+Descripción: <H1>Cobro de tickets</H1>
+<P>Muestra una ventana para registrar el cobro de un ticket.</P>
+<HR>
 
 ParmBD: 
 

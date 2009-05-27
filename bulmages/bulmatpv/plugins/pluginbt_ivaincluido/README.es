@@ -8,8 +8,9 @@ Nombre: Iva Incluido
 
 Biblioteca: libpluginbt_ivaincluido.so
 
-Descripción: Permite la introduccion de articulos con alias. Requiere la instalacion de libpluginalias de 
-bulmafact en la empresa.
+Descripción: <H1>Iva Incluido</H1>
+<P>IVA Incluido</P>
+<HR>
 
 ParmBD: 
 
@@ -17,7 +18,7 @@ ArchivoSQLpatch:
 
 ArchivoSQLdeins: 
 
-Dependencias: libpluginbf_ivaincluido.so
+Dependencias: libpluginbf_ivaincluido.so; libpluginbf_alias.so
 
 Incompatibles:
 

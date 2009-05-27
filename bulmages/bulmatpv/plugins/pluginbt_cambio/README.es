@@ -8,7 +8,9 @@ Nombre: Plugin de Cambio
 
 Biblioteca: libplugincambio.so
 
-Descripción: Presenta la ventana de devolucion de cambio en los cobros. Y de seleccion de pago con VISA.
+Descripción: <H1>Plugin de Cambio</H1>
+<P>Presenta la ventana de devolucion de cambio en los cobros. Y de seleccion de pago con VISA.</P>
+<HR>
 
 ParmBD: 
 

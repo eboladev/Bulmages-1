@@ -18,7 +18,7 @@ ArchivoSQLpatch: pluginbt_ticketdevuelto.sql
 
 ArchivoSQLdeins: pluginbt_ticketdevuelto-rm.sql
 
-Dependencias: libpluginabrevs.so
+Dependencias: libpluginbt_accesobotones.so
 
 Incompatibles:
 

@@ -8,7 +8,9 @@ Nombre: Cambio (IVA inc.)
 
 Biblioteca: libpluginbt_cambioivaincluido.so
 
-Descripción: Presenta la ventana de devolucion de cambio en los cobros. Y de seleccion de pago con VISA.
+Descripción: <H1>Cambio (IVA inc.)</H1>
+<P>Presenta la ventana de devolucion de cambio en los cobros. Y de seleccion de pago con VISA.</P>
+<HR>
 
 ParmBD: 
 

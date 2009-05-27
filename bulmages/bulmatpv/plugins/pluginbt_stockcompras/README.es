@@ -8,7 +8,9 @@ Nombre: Plugin de Introduccion de Compras
 
 Biblioteca: libpluginbt_stockcompras.so
 
-Descripción: Permite ver el stock de cada articulo, y introducir compras de dichos articulos.
+Descripción: <H1>Plugin de Introduccion de Compras</H1>
+<P>Permite ver el stock de cada articulo, y introducir compras de dichos articulos.</P>
+<HR>
 
 ParmBD:
 
@@ -16,7 +18,7 @@ ArchivoSQLpatch:
 
 ArchivoSQLdeins: 
 
-Dependencias:
+Dependencias: libpluginbf_articulo.so
 
 Incompatibles:
 
