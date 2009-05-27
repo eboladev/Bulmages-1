@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'modificarfacturacionbase.ui'
 #
-# Created: Sun May 24 22:18:47 2009
+# Created: Thu May 28 00:14:39 2009
 #      by: PyQt4 UI code generator 4.4.4
 #
 # WARNING! All changes made in this file will be lost!
@@ -210,6 +210,7 @@ class Ui_ModificarFacturacionBase(object):
         self.groupBox.setTitle(QtGui.QApplication.translate("ModificarFacturacionBase", "Opciones de Filtrado de Plugins", None, QtGui.QApplication.UnicodeUTF8))
         self.label_5.setText(QtGui.QApplication.translate("ModificarFacturacionBase", "Categoria ", None, QtGui.QApplication.UnicodeUTF8))
         self.mui_vertodos.setText(QtGui.QApplication.translate("ModificarFacturacionBase", "Mostrar todos los plugins o solo los instalados", None, QtGui.QApplication.UnicodeUTF8))
+        self.mui_plugins.setSortingEnabled(True)
         self.mui_plugins.horizontalHeaderItem(0).setText(QtGui.QApplication.translate("ModificarFacturacionBase", "Plugin", None, QtGui.QApplication.UnicodeUTF8))
         self.mui_plugins.horizontalHeaderItem(1).setText(QtGui.QApplication.translate("ModificarFacturacionBase", "Descripcion", None, QtGui.QApplication.UnicodeUTF8))
         self.mui_plugins.horizontalHeaderItem(2).setText(QtGui.QApplication.translate("ModificarFacturacionBase", "Version Instalada", None, QtGui.QApplication.UnicodeUTF8))

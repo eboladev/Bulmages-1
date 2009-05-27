@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'listempresasbase.ui'
 #
-# Created: Mon May 11 23:21:43 2009
+# Created: Thu May 28 00:17:53 2009
 #      by: PyQt4 UI code generator 4.4.4
 #
 # WARNING! All changes made in this file will be lost!
@@ -86,6 +86,7 @@ class Ui_ListEmpresasBase(object):
 
     def retranslateUi(self, ListEmpresasBase):
         ListEmpresasBase.setWindowTitle(QtGui.QApplication.translate("ListEmpresasBase", "Listado de Empresas", None, QtGui.QApplication.UnicodeUTF8))
+        self.mui_listado.setSortingEnabled(True)
         self.mui_listado.horizontalHeaderItem(0).setText(QtGui.QApplication.translate("ListEmpresasBase", "Nombre", None, QtGui.QApplication.UnicodeUTF8))
         self.mui_listado.horizontalHeaderItem(1).setText(QtGui.QApplication.translate("ListEmpresasBase", "Base de Datos", None, QtGui.QApplication.UnicodeUTF8))
         self.mui_listado.horizontalHeaderItem(2).setText(QtGui.QApplication.translate("ListEmpresasBase", "Tipo", None, QtGui.QApplication.UnicodeUTF8))

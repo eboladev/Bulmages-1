@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'modificarcontabilidadbase.ui'
 #
-# Created: Sun May 24 22:19:45 2009
+# Created: Thu May 28 00:17:02 2009
 #      by: PyQt4 UI code generator 4.4.4
 #
 # WARNING! All changes made in this file will be lost!
@@ -181,6 +181,7 @@ class Ui_ModificarContabilidadBase(object):
         self.groupBox.setTitle(QtGui.QApplication.translate("ModificarContabilidadBase", "Opciones de Filtrado de Plugins", None, QtGui.QApplication.UnicodeUTF8))
         self.mui_vertodos.setText(QtGui.QApplication.translate("ModificarContabilidadBase", "Mostrar todos los plugins o solo los instalados", None, QtGui.QApplication.UnicodeUTF8))
         self.label_5.setText(QtGui.QApplication.translate("ModificarContabilidadBase", "Categoria ", None, QtGui.QApplication.UnicodeUTF8))
+        self.mui_plugins.setSortingEnabled(True)
         self.mui_plugins.horizontalHeaderItem(0).setText(QtGui.QApplication.translate("ModificarContabilidadBase", "Plugin", None, QtGui.QApplication.UnicodeUTF8))
         self.mui_plugins.horizontalHeaderItem(1).setText(QtGui.QApplication.translate("ModificarContabilidadBase", "Descripcion", None, QtGui.QApplication.UnicodeUTF8))
         self.mui_plugins.horizontalHeaderItem(2).setText(QtGui.QApplication.translate("ModificarContabilidadBase", "Version Instalada", None, QtGui.QApplication.UnicodeUTF8))

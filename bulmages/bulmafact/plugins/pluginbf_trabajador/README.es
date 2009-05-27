@@ -4,7 +4,7 @@
 #README.es
 #20080501
 
-Nombre: Gestion de Trabajadores
+Nombre: Trabajadores
 
 Biblioteca: libpluginbf_trabajador.so
 
