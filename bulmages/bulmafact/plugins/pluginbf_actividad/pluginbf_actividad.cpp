@@ -103,21 +103,20 @@ void MyPlugProf::inicializa ( BfBulmaFact *bges )
         QMenu *pPluginMenu = bges->newMenu ( "&Docencia", "menuDocencia", "menuMaestro" );
         pPluginMenu->addSeparator();
 
-
         QAction *ntipoact = new QAction ( _ ( "&Tipos de Actividad" ), 0 );
-        ntipoact->setIcon ( QIcon ( QString::fromUtf8 ( ":/ImgGestionAula/icons/actividad.svg" ) ) );
+        ntipoact->setIcon ( QIcon ( QString::fromUtf8 ( ":/ImgGestionAula/icons/actividad.png" ) ) );
         ntipoact->setStatusTip ( _ ( "Tipos de Actividad" ) );
         ntipoact->setWhatsThis ( _ ( "Tipos de Actividad" ) );
         pPluginMenu->addAction ( ntipoact );
         bges->Fichas->addAction ( ntipoact );
         connect ( ntipoact, SIGNAL ( activated() ), this, SLOT ( elslot2() ) );
+        
         pPluginMenu->addSeparator();
-
-        /// El men&uacute; de Tarifas en la secci&oacute;n de art&iacute;culos.
         m_bges = bges;
+        
         setMainCompany ( bges->getcompany() );
         QAction *planCuentas = new QAction ( _ ( "&Actividades" ), 0 );
-        planCuentas->setIcon ( QIcon ( QString::fromUtf8 ( ":/ImgGestionAula/icons/actividad.svg" ) ) );
+        planCuentas->setIcon ( QIcon ( QString::fromUtf8 ( ":/ImgGestionAula/icons/actividad.png" ) ) );
         planCuentas->setStatusTip ( _ ( "Actividades" ) );
         planCuentas->setWhatsThis ( _ ( "Actividades" ) );
         pPluginMenu->addAction ( planCuentas );
@@ -125,7 +124,7 @@ void MyPlugProf::inicializa ( BfBulmaFact *bges )
         connect ( planCuentas, SIGNAL ( activated() ), this, SLOT ( elslot() ) );
 
         QAction *npago = new QAction ( _ ( "&Nueva actividad" ), 0 );
-        npago->setIcon ( QIcon ( QString::fromUtf8 ( ":/ImgGestionAula/icons/actividad.svg" ) ) );
+        npago->setIcon ( QIcon ( QString::fromUtf8 ( ":/ImgGestionAula/icons/actividad_add.png" ) ) );
         npago->setStatusTip ( _ ( "Nueva actividad" ) );
         npago->setWhatsThis ( _ ( "Nueva actividad" ) );
         pPluginMenu->addAction ( npago );

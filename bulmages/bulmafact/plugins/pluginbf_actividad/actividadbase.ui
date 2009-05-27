@@ -22,7 +22,7 @@
   </property>
   <property name="windowIcon">
    <iconset resource="../pluginbf_profesor/gestionaula.qrc">
-    <normaloff>:/ImgGestionAula/icons/actividad.svg</normaloff>:/ImgGestionAula/icons/actividad.svg</iconset>
+    <normaloff>:/ImgGestionAula/icons/actividad.png</normaloff>:/ImgGestionAula/icons/actividad.png</iconset>
   </property>
   <layout class="QVBoxLayout" name="verticalLayout">
    <item>
@@ -51,7 +51,7 @@
         <string/>
        </property>
        <property name="pixmap">
-        <pixmap resource="../pluginbf_profesor/gestionaula.qrc">:/ImgGestionAula/icons/actividad.svg</pixmap>
+        <pixmap resource="../pluginbf_profesor/gestionaula.qrc">:/ImgGestionAula/icons/actividad.png</pixmap>
        </property>
        <property name="scaledContents">
         <bool>true</bool>

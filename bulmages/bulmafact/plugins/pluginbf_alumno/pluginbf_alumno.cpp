@@ -1,6 +1,9 @@
 /***************************************************************************
- *   Copyright (C) 2005 by Tomeu Borras Riera                              *
+ *   Copyright (C) 2009 by Tomeu Borras Riera                              *
  *   tborras@conetxia.com                                                  *
+ *                                                                         *
+ *   Copyright (C) 2009 by Arturo Martin Llado                             *
+ *   amartin@conetxia.com                                                  *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
  *   it under the terms of the GNU General Public License as published by  *
@@ -27,7 +30,6 @@
 #include "alumnoslist.h"
 #include "listcuotasporalumnoview.h"
 
-
 AlumnosList *g_alumnosList = NULL;
 
 ///
@@ -39,7 +41,6 @@ MyPlugProf::MyPlugProf()
     _depura ( "END MyPlugProf::MyPlugProf", 0 );
 }
 
-
 ///
 /**
 **/
@@ -49,17 +50,18 @@ MyPlugProf::~MyPlugProf()
     _depura ( "END MyPlugProf::~MyPlugProf", 0 );
 }
 
-
 ///
 /**
 **/
 void MyPlugProf::elslot()
 {
     _depura ( "MyPlugProf::elslot", 0 );
+    
     if ( g_alumnosList ) {
         g_alumnosList->hide();
         g_alumnosList->show();
-    }// end if
+    } // end if
+    
     _depura ( "END MyPlugProf::elslot", 0 );
 }
 
@@ -69,12 +71,13 @@ void MyPlugProf::elslot()
 void MyPlugProf::elslot1()
 {
     _depura ( "MyPlugProf::elslot1", 0 );
+    
     AlumnoView * bud = new AlumnoView ( ( BfCompany * ) mainCompany(), NULL );
-    mainCompany() ->m_pWorkspace->addWindow ( bud );
+    mainCompany()->m_pWorkspace->addWindow ( bud );
     bud->show();
+    
     _depura ( "END MyPlugProf::elslot1", 0 );
 }
-
 
 ///
 /**
@@ -82,12 +85,13 @@ void MyPlugProf::elslot1()
 void MyPlugProf::elslot2()
 {
     _depura ( "MyPlugProf::elslot2", 0 );
+    
     ListCuotasPorAlumnoView * bud = new ListCuotasPorAlumnoView ( ( BfCompany * ) mainCompany(), NULL );
-    mainCompany() ->m_pWorkspace->addWindow ( bud );
+    mainCompany()->m_pWorkspace->addWindow ( bud );
     bud->show();
+    
     _depura ( "END MyPlugProf::elslot2", 0 );
 }
-
 
 ///
 /**
@@ -99,44 +103,43 @@ void MyPlugProf::inicializa ( BfBulmaFact *bges )
 
     if ( bges->getcompany()->hasTablePrivilege ( "alumno", "SELECT" ) ) {
 
-        /// Miramos si existe un menu Ventas
+        /// Miramos si existe un menu Docencia
         QMenu *pPluginMenu = bges->newMenu ( "&Docencia", "menuDocencia", "menuMaestro" );
 
-	/// Agrego un separador
-	pPluginMenu->addSeparator();
+        /// Agrego un separador
+        pPluginMenu->addSeparator();
 
-        /// El men&uacute; de Tarifas en la secci&oacute;n de art&iacute;culos.
         m_bges = bges;
         setMainCompany ( bges->getcompany() );
-        QAction *planCuentas = new QAction ( _ ( "&Alumnos" ), 0 );
-        planCuentas->setIcon ( QIcon ( QString::fromUtf8 ( ":/ImgGestionAula/icons/alumno.svg" ) ) );
-        planCuentas->setStatusTip ( _ ( "Alumnos" ) );
-        planCuentas->setWhatsThis ( _ ( "Alumnos" ) );
-        pPluginMenu->addAction ( planCuentas );
-        bges->Listados->addAction ( planCuentas );
-        connect ( planCuentas, SIGNAL ( activated() ), this, SLOT ( elslot() ) );
+        
+        QAction *alumnos = new QAction ( _ ( "&Alumnos" ), 0 );
+        alumnos->setIcon ( QIcon ( QString::fromUtf8 ( ":/ImgGestionAula/icons/alumno.svg" ) ) );
+        alumnos->setStatusTip ( _ ( "Alumnos" ) );
+        alumnos->setWhatsThis ( _ ( "Alumnos" ) );
+        pPluginMenu->addAction ( alumnos );
+        bges->Listados->addAction ( alumnos );
+        connect ( alumnos, SIGNAL ( activated() ), this, SLOT ( elslot() ) );
 
-        QAction *npago = new QAction ( _ ( "&Nuevo alumno" ), 0 );
-        npago->setIcon ( QIcon ( QString::fromUtf8 ( ":/ImgGestionAula/icons/alumno.svg" ) ) );
-        npago->setStatusTip ( _ ( "Nuevo alumno" ) );
-        npago->setWhatsThis ( _ ( "Nuevo alumno" ) );
-        pPluginMenu->addAction ( npago );
-        bges->Fichas->addAction ( npago );
-        connect ( npago, SIGNAL ( activated() ), this, SLOT ( elslot1() ) );
-
+        QAction *nalumno = new QAction ( _ ( "&Nuevo alumno" ), 0 );
+        nalumno->setIcon ( QIcon ( QString::fromUtf8 ( ":/ImgGestionAula/icons/alumno.svg" ) ) );
+        nalumno->setStatusTip ( _ ( "Nuevo alumno" ) );
+        nalumno->setWhatsThis ( _ ( "Nuevo alumno" ) );
+        pPluginMenu->addAction ( nalumno );
+        bges->Fichas->addAction ( nalumno );
+        connect ( nalumno, SIGNAL ( activated() ), this, SLOT ( elslot1() ) );
 
         QAction *cuotaspalumno = new QAction ( _ ( "&Cuotas por Alumno" ), 0 );
-        cuotaspalumno->setIcon ( QIcon ( QString::fromUtf8 ( ":/ImgGestionAula/icons/alumno.svg" ) ) );
+        cuotaspalumno->setIcon ( QIcon ( QString::fromUtf8 ( ":/ImgGestionAula/icons/mix_money_32.png" ) ) );
         cuotaspalumno->setStatusTip ( _ ( "Cuotas por alumno" ) );
         cuotaspalumno->setWhatsThis ( _ ( "Cuotas por alumno" ) );
         pPluginMenu->addAction ( cuotaspalumno );
         bges->Fichas->addAction ( cuotaspalumno );
         connect ( cuotaspalumno, SIGNAL ( activated() ), this, SLOT ( elslot2() ) );
 
-    }// end if
+    } // end if
+    
     _depura ( "END MyPlugProf::inicializa", 0 );
 }
-
 
 ///
 /**
@@ -153,38 +156,49 @@ int entryPoint ( BfBulmaFact *bges )
 
     MyPlugProf *plug = new MyPlugProf();
     plug->inicializa ( bges );
+    
+    _depura ( "END Punto de entrada del plugin de alumnos\n", 0 );
+    
     return 0;
 }
 
-
 int BfCompany_createMainWindows_Post ( BfCompany *comp )
 {
+    _depura ( "BfCompany_createMainWindows_Post", 0 );
+
     if ( comp->hasTablePrivilege ( "alumno", "SELECT" ) ) {
         g_alumnosList = new AlumnosList ( comp, NULL );
         comp->m_pWorkspace->addWindow ( g_alumnosList );
         g_alumnosList->hide();
-    }// end if
+    } // end if
+    
+    _depura ( "END BfCompany_createMainWindows_Post", 0 );
+
     return 0;
 }
 
-
 int BfSubForm_pressedAsterisk ( BfSubForm *sub )
 {
+    _depura ( "BfSubForm_pressedAsterisk" );
 
     if ( sub->m_campoactual->nomcampo() != "nombrealumno" ) {
         _depura ( "END BfSubForm::pressedAsterisk", 0 );
         return 0;
     } // end if
 
-    AlumnosList *artlist = new AlumnosList ( ( BfCompany * ) sub->mainCompany(), NULL, 0, BL_SELECT_MODE );
+    AlumnosList *alumnoslist = new AlumnosList ( ( BfCompany * ) sub->mainCompany(), NULL, 0, BL_SELECT_MODE );
+    
     /// Esto es convertir un QWidget en un sistema modal de dialogo.
     sub->setEnabled ( false );
-    artlist->show();
-    while ( !artlist->isHidden() )
+    alumnoslist->show();
+    
+    while ( !alumnoslist->isHidden() )
         g_theApp->processEvents();
+        
     sub->setEnabled ( true );
-    QString idAlumno = artlist->idalumno();
-    delete artlist;
+    QString idAlumno = alumnoslist->idalumno();
+    
+    delete alumnoslist;
 
     /// Si no tenemos un idarticulo salimos ya que significa que no se ha seleccionado ninguno.
     if ( idAlumno == "" ) {
@@ -197,10 +211,10 @@ int BfSubForm_pressedAsterisk ( BfSubForm *sub )
         sub->m_registrolinea->setDbValue ( "idalumno", idAlumno );
         sub->m_registrolinea->setDbValue ( "nombrealumno", cur->valor ( "nombrealumno" ) );
     } // end if
+    
     delete cur;
+    
+    _depura ( "END BfSubForm_pressedAsterisk" );
 
     return 0;
 }
-
-
-

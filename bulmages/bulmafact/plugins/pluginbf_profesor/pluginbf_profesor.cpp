@@ -120,7 +120,7 @@ void MyPlugProf::inicializa ( BfBulmaFact *bges )
         connect ( planCuentas, SIGNAL ( activated() ), this, SLOT ( elslot() ) );
 
         QAction *npago = new QAction ( _ ( "&Nuevo profesor" ), 0 );
-        npago->setIcon ( QIcon ( QString::fromUtf8 ( ":/ImgGestionAula/icons/profesor.gif" ) ) );
+        npago->setIcon ( QIcon ( QString::fromUtf8 ( ":/ImgGestionAula/icons/profesor_add.png" ) ) );
         npago->setStatusTip ( _ ( "Nuevo profesor" ) );
         npago->setWhatsThis ( _ ( "Nuevo profesor" ) );
         pPluginMenu->addAction ( npago );
