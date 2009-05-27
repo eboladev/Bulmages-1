@@ -56,9 +56,9 @@ class Empresa(QtGui.QDialog, PluginsBulmaSetup):
         conn.close()
         
         
-        #self.connect(self.process, SIGNAL("readyReadStandardOutput()"), self.readOutput)
+        self.connect(self.process, SIGNAL("readyReadStandardOutput()"), self.readOutput)
         self.connect(self.process, SIGNAL("readyReadStandardError()"), self.readErrors)
-        self.connect(self.process, SIGNAL("finished()"), self.finished)
+        self.connect(self.process, SIGNAL("finished(int,QProcess::ExitStatus)"), self.finished)
         self.connect(self.process, SIGNAL("started()"), self.started)
 
     def conectar(self, db):
@@ -124,16 +124,16 @@ class Empresa(QtGui.QDialog, PluginsBulmaSetup):
 
 
     def readOutput(self):
-        self.mui_textBrowser.append(QString(self.process.readAllStandardOutput()))
+        self.mui_textBrowser.append("<font size=\"-2\">" + QString(self.process.readAllStandardOutput()) + "</font>")
 
     def readErrors(self):
         self.mui_textBrowser.append("<font color =\"#FF0000\">error: " + QString(self.process.readAllStandardError()) + "</font>")
 
-    def finished(self):
-        self.mui_textBrowser.append("<font color =\"#00FF00\">Done.</font>")
+    def finished(self, code, st):
+        self.mui_textBrowser.append("<font color =\"#00FF00\">Done.</font><BR>")
 
     def started(self):
-        self.mui_textBrowser.append("<font color =\"#00FF00\">Started.</font>")
+        self.mui_textBrowser.append("<BR><font color =\"#00FF00\">Started.</font>")
 
     def writecommand(self, comm):
-        self.mui_textBrowser.append("<font color =\"#0000FF\">"+comm+"</font>")
+        self.mui_textBrowser.append("<font color =\"#0000FF\">" + QtGui.QApplication.translate("MainWindow", comm, None, QtGui.QApplication.UnicodeUTF8) + "</font>")
