@@ -17,8 +17,35 @@ class Facturacion(Ui_ModificarFacturacionBase, Empresa):
       self.setupUi(self)
       
       # Ocultamos la columna de las descripciones.
+      self.mui_plugins.setColumnCount(11)
+      self.mui_plugins1.setColumnCount(11)
       self.mui_plugins.hideColumn(1)
       self.mui_plugins1.hideColumn(1)
+
+      self.mui_plugins.hideColumn(3)
+      self.mui_plugins1.hideColumn(3)
+
+      self.mui_plugins.hideColumn(4)
+      self.mui_plugins1.hideColumn(4)
+
+      self.mui_plugins.hideColumn(5)
+      self.mui_plugins1.hideColumn(5)
+
+      self.mui_plugins.hideColumn(6)
+      self.mui_plugins1.hideColumn(6)
+
+      self.mui_plugins.hideColumn(7)
+      self.mui_plugins1.hideColumn(7)
+
+      self.mui_plugins.hideColumn(8)
+      self.mui_plugins1.hideColumn(8)
+
+      self.mui_plugins.hideColumn(9)
+      self.mui_plugins1.hideColumn(9)
+
+      self.mui_plugins.hideColumn(10)
+      self.mui_plugins1.hideColumn(10)
+
       self.mui_plugins1.setEnabled(False)
 
       # Hacemos un Show y así el padre recupera el control.
@@ -116,19 +143,19 @@ class Facturacion(Ui_ModificarFacturacionBase, Empresa):
         self.i = 0
         while (self.i < self.mui_plugins.rowCount()):
           # Si el plugin tiene el orden adecuado lo consideramos.
-          if (self.pluginsbulmafact[self.i][7] == self.x ):
-            self.writecommand('Tratando ' + self.pluginsbulmafact[self.i][0])
+          if (self.mui_plugins.item(self.i,7).text() == self.x ):
+            self.writecommand('Tratando ' + self.mui_plugins.item(self.i,0).text())
             # Si el plugin esta checked lo escribimos.
-            if (self.mui_plugins.item(self.i, 0).checkState() == Qt.Checked and len(self.pluginsbulmafact[self.i][1]) > 3):
+            if (self.mui_plugins.item(self.i, 0).checkState() == Qt.Checked and len(self.mui_plugins.item(self.i,10).text()) > 3):
               if (self.nuevo == 1):
                  self.nuevo = 0
                  # Escribimos la configuracion de plugins.
                  self.terminador = ""
                  self.out << "CONF_PLUGINS_BULMAFACT   "
 	      # Si hay que aplicar un plugin entonces lo escribimos
-	      if (self.pluginsbulmafact[self.i][1] != 'None' and len(self.pluginsbulmafact[self.i][1]) > 3):
-		self.writecommand('Hay que actualizar ' + self.pluginsbulmafact[self.i][0])
-		self.out << self.terminador << self.pluginsbulmafact[self.i][1]
+	      if (self.mui_plugins.item(self.i,10).text() != 'None' and len(self.mui_plugins.item(self.i,10).text()) > 3):
+		self.writecommand('Hay que actualizar ' + self.mui_plugins.item(self.i,0).text())
+		self.out << self.terminador << self.mui_plugins.item(self.i,10).text()
 		self.terminador = "; \\\n";
           self.i = self.i + 1
         self.x = self.x + 1
@@ -190,17 +217,17 @@ class Facturacion(Ui_ModificarFacturacionBase, Empresa):
         while (self.x < 1000) :
           self.i = 0
           while (self.i < self.mui_plugins1.rowCount()):
-              if (self.pluginsbulmatpv[self.i][7] == self.x):
-                self.writecommand('Tratando ' + self.pluginsbulmatpv[self.i][0])
-                if (self.mui_plugins1.item(self.i, 0).checkState() == Qt.Checked and len(self.pluginsbulmatpv[self.i][1]) > 3):
+              if (self.mui_plugins1.item(self.i,7).text() == self.x):
+                self.writecommand('Tratando ' + self.mui_plugins1.item(self.i,0).text())
+                if (self.mui_plugins1.item(self.i, 0).checkState() == Qt.Checked and len(self.mui_plugins1.item(self.i,10).text()) > 3):
                   if (self.nuevo == 1):
                     self.nuevo = 0
                     self.out << "CONF_PLUGINS_BULMATPV   "
-                  self.writecommand('Hay que actualizar ' + self.pluginsbulmatpv[self.i][0])
+                  self.writecommand('Hay que actualizar ' + self.mui_plugins1.item(self.i,0).text())
 		  # Si hay que aplicar un plugin entonces lo escribimos
-		  if (self.pluginsbulmatpv[self.i][1] != 'None' and len(self.pluginsbulmatpv[self.i][1]) > 3):
-		    self.writecommand('Hay que actualizar ' + self.pluginsbulmatpv[self.i][0])
-		    self.out << self.terminador << self.pluginsbulmatpv[self.i][1]
+		  if (self.mui_plugins1.item(self.i,10).text() != 'None' and len(self.mui_plugins1.item(self.i,10).text()) > 3):
+		    self.writecommand('Hay que actualizar ' + self.mui_plugins1.item(self.i,0).text())
+		    self.out << self.terminador << self.mui_plugins1.item(self.i,10).text()
 		    self.terminador = "; \\\n";
               self.i = self.i + 1
           self.x = self.x + 1
@@ -216,36 +243,35 @@ class Facturacion(Ui_ModificarFacturacionBase, Empresa):
 
 
    def marcar(self, plug):
-      self.j = 0
-      for self.it in self.pluginsbulmatpv:
-         if (self.pluginsbulmatpv[self.j][1] == plug):
-            self.mui_plugins1.item(self.j,0).setCheckState(Qt.Checked)
-         self.j = self.j + 1
-      self.j = 0
-      for self.it in self.pluginsbulmafact:
-         if (self.pluginsbulmafact[self.j][1] == plug):
-            self.mui_plugins.item(self.j,0).setCheckState(Qt.Checked)
-         self.j = self.j + 1
+      self.i = 0
+      while (self.i < self.mui_plugins1.rowCount()):
+         if (self.mui_plugins1.item(self.i,10).text() == plug):
+            self.mui_plugins1.item(self.i,0).setCheckState(Qt.Checked)
+         self.i = self.i + 1
+      self.i = 0
+      while (self.i < self.mui_plugins.rowCount()):
+         if (self.mui_plugins.item(self.i,10).text() == plug):
+            self.mui_plugins.item(self.i,0).setCheckState(Qt.Checked)
+         self.i = self.i + 1
 
    def desmarcar(self, plug):
-      self.j = 0
-      for self.it in self.pluginsbulmatpv:
-         if (self.pluginsbulmatpv[self.j][1] == plug):
-            self.mui_plugins1.item(self.j,0).setCheckState(Qt.Unchecked)
-         self.j = self.j + 1
-      self.j = 0
-      for self.it in self.pluginsbulmafact:
-         if (self.pluginsbulmafact[self.j][1] == plug):
-            self.mui_plugins.item(self.j,0).setCheckState(Qt.Unchecked)
-         self.j = self.j + 1
-
+      self.i = 0
+      while (self.i < self.mui_plugins1.rowCount()):
+         if (self.mui_plugins1.item(self.i,10).text() == plug):
+            self.mui_plugins1.item(self.i,0).setCheckState(Qt.Unchecked)
+         self.i = self.i + 1
+      self.i = 0
+      while (self.i < self.mui_plugins.rowCount()):
+         if (self.mui_plugins.item(self.i,10).text() == plug):
+            self.mui_plugins.item(self.i,0).setCheckState(Qt.Unchecked)
+         self.i = self.i + 1
 
 
 
    def on_mui_plugins_cellPressed(self, row, col):
       self.estado = self.mui_plugins.item(row,0).checkState()
       # Escribimos la descripcion
-      self.mui_descripcion.setText(self.mui_plugins.item(row,1).text() + "<b>" + self.pluginsbulmafact[row][1] + "</b><br>"+ self.pluginsbulmafact[row][3] + "<br>" + self.pluginsbulmafact[row][4] + "<br><b>Categorias:</b> " + self.pluginsbulmafact[row][8]+ "<br>" + self.pluginsbulmafact[row][9] + "<br><b>Dependencias:</b> " + self.pluginsbulmafact[row][5] + "<br><br><b>Incompatibilidades:</b> " + self.pluginsbulmafact[row][6])
+      self.mui_descripcion.setText(self.mui_plugins.item(row,1).text() + "<b>" + self.mui_plugins.item(row,10).text() + "</b><br>"+ self.mui_plugins.item(row,3).text() + "<br>" + self.mui_plugins.item(row,4).text() + "<br><b>Categorias:</b> " + self.mui_plugins.item(row,8).text()+ "<br>" + self.mui_plugins.item(row,9).text() + "<br><b>Dependencias:</b> " + self.mui_plugins.item(row,5).text() + "<br><br><b>Incompatibilidades:</b> " + self.mui_plugins.item(row,6).text())
      
    def on_mui_plugins_cellClicked(self, row, col):
 
@@ -254,12 +280,12 @@ class Facturacion(Ui_ModificarFacturacionBase, Empresa):
             # Comprobamos que esta marcado el checkbox de la fila donde hemos clicado:
             if (self.mui_plugins.item(row, 0).checkState() == Qt.Checked):
                 # Desmarcamos las incompatibilidades
-                self.arr = self.pluginsbulmafact[row][6].replace(' ;',';').replace('; ',';').split(QString(";"))
+                self.arr = self.mui_plugins.item(row,6).text().replace(' ;',';').replace('; ',';').split(QString(";"))
                 if self.arr != ['']:
                     Yes = 'Si'
                     No = 'No'
                     message = QtGui.QMessageBox(self)
-                    message.setText('El plugin <b>' +str(self.pluginsbulmafact[row][1] + "</b> tiene incompatibilidades. Quieres desinstalarlas?"))
+                    message.setText('El plugin <b>' +str(self.mui_plugins.item(row,10).text() + "</b> tiene incompatibilidades. Quieres desinstalarlas?"))
                     message.setWindowTitle('Atencion!')
                     message.setIcon(QtGui.QMessageBox.Warning)
                     message.addButton(Yes, QtGui.QMessageBox.AcceptRole)
@@ -270,12 +296,12 @@ class Facturacion(Ui_ModificarFacturacionBase, Empresa):
                         for self.dep in self.arr:
                             self.desmarcar(self.dep)
                 # Marcamos las dependencias
-                self.arr = self.pluginsbulmafact[row][5].replace(' ;',';').replace('; ',';').split(QString(";"))
+                self.arr = self.mui_plugins.item(row,5).text().replace(' ;',';').replace('; ',';').split(QString(";"))
                 if self.arr != ['']:
                     Yes = 'Si'
                     No = 'No'
                     message = QtGui.QMessageBox(self)
-                    message.setText('El plugin <b>' +str(self.pluginsbulmafact[row][1] + "</b> tiene dependencias. Quieres instalarlas?"))
+                    message.setText('El plugin <b>' +str(self.mui_plugins.item(row,10).text() + "</b> tiene dependencias. Quieres instalarlas?"))
                     message.setWindowTitle('Atencion!')
                     message.setIcon(QtGui.QMessageBox.Warning)
                     message.addButton(Yes, QtGui.QMessageBox.AcceptRole)
@@ -294,7 +320,7 @@ class Facturacion(Ui_ModificarFacturacionBase, Empresa):
    def on_mui_plugins1_cellPressed(self, row, col):
       self.estado = self.mui_plugins1.item(row,0).checkState()
       # Escribimos la descripcion
-      self.mui_descripcion.setText(self.mui_plugins1.item(row,1).text() + "<b>" + self.pluginsbulmatpv[row][1] + "</b><br>"+ self.pluginsbulmatpv[row][3] + "<br>" + self.pluginsbulmatpv[row][4] + "<br><b>Categorias:</b> " + self.pluginsbulmatpv[row][8]+ "<br>" + self.pluginsbulmatpv[row][9] + "<br><b>Dependencias:</b> " + self.pluginsbulmatpv[row][5] + "<br><br><b>Incompatibilidades:</b> " + self.pluginsbulmatpv[row][6])
+      self.mui_descripcion.setText(self.mui_plugins1.item(row,1).text() + "<b>" + self.mui_plugins1.item(row,10).text() + "</b><br>"+ self.mui_plugins1.item(row,3).text() + "<br>" + self.mui_plugins1.item(row,4).text() + "<br><b>Categorias:</b> " + self.mui_plugins1.item(row,8).text()+ "<br>" + self.mui_plugins1.item(row,9).text() + "<br><b>Dependencias:</b> " + self.mui_plugins1.item(row,5).text() + "<br><br><b>Incompatibilidades:</b> " + self.mui_plugins1.item(row,6).text())
       
    def on_mui_plugins1_cellClicked(self, row, col):
       if (self.semaforo == 1):
@@ -302,12 +328,12 @@ class Facturacion(Ui_ModificarFacturacionBase, Empresa):
             # Comprobamos que esta marcado el checkbox de la fila donde hemos clicado:
             if (self.mui_plugins1.item(row, 0).checkState() == Qt.Checked):
                 # Desmarcamos las incompatibilidades
-                self.arr = self.pluginsbulmatpv[row][6].replace(' ;',';').replace('; ',';').split(QString(";"))
+                self.arr = self.mui_plugins1.item(row,6).text().replace(' ;',';').replace('; ',';').split(QString(";"))
                 if self.arr != ['']:
                     Yes = 'Si'
                     No = 'No'
                     message = QtGui.QMessageBox(self)
-                    message.setText('El plugin <b>' +str(self.pluginsbulmatpv[row][1] + "</b> tiene incompatibilidades. Quieres desinstalarlas?"))
+                    message.setText('El plugin <b>' +str(self.mui_plugins1.item(row,10).text() + "</b> tiene incompatibilidades. Quieres desinstalarlas?"))
                     message.setWindowTitle('Atencion!')
                     message.setIcon(QtGui.QMessageBox.Warning)
                     message.addButton(Yes, QtGui.QMessageBox.AcceptRole)
@@ -318,7 +344,7 @@ class Facturacion(Ui_ModificarFacturacionBase, Empresa):
                         for self.dep in self.arr:
                             self.desmarcar(self.dep)
                 # Marcamos las dependencias
-                self.arr = self.pluginsbulmatpv[row][5].replace(' ;',';').replace('; ',';').split(QString(";"))
+                self.arr = self.mui_plugins1.item(row,5).text().replace(' ;',';').replace('; ',';').split(QString(";"))
                 if self.arr != ['']:
                     Yes = 'Si'
                     No = 'No'
@@ -343,7 +369,7 @@ class Facturacion(Ui_ModificarFacturacionBase, Empresa):
     self.i = 0
     while (self.i < self.mui_plugins.rowCount()):
         if (self.mui_plugins.item(self.i, 0).checkState() == Qt.Checked):
-            self.arr = self.pluginsbulmafact[self.i][5].replace(' ;',';').replace('; ',';').split(QString(";"))
+            self.arr = self.mui_plugins.item(self.i,5).text().replace(' ;',';').replace('; ',';').split(QString(";"))
             if (self.arr != ['']) and (self.arr != None):
                 for self.dep in self.arr:
                     self.marcar(self.dep)
@@ -352,7 +378,7 @@ class Facturacion(Ui_ModificarFacturacionBase, Empresa):
     self.i = 0
     while (self.i < self.mui_plugins1.rowCount()):
         if (self.mui_plugins1.item(self.i, 0).checkState() == Qt.Checked):
-            self.arr = self.pluginsbulmatpv[self.i][5].replace(' ;',';').replace('; ',';').split(QString(";"))
+            self.arr = self.mui_plugins1.item(self.i,5).text().replace(' ;',';').replace('; ',';').split(QString(";"))
             if (self.arr != ['']) and (self.arr != None):
                 for self.dep in self.arr:
                     self.marcar(self.dep)
@@ -380,13 +406,13 @@ class Facturacion(Ui_ModificarFacturacionBase, Empresa):
     self.i = 0
     while (self.i < self.mui_plugins.rowCount()):
         if (self.mui_plugins.item(self.i, 0).checkState() == Qt.Checked):
-            self.arr = self.pluginsbulmafact[self.i][6].replace(' ;',';').replace('; ',';').split(QString(";"))
+            self.arr = self.mui_plugins.item(self.i,6).text().replace(' ;',';').replace('; ',';').split(QString(";"))
             if (self.arr != ['']) and (self.arr != None):
                 if pregunta == 0:
                     Yes = 'Si'
                     No = 'No'
                     message = QtGui.QMessageBox(self)
-                    message.setText('El plugin <b>' +str(self.pluginsbulmafact[self.i][1] + "</b> tiene incompatibilidades. Quieres desinstalarlas?"))
+                    message.setText('El plugin <b>' +str(self.mui_plugins.item(self.i,10).text() + "</b> tiene incompatibilidades. Quieres desinstalarlas?"))
                     message.setWindowTitle('Atencion!')
                     message.setIcon(QtGui.QMessageBox.Warning)
                     message.addButton(Yes, QtGui.QMessageBox.AcceptRole)
@@ -405,13 +431,13 @@ class Facturacion(Ui_ModificarFacturacionBase, Empresa):
     self.i = 0
     while (self.i < self.mui_plugins1.rowCount()):
         if (self.mui_plugins1.item(self.i, 0).checkState() == Qt.Checked):
-            self.arr = self.pluginsbulmatpv[self.i][6].replace(' ;',';').replace('; ',';').split(QString(";"))
+            self.arr = self.mui_plugins1.item(self.i,6).text().replace(' ;',';').replace('; ',';').split(QString(";"))
             if (self.arr != ['']) and (self.arr != None):
                 if pregunta == 0:
                     Yes = 'Si'
                     No = 'No'
                     message = QtGui.QMessageBox(self)
-                    message.setText('El plugin <b>' +str(self.pluginsbulmatpv[row][1] + "</b> tiene incompatibilidades. Quieres desinstalarlas?"))
+                    message.setText('El plugin <b>' +str(self.mui_plugins1.item(row,10).text() + "</b> tiene incompatibilidades. Quieres desinstalarlas?"))
                     message.setWindowTitle('Atencion!')
                     message.setIcon(QtGui.QMessageBox.Warning)
                     message.addButton(Yes, QtGui.QMessageBox.AcceptRole)
@@ -441,24 +467,24 @@ class Facturacion(Ui_ModificarFacturacionBase, Empresa):
       
       self.i = 0
       while (self.i < self.mui_plugins.rowCount()):
-        self.writecommand('Tratando ' + self.pluginsbulmafact[self.i][0])
+        self.writecommand('Tratando ' + self.mui_plugins.item(self.i,0).text())
         if (self.mui_plugins.item(self.i, 0).checkState() == Qt.Checked):
-          self.writecommand('Actualizando ' + self.pluginsbulmafact[self.i][0])
+          self.writecommand('Actualizando ' + self.mui_plugins.item(self.i,0).text())
           self.writecommand('============ \n ' )
           # Si hay parche de actualizacion lo aplicamos
 	  # En realidad deberia comprobarse si hay archivo para aplicarlo o no en
 	  # lugar de comprobar la longitud del archivo.
-          if (len(self.pluginsbulmafact[self.i][4]) > 4):
-            self.command = 'su postgres -c \"psql -t -f  ' + plugins.pathdbplugins + self.pluginsbulmafact[self.i][4] +' '+ self.database +'\"'
+          if (len(self.mui_plugins.item(self.i,4).text()) > 4):
+            self.command = 'su postgres -c \"psql -t -f  ' + plugins.pathdbplugins + self.mui_plugins.item(self.i,4).text() +' '+ self.database +'\"'
             self.writecommand(self.command)
             self.process.start(self.command)
             self.process.waitForFinished(-1)
             self.writecommand(self.process.readAllStandardOutput())
         else:
           # Si no esta chequeado hacemos un borrado del plugin
-          if (len(self.pluginsbulmafact[self.i][9]) > 4):
+          if (len(self.mui_plugins.item(self.i,9).text()) > 4):
             # Aplicamos el parche  de borrado.
-            self.command = 'su postgres -c \"psql -t -f  ' + plugins.pathdbplugins + self.pluginsbulmafact[self.i][9] +' '+ self.database +'\"'
+            self.command = 'su postgres -c \"psql -t -f  ' + plugins.pathdbplugins + self.mui_plugins.item(self.i,9).text() +' '+ self.database +'\"'
             self.writecommand(self.command)
             self.process.start(self.command)
             self.process.waitForFinished(-1)
@@ -469,20 +495,20 @@ class Facturacion(Ui_ModificarFacturacionBase, Empresa):
       if (self.mui_soporteTPV.isChecked()):
         self.i = 0
         while (self.i < self.mui_plugins1.rowCount()):
-          self.writecommand('Tratando ' + self.pluginsbulmatpv[self.i][0])
+          self.writecommand('Tratando ' + self.mui_plugins1.item(self.i,0).text())
           if (self.mui_plugins1.item(self.i, 0).checkState() == Qt.Checked):
-            if (len(self.pluginsbulmatpv[self.i][4]) > 4):
-              self.writecommand('Actualizando ' + self.pluginsbulmatpv[self.i][0])
-              self.command = 'su postgres -c \"psql -t -f  ' + plugins.pathdbplugins + self.pluginsbulmatpv[self.i][4] +' '+ self.database +'\"'
+            if (len(self.mui_plugins1.item(self.i,4).text()) > 4):
+              self.writecommand('Actualizando ' + self.mui_plugins1.item(self.i,0).text())
+              self.command = 'su postgres -c \"psql -t -f  ' + plugins.pathdbplugins + self.mui_plugins1.item(self.i,4).text() +' '+ self.database +'\"'
               self.writecommand(self.command)
               self.process.start(self.command)
               self.process.waitForFinished(-1)
               self.writecommand(self.process.readAllStandardOutput())
           else:
             # Si no esta chequeado hacemos un borrado del plugin
-            if (len(self.pluginsbulmatpv[self.i][9]) > 4):
+            if (len(self.mui_plugins1(self.i,9).text()) > 4):
               # Aplicamos el parche  de borrado.
-              self.command = 'su postgres -c \"psql -t -f  ' + plugins.pathdbplugins + self.pluginsbulmatpv[self.i][9] +' '+ self.database +'\"'
+              self.command = 'su postgres -c \"psql -t -f  ' + plugins.pathdbplugins + self.mui_plugins1.item(self.i,9).text() +' '+ self.database +'\"'
               self.writecommand(self.command)
               self.process.start(self.command)
               self.process.waitForFinished(-1)
@@ -501,7 +527,7 @@ class Facturacion(Ui_ModificarFacturacionBase, Empresa):
       #Creamos la bara de progreso
       self.progress = QtGui.QProgressBar()
       self.progress.setGeometry(self.width() / 2 -100, self.height() /2 -10, 200, 40)
-      self.progress.setRange(0, len(self.pluginsbulmafact)+len(self.pluginsbulmatpv))
+      self.progress.setRange(0, len(self.pluginsbulmafact) + len(self.pluginsbulmatpv))
       self.progress.show()
       self.semaforo = 0
       self.mui_plugins.setRowCount(len(self.pluginsbulmafact))
@@ -516,6 +542,16 @@ class Facturacion(Ui_ModificarFacturacionBase, Empresa):
         self.mui_plugins.setItem(self.i, 0, self.check)
         self.mui_plugins.setItem(self.i, 2, QTableWidgetItem(self.versioninst))
         self.mui_plugins.setItem(self.i , 1 , QTableWidgetItem(QtGui.QApplication.translate("MainWindow",self.pluginsbulmafact[self.i][2], None, QtGui.QApplication.UnicodeUTF8)))
+
+        self.mui_plugins.setItem(self.i , 3 , QTableWidgetItem(QtGui.QApplication.translate("MainWindow",self.pluginsbulmafact[self.i][3], None, QtGui.QApplication.UnicodeUTF8)))
+        self.mui_plugins.setItem(self.i , 4 , QTableWidgetItem(QtGui.QApplication.translate("MainWindow",self.pluginsbulmafact[self.i][4], None, QtGui.QApplication.UnicodeUTF8)))
+        self.mui_plugins.setItem(self.i , 5 , QTableWidgetItem(QtGui.QApplication.translate("MainWindow",self.pluginsbulmafact[self.i][5], None, QtGui.QApplication.UnicodeUTF8)))
+        self.mui_plugins.setItem(self.i , 6 , QTableWidgetItem(QtGui.QApplication.translate("MainWindow",self.pluginsbulmafact[self.i][6], None, QtGui.QApplication.UnicodeUTF8)))
+#        self.mui_plugins.setItem(self.i , 7 , QTableWidgetItem(QtGui.QApplication.translate("MainWindow",self.pluginsbulmafact[self.i][7], None, QtGui.QApplication.UnicodeUTF8)))
+        self.mui_plugins.setItem(self.i , 8 , QTableWidgetItem(QtGui.QApplication.translate("MainWindow",self.pluginsbulmafact[self.i][8], None, QtGui.QApplication.UnicodeUTF8)))
+        self.mui_plugins.setItem(self.i , 9 , QTableWidgetItem(QtGui.QApplication.translate("MainWindow",self.pluginsbulmafact[self.i][9], None, QtGui.QApplication.UnicodeUTF8)))
+        self.mui_plugins.setItem(self.i , 10 , QTableWidgetItem(QtGui.QApplication.translate("MainWindow",self.pluginsbulmafact[self.i][1], None, QtGui.QApplication.UnicodeUTF8)))
+
 #        self.mui_plugins.setRowHeight(self.i, 50)
         self.i = self.i + 1
         self.progress.setValue(self.progress.value() + 1)
@@ -533,6 +569,14 @@ class Facturacion(Ui_ModificarFacturacionBase, Empresa):
         self.mui_plugins1.setItem(self.i, 0, self.check)
         self.mui_plugins1.setItem(self.i, 2, QTableWidgetItem(self.versioninst))
         self.mui_plugins1.setItem(self.i , 1 , QTableWidgetItem(QtGui.QApplication.translate("MainWindow",self.pluginsbulmatpv[self.i][2], None, QtGui.QApplication.UnicodeUTF8)))
+        self.mui_plugins1.setItem(self.i , 3 , QTableWidgetItem(QtGui.QApplication.translate("MainWindow",self.pluginsbulmatpv[self.i][3], None, QtGui.QApplication.UnicodeUTF8)))
+        self.mui_plugins1.setItem(self.i , 4 , QTableWidgetItem(QtGui.QApplication.translate("MainWindow",self.pluginsbulmatpv[self.i][4], None, QtGui.QApplication.UnicodeUTF8)))
+        self.mui_plugins1.setItem(self.i , 5 , QTableWidgetItem(QtGui.QApplication.translate("MainWindow",self.pluginsbulmatpv[self.i][5], None, QtGui.QApplication.UnicodeUTF8)))
+        self.mui_plugins1.setItem(self.i , 6 , QTableWidgetItem(QtGui.QApplication.translate("MainWindow",self.pluginsbulmatpv[self.i][6], None, QtGui.QApplication.UnicodeUTF8)))
+#        self.mui_plugins1.setItem(self.i , 7 , QTableWidgetItem(QtGui.QApplication.translate("MainWindow",self.pluginsbulmatpv[self.i][7], None, QtGui.QApplication.UnicodeUTF8)))
+        self.mui_plugins1.setItem(self.i , 8 , QTableWidgetItem(QtGui.QApplication.translate("MainWindow",self.pluginsbulmatpv[self.i][8], None, QtGui.QApplication.UnicodeUTF8)))
+        self.mui_plugins1.setItem(self.i , 9 , QTableWidgetItem(QtGui.QApplication.translate("MainWindow",self.pluginsbulmatpv[self.i][9], None, QtGui.QApplication.UnicodeUTF8)))
+        self.mui_plugins1.setItem(self.i , 10 , QTableWidgetItem(QtGui.QApplication.translate("MainWindow",self.pluginsbulmatpv[self.i][1], None, QtGui.QApplication.UnicodeUTF8)))
         self.i = self.i + 1
         self.progress.setValue(self.progress.value() + 1)
         
@@ -653,7 +697,7 @@ class Facturacion(Ui_ModificarFacturacionBase, Empresa):
         cat = self.mui_categoria.currentText()
         self.i = 0
         while (self.i < self.mui_plugins.rowCount()):
-          text = QString(self.pluginsbulmafact[self.i][8])
+          text = QString(self.mui_plugins.item(self.i,8).text())
           a = text.contains(cat)
           if (not a):
             self.mui_plugins.hideRow(self.i)
@@ -662,7 +706,7 @@ class Facturacion(Ui_ModificarFacturacionBase, Empresa):
         # Vamos a trabajar con el combo Box
         self.i = 0
         while (self.i < self.mui_plugins1.rowCount()):
-          text = QString(self.pluginsbulmatpv[self.i][8])
+          text = QString(self.mui_plugins1.item(self.i,8).text())
           a = text.contains(cat)
           if (not a):
             self.mui_plugins1.hideRow(self.i)
