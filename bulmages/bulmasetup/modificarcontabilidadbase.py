@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'modificarcontabilidadbase.ui'
 #
-# Created: Thu May 28 00:17:02 2009
+# Created: Thu May 28 19:58:14 2009
 #      by: PyQt4 UI code generator 4.4.4
 #
 # WARNING! All changes made in this file will be lost!
@@ -62,11 +62,6 @@ class Ui_ModificarContabilidadBase(object):
         self.horizontalLayout_2.setSpacing(0)
         self.horizontalLayout_2.setMargin(0)
         self.horizontalLayout_2.setObjectName("horizontalLayout_2")
-        self.mui_vertodos = QtGui.QCheckBox(self.groupBox)
-        self.mui_vertodos.setObjectName("mui_vertodos")
-        self.horizontalLayout_2.addWidget(self.mui_vertodos)
-        spacerItem = QtGui.QSpacerItem(43, 20, QtGui.QSizePolicy.Expanding, QtGui.QSizePolicy.Minimum)
-        self.horizontalLayout_2.addItem(spacerItem)
         self.horizontalLayout = QtGui.QHBoxLayout()
         self.horizontalLayout.setSpacing(0)
         self.horizontalLayout.setObjectName("horizontalLayout")
@@ -74,10 +69,20 @@ class Ui_ModificarContabilidadBase(object):
         self.label_5.setObjectName("label_5")
         self.horizontalLayout.addWidget(self.label_5)
         self.mui_categoria = QtGui.QComboBox(self.groupBox)
+        sizePolicy = QtGui.QSizePolicy(QtGui.QSizePolicy.Expanding, QtGui.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.mui_categoria.sizePolicy().hasHeightForWidth())
+        self.mui_categoria.setSizePolicy(sizePolicy)
         self.mui_categoria.setObjectName("mui_categoria")
         self.horizontalLayout.addWidget(self.mui_categoria)
         self.horizontalLayout_2.addLayout(self.horizontalLayout)
+        spacerItem = QtGui.QSpacerItem(43, 20, QtGui.QSizePolicy.Expanding, QtGui.QSizePolicy.Minimum)
+        self.horizontalLayout_2.addItem(spacerItem)
         self.verticalLayout_2.addWidget(self.groupBox)
+        self.mui_vertodos = QtGui.QCheckBox(ModificarContabilidadBase)
+        self.mui_vertodos.setObjectName("mui_vertodos")
+        self.verticalLayout_2.addWidget(self.mui_vertodos)
         self.tabWidget = QtGui.QTabWidget(ModificarContabilidadBase)
         self.tabWidget.setObjectName("tabWidget")
         self.tab = QtGui.QWidget()
@@ -179,8 +184,8 @@ class Ui_ModificarContabilidadBase(object):
         self.mui_actualizarDB.setText(QtGui.QApplication.translate("ModificarContabilidadBase", "Actualizar Base de Datos", None, QtGui.QApplication.UnicodeUTF8))
         self.label_3.setText(QtGui.QApplication.translate("ModificarContabilidadBase", "Version de la Base de Datos", None, QtGui.QApplication.UnicodeUTF8))
         self.groupBox.setTitle(QtGui.QApplication.translate("ModificarContabilidadBase", "Opciones de Filtrado de Plugins", None, QtGui.QApplication.UnicodeUTF8))
-        self.mui_vertodos.setText(QtGui.QApplication.translate("ModificarContabilidadBase", "Mostrar todos los plugins o solo los instalados", None, QtGui.QApplication.UnicodeUTF8))
         self.label_5.setText(QtGui.QApplication.translate("ModificarContabilidadBase", "Categoria ", None, QtGui.QApplication.UnicodeUTF8))
+        self.mui_vertodos.setText(QtGui.QApplication.translate("ModificarContabilidadBase", "Mostrar todos los plugins o solo los instalados", None, QtGui.QApplication.UnicodeUTF8))
         self.mui_plugins.setSortingEnabled(True)
         self.mui_plugins.horizontalHeaderItem(0).setText(QtGui.QApplication.translate("ModificarContabilidadBase", "Plugin", None, QtGui.QApplication.UnicodeUTF8))
         self.mui_plugins.horizontalHeaderItem(1).setText(QtGui.QApplication.translate("ModificarContabilidadBase", "Descripcion", None, QtGui.QApplication.UnicodeUTF8))

@@ -14,8 +14,19 @@ class Contabilidad(Ui_ModificarContabilidadBase, Empresa):
    def __init__(self, database, parent = None):
       Empresa.__init__(self, database)
       self.setupUi(self)
+
       # Ocultamos la columna de las descripciones.
+      self.mui_plugins.setColumnCount(11)
       self.mui_plugins.hideColumn(1)
+      self.mui_plugins.hideColumn(3)
+      self.mui_plugins.hideColumn(4)
+      self.mui_plugins.hideColumn(5)
+      self.mui_plugins.hideColumn(6)
+      self.mui_plugins.hideColumn(7)
+      self.mui_plugins.hideColumn(8)
+      self.mui_plugins.hideColumn(9)
+      self.mui_plugins.hideColumn(10)
+
       # Buscamos los Plugins
       self.buscaPlugins()
       # Ajustamos la presentacion
@@ -117,6 +128,17 @@ class Contabilidad(Ui_ModificarContabilidadBase, Empresa):
          self.mui_plugins.setItem(self.i, 0, self.check)
          self.mui_plugins.setItem(self.i, 2, QTableWidgetItem(self.versioninst))
          self.mui_plugins.setItem(self.i , 1 , QTableWidgetItem(QtGui.QApplication.translate("MainWindow",self.pluginsbulmacont[self.i][2], None, QtGui.QApplication.UnicodeUTF8)))
+
+         self.mui_plugins.setItem(self.i , 3 , QTableWidgetItem(QtGui.QApplication.translate("MainWindow",self.pluginsbulmacont[self.i][3], None, QtGui.QApplication.UnicodeUTF8)))
+         self.mui_plugins.setItem(self.i , 4 , QTableWidgetItem(QtGui.QApplication.translate("MainWindow",self.pluginsbulmacont[self.i][4], None, QtGui.QApplication.UnicodeUTF8)))
+         self.mui_plugins.setItem(self.i , 5 , QTableWidgetItem(QtGui.QApplication.translate("MainWindow",self.pluginsbulmacont[self.i][5], None, QtGui.QApplication.UnicodeUTF8)))
+         self.mui_plugins.setItem(self.i , 6 , QTableWidgetItem(QtGui.QApplication.translate("MainWindow",self.pluginsbulmacont[self.i][6], None, QtGui.QApplication.UnicodeUTF8)))
+         self.mui_plugins.setItem(self.i , 7 , QTableWidgetItem(QtCore.QString.number(self.pluginsbulmacont[self.i][7])))
+         self.mui_plugins.setItem(self.i , 8 , QTableWidgetItem(QtGui.QApplication.translate("MainWindow",self.pluginsbulmacont[self.i][8], None, QtGui.QApplication.UnicodeUTF8)))
+         self.mui_plugins.setItem(self.i , 9 , QTableWidgetItem(QtGui.QApplication.translate("MainWindow",self.pluginsbulmacont[self.i][9], None, QtGui.QApplication.UnicodeUTF8)))
+         self.mui_plugins.setItem(self.i , 10 , QTableWidgetItem(QtGui.QApplication.translate("MainWindow",self.pluginsbulmacont[self.i][1], None, QtGui.QApplication.UnicodeUTF8)))
+
+
          self.i = self.i + 1
          self.progress.setValue(self.progress.value() + 1)
       self.progress.hide()
@@ -135,21 +157,21 @@ class Contabilidad(Ui_ModificarContabilidadBase, Empresa):
       
       self.i = 0
       while (self.i < self.mui_plugins.rowCount()):
-         self.writecommand('Tratando ' + self.pluginsbulmacont[self.i][0])
+         self.writecommand('Tratando ' + self.mui_plugins.item(self.i, 0).text())
          if (self.mui_plugins.item(self.i, 0).checkState() == Qt.Checked):
-            self.writecommand('Ha que actualizar ' + self.pluginsbulmacont[self.i][0])
+            self.writecommand('Ha que actualizar ' + self.mui_plugins.item(self.i,0).text())
 	    # En realidad deberia comprobar que el archivo existe.
-            if (len(self.pluginsbulmacont[self.i][4]) > 4):
-               self.command = 'su postgres -c \"psql -t -f ' + plugins.pathdbplugins + self.pluginsbulmacont[self.i][4] + ' ' + self.database + '\"'
+            if (len(self.mui_plugins.item(self.i, 4).text()) > 4):
+               self.command = 'su postgres -c \"psql -t -f ' + plugins.pathdbplugins + self.mui_plugins.item(self.i,4).text() + ' ' + self.database + '\"'
                self.writecommand(self.command)
                self.process.start(self.command)
                self.process.waitForFinished(-1)
                self.writecommand(self.process.readAllStandardOutput())
          else:
             # Si no esta chequeado hacemos un borrado del plugin
-            if (len(self.pluginsbulmacont[self.i][9]) > 4 ):
+            if (len(self.mui_plugins.item(self.i,9).text()) > 4 ):
               # Aplicamos el parche  de borrado.
-              self.command = 'su postgres -c \"psql -t -f  ' + plugins.pathdbplugins + self.pluginsbulmacont[self.i][9] +' '+ self.database +'\"'
+              self.command = 'su postgres -c \"psql -t -f  ' + plugins.pathdbplugins + self.mui_plugins.item(self.i,9).text() +' '+ self.database +'\"'
               self.writecommand(self.command)
               self.process.start(self.command)
               self.process.waitForFinished(-1)
@@ -159,40 +181,40 @@ class Contabilidad(Ui_ModificarContabilidadBase, Empresa):
       self.progress.hide()
 
    def marcar(self, plug):
-      self.j = 0
-      for self.it in self.pluginsbulmacont:
-         if (self.pluginsbulmacont[self.j][1] == plug):
-            self.mui_plugins.item(self.j,0).setCheckState(Qt.Checked)
-         self.j = self.j + 1
+      self.i = 0
+      while (self.i < self.mui_plugins.rowCount()):
+         if (self.mui_plugins.item(self.i,10).text() == plug):
+            self.mui_plugins.item(self.i,0).setCheckState(Qt.Checked)
+         self.i = self.i + 1
 
    def desmarcar(self, plug):
-      self.j = 0
-      for self.it in self.pluginsbulmacont:
-         if (self.pluginsbulmacont[self.j][1] == plug):
-            self.mui_plugins.item(self.j,0).setCheckState(Qt.Unchecked)
-         self.j = self.j + 1
+      self.i = 0
+      while (self.i < self.mui_plugins.rowCount()):
+         if (self.mui_plugins.item(self.i,10).text() == plug):
+            self.mui_plugins.item(self.i,0).setCheckState(Qt.Unchecked)
+         self.i = self.i + 1
 
    def on_mui_plugins_cellClicked(self, row, col):
       # Escribimos la descripcion 
-      self.mui_descripcion.setText(self.mui_plugins.item(row,1).text() + "<b>" + self.pluginsbulmacont[row][1] + "</b><br>"+ self.pluginsbulmacont[row][3] + "<br><b>Categorias:</b> " + self.pluginsbulmacont[row][8]+ "<br><br><b>Dependencias:</b> " + self.pluginsbulmacont[row][5] + "<br><br><b>Incompatibilidades:</b> " + self.pluginsbulmacont[row][6] + "<br><br><b>Parches SQL:</b><br>" + self.pluginsbulmacont[row][4] + "<br>" + self.pluginsbulmacont[row][9])
+      self.mui_descripcion.setText(self.mui_plugins.item(row,1).text() + "<b>" + self.mui_plugins.item(row,10).text() + "</b><br>"+ self.mui_plugins.item(row,3).text() + "<br><b>Categorias:</b> " + self.mui_plugins.item(row,8).text()+ "<br><br><b>Dependencias:</b> " + self.mui_plugins.item(row,5).text() + "<br><br><b>Incompatibilidades:</b> " + self.mui_plugins.item(row,6).text() + "<br><br><b>Parches SQL:</b><br>" + self.mui_plugins.item(row,4).text() + "<br>" + self.mui_plugins.item(row,9).text())
      
       if (self.semaforo == 1):
          # Marcamos las dependencias
          self.i = 0
          while (self.i < self.mui_plugins.rowCount()):
             if (self.mui_plugins.item(self.i, 0).checkState() == Qt.Checked):
-               self.arr = self.pluginsbulmacont[self.i][5].split(QString(","))
+               self.arr = self.mui_plugins.item(self.i,5).text().split(QString(","))
                for self.dep in self.arr:
                   self.marcar(self.dep)
             self.i = self.i +1
          # Desmarcamos las incompatibilidades
-         self.arr = self.pluginsbulmacont[row][6].split(QString(","))
+         self.arr = self.mui_plugins.item(row,6).text().split(QString(","))
          for self.dep in self.arr:
             self.desmarcar(self.dep)
          self.i = 0
          while (self.i < self.mui_plugins.rowCount()):
             if (self.mui_plugins.item(self.i, 0).checkState() == Qt.Checked):
-               self.arr = self.pluginsbulmacont[self.i][6].split(QString(","))
+               self.arr = self.mui_plugins.item(self.i,6).text().split(QString(","))
                for self.dep in self.arr:
                   self.desmarcar(self.dep)
             self.i = self.i +1
@@ -249,19 +271,19 @@ class Contabilidad(Ui_ModificarContabilidadBase, Empresa):
         self.i = 0
         while (self.i < self.mui_plugins.rowCount()):
           # Si el plugin tiene el orden adecuado lo consideramos.
-          if (self.pluginsbulmacont[self.i][7] == self.x ):
-            self.writecommand('Tratando ' + self.pluginsbulmacont[self.i][0])
+          if (self.mui_plugins.item(self.i,7).text().toInt() == self.x ):
+            self.writecommand('Tratando ' + self.mui_plugins.item(self.i,0).text())
             # Si el plugin esta checked lo escribimos.
-            if (self.mui_plugins.item(self.i, 0).checkState() == Qt.Checked and len(self.pluginsbulmacont[self.i][1]) > 3):
+            if (self.mui_plugins.item(self.i, 0).checkState() == Qt.Checked and len(self.mui_plugins.item(self.i,1).text()) > 3):
               if (self.nuevo == 1):
                  self.nuevo = 0
                  # Escribimos la configuracion de plugins.
                  self.terminador = ""
                  self.out << "CONF_PLUGINS_BULMACONT   "
 	      # Si hay que aplicar un plugin entonces lo escribimos
-	      if (self.pluginsbulmacont[self.i][1] != 'None' and len(self.pluginsbulmacont[self.i][1]) > 3):
-		self.writecommand('Hay que actualizar ' + self.pluginsbulmacont[self.i][0])
-		self.out << self.terminador << self.pluginsbulmacont[self.i][1]
+	      if (self.mui_plugins.item(self.i,10).text() != 'None' and len(self.mui_plugins.item(self.i,10).text()) > 3):
+		self.writecommand('Hay que actualizar ' + self.mui_plugins.item(self.i,0).text())
+		self.out << self.terminador << self.mui_plugins.item(self.i,10).text()
 		self.terminador = "; \\\n";
           self.i = self.i + 1
         self.x = self.x + 1
@@ -305,7 +327,7 @@ class Contabilidad(Ui_ModificarContabilidadBase, Empresa):
         cat = self.mui_categoria.currentText()
         self.i = 0
         while (self.i < self.mui_plugins.rowCount()):
-          text = QString(self.pluginsbulmacont[self.i][8])
+          text = QString(self.mui_plugins.item(self.i,8).text())
           a = text.contains(cat)
           if (not a):
             self.mui_plugins.hideRow(self.i)

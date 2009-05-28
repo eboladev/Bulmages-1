@@ -143,7 +143,7 @@ class Facturacion(Ui_ModificarFacturacionBase, Empresa):
         self.i = 0
         while (self.i < self.mui_plugins.rowCount()):
           # Si el plugin tiene el orden adecuado lo consideramos.
-          if (self.mui_plugins.item(self.i,7).text() == self.x ):
+          if (self.mui_plugins.item(self.i,7).text().toInt() == self.x ):
             self.writecommand('Tratando ' + self.mui_plugins.item(self.i,0).text())
             # Si el plugin esta checked lo escribimos.
             if (self.mui_plugins.item(self.i, 0).checkState() == Qt.Checked and len(self.mui_plugins.item(self.i,10).text()) > 3):
@@ -217,9 +217,9 @@ class Facturacion(Ui_ModificarFacturacionBase, Empresa):
         while (self.x < 1000) :
           self.i = 0
           while (self.i < self.mui_plugins1.rowCount()):
-              if (self.mui_plugins1.item(self.i,7).text() == self.x):
+              if (self.mui_plugins1.item(self.i,7).text().toInt() == self.x):
                 self.writecommand('Tratando ' + self.mui_plugins1.item(self.i,0).text())
-                if (self.mui_plugins1.item(self.i, 0).checkState() == Qt.Checked and len(self.mui_plugins1.item(self.i,10).text()) > 3):
+                if (self.mui_plugins1.item(self.i, 0).checkState() == Qt.Checked and len (self.mui_plugins1.item (self.i, 10).text()) > 3):
                   if (self.nuevo == 1):
                     self.nuevo = 0
                     self.out << "CONF_PLUGINS_BULMATPV   "
@@ -242,30 +242,67 @@ class Facturacion(Ui_ModificarFacturacionBase, Empresa):
         self.file1.close()
 
 
-   def marcar(self, plug):
-      self.i = 0
-      while (self.i < self.mui_plugins1.rowCount()):
-         if (self.mui_plugins1.item(self.i,10).text() == plug):
-            self.mui_plugins1.item(self.i,0).setCheckState(Qt.Checked)
-         self.i = self.i + 1
-      self.i = 0
-      while (self.i < self.mui_plugins.rowCount()):
-         if (self.mui_plugins.item(self.i,10).text() == plug):
-            self.mui_plugins.item(self.i,0).setCheckState(Qt.Checked)
-         self.i = self.i + 1
+   def marcar(self, plug, rec, first = 0):
+      i = 0
+      while (i < self.mui_plugins1.rowCount()):
+         if (self.mui_plugins1.item(i,10).text() == plug):
+            if (self.mui_plugins1.item(i, 0).checkState() == Qt.Unchecked or first == 1):
+	      if (rec == 1):
+		self.mui_plugins1.item(i,0).setCheckState(Qt.Checked)
+		# Desmarcamos las incompatibilidades
+		self.arr = self.mui_plugins1.item(i,6).text().replace(' ;',';').replace('; ',';').split(QString(";"))
+		if self.arr != ['']:
+			for self.dep in self.arr:
+			    self.desmarcar(self.dep,1)
+		# Marcamos las dependencias
+		self.arr = self.mui_plugins1.item(i,5).text().replace(' ;',';').replace('; ',';').split(QString(";"))
+		if self.arr != ['']:
+			for self.dep in self.arr:
+			    self.marcar(self.dep,1)
+         i = i + 1
+      i = 0
+      while (i < self.mui_plugins.rowCount()):
+         if (self.mui_plugins.item(i,10).text() == plug):
+            if (self.mui_plugins.item(i, 0).checkState() == Qt.Unchecked or first == 1):
+	      self.mui_plugins.item(i,0).setCheckState(Qt.Checked)
+	      if (rec == 1):
+		# Desmarcamos las incompatibilidades
+		self.arr = self.mui_plugins.item(i,6).text().replace(' ;',';').replace('; ',';').split(QString(";"))
+		if self.arr != ['']:
+			for self.dep in self.arr:
+			    self.desmarcar(self.dep,1)
+		# Marcamos las dependencias
+		self.arr = self.mui_plugins.item(i,5).text().replace(' ;',';').replace('; ',';').split(QString(";"))
+		if self.arr != ['']:
+			for self.dep in self.arr:
+			    self.marcar(self.dep,1)
+         i = i + 1
 
-   def desmarcar(self, plug):
-      self.i = 0
-      while (self.i < self.mui_plugins1.rowCount()):
-         if (self.mui_plugins1.item(self.i,10).text() == plug):
-            self.mui_plugins1.item(self.i,0).setCheckState(Qt.Unchecked)
-         self.i = self.i + 1
-      self.i = 0
-      while (self.i < self.mui_plugins.rowCount()):
-         if (self.mui_plugins.item(self.i,10).text() == plug):
-            self.mui_plugins.item(self.i,0).setCheckState(Qt.Unchecked)
-         self.i = self.i + 1
-
+   def desmarcar(self, plug, rec, first = 0):
+      i = 0
+      while (i < self.mui_plugins1.rowCount()):
+	 if (self.mui_plugins1.item(i, 0).checkState() == Qt.Checked or first == 1):
+	   if (rec == 1):
+	     # Marcamos las dependencias
+	     self.arr = self.mui_plugins1.item(i,5).text().replace(' ;',';').replace('; ',';').split(QString(";"))
+	     if self.arr != ['']:
+		for self.dep in self.arr:
+		      if (self.dep == plug):
+			  self.desmarcar(self.mui_plugins1.item(i,10).text(),1)
+			  self.mui_plugins1.item(i,0).setCheckState(Qt.Unchecked)
+         i = i + 1
+      i = 0
+      while (i < self.mui_plugins.rowCount()):
+         if (self.mui_plugins.item(i, 0).checkState() == Qt.Checked or first == 1):
+	   if (rec == 1):
+	      # Marcamos las dependencias
+	      self.arr = self.mui_plugins.item(i,5).text().replace(' ;',';').replace('; ',';').split(QString(";"))
+	      if self.arr != ['']:
+	         for self.dep in self.arr:
+		    if (self.dep == plug):
+		       self.desmarcar(self.mui_plugins.item(i,10).text(),1)
+		       self.mui_plugins.item(i,0).setCheckState(Qt.Unchecked)
+         i = i + 1
 
 
    def on_mui_plugins_cellPressed(self, row, col):
@@ -278,6 +315,9 @@ class Facturacion(Ui_ModificarFacturacionBase, Empresa):
     if (self.semaforo == 1):
         if (self.estado != self.mui_plugins.item(row,0).checkState()):
             # Comprobamos que esta marcado el checkbox de la fila donde hemos clicado:
+            if (self.mui_plugins.item(row, 0).checkState() == Qt.Unchecked):
+            # Comprobamos que esta marcado el checkbox de la fila donde hemos clicado:
+		self.desmarcar(self.mui_plugins.item(row,10).text(),1,1)
             if (self.mui_plugins.item(row, 0).checkState() == Qt.Checked):
                 # Desmarcamos las incompatibilidades
                 self.arr = self.mui_plugins.item(row,6).text().replace(' ;',';').replace('; ',';').split(QString(";"))
@@ -294,7 +334,7 @@ class Facturacion(Ui_ModificarFacturacionBase, Empresa):
                     respuesta = message.clickedButton().text()
                     if respuesta == Yes:
                         for self.dep in self.arr:
-                            self.desmarcar(self.dep)
+                            self.desmarcar(self.dep,1,1)
                 # Marcamos las dependencias
                 self.arr = self.mui_plugins.item(row,5).text().replace(' ;',';').replace('; ',';').split(QString(";"))
                 if self.arr != ['']:
@@ -310,12 +350,8 @@ class Facturacion(Ui_ModificarFacturacionBase, Empresa):
                     respuesta = message.clickedButton().text()
                     if respuesta == Yes:
                         for self.dep in self.arr:
-                            self.marcar(self.dep)
-                        # Llamamos a la funcion que marca las dependencias de las dependencias
-                        self.marcar_dependencias_recursivamente(0)
-                        self.desmarcar_incompatibilidades_recursivamente(1)
+                            self.marcar(self.dep,1,1)
 
-                    
                     
    def on_mui_plugins1_cellPressed(self, row, col):
       self.estado = self.mui_plugins1.item(row,0).checkState()
@@ -325,6 +361,9 @@ class Facturacion(Ui_ModificarFacturacionBase, Empresa):
    def on_mui_plugins1_cellClicked(self, row, col):
       if (self.semaforo == 1):
         if (self.estado != self.mui_plugins1.item(row,0).checkState()):
+            if (self.mui_plugins1.item(row, 0).checkState() == Qt.Unchecked):
+            # Comprobamos que esta marcado el checkbox de la fila donde hemos clicado:
+		self.desmarcar(self.mui_plugins1.item(row,10).text(),1,1)
             # Comprobamos que esta marcado el checkbox de la fila donde hemos clicado:
             if (self.mui_plugins1.item(row, 0).checkState() == Qt.Checked):
                 # Desmarcamos las incompatibilidades
@@ -342,7 +381,7 @@ class Facturacion(Ui_ModificarFacturacionBase, Empresa):
                     respuesta = message.clickedButton().text()
                     if respuesta == Yes:
                         for self.dep in self.arr:
-                            self.desmarcar(self.dep)
+                            self.desmarcar(self.dep,1,1)
                 # Marcamos las dependencias
                 self.arr = self.mui_plugins1.item(row,5).text().replace(' ;',';').replace('; ',';').split(QString(";"))
                 if self.arr != ['']:
@@ -358,103 +397,9 @@ class Facturacion(Ui_ModificarFacturacionBase, Empresa):
                     respuesta = message.clickedButton().text()
                     if respuesta == Yes:
                         for self.dep in self.arr:
-                            self.marcar(self.dep)
-                        self.marcar_dependencias_recursivamente(0)
-                        # Desmarcamos las incompatibilidades de las nuevas dependencias marcadas.
-                        self.desmarcar_incompatibilidades_recursivamente(1)
+                            self.marcar(self.dep,1,1)
 
 
-   def marcar_dependencias_recursivamente(self, marcados):
-    # Recorremos toda la lista de plugins, y por cada uno que este marcado buscamos sus dependencias y las marcamos
-    self.i = 0
-    while (self.i < self.mui_plugins.rowCount()):
-        if (self.mui_plugins.item(self.i, 0).checkState() == Qt.Checked):
-            self.arr = self.mui_plugins.item(self.i,5).text().replace(' ;',';').replace('; ',';').split(QString(";"))
-            if (self.arr != ['']) and (self.arr != None):
-                for self.dep in self.arr:
-                    self.marcar(self.dep)
-        self.i = self.i +1
-    # Buscamos y marcamos mas dependencias en la lista de plugins del TPV:
-    self.i = 0
-    while (self.i < self.mui_plugins1.rowCount()):
-        if (self.mui_plugins1.item(self.i, 0).checkState() == Qt.Checked):
-            self.arr = self.mui_plugins1.item(self.i,5).text().replace(' ;',';').replace('; ',';').split(QString(";"))
-            if (self.arr != ['']) and (self.arr != None):
-                for self.dep in self.arr:
-                    self.marcar(self.dep)
-        self.i = self.i +1
-
-    # Recorremos todos los plugins y contamos cuantos hay marcados
-    yamarcados = marcados
-    marcados = 0
-    while (self.i < self.mui_plugins.rowCount()):
-        if (self.mui_plugins.item(self.i, 0).checkState() != 0):
-            marcados = marcados + 1
-        self.i = self.i +1
-    while (self.i < self.mui_plugins1.rowCount()):
-        if (self.mui_plugins1.item(self.i, 0).checkState() != 0):
-            marcados = marcados + 1
-        self.i = self.i +1
-
-    # Si se han marcado mas dependencias, repetimos toda la operacion para buscar mas dependencias incumplidas.
-    if marcados != yamarcados:
-        self.marcar_dependencias_recursivamente(marcados)
-
-
-   def desmarcar_incompatibilidades_recursivamente(self, pregunta):
-    # Recorremos toda la lista de plugins, y por cada uno que este marcado buscamos sus incompatibilidades y las desmarcamos
-    self.i = 0
-    while (self.i < self.mui_plugins.rowCount()):
-        if (self.mui_plugins.item(self.i, 0).checkState() == Qt.Checked):
-            self.arr = self.mui_plugins.item(self.i,6).text().replace(' ;',';').replace('; ',';').split(QString(";"))
-            if (self.arr != ['']) and (self.arr != None):
-                if pregunta == 0:
-                    Yes = 'Si'
-                    No = 'No'
-                    message = QtGui.QMessageBox(self)
-                    message.setText('El plugin <b>' +str(self.mui_plugins.item(self.i,10).text() + "</b> tiene incompatibilidades. Quieres desinstalarlas?"))
-                    message.setWindowTitle('Atencion!')
-                    message.setIcon(QtGui.QMessageBox.Warning)
-                    message.addButton(Yes, QtGui.QMessageBox.AcceptRole)
-                    message.addButton(No, QtGui.QMessageBox.RejectRole)
-                    message.exec_()
-                    respuesta = message.clickedButton().text()
-                    if respuesta == Yes:
-                        pregunta = 1
-                        for self.dep in self.arr:
-                            self.desmarcar(self.dep)
-                else:
-                    for self.dep in self.arr:
-                        self.desmarcar(self.dep)
-        self.i = self.i +1
-    # Buscamos mas incompatibilidades en la lista de plugins del TPV:
-    self.i = 0
-    while (self.i < self.mui_plugins1.rowCount()):
-        if (self.mui_plugins1.item(self.i, 0).checkState() == Qt.Checked):
-            self.arr = self.mui_plugins1.item(self.i,6).text().replace(' ;',';').replace('; ',';').split(QString(";"))
-            if (self.arr != ['']) and (self.arr != None):
-                if pregunta == 0:
-                    Yes = 'Si'
-                    No = 'No'
-                    message = QtGui.QMessageBox(self)
-                    message.setText('El plugin <b>' +str(self.mui_plugins1.item(row,10).text() + "</b> tiene incompatibilidades. Quieres desinstalarlas?"))
-                    message.setWindowTitle('Atencion!')
-                    message.setIcon(QtGui.QMessageBox.Warning)
-                    message.addButton(Yes, QtGui.QMessageBox.AcceptRole)
-                    message.addButton(No, QtGui.QMessageBox.RejectRole)
-                    message.exec_()
-                    respuesta = message.clickedButton().text()
-                    if respuesta == Yes:
-                        pregunta = 1
-                        for self.dep in self.arr:
-                            self.desmarcar(self.dep)
-                else:
-                    for self.dep in self.arr:
-                        self.desmarcar(self.dep)
-        self.i = self.i +1
-        
-        
-        
         
    def actualizarPlugins(self):
       self.writecommand('ACTUALIZANDO PLUGINS')
@@ -506,7 +451,7 @@ class Facturacion(Ui_ModificarFacturacionBase, Empresa):
               self.writecommand(self.process.readAllStandardOutput())
           else:
             # Si no esta chequeado hacemos un borrado del plugin
-            if (len(self.mui_plugins1(self.i,9).text()) > 4):
+            if (len(self.mui_plugins1.item(self.i,9).text()) > 4):
               # Aplicamos el parche  de borrado.
               self.command = 'su postgres -c \"psql -t -f  ' + plugins.pathdbplugins + self.mui_plugins1.item(self.i,9).text() +' '+ self.database +'\"'
               self.writecommand(self.command)
@@ -547,7 +492,7 @@ class Facturacion(Ui_ModificarFacturacionBase, Empresa):
         self.mui_plugins.setItem(self.i , 4 , QTableWidgetItem(QtGui.QApplication.translate("MainWindow",self.pluginsbulmafact[self.i][4], None, QtGui.QApplication.UnicodeUTF8)))
         self.mui_plugins.setItem(self.i , 5 , QTableWidgetItem(QtGui.QApplication.translate("MainWindow",self.pluginsbulmafact[self.i][5], None, QtGui.QApplication.UnicodeUTF8)))
         self.mui_plugins.setItem(self.i , 6 , QTableWidgetItem(QtGui.QApplication.translate("MainWindow",self.pluginsbulmafact[self.i][6], None, QtGui.QApplication.UnicodeUTF8)))
-#        self.mui_plugins.setItem(self.i , 7 , QTableWidgetItem(QtGui.QApplication.translate("MainWindow",self.pluginsbulmafact[self.i][7], None, QtGui.QApplication.UnicodeUTF8)))
+        self.mui_plugins.setItem(self.i , 7 , QTableWidgetItem(QtCore.QString.number(self.pluginsbulmafact[self.i][7])))
         self.mui_plugins.setItem(self.i , 8 , QTableWidgetItem(QtGui.QApplication.translate("MainWindow",self.pluginsbulmafact[self.i][8], None, QtGui.QApplication.UnicodeUTF8)))
         self.mui_plugins.setItem(self.i , 9 , QTableWidgetItem(QtGui.QApplication.translate("MainWindow",self.pluginsbulmafact[self.i][9], None, QtGui.QApplication.UnicodeUTF8)))
         self.mui_plugins.setItem(self.i , 10 , QTableWidgetItem(QtGui.QApplication.translate("MainWindow",self.pluginsbulmafact[self.i][1], None, QtGui.QApplication.UnicodeUTF8)))
@@ -573,7 +518,8 @@ class Facturacion(Ui_ModificarFacturacionBase, Empresa):
         self.mui_plugins1.setItem(self.i , 4 , QTableWidgetItem(QtGui.QApplication.translate("MainWindow",self.pluginsbulmatpv[self.i][4], None, QtGui.QApplication.UnicodeUTF8)))
         self.mui_plugins1.setItem(self.i , 5 , QTableWidgetItem(QtGui.QApplication.translate("MainWindow",self.pluginsbulmatpv[self.i][5], None, QtGui.QApplication.UnicodeUTF8)))
         self.mui_plugins1.setItem(self.i , 6 , QTableWidgetItem(QtGui.QApplication.translate("MainWindow",self.pluginsbulmatpv[self.i][6], None, QtGui.QApplication.UnicodeUTF8)))
-#        self.mui_plugins1.setItem(self.i , 7 , QTableWidgetItem(QtGui.QApplication.translate("MainWindow",self.pluginsbulmatpv[self.i][7], None, QtGui.QApplication.UnicodeUTF8)))
+
+        self.mui_plugins1.setItem(self.i , 7 , QTableWidgetItem(QtCore.QString.number(self.pluginsbulmatpv[self.i][7])))
         self.mui_plugins1.setItem(self.i , 8 , QTableWidgetItem(QtGui.QApplication.translate("MainWindow",self.pluginsbulmatpv[self.i][8], None, QtGui.QApplication.UnicodeUTF8)))
         self.mui_plugins1.setItem(self.i , 9 , QTableWidgetItem(QtGui.QApplication.translate("MainWindow",self.pluginsbulmatpv[self.i][9], None, QtGui.QApplication.UnicodeUTF8)))
         self.mui_plugins1.setItem(self.i , 10 , QTableWidgetItem(QtGui.QApplication.translate("MainWindow",self.pluginsbulmatpv[self.i][1], None, QtGui.QApplication.UnicodeUTF8)))

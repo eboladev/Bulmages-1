@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'modificarfacturacionbase.ui'
 #
-# Created: Thu May 28 00:14:39 2009
+# Created: Thu May 28 21:42:11 2009
 #      by: PyQt4 UI code generator 4.4.4
 #
 # WARNING! All changes made in this file will be lost!
@@ -215,6 +215,7 @@ class Ui_ModificarFacturacionBase(object):
         self.mui_plugins.horizontalHeaderItem(1).setText(QtGui.QApplication.translate("ModificarFacturacionBase", "Descripcion", None, QtGui.QApplication.UnicodeUTF8))
         self.mui_plugins.horizontalHeaderItem(2).setText(QtGui.QApplication.translate("ModificarFacturacionBase", "Version Instalada", None, QtGui.QApplication.UnicodeUTF8))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab), QtGui.QApplication.translate("ModificarFacturacionBase", "Plugins BulmaFact", None, QtGui.QApplication.UnicodeUTF8))
+        self.mui_plugins1.setSortingEnabled(True)
         self.mui_plugins1.horizontalHeaderItem(0).setText(QtGui.QApplication.translate("ModificarFacturacionBase", "Plugin", None, QtGui.QApplication.UnicodeUTF8))
         self.mui_plugins1.horizontalHeaderItem(1).setText(QtGui.QApplication.translate("ModificarFacturacionBase", "Descripcion", None, QtGui.QApplication.UnicodeUTF8))
         self.mui_plugins1.horizontalHeaderItem(2).setText(QtGui.QApplication.translate("ModificarFacturacionBase", "Version Instalada", None, QtGui.QApplication.UnicodeUTF8))

@@ -136,4 +136,5 @@ class Empresa(QtGui.QDialog, PluginsBulmaSetup):
         self.mui_textBrowser.append("<BR><font color =\"#00FF00\">Started.</font>")
 
     def writecommand(self, comm):
-        self.mui_textBrowser.append("<font color =\"#0000FF\">" + QtGui.QApplication.translate("MainWindow", comm, None, QtGui.QApplication.UnicodeUTF8) + "</font>")
+        # self.mui_textBrowser.append("<font color =\"#0000FF\">" + QtGui.QApplication.translate("MainWindow", comm, None, QtGui.QApplication.UnicodeUTF8) + "</font>")
+        self.mui_textBrowser.append("<font color =\"#0000FF\">" + comm + "</font>")
