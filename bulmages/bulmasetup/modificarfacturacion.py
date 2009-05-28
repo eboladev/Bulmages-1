@@ -14,22 +14,25 @@ from modificarusuario import ModificarUsuario
 class ModificarFacturacion( Facturacion):
     def __init__(self, database, parent = None):
         Facturacion.__init__(self, database, parent)
-        self.mui_nomdb.setText(self.database)
-
-        self.nombre = self.execQuery('SELECT valor FROM configuracion where nombre =\'NombreEmpresa\';').replace('\n', '')
-        self.databaserevision = self.execQuery('SELECT valor FROM configuracion where nombre =\'DatabaseRevision\';').replace('\n', '')
-        self.mui_nomempresa.setText(self.nombre.replace('\n', ''))
-        self.mui_databaserevision.setText(self.databaserevision.replace('\n', ''))
-    
+        # Establecemos cual va a ser la base de datos con la que trabajaremos y conectamos con ella
+        self.conectar(self.database)
+        # Sacamos el nombre de la empresa y el numero de revision de la base de datos
+        self.nombre = self.executeone('SELECT valor FROM configuracion where nombre =\'NombreEmpresa\'')
+        self.databaserevision = self.executeone('SELECT valor FROM configuracion where nombre =\'DatabaseRevision\'')
         # Comprobamos la existencia de la parte de TPV
-        self.tpvexists = self.execQuery('SELECT valor FROM configuracion WHERE nombre = \'DBRev-BulmaTPV\';').replace('\n','')
-        if (len(self.tpvexists) > 3):
-            self.mui_soporteTPV.setCheckState(Qt.Checked)
-        else:
-            self.mui_soporteTPV.setCheckState(Qt.Unchecked)
-        
+        self.tpvexists = self.executeone('SELECT valor FROM configuracion WHERE nombre = \'DBRev-BulmaTPV\'')
+        # Desconectamos
+        self.desconectar()
+        # Rellenamos las campos con los datos obtenido en las consultas anteriores
+        self.mui_nomdb.setText(self.database)
+        self.mui_nomempresa.setText(self.nombre[0])
+        self.mui_databaserevision.setText(self.databaserevision[0])
+        if (self.tpvexists != None):
+            if (len(self.tpvexists[0]) > 3):
+                self.mui_soporteTPV.setCheckState(Qt.Checked)
+            else:
+                self.mui_soporteTPV.setCheckState(Qt.Unchecked)
 
-  
     def on_mui_hacerbackup_released(self):
         # Ponemos la pestanya de consola como la visible
         self.tabWidget.setCurrentIndex(2)
@@ -41,7 +44,6 @@ class ModificarFacturacion( Facturacion):
         self.process.start(self.command)
         self.process.waitForFinished(-1)
         self.writecommand(self.process.readAllStandardOutput())
-
 
     def on_mui_aceptar_released(self):
         # Ponemos la pestanya de consola como la visible

@@ -18,15 +18,13 @@ class ListEmpresas(Ui_ListEmpresasBase, Empresa):
         self.mui_listado.resizeColumnsToContents()
 
     def buscarEmpresas(self):
-    
         # Ponemos la pestanya de consola como la visible
         self.tabWidget.setCurrentIndex(1)
-        
+        # Conectamos a la base de datos template1 para despues sacar la lista de bases de datos
         self.conectar('template1')
         self.databases = self.execute("SELECT datname FROM pg_database ORDER BY datname")
-        #Desconectamos la base de datos
+        # Desconectamos de template1
         self.desconectar()
-        
         self.mui_listado.setRowCount(0)
         self.i = 0
         
@@ -50,38 +48,6 @@ class ListEmpresas(Ui_ListEmpresasBase, Empresa):
                             
         # Ponemos la pestanya principal como la visible
         self.tabWidget.setCurrentIndex(0)
-
-
-  #def buscarEmpresas(self):
-    #self.command = 'su - postgres -c \"echo \'SELECT datname FROM pg_database\' | psql -t template1\"'
-    #self.writecommand(self.command)
-    #self.process.start(self.command)
-    #self.process.waitForFinished(-1)
-    #self.databases = QString(self.process.readAllStandardOutput())
-    #self.writecommand(self.databases)
-    #self.arrdatabase = self.databases.split(QString(" "))
-    #self.mui_listado.setRowCount(self.arrdatabase.count() -1)
-    #self.i = 1
-    #self.progress = QtGui.QProgressBar(self)
-  ##   self.progress.setGeometry(self.width /2, self.height/2, 200, 20)
-    #self.progress.setGeometry(self.width() / 2 -100, self.height() /2 -10, 200, 40)
-    #self.progress.setRange(0, self.arrdatabase.count())
-    #self.progress.show()
-    #while (self.i < self.arrdatabase.count()):
-        #self.writecommand(self.arrdatabase[self.i])
-        #self.mui_listado.setItem(self.i-1 , 1 , QTableWidgetItem(self.arrdatabase[self.i].replace('\n', '')))
-        #self.nombre = self.execQuery('SELECT valor FROM configuracion where nombre =\'NombreEmpresa\';').replace('\n', '')
-        #self.tipo = self.execQuery('SELECT valor FROM configuracion where nombre =\'Tipo\';').replace('\n', '').replace(' ','')
-        #self.databaserevision = self.execQuery('SELECT valor FROM configuracion where nombre =\'DatabaseRevision\';').replace('\n', '')
-        #self.mui_listado.setItem(self.i-1 , 0 , QTableWidgetItem(self.nombre))
-        #self.mui_listado.setItem(self.i-1 , 2 , QTableWidgetItem(self.tipo))
-        #self.mui_listado.setItem(self.i-1 , 3 , QTableWidgetItem(self.databaserevision))
-        #if (self.tipo == ''):
-          #self.mui_listado.hideRow(self.i-1)
-        #self.i = self.i + 1
-        #self.progress.setValue(self.progress.value() + 1)
-    #self.progress.hide()
-
     def on_mui_listado_cellDoubleClicked(self, row, col):
         if (self.mui_listado.item(row,2).text() == QString('BulmaFact')):
             self.fact = ModificarFacturacion(str(self.mui_listado.item(row,1).text()))

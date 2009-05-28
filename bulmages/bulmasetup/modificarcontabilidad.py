@@ -15,12 +15,13 @@ class ModificarContabilidad(Contabilidad):
     def __init__(self, database, parent = None):
         Contabilidad.__init__(self,database, parent)
         # Establecemos cual va a ser la base de datos con la que trabajaremos todo el rato
-        self.nombre = self.execQuery('SELECT valor FROM configuracion where nombre =\'NombreEmpresa\';').replace('\n', '')
-        self.databaserevision = self.execQuery('SELECT valor FROM configuracion where nombre =\'DatabaseRevision\';').replace('\n', '')
-        self.mui_nomempresa.setText(self.nombre.replace('\n', ''))
-        self.mui_databaserevision.setText(self.databaserevision.replace('\n', ''))
+        self.conectar(self.database)
+        self.nombre = self.executeone('SELECT valor FROM configuracion where nombre =\'NombreEmpresa\'')
+        self.databaserevision = self.executeone('SELECT valor FROM configuracion where nombre =\'DatabaseRevision\'')
+        self.desconectar()
+        self.mui_nomempresa.setText(self.nombre[0])
+        self.mui_databaserevision.setText(self.databaserevision[0])
         self.mui_nomdb.setText(self.database)
-
 
     def on_mui_hacerbackup_released(self):
         self.writecommand("Backup")
@@ -44,7 +45,6 @@ class ModificarContabilidad(Contabilidad):
     def on_mui_permisos_released(self):
         win = ModificarUsuario()
         win.exec_()
-
 
 def main(args):
     app=QtGui.QApplication(args)

@@ -61,7 +61,6 @@ class Contabilidad(Ui_ModificarContabilidadBase, Empresa):
    def buscaPlugins1(self):
       self.plugins = self.execQuery('SELECT nombre, valor FROM configuracion WHERE nombre LIKE \'DBRev-%\'')
       self.writecommand(self.plugins)
-      print self.plugins
       self.arrplugins = self.plugins.split(QString("\n"))
       self.mui_plugins.setRowCount(self.arrplugins.count() -3)
       self.i = 0
@@ -75,7 +74,6 @@ class Contabilidad(Ui_ModificarContabilidadBase, Empresa):
          self.i = self.i + 1
    
    def buscaPluginInstalado(self, plugin, libreria):
-      print '-->' + plugin +  ' ' + libreria
       self.version = self.execQuery('SELECT valor FROM configuracion WHERE nombre = \'' + plugin +'\'').replace('\n','').replace(' ','')
       if (len(self.version) > 2):
          return self.version
@@ -175,9 +173,9 @@ class Contabilidad(Ui_ModificarContabilidadBase, Empresa):
          self.j = self.j + 1
 
    def on_mui_plugins_cellClicked(self, row, col):
-      # Escribimos la descripcion
-      self.mui_descripcion.setText(self.mui_plugins.item(row,1).text() + "<b>" + self.pluginsbulmacont[row][1] + "</b><br>"+ self.pluginsbulmacont[row][3] + "<br>" + self.pluginsbulmacont[row][4] + "<br><b>Categorias:</b> " + self.pluginsbulmacont[row][8]+ "<br>" + self.pluginsbulmacont[row][9] + "<br><b>Dependencias:</b> " + self.pluginsbulmacont[row][5] + "<br><br><b>Incompatibilidades:</b> " + self.pluginsbulmacont[row][6])
-
+      # Escribimos la descripcion 
+      self.mui_descripcion.setText(self.mui_plugins.item(row,1).text() + "<b>" + self.pluginsbulmacont[row][1] + "</b><br>"+ self.pluginsbulmacont[row][3] + "<br><b>Categorias:</b> " + self.pluginsbulmacont[row][8]+ "<br><br><b>Dependencias:</b> " + self.pluginsbulmacont[row][5] + "<br><br><b>Incompatibilidades:</b> " + self.pluginsbulmacont[row][6] + "<br><br><b>Parches SQL:</b><br>" + self.pluginsbulmacont[row][4] + "<br>" + self.pluginsbulmacont[row][9])
+     
       if (self.semaforo == 1):
          # Marcamos las dependencias
          self.i = 0
