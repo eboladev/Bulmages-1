@@ -1,264 +1,290 @@
-<ui version="4.0" >
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
  <class>BfBulmaFactBase</class>
- <widget class="QMainWindow" name="BfBulmaFactBase" >
-  <property name="geometry" >
+ <widget class="QMainWindow" name="BfBulmaFactBase">
+  <property name="geometry">
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>750</width>
-    <height>551</height>
+    <width>798</width>
+    <height>604</height>
    </rect>
   </property>
-  <property name="minimumSize" >
+  <property name="minimumSize">
    <size>
     <width>750</width>
     <height>550</height>
    </size>
   </property>
-  <property name="focusPolicy" >
+  <property name="focusPolicy">
    <enum>Qt::StrongFocus</enum>
   </property>
-  <property name="windowTitle" >
+  <property name="windowTitle">
    <string>Iglues/BulmaFact - Facturacion GPL</string>
   </property>
-  <property name="windowIcon" >
-   <iconset resource="../../bulmages.qrc" >
+  <property name="windowIcon">
+   <iconset resource="../../bulmages.qrc">
     <normaloff>:/Images/iconbulmafact.svg</normaloff>:/Images/iconbulmafact.svg</iconset>
   </property>
-  <widget class="QWidget" name="centralwidget" />
-  <widget class="QMenuBar" name="menubar" >
-   <property name="geometry" >
+  <widget class="QWidget" name="centralwidget"/>
+  <widget class="QMenuBar" name="menubar">
+   <property name="geometry">
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>750</width>
-     <height>22</height>
+     <width>798</width>
+     <height>23</height>
     </rect>
    </property>
-   <widget class="QMenu" name="menuAcerca_de" >
-    <property name="title" >
+   <widget class="QMenu" name="menuAcerca_de">
+    <property name="title">
      <string>A&amp;yuda</string>
     </property>
-    <addaction name="actionDocumentacion" />
-    <addaction name="separator" />
-    <addaction name="actionAcerta_de" />
+    <addaction name="actionDocumentacion"/>
+    <addaction name="separator"/>
+    <addaction name="actionAcerta_de"/>
    </widget>
-   <widget class="QMenu" name="menuEmpresa" >
-    <property name="title" >
+   <widget class="QMenu" name="menuEmpresa">
+    <property name="title">
      <string>E&amp;mpresa</string>
     </property>
-    <addaction name="actionParametros" />
-    <addaction name="actionSalir" />
+    <addaction name="actionParametros"/>
+    <addaction name="actionSalir"/>
    </widget>
-   <widget class="QMenu" name="menuMaestro" >
-    <property name="title" >
+   <widget class="QMenu" name="menuMaestro">
+    <property name="title">
      <string>Maest&amp;ro</string>
     </property>
-    <addaction name="actionPaises" />
+    <addaction name="actionPaises"/>
    </widget>
-   <widget class="QMenu" name="menuVentana" >
-    <property name="title" >
+   <widget class="QMenu" name="menuVentana">
+    <property name="title">
      <string>Venta&amp;na</string>
     </property>
-    <addaction name="actionVentana_Completa" />
-    <addaction name="actionOrganizaci_n_en_Cascada" />
-    <addaction name="actionOrdenar_Ventanas" />
-    <addaction name="actionIndexador" />
+    <addaction name="actionVentana_Completa"/>
+    <addaction name="actionOrganizaci_n_en_Cascada"/>
+    <addaction name="actionOrdenar_Ventanas"/>
+    <addaction name="actionIndexador"/>
    </widget>
-   <addaction name="menuEmpresa" />
-   <addaction name="menuMaestro" />
-   <addaction name="menuVentana" />
-   <addaction name="menuAcerca_de" />
+   <addaction name="menuEmpresa"/>
+   <addaction name="menuMaestro"/>
+   <addaction name="menuVentana"/>
+   <addaction name="menuAcerca_de"/>
   </widget>
-  <widget class="QStatusBar" name="statusbar" />
-  <widget class="QToolBar" name="Listados" >
-   <property name="focusPolicy" >
+  <widget class="QStatusBar" name="statusbar"/>
+  <widget class="QToolBar" name="Listados">
+   <property name="focusPolicy">
     <enum>Qt::TabFocus</enum>
    </property>
-   <property name="windowTitle" >
+   <property name="windowTitle">
     <string>Listados</string>
    </property>
-   <property name="toolTip" >
+   <property name="toolTip">
     <string>Listados</string>
    </property>
-   <property name="statusTip" >
+   <property name="statusTip">
     <string>Listados</string>
    </property>
-   <property name="whatsThis" >
+   <property name="whatsThis">
     <string>Listados</string>
    </property>
-   <property name="accessibleName" >
+   <property name="accessibleName">
     <string>Listados</string>
    </property>
-   <property name="accessibleDescription" >
+   <property name="accessibleDescription">
     <string>Listados</string>
    </property>
-   <property name="orientation" >
+   <property name="orientation">
     <enum>Qt::Horizontal</enum>
    </property>
-   <property name="iconSize" >
+   <property name="iconSize">
     <size>
      <width>32</width>
      <height>32</height>
     </size>
    </property>
-   <attribute name="toolBarArea" >
+   <attribute name="toolBarArea">
     <enum>TopToolBarArea</enum>
    </attribute>
-   <attribute name="toolBarBreak" >
+   <attribute name="toolBarBreak">
     <bool>false</bool>
    </attribute>
   </widget>
-  <widget class="QToolBar" name="Fichas" >
-   <property name="sizePolicy" >
-    <sizepolicy vsizetype="Expanding" hsizetype="Minimum" >
+  <widget class="QToolBar" name="Fichas">
+   <property name="sizePolicy">
+    <sizepolicy hsizetype="Minimum" vsizetype="Expanding">
      <horstretch>0</horstretch>
      <verstretch>0</verstretch>
     </sizepolicy>
    </property>
-   <property name="minimumSize" >
+   <property name="minimumSize">
     <size>
      <width>0</width>
      <height>0</height>
     </size>
    </property>
-   <property name="windowTitle" >
+   <property name="windowTitle">
     <string>Fichas</string>
    </property>
-   <property name="toolTip" >
+   <property name="toolTip">
     <string>Fichas</string>
    </property>
-   <property name="statusTip" >
+   <property name="statusTip">
     <string>Fichas</string>
    </property>
-   <property name="whatsThis" >
+   <property name="whatsThis">
     <string>Fichas</string>
    </property>
-   <property name="accessibleName" >
+   <property name="accessibleName">
     <string>Fichas</string>
    </property>
-   <property name="accessibleDescription" >
+   <property name="accessibleDescription">
     <string>Fichas</string>
    </property>
-   <property name="autoFillBackground" >
+   <property name="autoFillBackground">
     <bool>true</bool>
    </property>
-   <property name="orientation" >
+   <property name="orientation">
     <enum>Qt::Horizontal</enum>
    </property>
-   <property name="iconSize" >
+   <property name="iconSize">
     <size>
      <width>32</width>
      <height>32</height>
     </size>
    </property>
-   <property name="toolButtonStyle" >
+   <property name="toolButtonStyle">
     <enum>Qt::ToolButtonIconOnly</enum>
    </property>
-   <attribute name="toolBarArea" >
+   <attribute name="toolBarArea">
     <enum>TopToolBarArea</enum>
    </attribute>
-   <attribute name="toolBarBreak" >
+   <attribute name="toolBarBreak">
     <bool>false</bool>
    </attribute>
+   <addaction name="actionPaises"/>
   </widget>
-  <action name="actionSalir" >
-   <property name="icon" >
-    <iconset>
-     <normaloff/>
-    </iconset>
+  <widget class="QToolBar" name="Avanzada">
+   <property name="windowTitle">
+    <string>Avanzados</string>
    </property>
-   <property name="text" >
+   <property name="floatable">
+    <bool>true</bool>
+   </property>
+   <attribute name="toolBarArea">
+    <enum>TopToolBarArea</enum>
+   </attribute>
+   <attribute name="toolBarBreak">
+    <bool>false</bool>
+   </attribute>
+   <addaction name="actionSalir"/>
+   <addaction name="actionIndexador"/>
+   <addaction name="actionVentana_Completa"/>
+  </widget>
+  <action name="actionSalir">
+   <property name="icon">
+    <iconset resource="../../bulmages.qrc">
+     <normaloff>:/BulmaCont32x32/images/png/i_exit.png</normaloff>:/BulmaCont32x32/images/png/i_exit.png</iconset>
+   </property>
+   <property name="text">
     <string>&amp;Salir del programa</string>
    </property>
-   <property name="shortcut" >
+   <property name="shortcut">
     <string>Ctrl+Q</string>
    </property>
   </action>
-  <action name="actionParametros" >
-   <property name="icon" >
-    <iconset resource="../../bulmages.qrc" >
+  <action name="actionParametros">
+   <property name="icon">
+    <iconset resource="../../bulmages.qrc">
      <normaloff>:/Images/document-properties.svg</normaloff>:/Images/document-properties.svg</iconset>
    </property>
-   <property name="text" >
+   <property name="text">
     <string>&amp;Propiedades de la empresa...</string>
    </property>
-   <property name="toolTip" >
+   <property name="toolTip">
     <string>Propiedades de la empresa</string>
    </property>
   </action>
-  <action name="actionVentana_Completa" >
-   <property name="checkable" >
+  <action name="actionVentana_Completa">
+   <property name="checkable">
     <bool>true</bool>
    </property>
-   <property name="text" >
+   <property name="icon">
+    <iconset resource="../../bulmages.qrc">
+     <normaloff>:/BulmaCont32x32/images/png/i_windowNew.png</normaloff>:/BulmaCont32x32/images/png/i_windowNew.png</iconset>
+   </property>
+   <property name="text">
     <string>Ventana &amp;completa</string>
    </property>
-   <property name="shortcut" >
+   <property name="shortcut">
     <string>F11</string>
    </property>
   </action>
-  <action name="actionAcerta_de" >
-   <property name="text" >
+  <action name="actionAcerta_de">
+   <property name="text">
     <string>&amp;Acerca de Iglues/BulmaFact</string>
    </property>
   </action>
-  <action name="actionDocumentacion" >
-   <property name="text" >
+  <action name="actionDocumentacion">
+   <property name="text">
     <string>&amp;Documentacion</string>
    </property>
-   <property name="shortcut" >
+   <property name="shortcut">
     <string>F1</string>
    </property>
   </action>
-  <action name="actionIndexador" >
-   <property name="checkable" >
+  <action name="actionIndexador">
+   <property name="checkable">
     <bool>true</bool>
    </property>
-   <property name="checked" >
+   <property name="checked">
     <bool>true</bool>
    </property>
-   <property name="text" >
+   <property name="icon">
+    <iconset resource="../../bulmages.qrc">
+     <normaloff>:/BulmaCont32x32/images/png/i_plan.png</normaloff>:/BulmaCont32x32/images/png/i_plan.png</iconset>
+   </property>
+   <property name="text">
     <string>&amp;Indexador</string>
    </property>
-   <property name="iconText" >
+   <property name="iconText">
     <string>Indexador</string>
    </property>
-   <property name="toolTip" >
+   <property name="toolTip">
     <string>Indexador</string>
    </property>
-   <property name="shortcut" >
+   <property name="shortcut">
     <string>Ctrl+I</string>
    </property>
   </action>
-  <action name="actionOrganizaci_n_en_Cascada" >
-   <property name="text" >
+  <action name="actionOrganizaci_n_en_Cascada">
+   <property name="text">
     <string>Organizacio&amp;n en cascada</string>
    </property>
   </action>
-  <action name="actionOrdenar_Ventanas" >
-   <property name="text" >
+  <action name="actionOrdenar_Ventanas">
+   <property name="text">
     <string>Ordenar &amp;ventanas</string>
    </property>
   </action>
-  <action name="actionPaises" >
-   <property name="icon" >
-    <iconset resource="../../bulmages.qrc" >
+  <action name="actionPaises">
+   <property name="icon">
+    <iconset resource="../../bulmages.qrc">
      <normaloff>:/Images/flag-world.svg</normaloff>:/Images/flag-world.svg</iconset>
    </property>
-   <property name="text" >
+   <property name="text">
     <string>Paises / Provincias</string>
    </property>
-   <property name="iconText" >
+   <property name="iconText">
     <string>Paises / Provincias</string>
    </property>
-   <property name="toolTip" >
+   <property name="toolTip">
     <string>Paises y provincias</string>
    </property>
   </action>
  </widget>
  <resources>
-  <include location="../../bulmages.qrc" />
+  <include location="../../bulmages.qrc"/>
  </resources>
  <connections>
   <connection>
@@ -267,11 +293,11 @@
    <receiver>BfBulmaFactBase</receiver>
    <slot>close()</slot>
    <hints>
-    <hint type="sourcelabel" >
+    <hint type="sourcelabel">
      <x>-1</x>
      <y>-1</y>
     </hint>
-    <hint type="destinationlabel" >
+    <hint type="destinationlabel">
      <x>374</x>
      <y>275</y>
     </hint>
