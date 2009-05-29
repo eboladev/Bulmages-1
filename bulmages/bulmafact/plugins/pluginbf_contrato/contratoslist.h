@@ -71,8 +71,6 @@ class ContratosList : public BlFormList, public Ui_ContratosListBase, public BlI
     Q_OBJECT
 
 private:
-    /// Indica si la pantalla esta en modo edicion o en modo seleccion.
-    edmode m_modo;
     /// Almacene el idcontratoe del registro seleccionado.
     QString mdb_idcontrato;
     /// Almacena el nomcontratoe del contratoe seleccionado.
@@ -83,27 +81,17 @@ private:
 public:
     ContratosList ( BfCompany *, QWidget *parent = 0, Qt::WFlags flag = 0, edmode editmode = BL_EDIT_MODE );
     ~ContratosList();
-    void selectMode();
-    void editMode();
     void presenta();
     QString idcontrato();
     QString nomcontrato();
     QString refcontrato();
-    void hideBotonera();
-    void showBotonera();
-    void hideBusqueda();
-    void showBusqueda();
     void editar ( int );
     virtual void on_mui_actualizar_released();
     virtual void on_mui_crear_released();
-    virtual void on_mui_editar_released();
-    virtual void on_mui_imprimir_released();
-    virtual void on_mui_borrar_released();
     virtual void on_m_filtro_textChanged ( const QString &text );
     virtual void on_mui_configurar_toggled ( bool checked );
 
 public slots:
-    void on_mui_list_itemDoubleClicked ( QTableWidgetItem * );
     virtual void on_mui_facturar_released();
 
 signals:

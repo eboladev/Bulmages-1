@@ -59,7 +59,6 @@ ContratosList::ContratosList ( BfCompany *comp, QWidget *parent, Qt::WFlags flag
     mui_idcliente->setMainCompany ( comp );
     mdb_idcontrato = "";
     mdb_nomcontrato = "";
-    m_modo = editmode;
     /// Establecemos los parametros de busqueda del Cliente
     mui_idcliente->setLabel ( _ ( "Cliente:" ) );
     mui_idcliente->setTableName ( "cliente" );
@@ -67,7 +66,7 @@ ContratosList::ContratosList ( BfCompany *comp, QWidget *parent, Qt::WFlags flag
     mui_idcliente->m_valores["nomcliente"] = "";
     hideBusqueda();
     /// Si estamos en el modo edici&oacute;n metemos la ventana en el workSpace.
-    if ( m_modo == BL_EDIT_MODE ) {
+    if ( modoEdicion()) {
         mainCompany() ->meteWindow ( windowTitle(), this );
     } else {
         setWindowTitle ( _ ( "Selector de contratos" ) );
@@ -129,7 +128,7 @@ void ContratosList::editar ( int row )
     mdb_idcontrato = mui_list->dbValue ( "idcontrato", row );
     mdb_refcontrato = mui_list->dbValue ( "refcontrato", row );
     mdb_nomcontrato = mui_list->dbValue ( "nomcontrato", row );
-    if ( m_modo == 0 ) {
+    if ( modoEdicion() ) {
         ContratoView * prov = new ContratoView ( ( BfCompany * ) mainCompany() );
         if ( prov->cargar ( mdb_idcontrato ) ) {
             delete prov;
@@ -145,86 +144,7 @@ void ContratosList::editar ( int row )
 }
 
 
-/** SLOT que responde a la pulsacion del boton editar.
-    Comprueba que existe un elemento seleccionado y llama al metodo editar().
-*/
-/**
-\return
-**/
-void ContratosList::on_mui_editar_released()
-{
-    _depura ( "ContratosList::on_mui_editar_released", 0 );
-    if ( mui_list->currentRow() < 0 ) {
-        _depura ( "Debe seleccionar un elemento", 2 );
-        return;
-    } // end if
-    editar ( mui_list->currentRow() );
-    _depura ( "END ContratosList::on_mui_editar_released", 0 );
-}
 
-
-/** SLOT que responde a la pulsacion del boton imprimir.
-    La impresion de listados esta completamente delegada a BlSubForm
-*/
-/**
-**/
-void ContratosList::on_mui_imprimir_released()
-{
-    _depura ( "ContratosList::on_mui_imprimir_released", 0 );
-    mui_list->imprimirPDF ( _ ( "Listado de Contratos" ) );
-    _depura ( "ContratosList::on_mui_imprimir_released", 0 );
-}
-
-
-
-
-/** SLOT que responde a la pulsacion del boton borrar.
-    Instancia la clase ClienteView, lo inicializa con el contrato seleccionado y le lanza el evento de borrar.
-    Esta es la forma adecuada de borrar desde el listado ya que asi preservamos el tema plugins.
-*/
-/**
-**/
-void ContratosList::on_mui_borrar_released()
-{
-    _depura ( "ContratosList::on_mui_borrar_released", 0 );
-    try {
-        /*
-                QString idcontrato = mui_list->dbValue("idcontrato");
-                ClienteView *cli = mainCompany()->newClienteView();
-                if (cli->cargar(idcontrato)) {
-                    delete cli;
-                    throw -1;
-                } // end if
-                cli->on_mui_borrar_released();
-                delete cli;
-                presenta();
-        */
-    } catch ( ... ) {
-        mensajeInfo ( _ ( "Error al borrar un contrato" ) );
-    } // end try
-    _depura ( "END:ContratosList::on_mui_borrar_released", 0 );
-}
-
-
-/// Establece el modo de funcionamiento como selector para esta ventana
-/**
-**/
-void ContratosList::selectMode()
-{
-    _depura ( "ContratosList::selectMode", 0 );
-    m_modo = BL_SELECT_MODE;
-    _depura ( "END ContratosList::selectMode", 0 );
-}
-
-/// Establece el modo de funcionamiento como selector para edicion para esta ventana
-/**
-**/
-void ContratosList::editMode()
-{
-    _depura ( "ContratosList::editMode", 0 );
-    m_modo = BL_EDIT_MODE;
-    _depura ( "END ContratosList::editMode", 0 );
-}
 
 /// Devuelve el identificador del contrato seleccionado
 /**
@@ -261,48 +181,6 @@ QString ContratosList::refcontrato()
 }
 
 
-/// Oculta la botonera
-/**
-**/
-void ContratosList::hideBotonera()
-{
-    _depura ( "ContratosList::hideBotonera", 0 );
-    m_botonera->hide();
-    _depura ( "END ContratosList::hideBotonera", 0 );
-}
-
-
-/// Muestra la botonera
-/**
-**/
-void ContratosList::showBotonera()
-{
-    _depura ( "ContratosList::showBotonera", 0 );
-    m_botonera->show();
-    _depura ( "END ContratosList::showBotonera", 0 );
-}
-
-
-/// Oculta el layer de busqueda
-/**
-**/
-void ContratosList::hideBusqueda()
-{
-    _depura ( "ContratosList::hideBusqueda", 0 );
-    m_busqueda->hide();
-    _depura ( "END ContratosList::hideBusqueda", 0 );
-}
-
-
-/// Muestra el layer de busqueda
-/**
-**/
-void ContratosList::showBusqueda()
-{
-    _depura ( "ContratosList::showBusqueda", 0 );
-    m_busqueda->show();
-    _depura ( "END ContratosList::showBusqueda", 0 );
-}
 
 
 /// SLOT automatico que se ejecuta al cambiar el texto del QLineEdit de filtrado general
@@ -318,15 +196,6 @@ void ContratosList::on_m_filtro_textChanged ( const QString &text )
     _depura ( "END ContratosList::on_m_filtro_textChanged", 0 );
 }
 
-/// SLOT automatico que se ejecuta al hacer doble click sobre un elemento determinado de la lista
-/**
-**/
-void ContratosList::on_mui_list_itemDoubleClicked ( QTableWidgetItem * )
-{
-    _depura ( "ContratosList::on_mui_list_itemDoubleClicked", 0 );
-    on_mui_editar_released();
-    _depura ( "END ContratosList::on_mui_list_itemDoubleClicked", 0 );
-}
 
 /// SLOT automatico que se ejecuta al pulsar sobre el boton de crear en la botonera
 /**

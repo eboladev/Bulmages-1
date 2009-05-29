@@ -64,7 +64,7 @@ void BlPeriodicityComboBox::s_activated ( int index )
 /**
 \param parent
 **/
-BlPeriodicityComboBox::BlPeriodicityComboBox ( QWidget *parent ) : BlComboBox ( parent )
+BlPeriodicityComboBox::BlPeriodicityComboBox ( QWidget *parent ) : QComboBox ( parent )
 {
     _depura ( "BlPeriodicityComboBox::BlPeriodicityComboBox", 0 );
     m_textos[0] = _ ( "Semanal" );

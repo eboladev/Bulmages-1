@@ -122,7 +122,7 @@ int ClienteView_ClienteView ( ClienteView *art )
     ContratosList *l = new ContratosList ( ( ( BfCompany * ) art->mainCompany() ), art, 0, BL_SELECT_MODE );
     l->setObjectName ( QString::fromUtf8 ( "ccontratoslist" ) );
     art->mui_tab->addTab ( l, "Contratos" );
-    l->editMode();
+    l->setModoEdicion();
     _depura ( "END ClienteView_ClienteView", 0 );
     return 0;
 }

@@ -26,7 +26,7 @@
 #include "blfunctions.h"
 
 
-class BL_EXPORT BlPeriodicityComboBox : public BlComboBox
+class BL_EXPORT BlPeriodicityComboBox : public QComboBox
 {
     Q_OBJECT
 
