@@ -4,7 +4,7 @@
 #README.es
 #20080501 
 
-Nombre: Plugin de Devoluciones
+Nombre: Devoluciones v2
 
 Biblioteca: libpluginbt_devolucion2.so
 

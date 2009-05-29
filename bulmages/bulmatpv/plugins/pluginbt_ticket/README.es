@@ -4,7 +4,7 @@
 #README.es
 #20080501 
 
-Nombre: Presentación de ticket en pantalla.
+Nombre: Ticket en pantalla.
 
 Biblioteca: libpluginbt_ticket.so
 

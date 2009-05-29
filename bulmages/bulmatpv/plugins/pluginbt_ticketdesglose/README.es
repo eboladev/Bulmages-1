@@ -4,7 +4,7 @@
 #README.es
 #20080501 
 
-Nombre: Presentación de Resumen de Ticket
+Nombre: Resumen de Ticket en pantalla
 
 Biblioteca: libpluginbt_ticketdesglose.so
 

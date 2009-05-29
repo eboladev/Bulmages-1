@@ -4,7 +4,7 @@
 #README.es
 #20080801 
 
-Nombre: Plugin Tickets Devueltos
+Nombre: Tickets Devueltos
 
 Biblioteca: libpluginbt_ticketdevuelto.so
 

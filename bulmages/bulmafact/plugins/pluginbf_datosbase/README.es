@@ -4,7 +4,7 @@
 #README.es
 #20080501
 
-Nombre: Datos de inicializacion
+Nombre: Datos iniciales
 
 Biblioteca: None
 

@@ -4,11 +4,11 @@
 #README.es
 #20080501 
 
-Nombre: Plugin de Cambio
+Nombre: Cambio
 
 Biblioteca: libplugincambio.so
 
-Descripción: <H1>Plugin de Cambio</H1>
+Descripción: <H1>Cambio</H1>
 <P>Presenta la ventana de devolucion de cambio en los cobros. Y de seleccion de pago con VISA.</P>
 <HR>
 

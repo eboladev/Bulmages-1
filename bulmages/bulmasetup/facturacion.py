@@ -95,7 +95,7 @@ class Facturacion(Ui_ModificarFacturacionBase, Empresa):
       
    def writeConfig(self):
       self.writecommand('ESCRIBIENDO CONFIGURACION')
-      self.writecommand("Escribiendo configuracion en "+ plugins.configfiles)
+      self.writecommand("Escribiendo configuracion en "+ plugins.configfiles + "bulmafact_" + self.database + ".conf " )
       
       # TRATAMOS EL ARCHIVO DE BULMAFACT
       # ================================
@@ -104,13 +104,13 @@ class Facturacion(Ui_ModificarFacturacionBase, Empresa):
       self.string = "touch " + plugins.configfiles + "bulmafact_" + self.database + ".conf "
       self.process.start(self.string)
       self.process.waitForFinished(-1)
-      self.writecommand(self.process.readAllStandardOutput())
+      #self.writecommand(self.process.readAllStandardOutput())
 
       # Hacemos un backup del archivo
       self.string = "cp " + plugins.configfiles + "bulmafact_" + self.database + ".conf " + plugins.configfiles + "bulmafact_" + self.database + ".conf~ "
       self.process.start(self.string)
       self.process.waitForFinished(-1)
-      self.writecommand(self.process.readAllStandardOutput())
+      #self.writecommand(self.process.readAllStandardOutput())
       
       # Abrimos el backup para lectura
       self.file1 = QFile( plugins.configfiles + "bulmafact_" + self.database + ".conf~");
@@ -143,7 +143,7 @@ class Facturacion(Ui_ModificarFacturacionBase, Empresa):
         self.i = 0
         while (self.i < self.mui_plugins.rowCount()):
           # Si el plugin tiene el orden adecuado lo consideramos.
-          if (self.mui_plugins.item(self.i,7).text().toInt() == self.x ):
+          if (str(self.mui_plugins.item(self.i,7).text()) == str(self.x) ):
             self.writecommand('Tratando ' + self.mui_plugins.item(self.i,0).text())
             # Si el plugin esta checked lo escribimos.
             if (self.mui_plugins.item(self.i, 0).checkState() == Qt.Checked and len(self.mui_plugins.item(self.i,10).text()) > 3):
@@ -217,7 +217,7 @@ class Facturacion(Ui_ModificarFacturacionBase, Empresa):
         while (self.x < 1000) :
           self.i = 0
           while (self.i < self.mui_plugins1.rowCount()):
-              if (self.mui_plugins1.item(self.i,7).text().toInt() == self.x):
+              if ( str(self.mui_plugins1.item(self.i,7).text()) == str(self.x)):
                 self.writecommand('Tratando ' + self.mui_plugins1.item(self.i,0).text())
                 if (self.mui_plugins1.item(self.i, 0).checkState() == Qt.Checked and len (self.mui_plugins1.item (self.i, 10).text()) > 3):
                   if (self.nuevo == 1):
@@ -547,23 +547,26 @@ class Facturacion(Ui_ModificarFacturacionBase, Empresa):
       self.version = ''
       if (libreria == ''):
         return ''
-      
+
+      self.process1 = QtCore.QProcess()
       self.mfile = QFile(plugins.configfiles + 'bulmafact_' + self.database + '.conf')
       if (self.mfile.exists()):
         self.command = 'grep '+libreria+' '+ plugins.configfiles + 'bulmafact_' + self.database + '.conf'
         self.writecommand(self.command)
-        self.process.start(self.command)
-        self.process.waitForFinished(-1)
-        self.version = self.process.readAllStandardOutput()
-      
+        self.process1.start(self.command)
+        self.process1.waitForFinished(-1)
+        self.version = self.process1.readAllStandardOutput()
+
+
+
       if (self.version == ''):
         self.mfile = QFile(plugins.configfiles + 'bulmatpv_' + self.database + '.conf')
         if (self.mfile.exists()):
           self.command = 'grep '+libreria+' '+ plugins.configfiles + 'bulmatpv_' + self.database + '.conf'
           self.writecommand(self.command)
-          self.process.start(self.command)
-          self.process.waitForFinished(-1)
-          self.version = self.process.readAllStandardOutput()         
+          self.process1.start(self.command)
+          self.process1.waitForFinished(-1)
+          self.version = self.process1.readAllStandardOutput()         
          
       if (self.version != ''):
         self.version = '0.11'

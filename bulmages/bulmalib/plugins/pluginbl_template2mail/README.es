@@ -4,7 +4,7 @@ Plugins
 #README
 20080502
 
-Nombre: Impresion de informes personalizados por e-mail
+Nombre: Informes personalizados por e-mail
 
 Biblioteca: libpluginbl_template2mail.so
 

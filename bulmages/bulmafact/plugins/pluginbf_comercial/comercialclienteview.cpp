@@ -54,7 +54,21 @@ void ComercialClienteView::setMainCompany ( BfCompany *comp )
 {
     _depura ( "ComercialClienteView::setcompany", 0 );
     BlMainCompanyPointer::setMainCompany ( comp );
+
+    /// Datos por defecto.
     mui_idzonacomercial->setMainCompany ( comp );
-    mui_idzonacomercial->setidzonacomercial ( "0" );
+    mui_idzonacomercial->setQuery ( "SELECT * FROM zonacomercial ORDER BY nomzonacomercial" );
+    mui_idzonacomercial->setTableName ( "zonacomercial" );
+    mui_idzonacomercial->setFieldId ( "idzonacomercial" );
+//    mui_idzonacomercial->m_valores["idzonacomercial"] = "";
+    mui_idzonacomercial->m_valores["nomzonacomercial"] = "";
+    mui_idzonacomercial->setAllowNull ( TRUE );
+    mui_idzonacomercial->setId ( "" );
+
+
+
+
+
+
     _depura ( "END ComercialClienteView::setcompany", 0 );
 }

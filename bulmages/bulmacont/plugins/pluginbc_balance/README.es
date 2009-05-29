@@ -4,7 +4,7 @@ Plugins
 #README
 20080501
 
-Nombre: Plugin de balance
+Nombre: Balance
 
 Biblioteca: libpluginbc_balance.so
 

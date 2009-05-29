@@ -4,7 +4,7 @@
 #README.es
 #20080501
 
-Nombre: Informes personalizados en hoja de calculo
+Nombre: Informes personalizados en ODS
 
 Biblioteca: libpluginbl_report2ods.so
 

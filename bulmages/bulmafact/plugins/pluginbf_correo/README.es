@@ -4,7 +4,7 @@
 #README.es
 #20080501
 
-Nombre: Envio de documentos por e-mail
+Nombre: Enviar documentos por e-mail
 
 Biblioteca: libpluginbf_correo.so
 

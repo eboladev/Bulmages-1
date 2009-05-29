@@ -4,7 +4,7 @@
 #README.es
 #20080501
 
-Nombre: Gestion de proveedores
+Nombre: Proveedores
 
 Biblioteca: libpluginbf_proveedor.so
 

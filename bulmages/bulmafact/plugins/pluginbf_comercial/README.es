@@ -4,7 +4,7 @@
 #README.es
 #20080501
 
-Nombre: Gestión de comerciales
+Nombre: Comerciales
 
 Biblioteca: libpluginbf_comercial.so
 
@@ -19,7 +19,7 @@ ArchivoSQLpatch: pluginbf_comercial.sql
 
 ArchivoSQLdeins: pluginbf_comercial-rm.sql
 
-Dependencias:
+Dependencias: libpluginbf_cliente.so; libpluginbf_trabajador.so;
 
 Incompatibles:
 

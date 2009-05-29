@@ -4,7 +4,7 @@ Plugins
 #README
 20080502
 
-Nombre: Exportacion de listados a SXC.
+Nombre: Exportar listados a SXC.
 
 Biblioteca: libpluginbl_subform2sxc.so
 

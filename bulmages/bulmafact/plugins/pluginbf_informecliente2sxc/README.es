@@ -4,7 +4,7 @@
 #README.es
 #20080501
 
-Nombre: Informe Clientes en Hoja de Cálculo.
+Nombre: Informe de Clientes en Hoja de Cálculo.
 
 Biblioteca: libpluginbf_informecliente2sxc.so
 

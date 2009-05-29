@@ -4,7 +4,7 @@ Plugins
 #README
 20080502
 
-Nombre: Resumen de una cuenta.
+Nombre: Resumen de una cuenta contable
 
 Biblioteca: libpluginbc_cuentaresumen.so
 

@@ -4,7 +4,7 @@
 #README.es
 #20080501 
 
-Nombre: Total ticket en pantalla (IVA Inc.)
+Nombre: Total de ticket en pantalla (IVA Inc.)
 
 Biblioteca: libpluginbt_totalivaincluido.so
 

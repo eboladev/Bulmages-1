@@ -4,11 +4,11 @@
 #README.es
 #20080501 
 
-Nombre: Plugin de Devoluciones
+Nombre: Devoluciones
 
 Biblioteca: libpluginbt_devolucion.so
 
-Descripción: <H1>Plugin de Devoluciones</H1>
+Descripción: <H1>Devoluciones</H1>
 <P>Presenta la ventana de devolucion de material. Y genera vales de devolucion o abonos de dinero.</P>
 <HR>
 

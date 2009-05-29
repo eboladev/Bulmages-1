@@ -4,7 +4,7 @@
 #README.es
 #20080501 
 
-Nombre: Búsqueda de clientes en el TPV.
+Nombre: Búscar clientes en el TPV.
 
 Biblioteca: libpluginbuscacliente.so
 

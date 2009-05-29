@@ -4,7 +4,7 @@ Plugins
 #README
 20080502
 
-Nombre: Importacion de datos separados por coma
+Nombre: Importar datos separados por coma
 
 Biblioteca: libpluginbl_importcsv.so
 

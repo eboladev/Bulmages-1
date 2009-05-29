@@ -4,7 +4,7 @@
 #README.es
 #20080501
 
-Nombre: Profesor. Gestion de Profesores
+Nombre: Profesores
 
 Biblioteca: libpluginbf_profesor.so
 

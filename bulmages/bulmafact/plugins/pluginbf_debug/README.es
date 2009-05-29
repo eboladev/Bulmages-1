@@ -4,7 +4,7 @@
 #README.es
 #20080501
 
-Nombre: Activar Modo Debug
+Nombre: Modo Debug
 
 Biblioteca: libpluginbf_debug.so
 

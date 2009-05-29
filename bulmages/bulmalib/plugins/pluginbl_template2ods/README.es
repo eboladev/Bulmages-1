@@ -4,7 +4,7 @@ Plugins
 #README
 20080502
 
-Nombre: Impresion de informes personalizados en ODS
+Nombre: Informes personalizados de ficha en ODS
 
 Biblioteca: libpluginbl_template2ods.so
 

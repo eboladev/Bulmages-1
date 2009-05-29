@@ -4,7 +4,7 @@
 #README.es
 #20080501
 
-Nombre: Gestion de Series de Factura
+Nombre: Series de Factura
 
 Biblioteca: libpluginbf_seriesfactura.so
 

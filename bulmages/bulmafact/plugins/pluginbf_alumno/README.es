@@ -4,7 +4,7 @@
 #README.es
 #20080501
 
-Nombre: Alumno. Gestion de alumnos
+Nombre: Alumnos
 
 Biblioteca: libpluginbf_alumno.so
 

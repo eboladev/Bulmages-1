@@ -4,7 +4,7 @@
 #README.es
 #20080501 
 
-Nombre: Total ticket en pantalla.
+Nombre: Total del ticket en pantalla.
 
 Biblioteca: libpluginbt_total.so
 

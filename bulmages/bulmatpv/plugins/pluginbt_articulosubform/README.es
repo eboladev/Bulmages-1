@@ -4,7 +4,7 @@
 #README.es
 #20080501 
 
-Nombre: Introduccion de articulos con subformulario
+Nombre: Parrilla de articulos con subformulario
 
 Biblioteca: libpluginbt_articulosubform.so
 
@@ -21,7 +21,7 @@ ArchivoSQLdeins:
 
 Dependencias: libplugintpv.so
 
-Incompatibles: libpluginbt_articulografic.so
+Incompatibles: libpluginbt_articulografico.so
 
 Orden:
 

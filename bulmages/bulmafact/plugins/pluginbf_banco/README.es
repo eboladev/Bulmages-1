@@ -4,7 +4,7 @@
 #README.es
 #20080501
 
-Nombre: Gestion de bancos
+Nombre: Bancos
 
 Biblioteca: libpluginbf_banco.so
 

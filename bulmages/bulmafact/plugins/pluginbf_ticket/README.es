@@ -4,7 +4,7 @@
 #README.es
 #20080501
 
-Nombre: Impresión de Tickets
+Nombre: Imprimir tickets
 
 Biblioteca: libpluginbf_ticket.so
 

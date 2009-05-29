@@ -4,7 +4,7 @@
 #README.es
 #20080501 poner la fecha de última revisión
 
-Nombre: Activar Modo Debug
+Nombre: Modo Debug
 
 Biblioteca: libpluginbc_depuracion.so
 

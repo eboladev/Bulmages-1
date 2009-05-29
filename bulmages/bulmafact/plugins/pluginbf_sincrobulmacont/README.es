@@ -4,7 +4,7 @@
 #README.es
 #20080501
 
-Nombre: Sincronización con BulmaCont
+Nombre: Sincronizar con BulmaCont
 
 Biblioteca: 
 

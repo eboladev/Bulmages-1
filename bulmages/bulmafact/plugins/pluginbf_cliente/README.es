@@ -4,7 +4,7 @@
 #README.es
 #20080501
 
-Nombre: Gestion de clientes
+Nombre: Clientes
 
 Biblioteca: libpluginbf_cliente.so
 

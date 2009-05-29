@@ -124,7 +124,7 @@ void BlComboBox::setId ( QString id )
 
 ///
 /**
-\param idprovincia
+\param id
 **/
 void BlComboBox::setFieldValue ( QString id )
 {

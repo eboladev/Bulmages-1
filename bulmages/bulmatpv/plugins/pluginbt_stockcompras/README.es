@@ -4,7 +4,7 @@
 #README.es
 #20080501 
 
-Nombre: Plugin de Introduccion de Compras
+Nombre: Introducir compras en el TPV
 
 Biblioteca: libpluginbt_stockcompras.so
 

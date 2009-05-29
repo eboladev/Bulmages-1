@@ -4,7 +4,7 @@
 #README.es
 #20080501
 
-Nombre: Gestion de articulos
+Nombre: Articulos
 
 Biblioteca: libpluginbf_articulo.so
 

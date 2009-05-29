@@ -4,7 +4,7 @@ Plugins
 #README
 20080502
 
-Nombre: Impresión subformulario
+Nombre: Imprimir subformularios
 
 Biblioteca: libpluginbl_subform2pdf.so
 

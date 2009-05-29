@@ -4,7 +4,7 @@ Plugins
 #README
 20080502
 
-Nombre: Exportacion de listados a ODS.
+Nombre: Exportar subformularios a ODS.
 
 Biblioteca: libpluginbl_subform2ods.so
 

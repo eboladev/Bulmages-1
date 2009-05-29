@@ -91,14 +91,15 @@ class Contabilidad(Ui_ModificarContabilidadBase, Empresa):
    
       if (libreria == ''):
          return ''
-   
+
+      self.process1 = QtCore.QProcess()
       self.mfile = QFile(plugins.configfiles + 'bulmacont_' + self.database + '.conf')
       if (self.mfile.exists()):
          self.command = 'grep '+libreria+' '+ plugins.configfiles + 'bulmacont_' + self.database + '.conf'
          self.writecommand(self.command)
-         self.process.start(self.command)
-         self.process.waitForFinished(-1)
-         self.version = self.process.readAllStandardOutput()
+         self.process1.start(self.command)
+         self.process1.waitForFinished(-1)
+         self.version = self.process1.readAllStandardOutput()
 
       if (self.version != ''):
          self.version = '0.11'
@@ -271,7 +272,7 @@ class Contabilidad(Ui_ModificarContabilidadBase, Empresa):
         self.i = 0
         while (self.i < self.mui_plugins.rowCount()):
           # Si el plugin tiene el orden adecuado lo consideramos.
-          if (self.mui_plugins.item(self.i,7).text().toInt() == self.x ):
+          if (str(self.mui_plugins.item(self.i,7).text()) == str(self.x )):
             self.writecommand('Tratando ' + self.mui_plugins.item(self.i,0).text())
             # Si el plugin esta checked lo escribimos.
             if (self.mui_plugins.item(self.i, 0).checkState() == Qt.Checked and len(self.mui_plugins.item(self.i,1).text()) > 3):
