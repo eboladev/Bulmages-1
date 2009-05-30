@@ -71,9 +71,7 @@ public slots:
 
 /** Ventana de ficha de cobro.
     Se encarga de la presentacion de la ficha de cobro y del tratamiento de eventos producidos
-    en dicha ventana.
-    Deriva de Ficha para metodos comunes a todas las ventanas.
-    Deriva de Cobro para el manejo de la Base de datos. */
+    en dicha ventana. **/
 class ActividadView : public BfForm, public Ui_ActividadBase
 {
     Q_OBJECT
@@ -86,9 +84,6 @@ public:
     virtual int guardarPost();
     virtual int borrarPre();
     virtual int cargarPost(QString );
-    
-public slots:
-    virtual void on_mui_imprimirFaltas_clicked();
 };
 
 #endif

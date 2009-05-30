@@ -112,7 +112,7 @@ void TutorView::on_mui_sociocliente_toggled ( bool state )
 
 QString TutorView::nombrePlantilla ( void )
 {
-    return QString ( "recibo" );
+    return QString ( "tutor" );
 }
 
 void TutorView::imprimir()

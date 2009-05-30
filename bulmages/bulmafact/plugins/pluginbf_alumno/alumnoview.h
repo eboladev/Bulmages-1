@@ -3,6 +3,9 @@
  *   tborras@conetxia.com                                                  *
  *   http://www.iglues.org                                                 *
  *                                                                         *
+ *   Copyright (C) 2009 by Arturo Martin Llado                             *
+ *   amartin@conetxia.com                                                  *
+ *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
  *   it under the terms of the GNU General Public License as published by  *
  *   the Free Software Foundation; either version 2 of the License, or     *
@@ -27,48 +30,42 @@
 #include <QCheckBox>
 
 #include "blfunctions.h"
-
 #include "blpostgresqlclient.h"
 #include "bldatesearch.h"
 #include "bldialogchanges.h"
 #include "bfform.h"
 
-
 class BfCompany;
 
-
-/// Muestra y administra las l&iacute;neas de detalle de una contrato a un cliente.
-/** */
 class ListAlumnosTutorView : public BfSubForm
 {
     Q_OBJECT
+    
 public:
     ListAlumnosTutorView ( QWidget *parent = 0 );
     ~ListAlumnosTutorView() {};
+    
 public slots:
     virtual void cargar ( QString  );
-};
+}
 
-
-/// Muestra y administra las l&iacute;neas de detalle de una contrato a un cliente.
-/** */
 class ListAlumnosActividadView : public BfSubForm
 {
     Q_OBJECT
+    
 public:
     ListAlumnosActividadView ( QWidget *parent = 0 );
     ~ListAlumnosActividadView() {};
+    
 public slots:
     virtual void cargar ( QString  );
 };
 
 #include "ui_alumnobase.h"
 
-/** Ventana de ficha de cobro.
-    Se encarga de la presentacion de la ficha de cobro y del tratamiento de eventos producidos
-    en dicha ventana.
-    Deriva de Ficha para metodos comunes a todas las ventanas.
-    Deriva de Cobro para el manejo de la Base de datos. */
+/** Ventana de ficha de alumno.
+    Se encarga de la presentacion de la ficha de alumno y del tratamiento de eventos producidos
+    en dicha ventana **/
 class AlumnoView : public BfForm, public Ui_AlumnoBase
 {
     Q_OBJECT

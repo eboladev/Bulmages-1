@@ -61,7 +61,6 @@
     
     <blockTableStyle id="tablaMiembros">
         <blockFont name="Helvetica" />
-        <!--<blockBackground colorName="gray" start="0,0" stop="1,0" />-->
         <blockBackground colorName="gray" start="0,0" stop="0,0" />
         <lineStyle colorName="black" kind="GRID" />
     </blockTableStyle>
@@ -100,6 +99,17 @@
     
     <para style="titulo"><b>Orden del día</b></para>
     
+    <blockTable style="tablaOrdenDelDia" colWidths="6.1cm,6.1cm,6.1cm" repeatRows="0">
+    
+        <tr>
+            <td>Concepto</td>
+            <td>Texto</td>
+            <td>Resolución</td>
+        </tr>
+        
+<!-- Aquí irá el detalle -->
+    
+    </blockTable>
     
 </story>
 

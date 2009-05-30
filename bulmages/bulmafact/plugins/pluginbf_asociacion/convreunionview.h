@@ -1,7 +1,10 @@
 /***************************************************************************
- *   Copyright (C) 2004 by Tomeu Borras Riera                              *
+ *   Copyright (C) 2009 by Tomeu Borras Riera                              *
  *   tborras@conetxia.com                                                  *
  *   http://www.iglues.org                                                 *
+ *                                                                         *
+ *   Copyright (C) 2009 by Arturo Martin Llado                             *
+ *   amartin@conetxia.com                                                  *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
  *   it under the terms of the GNU General Public License as published by  *
@@ -32,20 +35,15 @@
 #include "bldialogchanges.h"
 #include "bfform.h"
 
-
 class BfCompany;
-
 
 extern "C++" class BusquedaProfesor;
 
-
 #include "ui_convreunionbase.h"
 
-/** Ventana de ficha de cobro.
-    Se encarga de la presentacion de la ficha de cobro y del tratamiento de eventos producidos
-    en dicha ventana.
-    Deriva de Ficha para metodos comunes a todas las ventanas.
-    Deriva de Cobro para el manejo de la Base de datos. */
+/** Ventana de ficha de reunion.
+    Se encarga de la presentacion de la ficha de reunion y del tratamiento de eventos producidos
+    en dicha ventana. **/
 class ConvReunionView : public BfForm, public Ui_ConvReunionBase
 {
     Q_OBJECT
@@ -59,6 +57,7 @@ public:
     virtual int borrarPre();
     virtual int cargarPost(QString );
     virtual int junta();
+    
 public slots:
     virtual void on_mui_email_released();
     virtual void on_m_agregarconvocados_released();

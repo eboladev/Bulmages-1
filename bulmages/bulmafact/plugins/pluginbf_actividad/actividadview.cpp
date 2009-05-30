@@ -170,17 +170,6 @@ int ActividadView::cargarPost ( QString id )
     return 0;
 }
 
-void ActividadView::on_mui_imprimirFaltas_clicked()
-{
-    _depura ( "ActividadView::on_mui_imprimirFaltas_clicked", 0 );
-    
-    mensajeInfo("Funciona");
-    generaRML("faltas_asistencia_actividad.rml");
-    invocaPDF("faltas_asistencia_actividad");
-    
-    _depura ( "END ActividadView::on_mui_imprimirFaltas_clicked", 0 );
-}
-
 /// =============================================================================
 ///                    SUBFORMULARIOS
 /// =============================================================================
@@ -200,7 +189,7 @@ ListAlumnosActividadView::ListAlumnosActividadView ( QWidget *parent ) : BfSubFo
     addSubFormHeader ( "nombrealumno", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _ ( "Nombre alumno" ) );
     addSubFormHeader ( "idactividad", BlDbField::DbInt, BlDbField::DbNothing, BlSubFormHeader::DbHideView, _ ( "Id Actividad" ) );
 
-    setInsert ( FALSE );
+    setInsert ( TRUE );
     setSortingEnabled ( TRUE );
     
     _depura ( "END ListAlumnosActividadView::ListAlumnosActividadView", 0 );

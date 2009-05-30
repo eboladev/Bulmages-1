@@ -1,6 +1,9 @@
 /***************************************************************************
- *   Copyright (C) 2004 by Tomeu Borras Riera                              *
+ *   Copyright (C) 2009 by Tomeu Borras Riera                              *
  *   tborras@conetxia.com                                                  *
+ *                                                                         *
+ *   Copyright (C) 2009 by Arturo Martin Llado                             *
+ *   amartin@conetxia.com                                                  *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
  *   it under the terms of the GNU General Public License as published by  *
@@ -31,17 +34,18 @@
 #include "bldatesearch.h"
 #include "blfunctions.h"
 
-
 /** inicializa todos los componentes de la clase.
     Resetea el sistema de control de cambios para que considere que no hay cambios por parte del usuario.
     Mete la ventana en el workSpace.
 */
-AlumnoView::AlumnoView ( BfCompany *comp, QWidget *parent )
-        : BfForm ( comp, parent )
+AlumnoView::AlumnoView ( BfCompany *comp, QWidget *parent ) : BfForm ( comp, parent )
 {
     _depura ( "AlumnoView::AlumnoView", 0 );
+    
     setAttribute ( Qt::WA_DeleteOnClose );
+    
     try {
+    
         setupUi ( this );
         centrarEnPantalla ( this );
 
@@ -78,12 +82,15 @@ AlumnoView::AlumnoView ( BfCompany *comp, QWidget *parent )
         meteWindow ( windowTitle(), this, FALSE );
         pintar();
         dialogChanges_cargaInicial();
+        
     } catch ( ... ) {
+    
         mensajeInfo ( _ ( "Error al crear el alumno" ), this );
+        
     } // end try
+    
     _depura ( "END AlumnoView::AlumnoView", 0 );
 }
-
 
 /** No precisa acciones adicionales en el destructor.
 */
@@ -93,15 +100,18 @@ AlumnoView::~AlumnoView()
     _depura ( "END AlumnoView::~AlumnoView", 0 );
 }
 
-
 QString AlumnoView::nombrePlantilla ( void )
 {
-    return QString ( "recibo" );
+    _depura ( "AlumnoView::nombrePlantilla", 0 );
+    _depura ( "END AlumnoView::nombrePlantilla", 0 );
+
+    return QString ( "alumno" );
 }
 
 void AlumnoView::imprimir()
 {
     _depura ( "AlumnoView::imprimir", 0 );
+    
     /// Comprobamos que se disponen de los datos minimos para imprimir el recibo.
     QString SQLQuery = "";
 
@@ -110,20 +120,22 @@ void AlumnoView::imprimir()
         mensajeInfo ( _ ( "Tiene que guardar el documento antes de poder imprimirlo." ), this );
         return;
     }
+    
     /// Disparamos los plugins
     int res = g_plugins->lanza ( "CoboView_on_mui_imprimir_released", this );
     if ( res != 0 ) {
         return;
     } // end if
+    
     BfForm::imprimir();
 
     _depura ( "END AlumnoView::imprimir", 0 );
 }
 
-
 int AlumnoView::guardarPost()
 {
-    _depura ( " AlumnoView::guardarPost", 0 );
+    _depura ( "AlumnoView::guardarPost", 0 );
+    
     mui_tutoresList->setColumnValue ( "idalumno", dbValue ( "idalumno" ) );
     mui_tutoresList->guardar();
 
@@ -131,35 +143,34 @@ int AlumnoView::guardarPost()
     mui_actividadesList->guardar();
 
     _depura ( "END AlumnoView::guardarPost", 0 );
-
 }
-
-
 
 int AlumnoView::borrarPre()
 {
+    _depura ( "AlumnoView::borrarPre", 0 );
+
     QString query = "DELETE FROM alumnocliente WHERE idalumno =" + dbValue ( "idalumno" );
     mainCompany()->runQuery ( query );
 
     QString query1 = "DELETE FROM alumnoactividad WHERE idalumno =" + dbValue ( "idalumno" );
     mainCompany()->runQuery ( query1 );
+    
+    _depura ( "END AlumnoView::borrarPre", 0 );
 
     return 0;
 }
 
-
-
 int AlumnoView::cargarPost ( QString id )
 {
-    _depura ( " AlumnoView::cargarPost", 0 );
+    _depura ( "AlumnoView::cargarPost", 0 );
 
     mui_tutoresList->cargar ( id );
     mui_actividadesList->cargar ( id );
 
     _depura ( "END AlumnoView::cargarPost", 0 );
+    
     return 0;
 }
-
 
 /// =============================================================================
 ///                    SUBFORMULARIO
@@ -172,18 +183,19 @@ int AlumnoView::cargarPost ( QString id )
 ListAlumnosTutorView::ListAlumnosTutorView ( QWidget *parent ) : BfSubForm ( parent )
 {
     _depura ( "ListAlumnosTutorView::ListAlumnosTutorView", 0 );
+    
     setDbTableName ( "alumnocliente" );
     setDbFieldId ( "idalumnocliente" );
     addSubFormHeader ( "idalumnocliente", BlDbField::DbInt, BlDbField::DbPrimaryKey , BlSubFormHeader::DbHideView, _ ( "Identificador" ) );
     addSubFormHeader ( "idalumno", BlDbField::DbInt, BlDbField::DbNothing , BlSubFormHeader::DbHideView, _ ( "Id alumno" ) );
-    addSubFormHeader ( "nomcliente", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone, _ ( "Nombre alumno" ) );
+    addSubFormHeader ( "nomcliente", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone, _ ( "Nombre tutor" ) );
     addSubFormHeader ( "idcliente", BlDbField::DbInt, BlDbField::DbNotNull | BlDbField::DbRequired, BlSubFormHeader::DbHideView, _ ( "Id tutor" ) );
 
     setInsert ( TRUE );
     setOrdenEnabled ( TRUE );
+    
     _depura ( "END ListAlumnosTutorView::ListAlumnosTutorView", 0 );
 }
-
 
 ///
 /**
