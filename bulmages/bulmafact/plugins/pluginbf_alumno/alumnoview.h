@@ -47,7 +47,7 @@ public:
     
 public slots:
     virtual void cargar ( QString  );
-}
+};
 
 class ListAlumnosActividadView : public BfSubForm
 {
