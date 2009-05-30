@@ -66,7 +66,7 @@ public:
 
 public slots:
     virtual void on_mui_buscar_released();
-    virtual void on_mui_eliminar_released();
+    virtual void on_mui_clearSearchWidget_released();
     virtual void on_m_inputBusqueda_textChanged ( const QString & );
     virtual void on_m_inputBusqueda_editingFinished();
 

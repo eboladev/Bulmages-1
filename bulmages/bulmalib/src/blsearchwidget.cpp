@@ -62,8 +62,8 @@ BlSearchWidget::~BlSearchWidget()
 
 /** Se encarga de presentar en el Widget los valores seleccionados.
 */
-/** Esta funcion lanza un signal avisando de que se ha cambiado el id profesor. Y debe tenerse en cuenta que el
-    idprofesor puede estar vacio ya que tambien se puede haber borrado el profesor que estaba puesto.
+/** Esta funcion lanza un signal avisando de que se ha cambiado el id. Y debe tenerse en cuenta que el
+    id puede estar vacio ya que tambien se puede haber borrado el que estaba puesto.
 **/
 void BlSearchWidget::pinta()
 {
@@ -90,8 +90,8 @@ void BlSearchWidget::pinta()
 }
 
 
-/** Mediante este metodo indicamos al Widget que cargue un profesor determinado.
-    Busca en la base de datos un profesor que coincida con el identificador pasado
+/** Mediante este metodo indicamos al Widget que cargue un elemento determinado.
+    Busca en la base de datos un elemento que coincida con el identificador pasado
     y si lo encuentra lo carga y lo presente.
     Dicho elemento se considera el elemento seleccionado.
     Al finalizar llama al metodo pinta() para que se refelejen visualmente los cambios.
@@ -150,8 +150,8 @@ void BlSearchWidget::setFieldValue ( QString val )
 
 
 
-/** Mediante este metodo le decimos al Widget cual es el CIF del profesor seleccionado.
-    Busca en la base de datos cual el profesor cuyo CIF coincida con el que hemos seleccionado
+/** Mediante este metodo le decimos al Widget cual es el CIF del elemento seleccionado.
+    Busca en la base de datos cual el elemento cuyo CIF coincida con el que hemos seleccionado
     y si lo encuentra lo pinta y lo considera el elemento seleccionado.
     Al final llama al metodo pintar() para garantizar la correcta visualizacion del elemento en pantalla.
 */
@@ -186,19 +186,18 @@ void BlSearchWidget::setFieldValue ( QString campo, QString val )
 }
 
 
-/** Resetea el valor del 'id_profesor' y vacia la informacion del formulario.
-    Es util sobre todo el los filtros por profesor para anular el filtro.
+/** Resetea el valor del 'id' y vacia la informacion del formulario.
 */
-void BlSearchWidget::on_mui_eliminar_released()
+void BlSearchWidget::on_mui_clearSearchWidget_released()
 {
-    _depura ( "BlSearchWidget::on_mui_eliminar_released", 0 );
+    _depura ( "BlSearchWidget::on_mui_clearSearchWidget_released", 0 );
     setId ( "" );
-    _depura ( "END BlSearchWidget::on_mui_eliminar_released", 0 );
+    _depura ( "END BlSearchWidget::on_mui_clearSearchWidget_released", 0 );
 }
 
 
-/** SLOT que responde a la accion de buscar un profesor.
-    Abre el listado de profesors en modo Seleccionar y espera a que cerremos
+/** SLOT que responde a la accion de buscar.
+    Abre el listado en modo Seleccionar y espera a que cerremos
     dicha ventana o que seleccionemos un elemento.
     Una vez determinado el elemento lo considera como el elemento seleccionado
     y lo muestra.
@@ -215,7 +214,7 @@ void BlSearchWidget::on_mui_buscar_released()
 
 
 /** SLOT que responde al fin de la edicion del campos de texto.
-    Se supone que hemos introducido un profesor identificable por codigo, por nombre o por CIF
+    Se supone que hemos introducido un elemento identificable por codigo, por nombre o por CIF
     Asi que se encarga de buscarlo y encontrarlo.
 */
 /**
@@ -230,8 +229,8 @@ void BlSearchWidget::on_m_inputBusqueda_editingFinished()
 
 /** SLOT que responde a la modificacion del campo de texto del Widget.
     A medida que vamos escribiendo en el campo de textos el sistema va buscando
-    posibles profesors que cumplan las caracteristicas. Si encuentra solo uno lo
-    considera como el profesor seleccionado.
+    posibles elementos que cumplan las caracteristicas. Si encuentra solo uno lo
+    considera como el elemento seleccionado.
 */
 /**
 \param val
@@ -485,7 +484,7 @@ void BlDbCompleterComboBox::s_editTextChanged ( const QString &cod )
 }
 
 /// Retorna el codi associat a la unica entrada del combo que
-/// hagi estat trobada a la BD a partir de l'entrada de l'usuari. Això
+/// hagi estat trobada a la BD a partir de l'entrada de l'usuari. Aixo
 /// permet que abans de donar un error per codi d'article incorrecte
 /// se li assigni l'unic article trobat per l'entrada (incompleta?) de l'usuari.
 /// Retorna NULL si no se n'ha trobat cap o se n'ha trobat mes d'un.
