@@ -57,6 +57,7 @@ ProveedorView::ProveedorView ( BfCompany *comp, QWidget *parent )
         addDbField ( "emailproveedor", BlDbField::DbVarChar, BlDbField::DbNothing, _ ( "Direccion electronica" ) );
         addDbField ( "urlproveedor", BlDbField::DbVarChar, BlDbField::DbNothing, _ ( "URL" ) );
         addDbField ( "comentproveedor", BlDbField::DbVarChar, BlDbField::DbNothing, _ ( "Comentarios" ) );
+        addDbField ( "clavewebproveedor", BlDbField::DbVarChar, BlDbField::DbNothing, _ ( "Datos de comercio electronico" ) );
         addDbField ( "codproveedor", BlDbField::DbVarChar, BlDbField::DbNothing, _ ( "Codigo" ) );
         addDbField ( "regimenfiscalproveedor", BlDbField::DbVarChar, BlDbField::DbNothing, _ ( "Regimen Fiscal" ) );
         addDbField ( "idforma_pago", BlDbField::DbInt, BlDbField::DbNothing, _ ( "Forma_Pago" ) );
@@ -66,9 +67,20 @@ ProveedorView::ProveedorView ( BfCompany *comp, QWidget *parent )
         setupUi ( this );
 
         /// Deshabilitamos los tabs que aun no se usan.
-        mui_tab->setTabEnabled ( 5, FALSE );
-        mui_tab->setTabEnabled ( 6, FALSE );
-        mui_tab->setTabEnabled ( 7, FALSE );
+	int i;
+	
+	for (i = 0; i < mui_tab->count(); i++) {
+	
+	    if (mui_tab->widget(i)->objectName() == "tabDivisiones") {
+		mui_tab->setTabEnabled(i, FALSE);
+	    } else if (mui_tab->widget(i)->objectName() == "tabProductosSuministrados") {
+		mui_tab->setTabEnabled(i, FALSE);    
+	    } else if (mui_tab->widget(i)->objectName() == "tabContratos") {
+		mui_tab->setTabEnabled(i, FALSE);
+	    } // end if
+	    	    
+	} // end for
+	
 
         /// Cargamos algunos valores por defecto.
         mui_idforma_pago->setMainCompany ( mainCompany() );
@@ -89,7 +101,7 @@ ProveedorView::ProveedorView ( BfCompany *comp, QWidget *parent )
         /// Disparamos los plugins.
         g_plugins->lanza ( "ProveedorView_ProveedorView_Post", this );
     } catch ( ... ) {
-        mensajeInfo ( _ ( "Error al crear el proveedor" ) );
+        mensajeInfo ( _( "Error al crear el proveedor" ) );
     } // end try
 
     _depura ( "END ProveedorView::ProveedorView", 0 );
@@ -115,7 +127,7 @@ void ProveedorView::on_mui_cifproveedor_lostFocus()
     _depura ( "ProveedorView::on_mui_cifproveedor_lostFocus", 0 );
     QChar digito;
     if ( !validarCIFNIF ( mui_cifproveedor->text(), digito ) ) {
-        mensajeInfo ( "Error en el CIF del proveedor. Digito:" + QString ( digito ) );
+        mensajeInfo ( _("El CIF del proveedor no parece ser valido. Digito:") + " " + QString ( digito ) );
     } // end if
     _depura ( "END ProveedorView::on_mui_cifproveedor_lostFocus", 0 );
 }
