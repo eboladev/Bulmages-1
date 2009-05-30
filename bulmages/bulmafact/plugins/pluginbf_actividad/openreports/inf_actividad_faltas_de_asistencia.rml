@@ -10,7 +10,7 @@
     Aquí van los elementos gráficos de la página (headers, footers, frames, etc...).
     No puede estar vacío.
 -->
-<template pageSize="(21cm, 29.7cm)" leftMargin="0cm" rightMargin="0cm" topMargin="1.0cm" bottomMargin="2.0cm" title="Ficha de actividad" author="Arturo Martin Llado" allowSplitting="20">
+<template pageSize="(21cm, 29.7cm)" leftMargin="0cm" rightMargin="0cm" topMargin="1.0cm" bottomMargin="2.0cm" title="Faltas de asistencia de una actividad" author="Arturo Martin Llado" allowSplitting="20">
     <pageTemplate id="main">
     
         <!-- FRAME DE CONTENIDOS -->
@@ -35,7 +35,7 @@
 <!--QUERY="SELECT * FROM actividad, profesor, tipoactividad WHERE actividad.idtipoactividad = tipoactividad.idtipoactividad AND actividad.idprofesor = profesor.idprofesor AND idactividad=[idactividad]"-->
             
             <setFont name="Helvetica" size="22"/>
-            <drawString x="1.5cm" y="24cm">FICHA DE ACTIVIDAD: [nombreactividad]</drawString>
+            <drawString x="1.5cm" y="24cm">FALTAS DE ASISTENCIA DE: [nombreactividad]</drawString>
             <setFont name="Helvetica" size="13"/>
             <drawString x="1.5cm" y="23.2cm">Tipo: [nombretipoactividad]</drawString>
             <drawString x="1.5cm" y="22.4cm">Profesor: [nombreprofesor]</drawString>
@@ -69,42 +69,26 @@
     Aquí va el contenido del documento.
     No puede estar vacío.
 -->
-<story>    
-    <para style="titulo"><b>Listado de alumnos</b></para>
+<story>
+
+    <para style="titulo"><b>Listado de alumnos con faltas de asistencia</b></para>
     
     <spacer length="0.5cm" />
     
-    <blockTable style="tablaAlumnos" colWidths="18.2cm">
+    <!--<blockTable style="tablaAlumnos" colWidths="18.2cm">-->
+    <blockTable style="tablaAlumnos" colWidths="16cm,2.2cm">
             
-<!--QUERY="SELECT * FROM alumno, alumnoactividad WHERE alumnoactividad.idalumno = alumno.idalumno AND alumnoactividad.idactividad=[idactividad] ORDER BY alumno.apellido1alumno"-->
+<!--QUERY="SELECT * FROM alumno, faltaasistenciaalumnoactividad WHERE faltaasistenciaalumnoactividad.idalumno = alumno.idalumno AND faltaasistenciaalumnoactividad.idactividad=[idactividad] ORDER BY alumno.apellido1alumno, faltaasistenciaalumnoactividad.fechafaltaasistenciaalumnoactividad ASC"-->
 
         <tr>
             <td>[apellido1alumno] [apellido2alumno], [nombrealumno]</td>
+            <td>[fechafaltaasistenciaalumnoactividad]</td>
         </tr>
         
 <!--END QUERY-->
 
     </blockTable>
     
-<!--QUERY="SELECT * FROM actividad WHERE idactividad=[idactividad]"-->
-
-    <spacer length="0.5cm" />
-    
-    <para style="titulo"><b>Comentarios:</b></para>
-    
-    <spacer length="0.5cm" />
-
-    <para>[comentariosactividad]</para>
-    
-    <spacer length="0.5cm" />
-    
-    <para style="titulo"><b>Precio de la cuota:</b> [precioactividad] €</para>
-        
-    <spacer length="0.5cm" />
-    
-    <para style="titulo"><b>Calendario:</b></para>
-
-<!--END QUERY-->
     
 </story>
 

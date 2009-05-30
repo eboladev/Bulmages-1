@@ -48,6 +48,7 @@ class ListAlumnosActividadView : public BfSubForm
 public:
     ListAlumnosActividadView ( QWidget *parent = 0 );
     ~ListAlumnosActividadView() {};
+    
 public slots:
     virtual void cargar ( QString idactividad );
 };
@@ -61,6 +62,7 @@ class ListFaltasAsistenciaActividadView : public BfSubForm
 public:
     ListFaltasAsistenciaActividadView ( QWidget *parent = 0 );
     ~ListFaltasAsistenciaActividadView() {};
+    
 public slots:
     virtual void cargar ( QString idactividad );
 };
@@ -84,6 +86,9 @@ public:
     virtual int guardarPost();
     virtual int borrarPre();
     virtual int cargarPost(QString );
+    
+public slots:
+    virtual void on_mui_imprimirFaltas_clicked();
 };
 
 #endif

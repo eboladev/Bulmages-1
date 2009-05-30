@@ -170,6 +170,17 @@ int ActividadView::cargarPost ( QString id )
     return 0;
 }
 
+void ActividadView::on_mui_imprimirFaltas_clicked()
+{
+    _depura ( "ActividadView::on_mui_imprimirFaltas_clicked", 0 );
+    
+    mensajeInfo("Funciona");
+    generaRML("faltas_asistencia_actividad.rml");
+    invocaPDF("faltas_asistencia_actividad");
+    
+    _depura ( "END ActividadView::on_mui_imprimirFaltas_clicked", 0 );
+}
+
 /// =============================================================================
 ///                    SUBFORMULARIOS
 /// =============================================================================
@@ -190,7 +201,7 @@ ListAlumnosActividadView::ListAlumnosActividadView ( QWidget *parent ) : BfSubFo
     addSubFormHeader ( "idactividad", BlDbField::DbInt, BlDbField::DbNothing, BlSubFormHeader::DbHideView, _ ( "Id Actividad" ) );
 
     setInsert ( FALSE );
-    setOrdenEnabled ( FALSE );
+    setSortingEnabled ( TRUE );
     
     _depura ( "END ListAlumnosActividadView::ListAlumnosActividadView", 0 );
 }
@@ -222,11 +233,10 @@ ListFaltasAsistenciaActividadView::ListFaltasAsistenciaActividadView ( QWidget *
     addSubFormHeader ( "idalumno", BlDbField::DbInt, BlDbField::DbNotNull | BlDbField::DbRequired , BlSubFormHeader::DbHideView, _ ( "Id alumno" ) );
     addSubFormHeader ( "idactividad", BlDbField::DbInt, BlDbField::DbNotNull | BlDbField::DbRequired, BlSubFormHeader::DbHideView, _ ( "Id Actividad" ) );
     addSubFormHeader ( "nombrealumno", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone, _ ( "Nombre alumno" ) );
-//     addSubFormHeader ( "cantidadfaltaasistenciaalumnoactividad", BlDbField::DbInt, BlDbField::DbNotNull | BlDbField::DbRequired , BlSubFormHeader::DbNone, _ ( "Numero de faltas" ) );
     addSubFormHeader ( "fechafaltaasistenciaalumnoactividad", BlDbField::DbDate, BlDbField::DbNotNull | BlDbField::DbRequired, BlSubFormHeader::DbNone, _ ( "Fecha de la falta" ) );
 
     setInsert ( TRUE );
-    setOrdenEnabled ( TRUE );
+    setSortingEnabled ( TRUE );
     
     _depura ( "END ListAlumnosActividadView::ListAlumnosActividadView", 0 );
 }
