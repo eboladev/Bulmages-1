@@ -186,7 +186,7 @@ ListAlumnosActividadView::ListAlumnosActividadView ( QWidget *parent ) : BfSubFo
     setDbFieldId ( "idalumnoactividad" );
     addSubFormHeader ( "idalumnoactividad", BlDbField::DbInt, BlDbField::DbPrimaryKey , BlSubFormHeader::DbHideView, _ ( "Identificador" ) );
     addSubFormHeader ( "idalumno", BlDbField::DbInt, BlDbField::DbNotNull | BlDbField::DbRequired , BlSubFormHeader::DbHideView, _ ( "Id alumno" ) );
-    addSubFormHeader ( "nombrealumno", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _ ( "Nombre alumno" ) );
+    addSubFormHeader ( "nombrealumno", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone, _ ( "Nombre alumno" ) );
     addSubFormHeader ( "idactividad", BlDbField::DbInt, BlDbField::DbNothing, BlSubFormHeader::DbHideView, _ ( "Id Actividad" ) );
 
     setInsert ( TRUE );
@@ -220,7 +220,7 @@ ListFaltasAsistenciaActividadView::ListFaltasAsistenciaActividadView ( QWidget *
     setDbFieldId ( "idfaltaasistenciaalumnoactividad" );
     addSubFormHeader ( "idfaltaasistenciaalumnoactividad", BlDbField::DbInt, BlDbField::DbPrimaryKey , BlSubFormHeader::DbHideView, _ ( "Identificador" ) );
     addSubFormHeader ( "idalumno", BlDbField::DbInt, BlDbField::DbNotNull | BlDbField::DbRequired , BlSubFormHeader::DbHideView, _ ( "Id alumno" ) );
-    addSubFormHeader ( "idactividad", BlDbField::DbInt, BlDbField::DbNotNull | BlDbField::DbRequired, BlSubFormHeader::DbHideView, _ ( "Id Actividad" ) );
+    addSubFormHeader ( "idactividad", BlDbField::DbInt, BlDbField::DbNotNull, BlSubFormHeader::DbHideView, _ ( "Id Actividad" ) );
     addSubFormHeader ( "nombrealumno", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone, _ ( "Nombre alumno" ) );
     addSubFormHeader ( "fechafaltaasistenciaalumnoactividad", BlDbField::DbDate, BlDbField::DbNotNull | BlDbField::DbRequired, BlSubFormHeader::DbNone, _ ( "Fecha de la falta" ) );
 

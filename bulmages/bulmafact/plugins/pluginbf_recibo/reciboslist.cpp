@@ -92,6 +92,8 @@ RecibosList::RecibosList ( BfCompany *comp, QWidget *parent, Qt::WFlags flag, ed
     /// Hacemos el tratamiento de los permisos que desabilita botones en caso de no haber suficientes permisos.
     trataPermisos ( "recibo" );
     
+    presentar();
+
     _depura ( "END RecibosList::RecibosList", 0 );
 }
 

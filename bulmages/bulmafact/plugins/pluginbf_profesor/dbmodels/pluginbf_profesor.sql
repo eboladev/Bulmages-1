@@ -88,10 +88,17 @@ BEGIN
             telalumno VARCHAR,
             movilalumno VARCHAR,
             emailalumno VARCHAR,
-            fechanacimientoalumno DATE
+            fechanacimientoalumno DATE,
+	    activoalumno BOOLEAN
         );
         
     END IF;
+
+    SELECT INTO as * FROM pg_attribute WHERE attname = ''activoalumno'';
+    IF NOT FOUND THEN
+        ALTER TABLE alumno ADD COLUMN activoalumno BOOLEAN;
+    END IF;
+
     
     SELECT INTO as * FROM pg_attribute WHERE attname = ''apellido1alumno'';
     IF NOT FOUND THEN
@@ -190,10 +197,17 @@ BEGIN
         CREATE TABLE alumnocliente (
             idalumnocliente SERIAL PRIMARY KEY,
             idalumno INTEGER NOT NULL REFERENCES alumno(idalumno),
-            idcliente INTEGER NOT NULL REFERENCES cliente(idcliente)
+            idcliente INTEGER NOT NULL REFERENCES cliente(idcliente),
+	    porcentalumnocliente NUMERIC(12,2) DEFAULT 100
         );
     END IF;
    
+    SELECT INTO as * FROM pg_attribute WHERE attname = ''porcentalumnocliente'';
+    IF NOT FOUND THEN
+        ALTER TABLE alumnocliente ADD COLUMN porcentalumnocliente NUMERIC(12,2) DEFAULT 100;
+    END IF;
+
+
     SELECT INTO as * FROM pg_tables WHERE tablename = ''cuota'';
     IF NOT FOUND THEN
         CREATE TABLE cuota (

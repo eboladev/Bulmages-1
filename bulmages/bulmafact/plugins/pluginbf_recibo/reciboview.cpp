@@ -49,7 +49,7 @@ ReciboView::ReciboView ( BfCompany *comp, QWidget *parent ) : BfForm ( comp, par
         setDbTableName ( "recibo" );
         setDbFieldId ( "idrecibo" );
         addDbField ( "idrecibo", BlDbField::DbInt, BlDbField::DbPrimaryKey, _ ( "ID recibo" ) );
-        addDbField ( "cantrecibo", BlDbField::DbNumeric, BlDbField::DbNotNull, _ ( "Cantidad" ) );
+        addDbField ( "cantrecibo", BlDbField::DbNumeric, BlDbField::DbNothing, _ ( "Cantidad" ) );
         addDbField ( "idcliente", BlDbField::DbInt, BlDbField::DbNotNull, _ ( "ID cliente" ) );
         addDbField ( "idforma_pago", BlDbField::DbInt, BlDbField::DbNotNull, _ ( "ID Forma Pago" ) );
         addDbField ( "descrecibo", BlDbField::DbVarChar, BlDbField::DbNothing, _ ( "Descripcion" ) );
@@ -77,6 +77,8 @@ ReciboView::ReciboView ( BfCompany *comp, QWidget *parent ) : BfForm ( comp, par
 
         mui_list->setInsert ( TRUE );
         mui_list->setOrdenEnabled ( TRUE );
+
+	mui_list->cargar("SELECT * from lrecibo WHERE 1=2");
 
         // ======================================================
 

@@ -72,8 +72,9 @@ ConvReunionView::ConvReunionView ( BfCompany *comp, QWidget *parent ) : BfForm (
         mui_list->setInsert ( TRUE );
         mui_list->setDelete ( TRUE );
         mui_list->setSortingEnabled ( FALSE );
-        
-//         mui_list->cargar("SELECT * from asistentereunion NATURAL LEFT JOIN cliente WHERE 1 = 2");
+
+	 /// Hacemos una carga vacia para que se inicie bien el subformulario
+         mui_list->cargar("SELECT * from asistentereunion NATURAL LEFT JOIN cliente WHERE 1 = 2");
 
         mui_ordendia->setMainCompany( comp );
         mui_ordendia->setDbTableName ( "ordendiareunion" );
@@ -88,7 +89,8 @@ ConvReunionView::ConvReunionView ( BfCompany *comp, QWidget *parent ) : BfForm (
         mui_ordendia->setDelete ( TRUE );
         mui_ordendia->setSortingEnabled ( FALSE );
         
-//         mui_ordendia->cargar("SELECT * from ordendiareunion WHERE 1 = 2");
+	 /// Hacemos una carga vacia para que se inicie bien el subformulario
+         mui_ordendia->cargar("SELECT * from ordendiareunion WHERE 1 = 2");
 
         meteWindow ( windowTitle(), this, FALSE );
         pintar();

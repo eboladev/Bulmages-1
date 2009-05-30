@@ -222,6 +222,7 @@ ListAlumnosTutorView::ListAlumnosTutorView ( QWidget *parent ) : BfSubForm ( par
     addSubFormHeader ( "idalumnocliente", BlDbField::DbInt, BlDbField::DbPrimaryKey , BlSubFormHeader::DbHideView, _ ( "Identificador" ) );
     addSubFormHeader ( "idalumno", BlDbField::DbInt, BlDbField::DbNotNull | BlDbField::DbRequired , BlSubFormHeader::DbHideView, _ ( "Id alumno" ) );
     addSubFormHeader ( "nombrealumno", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone, _ ( "Nombre alumno" ) );
+    addSubFormHeader ( "porcentalumnocliente", BlDbField::DbNumeric, BlDbField::DbNotNull | BlDbField::DbRequired , BlSubFormHeader::DbHideView, _ ( "Porcentaje Fact." ) );
     addSubFormHeader ( "idcliente", BlDbField::DbInt, BlDbField::DbNothing, BlSubFormHeader::DbHideView, _ ( "Id tutor" ) );
 
     setInsert ( TRUE );

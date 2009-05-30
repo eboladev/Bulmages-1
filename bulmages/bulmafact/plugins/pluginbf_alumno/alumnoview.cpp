@@ -65,6 +65,7 @@ AlumnoView::AlumnoView ( BfCompany *comp, QWidget *parent ) : BfForm ( comp, par
         addDbField ( "emailalumno", BlDbField::DbVarChar, BlDbField::DbNothing, _ ( "E-Mail" ) );
         addDbField ( "fechanacimientoalumno", BlDbField::DbDate, BlDbField::DbNothing, _ ( "Fecha Nacimiento" ) );
         addDbField ( "idprovincia", BlDbField::DbInt, BlDbField::DbNothing, _ ( "Provincia" ) );
+        addDbField ( "activoalumno", BlDbField::DbBoolean, BlDbField::DbNothing, _ ( "Activo" ) );
 
         /// Datos por defecto.
         mui_tutoresList->setMainCompany ( mainCompany() );
@@ -189,6 +190,7 @@ ListAlumnosTutorView::ListAlumnosTutorView ( QWidget *parent ) : BfSubForm ( par
     addSubFormHeader ( "idalumnocliente", BlDbField::DbInt, BlDbField::DbPrimaryKey , BlSubFormHeader::DbHideView, _ ( "Identificador" ) );
     addSubFormHeader ( "idalumno", BlDbField::DbInt, BlDbField::DbNothing , BlSubFormHeader::DbHideView, _ ( "Id alumno" ) );
     addSubFormHeader ( "nomcliente", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone, _ ( "Nombre tutor" ) );
+    addSubFormHeader ( "porcentalumnocliente", BlDbField::DbNumeric, BlDbField::DbRequired, BlSubFormHeader::DbNone, _ ( "Porcentaje" ) );
     addSubFormHeader ( "idcliente", BlDbField::DbInt, BlDbField::DbNotNull | BlDbField::DbRequired, BlSubFormHeader::DbHideView, _ ( "Id tutor" ) );
 
     setInsert ( TRUE );
