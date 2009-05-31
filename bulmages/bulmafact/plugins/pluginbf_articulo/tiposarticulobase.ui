@@ -1,8 +1,9 @@
-<ui version="4.0" >
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
  <author>Tomeu Borras Riera</author>
  <class>tiposarticulobase</class>
- <widget class="QWidget" name="tiposarticulobase" >
-  <property name="geometry" >
+ <widget class="QWidget" name="tiposarticulobase">
+  <property name="geometry">
    <rect>
     <x>0</x>
     <y>0</y>
@@ -10,43 +11,43 @@
     <height>490</height>
    </rect>
   </property>
-  <property name="windowTitle" >
+  <property name="windowTitle">
    <string>Tipos de articulo</string>
   </property>
-  <property name="windowIcon" >
-   <iconset resource="../../bulmages.qrc" >
+  <property name="windowIcon">
+   <iconset resource="../../../bulmages.qrc">
     <normaloff>:/Images/product-family.svg</normaloff>:/Images/product-family.svg</iconset>
   </property>
-  <layout class="QGridLayout" >
-   <property name="margin" >
+  <layout class="QGridLayout">
+   <property name="margin">
     <number>5</number>
    </property>
-   <property name="spacing" >
+   <property name="spacing">
     <number>5</number>
    </property>
-   <item row="2" column="0" >
-    <widget class="QTreeWidget" name="m_listTipos" >
+   <item row="2" column="0">
+    <widget class="QTreeWidget" name="m_listTipos">
      <column>
-      <property name="text" >
+      <property name="text">
        <string>1</string>
       </property>
      </column>
     </widget>
    </item>
-   <item row="4" column="0" >
-    <layout class="QHBoxLayout" >
-     <property name="spacing" >
+   <item row="4" column="0">
+    <layout class="QHBoxLayout">
+     <property name="spacing">
       <number>5</number>
      </property>
-     <property name="margin" >
+     <property name="margin">
       <number>0</number>
      </property>
      <item>
       <spacer>
-       <property name="orientation" >
+       <property name="orientation">
         <enum>Qt::Horizontal</enum>
        </property>
-       <property name="sizeHint" stdset="0" >
+       <property name="sizeHint" stdset="0">
         <size>
          <width>581</width>
          <height>20</height>
@@ -55,127 +56,127 @@
       </spacer>
      </item>
      <item>
-      <widget class="QPushButton" name="mui_aceptar" >
-       <property name="text" >
+      <widget class="QPushButton" name="mui_aceptar">
+       <property name="text">
         <string>&amp;Aceptar</string>
        </property>
       </widget>
      </item>
      <item>
-      <widget class="QPushButton" name="mui_cancelar" >
-       <property name="text" >
+      <widget class="QPushButton" name="mui_cancelar">
+       <property name="text">
         <string>&amp;Cancelar</string>
        </property>
       </widget>
      </item>
     </layout>
    </item>
-   <item row="3" column="0" >
-    <widget class="QGroupBox" name="groupBox1" >
-     <property name="title" >
+   <item row="3" column="0">
+    <widget class="QGroupBox" name="groupBox1">
+     <property name="title">
       <string>Tipo de articulo:</string>
      </property>
-     <layout class="QVBoxLayout" >
-      <property name="spacing" >
+     <layout class="QVBoxLayout">
+      <property name="spacing">
        <number>5</number>
       </property>
-      <property name="margin" >
+      <property name="margin">
        <number>5</number>
       </property>
       <item>
-       <layout class="QHBoxLayout" >
-        <property name="spacing" >
+       <layout class="QHBoxLayout">
+        <property name="spacing">
          <number>5</number>
         </property>
-        <property name="margin" >
+        <property name="margin">
          <number>0</number>
         </property>
         <item>
-         <widget class="QLabel" name="label_1" >
-          <property name="text" >
+         <widget class="QLabel" name="label_1">
+          <property name="text">
            <string>Codigo:</string>
           </property>
          </widget>
         </item>
         <item>
-         <widget class="QLineEdit" name="mui_codigotipo_articulo" />
+         <widget class="QLineEdit" name="mui_codigotipo_articulo"/>
         </item>
        </layout>
       </item>
       <item>
-       <widget class="QLabel" name="label_3" >
-        <property name="sizePolicy" >
-         <sizepolicy vsizetype="Fixed" hsizetype="Preferred" >
+       <widget class="QLabel" name="label_3">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
           <horstretch>0</horstretch>
           <verstretch>0</verstretch>
          </sizepolicy>
         </property>
-        <property name="text" >
+        <property name="text">
          <string>Descripcion:</string>
         </property>
        </widget>
       </item>
       <item>
-       <widget class="QTextEdit" name="mui_desctipo_articulo" />
+       <widget class="QTextEdit" name="mui_desctipo_articulo"/>
       </item>
      </layout>
     </widget>
    </item>
-   <item row="1" column="0" >
-    <layout class="QHBoxLayout" >
-     <property name="spacing" >
+   <item row="1" column="0">
+    <layout class="QHBoxLayout">
+     <property name="spacing">
       <number>5</number>
      </property>
-     <property name="margin" >
+     <property name="margin">
       <number>0</number>
      </property>
      <item>
-      <widget class="QToolButton" name="mui_detalles" >
-       <property name="minimumSize" >
+      <widget class="QToolButton" name="mui_detalles">
+       <property name="minimumSize">
         <size>
          <width>22</width>
          <height>22</height>
         </size>
        </property>
-       <property name="maximumSize" >
+       <property name="maximumSize">
         <size>
          <width>22</width>
          <height>22</height>
         </size>
        </property>
-       <property name="toolTip" >
+       <property name="toolTip">
         <string>Mostrar / Ocultar detalle</string>
        </property>
-       <property name="whatsThis" >
+       <property name="whatsThis">
         <string>Mostrar / Ocultar detalle</string>
        </property>
-       <property name="text" >
+       <property name="text">
         <string/>
        </property>
-       <property name="icon" >
-        <iconset resource="../../bulmages.qrc" >
+       <property name="icon">
+        <iconset resource="../../../bulmages.qrc">
          <normaloff>:/Images/document-open.svg</normaloff>:/Images/document-open.svg</iconset>
        </property>
-       <property name="iconSize" >
+       <property name="iconSize">
         <size>
          <width>32</width>
          <height>32</height>
         </size>
        </property>
-       <property name="checkable" >
+       <property name="checkable">
         <bool>true</bool>
        </property>
-       <property name="checked" >
+       <property name="checked">
         <bool>true</bool>
        </property>
       </widget>
      </item>
      <item>
       <spacer>
-       <property name="orientation" >
+       <property name="orientation">
         <enum>Qt::Horizontal</enum>
        </property>
-       <property name="sizeHint" stdset="0" >
+       <property name="sizeHint" stdset="0">
         <size>
          <width>40</width>
          <height>20</height>
@@ -185,139 +186,139 @@
      </item>
     </layout>
    </item>
-   <item row="0" column="0" >
-    <layout class="QHBoxLayout" >
-     <property name="spacing" >
+   <item row="0" column="0">
+    <layout class="QHBoxLayout">
+     <property name="spacing">
       <number>5</number>
      </property>
-     <property name="margin" >
+     <property name="margin">
       <number>0</number>
      </property>
      <item>
-      <widget class="QLabel" name="label_2" >
-       <property name="minimumSize" >
+      <widget class="QLabel" name="label_2">
+       <property name="minimumSize">
         <size>
          <width>48</width>
          <height>48</height>
         </size>
        </property>
-       <property name="maximumSize" >
+       <property name="maximumSize">
         <size>
          <width>48</width>
          <height>48</height>
         </size>
        </property>
-       <property name="text" >
+       <property name="text">
         <string/>
        </property>
-       <property name="pixmap" >
-        <pixmap resource="../../bulmages.qrc" >:/Images/product-family.svg</pixmap>
+       <property name="pixmap">
+        <pixmap resource="../../../bulmages.qrc">:/Images/product-family.svg</pixmap>
        </property>
-       <property name="scaledContents" >
+       <property name="scaledContents">
         <bool>true</bool>
        </property>
       </widget>
      </item>
      <item>
-      <widget class="QFrame" name="frame" >
-       <property name="frameShape" >
+      <widget class="QFrame" name="frame">
+       <property name="frameShape">
         <enum>QFrame::StyledPanel</enum>
        </property>
-       <property name="frameShadow" >
+       <property name="frameShadow">
         <enum>QFrame::Raised</enum>
        </property>
-       <layout class="QGridLayout" >
-        <property name="margin" >
+       <layout class="QGridLayout">
+        <property name="margin">
          <number>5</number>
         </property>
-        <property name="spacing" >
+        <property name="spacing">
          <number>5</number>
         </property>
-        <item row="0" column="1" >
-         <widget class="QToolButton" name="mui_guardar" >
-          <property name="minimumSize" >
+        <item row="0" column="1">
+         <widget class="QToolButton" name="mui_guardar">
+          <property name="minimumSize">
            <size>
             <width>32</width>
             <height>32</height>
            </size>
           </property>
-          <property name="maximumSize" >
+          <property name="maximumSize">
            <size>
             <width>32</width>
             <height>32</height>
            </size>
           </property>
-          <property name="toolTip" >
+          <property name="toolTip">
            <string>Guardar Tipo de articulo</string>
           </property>
-          <property name="whatsThis" >
+          <property name="whatsThis">
            <string>Guardar Tipo de articulo</string>
           </property>
-          <property name="text" >
+          <property name="text">
            <string/>
           </property>
-          <property name="icon" >
-           <iconset resource="../../bulmages.qrc" >
+          <property name="icon">
+           <iconset resource="../../../bulmages.qrc">
             <normaloff>:/Images/edit-save.svg</normaloff>:/Images/edit-save.svg</iconset>
           </property>
-          <property name="iconSize" >
+          <property name="iconSize">
            <size>
             <width>32</width>
             <height>32</height>
            </size>
           </property>
-          <property name="shortcut" >
+          <property name="shortcut">
            <string>Ctrl+S</string>
           </property>
          </widget>
         </item>
-        <item row="0" column="2" >
-         <widget class="QToolButton" name="mui_borrar" >
-          <property name="minimumSize" >
+        <item row="0" column="2">
+         <widget class="QToolButton" name="mui_borrar">
+          <property name="minimumSize">
            <size>
             <width>32</width>
             <height>32</height>
            </size>
           </property>
-          <property name="maximumSize" >
+          <property name="maximumSize">
            <size>
             <width>32</width>
             <height>32</height>
            </size>
           </property>
-          <property name="toolTip" >
+          <property name="toolTip">
            <string>Borrar Tipo de articulo</string>
           </property>
-          <property name="whatsThis" >
+          <property name="whatsThis">
            <string>Borrar Tipo de articulo</string>
           </property>
-          <property name="text" >
+          <property name="text">
            <string/>
           </property>
-          <property name="icon" >
-           <iconset resource="../../bulmages.qrc" >
+          <property name="icon">
+           <iconset resource="../../../bulmages.qrc">
             <normaloff>:/Images/edit-delete.svg</normaloff>:/Images/edit-delete.svg</iconset>
           </property>
-          <property name="iconSize" >
+          <property name="iconSize">
            <size>
             <width>32</width>
             <height>32</height>
            </size>
           </property>
-          <property name="shortcut" >
+          <property name="shortcut">
            <string>Ctrl+D</string>
           </property>
          </widget>
         </item>
-        <item row="0" column="3" >
+        <item row="0" column="3">
          <spacer>
-          <property name="orientation" >
+          <property name="orientation">
            <enum>Qt::Horizontal</enum>
           </property>
-          <property name="sizeType" >
+          <property name="sizeType">
            <enum>QSizePolicy::Expanding</enum>
           </property>
-          <property name="sizeHint" stdset="0" >
+          <property name="sizeHint" stdset="0">
            <size>
             <width>201</width>
             <height>20</height>
@@ -325,40 +326,40 @@
           </property>
          </spacer>
         </item>
-        <item row="0" column="0" >
-         <widget class="QToolButton" name="mui_crear" >
-          <property name="minimumSize" >
+        <item row="0" column="0">
+         <widget class="QToolButton" name="mui_crear">
+          <property name="minimumSize">
            <size>
             <width>32</width>
             <height>32</height>
            </size>
           </property>
-          <property name="maximumSize" >
+          <property name="maximumSize">
            <size>
             <width>32</width>
             <height>32</height>
            </size>
           </property>
-          <property name="toolTip" >
+          <property name="toolTip">
            <string>Nuevo Tipo de articulo</string>
           </property>
-          <property name="whatsThis" >
+          <property name="whatsThis">
            <string>Nuevo Tipo de articulo</string>
           </property>
-          <property name="text" >
+          <property name="text">
            <string/>
           </property>
-          <property name="icon" >
-           <iconset resource="../../bulmages.qrc" >
+          <property name="icon">
+           <iconset resource="../../../bulmages.qrc">
             <normaloff>:/Images/document-new.svg</normaloff>:/Images/document-new.svg</iconset>
           </property>
-          <property name="iconSize" >
+          <property name="iconSize">
            <size>
             <width>32</width>
             <height>32</height>
            </size>
           </property>
-          <property name="shortcut" >
+          <property name="shortcut">
            <string>Ctrl+N</string>
           </property>
          </widget>
@@ -370,9 +371,10 @@
    </item>
   </layout>
  </widget>
- <layoutdefault spacing="6" margin="11" />
+ <layoutdefault spacing="6" margin="11"/>
  <resources>
-  <include location="../../bulmages.qrc" />
+  <include location="../../../bulmages.qrc"/>
+  <include location="../../bulmages.qrc"/>
  </resources>
  <connections>
   <connection>
@@ -381,11 +383,11 @@
    <receiver>tiposarticulobase</receiver>
    <slot>close()</slot>
    <hints>
-    <hint type="sourcelabel" >
+    <hint type="sourcelabel">
      <x>369</x>
      <y>606</y>
     </hint>
-    <hint type="destinationlabel" >
+    <hint type="destinationlabel">
      <x>77</x>
      <y>725</y>
     </hint>
@@ -397,11 +399,11 @@
    <receiver>groupBox1</receiver>
    <slot>setShown(bool)</slot>
    <hints>
-    <hint type="sourcelabel" >
+    <hint type="sourcelabel">
      <x>17</x>
      <y>276</y>
     </hint>
-    <hint type="destinationlabel" >
+    <hint type="destinationlabel">
      <x>157</x>
      <y>307</y>
     </hint>
