@@ -352,11 +352,11 @@ class ModificarUsuario(Ui_ModificarUsuario, Empresa):
         
                 if (self.checkBox_all.isChecked()):
                     self.execComand('psql ' + str(dbase) + ' -c "GRANT all on ' + str(table) +  ' to ' + str(username) + '"')
-                    self.progress.setValue(1)
+                    self.progress.setValue(actual)
 
                 if (self.checkBox_revoke.isChecked()):
                     self.execComand('psql ' + str(dbase) + ' -c "REVOKE all on ' + str(table) + ' from ' + str(username) + '"')
-                    self.progress.setValue(1)
+                    self.progress.setValue(actual)
         
                 if (self.checkBox_select.isChecked()):
                     self.execComand('psql ' + str(dbase) + ' -c "GRANT select on ' + str(table) + ' to ' + str(username) + '"')
@@ -408,7 +408,79 @@ class ModificarUsuario(Ui_ModificarUsuario, Empresa):
                 actual = actual + mas
                 self.progress.setValue(actual)
         self.progress.hide()
-        self.tabWidget.setCurrentIndex(1)
+
+	""" AHORA PASAMOS A APLICAR LOS PERMISOS SOBRE LAS SEQUENCIAS"""
+	"""=========================================================="""
+
+	#Creamos la bara de progreso
+        self.progress = QtGui.QProgressBar(self)
+        self.progress.setGeometry(self.width() / 2 -100, self.height() /2 -10, 200, 20)
+        self.progress.show()
+
+        #Calculamos el % de aumento de la barra de progreso
+        total_seq = 0.0
+        numero = self.listWidgetSecuencias.count()
+
+        for x in range (numero):
+            temp = self.listWidgetSecuencias.item(x)
+            
+            if (temp.isSelected()):
+                total_seq = total_seq + 1.0
+         
+        actual = 0.0
+        if (total_seq != 0.0):
+            mas = 100.0/(total_seq*3.0)
+    
+        #Ahora pasamos a conceder los permisos por cada tabla seleccionada en la lista.
+        numero = self.listWidgetSecuencias.count()
+        global seq
+
+        for x in range (numero):
+            temp = self.listWidgetSecuencias.item(x)
+            
+            if (temp.isSelected()):
+	      self.writeDB() 
+	      break
+
+        for x in range (numero):
+            temp = self.listWidgetSecuencias.item(x)
+            
+            if (temp.isSelected()):
+                seq = temp.text()
+                self.writeSeq()
+                        
+                if (self.checkBox_all_2.isChecked()):
+                    self.execComand('psql ' + str(dbase) + ' -c "GRANT all on ' + str(seq) +  ' to ' + str(username) + '"')
+                    self.progress.setValue(actual)
+
+                if (self.checkBox_revoke_2.isChecked()):
+                    self.execComand('psql ' + str(dbase) + ' -c "REVOKE all on ' + str(seq) + ' from ' + str(username) + '"')
+                    self.progress.setValue(actual)
+                
+                if (self.checkBox_usage.isChecked()):
+                    self.execComand('psql ' + str(dbase) + ' -c "GRANT usage on ' + str(seq) + ' to ' + str(username) + '"')
+                else:
+                    self.execComand('psql ' + str (dbase) + ' -c "REVOKE usage on ' + str(seq) + ' from ' + str(username) + '"')
+                    
+                actual = actual + mas
+                self.progress.setValue(actual)
+        
+                if (self.checkBox_select.isChecked()):
+                    self.execComand('psql ' + str(dbase) + ' -c "GRANT select on ' + str(seq) + ' to ' + str(username) + '"')
+                else:
+                    self.execComand('psql ' + str(dbase) + ' -c "REVOKE select on ' + str(seq) + ' from ' + str(username) + '"')
+                    
+                actual = actual + mas
+                self.progress.setValue(actual)
+
+                if (self.checkBox_update2.isChecked()):
+                    self.execComand('psql ' + str(dbase) + ' -c "GRANT update on ' + str(seq) + ' to ' + str(username) + '"')
+                else:
+                    self.execComand('psql ' + str(dbase) + ' -c "REVOKE update on ' + str(seq) + ' from ' + str(username) + '"')
+                    
+                actual = actual + mas
+                self.progress.setValue(actual)
+        self.progress.hide()
                     
         # LAS SIGUIENTES 80 LINEAS ES LO MISMO QUE LO ANTERIOR, PERO SE CONCEDEN LOS PERMISOS 
         # A TRAVES DE UNA CONEXION DIRECTA CON POSTGRES, QUE SERIA LO CORRECTO, COMO NO FUNCIONA
@@ -493,78 +565,6 @@ class ModificarUsuario(Ui_ModificarUsuario, Empresa):
                 #print "Se produjo un error al intentar cambiar los permisos (temporary) de las bases de datos de PostgreSQL."
                 #sys.exit()
                 
-    def on_mui_guardar_seq_released(self):    
-    
-        # Activo y cambio a la 3ª pestaña del programa, la consola. para poder ver el resultado de los comandos
-        self.tabWidget.setTabEnabled(3, True)
-        self.tabWidget.setCurrentIndex(3)
-        self.mui_textBrowser.clear()
-        self.writeDB()
-
-        #Creamos la bara de progreso
-        self.progress = QtGui.QProgressBar(self)
-        self.progress.setGeometry(self.width() / 2 -100, self.height() /2 -10, 200, 20)
-        self.progress.show()
-
-        #Calculamos el % de aumento de la barra de progreso
-        total_seq = 0.0
-        numero = self.listWidgetSecuencias.count()
-
-        for x in range (numero):
-            temp = self.listWidgetSecuencias.item(x)
-            
-            if (temp.isSelected()):
-                total_seq = total_seq + 1.0
-         
-        actual = 0.0
-        if (total_seq != 0.0):
-            mas = 100.0/(total_seq*3.0)
-    
-        #Ahora pasamos a conceder los permisos por cada tabla seleccionada en la lista.
-        numero = self.listWidgetSecuencias.count()
-        global seq
-
-        for x in range (numero):
-            temp = self.listWidgetSecuencias.item(x)
-            
-            if (temp.isSelected()):
-                seq = temp.text()
-                self.writeSeq()
-                        
-                if (self.checkBox_all_2.isChecked()):
-                    self.execComand('psql ' + str(dbase) + ' -c "GRANT all on ' + str(seq) +  ' to ' + str(username) + '"')
-                    self.progress.setValue(actual)
-
-                if (self.checkBox_revoke_2.isChecked()):
-                    self.execComand('psql ' + str(dbase) + ' -c "REVOKE all on ' + str(seq) + ' from ' + str(username) + '"')
-                    self.progress.setValue(actual)
-                
-                if (self.checkBox_usage.isChecked()):
-                    self.execComand('psql ' + str(dbase) + ' -c "GRANT usage on ' + str(seq) + ' to ' + str(username) + '"')
-                else:
-                    self.execComand('psql ' + str (dbase) + ' -c "REVOKE usage on ' + str(seq) + ' from ' + str(username) + '"')
-                    
-                actual = actual + mas
-                self.progress.setValue(actual)
-        
-                if (self.checkBox_select.isChecked()):
-                    self.execComand('psql ' + str(dbase) + ' -c "GRANT select on ' + str(seq) + ' to ' + str(username) + '"')
-                else:
-                    self.execComand('psql ' + str(dbase) + ' -c "REVOKE select on ' + str(seq) + ' from ' + str(username) + '"')
-                    
-                actual = actual + mas
-                self.progress.setValue(actual)
-
-                if (self.checkBox_update2.isChecked()):
-                    self.execComand('psql ' + str(dbase) + ' -c "GRANT update on ' + str(seq) + ' to ' + str(username) + '"')
-                else:
-                    self.execComand('psql ' + str(dbase) + ' -c "REVOKE update on ' + str(seq) + ' from ' + str(username) + '"')
-                    
-                actual = actual + mas
-                self.progress.setValue(actual)
-        self.progress.hide()
-        self.tabWidget.setCurrentIndex(2)
-
     def execComand(self, command):
         self.writecommand(command)
         self.proceso.start(command)

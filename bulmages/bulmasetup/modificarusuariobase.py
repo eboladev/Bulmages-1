@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'modificarusuariobase.ui'
 #
-# Created: Wed May 20 11:22:35 2009
+# Created: Mon Jun  1 13:22:12 2009
 #      by: PyQt4 UI code generator 4.4.4
 #
 # WARNING! All changes made in this file will be lost!
@@ -22,11 +22,18 @@ class Ui_ModificarUsuario(object):
         self.horizontalLayout_2.setObjectName("horizontalLayout_2")
         spacerItem = QtGui.QSpacerItem(128, 17, QtGui.QSizePolicy.Expanding, QtGui.QSizePolicy.Minimum)
         self.horizontalLayout_2.addItem(spacerItem)
-        self.mui_salir = QtGui.QPushButton(ModificarUsuario)
-        self.mui_salir.setMinimumSize(QtCore.QSize(200, 0))
+        self.mui_guardar = QtGui.QPushButton(ModificarUsuario)
+        self.mui_guardar.setMinimumSize(QtCore.QSize(150, 0))
         icon1 = QtGui.QIcon()
-        icon1.addPixmap(QtGui.QPixmap(":/images/bulmasetup_exit.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
-        self.mui_salir.setIcon(icon1)
+        icon1.addPixmap(QtGui.QPixmap(":/images/bulmasetup_aceptar.xpm"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        self.mui_guardar.setIcon(icon1)
+        self.mui_guardar.setObjectName("mui_guardar")
+        self.horizontalLayout_2.addWidget(self.mui_guardar)
+        self.mui_salir = QtGui.QPushButton(ModificarUsuario)
+        self.mui_salir.setMinimumSize(QtCore.QSize(150, 0))
+        icon2 = QtGui.QIcon()
+        icon2.addPixmap(QtGui.QPixmap(":/images/bulmasetup_exit.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        self.mui_salir.setIcon(icon2)
         self.mui_salir.setObjectName("mui_salir")
         self.horizontalLayout_2.addWidget(self.mui_salir)
         spacerItem1 = QtGui.QSpacerItem(128, 17, QtGui.QSizePolicy.Expanding, QtGui.QSizePolicy.Minimum)
@@ -145,12 +152,6 @@ class Ui_ModificarUsuario(object):
         self.gridLayout_4.addWidget(self.checkBox_select_all, 17, 0, 1, 1)
         spacerItem2 = QtGui.QSpacerItem(20, 236, QtGui.QSizePolicy.Minimum, QtGui.QSizePolicy.Expanding)
         self.gridLayout_4.addItem(spacerItem2, 18, 0, 1, 1)
-        self.mui_guardar = QtGui.QPushButton(self.groupBox)
-        icon2 = QtGui.QIcon()
-        icon2.addPixmap(QtGui.QPixmap(":/images/bulmasetup_aceptar.xpm"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
-        self.mui_guardar.setIcon(icon2)
-        self.mui_guardar.setObjectName("mui_guardar")
-        self.gridLayout_4.addWidget(self.mui_guardar, 19, 0, 1, 1)
         self.checkBox_all = QtGui.QCheckBox(self.groupBox)
         font = QtGui.QFont()
         font.setWeight(75)
@@ -250,10 +251,6 @@ class Ui_ModificarUsuario(object):
         self.gridLayout_5.addWidget(self.checkBox_select_all_2, 9, 0, 1, 1)
         spacerItem7 = QtGui.QSpacerItem(20, 236, QtGui.QSizePolicy.Minimum, QtGui.QSizePolicy.Expanding)
         self.gridLayout_5.addItem(spacerItem7, 10, 0, 1, 1)
-        self.mui_guardar_seq = QtGui.QPushButton(self.groupBox_2)
-        self.mui_guardar_seq.setIcon(icon2)
-        self.mui_guardar_seq.setObjectName("mui_guardar_seq")
-        self.gridLayout_5.addWidget(self.mui_guardar_seq, 11, 0, 1, 1)
         self.checkBox_revoke_2 = QtGui.QCheckBox(self.groupBox_2)
         font = QtGui.QFont()
         font.setWeight(75)
@@ -343,6 +340,7 @@ class Ui_ModificarUsuario(object):
 
     def retranslateUi(self, ModificarUsuario):
         ModificarUsuario.setWindowTitle(QtGui.QApplication.translate("ModificarUsuario", "Modificar Permisos de Usuario", None, QtGui.QApplication.UnicodeUTF8))
+        self.mui_guardar.setText(QtGui.QApplication.translate("ModificarUsuario", "Asignar Permisos", None, QtGui.QApplication.UnicodeUTF8))
         self.mui_salir.setText(QtGui.QApplication.translate("ModificarUsuario", "Salir", None, QtGui.QApplication.UnicodeUTF8))
         self.label.setText(QtGui.QApplication.translate("ModificarUsuario", "Selecciona una Base de Datos", None, QtGui.QApplication.UnicodeUTF8))
         self.label_2.setText(QtGui.QApplication.translate("ModificarUsuario", "Selecciona un Usuario", None, QtGui.QApplication.UnicodeUTF8))
@@ -362,7 +360,6 @@ class Ui_ModificarUsuario(object):
         self.checkBox_trigger.setText(QtGui.QApplication.translate("ModificarUsuario", "TRIGGER", None, QtGui.QApplication.UnicodeUTF8))
         self.checkBox_references.setText(QtGui.QApplication.translate("ModificarUsuario", "REFERENCES", None, QtGui.QApplication.UnicodeUTF8))
         self.checkBox_select_all.setText(QtGui.QApplication.translate("ModificarUsuario", "SELECCIONAR TODOS", None, QtGui.QApplication.UnicodeUTF8))
-        self.mui_guardar.setText(QtGui.QApplication.translate("ModificarUsuario", "Asignar Permisos", None, QtGui.QApplication.UnicodeUTF8))
         self.checkBox_all.setText(QtGui.QApplication.translate("ModificarUsuario", "GRANT ALL", None, QtGui.QApplication.UnicodeUTF8))
         self.checkBox_revoke.setText(QtGui.QApplication.translate("ModificarUsuario", "REVOKE ALL", None, QtGui.QApplication.UnicodeUTF8))
         self.seleccionarTablas.setText(QtGui.QApplication.translate("ModificarUsuario", "Seleccionar todas las tablas", None, QtGui.QApplication.UnicodeUTF8))
@@ -373,7 +370,6 @@ class Ui_ModificarUsuario(object):
         self.checkBox_select2.setText(QtGui.QApplication.translate("ModificarUsuario", "SELECT", None, QtGui.QApplication.UnicodeUTF8))
         self.checkBox_update2.setText(QtGui.QApplication.translate("ModificarUsuario", "UPDATE", None, QtGui.QApplication.UnicodeUTF8))
         self.checkBox_select_all_2.setText(QtGui.QApplication.translate("ModificarUsuario", "SELECCIONAR TODOS", None, QtGui.QApplication.UnicodeUTF8))
-        self.mui_guardar_seq.setText(QtGui.QApplication.translate("ModificarUsuario", "Asignar Permisos", None, QtGui.QApplication.UnicodeUTF8))
         self.checkBox_revoke_2.setText(QtGui.QApplication.translate("ModificarUsuario", "REVOKE ALL", None, QtGui.QApplication.UnicodeUTF8))
         self.checkBox_all_2.setText(QtGui.QApplication.translate("ModificarUsuario", "GRANT ALL", None, QtGui.QApplication.UnicodeUTF8))
         self.label_6.setText(QtGui.QApplication.translate("ModificarUsuario", "Selecciona permisos", None, QtGui.QApplication.UnicodeUTF8))
