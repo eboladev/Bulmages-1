@@ -215,10 +215,10 @@ int AlumnoView::borrarPre()
     mainCompany()->runQuery ( query );
 
     query = "DELETE FROM alumnoactividad WHERE idalumno =" + dbValue ( "idalumno" );
-    mainCompany()->runQuery ( query1 );
+    mainCompany()->runQuery ( query );
     
     query = "DELETE FROM faltaasistenciaalumnoactividad WHERE idalumno =" + dbValue ( "idalumno" );
-    mainCompany()->runQuery ( query1 );
+    mainCompany()->runQuery ( query );
     
     _depura ( "END AlumnoView::borrarPre", 0 );
 
