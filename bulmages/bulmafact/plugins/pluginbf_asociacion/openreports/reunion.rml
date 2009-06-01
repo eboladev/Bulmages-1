@@ -10,7 +10,10 @@
     Aquí van los elementos gráficos de la página (headers, footers, frames, etc...).
     No puede estar vacío.
 -->
-<template pageSize="(21cm, 29.7cm)" leftMargin="0cm" rightMargin="0cm" topMargin="1.0cm" bottomMargin="2.0cm" title="Ficha de Junta Directiva" author="Arturo Martin Llado" allowSplitting="20">
+
+<!--QUERY="SELECT * FROM reunion WHERE idreunion = [idreunion]"-->
+
+<template pageSize="(21cm, 29.7cm)" leftMargin="0cm" rightMargin="0cm" topMargin="1.0cm" bottomMargin="2.0cm" title="Ficha de Reunión ([fecha1convocatoriareunion])" author="Arturo Martin Llado" allowSplitting="20">
     <pageTemplate id="main">
     
         <!-- FRAME DE CONTENIDOS -->
@@ -31,8 +34,6 @@
             <!-- Color del borde de las figuras -->
             <!--<stroke color="black" />-->
             <!--<circle x="127.5" y="672.75" radius="1in" fill="yes" stroke="no" />-->
-            
-<!--QUERY="SELECT * FROM reunion WHERE idreunion = [idreunion]"-->
             
             <setFont name="Helvetica" size="22"/>
             <drawString x="1.5cm" y="24cm">CONVOCATORIA DE REUNIÓN</drawString>
@@ -59,9 +60,22 @@
         fontSize="18"
     />
     
+    <paraStyle name="texto"
+        fontName="Helvetica"
+        fontSize="13"
+        spaceBefore="10"
+        spaceAfter="5"
+    />
+    
     <blockTableStyle id="tablaMiembros">
         <blockFont name="Helvetica" />
         <blockBackground colorName="gray" start="0,0" stop="0,0" />
+        <lineStyle colorName="black" kind="GRID" />
+    </blockTableStyle>
+    
+    <blockTableStyle id="tablaOrdenDelDia">
+        <blockFont name="Helvetica" />
+        <blockBackground colorName="gray" start="0,0" stop="2,0" />
         <lineStyle colorName="black" kind="GRID" />
     </blockTableStyle>
         
@@ -72,9 +86,7 @@
     No puede estar vacío.
 -->
 <story>
-<!--QUERY="SELECT * FROM reunion WHERE idreunion = [idreunion]"-->
-    <para>[resolucionreunion]</para><spacer length="0.5cm" />
-<!--END QUERY-->
+
     <para style="titulo"><b>Convocados</b></para>
     
     <spacer length="0.5cm" />
@@ -97,9 +109,27 @@
     
     <spacer length="0.5cm" />
     
+<!--QUERY="SELECT * FROM reunion WHERE idreunion = [idreunion]"-->
+    
+    <para style="titulo"><b>Concepto</b></para>
+    
+    <para style="texto">[conceptoreunion]</para>
+    
+    <spacer length="0.5cm" />
+    
+    <para style="titulo"><b>Resolución</b></para>
+    
+    <para style="texto">[resolucionreunion]</para>
+    
+    <spacer length="0.5cm" />
+    
+<!--END QUERY-->
+    
     <para style="titulo"><b>Orden del día</b></para>
     
-    <blockTable style="tablaOrdenDelDia" colWidths="6.1cm,6.1cm,6.1cm" repeatRows="0">
+    <spacer length="0.5cm" />
+    
+    <blockTable style="tablaOrdenDelDia" colWidths="6.1cm,6.1cm,6cm" repeatRows="0">
     
         <tr>
             <td>Concepto</td>
@@ -107,8 +137,16 @@
             <td>Resolución</td>
         </tr>
         
-<!-- Aquí irá el detalle -->
-    
+<!--QUERY="SELECT * FROM ordendiareunion WHERE idreunion = [idreunion] ORDER BY idordendiareunion ASC"-->
+
+        <tr>
+            <td>[conceptoordendiareunion]</td>
+            <td>[textoordendiareunion]</td>
+            <td>[resolucionordendiareunion]</td>
+        </tr>
+
+<!--END QUERY-->
+            
     </blockTable>
     
 </story>
