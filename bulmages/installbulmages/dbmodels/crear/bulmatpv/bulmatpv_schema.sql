@@ -1,5 +1,5 @@
 --
--- Modificación de campos y funciones de la BD para la adaptacion para el plugin de Contratos
+-- Modificación de campos y funciones de la BD para el uso de BULMATPV
 --
 \echo "********* INICIADO FICHERO DE ESTRUCTURA DEL PLUGIN DE BULMATPV *********"
 \echo ":: Establecemos los mensajes minimos a avisos y otros parametros ... "

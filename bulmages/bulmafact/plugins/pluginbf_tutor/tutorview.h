@@ -1,7 +1,10 @@
 /***************************************************************************
- *   Copyright (C) 2004 by Tomeu Borras Riera                              *
+ *   Copyright (C) 2009 by Tomeu Borras Riera                              *
  *   tborras@conetxia.com                                                  *
  *   http://www.iglues.org                                                 *
+ *                                                                         *
+ *   Copyright (C) 2009 by Arturo Martin Llado                             *
+ *   amartin@conetxia.com                                                  *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
  *   it under the terms of the GNU General Public License as published by  *
@@ -24,15 +27,11 @@
 
 #include <QObject>
 
-
 #include "blpostgresqlclient.h"
 #include "bfform.h"
 
 class BfCompany;
 
-
-/// Muestra y administra las l&iacute;neas de detalle de una contrato a un cliente.
-/** */
 class ListAlumnosTutorView : public BfSubForm
 {
     Q_OBJECT
@@ -40,17 +39,13 @@ class ListAlumnosTutorView : public BfSubForm
 public:
     ListAlumnosTutorView ( QWidget *parent = 0 );
     ~ListAlumnosTutorView() {};
+    
 public slots:
     virtual void cargar ( QString idcontrato );
 };
 
 #include "ui_tutorbase.h"
 
-/** Ventana de ficha de cobro.
-    Se encarga de la presentacion de la ficha de cobro y del tratamiento de eventos producidos
-    en dicha ventana.
-    Deriva de Ficha para metodos comunes a todas las ventanas.
-    Deriva de Cobro para el manejo de la Base de datos. */
 class TutorView : public BfForm, public Ui_TutorBase
 {
     Q_OBJECT
@@ -63,9 +58,9 @@ public:
     virtual int guardarPost();
     virtual int borrarPre();
     virtual int cargarPost(QString id);
+    
 public slots:
    virtual void on_mui_sociocliente_toggled(bool);
 };
 
 #endif
-

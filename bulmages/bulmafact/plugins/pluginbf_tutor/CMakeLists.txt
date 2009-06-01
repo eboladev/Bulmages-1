@@ -83,4 +83,8 @@ foreach(dfile ${docs})
    install (FILES ${dfile} DESTINATION share/bulmages/bulmafact-plugins/ RENAME ${dfile}.${plugin})
 endforeach(dfile in ${docs})
 
+file(GLOB report_files openreports/*.ui openreports/*.pys openreports/*.rml)
+
+install (FILES ${report_files} DESTINATION share/bulmages/openreports)
+
 add_dependencies(${plugin} bulmafact bulmalib)

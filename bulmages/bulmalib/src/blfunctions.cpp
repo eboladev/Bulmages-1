@@ -324,6 +324,7 @@ void reemplazaarchivo ( QString archivo, QString texto1, QString texto2, QString
 void generaPDF ( const QString arch )
 {
     _depura ( "generaPDF " + arch, 0 );
+
     QDir::setCurrent ( g_confpr->valor ( CONF_DIR_USER ) );
     QString cadsys;
 
@@ -335,11 +336,15 @@ void generaPDF ( const QString arch )
     cadsys = g_confpr->valor ( CONF_FLIP ) + " -u " + g_confpr->valor ( CONF_DIR_USER ) + arch + ".pdf";
     system ( cadsys.toAscii().data() );
     _depura ( cadsys, 0 );
+
 #else
 
     cadsys = "bgtrml2pdf " + arch + ".rml > " + arch + ".pdf";
     system ( cadsys.toAscii().data() );
+
 #endif
+
+    _depura ( "END generaPDF " + arch, 0 );
 }
 
 /// Genera un ODS a partir de un pys sin abrirlo.

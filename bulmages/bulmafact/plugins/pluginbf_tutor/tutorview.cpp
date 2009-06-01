@@ -1,6 +1,9 @@
 /***************************************************************************
- *   Copyright (C) 2004 by Tomeu Borras Riera                              *
+ *   Copyright (C) 2009 by Tomeu Borras Riera                              *
  *   tborras@conetxia.com                                                  *
+ *                                                                         *
+ *   Copyright (C) 2009 by Arturo Martin Llado                             *
+ *   amartin@conetxia.com                                                  *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
  *   it under the terms of the GNU General Public License as published by  *
@@ -36,12 +39,14 @@
     Resetea el sistema de control de cambios para que considere que no hay cambios por parte del usuario.
     Mete la ventana en el workSpace.
 */
-TutorView::TutorView ( BfCompany *comp, QWidget *parent )
-        : BfForm ( comp, parent )
+TutorView::TutorView ( BfCompany *comp, QWidget *parent ) : BfForm ( comp, parent )
 {
     _depura ( "TutorView::TutorView", 0 );
+    
     setAttribute ( Qt::WA_DeleteOnClose );
+    
     try {
+    
         setupUi ( this );
         centrarEnPantalla ( this );
 
@@ -80,12 +85,15 @@ TutorView::TutorView ( BfCompany *comp, QWidget *parent )
         meteWindow ( windowTitle(), this, FALSE );
         pintar();
         dialogChanges_cargaInicial();
+        
     } catch ( ... ) {
+    
         mensajeInfo ( _ ( "Error al crear el tutor" ), this );
+        
     } // end try
+    
     _depura ( "END TutorView::TutorView", 0 );
 }
-
 
 /** No precisa acciones adicionales en el destructor.
 */
@@ -95,29 +103,31 @@ TutorView::~TutorView()
     _depura ( "END TutorView::~TutorView", 0 );
 }
 
-
 void TutorView::on_mui_sociocliente_toggled ( bool state )
 {
     _depura ( "TutorView::on_mui_sociocliente_toggled", 0 );
+    
     if ( mui_numsociocliente->text() == "" && state ) {
-//         mensajeInfo("Asociado");
         QString query = "SELECT COALESCE(max(numsociocliente) + 1 , 0) AS numsoc FROM cliente";
         BlDbRecordSet *cur = mainCompany() ->loadQuery ( query );
         mui_numsociocliente->setText ( cur->valor ( "numsoc" ) );
     } // end if
+    
     _depura ( "END TutorView::on_mui_sociocliente_toggled", 0 );
 }
 
-
-
 QString TutorView::nombrePlantilla ( void )
 {
+    _depura ( "TutorView::nombrePlantilla", 0 );
+    _depura ( "END TutorView::nombrePlantilla", 0 );
+    
     return QString ( "tutor" );
 }
 
 void TutorView::imprimir()
 {
     _depura ( "TutorView::imprimir", 0 );
+    
     /// Comprobamos que se disponen de los datos minimos para imprimir el recibo.
     QString SQLQuery = "";
 
@@ -126,20 +136,21 @@ void TutorView::imprimir()
         mensajeInfo ( _ ( "Tiene que guardar el documento antes de poder imprimirlo." ), this );
         return;
     }
+    
     /// Disparamos los plugins
     int res = g_plugins->lanza ( "TutorView_imprimir", this );
     if ( res != 0 ) {
         return;
     } // end if
+    
     BfForm::imprimir();
 
     _depura ( "END TutorView::imprimir", 0 );
 }
 
-
 int TutorView::guardarPost()
 {
-    _depura ( " TutorView::guardarPost", 0 );
+    _depura ( "TutorView::guardarPost", 0 );
 
     mui_alumnosList->setColumnValue ( "idcliente", dbValue ( "idcliente" ) );
     mui_alumnosList->guardar();
@@ -163,22 +174,28 @@ int TutorView::guardarPost()
         mainCompany()->runQuery(query);
       } // end if
     */
+    
     _depura ( "END TutorView::guardarPost", 0 );
+    
     return 0;
 }
 
 int TutorView::borrarPre()
 {
+    _depura ( "TutorView::borrarPre", 0 );
+
     /*
         QString query = "DELETE FROM socio WHERE idcliente=" + dbValue("idcliente");
         mainCompany()->runQuery(query);
     */
+    
     QString query = "DELETE FROM alumnocliente WHERE idcliente=" + dbValue ( "idcliente" );
     mainCompany()->runQuery ( query );
+    
+    _depura ( "END TutorView::borrarPre", 0 );
+    
     return 0;
 }
-
-
 
 int TutorView::cargarPost ( QString id )
 {
@@ -192,23 +209,17 @@ int TutorView::cargarPost ( QString id )
         } // end if
         delete cur;
     */
+    
     mui_alumnosList->cargar ( id );
 
     _depura ( "END TutorView::cargarPost", 0 );
+    
     return 0;
 }
-
-
 
 /// =============================================================================
 ///                    SUBFORMULARIO
 /// =============================================================================
-/** Prepara el subformulario para trabajar con la tabla factura.
-*/
-/**
-\param parent
-**/
-
 
 ///
 /**
@@ -217,6 +228,7 @@ int TutorView::cargarPost ( QString id )
 ListAlumnosTutorView::ListAlumnosTutorView ( QWidget *parent ) : BfSubForm ( parent )
 {
     _depura ( "ListAlumnosTutorView::ListAlumnosTutorView", 0 );
+    
     setDbTableName ( "alumnocliente" );
     setDbFieldId ( "idalumnocliente" );
     addSubFormHeader ( "idalumnocliente", BlDbField::DbInt, BlDbField::DbPrimaryKey , BlSubFormHeader::DbHideView, _ ( "Identificador" ) );
@@ -226,20 +238,20 @@ ListAlumnosTutorView::ListAlumnosTutorView ( QWidget *parent ) : BfSubForm ( par
     addSubFormHeader ( "idcliente", BlDbField::DbInt, BlDbField::DbNothing, BlSubFormHeader::DbHideView, _ ( "Id tutor" ) );
 
     setInsert ( TRUE );
-    setOrdenEnabled ( TRUE );
+    setSortingEnabled ( TRUE );
+    
     _depura ( "END ListAlumnosTutorView::ListAlumnosTutorView", 0 );
 }
 
-
 ///
 /**
-\param idcontrato
+\param idcliente
 **/
 void ListAlumnosTutorView::cargar ( QString idcliente )
 {
     _depura ( "ListAlumnosTutorView::cargar", 0 );
+    
     BlSubForm::cargar ( "SELECT *, (apellido1alumno || ' ' || apellido2alumno || ', ' || nombrealumno) AS nombrealumno1 FROM alumnocliente LEFT JOIN alumno ON alumnocliente.idalumno = alumno.idalumno  WHERE alumnocliente.idcliente=" + idcliente  );
+    
     _depura ( "END ListAlumnosTutorView::cargar", 0 );
 }
-
-
