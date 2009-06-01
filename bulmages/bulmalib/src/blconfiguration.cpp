@@ -310,6 +310,8 @@ QString BlConfiguration::nombre ( int i )
         return "CONF_DIR_THUMB_ARTICLES";
     if ( i == CONF_DIR_IMG_PERSONAL )
         return "CONF_DIR_IMG_PERSONAL";
+    if ( i == CONF_DIR_IMG_ALUMNOS )
+        return "CONF_DIR_IMG_ALUMNOS";
     if ( i == CONF_FONTFAMILY_BULMAGES )
         return "CONF_FONTFAMILY_BULMAGES";
     if ( i == CONF_FONTSIZE_BULMAGES )

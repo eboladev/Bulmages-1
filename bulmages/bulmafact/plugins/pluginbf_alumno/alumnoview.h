@@ -22,8 +22,8 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#ifndef COBROVIEW_H
-#define COBROVIEW_H
+#ifndef ALUMNOVIEW_H
+#define ALUMNOVIEW_H
 
 #include <QLineEdit>
 #include <QLabel>
@@ -69,6 +69,11 @@ public slots:
 class AlumnoView : public BfForm, public Ui_AlumnoBase
 {
     Q_OBJECT
+    
+private:
+    /// La imagen de un alumno es una excepcion ya que no se guarda en la base de datos
+    /// por ese motivo la almacenamos en esta variable que hace que corresponda con un archivo.
+    QString m_archivoimagen;
 
 public:
     AlumnoView ( BfCompany *, QWidget * );
@@ -78,6 +83,11 @@ public:
     virtual int guardarPost();
     virtual int borrarPre();
     virtual int cargarPost(QString id);
+    virtual void pintarPost();
+    
+public slots:
+    virtual void on_mui_cambiarimagen_released();
+    virtual void on_mui_borrarimagen_released();
 };
 
 #endif

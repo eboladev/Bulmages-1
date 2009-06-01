@@ -18,6 +18,7 @@ CONF_MOSTRAR_ALMACEN          YES
 # Directorio donde se almacenaran las imagenes para bulmafact.
 CONF_DIR_IMG_ARTICLES         /var/bulmages/articles/
 CONF_DIR_IMG_PERSONAL         /var/bulmages/personal/
+CONF_DIR_IMG_ALUMNOS          /var/bulmages/alumnos/
 
 # Estos valores indican el fondo y la fuente de la ventana de facturacion.
 CONF_BG_LISTPRESUPUESTOS      #CCCC33

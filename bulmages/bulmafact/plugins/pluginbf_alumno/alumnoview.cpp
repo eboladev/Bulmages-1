@@ -27,6 +27,7 @@
 #include <QCloseEvent>
 #include <QFile>
 #include <QTextStream>
+#include <QFileDialog>
 
 #include "alumnoview.h"
 #include "bfcompany.h"
@@ -66,6 +67,9 @@ AlumnoView::AlumnoView ( BfCompany *comp, QWidget *parent ) : BfForm ( comp, par
         addDbField ( "fechanacimientoalumno", BlDbField::DbDate, BlDbField::DbNothing, _ ( "Fecha Nacimiento" ) );
         addDbField ( "idprovincia", BlDbField::DbInt, BlDbField::DbNothing, _ ( "Provincia" ) );
         addDbField ( "activoalumno", BlDbField::DbBoolean, BlDbField::DbNothing, _ ( "Activo" ) );
+        
+        m_archivoimagen = "";
+        mui_imagen->setPixmap ( QPixmap ( g_confpr->valor ( CONF_PROGDATA ) + "images/logopeq.png" ) );
 
         /// Datos por defecto.
         mui_tutoresList->setMainCompany ( mainCompany() );
@@ -116,14 +120,14 @@ void AlumnoView::imprimir()
     /// Comprobamos que se disponen de los datos minimos para imprimir el recibo.
     QString SQLQuery = "";
 
-    if ( dbValue ( "idcliente" ).isEmpty() ) {
+    if ( dbValue ( "idalumno" ).isEmpty() ) {
         /// El documento no se ha guardado y no se dispone en la base de datos de estos datos.
         mensajeInfo ( _ ( "Tiene que guardar el documento antes de poder imprimirlo." ), this );
         return;
     }
     
     /// Disparamos los plugins
-    int res = g_plugins->lanza ( "CoboView_on_mui_imprimir_released", this );
+    int res = g_plugins->lanza ( "AlumnoView_on_mui_imprimir_released", this );
     if ( res != 0 ) {
         return;
     } // end if
@@ -131,6 +135,35 @@ void AlumnoView::imprimir()
     BfForm::imprimir();
 
     _depura ( "END AlumnoView::imprimir", 0 );
+}
+
+/** Se encarga de presentar la ventana con los datos cargados en la clase BlDbRecord.
+    Tambien cambia el titulo de la ventana para que contenga la informacion correcta.
+*/
+/**
+**/
+void AlumnoView::pintarPost()
+{
+    _depura ( "AlumnoView::pintar", 0 );
+
+    /// Comprueba que exista la imagen del alumno y sino carga la imagen por defecto para indicar
+    /// que el alumno no tiene imagen asociada.
+
+    QString archivoimagen;
+    archivoimagen = g_confpr->valor ( CONF_DIR_IMG_ALUMNOS ) + dbValue ( "idalumno" ) + ".jpg";
+
+    QFile archivo;
+    archivo.setFileName ( archivoimagen );
+
+    if ( archivo.exists() ) {
+        /// Muestra la imagen si existe el archivo.
+        mui_imagen->setPixmap ( QPixmap ( archivoimagen ) );
+    } else  {
+        /// Muestra la imagen por defecto.
+        mui_imagen->setPixmap ( QPixmap ( g_confpr->valor ( CONF_PROGDATA ) + "images/logopeq.png" ) );
+    } // end if
+
+    _depura ( "END AlumnoView::pintar", 0 );
 }
 
 int AlumnoView::guardarPost()
@@ -142,6 +175,19 @@ int AlumnoView::guardarPost()
 
     mui_actividadesList->setColumnValue ( "idalumno", dbValue ( "idalumno" ) );
     mui_actividadesList->guardar();
+    
+    /// Guardamos la imagen, si es que existe.
+    if ( !m_archivoimagen.isEmpty() ) {
+        
+        m_archivoimagen = m_archivoimagen.replace ( " ", "\\ " );
+
+        /// Coge la imagen del recuadro y la guarda en un archivo con el nombre correcto.
+        if ( mui_imagen->pixmap()->save ( g_confpr->valor ( CONF_DIR_IMG_ALUMNOS ) + dbValue ( "idalumno" ) + ".jpg" ) == false ) {
+            mensajeError ( _ ( "No se ha podido guardar la imagen.\nRevise los permisos de escritura y que disponga\nde espacio libre suficiente en el disco duro." ) );
+        } // end if
+
+        
+    } // end if
 
     _depura ( "END AlumnoView::guardarPost", 0 );
 }
@@ -149,11 +195,29 @@ int AlumnoView::guardarPost()
 int AlumnoView::borrarPre()
 {
     _depura ( "AlumnoView::borrarPre", 0 );
+    
+    /// Borramos la imagen
+    QString archivoimagen;
+    archivoimagen = g_confpr->valor ( CONF_DIR_IMG_ALUMNOS ) + dbValue ( "idalumno" ) + ".jpg";
+
+    QFile archivo;
+    archivo.setFileName ( archivoimagen );
+
+    if ( archivo.exists() ) {
+    
+        if ( archivo.remove() == false ) {
+            mensajeError ( _ ( "No se ha podido borrar la imagen del alumno.\nCompruebe que el archivo tenga los permisos correctos." ) );
+        } // end if
+            
+    } // end if
 
     QString query = "DELETE FROM alumnocliente WHERE idalumno =" + dbValue ( "idalumno" );
     mainCompany()->runQuery ( query );
 
-    QString query1 = "DELETE FROM alumnoactividad WHERE idalumno =" + dbValue ( "idalumno" );
+    query = "DELETE FROM alumnoactividad WHERE idalumno =" + dbValue ( "idalumno" );
+    mainCompany()->runQuery ( query1 );
+    
+    query = "DELETE FROM faltaasistenciaalumnoactividad WHERE idalumno =" + dbValue ( "idalumno" );
     mainCompany()->runQuery ( query1 );
     
     _depura ( "END AlumnoView::borrarPre", 0 );
@@ -171,6 +235,74 @@ int AlumnoView::cargarPost ( QString id )
     _depura ( "END AlumnoView::cargarPost", 0 );
     
     return 0;
+}
+
+/** SLOT que responde a la pulsacion del boton de cambio de imagen.
+    Abre la imagen y la almacenta al mismo tiempo que la presenta.
+    Es el metodo de guardado quien determina como almacenarla.
+*/
+/**
+**/
+void AlumnoView::on_mui_cambiarimagen_released()
+{
+    _depura ( "AlumnoView::on_mui_cambiarimagen_released()", 0 );
+    
+    QPixmap imagen;
+
+    m_archivoimagen = QFileDialog::getOpenFileName (
+        this,
+        _ ( "Seleccione un archivo de imagen" ),
+        "",
+        _ ( "Imagenes (*.jpg)" ) 
+    );
+
+    /// Comprueba si se ha seleccionado un archivo.
+    if ( !m_archivoimagen.isNull() ) {
+        /// Comprueba que la imagen del archivo es valida.
+        if ( imagen.load ( m_archivoimagen ) == false ) {
+            mensajeError ( _ ( "No se ha podido cargar la imagen.\nCompruebe que la imagen sea valida." ) );
+            return;
+        } // end if
+
+        /// Muestra la imagen en el recuadro de la imagen.
+        mui_imagen->setPixmap ( imagen );
+    } // end if
+
+    _depura ( "END AlumnoView::on_mui_cambiarimagen_released()", 0 );
+}
+
+/** Elimina la imagen del alumno asociado, si existe.
+**/
+void AlumnoView::on_mui_borrarimagen_released()
+{
+    _depura ( "AlumnoView::on_mui_borrarimagen_released()", 0 );
+
+    QString archivoimagen;
+    archivoimagen = g_confpr->valor ( CONF_DIR_IMG_ALUMNOS ) + dbValue ( "idalumno" ) + ".jpg";
+
+    QFile archivo;
+    archivo.setFileName ( archivoimagen );
+
+    if ( archivo.exists() ) {
+    
+        int val = QMessageBox::question ( this,
+            _ ( "Borrar imagen del alumno" ),
+            _ ( "Esta seguro que quiere borrar\nla imagen asociada a este alumno?" ),
+            QMessageBox::Yes,
+            QMessageBox::Cancel | QMessageBox::Escape | QMessageBox::Default 
+        );
+
+        if ( val == QMessageBox::Yes ) {
+            /// Se borra el archivo de la imagen y se muestra la imagen por defecto en el QLabel.
+            if ( archivo.remove() == false ) {
+                mensajeError ( _ ( "No se ha podido borrar el archivo.\nCompruebe que el archivo tenga los permisos correctos." ) );
+            } // end if
+        } // end if
+    } // end if
+
+    pintarPost();
+    
+    _depura ( "END AlumnoView::on_mui_borrarimagen_released()", 0 );
 }
 
 /// =============================================================================
@@ -210,8 +342,6 @@ void ListAlumnosTutorView::cargar ( QString idalumno )
     _depura ( "END ListAlumnosTutorView::cargar", 0 );
 }
 
-
-
 ///
 /**
 \param parent
@@ -219,6 +349,7 @@ void ListAlumnosTutorView::cargar ( QString idalumno )
 ListAlumnosActividadView::ListAlumnosActividadView ( QWidget *parent ) : BfSubForm ( parent )
 {
     _depura ( "ListAlumnosActividadView::ListAlumnosActividadView", 0 );
+    
     setDbTableName ( "alumnoactividad" );
     setDbFieldId ( "idalumnoactividad" );
     addSubFormHeader ( "idalumnoactividad", BlDbField::DbInt, BlDbField::DbPrimaryKey , BlSubFormHeader::DbHideView, _ ( "Identificador" ) );
@@ -228,9 +359,9 @@ ListAlumnosActividadView::ListAlumnosActividadView ( QWidget *parent ) : BfSubFo
 
     setInsert ( TRUE );
     setOrdenEnabled ( TRUE );
+    
     _depura ( "END ListAlumnosActividadView::ListAlumnosActividadView", 0 );
 }
-
 
 ///
 /**
@@ -239,7 +370,8 @@ ListAlumnosActividadView::ListAlumnosActividadView ( QWidget *parent ) : BfSubFo
 void ListAlumnosActividadView::cargar ( QString idalumno )
 {
     _depura ( "ListAlumnosActividadView::cargar", 0 );
+    
     BlSubForm::cargar ( "SELECT * FROM alumnoactividad LEFT JOIN actividad ON alumnoactividad.idactividad = actividad.idactividad  WHERE alumnoactividad.idalumno =" + idalumno  );
+    
     _depura ( "END ListAlumnosActividadView::cargar", 0 );
 }
-
