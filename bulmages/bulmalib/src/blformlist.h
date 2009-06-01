@@ -67,6 +67,7 @@ public:
     bool modoEdicion();
     bool modoConsulta();
     void trataPermisos ( QString nomtabla );
+    BlSubForm *subForm();
 
 public slots:
     virtual void on_mui_list_customContextMenuRequested ( const QPoint & );

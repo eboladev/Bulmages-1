@@ -33,6 +33,9 @@
 #include "facturaslist.h"
 #include "albaranclientelist.h"
 #include "cobroslist.h"
+#include "blformlist.h"
+#include "reciboview.h"
+
 
 class ImpQToolButton : public QToolButton
 {
@@ -45,6 +48,7 @@ private:
     AlbaranClienteList *m_albaranClienteList;
     FacturasList    *m_facturasList;
     CobrosList     *m_cobrosList;
+    BlFormList *m_listado;
 
 public:
     ImpQToolButton ( PresupuestoList *pres = NULL, PedidosClienteList *ped = NULL, AlbaranClienteList *alb = NULL,  FacturasList *fac = NULL , CobrosList *cob = NULL, QWidget *parent = NULL );
@@ -67,6 +71,7 @@ private:
     AlbaranClienteList *m_albaranClienteList;
     FacturasList    *m_facturasList;
     CobrosList    *m_cobrosList;
+    BlFormList *m_listado;
 public:
     SelQToolButton ( PresupuestoList *pres = NULL, PedidosClienteList *ped = NULL, AlbaranClienteList *alb = NULL,  FacturasList *fac = NULL , CobrosList *cob = NULL,  QWidget *parent = NULL );
     ~SelQToolButton();
@@ -87,7 +92,7 @@ private:
     AlbaranClienteList *m_albaranClienteList;
     FacturasList    *m_facturasList;
     CobrosList *m_cobrosList;
-
+    BlFormList *m_listado;
 
 public:
     EmailQToolButton ( PresupuestoList *pres = NULL, PedidosClienteList *ped = NULL, AlbaranClienteList *alb = NULL,  FacturasList *fac = NULL, CobrosList *cob = NULL , QWidget *parent = NULL );

@@ -221,7 +221,7 @@ ListAlumnosTutorView::ListAlumnosTutorView ( QWidget *parent ) : BfSubForm ( par
     setDbFieldId ( "idalumnocliente" );
     addSubFormHeader ( "idalumnocliente", BlDbField::DbInt, BlDbField::DbPrimaryKey , BlSubFormHeader::DbHideView, _ ( "Identificador" ) );
     addSubFormHeader ( "idalumno", BlDbField::DbInt, BlDbField::DbNotNull | BlDbField::DbRequired , BlSubFormHeader::DbHideView, _ ( "Id alumno" ) );
-    addSubFormHeader ( "nombrealumno", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone, _ ( "Nombre alumno" ) );
+    addSubFormHeader ( "nombrealumno1", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone, _ ( "Nombre alumno" ) );
     addSubFormHeader ( "porcentalumnocliente", BlDbField::DbNumeric, BlDbField::DbNotNull | BlDbField::DbRequired , BlSubFormHeader::DbHideView, _ ( "Porcentaje Fact." ) );
     addSubFormHeader ( "idcliente", BlDbField::DbInt, BlDbField::DbNothing, BlSubFormHeader::DbHideView, _ ( "Id tutor" ) );
 
@@ -238,7 +238,7 @@ ListAlumnosTutorView::ListAlumnosTutorView ( QWidget *parent ) : BfSubForm ( par
 void ListAlumnosTutorView::cargar ( QString idcliente )
 {
     _depura ( "ListAlumnosTutorView::cargar", 0 );
-    BlSubForm::cargar ( "SELECT * FROM alumnocliente LEFT JOIN alumno ON alumnocliente.idalumno = alumno.idalumno  WHERE alumnocliente.idcliente=" + idcliente  );
+    BlSubForm::cargar ( "SELECT *, (apellido1alumno || ' ' || apellido2alumno || ', ' || nombrealumno) AS nombrealumno1 FROM alumnocliente LEFT JOIN alumno ON alumnocliente.idalumno = alumno.idalumno  WHERE alumnocliente.idcliente=" + idcliente  );
     _depura ( "END ListAlumnosTutorView::cargar", 0 );
 }
 

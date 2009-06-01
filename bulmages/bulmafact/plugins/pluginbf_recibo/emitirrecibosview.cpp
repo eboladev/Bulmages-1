@@ -81,7 +81,8 @@ void EmitirRecibosView::on_mui_crear_released() {
 
     _depura ( "EmitirRecibosView::on_mui_crear_released", 0 );
     
-    QString query = "SELECT nomcliente, cliente.idcliente, coalesce (suma, 0) AS numhijos, cuotacuotaporalumno FROM cliente LEFT JOIN (SELECT idcliente, count(idalumnocliente) AS suma FROM alumnocliente GROUP BY idcliente) AS t1 ON cliente.idcliente = t1.idcliente LEFT JOIN (SELECT * FROM cuotaporalumno) AS t2 ON t2.numalumnoscuotaporalumno = coalesce(t1.suma, 0) WHERE cliente.sociocliente = TRUE";
+    // Iteramos para cada tutor / socio
+    QString query = "SELECT nomcliente, cliente.idcliente, coalesce (suma, 0) AS numhijos, cuotacuotaporalumno, sociocliente FROM cliente LEFT JOIN (SELECT idcliente, count(idalumnocliente) AS suma FROM alumnocliente GROUP BY idcliente) AS t1 ON cliente.idcliente = t1.idcliente LEFT JOIN (SELECT * FROM cuotaporalumno) AS t2 ON t2.numalumnoscuotaporalumno = coalesce(t1.suma, 0)";
     BlDbRecordSet *cur = mainCompany() -> loadQuery( query );
     m_progreso->setMaximum(cur->numregistros());
     m_progreso->setValue(0);
@@ -90,26 +91,42 @@ void EmitirRecibosView::on_mui_crear_released() {
 
         QDate fechain = m_fechain->date();
         QDate fechafin = m_fechafin->date();
-    
+	bool haylineas = FALSE;
+
+	mainCompany()->begin();
+
         QString query = "INSERT INTO recibo(descrecibo, idcliente) VALUES ('Recibo automático', " + cur->valor("idcliente") + ")";
         mainCompany()-> runQuery(query);
         BlDbRecordSet *cur1 = mainCompany()->loadQuery("SELECT MAX(idrecibo) AS id FROM recibo");
         QString idrecibo = cur1->valor("id");
         
         delete cur1;
-        
-        query = "INSERT INTO lrecibo(idrecibo, cantlrecibo, conceptolrecibo) VALUES (" + idrecibo + ", " + cur->valor("cuotacuotaporalumno") + ", 'Cuota por "  +cur->valor("numhijos")+" alumno/s')";
-        mainCompany() -> runQuery(query);
-        
-        query = "SELECT * FROM alumnoactividad LEFT JOIN alumno as t1 ON alumnoactividad.idalumno = t1.idalumno LEFT JOIN actividad AS t2 ON alumnoactividad.idactividad = t2.idactividad LEFT JOIN alumnocliente AS t3 ON t3.idalumno = t1.idalumno LEFT JOIN cliente AS t4 ON t4.idcliente = t3.idcliente WHERE t3.idcliente = " + cur->valor("idcliente");
+
+	/// Si el tutor es socio se emite la cuota.
+	if (cur->valor("sociocliente") == "t") {
+	  query = "INSERT INTO lrecibo(idrecibo, cantlrecibo, conceptolrecibo) VALUES (" + idrecibo + ", " + cur->valor("cuotacuotaporalumno") + ", 'Cuota por "  +cur->valor("numhijos")+" alumno/s')";
+	  mainCompany() -> runQuery(query);
+	  haylineas = TRUE;
+	} // end if
+
+	/// Si hay actividades se facturan.
+        query = "SELECT * FROM alumnoactividad LEFT JOIN alumno as t1 ON alumnoactividad.idalumno = t1.idalumno LEFT JOIN actividad AS t2 ON alumnoactividad.idactividad = t2.idactividad LEFT JOIN alumnocliente AS t3 ON t3.idalumno = t1.idalumno LEFT JOIN cliente AS t4 ON t4.idcliente = t3.idcliente WHERE t3.idcliente = " + cur->valor("idcliente") + " AND t3.porcentalumnocliente <> 0";
         cur1 = mainCompany() -> loadQuery(query);
-        
         while (! cur1 -> eof () ) {
-            query = "INSERT INTO lrecibo(idrecibo, cantlrecibo, conceptolrecibo) VALUES (" + idrecibo + ", " + cur1->valor("precioactividad") + ", '"+cur1->valor("nombreactividad")+" Cuota por "  +cur1->valor("nombrealumno")+" ')";
+            query = "INSERT INTO lrecibo(idrecibo, cantlrecibo, conceptolrecibo) VALUES (" + idrecibo + ", " + cur1->valor("porcentalumnocliente") +"*"+cur1->valor("precioactividad")+"/100" + ", '"+cur1->valor("nombreactividad")+" Cuota por "  +cur1->valor("nombrealumno")+" ')";
             mainCompany() -> runQuery(query);
             cur1 -> nextRecord();
+	    haylineas = TRUE;
         } // end while
         
+
+	/// Si al final resulta que no habia lineas se hace un delete.
+        if (haylineas == FALSE) {
+	  mainCompany()->runQuery("DELETE FROM recibo WHERE idrecibo = "+ idrecibo);
+	} // end if
+
+	mainCompany()->commit();
+
         cur -> nextRecord();
         m_progreso->setValue(cur->currentRecord());
       

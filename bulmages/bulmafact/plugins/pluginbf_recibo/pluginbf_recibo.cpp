@@ -170,3 +170,13 @@ int BfCompany_createMainWindows_Post ( BfCompany *comp )
     
     return 0;
 }
+
+
+/// Esta llamada de plugin es bastante novedosa ya es una llamada que no responde a una funcion
+/// Sino que se llama desde multiples partes del sistema.
+int SNewReciboView ( BfCompany *v )
+{
+    ReciboView *h = new ReciboView ( v, 0 );
+    g_plugParams = h;
+    return 1;
+}

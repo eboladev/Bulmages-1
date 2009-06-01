@@ -220,6 +220,19 @@ void BlFormList::setSubForm ( BlSubForm *list )
 }
 
 
+
+///
+/**
+\param list
+**/
+BlSubForm *BlFormList::subForm ( )
+{
+    _depura ( "BlFormList::subForm", 0 );
+    _depura ( "END BlFormList::subForm", 0 );
+    return m_listado;
+}
+
+
 ///
 /**
 \param text

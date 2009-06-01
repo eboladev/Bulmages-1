@@ -31,6 +31,8 @@ include_directories(
 	${CMAKE_SOURCE_DIR}/bulmalib/src/
 	${CMAKE_BINARY_DIR}/bulmafact/src/
 	${CMAKE_SOURCE_DIR}/bulmafact/src/
+	${CMAKE_BINARY_DIR}/bulmafact/plugins/pluginbf_recibo/
+	${CMAKE_SOURCE_DIR}/bulmafact/plugins/pluginbf_recibo/
 	${CMAKE_BINARY_DIR}/bulmafact/plugins/pluginbf_clientepresupuesto/
 	${CMAKE_SOURCE_DIR}/bulmafact/plugins/pluginbf_clientepresupuesto/
 	${CMAKE_BINARY_DIR}/bulmafact/plugins/pluginbf_clientepedido/
@@ -96,4 +98,4 @@ foreach(dfile ${docs})
    install (FILES ${dfile} DESTINATION share/bulmages/bulmafact-plugins/ RENAME ${dfile}.${plugin})
 endforeach(dfile in ${docs})
 
-add_dependencies(${plugin} bulmafact bulmalib pluginbf_clientecobro pluginbf_clientefactura pluginbf_clientealbaran pluginbf_clientepedido)
+add_dependencies(${plugin} bulmafact bulmalib pluginbf_clientecobro pluginbf_clientefactura pluginbf_clientealbaran pluginbf_clientepedido pluginbf_recibo)

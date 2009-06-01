@@ -181,7 +181,7 @@ int BfSubForm_pressedAsterisk ( BfSubForm *sub )
 {
     _depura ( "BfSubForm_pressedAsterisk" );
 
-    if ( sub->m_campoactual->nomcampo() != "nombrealumno" ) {
+    if ( sub->m_campoactual->nomcampo() != "nombrealumno1" ) {
         _depura ( "END BfSubForm::pressedAsterisk", 0 );
         return 0;
     } // end if
@@ -209,7 +209,7 @@ int BfSubForm_pressedAsterisk ( BfSubForm *sub )
     BlDbRecordSet *cur = sub->mainCompany() ->loadQuery ( "SELECT * FROM alumno WHERE idalumno = " + idAlumno );
     if ( !cur->eof() ) {
         sub->m_registrolinea->setDbValue ( "idalumno", idAlumno );
-        sub->m_registrolinea->setDbValue ( "nombrealumno", cur->valor ( "nombrealumno" ) );
+        sub->m_registrolinea->setDbValue ( "nombrealumno1", cur->valor( "apellido1alumno") + " " + cur->valor("apellido2alumno") + ", " + cur->valor ( "nombrealumno" ));
     } // end if
     
     delete cur;

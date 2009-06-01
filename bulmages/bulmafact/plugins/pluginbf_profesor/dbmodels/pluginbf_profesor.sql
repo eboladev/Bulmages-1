@@ -421,7 +421,7 @@ END;
 
 \echo -n ':: Disparador que recalcula el campo de totales de un recibo (INSERT)'
 CREATE TRIGGER actualizacantrecibotrigger_insert
-    BEFORE INSERT ON lrecibo
+    AFTER INSERT ON lrecibo
     FOR EACH ROW
     EXECUTE PROCEDURE actualizacantrecibo_insert();
 
@@ -443,7 +443,7 @@ END;
 
 \echo -n ':: Disparador que calcula/actualiza el campo de totales de un recibo (UPDATE)'
 CREATE TRIGGER actualizacantrecibotrigger_update
-    BEFORE UPDATE ON lrecibo
+    AFTER UPDATE ON lrecibo
     FOR EACH ROW
     EXECUTE PROCEDURE actualizacantrecibo_update();
     

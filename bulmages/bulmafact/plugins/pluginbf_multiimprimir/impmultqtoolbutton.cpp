@@ -63,6 +63,8 @@ ImpQToolButton::ImpQToolButton ( PresupuestoList *pres, PedidosClienteList *ped,
     m_facturasList = fac;
     m_cobrosList = cob;
 
+    m_listado = (BlFormList *) parent->parent()->parent();
+
     setBoton();
     _depura ( "END ImpQToolButton::ImpQToolButton", 0 );
 }
@@ -394,10 +396,43 @@ void ImpQToolButton::click()
         } // end if
 
 
+        if ( m_listado->objectName() == "RecibosListBase" ) {
+            m_companyact = ( BfCompany * ) m_listado->mainCompany();
+            BlSubForm *sub = m_listado->subForm();
+
+            /// Reseteamos los valores
+            for ( int i = 0; i < sub->rowCount(); i++ ) {
+                BlDbSubFormRecord *rec = sub->lineaat ( i );
+                rec->refresh();
+                QString val = rec->dbValue ( "selector" );
+                if ( val == "TRUE" ) {
+                    QString id = rec->dbValue ( "idrecibo" );
+
+                    /// Como estamos en un plugin buscamos nuevas formas de creacion de objetos.
+                    int resur = g_plugins->lanza ( "SNewReciboView", m_companyact );
+                    if ( !resur ) {
+                        mensajeInfo ( _ ( "no se pudo crear instancia de pedido cliente" ) );
+                        return;
+                    } // end if
+                    ReciboView *pres = ( ReciboView * ) g_plugParams;
+                    pres->cargar ( id );
+
+                    if ( pres->generaRML() ) {
 
 
+                        generaPDF ( "recibo" );
 
-        QString comando = "kprinter " + res;
+                        QString cad = "mv " + g_confpr->valor ( CONF_DIR_USER ) + "recibo.pdf " + g_confpr->valor ( CONF_DIR_USER ) + "recibo" + id + ".pdf";
+                        system ( cad.toAscii().data() );
+                        res += g_confpr->valor ( CONF_DIR_USER ) + "recibo" + id + ".pdf ";
+                    } // end if
+                    pres->close();
+                } // end if
+            } // end for
+        } // end if
+
+
+        QString comando = "cupsdoprint " + res;
         system ( comando.toAscii().data() );
         comando = "rm " + res;
         system ( comando.toAscii().data() );
@@ -431,6 +466,7 @@ SelQToolButton::SelQToolButton ( PresupuestoList *pres, PedidosClienteList *ped,
     m_albaranClienteList = alb;
     m_facturasList = fac;
     m_cobrosList = cob;
+    m_listado = (BlFormList *) parent->parent()->parent();
     setBoton();
     _depura ( "END SelQToolButton::SelQToolButton", 0 );
 }
@@ -555,6 +591,22 @@ void SelQToolButton::click()
         } // end for
     }
 
+
+    if ( m_listado != NULL ) {
+        m_companyact = ( BfCompany * ) m_listado->mainCompany();
+        BlSubForm *sub = m_listado->subForm();
+        /// Reseteamos los valores
+        for ( int i = 0; i < sub->rowCount(); i++ ) {
+            BlDbSubFormRecord *rec = sub->lineaat ( i );
+            rec->refresh();
+            if ( rec->dbValue ( "selector" ) == "TRUE" ) {
+                rec->setDbValue ( "selector", "FALSE" );
+            } else {
+                rec->setDbValue ( "selector", "TRUE" );
+            } // end if
+        } // end for
+    }
+
     _depura ( "END ImpQToolButton::click", 0 );
 }
 
@@ -578,6 +630,9 @@ EmailQToolButton::EmailQToolButton ( PresupuestoList *pres, PedidosClienteList *
     m_albaranClienteList = alb;
     m_facturasList = fac;
     m_cobrosList = cob;
+
+    m_listado = (BlFormList *) parent->parent()->parent();
+
     setBoton();
     _depura ( "END EmailQToolButton::EmailQToolButton", 0 );
 }

@@ -19,7 +19,7 @@ ArchivoSQLpatch:
 
 ArchivoSQLdeins: 
 
-Dependencias: libpluginbf_profesor.so; libpluginbf_alumno.so
+Dependencias: libpluginbf_profesor.so; libpluginbf_alumno.so;libpluginbl_template.so;
 
 Incompatibles:
 

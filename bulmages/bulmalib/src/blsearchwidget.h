@@ -87,7 +87,7 @@ public:
     /// Almacena la tabla sobre la que vamos a buscar.
     QString m_tabla;
     
-private:
+public:
     /// Almacena el id de la tabla seleccionada.
     QString mdb_id;
     /// Este cursor almacena el listado de series de factura para poder trabajar con ellas.

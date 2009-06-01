@@ -152,10 +152,12 @@ int BlSubFormDelegate_createEditor ( BlSubFormDelegate *bl )
 {
     _depura ( "pluginbf_tutor::BlSubFormDelegate_createEditor", 0 );
     int ret = 0;
-    if ( g_nomcampo == "nombrealumno" ) {
+    if ( g_nomcampo == "nombrealumno" || g_nomcampo == "nombrealumno1" ) {
         BlDbCompleterComboBox * editor = new BlDbCompleterComboBox ( g_editor );
         editor->setObjectName ( "EditNombreAlumno" );
         editor->setMainCompany ( ( BfCompany * ) bl->m_subform->mainCompany() );
+	editor->m_valores["apellido1alumno"] = "";
+	editor->m_valores["apellido2alumno"] = "";
         editor->m_valores["nombrealumno"] = "";
         editor->m_tabla = "alumno";
         g_plugParams =  editor;
@@ -176,6 +178,9 @@ int BlSubFormDelegate_createEditor ( BlSubFormDelegate *bl )
     return ret;
 }
 
+
+
+/// Hay cosas que deberian estar en el plugin de alumno
 int BlSubFormDelegate_setModelData ( BlSubFormDelegate *bl )
 {
     _depura ( "pluginbf_tutor::BlSubFormDelegate_setModelData", 0 );
@@ -209,15 +214,17 @@ int BlSubFormDelegate_setEditorData ( BlSubFormDelegate *bl )
 int BlSubForm_editFinished ( BlSubForm *sub )
 {
     _depura ( "pluginbf_tutor::BlSubForm_editFinished", 0 );
-    if ( sub->m_campoactual->nomcampo() == "nombrealumno" ) {
-        BlDbRecordSet *cur = sub->mainCompany() ->loadQuery ( "SELECT idalumno FROM alumno WHERE nombrealumno = '" + sub->m_campoactual->text() + "'" );
+    if ( sub->m_campoactual->nomcampo() == "nombrealumno1" ) {
+	QString query = "SELECT idalumno FROM alumno WHERE upper (apellido1alumno || ' ' || apellido2alumno || ' ' || nombrealumno) LIKE upper('" + sub->m_campoactual->text() + "%')";
+//	mensajeInfo(query);
+        BlDbRecordSet *cur = sub->mainCompany() ->loadQuery ( query );
         if ( !cur->eof() ) {
             sub->m_registrolinea->setDbValue ( "idalumno", cur->valor ( "idalumno" ) );
         } // end if
         delete cur;
     } // end if
     if ( sub->m_campoactual->nomcampo() == "nomcliente" ) {
-        BlDbRecordSet *cur = sub->mainCompany() ->loadQuery ( "SELECT idcliente FROM cliente WHERE nomcliente = '" + sub->m_campoactual->text() + "'" );
+        BlDbRecordSet *cur = sub->mainCompany() ->loadQuery ( "SELECT idcliente FROM cliente WHERE upper(nomcliente) = upper('" + sub->m_campoactual->text() + "')" );
         if ( !cur->eof() ) {
             sub->m_registrolinea->setDbValue ( "idcliente", cur->valor ( "idcliente" ) );
         } // end if
@@ -226,3 +233,50 @@ int BlSubForm_editFinished ( BlSubForm *sub )
     _depura ( "END pluginbf_tutor::BlSubForm_editFinished", 0 );
     return 0;
 }
+
+
+int BlDbCompleterComboBox_textChanged (BlDbCompleterComboBox *bl) {
+  _depura("BlDbCompleterComboBox_textChanged", 0);
+
+        if ( bl->m_entrada.size() >= 3 && bl->m_tabla == "alumno") {
+                QString cadwhere = "";
+                /// Inicializamos los valores de vuelta a ""
+                QMapIterator<QString, QString> i ( bl->m_valores );
+                QString cador = "";
+                while ( i.hasNext() ) {
+                    i.next();
+                    cadwhere = cadwhere + cador + " upper(" + i.key() + ")";
+                    cador = " || ' ' ||";
+                } // end while
+
+                QString SQLQuery = "SELECT * FROM " + bl->m_tabla + " WHERE " + cadwhere + "LIKE  upper('%" + bl->m_entrada + "%')";
+                bl->m_cursorcombo = bl->mainCompany() ->loadQuery ( SQLQuery );
+                bl->clear();
+                while ( !bl->m_cursorcombo->eof() ) {
+                    QMapIterator<QString, QString> i ( bl->m_valores );
+                    QString cad = "";
+                    QString sep = "";
+                    QString cad1 = "";
+                    while ( i.hasNext() ) {
+                        i.next();
+                        cad = cad + sep + bl->m_cursorcombo->valor ( i.key() );
+                        if ( sep == "" ) {
+                            cad1 = i.key();
+                            sep = " ";
+                        } // end if
+                    } // end while
+                    bl->addItem ( cad , QVariant ( bl->m_cursorcombo->valor ( cad1 ) ) );
+                    bl->m_cursorcombo->nextRecord();
+                } // end while
+                delete bl->m_cursorcombo;
+
+  _depura("END BlDbCompleterComboBox_textChanged", 0);
+
+	  return 1;
+        } // end if
+  _depura("END BlDbCompleterComboBox_textChanged", 0);
+
+    return 0;
+}
+
+

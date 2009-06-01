@@ -29,7 +29,7 @@
 #include "blwidget.h"
 #include "bfbuscarreferencia.h"
 
-
+extern "C" MY_EXPORT int SNewReciboView (BfCompany *);
 extern "C" MY_EXPORT int entryPoint ( BfBulmaFact * );
 extern "C" MY_EXPORT int BfCompany_createMainWindows_Post(BfCompany *);
 //extern "C" BusquedaProfesor *bp;

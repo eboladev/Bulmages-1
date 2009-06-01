@@ -133,7 +133,7 @@ void myplugsubformods::sacaods()
             fitxersortidatxt += "doc.set_column_property(" + QString::number ( x ) + ", 'width', '" + QString::number ( ( double ) subf->mui_list->columnWidth ( h ) / 90 ) + "in')\n\n";
 
             fitxersortidatxt += "doc.set_cell_property('bold', True)\n";
-            fitxersortidatxt += "doc.set_cell_value(" + QString::number ( x++ ) + "," + QString::number ( y ) + ", 'string', '" + textocabecera + "')\n";
+            fitxersortidatxt += "doc.set_cell_value(" + QString::number ( x++ ) + "," + QString::number ( y ) + ", 'string', u'" + textocabecera + "')\n";
             fitxersortidatxt += "doc.set_cell_property('bold', False)\n";
         } // end if
     } // end for
@@ -151,7 +151,7 @@ void myplugsubformods::sacaods()
             textocabecera.replace ( QString ( "\n" ), QString ( "\\n\\\n" ) );
 
             fitxersortidatxt += "doc.set_cell_property('bold', True)\n";
-            fitxersortidatxt += "doc.set_cell_value(" + QString::number ( x++ ) + "," + QString::number ( y ) + ", 'string', '" + textocabecera + "')\n";
+            fitxersortidatxt += "doc.set_cell_value(" + QString::number ( x++ ) + "," + QString::number ( y ) + ", 'string', u'" + textocabecera + "')\n";
             fitxersortidatxt += "doc.set_cell_property('bold', False)\n";
         } // end if
     } // end for
@@ -183,7 +183,7 @@ void myplugsubformods::sacaods()
                 } else {
                     /// Es tratado como un 'string'.
                     textocontenido.replace ( QString ( "\n" ), QString ( "\\n\\\n" ) );
-                    fitxersortidatxt += "doc.set_cell_value(" + QString::number ( x++ ) + "," + QString::number ( y ) + ", 'string', '" + textocontenido + "')\n\n";
+                    fitxersortidatxt += "doc.set_cell_value(" + QString::number ( x++ ) + "," + QString::number ( y ) + ", 'string', u'" + textocontenido + "')\n\n";
                 } // end if
 
             } // end if

@@ -22,8 +22,8 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#ifndef COBROSLIST_H
-#define COBROSLIST_H
+#ifndef RECIBOSLIST_H
+#define RECIBOSLIST_H
 
 #include <QLineEdit>
 

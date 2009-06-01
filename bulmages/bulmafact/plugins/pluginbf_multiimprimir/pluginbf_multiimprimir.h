@@ -29,6 +29,7 @@
 #include "pedidosclientelist.h"
 #include "albaranclientelist.h"
 #include "cobroslist.h"
+#include "reciboslist.h"
 #include "bfbulmafact.h"
 
 
@@ -42,6 +43,8 @@ extern "C" MY_EXPORT int FacturasList_FacturasList ( FacturasList * );
 extern "C" MY_EXPORT int FacturasListSubform_FacturasListSubform ( FacturasListSubform * );
 extern "C" MY_EXPORT int CobrosList_CobrosList ( CobrosList * );
 extern "C" MY_EXPORT int CobrosListSubForm_CobrosListSubForm ( CobrosListSubForm * );
+extern "C" MY_EXPORT int RecibosListSubForm_RecibosListSubForm ( RecibosListSubForm * );
+extern "C" MY_EXPORT int RecibosList_RecibosList ( RecibosList * );
 extern "C" MY_EXPORT int entryPoint ( BfBulmaFact * );
 
 

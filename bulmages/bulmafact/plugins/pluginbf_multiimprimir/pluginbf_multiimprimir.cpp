@@ -116,6 +116,20 @@ int CobrosListSubForm_CobrosListSubForm ( CobrosListSubForm *l )
 }
 
 
+
+///
+/**
+\param l
+\return
+**/
+int RecibosListSubForm_RecibosListSubForm ( RecibosListSubForm *l )
+{
+    _depura ( "RecibosListSubForm_RecibosListSubForm", 0 );
+    l->addSubFormHeader ( "selector", BlDbField::DbBoolean, BlDbField::DbNoSave | BlDbField::DbNoLoad, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, "selector" );
+    _depura ( "RecibosListSubForm_RecibosListSubForm", 0 );
+    return 0;
+}
+
 ///
 /**
 \param l
@@ -260,3 +274,34 @@ int FacturasList_FacturasList ( FacturasList *l )
     _depura ( "END FacturasList_FacturasList", 0 );
     return 0;
 }
+
+
+///
+/**
+\param l
+\return
+**/
+int RecibosList_RecibosList ( RecibosList *l )
+{
+    _depura ( "RecibosList_RecibosList", 0 );
+
+    SelQToolButton *sel = new SelQToolButton ( NULL, NULL, NULL, NULL, NULL, l->mui_plugbotones );
+    ImpQToolButton *imp = new ImpQToolButton ( NULL, NULL, NULL, NULL, NULL, l->mui_plugbotones );
+///    EmailQToolButton *email = new EmailQToolButton(NULL, NULL, NULL, NULL, NULL, l->mui_plugbotones);
+
+    QHBoxLayout *m_hboxLayout1 = l->mui_plugbotones->findChild<QHBoxLayout *> ( "hboxLayout1" );
+    if ( !m_hboxLayout1 ) {
+        m_hboxLayout1 = new QHBoxLayout ( l->mui_plugbotones );
+        m_hboxLayout1->setSpacing ( 5 );
+        m_hboxLayout1->setMargin ( 5 );
+        m_hboxLayout1->setObjectName ( QString::fromUtf8 ( "hboxLayout1" ) );
+    } // end if
+    m_hboxLayout1->addWidget ( sel );
+    m_hboxLayout1->addWidget ( imp );
+//    m_hboxLayout1->addWidget(email);
+
+    _depura ( "END RecibosList_RecibosList", 0 );
+    return 0;
+}
+
+
