@@ -77,6 +77,7 @@ BEGIN
 
         CREATE TABLE alumno (
             idalumno SERIAL PRIMARY KEY,
+            dnialumno VARCHAR,
             nombrealumno VARCHAR NOT NULL,
             idprovincia INTEGER REFERENCES provincia(idprovincia),
             apellido1alumno VARCHAR,
@@ -89,7 +90,7 @@ BEGIN
             movilalumno VARCHAR,
             emailalumno VARCHAR,
             fechanacimientoalumno DATE,
-	    activoalumno BOOLEAN
+            activoalumno BOOLEAN
         );
         
     END IF;

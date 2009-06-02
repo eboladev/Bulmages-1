@@ -54,6 +54,7 @@ AlumnoView::AlumnoView ( BfCompany *comp, QWidget *parent ) : BfForm ( comp, par
         setDbTableName ( "alumno" );
         setDbFieldId ( "idalumno" );
         addDbField ( "idalumno", BlDbField::DbInt, BlDbField::DbPrimaryKey, _ ( "Id alumno" ) );
+        addDbField ( "dnialumno", BlDbField::DbVarChar, BlDbField::DbNothing, _ ( "Nombre del alumno" ) );
         addDbField ( "nombrealumno", BlDbField::DbVarChar, BlDbField::DbNothing, _ ( "Nombre del alumno" ) );
         addDbField ( "apellido1alumno", BlDbField::DbVarChar, BlDbField::DbNothing, _ ( "1er apellido" ) );
         addDbField ( "apellido2alumno", BlDbField::DbVarChar, BlDbField::DbNothing, _ ( "2o apellido" ) );

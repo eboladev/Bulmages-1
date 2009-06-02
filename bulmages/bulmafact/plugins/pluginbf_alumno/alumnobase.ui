@@ -224,18 +224,18 @@
        <item row="0" column="0">
         <widget class="QLabel" name="textLabel2_5">
          <property name="text">
-          <string>N.I.F:</string>
+          <string>DNI</string>
          </property>
          <property name="alignment">
           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
          </property>
          <property name="buddy">
-          <cstring>mui_cifcliente</cstring>
+          <cstring>mui_dnialumno</cstring>
          </property>
         </widget>
        </item>
        <item row="0" column="1" colspan="4">
-        <widget class="QLineEdit" name="mui_cifcliente">
+        <widget class="QLineEdit" name="mui_dnialumno">
          <property name="maxLength">
           <number>200</number>
          </property>
@@ -675,6 +675,12 @@
  <layoutdefault spacing="4" margin="3"/>
  <customwidgets>
   <customwidget>
+   <class>BlDateSearch</class>
+   <extends>QWidget</extends>
+   <header>../../bulmalib/src/bldatesearch.h</header>
+   <container>1</container>
+  </customwidget>
+  <customwidget>
    <class>BlComboBox</class>
    <extends>QComboBox</extends>
    <header>blcombobox.h</header>
@@ -683,12 +689,6 @@
    <class>ListAlumnosTutorView</class>
    <extends>QTableWidget</extends>
    <header>alumnoview.h</header>
-  </customwidget>
-  <customwidget>
-   <class>BlDateSearch</class>
-   <extends>QWidget</extends>
-   <header>bldatesearch.h</header>
-   <container>1</container>
   </customwidget>
   <customwidget>
    <class>ListAlumnosActividadView</class>
