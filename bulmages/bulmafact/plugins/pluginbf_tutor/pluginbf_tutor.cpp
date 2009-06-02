@@ -97,7 +97,7 @@ void MyPlugProf::inicializa ( BfBulmaFact *bges )
         m_bges = bges;
         setMainCompany ( bges->getcompany() );
         QAction *planCuentas = new QAction ( _ ( "&Tutores/Socios" ), 0 );
-        planCuentas->setIcon ( QIcon ( QString::fromUtf8 ( ":/ImgGestionAula/icons/tutor.svg" ) ) );
+        planCuentas->setIcon ( QIcon ( QString::fromUtf8 ( ":/ImgGestionAula/icons/tutor-list.png" ) ) );
         planCuentas->setStatusTip ( _ ( "Tutores/Socios" ) );
         planCuentas->setWhatsThis ( _ ( "Tutores/Socios" ) );
         pPluginMenu->addAction ( planCuentas );
@@ -105,7 +105,7 @@ void MyPlugProf::inicializa ( BfBulmaFact *bges )
         connect ( planCuentas, SIGNAL ( activated() ), this, SLOT ( elslot() ) );
 
         QAction *npago = new QAction ( _ ( "&Nuevo tutor/socio" ), 0 );
-        npago->setIcon ( QIcon ( QString::fromUtf8 ( ":/ImgGestionAula/icons/tutor.svg" ) ) );
+        npago->setIcon ( QIcon ( QString::fromUtf8 ( ":/ImgGestionAula/icons/tutor-new.png" ) ) );
         npago->setStatusTip ( _ ( "Nuevo tutor/socio" ) );
         npago->setWhatsThis ( _ ( "Nuevo tutor/socio" ) );
         pPluginMenu->addAction ( npago );

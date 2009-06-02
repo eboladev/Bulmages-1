@@ -49,7 +49,7 @@ JDirectivaView::JDirectivaView ( BfCompany *comp, QWidget *parent )
         setupUi ( this );
         centrarEnPantalla ( this );
 
-        setTitleName ( _ ( "JDirectiva" ) );
+        setTitleName ( _ ( "Junta Directiva" ) );
         setDbTableName ( "jdirectiva" );
         setDbFieldId ( "idjdirectiva" );
         addDbField ( "idjdirectiva", BlDbField::DbInt, BlDbField::DbPrimaryKey, _ ( "ID jdirectiva" ) );

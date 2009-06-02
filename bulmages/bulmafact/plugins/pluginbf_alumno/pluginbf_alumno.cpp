@@ -113,7 +113,7 @@ void MyPlugProf::inicializa ( BfBulmaFact *bges )
         setMainCompany ( bges->getcompany() );
         
         QAction *alumnos = new QAction ( _ ( "&Alumnos" ), 0 );
-        alumnos->setIcon ( QIcon ( QString::fromUtf8 ( ":/ImgGestionAula/icons/alumno.svg" ) ) );
+        alumnos->setIcon ( QIcon ( QString::fromUtf8 ( ":/ImgGestionAula/icons/alumno-list.png" ) ) );
         alumnos->setStatusTip ( _ ( "Alumnos" ) );
         alumnos->setWhatsThis ( _ ( "Alumnos" ) );
         pPluginMenu->addAction ( alumnos );
@@ -121,7 +121,7 @@ void MyPlugProf::inicializa ( BfBulmaFact *bges )
         connect ( alumnos, SIGNAL ( activated() ), this, SLOT ( elslot() ) );
 
         QAction *nalumno = new QAction ( _ ( "&Nuevo alumno" ), 0 );
-        nalumno->setIcon ( QIcon ( QString::fromUtf8 ( ":/ImgGestionAula/icons/alumno.svg" ) ) );
+        nalumno->setIcon ( QIcon ( QString::fromUtf8 ( ":/ImgGestionAula/icons/alumno-new.png" ) ) );
         nalumno->setStatusTip ( _ ( "Nuevo alumno" ) );
         nalumno->setWhatsThis ( _ ( "Nuevo alumno" ) );
         pPluginMenu->addAction ( nalumno );

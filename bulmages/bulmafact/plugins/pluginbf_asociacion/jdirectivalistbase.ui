@@ -18,8 +18,8 @@
    <string>Juntas Directivas</string>
   </property>
   <property name="windowIcon">
-   <iconset resource="../../../bulmages.qrc">
-    <normaloff>:/Images/employee-list.svg</normaloff>:/Images/employee-list.svg</iconset>
+   <iconset resource="../pluginbf_profesor/gestionaula.qrc">
+    <normaloff>:/ImgGestionAula/icons/jdirectiva-list.png</normaloff>:/ImgGestionAula/icons/jdirectiva-list.png</iconset>
   </property>
   <layout class="QGridLayout">
    <property name="margin">
@@ -57,7 +57,7 @@
        </widget>
       </item>
       <item>
-       <widget class="BlDateSearch" name="m_fechain">
+       <widget class="BlDateSearch" name="m_fechain" native="true">
         <property name="sizePolicy">
          <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
           <horstretch>0</horstretch>
@@ -86,7 +86,7 @@
        </widget>
       </item>
       <item>
-       <widget class="BlDateSearch" name="m_fechafin">
+       <widget class="BlDateSearch" name="m_fechafin" native="true">
         <property name="sizePolicy">
          <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
           <horstretch>0</horstretch>
@@ -146,7 +146,7 @@
         <string/>
        </property>
        <property name="pixmap">
-        <pixmap resource="../../../bulmages.qrc">:/Images/employee-list.svg</pixmap>
+        <pixmap resource="../pluginbf_profesor/gestionaula.qrc">:/ImgGestionAula/icons/jdirectiva-list.png</pixmap>
        </property>
        <property name="scaledContents">
         <bool>true</bool>
@@ -500,8 +500,9 @@
  <customwidgets>
   <customwidget>
    <class>BlDateSearch</class>
-   <extends>QLineEdit</extends>
+   <extends>QWidget</extends>
    <header>bldatesearch.h</header>
+   <container>1</container>
   </customwidget>
   <customwidget>
    <class>JDirectivaListSubForm</class>
@@ -511,7 +512,7 @@
  </customwidgets>
  <resources>
   <include location="../../../bulmages.qrc"/>
-  <include location="../../../bulmages.qrc"/>
+  <include location="../pluginbf_profesor/gestionaula.qrc"/>
  </resources>
  <connections>
   <connection>

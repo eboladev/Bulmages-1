@@ -21,8 +21,8 @@
    <string>Junta Directiva</string>
   </property>
   <property name="windowIcon">
-   <iconset resource="../../../bulmages.qrc">
-    <normaloff>:/Images/employee-list.svg</normaloff>:/Images/employee-list.svg</iconset>
+   <iconset resource="../pluginbf_profesor/gestionaula.qrc">
+    <normaloff>:/ImgGestionAula/icons/jdirectiva.png</normaloff>:/ImgGestionAula/icons/jdirectiva.png</iconset>
   </property>
   <layout class="QVBoxLayout" name="verticalLayout">
    <property name="spacing">
@@ -57,7 +57,7 @@
         <string/>
        </property>
        <property name="pixmap">
-        <pixmap resource="../../../bulmages.qrc">:/Images/employee-list.svg</pixmap>
+        <pixmap resource="../pluginbf_profesor/gestionaula.qrc">:/ImgGestionAula/icons/jdirectiva.png</pixmap>
        </property>
        <property name="scaledContents">
         <bool>true</bool>
@@ -273,7 +273,7 @@
         <string>Fecha Cesion</string>
        </property>
       </widget>
-      <widget class="BlDateSearch" name="mui_fechainjdirectiva">
+      <widget class="BlDateSearch" name="mui_fechainjdirectiva" native="true">
        <property name="geometry">
         <rect>
          <x>160</x>
@@ -283,7 +283,7 @@
         </rect>
        </property>
       </widget>
-      <widget class="BlDateSearch" name="mui_fechafinjdirectiva">
+      <widget class="BlDateSearch" name="mui_fechafinjdirectiva" native="true">
        <property name="geometry">
         <rect>
          <x>160</x>
@@ -403,19 +403,20 @@
  <layoutdefault spacing="4" margin="3"/>
  <customwidgets>
   <customwidget>
+   <class>BlDateSearch</class>
+   <extends>QWidget</extends>
+   <header>bldatesearch.h</header>
+   <container>1</container>
+  </customwidget>
+  <customwidget>
    <class>BfSubForm</class>
    <extends>QTableWidget</extends>
    <header>bfsubform.h</header>
   </customwidget>
-  <customwidget>
-   <class>BlDateSearch</class>
-   <extends>QLineEdit</extends>
-   <header>bldatesearch.h</header>
-  </customwidget>
  </customwidgets>
  <resources>
   <include location="../../../bulmages.qrc"/>
-  <include location="../../../bulmages.qrc"/>
+  <include location="../pluginbf_profesor/gestionaula.qrc"/>
  </resources>
  <connections/>
 </ui>
