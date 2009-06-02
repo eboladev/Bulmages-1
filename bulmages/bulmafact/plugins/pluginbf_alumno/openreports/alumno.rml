@@ -38,7 +38,8 @@
             <setFont name="Helvetica" size="22"/>
             <drawString x="1.5cm" y="24cm">FICHA DE ALUMNO: [apellido1alumno] [apellido2alumno], [nombrealumno]</drawString>
             <setFont name="Helvetica" size="16"/>
-            <drawString x="1.5cm" y="23cm">DNI: [dnialumno]</drawString>
+            <drawString x="1.5cm" y="23cm">Fecha de nacimiento: [fechanacimientoalumno]</drawString>
+            <drawString x="1.5cm" y="22.3cm">DNI: [dnialumno]</drawString>
             
 <!--END QUERY-->
             
