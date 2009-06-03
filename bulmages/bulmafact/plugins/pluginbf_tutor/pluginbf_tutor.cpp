@@ -280,3 +280,48 @@ int BlDbCompleterComboBox_textChanged (BlDbCompleterComboBox *bl) {
 }
 
 
+
+int BfSubForm_pressedAsterisk ( BfSubForm *sub )
+{
+    _depura ( "BfSubForm_pressedAsterisk" );
+
+    if ( sub->m_campoactual->nomcampo() != "nomcliente" ) {
+        _depura ( "END BfSubForm::pressedAsterisk", 0 );
+        return 0;
+    } // end if
+
+    TutoresList *tutoreslist = new TutoresList ( ( BfCompany * ) sub->mainCompany(), NULL, 0, BL_SELECT_MODE );
+    
+    /// Esto es convertir un QWidget en un sistema modal de dialogo.
+    sub->setEnabled ( false );
+    tutoreslist->show();
+    
+    while ( !tutoreslist->isHidden() )
+        g_theApp->processEvents();
+        
+    sub->setEnabled ( true );
+    QString idCliente = tutoreslist->idcliente();
+    
+    delete tutoreslist;
+
+    /// Si no tenemos un idarticulo salimos ya que significa que no se ha seleccionado ninguno.
+    if ( idCliente == "" ) {
+        _depura ( "END BfSubForm::pressedAsterisk", 0 );
+        return 0;
+    } // end if
+
+    BlDbRecordSet *cur = sub->mainCompany() ->loadQuery ( "SELECT * FROM cliente WHERE idcliente = " + idCliente );
+    if ( !cur->eof() ) {
+        sub->m_registrolinea->setDbValue ( "idcliente", idCliente );
+        sub->m_registrolinea->setDbValue ( "nomcliente", cur->valor ( "nomcliente" ));
+    } // end if
+    
+    delete cur;
+    
+    _depura ( "END BfSubForm_pressedAsterisk" );
+
+    return 0;
+}
+
+
+

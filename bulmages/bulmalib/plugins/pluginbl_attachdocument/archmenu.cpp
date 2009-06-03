@@ -75,8 +75,13 @@ void ArchMenu::pintaMenu ( QMenu *menu )
     QString query = "SELECT * FROM archivo WHERE fichaarchivo = '" + m_BlForm->fieldId() + "' AND identificadorfichaarchivo= '" + m_BlForm->dbValue ( m_BlForm->fieldId() ) + "'";
     BlDbRecordSet *cur = m_BlForm->mainCompany()->loadQuery ( query );
     while ( !cur->eof() ) {
-        QAction *addaction = nmenu->addAction ( cur->valor ( "rutaarchivo" ) );
-        addaction->setObjectName ( "archivo_" + cur->valor ( "idarchivo" ) );
+        QMenu *n1menu = nmenu->addMenu ( cur->valor ( "rutaarchivo" ) );
+        QAction *addaction = n1menu->addAction ( tr ( "Abrir") );
+        addaction->setObjectName ( "abrir_archivo_" + cur->valor ( "idarchivo" ) );
+	
+        QAction *delaction = n1menu->addAction ( tr ( "Borrar") );
+        delaction->setObjectName ( "borrar_archivo_" + cur->valor ( "idarchivo" ) );
+	
         cur->nextRecord();
     } // end while
     delete cur;
@@ -116,11 +121,10 @@ void ArchMenu::trataMenu ( QAction *action )
         } // end if
 
         delete diag;
-        return;
     } // end if
 
-    if ( action->objectName().left ( 8 ) == "archivo_" ) {
-        QString idarchivo = action->objectName().right ( action->objectName().size() - 8 );
+    if ( action->objectName().left ( 14 ) == "abrir_archivo_" ) {
+        QString idarchivo = action->objectName().right ( action->objectName().size() - 14 );
         QString query = "SELECT * FROM archivo WHERE idarchivo = " + idarchivo;
         BlDbRecordSet *cur = m_BlForm->mainCompany()->loadQuery ( query );
         if ( !cur->eof() ) {
@@ -128,11 +132,17 @@ void ArchMenu::trataMenu ( QAction *action )
             system ( comando.toAscii() );
         } // end if
         delete cur;
-        return;
     } // end if
 
 
+    if ( action->objectName().left ( 15 ) == "borrar_archivo_" ) {
+        QString idarchivo = action->objectName().right ( action->objectName().size() - 15 );
+        QString query = "DELETE FROM archivo WHERE idarchivo = " + idarchivo;
+        m_BlForm->mainCompany()->runQuery ( query );
+    } // end if
+
     _depura ( "END ArchMenu::trataMenu", 0 );
+    return;
 }
 
 

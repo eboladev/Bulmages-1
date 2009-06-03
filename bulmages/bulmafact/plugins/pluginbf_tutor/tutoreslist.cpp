@@ -195,6 +195,7 @@ void TutoresList::editar ( int )
             mainCompany() ->m_pWorkspace->addWindow ( bud );
             bud->show();
         } else {
+	    close();
             emit ( selected ( mdb_idcliente ) );
         } // end if
     } catch ( ... ) {

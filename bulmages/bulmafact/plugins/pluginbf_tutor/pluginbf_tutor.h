@@ -27,7 +27,7 @@
 #include "blpostgresqlclient.h"
 #include "bfbulmafact.h"
 #include "blwidget.h"
-#include "blsubform.h"
+#include "bfsubform.h"
 #include "bfbuscarreferencia.h"
 #include "blsearchwidget.h"
 
@@ -38,6 +38,7 @@ extern "C" MY_EXPORT int BlSubFormDelegate_setModelData(BlSubFormDelegate *);
 extern "C" MY_EXPORT int BlSubFormDelegate_setEditorData(BlSubFormDelegate *);
 extern "C" MY_EXPORT int BlSubForm_editFinished(BlSubForm *);
 extern "C" MY_EXPORT int BlDbCompleterComboBox_textChanged (BlDbCompleterComboBox *);
+extern "C" MY_EXPORT int BfSubForm_pressedAsterisk(BfSubForm *);
 
 
 class MyPlugProf : public QObject, BlMainCompanyPointer
