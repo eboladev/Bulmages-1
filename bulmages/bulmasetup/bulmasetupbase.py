@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'bulmasetupbase.ui'
 #
-# Created: Wed Jun  3 11:03:38 2009
+# Created: Wed Jun  3 16:58:37 2009
 #      by: PyQt4 UI code generator 4.4.4
 #
 # WARNING! All changes made in this file will be lost!
@@ -129,7 +129,9 @@ class Ui_MainWindow(object):
         self.mui_creabackup = QtGui.QPushButton(self.groupBox_2)
         self.mui_creabackup.setFocusPolicy(QtCore.Qt.NoFocus)
         self.mui_creabackup.setLayoutDirection(QtCore.Qt.LeftToRight)
-        self.mui_creabackup.setIcon(icon8)
+        icon9 = QtGui.QIcon()
+        icon9.addPixmap(QtGui.QPixmap(":/images/backup_database.svg"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        self.mui_creabackup.setIcon(icon9)
         self.mui_creabackup.setIconSize(QtCore.QSize(32, 32))
         self.mui_creabackup.setObjectName("mui_creabackup")
         self.gridLayout.addWidget(self.mui_creabackup, 2, 0, 1, 1)
@@ -141,9 +143,9 @@ class Ui_MainWindow(object):
         spacerItem1 = QtGui.QSpacerItem(388, 20, QtGui.QSizePolicy.Expanding, QtGui.QSizePolicy.Minimum)
         self.horizontalLayout.addItem(spacerItem1)
         self.mui_salir = QtGui.QPushButton(self.centralwidget)
-        icon9 = QtGui.QIcon()
-        icon9.addPixmap(QtGui.QPixmap(":/images/bulmasetup_exit.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
-        self.mui_salir.setIcon(icon9)
+        icon10 = QtGui.QIcon()
+        icon10.addPixmap(QtGui.QPixmap(":/images/bulmasetup_exit.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        self.mui_salir.setIcon(icon10)
         self.mui_salir.setObjectName("mui_salir")
         self.horizontalLayout.addWidget(self.mui_salir)
         self.verticalLayout.addLayout(self.horizontalLayout)
