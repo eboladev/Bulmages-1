@@ -36,17 +36,23 @@
 
 extern BlDockWidget *g_pantallas;
 
+QList<QString> listfamilias;
+
 ArtGraficosDb::ArtGraficosDb ( BlMainCompany *emp, QWidget *parent ) : BlWidget ( emp, parent )
 {
     _depura ( "ArtGraficosDb::ArtGraficosDb", 0 );
     
     setupUi ( this );
     setObjectName ( "ArtGraficosDb" );
+    
     m_numPantallas = 0;
     m_pantallaActual = 0;
-    mui_list->horizontalHeader() ->hide();
-    mui_list->verticalHeader() ->hide();
-    cargaXML ( CONFIG_DIR_CONFIG + QString ( "pantallastpv.xml" ) );
+    mui_list->horizontalHeader()->hide();
+    mui_list->verticalHeader()->hide();
+    
+//     cargaXML ( CONFIG_DIR_CONFIG + QString ( "pantallastpv.xml" ) );
+//     cargaDatos();
+    
     ponPantallas();
     muestraPantalla ( 0 );
     
@@ -67,9 +73,9 @@ void ArtGraficosDb::on_mui_list_cellClicked ( int row, int column )
     QString codigo = m_articulos[row][column];
     
     if ( ! artvarios.contains ( codigo ) ) {
-        ( ( BtCompany * ) mainCompany() ) ->ticketActual() ->insertarArticuloCodigo ( m_articulos[row][column] );
+        ( ( BtCompany * ) mainCompany() )->ticketActual()->insertarArticuloCodigo ( m_articulos[row][column] );
     } else {
-        ( ( BtCompany * ) mainCompany() ) ->ticketActual() ->insertarArticuloCodigoNL ( m_articulos[row][column] );
+        ( ( BtCompany * ) mainCompany() )->ticketActual()->insertarArticuloCodigoNL ( m_articulos[row][column] );
     } // end if
     
     _depura ( "END ArtGraficosDb::on_mui_list_cellClicked", 0 );
@@ -98,15 +104,18 @@ void ArtGraficosDb::muestraPantalla ( int numpantalla )
     _depura ( "ArtGraficosDb::muestraPantalla", 0 );
 
     m_pantallaActual = numpantalla;
-
+    
     QDomElement docElem = m_doc.documentElement();
 //    QDomElement pantalla = docElem.firstChildElement("PANTALLA");
 
-    m_numPantallas = docElem.elementsByTagName ( "PANTALLA" ).count();
+    //m_numPantallas = docElem.elementsByTagName ( "PANTALLA" ).count();
+    m_numPantallas = listfamilias.count();
 
     /// Simulamos un sistema ciclico.
     if ( m_pantallaActual > m_numPantallas - 1 ) m_pantallaActual = 0;
     if ( m_pantallaActual < 0 ) m_pantallaActual = m_numPantallas - 1;
+    
+    mensajeInfo("Estamos en la pantalla " + QString::number(m_pantallaActual) + " y hay " + QString::number(m_numPantallas) + " pantallas");
 
     QDomElement pantalla = docElem.elementsByTagName ( "PANTALLA" ).at ( m_pantallaActual ).toElement();
     /// Cogemos la coordenada X
@@ -116,7 +125,8 @@ void ArtGraficosDb::muestraPantalla ( int numpantalla )
     QString cellwidth = pantalla.firstChildElement ( "CELLWIDTH" ).toElement().text();
 
     /// Cogemos el titulo de la pantalla
-    QString titulo = pantalla.firstChildElement ( "NOMBRE" ).toElement().text();
+    //QString titulo = pantalla.firstChildElement ( "NOMBRE" ).toElement().text();
+    QString titulo = listfamilias.value(m_pantallaActual);
     mui_titulo->setText ( titulo );
 
     mui_list->clear();
@@ -198,51 +208,63 @@ void ArtGraficosDb::muestraPantalla ( int numpantalla )
     _depura ( "END ArtGraficosDb::muestraPantalla", 0 );
 }
 
-void ArtGraficosDb::cargaXML ( QString filename )
-{
-    _depura ( "ArtGraficosDb::cargaXML", 0 );
-
-    QFile file ( filename );
-    
-    if ( !file.open ( QIODevice::ReadOnly ) )
-        return;
-    if ( !m_doc.setContent ( &file ) ) {
-        file.close();
-        return;
-    }
-    
-    file.close();
-
-    _depura ( "END ArtGraficosDb::cargaXML", 0 );
-}
+// void ArtGraficosDb::cargaXML ( QString filename )
+// {
+//     _depura ( "ArtGraficosDb::cargaXML", 0 );
+// 
+//     QFile file ( filename );
+//     
+//     if ( !file.open ( QIODevice::ReadOnly ) )
+//         return;
+//     if ( !m_doc.setContent ( &file ) ) {
+//         file.close();
+//         return;
+//     }
+//     
+//     file.close();
+// 
+//     _depura ( "END ArtGraficosDb::cargaXML", 0 );
+// }
+// 
+// void ArtGraficosDb::cargaDatos() {
+// 
+//     return;
+// 
+// }
 
 void ArtGraficosDb::ponPantallas()
 {
     _depura ( "ArtGraficosDb::ponPantallas", 0 );
 
-    /// Creo el Widget que estara ubicado en el dockwidget que se ha creado en pluginbt_artgraficodb.cpp
+    /// Creo el Widget que estara ubicado en el dockwidget que se ha creado en pluginbt_articulograficodb.cpp
     QWidget *widget = new QWidget;
     QVBoxLayout *hboxLayout1 = new QVBoxLayout;
     hboxLayout1->setSpacing ( 5 );
     hboxLayout1->setMargin ( 5 );
     hboxLayout1->setObjectName ( QString::fromUtf8 ( "hboxLayout1" ) );
-
-    /// Itero sobre las pantallas para obtener los nombres de pantalla y crear los botones pertinentes.
-    QDomElement docElem = m_doc.documentElement();
-    QDomNodeList nodos = docElem.elementsByTagName ( "PANTALLA" );
-
+        
+    BlDbRecordSet *familias;
+    familias = mainCompany()->loadQuery ( "SELECT * FROM familia ORDER BY nombrefamilia" );
+    
     int i = 0;
-    for ( int i = 0; i < nodos.count(); i++ ) {
-        /// Cogemos el titulo de la pantalla
-        QString titulo = nodos.item ( i ).firstChildElement ( "NOMBRE" ).text();
+    
+    while ( !familias->eof() ) {
+    
+        QString titulo = familias->valor("nombrefamilia");
         QPushButton *pb = new QPushButton ( titulo, g_pantallas );
         pb->setText ( titulo );
-        pb->setObjectName ( QString::number ( i ) );
+        pb->setObjectName ( QString::fromUtf8 ("familia_pb_") + QString::number ( i ) );
         /// Hago la conexion del pulsado con el metodo pulsadoBoton para que se cambie la pantalla.
         connect ( pb, SIGNAL ( pressed() ), this, SLOT ( pulsadoBoton() ) );
         hboxLayout1->addWidget ( pb );
-    }
-
+        
+        listfamilias.append(familias->valor("nombrefamilia"));
+        
+        familias->nextRecord();
+        i++;
+    
+    } // end while
+    
     /// Agrego el widget al BLDockWidget
     widget->setLayout ( hboxLayout1 );
     g_pantallas->setWidget ( widget );

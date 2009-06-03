@@ -45,7 +45,8 @@ public:
 public:
     ArtGraficosDb ( BlMainCompany *emp, QWidget *parent );
     virtual ~ArtGraficosDb();
-    void cargaXML ( QString );
+//     void cargaXML ( QString );
+//     void cargaDatos();
     void muestraPantalla ( int );
     void ponPantallas();
 
