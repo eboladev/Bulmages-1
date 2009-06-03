@@ -274,7 +274,7 @@ p, li { white-space: pre-wrap; }
            </property>
           </widget>
          </item>
-         <item row="2" column="0">
+         <item row="2" column="1">
           <widget class="QPushButton" name="mui_restbackup">
            <property name="focusPolicy">
             <enum>Qt::NoFocus</enum>
@@ -284,6 +284,29 @@ p, li { white-space: pre-wrap; }
            </property>
            <property name="text">
             <string>Restaurar copia de seguridad</string>
+           </property>
+           <property name="icon">
+            <iconset resource="resources.qrc">
+             <normaloff>:/images/restore_database.svg</normaloff>:/images/restore_database.svg</iconset>
+           </property>
+           <property name="iconSize">
+            <size>
+             <width>32</width>
+             <height>32</height>
+            </size>
+           </property>
+          </widget>
+         </item>
+         <item row="2" column="0">
+          <widget class="QPushButton" name="mui_creabackup">
+           <property name="focusPolicy">
+            <enum>Qt::NoFocus</enum>
+           </property>
+           <property name="layoutDirection">
+            <enum>Qt::LeftToRight</enum>
+           </property>
+           <property name="text">
+            <string>Crear Copia de Seguridad</string>
            </property>
            <property name="icon">
             <iconset resource="resources.qrc">

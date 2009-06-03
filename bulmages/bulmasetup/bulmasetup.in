@@ -24,6 +24,7 @@ from nuevafacturacion import NuevaFacturacion
 from nuevacontabilidad import NuevaContabilidad
 from listempresas import ListEmpresas
 from restbackup   import RestBackup
+from guardarbackup import GuardarBackup
 
 
 class HelloWindow(QtGui.QMainWindow, Ui_MainWindow, PluginsBulmaSetup):
@@ -42,6 +43,7 @@ class HelloWindow(QtGui.QMainWindow, Ui_MainWindow, PluginsBulmaSetup):
             self.eliminar_empresa.setEnabled(True)
 	    self.mui_adminempresas.setEnabled(True)
 	    self.mui_restbackup.setEnabled(True)
+	    self.mui_creabackup.setEnabled(True)
 	else:
             self.nuevo_usuario.setEnabled(False)
             self.editar_usuario.setEnabled(False)
@@ -52,6 +54,8 @@ class HelloWindow(QtGui.QMainWindow, Ui_MainWindow, PluginsBulmaSetup):
             self.eliminar_empresa.setEnabled(False)
 	    self.mui_adminempresas.setEnabled(False)
 	    self.mui_restbackup.setEnabled(False)
+	    self.mui_creabackup.setEnabled(False)
+
             
 	# Evento al hacer clic en el Boton para crear un nuevo usuario
     def on_nuevo_usuario_released(self):
@@ -96,6 +100,11 @@ class HelloWindow(QtGui.QMainWindow, Ui_MainWindow, PluginsBulmaSetup):
         # Evento al hacer clic en el Boton para restaurar Copia de Seguridad
     def on_mui_restbackup_released(self):
 	    win = RestBackup()
+	    win.exec_()
+	    
+        # Evento al hacer clic en el Boton para crear Copia de Seguridad
+    def on_mui_creabackup_released(self):
+	    win = GuardarBackup()
 	    win.exec_()
 	    
 def main(args):

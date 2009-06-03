@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'bulmasetupbase.ui'
 #
-# Created: Sun May 24 22:15:58 2009
+# Created: Wed Jun  3 11:03:38 2009
 #      by: PyQt4 UI code generator 4.4.4
 #
 # WARNING! All changes made in this file will be lost!
@@ -125,7 +125,14 @@ class Ui_MainWindow(object):
         self.mui_restbackup.setIcon(icon8)
         self.mui_restbackup.setIconSize(QtCore.QSize(32, 32))
         self.mui_restbackup.setObjectName("mui_restbackup")
-        self.gridLayout.addWidget(self.mui_restbackup, 2, 0, 1, 1)
+        self.gridLayout.addWidget(self.mui_restbackup, 2, 1, 1, 1)
+        self.mui_creabackup = QtGui.QPushButton(self.groupBox_2)
+        self.mui_creabackup.setFocusPolicy(QtCore.Qt.NoFocus)
+        self.mui_creabackup.setLayoutDirection(QtCore.Qt.LeftToRight)
+        self.mui_creabackup.setIcon(icon8)
+        self.mui_creabackup.setIconSize(QtCore.QSize(32, 32))
+        self.mui_creabackup.setObjectName("mui_creabackup")
+        self.gridLayout.addWidget(self.mui_creabackup, 2, 0, 1, 1)
         self.verticalLayout.addWidget(self.groupBox_2)
         spacerItem = QtGui.QSpacerItem(17, 13, QtGui.QSizePolicy.Minimum, QtGui.QSizePolicy.Expanding)
         self.verticalLayout.addItem(spacerItem)
@@ -167,6 +174,7 @@ class Ui_MainWindow(object):
         self.mui_adminempresas.setText(QtGui.QApplication.translate("MainWindow", "Administrar Empresas Existentes", None, QtGui.QApplication.UnicodeUTF8))
         self.eliminar_empresa.setText(QtGui.QApplication.translate("MainWindow", "Eliminar Empresas Existentes", None, QtGui.QApplication.UnicodeUTF8))
         self.mui_restbackup.setText(QtGui.QApplication.translate("MainWindow", "Restaurar copia de seguridad", None, QtGui.QApplication.UnicodeUTF8))
+        self.mui_creabackup.setText(QtGui.QApplication.translate("MainWindow", "Crear Copia de Seguridad", None, QtGui.QApplication.UnicodeUTF8))
         self.mui_salir.setText(QtGui.QApplication.translate("MainWindow", "Salir", None, QtGui.QApplication.UnicodeUTF8))
 
 import resources_rc

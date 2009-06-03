@@ -26,7 +26,7 @@ class ModificarContabilidad(Contabilidad):
     def on_mui_hacerbackup_released(self):
         self.writecommand("Backup")
         self.savefile = QFileDialog.getSaveFileName(self,  QString("Guardar  Elija archivo destino"), QString("/home"), QString("SQL (*.sql *.pgdump)") )
-        self.command = 'su postgres -c \"pg_dump -f ' + self.savefile + ' ' + self.database  + '\"'
+        self.command = 'pg_dump -f ' + self.savefile + ' ' + self.database
         self.writecommand(self.command)
         self.process.start(self.command)
         self.process.waitForFinished(-1)
