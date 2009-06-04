@@ -14,7 +14,7 @@
    <string>Cuadrante y Uso Horario</string>
   </property>
   <property name="windowIcon" >
-   <iconset resource="../../../bulmages.qrc" >:/Images/receive.svg</iconset>
+   <iconset resource="../../../bulmages.qrc" >:/Images/receive.png</iconset>
   </property>
   <layout class="QGridLayout" >
    <property name="margin" >
@@ -193,7 +193,7 @@
          <string/>
         </property>
         <property name="icon" >
-         <iconset resource="../../../bulmages.qrc" >:/Images/edit-save.svg</iconset>
+         <iconset resource="../../../bulmages.qrc" >:/Images/edit-save.png</iconset>
         </property>
         <property name="iconSize" >
          <size>
@@ -230,7 +230,7 @@
          <string/>
         </property>
         <property name="icon" >
-         <iconset resource="../../../bulmages.qrc" >:Images/edit-delete.svg</iconset>
+         <iconset resource="../../../bulmages.qrc" >:Images/edit-delete.png</iconset>
         </property>
         <property name="iconSize" >
          <size>

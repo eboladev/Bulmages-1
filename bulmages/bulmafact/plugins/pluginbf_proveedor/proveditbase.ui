@@ -16,7 +16,7 @@
   </property>
   <property name="windowIcon">
    <iconset resource="../../../bulmages.qrc">
-    <normaloff>:/Images/supplier.svg</normaloff>:/Images/supplier.svg</iconset>
+    <normaloff>:/Images/supplier.png</normaloff>:/Images/supplier.png</iconset>
   </property>
   <layout class="QGridLayout">
    <property name="margin">
@@ -1361,7 +1361,7 @@
         <string/>
        </property>
        <property name="pixmap">
-        <pixmap resource="../../../bulmages.qrc">:/Images/supplier.svg</pixmap>
+        <pixmap resource="../../../bulmages.qrc">:/Images/supplier.png</pixmap>
        </property>
        <property name="scaledContents">
         <bool>true</bool>
@@ -1411,7 +1411,7 @@
           </property>
           <property name="icon">
            <iconset resource="../../../bulmages.qrc">
-            <normaloff>:/Images/edit-save.svg</normaloff>:/Images/edit-save.svg</iconset>
+            <normaloff>:/Images/edit-save.png</normaloff>:/Images/edit-save.png</iconset>
           </property>
           <property name="iconSize">
            <size>
@@ -1452,7 +1452,7 @@
           </property>
           <property name="icon">
            <iconset resource="../../../bulmages.qrc">
-            <normaloff>:/Images/edit-delete.svg</normaloff>:/Images/edit-delete.svg</iconset>
+            <normaloff>:/Images/edit-delete.png</normaloff>:/Images/edit-delete.png</iconset>
           </property>
           <property name="iconSize">
            <size>

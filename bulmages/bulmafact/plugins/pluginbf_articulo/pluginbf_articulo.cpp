@@ -123,7 +123,7 @@ void MyPlugArt::inicializa ( BfBulmaFact *bges )
         m_bges = bges;
         setMainCompany ( bges->getcompany() );
         QAction *planCuentas = new QAction ( _ ( "&Articulos" ), 0 );
-        planCuentas->setIcon ( QIcon ( QString::fromUtf8 ( ":/Images/product-list.svg" ) ) );
+        planCuentas->setIcon ( QIcon ( QString::fromUtf8 ( ":/Images/product-list.png" ) ) );
         planCuentas->setStatusTip ( _ ( "Articulos" ) );
         planCuentas->setWhatsThis ( _ ( "Articulos" ) );
         pPluginMenu->addAction ( planCuentas );
@@ -131,7 +131,7 @@ void MyPlugArt::inicializa ( BfBulmaFact *bges )
         connect ( planCuentas, SIGNAL ( activated() ), this, SLOT ( elslot() ) );
 
         QAction *npago = new QAction ( _ ( "&Nuevo Articulo" ), 0 );
-        npago->setIcon ( QIcon ( QString::fromUtf8 ( ":/Images/product.svg" ) ) );
+        npago->setIcon ( QIcon ( QString::fromUtf8 ( ":/Images/product.png" ) ) );
         npago->setStatusTip ( _ ( "Nuevo articulo" ) );
         npago->setWhatsThis ( _ ( "Nuevo articulo" ) );
         pPluginMenu->addAction ( npago );
@@ -140,7 +140,7 @@ void MyPlugArt::inicializa ( BfBulmaFact *bges )
 
         pPluginMenu->addSeparator();
         QAction *tart = new QAction ( _ ( "&Tipos de Articulo" ), 0 );
-        tart->setIcon ( QIcon ( QString::fromUtf8 ( ":/Images/product-family.svg" ) ) );
+        tart->setIcon ( QIcon ( QString::fromUtf8 ( ":/Images/product-family.png" ) ) );
         tart->setStatusTip ( _ ( "Tipos de Articulo" ) );
         tart->setWhatsThis ( _ ( "Tipos de Articulo" ) );
         pPluginMenu->addAction ( tart );
@@ -149,7 +149,7 @@ void MyPlugArt::inicializa ( BfBulmaFact *bges )
 
         pPluginMenu->addSeparator();
         QAction *tfam = new QAction ( _ ( "&Familias" ), 0 );
-        tfam->setIcon ( QIcon ( QString::fromUtf8 ( ":/Images/product-family.svg" ) ) );
+        tfam->setIcon ( QIcon ( QString::fromUtf8 ( ":/Images/product-family.png" ) ) );
         tfam->setStatusTip ( _ ( "Familias" ) );
         tfam->setWhatsThis ( _ ( "Familias" ) );
         pPluginMenu->addAction ( tfam );

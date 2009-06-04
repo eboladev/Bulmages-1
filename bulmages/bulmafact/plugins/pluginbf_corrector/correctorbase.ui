@@ -85,7 +85,7 @@
         <string/>
        </property>
        <property name="icon" >
-        <iconset resource="../../../bulmages.qrc" >:/Images/document-properties.svg</iconset>
+        <iconset resource="../../../bulmages.qrc" >:/Images/document-properties.png</iconset>
        </property>
        <property name="iconSize" >
         <size>

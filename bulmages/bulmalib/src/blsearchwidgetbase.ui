@@ -55,7 +55,7 @@
      </property>
      <property name="icon">
       <iconset resource="../../bulmages.qrc">
-       <normaloff>:/Images/edit-find.svg</normaloff>:/Images/edit-find.svg</iconset>
+       <normaloff>:/Images/edit-find.png</normaloff>:/Images/edit-find.png</iconset>
      </property>
      <property name="iconSize">
       <size>
@@ -90,7 +90,7 @@
      </property>
      <property name="icon">
       <iconset resource="../../bulmages.qrc">
-       <normaloff>:/Images/edit-delete.svg</normaloff>:/Images/edit-delete.svg</iconset>
+       <normaloff>:/Images/edit-delete.png</normaloff>:/Images/edit-delete.png</iconset>
      </property>
      <property name="iconSize">
       <size>

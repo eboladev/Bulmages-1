@@ -492,7 +492,7 @@ void SelQToolButton::setBoton()
     setStatusTip ( _ ( "Invertir seleccion de elementos" ) );
     setToolTip ( _ ( "Invertir seleccion de elementos" ) );
     setMinimumSize ( QSize ( 32, 32 ) );
-    setIcon ( QIcon ( QString::fromUtf8 ( ":/Images/selection-invert.svg" ) ) );
+    setIcon ( QIcon ( QString::fromUtf8 ( ":/Images/selection-invert.png" ) ) );
     setIconSize ( QSize ( 22, 22 ) );
 
     connect ( this, SIGNAL ( clicked() ), this, SLOT ( click() ) );
@@ -659,7 +659,7 @@ void EmailQToolButton::setBoton()
     setStatusTip ( _ ( "Enviar elementos seleccionados por e-mail" ) );
     setToolTip ( _ ( "Enviar elementos seleccionados por e-mail" ) );
     setMinimumSize ( QSize ( 32, 32 ) );
-    setIcon ( QIcon ( QString::fromUtf8 ( ":/Images/mail-send.svg" ) ) );
+    setIcon ( QIcon ( QString::fromUtf8 ( ":/Images/mail-send.png" ) ) );
     setIconSize ( QSize ( 22, 22 ) );
     _depura ( "END EmailQToolButton::setBoton", 0 );
 }

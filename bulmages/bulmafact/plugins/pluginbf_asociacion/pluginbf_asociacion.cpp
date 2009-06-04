@@ -146,7 +146,7 @@ void MyPlugAsoc::inicializa ( BfBulmaFact *bges )
         m_bges = bges;
         setMainCompany ( bges->getcompany() );
         QAction *asociacion = new QAction ( _ ( "&Asociacion" ), 0 );
-        asociacion->setIcon ( QIcon ( QString::fromUtf8 ( ":/Images/employee-list.svg" ) ) );
+        asociacion->setIcon ( QIcon ( QString::fromUtf8 ( ":/Images/employee-list.png" ) ) );
         asociacion->setStatusTip ( _ ( "Asociacion" ) );
         asociacion->setWhatsThis ( _ ( "Asociacion" ) );
         pPluginMenu->addAction ( asociacion );

@@ -52,7 +52,7 @@
         <string/>
        </property>
        <property name="pixmap" >
-        <pixmap resource="../../bulmages.qrc" >:/Images/document-properties.svg</pixmap>
+        <pixmap resource="../../bulmages.qrc" >:/Images/document-properties.png</pixmap>
        </property>
        <property name="scaledContents" >
         <bool>true</bool>
@@ -93,7 +93,7 @@
           </property>
           <property name="icon" >
            <iconset resource="../../bulmages.qrc" >
-            <normaloff>:/Images/edit-save.svg</normaloff>:/Images/edit-save.svg</iconset>
+            <normaloff>:/Images/edit-save.png</normaloff>:/Images/edit-save.png</iconset>
           </property>
           <property name="iconSize" >
            <size>

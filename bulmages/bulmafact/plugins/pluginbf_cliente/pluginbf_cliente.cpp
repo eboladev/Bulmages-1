@@ -94,7 +94,7 @@ void MyPlugCli::inicializa ( BfBulmaFact *bges )
         m_bges = bges;
         setMainCompany ( bges->getcompany() );
         QAction *planCuentas = new QAction ( _ ( "&Clientes" ), 0 );
-        planCuentas->setIcon ( QIcon ( QString::fromUtf8 ( ":/Images/client-list.svg" ) ) );
+        planCuentas->setIcon ( QIcon ( QString::fromUtf8 ( ":/Images/client-list.png" ) ) );
         planCuentas->setStatusTip ( _ ( "Clientes" ) );
         planCuentas->setWhatsThis ( _ ( "Clientes" ) );
         pPluginMenu->addAction ( planCuentas );
@@ -102,7 +102,7 @@ void MyPlugCli::inicializa ( BfBulmaFact *bges )
         connect ( planCuentas, SIGNAL ( activated() ), this, SLOT ( elslot() ) );
 
         QAction *npago = new QAction ( _ ( "&Nuevo cliente" ), 0 );
-        npago->setIcon ( QIcon ( QString::fromUtf8 ( ":/Images/client.svg" ) ) );
+        npago->setIcon ( QIcon ( QString::fromUtf8 ( ":/Images/client.png" ) ) );
         npago->setStatusTip ( _ ( "Nuevo cliente" ) );
         npago->setWhatsThis ( _ ( "Nuevo cliente" ) );
         pPluginMenu->addAction ( npago );

@@ -80,7 +80,7 @@ void GenPreQToolButton::setBoton()
     setToolTip ( "Generar Factura" );
     setMinimumSize ( QSize ( 32, 32 ) );
     setMaximumSize ( QSize ( 32, 32 ) );
-    setIcon ( QIcon ( QString::fromUtf8 ( ":/Images/client-delivery-note-to-invoice.svg" ) ) );
+    setIcon ( QIcon ( QString::fromUtf8 ( ":/Images/client-delivery-note-to-invoice.png" ) ) );
     setIconSize ( QSize ( 32, 32 ) );
     setContentsMargins ( 0, 0, 0, 0 );
     _depura ( "END GenPreQToolButton::setBoton", 0 );
@@ -540,7 +540,7 @@ void VerPreQToolButton::setBoton()
     setToolTip ( "Ver Presupuesto" );
     setMinimumSize ( QSize ( 32, 32 ) );
     setMaximumSize ( QSize ( 32, 32 ) );
-    setIcon ( QIcon ( QString::fromUtf8 ( ":/Images/client-quote.svg" ) ) );
+    setIcon ( QIcon ( QString::fromUtf8 ( ":/Images/client-quote.png" ) ) );
     setIconSize ( QSize ( 32, 32 ) );
     setContentsMargins ( 0, 0, 0, 0 );
     _depura ( "END VerPreQToolButton::setBoton", 0 );

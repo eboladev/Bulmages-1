@@ -96,7 +96,7 @@ void mypluginped::inicializa ( BfBulmaFact *bges )
         m_bges = bges;
         setMainCompany ( bges->getcompany() );
         QAction *planCuentas = new QAction ( _ ( "&Pedidos de clientes" ), 0 );
-        planCuentas->setIcon ( QIcon ( QString::fromUtf8 ( ":/Images/client-delivery-order-list.svg" ) ) );
+        planCuentas->setIcon ( QIcon ( QString::fromUtf8 ( ":/Images/client-delivery-order-list.png" ) ) );
         planCuentas->setStatusTip ( _ ( "Pedidos de clientes" ) );
         planCuentas->setWhatsThis ( _ ( "Pedidos de clientes" ) );
         pPluginMenu->addAction ( planCuentas );
@@ -104,7 +104,7 @@ void mypluginped::inicializa ( BfBulmaFact *bges )
         connect ( planCuentas, SIGNAL ( activated() ), this, SLOT ( elslot() ) );
 
         QAction *npago = new QAction ( _ ( "&Nuevo pedido de cliente" ), 0 );
-        npago->setIcon ( QIcon ( QString::fromUtf8 ( ":/Images/client-delivery-order.svg" ) ) );
+        npago->setIcon ( QIcon ( QString::fromUtf8 ( ":/Images/client-delivery-order.png" ) ) );
         npago->setStatusTip ( _ ( "Nuevo pedido de cliente" ) );
         npago->setWhatsThis ( _ ( "Nuevo pedido de cliente" ) );
         pPluginMenu->addAction ( npago );

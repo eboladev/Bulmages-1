@@ -95,7 +95,7 @@ void myplugincob::inicializa ( BfBulmaFact *bges )
         m_bges = bges;
         setMainCompany ( bges->getcompany() );
         QAction *planCuentas = new QAction ( _ ( "&Cobros a clientes" ), 0 );
-        planCuentas->setIcon ( QIcon ( QString::fromUtf8 ( ":/Images/receive-list.svg" ) ) );
+        planCuentas->setIcon ( QIcon ( QString::fromUtf8 ( ":/Images/receive-list.png" ) ) );
         planCuentas->setStatusTip ( _ ( "Cobros a clientes" ) );
         planCuentas->setWhatsThis ( _ ( "Cobros a clientes" ) );
         pPluginMenu->addAction ( planCuentas );
@@ -103,7 +103,7 @@ void myplugincob::inicializa ( BfBulmaFact *bges )
         connect ( planCuentas, SIGNAL ( activated() ), this, SLOT ( elslot() ) );
 
         QAction *npago = new QAction ( _ ( "&Nuevo cobro a cliente" ), 0 );
-        npago->setIcon ( QIcon ( QString::fromUtf8 ( ":/Images/receive.svg" ) ) );
+        npago->setIcon ( QIcon ( QString::fromUtf8 ( ":/Images/receive.png" ) ) );
         npago->setStatusTip ( _ ( "Nuevo cobro a cliente" ) );
         npago->setWhatsThis ( _ ( "Nuevo cobro a cliente" ) );
         pPluginMenu->addAction ( npago );

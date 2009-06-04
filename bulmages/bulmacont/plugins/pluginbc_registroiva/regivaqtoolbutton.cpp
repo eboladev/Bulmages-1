@@ -74,7 +74,7 @@ void RegIVAQToolButton::setBoton()
     setStatusTip ( _ ( "Registro de IVA" ) );
     setToolTip ( _ ( "Registro de IVA" ) );
     setMinimumSize ( QSize ( 32, 32 ) );
-    setIcon ( QIcon ( QString::fromUtf8 ( ":/Images/vat.svg" ) ) );
+    setIcon ( QIcon ( QString::fromUtf8 ( ":/Images/vat.png" ) ) );
     setIconSize ( QSize ( 32, 32 ) );
     _depura ( "END RegIVAQToolButton::setBoton", 0 );
 }

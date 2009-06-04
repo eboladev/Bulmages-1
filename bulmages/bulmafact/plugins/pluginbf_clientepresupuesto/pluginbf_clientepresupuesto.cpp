@@ -98,7 +98,7 @@ void mypluginpres::inicializa ( BfBulmaFact *bges )
         m_bges = bges;
         setMainCompany ( bges->getcompany() );
         QAction *planCuentas = new QAction ( _ ( "&Presupuestos a clientes" ), 0 );
-        planCuentas->setIcon ( QIcon ( QString::fromUtf8 ( ":/Images/client-quote-list.svg" ) ) );
+        planCuentas->setIcon ( QIcon ( QString::fromUtf8 ( ":/Images/client-quote-list.png" ) ) );
         planCuentas->setStatusTip ( _ ( "Presupuestos a clientes" ) );
         planCuentas->setWhatsThis ( _ ( "Presupuestos a clientes" ) );
         pPluginMenu->addAction ( planCuentas );
@@ -106,7 +106,7 @@ void mypluginpres::inicializa ( BfBulmaFact *bges )
         connect ( planCuentas, SIGNAL ( activated() ), this, SLOT ( elslot() ) );
 
         QAction *npago = new QAction ( _ ( "&Nuevo presupuesto a cliente" ), 0 );
-        npago->setIcon ( QIcon ( QString::fromUtf8 ( ":/Images/client-quote.svg" ) ) );
+        npago->setIcon ( QIcon ( QString::fromUtf8 ( ":/Images/client-quote.png" ) ) );
         npago->setStatusTip ( _ ( "Nuevo presupuesto a cliente" ) );
         npago->setWhatsThis ( _ ( "Nuevo presupuesto a cliente" ) );
         pPluginMenu->addAction ( npago );

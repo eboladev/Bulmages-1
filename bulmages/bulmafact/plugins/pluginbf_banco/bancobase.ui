@@ -16,7 +16,7 @@
   </property>
   <property name="windowIcon">
    <iconset>
-    <normaloff>:/Images/bank.svg</normaloff>:/Images/bank.svg</iconset>
+    <normaloff>:/Images/bank.png</normaloff>:/Images/bank.png</iconset>
   </property>
   <layout class="QGridLayout">
    <property name="margin">
@@ -48,7 +48,7 @@
         </size>
        </property>
        <property name="pixmap">
-        <pixmap>:/Images/bank.svg</pixmap>
+        <pixmap>:/Images/bank.png</pixmap>
        </property>
        <property name="scaledContents">
         <bool>true</bool>
@@ -111,7 +111,7 @@
           </property>
           <property name="icon">
            <iconset>
-            <normaloff>:Images/edit-delete.svg</normaloff>:Images/edit-delete.svg</iconset>
+            <normaloff>:Images/edit-delete.png</normaloff>:Images/edit-delete.png</iconset>
           </property>
           <property name="iconSize">
            <size>
@@ -146,7 +146,7 @@
           </property>
           <property name="icon">
            <iconset>
-            <normaloff>:/Images/edit-save.svg</normaloff>:/Images/edit-save.svg</iconset>
+            <normaloff>:/Images/edit-save.png</normaloff>:/Images/edit-save.png</iconset>
           </property>
           <property name="iconSize">
            <size>
@@ -181,7 +181,7 @@
           </property>
           <property name="icon">
            <iconset>
-            <normaloff>:/Images/document-new.svg</normaloff>:/Images/document-new.svg</iconset>
+            <normaloff>:/Images/document-new.png</normaloff>:/Images/document-new.png</iconset>
           </property>
           <property name="iconSize">
            <size>

@@ -94,7 +94,7 @@ void MyPlugPro::inicializa ( BfBulmaFact *bges )
         m_bges = bges;
         setMainCompany ( bges->getcompany() );
         QAction *planCuentas = new QAction ( _ ( "&Proveedores" ), 0 );
-        planCuentas->setIcon ( QIcon ( QString::fromUtf8 ( ":/Images/supplier-list.svg" ) ) );
+        planCuentas->setIcon ( QIcon ( QString::fromUtf8 ( ":/Images/supplier-list.png" ) ) );
         planCuentas->setStatusTip ( _ ( "Proveedores" ) );
         planCuentas->setWhatsThis ( _ ( "Proveedores" ) );
         pPluginMenu->addAction ( planCuentas );
@@ -102,7 +102,7 @@ void MyPlugPro::inicializa ( BfBulmaFact *bges )
         connect ( planCuentas, SIGNAL ( activated() ), this, SLOT ( elslot() ) );
 
         QAction *npago = new QAction ( _ ( "&Nuevo proveedor" ), 0 );
-        npago->setIcon ( QIcon ( QString::fromUtf8 ( ":/Images/supplier.svg" ) ) );
+        npago->setIcon ( QIcon ( QString::fromUtf8 ( ":/Images/supplier.png" ) ) );
         npago->setStatusTip ( _ ( "Nuevo proveedor" ) );
         npago->setWhatsThis ( _ ( "Nuevo proveedor" ) );
         pPluginMenu->addAction ( npago );

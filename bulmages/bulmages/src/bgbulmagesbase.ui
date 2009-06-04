@@ -15,7 +15,7 @@
   </property>
   <property name="windowIcon">
    <iconset resource="bgbulmages.qrc">
-    <normaloff>:/images/iconbulmages.svg</normaloff>:/images/iconbulmages.svg</iconset>
+    <normaloff>:/images/iconbulmages.png</normaloff>:/images/iconbulmages.png</iconset>
   </property>
   <layout class="QVBoxLayout" name="verticalLayout">
    <property name="spacing">

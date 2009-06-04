@@ -92,7 +92,7 @@
            <string comment="Imprimir/Salvar" />
           </property>
           <property name="icon" >
-           <iconset resource="../../bulmages.qrc" >:/Images/document-print.svg</iconset>
+           <iconset resource="../../bulmages.qrc" >:/Images/document-print.png</iconset>
           </property>
           <property name="iconSize" >
            <size>
@@ -129,7 +129,7 @@
            <string>Recalcular</string>
           </property>
           <property name="icon" >
-           <iconset resource="../../bulmages.qrc" >:/Images/view-refresh.svg</iconset>
+           <iconset resource="../../bulmages.qrc" >:/Images/view-refresh.png</iconset>
           </property>
           <property name="iconSize" >
            <size>
@@ -182,7 +182,7 @@
            <string comment="Imprimir/Salvar" />
           </property>
           <property name="icon" >
-           <iconset resource="../../bulmages.qrc" >:/Images/edit-find.svg</iconset>
+           <iconset resource="../../bulmages.qrc" >:/Images/edit-find.png</iconset>
           </property>
           <property name="iconSize" >
            <size>

@@ -68,7 +68,7 @@
         </property>
         <property name="icon" >
          <iconset resource="../../../bulmages.qrc" >
-          <normaloff>:/Images/document-print.svg</normaloff>:/Images/document-print.svg</iconset>
+          <normaloff>:/Images/document-print.png</normaloff>:/Images/document-print.png</iconset>
         </property>
         <property name="iconSize" >
          <size>
@@ -211,7 +211,7 @@
         </property>
         <property name="icon" >
          <iconset resource="../../../bulmages.qrc" >
-          <normaloff>:/Images/document-print.svg</normaloff>:/Images/document-print.svg</iconset>
+          <normaloff>:/Images/document-print.png</normaloff>:/Images/document-print.png</iconset>
         </property>
         <property name="iconSize" >
          <size>

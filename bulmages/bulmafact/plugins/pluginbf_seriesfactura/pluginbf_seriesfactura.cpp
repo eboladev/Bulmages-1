@@ -79,7 +79,7 @@ void MyPlugSeriesFactura::inicializa ( BfBulmaFact *bges )
         m_bges = bges;
         setMainCompany ( bges->getcompany() );
         QAction *seriesFactura = new QAction ( _ ( "&Series de factura" ), 0 );
-        seriesFactura->setIcon(QIcon ( QString::fromUtf8 ( ":/Images/client-invoice-series.svg" ) ));
+        seriesFactura->setIcon(QIcon ( QString::fromUtf8 ( ":/Images/client-invoice-series.png" ) ));
         seriesFactura->setStatusTip ( _ ( "Series de factura" ) );
         seriesFactura->setWhatsThis ( _ ( "Series de factura" ) );
         pPluginMenu->addAction ( seriesFactura );

@@ -102,7 +102,7 @@ void MyPlugIVA::inicializa ( BfBulmaFact *bges )
         m_bges = bges;
         setMainCompany ( bges->getcompany() );
         QAction *planCuentas = new QAction ( _ ( "&Tipos de IVA" ), 0 );
-        planCuentas->setIcon ( QIcon ( QString::fromUtf8 ( ":/Images/vat.svg" ) ) );
+        planCuentas->setIcon ( QIcon ( QString::fromUtf8 ( ":/Images/vat.png" ) ) );
         planCuentas->setStatusTip ( _ ( "Tipos de IVA" ) );
         planCuentas->setWhatsThis ( _ ( "Tipos de IVA" ) );
         pPluginMenu->addAction ( planCuentas );
@@ -114,7 +114,7 @@ void MyPlugIVA::inicializa ( BfBulmaFact *bges )
         m_bges = bges;
         setMainCompany ( bges->getcompany() );
         QAction *planCuentas1 = new QAction ( _ ( "&Tasas de IVA" ), 0 );
-        planCuentas1->setIcon ( QIcon ( QString::fromUtf8 ( ":/Images/vat.svg" ) ) );
+        planCuentas1->setIcon ( QIcon ( QString::fromUtf8 ( ":/Images/vat.png" ) ) );
         planCuentas1->setStatusTip ( _ ( "Tasas de IVA" ) );
         planCuentas1->setWhatsThis ( _ ( "Tasas de IVA" ) );
         pPluginMenu->addAction ( planCuentas1 );

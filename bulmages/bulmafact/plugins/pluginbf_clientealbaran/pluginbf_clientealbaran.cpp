@@ -96,7 +96,7 @@ void mypluginalb::inicializa ( BfBulmaFact *bges )
         m_bges = bges;
         setMainCompany ( bges->getcompany() );
         QAction *planCuentas = new QAction ( _ ( "&Albaranes a clientes" ), 0 );
-        planCuentas->setIcon ( QIcon ( QString::fromUtf8 ( ":/Images/client-delivery-note-list.svg" ) ) );
+        planCuentas->setIcon ( QIcon ( QString::fromUtf8 ( ":/Images/client-delivery-note-list.png" ) ) );
         planCuentas->setStatusTip ( _ ( "Albaranes a clientes" ) );
         planCuentas->setWhatsThis ( _ ( "Albaranes a clientes" ) );
         pPluginMenu->addAction ( planCuentas );
@@ -104,7 +104,7 @@ void mypluginalb::inicializa ( BfBulmaFact *bges )
         connect ( planCuentas, SIGNAL ( activated() ), this, SLOT ( elslot() ) );
 
         QAction *npago = new QAction ( _ ( "&Nuevo albaran a cliente" ), 0 );
-        npago->setIcon ( QIcon ( QString::fromUtf8 ( ":/Images/client-delivery-note.svg" ) ) );
+        npago->setIcon ( QIcon ( QString::fromUtf8 ( ":/Images/client-delivery-note.png" ) ) );
         npago->setStatusTip ( _ ( "Nuevo albaran a cliente" ) );
         npago->setWhatsThis ( _ ( "Nuevo albaran a cliente" ) );
         pPluginMenu->addAction ( npago );

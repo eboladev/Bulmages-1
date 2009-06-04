@@ -19,7 +19,7 @@
   </property>
   <property name="windowIcon">
    <iconset resource="../../../bulmages.qrc">
-    <normaloff>:/Images/product-list.svg</normaloff>:/Images/product-list.svg</iconset>
+    <normaloff>:/Images/product-list.png</normaloff>:/Images/product-list.png</iconset>
   </property>
   <layout class="QGridLayout">
    <property name="margin">
@@ -134,7 +134,7 @@
         <string/>
        </property>
        <property name="pixmap">
-        <pixmap resource="../../../bulmages.qrc">:/Images/product-list.svg</pixmap>
+        <pixmap resource="../../../bulmages.qrc">:/Images/product-list.png</pixmap>
        </property>
        <property name="scaledContents">
         <bool>true</bool>
@@ -184,7 +184,7 @@
           </property>
           <property name="icon">
            <iconset resource="../../../bulmages.qrc">
-            <normaloff>:/Images/document-new.svg</normaloff>:/Images/document-new.svg</iconset>
+            <normaloff>:/Images/document-new.png</normaloff>:/Images/document-new.png</iconset>
           </property>
           <property name="iconSize">
            <size>
@@ -219,7 +219,7 @@
           </property>
           <property name="icon">
            <iconset resource="../../../bulmages.qrc">
-            <normaloff>:/Images/document-open.svg</normaloff>:/Images/document-open.svg</iconset>
+            <normaloff>:/Images/document-open.png</normaloff>:/Images/document-open.png</iconset>
           </property>
           <property name="iconSize">
            <size>
@@ -254,7 +254,7 @@
           </property>
           <property name="icon">
            <iconset>
-            <normaloff>:Images/edit-delete.svg</normaloff>:Images/edit-delete.svg</iconset>
+            <normaloff>:Images/edit-delete.png</normaloff>:Images/edit-delete.png</iconset>
           </property>
           <property name="iconSize">
            <size>
@@ -289,7 +289,7 @@
           </property>
           <property name="icon">
            <iconset resource="../../../bulmages.qrc">
-            <normaloff>:/Images/document-print.svg</normaloff>:/Images/document-print.svg</iconset>
+            <normaloff>:/Images/document-print.png</normaloff>:/Images/document-print.png</iconset>
           </property>
           <property name="iconSize">
            <size>
@@ -324,7 +324,7 @@
           </property>
           <property name="icon">
            <iconset resource="../../../bulmages.qrc">
-            <normaloff>:/Images/edit-find.svg</normaloff>:/Images/edit-find.svg</iconset>
+            <normaloff>:/Images/edit-find.png</normaloff>:/Images/edit-find.png</iconset>
           </property>
           <property name="iconSize">
            <size>
@@ -362,7 +362,7 @@
           </property>
           <property name="icon">
            <iconset resource="../../../bulmages.qrc">
-            <normaloff>:/Images/document-properties.svg</normaloff>:/Images/document-properties.svg</iconset>
+            <normaloff>:/Images/document-properties.png</normaloff>:/Images/document-properties.png</iconset>
           </property>
           <property name="iconSize">
            <size>
@@ -400,7 +400,7 @@
           </property>
           <property name="icon">
            <iconset resource="../../../bulmages.qrc">
-            <normaloff>:/Images/view-refresh.svg</normaloff>:/Images/view-refresh.svg</iconset>
+            <normaloff>:/Images/view-refresh.png</normaloff>:/Images/view-refresh.png</iconset>
           </property>
           <property name="iconSize">
            <size>
@@ -435,7 +435,7 @@
           </property>
           <property name="icon">
            <iconset resource="../../../bulmages.qrc">
-            <normaloff>:/Images/document-export.svg</normaloff>:/Images/document-export.svg</iconset>
+            <normaloff>:/Images/document-export.png</normaloff>:/Images/document-export.png</iconset>
           </property>
           <property name="iconSize">
            <size>
@@ -470,7 +470,7 @@
           </property>
           <property name="icon">
            <iconset resource="../../../bulmages.qrc">
-            <normaloff>:/Images/document-import.svg</normaloff>:/Images/document-import.svg</iconset>
+            <normaloff>:/Images/document-import.png</normaloff>:/Images/document-import.png</iconset>
           </property>
           <property name="iconSize">
            <size>

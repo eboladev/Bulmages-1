@@ -112,7 +112,7 @@ void MyPlugProf::inicializa ( BfBulmaFact *bges )
         m_bges = bges;
         setMainCompany ( bges->getcompany() );
         QAction *listRecibos = new QAction ( _ ( "&Recibos" ), 0 );
-        listRecibos->setIcon ( QIcon ( QString::fromUtf8 ( ":/Images/receive-list.svg" ) ) );
+        listRecibos->setIcon ( QIcon ( QString::fromUtf8 ( ":/Images/receive-list.png" ) ) );
         listRecibos->setStatusTip ( _ ( "Recibos" ) );
         listRecibos->setWhatsThis ( _ ( "Recibos" ) );
         pPluginMenu->addAction ( listRecibos );
@@ -120,7 +120,7 @@ void MyPlugProf::inicializa ( BfBulmaFact *bges )
         connect ( listRecibos, SIGNAL ( activated() ), this, SLOT ( elslot() ) );
 
         QAction *nuevoRecibo = new QAction ( _ ( "&Nuevo recibo" ), 0 );
-        nuevoRecibo->setIcon ( QIcon ( QString::fromUtf8 ( ":/Images/receive.svg" ) ) );
+        nuevoRecibo->setIcon ( QIcon ( QString::fromUtf8 ( ":/Images/receive.png" ) ) );
         nuevoRecibo->setStatusTip ( _ ( "Nuevo recibo" ) );
         nuevoRecibo->setWhatsThis ( _ ( "Nuevo recibo" ) );
         pPluginMenu->addAction ( nuevoRecibo );
@@ -129,7 +129,7 @@ void MyPlugProf::inicializa ( BfBulmaFact *bges )
 
 
         QAction *emitirRecibos = new QAction ( _ ( "Recibos &Automaticos" ), 0 );
-        emitirRecibos->setIcon ( QIcon ( QString::fromUtf8 ( ":/Images/supplier-delivery-note-to-invoice.svg" ) ) );
+        emitirRecibos->setIcon ( QIcon ( QString::fromUtf8 ( ":/Images/supplier-delivery-note-to-invoice.png" ) ) );
         emitirRecibos->setStatusTip ( _ ( "Emitir recibos" ) );
         emitirRecibos->setWhatsThis ( _ ( "Emitir recibos" ) );
         pPluginMenu->addAction ( emitirRecibos );

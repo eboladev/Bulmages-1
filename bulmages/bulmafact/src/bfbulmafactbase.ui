@@ -24,7 +24,7 @@
   </property>
   <property name="windowIcon">
    <iconset resource="../../bulmages.qrc">
-    <normaloff>:/Images/iconbulmafact.svg</normaloff>:/Images/iconbulmafact.svg</iconset>
+    <normaloff>:/Images/iconbulmafact.png</normaloff>:/Images/iconbulmafact.png</iconset>
   </property>
   <widget class="QWidget" name="centralwidget"/>
   <widget class="QMenuBar" name="menubar">
@@ -196,7 +196,7 @@
   <action name="actionParametros">
    <property name="icon">
     <iconset resource="../../bulmages.qrc">
-     <normaloff>:/Images/document-properties.svg</normaloff>:/Images/document-properties.svg</iconset>
+     <normaloff>:/Images/document-properties.png</normaloff>:/Images/document-properties.png</iconset>
    </property>
    <property name="text">
     <string>&amp;Propiedades de la empresa...</string>
@@ -270,7 +270,7 @@
   <action name="actionPaises">
    <property name="icon">
     <iconset resource="../../bulmages.qrc">
-     <normaloff>:/Images/flag-world.svg</normaloff>:/Images/flag-world.svg</iconset>
+     <normaloff>:/Images/flag-world.png</normaloff>:/Images/flag-world.png</iconset>
    </property>
    <property name="text">
     <string>Paises / Provincias</string>

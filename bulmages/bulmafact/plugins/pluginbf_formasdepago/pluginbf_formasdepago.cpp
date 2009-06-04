@@ -79,7 +79,7 @@ void MyPlugFPago::inicializa ( BfBulmaFact *bges )
         m_bges = bges;
         setMainCompany ( bges->getcompany() );
         QAction *planCuentas = new QAction ( _ ( "&Formas de pago" ), 0 );
-        planCuentas->setIcon ( QIcon ( QString::fromUtf8 ( ":/Images/payment-method.svg" ) ) );
+        planCuentas->setIcon ( QIcon ( QString::fromUtf8 ( ":/Images/payment-method.png" ) ) );
         planCuentas->setStatusTip ( _ ( "Formas de pago" ) );
         planCuentas->setWhatsThis ( _ ( "Formas de pago" ) );
         pPluginMenu->addAction ( planCuentas );

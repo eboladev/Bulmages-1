@@ -94,7 +94,7 @@ void mypluginpag::inicializa ( BfBulmaFact *bges )
         m_bges = bges;
         setMainCompany ( bges->getcompany() );
         QAction *planCuentas = new QAction ( _ ( "&Pagos a proveedores" ), 0 );
-        planCuentas->setIcon ( QIcon ( QString::fromUtf8 ( ":/Images/pay-list.svg" ) ) );
+        planCuentas->setIcon ( QIcon ( QString::fromUtf8 ( ":/Images/pay-list.png" ) ) );
         planCuentas->setStatusTip ( _ ( "Pagos a proveedores" ) );
         planCuentas->setWhatsThis ( _ ( "Pagos a proveedores" ) );
         pPluginMenu->addAction ( planCuentas );
@@ -102,7 +102,7 @@ void mypluginpag::inicializa ( BfBulmaFact *bges )
         connect ( planCuentas, SIGNAL ( activated() ), this, SLOT ( elslot() ) );
 
         QAction *npago = new QAction ( _ ( "&Nuevo pago a proveedor" ), 0 );
-        npago->setIcon ( QIcon ( QString::fromUtf8 ( ":/Images/pay.svg" ) ) );
+        npago->setIcon ( QIcon ( QString::fromUtf8 ( ":/Images/pay.png" ) ) );
         npago->setStatusTip ( _ ( "Nuevo pago a proveedor" ) );
         npago->setWhatsThis ( _ ( "Nuevo pago a proveedor" ) );
         pPluginMenu->addAction ( npago );

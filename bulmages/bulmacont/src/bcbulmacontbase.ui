@@ -21,7 +21,7 @@
   </property>
   <property name="windowIcon">
    <iconset resource="../../bulmages.qrc">
-    <normaloff>:/Images/iconbulmacont.svg</normaloff>:/Images/iconbulmacont.svg</iconset>
+    <normaloff>:/Images/iconbulmacont.png</normaloff>:/Images/iconbulmacont.png</iconset>
   </property>
   <widget class="QWidget" name="centralwidget"/>
   <widget class="QMenuBar" name="menubar">
@@ -152,7 +152,7 @@
   <action name="actionConfiguracion">
    <property name="icon">
     <iconset resource="../../bulmages.qrc">
-     <normaloff>:/Images/document-properties.svg</normaloff>:/Images/document-properties.svg</iconset>
+     <normaloff>:/Images/document-properties.png</normaloff>:/Images/document-properties.png</iconset>
    </property>
    <property name="text">
     <string>&amp;Propiedades de la empresa...</string>
@@ -215,7 +215,7 @@
   <action name="actionPlan_Contable">
    <property name="icon">
     <iconset resource="../../bulmages.qrc">
-     <normaloff>:/Images/account_plan.svg</normaloff>:/Images/account_plan.svg</iconset>
+     <normaloff>:/Images/account_plan.png</normaloff>:/Images/account_plan.png</iconset>
    </property>
    <property name="text">
     <string>&amp;Plan Contable</string>
@@ -224,7 +224,7 @@
   <action name="actionAsientos">
    <property name="icon">
     <iconset resource="../../bulmages.qrc">
-     <normaloff>:/Images/book-list.svg</normaloff>:/Images/book-list.svg</iconset>
+     <normaloff>:/Images/book-list.png</normaloff>:/Images/book-list.png</iconset>
    </property>
    <property name="text">
     <string>&amp;Asientos</string>
@@ -236,7 +236,7 @@
   <action name="actionApuntes_Contables">
    <property name="icon">
     <iconset resource="../../bulmages.qrc">
-     <normaloff>:/Images/book.svg</normaloff>:/Images/book.svg</iconset>
+     <normaloff>:/Images/book.png</normaloff>:/Images/book.png</iconset>
    </property>
    <property name="text">
     <string>Apuntes &amp;contables</string>
@@ -248,7 +248,7 @@
   <action name="actionLibro_Mayor">
    <property name="icon">
     <iconset resource="../../bulmages.qrc">
-     <normaloff>:/Images/bank-statement.svg</normaloff>:/Images/bank-statement.svg</iconset>
+     <normaloff>:/Images/bank-statement.png</normaloff>:/Images/bank-statement.png</iconset>
    </property>
    <property name="text">
     <string>Libro &amp;Mayor</string>
@@ -257,7 +257,7 @@
   <action name="actionLibro_Diario">
    <property name="icon">
     <iconset resource="../../bulmages.qrc">
-     <normaloff>:/Images/balance-sheet.svg</normaloff>:/Images/balance-sheet.svg</iconset>
+     <normaloff>:/Images/balance-sheet.png</normaloff>:/Images/balance-sheet.png</iconset>
    </property>
    <property name="text">
     <string>Libro &amp;Diario</string>
@@ -271,7 +271,7 @@
   <action name="actionTipos_de_IVA">
    <property name="icon">
     <iconset resource="../../bulmages.qrc">
-     <normaloff>:/Images/vat.svg</normaloff>:/Images/vat.svg</iconset>
+     <normaloff>:/Images/vat.png</normaloff>:/Images/vat.png</iconset>
    </property>
    <property name="text">
     <string>Tipos de &amp;IVA</string>
@@ -307,7 +307,7 @@
   <action name="actionImprimir">
    <property name="icon">
     <iconset resource="../../bulmages.qrc">
-     <normaloff>:/Images/document-print.svg</normaloff>:/Images/document-print.svg</iconset>
+     <normaloff>:/Images/document-print.png</normaloff>:/Images/document-print.png</iconset>
    </property>
    <property name="text">
     <string>&amp;Imprimir</string>
@@ -316,7 +316,7 @@
   <action name="actionGuardar">
    <property name="icon">
     <iconset resource="../../bulmages.qrc">
-     <normaloff>:/Images/edit-save.svg</normaloff>:/Images/edit-save.svg</iconset>
+     <normaloff>:/Images/edit-save.png</normaloff>:/Images/edit-save.png</iconset>
    </property>
    <property name="text">
     <string>&amp;Guardar</string>
@@ -325,7 +325,7 @@
   <action name="actionActualizar">
    <property name="icon">
     <iconset resource="../../bulmages.qrc">
-     <normaloff>:/Images/view-refresh.svg</normaloff>:/Images/view-refresh.svg</iconset>
+     <normaloff>:/Images/view-refresh.png</normaloff>:/Images/view-refresh.png</iconset>
    </property>
    <property name="text">
     <string>&amp;Actualizar</string>
@@ -334,7 +334,7 @@
   <action name="actionFiltrar">
    <property name="icon">
     <iconset resource="../../bulmages.qrc">
-     <normaloff>:/Images/edit-find.svg</normaloff>:/Images/edit-find.svg</iconset>
+     <normaloff>:/Images/edit-find.png</normaloff>:/Images/edit-find.png</iconset>
    </property>
    <property name="text">
     <string>&amp;Filtrar</string>

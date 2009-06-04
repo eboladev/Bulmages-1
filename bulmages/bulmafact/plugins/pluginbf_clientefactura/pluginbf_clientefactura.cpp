@@ -96,7 +96,7 @@ void mypluginfact::inicializa ( BfBulmaFact *bges )
         m_bges = bges;
         setMainCompany ( bges->getcompany() );
         QAction *planCuentas = new QAction ( _ ( "&Facturas a clientes" ), 0 );
-        planCuentas->setIcon ( QIcon ( QString::fromUtf8 ( ":/Images/client-invoice-list.svg" ) ) );
+        planCuentas->setIcon ( QIcon ( QString::fromUtf8 ( ":/Images/client-invoice-list.png" ) ) );
         planCuentas->setStatusTip ( _ ( "Facturas a clientes" ) );
         planCuentas->setWhatsThis ( _ ( "Facturas a clientes" ) );
         pPluginMenu->addAction ( planCuentas );
@@ -104,7 +104,7 @@ void mypluginfact::inicializa ( BfBulmaFact *bges )
         connect ( planCuentas, SIGNAL ( activated() ), this, SLOT ( elslot() ) );
 
         QAction *npago = new QAction ( _ ( "&Nueva factura a cliente" ), 0 );
-        npago->setIcon ( QIcon ( QString::fromUtf8 ( ":/Images/client-invoice.svg" ) ) );
+        npago->setIcon ( QIcon ( QString::fromUtf8 ( ":/Images/client-invoice.png" ) ) );
         npago->setStatusTip ( _ ( "Nueva factura a cliente" ) );
         npago->setWhatsThis ( _ ( "Nueva factura a cliente" ) );
         pPluginMenu->addAction ( npago );

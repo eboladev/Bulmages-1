@@ -14,7 +14,7 @@
    <string>Nuevo proyecto</string>
   </property>
   <property name="windowIcon" >
-   <iconset resource="../../../bulmages.qrc" >:/Genericos32x32/images/icons/proyecto.svg</iconset>
+   <iconset resource="../../../bulmages.qrc" >:/Genericos32x32/images/icons/proyecto.png</iconset>
   </property>
   <layout class="QVBoxLayout" >
    <property name="spacing" >
@@ -67,7 +67,7 @@
         <string/>
        </property>
        <property name="pixmap" >
-        <pixmap resource="../../../bulmages.qrc" >:/Genericos32x32/images/icons/proyecto.svg</pixmap>
+        <pixmap resource="../../../bulmages.qrc" >:/Genericos32x32/images/icons/proyecto.png</pixmap>
        </property>
        <property name="scaledContents" >
         <bool>true</bool>
@@ -116,7 +116,7 @@
            <string/>
           </property>
           <property name="icon" >
-           <iconset resource="../../../bulmages.qrc" >:/Images/edit-save.svg</iconset>
+           <iconset resource="../../../bulmages.qrc" >:/Images/edit-save.png</iconset>
           </property>
           <property name="iconSize" >
            <size>
@@ -153,7 +153,7 @@
            <string/>
           </property>
           <property name="icon" >
-           <iconset resource="../../../bulmages.qrc" >:/Images/edit-delete.svg</iconset>
+           <iconset resource="../../../bulmages.qrc" >:/Images/edit-delete.png</iconset>
           </property>
           <property name="iconSize" >
            <size>
@@ -190,7 +190,7 @@
            <string/>
           </property>
           <property name="icon" >
-           <iconset resource="../../../bulmages.qrc" >:/Images/document-print.svg</iconset>
+           <iconset resource="../../../bulmages.qrc" >:/Images/document-print.png</iconset>
           </property>
           <property name="iconSize" >
            <size>

@@ -76,7 +76,7 @@ void GenPedQToolButton::setBoton()
     setToolTip ( "Generar Pedido" );
     setMinimumSize ( QSize ( 32, 32 ) );
     setMaximumSize ( QSize ( 32, 32 ) );
-    setIcon ( QIcon ( QString::fromUtf8 ( ":/Images/client-quote-to-order.svg" ) ) );
+    setIcon ( QIcon ( QString::fromUtf8 ( ":/Images/client-quote-to-order.png" ) ) );
     setIconSize ( QSize ( 32, 32 ) );
     setContentsMargins ( 0, 0, 0, 0 );
     _depura ( "END GenPedQToolButton::setBoton", 0 );

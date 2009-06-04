@@ -33,7 +33,7 @@ BgBulmaGes::BgBulmaGes()
     setWindowTitle ( "Lanzador BulmaGes" );
 
     createTrayIcon();
-    trayIcon->setIcon ( QIcon ( ":/images/iconbulmages.svg" ) );
+    trayIcon->setIcon ( QIcon ( ":/images/iconbulmages.png" ) );
     trayIcon->show();
 }
 
@@ -93,13 +93,13 @@ void BgBulmaGes::createTrayIcon()
     QAction *salirAction;
 
     bulmaContAction = new QAction ( tr ( "BulmaCont" ), this );
-    bulmaContAction->setIcon ( QIcon ( ":/images/iconbulmacont.svg" ) );
+    bulmaContAction->setIcon ( QIcon ( ":/images/iconbulmacont.png" ) );
     bulmaFactAction = new QAction ( tr ( "BulmaFact" ), this );
-    bulmaFactAction->setIcon ( QIcon ( ":/images/iconbulmafact.svg" ) );
+    bulmaFactAction->setIcon ( QIcon ( ":/images/iconbulmafact.png" ) );
     bulmaTPVAction = new QAction ( tr ( "BulmaTPV" ), this );
-    bulmaTPVAction->setIcon ( QIcon ( ":/images/iconbulmatpv.svg" ) );
+    bulmaTPVAction->setIcon ( QIcon ( ":/images/iconbulmatpv.png" ) );
     bulmaSetupAction = new QAction ( tr ( "BulmaSetup" ), this );
-    bulmaSetupAction->setIcon ( QIcon ( ":/images/iconiglues.svg" ) );
+    bulmaSetupAction->setIcon ( QIcon ( ":/images/iconiglues.png" ) );
     salirAction = new QAction ( tr ( "&Salir" ), this );
     salirAction->setIcon ( QIcon ( ":images/iconexit.png" ) );
     

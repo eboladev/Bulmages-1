@@ -42,7 +42,7 @@
         </size>
        </property>
        <property name="pixmap" >
-        <pixmap resource="../../../bulmages.qrc" >:/Images/bank-list.svg</pixmap>
+        <pixmap resource="../../../bulmages.qrc" >:/Images/bank-list.png</pixmap>
        </property>
       </widget>
      </item>

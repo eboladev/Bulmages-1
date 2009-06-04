@@ -78,7 +78,7 @@ void GenPagoQToolButton::setBoton()
     setToolTip ( "Generar Pago" );
     setMinimumSize ( QSize ( 32, 32 ) );
     setMaximumSize ( QSize ( 32, 32 ) );
-    setIcon ( QIcon ( QString::fromUtf8 ( ":/Images/pay.svg" ) ) );
+    setIcon ( QIcon ( QString::fromUtf8 ( ":/Images/pay.png" ) ) );
     setIconSize ( QSize ( 32, 32 ) );
     setContentsMargins ( 0, 0, 0, 0 );
     _depura ( "END GenPagoQToolButton::setBoton", 0 );

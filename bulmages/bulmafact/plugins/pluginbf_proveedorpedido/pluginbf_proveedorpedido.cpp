@@ -95,7 +95,7 @@ void mypluginpedp::inicializa ( BfBulmaFact *bges )
         m_bges = bges;
         setMainCompany ( bges->getcompany() );
         QAction *planCuentas = new QAction ( _ ( "&Pedidos a proveedores" ), 0 );
-        planCuentas->setIcon ( QIcon ( QString::fromUtf8 ( ":/Images/supplier-purchase-order-list.svg" ) ) );
+        planCuentas->setIcon ( QIcon ( QString::fromUtf8 ( ":/Images/supplier-purchase-order-list.png" ) ) );
         planCuentas->setStatusTip ( _ ( "Pedidos a proveedores" ) );
         planCuentas->setWhatsThis ( _ ( "Pedidos a proveedores" ) );
         pPluginMenu->addAction ( planCuentas );
@@ -103,7 +103,7 @@ void mypluginpedp::inicializa ( BfBulmaFact *bges )
         connect ( planCuentas, SIGNAL ( activated() ), this, SLOT ( elslot() ) );
 
         QAction *npago = new QAction ( _ ( "&Nuevo Pedido a Proveedor" ), 0 );
-        npago->setIcon ( QIcon ( QString::fromUtf8 ( ":/Images/supplier-purchase-order.svg" ) ) );
+        npago->setIcon ( QIcon ( QString::fromUtf8 ( ":/Images/supplier-purchase-order.png" ) ) );
         npago->setStatusTip ( _ ( "Nuevo pedido a proveedor" ) );
         npago->setWhatsThis ( _ ( "Nuevo pedido a proveedor" ) );
         pPluginMenu->addAction ( npago );

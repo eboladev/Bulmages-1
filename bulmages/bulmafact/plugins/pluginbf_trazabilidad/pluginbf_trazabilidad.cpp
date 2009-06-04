@@ -78,7 +78,7 @@ void myplugin::inicializa ( BfBulmaFact *bges )
     QAction *accion = new QAction ( "&Movimientos", 0 );
     accion->setStatusTip ( "Ventana de Movimientos" );
     accion->setWhatsThis ( "Movimientos" );
-    accion->setIcon ( QIcon ( QString::fromUtf8 ( ":/Images/product-family.svg" ) ) );
+    accion->setIcon ( QIcon ( QString::fromUtf8 ( ":/Images/product-family.png" ) ) );
 
     bges->menuMaestro->addSeparator();
     bges->menuMaestro->addAction ( accion );

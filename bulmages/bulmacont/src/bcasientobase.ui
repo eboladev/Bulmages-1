@@ -15,7 +15,7 @@
   </property>
   <property name="windowIcon" >
    <iconset resource="../../bulmages.qrc" >
-    <normaloff>:/Images/book.svg</normaloff>:/Images/book.svg</iconset>
+    <normaloff>:/Images/book.png</normaloff>:/Images/book.png</iconset>
   </property>
   <layout class="QVBoxLayout" >
    <property name="spacing" >
@@ -53,7 +53,7 @@
         </size>
        </property>
        <property name="pixmap" >
-        <pixmap resource="../../bulmages.qrc" >:/Images/book.svg</pixmap>
+        <pixmap resource="../../bulmages.qrc" >:/Images/book.png</pixmap>
        </property>
        <property name="scaledContents" >
         <bool>true</bool>
@@ -209,7 +209,7 @@
           </property>
           <property name="icon" >
            <iconset resource="../../bulmages.qrc" >
-            <normaloff>:/Images/edit-save.svg</normaloff>:/Images/edit-save.svg</iconset>
+            <normaloff>:/Images/edit-save.png</normaloff>:/Images/edit-save.png</iconset>
           </property>
           <property name="iconSize" >
            <size>
@@ -259,7 +259,7 @@
           </property>
           <property name="icon" >
            <iconset resource="../../bulmages.qrc" >
-            <normaloff>:/Images/document-new.svg</normaloff>:/Images/document-new.svg</iconset>
+            <normaloff>:/Images/document-new.png</normaloff>:/Images/document-new.png</iconset>
           </property>
           <property name="iconSize" >
            <size>
@@ -303,7 +303,7 @@
           </property>
           <property name="icon" >
            <iconset resource="../../bulmages.qrc" >
-            <normaloff>:/Images/document-open.svg</normaloff>:/Images/document-open.svg</iconset>
+            <normaloff>:/Images/document-open.png</normaloff>:/Images/document-open.png</iconset>
           </property>
           <property name="iconSize" >
            <size>
@@ -347,7 +347,7 @@
           </property>
           <property name="icon" >
            <iconset resource="../../bulmages.qrc" >
-            <normaloff>:/Images/document-properties.svg</normaloff>:/Images/document-properties.svg</iconset>
+            <normaloff>:/Images/document-properties.png</normaloff>:/Images/document-properties.png</iconset>
           </property>
           <property name="iconSize" >
            <size>
@@ -394,7 +394,7 @@
           </property>
           <property name="icon" >
            <iconset>
-            <normaloff>:Images/edit-delete.svg</normaloff>:Images/edit-delete.svg</iconset>
+            <normaloff>:Images/edit-delete.png</normaloff>:Images/edit-delete.png</iconset>
           </property>
           <property name="iconSize" >
            <size>
@@ -485,7 +485,7 @@
           </property>
           <property name="icon" >
            <iconset resource="../../bulmages.qrc" >
-            <normaloff>:/Images/document-import.svg</normaloff>:/Images/document-import.svg</iconset>
+            <normaloff>:/Images/document-import.png</normaloff>:/Images/document-import.png</iconset>
           </property>
           <property name="iconSize" >
            <size>
@@ -529,7 +529,7 @@
           </property>
           <property name="icon" >
            <iconset resource="../../bulmages.qrc" >
-            <normaloff>:/Images/document-export.svg</normaloff>:/Images/document-export.svg</iconset>
+            <normaloff>:/Images/document-export.png</normaloff>:/Images/document-export.png</iconset>
           </property>
           <property name="iconSize" >
            <size>

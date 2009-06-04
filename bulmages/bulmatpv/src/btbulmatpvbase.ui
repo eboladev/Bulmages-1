@@ -14,7 +14,7 @@
   </property>
   <property name="windowIcon" >
    <iconset resource="../../bulmages.qrc" >
-    <normaloff>:/Images/bulmatpv.svg</normaloff>:/Images/bulmatpv.svg</iconset>
+    <normaloff>:/Images/bulmatpv.png</normaloff>:/Images/bulmatpv.png</iconset>
   </property>
   <widget class="QWidget" name="centralwidget" />
   <widget class="QStatusBar" name="statusbar" />

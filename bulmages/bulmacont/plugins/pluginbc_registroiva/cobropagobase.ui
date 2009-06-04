@@ -13,7 +13,7 @@
    <string>Gestion de Cobros y Pagos</string>
   </property>
   <property name="windowIcon" >
-   <iconset resource="../../../bulmages.qrc" >:/Images/bank-list.svg</iconset>
+   <iconset resource="../../../bulmages.qrc" >:/Images/bank-list.png</iconset>
   </property>
   <layout class="QVBoxLayout" >
    <property name="margin" >
@@ -36,7 +36,7 @@
         <string/>
        </property>
        <property name="pixmap" >
-        <pixmap resource="../../../bulmages.qrc" >:/Images/bank-list.svg</pixmap>
+        <pixmap resource="../../../bulmages.qrc" >:/Images/bank-list.png</pixmap>
        </property>
       </widget>
      </item>
@@ -67,7 +67,7 @@
            <string/>
           </property>
           <property name="icon" >
-           <iconset resource="../../../bulmages.qrc" >:/Images/document-new.svg</iconset>
+           <iconset resource="../../../bulmages.qrc" >:/Images/document-new.png</iconset>
           </property>
           <property name="iconSize" >
            <size>
@@ -86,7 +86,7 @@
            <string/>
           </property>
           <property name="icon" >
-           <iconset resource="../../../bulmages.qrc" >:/Images/edit-save.svg</iconset>
+           <iconset resource="../../../bulmages.qrc" >:/Images/edit-save.png</iconset>
           </property>
           <property name="iconSize" >
            <size>
@@ -124,7 +124,7 @@
            <string/>
           </property>
           <property name="icon" >
-           <iconset resource="../../../bulmages.qrc" >:/Images/edit-find.svg</iconset>
+           <iconset resource="../../../bulmages.qrc" >:/Images/edit-find.png</iconset>
           </property>
           <property name="iconSize" >
            <size>
@@ -149,7 +149,7 @@
            <string/>
           </property>
           <property name="icon" >
-           <iconset resource="../../../bulmages.qrc" >:/Images/view-refresh.svg</iconset>
+           <iconset resource="../../../bulmages.qrc" >:/Images/view-refresh.png</iconset>
           </property>
           <property name="iconSize" >
            <size>

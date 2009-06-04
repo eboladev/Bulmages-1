@@ -80,7 +80,7 @@ void MyPlugTrab::inicializa ( BfBulmaFact *bges )
         m_bges = bges;
         setMainCompany ( bges->getcompany() );
         QAction *planCuentas = new QAction ( _ ( "&Trabajadores" ), 0 );
-        planCuentas->setIcon ( QIcon ( QString::fromUtf8 ( ":/Images/employee-list.svg" ) ) );
+        planCuentas->setIcon ( QIcon ( QString::fromUtf8 ( ":/Images/employee-list.png" ) ) );
         planCuentas->setStatusTip ( _ ( "Trabajadores" ) );
         planCuentas->setWhatsThis ( _ ( "Trabajadores" ) );
         pPluginMenu->addAction ( planCuentas );

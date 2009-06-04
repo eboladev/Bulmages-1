@@ -77,7 +77,7 @@ void GenFacProQToolButton::setBoton()
     setToolTip ( "Generar Factura Proveedor" );
     setMinimumSize ( QSize ( 32, 32 ) );
     setMaximumSize ( QSize ( 32, 32 ) );
-    setIcon ( QIcon ( QString::fromUtf8 ( ":/Images/supplier-invoice.svg" ) ) );
+    setIcon ( QIcon ( QString::fromUtf8 ( ":/Images/supplier-invoice.png" ) ) );
     setIconSize ( QSize ( 32, 32 ) );
     setContentsMargins ( 0, 0, 0, 0 );
     _depura ( "END GenFacProQToolButton::setBoton", 0 );

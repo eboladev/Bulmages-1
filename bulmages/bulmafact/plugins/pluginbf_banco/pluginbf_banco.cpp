@@ -80,7 +80,7 @@ void MyPlugBanc::inicializa ( BfBulmaFact *bges )
         m_bges = bges;
         setMainCompany ( bges->getcompany() );
         QAction *planCuentas = new QAction ( _ ( "&Bancos" ), 0 );
-        planCuentas->setIcon ( QIcon ( QString::fromUtf8 ( ":/Images/bank.svg" ) ) );
+        planCuentas->setIcon ( QIcon ( QString::fromUtf8 ( ":/Images/bank.png" ) ) );
         planCuentas->setStatusTip ( _ ( "Bancos" ) );
         planCuentas->setWhatsThis ( _ ( "Bancos" ) );
         pPluginMenu->addAction ( planCuentas );

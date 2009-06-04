@@ -15,7 +15,7 @@
   </property>
   <property name="windowIcon" >
    <iconset resource="../../../bulmages.qrc" >
-    <normaloff>:/Images/client-delivery-order.svg</normaloff>:/Images/client-delivery-order.svg</iconset>
+    <normaloff>:/Images/client-delivery-order.png</normaloff>:/Images/client-delivery-order.png</iconset>
   </property>
   <layout class="QGridLayout" >
    <property name="margin" >
@@ -47,7 +47,7 @@
         </size>
        </property>
        <property name="pixmap" >
-        <pixmap resource="../../../bulmages.qrc" >:/Images/client-delivery-order.svg</pixmap>
+        <pixmap resource="../../../bulmages.qrc" >:/Images/client-delivery-order.png</pixmap>
        </property>
        <property name="scaledContents" >
         <bool>true</bool>
@@ -100,7 +100,7 @@
           </property>
           <property name="icon" >
            <iconset resource="../../../bulmages.qrc" >
-            <normaloff>:/Images/edit-save.svg</normaloff>:/Images/edit-save.svg</iconset>
+            <normaloff>:/Images/edit-save.png</normaloff>:/Images/edit-save.png</iconset>
           </property>
           <property name="iconSize" >
            <size>
@@ -135,7 +135,7 @@
           </property>
           <property name="icon" >
            <iconset resource="../../../bulmages.qrc" >
-            <normaloff>:/Images/edit-delete.svg</normaloff>:/Images/edit-delete.svg</iconset>
+            <normaloff>:/Images/edit-delete.png</normaloff>:/Images/edit-delete.png</iconset>
           </property>
           <property name="iconSize" >
            <size>
@@ -170,7 +170,7 @@
           </property>
           <property name="icon" >
            <iconset resource="../../../bulmages.qrc" >
-            <normaloff>:/Images/document-print.svg</normaloff>:/Images/document-print.svg</iconset>
+            <normaloff>:/Images/document-print.png</normaloff>:/Images/document-print.png</iconset>
           </property>
           <property name="iconSize" >
            <size>
@@ -289,7 +289,7 @@
        </property>
        <property name="icon" >
         <iconset resource="../../../bulmages.qrc" >
-         <normaloff>:/Images/document-open.svg</normaloff>:/Images/document-open.svg</iconset>
+         <normaloff>:/Images/document-open.png</normaloff>:/Images/document-open.png</iconset>
        </property>
        <property name="iconSize" >
         <size>

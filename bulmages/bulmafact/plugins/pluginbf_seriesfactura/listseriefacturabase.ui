@@ -16,7 +16,7 @@
   </property>
   <property name="windowIcon">
    <iconset resource="../../../bulmages.qrc">
-    <normaloff>:/Images/client-invoice-series.svg</normaloff>:/Images/client-invoice-series.svg</iconset>
+    <normaloff>:/Images/client-invoice-series.png</normaloff>:/Images/client-invoice-series.png</iconset>
   </property>
   <layout class="QVBoxLayout">
    <property name="spacing">

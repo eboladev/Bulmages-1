@@ -15,7 +15,7 @@
   </property>
   <property name="windowIcon">
    <iconset resource="../../../bulmages.qrc">
-    <normaloff>:/Images/payment-method.svg</normaloff>:/Images/payment-method.svg</iconset>
+    <normaloff>:/Images/payment-method.png</normaloff>:/Images/payment-method.png</iconset>
   </property>
   <layout class="QGridLayout">
    <property name="margin">
@@ -249,7 +249,7 @@
         <string/>
        </property>
        <property name="pixmap">
-        <pixmap resource="../../../bulmages.qrc">:/Images/payment-method.svg</pixmap>
+        <pixmap resource="../../../bulmages.qrc">:/Images/payment-method.png</pixmap>
        </property>
        <property name="scaledContents">
         <bool>true</bool>
@@ -296,7 +296,7 @@
           </property>
           <property name="icon">
            <iconset resource="../../../bulmages.qrc">
-            <normaloff>:/Images/document-new.svg</normaloff>:/Images/document-new.svg</iconset>
+            <normaloff>:/Images/document-new.png</normaloff>:/Images/document-new.png</iconset>
           </property>
           <property name="iconSize">
            <size>
@@ -331,7 +331,7 @@
           </property>
           <property name="icon">
            <iconset resource="../../../bulmages.qrc">
-            <normaloff>:/Images/edit-save.svg</normaloff>:/Images/edit-save.svg</iconset>
+            <normaloff>:/Images/edit-save.png</normaloff>:/Images/edit-save.png</iconset>
           </property>
           <property name="iconSize">
            <size>
@@ -366,7 +366,7 @@
           </property>
           <property name="icon">
            <iconset>
-            <normaloff>:Images/edit-delete.svg</normaloff>:Images/edit-delete.svg</iconset>
+            <normaloff>:Images/edit-delete.png</normaloff>:Images/edit-delete.png</iconset>
           </property>
           <property name="iconSize">
            <size>

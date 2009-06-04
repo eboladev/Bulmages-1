@@ -96,7 +96,7 @@
           </property>
           <property name="icon" >
            <iconset resource="../../bulmages.qrc" >
-            <normaloff>:/Images/document-new.svg</normaloff>:/Images/document-new.svg</iconset>
+            <normaloff>:/Images/document-new.png</normaloff>:/Images/document-new.png</iconset>
           </property>
           <property name="iconSize" >
            <size>

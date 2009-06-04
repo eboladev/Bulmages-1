@@ -80,7 +80,7 @@ void MyPlugAlm::inicializa ( BfBulmaFact *bges )
         m_bges = bges;
         setMainCompany ( bges->getcompany() );
         QAction *planCuentas = new QAction ( _ ( "&Almacenes" ), 0 );
-        planCuentas->setIcon ( QIcon ( QString::fromUtf8 ( ":/Images/warehouse-list.svg" ) ) );
+        planCuentas->setIcon ( QIcon ( QString::fromUtf8 ( ":/Images/warehouse-list.png" ) ) );
         planCuentas->setStatusTip ( _ ( "Almacenes" ) );
         planCuentas->setWhatsThis ( _ ( "Almacenes" ) );
         pPluginMenu->addAction ( planCuentas );
