@@ -42,7 +42,7 @@ class EliminarEmpresa(Ui_EliminarEmpresa, Empresa):
                     self.i = self.i + 1
                 self.desconectar()
                 
-    def on_lista_empresas_cellDoubleClicked(self, row, col):
+    def on_eliminar_released(self):
     
         Yes = 'Si'
         No = 'No'
@@ -55,25 +55,34 @@ class EliminarEmpresa(Ui_EliminarEmpresa, Empresa):
         message.addButton(No, QtGui.QMessageBox.RejectRole)
         message.exec_()        
         respuesta = message.clickedButton().text()
-        
+	        
         if respuesta == Yes:
-            self.proceso = QtCore.QProcess()
-            command = 'su postgres -c "dropdb ' + str(self.lista_empresas.item(row,1).text()) + '"'
-            self.proceso.start(command)
-            self.proceso.waitForFinished(-1)
-                    
-            if (self.lista_empresas.item(row,2).text() == QString('BulmaFact')):
-                if os.path.exists('/etc/bulmages/bulmafact_' + str(self.lista_empresas.item(row,1).text()) + '.conf'):
-                    os.remove('/etc/bulmages/bulmafact_' + str(self.lista_empresas.item(row,1).text()) + '.conf')
-                if os.path.exists('/etc/bulmages/bulmatpv_' + str(self.lista_empresas.item(row,1).text()) + '.conf'):
-                    os.remove('/etc/bulmages/bulmatpv_' + str(self.lista_empresas.item(row,1).text()) + '.conf')
-            if (self.lista_empresas.item(row,2).text() == QString('BulmaCont')):
-                if os.path.exists('/etc/bulmages/bulmacont_' + str(self.lista_empresas.item(row,1).text()) + '.conf'):
-                    os.remove('/etc/bulmages/bulmacont_' + str(self.lista_empresas.item(row,1).text()) + '.conf')
-                    
-            self.lista_empresas.clear()
-            self.buscarEmpresas()
-                    
+	  
+	  # Pasamos el nombre de la base de datos seleccionada en tableWidget a la variable database
+	  i = 0
+	  while (i < self.lista_empresas.rowCount()):
+	      if self.lista_empresas.item(i,1).isSelected():
+		self.database = self.lista_empresas.item(i,1).text()
+		break
+	      i = i + 1 
+
+	  self.proceso = QtCore.QProcess()
+	  command = 'su postgres -c "dropdb ' + str(self.lista_empresas.item(i,1).text()) + '"'
+	  self.proceso.start(command)
+	  self.proceso.waitForFinished(-1)
+
+	  if (self.lista_empresas.item(i,2).text() == QString('BulmaFact')):
+	      if os.path.exists('/etc/bulmages/bulmafact_' + str(self.lista_empresas.item(i,1).text()) + '.conf'):
+		  os.remove('/etc/bulmages/bulmafact_' + str(self.lista_empresas.item(i,1).text()) + '.conf')
+	      if os.path.exists('/etc/bulmages/bulmatpv_' + str(self.lista_empresas.item(i,1).text()) + '.conf'):
+		  os.remove('/etc/bulmages/bulmatpv_' + str(self.lista_empresas.item(i,1).text()) + '.conf')
+	  if (self.lista_empresas.item(i,2).text() == QString('BulmaCont')):
+	      if os.path.exists('/etc/bulmages/bulmacont_' + str(self.lista_empresas.item(i,1).text()) + '.conf'):
+		  os.remove('/etc/bulmages/bulmacont_' + str(self.lista_empresas.item(i,1).text()) + '.conf')
+		
+	self.lista_empresas.clear()
+	self.buscarEmpresas()
+
 def main(args):
     app=QtGui.QApplication(args)
     win=EliminarEmpresa()

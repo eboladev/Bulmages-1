@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'eliminarempresabase.ui'
 #
-# Created: Mon May 18 16:59:47 2009
+# Created: Thu Jun  4 11:30:43 2009
 #      by: PyQt4 UI code generator 4.4.4
 #
 # WARNING! All changes made in this file will be lost!
@@ -26,14 +26,6 @@ class Ui_EliminarEmpresa(object):
         EliminarEmpresa.setWindowIcon(icon)
         self.gridLayout = QtGui.QGridLayout(EliminarEmpresa)
         self.gridLayout.setObjectName("gridLayout")
-        self.label = QtGui.QLabel(EliminarEmpresa)
-        font = QtGui.QFont()
-        font.setWeight(75)
-        font.setStrikeOut(False)
-        font.setBold(True)
-        self.label.setFont(font)
-        self.label.setObjectName("label")
-        self.gridLayout.addWidget(self.label, 0, 0, 1, 1)
         self.lista_empresas = QtGui.QTableWidget(EliminarEmpresa)
         self.lista_empresas.setFocusPolicy(QtCore.Qt.ClickFocus)
         self.lista_empresas.setHorizontalScrollBarPolicy(QtCore.Qt.ScrollBarAsNeeded)
@@ -60,24 +52,35 @@ class Ui_EliminarEmpresa(object):
         self.lista_empresas.setHorizontalHeaderItem(1, item)
         item = QtGui.QTableWidgetItem()
         self.lista_empresas.setHorizontalHeaderItem(2, item)
-        self.gridLayout.addWidget(self.lista_empresas, 1, 0, 1, 1)
-        self.mui_cancelar = QtGui.QPushButton(EliminarEmpresa)
+        self.gridLayout.addWidget(self.lista_empresas, 0, 0, 1, 1)
+        self.verticalLayout = QtGui.QVBoxLayout()
+        self.verticalLayout.setObjectName("verticalLayout")
+        spacerItem = QtGui.QSpacerItem(20, 40, QtGui.QSizePolicy.Minimum, QtGui.QSizePolicy.Expanding)
+        self.verticalLayout.addItem(spacerItem)
+        self.eliminar = QtGui.QPushButton(EliminarEmpresa)
+        self.eliminar.setIcon(icon)
+        self.eliminar.setObjectName("eliminar")
+        self.verticalLayout.addWidget(self.eliminar)
+        self.salir = QtGui.QPushButton(EliminarEmpresa)
         icon1 = QtGui.QIcon()
         icon1.addPixmap(QtGui.QPixmap(":/images/bulmasetup_exit.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
-        self.mui_cancelar.setIcon(icon1)
-        self.mui_cancelar.setObjectName("mui_cancelar")
-        self.gridLayout.addWidget(self.mui_cancelar, 2, 0, 1, 1)
+        self.salir.setIcon(icon1)
+        self.salir.setObjectName("salir")
+        self.verticalLayout.addWidget(self.salir)
+        spacerItem1 = QtGui.QSpacerItem(20, 40, QtGui.QSizePolicy.Minimum, QtGui.QSizePolicy.Expanding)
+        self.verticalLayout.addItem(spacerItem1)
+        self.gridLayout.addLayout(self.verticalLayout, 0, 1, 1, 1)
 
         self.retranslateUi(EliminarEmpresa)
-        QtCore.QObject.connect(self.mui_cancelar, QtCore.SIGNAL("released()"), EliminarEmpresa.close)
+        QtCore.QObject.connect(self.salir, QtCore.SIGNAL("clicked()"), EliminarEmpresa.close)
         QtCore.QMetaObject.connectSlotsByName(EliminarEmpresa)
 
     def retranslateUi(self, EliminarEmpresa):
         EliminarEmpresa.setWindowTitle(QtGui.QApplication.translate("EliminarEmpresa", "Eliminar Empresa", None, QtGui.QApplication.UnicodeUTF8))
-        self.label.setText(QtGui.QApplication.translate("EliminarEmpresa", "Doble clic en la Empresa que deseas eliminar", None, QtGui.QApplication.UnicodeUTF8))
         self.lista_empresas.horizontalHeaderItem(0).setText(QtGui.QApplication.translate("EliminarEmpresa", "Nombre", None, QtGui.QApplication.UnicodeUTF8))
         self.lista_empresas.horizontalHeaderItem(1).setText(QtGui.QApplication.translate("EliminarEmpresa", "Base de Datos", None, QtGui.QApplication.UnicodeUTF8))
         self.lista_empresas.horizontalHeaderItem(2).setText(QtGui.QApplication.translate("EliminarEmpresa", "Tipo", None, QtGui.QApplication.UnicodeUTF8))
-        self.mui_cancelar.setText(QtGui.QApplication.translate("EliminarEmpresa", "Salir", None, QtGui.QApplication.UnicodeUTF8))
+        self.eliminar.setText(QtGui.QApplication.translate("EliminarEmpresa", "Eliminar", None, QtGui.QApplication.UnicodeUTF8))
+        self.salir.setText(QtGui.QApplication.translate("EliminarEmpresa", "Salir", None, QtGui.QApplication.UnicodeUTF8))
 
 import resources_rc

@@ -36,21 +36,6 @@
   </property>
   <layout class="QGridLayout" name="gridLayout">
    <item row="0" column="0">
-    <widget class="QLabel" name="label">
-     <property name="font">
-      <font>
-       <weight>75</weight>
-       <bold>true</bold>
-       <strikeout>false</strikeout>
-       <kerning>true</kerning>
-      </font>
-     </property>
-     <property name="text">
-      <string>Doble clic en la Empresa que deseas eliminar</string>
-     </property>
-    </widget>
-   </item>
-   <item row="1" column="0">
     <widget class="QTableWidget" name="lista_empresas">
      <property name="focusPolicy">
       <enum>Qt::ClickFocus</enum>
@@ -117,16 +102,57 @@
      </column>
     </widget>
    </item>
-   <item row="2" column="0">
-    <widget class="QPushButton" name="mui_cancelar">
-     <property name="text">
-      <string>Salir</string>
-     </property>
-     <property name="icon">
-      <iconset resource="resources.qrc">
-       <normaloff>:/images/bulmasetup_exit.png</normaloff>:/images/bulmasetup_exit.png</iconset>
-     </property>
-    </widget>
+   <item row="0" column="1">
+    <layout class="QVBoxLayout" name="verticalLayout">
+     <item>
+      <spacer name="verticalSpacer_2">
+       <property name="orientation">
+        <enum>Qt::Vertical</enum>
+       </property>
+       <property name="sizeHint" stdset="0">
+        <size>
+         <width>20</width>
+         <height>40</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+     <item>
+      <widget class="QPushButton" name="eliminar">
+       <property name="text">
+        <string>Eliminar</string>
+       </property>
+       <property name="icon">
+        <iconset resource="resources.qrc">
+         <normaloff>:/images/bulmasetup_eliminarempresa.xpm</normaloff>:/images/bulmasetup_eliminarempresa.xpm</iconset>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="salir">
+       <property name="text">
+        <string>Salir</string>
+       </property>
+       <property name="icon">
+        <iconset resource="resources.qrc">
+         <normaloff>:/images/bulmasetup_exit.png</normaloff>:/images/bulmasetup_exit.png</iconset>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <spacer name="verticalSpacer">
+       <property name="orientation">
+        <enum>Qt::Vertical</enum>
+       </property>
+       <property name="sizeHint" stdset="0">
+        <size>
+         <width>20</width>
+         <height>40</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+    </layout>
    </item>
   </layout>
  </widget>
@@ -135,18 +161,18 @@
  </resources>
  <connections>
   <connection>
-   <sender>mui_cancelar</sender>
-   <signal>released()</signal>
+   <sender>salir</sender>
+   <signal>clicked()</signal>
    <receiver>EliminarEmpresa</receiver>
    <slot>close()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>337</x>
-     <y>221</y>
+     <x>352</x>
+     <y>219</y>
     </hint>
     <hint type="destinationlabel">
      <x>199</x>
-     <y>149</y>
+     <y>201</y>
     </hint>
    </hints>
   </connection>
