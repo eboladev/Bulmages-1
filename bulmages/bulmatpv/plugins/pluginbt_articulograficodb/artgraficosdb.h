@@ -21,8 +21,8 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#ifndef ARTGRAFICOS_H
-#define ARTGRAFICOS_H
+#ifndef ARTGRAFICOSDB_H
+#define ARTGRAFICOSDB_H
 
 #include <QDomDocument>
 #include <QTableWidget>
@@ -31,6 +31,36 @@
 #include "blwidget.h"
 #include "ui_artgraficosdbbase.h"
 #include "btcompany.h"
+#include "bldockwidget.h"
+
+// Clase que contiene la informacion necesaria de un articulo para la rejilla
+class NodoArticulo
+{
+
+public:
+    NodoArticulo();
+    ~NodoArticulo();
+
+public:
+    QString m_codigoarticulo;
+    QString m_nombrearticulo;
+
+};
+
+// Clase que contiene la informacion necesario sobre la familia y su lista
+// de articulos correspondientes
+class FamiliaArticulos
+{
+
+public:
+    FamiliaArticulos();
+    ~FamiliaArticulos();
+
+public:
+    QString m_nombrefamilia;
+    QString m_idfamilia;
+    QList<NodoArticulo> m_listaarticulos;
+};
 
 class ArtGraficosDb : public BlWidget, public Ui_ArtGraficosDbBase
 {
@@ -41,12 +71,11 @@ public:
     QDomDocument m_doc;
     int m_numPantallas;
     int m_pantallaActual;
+    QList<FamiliaArticulos> m_listfamilias;
 
 public:
     ArtGraficosDb ( BlMainCompany *emp, QWidget *parent );
     virtual ~ArtGraficosDb();
-//     void cargaXML ( QString );
-//     void cargaDatos();
     void muestraPantalla ( int );
     void ponPantallas();
 

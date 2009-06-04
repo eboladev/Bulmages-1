@@ -36,7 +36,11 @@
 
 extern BlDockWidget *g_pantallas;
 
-QList<QString> listfamilias;
+NodoArticulo::NodoArticulo() {}
+NodoArticulo::~NodoArticulo() {}
+
+FamiliaArticulos::FamiliaArticulos() {}
+FamiliaArticulos::~FamiliaArticulos() {}
 
 ArtGraficosDb::ArtGraficosDb ( BlMainCompany *emp, QWidget *parent ) : BlWidget ( emp, parent )
 {
@@ -50,10 +54,9 @@ ArtGraficosDb::ArtGraficosDb ( BlMainCompany *emp, QWidget *parent ) : BlWidget 
     mui_list->horizontalHeader()->hide();
     mui_list->verticalHeader()->hide();
     
-//     cargaXML ( CONFIG_DIR_CONFIG + QString ( "pantallastpv.xml" ) );
-//     cargaDatos();
-    
+    // Crea las pantallas en funcion de las familias de la BD
     ponPantallas();
+    // Muestra la primera pantalla creada
     muestraPantalla ( 0 );
     
     _depura ( "END ArtGraficosDb::ArtGraficosDb", 0 );
@@ -106,53 +109,71 @@ void ArtGraficosDb::muestraPantalla ( int numpantalla )
     m_pantallaActual = numpantalla;
     
     QDomElement docElem = m_doc.documentElement();
-//    QDomElement pantalla = docElem.firstChildElement("PANTALLA");
+    QDomElement pantalla = docElem.firstChildElement("PANTALLA");
 
     //m_numPantallas = docElem.elementsByTagName ( "PANTALLA" ).count();
-    m_numPantallas = listfamilias.count();
+    m_numPantallas = m_listfamilias.count();
 
     /// Simulamos un sistema ciclico.
     if ( m_pantallaActual > m_numPantallas - 1 ) m_pantallaActual = 0;
     if ( m_pantallaActual < 0 ) m_pantallaActual = m_numPantallas - 1;
     
-    mensajeInfo("Estamos en la pantalla " + QString::number(m_pantallaActual) + " y hay " + QString::number(m_numPantallas) + " pantallas");
+    // Obtenemos datos de la familia de esta pantalla
+    FamiliaArticulos fa = m_listfamilias.value(m_pantallaActual);
+    
+//     mensajeInfo("Estamos en la pantalla " + QString::number(m_pantallaActual) + " y hay " + QString::number(m_numPantallas) + " pantallas");
 
-    QDomElement pantalla = docElem.elementsByTagName ( "PANTALLA" ).at ( m_pantallaActual ).toElement();
-    /// Cogemos la coordenada X
-    QString grid = pantalla.firstChildElement ( "GRID" ).toElement().text();
+//     QDomElement pantalla = docElem.elementsByTagName ( "PANTALLA" ).at ( m_pantallaActual ).toElement();
 
-    /// Cogemos la coordenada Y
-    QString cellwidth = pantalla.firstChildElement ( "CELLWIDTH" ).toElement().text();
+    //QString grid = pantalla.firstChildElement ( "GRID" ).toElement().text();
+    QString grid = "8";
+
+    //QString cellwidth = pantalla.firstChildElement ( "CELLWIDTH" ).toElement().text();
+    QString cellwidth = "75";
 
     /// Cogemos el titulo de la pantalla
-    //QString titulo = pantalla.firstChildElement ( "NOMBRE" ).toElement().text();
-    QString titulo = listfamilias.value(m_pantallaActual);
+//     QString titulo = m_listfamilias.value(m_pantallaActual);
+    QString titulo = fa.m_nombrefamilia;
     mui_titulo->setText ( titulo );
 
+    // Hacemos una parrilla cuadrada
     mui_list->clear();
     mui_list->setRowCount ( grid.toInt() );
     mui_list->setColumnCount ( grid.toInt() );
 
+    // Recorremos las filas para configurar el alto
     for ( int row = 0; row < grid.toInt(); row++ )
         mui_list->setRowHeight ( row, cellwidth.toInt() );
+        
+    // Recorremos las columnas para configurar el ancho
     for ( int column  = 0; column < grid.toInt(); column++ )
         mui_list->setColumnWidth ( column, cellwidth.toInt() );
-
-
 
     /// Tratamos cada ventana
     QWidget *activewindow = NULL;
     QDomNodeList nodos = pantalla.elementsByTagName ( "ITEM" );
+    
     int nitem = 0;
+    int numarticulos = fa.m_listaarticulos.count();
+    NodoArticulo na;
 
     for ( int row = 0; row < grid.toInt(); row++ ) {
+    
         for ( int column  = 0; column < grid.toInt(); column++ ) {
 
-            if ( nitem < nodos.count() ) {
+            //if ( nitem < nodos.count() ) {
+            if ( nitem < numarticulos ) {
+            
+                // Obtenemos el articulo en la posicion nitem
+                na = fa.m_listaarticulos.value(nitem);
+            
                 QDomNode ventana = nodos.item ( nitem );
 
-                QString nombre = ventana.firstChildElement ( "TITULO" ).toElement().text();
+                //QString nombre = ventana.firstChildElement ( "TITULO" ).toElement().text();
+                QString nombre = na.m_nombrearticulo;
+                QString codigo = na.m_codigoarticulo;
 
+                /*
                 QDomElement e1 = ventana.toElement(); /// try to convert the node to an element.
                 QString text = e1.text();
 
@@ -160,7 +181,7 @@ void ArtGraficosDb::muestraPantalla ( int numpantalla )
                 if ( codigo.isEmpty() ) {
                     codigo = text;
                 } // end if
-
+                */
 
                 /// Creamos el elemento y lo ponemos en la tabla.
                 QLabel *lab = new QLabel ( NULL );
@@ -171,10 +192,11 @@ void ArtGraficosDb::muestraPantalla ( int numpantalla )
                 /// Ponemos las imagenes sin escalado.
 //                lab->setPixmap ( QPixmap ( g_confpr->valor ( CONF_DIR_THUMB_ARTICLES ) + text + ".jpg" ) );
 
-// Probamos con una Picture
+                // Probamos con una Picture
                 QPicture picture;
                 QPainter painter;
                 painter.begin ( &picture );        // paint in picture
+                
 //  painter.drawPixmap(0,0,cellwidth.toInt(),cellwidth.toInt(),QPixmap ( g_confpr->valor ( CONF_DIR_THUMB_ARTICLES ) + codigo + ".jpg" ));
 
                 painter.drawPixmap ( 0, 0, cellwidth.toInt(), cellwidth.toInt(), QPixmap ( g_confpr->valor ( CONF_DIR_THUMB_ARTICLES ) + "blanco.jpg" ) );
@@ -182,55 +204,34 @@ void ArtGraficosDb::muestraPantalla ( int numpantalla )
                 painter.drawPixmap ( 0, 0, cellwidth.toInt(), cellwidth.toInt() - 25, QPixmap ( g_confpr->valor ( CONF_DIR_THUMB_ARTICLES ) + codigo + ".jpg" ) );
 
 //         painter.drawEllipse(10,20, 80,70); // draw an ellipse
+
                 painter.setPen ( QColor ( 0, 0, 0 ) );
                 painter.setBackground ( QColor ( 0, 0, 0 ) );
 
                 painter.drawText ( 5, 95, nombre );
-//  painter.setPen(QColor(0,25,0));
-//  painter.drawText(5,10,nombre);
-//  painter.drawText(5,15,nombre);
-//  painter.drawText(5,5,codigo);
-//  painter.drawText(5,10,cellwidth);
+                
+                //  painter.setPen(QColor(0,25,0));
+                //  painter.drawText(5,10,nombre);
+                //  painter.drawText(5,15,nombre);
+                //  painter.drawText(5,5,codigo);
+                //  painter.drawText(5,10,cellwidth);
 
                 painter.end();                     // painting done
-
 
                 lab->setPicture ( picture );
 
                 mui_list->setCellWidget ( row, column, lab );
                 m_articulos[row][column] = codigo;
-                nitem ++;
+                nitem++;
+            
             } // end if
 
-        }// end for
+        } // end for
+        
     } // end for
 
     _depura ( "END ArtGraficosDb::muestraPantalla", 0 );
 }
-
-// void ArtGraficosDb::cargaXML ( QString filename )
-// {
-//     _depura ( "ArtGraficosDb::cargaXML", 0 );
-// 
-//     QFile file ( filename );
-//     
-//     if ( !file.open ( QIODevice::ReadOnly ) )
-//         return;
-//     if ( !m_doc.setContent ( &file ) ) {
-//         file.close();
-//         return;
-//     }
-//     
-//     file.close();
-// 
-//     _depura ( "END ArtGraficosDb::cargaXML", 0 );
-// }
-// 
-// void ArtGraficosDb::cargaDatos() {
-// 
-//     return;
-// 
-// }
 
 void ArtGraficosDb::ponPantallas()
 {
@@ -244,26 +245,51 @@ void ArtGraficosDb::ponPantallas()
     hboxLayout1->setObjectName ( QString::fromUtf8 ( "hboxLayout1" ) );
         
     BlDbRecordSet *familias;
-    familias = mainCompany()->loadQuery ( "SELECT * FROM familia ORDER BY nombrefamilia" );
+    familias = mainCompany()->loadQuery ( "SELECT idfamilia, nombrefamilia FROM familia ORDER BY nombrefamilia" );
     
     int i = 0;
+    
+    FamiliaArticulos fa;
     
     while ( !familias->eof() ) {
     
         QString titulo = familias->valor("nombrefamilia");
         QPushButton *pb = new QPushButton ( titulo, g_pantallas );
+        
         pb->setText ( titulo );
-        pb->setObjectName ( QString::fromUtf8 ("familia_pb_") + QString::number ( i ) );
+        //pb->setObjectName ( QString::fromUtf8 ("familia_pb_") + QString::number ( i ) );
+        pb->setObjectName ( QString::number ( i ) );
+        
         /// Hago la conexion del pulsado con el metodo pulsadoBoton para que se cambie la pantalla.
         connect ( pb, SIGNAL ( pressed() ), this, SLOT ( pulsadoBoton() ) );
         hboxLayout1->addWidget ( pb );
         
-        listfamilias.append(familias->valor("nombrefamilia"));
+        fa.m_nombrefamilia = familias->valor("nombrefamilia");
+        fa.m_idfamilia = familias->valor("idfamilia");
         
+        // Llenamos la lista de articulos
+        BlDbRecordSet *articulos;
+        articulos = mainCompany()->loadQuery ( "SELECT codigocompletoarticulo, nomarticulo FROM articulo ORDER BY nomarticulo" );
+        
+        while ( !articulos->eof() ) {
+        
+            NodoArticulo na;
+            na.m_codigoarticulo = articulos->valor("codigocompletoarticulo");
+            na.m_nombrearticulo = articulos->valor("nomarticulo");
+            fa.m_listaarticulos.append(na);
+            articulos->nextRecord();
+        
+        }
+        
+        m_listfamilias.append(fa);
         familias->nextRecord();
         i++;
+        
+        delete articulos;
     
     } // end while
+    
+    delete familias;
     
     /// Agrego el widget al BLDockWidget
     widget->setLayout ( hboxLayout1 );
