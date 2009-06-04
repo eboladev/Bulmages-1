@@ -52,11 +52,82 @@ class GuardarBackup(Ui_GuardarBackup, Empresa):
 	      self.database = self.lista_empresas.item(i,1).text()
 	      break
 	    i = i + 1 
-
-        self.savefile = QFileDialog.getSaveFileName(self,  QString("Guardar - Elija archivo destino"), QString("/home"), QString("SQL (*.sql *.pgdump)"))
-	self.command = 'pg_dump -f ' + self.savefile + ' ' + self.database
+	    
+	self.directorio = QFileDialog.getExistingDirectory(self, "Selecciona la carpeta de destino del Backup")
+	self.command = 'pg_dump -f ' + self.directorio + '/' + self.database + '.sql ' + self.database
         self.proceso.start(self.command)
         self.proceso.waitForFinished(-1)
+	
+	self.conffact = 'bulmafact_' + self.database + '.conf'
+	self.conftpv = 'bulmatpv_' + self.database + '.conf'
+	self.confcont = 'bulmacont_' + self.database + '.conf'
+	self.quehehecho = 0
+	
+	Yes = 'Ok'
+	error = QtGui.QMessageBox(self)
+	error.setWindowTitle('Error')
+	error.setIcon(QtGui.QMessageBox.Warning)
+	error.addButton(Yes, QtGui.QMessageBox.AcceptRole)
+
+	if (self.lista_empresas.item(i,2).text() == QString('BulmaFact')):
+	  if os.path.exists('/etc/bulmages/' + self.conffact):
+	    self.command = 'cp /etc/bulmages/' + self.conffact + ' ' + self.directorio
+	    self.proceso.start(self.command)
+	    self.proceso.waitForFinished(-1)
+	    self.quehehecho = 1
+	  else:
+	    error.setText('No existe el archivo de configuracion: <b>/etc/bulmages/' + self.conffact + '</b>')
+	    error.exec_()
+	  if os.path.exists('/etc/bulmages/' + self.conftpv):
+	    self.command = 'cp /etc/bulmages/' + self.conftpv + ' ' + self.directorio
+	    self.proceso.start(self.command)
+	    self.proceso.waitForFinished(-1)
+	    self.quehehecho = 2
+	if (self.lista_empresas.item(i,2).text() == QString('BulmaCont')):
+	  if os.path.exists('/etc/bulmages/' + self.confcont):
+	    self.command = 'cp /etc/bulmages/' + self.confcont + ' ' + self.directorio
+	    self.proceso.start(self.command)
+	    self.proceso.waitForFinished(-1)
+	    self.quehehecho = 3
+	  else:
+	    error.setText('No existe el archivo de configuracion: <b>/etc/bulmages/' + self.confcont + '</b>')
+            error.exec_()
+
+	self.empresa = self.lista_empresas.item(i,0).text()
+
+	if self.quehehecho == 1:
+	  self.command = 'tar czf ' + self.directorio + '/' + self.empresa + '.tar.gz ' + self.directorio + '/' + self.conffact + ' ' + self.directorio + '/' + self.database + '.sql'
+	  self.proceso.start(self.command)
+	  self.proceso.waitForFinished(-1)
+	if self.quehehecho == 2:
+	  self.command = 'tar czf ' + self.directorio + '/' + self.empresa + '.tar.gz ' + self.directorio + '/' + self.conffact + ' ' + self.directorio + '/' + self.conftpv + ' ' + self.directorio + '/' + self.database + '.sql'
+	  self.proceso.start(self.command)
+	  self.proceso.waitForFinished(-1)
+	if self.quehehecho == 3:
+	  self.command = 'tar czf ' + self.directorio + '/' + self.empresa + '.tar.gz ' + self.directorio + '/' + self.confcont + ' ' + self.directorio + '/' + self.database + '.sql'
+	  self.proceso.start(self.command)
+	  self.proceso.waitForFinished(-1)
+	    
+	#if self.quehehecho == 1:
+	  #self.command = 'rm ' + self.directorio + '/' + self.conffact
+	  #self.proceso.start(self.command)
+	  #self.proceso.waitForFinished(-1)
+	  
+	#if self.quehehecho == 2:
+	  #self.command = 'rm ' + self.directorio + '/' + self.conffact
+	  #self.proceso.start(self.command)
+	  #self.proceso.waitForFinished(-1)
+	  #self.command = 'rm ' + self.directorio + '/' + self.conftpv
+	  #self.proceso.start(self.command)
+	  #self.proceso.waitForFinished(-1)
+	  
+	#if self.quehehecho == 3:
+	  #self.command = 'rm ' + self.directorio + '/' + self.confcont
+	  #self.proceso.start(self.command)
+	  #self.proceso.waitForFinished(-1)
+	  
+	    
+	    
 
 def main(args):
     app=QtGui.QApplication(args)
@@ -66,4 +137,3 @@ def main(args):
 
 if __name__=="__main__":
     main(sys.argv)
-                
