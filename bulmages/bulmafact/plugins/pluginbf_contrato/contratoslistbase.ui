@@ -1,11 +1,12 @@
-<ui version="4.0" >
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
  <author>Tomeu Borras Riera</author>
  <class>ContratosListBase</class>
- <widget class="QWidget" name="ContratosListBase" >
-  <property name="enabled" >
+ <widget class="QWidget" name="ContratosListBase">
+  <property name="enabled">
    <bool>true</bool>
   </property>
-  <property name="geometry" >
+  <property name="geometry">
    <rect>
     <x>0</x>
     <y>0</y>
@@ -13,69 +14,78 @@
     <height>490</height>
    </rect>
   </property>
-  <property name="windowTitle" >
+  <property name="windowTitle">
    <string>Contratos</string>
   </property>
-  <property name="windowIcon" >
-   <iconset resource="../../../bulmages.qrc" >
-    <normaloff>:/Images/client-list.svg</normaloff>:/Images/client-list.svg</iconset>
+  <property name="windowIcon">
+   <iconset resource="../../../bulmages.qrc">
+    <normaloff>:/Images/contract-list.svg</normaloff>:/Images/contract-list.svg</iconset>
   </property>
-  <layout class="QVBoxLayout" >
-   <property name="spacing" >
+  <layout class="QVBoxLayout">
+   <property name="spacing">
     <number>5</number>
    </property>
-   <property name="margin" >
+   <property name="margin">
     <number>5</number>
    </property>
    <item>
-    <layout class="QHBoxLayout" >
-     <property name="spacing" >
+    <layout class="QHBoxLayout">
+     <property name="spacing">
       <number>6</number>
      </property>
-     <property name="margin" >
+     <property name="margin">
       <number>0</number>
      </property>
      <item>
-      <widget class="QLabel" name="label" >
-       <property name="text" >
+      <widget class="QLabel" name="label">
+       <property name="maximumSize">
+        <size>
+         <width>48</width>
+         <height>48</height>
+        </size>
+       </property>
+       <property name="text">
         <string/>
        </property>
-       <property name="pixmap" >
-        <pixmap resource="../../../bulmages.qrc" >:/BfBulmaFact48x48/images/png/48x48/i_bulmages_documentos_listado.48x48.png</pixmap>
+       <property name="pixmap">
+        <pixmap resource="../../../bulmages.qrc">:/Images/contract-list.svg</pixmap>
+       </property>
+       <property name="scaledContents">
+        <bool>true</bool>
        </property>
       </widget>
      </item>
      <item>
-      <widget class="QFrame" name="m_botonera" >
-       <property name="frameShape" >
+      <widget class="QFrame" name="m_botonera">
+       <property name="frameShape">
         <enum>QFrame::StyledPanel</enum>
        </property>
-       <property name="frameShadow" >
+       <property name="frameShadow">
         <enum>QFrame::Raised</enum>
        </property>
-       <layout class="QHBoxLayout" >
-        <property name="spacing" >
+       <layout class="QHBoxLayout">
+        <property name="spacing">
          <number>5</number>
         </property>
-        <property name="margin" >
+        <property name="margin">
          <number>5</number>
         </property>
         <item>
-         <widget class="QToolButton" name="mui_crear" >
-          <property name="toolTip" >
+         <widget class="QToolButton" name="mui_crear">
+          <property name="toolTip">
            <string>Nuevo contrato</string>
           </property>
-          <property name="whatsThis" >
+          <property name="whatsThis">
            <string>Nuevo contrato</string>
           </property>
-          <property name="text" >
+          <property name="text">
            <string/>
           </property>
-          <property name="icon" >
-           <iconset resource="../../../bulmages.qrc" >
+          <property name="icon">
+           <iconset resource="../../../bulmages.qrc">
             <normaloff>:/Images/document-new.svg</normaloff>:/Images/document-new.svg</iconset>
           </property>
-          <property name="iconSize" >
+          <property name="iconSize">
            <size>
             <width>32</width>
             <height>32</height>
@@ -84,21 +94,21 @@
          </widget>
         </item>
         <item>
-         <widget class="QToolButton" name="mui_editar" >
-          <property name="toolTip" >
+         <widget class="QToolButton" name="mui_editar">
+          <property name="toolTip">
            <string>Editar contrato</string>
           </property>
-          <property name="whatsThis" >
+          <property name="whatsThis">
            <string>Editar contrato</string>
           </property>
-          <property name="text" >
+          <property name="text">
            <string/>
           </property>
-          <property name="icon" >
-           <iconset resource="../../../bulmages.qrc" >
+          <property name="icon">
+           <iconset resource="../../../bulmages.qrc">
             <normaloff>:/Images/document-open.svg</normaloff>:/Images/document-open.svg</iconset>
           </property>
-          <property name="iconSize" >
+          <property name="iconSize">
            <size>
             <width>32</width>
             <height>32</height>
@@ -107,21 +117,21 @@
          </widget>
         </item>
         <item>
-         <widget class="QToolButton" name="mui_borrar" >
-          <property name="toolTip" >
+         <widget class="QToolButton" name="mui_borrar">
+          <property name="toolTip">
            <string>Borrar contrato</string>
           </property>
-          <property name="whatsThis" >
+          <property name="whatsThis">
            <string>Borrar contrato</string>
           </property>
-          <property name="text" >
+          <property name="text">
            <string/>
           </property>
-          <property name="icon" >
+          <property name="icon">
            <iconset>
             <normaloff>:Images/edit-delete.svg</normaloff>:Images/edit-delete.svg</iconset>
           </property>
-          <property name="iconSize" >
+          <property name="iconSize">
            <size>
             <width>32</width>
             <height>32</height>
@@ -130,21 +140,21 @@
          </widget>
         </item>
         <item>
-         <widget class="QToolButton" name="mui_imprimir" >
-          <property name="toolTip" >
+         <widget class="QToolButton" name="mui_imprimir">
+          <property name="toolTip">
            <string>Imprimir listado</string>
           </property>
-          <property name="whatsThis" >
+          <property name="whatsThis">
            <string>Imprimir listado</string>
           </property>
-          <property name="text" >
+          <property name="text">
            <string/>
           </property>
-          <property name="icon" >
-           <iconset resource="../../../bulmages.qrc" >
+          <property name="icon">
+           <iconset resource="../../../bulmages.qrc">
             <normaloff>:/Images/document-print.svg</normaloff>:/Images/document-print.svg</iconset>
           </property>
-          <property name="iconSize" >
+          <property name="iconSize">
            <size>
             <width>32</width>
             <height>32</height>
@@ -153,73 +163,73 @@
          </widget>
         </item>
         <item>
-         <widget class="QToolButton" name="mui_filtrar" >
-          <property name="toolTip" >
+         <widget class="QToolButton" name="mui_filtrar">
+          <property name="toolTip">
            <string>Filtrar contratos</string>
           </property>
-          <property name="whatsThis" >
+          <property name="whatsThis">
            <string>Filtrar contratos</string>
           </property>
-          <property name="text" >
+          <property name="text">
            <string/>
           </property>
-          <property name="icon" >
-           <iconset resource="../../../bulmages.qrc" >
+          <property name="icon">
+           <iconset resource="../../../bulmages.qrc">
             <normaloff>:/Images/edit-find.svg</normaloff>:/Images/edit-find.svg</iconset>
           </property>
-          <property name="iconSize" >
+          <property name="iconSize">
            <size>
             <width>32</width>
             <height>32</height>
            </size>
           </property>
-          <property name="checkable" >
+          <property name="checkable">
            <bool>true</bool>
           </property>
          </widget>
         </item>
         <item>
-         <widget class="QToolButton" name="mui_configurar" >
-          <property name="toolTip" >
+         <widget class="QToolButton" name="mui_configurar">
+          <property name="toolTip">
            <string>Configurar listado</string>
           </property>
-          <property name="whatsThis" >
+          <property name="whatsThis">
            <string>Configurar listado</string>
           </property>
-          <property name="text" >
+          <property name="text">
            <string/>
           </property>
-          <property name="icon" >
-           <iconset resource="../../../bulmages.qrc" >
+          <property name="icon">
+           <iconset resource="../../../bulmages.qrc">
             <normaloff>:/Images/document-properties.svg</normaloff>:/Images/document-properties.svg</iconset>
           </property>
-          <property name="iconSize" >
+          <property name="iconSize">
            <size>
             <width>32</width>
             <height>32</height>
            </size>
           </property>
-          <property name="checkable" >
+          <property name="checkable">
            <bool>true</bool>
           </property>
          </widget>
         </item>
         <item>
-         <widget class="QToolButton" name="mui_actualizar" >
-          <property name="toolTip" >
+         <widget class="QToolButton" name="mui_actualizar">
+          <property name="toolTip">
            <string>Actualizar listado</string>
           </property>
-          <property name="whatsThis" >
+          <property name="whatsThis">
            <string>Actualizar listado</string>
           </property>
-          <property name="text" >
+          <property name="text">
            <string/>
           </property>
-          <property name="icon" >
-           <iconset resource="../../../bulmages.qrc" >
+          <property name="icon">
+           <iconset resource="../../../bulmages.qrc">
             <normaloff>:/Images/view-refresh.svg</normaloff>:/Images/view-refresh.svg</iconset>
           </property>
-          <property name="iconSize" >
+          <property name="iconSize">
            <size>
             <width>32</width>
             <height>32</height>
@@ -228,33 +238,33 @@
          </widget>
         </item>
         <item>
-         <widget class="QToolButton" name="mui_facturar" >
-          <property name="minimumSize" >
+         <widget class="QToolButton" name="mui_facturar">
+          <property name="minimumSize">
            <size>
             <width>32</width>
             <height>32</height>
            </size>
           </property>
-          <property name="maximumSize" >
+          <property name="maximumSize">
            <size>
             <width>32</width>
             <height>32</height>
            </size>
           </property>
-          <property name="toolTip" >
+          <property name="toolTip">
            <string>Facturar Periodos Pendientes</string>
           </property>
-          <property name="whatsThis" >
+          <property name="whatsThis">
            <string>Facturar Periodos Pendientes</string>
           </property>
-          <property name="text" >
+          <property name="text">
            <string/>
           </property>
-          <property name="icon" >
+          <property name="icon">
            <iconset>
             <normaloff>:/BfBulmaFact32x32/images/png/32x32/i_bulmages_ventas_facturas_automaticas.32x32.png</normaloff>:/BfBulmaFact32x32/images/png/32x32/i_bulmages_ventas_facturas_automaticas.32x32.png</iconset>
           </property>
-          <property name="iconSize" >
+          <property name="iconSize">
            <size>
             <width>32</width>
             <height>32</height>
@@ -263,33 +273,33 @@
          </widget>
         </item>
         <item>
-         <widget class="QFrame" name="mui_plugbotones" >
-          <property name="sizePolicy" >
-           <sizepolicy vsizetype="Preferred" hsizetype="Minimum" >
+         <widget class="QFrame" name="mui_plugbotones">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
             <horstretch>0</horstretch>
             <verstretch>0</verstretch>
            </sizepolicy>
           </property>
-          <property name="frameShape" >
+          <property name="frameShape">
            <enum>QFrame::NoFrame</enum>
           </property>
-          <property name="frameShadow" >
+          <property name="frameShadow">
            <enum>QFrame::Plain</enum>
           </property>
-          <property name="lineWidth" >
+          <property name="lineWidth">
            <number>0</number>
           </property>
          </widget>
         </item>
         <item>
          <spacer>
-          <property name="orientation" >
+          <property name="orientation">
            <enum>Qt::Horizontal</enum>
           </property>
-          <property name="sizeType" >
+          <property name="sizeType">
            <enum>QSizePolicy::Expanding</enum>
           </property>
-          <property name="sizeHint" stdset="0" >
+          <property name="sizeHint" stdset="0">
            <size>
             <width>101</width>
             <height>34</height>
@@ -298,15 +308,15 @@
          </spacer>
         </item>
         <item>
-         <widget class="QLabel" name="textLabel1" >
-          <property name="text" >
+         <widget class="QLabel" name="textLabel1">
+          <property name="text">
            <string>Buscar:</string>
           </property>
          </widget>
         </item>
         <item>
-         <widget class="QLineEdit" name="m_findClient" >
-          <property name="minimumSize" >
+         <widget class="QLineEdit" name="m_findClient">
+          <property name="minimumSize">
            <size>
             <width>150</width>
             <height>0</height>
@@ -320,49 +330,49 @@
     </layout>
    </item>
    <item>
-    <widget class="QFrame" name="m_busqueda" >
-     <property name="frameShape" >
+    <widget class="QFrame" name="m_busqueda">
+     <property name="frameShape">
       <enum>QFrame::StyledPanel</enum>
      </property>
-     <property name="frameShadow" >
+     <property name="frameShadow">
       <enum>QFrame::Raised</enum>
      </property>
-     <layout class="QHBoxLayout" >
-      <property name="spacing" >
+     <layout class="QHBoxLayout">
+      <property name="spacing">
        <number>5</number>
       </property>
-      <property name="margin" >
+      <property name="margin">
        <number>5</number>
       </property>
       <item>
-       <widget class="QCheckBox" name="mui_caducados" >
-        <property name="text" >
+       <widget class="QCheckBox" name="mui_caducados">
+        <property name="text">
          <string>Caducados</string>
         </property>
        </widget>
       </item>
       <item>
-       <widget class="QLabel" name="label_2" >
-        <property name="text" >
+       <widget class="QLabel" name="label_2">
+        <property name="text">
          <string>Cliente</string>
         </property>
-        <property name="buddy" >
+        <property name="buddy">
          <cstring>mui_idcliente</cstring>
         </property>
        </widget>
       </item>
       <item>
-       <widget class="BlSearchWidget" native="1" name="mui_idcliente" />
+       <widget class="BlSearchWidget" name="mui_idcliente" native="true"/>
       </item>
       <item>
        <spacer>
-        <property name="orientation" >
+        <property name="orientation">
          <enum>Qt::Horizontal</enum>
         </property>
-        <property name="sizeType" >
+        <property name="sizeType">
          <enum>QSizePolicy::Expanding</enum>
         </property>
-        <property name="sizeHint" stdset="0" >
+        <property name="sizeHint" stdset="0">
          <size>
           <width>401</width>
           <height>31</height>
@@ -374,11 +384,11 @@
     </widget>
    </item>
    <item>
-    <widget class="ContratosListSubform" name="mui_list" />
+    <widget class="ContratosListSubform" name="mui_list"/>
    </item>
   </layout>
  </widget>
- <layoutdefault spacing="3" margin="5" />
+ <layoutdefault spacing="3" margin="5"/>
  <customwidgets>
   <customwidget>
    <class>ContratosListSubform</class>
@@ -386,14 +396,13 @@
    <header>contratoslist.h</header>
   </customwidget>
   <customwidget>
-   <class>Busqueda</class>
+   <class>BlSearchWidget</class>
    <extends>QWidget</extends>
    <header>blsearchwidget.h</header>
-   <container>1</container>
   </customwidget>
  </customwidgets>
  <resources>
-  <include location="../../../bulmages.qrc" />
+  <include location="../../../bulmages.qrc"/>
  </resources>
  <connections>
   <connection>
@@ -402,11 +411,11 @@
    <receiver>m_busqueda</receiver>
    <slot>setShown(bool)</slot>
    <hints>
-    <hint type="sourcelabel" >
+    <hint type="sourcelabel">
      <x>273</x>
      <y>41</y>
     </hint>
-    <hint type="destinationlabel" >
+    <hint type="destinationlabel">
      <x>246</x>
      <y>73</y>
     </hint>
