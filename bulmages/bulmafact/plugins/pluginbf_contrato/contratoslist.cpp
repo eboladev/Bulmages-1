@@ -81,6 +81,43 @@ ContratosList::ContratosList ( BfCompany *comp, QWidget *parent, Qt::WFlags flag
 }
 
 
+void ContratosList::borrar() {
+    ///mensajeInfo("Estoy en borrar");
+
+    _depura ( "ContratosList::on_mui_borrar_released", 0 );
+    try {
+        QString idcontrato = mui_list->dbValue ( "idcontrato" );
+        ContratoView *cont = new ContratoView ( ( BfCompany * ) mainCompany(), 0 ) ;
+        if ( cont->cargar ( idcontrato ) ) {
+            delete cont;
+            throw - 1;
+        } // end if
+        cont->on_mui_borrar_released();
+        delete cont;
+        presentar();
+    } catch ( ... ) {
+        mensajeInfo ( _ ( "Error al borrar un contrato" ) );
+    } // end try
+    _depura ( "END:ContratosList::on_mui_borrar_released", 0 );
+
+}
+
+void ContratosList::imprimir()
+{
+    //mensajeInfo("Estoy en imprimir");
+    
+    _depura ( "ContratosList::on_mui_imprimir_released", 0 );
+    mui_list->imprimirPDF ( _ ( "Listado de Contratos" ) );
+    _depura ( "END ContratosList::on_mui_imprimir_released", 0 );
+}
+
+void ContratosList::presentar()
+{
+    _depura ("ContratosList::presenta", 0 );
+    mui_list->cargar ( "SELECT * FROM contrato ORDER BY idcontrato " );
+    _depura ("END ContratosList::presenta", 0 );
+}
+
 /** No requiere acciones especiales en el destructor de la clase.
 */
 /**

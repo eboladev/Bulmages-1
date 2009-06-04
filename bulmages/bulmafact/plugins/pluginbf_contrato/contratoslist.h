@@ -86,6 +86,9 @@ public:
     QString nomcontrato();
     QString refcontrato();
     void editar ( int );
+    void borrar ();
+    void imprimir ();
+    void presentar ();
     virtual void on_mui_actualizar_released();
     virtual void on_mui_crear_released();
     virtual void on_m_filtro_textChanged ( const QString &text );
