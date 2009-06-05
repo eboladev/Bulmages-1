@@ -130,6 +130,7 @@ void InventariosView::on_mui_editar_released()
             mainCompany() ->m_pWorkspace->addWindow ( bud );
             bud->show();
             bud->mui_nominventario->setFocus();
+            presentar();
         } // end if
     } // end if
     _depura ( "END InventariosView::on_mui_editar_released", 0 );
@@ -154,10 +155,11 @@ void InventariosView::on_mui_borrar2_released()
             mainCompany() ->m_pWorkspace->addWindow ( inv );
             inv->cargar ( idinventario );
             /// Hacemos el borrado sin mostrar pantalla ni nada.
-            inv->on_mui_borrar_released();
+            inv->on_mui_borrar2_released();
             mui_listado->cargar();
         } // end if
     } // end if
+    presentar();
     _depura ( "END InventariosView::on_mui_borrar2_released", 0 );
 }
 

@@ -25,6 +25,7 @@
 #include "bfcompany.h"
 #include "blfunctions.h"
 
+#include "inventariosview.h"
 
 ///
 /**
@@ -61,21 +62,26 @@ Inventario::~Inventario()
 **/
 int Inventario::borrar()
 {
-    if ( dbValue ( "idinventario" ) != "" ) {
-        _depura ( "vamos a borrar las lineas del inventario", 0 );
-        companyact->begin();
+    _depura ( "Inventario::borrar", 0 );
+    if ( dbValue ( "idinventario" ) != "" ) 
+    {
+	_depura ( "vamos a borrar las lineas del inventario", 0 );
+	companyact->begin();
 
-        listalineas->borrar();
-        _depura ( "Vamos a borrar el resto", 0 );
-        int error = companyact->runQuery ( "DELETE FROM inventario WHERE idinventario = " + dbValue ( "idinventario" ) );
+	listalineas->borrar();
+	_depura ( "Vamos a borrar el resto", 0 );
+	int error = companyact->runQuery ( "DELETE FROM inventario WHERE idinventario = " + dbValue ( "idinventario" ) );
         if ( error ) {
-            companyact->rollback();
+    	    companyact->rollback();
             return -1;
         } // end if
         companyact->commit();
     } // end if
     return 0;
+    presentar();
+    _depura ( "END Inventario::borrar", 0 );
 }
+
 
 
 ///

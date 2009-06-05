@@ -171,6 +171,7 @@ void InventarioView::on_mui_pregenerar_released()
     _depura ( "END InventarioView::on_mui_pregenerar_released", 0 );
 }
 
+
 ///
 /**
 **/

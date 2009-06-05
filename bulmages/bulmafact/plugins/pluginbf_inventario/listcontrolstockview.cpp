@@ -32,7 +32,7 @@ ListControlStockView::ListControlStockView ( QWidget *parent, const char * )
     setDbTableName ( "controlstock" );
     setDbFieldId ( "idarticulo" );
     addSubFormHeader ( "punteocontrolstock", BlDbField::DbBoolean, BlDbField::DbNothing, BlSubFormHeader::DbNone, _ ( "Punteado" ) );
-    addSubFormHeader ( "codigoalmacen", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone, _ ( "Codigo almacen" ) );
+    addSubFormHeader ( "codigoalmacen", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNoWrite, _ ( "Codigo almacen" ) );
     addSubFormHeader ( "nomalmacen", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _ ( "Nombre almacen" ) );
     addSubFormHeader ( "codigocompletoarticulo", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _ ( "Codigo completo articulo" ) );
     addSubFormHeader ( "nomarticulo", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _ ( "Nombre articulo" ) );
@@ -44,6 +44,7 @@ ListControlStockView::ListControlStockView ( QWidget *parent, const char * )
     addSubFormHeader ( "idarticulopk", BlDbField::DbInt, BlDbField::DbNoSave | BlDbField::DbDupPrimaryKey, BlSubFormHeader::DbNone | BlSubFormHeader::DbHideView | BlSubFormHeader::DbDisableView, "idarticulo" );
     addSubFormHeader ( "idalmacenpk", BlDbField::DbInt,  BlDbField::DbNoSave | BlDbField::DbDupPrimaryKey, BlSubFormHeader::DbNone | BlSubFormHeader::DbHideView | BlSubFormHeader::DbDisableView, "idalmacen" );
     setInsert ( FALSE );
+    mdb_idinventario = "";
     _depura ( "END ListControlStockView::ListControlStockView", 0 );
 }
 
@@ -52,14 +53,20 @@ ListControlStockView::ListControlStockView ( QWidget *parent, const char * )
 /**
 \return
 **/
+/*
 int ListControlStockView::borrar()
 {
-    _depura ( "ListControlStockView::borrar", 0 );
-    mainCompany() ->runQuery ( "DELETE FROM controlstock WHERE idinventario = " + mdb_idinventario );
+//    _depura ( "ListControlStockView::borrar", 0 );
+    fprintf(stderr, "f");
+    mdb_idinventario = dbValue("idinventario");
+///zhixiong    mainCompany() ->runQuery ( "DELETE FROM inventario WHERE idinventario = " +  dbValue ( "idinventario" ) );
+    QString temp = QString("--") + dbValue("idinventario") + " - " + dbValue("idarticulo") + QString("--");
+    fprintf(stderr, temp.toAscii());
+//    mainCompany() ->runQuery ( "DELETE FROM controlstock WHERE idinventario = " + mdb_idinventario );
     _depura ( "END ListControlStockView::borrar", 0 );
     return 0;
 }
-
+*/
 
 ///
 /**
@@ -88,6 +95,7 @@ ListControlStockView::~ListControlStockView()
 /**
 \return
 **/
+/*
 int ListControlStockView::guardar()
 {
     _depura ( "ListControlStockView::guardar", 0 );
@@ -95,4 +103,4 @@ int ListControlStockView::guardar()
     _depura ( "END ListControlStockView::guardar", 0 );
     return 0;
 }
-
+*/
