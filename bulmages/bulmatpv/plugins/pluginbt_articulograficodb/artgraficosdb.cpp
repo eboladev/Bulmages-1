@@ -172,7 +172,7 @@ void ArtGraficosDb::muestraPantalla ( int numpantalla )
                 //QString nombre = ventana.firstChildElement ( "TITULO" ).toElement().text();
                 QString nombre = na.m_nombrearticulo;
                 QString codigo = na.m_codigoarticulo;
-
+                
                 /*
                 QDomElement e1 = ventana.toElement(); /// try to convert the node to an element.
                 QString text = e1.text();
@@ -269,7 +269,7 @@ void ArtGraficosDb::ponPantallas()
         
         // Llenamos la lista de articulos
         BlDbRecordSet *articulos;
-        articulos = mainCompany()->loadQuery ( "SELECT codigocompletoarticulo, nomarticulo FROM articulo ORDER BY nomarticulo" );
+        articulos = mainCompany()->loadQuery ( "SELECT codigocompletoarticulo, nomarticulo FROM articulo WHERE idfamilia = " + fa.m_idfamilia + " ORDER BY nomarticulo" );
         
         while ( !articulos->eof() ) {
         
@@ -282,6 +282,7 @@ void ArtGraficosDb::ponPantallas()
         }
         
         m_listfamilias.append(fa);
+        fa.m_listaarticulos.clear();
         familias->nextRecord();
         i++;
         
