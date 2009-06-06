@@ -87,14 +87,14 @@ void mypluginfact::inicializa ( BfBulmaFact *bges )
 {
     _depura ( "mypluginfact::inicializa", 0 );
 
-    if ( bges->getcompany()->hasTablePrivilege ( "factura", "SELECT" ) ) {
+    if ( bges->company()->hasTablePrivilege ( "factura", "SELECT" ) ) {
         /// Miramos si existe un menu Ventas
         QMenu *pPluginMenu = bges->newMenu ( "&Ventas", "menuVentas", "menuMaestro" );
         pPluginMenu->addSeparator();
 
         /// El men&uacute; de Tarifas en la secci&oacute;n de art&iacute;culos.
         m_bges = bges;
-        setMainCompany ( bges->getcompany() );
+        setMainCompany ( bges->company() );
         QAction *planCuentas = new QAction ( _ ( "&Facturas a clientes" ), 0 );
         planCuentas->setIcon ( QIcon ( QString::fromUtf8 ( ":/Images/client-invoice-list.png" ) ) );
         planCuentas->setStatusTip ( _ ( "Facturas a clientes" ) );

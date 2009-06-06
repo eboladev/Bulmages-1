@@ -92,7 +92,7 @@ void MyPlugIVA::inicializa ( BfBulmaFact *bges )
 {
     _depura ( "MyPlugIVA::inicializa", 0 );
 
-    if ( bges->getcompany()->hasTablePrivilege ( "tipo_iva", "SELECT" ) ) {
+    if ( bges->company()->hasTablePrivilege ( "tipo_iva", "SELECT" ) ) {
 
         /// Miramos si existe un menu Ventas
         QMenu *pPluginMenu = bges->menuMaestro;
@@ -100,7 +100,7 @@ void MyPlugIVA::inicializa ( BfBulmaFact *bges )
 
         /// El men&uacute; de Tipos de IVA en la secci&oacute;n de art&iacute;culos.
         m_bges = bges;
-        setMainCompany ( bges->getcompany() );
+        setMainCompany ( bges->company() );
         QAction *planCuentas = new QAction ( _ ( "&Tipos de IVA" ), 0 );
         planCuentas->setIcon ( QIcon ( QString::fromUtf8 ( ":/Images/vat.png" ) ) );
         planCuentas->setStatusTip ( _ ( "Tipos de IVA" ) );
@@ -112,7 +112,7 @@ void MyPlugIVA::inicializa ( BfBulmaFact *bges )
 
         /// El men&uacute; de Tasa de IVA en la secci&oacute;n de art&iacute;culos.
         m_bges = bges;
-        setMainCompany ( bges->getcompany() );
+        setMainCompany ( bges->company() );
         QAction *planCuentas1 = new QAction ( _ ( "&Tasas de IVA" ), 0 );
         planCuentas1->setIcon ( QIcon ( QString::fromUtf8 ( ":/Images/vat.png" ) ) );
         planCuentas1->setStatusTip ( _ ( "Tasas de IVA" ) );

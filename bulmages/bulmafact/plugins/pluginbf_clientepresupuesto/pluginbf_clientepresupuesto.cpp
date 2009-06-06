@@ -87,7 +87,7 @@ void mypluginpres::inicializa ( BfBulmaFact *bges )
 {
     _depura ( "mypluginpres::inicializa", 0 );
 
-    if ( bges->getcompany()->hasTablePrivilege ( "presupuesto", "SELECT" ) ) {
+    if ( bges->company()->hasTablePrivilege ( "presupuesto", "SELECT" ) ) {
 
 
         /// Miramos si existe un menu Ventas
@@ -96,7 +96,7 @@ void mypluginpres::inicializa ( BfBulmaFact *bges )
 
         /// El men&uacute; de Tarifas en la secci&oacute;n de art&iacute;culos.
         m_bges = bges;
-        setMainCompany ( bges->getcompany() );
+        setMainCompany ( bges->company() );
         QAction *planCuentas = new QAction ( _ ( "&Presupuestos a clientes" ), 0 );
         planCuentas->setIcon ( QIcon ( QString::fromUtf8 ( ":/Images/client-quote-list.png" ) ) );
         planCuentas->setStatusTip ( _ ( "Presupuestos a clientes" ) );

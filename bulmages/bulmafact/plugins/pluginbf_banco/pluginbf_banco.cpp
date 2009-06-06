@@ -70,7 +70,7 @@ void MyPlugBanc::inicializa ( BfBulmaFact *bges )
 {
     _depura ( "MyPlugBanc::inicializa", 0 );
 
-    if ( bges->getcompany()->hasTablePrivilege ( "banco", "SELECT" ) ) {
+    if ( bges->company()->hasTablePrivilege ( "banco", "SELECT" ) ) {
 
         /// Miramos si existe un menu Ventas
         QMenu *pPluginMenu = bges->menuMaestro;
@@ -78,7 +78,7 @@ void MyPlugBanc::inicializa ( BfBulmaFact *bges )
 
         /// El men&uacute; de Tarifas en la secci&oacute;n de art&iacute;culos.
         m_bges = bges;
-        setMainCompany ( bges->getcompany() );
+        setMainCompany ( bges->company() );
         QAction *planCuentas = new QAction ( _ ( "&Bancos" ), 0 );
         planCuentas->setIcon ( QIcon ( QString::fromUtf8 ( ":/Images/bank.png" ) ) );
         planCuentas->setStatusTip ( _ ( "Bancos" ) );

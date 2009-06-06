@@ -68,7 +68,7 @@ void myplugininv::inicializa ( BfBulmaFact *bges )
     _depura ( "myplugininv::inicializa", 0 );
     /// El men&uacute; de Tarifas en la secci&oacute;n de art&iacute;culos.
     m_bges = bges;
-    setMainCompany ( bges->getcompany() );
+    setMainCompany ( bges->company() );
 
     /// Miramos si existe un menu Articulos
     QMenu *pPluginMenu = bges->newMenu ( "&Articulos", "menuArticulos", "menuMaestro" );

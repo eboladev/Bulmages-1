@@ -70,14 +70,14 @@ void MyPlugSeriesFactura::inicializa ( BfBulmaFact *bges )
 {
     _depura ( "MyPlugSeriesFactura::inicializa", 0 );
 
-    if ( bges->getcompany()->hasTablePrivilege ( "serie_factura", "SELECT" ) ) {
+    if ( bges->company()->hasTablePrivilege ( "serie_factura", "SELECT" ) ) {
 
         /// Miramos si existe un menu Ventas
         QMenu *pPluginMenu = bges->menuMaestro;
         pPluginMenu->addSeparator();
 
         m_bges = bges;
-        setMainCompany ( bges->getcompany() );
+        setMainCompany ( bges->company() );
         QAction *seriesFactura = new QAction ( _ ( "&Series de factura" ), 0 );
         seriesFactura->setIcon(QIcon ( QString::fromUtf8 ( ":/Images/client-invoice-series.png" ) ));
         seriesFactura->setStatusTip ( _ ( "Series de factura" ) );

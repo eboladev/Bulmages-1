@@ -331,18 +331,16 @@ BlWorkspace * BfBulmaFact::workspace()
     return pWorkspace;
 }
 
-
 ///
 /**
 \return
 **/
-BfCompany * BfBulmaFact::getcompany()
+BfCompany * BfBulmaFact::company()
 {
-    _depura ( "BfBulmaFact::getcompany", 0 );
-    _depura ( "END BfBulmaFact::getcompany", 0 );
+    _depura ( "BfBulmaFact::company", 0 );
+    _depura ( "END BfBulmaFact::company", 0 );
     return m_company;
 }
-
 
 ///
 /**

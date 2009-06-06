@@ -85,7 +85,7 @@ void myplugincont::inicializa ( BfBulmaFact *bges )
     } // end if
 
     /// Creamos el men&uacute;.
-    m_dbConnection = bges->getcompany();
+    m_dbConnection = bges->company();
     m_bulmafact = bges;
     QAction *accion = new QAction ( "&Cuadres de Caja", 0 );
     accion->setStatusTip ( "Listado de Cuadres de Caja" );

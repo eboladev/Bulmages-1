@@ -32,8 +32,8 @@ plugin_tc_articulos::~plugin_tc_articulos()
 void plugin_tc_articulos::tallas()
 {
     _depura ( "plugin_tc_articulos::tallas", 0 );
-    ListTallasView *tallas = new ListTallasView ( m_bulmafact->getcompany(), 0 );
-    m_bulmafact->getcompany()->pWorkspace()->addWindow ( tallas );
+    ListTallasView *tallas = new ListTallasView ( m_bulmafact->company(), 0 );
+    m_bulmafact->company()->pWorkspace()->addWindow ( tallas );
     tallas->show();
     _depura ( "END plugin_tc_articulos::tallas", 0 );
 }
@@ -46,8 +46,8 @@ void plugin_tc_articulos::tallas()
 void plugin_tc_articulos::colores()
 {
     _depura ( "plugin_tc_articulos::colores", 0 );
-    ListColoresView *colores = new ListColoresView ( m_bulmafact->getcompany(), 0 );
-    m_bulmafact->getcompany()->pWorkspace()->addWindow ( colores );
+    ListColoresView *colores = new ListColoresView ( m_bulmafact->company(), 0 );
+    m_bulmafact->company()->pWorkspace()->addWindow ( colores );
     colores->show();
     _depura ( "END plugin_tc_articulos::colores", 0 );
 }

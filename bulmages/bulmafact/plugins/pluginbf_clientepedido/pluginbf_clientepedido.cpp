@@ -87,14 +87,14 @@ void mypluginped::inicializa ( BfBulmaFact *bges )
 {
     _depura ( "mypluginped::inicializa", 0 );
 
-    if ( bges->getcompany()->hasTablePrivilege ( "pedidocliente", "SELECT" ) ) {
+    if ( bges->company()->hasTablePrivilege ( "pedidocliente", "SELECT" ) ) {
 
         /// Miramos si existe un menu Ventas
         QMenu *pPluginMenu = bges->newMenu ( "&Ventas", "menuVentas", "menuMaestro" );
         pPluginMenu->addSeparator();
 
         m_bges = bges;
-        setMainCompany ( bges->getcompany() );
+        setMainCompany ( bges->company() );
         QAction *planCuentas = new QAction ( _ ( "&Pedidos de clientes" ), 0 );
         planCuentas->setIcon ( QIcon ( QString::fromUtf8 ( ":/Images/client-delivery-order-list.png" ) ) );
         planCuentas->setStatusTip ( _ ( "Pedidos de clientes" ) );

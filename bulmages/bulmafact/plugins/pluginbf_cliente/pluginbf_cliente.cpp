@@ -85,14 +85,14 @@ void MyPlugCli::inicializa ( BfBulmaFact *bges )
 {
     _depura ( "MyPlugCli::inicializa", 0 );
 
-    if ( bges->getcompany()->hasTablePrivilege ( "cliente", "SELECT" ) ) {
+    if ( bges->company()->hasTablePrivilege ( "cliente", "SELECT" ) ) {
 
         /// Miramos si existe un menu Ventas
         QMenu *pPluginMenu = bges->newMenu ( "&Ventas", "menuVentas", "menuMaestro" );
         pPluginMenu->addSeparator();
 
         m_bges = bges;
-        setMainCompany ( bges->getcompany() );
+        setMainCompany ( bges->company() );
         QAction *planCuentas = new QAction ( _ ( "&Clientes" ), 0 );
         planCuentas->setIcon ( QIcon ( QString::fromUtf8 ( ":/Images/client-list.png" ) ) );
         planCuentas->setStatusTip ( _ ( "Clientes" ) );

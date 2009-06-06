@@ -47,7 +47,7 @@ void myplugin1::elslot() {
 
 void myplugin1::inicializa(bulmafact *bges) {
     /// El men&uacute; de Tarifas en la secci&oacute;n de art&iacute;culos.
-    m_companyact = bges->getcompany();
+    m_companyact = bges->company();
     QAction *planCuentas = new QAction("&QWebCams", 0);
     planCuentas->setStatusTip("QWebCams");
     planCuentas->setWhatsThis("QWebCams");

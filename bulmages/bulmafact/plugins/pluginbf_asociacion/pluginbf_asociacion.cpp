@@ -136,7 +136,7 @@ void MyPlugAsoc::inicializa ( BfBulmaFact *bges )
 {
     _depura ( "MyPlugAsoc::inicializa", 0 );
 
-    if ( bges->getcompany()->hasTablePrivilege ( "reunion", "SELECT" ) ) {
+    if ( bges->company()->hasTablePrivilege ( "reunion", "SELECT" ) ) {
 
         /// Miramos si existe un menu Ventas
         QMenu *pPluginMenu = bges->newMenu ( "&Asociacion", "menuAsociacion", "menuMaestro" );
@@ -144,7 +144,7 @@ void MyPlugAsoc::inicializa ( BfBulmaFact *bges )
 
         /// El men&uacute; de Tarifas en la secci&oacute;n de art&iacute;culos.
         m_bges = bges;
-        setMainCompany ( bges->getcompany() );
+        setMainCompany ( bges->company() );
         QAction *asociacion = new QAction ( _ ( "&Asociacion" ), 0 );
         asociacion->setIcon ( QIcon ( QString::fromUtf8 ( ":/Images/employee-list.png" ) ) );
         asociacion->setStatusTip ( _ ( "Asociacion" ) );

@@ -64,8 +64,8 @@ BfForm::~BfForm()
 **/
 BfCompany * BfForm::mainCompany()
 {
-    _depura ( "BfForm::getcompany", 0 );
-    _depura ( "END BfForm::getcompany", 0 );
+    _depura ( "BfForm::company", 0 );
+    _depura ( "END BfForm::company", 0 );
     
     return ( BfCompany * ) BlForm::mainCompany();
 }

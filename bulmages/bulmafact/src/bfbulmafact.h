@@ -55,7 +55,7 @@ public:
     BfBulmaFact ( QString bd );
     ~BfBulmaFact();
     BlWorkspace *workspace();
-    BfCompany *getcompany();
+    BfCompany *company();
     void createMainWindows ( BlSplashScreen * );
     QProgressBar *m_pb;
 

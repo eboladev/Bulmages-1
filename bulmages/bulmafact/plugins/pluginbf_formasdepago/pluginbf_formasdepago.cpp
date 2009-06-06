@@ -70,14 +70,14 @@ void MyPlugFPago::inicializa ( BfBulmaFact *bges )
 {
     _depura ( "MyPlugFPago::inicializa", 0 );
 
-    if ( bges->getcompany()->hasTablePrivilege ( "forma_pago", "SELECT" ) ) {
+    if ( bges->company()->hasTablePrivilege ( "forma_pago", "SELECT" ) ) {
 
         /// Miramos si existe un menu Ventas
         QMenu *pPluginMenu = bges->menuMaestro;
         pPluginMenu->addSeparator();
 
         m_bges = bges;
-        setMainCompany ( bges->getcompany() );
+        setMainCompany ( bges->company() );
         QAction *planCuentas = new QAction ( _ ( "&Formas de pago" ), 0 );
         planCuentas->setIcon ( QIcon ( QString::fromUtf8 ( ":/Images/payment-method.png" ) ) );
         planCuentas->setStatusTip ( _ ( "Formas de pago" ) );

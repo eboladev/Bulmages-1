@@ -97,7 +97,7 @@ void MyPlugProf::inicializa ( BfBulmaFact *bges )
 {
     _depura ( "MyPlugProf::inicializa", 0 );
 
-    if ( bges->getcompany()->hasTablePrivilege ( "cobro", "SELECT" ) ) {
+    if ( bges->company()->hasTablePrivilege ( "cobro", "SELECT" ) ) {
 
         /// Miramos si existe un menu Ventas
         QMenu *pPluginMenu = bges->newMenu ( "&Docencia", "menuDocencia", "menuMaestro" );
@@ -114,7 +114,7 @@ void MyPlugProf::inicializa ( BfBulmaFact *bges )
         pPluginMenu->addSeparator();
         m_bges = bges;
         
-        setMainCompany ( bges->getcompany() );
+        setMainCompany ( bges->company() );
         QAction *planCuentas = new QAction ( _ ( "&Actividades" ), 0 );
         planCuentas->setIcon ( QIcon ( QString::fromUtf8 ( ":/ImgGestionAula/icons/actividad.png" ) ) );
         planCuentas->setStatusTip ( _ ( "Actividades" ) );

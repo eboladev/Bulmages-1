@@ -80,7 +80,7 @@ void mypluginbf::inicializa ( BfBulmaFact *bges )
     /// El men&uacute; de empresa.
     m_bges = bges;
     /// Cogemos la 'company' para tener acceso a todo y sobretodo a BD.
-    setMainCompany ( bges->getcompany() );
+    setMainCompany ( bges->company() );
     /// Insertamos un separador en el men&uacute;.
     bges->menuMaestro->addSeparator();
     /// Creamos la opci&oacute;n para Zonas Comerciales que dispare el m&eacute;todo adecuado.

@@ -70,7 +70,7 @@ void MyPlugTrab::inicializa ( BfBulmaFact *bges )
 {
     _depura ( "MyPlugTrab::inicializa", 0 );
 
-    if ( bges->getcompany()->hasTablePrivilege ( "trabajador", "SELECT" ) ) {
+    if ( bges->company()->hasTablePrivilege ( "trabajador", "SELECT" ) ) {
 
         /// Miramos si existe un menu Ventas
         QMenu *pPluginMenu = bges->menuMaestro;
@@ -78,7 +78,7 @@ void MyPlugTrab::inicializa ( BfBulmaFact *bges )
 
         /// El men&uacute; de Tarifas en la secci&oacute;n de art&iacute;culos.
         m_bges = bges;
-        setMainCompany ( bges->getcompany() );
+        setMainCompany ( bges->company() );
         QAction *planCuentas = new QAction ( _ ( "&Trabajadores" ), 0 );
         planCuentas->setIcon ( QIcon ( QString::fromUtf8 ( ":/Images/employee-list.png" ) ) );
         planCuentas->setStatusTip ( _ ( "Trabajadores" ) );

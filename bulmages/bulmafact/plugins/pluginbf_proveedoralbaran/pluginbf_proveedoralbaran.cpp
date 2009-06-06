@@ -85,14 +85,14 @@ void mypluginalbp::inicializa ( BfBulmaFact *bges )
 {
     _depura ( "mypluginalbp::inicializa", 0 );
 
-    if ( bges->getcompany()->hasTablePrivilege ( "albaranp", "SELECT" ) ) {
+    if ( bges->company()->hasTablePrivilege ( "albaranp", "SELECT" ) ) {
         /// Miramos si existe un menu Compras
         QMenu *pPluginMenu = bges->newMenu ( "&Compras", "menuCompras", "menuMaestro" );
         pPluginMenu->addSeparator();
 
         /// El men&uacute; de Tarifas en la secci&oacute;n de art&iacute;culos.
         m_bges = bges;
-        setMainCompany ( bges->getcompany() );
+        setMainCompany ( bges->company() );
         QAction *planCuentas = new QAction ( _ ( "&Albaranes de proveedores" ), 0 );
         planCuentas->setIcon ( QIcon ( QString::fromUtf8 ( ":/Images/supplier-delivery-note-list.png" ) ) );
         planCuentas->setStatusTip ( _ ( "Albaranes de proveedores" ) );

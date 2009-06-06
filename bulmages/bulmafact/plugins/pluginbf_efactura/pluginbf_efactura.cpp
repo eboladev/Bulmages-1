@@ -105,7 +105,7 @@ void efacturabf::inicializa ( BfBulmaFact *bges )
 {
     _depura ( "efacturabf::inicializa", 0 );
     /// Creamos la conexion de la base de datos
-    setMainCompany ( bges->getcompany() );
+    setMainCompany ( bges->company() );
 
     /// Creamos el menu.
 //  QMenu *pPluginMenu = new QMenu("&Factura Electronica");

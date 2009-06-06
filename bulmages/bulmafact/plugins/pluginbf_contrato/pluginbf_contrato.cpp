@@ -72,7 +72,7 @@ void myplugincont::inicializa ( BfBulmaFact *bges )
 {
     _depura ( "myplugincont::inicializa", 0 );
     /// Creamos el men&uacute;.
-    m_dbConnection = bges->getcompany();
+    m_dbConnection = bges->company();
     m_bulmafact = bges;
 
     /// Miramos si existe un menu Ventas

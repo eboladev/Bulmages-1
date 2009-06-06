@@ -70,7 +70,7 @@ void MyPlugAlm::inicializa ( BfBulmaFact *bges )
 {
     _depura ( "MyPlugAlm::inicializa", 0 );
 
-    if ( bges->getcompany()->hasTablePrivilege ( "almacen", "SELECT" ) ) {
+    if ( bges->company()->hasTablePrivilege ( "almacen", "SELECT" ) ) {
 
         /// Miramos si existe un menu Ventas
         QMenu *pPluginMenu = bges->menuMaestro;
@@ -78,7 +78,7 @@ void MyPlugAlm::inicializa ( BfBulmaFact *bges )
 
         /// El men&uacute; de Tarifas en la secci&oacute;n de art&iacute;culos.
         m_bges = bges;
-        setMainCompany ( bges->getcompany() );
+        setMainCompany ( bges->company() );
         QAction *planCuentas = new QAction ( _ ( "&Almacenes" ), 0 );
         planCuentas->setIcon ( QIcon ( QString::fromUtf8 ( ":/Images/warehouse-list.png" ) ) );
         planCuentas->setStatusTip ( _ ( "Almacenes" ) );

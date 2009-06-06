@@ -55,7 +55,7 @@ mytiptrab::~mytiptrab()
 void mytiptrab::elslot()
 {
     _depura ( "mytiptrab::elslot", 0 );
-    ListTiposTrabajoView *l = new ListTiposTrabajoView ( ( BfCompany * ) m_bulmafact->getcompany(), 0 );
+    ListTiposTrabajoView *l = new ListTiposTrabajoView ( ( BfCompany * ) m_bulmafact->company(), 0 );
     m_bulmafact->workspace() ->addWindow ( l );
     l->show();
     _depura ( "END mytiptrab::elslot", 0 );

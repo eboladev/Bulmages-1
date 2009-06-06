@@ -85,7 +85,7 @@ int entryPoint ( BfBulmaFact *bges )
     setlocale ( LC_ALL, "" );
     bindtextdomain ( "pluginbf_z2z", g_confpr->valor ( CONF_DIR_TRADUCCION ).toAscii().constData() );
 
-    g_bges = bges->getcompany();
+    g_bges = bges->company();
 
     mypluginzz *corr = new mypluginzz();
 

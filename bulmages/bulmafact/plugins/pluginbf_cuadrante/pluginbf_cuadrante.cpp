@@ -90,7 +90,7 @@ void myplugin4::inicializa ( BfBulmaFact *bges )
 {
     _depura ( "myplugin4::inicializa", 0 );
     /// Creamos el men&uacute;.
-    setMainCompany ( bges->getcompany() );
+    setMainCompany ( bges->company() );
     m_bulmafact = bges;
     QMenu *pPluginMenu;
     /// Miramos si existe un menu Herramientas

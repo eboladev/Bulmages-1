@@ -73,7 +73,7 @@ void myplugin::inicializa ( BfBulmaFact *bges )
 {
     _depura ( "myplugin::inicializa", 0 );
     /// Creamos el men&uacute;.
-    m_dbConnection = bges->getcompany();
+    m_dbConnection = bges->company();
     m_bulmafact = bges;
     QMenu *pPluginMenu = new QMenu ( "&Vehiculos" );
     QAction *accion = new QAction ( "&Nuevo vehiculo", 0 );
