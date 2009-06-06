@@ -35,6 +35,12 @@ class NuevaContabilidad(Contabilidad):
     # Verificamos el nombre de la base de datos
     if (self.nomdb == None or self.nomdb == 'postgres' or self.nomdb == 'template0' or self.nomdb == 'template1' or self.nomdb == ''):
 	print "Nombre de la base de datos incorrecto"
+	message = QtGui.QMessageBox(self)
+	message.setText(QtGui.QApplication.translate("NuevaFacturacion", "Debe proporcionar un nombre a la base de datos que va a crearse", None, QtGui.QApplication.UnicodeUTF8))
+	message.setWindowTitle('Atencion!')
+	message.setIcon(QtGui.QMessageBox.Warning)
+	message.addButton('Cerrar', QtGui.QMessageBox.AcceptRole)
+	message.exec_()
 	return
 
     # Creamos la base de datos
