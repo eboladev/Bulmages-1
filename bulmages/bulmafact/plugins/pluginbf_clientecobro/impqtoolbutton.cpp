@@ -73,8 +73,8 @@ void GenCobroQToolButton::setBoton()
     _depura ( "GenCobroQToolButton::setBoton", 0 );
     connect ( this, SIGNAL ( clicked() ), this, SLOT ( click() ) );
     setObjectName ( QString::fromUtf8 ( "exporta" ) );
-    setStatusTip ( "Generar Pago" );
-    setToolTip ( "Generar Pago" );
+    setStatusTip ( "Generar Cobro" );
+    setToolTip ( "Generar Cobro" );
     setMinimumSize ( QSize ( 32, 32 ) );
     setMaximumSize ( QSize ( 32, 32 ) );
     setIcon ( QIcon ( QString::fromUtf8 ( ":/Images/receive.png" ) ) );

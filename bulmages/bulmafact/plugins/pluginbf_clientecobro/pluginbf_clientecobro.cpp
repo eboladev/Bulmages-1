@@ -203,7 +203,7 @@ int FacturaView_FacturaView ( FacturaView *l )
         m_hboxLayout1->setObjectName ( QString::fromUtf8 ( "hboxLayout1" ) );
     }// end if
     m_hboxLayout1->addWidget ( mui_exporta_efactura2 );
-    _depura ( "END PluginPagos_FacturaView_FacturaView", 0 );
+    _depura ( "END PluginCobros_FacturaView_FacturaView", 0 );
     return 0;
 }
 
@@ -226,7 +226,7 @@ int AlbaranClienteView_AlbaranClienteView ( AlbaranClienteView *l )
         m_hboxLayout1->setObjectName ( QString::fromUtf8 ( "hboxLayout1" ) );
     }// end if
     m_hboxLayout1->addWidget ( mui_exporta_efactura2 );
-    _depura ( "END PluginPagos_AlbaranClienteView_AlbaranClienteView", 0 );
+    _depura ( "END PluginCobros_AlbaranClienteView_AlbaranClienteView", 0 );
     return 0;
 }
 
@@ -237,7 +237,7 @@ int AlbaranClienteView_AlbaranClienteView ( AlbaranClienteView *l )
 **/
 int PedidoClienteView_PedidoClienteView ( PedidoClienteView *l )
 {
-    _depura ( "PluginPagos_PedidoClienteView_PedidoClienteView", 0 );
+    _depura ( "PluginCobros_PedidoClienteView_PedidoClienteView", 0 );
     GenCobroQToolButton *mui_exporta_efactura2 = new GenCobroQToolButton ( l, l->mui_plugbotones );
 
     QHBoxLayout *m_hboxLayout1 = l->mui_plugbotones->findChild<QHBoxLayout *> ( "hboxLayout1" );
@@ -249,7 +249,7 @@ int PedidoClienteView_PedidoClienteView ( PedidoClienteView *l )
         m_hboxLayout1->setObjectName ( QString::fromUtf8 ( "hboxLayout1" ) );
     }// end if
     m_hboxLayout1->addWidget ( mui_exporta_efactura2 );
-    _depura ( "END PluginPagos_PedidoClienteView_PedidoClienteView", 0 );
+    _depura ( "END PluginCobros_PedidoClienteView_PedidoClienteView", 0 );
     return 0;
 }
 
