@@ -24,18 +24,18 @@ class NuevaFacturacion(Facturacion):
 
   def on_mui_aceptar_released(self):
 
-    # Verificamos el nombre de la base de datos
-    if (self.database == None or self.database == 'postgres' or self.database == 'template0' or self.database == 'template1' or self.database == ''):
-	print "Nombre de la base de datos incorrecto"
-	return
-  
     # Ponemos la pestanya de consola como la visible
     self.tabWidget.setCurrentIndex(2)
 
     self.mui_textBrowser.clear()
     
     self.database = self.mui_nomdb.text()
-    
+  
+    # Verificamos el nombre de la base de datos
+    if (self.database == None or self.database == 'postgres' or self.database == 'template0' or self.database == 'template1' or self.database == ''):
+	print "Nombre de la base de datos incorrecto"
+	return
+
     # Creamos la base de datos
     self.command = 'su postgres -c "createdb -E UNICODE ' + self.database +'"'
     self.writecommand(self.command)

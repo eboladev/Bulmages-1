@@ -23,12 +23,6 @@ class NuevaContabilidad(Contabilidad):
     
   def on_mui_aceptar_released(self):
   
-    # Verificamos el nombre de la base de datos
-    if (self.database == None or self.database == 'postgres' or self.database == 'template0' or self.database == 'template1' or self.database == ''):
-	print "Nombre de la base de datos incorrecto"
-	return
-
-#OR self.database == 'postgres' OR self.database == 'template0' OR self.database == 'template1' OR self.database == ''
 
     # Ponemos la pestanya de consola como la visible
     self.tabWidget.setCurrentIndex(1)
@@ -37,6 +31,11 @@ class NuevaContabilidad(Contabilidad):
 
     self.nomdb = self.mui_nomdb.text()
     self.database = self.nomdb
+
+    # Verificamos el nombre de la base de datos
+    if (self.nomdb == None or self.nomdb == 'postgres' or self.nomdb == 'template0' or self.nomdb == 'template1' or self.nomdb == ''):
+	print "Nombre de la base de datos incorrecto"
+	return
 
     # Creamos la base de datos
     self.command = 'su postgres -c "createdb -E UNICODE ' + self.nomdb +'"'
