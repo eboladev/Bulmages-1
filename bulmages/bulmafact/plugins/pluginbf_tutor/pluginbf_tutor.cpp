@@ -304,7 +304,7 @@ int BfSubForm_pressedAsterisk ( BfSubForm *sub )
     
     delete tutoreslist;
 
-    /// Si no tenemos un idarticulo salimos ya que significa que no se ha seleccionado ninguno.
+    /// Si no tenemos un idtutor salimos ya que significa que no se ha seleccionado ninguno.
     if ( idCliente == "" ) {
         _depura ( "END BfSubForm::pressedAsterisk", 0 );
         return 0;
@@ -320,6 +320,171 @@ int BfSubForm_pressedAsterisk ( BfSubForm *sub )
     
     _depura ( "END BfSubForm_pressedAsterisk" );
 
+    return 0;
+}
+
+
+
+
+
+
+
+
+/// --------------------------------------------------------------
+/// --------- Implemento la edicion de tutors -----------------
+/// Con esta funcionalidad creamos menus contextuales en todos los subformularios donde
+/// Aparezca el identificador de tutor como elemento y permite de forma sencilla
+/// La creacion, la edicion, y la seleccion.
+///
+
+
+/**
+\param parent
+**/
+MyPlugTutor1::MyPlugTutor1 ( BlSubForm *parent ) : QObject ( parent )
+{
+    _depura ( "MyPlugTutor1::MyPlugTutor1", 0 );
+    _depura ( "END MyPlugTutor1::MyPlugTutor1", 0 );
+}
+
+///
+/**
+**/
+MyPlugTutor1::~MyPlugTutor1()
+{
+    _depura ( "MyPlugTutor1::~MyPlugTutor1", 0 );
+    _depura ( "END MyPlugTutor1::~MyPlugTutor1", 0 );
+}
+
+
+///
+/**
+\param menu
+**/
+void MyPlugTutor1::s_pintaMenu ( QMenu *menu )
+{
+    _depura ( "MyPlugTutor1::s_pintaMenu", 0 );
+    BfSubForm *sub = ( BfSubForm * ) parent();
+    BlSubFormHeader *header = sub->header ( "nomcliente" );
+    if ( header ) {
+        menu->addSeparator();
+        menu->addAction ( _ ( "Nuevo tutor" ) );
+        QString idtutor = sub->dbValue ( "idcliente" );
+        if ( idtutor != "" ) menu->addAction ( _ ( "Editar tutor" ) );
+        if ( ! ( header->options() & BlSubFormHeader::DbNoWrite ) )  {
+            menu->addAction ( _ ( "Seleccionar tutor" ) );
+        } // end if
+    } // end if
+    _depura ( "END MyPlugTutor1::s_pintaMenu", 0 );
+}
+
+
+///
+/**
+\param action
+**/
+void MyPlugTutor1::s_trataMenu ( QAction *action )
+{
+    _depura ( "MyPlugTutor1::s_trataMenu", 0 );
+    BfSubForm *sub = ( BfSubForm * ) parent();
+    if ( action->text() == _ ( "Editar tutor" ) ) {
+        QString idtutor = sub->dbValue ( "idcliente" );
+        if ( idtutor != "" )
+            editarTutor ( idtutor );
+    } else if ( action->text() == _ ( "Seleccionar tutor" ) ) {
+        seleccionarTutor ( sub );
+    } else if ( action->text() == _ ( "Nuevo tutor" )  ) {
+        nuevoTutor();
+    } // end if
+
+    _depura ( "END MyPlugTutor1::s_trataMenu", 0 );
+}
+
+
+///
+/**
+**/
+void MyPlugTutor1::editarTutor ( QString idtutor )
+{
+    _depura ( "MyPlugTutor1::editarTutor", 0 );
+    BlSubForm * subf = ( BlSubForm * ) parent();
+    TutorView * art = new TutorView ( ( BfCompany * ) subf->mainCompany(), 0 );
+    subf->mainCompany() ->m_pWorkspace->addWindow ( art );
+    /// Si la carga no va bien entonces terminamos.
+    if ( art->cargar ( idtutor ) ) {
+        delete art;
+        _depura ( "END MyPlugTutor1::editarTutor", 0, "Carga Erronea" );
+        return;
+    } // end if
+    art->hide();
+    art->show();
+    _depura ( "END MyPlugTutor1::editarTutor", 0 );
+}
+
+
+
+///
+/**
+**/
+void MyPlugTutor1::nuevoTutor( )
+{
+    _depura ( "MyPlugTutor1::editarTutor", 0 );
+    BlSubForm * subf = ( BlSubForm * ) parent();
+    TutorView * art = new TutorView ( ( BfCompany * ) subf->mainCompany(), 0 );
+    subf->mainCompany() ->m_pWorkspace->addWindow ( art );
+    art->hide();
+    art->show();
+    _depura ( "END MyPlugTutor1::editarTutor", 0 );
+}
+
+
+///
+/**
+**/
+void MyPlugTutor1::seleccionarTutor ( BfSubForm *sub )
+{
+    _depura ( "MyPlugTutor1::editarTutor", 0 );
+
+    TutoresList *artlist = new TutoresList ( ( BfCompany * ) sub->mainCompany(), NULL, 0, BL_SELECT_MODE );
+    /// Esto es convertir un QWidget en un sistema modal de dialogo.
+    sub->setEnabled ( false );
+    artlist->show();
+    while ( !artlist->isHidden() )
+        g_theApp->processEvents();
+    sub->setEnabled ( true );
+    QString idTutor = artlist->idcliente();
+    delete artlist;
+
+    /// Si no tenemos un idtutor salimos ya que significa que no se ha seleccionado ninguno.
+    if ( idTutor == "" ) {
+        _depura ( "END BfSubForm::pressedAsterisk", 0 );
+        return;
+    } // end if
+
+    BlDbRecordSet *cur = sub->mainCompany() ->loadQuery ( "SELECT * FROM cliente WHERE idcliente = " + idTutor );
+    if ( !cur->eof() ) {
+        sub->lineaact()->setDbValue ( "idcliente", idTutor );
+        sub->lineaact()->setDbValue ( "cifcliente", cur->valor ( "cifcliente" ) );
+        sub->lineaact()->setDbValue ( "nomcliente", cur->valor ( "nomcliente" ) );
+    } // end if
+    delete cur;
+
+    _depura ( "END MyPlugTutor1::editarTutor", 0 );
+}
+
+
+///
+/**
+\param sub
+\return
+**/
+int BlSubForm_BlSubForm_Post ( BlSubForm *sub )
+{
+    _depura ( "BlSubForm_BlSubForm_Post", 0 );
+    MyPlugTutor1 *subformods = new MyPlugTutor1 ( sub );
+    sub->QObject::connect ( sub, SIGNAL ( pintaMenu ( QMenu * ) ), subformods, SLOT ( s_pintaMenu ( QMenu * ) ) );
+    sub->QObject::connect ( sub, SIGNAL ( trataMenu ( QAction * ) ), subformods, SLOT ( s_trataMenu ( QAction * ) ) );
+    _depura ( "END BlSubForm_BlSubForm_Post", 0 );
     return 0;
 }
 

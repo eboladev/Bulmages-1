@@ -229,3 +229,170 @@ int BlSubForm_editFinished ( BlSubForm *sub )
     return 0;
 }
 
+
+
+
+/// --------------------------------------------------------------
+/// --------- Implemento la edicion de actividads -----------------
+/// Con esta funcionalidad creamos menus contextuales en todos los subformularios donde
+/// Aparezca el identificador de actividad como elemento y permite de forma sencilla
+/// La creacion, la edicion, y la seleccion.
+///
+
+
+/**
+\param parent
+**/
+MyPlugAct1::MyPlugAct1 ( BlSubForm *parent ) : QObject ( parent )
+{
+    _depura ( "MyPlugAct1::MyPlugAct1", 0 );
+    _depura ( "END MyPlugAct1::MyPlugAct1", 0 );
+}
+
+///
+/**
+**/
+MyPlugAct1::~MyPlugAct1()
+{
+    _depura ( "MyPlugAct1::~MyPlugAct1", 0 );
+    _depura ( "END MyPlugAct1::~MyPlugAct1", 0 );
+}
+
+
+///
+/**
+\param menu
+**/
+void MyPlugAct1::s_pintaMenu ( QMenu *menu )
+{
+    _depura ( "MyPlugAct1::s_pintaMenu", 0 );
+    BfSubForm *sub = ( BfSubForm * ) parent();
+    BlSubFormHeader *header = sub->header ( "nombreactividad" );
+    if ( header ) {
+        menu->addSeparator();
+        menu->addAction ( _ ( "Nuevo actividad" ) );
+        QString idactividad = sub->dbValue ( "idactividad" );
+        if ( idactividad != "" ) menu->addAction ( _ ( "Editar actividad" ) );
+        if ( ! ( header->options() & BlSubFormHeader::DbNoWrite ) )  {
+            menu->addAction ( _ ( "Seleccionar actividad" ) );
+        } // end if
+    } // end if
+    _depura ( "END MyPlugAct1::s_pintaMenu", 0 );
+}
+
+
+///
+/**
+\param action
+**/
+void MyPlugAct1::s_trataMenu ( QAction *action )
+{
+    _depura ( "MyPlugAct1::s_trataMenu", 0 );
+    BfSubForm *sub = ( BfSubForm * ) parent();
+    if ( action->text() == _ ( "Editar actividad" ) ) {
+        QString idactividad = sub->dbValue ( "idactividad" );
+        if ( idactividad != "" )
+            editarActividad ( idactividad );
+    } else if ( action->text() == _ ( "Seleccionar actividad" ) ) {
+        seleccionarActividad ( sub );
+    } else if ( action->text() == _ ( "Nuevo actividad" )  ) {
+        nuevoActividad();
+    } // end if
+
+    _depura ( "END MyPlugAct1::s_trataMenu", 0 );
+}
+
+
+///
+/**
+**/
+void MyPlugAct1::editarActividad ( QString idactividad )
+{
+    _depura ( "MyPlugAct1::editarActividad", 0 );
+    BlSubForm * subf = ( BlSubForm * ) parent();
+    ActividadView * art = new ActividadView ( ( BfCompany * ) subf->mainCompany(), 0 );
+    subf->mainCompany() ->m_pWorkspace->addWindow ( art );
+    /// Si la carga no va bien entonces terminamos.
+    if ( art->cargar ( idactividad ) ) {
+        delete art;
+        _depura ( "END ActividadesList::editar", 0, "Carga Erronea" );
+        return;
+    } // end if
+    art->hide();
+    art->show();
+    _depura ( "END MyPlugAct1::editarActividad", 0 );
+}
+
+
+
+///
+/**
+**/
+void MyPlugAct1::nuevoActividad( )
+{
+    _depura ( "MyPlugAct1::editarActividad", 0 );
+    BlSubForm * subf = ( BlSubForm * ) parent();
+    ActividadView * art = new ActividadView ( ( BfCompany * ) subf->mainCompany(), 0 );
+    subf->mainCompany() ->m_pWorkspace->addWindow ( art );
+    art->hide();
+    art->show();
+    _depura ( "END MyPlugAct1::editarActividad", 0 );
+}
+
+
+///
+/**
+**/
+void MyPlugAct1::seleccionarActividad ( BfSubForm *sub )
+{
+    _depura ( "MyPlugAct1::editarActividad", 0 );
+
+    ActividadesList *artlist = new ActividadesList ( ( BfCompany * ) sub->mainCompany(), NULL, 0, BL_SELECT_MODE );
+    /// Esto es convertir un QWidget en un sistema modal de dialogo.
+    sub->setEnabled ( false );
+    artlist->show();
+    while ( !artlist->isHidden() )
+        g_theApp->processEvents();
+    sub->setEnabled ( true );
+    QString idActividad = artlist->idactividad();
+    delete artlist;
+
+    /// Si no tenemos un idactividad salimos ya que significa que no se ha seleccionado ninguno.
+    if ( idActividad == "" ) {
+        _depura ( "END BfSubForm::pressedAsterisk", 0 );
+        return;
+    } // end if
+
+    BlDbRecordSet *cur = sub->mainCompany() ->loadQuery ( "SELECT * FROM actividad WHERE idactividad = " + idActividad );
+    if ( !cur->eof() ) {
+        sub->lineaact()->setDbValue ( "idactividad", idActividad );
+        sub->lineaact()->setDbValue ( "codigoactividad", cur->valor ( "codigoactividad" ) );
+        sub->lineaact()->setDbValue ( "nombreactividad", cur->valor ( "nombreactividad" ) );
+    } // end if
+    delete cur;
+
+    _depura ( "END MyPlugAct1::editarActividad", 0 );
+}
+
+
+///
+/**
+\param sub
+\return
+**/
+int BlSubForm_BlSubForm_Post ( BlSubForm *sub )
+{
+    _depura ( "BlSubForm_BlSubForm_Post", 0 );
+    MyPlugAct1 *subformods = new MyPlugAct1 ( sub );
+    sub->QObject::connect ( sub, SIGNAL ( pintaMenu ( QMenu * ) ), subformods, SLOT ( s_pintaMenu ( QMenu * ) ) );
+    sub->QObject::connect ( sub, SIGNAL ( trataMenu ( QAction * ) ), subformods, SLOT ( s_trataMenu ( QAction * ) ) );
+    _depura ( "END BlSubForm_BlSubForm_Post", 0 );
+    return 0;
+}
+
+
+
+
+
+
+

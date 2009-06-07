@@ -27,7 +27,7 @@
 #include "blpostgresqlclient.h"
 #include "bfbulmafact.h"
 #include "blwidget.h"
-#include "blsubform.h"
+#include "bfsubform.h"
 #include "bfbuscarreferencia.h"
 
 
@@ -37,6 +37,9 @@ extern "C" MY_EXPORT int BlSubFormDelegate_createEditor(BlSubFormDelegate *);
 extern "C" MY_EXPORT int BlSubFormDelegate_setModelData(BlSubFormDelegate *);
 extern "C" MY_EXPORT int BlSubFormDelegate_setEditorData(BlSubFormDelegate *);
 extern "C" MY_EXPORT int BlSubForm_editFinished(BlSubForm *);
+extern "C" MY_EXPORT int BlSubForm_BlSubForm_Post ( BlSubForm * );
+
+
 
 class MyPlugProf : public QObject, BlMainCompanyPointer
 {
@@ -54,4 +57,22 @@ public slots:
     void elslot();
     void elslot1();
     void elslot2();
+};
+
+
+
+class MyPlugAct1 : public QObject
+{
+    Q_OBJECT
+
+public:
+    MyPlugAct1 ( BlSubForm * );
+    ~MyPlugAct1();
+    void editarActividad( QString);
+    void nuevoActividad();
+    void seleccionarActividad(BfSubForm *);
+
+public slots:
+    virtual void s_pintaMenu ( QMenu * );
+    virtual void s_trataMenu ( QAction * );
 };

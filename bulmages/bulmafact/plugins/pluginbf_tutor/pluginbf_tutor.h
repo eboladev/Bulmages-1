@@ -39,7 +39,7 @@ extern "C" MY_EXPORT int BlSubFormDelegate_setEditorData(BlSubFormDelegate *);
 extern "C" MY_EXPORT int BlSubForm_editFinished(BlSubForm *);
 extern "C" MY_EXPORT int BlDbCompleterComboBox_textChanged (BlDbCompleterComboBox *);
 extern "C" MY_EXPORT int BfSubForm_pressedAsterisk(BfSubForm *);
-
+extern "C" MY_EXPORT int BlSubForm_BlSubForm_Post ( BlSubForm * );
 
 class MyPlugProf : public QObject, BlMainCompanyPointer
 {
@@ -56,4 +56,22 @@ public:
 public slots:
     void elslot();
     void elslot1();
+};
+
+
+
+class MyPlugTutor1 : public QObject
+{
+    Q_OBJECT
+
+public:
+    MyPlugTutor1 ( BlSubForm * );
+    ~MyPlugTutor1();
+    void editarTutor( QString);
+    void nuevoTutor();
+    void seleccionarTutor(BfSubForm *);
+
+public slots:
+    virtual void s_pintaMenu ( QMenu * );
+    virtual void s_trataMenu ( QAction * );
 };
