@@ -35,6 +35,7 @@ extern "C" MY_EXPORT int BfCompany_createMainWindows_Post(BfCompany *);
 
 extern "C" MY_EXPORT int BfSubForm_pressedAsterisk(BfSubForm *);
 // extern "C" MY_EXPORT int BlSubForm_BlSubForm_Post ( BlSubForm * );
+extern "C" MY_EXPORT int BlSubForm_BlSubForm_Post ( BlSubForm * );
 
 
 class MyPlugProf : public QObject, BlMainCompanyPointer
@@ -54,3 +55,23 @@ public slots:
     void elslot1();
     void elslot2();
 };
+
+
+
+class MyPlugAl1 : public QObject
+{
+    Q_OBJECT
+
+public:
+    MyPlugAl1 ( BlSubForm * );
+    ~MyPlugAl1();
+    void editarAlumno( QString);
+    void nuevoAlumno();
+    void seleccionarAlumno(BfSubForm *);
+
+public slots:
+    virtual void s_pintaMenu ( QMenu * );
+    virtual void s_trataMenu ( QAction * );
+};
+
+

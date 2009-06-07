@@ -218,3 +218,172 @@ int BfSubForm_pressedAsterisk ( BfSubForm *sub )
 
     return 0;
 }
+
+
+
+
+
+/// --------------------------------------------------------------
+/// --------- Implemento la edicion de alumnos -----------------
+/// Con esta funcionalidad creamos menus contextuales en todos los subformularios donde
+/// Aparezca el identificador de alumno como elemento y permite de forma sencilla
+/// La creacion, la edicion, y la seleccion.
+///
+
+
+/**
+\param parent
+**/
+MyPlugAl1::MyPlugAl1 ( BlSubForm *parent ) : QObject ( parent )
+{
+    _depura ( "MyPlugAl1::MyPlugAl1", 0 );
+    _depura ( "END MyPlugAl1::MyPlugAl1", 0 );
+}
+
+///
+/**
+**/
+MyPlugAl1::~MyPlugAl1()
+{
+    _depura ( "MyPlugAl1::~MyPlugAl1", 0 );
+    _depura ( "END MyPlugAl1::~MyPlugAl1", 0 );
+}
+
+
+///
+/**
+\param menu
+**/
+void MyPlugAl1::s_pintaMenu ( QMenu *menu )
+{
+    _depura ( "MyPlugAl1::s_pintaMenu", 0 );
+    BfSubForm *sub = ( BfSubForm * ) parent();
+    BlSubFormHeader *header = sub->header ( "nombrealumno1" );
+    if (!header) 
+	header = sub->header ( "nombrealumno" );
+    if ( header ) {
+        menu->addSeparator();
+        menu->addAction ( _ ( "Nuevo alumno" ) );
+        QString idalumno = sub->dbValue ( "idalumno" );
+        if ( idalumno != "" ) menu->addAction ( _ ( "Editar alumno" ) );
+        if ( ! ( header->options() & BlSubFormHeader::DbNoWrite ) )  {
+            menu->addAction ( _ ( "Seleccionar alumno" ) );
+        } // end if
+    } // end if
+    _depura ( "END MyPlugAl1::s_pintaMenu", 0 );
+}
+
+
+///
+/**
+\param action
+**/
+void MyPlugAl1::s_trataMenu ( QAction *action )
+{
+    _depura ( "MyPlugAl1::s_trataMenu", 0 );
+    BfSubForm *sub = ( BfSubForm * ) parent();
+    if ( action->text() == _ ( "Editar alumno" ) ) {
+        QString idalumno = sub->dbValue ( "idalumno" );
+        if ( idalumno != "" )
+            editarAlumno ( idalumno );
+    } else if ( action->text() == _ ( "Seleccionar alumno" ) ) {
+        seleccionarAlumno ( sub );
+    } else if ( action->text() == _ ( "Nuevo alumno" )  ) {
+        nuevoAlumno();
+    } // end if
+
+    _depura ( "END MyPlugAl1::s_trataMenu", 0 );
+}
+
+
+///
+/**
+**/
+void MyPlugAl1::editarAlumno ( QString idalumno )
+{
+    _depura ( "MyPlugAl1::editarAlumno", 0 );
+    BlSubForm * subf = ( BlSubForm * ) parent();
+    AlumnoView * art = new AlumnoView ( ( BfCompany * ) subf->mainCompany(), 0 );
+    subf->mainCompany() ->m_pWorkspace->addWindow ( art );
+    /// Si la carga no va bien entonces terminamos.
+    if ( art->cargar ( idalumno ) ) {
+        delete art;
+        _depura ( "END AlumnosList::editar", 0, "Carga Erronea" );
+        return;
+    } // end if
+    art->hide();
+    art->show();
+    _depura ( "END MyPlugAl1::editarAlumno", 0 );
+}
+
+
+
+///
+/**
+**/
+void MyPlugAl1::nuevoAlumno( )
+{
+    _depura ( "MyPlugAl1::editarAlumno", 0 );
+    BlSubForm * subf = ( BlSubForm * ) parent();
+    AlumnoView * art = new AlumnoView ( ( BfCompany * ) subf->mainCompany(), 0 );
+    subf->mainCompany() ->m_pWorkspace->addWindow ( art );
+    art->hide();
+    art->show();
+    _depura ( "END MyPlugAl1::editarAlumno", 0 );
+}
+
+
+///
+/**
+**/
+void MyPlugAl1::seleccionarAlumno ( BfSubForm *sub )
+{
+    _depura ( "MyPlugAl1::editarAlumno", 0 );
+
+    AlumnosList *artlist = new AlumnosList ( ( BfCompany * ) sub->mainCompany(), NULL, 0, BL_SELECT_MODE );
+    /// Esto es convertir un QWidget en un sistema modal de dialogo.
+    sub->setEnabled ( false );
+    artlist->show();
+    while ( !artlist->isHidden() )
+        g_theApp->processEvents();
+    sub->setEnabled ( true );
+    QString idAlumno = artlist->idalumno();
+    delete artlist;
+
+    /// Si no tenemos un idalumno salimos ya que significa que no se ha seleccionado ninguno.
+    if ( idAlumno == "" ) {
+        _depura ( "END BfSubForm::pressedAsterisk", 0 );
+        return;
+    } // end if
+
+    BlDbRecordSet *cur = sub->mainCompany() ->loadQuery ( "SELECT * FROM alumno WHERE idalumno = " + idAlumno );
+    if ( !cur->eof() ) {
+        sub->lineaact()->setDbValue ( "idalumno", idAlumno );
+        sub->lineaact()->setDbValue ( "nombrealumno1", cur->valor ( "nombrealumno" ) );
+    } // end if
+    delete cur;
+
+    _depura ( "END MyPlugAl1::editarAlumno", 0 );
+}
+
+
+///
+/**
+\param sub
+\return
+**/
+int BlSubForm_BlSubForm_Post ( BlSubForm *sub )
+{
+    _depura ( "BlSubForm_BlSubForm_Post", 0 );
+    MyPlugAl1 *subformods = new MyPlugAl1 ( sub );
+    sub->QObject::connect ( sub, SIGNAL ( pintaMenu ( QMenu * ) ), subformods, SLOT ( s_pintaMenu ( QMenu * ) ) );
+    sub->QObject::connect ( sub, SIGNAL ( trataMenu ( QAction * ) ), subformods, SLOT ( s_trataMenu ( QAction * ) ) );
+    _depura ( "END BlSubForm_BlSubForm_Post", 0 );
+    return 0;
+}
+
+
+
+
+
+
