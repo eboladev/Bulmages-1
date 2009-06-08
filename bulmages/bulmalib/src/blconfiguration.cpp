@@ -394,6 +394,10 @@ QString BlConfiguration::nombre ( int i )
         return "CONF_DIR_PLUGINS";
     if ( i == CONF_ARTICULOS_VARIOS )
         return "CONF_ARTICULOS_VARIOS";
+    if ( i == CONF_TPV_CELL_WIDTH )
+        return "CONF_TPV_CELL_WIDTH";
+    if ( i == CONF_TPV_CELLS_PER_ROW )
+        return "CONF_TPV_CELLS_PER_ROW";
     if ( i == CONF_FACT_ALT )
         return "CONF_FACT_ALT";
     if ( i == CONF_CONT_ALT )

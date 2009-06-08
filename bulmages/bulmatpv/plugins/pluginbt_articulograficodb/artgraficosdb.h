@@ -44,7 +44,6 @@ public:
 public:
     QString m_codigoarticulo;
     QString m_nombrearticulo;
-
 };
 
 // Clase que contiene la informacion necesario sobre la familia y su lista
@@ -62,13 +61,24 @@ public:
     QList<NodoArticulo> m_listaarticulos;
 };
 
+// Clase que guarda la informacion de un articulo en pantalla
+// Por cada elemento de la rejilla que contenga un articulo
+// su informacion se guarda en esta clase (su codigo y su imagen, por ahora)
+class BtLabel : public QLabel {
+
+public:
+    BtLabel();
+    ~BtLabel();
+    
+public:
+    QString m_codigoarticulo;
+};
+
 class ArtGraficosDb : public BlWidget, public Ui_ArtGraficosDbBase
 {
     Q_OBJECT
 
 public:
-    QString m_articulos[100][100];
-    QDomDocument m_doc;
     int m_numPantallas;
     int m_pantallaActual;
     QList<FamiliaArticulos> m_listfamilias;

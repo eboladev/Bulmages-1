@@ -14,6 +14,11 @@ CONF_PLUGINS_BULMATPV		libpluginbt_tecladonumerico@CMAKE_SHARED_LIBRARY_SUFFIX@;
 				libpluginbt_articulografico@CMAKE_SHARED_LIBRARY_SUFFIX@; \
 				libpluginbt_accesobotones@CMAKE_SHARED_LIBRARY_SUFFIX@
 
+#Las consideramos cuadradas, por eso solo se especifica ancho (en pixeles)
+CONF_TPV_CELL_WIDTH     120
+#Numero de elementos por fila
+CONF_TPV_CELLS_PER_ROW  6
+
 CONF_DIR_THUMB_ARTICLES		/var/bulmages/articles_thumbs/
 CONF_TICKET_PRINTER_FILE	/dev/null
 CONF_TPV_VISOR_FILE		/dev/null

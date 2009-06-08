@@ -204,6 +204,10 @@
 #define CONF_CASHBOX_OPEN_CODE	     455
 /// Configuracion para articulos varios
 #define CONF_ARTICULOS_VARIOS        456
+/// Ancho en pixeles de la celda
+#define CONF_TPV_CELL_WIDTH          457
+/// Numero de celdas por fila
+#define CONF_TPV_CELLS_PER_ROW       458
 
 /// CONF_NUM_AUT_* determina si se utilizaran numeradores automaticos para presupuestos,
 /// albaranes y facturas inicialmente vale "".

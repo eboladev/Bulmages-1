@@ -42,6 +42,9 @@ NodoArticulo::~NodoArticulo() {}
 FamiliaArticulos::FamiliaArticulos() {}
 FamiliaArticulos::~FamiliaArticulos() {}
 
+BtLabel::BtLabel() {}
+BtLabel::~BtLabel() {}
+
 ArtGraficosDb::ArtGraficosDb ( BlMainCompany *emp, QWidget *parent ) : BlWidget ( emp, parent )
 {
     _depura ( "ArtGraficosDb::ArtGraficosDb", 0 );
@@ -71,16 +74,21 @@ ArtGraficosDb::~ArtGraficosDb()
 void ArtGraficosDb::on_mui_list_cellClicked ( int row, int column )
 {
     _depura ( "ArtGraficosDb::on_mui_list_cellClicked", 0 );
+    
+    // Obtenemos el item de la celda
+    BtLabel *label = (BtLabel *) mui_list->cellWidget(row, column);
+    
+    // Celda vacia. No hacemos nada.
+    if (label == NULL) { return; }
 
     QString artvarios = g_confpr->valor ( CONF_ARTICULOS_VARIOS );
-    QString codigo = m_articulos[row][column];
     
-    if ( ! artvarios.contains ( codigo ) ) {
-        ( ( BtCompany * ) mainCompany() )->ticketActual()->insertarArticuloCodigo ( m_articulos[row][column] );
+    if ( ! artvarios.contains ( label->m_codigoarticulo ) ) {
+        ( ( BtCompany * ) mainCompany() )->ticketActual()->insertarArticuloCodigo ( label->m_codigoarticulo );
     } else {
-        ( ( BtCompany * ) mainCompany() )->ticketActual()->insertarArticuloCodigoNL ( m_articulos[row][column] );
+        ( ( BtCompany * ) mainCompany() )->ticketActual()->insertarArticuloCodigoNL ( label->m_codigoarticulo );
     } // end if
-    
+        
     _depura ( "END ArtGraficosDb::on_mui_list_cellClicked", 0 );
 }
 
@@ -107,11 +115,7 @@ void ArtGraficosDb::muestraPantalla ( int numpantalla )
     _depura ( "ArtGraficosDb::muestraPantalla", 0 );
 
     m_pantallaActual = numpantalla;
-    
-    QDomElement docElem = m_doc.documentElement();
-    QDomElement pantalla = docElem.firstChildElement("PANTALLA");
 
-    //m_numPantallas = docElem.elementsByTagName ( "PANTALLA" ).count();
     m_numPantallas = m_listfamilias.count();
 
     /// Simulamos un sistema ciclico.
@@ -121,18 +125,13 @@ void ArtGraficosDb::muestraPantalla ( int numpantalla )
     // Obtenemos datos de la familia de esta pantalla
     FamiliaArticulos fa = m_listfamilias.value(m_pantallaActual);
     
-//     mensajeInfo("Estamos en la pantalla " + QString::number(m_pantallaActual) + " y hay " + QString::number(m_numPantallas) + " pantallas");
+    // Celdas por fila
+    QString grid = g_confpr->valor ( CONF_TPV_CELLS_PER_ROW );
 
-//     QDomElement pantalla = docElem.elementsByTagName ( "PANTALLA" ).at ( m_pantallaActual ).toElement();
-
-    //QString grid = pantalla.firstChildElement ( "GRID" ).toElement().text();
-    QString grid = "8";
-
-    //QString cellwidth = pantalla.firstChildElement ( "CELLWIDTH" ).toElement().text();
-    QString cellwidth = "75";
+    // Ancho y alto de la celda en pixeles
+    QString cellwidth = g_confpr->valor ( CONF_TPV_CELL_WIDTH );
 
     /// Cogemos el titulo de la pantalla
-//     QString titulo = m_listfamilias.value(m_pantallaActual);
     QString titulo = fa.m_nombrefamilia;
     mui_titulo->setText ( titulo );
 
@@ -151,7 +150,6 @@ void ArtGraficosDb::muestraPantalla ( int numpantalla )
 
     /// Tratamos cada ventana
     QWidget *activewindow = NULL;
-    QDomNodeList nodos = pantalla.elementsByTagName ( "ITEM" );
     
     int nitem = 0;
     int numarticulos = fa.m_listaarticulos.count();
@@ -159,32 +157,21 @@ void ArtGraficosDb::muestraPantalla ( int numpantalla )
 
     for ( int row = 0; row < grid.toInt(); row++ ) {
     
-        for ( int column  = 0; column < grid.toInt(); column++ ) {
+        for ( int column = 0; column < grid.toInt(); column++ ) {
 
-            //if ( nitem < nodos.count() ) {
             if ( nitem < numarticulos ) {
             
                 // Obtenemos el articulo en la posicion nitem
                 na = fa.m_listaarticulos.value(nitem);
             
-                QDomNode ventana = nodos.item ( nitem );
-
-                //QString nombre = ventana.firstChildElement ( "TITULO" ).toElement().text();
                 QString nombre = na.m_nombrearticulo;
                 QString codigo = na.m_codigoarticulo;
                 
-                /*
-                QDomElement e1 = ventana.toElement(); /// try to convert the node to an element.
-                QString text = e1.text();
-
-                QString codigo = ventana.firstChildElement ( "CODIGO" ).toElement().text();
-                if ( codigo.isEmpty() ) {
-                    codigo = text;
-                } // end if
-                */
-
                 /// Creamos el elemento y lo ponemos en la tabla.
-                QLabel *lab = new QLabel ( NULL );
+                //QLabel *lab = new QLabel ( NULL );
+                BtLabel *lab = new BtLabel();
+                lab->m_codigoarticulo = codigo;
+                
                 /// El escalado completo tarda demasiado.
 //                lab->setPixmap(QPixmap("/var/bulmages/articles/"+text+".jpg", "no", Qt::OrderedDither | Qt::OrderedAlphaDither | Qt::AvoidDither).scaled(cellwidth.toInt(),cellwidth.toInt()));
                 /// El escalado lateral tambien tarda demasiado
@@ -201,14 +188,17 @@ void ArtGraficosDb::muestraPantalla ( int numpantalla )
 
                 painter.drawPixmap ( 0, 0, cellwidth.toInt(), cellwidth.toInt(), QPixmap ( g_confpr->valor ( CONF_DIR_THUMB_ARTICLES ) + "blanco.jpg" ) );
 
-                painter.drawPixmap ( 0, 0, cellwidth.toInt(), cellwidth.toInt() - 25, QPixmap ( g_confpr->valor ( CONF_DIR_THUMB_ARTICLES ) + codigo + ".jpg" ) );
+				// Si existe la imagen del articulo, esta se superpondra a la de blanco.jpg, dejando 20px por debajo
+				// para que se vea el texto negro sobre blanco
+				painter.drawPixmap ( 0, 0, cellwidth.toInt(), cellwidth.toInt() - 20, QPixmap ( g_confpr->valor ( CONF_DIR_THUMB_ARTICLES ) + codigo + ".jpg" ) );
 
 //         painter.drawEllipse(10,20, 80,70); // draw an ellipse
 
                 painter.setPen ( QColor ( 0, 0, 0 ) );
                 painter.setBackground ( QColor ( 0, 0, 0 ) );
 
-                painter.drawText ( 5, 95, nombre );
+                //painter.drawText ( 5, 95, nombre );
+                painter.drawText ( 5, (g_confpr->valor ( CONF_TPV_CELL_WIDTH ).toInt() - 5), nombre );
                 
                 //  painter.setPen(QColor(0,25,0));
                 //  painter.drawText(5,10,nombre);
@@ -221,7 +211,7 @@ void ArtGraficosDb::muestraPantalla ( int numpantalla )
                 lab->setPicture ( picture );
 
                 mui_list->setCellWidget ( row, column, lab );
-                m_articulos[row][column] = codigo;
+
                 nitem++;
             
             } // end if
