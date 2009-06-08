@@ -83,7 +83,7 @@ void MyPlugArt::inicializa ( )
 
         pPluginMenu->addSeparator();
         QAction *tfam = new QAction ( _ ( "&Partidas contables" ), 0 );
-        tfam->setIcon ( QIcon ( QString::fromUtf8 ( ":/Images/product-family.png" ) ) );
+        tfam->setIcon ( QIcon ( QString::fromUtf8 ( ":/Images/account_plan.png" ) ) );
         tfam->setStatusTip ( _ ( "Partidas contables" ) );
         tfam->setWhatsThis ( _ ( "Partidas contables" ) );
         pPluginMenu->addAction ( tfam );

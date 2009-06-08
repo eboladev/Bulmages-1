@@ -54,7 +54,7 @@ language 'plpgsql';
 
 
 
--- ========================== CONTROL DE STOCK =======================
+-- ========================== PARTIDAS =======================
 
 
 
@@ -81,6 +81,57 @@ SELECT aux();
 DROP FUNCTION aux() CASCADE;
 
 
+
+
+\echo -n ':: Funcion que calcula el codigo completo de la partida ... '
+SELECT drop_if_exists_proc ('calculacodigocompletopartida','');
+CREATE FUNCTION calculacodigocompletopartida() RETURNS "trigger"
+AS '
+DECLARE
+    as RECORD;
+    codigocompleto character varying(50);
+
+BEGIN
+    codigocompleto := NEW.codigopartida;
+    SELECT INTO as codigocompletopartida FROM partida WHERE idpartida = NEW.padre;
+    IF FOUND THEN
+	codigocompleto := as.codigocompletopartida || codigocompleto;
+    END IF;
+    NEW.codigocompletopartida := codigocompleto;
+    RETURN NEW;
+END;
+' LANGUAGE plpgsql;
+
+
+\echo -n ':: Disparador que calcula el codigo completo de la partida ... '
+CREATE TRIGGER calculacodigocompletopartidatrigger
+    BEFORE INSERT OR UPDATE ON partida
+    FOR EACH ROW
+    EXECUTE PROCEDURE calculacodigocompletopartida();
+    
+    
+\echo -n ':: Funcion que propaga el codigo completo de la partida ... '
+SELECT drop_if_exists_proc ('propagacodigocompletopartida','');
+CREATE FUNCTION propagacodigocompletopartida() RETURNS "trigger"
+AS '
+DECLARE
+
+BEGIN
+    UPDATE partida SET codigocompletopartida = codigocompletopartida WHERE padre = NEW.idpartida;
+    RETURN NEW;
+END;
+' LANGUAGE plpgsql;
+
+
+\echo -n ':: Disparador que propaga el codigo completo de la partida ... '
+CREATE TRIGGER propagacodigocompletopartidatrigger
+    AFTER UPDATE ON partida
+    FOR EACH ROW
+    EXECUTE PROCEDURE propagacodigocompletopartida();
+
+
+
+
 -- ==============================================================================
 
 
@@ -92,9 +143,9 @@ DECLARE
 BEGIN
 	SELECT INTO as * FROM configuracion WHERE nombre=''PluginBf_MiniContabilidad'';
 	IF FOUND THEN
-		UPDATE CONFIGURACION SET valor=''0.11.1-0001'' WHERE nombre=''PluginBf_MiniContabilidad'';
+		UPDATE CONFIGURACION SET valor=''0.11.1-0002'' WHERE nombre=''PluginBf_MiniContabilidad'';
 	ELSE
-		INSERT INTO configuracion (nombre, valor) VALUES (''PluginBf_MiniContabilidad'', ''0.11.1-0001'');
+		INSERT INTO configuracion (nombre, valor) VALUES (''PluginBf_MiniContabilidad'', ''0.11.1-0002'');
 	END IF;
 	RETURN 0;
 END;

@@ -39,7 +39,7 @@ class MY_EXPORT PartidasView : public BfForm, public Ui_PartidasBase
 private:
     /// Indica cu&aacute;l es el registro que se est&aacute; modificando. Sirve para saber los
     /// cambios que hay que guardar despu&eacute;s de que se haya modificado.
-    QString m_idfamilia;
+    QString m_idpartida;
     /// Indica si es modo consulta o modo edici&oacute;n. (modifica el comportamiento del
     /// doble click sobre la lista).
     bool m_modoConsulta;

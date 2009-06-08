@@ -31,6 +31,8 @@ include_directories(
 	${CMAKE_SOURCE_DIR}/bulmalib/src/
 	${CMAKE_BINARY_DIR}/bulmafact/src/
 	${CMAKE_SOURCE_DIR}/bulmafact/src/
+	${CMAKE_BINARY_DIR}/bulmafact/plugins/pluginbf_recibo/
+	${CMAKE_SOURCE_DIR}/bulmafact/plugins/pluginbf_recibo/
 	${CMAKE_BINARY_DIR}/bulmafact/plugins/pluginbf_clientecobro/
 	${CMAKE_SOURCE_DIR}/bulmafact/plugins/pluginbf_clientecobro/
 	${CMAKE_BINARY_DIR}/bulmafact/plugins/pluginbf_clientefactura/
@@ -92,7 +94,7 @@ foreach(dfile ${docs})
    install (FILES ${dfile} DESTINATION share/bulmages/bulmafact-plugins/ RENAME ${dfile}.${plugin})
 endforeach(dfile in ${docs})
 
-add_dependencies(${plugin} bulmafact bulmalib pluginbf_clientecobro)
+add_dependencies(${plugin} bulmafact bulmalib pluginbf_clientecobro pluginbf_recibo)
 
 set(files q19.png)
 install(FILES ${files} DESTINATION share/bulmages/icons)

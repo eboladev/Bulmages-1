@@ -16,7 +16,7 @@
   </property>
   <property name="windowIcon">
    <iconset resource="../../../bulmages.qrc">
-    <normaloff>:/Images/product-family.png</normaloff>:/Images/product-family.png</iconset>
+    <normaloff>:/Images/account_plan.png</normaloff>:/Images/account_plan.png</iconset>
   </property>
   <layout class="QVBoxLayout">
    <property name="margin">
@@ -48,7 +48,7 @@
         <string/>
        </property>
        <property name="pixmap">
-        <pixmap resource="../../../bulmages.qrc">:/Images/product-family.png</pixmap>
+        <pixmap resource="../../../bulmages.qrc">:/Images/account_plan.png</pixmap>
        </property>
        <property name="scaledContents">
         <bool>true</bool>
@@ -316,7 +316,7 @@
    <item>
     <widget class="QGroupBox" name="groupBox1">
      <property name="title">
-      <string>Contenido de la familia:</string>
+      <string>Contenido de la partida</string>
      </property>
      <layout class="QGridLayout">
       <property name="margin">
@@ -347,19 +347,19 @@
          <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
         </property>
         <property name="buddy">
-         <cstring>mui_nomPartida</cstring>
+         <cstring>mui_nombrePartida</cstring>
         </property>
        </widget>
       </item>
       <item row="1" column="1" colspan="3">
-       <widget class="QLineEdit" name="mui_nomPartida">
+       <widget class="QLineEdit" name="mui_nombrePartida">
         <property name="maxLength">
          <number>50</number>
         </property>
        </widget>
       </item>
       <item row="0" column="3">
-       <widget class="QLineEdit" name="mui_codPartida">
+       <widget class="QLineEdit" name="mui_codigoPartida">
         <property name="maxLength">
          <number>12</number>
         </property>
@@ -374,12 +374,12 @@
          <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
         </property>
         <property name="buddy">
-         <cstring>mui_codPartida</cstring>
+         <cstring>mui_codigoPartida</cstring>
         </property>
        </widget>
       </item>
       <item row="0" column="1">
-       <widget class="QLineEdit" name="mui_codCompletoPartida">
+       <widget class="QLineEdit" name="mui_codigoCompletoPartida">
         <property name="maxLength">
          <number>50</number>
         </property>
@@ -394,7 +394,7 @@
          <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
         </property>
         <property name="buddy">
-         <cstring>mui_codCompletoPartida</cstring>
+         <cstring>mui_codigoCompletoPartida</cstring>
         </property>
        </widget>
       </item>
@@ -421,14 +421,14 @@
           <number>5</number>
          </property>
          <item>
-          <widget class="QRadioButton" name="mui_serviciofamilia">
+          <widget class="QRadioButton" name="mui_serviciopartida">
            <property name="text">
             <string>Servicio.</string>
            </property>
           </widget>
          </item>
          <item>
-          <widget class="QRadioButton" name="mui_productofamilia">
+          <widget class="QRadioButton" name="mui_productopartida">
            <property name="text">
             <string>Producto.</string>
            </property>
@@ -486,11 +486,11 @@
   <tabstop>mui_guardar</tabstop>
   <tabstop>mui_imprimir</tabstop>
   <tabstop>mui_detalles</tabstop>
-  <tabstop>mui_codCompletoPartida</tabstop>
-  <tabstop>mui_codPartida</tabstop>
-  <tabstop>mui_nomPartida</tabstop>
-  <tabstop>mui_serviciofamilia</tabstop>
-  <tabstop>mui_productofamilia</tabstop>
+  <tabstop>mui_codigoCompletoPartida</tabstop>
+  <tabstop>mui_codigoPartida</tabstop>
+  <tabstop>mui_nombrePartida</tabstop>
+  <tabstop>mui_serviciopartida</tabstop>
+  <tabstop>mui_productopartida</tabstop>
   <tabstop>mui_descPartida</tabstop>
   <tabstop>m_listPartidas</tabstop>
   <tabstop>mui_aceptar</tabstop>

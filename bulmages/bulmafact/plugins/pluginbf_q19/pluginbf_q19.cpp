@@ -95,3 +95,31 @@ int FacturasList_FacturasList ( FacturasList *l )
     return 0;
 }
 
+
+///
+/**
+\param l
+\return
+**/
+int RecibosList_RecibosList ( RecibosList *l )
+{
+    _depura ( "RecibosList_RecibosList", 0 );
+
+    Q19QToolButton *sel = new Q19QToolButton ( (CobrosList *)l, l->mui_plugbotones );
+//    Q19QToolButton *sel = new Q19QToolButton ( NULL, l->mui_plugbotones );
+
+    QHBoxLayout *m_hboxLayout1 = l->mui_plugbotones->findChild<QHBoxLayout *> ( "hboxLayout1" );
+    if ( !m_hboxLayout1 ) {
+        m_hboxLayout1 = new QHBoxLayout ( l->mui_plugbotones );
+        m_hboxLayout1->setSpacing ( 5 );
+        m_hboxLayout1->setMargin ( 0 );
+        m_hboxLayout1->setObjectName ( QString::fromUtf8 ( "hboxLayout1" ) );
+    } // end if
+    m_hboxLayout1->addWidget ( sel );
+
+    _depura ( "END RecibosList_RecibosList", 0 );
+    return 0;
+}
+
+
+
