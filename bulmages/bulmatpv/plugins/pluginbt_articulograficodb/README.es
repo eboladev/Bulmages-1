@@ -6,7 +6,7 @@
 
 Nombre: Parrilla gráfica a partir de la Base de Datos
 
-Biblioteca: libpluginbt_articulografico.so
+Biblioteca: libpluginbt_articulograficodb.so
 
 Descripción: <H1>Parrilla gráfica a partir de la Base de Datos</H1>
 <P>Presentación de los articulos en forma de parrilla de elementos. Convierte BulmaTPV en el
