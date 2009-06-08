@@ -24,7 +24,7 @@
 #include "bfcompany.h"
 #include "blfunctions.h"
 #include "partidasview.h"
-
+#include "acontableview.h"
 
 ///
 /**
@@ -48,7 +48,17 @@ MyPlugArt::~MyPlugArt()
 }
 
 
-
+///
+/**
+**/
+void MyPlugArt::elslot2()
+{
+    _depura ( "MyPlugArt::elslot3", 0 );
+    ApunteContableView *pag = new ApunteContableView ( ( BfCompany * ) mainCompany(), 0 );
+    mainCompany() ->m_pWorkspace->addWindow ( pag );
+    pag->show();
+    _depura ( "END MyPlugArt::elslot3", 0 );
+}
 
 
 
@@ -80,7 +90,6 @@ void MyPlugArt::inicializa ( )
         QMenu *pPluginMenu = m_bges->newMenu ( _("Gestion"), "menuGestion", "menuMaestro" );
         pPluginMenu->addSeparator();
 
-
         pPluginMenu->addSeparator();
         QAction *tfam = new QAction ( _ ( "&Partidas contables" ), 0 );
         tfam->setIcon ( QIcon ( QString::fromUtf8 ( ":/Images/account_plan.png" ) ) );
@@ -90,7 +99,26 @@ void MyPlugArt::inicializa ( )
         m_bges->Fichas->addAction ( tfam );
         connect ( tfam, SIGNAL ( activated() ), this, SLOT ( elslot3() ) );
 
-	    }// end if
+        QAction *tfam1 = new QAction ( _ ( "&Anotaciones contables" ), 0 );
+        tfam1->setIcon ( QIcon ( QString::fromUtf8 ( ":/Images/balance-sheet.png" ) ) );
+        tfam1->setStatusTip ( _ ( "Anotaciones contables" ) );
+        tfam1->setWhatsThis ( _ ( "Anotaciones contables" ) );
+        pPluginMenu->addAction ( tfam1 );
+        m_bges->Fichas->addAction ( tfam1 );
+        connect ( tfam1, SIGNAL ( activated() ), this, SLOT ( elslot2() ) );
+
+        QAction *tfam2 = new QAction ( _ ( "&Previsiones" ), 0 );
+        tfam2->setIcon ( QIcon ( QString::fromUtf8 ( ":/Images/book-list.png" ) ) );
+        tfam2->setStatusTip ( _ ( "Previsiones" ) );
+        tfam2->setWhatsThis ( _ ( "Previsiones" ) );
+        pPluginMenu->addAction ( tfam2 );
+        m_bges->Fichas->addAction ( tfam2 );
+        connect ( tfam2, SIGNAL ( activated() ), this, SLOT ( elslot3() ) );
+
+	
+	
+	
+     }// end if
     _depura ( "END MyPlugArt::inicializa", 0 );
 }
 

@@ -74,6 +74,43 @@ BEGIN
 		padre integer DEFAULT 0
 		);
 	END IF;
+
+	SELECT INTO as * FROM pg_tables  WHERE tablename=''acontable'';
+	IF NOT FOUND THEN
+		CREATE TABLE acontable (
+		idacontable SERIAL PRIMARY KEY,
+		fechaacontable DATE,
+		conceptoacontable varchar NOT NULL,
+		debeacontable NUMERIC(12,2),
+		haberacontable NUMERIC(12,2),
+		idpartida integer REFERENCES partida(idpartida)
+		);
+	END IF;
+
+
+	SELECT INTO as * FROM pg_tables  WHERE tablename=''presupuestocontable'';
+	IF NOT FOUND THEN
+		CREATE TABLE presupuestocontable (
+		idpresupuestocontable SERIAL PRIMARY KEY,
+		fechapresupuestocontable DATE,
+		conceptopresupuestocontable varchar NOT NULL
+		);
+	END IF;
+
+
+
+	SELECT INTO as * FROM pg_tables  WHERE tablename=''lpresupuestocontable'';
+	IF NOT FOUND THEN
+		CREATE TABLE lpresupuestocontable (
+		idlpresupuestocontable SERIAL PRIMARY KEY,
+		idpresupuestocontable INTEGER REFERENCES presupuestocontable(idpresupuestocontable),
+		idpartida integer REFERENCES partida(idpartida),
+		conceptolpresupuestocontable varchar NOT NULL,
+		saldolpresupuestocontable NUMERIC(12,2)
+		);
+	END IF;
+
+
 	RETURN 0;
 END;
 '   LANGUAGE plpgsql;

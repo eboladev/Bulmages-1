@@ -1,6 +1,7 @@
 /***************************************************************************
- *   Copyright (C) 2005 by Tomeu Borras Riera                              *
+ *   Copyright (C) 2004 by Tomeu Borras Riera                              *
  *   tborras@conetxia.com                                                  *
+ *   http://www.iglues.org                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
  *   it under the terms of the GNU General Public License as published by  *
@@ -18,33 +19,42 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
+#ifndef APUNTECONTABLEVIEW_H
+#define APUNTECONTABLEVIEW_H
+
+#include <QLineEdit>
+#include <QLabel>
+#include <QCheckBox>
+
+
 #include "blpostgresqlclient.h"
-#include "bfbulmafact.h"
-#include "blwidget.h"
-#include "bfbuscarreferencia.h"
-#include "blsearchwidget.h"
-#include "bfsubform.h"
-#include "pdefs.h"
-
-extern "C" MY_EXPORT int entryPoint ( BfBulmaFact * );
-extern "C" MY_EXPORT int BfCompany_createMainWindows_Post(BfCompany *);
-extern "C" MY_EXPORT int Busqueda_on_mui_buscar_released(BlSearchWidget *);
-extern "C" MY_EXPORT int BlSubForm_BlSubForm_Post ( BlSubForm * );
+#include "bldatesearch.h"
+#include "bldialogchanges.h"
+#include "bfform.h"
 
 
+class BfCompany;
 
-class MyPlugArt : public QObject, BlMainCompanyPointer
+
+#include "ui_acontablebase.h"
+
+/** Ventana de ficha de cobro.
+    Se encarga de la presentacion de la ficha de cobro y del tratamiento de eventos producidos
+    en dicha ventana.
+    Deriva de Ficha para metodos comunes a todas las ventanas.
+    Deriva de Cobro para el manejo de la Base de datos. */
+class ApunteContableView : public BfForm, public Ui_ApunteContableBase
 {
     Q_OBJECT
-private:
-  BfBulmaFact *m_bges;
 
 public:
-    MyPlugArt( BfBulmaFact *);
-    ~MyPlugArt();
-    void inicializa (  );
+    ApunteContableView ( BfCompany *, QWidget * );
+    ~ApunteContableView();
+    virtual void imprimir();
+    virtual QString nombrePlantilla(void) ;
+    virtual int guardar();
+    virtual int cargar(QString );
 
-public slots:
-    void elslot3();
-    void elslot2();
 };
+
+#endif
