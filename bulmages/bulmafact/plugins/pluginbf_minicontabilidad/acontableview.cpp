@@ -58,7 +58,7 @@ ApunteContableView::ApunteContableView ( BfCompany *comp, QWidget *parent ) : Bf
         mui_list->addSubFormHeader ( "idacontable", BlDbField::DbInt, BlDbField::DbPrimaryKey , BlSubFormHeader::DbHideView, _ ( "Identificador" ) );
         mui_list->addSubFormHeader ( "idpartida", BlDbField::DbInt, BlDbField::DbNotNull, BlSubFormHeader::DbHideView, _ ( "Id. Partida" ) );
         mui_list->addSubFormHeader ( "fechaacontable", BlDbField::DbDate, BlDbField::DbNotNull, BlSubFormHeader::DbNone, _ ( "Fecha" ) );
-        mui_list->addSubFormHeader ( "codigopartida", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone, _ ( "Codigo Partida" ) );
+        mui_list->addSubFormHeader ( "codigocompletopartida", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone, _ ( "Codigo Partida" ) );
         mui_list->addSubFormHeader ( "nombrepartida", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone, _ ( "Nombre Partida" ) );
         mui_list->addSubFormHeader ( "conceptoacontable", BlDbField::DbVarChar, BlDbField::DbNothing , BlSubFormHeader::DbHideView, _ ( "Concepto" ) );
         mui_list->addSubFormHeader ( "debeacontable", BlDbField::DbNumeric, BlDbField::DbNotNull, BlSubFormHeader::DbNone, _ ( "Debe" ) );

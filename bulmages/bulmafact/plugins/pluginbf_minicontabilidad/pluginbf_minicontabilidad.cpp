@@ -199,6 +199,193 @@ int Busqueda_on_mui_buscar_released ( BlSearchWidget *busq )
 
 
 
+int BfSubForm_pressedAsterisk ( BfSubForm *sub )
+{
+    _depura ( "BfSubForm_pressedAsterisk" );
+
+    if ( sub->m_campoactual->nomcampo() != "codigocompletopartida" ) {
+        _depura ( "END BfSubForm::pressedAsterisk", 0 );
+        return 0;
+    } // end if
+
+        QDialog *diag = new QDialog ( 0 );
+        diag->setModal ( true );
+        diag->setGeometry ( QRect ( 0, 0, 750, 550 ) );
+        centrarEnPantalla ( diag );
+
+        PartidasView *arts = new PartidasView ( ( BfCompany * ) sub->mainCompany(), 0, TRUE );
+
+        diag->connect ( arts, SIGNAL ( selected ( QString ) ), diag, SLOT ( accept() ) );
+
+        /// Creamos un layout donde estara el contenido de la ventana y la ajustamos al QDialog
+        /// para que sea redimensionable y aparezca el titulo de la ventana.
+        QHBoxLayout *layout = new QHBoxLayout;
+        layout->addWidget ( arts );
+        layout->setMargin ( 0 );
+        layout->setSpacing ( 0 );
+        diag->setLayout ( layout );
+        diag->setWindowTitle ( arts->windowTitle() );
+
+        diag->exec();
+        if ( arts->idPartida() != "" ) {
+
+    BlDbRecordSet *cur = sub->mainCompany() ->loadQuery ( "SELECT * FROM partida WHERE idpartida = " + arts->idPartida() );
+    if ( !cur->eof() ) {
+        sub->m_registrolinea->setDbValue ( "idpartida", arts->idPartida() );
+        sub->m_registrolinea->setDbValue ( "codigocompletopartida", cur->valor ( "codigocompletopartida" ));
+        sub->m_registrolinea->setDbValue ( "nombrepartida", cur->valor ( "nombrepartida" ));
+    } // end if
+    
+    delete cur;
+	  
+	  
+        } // end if
+        delete diag;
+
+    _depura ( "END BfSubForm_pressedAsterisk" );
+
+    return 1;
+}
+
+
+
+
+/// --------------------------------------------------------------
+/// --------- Implemento la edicion de articulos -----------------
+/// Con esta funcionalidad creamos menus contextuales en todos los subformularios donde
+/// Aparezca el identificador de articulo como elemento y permite de forma sencilla
+/// La creacion, la edicion, y la seleccion.
+///
+
+
+/**
+\param parent
+**/
+MyPlugArt1::MyPlugArt1 ( BlSubForm *parent ) : QObject ( parent )
+{
+    _depura ( "MyPlugArt1::MyPlugArt1", 0 );
+    _depura ( "END MyPlugArt1::MyPlugArt1", 0 );
+}
+
+///
+/**
+**/
+MyPlugArt1::~MyPlugArt1()
+{
+    _depura ( "MyPlugArt1::~MyPlugArt1", 0 );
+    _depura ( "END MyPlugArt1::~MyPlugArt1", 0 );
+}
+
+
+///
+/**
+\param menu
+**/
+void MyPlugArt1::s_pintaMenu ( QMenu *menu )
+{
+    _depura ( "MyPlugArt1::s_pintaMenu", 0 );
+    BfSubForm *sub = ( BfSubForm * ) parent();
+    BlSubFormHeader *header = sub->header ( "codigocompletopartida" );
+    if ( header ) {
+        menu->addSeparator();
+        menu->addAction ( _ ( "Gestionar partidas" ) );
+	menu->addAction ( _ ( "Seleccionar partida" ) );
+    } // end if
+    _depura ( "END MyPlugArt1::s_pintaMenu", 0 );
+}
+
+
+///
+/**
+\param action
+**/
+void MyPlugArt1::s_trataMenu ( QAction *action )
+{
+    _depura ( "MyPlugArt1::s_trataMenu", 0 );
+    BfSubForm *sub = ( BfSubForm * ) parent();
+    if ( action->text() == _ ( "Gestionar partidas" ) ) {
+            gestionarPartidas ( sub);
+    } else if ( action->text() == _ ( "Seleccionar partida" ) ) {
+        seleccionarPartida ( sub );
+    } // end if
+
+    _depura ( "END MyPlugArt1::s_trataMenu", 0 );
+}
+
+
+///
+/**
+**/
+void MyPlugArt1::gestionarPartidas (  BfSubForm *sub )
+{
+    _depura ( "MyPlugArt1::editarArticulo", 0 );
+    PartidasView *pag = new PartidasView ( ( BfCompany * ) sub->mainCompany(), 0, FALSE );
+    sub->mainCompany() ->m_pWorkspace->addWindow ( pag );
+    pag->show();
+    _depura ( "END MyPlugArt1::editarArticulo", 0 );
+}
+
+
+
+///
+/**
+**/
+void MyPlugArt1::seleccionarPartida ( BfSubForm *sub )
+{
+    _depura ( "MyPlugArt1::editarArticulo", 0 );
+
+        QDialog *diag = new QDialog ( 0 );
+        diag->setModal ( true );
+        diag->setGeometry ( QRect ( 0, 0, 750, 550 ) );
+        centrarEnPantalla ( diag );
+
+        PartidasView *arts = new PartidasView ( ( BfCompany * ) sub->mainCompany(), 0, TRUE );
+
+        diag->connect ( arts, SIGNAL ( selected ( QString ) ), diag, SLOT ( accept() ) );
+
+        /// Creamos un layout donde estara el contenido de la ventana y la ajustamos al QDialog
+        /// para que sea redimensionable y aparezca el titulo de la ventana.
+        QHBoxLayout *layout = new QHBoxLayout;
+        layout->addWidget ( arts );
+        layout->setMargin ( 0 );
+        layout->setSpacing ( 0 );
+        diag->setLayout ( layout );
+        diag->setWindowTitle ( arts->windowTitle() );
+
+        diag->exec();
+        if ( arts->idPartida() != "" ) {
+
+    BlDbRecordSet *cur = sub->mainCompany() ->loadQuery ( "SELECT * FROM partida WHERE idpartida = " + arts->idPartida() );
+
+    if ( !cur->eof() ) {
+        sub->lineaact()->setDbValue ( "idpartida", arts->idPartida() );
+        sub->lineaact()->setDbValue ( "codigocompletopartida", cur->valor ( "codigocompletopartida" ) );
+        sub->lineaact()->setDbValue ( "nombrepartida", cur->valor ( "nombrepartida" ) );
+    } // end if
+    delete cur;
+	} // end if
+    delete diag;
+    
+    _depura ( "END MyPlugArt1::editarArticulo", 0 );
+}
+
+
+///
+/**
+\param sub
+\return
+**/
+int BlSubForm_BlSubForm_Post ( BlSubForm *sub )
+{
+    _depura ( "BlSubForm_BlSubForm_Post", 0 );
+    MyPlugArt1 *subformods = new MyPlugArt1 ( sub );
+    sub->QObject::connect ( sub, SIGNAL ( pintaMenu ( QMenu * ) ), subformods, SLOT ( s_pintaMenu ( QMenu * ) ) );
+    sub->QObject::connect ( sub, SIGNAL ( trataMenu ( QAction * ) ), subformods, SLOT ( s_trataMenu ( QAction * ) ) );
+    _depura ( "END BlSubForm_BlSubForm_Post", 0 );
+    return 0;
+}
+
+
 
 
 

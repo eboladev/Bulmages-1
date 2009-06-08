@@ -30,7 +30,25 @@ extern "C" MY_EXPORT int entryPoint ( BfBulmaFact * );
 extern "C" MY_EXPORT int BfCompany_createMainWindows_Post(BfCompany *);
 extern "C" MY_EXPORT int Busqueda_on_mui_buscar_released(BlSearchWidget *);
 extern "C" MY_EXPORT int BlSubForm_BlSubForm_Post ( BlSubForm * );
+extern "C" MY_EXPORT int BfSubForm_pressedAsterisk ( BfSubForm * );
+extern "C" MY_EXPORT int BlSubForm_BlSubForm_Post ( BlSubForm * );
 
+
+
+class MyPlugArt1 : public QObject
+{
+    Q_OBJECT
+
+public:
+    MyPlugArt1 ( BlSubForm * );
+    ~MyPlugArt1();
+    void gestionarPartidas( BfSubForm * );
+    void seleccionarPartida(BfSubForm *);
+
+public slots:
+    virtual void s_pintaMenu ( QMenu * );
+    virtual void s_trataMenu ( QAction * );
+};
 
 
 class MyPlugArt : public QObject, BlMainCompanyPointer
