@@ -99,6 +99,20 @@ class GuardarBackup(Ui_GuardarBackup, Empresa):
 	  self.proceso.start(self.command)
 	  self.proceso.waitForFinished(-1)
 
+	self.command = 'rm /etc/bulmages/' + self.database + '.sql'
+	self.proceso.start(self.command)
+	self.proceso.waitForFinished(-1)
+	
+	Yes = 'Ok'
+	yasta = QtGui.QMessageBox(self)
+	yasta.setWindowTitle('Guardar Backup')
+	yasta.setIcon(QtGui.QMessageBox.Information)
+	yasta.addButton(Yes, QtGui.QMessageBox.AcceptRole)
+	yasta.setText('<b>Backup guardado satisfactoriamente en : ' + self.directorio + '</b>')
+	yasta.exec_()
+
+	self.accept()
+
 def main(args):
     app=QtGui.QApplication(args)
     win=GuardarBackup()

@@ -36,11 +36,12 @@ class RestBackup(QtGui.QDialog, Ui_RestBackupBase):
 	self.proceso.waitForFinished(-1)
 	
 	Yes = 'Ok'
-	error = QtGui.QMessageBox(self)
-	error.setWindowTitle('Restauracion de Backup')
-	error.addButton(Yes, QtGui.QMessageBox.AcceptRole)
-	error.setText('<b>El backup ha sido restaurado correctamente</b>')
-	error.exec_()
+	yasta = QtGui.QMessageBox(self)
+	yasta.setWindowTitle('Restauracion de Backup')
+	yasta.setIcon(QtGui.QMessageBox.Information)
+	yasta.addButton(Yes, QtGui.QMessageBox.AcceptRole)
+	yasta.setText('<b>El backup ha sido restaurado correctamente</b>')
+	yasta.exec_()
 	
 	self.accept()
 
