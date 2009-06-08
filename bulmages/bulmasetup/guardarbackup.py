@@ -53,8 +53,8 @@ class GuardarBackup(Ui_GuardarBackup, Empresa):
 	      break
 	    i = i + 1 
 	    
-	self.directorio = QFileDialog.getExistingDirectory(self, "Selecciona la carpeta de destino del Backup")
-	self.command = 'pg_dump -f ' + self.directorio + '/' + self.database + '.sql ' + self.database
+	self.directorio = QFileDialog.getExistingDirectory(self, "Selecciona la carpeta de destino del Backup","/home")
+	self.command = 'pg_dump -f ' + '/etc/bulmages/' + self.database + '.sql ' + self.database
         self.proceso.start(self.command)
         self.proceso.waitForFinished(-1)
 	
@@ -70,64 +70,34 @@ class GuardarBackup(Ui_GuardarBackup, Empresa):
 	error.addButton(Yes, QtGui.QMessageBox.AcceptRole)
 
 	if (self.lista_empresas.item(i,2).text() == QString('BulmaFact')):
+	  self.quehehecho = 1
 	  if os.path.exists('/etc/bulmages/' + self.conffact):
-	    self.command = 'cp /etc/bulmages/' + self.conffact + ' ' + self.directorio
-	    self.proceso.start(self.command)
-	    self.proceso.waitForFinished(-1)
 	    self.quehehecho = 1
 	  else:
 	    error.setText('No existe el archivo de configuracion: <b>/etc/bulmages/' + self.conffact + '</b>')
 	    error.exec_()
 	  if os.path.exists('/etc/bulmages/' + self.conftpv):
-	    self.command = 'cp /etc/bulmages/' + self.conftpv + ' ' + self.directorio
-	    self.proceso.start(self.command)
-	    self.proceso.waitForFinished(-1)
 	    self.quehehecho = 2
-	if (self.lista_empresas.item(i,2).text() == QString('BulmaCont')):
+	elif (self.lista_empresas.item(i,2).text() == QString('BulmaCont')):
+	  self.quehehecho = 3
 	  if os.path.exists('/etc/bulmages/' + self.confcont):
-	    self.command = 'cp /etc/bulmages/' + self.confcont + ' ' + self.directorio
-	    self.proceso.start(self.command)
-	    self.proceso.waitForFinished(-1)
 	    self.quehehecho = 3
 	  else:
 	    error.setText('No existe el archivo de configuracion: <b>/etc/bulmages/' + self.confcont + '</b>')
             error.exec_()
 
-	self.empresa = self.lista_empresas.item(i,0).text()
-
 	if self.quehehecho == 1:
-	  self.command = 'tar czf ' + self.directorio + '/' + self.empresa + '.tar.gz ' + self.directorio + '/' + self.conffact + ' ' + self.directorio + '/' + self.database + '.sql'
+	  self.command = 'tar czf ' + self.directorio + '/' + self.database + '.tar.gz ' + '/etc/bulmages/' + self.conffact + ' ' + '/etc/bulmages/' + self.database + '.sql'
 	  self.proceso.start(self.command)
 	  self.proceso.waitForFinished(-1)
 	if self.quehehecho == 2:
-	  self.command = 'tar czf ' + self.directorio + '/' + self.empresa + '.tar.gz ' + self.directorio + '/' + self.conffact + ' ' + self.directorio + '/' + self.conftpv + ' ' + self.directorio + '/' + self.database + '.sql'
+	  self.command = 'tar czf ' + self.directorio + '/' + self.database + '.tar.gz ' + '/etc/bulmages/' + self.conffact + ' ' + '/etc/bulmages/' + self.conftpv + ' ' + '/etc/bulmages/' + self.database + '.sql'
 	  self.proceso.start(self.command)
 	  self.proceso.waitForFinished(-1)
 	if self.quehehecho == 3:
-	  self.command = 'tar czf ' + self.directorio + '/' + self.empresa + '.tar.gz ' + self.directorio + '/' + self.confcont + ' ' + self.directorio + '/' + self.database + '.sql'
+	  self.command = 'tar czf ' + self.directorio + '/' + self.database + '.tar.gz ' + '/etc/bulmages/' + self.confcont + ' ' + '/etc/bulmages/' + self.database + '.sql'
 	  self.proceso.start(self.command)
 	  self.proceso.waitForFinished(-1)
-	    
-	#if self.quehehecho == 1:
-	  #self.command = 'rm ' + self.directorio + '/' + self.conffact
-	  #self.proceso.start(self.command)
-	  #self.proceso.waitForFinished(-1)
-	  
-	#if self.quehehecho == 2:
-	  #self.command = 'rm ' + self.directorio + '/' + self.conffact
-	  #self.proceso.start(self.command)
-	  #self.proceso.waitForFinished(-1)
-	  #self.command = 'rm ' + self.directorio + '/' + self.conftpv
-	  #self.proceso.start(self.command)
-	  #self.proceso.waitForFinished(-1)
-	  
-	#if self.quehehecho == 3:
-	  #self.command = 'rm ' + self.directorio + '/' + self.confcont
-	  #self.proceso.start(self.command)
-	  #self.proceso.waitForFinished(-1)
-	  
-	    
-	    
 
 def main(args):
     app=QtGui.QApplication(args)
