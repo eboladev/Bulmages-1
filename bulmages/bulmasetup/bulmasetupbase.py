@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'bulmasetupbase.ui'
 #
-# Created: Wed Jun  3 16:58:37 2009
+# Created: Tue Jun  9 13:41:26 2009
 #      by: PyQt4 UI code generator 4.4.4
 #
 # WARNING! All changes made in this file will be lost!
@@ -43,6 +43,7 @@ class Ui_MainWindow(object):
         self.gridLayout_2 = QtGui.QGridLayout(self.groupBox_3)
         self.gridLayout_2.setObjectName("gridLayout_2")
         self.nuevo_usuario = QtGui.QPushButton(self.groupBox_3)
+        self.nuevo_usuario.setEnabled(False)
         self.nuevo_usuario.setFocusPolicy(QtCore.Qt.NoFocus)
         self.nuevo_usuario.setLayoutDirection(QtCore.Qt.LeftToRight)
         icon1 = QtGui.QIcon()
@@ -52,6 +53,7 @@ class Ui_MainWindow(object):
         self.nuevo_usuario.setObjectName("nuevo_usuario")
         self.gridLayout_2.addWidget(self.nuevo_usuario, 0, 0, 1, 1)
         self.editar_usuario = QtGui.QPushButton(self.groupBox_3)
+        self.editar_usuario.setEnabled(False)
         self.editar_usuario.setFocusPolicy(QtCore.Qt.NoFocus)
         self.editar_usuario.setLayoutDirection(QtCore.Qt.LeftToRight)
         icon2 = QtGui.QIcon()
@@ -61,6 +63,7 @@ class Ui_MainWindow(object):
         self.editar_usuario.setObjectName("editar_usuario")
         self.gridLayout_2.addWidget(self.editar_usuario, 0, 1, 1, 1)
         self.permisos_usuario = QtGui.QPushButton(self.groupBox_3)
+        self.permisos_usuario.setEnabled(False)
         self.permisos_usuario.setFocusPolicy(QtCore.Qt.NoFocus)
         self.permisos_usuario.setLayoutDirection(QtCore.Qt.LeftToRight)
         self.permisos_usuario.setIcon(icon2)
@@ -68,6 +71,7 @@ class Ui_MainWindow(object):
         self.permisos_usuario.setObjectName("permisos_usuario")
         self.gridLayout_2.addWidget(self.permisos_usuario, 1, 0, 1, 1)
         self.eliminar_usuario = QtGui.QPushButton(self.groupBox_3)
+        self.eliminar_usuario.setEnabled(False)
         self.eliminar_usuario.setFocusPolicy(QtCore.Qt.NoFocus)
         self.eliminar_usuario.setLayoutDirection(QtCore.Qt.LeftToRight)
         icon3 = QtGui.QIcon()
@@ -82,6 +86,7 @@ class Ui_MainWindow(object):
         self.gridLayout = QtGui.QGridLayout(self.groupBox_2)
         self.gridLayout.setObjectName("gridLayout")
         self.mui_crearbulmacont = QtGui.QPushButton(self.groupBox_2)
+        self.mui_crearbulmacont.setEnabled(False)
         self.mui_crearbulmacont.setFocusPolicy(QtCore.Qt.NoFocus)
         self.mui_crearbulmacont.setLayoutDirection(QtCore.Qt.LeftToRight)
         icon4 = QtGui.QIcon()
@@ -91,6 +96,7 @@ class Ui_MainWindow(object):
         self.mui_crearbulmacont.setObjectName("mui_crearbulmacont")
         self.gridLayout.addWidget(self.mui_crearbulmacont, 0, 0, 1, 1)
         self.mui_crearbulmafact = QtGui.QPushButton(self.groupBox_2)
+        self.mui_crearbulmafact.setEnabled(False)
         self.mui_crearbulmafact.setFocusPolicy(QtCore.Qt.NoFocus)
         self.mui_crearbulmafact.setLayoutDirection(QtCore.Qt.LeftToRight)
         icon5 = QtGui.QIcon()
@@ -100,6 +106,7 @@ class Ui_MainWindow(object):
         self.mui_crearbulmafact.setObjectName("mui_crearbulmafact")
         self.gridLayout.addWidget(self.mui_crearbulmafact, 0, 1, 1, 1)
         self.mui_adminempresas = QtGui.QPushButton(self.groupBox_2)
+        self.mui_adminempresas.setEnabled(False)
         self.mui_adminempresas.setFocusPolicy(QtCore.Qt.NoFocus)
         self.mui_adminempresas.setLayoutDirection(QtCore.Qt.LeftToRight)
         icon6 = QtGui.QIcon()
@@ -109,6 +116,7 @@ class Ui_MainWindow(object):
         self.mui_adminempresas.setObjectName("mui_adminempresas")
         self.gridLayout.addWidget(self.mui_adminempresas, 1, 0, 1, 1)
         self.eliminar_empresa = QtGui.QPushButton(self.groupBox_2)
+        self.eliminar_empresa.setEnabled(False)
         self.eliminar_empresa.setFocusPolicy(QtCore.Qt.NoFocus)
         self.eliminar_empresa.setLayoutDirection(QtCore.Qt.LeftToRight)
         icon7 = QtGui.QIcon()
@@ -118,6 +126,7 @@ class Ui_MainWindow(object):
         self.eliminar_empresa.setObjectName("eliminar_empresa")
         self.gridLayout.addWidget(self.eliminar_empresa, 1, 1, 1, 1)
         self.mui_restbackup = QtGui.QPushButton(self.groupBox_2)
+        self.mui_restbackup.setEnabled(False)
         self.mui_restbackup.setFocusPolicy(QtCore.Qt.NoFocus)
         self.mui_restbackup.setLayoutDirection(QtCore.Qt.LeftToRight)
         icon8 = QtGui.QIcon()
@@ -127,6 +136,7 @@ class Ui_MainWindow(object):
         self.mui_restbackup.setObjectName("mui_restbackup")
         self.gridLayout.addWidget(self.mui_restbackup, 2, 1, 1, 1)
         self.mui_creabackup = QtGui.QPushButton(self.groupBox_2)
+        self.mui_creabackup.setEnabled(False)
         self.mui_creabackup.setFocusPolicy(QtCore.Qt.NoFocus)
         self.mui_creabackup.setLayoutDirection(QtCore.Qt.LeftToRight)
         icon9 = QtGui.QIcon()
@@ -140,6 +150,10 @@ class Ui_MainWindow(object):
         self.verticalLayout.addItem(spacerItem)
         self.horizontalLayout = QtGui.QHBoxLayout()
         self.horizontalLayout.setObjectName("horizontalLayout")
+        self.mui_acerca = QtGui.QPushButton(self.centralwidget)
+        self.mui_acerca.setIcon(icon)
+        self.mui_acerca.setObjectName("mui_acerca")
+        self.horizontalLayout.addWidget(self.mui_acerca)
         spacerItem1 = QtGui.QSpacerItem(388, 20, QtGui.QSizePolicy.Expanding, QtGui.QSizePolicy.Minimum)
         self.horizontalLayout.addItem(spacerItem1)
         self.mui_salir = QtGui.QPushButton(self.centralwidget)
@@ -177,6 +191,7 @@ class Ui_MainWindow(object):
         self.eliminar_empresa.setText(QtGui.QApplication.translate("MainWindow", "Eliminar Empresas Existentes", None, QtGui.QApplication.UnicodeUTF8))
         self.mui_restbackup.setText(QtGui.QApplication.translate("MainWindow", "Restaurar copia de seguridad", None, QtGui.QApplication.UnicodeUTF8))
         self.mui_creabackup.setText(QtGui.QApplication.translate("MainWindow", "Crear Copia de Seguridad", None, QtGui.QApplication.UnicodeUTF8))
+        self.mui_acerca.setText(QtGui.QApplication.translate("MainWindow", "Acerca de BulmaSetup", None, QtGui.QApplication.UnicodeUTF8))
         self.mui_salir.setText(QtGui.QApplication.translate("MainWindow", "Salir", None, QtGui.QApplication.UnicodeUTF8))
 
 import resources_rc

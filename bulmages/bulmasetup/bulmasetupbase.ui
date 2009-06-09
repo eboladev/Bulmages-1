@@ -83,6 +83,9 @@ p, li { white-space: pre-wrap; }
         <layout class="QGridLayout" name="gridLayout_2">
          <item row="0" column="0">
           <widget class="QPushButton" name="nuevo_usuario">
+           <property name="enabled">
+            <bool>false</bool>
+           </property>
            <property name="focusPolicy">
             <enum>Qt::NoFocus</enum>
            </property>
@@ -106,6 +109,9 @@ p, li { white-space: pre-wrap; }
          </item>
          <item row="0" column="1">
           <widget class="QPushButton" name="editar_usuario">
+           <property name="enabled">
+            <bool>false</bool>
+           </property>
            <property name="focusPolicy">
             <enum>Qt::NoFocus</enum>
            </property>
@@ -129,6 +135,9 @@ p, li { white-space: pre-wrap; }
          </item>
          <item row="1" column="0">
           <widget class="QPushButton" name="permisos_usuario">
+           <property name="enabled">
+            <bool>false</bool>
+           </property>
            <property name="focusPolicy">
             <enum>Qt::NoFocus</enum>
            </property>
@@ -152,6 +161,9 @@ p, li { white-space: pre-wrap; }
          </item>
          <item row="1" column="1">
           <widget class="QPushButton" name="eliminar_usuario">
+           <property name="enabled">
+            <bool>false</bool>
+           </property>
            <property name="focusPolicy">
             <enum>Qt::NoFocus</enum>
            </property>
@@ -184,6 +196,9 @@ p, li { white-space: pre-wrap; }
         <layout class="QGridLayout" name="gridLayout">
          <item row="0" column="0">
           <widget class="QPushButton" name="mui_crearbulmacont">
+           <property name="enabled">
+            <bool>false</bool>
+           </property>
            <property name="focusPolicy">
             <enum>Qt::NoFocus</enum>
            </property>
@@ -207,6 +222,9 @@ p, li { white-space: pre-wrap; }
          </item>
          <item row="0" column="1">
           <widget class="QPushButton" name="mui_crearbulmafact">
+           <property name="enabled">
+            <bool>false</bool>
+           </property>
            <property name="focusPolicy">
             <enum>Qt::NoFocus</enum>
            </property>
@@ -230,6 +248,9 @@ p, li { white-space: pre-wrap; }
          </item>
          <item row="1" column="0">
           <widget class="QPushButton" name="mui_adminempresas">
+           <property name="enabled">
+            <bool>false</bool>
+           </property>
            <property name="focusPolicy">
             <enum>Qt::NoFocus</enum>
            </property>
@@ -253,6 +274,9 @@ p, li { white-space: pre-wrap; }
          </item>
          <item row="1" column="1">
           <widget class="QPushButton" name="eliminar_empresa">
+           <property name="enabled">
+            <bool>false</bool>
+           </property>
            <property name="focusPolicy">
             <enum>Qt::NoFocus</enum>
            </property>
@@ -276,6 +300,9 @@ p, li { white-space: pre-wrap; }
          </item>
          <item row="2" column="1">
           <widget class="QPushButton" name="mui_restbackup">
+           <property name="enabled">
+            <bool>false</bool>
+           </property>
            <property name="focusPolicy">
             <enum>Qt::NoFocus</enum>
            </property>
@@ -299,6 +326,9 @@ p, li { white-space: pre-wrap; }
          </item>
          <item row="2" column="0">
           <widget class="QPushButton" name="mui_creabackup">
+           <property name="enabled">
+            <bool>false</bool>
+           </property>
            <property name="focusPolicy">
             <enum>Qt::NoFocus</enum>
            </property>
@@ -338,6 +368,17 @@ p, li { white-space: pre-wrap; }
       </item>
       <item>
        <layout class="QHBoxLayout" name="horizontalLayout">
+        <item>
+         <widget class="QPushButton" name="mui_acerca">
+          <property name="text">
+           <string>Acerca de BulmaSetup</string>
+          </property>
+          <property name="icon">
+           <iconset resource="resources.qrc">
+            <normaloff>:/images/iglues.org.svg</normaloff>:/images/iglues.org.svg</iconset>
+          </property>
+         </widget>
+        </item>
         <item>
          <spacer name="horizontalSpacer">
           <property name="orientation">
