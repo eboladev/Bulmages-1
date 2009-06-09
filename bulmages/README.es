@@ -181,9 +181,10 @@ Este es un proceso delicado. Si no se comprende bien, es mejor dejarlo estar.
 Antes de hacer esto, hay que realizar una primera instalación para que se generen,
 entre otras cosas, los plugins y el directorio de configuración.
 
-Estos son los archivos que se deben enlazar:
+Estos son los archivos que se deben enlazar con los binarios que se vayan compilando:
 /usr/local/lib/libbulmacont.so.X.Y.Z
 /usr/local/lib/libbulmafact.so.X.Y.Z
+/usr/local/lib/libbulmalib.so.X.Y.Z
 /usr/local/lib/libbulmages.so.X.Y.Z
 /usr/local/lib/libbulmatpv.so.X.Y.Z
 /usr/local/bin/bulmacont
