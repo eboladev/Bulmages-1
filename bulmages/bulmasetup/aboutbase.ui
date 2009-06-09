@@ -586,7 +586,7 @@
       </layout>
      </item>
      <item>
-      <widget class="QTabWidget" name="TabWidget2">
+      <widget class="QTabWidget" name="TabWidget">
        <property name="focusPolicy">
         <enum>Qt::StrongFocus</enum>
        </property>
@@ -596,11 +596,11 @@
        <property name="currentIndex">
         <number>1</number>
        </property>
-       <widget class="QWidget" name="Acercade">
+       <widget class="QWidget" name="Acercade_2">
         <attribute name="title">
          <string>&amp;Acerca de</string>
         </attribute>
-        <layout class="QHBoxLayout">
+        <layout class="QHBoxLayout" name="_6">
          <property name="spacing">
           <number>5</number>
          </property>
@@ -619,11 +619,11 @@
          </item>
         </layout>
        </widget>
-       <widget class="QWidget" name="autores">
+       <widget class="QWidget" name="autores_2">
         <attribute name="title">
          <string>A&amp;utores</string>
         </attribute>
-        <layout class="QHBoxLayout">
+        <layout class="QHBoxLayout" name="_7">
          <property name="spacing">
           <number>5</number>
          </property>
@@ -652,11 +652,34 @@ p, li { white-space: pre-wrap; }
          </item>
         </layout>
        </widget>
-       <widget class="QWidget" name="licencia">
+       <widget class="QWidget" name="soporte_2">
+        <attribute name="title">
+         <string>Sopor&amp;te</string>
+        </attribute>
+        <layout class="QHBoxLayout" name="_8">
+         <property name="spacing">
+          <number>5</number>
+         </property>
+         <property name="margin">
+          <number>5</number>
+         </property>
+         <item>
+          <widget class="QTextEdit" name="textEdit_soporte">
+           <property name="focusPolicy">
+            <enum>Qt::TabFocus</enum>
+           </property>
+           <property name="readOnly">
+            <bool>true</bool>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </widget>
+       <widget class="QWidget" name="licencia_2">
         <attribute name="title">
          <string>Acuerdo de &amp;licencia</string>
         </attribute>
-        <layout class="QHBoxLayout">
+        <layout class="QHBoxLayout" name="_9">
          <property name="spacing">
           <number>5</number>
          </property>

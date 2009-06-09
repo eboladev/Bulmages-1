@@ -15,11 +15,28 @@ class About(QtGui.QDialog, Ui_About):
 
 
 	str_sobre = "<br /><br /><br /><br /><center><h2>BulmaSetup GPL</h2></center>";
+	
 	str_autores = "<center><h2>Autores de BulmaSetup</h2>" \
-		      "<p>" \
+		      "<p><p>" \
 		      "Programaci&oacute;n:<br/> " \
 		      "<b>Tomeu Borr&aacute;s.</b>&nbsp;<a href=\"mailto:tborras@conetxia.com\">tborras@conetxia.com</a><br/>" \
-		      "<b>Toni &Aacute;lvarez </b>&nbsp;<a href=\"mailto:t.alvarezpascual@gmail.com\">t.alvarezpascual@gmail.com</a><br/>" \
+		      "<b>Toni &Aacute;lvarez. </b>&nbsp;<a href=\"mailto:t.alvarezpascual@gmail.com\">t.alvarezpascual@gmail.com</a><br/>" \
+		      "<b>Arturo Mart&iacute;n. </b>&nbsp;<a href=\"mailto:amartin@conetxia.com\">amartin@conetxia.com</a><br/>" \
+		      "<p>" \
+		      "Dise&ntilde;o Gr&aacute;fico:<br/> " \
+		      "<b>Ra&uacute;l Mart&iacute;nez.</b>&nbsp;<a href=\"mailto:elferrer@gmail.com\">elferrer@gmail.com</a><br/>" \
+		      "<p>" \
+		      "Depuraci&oacute;n y Pruebas:<br/> " \
+		      "<b>Qu Zhioxiong.</b>&nbsp;<a href=\"mailto:santlong@gmail.com\">santlong@gmail.com</a><br/>" \
+		      "</p></center>";
+
+
+	str_soporte = "<center><p>" \
+		      "<p><h2>Entidades que dan soporte al programa:</h2></p>" \
+		      "<b>Conetxia:</b> <a href=\"http://www.conetxia.com\">" \
+		      "http://www.conetxia.com</a><br />" \
+		      "<b>Todo-Redes:</b> <a href=\"http://www.todo-redes.com\">" \
+		      "http://www.todo-redes.com</a>" \
 		      "</p></center>";
 
 	str_licencia = "<P> " \
@@ -370,6 +387,7 @@ class About(QtGui.QDialog, Ui_About):
 		      "<H2>END OF TERMS AND CONDITIONS</H2>";
 
 	self.textEdit_sobre.setText(str_sobre)
+	self.textEdit_soporte.setText(str_soporte)
 	self.textEdit_autores.setText(str_autores)
 	self.textEdit_licencia.setText(str_licencia)
     
