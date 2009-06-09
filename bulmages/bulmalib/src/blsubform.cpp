@@ -1667,6 +1667,12 @@ void BlSubForm::on_mui_list_cellChanged ( int row, int col )
         return;
     } // end if
 
+    /// En el caso de tener una fecha directamente la tratamos ya que esta claro cual es su tratamiento.
+    if (camp->dbFieldType() == BlDbField::DbDate) {
+        camp->set ( normalizafecha ( camp->valorcampo() ).toString ( "dd/MM/yyyy" ) );
+    } // end if
+
+
     if ( m_procesacambios ) {
         m_procesacambios = FALSE;
         m_prevRow = row;
