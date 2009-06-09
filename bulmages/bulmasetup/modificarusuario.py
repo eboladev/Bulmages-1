@@ -129,7 +129,7 @@ class ModificarUsuario(Ui_ModificarUsuario, Empresa):
         self.conectar(str(dbase))
         tablas = self.execute("SELECT relname FROM pg_class WHERE relkind = 'r' AND relname NOT LIKE ('pg_%') AND relname NOT LIKE ('sql_%') ORDER BY relname")
               
-        # Rellenamos la lista con lablas de la base de datos seleccionada
+        # Rellenamos la lista con tablas de la base de datos seleccionada
         for row in tablas:
             texto = row[0]                        
             self.listWidgetTable.addItem(QString(texto))
@@ -327,20 +327,20 @@ class ModificarUsuario(Ui_ModificarUsuario, Empresa):
 
         # Empezamos a conceder permisos, primero a la base de datos seleccionada.
 	if (self.checkBox_dball.isChecked()):
-	    self.executeGrant("GRANT all on database \"" + str(dbase) + "\" to " + str(username))
+	    self.executeGrant("GRANT ALL ON DATABASE \"" + str(dbase) + "\" TO \"" + str(username) + "\"")
 
         if (self.checkBox_dbrevoke.isChecked()):
-            self.executeGrant('REVOKE all on database \"' + str(dbase) + '\" from ' + str(username))
+            self.executeGrant('REVOKE ALL ON DATABASE \"' + str(dbase) + '\" FROM \"' + str(username) + "\"")
 
         if (self.checkBox_create.isChecked()):
-            self.executeGrant('GRANT create on database \"' + str(dbase) + '\" to ' + str(username))
+            self.executeGrant('GRANT CREATE ON DATABASE \"' + str(dbase) + '\" TO \"' + str(username) + "\"")
         else:
-            self.executeGrant('REVOKE create on database \"' + str(dbase) + '\" from ' + str(username))
+            self.executeGrant('REVOKE CREATE ON DATABASE \"' + str(dbase) + '\" FROM \"' + str(username) + "\"")
             
         if (self.checkBox_temporary.isChecked()):
-            self.executeGrant('GRANT temporary on database \"' + str(dbase) + '\" to ' + str(username))
+            self.executeGrant('GRANT TEMPORARY ON DATABASE \"' + str(dbase) + '\" TO \"' + str(username) + "\"")
         else:
-            self.executeGrant('REVOKE temporary on database \"' + str(dbase) + '\" from ' + str(username))
+            self.executeGrant('REVOKE TEMPORARY ON DATABASE \"' + str(dbase) + '\" FROM \"' + str(username) + "\"")
             
 	self.desconectar()
 	self.writecommand("")
@@ -362,57 +362,57 @@ class ModificarUsuario(Ui_ModificarUsuario, Empresa):
                 self.writeTable()
         
                 if (self.checkBox_all.isChecked()):
-                    self.executeGrant('GRANT all on ' + str(table) + ' to ' + str(username))
+                    self.executeGrant('GRANT ALL ON ' + str(table) + ' TO \"' + str(username) + "\"")
                     self.progress.setValue(actual)
 
                 if (self.checkBox_revoke.isChecked()):
-                    self.executeGrant('REVOKE all on ' + str(table) + ' from ' + str(username))
+                    self.executeGrant('REVOKE ALL ON ' + str(table) + ' FROM \"' + str(username) + "\"")
                     self.progress.setValue(actual)
         
                 if (self.checkBox_select.isChecked()):
-                    self.executeGrant('GRANT select on ' + str(table) + ' to ' + str(username))
+                    self.executeGrant('GRANT SELECT ON ' + str(table) + ' TO \"' + str(username) + "\"")
                 else:
-                    self.executeGrant('REVOKE select on ' + str(table) + ' from ' + str(username))
+                    self.executeGrant('REVOKE SELECT ON ' + str(table) + ' FROM \"' + str(username) + "\"")
                     
                 actual = actual + mas
                 self.progress.setValue(actual)
 
                 if (self.checkBox_insert.isChecked()):
-                    self.executeGrant('GRANT insert on ' + str(table) + ' to ' + str(username))
+                    self.executeGrant('GRANT INSERT ON ' + str(table) + ' TO \"' + str(username) + "\"")
                 else:
-                    self.executeGrant('REVOKE insert on ' + str(table) + ' from ' + str(username))
+                    self.executeGrant('REVOKE INSERT ON ' + str(table) + ' FROM \"' + str(username) + "\"")
                     
                 actual = actual + mas
                 self.progress.setValue(actual)
 
                 if (self.checkBox_update.isChecked()):
-                    self.executeGrant('GRANT update on ' + str(table) + ' to ' + str(username))
+                    self.executeGrant('GRANT UPDATE ON ' + str(table) + ' TO \"' + str(username) + "\"")
                 else:
-                    self.executeGrant('REVOKE update on ' + str(table) + ' from ' + str(username))
+                    self.executeGrant('REVOKE UPDATE ON ' + str(table) + ' FROM \"' + str(username) + "\"")
                     
                 actual = actual + mas
                 self.progress.setValue(actual)
 
                 if (self.checkBox_delete.isChecked()):
-                    self.executeGrant('GRANT delete on ' + str(table) + ' to ' + str(username))
+                    self.executeGrant('GRANT DELETE ON ' + str(table) + ' TO \"' + str(username) + "\"")
                 else:
-                    self.executeGrant('REVOKE delete on ' + str(table) + ' from ' + str(username))
+                    self.executeGrant('REVOKE DELETE ON ' + str(table) + ' FROM \"' + str(username) + "\"")
                     
                 actual = actual + mas
                 self.progress.setValue(actual)
 
                 if (self.checkBox_references.isChecked()):
-                    self.executeGrant('GRANT references on ' + str(table) + ' to ' + str(username))
+                    self.executeGrant('GRANT REFERENCES ON ' + str(table) + ' TO \"' + str(username) + "\"")
                 else:
-                    self.executeGrant('REVOKE references on ' + str(table) + ' from ' + str(username))
+                    self.executeGrant('REVOKE REFERENCES ON ' + str(table) + ' FROM \"' + str(username) + "\"")
                     
                 actual = actual + mas
                 self.progress.setValue(actual)
 
                 if (self.checkBox_trigger.isChecked()):
-                    self.executeGrant('GRANT trigger on ' + str(table) + ' to ' + str(username))
+                    self.executeGrant('GRANT TRIGGER ON ' + str(table) + ' TO \"' + str(username) + "\"")
                 else:
-                    self.executeGrant('REVOKE trigger on ' + str(table) + ' from ' + str(username))
+                    self.executeGrant('REVOKE TRIGGER ON ' + str(table) + ' FROM \"' + str(username) + "\"")
                     
                 actual = actual + mas
                 self.progress.setValue(actual)
@@ -464,33 +464,33 @@ class ModificarUsuario(Ui_ModificarUsuario, Empresa):
                 self.writeSeq()
                         
                 if (self.checkBox_all_2.isChecked()):
-                    self.executeGrant('GRANT all on ' + str(seq) +  ' to ' + str(username))
+                    self.executeGrant('GRANT ALL ON ' + str(seq) +  ' TO \"' + str(username) + "\"")
                     self.progress.setValue(actual)
 
                 if (self.checkBox_revoke_2.isChecked()):
-                    self.executeGrant('REVOKE all on ' + str(seq) + ' from ' + str(username))
+                    self.executeGrant('REVOKE ALL ON ' + str(seq) + ' FROM \"' + str(username) + "\"")
                     self.progress.setValue(actual)
                 
                 if (self.checkBox_usage.isChecked()):
-                    self.executeGrant('GRANT usage on ' + str(seq) + ' to ' + str(username))
+                    self.executeGrant('GRANT USAGE ON ' + str(seq) + ' TO \"' + str(username) + "\"")
                 else:
-                    self.executeGrant('REVOKE usage on ' + str(seq) + ' from ' + str(username))
+                    self.executeGrant('REVOKE USAGE ON ' + str(seq) + ' FROM \"' + str(username) + "\"")
                     
                 actual = actual + mas
                 self.progress.setValue(actual)
         
                 if (self.checkBox_select.isChecked()):
-                    self.executeGrant('GRANT select on ' + str(seq) + ' to ' + str(username))
+                    self.executeGrant('GRANT SELECT ON ' + str(seq) + ' TO \"' + str(username) + "\"")
                 else:
-                    self.executeGrant('REVOKE select on ' + str(seq) + ' from ' + str(username))
+                    self.executeGrant('REVOKE SELECT ON ' + str(seq) + ' FROM \"' + str(username) + "\"")
                     
                 actual = actual + mas
                 self.progress.setValue(actual)
 
                 if (self.checkBox_update2.isChecked()):
-                    self.executeGrant('GRANT update on ' + str(seq) + ' to ' + str(username))
+                    self.executeGrant('GRANT UPDATE ON ' + str(seq) + ' TO \"' + str(username) + "\"")
                 else:
-                    self.executeGrant('REVOKE update on ' + str(seq) + ' from ' + str(username))
+                    self.executeGrant('REVOKE UPDATE ON ' + str(seq) + ' FROM \"' + str(username) + "\"")
                     
                 actual = actual + mas
                 self.progress.setValue(actual)
