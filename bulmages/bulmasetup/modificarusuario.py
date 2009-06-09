@@ -187,8 +187,8 @@ class ModificarUsuario(Ui_ModificarUsuario, Empresa):
             
             #Conectamos con la base de datos
             self.conectar(str(dbase))
-            permiso = self.executeone("select has_table_privilege('" + str(username) + "', '" + str(table) + "', 'select');")
 
+            permiso = self.executeone("select has_table_privilege('" + str(username) + "', '" + str(table) + "', 'select');")
             if str(permiso) == "(True,)":
                 self.checkBox_select.setCheckState(Qt.Checked)
             else:
@@ -322,92 +322,105 @@ class ModificarUsuario(Ui_ModificarUsuario, Empresa):
         if (total_tablas != 0.0):
             mas = 100.0/(total_tablas*6.0)
         
-        #Empezamos a conceder permisos, primero a la base de datos seleccionada.
-        if (self.checkBox_dball.isChecked()):
-            self.execComand('psql template1 -c "GRANT all on database ' + str(dbase) +  ' to ' + str(username) + '"')
+	# Conectamos con la base de datos desde la que ejecutaremos los Grants y Revokes
+	self.conectarIsolation("template1")
+
+        # Empezamos a conceder permisos, primero a la base de datos seleccionada.
+	if (self.checkBox_dball.isChecked()):
+	    self.executeGrant("GRANT all on database \"" + str(dbase) + "\" to " + str(username))
 
         if (self.checkBox_dbrevoke.isChecked()):
-            self.execComand('psql template1 -c "REVOKE all on database ' + str(dbase) + ' from ' + str(username) + '"')
+            self.executeGrant('REVOKE all on database \"' + str(dbase) + '\" from ' + str(username))
 
         if (self.checkBox_create.isChecked()):
-            self.execComand('psql template1 -c "GRANT create on database ' + str(dbase) + ' to ' + str(username) + '"')
+            self.executeGrant('GRANT create on database \"' + str(dbase) + '\" to ' + str(username))
         else:
-            self.execComand('psql template1 -c "REVOKE create on database ' + str(dbase) + ' from ' + str(username) + '"')
+            self.executeGrant('REVOKE create on database \"' + str(dbase) + '\" from ' + str(username))
             
         if (self.checkBox_temporary.isChecked()):
-            self.execComand('psql template1 -c "GRANT temporary on database ' + str(dbase) + ' to ' + str(username) + '"')
+            self.executeGrant('GRANT temporary on database \"' + str(dbase) + '\" to ' + str(username))
         else:
-            self.execComand('psql template1 -c "REVOKE temporary on database ' + str(dbase) + ' from ' + str(username) + '"')
+            self.executeGrant('REVOKE temporary on database \"' + str(dbase) + '\" from ' + str(username))
             
-        #Ahora pasamos a conceder los permisos por cada tabla seleccionada en la lista.
+	self.desconectar()
+	self.writecommand("")
+
+        """ EMPEZAMOS A CONCEDER LOS PERMISOS POR CADA TABLA."""
+	""" ================================================="""
+
         numero = self.listWidgetTable.count()
         global table
+
+	self.conectarIsolation(str(dbase))
 
         for x in range (numero):
             temp = self.listWidgetTable.item(x)
             
             if (temp.isSelected()):
                 table = temp.text()
+		self.writecommand("")
                 self.writeTable()
         
                 if (self.checkBox_all.isChecked()):
-                    self.execComand('psql ' + str(dbase) + ' -c "GRANT all on ' + str(table) +  ' to ' + str(username) + '"')
+                    self.executeGrant('GRANT all on ' + str(table) + ' to ' + str(username))
                     self.progress.setValue(actual)
 
                 if (self.checkBox_revoke.isChecked()):
-                    self.execComand('psql ' + str(dbase) + ' -c "REVOKE all on ' + str(table) + ' from ' + str(username) + '"')
+                    self.executeGrant('REVOKE all on ' + str(table) + ' from ' + str(username))
                     self.progress.setValue(actual)
         
                 if (self.checkBox_select.isChecked()):
-                    self.execComand('psql ' + str(dbase) + ' -c "GRANT select on ' + str(table) + ' to ' + str(username) + '"')
+                    self.executeGrant('GRANT select on ' + str(table) + ' to ' + str(username))
                 else:
-                    self.execComand('psql ' + str(dbase) + ' -c "REVOKE select on ' + str(table) + ' from ' + str(username) + '"')
+                    self.executeGrant('REVOKE select on ' + str(table) + ' from ' + str(username))
                     
                 actual = actual + mas
                 self.progress.setValue(actual)
 
                 if (self.checkBox_insert.isChecked()):
-                    self.execComand('psql ' + str(dbase) + ' -c "GRANT insert on ' + str(table) + ' to ' + str(username) + '"')
+                    self.executeGrant('GRANT insert on ' + str(table) + ' to ' + str(username))
                 else:
-                    self.execComand('psql ' + str (dbase) + ' -c "REVOKE insert on ' + str(table) + ' from ' + str(username) + '"')
+                    self.executeGrant('REVOKE insert on ' + str(table) + ' from ' + str(username))
                     
                 actual = actual + mas
                 self.progress.setValue(actual)
 
                 if (self.checkBox_update.isChecked()):
-                    self.execComand('psql ' + str(dbase) + ' -c "GRANT update on ' + str(table) + ' to ' + str(username) + '"')
+                    self.executeGrant('GRANT update on ' + str(table) + ' to ' + str(username))
                 else:
-                    self.execComand('psql ' + str(dbase) + ' -c "REVOKE update on ' + str(table) + ' from ' + str(username) + '"')
+                    self.executeGrant('REVOKE update on ' + str(table) + ' from ' + str(username))
                     
                 actual = actual + mas
                 self.progress.setValue(actual)
-
 
                 if (self.checkBox_delete.isChecked()):
-                    self.execComand('psql ' + str(dbase) + ' -c "GRANT delete on ' + str(table) + ' to ' + str(username) + '"')
+                    self.executeGrant('GRANT delete on ' + str(table) + ' to ' + str(username))
                 else:
-                    self.execComand('psql ' + str(dbase) + ' -c "REVOKE delete on ' + str(table) + ' from ' + str(username) + '"')
+                    self.executeGrant('REVOKE delete on ' + str(table) + ' from ' + str(username))
                     
                 actual = actual + mas
                 self.progress.setValue(actual)
 
-
                 if (self.checkBox_references.isChecked()):
-                    self.execComand('psql ' + str(dbase) + ' -c "GRANT references on ' + str(table) + ' to ' + str(username) + '"')
+                    self.executeGrant('GRANT references on ' + str(table) + ' to ' + str(username))
                 else:
-                    self.execComand('psql ' + str(dbase) + ' -c "REVOKE references on ' + str(table) + ' from ' + str(username) + '"')
+                    self.executeGrant('REVOKE references on ' + str(table) + ' from ' + str(username))
                     
                 actual = actual + mas
                 self.progress.setValue(actual)
 
                 if (self.checkBox_trigger.isChecked()):
-                    self.execComand('psql ' + str(dbase) + ' -c "GRANT trigger on ' + str(table) + ' to ' + str(username) + '"')
+                    self.executeGrant('GRANT trigger on ' + str(table) + ' to ' + str(username))
                 else:
-                    self.execComand('psql ' + str(dbase) + ' -c "REVOKE trigger on ' + str(table) + ' from ' + str(username) + '"')
+                    self.executeGrant('REVOKE trigger on ' + str(table) + ' from ' + str(username))
                     
                 actual = actual + mas
                 self.progress.setValue(actual)
+
         self.progress.hide()
+	self.writecommand("")
+	self.writecommand("")
+	self.writecommand("")
 
 	""" AHORA PASAMOS A APLICAR LOS PERMISOS SOBRE LAS SEQUENCIAS"""
 	"""=========================================================="""
@@ -447,129 +460,43 @@ class ModificarUsuario(Ui_ModificarUsuario, Empresa):
             
             if (temp.isSelected()):
                 seq = temp.text()
+		self.writecommand("")
                 self.writeSeq()
                         
                 if (self.checkBox_all_2.isChecked()):
-                    self.execComand('psql ' + str(dbase) + ' -c "GRANT all on ' + str(seq) +  ' to ' + str(username) + '"')
+                    self.executeGrant('GRANT all on ' + str(seq) +  ' to ' + str(username))
                     self.progress.setValue(actual)
 
                 if (self.checkBox_revoke_2.isChecked()):
-                    self.execComand('psql ' + str(dbase) + ' -c "REVOKE all on ' + str(seq) + ' from ' + str(username) + '"')
+                    self.executeGrant('REVOKE all on ' + str(seq) + ' from ' + str(username))
                     self.progress.setValue(actual)
                 
                 if (self.checkBox_usage.isChecked()):
-                    self.execComand('psql ' + str(dbase) + ' -c "GRANT usage on ' + str(seq) + ' to ' + str(username) + '"')
+                    self.executeGrant('GRANT usage on ' + str(seq) + ' to ' + str(username))
                 else:
-                    self.execComand('psql ' + str (dbase) + ' -c "REVOKE usage on ' + str(seq) + ' from ' + str(username) + '"')
+                    self.executeGrant('REVOKE usage on ' + str(seq) + ' from ' + str(username))
                     
                 actual = actual + mas
                 self.progress.setValue(actual)
         
                 if (self.checkBox_select.isChecked()):
-                    self.execComand('psql ' + str(dbase) + ' -c "GRANT select on ' + str(seq) + ' to ' + str(username) + '"')
+                    self.executeGrant('GRANT select on ' + str(seq) + ' to ' + str(username))
                 else:
-                    self.execComand('psql ' + str(dbase) + ' -c "REVOKE select on ' + str(seq) + ' from ' + str(username) + '"')
+                    self.executeGrant('REVOKE select on ' + str(seq) + ' from ' + str(username))
                     
                 actual = actual + mas
                 self.progress.setValue(actual)
 
                 if (self.checkBox_update2.isChecked()):
-                    self.execComand('psql ' + str(dbase) + ' -c "GRANT update on ' + str(seq) + ' to ' + str(username) + '"')
+                    self.executeGrant('GRANT update on ' + str(seq) + ' to ' + str(username))
                 else:
-                    self.execComand('psql ' + str(dbase) + ' -c "REVOKE update on ' + str(seq) + ' from ' + str(username) + '"')
+                    self.executeGrant('REVOKE update on ' + str(seq) + ' from ' + str(username))
                     
                 actual = actual + mas
                 self.progress.setValue(actual)
+
         self.progress.hide()
-                    
-        # LAS SIGUIENTES 80 LINEAS ES LO MISMO QUE LO ANTERIOR, PERO SE CONCEDEN LOS PERMISOS 
-        # A TRAVES DE UNA CONEXION DIRECTA CON POSTGRES, QUE SERIA LO CORRECTO, COMO NO FUNCIONA
-        # PASO A APLICAR LOS PERMISOS DIRECTAMENTE CON COMANDOS DESDE CONSOLA,
-        # PROVISIONALEMENTE, HASTA ENCONTRAR PORQUE NO FUNCIONA HACIENDOLO CON CONEXIONES A POSTGRES.
-                    
-        #try:
-            #conn = psycopg2.connect("dbname='" + str(dbase) + "' user='root'")
-        #except:
-            #print "Fallo en la conexion con PostgreSQL."
-            #sys.exit()
-            
-        #cur = conn.cursor()
-
-        #if (self.checkBox_dball.isChecked()):
-            #try:
-                #cur.execute("grant all on database " + str(dbase) + " to " + str(username))
-            #except:
-                #print "Se produjo un error al intentar cambiar los permisos (grant all) de las bases de datos de PostgreSQL."
-                #sys.exit()
-
-        #if (self.checkBox_dbrevoke.isChecked()):
-            #try:
-                #cur.execute("revoke all on database " + str(dbase) + " from " + str(username))
-            #except:
-                #print "Se produjo un error al intentar cambiar los permisos (revoke all) de las bases de datos de PostgreSQL."
-                #sys.exit()
-
-        #if (self.checkBox_select.isChecked()):
-            #try:
-                #cur.execute("grant select on " + str(table) + " to " + str(username))
-            #except:
-                #print "Se produjo un error al intentar cambiar los permisos (select) de las bases de datos de PostgreSQL."
-                #sys.exit()
-
-        #if (self.checkBox_insert.isChecked()):
-            #try:
-                #cur.execute("grant insert on " + str(table) + " to " + str(username))
-            #except:
-                #print "Se produjo un error al intentar cambiar los permisos (insert) de las bases de datos de PostgreSQL."
-                #sys.exit()
-
-        #if (self.checkBox_update.isChecked()):
-            #try:
-                #cur.execute("grant update on " + str(table) + " to " + str(username))
-            #except:
-                #print "Se produjo un error al intentar cambiar los permisos (update) de las bases de datos de PostgreSQL."
-                #sys.exit()
-
-        #if (self.checkBox_delete.isChecked()):
-            #try:
-                #cur.execute("grant delete on " + str(table) + " to " + str(username))
-            #except:
-                #print "Se produjo un error al intentar cambiar los permisos (delete) de las bases de datos de PostgreSQL."
-                #sys.exit()
-
-        #if (self.checkBox_references.isChecked()):
-            #try:
-                #cur.execute("grant references on " + str(table) + " to " + str(username))
-            #except:
-                #print "Se produjo un error al intentar cambiar los permisos (references) de las bases de datos de PostgreSQL."
-                #sys.exit()
-
-        #if (self.checkBox_trigger.isChecked()):
-            #try:
-                #cur.execute("grant trigger on " + str(table) + " to " + str(username))
-            #except:
-                #print "Se produjo un error al intentar cambiar los permisos (trigger) de las bases de datos de PostgreSQL."
-                #sys.exit()
-
-        #if (self.checkBox_create.isChecked()):
-            #try:
-                #cur.execute("grant create on database " + str(dbase) + " to " + str(username))
-            #except:
-                #print "Se produjo un error al intentar cambiar los permisos (create) de las bases de datos de PostgreSQL."
-                #sys.exit()
-
-        #if (self.checkBox_temporary.isChecked()):
-            #try:
-                #cur.execute("grant temporary on database " + str(dbase) + " to " + str(username))
-            #except:
-                #print "Se produjo un error al intentar cambiar los permisos (temporary) de las bases de datos de PostgreSQL."
-                #sys.exit()
-                
-    def execComand(self, command):
-        self.writecommand(command)
-        self.proceso.start(command)
-        self.proceso.waitForFinished(-1)
-        return QString(self.proceso.readAllStandardOutput())
+	self.desconectar()
         
     def readOutput(self):
         self.mui_textBrowser.append(QString(self.proceso.readAllStandardOutput()))

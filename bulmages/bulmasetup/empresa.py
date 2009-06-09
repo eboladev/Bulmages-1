@@ -90,10 +90,26 @@ class Empresa(QtGui.QDialog, PluginsBulmaSetup):
         try:
             self.cur.execute(query)
         except:
-            print "Fallo en la consulta: " + query
             return None
         return self.cur.fetchone()
         
+    def conectarIsolation(self, db):
+        try:
+            self.conn = psycopg2.connect("dbname='" + db + "' user='root'" + "password='password'")
+	    self.conn.set_isolation_level(0)
+        except:
+            print "Error en la conexion con la base de datos " + db
+            sys.exit()
+	    
+        self.cur = self.conn.cursor()
+            
+    def executeGrant(self, permiso):
+        try:
+            self.cur.execute(permiso)
+            self.writecommand(permiso)
+        except:
+            self.writecommand("<font color =\"#FF0000\">Fallo al intentar cambiar los permisos: " + str(permiso) + "</font>")
+	
 
     def guardaQuery(self, query):
         self.query = query
