@@ -488,7 +488,7 @@ BtTicket *BtCompany::newBtTicket()
     return bud;
 }
 
-void BtCompany::cobrar()
+void BtCompany::cobrar(bool imprimir)
 {
     QString idtrabajador = m_ticketActual->dbValue ( "idtrabajador" );
 
@@ -504,7 +504,7 @@ void BtCompany::cobrar()
             return;
         }
         
-    // Si no, guardamos e imprimimos tambien
+    // Si no, guardamos e imprimimos tambien si se nos indica
     } else {
     
         if ( m_ticketActual->guardar() == -1) {
@@ -512,7 +512,9 @@ void BtCompany::cobrar()
             return;
         }
     
-        m_ticketActual->imprimir();
+        if (imprimir) {
+            m_ticketActual->imprimir();
+        }
     
     } // end if
 

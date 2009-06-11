@@ -1,6 +1,10 @@
 /***************************************************************************
- *   Copyright (C) 2004 by Tomeu Borras Riera                              *
+ *   Copyright (C) 2007 by Tomeu Borras Riera                              *
  *   tborras@conetxia.com                                                  *
+ *   http://www.iglues.org                                                 *
+ *                                                                         *
+ *   Copyright (C) 2009 by Arturo Martin Llado                             *
+ *   amartin@conetxia.com                                                  *
  *   http://www.iglues.org                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -56,7 +60,7 @@ public:
     void guardaConf();
     void cargaConf();
     BtTicket *newBtTicket();
-    void cobrar();
+    void cobrar(bool imprimir = true);
     void z();
     void x();
     BtTicket *ticketActual();
