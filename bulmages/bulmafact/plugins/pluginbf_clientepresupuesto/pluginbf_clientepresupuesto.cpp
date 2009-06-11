@@ -126,7 +126,7 @@ void mypluginpres::inicializa ( BfBulmaFact *bges )
 **/
 int entryPoint ( BfBulmaFact *bges )
 {
-    _depura ( "Punto de Entrada del plugin de Presupuestos a Clientes\n", 0 );
+    _depura ( "Punto de entrada del plugin de presupuestos a clientes\n", 0 );
 
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale ( LC_ALL, "" );
@@ -197,7 +197,7 @@ int BfBuscarReferencia_on_mui_abrirtodo_released_Post ( BfBuscarReferencia *ref 
 int PedidoClienteView_PedidoClienteView ( PedidoClienteView *l )
 {
 
-    _depura ( "PluginPresupuesto_PedidoClienteView_PedidoClienteView", 0 );
+    _depura ( "PedidoClienteView_PedidoClienteView", 0 );
 
     VerPreQToolButton *mui_exporta_epresupuesto2 = new VerPreQToolButton ( l, l->mui_plugbotones );
 
@@ -211,7 +211,7 @@ int PedidoClienteView_PedidoClienteView ( PedidoClienteView *l )
     }// end if
     m_hboxLayout1->addWidget ( mui_exporta_epresupuesto2 );
 
-    _depura ( "END PluginPresupuesto_PedidoClienteView_PedidoClienteView", 0 );
+    _depura ( "END PedidoClienteView_PedidoClienteView", 0 );
 
     return 0;
 }

@@ -102,7 +102,7 @@ void mypluginpedp::inicializa ( BfBulmaFact *bges )
         bges->Listados->addAction ( planCuentas );
         connect ( planCuentas, SIGNAL ( activated() ), this, SLOT ( elslot() ) );
 
-        QAction *npago = new QAction ( _ ( "&Nuevo Pedido a Proveedor" ), 0 );
+        QAction *npago = new QAction ( _ ( "&Nuevo pedido a proveedor" ), 0 );
         npago->setIcon ( QIcon ( QString::fromUtf8 ( ":/Images/supplier-purchase-order.png" ) ) );
         npago->setStatusTip ( _ ( "Nuevo pedido a proveedor" ) );
         npago->setWhatsThis ( _ ( "Nuevo pedido a proveedor" ) );
