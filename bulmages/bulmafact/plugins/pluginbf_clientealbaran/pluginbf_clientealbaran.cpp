@@ -73,6 +73,7 @@ void mypluginalb::elslot1()
     _depura ( "mypluginalb::elslot1", 0 );
     AlbaranClienteView * bud = new AlbaranClienteView ( ( BfCompany * ) mainCompany(), NULL );
     mainCompany() ->m_pWorkspace->addWindow ( bud );
+    bud->inicializar();
     bud->show();
     _depura ( "END mypluginalb::elslot1", 0 );
 }

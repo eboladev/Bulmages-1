@@ -73,6 +73,7 @@ void mypluginped::elslot1()
     _depura ( "mypluginped::elslot1", 0 );
     PedidoClienteView * bud = new PedidoClienteView ( ( BfCompany * ) mainCompany(), NULL );
     mainCompany() ->m_pWorkspace->addWindow ( bud );
+    bud->inicializar();
     bud->show();
     _depura ( "END mypluginped::elslot1", 0 );
 }

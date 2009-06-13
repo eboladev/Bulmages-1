@@ -73,6 +73,7 @@ void mypluginpres::elslot1()
     _depura ( "mypluginpres::elslot1", 0 );
     PresupuestoView * bud = new PresupuestoView ( ( BfCompany * ) mainCompany(), NULL );
     mainCompany() ->m_pWorkspace->addWindow ( bud );
+    bud->inicializar();
     bud->show();
     _depura ( "END mypluginpres::elslot1", 0 );
 }

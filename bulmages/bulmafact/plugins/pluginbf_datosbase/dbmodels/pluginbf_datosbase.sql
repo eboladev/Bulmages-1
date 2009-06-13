@@ -59,7 +59,7 @@ BEGIN
             INSERT INTO tipo_iva (desctipo_iva) VALUES ('Exento');
             INSERT INTO tipo_iva (desctipo_iva) VALUES ('Super Reducido');
             INSERT INTO tipo_iva (desctipo_iva) VALUES ('Reducido');
-            INSERT INTO tipo_iva (desctipo_iva) VALUES ('Normal');
+            INSERT INTO tipo_iva (desctipo_iva) VALUES ('General');
 	
 	    SELECT INTO bs idtipo_iva FROM tipo_iva WHERE desctipo_iva='Exento';
             IF FOUND THEN

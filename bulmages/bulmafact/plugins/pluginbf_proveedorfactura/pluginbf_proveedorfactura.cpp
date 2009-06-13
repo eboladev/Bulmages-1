@@ -71,6 +71,7 @@ void mypluginfactp::elslot1()
     _depura ( "mypluginfactp::elslot1", 0 );
     FacturaProveedorView * bud = new FacturaProveedorView ( ( BfCompany * ) mainCompany(), NULL );
     mainCompany() ->m_pWorkspace->addWindow ( bud );
+    bud->inicializar();
     bud->show();
     _depura ( "END mypluginfactp::elslot1", 0 );
 }
