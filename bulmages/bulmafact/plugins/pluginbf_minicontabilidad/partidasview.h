@@ -25,14 +25,14 @@
 #include "blfunctions.h"
 #include "ui_partidasbase.h"
 #include "bfform.h"
-#include "pdefs.h"
+#include "pdefs_minicontabilidad.h"
 
 class BfCompany;
 
 
 /// Muestra y administra la ventana de familias de art&iacute;culos.
 /** */
-class MY_EXPORT PartidasView : public BfForm, public Ui_PartidasBase
+class MY_EXPORT_MINICONTABILIDAD PartidasView : public BfForm, public Ui_PartidasBase
 {
     Q_OBJECT
 

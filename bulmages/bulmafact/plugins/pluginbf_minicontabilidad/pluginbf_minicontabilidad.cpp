@@ -25,6 +25,7 @@
 #include "blfunctions.h"
 #include "partidasview.h"
 #include "acontableview.h"
+#include "presupuestocontablelist.h"
 
 ///
 /**
@@ -45,6 +46,18 @@ MyPlugArt::~MyPlugArt()
 {
     _depura ( "MyPlugArt::~MyPlugArt", 0 );
     _depura ( "END MyPlugArt::~MyPlugArt", 0 );
+}
+
+///
+/**
+**/
+void MyPlugArt::elslot1()
+{
+    _depura ( "MyPlugArt::elslot1", 0 );
+    PresupuestoContableList *pag = new PresupuestoContableList ( ( BfCompany * ) mainCompany(), 0 );
+    mainCompany() ->m_pWorkspace->addWindow ( pag );
+    pag->show();
+    _depura ( "END MyPlugArt::elslot1", 0 );
 }
 
 
@@ -113,7 +126,7 @@ void MyPlugArt::inicializa ( )
         tfam2->setWhatsThis ( _ ( "Previsiones" ) );
         pPluginMenu->addAction ( tfam2 );
         m_bges->Fichas->addAction ( tfam2 );
-        connect ( tfam2, SIGNAL ( activated() ), this, SLOT ( elslot3() ) );
+        connect ( tfam2, SIGNAL ( activated() ), this, SLOT ( elslot1() ) );
 
 	
 	

@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2005 by Tomeu Borras Riera                              *
+ *   Copyright (C) 2004 by Tomeu Borras Riera                              *
  *   tborras@conetxia.com                                                  *
  *   http://www.iglues.org                                                 *
  *                                                                         *
@@ -19,58 +19,41 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#ifndef PRESUPUESTOCONTABLEVIEW_H
-#define PRESUPUESTOCONTABLEVIEW_H
+#ifndef PRESUPUESTOCONTABLE_H
+#define PRESUPUESTOCONTABLE_H
 
-#include "blfunctions.h"
+#include <QLineEdit>
+#include <QLabel>
+#include <QCheckBox>
+
+#include "pdefs_minicontabilidad.h"
 #include "ui_presupuestocontablebase.h"
+#include "blpostgresqlclient.h"
+#include "bldatesearch.h"
+#include "blfixed.h"
 #include "bfform.h"
-#include "pdefs.h"
+
 
 class BfCompany;
 
 
-/// Muestra y administra la ventana de familias de art&iacute;culos.
+/// Muestra y administra la ventana con la informaci&oacute;n de un presupuesto.
 /** */
-class MY_EXPORT PresupuestoContableView : public BfForm, public Ui_PresupuestoContableBase
+class MY_EXPORT_MINICONTABILIDAD PresupuestoContableView : public BfForm, public Ui_PresupuestoContableBase
 {
     Q_OBJECT
 
 private:
-    /// Indica cu&aacute;l es el registro que se est&aacute; modificando. Sirve para saber los
-    /// cambios que hay que guardar despu&eacute;s de que se haya modificado.
-    QString m_idlpresupuestocontable;
-    /// Indica si es modo consulta o modo edici&oacute;n. (modifica el comportamiento del
-    /// doble click sobre la lista).
-    bool m_modoConsulta;
-    /// Este semaforo indica si se esta en el proceso de pintado.
-    bool m_semaforoPintar;
+    BlDbRecordSet *m_cursorcombo;
 
 public:
-    PresupuestoContableView ( BfCompany *, QWidget *parent = 0, bool modoConsulta = FALSE );
+    PresupuestoContableView ( BfCompany *, QWidget * );
     ~PresupuestoContableView();
-    bool trataModificado();
-    void mostrarplantilla();
-    void setModoConsulta();
-    void setModoEdicion();
-    QString codigoCompletoPresupuestoContable();
-    QString idPresupuestoContable();
-    QString nombrePresupuestoContable();
-    void pintar ( QTreeWidgetItem * );
-    virtual int borrar();
-    virtual void on_mui_aceptar_released();
-    virtual void on_mui_borrar_released();
-    virtual void on_mui_imprimir_released();
-    virtual int guardar();
+    virtual int cargarPost ( QString );
+    virtual int guardarPost();
+    virtual int borrarPre();
+    void inicializar();
 
-public slots:
-    virtual void pintar();
-    virtual void on_m_list_itemDoubleClicked ( QTreeWidgetItem * );
-    virtual void on_m_list_currentItemChanged ( QTreeWidgetItem *current, QTreeWidgetItem *previous );
-    virtual void on_mui_crear_released();
-
-signals:
-    void selected ( QString );
 };
 
 #endif

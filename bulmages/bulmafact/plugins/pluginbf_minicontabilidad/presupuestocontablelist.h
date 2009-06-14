@@ -26,12 +26,12 @@
 #include "bfcompany.h"
 #include "bfsubform.h"
 #include "blformlist.h"
-#include "pdefs.h"
+#include "pdefs_minicontabilidad.h"
 
 /** Subformulario de presupuestocontables.
     Esta clase derivada de BfSubForm presenta todo el listado de presupuestocontables.
 */
-class MY_EXPORT PresupuestoContableListSubform : public BfSubForm
+class MY_EXPORT_MINICONTABILIDAD PresupuestoContableListSubform : public BfSubForm
 {
     Q_OBJECT
 
@@ -46,15 +46,15 @@ public:
 
 /** Esta clase implementa la pantalla de listado de presupuestocontables.
 */
-class MY_EXPORT PresupuestoContableList : public BlFormList, public Ui_PresupuestoContableListBase, public BlImportExport
+class MY_EXPORT_MINICONTABILIDAD PresupuestoContableList : public BlFormList, public Ui_PresupuestoContableListBase, public BlImportExport
 {
     Q_OBJECT
 
 private:
     /// Almacene el idpresupuestocontable del registro seleccionado.
     QString mdb_idpresupuestocontable;
-    /// Almacena el nompresupuestocontable del presupuestocontable seleccionado.
-    QString mdb_nompresupuestocontable;
+    /// Almacena el conceptopresupuestocontable del presupuestocontable seleccionado.
+    QString mdb_conceptopresupuestocontable;
 
 public:
     PresupuestoContableList ( BfCompany *, QWidget *parent = 0, Qt::WFlags flag = 0, edmode editmode = BL_EDIT_MODE );
@@ -65,7 +65,7 @@ public:
     void crear();
     void borrar();
     QString idpresupuestocontable();
-    QString nompresupuestocontable();
+    QString conceptopresupuestocontable();
     void submenu ( const QPoint & );
 
 public slots:

@@ -52,7 +52,7 @@ PresupuestoContableList::PresupuestoContableList ( BfCompany *comp, QWidget *par
     mui_list->setMainCompany ( comp );
     setSubForm ( mui_list );
     mdb_idpresupuestocontable = "";
-    mdb_nompresupuestocontable = "";
+    mdb_conceptopresupuestocontable = "";
     hideBusqueda();
     /// Si estamos en el modo edici&oacute;n metemos la ventana en el workSpace.
     if ( modoEdicion() ) {
@@ -88,7 +88,7 @@ PresupuestoContableList::~PresupuestoContableList()
 void PresupuestoContableList::presentar()
 {
     _depura ( "PresupuestoContableList::presenta", 0 );
-    mui_list->cargar ( "SELECT * FROM presupuestocontable  WHERE lower(nompresupuestocontable) LIKE lower('%" + m_filtro->text() + "%') ORDER BY nompresupuestocontable" );
+    mui_list->cargar ( "SELECT * FROM presupuestocontable  WHERE lower(conceptopresupuestocontable) LIKE lower('%" + m_filtro->text() + "%') ORDER BY conceptopresupuestocontable" );
     _depura ( "END PresupuestoContableList::presenta", 0 );
 }
 
@@ -103,7 +103,7 @@ void PresupuestoContableList::editar ( int row )
 {
     _depura ( "PresupuestoContableList::editar", 0 );
     mdb_idpresupuestocontable = mui_list->dbValue ( "idpresupuestocontable", row );
-    mdb_nompresupuestocontable = mui_list->dbValue ( "nompresupuestocontable", row );
+    mdb_conceptopresupuestocontable = mui_list->dbValue ( "conceptopresupuestocontable", row );
     if ( modoEdicion() ) {
         PresupuestoContableView * prov = new PresupuestoContableView ( ( BfCompany * ) mainCompany(), 0 ) ;
         if ( prov->cargar ( mdb_idpresupuestocontable ) ) {
@@ -211,9 +211,9 @@ QString PresupuestoContableList::idpresupuestocontable()
 
 /** Devuelve el nombre del presupuestocontable seleccionado
 **/
-QString PresupuestoContableList::nompresupuestocontable()
+QString PresupuestoContableList::conceptopresupuestocontable()
 {
-    return mdb_nompresupuestocontable;
+    return mdb_conceptopresupuestocontable;
 }
 
 
@@ -263,22 +263,8 @@ PresupuestoContableListSubform::PresupuestoContableListSubform ( QWidget *parent
     setDbTableName ( "presupuestocontable" );
     setDbFieldId ( "idpresupuestocontable" );
     addSubFormHeader ( "idpresupuestocontable", BlDbField::DbInt, BlDbField::DbNotNull | BlDbField::DbPrimaryKey, BlSubFormHeader::DbHideView | BlSubFormHeader::DbNoWrite, _ ( "ID presupuestocontable" ) );
-    addSubFormHeader ( "codpresupuestocontable", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _ ( "Codigo" ) );
-    addSubFormHeader ( "cifpresupuestocontable", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _ ( "C.I.F." ) );
-    addSubFormHeader ( "nompresupuestocontable", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _ ( "Nombre de presupuestocontable" ) );
-    addSubFormHeader ( "nomaltpresupuestocontable", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _ ( "Nombre alternativo del presupuestocontable" ) );
-    addSubFormHeader ( "bancopresupuestocontable", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _ ( "Numero cuenta corriente" ) );
-    addSubFormHeader ( "dirpresupuestocontable", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _ ( "Direccion" ) );
-    addSubFormHeader ( "poblpresupuestocontable", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _ ( "Poblacion" ) );
-    addSubFormHeader ( "cppresupuestocontable", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _ ( "Codigo postal" ) );
-    addSubFormHeader ( "telpresupuestocontable", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _ ( "Numero de telefono" ) );
-    addSubFormHeader ( "faxpresupuestocontable", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _ ( "Numero de fax" ) );
-    addSubFormHeader ( "mailpresupuestocontable", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _ ( "Direccion de correo electronica" ) );
-    addSubFormHeader ( "urlpresupuestocontable", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _ ( "Direccion URL" ) );
-    addSubFormHeader ( "corppresupuestocontable", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _ ( "Empresa" ) );
-    addSubFormHeader ( "faltapresupuestocontable", BlDbField::DbDate, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _ ( "Fecha de alta del presupuestocontable" ) );
-    addSubFormHeader ( "fbajapresupuestocontable", BlDbField::DbDate, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _ ( "Fecha de baja del presupuestocontable" ) );
-    addSubFormHeader ( "comentpresupuestocontable", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _ ( "Comentarios" ) );
+    addSubFormHeader ( "fechapresupuestocontable", BlDbField::DbDate, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _ ( "Codigo" ) );
+    addSubFormHeader ( "conceptopresupuestocontable", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _ ( "C.I.F." ) );
     setInsert ( FALSE );
     setDelete ( FALSE );
     setSortingEnabled ( TRUE );

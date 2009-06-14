@@ -24,18 +24,18 @@
 #include "bfbuscarreferencia.h"
 #include "blsearchwidget.h"
 #include "bfsubform.h"
-#include "pdefs.h"
+#include "pdefs_minicontabilidad.h"
 
-extern "C" MY_EXPORT int entryPoint ( BfBulmaFact * );
-extern "C" MY_EXPORT int BfCompany_createMainWindows_Post(BfCompany *);
-extern "C" MY_EXPORT int Busqueda_on_mui_buscar_released(BlSearchWidget *);
-extern "C" MY_EXPORT int BlSubForm_BlSubForm_Post ( BlSubForm * );
-extern "C" MY_EXPORT int BfSubForm_pressedAsterisk ( BfSubForm * );
-extern "C" MY_EXPORT int BlSubForm_BlSubForm_Post ( BlSubForm * );
-extern "C" MY_EXPORT int BlSubFormDelegate_createEditor(BlSubFormDelegate *);
-extern "C" MY_EXPORT int BlSubFormDelegate_setModelData(BlSubFormDelegate *);
-extern "C" MY_EXPORT int BlSubFormDelegate_setEditorData(BlSubFormDelegate *);
-extern "C" MY_EXPORT int BlSubForm_editFinished(BlSubForm *);
+extern "C" MY_EXPORT_MINICONTABILIDAD int entryPoint ( BfBulmaFact * );
+extern "C" MY_EXPORT_MINICONTABILIDAD int BfCompany_createMainWindows_Post(BfCompany *);
+extern "C" MY_EXPORT_MINICONTABILIDAD int Busqueda_on_mui_buscar_released(BlSearchWidget *);
+extern "C" MY_EXPORT_MINICONTABILIDAD int BlSubForm_BlSubForm_Post ( BlSubForm * );
+extern "C" MY_EXPORT_MINICONTABILIDAD int BfSubForm_pressedAsterisk ( BfSubForm * );
+extern "C" MY_EXPORT_MINICONTABILIDAD int BlSubForm_BlSubForm_Post ( BlSubForm * );
+extern "C" MY_EXPORT_MINICONTABILIDAD int BlSubFormDelegate_createEditor(BlSubFormDelegate *);
+extern "C" MY_EXPORT_MINICONTABILIDAD int BlSubFormDelegate_setModelData(BlSubFormDelegate *);
+extern "C" MY_EXPORT_MINICONTABILIDAD int BlSubFormDelegate_setEditorData(BlSubFormDelegate *);
+extern "C" MY_EXPORT_MINICONTABILIDAD int BlSubForm_editFinished(BlSubForm *);
 
 
 
@@ -69,4 +69,5 @@ public:
 public slots:
     void elslot3();
     void elslot2();
+    void elslot1();
 };
