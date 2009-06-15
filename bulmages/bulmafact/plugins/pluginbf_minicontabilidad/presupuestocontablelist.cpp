@@ -223,6 +223,7 @@ void PresupuestoContableList::crear()
 {
     PresupuestoContableView *bud = new PresupuestoContableView ( ( BfCompany * ) mainCompany() , 0 );
     mainCompany()->m_pWorkspace->addWindow ( bud );
+    bud->inicializar();
     bud->pintar();
     bud->show();
     bud->setWindowTitle ( _ ( "Nuevo presupuestocontable" ) );

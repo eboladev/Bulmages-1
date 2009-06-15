@@ -50,23 +50,27 @@ PresupuestoContableView::PresupuestoContableView ( BfCompany *comp, QWidget *par
     try {
         setupUi ( this );
 
-        setTitleName ( _ ( "Presupuesto" ) );
-        setDbTableName ( "presupuesto" );
-        setDbFieldId ( "idpresupuesto" );
-        addDbField ( "idpresupuesto", BlDbField::DbInt, BlDbField::DbPrimaryKey, _ ( "ID presupuesto" ) );
-        addDbField ( "idcliente", BlDbField::DbInt, BlDbField::DbNotNull, _ ( "Cliente" ) );
-        addDbField ( "idalmacen", BlDbField::DbInt, BlDbField::DbNotNull, _ ( "Almacen" ) );
-        addDbField ( "numpresupuesto", BlDbField::DbInt, BlDbField::DbNothing, _ ( "Numero de presupuesto" ) );
-        addDbField ( "fpresupuesto", BlDbField::DbDate, BlDbField::DbNothing, _ ( "Fecha de creacion" ) );
-        addDbField ( "vencpresupuesto", BlDbField::DbDate, BlDbField::DbNothing, _ ( "Fecha de vencimiento" ) );
-        addDbField ( "contactpresupuesto", BlDbField::DbVarChar, BlDbField::DbNothing, _ ( "Persona de contacto" ) );
-        addDbField ( "telpresupuesto", BlDbField::DbVarChar, BlDbField::DbNothing, _ ( "Numero de telefono" ) );
-        addDbField ( "comentpresupuesto", BlDbField::DbVarChar, BlDbField::DbNothing, _ ( "Comentarios" ) );
-        addDbField ( "procesadopresupuesto", BlDbField::DbBoolean, BlDbField::DbNothing, _ ( "Procesado" ) );
-        addDbField ( "descpresupuesto", BlDbField::DbVarChar, BlDbField::DbNothing, _ ( "% Descuento" ) );
-        addDbField ( "refpresupuesto", BlDbField::DbVarChar, BlDbField::DbNothing, _ ( "Referencia" ) );
-        addDbField ( "idforma_pago", BlDbField::DbInt, BlDbField::DbNotNull, _ ( "Forma de pago" ) );
-        addDbField ( "idtrabajador", BlDbField::DbInt, BlDbField::DbNothing, _ ( "Trabajador" ) );
+        setTitleName ( _ ( "Presupuesto Contable" ) );
+        setDbTableName ( "presupuestocontable" );
+        setDbFieldId ( "idpresupuestocontable" );
+        addDbField ( "idpresupuestocontable", BlDbField::DbInt, BlDbField::DbPrimaryKey, _ ( "ID presupuesto contable" ) );
+        addDbField ( "fechapresupuestocontable", BlDbField::DbDate, BlDbField::DbNothing, _ ( "Fecha" ) );
+        addDbField ( "conceptopresupuestocontable", BlDbField::DbVarChar, BlDbField::DbNothing, _ ( "Concepto" ) );
+
+
+	mui_list->setDbTableName ( "lpresupuestocontable" );
+	mui_list->setDbFieldId ( "idlpresupuestocontable" );
+	mui_list->addSubFormHeader ( "idlpresupuestocontable", BlDbField::DbInt, BlDbField::DbPrimaryKey, BlSubFormHeader::DbHideView | BlSubFormHeader::DbNoWrite, _ ( "ID lpresupuestocontable" ) );
+	mui_list->addSubFormHeader ( "idpresupuestocontable", BlDbField::DbInt, BlDbField::DbNotNull, BlSubFormHeader::DbHideView | BlSubFormHeader::DbNoWrite, _ ( "ID lpresupuestocontable" ) );
+	mui_list->addSubFormHeader ( "idpartida", BlDbField::DbDate, BlDbField::DbNotNull, BlSubFormHeader::DbHideView | BlSubFormHeader::DbNoWrite, _ ( "ID partida" ) );
+	mui_list->addSubFormHeader ( "codigocompletopartida", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _ ( "Codigo" ) );
+	mui_list->addSubFormHeader ( "nombrepartida", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _ ( "Concepto" ) );
+	mui_list->addSubFormHeader ( "conceptolpresupuestocontable", BlDbField::DbVarChar, BlDbField::DbNotNull, BlSubFormHeader::DbNone, _ ( "Nombre" ) );
+	mui_list->addSubFormHeader ( "saldolpresupuestocontable", BlDbField::DbNumeric, BlDbField::DbNotNull, BlSubFormHeader::DbNone, _ ( "Saldo" ) );
+	mui_list->setInsert ( FALSE );
+	mui_list->setDelete ( FALSE );
+	mui_list->setSortingEnabled ( TRUE );
+
 
         /// Disparamos los plugins.
         int res = g_plugins->lanza ( "PresupuestoContableView_PresupuestoContableView", this );
@@ -123,10 +127,8 @@ int PresupuestoContableView::borrarPre()
 {
     _depura ( "PresupuestoContableView::borrar", 0 );
     /// Disparamos los plugins con presupuesto_imprimirPresupuesto.
-    g_plugins->lanza ( "Presupuesto_borrarPre", this );
-    m_listalineas->borrar();
-    m_listadescuentos->borrar();
-
+    g_plugins->lanza ( "PresupuestoContableView_borrarPre", this );
+    mui_list->borrar();
     _depura ( "END PresupuestoContableView::borrar", 0 );
     return 0;
 }
@@ -141,10 +143,8 @@ int PresupuestoContableView::cargarPost ( QString idbudget )
 {
     _depura ( "PresupuestoContableView::cargarPost", 0 );
 
-    m_listalineas->cargar ( idbudget );
-    m_listadescuentos->cargar ( idbudget );
-
-    calculaypintatotales();
+    QString query = "SELECT * FROM ( SELECT * FROM partida WHERE idpartida NOT IN (SELECT DISTINCT COALESCE(padre,0) FROM partida) ) AS t1 LEFT JOIN (SELECT idlpresupuestocontable, coalesce(saldolpresupuestocontable, 0) AS saldolpresupuestocontable, idpartida, idpresupuestocontable, conceptolpresupuestocontable FROM lpresupuestocontable) AS t2 ON t2.idpartida = t1.idpartida AND t2.idpresupuestocontable = "+idbudget;
+    mui_list->cargar ( query );
 
     _depura ( "END PresupuestoContableView::cargar", 0 );
     return 0;
@@ -159,13 +159,11 @@ int PresupuestoContableView::guardarPost()
 {
     _depura ( "PresupuestoContableView::guardarPost", 0 );
 
-    m_listalineas->setColumnValue ( "idpresupuesto", dbValue ( "idpresupuesto" ) );
-    m_listadescuentos->setColumnValue ( "idpresupuesto", dbValue ( "idpresupuesto" ) );
+    mui_list->setColumnValue ( "idpresupuestocontable", dbValue ( "idpresupuestocontable" ) );
 
-    m_listalineas->guardar();
-    m_listadescuentos->guardar();
+    mui_list->guardar();
     /// Disparamos los plugins con presupuesto_imprimirPresupuesto.
-    g_plugins->lanza ( "Presupuesto_guardarPost_Post", this );
+    g_plugins->lanza ( "PresupuestoContableView_guardarPost_Post", this );
 
     _depura ( "END PresupuestoContableView::guardar", 0 );
     return 0;
