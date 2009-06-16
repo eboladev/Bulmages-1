@@ -1241,7 +1241,6 @@ void BlForm::activaDocumentos ()
     _depura ( "END BlForm::activaDocumentos", 0 );
 }
 
-
 ///
 /** Clase para ser derivada para desactivar documentos adicionales en las fichas.
 **/
@@ -1250,4 +1249,3 @@ void BlForm::desactivaDocumentos ()
     _depura ( "BlForm::desactivaDocumentos", 0 );
     _depura ( "END BlForm::desactivaDocumentos", 0 );
 }
-
