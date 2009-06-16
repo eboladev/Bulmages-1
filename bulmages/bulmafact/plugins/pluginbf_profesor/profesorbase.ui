@@ -18,7 +18,7 @@
    </size>
   </property>
   <property name="windowTitle">
-   <string>Nuevo Profesor</string>
+   <string>Nuevo Monitor</string>
   </property>
   <property name="windowIcon">
    <iconset resource="gestionaula.qrc">
@@ -554,6 +554,16 @@
        </item>
       </layout>
      </widget>
+     <widget class="QWidget" name="tab">
+      <attribute name="title">
+       <string>Actividades Impartidas</string>
+      </attribute>
+      <layout class="QGridLayout" name="gridLayout_3">
+       <item row="0" column="0">
+        <widget class="BfSubForm" name="m_actividades"/>
+       </item>
+      </layout>
+     </widget>
     </widget>
    </item>
    <item>
@@ -604,6 +614,11 @@
    <class>BlComboBox</class>
    <extends>QComboBox</extends>
    <header>blcombobox.h</header>
+  </customwidget>
+  <customwidget>
+   <class>BfSubForm</class>
+   <extends>QTableWidget</extends>
+   <header>bfsubform.h</header>
   </customwidget>
  </customwidgets>
  <tabstops>

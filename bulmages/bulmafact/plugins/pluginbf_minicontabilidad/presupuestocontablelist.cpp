@@ -58,12 +58,10 @@ PresupuestoContableList::PresupuestoContableList ( BfCompany *comp, QWidget *par
     if ( modoEdicion() ) {
         mainCompany() ->meteWindow ( windowTitle(), this );
     } else {
-        setWindowTitle ( _ ( "Selector de presupuestocontables" ) );
+        setWindowTitle ( _ ( "Selector de presupuesto contable" ) );
         mui_editar->setHidden ( TRUE );
         mui_crear->setHidden ( TRUE );
         mui_borrar->setHidden ( TRUE );
-        mui_exportar->setHidden ( TRUE );
-        mui_importar->setHidden ( TRUE );
         mui_imprimir->setHidden ( TRUE );
     } // end if
     presentar();
@@ -125,7 +123,7 @@ void PresupuestoContableList::editar ( int row )
 void PresupuestoContableList::imprimir()
 {
     _depura ( "PresupuestoContableList::on_mui_imprimir_released", 0 );
-    mui_list->imprimirPDF ( _ ( "Listado de PresupuestoContables" ) );
+    mui_list->imprimirPDF ( _ ( "Listado de Presupuestos Contables" ) );
     _depura ( "PresupuestoContableList::on_mui_imprimir_released", 0 );
 }
 
@@ -154,52 +152,6 @@ void PresupuestoContableList::borrar()
     _depura ( "END:PresupuestoContableList::on_mui_borrar_released", 0 );
 }
 
-
-/** SLOT que responde a la pulsacion del boton exportar.
-    Saca un dialog selector de archivo para que indiquemos a que archivo exportar.
-    Llama a bulmafact2XML para hacer la exportacion.
-*/
-void PresupuestoContableList::on_mui_exportar_released()
-{
-    _depura ( "PresupuestoContableList::on_mui_exportar_released", 0 );
-    QFile filexml ( QFileDialog::getSaveFileName (
-                        this,
-                        _ ( "Elija el archivo" ),
-                        g_confpr->valor ( CONF_DIR_USER ),
-                        _ ( "PresupuestoContables (*.xml)" ) ) );
-    if ( filexml.open ( QIODevice::WriteOnly ) ) {
-        bulmafact2XML ( filexml, IMPORT_CLIENTES );
-        filexml.close();
-    } else {
-        _depura ( "ERROR AL ABRIR EL ARCHIVO", 2 );
-    } // end if
-    _depura ( "END PresupuestoContableList::on_mui_exportar_released", 0 );
-}
-
-
-/** SLOT que responde a la pulsacion del boton importar.
-    Saca un selector de archivos para indicar desde que archivo importar.
-    Llama a XML2BulmaFact para hacer la importacion.
-    Refresca el listado.
-*/
-void PresupuestoContableList::on_mui_importar_released()
-{
-    _depura ( "PresupuestoContableList::on_mui_importar_released", 0 );
-    QFile filexml ( QFileDialog::getOpenFileName (
-                        this,
-                        _ ( "Elija el archivo" ),
-                        g_confpr->valor ( CONF_DIR_USER ),
-                        _ ( "PresupuestoContables (*.xml)" ) ) );
-
-    if ( filexml.open ( QIODevice::ReadOnly ) ) {
-        XML2BulmaFact ( filexml, IMPORT_CLIENTES );
-        filexml.close();
-        presentar();
-    } else {
-        _depura ( "ERROR AL ABRIR EL ARCHIVO\n", 2 );
-    } // end if
-    _depura ( "END PresupuestoContableList::on_mui_importar_released", 0 );
-}
 
 
 /** Devuelve el identificador del presupuestocontable seleccionado

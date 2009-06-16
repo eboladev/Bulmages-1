@@ -14,7 +14,7 @@
    </rect>
   </property>
   <property name="windowTitle" >
-   <string>Profesores</string>
+   <string>Monitores</string>
   </property>
   <property name="windowIcon" >
    <iconset resource="gestionaula.qrc" >
@@ -220,10 +220,10 @@
            </size>
           </property>
           <property name="toolTip" >
-           <string>Nuevo Profesor</string>
+           <string>Nuevo Monitor</string>
           </property>
           <property name="whatsThis" >
-           <string>Nuevo Profesor</string>
+           <string>Nuevo Monitor</string>
           </property>
           <property name="text" >
            <string/>
@@ -258,10 +258,10 @@
            </size>
           </property>
           <property name="toolTip" >
-           <string>Editar Profesor</string>
+           <string>Editar Monitor</string>
           </property>
           <property name="whatsThis" >
-           <string>Editar Profesor</string>
+           <string>Editar Monitor</string>
           </property>
           <property name="text" >
            <string/>
@@ -296,10 +296,10 @@
            </size>
           </property>
           <property name="toolTip" >
-           <string>Borrar Profesor</string>
+           <string>Borrar Monitor</string>
           </property>
           <property name="whatsThis" >
-           <string>Borrar Profesor</string>
+           <string>Borrar Monitor</string>
           </property>
           <property name="text" >
            <string/>
@@ -372,10 +372,10 @@
            </size>
           </property>
           <property name="toolTip" >
-           <string>Filtrar Profesores</string>
+           <string>Filtrar Monitores</string>
           </property>
           <property name="whatsThis" >
-           <string>Filtrar Profesores</string>
+           <string>Filtrar Monitores</string>
           </property>
           <property name="text" >
            <string/>

@@ -154,7 +154,7 @@ void ProfesoresList::imprimir()
 {
     _depura ( "ProfesoresList::imprimir", 0 );
     
-    mui_list->imprimirPDF ( _ ( "Profesores" ) );
+    mui_list->imprimirPDF ( _ ( "Monitores" ) );
     
     _depura ( "END ProfesoresList::imprimir", 0 );
 }

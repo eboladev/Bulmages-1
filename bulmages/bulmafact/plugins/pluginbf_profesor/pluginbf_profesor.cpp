@@ -111,15 +111,15 @@ void MyPlugProf::inicializa ( BfBulmaFact *bges )
         /// El men&uacute; de Tarifas en la secci&oacute;n de art&iacute;culos.
         m_bges = bges;
         setMainCompany ( bges->company() );
-        QAction *planCuentas = new QAction ( _ ( "&Profesores" ), 0 );
+        QAction *planCuentas = new QAction ( _ ( "&Monitores" ), 0 );
         planCuentas->setIcon ( QIcon ( QString::fromUtf8 ( ":/ImgGestionAula/icons/profesor.gif" ) ) );
-        planCuentas->setStatusTip ( _ ( "Profesores" ) );
-        planCuentas->setWhatsThis ( _ ( "Profesores" ) );
+        planCuentas->setStatusTip ( _ ( "Monitores" ) );
+        planCuentas->setWhatsThis ( _ ( "Monitores" ) );
         pPluginMenu->addAction ( planCuentas );
         bges->Listados->addAction ( planCuentas );
         connect ( planCuentas, SIGNAL ( activated() ), this, SLOT ( elslot() ) );
 
-        QAction *npago = new QAction ( _ ( "&Nuevo profesor" ), 0 );
+        QAction *npago = new QAction ( _ ( "&Nuevo monitor" ), 0 );
         npago->setIcon ( QIcon ( QString::fromUtf8 ( ":/ImgGestionAula/icons/profesor_add.png" ) ) );
         npago->setStatusTip ( _ ( "Nuevo profesor" ) );
         npago->setWhatsThis ( _ ( "Nuevo profesor" ) );
@@ -145,7 +145,7 @@ void MyPlugProf::inicializa ( BfBulmaFact *bges )
 **/
 int entryPoint ( BfBulmaFact *bges )
 {
-    _depura ( "Punto de Entrada del plugin de Profesores", 0 );
+    _depura ( "Punto de Entrada del plugin de Monitores", 0 );
 
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale ( LC_ALL, "" );
@@ -154,7 +154,7 @@ int entryPoint ( BfBulmaFact *bges )
     MyPlugProf *plug = new MyPlugProf();
     plug->inicializa ( bges );
     
-    _depura ( "END Punto de Entrada del plugin de Profesores", 0 );
+    _depura ( "END Punto de Entrada del plugin de Monitores", 0 );
     
     return 0;
 }

@@ -52,6 +52,7 @@ public:
     virtual void imprimir();
     virtual QString nombrePlantilla(void) ;
     virtual int guardarPost();
+    virtual int cargarPost(QString id);
 };
 
 #endif

@@ -394,40 +394,18 @@
         </property>
        </widget>
       </item>
-      <item row="1" column="0">
-       <widget class="QLabel" name="label11">
-        <property name="sizePolicy">
-         <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-          <horstretch>0</horstretch>
-          <verstretch>0</verstretch>
-         </sizepolicy>
+      <item row="0" column="3">
+       <spacer name="horizontalSpacer">
+        <property name="orientation">
+         <enum>Qt::Horizontal</enum>
         </property>
-        <property name="text">
-         <string>Fecha de vencimiento:</string>
-        </property>
-        <property name="alignment">
-         <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-        </property>
-        <property name="buddy">
-         <cstring>mui_vencpresupuesto</cstring>
-        </property>
-       </widget>
-      </item>
-      <item row="1" column="1" colspan="2">
-       <widget class="BlDateSearch" name="mui_vencpresupuesto">
-        <property name="minimumSize">
+        <property name="sizeHint" stdset="0">
          <size>
-          <width>150</width>
-          <height>0</height>
+          <width>40</width>
+          <height>20</height>
          </size>
         </property>
-        <property name="maximumSize">
-         <size>
-          <width>150</width>
-          <height>16777215</height>
-         </size>
-        </property>
-       </widget>
+       </spacer>
       </item>
      </layout>
     </widget>
@@ -546,7 +524,6 @@
   <tabstop>mui_detalles</tabstop>
   <tabstop>mui_conceptopresupuestocontable</tabstop>
   <tabstop>mui_fechapresupuestocontable</tabstop>
-  <tabstop>mui_vencpresupuesto</tabstop>
   <tabstop>m_general</tabstop>
   <tabstop>mui_aceptar</tabstop>
   <tabstop>mui_cancelar</tabstop>

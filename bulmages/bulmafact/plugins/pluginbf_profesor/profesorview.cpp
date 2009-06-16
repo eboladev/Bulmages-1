@@ -49,7 +49,7 @@ ProfesorView::ProfesorView ( BfCompany *comp, QWidget *parent )
         setupUi ( this );
         centrarEnPantalla ( this );
 
-        setTitleName ( _ ( "Profesor" ) );
+        setTitleName ( _ ( "Monitor" ) );
         setDbTableName ( "profesor" );
         setDbFieldId ( "idprofesor" );
         addDbField ( "idprofesor", BlDbField::DbInt, BlDbField::DbPrimaryKey, _ ( "ID profesor" ) );
@@ -75,6 +75,19 @@ ProfesorView::ProfesorView ( BfCompany *comp, QWidget *parent )
         mui_idprovincia->m_valores["descpais"] = "";
         mui_idprovincia->setAllowNull ( TRUE );
         mui_idprovincia->setId ( "" );
+
+        m_actividades->setMainCompany ( mainCompany() );
+	m_actividades->setDbTableName ( "actividad" );
+	m_actividades->setDbFieldId ( "idactividad" );
+	m_actividades->addSubFormHeader ( "idactividad", BlDbField::DbInt, BlDbField::DbNotNull | BlDbField::DbPrimaryKey, BlSubFormHeader::DbHideView | BlSubFormHeader::DbNoWrite, _ ( "ID Actividad" ) );
+	m_actividades->addSubFormHeader ( "nombreactividad", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _ ( "Nombre" ) );
+	m_actividades->addSubFormHeader ( "nombretipoactividad", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _ ( "Tipo" ) );
+	m_actividades->addSubFormHeader ( "precioactividad", BlDbField::DbNumeric, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _ ( "Precio" ) );
+	m_actividades->addSubFormHeader ( "finicialactividad", BlDbField::DbDate, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _ ( "Fecha Inicial" ) );
+	m_actividades->addSubFormHeader ( "ffinalactividad", BlDbField::DbDate, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _ ( "Fecha Final" ) );
+	
+	m_actividades->setInsert ( FALSE );
+	m_actividades->setSortingEnabled ( TRUE );
 
         meteWindow ( windowTitle(), this, FALSE );
         pintar();
@@ -106,14 +119,14 @@ void ProfesorView::imprimir()
     /// Comprobamos que se disponen de los datos minimos para imprimir el recibo.
     QString SQLQuery = "";
 
-    if ( dbValue ( "idcliente" ).isEmpty() ) {
+    if ( dbValue ( "idprofesor" ).isEmpty() ) {
         /// El documento no se ha guardado y no se dispone en la base de datos de estos datos.
         mensajeInfo ( _ ( "Tiene que guardar el documento antes de poder imprimirlo." ), this );
         return;
     }
     
     /// Disparamos los plugins
-    int res = g_plugins->lanza ( "CoboView_on_mui_imprimir_released", this );
+    int res = g_plugins->lanza ( "ProfesorView_on_mui_imprimir_released", this );
     if ( res != 0 ) {
         return;
     } // end if
@@ -128,5 +141,14 @@ int ProfesorView::guardarPost()
     _depura ( "ProfesorView::guardarPost", 0 );
 
     _depura ( "END ProfesorView::guardarPost", 0 );
+    return 0;
+}
 
+int ProfesorView::cargarPost(QString id)
+{
+    _depura ( "ProfesorView::cargarPost", 0 );
+
+    m_actividades->cargar("SELECT * FROM actividad NATURAL LEFT JOIN tipoactividad WHERE idprofesor = " + id);
+    _depura ( "END ProfesorView::cargarPost", 0 );
+    return 0;
 }

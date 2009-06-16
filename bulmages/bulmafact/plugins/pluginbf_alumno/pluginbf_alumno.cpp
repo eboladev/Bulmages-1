@@ -128,11 +128,17 @@ void MyPlugProf::inicializa ( BfBulmaFact *bges )
         bges->Fichas->addAction ( nalumno );
         connect ( nalumno, SIGNAL ( activated() ), this, SLOT ( elslot1() ) );
 
-        QAction *cuotaspalumno = new QAction ( _ ( "&Cuotas por Alumno" ), 0 );
+        /// Miramos si existe un menu Docencia
+        QMenu *pGesMenu = bges->newMenu ( "&Gestion", "menuGestion", "menuMaestro" );
+
+        /// Agrego un separador
+        pGesMenu->addSeparator();
+
+        QAction *cuotaspalumno = new QAction ( _ ( "&Cuotas Socio" ), 0 );
         cuotaspalumno->setIcon ( QIcon ( QString::fromUtf8 ( ":/ImgGestionAula/icons/mix_money_32.png" ) ) );
         cuotaspalumno->setStatusTip ( _ ( "Cuotas por alumno" ) );
         cuotaspalumno->setWhatsThis ( _ ( "Cuotas por alumno" ) );
-        pPluginMenu->addAction ( cuotaspalumno );
+        pGesMenu->addAction ( cuotaspalumno );
         bges->Fichas->addAction ( cuotaspalumno );
         connect ( cuotaspalumno, SIGNAL ( activated() ), this, SLOT ( elslot2() ) );
 
