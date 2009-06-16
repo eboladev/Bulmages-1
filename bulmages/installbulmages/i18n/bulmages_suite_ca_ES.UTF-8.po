@@ -4013,7 +4013,7 @@ msgstr "Deure"
 
 #: ui_confreglasbase.h:283
 msgid "Deben existir registros que cumplan esta condicion en el periodo"
-msgstr "\n"
+msgstr "Cal que existeixin registres que compleixin aquesta condició en el període"
 
 #: pluginbc_depuracion.cpp:94
 msgid ""
