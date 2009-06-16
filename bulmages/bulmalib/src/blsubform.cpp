@@ -2040,11 +2040,17 @@ void BlSubForm::guardaconfig()
 
         /// Guarda la configuracion de mui_list.
         stream << QString ( mui_list->horizontalHeader()->saveState().toBase64() ) << "\n";
-        stream << QString ( mui_list->verticalHeader()->saveState().toBase64() ) << "\n";
+        
+	/// 12/Junio/2009:
+        /// TODO: Se comentan las lineas que guardan el estado vertical porque da fallos en
+        /// algunas circunstancias y no tiene en cuenta el registro (BD) concreto al que afecta la
+        /// configuracion.
+        
+        //stream << QString ( mui_list->verticalHeader()->saveState().toBase64() ) << "\n";
 
         /// Guarda la configuracion de mui_listcolumnas.
         stream << QString ( mui_listcolumnas->horizontalHeader()->saveState().toBase64() ) << "\n";
-        stream << QString ( mui_listcolumnas->verticalHeader()->saveState().toBase64() ) << "\n";
+        //stream << QString ( mui_listcolumnas->verticalHeader()->saveState().toBase64() ) << "\n";
 
         /// Guarda el orden de la lista de elementos en mui_listcolumnas.
         for ( int i = 0; i < mui_listcolumnas->rowCount(); ++i ) {
@@ -2099,14 +2105,14 @@ void BlSubForm::cargaconfig()
         /// Restaura el estado de mui_list.
         linea = stream.readLine();
         mui_list->horizontalHeader()->restoreState ( QByteArray::fromBase64 ( linea.toAscii() ) );
-        linea = stream.readLine();
-        mui_list->verticalHeader()->restoreState ( QByteArray::fromBase64 ( linea.toAscii() ) );
+        //linea = stream.readLine();
+        //mui_list->verticalHeader()->restoreState ( QByteArray::fromBase64 ( linea.toAscii() ) );
 
         /// Restaura el estado de mui_listcolumnas.
         linea = stream.readLine();
         mui_listcolumnas->horizontalHeader()->restoreState ( QByteArray::fromBase64 ( linea.toAscii() ) );
-        linea = stream.readLine();
-        mui_listcolumnas->verticalHeader()->restoreState ( QByteArray::fromBase64 ( linea.toAscii() ) );
+        //linea = stream.readLine();
+        //mui_listcolumnas->verticalHeader()->restoreState ( QByteArray::fromBase64 ( linea.toAscii() ) );
 
         /// Restaura el orden de mui_listcolumnas.
         for ( int i = 0; i < mui_listcolumnas->rowCount(); ++i ) {

@@ -1,5 +1,6 @@
 # translation of bulmages_suite_ca.po to
 # Leopold Palomo Avellaneda <leo@alaxarxa.net>, 2009.
+
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
