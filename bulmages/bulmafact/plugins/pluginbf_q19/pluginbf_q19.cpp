@@ -105,8 +105,7 @@ int RecibosList_RecibosList ( RecibosList *l )
 {
     _depura ( "RecibosList_RecibosList", 0 );
 
-    Q19QToolButton *sel = new Q19QToolButton ( (CobrosList *)l, l->mui_plugbotones );
-//    Q19QToolButton *sel = new Q19QToolButton ( NULL, l->mui_plugbotones );
+    Q19QToolButton *sel = new Q19QToolButton ( l, l->mui_plugbotones );
 
     QHBoxLayout *m_hboxLayout1 = l->mui_plugbotones->findChild<QHBoxLayout *> ( "hboxLayout1" );
     if ( !m_hboxLayout1 ) {

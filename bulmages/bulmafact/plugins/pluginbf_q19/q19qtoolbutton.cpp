@@ -29,7 +29,6 @@
 #include "cobroview.h"
 #include "bfcompany.h"
 #include "bldb.h"
-//#include "facturapview.h"
 
 ///
 /**
@@ -40,11 +39,26 @@ Q19QToolButton::Q19QToolButton ( CobrosList *cob , QWidget *parent ) : QToolButt
 {
     _depura ( "Q19QToolButton::Q19QToolButton", 0 );
     m_cobrosList = cob;
+    m_recibosList=NULL;
     m_q19 = new Q19Writer( (BfCompany *) cob->mainCompany());
     setBoton();
     _depura ( "END Q19QToolButton::Q19QToolButton", 0 );
 }
 
+///
+/**
+\param cob
+\param parent
+**/
+Q19QToolButton::Q19QToolButton ( RecibosList *cob , QWidget *parent ) : QToolButton ( parent )
+{
+    _depura ( "Q19QToolButton::Q19QToolButton", 0 );
+    m_recibosList = cob;
+    m_cobrosList = NULL;
+    m_q19 = new Q19Writer( (BfCompany *) cob->mainCompany());
+    setBoton();
+    _depura ( "END Q19QToolButton::Q19QToolButton", 0 );
+}
 
 ///
 /**
@@ -81,8 +95,13 @@ void Q19QToolButton::setBoton()
 void Q19QToolButton::click()
 {
     _depura ( "Q19QToolButton::click", 0 );
+    BlSubForm *sub = NULL;
+    if (m_cobrosList) {
+       sub = m_cobrosList->mui_list;
+    } else {
+       sub = m_recibosList->mui_list;
+    } // end if
 
-    BlSubForm *sub = m_cobrosList->mui_list;
     QString ids="";
     int cobraments = 0;
    /// Reseteamos los valores
@@ -91,22 +110,39 @@ void Q19QToolButton::click()
         rec->refresh();
         QString val = rec->dbValue ( "selector" );
         if ( val == "TRUE" ) {
-           ids = ids + (ids.length()>0 ?",":"")+rec->dbValue ( "idcobro" );
+	   if (m_cobrosList) {
+	      ids = ids + (ids.length()>0 ?",":"")+rec->dbValue ( "idcobro" );
+	   } else {
+	      ids = ids + (ids.length()>0 ?",":"")+rec->dbValue ( "idrecibo" );
+	   } // end if
            cobraments++;
         } // end if
     } // end for
     if (cobraments==0) {
        QMessageBox::critical(parentWidget(), _("Remesa vacia"),_("No hay recibos seleccionados. Puede utilizar la columna selector para seleccionar los recibos a incluir en la remesa bancaria."));
    } else { 
- 
-       m_companyact = ( BfCompany * ) m_cobrosList->mainCompany();
- 
+       if (m_cobrosList) {
+	  m_companyact = ( BfCompany * ) m_cobrosList->mainCompany();
+       } else {
+	  m_companyact = ( BfCompany * ) m_recibosList->mainCompany();
+       } // end if
        _depura("buscare ids ",0,ids);
-       BlDbRecordSet *curcobro = m_companyact->loadQuery ( "SELECT cantcobro,'Ref:'||coalesce(refcobro,'')||'.'||coalesce(comentcobro,'') as comentcobro, fechavenccobro, cobro.idbanco, cobro.idcliente, idcobro, refcobro, cliente.* FROM cobro NATURAL LEFT JOIN cliente WHERE idcobro IN (" + ids +") ORDER BY cobro.idbanco,fechavenccobro,substring(cliente.bancocliente from 1 for 8),cliente.idcliente " );
+
+       QString query = "";
+       if (m_cobrosList) {
+	  query = "SELECT cantcobro,'Ref:'||coalesce(refcobro,'')||'.'||coalesce(comentcobro,'') as comentcobro, fechavenccobro, cobro.idbanco, cobro.idcliente, idcobro, refcobro, cliente.* FROM cobro NATURAL LEFT JOIN cliente WHERE idcobro IN (" + ids +") ORDER BY cobro.idbanco,fechavenccobro,substring(cliente.bancocliente from 1 for 8),cliente.idcliente ";
+       } else {
+	  query = "SELECT cantrecibo AS cantcobro,'Ref:'||coalesce(descrecibo,'')||'.'||coalesce(fecharecibo::VARCHAR,'') as comentcobro, fecharecibo AS fechavenccobro, forma_pago.idbanco, recibo.idcliente, idrecibo AS idcobro, fecharecibo::VARCHAR as refcobro, cliente.* FROM recibo LEFT JOIN cliente ON cliente.idcliente = recibo.idcliente LEFT JOIN forma_pago ON recibo.idforma_pago = forma_pago.idforma_pago WHERE idrecibo IN (" + ids +") ORDER BY forma_pago.idbanco,fecharecibo,substring(cliente.bancocliente from 1 for 8),cliente.idcliente ";
+       } // end if
+       BlDbRecordSet *curcobro = m_companyact->loadQuery ( query );
        QStringList ids;
        m_q19->genera(curcobro,QString(""),&ids);
        if (!ids.isEmpty()) {
-          m_companyact->runQuery("UPDATE cobro set previsioncobro = false WHERE idcobro IN  ("+ids.join(",")+")");
+	  if (m_cobrosList) {
+	      m_companyact->runQuery("UPDATE cobro set previsioncobro = false WHERE idcobro IN  ("+ids.join(",")+")");
+	  } else {
+	      m_companyact->runQuery("UPDATE recibo set pagadorecibo = true WHERE idrecibo IN  ("+ids.join(",")+")");
+	  } // end if
        }
        delete curcobro;
      }

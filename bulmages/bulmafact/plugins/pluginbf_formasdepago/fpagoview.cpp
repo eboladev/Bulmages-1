@@ -43,6 +43,10 @@ FPagoView::FPagoView ( BfCompany *emp, QWidget *parent )
     setModoEdicion();
     m_cursorFPagoView = NULL;
     m_item = NULL;
+
+    /// Inicializamos el banco.
+    mui_idbanco->setMainCompany ( emp );
+
     meteWindow ( windowTitle(), this );
     pintar();
     _depura ( "END FPagoView::FPagoView", 0 );
@@ -99,6 +103,7 @@ void FPagoView::on_mui_lista_currentItemChanged ( QListWidgetItem *cur, QListWid
     mui_descforma_pago->setText ( m_cursorFPagoView->valor ( "descforma_pago", row ) );
     mui_dias1tforma_pago->setText ( m_cursorFPagoView->valor ( "dias1tforma_pago", row ) );
     mui_descuentoforma_pago->setText ( m_cursorFPagoView->valor ( "descuentoforma_pago", row ) );
+    mui_idbanco->setidbanco(m_cursorFPagoView->valor("idbanco", row ) );
     mdb_idforma_pago = m_cursorFPagoView->valor ( "idforma_pago", row );
     m_item = cur;
 
@@ -116,7 +121,9 @@ int FPagoView::guardar()
     _depura ( "FPagoView::on_mui_guardar_released", 0 );
     if ( mdb_idforma_pago == "" || mdb_idforma_pago == "0" ) return 0;
     try {
-        QString query = "UPDATE forma_pago SET descforma_pago = '" +
+	QString idbanco = mui_idbanco->idbanco();
+	if (idbanco == "") idbanco = "NULL";
+        QString query = "UPDATE forma_pago SET idbanco = "+ idbanco +", descforma_pago = '" +
                         mainCompany() ->sanearCadena ( mui_descforma_pago->text() ) + "', dias1tforma_pago= " +
                         mainCompany() ->sanearCadena ( mui_dias1tforma_pago->text() ) + " , descuentoforma_pago = " +
                         mainCompany() ->sanearCadena ( mui_descuentoforma_pago->text() ) + " WHERE idforma_pago =" + mdb_idforma_pago;
@@ -174,7 +181,9 @@ void FPagoView::on_mui_crear_released()
     _depura ( "FPagoView::on_mui_crear_released", 0 );
     /// Si se ha modificado el contenido advertimos y guardamos.
     trataModificado();
-    QString query = "INSERT INTO forma_pago (descforma_pago, dias1tforma_pago, descuentoforma_pago) VALUES ('NUEVA FORMA DE PAGO', 0, 0)";
+    QString idbanco = mui_idbanco->idbanco();
+    if (idbanco == "") idbanco = "NULL";
+    QString query = "INSERT INTO forma_pago (descforma_pago, dias1tforma_pago, descuentoforma_pago, idbanco) VALUES ('NUEVA FORMA DE PAGO', 0, 0, "+ idbanco +")";
     mainCompany() ->begin();
     int error = mainCompany() ->runQuery ( query );
     if ( error ) {

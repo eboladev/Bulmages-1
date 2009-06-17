@@ -110,6 +110,7 @@ CREATE TABLE forma_pago (
     idforma_pago serial PRIMARY KEY,
     descforma_pago character varying(500),
     dias1tforma_pago integer,
+    idbanco integer REFERENCES banco(idbanco),
     descuentoforma_pago numeric(12, 2)
 );
 

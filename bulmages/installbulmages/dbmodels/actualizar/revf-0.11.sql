@@ -173,6 +173,16 @@ BEGIN
            UPDATE banco set sufijobanco = idbanco ;
 	END IF;
 
+
+	SELECT INTO bs attname, relname FROM pg_attribute LEFT JOIN pg_class ON pg_attribute.attrelid=pg_class.oid WHERE attname=''forma_pago'' AND relname=''idbanco'';
+	IF NOT FOUND THEN
+           ALTER TABLE forma_pago  ADD COLUMN idbanco integer REFERENCES banco(idbanco) ;
+-- para compatibilidad con las bd de la branch docsMonolitic que usaban idbanco en lugar de 
+-- sufijo
+           UPDATE banco set sufijobanco = idbanco ;
+	END IF;
+
+
 	RETURN 0;
 END;
 ' LANGUAGE plpgsql;
@@ -190,9 +200,9 @@ DECLARE
 BEGIN
 	SELECT INTO as * FROM configuracion WHERE nombre = ''DatabaseRevision'';
 	IF FOUND THEN
-		UPDATE CONFIGURACION SET valor = ''0.11.1-0003'' WHERE nombre = ''DatabaseRevision'';
+		UPDATE CONFIGURACION SET valor = ''0.11.1-0004'' WHERE nombre = ''DatabaseRevision'';
 	ELSE
-		INSERT INTO configuracion (nombre, valor) VALUES (''DatabaseRevision'', ''0.11.1-0003'');
+		INSERT INTO configuracion (nombre, valor) VALUES (''DatabaseRevision'', ''0.11.1-0004'');
 	END IF;
 	RETURN 0;
 END;

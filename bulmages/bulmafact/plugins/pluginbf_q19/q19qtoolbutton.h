@@ -26,6 +26,7 @@
 #include "bfcompany.h"
 #include "blfunctions.h"
 #include "cobroslist.h"
+#include "reciboslist.h"
 #include "q19writer.h"
 
 class Q19QToolButton : public QToolButton
@@ -35,10 +36,12 @@ class Q19QToolButton : public QToolButton
 private:
     BfCompany *m_companyact;
     CobrosList     *m_cobrosList;
+    RecibosList	   *m_recibosList;
     Q19Writer *m_q19;
 
 public:
     Q19QToolButton ( CobrosList *cob = NULL, QWidget *parent = NULL );
+    Q19QToolButton ( RecibosList *cob = NULL, QWidget *parent = NULL );
     ~Q19QToolButton();
     void setBoton();
 
