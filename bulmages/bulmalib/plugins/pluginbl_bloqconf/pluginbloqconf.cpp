@@ -91,7 +91,19 @@ void MyPluginBloqConf::elslot1( )
     _depura ( "END MyPluginBloqConf::elslot", 0 );
 }
 
+///
+/**
+**/
+void MyPluginBloqConf::elslot2( )
+{
+    _depura ( "MyPluginBloqConf::elslot2", 0 );
 
+    QString cad = "rm" + g_confpr->valor(CONF_DIR_USER) + "*.cfn";
+    system ( cad.toAscii().constData() );
+    mensajeInfo("Configuraciones Borradas. Las configuraciones se guardaran al cerrar el programa.");
+
+    _depura ( "END MyPluginBloqConf::elslot2", 0 );
+}
 
 ///
 /**
@@ -169,8 +181,16 @@ int entryPoint ( BlMainWindow *bges )
     accion1->setStatusTip ( "Desbloquear Configuraciones" );
     accion1->setWhatsThis ( "Desbloquear Configuraciones" );
 
+
+    /// Creamos el men&uacute;.
+    QAction *accion2 = new QAction ( "&Borrar Configuraciones", 0 );
+    accion2->setStatusTip ( "Borrar Configuraciones" );
+    accion2->setWhatsThis ( "Borrar Configuraciones" );
+
+
     mcont->connect ( accion, SIGNAL ( activated() ), mcont, SLOT ( elslot() ) );
     mcont->connect ( accion1, SIGNAL ( activated() ), mcont, SLOT ( elslot1() ) );
+    mcont->connect ( accion2, SIGNAL ( activated() ), mcont, SLOT ( elslot2() ) );
 
     /// Miramos si existe un menu Herramientas
 	QMenu *pPluginMenu = bges->newMenu("&Herramientas", "menuHerramientas", "menuAcerca_de");
@@ -178,7 +198,7 @@ int entryPoint ( BlMainWindow *bges )
     pPluginMenu->addSeparator();
     pPluginMenu->addAction ( accion );
     pPluginMenu->addAction ( accion1 );
-
+    pPluginMenu->addAction ( accion2 );
 
     _depura ( "Iniciado correctamente el plugin dock", 10 );
     return 0;

@@ -63,6 +63,13 @@ ActividadView::ActividadView ( BfCompany *comp, QWidget *parent )
         addDbField ( "vigenteactividad", BlDbField::DbBoolean, BlDbField::DbNothing, _ ( "Vigente" ) );
         addDbField ( "comentariosactividad", BlDbField::DbVarChar, BlDbField::DbNothing, _ ( "Comentarios" ) );
 
+
+        /// Disparamos los plugins.
+        int res = g_plugins->lanza ( "ActividadView_ActividadView", this );
+        if ( res != 0 ) {
+            return;
+        } // end if
+
         meteWindow ( windowTitle(), this, FALSE );
 
         /// Inicializamos el subformulario de alumnos

@@ -29,7 +29,7 @@
 #include "blwidget.h"
 #include "bfsubform.h"
 #include "bfbuscarreferencia.h"
-
+#include "blsearchwidget.h"
 
 extern "C" MY_EXPORT int entryPoint ( BfBulmaFact * );
 extern "C" MY_EXPORT int BfCompany_createMainWindows_Post(BfCompany *);
@@ -38,7 +38,7 @@ extern "C" MY_EXPORT int BlSubFormDelegate_setModelData(BlSubFormDelegate *);
 extern "C" MY_EXPORT int BlSubFormDelegate_setEditorData(BlSubFormDelegate *);
 extern "C" MY_EXPORT int BlSubForm_editFinished(BlSubForm *);
 extern "C" MY_EXPORT int BlSubForm_BlSubForm_Post ( BlSubForm * );
-
+extern "C" MY_EXPORT int Busqueda_on_mui_buscar_released ( BlSearchWidget * );
 
 
 class MyPlugProf : public QObject, BlMainCompanyPointer

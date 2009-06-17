@@ -392,6 +392,47 @@ int BlSubForm_BlSubForm_Post ( BlSubForm *sub )
 
 
 
+int Busqueda_on_mui_buscar_released ( BlSearchWidget *busq )
+{
+    _depura ( "Busqueda_on_mui_buscar_released", 0 );
+
+    if ( busq->tableName() == "actividad" ) {
+
+        QDialog *diag = new QDialog ( 0 );
+        diag->setModal ( true );
+        diag->setGeometry ( QRect ( 0, 0, 750, 550 ) );
+        centrarEnPantalla ( diag );
+
+        ActividadesList *actividades = new ActividadesList ( ( BfCompany * ) busq->mainCompany(), diag, 0, BL_SELECT_MODE );
+        busq->connect ( actividades, SIGNAL ( selected ( QString ) ), diag, SLOT ( accept() ) );
+
+        /// Creamos un layout donde estara el contenido de la ventana y la ajustamos al QDialog
+        /// para que sea redimensionable y aparezca el titulo de la ventana.
+        QHBoxLayout *layout = new QHBoxLayout;
+        layout->addWidget ( actividades );
+        layout->setMargin ( 0 );
+        layout->setSpacing ( 0 );
+        diag->setLayout ( layout );
+        diag->setWindowTitle ( actividades->windowTitle() );
+
+        diag->exec();
+        
+        if ( actividades->idactividad() != "" ) {
+            busq->setId ( actividades->idactividad() );
+        } // end if
+        
+        delete diag;
+
+        return 1;
+        
+    } // end if
+    
+    _depura ( "END Busqueda_on_mui_buscar_released", 0 );
+    
+    return 0;
+
+}
+
 
 
 

@@ -28,12 +28,12 @@
 #include "bfbulmafact.h"
 #include "blwidget.h"
 #include "bfbuscarreferencia.h"
+#include "actividadview.h"
 
 extern "C" MY_EXPORT int SNewReciboView (BfCompany *);
 extern "C" MY_EXPORT int entryPoint ( BfBulmaFact * );
 extern "C" MY_EXPORT int BfCompany_createMainWindows_Post(BfCompany *);
-//extern "C" BusquedaProfesor *bp;
-
+extern "C" MY_EXPORT int ActividadView_ActividadView(ActividadView *);
 
 class MyPlugProf : public QObject, BlMainCompanyPointer
 {
@@ -51,4 +51,20 @@ public slots:
     void elslot();
     void elslot1();
     void elslot2();
+};
+
+
+class MyPlugRecibo1 : public QObject, BlMainCompanyPointer
+{
+    Q_OBJECT
+
+public:
+    BfBulmaFact *m_bges;
+    ActividadView *m_actividad;
+
+public:
+    MyPlugRecibo1(BlMainCompany *);
+    ~MyPlugRecibo1();
+public slots:
+    void elslot();
 };

@@ -58,6 +58,14 @@ EmitirRecibosView::EmitirRecibosView ( BfCompany *comp, QWidget *parent )
         addDbField ( "idcliente", BlDbField::DbInt, BlDbField::DbNotNull, _ ( "Id cliente" ) );
         addDbField ( "idforma_pago", BlDbField::DbInt, BlDbField::DbNotNull, _ ( "Id Forma PAgo" ) );
 
+        /// Establecemos los parametros de busqueda de Profesor
+        mui_idactividad->setMainCompany ( comp );
+        mui_idactividad->setLabel ( _ ( "Actividad:" ) );
+        mui_idactividad->setTableName ( "actividad" );
+        mui_idactividad->m_valores["codigoactividad"] = "";
+        mui_idactividad->m_valores["nombreactividad"] = "";
+
+
         meteWindow ( windowTitle(), this, FALSE );
 
     } catch ( ... ) {

@@ -22,6 +22,7 @@
  ***************************************************************************/
 
 #include <stdio.h>
+#include <QToolButton>
 
 #include "pluginbf_recibo.h"
 #include "bfcompany.h"
@@ -170,6 +171,91 @@ int BfCompany_createMainWindows_Post ( BfCompany *comp )
     
     return 0;
 }
+
+
+///
+/**
+\param l
+\return
+**/
+int ActividadView_ActividadView ( ActividadView *l )
+{
+
+    _depura ( "PluginRecibo_ActividadView_ActividadView", 0 );
+
+    QToolButton *mui_generar_recibos = new QToolButton ( l->mui_plugbotones );
+    mui_generar_recibos->setObjectName ( QString::fromUtf8 ( "genrecibo" ) );
+    mui_generar_recibos->setStatusTip ( "Generar Pedido" );
+    mui_generar_recibos->setToolTip ( "Generar Pedido" );
+    mui_generar_recibos->setMinimumSize ( QSize ( 32, 32 ) );
+    mui_generar_recibos->setMaximumSize ( QSize ( 32, 32 ) );
+    mui_generar_recibos->setIcon ( QIcon ( QString::fromUtf8 ( ":/Images/supplier-delivery-note-to-invoice.png" ) ) );
+    mui_generar_recibos->setIconSize ( QSize ( 32, 32 ) );
+    mui_generar_recibos->setContentsMargins ( 0, 0, 0, 0 );
+
+
+
+    MyPlugRecibo1 *p = new MyPlugRecibo1(l->mainCompany());
+
+    QHBoxLayout *m_hboxLayout1 = l->mui_plugbotones->findChild<QHBoxLayout *> ( "hboxLayout1" );
+
+    if ( !m_hboxLayout1 ) {
+        m_hboxLayout1 = new QHBoxLayout ( l->mui_plugbotones );
+        m_hboxLayout1->setSpacing ( 5 );
+        m_hboxLayout1->setMargin ( 0 );
+        m_hboxLayout1->setObjectName ( QString::fromUtf8 ( "hboxLayout1" ) );
+    }// end if
+    p->m_actividad = l;
+    m_hboxLayout1->addWidget ( mui_generar_recibos );
+    p->connect(mui_generar_recibos, SIGNAL(released()), p, SLOT(elslot()));
+    _depura ( "END PluginRecibo_ActividadView_ActividadView", 0 );
+
+    return 0;
+}
+
+
+
+// =====================
+
+
+///
+/**
+**/
+MyPlugRecibo1::MyPlugRecibo1(BlMainCompany *comp) : BlMainCompanyPointer(comp)
+{
+    _depura ( "MyPlugRecibo1::MyPlugRecibo1", 0 );
+    _depura ( "END MyPlugRecibo1::MyPlugRecibo1", 0 );
+}
+
+///
+/**
+**/
+MyPlugRecibo1::~MyPlugRecibo1()
+{
+    _depura ( "MyPlugRecibo1::~MyPlugRecibo1", 0 );
+    _depura ( "END MyPlugRecibo1::~MyPlugRecibo1", 0 );
+}
+
+///
+/**
+**/
+void MyPlugRecibo1::elslot()
+{
+    _depura ( "MyPlugRecibo1::elslot", 0 );
+    
+    EmitirRecibosView * bud = new EmitirRecibosView ( ( BfCompany * ) mainCompany(), NULL );
+    mainCompany() ->m_pWorkspace->addWindow ( bud );
+    bud->mui_actividad->setChecked(TRUE);
+    bud->mui_idactividad->setId(m_actividad->dbValue("idactividad"));
+    bud->show();
+    
+    _depura ( "END MyPlugRecibo1::elslot", 0 );
+}
+
+// ==========================
+
+
+
 
 
 /// Esta llamada de plugin es bastante novedosa ya es una llamada que no responde a una funcion

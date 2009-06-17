@@ -17,6 +17,7 @@ public:
 public slots:
     virtual void elslot();
     virtual void elslot1();
+    virtual void elslot2();
     virtual void s_pintaMenu ( QMenu * );
     virtual void s_trataMenu ( QAction * );
 };
