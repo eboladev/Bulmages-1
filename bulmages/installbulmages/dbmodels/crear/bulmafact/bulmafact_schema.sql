@@ -100,6 +100,43 @@ CREATE TABLE provincia (
 );
 
 
+-- ** banco **
+-- nombanco: Nombre de la entidad bancaria.
+-- dirbanco: Direccion de la entidad bancaria.
+-- poblbanco: Poblacion de la entidad bancaria.
+-- cpbanco: Codigo postal de la entidad bancaria.
+-- telbanco: Telefono de la entidad bancaria (solo puede tener uno??)
+-- faxbanco: Fax de la entidad bancaria.
+-- emailbanco: Direccion de correo electronico de la entidad bancaria.
+-- contactobanco: Persona de contacto en la entidad bancaria.
+-- codentidadbanco: Codigo de la entidad bancaria.
+-- codagenciabanco: Codigo de la agencia bancaria.
+-- numcuentabanco : Codigo de la cuenta bancaria
+-- dcbanco: Digito de control de la cuenta bancaria.
+-- comentbanco: Comentario de la entidad bancaria.
+-- webbanco: Direccion web de la entidad bancaria.
+-- sufijo: código diferente para cada entitat receptora de ficheros de remesas de recibos q19
+\echo -n ':: Banco ... '
+CREATE TABLE banco (
+    idbanco serial PRIMARY KEY,
+    nombanco character varying(50),
+    dirbanco character varying(150),
+    poblbanco character varying(50),
+    cpbanco character varying(20),
+    telbanco character varying(20),
+    faxbanco character varying(20),
+    emailbanco character varying(100),
+    contactobanco character varying,
+    codentidadbanco character varying(14),
+    codagenciabanco character varying(17),
+    numcuentabanco  character varying(17),
+    dcbanco character varying(2),
+    comentbanco character varying,
+    webbanco character varying(100),
+    sufijobanco numeric(3,0)
+);
+
+
 -- ** forma_pago **
 -- descforma_pago: Nombre identificativo o descripcion breve.
 -- dias1tforma_pago: Dias antes del primer vencimiento calculando los bloque de 30 como
@@ -140,42 +177,6 @@ CREATE TABLE almacen (
     tipoalmacen  character varying,
     inactivoalmacen character(1),
     UNIQUE(codigoalmacen)
-);
-
--- ** banco **
--- nombanco: Nombre de la entidad bancaria.
--- dirbanco: Direccion de la entidad bancaria.
--- poblbanco: Poblacion de la entidad bancaria.
--- cpbanco: Codigo postal de la entidad bancaria.
--- telbanco: Telefono de la entidad bancaria (solo puede tener uno??)
--- faxbanco: Fax de la entidad bancaria.
--- emailbanco: Direccion de correo electronico de la entidad bancaria.
--- contactobanco: Persona de contacto en la entidad bancaria.
--- codentidadbanco: Codigo de la entidad bancaria.
--- codagenciabanco: Codigo de la agencia bancaria.
--- numcuentabanco : Codigo de la cuenta bancaria
--- dcbanco: Digito de control de la cuenta bancaria.
--- comentbanco: Comentario de la entidad bancaria.
--- webbanco: Direccion web de la entidad bancaria.
--- sufijo: código diferente para cada entitat receptora de ficheros de remesas de recibos q19
-\echo -n ':: Banco ... '
-CREATE TABLE banco (
-    idbanco serial PRIMARY KEY,
-    nombanco character varying(50),
-    dirbanco character varying(150),
-    poblbanco character varying(50),
-    cpbanco character varying(20),
-    telbanco character varying(20),
-    faxbanco character varying(20),
-    emailbanco character varying(100),
-    contactobanco character varying,
-    codentidadbanco character varying(14),
-    codagenciabanco character varying(17),
-    numcuentabanco  character varying(17),
-    dcbanco character varying(2),
-    comentbanco character varying,
-    webbanco character varying(100),
-    sufijobanco numeric(3,0)
 );
 
 
