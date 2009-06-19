@@ -62,6 +62,13 @@ ActividadView::ActividadView ( BfCompany *comp, QWidget *parent )
         addDbField ( "ffinalactividad", BlDbField::DbDate, BlDbField::DbNothing, _ ( "Fecha Final" ) );
         addDbField ( "vigenteactividad", BlDbField::DbBoolean, BlDbField::DbNothing, _ ( "Vigente" ) );
         addDbField ( "comentariosactividad", BlDbField::DbVarChar, BlDbField::DbNothing, _ ( "Comentarios" ) );
+        addDbField ( "lunesactividad", BlDbField::DbBoolean, BlDbField::DbNothing, _ ( "Lunes" ) );
+        addDbField ( "martesactividad", BlDbField::DbBoolean, BlDbField::DbNothing, _ ( "Martes" ) );
+        addDbField ( "miercolesactividad", BlDbField::DbBoolean, BlDbField::DbNothing, _ ( "Miercoles" ) );
+        addDbField ( "juevesactividad", BlDbField::DbBoolean, BlDbField::DbNothing, _ ( "Jueves" ) );
+        addDbField ( "viernesactividad", BlDbField::DbBoolean, BlDbField::DbNothing, _ ( "Viernes" ) );
+        addDbField ( "sabadoactividad", BlDbField::DbBoolean, BlDbField::DbNothing, _ ( "Sabado" ) );
+        addDbField ( "domingoactividad", BlDbField::DbBoolean, BlDbField::DbNothing, _ ( "Domingo" ) );
 
 
         /// Disparamos los plugins.

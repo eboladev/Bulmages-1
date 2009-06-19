@@ -194,27 +194,6 @@
          </widget>
         </item>
         <item>
-         <widget class="QToolButton" name="toolButton">
-          <property name="text">
-           <string>Convocar Reunion de JD</string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QPushButton" name="pushButton">
-          <property name="text">
-           <string>Convocar Asamblea</string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QPushButton" name="pushButton_2">
-          <property name="text">
-           <string>Emitir Comunicado</string>
-          </property>
-         </widget>
-        </item>
-        <item>
          <spacer>
           <property name="orientation">
            <enum>Qt::Horizontal</enum>

@@ -7,8 +7,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>778</width>
-    <height>532</height>
+    <width>788</width>
+    <height>516</height>
    </rect>
   </property>
   <property name="minimumSize">
@@ -325,7 +325,7 @@
          </property>
         </widget>
        </item>
-       <item row="2" column="1" colspan="4">
+       <item row="2" column="1" colspan="3">
         <widget class="QLineEdit" name="mui_corpcliente">
          <property name="maxLength">
           <number>200</number>
@@ -352,7 +352,7 @@
          </property>
         </widget>
        </item>
-       <item row="10" column="1">
+       <item row="11" column="1">
         <spacer>
          <property name="orientation">
           <enum>Qt::Vertical</enum>
@@ -365,7 +365,7 @@
          </property>
         </spacer>
        </item>
-       <item row="9" column="1" colspan="2">
+       <item row="10" column="1" colspan="2">
         <widget class="BlSearchWidget" name="mui_idprofesor" native="true">
          <property name="sizePolicy">
           <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
@@ -426,6 +426,64 @@
          <property name="text">
           <string>Fecha Final</string>
          </property>
+        </widget>
+       </item>
+       <item row="5" column="2" rowspan="4">
+        <widget class="QGroupBox" name="groupBox">
+         <property name="title">
+          <string>Sesiones Semanales</string>
+         </property>
+         <layout class="QGridLayout" name="gridLayout_5">
+          <item row="0" column="0">
+           <widget class="QCheckBox" name="mui_lunesactividad">
+            <property name="text">
+             <string>Lunes</string>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="0">
+           <widget class="QCheckBox" name="mui_martesactividad">
+            <property name="text">
+             <string>Martes</string>
+            </property>
+           </widget>
+          </item>
+          <item row="2" column="0">
+           <widget class="QCheckBox" name="mui_miercolesactividad">
+            <property name="text">
+             <string>Miercoles</string>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="1">
+           <widget class="QCheckBox" name="mui_sabadoactividad">
+            <property name="text">
+             <string>Sabado</string>
+            </property>
+           </widget>
+          </item>
+          <item row="2" column="1">
+           <widget class="QCheckBox" name="mui_domingoactividad">
+            <property name="text">
+             <string>Domingo</string>
+            </property>
+           </widget>
+          </item>
+          <item row="0" column="1">
+           <widget class="QCheckBox" name="mui_viernesactividad">
+            <property name="text">
+             <string>Viernes</string>
+            </property>
+           </widget>
+          </item>
+          <item row="3" column="0">
+           <widget class="QCheckBox" name="mui_juevesactividad">
+            <property name="text">
+             <string>Jueves</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
         </widget>
        </item>
       </layout>

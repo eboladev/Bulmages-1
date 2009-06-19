@@ -239,7 +239,15 @@ BEGIN
             vigenteactividad BOOLEAN NOT NULL DEFAULT false,
             comentariosactividad TEXT,
             finicialactividad DATE,
-            ffinalactividad DATE
+            ffinalactividad DATE,
+	    lunesactividad BOOLEAN DEFAULT FALSE,
+	    martesactividad BOOLEAN DEFAULT FALSE,
+	    miercolesactividad BOOLEAN DEFAULT FALSE,
+	    juevesactividad BOOLEAN DEFAULT FALSE,
+	    viernesactividad BOOLEAN DEFAULT FALSE,
+	    sabadoactividad BOOLEAN DEFAULT FALSE,
+	    domingoactividad BOOLEAN DEFAULT FALSE
+
         );
     END IF;
     
@@ -264,6 +272,18 @@ BEGIN
         ALTER TABLE actividad ADD COLUMN finicialactividad DATE;
         ALTER TABLE actividad ADD COLUMN ffinalactividad DATE;
     END IF;
+
+    SELECT INTO as attname, relname FROM pg_attribute LEFT JOIN pg_class ON pg_attribute.attrelid=pg_class.oid WHERE attname=''lunesactividad'' AND relname=''actividad'';
+    IF NOT FOUND THEN
+        ALTER TABLE actividad ADD COLUMN lunesactividad BOOLEAN;
+        ALTER TABLE actividad ADD COLUMN martesactividad BOOLEAN;
+        ALTER TABLE actividad ADD COLUMN miercolesactividad BOOLEAN;
+        ALTER TABLE actividad ADD COLUMN juevesactividad BOOLEAN;
+        ALTER TABLE actividad ADD COLUMN viernesactividad BOOLEAN;
+        ALTER TABLE actividad ADD COLUMN sabadoactividad BOOLEAN;
+        ALTER TABLE actividad ADD COLUMN domingoactividad BOOLEAN;
+    END IF;
+
     
     SELECT INTO as attname, relname FROM pg_attribute LEFT JOIN pg_class ON pg_attribute.attrelid=pg_class.oid WHERE attname=''codigoactividad'' AND relname=''actividad'';
     IF NOT FOUND THEN
