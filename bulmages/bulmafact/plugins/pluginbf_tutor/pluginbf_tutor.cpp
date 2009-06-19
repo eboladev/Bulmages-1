@@ -96,18 +96,18 @@ void MyPlugProf::inicializa ( BfBulmaFact *bges )
         /// El men&uacute; de Tarifas en la secci&oacute;n de art&iacute;culos.
         m_bges = bges;
         setMainCompany ( bges->company() );
-        QAction *planCuentas = new QAction ( _ ( "&Tutores/Socios" ), 0 );
+        QAction *planCuentas = new QAction ( _ ( "&Padres/Socios" ), 0 );
         planCuentas->setIcon ( QIcon ( QString::fromUtf8 ( ":/ImgGestionAula/icons/tutor-list.png" ) ) );
-        planCuentas->setStatusTip ( _ ( "Tutores/Socios" ) );
-        planCuentas->setWhatsThis ( _ ( "Tutores/Socios" ) );
+        planCuentas->setStatusTip ( _ ( "Padres/Socios" ) );
+        planCuentas->setWhatsThis ( _ ( "Padres/Socios" ) );
         pPluginMenu->addAction ( planCuentas );
         bges->Listados->addAction ( planCuentas );
         connect ( planCuentas, SIGNAL ( activated() ), this, SLOT ( elslot() ) );
 
-        QAction *npago = new QAction ( _ ( "&Nuevo tutor/socio" ), 0 );
+        QAction *npago = new QAction ( _ ( "&Nuevo padre/socio" ), 0 );
         npago->setIcon ( QIcon ( QString::fromUtf8 ( ":/ImgGestionAula/icons/tutor-new.png" ) ) );
-        npago->setStatusTip ( _ ( "Nuevo tutor/socio" ) );
-        npago->setWhatsThis ( _ ( "Nuevo tutor/socio" ) );
+        npago->setStatusTip ( _ ( "Nuevo padre/socio" ) );
+        npago->setWhatsThis ( _ ( "Nuevo padre/socio" ) );
         pPluginMenu->addAction ( npago );
         bges->Fichas->addAction ( npago );
         connect ( npago, SIGNAL ( activated() ), this, SLOT ( elslot1() ) );

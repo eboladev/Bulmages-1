@@ -15,7 +15,7 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Tutores</string>
+   <string>Padres</string>
   </property>
   <property name="windowIcon">
    <iconset resource="../pluginbf_profesor/gestionaula.qrc">

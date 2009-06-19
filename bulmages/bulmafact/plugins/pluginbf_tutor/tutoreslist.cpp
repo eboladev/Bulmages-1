@@ -77,7 +77,7 @@ TutoresList::TutoresList ( BfCompany *comp, QWidget *parent, Qt::WFlags flag, ed
         mainCompany() ->meteWindow ( windowTitle(), this );
     hideBusqueda();
     /// Hacemos el tratamiento de los permisos que desabilita botones en caso de no haber suficientes permisos.
-    trataPermisos ( "cobro" );
+    trataPermisos ( "cliente" );
     _depura ( "END TutoresList::TutoresList", 0 );
 }
 
@@ -141,7 +141,7 @@ void TutoresList::crear()
 void TutoresList::imprimir()
 {
     _depura ( "TutoresList::imprimir", 0 );
-    mui_list->imprimirPDF ( _ ( "Tutores" ) );
+    mui_list->imprimirPDF ( _ ( "Padres" ) );
     _depura ( "END TutoresList::imprimir", 0 );
 }
 
@@ -261,7 +261,7 @@ TutoresListSubForm::TutoresListSubForm ( QWidget *parent ) : BfSubForm ( parent 
     setDbTableName ( "cliente" );
     setDbFieldId ( "idcliente" );
     setFileConfig("tutor");
-    addSubFormHeader ( "idcliente", BlDbField::DbInt, BlDbField::DbNotNull | BlDbField::DbPrimaryKey, BlSubFormHeader::DbHideView | BlSubFormHeader::DbNoWrite, _ ( "ID tutor" ) );
+    addSubFormHeader ( "idcliente", BlDbField::DbInt, BlDbField::DbNotNull | BlDbField::DbPrimaryKey, BlSubFormHeader::DbHideView | BlSubFormHeader::DbNoWrite, _ ( "ID padre" ) );
     addSubFormHeader ( "selector", BlDbField::DbBoolean, BlDbField::DbNoSave | BlDbField::DbNoLoad, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, "selector" );
     addSubFormHeader ( "numsociocliente", BlDbField::DbInt, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _ ( "Numero Socio" ) );
     addSubFormHeader ( "nomcliente", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _ ( "Nombre" ) );

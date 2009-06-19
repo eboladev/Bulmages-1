@@ -50,7 +50,7 @@ TutorView::TutorView ( BfCompany *comp, QWidget *parent ) : BfForm ( comp, paren
         setupUi ( this );
         centrarEnPantalla ( this );
 
-        setTitleName ( _ ( "Tutor" ) );
+        setTitleName ( _ ( "Padre" ) );
         setDbTableName ( "cliente" );
         setDbFieldId ( "idcliente" );
         addDbField ( "idcliente", BlDbField::DbInt, BlDbField::DbPrimaryKey, _ ( "ID tutor" ) );
