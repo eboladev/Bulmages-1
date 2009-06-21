@@ -246,7 +246,8 @@ BEGIN
 	    juevesactividad BOOLEAN DEFAULT FALSE,
 	    viernesactividad BOOLEAN DEFAULT FALSE,
 	    sabadoactividad BOOLEAN DEFAULT FALSE,
-	    domingoactividad BOOLEAN DEFAULT FALSE
+	    domingoactividad BOOLEAN DEFAULT FALSE,
+	    periodoactividad INTERVAL
 
         );
     END IF;
@@ -259,6 +260,11 @@ BEGIN
             idalumno INTEGER REFERENCES alumno(idalumno),
             fechafaltaasistenciaalumnoactividad DATE NOT NULL DEFAULT now()
         );
+    END IF;
+
+    SELECT INTO as attname, relname FROM pg_attribute LEFT JOIN pg_class ON pg_attribute.attrelid=pg_class.oid WHERE attname=''periodoactividad'' AND relname=''actividad'';
+    IF NOT FOUND THEN
+        ALTER TABLE actividad ADD COLUMN periodoactividad INTERVAL;
     END IF;
 
     SELECT INTO as attname, relname FROM pg_attribute LEFT JOIN pg_class ON pg_attribute.attrelid=pg_class.oid WHERE attname=''idtipoactividad'' AND relname=''actividad'';

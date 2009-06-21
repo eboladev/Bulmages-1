@@ -35,7 +35,7 @@
 #include "blplugins.h"
 #include "blradiobutton.h"
 #include "bldatesearch.h"
-
+#include "blperiodicitycombobox.h"
 
 ///
 /**
@@ -543,19 +543,26 @@ void BlForm::pintar()
         if ( l1 ) {
             l1->setFieldValue ( campo->valorcampo() );
         } // end if
+
         /// Buscamos BlComboBox que coincidan con el campo supuestamente
         /// sirve para los campos personales.
-        BlComboBox *l2 = findChild<BlComboBox *> ( "mui_" + campo->nomcampo() );
-        if ( l2 ) {
-            l2->setFieldValue ( campo->valorcampo() );
-        } else {
-            /// Buscamos BlComboBox que coincidan con el campo supuestamente
-            /// sirve para los campos personales.
-            QComboBox *l7 = findChild<QComboBox *> ( "mui_" + campo->nomcampo() );
-            if ( l7 ) {
-                l7->setCurrentIndex ( l7->findText ( campo->valorcampo() ) );
-            } // end if
-        } // end if
+        BlPeriodicityComboBox *l8 = findChild<BlPeriodicityComboBox *> ( "mui_" + campo->nomcampo() );
+        if ( l8 ) {
+            l8->setperiodo ( campo->valorcampo() );
+	} else {
+	  BlComboBox *l2 = findChild<BlComboBox *> ( "mui_" + campo->nomcampo() );
+	  if ( l2 ) {
+	      l2->setFieldValue ( campo->valorcampo() );
+	  } else {
+	      /// Buscamos BlComboBox que coincidan con el campo supuestamente
+	      /// sirve para los campos personales.
+	      QComboBox *l7 = findChild<QComboBox *> ( "mui_" + campo->nomcampo() );
+	      if ( l7 ) {
+		  l7->setCurrentIndex ( l7->findText ( campo->valorcampo() ) );
+	      } // end if
+	  } // end if
+	} // end if
+
         /// Buscamos los QCheckBox con nombre coincidente.
         QCheckBox *l5 = findChild<QCheckBox *> ( "mui_" + campo->nomcampo() );
         if ( l5 ) {
@@ -611,16 +618,21 @@ void BlForm::recogeValores()
             campo->set ( l1->fieldValue() );
 
         /// Buscamos BlComboBox que coincidan con el campo. Supuestamente sirve para los campos personales.
-        BlComboBox *l2 = findChild<BlComboBox *> ( "mui_" + campo->nomcampo() );
-        if ( l2 ) {
-            campo->set ( l2->fieldValue() );
-        } else {
-            /// Buscamos QComboBox que coincidan con el campo. Supuestamente sirve para los campos personales.
-            QComboBox *l7 = findChild<QComboBox *> ( "mui_" + campo->nomcampo() );
-            if ( l7 ) {
-                campo->set ( l7->currentText() );
-            } // end if
-        } // end if
+        BlPeriodicityComboBox *l8 = findChild<BlPeriodicityComboBox *> ( "mui_" + campo->nomcampo() );
+        if ( l8 ) {
+            campo->set(l8->periodo() );
+	} else {
+	    BlComboBox *l2 = findChild<BlComboBox *> ( "mui_" + campo->nomcampo() );
+	    if ( l2 ) {
+		campo->set ( l2->fieldValue() );
+	    } else {
+		/// Buscamos QComboBox que coincidan con el campo. Supuestamente sirve para los campos personales.
+		QComboBox *l7 = findChild<QComboBox *> ( "mui_" + campo->nomcampo() );
+		if ( l7 ) {
+		    campo->set ( l7->currentText() );
+		} // end if
+	    } // end if
+	} // end if
         /// Buscamos un QCheckBox con nombre coincidente.
         QCheckBox *l5 = findChild<QCheckBox *> ( "mui_" + campo->nomcampo() );
         if ( l5 ) {

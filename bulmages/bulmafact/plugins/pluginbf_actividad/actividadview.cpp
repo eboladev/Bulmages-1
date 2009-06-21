@@ -69,7 +69,7 @@ ActividadView::ActividadView ( BfCompany *comp, QWidget *parent )
         addDbField ( "viernesactividad", BlDbField::DbBoolean, BlDbField::DbNothing, _ ( "Viernes" ) );
         addDbField ( "sabadoactividad", BlDbField::DbBoolean, BlDbField::DbNothing, _ ( "Sabado" ) );
         addDbField ( "domingoactividad", BlDbField::DbBoolean, BlDbField::DbNothing, _ ( "Domingo" ) );
-
+	addDbField ( "periodoactividad", BlDbField::DbVarChar, BlDbField::DbNothing, _ ( "Periodo" ) );
 
         /// Disparamos los plugins.
         int res = g_plugins->lanza ( "ActividadView_ActividadView", this );

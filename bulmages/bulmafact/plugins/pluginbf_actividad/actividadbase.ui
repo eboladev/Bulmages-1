@@ -352,7 +352,7 @@
          </property>
         </widget>
        </item>
-       <item row="11" column="1">
+       <item row="12" column="1">
         <spacer>
          <property name="orientation">
           <enum>Qt::Vertical</enum>
@@ -365,7 +365,7 @@
          </property>
         </spacer>
        </item>
-       <item row="10" column="1" colspan="2">
+       <item row="11" column="1" colspan="2">
         <widget class="BlSearchWidget" name="mui_idprofesor" native="true">
          <property name="sizePolicy">
           <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
@@ -408,27 +408,27 @@
          </property>
         </widget>
        </item>
-       <item row="7" column="1">
+       <item row="8" column="1">
         <widget class="BlDateSearch" name="mui_finicialactividad"/>
        </item>
-       <item row="8" column="1">
+       <item row="9" column="1">
         <widget class="BlDateSearch" name="mui_ffinalactividad"/>
        </item>
-       <item row="7" column="0">
+       <item row="8" column="0">
         <widget class="QLabel" name="label_4">
          <property name="text">
           <string>Fecha Inicial</string>
          </property>
         </widget>
        </item>
-       <item row="8" column="0">
+       <item row="9" column="0">
         <widget class="QLabel" name="label_5">
          <property name="text">
           <string>Fecha Final</string>
          </property>
         </widget>
        </item>
-       <item row="5" column="2" rowspan="4">
+       <item row="5" column="2" rowspan="5">
         <widget class="QGroupBox" name="groupBox">
          <property name="title">
           <string>Sesiones Semanales</string>
@@ -485,6 +485,16 @@
           </item>
          </layout>
         </widget>
+       </item>
+       <item row="7" column="0">
+        <widget class="QLabel" name="label_6">
+         <property name="text">
+          <string>Periodicidad Cuota</string>
+         </property>
+        </widget>
+       </item>
+       <item row="7" column="1">
+        <widget class="BlPeriodicityComboBox" name="mui_periodoactividad"/>
        </item>
       </layout>
      </widget>
@@ -640,6 +650,11 @@
    <class>ListFaltasAsistenciaActividadView</class>
    <extends>QTableWidget</extends>
    <header>actividadview.h</header>
+  </customwidget>
+  <customwidget>
+   <class>BlPeriodicityComboBox</class>
+   <extends>QComboBox</extends>
+   <header>blperiodicitycombobox.h</header>
   </customwidget>
  </customwidgets>
  <resources>
