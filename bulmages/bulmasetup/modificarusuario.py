@@ -127,20 +127,20 @@ class ModificarUsuario(Ui_ModificarUsuario, Empresa):
 
     def initListaTablas(self):
         self.conectar(str(dbase))
-        tablas = self.execute("SELECT relname FROM pg_class WHERE relkind = 'r' AND relname NOT LIKE ('pg_%') AND relname NOT LIKE ('sql_%') ORDER BY relname")
+        tablas = self.execute("SELECT nspname , relname FROM pg_class LEFT JOIN pg_namespace ON pg_class.relnamespace = pg_namespace.oid WHERE relkind = 'r' AND relname NOT LIKE ('pg_%') AND relname NOT LIKE ('sql_%') ORDER BY relname")
               
         # Rellenamos la lista con tablas de la base de datos seleccionada
         for row in tablas:
-            texto = row[0]                        
+            texto = "\""+row[0]+"\".\""+row[1]+"\""                        
             self.listWidgetTable.addItem(QString(texto))
    
     def initListaSecuencias(self):
         self.conectar(str(dbase))
-        secuencias = self.execute("SELECT relname FROM pg_class WHERE relkind = 'S' AND relname NOT LIKE ('pg_%') AND relname NOT LIKE ('sql_%') AND relname LIKE ('%_seq') ORDER BY relname")
+        secuencias = self.execute("SELECT nspname , relname FROM pg_class LEFT JOIN pg_namespace ON pg_class.relnamespace = pg_namespace.oid WHERE relkind = 'S' AND relname NOT LIKE ('pg_%') AND relname NOT LIKE ('sql_%') AND relname LIKE ('%_seq') ORDER BY relname")
                   
         # Rellenamos la lista con las secuencias
         for row in secuencias:
-            texto = row[0]                        
+            texto = "\""+row[0]+"\".\""+row[1]+"\""                      
             self.listWidgetSecuencias.addItem(QString(texto))
 
         
