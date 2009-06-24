@@ -229,7 +229,7 @@ QString BfBuscarArticuloDelegate::unicaEleccion ( void )
             elec = itemData ( i ).toString();
             num++;
         };
-        _depura ( "END item " + QString::number ( i ) + ". num= " + QString::number ( num )
+        _depura ( "FI item " + QString::number ( i ) + ". num= " + QString::number ( num )
                   + " itemText='" + itemText ( i ) + "' itemData=" + itemData ( i ).toString(), 0 );
 
     }
