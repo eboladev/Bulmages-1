@@ -227,19 +227,26 @@ int BfBuscarArticuloDelegate_textChanged_Post ( BfBuscarArticuloDelegate *baDel 
 
 }
 
-int BlSubForm_campoCompleto ( BlSubForm *grid, void **resultat )
+
+int BfSubForm_on_mui_list_editFinished ( BfSubForm *sf )
 {
-    _depura ( "BlSubForm_campoCompleto de pluginbf_alias", 0 );
-    BfBuscarArticuloDelegate *baDel = dynamic_cast<BfBuscarArticuloDelegate *> ( grid->mui_list->QAbstractItemView::indexWidget ( grid->mui_list->currentIndex() ) );
-    if ( baDel ) {
-        _depura ( "camp de codi article/alias. count=" + QString::number ( baDel->count() ), 0 );
-        QString elec = baDel->eligeUnico();
-        if ( !elec.isNull() ) {
-            grid->item ( grid->currentRow(), grid->currentColumn() )->setText ( elec );
+    _depura ( "BfSubForm_on_mui_list_editFinished", 0 );
+    BlDbSubFormField *camp = sf->m_campoactual;
+    if  ( camp->nomcampo() == "codigocompletoarticulo" ) {
+      if ( posibleAlias ( camp->text(), sf->mainCompany() ) ) {
+        _depura ( "possible Alias ", 0, camp->text() );
+        QString SQLQuery = "SELECT codigocompletoarticulo FROM alias LEFT JOIN articulo ON alias.idarticulo = articulo.idarticulo WHERE cadalias ~=~ $1";
+        QString valors[1] = { camp->text() };
+        BlDbRecordSet *cur = sf->mainCompany() ->loadQuery ( SQLQuery, 1, valors );
+        if ( !cur->eof() ) {
+            camp->setText( cur->valor ( "codigocompletoarticulo" ) ); 
         }
+        delete cur;
+      }
     }
+    _depura ( "END BfSubForm_on_mui_list_editFinished", 0 );
 
-    _depura ( "END BlSubForm_campoCompleto de pluginbf_alias", 0 );
+    return 0;
 
-    return 0; // continua el processament normal
 }
+
