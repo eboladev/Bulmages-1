@@ -61,7 +61,11 @@ extern "C" MY_EXPORT int ArticuloView_cargar ( ArticuloView * );
 extern "C" MY_EXPORT int ArticuloView_guardar_post ( ArticuloView * );
 
 extern "C" MY_EXPORT int Busqueda_on_m_inputBusqueda_textChanged ( BlSearchWidget * );
+/*
 extern "C" MY_EXPORT int BfBuscarArticuloDelegate_textChanged_Post ( BfBuscarArticuloDelegate *baDel );
-
-
 extern "C" MY_EXPORT int BfSubForm_on_mui_list_editFinished ( BfSubForm *sf ) ;
+*/
+extern "C" MY_EXPORT int BlSubForm_editFinished(BlSubForm *);
+extern "C" MY_EXPORT int BlDbCompleterComboBox_textChanged (BlDbCompleterComboBox *);
+
+

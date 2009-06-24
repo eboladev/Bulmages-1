@@ -126,6 +126,8 @@ QString BfBuscarArticulo::nomarticulo()
 }
 
 
+#ifdef ESTO_NO_PASARA
+
 /// ===================================================================
 /// Busqueda Articulo Delegate para usar con los subforms
 /// ===================================================================
@@ -142,7 +144,7 @@ BfBuscarArticuloDelegate::BfBuscarArticuloDelegate ( QWidget *parent )
     _depura ( "BfBuscarArticuloDelegate::BfBuscarArticuloDelegate", 0 );
     m_cursorcombo = NULL;
     setEditable ( true );
-    connect ( this, SIGNAL ( activated ( int ) ), this, SLOT ( m_activated ( int ) ) );
+//    connect ( this, SIGNAL ( activated ( int ) ), this, SLOT ( m_activated ( int ) ) );
     connect ( this, SIGNAL ( editTextChanged ( const QString & ) ), this, SLOT ( s_editTextChanged ( const QString & ) ) );
     _depura ( "END BfBuscarArticuloDelegate::BfBuscarArticuloDelegate", 0 );
 }
@@ -268,4 +270,4 @@ QString BfBuscarArticuloDelegate::entrada()
 {
     return m_entrada;
 }
-
+# endif

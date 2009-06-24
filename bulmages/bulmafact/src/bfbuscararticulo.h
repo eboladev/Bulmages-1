@@ -32,6 +32,7 @@
 
 class BfCompany;
 
+/*
 
 class BF_EXPORT BfBuscarArticuloDelegate : public BlComboBox
 {
@@ -56,7 +57,7 @@ public slots:
 
 };
 
-
+*/
 /// Permite buscar y seleccionar un art&iacute;culo.
 /** Muestra la parte del formulario que permite buscar y seleccionar un
     art&iacute;culo. */

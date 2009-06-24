@@ -195,6 +195,7 @@ int Busqueda_on_m_inputBusqueda_textChanged ( BlSearchWidget *busc )
     return 0;
 }
 
+/*
 
 int BfBuscarArticuloDelegate_textChanged_Post ( BfBuscarArticuloDelegate *baDel )
 {
@@ -249,4 +250,92 @@ int BfSubForm_on_mui_list_editFinished ( BfSubForm *sf )
     return 0;
 
 }
+
+*/
+
+
+
+
+int BlSubForm_editFinished ( BlSubForm *sub )
+{
+    _depura ( "pluginbf_alias::BlSubForm_editFinished", 0 );
+    if ( sub->m_campoactual->nomcampo() == "codigocompletoarticulo" ) {
+	QString query = "SELECT idarticulo FROM articulo WHERE codigocompletoarticulo ='" + sub->m_campoactual->text() + "'";
+	BlDbSubFormField *camp = sub->m_campoactual;
+        BlDbRecordSet *cur = sub->mainCompany() ->loadQuery ( query );
+        if ( !cur->eof() ) {
+            sub->m_registrolinea->setDbValue ( "idarticulo", cur->valor ( "idarticulo" ) );
+	} else {
+/// No hay codigos y buscamos alias
+        QString SQLQuery = "SELECT articulo.idarticulo, codigocompletoarticulo FROM alias LEFT JOIN articulo ON alias.idarticulo = articulo.idarticulo WHERE cadalias ='" + sub->m_campoactual->text() + "'";
+        BlDbRecordSet *cur1 = sub->mainCompany() ->loadQuery ( SQLQuery );
+        if ( !cur1->eof() ) {
+            sub->m_registrolinea->setDbValue ( "idarticulo", cur1->valor ( "idarticulo" ) );
+            sub->m_registrolinea->setDbValue ( "codigocompletoarticulo", cur1->valor ( "codigocompletoarticulo" ) );
+            camp->setText( cur1->valor ( "codigocompletoarticulo" ) ); 
+	    camp->refresh();
+        } // end if
+        delete cur1;
+
+        } // end if
+        delete cur;
+	_depura ( "END pluginbf_alias::BlSubForm_editFinished", 0 );
+	return 1;
+    } // end if
+    _depura ( "END pluginbf_alias::BlSubForm_editFinished", 0 );
+    return 0;
+}
+
+
+int BlDbCompleterComboBox_textChanged (BlDbCompleterComboBox *bl) {
+  _depura("BlDbCompleterComboBox_textChanged", 0);
+
+        if ( bl->m_entrada.size() >= 3 && bl->m_tabla == "articulo") {
+                QString cadwhere = "";
+                /// Inicializamos los valores de vuelta a ""
+                QString SQLQuery = "SELECT * FROM " + bl->m_tabla + " WHERE upper(codigocompletoarticulo) LIKE  upper('" + bl->m_entrada + "%')";
+                bl->m_cursorcombo = bl->mainCompany() ->loadQuery ( SQLQuery );
+                bl->clear();
+                while ( !bl->m_cursorcombo->eof() ) {
+                    QMapIterator<QString, QString> i ( bl->m_valores );
+                    QString cad = "";
+                    QString sep = "";
+                    QString cad1 = "";
+                    while ( i.hasNext() ) {
+                        i.next();
+                        cad = cad + sep + bl->m_cursorcombo->valor ( i.key() );
+                        if ( sep == "" ) {
+                            cad1 = i.key();
+                            sep = ".-";
+                        } // end if
+                    } // end while
+                    bl->addItem ( cad , QVariant ( bl->m_cursorcombo->valor ( cad1 ) ) );
+                    bl->m_cursorcombo->nextRecord();
+                } // end while
+                delete bl->m_cursorcombo;
+
+                /// Inicializamos los valores de vuelta a ""
+                SQLQuery = "SELECT * FROM alias LEFT JOIN articulo ON alias.idarticulo = articulo.idarticulo WHERE upper(cadalias) LIKE  upper('" + bl->m_entrada + "%')";
+                bl->m_cursorcombo = bl->mainCompany() ->loadQuery ( SQLQuery );
+                while ( !bl->m_cursorcombo->eof() ) {
+                    QString cad = bl->m_cursorcombo-> valor("cadalias") + ".-" + bl->m_cursorcombo->valor("nomarticulo");
+		    QString cad1 = bl->m_cursorcombo-> valor("codigocompletoarticulo");
+                    bl->addItem ( cad , QVariant ( bl->m_cursorcombo->valor ( cad1 ) ) );
+                    bl->m_cursorcombo->nextRecord();
+                } // end while
+                delete bl->m_cursorcombo;
+
+  _depura("END BlDbCompleterComboBox_textChanged", 0);
+
+	  return 1;
+        } // end if
+  _depura("END BlDbCompleterComboBox_textChanged", 0);
+
+    return 0;
+}
+
+
+
+
+
 

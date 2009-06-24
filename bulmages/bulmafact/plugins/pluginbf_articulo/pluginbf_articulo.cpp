@@ -507,4 +507,108 @@ int BlSubForm_BlSubForm_Post ( BlSubForm *sub )
 
 
 
+int BlSubFormDelegate_createEditor ( BlSubFormDelegate *bl )
+{
+    _depura ( "pluginbf_articulo::BlSubFormDelegate_createEditor", 0 );
+    int ret = 0;
+    if ( g_nomcampo == "codigocompletoarticulo" ) {
+        BlDbCompleterComboBox * editor = new BlDbCompleterComboBox ( g_editor );
+        editor->setObjectName ( "EditCodigoCompletoArticulo" );
+        editor->setMainCompany ( ( BfCompany * ) bl->m_subform->mainCompany() );
+	editor->m_valores["codigocompletoarticulo"] = "";
+	editor->m_valores["nomarticulo"] = "";
+        editor->m_tabla = "articulo";
+        g_plugParams =  editor;
+        ret = -1;
+    } // end if
+
+    _depura ( "END pluginbf_articulo::BlSubFormDelegate_createEditor", 0 );
+
+    return ret;
+}
+
+
+
+/// Hay cosas que deberian estar en el plugin de alumno
+int BlSubFormDelegate_setModelData ( BlSubFormDelegate *bl )
+{
+    _depura ( "pluginbf_articulo::BlSubFormDelegate_setModelData", 0 );
+    int ret = 0;
+    if ( g_editor->objectName() == "EditCodigoCompletoArticulo" ) {
+        BlDbCompleterComboBox * comboBox = ( BlDbCompleterComboBox * ) g_editor;
+        QString value = comboBox->currentText();
+        value = value.left ( value.indexOf ( ".-" ) );
+        g_model->setData ( g_index, value );
+        ret = -1;
+    } // end if
+    _depura ( "END pluginbf_articulo::BlSubFormDelegate_setModelData", 0 );
+    return ret;
+}
+
+
+int BlSubFormDelegate_setEditorData ( BlSubFormDelegate *bl )
+{
+    _depura ( "pluginbf_articulo::BlSubFormDelegate_setEditorData", 0 );
+    int ret = 0;
+    if ( g_editor->objectName() == "EditCodigoCompletoArticulo" ) {
+        QString value = g_index.model() ->data ( g_index, Qt::DisplayRole ).toString();
+        BlDbCompleterComboBox *comboBox = ( BlDbCompleterComboBox * ) g_editor ;
+        comboBox->addItem ( value );
+        ret = -1;
+    } // end if
+    _depura ( "END pluginbf_articulo::BlSubFormDelegate_setEditorData", 0 );
+    return ret;
+}
+
+int BlSubForm_editFinished ( BlSubForm *sub )
+{
+    _depura ( "pluginbf_articulo::BlSubForm_editFinished", 0 );
+    if ( sub->m_campoactual->nomcampo() == "codigocompletoarticulo" ) {
+	QString query = "SELECT idarticulo FROM articulo WHERE codigocompletoarticulo ='" + sub->m_campoactual->text() + "'";
+        BlDbRecordSet *cur = sub->mainCompany() ->loadQuery ( query );
+        if ( !cur->eof() ) {
+            sub->m_registrolinea->setDbValue ( "idarticulo", cur->valor ( "idarticulo" ) );
+        } // end if
+        delete cur;
+    } // end if
+    _depura ( "END pluginbf_articulo::BlSubForm_editFinished", 0 );
+    return 0;
+}
+
+
+int BlDbCompleterComboBox_textChanged (BlDbCompleterComboBox *bl) {
+  _depura("BlDbCompleterComboBox_textChanged", 0);
+
+        if ( bl->m_entrada.size() >= 3 && bl->m_tabla == "articulo") {
+                QString cadwhere = "";
+                /// Inicializamos los valores de vuelta a ""
+                QString SQLQuery = "SELECT * FROM " + bl->m_tabla + " WHERE upper(codigocompletoarticulo) LIKE  upper('" + bl->m_entrada + "%')";
+                bl->m_cursorcombo = bl->mainCompany() ->loadQuery ( SQLQuery );
+                bl->clear();
+                while ( !bl->m_cursorcombo->eof() ) {
+                    QMapIterator<QString, QString> i ( bl->m_valores );
+                    QString cad = "";
+                    QString sep = "";
+                    QString cad1 = "";
+                    while ( i.hasNext() ) {
+                        i.next();
+                        cad = cad + sep + bl->m_cursorcombo->valor ( i.key() );
+                        if ( sep == "" ) {
+                            cad1 = i.key();
+                            sep = ".-";
+                        } // end if
+                    } // end while
+                    bl->addItem ( cad , QVariant ( bl->m_cursorcombo->valor ( cad1 ) ) );
+                    bl->m_cursorcombo->nextRecord();
+                } // end while
+                delete bl->m_cursorcombo;
+        } // end if
+  _depura("END BlDbCompleterComboBox_textChanged", 0);
+
+    return 0;
+}
+
+
+
+
 
