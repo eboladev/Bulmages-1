@@ -76,6 +76,13 @@ RecibosList::RecibosList ( BfCompany *comp, QWidget *parent, Qt::WFlags flag, ed
 
     mui_list->setMainCompany ( comp );
 
+    /// Establecemos los parametros de busqueda de Profesor
+    mui_idactividad->setMainCompany ( comp );
+    mui_idactividad->setLabel ( _ ( "Actividad:" ) );
+    mui_idactividad->setTableName ( "actividad" );
+    mui_idactividad->m_valores["nombreactividad"] = "";
+
+
     setSubForm ( mui_list );
     presentar();
     mdb_idrecibo = "";
@@ -131,7 +138,8 @@ void RecibosList::presentar()
     _depura ( "RecibosList::presentar", 0 );
     
     if ( mainCompany() != NULL ) {
-        mui_list->cargar ( "SELECT * FROM recibo LEFT JOIN forma_pago ON recibo.idforma_pago = forma_pago.idforma_pago LEFT JOIN cliente ON recibo.idcliente = cliente.idcliente LEFT JOIN banco ON recibo.idbanco = banco.idbanco WHERE 1 = 1 " + generaFiltro() );
+	QString query = "SELECT * FROM recibo LEFT JOIN forma_pago ON recibo.idforma_pago = forma_pago.idforma_pago LEFT JOIN cliente ON recibo.idcliente = cliente.idcliente LEFT JOIN banco ON recibo.idbanco = banco.idbanco WHERE 1 = 1 " + generaFiltro() ;
+        mui_list->cargar ( query );
     } // end if
     
     _depura ( "END RecibosList::presentar", 0 );
@@ -167,7 +175,11 @@ QString RecibosList::generaFiltro()
             
     if ( mui_idbanco->idbanco() != "" )
         filtro += " AND banco.idbanco = " + mui_idbanco->idbanco();
-        
+
+    if (mui_idactividad->id() != "") {
+	QString nombreactividad = mui_idactividad->fieldValue("nombreactividad");
+	filtro += " AND idrecibo IN (SELECT idrecibo FROM lrecibo WHERE conceptolrecibo LIKE '%" + nombreactividad + "%')";
+    } // end if
     _depura ( "END RecibosList::generaFiltro", 0 );
     
     return ( filtro );
