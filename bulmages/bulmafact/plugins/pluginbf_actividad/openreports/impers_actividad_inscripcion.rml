@@ -10,7 +10,7 @@
     Aquí van los elementos gráficos de la página (headers, footers, frames, etc...).
     No puede estar vacío.
 -->
-<template pageSize="(21cm, 29.7cm)" leftMargin="0cm" rightMargin="0cm" topMargin="1.0cm" bottomMargin="2.0cm" title="Hoja de Inscripcion" author="Tomeu Borras Riera" allowSplitting="20">
+<template pageSize="(21cm, 29.7cm)" leftMargin="0cm" rightMargin="0cm" topMargin="1.0cm" bottomMargin="2.0cm" title="Hoja de Inscripcion" author="Tomeu Borras Riera &amp; Arturo Martin Llado" allowSplitting="20">
     <pageTemplate id="main">
     
         <!-- FRAME DE CONTENIDOS -->
@@ -35,12 +35,12 @@
 <!--QUERY="SELECT * FROM actividad, profesor, tipoactividad WHERE actividad.idtipoactividad = tipoactividad.idtipoactividad AND actividad.idprofesor = profesor.idprofesor AND idactividad=[idactividad]"-->
             
             <setFont name="Helvetica" size="22"/>
-            <drawString x="1.5cm" y="24cm">[nombreactividad]</drawString>
+            <drawString x="1.5cm" y="24cm">Hoja de inscripción para [nombreactividad]</drawString>
             <setFont name="Helvetica" size="13"/>
             <drawString x="1.5cm" y="23.2cm">Tipo: [nombretipoactividad]</drawString>
             <drawString x="1.5cm" y="22.4cm">Profesor: [nombreprofesor]</drawString>
             <drawString x="1.5cm" y="21.6cm">Periodo (inicio | fin): [finicialactividad] | [ffinalactividad]</drawString>
-            <drawString x="1.5cm" y="21.0cm">Precio [precioactividad]</drawString>
+            <!--<drawString x="1.5cm" y="21.0cm">Precio [precioactividad]</drawString>-->
             
 <!--END QUERY-->
             
@@ -54,14 +54,16 @@
 -->
 <stylesheet>
     
-    <paraStyle name="titulo"
+    <paraStyle name="firma"
         fontName="Helvetica"
-        fontSize="18"
+        fontSize="13"
+        spaceBefore="2cm"
     />
     
-    <blockTableStyle id="tablaAlumnos">
-        <blockFont name="Helvetica" />
-        <lineStyle colorName="black" kind="GRID" />
+    <blockTableStyle id="tablaInscripcion">
+        <blockFont name="Helvetica" size="13" />
+        <blockValign value="BOTTOM" />
+        <lineStyle colorName="black" kind="LINEBELOW" />
     </blockTableStyle>
         
 </stylesheet>
@@ -72,8 +74,33 @@
 -->
 <story>
 
-<para>[comentariosactividad]</para>
+    <blockTable style="tablaInscripcion" colWidths="18.2cm" rowHeights="1.2cm,1.2cm,1.2cm,1.2cm,1.2cm,1.2cm,1.2cm">
+            
+        <tr>
+            <td>Nombre del tutor:</td>
+        </tr>
+        <tr>
+            <td>Teléfono de contacto:</td>
+        </tr>
+        <tr>
+            <td>Alumno 1:</td>
+        </tr>
+        <tr>
+            <td>Alumno 2:</td>
+        </tr>
+        <tr>
+            <td>Alumno 3:</td>
+        </tr>
+        <tr>
+            <td>Alumno 4:</td>
+        </tr>
+        <tr>
+            <td>Alumno 5:</td>
+        </tr>
+        
+    </blockTable>
     
+    <para style="firma">Firma del tutor</para>
     
 </story>
 
