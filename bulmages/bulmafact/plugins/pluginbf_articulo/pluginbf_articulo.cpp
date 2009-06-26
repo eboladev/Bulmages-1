@@ -564,8 +564,9 @@ int BlSubForm_editFinished ( BlSubForm *sub )
 {
     _depura ( "pluginbf_articulo::BlSubForm_editFinished", 0 );
     if ( sub->m_campoactual->nomcampo() == "codigocompletoarticulo" ) {
-	QString query = "SELECT idarticulo FROM articulo WHERE codigocompletoarticulo ='" + sub->m_campoactual->text() + "'";
-        BlDbRecordSet *cur = sub->mainCompany() ->loadQuery ( query );
+        QString params[1]= {  sub->m_campoactual->text() };
+	QString query = "SELECT idarticulo FROM articulo WHERE codigocompletoarticulo = $1";
+        BlDbRecordSet *cur = sub->mainCompany() -> loadQuery( query, 1, params );
         if ( !cur->eof() ) {
             sub->m_registrolinea->setDbValue ( "idarticulo", cur->valor ( "idarticulo" ) );
         } // end if
@@ -582,8 +583,8 @@ int BlDbCompleterComboBox_textChanged (BlDbCompleterComboBox *bl) {
         if ( bl->m_entrada.size() >= 3 && bl->m_tabla == "articulo") {
                 QString cadwhere = "";
                 /// Inicializamos los valores de vuelta a ""
-                QString SQLQuery = "SELECT * FROM " + bl->m_tabla + " WHERE upper(codigocompletoarticulo) LIKE  upper('" + bl->mainCompany()->sanearCadena(bl->m_entrada) + "%')";
-                bl->m_cursorcombo = bl->mainCompany() ->loadQuery ( SQLQuery );
+                QString SQLQuery = "SELECT * FROM " + bl->m_tabla + " WHERE upper(codigocompletoarticulo) LIKE  upper($1||'%')";
+                bl->m_cursorcombo = bl->mainCompany() ->load ( SQLQuery, bl->m_entrada);
                 bl->clear();
                 while ( !bl->m_cursorcombo->eof() ) {
                     QMapIterator<QString, QString> i ( bl->m_valores );

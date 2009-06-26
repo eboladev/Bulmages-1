@@ -183,28 +183,28 @@ void BfSubForm::editFinished ( int row, int col, BlDbSubFormRecord *rec, BlDbSub
     } // end if
 
     if ( camp->nomcampo() == "desctipo_iva" ) {
-        cur = mainCompany() ->loadQuery ( "SELECT * FROM tipo_iva WHERE desctipo_iva = '" + camp->text() + "'" );
+        cur = mainCompany() ->load ( "SELECT * FROM tipo_iva WHERE desctipo_iva = $1",  camp->text());
         if ( !cur->eof() ) {
             rec->setDbValue ( "idtipo_iva", cur->valor ( "idtipo_iva" ) );
         } // end if
     } // end if
 
     if ( camp->nomcampo() == "nomtrabajador" ) {
-        cur = mainCompany() ->loadQuery ( "SELECT * FROM trabajador WHERE apellidostrabajador ||', '||nomtrabajador = '" + camp->text() + "'" );
+        cur = mainCompany() ->load ( "SELECT * FROM trabajador WHERE apellidostrabajador ||', '||nomtrabajador = $1'", camp->text()  );
         if ( !cur->eof() ) {
             rec->setDbValue ( "idtrabajador", cur->valor ( "idtrabajador" ) );
         } // end if
     } // end if
 
     if ( camp->nomcampo() == "nomalmacen" ) {
-        cur = mainCompany() ->loadQuery ( "SELECT * FROM almacen WHERE nomalmacen ||', '||codigoalmacen = '" + camp->text() + "'" );
+        cur = mainCompany() ->load ( "SELECT * FROM almacen WHERE nomalmacen ||', '||codigoalmacen = $1" , camp->text() );
         if ( !cur->eof() ) {
             rec->setDbValue ( "idalmacen", cur->valor ( "idalmacen" ) );
         } // end if
     } // end if
 
     if ( camp->nomcampo() == "codigocompletoarticulo" ) {
-        cur = mainCompany() ->loadQuery ( "SELECT * FROM articulo WHERE codigocompletoarticulo = '" + camp->text() + "'" );
+        cur = mainCompany() ->load( "SELECT * FROM articulo WHERE codigocompletoarticulo = $1", camp->text()  );
         if ( !cur->eof() ) {
             rec->setDbValue ( "idarticulo", cur->valor ( "idarticulo" ) );
             rec->setDbValue ( "codigocompletoarticulo", cur->valor ( "codigocompletoarticulo" ) );
@@ -707,7 +707,7 @@ void BfSubForm::calculaPVP ( BlDbSubFormRecord *rec )
     /// Saca 'codigocompletoarticulo' del BlDbSubFormRecord pasado como parametro.
     QString codigocompleto = rec->dbValue ( "codigocompletoarticulo" );
 
-    cur = mainCompany() ->loadQuery ( "SELECT * FROM articulo WHERE codigocompletoarticulo = '" + codigocompleto + "'" );
+    cur = mainCompany() ->load ( "SELECT * FROM articulo WHERE codigocompletoarticulo = $1", codigocompleto  );
 
     if ( !cur->eof() ) {
 
