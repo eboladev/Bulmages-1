@@ -697,6 +697,32 @@ BlDbRecordSet *BlPostgreSqlClient::loadQuery ( QString query, QString nomcursor,
 {
     return loadQuery ( query, 0, NULL, nomcursor, limit, offset );
 }
+/// carga el cursor con los valores de parámetros $1, $2 , $3 ... que se pasan como QString al final
+// no funciona por ejemplo con "select 'precio = $2' where id = $1" porque $2 no es un parámetro
+BlDbRecordSet *BlPostgreSqlClient::load( QString query,  
+QString dolar1, QString dolar2, QString dolar3, QString dolar4, QString dolar5,
+QString dolar6, QString dolar7, QString dolar8, QString dolar9, QString dolar10,
+QString dolar11, QString dolar12, QString dolar13, QString dolar14, QString dolar15,
+QString dolar16, QString dolar17, QString dolar18, QString dolar19, QString dolar20
+ ) {
+    QRegExp rx("\\$(\\d+)");
+    int numParams=0;
+    int pos = 0;
+    // busco màxim número de paràmetre, per exemple a select $3, a from b where c=$1
+    // seria 3 perquè m'han de passar 3 paràmetres encara que no faci servir el segon 
+    while ((pos = rx.indexIn(query, pos)) != -1) {
+      int param =  rx.cap(1).toInt();
+      if (param > numParams) {
+           numParams = param;
+      }
+      pos += rx.matchedLength();
+    }
+    QString params[20] = { dolar1 , dolar2, dolar3, dolar4 , dolar5, 
+                           dolar6 , dolar7, dolar8, dolar9 , dolar10, 
+                           dolar11 , dolar12, dolar13, dolar14 , dolar15, 
+                           dolar16 , dolar17, dolar18, dolar19 , dolar20 };
+    return loadQuery(query,numParams,params,"",0,0); 
+}
 
 const size_t digitsInt = 1 + int ( ceil ( log10 ( 1.0 + INT_MAX ) ) );
 

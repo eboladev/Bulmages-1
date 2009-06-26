@@ -202,7 +202,20 @@ public:
     BlDbRecordSet *loadQuery ( QString query, int numParams,
                        QString  * paramValues, QString nomcursor = "", 
                        int limit =0, int offset = 0 );
+    /// carga el cursor con los valores de parámetros $1, $2 , $3 ... que se pasan como QString al final
+    BlDbRecordSet *load ( QString query, QString dolar1=NULL,  QString dolar2=NULL,
+                           QString dolar3=NULL, QString dolar4=NULL,  
+                           QString dolar5=NULL, QString dolar6=NULL, 
+                           QString dolar7=NULL, QString dolar8=NULL,  
+                           QString dolar9=NULL, QString dolar10=NULL, 
+                           QString dolar11=NULL, QString dolar12=NULL,  
+                           QString dolar13=NULL, QString dolar14=NULL, 
+                           QString dolar15=NULL, QString dolar16=NULL,  
+                           QString dolar17=NULL, QString dolar18=NULL, 
+                           QString dolar19=NULL, QString dolar20=NULL
+   );
 
+  
     /// Ejecuta una sentencia de c&oacute;digo SQL en la base de datos.
     int runQuery ( QString );
     /// Busca en una cadena c&oacute;digo malicioso para SQL y lo elimina (previene el SQLInjection).
