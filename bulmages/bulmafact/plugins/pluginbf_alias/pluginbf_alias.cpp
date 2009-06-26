@@ -179,7 +179,7 @@ int Busqueda_on_m_inputBusqueda_textChanged ( BlSearchWidget *busc )
             // i compararia el valor entrat amb un altre.
             QString valors[1] = {val};
             QString SQLQuery = "SELECT * FROM alias LEFT JOIN articulo ON alias.idarticulo = articulo.idarticulo WHERE cadalias ~=~ $1";
-            BlDbRecordSet *cur = busc->mainCompany() ->loadQuery ( SQLQuery, 1, valors, NULL, NULL );
+            BlDbRecordSet *cur = busc->mainCompany() ->loadQuery ( SQLQuery, 1, valors );
             if ( !cur->eof() ) {
                 busc->setId ( cur->valor ( "idarticulo" ) );
                 encontrado = TRUE;
@@ -260,23 +260,29 @@ int BlSubForm_editFinished ( BlSubForm *sub )
 {
     _depura ( "pluginbf_alias::BlSubForm_editFinished", 0 );
     if ( sub->m_campoactual->nomcampo() == "codigocompletoarticulo" ) {
-	QString query = "SELECT idarticulo FROM articulo WHERE codigocompletoarticulo ='" + sub->m_campoactual->text() + "'";
+        QString val = sub->m_campoactual->text();
+        // si puc un dia val seria només el tros no seleccionat de l'editor, però 
+        // ara per ara és complicat
+        QString valors[1] = {val};
+        QString query = "SELECT idarticulo FROM articulo WHERE codigocompletoarticulo = $1";
 	BlDbSubFormField *camp = sub->m_campoactual;
-        BlDbRecordSet *cur = sub->mainCompany() ->loadQuery ( query );
+        BlDbRecordSet *cur = sub->mainCompany() ->loadQuery ( query,1, valors);
         if ( !cur->eof() ) {
             sub->m_registrolinea->setDbValue ( "idarticulo", cur->valor ( "idarticulo" ) );
 	} else {
-/// No hay codigos y buscamos alias
-        QString SQLQuery = "SELECT articulo.idarticulo, codigocompletoarticulo FROM alias LEFT JOIN articulo ON alias.idarticulo = articulo.idarticulo WHERE cadalias ='" + sub->m_campoactual->text() + "'";
-        BlDbRecordSet *cur1 = sub->mainCompany() ->loadQuery ( SQLQuery );
-        if ( !cur1->eof() ) {
-            sub->m_registrolinea->setDbValue ( "idarticulo", cur1->valor ( "idarticulo" ) );
-            sub->m_registrolinea->setDbValue ( "codigocompletoarticulo", cur1->valor ( "codigocompletoarticulo" ) );
-            camp->setText( cur1->valor ( "codigocompletoarticulo" ) ); 
-	    camp->refresh();
-        } // end if
-        delete cur1;
-
+           /// No hay codigos y buscamos alias
+           if (posibleAlias(val, sub->mainCompany())) {
+             QString SQLQuery = "SELECT articulo.idarticulo, codigocompletoarticulo FROM alias LEFT JOIN articulo ON alias.idarticulo = articulo.idarticulo WHERE cadalias ~=~ $1";
+             BlDbRecordSet *cur1 = sub->mainCompany() ->loadQuery ( SQLQuery, 1, valors );
+          
+             if ( !cur1->eof() ) {
+                sub->m_registrolinea->setDbValue ( "idarticulo", cur1->valor ( "idarticulo" ) );
+                sub->m_registrolinea->setDbValue ( "codigocompletoarticulo", cur1->valor ( "codigocompletoarticulo" ) );
+                camp->setText( cur1->valor ( "codigocompletoarticulo" ) ); 
+	        camp->refresh();
+             } // end if
+             delete cur1;
+           }
         } // end if
         delete cur;
 	_depura ( "END pluginbf_alias::BlSubForm_editFinished", 0 );
@@ -293,8 +299,8 @@ int BlDbCompleterComboBox_textChanged (BlDbCompleterComboBox *bl) {
         if ( bl->m_entrada.size() >= 3 && bl->m_tabla == "articulo") {
                 QString cadwhere = "";
                 /// Inicializamos los valores de vuelta a ""
-                QString SQLQuery = "SELECT * FROM " + bl->m_tabla + " WHERE upper(codigocompletoarticulo) LIKE  upper('" + bl->mainCompany()->sanearCadena(bl->m_entrada) + "%')";
-                bl->m_cursorcombo = bl->mainCompany() ->loadQuery ( SQLQuery );
+                QString SQLQuery = "SELECT * FROM " + bl->m_tabla + " WHERE upper(codigocompletoarticulo) LIKE  upper($1||'%')";
+                bl->m_cursorcombo = bl->mainCompany() ->load ( SQLQuery, bl->m_entrada  );
                 bl->clear();
                 while ( !bl->m_cursorcombo->eof() ) {
                     QMapIterator<QString, QString> i ( bl->m_valores );
@@ -313,18 +319,19 @@ int BlDbCompleterComboBox_textChanged (BlDbCompleterComboBox *bl) {
                     bl->m_cursorcombo->nextRecord();
                 } // end while
                 delete bl->m_cursorcombo;
-
-                /// Inicializamos los valores de vuelta a ""
-                SQLQuery = "SELECT * FROM alias LEFT JOIN articulo ON alias.idarticulo = articulo.idarticulo WHERE upper(cadalias) LIKE  upper('" + bl->mainCompany()->sanearCadena(bl->m_entrada) + "%')";
-                bl->m_cursorcombo = bl->mainCompany() ->loadQuery ( SQLQuery );
-                while ( !bl->m_cursorcombo->eof() ) {
-                    QString cad = bl->m_cursorcombo-> valor("cadalias") + ".-" + bl->m_cursorcombo->valor("nomarticulo");
-		    QString cad1 = bl->m_cursorcombo-> valor("codigocompletoarticulo");
-                    bl->addItem ( cad , QVariant ( bl->m_cursorcombo->valor ( cad1 ) ) );
+                if (posibleAlias(bl->m_entrada,bl->mainCompany())) {
+                  QString SQLQuery = "SELECT articulo.idarticulo, codigocompletoarticulo, cadalias, nomarticulo FROM alias LEFT JOIN articulo ON alias.idarticulo = articulo.idarticulo WHERE cadalias ~=~ $1";
+                  bl->m_cursorcombo = bl->mainCompany() ->load( SQLQuery, bl->m_entrada );
+                  while ( !bl->m_cursorcombo->eof() ) {
+                    bl->addItem ( bl->m_cursorcombo->valor ( "codigocompletoarticulo" )
+                                + ".-" + bl->m_cursorcombo->valor ( "nomarticulo" )
+                                + " (" + bl->m_cursorcombo->valor ( "cadalias" ) + ") ",
+                                QVariant ( bl->m_cursorcombo->valor ( "codigocompletoarticulo" ) )
+                              );
                     bl->m_cursorcombo->nextRecord();
-                } // end while
-                delete bl->m_cursorcombo;
-
+                  } // end while
+                  delete bl->m_cursorcombo;
+                }
   _depura("END BlDbCompleterComboBox_textChanged", 0);
 
 	  return 1;
