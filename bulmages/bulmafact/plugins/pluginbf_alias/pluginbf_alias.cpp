@@ -293,7 +293,7 @@ int BlDbCompleterComboBox_textChanged (BlDbCompleterComboBox *bl) {
         if ( bl->m_entrada.size() >= 3 && bl->m_tabla == "articulo") {
                 QString cadwhere = "";
                 /// Inicializamos los valores de vuelta a ""
-                QString SQLQuery = "SELECT * FROM " + bl->m_tabla + " WHERE upper(codigocompletoarticulo) LIKE  upper('" + bl->m_entrada + "%')";
+                QString SQLQuery = "SELECT * FROM " + bl->m_tabla + " WHERE upper(codigocompletoarticulo) LIKE  upper('" + bl->mainCompany()->sanearCadena(bl->m_entrada) + "%')";
                 bl->m_cursorcombo = bl->mainCompany() ->loadQuery ( SQLQuery );
                 bl->clear();
                 while ( !bl->m_cursorcombo->eof() ) {
@@ -315,7 +315,7 @@ int BlDbCompleterComboBox_textChanged (BlDbCompleterComboBox *bl) {
                 delete bl->m_cursorcombo;
 
                 /// Inicializamos los valores de vuelta a ""
-                SQLQuery = "SELECT * FROM alias LEFT JOIN articulo ON alias.idarticulo = articulo.idarticulo WHERE upper(cadalias) LIKE  upper('" + bl->m_entrada + "%')";
+                SQLQuery = "SELECT * FROM alias LEFT JOIN articulo ON alias.idarticulo = articulo.idarticulo WHERE upper(cadalias) LIKE  upper('" + bl->mainCompany()->sanearCadena(bl->m_entrada) + "%')";
                 bl->m_cursorcombo = bl->mainCompany() ->loadQuery ( SQLQuery );
                 while ( !bl->m_cursorcombo->eof() ) {
                     QString cad = bl->m_cursorcombo-> valor("cadalias") + ".-" + bl->m_cursorcombo->valor("nomarticulo");
