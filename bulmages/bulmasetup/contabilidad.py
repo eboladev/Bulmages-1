@@ -27,15 +27,19 @@ class Contabilidad(Ui_ModificarContabilidadBase, Empresa):
       self.mui_plugins.hideColumn(9)
       self.mui_plugins.hideColumn(10)
 
+      # Desabilitamos el sorting para que se rellenen bien las tablas.
+      self.mui_plugins.setSortingEnabled(False)
+
       # Buscamos los Plugins
       self.buscaPlugins()
       # Ajustamos la presentacion
       self.mui_plugins.resizeColumnsToContents()
+      
       # Mostramos la ventana para que el padre tome el control
       self.show()
       # iniciialzamos
       self.inicializar()
-
+      self.mui_plugins.setSortingEnabled(True)
       
    def inicializar(self):
       # Inicializamos el combo de categoria.
@@ -328,10 +332,11 @@ class Contabilidad(Ui_ModificarContabilidadBase, Empresa):
         cat = self.mui_categoria.currentText()
         self.i = 0
         while (self.i < self.mui_plugins.rowCount()):
-          text = QString(self.mui_plugins.item(self.i,8).text())
-          a = text.contains(cat)
-          if (not a):
-            self.mui_plugins.hideRow(self.i)
+	  if self.mui_plugins.item(self.i,8) <> None:
+            text = QString(self.mui_plugins.item(self.i,8).text())
+            a = text.contains(cat)
+            if (not a):
+              self.mui_plugins.hideRow(self.i)
           self.i = self.i +1
 
 

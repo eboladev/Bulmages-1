@@ -19,6 +19,7 @@ class Facturacion(Ui_ModificarFacturacionBase, Empresa):
       # Ocultamos la columna de las descripciones.
       self.mui_plugins.setColumnCount(11)
       self.mui_plugins1.setColumnCount(11)
+
       self.mui_plugins.hideColumn(1)
       self.mui_plugins1.hideColumn(1)
 
@@ -45,17 +46,26 @@ class Facturacion(Ui_ModificarFacturacionBase, Empresa):
 
       self.mui_plugins.hideColumn(10)
       self.mui_plugins1.hideColumn(10)
-
+      
       self.mui_plugins1.setEnabled(False)
+      
+      # Desabilitamos el Sorting para que en versiones previas se rellenen bien los campos
+      self.mui_plugins.setSortingEnabled(False)
+      self.mui_plugins1.setSortingEnabled(False)
 
       # Hacemos un Show y así el padre recupera el control.
       self.show()
 
       self.inicializar()
+      
+      # Habilitamos el Sortin pq los campos ya estan rellenos.
+      self.mui_plugins.setSortingEnabled(False)
+      self.mui_plugins1.setSortingEnabled(False)
 
    def inicializar(self):
       # Ponemos la pestanya de consola como la visible
       self.tabWidget.setCurrentIndex(2)
+      self.tabWidget.setCurrentIndex(0)
 
       # Buscamos los Plugins
       self.buscaPlugins()
@@ -487,7 +497,6 @@ class Facturacion(Ui_ModificarFacturacionBase, Empresa):
         self.mui_plugins.setItem(self.i, 0, self.check)
         self.mui_plugins.setItem(self.i, 2, QTableWidgetItem(self.versioninst))
         self.mui_plugins.setItem(self.i , 1 , QTableWidgetItem(QtGui.QApplication.translate("MainWindow",self.pluginsbulmafact[self.i][2], None, QtGui.QApplication.UnicodeUTF8)))
-
         self.mui_plugins.setItem(self.i , 3 , QTableWidgetItem(QtGui.QApplication.translate("MainWindow",self.pluginsbulmafact[self.i][3], None, QtGui.QApplication.UnicodeUTF8)))
         self.mui_plugins.setItem(self.i , 4 , QTableWidgetItem(QtGui.QApplication.translate("MainWindow",self.pluginsbulmafact[self.i][4], None, QtGui.QApplication.UnicodeUTF8)))
         self.mui_plugins.setItem(self.i , 5 , QTableWidgetItem(QtGui.QApplication.translate("MainWindow",self.pluginsbulmafact[self.i][5], None, QtGui.QApplication.UnicodeUTF8)))
@@ -496,7 +505,6 @@ class Facturacion(Ui_ModificarFacturacionBase, Empresa):
         self.mui_plugins.setItem(self.i , 8 , QTableWidgetItem(QtGui.QApplication.translate("MainWindow",self.pluginsbulmafact[self.i][8], None, QtGui.QApplication.UnicodeUTF8)))
         self.mui_plugins.setItem(self.i , 9 , QTableWidgetItem(QtGui.QApplication.translate("MainWindow",self.pluginsbulmafact[self.i][9], None, QtGui.QApplication.UnicodeUTF8)))
         self.mui_plugins.setItem(self.i , 10 , QTableWidgetItem(QtGui.QApplication.translate("MainWindow",self.pluginsbulmafact[self.i][1], None, QtGui.QApplication.UnicodeUTF8)))
-
 #        self.mui_plugins.setRowHeight(self.i, 50)
         self.i = self.i + 1
         self.progress.setValue(self.progress.value() + 1)
@@ -646,17 +654,19 @@ class Facturacion(Ui_ModificarFacturacionBase, Empresa):
         cat = self.mui_categoria.currentText()
         self.i = 0
         while (self.i < self.mui_plugins.rowCount()):
-          text = QString(self.mui_plugins.item(self.i,8).text())
-          a = text.contains(cat)
-          if (not a):
-            self.mui_plugins.hideRow(self.i)
+	  if self.mui_plugins.item(self.i,8) <> None:
+	    text = QString(self.mui_plugins.item(self.i,8).text())
+	    a = text.contains(cat)
+	    if (not a):
+	      self.mui_plugins.hideRow(self.i)
           self.i = self.i +1
           
         # Vamos a trabajar con el combo Box
         self.i = 0
         while (self.i < self.mui_plugins1.rowCount()):
-          text = QString(self.mui_plugins1.item(self.i,8).text())
-          a = text.contains(cat)
-          if (not a):
-            self.mui_plugins1.hideRow(self.i)
+	  if self.mui_plugins1.item(self.i,8) <> None:
+            text = QString(self.mui_plugins1.item(self.i,8).text())
+            a = text.contains(cat)
+            if (not a):
+              self.mui_plugins1.hideRow(self.i)
           self.i = self.i +1
