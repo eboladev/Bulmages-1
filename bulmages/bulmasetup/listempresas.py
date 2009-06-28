@@ -14,8 +14,17 @@ class ListEmpresas(Ui_ListEmpresasBase, Empresa):
         Empresa.__init__(self,parent)
         self.setupUi(self)
         self.show()
+
+        # Desabilitamos el Sorting para que en versiones previas se rellenen bien los campos
+        self.mui_listado.setSortingEnabled(False)
+
         self.buscarEmpresas()
         self.mui_listado.resizeColumnsToContents()
+
+
+        # Desabilitamos el Sorting para que en versiones previas se rellenen bien los campos
+        self.mui_listado.setSortingEnabled(True)
+
 
     def buscarEmpresas(self):
         # Ponemos la pestanya de consola como la visible

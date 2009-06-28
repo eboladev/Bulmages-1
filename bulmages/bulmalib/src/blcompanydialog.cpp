@@ -304,6 +304,7 @@ void BlCompanyDialog::mui_empresasdobleclick()
 void BlCompanyDialog::cargaArchivo()
 {
     _depura ( "BlCompanyDialog::cargaArchivo", 0 );
+    mui_empresas->setSortingEnabled(FALSE);
     QString dir1 = g_confpr->valor ( CONF_DIR_USER ) + LISTEMPRESAS;
 
     /// Si el archivo no existe hacemos una recarga.
@@ -341,6 +342,7 @@ void BlCompanyDialog::cargaArchivo()
         } // end if
     } // end while
     file.close();
+    mui_empresas->setSortingEnabled(TRUE);
     _depura ( "END BlCompanyDialog::cargaArchivo", 0 );
 }
 
