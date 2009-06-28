@@ -578,9 +578,15 @@ int BlSubForm_editFinished ( BlSubForm *sub )
 
 
 int BlDbCompleterComboBox_textChanged (BlDbCompleterComboBox *bl) {
-  _depura("BlDbCompleterComboBox_textChanged", 0);
+  _depura("BlDbCompleterComboBox_textChanged", 0, "plugin_articulo");
 
-        if ( bl->m_entrada.size() >= 3 && bl->m_tabla == "articulo") {
+  if ( bl->m_entrada.size() >= 3 && bl->m_tabla == "articulo") {
+           // no se si es el autoComplete o què però em criden a
+           // aquesta senyal quan omplo el combo, amb el primer valor
+           // i si no m'aturo ara, recalcularia el combo amb nomes
+           // aquest valor encara que l'usuari nomes hagi escrit
+           // un prefix que permeti mes candidats
+           if ( bl->entrada().indexOf ( ".-" ) < 0 )  {
                 QString cadwhere = "";
                 /// Inicializamos los valores de vuelta a ""
                 QString SQLQuery = "SELECT * FROM " + bl->m_tabla + " WHERE upper(codigocompletoarticulo) LIKE  upper($1||'%')";
@@ -603,10 +609,11 @@ int BlDbCompleterComboBox_textChanged (BlDbCompleterComboBox *bl) {
                     bl->m_cursorcombo->nextRecord();
                 } // end while
                 delete bl->m_cursorcombo;
-        } // end if
-  _depura("END BlDbCompleterComboBox_textChanged", 0);
+           }
+   } // end if
+   _depura("END BlDbCompleterComboBox_textChanged", 0, "plugin_articulo");
 
-    return 0;
+   return 0;
 }
 
 

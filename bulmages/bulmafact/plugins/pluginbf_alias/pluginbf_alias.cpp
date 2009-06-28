@@ -260,9 +260,7 @@ int BlSubForm_editFinished ( BlSubForm *sub )
 {
     _depura ( "pluginbf_alias::BlSubForm_editFinished", 0 );
     if ( sub->m_campoactual->nomcampo() == "codigocompletoarticulo" ) {
-        QString val = sub->m_campoactual->text();
-        // si puc un dia val seria només el tros no seleccionat de l'editor, però 
-        // ara per ara és complicat
+      QString val = sub->m_campoactual->text();
         QString valors[1] = {val};
         QString query = "SELECT idarticulo FROM articulo WHERE codigocompletoarticulo = $1";
 	BlDbSubFormField *camp = sub->m_campoactual;
@@ -282,12 +280,12 @@ int BlSubForm_editFinished ( BlSubForm *sub )
 	        camp->refresh();
              } // end if
              delete cur1;
-           }
-        } // end if
+           } // end if possible alias
+        } // end if és codi d'article complet
         delete cur;
 	_depura ( "END pluginbf_alias::BlSubForm_editFinished", 0 );
 	return 1;
-    } // end if
+    } // end if és buscador d'article
     _depura ( "END pluginbf_alias::BlSubForm_editFinished", 0 );
     return 0;
 }
@@ -297,6 +295,12 @@ int BlDbCompleterComboBox_textChanged (BlDbCompleterComboBox *bl) {
   _depura("BlDbCompleterComboBox_textChanged", 0);
 
         if ( bl->m_entrada.size() >= 3 && bl->m_tabla == "articulo") {
+           // no se si es el autoComplete o què però em criden a
+           // aquesta senyal quan omplo el combo, amb el primer valor
+           // i si no m'aturo ara, recalcularia el combo amb nomes
+           // aquest valor encara que l'usuari nomes hagi escrit
+           // un prefix que permeti mes candidats
+          if ( bl->entrada().indexOf ( ".-" ) < 0 )  {
                 QString cadwhere = "";
                 /// Inicializamos los valores de vuelta a ""
                 QString SQLQuery = "SELECT * FROM " + bl->m_tabla + " WHERE upper(codigocompletoarticulo) LIKE  upper($1||'%')";
@@ -332,9 +336,11 @@ int BlDbCompleterComboBox_textChanged (BlDbCompleterComboBox *bl) {
                   } // end while
                   delete bl->m_cursorcombo;
                 }
-  _depura("END BlDbCompleterComboBox_textChanged", 0);
+           _depura("END BlDbCompleterComboBox_textChanged", 0);
 
-	  return 1;
+	   return 1;
+           } //end if te .- 
+
         } // end if
   _depura("END BlDbCompleterComboBox_textChanged", 0);
 
