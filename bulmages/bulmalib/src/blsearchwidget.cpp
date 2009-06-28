@@ -119,8 +119,8 @@ void BlSearchWidget::setId ( QString val )
             m_valores.insert ( i.key(), "" );
         } // end while
     } else {
-        QString SQLQuery = "SELECT * FROM " + m_tabla + " WHERE id" + m_tabla + "= '" + mdb_id + "'";
-        BlDbRecordSet *cur = mainCompany() ->loadQuery ( SQLQuery );
+        QString SQLQuery = "SELECT * FROM " + m_tabla + " WHERE id" + m_tabla + "= $1";
+        BlDbRecordSet *cur = mainCompany() ->load( SQLQuery, mdb_id );
         if ( !cur->eof() ) {
 
             /// Inicializamos los valores de vuelta a ""
@@ -162,8 +162,8 @@ void BlSearchWidget::setFieldValue ( QString campo, QString val )
 {
     _depura ( "BlSearchWidget::setcifprofesor", 0, val );
 
-    QString SQLQuery = "SELECT * FROM " + m_tabla + " WHERE " + campo + " = '" + val + "'";
-    BlDbRecordSet *cur = mainCompany() ->loadQuery ( SQLQuery );
+    QString SQLQuery = "SELECT * FROM " + m_tabla + " WHERE " + campo + " = $1";
+    BlDbRecordSet *cur = mainCompany() ->load ( SQLQuery, val );
 
     if ( !cur->eof() ) {
         /// Inicializamos los valores de vuelta a ""
@@ -256,7 +256,7 @@ void BlSearchWidget::on_m_inputBusqueda_textChanged ( const QString &val )
     QString cador = "";
     while ( i.hasNext() ) {
         i.next();
-        cadwhere = cadwhere + cador + " " + i.key() + " = '" + val + "'";
+        cadwhere = cadwhere + cador + " " + i.key() + " = '" + mainCompany()->sanearCadenaUtf8(val) + "'";
         cador = " OR ";
     } // end while
 
@@ -285,7 +285,9 @@ void BlSearchWidget::on_m_inputBusqueda_textChanged ( const QString &val )
         QString cador = "";
         while ( i.hasNext() ) {
             i.next();
-            cadwhere = cadwhere + cador + " upper(" + i.key() + ") LIKE  upper('%" + val + "%')";
+            cadwhere = cadwhere + cador 
+                        + " upper(" + i.key() + ") LIKE  upper('%" 
+                        + mainCompany()->sanearCadenaUtf8(val) + "%')";
             cador = " OR ";
         } // end while
 
@@ -451,7 +453,7 @@ void BlDbCompleterComboBox::s_editTextChanged ( const QString &cod )
                 QString cador = "";
                 while ( i.hasNext() ) {
                     i.next();
-                    cadwhere = cadwhere + cador + " upper(" + i.key() + ") LIKE  upper('%" + cod + "%')";
+                    cadwhere = cadwhere + cador + " upper(" + i.key() + ") LIKE  upper('%" + mainCompany()->sanearCadenaUtf8(cod) + "%')";
                     cador = " OR ";
                 } // end while
                 QString SQLQuery = "SELECT * FROM " + m_tabla + " WHERE " + cadwhere;

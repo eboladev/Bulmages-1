@@ -911,7 +911,7 @@ QString BlPostgreSqlClient::propiedadempresa ( QString nombre )
     PGresult *result;
     QString value;
     int num;
-    QString Query = "select * from configuracion where nombre = '" + nombre + "'";
+    QString Query = "select * from configuracion where nombre = '" + sanearCadenaUtf8(nombre) + "'";
     fprintf ( stderr, "%s\n", Query.toAscii().data() );
     result = PQexec ( conn, Query.toAscii().data() );
     if ( !result || PQresultStatus ( result ) != PGRES_TUPLES_OK ) {

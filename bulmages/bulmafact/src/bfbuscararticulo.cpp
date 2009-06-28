@@ -80,8 +80,8 @@ void BfBuscarArticulo::setidarticulo ( QString val )
 void BfBuscarArticulo::setcodigocompletoarticulo ( QString val )
 {
     _depura ( "BfBuscarArticulo::setcodigocompletoarticulo", 0 );
-    QString SQLQuery = "SELECT * FROM articulo WHERE codigocompletoarticulo='" + val + "'";
-    BlDbRecordSet *cur = mainCompany() ->loadQuery ( SQLQuery );
+    QString SQLQuery = "SELECT * FROM articulo WHERE codigocompletoarticulo=$1";
+    BlDbRecordSet *cur = mainCompany() ->load ( SQLQuery, val );
     if ( !cur->eof() ) {
         setId ( cur->valor ( "idarticulo" ) );
     } else {
@@ -193,7 +193,7 @@ void BfBuscarArticuloDelegate::s_editTextChanged ( const QString &cod )
             // un prefix que permeti mes candidats
             if ( pos < 0 ) {
 
-                m_cursorcombo = mainCompany() ->loadQuery ( "SELECT codigocompletoarticulo, nomarticulo FROM articulo WHERE codigocompletoarticulo LIKE '" + codigo + "%'::text ORDER BY codigocompletoarticulo", 0, 25 );
+                m_cursorcombo = mainCompany() ->load( "SELECT codigocompletoarticulo, nomarticulo FROM articulo WHERE codigocompletoarticulo LIKE ($1||'%')::text ORDER BY codigocompletoarticulo", 0, 25 );
                 clear();
                 while ( !m_cursorcombo->eof() ) {
                     addItem ( m_cursorcombo->valor ( "codigocompletoarticulo" )
