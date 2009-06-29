@@ -203,6 +203,12 @@ void pluginBC_caaslODS::inicializa ( BcBulmaCont *bcont )
     accion3->setWhatsThis ( _ ( "Cuentas Anuales PYMES 2008" ) );
     connect ( accion3, SIGNAL ( activated() ), this, SLOT ( balsitCAPYMES08() ) );
 
+    QAction *accion6 = new QAction ( _ ( "CA simplicat Fund. &Ass Cat" ), 0 );
+    accion6->setStatusTip ( _ ( "Comptes anuals simplificat fundacions i associacions catalanes 2008" ) );
+    accion6->setWhatsThis ( _ ( "Comptes anuals simplificat fundacions i associacions catalanes 2008") );
+    connect ( accion6, SIGNAL ( activated() ), this, SLOT ( balsitCASFAC08() ) );
+
+
     /**********************************************/
 
     QAction *accion2 = new QAction ( _ ( "&Cuentas Anuales PGC" ), 0 );
@@ -223,7 +229,7 @@ void pluginBC_caaslODS::inicializa ( BcBulmaCont *bcont )
     pgc08->addAction ( accion4 ); //PGC
     pgc08->addAction ( accion5 );
     pgc08->addAction ( accion3 );
-
+    pgc08->addAction ( accion6 );
     pgc07->addAction ( accion2 );
     pgc07->addAction ( accion1 );
 
@@ -266,7 +272,7 @@ int entryPoint ( BcBulmaCont *bcont )
 //Cuentas Anuales PYMES 2008 CAPYMES08
 //Cuentas Anuales Plan General Contable 2008 CAPGC08
 //Cuentas Anuales Abreviadas Plan General Contable 2008 CAAPGC08
-
+//Comptes Anuals Simplificat Fundacions Associacions Catalanes 2008 CASFAC08
   
 
 void pluginBC_caaslODS::balsitCAAASL ()
@@ -299,6 +305,13 @@ void pluginBC_caaslODS::balsitCAAPGC08()
    formDatosBalance("inf_caapgc08.pys");
 }
 
+void pluginBC_caaslODS::balsitCASFAC08()
+{
+   mensajeAdvertenciaPGC ( (CAnuales)CASFAC08 );
+   formDatosBalance("inf_casfac08.pys");
+}
+
+
 void pluginBC_caaslODS::mensajeAdvertenciaPGC ( CAnuales tipus )
 {
 //Cuentas Anuales Abreviadas Asociacion Sin Lucro CAAASL
@@ -330,6 +343,10 @@ void pluginBC_caaslODS::mensajeAdvertenciaPGC ( CAnuales tipus )
         pgc = _ ( "Cuentas Anuales del Plan General Contable 2008. " );
         break;
 
+    case CASFAC08:
+        pgc = _ ( "Comptes Anuales simplificats fundacions i associacions catalanes 2008. " );
+        break;
+               
     default:
         mensajeError ( _ ( "ERROR: Funcion no implementada todavia." ) );
         break;

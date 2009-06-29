@@ -413,6 +413,7 @@ void BlCompanyDialog::trataEmpresa ( QString empresa, QFile *file )
     QString nomdb = "";
     QString ano;
     QString tipo;
+    mui_empresas->setSortingEnabled(FALSE);
     if ( !empresa.startsWith ( "template" ) ) {
         db1 = new BlPostgreSqlClient();
         db1->inicializa ( empresa );
@@ -466,6 +467,7 @@ void BlCompanyDialog::trataEmpresa ( QString empresa, QFile *file )
 
         delete db1;
     } // end if
+    mui_empresas->setSortingEnabled(TRUE);
     _depura ( "END BlCompanyDialog::trataEmpresa", 0, empresa );
 }
 
