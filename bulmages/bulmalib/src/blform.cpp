@@ -996,7 +996,15 @@ int BlForm::trataTags ( QString &buff, int tipoEscape )
     substrVars ( buff, tipoEscape );
 
 
-
+    /// Buscamos Query's en condicional
+    pos = 0;
+    QRegExp rx19 ( "<!--\\s*INCLUDE\\s*FILE\\s*=\\s*\"([^\"]*)\"\\s*-->" );
+    rx19.setMinimal ( TRUE );
+    while ( ( pos = rx19.indexIn ( buff, pos ) ) != -1 ) {
+        QString ldetalle = trataIncludeFile ( rx19.cap ( 1 ), tipoEscape );
+        buff.replace ( pos, rx19.matchedLength(), ldetalle );
+        pos = 0;
+    } // end while
 
     /// Buscamos Query's en condicional
     pos = 0;
@@ -1119,6 +1127,32 @@ QString BlForm::trataIf ( const QString &query, const QString &datos, const QStr
     return result;
 }
 
+
+/// Trata las lineas de detalle encontradas dentro de los tags <!--LINEAS DETALLE-->
+/**
+\param det Texto de entrada para ser tratado por iteracion.
+\return
+**/
+QString BlForm::trataIncludeFile ( const QString &file, int tipoEscape )
+{
+    _depura ( "BlForm::trataIncludeFile", 0 );
+    QString read = "";
+    QFile arch ( file );
+    if ( arch.open ( QIODevice::ReadOnly ) ) {
+        QTextStream in ( &arch );
+        while ( !in.atEnd() ) {
+            read += in.readLine();
+        } // end while
+        arch.close();
+    } // end if
+    /// Buscamos parametros en el query y los ponemos.
+    substrVars ( read, tipoEscape );
+
+
+    _depura ( "END BlForm::trataIncludeFile", 0 );
+    return read;
+
+}
 
 /// Trata las lineas de detalle encontradas dentro de los tags <!--LINEAS DETALLE-->
 /**

@@ -4,7 +4,10 @@
 <template pageSize="(21cm, 29.7cm)" leftMargin="0cm" rightMargin="0cm" topMargin="1.0cm" bottomMargin="2.0cm" title="Factura" author="Tomeu Borras" allowSplitting="20">
 	<pageTemplate id="main">
 		<pageGraphics>
-		<include src="[CONF_DIR_OPENREPORTS]plantilla.rml"/>
+		<!-- include src="[CONF_DIR_OPENREPORTS]plantilla.rml"/ -->
+
+		<!-- INCLUDE FILE="[CONF_DIR_OPENREPORTS]plantilla1.rml" -->
+
 
 		<fill color="(0,0,0)"/>	
 		<stroke color="(0,0,0)"/>
