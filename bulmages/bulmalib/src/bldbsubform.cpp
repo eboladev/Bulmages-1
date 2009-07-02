@@ -160,6 +160,7 @@ para la presentacion de valores corregidos a un estandar.
 int BlDbSubFormField::set ( QString val )
 {
     _depura ( "BlDbSubFormField::set", 0, nomcampo() + " = " + val );
+
     BlDbField::set ( val );
     QRegExp importe ( "^\\d*\\.\\d{2}$" ); ///< Para emparejar los valores numericos con decimales
 

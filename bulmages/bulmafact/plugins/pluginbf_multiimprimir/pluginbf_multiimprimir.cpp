@@ -298,7 +298,6 @@ int RecibosList_RecibosList ( RecibosList *l )
     } // end if
     m_hboxLayout1->addWidget ( sel );
     m_hboxLayout1->addWidget ( imp );
-//    m_hboxLayout1->addWidget(email);
 
     _depura ( "END RecibosList_RecibosList", 0 );
     return 0;

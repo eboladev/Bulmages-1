@@ -105,6 +105,14 @@ void ImpQToolButton::click()
 {
     _depura ( "ImpQToolButton::click", 0 );
 
+	/// Hacer comprobacion de la variable PRINTER
+	if (! getenv("PRINTER")) {
+	    mensajeInfo("Debe establecer la variable de sistema PRINTER para poder realizar esta impresion con cupsdoprint");
+        _depura ( "END ImpQToolButton::click", 0 );
+	    return;
+	} // end if
+
+
     BlDbRecordSet *cur1 = NULL;
     BlDbRecordSet *cur = NULL;
 
@@ -431,11 +439,10 @@ void ImpQToolButton::click()
             } // end for
         } // end if
 
-
-        QString comando = "cupsdoprint " + res;
-        system ( comando.toAscii().data() );
-        comando = "rm " + res;
-        system ( comando.toAscii().data() );
+	    QString comando = "cupsdoprint " + res;
+	    system ( comando.toAscii().data() );
+	    comando = "rm " + res;
+	    system ( comando.toAscii().data() );
         _depura ( "END ImpQToolButton::click", 0 );
 
     } catch ( ... ) {
@@ -509,87 +516,8 @@ void SelQToolButton::click()
     // Es posible que esto se haya cargado antes de cargar el company por eso
     // No me fio de que la asignacion en el constructor haya ido bien y reasigno aqui
 
+
     QString res = "";
-
-    if ( m_presupuestoList != NULL ) {
-        m_companyact = ( BfCompany * ) m_presupuestoList->mainCompany();
-        BlSubForm *sub = m_presupuestoList->mui_list;
-
-        /// Reseteamos los valores
-        for ( int i = 0; i < sub->rowCount(); i++ ) {
-            BlDbSubFormRecord *rec = sub->lineaat ( i );
-            rec->refresh();
-            if ( rec->dbValue ( "selector" ) == "TRUE" ) {
-                rec->setDbValue ( "selector", "FALSE" );
-            } else {
-                rec->setDbValue ( "selector", "TRUE" );
-            } // end if
-        } // end for
-    }
-
-    if ( m_pedidosClienteList != NULL ) {
-        m_companyact = ( BfCompany * ) m_pedidosClienteList->mainCompany();
-        BlSubForm *sub = m_pedidosClienteList->mui_list;
-
-        /// Reseteamos los valores
-        for ( int i = 0; i < sub->rowCount(); i++ ) {
-            BlDbSubFormRecord *rec = sub->lineaat ( i );
-            rec->refresh();
-            if ( rec->dbValue ( "selector" ) == "TRUE" ) {
-                rec->setDbValue ( "selector", "FALSE" );
-            } else {
-                rec->setDbValue ( "selector", "TRUE" );
-            } // end if
-        } // end for
-    }
-
-
-    if ( m_albaranClienteList != NULL ) {
-        m_companyact = ( BfCompany * ) m_albaranClienteList->mainCompany();
-        BlSubForm *sub = m_albaranClienteList->mui_list;
-
-        /// Reseteamos los valores
-        for ( int i = 0; i < sub->rowCount(); i++ ) {
-            BlDbSubFormRecord *rec = sub->lineaat ( i );
-            rec->refresh();
-            if ( rec->dbValue ( "selector" ) == "TRUE" ) {
-                rec->setDbValue ( "selector", "FALSE" );
-            } else {
-                rec->setDbValue ( "selector", "TRUE" );
-            } // end if
-        } // end for
-    }
-
-
-    if ( m_facturasList != NULL ) {
-        m_companyact = ( BfCompany * ) m_facturasList->mainCompany();
-        BlSubForm *sub = m_facturasList->mui_list;
-        /// Reseteamos los valores
-        for ( int i = 0; i < sub->rowCount(); i++ ) {
-            BlDbSubFormRecord *rec = sub->lineaat ( i );
-            rec->refresh();
-            if ( rec->dbValue ( "selector" ) == "TRUE" ) {
-                rec->setDbValue ( "selector", "FALSE" );
-            } else {
-                rec->setDbValue ( "selector", "TRUE" );
-            } // end if
-        } // end for
-    }
-
-    if ( m_cobrosList != NULL ) {
-        m_companyact = ( BfCompany * ) m_cobrosList->mainCompany();
-        BlSubForm *sub = m_cobrosList->mui_list;
-        /// Reseteamos los valores
-        for ( int i = 0; i < sub->rowCount(); i++ ) {
-            BlDbSubFormRecord *rec = sub->lineaat ( i );
-            rec->refresh();
-            if ( rec->dbValue ( "selector" ) == "TRUE" ) {
-                rec->setDbValue ( "selector", "FALSE" );
-            } else {
-                rec->setDbValue ( "selector", "TRUE" );
-            } // end if
-        } // end for
-    }
 
 
     if ( m_listado != NULL ) {

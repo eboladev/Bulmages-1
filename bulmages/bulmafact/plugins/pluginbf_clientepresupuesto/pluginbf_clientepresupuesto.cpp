@@ -153,7 +153,8 @@ int BfCompany_createMainWindows_Post ( BfCompany *comp )
 int ClienteView_ClienteView_Post ( ClienteView *prov )
 {
     if ( prov->mainCompany()->hasTablePrivilege ( "presupuesto", "SELECT" ) ) {
-        PresupuestoList *presupuestosList = new PresupuestoList ( ( BfCompany * ) prov->mainCompany(), NULL, 0, BL_SELECT_MODE );
+        PresupuestoList *presupuestosList = new PresupuestoList ( NULL, 0, BL_SELECT_MODE );
+	presupuestosList->setMainCompany(( BfCompany * ) prov->mainCompany());
         presupuestosList->setModoEdicion();
         presupuestosList->setObjectName ( "listpresupuestos" );
         presupuestosList->hideBusqueda();

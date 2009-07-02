@@ -151,7 +151,8 @@ int BfCompany_createMainWindows_Post ( BfCompany *comp )
 int ClienteView_ClienteView_Post ( ClienteView *prov )
 {
     if ( prov->mainCompany()->hasTablePrivilege ( "pedidocliente", "SELECT" ) ) {
-        PedidosClienteList *pedidosClienteList = new PedidosClienteList ( ( BfCompany * ) prov->mainCompany(), NULL, 0, BL_SELECT_MODE );
+        PedidosClienteList *pedidosClienteList = new PedidosClienteList ( NULL, 0, BL_SELECT_MODE );
+	pedidosClienteList->setMainCompany(( BfCompany * ) prov->mainCompany());
         pedidosClienteList->setModoEdicion();
         pedidosClienteList->setObjectName ( "listpedidoclientees" );
         pedidosClienteList->hideBusqueda();

@@ -147,7 +147,8 @@ int BfCompany_createMainWindows_Post ( BfCompany *comp )
 int ClienteView_ClienteView_Post ( ClienteView *prov )
 {
     if ( prov->mainCompany()->hasTablePrivilege ( "cobro", "SELECT" ) ) {
-        CobrosList *pagosList = new CobrosList ( ( BfCompany * ) prov->mainCompany(), NULL, 0, BL_SELECT_MODE );
+        CobrosList *pagosList = new CobrosList ( NULL, 0, BL_SELECT_MODE );
+	pagosList->setMainCompany(( BfCompany * ) prov->mainCompany());
         pagosList->setModoEdicion();
         pagosList->setObjectName ( "listcobrosproveedor" );
         pagosList->hideBusqueda();
