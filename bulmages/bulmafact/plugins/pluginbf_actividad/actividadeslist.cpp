@@ -141,8 +141,6 @@ void ActividadesList::crear()
     ActividadView *bud = new ActividadView ( ( BfCompany * ) mainCompany(), 0 );
     mainCompany() ->m_pWorkspace->addWindow ( bud );
     bud->show();
-    bud->pintar();
-    
     _depura ( "ActividadesList::crear", 0 );
 }
 

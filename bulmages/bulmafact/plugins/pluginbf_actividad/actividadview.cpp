@@ -96,10 +96,14 @@ ActividadView::ActividadView ( BfCompany *comp, QWidget *parent )
         mui_idtipoactividad->setFieldId ( "idtipoactividad" );
         mui_idtipoactividad->m_valores["nombretipoactividad"] = "";
         mui_idtipoactividad->setAllowNull ( FALSE );
-        mui_idtipoactividad->setId ( "" );
 
         pintar();
         dialogChanges_cargaInicial();
+
+	_debugOn();
+        mui_idtipoactividad->setId ( "" );
+	_debugOff();
+
     } catch ( ... ) {
         mensajeInfo ( _ ( "Error al crear el actividad" ), this );
     } // end try
