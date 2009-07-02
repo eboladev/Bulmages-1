@@ -36,6 +36,7 @@ BlSearchWidget::BlSearchWidget ( QWidget *parent )
     setupUi ( this );
     m_textBusqueda->setText ( "" );
     mdb_id = "";
+    m_campoid = "";
 
     /// Inicializamos los valores de vuelta a ""
     QMapIterator<QString, QString> i ( m_valores );
@@ -119,7 +120,7 @@ void BlSearchWidget::setId ( QString val )
             m_valores.insert ( i.key(), "" );
         } // end while
     } else {
-        QString SQLQuery = "SELECT * FROM " + m_tabla + " WHERE id" + m_tabla + "= $1";
+        QString SQLQuery = "SELECT * FROM " + m_tabla + " WHERE " + m_campoid + "= $1";
         BlDbRecordSet *cur = mainCompany() ->load( SQLQuery, mdb_id );
         if ( !cur->eof() ) {
 
@@ -265,7 +266,7 @@ void BlSearchWidget::on_m_inputBusqueda_textChanged ( const QString &val )
     QString SQLQuery = "SELECT * FROM " + m_tabla + " WHERE " + cadwhere;
     BlDbRecordSet *cur = mainCompany() ->loadQuery ( SQLQuery );
     if ( !cur->eof() ) {
-        mdb_id = cur->valor ( "id" + m_tabla );
+        mdb_id = cur->valor ( m_campoid );
         /// Inicializamos los valores de vuelta a ""
         QMapIterator<QString, QString> i ( m_valores );
         while ( i.hasNext() ) {
@@ -294,7 +295,7 @@ void BlSearchWidget::on_m_inputBusqueda_textChanged ( const QString &val )
         QString SQLQuery = "SELECT * FROM " + m_tabla + " WHERE " + cadwhere;
         cur = mainCompany() ->loadQuery ( SQLQuery );
         if ( cur->numregistros() == 1 ) {
-            mdb_id = cur->valor ( "id" + m_tabla );
+            mdb_id = cur->valor ( m_campoid );
             /// Inicializamos los valores de vuelta a ""
             QMapIterator<QString, QString> i ( m_valores );
             while ( i.hasNext() ) {
@@ -354,6 +355,15 @@ QString BlSearchWidget::id()
 }
 
 
+
+///
+/**
+**/
+void BlSearchWidget::setFieldId ( const QString &fieldId )
+{
+    m_campoid= fieldId;
+}
+
 ///
 /**
 \return
@@ -381,6 +391,9 @@ QString BlSearchWidget::tableName()
 void BlSearchWidget::setTableName ( QString tableName )
 {
     m_tabla = tableName;
+    if (m_campoid == "") {
+	m_campoid = "id" + m_tabla;
+    } // end if
 }
 
 

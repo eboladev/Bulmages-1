@@ -45,6 +45,7 @@ public:
 private:
     /// Almacena la tabla sobre la que vamos a buscar.
     QString m_tabla;
+    QString m_campoid;
     /// Almacena el id de la tabla seleccionada.
     QString mdb_id;
     /// Impide que se produzca un dead-lock entre pintar y on_mui_text_changed.
@@ -63,6 +64,7 @@ public:
     virtual void setFieldValue ( QString campo, QString val );
     virtual void setLabel(QString label);
     virtual void setTableName(QString tableName);
+    void setFieldId ( const QString & );
 
 public slots:
     virtual void on_mui_buscar_released();
