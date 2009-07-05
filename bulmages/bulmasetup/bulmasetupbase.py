@@ -1,197 +1,301 @@
-# -*- coding: utf-8 -*-
+/********************************************************************************
+** Form generated from reading ui file 'bulmasetupbase.ui'
+**
+** Created: Sun Jul 5 22:45:49 2009
+**      by: Qt User Interface Compiler version 4.5.0
+**
+** WARNING! All changes made in this file will be lost when recompiling ui file!
+********************************************************************************/
 
-# Form implementation generated from reading ui file 'bulmasetupbase.ui'
-#
-# Created: Tue Jun  9 13:41:26 2009
-#      by: PyQt4 UI code generator 4.4.4
-#
-# WARNING! All changes made in this file will be lost!
+#ifndef UI_BULMASETUPBASE_H
+#define UI_BULMASETUPBASE_H
 
-from PyQt4 import QtCore, QtGui
+#include <QtCore/QVariant>
+#include <QtGui/QAction>
+#include <QtGui/QApplication>
+#include <QtGui/QButtonGroup>
+#include <QtGui/QGridLayout>
+#include <QtGui/QGroupBox>
+#include <QtGui/QHBoxLayout>
+#include <QtGui/QHeaderView>
+#include <QtGui/QLabel>
+#include <QtGui/QMainWindow>
+#include <QtGui/QPushButton>
+#include <QtGui/QSpacerItem>
+#include <QtGui/QVBoxLayout>
+#include <QtGui/QWidget>
 
-class Ui_MainWindow(object):
-    def setupUi(self, MainWindow):
-        MainWindow.setObjectName("MainWindow")
-        MainWindow.resize(778, 400)
-        MainWindow.setMinimumSize(QtCore.QSize(732, 400))
-        icon = QtGui.QIcon()
-        icon.addPixmap(QtGui.QPixmap(":/images/iglues.org.svg"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
-        MainWindow.setWindowIcon(icon)
-        self.centralwidget = QtGui.QWidget(MainWindow)
-        self.centralwidget.setObjectName("centralwidget")
-        self.horizontalLayout_2 = QtGui.QHBoxLayout(self.centralwidget)
-        self.horizontalLayout_2.setObjectName("horizontalLayout_2")
-        self.verticalLayout_2 = QtGui.QVBoxLayout()
-        self.verticalLayout_2.setObjectName("verticalLayout_2")
-        self.label = QtGui.QLabel(self.centralwidget)
-        self.label.setMinimumSize(QtCore.QSize(209, 209))
-        self.label.setMaximumSize(QtCore.QSize(209, 209))
-        self.label.setPixmap(QtGui.QPixmap(":/images/iglues.org.svg"))
-        self.label.setScaledContents(True)
-        self.label.setAlignment(QtCore.Qt.AlignCenter)
-        self.label.setObjectName("label")
-        self.verticalLayout_2.addWidget(self.label)
-        self.label_2 = QtGui.QLabel(self.centralwidget)
-        self.label_2.setAlignment(QtCore.Qt.AlignCenter)
-        self.label_2.setObjectName("label_2")
-        self.verticalLayout_2.addWidget(self.label_2)
-        self.horizontalLayout_2.addLayout(self.verticalLayout_2)
-        self.verticalLayout = QtGui.QVBoxLayout()
-        self.verticalLayout.setObjectName("verticalLayout")
-        self.groupBox_3 = QtGui.QGroupBox(self.centralwidget)
-        self.groupBox_3.setObjectName("groupBox_3")
-        self.gridLayout_2 = QtGui.QGridLayout(self.groupBox_3)
-        self.gridLayout_2.setObjectName("gridLayout_2")
-        self.nuevo_usuario = QtGui.QPushButton(self.groupBox_3)
-        self.nuevo_usuario.setEnabled(False)
-        self.nuevo_usuario.setFocusPolicy(QtCore.Qt.NoFocus)
-        self.nuevo_usuario.setLayoutDirection(QtCore.Qt.LeftToRight)
-        icon1 = QtGui.QIcon()
-        icon1.addPixmap(QtGui.QPixmap(":/images/add_user_postgresql.svg"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
-        self.nuevo_usuario.setIcon(icon1)
-        self.nuevo_usuario.setIconSize(QtCore.QSize(38, 38))
-        self.nuevo_usuario.setObjectName("nuevo_usuario")
-        self.gridLayout_2.addWidget(self.nuevo_usuario, 0, 0, 1, 1)
-        self.editar_usuario = QtGui.QPushButton(self.groupBox_3)
-        self.editar_usuario.setEnabled(False)
-        self.editar_usuario.setFocusPolicy(QtCore.Qt.NoFocus)
-        self.editar_usuario.setLayoutDirection(QtCore.Qt.LeftToRight)
-        icon2 = QtGui.QIcon()
-        icon2.addPixmap(QtGui.QPixmap(":/images/edit_user_postgresql.svg"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
-        self.editar_usuario.setIcon(icon2)
-        self.editar_usuario.setIconSize(QtCore.QSize(38, 38))
-        self.editar_usuario.setObjectName("editar_usuario")
-        self.gridLayout_2.addWidget(self.editar_usuario, 0, 1, 1, 1)
-        self.permisos_usuario = QtGui.QPushButton(self.groupBox_3)
-        self.permisos_usuario.setEnabled(False)
-        self.permisos_usuario.setFocusPolicy(QtCore.Qt.NoFocus)
-        self.permisos_usuario.setLayoutDirection(QtCore.Qt.LeftToRight)
-        self.permisos_usuario.setIcon(icon2)
-        self.permisos_usuario.setIconSize(QtCore.QSize(38, 38))
-        self.permisos_usuario.setObjectName("permisos_usuario")
-        self.gridLayout_2.addWidget(self.permisos_usuario, 1, 0, 1, 1)
-        self.eliminar_usuario = QtGui.QPushButton(self.groupBox_3)
-        self.eliminar_usuario.setEnabled(False)
-        self.eliminar_usuario.setFocusPolicy(QtCore.Qt.NoFocus)
-        self.eliminar_usuario.setLayoutDirection(QtCore.Qt.LeftToRight)
-        icon3 = QtGui.QIcon()
-        icon3.addPixmap(QtGui.QPixmap(":/images/trash_user_postgresql.svg"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
-        self.eliminar_usuario.setIcon(icon3)
-        self.eliminar_usuario.setIconSize(QtCore.QSize(38, 38))
-        self.eliminar_usuario.setObjectName("eliminar_usuario")
-        self.gridLayout_2.addWidget(self.eliminar_usuario, 1, 1, 1, 1)
-        self.verticalLayout.addWidget(self.groupBox_3)
-        self.groupBox_2 = QtGui.QGroupBox(self.centralwidget)
-        self.groupBox_2.setObjectName("groupBox_2")
-        self.gridLayout = QtGui.QGridLayout(self.groupBox_2)
-        self.gridLayout.setObjectName("gridLayout")
-        self.mui_crearbulmacont = QtGui.QPushButton(self.groupBox_2)
-        self.mui_crearbulmacont.setEnabled(False)
-        self.mui_crearbulmacont.setFocusPolicy(QtCore.Qt.NoFocus)
-        self.mui_crearbulmacont.setLayoutDirection(QtCore.Qt.LeftToRight)
-        icon4 = QtGui.QIcon()
-        icon4.addPixmap(QtGui.QPixmap(":/images/iconbulmacont.svg"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
-        self.mui_crearbulmacont.setIcon(icon4)
-        self.mui_crearbulmacont.setIconSize(QtCore.QSize(38, 38))
-        self.mui_crearbulmacont.setObjectName("mui_crearbulmacont")
-        self.gridLayout.addWidget(self.mui_crearbulmacont, 0, 0, 1, 1)
-        self.mui_crearbulmafact = QtGui.QPushButton(self.groupBox_2)
-        self.mui_crearbulmafact.setEnabled(False)
-        self.mui_crearbulmafact.setFocusPolicy(QtCore.Qt.NoFocus)
-        self.mui_crearbulmafact.setLayoutDirection(QtCore.Qt.LeftToRight)
-        icon5 = QtGui.QIcon()
-        icon5.addPixmap(QtGui.QPixmap(":/images/iconbulmafact.svg"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
-        self.mui_crearbulmafact.setIcon(icon5)
-        self.mui_crearbulmafact.setIconSize(QtCore.QSize(38, 38))
-        self.mui_crearbulmafact.setObjectName("mui_crearbulmafact")
-        self.gridLayout.addWidget(self.mui_crearbulmafact, 0, 1, 1, 1)
-        self.mui_adminempresas = QtGui.QPushButton(self.groupBox_2)
-        self.mui_adminempresas.setEnabled(False)
-        self.mui_adminempresas.setFocusPolicy(QtCore.Qt.NoFocus)
-        self.mui_adminempresas.setLayoutDirection(QtCore.Qt.LeftToRight)
-        icon6 = QtGui.QIcon()
-        icon6.addPixmap(QtGui.QPixmap(":/images/manage_company.svg"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
-        self.mui_adminempresas.setIcon(icon6)
-        self.mui_adminempresas.setIconSize(QtCore.QSize(32, 32))
-        self.mui_adminempresas.setObjectName("mui_adminempresas")
-        self.gridLayout.addWidget(self.mui_adminempresas, 1, 0, 1, 1)
-        self.eliminar_empresa = QtGui.QPushButton(self.groupBox_2)
-        self.eliminar_empresa.setEnabled(False)
-        self.eliminar_empresa.setFocusPolicy(QtCore.Qt.NoFocus)
-        self.eliminar_empresa.setLayoutDirection(QtCore.Qt.LeftToRight)
-        icon7 = QtGui.QIcon()
-        icon7.addPixmap(QtGui.QPixmap(":/images/trash_company.svg"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
-        self.eliminar_empresa.setIcon(icon7)
-        self.eliminar_empresa.setIconSize(QtCore.QSize(32, 32))
-        self.eliminar_empresa.setObjectName("eliminar_empresa")
-        self.gridLayout.addWidget(self.eliminar_empresa, 1, 1, 1, 1)
-        self.mui_restbackup = QtGui.QPushButton(self.groupBox_2)
-        self.mui_restbackup.setEnabled(False)
-        self.mui_restbackup.setFocusPolicy(QtCore.Qt.NoFocus)
-        self.mui_restbackup.setLayoutDirection(QtCore.Qt.LeftToRight)
-        icon8 = QtGui.QIcon()
-        icon8.addPixmap(QtGui.QPixmap(":/images/restore_database.svg"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
-        self.mui_restbackup.setIcon(icon8)
-        self.mui_restbackup.setIconSize(QtCore.QSize(32, 32))
-        self.mui_restbackup.setObjectName("mui_restbackup")
-        self.gridLayout.addWidget(self.mui_restbackup, 2, 1, 1, 1)
-        self.mui_creabackup = QtGui.QPushButton(self.groupBox_2)
-        self.mui_creabackup.setEnabled(False)
-        self.mui_creabackup.setFocusPolicy(QtCore.Qt.NoFocus)
-        self.mui_creabackup.setLayoutDirection(QtCore.Qt.LeftToRight)
-        icon9 = QtGui.QIcon()
-        icon9.addPixmap(QtGui.QPixmap(":/images/backup_database.svg"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
-        self.mui_creabackup.setIcon(icon9)
-        self.mui_creabackup.setIconSize(QtCore.QSize(32, 32))
-        self.mui_creabackup.setObjectName("mui_creabackup")
-        self.gridLayout.addWidget(self.mui_creabackup, 2, 0, 1, 1)
-        self.verticalLayout.addWidget(self.groupBox_2)
-        spacerItem = QtGui.QSpacerItem(17, 13, QtGui.QSizePolicy.Minimum, QtGui.QSizePolicy.Expanding)
-        self.verticalLayout.addItem(spacerItem)
-        self.horizontalLayout = QtGui.QHBoxLayout()
-        self.horizontalLayout.setObjectName("horizontalLayout")
-        self.mui_acerca = QtGui.QPushButton(self.centralwidget)
-        self.mui_acerca.setIcon(icon)
-        self.mui_acerca.setObjectName("mui_acerca")
-        self.horizontalLayout.addWidget(self.mui_acerca)
-        spacerItem1 = QtGui.QSpacerItem(388, 20, QtGui.QSizePolicy.Expanding, QtGui.QSizePolicy.Minimum)
-        self.horizontalLayout.addItem(spacerItem1)
-        self.mui_salir = QtGui.QPushButton(self.centralwidget)
-        icon10 = QtGui.QIcon()
-        icon10.addPixmap(QtGui.QPixmap(":/images/bulmasetup_exit.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
-        self.mui_salir.setIcon(icon10)
-        self.mui_salir.setObjectName("mui_salir")
-        self.horizontalLayout.addWidget(self.mui_salir)
-        self.verticalLayout.addLayout(self.horizontalLayout)
-        self.horizontalLayout_2.addLayout(self.verticalLayout)
-        MainWindow.setCentralWidget(self.centralwidget)
+QT_BEGIN_NAMESPACE
 
-        self.retranslateUi(MainWindow)
-        QtCore.QObject.connect(self.mui_salir, QtCore.SIGNAL("released()"), MainWindow.close)
-        QtCore.QMetaObject.connectSlotsByName(MainWindow)
+class Ui_MainWindow
+{
+public:
+    QWidget *centralwidget;
+    QHBoxLayout *horizontalLayout_2;
+    QVBoxLayout *verticalLayout_2;
+    QLabel *label;
+    QLabel *label_2;
+    QVBoxLayout *verticalLayout;
+    QGroupBox *groupBox_3;
+    QGridLayout *gridLayout_2;
+    QPushButton *nuevo_usuario;
+    QPushButton *editar_usuario;
+    QPushButton *permisos_usuario;
+    QPushButton *eliminar_usuario;
+    QGroupBox *groupBox_2;
+    QGridLayout *gridLayout;
+    QPushButton *mui_crearbulmacont;
+    QPushButton *mui_crearbulmafact;
+    QPushButton *mui_adminempresas;
+    QPushButton *eliminar_empresa;
+    QPushButton *mui_restbackup;
+    QPushButton *mui_creabackup;
+    QSpacerItem *verticalSpacer;
+    QHBoxLayout *horizontalLayout;
+    QPushButton *mui_acerca;
+    QSpacerItem *horizontalSpacer;
+    QPushButton *mui_salir;
 
-    def retranslateUi(self, MainWindow):
-        MainWindow.setWindowTitle(QtGui.QApplication.translate("MainWindow", "BulmaSetup", None, QtGui.QApplication.UnicodeUTF8))
-        self.label_2.setText(QtGui.QApplication.translate("MainWindow", "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
+    void setupUi(QMainWindow *MainWindow)
+    {
+        if (MainWindow->objectName().isEmpty())
+            MainWindow->setObjectName(QString::fromUtf8("MainWindow"));
+        MainWindow->resize(778, 400);
+        MainWindow->setMinimumSize(QSize(732, 400));
+        QIcon icon;
+        icon.addPixmap(QPixmap(QString::fromUtf8(":/images/iglues.org.svg")), QIcon::Normal, QIcon::Off);
+        MainWindow->setWindowIcon(icon);
+        centralwidget = new QWidget(MainWindow);
+        centralwidget->setObjectName(QString::fromUtf8("centralwidget"));
+        horizontalLayout_2 = new QHBoxLayout(centralwidget);
+        horizontalLayout_2->setObjectName(QString::fromUtf8("horizontalLayout_2"));
+        verticalLayout_2 = new QVBoxLayout();
+        verticalLayout_2->setObjectName(QString::fromUtf8("verticalLayout_2"));
+        label = new QLabel(centralwidget);
+        label->setObjectName(QString::fromUtf8("label"));
+        label->setMinimumSize(QSize(209, 209));
+        label->setMaximumSize(QSize(209, 209));
+        label->setPixmap(QPixmap(QString::fromUtf8(":/images/iglues.org.svg")));
+        label->setScaledContents(true);
+        label->setAlignment(Qt::AlignCenter);
+
+        verticalLayout_2->addWidget(label);
+
+        label_2 = new QLabel(centralwidget);
+        label_2->setObjectName(QString::fromUtf8("label_2"));
+        label_2->setAlignment(Qt::AlignCenter);
+
+        verticalLayout_2->addWidget(label_2);
+
+
+        horizontalLayout_2->addLayout(verticalLayout_2);
+
+        verticalLayout = new QVBoxLayout();
+        verticalLayout->setObjectName(QString::fromUtf8("verticalLayout"));
+        groupBox_3 = new QGroupBox(centralwidget);
+        groupBox_3->setObjectName(QString::fromUtf8("groupBox_3"));
+        gridLayout_2 = new QGridLayout(groupBox_3);
+        gridLayout_2->setObjectName(QString::fromUtf8("gridLayout_2"));
+        nuevo_usuario = new QPushButton(groupBox_3);
+        nuevo_usuario->setObjectName(QString::fromUtf8("nuevo_usuario"));
+        nuevo_usuario->setEnabled(false);
+        nuevo_usuario->setFocusPolicy(Qt::NoFocus);
+        nuevo_usuario->setLayoutDirection(Qt::LeftToRight);
+        QIcon icon1;
+        icon1.addPixmap(QPixmap(QString::fromUtf8(":/images/add_user_postgresql.svg")), QIcon::Normal, QIcon::Off);
+        nuevo_usuario->setIcon(icon1);
+        nuevo_usuario->setIconSize(QSize(38, 38));
+
+        gridLayout_2->addWidget(nuevo_usuario, 0, 0, 1, 1);
+
+        editar_usuario = new QPushButton(groupBox_3);
+        editar_usuario->setObjectName(QString::fromUtf8("editar_usuario"));
+        editar_usuario->setEnabled(false);
+        editar_usuario->setFocusPolicy(Qt::NoFocus);
+        editar_usuario->setLayoutDirection(Qt::LeftToRight);
+        QIcon icon2;
+        icon2.addPixmap(QPixmap(QString::fromUtf8(":/images/edit_user_postgresql.svg")), QIcon::Normal, QIcon::Off);
+        editar_usuario->setIcon(icon2);
+        editar_usuario->setIconSize(QSize(38, 38));
+
+        gridLayout_2->addWidget(editar_usuario, 0, 1, 1, 1);
+
+        permisos_usuario = new QPushButton(groupBox_3);
+        permisos_usuario->setObjectName(QString::fromUtf8("permisos_usuario"));
+        permisos_usuario->setEnabled(false);
+        permisos_usuario->setFocusPolicy(Qt::NoFocus);
+        permisos_usuario->setLayoutDirection(Qt::LeftToRight);
+        permisos_usuario->setIcon(icon2);
+        permisos_usuario->setIconSize(QSize(38, 38));
+
+        gridLayout_2->addWidget(permisos_usuario, 1, 0, 1, 1);
+
+        eliminar_usuario = new QPushButton(groupBox_3);
+        eliminar_usuario->setObjectName(QString::fromUtf8("eliminar_usuario"));
+        eliminar_usuario->setEnabled(false);
+        eliminar_usuario->setFocusPolicy(Qt::NoFocus);
+        eliminar_usuario->setLayoutDirection(Qt::LeftToRight);
+        QIcon icon3;
+        icon3.addPixmap(QPixmap(QString::fromUtf8(":/images/trash_user_postgresql.svg")), QIcon::Normal, QIcon::Off);
+        eliminar_usuario->setIcon(icon3);
+        eliminar_usuario->setIconSize(QSize(38, 38));
+
+        gridLayout_2->addWidget(eliminar_usuario, 1, 1, 1, 1);
+
+
+        verticalLayout->addWidget(groupBox_3);
+
+        groupBox_2 = new QGroupBox(centralwidget);
+        groupBox_2->setObjectName(QString::fromUtf8("groupBox_2"));
+        gridLayout = new QGridLayout(groupBox_2);
+        gridLayout->setObjectName(QString::fromUtf8("gridLayout"));
+        mui_crearbulmacont = new QPushButton(groupBox_2);
+        mui_crearbulmacont->setObjectName(QString::fromUtf8("mui_crearbulmacont"));
+        mui_crearbulmacont->setEnabled(false);
+        mui_crearbulmacont->setFocusPolicy(Qt::NoFocus);
+        mui_crearbulmacont->setLayoutDirection(Qt::LeftToRight);
+        QIcon icon4;
+        icon4.addPixmap(QPixmap(QString::fromUtf8(":/images/iconbulmacont.svg")), QIcon::Normal, QIcon::Off);
+        mui_crearbulmacont->setIcon(icon4);
+        mui_crearbulmacont->setIconSize(QSize(38, 38));
+
+        gridLayout->addWidget(mui_crearbulmacont, 0, 0, 1, 1);
+
+        mui_crearbulmafact = new QPushButton(groupBox_2);
+        mui_crearbulmafact->setObjectName(QString::fromUtf8("mui_crearbulmafact"));
+        mui_crearbulmafact->setEnabled(false);
+        mui_crearbulmafact->setFocusPolicy(Qt::NoFocus);
+        mui_crearbulmafact->setLayoutDirection(Qt::LeftToRight);
+        QIcon icon5;
+        icon5.addPixmap(QPixmap(QString::fromUtf8(":/images/iconbulmafact.svg")), QIcon::Normal, QIcon::Off);
+        mui_crearbulmafact->setIcon(icon5);
+        mui_crearbulmafact->setIconSize(QSize(38, 38));
+
+        gridLayout->addWidget(mui_crearbulmafact, 0, 1, 1, 1);
+
+        mui_adminempresas = new QPushButton(groupBox_2);
+        mui_adminempresas->setObjectName(QString::fromUtf8("mui_adminempresas"));
+        mui_adminempresas->setEnabled(false);
+        mui_adminempresas->setFocusPolicy(Qt::NoFocus);
+        mui_adminempresas->setLayoutDirection(Qt::LeftToRight);
+        QIcon icon6;
+        icon6.addPixmap(QPixmap(QString::fromUtf8(":/images/manage_company.svg")), QIcon::Normal, QIcon::Off);
+        mui_adminempresas->setIcon(icon6);
+        mui_adminempresas->setIconSize(QSize(32, 32));
+
+        gridLayout->addWidget(mui_adminempresas, 1, 0, 1, 1);
+
+        eliminar_empresa = new QPushButton(groupBox_2);
+        eliminar_empresa->setObjectName(QString::fromUtf8("eliminar_empresa"));
+        eliminar_empresa->setEnabled(false);
+        eliminar_empresa->setFocusPolicy(Qt::NoFocus);
+        eliminar_empresa->setLayoutDirection(Qt::LeftToRight);
+        QIcon icon7;
+        icon7.addPixmap(QPixmap(QString::fromUtf8(":/images/trash_company.svg")), QIcon::Normal, QIcon::Off);
+        eliminar_empresa->setIcon(icon7);
+        eliminar_empresa->setIconSize(QSize(32, 32));
+
+        gridLayout->addWidget(eliminar_empresa, 1, 1, 1, 1);
+
+        mui_restbackup = new QPushButton(groupBox_2);
+        mui_restbackup->setObjectName(QString::fromUtf8("mui_restbackup"));
+        mui_restbackup->setEnabled(false);
+        mui_restbackup->setFocusPolicy(Qt::NoFocus);
+        mui_restbackup->setLayoutDirection(Qt::LeftToRight);
+        QIcon icon8;
+        icon8.addPixmap(QPixmap(QString::fromUtf8(":/images/restore_database.svg")), QIcon::Normal, QIcon::Off);
+        mui_restbackup->setIcon(icon8);
+        mui_restbackup->setIconSize(QSize(32, 32));
+
+        gridLayout->addWidget(mui_restbackup, 2, 1, 1, 1);
+
+        mui_creabackup = new QPushButton(groupBox_2);
+        mui_creabackup->setObjectName(QString::fromUtf8("mui_creabackup"));
+        mui_creabackup->setEnabled(false);
+        mui_creabackup->setFocusPolicy(Qt::NoFocus);
+        mui_creabackup->setLayoutDirection(Qt::LeftToRight);
+        QIcon icon9;
+        icon9.addPixmap(QPixmap(QString::fromUtf8(":/images/backup_database.svg")), QIcon::Normal, QIcon::Off);
+        mui_creabackup->setIcon(icon9);
+        mui_creabackup->setIconSize(QSize(32, 32));
+
+        gridLayout->addWidget(mui_creabackup, 2, 0, 1, 1);
+
+
+        verticalLayout->addWidget(groupBox_2);
+
+        verticalSpacer = new QSpacerItem(17, 13, QSizePolicy::Minimum, QSizePolicy::Expanding);
+
+        verticalLayout->addItem(verticalSpacer);
+
+        horizontalLayout = new QHBoxLayout();
+        horizontalLayout->setObjectName(QString::fromUtf8("horizontalLayout"));
+        mui_acerca = new QPushButton(centralwidget);
+        mui_acerca->setObjectName(QString::fromUtf8("mui_acerca"));
+        mui_acerca->setIcon(icon);
+
+        horizontalLayout->addWidget(mui_acerca);
+
+        horizontalSpacer = new QSpacerItem(388, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
+
+        horizontalLayout->addItem(horizontalSpacer);
+
+        mui_salir = new QPushButton(centralwidget);
+        mui_salir->setObjectName(QString::fromUtf8("mui_salir"));
+        QIcon icon10;
+        icon10.addPixmap(QPixmap(QString::fromUtf8(":/images/bulmasetup_exit.png")), QIcon::Normal, QIcon::Off);
+        mui_salir->setIcon(icon10);
+
+        horizontalLayout->addWidget(mui_salir);
+
+
+        verticalLayout->addLayout(horizontalLayout);
+
+
+        horizontalLayout_2->addLayout(verticalLayout);
+
+        MainWindow->setCentralWidget(centralwidget);
+
+        retranslateUi(MainWindow);
+        QObject::connect(mui_salir, SIGNAL(released()), MainWindow, SLOT(close()));
+
+        QMetaObject::connectSlotsByName(MainWindow);
+    } // setupUi
+
+    void retranslateUi(QMainWindow *MainWindow)
+    {
+        MainWindow->setWindowTitle(QApplication::translate("MainWindow", "BulmaSetup", 0, QApplication::UnicodeUTF8));
+        label->setText(QString());
+        label_2->setText(QApplication::translate("MainWindow", "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
 "p, li { white-space: pre-wrap; }\n"
-"</style></head><body style=\" font-family:\'Sans Serif\'; font-size:9pt; font-weight:400; font-style:normal; text-decoration:none;\">\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-weight:600;\">BulmaSetup v 0.11</span></p>\n"
+"</style></head><body style=\" font-family:'Sans Serif'; font-size:9pt; font-weight:400; font-style:normal; text-decoration:none;\">\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-weight:600;\">BulmaSetup v 0.12</span></p>\n"
 "<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"></p>\n"
 "<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">Administracion de Bases</p>\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">de Datos para BulmaGes</p></body></html>", None, QtGui.QApplication.UnicodeUTF8))
-        self.groupBox_3.setTitle(QtGui.QApplication.translate("MainWindow", "Gestión de Usuarios", None, QtGui.QApplication.UnicodeUTF8))
-        self.nuevo_usuario.setText(QtGui.QApplication.translate("MainWindow", "Nuevos Usuario de PostgreSQL", None, QtGui.QApplication.UnicodeUTF8))
-        self.editar_usuario.setText(QtGui.QApplication.translate("MainWindow", "Editar Usuarios de PostgreSQL", None, QtGui.QApplication.UnicodeUTF8))
-        self.permisos_usuario.setText(QtGui.QApplication.translate("MainWindow", "Modificar Permisos de PostgreSQL", None, QtGui.QApplication.UnicodeUTF8))
-        self.eliminar_usuario.setText(QtGui.QApplication.translate("MainWindow", "Eliminar Usuarios de PostgreSQL", None, QtGui.QApplication.UnicodeUTF8))
-        self.groupBox_2.setTitle(QtGui.QApplication.translate("MainWindow", "Gestión de Empresas", None, QtGui.QApplication.UnicodeUTF8))
-        self.mui_crearbulmacont.setText(QtGui.QApplication.translate("MainWindow", "Nueva Empresa de Contabilidad", None, QtGui.QApplication.UnicodeUTF8))
-        self.mui_crearbulmafact.setText(QtGui.QApplication.translate("MainWindow", "Nueva Empresa de Facturación / TPV", None, QtGui.QApplication.UnicodeUTF8))
-        self.mui_adminempresas.setText(QtGui.QApplication.translate("MainWindow", "Administrar Empresas Existentes", None, QtGui.QApplication.UnicodeUTF8))
-        self.eliminar_empresa.setText(QtGui.QApplication.translate("MainWindow", "Eliminar Empresas Existentes", None, QtGui.QApplication.UnicodeUTF8))
-        self.mui_restbackup.setText(QtGui.QApplication.translate("MainWindow", "Restaurar copia de seguridad", None, QtGui.QApplication.UnicodeUTF8))
-        self.mui_creabackup.setText(QtGui.QApplication.translate("MainWindow", "Crear Copia de Seguridad", None, QtGui.QApplication.UnicodeUTF8))
-        self.mui_acerca.setText(QtGui.QApplication.translate("MainWindow", "Acerca de BulmaSetup", None, QtGui.QApplication.UnicodeUTF8))
-        self.mui_salir.setText(QtGui.QApplication.translate("MainWindow", "Salir", None, QtGui.QApplication.UnicodeUTF8))
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">de Datos para BulmaGes</p></body></html>", 0, QApplication::UnicodeUTF8));
+        groupBox_3->setTitle(QApplication::translate("MainWindow", "Gesti\303\263n de Usuarios", 0, QApplication::UnicodeUTF8));
+        nuevo_usuario->setText(QApplication::translate("MainWindow", "Nuevos Usuario de PostgreSQL", 0, QApplication::UnicodeUTF8));
+        editar_usuario->setText(QApplication::translate("MainWindow", "Editar Usuarios de PostgreSQL", 0, QApplication::UnicodeUTF8));
+        permisos_usuario->setText(QApplication::translate("MainWindow", "Modificar Permisos de PostgreSQL", 0, QApplication::UnicodeUTF8));
+        eliminar_usuario->setText(QApplication::translate("MainWindow", "Eliminar Usuarios de PostgreSQL", 0, QApplication::UnicodeUTF8));
+        groupBox_2->setTitle(QApplication::translate("MainWindow", "Gesti\303\263n de Empresas", 0, QApplication::UnicodeUTF8));
+        mui_crearbulmacont->setText(QApplication::translate("MainWindow", "Nueva Empresa de Contabilidad", 0, QApplication::UnicodeUTF8));
+        mui_crearbulmafact->setText(QApplication::translate("MainWindow", "Nueva Empresa de Facturaci\303\263n / TPV", 0, QApplication::UnicodeUTF8));
+        mui_adminempresas->setText(QApplication::translate("MainWindow", "Administrar Empresas Existentes", 0, QApplication::UnicodeUTF8));
+        eliminar_empresa->setText(QApplication::translate("MainWindow", "Eliminar Empresas Existentes", 0, QApplication::UnicodeUTF8));
+        mui_restbackup->setText(QApplication::translate("MainWindow", "Restaurar copia de seguridad", 0, QApplication::UnicodeUTF8));
+        mui_creabackup->setText(QApplication::translate("MainWindow", "Crear Copia de Seguridad", 0, QApplication::UnicodeUTF8));
+        mui_acerca->setText(QApplication::translate("MainWindow", "Acerca de BulmaSetup", 0, QApplication::UnicodeUTF8));
+        mui_salir->setText(QApplication::translate("MainWindow", "Salir", 0, QApplication::UnicodeUTF8));
+        Q_UNUSED(MainWindow);
+    } // retranslateUi
 
-import resources_rc
+};
+
+namespace Ui {
+    class MainWindow: public Ui_MainWindow {};
+} // namespace Ui
+
+QT_END_NAMESPACE
+
+#endif // UI_BULMASETUPBASE_H

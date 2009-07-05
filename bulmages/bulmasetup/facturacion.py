@@ -577,7 +577,7 @@ class Facturacion(Ui_ModificarFacturacionBase, Empresa):
           self.version = self.process1.readAllStandardOutput()         
          
       if (self.version != ''):
-        self.version = '0.11'
+        self.version = '0.12'
       return QString(self.version)
       
    def buscaPlugins1(self):
@@ -603,7 +603,7 @@ class Facturacion(Ui_ModificarFacturacionBase, Empresa):
         self.process.waitForFinished(-1)
          
          
-      self.revisiones = ["revf-0.5.9.sql","revf-0.9.1.sql", "revf-0.9.3.sql", "revf-0.10.sql", "revf-0.11.sql"]
+      self.revisiones = ["revf-0.5.9.sql","revf-0.9.1.sql", "revf-0.9.3.sql", "revf-0.10.sql", "revf-0.11.sql", "revf-0.12.sql"]
       #Parcheamos todo lo que hay que parchear
       for self.parche in self.revisiones:
         self.command = 'su postgres -c \"psql -t -f  ' + plugins.pathdbparches + self.parche + ' ' + self.database  + '\"'

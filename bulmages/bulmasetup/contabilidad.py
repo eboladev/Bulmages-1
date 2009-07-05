@@ -62,7 +62,7 @@ class Contabilidad(Ui_ModificarContabilidadBase, Empresa):
          self.j = self.j + 1
 
    def actualizarDatabase(self):
-      self.revisiones = ["rev-0.5.3.sql", "rev-0.9.1.sql", "rev-0.9.3.sql", "rev-0.10.sql", "rev-0.11.sql"]
+      self.revisiones = ["rev-0.5.3.sql", "rev-0.9.1.sql", "rev-0.9.3.sql", "rev-0.10.sql", "rev-0.11.sql", "rev-0.12.sql"]
       #Parcheamos todo lo que hay que parchear
       for self.parche in self.revisiones:
          self.command = 'su postgres -c \"psql -t -f ' + plugins.pathdbparches + self.parche + ' ' + self.database  + '\"'
@@ -106,7 +106,7 @@ class Contabilidad(Ui_ModificarContabilidadBase, Empresa):
          self.version = self.process1.readAllStandardOutput()
 
       if (self.version != ''):
-         self.version = '0.11'
+         self.version = '0.12'
       return QString(self.version)
    
    
