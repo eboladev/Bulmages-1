@@ -95,7 +95,7 @@ binary-arch: build install
 #	dh_installdocs debian/README.*Debian 
 	dh_installdocs 
 	dh_installexamples
-	dh_install --sourcedir=debian/tmp
+	dh_install --sourcedir=debian/tmp --list-missing
 
 #If the private modules are not in a default directory (like
 #/usr/share/$package or /usr/lib/$package) you should pass the directory
