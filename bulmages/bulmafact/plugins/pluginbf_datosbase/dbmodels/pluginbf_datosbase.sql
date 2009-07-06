@@ -99,7 +99,7 @@ BEGIN
 
 	SELECT INTO ds * FROM articulo;
 	IF NOT FOUND THEN
-	
+	    INSERT INTO articulo (codarticulo, nomarticulo, idtipo_iva, idfamilia) VALUES ('001', 'VARIOS', 1, 1);
 	END IF;
 	
 	SELECT INTO ds * FROM trabajador;
@@ -205,9 +205,9 @@ DECLARE
 BEGIN
 	SELECT INTO as * FROM configuracion WHERE nombre=''PluginBf_DatosBase'';
 	IF FOUND THEN
-		UPDATE CONFIGURACION SET valor=''0.11.1-001'' WHERE nombre=''PluginBf-DatosBase'';
+		UPDATE CONFIGURACION SET valor=''0.12.1-001'' WHERE nombre=''PluginBf-DatosBase'';
 	ELSE
-		INSERT INTO configuracion (nombre, valor) VALUES (''PluginBf_DatosBase'', ''0.11.1-001'');
+		INSERT INTO configuracion (nombre, valor) VALUES (''PluginBf_DatosBase'', ''0.12.1-001'');
 	END IF;
 	RETURN 0;
 END;
