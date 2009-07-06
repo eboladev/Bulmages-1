@@ -51,6 +51,8 @@ ComisionView::ComisionView ( BfCompany *comp, QWidget *parent )
         addDbField ( "idcomision", BlDbField::DbInt, BlDbField::DbPrimaryKey, _ ( "ID comision" ) );
         addDbField ( "fechaincomision", BlDbField::DbDate, BlDbField::DbNotNull, _ ( "Fecha Constitucion" ) );
         addDbField ( "fechafincomision", BlDbField::DbDate, BlDbField::DbNothing, _ ( "Fecha Cese" ) );
+        addDbField ( "nomcomision", BlDbField::DbVarChar, BlDbField::DbNothing, _ ( "Nombre" ) );
+        addDbField ( "comentcomision", BlDbField::DbVarChar, BlDbField::DbNothing, _ ( "Comentarios" ) );
 
         mui_list->setMainCompany( comp );
         mui_list->setDbTableName ( "miembrocomision" );

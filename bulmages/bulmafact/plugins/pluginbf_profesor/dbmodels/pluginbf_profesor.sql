@@ -400,7 +400,9 @@ BEGIN
         CREATE TABLE comision (
             idcomision SERIAL PRIMARY KEY,
             fechaincomision date DEFAULT now() NOT NULL,
-            fechafincomision date DEFAULT now() NOT NULL
+            fechafincomision date,
+	    nomcomision varchar NOT NULL,
+	    comentcomision VARCHAR 
         );
     END IF;
 

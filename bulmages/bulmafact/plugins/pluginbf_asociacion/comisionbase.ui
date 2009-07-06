@@ -194,27 +194,6 @@
          </widget>
         </item>
         <item>
-         <widget class="QToolButton" name="toolButton">
-          <property name="text">
-           <string>Convocar Reunion de JD</string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QPushButton" name="pushButton">
-          <property name="text">
-           <string>Convocar Asamblea</string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QPushButton" name="pushButton_2">
-          <property name="text">
-           <string>Emitir Comunicado</string>
-          </property>
-         </widget>
-        </item>
-        <item>
          <spacer>
           <property name="orientation">
            <enum>Qt::Horizontal</enum>
@@ -247,52 +226,54 @@
       <attribute name="title">
        <string>General</string>
       </attribute>
-      <widget class="QLabel" name="label_2">
-       <property name="geometry">
-        <rect>
-         <x>30</x>
-         <y>20</y>
-         <width>151</width>
-         <height>16</height>
-        </rect>
-       </property>
-       <property name="text">
-        <string>Fecha Constitucion</string>
-       </property>
-      </widget>
-      <widget class="QLabel" name="label_3">
-       <property name="geometry">
-        <rect>
-         <x>30</x>
-         <y>50</y>
-         <width>151</width>
-         <height>16</height>
-        </rect>
-       </property>
-       <property name="text">
-        <string>Fecha Cesion</string>
-       </property>
-      </widget>
-      <widget class="BlDateSearch" name="mui_fechainjdirectiva" native="true">
-       <property name="geometry">
-        <rect>
-         <x>160</x>
-         <y>20</y>
-         <width>113</width>
-         <height>25</height>
-        </rect>
-       </property>
-      </widget>
-      <widget class="BlDateSearch" name="mui_fechafinjdirectiva" native="true">
-       <property name="geometry">
-        <rect>
-         <x>160</x>
-         <y>50</y>
-         <width>113</width>
-         <height>25</height>
-        </rect>
-       </property>
-      </widget>
+      <layout class="QGridLayout" name="gridLayout">
+       <item row="0" column="0">
+        <widget class="QLabel" name="label_4">
+         <property name="text">
+          <string>Nombre Comision</string>
+         </property>
+         <property name="buddy">
+          <cstring>mui_nomcomision</cstring>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="1">
+        <widget class="QLineEdit" name="mui_nomcomision"/>
+       </item>
+       <item row="1" column="0">
+        <widget class="QLabel" name="label_2">
+         <property name="text">
+          <string>Fecha Constitucion</string>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="1">
+        <widget class="BlDateSearch" name="mui_fechaincomision" native="true"/>
+       </item>
+       <item row="2" column="0">
+        <widget class="QLabel" name="label_3">
+         <property name="text">
+          <string>Fecha Cesion</string>
+         </property>
+        </widget>
+       </item>
+       <item row="2" column="1">
+        <widget class="BlDateSearch" name="mui_fechafincomision" native="true"/>
+       </item>
+       <item row="3" column="1">
+        <spacer name="verticalSpacer">
+         <property name="orientation">
+          <enum>Qt::Vertical</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>20</width>
+           <height>203</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+      </layout>
      </widget>
      <widget class="QWidget" name="Tab1">
       <attribute name="title">
@@ -337,12 +318,12 @@
           <string>Comentarios:</string>
          </property>
          <property name="buddy">
-          <cstring>mui_comentcliente</cstring>
+          <cstring>mui_comentcomision</cstring>
          </property>
         </widget>
        </item>
        <item row="2" column="0" colspan="3">
-        <widget class="QTextEdit" name="mui_comentcliente">
+        <widget class="QTextEdit" name="mui_comentcomision">
          <property name="sizePolicy">
           <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
            <horstretch>0</horstretch>
@@ -355,16 +336,6 @@
         </widget>
        </item>
       </layout>
-     </widget>
-     <widget class="QWidget" name="tab">
-      <attribute name="title">
-       <string>Reuniones</string>
-      </attribute>
-     </widget>
-     <widget class="QWidget" name="tab_2">
-      <attribute name="title">
-       <string>Comunicados</string>
-      </attribute>
      </widget>
     </widget>
    </item>
