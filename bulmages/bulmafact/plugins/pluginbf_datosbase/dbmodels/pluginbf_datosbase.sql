@@ -123,7 +123,7 @@ BEGIN
 	    INSERT INTO serie_factura (codigoserie_factura, descserie_factura) VALUES ('REC', 'Rectificativa');
 	    INSERT INTO serie_factura (codigoserie_factura, descserie_factura) VALUES ('BBB', 'Facturación de Pruebas');
 	END IF;
-	
+
 	SELECT INTO ds * FROM pais;
 	IF NOT FOUND THEN
 	    INSERT INTO pais (descpais, cod2pais, cod3pais) VALUES ('España','es','esp');
@@ -183,7 +183,13 @@ BEGIN
 		INSERT INTO provincia (idpais, provincia) VALUES (bs.idpais, 'Zaragoza');
 	    END IF;
 	END IF;
+
 	
+	SELECT INTO ds * FROM cliente;
+	IF NOT FOUND THEN
+	    INSERT INTO cliente (nomcliente, cifcliente,idforma_pago, idprovincia) VALUES ('Cliente Contado','12345678Z',1,1);
+	END IF;
+
 	RETURN 0;
 END;
 $$   LANGUAGE plpgsql;
