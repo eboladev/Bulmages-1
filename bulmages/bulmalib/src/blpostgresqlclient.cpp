@@ -705,6 +705,14 @@ QString dolar6, QString dolar7, QString dolar8, QString dolar9, QString dolar10,
 QString dolar11, QString dolar12, QString dolar13, QString dolar14, QString dolar15,
 QString dolar16, QString dolar17, QString dolar18, QString dolar19, QString dolar20
  ) {
+    QString params[20] = { dolar1 , dolar2, dolar3, dolar4 , dolar5, 
+                           dolar6 , dolar7, dolar8, dolar9 , dolar10, 
+                           dolar11 , dolar12, dolar13, dolar14 , dolar15, 
+                           dolar16 , dolar17, dolar18, dolar19 , dolar20 };
+    return loadQuery(query,numParams(query),params,"",0,0); 
+}
+
+int BlPostgreSqlClient::numParams(QString query) {
     QRegExp rx("\\$(\\d+)");
     int numParams=0;
     int pos = 0;
@@ -717,11 +725,7 @@ QString dolar16, QString dolar17, QString dolar18, QString dolar19, QString dola
       }
       pos += rx.matchedLength();
     }
-    QString params[20] = { dolar1 , dolar2, dolar3, dolar4 , dolar5, 
-                           dolar6 , dolar7, dolar8, dolar9 , dolar10, 
-                           dolar11 , dolar12, dolar13, dolar14 , dolar15, 
-                           dolar16 , dolar17, dolar18, dolar19 , dolar20 };
-    return loadQuery(query,numParams,params,"",0,0); 
+  return numParams;
 }
 
 const size_t digitsInt = 1 + int ( ceil ( log10 ( 1.0 + INT_MAX ) ) );
@@ -779,8 +783,38 @@ BlDbRecordSet *BlPostgreSqlClient::loadQuery ( QString query, int numParams,
 /**
 \param Query
 **/
-int BlPostgreSqlClient::runQuery ( QString Query )
+int BlPostgreSqlClient::run ( QString query,  
+QString dolar1, QString dolar2, QString dolar3, QString dolar4, QString dolar5,
+QString dolar6, QString dolar7, QString dolar8, QString dolar9, QString dolar10,
+QString dolar11, QString dolar12, QString dolar13, QString dolar14, QString dolar15,
+QString dolar16, QString dolar17, QString dolar18, QString dolar19, QString dolar20 ) {
+   QString params[20] = { dolar1 , dolar2, dolar3, dolar4 , dolar5, 
+                            dolar6 , dolar7, dolar8, dolar9 , dolar10, 
+                            dolar11 , dolar12, dolar13, dolar14 , 
+                            dolar15, dolar16 , dolar17, dolar18, 
+                            dolar19 , dolar20 };
+
+   run(query, numParams(query), params); 
+}
+
+int BlPostgreSqlClient::run ( QString query,  int numParams, QString params[])
 {
+    const char *charValues[numParams];
+    for ( int i = 0; i < numParams ; i++ ) {
+        charValues[i] = params[i].toUtf8().constData();
+    };
+   run(query, numParams, charValues);
+
+}
+
+int 
+BlPostgreSqlClient::runQuery ( QString query ) {
+   return run(query, 0, (const char * const *) NULL);
+}
+
+int BlPostgreSqlClient::run ( QString Query,  int numParams, const char * const * params)
+{
+
     _depura ( "BlPostgreSqlClient::runQuery", 0, Query );
     PGresult *result = NULL;
     try {
@@ -788,7 +822,9 @@ int BlPostgreSqlClient::runQuery ( QString Query )
         if ( g_confpr->valor ( CONF_PRIVILEGIOS_USUARIO ) != "1" && ( Query.left ( 6 ) == "DELETE" || Query.left ( 6 ) == "UPDATE" || Query.left ( 6 ) == "INSERT" ) )
             throw 42501;
         /// Fi prova. Nota: 42501 = INSUFFICIENT PRIVILEGE en SQL Standard.
-        result = PQexec ( conn, ( const char * ) Query.toUtf8() );
+        result=PQexecParams(  conn, ( const char * ) Query.toUtf8()  , 
+                     numParams, NULL, params, NULL, NULL, 0);
+        
         if ( !result )
             throw - 1;
         if ( PQresultStatus ( result ) != PGRES_COMMAND_OK && PQresultStatus ( result ) != 2 )

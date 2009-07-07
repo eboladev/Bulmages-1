@@ -214,10 +214,29 @@ public:
                            QString dolar17=NULL, QString dolar18=NULL, 
                            QString dolar19=NULL, QString dolar20=NULL
    );
+    int run ( QString query, QString dolar1=NULL,  QString dolar2=NULL,
+                           QString dolar3=NULL, QString dolar4=NULL,  
+                           QString dolar5=NULL, QString dolar6=NULL, 
+                           QString dolar7=NULL, QString dolar8=NULL,  
+                           QString dolar9=NULL, QString dolar10=NULL, 
+                           QString dolar11=NULL, QString dolar12=NULL,  
+                           QString dolar13=NULL, QString dolar14=NULL, 
+                           QString dolar15=NULL, QString dolar16=NULL,  
+                           QString dolar17=NULL, QString dolar18=NULL, 
+                           QString dolar19=NULL, QString dolar20=NULL
+   );
 
-  
-    /// Ejecuta una sentencia de c&oacute;digo SQL en la base de datos.
-    int runQuery ( QString );
+     int run ( QString query,  int numParams, QString params[]);
+     int runQuery ( QString query ) ;
+
+     int run ( QString Query,  int numParams, const char * const * params);
+
+    // retorna el número de parámetris de una consulta SQL aproximado (
+    // no tiene en cuenta si el $n está dentro de una cadena literal o similar,
+    // solo busca subcadenas de la forma $1, $2, etc.)
+    int numParams(QString query) ;
+
+ 
     /// Busca en una cadena c&oacute;digo malicioso para SQL y lo elimina (previene el SQLInjection).
     static QString sanearCadena ( QString cadena );
     QString sanearCadenaUtf8 ( QString cadena );
