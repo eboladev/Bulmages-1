@@ -47,12 +47,12 @@ msgstr "Compte"
 
 #: pluginbc_caaslods.cpp:249
 msgid "Cuentas A. Abreviadas &Sin lucro (Nuevo)"
-msgstr ""
+msgstr "Comptes A. Abreujats &Sense lucre (Nou)"
 
 #: pluginbc_caaslods.cpp:232
 #, fuzzy
 msgid "Cuentas Anuales &Abreviadas PGC"
-msgstr "Comptes anuals"
+msgstr "Comptes Anuals $Abreujats PGC"
 
 #: pluginbc_caaslods.cpp:237
 #, fuzzy

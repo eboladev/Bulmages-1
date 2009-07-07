@@ -72,10 +72,10 @@ void DatosView::on_mui_aceptar_released() {
    QString fechaInicialAnterior = dbValue("fechainicialanterior");
    QString fechaFinalAnterior = dbValue("fechafinalanterior");
    
-//    std::cout << "fechaInicialActual = " << fechaInicialActual.toAscii().constData() << std::endl;
-//    std::cout << "fechaFinalActual = " << fechaFinalActual.toAscii().constData() << std::endl;
-//    std::cout << "fechaInicialAnterior = " << fechaInicialAnterior.toAscii().constData() << std::endl;
-//    std::cout << "fechaFinalAnterior = " << fechaFinalAnterior.toAscii().constData() << std::endl;
+   std::cout << "fechaInicialActual = " << fechaInicialActual.toAscii().constData() << std::endl;
+   std::cout << "fechaFinalActual = " << fechaFinalActual.toAscii().constData() << std::endl;
+   std::cout << "fechaInicialAnterior = " << fechaInicialAnterior.toAscii().constData() << std::endl;
+   std::cout << "fechaFinalAnterior = " << fechaFinalAnterior.toAscii().constData() << std::endl;
 
    if ( fechaInicialActual.isEmpty() ) {
         mensajeError ( _ ( "ERROR: Debe introducir una fecha inicial del balance actual." ) );

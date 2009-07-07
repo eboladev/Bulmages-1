@@ -2,11 +2,11 @@
 Plugins
 =======
 #README
-20080502
+20090706
 
 Nombre: Balance Jerárquico.
 
-Biblioteca: libpluginbalancetree.so
+Biblioteca: libpluginbc_balancearbol.so
 
 Descripción: <H1>Balance Jerarquico</H1>
 <P>Permite hacer un balance jerárquico.</P>
