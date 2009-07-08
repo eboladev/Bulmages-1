@@ -40,129 +40,23 @@ BcCompany *g_comp = NULL;
 ///
 /**
 **/
+
 pluginBC_caaslODS::pluginBC_caaslODS()
 {
     _depura ( "pluginBC_caaslODS::pluginBC_caaslODS", 0 );
     _depura ( "END pluginBC_caaslODS::pluginBC_caaslODS", 0 );
 }
 
+
 ///
 /**
 **/
+
 pluginBC_caaslODS::~pluginBC_caaslODS()
 {
     _depura ( "pluginBC_caaslODS::~pluginBC_caaslODS", 0 );
     _depura ( "END pluginBC_caaslODS::~pluginBC_caaslODS", 0 );
 }
-
-/*
-OK, aqui poden haver passat 3 coses.
-1.- Petada de la base de dades perque el SQL es erroni o s'ha perdut la conexio.
- Aleshores el punter al cursor valdra NULL.
-    El tractament d'aquesta excepcio se pot fer de dues formes:
-
-    a) comproves que el cursor es distint de NULL abans de seguir.
- if (cur != NULL)
-
- b) Fas tractament de excepcions generalitzat.
-     try {
-         } catch (...) {
-     // Si hi ha hagut el error estare en aquest punt i puc donar el missatge
-        // de error i esborrar les variables que ja no faci servir.
-        // Per exemple d'aquesta forma:
-           mensajeInfo("Error con la base de datos");
-           if (cur) delete cur;
-        }
-
-
- 2.- El query ha anat be pero no hi ha resultats.
-     Aquesta no es una excepcio. Normalment pot passar i ha de esser contemplat.
-        Imagina que per exemple amb un query buid intentem accedir a una dada del
-  registre.
-
-  valor = cur->valor("idcuenta");
-
-        Això petaria perque es un acces ilegal a una casella que no existeix.
-
-         Per aixo normalment sempre despres de fer un loadQuery solem fer:
-         if (! cur->eof()) {
-         }
-
-         o si el que volem es recorrer el query ho feim d'aquesta altre forma
-
-         while (!cur->eof()) {
-           cur->nextRecord();
-         }
-
-        Nota que pot esser normal obtenir un resultat buid, pero en canvi no sol
-  esser gens normal el tenir un error de execucio (nomes quan ho estas
-  programant).
-
-
- 3.- El query ha anat be i hi ha resultats. Aqui no tens problemes,
-
-*/
-
-
-///
-/**
-\param cuenta
-\return
-**/
-// BlFixed pluginBC_caaslODS::saldoCuenta ( int cuenta )
-// {
-//     _depura ( "pluginBC_caaslODS::saldoCuenta", 0 );
-//
-//     /// Ejercicio actual.
-//     BlDbRecordSet *cur;
-//     BlFixed resultado;
-//
-// //     QString query = QString( "SELECT (SUM(apunte.debe) - SUM(apunte.haber)) AS saldo FROM cuenta LEFT JOIN apunte ON apunte.idcuenta = cuenta.idcuenta WHERE cuenta.codigo like '" + QString::number ( cuenta ) + "%' AND fecha >= '01/01/" + ejercicioActual_fechaBalance.right(4) + "' AND fecha <= '" + ejercicioActual_fechaBalance +"' and apunte.conceptocontable not ilike '%%asiento%%cierre%%' and apunte.conceptocontable not ilike '%%asiento%%regularizaci%%'" );
-//
-//     QString query = QString( "SELECT saldototal FROM (SELECT SUBSTR(codigo, 1, 3) AS cod, SUM(saldo) as saldototal FROM cuenta LEFT JOIN (SELECT idcuenta, (SUM(debe) - SUM(haber) ) AS saldo FROM apunte WHERE fecha >= '01/01/" + ejercicioActual_fechaBalance.right(4) + "' AND fecha <= '" + ejercicioActual_fechaBalance + "' AND conceptocontable ~* '.*asiento.*(cierre|regularizaci).*' GROUP BY idcuenta) AS saldo ON saldo.idcuenta=cuenta.idcuenta GROUP BY cod ORDER BY cod) AS saldo_ctas WHERE cod=" + QString::number ( cuenta ) );
-//
-//     dbConnection->begin();
-//     cur = dbConnection->loadQuery ( query );
-//     dbConnection->commit();
-//     if (cur != NULL)
-//  resultado = cur->valor ( "saldototal" );
-//     else
-//  mensajeInfo(_("Error con la base de datos"));
-//
-//     _depura ( "END pluginBC_caaslODS::saldoCuenta", 0 );
-//     return resultado;
-// }
-
-
-
-///
-/**
-\param cuenta
-\return
-**/
-// BlFixed pluginBC_caaslODS::saldoCuentaAnt ( int cuenta )
-// {
-//     _depura ( "pluginBC_caaslODS::saldoCuentaAnt", 0 );
-//
-//     /// Ejercicio anterior.
-//     BlDbRecordSet *cur;
-//     BlFixed resultado;
-//
-// //     QString query = QString( "SELECT (SUM(apunte.debe) - SUM(apunte.haber)) AS saldo FROM cuenta LEFT JOIN apunte ON apunte.idcuenta = cuenta.idcuenta WHERE cuenta.codigo like '" + QString::number ( cuenta ) + "%' AND fecha >= '01/01/" + ejercicioAnterior_fechaBalance.right(4) + "' AND fecha <= '" + ejercicioAnterior_fechaBalance +"' and apunte.conceptocontable not ilike '%%asiento%%cierre%%' and apunte.conceptocontable not ilike '%%asiento%%regularizaci%%'" );
-//
-//     QString query = QString( "SELECT saldototal FROM (SELECT SUBSTR(codigo, 1, 3) AS cod, SUM(saldo) as saldototal FROM cuenta LEFT JOIN (SELECT idcuenta, (SUM(debe) - SUM(haber) ) AS saldo FROM apunte WHERE fecha >= '01/01/" + ejercicioAnterior_fechaBalance.right(4) + "' AND fecha <= '" + ejercicioAnterior_fechaBalance + "' AND conceptocontable ~* '.*asiento.*(cierre|apertura|regularizaci).*' GROUP BY idcuenta) AS saldo ON saldo.idcuenta=cuenta.idcuenta GROUP BY cod ORDER BY cod) AS saldo_ctas WHERE cod=" + QString::number ( cuenta ) );
-//
-//     dbConnection->begin();
-//     cur = dbConnection->loadQuery ( query );
-//     dbConnection->commit();
-//     if (cur != NULL)
-//  resultado = cur->valor ( "saldototal" );
-//     else
-//  mensajeInfo(_("Error con la base de datos"));
-//
-//     _depura ( "END pluginBC_caaslODS::saldoCuentaAnt", 0 );
-//     return resultado;
-// }
 
 
 
@@ -178,10 +72,13 @@ OK, aqui poden haver passat 3 coses.
 /**
 \param bcont
 **/
+
+
 void pluginBC_caaslODS::inicializa ( BcBulmaCont *bcont )
 {
     _depura ( "pluginBC_caaslODS::inicializa", 0 );
 
+/*
     /// Creamos el men&uacute;.
     QMenu *pPluginMenu = new QMenu ( _ ( "&Cuentas Anuales" ) );
 
@@ -209,7 +106,6 @@ void pluginBC_caaslODS::inicializa ( BcBulmaCont *bcont )
     connect ( accion6, SIGNAL ( activated() ), this, SLOT ( balsitCASFAC08() ) );
 
 
-    /**********************************************/
 
     QAction *accion2 = new QAction ( _ ( "&Cuentas Anuales PGC" ), 0 );
     accion2->setStatusTip ( _ ( "Cuentas Anuales Plan General Contable hasta 2007" ) );
@@ -239,127 +135,12 @@ void pluginBC_caaslODS::inicializa ( BcBulmaCont *bcont )
 
     empresaact = bcont->empresaactual();
     dbConnection = empresaact->bdempresa();
-
+*/
     _depura ( "END pluginBC_caaslODS::inicializa", 0 );
 }
 
 
-///
-/**
-\param bcont
-**/
-int entryPoint ( BcBulmaCont *bcont )
-{
-    _depura ( "Estoy dentro del plugin\n", 0 );
-
-    g_comp = bcont->empresaactual();
-
-    /// Inicializa el sistema de traducciones 'gettext'.
-    setlocale ( LC_ALL, "" );
-    bindtextdomain ( "pluginbc_caaslods", g_confpr->valor ( CONF_DIR_TRADUCCION ).toAscii().constData() );
-
-    pluginBC_caaslODS *plug = new pluginBC_caaslODS();
-    plug->inicializa ( bcont );
-    /// S&Oacute;LO A MODO DE EJEMPLO: se modifica el t&iacute;tulo de la ventana principal
-    /// del programa para indicar que el plugin se ha cargado.
-    return 0;
-}
-
-
-// CAnuales CAAASL, CAPGC07, CAPYMES08, CAPGC08, CAAPGC08}
-//Cuentas Anuales Abreviadas Asociacion Sin Lucro CAAASL
-//Cuentas Anuales Plan General Contable hasta 2007 CAPGC07
-//Cuentas Anuales PYMES 2008 CAPYMES08
-//Cuentas Anuales Plan General Contable 2008 CAPGC08
-//Cuentas Anuales Abreviadas Plan General Contable 2008 CAAPGC08
-//Comptes Anuals Simplificat Fundacions Associacions Catalanes 2008 CASFAC08
-  
-
-void pluginBC_caaslODS::balsitCAAASL ()
-{
-   mensajeAdvertenciaPGC ((CAnuales)CAAASL);
-	formDatosBalance("inf_caaasl.pys");
-}
-
-void pluginBC_caaslODS::balsitCAPGC07 ()
-{
-   mensajeAdvertenciaPGC ( (CAnuales)CAPGC07);
-   formDatosBalance("inf_capgc07.pys");
-}
-
-void pluginBC_caaslODS::balsitCAPYMES08 ()
-{
-   mensajeAdvertenciaPGC ( (CAnuales)CAPYMES08);
-   formDatosBalance("inf_capymes08.pys");
-}
-
-void pluginBC_caaslODS::balsitCAPGC08()
-{
-   mensajeAdvertenciaPGC ( (CAnuales)CAPGC08 );
-   formDatosBalance("inf_capgc08.pys");
-}
-
-void pluginBC_caaslODS::balsitCAAPGC08()
-{
-   mensajeAdvertenciaPGC ( (CAnuales)CAAPGC08 );
-   formDatosBalance("inf_caapgc08.pys");
-}
-
-void pluginBC_caaslODS::balsitCASFAC08()
-{
-   mensajeAdvertenciaPGC ( (CAnuales)CASFAC08 );
-   formDatosBalance("inf_casfac08.pys");
-}
-
-
-void pluginBC_caaslODS::mensajeAdvertenciaPGC ( CAnuales tipus )
-{
-//Cuentas Anuales Abreviadas Asociacion Sin Lucro CAAASL
-//Cuentas Anuales Plan General Contable hasta 2007 CAPGC07
-//Cuentas Anuales PYMES 2008 CAPYMES08
-//Cuentas Anuales Plan General Contable 2008 CAPGC08
-//Cuentas Anuales Abreviadas Plan General Contable 2008 CAAPGC08
-
-    QString pgc;
-
-    switch ( tipus ) {
-    case CAAASL:
-        pgc = _ ( "Cuentas Anuales Abreviadas para Asociacion Sin Lucro. " );
-        break;
-
-    case CAPGC07:
-        pgc = _ ( "Cuentas Anuales del Plan General Contable hasta 2007. " );
-        break;
-
-    case CAPYMES08:
-        pgc = _ ( "Cuentas Anuales para PYMES 2008. " ) ;
-        break;
-
-    case CAAPGC08:
-        pgc = _ ( "Cuentas Anuales Abreviadas del Plan General Contable 2008. " );
-        break;
-
-    case CAPGC08:
-        pgc = _ ( "Cuentas Anuales del Plan General Contable 2008. " );
-        break;
-
-    case CASFAC08:
-        pgc = _ ( "Comptes Anuales simplificats fundacions i associacions catalanes 2008. " );
-        break;
-               
-    default:
-        mensajeError ( _ ( "ERROR: Funcion no implementada todavia." ) );
-        break;
-    }
-
-    mensajeAviso ( _ ( "Advertencia: ha escojido las " ) + pgc + _ ( "El resultado solo sera correcto si coincide con el plan contable de su empresa." ) );
-}
-
-///
-/**
-\return
-**/
-void pluginBC_caaslODS::formDatosBalance ( QString informe )
+void pluginBC_caaslODS::formDatosBalance ( )
 {
       _depura ( "pluginBC_caaslODS::formDatosBalance", 0 );
 
@@ -370,7 +151,7 @@ void pluginBC_caaslODS::formDatosBalance ( QString informe )
 
       DatosView *pidefechas = new DatosView ( g_comp, diag, 0, BL_SELECT_MODE );
 
-      pidefechas->m_informe = informe;
+      pidefechas->m_informe = sender()->objectName();
 
       /// Creamos un layout donde estara el contenido de la ventana y la ajustamos al QDialog
       /// para que sea redimensionable y aparezca el titulo de la ventana.
@@ -392,5 +173,145 @@ void pluginBC_caaslODS::formDatosBalance ( QString informe )
       delete diag;
 
       _depura ( "END pluginBC_caaslODS::formDatosBalance", 0 );
+}
+
+
+
+///
+/**
+\param bcont
+**/
+int entryPoint ( BcBulmaCont *bcont )
+{
+    _depura ( "Estoy dentro del plugin\n", 0 );
+
+    g_comp = bcont->empresaactual();
+
+    /// Inicializa el sistema de traducciones 'gettext'.
+    setlocale ( LC_ALL, "" );
+    bindtextdomain ( "pluginbc_caaslods", g_confpr->valor ( CONF_DIR_TRADUCCION ).toAscii().constData() );
+
+    pluginBC_caaslODS *plug = new pluginBC_caaslODS();
+    plug->inicializa ( bcont );
+
+    /// S&Oacute;LO A MODO DE EJEMPLO: se modifica el t&iacute;tulo de la ventana principal
+    /// del programa para indicar que el plugin se ha cargado.
+
+// =========================================================
+
+
+    QMenu *pPluginMenu = NULL;
+    QMenu *pPluginVer = NULL;
+    if ( !pPluginMenu ) {
+        pPluginVer = bcont->menuBar()->findChild<QMenu *> ( "menuVentana" );
+    } // end if
+
+    /// Buscamos ficheros que tengan el nombre de la tabla
+    QDir dir ( g_confpr->valor ( CONF_DIR_OPENREPORTS ) );
+    dir.setFilter ( QDir::Files | QDir::NoSymLinks );
+    dir.setSorting ( QDir::Size | QDir::Reversed );
+    /// Hacemos un filtrado de busqueda
+    QStringList filters;
+    filters << "inf_ca*.pys";
+    dir.setNameFilters ( filters );
+
+    QFileInfoList list = dir.entryInfoList();
+
+    for ( int i = 0; i < list.size(); ++i ) {
+        QFileInfo fileInfo = list.at ( i );
+
+        QFile file;
+        file.setFileName ( g_confpr->valor ( CONF_DIR_OPENREPORTS ) + fileInfo.fileName() );
+        file.open ( QIODevice::ReadOnly );
+        QTextStream stream ( &file );
+        QString buff = stream.readAll();
+        file.close();
+
+        /// Buscamos el titulo
+        QString titulo = fileInfo.fileName();
+        QRegExp rx3 ( "title\\s*=\\s*\"(.*)\"" );
+        rx3.setMinimal ( TRUE );
+        if ( rx3.indexIn ( buff, 0 )  != -1 ) {
+            titulo = rx3.cap ( 1 );
+        } // end while
+
+        QString pathtitulo = fileInfo.fileName();
+        QRegExp rx1 ( "pathtitle\\s*=\\s*\"(.*)\"" );
+        rx1.setMinimal ( TRUE );
+        if ( rx1.indexIn ( buff, 0 )  != -1 ) {
+            pathtitulo = rx1.cap ( 1 );
+        } // end while
+
+
+	QMenuBar *menubar =bcont->menuBar();
+	QMenu *menu = NULL;
+	QStringList path = pathtitulo.split("\\");
+
+
+	if (path.size() > 1) {
+		    // QMenu *pPluginVer = bcont->menuBar()->findChild<QMenu *> ( "menuVentana" );
+		    QList<QMenu *> allPButtons = menubar->findChildren<QMenu *>();
+		    bool encontrado = FALSE;
+		    for (int j = 0; j < allPButtons.size(); ++j) {
+			if (allPButtons.at(j)->title() == path[0]) {
+			    encontrado = TRUE;
+			    menu = allPButtons.at(j);
+			} // end if
+		    } // end for
+
+		    if (!encontrado) {
+			QMenu *pPluginMenu1 = new QMenu (  path[0] , menubar );
+	//		pPluginMenu->setObjectName ( QString::fromUtf8 ( "menuCuentasAnualesODS" ) );
+			menubar->insertMenu ( pPluginVer->menuAction(), pPluginMenu1 );
+			menu = pPluginMenu1;
+		    } // end if
+	} else {
+
+		    if (!pPluginMenu) {
+			    pPluginMenu = new QMenu ( _ ( "Cuentas Anuales &ODS" ), bcont->menuBar() );
+			    pPluginMenu->setObjectName ( QString::fromUtf8 ( "menuCuentasAnualesODS" ) );
+			    bcont->menuBar()->insertMenu ( pPluginVer->menuAction(), pPluginMenu );
+		    } // end if
+		    menu = pPluginMenu;
+	} // end if
+	
+
+
+	for (int i = 1; i < path.size()-1; ++i) {
+	    QList<QMenu *> allPButtons = menu->findChildren<QMenu *>();
+	    bool encontrado = FALSE;
+	    for (int j = 0; j < allPButtons.size(); ++j) {
+		if (allPButtons.at(j)->title() == path[i]) {
+		    encontrado = TRUE;
+		    menu = allPButtons.at(j);
+		} // end if
+	    } // end for
+
+	    if (!encontrado) {
+		QMenu *pPluginMenu1 = new QMenu ( path[i] , menu );
+		menu->addMenu (  pPluginMenu1 );
+		menu = pPluginMenu1;
+	    } // end if
+
+	} // end for
+
+        /// Creamos el men&uacute;.
+        QAction *accion = new QAction ( path[path.size()-1], 0 );
+        accion->setObjectName ( fileInfo.fileName() );
+        accion->setStatusTip ( titulo);
+        accion->setWhatsThis ( titulo );
+        bcont->connect ( accion, SIGNAL ( activated() ), plug, SLOT ( formDatosBalance() ) );
+        menu->addAction ( accion );
+    } // end for
+
+
+
+
+
+
+
+// ==========================================================
+
+    return 0;
 }
 

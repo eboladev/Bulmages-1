@@ -47,40 +47,24 @@ extern "C" MY_EXPORT int entryPoint ( BcBulmaCont * );
 //Cuentas Anuales PYMES 2008 CAPYMES08
 //Cuentas Anuales Plan General Contable 2008 CAPGC08
 //Cuentas Anuales Abreviadas Plan General Contable 2008 CAAPGC08
+
+
+/*
 enum CAnuales {CAAASL, CAPGC07, CAPYMES08, CAPGC08, CAAPGC08, CASFAC08};
 
-
+*/
 class pluginBC_caaslODS : public QObject
 {
     Q_OBJECT
-
-private:
-    BlFixed saldoCuenta ( int cuenta );
-    BlFixed saldoCuentaAnt ( int cuenta );
-    QString ejercicioActual_fechaBalance;
-    QString ejercicioAnterior_fechaBalance;
-    BlFixed cuentaPositiva ( BlFixed valor );
-    BlFixed cuentaNegativa ( BlFixed valor );
-    void mensajeAdvertenciaPGC ( CAnuales tipus );
-
-
-public:
-    BcCompany *empresaact;
-    BlPostgreSqlClient *dbConnection;
 
 public:
     pluginBC_caaslODS();
     ~pluginBC_caaslODS();
     void inicializa ( BcBulmaCont * );
-    void formDatosBalance ( QString );
 
 public slots:
-    void balsitCAAASL ();
-    void balsitCAPGC07 ();
-    void balsitCAPYMES08 ();
-    void balsitCAPGC08();
-    void balsitCAAPGC08();
-    void balsitCASFAC08();
+    void formDatosBalance ();
 };
+
 
 #endif
