@@ -1,6 +1,7 @@
 #!/usr/bin/python
 # -*- coding: utf8 -*-
 
+# pathtitle="&Ventas\Informes\Tallas y Colores\Ventas por talla y color"
 # title="Ventas por talla y color"
 <!--IFACE SRC="[CONF_DIR_OPENREPORTS]inf_ventas.ui"-->
 <!--PARAM NAME="fecha_inicial" TYPE="date"-->

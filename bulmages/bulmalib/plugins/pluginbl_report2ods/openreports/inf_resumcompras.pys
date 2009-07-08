@@ -1,6 +1,7 @@
 #!/usr/bin/python
 # -*- coding: utf8 -*-
 
+# pathtitle="&Compras\Informes\Resumen de Compras"
 # title="Resumen Compras"
 #<!--IFACE SRC="[CONF_DIR_OPENREPORTS]inf_ventas.ui"-->
 #<!--PARAM NAME="fecha_inicial" TYPE="date"-->

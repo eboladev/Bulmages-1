@@ -79,27 +79,25 @@ void MyPluginInformes::elslot1( )
 
 int entryPoint ( QMainWindow *bges )
 {
-    _depura ( "Entrada del plugin Docket", 0 );
+    g_bges = bges;
+    return 0;
+}
+
+
+int init (  )
+{
+    _depura ( "Entrada del plugin ", 0 );
 
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale ( LC_ALL, "" );
     bindtextdomain ( "pluginbl_report", g_confpr->valor ( CONF_DIR_TRADUCCION ).toAscii().constData() );
 
-    g_bges = bges;
-
     MyPluginInformes *mcont = new MyPluginInformes;
 
     QMenu *pPluginMenu = NULL;
     /// Miramos si existe un menu Informes
-    pPluginMenu = bges->menuBar() ->findChild<QMenu *> ( "menuInformes" );
-
-    /// Creamos el men&uacute;.
-    if ( !pPluginMenu ) {
-        QMenu *pPluginVer = bges->menuBar()->findChild<QMenu *> ( "menuVentana" );
-        pPluginMenu = new QMenu ( _ ( "&Informes" ), bges->menuBar() );
-        pPluginMenu->setObjectName ( QString::fromUtf8 ( "menuInformes" ) );
-        bges->menuBar()->insertMenu ( pPluginVer->menuAction(), pPluginMenu );
-    } // end if
+    pPluginMenu = g_bges->menuBar()->findChild<QMenu *> ( "menuInformes" );
+    QMenu *pPluginVer = g_bges->menuBar()->findChild<QMenu *> ( "menuVentana" );
 
     /// Buscamos ficheros que tengan el nombre de la tabla
     QDir dir ( g_confpr->valor ( CONF_DIR_OPENREPORTS ) );
@@ -112,6 +110,7 @@ int entryPoint ( QMainWindow *bges )
 
 
     QFileInfoList list = dir.entryInfoList();
+
     for ( int i = 0; i < list.size(); ++i ) {
         QFileInfo fileInfo = list.at ( i );
 
@@ -122,24 +121,84 @@ int entryPoint ( QMainWindow *bges )
         QString buff = stream.readAll();
         file.close();
 
-        /// Buscamos Query's por tratar
+        /// Buscamos el titulo
         QString titulo = fileInfo.fileName();
-        QRegExp rx1 ( "title\\s*=\\s*\"(.*)\"" );
-        rx1.setMinimal ( TRUE );
-        if ( rx1.indexIn ( buff, 0 )  != -1 ) {
-            titulo = rx1.cap ( 1 );
+        QRegExp rx3 ( "title\\s*=\\s*\"(.*)\"" );
+        rx3.setMinimal ( TRUE );
+        if ( rx3.indexIn ( buff, 0 )  != -1 ) {
+            titulo = rx3.cap ( 1 );
         } // end while
 
+        QString pathtitulo = fileInfo.fileName();
+        QRegExp rx1 ( "pathtitle\\s*=\\s*\"(.*)\"" );
+        rx1.setMinimal ( TRUE );
+        if ( rx1.indexIn ( buff, 0 )  != -1 ) {
+            pathtitulo = rx1.cap ( 1 );
+        } else {
+	    pathtitulo = titulo;
+	} // end while
+
+
+	QMenuBar *menubar =g_bges->menuBar();
+	QMenu *menu = NULL;
+	QStringList path = pathtitulo.split("\\");
+
+
+	if (path.size() > 1) {
+		    QList<QMenu *> allPButtons = menubar->findChildren<QMenu *>();
+		    bool encontrado = FALSE;
+		    for (int j = 0; j < allPButtons.size(); ++j) {
+			if (allPButtons.at(j)->title() == path[0]) {
+			    encontrado = TRUE;
+			    menu = allPButtons.at(j);
+			} // end if
+		    } // end for
+
+		    if (!encontrado) {
+			QMenu *pPluginMenu1 = new QMenu (  path[0] , menubar );
+			menubar->insertMenu ( pPluginVer->menuAction(), pPluginMenu1 );
+			menu = pPluginMenu1;
+		    } // end if
+	} else {
+
+		    if (!pPluginMenu) {
+			    pPluginMenu = new QMenu ( _ ( "Informes" ), g_bges->menuBar() );
+			    pPluginMenu->setObjectName ( QString::fromUtf8 ( "menuInformes" ) );
+			    g_bges->menuBar()->insertMenu ( pPluginVer->menuAction(), pPluginMenu );
+		    } // end if
+		    menu = pPluginMenu;
+	} // end if
+	
+
+
+	for (int i = 1; i < path.size()-1; ++i) {
+	    QList<QMenu *> allPButtons = menu->findChildren<QMenu *>();
+	    bool encontrado = FALSE;
+	    for (int j = 0; j < allPButtons.size(); ++j) {
+		if (allPButtons.at(j)->title() == path[i]) {
+		    encontrado = TRUE;
+		    menu = allPButtons.at(j);
+		} // end if
+	    } // end for
+
+	    if (!encontrado) {
+		QMenu *pPluginMenu1 = new QMenu ( path[i] , menu );
+		menu->addMenu (  pPluginMenu1 );
+		menu = pPluginMenu1;
+	    } // end if
+
+	} // end for
 
         /// Creamos el men&uacute;.
-        QAction *accion = new QAction ( titulo, 0 );
+        QAction *accion = new QAction ( path[path.size()-1], 0 );
         accion->setObjectName ( fileInfo.fileName() );
-        accion->setStatusTip ( _ ( "Informe" ) );
-        accion->setWhatsThis ( _ ( "Informe" ) );
+        accion->setStatusTip ( titulo);
+        accion->setWhatsThis ( titulo );
         mcont->connect ( accion, SIGNAL ( activated() ), mcont, SLOT ( elslot1() ) );
-        pPluginMenu->addAction ( accion );
+        menu->addAction ( accion );
     } // end for
-    _depura ( "Iniciado correctamente el plugin dock", 10 );
+
+    _depura ( "Iniciado correctamente el plugin", 10 );
     return 0;
 }
 
@@ -147,6 +206,7 @@ int entryPoint ( QMainWindow *bges )
 int BfCompany_createMainWindows_Post ( BfCompany *cmp )
 {
     g_emp = cmp;
+    init();
     return 0;
 }
 
@@ -154,6 +214,6 @@ int BfCompany_createMainWindows_Post ( BfCompany *cmp )
 int BcCompany_createMainWindows_Post ( BcCompany *cmp )
 {
     g_emp = cmp;
+    init();
     return 0;
 }
-

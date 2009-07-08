@@ -1,6 +1,7 @@
 #!/usr/bin/python
 # -*- coding: utf8 -*-
 
+# pathtitle="&Ventas\Informes\Detalle de ventas por cliente"
 # title="Detalle de ventas por cliente"
 
 import ooolib

@@ -1,6 +1,7 @@
 #!/usr/bin/python
 # -*- coding: utf8 -*-
 
+# pathtitle="&Compras\Informes\Listado de Clientes"
 # title="Clientes"
 
 import ooolib

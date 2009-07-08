@@ -27,6 +27,6 @@ Incompatibles:
 
 Categorias: Utilidades genericas;
 
-Orden: 70
+Orden: 950
 
 Comentarios: Util para realizar informes de forma rápida sin tener que modificar el codigo fuente ni hacer un plugin específico para cada uno de ellos.
