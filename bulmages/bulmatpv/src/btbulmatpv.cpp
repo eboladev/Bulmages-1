@@ -39,7 +39,6 @@
 #include "blperiodicitycombobox.h"
 #include "blmainwindow.h"
 
-
 /** Prepara la pantalla principal para que tenga todos los componentes.
     Crea el workspace y lo inicializa.
     Crea la instancia de company y la inicializa y almacena esta en el puntero m_company.
@@ -51,6 +50,7 @@
 BtBulmaTPV::BtBulmaTPV ( QString bd ) : BlMainWindow()
 {
     _depura ( "BtBulmaTPV::BtBulmaTPV", 0 );
+    
     setupUi ( this );
     setUpdatesEnabled ( TRUE );
     pWorkspace = new BlWorkspace ( this );
@@ -70,18 +70,15 @@ BtBulmaTPV::BtBulmaTPV ( QString bd ) : BlMainWindow()
     vboxlayout->addWidget ( pWorkspace );
     vboxlayout->addWidget ( m_pb );
 
-
     m_empresaTPV = new BtCompany ( this );
     m_empresaTPV->setProgressBar ( m_pb );
     m_empresaTPV->init ( bd, "BulmaFact" );
     m_empresaTPV->setWorkspace ( pWorkspace );
 
-
     setCorner ( Qt::TopLeftCorner, Qt::TopDockWidgetArea );
     setCorner ( Qt::TopRightCorner, Qt::RightDockWidgetArea );
     setCorner ( Qt::BottomLeftCorner, Qt::LeftDockWidgetArea );
     setCorner ( Qt::BottomRightCorner, Qt::RightDockWidgetArea );
-
 
 // ============== OJO El listventanas no se utiliza pero lo pongo para poder usar componentes de bulmafact.
     /// Aqui creamos la ventana dock para meter las distintas ventanas.
@@ -95,9 +92,9 @@ BtBulmaTPV::BtBulmaTPV ( QString bd ) : BlMainWindow()
     m_pb->setVisible ( FALSE );
     statusBar() ->showMessage ( bd, 2000 );
     setWindowTitle ( bd );
+    
     _depura ( "END BtBulmaTPV::BtBulmaTPV", 0 );
 }
-
 
 /** Hacemos la creacion de las ventanas principales para que enten en plugins
 */
@@ -110,7 +107,6 @@ void BtBulmaTPV::createMainWindows ( BlSplashScreen *splashScr )
     m_empresaTPV->createMainWindows ( splashScr );
     _depura ( "END BtBulmaTPV::createMainWindows", 0 );
 }
-
 
 /** Libera memoria destruyendo todos los objetos creados.
 */
@@ -130,8 +126,6 @@ BtBulmaTPV::~BtBulmaTPV()
     _depura ( "END BtBulmaTPV::~BtBulmaTPV", 0 );
 }
 
-
-
 /** Intercambia entre el modo ventana completa y el modo ventana normal
 */
 /**
@@ -139,14 +133,15 @@ BtBulmaTPV::~BtBulmaTPV()
 void BtBulmaTPV::s_ventanaCompleta()
 {
     _depura ( "BtBulmaTPV::s_ventanaCompleta", 0 );
+    
     if ( isFullScreen() ) {
         showNormal();
     } else {
         showFullScreen();
     } // end if
+    
     _depura ( "END BtBulmaTPV::s_ventanaCompleta", 0 );
 }
-
 
 /** Metodo que responde a la pulsacion de About en el menu.
     Inicializa la ventana de About y la muestra.
@@ -156,11 +151,12 @@ void BtBulmaTPV::s_ventanaCompleta()
 void BtBulmaTPV::s_About()
 {
     _depura ( "BtBulmaTPV::s_About", 0 );
+    
     AboutView about;
     about.exec();
+    
     _depura ( "END BtBulmaTPV::s_About", 0 );
 }
-
 
 /** Evento de cerrar la ventana principal.
     Libera parte de la memoria reservada. Ya que sabemos que se va a cerrar el programa.
@@ -180,7 +176,6 @@ void BtBulmaTPV::closeEvent ( QCloseEvent * )
     _depura ( "END BtBulmaTPV::closeEvent", 0 );
 }
 
-
 ///
 /**
 \return
@@ -192,10 +187,11 @@ BlWorkspace * BtBulmaTPV::workspace()
     return pWorkspace;
 }
 
-
 void BtBulmaTPV::keyReleaseEvent ( QKeyEvent * e )
 {
+    _depura ( "BtBulmaTPV::keyReleaseEvent", 0 );
     m_empresaTPV->keyPressEvent ( e );
+    _depura ( "END BtBulmaTPV::keyReleaseEvent", 0 );
 }
 
 BtCompany *BtBulmaTPV::empresaTPV()

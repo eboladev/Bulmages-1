@@ -66,6 +66,7 @@ public:
     BtTicket *ticketActual();
     QList<BtTicket *> *listaTickets();
     void setTicketActual ( BtTicket *tick );
+    void compruebaUltimaZ();
 
 };
 
