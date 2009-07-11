@@ -209,6 +209,7 @@ int ArticuloListSubForm_ArticuloListSubForm_Post ( ArticuloListSubForm *artl )
     artl->addSubFormHeader ( "preciocostearticulo", BlDbField::DbNumeric, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, artl->tr ( "P Coste" ) );
     artl->addSubFormHeader ( "margenarticulo", BlDbField::DbNumeric, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, artl->tr ( "Margen" ) );
     artl->addSubFormHeader ( "actualizarmargenarticulo", BlDbField::DbBoolean, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, artl->tr ( "Actualizar Margen" ) );
+    return 0;
 }
 
 

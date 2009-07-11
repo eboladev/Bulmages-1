@@ -191,6 +191,7 @@ int AlumnoView::guardarPost()
     } // end if
 
     _depura ( "END AlumnoView::guardarPost", 0 );
+    return 0;
 }
 
 int AlumnoView::borrarPre()

@@ -158,6 +158,7 @@ int ConvReunionView::guardarPost()
     mui_ordendia->guardar();
     
     _depura ( "END ConvReunionView::guardarPost", 0 );
+    return 0;
 }
 
 int ConvReunionView::borrarPre()
@@ -257,4 +258,5 @@ int ConvReunionView::junta()
     delete cur;
 
     _depura ( "END ConvReunionView::junta", 0 );
+    return 0;
 }

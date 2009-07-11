@@ -84,8 +84,8 @@ int BlForm_cargar ( BlForm *ficha )
     } // end if
 
     delete cur1;
-    return 0;
     _depura ( "END Plugin bloqueos::BlForm_cargar", 0 );
+    return 0;
 }
 
 

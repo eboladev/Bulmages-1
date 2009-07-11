@@ -795,6 +795,7 @@ QString dolar16, QString dolar17, QString dolar18, QString dolar19, QString dola
                             dolar19 , dolar20 };
 
    run(query, numParams(query), params); 
+   return 0;
 }
 
 int BlPostgreSqlClient::run ( QString query,  int numParams, QString params[])
@@ -804,7 +805,7 @@ int BlPostgreSqlClient::run ( QString query,  int numParams, QString params[])
         charValues[i] = params[i].toUtf8().constData();
     };
    run(query, numParams, charValues);
-
+   return 0;
 }
 
 int 

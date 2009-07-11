@@ -61,6 +61,6 @@ int BfCompany_createMainWindows_Post ( BfCompany *comp )
     BcPlanContableListView *listcuentas = new BcPlanContableListView ( g_empresaactual, 0 );
     listcuentas->inicializa();
     g_bf->workspace()->addWindow ( listcuentas );
-
+    return 0;
 }
 

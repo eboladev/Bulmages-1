@@ -38,7 +38,7 @@ int Ticket_agregarLinea_Post ( BtTicket *tick, BlDbRecord * &rec )
     rec->addDbField ( "idtc_color", BlDbField::DbNumeric, BlDbField::DbNothing, _ ( "Color" ) );
     rec->addDbField ( "nomtc_talla", BlDbField::DbVarChar, BlDbField::DbNoSave, _ ( "Talla" ) );
     rec->addDbField ( "nomtc_color", BlDbField::DbVarChar, BlDbField::DbNoSave, _ ( "Color" ) );
-
+    return 0;
 }
 
 

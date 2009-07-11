@@ -82,6 +82,7 @@ int BtTicket_ponerPrecio_Post ( BtTicket *tick ) {
     tick->lineaActBtTicket()->setDbValue("pvpivainclalbaran", tick->lineaActBtTicket()->dbValue("pvplalbaran"));
     
     _depura ( "END PluginBt_IvaIncluido::BtTicket_ponerPrecio_Post", 0 );
+    return 0;
 }
 
 int BtTicket_imprimir(BtTicket *tick)

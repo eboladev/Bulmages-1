@@ -186,6 +186,7 @@ int BfBuscarReferencia_on_mui_abrirtodo_released_Post ( BfBuscarReferencia *ref 
         cur->nextRecord();
     } // end while
     delete cur;
+    return 0;
 }// end if
 
 

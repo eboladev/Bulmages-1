@@ -112,5 +112,6 @@ int ConvocatoriaView::guardarPost()
 
     _depura ( "END ConvocatoriaView::guardarPost", 0 );
 
+    return 0;
 }
 

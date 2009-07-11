@@ -163,6 +163,7 @@ int ActividadView::guardarPost()
     mui_faltasAsistenciaList->guardar();
     
     _depura ( "END ActividadView::guardarPost", 0 );
+    return 0;
 }
 
 int ActividadView::borrarPre()

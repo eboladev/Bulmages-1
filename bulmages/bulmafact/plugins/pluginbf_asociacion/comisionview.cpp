@@ -123,6 +123,7 @@ int ComisionView::guardarPost()
     mui_list->setColumnValue("idcomision", dbValue("idcomision") );
     mui_list->guardar();
     _depura ( "END ComisionView::guardarPost", 0 );
+    return 0;
 }
 
 

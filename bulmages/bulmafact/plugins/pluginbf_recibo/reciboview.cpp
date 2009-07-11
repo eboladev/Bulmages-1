@@ -140,6 +140,7 @@ int ReciboView::guardarPost()
     mui_list->guardar();
 
     _depura ( "END ReciboView::guardarPost", 0 );
+    return 0;
 }
 
 int ReciboView::borrarPre()

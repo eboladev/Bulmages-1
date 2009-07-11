@@ -346,6 +346,7 @@ QWidget *BtSubFormDelegate::createEditor ( QWidget *parent, const QStyleOptionVi
         return QItemDelegate::createEditor ( parent, option, index );
     } // end if
     _depura ( "END BtSubFormDelegate::createEditor", 0 );
+   return 0;
 }
 
 

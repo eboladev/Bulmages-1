@@ -89,6 +89,7 @@ int Ticket_insertarArticulo_Post ( BtTicket *tick )
         g_file->close();
     } // end if
     _depura ( "END pluginvisor::Ticket_insertarArticulo_Post", 0 );
+    return 0;
 }
 
 int Ticket_total ( QString *total )
@@ -100,5 +101,6 @@ int Ticket_total ( QString *total )
         g_file->flush();
         g_file->close();
     } // end if
+    return 0;
 }
 

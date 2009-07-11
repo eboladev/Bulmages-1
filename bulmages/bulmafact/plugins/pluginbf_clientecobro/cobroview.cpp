@@ -107,6 +107,7 @@ int CobroView::trataTags ( QString &buff )
     // admitimos sustituciones , QUERY, IFACE, SETVAR... y los
     // nombres de campos de BD para cobros
     BfForm::trataTags ( buff );
+    return 0;
 }
 
 QString CobroView::nombrePlantilla ( void )
@@ -156,6 +157,6 @@ int CobroView::guardarPost()
     delete cur;
     delete cur1;
     _depura ( "END CobroView::guardarPost", 0 );
-
+    return 0;
 }
 

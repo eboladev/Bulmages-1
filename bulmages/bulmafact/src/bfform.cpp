@@ -968,6 +968,7 @@ int BfForm::generaRML ( void )
     BlForm::generaRML();
     
     _depura ( "END BfForm::generaRML(void)", 0 );
+   return 0;
 }
 
 

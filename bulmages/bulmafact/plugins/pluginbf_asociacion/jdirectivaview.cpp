@@ -133,6 +133,7 @@ int JDirectivaView::guardarPost()
     mui_list->guardar();
     
     _depura ( "END JDirectivaView::guardarPost", 0 );
+    return 0;
 }
 
 int JDirectivaView::borrarPre()

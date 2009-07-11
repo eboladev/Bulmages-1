@@ -122,6 +122,7 @@ int ApunteContableView::guardar()
     mui_list->guardar();
 
     _depura ( "END ApunteContableView::guardarPost", 0 );
+    return 0;
 }
 
 
