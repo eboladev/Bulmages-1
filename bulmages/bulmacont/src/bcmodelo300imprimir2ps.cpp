@@ -138,8 +138,8 @@ void BcModelo300Imprimir2PS::generaps()
 {
     _depura ( "BcModelo300Imprimir2PS::generaps", 0 );
     QString pdfname, tempname, psname, command;
-    char *cad1 = NULL;
     QString cadaux;
+    QTextStream inputstr;
 
 //    cout << "Elegido trimestre" << trimestre->currentIndex() << "\n";
 
@@ -193,24 +193,24 @@ void BcModelo300Imprimir2PS::generaps()
         if ( m_fich.open ( QIODevice::WriteOnly ) ) {
             m_output.setDevice ( &m_fich );
             m_fichlec.setFileName ( tempname );
-            if ( !m_fichlec.open ( QIODevice::ReadOnly ) ) {
+            if ( !m_fichlec.open ( QIODevice::ReadOnly | QIODevice::Text ) ) {
                 _depura ( "Error al abrir fichero de lectura!!", 2 );
                 exit ( 1 );
             } // end if
-            m_fichlec.readLine ( cad1, 256 );
-            cadaux = cad1;
+            inputstr.setDevice( &m_fichlec );
+            cadaux = inputstr.readLine();
             while ( cadaux.left ( 7 ) != "%%Page:" ) {
-                m_output << cad1 ;
-                m_fichlec.readLine ( cad1, 256 );
+                m_output << cadaux ;
+                cadaux = inputstr.readLine();
             }
-            m_output << cad1;
+            m_output << cadaux;
             /// Inserta definiciones de postscript al principio de la 1a p&aacute;gina.
             escribe_postscriptdefs();
 
-            m_fichlec.readLine ( cad1, 256 );
-            while ( cad1 != "showpage\n" ) { ///h Hsta que encuentre un showpage.
-                m_output << cad1;
-                m_fichlec.readLine ( cad1, 256 );
+            cadaux = inputstr.readLine();
+            while ( cadaux != "showpage\n" ) { ///h Hsta que encuentre un showpage.
+                m_output << cadaux;
+                cadaux = inputstr.readLine();
             } // end while
             if ( m_es_borrador ) {
                 marcadeagua_borrador();
@@ -218,12 +218,12 @@ void BcModelo300Imprimir2PS::generaps()
             rellena_identificacion();
             rellena_liquidacion();
             rellena_compensacion();
-            m_output << cad1;
+            m_output << cadaux;
 
-            m_fichlec.readLine ( cad1, 256 );
-            while ( cad1 != "showpage\n" ) { /// Hasta que encuentre un showpage.
-                m_output << cad1;
-                m_fichlec.readLine ( cad1, 256 );
+            cadaux = inputstr.readLine();
+            while ( cadaux != "showpage\n" ) { /// Hasta que encuentre un showpage.
+                m_output << cadaux;
+                cadaux = inputstr.readLine();
             } // end while
             if ( m_es_borrador ) {
                 marcadeagua_borrador();
@@ -231,23 +231,23 @@ void BcModelo300Imprimir2PS::generaps()
             rellena_identificacion();
             rellena_liquidacion();
             rellena_compensacion();
-            m_output << cad1;
+            m_output << cadaux;
 
-            m_fichlec.readLine ( cad1, 256 );
-            while ( cad1 != "showpage\n" ) { /// Hasta que encuentre un showpage.
-                m_output << cad1;
-                m_fichlec.readLine ( cad1, 256 );
+            cadaux = inputstr.readLine();
+            while ( cadaux != "showpage\n" ) { /// Hasta que encuentre un showpage.
+                m_output << cadaux;
+                cadaux = inputstr.readLine();
             } // end while
             if ( m_es_borrador ) {
                 marcadeagua_borrador();
             } // end if
             rellena_identificacion();
             rellena_compensacion();
-            m_output << cad1;
+            m_output << cadaux;
 
-            while ( !m_fichlec.atEnd() ) { ///Leo el resto del fichero.
-                m_fichlec.readLine ( cad1, 256 );
-                m_output << cad1 << "\n";
+            while ( !inputstr.atEnd() ) { ///Leo el resto del fichero.
+                cadaux = inputstr.readLine();
+                m_output << cadaux << "\n";
             } // end while
 
             m_fichlec.close();
