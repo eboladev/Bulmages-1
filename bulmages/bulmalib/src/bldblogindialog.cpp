@@ -72,7 +72,8 @@ BlDbLoginDialog::~BlDbLoginDialog()
 void BlDbLoginDialog::validar()
 {
     _depura ( "BlDbLoginDialog::validar" );
-    m_login->setText ( BlPostgreSqlClient::sanearCadena ( m_login->text() ) );
+    // inicializa escapa correctamente, la cadena de conexión no debe escaparse como el sql
+    //m_login->setText ( BlPostgreSqlClient::sanearCadena ( m_login->text() ) );
     m_authOK = false;
 
     g_confpr->setValor ( CONF_LOGIN_USER, m_login->text() );

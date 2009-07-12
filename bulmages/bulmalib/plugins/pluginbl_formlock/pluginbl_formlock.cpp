@@ -57,8 +57,10 @@ int BlForm_cargar ( BlForm *ficha )
     _depura ( "Plugin bloqueos::BlForm_cargar", 0 );
     QString query;
 
-    query = "SELECT * FROM bloqueo WHERE fichabloqueo = '" + ficha->fieldId() + "' AND identificadorfichabloqueo= '" + ficha->dbValue ( ficha->fieldId() ) + "' AND usuariobloqueo <> '" + ficha->mainCompany()->currentUser() + "'";
-    BlDbRecordSet *cur1 = ficha->mainCompany()->loadQuery ( query );
+    query = "SELECT * FROM bloqueo WHERE fichabloqueo = $1 AND identificadorfichabloqueo= $2 AND usuariobloqueo <> $3";
+    BlDbRecordSet *cur1 = ficha->mainCompany()->load ( query, ficha->fieldId() ,
+                                          ficha->dbValue ( ficha->fieldId() ),
+                                          ficha->mainCompany()->currentUser() );
 
     if ( !cur1->eof() ) {
         mensajeInfo ( _ ( "Ficha bloqueada por otro usuario, no podra hacer modificaciones" ) );
@@ -78,8 +80,11 @@ int BlForm_cargar ( BlForm *ficha )
 
     } else {
 
-        query = "INSERT INTO bloqueo (fichabloqueo, identificadorfichabloqueo, usuariobloqueo) VALUES ('" + ficha->fieldId() + "','" + ficha->dbValue ( ficha->fieldId() ) + "','" + ficha->mainCompany()->currentUser() + "')";
-        ficha->mainCompany()->runQuery ( query );
+        query = "INSERT INTO bloqueo (fichabloqueo, identificadorfichabloqueo, usuariobloqueo) VALUES ($1,$2,$3)";
+        ficha->mainCompany()->run ( query, 
+                                    ficha->fieldId(), 
+                                    ficha->dbValue ( ficha->fieldId() ), 
+                                    ficha->mainCompany()->currentUser() );
 
     } // end if
 
@@ -99,11 +104,15 @@ int BlForm_DesFicha ( BlForm *ficha )
             usuario = cur->valor ( "current_user" );
         } // end if
         delete cur;
-        query = "SELECT * FROM bloqueo WHERE fichabloqueo = '" + ficha->fieldId() + "' AND identificadorfichabloqueo= '" + ficha->dbValue ( ficha->fieldId() ) + "' AND usuariobloqueo = '" + usuario + "'";
-        BlDbRecordSet *cur1 = ficha->mainCompany()->loadQuery ( query );
+        query = "SELECT * FROM bloqueo WHERE fichabloqueo = $1 AND identificadorfichabloqueo= $2 AND usuariobloqueo = $3";
+        BlDbRecordSet *cur1 = ficha->mainCompany()->load( query , 
+                                                          ficha->fieldId(),
+                                                      ficha->dbValue ( ficha->fieldId() ) ,
+                                                        usuario
+                                                        );
         if ( !cur1->eof() ) {
-            query = "DELETE FROM bloqueo WHERE fichabloqueo = '" + ficha->fieldId() + "' AND identificadorfichabloqueo= '" + ficha->dbValue ( ficha->fieldId() ) + "'";
-            ficha->mainCompany()->runQuery ( query );
+            query = "DELETE FROM bloqueo WHERE fichabloqueo = $1 AND identificadorfichabloqueo= $2";
+            ficha->mainCompany()->run ( query , ficha->fieldId(), ficha->dbValue ( ficha->fieldId() ));
         } // end if
         delete cur1;
     } // end if

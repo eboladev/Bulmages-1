@@ -178,7 +178,8 @@ private:
     PGconn *conn; /// Representa la conexi&oacute;n.
     bool m_insideTransaction; /// Indica si estamos dentro de una transacci&oacute;n.
     QString m_currentUser;   /// Indica el usuario que se ha conectado.
-
+    /// escapa una cadena per a posar-la a la cadena de connexió a PostgreSQL
+    QString &escCadConn(QString t) ;
 private:
     /// Establece en la base de datos cual va a ser el formato de fecha a utilizar.
     int formatofecha();

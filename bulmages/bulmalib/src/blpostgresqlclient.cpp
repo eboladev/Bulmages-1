@@ -115,7 +115,7 @@ void BlDbRecordSet::inicializa ( QString nombre, PGconn *conn1, QString SQLQuery
 {
     _depura ( "BlDbRecordSet::BlDbRecordSet", 0, SQLQuery );
     for ( int i = 0; i < numParams; i++ ) {
-        _depura ( "param=", 0, QString::fromUtf8 ( paramValues[i] ) );
+        _depura ( " param=", 0, QString::fromUtf8 ( paramValues[i] ) );
     } ;
     try {
         conn = conn1;
@@ -513,7 +513,14 @@ BlPostgreSqlClient::~BlPostgreSqlClient()
     _depura ( "END BlPostgreSqlClient::~BlPostgreSqlClient", 0 );
 }
 
-
+// escapa una cadena per a posar-la a la cadena de connexió a PostgreSQL
+QString & BlPostgreSqlClient::escCadConn(QString t) 
+{       // canvia ' per \' i \ per \\
+    _depura ( "BlPostgreSqlClient::escCadConn", 0, t );
+    _depura ( "END BlPostgreSqlClient::escCadConn", 0 );
+     return (t.isNull()? t : t.replace(QRegExp("([\\\'])"),"\\\\1"));
+   
+}
 /// Inicializa la conexi&oacute;n con la base de datos mediante los par&aacute;metro
 /// especificados. Precisamente no lo hace el constructor debido a la ausencia de
 /// dichos datos.
@@ -533,20 +540,20 @@ int BlPostgreSqlClient::inicializa ( QString nomdb )
 
     QString user = g_confpr->valor ( CONF_LOGIN_USER );
     QString passwd = g_confpr->valor ( CONF_PASSWORD_USER );
-
+    _depura(" usuari "+user,0);
     try {
         /// Antes no resolvia bien en caso de querer hacer conexiones al ordenador local.
         /// Ahora si se pone -- se considera conexion local.
         if ( m_pgHost != "--" ) {
-            conexion = "host = " + m_pgHost;
+            conexion = "host = '" + escCadConn(m_pgHost)+"'";
         } // end if
-        conexion += " port = " + m_pgPort;
-        conexion += " dbname = " + m_pgDbName;
+        conexion += " port = '" + escCadConn(m_pgPort)+"'";
+        conexion += " dbname = '" + escCadConn(m_pgDbName)+"'";
         if ( user != "" ) {
-            conexion += " user = " + user;
+            conexion += " user = '" + escCadConn(user)+"'";
         } // end if
         if ( passwd != "" ) {
-            conexion += " password = " + passwd;
+            conexion += " password = '" + escCadConn(passwd)+"'";
         } // end if
 
         _depura ( conexion, 0 );
@@ -801,9 +808,18 @@ QString dolar16, QString dolar17, QString dolar18, QString dolar19, QString dola
 int BlPostgreSqlClient::run ( QString query,  int numParams, QString params[])
 {
     const char *charValues[numParams];
+    QByteArray qbaValues[numParams]; //si sabes C++ i Qt sabria si no cal ?
     for ( int i = 0; i < numParams ; i++ ) {
+        _depura(" param "+QString::number(i)+":"+params[i],0); 
+        qbaValues[i] = params[i].toUtf8();
+        charValues[i] = qbaValues[i].data();
+    };
+   /*
+    for ( int i = 0; i < numParams ; i++ ) {
+        _depura(" param "+i+":"+params[i],0); 
         charValues[i] = params[i].toUtf8().constData();
     };
+   */
    run(query, numParams, charValues);
    return 0;
 }
@@ -816,7 +832,7 @@ BlPostgreSqlClient::runQuery ( QString query ) {
 int BlPostgreSqlClient::run ( QString Query,  int numParams, const char * const * params)
 {
 
-    _depura ( "BlPostgreSqlClient::runQuery", 0, Query );
+    _depura ( "BlPostgreSqlClient::run", 0, Query );
     PGresult *result = NULL;
     try {
         /// Prova de control de permisos.
@@ -848,7 +864,7 @@ int BlPostgreSqlClient::run ( QString Query,  int numParams, const char * const 
             throw - 1;
         } // end if
     } catch ( ... ) {
-        _depura ( "END BlPostgreSqlClient::runQuery", 0, "SQL command failed: " + Query );
+        _depura ( "END BlPostgreSqlClient::run", 0, "SQL command failed: " + Query );
         throw - 1;
     } // end try
 }
