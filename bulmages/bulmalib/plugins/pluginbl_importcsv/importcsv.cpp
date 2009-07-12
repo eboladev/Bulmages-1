@@ -155,7 +155,7 @@ void ImportCSV::procesarLinea ( const QString &linea )
                     valor.replace ( m_claves[j], list1[j] );
                     valor.replace ( "[" + QString::number ( j ) + "]", list1[j] );
                 } // end for
-                query += coma + "'" + valor + "'";
+                query += coma + "'" + mainCompany()->sanearCadenaUtf8(valor) + "'";
                 coma = ",";
             } // end if
     } // end for
@@ -181,8 +181,8 @@ void ImportCSV::rellenarTablas()
 void ImportCSV::on_mui_combotablas_activated ( const QString & text )
 {
 
-    QString query = "SELECT a.attnum, a.attname AS field, t.typname AS type, a.attlen AS length, a.atttypmod AS lengthvar, a.attnotnull AS notnull FROM pg_class c, pg_attribute a, pg_type t WHERE c.relname = '" + text + "' and  a.attnum > 0 and a.attrelid = c.oid and a.atttypid = t.oid ORDER BY a.attnum";
-    BlDbRecordSet *cur = mainCompany()->loadQuery ( query );
+    QString query = "SELECT a.attnum, a.attname AS field, t.typname AS type, a.attlen AS length, a.atttypmod AS lengthvar, a.attnotnull AS notnull FROM pg_class c, pg_attribute a, pg_type t WHERE c.relname = $1 and  a.attnum > 0 and a.attrelid = c.oid and a.atttypid = t.oid ORDER BY a.attnum";
+    BlDbRecordSet *cur = mainCompany()->load ( query,text );
     mui_list->setRowCount ( cur->numregistros() );
     mui_list->setColumnCount ( 2 );
     int row = 0;
