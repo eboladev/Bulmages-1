@@ -559,32 +559,11 @@
      </widget>
      <widget class="QWidget" name="tab_3">
       <attribute name="title">
-       <string>Pagos</string>
+       <string>Recibos</string>
       </attribute>
       <layout class="QGridLayout" name="gridLayout_4">
        <item row="0" column="0">
-        <widget class="QTableWidget" name="tableWidget_2">
-         <column>
-          <property name="text">
-           <string>DNI / NIf</string>
-          </property>
-         </column>
-         <column>
-          <property name="text">
-           <string>Nombre</string>
-          </property>
-         </column>
-         <column>
-          <property name="text">
-           <string>Relacion</string>
-          </property>
-         </column>
-         <column>
-          <property name="text">
-           <string>Porcentaje de facturacion</string>
-          </property>
-         </column>
-        </widget>
+        <widget class="BfSubForm" name="mui_listrecibos"/>
        </item>
       </layout>
      </widget>
@@ -614,6 +593,11 @@
    <extends>QComboBox</extends>
    <header>bfbuscarformapago.h</header>
   </customwidget>
+  <customwidget>
+   <class>BfSubForm</class>
+   <extends>QTableWidget</extends>
+   <header>bfsubform.h</header>
+  </customwidget>
  </customwidgets>
  <tabstops>
   <tabstop>mui_guardar</tabstop>
@@ -636,7 +620,7 @@
   <tabstop>mui_alumnosList</tabstop>
   <tabstop>mui_comentcliente</tabstop>
   <tabstop>mui_nomcliente</tabstop>
-  <tabstop>tableWidget_2</tabstop>
+  <tabstop>mui_listrecibos</tabstop>
  </tabstops>
  <resources>
   <include location="../../../bulmages.qrc"/>

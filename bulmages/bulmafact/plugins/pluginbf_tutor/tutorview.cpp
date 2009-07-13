@@ -83,6 +83,23 @@ TutorView::TutorView ( BfCompany *comp, QWidget *parent ) : BfForm ( comp, paren
         mui_idprovincia->setAllowNull ( TRUE );
         mui_idprovincia->setId ( "" );
 
+
+
+	mui_listrecibos->setMainCompany( mainCompany() );
+	mui_listrecibos->setDbTableName ( "recibo" );
+	mui_listrecibos->setDbFieldId ( "idrecibo" );
+	mui_listrecibos->addSubFormHeader ( "idrecibo", BlDbField::DbInt, BlDbField::DbNotNull | BlDbField::DbPrimaryKey, BlSubFormHeader::DbHideView | BlSubFormHeader::DbNoWrite, _ ( "ID Recibo" ) );
+	mui_listrecibos->addSubFormHeader ( "cantrecibo", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _ ( "Cantidad" ) );
+	mui_listrecibos->addSubFormHeader ( "pagadorecibo", BlDbField::DbBoolean, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _ ( "Pagado" ) );
+	mui_listrecibos->addSubFormHeader ( "fecharecibo", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _ ( "Fecha" ) );
+	mui_listrecibos->addSubFormHeader ( "idcliente", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _ ( "ID Tutor" ) );
+	mui_listrecibos->addSubFormHeader ( "descforma_pago", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _ ( "Forma de Pago" ) );
+	mui_listrecibos->setInsert ( FALSE );
+	mui_listrecibos->setSortingEnabled ( TRUE );
+
+// =========================================
+
+
         meteWindow ( windowTitle(), this, FALSE );
         pintar();
         dialogChanges_cargaInicial();
@@ -212,6 +229,8 @@ int TutorView::cargarPost ( QString id )
     */
     
     mui_alumnosList->cargar ( id );
+
+    mui_listrecibos->cargar("SELECT * FROM recibo LEFT JOIN forma_pago ON recibo.idforma_pago = forma_pago.idforma_pago LEFT JOIN banco ON recibo.idbanco = banco.idbanco WHERE recibo.idcliente = " + id);
 
     _depura ( "END TutorView::cargarPost", 0 );
     
