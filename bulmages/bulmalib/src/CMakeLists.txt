@@ -69,6 +69,7 @@ set(bulmalib_SRCS	blpostgresqlclient.cpp
 			blmonthcalendar.cpp
 			blsearchwidget.cpp
 			bli18n.cpp
+			bltreewidget.cpp
          blmaincompanypointer.cpp
          blargparser.cpp)
 
@@ -96,7 +97,8 @@ set(bulmalib_MOCS	bldblogindialog.h
 			blmonthcalendar.h
 			blsearchwidget.h
 			blform.h			
-			blsubform.h	
+			blsubform.h
+			bltreewidget.h
          blbankedit.h)
 
 set (bulmalib_HDRS	blmaincompanypointer.h
@@ -104,6 +106,7 @@ set (bulmalib_HDRS	blmaincompanypointer.h
 			blconfiguration.h
 			blspainbankaccountnumber.h
 			bldbsubform.h
+			bltreewidget.h
 			blmaincompany.h
 			blprogressbar.h
 			bldb.h
