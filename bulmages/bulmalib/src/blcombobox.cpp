@@ -161,14 +161,22 @@ void BlComboBox::m_activated ( int index )
 QString BlComboBox::id()
 {
     _depura ( "BlComboBox::id", 0 );
-    if ( currentIndex() > 0 ) {
+    if ( currentIndex() >= 0 ) {
+
+        /// Si el campo tiene un elemento nulo, al seleccionarlo hay que devolver una cadena vacía,
+        /// y si se selecciona otro se retorna el valor del número de elemento menos uno (sobra el valor nulo)
         if ( m_null ) {
-            return m_comboRecordSet->valor ( m_fieldId, currentIndex() - 1 );
+            if ( currentIndex() == 0 ) {
+                return "";
+            } else {
+                return m_comboRecordSet->valor ( m_fieldId, currentIndex() - 1 );
+            } // end if
+
+        /// Si el campo no tiene valor nulo, el orden coincide con el número de índice
         } else {
             return m_comboRecordSet->valor ( m_fieldId, currentIndex() );
         } // end if
-    } else {
-        return "";
+
     } // end if
     _depura ( "END BlComboBox::id", 0 );
 }
