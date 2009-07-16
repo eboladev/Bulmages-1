@@ -34,10 +34,11 @@
 #include "blpostgresqlclient.h"
 #include "blwidget.h"
 #include "blsubform.h"
-
+#include "bltreewidget.h"
 
 extern "C" MY_EXPORT int entryPoint ( QApplication * );
 extern "C" MY_EXPORT int BlSubForm_BlSubForm_Post ( BlSubForm * );
+extern "C" MY_EXPORT int BlTreeWidget_BlTreeWidget_Post ( BlTreeWidget * );
 
 
 class myplugsubformods : public QObject
@@ -46,10 +47,15 @@ class myplugsubformods : public QObject
 
 public:
     myplugsubformods ( BlSubForm * );
+    myplugsubformods ( BlTreeWidget * );
     ~myplugsubformods();
     void sacaods();
+    void sacaods1();
 
 public slots:
     virtual void s_pintaMenu ( QMenu * );
     virtual void s_trataMenu ( QAction * );
+    virtual void s_pintaMenu1 ( QMenu * );
+    virtual void s_trataMenu1 ( QAction * );
+
 };

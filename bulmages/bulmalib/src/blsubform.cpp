@@ -2529,12 +2529,15 @@ void BlSubForm::contextMenuEvent ( QContextMenuEvent * )
     _depura ( "BlSubForm::contextMenuEvent", 0 );
     QAction *del = NULL;
     int row = currentRow();
-    if ( row < 0 )
+    if ( row < 0 ) {
+	_depura ( "END BlSubForm::contextMenuEvent", 0 );
         return;
+    } // end if
     int col = currentColumn();
-    if ( row < 0 )
+    if ( col < 0 ) {
+	_depura ( "END BlSubForm::contextMenuEvent", 0 );
         return;
-
+    } // end if
     QMenu *popup = new QMenu ( this );
 
     /// Lanzamos el evento para que pueda ser capturado por terceros.
@@ -2563,7 +2566,10 @@ void BlSubForm::contextMenuEvent ( QContextMenuEvent * )
     QAction *opcion = popup->exec ( QCursor::pos() );
 
     /// Si no hay ninguna opcion pulsada se sale sin hacer nada
-    if ( !opcion ) return;
+    if ( !opcion ) {
+	return;
+	_depura ( "END BlSubForm::contextMenuEvent", 0 );
+    } // end if
     if ( opcion == del )
         borrar ( row );
     if ( opcion == ajust )
