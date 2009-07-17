@@ -231,13 +231,13 @@ void BalanceView::presentarSyS ( QString finicial, QString ffinal, QString cinic
         /// seg&uacute;n los per&iacute;odos que necesitemos acotar.
         /// Para ello, vamos a recopilar todos los apuntes introducidos agrupados por cuenta
         /// para poder averiguar el estado contable de cada cuenta.
-        query = "SELECT cuenta.idcuenta, numapuntes, cuenta.codigo, saldoant, debe, haber, saldo, debeej, haberej, saldoej FROM ";
+        query = "SELECT cuenta.idcuenta, numapuntes, cuenta.codigo, saldoant, debe, haber, ( COALESCE(saldop,0) + COALESCE(saldoant,0)) AS saldo, debeej, haberej, saldoej FROM ";
 
         query += "(SELECT idcuenta, codigo FROM cuenta) AS cuenta ";
 
         query += " LEFT JOIN (SELECT idcuenta,sum(debe) AS debeej, sum(haber) AS haberej, (sum(debe) - sum(haber)) AS saldoej FROM apunte WHERE EXTRACT(year FROM fecha) = '" + ffinal.right ( 4 ) + "' " + wherecostesycanales + " GROUP BY idcuenta) AS ejercicio ON ejercicio.idcuenta = cuenta.idcuenta";
 
-        query += " LEFT OUTER JOIN (SELECT idcuenta, count(idcuenta) AS numapuntes, sum(debe) AS debe, sum(haber) AS haber, (sum(debe) - sum(haber)) AS saldo FROM apunte WHERE fecha >= '" + finicial + "' AND fecha <= '" + ffinal + "' " + wherecostesycanales + " GROUP BY idcuenta) AS periodo ON periodo.idcuenta = cuenta.idcuenta ";
+        query += " LEFT OUTER JOIN (SELECT idcuenta, count(idcuenta) AS numapuntes, sum(debe) AS debe, sum(haber) AS haber, (sum(debe) - sum(haber)) AS saldop FROM apunte WHERE fecha >= '" + finicial + "' AND fecha <= '" + ffinal + "' " + wherecostesycanales + " GROUP BY idcuenta) AS periodo ON periodo.idcuenta = cuenta.idcuenta ";
 
         query += " LEFT OUTER JOIN (SELECT idcuenta, (sum(debe) - sum(haber)) AS saldoant FROM apunte WHERE  fecha < '" + finicial + "' " + wherecostesycanales +  " GROUP BY idcuenta) AS anterior ON cuenta.idcuenta = anterior.idcuenta ORDER BY codigo";
 
