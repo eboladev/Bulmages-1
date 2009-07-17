@@ -991,7 +991,7 @@ int BfForm::generaRML ( const QString &arch )
     
     try {
 
-        if ( dbValue ( "id" + m_tablename ).isEmpty() && dbValue ( "num" + m_tablename ).isEmpty() ) {
+        if ( dbValue ( fieldId() ).isEmpty() && dbValue ( "num" + m_tablename ).isEmpty() ) {
             throw 100;
         } // end if
 
