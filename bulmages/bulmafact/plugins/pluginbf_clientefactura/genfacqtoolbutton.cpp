@@ -189,6 +189,7 @@ void GenFacQToolButton::generarFactura()
         bud->setDbValue ( "reffactura", fpv->dbValue ( "refalbaran" ) );
         bud->setDbValue ( "idcliente", fpv->dbValue ( "idcliente" ) );
         bud->setDbValue ( "idalmacen", fpv->dbValue ( "idalmacen" ) );
+	bud->setDbValue ( "idtrabajador", fpv->dbValue ( "idtrabajador" ) );
 
         QString l;
         BlDbSubFormRecord *linea, *linea1;
