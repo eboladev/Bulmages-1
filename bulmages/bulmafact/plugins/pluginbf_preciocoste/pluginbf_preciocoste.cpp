@@ -101,6 +101,7 @@ int ArticuloView_ArticuloView_Post ( ArticuloView *trab )
 }
 
 
+
 int BfSubForm_on_mui_list_editFinished ( BfSubForm *subform )
 {
     _depura ( "BfSubForm_on_mui_list_editFinished", 0 );
@@ -204,12 +205,11 @@ int BfSubForm_on_mui_list_editFinished ( BfSubForm *subform )
 }
 
 
+
 int ArticuloListSubForm_ArticuloListSubForm_Post ( ArticuloListSubForm *artl )
 {
-    artl->addSubFormHeader ( "preciocostearticulo", BlDbField::DbNumeric, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, artl->tr ( "P Coste" ) );
-    artl->addSubFormHeader ( "margenarticulo", BlDbField::DbNumeric, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, artl->tr ( "Margen" ) );
-    artl->addSubFormHeader ( "actualizarmargenarticulo", BlDbField::DbBoolean, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, artl->tr ( "Actualizar Margen" ) );
+    artl->addSubFormHeader ( "preciocostearticulo", BlDbField::DbNumeric, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _("P Coste") );
+    artl->addSubFormHeader ( "margenarticulo", BlDbField::DbNumeric, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _( "Margen" ) );
+    artl->addSubFormHeader ( "actualizarmargenarticulo", BlDbField::DbBoolean, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _( "Actualizar Margen" ) );
     return 0;
 }
-
-

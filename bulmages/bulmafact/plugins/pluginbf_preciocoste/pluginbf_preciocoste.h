@@ -18,6 +18,7 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
+
 #ifdef Q_WS_WIN
 # define MY_EXPORT __declspec(dllexport)
 #else
@@ -36,3 +37,4 @@ extern "C" MY_EXPORT int entryPoint ( BfBulmaFact * );
 extern "C" MY_EXPORT int ArticuloView_ArticuloView_Post ( ArticuloView * );
 extern "C" MY_EXPORT int BfSubForm_on_mui_list_editFinished ( BfSubForm * );
 extern "C" MY_EXPORT int ArticuloListSubForm_ArticuloListSubForm_Post ( ArticuloListSubForm * );
+
