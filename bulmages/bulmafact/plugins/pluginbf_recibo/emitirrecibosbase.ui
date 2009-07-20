@@ -176,14 +176,14 @@
       <item row="0" column="0" rowspan="2">
        <layout class="QVBoxLayout" name="verticalLayout">
         <item>
-         <widget class="QCheckBox" name="mui_previsiones">
+         <widget class="QCheckBox" name="mui_cuotas">
           <property name="text">
            <string>Emitir las Cuotas de Socios</string>
           </property>
          </widget>
         </item>
         <item>
-         <widget class="QCheckBox" name="mui_efectivos">
+         <widget class="QCheckBox" name="mui_actividades">
           <property name="text">
            <string>Emitir todas las Actividades</string>
           </property>
