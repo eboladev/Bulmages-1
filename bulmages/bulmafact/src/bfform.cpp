@@ -964,11 +964,10 @@ QString BfForm::trataTotales ( const QString &det, int bimporeq )
 int BfForm::generaRML ( void )
 {
     _depura ( "BfForm::generaRML(void)", 0 );
-    
-    BlForm::generaRML();
-    
+    int err = BlForm::generaRML();
     _depura ( "END BfForm::generaRML(void)", 0 );
-   return 0;
+    return err;
+    
 }
 
 
@@ -991,9 +990,7 @@ int BfForm::generaRML ( const QString &arch )
     
     try {
 
-//	Aron, fieldId no esta extendido en todos los formularios. Por eso lo dejo en el estado anterior.
-//        if ( dbValue ( fieldId() ).isEmpty() && dbValue ( "num" + m_tablename ).isEmpty() ) {
-        if ( dbValue ( "id" + m_tablename ).isEmpty() && dbValue ( "num" + m_tablename ).isEmpty() ) {
+        if ( dbValue ( fieldId() ).isEmpty() ) {
             throw 100;
         } // end if
 

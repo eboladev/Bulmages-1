@@ -1247,9 +1247,9 @@ QString BlForm::trataExists ( const QString &query, const QString &datos )
 int BlForm::generaRML ( void )
 {
     _depura ( "BlForm::generaRML", 0 );
-    BlDbRecord::generaRML();
+    int err = BlDbRecord::generaRML();
     _depura ( "END BlForm::generaRML", 0 );
-   return 0;
+    return err;
 }
 
 ///
@@ -1257,7 +1257,7 @@ int BlForm::generaRML ( void )
 **/
 int BlForm::generaRML ( const QString &arch )
 {
-    _depura ( "BlForm::generaRML", 0 );
+    _depura ( "BlForm::generaRML", 0, arch );
 
     /// Vaciamos las variables de RML
     m_variables.clear();

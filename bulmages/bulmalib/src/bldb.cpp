@@ -361,7 +361,18 @@ QString BlDbRecord::tableName()
 QString BlDbRecord::fieldId()
 {
     _depura ( "BlDbRecord::fieldId", 0 );
-    _depura ( "END BlDbRecord::fieldId", 0 );
+    if (m_campoid.isEmpty()) {
+      if (! dbValue ( "id" + m_tablename ).isEmpty() ) {
+	  m_campoid = "id" + m_tablename;
+      } // end if
+    } // end if
+      if (m_campoid.isEmpty() ) {
+
+       if(! dbValue ( "num" + m_tablename ).isEmpty()) {
+	  m_campoid = "num" + m_tablename;
+    } // end if
+    } // end if
+    _depura ( "END BlDbRecord::fieldId", 0, m_campoid );
     return m_campoid;
 }
 
@@ -983,7 +994,7 @@ int BlDbRecord::generaRML ( void )
 void BlDbRecord::imprimir()
 {
     /// Usa la plantilla ficha.rml para realizar la impresion.
-    _depura ( "BlDbRecord::imprimir", 0 );
+    _depura ( "BlDbRecord::imprimir", 0, nombrePlantilla() );
 
     if ( generaRML() ) {
         invocaPDF ( nombrePlantilla() );
