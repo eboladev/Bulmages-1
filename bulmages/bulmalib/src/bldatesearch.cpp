@@ -170,6 +170,12 @@ void BlDateSearch::s_searchFecha()
     QCalendarWidget *calend = new QCalendarWidget ( diag );
     /// Se pone el 1er dia del calendario a lunes.
     calend->setFirstDayOfWeek ( Qt::Monday );
+
+    /// Si ya hay una fecha en el campo, abrir el calendario con ese d&iacute;a seleccionado inicialmente
+    if ( !mui_textoFecha->text().isEmpty() ) {
+        calend->setSelectedDate ( normalizafecha ( mui_textoFecha->text() ) );
+    }
+
     connect ( calend, SIGNAL ( activated ( const QDate & ) ), diag, SLOT ( accept() ) );
 
     /// Creamos un layout donde estara el contenido de la ventana y la ajustamos al QDialog
