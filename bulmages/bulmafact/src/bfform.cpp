@@ -991,7 +991,9 @@ int BfForm::generaRML ( const QString &arch )
     
     try {
 
-        if ( dbValue ( fieldId() ).isEmpty() && dbValue ( "num" + m_tablename ).isEmpty() ) {
+//	Aron, fieldId no esta extendido en todos los formularios. Por eso lo dejo en el estado anterior.
+//        if ( dbValue ( fieldId() ).isEmpty() && dbValue ( "num" + m_tablename ).isEmpty() ) {
+        if ( dbValue ( "id" + m_tablename ).isEmpty() && dbValue ( "num" + m_tablename ).isEmpty() ) {
             throw 100;
         } // end if
 
