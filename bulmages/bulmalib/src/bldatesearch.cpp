@@ -171,8 +171,14 @@ void BlDateSearch::s_searchFecha()
     /// Se pone el 1er dia del calendario a lunes.
     calend->setFirstDayOfWeek ( Qt::Monday );
 
+    /// Si el campo estaba vac&iacute;o, seleccionar una fecha imposible, pero mostrar el mes actual
+    if ( mui_textoFecha->text().isEmpty() ) {
+        calend->setSelectedDate ( QDate ( 1900, 1, 1 ) );
+        calend->setCurrentPage ( QDate::currentDate().year(), QDate::currentDate().month() );
+    }
+
     /// Si ya hay una fecha en el campo, abrir el calendario con ese d&iacute;a seleccionado inicialmente
-    if ( !mui_textoFecha->text().isEmpty() ) {
+    else {
         calend->setSelectedDate ( normalizafecha ( mui_textoFecha->text() ) );
     }
 
@@ -188,7 +194,11 @@ void BlDateSearch::s_searchFecha()
     diag->setWindowTitle ( _ ( "Seleccione fecha" ) );
     diag->exec();
 
-    mui_textoFecha->setText ( calend->selectedDate().toString ( "dd/MM/yyyy" ) );
+    /// Si la fecha es imposible, significa que el usuario no ha seleccionado una fecha
+    /// y su campo debe quedarse como estaba: vac&iacute;o
+    if ( calend->selectedDate() != QDate ( 1900, 1, 1 ) ) {
+        mui_textoFecha->setText ( calend->selectedDate().toString ( "dd/MM/yyyy" ) );
+    }
 
     delete calend;
     delete diag;
