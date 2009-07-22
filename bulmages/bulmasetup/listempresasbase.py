@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'listempresasbase.ui'
 #
-# Created: Thu May 28 00:17:53 2009
+# Created: Wed Jul 22 10:51:27 2009
 #      by: PyQt4 UI code generator 4.4.4
 #
 # WARNING! All changes made in this file will be lost!
@@ -43,6 +43,7 @@ class Ui_ListEmpresasBase(object):
         self.mui_listado.setSelectionBehavior(QtGui.QAbstractItemView.SelectRows)
         self.mui_listado.setTextElideMode(QtCore.Qt.ElideLeft)
         self.mui_listado.setVerticalScrollMode(QtGui.QAbstractItemView.ScrollPerItem)
+        self.mui_listado.setHorizontalScrollMode(QtGui.QAbstractItemView.ScrollPerPixel)
         self.mui_listado.setShowGrid(True)
         self.mui_listado.setGridStyle(QtCore.Qt.DotLine)
         self.mui_listado.setWordWrap(True)
