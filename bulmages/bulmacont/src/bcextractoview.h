@@ -42,6 +42,7 @@ class BC_EXPORT BcExtractoView : public BcForm, public Ui_BcExtractoBase
 public:
     /// El extracto se realiza sobre un cursor que siempre est&aacute; en memoria.
     BlDbRecordSet *m_cursorcta;
+    bool m_tratarpunteos;
 
 public:
     BcExtractoView ( BcCompany *, QWidget *parent = 0, int flags = 0 );

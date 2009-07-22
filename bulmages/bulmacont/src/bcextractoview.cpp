@@ -73,6 +73,9 @@ BcExtractoView::BcExtractoView ( BcCompany *emp, QWidget *parent, int ) : BcForm
     m_fechafinal1->setText ( cadena );
     m_cursorcta = NULL;
     meteWindow ( windowTitle(), this );
+
+    m_tratarpunteos = TRUE;
+
     _depura ( "END BcExtractoView::BcExtractoView", 0 );
 }
 
@@ -289,8 +292,10 @@ void BcExtractoView::ajustes()
 int BcExtractoView::guardar()
 {
     _depura ( "BcExtractoView::on_mui_guardar_released", 0 );
-    if ( mui_asAbiertos->isChecked() ) return 0;
-    mui_list->guardar();
+    if (m_tratarpunteos) {
+	if (! mui_asAbiertos->isChecked() ) 
+	    mui_list->guardar();
+    } // end if
     return 0;
     _depura ( "END BcExtractoView::on_mui_guardar_released", 0 );
 
@@ -304,6 +309,11 @@ int BcExtractoView::guardar()
 void BcExtractoView::presentar()
 {
     _depura ( "BcExtractoView::presentar", 0 );
+
+    /// Guardamos el punteo
+    guardar();
+
+
     BlFixed debe ( "0.00" ), haber ( "0.00" ), saldo ( "0.00" );
     BlFixed debeinicial ( "0.00" ), haberinicial ( "0.00" ), saldoinicial ( "0.00" );
     BlFixed debefinal ( "0.00" ), haberfinal ( "0.00" ), saldofinal ( "0.00" );
@@ -491,7 +501,9 @@ void BcExtractoView::on_mui_casacion_released()
             barra.setValue ( barra.value() + 1 );
         } // end while
         delete curshaber;
+	m_tratarpunteos = FALSE;
         presentar();
+	m_tratarpunteos = TRUE;
     } catch ( ... ) {
         mensajeError ( "Se produjo un error en la casacion" );
     } // end try
@@ -505,6 +517,10 @@ void BcExtractoView::on_mui_casacion_released()
 void BcExtractoView::on_mui_guardarpunteo_released()
 {
     _depura ( "BcExtractoView::on_mui_guardarpunteo_released", 0 );
+
+    /// Guardamos el punteo por lo que pueda ser.
+    guardar();
+
     QString fn = QFileDialog::getSaveFileName ( this,
                  _ ( "Guardar punteo" ),
                  g_confpr->valor ( CONF_DIR_USER ),
@@ -550,10 +566,14 @@ void BcExtractoView::on_mui_borrapunteo_released()
                                                 Desea continuar?" ),
                                            QMessageBox::Yes, QMessageBox::No );
         if ( valor == QMessageBox::Yes ) {
+
             mainCompany() ->begin();
             mainCompany() ->runQuery ( "UPDATE apunte SET punteo = FALSE WHERE idcuenta =" + m_cursorcta->valor ( "idcuenta" ) );
             mainCompany() ->commit();
-            presentar();
+
+	    m_tratarpunteos = FALSE;
+	    presentar();
+	    m_tratarpunteos = TRUE;
         } // end if
     } catch ( ... ) {
         mensajeInfo ( _ ( "Se ha producido un error" ) );
@@ -595,7 +615,9 @@ void BcExtractoView::on_mui_cargarpunteos_released()
             mainCompany()->commit();
             file.close();
         } // end if
+	m_tratarpunteos = FALSE;
         presentar();
+	m_tratarpunteos = TRUE;
     } catch ( ... ) {
         mensajeInfo ( "Error en la carga del punteo" );
         mainCompany()->rollback();
