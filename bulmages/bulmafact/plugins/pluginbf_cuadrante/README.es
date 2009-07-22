@@ -19,7 +19,7 @@ ArchivoSQLpatch: pluginbf_cuadrante.sql
 
 ArchivoSQLdeins: pluginbf_cuadrante-rm.sql
 
-Dependencias: libpluginbf_asterisk.so;libpluginbf_trabajador.so;libpluginbf_almacenamplia.so
+Dependencias: libpluginbf_asterisk.so;libpluginbf_trabajador.so;libpluginbf_almacenamplia.so;libpluginbf_tipotrabajo.so
 
 Incompatibles:
 

@@ -142,6 +142,7 @@ void TrabajadorView::on_mui_lista_currentItemChanged ( QListWidgetItem *cur, QLi
     /// Disparamos los plugins.
     int res = g_plugins->lanza ( "TrabajadorView_on_mui_lista_currentItemChanged_Post", this );
     if ( res != 0 ) {
+	_depura ( "END on_mui_lista_currentItemChanged", 0, "Salida por Plugins" );
         return;
     } // end if
     dialogChanges_cargaInicial();

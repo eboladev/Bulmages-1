@@ -151,7 +151,7 @@ int TrabajadorView_on_mui_guardar_released ( TrabajadorView *trab )
     BusquedaTipoTrabajo * l = trab->findChild<BusquedaTipoTrabajo *> ( "tipotraba" );
     QString query = "UPDATE trabajador SET ";
     query += " idtipotrabajo = " + l->idtipotrabajo();
-    query += " WHERE idtrabajador=" + trab->mainCompany() ->sanearCadena ( trab->idtrabajador() );
+    query += " WHERE idtrabajador=" + trab->mainCompany() ->sanearCadena ( trab->mdb_idtrabajador );
     trab->mainCompany() ->begin();
     trab->mainCompany() ->runQuery ( query );
     trab->mainCompany() ->commit();
@@ -166,13 +166,18 @@ int TrabajadorView_on_mui_guardar_released ( TrabajadorView *trab )
 **/
 int TrabajadorView_on_mui_lista_currentItemChanged_Post ( TrabajadorView *trab )
 {
-    BusquedaTipoTrabajo * l = trab->findChild<BusquedaTipoTrabajo *> ( "tipotraba" );
-
-    BlDbRecordSet *cur = trab->mainCompany() ->loadQuery ( "SELECT idtipotrabajo FROM trabajador WHERE idtrabajador = " + trab->idtrabajador() );
-    if ( !cur->eof() ) {
-        l->setidtipotrabajo ( cur->valor ( "idtipotrabajo" ) );
-    }
-    delete cur;
+    _depura("pluginbf_tipotrabajo::TrabajadorView_on_mui_lista_currentItemChanged_Post");
+    if (trab) {
+	BusquedaTipoTrabajo * l = trab->findChild<BusquedaTipoTrabajo *> ( "tipotraba" );
+	if (l) {
+	    BlDbRecordSet *cur = trab->mainCompany() ->loadQuery ( "SELECT idtipotrabajo FROM trabajador WHERE idtrabajador = " + trab->mdb_idtrabajador );
+	    if ( !cur->eof() ) {
+		l->setidtipotrabajo ( cur->valor ( "idtipotrabajo" ) );
+	    } // end if
+	    delete cur;
+	} // end if
+    } // end if
+    _depura("END pluginbf_tipotrabajo::TrabajadorView_on_mui_lista_currentItemChanged_Post");
     return 0;
 }
 
