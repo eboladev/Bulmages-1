@@ -134,7 +134,7 @@ QString XMLProtect ( const QString &string )
     for ( i = 0; i < cadena.length(); i++ ) {
         if ( data->unicode() > 127 ) {
             cadenatmp = cadenatmp + QString ( "<![CDATA[&#" ) + QString::number ( data->unicode() ) + QString ( ";]]>" );
-        } else if ( data->unicode() == 10 | data->unicode() == 13 ) {
+        } else if ( (data->unicode() == 10) | (data->unicode() == 13) ) {
             /// Cambiamos los Intros por el formato HTML.
             cadenatmp = cadenatmp + QString ( "\n" );
 
@@ -315,7 +315,10 @@ QString ajustacodigo ( QString cad, unsigned int num1 )
 void reemplazaarchivo ( QString archivo, QString texto1, QString texto2, QString archivo2 )
 {
     QString cadena = " sed -e \"s&" + texto1 + "&" + texto2 + "&g\"  " + archivo + " > " + archivo2 + "";
-    system ( cadena.toAscii().data() );
+    int result = system ( cadena.toAscii().data() );
+    if (result == -1) {
+	mensajeError(_("Error al ejecutar el comando 'sed' [ blfunctions.cpp->reemplazaarchivo() ]."));
+    } // end if
 }
 
 
@@ -331,21 +334,33 @@ void generaPDF ( const QString arch )
 #ifdef WINDOWS
 
     cadsys = g_confpr->valor ( CONF_PYTHON ) + " " + g_confpr->valor ( CONF_PROGDATA ) + "trml2pdf\\bgtrml2pdf " + arch + ".rml > " + g_confpr->valor ( CONF_DIR_USER ) + arch + ".pdf";
-    system ( cadsys.toAscii() );
+    int result1 = system ( cadsys.toAscii() );
+    if (result1 == -1) {
+	mensajeError(_("Error en PYTHON [ blfunctions->generaPDF() ]"));
+    } // end if
+    
     _depura ( cadsys, 0 );
     cadsys = g_confpr->valor ( CONF_FLIP ) + " -u " + g_confpr->valor ( CONF_DIR_USER ) + arch + ".pdf";
-    system ( cadsys.toAscii().data() );
+    int result2 = system ( cadsys.toAscii().data() );
+    if (result2 == -1) {
+	mensajeError(_("Error en FLIP [ blfunctions->generaPDF() ]"));
+    } // end if
+
     _depura ( cadsys, 0 );
 
 #else
 
     cadsys = "bgtrml2pdf " + arch + ".rml > " + arch + ".pdf";
-    system ( cadsys.toAscii().data() );
+    int result3 = system ( cadsys.toAscii().data() );
+    if (result3 == -1) {
+	mensajeError(_("Error en bgtrml2pdf [ blfunctions->generaPDF() ]"));
+    } // end if
 
 #endif
 
     _depura ( "END generaPDF " + arch, 0 );
 }
+
 
 /// Genera un ODS a partir de un pys sin abrirlo.
 void generaPYS ( const QString arch )
@@ -355,10 +370,16 @@ void generaPYS ( const QString arch )
     QString cadsys;
 
     QString cadena = "rm " + g_confpr->valor ( CONF_DIR_USER ) + arch + ".ods";
-    system ( cadena.toAscii() );
+    int result1 = system ( cadena.toAscii() );
+    if (result1 == -1) {
+	mensajeError(_("Error al borrar archivo .ods [ blfunctions->generaPYS() ]"));
+    } // end if
 
     cadena = " cd " + g_confpr->valor ( CONF_DIR_USER ) + "; python " + arch + ".pys";
-    system ( cadena.toAscii() );
+    int result2 = system ( cadena.toAscii() );
+    if (result2 == -1) {
+	mensajeError(_("Error al ejecutar PYTHON [ blfunctions->generaPYS() ]"));
+    } // end if
 
 }
 
@@ -368,7 +389,10 @@ void invocaPYS ( const QString arch )
 {
     generaPYS ( arch );
     QString cadena = "oocalc " + g_confpr->valor ( CONF_DIR_USER ) + arch + ".ods &";
-    system ( cadena.toAscii() );
+    int result = system ( cadena.toAscii() );
+    if (result == -1) {
+	mensajeError(_("Error al ejecutar oocalc [ blfunctions->invocaPYS() ]"));
+    } // end if
 
 }
 
@@ -379,7 +403,11 @@ void invocaPDF ( const QString arch )
 {
     generaPDF ( arch );
     QString cadsys = g_confpr->valor ( CONF_PDF ) + " " + g_confpr->valor ( CONF_DIR_USER ) + arch + ".pdf &";
-    system ( cadsys.toAscii().data() );
+    int result = system ( cadsys.toAscii().data() );
+    if (result == -1) {
+	mensajeError(_("Error al ejecutar el visor de PDF [ blfunctions->invocaPDF() ]"));
+    } // end if
+    
 }
 
 
@@ -389,8 +417,13 @@ void mailsendPDF ( const QString arch, const QString to, const QString subject, 
     //FIXME: REVISAR PARAMETROS de mailsend o la posibilidad de anyadir otros programas
     //para enviar correo desde la ventana de configuracion del programa.
     QString cadsys = "mailsend -h " + arch + " -d " + to + " -f bulmages@iglues.org -t test@iglues.org -sub " + subject + " -m " + message;
-    system ( cadsys.toAscii().data() );
+    int result = system ( cadsys.toAscii().data() );
+    if (result == -1) {
+	mensajeError(_("Error al ejecutar mailsend [ blfunctions->mailsendPDF() ]"));
+    } // end if
+    
 }
+
 
 QString windowID ( const QString &app )
 {
@@ -403,7 +436,11 @@ QString windowID ( const QString &app )
         cad = "xwininfo -int | grep Window | awk '{print $4}' > /tmp/xwinfo";
     } // end if
 
-    system ( cad.toAscii() );
+    int result = system ( cad.toAscii() );
+    if (result == -1) {
+	mensajeError(_("Error al ejecutar xwininfo [ blfunctions->windowID() ]"));
+    } // end if
+    
 
     QString winId = "";
 
@@ -421,7 +458,6 @@ QString windowID ( const QString &app )
 
     return winId;
 }
-
 
 
 void _debugOn ()

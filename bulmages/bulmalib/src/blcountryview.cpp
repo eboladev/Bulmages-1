@@ -215,7 +215,7 @@ void BlCountryView::on_mui_crear_released()
 void BlCountryView::on_mui_borrar_released()
 {
     _depura ( "BlCountryView::on_mui_borrar_released", 0 );
-    if ( m_countryId == "" | m_countryId == "0" ) {
+    if ( (m_countryId == "") | (m_countryId == "0") ) {
         mensajeInfo ( _ ( "Debe seleccionar un elemento de la lista" ) );
         return;
     } // end if

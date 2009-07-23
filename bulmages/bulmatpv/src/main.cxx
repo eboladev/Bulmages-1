@@ -56,12 +56,6 @@ int main ( int argc, char **argv )
 {
     bool valorSalida = 0;
 
-    /// Objetos que se crear&aacute;n en esta funci&oacute;n
-    BtBulmaTPV *bges;
-    BlArgParser *argParser;
-    BlDbLoginDialog *login1;
-    BlSplashScreen *splashScr;
-
     try {
         fprintf ( stderr, "--> MAIN::Iniciando el programa. <--\n" );
         Q_INIT_RESOURCE ( bulmages );
@@ -86,7 +80,7 @@ int main ( int argc, char **argv )
         g_theApp->setFont ( QFont ( g_confpr->valor ( CONF_FONTFAMILY_BULMAGES ).toAscii().constData(), atoi ( g_confpr->valor ( CONF_FONTSIZE_BULMAGES ).toAscii().constData() ) ) );
 
         /// Interpretar tomar los valores pasados por l&iacute;nea de comandos.
-        argParser = new BlArgParser( g_theApp->argc(), g_theApp->argv() );
+        BlArgParser* argParser = new BlArgParser( g_theApp->argc(), g_theApp->argv() );
 
         if( ! argParser->Host().isEmpty() ) {
             g_confpr->setValor( CONF_SERVIDOR, argParser->Host() );
@@ -105,12 +99,12 @@ int main ( int argc, char **argv )
         } // end if
 
         /// Cargamos el BlSplashScreen.
-        splashScr = new BlSplashScreen ( g_confpr->valor ( CONF_SPLASH_BULMATPV ), "Iglues/BulmaTpv", CONFIG_VERSION );
+        BlSplashScreen* splashScr = new BlSplashScreen ( g_confpr->valor ( CONF_SPLASH_BULMATPV ), "Iglues/BulmaTpv", CONFIG_VERSION );
         splashScr->mensaje ( _( "Iniciando clases" ) );
         splashScr->setBarraProgreso ( 1 );
 
         /// Preguntar el nombre de usuario y/o contrase&ntilde;a en caso necesario.
-        login1 = new BlDbLoginDialog ( 0, "" );
+        BlDbLoginDialog* login1 = new BlDbLoginDialog ( 0, "" );
         if ( !login1->authOK() || argParser->AskPassword() ) {
             if ( !argParser->UserName().isEmpty() ) {
                 login1->m_login->setText( argParser->UserName() );
@@ -126,7 +120,7 @@ int main ( int argc, char **argv )
         
         delete login1;
 
-        bges = new BtBulmaTPV ( argParser->DbName() );
+        BtBulmaTPV* bges = new BtBulmaTPV ( argParser->DbName() );
         bges->hide();
         g_main = bges;
 
@@ -218,14 +212,16 @@ int main ( int argc, char **argv )
 
         /// Disparamos los plugins con entryPoint.
         g_plugins->lanza ( "exitPoint", bges );
+
+	/// Liberamos memoria.
+	delete bges;
+	delete g_theApp;
+	delete g_confpr;
+	
    } catch ( ... ) {
         mensajeInfo ( _( "Error inesperado en BulmaTPV. El programa se cerrara." ) );
    } // end try
 
-   /// Liberamos memoria.
-   delete bges;
-   delete g_theApp;
-   delete g_confpr;
 
    fprintf ( stderr, "--> MAIN::Cerrando el programa. <--\n" );
    

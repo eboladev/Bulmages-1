@@ -49,12 +49,17 @@ Z2ZView::Z2ZView ( BfCompany *comp, QWidget *parent )
     _depura ( "Z2ZView::Z2ZView", 0 );
     setupUi ( this );
     setAttribute ( Qt::WA_DeleteOnClose );
+
     try {
 
         meteWindow ( windowTitle(), this, FALSE );
+
     } catch ( ... ) {
-        mensajeInfo ( _ ( "Error al crear la factura" ), this );
+    
+        mensajeInfo ( _( "Error al crear la factura" ), this );
+
     }
+
     _depura ( "END Z2ZView::Z2ZView" );
 }
 
@@ -79,6 +84,7 @@ void Z2ZView::on_mui_referencia_returnPressed()
     mui_referencia->setFocus();
 }
 
+
 void  Z2ZView::on_mui_listarefs_itemDoubleClicked ( QListWidgetItem *it )
 {
     delete it;
@@ -89,19 +95,22 @@ void  Z2ZView::on_mui_listarefs_itemDoubleClicked ( QListWidgetItem *it )
 void Z2ZView::calculaTotalTickets()
 {
     QString listarefs;
+
     if ( mui_listarefs->count() > 0 ) {
+
         listarefs = "upper('" + mui_listarefs->item ( 0 )->text() + "')";
         for ( int i = 1; i < mui_listarefs->count(); i++ ) {
             listarefs += ", upper('" + mui_listarefs->item ( i )->text() + "')";
         } // end for
+
     } else {
-        mensajeInfo ( "lista vacia" );
+
+        mensajeInfo ( _("Lista vacia") );
         return;
+
     } // end if
 
-
     QString query = "SELECT sum(pvpivainclalbaran*cantlalbaran)::NUMERIC(12,2) AS tot FROM lalbaran LEFT JOIN albaran ON albaran.idalbaran= lalbaran.idalbaran WHERE upper(albaran.refalbaran) IN (" + listarefs + ")";
-
 
     BlDbRecordSet *cur = mainCompany()->loadQuery ( query );
     mui_totaltickets->setText ( cur->valor ( "tot" ) );
@@ -121,6 +130,7 @@ void Z2ZView::calculaTotalTickets()
         BlDbRecordSet *cur2 = mainCompany()->loadQuery ( query2 );
         min = min + BlFixed ( cur2->valor ( "tot" ) );
         delete cur2;
+
     } // end for
 
     BlFixed traspasable = total - min;
@@ -256,11 +266,12 @@ void Z2ZView::on_mui_traspasar_released()
 
         db->commit();
         delete db;
+
     } catch ( ... ) {
-        mensajeInfo ( "Error en el traspaso" );
+    
+        mensajeInfo ( _("Error en el traspaso") );
+
     }// end try
 
 }
-
-
 

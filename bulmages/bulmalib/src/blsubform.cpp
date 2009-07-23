@@ -2477,7 +2477,11 @@ void BlSubForm::imprimirPDF ( const QString &titular )
     archivo = "cp " + archivo + " " + archivod;
 #endif
 
-    system ( archivo.toAscii() );
+    int result1 = system ( archivo.toAscii() );
+    if (result1 == -1) {
+	mensajeError(_("Errr al copiar listado.rml [ BlSubForm->imprimirPDF() ]"));
+    } // end if
+    
     /// Copiamos el logo.
 #ifdef WINDOWS
 
@@ -2487,7 +2491,10 @@ void BlSubForm::imprimirPDF ( const QString &titular )
     archivologo = "cp " + archivologo + " " + g_confpr->valor ( CONF_DIR_USER ) + "logo.jpg";
 #endif
 
-    system ( archivologo.toAscii() );
+    int result2 = system ( archivologo.toAscii() );
+    if (result2 == -1) {
+	mensajeError(_("Errr al copiar listado.rml [ BlSubForm->imprimirPDF() ]"));
+    } // end if
 
     QFile file;
     file.setFileName ( archivod );

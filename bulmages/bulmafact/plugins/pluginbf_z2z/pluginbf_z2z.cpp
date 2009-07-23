@@ -79,7 +79,7 @@ void mypluginzz::elslot (  )
 **/
 int entryPoint ( BfBulmaFact *bges )
 {
-    _depura ( "Entrada del plugin Corrector", 10 );
+    _depura ( "Entrada del plugin 'Traspaso de Z'", 10 );
 
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale ( LC_ALL, "" );
@@ -102,7 +102,7 @@ int entryPoint ( BfBulmaFact *bges )
     QObject::connect ( viewCorrector, SIGNAL ( activated (  ) ), corr, SLOT ( elslot ( ) ) );
     pPluginMenu->addSeparator();
     pPluginMenu->addAction ( viewCorrector );
-    _depura ( "Iniciado correctamente el plugin de Traspaso de Z", 10 );
+    _depura ( "Iniciado correctamente el plugin 'Traspaso de Z'", 10 );
     return 0;
 }
 

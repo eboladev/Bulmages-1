@@ -37,7 +37,7 @@
 /**
 \param bges
 **/
-BtCompany::BtCompany ( BtBulmaTPV *bges ) : BlMainCompany(), BtInput ( this )
+BtCompany::BtCompany ( BtBulmaTPV* bges ) : BlMainCompany(), BtInput ( this )
 {
     _depura ( "BtCompany::BtCompany", 0 );
     m_bulmaTPV = bges;

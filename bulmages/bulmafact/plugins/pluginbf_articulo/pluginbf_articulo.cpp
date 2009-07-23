@@ -64,6 +64,7 @@ void MyPlugArt::elslot()
     _depura ( "END MyPlugArt::elslot", 0 );
 }
 
+
 ///
 /**
 **/
@@ -75,7 +76,6 @@ void MyPlugArt::elslot1()
     bud->show();
     _depura ( "END MyPlugArt::elslot1", 0 );
 }
-
 
 
 ///
@@ -104,7 +104,6 @@ void MyPlugArt::elslot3()
 }
 
 
-
 ///
 /**
 \param bges
@@ -130,7 +129,7 @@ void MyPlugArt::inicializa ( BfBulmaFact *bges )
         bges->Listados->addAction ( planCuentas );
         connect ( planCuentas, SIGNAL ( activated() ), this, SLOT ( elslot() ) );
 
-        QAction *npago = new QAction ( _ ( "&Nuevo Articulo" ), 0 );
+        QAction *npago = new QAction ( _ ( "&Nuevo articulo" ), 0 );
         npago->setIcon ( QIcon ( QString::fromUtf8 ( ":/Images/product.png" ) ) );
         npago->setStatusTip ( _ ( "Nuevo articulo" ) );
         npago->setWhatsThis ( _ ( "Nuevo articulo" ) );
@@ -139,10 +138,10 @@ void MyPlugArt::inicializa ( BfBulmaFact *bges )
         connect ( npago, SIGNAL ( activated() ), this, SLOT ( elslot1() ) );
 
         pPluginMenu->addSeparator();
-        QAction *tart = new QAction ( _ ( "&Tipos de Articulo" ), 0 );
+        QAction *tart = new QAction ( _ ( "&Tipos de articulo" ), 0 );
         tart->setIcon ( QIcon ( QString::fromUtf8 ( ":/Images/product-family.png" ) ) );
-        tart->setStatusTip ( _ ( "Tipos de Articulo" ) );
-        tart->setWhatsThis ( _ ( "Tipos de Articulo" ) );
+        tart->setStatusTip ( _ ( "Tipos de articulo" ) );
+        tart->setWhatsThis ( _ ( "Tipos de articulo" ) );
         pPluginMenu->addAction ( tart );
         bges->Fichas->addAction ( tart );
         connect ( tart, SIGNAL ( activated() ), this, SLOT ( elslot2() ) );
@@ -159,9 +158,6 @@ void MyPlugArt::inicializa ( BfBulmaFact *bges )
     }// end if
     _depura ( "END MyPlugArt::inicializa", 0 );
 }
-
-
-
 
 
 ///
@@ -198,7 +194,6 @@ int Busqueda_on_mui_buscar_released ( BlSearchWidget *busq )
 {
     if ( busq->tableName() == "articulo" ) {
 
-
         QDialog *diag = new QDialog ( 0 );
         diag->setModal ( true );
         diag->setGeometry ( QRect ( 0, 0, 750, 550 ) );
@@ -227,10 +222,7 @@ int Busqueda_on_mui_buscar_released ( BlSearchWidget *busq )
     } // end if
 
 
-
     if ( busq->tableName() == "tipo_articulo" ) {
-
-
 
         QDialog *diag = new QDialog ( 0 );
         diag->setModal ( true );
@@ -260,10 +252,7 @@ int Busqueda_on_mui_buscar_released ( BlSearchWidget *busq )
     } // end if
 
 
-
     if ( busq->tableName() == "familia" ) {
-
-
 
         QDialog *diag = new QDialog ( 0 );
         diag->setModal ( true );
@@ -333,7 +322,6 @@ int BfSubForm_pressedAsterisk ( BfSubForm *sub )
 }
 
 
-
 /// Esta llamada de plugin es bastante novedosa ya es una llamada que no responde a una funcion
 /// Sino que se llama desde multiples partes del sistema.
 int SNewArticuloView ( BfCompany *v )
@@ -344,16 +332,12 @@ int SNewArticuloView ( BfCompany *v )
 }
 
 
-
-
-
 /// --------------------------------------------------------------
 /// --------- Implemento la edicion de articulos -----------------
 /// Con esta funcionalidad creamos menus contextuales en todos los subformularios donde
 /// Aparezca el identificador de articulo como elemento y permite de forma sencilla
 /// La creacion, la edicion, y la seleccion.
 ///
-
 
 /**
 \param parent
@@ -430,14 +414,13 @@ void MyPlugArt1::editarArticulo ( QString idarticulo )
     /// Si la carga no va bien entonces terminamos.
     if ( art->cargar ( idarticulo ) ) {
         delete art;
-        _depura ( "END ArticuloList::editar", 0, "Carga Erronea" );
+        _depura ( "END ArticuloList::editar", 0, "Carga erronea" );
         return;
     } // end if
     art->hide();
     art->show();
     _depura ( "END MyPlugArt1::editarArticulo", 0 );
 }
-
 
 
 ///
@@ -506,7 +489,6 @@ int BlSubForm_BlSubForm_Post ( BlSubForm *sub )
 }
 
 
-
 int BlSubFormDelegate_createEditor ( BlSubFormDelegate *bl )
 {
     _depura ( "pluginbf_articulo::BlSubFormDelegate_createEditor", 0 );
@@ -526,7 +508,6 @@ int BlSubFormDelegate_createEditor ( BlSubFormDelegate *bl )
 
     return ret;
 }
-
 
 
 /// Hay cosas que deberian estar en el plugin de alumno
@@ -560,6 +541,7 @@ int BlSubFormDelegate_setEditorData ( BlSubFormDelegate *bl )
     return ret;
 }
 
+
 int BlSubForm_editFinished ( BlSubForm *sub )
 {
     _depura ( "pluginbf_articulo::BlSubForm_editFinished", 0 );
@@ -581,7 +563,7 @@ int BlDbCompleterComboBox_textChanged (BlDbCompleterComboBox *bl) {
   _depura("BlDbCompleterComboBox_textChanged", 0, "plugin_articulo");
 
   if ( bl->m_entrada.size() >= 3 && bl->m_tabla == "articulo") {
-           // no se si es el autoComplete o què però em criden a
+           // no se si es el autoComplete o que pero em criden a
            // aquesta senyal quan omplo el combo, amb el primer valor
            // i si no m'aturo ara, recalcularia el combo amb nomes
            // aquest valor encara que l'usuari nomes hagi escrit
@@ -615,8 +597,4 @@ int BlDbCompleterComboBox_textChanged (BlDbCompleterComboBox *bl) {
 
    return 0;
 }
-
-
-
-
 

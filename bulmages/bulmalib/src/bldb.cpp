@@ -155,15 +155,14 @@ QString BlDbField::valorcampo()
 {
     _depura ( "BlDbField::valorcampo", 0 );
     QString valor = m_valorcampo;
-    switch ( m_tipo ) {
-    case DbNumeric:
+    if ( m_tipo == DbNumeric ) {
         QLocale locale;
-        if ( locale.decimalPoint() == '.' )
+        if ( locale.decimalPoint() == '.' ) {
             valor.replace ( ",", locale.decimalPoint () );
-        else
+        } else {
             valor.replace ( ".", locale.decimalPoint () );
-        break;
-    } // end switch
+        } // end if
+    } // end if
     _depura ( "END BlDbField::valorcampo", 0 );
     return valor;
 }
@@ -868,7 +867,11 @@ int BlDbRecord::generaRML ( const QString &arch )
     archivo = "cp " + archivo + " " + archivod;
 #endif
 
-    system ( archivo.toAscii().constData() );
+    int result1 = system ( archivo.toAscii().constData() );
+    if (result1 == -1) {
+	mensajeError(_("Error al copiar el archivo RML [ bldb->generaRML() ]"));
+    } // end if
+    
     /// Copiamos el logo
 #ifdef WINDOWS
 
@@ -878,7 +881,11 @@ int BlDbRecord::generaRML ( const QString &arch )
     archivologo = "cp " + archivologo + " " + g_confpr->valor ( CONF_DIR_USER ) + "logo.jpg";
 #endif
 
-    system ( archivologo.toAscii().constData() );
+    int result2 = system ( archivologo.toAscii().constData() );
+    if (result2 == -1) {
+	mensajeError(_("Error al copiar el archivo de logo [ bldb->generaRML() ]"));
+    } // end if
+    
     QFile file;
     file.setFileName ( archivod );
     file.open ( QIODevice::ReadOnly );
@@ -953,12 +960,22 @@ int BlDbRecord::generaRML ( const QString &arch )
                     if ( ( *i ).isHighSurrogate() ) {
                         // sospecho que o este caso o el siguiente nunca se
                         // dara pero no lo se seguro y si es asi no se cual
-                        codepoint = QChar::surrogateToUcs4 ( *i, *++i );
+                        QChar high = *i;
+                        i++;
+                        if ( i == buff.end() )
+                            break;
+                        QChar low = *i;
+                        codepoint = QChar::surrogateToUcs4 ( high, low );
                     }  else {
                         if ( ( *i ).isLowSurrogate() ) {
                             // sospecho que o este caso o el anterior nunca se
                             // dara pero no lo se seguro y si es asi no se cual
-                            codepoint = QChar::surrogateToUcs4 ( *++i, *i );
+                            QChar low = *i;
+                            i++;
+                            if ( i == buff.end() )
+                                break;
+                            QChar high = *i;
+                            codepoint = QChar::surrogateToUcs4 ( high, low );
                         } else {
                             // este caso es mas normal, caracter entre 0 i 2^16
                             codepoint = ( *i ).unicode();
