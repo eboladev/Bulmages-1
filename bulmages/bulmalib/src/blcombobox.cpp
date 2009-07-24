@@ -179,6 +179,7 @@ QString BlComboBox::id()
 
     } // end if
     _depura ( "END BlComboBox::id", 0 );
+    return "";
 }
 
 
