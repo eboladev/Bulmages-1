@@ -108,6 +108,9 @@
    </item>
   </layout>
  </widget>
+ <includes>
+  <include location="local">local_BlI18n.h</include>
+ </includes>
  <layoutdefault spacing="2" margin="5" />
  <pixmapfunction>qPixmapFromMimeSource</pixmapfunction>
  <resources/>

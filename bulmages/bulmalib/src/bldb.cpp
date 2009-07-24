@@ -27,7 +27,7 @@
 
 #include "bldb.h"
 #include "blplugins.h"
-
+#include "local_BlI18n.h"
 
 ///
 /**

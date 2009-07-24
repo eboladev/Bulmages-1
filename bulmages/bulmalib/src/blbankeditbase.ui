@@ -88,6 +88,9 @@
    </item>
   </layout>
  </widget>
- <resources/>
+ <includes>
+  <include location="local">local_BlI18n.h</include>
+ </includes>
+  <resources/>
  <connections/>
 </ui>

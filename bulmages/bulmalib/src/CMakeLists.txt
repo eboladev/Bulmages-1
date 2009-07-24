@@ -24,11 +24,10 @@
 configure_file( ${CMAKE_SOURCE_DIR}/bulmalib/src/blconfig.h.in  ${CMAKE_BINARY_DIR}/bulmalib/src/blconfig.h @ONLY)
 
 #bulmalib needs QtAssistant and QtXml
-set(QT_USE_QTASSISTANT true)
-set(QT_USE_QTXML true)
-set(QT_USE_QTUITOOLS true)
-
-INCLUDE(${QT_USE_FILE})
+#set(QT_USE_QTASSISTANT true)
+#set(QT_USE_QTXML true)
+#set(QT_USE_QTUITOOLS true)
+#INCLUDE(${QT_USE_FILE})
 
 set(bulmalib_SRCS	blpostgresqlclient.cpp
 			blconfiguration.cpp
@@ -167,11 +166,11 @@ QT4_ADD_RESOURCES(bulmalib_RCC_SRCS ${bulmalib_RCCS})
 # generate rules for building source files that moc generates
 
 #ADD_DEFINITIONS(${QT_DEFINITIONS})
-ADD_DEFINITIONS(-DQT_SHARED)
+#ADD_DEFINITIONS(-DQT_SHARED)
 
-IF(WIN32)
-ADD_DEFINITIONS(-DQWT_DLL -DQT_DLL -DQWT_MAKEDLL -DBL_BULMALIB)
-ENDIF(WIN32)
+#IF(WIN32)
+#ADD_DEFINITIONS(-DQWT_DLL -DQT_DLL -DQWT_MAKEDLL -DBL_BULMALIB)
+#ENDIF(WIN32)
 
 # Defines if we want our own debugging code
 #ADD_DEFINITIONS(-DDEPURA_DEBUG)
@@ -191,15 +190,15 @@ target_link_libraries( bulmalib ${QT_LIBRARIES} ${PGSQL_LIBRARIES} )
 
 
 # i18n
-if(WIN32)
-ADD_DEFINITIONS("-D_(String)=BlI18n(\\\"bulmalib\\\",String)" )
-ADD_DEFINITIONS("-DN_(String,Int)=BlI18n(\\\"bulmalib\\\",String)" )
-endif(WIN32)
+#if(WIN32)
+#ADD_DEFINITIONS("-D_(String)=BlI18n(\\\"bulmalib\\\",String)" )
+#ADD_DEFINITIONS("-DN_(String,Int)=BlI18n(\\\"bulmalib\\\",String)" )
+#endif(WIN32)
 
-if(NOT WIN32)
-ADD_DEFINITIONS("-D'_(String)=BlI18n(\"bulmalib\",String)'" )
-ADD_DEFINITIONS("-D'N_(String,Int)=BlI18n(\"bulmalib\",String)'" )
-endif(NOT WIN32)
+#if(NOT WIN32)
+#ADD_DEFINITIONS("-D'_(String)=BlI18n(\"bulmalib\",String)'" )
+#ADD_DEFINITIONS("-D'N_(String,Int)=BlI18n(\"bulmalib\",String)'" )
+#endif(NOT WIN32)
 
 if(USE_GETTEXT)
    set(bulmalib_STR ${bulmalib} ${bulmalib_MOCS} ${bulmalib_MOC_SRCS}
@@ -220,3 +219,18 @@ install (FILES ${bulmalib_HDRS} DESTINATION include)
 #                 bulmalib_de.ts 
 #                 bulmalib_zz.ts 
 # 
+
+if(USE_PCH)
+   add_dependencies( bulmalib  bulmalib_pch )
+endif(USE_PCH)
+
+FILE(WRITE ${CMAKE_CURRENT_BINARY_DIR}/local_BlI18n.h
+ "#ifndef local_BlI18n\n"
+ "#include \"bli18n.h\"\n"
+ "#ifndef _\n"
+ " #define _(String) BlI18n(\"bulmalib\",String)\n"
+ "#endif\n"
+ "#ifndef N_\n"
+ " #define N_(String,Int) BlI18n(\"bulmalib\",String)\n"
+ "#endif\n"
+ "#endif\n" )

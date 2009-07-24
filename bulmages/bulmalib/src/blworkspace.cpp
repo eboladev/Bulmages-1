@@ -22,7 +22,7 @@
 #include <QAction>
 
 #include "blworkspace.h"
-
+#include "local_BlI18n.h"
 
 ///
 /**

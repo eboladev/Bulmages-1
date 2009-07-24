@@ -33,6 +33,7 @@
 #include <QProcess>
 #include <QX11EmbedContainer>
 
+#include "local_BlI18n.h"
 #include "pluginbl_embed.h"
 #include "bfbulmafact.h"
 #include "bcbulmacont.h"

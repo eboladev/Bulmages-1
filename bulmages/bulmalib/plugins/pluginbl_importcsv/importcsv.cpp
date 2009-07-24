@@ -27,10 +27,10 @@
 #include <QWidget>
 #include <QFileDialog>
 
+#include "local_BlI18n.h"
 #include "blmaincompany.h"
 #include "importcsv.h"
 #include "blconfiguration.h"
-
 
 /** inicializa todos los componentes de la clase.
     Resetea el sistema de control de cambios para que considere que no hay cambios por parte del usuario.

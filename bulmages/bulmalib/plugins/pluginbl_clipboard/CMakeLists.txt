@@ -30,11 +30,6 @@ file(GLOB plugin_SRC *.c *.cpp *.cxx)
 file(GLOB plugin_MOCS *.hpp *.h)
 file(GLOB plugin_UIS *.ui)
 
-set(QT_USE_QTASSISTANT true)
-set(QT_USE_QTXML true)
-
-INCLUDE(   ${QT_USE_FILE}   )
-
 include_directories(
     ${QT_INCLUDE_DIR}
 	${PGSQL_INCLUDE_DIR}
@@ -53,9 +48,6 @@ QT4_WRAP_UI(plugin_UIS_H ${plugin_UIS} OPTIONS -tr N_)
 QT4_WRAP_CPP(plugin_MOC_SRCS ${plugin_MOCS})
 #QT4_ADD_RESOURCES(plugin_RCC_SRCS ${plugin_RCCS})
 
-#ADD_DEFINITIONS(${QT_DEFINITIONS})
-ADD_DEFINITIONS(-DQT_SHARED)
-
 # build sources, moc'd sources, and rcc'd sources
 
 add_library(${plugin} SHARED ${plugin_SRC} ${plugin_MOC_SRCS}
@@ -68,17 +60,6 @@ set_target_properties( ${plugin} PROPERTIES
 
 
 target_link_libraries(${plugin} bulmalib ${QT_LIBRARIES} ${PGSQL_LIBRARIES})
-
-# i18n
-if(WIN32)
-ADD_DEFINITIONS("-D_(String)=BlI18n(\\\"bulmalib\\\",String)" )
-ADD_DEFINITIONS("-DN_(String,Int)=BlI18n(\\\"bulmalib\\\",String)" )
-endif(WIN32)
-
-if(NOT WIN32)
-ADD_DEFINITIONS("-D'_(String)=BlI18n(\"bulmalib\",String)'" )
-ADD_DEFINITIONS("-D'N_(String,Int)=BlI18n(\"bulmalib\",String)'" )
-endif(NOT WIN32)
 
 if(USE_GETTEXT)
    set(plugin_i18n ${plugin_SRC} ${plugin_MOC_SRCS} ${plugin_UIS_H} ${plugin_SRCS} ${plugin_MOCS})
@@ -98,3 +79,13 @@ foreach(dfile ${docs})
 DESTINATION share/bulmages/bulmalib-plugins/ RENAME ${dfile}.${plugin})
 endforeach(dfile in ${docs})
 
+FILE(WRITE ${CMAKE_CURRENT_BINARY_DIR}/local_BlI18n.h
+ "#ifndef local_BlI18n\n"
+ "#include \"bli18n.h\"\n"
+ "#ifndef _\n"
+ " #define _(String) BlI18n(\"${plugin}\",String)\n"
+ "#endif\n"
+ "#ifndef N_\n"
+ " #define N_(String,Int) BlI18n(\"${plugin}\",String)\n"
+ "#endif\n"
+ "#endif\n" )

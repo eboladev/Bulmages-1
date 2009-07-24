@@ -28,6 +28,7 @@
 #include <QObject>
 #include <QProcess>
 
+#include "local_BlI18n.h"
 #include "pluginbl_importcsv.h"
 #include "mypluginimportcsv.h"
 

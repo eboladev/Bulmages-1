@@ -33,6 +33,7 @@
 #include <QToolButton>
 #include <QPushButton>
 
+#include "local_BlI18n.h"
 #include "pluginbl_formlock.h"
 #include "blform.h"
 #include "blmaincompany.h"

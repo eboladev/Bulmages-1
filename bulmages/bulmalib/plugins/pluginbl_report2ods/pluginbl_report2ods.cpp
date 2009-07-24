@@ -30,6 +30,7 @@
 #include <QProcess>
 #include <QTextStream>
 
+#include "local_BlI18n.h"
 #include "pluginbl_report2ods.h"
 #include "bfbulmafact.h"
 #include "bcbulmacont.h"

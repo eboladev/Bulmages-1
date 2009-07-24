@@ -27,7 +27,7 @@
 #include <map>
 
 #include "blwindowlistdock.h"
-
+#include "local_BlI18n.h"
 
 ///
 /**

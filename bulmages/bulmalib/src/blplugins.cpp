@@ -24,7 +24,7 @@
 
 #include "blplugins.h"
 #include "blconfiguration.h"
-
+#include "local_BlI18n.h"
 
 typedef int ( *MyPrototype ) ( void * );
 MyPrototype myFunction;

@@ -22,7 +22,7 @@
 #include <QEvent>
 
 #include "bltexteditdelegate.h"
-
+#include "local_BlI18n.h"
 
 ///
 /**

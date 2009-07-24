@@ -31,6 +31,7 @@ STRING( REGEX MATCHALL "[0-9]+" BULMAGES_VERSIONS ${BULMAGES_VERSION} )
 LIST( GET BULMAGES_VERSIONS 0 BULMAGES_VERSION_MAJOR)
 LIST( GET BULMAGES_VERSIONS 1 BULMAGES_VERSION_MINOR)
 LIST( GET BULMAGES_VERSIONS 2 BULMAGES_VERSION_PATCH)
+SET( CMAKE_MODULE_PATH "${CMAKE_SOURCE_DIR}/ModulesCMake" )
 
 # Differences between CMake 2.4 and 2.6
 if("${CMAKE_MAJOR_VERSION}.${CMAKE_MINOR_VERSION}" GREATER 2.4)
@@ -59,6 +60,9 @@ if("${CMAKE_MAJOR_VERSION}.${CMAKE_MINOR_VERSION}" GREATER 2.4)
    # Setting this variable to true has the effect that the link dirs are
    # listed nevertheless also with CMake 2.6.
    set(CMAKE_LINK_OLD_PATHS TRUE)
+
+   # list command no longer ignores empty elements.
+   cmake_policy(SET CMP0007 OLD)
 
 endif("${CMAKE_MAJOR_VERSION}.${CMAKE_MINOR_VERSION}" GREATER 2.4)
 
@@ -101,6 +105,15 @@ endif(NOT WIN32)
 
 # Remove directory to prevent that css files can grow with plugins css merge.
 FILE(REMOVE_RECURSE ${CMAKE_BINARY_DIR}/css)
+
+SET(USE_PCH FALSE)
+IF(ENABLE_PCH)
+    FIND_PACKAGE(PCHSupport)
+    IF(PCHSupport_FOUND)
+        SET(USE_PCH TRUE)
+        MESSAGE(STATUS "Enabling precompiled headers for GCC ${gcc_compiler_version}") 
+    ENDIF(PCHSupport_FOUND)
+ENDIF(ENABLE_PCH)
 
 ########### bulmages library ##########
 message(STATUS "Working on bulmalib")

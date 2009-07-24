@@ -18,8 +18,30 @@
 # 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             #
 #                                                                       #
 
-
 project(bulmalib)
+
+set(QT_USE_QTASSISTANT true)
+#set(QT_USE_QTDBUS true)
+set(QT_USE_QTUITOOLS true)
+set(QT_USE_QTXML true)
+include(${QT_USE_FILE})
+
+include_directories(
+      ${QT_INCLUDE_DIR}
+      ${QT_QTASSISTANT_INCLUDE_DIR}
+      ${QT_QTDBUS_INCLUDE_DIR}
+      ${QT_QTUITOOLS_INCLUDE_DIR}
+      ${QT_QTXML_INCLUDE_DIR})
+
+ADD_DEFINITIONS(-DQT_SHARED -DQT_PLUGIN)
+ADD_DEFINITIONS(-DQWT_DLL -DQT_DLL -DQWT_MAKEDLL)
+ADD_DEFINITIONS(-DBL_BULMALIB)
+# Defines if we want our own debugging code
+#ADD_DEFINITIONS(-DDEPURA_DEBUG)
+
+IF(USE_PCH)
+    ADD_PRECOMPILED_HEADER( bulmalib_pch pch/stableheaders.hpp )
+ENDIF(USE_PCH)
 
 add_subdirectory(src)
 add_subdirectory(plugins)

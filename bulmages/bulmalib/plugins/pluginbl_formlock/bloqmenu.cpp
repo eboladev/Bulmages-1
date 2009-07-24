@@ -30,6 +30,7 @@
 #include <QToolButton>
 #include <QPushButton>
 
+#include "local_BlI18n.h"
 #include "blfixed.h"
 #include "blmaincompany.h"
 #include "bldb.h"
