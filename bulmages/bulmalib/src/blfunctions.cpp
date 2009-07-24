@@ -388,7 +388,7 @@ void generaPYS ( const QString arch )
 void invocaPYS ( const QString arch )
 {
     generaPYS ( arch );
-    QString cadena = "oocalc " + g_confpr->valor ( CONF_DIR_USER ) + arch + ".ods &";
+    QString cadena = g_confpr->valor ( CONF_ODS ) + " " + g_confpr->valor ( CONF_DIR_USER ) + arch + ".ods &";
     int result = system ( cadena.toAscii() );
     if (result == -1) {
 	mensajeError(_("Error al ejecutar oocalc [ blfunctions->invocaPYS() ]"));

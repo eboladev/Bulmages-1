@@ -391,7 +391,7 @@ void PluginBc_CuentasAnuales2ODS::balanceSituacionODS ( CAnuales tipus )
 
     cadena = " cd " + g_confpr->valor ( CONF_DIR_USER ) + "; python " + archivod;
     system ( cadena.toAscii() );
-    cadena = "oocalc " + g_confpr->valor ( CONF_DIR_USER ) + "canualesods.ods &";
+    cadena = g_confpr->valor ( CONF_ODS ) + " " + g_confpr->valor ( CONF_DIR_USER ) + "canualesods.ods &";
     system ( cadena.toAscii() );
     _depura ( "END PluginBc_CuentasAnuales2ODS::balanceSituacionODS", 0 );
 }

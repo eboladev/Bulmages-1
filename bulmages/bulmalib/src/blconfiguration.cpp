@@ -266,6 +266,10 @@ QString BlConfiguration::nombre ( int i )
         return "CONF_DIR_TMP";
     if ( i == CONF_PDF )
         return "CONF_PDF";
+    if ( i == CONF_ODS )
+        return "CONF_ODS";
+    if ( i == CONF_SXC )
+        return "CONF_SXC";
     if ( i == CONF_NAVEGADOR )
         return "CONF_NAVEGADOR";
     if ( i == CONF_EDITOR )

@@ -245,7 +245,7 @@ void ProyectoView::on_mui_geninforme_released()
 
     cadena = " cd " + g_confpr->valor ( CONF_DIR_USER ) + "; python " + archivod;
     system ( cadena.toAscii() );
-    cadena = "oocalc " + g_confpr->valor ( CONF_DIR_USER ) + "informeproyectoc.ods &";
+    cadena = g_confpr->valor ( CONF_ODS )  + " " + g_confpr->valor ( CONF_DIR_USER ) + "informeproyectoc.ods &";
     system ( cadena.toAscii() );
 
 }

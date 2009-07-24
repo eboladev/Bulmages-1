@@ -203,7 +203,7 @@ void myplugsubformsxc::sacaSXC()
 
     cadena = " cd " + g_confpr->valor ( CONF_DIR_USER ) + "; perl " + archivod;
     system ( cadena.toAscii() );
-    cadena = "kspread " + g_confpr->valor ( CONF_DIR_USER ) + "listadosxc.sxc &";
+    cadena = g_confpr->valor(CONF_SXC) + " " + g_confpr->valor ( CONF_DIR_USER ) + "listadosxc.sxc &";
     system ( cadena.toAscii() );
 
     _depura ( "END myplugsubformsxc::sacaSXC", 0 );

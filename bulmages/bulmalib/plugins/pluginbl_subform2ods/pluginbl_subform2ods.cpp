@@ -247,7 +247,7 @@ void myplugsubformods::sacaods()
 
     cadena = " cd " + g_confpr->valor ( CONF_DIR_USER ) + "; python " + archivod;
     system ( cadena.toAscii() );
-    cadena = "oocalc " + g_confpr->valor ( CONF_DIR_USER ) + "listadoods.ods &";
+    cadena = g_confpr->valor(CONF_ODS)  + " " + g_confpr->valor ( CONF_DIR_USER ) + "listadoods.ods &";
     system ( cadena.toAscii() );
 
     _depura ( "END myplugsubformods::sacaods", 0 );
@@ -378,7 +378,7 @@ void myplugsubformods::sacaods1()
 
     cadena = " cd " + g_confpr->valor ( CONF_DIR_USER ) + "; python " + archivod;
     system ( cadena.toAscii() );
-    cadena = "oocalc " + g_confpr->valor ( CONF_DIR_USER ) + "listadoods.ods &";
+    cadena = g_confpr->valor(CONF_ODS) + " " + g_confpr->valor ( CONF_DIR_USER ) + "listadoods.ods &";
     system ( cadena.toAscii() );
 
     _depura ( "END myplugsubformods::sacaods", 0 );

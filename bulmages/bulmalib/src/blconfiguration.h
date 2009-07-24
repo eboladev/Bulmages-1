@@ -115,10 +115,10 @@
 #define CONF_PUERTO                  182
 
 /// Indica que visor de documentos PDF va a utilizar el programa.
-#define CONF_PDF                     195
-#define CONF_DIR_TMP                 194
-#define CONF_PYTHON                  193
 #define CONF_FLIP                    192
+#define CONF_PYTHON                  193
+#define CONF_DIR_TMP                 194
+#define CONF_PDF                     195
 /// Indica que imagen utilizar como splash de BfBulmaFact.
 #define CONF_SPLASH_BULMAFACT        196
 /// Indica que navegador utilizar para mostrar los resultados de los listados (por defecto
@@ -128,6 +128,10 @@
 #define CONF_EDITOR                  198
 /// Indica que imagen utilizar como splash de BulmaCont.
 #define CONF_SPLASH                  199
+
+/// Indica con que programa abrimos archivos ODS y SXC
+#define CONF_ODS                     200
+#define CONF_SXC                     201
 
 /// Determina si hay refresco
 #define CONF_REFRESH_LIST            210

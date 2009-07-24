@@ -16,8 +16,11 @@ CONF_PUERTO			5432
 # Por defecto se proponen estos programas. Configurar a gusto.
 CONF_EDITOR			kate
 CONF_NAVEGADOR			x-www-browser
-CONF_PDF			konqueror
+CONF_PDF			okular
 CONF_DIR_TMP			/tmp/
+CONF_ODS			oocalc
+CONF_SXC			kspread
+
 
 
 # Hoja de estilo a utilizar
