@@ -84,13 +84,4 @@ foreach(dfile ${docs})
 DESTINATION share/bulmages/bulmalib-plugins/ RENAME ${dfile}.${plugin})
 endforeach(dfile in ${docs})
 
-FILE(WRITE ${CMAKE_CURRENT_BINARY_DIR}/local_BlI18n.h
- "#ifndef local_BlI18n\n"
- "#include \"bli18n.h\"\n"
- "#ifndef _\n"
- " #define _(String) BlI18n(\"${plugin}\",String)\n"
- "#endif\n"
- "#ifndef N_\n"
- " #define N_(String,Int) BlI18n(\"${plugin}\",String)\n"
- "#endif\n"
- "#endif\n" )
+ADD_LOCAL_BLI18N_HEADER( ${plugin} )
