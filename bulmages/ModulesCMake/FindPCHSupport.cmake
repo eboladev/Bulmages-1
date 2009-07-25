@@ -29,13 +29,13 @@ IF(CMAKE_COMPILER_IS_GNUCXX)
     EXEC_PROGRAM(${CMAKE_CXX_COMPILER}
                  ARGS -dumpversion
                  OUTPUT_VARIABLE gcc_compiler_version)
-    IF(gcc_compiler_version MATCHES "4\\.[0-9]\\.[0-9]")
+    IF(gcc_compiler_version MATCHES "4\\.[0-9].*")
         SET(PCHSupport_FOUND TRUE)
-    ELSE(gcc_compiler_version MATCHES "4\\.[0-9]\\.[0-9]")
-        IF(gcc_compiler_version MATCHES "3\\.4\\.[0-9]")
+    ELSE(gcc_compiler_version MATCHES "4\\.[0-9].*")
+        IF(gcc_compiler_version MATCHES "3\\.4.*")
             SET(PCHSupport_FOUND TRUE)
-        ENDIF(gcc_compiler_version MATCHES "3\\.4\\.[0-9]")
-    ENDIF(gcc_compiler_version MATCHES "4\\.[0-9]\\.[0-9]")
+        ENDIF(gcc_compiler_version MATCHES "3\\.4.*")
+    ENDIF(gcc_compiler_version MATCHES "4\\.[0-9].*")
 ENDIF(CMAKE_COMPILER_IS_GNUCXX)
 
 MACRO(ADD_PRECOMPILED_HEADER _targetName _input)
