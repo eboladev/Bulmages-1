@@ -95,7 +95,7 @@ void ArtGraficos::muestraPantalla ( int numpantalla )
 
 
     /// Tratamos cada ventana
-    QWidget *activewindow = NULL;
+//    QWidget *activewindow = NULL;
     QDomNodeList nodos = pantalla.elementsByTagName ( "ITEM" );
     int nitem = 0;
 
@@ -188,7 +188,6 @@ void ArtGraficos::ponPantallas()
     QDomElement docElem = m_doc.documentElement();
     QDomNodeList nodos = docElem.elementsByTagName ( "PANTALLA" );
 
-    int i = 0;
     for ( int i = 0; i < nodos.count(); i++ ) {
         /// Cogemos el titulo de la pantalla
         QString titulo = nodos.item ( i ).firstChildElement ( "NOMBRE" ).text();

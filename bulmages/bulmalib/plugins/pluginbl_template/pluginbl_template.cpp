@@ -50,7 +50,7 @@ int BlForm_BlForm ( BlForm *l )
 {
     _depura ( "BlForm_BlForm", 0 );
 
-    EQToolButton *mui_imp = new EQToolButton ( l );
+    new EQToolButton ( l );
 
     _depura ( "END BlForm_BlForm", 0 );
     return 0;

@@ -194,7 +194,7 @@ void BtEscPrinter::horizontalTab()
 
 void BtEscPrinter::setHorizontalTabPos ( int numtabs, char* tabspos )
 {
-    if ( 0 >= numtabs > 32 )
+    if ( 0 >= numtabs && numtabs > 32 )
         return;
     const char header[2] = {0x1B, 0x44};
     buffer.append ( QByteArray::fromRawData ( header, 2 ) );
@@ -248,9 +248,9 @@ void BtEscPrinter::printBarCode ( barcodeSystem m, int n, char* codeData )
     int error = 0;
     switch ( m ) {
     case upca:
-        if ( ( 11 <= n <= 12 ) ) {
+        if ( ( 11 <= n && n <= 12 ) ) {
             for ( int i = 0; i < n; i++ ) {
-                if ( ! ( 48 <= codeData[i] <= 57 ) )
+                if ( ! ( 48 <= codeData[i] && codeData[i] <= 57 ) )
                     error = 2; //BADBARCODE
             }
         } else
@@ -258,9 +258,9 @@ void BtEscPrinter::printBarCode ( barcodeSystem m, int n, char* codeData )
         break;
 
     case upce:
-        if ( ( 11 <= n <= 12 ) ) {
+        if ( ( 11 <= n && n <= 12 ) ) {
             for ( int i = 0; i < n; i++ ) {
-                if ( ! ( 48 <= codeData[i] <= 57 ) )
+                if ( ! ( 48 <= codeData[i] && codeData[i] <= 57 ) )
                     error = 2; //BADBARCODE
             }
         } else
@@ -268,9 +268,9 @@ void BtEscPrinter::printBarCode ( barcodeSystem m, int n, char* codeData )
         break;
 
     case jan13:
-        if ( ( 12 <= n <= 13 ) ) {
+        if ( ( 12 <= n && n <= 13 ) ) {
             for ( int i = 0; i < n; i++ ) {
-                if ( ! ( 48 <= codeData[i] <= 57 ) )
+                if ( ! ( 48 <= codeData[i] && codeData[i] <= 57 ) )
                     error = 2; //BADBARCODE
             }
         } else
@@ -278,9 +278,9 @@ void BtEscPrinter::printBarCode ( barcodeSystem m, int n, char* codeData )
         break;
 
     case jan8:
-        if ( ( 7 <= n <= 8 ) ) {
+        if ( ( 7 <= n && n <= 8 ) ) {
             for ( int i = 0; i < n; i++ ) {
-                if ( ! ( 48 <= codeData[i] <= 57 ) ) {
+                if ( ! ( 48 <= codeData[i] && codeData[i] <= 57 ) ) {
                     error = 2; //BADBARCODE
                 }
             }
@@ -290,10 +290,10 @@ void BtEscPrinter::printBarCode ( barcodeSystem m, int n, char* codeData )
         break;
 
     case code39:
-        if ( ( 1 <= n <= 255 ) ) {
+        if ( ( 1 <= n && n <= 255 ) ) {
             for ( int i = 0; i < n; i++ ) {
                 int d = codeData[i];
-                if ( ! ( 48 <= d <= 57 ) && ! ( 65 <= d <= 90 ) && d != 32 && d != 36 && d != 37 && d != 43 && d != 45 && d != 46 && d != 47 && d != 42 )
+                if ( ! ( 48 <= d && d <= 57 ) && ! ( 65 <= d && d <= 90 ) && d != 32 && d != 36 && d != 37 && d != 43 && d != 45 && d != 46 && d != 47 && d != 42 )
                     error = 2; //BADBARCODE
             }
         } else
@@ -301,9 +301,9 @@ void BtEscPrinter::printBarCode ( barcodeSystem m, int n, char* codeData )
         break;
 
     case itf:
-        if ( ( 1 <= n <= 255 ) ) {
+        if ( ( 1 <= n && n <= 255 ) ) {
             for ( int i = 0; i < n; i++ ) {
-                if ( ! ( 48 <= codeData[i] <= 57 ) )
+                if ( ! ( 48 <= codeData[i] && codeData[i] <= 57 ) )
                     error = 2; //BADBARCODE
             }
         } else
@@ -311,10 +311,10 @@ void BtEscPrinter::printBarCode ( barcodeSystem m, int n, char* codeData )
         break;
 
     case codabar:
-        if ( ( 1 <= n <= 255 ) ) {
+        if ( ( 1 <= n && n <= 255 ) ) {
             for ( int i = 0; i < n; i++ ) {
                 int d = codeData[i];
-                if ( ! ( 48 <= d <= 57 ) && ! ( 65 <= d <= 68 ) && d != 36 && d != 43 && d != 45 && d != 46 && d != 47 && d != 58 )
+                if ( ! ( 48 <= d && d <= 57 ) && ! ( 65 <= d && d <= 68 ) && d != 36 && d != 43 && d != 45 && d != 46 && d != 47 && d != 58 )
                     error = 2; //BADBARCODE
             }
         } else
@@ -322,9 +322,9 @@ void BtEscPrinter::printBarCode ( barcodeSystem m, int n, char* codeData )
         break;
 
     case code93:
-        if ( ( 1 <= n <= 255 ) ) {
+        if ( ( 1 <= n && n <= 255 ) ) {
             for ( int i = 0; i < n; i++ ) {
-                if ( ! ( 0 <= codeData[i] <= 127 ) )
+                if ( ! ( 0 <= codeData[i] && codeData[i] <= 127 ) )
                     error = 2; //BADBARCODE
             }
         } else
@@ -332,9 +332,9 @@ void BtEscPrinter::printBarCode ( barcodeSystem m, int n, char* codeData )
         break;
 
     case code128:
-        if ( ( 2 <= n <= 255 ) ) {
+        if ( ( 2 <= n && n <= 255 ) ) {
             for ( int i = 0; i < n; i++ ) {
-                if ( ! ( 0 <= codeData[i] <= 127 ) )
+                if ( ! ( 0 <= codeData[i] && codeData[i] <= 127 ) )
                     error = 2; //BADBARCODE
             }
         } else
@@ -374,7 +374,7 @@ void BtEscPrinter::setBarCodeHeight ( int n )
 
 void BtEscPrinter::setBarCodeWidth ( int n ) // 1<=n<=6 on tm-t88IV
 {
-    if ( ! ( 2 <= n <= 6 ) )
+    if ( ! ( 2 <= n && n <= 6 ) )
         return; //ERROR
 
     const char header[3] = {0x1D, 0x77, ( char ) n};
@@ -665,7 +665,6 @@ void BtEscPrinter::test()
     selectPageMode();
     setPrintArea ( 100, 100, 350, 700 );
 
-    float x, y;
     int reps = 100;
     int radius = 150;
     int dx = 150;

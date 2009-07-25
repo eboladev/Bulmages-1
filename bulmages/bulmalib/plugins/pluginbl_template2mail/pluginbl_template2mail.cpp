@@ -49,9 +49,7 @@ int entryPoint ( QApplication * )
 int BlForm_BlForm ( BlForm *l )
 {
     _depura ( "BlForm_BlForm", 0 );
-
-    EQToolButtonMail *mui_imp = new EQToolButtonMail ( l );
-
+    new EQToolButtonMail ( l );
     _depura ( "END BlForm_BlForm", 0 );
     return 0;
 }

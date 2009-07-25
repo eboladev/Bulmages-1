@@ -92,12 +92,9 @@ int BtTicket_pintar ( BtTicket *tick )
     base basesimp;
     base basesimpreqeq;
     BlDbRecord *linea;
-
-    BtCompany *emp = ( BtCompany * ) tick->mainCompany();
-
+    
     /// Impresion de los contenidos.
     QString l;
-
     BlFixed total ( "0.00" );
     BlFixed descuentolinea ( "0.00" );
     for ( int i = 0; i < tick->listaLineas() ->size(); ++i ) {

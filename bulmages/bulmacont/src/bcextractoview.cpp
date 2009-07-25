@@ -375,12 +375,12 @@ void BcExtractoView::presentar()
             tipopunteo += " AND " + tabla + ".contrapartida = id_cuenta('" + contra + "') ";
         } // end if
         bool ok = FALSE;
-        float ssup = mui_saldosup->text().toFloat ( &ok );
+        mui_saldosup->text().toFloat ( &ok );
         if ( ok ) {
             saldosup = " AND " + tabla + ".debe + " + tabla + ".haber >= " + mui_saldosup->text();
         } // end if
         ok = FALSE;
-        float sinf = mui_saldoinf->text().toFloat ( &ok );
+        mui_saldoinf->text().toFloat ( &ok );
         if ( ok ) {
             saldoinf = " AND " + tabla + ".debe + " + tabla + ".haber <= " + mui_saldoinf->text();
         } // end if

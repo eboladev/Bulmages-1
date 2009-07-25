@@ -60,7 +60,7 @@
 void BcCompany ::s_asiento1()
 {
     _depura ( "BcCompany ::s_asiento1", 0 );
-    introapunts2->setWindowState ( introapunts2->windowState() & ~Qt::WindowMinimized | Qt::WindowActive );
+    introapunts2->setWindowState ( ( introapunts2->windowState() &  ~Qt::WindowMinimized ) | Qt::WindowActive );
     _depura ( "BcCompany ::s_asiento1", 0 );
 }
 
@@ -294,7 +294,7 @@ void BcCompany::maximiza()
 int BcCompany::muestracuentas()
 {
     _depura ( "BcCompany::muestracuentas", 0 );
-    m_listcuentas->setWindowState ( introapunts2->windowState() & ~Qt::WindowMinimized | Qt::WindowActive );
+    m_listcuentas->setWindowState ( ( introapunts2->windowState() & ~Qt::WindowMinimized ) | Qt::WindowActive );
     _depura ( "END BcCompany::muestracuentas", 0 );
     return 0;
 }
@@ -428,7 +428,7 @@ int BcCompany::nuevacuenta()
 int BcCompany::muestraapuntes1()
 {
     _depura ( "BcCompany::muestraapuntes1", 0 );
-    introapunts2->setWindowState ( introapunts2->windowState() & ~Qt::WindowMinimized | Qt::WindowActive );
+    introapunts2->setWindowState ( ( introapunts2->windowState() & ~Qt::WindowMinimized ) | Qt::WindowActive );
     _depura ( "END BcCompany::muestraapuntes1", 0 );
     return 0;
 }
@@ -441,7 +441,7 @@ int BcCompany::muestraapuntes1()
 int BcCompany::muestraasientos()
 {
     _depura ( "BcCompany::muestraasientos", 0 );
-    m_listasientos->setWindowState ( m_listasientos->windowState() & ~Qt::WindowMinimized | Qt::WindowActive );
+    m_listasientos->setWindowState ( ( m_listasientos->windowState() & ~Qt::WindowMinimized ) | Qt::WindowActive );
     _depura ( "END BcCompany::muestraasientos", 0 );
     return 0;
 }
@@ -517,7 +517,7 @@ int BcCompany::compbalance()
 int BcCompany::libromayor()
 {
     _depura ( "BcCompany::libromayor", 0 );
-    extracto->setWindowState ( extracto->windowState() &  ~Qt::WindowMinimized | Qt::WindowActive );
+    extracto->setWindowState ( ( extracto->windowState() &  ~Qt::WindowMinimized ) | Qt::WindowActive );
     _depura ( "END BcCompany::libromayor", 0 );
     return 0;
 }
@@ -662,7 +662,7 @@ int BcCompany::boton_ultimo()
 int BcCompany::librodiario()
 {
     _depura ( "BcCompany::librodiario", 0 );
-    diario->setWindowState ( diario->windowState() & ~Qt::WindowMinimized | Qt::WindowActive );
+    diario->setWindowState ( ( diario->windowState() & ~Qt::WindowMinimized ) | Qt::WindowActive );
     _depura ( "END BcCompany::librodiario", 0 );
     return 0;
 }

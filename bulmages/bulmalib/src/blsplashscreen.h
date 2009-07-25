@@ -33,6 +33,7 @@
 #include <QProgressBar>
 #include <QDesktopWidget>
 #include <QFile>
+#include <QSplashScreen>
 
 #include <stdlib.h>
 #include <stdio.h>
@@ -42,14 +43,15 @@
 
 /// Muestra y administra la ventana de bienvenida al programa.
 /** */
-class BL_EXPORT BlSplashScreen : public QDialog
+class BL_EXPORT BlSplashScreen : public QSplashScreen
 {
     Q_OBJECT
 
 private:
-    QProgressBar *barra;
+    QProgressBar *m_barra;
     QLabel *m_label, *m_label1, *l0;
-    QPixmap *image0;
+    QPixmap *m_image0;
+    QBrush  *m_brush;
 
 public:
     BlSplashScreen ( QString appSplash, QString appName, QString appVersion );

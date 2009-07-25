@@ -255,13 +255,13 @@ void BcDiarioView::presentar()
         } // end if
 
         bool ok = FALSE;
-        float ssup = mui_saldosup->text().toFloat ( &ok );
+        mui_saldosup->text().toFloat ( &ok );
         if ( ok ) {
             cad += cadand + tabla + ".debe + " + tabla + ".haber >= " + mui_saldosup->text();
             cadand = " AND ";
         } // end if
         ok = FALSE;
-        float sinf = mui_saldoinf->text().toFloat ( &ok );
+        mui_saldoinf->text().toFloat ( &ok );
         if ( ok ) {
             cad += cadand + tabla + ".debe + " + tabla + ".haber <= " + mui_saldoinf->text();
             cadand = " AND ";

@@ -162,16 +162,16 @@ void Devolucion::pintar()
             lineasPositivas.push_back ( newlinea );
         } else {
             lineasNegativas.push_back ( newlinea );
-        }
-    }
+        } // end if
+    } // end for
 
-    for ( int i = 0; i < lineasPositivas.size(); i++ ) {
-        for ( int j = 0; j < lineasNegativas.size(); j++ ) {
+    for ( unsigned int i = 0; i < lineasPositivas.size(); i++ ) {
+        for ( unsigned int j = 0; j < lineasNegativas.size(); j++ ) {
             if ( ( lineasPositivas[i].ref == lineasNegativas[j].ref ) && ( lineasPositivas[i].precioUnidad == lineasNegativas[j].precioUnidad ) ) {
                 lineasPositivas[i].cantidad += lineasNegativas[j].cantidad;
-            }
-        }
-    }
+            } // end if
+        } // end for
+    } // end for
 
     delete mui_ticketTable;
     delete mui_devolverTable;
@@ -249,7 +249,7 @@ void Devolucion::pintar()
 
 
     int tmp = 0;
-    for ( int i = 0; i < lineasPositivas.size(); i++ ) {
+    for ( unsigned int i = 0; i < lineasPositivas.size(); i++ ) {
         if ( lineasPositivas[i].cantidad > 0 ) {
             this->mui_ticketTable->insertRow ( tmp );
             item = m_ticket->listaLineas() ->at ( lineasPositivas[i].linea );
@@ -431,21 +431,18 @@ void Devolucion::on_mui_sacarButton_released()
         quitar ( row );
     }
 }
-void Devolucion::on_mui_cancelarButton_released()
-{
+void Devolucion::on_mui_cancelarButton_released() {
     this->close();
 }
 
-void Devolucion::on_mui_valeButton_released()
-{
-    int ret = QMessageBox::information ( this, _ ( "NO IMPLEMENTADO" ),
+void Devolucion::on_mui_valeButton_released() {
+    QMessageBox::information ( this, _ ( "NO IMPLEMENTADO" ),
                                          QString ( "NO IMPLEMENTADO" ),
                                          QMessageBox::Ok,
                                          QMessageBox::Ok );
 }
 
-void Devolucion::on_mui_efectivoButton_released()
-{
+void Devolucion::on_mui_efectivoButton_released() {
     if ( m_ticket == NULL ) return;
     if ( m_ticket->dbValue ( "idalbaran" ).isEmpty() ) return;
 
@@ -470,26 +467,23 @@ void Devolucion::on_mui_efectivoButton_released()
                     nitem->setDbValue ( camp->nomcampo(), "-" + mui_devolverTable->item ( i, 0 )->text() );
                 }
             } // end for
-        }
+        } // end for
 
         m_ticket->guardar();
 
         ( ( QDialog* ) this )->close();
-    }
+    } // end if
 }
 
-void Devolucion::ticketTableDoubleclick ( int row, int column )
-{
+void Devolucion::ticketTableDoubleclick ( int row, int column ) {
     anadir ( row );
 }
 
-void Devolucion::devolverTableDoubleclick ( int row, int column )
-{
+void Devolucion::devolverTableDoubleclick ( int row, int column ) {
     quitar ( row );
 }
 
-void Devolucion::refreshDevolver()
-{
+void Devolucion::refreshDevolver() {
     base basesimp;
     base basesimpreqeq;
     BlDbRecord *linea;

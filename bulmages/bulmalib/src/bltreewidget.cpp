@@ -42,7 +42,7 @@ void BlTreeWidget::procesaMenu ( QAction * )
 void BlTreeWidget::contextMenuEvent ( QContextMenuEvent * )
 {
     _depura ( "BlTreeWidget::contextMenuEvent", 0 );
-    QAction *del = NULL;
+//    QAction *del = NULL;
 /*
     int row = currentRow();
     if ( row < 0 )

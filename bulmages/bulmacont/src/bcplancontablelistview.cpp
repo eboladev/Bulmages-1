@@ -32,6 +32,7 @@
 #include "bccompany.h"
 
 /// Incluimos las im&aacute;genes que catalogan los tipos de cuentas.
+
 #include "images/cactivo.xpm"
 #include "images/cpasivo.xpm"
 #include "images/cneto.xpm"

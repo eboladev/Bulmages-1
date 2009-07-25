@@ -2688,7 +2688,7 @@ void BlSubForm::editFinished ( int row, int col, BlDbSubFormRecord *rec, BlDbSub
     m_campoactual = camp;
 
     /// Disparamos los plugins.
-    int res = g_plugins->lanza ( "BlSubForm_editFinished", this );
+    g_plugins->lanza ( "BlSubForm_editFinished", this );
 
 
     _depura ( "END BlSubForm::editFinished", 0 );

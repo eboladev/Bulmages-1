@@ -254,8 +254,9 @@ int BcAsientoForm::cargar ( QString idasiento )
             // exit
             break;
         case QMessageBox::Cancel:
+	default:
             return 0;
-        }
+        } // end switch
     } // end if
 
     QString query = "SELECT * FROM asiento WHERE idasiento = " + idasiento;

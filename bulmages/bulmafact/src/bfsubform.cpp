@@ -168,9 +168,9 @@ void BfSubForm::editFinished ( int row, int col, BlDbSubFormRecord *rec, BlDbSub
     m_registrolinea = rec;
     m_campoactual = camp;
 
-    BlDbRecordSet *cur2 = NULL;
+//    BlDbRecordSet *cur2 = NULL;
     BlDbRecordSet *cur = NULL;
-    BlDbRecordSet *cur1 = NULL;
+//    BlDbRecordSet *cur1 = NULL;
 
     /// Lanzamos el manejador de la SuperClase para que se atiendan las opciones mas genericas.
     BlSubForm::editFinished ( row, col, rec, camp );

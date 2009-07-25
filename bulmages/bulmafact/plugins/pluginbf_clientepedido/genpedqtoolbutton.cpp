@@ -91,7 +91,6 @@ void GenPedQToolButton::click()
     _depura ( "ImpQToolButton::click", 0 );
 
     if ( m_object->objectName() == "PresupuestoClienteBase" ) {
-        PresupuestoView *fpv = ( PresupuestoView * ) m_object;
         generarFactura1();
     }// end if
 

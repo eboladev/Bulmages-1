@@ -916,7 +916,8 @@ int BlDbRecord::generaRML ( const QString &arch )
             _depura ( "Usarem un codec per a ", 0, codec->name() );
         }// end if
     } else {
-        if ( ascii = xmlReader.hasError() ) {
+	ascii = xmlReader.hasError();
+        if ( ascii ) {
             _depura ( "El fitxer " + archivod + " no l'hem pogut llegir be i no sabem quina codificacio te. S'imaginarem que es ASCII per si de cas" );
         }// end if
         _depura ( "El fitxer " + archivod + " no se quina codificacio te. Deu ser UTF-8", 0 );

@@ -26,17 +26,18 @@
 \param argc
 \param argv
 **/
-BlArgParser::BlArgParser( int argc, char **argv )
-   : m_executable( argv[0] )
-   , m_dbName( "" )
-   , m_host( "" )
-   , m_port( "" )
-   , m_userName( "" )
-   , m_showVersion( false )
-   , m_askPassword( false )
-   , m_showHelp( false )
-{
+BlArgParser::BlArgParser( int argc, char **argv ) {
    _depura ( "BlArgParser::BlArgParser", 0 );
+  
+   m_executable = argv[0];
+   m_dbName = "";
+   m_host = "";
+   m_port = "";
+   m_userName = "";
+   m_showVersion = FALSE;
+   m_askPassword = FALSE;
+   m_showHelp = FALSE;
+   
    QString argument = "";
    char type_arg = ' ';
 

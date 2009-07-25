@@ -73,9 +73,7 @@ int BlForm_DesFicha ( BlForm *ficha )
 int BlForm_BlForm ( BlForm *l )
 {
     _depura ( "PluginBl_AttacgDocument::BlForm_BlForm", 0 );
-
-    ArchMenu *mui_imp = new ArchMenu ( l );
-
+    new ArchMenu ( l );
     _depura ( "END PluginBl_AttachDocument::BlForm_BlForm", 0 );
     return 0;
 }

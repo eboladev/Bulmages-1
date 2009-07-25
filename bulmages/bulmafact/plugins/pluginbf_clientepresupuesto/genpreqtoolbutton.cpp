@@ -100,12 +100,10 @@ void GenPreQToolButton::click()
 
 
     if ( m_object->objectName() == "PedidoClienteBase" ) {
-        PedidoClienteView *fpv = ( PedidoClienteView * ) m_object;
         generarFactura1();
     }// end if
 
-    if ( m_object->objectName() == "PresupuestoClienteBase" ) {
-        PresupuestoView *fpv = ( PresupuestoView * ) m_object;
+    if ( m_object->objectName() == "PresupuestoClienteBase" ) {;
         generarFactura2();
     }// end if
 

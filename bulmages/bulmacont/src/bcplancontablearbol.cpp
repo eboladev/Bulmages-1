@@ -50,7 +50,6 @@ void BcPlanContableArbol::nuevaRama ( BlDbRecordSet *ramas )
 {
     _depura ( "BcPlanContableArbol::nuevaRama", 0 );
 
-    unsigned int i;
     /// Rellenamos los valores de inicializacion para una hoja.
     hoja = new tipohoja;
     hoja->idcuenta = atoi ( ramas->valor ( "idcuenta" ).toAscii().constData() );
@@ -73,12 +72,11 @@ void BcPlanContableArbol::inicializa ( BlDbRecordSet *ramas )
 {
     _depura ( "BcPlanContableArbol::inicializa", 0 );
 
-    unsigned int i;
     QString padre;
     tiporama* guia = NULL;
     ramas->firstRecord();
     /// Hay que construir el arbol con todas sus hojitas (cuentas).
-    for ( i = 0; i < raiz.size(); ++i ) {
+    for (int i = 0; i < raiz.size(); ++i ) {
         padre = raiz.at ( i )->codigo;
         /// Creamos las primeras hojas en la ra&iacute;z y sintetizamos el resto
         /// recursivamente (si es que existen aun m&aacute;s hojas hijas).
@@ -166,9 +164,8 @@ void BcPlanContableArbol::actualizaHojas ( BlDbRecordSet *cuenta )
 {
     _depura ( "BcPlanContableArbol::actualizaHojas", 0 );
 
-    unsigned int i = 0;
+    int i = 0;
     bool actualizado = false;
-    bool condition = true;
     tipohoja *hojaraiz;
     QString cuentapadre = cuenta->valor ( "codigo" ).left ( 2 );
 
@@ -177,7 +174,7 @@ void BcPlanContableArbol::actualizaHojas ( BlDbRecordSet *cuenta )
         hojaraiz = raiz.at ( i );
         if ( cuentapadre == hojaraiz->codigo )
             break;
-    }
+    } // end for
 
     /// Si la rama principal se ha encontrado y tiene hijos, se actualiza
     if ( i < raiz.size() && hojaraiz->ramas ) {
@@ -209,7 +206,7 @@ void BcPlanContableArbol::ActualizarHoja ( tiporama** ramaraiz, BlDbRecordSet* c
     _depura ( "BcPlanContableArbol::ActualizarHoja", 0 );
 
     tiporama* rama = *ramaraiz;
-    unsigned int idcuenta = cuenta->valor ( "idcuenta" ).toInt();
+    int idcuenta = cuenta->valor ( "idcuenta" ).toInt();
 
     /// Buscamos por cada una de las ramas.
     while ( rama && ! ( *actualizado ) ) {
@@ -337,7 +334,7 @@ void BcPlanContableArbol::inicia()
 bool BcPlanContableArbol::deshoja ( unsigned int nivel, bool superiores )
 {
     _depura ( "BcPlanContableArbol::deshoja", 0 );
-    unsigned int i;
+    int i;
     bool deshojada = false;
     if ( nivel > 2 ) {
         /// Primero averiguamos en que raíz deshojamos la última

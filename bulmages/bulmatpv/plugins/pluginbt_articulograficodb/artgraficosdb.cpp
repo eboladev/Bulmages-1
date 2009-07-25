@@ -149,7 +149,7 @@ void ArtGraficosDb::muestraPantalla ( int numpantalla )
         mui_list->setColumnWidth ( column, cellwidth.toInt() );
 
     /// Tratamos cada ventana
-    QWidget *activewindow = NULL;
+//    QWidget *activewindow = NULL;
     
     int nitem = 0;
     int numarticulos = fa.m_listaarticulos.count();

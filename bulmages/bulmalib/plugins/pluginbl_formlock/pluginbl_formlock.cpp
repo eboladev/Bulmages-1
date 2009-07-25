@@ -129,9 +129,7 @@ int BlForm_DesFicha ( BlForm *ficha )
 int BlForm_BlForm ( BlForm *l )
 {
     _depura ( "BlForm_BlForm", 0 );
-
-    BloqMenu *mui_imp = new BloqMenu ( l );
-
+    new BloqMenu ( l );
     _depura ( "END BlForm_BlForm", 0 );
     return 0;
 }

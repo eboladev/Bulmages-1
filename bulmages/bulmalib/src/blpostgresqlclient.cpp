@@ -514,8 +514,7 @@ BlPostgreSqlClient::~BlPostgreSqlClient()
 }
 
 // escapa una cadena per a posar-la a la cadena de connexió a PostgreSQL
-QString & BlPostgreSqlClient::escCadConn(QString t) 
-{       // canvia ' per \' i \ per \\
+QString & BlPostgreSqlClient::escCadConn(QString t) {
     _depura ( "BlPostgreSqlClient::escCadConn", 0, t );
     _depura ( "END BlPostgreSqlClient::escCadConn", 0 );
      return (t.isNull()? t : t.replace(QRegExp("([\\\'])"),"\\\\1"));

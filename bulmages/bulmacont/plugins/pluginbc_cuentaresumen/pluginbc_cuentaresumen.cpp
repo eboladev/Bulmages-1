@@ -177,9 +177,9 @@ int BcSubForm_on_mui_list_cellChanged_post ( BcSubForm *subform )
 /**
 \param bcont
 **/
-int BcBulmaCont_closeEvent ( BcBulmaCont *bcont )
-{
-    BcCompany * emp = bcont->empresaactual();
+int BcBulmaCont_closeEvent ( BcBulmaCont *bcont )  {
+    _depura("BcBulmaCont_closeEvent");
+//    BcCompany * emp = bcont->empresaactual();
     QFile file ( g_confpr->valor ( CONF_DIR_USER ) + "pluginresumcta_.cfn" );
     if ( !viewCorrector->isChecked() ) {
         file.remove();
@@ -187,5 +187,6 @@ int BcBulmaCont_closeEvent ( BcBulmaCont *bcont )
         file.open ( QIODevice::WriteOnly );
         file.close();
     } // end if
+    _depura("END BcBulmaCont_closeEvent");
     return 0;
 }

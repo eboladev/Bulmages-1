@@ -96,7 +96,7 @@ void GenFacProQToolButton::click()
     }// end if
 
     if ( m_object->objectName() == "PedidoProveedorBase" ) {
-        PedidoProveedorView *fpv = ( PedidoProveedorView * ) m_object;
+//        PedidoProveedorView *fpv = ( PedidoProveedorView * ) m_object;
         generarFacturaProveedor1();
     }// end if
 

@@ -122,7 +122,7 @@ int MTicket_pintar ( MTicket *mtick )
 
         BlFixed totalLinea ( "0.00" );
         totalLinea = BlFixed ( item->dbValue ( "cantlalbaran" ) ) * BlFixed ( item->dbValue ( "pvplalbaran" ) );
-        html += "<TD bgcolor=\"" + bgcolor + "\" align=\"right\" width=\"50\">" + totalLinea.toQString(); + "</TD>";
+        html += "<TD bgcolor=\"" + bgcolor + "\" align=\"right\" width=\"50\">" + totalLinea.toQString() + "</TD>";
         html += "</TR>";
     }// end for
     html += "</TABLE>";

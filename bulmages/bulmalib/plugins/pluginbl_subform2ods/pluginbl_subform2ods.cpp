@@ -195,8 +195,8 @@ void myplugsubformods::sacaods()
 
     y += 1;
 
-    bool resultconvdouble, resultconvinteger;
-    double resultadodouble, resultadointeger;
+//    bool resultconvdouble, resultconvinteger;
+//    double resultadodouble, resultadointeger;
 
     /// Sacamos el contenido
     for ( int i = 0; i < subf->mui_list->rowCount(); ++i ) {
@@ -324,8 +324,8 @@ void myplugsubformods::sacaods1()
 
     y += 1;
 
-    bool resultconvdouble, resultconvinteger;
-    double resultadodouble, resultadointeger;
+//    bool resultconvdouble, resultconvinteger;
+//    double resultadodouble, resultadointeger;
 
 
  QTreeWidgetItemIterator it(subf);

@@ -209,7 +209,7 @@ void BlSearchWidget::on_mui_buscar_released()
 {
     _depura ( "BlSearchWidget::on_mui_buscar_released", 0 );
     /// Disparamos los plugins
-    int res = g_plugins->lanza ( "Busqueda_on_mui_buscar_released", this );
+    g_plugins->lanza ( "Busqueda_on_mui_buscar_released", this );
     _depura ( "END BlSearchWidget::on_mui_buscar_released", 0 );
 }
 

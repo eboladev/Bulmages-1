@@ -101,7 +101,7 @@ void GenCobroQToolButton::click()
             QMessageBox msgBox;
             msgBox.setText ( tr ( "Ya existe un cobro con esta referencia\n" ) );
             msgBox.setInformativeText ( tr ( "Desea abrir el cobro existente, registrar un nuevo cobro o salir?" ) );
-            QPushButton *connectButton = msgBox.addButton ( tr ( "Crear" ), QMessageBox::ActionRole );
+            msgBox.addButton ( tr ( "Crear" ), QMessageBox::ActionRole );
             QPushButton *openButton = msgBox.addButton ( QMessageBox::Open );
             QPushButton *abortButton = msgBox.addButton ( QMessageBox::Cancel );
             msgBox.setDefaultButton ( QMessageBox::Cancel );
@@ -154,7 +154,7 @@ void GenCobroQToolButton::click()
             QMessageBox msgBox;
             msgBox.setText ( tr ( "Ya existe un cobro con esta referencia\n" ) );
             msgBox.setInformativeText ( tr ( "Desea abrir el cobro existente, registrar un nuevo cobro o salir?" ) );
-            QPushButton *connectButton = msgBox.addButton ( tr ( "Crear" ), QMessageBox::ActionRole );
+            msgBox.addButton ( tr ( "Crear" ), QMessageBox::ActionRole );
             QPushButton *openButton = msgBox.addButton ( QMessageBox::Open );
             QPushButton *abortButton = msgBox.addButton ( QMessageBox::Cancel );
             msgBox.setDefaultButton ( QMessageBox::Cancel );
@@ -203,7 +203,7 @@ void GenCobroQToolButton::click()
             QMessageBox msgBox;
             msgBox.setText ( tr ( "Ya existe un cobro con esta referencia\n" ) );
             msgBox.setInformativeText ( tr ( "Desea abrir el cobro existente, registrar un nuevo cobro o salir?" ) );
-            QPushButton *connectButton = msgBox.addButton ( tr ( "Crear" ), QMessageBox::ActionRole );
+            msgBox.addButton ( tr ( "Crear" ), QMessageBox::ActionRole );
             QPushButton *openButton = msgBox.addButton ( QMessageBox::Open );
             QPushButton *abortButton = msgBox.addButton ( QMessageBox::Cancel );
             msgBox.setDefaultButton ( QMessageBox::Cancel );

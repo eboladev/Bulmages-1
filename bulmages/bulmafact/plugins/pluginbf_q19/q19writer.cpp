@@ -515,8 +515,8 @@ int Q19Writer::cobroQ19 ( QTextStream &out, QString sufijo,   BlDbRecordSet *cur
 				if ( finalLinia ) // cada camp es mitja linia, a final de linia partim per espai en blanc
 				{
 					//final de linia.
-					if ( finalLinia=regex.exactMatch ( concepte ) )
-					{
+					finalLinia=regex.exactMatch ( concepte );
+					if ( finalLinia )  {
 						out << regex.cap ( 1 ).leftJustified ( 40,' ',true );
 						concepte = regex.cap ( 2 );
 					} // else hi ha mes de 40 caracters sense un espai, tractem com si fos principi de linia
@@ -525,11 +525,10 @@ int Q19Writer::cobroQ19 ( QTextStream &out, QString sufijo,   BlDbRecordSet *cur
 				_depura ( "opcional mig ",0," numCamp="+QString::number ( numCamp )
 				          +" concepte='"+concepte+"'" );
 
-				if ( !finalLinia )
-				{
+				if ( !finalLinia )  {
 					out << concepte.leftJustified ( 40, ' ',true );
 					concepte = concepte.mid ( 40 );
-				}
+				} // end if
 				_depura ( "opcional fi ",0," numCamp="+QString::number ( numCamp )
 				          +" concepte='"+concepte+"'" );
 

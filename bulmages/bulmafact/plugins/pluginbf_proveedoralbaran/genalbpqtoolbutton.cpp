@@ -91,7 +91,7 @@ void GenAlbProQToolButton::click()
     _depura ( "ImpQToolButton::click", 0 );
 
     if ( m_object->objectName() == "PedidoProveedorBase" ) {
-        PedidoProveedorView *fpv = ( PedidoProveedorView * ) m_object;
+//        PedidoProveedorView *fpv = ( PedidoProveedorView * ) m_object;
         generarAlbaranProveedor();
     }// end if
 
