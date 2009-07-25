@@ -89,7 +89,7 @@ INCLUDE (${CMAKE_CURRENT_SOURCE_DIR}/ModulesCMake/FindPostgreSQL.cmake)
 INCLUDE (${CMAKE_CURRENT_SOURCE_DIR}/ModulesCMake/FindGettext.cmake)
 
 option(USE_GETTEXT "Enable use gettext mode" ON)
-
+option(ENABLE_PCH  "Enable precompiled headers" OFF)
 
 if(NOT PGSQL_FOUND)
   message(FATAL_ERROR "Bulmages needs libpq to compile")
