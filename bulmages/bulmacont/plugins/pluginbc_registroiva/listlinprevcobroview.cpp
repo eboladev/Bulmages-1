@@ -20,12 +20,6 @@
 
 /// @todo Hay que hacer dos lineas de presentacion (una para el listado en las facturas y otro para el listado por si solo)
 /// Incluimos las imagenes que catalogan los tipos de cuentas.
-#include "images/cactivo.xpm"
-#include "images/cpasivo.xpm"
-#include "images/cneto.xpm"
-#include "images/cingresos.xpm"
-#include "images/cgastos.xpm"
-
 #include "registroivaview.h"
 
 #define COL_SELECCION                   0
@@ -55,6 +49,7 @@
 #include "blconfiguration.h"
 #include "bcasientoview.h"
 #include "listlinprevcobroview.h"
+#include "bcimages.h"
 
 
 ///

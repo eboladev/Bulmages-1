@@ -30,15 +30,7 @@
 #include "blfunctions.h"
 #include "bccuentaview.h"
 #include "bccompany.h"
-
-/// Incluimos las im&aacute;genes que catalogan los tipos de cuentas.
-
-#include "images/cactivo.xpm"
-#include "images/cpasivo.xpm"
-#include "images/cneto.xpm"
-#include "images/cingresos.xpm"
-#include "images/cgastos.xpm"
-
+#include "bcimages.h"
 
 ///
 /**
