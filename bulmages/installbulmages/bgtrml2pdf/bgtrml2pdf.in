@@ -522,7 +522,22 @@ class _rml_flowable(object):
 			style = self.styles.para_style_get(node)
 			return platypus.Paragraph(self._textual(node), style, **(bgutils.attr_get(node, [], {'bulletText':'str'})))
 		elif node.localName=='barCode':
-			try:
+                        try:
+                            import reportlab.graphics.barcode
+                            from reportlab.graphics.barcode import code128
+                            from reportlab.graphics.barcode import code39
+                            from reportlab.graphics.barcode import code93
+                            from reportlab.graphics.barcode import common
+                            from reportlab.graphics.barcode import fourstate
+                            from reportlab.graphics.barcode import usps
+                            args = bgutils.attr_get(node, [], {'ratio':'float','xdim':'unit','badWidth':'unit','barHeight':'unit','height':'unit','checksum':'bool','quiet':'bool','rquiet':'bool','lquiet':'bool','gap':'float','bearers':'unit','stop':'bool','fontName':'string','fontSize':'unit','x':'unit','y':'unit','barFillColor':'color','barStrokeWidth':'unit','barStrokeColor':'color','textColor':'color','humanReadable':'bool'})
+                            if (node.hasAttribute('xdim') and not node.hasAttribute('barWidth')):
+                                   args['barWidth']=args['xdim']
+                            if (node.hasAttribute('height') and not node.hasAttribute('barHeight')):
+                                   args['barHeight']=args['height']
+
+                        except:
+			   try:
 				import reportlab.extensions.barcode
 				from reportlab.extensions.barcode import code128
 				from reportlab.extensions.barcode import code39
@@ -530,10 +545,11 @@ class _rml_flowable(object):
 				from reportlab.extensions.barcode import common
 				from reportlab.extensions.barcode import fourstate
 				from reportlab.extensions.barcode import usps
-			except:
-				print 'Warning: Reportlab barcode extension not installed !'
+                                args = bgutils.attr_get(node, [], {'ratio':'float','xdim':'unit','height':'unit','checksum':'bool','quiet':'bool'})
+			   except:
+				print 'Warning: Reportlab v1 barcode extension not installed ! (it comes as part of the graphics package in ReportLab 2.0, so no need for the extension there)'
 				return None
-			args = bgutils.attr_get(node, [], {'ratio':'float','xdim':'unit','height':'unit','checksum':'bool','quiet':'bool'})
+			   
 			codes = {
 				'codabar': lambda x: common.Codabar(x, **args),
 				'code11': lambda x: common.Code11(x, **args),
