@@ -1,0 +1,1935 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>Dialog</class>
+ <widget class="QDialog" name="Dialog">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>766</width>
+    <height>549</height>
+   </rect>
+  </property>
+  <property name="sizePolicy">
+   <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+    <horstretch>0</horstretch>
+    <verstretch>0</verstretch>
+   </sizepolicy>
+  </property>
+  <property name="windowTitle">
+   <string>Etiquetes per als Articles</string>
+  </property>
+  <property name="exportaRML" stdset="0">
+   <stringlist>
+    <string>ample.cleanText</string>
+    <string>barresComEtiqueta.checked</string>
+    <string>midaBarres.value</string>
+    <string>liniesSenseBarres.value</string>
+    <string>altPaper.cleanText</string>
+    <string>primeraFila.value</string>
+    <string>primeraCol.value</string>
+    <string>numcols.value</string>
+    <string>numfiles.value</string>
+    <string>alt.value</string>
+    <string>ample.value</string>
+    <string>altPaper.value</string>
+    <string>amplePaper.value</string>
+    <string>barresFormat.currentText</string>
+    <string>barresAliesCurt.checked</string>
+    <string>barresAliesLlarg.checked</string>
+    <string>barresCodi.checked</string>
+    <string>barresSense.checked</string>
+    <string>midaLletra.value</string>
+    <string>divisa.text</string>
+    <string>textPVP.checked</string>
+    <string>textDescripcio.checked</string>
+    <string>textCodi.checked</string>
+    <string>midaPredefinida.currentText</string>
+    <string>midaPersonalitzada.checked</string>
+    <string>margeSuperior.value</string>
+    <string>margeInferior.value</string>
+    <string>margeDret.value</string>
+    <string>margeEsquerre.value</string>
+    <string>alt.cleanText</string>
+   </stringlist>
+  </property>
+  <layout class="QVBoxLayout" name="verticalLayout_8">
+   <item>
+    <widget class="QTabWidget" name="tabWidget">
+     <property name="currentIndex">
+      <number>0</number>
+     </property>
+     <widget class="QWidget" name="tab">
+      <attribute name="title">
+       <string>Co&amp;ntinguts</string>
+      </attribute>
+      <layout class="QVBoxLayout" name="verticalLayout_11">
+       <item>
+        <widget class="QGroupBox" name="groupBox_7">
+         <property name="toolTip">
+          <string>Si voleu aprofitar un full d'etiquetes començat 
+poseu la posició on ha de començar la primera 
+etiqueta al primer full</string>
+         </property>
+         <property name="title">
+          <string>&amp;Primera etiqueta impresa</string>
+         </property>
+         <layout class="QVBoxLayout" name="verticalLayout_13">
+          <item>
+           <layout class="QHBoxLayout" name="horizontalLayout_9">
+            <item>
+             <widget class="QLabel" name="label_10">
+              <property name="text">
+               <string>&amp;Fila</string>
+              </property>
+              <property name="buddy">
+               <cstring>primeraFila</cstring>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QSpinBox" name="primeraFila">
+              <property name="minimum">
+               <number>1</number>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <spacer name="horizontalSpacer_10">
+              <property name="orientation">
+               <enum>Qt::Horizontal</enum>
+              </property>
+              <property name="sizeHint" stdset="0">
+               <size>
+                <width>40</width>
+                <height>20</height>
+               </size>
+              </property>
+             </spacer>
+            </item>
+            <item>
+             <widget class="QLabel" name="primeraCollabel">
+              <property name="text">
+               <string>Co&amp;lumna</string>
+              </property>
+              <property name="buddy">
+               <cstring>primeraCol</cstring>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QSpinBox" name="primeraCol">
+              <property name="minimum">
+               <number>1</number>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </item>
+         </layout>
+        </widget>
+       </item>
+       <item>
+        <widget class="QGroupBox" name="groupBox">
+         <property name="title">
+          <string>C&amp;odi de Barres</string>
+         </property>
+         <layout class="QVBoxLayout" name="verticalLayout_12">
+          <item>
+           <layout class="QHBoxLayout" name="horizontalLayout_10">
+            <item>
+             <widget class="QRadioButton" name="barresSense">
+              <property name="text">
+               <string>&amp;Sense</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QRadioButton" name="barresCodi">
+              <property name="text">
+               <string>&amp;Codi d'article</string>
+              </property>
+              <property name="checked">
+               <bool>true</bool>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QRadioButton" name="barresAliesCurt">
+              <property name="toolTip">
+               <string>Posar l'àlies més curt de l'article al codi de barres
+(Per si el codi d'article o els altres àlies generen 
+un codi de barres massa llarg per cabre a l'etiqueta). 
+Només funciona si teniu instal·lat el plugin alias 
+a l'empresa.</string>
+              </property>
+              <property name="text">
+               <string>L'&amp;àlies més curt</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QRadioButton" name="barresAliesLlarg">
+              <property name="toolTip">
+               <string>Posar l'àlies més llarg de l'article al codi de barres 
+pot servir per evitar ambigüitats en llegir-lo 
+si hi hagués altres articles amb àlies 
+que comencessin pel mateix text. 
+Només funciona si teniu instal·lat 
+el plugin alias a l'empresa.</string>
+              </property>
+              <property name="text">
+               <string>L'àlies més llar&amp;g</string>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </item>
+          <item>
+           <layout class="QHBoxLayout" name="horizontalLayout_12">
+            <item>
+             <widget class="QLabel" name="label_3">
+              <property name="sizePolicy">
+               <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
+                <horstretch>0</horstretch>
+                <verstretch>0</verstretch>
+               </sizepolicy>
+              </property>
+              <property name="text">
+               <string>&amp;Format</string>
+              </property>
+              <property name="buddy">
+               <cstring>barresFormat</cstring>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QComboBox" name="barresFormat">
+              <property name="sizePolicy">
+               <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+                <horstretch>0</horstretch>
+                <verstretch>0</verstretch>
+               </sizepolicy>
+              </property>
+              <property name="modelColumn">
+               <number>0</number>
+              </property>
+              <item>
+               <property name="text">
+                <string>code128 (recomanat, alfanumèric ASCII)</string>
+               </property>
+              </item>
+              <item>
+               <property name="text">
+                <string>standard39 (alfanumèric majúscules, llarg)</string>
+               </property>
+              </item>
+              <item>
+               <property name="text">
+                <string>standard93 (alfanumèric majúscules)</string>
+               </property>
+              </item>
+              <item>
+               <property name="text">
+                <string>extended39 (alfanumèric ASCII, llarg)</string>
+               </property>
+              </item>
+              <item>
+               <property name="text">
+                <string>extended93 (alfanumèric ASCII)</string>
+               </property>
+              </item>
+              <item>
+               <property name="text">
+                <string>codabar (dígits i alguns símbols)</string>
+               </property>
+              </item>
+              <item>
+               <property name="text">
+                <string>code11 (només dígits)</string>
+               </property>
+              </item>
+              <item>
+               <property name="text">
+                <string>i2of5 (només dígits)</string>
+               </property>
+              </item>
+              <item>
+               <property name="text">
+                <string>msi (dígits)</string>
+               </property>
+              </item>
+              <item>
+               <property name="text">
+                <string>fim (correu postal EUA)</string>
+               </property>
+              </item>
+              <item>
+               <property name="text">
+                <string>postnet (codi postal vell EUA)</string>
+               </property>
+              </item>
+             </widget>
+            </item>
+           </layout>
+          </item>
+          <item>
+           <layout class="QHBoxLayout" name="horizontalLayout_16">
+            <item>
+             <widget class="QCheckBox" name="barresComEtiqueta">
+              <property name="text">
+               <string>&amp;Tota l'alçada de l'etiqueta</string>
+              </property>
+              <property name="checked">
+               <bool>true</bool>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QLabel" name="label_12">
+              <property name="sizePolicy">
+               <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
+                <horstretch>0</horstretch>
+                <verstretch>0</verstretch>
+               </sizepolicy>
+              </property>
+              <property name="text">
+               <string>&amp;menys</string>
+              </property>
+              <property name="buddy">
+               <cstring>liniesSenseBarres</cstring>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QSpinBox" name="liniesSenseBarres">
+              <property name="sizePolicy">
+               <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                <horstretch>0</horstretch>
+                <verstretch>0</verstretch>
+               </sizepolicy>
+              </property>
+              <property name="value">
+               <number>3</number>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QLabel" name="label_13">
+              <property name="text">
+               <string>línies de text </string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <spacer name="horizontalSpacer_13">
+              <property name="orientation">
+               <enum>Qt::Horizontal</enum>
+              </property>
+              <property name="sizeHint" stdset="0">
+               <size>
+                <width>40</width>
+                <height>20</height>
+               </size>
+              </property>
+             </spacer>
+            </item>
+           </layout>
+          </item>
+          <item>
+           <layout class="QHBoxLayout" name="horizontalLayout_14">
+            <item>
+             <widget class="QLabel" name="label_2">
+              <property name="text">
+               <string>A&amp;lçada fixa</string>
+              </property>
+              <property name="buddy">
+               <cstring>midaBarres</cstring>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QDoubleSpinBox" name="midaBarres">
+              <property name="enabled">
+               <bool>false</bool>
+              </property>
+              <property name="sizePolicy">
+               <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                <horstretch>0</horstretch>
+                <verstretch>0</verstretch>
+               </sizepolicy>
+              </property>
+              <property name="suffix">
+               <string>mm</string>
+              </property>
+              <property name="maximum">
+               <double>999.990000000000009</double>
+              </property>
+              <property name="value">
+               <double>12.000000000000000</double>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <spacer name="horizontalSpacer_11">
+              <property name="orientation">
+               <enum>Qt::Horizontal</enum>
+              </property>
+              <property name="sizeHint" stdset="0">
+               <size>
+                <width>40</width>
+                <height>20</height>
+               </size>
+              </property>
+             </spacer>
+            </item>
+           </layout>
+          </item>
+         </layout>
+        </widget>
+       </item>
+       <item>
+        <widget class="QGroupBox" name="groupBox_6">
+         <property name="title">
+          <string>&amp;Text</string>
+         </property>
+         <layout class="QVBoxLayout" name="verticalLayout_9">
+          <item>
+           <layout class="QHBoxLayout" name="horizontalLayout_4">
+            <item>
+             <widget class="QCheckBox" name="textPVP">
+              <property name="text">
+               <string>&amp;PVP</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QCheckBox" name="textDescripcio">
+              <property name="text">
+               <string>&amp;Descripció</string>
+              </property>
+              <property name="checked">
+               <bool>true</bool>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QCheckBox" name="textCodi">
+              <property name="text">
+               <string>&amp;Codi complet d'article</string>
+              </property>
+              <property name="checked">
+               <bool>true</bool>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </item>
+          <item>
+           <layout class="QHBoxLayout" name="horizontalLayout_15">
+            <item>
+             <layout class="QFormLayout" name="formLayout">
+              <item row="0" column="0">
+               <widget class="QLabel" name="label_16">
+                <property name="text">
+                 <string>&amp;Divisa</string>
+                </property>
+                <property name="buddy">
+                 <cstring>divisa</cstring>
+                </property>
+               </widget>
+              </item>
+              <item row="0" column="1">
+               <widget class="QLineEdit" name="divisa">
+                <property name="enabled">
+                 <bool>false</bool>
+                </property>
+                <property name="sizePolicy">
+                 <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                  <horstretch>0</horstretch>
+                  <verstretch>0</verstretch>
+                 </sizepolicy>
+                </property>
+                <property name="text">
+                 <string>€</string>
+                </property>
+               </widget>
+              </item>
+              <item row="1" column="0">
+               <widget class="QLabel" name="label">
+                <property name="text">
+                 <string>Mida de la &amp;lletra</string>
+                </property>
+                <property name="buddy">
+                 <cstring>midaLletra</cstring>
+                </property>
+               </widget>
+              </item>
+              <item row="1" column="1">
+               <widget class="QSpinBox" name="midaLletra">
+                <property name="sizePolicy">
+                 <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                  <horstretch>0</horstretch>
+                  <verstretch>0</verstretch>
+                 </sizepolicy>
+                </property>
+                <property name="maximum">
+                 <number>999</number>
+                </property>
+                <property name="value">
+                 <number>6</number>
+                </property>
+               </widget>
+              </item>
+             </layout>
+            </item>
+            <item>
+             <spacer name="horizontalSpacer_6">
+              <property name="orientation">
+               <enum>Qt::Horizontal</enum>
+              </property>
+              <property name="sizeHint" stdset="0">
+               <size>
+                <width>40</width>
+                <height>20</height>
+               </size>
+              </property>
+             </spacer>
+            </item>
+           </layout>
+          </item>
+         </layout>
+        </widget>
+       </item>
+       <item>
+        <spacer name="verticalSpacer">
+         <property name="orientation">
+          <enum>Qt::Vertical</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>20</width>
+           <height>40</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QWidget" name="tab_2">
+      <attribute name="title">
+       <string>&amp;Mides</string>
+      </attribute>
+      <layout class="QVBoxLayout" name="verticalLayout_10">
+       <item>
+        <layout class="QHBoxLayout" name="horizontalLayout_13">
+         <item>
+          <widget class="QLabel" name="label_34">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+           <property name="text">
+            <string>Mides pre&amp;definides</string>
+           </property>
+           <property name="buddy">
+            <cstring>midaPredefinida</cstring>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QComboBox" name="midaPredefinida">
+           <property name="comentari" stdset="0">
+            <string>si afegiu mides predefinides, els decimals van amb punt el format és : nom (amplada_etiqueta_mm,alçada_etiqueta_mm,numero_files,numero_columnes,amplada_paper_mm,alçada_paper_mm,marge_superior_mm,marge_Esquerre_mm,marge_dret_mm,marge_inferior_mm)</string>
+           </property>
+           <item>
+            <property name="text">
+             <string>habitual</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>APLI01288 (97,42.4,6,2,210,297,20.975,8,8,21.625)</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>APLI01273 (70,37,8,3,210,297,0,0,0,1)</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>APLI01270 (70,25.4,11,3,210,297,8.446,0,0,9.154)</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>APLI01284 (52.5,21.2,14,4,210,297,0,0,0,0.199999999999989)</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>APLI01243 (210,149.2,0,0,210,297,0,0,210,297)</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>APLI01277 (105,42.4,7,2,210,297,0,0,0,0.199999999999989)</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>APLI01286 (52.5,29.7,10,4,210,297,0,0,0,0)</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>APLI11352 (297,420,0,0,210,297,0,0,210,297)</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>APLI01295 (70,50.8,5,3,210,297,21.18,0,0,21.82)</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>APLI01278 (105,57,7,2,210,297,5.675,0,0,-107.675)</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>APLI01274 (105,37,8,2,210,297,0,0,0,1)</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>APLI01287 (105,35,0,0,210,297,0,0,210,297)</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>APLI01289 (105,48,6,2,210,297,4.172,0,0,4.82799999999997)</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>APLI01281 (210,297,1,1,210,297,0,0,0,0)</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>APLI01279 (105,74,4,2,210,297,0,0,0,1)</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>APLI01293 (70,33.8,8,3,210,297,12.975,0,0,13.625)</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>APLI01276 (70,42.4,7,3,210,297,0,0,0,0.199999999999989)</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>APLI01264 (210,148,2,1,210,297,0,0,0,1)</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>APLI11659 (175,135,0,0,210,297,0,0,210,297)</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>APLI01283 (38,21.2,13,5,210,297,10.375,10,10,11.025)</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>APLI01298 (70,36,8,3,210,297,4.175,0,0,4.82499999999999)</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>APLI01291 (97,67.7,4,2,210,297,12.775,8,8,13.425)</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>APLI01292 (105,70,4,2,210,297,8.175,0,0,8.82499999999999)</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>APLI01275 (105,40,7,2,210,297,8.15,0,0,8.85000000000002)</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>APLI01285 (48.5,25.4,11,4,210,297,8.475,8,8,9.125)</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>APLI01282 (48.5,16.9,4,17,210,297,4.525,8,-622.5,224.875)</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>APLI01280 (105,148,2,2,210,297,0,0,0,1)</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>APLI01294 (70,16.9,17,3,210,297,4.53,0,0,5.17000000000007)</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>APLI01272 (70,35,8,3,210,297,8.172,0,0,8.82799999999997)</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>APLI01263 (64.6,33.8,8,3,210,297,12.975,8.1,8.10000000000002,13.625)</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>APLI01271 (70,30,9,3,210,297,13.175,0,0,13.825)</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>APLI01290 (70,67.7,4,3,210,297,12.707,0,0,13.493)</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>APLI01299 (105,29,10,2,210,297,3.175,0,0,3.82499999999999)</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>APLI02414 (63.5,38.1,7,3,210,297,14.825,7.25,7.25,15.475)</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>APLI02419 (99.1,38.1,7,2,210,297,14.82,4.65,4.65000000000001,15.48)</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>APLI02417 (70,71.9,4,2,210,297,4.37,18,18,5.02999999999997)</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>APLI02412 (199.6,289.1,1,1,210,297,3.625,5.2,5.20000000000002,4.27499999999998)</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>APLI02421 (99.1,93.1,3,2,210,297,8.52,4.65,4.65000000000001,9.18000000000006)</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>APLI02423 (199.6,144.5,2,1,210,297,4.73,5.2,5.20000000000002,3.26999999999998)</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>APLI02415 (63.5,46.6,6,3,210,297,8.37,7.25,7.25,9.02999999999997)</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>APLI02411 (99.1,57,5,2,210,297,6.73,4.65,4.65000000000001,5.26999999999998)</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>APLI02420 (99.1,67.7,4,2,210,297,12.77,4.65,4.65000000000001,13.43)</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>APLI01244 (60,60,4,3,210,297,13.175,9,9,13.825)</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>APLI02418 (99.1,34,8,2,210,297,12.17,4.65,4.65000000000001,12.83)</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>APLI02422 (99.1,139,2,2,210,297,10.23,4.65,4.65000000000001,8.76999999999998)</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>APLI02416 (63.5,72,4,3,210,297,4.175,7.25,7.25,4.82499999999999)</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>APLI02409 (64,33.9,8,3,210,297,12.735,6.5,6.5,13.065)</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>APLI10825 (48.5,25.4,11,4,210,297,8.475,8,8,9.125)</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>APLI01215 (210,297,1,1,210,297,0,0,0,0)</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>APLI01214 (105,37,8,2,210,297,0,0,0,1)</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>APLI01212 (70,37,8,3,210,297,0,0,0,1)</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>APLI10826 (97,67.7,4,2,210,297,12.775,8,8,13.425)</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>APLI01213 (97,42.4,6,2,210,297,20.975,8,8,21.625)</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>APLI10919 (210,148,2,1,210,297,0,0,0,1)</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>APLI10827 (105,148,2,2,210,297,0,0,0,1)</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>APLI01209 (38,21.2,13,5,210,297,10.375,10,10,11.025)</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>APLI01992 (63.5,38.1,7,3,210,297,14.825,7.25,7.25,15.475)</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>APLI01993 (63.5,46.6,6,3,210,297,8.37,7.25,7.25,9.02999999999997)</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>APLI01232 (190,38,7,1,210,297,15.172,10,10,15.828)</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>APLI01999 (99.1,67.7,4,2,210,297,12.77,4.65,4.65000000000001,13.43)</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>APLI01233 (190,61,4,1,210,297,26.175,10,10,26.825)</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>APLI01997 (99.1,34,8,2,210,297,12.67,4.65,4.65000000000001,12.33)</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>APLI01998 (99.1,38.1,7,2,210,297,14.82,4.65,4.65000000000001,15.48)</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>APLI01784 (97,42.4,6,2,210,297,20.975,8,8,21.625)</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>APLI01796 (105,74,4,2,210,297,0,0,0,1)</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>APLI01778 (52.5,29.7,10,4,210,297,0,0,0,0)</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>APLI01776 (38,21.2,13,5,210,297,10.375,10,10,11.025)</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>APLI10560 (70,30,9,3,210,297,13.175,0,0,13.825)</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>APLI01783 (70,37,8,3,210,297,0,0,0,1)</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>APLI01788 (210,297,1,1,210,297,0,0,0,0)</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>APLI01787 (210,148,2,1,210,297,0,0,0,1)</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>APLI01785 (105,37,8,2,210,297,0,0,0,1)</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>APLI01794 (105,35,8,2,210,297,8.1725,0,0,8.82749999999999)</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>APLI10558 (48.5,25.4,11,4,210,297,8.475,8,8,9.125)</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>APLI10559 (70,25.4,11,3,210,297,8.446,0,0,9.154)</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>APLI01786 (105,40,7,2,210,297,8.15,0,0,8.85000000000002)</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>APLI01779 (70,42.4,7,3,210,297,0,0,0,0.199999999999989)</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>APLI10563 (105,48,6,2,210,297,4.175,0,0,4.82499999999999)</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>APLI10557 (48.5,16.9,17,4,210,297,4.525,8,8,5.17500000000007)</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>APLI01782 (70,35,8,3,210,297,8.172,0,0,8.82799999999997)</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>APLI01781 (64.6,33.8,8,3,210,297,12975,8.1,8.10000000000002,-12948.4)</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>APLI10562 (105,29,10,2,210,297,3.175,0,0,3.82499999999999)</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>APLI01797 (105,148,2,2,210,297,0,0,0,1)</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>APLI01777 (52.5,21.2,14,4,210,297,0,0,0,0.199999999999989)</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>APLI01795 (105,42.4,7,2,210,297,0,0,0,0.199999999999989)</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>APLI10564 (105,57,5,2,210,297,5.675,0,0,6.32499999999999)</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>APLI10561 (99.1,34,8,2,210,297,12.175,4.65,4.65000000000001,12.825)</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>APLI10565 (48.5,16.9,17,4,210,297,4.525,8,8,5.17500000000007)</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>APLI02528 (105,148,2,2,210,297,0,0,0,1)</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>APLI02517 (52.5,21.2,14,4,210,297,0,0,0,0.199999999999989)</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>APLI10568 (70,25.4,11,3,210,297,8.446,0,0,9.154)</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>APLI02519 (70,35,8,3,210,297,8.172,0,0,8.82799999999997)</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>APLI02520 (70,37,8,3,210,297,0,0,0,1)</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>APLI10572 (105,40,7,2,210,297,8.175,0,0,8.82499999999999)</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>APLI11011 (70,50.8,5,3,210,297,21.18,0,0,21.82)</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>APLI02515 (38,21.2,13,5,210,297,10.375,10,10,11.025)</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>APLI10574 (105,57,5,2,210,297,5.675,0,0,6.32499999999999)</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>APLI02529 (210,148,2,1,210,297,0,0,0,1)</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>APLI02524 (105,35,8,2,210,297,8.1725,0,0,8.82749999999999)</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>APLI02516 (48.5,25.4,11,4,210,297,8.475,8,8,9.125)</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>APLI02525 (105,37,8,2,210,297,0,0,0,1)</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>APLI02523 (97,67.7,4,2,210,297,12.775,8,8,13.425)</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>APLI10573 (105,48,6,2,210,297,4.1725,0,0,4.82749999999999)</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>APLI02527 (105,74,4,2,210,297,0,0,0,1)</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>APLI02526 (105,42.4,7,2,210,297,0,0,0,0.199999999999989)</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>APLI02521 (70,42.4,7,3,210,297,0,0,0,0.199999999999989)</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>APLI02518 (52.5,29.7,10,4,210,297,0,0,0,0)</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>APLI02530 (210,297,1,1,210,297,0,0,0,0)</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>APLI02522 (97,42.4,6,2,210,297,20.975,8,8,21.625)</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>APLI10570 (99.1,34,8,2,210,297,12.175,4.65,4.65000000000001,12.825)</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>APLI02430 (105,42.4,7,2,210,297,0,0,0,0.199999999999989)</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>APLI02436 (210,297,1,1,210,297,0,0,0,0)</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>APLI02435 (210,148,2,1,210,297,0,0,0,1)</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>APLI02426 (70,36,8,3,210,297,4.175,0,0,4.82499999999999)</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>APLI02427 (70,37,8,3,210,297,0,0,0,1)</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>APLI02433 (105,74,4,2,210,297,0,0,0,1)</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>APLI02431 (105,57,5,2,210,297,5.675,0,0,6.32499999999999)</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>APLI02434 (105,148,2,2,210,297,0,0,0,1)</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>APLI02432 (105,70,4,2,210,297,8.175,0,0,8.82499999999999)</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>APLI02425 (70,30,9,3,210,297,13.175,0,0,13.825)</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>APLI02429 (105,37,8,2,210,297,0,0,0,1)</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>APLI02428 (70,42.4,7,3,210,297,0,0,0,0.199999999999989)</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>APLI10208 (199.6,289.1,1,1,210,297,4.68,5.2,5.20000000000002,3.21999999999997)</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>APLI10204 (99.1,34,8,2,210,297,13.23,4.65,4.65000000000001,11.77)</string>
+            </property>
+           </item>
+          </widget>
+         </item>
+        </layout>
+       </item>
+       <item>
+        <widget class="QGroupBox" name="midaPersonalitzada">
+         <property name="enabled">
+          <bool>true</bool>
+         </property>
+         <property name="title">
+          <string>Mides personalit&amp;zades</string>
+         </property>
+         <property name="flat">
+          <bool>false</bool>
+         </property>
+         <property name="checkable">
+          <bool>true</bool>
+         </property>
+         <property name="checked">
+          <bool>false</bool>
+         </property>
+         <layout class="QVBoxLayout" name="verticalLayout_7">
+          <item>
+           <widget class="QFrame" name="frameMidaPersonalitzada">
+            <property name="enabled">
+             <bool>false</bool>
+            </property>
+            <property name="frameShape">
+             <enum>QFrame::NoFrame</enum>
+            </property>
+            <property name="frameShadow">
+             <enum>QFrame::Sunken</enum>
+            </property>
+            <property name="lineWidth">
+             <number>0</number>
+            </property>
+            <layout class="QVBoxLayout" name="verticalLayout_3">
+             <item>
+              <layout class="QVBoxLayout" name="verticalLayout_2">
+               <property name="sizeConstraint">
+                <enum>QLayout::SetFixedSize</enum>
+               </property>
+               <item>
+                <widget class="QGroupBox" name="groupBox_4">
+                 <property name="title">
+                  <string>&amp;Etiquetes</string>
+                 </property>
+                 <layout class="QVBoxLayout" name="verticalLayout_4">
+                  <item>
+                   <layout class="QHBoxLayout" name="horizontalLayout_6">
+                    <item>
+                     <widget class="QLabel" name="label_4">
+                      <property name="text">
+                       <string>Am&amp;plada</string>
+                      </property>
+                      <property name="alignment">
+                       <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+                      </property>
+                      <property name="buddy">
+                       <cstring>ample</cstring>
+                      </property>
+                     </widget>
+                    </item>
+                    <item>
+                     <widget class="QDoubleSpinBox" name="ample">
+                      <property name="sizePolicy">
+                       <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+                        <horstretch>0</horstretch>
+                        <verstretch>0</verstretch>
+                       </sizepolicy>
+                      </property>
+                      <property name="suffix">
+                       <string>mm</string>
+                      </property>
+                      <property name="maximum">
+                       <double>9999.000000000000000</double>
+                      </property>
+                     </widget>
+                    </item>
+                    <item>
+                     <spacer name="horizontalSpacer_8">
+                      <property name="orientation">
+                       <enum>Qt::Horizontal</enum>
+                      </property>
+                      <property name="sizeHint" stdset="0">
+                       <size>
+                        <width>40</width>
+                        <height>20</height>
+                       </size>
+                      </property>
+                     </spacer>
+                    </item>
+                    <item>
+                     <widget class="QLabel" name="label_7">
+                      <property name="text">
+                       <string>Al&amp;çada</string>
+                      </property>
+                      <property name="alignment">
+                       <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+                      </property>
+                      <property name="buddy">
+                       <cstring>alt</cstring>
+                      </property>
+                     </widget>
+                    </item>
+                    <item>
+                     <widget class="QDoubleSpinBox" name="alt">
+                      <property name="sizePolicy">
+                       <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+                        <horstretch>0</horstretch>
+                        <verstretch>0</verstretch>
+                       </sizepolicy>
+                      </property>
+                      <property name="suffix">
+                       <string>mm</string>
+                      </property>
+                      <property name="maximum">
+                       <double>9999.000000000000000</double>
+                      </property>
+                     </widget>
+                    </item>
+                   </layout>
+                  </item>
+                 </layout>
+                </widget>
+               </item>
+               <item>
+                <widget class="QGroupBox" name="groupBox_3">
+                 <property name="title">
+                  <string>&amp;Graella d'etiquetes</string>
+                 </property>
+                 <layout class="QVBoxLayout" name="verticalLayout_6">
+                  <item>
+                   <layout class="QHBoxLayout" name="horizontalLayout_5">
+                    <item>
+                     <widget class="QLabel" name="label_29">
+                      <property name="text">
+                       <string>&amp;Files</string>
+                      </property>
+                      <property name="alignment">
+                       <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+                      </property>
+                      <property name="buddy">
+                       <cstring>numfiles</cstring>
+                      </property>
+                     </widget>
+                    </item>
+                    <item>
+                     <widget class="QSpinBox" name="numfiles"/>
+                    </item>
+                    <item>
+                     <spacer name="horizontalSpacer_9">
+                      <property name="orientation">
+                       <enum>Qt::Horizontal</enum>
+                      </property>
+                      <property name="sizeHint" stdset="0">
+                       <size>
+                        <width>40</width>
+                        <height>20</height>
+                       </size>
+                      </property>
+                     </spacer>
+                    </item>
+                    <item>
+                     <widget class="QLabel" name="label_30">
+                      <property name="text">
+                       <string>&amp;Columnes</string>
+                      </property>
+                      <property name="alignment">
+                       <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+                      </property>
+                      <property name="buddy">
+                       <cstring>numcols</cstring>
+                      </property>
+                     </widget>
+                    </item>
+                    <item>
+                     <widget class="QSpinBox" name="numcols"/>
+                    </item>
+                   </layout>
+                  </item>
+                 </layout>
+                </widget>
+               </item>
+               <item>
+                <widget class="QGroupBox" name="groupBox_5">
+                 <property name="title">
+                  <string>&amp;Paper</string>
+                 </property>
+                 <layout class="QVBoxLayout" name="verticalLayout_5">
+                  <item>
+                   <layout class="QHBoxLayout" name="horizontalLayout_7">
+                    <item>
+                     <widget class="QLabel" name="label_31">
+                      <property name="text">
+                       <string>Am&amp;plada</string>
+                      </property>
+                      <property name="alignment">
+                       <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+                      </property>
+                      <property name="buddy">
+                       <cstring>amplePaper</cstring>
+                      </property>
+                     </widget>
+                    </item>
+                    <item>
+                     <widget class="QDoubleSpinBox" name="amplePaper">
+                      <property name="sizePolicy">
+                       <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+                        <horstretch>0</horstretch>
+                        <verstretch>0</verstretch>
+                       </sizepolicy>
+                      </property>
+                      <property name="suffix">
+                       <string>mm</string>
+                      </property>
+                      <property name="maximum">
+                       <double>9999.989999999999782</double>
+                      </property>
+                      <property name="value">
+                       <double>210.000000000000000</double>
+                      </property>
+                     </widget>
+                    </item>
+                    <item>
+                     <spacer name="horizontalSpacer_7">
+                      <property name="orientation">
+                       <enum>Qt::Horizontal</enum>
+                      </property>
+                      <property name="sizeHint" stdset="0">
+                       <size>
+                        <width>40</width>
+                        <height>20</height>
+                       </size>
+                      </property>
+                     </spacer>
+                    </item>
+                    <item>
+                     <widget class="QLabel" name="label_28">
+                      <property name="text">
+                       <string>Al&amp;çada</string>
+                      </property>
+                      <property name="alignment">
+                       <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+                      </property>
+                      <property name="buddy">
+                       <cstring>altPaper</cstring>
+                      </property>
+                     </widget>
+                    </item>
+                    <item>
+                     <widget class="QDoubleSpinBox" name="altPaper">
+                      <property name="sizePolicy">
+                       <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+                        <horstretch>0</horstretch>
+                        <verstretch>0</verstretch>
+                       </sizepolicy>
+                      </property>
+                      <property name="suffix">
+                       <string>mm</string>
+                      </property>
+                      <property name="maximum">
+                       <double>9999.000000000000000</double>
+                      </property>
+                      <property name="value">
+                       <double>297.000000000000000</double>
+                      </property>
+                     </widget>
+                    </item>
+                   </layout>
+                  </item>
+                 </layout>
+                </widget>
+               </item>
+               <item>
+                <widget class="QGroupBox" name="groupBox_2">
+                 <property name="sizePolicy">
+                  <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                   <horstretch>0</horstretch>
+                   <verstretch>0</verstretch>
+                  </sizepolicy>
+                 </property>
+                 <property name="title">
+                  <string>&amp;Marges de la graella d'etiquetes</string>
+                 </property>
+                 <layout class="QHBoxLayout" name="horizontalLayout_8">
+                  <item>
+                   <layout class="QVBoxLayout" name="verticalLayout">
+                    <property name="spacing">
+                     <number>2</number>
+                    </property>
+                    <item>
+                     <layout class="QHBoxLayout" name="horizontalLayout">
+                      <item>
+                       <spacer name="horizontalSpacer">
+                        <property name="orientation">
+                         <enum>Qt::Horizontal</enum>
+                        </property>
+                        <property name="sizeHint" stdset="0">
+                         <size>
+                          <width>40</width>
+                          <height>20</height>
+                         </size>
+                        </property>
+                       </spacer>
+                      </item>
+                      <item>
+                       <widget class="QLabel" name="label_5">
+                        <property name="text">
+                         <string>&amp;Superior</string>
+                        </property>
+                        <property name="alignment">
+                         <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+                        </property>
+                        <property name="buddy">
+                         <cstring>margeSuperior</cstring>
+                        </property>
+                       </widget>
+                      </item>
+                      <item>
+                       <widget class="QDoubleSpinBox" name="margeSuperior">
+                        <property name="sizePolicy">
+                         <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+                          <horstretch>0</horstretch>
+                          <verstretch>0</verstretch>
+                         </sizepolicy>
+                        </property>
+                        <property name="suffix">
+                         <string>mm</string>
+                        </property>
+                        <property name="maximum">
+                         <double>9999.989999999999782</double>
+                        </property>
+                       </widget>
+                      </item>
+                      <item>
+                       <spacer name="horizontalSpacer_2">
+                        <property name="orientation">
+                         <enum>Qt::Horizontal</enum>
+                        </property>
+                        <property name="sizeHint" stdset="0">
+                         <size>
+                          <width>40</width>
+                          <height>20</height>
+                         </size>
+                        </property>
+                       </spacer>
+                      </item>
+                     </layout>
+                    </item>
+                    <item>
+                     <layout class="QHBoxLayout" name="horizontalLayout_2">
+                      <item>
+                       <widget class="QLabel" name="label_8">
+                        <property name="sizePolicy">
+                         <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
+                          <horstretch>0</horstretch>
+                          <verstretch>0</verstretch>
+                         </sizepolicy>
+                        </property>
+                        <property name="text">
+                         <string>&amp;Esquerre</string>
+                        </property>
+                        <property name="alignment">
+                         <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+                        </property>
+                        <property name="buddy">
+                         <cstring>margeEsquerre</cstring>
+                        </property>
+                       </widget>
+                      </item>
+                      <item>
+                       <widget class="QDoubleSpinBox" name="margeEsquerre">
+                        <property name="sizePolicy">
+                         <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+                          <horstretch>0</horstretch>
+                          <verstretch>0</verstretch>
+                         </sizepolicy>
+                        </property>
+                        <property name="suffix">
+                         <string>mm</string>
+                        </property>
+                        <property name="maximum">
+                         <double>9999.989999999999782</double>
+                        </property>
+                       </widget>
+                      </item>
+                      <item>
+                       <spacer name="horizontalSpacer_12">
+                        <property name="orientation">
+                         <enum>Qt::Horizontal</enum>
+                        </property>
+                        <property name="sizeHint" stdset="0">
+                         <size>
+                          <width>40</width>
+                          <height>20</height>
+                         </size>
+                        </property>
+                       </spacer>
+                      </item>
+                      <item>
+                       <widget class="QLabel" name="label_9">
+                        <property name="sizePolicy">
+                         <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
+                          <horstretch>0</horstretch>
+                          <verstretch>0</verstretch>
+                         </sizepolicy>
+                        </property>
+                        <property name="text">
+                         <string>&amp;Dret</string>
+                        </property>
+                        <property name="alignment">
+                         <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+                        </property>
+                        <property name="buddy">
+                         <cstring>margeDret</cstring>
+                        </property>
+                       </widget>
+                      </item>
+                      <item>
+                       <widget class="QDoubleSpinBox" name="margeDret">
+                        <property name="sizePolicy">
+                         <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+                          <horstretch>0</horstretch>
+                          <verstretch>0</verstretch>
+                         </sizepolicy>
+                        </property>
+                        <property name="suffix">
+                         <string>mm</string>
+                        </property>
+                        <property name="maximum">
+                         <double>9999.989999999999782</double>
+                        </property>
+                       </widget>
+                      </item>
+                     </layout>
+                    </item>
+                    <item>
+                     <layout class="QHBoxLayout" name="horizontalLayout_3">
+                      <item>
+                       <spacer name="horizontalSpacer_3">
+                        <property name="orientation">
+                         <enum>Qt::Horizontal</enum>
+                        </property>
+                        <property name="sizeHint" stdset="0">
+                         <size>
+                          <width>40</width>
+                          <height>20</height>
+                         </size>
+                        </property>
+                       </spacer>
+                      </item>
+                      <item>
+                       <widget class="QLabel" name="label_6">
+                        <property name="text">
+                         <string>&amp;Inferior</string>
+                        </property>
+                        <property name="alignment">
+                         <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+                        </property>
+                        <property name="buddy">
+                         <cstring>margeInferior</cstring>
+                        </property>
+                       </widget>
+                      </item>
+                      <item>
+                       <widget class="QDoubleSpinBox" name="margeInferior">
+                        <property name="sizePolicy">
+                         <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+                          <horstretch>0</horstretch>
+                          <verstretch>0</verstretch>
+                         </sizepolicy>
+                        </property>
+                        <property name="suffix">
+                         <string>mm</string>
+                        </property>
+                        <property name="maximum">
+                         <double>9999.989999999999782</double>
+                        </property>
+                       </widget>
+                      </item>
+                      <item>
+                       <spacer name="horizontalSpacer_4">
+                        <property name="orientation">
+                         <enum>Qt::Horizontal</enum>
+                        </property>
+                        <property name="sizeHint" stdset="0">
+                         <size>
+                          <width>40</width>
+                          <height>20</height>
+                         </size>
+                        </property>
+                       </spacer>
+                      </item>
+                     </layout>
+                    </item>
+                   </layout>
+                  </item>
+                 </layout>
+                </widget>
+               </item>
+              </layout>
+             </item>
+            </layout>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+    </widget>
+   </item>
+   <item>
+    <layout class="QGridLayout" name="gridLayout_2">
+     <item row="0" column="2">
+      <widget class="QPushButton" name="mui_aceptar">
+       <property name="text">
+        <string>&amp;Bé</string>
+       </property>
+       <property name="default">
+        <bool>true</bool>
+       </property>
+      </widget>
+     </item>
+     <item row="0" column="1">
+      <widget class="QPushButton" name="mui_cancelar">
+       <property name="text">
+        <string>&amp;Cancel·la</string>
+       </property>
+      </widget>
+     </item>
+     <item row="0" column="0">
+      <spacer name="horizontalSpacer_5">
+       <property name="orientation">
+        <enum>Qt::Horizontal</enum>
+       </property>
+       <property name="sizeType">
+        <enum>QSizePolicy::Expanding</enum>
+       </property>
+       <property name="sizeHint" stdset="0">
+        <size>
+         <width>40</width>
+         <height>9</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+    </layout>
+   </item>
+  </layout>
+ </widget>
+ <tabstops>
+  <tabstop>primeraFila</tabstop>
+  <tabstop>primeraCol</tabstop>
+  <tabstop>barresSense</tabstop>
+  <tabstop>barresCodi</tabstop>
+  <tabstop>barresAliesCurt</tabstop>
+  <tabstop>barresAliesLlarg</tabstop>
+  <tabstop>barresFormat</tabstop>
+  <tabstop>barresComEtiqueta</tabstop>
+  <tabstop>liniesSenseBarres</tabstop>
+  <tabstop>midaBarres</tabstop>
+  <tabstop>textPVP</tabstop>
+  <tabstop>textDescripcio</tabstop>
+  <tabstop>textCodi</tabstop>
+  <tabstop>divisa</tabstop>
+  <tabstop>midaLletra</tabstop>
+  <tabstop>tabWidget</tabstop>
+  <tabstop>midaPredefinida</tabstop>
+  <tabstop>midaPersonalitzada</tabstop>
+  <tabstop>ample</tabstop>
+  <tabstop>alt</tabstop>
+  <tabstop>numfiles</tabstop>
+  <tabstop>numcols</tabstop>
+  <tabstop>amplePaper</tabstop>
+  <tabstop>altPaper</tabstop>
+  <tabstop>margeSuperior</tabstop>
+  <tabstop>margeEsquerre</tabstop>
+  <tabstop>margeDret</tabstop>
+  <tabstop>margeInferior</tabstop>
+  <tabstop>mui_cancelar</tabstop>
+  <tabstop>mui_aceptar</tabstop>
+ </tabstops>
+ <resources/>
+ <connections>
+  <connection>
+   <sender>midaPersonalitzada</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>midaPredefinida</receiver>
+   <slot>setDisabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>141</x>
+     <y>95</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>182</x>
+     <y>68</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>midaPersonalitzada</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>frameMidaPersonalitzada</receiver>
+   <slot>setEnabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>77</x>
+     <y>90</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>93</x>
+     <y>118</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>barresSense</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>barresFormat</receiver>
+   <slot>setDisabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>117</x>
+     <y>169</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>193</x>
+     <y>200</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>textPVP</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>divisa</receiver>
+   <slot>setEnabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>132</x>
+     <y>343</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>295</x>
+     <y>378</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>barresSense</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>midaBarres</receiver>
+   <slot>setDisabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>90</x>
+     <y>160</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>148</x>
+     <y>254</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>barresComEtiqueta</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>midaBarres</receiver>
+   <slot>setDisabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>142</x>
+     <y>223</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>144</x>
+     <y>257</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>barresSense</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>barresComEtiqueta</receiver>
+   <slot>setDisabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>71</x>
+     <y>150</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>110</x>
+     <y>225</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>barresComEtiqueta</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>liniesSenseBarres</receiver>
+   <slot>setEnabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>219</x>
+     <y>228</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>311</x>
+     <y>224</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>barresSense</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>liniesSenseBarres</receiver>
+   <slot>setDisabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>42</x>
+     <y>155</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>300</x>
+     <y>231</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>barresSense</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>midaBarres</receiver>
+   <slot>setDisabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>40</x>
+     <y>168</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>167</x>
+     <y>268</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>barresSense</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>barresComEtiqueta</receiver>
+   <slot>setDisabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>66</x>
+     <y>150</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>67</x>
+     <y>228</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+</ui>
