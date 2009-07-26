@@ -29,6 +29,8 @@ Incompatibles:
 
 Orden: 29
 
+Reports: articulos.rml; articuloetiqueta.rml
+
 Categorias: Facturacion generica;
 
 Comentarios:

@@ -22,6 +22,8 @@ Dependencias: libpluginbf_cliente.so
 
 Incompatibles:
 
+Reports: albarancliente.rml; albaran.rml
+
 Categorias: Facturacion generica;
 
 Orden: 622

@@ -98,3 +98,7 @@ foreach(dfile ${docs})
 endforeach(dfile in ${docs})
 
 add_dependencies(${plugin} bulmafact bulmalib pluginbf_clientefactura pluginbf_clientealbaran pluginbf_clientepedido pluginbf_clientepresupuesto)
+
+file(GLOB report_files openreports/*.ui openreports/*.pys openreports/*.rml)
+
+install (FILES ${report_files} DESTINATION share/bulmages/openreports)

@@ -44,6 +44,7 @@ class PluginsBulmaSetup:
             incompatibles = ""
             orden = ""
             categorias = ""
+	    reports = ""
             m = re.search('Nombre: (.*)', cont)
             if m <> None:
               nombre = m.group(1)
@@ -71,12 +72,15 @@ class PluginsBulmaSetup:
             m = re.search('Incompatibles: (.*)', cont)
             if m <> None:
               incompatibles = m.group(1)
+            m = re.search('Reports: (.*)', cont)
+            if m <> None:
+              reports = m.group(1)
             m = re.search('Orden: (.*)', cont)
             orden = 999
             if m <> None:
               if (m.group(1).isdigit()):
                   orden = int(m.group(1))
-            plugins.append([nombre, biblioteca, descripcion, parmdb, archivosqlpatch, dependencias, incompatibles, orden, categorias, archivosqldeins])
+            plugins.append([nombre, biblioteca, descripcion, parmdb, archivosqlpatch, dependencias, incompatibles, orden, categorias, archivosqldeins, reports])
 
 
 if __name__=="__main__":

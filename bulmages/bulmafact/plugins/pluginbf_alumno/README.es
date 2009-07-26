@@ -9,7 +9,7 @@ Nombre: Alumnos
 Biblioteca: libpluginbf_alumno.so
 
 Descripción: <H1> Alumnos</H1>
-<P>Gestionar los cobros realizados a los clientes.</P>
+<P>Gestionar los alumnos de una APA.</P>
 <HR>
 
 ParmBD:
@@ -21,6 +21,8 @@ ArchivoSQLdeins:
 Dependencias: libpluginbf_profesor.so; libpluginbf_tutor.so
 
 Incompatibles:
+
+Reports: alumno.rml; impers_alumno_faltas_de_asistencia.rml
 
 Categorias: Asociaciones de padres de alumnos; Experimentales;
 

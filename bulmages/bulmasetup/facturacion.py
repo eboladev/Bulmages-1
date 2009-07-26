@@ -17,8 +17,8 @@ class Facturacion(Ui_ModificarFacturacionBase, Empresa):
       self.setupUi(self)
       
       # Ocultamos la columna de las descripciones.
-      self.mui_plugins.setColumnCount(11)
-      self.mui_plugins1.setColumnCount(11)
+      self.mui_plugins.setColumnCount(12)
+      self.mui_plugins1.setColumnCount(12)
 
       self.mui_plugins.hideColumn(1)
       self.mui_plugins1.hideColumn(1)
@@ -47,6 +47,9 @@ class Facturacion(Ui_ModificarFacturacionBase, Empresa):
       self.mui_plugins.hideColumn(10)
       self.mui_plugins1.hideColumn(10)
       
+      self.mui_plugins.hideColumn(11)
+      self.mui_plugins1.hideColumn(11)
+
       self.mui_plugins1.setEnabled(False)
       
       # Desabilitamos el Sorting para que en versiones previas se rellenen bien los campos
@@ -102,11 +105,127 @@ class Facturacion(Ui_ModificarFacturacionBase, Empresa):
       #Ponemos la pestanya de seleccion de plugins como la visible.
       self.tabWidget.setCurrentIndex(0)
 
+   def trataOpenReports(self):
+      self.writecommand('Generando plantillas RML y PYS')
+      # Creamos el directorio especifico para guardar las plantillas
+      self.string = "mkdir -p /opt/bulmages/openreports_" + self.database 
+      self.process.start(self.string)
+      self.process.waitForFinished(-1)
+
+      # Hacemos un backup de openreports
+      self.string = "cp -R /opt/bulmages/openreports_" + self.database + " /opt/bulmages/openreports_" + self.database + "_old"
+      self.process.start(self.string)
+      self.process.waitForFinished(-1)
+
+      # Copiamos los archivos genericos
+      # Copiamos las plantillas
+      self.string = "cp /usr/local/share/bulmages/openreports/plantilla.rml" + self.arra[self.j] + " /opt/bulmages/openreports_" + self.database
+      self.writecommand(self.string)
+      self.process.start(self.string)
+      self.process.waitForFinished(-1)
+      self.string = "cp /usr/local/share/bulmages/openreports/estilos.rml" + self.arra[self.j] + " /opt/bulmages/openreports_" + self.database
+      self.writecommand(self.string)
+      self.process.start(self.string)
+      self.process.waitForFinished(-1)
+      self.string = "cp /usr/local/share/bulmages/openreports/listado.rml" + self.arra[self.j] + " /opt/bulmages/openreports_" + self.database
+      self.writecommand(self.string)
+      self.process.start(self.string)
+      self.process.waitForFinished(-1)
+      self.string = "cp /usr/local/share/bulmages/openreports/logo.jpg" + self.arra[self.j] + " /opt/bulmages/openreports_" + self.database
+      self.writecommand(self.string)
+      self.process.start(self.string)
+      self.process.waitForFinished(-1)
+      self.string = "cp /usr/local/share/bulmages/openreports/ficha.rml" + self.arra[self.j] + " /opt/bulmages/openreports_" + self.database
+      self.writecommand(self.string)
+      self.process.start(self.string)
+      self.process.waitForFinished(-1)
+
+      # Iteramos sobre la lista de plugins disponibles en bulmafact para copiar sus plantillas
+      self.i = 0
+      while (self.i < self.mui_plugins.rowCount()):
+	# Si el plugin tiene el orden adecuado lo consideramos.
+	self.writecommand('Tratando ' + self.mui_plugins.item(self.i,0).text())
+	# Si el plugin esta checked lo escribimos.
+	if (self.mui_plugins.item(self.i, 0).checkState() == Qt.Checked and len(self.mui_plugins.item(self.i,11).text()) > 3):
+	  # Si hay que aplicar un plugin entonces lo escribimos
+	  if (self.mui_plugins.item(self.i,11).text() != 'None' and len(self.mui_plugins.item(self.i,11).text()) > 3):
+	    # Tratamos toda la cadena de categorias.
+	    self.cadreports = self.mui_plugins.item(self.i,11).text().replace('; ',';')
+	    self.cadreports = self.cadreports.replace(' ;',';')
+	    self.arra = self.cadreports.split(';')
+	    self.arra.sort()
+	    self.j = 0
+	    while (self.j < len ( self.arra)):
+	      # Copiamos las plantillas
+	      self.string = "cp /usr/local/share/bulmages/openreports/" + self.arra[self.j] + " /opt/bulmages/openreports_" + self.database
+	      self.writecommand(self.string)
+	      self.process.start(self.string)
+	      self.process.waitForFinished(-1)
+	      self.j = self.j + 1
+	self.i = self.i + 1
+
+      # Iteramos sobre la lista de plugins disponibles en bulmatpv para copiar sus plantillas
+      self.i = 0
+      while (self.i < self.mui_plugins1.rowCount()):
+	# Si el plugin tiene el orden adecuado lo consideramos.
+	self.writecommand('Tratando ' + self.mui_plugins1.item(self.i,0).text())
+	# Si el plugin esta checked lo escribimos.
+	if (self.mui_plugins1.item(self.i, 0).checkState() == Qt.Checked and len(self.mui_plugins1.item(self.i,11).text()) > 3):
+	  # Si hay que aplicar un plugin entonces lo escribimos
+	  if (self.mui_plugins1.item(self.i,11).text() != 'None' and len(self.mui_plugins1.item(self.i,11).text()) > 3):
+	    # Tratamos toda la cadena de categorias.
+	    self.cadreports = self.mui_plugins1.item(self.i,11).text().replace('; ',';')
+	    self.cadreports = self.cadreports.replace(' ;',';')
+	    self.arra = self.cadreports.split(';')
+	    self.arra.sort()
+	    self.j = 0
+	    while (self.j < len ( self.arra)):
+	      # Copiamos las plantillas
+	      self.string = "cp /usr/local/share/bulmages/openreports/" + self.arra[self.j] + " /opt/bulmages/openreports_" + self.database
+	      self.writecommand(self.string)
+	      self.process.start(self.string)
+	      self.process.waitForFinished(-1)
+	      self.j = self.j + 1
+	self.i = self.i + 1
+
+      # Abrimos el backup para lectura
+      self.file1 = QFile( plugins.configfiles + "bulmafact_" + self.database + ".conf~");
+      if not(self.file1.open(QIODevice.ReadOnly | QIODevice.Text)):
+        return;
+      self.vin = QTextStream(self.file1)
       
+      # Abrimos el archivo para escritura.
+      self.file = QFile( plugins.configfiles + "bulmafact_" + self.database + ".conf");
+      if not(self.file.open(QIODevice.WriteOnly | QIODevice.Text)):
+        return;
+      self.out = QTextStream(self.file)
+      
+      # Leemos las lineas iniciales (hasta el parametro deseado) y las ponemos de nuevo.
+      self.text = self.vin.readLine()
+      while (not (self.text.isNull()) and not(self.text.contains("CONF_DIR_OPENREPORTS")) ):
+        self.out << self.text << "\n"
+        self.text = self.vin.readLine()
+
+      # Escribimos el parametro como lo deseamos
+      self.out << "\n\nCONF_DIR_OPENREPORTS /opt/bulmages/openreports_" + self.database +"/\n\n"
+
+
+      # Terminamos de poner el resto de las linea.
+      if (not (self.text.isNull()) ):
+        self.text = self.vin.readLine()
+      while (not (self.text.isNull()) ):
+        self.out << self.text << "\n"
+        self.text = self.vin.readLine()
+        
+      # Cerramos los ficheros.
+      self.file.close()
+      self.file1.close()
+
    def writeConfig(self):
       self.writecommand('ESCRIBIENDO CONFIGURACION')
       self.writecommand("Escribiendo configuracion en "+ plugins.configfiles + "bulmafact_" + self.database + ".conf " )
       
+
       # TRATAMOS EL ARCHIVO DE BULMAFACT
       # ================================
 
@@ -250,7 +369,7 @@ class Facturacion(Ui_ModificarFacturacionBase, Empresa):
 
         self.file.close()
         self.file1.close()
-
+      self.trataOpenReports()
 
    def marcar(self, plug, rec, first = 0):
       i = 0
@@ -505,6 +624,7 @@ class Facturacion(Ui_ModificarFacturacionBase, Empresa):
         self.mui_plugins.setItem(self.i , 8 , QTableWidgetItem(QtGui.QApplication.translate("MainWindow",self.pluginsbulmafact[self.i][8], None, QtGui.QApplication.UnicodeUTF8)))
         self.mui_plugins.setItem(self.i , 9 , QTableWidgetItem(QtGui.QApplication.translate("MainWindow",self.pluginsbulmafact[self.i][9], None, QtGui.QApplication.UnicodeUTF8)))
         self.mui_plugins.setItem(self.i , 10 , QTableWidgetItem(QtGui.QApplication.translate("MainWindow",self.pluginsbulmafact[self.i][1], None, QtGui.QApplication.UnicodeUTF8)))
+        self.mui_plugins.setItem(self.i , 11 , QTableWidgetItem(QtGui.QApplication.translate("MainWindow",self.pluginsbulmafact[self.i][10], None, QtGui.QApplication.UnicodeUTF8)))
 #        self.mui_plugins.setRowHeight(self.i, 50)
         self.i = self.i + 1
         self.progress.setValue(self.progress.value() + 1)
@@ -526,11 +646,11 @@ class Facturacion(Ui_ModificarFacturacionBase, Empresa):
         self.mui_plugins1.setItem(self.i , 4 , QTableWidgetItem(QtGui.QApplication.translate("MainWindow",self.pluginsbulmatpv[self.i][4], None, QtGui.QApplication.UnicodeUTF8)))
         self.mui_plugins1.setItem(self.i , 5 , QTableWidgetItem(QtGui.QApplication.translate("MainWindow",self.pluginsbulmatpv[self.i][5], None, QtGui.QApplication.UnicodeUTF8)))
         self.mui_plugins1.setItem(self.i , 6 , QTableWidgetItem(QtGui.QApplication.translate("MainWindow",self.pluginsbulmatpv[self.i][6], None, QtGui.QApplication.UnicodeUTF8)))
-
         self.mui_plugins1.setItem(self.i , 7 , QTableWidgetItem(QtCore.QString.number(self.pluginsbulmatpv[self.i][7])))
         self.mui_plugins1.setItem(self.i , 8 , QTableWidgetItem(QtGui.QApplication.translate("MainWindow",self.pluginsbulmatpv[self.i][8], None, QtGui.QApplication.UnicodeUTF8)))
         self.mui_plugins1.setItem(self.i , 9 , QTableWidgetItem(QtGui.QApplication.translate("MainWindow",self.pluginsbulmatpv[self.i][9], None, QtGui.QApplication.UnicodeUTF8)))
         self.mui_plugins1.setItem(self.i , 10 , QTableWidgetItem(QtGui.QApplication.translate("MainWindow",self.pluginsbulmatpv[self.i][1], None, QtGui.QApplication.UnicodeUTF8)))
+        self.mui_plugins1.setItem(self.i , 11 , QTableWidgetItem(QtGui.QApplication.translate("MainWindow",self.pluginsbulmatpv[self.i][10], None, QtGui.QApplication.UnicodeUTF8)))
         self.i = self.i + 1
         self.progress.setValue(self.progress.value() + 1)
         
