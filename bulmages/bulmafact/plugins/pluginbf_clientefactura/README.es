@@ -22,6 +22,8 @@ Dependencias: libpluginbf_cliente.so
 
 Incompatibles:
 
+Reports: factura_alternativa1.rml; factura.rml
+
 Categorias: Facturacion generica;
 
 Orden: 623

@@ -23,6 +23,8 @@ Dependencias: libpluginbf_asociacion.so;libpluginbf_profesor.so;libpluginbf_form
 
 Incompatibles:
 
+Reports: recibod.rml
+
 Categorias: Asociaciones de padres de alumnos; Experimentales;
 
 Orden: 200

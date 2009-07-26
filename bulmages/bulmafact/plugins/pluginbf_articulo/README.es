@@ -29,7 +29,7 @@ Incompatibles:
 
 Orden: 29
 
-Reports: articulos.rml; articuloetiqueta.rml
+Reports: articulos.rml; articuloetiqueta.rml; familias.rml
 
 Categorias: Facturacion generica;
 

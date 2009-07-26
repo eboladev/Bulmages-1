@@ -28,6 +28,8 @@ Incompatibles:
 
 Orden: 29
 
+Reports: presupuestocontable.pys; presupuestocontable.rml
+
 Categorias: Asociaciones de padres de alumnos; Experimentales; Facturacion generica;
 
 Comentarios:

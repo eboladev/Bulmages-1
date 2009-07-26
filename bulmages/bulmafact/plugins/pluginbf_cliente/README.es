@@ -26,6 +26,8 @@ Incompatibles:
 
 Orden: 300
 
+Reports: inf_clientes.rml; informecliente.rml; informeclientes.rml; pedidocliente.rml
+
 Categorias: Facturacion generica;
 
 Comentarios:

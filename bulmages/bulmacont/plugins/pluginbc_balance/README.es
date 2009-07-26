@@ -22,6 +22,8 @@ Dependencias:
 
 Incompatibles:
 
+Reports: balance.rml
+
 Categorias: Contabilidad general;Experimentales;
 
 Orden: 20

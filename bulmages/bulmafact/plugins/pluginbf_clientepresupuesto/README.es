@@ -22,6 +22,8 @@ Dependencias: libpluginbf_trabajador.so; libpluginbf_almacen.so; libpluginbf_for
 
 Incompatibles:
 
+Reports: presupuesto.rml
+
 Categorias: Facturacion generica;
 
 Orden: 620

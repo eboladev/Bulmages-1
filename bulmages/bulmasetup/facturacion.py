@@ -437,7 +437,7 @@ class Facturacion(Ui_ModificarFacturacionBase, Empresa):
    def on_mui_plugins_cellPressed(self, row, col):
       self.estado = self.mui_plugins.item(row,0).checkState()
       # Escribimos la descripcion
-      self.mui_descripcion.setText(self.mui_plugins.item(row,1).text() + "<b>" + self.mui_plugins.item(row,10).text() + "</b><br>"+ self.mui_plugins.item(row,3).text() + "<br><b>Categorias:</b> " + self.mui_plugins.item(row,8).text() + "<br><br><b>Dependencias:</b> " + self.mui_plugins.item(row,5).text() + "<br><br><b>Incompatibilidades:</b> " + self.mui_plugins.item(row,6).text() + "<br><br><b>Parches SQL:</b><br>" + self.mui_plugins.item(row,4).text() + "<br>" + self.mui_plugins.item(row,9).text())
+      self.mui_descripcion.setText(self.mui_plugins.item(row,1).text() + "<b>" + self.mui_plugins.item(row,10).text() + "</b><br>"+ self.mui_plugins.item(row,3).text() + "<br><b>Categorias:</b> " + self.mui_plugins.item(row,8).text() + "<br><br><b>Dependencias:</b> " + self.mui_plugins.item(row,5).text() + "<br><br><b>Incompatibilidades:</b> " + self.mui_plugins.item(row,6).text() + "<br><br><b>Parches SQL:</b>" + self.mui_plugins.item(row,4).text() + "<br>" + self.mui_plugins.item(row,9).text() + "<br><b>Informes:</b><br>" + self.mui_plugins.item(row,11).text())
      
    def on_mui_plugins_cellClicked(self, row, col):
 
@@ -485,7 +485,7 @@ class Facturacion(Ui_ModificarFacturacionBase, Empresa):
    def on_mui_plugins1_cellPressed(self, row, col):
       self.estado = self.mui_plugins1.item(row,0).checkState()
       # Escribimos la descripcion
-      self.mui_descripcion.setText(self.mui_plugins1.item(row,1).text() + "<b>" + self.mui_plugins1.item(row,10).text() + "</b><br>"+ self.mui_plugins1.item(row,3).text() + "<br><b>Categorias:</b> " + self.mui_plugins1.item(row,8).text() + "<br><br><b>Dependencias:</b> " + self.mui_plugins1.item(row,5).text() + "<br><br><b>Incompatibilidades:</b> " + self.mui_plugins1.item(row,6).text() + "<br><br><b>Parches SQL:</b><br>" + self.mui_plugins1.item(row,4).text() + "<br>" + self.mui_plugins1.item(row,9).text())
+      self.mui_descripcion.setText(self.mui_plugins1.item(row,1).text() + "<b>" + self.mui_plugins1.item(row,10).text() + "</b><br>"+ self.mui_plugins1.item(row,3).text() + "<br><b>Categorias:</b> " + self.mui_plugins1.item(row,8).text() + "<br><br><b>Dependencias:</b> " + self.mui_plugins1.item(row,5).text() + "<br><br><b>Incompatibilidades:</b> " + self.mui_plugins1.item(row,6).text() + "<br><br><b>Parches SQL:</b>" + self.mui_plugins1.item(row,4).text() + "<br>" + self.mui_plugins1.item(row,9).text() + "<br><b>Informes:</b><br>" + self.mui_plugins1.item(row,11).text())
       
    def on_mui_plugins1_cellClicked(self, row, col):
       if (self.semaforo == 1):

@@ -22,6 +22,8 @@ Dependencias:
 
 Incompatibles:
 
+Reports: profesor.rml
+
 Categorias: Asociaciones de padres de alumnos; Experimentales;
 
 Orden: 201

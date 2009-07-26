@@ -117,5 +117,8 @@ FILE(APPEND ${CMAKE_BINARY_DIR}/css/bulmafact_es_ES.css "${VAR_CSS_es_ES}" )
 FILE(READ ${CMAKE_BINARY_DIR}/${plugin}_ca_ES.css VAR_CSS_ca_ES)
 FILE(APPEND ${CMAKE_BINARY_DIR}/css/bulmafact_ca_ES.css "${VAR_CSS_ca_ES}" )
 
-
 install(DIRECTORY images DESTINATION share/bulmages PATTERN ".svn" EXCLUDE)
+
+file(GLOB report_files openreports/*.ui openreports/*.pys openreports/*.rml)
+
+install (FILES ${report_files} DESTINATION share/bulmages/openreports)

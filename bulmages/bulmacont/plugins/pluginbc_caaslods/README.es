@@ -22,6 +22,8 @@ Dependencias:
 
 Incompatibles:
 
+Reports: inf_caaasl.pys; inf_caapgc08.pys; inf_capgc07.pys; inf_capgc08.pys; inf_capymes08.pys; inf_casfac08.pys
+
 Categorias: Contabilidad general
 
 Orden: 70

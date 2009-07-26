@@ -23,6 +23,8 @@ Dependencias: libpluginbf_profesor.so; libpluginbf_alumno.so
 
 Incompatibles:
 
+Reports: tutor.rmls
+
 Categorias: Asociaciones de padres de alumnos; Experimentales;
 
 Orden: 203
