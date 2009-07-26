@@ -23,6 +23,8 @@ Dependencias: libpluginbf_cliente.so; libpluginbf_trabajador.so;
 
 Incompatibles:
 
+Reports: rutascomerciales.rml
+
 Categorias: Facturacion generica;Experimentales;
 
 Orden: 700

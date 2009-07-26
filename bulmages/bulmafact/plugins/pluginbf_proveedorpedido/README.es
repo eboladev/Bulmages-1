@@ -22,6 +22,8 @@ Dependencias: libpluginbf_proveedor.so
 
 Incompatibles:
 
+Reports: pedidoproveedor.rml
+
 Categorias: Facturacion generica;
 
 Orden: 630

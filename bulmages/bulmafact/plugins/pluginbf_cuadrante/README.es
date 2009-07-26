@@ -23,6 +23,8 @@ Dependencias: libpluginbf_asterisk.so;libpluginbf_trabajador.so;libpluginbf_alma
 
 Incompatibles:
 
+Reports: cuadrante.rml
+
 Categorias: Utilidades avanzadas; Experimentales;
 
 Orden: 780

@@ -22,6 +22,8 @@ Dependencias:
 
 Incompatibles:
 
+Reports: compraventa.rml
+
 Categorias: Facturacion avanzada; Experimentales;
 
 Orden: 600

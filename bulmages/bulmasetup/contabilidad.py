@@ -239,7 +239,23 @@ class Contabilidad(Ui_ModificarContabilidadBase, Empresa):
 
       # Copiamos los archivos genericos
       # Copiamos las plantillas
+      self.string = "cp /usr/local/share/bulmages/openreports/canuales.rml" + self.arra[self.j] + " /opt/bulmages/openreports_" + self.database
+      self.writecommand(self.string)
+      self.process.start(self.string)
+      self.process.waitForFinished(-1)
+      self.string = "cp /usr/local/share/bulmages/openreports/diario.rml" + self.arra[self.j] + " /opt/bulmages/openreports_" + self.database
+      self.writecommand(self.string)
+      self.process.start(self.string)
+      self.process.waitForFinished(-1)
+      self.string = "cp /usr/local/share/bulmages/openreports/extracto.rml" + self.arra[self.j] + " /opt/bulmages/openreports_" + self.database
+      self.writecommand(self.string)
+      self.process.start(self.string)
+      self.process.waitForFinished(-1)
       self.string = "cp /usr/local/share/bulmages/openreports/plantilla.rml" + self.arra[self.j] + " /opt/bulmages/openreports_" + self.database
+      self.writecommand(self.string)
+      self.process.start(self.string)
+      self.process.waitForFinished(-1)
+      self.string = "cp /usr/local/share/bulmages/openreports/plantilla1.rml" + self.arra[self.j] + " /opt/bulmages/openreports_" + self.database
       self.writecommand(self.string)
       self.process.start(self.string)
       self.process.waitForFinished(-1)
