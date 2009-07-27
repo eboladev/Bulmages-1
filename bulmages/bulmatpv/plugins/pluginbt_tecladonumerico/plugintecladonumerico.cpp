@@ -67,7 +67,7 @@ int BtCompany_createMainWindows_Post ( BtCompany *etpv )
 }
 
 
-int Input_keyPressEvent_Post ( BtInput *in )
+int BtInput_keyPressEvent_Post ( BtInput *in )
 {
     g_tecl->mui_display->setText ( in->valorBtInput() );
     return 0;

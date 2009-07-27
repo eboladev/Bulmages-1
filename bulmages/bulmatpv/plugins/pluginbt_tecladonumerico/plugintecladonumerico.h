@@ -30,6 +30,6 @@
 
 extern "C" MY_EXPORT int entryPoint ( BtBulmaTPV * );
 extern "C" MY_EXPORT int BtCompany_createMainWindows_Post ( BtCompany * );
-extern "C" MY_EXPORT int Input_keyPressEvent_Post ( BtInput * );
+extern "C" MY_EXPORT int BtInput_keyPressEvent_Post ( BtInput * );
 
 
