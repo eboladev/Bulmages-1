@@ -94,7 +94,7 @@ void mypluginfactp::inicializa ( BfBulmaFact *bges )
         /// El men&uacute; de Tarifas en la secci&oacute;n de art&iacute;culos.
         m_bges = bges;
         setMainCompany ( bges->company() );
-        QAction *planCuentas = new QAction ( _ ( "&Facturas proveedores" ), 0 );
+        QAction *planCuentas = new QAction ( _ ( "&Facturas de proveedores" ), 0 );
         planCuentas->setIcon ( QIcon ( QString::fromUtf8 ( ":/Images/supplier-invoice-list.png" ) ) );
         planCuentas->setStatusTip ( _ ( "Facturas de proveedores" ) );
         planCuentas->setWhatsThis ( _ ( "Facturas de proveedores" ) );

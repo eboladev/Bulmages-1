@@ -114,15 +114,14 @@ public:
     BlDbRecordSet ( QString nombre, PGconn *conn1, QString SQLQuery, int numParams,
                        const char *const * const paramValues, QString pristineQuery=NULL);
 
-
     /// Destructor, elimina la memoria ocupada.
     ~BlDbRecordSet();
     /// Devuelve el n&uacute;mero de registros del cursor.
     int numregistros();
     /// Devuelve el valor de una determinada posici&oacute;n del query.
     QString valor ( int posicion, int registro = -1, bool localeformat = FALSE );
-	/// Devuelve el tipo de dato de una determinada posicion de un query
-	int dbFieldType(int posicion);
+    /// Devuelve el tipo de dato de una determinada posicion de un query
+    int dbFieldType(int posicion);
     bool error();
     QString query();
     QString pristineQuery();

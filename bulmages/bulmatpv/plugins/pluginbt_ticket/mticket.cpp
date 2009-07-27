@@ -260,23 +260,32 @@ void MTicket::on_mui_reimprimir_released()
     
     BtTicket *previousTicket = new BtTicket( ( BtCompany * ) mainCompany() );
     BlDbRecordSet *cur = mainCompany()->loadQuery ( "SELECT * FROM albaran WHERE ticketalbaran = TRUE ORDER BY idalbaran DESC LIMIT 1" );
+
+    // Si el numero de resultados devuelto = 0 entonces no existe ticket previo.
+    if (cur->numregistros() == 0) {
+
+	mensajeInfo(_("No existe ningun ticket anterior para imprimir."));
+
+    } else {
     
-    previousTicket->setDbValue("idalbaran", cur->valor("idalbaran"));
+        previousTicket->setDbValue("idalbaran", cur->valor("idalbaran"));
     
-    // Cargamos las lineas de albaran
-    cur = mainCompany()->loadQuery ( "SELECT * FROM lalbaran LEFT JOIN articulo ON lalbaran.idarticulo = articulo.idarticulo WHERE idalbaran = " + cur->valor("idalbaran") );
+	// Cargamos las lineas de albaran
+        cur = mainCompany()->loadQuery ( "SELECT * FROM lalbaran LEFT JOIN articulo ON lalbaran.idarticulo = articulo.idarticulo WHERE idalbaran = " + cur->valor("idalbaran") );
         
-    while ( !cur->eof() ) {
-        BlDbRecord *l = previousTicket->agregarLinea();
-        l->DBload( cur );
-        cur->nextRecord();
-    } // end while
-    
+	while ( !cur->eof() ) {
+    	    BlDbRecord *l = previousTicket->agregarLinea();
+    	    l->DBload( cur );
+    	    cur->nextRecord();
+        } // end while
+        
+	previousTicket->imprimir(FALSE);
+
+	delete previousTicket;
+
+    } // end if
+
     delete cur;
-    
-    previousTicket->imprimir(FALSE);
-    
-    delete previousTicket;
 
     _depura ( "END MTicket::on_mui_reimprimir_released", 0 );
 }

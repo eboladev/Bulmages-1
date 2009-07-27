@@ -94,18 +94,18 @@ void myplugincob::inicializa ( BfBulmaFact *bges )
         /// El men&uacute; de Tarifas en la secci&oacute;n de art&iacute;culos.
         m_bges = bges;
         setMainCompany ( bges->company() );
-        QAction *planCuentas = new QAction ( _ ( "&Cobros a clientes" ), 0 );
+        QAction *planCuentas = new QAction ( _ ( "&Cobros de clientes" ), 0 );
         planCuentas->setIcon ( QIcon ( QString::fromUtf8 ( ":/Images/receive-list.png" ) ) );
-        planCuentas->setStatusTip ( _ ( "Cobros a clientes" ) );
-        planCuentas->setWhatsThis ( _ ( "Cobros a clientes" ) );
+        planCuentas->setStatusTip ( _ ( "Cobros de clientes" ) );
+        planCuentas->setWhatsThis ( _ ( "Cobros de clientes" ) );
         pPluginMenu->addAction ( planCuentas );
         bges->Listados->addAction ( planCuentas );
         connect ( planCuentas, SIGNAL ( activated() ), this, SLOT ( elslot() ) );
 
-        QAction *npago = new QAction ( _ ( "&Nuevo cobro a cliente" ), 0 );
+        QAction *npago = new QAction ( _ ( "&Nuevo cobro de cliente" ), 0 );
         npago->setIcon ( QIcon ( QString::fromUtf8 ( ":/Images/receive.png" ) ) );
-        npago->setStatusTip ( _ ( "Nuevo cobro a cliente" ) );
-        npago->setWhatsThis ( _ ( "Nuevo cobro a cliente" ) );
+        npago->setStatusTip ( _ ( "Nuevo cobro de cliente" ) );
+        npago->setWhatsThis ( _ ( "Nuevo cobro de cliente" ) );
         pPluginMenu->addAction ( npago );
         bges->Fichas->addAction ( npago );
         connect ( npago, SIGNAL ( activated() ), this, SLOT ( elslot1() ) );
