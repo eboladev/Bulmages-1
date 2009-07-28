@@ -165,7 +165,7 @@ class Facturacion(Ui_ModificarFacturacionBase, Empresa):
 	    self.j = 0
 	    while (self.j < len ( self.arra)):
 	      # Copiamos las plantillas
-	      self.string = "cp /usr/local/share/bulmages/openreports/" + " /opt/bulmages/openreports_" + self.database
+	      self.string = "cp /usr/local/share/bulmages/openreports/" +self.arra[self.j] + " /opt/bulmages/openreports_" + self.database
 	      self.writecommand(self.string)
 	      self.process.start(self.string)
 	      self.process.waitForFinished(-1)
