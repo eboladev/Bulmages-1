@@ -119,31 +119,31 @@ class Facturacion(Ui_ModificarFacturacionBase, Empresa):
 
       # Copiamos los archivos genericos
       # Copiamos las plantillas
-      self.string = "cp /usr/local/share/bulmages/openreports/informereferencia.rml" + self.arra[self.j] + " /opt/bulmages/openreports_" + self.database
+      self.string = "cp /usr/local/share/bulmages/openreports/informereferencia.rml" +  " /opt/bulmages/openreports_" + self.database
       self.writecommand(self.string)
       self.process.start(self.string)
       self.process.waitForFinished(-1)
-      self.string = "cp /usr/local/share/bulmages/openreports/plantilla.rml" + self.arra[self.j] + " /opt/bulmages/openreports_" + self.database
+      self.string = "cp /usr/local/share/bulmages/openreports/plantilla.rml" +  " /opt/bulmages/openreports_" + self.database
       self.writecommand(self.string)
       self.process.start(self.string)
       self.process.waitForFinished(-1)
-      self.string = "cp /usr/local/share/bulmages/openreports/plantilla1.rml" + self.arra[self.j] + " /opt/bulmages/openreports_" + self.database
+      self.string = "cp /usr/local/share/bulmages/openreports/plantilla1.rml" +  " /opt/bulmages/openreports_" + self.database
       self.writecommand(self.string)
       self.process.start(self.string)
       self.process.waitForFinished(-1)
-      self.string = "cp /usr/local/share/bulmages/openreports/estilos.rml" + self.arra[self.j] + " /opt/bulmages/openreports_" + self.database
+      self.string = "cp /usr/local/share/bulmages/openreports/estilos.rml" +  " /opt/bulmages/openreports_" + self.database
       self.writecommand(self.string)
       self.process.start(self.string)
       self.process.waitForFinished(-1)
-      self.string = "cp /usr/local/share/bulmages/openreports/listado.rml" + self.arra[self.j] + " /opt/bulmages/openreports_" + self.database
+      self.string = "cp /usr/local/share/bulmages/openreports/listado.rml" +  " /opt/bulmages/openreports_" + self.database
       self.writecommand(self.string)
       self.process.start(self.string)
       self.process.waitForFinished(-1)
-      self.string = "cp /usr/local/share/bulmages/openreports/logo.jpg" + self.arra[self.j] + " /opt/bulmages/openreports_" + self.database
+      self.string = "cp /usr/local/share/bulmages/openreports/logo.jpg" +  " /opt/bulmages/openreports_" + self.database
       self.writecommand(self.string)
       self.process.start(self.string)
       self.process.waitForFinished(-1)
-      self.string = "cp /usr/local/share/bulmages/openreports/ficha.rml" + self.arra[self.j] + " /opt/bulmages/openreports_" + self.database
+      self.string = "cp /usr/local/share/bulmages/openreports/ficha.rml" +  " /opt/bulmages/openreports_" + self.database
       self.writecommand(self.string)
       self.process.start(self.string)
       self.process.waitForFinished(-1)
@@ -165,7 +165,7 @@ class Facturacion(Ui_ModificarFacturacionBase, Empresa):
 	    self.j = 0
 	    while (self.j < len ( self.arra)):
 	      # Copiamos las plantillas
-	      self.string = "cp /usr/local/share/bulmages/openreports/" + self.arra[self.j] + " /opt/bulmages/openreports_" + self.database
+	      self.string = "cp /usr/local/share/bulmages/openreports/" + " /opt/bulmages/openreports_" + self.database
 	      self.writecommand(self.string)
 	      self.process.start(self.string)
 	      self.process.waitForFinished(-1)
@@ -547,56 +547,70 @@ class Facturacion(Ui_ModificarFacturacionBase, Empresa):
       self.progress.setRange(0, self.mui_plugins.rowCount()+self.mui_plugins1.rowCount())
       self.progress.show()
       
-      self.i = 0
-      while (self.i < self.mui_plugins.rowCount()):
-        self.writecommand('Tratando ' + self.mui_plugins.item(self.i,0).text())
-        if (self.mui_plugins.item(self.i, 0).checkState() == Qt.Checked):
-          self.writecommand('Actualizando ' + self.mui_plugins.item(self.i,0).text())
-          self.writecommand('============ \n ' )
-          # Si hay parche de actualizacion lo aplicamos
-	  # En realidad deberia comprobarse si hay archivo para aplicarlo o no en
-	  # lugar de comprobar la longitud del archivo.
-          if (len(self.mui_plugins.item(self.i,4).text()) > 4):
-            self.command = 'su postgres -c \"psql -t -f  ' + plugins.pathdbplugins + self.mui_plugins.item(self.i,4).text() +' '+ self.database +'\"'
-            self.writecommand(self.command)
-            self.process.start(self.command)
-            self.process.waitForFinished(-1)
-            self.writecommand(self.process.readAllStandardOutput())
-        else:
-          # Si no esta chequeado hacemos un borrado del plugin
-          if (len(self.mui_plugins.item(self.i,9).text()) > 4):
-            # Aplicamos el parche  de borrado.
-            self.command = 'su postgres -c \"psql -t -f  ' + plugins.pathdbplugins + self.mui_plugins.item(self.i,9).text() +' '+ self.database +'\"'
-            self.writecommand(self.command)
-            self.process.start(self.command)
-            self.process.waitForFinished(-1)
-            self.writecommand(self.process.readAllStandardOutput())
-        self.i = self.i +1
+      # Como los plugins van por orden iteramos sobre el orden para arreglarlo.
+      self.x = 1
+      while (self.x < 1000) :
+        # Iteramos sobre la lista de plugins disponibles en bulmafact
+        self.i = 0
+        while (self.i < self.mui_plugins.rowCount()):
+          # Si el plugin tiene el orden adecuado lo consideramos.
+          if (str(self.mui_plugins.item(self.i,7).text()) == str(self.x) ):   
+	    self.writecommand('Tratando ' + self.mui_plugins.item(self.i,0).text())
+	    if (self.mui_plugins.item(self.i, 0).checkState() == Qt.Checked):
+	      self.writecommand('Actualizando ' + self.mui_plugins.item(self.i,0).text())
+	      self.writecommand('============ \n ' )
+	      # Si hay parche de actualizacion lo aplicamos
+	      # En realidad deberia comprobarse si hay archivo para aplicarlo o no en
+	      # lugar de comprobar la longitud del archivo.
+	      if (len(self.mui_plugins.item(self.i,4).text()) > 4):
+		self.command = 'su postgres -c \"psql -t -f  ' + plugins.pathdbplugins + self.mui_plugins.item(self.i,4).text() +' '+ self.database +'\"'
+		self.writecommand(self.command)
+		self.process.start(self.command)
+		self.process.waitForFinished(-1)
+		self.writecommand(self.process.readAllStandardOutput())
+	    else:
+	      # Si no esta chequeado hacemos un borrado del plugin
+	      if (len(self.mui_plugins.item(self.i,9).text()) > 4):
+		# Aplicamos el parche  de borrado.
+		self.command = 'su postgres -c \"psql -t -f  ' + plugins.pathdbplugins + self.mui_plugins.item(self.i,9).text() +' '+ self.database +'\"'
+		self.writecommand(self.command)
+		self.process.start(self.command)
+		self.process.waitForFinished(-1)
+		self.writecommand(self.process.readAllStandardOutput())
+	  self.i = self.i +1
+        self.x = self.x +1
         self.progress.setValue(self.progress.value() + 1)
    
       if (self.mui_soporteTPV.isChecked()):
-        self.i = 0
-        while (self.i < self.mui_plugins1.rowCount()):
-          self.writecommand('Tratando ' + self.mui_plugins1.item(self.i,0).text())
-          if (self.mui_plugins1.item(self.i, 0).checkState() == Qt.Checked):
-            if (len(self.mui_plugins1.item(self.i,4).text()) > 4):
-              self.writecommand('Actualizando ' + self.mui_plugins1.item(self.i,0).text())
-              self.command = 'su postgres -c \"psql -t -f  ' + plugins.pathdbplugins + self.mui_plugins1.item(self.i,4).text() +' '+ self.database +'\"'
-              self.writecommand(self.command)
-              self.process.start(self.command)
-              self.process.waitForFinished(-1)
-              self.writecommand(self.process.readAllStandardOutput())
-          else:
-            # Si no esta chequeado hacemos un borrado del plugin
-            if (len(self.mui_plugins1.item(self.i,9).text()) > 4):
-              # Aplicamos el parche  de borrado.
-              self.command = 'su postgres -c \"psql -t -f  ' + plugins.pathdbplugins + self.mui_plugins1.item(self.i,9).text() +' '+ self.database +'\"'
-              self.writecommand(self.command)
-              self.process.start(self.command)
-              self.process.waitForFinished(-1)
-              self.writecommand(self.process.readAllStandardOutput())
-          self.i = self.i +1
-          self.progress.setValue(self.progress.value() + 1)
+	# Como los plugins van por orden iteramos sobre el orden para arreglarlo.
+	self.x = 1
+	while (self.x < 1000) :
+	  # Iteramos sobre la lista de plugins disponibles en bulmafact
+	  self.i = 0
+	  while (self.i < self.mui_plugins.rowCount()):
+	    # Si el plugin tiene el orden adecuado lo consideramos.
+	    if (str(self.mui_plugins1.item(self.i,7).text()) == str(self.x) ): 
+	      self.writecommand('Tratando ' + self.mui_plugins1.item(self.i,0).text())
+	      if (self.mui_plugins1.item(self.i, 0).checkState() == Qt.Checked):
+		if (len(self.mui_plugins1.item(self.i,4).text()) > 4):
+		  self.writecommand('Actualizando ' + self.mui_plugins1.item(self.i,0).text())
+		  self.command = 'su postgres -c \"psql -t -f  ' + plugins.pathdbplugins + self.mui_plugins1.item(self.i,4).text() +' '+ self.database +'\"'
+		  self.writecommand(self.command)
+		  self.process.start(self.command)
+		  self.process.waitForFinished(-1)
+		  self.writecommand(self.process.readAllStandardOutput())
+	      else:
+		# Si no esta chequeado hacemos un borrado del plugin
+		if (len(self.mui_plugins1.item(self.i,9).text()) > 4):
+		  # Aplicamos el parche  de borrado.
+		  self.command = 'su postgres -c \"psql -t -f  ' + plugins.pathdbplugins + self.mui_plugins1.item(self.i,9).text() +' '+ self.database +'\"'
+		  self.writecommand(self.command)
+		  self.process.start(self.command)
+		  self.process.waitForFinished(-1)
+		  self.writecommand(self.process.readAllStandardOutput())
+	    self.i = self.i +1
+	self.x = self.x + 1
+	self.progress.setValue(self.progress.value() + 1)
       self.progress.hide()
 
    def buscaPlugins(self):
