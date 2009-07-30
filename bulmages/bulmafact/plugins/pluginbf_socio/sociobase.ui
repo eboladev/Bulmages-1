@@ -1,0 +1,772 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <author>Alvaro de Miguel</author>
+ <class>TutorBase</class>
+ <widget class="QWidget" name="TutorBase">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>718</width>
+    <height>639</height>
+   </rect>
+  </property>
+  <property name="minimumSize">
+   <size>
+    <width>500</width>
+    <height>150</height>
+   </size>
+  </property>
+  <property name="windowTitle">
+   <string>Nuevo Socio</string>
+  </property>
+  <property name="windowIcon">
+   <iconset resource="../pluginbf_profesor/gestionaula.qrc">
+    <normaloff>:/ImgGestionAula/icons/tutor-new.png</normaloff>:/ImgGestionAula/icons/tutor-new.png</iconset>
+  </property>
+  <layout class="QGridLayout" name="gridLayout_5">
+   <item row="0" column="0">
+    <layout class="QHBoxLayout">
+     <property name="spacing">
+      <number>5</number>
+     </property>
+     <property name="margin">
+      <number>0</number>
+     </property>
+     <item>
+      <widget class="QLabel" name="label">
+       <property name="minimumSize">
+        <size>
+         <width>48</width>
+         <height>48</height>
+        </size>
+       </property>
+       <property name="maximumSize">
+        <size>
+         <width>48</width>
+         <height>48</height>
+        </size>
+       </property>
+       <property name="text">
+        <string/>
+       </property>
+       <property name="pixmap">
+        <pixmap resource="../pluginbf_profesor/gestionaula.qrc">:/ImgGestionAula/icons/tutor-new.png</pixmap>
+       </property>
+       <property name="scaledContents">
+        <bool>true</bool>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QFrame" name="frame">
+       <property name="frameShape">
+        <enum>QFrame::StyledPanel</enum>
+       </property>
+       <property name="frameShadow">
+        <enum>QFrame::Raised</enum>
+       </property>
+       <layout class="QHBoxLayout">
+        <property name="spacing">
+         <number>5</number>
+        </property>
+        <property name="margin">
+         <number>5</number>
+        </property>
+        <item>
+         <widget class="QToolButton" name="mui_guardar">
+          <property name="minimumSize">
+           <size>
+            <width>32</width>
+            <height>32</height>
+           </size>
+          </property>
+          <property name="maximumSize">
+           <size>
+            <width>32</width>
+            <height>32</height>
+           </size>
+          </property>
+          <property name="toolTip">
+           <string>Guardar Socio</string>
+          </property>
+          <property name="whatsThis">
+           <string>Guardar Socio</string>
+          </property>
+          <property name="text">
+           <string/>
+          </property>
+          <property name="icon">
+           <iconset resource="../../../bulmages.qrc">
+            <normaloff>:/Images/edit-save.png</normaloff>:/Images/edit-save.png</iconset>
+          </property>
+          <property name="iconSize">
+           <size>
+            <width>32</width>
+            <height>32</height>
+           </size>
+          </property>
+          <property name="shortcut">
+           <string>Ctrl+S</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QToolButton" name="mui_borrar">
+          <property name="minimumSize">
+           <size>
+            <width>32</width>
+            <height>32</height>
+           </size>
+          </property>
+          <property name="maximumSize">
+           <size>
+            <width>32</width>
+            <height>32</height>
+           </size>
+          </property>
+          <property name="toolTip">
+           <string>Borrar Socio</string>
+          </property>
+          <property name="whatsThis">
+           <string>Borrar Socio</string>
+          </property>
+          <property name="text">
+           <string/>
+          </property>
+          <property name="icon">
+           <iconset resource="../../../bulmages.qrc">
+            <normaloff>:/Images/edit-delete.png</normaloff>:/Images/edit-delete.png</iconset>
+          </property>
+          <property name="iconSize">
+           <size>
+            <width>32</width>
+            <height>32</height>
+           </size>
+          </property>
+          <property name="shortcut">
+           <string>Ctrl+D</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QToolButton" name="mui_imprimir">
+          <property name="minimumSize">
+           <size>
+            <width>32</width>
+            <height>32</height>
+           </size>
+          </property>
+          <property name="maximumSize">
+           <size>
+            <width>32</width>
+            <height>32</height>
+           </size>
+          </property>
+          <property name="toolTip">
+           <string>Borrar Socio</string>
+          </property>
+          <property name="whatsThis">
+           <string>Borrar Socio</string>
+          </property>
+          <property name="text">
+           <string/>
+          </property>
+          <property name="icon">
+           <iconset resource="../../../bulmages.qrc">
+            <normaloff>:/Images/document-print.png</normaloff>:/Images/document-print.png</iconset>
+          </property>
+          <property name="iconSize">
+           <size>
+            <width>32</width>
+            <height>32</height>
+           </size>
+          </property>
+          <property name="shortcut">
+           <string>Ctrl+I</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <spacer>
+          <property name="orientation">
+           <enum>Qt::Horizontal</enum>
+          </property>
+          <property name="sizeType">
+           <enum>QSizePolicy::Expanding</enum>
+          </property>
+          <property name="sizeHint" stdset="0">
+           <size>
+            <width>41</width>
+            <height>34</height>
+           </size>
+          </property>
+         </spacer>
+        </item>
+       </layout>
+      </widget>
+     </item>
+    </layout>
+   </item>
+   <item row="2" column="0">
+    <layout class="QHBoxLayout">
+     <property name="spacing">
+      <number>5</number>
+     </property>
+     <property name="margin">
+      <number>0</number>
+     </property>
+     <item>
+      <spacer>
+       <property name="orientation">
+        <enum>Qt::Horizontal</enum>
+       </property>
+       <property name="sizeType">
+        <enum>QSizePolicy::Expanding</enum>
+       </property>
+       <property name="sizeHint" stdset="0">
+        <size>
+         <width>201</width>
+         <height>27</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+     <item>
+      <widget class="QPushButton" name="mui_aceptar">
+       <property name="text">
+        <string>&amp;Aceptar</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="mui_cancelar">
+       <property name="text">
+        <string>&amp;Cancelar</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </item>
+   <item row="1" column="0">
+    <widget class="QTabWidget" name="mui_tab">
+     <property name="enabled">
+      <bool>true</bool>
+     </property>
+     <property name="currentIndex">
+      <number>0</number>
+     </property>
+     <widget class="QWidget" name="Tab1">
+      <attribute name="title">
+       <string>&amp;Datos generales</string>
+      </attribute>
+      <layout class="QGridLayout" name="gridLayout_2">
+       <item row="0" column="0" colspan="2">
+        <widget class="QLabel" name="textLabel2_5">
+         <property name="text">
+          <string>NIF:</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+         </property>
+         <property name="buddy">
+          <cstring>mui_cifcliente</cstring>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="2">
+        <widget class="QLineEdit" name="mui_cifcliente">
+         <property name="maxLength">
+          <number>200</number>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="3">
+        <widget class="QCheckBox" name="mui_sociocliente">
+         <property name="text">
+          <string>Socio</string>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="4" colspan="2">
+        <widget class="QLabel" name="label_2">
+         <property name="text">
+          <string>Nº Socio</string>
+         </property>
+         <property name="buddy">
+          <cstring>mui_numsociocliente</cstring>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="6" colspan="3">
+        <widget class="QLineEdit" name="mui_numsociocliente"/>
+       </item>
+       <item row="1" column="0" colspan="2">
+        <widget class="QLabel" name="textLabel2_2">
+         <property name="text">
+          <string>Nombre:</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+         </property>
+         <property name="buddy">
+          <cstring>mui_nomcliente</cstring>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="2" colspan="7">
+        <widget class="QLineEdit" name="mui_nomcliente">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+        </widget>
+       </item>
+       <item row="2" column="0" colspan="2">
+        <widget class="QLabel" name="textLabel2_6">
+         <property name="text">
+          <string>Direccion:</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+         </property>
+         <property name="buddy">
+          <cstring>mui_dircliente</cstring>
+         </property>
+        </widget>
+       </item>
+       <item row="2" column="2" colspan="3">
+        <widget class="QLineEdit" name="mui_dircliente">
+         <property name="maxLength">
+          <number>100</number>
+         </property>
+        </widget>
+       </item>
+       <item row="2" column="5" colspan="2">
+        <widget class="QLabel" name="textLabel2_9_2">
+         <property name="text">
+          <string>Provincia:</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+         </property>
+         <property name="buddy">
+          <cstring>mui_idprovincia</cstring>
+         </property>
+        </widget>
+       </item>
+       <item row="2" column="7" colspan="2">
+        <widget class="BlComboBox" name="mui_idprovincia"/>
+       </item>
+       <item row="3" column="0" colspan="2">
+        <widget class="QLabel" name="textLabel2_9">
+         <property name="text">
+          <string>Poblacion:</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+         </property>
+         <property name="buddy">
+          <cstring>mui_poblcliente</cstring>
+         </property>
+        </widget>
+       </item>
+       <item row="3" column="2" colspan="4">
+        <widget class="QLineEdit" name="mui_poblcliente">
+         <property name="maxLength">
+          <number>40</number>
+         </property>
+        </widget>
+       </item>
+       <item row="3" column="6" colspan="2">
+        <widget class="QLabel" name="textLabel2_7">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="text">
+          <string>Codigo postal:</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+         </property>
+         <property name="buddy">
+          <cstring>mui_cpcliente</cstring>
+         </property>
+        </widget>
+       </item>
+       <item row="3" column="8">
+        <widget class="QLineEdit" name="mui_cpcliente">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="maxLength">
+          <number>10</number>
+         </property>
+        </widget>
+       </item>
+       <item row="4" column="0" colspan="2">
+        <widget class="QLabel" name="textLabel2_8">
+         <property name="text">
+          <string>Telefono fijo:</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+         </property>
+         <property name="buddy">
+          <cstring>mui_telcliente</cstring>
+         </property>
+        </widget>
+       </item>
+       <item row="4" column="2">
+        <widget class="QLineEdit" name="mui_telcliente">
+         <property name="maxLength">
+          <number>20</number>
+         </property>
+        </widget>
+       </item>
+       <item row="4" column="3" colspan="4">
+        <widget class="QLabel" name="textLabel2_8_5">
+         <property name="text">
+          <string>Telefono movil:</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+         </property>
+         <property name="buddy">
+          <cstring>mui_movilcliente</cstring>
+         </property>
+        </widget>
+       </item>
+       <item row="4" column="7" colspan="2">
+        <widget class="QLineEdit" name="mui_movilcliente">
+         <property name="maxLength">
+          <number>20</number>
+         </property>
+        </widget>
+       </item>
+       <item row="5" column="0" rowspan="2" colspan="2">
+        <widget class="QLabel" name="textLabel2_8_3">
+         <property name="text">
+          <string>E-Mail:</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+         </property>
+         <property name="buddy">
+          <cstring>mui_mailcliente</cstring>
+         </property>
+        </widget>
+       </item>
+       <item row="5" column="2" rowspan="2" colspan="6">
+        <widget class="QLineEdit" name="mui_mailcliente">
+         <property name="maxLength">
+          <number>100</number>
+         </property>
+        </widget>
+       </item>
+       <item row="17" column="3">
+        <spacer name="verticalSpacer">
+         <property name="orientation">
+          <enum>Qt::Vertical</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>20</width>
+           <height>12</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+       <item row="7" column="2">
+        <widget class="QLineEdit" name="mui_fnacimientocliente"/>
+       </item>
+       <item row="7" column="0">
+        <widget class="QLabel" name="label_fnacimientocliente">
+         <property name="text">
+          <string>F. Nacimiento:</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+         </property>
+        </widget>
+       </item>
+       <item row="8" column="2">
+        <widget class="QLineEdit" name="mui_faltacliente"/>
+       </item>
+       <item row="8" column="0">
+        <widget class="QLabel" name="label_faltacliente">
+         <property name="text">
+          <string>F. Alta:</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+         </property>
+        </widget>
+       </item>
+       <item row="8" column="3">
+        <widget class="QLabel" name="label_fbajacliente">
+         <property name="text">
+          <string>F. Baja:</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+         </property>
+        </widget>
+       </item>
+       <item row="8" column="4" colspan="5">
+        <widget class="QLineEdit" name="mui_fbajacliente"/>
+       </item>
+       <item row="11" column="0">
+        <widget class="QLabel" name="label_profesioncliente">
+         <property name="text">
+          <string>Profesión:</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+         </property>
+        </widget>
+       </item>
+       <item row="11" column="2">
+        <widget class="QLineEdit" name="mui_profesioncliente"/>
+       </item>
+       <item row="11" column="3" colspan="2">
+        <widget class="QLabel" name="label_idtiposocio">
+         <property name="text">
+          <string>Tipo Socio:</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+         </property>
+        </widget>
+       </item>
+       <item row="11" column="5" colspan="4">
+        <widget class="BlComboBox" name="mui_idtiposocio"/>
+       </item>
+       <item row="12" column="0">
+        <widget class="QLabel" name="label_3">
+         <property name="text">
+          <string>Forma Pago:</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+         </property>
+        </widget>
+       </item>
+       <item row="12" column="2">
+        <widget class="BfBuscarFormaPago" name="mui_idforma_pago"/>
+       </item>
+       <item row="14" column="0">
+        <widget class="QLabel" name="textLabel2_4_3">
+         <property name="text">
+          <string>Banco:</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+         </property>
+         <property name="buddy">
+          <cstring>mui_bancocliente</cstring>
+         </property>
+        </widget>
+       </item>
+       <item row="14" column="2" colspan="7">
+        <widget class="BlBankEdit" name="mui_bancocliente">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+        </widget>
+       </item>
+       <item row="12" column="8">
+        <widget class="QCheckBox" name="mui_cuotafamiliar">
+         <property name="text">
+          <string>Cuota familiar</string>
+         </property>
+        </widget>
+       </item>
+       <item row="16" column="0">
+        <widget class="QLabel" name="label_nombretitularbancocliente">
+         <property name="text">
+          <string>Nombre titular:</string>
+         </property>
+        </widget>
+       </item>
+       <item row="16" column="2">
+        <widget class="QLineEdit" name="mui_nombretitularbancocliente"/>
+       </item>
+       <item row="16" column="3" colspan="3">
+        <widget class="QLabel" name="label_apellidotitularbancocliente">
+         <property name="text">
+          <string>Apellidos titular:</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+         </property>
+        </widget>
+       </item>
+       <item row="16" column="6" colspan="3">
+        <widget class="QLineEdit" name="mui_apellidotitularbancocliente"/>
+       </item>
+       <item row="15" column="0">
+        <widget class="QLabel" name="label_entidadbancocliente">
+         <property name="text">
+          <string>Entidad:</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+         </property>
+        </widget>
+       </item>
+       <item row="15" column="2">
+        <widget class="QLineEdit" name="mui_entidadbancocliente"/>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QWidget" name="tab_2">
+      <attribute name="title">
+       <string>Page</string>
+      </attribute>
+     </widget>
+     <widget class="QWidget" name="tabOtros">
+      <attribute name="title">
+       <string>Otros datos</string>
+      </attribute>
+      <layout class="QGridLayout" name="gridLayout">
+       <item row="0" column="0" colspan="2">
+        <widget class="QLabel" name="textLabel2_4_2_2">
+         <property name="text">
+          <string>Comentarios:</string>
+         </property>
+         <property name="buddy">
+          <cstring>mui_comentcliente</cstring>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="0" colspan="3">
+        <widget class="QTextEdit" name="mui_comentcliente">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="tabChangesFocus">
+          <bool>true</bool>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QWidget" name="tab">
+      <attribute name="title">
+       <string>Hijos</string>
+      </attribute>
+      <layout class="QGridLayout" name="gridLayout_3">
+       <item row="0" column="0">
+        <widget class="ListAlumnosSocioView" name="mui_alumnosList"/>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QWidget" name="tab_3">
+      <attribute name="title">
+       <string>Recibos</string>
+      </attribute>
+      <layout class="QGridLayout" name="gridLayout_4">
+       <item row="0" column="0">
+        <widget class="BfSubForm" name="mui_listrecibos"/>
+       </item>
+      </layout>
+     </widget>
+    </widget>
+   </item>
+  </layout>
+ </widget>
+ <layoutdefault spacing="4" margin="3"/>
+ <customwidgets>
+  <customwidget>
+   <class>BlBankEdit</class>
+   <extends>QLineEdit</extends>
+   <header>blbankedit.h</header>
+  </customwidget>
+  <customwidget>
+   <class>BlComboBox</class>
+   <extends>QComboBox</extends>
+   <header>blcombobox.h</header>
+  </customwidget>
+  <customwidget>
+   <class>ListAlumnosSocioView</class>
+   <extends>QTableWidget</extends>
+   <header>socioview.h</header>
+  </customwidget>
+  <customwidget>
+   <class>BfBuscarFormaPago</class>
+   <extends>QComboBox</extends>
+   <header>bfbuscarformapago.h</header>
+  </customwidget>
+  <customwidget>
+   <class>BfSubForm</class>
+   <extends>QTableWidget</extends>
+   <header>bfsubform.h</header>
+  </customwidget>
+ </customwidgets>
+ <tabstops>
+  <tabstop>mui_telcliente</tabstop>
+  <tabstop>mui_aceptar</tabstop>
+  <tabstop>mui_imprimir</tabstop>
+  <tabstop>mui_cancelar</tabstop>
+  <tabstop>mui_borrar</tabstop>
+  <tabstop>mui_poblcliente</tabstop>
+  <tabstop>mui_cifcliente</tabstop>
+  <tabstop>mui_tab</tabstop>
+  <tabstop>mui_mailcliente</tabstop>
+  <tabstop>mui_dircliente</tabstop>
+  <tabstop>mui_sociocliente</tabstop>
+  <tabstop>mui_guardar</tabstop>
+  <tabstop>mui_numsociocliente</tabstop>
+  <tabstop>mui_idprovincia</tabstop>
+  <tabstop>mui_cpcliente</tabstop>
+  <tabstop>mui_movilcliente</tabstop>
+  <tabstop>mui_alumnosList</tabstop>
+  <tabstop>mui_comentcliente</tabstop>
+  <tabstop>mui_nomcliente</tabstop>
+  <tabstop>mui_listrecibos</tabstop>
+  <tabstop>mui_bancocliente</tabstop>
+  <tabstop>mui_idforma_pago</tabstop>
+  <tabstop>mui_fnacimientocliente</tabstop>
+  <tabstop>mui_faltacliente</tabstop>
+  <tabstop>mui_fbajacliente</tabstop>
+  <tabstop>mui_profesioncliente</tabstop>
+  <tabstop>mui_idtiposocio</tabstop>
+ </tabstops>
+ <resources>
+  <include location="../../../bulmages.qrc"/>
+  <include location="../pluginbf_profesor/gestionaula.qrc"/>
+ </resources>
+ <connections>
+  <connection>
+   <sender>mui_sociocliente</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>mui_numsociocliente</receiver>
+   <slot>setEnabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>426</x>
+     <y>114</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>665</x>
+     <y>116</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+</ui>
