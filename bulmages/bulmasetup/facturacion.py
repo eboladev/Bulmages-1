@@ -544,7 +544,7 @@ class Facturacion(Ui_ModificarFacturacionBase, Empresa):
       #Creamos la bara de progreso
       self.progress = QtGui.QProgressBar(self)
       self.progress.setGeometry(self.width() / 2 -100, self.height() /2 -10, 200, 40)
-      self.progress.setRange(0, self.mui_plugins.rowCount()+self.mui_plugins1.rowCount())
+      self.progress.setRange(0, 4000)
       self.progress.show()
       
       # Como los plugins van por orden iteramos sobre el orden para arreglarlo.
@@ -568,7 +568,21 @@ class Facturacion(Ui_ModificarFacturacionBase, Empresa):
 		self.process.start(self.command)
 		self.process.waitForFinished(-1)
 		self.writecommand(self.process.readAllStandardOutput())
-	    else:
+	  self.i = self.i +1
+        self.x = self.x +1
+        self.progress.setValue(self.progress.value() + 1)
+
+
+      # Como los plugins van por orden iteramos sobre el orden para arreglarlo.
+      self.x = 1000
+      while (self.x >= 1) :
+        # Iteramos sobre la lista de plugins disponibles en bulmafact
+        self.i = 0
+        while (self.i < self.mui_plugins.rowCount()):
+          # Si el plugin tiene el orden adecuado lo consideramos.
+          if (str(self.mui_plugins.item(self.i,7).text()) == str(self.x) ):   
+	    self.writecommand('Tratando ' + self.mui_plugins.item(self.i,0).text())
+	    if (self.mui_plugins.item(self.i, 0).checkState() <> Qt.Checked):
 	      # Si no esta chequeado hacemos un borrado del plugin
 	      if (len(self.mui_plugins.item(self.i,9).text()) > 4):
 		# Aplicamos el parche  de borrado.
@@ -578,7 +592,7 @@ class Facturacion(Ui_ModificarFacturacionBase, Empresa):
 		self.process.waitForFinished(-1)
 		self.writecommand(self.process.readAllStandardOutput())
 	  self.i = self.i +1
-        self.x = self.x +1
+        self.x = self.x - 1
         self.progress.setValue(self.progress.value() + 1)
    
       if (self.mui_soporteTPV.isChecked()):
@@ -599,7 +613,21 @@ class Facturacion(Ui_ModificarFacturacionBase, Empresa):
 		  self.process.start(self.command)
 		  self.process.waitForFinished(-1)
 		  self.writecommand(self.process.readAllStandardOutput())
-	      else:
+	    self.i = self.i + 1
+	self.x = self.x + 1
+	self.progress.setValue(self.progress.value() + 1)
+
+
+	# Como los plugins van por orden iteramos sobre el orden para arreglarlo.
+	self.x = 1000
+	while (self.x >= 1) :
+	  # Iteramos sobre la lista de plugins disponibles en bulmafact
+	  self.i = 0
+	  while (self.i < self.mui_plugins.rowCount()):
+	    # Si el plugin tiene el orden adecuado lo consideramos.
+	    if (str(self.mui_plugins1.item(self.i,7).text()) == str(self.x) ): 
+	      self.writecommand('Tratando ' + self.mui_plugins1.item(self.i,0).text())
+	      if (self.mui_plugins1.item(self.i, 0).checkState() <> Qt.Checked):
 		# Si no esta chequeado hacemos un borrado del plugin
 		if (len(self.mui_plugins1.item(self.i,9).text()) > 4):
 		  # Aplicamos el parche  de borrado.
@@ -608,9 +636,12 @@ class Facturacion(Ui_ModificarFacturacionBase, Empresa):
 		  self.process.start(self.command)
 		  self.process.waitForFinished(-1)
 		  self.writecommand(self.process.readAllStandardOutput())
-	    self.i = self.i +1
+	    self.i = self.i + 1
 	self.x = self.x + 1
 	self.progress.setValue(self.progress.value() + 1)
+
+
+
       self.progress.hide()
 
    def buscaPlugins(self):

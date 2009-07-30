@@ -157,7 +157,7 @@ class Contabilidad(Ui_ModificarContabilidadBase, Empresa):
       #Creamos la bara de progreso
       self.progress = QtGui.QProgressBar(self)
       self.progress.setGeometry(self.width() / 2 -100, self.height() /2 -10, 200, 40)
-      self.progress.setRange(0, 1000)
+      self.progress.setRange(0, 2000)
       self.progress.show()
       
 
@@ -179,7 +179,21 @@ class Contabilidad(Ui_ModificarContabilidadBase, Empresa):
 		  self.process.start(self.command)
 		  self.process.waitForFinished(-1)
 		  self.writecommand(self.process.readAllStandardOutput())
-	    else:
+	  self.i = self.i + 1
+	self.x = self.x + 1
+        self.progress.setValue(self.progress.value() + 1)
+
+
+      # Como los plugins van por orden iteramos sobre el orden para arreglarlo.
+      self.x = 1000
+      while (self.x >= 1) :
+        # Iteramos sobre la lista de plugins disponibles en bulmafact
+        self.i = 0
+        while (self.i < self.mui_plugins.rowCount()):
+          # Si el plugin tiene el orden adecuado lo consideramos.
+          if (str(self.mui_plugins.item(self.i,7).text()) == str(self.x) ):      
+	    self.writecommand('Tratando ' + self.mui_plugins.item(self.i, 0).text())
+	    if (self.mui_plugins.item(self.i, 0).checkState() <> Qt.Checked):
 		# Si no esta chequeado hacemos un borrado del plugin
 		if (len(self.mui_plugins.item(self.i,9).text()) > 4 ):
 		  # Aplicamos el parche  de borrado.
@@ -189,8 +203,10 @@ class Contabilidad(Ui_ModificarContabilidadBase, Empresa):
 		  self.process.waitForFinished(-1)
 		  self.writecommand(self.process.readAllStandardOutput())
 	  self.i = self.i + 1
-	self.x = self.x + 1
+	self.x = self.x - 1
         self.progress.setValue(self.progress.value() + 1)
+
+
       self.progress.hide()
 
    def marcar(self, plug):
