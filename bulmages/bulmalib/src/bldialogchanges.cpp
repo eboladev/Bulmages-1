@@ -19,6 +19,7 @@
  ***************************************************************************/
 
 #include <QLineEdit>
+#include <QPlainTextEdit>
 #include <QTextEdit>
 #include <QTableWidget>
 #include <QComboBox>
@@ -79,8 +80,9 @@ void BlDialogChanges::dialogChanges_cargaInicial()
 {
     _depura ( "BlDialogChanges::dialogChanges_cargaInicial", 0 );
     try {
-        m_maxQText = 0;
         m_maxQLine = 0;
+        m_maxQPlainText = 0;
+        m_maxQText = 0;
         m_maxQTable = 0;
         m_maxQComboBox = 0;
 
@@ -95,6 +97,14 @@ void BlDialogChanges::dialogChanges_cargaInicial()
             } // end if
         } // end while
 
+        QList<QPlainTextEdit *> l5 = m_obje->findChildren<QPlainTextEdit *>();
+        QListIterator<QPlainTextEdit *> it5 ( l5 );
+        while ( it5.hasNext() ) {
+            QPlainTextEdit * item = it5.next();
+            if ( item->objectName().startsWith ( "mui_" ) && !objExcluido ( item ) ) {
+                m_listaQPlainText[m_maxQPlainText++] = item;
+            } // end if
+        } // end while
 
         QList<QTextEdit *> l1 = m_obje->findChildren<QTextEdit *>();
         QListIterator<QTextEdit *> it1 ( l1 );
@@ -154,6 +164,7 @@ QString BlDialogChanges::calculateValues()
     _depura ( "BlDialogChanges::calculateValues", 0 );
     QString values = retrieveValues ( "QTableWidget" );
     values += retrieveValues ( "QLineEdit" );
+    values += retrieveValues ( "QPlainTextEdit" );
     values += retrieveValues ( "QTextEdit" );
     values += retrieveValues ( "QComboBox" );
     _depura ( "END BlDialogChanges::calculateValues", 0 );
@@ -206,6 +217,16 @@ QString BlDialogChanges::retrieveValues ( QString qsWidget )
                         values += ( ( QLineEdit* ) m_listaQLine[i] ) ->text();
 
                     } // end if
+                } // end if
+            } // end for
+        } // end if
+
+        if ( qsWidget == "QPlainTextEdit" ) {
+            for ( int i = 0; i < m_maxQPlainText; i++ ) {
+                if ( m_listaQPlainText[i] != NULL ) {
+                    if ( ( ( QPlainTextEdit* ) m_listaQPlainText[i] ) ->objectName().startsWith ( "mui_" ) )
+                        values += ( ( QPlainTextEdit* ) m_listaQPlainText[i] ) ->objectName();
+                    values += ( ( QPlainTextEdit* ) m_listaQPlainText[i] ) ->toPlainText();
                 } // end if
             } // end for
         } // end if

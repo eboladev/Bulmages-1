@@ -20,6 +20,7 @@
 
 #include <QMenu>
 #include <QToolButton>
+#include <QPlainTextEdit>
 #include <QTextEdit>
 #include <QCheckBox>
 #include <QFile>
@@ -532,6 +533,11 @@ void BlForm::pintar()
         if ( l ) {
             l->setText ( campo->valorcampo() );
         } // end if
+        /// Buscamos los QPlainTextEdit con nombre coincidente.
+        QPlainTextEdit *l9 = findChild<QPlainTextEdit *> ( "mui_" + campo->nomcampo() );
+        if ( l9 ) {
+            l9->setPlainText( campo->valorcampo() );
+        } // end if
         /// Buscamos los QTextEdit con nombre coincidente.
         QTextEdit *l3 = findChild<QTextEdit *> ( "mui_" + campo->nomcampo() );
         if ( l3 ) {
@@ -606,6 +612,11 @@ void BlForm::recogeValores()
         QLineEdit *l = findChild<QLineEdit *> ( "mui_" + campo->nomcampo() );
         if ( l )
             campo->set ( l->text() );
+
+        /// Buscamos un QPlainTextEdit con nombre coincidente.
+        QPlainTextEdit *l9 = findChild<QPlainTextEdit *> ( "mui_" + campo->nomcampo() );
+        if ( l9 )
+            campo->set ( l9->toPlainText() );
 
         /// Buscamos un QTextEdit con nombre coincidente.
         QTextEdit *l3 = findChild<QTextEdit *> ( "mui_" + campo->nomcampo() );

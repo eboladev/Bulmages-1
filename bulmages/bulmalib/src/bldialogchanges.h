@@ -35,12 +35,14 @@ class BL_EXPORT BlDialogChanges
 {
 private:
     int m_maxQLine;
+    int m_maxQPlainText;
     int m_maxQText;
     int m_maxQTable;
     int m_maxQComboBox;
     QString m_valorinicial;
     QObject *m_obje;
     QObject *m_listaQLine[999];
+    QObject *m_listaQPlainText[999];
     QObject *m_listaQText[999];
     QObject *m_listaQTable[999];
     QObject *m_listaQComboBox[999];
