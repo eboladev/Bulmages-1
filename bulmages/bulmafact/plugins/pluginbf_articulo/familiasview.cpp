@@ -119,11 +119,18 @@ void FamiliasView::pintar()
         delete it;
     } // end while
 
+    /// Parece que lo mas rentable es crear una inicial que siempre este y a partir de la que carguen las demas
+    m_init = new QTreeWidgetItem ( m_listFamilias );
+    m_init->setText ( COL_NOMFAMILIA, _("Familias") );
+    m_listFamilias->expandItem ( m_init );
+
+
+
     cursoraux1 = mainCompany()->loadQuery ( "SELECT * FROM familia WHERE padrefamilia IS NULL ORDER BY idfamilia" );
     while ( !cursoraux1->eof() ) {
         padre = cursoraux1->valor ( "padrefamilia" ).toInt();
         idfamilia = cursoraux1->valor ( "idfamilia" ).toInt();
-        it = new QTreeWidgetItem ( m_listFamilias );
+        it = new QTreeWidgetItem ( m_init );
         Lista1[idfamilia] = it;
         it->setText ( COL_NOMFAMILIA, cursoraux1->valor ( "nombrefamilia" ) );
         it->setText ( COL_CODFAMILIA, cursoraux1->valor ( "codigofamilia" ) );
@@ -431,40 +438,6 @@ void FamiliasView::on_mui_crear_released()
         mensajeInfo ( _ ( "Error al crear la familia" ) );
     } // end try
 }
-
-
-/// SLOT que responde a la pulsacion del boton de nuevo desde Raiz
-/// Inserta en la tabla de Familias
-/**
-**/
-/** No es necesario con las Qt 4.4
-void FamiliasView::on_mui_crearRaiz_released()
-{
-    _depura ( "FamiliasView::on_mui_crearRaiz_released", 0 );
-    try {
-        mainCompany()->begin();
-        /// Si se ha modificado el contenido advertimos y guardamos.
-        trataModificado();
-
-        QString query = "INSERT INTO familia (nombrefamilia, descfamilia, padrefamilia, codigofamilia) VALUES ('NUEVA FAMILIA', 'Descripcion de la familia',  NULL , 'XXX')";
-
-        int error = mainCompany()->runQuery ( query );
-        if ( error ) {
-            throw - 1;
-        } // end if
-        BlDbRecordSet *cur = mainCompany()->loadQuery ( "SELECT max(idfamilia) AS idfamilia FROM familia" );
-        mainCompany()->commit();
-        m_idfamilia = cur->valor ( "idfamilia" );
-        delete cur;
-        pintar();
-        _depura ( "END FamiliasView::on_mui_crearRaiz_released", 0 );
-    } catch ( ... ) {
-        mainCompany()->rollback();
-        mensajeInfo ( _("Error al crear la familia") );
-    } // end try
-}
-
-*/
 
 
 ///

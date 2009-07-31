@@ -45,7 +45,8 @@ private:
     bool m_modoConsulta;
     /// Este semaforo indica si se esta en el proceso de pintado.
     bool m_semaforoPintar;
-
+    QTreeWidgetItem *m_init;
+    
 public:
     FamiliasView ( BfCompany *, QWidget *parent = 0, bool modoConsulta = FALSE );
     ~FamiliasView();

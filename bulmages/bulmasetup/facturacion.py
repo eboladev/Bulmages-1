@@ -196,6 +196,12 @@ class Facturacion(Ui_ModificarFacturacionBase, Empresa):
 	      self.j = self.j + 1
 	self.i = self.i + 1
 
+      # Hacemos un backup del archivo
+      self.string = "cp " + plugins.configfiles + "bulmafact_" + self.database + ".conf " + plugins.configfiles + "bulmafact_" + self.database + ".conf~ "
+      self.process.start(self.string)
+      self.process.waitForFinished(-1)
+      #self.writecommand(self.process.readAllStandardOutput())
+
       # Abrimos el backup para lectura
       self.file1 = QFile( plugins.configfiles + "bulmafact_" + self.database + ".conf~");
       if not(self.file1.open(QIODevice.ReadOnly | QIODevice.Text)):

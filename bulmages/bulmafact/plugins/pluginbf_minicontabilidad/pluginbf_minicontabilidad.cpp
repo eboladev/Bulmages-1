@@ -27,6 +27,9 @@
 #include "acontableview.h"
 #include "presupuestocontablelist.h"
 
+
+ApunteContableView *g_ap = NULL;
+
 ///
 /**
 **/
@@ -67,9 +70,8 @@ void MyPlugArt::elslot1()
 void MyPlugArt::elslot2()
 {
     _depura ( "MyPlugArt::elslot3", 0 );
-    ApunteContableView *pag = new ApunteContableView ( ( BfCompany * ) mainCompany(), 0 );
-    mainCompany() ->m_pWorkspace->addWindow ( pag );
-    pag->show();
+    g_ap->hide();
+    g_ap->show();
     _depura ( "END MyPlugArt::elslot3", 0 );
 }
 
@@ -122,15 +124,12 @@ void MyPlugArt::inicializa ( )
 
         QAction *tfam2 = new QAction ( _ ( "&Previsiones" ), 0 );
         tfam2->setIcon ( QIcon ( QString::fromUtf8 ( ":/Images/book-list.png" ) ) );
-        tfam2->setStatusTip ( _ ( "Previsiones" ) );
-        tfam2->setWhatsThis ( _ ( "Previsiones" ) );
+        tfam2->setStatusTip ( _ ( "Presupuesto Contables" ) );
+        tfam2->setWhatsThis ( _ ( "Presupuestos Contables" ) );
         pPluginMenu->addAction ( tfam2 );
         m_bges->Fichas->addAction ( tfam2 );
         connect ( tfam2, SIGNAL ( activated() ), this, SLOT ( elslot1() ) );
 
-	
-	
-	
      }// end if
     _depura ( "END MyPlugArt::inicializa", 0 );
 }
@@ -154,6 +153,11 @@ int entryPoint ( BfBulmaFact *bges )
 
     MyPlugArt *plug = new MyPlugArt(bges);
     plug->inicializa ( );
+
+    g_ap = new ApunteContableView ( ( BfCompany * ) bges->company(), 0 );
+    bges->company() ->m_pWorkspace->addWindow ( g_ap );
+    
+    
     return 0;
 }
 
@@ -161,11 +165,7 @@ int entryPoint ( BfBulmaFact *bges )
 int BfCompany_createMainWindows_Post ( BfCompany *comp )
 {
     if ( comp->hasTablePrivilege ( "partida", "SELECT" ) ) {
-/*
-        g_articulosList = new ArticuloList ( comp, NULL );
-        comp->m_pWorkspace->addWindow ( g_articulosList );
-        g_articulosList->hide();
-*/
+
     }// end if
     return 0;
 }
@@ -174,10 +174,7 @@ int BfCompany_createMainWindows_Post ( BfCompany *comp )
 int Busqueda_on_mui_buscar_released ( BlSearchWidget *busq )
 {
 
-
     if ( busq->tableName() == "partida" ) {
-
-
 
         QDialog *diag = new QDialog ( 0 );
         diag->setModal ( true );

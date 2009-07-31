@@ -117,11 +117,16 @@ void PartidasView::pintar()
         delete it;
     } // end while
 
+    /// Parece que lo mas rentable es crear una inicial que siempre este y a partir de la que carguen las demas
+    m_init = new QTreeWidgetItem ( m_listPartidas );
+    m_init->setText ( COL_NOMBREPARTIDA, _("Partidas Contables") );
+    m_listPartidas->expandItem ( m_init );
+
     cursoraux1 = mainCompany()->loadQuery ( "SELECT * FROM partida WHERE padre IS NULL ORDER BY idpartida" );
     while ( !cursoraux1->eof() ) {
         padre = cursoraux1->valor ( "padre" ).toInt();
         idpartida = cursoraux1->valor ( "idpartida" ).toInt();
-        it = new QTreeWidgetItem ( m_listPartidas );
+        it = new QTreeWidgetItem ( m_init );
         Lista1[idpartida] = it;
         it->setText ( COL_NOMBREPARTIDA, cursoraux1->valor ( "nombrepartida" ) );
         it->setText ( COL_CODIGOPARTIDA, cursoraux1->valor ( "codigopartida" ) );
@@ -215,7 +220,9 @@ void PartidasView::on_m_listPartidas_itemDoubleClicked ( QTreeWidgetItem *it )
     _depura ( "PartidasView::on_m_listPartidas_itemDoubleClicked", 0 );
     if ( m_modoConsulta ) {
         m_idpartida = it->text ( COL_IDPARTIDA );
-        emit selected ( m_idpartida );
+	if ( !m_idpartida.isEmpty() ) {
+	  emit selected ( m_idpartida );
+	} // end if
     } // end if
     _depura ( "END PartidasView::on_m_listPartidas_itemDoubleClicked", 0 );
 }
@@ -416,40 +423,6 @@ void PartidasView::on_mui_crear_released()
         mensajeInfo ( _ ( "Error al crear la partida" ) );
     } // end try
 }
-
-
-/// SLOT que responde a la pulsacion del boton de nuevo desde Raiz
-/// Inserta en la tabla de Partidas
-/**
-**/
-/** No es necesario con las Qt 4.4
-void PartidasView::on_mui_crearRaiz_released()
-{
-    _depura ( "PartidasView::on_mui_crearRaiz_released", 0 );
-    try {
-        mainCompany()->begin();
-        /// Si se ha modificado el contenido advertimos y guardamos.
-        trataModificado();
-
-        QString query = "INSERT INTO partida (nombrepartida, descpartida, padre, codigopartida) VALUES ('NUEVA FAMILIA', 'Descripcion de la partida',  NULL , 'XXX')";
-
-        int error = mainCompany()->runQuery ( query );
-        if ( error ) {
-            throw - 1;
-        } // end if
-        BlDbRecordSet *cur = mainCompany()->loadQuery ( "SELECT max(idpartida) AS idpartida FROM partida" );
-        mainCompany()->commit();
-        m_idpartida = cur->valor ( "idpartida" );
-        delete cur;
-        pintar();
-        _depura ( "END PartidasView::on_mui_crearRaiz_released", 0 );
-    } catch ( ... ) {
-        mainCompany()->rollback();
-        mensajeInfo ( _("Error al crear la partida") );
-    } // end try
-}
-
-*/
 
 
 ///
