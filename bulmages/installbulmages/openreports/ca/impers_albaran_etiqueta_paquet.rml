@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+<!DOCTYPE document SYSTEM "rml_1_0.dtd">
+<document>
+
+      <!-- Títol per al menú contextual d'informes personalitzats 
+            <template title="Etiqueta pel paquet postal"/> 
+        -->
+
+      <!-- interfície d'usuari per triar les mides i la posició inicial.
+           Hauria d'exportar (el diàleg hauria de tenir una propietat
+           de tipus StringList que es digui exportaRML) al menys les 
+           propietats següents:
+     
+  <property name="exportaRML" stdset="0">
+   <stringlist>
+    <string>primeraFila.value</string>
+    <string>primeraCol.value</string>
+    <string>numcols.value</string>
+    <string>numfiles.value</string>
+    <string>alt.value</string>
+    <string>ample.value</string>
+    <string>altPaper.value</string>
+    <string>amplePaper.value</string>
+    <string>midaLletra.value</string>
+    <string>midaPredefinida.currentText</string>
+    <string>midaPersonalitzada.checked</string>
+    <string>margeSuperior.value</string>
+    <string>margeInferior.value</string>
+    <string>margeDret.value</string>
+    <string>margeEsquerre.value</string>
+   </stringlist>
+  </property>
+
+      Les mides són totes en milímetres i se suposa que els decimals
+    arribaran en comes (de fet seran doubles, però el bulmages en
+    substituir-lo posarà comes).  midaPredefinida.currentText podrà
+    valdre 'habitual' o qualsevol text que contingui un parèntesi amb
+    les mides en el format de la variable habitual d'aquí sota. Les
+    mides haurien de quadrar (no s'hi val a posar el marge més gran
+    que el paper, o més etiquetes de les que hi caben, etc. Encara no
+    he posat control d'errors.
+
+     Si no es vol deixar triar a l'usuari es pot canviar el IFACE per 
+    uns quants SETVAR. 
+ -->
+
+<!--IFACE SRC="[CONF_DIR_OPENREPORTS]/etiquetes_paquet.ui"-->
+
+      <!-- disseny del contingut de l'etiqueta -->
+<!--SETVAR NAME="fitxer_contingut_etiqueta" VALUE="[CONF_DIR_OPENREPORTS]/contingut_etiqueta_paquet.rml"-->
+
+       <!-- mides en mm de l'etiqueta per omisió si no seleccionen una
+            altra cosa: ample, alt, files, columnes, amplePaper,
+            alçadaPaper, margeSuperior,margeEsquerre, margeDret,
+            margeInferior (punts per decimals i comes per separar
+            mesures) -->
+<!--SETVAR NAME="habitual" VALUE="38,21.2,13,5,210,297,9.075,10,10,12.325"-->
+
+      <!-- cal un QUERY que al menys defineixi les variables :
+
+             etiquetes: amb valor cadena buida. Serveix per a
+                          permetre QUERYs anidats dintre de
+                          etiquetes_personalitzades.rml amb qualsevol
+                          nivell de subquerys
+
+              plenes: indica quantes etiquetes omplirem amb la
+                      consulta . etiquetes_personalitzades.rml ho fa
+                      servir per omplir la graella d'etiquetes per
+                      acabar la pàgina. Si no es posa es compten
+                      automàticament a partir de sql_continguts -->
+<!-- QUERY="
+      SELECT '' as etiquetes, [numcopies.value] as plenes
+"-->
+
+
+       <!-- SQL que retorna una fila per a cada etiqueta plena, amb els 
+            valors que necessiti el fitxer de contingut -->
+  
+<!-- SETVAR NAME="sql_contingut" VALUE="
+        SELECT nomcliente, nomaltcliente, 
+               coalesce(nomaltcliente,nomcliente) as nom,
+               dircliente, poblcliente, cpcliente, 
+               telcliente, teltrabcliente, movilcliente, 
+               provincia, descpais
+        FROM generate_series(1,[numcopies.value]), 
+             cliente 
+             LEFT OUTER JOIN provincia 
+                  ON provincia.idprovincia = cliente.idprovincia 
+             LEFT OUTER JOIN pais
+                  ON pais.idpais = provincia.idpais
+        WHERE idcliente = [idcliente]
+"-->
+
+<!-- cal definir l'ordre de les files de contingut de les etiquetes. a 
+     ordre_contingut hi va una llista d'expressions SQL que defineixen l'ordre, 
+     separats per comes i amb ASC o DESC cadascun opcionalment, 
+     que malhauradament no pot ser una llista buida -->
+
+<!-- SETVAR NAME="ordre_contingut" VALUE="1" -->
+
+<!-- per a les etiquetes buides cal definir valors per a les mateixes
+     columnes que sql_contingut, en el mateix ordre, però no es faran servir 
+     els valors. No és un SELECT complet, només la llista de valors i alies
+     que va entre el SELECT i el FROM
+      --> 
+<!--SETVAR NAME="valors_buits" VALUE="
+     '' as nomcliente, '' as nomaltcliente,
+     '' as nom, 
+     '' as dircliente, '' as poblcliente, '' as cpcliente, 
+     '' as telcliente, '' as teltrabcliente, '' as movilcliente, 
+     '' as provincia,  '' as descpais
+"-->
+
+<!-- INCLUDE FILE="[CONF_DIR_OPENREPORTS]/etiquetes_personalitzades.rml"-->
+
+<!--END QUERY-->
+</story>
+</document>

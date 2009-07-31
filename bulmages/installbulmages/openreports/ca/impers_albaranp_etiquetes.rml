@@ -1,175 +1,49 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no" ?>
 <!DOCTYPE document SYSTEM "rml_1_0.dtd">
 <document>
+<!-- veure comentaris a impers_albaran_etiqueta_paquet.rml -->
+<!-- Títol per al menú contextual d'informes personalitzats <template title="Etiquetes d'articles"/> -->
+<!--IFACE SRC="[CONF_DIR_OPENREPORTS]/etiquetes_articles.ui"-->
 
-<!--IFACE SRC="[CONF_DIR_OPENREPORTS]/etiquetes_personalitzades.ui"-->
+<!--SETVAR NAME="fitxer_contingut_etiqueta" VALUE="[CONF_DIR_OPENREPORTS]/contingut_etiquetes_articles.rml"-->
 
-<!--SETVAR NAME="habitual"VALUE="38,21.2,13,5,210,297,10.375,10,10,11.025"-->
+<!--SETVAR NAME="habitual" VALUE="38,21.2,13,5,210,297,10.375,10,10,11.025"-->
 
-<!-- QUERY=" 
-
-SELECT '' as subquery1, 
-       CASE  WHEN '[midaPredefinida.currentText]'='habitual' 
-             THEN '[habitual]' 
-             ELSE substring( '[midaPredefinida.currentText]'
-                              from '\\(([^]]+)\\)\\s*$')  
-       END as predef, 
-       CASE WHEN [barresAliesCurt.checked]  THEN 'ASC' 
-            WHEN [barresAliesLlarg.checked] THEN 'DESC' 
-            ELSE 'CAP' 
-       END as ordrealies 
-"--> 
-   <!-- QUERY[subquery1]=" 
-   SELECT '' as subquery2,
-          alias,
-          buides, plenes, maxrepeticions,
-          tmidabarres,
-          tw, th, 
-          ample, tample, 
-          alt,  talt, 
-          numfiles, numcols, numetiquetespag,
-          amplePaper, tamplepaper,
-          altPaper, taltpaper,
-          margesuperior, tmargesuperior,
-          margeesquerre, tmargeesquerre,
-          margedret, tmargedret,
-          margeinferior, tmargeinferior,
-          sephoritzontal, 
-           btrim(to_char(sephoritzontal, '000000.00')) as tsephoritzontal, 
-          sepvertical, 
-           btrim(to_char(sepvertical, '000000.00')) as tsepvertical, 
-          array_to_string(ARRAY(  SELECT (talt||'mm') 
-                                 UNION ALL
-                                   SELECT btrim(to_char(alt+sepvertical,'000000.00mm'))  
-                                              FROM generate_series(1,numfiles-1)
-                               ), 
-                          ',') AS rowheights,
-          array_to_string(ARRAY(  SELECT (tample||'mm') 
-                                 UNION ALL
-                                  SELECT btrim(to_char(ample+sephoritzontal,'000000.00mm'))  
-                                    FROM generate_series(1,numcols-1)
-                               ), 
-                          ',') AS colwidths,
-          (numetiquetespag - ((plenes + buides) % numetiquetespag)) 
-           % numetiquetespag as numcellesfinal 
-     FROM ( 
-       
-      SELECT 
-             CASE WHEN '[ordrealies]'<>'CAP' 
+<!-- QUERY="
+      SELECT '' as etiquetes, plenes, maxrepeticions,
+             CASE WHEN ordrealies <>'CAP' 
                   THEN '(SELECT cadalias '
                       ||'  FROM alias' 
                       ||' WHERE alias.idarticulo = l.idarticulo' 
-                      ||' ORDER BY length(cadalias) [ordrealies]' 
+                      ||' ORDER BY length(cadalias) '
+                      || ordrealies
                       ||' LIMIT 1)' 
                   ELSE 'codigocompletoarticulo' 
                   END as alias,
-             ([primeraFila.value]-1)*numcols+[primeraCol.value]-1 as buides,
-             btrim(to_char(amplePaper - (margeEsquerre), '000000.00')) as tw, 
-             btrim(to_char(altPaper - (margeSuperior), '000000.00')) as th, 
-             ample, btrim(to_char(ample, '000000.00')) as tample, 
-             alt,  btrim(to_char(alt, '000000.00')) as talt, 
-             btrim(to_char(to_number('[midaBarres.value]','999999D999'), '000000.00')) as tmidaBarres, 
-             numfiles, numcols,
-             numfiles * numcols as numetiquetespag , 
-             amplePaper, btrim(to_char(amplepaper, '000000.00')) as tamplepaper,
-             altPaper, btrim(to_char(altpaper, '000000.00')) as taltpaper,
-             margesuperior, btrim(to_char(margesuperior, '000000.00')) as tmargesuperior,
-             margeesquerre, btrim(to_char(margeesquerre-1, '000000.00')) as tmargeesquerre,
-             margedret, btrim(to_char(margedret, '000000.00')) as tmargedret,
-             margeinferior, btrim(to_char(margeinferior-1, '000000.00')) as tmargeinferior,
-             CASE WHEN numfiles <= 1 
-                  THEN 0 
-                  ELSE (altPaper -(margesuperior + margeinferior + numfiles*alt)) / (numfiles -1)
-             END as sepvertical,
-             CASE WHEN numcols <= 1 
-                  THEN 0 
-                  ELSE (amplePaper - (margeDret + margeEsquerre + numcols*ample)) / (numcols -1) 
-             END as sephoritzontal,
-             estadistic.maxrepeticions,
-             estadistic.plenes
-      
-             
-      FROM (
-           SELECT 'personalitzades' as mides, 
-                  to_number('[ample.value]','999999D999') as ample, 
-                  to_number('[alt.value]','999999D999') as alt, 
-                  [numfiles.value] as numfiles, 
-                  [numcols.value] as numcols, 
-                  to_number('[amplePaper.value]','999999D999') as amplepaper , 
-                  to_number('[altPaper.value]','999999D999') as altpaper, 
-                  to_number('[margeSuperior.value]','999999D999') as margesuperior, 
-                  to_number('[margeEsquerre.value]','999999D999') as margeesquerre, 
-                  to_number('[margeDret.value]','999999D999') as margedret, 
-                  to_number('[margeInferior.value]','999999D999') as margeinferior
-          UNION
-           SELECT 'predefinides' as mides, [predef]
-           ) opcions,
-          (SELECT max(lmax.cantlalbaranp)::integer as maxrepeticions,
-                 SUM(lmax.cantlalbaranp)::integer as plenes   
-            FROM lalbaranp lmax 
-           WHERE idalbaranp=[idalbaranp] ) estadistic
-      
-      WHERE mides = (CASE WHEN [midaPersonalitzada.checked] 
-                          THEN 'personalitzades'  
-                          ELSE 'predefinides' END)
-) opcions_i_estadistiques
+             btrim(to_char(to_number('[midaBarres.value]','999999D999'), '999999.9999')) as tmidaBarres 
+FROM 
+   (SELECT max(lmax.cantlalbaranp)::integer as maxrepeticions,
+           SUM(lmax.cantlalbaranp)::integer as plenes ,
+           CASE WHEN [barresAliesCurt.checked]  THEN 'ASC' 
+                WHEN [barresAliesLlarg.checked] THEN 'DESC' 
+                ELSE 'CAP' 
+           END as ordrealies 
+  
+      FROM lalbaranp lmax 
+     WHERE idalbaranp=[idalbaranp] ) estadistic
 "-->
 
-
-<template pageSize="([tamplepaper]mm, [taltpaper]mm)" 
-          leftMargin="[tmargeesquerre]mm" rightMargin="[tmargedret]mm" 
-          topMargin="[tmargesuperior]mm" bottomMargin="[tmargeinferior]mm" 
-          title="Etiquetes d'articles" author="xdrudis" >
-	<pageTemplate id="main">
-		<pageGraphics>
-
-		</pageGraphics>
-
-	<frame id="column" x1="[margeesquerre]mm" y1="0mm" 
-                           width="[tw]mm" height="[th]mm"/>
-
-
-	</pageTemplate>
-</template>
-
-<stylesheet>
-        <paraStyle name="baix" fontName="Helvetica" fontSize="[midaLletra.value]" leading="[midaLletra.value]" alignment="CENTER"/>
-        <paraStyle name="dalt" fontName="Helvetica" fontSize="[midaLletra.value]" leading="[midaLletra.value]" alignment="CENTER"/>
-   <blockTableStyle id="etiquetes">
-       <blockAlignment start="0,0" stop="-1,-1" value="CENTER"/>
-       <blockValign start="0,0" stop="-1,-1" value="BOTTOM"/>
-       <blockTopPadding start="0,0" stop="0,-1" value="0mm"/>
-       <blockLeftPadding start="0,0" stop="0,-1" value="0mm"/>
-       <blockTopPadding start="0,0" stop="-1,0" value="0mm"/>
-       <blockLeftPadding start="0,0" stop="-1,0" value="0mm"/>
-       <blockTopPadding start="1,1" stop="-1,-1" value="[tsepvertical]mm"/>
-       <blockLeftPadding start="1,1" stop="-1,-1" value="[tsephoritzontal]mm"/>
-       <blockRightPadding start="0,0" stop="-1,-1" value="0mm"/>
-       <blockBottomPadding start="0,0" stop="-1,-1" value="0mm"/>
-  </blockTableStyle>
-</stylesheet>
-<story>
-    <!-- QUERY[subquery2]=" 
-    CREATE TEMP SEQUENCE numlinia 
-    "-->
-    <!--END QUERY[subquery2]-->
-    <!-- QUERY[subquery2]="
-  SELECT  '' as subquery3, pos, barres, format,
-          codigocompletoarticulo, descrip, pvp, sep, talt_barres,
-    CASE WHEN hihatextsuperior THEN 'true' ELSE 'false' END as hihatextsuperior,
-    CASE WHEN hihabarresalmig THEN 'true' ELSE 'false' END as hihabarresalmig, 
-    CASE WHEN hihatextinferior THEN 'true' ELSE 'false' END as hihatextinferior,
-          nextval('numlinia') as etiqueta
-   FROM
-     ( SELECT 0 as pos, 0 as ordenlalbaranp ,  '' as barres, '' as format, 
+<!--SETVAR NAME="valors_buits" VALUE="
+  0 as ordenlalbaranp ,  '' as barres, '' as format, 
               '' as codigocompletoarticulo, 
               '' as descrip, '' as pvp, '' as sep, '' as talt_barres,
-              false as hihatextsuperior, 
-              false as hihabarresalmig, 
-              false as hihatextinferior
-         FROM  generate_series(1,[buides])
-       UNION ALL
-        SELECT 1 as pos, ordenlalbaranp , [alias] as barres,
+              'false' as hihatextsuperior, 
+              'false' as hihabarresalmig, 
+              'false' as hihatextinferior
+"-->
+
+<!-- SETVAR NAME="sql_contingut" VALUE="
+        SELECT  ordenlalbaranp , [alias] as barres,
           substring('[barresFormat.currentText]' from '^[^( ]+') as format,
           codigocompletoarticulo, 
           CASE WHEN [textDescripcio.checked] 
@@ -196,91 +70,23 @@ SELECT '' as subquery1,
                           END 
                         +CASE WHEN [textCodi.checked] THEN 1 ELSE 0 END
                        ) 
-             END), '000000.00')) as talt_barres,       
-          ([textDescripcio.checked] OR [textPVP.checked]) as hihatextsuperior,
-          NOT [barresSense.checked] as hihabarresalmig,
-          [textCodi.checked] as hihatextinferior
+             END), '999999.9999')) as talt_barres,       
+          CASE WHEN ([textDescripcio.checked] OR [textPVP.checked]) 
+                  THEN 'true' ELSE 'false' END as hihatextsuperior,
+          CASE WHEN NOT [barresSense.checked] 
+                  THEN 'true' ELSE 'false' END as hihabarresalmig,
+          '[textCodi.checked]' as hihatextinferior
        FROM lalbaranp l, articulo a, 
             generate_series(1,[maxrepeticions]) as it(n) 
       WHERE l.idarticulo = a.idarticulo
             AND l.idalbaranp=[idalbaranp] 
             AND it.n <= l.cantlalbaranp
-      UNION ALL
-       SELECT 2 as pos, 0 as ordenlalbaranp , 
-              '' as barres, '' as format, 
-              '' as codigocompletoarticulo, 
-              '' as descrip, '' as pvp, '' as sep, '' as talt_barres,
-              false as hihatextsuperior, 
-              false as hihabarresalmig, 
-              false as hihatextinferior
-         FROM  generate_series(1,[numcellesfinal])
-       
-      ORDER BY pos, ordenlalbaranp ) continguts
-   
-   " -->
-         <!-- QUERY[subquery3]="
-           SELECT 1 WHERE ([numetiquetespag] = 1) 
-                          OR ([etiqueta] % [numetiquetespag] = 1) 
-         "-->       
-<blockTable rowHeights="[rowheights]" colWidths="[colwidths]" style="etiquetes">
+"-->
 
-         <!--END QUERY[subquery3]-->
+<!-- SETVAR NAME="ordre_contingut" VALUE="ordenlalbaranp" -->
 
+<!-- INCLUDE FILE="[CONF_DIR_OPENREPORTS]/etiquetes_personalitzades.rml"-->
 
-
-         <!-- QUERY[subquery3]="
-           SELECT 1 WHERE ([numcols] = 1 ) OR ([etiqueta] % [numcols] = 1)
-         "-->
-         
-  <tr>
-
-         <!--END QUERY[subquery3]-->
-
-
-   <td>
-
-       <!-- QUERY[subquery3]="SELECT '' as sq4 WHERE [hihatextsuperior] " -->
-            <para style="dalt"><!-- QUERY[sq4]="SELECT 1 WHERE [textPVP.checked] " --><b>[pvp]</b><!-- END QUERY[sq4]-->[sep][descrip]</para>
-            <spacer length="1mm"/>
-       <!-- END QUERY[subquery3]-->
-
-
-       <!-- QUERY[subquery3]="SELECT 1 WHERE [hihabarresalmig] " -->
-          <barCode  height="[talt_barres]mm" code="[format]">[barres]</barCode>
-       <!-- END QUERY[subquery3]-->
-
-       <!-- QUERY="SELECT 1 WHERE [hihatextinferior] " -->
-          <spacer length="1mm"/>
-          <para style="baix">[codigocompletoarticulo]</para>
-       <!-- END QUERY[subquery3]-->
-
-
-   </td>
-
-
-
-
-         <!-- QUERY[subquery3]="
-           SELECT 1 WHERE [etiqueta] % [numcols] = 0
-         "-->
-         
-  </tr>
-
-         <!--END QUERY[subquery3]-->
-
-
-         <!-- QUERY[subquery3]="
-           SELECT 1 WHERE [etiqueta] % [numetiquetespag] = 0
-         "-->
-         
-</blockTable>
-         <!--END QUERY[subquery3]-->
-   <!--END QUERY[subquery2]-->
-   <!-- QUERY[subquery2]="
-   DROP SEQUENCE numlinia 
-   "-->
-   <!--END QUERY[subquery2]-->
-<!--END QUERY[subquery1]-->
 <!--END QUERY-->
 </story>
 </document>
