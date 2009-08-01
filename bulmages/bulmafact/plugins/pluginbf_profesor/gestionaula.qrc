@@ -2,7 +2,7 @@
   <qresource prefix="/ImgGestionAula" lang="ImgGestionAula">
     <file>icons/profesor.gif</file>
     <file>icons/profesor_add.png</file>
-    <file>icons/alumno.svg</file>
+    <file>icons/alumno.png</file>
     <file>icons/alumno-list.png</file>
     <file>icons/alumno-new.png</file>
     <file>icons/tutor.svg</file>

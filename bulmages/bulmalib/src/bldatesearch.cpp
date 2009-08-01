@@ -35,6 +35,8 @@ BlDateSearch::BlDateSearch ( QWidget *parent ) : BlWidget ( parent )
     QObject::connect ( mui_textoFecha, SIGNAL ( returnPressed() ), this, SLOT ( s_returnPressed() ) );
     QObject::connect ( mui_textoFecha, SIGNAL ( editingFinished() ), this, SLOT ( s_fechalostFocus() ) );
     QObject::connect ( mui_textoFecha, SIGNAL ( editingFinished() ), this, SIGNAL ( editingFinished() ) );
+    /// Establecemos la delegacion del foco en el texto
+    setFocusProxy(mui_textoFecha);
     _depura ( "END BlDateSearch::BlDateSearch", 0 );
 }
 
