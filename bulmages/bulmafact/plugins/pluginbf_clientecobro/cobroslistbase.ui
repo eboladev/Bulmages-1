@@ -15,7 +15,7 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Cobros de clientes</string>
+   <string>Cobros a clientes</string>
   </property>
   <property name="windowIcon">
    <iconset resource="../../../bulmages.qrc">

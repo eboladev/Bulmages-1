@@ -29,9 +29,11 @@
 #include "btbulmatpv.h"
 #include "btsubform.h"
 
+
 /// Una factura puede tener multiples bases imponibles. Por eso definimos el tipo base
 /// como un QMap.
 typedef QMap<QString, BlFixed> base;
+
 
 MTicket::MTicket ( BtCompany *emp, QWidget *parent ) : BlWidget ( emp, parent )
 {
@@ -43,11 +45,13 @@ MTicket::MTicket ( BtCompany *emp, QWidget *parent ) : BlWidget ( emp, parent )
     _depura ( "END MTicket::MTicket", 0 );
 }
 
+
 MTicket::~MTicket()
 {
     _depura ( "MTicket::~MTicket", 0 );
     _depura ( "END MTicket::~MTicket", 0 );
 }
+
 
 void MTicket::pintar()
 {
@@ -69,43 +73,48 @@ void MTicket::pintar()
     BlDbRecordSet *curtrab = mainCompany() ->loadQuery ( querytrab );
     html1 += "Trabajador: " + tick->dbValue ( "idtrabajador" ) + " " + curtrab->valor ( "nomtrabajador" ) + "<BR>";
     delete curtrab;
-    
+
     QString query = "SELECT * FROM cliente WHERE idcliente = " + tick->dbValue ( "idcliente" );
     BlDbRecordSet *cur1 = mainCompany() ->loadQuery ( query );
     html1 += "Cliente: " + tick->dbValue ( "idcliente" ) + " " + cur1->valor ( "nomcliente" ) + "<BR>";
     delete cur1;
 
-    html += "<TABLE border=\"0\">";
+    html += "<TABLE border=\"0\" width=\"100%\">";
+    html += "<TR>";
+    html += "<TD WIDTH=\"10%\">" + QString(_("CANT:")) + "</TD><TD WIDTH=\"80%\">" + QString(_("ARTICULO:")) + "</TD><TD WIDTH=\"10%\">" + QString(_("PRECIO:")) + "</TD>";
+    html += "</TR>";
+
     BlDbRecord *item;
-    
+
     for ( int i = 0; i < tick->listaLineas() ->size(); ++i ) {
         item = tick->listaLineas() ->at ( i );
         QString bgcolor = "#FFFFFF";
         if ( item == tick->lineaActBtTicket() ) bgcolor = "#CCCCFF";
         html += "<TR>";
-        html += "<TD bgcolor=\"" + bgcolor + "\" align=\"right\" width=\"50\">" + item->dbValue ( "cantlalbaran" ) + "</TD>";
+        html += "<TD bgcolor=\"" + bgcolor + "\" align=\"right\">" + item->dbValue ( "cantlalbaran" ) + "</TD>";
         html += "<TD bgcolor=\"" + bgcolor + "\">" + item->dbValue ( "nomarticulo" ) + "</TD>";
         BlFixed totalLinea ( "0.00" );
         totalLinea = BlFixed ( item->dbValue ( "cantlalbaran" ) ) * BlFixed ( item->dbValue ( "pvplalbaran" ) );
-        html += "<TD bgcolor=\"" + bgcolor + "\" align=\"right\" width=\"50\">" + totalLinea.toQString() + "</TD>";
+        html += "<TD bgcolor=\"" + bgcolor + "\" align=\"right\">" + totalLinea.toQString() + "</TD>";
         html += "</TR>";
     } // end for
-    
+
     html += "</TABLE>";
 
 // ======================================
-    
+
     html += "<BR><HR><BR>";
+
     base basesimp;
     base basesimpreqeq;
     BlDbRecord *linea;
-    
+
     /// Impresion de los contenidos.
     QString l;
     BlFixed irpf ( "0" );
 
     BlDbRecordSet *cur = mainCompany()->loadQuery ( "SELECT * FROM configuracion WHERE nombre = 'IRPF'" );
-    
+
     if ( cur ) {
         if ( !cur->eof() ) {
             irpf = BlFixed ( cur->valor ( "valor" ) );
@@ -114,7 +123,7 @@ void MTicket::pintar()
     } // end if
 
     BlFixed descuentolinea ( "0.00" );
-    
+
     for ( int i = 0; i < tick->listaLineas() ->size(); ++i ) {
         linea = tick->listaLineas() ->at ( i );
         BlFixed cant ( linea->dbValue ( "cantlalbaran" ) );
@@ -129,7 +138,7 @@ void MTicket::pintar()
 
     BlFixed basei ( "0.00" );
     base::Iterator it;
-    
+
     for ( it = basesimp.begin(); it != basesimp.end(); ++it ) {
         basei = basei + it.value();
     } // end for
@@ -151,7 +160,7 @@ void MTicket::pintar()
     /// Calculamos el total de base imponible.
     BlFixed totbaseimp ( "0.00" );
     BlFixed parbaseimp ( "0.00" );
-    
+
     for ( it = basesimp.begin(); it != basesimp.end(); ++it ) {
         if ( porcentt > BlFixed ( "0.00" ) ) {
             parbaseimp = it.value() - it.value() * porcentt / 100;
@@ -165,7 +174,7 @@ void MTicket::pintar()
     /// Calculamos el total de IVA.
     BlFixed totiva ( "0.00" );
     BlFixed pariva ( "0.00" );
-    
+
     for ( it = basesimp.begin(); it != basesimp.end(); ++it ) {
         BlFixed piva ( it.key().toAscii().constData() );
         if ( porcentt > BlFixed ( "0.00" ) ) {
@@ -180,7 +189,7 @@ void MTicket::pintar()
     /// Calculamos el total de recargo de equivalencia.
     BlFixed totreqeq ( "0.00" );
     BlFixed parreqeq ( "0.00" );
-    
+
     for ( it = basesimpreqeq.begin(); it != basesimpreqeq.end(); ++it ) {
         BlFixed preqeq ( it.key().toAscii().constData() );
         if ( porcentt > BlFixed ( "0.00" ) ) {
@@ -205,59 +214,64 @@ void MTicket::pintar()
     html1 += "</FONT>";
 
 // ======================================
-    
+
     /// Pintamos el HTML en el textBrowser
     mui_browser->setText ( html );
-    
+
     _depura ( "END MTicket::pintar", 0 );
 }
+
 
 void MTicket::on_mui_subir_released()
 {
     _depura ( "MTicket::on_mui_subir_released", 0 );
-    
+
     /// Simulamos la pulsacion de la tecla arriba
     ( ( BtCompany * ) mainCompany() )->pulsaTecla ( Qt::Key_Up );
-    
+
     _depura ( "END MTicket::on_mui_subir_released", 0 );
 }
+
 
 void MTicket::on_mui_bajar_released()
 {
      _depura ( "MTicket::on_mui_bajar_released", 0 );
-    
+
     /// Simulamos la pulsacion de la tecla abajo
     ( ( BtCompany * ) mainCompany() )->pulsaTecla ( Qt::Key_Down );
-    
+
     _depura ( "END MTicket::on_mui_bajar_released", 0 );
 }
+
 
 void MTicket::on_mui_borrar_released()
 {
      _depura ( "MTicket::on_mui_borrar_released", 0 );
-    
+
     BtTicket * tick = ( ( BtCompany * ) mainCompany() )->ticketActual();
     tick->ponerCantidad ( "0" );
 
     pintar();
-    
+
     _depura ( "END MTicket::on_mui_borrar_released", 0 );
 }
+
 
 void MTicket::on_mui_imprimir_released()
 {
      _depura ( "MTicket::on_mui_imprimir_released", 0 );
-    
+
     /// Llamamos al atajo de teclado que llama a BtTicket::imprimir()
     ( ( BtCompany * ) mainCompany() )->pulsaTecla ( Qt::Key_F2 );
-    
+
     _depura ( "END MTicket::on_mui_imprimir_released", 0 );
 }
+
 
 void MTicket::on_mui_reimprimir_released()
 {
     _depura ( "MTicket::on_mui_reimprimir_released", 0 );
-    
+
     BtTicket *previousTicket = new BtTicket( ( BtCompany * ) mainCompany() );
     BlDbRecordSet *cur = mainCompany()->loadQuery ( "SELECT * FROM albaran WHERE ticketalbaran = TRUE ORDER BY idalbaran DESC LIMIT 1" );
 
@@ -267,18 +281,18 @@ void MTicket::on_mui_reimprimir_released()
 	mensajeInfo(_("No existe ningun ticket anterior para imprimir."));
 
     } else {
-    
+
         previousTicket->setDbValue("idalbaran", cur->valor("idalbaran"));
-    
+
 	// Cargamos las lineas de albaran
         cur = mainCompany()->loadQuery ( "SELECT * FROM lalbaran LEFT JOIN articulo ON lalbaran.idarticulo = articulo.idarticulo WHERE idalbaran = " + cur->valor("idalbaran") );
-        
+
 	while ( !cur->eof() ) {
     	    BlDbRecord *l = previousTicket->agregarLinea();
     	    l->DBload( cur );
     	    cur->nextRecord();
         } // end while
-        
+
 	previousTicket->imprimir(FALSE);
 
 	delete previousTicket;
