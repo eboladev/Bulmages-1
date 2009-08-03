@@ -87,6 +87,9 @@
             <height>32</height>
            </size>
           </property>
+          <property name="focusPolicy">
+           <enum>Qt::NoFocus</enum>
+          </property>
           <property name="toolTip">
            <string>Guardar cobro</string>
           </property>
@@ -125,6 +128,9 @@
             <height>32</height>
            </size>
           </property>
+          <property name="focusPolicy">
+           <enum>Qt::NoFocus</enum>
+          </property>
           <property name="toolTip">
            <string>Borrar cobro</string>
           </property>
@@ -162,6 +168,9 @@
             <width>32</width>
             <height>32</height>
            </size>
+          </property>
+          <property name="focusPolicy">
+           <enum>Qt::NoFocus</enum>
           </property>
           <property name="toolTip">
            <string>Borrar cobro</string>
@@ -600,27 +609,25 @@
   </customwidget>
  </customwidgets>
  <tabstops>
-  <tabstop>mui_guardar</tabstop>
   <tabstop>mui_tab</tabstop>
-  <tabstop>mui_borrar</tabstop>
-  <tabstop>mui_aceptar</tabstop>
-  <tabstop>mui_imprimir</tabstop>
-  <tabstop>mui_cancelar</tabstop>
   <tabstop>mui_cifcliente</tabstop>
-  <tabstop>mui_dircliente</tabstop>
-  <tabstop>mui_poblcliente</tabstop>
-  <tabstop>mui_telcliente</tabstop>
-  <tabstop>mui_mailcliente</tabstop>
-  <tabstop>mui_bancocliente</tabstop>
   <tabstop>mui_sociocliente</tabstop>
   <tabstop>mui_numsociocliente</tabstop>
-  <tabstop>mui_idprovincia</tabstop>
-  <tabstop>mui_cpcliente</tabstop>
-  <tabstop>mui_movilcliente</tabstop>
-  <tabstop>mui_alumnosList</tabstop>
-  <tabstop>mui_comentcliente</tabstop>
   <tabstop>mui_nomcliente</tabstop>
+  <tabstop>mui_dircliente</tabstop>
+  <tabstop>mui_idprovincia</tabstop>
+  <tabstop>mui_poblcliente</tabstop>
+  <tabstop>mui_cpcliente</tabstop>
+  <tabstop>mui_telcliente</tabstop>
+  <tabstop>mui_movilcliente</tabstop>
+  <tabstop>mui_mailcliente</tabstop>
+  <tabstop>mui_idforma_pago</tabstop>
+  <tabstop>mui_bancocliente</tabstop>
+  <tabstop>mui_aceptar</tabstop>
+  <tabstop>mui_cancelar</tabstop>
+  <tabstop>mui_comentcliente</tabstop>
   <tabstop>mui_listrecibos</tabstop>
+  <tabstop>mui_alumnosList</tabstop>
  </tabstops>
  <resources>
   <include location="../../../bulmages.qrc"/>

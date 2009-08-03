@@ -43,9 +43,12 @@ BlSearchWidget::BlSearchWidget ( QWidget *parent )
     while ( i.hasNext() ) {
         i.next();
         m_valores.insert ( i.key(), "" );
-    }
+    } // end while
 
     m_semaforo = FALSE;
+    
+    /// Establecemos la delegacion del foco en el texto
+    setFocusProxy(m_textBusqueda);
     _depura ( "END BlSearchWidget::BlSearchWidget", 0 );
 }
 

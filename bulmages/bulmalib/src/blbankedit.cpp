@@ -35,6 +35,9 @@ BlBankEdit::BlBankEdit ( QWidget *parent ) : BlWidget ( parent )
     QObject::connect ( m_cuenta, SIGNAL ( returnPressed() ), this, SLOT ( s_returnPressed() ) );
     QObject::connect ( m_cuenta, SIGNAL ( editingFinished() ), this, SLOT ( s_cuentalostFocus() ) );
     QObject::connect ( m_cuenta, SIGNAL ( editingFinished() ), this, SIGNAL ( editingFinished() ) );
+    
+    /// Establecemos el FocusProxy para que el foco funcione bien
+    setFocusProxy(m_entidad);
     _depura ( "END BlBankEdit::BlBankEdit", 0 );
 }
 

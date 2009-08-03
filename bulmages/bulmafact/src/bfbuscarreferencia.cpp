@@ -37,6 +37,10 @@ BfBuscarReferencia::BfBuscarReferencia ( QWidget *parent )
     _depura ( "BfBuscarReferencia::BfBuscarReferencia", 0 );
     setupUi ( this );
     connect ( mui_referencia, SIGNAL ( returnPressed() ), this, SLOT ( on_mui_rferencia_returnPressed() ) );
+
+    /// Establecemos el focusProxy
+    setFocusProxy (mui_referencia);
+    
     _depura ( "END BfBuscarReferencia::BfBuscarReferencia", 0 );
 }
 

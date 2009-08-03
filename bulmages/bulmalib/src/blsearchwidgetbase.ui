@@ -10,6 +10,9 @@
     <height>73</height>
    </rect>
   </property>
+  <property name="focusPolicy">
+   <enum>Qt::StrongFocus</enum>
+  </property>
   <property name="windowTitle">
    <string>Form1</string>
   </property>
@@ -49,6 +52,9 @@
        <width>22</width>
        <height>22</height>
       </size>
+     </property>
+     <property name="focusPolicy">
+      <enum>Qt::StrongFocus</enum>
      </property>
      <property name="text">
       <string/>
@@ -124,10 +130,10 @@
    </item>
   </layout>
  </widget>
+ <layoutdefault spacing="0" margin="0"/>
  <includes>
   <include location="local">local_BlI18n.h</include>
  </includes>
- <layoutdefault spacing="0" margin="0"/>
  <resources>
   <include location="../../bulmages.qrc"/>
  </resources>

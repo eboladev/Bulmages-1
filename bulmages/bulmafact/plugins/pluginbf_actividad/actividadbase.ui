@@ -84,6 +84,9 @@
             <height>32</height>
            </size>
           </property>
+          <property name="focusPolicy">
+           <enum>Qt::NoFocus</enum>
+          </property>
           <property name="toolTip">
            <string>Guardar actividad</string>
           </property>
@@ -104,7 +107,7 @@
            </size>
           </property>
           <property name="shortcut">
-           <string>Ctrl+S</string>
+           <string extracomment="Guardar">Ctrl+S</string>
           </property>
          </widget>
         </item>
@@ -121,6 +124,9 @@
             <width>32</width>
             <height>32</height>
            </size>
+          </property>
+          <property name="focusPolicy">
+           <enum>Qt::NoFocus</enum>
           </property>
           <property name="toolTip">
            <string>Borrar actividad</string>
@@ -159,6 +165,9 @@
             <width>32</width>
             <height>32</height>
            </size>
+          </property>
+          <property name="focusPolicy">
+           <enum>Qt::NoFocus</enum>
           </property>
           <property name="toolTip">
            <string>Imprimir actividad</string>
@@ -379,6 +388,9 @@
            <height>100</height>
           </size>
          </property>
+         <property name="focusPolicy">
+          <enum>Qt::StrongFocus</enum>
+         </property>
         </widget>
        </item>
        <item row="4" column="1">
@@ -389,7 +401,11 @@
         </widget>
        </item>
        <item row="5" column="1">
-        <widget class="BlComboBox" name="mui_idtipoactividad"/>
+        <widget class="BlComboBox" name="mui_idtipoactividad">
+         <property name="focusPolicy">
+          <enum>Qt::StrongFocus</enum>
+         </property>
+        </widget>
        </item>
        <item row="5" column="0">
         <widget class="QLabel" name="label_2">
@@ -494,7 +510,11 @@
         </widget>
        </item>
        <item row="7" column="1">
-        <widget class="BlPeriodicityComboBox" name="mui_periodoactividad"/>
+        <widget class="BlPeriodicityComboBox" name="mui_periodoactividad">
+         <property name="focusPolicy">
+          <enum>Qt::StrongFocus</enum>
+         </property>
+        </widget>
        </item>
       </layout>
      </widget>
@@ -657,6 +677,33 @@
    <header>blperiodicitycombobox.h</header>
   </customwidget>
  </customwidgets>
+ <tabstops>
+  <tabstop>mui_tab</tabstop>
+  <tabstop>mui_codigoactividad</tabstop>
+  <tabstop>mui_nombreactividad</tabstop>
+  <tabstop>mui_corpcliente</tabstop>
+  <tabstop>mui_dircliente</tabstop>
+  <tabstop>mui_vigenteactividad</tabstop>
+  <tabstop>mui_idtipoactividad</tabstop>
+  <tabstop>mui_precioactividad</tabstop>
+  <tabstop>mui_periodoactividad</tabstop>
+  <tabstop>mui_finicialactividad</tabstop>
+  <tabstop>mui_ffinalactividad</tabstop>
+  <tabstop>mui_idprofesor</tabstop>
+  <tabstop>mui_lunesactividad</tabstop>
+  <tabstop>mui_martesactividad</tabstop>
+  <tabstop>mui_miercolesactividad</tabstop>
+  <tabstop>mui_juevesactividad</tabstop>
+  <tabstop>mui_viernesactividad</tabstop>
+  <tabstop>mui_sabadoactividad</tabstop>
+  <tabstop>mui_domingoactividad</tabstop>
+  <tabstop>mui_aceptar</tabstop>
+  <tabstop>mui_cancelar</tabstop>
+  <tabstop>mui_faltasAsistenciaList</tabstop>
+  <tabstop>calendarWidget</tabstop>
+  <tabstop>mui_comentariosactividad</tabstop>
+  <tabstop>mui_alumnosList</tabstop>
+ </tabstops>
  <resources>
   <include location="../../../bulmages.qrc"/>
   <include location="../pluginbf_profesor/gestionaula.qrc"/>
