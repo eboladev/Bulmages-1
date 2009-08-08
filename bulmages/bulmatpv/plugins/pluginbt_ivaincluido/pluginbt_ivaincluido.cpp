@@ -197,7 +197,7 @@ int BtTicket_imprimir(BtTicket *tick)
         totales[linea->dbValue ( "ivalalbaran" ) ] = totales[linea->dbValue ( "ivalalbaran" ) ] + totlinea;
     } // end for
 
-    BtEscPrinter pr ( g_confpr->valor ( CONF_TICKET_PRINTER_FILE ) );
+    BtEscPrinter pr ( g_confpr->valor(CONF_DIR_USER) + "bulmatpv_ticket.txt" );
     pr.initializePrinter();
     pr.setCharacterCodeTable ( page19 );
     pr.setJustification ( center );
@@ -258,8 +258,6 @@ int BtTicket_imprimir(BtTicket *tick)
 		
 		QString sqlquery = "SELECT (" +it.value().toQString('.') + "/ ( 1 + " + tipoIva.replace(",",".") + "/100 ))::NUMERIC(12,2) AS base, " + it.value().toQString('.') + "- ("+it.value().toQString('.') + "/ ( 1 + " + tipoIva.replace(",",".") + "/100 ))::NUMERIC(12,2) AS iva";
 		BlDbRecordSet *cur = tick->mainCompany()->loadQuery(sqlquery);
-//        	BlFixed baseimp = Fixed(cur->valor("base"));;
-//		BlFixed totiva = it.value() - baseimp;
 	    pr.printText ( "Base Imponible: " + cur-> valor("base") + "�\n" );
     	pr.printText ( "IVA " +it.key() + "%  " + cur->valor("iva") + "�\n" );
 		delete cur;
@@ -273,13 +271,7 @@ int BtTicket_imprimir(BtTicket *tick)
     pr.printText ( "Le ha atendido " + trabajador.nombre + "\n" );
     pr.printText ( "\n" );
 
-/*   pr.printText("Plazo maximo para cambio 15 dias, \n");
-   pr.printText(" unicamente con ticket de compra. \n");
-   pr.printText("\n");
-*/
 
-//    pr.printText ( "Tel. " + empresa.telefono + "\n" );
-    
     pr.printText ( "\n" );
 
     pr.setJustification ( center );
@@ -293,6 +285,20 @@ int BtTicket_imprimir(BtTicket *tick)
     pr.printBarCode ( code39, qba.size(), barcode );
     pr.cutPaperAndFeed ( TRUE, 10 );
     pr.print();
+
+/// Si quisiesemos imprimir en modo raw lo hariamos de esta forma.
+//    QString comando = "cat " + g_confpr->valor(CONF_DIR_USER) + "bulmatpv_ticket.txt" + "  > " + g_confpr->valor ( CONF_TICKET_PRINTER_FILE );
+/// Si queremos imprimir con CUPS lo hacemos de esta otra forma
+    /// Hacer comprobacion de la variable PRINTER
+    if (! getenv("PRINTER")) {
+	mensajeInfo("Debe establecer la variable de sistema PRINTER para poder realizar esta impresion con cupsdoprint");
+        _depura ( "END PluginBt_IvaIncluido::BtTicket_imprimir", 0 );
+	return 1;
+    } // end if
+
+    QString comando = "cupsdoprint " + g_confpr->valor(CONF_DIR_USER) + "bulmatpv_ticket.txt";
+
+    system ( comando.toAscii().data() );
 
     _depura ( "END PluginBt_IvaIncluido::BtTicket_imprimir", 0 );
     
@@ -367,7 +373,7 @@ int BtCompany_z(BtCompany * emp)
 
         // ========================================
 
-        QFile file ( g_confpr->valor ( CONF_TICKET_PRINTER_FILE ) );
+        QFile file (  g_confpr->valor(CONF_DIR_USER) + "bulmatpv_z.txt" );
         if ( !file.open ( QIODevice::WriteOnly | QIODevice::Unbuffered ) ) {
             _depura ( "Error en la Impresion de ticket", 2 );
             return -1;
@@ -548,7 +554,23 @@ int BtCompany_z(BtCompany * emp)
         curfechas->nextRecord();
     
     }
-        
+
+/// Si quisiesemos imprimir en modo raw lo hariamos de esta forma.
+//    QString comando = "cat " + g_confpr->valor(CONF_DIR_USER) + "bulmatpv_zx.txt" + "  > " + g_confpr->valor ( CONF_TICKET_PRINTER_FILE );
+/// Si queremos imprimir con CUPS lo hacemos de esta otra forma
+    /// Hacer comprobacion de la variable PRINTER
+    if (! getenv("PRINTER")) {
+	mensajeInfo("Debe establecer la variable de sistema PRINTER para poder realizar esta impresion con cupsdoprint");
+        _depura ( "END PluginBt_IvaIncluido::BtCompany_z", 0 );
+	return 1;
+    } // end if
+
+    QString comando = "cupsdoprint " + g_confpr->valor(CONF_DIR_USER) + "bulmatpv_z.txt";
+
+    system ( comando.toAscii().data() );
+  
+
+ 
         _depura ( "END PluginBt_IvaIncluido::BtCompany_z", 0 );
     
 	return -1;
@@ -591,7 +613,7 @@ int BtCompany_x(BtCompany *emp)
 
 // ========================================
 
-    QFile file ( g_confpr->valor ( CONF_TICKET_PRINTER_FILE ) );
+    QFile file ( g_confpr->valor(CONF_DIR_USER) + "bulmatpv_x.txt" );
     if ( !file.open ( QIODevice::WriteOnly | QIODevice::Unbuffered ) ) {
         _depura ( "Error en la Impresion de ticket", 2 );
         return -1;
@@ -705,8 +727,20 @@ int BtCompany_x(BtCompany *emp)
     file.write ( "\x1D\x56\x01", 3 );
     file.close();
 
-// ========================================
-    
+/// Si quisiesemos imprimir en modo raw lo hariamos de esta forma.
+//    QString comando = "cat " + g_confpr->valor(CONF_DIR_USER) + "bulmatpv_x.txt" + "  > " + g_confpr->valor ( CONF_TICKET_PRINTER_FILE );
+/// Si queremos imprimir con CUPS lo hacemos de esta otra forma
+    /// Hacer comprobacion de la variable PRINTER
+    if (! getenv("PRINTER")) {
+	mensajeInfo("Debe establecer la variable de sistema PRINTER para poder realizar esta impresion con cupsdoprint");
+        _depura ( "END PluginBt_IvaIncluido::BtCompany_x", 0 );
+	return 1;
+    } // end if
+
+    QString comando = "cupsdoprint " + g_confpr->valor(CONF_DIR_USER) + "bulmatpv_x.txt";
+
+    system ( comando.toAscii().data() );
+  
     _depura ( "END PluginBt_IvaIncluido::BtCompany_x", 0 );
     
 	return -1;
