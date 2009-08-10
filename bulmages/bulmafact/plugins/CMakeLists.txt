@@ -76,6 +76,8 @@ add_subdirectory(pluginbf_proveedorpedido)
 
 add_subdirectory(pluginbf_z2z)
 
+add_subdirectory(pluginbf_printercocina)
+
 # if you want to add some private code
 # simple put your add_directory in a
 # CMakeLists.txt.private

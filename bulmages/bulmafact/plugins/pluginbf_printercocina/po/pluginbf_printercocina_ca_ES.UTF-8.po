@@ -1,0 +1,57 @@
+# Catalan translations for PACKAGE package
+# Traduccions al català del paquet «PACKAGE».
+# Copyright (C) 2009 THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# Automatically generated, 2009.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: info@iglues.org\n"
+"POT-Creation-Date: 2009-05-16 14:57+0200\n"
+"PO-Revision-Date: 2009-02-17 10:24+0100\n"
+"Last-Translator: Automatically generated\n"
+"Language-Team: none\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: ui_listalmacenbase.h:117
+msgid "&Aceptar"
+msgstr "&Accepta"
+
+#: pluginbf_almacen.cpp:82
+#, fuzzy
+msgid "&Almacenes"
+msgstr "<LI> Magatzem <B>"
+
+#: ui_listalmacenbase.h:118
+msgid "&Cancelar"
+msgstr "&Cancel·la"
+
+#: listalmacenview.cpp:49
+msgid "Almacen"
+msgstr "Magatzem"
+
+#: pluginbf_almacen.cpp:84 pluginbf_almacen.cpp:85 ui_listalmacenbase.h:116
+#, fuzzy
+msgid "Almacenes"
+msgstr "<LI> Magatzem <B>"
+
+#: listalmacenview.cpp:97
+msgid "Codigo almacen"
+msgstr "Codi magatzem"
+
+#: listalmacenview.cpp:70
+#, fuzzy
+msgid "Error al guardar los almacenes"
+msgstr "Desitja desar els canvis?"
+
+#: listalmacenview.cpp:96
+msgid "Id almacen"
+msgstr "Id Magatzem "
+
+#: listalmacenview.cpp:98
+#, fuzzy
+msgid "Nombre almacen"
+msgstr "Nom del compte"

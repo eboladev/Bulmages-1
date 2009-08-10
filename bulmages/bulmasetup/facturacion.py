@@ -560,7 +560,7 @@ class Facturacion(Ui_ModificarFacturacionBase, Empresa):
         self.i = 0
         while (self.i < self.mui_plugins.rowCount()):
           # Si el plugin tiene el orden adecuado lo consideramos.
-          if (str(self.mui_plugins.item(self.i,7).text()) == str(self.x) ):   
+          if (self.mui_plugins.item(self.i,7) <> None and str(self.mui_plugins.item(self.i,7).text()) == str(self.x) ):   
 	    self.writecommand('Tratando ' + self.mui_plugins.item(self.i,0).text())
 	    if (self.mui_plugins.item(self.i, 0).checkState() == Qt.Checked):
 	      self.writecommand('Actualizando ' + self.mui_plugins.item(self.i,0).text())
@@ -586,7 +586,7 @@ class Facturacion(Ui_ModificarFacturacionBase, Empresa):
         self.i = 0
         while (self.i < self.mui_plugins.rowCount()):
           # Si el plugin tiene el orden adecuado lo consideramos.
-          if (str(self.mui_plugins.item(self.i,7).text()) == str(self.x) ):   
+          if (self.mui_plugins.item(self.i,7) <> None and str(self.mui_plugins.item(self.i,7).text()) == str(self.x) ):   
 	    self.writecommand('Tratando ' + self.mui_plugins.item(self.i,0).text())
 	    if (self.mui_plugins.item(self.i, 0).checkState() <> Qt.Checked):
 	      # Si no esta chequeado hacemos un borrado del plugin
@@ -602,49 +602,49 @@ class Facturacion(Ui_ModificarFacturacionBase, Empresa):
         self.progress.setValue(self.progress.value() + 1)
    
       if (self.mui_soporteTPV.isChecked()):
-	# Como los plugins van por orden iteramos sobre el orden para arreglarlo.
-	self.x = 1
-	while (self.x < 1000) :
-	  # Iteramos sobre la lista de plugins disponibles en bulmafact
-	  self.i = 0
-	  while (self.i < self.mui_plugins.rowCount()):
-	    # Si el plugin tiene el orden adecuado lo consideramos.
-	    if (str(self.mui_plugins1.item(self.i,7).text()) == str(self.x) ): 
-	      self.writecommand('Tratando ' + self.mui_plugins1.item(self.i,0).text())
-	      if (self.mui_plugins1.item(self.i, 0).checkState() == Qt.Checked):
-		if (len(self.mui_plugins1.item(self.i,4).text()) > 4):
-		  self.writecommand('Actualizando ' + self.mui_plugins1.item(self.i,0).text())
-		  self.command = 'su postgres -c \"psql -t -f  ' + plugins.pathdbplugins + self.mui_plugins1.item(self.i,4).text() +' '+ self.database +'\"'
-		  self.writecommand(self.command)
-		  self.process.start(self.command)
-		  self.process.waitForFinished(-1)
-		  self.writecommand(self.process.readAllStandardOutput())
-	    self.i = self.i + 1
-	self.x = self.x + 1
-	self.progress.setValue(self.progress.value() + 1)
-
-
-	# Como los plugins van por orden iteramos sobre el orden para arreglarlo.
-	self.x = 1000
-	while (self.x >= 1) :
-	  # Iteramos sobre la lista de plugins disponibles en bulmafact
-	  self.i = 0
-	  while (self.i < self.mui_plugins.rowCount()):
-	    # Si el plugin tiene el orden adecuado lo consideramos.
-	    if (str(self.mui_plugins1.item(self.i,7).text()) == str(self.x) ): 
-	      self.writecommand('Tratando ' + self.mui_plugins1.item(self.i,0).text())
-	      if (self.mui_plugins1.item(self.i, 0).checkState() <> Qt.Checked):
-		# Si no esta chequeado hacemos un borrado del plugin
-		if (len(self.mui_plugins1.item(self.i,9).text()) > 4):
-		  # Aplicamos el parche  de borrado.
-		  self.command = 'su postgres -c \"psql -t -f  ' + plugins.pathdbplugins + self.mui_plugins1.item(self.i,9).text() +' '+ self.database +'\"'
-		  self.writecommand(self.command)
-		  self.process.start(self.command)
-		  self.process.waitForFinished(-1)
-		  self.writecommand(self.process.readAllStandardOutput())
-	    self.i = self.i + 1
-	self.x = self.x + 1
-	self.progress.setValue(self.progress.value() + 1)
+        # Como los plugins van por orden iteramos sobre el orden para arreglarlo.
+        self.x = 1
+        while (self.x < 1000) :
+          # Iteramos sobre la lista de plugins disponibles en bulmafact
+          self.i = 0
+          while (self.i < self.mui_plugins1.rowCount()):
+            # Si el plugin tiene el orden adecuado lo consideramos.
+            if (self.mui_plugins1.item(self.i,7) <> None and str(self.mui_plugins1.item(self.i,7).text()) == str(self.x) ): 
+              self.writecommand('Tratando ' + self.mui_plugins1.item(self.i,0).text())
+              if (self.mui_plugins1.item(self.i, 0).checkState() == Qt.Checked):
+                if (len(self.mui_plugins1.item(self.i,4).text()) > 4):
+                  self.writecommand('Actualizando ' + self.mui_plugins1.item(self.i,0).text())
+                  self.command = 'su postgres -c \"psql -t -f  ' + plugins.pathdbplugins + self.mui_plugins1.item(self.i,4).text() +' '+ self.database +'\"'
+                  self.writecommand(self.command)
+                  self.process.start(self.command)
+                  self.process.waitForFinished(-1)
+                  self.writecommand(self.process.readAllStandardOutput())
+            self.i = self.i + 1
+          self.x = self.x + 1
+          self.progress.setValue(self.progress.value() + 1)
+        
+        
+        # Como los plugins van por orden iteramos sobre el orden para arreglarlo.
+        self.x = 1000
+        while (self.x >= 1) :
+          # Iteramos sobre la lista de plugins disponibles en bulmafact
+          self.i = 0
+          while (self.i < self.mui_plugins1.rowCount()):
+            # Si el plugin tiene el orden adecuado lo consideramos.
+            if (self.mui_plugins1.item(self.i,7) <> None and str(self.mui_plugins1.item(self.i,7).text()) == str(self.x) ): 
+              self.writecommand('Tratando ' + self.mui_plugins1.item(self.i,0).text())
+              if (self.mui_plugins1.item(self.i, 0).checkState() <> Qt.Checked):
+                # Si no esta chequeado hacemos un borrado del plugin
+                if (len(self.mui_plugins1.item(self.i,9).text()) > 4):
+                  # Aplicamos el parche  de borrado.
+                  self.command = 'su postgres -c \"psql -t -f  ' + plugins.pathdbplugins + self.mui_plugins1.item(self.i,9).text() +' '+ self.database +'\"'
+                  self.writecommand(self.command)
+                  self.process.start(self.command)
+                  self.process.waitForFinished(-1)
+                  self.writecommand(self.process.readAllStandardOutput())
+            self.i = self.i + 1
+          self.x = self.x - 1
+          self.progress.setValue(self.progress.value() + 1)
 
 
 
