@@ -22,7 +22,7 @@ Dependencias: libpluginbf_ivaincluido.so; libpluginbf_alias.so
 
 Incompatibles:
 
-Orden:
+Orden: 510
 
 Categorias: Experimentales;IVA incluido;
 

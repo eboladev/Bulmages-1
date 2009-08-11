@@ -741,6 +741,7 @@ int BtCompany_x(BtCompany *emp)
 
     system ( comando.toAscii().data() );
   
+
     _depura ( "END PluginBt_IvaIncluido::BtCompany_x", 0 );
     
 	return -1;

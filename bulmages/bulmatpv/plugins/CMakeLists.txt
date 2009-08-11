@@ -21,7 +21,7 @@ add_subdirectory(pluginbt_cambioivaincluido)
 add_subdirectory(pluginbt_devolucion)
 add_subdirectory(pluginbt_devolucion2)
 add_subdirectory(pluginbt_ticketdevuelto)
-
+add_subdirectory(pluginbt_printercocina)
 
 if(NOT APPLE)
 add_subdirectory(pluginbt_accesobotones)

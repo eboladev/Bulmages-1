@@ -575,6 +575,8 @@ void  BtTicket::imprimir()
 void BtTicket::imprimir(bool save)
 {
 
+    _depura("BtTicket::imprimir",0);
+
     if (save) {
         
         if ( guardar() == -1) {
@@ -587,6 +589,8 @@ void BtTicket::imprimir(bool save)
     /// Disparamos los plugins.
     int res = g_plugins->lanza ( "BtTicket_imprimir", this );
     if ( res != 0 ) {
+        g_plugins->lanza("BtTicket_imprimir_Post", this);
+        _depura("END BtTicket::imprimir",0);
         return;
     } // end if
     
@@ -774,6 +778,9 @@ void BtTicket::imprimir(bool save)
     pr.printBarCode ( code39, qba.size(), barcode );
     pr.cutPaperAndFeed ( TRUE, 10 );
     pr.print();
+
+    g_plugins->lanza("BtTicket_imprimir_Post", this);
+    _depura("END BtTicket::imprimir",0);
 }
 
 // ===========================
