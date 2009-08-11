@@ -10,6 +10,8 @@
 #include "btcompany.h"
 #include "tickets.h"
 #include "blmainwindow.h"
+#include "blplugins.h"
+
 
 Abrevs::Abrevs ( BlMainCompany *emp, QWidget *parent ) : BlWidget ( emp, parent )
 {
@@ -120,6 +122,10 @@ void Abrevs::on_mui_aparcar_released()
     }// end for
 
     emp->ticketActual() ->setDbValue ( "nomticket", emp->valorBtInput() );
+
+    /// Llamamos a plugins para poder hacer lo pertinente
+    g_plugins->lanza("Abrevs_on_mui_aparcar_released", this);
+
     BtTicket *tick = emp->newBtTicket();
     /// Ponemos al trabajador creado el trabajador del ticket actual.
     tick->setDbValue ( "idtrabajador", emp->ticketActual() ->dbValue ( "idtrabajador" ) );
@@ -127,6 +133,10 @@ void Abrevs::on_mui_aparcar_released()
     emp->listaTickets() ->append ( tick );
     /// Borra el valor del Input.
     emp->pulsaTecla ( Qt::Key_C, "C" );
+
+    /// Llamamos a plugins para poder hacer lo pertinente
+    g_plugins->lanza("Abrevs_on_mui_aparcar_released_Post", this);
+
     tick->pintar();
 }
 

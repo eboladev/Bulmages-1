@@ -32,8 +32,10 @@
 #include "articulolist.h"
 #include "btcompany.h"
 #include "btticket.h"
+#include "abrevs.h"
 
-
-//extern "C" MY_EXPORT int entryPoint ( BulmaTPV * );
 extern "C" MY_EXPORT int BtTicket_imprimir_Post ( BtTicket * );
 extern "C" MY_EXPORT int BtTicket_agregarLinea_Post ( BtTicket *);
+extern "C" MY_EXPORT int Abrevs_on_mui_aparcar_released( Abrevs *);
+extern "C" MY_EXPORT int BtCompany_cobrar(BtCompany *);
+

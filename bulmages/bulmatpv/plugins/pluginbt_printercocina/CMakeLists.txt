@@ -36,7 +36,9 @@ include_directories(
 	${CMAKE_BINARY_DIR}/bulmatpv/plugins/pluginbt_articulosubform/
 	${CMAKE_SOURCE_DIR}/bulmatpv/plugins/pluginbt_articulosubform/
 	${CMAKE_BINARY_DIR}/bulmafact/plugins/pluginbf_articulo/
-	${CMAKE_SOURCE_DIR}/bulmafact/plugins/pluginbf_articulo/)
+	${CMAKE_SOURCE_DIR}/bulmafact/plugins/pluginbf_articulo/
+   ${CMAKE_BINARY_DIR}/bulmatpv/plugins/pluginbt_accesobotones/
+   ${CMAKE_SOURCE_DIR}/bulmatpv/plugins/pluginbt_accesobotones/)
 
 # generate rules for building source files from the resources
 #QT4_WRAP_CPP(plugin_MOC_SRCS ${plugin_MOCS})
