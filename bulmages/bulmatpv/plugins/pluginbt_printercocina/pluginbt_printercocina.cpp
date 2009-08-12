@@ -154,9 +154,9 @@ int impresionCocina(BtTicket *tick) {
       pr.setCharacterCodeTable ( page19 );
       pr.setJustification ( center );
 
-      if ( g_confpr->valor ( CONF_TPV_PRINTER_LOGO ) != "" ) {
-          pr.printImage ( g_confpr->valor ( CONF_TPV_PRINTER_LOGO ) );
-      } // end if
+//      if ( g_confpr->valor ( CONF_TPV_PRINTER_LOGO ) != "" ) {
+//          pr.printImage ( g_confpr->valor ( CONF_TPV_PRINTER_LOGO ) );
+//      } // end if
 
 
       pr.initializePrinter();
@@ -183,7 +183,7 @@ int impresionCocina(BtTicket *tick) {
       pr.printText ( "Uds PRODUCTO                              \n" );
       pr.turnWhiteBlack ( 0 );
 
-
+      pr.setCharacterSize ( CHAR_WIDTH_2 | CHAR_HEIGHT_2 );
 
        /// Iteramos sobre las lineas del ticket para ver que pasa.
        for ( int i = 0; i < tick->listaLineas() ->size(); ++i ) {
@@ -206,6 +206,8 @@ int impresionCocina(BtTicket *tick) {
        } // end for
 
        /// Terminamos la impresion
+      pr.setCharacterSize ( CHAR_WIDTH_1 | CHAR_HEIGHT_1 );
+
       QByteArray qba = tick->dbValue ( "refalbaran" ).toAscii();
       char* barcode = qba.data();
       pr.setJustification ( center );
