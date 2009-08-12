@@ -100,6 +100,11 @@ void Abrevs::on_mui_aparcar_released()
     BtCompany * emp = ( BtCompany * ) mainCompany();
     // El nombre del ticket no puede estar vacio.
     if ( emp->valorBtInput() == "" ) {
+        emp->setValorBtInput(emp->ticketActual()->dbValue ( "nomticket" ));
+    } // end if
+
+
+    if ( emp->valorBtInput() == "" ) {
         mensajeAviso ( _ ( "Asigne un nombre al ticket antes de aparcarlo." ) );
         return;
     } // end if
@@ -115,24 +120,33 @@ void Abrevs::on_mui_aparcar_released()
     BtTicket *ticket;
     for ( int i = 0; i < emp->listaTickets() ->size(); ++i ) {
         ticket = emp->listaTickets() ->at ( i );
-        if ( emp->valorBtInput() == ticket->dbValue ( "nomticket" ) ) {
+        if ( emp->valorBtInput() == ticket->dbValue ( "nomticket" ) && ticket != emp->ticketActual()) {
             mensajeAviso ( _ ( "Ya existe un ticket aparcado con el mismo nombre." ) );
             return;
         }// end if
     }// end for
+
+
+    QString nomticket = emp->ticketActual() -> dbValue("nomticket");
 
     emp->ticketActual() ->setDbValue ( "nomticket", emp->valorBtInput() );
 
     /// Llamamos a plugins para poder hacer lo pertinente
     g_plugins->lanza("Abrevs_on_mui_aparcar_released", this);
 
-    BtTicket *tick = emp->newBtTicket();
+    BtTicket *tick;
+    if ( nomticket == "") {
+      tick = emp->newBtTicket();
+      tick->setDbValue ( "idtrabajador", emp->ticketActual() ->dbValue ( "idtrabajador" ) );
+      emp->listaTickets() ->append ( tick );
+    } else {
+      tick = emp->listaTickets() ->at ( emp->listaTickets()->size() -1 );
+    } // end if
+
     /// Ponemos al trabajador creado el trabajador del ticket actual.
-    tick->setDbValue ( "idtrabajador", emp->ticketActual() ->dbValue ( "idtrabajador" ) );
     emp->setTicketActual ( tick );
-    emp->listaTickets() ->append ( tick );
     /// Borra el valor del Input.
-    emp->pulsaTecla ( Qt::Key_C, "C" );
+    emp->pulsaTecla ( Qt::Key_F4, "" );
 
     /// Llamamos a plugins para poder hacer lo pertinente
     g_plugins->lanza("Abrevs_on_mui_aparcar_released_Post", this);

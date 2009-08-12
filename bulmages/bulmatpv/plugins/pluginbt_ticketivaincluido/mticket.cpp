@@ -77,7 +77,12 @@ void MTicket::pintar()
     html1 += "Cliente: " + tick->dbValue ( "idcliente" ) + " " + cur1->valor ( "nomcliente" ) + "<BR>";
     delete cur1;
 
-    html += "<TABLE border=\"0\">";
+    html += "<TABLE border=\"0\" width=\"100%\">";
+
+    if (tick->dbValue("nomticket") != "") {
+      html += "<TR><TD colspan=\"3\" align=\"center\"><B>" + tick->dbValue ( "nomticket" ) + "</B></td></tr>";
+    } // end if
+
     BlDbRecord *item;
     
     for ( int i = 0; i < tick->listaLineas()->size(); ++i ) {

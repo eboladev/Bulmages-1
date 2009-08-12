@@ -158,27 +158,31 @@ int impresionCocina(BtTicket *tick) {
           pr.printImage ( g_confpr->valor ( CONF_TPV_PRINTER_LOGO ) );
       } // end if
 
-      pr.printText ( empresa.nombre + "\n" );
-      pr.setCharacterPrintMode ( CHARACTER_FONTB_SELECTED );
-      pr.setCharacterSize ( CHAR_WIDTH_1 | CHAR_HEIGHT_1 );
-      pr.setColor ( red );
-      pr.printText ( empresa.direccionCompleta + "\n" );
+
       pr.initializePrinter();
       pr.setCharacterCodeTable ( page19 );
 
       pr.printText ( "\n" );
       pr.printText ( fecha.dia + " " + fecha.hora + "\n" );
       pr.printText ( "Cliente: " + cliente.cif + " " + cliente.nombre + "\n" );
-      pr.printText ( "Num. Ticket:  " + tick->dbValue("numalbaran") + "\n" );
+
+      pr.setJustification ( center );
+      pr.setCharacterSize ( CHAR_WIDTH_2 | CHAR_HEIGHT_2 );
+
+      pr.printText ( "Ticket:  " + tick->dbValue("numalbaran") + "\n" );
+      pr.printText (  tick->dbValue("nomticket") + "\n" );
 
       pr.printText ( "\n" );
 
-      pr.turnWhiteBlack ( 1 );
-      pr.printText ( "Uds PRODUCTO � � � � � � � P.U. � IMPORTE \n" );
-
-      pr.turnWhiteBlack ( 0 );
-      pr.setCharacterPrintMode ( CHARACTER_FONTB_SELECTED );
+      pr.initializePrinter();
+      pr.setCharacterCodeTable ( page19 );
+//      pr.setCharacterPrintMode ( CHARACTER_FONTB_SELECTED );
       pr.setCharacterSize ( CHAR_WIDTH_1 | CHAR_HEIGHT_1 );
+
+      pr.turnWhiteBlack ( 1 );
+      pr.printText ( "Uds PRODUCTO                              \n" );
+      pr.turnWhiteBlack ( 0 );
+
 
 
        /// Iteramos sobre las lineas del ticket para ver que pasa.
@@ -187,7 +191,6 @@ int impresionCocina(BtTicket *tick) {
           BlDbRecordSet *curarticulos = tick -> mainCompany() -> loadQuery( "SELECT idprintercocina FROM articulo WHERE idarticulo = " + linea->dbValue ( "idarticulo" ) );
           /// Si la linea tiene que salir por cocina hacemos lo pertinente.
           if (curarticulos -> valor("idprintercocina") == curimpresoras -> valor ("idprintercocina")) {
-            mensajeInfo(linea->dbValue("unidadescocina")+"--"+ linea->dbValue("cantlalbaran"));
             BlFixed undcocina ( linea->dbValue("unidadescocina"));
             BlFixed cantlalbaran (linea->dbValue("cantlalbaran"));
             if (undcocina != cantlalbaran) {
@@ -243,9 +246,9 @@ int Abrevs_on_mui_aparcar_released( Abrevs *av)
     return 0;
 }
 
-int BtCompany_cobrar(BtCompany *comp) {
-    _depura ( "PluginBt_PrinterCocina::BtCompany_cobrar", 0 );
+int BtCompany_cobrar_1(BtCompany *comp) {
+    _depura ( "PluginBt_PrinterCocina::BtCompany_cobrar_1", 0 );
     impresionCocina(comp->ticketActual());
-    _depura ( "END PluginBt_PrinterCocina::BtCompany_cobrar", 0 );
+    _depura ( "END PluginBt_PrinterCocina::BtCompany_cobrar_1", 0 );
     return 0;
 }

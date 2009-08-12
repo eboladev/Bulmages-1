@@ -232,11 +232,7 @@ void  BtTicket::setDescuentoGlobal ( BlFixed descuento )
 
 void BtTicket::abrircajon()
 {
-    QString filestr = "/dev/null";
-    
-    if (g_confpr->valor ( CONF_CASHBOX_FILE ) != "") {
-	    filestr = g_confpr->valor(CONF_CASHBOX_FILE);
-    } // end if
+    QString filestr = g_confpr->valor(CONF_DIR_USER) + "bulmatpv_abrircajon.txt";
     
     QFile file ( filestr );
     
@@ -253,6 +249,19 @@ void BtTicket::abrircajon()
     } // end for
 
     file.close();
+
+
+    if (!g_confpr->valor ( CONF_CASHBOX_FILE).isEmpty() && g_confpr->valor ( CONF_CASHBOX_FILE) != "/dev/null") {
+        QString comando = "cat " + g_confpr->valor(CONF_DIR_USER) + "bulmatpv_abrircajon.txt" + "  > " + g_confpr->valor ( CONF_CASHBOX_FILE );
+        system ( comando.toAscii().data() );
+    } else if (! getenv("PRINTER")) {
+        _depura("Debe establecer la variable de sistema PRINTER para poder realizar esta impresion con cupsdoprint" , 2);
+    } else {
+        QString comando = "cupsdoprint " + g_confpr->valor(CONF_DIR_USER) + "bulmatpv_abrircajon.txt";
+        system ( comando.toAscii().data() );
+    } // end if
+
+
 }
 
 

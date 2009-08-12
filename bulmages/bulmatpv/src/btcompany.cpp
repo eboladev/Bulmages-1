@@ -588,6 +588,12 @@ void BtCompany::cobrar(bool imprimir)
         }
     
     } // end if
+    m_ticketActual->abrircajon();
+
+    if ( g_plugins->lanza ( "BtCompany_cobrar_1", this ) ) {
+        return;
+    } // end if
+
 
     m_listaTickets.removeAt ( m_listaTickets.indexOf ( m_ticketActual ) );
     m_ticketActual = NULL;

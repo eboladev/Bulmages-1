@@ -78,7 +78,7 @@ public slots:
         ( ( BtCompany * ) mainCompany() ) ->pulsaTecla ( Qt::Key_Minus, "-" );
     };
     virtual void on_mui_mesa_released() {
-        ( ( BtCompany * ) mainCompany() ) ->pulsaTecla ( Qt::Key_M, "M" );
+        ( ( BtCompany * ) mainCompany() ) ->pulsaTecla ( Qt::Key_F5, "" );
     };
 };
 
