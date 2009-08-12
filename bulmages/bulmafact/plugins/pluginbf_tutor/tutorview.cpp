@@ -55,6 +55,8 @@ TutorView::TutorView ( BfCompany *comp, QWidget *parent ) : BfForm ( comp, paren
         setDbFieldId ( "idcliente" );
         addDbField ( "idcliente", BlDbField::DbInt, BlDbField::DbPrimaryKey, _ ( "ID tutor" ) );
         addDbField ( "nomcliente", BlDbField::DbVarChar, BlDbField::DbNothing, _ ( "Nombre del tutor" ) );
+        addDbField ( "apellido1cliente", BlDbField::DbVarChar, BlDbField::DbNothing, _ ( "1er apellido del tutor" ) );
+        addDbField ( "apellido2cliente", BlDbField::DbVarChar, BlDbField::DbNothing, _ ( "2o apellido del tutor" ) );
         addDbField ( "numsociocliente", BlDbField::DbVarChar, BlDbField::DbNothing, _ ( "Nombre del tutor" ) );
         addDbField ( "sociocliente", BlDbField::DbBoolean, BlDbField::DbNothing, _ ( "Es Socio" ) );
         addDbField ( "cifcliente", BlDbField::DbVarChar, BlDbField::DbNothing, _ ( "Numero de Socio" ) );

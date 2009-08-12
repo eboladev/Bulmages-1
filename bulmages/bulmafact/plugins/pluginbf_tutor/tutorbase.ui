@@ -333,7 +333,7 @@
          </property>
         </widget>
        </item>
-       <item row="2" column="0" colspan="2">
+       <item row="3" column="0" colspan="2">
         <widget class="QLabel" name="textLabel2_6">
          <property name="text">
           <string>Direccion:</string>
@@ -346,14 +346,14 @@
          </property>
         </widget>
        </item>
-       <item row="2" column="2" colspan="3">
+       <item row="3" column="2" colspan="3">
         <widget class="QLineEdit" name="mui_dircliente">
          <property name="maxLength">
           <number>100</number>
          </property>
         </widget>
        </item>
-       <item row="2" column="5" colspan="2">
+       <item row="3" column="5" colspan="2">
         <widget class="QLabel" name="textLabel2_9_2">
          <property name="text">
           <string>Provincia:</string>
@@ -366,10 +366,10 @@
          </property>
         </widget>
        </item>
-       <item row="2" column="7" colspan="2">
+       <item row="3" column="7" colspan="2">
         <widget class="BlComboBox" name="mui_idprovincia"/>
        </item>
-       <item row="3" column="0" colspan="2">
+       <item row="4" column="0" colspan="2">
         <widget class="QLabel" name="textLabel2_9">
          <property name="text">
           <string>Poblacion:</string>
@@ -382,14 +382,14 @@
          </property>
         </widget>
        </item>
-       <item row="3" column="2" colspan="4">
+       <item row="4" column="2" colspan="4">
         <widget class="QLineEdit" name="mui_poblcliente">
          <property name="maxLength">
           <number>40</number>
          </property>
         </widget>
        </item>
-       <item row="3" column="6" colspan="2">
+       <item row="4" column="6" colspan="2">
         <widget class="QLabel" name="textLabel2_7">
          <property name="sizePolicy">
           <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
@@ -408,7 +408,7 @@
          </property>
         </widget>
        </item>
-       <item row="3" column="8">
+       <item row="4" column="8">
         <widget class="QLineEdit" name="mui_cpcliente">
          <property name="sizePolicy">
           <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
@@ -421,7 +421,7 @@
          </property>
         </widget>
        </item>
-       <item row="4" column="0" colspan="2">
+       <item row="5" column="0" colspan="2">
         <widget class="QLabel" name="textLabel2_8">
          <property name="text">
           <string>Telefono fijo:</string>
@@ -434,14 +434,14 @@
          </property>
         </widget>
        </item>
-       <item row="4" column="2">
+       <item row="5" column="2">
         <widget class="QLineEdit" name="mui_telcliente">
          <property name="maxLength">
           <number>20</number>
          </property>
         </widget>
        </item>
-       <item row="4" column="3" colspan="4">
+       <item row="5" column="3" colspan="4">
         <widget class="QLabel" name="textLabel2_8_5">
          <property name="text">
           <string>Telefono movil:</string>
@@ -454,14 +454,14 @@
          </property>
         </widget>
        </item>
-       <item row="4" column="7" colspan="2">
+       <item row="5" column="7" colspan="2">
         <widget class="QLineEdit" name="mui_movilcliente">
          <property name="maxLength">
           <number>20</number>
          </property>
         </widget>
        </item>
-       <item row="5" column="0" rowspan="2" colspan="2">
+       <item row="6" column="0" rowspan="2" colspan="2">
         <widget class="QLabel" name="textLabel2_8_3">
          <property name="text">
           <string>E-Mail:</string>
@@ -474,14 +474,14 @@
          </property>
         </widget>
        </item>
-       <item row="5" column="2" rowspan="2" colspan="6">
+       <item row="6" column="2" rowspan="2" colspan="6">
         <widget class="QLineEdit" name="mui_mailcliente">
          <property name="maxLength">
           <number>100</number>
          </property>
         </widget>
        </item>
-       <item row="8" column="2" colspan="7">
+       <item row="9" column="2" colspan="7">
         <widget class="BlBankEdit" name="mui_bancocliente">
          <property name="sizePolicy">
           <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
@@ -491,7 +491,7 @@
          </property>
         </widget>
        </item>
-       <item row="9" column="3">
+       <item row="10" column="3">
         <spacer name="verticalSpacer">
          <property name="orientation">
           <enum>Qt::Vertical</enum>
@@ -504,17 +504,17 @@
          </property>
         </spacer>
        </item>
-       <item row="7" column="2">
+       <item row="8" column="2">
         <widget class="BfBuscarFormaPago" name="mui_idforma_pago"/>
        </item>
-       <item row="7" column="0">
+       <item row="8" column="0">
         <widget class="QLabel" name="label_3">
          <property name="text">
           <string>Forma Pago</string>
          </property>
         </widget>
        </item>
-       <item row="8" column="0">
+       <item row="9" column="0">
         <widget class="QLabel" name="textLabel2_4_3">
          <property name="text">
           <string>Banco:</string>
@@ -523,6 +523,26 @@
           <cstring>mui_bancocliente</cstring>
          </property>
         </widget>
+       </item>
+       <item row="2" column="0">
+        <widget class="QLabel" name="label_4">
+         <property name="text">
+          <string>1er apellido</string>
+         </property>
+        </widget>
+       </item>
+       <item row="2" column="2">
+        <widget class="QLineEdit" name="mui_apellido1cliente"/>
+       </item>
+       <item row="2" column="3">
+        <widget class="QLabel" name="label_5">
+         <property name="text">
+          <string>2o apellido</string>
+         </property>
+        </widget>
+       </item>
+       <item row="2" column="6">
+        <widget class="QLineEdit" name="mui_apellido2cliente"/>
        </item>
       </layout>
      </widget>

@@ -183,6 +183,16 @@ BEGIN
         ALTER TABLE cliente ADD COLUMN numsociocliente int;
     END IF;
     
+    SELECT INTO as * FROM pg_attribute WHERE attname = ''apellido1cliente'';
+    IF NOT FOUND THEN
+        ALTER TABLE cliente ADD COLUMN apellido1cliente varchar;
+    END IF;
+
+    SELECT INTO as * FROM pg_attribute WHERE attname = ''apellido2cliente'';
+    IF NOT FOUND THEN
+        ALTER TABLE cliente ADD COLUMN apellido2cliente varchar;
+    END IF;
+
     SELECT INTO as * FROM pg_tables WHERE tablename = ''socio'';
     IF NOT FOUND THEN
         CREATE TABLE socio (
