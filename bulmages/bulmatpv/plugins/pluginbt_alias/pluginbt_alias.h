@@ -31,7 +31,7 @@
 
 
 //extern "C" MY_EXPORT int entryPoint ( BulmaTPV * );
-extern "C" MY_EXPORT int Ticket_insertarArticuloCodigoNL_Post ( BtTicket * );
-extern "C" MY_EXPORT int Ticket_insertarArticuloCodigo_Post ( BtTicket * );
+extern "C" MY_EXPORT int BtTicket_insertarArticuloCodigoNL_Post ( BtTicket * );
+extern "C" MY_EXPORT int BtTicket_insertarArticuloCodigo_Post ( BtTicket * );
 
 
