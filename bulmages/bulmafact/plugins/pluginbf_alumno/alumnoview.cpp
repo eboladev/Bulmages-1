@@ -58,15 +58,11 @@ AlumnoView::AlumnoView ( BfCompany *comp, QWidget *parent ) : BfForm ( comp, par
         addDbField ( "nombrealumno", BlDbField::DbVarChar, BlDbField::DbNothing, _ ( "Nombre del alumno" ) );
         addDbField ( "apellido1alumno", BlDbField::DbVarChar, BlDbField::DbNothing, _ ( "1er apellido" ) );
         addDbField ( "apellido2alumno", BlDbField::DbVarChar, BlDbField::DbNothing, _ ( "2o apellido" ) );
-        addDbField ( "diralumno", BlDbField::DbVarChar, BlDbField::DbNothing, _ ( "Direccion" ) );
-        addDbField ( "cpalumno", BlDbField::DbVarChar, BlDbField::DbNothing, _ ( "CP" ) );
-        addDbField ( "municipioalumno", BlDbField::DbVarChar, BlDbField::DbNothing, _ ( "Municipio" ) );
         addDbField ( "telalumno", BlDbField::DbVarChar, BlDbField::DbNothing, _ ( "Telefono" ) );
         addDbField ( "movilalumno", BlDbField::DbVarChar, BlDbField::DbNothing, _ ( "Movil" ) );
         addDbField ( "observalumno", BlDbField::DbVarChar, BlDbField::DbNothing, _ ( "Observaciones" ) );
         addDbField ( "emailalumno", BlDbField::DbVarChar, BlDbField::DbNothing, _ ( "E-Mail" ) );
         addDbField ( "fechanacimientoalumno", BlDbField::DbDate, BlDbField::DbNothing, _ ( "Fecha Nacimiento" ) );
-        addDbField ( "idprovincia", BlDbField::DbInt, BlDbField::DbNothing, _ ( "Provincia" ) );
         addDbField ( "activoalumno", BlDbField::DbBoolean, BlDbField::DbNothing, _ ( "Activo" ) );
         
         m_archivoimagen = "";
@@ -76,6 +72,7 @@ AlumnoView::AlumnoView ( BfCompany *comp, QWidget *parent ) : BfForm ( comp, par
         mui_tutoresList->setMainCompany ( mainCompany() );
         mui_actividadesList->setMainCompany ( mainCompany() );
 
+/*
         mui_idprovincia->setMainCompany ( mainCompany() );
         mui_idprovincia->setQuery ( "SELECT * FROM provincia LEFT JOIN pais ON provincia.idpais = pais.idpais ORDER BY descpais, provincia" );
         mui_idprovincia->setTableName ( "provincia" );
@@ -84,7 +81,7 @@ AlumnoView::AlumnoView ( BfCompany *comp, QWidget *parent ) : BfForm ( comp, par
         mui_idprovincia->m_valores["descpais"] = "";
         mui_idprovincia->setAllowNull ( TRUE );
         mui_idprovincia->setId ( "" );
-
+*/
         meteWindow ( windowTitle(), this, FALSE );
         pintar();
         dialogChanges_cargaInicial();
