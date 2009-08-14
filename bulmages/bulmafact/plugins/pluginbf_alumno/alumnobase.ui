@@ -439,7 +439,7 @@
          </property>
         </widget>
        </item>
-       <item row="4" column="1" colspan="3">
+       <item row="5" column="1" colspan="3">
         <spacer name="verticalSpacer">
          <property name="orientation">
           <enum>Qt::Vertical</enum>
@@ -451,6 +451,19 @@
           </size>
          </property>
         </spacer>
+       </item>
+       <item row="4" column="1">
+        <widget class="BlComboBox" name="mui_idclase"/>
+       </item>
+       <item row="4" column="0">
+        <widget class="QLabel" name="label_2">
+         <property name="text">
+          <string>Clase:</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+         </property>
+        </widget>
        </item>
       </layout>
      </widget>
@@ -644,6 +657,11 @@
    <class>ListAlumnosActividadView</class>
    <extends>QTableWidget</extends>
    <header>alumnoview.h</header>
+  </customwidget>
+  <customwidget>
+   <class>BlComboBox</class>
+   <extends>QComboBox</extends>
+   <header>blcombobox.h</header>
   </customwidget>
  </customwidgets>
  <tabstops>

@@ -64,7 +64,7 @@ AlumnoView::AlumnoView ( BfCompany *comp, QWidget *parent ) : BfForm ( comp, par
         addDbField ( "emailalumno", BlDbField::DbVarChar, BlDbField::DbNothing, _ ( "E-Mail" ) );
         addDbField ( "fechanacimientoalumno", BlDbField::DbDate, BlDbField::DbNothing, _ ( "Fecha Nacimiento" ) );
         addDbField ( "activoalumno", BlDbField::DbBoolean, BlDbField::DbNothing, _ ( "Activo" ) );
-        
+        addDbField ( "idclase", BlDbField::DbInt, BlDbField::DbNothing, _ ( "Clase" ) );        
         m_archivoimagen = "";
         mui_imagen->setPixmap ( QPixmap ( g_confpr->valor ( CONF_PROGDATA ) + "images/logopeq.png" ) );
 
@@ -72,16 +72,15 @@ AlumnoView::AlumnoView ( BfCompany *comp, QWidget *parent ) : BfForm ( comp, par
         mui_tutoresList->setMainCompany ( mainCompany() );
         mui_actividadesList->setMainCompany ( mainCompany() );
 
-/*
-        mui_idprovincia->setMainCompany ( mainCompany() );
-        mui_idprovincia->setQuery ( "SELECT * FROM provincia LEFT JOIN pais ON provincia.idpais = pais.idpais ORDER BY descpais, provincia" );
-        mui_idprovincia->setTableName ( "provincia" );
-        mui_idprovincia->setFieldId ( "idprovincia" );
-        mui_idprovincia->m_valores["provincia"] = "";
-        mui_idprovincia->m_valores["descpais"] = "";
-        mui_idprovincia->setAllowNull ( TRUE );
-        mui_idprovincia->setId ( "" );
-*/
+
+        mui_idclase->setMainCompany ( mainCompany() );
+        mui_idclase->setQuery ( "SELECT * FROM clase ORDER BY nomclase" );
+        mui_idclase->setTableName ( "clase" );
+        mui_idclase->setFieldId ( "idclase" );
+        mui_idclase->m_valores["nomclase"] = "";
+        mui_idclase->setAllowNull ( TRUE );
+        mui_idclase->setId ( "" );
+
         meteWindow ( windowTitle(), this, FALSE );
         pintar();
         dialogChanges_cargaInicial();

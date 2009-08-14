@@ -29,6 +29,7 @@
 #include "alumnoview.h"
 #include "alumnoslist.h"
 #include "listcuotasporalumnoview.h"
+#include "claseview.h"
 
 AlumnosList *g_alumnosList = NULL;
 
@@ -95,6 +96,19 @@ void MyPlugProf::elslot2()
 
 ///
 /**
+**/
+void MyPlugProf::elslot3()
+{
+    _depura ( "MyPlugProf::elslot3", 0 );
+    ClaseView * bud = new ClaseView ( ( BfCompany * ) mainCompany(), NULL );
+    mainCompany() ->m_pWorkspace->addWindow ( bud );
+    bud->show();
+    _depura ( "END MyPlugProf::elslot3", 0 );
+}
+
+
+///
+/**
 \param bges
 **/
 void MyPlugProf::inicializa ( BfBulmaFact *bges )
@@ -141,6 +155,17 @@ void MyPlugProf::inicializa ( BfBulmaFact *bges )
         pGesMenu->addAction ( cuotaspalumno );
         bges->Fichas->addAction ( cuotaspalumno );
         connect ( cuotaspalumno, SIGNAL ( activated() ), this, SLOT ( elslot2() ) );
+
+        /// Agrego un separador
+        pGesMenu->addSeparator();
+
+        QAction *clases = new QAction ( _ ( "&Clases" ), 0 );
+//        cuotaspalumno->setIcon ( QIcon ( QString::fromUtf8 ( ":/ImgGestionAula/icons/mix_money_32.png" ) ) );
+        clases->setStatusTip ( _ ( "Clases" ) );
+        clases->setWhatsThis ( _ ( "Clases" ) );
+        pGesMenu->addAction ( clases );
+        bges->Fichas->addAction ( clases );
+        connect ( clases, SIGNAL ( activated() ), this, SLOT ( elslot3() ) );
 
     } // end if
     

@@ -72,6 +72,14 @@ BEGIN
 
     END IF;
 
+    SELECT INTO as * FROM pg_tables  WHERE tablename=''clase'';
+    IF NOT FOUND THEN
+        CREATE TABLE clase (
+            idclase SERIAL PRIMARY KEY,
+            nomclase VARCHAR NOT NULL
+        );
+    END IF;
+
     SELECT INTO as * FROM pg_tables  WHERE tablename=''alumno'';
     IF NOT FOUND THEN
 
@@ -90,9 +98,15 @@ BEGIN
             movilalumno VARCHAR,
             emailalumno VARCHAR,
             fechanacimientoalumno DATE,
+            idclase INTEGER REFERENCES clase (idclase),
             activoalumno BOOLEAN
         );
         
+    END IF;
+
+    SELECT INTO as attname, relname FROM pg_attribute LEFT JOIN pg_class ON pg_attribute.attrelid=pg_class.oid WHERE attname=''idclase'' AND relname=''alumno'';
+    IF NOT FOUND THEN
+        ALTER TABLE alumno ADD COLUMN idclase INTEGER REFERENCES clase (idclase);
     END IF;
 
     SELECT INTO as * FROM pg_attribute WHERE attname = ''activoalumno'';
@@ -427,6 +441,7 @@ BEGIN
             idcliente INTEGER NOT NULL REFERENCES cliente(idcliente)
         );
     END IF;
+
 
     RETURN 0;
     
