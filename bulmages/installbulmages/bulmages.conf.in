@@ -63,6 +63,8 @@ CONF_FONTSIZE_BULMAGES		10
 # Refresco de los listados tras el cierre de una ficha.
 CONF_REFRESH_LIST		TRUE
 
+CONF_CUPS_DEFAULT_PRINTER None
+
 #Mostrar la barra de progreso
 CONF_SHOW_PROGRESS_BAR		TRUE
 

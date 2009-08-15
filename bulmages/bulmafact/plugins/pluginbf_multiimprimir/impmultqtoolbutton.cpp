@@ -106,8 +106,8 @@ void ImpQToolButton::click()
     _depura ( "ImpQToolButton::click", 0 );
 
 	/// Hacer comprobacion de la variable PRINTER
-	if (! getenv("PRINTER")) {
-	    mensajeInfo("Debe establecer la variable de sistema PRINTER para poder realizar esta impresion con cupsdoprint");
+	if (g_confpr->valor(CONF_CUPS_DEFAULT_PRINTER).isEmpty() || g_confpr->valor(CONF_CUPS_DEFAULT_PRINTER) == "None") {
+	    mensajeInfo("No existe impresora por defecto. Establezca la variable CONF_CUPS_DEFAULT_PRINTER");
         _depura ( "END ImpQToolButton::click", 0 );
 	    return;
 	} // end if
@@ -439,7 +439,7 @@ void ImpQToolButton::click()
             } // end for
         } // end if
 
-	    QString comando = "cupsdoprint " + res;
+	    QString comando = "cupsdoprint -P" +g_confpr->valor(CONF_CUPS_DEFAULT_PRINTER) + " " + res;
 	    system ( comando.toAscii().data() );
 	    comando = "rm " + res;
 	    system ( comando.toAscii().data() );

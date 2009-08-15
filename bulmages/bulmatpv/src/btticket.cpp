@@ -254,10 +254,10 @@ void BtTicket::abrircajon()
     if (!g_confpr->valor ( CONF_CASHBOX_FILE).isEmpty() && g_confpr->valor ( CONF_CASHBOX_FILE) != "/dev/null") {
         QString comando = "cat " + g_confpr->valor(CONF_DIR_USER) + "bulmatpv_abrircajon.txt" + "  > " + g_confpr->valor ( CONF_CASHBOX_FILE );
         system ( comando.toAscii().data() );
-    } else if (! getenv("PRINTER")) {
-        _depura("Debe establecer la variable de sistema PRINTER para poder realizar esta impresion con cupsdoprint" , 2);
+    } else if (g_confpr->valor(CONF_CUPS_DEFAULT_PRINTER).isEmpty() || g_confpr->valor(CONF_CUPS_DEFAULT_PRINTER) == "None") {
+        _depura("Debe establecer el parametro CONF_CUPS_DEFAULT_PRINTER o CONF_CASHBOX_FILE para abrir el cajon " , 2);
     } else {
-        QString comando = "cupsdoprint " + g_confpr->valor(CONF_DIR_USER) + "bulmatpv_abrircajon.txt";
+        QString comando = "cupsdoprint -P" + g_confpr->valor(CONF_CUPS_DEFAULT_PRINTER) + " " + g_confpr->valor(CONF_DIR_USER) + "bulmatpv_abrircajon.txt";
         system ( comando.toAscii().data() );
     } // end if
 

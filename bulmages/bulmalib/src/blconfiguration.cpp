@@ -412,6 +412,8 @@ QString BlConfiguration::nombre ( int i )
         return "CONF_BACKGROUND_COLOR";
     if ( i == CONF_BACKGROUND_IMAGE )
         return "CONF_BACKGROUND_IMAGE";
+    if ( i == CONF_CUPS_DEFAULT_PRINTER )
+        return "CONF_CUPS_DEFAULT_PRINTER";
     if ( i == CONF_BLOCK_WINDOWS )
 	return "CONF_BLOCK_WINDOWS";
 

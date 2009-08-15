@@ -288,18 +288,14 @@ int BtTicket_imprimir(BtTicket *tick)
 
 
 
-    if (!g_confpr->valor ( CONF_TICKET_PRINTER_FILE).isEmpty() ) {
+/// Si queremos imprimir con CUPS lo hacemos de esta otra forma
+    if (!g_confpr->valor ( CONF_TICKET_PRINTER_FILE).isEmpty() && g_confpr->valor ( CONF_TICKET_PRINTER_FILE) != "/dev/null") {
         QString comando = "cat " + g_confpr->valor(CONF_DIR_USER) + "bulmatpv_ticket.txt" + "  > " + g_confpr->valor ( CONF_TICKET_PRINTER_FILE );
         system ( comando.toAscii().data() );
-    } // end if
-
-
-    /// Si queremos imprimir con CUPS lo hacemos de esta otra forma
-    /// Hacer comprobacion de la variable PRINTER
-    if (! getenv("PRINTER")) {
-        _depura("Debe establecer la variable de sistema PRINTER para poder realizar esta impresion con cupsdoprint" , 2);
+    } else if (g_confpr->valor(CONF_CUPS_DEFAULT_PRINTER).isEmpty() || g_confpr->valor(CONF_CUPS_DEFAULT_PRINTER) == "None") {
+        _depura("Debe establecer el parametro CONF_CUPS_DEFAULT_PRINTER o CONF_TICKET_PRINTER_FILE para imprimir el ticket " , 2);
     } else {
-        QString comando = "cupsdoprint " + g_confpr->valor(CONF_DIR_USER) + "bulmatpv_ticket.txt";
+        QString comando = "cupsdoprint -P" + g_confpr->valor(CONF_CUPS_DEFAULT_PRINTER) + " " + g_confpr->valor(CONF_DIR_USER) + "bulmatpv_ticket.txt";
         system ( comando.toAscii().data() );
     } // end if
 
@@ -557,20 +553,16 @@ int BtCompany_z(BtCompany * emp)
     
     }
 
-/// Si quisiesemos imprimir en modo raw lo hariamos de esta forma.
-//    QString comando = "cat " + g_confpr->valor(CONF_DIR_USER) + "bulmatpv_zx.txt" + "  > " + g_confpr->valor ( CONF_TICKET_PRINTER_FILE );
-/// Si queremos imprimir con CUPS lo hacemos de esta otra forma
-    /// Hacer comprobacion de la variable PRINTER
-    if (! getenv("PRINTER")) {
-	mensajeInfo("Debe establecer la variable de sistema PRINTER para poder realizar esta impresion con cupsdoprint");
-        _depura ( "END PluginBt_IvaIncluido::BtCompany_z", 0 );
-	return 1;
+
+    if (!g_confpr->valor ( CONF_TICKET_PRINTER_FILE).isEmpty() && g_confpr->valor ( CONF_TICKET_PRINTER_FILE) != "/dev/null") {
+        QString comando = "cat " + g_confpr->valor(CONF_DIR_USER) + "bulmatpv_z.txt" + "  > " + g_confpr->valor ( CONF_TICKET_PRINTER_FILE );
+        system ( comando.toAscii().data() );
+    } else if (g_confpr->valor(CONF_CUPS_DEFAULT_PRINTER).isEmpty() || g_confpr->valor(CONF_CUPS_DEFAULT_PRINTER) == "None") {
+        _depura("Debe establecer el parametro CONF_CUPS_DEFAULT_PRINTER o CONF_TICKET_PRINTER_FILE para abrir el cajon " , 2);
+    } else {
+        QString comando = "cupsdoprint -P" + g_confpr->valor(CONF_CUPS_DEFAULT_PRINTER) + " " + g_confpr->valor(CONF_DIR_USER) + "bulmatpv_z.txt";
+        system ( comando.toAscii().data() );
     } // end if
-
-    QString comando = "cupsdoprint " + g_confpr->valor(CONF_DIR_USER) + "bulmatpv_z.txt";
-
-    system ( comando.toAscii().data() );
-  
 
  
         _depura ( "END PluginBt_IvaIncluido::BtCompany_z", 0 );
@@ -732,16 +724,16 @@ int BtCompany_x(BtCompany *emp)
 /// Si quisiesemos imprimir en modo raw lo hariamos de esta forma.
 //    QString comando = "cat " + g_confpr->valor(CONF_DIR_USER) + "bulmatpv_x.txt" + "  > " + g_confpr->valor ( CONF_TICKET_PRINTER_FILE );
 /// Si queremos imprimir con CUPS lo hacemos de esta otra forma
-    /// Hacer comprobacion de la variable PRINTER
-    if (! getenv("PRINTER")) {
-	mensajeInfo("Debe establecer la variable de sistema PRINTER para poder realizar esta impresion con cupsdoprint");
-        _depura ( "END PluginBt_IvaIncluido::BtCompany_x", 0 );
-	return 1;
+/// Si queremos imprimir con CUPS lo hacemos de esta otra forma
+    if (!g_confpr->valor ( CONF_TICKET_PRINTER_FILE).isEmpty() && g_confpr->valor ( CONF_TICKET_PRINTER_FILE) != "/dev/null") {
+        QString comando = "cat " + g_confpr->valor(CONF_DIR_USER) + "bulmatpv_x.txt" + "  > " + g_confpr->valor ( CONF_TICKET_PRINTER_FILE );
+        system ( comando.toAscii().data() );
+    } else if (g_confpr->valor(CONF_CUPS_DEFAULT_PRINTER).isEmpty() || g_confpr->valor(CONF_CUPS_DEFAULT_PRINTER) == "None") {
+        _depura("Debe establecer el parametro CONF_CUPS_DEFAULT_PRINTER o CONF_TICKET_PRINTER_FILE para abrir el cajon " , 2);
+    } else {
+        QString comando = "cupsdoprint -P" + g_confpr->valor(CONF_CUPS_DEFAULT_PRINTER) + " " + g_confpr->valor(CONF_DIR_USER) + "bulmatpv_x.txt";
+        system ( comando.toAscii().data() );
     } // end if
-
-    QString comando = "cupsdoprint " + g_confpr->valor(CONF_DIR_USER) + "bulmatpv_x.txt";
-
-    system ( comando.toAscii().data() );
   
 
     _depura ( "END PluginBt_IvaIncluido::BtCompany_x", 0 );
