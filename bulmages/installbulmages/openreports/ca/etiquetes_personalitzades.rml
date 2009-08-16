@@ -16,7 +16,7 @@ SELECT '' as subquery1,
 
 
    <!-- QUERY[subquery1]=" 
-   SELECT '' as subquery2,
+   SELECT '' as subquery_err,
           buides, 
           tw, th, 
           ample, tample, 
@@ -34,13 +34,19 @@ SELECT '' as subquery1,
            btrim(to_char(sepvertical, '999999.9999')) as tsepvertical, 
           array_to_string(ARRAY(  SELECT (talt||'mm') 
                                  UNION ALL
-                                   SELECT btrim(to_char(alt+sepvertical,'999999.9999mm'))  
+                                   SELECT (CASE WHEN sepvertical>0 
+                                                THEN btrim(to_char(sepvertical,'999999.9999mm'))||',' 
+                                                ELSE '' END) ||  
+                                          btrim(to_char(alt,'999999.9999mm'))  
                                               FROM generate_series(1,numfiles-1)
                                ), 
                           ',') AS rowheights,
           array_to_string(ARRAY(  SELECT (tample||'mm') 
                                  UNION ALL
-                                  SELECT btrim(to_char(ample+sephoritzontal,'999999.9999mm'))  
+                                  SELECT (CASE WHEN sephoritzontal > 0 
+                                         THEN btrim(to_char(sephoritzontal,'999999.9999mm')) ||',' 
+                                         ELSE '' END ) ||  
+btrim(to_char(ample,'999999.9999mm'))  
                                     FROM generate_series(1,numcols-1)
                                ), 
                           ',') AS colwidths,
@@ -95,6 +101,38 @@ SELECT '' as subquery1,
 ) opcions_formatades
 "-->
 
+    <!-- QUERY[subquery_err]=" 
+ SELECT 1 WHERE 0 > ANY (ARRAY[ [talt],[tample],[tmargesuperior],[tmargeinferior],[tmargedret],[tmargeesquerre],[tsephoritzontal],[tsepvertical],[tamplepaper],[taltpaper] ] ) OR 1> ANY (ARRAY[ [numfiles],[numcols] ] )
+    "-->
+
+<template pageSize="(210mm, 297mm)" 
+          leftMargin="10mm" rightMargin="10mm" 
+          topMargin="10mm" bottomMargin="10mm" 
+          title="fitxer" author="xdrudis" >
+	<pageTemplate id="main">
+		<pageGraphics>
+
+		</pageGraphics>
+
+	<frame id="column" x1="10mm" y1="10mm" 
+                           width="190mm" height="277mm"
+                 topPadding="0" bottomPadding="0" leftPadding="0" rightPadding="0"
+        />
+
+
+	</pageTemplate>
+</template>
+
+<stylesheet>
+</stylesheet>
+<story>
+<para> Hi ha algun error a les mides. Repasseu-les i torneu-ho a intentar </para>
+
+    <!--END QUERY[subquery_err]-->
+
+    <!-- QUERY[subquery_err]=" 
+ SELECT '' as subquery2 WHERE NOT (0 > ANY (ARRAY[ [talt],[tample],[tmargesuperior],[tmargeinferior],[tmargedret],[tmargeesquerre],[tsephoritzontal],[tsepvertical],[tamplepaper],[taltpaper] ] ) OR 1> ANY (ARRAY[ [numfiles],[numcols] ]))
+"-->
 
 <template pageSize="([tamplepaper]mm, [taltpaper]mm)" 
           leftMargin="[tmargeesquerre]mm" rightMargin="[tmargedret]mm" 
@@ -117,17 +155,18 @@ SELECT '' as subquery1,
 <stylesheet>
    <blockTableStyle id="etiquetes">
        <blockAlignment start="0,0" stop="-1,-1" value="CENTER"/>
-       <blockValign start="0,0" stop="-1,-1" value="BOTTOM"/>
+       <blockValign start="0,0" stop="-1,-1" value="MIDDLE"/>
        <blockTopPadding start="0,0" stop="0,-1" value="0mm"/>
        <blockLeftPadding start="0,0" stop="0,-1" value="0mm"/>
        <blockTopPadding start="0,0" stop="-1,0" value="0mm"/>
        <blockLeftPadding start="0,0" stop="-1,0" value="0mm"/>
-       <blockTopPadding start="1,1" stop="-1,-1" value="[tsepvertical]mm"/>
-       <blockLeftPadding start="1,1" stop="-1,-1" value="[tsephoritzontal]mm"/>
+       <blockTopPadding start="1,1" stop="-1,-1" value="0mm"/>
+       <blockLeftPadding start="1,1" stop="-1,-1" value="0mm"/>
        <blockRightPadding start="0,0" stop="-1,-1" value="0mm"/>
        <blockBottomPadding start="0,0" stop="-1,-1" value="0mm"/>
        <blockLeading length="0"/>
-  <!--     <lineStyle thickness="0" kind="GRID"/> -->
+<!--       <lineStyle thickness="1" kind="GRID"/>
+    -->   
   </blockTableStyle>
 </stylesheet>
 <story>
@@ -163,20 +202,30 @@ SELECT '' as subquery1,
 
 
          <!-- QUERY[subquery3]="
-           SELECT 1 WHERE ([numcols] = 1 ) OR ([etiqueta] % [numcols] = 1)
+           SELECT 1 WHERE ([numcols] = 1 ) OR (([etiqueta] % [numcols]) = 1)
          "-->
          
   <tr>
 
          <!--END QUERY[subquery3]-->
 
+         <!-- QUERY[subquery3]="
+           SELECT 1 WHERE [tsephoritzontal]>0 AND ([numcols] > 1 ) AND (([etiqueta] % [numcols]) <> 1)
+         "-->
+         
+  <td></td>
+
+         <!--END QUERY[subquery3]-->
+
 
    <td>
+
             <!-- QUERY[subquery3]="
                 SELECT '' as sqetiq WHERE [pos]=1
             "-->
                   <!-- INCLUDE FILE="[fitxer_contingut_etiqueta]"-->
             <!--END QUERY[subquery3]-->
+
    </td>
 
 
@@ -192,6 +241,21 @@ SELECT '' as subquery1,
 
 
          <!-- QUERY[subquery3]="
+           SELECT '' as subquery4 WHERE ([tsepvertical] > 0) AND ( ([etiqueta] % [numcols]) = 0 )
+                          AND (([etiqueta] % [numetiquetespag]) <> 0 )
+         "-->
+         
+  <tr>
+             <!-- QUERY[subquery4]="
+               SELECT '' as subquery5 FROM generate_series(1,([numcols]*2)-1 )
+             "-->
+               <td></td>
+             <!--END QUERY[subquery4]-->
+  </tr>
+
+         <!--END QUERY[subquery3]-->
+
+         <!-- QUERY[subquery3]="
            SELECT 1 WHERE [etiqueta] % [numetiquetespag] = 0
          "-->
          
@@ -202,6 +266,8 @@ SELECT '' as subquery1,
    DROP SEQUENCE numlinia 
    "-->
    <!--END QUERY[subquery2]-->
+  <!--END QUERY[subquery_err]-->
 <!--END QUERY[subquery1]-->
 <!--END QUERY[etiquetes]-->
+
 
