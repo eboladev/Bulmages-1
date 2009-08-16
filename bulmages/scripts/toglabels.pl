@@ -17,9 +17,15 @@ while(<>) {
       my $t = $glabels->Template($i++);
       $t->setAttr('name',$nom);
       $t->setAttr('_description',$desc);
-      $t->setAttr('size','Other');
-      $t->setAttr('height',$mides{'alt_paper'}.'mm');
-      $t->setAttr('width',$mides{'ample_paper'}.'mm');
+      if ($mides{'alt_paper'} == 297 && $mides{'ample_paper'}==210) {
+	  $mida = "A4";
+      } else {
+          $mida = 'Other';
+          $t->setAttr('height',$mides{'alt_paper'}.'mm');
+          $t->setAttr('width',$mides{'ample_paper'}.'mm');
+      }
+      $t->setAttr('size',$mida);
+
       my $r = $t->getElement('Label-rectangle');
       $r->setAttr('id',0);  #legal ?
       $r->setAttr('width',$mides{'amplada'}.'mm');
