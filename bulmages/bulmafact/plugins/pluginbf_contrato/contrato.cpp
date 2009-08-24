@@ -196,19 +196,6 @@ int Contrato::guardar()
 }
 
 
-/** Devuelve el puntero a la clase company con la que esta trabajando la contrato
-**/
-/**
-\return
-**/
-BfCompany * Contrato::_company()
-{
-    _depura ( "Contrato::_company", 0 );
-    _depura ( "END Contrato::_company", 0 );
-    return mainCompany();
-}
-
-
 /** Funciones para ser derivadas en las clases de pintado
 **/
 

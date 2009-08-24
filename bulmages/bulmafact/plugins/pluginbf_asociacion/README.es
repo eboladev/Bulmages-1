@@ -23,7 +23,7 @@ Dependencias: libpluginbf_profesor.so; libpluginbf_tutor.so
 
 Incompatibles:
 
-Reports: inf_reunion.rml; jdirectiva.rml; reunion.rml
+Reports: impers_reunion.rml; jdirectiva.rml; reunion.rml
 
 Categorias: Asociaciones de padres de alumnos; Experimentales;
 

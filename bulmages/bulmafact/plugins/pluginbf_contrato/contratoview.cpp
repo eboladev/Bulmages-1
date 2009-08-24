@@ -313,7 +313,14 @@ void ContratoView::on_mui_facturar_released()
             } // end if
         } else {
             // GENERAMOS LA FACTURA
-            FacturaView *fac = new FacturaView ( ( BfCompany * ) mainCompany(), 0 );
+            /// Como estamos en un plugin buscamos nuevas formas de creacion de objetos.
+            int resur = g_plugins->lanza ( "SNewFacturaView", ( BfCompany * ) mainCompany() );
+            if ( !resur ) {
+                mensajeInfo ( "no se pudo crear instancia de factura" );
+                return;
+            } // end if
+            FacturaView *fac = ( FacturaView * ) g_plugParams;	    
+	    
             mainCompany() ->m_pWorkspace->addWindow ( fac );
             fac->cargar ( "0" );
             fac->show();
