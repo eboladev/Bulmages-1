@@ -169,8 +169,13 @@ int BtTicket_imprimir(BtTicket *tick)
 
     cur = tick->mainCompany() ->loadQuery ( "SELECT * FROM cliente WHERE idcliente=" + tick->dbValue ( "idcliente" ) );
     if ( !cur->eof() ) {
+	if (cur->valor ("idcliente") != g_confpr->valor(CONF_IDCLIENTE_DEFECTO)) {
         cliente.cif = cur->valor ( "cifcliente" ).toAscii();
         cliente.nombre = cur->valor ( "nomcliente" ).toAscii();
+	} else {
+	cliente.cif = "";
+        cliente.nombre = "";
+	} // end if
     } // end if
     delete cur;
 
@@ -216,7 +221,8 @@ int BtTicket_imprimir(BtTicket *tick)
 
     pr.printText ( "\n" );
     pr.printText ( fecha.dia + " " + fecha.hora + "\n" );
-    pr.printText ( "Cliente: " + cliente.cif + " " + cliente.nombre + "\n" );
+    if (cliente.cif != "") 
+	pr.printText ( "Cliente: " + cliente.cif + " " + cliente.nombre + "\n" );
     pr.printText ( "Num. Ticket:  " + tick->dbValue("numalbaran") + "\n" );
 
     pr.printText ( "\n" );
@@ -315,7 +321,7 @@ int BtCompany_z(BtCompany * emp)
     
     /// Buscamos las fechas de los tickets que quedan pendientes de hacer Z
     /// Hacemos una Z por cada fecha que exista en los tickets y no tenga Z asociada
-    QString queryfechas = "SELECT DISTINCT fechaalbaran FROM albaran WHERE idz IS NULL AND fechaalbaran > '" + curFechaUltimaZ->valor("fechaz") + "' ORDER BY fechaalbaran ASC";
+    QString queryfechas = "SELECT DISTINCT fechaalbaran FROM albaran WHERE idz IS NULL AND fechaalbaran >= '" + curFechaUltimaZ->valor("fechaz") + "' ORDER BY fechaalbaran ASC";
     BlDbRecordSet *curfechas = emp->loadQuery ( queryfechas );
     
     while ( !curfechas->eof() ) {
@@ -550,19 +556,19 @@ int BtCompany_z(BtCompany * emp)
         // ========================================
     
         curfechas->nextRecord();
-    
-    }
+	if (!g_confpr->valor ( CONF_TICKET_PRINTER_FILE).isEmpty() && g_confpr->valor ( CONF_TICKET_PRINTER_FILE) != "/dev/null") {
+	    QString comando = "cat " + g_confpr->valor(CONF_DIR_USER) + "bulmatpv_z.txt" + "  > " + g_confpr->valor ( CONF_TICKET_PRINTER_FILE );
+	    system ( comando.toAscii().data() );
+	} else if (g_confpr->valor(CONF_CUPS_DEFAULT_PRINTER).isEmpty() || g_confpr->valor(CONF_CUPS_DEFAULT_PRINTER) == "None") {
+	    _depura("Debe establecer el parametro CONF_CUPS_DEFAULT_PRINTER o CONF_TICKET_PRINTER_FILE para abrir el cajon " , 2);
+	} else {
+	    QString comando = "cupsdoprint -P" + g_confpr->valor(CONF_CUPS_DEFAULT_PRINTER) + " " + g_confpr->valor(CONF_DIR_USER) + "bulmatpv_z.txt";
+	    system ( comando.toAscii().data() );
+	} // end if   
+    } // end while
 
 
-    if (!g_confpr->valor ( CONF_TICKET_PRINTER_FILE).isEmpty() && g_confpr->valor ( CONF_TICKET_PRINTER_FILE) != "/dev/null") {
-        QString comando = "cat " + g_confpr->valor(CONF_DIR_USER) + "bulmatpv_z.txt" + "  > " + g_confpr->valor ( CONF_TICKET_PRINTER_FILE );
-        system ( comando.toAscii().data() );
-    } else if (g_confpr->valor(CONF_CUPS_DEFAULT_PRINTER).isEmpty() || g_confpr->valor(CONF_CUPS_DEFAULT_PRINTER) == "None") {
-        _depura("Debe establecer el parametro CONF_CUPS_DEFAULT_PRINTER o CONF_TICKET_PRINTER_FILE para abrir el cajon " , 2);
-    } else {
-        QString comando = "cupsdoprint -P" + g_confpr->valor(CONF_CUPS_DEFAULT_PRINTER) + " " + g_confpr->valor(CONF_DIR_USER) + "bulmatpv_z.txt";
-        system ( comando.toAscii().data() );
-    } // end if
+
 
  
         _depura ( "END PluginBt_IvaIncluido::BtCompany_z", 0 );
