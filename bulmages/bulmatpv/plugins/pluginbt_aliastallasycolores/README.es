@@ -22,6 +22,8 @@ Dependencias: libpluginbf_tallascolores.so
 
 Incompatibles:
 
-Orden:
+Orden: 700
+
+Categorias: Facturacion avanzada;Experimentales;Tallas y Colores;
 
 Comentarios: Ideal para tiendas de ropa y zapateria.

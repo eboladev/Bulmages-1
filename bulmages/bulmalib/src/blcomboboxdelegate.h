@@ -1,6 +1,7 @@
 /***************************************************************************
- *   Copyright (C) 2005 by Tomeu Borras Riera                              *
+ *   Copyright (C) 2006 by Tomeu Borras Riera                              *
  *   tborras@conetxia.com                                                  *
+ *   http://www.iglues.org                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
  *   it under the terms of the GNU General Public License as published by  *
@@ -18,17 +19,52 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#ifdef Q_WS_WIN
-# define MY_EXPORT __declspec(dllexport)
-#else
-# define MY_EXPORT
+#ifndef BLCOMBOBOXDELEGATE_H
+#define BLCOMBOBOXDELEGATE_H
+
+#include <QComboBox>
+
+#include "blwidget.h"
+#include "blform.h"
+
+
+class BL_EXPORT BlComboBoxDelegate : public QComboBox, public BlMainCompanyPointer
+{
+    Q_OBJECT
+
+public:
+    /// QHash de los valores a comprobar
+    QMap <QString, QString> m_valores;
+
+private:
+    /// Indica cual es el identificador para la tabla.
+    QString m_fieldId;
+    QString m_query;
+    /// Impide que se produzca un dead-lock entre pintar y on_mui_text_changed.
+    bool m_semaforo;
+
+protected:
+    QString m_table;
+    /// RecordSet que almacena en memoria la lista de elementos.
+    BlDbRecordSet *m_comboRecordSet;
+    /// Indica si adminte nulos o no
+    bool m_null;
+
+public:
+    BlComboBoxDelegate ( QWidget *parent );
+    ~BlComboBoxDelegate();
+    QString fieldValue();
+    void setFieldValue(QString);
+    virtual QString id();
+    virtual QString id(QString);
+    virtual void setId(QString);
+    void setQuery(QString);
+    virtual void setTableName(QString tableName);
+    virtual void setFieldId(QString fieldId);
+    void setAllowNull(bool v);
+
+
+};
+
 #endif
-
-#include "btbulmatpv.h"
-#include "btcompany.h"
-#include "btticket.h"
-
-extern "C" MY_EXPORT int BtTicket_insertarArticuloNL_Post ( BtTicket * );
-extern "C" MY_EXPORT int BtTicket_insertarArticulo_Post ( BtTicket * );
-
 

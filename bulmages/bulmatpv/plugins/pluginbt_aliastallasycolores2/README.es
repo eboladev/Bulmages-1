@@ -19,10 +19,12 @@ ArchivoSQLpatch:
 
 ArchivoSQLdeins: 
 
-Dependencias: libpluginbt_alias.so
+Dependencias: libpluginbf_alias.so
 
 Incompatibles:
 
-Orden:
+Orden: 701
+
+Categorias: Facturacion avanzada;Experimentales;Tallas y Colores;
 
 Comentarios: Ideal para meter los codigos de barras como alias y poder tickarlos.

@@ -25,7 +25,7 @@ Incompatibles:
 
 Reports: inf_stock.rml; inf_ventas.pys; inf_ventas.rml; inf_ventas.ui
 
-Categorias: Facturacion avanzada; Experimentales;
+Categorias: Facturacion avanzada; Experimentales;Tallas y Colores;
 
 Orden: 890
 

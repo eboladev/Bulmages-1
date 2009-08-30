@@ -27,36 +27,36 @@
 #include "btcompany.h"
 
 
-int Ticket_agregarLinea_Post ( BtTicket *tick, BlDbRecord * &item )
+int BtTicket_agregarLinea_Post ( BtTicket *tick, BlDbRecord * &item )
 {
-
-    mensajeInfo ( "hola" );
+    _depura ( "PluginBt_AliasTallasYColores2::BtTicket_agregarLinea_Post", 0 );
     item->addDbField ( "idtc_talla", BlDbField::DbInt, BlDbField::DbNothing, _ ( "Talla" ) );
     item->addDbField ( "idtc_color", BlDbField::DbInt, BlDbField::DbNothing, _ ( "Color" ) );
-
+    _depura ( "END PluginBt_AliasTallasYColores2::BtTicket_agregarLinea_Post", 0 );
     return 0;
 }
 
 
 
-int Ticket_insertarArticuloNL_Post ( BtTicket *tick )
+int BtTicket_insertarArticuloNL_Post ( BtTicket *tick )
 {
+    _depura ( "PluginBt_AliasTallasYColores2::BtTicket_insertarArticuloNL_Post", 0 );
     QString query = "SELECT * FROM tc_articulo_alias WHERE aliastc_articulo_tallacolor = '" + ( ( BtCompany * ) tick->mainCompany() )->valorBtInput() + "'";
     BlDbRecordSet *cur = tick->mainCompany() ->loadQuery ( query );
     if ( !cur->eof() ) {
         tick->insertarArticulo ( cur->valor ( "idarticulo" ), BlFixed ( "1" ) );
     } // end if
     delete cur;
-
+    _depura ( "END PluginBt_AliasTallasYColores2::BtTicket_insertarArticuloNL_Post", 0 );
     return 0;
 }
 
 
 
-int Ticket_insertarArticulo_Post ( BtTicket *tick )
+int BtTicket_insertarArticulo_Post ( BtTicket *tick )
 {
     int valor = -1;
-    _depura ( "PluginBt_AliasTallasYColores2::Ticket_insertarArticulo_Post", 0 );
+    _depura ( "PluginBt_AliasTallasYColores2::BtTicket_insertarArticulo_Post", 0 );
     static int semaforo = 0;
     if ( semaforo == 0 ) {
         semaforo = 1;
@@ -69,6 +69,6 @@ int Ticket_insertarArticulo_Post ( BtTicket *tick )
         valor = 0;
         semaforo = 0;
     } // end if
-    _depura ( "END PluginBt_AliasTallasYColores2::Ticket_insertarArticulo_Post", 0 );
+    _depura ( "END PluginBt_AliasTallasYColores2::BtTicket_insertarArticulo_Post", 0 );
     return valor;
 }

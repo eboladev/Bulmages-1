@@ -22,6 +22,7 @@
 #ifndef BUSQUEDATALLA_H
 #define BUSQUEDATALLA_H
 
+#include "blcomboboxdelegate.h"
 #include "blcombobox.h"
 #include "blwidget.h"
 #include "bfcompany.h"
@@ -32,19 +33,12 @@
     de esta forma la introduccion de tipos de IVA es sencilla.
     Esta clase se usa conjuntamente con BfSubForm para el cambio del editor
     estandar por un ComboBox */
-class BusquedaTallaDelegate : public BlComboBox
+class BusquedaTallaDelegate : public BlComboBoxDelegate
 {
     Q_OBJECT
-
-private:
-    /// Este cursor almacena el listado de series de factura para poder trabajar con ellas.
-    BlDbRecordSet *m_cursorcombo;
-
 public:
     BusquedaTallaDelegate ( QWidget *parent = 0 );
     ~BusquedaTallaDelegate();
-    virtual void set ( const QString & );
-    QString id();
 };
 
 
@@ -55,26 +49,10 @@ class BusquedaTalla : public BlComboBox
 {
     Q_OBJECT
 
-private:
-    /// El puntero a company para que se pueda trabajar con la base de datos.
-    BlDbRecordSet *m_cursorcombo;
-    /// Indica cual es el codigo de almacen por defecto.
-    QString m_codigoalmacen;
 
 public:
     BusquedaTalla ( QWidget *parent = 0, const char *name = 0 );
     ~BusquedaTalla();
-    virtual void setidtc_talla ( QString idalmacen );
-    virtual void setFieldValue ( QString idalmacen );
-    QString idtc_talla();
-    void setMainCompany ( BfCompany * );
-    virtual QString fieldValue();
-
-public slots:
-    void m_activated ( int index );
-
-signals:
-    void valueChanged ( QString );
 };
 
 #endif

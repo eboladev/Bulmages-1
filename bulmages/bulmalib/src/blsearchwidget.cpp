@@ -18,6 +18,8 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
+#include <QMenu>
+
 #include "blsearchwidget.h"
 #include "blmaincompany.h"
 #include "blplugins.h"
@@ -208,12 +210,12 @@ void BlSearchWidget::on_mui_clearSearchWidget_released()
 */
 /**
 **/
-void BlSearchWidget::on_mui_buscar_released()
+void BlSearchWidget::on_m_buscarWidget_released()
 {
-    _depura ( "BlSearchWidget::on_mui_buscar_released", 0 );
+    _depura ( "BlSearchWidget::on_m_buscarWidget_released", 0 );
     /// Disparamos los plugins
     g_plugins->lanza ( "Busqueda_on_mui_buscar_released", this );
-    _depura ( "END BlSearchWidget::on_mui_buscar_released", 0 );
+    _depura ( "END BlSearchWidget::on_m_buscarWidget_released", 0 );
 }
 
 
@@ -382,7 +384,7 @@ QString BlSearchWidget::fieldValue()
 void BlSearchWidget::setLabel ( QString label )
 {
     mui_labelBusqueda->setText ( label  );
-    mui_labelBusqueda->setBuddy ( mui_buscar );
+    mui_labelBusqueda->setBuddy ( m_buscarWidget );
 }
 
 
@@ -420,6 +422,7 @@ BlDbCompleterComboBox::BlDbCompleterComboBox ( QWidget *parent )
     /// Desconectamos el activated ya que en los subformularios no tiene que funcionar.
     disconnect ( this, SIGNAL ( activated ( int ) ), 0, 0 );
     connect ( this, SIGNAL ( editTextChanged ( const QString & ) ), this, SLOT ( s_editTextChanged ( const QString & ) ) );
+    setContextMenuPolicy ( Qt::CustomContextMenu );
     _depura ( "END BlDbCompleterComboBox::BlDbCompleterComboBox", 0 );
 }
 
@@ -554,6 +557,35 @@ QString BlDbCompleterComboBox::entrada()
 }
 
 
+///
+/**
+**/
+void BlDbCompleterComboBox::on_customContextMenuRequested ( const QPoint & )
+{
+    _depura ( "BlDbCompleterComboBox::on_customContextMenuRequested", 0 );
+    QMenu *popup = new QMenu ( this );
 
+    /// Lanzamos el evento para que pueda ser capturado por terceros.
+    emit pintaMenu ( popup );
+
+    /// Lanzamos la propagacion del menu a traves de las clases derivadas.
+//    creaMenu ( popup );
+
+
+    QAction *avconfig = popup->addAction ( _ ( "Copiar " ) );
+    QAction *avprint = popup->addAction ( _ ( "Pegar" ) );
+    QAction *opcion = popup->exec ( QCursor::pos() );
+
+    if ( opcion ) {
+
+        emit trataMenu ( opcion );
+
+        /// Activamos las herederas.
+//        procesaMenu ( opcion );
+    } // end if
+
+    delete popup;
+    _depura ( "END BlDbCompleterComboBox::on_customContextMenuRequested", 0 );
+}
 
 

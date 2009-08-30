@@ -62,6 +62,7 @@ set(bulmalib_SRCS	blpostgresqlclient.cpp
 			blcountryview.cpp
 			blradiobutton.cpp
 			blcombobox.cpp
+			blcomboboxdelegate.cpp
 			blprogressbar.cpp
 			blmainwindow.cpp
 			blbankedit.cpp
@@ -93,6 +94,7 @@ set(bulmalib_MOCS	bldblogindialog.h
 			blcountryview.h
 			blradiobutton.h
 			blcombobox.h
+			blcomboboxdelegate.h
 			blmonthcalendar.h
 			blsearchwidget.h
 			blform.h			

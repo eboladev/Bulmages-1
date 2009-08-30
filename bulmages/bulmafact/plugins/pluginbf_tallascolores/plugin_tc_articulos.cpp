@@ -76,14 +76,17 @@ int ArticuloView_ArticuloView ( ArticuloView *art )
     l->setDbFieldId ( "idarticulo" );
     l->addSubFormHeader ( "aliastc_articulo_tallacolor", BlDbField::DbVarChar, BlDbField::DbNotNull, BlSubFormHeader::DbNone , _ ( "Alias" ) );
     l->addSubFormHeader ( "idarticulo", BlDbField::DbInt, BlDbField::DbPrimaryKey, BlSubFormHeader::DbHideView | BlSubFormHeader::DbNoWrite , _ ( "Id Articulo" ) );
-    l->addSubFormHeader ( "idtc_color", BlDbField::DbInt, BlDbField::DbPrimaryKey, BlSubFormHeader::DbHideView | BlSubFormHeader::DbNoWrite, _ ( "color" ) );
-    l->addSubFormHeader ( "idtc_talla", BlDbField::DbInt, BlDbField::DbPrimaryKey, BlSubFormHeader::DbHideView | BlSubFormHeader::DbNoWrite, _ ( "Talla" ) );
+    l->addSubFormHeader ( "idtc_color", BlDbField::DbInt, BlDbField::DbNotNull, BlSubFormHeader::DbHideView | BlSubFormHeader::DbNoWrite, _ ( "color" ) );
+    l->addSubFormHeader ( "idtc_talla", BlDbField::DbInt, BlDbField::DbNotNull, BlSubFormHeader::DbHideView | BlSubFormHeader::DbNoWrite, _ ( "Talla" ) );
 
 
     l->addSubFormHeader ( "nomtc_color", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone, _ ( "Nombre color" ) );
-
     l->addSubFormHeader ( "nomtc_talla", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone, _ ( "Nombre talla" ) );
 
+    l->addSubFormHeader ( "idtc_colora", BlDbField::DbInt, BlDbField::DbDupPrimaryKey| BlDbField::DbNoSave, BlSubFormHeader::DbHideView | BlSubFormHeader::DbNoWrite,  "idtc_color"  );
+    l->addSubFormHeader ( "idtc_tallaa", BlDbField::DbInt, BlDbField::DbDupPrimaryKey| BlDbField::DbNoSave, BlSubFormHeader::DbHideView | BlSubFormHeader::DbNoWrite,  "idtc_talla"  );
+
+    
     l->setInsert ( TRUE );
     l->setDelete ( TRUE );
     l->setSortingEnabled ( FALSE );
@@ -106,7 +109,7 @@ int ArticuloView_cargar ( ArticuloView *art )
     _depura ( "ArticuloView_cargar", 0 );
     BfSubForm *l = art->findChild<BfSubForm *> ( "laliastc" );
     if ( l ) {
-        QString query = "SELECT * FROM tc_articulo_alias LEFT JOIN tc_talla AS t1 ON tc_articulo_alias.idtc_talla = t1.idtc_talla LEFT JOIN tc_color AS t2 ON tc_articulo_alias.idtc_color = t2.idtc_color WHERE tc_articulo_alias.idarticulo = " + art->dbValue ( "idarticulo" );
+        QString query = "SELECT *, tc_articulo_alias.idtc_talla AS idtc_tallaa, tc_articulo_alias.idtc_color AS idtc_colora FROM tc_articulo_alias LEFT JOIN tc_talla AS t1 ON tc_articulo_alias.idtc_talla = t1.idtc_talla LEFT JOIN tc_color AS t2 ON tc_articulo_alias.idtc_color = t2.idtc_color WHERE tc_articulo_alias.idarticulo = " + art->dbValue ( "idarticulo" );
         l->cargar ( query );
     } // end if
     _depura ( "END ArticuloView_cargar", 0 );
@@ -212,13 +215,13 @@ void QSubForm3BfDelegate::setModelData ( QWidget *editor, QAbstractItemModel *mo
     if ( linea->nomcampo() == "nomtc_color" ) {
         BusquedaColorDelegate * comboBox = static_cast<BusquedaColorDelegate*> ( editor );
         QString value = comboBox->currentText();
-        model->setData ( index, value );
-        m_subform->lineaat ( index.row() ) ->setDbValue ( "idtc_color", comboBox->id() );
+	model->setData(index, value);
+        m_subform->lineaat ( index.row() ) ->setDbValue ( "idtc_color", comboBox->id(value) );
     } else     if ( linea->nomcampo() == "nomtc_talla" ) {
         BusquedaTallaDelegate * comboBox = static_cast<BusquedaTallaDelegate*> ( editor );
         QString value = comboBox->currentText();
-        model->setData ( index, value );
-        m_subform->lineaat ( index.row() ) ->setDbValue ( "idtc_talla", comboBox->id() );
+	model->setData(index, value);
+        m_subform->lineaat ( index.row() ) ->setDbValue ( "idtc_talla", comboBox->id(value) );
     } else {
         BfSubFormDelegate::setModelData ( editor, model, index );
     } // end if
@@ -239,11 +242,11 @@ void QSubForm3BfDelegate::setEditorData ( QWidget* editor, const QModelIndex& in
     if ( linea->nomcampo() == "nomtc_color" ) {
         QString value = index.model() ->data ( index, Qt::DisplayRole ).toString();
         BusquedaColorDelegate *comboBox = static_cast<BusquedaColorDelegate*> ( editor );
-        comboBox->set ( value );
+        comboBox->setId ( value );
     } else if ( linea->nomcampo() == "nomtc_talla" ) {
         QString value = index.model() ->data ( index, Qt::DisplayRole ).toString();
         BusquedaTallaDelegate *comboBox = static_cast<BusquedaTallaDelegate*> ( editor );
-        comboBox->set ( value );
+        comboBox->setId ( value );
     } else {
         BfSubFormDelegate::setEditorData ( editor, index );
     } // end if

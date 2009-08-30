@@ -22,6 +22,7 @@
 #ifndef BUSQUEDACOLOR_H
 #define BUSQUEDACOLOR_H
 
+#include "blcomboboxdelegate.h"
 #include "blcombobox.h"
 #include "blwidget.h"
 #include "bfcompany.h"
@@ -32,19 +33,13 @@
     de esta forma la introduccion de tipos de IVA es sencilla.
     Esta clase se usa conjuntamente con BfSubForm para el cambio del editor
     estandar por un ComboBox */
-class BusquedaColorDelegate : public BlComboBox
+class BusquedaColorDelegate : public BlComboBoxDelegate
 {
     Q_OBJECT
-
-private:
-    /// Este cursor almacena el listado de series de factura para poder trabajar con ellas.
-    BlDbRecordSet *m_cursorcombo;
 
 public:
     BusquedaColorDelegate ( QWidget *parent = 0 );
     ~BusquedaColorDelegate();
-    virtual void set ( const QString & );
-    QString id();
 };
 
 
@@ -54,11 +49,6 @@ public:
 class BusquedaColor : public BlComboBox
 {
     Q_OBJECT
-
-private:
-    /// El puntero a company para que se pueda trabajar con la base de datos.
-    BlDbRecordSet *m_cursorcombo;
-
 public:
     BusquedaColor ( QWidget *parent = 0, const char *name = 0 );
     ~BusquedaColor();

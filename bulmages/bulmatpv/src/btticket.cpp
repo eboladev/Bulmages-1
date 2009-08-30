@@ -81,7 +81,6 @@ BlDbRecord * BtTicket::agregarLinea()
 
     /// Creamos un nuevo BlDbRecord y lo inicializamos.
     BlDbRecord * item = new BlDbRecord ( mainCompany() );
-    _depura ( "Hemos creado el registro", 0 );
     item->setDbTableName ( "lalbaran" );
     item->setDbFieldId ( "numlalbaran" );
     item->addDbField ( "idalbaran", BlDbField::DbInt, BlDbField::DbNotNull, _( "Id Albaran" ) );
@@ -107,7 +106,6 @@ BlDbRecord * BtTicket::agregarLinea()
 
     g_plugParams = (void *) item;
     g_plugins->lanza("BtTicket_agregarLinea_Post", this);
-//    g_plugins->lanza ( "BtTicket_agregarLinea_Post", this, ( void ** ) & item );
 
     _depura ( "END BtTicket::agregarLinea", 0 );
     return item;

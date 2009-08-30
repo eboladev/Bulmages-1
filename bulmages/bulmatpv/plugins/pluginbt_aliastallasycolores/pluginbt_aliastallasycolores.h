@@ -30,8 +30,7 @@
 #include "mticket.h"
 
 
-//extern "C" MY_EXPORT int entryPoint ( BulmaTPV * );
-extern "C" MY_EXPORT int Ticket_insertarArticuloNL_Post ( BtTicket * );
-extern "C" MY_EXPORT int Ticket_insertarArticulo_Post ( BtTicket * );
-extern "C" MY_EXPORT int Ticket_agregarLinea_Post ( BtTicket *, BlDbRecord * & );
+extern "C" MY_EXPORT int BtTicket_insertarArticuloNL_Post ( BtTicket * );
+extern "C" MY_EXPORT int BtTicket_insertarArticulo_Post ( BtTicket * );
+extern "C" MY_EXPORT int BtTicket_agregarLinea_Post ( BtTicket *, BlDbRecord * & );
 extern "C" MY_EXPORT int MTicket_pintar ( MTicket * );

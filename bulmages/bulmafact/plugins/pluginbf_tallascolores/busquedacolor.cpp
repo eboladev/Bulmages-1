@@ -18,9 +18,8 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#include "blcombobox.h"
+
 #include "busquedacolor.h"
-#include "bfcompany.h"
 #include "blfunctions.h"
 
 
@@ -33,7 +32,7 @@ BusquedaColor::BusquedaColor ( QWidget *parent, const char * )
         : BlComboBox ( parent )
 {
     _depura ( "BusquedaColor::BusquedaColor", 0 );
-    m_cursorcombo = NULL;
+    m_comboRecordSet = NULL;
     connect ( this, SIGNAL ( activated ( int ) ), this, SLOT ( m_activated ( int ) ) );
     _depura ( "END BusquedaColor::BusquedaColor", 0 );
 }
@@ -61,22 +60,22 @@ BusquedaColor::~BusquedaColor()
 void BusquedaColor::setidtc_color ( QString idtc_color )
 {
     _depura ( "BusquedaColor::setidtc_color", 0, idtc_color );
-    if ( m_cursorcombo != NULL ) {
-        delete m_cursorcombo;
+    if ( m_comboRecordSet != NULL ) {
+        delete m_comboRecordSet;
     } // end if
-    m_cursorcombo = mainCompany() ->loadQuery ( "SELECT * FROM tc_color ORDER BY nomtc_color" );
-    if ( !m_cursorcombo ) return;
+    m_comboRecordSet = mainCompany() ->loadQuery ( "SELECT * FROM tc_color ORDER BY nomtc_color" );
+    if ( !m_comboRecordSet ) return;
     int i = 0;
     int i1 = 0;
     int i2 = 0;
     clear();
     addItem ( "--" );
-    while ( !m_cursorcombo->eof() ) {
+    while ( !m_comboRecordSet->eof() ) {
         i++;
-        if ( m_cursorcombo->valor ( "idtc_color" ) == idtc_color )
+        if ( m_comboRecordSet->valor ( "idtc_color" ) == idtc_color )
             i1 = i;
-        addItem ( m_cursorcombo->valor ( "nomtc_color" ) );
-        m_cursorcombo->nextRecord();
+        addItem ( m_comboRecordSet->valor ( "nomtc_color" ) );
+        m_comboRecordSet->nextRecord();
     } //end while
     if ( i1 != 0 ) {
         setCurrentIndex ( i1 );
@@ -108,8 +107,8 @@ QString BusquedaColor::idtc_color()
     _depura ( "BusquedaColor::idtc_color", 0 );
     int index = currentIndex();
     if ( index > 0 ) {
-        _depura ( "END BusquedaColor::idtc_color", 0, m_cursorcombo->valor ( "idtc_color", index - 1 ) );
-        return ( m_cursorcombo->valor ( "idtc_color", index - 1 ) );
+        _depura ( "END BusquedaColor::idtc_color", 0, m_comboRecordSet->valor ( "idtc_color", index - 1 ) );
+        return ( m_comboRecordSet->valor ( "idtc_color", index - 1 ) );
     } else {
         _depura ( "END BusquedaColor::idtc_color", 0 );
         return "";
@@ -149,7 +148,7 @@ void BusquedaColor::m_activated ( int index )
 {
     _depura ( "BusquedaColor::m_activated", 0 );
     if ( index > 0 ) {
-        emit ( valueChanged ( m_cursorcombo->valor ( "idtc_color", index - 1 ) ) );
+        emit ( valueChanged ( m_comboRecordSet->valor ( "idtc_color", index - 1 ) ) );
     } else {
         emit ( valueChanged ( "" ) );
     } // end if
@@ -166,12 +165,15 @@ void BusquedaColor::m_activated ( int index )
 \param parent
 **/
 BusquedaColorDelegate::BusquedaColorDelegate ( QWidget *parent )
-        : BlComboBox ( parent )
+        : BlComboBoxDelegate ( parent )
 {
     _depura ( "BusquedaColorDelegate::BusquedaColorDelegate", 0 );
-    m_cursorcombo = NULL;
     setSizeAdjustPolicy ( QComboBox::AdjustToContents );
-    connect ( this, SIGNAL ( activated ( int ) ), this, SLOT ( m_activated ( int ) ) );
+    setQuery ( "SELECT idtc_color, nomtc_color FROM tc_color ORDER BY nomtc_color" );
+    setTableName ( "tc_color" );
+    setFieldId ( "idtc_color" );
+    m_valores["nomtc_color"] = "";
+    setAllowNull(FALSE);
     _depura ( "END BusquedaColorDelegate::BusquedaColorDelegate", 0 );
 }
 
@@ -183,51 +185,6 @@ BusquedaColorDelegate::BusquedaColorDelegate ( QWidget *parent )
 BusquedaColorDelegate::~BusquedaColorDelegate()
 {
     _depura ( "BusquedaColorDelegate::~BusquedaColorDelegate", 0 );
-    if ( m_cursorcombo != NULL )
-        delete m_cursorcombo;
     _depura ( "END BusquedaColorDelegate::~BusquedaColorDelegate", 0 );
 }
 
-
-/** Permite indicar al Widget cual es el color seleccionado por defecto.
-    Recarga cursor de color y cuando encuentra un registro cuyo nomtc_color coincide con el pasado
-    como parametro lo establece como el registro activo por el comboBox.
-*/
-/**
-\param cod
-**/
-void BusquedaColorDelegate::set ( const QString &cod )
-{
-    _depura ( "BusquedaColorDelegate::set", 0 );
-    int index = 0;
-    QString codigo = cod;
-
-    if ( m_cursorcombo != NULL )
-        delete m_cursorcombo;
-
-    m_cursorcombo = mainCompany() ->loadQuery ( "SELECT idtc_color, nomtc_color FROM tc_color ORDER BY nomtc_color" );
-    clear();
-//    addItem("--");
-    while ( !m_cursorcombo->eof() ) {
-        addItem ( m_cursorcombo->valor ( "nomtc_color" ) );
-        m_cursorcombo->nextRecord();
-        if ( m_cursorcombo->valor ( "nomtc_color" ) == cod )
-            index = m_cursorcombo->currentRecord();
-    }// end while
-    setEditText ( cod );
-    setCurrentIndex ( index );
-
-    _depura ( "END BusquedaColorDelegate::set", 0 );
-}
-
-
-///
-/**
-\return
-**/
-QString BusquedaColorDelegate::id()
-{
-    _depura ( "BusquedaColorDelegate::id", 0 );
-    _depura ( "END BusquedaColorDelegate::id", 0 );
-    return m_cursorcombo->valor ( "idtc_color", currentIndex() );
-}

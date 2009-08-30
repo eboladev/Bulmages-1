@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>257</width>
+    <width>243</width>
     <height>73</height>
    </rect>
   </property>
@@ -40,7 +40,7 @@
     <widget class="QLineEdit" name="m_inputBusqueda"/>
    </item>
    <item row="1" column="1">
-    <widget class="QToolButton" name="mui_buscar">
+    <widget class="QToolButton" name="m_buscarWidget">
      <property name="minimumSize">
       <size>
        <width>22</width>
@@ -75,7 +75,7 @@
     </widget>
    </item>
    <item row="1" column="2">
-    <widget class="QPushButton" name="mui_clearSearchWidget">
+    <widget class="QPushButton" name="m_clearSearchWidget">
      <property name="minimumSize">
       <size>
        <width>22</width>

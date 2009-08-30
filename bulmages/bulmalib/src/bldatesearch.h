@@ -51,7 +51,6 @@ public slots:
     virtual void s_fechalostFocus();
     virtual void s_returnPressed();
     virtual void selectAll();
-    virtual void setFocus();
 
 signals:
     void valueChanged ( QString );

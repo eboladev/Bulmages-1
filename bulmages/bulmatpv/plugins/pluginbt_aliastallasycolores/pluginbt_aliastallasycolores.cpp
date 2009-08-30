@@ -32,18 +32,21 @@
 typedef QMap<QString, BlFixed> base;
 
 
-int Ticket_agregarLinea_Post ( BtTicket *tick, BlDbRecord * &rec )
+int BtTicket_agregarLinea_Post ( BtTicket *tick, BlDbRecord * &rec )
 {
+    _depura ( "pluginbt_aliastallasycolores::BtTicket_agregarLinea_Post", 0 );
     rec->addDbField ( "idtc_talla", BlDbField::DbNumeric, BlDbField::DbNothing, _ ( "Talla" ) );
     rec->addDbField ( "idtc_color", BlDbField::DbNumeric, BlDbField::DbNothing, _ ( "Color" ) );
     rec->addDbField ( "nomtc_talla", BlDbField::DbVarChar, BlDbField::DbNoSave, _ ( "Talla" ) );
     rec->addDbField ( "nomtc_color", BlDbField::DbVarChar, BlDbField::DbNoSave, _ ( "Color" ) );
+    _depura ( "END pluginbt_aliastallasycolores::BtTicket_agregarLinea_Post", 0 );
     return 0;
 }
 
 
-int Ticket_insertarArticuloNL_Post ( BtTicket *tick )
+int BtTicket_insertarArticuloNL_Post ( BtTicket *tick )
 {
+    _depura ( "pluginbt_aliastallasycolores::BtTicket_insertarArticuloNL_Post", 0 );
     QString query = "SELECT * FROM tc_articulo_alias LEFT JOIN tc_talla AS t1 ON tc_articulo_alias.idtc_talla = t1.idtc_talla LEFT JOIN tc_color AS t2 ON tc_articulo_alias.idtc_color = t2.idtc_color WHERE aliastc_articulo_tallacolor = '" + ( ( BtCompany * ) tick->mainCompany() )->valorBtInput() + "'";
     BlDbRecordSet *cur = tick->mainCompany() ->loadQuery ( query );
     if ( !cur->eof() ) {
@@ -55,16 +58,16 @@ int Ticket_insertarArticuloNL_Post ( BtTicket *tick )
         tick->pintar();
     } // end if
     delete cur;
-
+    _depura ( "END pluginbt_aliastallasycolores::BtTicket_insertarArticuloNL_Post", 0 );
     return 0;
 }
 
 
 
-int Ticket_insertarArticulo_Post ( BtTicket *tick )
+int BtTicket_insertarArticulo_Post ( BtTicket *tick )
 {
     int valor = -1;
-    _depura ( "pluginbt_aliastallasycolores::Ticket_insertarArticulo_Post", 0 );
+    _depura ( "pluginbt_aliastallasycolores::BtTicket_insertarArticulo_Post", 0 );
     static int semaforo = 0;
     if ( semaforo == 0 ) {
         semaforo = 1;
@@ -82,14 +85,14 @@ int Ticket_insertarArticulo_Post ( BtTicket *tick )
         valor = 0;
         semaforo = 0;
     } // end if
-    _depura ( "END PluginBt_AliasTallasYColores::Ticket_insertarArticulo_Post", 0 );
+    _depura ( "END pluginbt_aliastallasycolores::BtTicket_insertarArticulo_Post", 0 );
     return valor;
 }
 
 
 int MTicket_pintar ( MTicket *mtick )
 {
-    _depura ( "MTicket_pintar", 0 );
+    _depura ( "pluginbt_aliastallasycolores::MTicket_pintar", 0 );
 
     BtTicket *tick =     ( ( BtCompany * ) mtick->mainCompany() ) ->ticketActual();
     //QString html = "<font size=\"1\">";
@@ -238,6 +241,6 @@ int MTicket_pintar ( MTicket *mtick )
 // ======================================
     /// Pintamos el HTML en el textBrowser
     mtick->mui_browser->setText ( html );
-    _depura ( "END MTicket::pintar", 0 );
+    _depura ( "END pluginbt_aliastallasycolores::MTicket::pintar", 0 );
     return -1;
 }

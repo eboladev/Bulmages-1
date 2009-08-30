@@ -67,7 +67,7 @@ public:
     void setFieldId ( const QString & );
 
 public slots:
-    virtual void on_mui_buscar_released();
+    virtual void on_m_buscarWidget_released();
     virtual void on_mui_clearSearchWidget_released();
     virtual void on_m_inputBusqueda_textChanged ( const QString & );
     virtual void on_m_inputBusqueda_editingFinished();
@@ -105,6 +105,11 @@ public:
 public slots:
     virtual void s_editTextChanged ( const QString & );
     virtual void focusOutEvent ( QFocusEvent * event );
+    virtual void on_customContextMenuRequested ( const QPoint &pos );
+    
+signals:
+    void pintaMenu ( QMenu * );
+    void trataMenu ( QAction * );
 };
 
 
