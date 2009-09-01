@@ -32,5 +32,5 @@
 
 extern "C" MY_EXPORT int BtTicket_insertarArticuloNL_Post ( BtTicket * );
 extern "C" MY_EXPORT int BtTicket_insertarArticulo_Post ( BtTicket * );
-extern "C" MY_EXPORT int BtTicket_agregarLinea_Post ( BtTicket *, BlDbRecord * & );
+extern "C" MY_EXPORT int BtTicket_agregarLinea_Post ( BtTicket * );
 extern "C" MY_EXPORT int MTicket_pintar ( MTicket * );

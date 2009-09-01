@@ -32,9 +32,12 @@
 typedef QMap<QString, BlFixed> base;
 
 
-int BtTicket_agregarLinea_Post ( BtTicket *tick, BlDbRecord * &rec )
+int BtTicket_agregarLinea_Post ( BtTicket *tick)
 {
+  
+    
     _depura ( "pluginbt_aliastallasycolores::BtTicket_agregarLinea_Post", 0 );
+    BlDbRecord *rec = (BlDbRecord * ) g_plugParams;
     rec->addDbField ( "idtc_talla", BlDbField::DbNumeric, BlDbField::DbNothing, _ ( "Talla" ) );
     rec->addDbField ( "idtc_color", BlDbField::DbNumeric, BlDbField::DbNothing, _ ( "Color" ) );
     rec->addDbField ( "nomtc_talla", BlDbField::DbVarChar, BlDbField::DbNoSave, _ ( "Talla" ) );
