@@ -23,6 +23,7 @@
 #include <QTextEdit>
 #include <QTableWidget>
 #include <QComboBox>
+#include <QCheckBox>
 
 #include "bldialogchanges.h"
 
@@ -85,6 +86,7 @@ void BlDialogChanges::dialogChanges_cargaInicial()
         m_maxQText = 0;
         m_maxQTable = 0;
         m_maxQComboBox = 0;
+        m_maxQCheckBox = 0;
 
         QListIterator<QObject *> it_excluidos ( m_listaExcluidos );
 
@@ -133,6 +135,15 @@ void BlDialogChanges::dialogChanges_cargaInicial()
             } // end if
         } // end while
 
+        QList<QCheckBox *> l6 = m_obje->findChildren<QCheckBox *>();
+        QListIterator<QCheckBox *> it6 ( l6 );
+        while ( it6.hasNext() ) {
+            QCheckBox * item = it6.next();
+            if ( item->objectName().startsWith ( "mui_" ) && !objExcluido ( item ) ) {
+                m_listaQCheckBox[m_maxQCheckBox++] = item;
+            } // end if
+        } // end while
+
         m_valorinicial = calculateValues();
         _depura ( "END BlDialogChanges::dialogChanges_cargaInicial", 0, m_valorinicial.toAscii() );
     } catch ( ... ) {
@@ -167,6 +178,7 @@ QString BlDialogChanges::calculateValues()
     values += retrieveValues ( "QPlainTextEdit" );
     values += retrieveValues ( "QTextEdit" );
     values += retrieveValues ( "QComboBox" );
+    values += retrieveValues ( "QCheckBox" );
     _depura ( "END BlDialogChanges::calculateValues", 0 );
     return values;
 }
@@ -251,6 +263,29 @@ QString BlDialogChanges::retrieveValues ( QString qsWidget )
                             values += ( ( ( QTableWidget* ) m_listaQTable[i] ) ) ->item ( k, l ) ->text();
                         } // end for
                     } // end for
+                } // end if
+            } // end for
+        } // end if
+
+
+        if ( qsWidget == "QCheckBox" ) {
+            for ( int i = 0; i < m_maxQCheckBox; i++ ) {
+                if ( m_listaQCheckBox[i] != NULL ) {
+                    if ( ( ( QCheckBox* ) m_listaQCheckBox[i] ) ->objectName().startsWith ( "mui_" ) )
+                        values += ( ( QCheckBox* ) m_listaQCheckBox[i] ) ->objectName();
+
+                    /// Tener en cuenta el caso de los checkbox triestado
+                    switch ( ( ( QCheckBox* ) m_listaQCheckBox[i] ) ->checkState() ) {
+                        case Qt::PartiallyChecked:
+                           values += "";
+                           break;
+                        case Qt::Checked:
+                           values += "TRUE";
+                           break;
+                        case Qt::Unchecked:
+                           values += "FALSE";
+                           break;
+                    } // end switch
                 } // end if
             } // end for
         } // end if

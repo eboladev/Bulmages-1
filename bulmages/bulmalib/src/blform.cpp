@@ -555,27 +555,30 @@ void BlForm::pintar()
         BlPeriodicityComboBox *l8 = findChild<BlPeriodicityComboBox *> ( "mui_" + campo->nomcampo() );
         if ( l8 ) {
             l8->setperiodo ( campo->valorcampo() );
-	} else {
-	  BlComboBox *l2 = findChild<BlComboBox *> ( "mui_" + campo->nomcampo() );
-	  if ( l2 ) {
-	      l2->setFieldValue ( campo->valorcampo() );
-	  } else {
-	      /// Buscamos BlComboBox que coincidan con el campo supuestamente
-	      /// sirve para los campos personales.
-	      QComboBox *l7 = findChild<QComboBox *> ( "mui_" + campo->nomcampo() );
-	      if ( l7 ) {
-		  l7->setCurrentIndex ( l7->findText ( campo->valorcampo() ) );
-	      } // end if
-	  } // end if
-	} // end if
+        } else {
+            BlComboBox *l2 = findChild<BlComboBox *> ( "mui_" + campo->nomcampo() );
+            if ( l2 ) {
+                l2->setFieldValue ( campo->valorcampo() );
+            } else {
+                /// Buscamos BlComboBox que coincidan con el campo supuestamente
+                /// sirve para los campos personales.
+                QComboBox *l7 = findChild<QComboBox *> ( "mui_" + campo->nomcampo() );
+                if ( l7 ) {
+                    l7->setCurrentIndex ( l7->findText ( campo->valorcampo() ) );
+                } // end if
+            } // end if
+        } // end if
 
         /// Buscamos los QCheckBox con nombre coincidente.
         QCheckBox *l5 = findChild<QCheckBox *> ( "mui_" + campo->nomcampo() );
         if ( l5 ) {
             if ( campo->valorcampo() == "t" ) {
                 l5->setChecked ( TRUE );
-            } else {
+            } else if ( campo->valorcampo() == "f" ) {
                 l5->setChecked ( FALSE );
+            } else {
+                // Permitir el triestado
+                l5->setCheckState( Qt::PartiallyChecked );
             } // end if
         } // end if
 
@@ -632,25 +635,28 @@ void BlForm::recogeValores()
         BlPeriodicityComboBox *l8 = findChild<BlPeriodicityComboBox *> ( "mui_" + campo->nomcampo() );
         if ( l8 ) {
             campo->set(l8->periodo() );
-	} else {
-	    BlComboBox *l2 = findChild<BlComboBox *> ( "mui_" + campo->nomcampo() );
-	    if ( l2 ) {
-		campo->set ( l2->fieldValue() );
-	    } else {
-		/// Buscamos QComboBox que coincidan con el campo. Supuestamente sirve para los campos personales.
-		QComboBox *l7 = findChild<QComboBox *> ( "mui_" + campo->nomcampo() );
-		if ( l7 ) {
-		    campo->set ( l7->currentText() );
-		} // end if
-	    } // end if
-	} // end if
+        } else {
+            BlComboBox *l2 = findChild<BlComboBox *> ( "mui_" + campo->nomcampo() );
+            if ( l2 ) {
+                campo->set ( l2->fieldValue() );
+            } else {
+                /// Buscamos QComboBox que coincidan con el campo. Supuestamente sirve para los campos personales.
+                QComboBox *l7 = findChild<QComboBox *> ( "mui_" + campo->nomcampo() );
+                if ( l7 ) {
+                    campo->set ( l7->currentText() );
+                } // end if
+            } // end if
+        } // end if
         /// Buscamos un QCheckBox con nombre coincidente.
         QCheckBox *l5 = findChild<QCheckBox *> ( "mui_" + campo->nomcampo() );
         if ( l5 ) {
             if ( l5->isChecked() ) {
                 campo->set ( "TRUE" );
-            } else {
+            } else if ( l5->checkState() == Qt::Unchecked ) {
                 campo->set ( "FALSE" );
+            } else {
+                // Permitir el triestado
+                campo->set ( "" );
             } // end if
         } // end if
 

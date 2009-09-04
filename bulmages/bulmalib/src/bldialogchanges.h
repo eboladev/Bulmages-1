@@ -39,6 +39,7 @@ private:
     int m_maxQText;
     int m_maxQTable;
     int m_maxQComboBox;
+    int m_maxQCheckBox;
     QString m_valorinicial;
     QObject *m_obje;
     QObject *m_listaQLine[999];
@@ -46,6 +47,7 @@ private:
     QObject *m_listaQText[999];
     QObject *m_listaQTable[999];
     QObject *m_listaQComboBox[999];
+    QObject *m_listaQCheckBox[999];
     QList<QObject*> m_listaExcluidos;
 
 public:
