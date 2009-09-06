@@ -30,11 +30,11 @@
 #include "blfunctions.h"
 #include "btticket.h"
 #include "btcompany.h"
-#include "mticket.h"
+#include "mticketivainc.h"
 #include "bldockwidget.h"
 
 BlDockWidget *g_doc1 = NULL;
-MTicket *g_bud = NULL;
+MTicketIVAInc *g_bud = NULL;
 
 ///
 /**
@@ -51,8 +51,7 @@ int entryPoint ( BtBulmaTPV *tpv )
     /// Vamos a probar con un docwindow.
     g_doc1 = new BlDockWidget ( "Ticket", tpv, "ticketbasico" );
     g_doc1->setFeatures ( QDockWidget::AllDockWidgetFeatures );
-//    g_doc1->setFeatures ( QDockWidget::DockWidgetMovable |  QDockWidget::DockWidgetFloatable);
-
+    
     g_doc1->setGeometry ( 100, 100, 100, 500 );
     g_doc1->resize ( 330, 400 );
 
@@ -87,7 +86,7 @@ int BtCompany_createMainWindows_Post ( BtCompany *etpv )
 {
     _depura ( "pluginticketbasicoivainc::BtCompany_createMainWindows_Post", 0 );
     
-    g_bud =  new MTicket ( etpv, g_doc1 );
+    g_bud =  new MTicketIVAInc ( etpv, g_doc1 );
     g_doc1->setWidget ( ( QWidget * ) g_bud );
     
     _depura ( "END pluginticketbasicoivainc::BtCompany_createMainWindows_Post", 0 );

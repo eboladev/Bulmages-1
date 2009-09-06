@@ -31,6 +31,8 @@ include_directories(
 	${CMAKE_SOURCE_DIR}/bulmalib/src/
 	${CMAKE_BINARY_DIR}/bulmatpv/plugins/pluginbt_ticket/
 	${CMAKE_SOURCE_DIR}/bulmatpv/plugins/pluginbt_ticket/
+	${CMAKE_BINARY_DIR}/bulmatpv/plugins/pluginbt_ticketivaincluido/
+	${CMAKE_SOURCE_DIR}/bulmatpv/plugins/pluginbt_ticketivaincluido/
 	${CMAKE_BINARY_DIR}/bulmatpv/src/
 	${CMAKE_SOURCE_DIR}/bulmatpv/src/)
 

@@ -23,24 +23,24 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#ifndef MTICKET_H
-#define MTICKET_H
+#ifndef MTICKETIVAINC_H
+#define MTICKETIVAINC_H
 
 #include <QLabel>
 #include <QTableWidget>
 
 #include "btticket.h"
 #include "btcompany.h"
-#include "ui_mticketbase.h"
+#include "ui_mticketivaincbase.h"
 #include "btsubform.h"
 
-class MTicket : public BlWidget, public Ui_MTicketBase
+class MTicketIVAInc : public BlWidget, public Ui_MTicketIVAIncBase
 {
     Q_OBJECT
 
 public:
-    MTicket ( BtCompany *emp, QWidget *parent );
-    virtual ~MTicket();
+    MTicketIVAInc ( BtCompany *emp, QWidget *parent );
+    virtual ~MTicketIVAInc();
     virtual void pintar();
 
 public slots:

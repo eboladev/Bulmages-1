@@ -26,7 +26,7 @@
 #include <QLabel>
 #include <QTextBrowser>
 
-#include "mticket.h"
+#include "mticketivainc.h"
 #include "bldb.h"
 #include "btbulmatpv.h"
 #include "btsubform.h"
@@ -35,28 +35,28 @@
 /// como un QMap.
 typedef QMap<QString, BlFixed> base;
 
-MTicket::MTicket ( BtCompany *emp, QWidget *parent ) : BlWidget ( emp, parent )
+MTicketIVAInc::MTicketIVAInc ( BtCompany *emp, QWidget *parent ) : BlWidget ( emp, parent )
 {
-    _depura ( "MTicket::MTicket", 0 );
+    _depura ( "MTicketIVAInc::MTicketIVAInc", 0 );
     setupUi ( this );
     setFocusPolicy ( Qt::NoFocus );
     emp->pWorkspace()->addWindow ( this );
     setWindowTitle ( "Ticket" );
-    _depura ( "END MTicket::MTicket", 0 );
+    _depura ( "END MTicketIVAInc::MTicketIVAInc", 0 );
 }
 
-MTicket::~MTicket()
+MTicketIVAInc::~MTicketIVAInc()
 {
-    _depura ( "MTicket::~MTicket", 0 );
-    _depura ( "END MTicket::~MTicket", 0 );
+    _depura ( "MTicketIVAInc::~MTicketIVAInc", 0 );
+    _depura ( "END MTicketIVAInc::~MTicketIVAInc", 0 );
 }
 
-void MTicket::pintar()
+void MTicketIVAInc::pintar()
 {
-    _depura ( "MTicket::pintar", 0 );
+    _depura ( "MTicketIVAInc::pintar", 0 );
 
-    if ( g_plugins->lanza ( "MTicket_pintar", this ) ) {
-        _depura ( "END MTicket::pintar", 0 );
+    if ( g_plugins->lanza ( "MTicketIVAInc_pintar", this ) ) {
+        _depura ( "END MTicketIVAInc::pintar", 0 );
         return;
     } // end if
 
@@ -217,22 +217,22 @@ void MTicket::pintar()
 // ======================================
     /// Pintamos el HTML en el textBrowser
     mui_browser->setText ( html );
-    _depura ( "END MTicket::pintar", 0 );
+    _depura ( "END MTicketIVAInc::pintar", 0 );
 }
 
-void MTicket::on_mui_subir_released()
+void MTicketIVAInc::on_mui_subir_released()
 {
     /// Simulamos la pulsacion de la tecla arriba
     ( ( BtCompany * ) mainCompany() )->pulsaTecla ( Qt::Key_Up );
 }
 
-void MTicket::on_mui_bajar_released()
+void MTicketIVAInc::on_mui_bajar_released()
 {
     /// Simulamos la pulsacion de la tecla abajo
     ( ( BtCompany * ) mainCompany() )->pulsaTecla ( Qt::Key_Down );
 }
 
-void MTicket::on_mui_borrar_released()
+void MTicketIVAInc::on_mui_borrar_released()
 {
     BtTicket * tick = ( ( BtCompany * ) mainCompany() )->ticketActual();
     tick->ponerCantidad ( "0" );
@@ -240,7 +240,7 @@ void MTicket::on_mui_borrar_released()
     pintar();
 }
 
-void MTicket::on_mui_imprimir_released()
+void MTicketIVAInc::on_mui_imprimir_released()
 {
     /// Llamamos al atajo de teclado que llama a BtTicket::imprimir()
     ( ( BtCompany * ) mainCompany() )->pulsaTecla ( Qt::Key_F2 );

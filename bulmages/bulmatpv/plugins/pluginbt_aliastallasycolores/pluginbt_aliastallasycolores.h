@@ -28,9 +28,12 @@
 #include "btcompany.h"
 #include "btticket.h"
 #include "mticket.h"
-
+#include "mticketivainc.h"
 
 extern "C" MY_EXPORT int BtTicket_insertarArticuloNL_Post ( BtTicket * );
 extern "C" MY_EXPORT int BtTicket_insertarArticulo_Post ( BtTicket * );
 extern "C" MY_EXPORT int BtTicket_agregarLinea_Post ( BtTicket * );
 extern "C" MY_EXPORT int MTicket_pintar ( MTicket * );
+extern "C" MY_EXPORT int MTicketIVAInc_pintar ( MTicketIVAInc * );
+extern "C" MY_EXPORT int BtTicket_imprimir(BtTicket *);
+extern "C" MY_EXPORT int BtTicket_imprimirIVAInc(BtTicket *);
