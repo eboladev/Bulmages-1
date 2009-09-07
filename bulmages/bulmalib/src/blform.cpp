@@ -574,9 +574,9 @@ void BlForm::pintar()
         if ( l5 ) {
             if ( campo->valorcampo() == "t" ) {
                 l5->setCheckState( Qt::Checked );
-            } else if ( campo->valorcampo() == "f" ) {
+            } else if ( campo->valorcampo() == "f" || !l5->isTristate() ) {
                 l5->setCheckState( Qt::Unchecked );
-            } else {
+            } else if ( l5->isTristate() ) {
                 /// El estado indeterminado se aplica cuando el campo es triestado.
                 l5->setCheckState( Qt::PartiallyChecked );
             } // end if
