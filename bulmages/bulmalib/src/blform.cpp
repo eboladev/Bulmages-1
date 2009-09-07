@@ -573,11 +573,11 @@ void BlForm::pintar()
         QCheckBox *l5 = findChild<QCheckBox *> ( "mui_" + campo->nomcampo() );
         if ( l5 ) {
             if ( campo->valorcampo() == "t" ) {
-                l5->setChecked ( TRUE );
+                l5->setCheckState( Qt::Checked );
             } else if ( campo->valorcampo() == "f" ) {
-                l5->setChecked ( FALSE );
+                l5->setCheckState( Qt::Unchecked );
             } else {
-                // Permitir el triestado
+                /// El estado indeterminado se aplica cuando el campo es triestado.
                 l5->setCheckState( Qt::PartiallyChecked );
             } // end if
         } // end if
@@ -650,14 +650,19 @@ void BlForm::recogeValores()
         /// Buscamos un QCheckBox con nombre coincidente.
         QCheckBox *l5 = findChild<QCheckBox *> ( "mui_" + campo->nomcampo() );
         if ( l5 ) {
-            if ( l5->isChecked() ) {
-                campo->set ( "TRUE" );
-            } else if ( l5->checkState() == Qt::Unchecked ) {
-                campo->set ( "FALSE" );
-            } else {
-                // Permitir el triestado
-                campo->set ( "" );
-            } // end if
+            switch ( l5->checkState() ) {
+                case Qt::Checked:
+                    campo->set ( "TRUE" );
+                    break;
+                case Qt::Unchecked:
+                    campo->set ( "FALSE" );
+                    break;
+                case Qt::PartiallyChecked:
+                default:
+                    /// Esta opci&oacute;n se usa si el campo SQL admite el valor nulo y por tanto tenemos un CheckBox triestado
+                    campo->set ( "" );
+                    break;
+            } // end switch
         } // end if
 
         /// Buscamos los 'Radio Buttons' y los preparamos.

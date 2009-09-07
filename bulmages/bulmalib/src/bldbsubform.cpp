@@ -141,11 +141,23 @@ Tiene especial intereses con los campos checkables ya que su tratamiento no es d
 void BlDbSubFormField::refresh()
 {
     _depura ( "BlDbSubFormField::refresh", 0 );
-    if ( this->dbFieldType() == BlDbField::DbBoolean )
-        BlDbField::set ( checkState() == Qt::Checked ? "TRUE" : "FALSE" );
-    else
+    if ( this->dbFieldType() == BlDbField::DbBoolean ) {
+        switch ( checkState() ) {
+            case Qt::Checked:
+                BlDbField::set ( "TRUE" );
+                break;
+            case Qt::Unchecked:
+                BlDbField::set ( "FALSE" );
+                break;
+            case Qt::PartiallyChecked:
+            default:
+                /// Esta opci&oacute;n se usa si el campo SQL admite el valor nulo y por tanto tenemos un CheckBox triestado
+                BlDbField::set ( "" );
+                break;
+        } // end switch
+     } else {
         BlDbField::set ( text() );
-    // end if
+     } // end if
     _depura ( "END BlDbSubFormField::refresh", 0 );
 }
 
@@ -170,11 +182,13 @@ int BlDbSubFormField::set ( QString val )
             setFlags ( this->flags() & ( ~Qt::ItemIsUserCheckable ) );
         } // end if
 
-
         if ( val == "TRUE" || val == "t" ) {
             setCheckState ( Qt::Checked );
-        } else {
+        } else if ( val == "FALSE" || val == "f" ) {
             setCheckState ( Qt::Unchecked );
+        } else {
+            /// El triestado si usa si el campo booleano admite el valor nulo.
+            setCheckState ( Qt::PartiallyChecked );
         } // end if
     } else if ( dbFieldType() == BlDbField::DbNumeric && importe.exactMatch ( val ) ) {
         setText ( valorcampo() );
