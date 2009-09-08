@@ -34,8 +34,6 @@ typedef QMap<QString, BlFixed> base;
 
 int BtTicket_agregarLinea_Post ( BtTicket *tick)
 {
-  
-    
     _depura ( "pluginbt_aliastallasycolores::BtTicket_agregarLinea_Post", 0 );
     BlDbRecord *rec = (BlDbRecord * ) g_plugParams;
     rec->addDbField ( "idtc_talla", BlDbField::DbNumeric, BlDbField::DbNothing, _ ( "Talla" ) );
@@ -46,33 +44,10 @@ int BtTicket_agregarLinea_Post ( BtTicket *tick)
     return 0;
 }
 
-
-int BtTicket_insertarArticuloNL_Post ( BtTicket *tick )
+int BtTicket_insertarArticuloCodigo_Post ( BtTicket *tick )
 {
-    _depura ( "pluginbt_aliastallasycolores::BtTicket_insertarArticuloNL_Post", 0 );
-    int valor = 0;
-    QString query = "SELECT * FROM tc_articulo_alias LEFT JOIN tc_talla AS t1 ON tc_articulo_alias.idtc_talla = t1.idtc_talla LEFT JOIN tc_color AS t2 ON tc_articulo_alias.idtc_color = t2.idtc_color WHERE aliastc_articulo_tallacolor = '" + ( ( BtCompany * ) tick->mainCompany() )->valorBtInput() + "'";
-    BlDbRecordSet *cur = tick->mainCompany() ->loadQuery ( query );
-    if ( !cur->eof() ) {
-        BlDbRecord * rec = tick->insertarArticulo ( cur->valor ( "idarticulo" ), BlFixed ( "1" ), TRUE );
-        rec->setDbValue ( "idtc_talla", cur->valor ( "idtc_talla" ) );
-        rec->setDbValue ( "idtc_color", cur->valor ( "idtc_color" ) );
-        rec->setDbValue ( "nomtc_talla", cur->valor ( "nomtc_talla" ) );
-        rec->setDbValue ( "nomtc_color", cur->valor ( "nomtc_color" ) );
-        tick->pintar();
-	valor = -1;
-    } // end if
-    delete cur;
-    _depura ( "END pluginbt_aliastallasycolores::BtTicket_insertarArticuloNL_Post", 0 );
-    return valor;
-}
-
-
-
-int BtTicket_insertarArticulo_Post ( BtTicket *tick )
-{
+    _depura ( "pluginbt_aliastallasycolores::BtTicket_insertarArticuloCodigo_Post", 0 );
     int valor = -1;
-    _depura ( "pluginbt_aliastallasycolores::BtTicket_insertarArticulo_Post", 0 );
     static int semaforo = 0;
     if ( semaforo == 0 ) {
         valor = 0;
@@ -92,9 +67,37 @@ int BtTicket_insertarArticulo_Post ( BtTicket *tick )
         tick->pintar();
         semaforo = 0;
     } // end if
-    _depura ( "END pluginbt_aliastallasycolores::BtTicket_insertarArticulo_Post", 0 );
+    _depura ( "END pluginbt_aliastallasycolores::BtTicket_insertarArticuloCodigo_Post", 0 );
     return valor;
 }
+
+int BtTicket_insertarArticuloCodigoNL_Post ( BtTicket *tick )
+{
+    _depura ( "pluginbt_aliastallasycolores::BtTicket_insertarArticuloCodigo_Post", 0 );
+    int valor = -1;
+    static int semaforo = 0;
+    if ( semaforo == 0 ) {
+        valor = 0;
+        semaforo = 1;
+        QString query = "SELECT * FROM tc_articulo_alias LEFT JOIN tc_talla AS t1 ON tc_articulo_alias.idtc_talla = t1.idtc_talla LEFT JOIN tc_color AS t2 ON tc_articulo_alias.idtc_color = t2.idtc_color WHERE aliastc_articulo_tallacolor = '" + ( ( BtCompany * ) tick->mainCompany() )->valorBtInput() + "'";
+        BlDbRecordSet *cur = tick->mainCompany() ->loadQuery ( query );
+        if ( !cur->eof() ) {
+            BlDbRecord * rec = tick->insertarArticulo ( cur->valor ( "idarticulo" ), BlFixed ( "1" ), TRUE );
+            rec->setDbValue ( "idtc_talla", cur->valor ( "idtc_talla" ) );
+            rec->setDbValue ( "idtc_color", cur->valor ( "idtc_color" ) );
+            rec->setDbValue ( "nomtc_talla", cur->valor ( "nomtc_talla" ) );
+            rec->setDbValue ( "nomtc_color", cur->valor ( "nomtc_color" ) );
+        } else {
+	    valor = -1;
+	} // end if
+        delete cur;
+        tick->pintar();
+        semaforo = 0;
+    } // end if
+    _depura ( "END pluginbt_aliastallasycolores::BtTicket_insertarArticuloCodigo_Post", 0 );
+    return valor;
+}
+
 
 
 int MTicket_pintar ( MTicket *mtick )
@@ -102,7 +105,6 @@ int MTicket_pintar ( MTicket *mtick )
     _depura ( "pluginbt_aliastallasycolores::MTicket_pintar", 0 );
 
     BtTicket *tick =     ( ( BtCompany * ) mtick->mainCompany() ) ->ticketActual();
-    //QString html = "<font size=\"1\">";
     QString html = "<p style=\"font-family:monospace; font-size: 12pt;\">";
     QString html1 = "<font size=\"1\">";
 
@@ -136,8 +138,6 @@ int MTicket_pintar ( MTicket *mtick )
         html += "</TR>";
     }// end for
     html += "</TABLE>";
-
-// ======================================
     html += "<BR><HR><BR>";
     base basesimp;
     base basesimpreqeq;
@@ -219,23 +219,15 @@ int MTicket_pintar ( MTicket *mtick )
         totreqeq = totreqeq + parreqeq;
     } // end for
 
-
-
     BlFixed totirpf = totbaseimp * irpf / 100;
-
     html1 += "<B>Base Imp. " + totbaseimp.toQString() + "<BR>";
     html1 += "<B>IVA. " + totiva.toQString() + "<BR>";
     html1 += "<B>IRPF. " + totirpf.toQString() + "<BR>";
-
     BlFixed total = totiva + totbaseimp + totreqeq - totirpf;
     html1 += "<B>Total: " + total.toQString() + "<BR>";
-
-
-
     html += "</p>";
     html1 += "</FONT>";
 
-// ======================================
     /// Pintamos el HTML en el textBrowser
     mtick->mui_browser->setText ( html );
     _depura ( "END pluginbt_aliastallasycolores::MTicket::pintar", 0 );
@@ -248,9 +240,7 @@ int MTicket_pintar ( MTicket *mtick )
 int MTicketIVAInc_pintar ( MTicketIVAInc *mtick )
 {
     _depura ( "pluginbt_aliastallasycolores::MTicketIVAInc_pintar", 0 );
-
     BtTicket *tick = ( ( BtCompany * ) mtick->mainCompany() )->ticketActual();
-    //QString html = "<font size=\"1\">";
     QString html = "<p style=\"font-family:monospace; font-size: 12pt;\">";
     QString html1 = "<font size=\"1\">";
 
@@ -267,13 +257,11 @@ int MTicketIVAInc_pintar ( MTicketIVAInc *mtick )
     delete cur1;
 
     html += "<TABLE border=\"0\" width=\"100%\">";
-
     if (tick->dbValue("nomticket") != "") {
       html += "<TR><TD colspan=\"5\" align=\"center\"><B>" + tick->dbValue ( "nomticket" ) + "</B></td></tr>";
     } // end if
 
     BlDbRecord *item;
-    
     for ( int i = 0; i < tick->listaLineas()->size(); ++i ) {
         item = tick->listaLineas()->at ( i );
         QString bgcolor = "#FFFFFF";
@@ -281,21 +269,15 @@ int MTicketIVAInc_pintar ( MTicketIVAInc *mtick )
         html += "<TR>";
         html += "<TD bgcolor=\"" + bgcolor + "\" align=\"right\" width=\"50\">" + item->dbValue ( "cantlalbaran" ) + "</TD>";
         html += "<TD bgcolor=\"" + bgcolor + "\">" + item->dbValue ( "nomarticulo" ) + "</TD>";
-	
         html += "<TD bgcolor=\"" + bgcolor + "\">" + item->dbValue ( "nomtc_talla" ) + "</TD>";
         html += "<TD bgcolor=\"" + bgcolor + "\">" + item->dbValue ( "nomtc_color" ) + "</TD>";
-	
-	
         BlFixed totalLinea ( "0.00" );
         totalLinea = BlFixed ( item->dbValue ( "cantlalbaran" ) ) * BlFixed ( item->dbValue ( "pvpivainclalbaran" ) );
         html += "<TD bgcolor=\"" + bgcolor + "\" align=\"right\" width=\"50\">" + totalLinea.toQString() + "</TD>";
         html += "</TR>";
     } // end for
     
-    html += "</TABLE>";
-
-// ======================================
-    
+    html += "</TABLE>";    
     html += "<BR><HR><BR>";
     base basesimp;
     base basesimpreqeq;
@@ -397,7 +379,6 @@ int MTicketIVAInc_pintar ( MTicketIVAInc *mtick )
     html += "</p>";
     html1 += "</FONT>";
 
-// ======================================
     /// Pintamos el HTML en el textBrowser
     mtick->mui_browser->setText ( html );
     _depura ( "END pluginbt_aliastallasycolores::MTicketIVAInc::pintar", 0 );
@@ -409,7 +390,6 @@ int MTicketIVAInc_pintar ( MTicketIVAInc *mtick )
 
 int BtTicket_imprimir(BtTicket *tick)
 {
-
     _depura("pluginbt_aliastallasycolores::BtTicket_imprimir",0);
 
     if ( tick->listaLineas()->size() ) {
@@ -528,7 +508,7 @@ int BtTicket_imprimir(BtTicket *tick)
     
     total.totalIva = total.baseImponible + total.baseImponible * total.iva / BlFixed ( "100" );
 
-    BtEscPrinter pr ( g_confpr->valor ( CONF_TICKET_PRINTER_FILE ) );
+    BtEscPrinter pr ( g_confpr->valor(CONF_DIR_USER) + "bulmatpv_ticket_tc.esc" );
     pr.initializePrinter();
     pr.setCharacterCodeTable ( page19 );
     pr.setJustification ( center );
@@ -573,7 +553,7 @@ int BtTicket_imprimir(BtTicket *tick)
         pr.printText ( QString ( pvpstr + "�" ).rightJustified ( 10, ' ', TRUE ) + " " );
         pr.printText ( QString ( pvptotalstr + "�" ).rightJustified ( 10, ' ', TRUE ) );
         pr.printText ( "\n" );
-    }
+    } // end for
     
     pr.setUnderlineMode ( 0 );
     pr.setJustification ( right );
@@ -587,16 +567,11 @@ int BtTicket_imprimir(BtTicket *tick)
     pr.setCharacterPrintMode ( CHARACTER_FONTA_SELECTED );
     pr.printText ( "Le ha atendido " + trabajador.nombre + "\n" );
     pr.printText ( "\n" );
-
-
-
     pr.printText ( "Tel. " + empresa.telefono + "\n" );
     pr.printText ( "\n" );
-
     pr.setJustification ( center );
     pr.setColor ( red );
     pr.printText ( "*** GRACIAS POR SU VISITA ***\n" );
-
     QByteArray qba = tick->dbValue ( "refalbaran" ).toAscii();
     char* barcode = qba.data();
     pr.setJustification ( center );
@@ -604,8 +579,18 @@ int BtTicket_imprimir(BtTicket *tick)
     pr.printBarCode ( code39, qba.size(), barcode );
     pr.cutPaperAndFeed ( TRUE, 10 );
     pr.print();
-
-
+    
+    /// Si queremos imprimir con CUPS lo hacemos de esta otra forma
+    if (!g_confpr->valor ( CONF_TICKET_PRINTER_FILE).isEmpty() && g_confpr->valor ( CONF_TICKET_PRINTER_FILE) != "/dev/null") {
+        QString comando = "cat " + g_confpr->valor(CONF_DIR_USER) + "bulmatpv_ticket_tc.esc" + "  > " + g_confpr->valor ( CONF_TICKET_PRINTER_FILE );
+        system ( comando.toAscii().data() );
+    } else if (g_confpr->valor(CONF_CUPS_DEFAULT_PRINTER).isEmpty() || g_confpr->valor(CONF_CUPS_DEFAULT_PRINTER) == "None") {
+        _depura("Debe establecer el parametro CONF_CUPS_DEFAULT_PRINTER o CONF_TICKET_PRINTER_FILE para imprimir el ticket " , 2);
+    } else {
+        QString comando = "cupsdoprint -P" + g_confpr->valor(CONF_CUPS_DEFAULT_PRINTER) + " " + g_confpr->valor(CONF_DIR_USER) + "bulmatpv_ticket_tc.esc";
+        system ( comando.toAscii().data() );
+    } // end if
+    
     _depura("END pluginbt_aliastallasycolores::BtTicket_imprimir",0);
     return -1;
 }
@@ -728,7 +713,7 @@ int BtTicket_imprimirIVAInc(BtTicket *tick)
         totales[linea->dbValue ( "ivalalbaran" ) ] = totales[linea->dbValue ( "ivalalbaran" ) ] + totlinea;
     } // end for
 
-    BtEscPrinter pr ( g_confpr->valor(CONF_DIR_USER) + "bulmatpv_ticket.txt" );
+    BtEscPrinter pr ( g_confpr->valor(CONF_DIR_USER) + "bulmatpv_ticket_tc_ivainc.esc" );
     pr.initializePrinter();
     pr.setCharacterCodeTable ( page19 );
     pr.setJustification ( center );
@@ -744,24 +729,19 @@ int BtTicket_imprimirIVAInc(BtTicket *tick)
     pr.printText ( empresa.direccionCompleta + "\n" );
     pr.initializePrinter();
     pr.setCharacterCodeTable ( page19 );
-
     pr.printText ( "\n" );
     pr.printText ( fecha.dia + " " + fecha.hora + "\n" );
     if (cliente.cif != "") 
 	pr.printText ( "Cliente: " + cliente.cif + " " + cliente.nombre + "\n" );
     pr.printText ( "Num. Ticket:  " + tick->dbValue("numalbaran") + "\n" );
-
     pr.printText ( "\n" );
-
     pr.turnWhiteBlack ( 1 );
     pr.printText ( "Uds PRODUCTO � � � � � � � P.U. � IMPORTE \n" );
-
     pr.turnWhiteBlack ( 0 );
     pr.setCharacterPrintMode ( CHARACTER_FONTB_SELECTED );
     pr.setCharacterSize ( CHAR_WIDTH_1 | CHAR_HEIGHT_1 );
 
     for ( int i = 0; i < tick->listaLineas() ->size(); ++i ) {
-        
         if ( i == tick->listaLineas()->size() - 1 )
             pr.setUnderlineMode ( 1 );
         
@@ -779,23 +759,18 @@ int BtTicket_imprimirIVAInc(BtTicket *tick)
         pr.printText ( QString ( pvptotalstr + "�" ).rightJustified ( 10, ' ', TRUE ) );
         pr.printText ( "\n" );
     } // end for
-    
     pr.setUnderlineMode ( 0 );
     pr.setJustification ( right );
     pr.setCharacterPrintMode ( CHARACTER_FONTA_SELECTED );    
-
     base::Iterator it;
-    
     for ( it = totales.begin(); it != totales.end(); ++it ) {
-		QString tipoIva = it.key();
-		
-		QString sqlquery = "SELECT (" +it.value().toQString('.') + "/ ( 1 + " + tipoIva.replace(",",".") + "/100 ))::NUMERIC(12,2) AS base, " + it.value().toQString('.') + "- ("+it.value().toQString('.') + "/ ( 1 + " + tipoIva.replace(",",".") + "/100 ))::NUMERIC(12,2) AS iva";
-		BlDbRecordSet *cur = tick->mainCompany()->loadQuery(sqlquery);
-	    pr.printText ( "Base Imponible: " + cur-> valor("base") + "�\n" );
-    	pr.printText ( "IVA " +it.key() + "%  " + cur->valor("iva") + "�\n" );
-		delete cur;
+      QString tipoIva = it.key();	
+      QString sqlquery = "SELECT (" +it.value().toQString('.') + "/ ( 1 + " + tipoIva.replace(",",".") + "/100 ))::NUMERIC(12,2) AS base, " + it.value().toQString('.') + "- ("+it.value().toQString('.') + "/ ( 1 + " + tipoIva.replace(",",".") + "/100 ))::NUMERIC(12,2) AS iva";
+      BlDbRecordSet *cur = tick->mainCompany()->loadQuery(sqlquery);
+      pr.printText ( "Base Imponible: " + cur-> valor("base") + "�\n" );
+      pr.printText ( "IVA " +it.key() + "%  " + cur->valor("iva") + "�\n" );
+      delete cur;
     } // end for
-
     pr.setCharacterPrintMode ( CHARACTER_FONTA_SELECTED | EMPHASIZED_MODE | DOUBLE_HEIGHT | DOUBLE_WIDTH );
     pr.printText ( "TOTAL: " + total.totalIva.toQString() + "�\n" );
     pr.printText ( "\n\n" );
@@ -803,14 +778,10 @@ int BtTicket_imprimirIVAInc(BtTicket *tick)
     pr.setCharacterPrintMode ( CHARACTER_FONTA_SELECTED );
     pr.printText ( "Le ha atendido " + trabajador.nombre + "\n" );
     pr.printText ( "\n" );
-
-
     pr.printText ( "\n" );
-
     pr.setJustification ( center );
     pr.setColor ( red );
     pr.printText ( "*** GRACIAS POR SU VISITA ***\n" );
-
     QByteArray qba = tick->dbValue ( "refalbaran" ).toAscii();
     char* barcode = qba.data();
     pr.setJustification ( center );
@@ -819,21 +790,17 @@ int BtTicket_imprimirIVAInc(BtTicket *tick)
     pr.cutPaperAndFeed ( TRUE, 10 );
     pr.print();
 
-
-
-/// Si queremos imprimir con CUPS lo hacemos de esta otra forma
+    /// Si queremos imprimir con CUPS lo hacemos de esta otra forma
     if (!g_confpr->valor ( CONF_TICKET_PRINTER_FILE).isEmpty() && g_confpr->valor ( CONF_TICKET_PRINTER_FILE) != "/dev/null") {
-        QString comando = "cat " + g_confpr->valor(CONF_DIR_USER) + "bulmatpv_ticket.txt" + "  > " + g_confpr->valor ( CONF_TICKET_PRINTER_FILE );
+        QString comando = "cat " + g_confpr->valor(CONF_DIR_USER) + "bulmatpv_ticket_tc_ivainc.esc" + "  > " + g_confpr->valor ( CONF_TICKET_PRINTER_FILE );
         system ( comando.toAscii().data() );
     } else if (g_confpr->valor(CONF_CUPS_DEFAULT_PRINTER).isEmpty() || g_confpr->valor(CONF_CUPS_DEFAULT_PRINTER) == "None") {
         _depura("Debe establecer el parametro CONF_CUPS_DEFAULT_PRINTER o CONF_TICKET_PRINTER_FILE para imprimir el ticket " , 2);
     } else {
-        QString comando = "cupsdoprint -P" + g_confpr->valor(CONF_CUPS_DEFAULT_PRINTER) + " " + g_confpr->valor(CONF_DIR_USER) + "bulmatpv_ticket.txt";
+        QString comando = "cupsdoprint -P" + g_confpr->valor(CONF_CUPS_DEFAULT_PRINTER) + " " + g_confpr->valor(CONF_DIR_USER) + "bulmatpv_ticket_tc_ivainc.esc";
         system ( comando.toAscii().data() );
     } // end if
-
     _depura ( "END pluginbt_aliastallasycolores::BtTicket_imprimirIVAInc", 0 );
-  
     return 1;
 }
 
