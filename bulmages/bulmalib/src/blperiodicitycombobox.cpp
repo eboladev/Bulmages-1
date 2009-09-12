@@ -109,21 +109,25 @@ BlPeriodicityComboBox::~BlPeriodicityComboBox()
 
 ///
 /**
-\param periodo
+Establece cual es el periodo en el combobox y lo pone.
+\param periodo QString en sintaxis de PostgreSQL (@ 1 year, 3 mons, etc)
 **/
 void BlPeriodicityComboBox::setperiodo ( QString periodo )
 {
-    _depura ( "BlPeriodicityComboBox::setperiodo", 0 );
+    _depura ( "BlPeriodicityComboBox::setperiodo", 0, periodo );
     int i = 0;
-    while ( m_valores[i] != periodo && m_valores[i] != "" ) {
-// _depura(m_valores[i]+" "+periodo, 2);
+    /// Buscamos un campo que se corresponda con el periodo.
+    /// El problema es que postgres acepta como sintaxis de entrada la arroba
+    /// y como sintaxis de salida no la devuelve.
+    while (  (m_valores[i] != periodo)   && (m_valores[i] != "@ "+ periodo) && (m_valores[i] != "") ) {
         i++;
     } // end while
-    if ( m_valores[i] != "" )
+    if ( m_valores[i] != "" ) {
         setCurrentIndex ( i );
-    else
+    } else {
         setCurrentIndex ( 0 );
-    _depura ( "END BlPeriodicityComboBox::setperiodo", 0 );
+    } // end if
+    _depura ( "END BlPeriodicityComboBox::setperiodo", 0, periodo );
 }
 
 
