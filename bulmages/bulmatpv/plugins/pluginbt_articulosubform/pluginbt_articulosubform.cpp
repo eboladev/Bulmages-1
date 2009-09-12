@@ -28,8 +28,62 @@
 #include "blfunctions.h"
 #include "btticket.h"
 #include "btcompany.h"
-#include "mticket.h"
 #include "bfbuscararticulo.h"
+
+
+///
+/**
+**/
+MyPlugArticuloSubForm::MyPlugArticuloSubForm()
+{
+    _depura ( "MyPlugArticuloSubForm::MyPlugArticuloSubForm", 0 );
+    _depura ( "END MyPlugArticuloSubForm::MyPlugArticuloSubForm", 0 );
+}
+
+
+///
+/**
+**/
+MyPlugArticuloSubForm::~MyPlugArticuloSubForm()
+{
+    _depura ( "MyPlugArticuloSubForm::~MyPlugArticuloSubForm", 0 );
+    _depura ( "END MyPlugArticuloSubForm::~MyPlugArticuloSubForm", 0 );
+}
+
+
+///
+/**
+**/
+void MyPlugArticuloSubForm::elslot ( QString item )
+{
+    _depura ( "MyPlugArticuloSubForm::elslot", 0 );
+    mensajeInfo ( "Seleccionado" );
+    QString idarticulo =  m_lan->mui_list->dbValue ( "idarticulo" );
+    m_etpv->ticketActual() ->insertarArticulo ( idarticulo, BlFixed ( "1" ) );
+    _depura ( "END MyPlugArticuloSubForm::elslot", 0 );
+}
+
+
+void MyPlugArticuloSubForm::elslot1 ( QTableWidgetItem *item )
+{
+    _depura ( "MyPlugArticuloSubForm::elslot", 0 );
+    mensajeInfo ( "Seleccionado" );
+    QString idarticulo =  m_lan->mui_list->dbValue ( "idarticulo" );
+    m_etpv->ticketActual() ->insertarArticulo ( idarticulo, BlFixed ( "1" ) );
+    _depura ( "END MyPlugArticuloSubForm::elslot", 0 );
+}
+
+///
+/**
+\param bges
+**/
+void MyPlugArticuloSubForm::inicializa ( BtCompany *etpv )
+{
+    _depura ( "MyPlugArticuloSubForm::inicializa", 0 );
+    m_etpv = etpv;
+    _depura ( "END MyPlugArticuloSubForm::inicializa", 0 );
+}
+
 
 
 ///

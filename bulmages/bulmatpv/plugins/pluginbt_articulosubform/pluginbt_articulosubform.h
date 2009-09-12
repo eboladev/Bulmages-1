@@ -27,10 +27,27 @@
 #include "btbulmatpv.h"
 #include "btticket.h"
 #include "btcompany.h"
+#include "articulolisttpv.h"
 
 extern "C" MY_EXPORT int entryPoint ( BtBulmaTPV * );
 extern "C" MY_EXPORT int BtCompany_createMainWindows_Post ( BtCompany * );
 
 
+class MyPlugArticuloSubForm : public QObject
+{
+    Q_OBJECT
 
+private:
+    BtCompany *m_etpv;
+    ArticuloList1 *m_lan;
+
+public:
+    MyPlugArticuloSubForm();
+    ~MyPlugArticuloSubForm();
+    void inicializa ( BtCompany *etpv );
+
+public slots:
+    virtual void elslot ( QString );
+    virtual void elslot1 ( QTableWidgetItem * );
+};
 
