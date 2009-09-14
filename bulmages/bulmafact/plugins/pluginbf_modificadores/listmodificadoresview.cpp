@@ -72,11 +72,11 @@ ListModificadoresView::~ListModificadoresView()
 ListModificadoresSubForm::ListModificadoresSubForm ( QWidget *parent ) : BfSubForm ( parent )
 {
     _depura ( "ListModificadoresSubForm::ListModificadoresSubForm", 0 );
-    setDbTableName ( "serie_factura" );
-    setDbFieldId ( "codigoserie_factura" );
-    addSubFormHeader ( "codigoserie_facturaorig", BlDbField::DbVarChar, BlDbField::DbDupPrimaryKey | BlDbField::DbNoSave, BlSubFormHeader::DbHideView | BlSubFormHeader::DbDisableView, "codigoserie_factura" );
-    addSubFormHeader ( "codigoserie_factura", BlDbField::DbVarChar, BlDbField::DbNotNull, BlSubFormHeader::DbNone, _ ( "Codigo serie factura" ) );
-    addSubFormHeader ( "descserie_factura", BlDbField::DbVarChar, BlDbField::DbNotNull, BlSubFormHeader::DbNone, _ ( "Descripcion serie factura" ) );
+    setDbTableName ( "modificador" );
+    setDbFieldId ( "idmodificador" );
+    addSubFormHeader ( "idmodificador", BlDbField::DbInt, BlDbField::DbPrimaryKey, BlSubFormHeader::DbHideView | BlSubFormHeader::DbDisableView, "Id" );
+    addSubFormHeader ( "varpreciomodificador", BlDbField::DbNumeric, BlDbField::DbNotNull, BlSubFormHeader::DbNone, _ ( "Alt. Precio" ) );
+    addSubFormHeader ( "nombremodificador", BlDbField::DbVarChar, BlDbField::DbNotNull, BlSubFormHeader::DbNone, _ ( "Nombre Modificador" ) );
     setInsert ( TRUE );
     _depura ( "END ListModificadoresSubForm::ListModificadoresSubForm", 0 );
 }

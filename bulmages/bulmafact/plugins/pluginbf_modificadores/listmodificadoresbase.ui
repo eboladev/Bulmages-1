@@ -12,11 +12,11 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Series de factura</string>
+   <string>Modificadores de Articulo</string>
   </property>
   <property name="windowIcon">
    <iconset resource="../../../bulmages.qrc">
-    <normaloff>:/Images/client-invoice-series.png</normaloff>:/Images/client-invoice-series.png</iconset>
+    <normaloff>:/Images/product.png</normaloff>:/Images/product.png</iconset>
   </property>
   <layout class="QVBoxLayout">
    <property name="spacing">

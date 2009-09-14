@@ -72,19 +72,19 @@ void MyPlugModificadores::inicializa ( BfBulmaFact *bges )
 
     if ( bges->company()->hasTablePrivilege ( "serie_factura", "SELECT" ) ) {
 
-        /// Miramos si existe un menu Ventas
-        QMenu *pPluginMenu = bges->menuMaestro;
+        /// Miramos si existe un menu Articulos
+        QMenu *pPluginMenu = bges->newMenu ( "&Articulos", "menuArticulos", "menuMaestro" );
         pPluginMenu->addSeparator();
-
+	
         m_bges = bges;
         setMainCompany ( bges->company() );
-        QAction *seriesFactura = new QAction ( _ ( "&Series de factura" ), 0 );
-        seriesFactura->setIcon(QIcon ( QString::fromUtf8 ( ":/Images/client-invoice-series.png" ) ));
-        seriesFactura->setStatusTip ( _ ( "Series de factura" ) );
-        seriesFactura->setWhatsThis ( _ ( "Series de factura" ) );
-        pPluginMenu->addAction ( seriesFactura );
-        bges->Listados->addAction ( seriesFactura );
-        connect ( seriesFactura, SIGNAL ( activated() ), this, SLOT ( elslot1() ) );
+        QAction *modificadoresArticulo = new QAction ( _ ( "&Modificadores" ), 0 );
+        modificadoresArticulo->setIcon(QIcon ( QString::fromUtf8 ( ":/Images/product.png" ) ));
+        modificadoresArticulo->setStatusTip ( _ ( "Modificadores" ) );
+        modificadoresArticulo->setWhatsThis ( _ ( "Modificadores" ) );
+        pPluginMenu->addAction ( modificadoresArticulo );
+        bges->Listados->addAction ( modificadoresArticulo );
+        connect ( modificadoresArticulo, SIGNAL ( activated() ), this, SLOT ( elslot1() ) );
 
     }// end if
     _depura ( "END MyPlugModificadores::inicializa", 0 );
