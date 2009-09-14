@@ -18,6 +18,9 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
+#ifndef PLUGINBT_ARTICULOSUBFORM_H
+#define PLUGINBT_ARTICULOSUBFORM_H
+
 #ifdef Q_WS_WIN
 # define MY_EXPORT __declspec(dllexport)
 #else
@@ -25,29 +28,12 @@
 #endif
 
 #include "btbulmatpv.h"
-#include "btticket.h"
 #include "btcompany.h"
-#include "articulolisttpv.h"
+
 
 extern "C" MY_EXPORT int entryPoint ( BtBulmaTPV * );
 extern "C" MY_EXPORT int BtCompany_createMainWindows_Post ( BtCompany * );
 
+#endif
 
-class MyPlugArticuloSubForm : public QObject
-{
-    Q_OBJECT
-
-private:
-    BtCompany *m_etpv;
-    ArticuloList1 *m_lan;
-
-public:
-    MyPlugArticuloSubForm();
-    ~MyPlugArticuloSubForm();
-    void inicializa ( BtCompany *etpv );
-
-public slots:
-    virtual void elslot ( QString );
-    virtual void elslot1 ( QTableWidgetItem * );
-};
 

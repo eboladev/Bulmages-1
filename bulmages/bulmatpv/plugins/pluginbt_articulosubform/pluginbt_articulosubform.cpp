@@ -26,9 +26,29 @@
 
 #include "pluginbt_articulosubform.h"
 #include "blfunctions.h"
-#include "btticket.h"
 #include "btcompany.h"
 #include "bfbuscararticulo.h"
+#include "articulolisttpv.h"
+
+#ifdef NOCOMPILAR
+
+class MyPlugArticuloSubForm : public QObject
+{
+    Q_OBJECT
+
+private:
+    BtCompany *m_etpv;
+    ArticuloList1 *m_lan;
+
+public:
+    MyPlugArticuloSubForm();
+    ~MyPlugArticuloSubForm();
+    void inicializa ( BtCompany *etpv );
+
+public slots:
+    virtual void elslot ( QString );
+    virtual void elslot1 ( QTableWidgetItem * );
+};
 
 
 ///
@@ -57,7 +77,6 @@ MyPlugArticuloSubForm::~MyPlugArticuloSubForm()
 void MyPlugArticuloSubForm::elslot ( QString item )
 {
     _depura ( "MyPlugArticuloSubForm::elslot", 0 );
-    mensajeInfo ( "Seleccionado" );
     QString idarticulo =  m_lan->mui_list->dbValue ( "idarticulo" );
     m_etpv->ticketActual() ->insertarArticulo ( idarticulo, BlFixed ( "1" ) );
     _depura ( "END MyPlugArticuloSubForm::elslot", 0 );
@@ -67,7 +86,6 @@ void MyPlugArticuloSubForm::elslot ( QString item )
 void MyPlugArticuloSubForm::elslot1 ( QTableWidgetItem *item )
 {
     _depura ( "MyPlugArticuloSubForm::elslot", 0 );
-    mensajeInfo ( "Seleccionado" );
     QString idarticulo =  m_lan->mui_list->dbValue ( "idarticulo" );
     m_etpv->ticketActual() ->insertarArticulo ( idarticulo, BlFixed ( "1" ) );
     _depura ( "END MyPlugArticuloSubForm::elslot", 0 );
@@ -84,7 +102,7 @@ void MyPlugArticuloSubForm::inicializa ( BtCompany *etpv )
     _depura ( "END MyPlugArticuloSubForm::inicializa", 0 );
 }
 
-
+#endif
 
 ///
 /**
@@ -104,9 +122,10 @@ int entryPoint ( BtBulmaTPV *tpv )
 
 int BtCompany_createMainWindows_Post ( BtCompany *etpv )
 {
-
+    _depura("BtCompany_createMainWindows_Post",0);
     ArticuloList1 *lan = new ArticuloList1 ( ( BfCompany * ) etpv, NULL, 0, BL_SELECT_MODE );
     g_main->setCentralWidget ( lan );
+    _depura("END BtCompany_createMainWindows_Post",0);
 
     return 0;
 }
