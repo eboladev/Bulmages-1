@@ -22,6 +22,7 @@ add_subdirectory(pluginbt_devolucion)
 add_subdirectory(pluginbt_devolucion2)
 add_subdirectory(pluginbt_ticketdevuelto)
 add_subdirectory(pluginbt_printercocina)
+add_subdirectory(pluginbt_modificadores)
 
 if(NOT APPLE)
 add_subdirectory(pluginbt_accesobotones)

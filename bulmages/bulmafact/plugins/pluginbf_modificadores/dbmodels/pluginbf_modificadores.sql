@@ -78,7 +78,7 @@ BEGIN
 	IF FOUND THEN
 		UPDATE CONFIGURACION SET valor=''0.12.1-0001'' WHERE nombre=''PluginBf_Modificadores'';
 	ELSE
-		INSERT INTO configuracion (nombre, valor) VALUES (''PluginBF_Modificadores'', ''0.12.1-0001'');
+		INSERT INTO configuracion (nombre, valor) VALUES (''PluginBf_Modificadores'', ''0.12.1-0001'');
 	END IF;
 	RETURN 0;
 END;

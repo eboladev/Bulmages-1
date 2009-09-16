@@ -42,6 +42,8 @@ MTicketIVAInc::MTicketIVAInc ( BtCompany *emp, QWidget *parent ) : BlWidget ( em
     setFocusPolicy ( Qt::NoFocus );
     emp->pWorkspace()->addWindow ( this );
     setWindowTitle ( "Ticket" );
+    
+    g_plugins->lanza ( "MTicketIVAInc_MTicketIVAInc_Post", this );
     _depura ( "END MTicketIVAInc::MTicketIVAInc", 0 );
 }
 

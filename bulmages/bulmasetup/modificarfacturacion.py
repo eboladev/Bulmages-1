@@ -87,6 +87,14 @@ class ModificarFacturacion( Facturacion):
     
         if (self.mui_actualizarDB.checkState() == Qt.Checked ):
             self.actualizarDatabase()
+
+        # Aplicamos el parche de bulmatpv si es necesario
+        if (self.mui_soporteTPV.isChecked()):
+            self.command = 'su postgres -c "psql ' + self.database + ' < '+ plugins.pathdbbulmatpv+'bulmatpv_schema.sql"'
+            self.writecommand(self.command)
+            self.process.start(self.command)
+            self.process.waitForFinished(-1)
+
         self.mui_textBrowser.clear()
         self.actualizarPlugins()
         self.writeConfig()
