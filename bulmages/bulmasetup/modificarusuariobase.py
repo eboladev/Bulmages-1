@@ -343,7 +343,7 @@ class Ui_ModificarUsuario(object):
         self.mui_guardar.setText(QtGui.QApplication.translate("ModificarUsuario", "Asignar Permisos", None, QtGui.QApplication.UnicodeUTF8))
         self.mui_salir.setText(QtGui.QApplication.translate("ModificarUsuario", "Salir", None, QtGui.QApplication.UnicodeUTF8))
         self.label.setText(QtGui.QApplication.translate("ModificarUsuario", "Selecciona una Base de Datos", None, QtGui.QApplication.UnicodeUTF8))
-        self.label_2.setText(QtGui.QApplication.translate("ModificarUsuario", "Selecciona un Usuario", None, QtGui.QApplication.UnicodeUTF8))
+        self.label_2.setText(QtGui.QApplication.translate("ModificarUsuario", "Selecciona un Rol", None, QtGui.QApplication.UnicodeUTF8))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab), QtGui.QApplication.translate("ModificarUsuario", "Usuario / Base de Datos", None, QtGui.QApplication.UnicodeUTF8))
         self.label_3.setText(QtGui.QApplication.translate("ModificarUsuario", "Selecciona  la(s) Tabla(s) donde deseas asignar los permisos", None, QtGui.QApplication.UnicodeUTF8))
         self.groupBox.setTitle(QtGui.QApplication.translate("ModificarUsuario", "Permisos", None, QtGui.QApplication.UnicodeUTF8))
