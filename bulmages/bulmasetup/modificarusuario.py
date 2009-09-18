@@ -82,14 +82,14 @@ class ModificarUsuario(Ui_ModificarUsuario, Empresa):
 
     def initListaUsuarios(self):
         self.conectar('template1')
-        usuarios = self.execute("SELECT * FROM pg_user")
+        usuarios = self.execute("SELECT usename, usesuper FROM pg_user UNION SELECT groname, false FROM pg_group")
         texto = ""
         
         # Rellenamos la lista con los usuarios de PostgreSQL
         for row in usuarios:
             texto = row[0]
             if (str(texto) != 'root') and (str(texto) != 'postgres'):            
-                if (row[3] == True):
+                if (row[1] == True):
                     texto = texto + "  (su)"                
                 self.listWidgetUser.addItem(QString(texto))
             
