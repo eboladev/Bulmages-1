@@ -242,6 +242,10 @@
 ///Indica el color de fondo alternativo del pijama del libro diario.
 #define CONF_BG_ALT_DIARIO           551
 
+/// Sistema de configuracion en un directorio global
+#define CONF_DIR_CONFIG              560
+#define CONF_GLOBAL_CONFIG_USER      561
+#define CONF_GLOBAL_CONFIG_COMPANY   562
 
 typedef QMap<int, QString> mapa;
 

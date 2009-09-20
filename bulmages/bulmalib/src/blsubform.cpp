@@ -2005,6 +2005,26 @@ int BlSubForm::cerrarEditor()
 }
 
 
+/// Sacamos cual es el archivo en el que guardar/cargar configuraciones
+const QString BlSubForm::nameFileConfig() 
+{
+   QString directorio = g_confpr->valor(CONF_DIR_USER);
+   if (g_confpr->valor(CONF_GLOBAL_CONFIG_USER) == "TRUE") {
+      directorio = g_confpr->valor(CONF_DIR_CONFIG);
+   } // end if
+
+   QString empresa = mainCompany()->dbName();
+   if (g_confpr->valor(CONF_GLOBAL_CONFIG_COMPANY) == "TRUE") {
+      empresa  = "";
+   } // end if
+
+  QString nombre = directorio + m_fileconfig + "_" + empresa + "_" + QString::number ( m_modo ) + "_tablecfn.cfn" ;
+  return nombre;
+}
+
+
+
+
 /// Guardamos el archivo de configuracion.
 /**
 **/
@@ -2017,7 +2037,7 @@ void BlSubForm::guardaconfig()
         return;
 
     QString aux = "";
-    QFile file ( g_confpr->valor ( CONF_DIR_USER ) + m_fileconfig + "_" + mainCompany()->dbName() + "_" + QString::number ( m_modo ) + "_tablecfn.cfn" );
+    QFile file ( nameFileConfig() );
     /// Guardado del orden y de configuraciones varias.
     if ( file.open ( QIODevice::WriteOnly ) ) {
         QTextStream stream ( &file );
@@ -2069,7 +2089,7 @@ void BlSubForm::guardaconfig()
 void BlSubForm::cargaconfig()
 {
     _depura ( "BlSubForm::cargaconfig", 0 );
-    QFile file ( g_confpr->valor ( CONF_DIR_USER ) + m_fileconfig + "_" + mainCompany()->dbName() + "_" + QString::number ( m_modo ) + "_tablecfn.cfn" );
+    QFile file ( nameFileConfig() );
     QString line;
     int error = 1;
     if ( file.open ( QIODevice::ReadOnly ) ) {

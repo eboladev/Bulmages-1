@@ -63,13 +63,27 @@ CONF_FONTSIZE_BULMAGES		10
 # Refresco de los listados tras el cierre de una ficha.
 CONF_REFRESH_LIST		TRUE
 
-CONF_CUPS_DEFAULT_PRINTER None
+CONF_CUPS_DEFAULT_PRINTER       None
+ 
+# Sistema de configuracion global, permite que todos los usuarios o empresas compartan archivos de configuracion.
+
+# Indica si hay que usar el .bulmages de cada usuario para las configuraicones o si todos los usuarios usaran un directorio compartido.
+CONF_GLOBAL_CONFIG_USER         FALSE
+
+# En caso de que todos los usuairos utilizen un directorio compartido aqui se indica cual es
+CONF_DIR_CONFIG                 /var/bulmages/conf/
+
+# Indica si cada empresa tiene su propia configuracion o si todas ellas comparten la misma.
+CONF_GLOBAL_CONFIG_COMPANY      FALSE
+
 
 #Mostrar la barra de progreso
 CONF_SHOW_PROGRESS_BAR		TRUE
 
+# Activar el modo de depuracion nada mas arrancar el programa. Los logs de depuracion se guardan en el directorio  .bulmages de cada usuario y se laman bulmagesout.txt y bulmagesout.xml
 CONF_DEBUG			FALSE
 
+# Indica si deben mostrarse las alertas de base de datos.
 CONF_ALERTAS_DBF		Yes
 
 

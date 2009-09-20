@@ -203,7 +203,6 @@ BlConfiguration::~BlConfiguration()
 **/
 QString BlConfiguration::nombre ( int i )
 {
-//    _depura("BlConfiguration::nombre", 0);
     if ( i == CONF_BG_APUNTES )
         return "CONF_BG_APUNTES";
     if ( i == CONF_FG_APUNTES )
@@ -416,9 +415,14 @@ QString BlConfiguration::nombre ( int i )
         return "CONF_CUPS_DEFAULT_PRINTER";
     if ( i == CONF_BLOCK_WINDOWS )
 	return "CONF_BLOCK_WINDOWS";
-
+    if ( i == CONF_DIR_CONFIG )
+	return "CONF_DIR_CONFIG";
+    if ( i == CONF_GLOBAL_CONFIG_USER )
+	return "CONF_GLOBAL_CONFIG_USER";
+    if ( i == CONF_GLOBAL_CONFIG_COMPANY )
+	return "CONF_GLOBAL_CONFIG_COMPANY";   
+    
     return "";
-//    _depura("END BlConfiguration::nombre", 0);
 }
 
 

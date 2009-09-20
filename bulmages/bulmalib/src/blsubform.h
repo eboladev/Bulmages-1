@@ -123,6 +123,8 @@ public:
     
 private:
     virtual void cargar ( BlDbRecordSet *cur );
+    const QString nameFileConfig(); 
+
 
 private:
     QString m_query;
