@@ -12,6 +12,8 @@ add_subdirectory(pluginbf_formasdepago)
 add_subdirectory(pluginbf_seriesfactura)
 add_subdirectory(pluginbf_almacen)
 add_subdirectory(pluginbf_modificadores)
+add_subdirectory(pluginbf_carteracobros)
+
 
 #efacturabf en desarrollo
 #add_subdirectory(pluginbf_efactura)
