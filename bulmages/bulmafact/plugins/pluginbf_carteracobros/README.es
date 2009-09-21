@@ -35,7 +35,7 @@ Orden: 450
 
 Reports: 
 
-Categorias: Facturacion avanzada;
+Categorias: Facturacion avanzada;Experimentales;
 
 Comentarios:
 
