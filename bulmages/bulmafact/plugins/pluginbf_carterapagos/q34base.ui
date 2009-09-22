@@ -1,0 +1,270 @@
+<ui version="4.0" >
+ <class>Q34Base</class>
+ <widget class="QWidget" name="Q34Base" >
+  <property name="geometry" >
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>400</width>
+    <height>231</height>
+   </rect>
+  </property>
+  <property name="windowTitle" >
+   <string>Generacion Q34</string>
+  </property>
+  <property name="windowIcon" >
+   <iconset>
+    <normaloff>q34.png</normaloff>q34.png</iconset>
+  </property>
+  <layout class="QVBoxLayout" >
+   <property name="spacing" >
+    <number>5</number>
+   </property>
+   <property name="margin" >
+    <number>5</number>
+   </property>
+   <item>
+    <layout class="QHBoxLayout" >
+     <property name="spacing" >
+      <number>5</number>
+     </property>
+     <property name="margin" >
+      <number>0</number>
+     </property>
+     <item>
+      <widget class="QLabel" name="label_5" >
+       <property name="minimumSize" >
+        <size>
+         <width>48</width>
+         <height>48</height>
+        </size>
+       </property>
+       <property name="maximumSize" >
+        <size>
+         <width>48</width>
+         <height>48</height>
+        </size>
+       </property>
+       <property name="pixmap" >
+        <pixmap>q34.png</pixmap>
+       </property>
+       <property name="scaledContents" >
+        <bool>true</bool>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QFrame" name="frame" >
+       <property name="frameShape" >
+        <enum>QFrame::StyledPanel</enum>
+       </property>
+       <property name="frameShadow" >
+        <enum>QFrame::Raised</enum>
+       </property>
+       <layout class="QGridLayout" >
+        <property name="margin" >
+         <number>5</number>
+        </property>
+        <property name="spacing" >
+         <number>5</number>
+        </property>
+        <item row="0" column="3" >
+         <spacer>
+          <property name="orientation" >
+           <enum>Qt::Horizontal</enum>
+          </property>
+          <property name="sizeType" >
+           <enum>QSizePolicy::Expanding</enum>
+          </property>
+          <property name="sizeHint" stdset="0" >
+           <size>
+            <width>291</width>
+            <height>31</height>
+           </size>
+          </property>
+         </spacer>
+        </item>
+       </layout>
+      </widget>
+     </item>
+    </layout>
+   </item>
+   <item>
+    <layout class="QHBoxLayout" >
+     <property name="spacing" >
+      <number>6</number>
+     </property>
+     <property name="margin" >
+      <number>0</number>
+     </property>
+     <item>
+      <widget class="QLabel" name="label" >
+       <property name="text" >
+        <string>Banco</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="BfBuscarBanco" name="mui_idbanco" />
+     </item>
+    </layout>
+   </item>
+   <item>
+    <layout class="QHBoxLayout" >
+     <property name="spacing" >
+      <number>6</number>
+     </property>
+     <property name="margin" >
+      <number>0</number>
+     </property>
+     <item>
+      <widget class="QLabel" name="label_2" >
+       <property name="text" >
+        <string>Archivo</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QLineEdit" name="mui_archivo" />
+     </item>
+     <item>
+      <widget class="QToolButton" name="mui_buscararchivo" >
+       <property name="text" >
+        <string>...</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </item>
+   <item>
+    <layout class="QHBoxLayout" >
+     <property name="spacing" >
+      <number>6</number>
+     </property>
+     <property name="margin" >
+      <number>0</number>
+     </property>
+     <item>
+      <widget class="QLabel" name="label_3" >
+       <property name="text" >
+        <string>Total</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QLineEdit" name="mui_total" >
+       <property name="font" >
+        <font>
+         <pointsize>18</pointsize>
+         <weight>75</weight>
+         <bold>true</bold>
+        </font>
+       </property>
+       <property name="alignment" >
+        <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+       </property>
+       <property name="readOnly" >
+        <bool>true</bool>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </item>
+   <item>
+    <layout class="QHBoxLayout" >
+     <property name="spacing" >
+      <number>6</number>
+     </property>
+     <property name="margin" >
+      <number>0</number>
+     </property>
+     <item>
+      <widget class="QLabel" name="label_4" >
+       <property name="text" >
+        <string>Num. Operaciones</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QLineEdit" name="mui_numop" >
+       <property name="font" >
+        <font>
+         <pointsize>18</pointsize>
+         <weight>75</weight>
+         <bold>true</bold>
+        </font>
+       </property>
+       <property name="alignment" >
+        <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+       </property>
+       <property name="readOnly" >
+        <bool>true</bool>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </item>
+   <item>
+    <spacer>
+     <property name="orientation" >
+      <enum>Qt::Vertical</enum>
+     </property>
+     <property name="sizeHint" stdset="0" >
+      <size>
+       <width>20</width>
+       <height>40</height>
+      </size>
+     </property>
+    </spacer>
+   </item>
+   <item>
+    <layout class="QHBoxLayout" >
+     <property name="spacing" >
+      <number>6</number>
+     </property>
+     <property name="margin" >
+      <number>0</number>
+     </property>
+     <item>
+      <spacer>
+       <property name="orientation" >
+        <enum>Qt::Horizontal</enum>
+       </property>
+       <property name="sizeHint" stdset="0" >
+        <size>
+         <width>40</width>
+         <height>20</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+     <item>
+      <widget class="QPushButton" name="mui_aceptar" >
+       <property name="text" >
+        <string>Aceptar</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="mui_cancelar" >
+       <property name="text" >
+        <string>Cancelar</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </item>
+  </layout>
+ </widget>
+ <customwidgets>
+  <customwidget>
+   <class>BfBuscarBanco</class>
+   <extends>QComboBox</extends>
+   <header>bfbuscarbanco.h</header>
+  </customwidget>
+ </customwidgets>
+ <resources>
+  <include location="../../../bulmages.qrc" />
+ </resources>
+ <connections/>
+</ui>
