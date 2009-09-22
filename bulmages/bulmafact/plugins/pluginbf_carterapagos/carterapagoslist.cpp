@@ -58,6 +58,12 @@ CarteraPagosList::CarteraPagosList ( BfCompany *comp, QWidget *parent, Qt::WFlag
     mui_list->setMainCompany ( comp );
     setSubForm ( mui_list );
     mui_idproveedor->setMainCompany ( comp );
+    mui_idproveedor->setLabel ( _ ( "Proveedor:" ) );
+    mui_idproveedor->setTableName ( "proveedor" );
+    mui_idproveedor->m_valores["cifproveedor"] = "";
+    mui_idproveedor->m_valores["nomproveedor"] = "";
+    
+    
     mui_idforma_pago->setMainCompany (comp);
     mui_idforma_pago->setId("");
     mui_idforma_pago->setCurrentIndex ( mui_idforma_pago->findText("--") );

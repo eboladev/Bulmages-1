@@ -56,7 +56,12 @@ VencimientoPView::VencimientoPView ( BfCompany *comp, QWidget *parent )
         /// Usurpamos la identidad de mlist y ponemos nuestro propio widget con sus cosillas.
         mui_refvencimientop->setMainCompany ( comp );
         mui_idproveedor->setMainCompany ( comp );
- 
+	mui_idproveedor->setLabel ( _ ( "Proveedor:" ) );
+	mui_idproveedor->setTableName ( "proveedor" );
+	mui_idproveedor->m_valores["cifproveedor"] = "";
+	mui_idproveedor->m_valores["nomproveedor"] = "";
+    
+    
         setTitleName ( tr ( "Vencimiento" ) );
         setDbTableName ( "vencimientop" );
         setDbFieldId ( "idvencimientop" );

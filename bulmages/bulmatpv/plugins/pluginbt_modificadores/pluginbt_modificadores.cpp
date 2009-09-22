@@ -20,7 +20,10 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
+#include <QToolButton>
+
 #include "pluginbt_modificadores.h"
+#include "blconfiguration.h"
 #include "btcompany.h"
 #include "blplugins.h"
 #include "btticket.h"
@@ -73,5 +76,23 @@ int BtCompany_createMainWindows_Post ( BtCompany *etpv )
 
 
 int MTicketIVAInc_MTicketIVAInc_Post (MTicketIVAInc *tick) {
-    mensajeInfo("aqui estamos");
+    QToolButton *sel = new QToolButton ( tick );
+    sel->setFixedSize (48, 48);
+    sel->setObjectName ( QString::fromUtf8 ( "exporta" ) );
+    sel->setStatusTip ( "Modificadores" );
+    sel->setToolTip ( "Establecer los modificadores de producto" );
+    sel->setMinimumSize ( QSize ( 32, 32 ) );
+    sel->setIcon ( QIcon ( g_confpr->valor ( CONF_PROGDATA ) + "icons/q19.png"  ) );
+    sel->setIconSize ( QSize ( 32, 32 ) );    
+    
+    QHBoxLayout *m_hboxLayout1 = tick->mui_plugbotones->findChild<QHBoxLayout *> ( "hboxLayout1" );
+    if ( !m_hboxLayout1 ) {
+        m_hboxLayout1 = new QHBoxLayout ( tick->mui_plugbotones );
+        m_hboxLayout1->setSpacing ( 5 );
+        m_hboxLayout1->setMargin ( 0 );
+        m_hboxLayout1->setObjectName ( QString::fromUtf8 ( "hboxLayout1" ) );
+    } // end if
+    m_hboxLayout1->addWidget ( sel );
+    
+    
 }
