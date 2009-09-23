@@ -28,8 +28,10 @@
 #include "btbulmatpv.h"
 #include "btcompany.h"
 #include "mticketivainc.h"
+#include "mticket.h"
 
 extern "C" MY_EXPORT int entryPoint ( BtBulmaTPV * );
 extern "C" MY_EXPORT int BtCompany_createMainWindows_Post ( BtCompany * );
 extern "C" MY_EXPORT int MTicketIVAInc_MTicketIVAInc_Post (MTicketIVAInc *);
+extern "C" MY_EXPORT int MTicket_MTicket_Post (MTicket *);
 

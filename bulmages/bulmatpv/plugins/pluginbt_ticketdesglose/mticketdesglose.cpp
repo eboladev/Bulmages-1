@@ -2,7 +2,7 @@
 #include <QLabel>
 #include <QTextBrowser>
 
-#include "mticket.h"
+#include "mticketdesglose.h"
 #include "bldb.h"
 #include "btbulmatpv.h"
 #include "btsubform.h"
@@ -15,25 +15,25 @@ extern QTextBrowser *g_browser;
 typedef QMap<QString, BlFixed> base;
 
 
-MTicket::MTicket ( BtCompany *emp, QWidget *parent ) : QTextBrowser ( parent ) , BlMainCompanyPointer ( emp )
+MTicketDesglose::MTicketDesglose ( BtCompany *emp, QWidget *parent ) : QTextBrowser ( parent ) , BlMainCompanyPointer ( emp )
 {
-    _depura ( "MTicket::MTicket", 0 );
+    _depura ( "MTicketDesglose::MTicketDesglose", 0 );
 //    emp->pWorkspace() ->addWindow ( this );
 //    setWindowTitle ( "Ticket" );
-    _depura ( "END MTicket::MTicket", 0 );
+    _depura ( "END MTicketDesglose::MTicketDesglose", 0 );
 }
 
 
-MTicket::~MTicket()
+MTicketDesglose::~MTicketDesglose()
 {
-    _depura ( "MTicket::~MTicket", 0 );
-    _depura ( "END MTicket::~MTicket", 0 );
+    _depura ( "MTicketDesglose::~MTicketDesglose", 0 );
+    _depura ( "END MTicketDesglose::~MTicketDesglose", 0 );
 }
 
 
-void MTicket::pintar()
+void MTicketDesglose::pintar()
 {
-    _depura ( "MTicket::pintar", 0 );
+    _depura ( "MTicketDesglose::pintar", 0 );
     BtTicket *tick =     ( ( BtCompany * ) mainCompany() ) ->ticketActual();
     //QString html = "<font size=\"1\">";
     QString html = "<p style=\"font-family:monospace; font-size: 12pt;\">";
@@ -177,6 +177,6 @@ void MTicket::pintar()
 // ======================================
     /// Pintamos el HTML en el textBrowser
     setText ( html1 );
-    _depura ( "END MTicket::pintar", 0 );
+    _depura ( "END MTicketDesglose::pintar", 0 );
 }
 

@@ -30,12 +30,12 @@
 #include "btcompany.h"
 #include "btsubform.h"
 
-class MTicket : public QTextBrowser, public BlMainCompanyPointer
+class MTicketDesglose : public QTextBrowser, public BlMainCompanyPointer
 {
     Q_OBJECT
 public:
-    MTicket ( BtCompany *emp, QWidget *parent );
-    virtual ~MTicket();
+    MTicketDesglose ( BtCompany *emp, QWidget *parent );
+    virtual ~MTicketDesglose();
     virtual void pintar();
 
 };

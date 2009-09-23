@@ -27,12 +27,12 @@
 #include "pluginbt_ticketdesglose.h"
 #include "btticket.h"
 #include "btcompany.h"
-#include "mticket.h"
+#include "mticketdesglose.h"
 #include "bldockwidget.h"
 
 
 BlDockWidget *g_doc1;
-MTicket *g_bud;
+MTicketDesglose *g_bud;
 
 
 ///
@@ -63,7 +63,7 @@ int entryPoint ( BtBulmaTPV *tpv )
 
 int BtCompany_createMainWindows_Post ( BtCompany *etpv )
 {
-    g_bud =  new MTicket ( etpv, g_doc1 );
+    g_bud =  new MTicketDesglose ( etpv, g_doc1 );
     g_bud->setFocusPolicy ( Qt::NoFocus );
     g_doc1->setWidget ( ( QWidget * ) g_bud );
 

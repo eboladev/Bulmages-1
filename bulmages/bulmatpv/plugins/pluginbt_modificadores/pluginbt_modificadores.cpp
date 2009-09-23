@@ -93,6 +93,35 @@ int MTicketIVAInc_MTicketIVAInc_Post (MTicketIVAInc *tick) {
         m_hboxLayout1->setObjectName ( QString::fromUtf8 ( "hboxLayout1" ) );
     } // end if
     m_hboxLayout1->addWidget ( sel );
-    
-    
 }
+
+
+
+int MTicket_MTicket_Post (MTicket *tick) {
+    QToolButton *sel = new QToolButton ( tick );
+    sel->setFixedSize (48, 48);
+    sel->setObjectName ( QString::fromUtf8 ( "exporta" ) );
+    sel->setStatusTip ( "Modificadores" );
+    sel->setToolTip ( "Establecer los modificadores de producto" );
+    sel->setMinimumSize ( QSize ( 32, 32 ) );
+    sel->setIcon ( QIcon ( g_confpr->valor ( CONF_PROGDATA ) + "icons/q19.png"  ) );
+    sel->setIconSize ( QSize ( 32, 32 ) );    
+    
+    QFrame *frame = tick->findChild<QFrame *>("mui_plugbotones");
+//    QHBoxLayout *m_hboxLayout1 = tick->mui_plugbotones->findChild<QHBoxLayout *> ( "hboxLayout1" );
+    if (frame) {
+      QHBoxLayout *m_hboxLayout1 = frame->findChild<QHBoxLayout *> ( "hboxLayout1" );
+      if ( !m_hboxLayout1 ) {
+//	  m_hboxLayout1 = new QHBoxLayout ( tick->mui_plugbotones );
+	  m_hboxLayout1 = new QHBoxLayout ( frame );
+	  m_hboxLayout1->setSpacing ( 5 );
+	  m_hboxLayout1->setMargin ( 0 );
+	  m_hboxLayout1->setObjectName ( QString::fromUtf8 ( "hboxLayout1" ) );
+      } // end if
+      m_hboxLayout1->addWidget ( sel );
+    } else {
+      mensajeInfo("No existe el mui_plugbotones");
+    } // end if
+}
+
+
