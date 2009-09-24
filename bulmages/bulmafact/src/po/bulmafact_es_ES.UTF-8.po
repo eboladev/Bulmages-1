@@ -203,8 +203,8 @@ msgid "Facturacion GPL"
 msgstr "Facturación GPL"
 
 #: ui_bfaboutbase.h:286
-msgid "Facturacion GPL - Version 0.11.1 -"
-msgstr "Facturación GPL - Versión 0.11.1 -"
+msgid "Facturacion GPL - Version 0.12.0 -"
+msgstr "Facturación GPL - Versión 0.12.0 -"
 
 #: bfinformereferencia.cpp:145 bfinformereferencia.cpp:177
 #: bfinformereferencia.cpp:215 bfinformereferencia.cpp:262

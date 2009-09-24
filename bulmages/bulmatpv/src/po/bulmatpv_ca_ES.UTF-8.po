@@ -131,8 +131,8 @@ msgstr "Assentaments"
 
 #: ui_btaboutbase.h:277
 #, fuzzy
-msgid "Facturacion GPL - Version 0.10.1 -"
-msgstr "Facturació GPL - Versió 0.11.1 -"
+msgid "Terminal Punto de Venta GPL - Version 0.12.0 -"
+msgstr "Terminal Punto de Venta GPL - Versió 0.12.0 -"
 
 #: btticket.cpp:48
 #, fuzzy

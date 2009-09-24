@@ -101,7 +101,7 @@ msgid "Acerca de BulmaFact"
 msgstr ""
 
 #: ui_btaboutbase.h:277
-msgid "Facturacion GPL - Version 0.10.1 -"
+msgid "Terminal Punto de Venta GPL - Version 0.12.0 -"
 msgstr ""
 
 #: ui_btaboutbase.h:278

@@ -4,7 +4,7 @@
 # Project related configuration options
 #---------------------------------------------------------------------------
 PROJECT_NAME           = BulmaGes
-PROJECT_NUMBER         = 0.11.1
+PROJECT_NUMBER         = 0.12.0
 OUTPUT_DIRECTORY       = ./doxygen
 CREATE_SUBDIRS         = NO
 OUTPUT_LANGUAGE        = Spanish
