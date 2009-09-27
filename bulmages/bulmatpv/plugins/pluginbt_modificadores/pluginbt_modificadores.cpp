@@ -29,6 +29,7 @@
 #include "btticket.h"
 #include "bldockwidget.h"
 #include "blapplication.h"
+#include "modificadoresqtoolbutton.h"
 
 
 /*
@@ -76,7 +77,7 @@ int BtCompany_createMainWindows_Post ( BtCompany *etpv )
 
 
 int MTicketIVAInc_MTicketIVAInc_Post (MTicketIVAInc *tick) {
-    QToolButton *sel = new QToolButton ( tick );
+    ModificadoresQToolButton *sel = new ModificadoresQToolButton (  (BtCompany *)tick->mainCompany(), tick );
     sel->setFixedSize (48, 48);
     sel->setObjectName ( QString::fromUtf8 ( "exporta" ) );
     sel->setStatusTip ( "Modificadores" );
@@ -98,7 +99,7 @@ int MTicketIVAInc_MTicketIVAInc_Post (MTicketIVAInc *tick) {
 
 
 int MTicket_MTicket_Post (MTicket *tick) {
-    QToolButton *sel = new QToolButton ( tick );
+    ModificadoresQToolButton *sel = new ModificadoresQToolButton ( (BtCompany *)tick->mainCompany(), tick );
     sel->setFixedSize (48, 48);
     sel->setObjectName ( QString::fromUtf8 ( "exporta" ) );
     sel->setStatusTip ( "Modificadores" );
