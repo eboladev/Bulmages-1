@@ -27,6 +27,7 @@
 	<file alias="bank-list.png">images/oxygen/actions/48x48/bank_list.png</file>
 	<file alias="cash.png">images/oxygen/actions/48x48/cash.png</file>
 	<file alias="cash-list.png">images/oxygen/actions/48x48/cash_list.png</file>
+	<file alias="cash-open.png">images/oxygen/actions/48x48/cash_open.png</file>
 	<file alias="receive.png">images/oxygen/actions/48x48/collect.png</file>
 	<file alias="receive-list.png">images/oxygen/actions/48x48/collect_list.png</file>
 	<file alias="pay.png">images/oxygen/actions/48x48/payment.png</file>
