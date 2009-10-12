@@ -237,9 +237,11 @@ void BcBulmaCont::on_actionLibro_Mayor_triggered()
 **/
 void BcBulmaCont::on_actionLibro_Diario_triggered()
 {
+/*
     _depura ( "BcBulmaCont::on_actionLibro_Diario_triggered", 0 );
     m_empresaactual->librodiario();
     _depura ( "END BcBulmaCont::on_actionLibro_Diario_triggered", 0 );
+*/
 }
 
 

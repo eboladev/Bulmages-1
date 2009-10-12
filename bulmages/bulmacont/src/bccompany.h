@@ -42,7 +42,7 @@
 class BcCentroCosteSeleccionarView;
 class BcCanalSeleccionarView;
 class BcAsientoView;
-class BcDiarioView;
+/* class BcDiarioView; */
 class BcAsientoListView;
 class BcCuentaView;
 class BlCountryView;
@@ -69,7 +69,7 @@ private:
     QString nombre;
     int ano;
     QString contrasenya;
-    BcDiarioView *diario;
+//    BcDiarioView *diario;
     BcExtractoView *extracto;
     BcAsientoView *introapunts2;
     BcAsientoListView *m_listasientos;
@@ -89,7 +89,7 @@ public:
     /// Devuelve un puntero a la clase de la base de datos.
     BlPostgreSqlClient *bdempresa();
     BcExtractoView *extractoempresa();
-    BcDiarioView *diarioempresa();
+//    BcDiarioView *diarioempresa();
     BcAsientoView *intapuntsempresa();
     BcAsientoView *intapuntsempresa2();
     int numdigitosempresa();

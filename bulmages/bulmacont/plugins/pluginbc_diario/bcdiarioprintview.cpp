@@ -28,6 +28,7 @@
 #include "bccompany.h"
 #include "bccentrocosteseleccionarview.h"
 #include "bccanalseleccionarview.h"
+#include "pluginbc_diario.h"
 #include "bcdiarioview.h"
 
 
@@ -66,7 +67,7 @@ BcDiarioPrintView::~BcDiarioPrintView()
 QString BcDiarioPrintView::montaQuery()
 {
     _depura ( "BcDiarioPrintView::montaQuery", 0 );
-    BcDiarioView *diario = ( ( BcCompany * ) mainCompany() ) ->diarioempresa();
+    BcDiarioView *diario = g_diario;
     QString query;
     QString fecha;
     QString fechaasiento;
@@ -134,7 +135,7 @@ void BcDiarioPrintView::accept()
 void BcDiarioPrintView::presentar ( const char *tipus )
 {
     _depura ( "BcDiarioPrintView::presentar", 0 );
-    BcDiarioView *diario = ( ( BcCompany * ) mainCompany() ) ->diarioempresa();
+    BcDiarioView *diario = g_diario;
     int txt, html, txtapren, htmlapren;
     float debe, haber;
     int idcuenta;

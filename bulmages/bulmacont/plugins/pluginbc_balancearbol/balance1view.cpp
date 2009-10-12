@@ -196,6 +196,7 @@ void BalanceTreeView::boton_extracto1 ( int tipo )
 void BalanceTreeView::boton_diario1 ( int tipo )
 {
     _depura ( "BalanceTreeView::boton_diario1", 0 );
+/*
     QDate fecha1, fecha2, fechaact, fechaact1;
     if ( !m_fechainicial1->text().isEmpty() ) {
         fechaact = normalizafecha ( m_fechainicial1->text() );
@@ -219,6 +220,7 @@ void BalanceTreeView::boton_diario1 ( int tipo )
     mainCompany() ->diarioempresa() ->accept();
     mainCompany() ->diarioempresa() ->show();
     mainCompany() ->diarioempresa() ->setFocus();
+*/
     _depura ( "END BalanceTreeView::boton_diario1", 0 );
 }
 

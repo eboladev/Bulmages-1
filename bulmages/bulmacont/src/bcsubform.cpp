@@ -34,7 +34,6 @@
 #include "bcbuscarcanal.h"
 #include "bcbuscarcentrocoste.h"
 #include "bccuentalistview.h"
-#include "bcdiarioview.h"
 
 
 /// Constructor de la clase
@@ -390,6 +389,7 @@ void BcSubForm::boton_extracto1 ( int tipo )
 void BcSubForm::boton_diario1 ( int tipo )
 {
     _depura ( "BcSubForm::boton_diario1", 0 );
+/*
     BcCompany *companyact = ( BcCompany * ) mainCompany();
     QDate fecha1, fecha2, fechaact, fechaact1;
     fechaact = normalizafecha ( dbValue ( "fecha" ).left ( 10 ) );
@@ -413,6 +413,7 @@ void BcSubForm::boton_diario1 ( int tipo )
     } // end if
     companyact->diarioempresa() ->accept();
     companyact->librodiario();
+*/
     _depura ( "BcSubForm::boton_diario1", 0 );
 }
 

@@ -31,7 +31,6 @@ set(bulmacont_MOCS bcbulmacont.h
            bcaboutview.h
            bcplancontablelistview.h
            bccuentaview.h
-           bcdiarioview.h
            bcextractoview.h
            bcasientointeligenteview.h
            bcasientolistview.h
@@ -44,7 +43,6 @@ set(bulmacont_MOCS bcbulmacont.h
            bccentrocosteview.h
            bcconfiguracionview.h
            bcextractoimprimirview.h
-           bcdiarioprintview.h
            bccambiacuentaview.h
            bcasientoduplicarview.h
            bcamortizacionview.h
@@ -61,30 +59,12 @@ set(bulmacont_MOCS bcbulmacont.h
            bcasientoview.h
            bcasientosubform.h
            bcsubform.h
-           bcdiariosubform.h
            bcextractosubform.h
            bcasientolistsubform.h
            bcbuscarcentrocoste.h
            bcbuscarcanal.h 
            bcform.h
            bccuentalistview.h)
-
-# ficheros no MOc's
-#           bccompany.h
-#           qlineedit1.h
-#           qlistviewitem1.h
-#           bclibromayorimprimir.h
-#           bcdiarioprint.h
-#           bclibromayorimprimir.h
-#           bcdiarioprint.h
-#           bcmodeloaeat.h
-#           bcasientointeligenteimportarxml.h
-#           bcbalanceimportarxml.h
-#           bcplancontablearbol.h
-#           balance1view.h
-#           balanceview.h
-#           balanceprintview.h
-#           balancesubform.h
 
 
 set(QT_USE_QTASSISTANT true)

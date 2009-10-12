@@ -27,8 +27,6 @@
 #include "blfunctions.h"
 #include "carteracobroslist.h"
 
-
-
 ///
 /**
 **/

@@ -30,7 +30,7 @@
      <x>0</x>
      <y>0</y>
      <width>800</width>
-     <height>21</height>
+     <height>23</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuVentana">
@@ -41,7 +41,6 @@
     <addaction name="actionAsientos"/>
     <addaction name="actionApuntes_Contables"/>
     <addaction name="actionLibro_Mayor"/>
-    <addaction name="actionLibro_Diario"/>
    </widget>
    <widget class="QMenu" name="menuAsiento">
     <property name="title">
@@ -143,7 +142,6 @@
    <addaction name="actionApuntes_Contables"/>
    <addaction name="actionAsientos"/>
    <addaction name="actionLibro_Mayor"/>
-   <addaction name="actionLibro_Diario"/>
    <addaction name="actionInicio"/>
    <addaction name="actionAnterior"/>
    <addaction name="actionSiguiente"/>
@@ -252,15 +250,6 @@
    </property>
    <property name="text">
     <string>Libro &amp;Mayor</string>
-   </property>
-  </action>
-  <action name="actionLibro_Diario">
-   <property name="icon">
-    <iconset resource="../../bulmages.qrc">
-     <normaloff>:/Images/balance-sheet.png</normaloff>:/Images/balance-sheet.png</iconset>
-   </property>
-   <property name="text">
-    <string>Libro &amp;Diario</string>
    </property>
   </action>
   <action name="actionFormas_de_Pago">

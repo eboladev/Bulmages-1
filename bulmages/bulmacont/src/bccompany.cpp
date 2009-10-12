@@ -41,7 +41,6 @@
 #include "bccanalseleccionarview.h"
 #include "blplugins.h"
 #include "bcbloqueafechaview.h"
-#include "bcdiarioview.h"
 #include "bcmodelo347listview.h"
 #include "blcountryview.h"
 #include "bcbulmacont.h"
@@ -73,7 +72,6 @@ BcCompany ::BcCompany ( BcBulmaCont *bcont ) : BlMainCompany()
 {
     _depura ( "BcCompany ::BcCompany ", 0 );
     m_bulmacont = bcont;
-    diario = NULL;
     extracto = NULL;
     selccostes  = NULL;
     selcanales = NULL;
@@ -122,11 +120,14 @@ BcExtractoView *BcCompany::extractoempresa()
 /**
 \return
 **/
+/*
 BcDiarioView *BcCompany::diarioempresa()
 {
-    return diario;
-}
 
+    return diario;
+
+}
+*/
 
 ///
 /**
@@ -195,7 +196,6 @@ int BcCompany::createMainWindows ( BlSplashScreen *splash )
         delete cursoraux1;
         if ( extracto != NULL ) {
             delete extracto;
-            delete diario;
             delete selccostes;
             delete selcanales;
             delete m_listasientos;
@@ -217,12 +217,13 @@ int BcCompany::createMainWindows ( BlSplashScreen *splash )
 
 
         /// pb = 20%
+/*
         splash->mensaje ( _ ( "Inicializando diario" ) );
         splash->setBarraProgreso ( 20 );
         m_progressbar->setValue ( 20 );
         diario = new BcDiarioView ( this, 0 );
         m_pWorkspace->addWindow ( diario );
-        
+*/        
 
         /// pb = 60%
         splash->mensaje ( _ ( "Inicializando asientos" ) );
@@ -281,7 +282,6 @@ int BcCompany::createMainWindows ( BlSplashScreen *splash )
 void BcCompany::maximiza()
 {
     _depura ( "BcCompany::maximiza", 0 );
-    diario->showMaximized();
     extracto->showMaximized();
     _depura ( "END BcCompany::maximiza", 0 );
 }
@@ -570,11 +570,13 @@ int BcCompany::boton_guardar()
     _depura ( "BcCompany::boton_guardar", 0 );
     QWidget *widget;
     widget = m_pWorkspace->activeWindow();
+/*
     if ( widget == diario ) {
         diario->boton_guardar();
     } else {
+*/
         extracto->boton_guardar();
-    } // end if
+//    } // end if
     _depura ( "END BcCompany::boton_guardar", 0 );
     return 0;
 }
@@ -588,9 +590,14 @@ int BcCompany::boton_imprimir()
 {
     _depura ( "BcCompany::boton_imprimir", 0 );
     QWidget *widget = m_pWorkspace->activeWindow();
+
+/*
     if ( widget == diario ) {
         diario->boton_imprimir();
-    } else if ( widget == extracto ) {
+    } else
+*/
+
+    if ( widget == extracto ) {
         extracto->boton_imprimir();
     } // end if
     _depura ( "END BcCompany::boton_imprimir", 0 );
@@ -607,9 +614,12 @@ int BcCompany::boton_reload()
     _depura ( "BcCompany::boton_reload", 0 );
     QWidget *widget;
     widget = m_pWorkspace->activeWindow();
+/*
     if ( widget == diario ) {
         diario->accept();
-    } else if ( widget == extracto ) {
+    } else
+*/
+ if ( widget == extracto ) {
         extracto->accept();
     } // end if
     _depura ( "END BcCompany::boton_reload", 0 );
@@ -628,7 +638,7 @@ int BcCompany::boton_primero()
     widget = m_pWorkspace->activeWindow();
     if ( widget == introapunts2 ) {
         introapunts2->boton_inicio();
-    } else if ( widget == diario ) {} else if ( widget == extracto ) {
+    } else if ( widget == extracto ) {
         extracto->boton_inicio();
     } // end if
     _depura ( "END BcCompany::boton_primero", 0 );
@@ -647,7 +657,7 @@ int BcCompany::boton_ultimo()
     widget = m_pWorkspace->activeWindow();
     if ( widget == introapunts2 ) {
         introapunts2->boton_fin();
-    } else if ( widget == diario ) {} else if ( widget == extracto ) {
+    } else if ( widget == extracto ) {
         extracto->boton_fin();
     } // end if
     _depura ( "END BcCompany::boton_ultimo", 0 );
@@ -662,7 +672,9 @@ int BcCompany::boton_ultimo()
 int BcCompany::librodiario()
 {
     _depura ( "BcCompany::librodiario", 0 );
+/*
     diario->setWindowState ( ( diario->windowState() & ~Qt::WindowMinimized ) | Qt::WindowActive );
+*/
     _depura ( "END BcCompany::librodiario", 0 );
     return 0;
 }

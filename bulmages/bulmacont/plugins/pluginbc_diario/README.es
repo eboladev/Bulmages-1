@@ -1,0 +1,34 @@
+=======
+Plugins
+=======
+#README
+20080501
+
+Nombre: Diario
+
+Biblioteca: libpluginbc_diario.so
+
+Descripción: <H1>Libro Diario</H1>
+<P>Permite Listar el libro diario.</P>
+<HR>
+
+ParmBD: -
+
+ArchivoSQLpatch: -
+
+ArchivoSQLdeins: -
+
+Dependencias:
+
+Incompatibles:
+
+Reports: balance.rml
+
+Categorias: Contabilidad general;Experimentales;
+
+Orden: 20
+
+Comentarios: -
+
+
+    

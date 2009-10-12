@@ -29,7 +29,6 @@
 
 #include "qlayout.h"
 #include "bcplancontablelistview.h"
-#include "bcdiarioview.h"
 #include "bcextractoview.h"
 #include "blpostgresqlclient.h"
 #include "blconfiguration.h"
@@ -39,7 +38,6 @@
 
 
 class intapunts3view;
-class diarioview1;
 class BcExtractoView;
 class BcCompany ;
 

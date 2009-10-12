@@ -1,7 +1,6 @@
 /***************************************************************************
- *   Copyright (C) 2003 by Tomeu Borras Riera                              *
+ *   Copyright (C) 2005 by Tomeu Borras Riera                              *
  *   tborras@conetxia.com                                                  *
- *   http://www.iglues.org Asociación Iglues -- Contabilidad Linux         *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
  *   it under the terms of the GNU General Public License as published by  *
@@ -19,54 +18,42 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#ifndef BALANCEVIEW_H
-#define BALANCEVIEW_H
+#ifndef PLUGINBC_DIARIO
+#define PLUGINBC_DIARIO
 
-#include "qlayout.h"
+#ifdef Q_WS_WIN
+# define MY_EXPORT __declspec(dllexport)
+#else
+# define MY_EXPORT
+#endif
 
-#include "ui_balancebase.h"
-#include "bcextractoview.h"
+#include "bcbulmacont.h"
 #include "blpostgresqlclient.h"
-#include "blconfiguration.h"
-#include "bcplancontablelistview.h"
-#include "bcform.h"
+#include "bccompany.h"
+#include "bcdiarioview.h"
+
+extern BcDiarioView *g_diario;
+
+extern "C" MY_EXPORT int entryPoint ( BcBulmaCont * );
 
 
-class BcCompany ;
 
-
-/// Balance de Sumas y Saldos plano.
-/**
-    Esta clase muestra un balance de sumas y saldos de la empresa abierta.
-    Esta clase genera el balance de sumas y saldos y lo muestra por pantalla en una
-    ventana dise&ntilde;ada espec&iacute;ficamente para ello.
-*/
-class BalanceView : public BcForm, public Ui_BalanceBase
+class MyPluginDiario : public QObject, BlMainCompanyPointer
 {
     Q_OBJECT
 
-private:
-    /// Cursor para recorrer las cuentas.
-    BlDbRecordSet *m_cursorcta;
-    /// El n&uacute;mero de d&iacute;gitos que tienen las cuentas de la empresa.
-    int numdigitos;
-    /// Array que almacena los identificadores de los centros de coste.
+public:
+    BcBulmaCont *m_bulmacont;
 
 public:
-    BalanceView ( BcCompany *, QWidget *parent = 0, int flags = 0 );
-    void inicializa1 ( QString, QString, QString, QString, QString );
-    ~BalanceView();
-    void imprimir();
-    virtual void accept();
-
-private:
-    /// Presenta el Balance.
-    void presentar();
-    /// Presenta el Balance de Sumas y Saldos.
-    void presentarSyS ( QString, QString, QString, QString, int, int, bool );
+    MyPluginDiario();
+    ~MyPluginDiario();
+    void inicializa ( BcBulmaCont * );
 
 public slots:
-    void on_mui_actualizar_released();
+    void elslot();
 };
 
+
 #endif
+

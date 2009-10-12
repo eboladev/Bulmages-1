@@ -1,0 +1,98 @@
+# Spanish translations for PACKAGE package
+# Traducciones al español para el paquete PACKAGE.
+# Copyright (C) 2009 THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# Automatically generated, 2009.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: info@iglues.org\n"
+"POT-Creation-Date: 2009-10-12 16:47+0200\n"
+"PO-Revision-Date: 2009-10-12 16:47+0200\n"
+"Last-Translator: Automatically generated\n"
+"Language-Team: none\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: pluginbf_carteracobros.cpp:241
+msgid "Cantidad"
+msgstr "Cantidad"
+
+#: carteracobroslist.cpp:64 vencimientocview.cpp:61
+msgid "Cliente:"
+msgstr "Cliente:"
+
+#: vencimientocview.cpp:72
+msgid "Comentarios"
+msgstr "Comentarios"
+
+#: vencimientocview.cpp:71
+msgid "Descripcion"
+msgstr "Descripción"
+
+#: pluginbf_carteracobros.cpp:122
+msgid "Dias tras Factura"
+msgstr ""
+
+#: pluginbf_carteracobros.cpp:240
+msgid "Fecha"
+msgstr "Fecha"
+
+#: vencimientocview.cpp:74
+msgid "Fecha Efectiva"
+msgstr ""
+
+#: vencimientocview.cpp:73
+msgid "Fecha de Vencimiento"
+msgstr ""
+
+#: pluginbf_carteracobros.cpp:124 pluginbf_carteracobros.cpp:242
+msgid "Forma de Pago"
+msgstr "Forma de pago"
+
+#: pluginbf_carteracobros.cpp:126 pluginbf_carteracobros.cpp:245
+msgid "ID Forma de Pago"
+msgstr ""
+
+#: pluginbf_carteracobros.cpp:121 pluginbf_carteracobros.cpp:239
+msgid "ID Vencimiento"
+msgstr ""
+
+#: pluginbf_carteracobros.cpp:125 pluginbf_carteracobros.cpp:244
+msgid "Id Articulo"
+msgstr "ID artículo"
+
+#: pluginbf_carteracobros.cpp:246
+msgid "Id Cliente"
+msgstr ""
+
+#: vencimientocview.cpp:69
+msgid "Id pago"
+msgstr "ID pago"
+
+#: pluginbf_carteracobros.cpp:123
+msgid "Porcentaje"
+msgstr "Porcentaje"
+
+#: pluginbf_carteracobros.cpp:243
+msgid "Procesado"
+msgstr "Procesado"
+
+#: vencimientocview.cpp:70
+msgid "Referencia de Vencimiento"
+msgstr ""
+
+#: vencimientocview.cpp:76
+msgid "cantidad de Vencimiento"
+msgstr ""
+
+#: vencimientocview.cpp:75
+msgid "estado de Vencimiento"
+msgstr ""
+
+#: vencimientocview.cpp:77
+msgid "idcliente de Vencimiento"
+msgstr ""

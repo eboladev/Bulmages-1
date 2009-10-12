@@ -56,7 +56,6 @@ int CobrosList_CobrosList ( CobrosList *l )
     _depura ( "CobrosList_CobrosList", 0 );
 
     Q19QToolButton *sel = new Q19QToolButton ( l, l->mui_plugbotones );
-
     QHBoxLayout *m_hboxLayout1 = l->mui_plugbotones->findChild<QHBoxLayout *> ( "hboxLayout1" );
     if ( !m_hboxLayout1 ) {
         m_hboxLayout1 = new QHBoxLayout ( l->mui_plugbotones );
@@ -81,7 +80,6 @@ int FacturasList_FacturasList ( FacturasList *l )
     _depura ( "FacturasList_FacturasList", 0 );
 
     Q19QToolButton1 *sel = new Q19QToolButton1 ( l, l->mui_plugbotones );
-
     QHBoxLayout *m_hboxLayout1 = l->mui_plugbotones->findChild<QHBoxLayout *> ( "hboxLayout1" );
     if ( !m_hboxLayout1 ) {
         m_hboxLayout1 = new QHBoxLayout ( l->mui_plugbotones );

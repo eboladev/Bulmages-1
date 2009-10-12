@@ -31,7 +31,6 @@
 #include "bclibromayorimprimir.h"
 #include "bccompany.h"
 #include "bcasientoview.h"
-#include "bcdiarioview.h"
 #include "bcplancontablelistview.h"
 #include "bccentrocosteseleccionarview.h"
 #include "bccanalseleccionarview.h"
