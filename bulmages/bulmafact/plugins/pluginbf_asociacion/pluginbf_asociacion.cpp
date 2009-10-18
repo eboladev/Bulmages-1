@@ -139,7 +139,7 @@ void MyPlugAsoc::inicializa ( BfBulmaFact *bges )
     if ( bges->company()->hasTablePrivilege ( "reunion", "SELECT" ) ) {
 
         /// Miramos si existe un menu Ventas
-        QMenu *pPluginMenu = bges->newMenu ( "&Asociacion", "menuAsociacion", "menuMaestro" );
+        QMenu *pPluginMenu = bges->newMenu ( _("&Asociacion"), "menuAsociacion", "menuMaestro" );
         pPluginMenu->addSeparator();
 
         /// El men&uacute; de Tarifas en la secci&oacute;n de art&iacute;culos.

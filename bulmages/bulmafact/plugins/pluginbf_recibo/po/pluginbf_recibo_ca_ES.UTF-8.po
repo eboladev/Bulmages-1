@@ -1,0 +1,334 @@
+# Spanish translations for PACKAGE package
+# Traducciones al español para el paquete PACKAGE.
+# Copyright (C) 2009 THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# Automatically generated, 2009.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: info@iglues.org\n"
+"POT-Creation-Date: 2009-10-19 01:16+0200\n"
+"PO-Revision-Date: 2009-10-19 01:16+0200\n"
+"Last-Translator: Automatically generated\n"
+"Language-Team: none\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: ui_recibobase.h:356
+msgid "&Aceptar"
+msgstr "&Accepta"
+
+#: ui_recibobase.h:357
+msgid "&Cancelar"
+msgstr "&Cancel·la"
+
+#: ui_recibobase.h:353
+msgid "&Datos generales"
+msgstr "&Dades generals"
+
+#: pluginbf_recibo.cpp:123
+msgid "&Nuevo recibo"
+msgstr "&Nou rebut"
+
+#: pluginbf_recibo.cpp:115
+msgid "&Recibos"
+msgstr "Rebuts"
+
+#: reciboslist.cpp:81 emitirrecibosview.cpp:63
+msgid "Actividad:"
+msgstr "Activitat"
+
+#: ui_reciboslistbase.h:360 ui_reciboslistbase.h:363
+msgid "Actualizar listado"
+msgstr "Actual·litza llistat"
+
+#: ui_reciboslistbase.h:308
+#, fuzzy
+msgid "Banco:"
+msgstr "Banc"
+
+#: ui_reciboslistbase.h:328 ui_reciboslistbase.h:331
+#, fuzzy
+msgid "Borrar Actividad"
+msgstr "Esborra Activitat"
+
+#: ui_recibobase.h:334 ui_recibobase.h:337 ui_recibobase.h:342
+#: ui_recibobase.h:345
+msgid "Borrar cobro"
+msgstr "Esborra cobrament"
+
+#: reciboslist.cpp:288
+msgid "Borrar recibo"
+msgstr "Esborra rebut"
+
+#: ui_reciboslistbase.h:367
+msgid "Buscar:"
+msgstr "Cerca:"
+
+#: reciboslist.cpp:342 emitirrecibosview.cpp:57 reciboview.cpp:52
+msgid "Cantidad"
+msgstr "Quantitat"
+
+#: reciboview.cpp:75
+msgid "Cantidad Linea Recibo"
+msgstr "Quantitat linia rebut"
+
+#: ui_recibobase.h:354
+msgid "Comentarios:"
+msgstr "Comentaris:"
+
+#: reciboview.cpp:76
+msgid "Concepto"
+msgstr "Concepte"
+
+#: ui_reciboslistbase.h:352 ui_reciboslistbase.h:355
+msgid "Configurar listado"
+msgstr "Configura llistat"
+
+#: ui_reciboslistbase.h:358
+msgid "Ctrl+B"
+msgstr "Ctrl+B"
+
+#: ui_recibobase.h:340 ui_reciboslistbase.h:334
+msgid "Ctrl+D"
+msgstr "Ctrl+D"
+
+#: ui_reciboslistbase.h:326
+msgid "Ctrl+E"
+msgstr "Ctrl+E"
+
+#: ui_reciboslistbase.h:350
+msgid "Ctrl+F"
+msgstr "Ctrl+F"
+
+#: ui_recibobase.h:348
+msgid "Ctrl+I"
+msgstr "Ctrl+I"
+
+#: ui_reciboslistbase.h:318 ui_emitirrecibosbase.h:246
+msgid "Ctrl+N"
+msgstr "Ctrl+N"
+
+#: ui_reciboslistbase.h:342
+msgid "Ctrl+P"
+msgstr "Ctrl+P"
+
+#: ui_recibobase.h:332
+msgid "Ctrl+S"
+msgstr "Ctrl+S"
+
+#: reciboslist.cpp:269
+#, fuzzy
+msgid "Debe seleccionar una fila primero"
+msgstr "Cal triar un compte"
+
+#: reciboslist.cpp:226
+#, fuzzy
+msgid "Debe seleccionar una linea"
+msgstr "Cal triar un compte"
+
+#: reciboview.cpp:55
+msgid "Descripcion"
+msgstr "Descripció"
+
+#: ui_reciboslistbase.h:320 ui_reciboslistbase.h:323
+#, fuzzy
+msgid "Editar Actividad"
+msgstr "Editar compte"
+
+#: reciboslist.cpp:287
+msgid "Editar recibo"
+msgstr "Editar rebut"
+
+#: ui_emitirrecibosbase.h:243
+msgid "Emiitr Recibos"
+msgstr "Emetre Rebuts"
+
+#: ui_emitirrecibosbase.h:240
+msgid "Emitir Recibos"
+msgstr "Emetre Rebuts"
+
+#: ui_emitirrecibosbase.h:247
+msgid "Emitir las Cuotas de Socios"
+msgstr "Emetre les quotes dels socis"
+
+#: pluginbf_recibo.cpp:134 pluginbf_recibo.cpp:135
+msgid "Emitir recibos"
+msgstr "Emetre rebuts"
+
+#: ui_emitirrecibosbase.h:249
+msgid "Emitir sólo la actividad Seleccionada"
+msgstr "Emetre només la activitat seleccionada"
+
+#: ui_emitirrecibosbase.h:248
+msgid "Emitir todas las Actividades"
+msgstr "Emetre totes les activitats"
+
+#: emitirrecibosview.cpp:53
+msgid "EmitirRecibos"
+msgstr "Emetre rebuts"
+
+#: reciboslist.cpp:241
+msgid "Error al borrar el cobro a cliente"
+msgstr "Error al esborrar el cobrament a client"
+
+#: emitirrecibosview.cpp:73 reciboview.cpp:88
+msgid "Error al crear el recibo"
+msgstr "Error al crear el rebut"
+
+#: ui_reciboslistbase.h:366
+msgid "F5"
+msgstr "F5"
+
+#: reciboslist.cpp:344 ui_recibobase.h:350
+msgid "Fecha"
+msgstr "Data"
+
+#: reciboview.cpp:56
+#, fuzzy
+msgid "Fecha de creacion"
+msgstr "Data de compra:"
+
+#: ui_reciboslistbase.h:307 ui_emitirrecibosbase.h:252
+msgid "Fecha final:"
+msgstr "Data final:"
+
+#: ui_reciboslistbase.h:306 ui_emitirrecibosbase.h:251
+msgid "Fecha inicial:"
+msgstr "Data inicial:"
+
+#: ui_reciboslistbase.h:344 ui_reciboslistbase.h:347
+#, fuzzy
+msgid "Filtrar Actividades"
+msgstr "Filtrar Activitats"
+
+#: reciboslist.cpp:346 ui_recibobase.h:351
+msgid "Forma de Pago"
+msgstr "Forma de pagament"
+
+#: ui_recibobase.h:326 ui_recibobase.h:329
+#, fuzzy
+msgid "Guardar cobro"
+msgstr "Desa arxiu"
+
+#: reciboview.cpp:54
+msgid "ID Forma Pago"
+msgstr ""
+
+#: reciboslist.cpp:341
+msgid "ID Recibo"
+msgstr ""
+
+#: reciboslist.cpp:345
+msgid "ID Tutor"
+msgstr ""
+
+#: reciboview.cpp:53
+#, fuzzy
+msgid "ID cliente"
+msgstr "ID compte"
+
+#: emitirrecibosview.cpp:56 reciboview.cpp:51 reciboview.cpp:74
+msgid "ID recibo"
+msgstr ""
+
+#: emitirrecibosview.cpp:59
+msgid "Id Forma PAgo"
+msgstr ""
+
+#: emitirrecibosview.cpp:58
+#, fuzzy
+msgid "Id cliente"
+msgstr "Id compte"
+
+#: reciboview.cpp:73
+msgid "Identificador"
+msgstr "Identificador"
+
+#: ui_reciboslistbase.h:336 ui_reciboslistbase.h:339
+#, fuzzy
+msgid "Imprimir listado"
+msgstr "Imprimeix la comanda"
+
+#: ui_reciboslistbase.h:309
+msgid "Mostrar"
+msgstr ""
+
+#: ui_emitirrecibosbase.h:250
+msgid "Notificar por e-mail"
+msgstr ""
+
+#: ui_reciboslistbase.h:312 ui_reciboslistbase.h:315
+#, fuzzy
+msgid "Nuevo Actividad"
+msgstr "Nova Activitat"
+
+#: ui_recibobase.h:323
+msgid "Nuevo Recibo"
+msgstr "Nou Rebut"
+
+#: pluginbf_recibo.cpp:125 pluginbf_recibo.cpp:126
+msgid "Nuevo recibo"
+msgstr "Nou Rebut"
+
+#: ui_recibobase.h:355
+msgid "Otros datos"
+msgstr "Altres Dades"
+
+#: reciboslist.cpp:343 reciboview.cpp:57 ui_recibobase.h:349
+#, fuzzy
+msgid "Pagado"
+msgstr "Pagat"
+
+#: reciboview.cpp:48
+msgid "Recibo"
+msgstr "Rebut"
+
+#: reciboslist.cpp:209 pluginbf_recibo.cpp:117 pluginbf_recibo.cpp:118
+#: ui_reciboslistbase.h:305
+msgid "Recibos"
+msgstr "Rebuts"
+
+#: pluginbf_recibo.cpp:132
+msgid "Recibos &Automaticos"
+msgstr ""
+
+#: ui_emitirrecibosbase.h:237
+msgid "Recibos Automaticos"
+msgstr "Rebuts Automàtics"
+
+#: reciboslist.cpp:126
+msgid "Recibos no pagados"
+msgstr "Rebuts sense pagar"
+
+#: reciboslist.cpp:125
+msgid "Recibos pagados"
+msgstr "Rebuts pagats"
+
+#: emitirrecibosview.cpp:161
+msgid "Terminado"
+msgstr "Finalitzat"
+
+#: reciboview.cpp:119
+msgid "Tiene que guardar el documento antes de poder imprimirlo."
+msgstr "Ha de desar el document abans de poder imprimir-lo"
+
+#: reciboslist.cpp:124
+msgid "Todos los recibos"
+msgstr "Tots els rebuts"
+
+#: ui_recibobase.h:352
+#, fuzzy
+msgid "Total"
+msgstr "Totals:"
+
+#: reciboslist.cpp:347
+msgid "Tutor"
+msgstr "Tutor"
+
+#: reciboview.cpp:65
+msgid "Tutor/Socio:"
+msgstr "Tutor / Soci"

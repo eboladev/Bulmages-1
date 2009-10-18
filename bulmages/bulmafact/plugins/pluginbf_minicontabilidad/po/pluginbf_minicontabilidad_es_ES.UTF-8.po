@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-05-16 14:54+0200\n"
+"POT-Creation-Date: 2009-10-18 22:56+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -114,548 +114,702 @@ msgstr ""
 "#-#-#-#-#  pluginabrevs.pot (PACKAGE VERSION)  #-#-#-#-#\n"
 "#-#-#-#-#  bulmages_suite.pot (PACKAGE VERSION)  #-#-#-#-#\n"
 
-#: ui_familiasbase.h:386 ui_articleeditbase.h:638 ui_tiposarticulobase.h:240
+#: ui_acontablebase.h:192 ui_partidasbase.h:366
+#: ui_presupuestocontablebase.h:364
 msgid "&Aceptar"
 msgstr "&Aceptar"
 
-#: pluginbf_articulo.cpp:125
-msgid "&Articulos"
-msgstr "&Articulos"
+#: pluginbf_minicontabilidad.cpp:117
+msgid "&Anotaciones contables"
+msgstr ""
 
-#: ui_familiasbase.h:387 ui_articleeditbase.h:639 ui_tiposarticulobase.h:241
+#: ui_acontablebase.h:193 ui_partidasbase.h:367
+#: ui_presupuestocontablebase.h:365
 msgid "&Cancelar"
 msgstr "&Cancelar"
 
-#: ui_articleeditbase.h:635
-msgid "&Datos generales"
-msgstr "&Datos generales"
+#: ui_presupuestocontablebase.h:362
+msgid "&Detalle"
+msgstr "&Detalle"
 
-#: pluginbf_articulo.cpp:151
-#, fuzzy
-msgid "&Familias"
-msgstr "Familias"
+#: pluginbf_minicontabilidad.cpp:109
+msgid "&Partidas contables"
+msgstr ""
 
-#: ui_articleeditbase.h:628
-msgid "&Incluir en el catalogo."
-msgstr "&Incluir en el catalogo."
+#: pluginbf_minicontabilidad.cpp:125
+msgid "&Previsiones"
+msgstr ""
 
-#: pluginbf_articulo.cpp:133
-#, fuzzy
-msgid "&Nuevo Articulo"
-msgstr "Nuevo articulo"
-
-#: pluginbf_articulo.cpp:142
-#, fuzzy
-msgid "&Tipos de Articulo"
-msgstr "&Tipos de articulo"
-
-#: ui_familiasbase.h:366 ui_tiposarticulobase.h:239
+#: ui_partidasbase.h:350
 msgid "1"
 msgstr "1"
 
-#: articuloview.cpp:64
-msgid "Abreviacion"
-msgstr "Abreviacion"
-
-#: ui_articleeditbase.h:634
-msgid "Activar el &control de stock."
-msgstr "Activar el &control de stock."
-
-#: ui_articleeditbase.h:631
-msgid "Activar el control de stock para este articulo."
-msgstr "Activar el control de stock para este articulo."
-
-#: ui_articleslistbase.h:358 ui_articleslistbase.h:363
+#: ui_presupuestocontablelistbase.h:283 ui_presupuestocontablelistbase.h:286
 msgid "Actualizar listado"
 msgstr "Actualizar listado"
 
-#: ui_articleslistbase.h:288
-msgid "Alt+O"
-msgstr "Alt+O"
+#: pluginbf_minicontabilidad.cpp:119 pluginbf_minicontabilidad.cpp:120
+msgid "Anotaciones contables"
+msgstr ""
 
-#: articuloview.cpp:58
-msgid "Articulo"
-msgstr "Articulo"
+#: ui_acontablebase.h:166
+msgid "Apuntes Contables"
+msgstr ""
 
-#: pluginbf_articulo.cpp:127 pluginbf_articulo.cpp:128
-#: ui_articleslistbase.h:284
-msgid "Articulos"
-msgstr "Articulos"
-
-#: familiasview.cpp:478 tiposarticuloview.cpp:384 ui_articleeditbase.h:595
-#: ui_articleeditbase.h:600
+#: partidasview.cpp:436 ui_presupuestocontablelistbase.h:255
+#: ui_presupuestocontablelistbase.h:258
 msgid "Borrar"
 msgstr "Borrar"
 
-#: ui_familiasbase.h:335 ui_familiasbase.h:340
-msgid "Borrar Familia"
-msgstr "Borrar Familia"
+#: ui_partidasbase.h:329 ui_partidasbase.h:332
+msgid "Borrar Partida"
+msgstr ""
 
-#: ui_tiposarticulobase.h:271 ui_tiposarticulobase.h:276
-msgid "Borrar Tipo de articulo"
-msgstr "Borrar Tipo de articulo"
+#: ui_acontablebase.h:177 ui_acontablebase.h:180 ui_acontablebase.h:185
+#: ui_acontablebase.h:188
+msgid "Borrar cobro"
+msgstr "Borrar cobro"
 
-#: articulolist.cpp:167 articulolist.cpp:291 ui_articleslistbase.h:314
-#: ui_articleslistbase.h:319
-msgid "Borrar articulo"
-msgstr "Borrar articulo"
+#: ui_presupuestocontablebase.h:337 ui_presupuestocontablebase.h:340
+msgid "Borrar presupuesto"
+msgstr "Borrar presupuesto"
 
-#: ui_articleeditbase.h:611
-msgid "Borrar imagen"
-msgstr "Borrar imagen"
+#: presupuestocontablelist.cpp:198
+msgid "Borrar presupuestocontable"
+msgstr ""
 
-#: articuloview.cpp:309
-msgid "Borrar imagen del articulo"
-msgstr "Borrar imagen del articulo"
-
-#: ui_articleslistbase.h:389
+#: ui_presupuestocontablelistbase.h:289
 msgid "Buscar:"
 msgstr "Buscar:"
 
-#: ui_articleeditbase.h:636
-msgid "C&omponentes"
-msgstr "C&omponentes"
+#: presupuestocontablelist.cpp:220
+msgid "C.I.F."
+msgstr "C.I.F."
 
-#: ui_articleeditbase.h:608
-msgid "Cam&biar imagen"
-msgstr "Cam&biar imagen"
-
-#: comparticulolistview.cpp:44
-msgid "Cantidad de componente de articulo"
-msgstr "Cantidad de componente de articulo"
-
-#: articulolist.cpp:239 articulolist.cpp:264
-msgid "Clientes (*.xml)"
-msgstr "Clientes (*.xml)"
-
-#: articuloview.cpp:62 familiasview.cpp:51 familiasview.cpp:568
-#: tiposarticuloview.cpp:46
+#: presupuestocontablelist.cpp:219 partidasview.cpp:50 partidasview.cpp:526
+#: presupuestocontableview.cpp:66
 msgid "Codigo"
 msgstr "Codigo"
 
-#: articuloview.cpp:70 familiasview.cpp:51
+#: acontableview.cpp:61
+msgid "Codigo Partida"
+msgstr ""
+
+#: partidasview.cpp:50
 msgid "Codigo completo"
 msgstr "Codigo completo"
 
-#: articulolist.cpp:370 comparticulolistview.cpp:42
-msgid "Codigo completo del articulo"
-msgstr "Codigo completo del articulo"
-
-#: ui_familiasbase.h:382 ui_articleeditbase.h:604
+#: ui_partidasbase.h:362
 msgid "Codigo completo:"
 msgstr "Codigo completo:"
 
-#: ui_articleeditbase.h:605
-msgid "Codigo del articulo:"
-msgstr "Codigo del articulo:"
-
-#: ui_familiasbase.h:381
+#: ui_partidasbase.h:361
 msgid "Codigo reducido:"
 msgstr "Codigo reducido:"
 
-#: ui_tiposarticulobase.h:243
-msgid "Codigo:"
-msgstr "Codigo:"
+#: presupuestocontableview.cpp:58 presupuestocontableview.cpp:67
+#: acontableview.cpp:63
+msgid "Concepto"
+msgstr "Concepto"
 
-#: ui_articleslistbase.h:347 ui_articleslistbase.h:352
+#: ui_presupuestocontablelistbase.h:276 ui_presupuestocontablelistbase.h:279
 msgid "Configurar listado"
 msgstr "Configurar listado"
 
-#: ui_familiasbase.h:378
-msgid "Contenido de la familia:"
-msgstr "Contenido de la familia:"
+#: ui_partidasbase.h:358
+msgid "Contenido de la partida"
+msgstr ""
 
-#: ui_tiposarticulobase.h:280
+#: ui_acontablebase.h:183 ui_presupuestocontablebase.h:343
 msgid "Ctrl+D"
 msgstr "Ctrl+D"
 
-#: ui_tiposarticulobase.h:292
-msgid "Ctrl+N"
-msgstr "Ctrl+N"
+#: ui_presupuestocontablebase.h:359
+msgid "Ctrl+G"
+msgstr "Ctrl+G"
 
-#: ui_tiposarticulobase.h:268
+#: ui_acontablebase.h:191
+msgid "Ctrl+I"
+msgstr "Ctrl+I"
+
+#: ui_presupuestocontablebase.h:351
+msgid "Ctrl+P"
+msgstr "Ctrl+P"
+
+#: ui_acontablebase.h:175 ui_presupuestocontablebase.h:335
 msgid "Ctrl+S"
 msgstr "Ctrl+S"
 
-#: tiposarticuloview.cpp:411
-msgid "Debe seleccionar un tipo"
-msgstr "Debe seleccionar un tipo"
+#: ui_presupuestocontablebase.h:363
+msgid "Datos &generales"
+msgstr "Datos &generales"
 
-#: familiasview.cpp:342 familiasview.cpp:504
-msgid "Debe seleccionar una familia"
-msgstr "Debe seleccionar una familia"
+#: partidasview.cpp:340 partidasview.cpp:462
+msgid "Debe seleccionar una partida"
+msgstr ""
 
-#: ui_articleeditbase.h:637
-msgid "Descripcio&n"
-msgstr "Descripcio&n"
-
-#: familiasview.cpp:51 tiposarticuloview.cpp:46
+#: partidasview.cpp:50
 msgid "Descripcion"
 msgstr "Descripcion"
 
-#: articulolist.cpp:372
-msgid "Descripcion abreviada del articulo"
-msgstr "Descripcion abreviada del articulo"
-
-#: articulolist.cpp:374
-msgid "Descripcion del tipo de articulo"
-msgstr "Descripcion del tipo de articulo"
-
-#: articulolist.cpp:375
-msgid "Descripcion tipo de I.V.A."
-msgstr "Descripcion tipo de I.V.A."
-
-#: ui_familiasbase.h:379 ui_tiposarticulobase.h:244
+#: ui_partidasbase.h:359 ui_presupuestocontablebase.h:360
 msgid "Descripcion:"
 msgstr "Descripcion:"
 
-#: familiasview.cpp:479 tiposarticuloview.cpp:385
+#: partidasview.cpp:437
 msgid "Desea eliminar"
 msgstr "Desea eliminar"
 
-#: familiasview.cpp:320 tiposarticuloview.cpp:291
+#: partidasview.cpp:318
 msgid "Desea guardar los cambios?"
 msgstr "Desea guardar los cambios?"
 
-#: articulolist.cpp:377
-msgid "Disponible en stock"
-msgstr "Disponible en stock"
-
-#: pluginbf_articulo.cpp:390 pluginbf_articulo.cpp:407 articulolist.cpp:290
-#: ui_articleslistbase.h:303 ui_articleslistbase.h:308
-msgid "Editar articulo"
-msgstr "Editar articulo"
-
-#: articulolist.cpp:237 articulolist.cpp:262
-msgid "Elija el archivo"
-msgstr "Elija el archivo"
-
-#: articulolist.cpp:178
-msgid "Error al borrar el articulo"
-msgstr "Error al borrar el articulo"
-
-#: familiasview.cpp:518 tiposarticuloview.cpp:425
-msgid "Error al borrar la familia"
-msgstr "Error al borrar la familia"
-
-#: articuloview.cpp:107
-msgid "Error al crear el articulo"
-msgstr "Error al crear el articulo"
-
-#: familiasview.cpp:431
-msgid "Error al crear la familia"
-msgstr "Error al crear la familia"
-
-#: familiasview.cpp:371
-msgid "Error al guardar la familia"
-msgstr "Error al guardar la familia"
-
-#: tiposarticuloview.cpp:139
-msgid "Error en la carga"
-msgstr "Error en la carga"
-
-#: tiposarticuloview.cpp:366
-msgid "Error en la creacion"
-msgstr "Error en la creacion"
-
-#: articulolist.cpp:168
-msgid "Esta a punto de borrar un articulo. Estos datos pueden dar problemas."
-msgstr "Esta a punto de borrar un articulo. Estos datos pueden dar problemas."
-
-#: articuloview.cpp:310
-msgid ""
-"Esta seguro que quiere borrar\n"
-"la imagen asociada a este articulo?"
+#: acontableview.cpp:48
+msgid "Diario Contable"
 msgstr ""
-"Esta seguro que quiere borrar\n"
-"la imagen asociada a este articulo?"
 
-#: ui_articleslistbase.h:388
-msgid "Exportar"
-msgstr "Exportar"
+#: ui_presupuestocontablelistbase.h:248 ui_presupuestocontablelistbase.h:251
+msgid "Editar"
+msgstr "Editar"
 
-#: ui_articleslistbase.h:369 ui_articleslistbase.h:374
-msgid "Exportar articulos"
-msgstr "Exportar articulos"
+#: presupuestocontablelist.cpp:197
+msgid "Editar presupuestocontable"
+msgstr ""
 
-#: articuloview.cpp:71
-msgid "Familia"
-msgstr "Familia"
+#: partidasview.cpp:476
+msgid "Error al borrar la partida"
+msgstr ""
 
-#: pluginbf_articulo.cpp:153 pluginbf_articulo.cpp:154 ui_familiasbase.h:320
-msgid "Familias"
-msgstr "Familias"
+#: presupuestocontablelist.cpp:150
+msgid "Error al borrar un presupuestocontable"
+msgstr ""
 
-#: ui_articleslistbase.h:336 ui_articleslistbase.h:341
+#: presupuestocontableview.cpp:90
+msgid "Error al crear el presupuesto"
+msgstr "Error al crear el presupuesto"
+
+#: acontableview.cpp:76
+msgid "Error al crear el recibo"
+msgstr ""
+
+#: partidasview.cpp:423
+msgid "Error al crear la partida"
+msgstr ""
+
+#: partidasview.cpp:364
+msgid "Error al guardar la partida"
+msgstr ""
+
+#: presupuestocontableview.cpp:57 acontableview.cpp:60
+msgid "Fecha"
+msgstr "Fecha"
+
+#: ui_presupuestocontablebase.h:361
+msgid "Fecha de creacion:"
+msgstr "Fecha creación:"
+
+#: ui_presupuestocontablelistbase.h:269 ui_presupuestocontablelistbase.h:272
 msgid "Filtrar listado"
 msgstr "Filtrar listado"
 
-#: ui_articleeditbase.h:584 ui_articleeditbase.h:589
-msgid "Guardar"
-msgstr "Guardar"
+#: acontableview.cpp:65
+msgid "Gasto"
+msgstr ""
 
-#: ui_familiasbase.h:346 ui_familiasbase.h:351
-msgid "Guardar Familia"
-msgstr "Guardar Familia"
+#: pluginbf_minicontabilidad.cpp:105
+msgid "Gestion"
+msgstr ""
 
-#: tiposarticuloview.cpp:290
-msgid "Guardar Tipo de Articulo"
-msgstr "Guardar Tipo de Articulo"
+#: pluginbf_minicontabilidad.cpp:432 pluginbf_minicontabilidad.cpp:447
+msgid "Gestionar partidas"
+msgstr ""
 
-#: ui_tiposarticulobase.h:259 ui_tiposarticulobase.h:264
-msgid "Guardar Tipo de articulo"
-msgstr "Guardar Tipo de articulo"
+#: ui_partidasbase.h:336 ui_partidasbase.h:339
+msgid "Guardar Partida"
+msgstr ""
 
-#: familiasview.cpp:319
-msgid "Guardar familia"
-msgstr "Guardar familia"
+#: ui_acontablebase.h:169 ui_acontablebase.h:172
+msgid "Guardar cobro"
+msgstr "Guardar cobro"
 
-#: articulolist.cpp:369 comparticulolistview.cpp:46
-msgid "ID articulo"
-msgstr "ID articulo"
+#: partidasview.cpp:317
+msgid "Guardar partida"
+msgstr ""
 
-#: comparticulolistview.cpp:45
-msgid "ID componente"
-msgstr "ID componente"
+#: ui_presupuestocontablebase.h:329 ui_presupuestocontablebase.h:332
+msgid "Guardar presupuesto"
+msgstr "Guardar presupuesto"
 
-#: tiposarticuloview.cpp:46
-msgid "Id"
-msgstr "Id"
+#: presupuestocontableview.cpp:63 presupuestocontableview.cpp:64
+msgid "ID lpresupuestocontable"
+msgstr ""
 
-#: familiasview.cpp:51
-msgid "Id familia"
-msgstr "Id familia"
+#: presupuestocontableview.cpp:65
+msgid "ID partida"
+msgstr ""
 
-#: articuloview.cpp:61
+#: presupuestocontableview.cpp:56
+msgid "ID presupuesto contable"
+msgstr ""
+
+#: presupuestocontablelist.cpp:218
+msgid "ID presupuestocontable"
+msgstr ""
+
+#: partidasview.cpp:50
+msgid "Id partida"
+msgstr ""
+
+#: acontableview.cpp:59
+msgid "Id. Partida"
+msgstr ""
+
+#: acontableview.cpp:58
 msgid "Identificador"
 msgstr "Identificador"
 
-#: ui_articleeditbase.h:607
-msgid "Imagen del articulo:"
-msgstr "Imagen del articulo:"
+#: ui_partidasbase.h:343 ui_partidasbase.h:346
+msgid "Imprimir Partidas"
+msgstr ""
 
-#: articuloview.cpp:279
-msgid "Imagenes (*.jpg)"
-msgstr "Imagenes (*.jpg)"
-
-#: ui_articleslistbase.h:380 ui_articleslistbase.h:385
-msgid "Importar articulos"
-msgstr "Importar articulos"
-
-#: ui_familiasbase.h:357 ui_familiasbase.h:362
-msgid "Imprimir Familias"
-msgstr "Imprimir Familias"
-
-#: ui_articleslistbase.h:325 ui_articleslistbase.h:330
+#: ui_presupuestocontablelistbase.h:262 ui_presupuestocontablelistbase.h:265
 msgid "Imprimir listado"
 msgstr "Imprimir listado"
 
-#: articuloview.cpp:73
-msgid "Inactivo"
-msgstr "Inactivo"
+#: ui_presupuestocontablebase.h:345 ui_presupuestocontablebase.h:348
+msgid "Imprimir presupuesto"
+msgstr "Imprimir presupuesto"
 
-#: articuloview.cpp:67
-msgid "Incluir en control de stock"
-msgstr "Incluir en control de stock"
+#: ui_partidasbase.h:363
+msgid "Imputacion Contable"
+msgstr "Imputación contable"
 
-#: articuloview.cpp:66
-msgid "Incluir en presentaciones"
-msgstr "Incluir en presentaciones"
+#: acontableview.cpp:64
+msgid "Ingreso"
+msgstr ""
 
-#: ui_articleeditbase.h:625
-msgid "Incluir este articulo en el catalogo."
-msgstr "Incluir este articulo en el catalogo."
+#: presupuestocontablelist.cpp:126
+msgid "Listado de Presupuestos Contables"
+msgstr ""
 
-#: ui_articleeditbase.h:615
-msgid "Informacion del articulo:"
-msgstr "Informacion del articulo:"
-
-#: ui_familiasbase.h:369 ui_familiasbase.h:374
+#: ui_partidasbase.h:352 ui_partidasbase.h:355
 msgid "Mostrar / Ocultar Detalle"
 msgstr "Mostrar / Ocultar Detalle"
 
-#: ui_tiposarticulobase.h:247 ui_tiposarticulobase.h:252
-msgid "Mostrar / Ocultar detalle"
-msgstr "Mostrar / Ocultar detalle"
+#: ui_presupuestocontablebase.h:353 ui_presupuestocontablebase.h:356
+msgid "Mostrar/Ocultar cabecera"
+msgstr "Mostrar/ocultar cabecera"
 
-#: articuloview.cpp:318
-msgid ""
-"No se ha podido borrar el archivo.\n"
-"Compruebe que el archivo tenga los permisos correctos."
-msgstr ""
-"No se ha podido borrar el archivo.\n"
-"Compruebe que el archivo tenga los permisos correctos."
-
-#: articuloview.cpp:285
-msgid ""
-"No se ha podido cargar la imagen.\n"
-"Compruebe que la imagen sea valida."
-msgstr ""
-"No se ha podido cargar la imagen.\n"
-"Compruebe que la imagen sea valida."
-
-#: articuloview.cpp:223
-msgid ""
-"No se ha podido guardar la imagen.\n"
-"Revise los permisos de escritura y que disponga\n"
-"de espacio libre suficiente en el disco duro."
-msgstr ""
-"No se ha podido guardar la imagen.\n"
-"Revise los permisos de escritura y que disponga\n"
-"de espacio libre suficiente en el disco duro."
-
-#: familiasview.cpp:51 familiasview.cpp:569
+#: partidasview.cpp:50 partidasview.cpp:527 presupuestocontableview.cpp:68
 msgid "Nombre"
 msgstr "Nombre"
 
-#: articuloview.cpp:63 articulolist.cpp:371 comparticulolistview.cpp:43
-msgid "Nombre del articulo"
-msgstr "Nombre del articulo"
+#: acontableview.cpp:62
+msgid "Nombre Partida"
+msgstr ""
 
-#: ui_articleeditbase.h:616
-msgid "Nombre del articulo:"
-msgstr "Nombre del articulo:"
-
-#: ui_familiasbase.h:380
+#: ui_partidasbase.h:360
 msgid "Nombre:"
 msgstr "Nombre:"
 
-#: ui_familiasbase.h:324 ui_familiasbase.h:329
-msgid "Nueva Familia"
-msgstr "Nueva Familia"
+#: ui_partidasbase.h:322 ui_partidasbase.h:325
+msgid "Nueva Partida"
+msgstr ""
 
-#: articulolist.cpp:311
-#, fuzzy
-msgid "Nuevo Articulo"
-msgstr "Nuevo articulo"
+#: ui_presupuestocontablelistbase.h:241 ui_presupuestocontablelistbase.h:244
+msgid "Nuevo"
+msgstr "Nuevo"
 
-#: ui_tiposarticulobase.h:283 ui_tiposarticulobase.h:288
-msgid "Nuevo Tipo de articulo"
-msgstr "Nuevo Tipo de articulo"
+#: ui_presupuestocontablebase.h:327
+msgid "Nuevo presupuesto a cliente"
+msgstr "Nuevo presupuesto a cliente"
 
-#: pluginbf_articulo.cpp:135 pluginbf_articulo.cpp:136
-#: pluginbf_articulo.cpp:388 pluginbf_articulo.cpp:413
-#: ui_articleeditbase.h:580 ui_articleslistbase.h:292
-#: ui_articleslistbase.h:297
-msgid "Nuevo articulo"
-msgstr "Nuevo articulo"
+#: presupuestocontablelist.cpp:181
+msgid "Nuevo presupuestocontable"
+msgstr ""
 
-#: articuloview.cpp:65
-msgid "Observaciones"
-msgstr "Observaciones"
+#: ui_partidasbase.h:319
+msgid "Partidas"
+msgstr ""
 
-#: articulolist.cpp:373
-msgid "Observaciones sobre el articulo"
-msgstr "Observaciones sobre el articulo"
+#: partidasview.cpp:122
+msgid "Partidas Contables"
+msgstr ""
 
-#: ui_articleeditbase.h:622
-msgid "Otros datos:"
-msgstr "Otros datos:"
+#: pluginbf_minicontabilidad.cpp:111 pluginbf_minicontabilidad.cpp:112
+msgid "Partidas contables"
+msgstr ""
 
-#: articulolist.cpp:376
-msgid "P.V.P. articulo"
-msgstr "P.V.P. articulo"
+#: presupuestocontableview.cpp:53
+msgid "Presupuesto Contable"
+msgstr ""
 
-#: articuloview.cpp:74
-msgid "P.V.P. base"
-msgstr "P.V.P. base"
+#: pluginbf_minicontabilidad.cpp:127
+msgid "Presupuesto Contables"
+msgstr ""
 
-#: ui_articleeditbase.h:620
-msgid "Peso (kg):"
-msgstr "Peso (kg):"
+#: pluginbf_minicontabilidad.cpp:128 ui_presupuestocontablelistbase.h:238
+msgid "Presupuestos Contables"
+msgstr ""
 
-#: articuloview.cpp:75
-msgid "Peso Unidad"
-msgstr "Peso Unidad"
+#: ui_presupuestocontablelistbase.h:290
+msgid "Pro&cesados"
+msgstr "Pro&cesados"
 
-#: ui_articleeditbase.h:618
-msgid "Precio venta. s/IVA:"
-msgstr "Precio venta. s/IVA:"
-
-#: ui_familiasbase.h:385
+#: ui_partidasbase.h:365
 msgid "Producto."
 msgstr "Producto."
 
-#: ui_articleslistbase.h:287
-msgid "S&olo presentables"
-msgstr "S&olo presentables"
+#: presupuestocontableview.cpp:69
+msgid "Saldo"
+msgstr "Saldo"
 
-#: pluginbf_articulo.cpp:392 pluginbf_articulo.cpp:411
-msgid "Seleccionar articulo"
-msgstr "Seleccionar artículo"
+#: pluginbf_minicontabilidad.cpp:433 pluginbf_minicontabilidad.cpp:449
+msgid "Seleccionar partida"
+msgstr ""
 
-#: articuloview.cpp:277
-msgid "Seleccione un archivo de imagen"
-msgstr "Seleccione un archivo de imagen"
+#: presupuestocontablelist.cpp:61
+msgid "Selector de presupuesto contable"
+msgstr ""
 
-#: articulolist.cpp:74
-msgid "Selector de articulos"
-msgstr "Selector de articulos"
-
-#: ui_familiasbase.h:384
+#: ui_partidasbase.h:364
 msgid "Servicio."
 msgstr "Servicio."
 
-#: ui_articleslistbase.h:285
-msgid "Solo usados"
-msgstr "Solo usados"
-
-#: articuloview.cpp:72
-msgid "Stock"
-msgstr "Stock"
-
-#: ui_articleeditbase.h:606
-msgid "Subcodigo:"
-msgstr "Subcodigo:"
-
-#: ui_articleeditbase.h:617
-msgid "Texto para etiqueta:"
-msgstr "Texto para etiqueta:"
-
-#: articulolist.cpp:161
-msgid "Tiene que seleccionar un articulo"
-msgstr "Tiene que seleccionar un articulo"
-
-#: ui_familiasbase.h:383
-msgid "Tipo Articulos"
-msgstr "Tipo Articulos"
-
-#: articuloview.cpp:69
-msgid "Tipo de I.V.A."
-msgstr "Tipo de I.V.A."
-
-#: ui_articleeditbase.h:619
-msgid "Tipo de I.V.A.:"
-msgstr "Tipo de I.V.A.:"
-
-#: articuloview.cpp:68
-msgid "Tipo de articulo"
-msgstr "Tipo de articulo"
-
-#: ui_tiposarticulobase.h:242
-msgid "Tipo de articulo:"
-msgstr "Tipo de articulo:"
-
-#: pluginbf_articulo.cpp:144 pluginbf_articulo.cpp:145
-#, fuzzy
-msgid "Tipos de Articulo"
-msgstr "Tipos de articulo"
-
-#: ui_tiposarticulobase.h:238
-msgid "Tipos de articulo"
-msgstr "Tipos de articulo"
-
-#: ui_articleeditbase.h:621
-msgid "Volumen (cm3):"
-msgstr "Volumen (cm3):"
-
-#: articuloview.cpp:76
-msgid "Volumen Unidad"
-msgstr "Volumen Unidad"
-
-#: familiasview.cpp:488 tiposarticuloview.cpp:394
+#: partidasview.cpp:446
 msgid "no se ha podido borrar"
 msgstr "no se ha podido borrar"
 
+#~ msgid "&Articulos"
+#~ msgstr "&Articulos"
+
+#~ msgid "&Datos generales"
+#~ msgstr "&Datos generales"
+
+#, fuzzy
+#~ msgid "&Familias"
+#~ msgstr "Familias"
+
+#~ msgid "&Incluir en el catalogo."
+#~ msgstr "&Incluir en el catalogo."
+
+#, fuzzy
+#~ msgid "&Nuevo Articulo"
+#~ msgstr "Nuevo articulo"
+
+#, fuzzy
+#~ msgid "&Tipos de Articulo"
+#~ msgstr "&Tipos de articulo"
+
+#~ msgid "Abreviacion"
+#~ msgstr "Abreviacion"
+
+#~ msgid "Activar el &control de stock."
+#~ msgstr "Activar el &control de stock."
+
+#~ msgid "Activar el control de stock para este articulo."
+#~ msgstr "Activar el control de stock para este articulo."
+
+#~ msgid "Alt+O"
+#~ msgstr "Alt+O"
+
+#~ msgid "Articulo"
+#~ msgstr "Articulo"
+
+#~ msgid "Articulos"
+#~ msgstr "Articulos"
+
+#~ msgid "Borrar Familia"
+#~ msgstr "Borrar Familia"
+
+#~ msgid "Borrar Tipo de articulo"
+#~ msgstr "Borrar Tipo de articulo"
+
+#~ msgid "Borrar articulo"
+#~ msgstr "Borrar articulo"
+
+#~ msgid "Borrar imagen"
+#~ msgstr "Borrar imagen"
+
+#~ msgid "Borrar imagen del articulo"
+#~ msgstr "Borrar imagen del articulo"
+
+#~ msgid "C&omponentes"
+#~ msgstr "C&omponentes"
+
+#~ msgid "Cam&biar imagen"
+#~ msgstr "Cam&biar imagen"
+
+#~ msgid "Cantidad de componente de articulo"
+#~ msgstr "Cantidad de componente de articulo"
+
+#~ msgid "Clientes (*.xml)"
+#~ msgstr "Clientes (*.xml)"
+
+#~ msgid "Codigo completo del articulo"
+#~ msgstr "Codigo completo del articulo"
+
+#~ msgid "Codigo del articulo:"
+#~ msgstr "Codigo del articulo:"
+
+#~ msgid "Codigo:"
+#~ msgstr "Codigo:"
+
+#~ msgid "Contenido de la familia:"
+#~ msgstr "Contenido de la familia:"
+
+#~ msgid "Ctrl+N"
+#~ msgstr "Ctrl+N"
+
+#~ msgid "Debe seleccionar un tipo"
+#~ msgstr "Debe seleccionar un tipo"
+
+#~ msgid "Debe seleccionar una familia"
+#~ msgstr "Debe seleccionar una familia"
+
+#~ msgid "Descripcio&n"
+#~ msgstr "Descripcio&n"
+
+#~ msgid "Descripcion abreviada del articulo"
+#~ msgstr "Descripcion abreviada del articulo"
+
+#~ msgid "Descripcion del tipo de articulo"
+#~ msgstr "Descripcion del tipo de articulo"
+
+#~ msgid "Descripcion tipo de I.V.A."
+#~ msgstr "Descripcion tipo de I.V.A."
+
+#~ msgid "Disponible en stock"
+#~ msgstr "Disponible en stock"
+
+#~ msgid "Editar articulo"
+#~ msgstr "Editar articulo"
+
+#~ msgid "Elija el archivo"
+#~ msgstr "Elija el archivo"
+
+#~ msgid "Error al borrar el articulo"
+#~ msgstr "Error al borrar el articulo"
+
+#~ msgid "Error al borrar la familia"
+#~ msgstr "Error al borrar la familia"
+
+#~ msgid "Error al crear el articulo"
+#~ msgstr "Error al crear el articulo"
+
+#~ msgid "Error al crear la familia"
+#~ msgstr "Error al crear la familia"
+
+#~ msgid "Error al guardar la familia"
+#~ msgstr "Error al guardar la familia"
+
+#~ msgid "Error en la carga"
+#~ msgstr "Error en la carga"
+
+#~ msgid "Error en la creacion"
+#~ msgstr "Error en la creacion"
+
+#~ msgid ""
+#~ "Esta a punto de borrar un articulo. Estos datos pueden dar problemas."
+#~ msgstr ""
+#~ "Esta a punto de borrar un articulo. Estos datos pueden dar problemas."
+
+#~ msgid ""
+#~ "Esta seguro que quiere borrar\n"
+#~ "la imagen asociada a este articulo?"
+#~ msgstr ""
+#~ "Esta seguro que quiere borrar\n"
+#~ "la imagen asociada a este articulo?"
+
+#~ msgid "Exportar"
+#~ msgstr "Exportar"
+
+#~ msgid "Exportar articulos"
+#~ msgstr "Exportar articulos"
+
+#~ msgid "Familia"
+#~ msgstr "Familia"
+
+#~ msgid "Familias"
+#~ msgstr "Familias"
+
+#~ msgid "Guardar"
+#~ msgstr "Guardar"
+
+#~ msgid "Guardar Familia"
+#~ msgstr "Guardar Familia"
+
+#~ msgid "Guardar Tipo de Articulo"
+#~ msgstr "Guardar Tipo de Articulo"
+
+#~ msgid "Guardar Tipo de articulo"
+#~ msgstr "Guardar Tipo de articulo"
+
+#~ msgid "Guardar familia"
+#~ msgstr "Guardar familia"
+
+#~ msgid "ID articulo"
+#~ msgstr "ID articulo"
+
+#~ msgid "ID componente"
+#~ msgstr "ID componente"
+
+#~ msgid "Id"
+#~ msgstr "Id"
+
+#~ msgid "Id familia"
+#~ msgstr "Id familia"
+
+#~ msgid "Imagen del articulo:"
+#~ msgstr "Imagen del articulo:"
+
+#~ msgid "Imagenes (*.jpg)"
+#~ msgstr "Imagenes (*.jpg)"
+
+#~ msgid "Importar articulos"
+#~ msgstr "Importar articulos"
+
+#~ msgid "Imprimir Familias"
+#~ msgstr "Imprimir Familias"
+
+#~ msgid "Inactivo"
+#~ msgstr "Inactivo"
+
+#~ msgid "Incluir en control de stock"
+#~ msgstr "Incluir en control de stock"
+
+#~ msgid "Incluir en presentaciones"
+#~ msgstr "Incluir en presentaciones"
+
+#~ msgid "Incluir este articulo en el catalogo."
+#~ msgstr "Incluir este articulo en el catalogo."
+
+#~ msgid "Informacion del articulo:"
+#~ msgstr "Informacion del articulo:"
+
+#~ msgid "Mostrar / Ocultar detalle"
+#~ msgstr "Mostrar / Ocultar detalle"
+
+#~ msgid ""
+#~ "No se ha podido borrar el archivo.\n"
+#~ "Compruebe que el archivo tenga los permisos correctos."
+#~ msgstr ""
+#~ "No se ha podido borrar el archivo.\n"
+#~ "Compruebe que el archivo tenga los permisos correctos."
+
+#~ msgid ""
+#~ "No se ha podido cargar la imagen.\n"
+#~ "Compruebe que la imagen sea valida."
+#~ msgstr ""
+#~ "No se ha podido cargar la imagen.\n"
+#~ "Compruebe que la imagen sea valida."
+
+#~ msgid ""
+#~ "No se ha podido guardar la imagen.\n"
+#~ "Revise los permisos de escritura y que disponga\n"
+#~ "de espacio libre suficiente en el disco duro."
+#~ msgstr ""
+#~ "No se ha podido guardar la imagen.\n"
+#~ "Revise los permisos de escritura y que disponga\n"
+#~ "de espacio libre suficiente en el disco duro."
+
+#~ msgid "Nombre del articulo"
+#~ msgstr "Nombre del articulo"
+
+#~ msgid "Nombre del articulo:"
+#~ msgstr "Nombre del articulo:"
+
+#~ msgid "Nueva Familia"
+#~ msgstr "Nueva Familia"
+
+#, fuzzy
+#~ msgid "Nuevo Articulo"
+#~ msgstr "Nuevo articulo"
+
+#~ msgid "Nuevo Tipo de articulo"
+#~ msgstr "Nuevo Tipo de articulo"
+
+#~ msgid "Nuevo articulo"
+#~ msgstr "Nuevo articulo"
+
 #~ msgid "Nuevo cliente"
 #~ msgstr "Nuevo cliente"
+
+#~ msgid "Observaciones"
+#~ msgstr "Observaciones"
+
+#~ msgid "Observaciones sobre el articulo"
+#~ msgstr "Observaciones sobre el articulo"
+
+#~ msgid "Otros datos:"
+#~ msgstr "Otros datos:"
+
+#~ msgid "P.V.P. articulo"
+#~ msgstr "P.V.P. articulo"
+
+#~ msgid "P.V.P. base"
+#~ msgstr "P.V.P. base"
+
+#~ msgid "Peso (kg):"
+#~ msgstr "Peso (kg):"
+
+#~ msgid "Peso Unidad"
+#~ msgstr "Peso Unidad"
+
+#~ msgid "Precio venta. s/IVA:"
+#~ msgstr "Precio venta. s/IVA:"
+
+#~ msgid "S&olo presentables"
+#~ msgstr "S&olo presentables"
+
+#~ msgid "Seleccionar articulo"
+#~ msgstr "Seleccionar artículo"
+
+#~ msgid "Seleccione un archivo de imagen"
+#~ msgstr "Seleccione un archivo de imagen"
+
+#~ msgid "Selector de articulos"
+#~ msgstr "Selector de articulos"
+
+#~ msgid "Solo usados"
+#~ msgstr "Solo usados"
+
+#~ msgid "Stock"
+#~ msgstr "Stock"
+
+#~ msgid "Subcodigo:"
+#~ msgstr "Subcodigo:"
+
+#~ msgid "Texto para etiqueta:"
+#~ msgstr "Texto para etiqueta:"
+
+#~ msgid "Tiene que seleccionar un articulo"
+#~ msgstr "Tiene que seleccionar un articulo"
+
+#~ msgid "Tipo Articulos"
+#~ msgstr "Tipo Articulos"
+
+#~ msgid "Tipo de I.V.A."
+#~ msgstr "Tipo de I.V.A."
+
+#~ msgid "Tipo de I.V.A.:"
+#~ msgstr "Tipo de I.V.A.:"
+
+#~ msgid "Tipo de articulo"
+#~ msgstr "Tipo de articulo"
+
+#~ msgid "Tipo de articulo:"
+#~ msgstr "Tipo de articulo:"
+
+#, fuzzy
+#~ msgid "Tipos de Articulo"
+#~ msgstr "Tipos de articulo"
+
+#~ msgid "Tipos de articulo"
+#~ msgstr "Tipos de articulo"
+
+#~ msgid "Volumen (cm3):"
+#~ msgstr "Volumen (cm3):"
+
+#~ msgid "Volumen Unidad"
+#~ msgstr "Volumen Unidad"

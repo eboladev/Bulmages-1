@@ -1,0 +1,319 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: info@iglues.org\n"
+"POT-Creation-Date: 2009-10-19 01:16+0200\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: reciboslist.cpp:81 emitirrecibosview.cpp:63
+msgid "Actividad:"
+msgstr ""
+
+#: reciboslist.cpp:124
+msgid "Todos los recibos"
+msgstr ""
+
+#: reciboslist.cpp:125
+msgid "Recibos pagados"
+msgstr ""
+
+#: reciboslist.cpp:126
+msgid "Recibos no pagados"
+msgstr ""
+
+#: reciboslist.cpp:209 pluginbf_recibo.cpp:117 pluginbf_recibo.cpp:118
+#: ui_reciboslistbase.h:305
+msgid "Recibos"
+msgstr ""
+
+#: reciboslist.cpp:226
+msgid "Debe seleccionar una linea"
+msgstr ""
+
+#: reciboslist.cpp:241
+msgid "Error al borrar el cobro a cliente"
+msgstr ""
+
+#: reciboslist.cpp:269
+msgid "Debe seleccionar una fila primero"
+msgstr ""
+
+#: reciboslist.cpp:287
+msgid "Editar recibo"
+msgstr ""
+
+#: reciboslist.cpp:288
+msgid "Borrar recibo"
+msgstr ""
+
+#: reciboslist.cpp:341
+msgid "ID Recibo"
+msgstr ""
+
+#: reciboslist.cpp:342 emitirrecibosview.cpp:57 reciboview.cpp:52
+msgid "Cantidad"
+msgstr ""
+
+#: reciboslist.cpp:343 reciboview.cpp:57 ui_recibobase.h:349
+msgid "Pagado"
+msgstr ""
+
+#: reciboslist.cpp:344 ui_recibobase.h:350
+msgid "Fecha"
+msgstr ""
+
+#: reciboslist.cpp:345
+msgid "ID Tutor"
+msgstr ""
+
+#: reciboslist.cpp:346 ui_recibobase.h:351
+msgid "Forma de Pago"
+msgstr ""
+
+#: reciboslist.cpp:347
+msgid "Tutor"
+msgstr ""
+
+#: pluginbf_recibo.cpp:115
+msgid "&Recibos"
+msgstr ""
+
+#: pluginbf_recibo.cpp:123
+msgid "&Nuevo recibo"
+msgstr ""
+
+#: pluginbf_recibo.cpp:125 pluginbf_recibo.cpp:126
+msgid "Nuevo recibo"
+msgstr ""
+
+#: pluginbf_recibo.cpp:132
+msgid "Recibos &Automaticos"
+msgstr ""
+
+#: pluginbf_recibo.cpp:134 pluginbf_recibo.cpp:135
+msgid "Emitir recibos"
+msgstr ""
+
+#: emitirrecibosview.cpp:53
+msgid "EmitirRecibos"
+msgstr ""
+
+#: emitirrecibosview.cpp:56 reciboview.cpp:51 reciboview.cpp:74
+msgid "ID recibo"
+msgstr ""
+
+#: emitirrecibosview.cpp:58
+msgid "Id cliente"
+msgstr ""
+
+#: emitirrecibosview.cpp:59
+msgid "Id Forma PAgo"
+msgstr ""
+
+#: emitirrecibosview.cpp:73 reciboview.cpp:88
+msgid "Error al crear el recibo"
+msgstr ""
+
+#: emitirrecibosview.cpp:161
+msgid "Terminado"
+msgstr ""
+
+#: reciboview.cpp:48
+msgid "Recibo"
+msgstr ""
+
+#: reciboview.cpp:53
+msgid "ID cliente"
+msgstr ""
+
+#: reciboview.cpp:54
+msgid "ID Forma Pago"
+msgstr ""
+
+#: reciboview.cpp:55
+msgid "Descripcion"
+msgstr ""
+
+#: reciboview.cpp:56
+msgid "Fecha de creacion"
+msgstr ""
+
+#: reciboview.cpp:65
+msgid "Tutor/Socio:"
+msgstr ""
+
+#: reciboview.cpp:73
+msgid "Identificador"
+msgstr ""
+
+#: reciboview.cpp:75
+msgid "Cantidad Linea Recibo"
+msgstr ""
+
+#: reciboview.cpp:76
+msgid "Concepto"
+msgstr ""
+
+#: reciboview.cpp:119
+msgid "Tiene que guardar el documento antes de poder imprimirlo."
+msgstr ""
+
+#: ui_recibobase.h:323
+msgid "Nuevo Recibo"
+msgstr ""
+
+#: ui_recibobase.h:326 ui_recibobase.h:329
+msgid "Guardar cobro"
+msgstr ""
+
+#: ui_recibobase.h:332
+msgid "Ctrl+S"
+msgstr ""
+
+#: ui_recibobase.h:334 ui_recibobase.h:337 ui_recibobase.h:342
+#: ui_recibobase.h:345
+msgid "Borrar cobro"
+msgstr ""
+
+#: ui_recibobase.h:340 ui_reciboslistbase.h:334
+msgid "Ctrl+D"
+msgstr ""
+
+#: ui_recibobase.h:348
+msgid "Ctrl+I"
+msgstr ""
+
+#: ui_recibobase.h:352
+msgid "Total"
+msgstr ""
+
+#: ui_recibobase.h:353
+msgid "&Datos generales"
+msgstr ""
+
+#: ui_recibobase.h:354
+msgid "Comentarios:"
+msgstr ""
+
+#: ui_recibobase.h:355
+msgid "Otros datos"
+msgstr ""
+
+#: ui_recibobase.h:356
+msgid "&Aceptar"
+msgstr ""
+
+#: ui_recibobase.h:357
+msgid "&Cancelar"
+msgstr ""
+
+#: ui_reciboslistbase.h:306 ui_emitirrecibosbase.h:251
+msgid "Fecha inicial:"
+msgstr ""
+
+#: ui_reciboslistbase.h:307 ui_emitirrecibosbase.h:252
+msgid "Fecha final:"
+msgstr ""
+
+#: ui_reciboslistbase.h:308
+msgid "Banco:"
+msgstr ""
+
+#: ui_reciboslistbase.h:309
+msgid "Mostrar"
+msgstr ""
+
+#: ui_reciboslistbase.h:312 ui_reciboslistbase.h:315
+msgid "Nuevo Actividad"
+msgstr ""
+
+#: ui_reciboslistbase.h:318 ui_emitirrecibosbase.h:246
+msgid "Ctrl+N"
+msgstr ""
+
+#: ui_reciboslistbase.h:320 ui_reciboslistbase.h:323
+msgid "Editar Actividad"
+msgstr ""
+
+#: ui_reciboslistbase.h:326
+msgid "Ctrl+E"
+msgstr ""
+
+#: ui_reciboslistbase.h:328 ui_reciboslistbase.h:331
+msgid "Borrar Actividad"
+msgstr ""
+
+#: ui_reciboslistbase.h:336 ui_reciboslistbase.h:339
+msgid "Imprimir listado"
+msgstr ""
+
+#: ui_reciboslistbase.h:342
+msgid "Ctrl+P"
+msgstr ""
+
+#: ui_reciboslistbase.h:344 ui_reciboslistbase.h:347
+msgid "Filtrar Actividades"
+msgstr ""
+
+#: ui_reciboslistbase.h:350
+msgid "Ctrl+F"
+msgstr ""
+
+#: ui_reciboslistbase.h:352 ui_reciboslistbase.h:355
+msgid "Configurar listado"
+msgstr ""
+
+#: ui_reciboslistbase.h:358
+msgid "Ctrl+B"
+msgstr ""
+
+#: ui_reciboslistbase.h:360 ui_reciboslistbase.h:363
+msgid "Actualizar listado"
+msgstr ""
+
+#: ui_reciboslistbase.h:366
+msgid "F5"
+msgstr ""
+
+#: ui_reciboslistbase.h:367
+msgid "Buscar:"
+msgstr ""
+
+#: ui_emitirrecibosbase.h:237
+msgid "Recibos Automaticos"
+msgstr ""
+
+#: ui_emitirrecibosbase.h:240
+msgid "Emitir Recibos"
+msgstr ""
+
+#: ui_emitirrecibosbase.h:243
+msgid "Emiitr Recibos"
+msgstr ""
+
+#: ui_emitirrecibosbase.h:247
+msgid "Emitir las Cuotas de Socios"
+msgstr ""
+
+#: ui_emitirrecibosbase.h:248
+msgid "Emitir todas las Actividades"
+msgstr ""
+
+#: ui_emitirrecibosbase.h:249
+msgid "Emitir sólo la actividad Seleccionada"
+msgstr ""
+
+#: ui_emitirrecibosbase.h:250
+msgid "Notificar por e-mail"
+msgstr ""
