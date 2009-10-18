@@ -35,7 +35,7 @@
 #include "bccompany.h"
 #include "bldatesearch.h"
 #include "bcbuscarcuenta.h"
-
+#include "pluginbc_mayor.h"
 
 /// Constructor de la clase que inicializa los parametros necesarios para esta
 /** @param emp Empresa con la que va a trabajar esta clase.
@@ -87,7 +87,7 @@ void BcExtractoImprimirView::accept()
 QString BcExtractoImprimirView::montaQuery()
 {
     _depura ( "BcExtractoImprimirView::montaQuery", 0 );
-    BcExtractoView *extracto = ( ( BcCompany * ) mainCompany() ) ->extractoempresa();
+    BcExtractoView *extracto = g_mayor;
     /// Cogemos los valores del formulario para poder hacer un filtraje adecuado.
     QString finicial = extracto->m_fechainicial1->text();
     QString ffinal = extracto->m_fechafinal1->text();
@@ -159,7 +159,7 @@ void BcExtractoImprimirView::presentar ( const QString &tipus )
     int activo;
     QString cad;
     BlDbRecordSet *cursoraux, *cursoraux1, *cursoraux2, *cursoraux3;
-    BcExtractoView *extracto = ( ( BcCompany * ) mainCompany() ) ->extractoempresa();
+    BcExtractoView *extracto = g_mayor;
     QString finicial = extracto->m_fechainicial1->text();
     QString ffinal = extracto->m_fechafinal1->text();
     QString cinicial = extracto->m_codigoinicial->text();

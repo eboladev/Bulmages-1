@@ -28,13 +28,12 @@
 #include "blfunctions.h"
 #include "bccompany.h"
 #include "bcasientoview.h"
-#include "bcextractoview.h"
 #include "bltexteditdelegate.h"
 #include "bldoublespinbox.h"
 #include "bcbuscarcanal.h"
 #include "bcbuscarcentrocoste.h"
 #include "bccuentalistview.h"
-
+#include "bcbuscarcuenta.h"
 
 /// Constructor de la clase
 /**
@@ -351,6 +350,7 @@ void BcSubForm::boton_asiento()
 void BcSubForm::boton_extracto1 ( int tipo )
 {
     _depura ( "BcSubForm::boton_extracto1", 0 );
+/*
     BcCompany *companyact = ( BcCompany * ) mainCompany();
     QDate fecha1, fecha2, fechaact;
     QString fecha = dbValue ( "fecha" ).left ( 10 );
@@ -375,6 +375,7 @@ void BcSubForm::boton_extracto1 ( int tipo )
         companyact->extractoempresa() ->accept();
         companyact->libromayor();
     } // end if
+*/
     _depura ( "END BcSubForm::boton_extracto1", 0 );
 }
 

@@ -46,7 +46,7 @@ class BcAsientoView;
 class BcAsientoListView;
 class BcCuentaView;
 class BlCountryView;
-class BcExtractoView;
+/*class BcExtractoView;*/
 class BcPlanContableListView;
 class BcBulmaCont;
 
@@ -70,7 +70,7 @@ private:
     int ano;
     QString contrasenya;
 //    BcDiarioView *diario;
-    BcExtractoView *extracto;
+//    BcExtractoView *extracto;
     BcAsientoView *introapunts2;
     BcAsientoListView *m_listasientos;
     BcPlanContableListView *m_listcuentas;
@@ -88,7 +88,7 @@ public:
     virtual ~BcCompany();
     /// Devuelve un puntero a la clase de la base de datos.
     BlPostgreSqlClient *bdempresa();
-    BcExtractoView *extractoempresa();
+//    BcExtractoView *extractoempresa();
 //    BcDiarioView *diarioempresa();
     BcAsientoView *intapuntsempresa();
     BcAsientoView *intapuntsempresa2();

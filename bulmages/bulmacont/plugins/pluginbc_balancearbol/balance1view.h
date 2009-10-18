@@ -29,7 +29,6 @@
 
 #include "qlayout.h"
 #include "bcplancontablelistview.h"
-#include "bcextractoview.h"
 #include "blpostgresqlclient.h"
 #include "blconfiguration.h"
 #include "ui_balancetreebase.h"

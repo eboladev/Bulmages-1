@@ -1,4 +1,4 @@
-/***************************************************************************
+/**************************************************************************
  *   Copyright (C) 2002 by Tomeu Borras Riera                              *
  *   tborras@conetxia.com                                                  *
  *                                                                         *
@@ -44,7 +44,6 @@
 #include "bcmodelo347listview.h"
 #include "blcountryview.h"
 #include "bcbulmacont.h"
-#include "bcextractoview.h"
 
 #ifndef WIN32
 #include <unistd.h>
@@ -72,7 +71,6 @@ BcCompany ::BcCompany ( BcBulmaCont *bcont ) : BlMainCompany()
 {
     _depura ( "BcCompany ::BcCompany ", 0 );
     m_bulmacont = bcont;
-    extracto = NULL;
     selccostes  = NULL;
     selcanales = NULL;
     introapunts2 = NULL;
@@ -110,11 +108,12 @@ BlPostgreSqlClient *BcCompany::bdempresa()
 /**
 \return
 **/
+/*
 BcExtractoView *BcCompany::extractoempresa()
 {
     return extracto;
 }
-
+*/
 
 ///
 /**
@@ -194,8 +193,7 @@ int BcCompany::createMainWindows ( BlSplashScreen *splash )
         BlDbRecordSet *cursoraux1 = loadQuery ( query );
         numdigitos = cursoraux1->valor ( "numdigitos" ).toInt();
         delete cursoraux1;
-        if ( extracto != NULL ) {
-            delete extracto;
+        if ( selccostes != NULL ) {
             delete selccostes;
             delete selcanales;
             delete m_listasientos;
@@ -209,12 +207,13 @@ int BcCompany::createMainWindows ( BlSplashScreen *splash )
 
         /// Establecemos el porcentaje del carga de informaci&oacute;n en las diferentes ventanas.
         /// pb = 0%
+/*
         splash->mensaje ( _ ( "Inicializando extracto" ) );
         splash->setBarraProgreso ( 7 );
         m_progressbar->setValue ( 0 );
         extracto = new BcExtractoView ( this, 0 );
         m_pWorkspace->addWindow ( extracto );
-
+*/
 
         /// pb = 20%
 /*
@@ -282,7 +281,7 @@ int BcCompany::createMainWindows ( BlSplashScreen *splash )
 void BcCompany::maximiza()
 {
     _depura ( "BcCompany::maximiza", 0 );
-    extracto->showMaximized();
+    m_listcuentas->showMaximized();
     _depura ( "END BcCompany::maximiza", 0 );
 }
 
@@ -517,7 +516,9 @@ int BcCompany::compbalance()
 int BcCompany::libromayor()
 {
     _depura ( "BcCompany::libromayor", 0 );
+/*
     extracto->setWindowState ( ( extracto->windowState() &  ~Qt::WindowMinimized ) | Qt::WindowActive );
+*/
     _depura ( "END BcCompany::libromayor", 0 );
     return 0;
 }
@@ -532,9 +533,7 @@ int BcCompany::boton_siguiente()
     _depura ( "BcCompany::boton_siguiente", 0 );
     QWidget *widget;
     widget = m_pWorkspace->activeWindow();
-    if ( widget == extracto ) {
-        extracto->boton_siguiente();
-    } else if ( widget == introapunts2 ) {
+    if ( widget == introapunts2 ) {
         introapunts2->boton_siguiente();
     } // end if
     _depura ( "END BcCompany::boton_siguiente", 0 );
@@ -551,9 +550,7 @@ int BcCompany::boton_anterior()
     _depura ( "BcCompany::boton_anterior", 0 );
     QWidget *widget;
     widget = m_pWorkspace->activeWindow();
-    if ( widget == extracto ) {
-        extracto->boton_anterior();
-    } else if ( widget == introapunts2 ) {
+    if ( widget == introapunts2 ) {
         introapunts2->boton_anterior();
     } // end if
     _depura ( "END BcCompany::boton_anterior", 0 );
@@ -575,7 +572,7 @@ int BcCompany::boton_guardar()
         diario->boton_guardar();
     } else {
 */
-        extracto->boton_guardar();
+//        extracto->boton_guardar();
 //    } // end if
     _depura ( "END BcCompany::boton_guardar", 0 );
     return 0;
@@ -597,9 +594,11 @@ int BcCompany::boton_imprimir()
     } else
 */
 
+/*
     if ( widget == extracto ) {
         extracto->boton_imprimir();
     } // end if
+*/
     _depura ( "END BcCompany::boton_imprimir", 0 );
     return 0;
 }
@@ -619,9 +618,11 @@ int BcCompany::boton_reload()
         diario->accept();
     } else
 */
+/*
  if ( widget == extracto ) {
         extracto->accept();
     } // end if
+*/
     _depura ( "END BcCompany::boton_reload", 0 );
     return 0;
 }
@@ -638,9 +639,13 @@ int BcCompany::boton_primero()
     widget = m_pWorkspace->activeWindow();
     if ( widget == introapunts2 ) {
         introapunts2->boton_inicio();
-    } else if ( widget == extracto ) {
+    }
+
+/*
+ else if ( widget == extracto ) {
         extracto->boton_inicio();
     } // end if
+*/
     _depura ( "END BcCompany::boton_primero", 0 );
     return 0;
 }
@@ -657,9 +662,13 @@ int BcCompany::boton_ultimo()
     widget = m_pWorkspace->activeWindow();
     if ( widget == introapunts2 ) {
         introapunts2->boton_fin();
-    } else if ( widget == extracto ) {
+    }
+
+/*
+ else if ( widget == extracto ) {
         extracto->boton_fin();
     } // end if
+*/
     _depura ( "END BcCompany::boton_ultimo", 0 );
     return 0;
 }

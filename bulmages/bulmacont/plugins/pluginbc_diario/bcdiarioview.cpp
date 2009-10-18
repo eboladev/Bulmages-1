@@ -34,7 +34,6 @@
 #include "bcdiarioimprimir2txt.h"
 #include "blconfiguration.h"
 #include "bcasientoview.h"
-#include "bcextractoview.h"
 #include "bccentrocosteseleccionarview.h"
 #include "bccanalseleccionarview.h"
 #include "bldatesearch.h"

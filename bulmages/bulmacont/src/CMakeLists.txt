@@ -31,7 +31,6 @@ set(bulmacont_MOCS bcbulmacont.h
            bcaboutview.h
            bcplancontablelistview.h
            bccuentaview.h
-           bcextractoview.h
            bcasientointeligenteview.h
            bcasientolistview.h
            bcregistroivaimprimirview.h
@@ -42,7 +41,6 @@ set(bulmacont_MOCS bcbulmacont.h
            bccanalview.h
            bccentrocosteview.h
            bcconfiguracionview.h
-           bcextractoimprimirview.h
            bccambiacuentaview.h
            bcasientoduplicarview.h
            bcamortizacionview.h
@@ -59,7 +57,6 @@ set(bulmacont_MOCS bcbulmacont.h
            bcasientoview.h
            bcasientosubform.h
            bcsubform.h
-           bcextractosubform.h
            bcasientolistsubform.h
            bcbuscarcentrocoste.h
            bcbuscarcanal.h 

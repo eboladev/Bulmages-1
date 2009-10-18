@@ -27,6 +27,7 @@ add_subdirectory(pluginbc_balancearbol)
 add_subdirectory(pluginbc_caaslods)
 add_subdirectory(pluginbc_balance)
 add_subdirectory(pluginbc_diario)
+add_subdirectory(pluginbc_mayor)
 add_subdirectory(pluginbc_cuentaresumen)
 
 # pluginadocumental deprecated.
