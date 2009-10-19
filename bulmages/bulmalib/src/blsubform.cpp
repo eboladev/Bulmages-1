@@ -2700,6 +2700,34 @@ QString BlSubForm::dbFieldNameByColumnId ( int columna )
 }
 
 
+/// Devuelve el nombre visual de la columna indicada
+/**
+  No usamos directamente la columna actual, ya que en ocasiones puede no ser correcta.
+   \return Nombre visual de la columna
+**/
+QString BlSubForm::dbFieldViewNameByColumnId(int columna)
+{
+   _depura("BlSubForm::dbFieldViewNameByColumnId", 0);
+
+   _depura("END BlSubForm::dbFieldViewNameByColumnId", 0);
+   return m_lcabecera.at(columna)->nompresentacion();
+}
+
+
+/// Devuelve el tipo de la columna indicada
+/**
+    No usamos directamente la columna actual, ya que en ocasiones puede no ser correcta.
+   \return Tipo de datos del campo
+**/
+BlDbField::DbType BlSubForm::dbFieldTypeByColumnId(int columna)
+{
+   _depura("BlSubForm::dbFieldTypeByColumnId", 0);
+
+   _depura("END BlSubForm::dbFieldTypeByColumnId", 0);
+   return m_lcabecera.at(columna)->dbFieldType();
+}
+
+
 /// Para ser derivado, permite a las clases derivadas y a esta el tratamiento de cambio de celda.
 void BlSubForm::editFinished ( int row, int col, BlDbSubFormRecord *rec, BlDbSubFormField *camp )
 {

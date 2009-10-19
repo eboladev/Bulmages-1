@@ -312,6 +312,9 @@ public:
     virtual int cerrarEditor();
     virtual void confquery();
     QString dbFieldNameByColumnId ( int columna );
+    QString dbFieldViewNameByColumnId ( int columna );
+    BlDbField::DbType dbFieldTypeByColumnId ( int columna );
+
     /// Funciones para manipular los modos.
     void setModoConsulta();
     void setModoEdicion();
