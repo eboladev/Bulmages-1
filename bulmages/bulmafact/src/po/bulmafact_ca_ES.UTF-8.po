@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-05-16 14:44+0200\n"
+"POT-Creation-Date: 2009-10-19 01:12+0200\n"
 "PO-Revision-Date: 2009-01-26 09:35+0100\n"
 "Language-Team:  <es@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -13,8 +13,8 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: KBabel 1.11.4\n"
 
-#: bfclientealbaransubform.cpp:54 bfclientealbarandescuentosubform.cpp:43
-#: bfproveedoralbaransubform.cpp:56
+#: bfclientealbarandescuentosubform.cpp:43 bfproveedoralbaransubform.cpp:56
+#: bfclientealbaransubform.cpp:54
 msgid "% Descuento"
 msgstr "% Descompte"
 
@@ -30,100 +30,116 @@ msgstr "% R.E."
 msgid "% Recargo E.Q."
 msgstr "% Recarreg E.Q."
 
-#: ui_bfconfiguracionbase.h:118 ui_bfseriefacturabase.h:84
+#: ui_bfseriefacturabase.h:85 ui_bfconfiguracionbase.h:119
 msgid "&Aceptar"
 msgstr "&Accepta"
 
-#: ui_bfaboutbase.h:287
+#: ui_bfaboutbase.h:292
 msgid "&Acerca de"
 msgstr "&Sobre "
 
-#: ui_bfbulmafactbase.h:160
+#: ui_bfbulmafactbase.h:174
 msgid "&Acerca de Iglues/BulmaFact"
 msgstr "&Quant a Iglues/BulmaFact"
 
-#: ui_bfconfiguracionbase.h:119 ui_bfseriefacturabase.h:83
+#: ui_bfseriefacturabase.h:84 ui_bfconfiguracionbase.h:120
 msgid "&Cancelar"
 msgstr "&Cancel·la"
 
-#: ui_bfaboutbase.h:296
+#: ui_bfaboutbase.h:301
 msgid "&Cerrar"
 msgstr "Tan&car"
 
-#: ui_bfbulmafactbase.h:161
+#: ui_bfbulmafactbase.h:175
 msgid "&Documentacion"
 msgstr "&Documentació"
 
-#: ui_bfbulmafactbase.h:163
+#: ui_bfbulmafactbase.h:177
 msgid "&Indexador"
 msgstr "&Indexador"
 
-#: ui_bfbulmafactbase.h:152
+#: ui_bfbulmafactbase.h:168
 msgid "&Propiedades de la empresa..."
 msgstr "&propietats de l'empresa..."
 
-#: ui_bfbulmafactbase.h:150
+#: ui_bfbulmafactbase.h:166
 msgid "&Salir del programa"
 msgstr "&Sortir del programa"
 
-#: ui_bfaboutbase.h:288
+#: ui_bfaboutbase.h:293
+#, fuzzy
 msgid ""
 "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/"
 "REC-html40/strict.dtd\">\n"
 "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css"
 "\">\n"
 "p, li { white-space: pre-wrap; }\n"
-"</style></head><body style=\" font-family:'Sans Serif'; font-size:7pt; font-"
+"</style></head><body style=\" font-family:'Sans Serif'; font-size:10pt; font-"
 "weight:400; font-style:normal;\">\n"
 "<p style=\"-qt-paragraph-type:empty; margin-top:12px; margin-bottom:12px; "
 "margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-"
 "size:9pt;\"></p></body></html>"
 msgstr ""
+"<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css"
+"\">\n"
+"p, li { white-space: pre-wrap; }\n"
+"</style></head><body style=\" font-family:'Sans Serif'; font-size:9pt; font-"
+"weight:400; font-style:normal; text-decoration:none;\">\n"
+"<p style=\"-qt-paragraph-type:empty; margin-top:12px; margin-bottom:12px; "
+"margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"></"
+"p></body></html>"
+
+#: ui_bfaboutbase.h:287
+msgid ""
 "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/"
 "REC-html40/strict.dtd\">\n"
 "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css"
 "\">\n"
 "p, li { white-space: pre-wrap; }\n"
-"</style></head><body style=\" font-family:'Sans Serif'; font-size:7pt; font-"
-"weight:400; font-style:normal;\">\n"
-"<p style=\"-qt-paragraph-type:empty; margin-top:12px; margin-bottom:12px; "
-"margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-"
-"size:9pt;\"></p></body></html>"
+"</style></head><body style=\" font-family:'Sans Serif'; font-size:9pt; font-"
+"weight:600; font-style:normal;\">\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-"
+"right:0px; -qt-block-indent:0; text-indent:0px;\">Facturacion GPL - Version "
+"0.12.0 -</p></body></html>"
+msgstr ""
 
-#: ui_bfaboutbase.h:293
+#: ui_bfaboutbase.h:298
 msgid "A&utores"
 msgstr "A&utors"
 
-#: ui_bfbulmafactbase.h:180
+#: ui_bfbulmafactbase.h:190
 msgid "A&yuda"
 msgstr "A&juda"
 
-#: ui_bfbuscarreferenciabase.h:97
+#: ui_bfbuscarreferenciabase.h:95
 msgid "Abre todos los documentos con esta referencia"
-msgstr ""
+msgstr "Obre tots els documents amb aquesta referència"
 
-#: ui_bfaboutbase.h:284
+#: ui_bfaboutbase.h:285
 msgid "Acerca de Iglues/BulmaFact"
-msgstr ""
+msgstr "Quant a Iglues/BulmaFact"
 
-#: ui_bfaboutbase.h:295
+#: ui_bfaboutbase.h:300
 msgid "Acuerdo de &licencia"
 msgstr "Acord de &llicència"
 
-#: ui_bfbuscararticulobase.h:95 bfinformereferencia.cpp:141
-#: bfinformereferencia.cpp:174
+#: bfinformereferencia.cpp:141 bfinformereferencia.cpp:174
 msgid "Articulo"
 msgstr "Article"
 
-#: ui_bfbuscararticulobase.h:93 bfbuscararticulo.cpp:37
+#: bfbuscararticulo.cpp:37
 msgid "Articulo:"
 msgstr "Article:"
 
-#: bfform.cpp:452
+#: ui_bfbulmafactbase.h:226
+msgid "Avanzados"
+msgstr ""
+
+#: bfform.cpp:500
 msgid "Base Imponible"
 msgstr "Base Imponible"
 
-#: bfclientealbaransubform.cpp:50 bfproveedoralbaransubform.cpp:52
+#: bfproveedoralbaransubform.cpp:52 bfclientealbaransubform.cpp:50
 msgid "Cantidad"
 msgstr "Quantitat"
 
@@ -135,7 +151,7 @@ msgstr "Carregant plugins"
 msgid "Cobrado"
 msgstr "Cobrat"
 
-#: bfclientealbaransubform.cpp:46 bfproveedoralbaransubform.cpp:48
+#: bfproveedoralbaransubform.cpp:48 bfclientealbaransubform.cpp:46
 msgid "Codigo completo articulo"
 msgstr "Codi complet article"
 
@@ -155,15 +171,15 @@ msgstr "Concepte descompte"
 msgid "Configuracion"
 msgstr "Arranjament"
 
-#: ui_bfbulmafactbase.h:170
+#: ui_bfbulmafactbase.h:182
 msgid "Ctrl+I"
 msgstr "Ctrl+I"
 
-#: ui_bfbulmafactbase.h:151
+#: ui_bfbulmafactbase.h:167
 msgid "Ctrl+Q"
 msgstr "Ctrl+Q"
 
-#: bfclientealbaransubform.cpp:49 bfproveedoralbaransubform.cpp:51
+#: bfproveedoralbaransubform.cpp:51 bfclientealbaransubform.cpp:49
 msgid "Descripcion"
 msgstr "Descripció"
 
@@ -171,11 +187,11 @@ msgstr "Descripció"
 msgid "Descripcion serie factura"
 msgstr "Descripció sèrie factura"
 
-#: bfform.cpp:417
+#: bfform.cpp:458
 msgid "Descuento"
 msgstr "Descompte"
 
-#: ui_bfbulmafactbase.h:181
+#: ui_bfbulmafactbase.h:191
 msgid "E&mpresa"
 msgstr "E&mpresa"
 
@@ -195,25 +211,21 @@ msgstr "Entregat"
 msgid "Error inesperado en BulmaFact. El programa se cerrara."
 msgstr "Error inesperat en BulmaFact. El programa se tancarà."
 
-#: bfform.cpp:934
+#: bfform.cpp:1044
 msgid "Error inesperado en la impresion"
 msgstr ""
 
-#: ui_bfbulmafactbase.h:162
+#: ui_bfbulmafactbase.h:176
 msgid "F1"
 msgstr "F1"
 
-#: ui_bfbulmafactbase.h:159
+#: ui_bfbulmafactbase.h:173
 msgid "F11"
 msgstr "F11"
 
 #: bfcompany.cpp:99
 msgid "Facturacion GPL"
 msgstr "Facturació GPL"
-
-#: ui_bfaboutbase.h:286
-msgid "Facturacion GPL - Version 0.12.0 -"
-msgstr "Facturació GPL - Versió 0.12.0 -"
 
 #: bfinformereferencia.cpp:145 bfinformereferencia.cpp:177
 #: bfinformereferencia.cpp:215 bfinformereferencia.cpp:262
@@ -224,29 +236,29 @@ msgstr "Facturat"
 msgid "Familia:"
 msgstr "Família:"
 
-#: ui_bfbulmafactbase.h:210 ui_bfbulmafactbase.h:213 ui_bfbulmafactbase.h:218
-#: ui_bfbulmafactbase.h:223 ui_bfbulmafactbase.h:228 ui_bfbulmafactbase.h:233
+#: ui_bfbulmafactbase.h:210 ui_bfbulmafactbase.h:212 ui_bfbulmafactbase.h:215
+#: ui_bfbulmafactbase.h:218 ui_bfbulmafactbase.h:221 ui_bfbulmafactbase.h:224
 msgid "Fichas"
 msgstr "Fitxes"
 
-#: ui_bfbuscarreferenciabase.h:89 ui_bfbuscararticulobase.h:92
+#: ui_bfbuscarreferenciabase.h:90
 msgid "Form1"
 msgstr "Form1"
 
-#: bfform.cpp:488
+#: bfform.cpp:547
 msgid "I.R.P.F (-"
 msgstr "I.R.P.F (-"
 
-#: bfform.cpp:466 bfclientealbaransubform.cpp:52
+#: bfform.cpp:518 bfclientealbaransubform.cpp:52
 msgid "I.V.A."
 msgstr "I.V.A."
 
-#: bfclientealbaransubform.cpp:55 bfclientealbarandescuentosubform.cpp:44
-#: bfproveedoralbaransubform.cpp:57
+#: bfclientealbarandescuentosubform.cpp:44 bfproveedoralbaransubform.cpp:57
+#: bfclientealbaransubform.cpp:55
 msgid "Id albaran"
 msgstr "ID albarà"
 
-#: bfclientealbaransubform.cpp:45 bfproveedoralbaransubform.cpp:47
+#: bfproveedoralbaransubform.cpp:47 bfclientealbaransubform.cpp:45
 msgid "Id articulo"
 msgstr "ID article"
 
@@ -254,15 +266,15 @@ msgstr "ID article"
 msgid "Id descuento"
 msgstr "Id descompte"
 
-#: ui_bfbulmafactbase.h:149
+#: ui_bfbulmafactbase.h:165
 msgid "Iglues/BulmaFact - Facturacion GPL"
 msgstr ""
 
-#: ui_bfbulmafactbase.h:164 ui_bfbulmafactbase.h:167
+#: ui_bfbulmafactbase.h:178 ui_bfbulmafactbase.h:180
 msgid "Indexador"
 msgstr "Indexador"
 
-#: bfbuscarreferencia.cpp:65
+#: bfbuscarreferencia.cpp:69
 msgid "Informe"
 msgstr "Informe"
 
@@ -288,12 +300,12 @@ msgstr "Llançador BulmaGés"
 msgid "Leyendo configuracion"
 msgstr "Llegint configuració"
 
-#: ui_bfbulmafactbase.h:184 ui_bfbulmafactbase.h:187 ui_bfbulmafactbase.h:192
-#: ui_bfbulmafactbase.h:197 ui_bfbulmafactbase.h:202 ui_bfbulmafactbase.h:207
+#: ui_bfbulmafactbase.h:194 ui_bfbulmafactbase.h:196 ui_bfbulmafactbase.h:199
+#: ui_bfbulmafactbase.h:202 ui_bfbulmafactbase.h:205 ui_bfbulmafactbase.h:208
 msgid "Listados"
 msgstr "Llistats"
 
-#: ui_bfbulmafactbase.h:182
+#: ui_bfbulmafactbase.h:192
 msgid "Maest&ro"
 msgstr "Mest&re"
 
@@ -301,7 +313,7 @@ msgstr "Mest&re"
 msgid "Nombre"
 msgstr "Nom"
 
-#: bfclientealbaransubform.cpp:47 bfproveedoralbaransubform.cpp:49
+#: bfproveedoralbaransubform.cpp:49 bfclientealbaransubform.cpp:47
 msgid "Nombre articulo"
 msgstr "Nom article"
 
@@ -313,15 +325,15 @@ msgstr "Número de línia"
 msgid "Nº linea"
 msgstr ""
 
-#: bfclientealbaransubform.cpp:56 bfproveedoralbaransubform.cpp:58
+#: bfproveedoralbaransubform.cpp:58 bfclientealbaransubform.cpp:56
 msgid "Orden"
 msgstr "Ordre"
 
-#: ui_bfbulmafactbase.h:172
+#: ui_bfbulmafactbase.h:184
 msgid "Ordenar &ventanas"
 msgstr ""
 
-#: ui_bfbulmafactbase.h:171
+#: ui_bfbulmafactbase.h:183
 msgid "Organizacio&n en cascada"
 msgstr ""
 
@@ -333,11 +345,11 @@ msgstr "P.V.P."
 msgid "Pagado"
 msgstr "Pagat"
 
-#: ui_bfbulmafactbase.h:173 ui_bfbulmafactbase.h:174
+#: ui_bfbulmafactbase.h:185 ui_bfbulmafactbase.h:186
 msgid "Paises / Provincias"
 msgstr "Països/Províncies"
 
-#: ui_bfbulmafactbase.h:177
+#: ui_bfbulmafactbase.h:188
 msgid "Paises y provincias"
 msgstr ""
 
@@ -346,7 +358,7 @@ msgstr ""
 msgid "Pedido"
 msgstr "Comanda"
 
-#: bfform.cpp:418
+#: bfform.cpp:459
 msgid "Porcentaje"
 msgstr "Percentatge"
 
@@ -358,27 +370,35 @@ msgstr "Preu"
 msgid "Pres."
 msgstr "Pres."
 
-#: ui_bfconfiguracionbase.h:117 ui_bfbulmafactbase.h:155
+#: ui_bfbulmafactbase.h:170 ui_bfconfiguracionbase.h:118
 msgid "Propiedades de la empresa"
 msgstr "Propietats de l'empresa"
 
-#: bfform.cpp:481
+#: bfform.cpp:538
 msgid "R.E."
 msgstr "R.E."
 
-#: bfbuscarreferencia.cpp:66
+#: bfbuscarreferencia.cpp:70
 msgid "Referencia"
 msgstr "Referència"
+
+#: bfbulmafact.cpp:188
+msgid "Se perderan los cambios no guardados"
+msgstr "Es perdran els canvis no desats"
+
+#: bfbulmafact.cpp:187
+msgid "Seguro que desea abandonar el programa "
+msgstr "Segur que desitja abandonar el programa"
 
 #: bfseriefacturaview.cpp:48
 msgid "Serie de Factura"
 msgstr "Sèrie de factura"
 
-#: ui_bfseriefacturabase.h:82
+#: ui_bfseriefacturabase.h:83
 msgid "Series de factura"
 msgstr "Sèries de factura"
 
-#: ui_bfaboutbase.h:294
+#: ui_bfaboutbase.h:299
 msgid "Sopor&te"
 msgstr "Supor&t"
 
@@ -386,20 +406,20 @@ msgstr "Supor&t"
 msgid "Terminado"
 msgstr "Terminat"
 
-#: bfform.cpp:930
+#: bfform.cpp:1041
 msgid "Tiene que guardar el documento antes de poder procesarlo."
-msgstr ""
+msgstr "Ha de desar el document abans de poder procesar-lo"
 
 #: bfbuscartipoarticulo.cpp:37
 #, fuzzy
 msgid "Tipo Articulo:"
 msgstr "Tipus Articles"
 
-#: bfform.cpp:492
+#: bfform.cpp:551
 msgid "Total"
 msgstr "Total"
 
-#: bfform.cpp:419
+#: bfform.cpp:460
 msgid "Total Desc."
 msgstr "Total Desc."
 
@@ -407,11 +427,11 @@ msgstr "Total Desc."
 msgid "Valor"
 msgstr "Valor"
 
-#: ui_bfbulmafactbase.h:183
+#: ui_bfbulmafactbase.h:193
 msgid "Venta&na"
 msgstr "Fi&nestra"
 
-#: ui_bfbulmafactbase.h:158
+#: ui_bfbulmafactbase.h:172
 msgid "Ventana &completa"
 msgstr "Finestra &Completa"
 
@@ -493,27 +513,28 @@ msgstr "Finestra &Completa"
 #~ "margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"
 #~ "\"></p></body></html>"
 
-#, fuzzy
 #~ msgid ""
 #~ "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/"
 #~ "REC-html40/strict.dtd\">\n"
 #~ "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/"
 #~ "css\">\n"
 #~ "p, li { white-space: pre-wrap; }\n"
-#~ "</style></head><body style=\" font-family:'Sans Serif'; font-size:10pt; "
+#~ "</style></head><body style=\" font-family:'Sans Serif'; font-size:7pt; "
 #~ "font-weight:400; font-style:normal;\">\n"
 #~ "<p style=\"-qt-paragraph-type:empty; margin-top:12px; margin-bottom:12px; "
 #~ "margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; "
 #~ "font-size:9pt;\"></p></body></html>"
 #~ msgstr ""
+#~ "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/"
+#~ "REC-html40/strict.dtd\">\n"
 #~ "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/"
 #~ "css\">\n"
 #~ "p, li { white-space: pre-wrap; }\n"
-#~ "</style></head><body style=\" font-family:'Sans Serif'; font-size:9pt; "
-#~ "font-weight:400; font-style:normal; text-decoration:none;\">\n"
+#~ "</style></head><body style=\" font-family:'Sans Serif'; font-size:7pt; "
+#~ "font-weight:400; font-style:normal;\">\n"
 #~ "<p style=\"-qt-paragraph-type:empty; margin-top:12px; margin-bottom:12px; "
-#~ "margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"
-#~ "\"></p></body></html>"
+#~ "margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; "
+#~ "font-size:9pt;\"></p></body></html>"
 
 #~ msgid "Abreviacion"
 #~ msgstr "Abreujament"
@@ -862,6 +883,9 @@ msgstr "Finestra &Completa"
 
 #~ msgid "F3"
 #~ msgstr "F3"
+
+#~ msgid "Facturacion GPL - Version 0.12.0 -"
+#~ msgstr "Facturació GPL - Versió 0.12.0 -"
 
 #~ msgid "Familia"
 #~ msgstr "Família"

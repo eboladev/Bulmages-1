@@ -103,7 +103,7 @@ msgstr "Actual·litza llistat"
 #: alumnoview.cpp:48
 #, fuzzy
 msgid "Alumno"
-msgstr "<LI> Magatzem <B>"
+msgstr "Alumne"
 
 #: pluginbf_alumno.cpp:113 pluginbf_alumno.cpp:114 alumnoslist.cpp:154
 #: ui_alumnoslistbase.h:308
@@ -113,7 +113,7 @@ msgstr "Alumnes"
 #: ui_alumnoslistbase.h:309
 #, fuzzy
 msgid "Banco:"
-msgstr "Balanç"
+msgstr "Banc:"
 
 #: alumnoslist.cpp:229 ui_alumnoslistbase.h:341 ui_alumnoslistbase.h:346
 #, fuzzy
@@ -137,7 +137,7 @@ msgstr "Cerca:"
 
 #: alumnoview.cpp:56 alumnoslist.cpp:278
 msgid "CP"
-msgstr ""
+msgstr "CP"
 
 #: ui_alumnobase.h:547
 #, fuzzy
@@ -205,26 +205,26 @@ msgstr "Ctrl+S"
 
 #: listcuotasporalumnoview.cpp:98
 msgid "Cuota"
-msgstr ""
+msgstr "Quota"
 
 #: pluginbf_alumno.cpp:130 pluginbf_alumno.cpp:131
 #: ui_listcuotasporalumnobase.h:116
 msgid "Cuotas por alumno"
-msgstr ""
+msgstr "Quotes per alumne"
 
 #: listcuotasporalumnoview.cpp:49
 msgid "CuotasPorAlumno"
-msgstr ""
+msgstr "Quotes Per Alumne"
 
 #: alumnoslist.cpp:212
 #, fuzzy
 msgid "Debe seleccionar una fila primero"
-msgstr "Cal triar un compte"
+msgstr "Cal triar una fila"
 
 #: alumnoslist.cpp:170
 #, fuzzy
 msgid "Debe seleccionar una linea"
-msgstr "Cal triar un compte"
+msgstr "Cal triar una linia"
 
 #: alumnoview.cpp:55 alumnoslist.cpp:277
 #, fuzzy
@@ -237,12 +237,12 @@ msgstr "Adreça:"
 
 #: alumnoview.cpp:61
 msgid "E-Mail"
-msgstr ""
+msgstr "e-mail"
 
 #: alumnoslist.cpp:228 ui_alumnoslistbase.h:329 ui_alumnoslistbase.h:334
 #, fuzzy
 msgid "Editar Alumno"
-msgstr "Editar compte"
+msgstr "Editar Alumne"
 
 #: alumnoslist.cpp:184
 msgid "Error al borrar el cobro a cliente"
@@ -255,11 +255,11 @@ msgstr "Error en la càrrega de l'amortizació"
 
 #: listcuotasporalumnoview.cpp:71
 msgid "Error al guardar las cuotas"
-msgstr ""
+msgstr "Error al desar les quotes"
 
 #: alumnoslist.cpp:280
 msgid "F. Nacimiento"
-msgstr ""
+msgstr "Data Neixement"
 
 #: ui_alumnoslistbase.h:398
 msgid "F5"
@@ -267,7 +267,7 @@ msgstr "F5"
 
 #: alumnoview.cpp:62
 msgid "Fecha Nacimiento"
-msgstr ""
+msgstr "Data Neixement"
 
 #: ui_alumnoslistbase.h:310
 msgid "Fecha final:"
@@ -279,7 +279,7 @@ msgstr "Data inicial:"
 
 #: ui_alumnobase.h:533
 msgid "Fecha nacimiento:"
-msgstr ""
+msgstr "Data neixement:"
 
 #: ui_alumnoslistbase.h:365 ui_alumnoslistbase.h:370
 #, fuzzy
@@ -297,7 +297,7 @@ msgstr "Desa arxiu"
 
 #: alumnoview.cpp:213
 msgid "Id actividad"
-msgstr ""
+msgstr "Id activitat"
 
 #: alumnoview.cpp:51 alumnoview.cpp:178 alumnoview.cpp:211 alumnoslist.cpp:273
 #, fuzzy
@@ -306,7 +306,7 @@ msgstr "Id apunt"
 
 #: alumnoview.cpp:180
 msgid "Id tutor"
-msgstr ""
+msgstr "Id tutor"
 
 #: alumnoview.cpp:177 alumnoview.cpp:210
 msgid "Identificador"
@@ -335,11 +335,11 @@ msgstr "Nom"
 
 #: alumnoview.cpp:212
 msgid "Nombre actividad"
-msgstr ""
+msgstr "Nom activitat"
 
 #: alumnoview.cpp:179
 msgid "Nombre alumno"
-msgstr ""
+msgstr "Nom alumne"
 
 #: alumnoview.cpp:52
 #, fuzzy
@@ -370,11 +370,11 @@ msgstr "Observacions"
 
 #: ui_alumnobase.h:555
 msgid "Otros datos"
-msgstr ""
+msgstr "Altres dades"
 
 #: ui_alumnobase.h:556
 msgid "Padres/Tutores"
-msgstr ""
+msgstr "Pares/Tutors"
 
 #: ui_alumnobase.h:538
 #, fuzzy
@@ -392,7 +392,7 @@ msgstr "Periodicitat:"
 
 #: alumnoslist.cpp:80
 msgid "Selector de alumnos"
-msgstr ""
+msgstr "Selector d'alumnes"
 
 #: alumnoview.cpp:58
 msgid "Telefono"
@@ -408,7 +408,7 @@ msgstr "Telèfon mòbil:"
 
 #: alumnoview.cpp:110
 msgid "Tiene que guardar el documento antes de poder imprimirlo."
-msgstr ""
+msgstr "Ha de desar el document abans de poder imprimir-lo"
 
 #~ msgid "C.I.F./N.I.F./N.I.E.:"
 #~ msgstr "C.I.F./N.I.F./N.I.E.:"

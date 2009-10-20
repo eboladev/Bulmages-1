@@ -92,6 +92,8 @@ add_subdirectory(pluginbf_actividad)
 add_subdirectory(pluginbf_recibo)
 add_subdirectory(pluginbf_asociacion)
 add_subdirectory(pluginbf_minicontabilidad)
+add_subdirectory(pluginbf_inventariosimple)
+
 
 if(EXISTS "${CMAKE_SOURCE_DIR}/bulmafact/plugins/CMakeLists.txt.private")
    message(STATUS "Private code inserted in bulmafact plugins")

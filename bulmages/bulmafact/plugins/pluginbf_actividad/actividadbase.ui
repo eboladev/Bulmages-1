@@ -361,7 +361,7 @@
          </property>
         </widget>
        </item>
-       <item row="12" column="1">
+       <item row="13" column="1">
         <spacer>
          <property name="orientation">
           <enum>Qt::Vertical</enum>
@@ -374,7 +374,7 @@
          </property>
         </spacer>
        </item>
-       <item row="11" column="1" colspan="2">
+       <item row="12" column="1" colspan="2">
         <widget class="BlSearchWidget" name="mui_idprofesor" native="true">
          <property name="sizePolicy">
           <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
@@ -515,6 +515,26 @@
           <enum>Qt::StrongFocus</enum>
          </property>
         </widget>
+       </item>
+       <item row="10" column="0">
+        <widget class="QLabel" name="label_7">
+         <property name="text">
+          <string>Hora Inicio</string>
+         </property>
+        </widget>
+       </item>
+       <item row="10" column="1">
+        <widget class="QLineEdit" name="mui_hinicialactividad"/>
+       </item>
+       <item row="11" column="0">
+        <widget class="QLabel" name="label_8">
+         <property name="text">
+          <string>Duración</string>
+         </property>
+        </widget>
+       </item>
+       <item row="11" column="1">
+        <widget class="QLineEdit" name="mui_duracionactividad"/>
        </item>
       </layout>
      </widget>

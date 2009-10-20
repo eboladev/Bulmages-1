@@ -167,25 +167,31 @@ int entryPoint ( BlMainWindow *bges )
 
     g_bges = bges;
 
+
+    /// Inicializa el sistema de traducciones 'gettext'.
+    setlocale ( LC_ALL, "" );
+    bindtextdomain ( "pluginbl_bloqconf", g_confpr->valor ( CONF_DIR_TRADUCCION ).toAscii().constData() );
+
+
     MyPluginBloqConf *mcont = new MyPluginBloqConf;
 
 
 
     /// Creamos el men&uacute;.
-    QAction *accion = new QAction ( "&Bloquear Configuraciones", 0 );
-    accion->setStatusTip ( "Bloquear Configuraciones" );
-    accion->setWhatsThis ( "Bloquear Configuraciones" );
+    QAction *accion = new QAction ( _("&Bloquear Configuraciones"), 0 );
+    accion->setStatusTip ( _("Bloquear Configuraciones") );
+    accion->setWhatsThis ( _("Bloquear Configuraciones") );
 
     /// Creamos el men&uacute;.
-    QAction *accion1 = new QAction ( "&Desbloquear Configuraciones", 0 );
-    accion1->setStatusTip ( "Desbloquear Configuraciones" );
-    accion1->setWhatsThis ( "Desbloquear Configuraciones" );
+    QAction *accion1 = new QAction ( _("&Desbloquear Configuraciones"), 0 );
+    accion1->setStatusTip ( _("Desbloquear Configuraciones") );
+    accion1->setWhatsThis ( _("Desbloquear Configuraciones") );
 
 
     /// Creamos el men&uacute;.
-    QAction *accion2 = new QAction ( "&Borrar Configuraciones", 0 );
-    accion2->setStatusTip ( "Borrar Configuraciones" );
-    accion2->setWhatsThis ( "Borrar Configuraciones" );
+    QAction *accion2 = new QAction ( _("&Borrar Configuraciones"), 0 );
+    accion2->setStatusTip ( _("Borrar Configuraciones") );
+    accion2->setWhatsThis ( _("Borrar Configuraciones") );
 
 
     mcont->connect ( accion, SIGNAL ( activated() ), mcont, SLOT ( elslot() ) );
@@ -193,7 +199,7 @@ int entryPoint ( BlMainWindow *bges )
     mcont->connect ( accion2, SIGNAL ( activated() ), mcont, SLOT ( elslot2() ) );
 
     /// Miramos si existe un menu Herramientas
-	QMenu *pPluginMenu = bges->newMenu("&Herramientas", "menuHerramientas", "menuAcerca_de");
+	QMenu *pPluginMenu = bges->newMenu(_("&Herramientas"), "menuHerramientas", "menuAcerca_de");
 
     pPluginMenu->addSeparator();
     pPluginMenu->addAction ( accion );

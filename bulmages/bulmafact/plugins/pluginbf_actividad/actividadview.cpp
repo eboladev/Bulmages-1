@@ -57,7 +57,7 @@ ActividadView::ActividadView ( BfCompany *comp, QWidget *parent )
         addDbField ( "nombreactividad", BlDbField::DbVarChar, BlDbField::DbNothing, _ ( "Nombre del actividad" ) );
         addDbField ( "codigoactividad", BlDbField::DbVarChar, BlDbField::DbNotNull, _ ( "Codigo" ) );
         addDbField ( "idprofesor", BlDbField::DbInt, BlDbField::DbNotNull, _ ( "Id profesor" ) );
-        addDbField ( "precioactividad", BlDbField::DbNumeric, BlDbField::DbNothing, _ ( "Precio Actividad" ) );
+        addDbField ( "precioactividad", BlDbField::DbNumeric, BlDbField::DbNothing, _ ( "Precio" ) );
         addDbField ( "finicialactividad", BlDbField::DbDate, BlDbField::DbNothing, _ ( "Fecha Inicial" ) );
         addDbField ( "ffinalactividad", BlDbField::DbDate, BlDbField::DbNothing, _ ( "Fecha Final" ) );
         addDbField ( "vigenteactividad", BlDbField::DbBoolean, BlDbField::DbNothing, _ ( "Vigente" ) );
@@ -69,7 +69,9 @@ ActividadView::ActividadView ( BfCompany *comp, QWidget *parent )
         addDbField ( "viernesactividad", BlDbField::DbBoolean, BlDbField::DbNothing, _ ( "Viernes" ) );
         addDbField ( "sabadoactividad", BlDbField::DbBoolean, BlDbField::DbNothing, _ ( "Sabado" ) );
         addDbField ( "domingoactividad", BlDbField::DbBoolean, BlDbField::DbNothing, _ ( "Domingo" ) );
-	addDbField ( "periodoactividad", BlDbField::DbVarChar, BlDbField::DbNothing, _ ( "Periodo" ) );
+        addDbField ( "periodoactividad", BlDbField::DbVarChar, BlDbField::DbNothing, _ ( "Periodo" ) );
+        addDbField ( "hinicialactividad", BlDbField::DbVarChar, BlDbField::DbNothing, _ ( "Hora Inicio" ) );
+        addDbField ( "duracionactividad", BlDbField::DbVarChar, BlDbField::DbNothing, _ ( "Duracion" ) );
 
         /// Disparamos los plugins.
         int res = g_plugins->lanza ( "ActividadView_ActividadView", this );

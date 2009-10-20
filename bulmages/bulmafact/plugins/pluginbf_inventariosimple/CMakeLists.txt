@@ -1,19 +1,24 @@
 ###########################################
-# Plugin for bulmalib                     #
+# Plugin for bulmafact                    #
 ###########################################
-#pluginbl_bloqconf
+#pluginbf_inventariosimple
 
-set (plugin pluginbl_bloqconf)
+set (plugin pluginbf_inventariosimple)
 set (docs README.es)
 
 file(GLOB plugin_SRC *.c *.cpp *.cxx)
 file(GLOB plugin_MOCS *.hpp *.h)
 
 # Exclude files with no QObject macro.
-file(GLOB plugin_NO_MOCS pluginbloqconf.h)
-list(REMOVE_ITEM plugin_MOCS ${plugin_NO_MOCS})
+#file(GLOB plugin_NO_MOCS inventario.h)
+#list(REMOVE_ITEM plugin_MOCS ${plugin_NO_MOCS})
 
 file(GLOB plugin_UIS *.ui)
+
+set(QT_USE_QTASSISTANT true)
+set(QT_USE_QTXML true)
+
+INCLUDE(   ${QT_USE_FILE}   )
 
 include_directories(
     ${QT_INCLUDE_DIR}
@@ -25,9 +30,7 @@ include_directories(
 	${CMAKE_BINARY_DIR}/bulmalib/src/
 	${CMAKE_SOURCE_DIR}/bulmalib/src/
 	${CMAKE_BINARY_DIR}/bulmafact/src/
-	${CMAKE_SOURCE_DIR}/bulmafact/src/
-	${CMAKE_BINARY_DIR}/bulmacont/src/
-	${CMAKE_SOURCE_DIR}/bulmacont/src/)
+	${CMAKE_SOURCE_DIR}/bulmafact/src/)
 
 # generate rules for building source files from the resources
 #QT4_WRAP_CPP(plugin_MOC_SRCS ${plugin_MOCS})
@@ -37,8 +40,9 @@ QT4_WRAP_UI(plugin_UIS_H ${plugin_UIS} OPTIONS -tr N_)
 QT4_WRAP_CPP(plugin_MOC_SRCS ${plugin_MOCS})
 #QT4_ADD_RESOURCES(plugin_RCC_SRCS ${plugin_RCCS})
 
-# build sources, moc'd sources, and rcc'd sources
 
+#ADD_DEFINITIONS(${QT_DEFINITIONS})
+ADD_DEFINITIONS(-DQT_SHARED)
 
 # i18n
 if(WIN32)
@@ -61,11 +65,11 @@ if(USE_GETTEXT)
                                 ALL LANGUAGES es_ES.UTF-8 ca_ES.UTF-8)
 endif(USE_GETTEXT)
 
+# build sources, moc'd sources, and rcc'd sources
 
 if(APPLE)
   set(CMAKE_SHARED_LINKER_FLAGS "${CMAKE_SHARED_LINKER_FLAGS} -undefined dynamic_lookup")
 endif(APPLE)
-
 
 add_library(${plugin} SHARED ${plugin_SRC} ${plugin_MOC_SRCS}
 	${plugin_UIS_H} ${plugin_SRCS} ${plugin_MOCS})
@@ -75,15 +79,15 @@ set_target_properties( ${plugin} PROPERTIES
   SOVERSION "${BULMAGES_VERSION_MAJOR}.${BULMAGES_VERSION_MINOR}"
   VERSION "${BULMAGES_VERSION}")
 
-target_link_libraries(${plugin} bulmalib ${QT_LIBRARIES} ${PGSQL_LIBRARIES})
+target_link_libraries(${plugin} libbulmafact bulmalib ${QT_LIBRARIES} ${PGSQL_LIBRARIES})
+install_targets(/lib/bulmafact/plugins ${plugin})
 
-
-add_dependencies(${plugin} bulmafact bulmalib bulmacont)
-
-install_targets(/lib/bulmalib/plugins ${plugin})
 foreach(dfile ${docs})
- install (FILES ${dfile}
-DESTINATION share/bulmages/bulmalib-plugins/ RENAME ${dfile}.${plugin})
+   install (FILES ${dfile} DESTINATION share/bulmages/bulmafact-plugins/ RENAME ${dfile}.${plugin})
 endforeach(dfile in ${docs})
 
-ADD_LOCAL_BLI18N_HEADER( ${plugin} )
+add_dependencies(${plugin} bulmafact bulmalib pluginbf_articulo)
+install(DIRECTORY dbmodels/ 
+		DESTINATION share/bulmages/dbmodels/plugins
+		PATTERN ".svn" EXCLUDE)
+

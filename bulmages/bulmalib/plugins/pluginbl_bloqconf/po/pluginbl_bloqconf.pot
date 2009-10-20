@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-05-13 00:07+0200\n"
+"POT-Creation-Date: 2009-10-19 23:40+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -16,6 +16,34 @@ msgstr ""
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: pluginbloqconf.cpp:132
+#: pluginbloqconf.cpp:144
 msgid "Bloqueo Configuracion"
+msgstr ""
+
+#: pluginbloqconf.cpp:181
+msgid "&Bloquear Configuraciones"
+msgstr ""
+
+#: pluginbloqconf.cpp:182 pluginbloqconf.cpp:183
+msgid "Bloquear Configuraciones"
+msgstr ""
+
+#: pluginbloqconf.cpp:186
+msgid "&Desbloquear Configuraciones"
+msgstr ""
+
+#: pluginbloqconf.cpp:187 pluginbloqconf.cpp:188
+msgid "Desbloquear Configuraciones"
+msgstr ""
+
+#: pluginbloqconf.cpp:192
+msgid "&Borrar Configuraciones"
+msgstr ""
+
+#: pluginbloqconf.cpp:193 pluginbloqconf.cpp:194
+msgid "Borrar Configuraciones"
+msgstr ""
+
+#: pluginbloqconf.cpp:202
+msgid "&Herramientas"
 msgstr ""

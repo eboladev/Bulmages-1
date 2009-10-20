@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-05-16 15:39+0200\n"
+"POT-Creation-Date: 2009-10-19 01:16+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,11 +18,11 @@ msgstr ""
 "#-#-#-#-#  bulmalib_ca_ES.UTF-8.po (PACKAGE VERSION)  #-#-#-#-#\n"
 "X-Generator: Translate Toolkit 1.1.1\n"
 
-#: ui_tutorbase.h:517
+#: ui_tutorbase.h:511
 #, fuzzy
 msgid "&Aceptar"
 msgstr ""
-"#-#-#-#-#  bulmacont_ca2.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"&Acceptar#-#-#-#-#  bulmacont_ca2.po (PACKAGE VERSION)  #-#-#-#-#\n"
 "#-#-#-#-#  bulmacont_ca.po (PACKAGE VERSION)  #-#-#-#-#\n"
 "&Accepta\n"
 "#-#-#-#-#  bulmacont_ca.po (PACKAGE VERSION)  #-#-#-#-#\n"
@@ -45,7 +45,7 @@ msgstr ""
 "#-#-#-#-#  - (PACKAGE VERSION)  #-#-#-#-#\n"
 "&Accepta"
 
-#: ui_tutorbase.h:518
+#: ui_tutorbase.h:512
 #, fuzzy
 msgid "&Cancelar"
 msgstr ""
@@ -54,118 +54,132 @@ msgstr ""
 "#-#-#-#-#  bulmalib_ca_ES.UTF-8.po (PACKAGE VERSION)  #-#-#-#-#\n"
 "&Cancel·lar"
 
-#: ui_tutorbase.h:532
+#: ui_tutorbase.h:528
 #, fuzzy
 msgid "&Datos generales"
 msgstr "&Dades comptables"
 
 #: pluginbf_tutor.cpp:107
-msgid "&Nuevo tutor/socio"
-msgstr "&Nou tutor/soci"
+msgid "&Nuevo padre/socio"
+msgstr "&Nou pare/soci"
 
 #: pluginbf_tutor.cpp:99
-msgid "&Tutores/Socios"
-msgstr "&Tutors/Socis"
+msgid "&Padres/Socios"
+msgstr "&Pares/Socis"
 
-#: ui_tutoreslistbase.h:389 ui_tutoreslistbase.h:394
+#: tutoreslist.cpp:268
+msgid "1er Apellido"
+msgstr "1er cognom"
+
+#: ui_tutorbase.h:526
+msgid "1er apellido"
+msgstr "1er cognom"
+
+#: tutorview.cpp:58
+msgid "1er apellido del tutor"
+msgstr "1er cognom del pare"
+
+#: tutoreslist.cpp:269
+msgid "2o Apellido"
+msgstr "2n cognom"
+
+#: ui_tutorbase.h:527
+msgid "2o apellido"
+msgstr "2n cognom"
+
+#: tutorview.cpp:59
+msgid "2o apellido del tutor"
+msgstr "2n cognom del pare"
+
+#: ui_tutoreslistbase.h:294 ui_tutoreslistbase.h:297
 msgid "Actualizar listado"
 msgstr "Actual·litza llistat"
 
-#: ui_tutorbase.h:531 ui_tutoreslistbase.h:309
+#: ui_tutorbase.h:525
 #, fuzzy
 msgid "Banco:"
 msgstr "Balanç"
 
-#: tutoreslist.cpp:218 ui_tutoreslistbase.h:341 ui_tutoreslistbase.h:346
+#: tutoreslist.cpp:219 ui_tutoreslistbase.h:262 ui_tutoreslistbase.h:265
 #, fuzzy
 msgid "Borrar Tutor"
 msgstr "Esborra quota"
 
-#: ui_tutorbase.h:495 ui_tutorbase.h:500 ui_tutorbase.h:507 ui_tutorbase.h:512
+#: ui_tutorbase.h:496 ui_tutorbase.h:499 ui_tutorbase.h:504 ui_tutorbase.h:507
 #, fuzzy
 msgid "Borrar cobro"
 msgstr "Esborra quota"
 
-#: ui_tutoreslistbase.h:399
+#: ui_tutoreslistbase.h:301
 msgid "Buscar:"
 msgstr "Cerca:"
 
-#: tutoreslist.cpp:268
+#: tutoreslist.cpp:271
 msgid "C.I.F."
 msgstr "C.I.F."
 
-#: ui_tutoreslistbase.h:313
-#, fuzzy
-msgid "Cobros efectivos"
-msgstr "Correo electrònic:"
+#: tutorview.cpp:94
+msgid "Cantidad"
+msgstr "Quantitat"
 
-#: ui_tutoreslistbase.h:312
-#, fuzzy
-msgid "Cobros previstos"
-msgstr "&Cobraments i pagaments"
-
-#: tutoreslist.cpp:267
+#: tutoreslist.cpp:270
 msgid "Codigo"
 msgstr "Codi"
 
-#: tutoreslist.cpp:273
+#: tutoreslist.cpp:276
 msgid "Codigo postal"
 msgstr "Codi postal"
 
-#: ui_tutorbase.h:526
+#: ui_tutorbase.h:520
 #, fuzzy
 msgid "Codigo postal:"
 msgstr "Codi compte"
 
-#: tutoreslist.cpp:281
+#: tutoreslist.cpp:284
 msgid "Comentarios"
 msgstr "Comentaris"
 
-#: ui_tutorbase.h:538
+#: ui_tutorbase.h:529
 msgid "Comentarios:"
 msgstr "Comentaris:"
 
-#: ui_tutoreslistbase.h:377 ui_tutoreslistbase.h:382
+#: ui_tutoreslistbase.h:286 ui_tutoreslistbase.h:289
 msgid "Configurar listado"
 msgstr "Configura llistat"
 
-#: ui_tutoreslistbase.h:386
+#: ui_tutoreslistbase.h:292
 msgid "Ctrl+B"
 msgstr "Ctrl+B"
 
-#: ui_tutorbase.h:504 ui_tutoreslistbase.h:350
+#: ui_tutoreslistbase.h:268 ui_tutorbase.h:502
 msgid "Ctrl+D"
 msgstr "Ctrl+D"
 
-#: ui_tutoreslistbase.h:338
+#: ui_tutoreslistbase.h:260
 msgid "Ctrl+E"
 msgstr "Ctrl+E"
 
-#: ui_tutoreslistbase.h:374
+#: ui_tutoreslistbase.h:284
 msgid "Ctrl+F"
 msgstr "Ctrl+F"
 
-#: ui_tutorbase.h:516
+#: ui_tutorbase.h:510
 msgid "Ctrl+I"
 msgstr "Ctrl+I"
 
-#: ui_tutoreslistbase.h:326
+#: ui_tutoreslistbase.h:252
 msgid "Ctrl+N"
 msgstr "Ctrl+N"
 
-#: ui_tutoreslistbase.h:362
+#: ui_tutoreslistbase.h:276
 msgid "Ctrl+P"
 msgstr "Ctrl+P"
 
-#: ui_tutorbase.h:492
+#: ui_tutorbase.h:494
 msgid "Ctrl+S"
 msgstr "Ctrl+S"
 
-#: ui_tutorbase.h:533
-msgid "DNI / NIf"
-msgstr ""
-
-#: tutoreslist.cpp:201
+#: tutoreslist.cpp:202
 #, fuzzy
 msgid "Debe seleccionar una fila primero"
 msgstr "Cal triar un compte"
@@ -175,35 +189,39 @@ msgstr "Cal triar un compte"
 msgid "Debe seleccionar una linea"
 msgstr "Cal triar un compte"
 
-#: tutoreslist.cpp:271
+#: tutoreslist.cpp:274
 #, fuzzy
 msgid "Direccion"
 msgstr "Adreça:"
 
-#: tutoreslist.cpp:277
+#: tutoreslist.cpp:280
 #, fuzzy
 msgid "Direccion URL"
 msgstr "Adreça:"
 
-#: tutoreslist.cpp:276
+#: tutoreslist.cpp:279
 #, fuzzy
 msgid "Direccion de correo electronica"
 msgstr "Direcció del proveïdor"
 
-#: ui_tutorbase.h:523
+#: ui_tutorbase.h:517
 msgid "Direccion:"
 msgstr "Adreça:"
 
-#: ui_tutorbase.h:529
+#: ui_tutorbase.h:523
 msgid "E-Mail:"
-msgstr ""
+msgstr "E-Mail"
 
-#: tutoreslist.cpp:217 ui_tutoreslistbase.h:329 ui_tutoreslistbase.h:334
+#: tutoreslist.cpp:218 ui_tutoreslistbase.h:254 ui_tutoreslistbase.h:257
 #, fuzzy
 msgid "Editar Tutor"
 msgstr "Editar compte"
 
-#: tutoreslist.cpp:278
+#: pluginbf_tutor.cpp:373 pluginbf_tutor.cpp:390
+msgid "Editar tutor"
+msgstr "Editar pare"
+
+#: tutoreslist.cpp:281
 #, fuzzy
 msgid "Empresa"
 msgstr "&Empresa"
@@ -212,218 +230,257 @@ msgstr "&Empresa"
 msgid "Error al borrar el cobro a cliente"
 msgstr "Error al esborrar el cobrament a client"
 
-#: tutorview.cpp:84
+#: tutorview.cpp:111
 msgid "Error al crear el tutor"
-msgstr ""
+msgstr "Error al crear el pare"
 
-#: tutorview.cpp:54
+#: tutorview.cpp:61
 msgid "Es Socio"
-msgstr ""
+msgstr "Es Soci"
 
-#: ui_tutoreslistbase.h:398
+#: ui_tutoreslistbase.h:300
 msgid "F5"
 msgstr "F5"
 
-#: tutoreslist.cpp:279
+#: tutorview.cpp:96
+msgid "Fecha"
+msgstr "Data"
+
+#: tutoreslist.cpp:282
 #, fuzzy
 msgid "Fecha de alta del cliente"
 msgstr "Data de l'assentament"
 
-#: tutoreslist.cpp:280
+#: tutoreslist.cpp:283
 #, fuzzy
 msgid "Fecha de baja del cliente"
 msgstr "Data de l'assentament"
 
-#: ui_tutoreslistbase.h:310
-msgid "Fecha final:"
-msgstr "Data final:"
-
-#: ui_tutoreslistbase.h:311
-msgid "Fecha inicial:"
-msgstr "Data inicial:"
-
-#: ui_tutoreslistbase.h:365 ui_tutoreslistbase.h:370
+#: ui_tutoreslistbase.h:278 ui_tutoreslistbase.h:281
 #, fuzzy
 msgid "Filtrar Tutores"
 msgstr "Filtrar"
 
-#: ui_tutorbase.h:530
+#: ui_tutorbase.h:524
 msgid "Forma Pago"
-msgstr ""
+msgstr "Forma de pagament"
 
-#: tutorview.cpp:65
+#: tutorview.cpp:73 tutorview.cpp:98
 msgid "Forma de Pago"
 msgstr "Forma de pagament"
 
-#: ui_tutorbase.h:483 ui_tutorbase.h:488
+#: ui_tutorbase.h:488 ui_tutorbase.h:491
 #, fuzzy
 msgid "Guardar cobro"
 msgstr "Desa arxiu"
 
-#: ui_tutorbase.h:540
+#: ui_tutorbase.h:531
 msgid "Hijos"
-msgstr ""
+msgstr "Fills"
 
-#: tutoreslist.cpp:263 tutorview.cpp:51
+#: tutorview.cpp:93
+msgid "ID Recibo"
+msgstr "ID Rebut"
+
+#: tutorview.cpp:97
+msgid "ID Tutor"
+msgstr "ID Pare"
+
+#: tutoreslist.cpp:264
+msgid "ID padre"
+msgstr "ID pare"
+
+#: tutorview.cpp:56
 msgid "ID tutor"
 msgstr "ID tutor"
 
-#: tutorview.cpp:223
+#: tutorview.cpp:257
 #, fuzzy
 msgid "Id alumno"
-msgstr "Id apunt"
+msgstr "Id alumne"
 
-#: tutorview.cpp:225
+#: tutorview.cpp:260
 msgid "Id tutor"
-msgstr ""
+msgstr "Id pare"
 
-#: tutorview.cpp:222
+#: tutorview.cpp:256
 msgid "Identificador"
 msgstr "Identificador"
 
-#: ui_tutoreslistbase.h:353 ui_tutoreslistbase.h:358
+#: ui_tutoreslistbase.h:270 ui_tutoreslistbase.h:273
 #, fuzzy
 msgid "Imprimir listado"
 msgstr "Imprimeix la comanda"
 
-#: ui_tutorbase.h:519
+#: ui_tutorbase.h:513
 msgid "NIF:"
-msgstr ""
+msgstr "NIF:"
 
-#: tutoreslist.cpp:266 ui_tutorbase.h:534
+#: tutoreslist.cpp:267
 msgid "Nombre"
 msgstr "Nom"
 
-#: tutoreslist.cpp:269
+#: tutoreslist.cpp:272
 #, fuzzy
 msgid "Nombre alternativo del cliente"
 msgstr "Nom del compte"
 
-#: tutorview.cpp:224
+#: tutorview.cpp:258
 msgid "Nombre alumno"
-msgstr ""
+msgstr "Nom del alumne"
 
-#: tutorview.cpp:52 tutorview.cpp:53
+#: tutorview.cpp:57 tutorview.cpp:60
 #, fuzzy
 msgid "Nombre del tutor"
 msgstr "Nom del compte"
 
-#: ui_tutorbase.h:522
+#: ui_tutorbase.h:516
 msgid "Nombre:"
 msgstr "Nom:"
 
-#: ui_tutorbase.h:479 ui_tutoreslistbase.h:317 ui_tutoreslistbase.h:322
+#: ui_tutorbase.h:485
+msgid "Nuevo Padre/Socio"
+msgstr "Nou Pare/Soci"
+
+#: ui_tutoreslistbase.h:246 ui_tutoreslistbase.h:249
 #, fuzzy
 msgid "Nuevo Tutor"
 msgstr "Nou assentament"
 
 #: pluginbf_tutor.cpp:109 pluginbf_tutor.cpp:110
-msgid "Nuevo tutor/socio"
-msgstr ""
+msgid "Nuevo padre/socio"
+msgstr "Nou pare/soci"
 
-#: tutoreslist.cpp:265
+#: pluginbf_tutor.cpp:371 pluginbf_tutor.cpp:396
+#, fuzzy
+msgid "Nuevo tutor"
+msgstr "Nou assentament"
+
+#: tutoreslist.cpp:266
 msgid "Numero Socio"
-msgstr ""
+msgstr "Nombre Soci"
 
-#: tutoreslist.cpp:270
+#: tutoreslist.cpp:273
 #, fuzzy
 msgid "Numero cuenta corriente"
 msgstr "Codi de compte corrent.:"
 
-#: tutorview.cpp:55 tutorview.cpp:56 tutorview.cpp:57 tutorview.cpp:58
-#: tutorview.cpp:59 tutorview.cpp:60 tutorview.cpp:61 tutorview.cpp:62
-#: tutorview.cpp:63 tutorview.cpp:64
+#: tutorview.cpp:62 tutorview.cpp:63 tutorview.cpp:64 tutorview.cpp:65
+#: tutorview.cpp:66 tutorview.cpp:67 tutorview.cpp:68 tutorview.cpp:69
+#: tutorview.cpp:70 tutorview.cpp:71 tutorview.cpp:72
 msgid "Numero de Socio"
-msgstr ""
+msgstr "Nombre de Soci"
 
-#: tutoreslist.cpp:275
+#: tutoreslist.cpp:278
 #, fuzzy
 msgid "Numero de fax"
 msgstr "Nombre de quotes"
 
-#: tutoreslist.cpp:274
+#: tutoreslist.cpp:277
 #, fuzzy
 msgid "Numero de telefono"
 msgstr "Nombre de quotes"
 
-#: ui_tutorbase.h:521
+#: ui_tutorbase.h:515
 msgid "Nº Socio"
-msgstr ""
+msgstr "Num. Soci"
 
-#: ui_tutorbase.h:539
+#: ui_tutorbase.h:530
 msgid "Otros datos"
-msgstr ""
+msgstr "Altres Dades"
 
-#: ui_tutorbase.h:537
-msgid "Pagos"
-msgstr ""
+#: tutorview.cpp:53
+msgid "Padre"
+msgstr "Pare"
 
-#: tutoreslist.cpp:272
+#: tutoreslist.cpp:144 ui_tutoreslistbase.h:243
+msgid "Padres"
+msgstr "Pares"
+
+#: pluginbf_tutor.cpp:101 pluginbf_tutor.cpp:102
+msgid "Padres/Socios"
+msgstr "Pare/Soci"
+
+#: tutorview.cpp:95
+#, fuzzy
+msgid "Pagado"
+msgstr "Paginació"
+
+#: tutoreslist.cpp:275
 #, fuzzy
 msgid "Poblacion"
 msgstr "Paginació"
 
-#: ui_tutorbase.h:525
+#: ui_tutorbase.h:519
 #, fuzzy
 msgid "Poblacion:"
 msgstr "Paginació"
 
-#: ui_tutorbase.h:536
-#, fuzzy
-msgid "Porcentaje de facturacion"
-msgstr "Percentatge de càrrega..."
+#: tutorview.cpp:259
+msgid "Porcentaje Fact."
+msgstr "Porcentatge Fact."
 
-#: tutorview.cpp:66
+#: tutorview.cpp:74
 msgid "Provincia"
 msgstr "Provincia"
 
-#: ui_tutorbase.h:524
+#: ui_tutorbase.h:518
 #, fuzzy
 msgid "Provincia:"
 msgstr "Periodicitat:"
 
-#: ui_tutorbase.h:535
-#, fuzzy
-msgid "Relacion"
-msgstr "Regularització"
+#: ui_tutorbase.h:532
+msgid "Recibos"
+msgstr "Rebuts"
 
-#: ui_tutorbase.h:520
+#: pluginbf_tutor.cpp:375 pluginbf_tutor.cpp:394
+msgid "Seleccionar tutor"
+msgstr "Seleccionar pare"
+
+#: ui_tutorbase.h:514
 msgid "Socio"
-msgstr ""
+msgstr "Soci"
 
-#: ui_tutorbase.h:527
+#: ui_tutorbase.h:521
 msgid "Telefono fijo:"
 msgstr "Telèfon fix:"
 
-#: ui_tutorbase.h:528
+#: ui_tutorbase.h:522
 msgid "Telefono movil:"
 msgstr "Telèfon mòbil:"
 
-#: tutorview.cpp:126
+#: tutorview.cpp:156
+#, fuzzy
 msgid "Tiene que guardar el documento antes de poder imprimirlo."
 msgstr ""
-
-#: tutorview.cpp:48
-msgid "Tutor"
-msgstr "Tutor"
-
-#: tutoreslist.cpp:144 ui_tutoreslistbase.h:308
-msgid "Tutores"
-msgstr ""
-
-#: pluginbf_tutor.cpp:101 pluginbf_tutor.cpp:102
-msgid "Tutores/Socios"
-msgstr ""
+"#-#-#-#-#  pluginbf_asociacion_ca_ES.UTF-8.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"Ha de guardar el document abans de poder imprimir-lo\n"
+"#-#-#-#-#  pluginbf_recibo_ca_ES.UTF-8.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"Ha de desar el document abans de poder imprimir-lo"
 
 #, fuzzy
 #~ msgid "&Nuevo tutor"
 #~ msgstr "Nou assentament"
 
+#~ msgid "&Nuevo tutor/socio"
+#~ msgstr "&Nou tutor/soci"
+
 #~ msgid "&Tutores"
 #~ msgstr "&Tutors"
 
+#~ msgid "&Tutores/Socios"
+#~ msgstr "&Tutors/Socis"
+
 #~ msgid "C.I.F./N.I.F./N.I.E.:"
 #~ msgstr "C.I.F./N.I.F./N.I.E.:"
+
+#, fuzzy
+#~ msgid "Cobros efectivos"
+#~ msgstr "Cobraments efectius:"
+
+#, fuzzy
+#~ msgid "Cobros previstos"
+#~ msgstr "&Cobraments prevists"
 
 #~ msgid "Correo electronico:"
 #~ msgstr "Correo electrònic:"
@@ -432,10 +489,29 @@ msgstr ""
 #~ msgid "Datos bancarios:"
 #~ msgstr "Dades incompletes"
 
+#~ msgid "Fecha final:"
+#~ msgstr "Data final:"
+
+#~ msgid "Fecha inicial:"
+#~ msgstr "Data inicial:"
+
 #, fuzzy
 #~ msgid "Nombre completo:"
 #~ msgstr "Nom d'usuari:"
 
 #, fuzzy
-#~ msgid "Nuevo tutor"
-#~ msgstr "Nou assentament"
+#~ msgid "Porcentaje de facturacion"
+#~ msgstr "Percentatge de càrrega..."
+
+#, fuzzy
+#~ msgid "Relacion"
+#~ msgstr "Regularització"
+
+#~ msgid "Tutor"
+#~ msgstr "Tutor"
+
+#~ msgid "Tutores"
+#~ msgstr "Tutors"
+
+#~ msgid "Tutores/Socios"
+#~ msgstr "Tutors/Socis"
