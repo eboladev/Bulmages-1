@@ -56,6 +56,7 @@ set(bulmalib_SRCS	blpostgresqlclient.cpp
 			bldoublespinbox.cpp
 			blwidget.cpp
 			blformlist.cpp
+         blformlistfilter.cpp
 			bldatelineedit.cpp
 			blsplashscreen.cpp
 			blformconfig.cpp
@@ -88,6 +89,7 @@ set(bulmalib_MOCS	bldblogindialog.h
 			blwidget.h
 			blmainwindow.h
 			blformlist.h
+         blformlistfilter.h
 			bldatelineedit.h
 			blsplashscreen.h
 			blformconfig.h
@@ -146,6 +148,7 @@ set(bulmalib_UIS	bldblogindialogbase.ui
 			blcountrybase.ui
 			blprogressbarbase.ui
 			blsearchwidgetbase.ui
+			blformlistfilterbase.ui
 			blbankeditbase.ui)
 
 include_directories(
