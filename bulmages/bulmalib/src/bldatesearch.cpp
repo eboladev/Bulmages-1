@@ -200,6 +200,8 @@ void BlDateSearch::s_searchFecha()
     delete diag;
 
     emit ( valueChanged ( m_textoFecha->text() ) );
+    emit ( editingFinished () );
+
     _depura ( "END BlDateSearch::s_searchFecha", 0 );
 }
 

@@ -53,8 +53,16 @@ public slots:
     virtual void selectAll();
 
 signals:
+
+    /// Esta se&ntilde;al se emite siempre que el valor de la fecha sea modificada,
+    /// ya sea programadamente (setText) o por el usuario.
     void valueChanged ( QString );
+
     void returnPressed();
+
+    /// Esta se&ntilde;al se emite cuando el usuario cambia la fecha ya sea
+    /// escribiendo o seleccionando en el calendario.
+    /// No se activar&aacute; si el cambio se realiz&oacute; programadamente.
     void editingFinished();
 };
 
