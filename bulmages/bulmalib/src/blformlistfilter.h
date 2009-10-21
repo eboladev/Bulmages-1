@@ -35,16 +35,23 @@
   - valor num&eacute;rico  ( entero o con decimales )
   - booleano  ( mediante un QCheckBox triestado )
   - texto  ( permitiendo decidir si buscamos la cadena al principio, en cualquier sitio o exactamente )
-  Forma de uso:
-  1) Agregar un QWidget llamado "mui_filtador" y promocionarlo a BlFormFieldFilter.
-  2) Agregar en la barra de botones del listado concreto un bot&oacute;n "mui_filtrar".
+
+  Forma de uso desde un widget tipo "List" de un listado concreto de plugin:
+
+  1) Agregar un QWidget llamado "mui_filtador" y promocionarlo a BlFormListFilter.
+
+  2) Agregar en la barra de botones un bot&oacute;n (puede usarse el que hay: "mui_filtrar").
+
   3) Activarle a dicho bot&oacute;n la propiedad checkable y ponerle el icono i_filter.png.
+
   4) Para que el filtro pueda acceder al listado y se muestre y oculte al pulsar el bot&oacute;n,
   en el constructor del listado concreto, agregar:
-   mui_filtrador->setSubFormList(mui_list);
-   connect(mui_filtrar, SIGNAL(released()), mui_filtrador, SLOT(showHideFilter()));
-  5) Para que se aplique el filtrado al actualizar el listado, concatenar a la consulta de presentar() esto:
-   + mui_filtrador->generarFiltro()
+     mui_filtrador->setSubFormList(mui_list);
+     connect(mui_filtrar, SIGNAL(released()), mui_filtrador, SLOT(showHideFilter()));
+
+  5) Para que se aplique el filtrado al actualizar el listado, terminar la consulta SQL de presentar() con esto:
+     ...WHERE 1 = 1 " + mui_filtrador->generarFiltro());
+
 **/
 class BL_EXPORT BlFormListFilter : public BlWidget, public Ui_BlFormListFilterBase
 {

@@ -62,6 +62,8 @@ QString BlFormListFilter::generarFiltro (  )
 
    switch ( mui_subform_list->dbFieldTypeByColumnId ( m_columna_actual ) )
    {
+
+      /// Filtro para valores numéricos
       case BlDbField::DbInt:
       case BlDbField::DbNumeric:
 
