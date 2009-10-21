@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-05-16 14:42+0200\n"
+"POT-Creation-Date: 2009-10-21 10:25+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -23,15 +23,15 @@ msgstr ""
 msgid "&Balance jerarquico"
 msgstr "Balanç jeràrquic"
 
-#: ui_balancesprintdlg.h:205
+#: ui_balancesprintdlg.h:206
 msgid "&Cancelar"
 msgstr "&Cancel·la"
 
-#: ui_balanceprintbase.h:316
+#: ui_balanceprintbase.h:329
 msgid "&Kugar"
 msgstr "&Kugar"
 
-#: ui_balanceprintbase.h:313
+#: ui_balanceprintbase.h:326
 msgid "&Texto Plano"
 msgstr "&Text pla"
 
@@ -39,20 +39,20 @@ msgstr "&Text pla"
 msgid "&Ver"
 msgstr "&Veure"
 
-#: ui_balancesprintdlg.h:201
+#: ui_balancesprintdlg.h:202
 msgid "&texto plano"
 msgstr "&text pla"
 
-#: ui_balancebase.h:454
+#: ui_balancebase.h:445
 msgid "1"
 msgstr "1"
 
-#: ui_balancesprintdlg.h:204
+#: ui_balancesprintdlg.h:205
 #, fuzzy
 msgid "Acep&tar"
 msgstr "Accepta"
 
-#: ui_balancebase.h:414 ui_balancebase.h:419
+#: ui_balancebase.h:415 ui_balancebase.h:418
 #, fuzzy
 msgid "Actualizar balance"
 msgstr "Actual·litza llistat"
@@ -93,31 +93,31 @@ msgstr ""
 "#-#-#-#-#  bulmalib_ca_ES.UTF-8.po (PACKAGE VERSION)  #-#-#-#-#\n"
 "Ajustar columnes"
 
-#: ui_balancesprintdlg.h:202
+#: ui_balancesprintdlg.h:203
 #, fuzzy
 msgid "Alt+T"
 msgstr "Alt+I"
 
-#: balanceview.cpp:62 ui_balancesprintdlg.h:197
+#: balanceview.cpp:62 ui_balancesprintdlg.h:198
 msgid "Balance"
 msgstr "Balanç"
 
-#: ui_balancebase.h:399
+#: ui_balancebase.h:405
 #, fuzzy
 msgid "Balance de cuentas"
 msgstr "Banc del compte"
 
-#: ui_balancebase.h:453
+#: ui_balancebase.h:443
 #, fuzzy
 msgid "Balance jerarquico"
 msgstr "Balanç jeràrquic"
 
-#: ui_balancetreebase.h:375
+#: ui_balancetreebase.h:382
 #, fuzzy
 msgid "Balance jerarquico de Cuentas"
 msgstr "Balanç jeràrquic"
 
-#: ui_balancetreebase.h:378 ui_balancetreebase.h:383
+#: ui_balancetreebase.h:384 ui_balancetreebase.h:387
 msgid "Borrar albaran"
 msgstr "Esborra albarà"
 
@@ -130,7 +130,7 @@ msgstr ""
 "#-#-#-#-#  bulmalib_ca_ES.UTF-8.po (PACKAGE VERSION)  #-#-#-#-#\n"
 "Esborrar registre"
 
-#: ui_balancetreebase.h:414
+#: ui_balancetreebase.h:409
 msgid "Centro de coste:"
 msgstr "Centre de cost:"
 
@@ -138,41 +138,41 @@ msgstr "Centre de cost:"
 msgid "Codigo"
 msgstr "Codi"
 
-#: ui_balanceprintbase.h:307
+#: ui_balanceprintbase.h:320
 msgid "Codigo Final"
 msgstr "Codi final"
 
-#: ui_balanceprintbase.h:304
+#: ui_balanceprintbase.h:317
 msgid "Codigo Inicial\n"
 msgstr "Codi inicial\n"
 
-#: ui_balancebase.h:438 ui_balancebase.h:443
+#: ui_balancebase.h:431 ui_balancebase.h:434
 msgid "Configurar"
 msgstr "Arranjament"
 
-#: ui_balancebase.h:447
+#: ui_balancebase.h:437
 msgid "Ctrl+B"
 msgstr "Ctrl+B"
 
-#: ui_balancebase.h:411
+#: ui_balancebase.h:413
 msgid "Ctrl+F"
 msgstr "Ctrl+F"
 
-#: ui_balancebase.h:435
+#: ui_balancebase.h:429
 msgid "Ctrl+P"
 msgstr "Ctrl+P"
 
-#: ui_balancebase.h:451 ui_balancetreebase.h:409
+#: ui_balancebase.h:441 ui_balancetreebase.h:404
 #, fuzzy
 msgid "Cuenta final:"
 msgstr "Data final:"
 
-#: ui_balancebase.h:449 ui_balancetreebase.h:412
+#: ui_balancebase.h:439 ui_balancetreebase.h:407
 #, fuzzy
 msgid "Cuenta inicial:"
 msgstr "Data inicial:"
 
-#: ui_balanceprintbase.h:303
+#: ui_balanceprintbase.h:316
 msgid "Datos del listado:"
 msgstr "Dades del llistat:"
 
@@ -185,7 +185,7 @@ msgstr "Deure"
 msgid "Debe "
 msgstr "Deure"
 
-#: ui_balancebase.h:459
+#: ui_balancebase.h:450
 #, fuzzy
 msgid "Debe:"
 msgstr "Deure"
@@ -194,54 +194,54 @@ msgstr "Deure"
 msgid "Denominacion"
 msgstr "Denominació"
 
-#: ui_balancebase.h:423
+#: ui_balancebase.h:421
 msgid "F5"
 msgstr "F5"
 
-#: ui_balancesprintdlg.h:199 ui_balanceprintbase.h:308
+#: ui_balancesprintdlg.h:200 ui_balanceprintbase.h:321
 #, fuzzy
 msgid "Fecha Final"
 msgstr "Data final"
 
-#: ui_balancesprintdlg.h:198 ui_balanceprintbase.h:306
+#: ui_balancesprintdlg.h:199 ui_balanceprintbase.h:319
 #, fuzzy
 msgid "Fecha Inicial"
 msgstr "Data inicial"
 
-#: ui_balancebase.h:450 ui_balancetreebase.h:410
+#: ui_balancebase.h:440 ui_balancetreebase.h:405
 msgid "Fecha final:"
 msgstr "Data final:"
 
-#: ui_balancebase.h:448 ui_balancetreebase.h:411
+#: ui_balancebase.h:438 ui_balancetreebase.h:406
 msgid "Fecha inicial:"
 msgstr "Data inicial:"
 
-#: ui_balancebase.h:402 ui_balancebase.h:407
+#: ui_balancebase.h:407 ui_balancebase.h:410
 #, fuzzy
 msgid "Filtrar balance"
 msgstr "Filtrar balanç"
 
-#: ui_balancesprintdlg.h:200
+#: ui_balancesprintdlg.h:201
 #, fuzzy
 msgid "Formato"
 msgstr "Form"
 
-#: ui_balanceprintbase.h:312
+#: ui_balanceprintbase.h:325
 #, fuzzy
 msgid "Formato:"
 msgstr "Form"
 
-#: ui_balancebase.h:455
+#: ui_balancebase.h:446
 #, fuzzy
 msgid "GroupBox"
 msgstr "Grup"
 
-#: ui_balanceprintbase.h:315
+#: ui_balanceprintbase.h:328
 #, fuzzy
 msgid "HT&ML"
 msgstr "HT&ML"
 
-#: ui_balancesprintdlg.h:203
+#: ui_balancesprintdlg.h:204
 msgid "HTML"
 msgstr "HTML"
 
@@ -254,47 +254,47 @@ msgstr "Haver"
 msgid "Haber "
 msgstr "Haver"
 
-#: ui_balancebase.h:457
+#: ui_balancebase.h:448
 #, fuzzy
 msgid "Haber:"
 msgstr "Haver"
 
-#: ui_balancesprintdlg.h:196
+#: ui_balancesprintdlg.h:197
 #, fuzzy
 msgid "Impresion de Balances"
 msgstr "Gestió de &famílies"
 
-#: ui_balanceprintbase.h:299
+#: ui_balanceprintbase.h:312
 #, fuzzy
 msgid "Impresion del Balance de Sumas y Saldos"
 msgstr "Balanç"
 
-#: ui_balancetreebase.h:389 ui_balancetreebase.h:394 ui_balancetreebase.h:400
-#: ui_balancetreebase.h:405
+#: ui_balancetreebase.h:391 ui_balancetreebase.h:394 ui_balancetreebase.h:398
+#: ui_balancetreebase.h:401
 msgid "Imprimir albaran"
 msgstr "Imprimeix albarà"
 
-#: ui_balancebase.h:426 ui_balancebase.h:431
+#: ui_balancebase.h:423 ui_balancebase.h:426
 #, fuzzy
 msgid "Imprimir balance"
 msgstr "Imprimeix albarà"
 
-#: ui_balanceprintbase.h:311
+#: ui_balanceprintbase.h:324
 #, fuzzy
 msgid "Incl&uir resultados parciales"
 msgstr "Incloure resultats parcials"
 
-#: ui_balanceprintbase.h:310
+#: ui_balanceprintbase.h:323
 #, fuzzy
 msgid "Incluir &niveles superiores."
 msgstr "Incloure resultats parcials"
 
-#: ui_balanceprintbase.h:309
+#: ui_balanceprintbase.h:322
 #, fuzzy
 msgid "Nivel de Cuentas"
 msgstr "Tipus de compte"
 
-#: ui_balancebase.h:452 ui_balancetreebase.h:413
+#: ui_balancebase.h:442 ui_balancetreebase.h:408
 msgid "Nivel:"
 msgstr ""
 
@@ -307,7 +307,7 @@ msgstr "Actualitza balanç"
 msgid "Podra disponer de la informacion del balance"
 msgstr ""
 
-#: ui_balanceprintbase.h:314
+#: ui_balanceprintbase.h:327
 #, fuzzy
 msgid "Propietario"
 msgstr "Comentari"
@@ -325,22 +325,22 @@ msgstr "Saldo"
 msgid "Saldo anterior"
 msgstr "Saldo anterior"
 
-#: ui_balancebase.h:458 ui_balancetreebase.h:415
+#: ui_balancebase.h:449 ui_balancetreebase.h:410
 #, fuzzy
 msgid "Saldo anterior:"
 msgstr "Saldo anterior"
 
-#: ui_balancebase.h:456 ui_balancetreebase.h:418
+#: ui_balancebase.h:447 ui_balancetreebase.h:413
 #, fuzzy
 msgid "Saldo:"
 msgstr "Saldo"
 
-#: ui_balancetreebase.h:416
+#: ui_balancetreebase.h:411
 #, fuzzy
 msgid "Total Debe:"
 msgstr "Totals:"
 
-#: ui_balancetreebase.h:417
+#: ui_balancetreebase.h:412
 #, fuzzy
 msgid "Total Haber:"
 msgstr "Total Haver:"

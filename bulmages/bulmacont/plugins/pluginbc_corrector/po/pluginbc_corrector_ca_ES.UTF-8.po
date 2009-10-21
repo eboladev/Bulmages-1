@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-05-16 14:37+0200\n"
+"POT-Creation-Date: 2009-10-21 10:25+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -22,40 +22,40 @@ msgstr ""
 msgid "&Corrector"
 msgstr "&Corrector"
 
-#: ui_confreglasbase.h:283
+#: ui_confreglasbase.h:284
 #, fuzzy
 msgid "Apunte con Cuenta"
 msgstr "Apunts &comptables"
 
-#: ui_confreglasbase.h:291
+#: ui_confreglasbase.h:292
 #, fuzzy
 msgid "Apunte con Descripcion"
 msgstr "Descripció"
 
-#: ui_confreglasbase.h:284
+#: ui_confreglasbase.h:285
 #, fuzzy
 msgid "Apunte con Saldo"
 msgstr "Apunts &comptables"
 
-#: ui_confreglasbase.h:294
+#: ui_confreglasbase.h:295
 msgid "Cerrar"
 msgstr "Tanca"
 
-#: ui_confreglasbase.h:280
+#: ui_confreglasbase.h:281
 #, fuzzy
 msgid "Comprobacion por asientos"
 msgstr "Importar assentament"
 
-#: ui_confreglasbase.h:281
+#: ui_confreglasbase.h:282
 #, fuzzy
 msgid "Condicion:"
 msgstr "Codi:"
 
-#: ui_correctorbase.h:106 ui_correctorbase.h:111
+#: ui_correctorbase.h:102 ui_correctorbase.h:105
 msgid "Configurar"
 msgstr "Arranjament"
 
-#: pluginbc_corrector.cpp:55 ui_correctorbase.h:92
+#: pluginbc_corrector.cpp:55 ui_correctorbase.h:93
 msgid "Corrector"
 msgstr "Corrector"
 
@@ -69,13 +69,14 @@ msgstr ""
 "\n"
 "Mostra/amaga el corrector"
 
-#: ui_correctorbase.h:95 ui_correctorbase.h:100
+#: ui_correctorbase.h:95 ui_correctorbase.h:98
 msgid "Corregir"
 msgstr "Corregeix"
 
-#: ui_confreglasbase.h:282
+#: ui_confreglasbase.h:283
 msgid "Deben existir registros que cumplan esta condicion en el periodo"
 msgstr ""
+"Cal que existeixin registres que compleixin aquesta condició en el període"
 
 #: pluginbc_corrector.cpp:74
 msgid "Muestra/oculta el corrector"
@@ -90,33 +91,33 @@ msgstr "No es pot tancar la finestra a causa d'un error"
 msgid "Opcion no implementada"
 msgstr ""
 
-#: ui_confreglasbase.h:293
+#: ui_confreglasbase.h:294
 msgid "Periodicidad"
 msgstr "Periodicitat"
 
-#: ui_confreglasbase.h:279
+#: ui_confreglasbase.h:280
 msgid "Regla:"
 msgstr "Regla:"
 
-#: ui_confreglasbase.h:275
+#: ui_confreglasbase.h:276
 msgid "Reglas de Corrector"
 msgstr "Regles del corrector"
 
-#: ui_confreglasbase.h:292
+#: ui_confreglasbase.h:293
 #, fuzzy
 msgid "Reglas sobre Apuntes"
 msgstr "Apunts"
 
-#: ui_confreglasbase.h:287
+#: ui_confreglasbase.h:288
 #, fuzzy
 msgid "igual"
 msgstr "Anual"
 
-#: ui_confreglasbase.h:289
+#: ui_confreglasbase.h:290
 #, fuzzy
 msgid "mayor"
 msgstr "Maig"
 
-#: ui_confreglasbase.h:288
+#: ui_confreglasbase.h:289
 msgid "menor"
 msgstr ""

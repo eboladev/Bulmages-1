@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-05-16 15:34+0200\n"
+"POT-Creation-Date: 2009-10-21 10:24+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -23,7 +23,7 @@ msgstr ""
 msgid "% Descuento"
 msgstr "Document:"
 
-#: ui_albaranproveedorbase.h:645
+#: ui_albaranproveedorbase.h:626
 #, fuzzy
 msgid "&Aceptar"
 msgstr ""
@@ -50,12 +50,12 @@ msgstr ""
 "#-#-#-#-#  - (PACKAGE VERSION)  #-#-#-#-#\n"
 "&Accepta"
 
-#: pluginbf_proveedoralbaran.cpp:96
+#: pluginbf_proveedoralbaran.cpp:97
 #, fuzzy
 msgid "&Albaranes de proveedores"
 msgstr "Nom del proveïdor"
 
-#: ui_albaranproveedorbase.h:651
+#: ui_albaranproveedorbase.h:630
 #, fuzzy
 msgid "&Cancelar"
 msgstr ""
@@ -64,7 +64,7 @@ msgstr ""
 "#-#-#-#-#  bulmalib_ca_ES.UTF-8.po (PACKAGE VERSION)  #-#-#-#-#\n"
 "&Cancel·lar"
 
-#: ui_albaranproveedorbase.h:627
+#: ui_albaranproveedorbase.h:610
 #, fuzzy
 msgid "&Comentarios"
 msgstr ""
@@ -73,7 +73,7 @@ msgstr ""
 "#-#-#-#-#  bulmacont_ca.po (PACKAGE VERSION)  #-#-#-#-#\n"
 "Comentaris"
 
-#: ui_albaranproveedorbase.h:625
+#: ui_albaranproveedorbase.h:608
 #, fuzzy
 msgid "&Detalle"
 msgstr "&Detalls"
@@ -82,7 +82,7 @@ msgstr "&Detalls"
 msgid "&No"
 msgstr "&No"
 
-#: pluginbf_proveedoralbaran.cpp:104
+#: pluginbf_proveedoralbaran.cpp:105
 #, fuzzy
 msgid "&Nuevo albaran de proveedor"
 msgstr "Nom del proveïdor"
@@ -91,13 +91,13 @@ msgstr "Nom del proveïdor"
 msgid "&Si"
 msgstr "&Sí"
 
-#: ui_albaranproveedorbase.h:634 ui_albaranproveedorbase.h:635
-#: ui_albaranproveedorbase.h:636 ui_albaranproveedorbase.h:637
-#: ui_albaranproveedorbase.h:638 ui_albaranproveedorbase.h:639
+#: ui_albaranproveedorbase.h:617 ui_albaranproveedorbase.h:618
+#: ui_albaranproveedorbase.h:619 ui_albaranproveedorbase.h:620
+#: ui_albaranproveedorbase.h:621 ui_albaranproveedorbase.h:622
 msgid "0.00"
 msgstr "0.00"
 
-#: ui_albaranesproveedorlistbase.h:500 ui_albaranesproveedorlistbase.h:505
+#: ui_albaranesproveedorlistbase.h:476 ui_albaranesproveedorlistbase.h:479
 msgid "Actualizar listado"
 msgstr "Actual·litza llistat"
 
@@ -111,12 +111,12 @@ msgstr "Nom del proveïdor"
 msgid "Albaran de proveedor existente"
 msgstr "El magatzem del pressupost no existeix<BR>"
 
-#: albaranesproveedor.cpp:313 ui_albaranesproveedorlistbase.h:420
+#: albaranesproveedor.cpp:313 ui_albaranesproveedorlistbase.h:421
 #, fuzzy
 msgid "Albaranes de proveedor"
 msgstr "Nom del proveïdor"
 
-#: pluginbf_proveedoralbaran.cpp:98 pluginbf_proveedoralbaran.cpp:99
+#: pluginbf_proveedoralbaran.cpp:99 pluginbf_proveedoralbaran.cpp:100
 #, fuzzy
 msgid "Albaranes de proveedores"
 msgstr "Nom del proveïdor"
@@ -130,7 +130,7 @@ msgstr "Apunts &no puntejats"
 msgid "Albaranes procesados"
 msgstr "Albarans processats"
 
-#: ui_albaranproveedorbase.h:624
+#: ui_albaranproveedorbase.h:607
 #, fuzzy
 msgid "Almacen:"
 msgstr "<LI> Magatzem <B>"
@@ -140,17 +140,17 @@ msgstr "<LI> Magatzem <B>"
 msgid "Base imponible"
 msgstr "Empreses disponibles:"
 
-#: ui_albaranproveedorbase.h:629
+#: ui_albaranproveedorbase.h:612
 #, fuzzy
 msgid "Base imponible:"
 msgstr "Empreses disponibles:"
 
-#: ui_albaranesproveedorlistbase.h:452 ui_albaranesproveedorlistbase.h:457
-#: ui_albaranproveedorbase.h:586 ui_albaranproveedorbase.h:591
+#: ui_albaranesproveedorlistbase.h:444 ui_albaranesproveedorlistbase.h:447
+#: ui_albaranproveedorbase.h:580 ui_albaranproveedorbase.h:583
 msgid "Borrar albaran"
 msgstr "Esborra albarà"
 
-#: ui_albaranesproveedorlistbase.h:510
+#: ui_albaranesproveedorlistbase.h:483
 msgid "Buscar:"
 msgstr "Cerca:"
 
@@ -168,40 +168,40 @@ msgstr "Nom del proveïdor"
 msgid "Concepto descuento"
 msgstr "Concepte comptable"
 
-#: ui_albaranesproveedorlistbase.h:488 ui_albaranesproveedorlistbase.h:493
+#: ui_albaranesproveedorlistbase.h:468 ui_albaranesproveedorlistbase.h:471
 msgid "Configurar listado"
 msgstr "Configura llistat"
 
-#: ui_albaranesproveedorlistbase.h:497
+#: ui_albaranesproveedorlistbase.h:474
 msgid "Ctrl+B"
 msgstr "Ctrl+B"
 
-#: ui_albaranesproveedorlistbase.h:461 ui_albaranproveedorbase.h:595
+#: ui_albaranesproveedorlistbase.h:450 ui_albaranproveedorbase.h:586
 msgid "Ctrl+D"
 msgstr "Ctrl+D"
 
-#: ui_albaranesproveedorlistbase.h:449
+#: ui_albaranesproveedorlistbase.h:442
 msgid "Ctrl+E"
 msgstr "Ctrl+E"
 
-#: ui_albaranesproveedorlistbase.h:485
+#: ui_albaranesproveedorlistbase.h:466
 msgid "Ctrl+F"
 msgstr "Ctrl+F"
 
-#: ui_albaranproveedorbase.h:619
+#: ui_albaranproveedorbase.h:602
 #, fuzzy
 msgid "Ctrl+G"
 msgstr "Ctrl+S"
 
-#: ui_albaranesproveedorlistbase.h:437
+#: ui_albaranesproveedorlistbase.h:434
 msgid "Ctrl+N"
 msgstr "Ctrl+N"
 
-#: ui_albaranesproveedorlistbase.h:473
+#: ui_albaranesproveedorlistbase.h:458
 msgid "Ctrl+P"
 msgstr "Ctrl+P"
 
-#: ui_albaranproveedorbase.h:583
+#: ui_albaranproveedorbase.h:578
 msgid "Ctrl+S"
 msgstr "Ctrl+S"
 
@@ -210,7 +210,7 @@ msgstr "Ctrl+S"
 msgid "Debe seleccionar una linea"
 msgstr "Cal triar un compte"
 
-#: ui_albaranproveedorbase.h:626
+#: ui_albaranproveedorbase.h:609
 #, fuzzy
 msgid "Desc&uentos"
 msgstr "Document:"
@@ -229,17 +229,17 @@ msgstr "Direcció del proveïdor"
 msgid "Descripcion de la forma de pago"
 msgstr "Descripció del compte"
 
-#: ui_albaranproveedorbase.h:620
+#: ui_albaranproveedorbase.h:603
 #, fuzzy
 msgid "Descripcion:"
 msgstr "Descripció"
 
-#: ui_albaranproveedorbase.h:628
+#: ui_albaranproveedorbase.h:611
 #, fuzzy
 msgid "Descuentos:"
 msgstr "Document:"
 
-#: ui_albaranesproveedorlistbase.h:440 ui_albaranesproveedorlistbase.h:445
+#: ui_albaranesproveedorlistbase.h:436 ui_albaranesproveedorlistbase.h:439
 #, fuzzy
 msgid "Editar albaran"
 msgstr "Esborra albarà"
@@ -263,7 +263,7 @@ msgid ""
 "Desea abrirla para verificar?"
 msgstr ""
 
-#: ui_albaranesproveedorlistbase.h:509
+#: ui_albaranesproveedorlistbase.h:482
 msgid "F5"
 msgstr "F5"
 
@@ -276,34 +276,38 @@ msgstr "Data"
 msgid "Fecha albaran proveedor"
 msgstr "NIF del proveïdor"
 
-#: ui_albaranproveedorbase.h:622
+#: ui_albaranproveedorbase.h:605
 #, fuzzy
 msgid "Fecha de creacion:"
 msgstr "Data de compra:"
 
-#: ui_albaranesproveedorlistbase.h:423
+#: ui_albaranesproveedorlistbase.h:424
 msgid "Fecha final:"
 msgstr "Data final:"
 
-#: ui_albaranesproveedorlistbase.h:422
+#: ui_albaranesproveedorlistbase.h:423
 msgid "Fecha inicial:"
 msgstr "Data inicial:"
 
-#: ui_albaranesproveedorlistbase.h:476 ui_albaranesproveedorlistbase.h:481
+#: ui_albaranesproveedorlistbase.h:460 ui_albaranesproveedorlistbase.h:463
 #, fuzzy
 msgid "Filtrar albaranes"
 msgstr "Filtrar balanç"
 
-#: ui_albaranproveedorbase.h:623
+#: ui_albaranproveedorbase.h:606
 msgid "Forma de pago:"
 msgstr "Forma de pagament:"
 
-#: ui_albaranproveedorbase.h:574 ui_albaranproveedorbase.h:579
+#: genalbpqtoolbutton.cpp:75 genalbpqtoolbutton.cpp:76
+msgid "Generar Albaran Proveedor"
+msgstr ""
+
+#: ui_albaranproveedorbase.h:572 ui_albaranproveedorbase.h:575
 #, fuzzy
 msgid "Guardar albaran"
 msgstr "Desa balanç"
 
-#: ui_albaranproveedorbase.h:630
+#: ui_albaranproveedorbase.h:613
 msgid "I.R.P.F."
 msgstr "I.R.P.F."
 
@@ -357,7 +361,7 @@ msgstr "<LI> Forma de pagament <B>"
 msgid "Id proveedor"
 msgstr "NIF del proveïdor"
 
-#: ui_albaranesproveedorlistbase.h:464 ui_albaranesproveedorlistbase.h:469
+#: ui_albaranesproveedorlistbase.h:452 ui_albaranesproveedorlistbase.h:455
 #, fuzzy
 msgid "Imprimir listado"
 msgstr "Imprimeix la comanda"
@@ -367,16 +371,16 @@ msgstr "Imprimeix la comanda"
 msgid "Impuestos"
 msgstr "Imputació"
 
-#: ui_albaranproveedorbase.h:631
+#: ui_albaranproveedorbase.h:614
 #, fuzzy
 msgid "Impuestos:"
 msgstr "Imputació"
 
-#: ui_albaranproveedorbase.h:610 ui_albaranproveedorbase.h:615
+#: ui_albaranproveedorbase.h:596 ui_albaranproveedorbase.h:599
 msgid "Mostrar/ocultar cabecera"
 msgstr "Mostrar/ocultar capçalera"
 
-#: ui_albaranesproveedorlistbase.h:421
+#: ui_albaranesproveedorlistbase.h:422
 #, fuzzy
 msgid "Mostrar:"
 msgstr "Mostrar assentament"
@@ -390,13 +394,13 @@ msgstr "Nom del compte"
 msgid "Nombre del proveedor"
 msgstr "Nom del proveïdor"
 
-#: ui_albaranesproveedorlistbase.h:428 ui_albaranesproveedorlistbase.h:433
+#: ui_albaranesproveedorlistbase.h:428 ui_albaranesproveedorlistbase.h:431
 #, fuzzy
 msgid "Nuevo albaran"
 msgstr "Esborra albarà"
 
-#: pluginbf_proveedoralbaran.cpp:106 pluginbf_proveedoralbaran.cpp:107
-#: ui_albaranproveedorbase.h:570
+#: pluginbf_proveedoralbaran.cpp:107 pluginbf_proveedoralbaran.cpp:108
+#: ui_albaranproveedorbase.h:569
 #, fuzzy
 msgid "Nuevo albaran de proveedor"
 msgstr "Nom del proveïdor"
@@ -411,7 +415,7 @@ msgstr "Nom del proveïdor"
 msgid "Numero de albaran"
 msgstr "Nombre de quotes"
 
-#: ui_albaranproveedorbase.h:621
+#: ui_albaranproveedorbase.h:604
 #, fuzzy
 msgid "Numero de albaran:"
 msgstr "Nombre de quotes"
@@ -426,7 +430,7 @@ msgstr "Propietari"
 msgid "Proveedor:"
 msgstr "Proveïdor:"
 
-#: ui_albaranproveedorbase.h:632
+#: ui_albaranproveedorbase.h:615
 #, fuzzy
 msgid "R.E.:"
 msgstr "C.P.:"
@@ -440,7 +444,7 @@ msgstr "Referència"
 msgid "Referencia albaran proveedor"
 msgstr "Direcció del proveïdor"
 
-#: ui_albaranproveedorbase.h:607
+#: ui_albaranproveedorbase.h:594
 msgid "Referencia:"
 msgstr "Referència:"
 
@@ -459,17 +463,17 @@ msgstr "<HR><B>Tractant l'albarà"
 msgid "Total albaran"
 msgstr "<HR><B>Tractant l'albarà"
 
-#: ui_albaranproveedorbase.h:633
+#: ui_albaranproveedorbase.h:616
 #, fuzzy
 msgid "Total:"
 msgstr "Totals:"
 
-#: ui_albaranesproveedorlistbase.h:424
+#: ui_albaranesproveedorlistbase.h:425
 #, fuzzy
 msgid "Total: "
 msgstr "Totals:"
 
-#: ui_albaranproveedorbase.h:598 ui_albaranproveedorbase.h:603
+#: ui_albaranproveedorbase.h:588 ui_albaranproveedorbase.h:591
 #, fuzzy
 msgid "Ver pedidos a proveedor"
 msgstr "Direcció del proveïdor"

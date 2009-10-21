@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-05-16 15:48+0200\n"
+"POT-Creation-Date: 2009-10-21 10:22+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,19 +18,19 @@ msgstr ""
 "#-#-#-#-#  bulmalib_ca_ES.UTF-8.po (PACKAGE VERSION)  #-#-#-#-#\n"
 "X-Generator: Translate Toolkit 1.1.1\n"
 
-#: ui_devolucionbase.h:273
+#: ui_devolucionbase.h:274
 msgid "A Devolver"
 msgstr "A retornar"
 
-#: ui_devolucionbase.h:276
+#: ui_devolucionbase.h:277
 msgid "CANCELAR"
 msgstr "CANCELA"
 
-#: ui_devolucionbase.h:270
+#: ui_devolucionbase.h:271
 msgid "Comentarios"
 msgstr "Comentaris"
 
-#: ui_devolucionbase.h:269
+#: ui_devolucionbase.h:270
 #, fuzzy
 msgid "Detalle"
 msgstr "&Detalls"
@@ -40,29 +40,29 @@ msgstr "&Detalls"
 msgid "Devolucion"
 msgstr "Denominació"
 
-#: ui_devolucionbase.h:267
+#: ui_devolucionbase.h:268
 #, fuzzy
 msgid "Dialog"
 msgstr "Diari"
 
-#: ui_devolucionbase.h:274
+#: ui_devolucionbase.h:275
 msgid "EFECTIVO"
 msgstr ""
 
-#: ui_devolucionbase.h:272
+#: ui_devolucionbase.h:273
 #, fuzzy
 msgid "Nuevo Total"
 msgstr "Nou canal"
 
-#: ui_devolucionbase.h:268
+#: ui_devolucionbase.h:269
 msgid "Ticket"
 msgstr ""
 
-#: ui_devolucionbase.h:271
+#: ui_devolucionbase.h:272
 #, fuzzy
 msgid "Total Original"
 msgstr "Total pàgines:"
 
-#: ui_devolucionbase.h:275
+#: ui_devolucionbase.h:276
 msgid "VALE COMPRA"
 msgstr ""

@@ -89,7 +89,7 @@ ActividadView::ActividadView ( BfCompany *comp, QWidget *parent )
         mui_idprofesor->setMainCompany ( comp );
         mui_idprofesor->setLabel ( _ ( "Profesor:" ) );
         mui_idprofesor->setTableName ( "profesor" );
-	mui_idprofesor->setFieldId("idprofesor");
+        mui_idprofesor->setFieldId("idprofesor");
         mui_idprofesor->m_valores["nombreprofesor"] = "";
 
         /// Establecemos los parametros de busqueda de tipo de actividad.
@@ -103,10 +103,7 @@ ActividadView::ActividadView ( BfCompany *comp, QWidget *parent )
         pintar();
         dialogChanges_cargaInicial();
 
-	_debugOn();
         mui_idtipoactividad->setId ( "" );
-	_debugOff();
-
     } catch ( ... ) {
         mensajeInfo ( _ ( "Error al crear el actividad" ), this );
     } // end try

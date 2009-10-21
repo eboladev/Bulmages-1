@@ -594,26 +594,6 @@
        </item>
       </layout>
      </widget>
-     <widget class="QWidget" name="tab">
-      <attribute name="title">
-       <string>Calendario</string>
-      </attribute>
-      <layout class="QGridLayout" name="gridLayout">
-       <item row="0" column="0">
-        <widget class="QCalendarWidget" name="calendarWidget"/>
-       </item>
-      </layout>
-     </widget>
-     <widget class="QWidget" name="tab_2">
-      <attribute name="title">
-       <string>BLMonthCalendar</string>
-      </attribute>
-      <layout class="QGridLayout" name="gridLayout_2">
-       <item row="0" column="0">
-        <widget class="BLMonthCalendar" name="widget" native="true"/>
-       </item>
-      </layout>
-     </widget>
     </widget>
    </item>
    <item>
@@ -666,12 +646,6 @@
    <header>bldatesearch.h</header>
   </customwidget>
   <customwidget>
-   <class>BLMonthCalendar</class>
-   <extends>QWidget</extends>
-   <header>blmonthcalendar.h</header>
-   <container>1</container>
-  </customwidget>
-  <customwidget>
    <class>ListAlumnosActividadView</class>
    <extends>QTableWidget</extends>
    <header>actividadview.h</header>
@@ -720,7 +694,6 @@
   <tabstop>mui_aceptar</tabstop>
   <tabstop>mui_cancelar</tabstop>
   <tabstop>mui_faltasAsistenciaList</tabstop>
-  <tabstop>calendarWidget</tabstop>
   <tabstop>mui_comentariosactividad</tabstop>
   <tabstop>mui_alumnosList</tabstop>
  </tabstops>

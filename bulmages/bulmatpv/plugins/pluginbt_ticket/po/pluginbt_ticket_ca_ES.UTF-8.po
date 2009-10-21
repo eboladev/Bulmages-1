@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-05-16 15:41+0200\n"
+"POT-Creation-Date: 2009-10-21 10:21+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,28 +18,44 @@ msgstr ""
 "#-#-#-#-#  bulmalib_ca_ES.UTF-8.po (PACKAGE VERSION)  #-#-#-#-#\n"
 "X-Generator: Translate Toolkit 1.1.1\n"
 
-#: ui_mticketbase.h:186
+#: ui_mticketbase.h:182
 msgid "..."
 msgstr "..."
 
-#: ui_mticketbase.h:166 ui_mticketbase.h:171
+#: mticket.cpp:86
+msgid "ARTICULO:"
+msgstr ""
+
+#: ui_mticketbase.h:169 ui_mticketbase.h:172
 msgid "Bajar"
 msgstr "Baixa"
 
-#: ui_mticketbase.h:177 ui_mticketbase.h:182
+#: ui_mticketbase.h:176 ui_mticketbase.h:179
 msgid "Borrar articulo"
 msgstr "Esborra article"
 
-#: ui_mticketbase.h:141
+#: mticket.cpp:86
+msgid "CANT:"
+msgstr ""
+
+#: ui_mticketbase.h:153
 msgid "Form"
 msgstr "Form"
 
-#: ui_mticketbase.h:144 ui_mticketbase.h:149
+#: ui_mticketbase.h:155 ui_mticketbase.h:158
 #, fuzzy
 msgid "Imprimir ticket"
 msgstr "Imprimeix comptes"
 
-#: ui_mticketbase.h:155 ui_mticketbase.h:160
+#: mticket.cpp:283
+msgid "No existe ningun ticket anterior para imprimir."
+msgstr ""
+
+#: mticket.cpp:86
+msgid "PRECIO:"
+msgstr ""
+
+#: ui_mticketbase.h:162 ui_mticketbase.h:165
 msgid "Subir"
 msgstr "Puja"
 

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-05-16 15:32+0200\n"
+"POT-Creation-Date: 2009-10-21 10:27+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -114,11 +114,11 @@ msgstr ""
 "#-#-#-#-#  pluginabrevs.pot (PACKAGE VERSION)  #-#-#-#-#\n"
 "#-#-#-#-#  bulmages_suite.pot (PACKAGE VERSION)  #-#-#-#-#\n"
 
-#: ui_compraventabase.h:913
+#: ui_compraventabase.h:880
 msgid "&Aceptar"
 msgstr "&Aceptar"
 
-#: ui_compraventabase.h:914
+#: ui_compraventabase.h:881
 msgid "&Cancelar"
 msgstr "&Cancelar"
 
@@ -126,11 +126,11 @@ msgstr "&Cancelar"
 msgid "&CompraVenta"
 msgstr "&CompraVenta"
 
-#: ui_compraventabase.h:939
+#: ui_compraventabase.h:906
 msgid "&Detalle Compras"
 msgstr "&Detalle Compras"
 
-#: ui_compraventabase.h:922
+#: ui_compraventabase.h:889
 msgid "&Detalle Ventas"
 msgstr "&Detalle Ventas"
 
@@ -142,12 +142,12 @@ msgstr "&No"
 msgid "&Si"
 msgstr "&Si"
 
-#: ui_compraventabase.h:933 ui_compraventabase.h:934 ui_compraventabase.h:935
-#: ui_compraventabase.h:936 ui_compraventabase.h:937 ui_compraventabase.h:938
+#: ui_compraventabase.h:900 ui_compraventabase.h:901 ui_compraventabase.h:902
+#: ui_compraventabase.h:903 ui_compraventabase.h:904 ui_compraventabase.h:905
 msgid "0.00"
 msgstr "0.00"
 
-#: ui_compraventabase.h:879 ui_compraventabase.h:884
+#: ui_compraventabase.h:857 ui_compraventabase.h:860
 msgid "Agregar a factura"
 msgstr "Agregar a factura"
 
@@ -155,15 +155,15 @@ msgstr "Agregar a factura"
 msgid "Almacen"
 msgstr "Almacen"
 
-#: ui_compraventabase.h:921
+#: ui_compraventabase.h:888
 msgid "Almacen:"
 msgstr "Almacen:"
 
-#: ui_compraventabase.h:928
+#: ui_compraventabase.h:895
 msgid "Base imponible:"
 msgstr "Base imponible:"
 
-#: ui_compraventabase.h:835 ui_compraventabase.h:840
+#: ui_compraventabase.h:829 ui_compraventabase.h:832
 msgid "Borrar albaran"
 msgstr "Borrar albaran"
 
@@ -187,15 +187,15 @@ msgstr "Comentario albaran proveedor"
 msgid "Comentario privado"
 msgstr "Comentario privado"
 
-#: ui_compraventabase.h:926 ui_compraventabase.h:943
+#: ui_compraventabase.h:893 ui_compraventabase.h:910
 msgid "Comentario&s"
 msgstr "Comentario&s"
 
-#: ui_compraventabase.h:925 ui_compraventabase.h:942
+#: ui_compraventabase.h:892 ui_compraventabase.h:909
 msgid "Comentarios privados:"
 msgstr "Comentarios privados:"
 
-#: ui_compraventabase.h:924 ui_compraventabase.h:941
+#: ui_compraventabase.h:891 ui_compraventabase.h:908
 msgid "Comentarios publicos:"
 msgstr "Comentarios publicos:"
 
@@ -215,15 +215,15 @@ msgstr "Descripcion"
 msgid "Descripcion albaran proveedor"
 msgstr "Descripcion albaran proveedor"
 
-#: ui_compraventabase.h:911
+#: ui_compraventabase.h:878
 msgid "Descripcion:"
 msgstr "Descripcion:"
 
-#: ui_compraventabase.h:923 ui_compraventabase.h:940
+#: ui_compraventabase.h:890 ui_compraventabase.h:907
 msgid "Descuen&tos"
 msgstr "Descuen&tos"
 
-#: ui_compraventabase.h:927
+#: ui_compraventabase.h:894
 msgid "Descuentos:"
 msgstr "Descuentos:"
 
@@ -271,7 +271,7 @@ msgstr "Fecha albaran proveedor"
 msgid "Fecha de creacion"
 msgstr "Fecha de creacion"
 
-#: ui_compraventabase.h:917
+#: ui_compraventabase.h:884
 msgid "Fecha de creacion:"
 msgstr "Fecha de creacion:"
 
@@ -279,23 +279,23 @@ msgstr "Fecha de creacion:"
 msgid "Forma de pago"
 msgstr "Forma de pago"
 
-#: ui_compraventabase.h:919
+#: ui_compraventabase.h:886
 msgid "Forma de pago:"
 msgstr "Forma de pago:"
 
-#: ui_compraventabase.h:868 ui_compraventabase.h:873
+#: ui_compraventabase.h:850 ui_compraventabase.h:853
 msgid "Generar factura a partir de este albaran"
 msgstr "Generar factura a partir de este albaran"
 
-#: ui_compraventabase.h:824 ui_compraventabase.h:829
+#: ui_compraventabase.h:822 ui_compraventabase.h:825
 msgid "Guardar albaran"
 msgstr "Guardar albaran"
 
-#: ui_compraventabase.h:821
+#: ui_compraventabase.h:820
 msgid "Hoja de Compra Venta"
 msgstr "Hoja de Compra Venta"
 
-#: ui_compraventabase.h:929
+#: ui_compraventabase.h:896
 msgid "I.R.P.F.:"
 msgstr "I.R.P.F.:"
 
@@ -319,15 +319,15 @@ msgstr "Id forma de pago"
 msgid "Id proveedor"
 msgstr "Id proveedor"
 
-#: ui_compraventabase.h:846 ui_compraventabase.h:851
+#: ui_compraventabase.h:836 ui_compraventabase.h:839
 msgid "Imprimir albaran"
 msgstr "Imprimir albaran"
 
-#: ui_compraventabase.h:930
+#: ui_compraventabase.h:897
 msgid "Impuestos:"
 msgstr "Impuestos:"
 
-#: ui_compraventabase.h:902 ui_compraventabase.h:907
+#: ui_compraventabase.h:872 ui_compraventabase.h:875
 msgid "Mostrar/ocultar cabecera"
 msgstr "Mostrar/ocultar cabecera"
 
@@ -339,7 +339,7 @@ msgstr "Numero albaran proveedor"
 msgid "Numero de albaran"
 msgstr "Numero de albaran"
 
-#: ui_compraventabase.h:912
+#: ui_compraventabase.h:879
 msgid "Numero de albaran:"
 msgstr "Numero de albaran:"
 
@@ -347,15 +347,15 @@ msgstr "Numero de albaran:"
 msgid "Persona de contacto"
 msgstr "Persona de contacto"
 
-#: ui_compraventabase.h:918
+#: ui_compraventabase.h:885
 msgid "Persona de contacto:"
 msgstr "Persona de contacto:"
 
-#: compraventaview.cpp:93 ui_compraventabase.h:915
+#: compraventaview.cpp:93 ui_compraventabase.h:882
 msgid "Procesado"
 msgstr "Procesado"
 
-#: ui_compraventabase.h:931
+#: ui_compraventabase.h:898
 msgid "R.E.:"
 msgstr "R.E.:"
 
@@ -367,11 +367,11 @@ msgstr "Referencia"
 msgid "Referencia albaran proveedor"
 msgstr "Referencia albaran proveedor"
 
-#: ui_compraventabase.h:899
+#: ui_compraventabase.h:870
 msgid "Referencia:"
 msgstr "Referencia:"
 
-#: ui_compraventabase.h:890 ui_compraventabase.h:895
+#: ui_compraventabase.h:864 ui_compraventabase.h:867
 msgid "Registrar cobro a cliente"
 msgstr "Registrar cobro a cliente"
 
@@ -379,7 +379,7 @@ msgstr "Registrar cobro a cliente"
 msgid "Telefono de contacto"
 msgstr "Telefono de contacto"
 
-#: ui_compraventabase.h:920
+#: ui_compraventabase.h:887
 msgid "Telefono de contacto:"
 msgstr "Telefono de contacto:"
 
@@ -395,7 +395,7 @@ msgstr "Tiene que seleccionar un cliente"
 msgid "Tiene que seleccionar un proveedor"
 msgstr "Tiene que seleccionar un proveedor"
 
-#: ui_compraventabase.h:932
+#: ui_compraventabase.h:899
 msgid "Total:"
 msgstr "Total:"
 
@@ -403,10 +403,10 @@ msgstr "Total:"
 msgid "Trabajador"
 msgstr "Trabajador"
 
-#: ui_compraventabase.h:916
+#: ui_compraventabase.h:883
 msgid "Trabajador:"
 msgstr "Trabajador:"
 
-#: ui_compraventabase.h:857 ui_compraventabase.h:862
+#: ui_compraventabase.h:843 ui_compraventabase.h:846
 msgid "Ver pedidos con la misma referencia"
 msgstr "Ver pedidos con la misma referencia"

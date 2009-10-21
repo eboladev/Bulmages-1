@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-05-16 14:43+0200\n"
+"POT-Creation-Date: 2009-10-21 10:25+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -136,6 +136,6 @@ msgstr "Muestra/oculta el resumen de cuenta"
 msgid "Resumen cuenta"
 msgstr "Resumen cuenta"
 
-#: ui_correctorbase.h:51
+#: ui_correctorbase.h:52
 msgid "Resumen de Cuenta"
 msgstr "Resumen de Cuenta"

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-05-16 15:48+0200\n"
+"POT-Creation-Date: 2009-10-21 10:22+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -114,19 +114,19 @@ msgstr ""
 "#-#-#-#-#  pluginabrevs.pot (PACKAGE VERSION)  #-#-#-#-#\n"
 "#-#-#-#-#  bulmages_suite.pot (PACKAGE VERSION)  #-#-#-#-#\n"
 
-#: ui_devolucionbase.h:273
+#: ui_devolucionbase.h:274
 msgid "A Devolver"
 msgstr "A Devolver"
 
-#: ui_devolucionbase.h:276
+#: ui_devolucionbase.h:277
 msgid "CANCELAR"
 msgstr "CANCELAR"
 
-#: ui_devolucionbase.h:270
+#: ui_devolucionbase.h:271
 msgid "Comentarios"
 msgstr "Comentarios"
 
-#: ui_devolucionbase.h:269
+#: ui_devolucionbase.h:270
 msgid "Detalle"
 msgstr "Detalle"
 
@@ -134,26 +134,26 @@ msgstr "Detalle"
 msgid "Devolucion"
 msgstr "Devolucion"
 
-#: ui_devolucionbase.h:267
+#: ui_devolucionbase.h:268
 msgid "Dialog"
 msgstr "Dialog"
 
-#: ui_devolucionbase.h:274
+#: ui_devolucionbase.h:275
 msgid "EFECTIVO"
 msgstr "EFECTIVO"
 
-#: ui_devolucionbase.h:272
+#: ui_devolucionbase.h:273
 msgid "Nuevo Total"
 msgstr "Nuevo Total"
 
-#: ui_devolucionbase.h:268
+#: ui_devolucionbase.h:269
 msgid "Ticket"
 msgstr "Ticket"
 
-#: ui_devolucionbase.h:271
+#: ui_devolucionbase.h:272
 msgid "Total Original"
 msgstr "Total Original"
 
-#: ui_devolucionbase.h:275
+#: ui_devolucionbase.h:276
 msgid "VALE COMPRA"
 msgstr "VALE COMPRA"

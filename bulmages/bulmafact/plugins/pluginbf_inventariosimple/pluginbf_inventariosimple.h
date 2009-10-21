@@ -31,11 +31,14 @@
 #include "blpostgresqlclient.h"
 #include "bfbulmafact.h"
 #include "blwidget.h"
-
+#include "actividadview.h"
 
 
 extern "C" MY_EXPORT int entryPoint ( BfBulmaFact * );
-
+extern "C" MY_EXPORT int ActividadView_ActividadView(ActividadView *);
+extern "C" MY_EXPORT int BlForm_guardar_Post(BlForm *);
+extern "C" MY_EXPORT int BlForm_cargar(BlForm *);
+extern "C" MY_EXPORT int BfSubForm_pressedAsterisk ( BfSubForm * );
 
 class myplugininvsimple : public QObject, BlMainCompanyPointer
 {

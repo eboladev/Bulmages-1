@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-05-16 14:41+0200\n"
+"POT-Creation-Date: 2009-10-21 10:25+0200\n"
 "PO-Revision-Date: 2009-04-19 20:39+0200\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -17,164 +17,139 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: ui_datosbase.h:150
+#: ui_datosbase.h:151
 msgid "&Aceptar"
 msgstr "&Aceptar"
 
-#: ui_datosbase.h:151
+#: ui_datosbase.h:152
 msgid "&Cancelar"
 msgstr "&Cancelar"
 
-#: pluginbc_caaslods.cpp:222
-msgid "&Cuentas Anuales"
-msgstr "&Cuentas Anuales"
+#: datosview.cpp:109
+msgid "Calculando Balance y Resultados"
+msgstr "Calculando Balance y Resultados"
 
-#: pluginbc_caaslods.cpp:227 pluginbc_caaslods.cpp:244
-msgid "&Cuentas Anuales PGC"
-msgstr "&Cuentas Anuales PGC"
-
-#: pluginbc_caaslods.cpp:224
-msgid "&PGC 2008"
-msgstr "&PGC 2008"
-
-#: pluginbc_caaslods.cpp:372
-msgid "Advertencia: ha escojido las "
-msgstr "Advertencia: ha escojido las "
-
-#: datosview.cpp:33
+#: datosview.cpp:36
 msgid "Cuenta"
 msgstr "Cuenta"
 
-#: pluginbc_caaslods.cpp:249
-msgid "Cuentas A. Abreviadas &Sin lucro (Nuevo)"
+#: pluginbc_caaslods.cpp:271
+msgid "Cuentas Anuales &ODS"
 msgstr ""
 
-#: pluginbc_caaslods.cpp:232
-msgid "Cuentas Anuales &Abreviadas PGC"
-msgstr "Cuentas Anuales &Abreviadas PGC"
-
-#: pluginbc_caaslods.cpp:237
-msgid "Cuentas Anuales &PYMES"
-msgstr "Cuentas Anuales &PYMES"
-
-#: pluginbc_caaslods.cpp:250 pluginbc_caaslods.cpp:251
-msgid "Cuentas Anuales Abreviadas Asociacion Sin animo de lucro"
-msgstr "Cuentas Anuales Abreviadas Asociacion Sin animo de lucro"
-
-#: pluginbc_caaslods.cpp:233 pluginbc_caaslods.cpp:234
-msgid "Cuentas Anuales Abreviadas Plan General Contable 2008"
-msgstr "Cuentas Anuales Abreviadas Plan General Contable 2008"
-
-#: pluginbc_caaslods.cpp:360
-msgid "Cuentas Anuales Abreviadas del Plan General Contable 2008. "
-msgstr "Cuentas Anuales Abreviadas del Plan General Contable 2008. "
-
-#: pluginbc_caaslods.cpp:348
-msgid "Cuentas Anuales Abreviadas para Asociacion Sin Lucro. "
-msgstr "Cuentas Anuales Abreviadas para Asociacion Sin Lucro. "
-
-#: pluginbc_caaslods.cpp:238 pluginbc_caaslods.cpp:239
-msgid "Cuentas Anuales PYMES 2008"
-msgstr "Cuentas Anuales PYMES 2008"
-
-#: pluginbc_caaslods.cpp:228 pluginbc_caaslods.cpp:229
-msgid "Cuentas Anuales Plan General Contable 2008"
-msgstr "Cuentas Anuales Plan General Contable 2008"
-
-#: pluginbc_caaslods.cpp:245 pluginbc_caaslods.cpp:246
-msgid "Cuentas Anuales Plan General Contable hasta 2007"
-msgstr "Cuentas Anuales Plan General Contable hasta 2007"
-
-#: pluginbc_caaslods.cpp:364
-msgid "Cuentas Anuales del Plan General Contable 2008. "
-msgstr "Cuentas Anuales del Plan General Contable 2008. "
-
-#: pluginbc_caaslods.cpp:352
-msgid "Cuentas Anuales del Plan General Contable hasta 2007. "
-msgstr "Cuentas Anuales del Plan General Contable hasta 2007. "
-
-#: pluginbc_caaslods.cpp:356
-msgid "Cuentas Anuales para PYMES 2008. "
-msgstr "Cuentas Anuales para PYMES 2008. "
-
-#: ui_datosbase.h:146
+#: ui_datosbase.h:147
 msgid "Datos para generar el balance"
 msgstr "Datos para generar el balance"
 
-#: datosview.cpp:76
-msgid "ERROR: Debe introducir una fecha final del balance actual."
-msgstr ""
-
 #: datosview.cpp:85
-msgid "ERROR: Debe introducir una fecha final del balance anterior."
-msgstr ""
+msgid "ERROR: Debe introducir una fecha final del balance actual."
+msgstr "ERROR: Debe introducir una fecha final del balance actual."
 
-#: datosview.cpp:72
-msgid "ERROR: Debe introducir una fecha inicial del balance actual."
-msgstr ""
+#: datosview.cpp:94
+msgid "ERROR: Debe introducir una fecha final del balance anterior."
+msgstr "ERROR: Debe introducir una fecha final del balance anterior."
 
 #: datosview.cpp:81
+msgid "ERROR: Debe introducir una fecha inicial del balance actual."
+msgstr "ERROR: Debe introducir una fecha inicial del balance actual."
+
+#: datosview.cpp:90
 msgid "ERROR: Debe introducir una fecha inicial del balance anterior."
-msgstr ""
+msgstr "ERROR: Debe introducir una fecha inicial del balance anterior."
 
-#: pluginbc_caaslods.cpp:368
-msgid "ERROR: Funcion no implementada todavia."
-msgstr "ERROR: Funcion no implementada todavia."
-
-#: datosview.cpp:101
+#: datosview.cpp:116
 msgid "ERROR: Ha habido un error generando el informe"
-msgstr ""
+msgstr "ERROR: Ha habido un error generando el informe."
 
-#: pluginbc_caaslods.cpp:372
-msgid ""
-"El resultado solo sera correcto si coincide con el plan contable de su "
-"empresa."
-msgstr ""
-"El resultado solo sera correcto si coincide con el plan contable de su "
-"empresa."
-
-#: datosview.cpp:38
+#: datosview.cpp:41
 msgid "Fecha Final Actual"
-msgstr ""
+msgstr "Fecha final actual"
+
+#: datosview.cpp:43
+msgid "Fecha Final Anterior"
+msgstr "Fecha final anterior"
 
 #: datosview.cpp:40
-msgid "Fecha Final Anterior"
-msgstr ""
-
-#: datosview.cpp:37
 msgid "Fecha Inicial Actual"
-msgstr ""
+msgstr "Fecha inicial actual"
 
-#: datosview.cpp:39
+#: datosview.cpp:42
 msgid "Fecha Inicial Anterior"
-msgstr ""
+msgstr "Fecha inicial anterior"
+
+#: ui_datosbase.h:150 ui_datosbase.h:155
+msgid "Fecha final del balance:"
+msgstr "Fecha final del balance:"
 
 #: ui_datosbase.h:149 ui_datosbase.h:154
-msgid "Fecha final del balance:"
-msgstr ""
-
-#: ui_datosbase.h:148 ui_datosbase.h:153
 msgid "Fecha inicial del balance:"
-msgstr ""
+msgstr "Fecha inicial del balance:"
 
-#: datosview.cpp:36
+#: datosview.cpp:39
 msgid "Id cuenta"
 msgstr "ID cuenta"
 
-#: pluginbc_caaslods.cpp:225
-msgid "PGC &Anterior 2008"
-msgstr "PGC &Anterior 2008"
-
-#: ui_datosbase.h:147
+#: ui_datosbase.h:148
 msgid "Periodo actual:"
-msgstr ""
+msgstr "Período actual:"
 
-#: ui_datosbase.h:152
+#: ui_datosbase.h:153
 msgid "Periodo anterior:"
-msgstr ""
+msgstr "Período anterior:"
+
+#~ msgid "&Cuentas Anuales"
+#~ msgstr "&Cuentas Anuales"
+
+#~ msgid "&Cuentas Anuales PGC"
+#~ msgstr "&Cuentas Anuales PGC"
+
+#~ msgid "&PGC 2008"
+#~ msgstr "&PGC 2008"
+
+#~ msgid "Advertencia: ha escojido las "
+#~ msgstr "Advertencia: ha escojido las "
 
 #~ msgid "Cuentas A. Abreviadas &Sin lucro"
 #~ msgstr "Cuentas A. Abreviadas &Sin lucro"
+
+#~ msgid "Cuentas Anuales &Abreviadas PGC"
+#~ msgstr "Cuentas Anuales &Abreviadas PGC"
+
+#~ msgid "Cuentas Anuales &PYMES"
+#~ msgstr "Cuentas Anuales &PYMES"
+
+#~ msgid "Cuentas Anuales Abreviadas Asociacion Sin animo de lucro"
+#~ msgstr "Cuentas Anuales Abreviadas Asociacion Sin animo de lucro"
+
+#~ msgid "Cuentas Anuales Abreviadas Plan General Contable 2008"
+#~ msgstr "Cuentas Anuales Abreviadas Plan General Contable 2008"
+
+#~ msgid "Cuentas Anuales Abreviadas del Plan General Contable 2008. "
+#~ msgstr "Cuentas Anuales Abreviadas del Plan General Contable 2008. "
+
+#~ msgid "Cuentas Anuales Abreviadas para Asociacion Sin Lucro. "
+#~ msgstr "Cuentas Anuales Abreviadas para Asociacion Sin Lucro. "
+
+#~ msgid "Cuentas Anuales PYMES 2008"
+#~ msgstr "Cuentas Anuales PYMES 2008"
+
+#~ msgid "Cuentas Anuales Plan General Contable 2008"
+#~ msgstr "Cuentas Anuales Plan General Contable 2008"
+
+#~ msgid "Cuentas Anuales Plan General Contable hasta 2007"
+#~ msgstr "Cuentas Anuales Plan General Contable hasta 2007"
+
+#~ msgid "Cuentas Anuales del Plan General Contable 2008. "
+#~ msgstr "Cuentas Anuales del Plan General Contable 2008. "
+
+#~ msgid "Cuentas Anuales del Plan General Contable hasta 2007. "
+#~ msgstr "Cuentas Anuales del Plan General Contable hasta 2007. "
+
+#~ msgid "Cuentas Anuales para PYMES 2008. "
+#~ msgstr "Cuentas Anuales para PYMES 2008. "
+
+#~ msgid "ERROR: Funcion no implementada todavia."
+#~ msgstr "ERROR: Funcion no implementada todavia."
 
 #~ msgid "Ejercicio actual:"
 #~ msgstr "Ejercicio actual:"
@@ -182,5 +157,15 @@ msgstr ""
 #~ msgid "Ejercicio anterior:"
 #~ msgstr "Ejercicio anterior:"
 
+#~ msgid ""
+#~ "El resultado solo sera correcto si coincide con el plan contable de su "
+#~ "empresa."
+#~ msgstr ""
+#~ "El resultado solo sera correcto si coincide con el plan contable de su "
+#~ "empresa."
+
 #~ msgid "Fecha balance:"
 #~ msgstr "Fecha balance:"
+
+#~ msgid "PGC &Anterior 2008"
+#~ msgstr "PGC &Anterior 2008"

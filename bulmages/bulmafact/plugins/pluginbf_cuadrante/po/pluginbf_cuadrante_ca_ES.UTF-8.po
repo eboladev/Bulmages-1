@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-05-16 15:27+0200\n"
+"POT-Creation-Date: 2009-10-21 10:25+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,7 +18,7 @@ msgstr ""
 "#-#-#-#-#  bulmalib_ca_ES.UTF-8.po (PACKAGE VERSION)  #-#-#-#-#\n"
 "X-Generator: Translate Toolkit 1.1.1\n"
 
-#: ui_cuadrante1base.h:312
+#: ui_cuadrante1base.h:309
 #, fuzzy
 msgid "&Aceptar"
 msgstr ""
@@ -45,7 +45,7 @@ msgstr ""
 "#-#-#-#-#  - (PACKAGE VERSION)  #-#-#-#-#\n"
 "&Accepta"
 
-#: ui_cuadrante1base.h:313
+#: ui_cuadrante1base.h:310
 #, fuzzy
 msgid "&Cancelar"
 msgstr ""
@@ -54,13 +54,13 @@ msgstr ""
 "#-#-#-#-#  bulmalib_ca_ES.UTF-8.po (PACKAGE VERSION)  #-#-#-#-#\n"
 "&Cancel·lar"
 
-#: ui_cuadrantediariobase.h:283 ui_cuadrantebase.h:322
+#: ui_cuadrantebase.h:300 ui_cuadrantediariobase.h:285
 #, fuzzy
 msgid "1"
 msgstr "F1"
 
-#: ui_cuadrantediariobase.h:311 ui_cuadrantediariobase.h:316
-#: ui_cuadrantebase.h:276 ui_cuadrantebase.h:281
+#: ui_cuadrantebase.h:268 ui_cuadrantebase.h:271 ui_cuadrantediariobase.h:304
+#: ui_cuadrantediariobase.h:307
 #, fuzzy
 msgid "Actualizar"
 msgstr ""
@@ -71,9 +71,9 @@ msgstr ""
 "#-#-#-#-#  bulmacont_ca.po (PACKAGE VERSION)  #-#-#-#-#\n"
 "Actualitza"
 
-#: cuadranteview.cpp:58 cuadrante1view.cpp:58 cuadrantediarioview.cpp:60
+#: cuadrante1view.cpp:58 cuadranteview.cpp:58 cuadrantediarioview.cpp:60
 #: cuadrantediarioview.cpp:73 cuadrantediarioview.cpp:74
-#: cuadrantediarioview.cpp:75 ui_cuadrante1base.h:311
+#: cuadrantediarioview.cpp:75 ui_cuadrante1base.h:308
 #, fuzzy
 msgid "Almacen"
 msgstr "<LI> Magatzem <B>"
@@ -83,12 +83,12 @@ msgstr "<LI> Magatzem <B>"
 msgid "Apartura tarde"
 msgstr "Obertura"
 
-#: ui_cuadrante1base.h:339
+#: ui_cuadrante1base.h:328
 #, fuzzy
 msgid "Apertura Manyana"
 msgstr "Obertura"
 
-#: ui_cuadrante1base.h:341
+#: ui_cuadrante1base.h:330
 #, fuzzy
 msgid "Apertura Tarde"
 msgstr "Obertura"
@@ -98,17 +98,17 @@ msgstr "Obertura"
 msgid "Apertura manyana"
 msgstr "Obertura"
 
-#: ui_cuadrante1base.h:329 ui_cuadrante1base.h:334
+#: ui_cuadrante1base.h:321 ui_cuadrante1base.h:324
 #, fuzzy
 msgid "Borrar almacen"
 msgstr "Esborra albarà"
 
-#: ui_cuadrante1base.h:340
+#: ui_cuadrante1base.h:329
 #, fuzzy
 msgid "Cierre Manyana"
 msgstr "Tancament"
 
-#: ui_cuadrante1base.h:342
+#: ui_cuadrante1base.h:331
 #, fuzzy
 msgid "Cierre Tarde"
 msgstr "Tancament"
@@ -123,7 +123,7 @@ msgstr "Tancament"
 msgid "Cierre tarde"
 msgstr "Tancament"
 
-#: cuadrante1view.cpp:60 ui_cuadrante1base.h:310
+#: cuadrante1view.cpp:60 ui_cuadrante1base.h:307
 #, fuzzy
 msgid "Comentarios"
 msgstr ""
@@ -132,25 +132,25 @@ msgstr ""
 "#-#-#-#-#  bulmacont_ca.po (PACKAGE VERSION)  #-#-#-#-#\n"
 "Comentaris"
 
-#: ui_cuadrante1base.h:338 ui_cuadrantediariobase.h:296
-#: ui_cuadrantediariobase.h:308 ui_cuadrantediariobase.h:320
-#: ui_cuadrantediariobase.h:332 ui_cuadrantediariobase.h:344
-#: ui_cuadrantediariobase.h:356 ui_cuadrantebase.h:261 ui_cuadrantebase.h:273
-#: ui_cuadrantebase.h:285 ui_cuadrantebase.h:297 ui_cuadrantebase.h:309
-#: ui_cuadrantebase.h:321
+#: ui_cuadrantebase.h:258 ui_cuadrantebase.h:266 ui_cuadrantebase.h:274
+#: ui_cuadrantebase.h:282 ui_cuadrantebase.h:290 ui_cuadrantebase.h:298
+#: ui_cuadrante1base.h:327 ui_cuadrantediariobase.h:294
+#: ui_cuadrantediariobase.h:302 ui_cuadrantediariobase.h:310
+#: ui_cuadrantediariobase.h:318 ui_cuadrantediariobase.h:326
+#: ui_cuadrantediariobase.h:334
 msgid "Ctrl+D"
 msgstr "Ctrl+D"
 
-#: ui_cuadrante1base.h:326
+#: ui_cuadrante1base.h:319
 msgid "Ctrl+S"
 msgstr "Ctrl+S"
 
-#: cuadrante1view.cpp:54 ui_cuadrantediariobase.h:280
-#: ui_cuadrantediariobase.h:281 ui_cuadrantebase.h:248
+#: cuadrante1view.cpp:54 ui_cuadrantebase.h:249 ui_cuadrantediariobase.h:281
+#: ui_cuadrantediariobase.h:282
 msgid "Cuadrante"
 msgstr ""
 
-#: ui_cuadrante1base.h:303
+#: ui_cuadrante1base.h:302
 #, fuzzy
 msgid "Cuadrante y Uso Horario"
 msgstr "Diari"
@@ -160,8 +160,8 @@ msgstr "Diari"
 msgid "Domingo"
 msgstr "Denominació"
 
-#: ui_cuadrantediariobase.h:287 ui_cuadrantediariobase.h:292
-#: ui_cuadrantebase.h:252 ui_cuadrantebase.h:257
+#: ui_cuadrantebase.h:252 ui_cuadrantebase.h:255 ui_cuadrantediariobase.h:288
+#: ui_cuadrantediariobase.h:291
 #, fuzzy
 msgid "Editar"
 msgstr ""
@@ -170,7 +170,7 @@ msgstr ""
 "#-#-#-#-#  bulmalib_ca_ES.UTF-8.po (PACKAGE VERSION)  #-#-#-#-#\n"
 "Editar"
 
-#: cuadranteview.cpp:70 cuadrante1view.cpp:85
+#: cuadrante1view.cpp:85 cuadranteview.cpp:70
 #, fuzzy
 msgid "Error al crear el almacen"
 msgstr "Error en la càrrega de l'amortizació"
@@ -179,7 +179,7 @@ msgstr "Error en la càrrega de l'amortizació"
 msgid "Error al iniciar el cuadrante"
 msgstr ""
 
-#: cuadrante1view.cpp:59 cuadrantediarioview.cpp:71 ui_cuadrante1base.h:343
+#: cuadrante1view.cpp:59 cuadrantediarioview.cpp:71 ui_cuadrante1base.h:332
 msgid "Fecha"
 msgstr "Data"
 
@@ -193,7 +193,7 @@ msgstr "Data &final:"
 msgid "Fecha inicial ausencia"
 msgstr "Data &inicial:"
 
-#: cuadrante1view.cpp:65 ui_cuadrante1base.h:344
+#: cuadrante1view.cpp:65 ui_cuadrante1base.h:333
 #, fuzzy
 msgid "Festivo"
 msgstr "Destinació:"
@@ -208,7 +208,7 @@ msgstr "Propietats generals"
 msgid "Generando Informe"
 msgstr "Generar de totes formes"
 
-#: ui_cuadrante1base.h:317 ui_cuadrante1base.h:322
+#: ui_cuadrante1base.h:313 ui_cuadrante1base.h:316
 #, fuzzy
 msgid "Guardar almacen"
 msgstr "Desa balanç"
@@ -228,7 +228,7 @@ msgstr "Normal Fi"
 msgid "Hora Inicio"
 msgstr "Esborra exercici"
 
-#: ui_cuadrante1base.h:306 ui_cuadrante1base.h:309
+#: ui_cuadrante1base.h:304 ui_cuadrante1base.h:306
 #, fuzzy
 msgid "Horario"
 msgstr "Diari"
@@ -253,18 +253,18 @@ msgstr "ID compte"
 msgid "ID horario"
 msgstr "Diari"
 
-#: cuadrante1view.cpp:76 pluginbf_cuadrante.cpp:250
+#: pluginbf_cuadrante.cpp:250 cuadrante1view.cpp:76
 msgid "ID trabajador"
 msgstr "ID treballador"
 
-#: ui_cuadrantediariobase.h:335 ui_cuadrantediariobase.h:340
-#: ui_cuadrantebase.h:300 ui_cuadrantebase.h:305
+#: ui_cuadrantebase.h:284 ui_cuadrantebase.h:287 ui_cuadrantediariobase.h:320
+#: ui_cuadrantediariobase.h:323
 #, fuzzy
 msgid "Igual que la Semana Anterior"
 msgstr "Saldo anterior"
 
-#: ui_cuadrantediariobase.h:299 ui_cuadrantediariobase.h:304
-#: ui_cuadrantebase.h:264 ui_cuadrantebase.h:269
+#: ui_cuadrantebase.h:260 ui_cuadrantebase.h:263 ui_cuadrantediariobase.h:296
+#: ui_cuadrantediariobase.h:299
 #, fuzzy
 msgid "Imprimir"
 msgstr ""
@@ -283,8 +283,8 @@ msgstr ""
 msgid "Jueves"
 msgstr "Dijous"
 
-#: ui_cuadrantediariobase.h:323 ui_cuadrantediariobase.h:328
-#: ui_cuadrantebase.h:288 ui_cuadrantebase.h:293
+#: ui_cuadrantebase.h:276 ui_cuadrantebase.h:279 ui_cuadrantediariobase.h:312
+#: ui_cuadrantediariobase.h:315
 msgid "Limpiar Cuadrante"
 msgstr "Neteja quadrant"
 
@@ -315,8 +315,8 @@ msgstr "Nom de camp"
 msgid "Normal"
 msgstr "Normal"
 
-#: ui_cuadrantediariobase.h:347 ui_cuadrantediariobase.h:352
-#: ui_cuadrantebase.h:312 ui_cuadrantebase.h:317
+#: ui_cuadrantebase.h:292 ui_cuadrantebase.h:295 ui_cuadrantediariobase.h:328
+#: ui_cuadrantediariobase.h:331
 msgid "Ocultar Panel"
 msgstr ""
 
@@ -325,7 +325,7 @@ msgstr ""
 msgid "Sabado"
 msgstr "Saldo"
 
-#: ui_cuadrantediariobase.h:282
+#: ui_cuadrantediariobase.h:283
 #, fuzzy
 msgid "Validaciones"
 msgstr "Paginació"

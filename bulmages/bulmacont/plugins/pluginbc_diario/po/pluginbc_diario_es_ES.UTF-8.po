@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-10-12 13:48+0200\n"
+"POT-Creation-Date: 2009-10-21 10:25+0200\n"
 "PO-Revision-Date: 2009-10-12 13:48+0200\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -37,7 +37,7 @@ msgstr "&Incluir asientos abiertos"
 msgid "&Kugar"
 msgstr "&Kugar"
 
-#: pluginbc_diario.cpp:95
+#: pluginbc_diario.cpp:96
 msgid "&Libro Diario"
 msgstr ""
 
@@ -45,7 +45,7 @@ msgstr ""
 msgid "&Texto Plano"
 msgstr "&Texto plano"
 
-#: pluginbc_diario.cpp:91
+#: pluginbc_diario.cpp:92
 msgid "&Ver"
 msgstr "&Ver"
 
@@ -109,11 +109,11 @@ msgstr "Descripción"
 msgid "Descripcion de Cuenta"
 msgstr "Descripción de cuenta"
 
-#: bcdiarioview.cpp:54 ui_bcdiariobase.h:337
+#: bcdiarioview.cpp:53 ui_bcdiariobase.h:337
 msgid "Diario"
 msgstr "Diario"
 
-#: bcdiarioview.cpp:161
+#: bcdiarioview.cpp:160
 msgid "Diarios (*.txt)"
 msgstr "Diarios (*.txt)"
 
@@ -149,7 +149,7 @@ msgstr "Formato &normal"
 msgid "Formato del listado:"
 msgstr "Formato del listado:"
 
-#: bcdiarioview.cpp:159
+#: bcdiarioview.cpp:158
 msgid "Guardar Libro Diario"
 msgstr "Guardar Libro Diario"
 
@@ -193,11 +193,11 @@ msgstr "Mostrar extracto (mes)"
 msgid "Mostrar/ocultar filtro"
 msgstr "Mostrar/ocultar filtro"
 
-#: pluginbc_diario.cpp:96
+#: pluginbc_diario.cpp:97
 msgid "Permite ver el diario"
 msgstr ""
 
-#: pluginbc_diario.cpp:97
+#: pluginbc_diario.cpp:98
 msgid "Podra disponer de la informacion del diario"
 msgstr ""
 
@@ -253,7 +253,7 @@ msgstr "idregistroiva"
 msgid "idtipoiva"
 msgstr "idtipoiva"
 
-#: pluginbc_diario.cpp:87
+#: pluginbc_diario.cpp:88
 msgid "menuVentana"
 msgstr "menuVentana"
 

@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: bulmalib_es_ES.UTF-8\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-05-16 14:03+0200\n"
+"POT-Creation-Date: 2009-10-21 10:18+0200\n"
 "PO-Revision-Date: 2009-05-08 23:36+0200\n"
 "Last-Translator: \n"
 "Language-Team: Spanish <kde-i18n-doc@kde.org>\n"
@@ -13,7 +13,7 @@ msgstr ""
 "X-Generator: Lokalize 0.3\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: ui_blsubformbase.h:617
+#: ui_blsubformbase.h:615
 msgid "!Opcion reservada a expertos!"
 msgstr "¡Opción reservada a expertos!"
 
@@ -21,16 +21,16 @@ msgstr "¡Opción reservada a expertos!"
 msgid "&Borrar"
 msgstr "&Borrar"
 
-#: ui_blcompanydialogbase.h:205 blform.cpp:373 blcountryview.cpp:118
+#: ui_blcompanydialogbase.h:203 blform.cpp:374 blcountryview.cpp:118
 #: blcountryview.cpp:225
 msgid "&Cancelar"
 msgstr "&Cancelar"
 
-#: ui_blerrordialogbase.h:112 ui_blsubformbase.h:621
+#: ui_blerrordialogbase.h:114 ui_blsubformbase.h:619
 msgid "&Cerrar"
 msgstr "&Cerrar"
 
-#: ui_bldblogindialogbase.h:156
+#: ui_bldblogindialogbase.h:158
 msgid "&Cerrar el programa"
 msgstr "&Cerrar el programa"
 
@@ -38,16 +38,16 @@ msgstr "&Cerrar el programa"
 msgid "&Cierra el programa"
 msgstr "&Cierra el programa"
 
-#: blfunctions.cpp:528 blfunctions.cpp:557 blfunctions.cpp:567
-#: blfunctions.cpp:577
+#: blfunctions.cpp:570 blfunctions.cpp:599 blfunctions.cpp:609
+#: blfunctions.cpp:619
 msgid "&Continuar"
 msgstr "&Continuar"
 
-#: ui_blerrordialogbase.h:111
+#: ui_blerrordialogbase.h:113
 msgid "&Detalles"
 msgstr "&Detalles"
 
-#: ui_blcompanydialogbase.h:204
+#: ui_blcompanydialogbase.h:202
 msgid "&Entra"
 msgstr "&Entra"
 
@@ -55,83 +55,103 @@ msgstr "&Entra"
 msgid "&Guardar"
 msgstr "&Guardar"
 
-#: blform.cpp:373
+#: blform.cpp:374
 msgid "&No"
 msgstr "&No"
 
-#: blfunctions.cpp:529
+#: blfunctions.cpp:571
 msgid "&Omitir"
 msgstr "&Omitir"
 
-#: blform.cpp:373
+#: blform.cpp:374
 msgid "&Si"
 msgstr "&Sí"
 
-#: ui_bldblogindialogbase.h:155
+#: ui_bldblogindialogbase.h:157
 msgid "&Validar"
 msgstr "&Validar"
 
-#: blimportexport.cpp:1901
+#: ui_blformlistfilterbase.h:133
+msgid "<"
+msgstr ""
+
+#: ui_blformlistfilterbase.h:135
+msgid "<="
+msgstr ""
+
+#: blimportexport.cpp:1902
 msgid "<HR><B>Tratando el cliente "
 msgstr " <HR><B>Tratando el cliente"
 
-#: blimportexport.cpp:1914
+#: blimportexport.cpp:1915
 msgid "<LI> El cliente no existe, se debe hacer una insercion de este</LI>\n"
 msgstr "<LI> El cliente no existe, se debe hacer una inserción de éste</LI>\n"
 
-#: blimportexport.cpp:1909
+#: blimportexport.cpp:1910
 msgid "<LI> El cliente ya existe se pueden hacer modificaciones</LI>\n"
 msgstr "<LI> El cliente ya existe, se pueden hacer modificaciones</LI>\n"
 
-#: blimportexport.cpp:623
+#: blimportexport.cpp:624
 msgid "<LI>Apunte fuera de fecha</LI>\n"
 msgstr "<LI>Apunte fuera de fecha</LI>\n"
 
-#: blimportexport.cpp:621
+#: blimportexport.cpp:622
 msgid "<LI>Insercion de apunte"
 msgstr "<LI>Insertar apunte"
 
-#: blimportexport.cpp:593
+#: blimportexport.cpp:594
 msgid "<LI>Insercion de asiento"
 msgstr "<LI>Insertar asiento"
 
-#: blimportexport.cpp:481
+#: blimportexport.cpp:482
 msgid "<LI>Se ha insertado la cuenta "
 msgstr " <LI>Se ha insertado la cuenta"
 
-#: blimportexport.cpp:634
+#: blimportexport.cpp:635
 msgid "<LI>Terminado</LI>\n"
 msgstr "<LI>Terminado</LI>\n"
 
-#: blimportexport.cpp:484
+#: blimportexport.cpp:485
 msgid "<LI>Ya hay una cuenta con el codigo "
 msgstr " <LI>Ya hay una cuenta con dicho código"
 
-#: ui_blcompanydialogbase.h:193
+#: ui_blformlistfilterbase.h:131
+msgid "="
+msgstr ""
+
+#: ui_blformlistfilterbase.h:132
+msgid ">"
+msgstr ""
+
+#: ui_blformlistfilterbase.h:134
+msgid ">="
+msgstr ""
+
+#: ui_blcompanydialogbase.h:194
 msgid "Actualizar Listado"
 msgstr "Actualizar listado"
 
-#: ui_blcompanydialogbase.h:198
+#: ui_blcompanydialogbase.h:197
 msgid "Actualizar Listado de Empresas"
 msgstr "Actualizar <B>Listado de empresas</B>"
 
-#: blsubform.cpp:2540
+#: blsubform.cpp:2585
 msgid "Ajustar altura"
 msgstr "Ajustar altura"
 
-#: blsubform.cpp:2543
+#: blsubform.cpp:2588
 msgid "Ajustar alturas"
 msgstr "Ajustar alturas"
 
-#: blsubform.cpp:2539
+#: blsubform.cpp:2584 bltreewidget.cpp:71
 msgid "Ajustar columa"
 msgstr "Ajustar columa"
 
-#: blsubform.cpp:2542
+#: blsubform.cpp:2587 bltreewidget.cpp:74
 msgid "Ajustar columnas"
 msgstr "Ajustar columnas"
 
-#: blimportexport.cpp:2044
+#: blimportexport.cpp:2045
 #, fuzzy
 msgid "Almacen"
 msgstr "<LI> Almacén <B>"
@@ -140,28 +160,28 @@ msgstr "<LI> Almacén <B>"
 msgid "Anual"
 msgstr "Anual"
 
-#: blcompanydialog.cpp:494
+#: blcompanydialog.cpp:498
 msgid "Anyo"
 msgstr "Año"
 
-#: ui_blsubformbase.h:620
+#: ui_blsubformbase.h:618
 msgid "Aplicar"
 msgstr "Aplicar"
 
-#: blimportexport.cpp:1470
+#: blimportexport.cpp:1471
 msgid "Application name"
 msgstr "Application name"
 
-#: blcompanydialog.cpp:494
+#: blcompanydialog.cpp:498
 msgid "Archivo"
 msgstr "Archivo"
 
-#: blimportexport.cpp:2207
+#: blimportexport.cpp:2208
 #, fuzzy
 msgid "Articulo"
 msgstr "<P> Artículo <B>"
 
-#: blfunctions.cpp:566
+#: blfunctions.cpp:608
 msgid "Aviso del programa"
 msgstr "Aviso del programa"
 
@@ -169,31 +189,31 @@ msgstr "Aviso del programa"
 msgid "Bienal"
 msgstr "Bienal"
 
-#: ui_blsearchwidgetbase.h:99
+#: ui_blsearchwidgetbase.h:103
 msgid "BlSearchWidget"
 msgstr "BlSearchWidget"
 
 #: bltexteditdelegate.cpp:68
 msgid "BlTextEditDelegate::eventFilter Se ha pulsado return"
-msgstr ""
+msgstr "BlTextEditDelegate::eventFilter Se ha pulsado return"
 
-#: blform.cpp:341 blformlist.cpp:378
+#: blform.cpp:342 blformlist.cpp:388
 msgid "Borrar"
 msgstr "Borrar"
 
-#: ui_blcountrybase.h:289 ui_blcountrybase.h:294 blcountryview.cpp:223
+#: ui_blcountrybase.h:282 ui_blcountrybase.h:285 blcountryview.cpp:223
 msgid "Borrar pais"
 msgstr "Borrar país"
 
-#: blsubform.cpp:2535
+#: blsubform.cpp:2580
 msgid "Borrar registro"
 msgstr "Borrar registro"
 
-#: ui_blformconfigbase.h:285
+#: ui_blformconfigbase.h:287
 msgid "Campo Indice"
 msgstr "Campo índice"
 
-#: ui_blcountrybase.h:274
+#: ui_blcountrybase.h:272
 msgid "Cancelar"
 msgstr "Cancelar"
 
@@ -201,7 +221,7 @@ msgstr "Cancelar"
 msgid "Cargando SubFormulario "
 msgstr "Cargando subformularios"
 
-#: ui_blformconfigbase.h:292
+#: ui_blformconfigbase.h:294
 msgid "Cerrar"
 msgstr "Cerrar"
 
@@ -209,7 +229,7 @@ msgstr "Cerrar"
 msgid "Codigo 2 digitos"
 msgstr "Código de 2 dígitos"
 
-#: ui_blcountrybase.h:262
+#: ui_blcountrybase.h:264
 msgid "Codigo 2 letras:"
 msgstr "Código de 2 letras:"
 
@@ -217,7 +237,7 @@ msgstr "Código de 2 letras:"
 msgid "Codigo 3 digitos"
 msgstr "Código de 3 dígitos"
 
-#: ui_blcountrybase.h:261
+#: ui_blcountrybase.h:263
 msgid "Codigo 3 letras:"
 msgstr "Código de 3 letras:"
 
@@ -225,55 +245,67 @@ msgstr "Código de 3 letras:"
 msgid "Columnas visibles"
 msgstr "Columnas visibles"
 
-#: ui_blsubformbase.h:597
+#: ui_blformlistfilterbase.h:140
+msgid "Comienzo del campo"
+msgstr ""
+
+#: ui_blsubformbase.h:599
 msgid "Configuracion Subformularios"
 msgstr "Configuración subformularios"
 
-#: ui_bldblogindialogbase.h:154
+#: ui_bldblogindialogbase.h:156
 msgid "Contrasenya:"
 msgstr "Contraseña:"
 
-#: ui_blcountrybase.h:298
+#: blsearchwidget.cpp:575
+msgid "Copiar "
+msgstr ""
+
+#: ui_blcountrybase.h:288
 msgid "Ctrl+D"
 msgstr "Ctrl+D"
 
-#: ui_bldatesearchbase.h:89 ui_blsearchwidgetbase.h:101
+#: ui_bldatesearchbase.h:85 ui_blsearchwidgetbase.h:105
 msgid "Ctrl+F"
 msgstr "Ctrl+F"
 
-#: ui_blcompanydialogbase.h:202 ui_blcountrybase.h:286
+#: ui_blcompanydialogbase.h:200 ui_blcountrybase.h:280
 msgid "Ctrl+N"
 msgstr "Ctrl+N"
 
-#: ui_blcountrybase.h:310
+#: ui_blcountrybase.h:296
 msgid "Ctrl+S"
 msgstr "Ctrl+S"
 
-#: ui_blformconfigbase.h:283
+#: ui_blformlistfilterbase.h:139
+msgid "Cualquier parte del campo"
+msgstr ""
+
+#: ui_blformconfigbase.h:285
 msgid "Database Table"
 msgstr "Database Table"
 
-#: ui_blformconfigbase.h:290
+#: ui_blformconfigbase.h:292
 msgid "Databse Scripting"
 msgstr "Databse Scripting"
 
-#: ui_blcountrybase.h:259
+#: ui_blcountrybase.h:261
 msgid "Datos del pais:"
 msgstr "Datos del país:"
 
-#: blimportexport.cpp:2027
+#: blimportexport.cpp:2028
 msgid "Datos insuficientes para tratar el almacen."
 msgstr "Datos insuficientes para tratar el almacén."
 
-#: blimportexport.cpp:2176
+#: blimportexport.cpp:2177
 msgid "Datos insuficientes para tratar el articulo."
 msgstr "Datos insuficientes para tratar el artículo."
 
-#: blimportexport.cpp:2088
+#: blimportexport.cpp:2089
 msgid "Datos insuficientes para tratar la familia."
 msgstr "Datos insuficientes para tratar la familia."
 
-#: blimportexport.cpp:1978
+#: blimportexport.cpp:1979
 msgid "Datos insuficientes para tratar la forma de pago."
 msgstr "Datos insuficientes para tratar la forma de pago."
 
@@ -281,79 +313,128 @@ msgstr "Datos insuficientes para tratar la forma de pago."
 msgid "Debe seleccionar un elemento de la lista"
 msgstr "Debe seleccionar un elemento de la lista"
 
-#: blform.cpp:342
+#: blform.cpp:343
 msgid "Desea eliminar '"
 msgstr "¿Desea eliminar '"
 
-#: blform.cpp:372 blcountryview.cpp:117 blcountryview.cpp:189
+#: blform.cpp:373 blcountryview.cpp:117 blcountryview.cpp:189
 msgid "Desea guardar los cambios?"
 msgstr "¿Desea guardar los cambios?"
 
-#: blformlist.cpp:377
+#: blformlist.cpp:387
 msgid "Editar"
 msgstr "Editar"
 
-#: ui_blsubformbase.h:618
+#: ui_blsubformbase.h:616
 msgid "Ejecutar consulta"
 msgstr "Ejecutar consulta"
 
-#: blimportexport.cpp:2321 blimportexport.cpp:2550 blimportexport.cpp:2775
-#: blimportexport.cpp:3013
+#: blimportexport.cpp:2322 blimportexport.cpp:2551 blimportexport.cpp:2776
+#: blimportexport.cpp:3014
 msgid "El almacen del presupuesto no existe"
 msgstr "El almacén indicado en el presupuesto no existe"
 
-#: blimportexport.cpp:2402 blimportexport.cpp:2628 blimportexport.cpp:2866
-#: blimportexport.cpp:3095
+#: blimportexport.cpp:2403 blimportexport.cpp:2629 blimportexport.cpp:2867
+#: blimportexport.cpp:3096
 msgid "El articulo de la linea de presupuesto no existe"
 msgstr "El artículo indicado en la línea del presupuesto no existe"
 
-#: blimportexport.cpp:2331 blimportexport.cpp:2560 blimportexport.cpp:2784
-#: blimportexport.cpp:3023
+#: blimportexport.cpp:2332 blimportexport.cpp:2561 blimportexport.cpp:2785
+#: blimportexport.cpp:3024
 msgid "El cliente del presupuesto no existe"
 msgstr "El cliente indicado en el presupuesto no existe"
 
-#: blimportexport.cpp:2351 blimportexport.cpp:2578 blimportexport.cpp:2803
-#: blimportexport.cpp:3043
+#: blimportexport.cpp:2352 blimportexport.cpp:2579 blimportexport.cpp:2804
+#: blimportexport.cpp:3044
 msgid "El empleado del presupuesto no existe"
 msgstr "El empleado indicado en el presupuesto no existe"
 
-#: blimportexport.cpp:1949
+#: blimportexport.cpp:1950
 msgid "El proveedor no existe, se debe hacer una insercion de este"
 msgstr "El proveedor no existe, se debe hacer una inserción de éste"
 
-#: blimportexport.cpp:1944
+#: blimportexport.cpp:1945
 msgid "El proveedor ya existe, se pueden hacer modificaciones"
 msgstr "El proveedor ya existe, se pueden hacer modificaciones"
 
-#: ui_blcompanydialogbase.h:203
+#: ui_blcompanydialogbase.h:201
 msgid "Empresas disponibles:"
 msgstr "Empresas disponibles:"
 
-#: blsubform.cpp:1923
+#: blfunctions.cpp:376
+msgid "Error al borrar archivo .ods [ blfunctions->generaPYS() ]"
+msgstr ""
+
+#: blsubform.cpp:1932
 msgid "Error al borrar. [BlSubForm::borrar]"
+msgstr "Error al borrar. [BlSubForm::borrar]"
+
+#: bldb.cpp:872
+msgid "Error al copiar el archivo RML [ bldb->generaRML() ]"
+msgstr ""
+
+#: bldb.cpp:886
+msgid "Error al copiar el archivo de logo [ bldb->generaRML() ]"
 msgstr ""
 
 #: blcountryview.cpp:206
 msgid "Error al crear el banco"
 msgstr "Error al crear el banco"
 
+#: blfunctions.cpp:382
+msgid "Error al ejecutar PYTHON [ blfunctions->generaPYS() ]"
+msgstr ""
+
+#: blfunctions.cpp:321
+msgid ""
+"Error al ejecutar el comando 'sed' [ blfunctions.cpp->reemplazaarchivo() ]."
+msgstr ""
+
+#: blfunctions.cpp:409
+msgid "Error al ejecutar el visor de PDF [ blfunctions->invocaPDF() ]"
+msgstr ""
+
+#: blfunctions.cpp:423
+msgid "Error al ejecutar mailsend [ blfunctions->mailsendPDF() ]"
+msgstr ""
+
+#: blfunctions.cpp:395
+msgid "Error al ejecutar oocalc [ blfunctions->invocaPYS() ]"
+msgstr ""
+
+#: blfunctions.cpp:442
+msgid "Error al ejecutar xwininfo [ blfunctions->windowID() ]"
+msgstr ""
+
 #: blpostgresqlclient.cpp:143
 msgid "Error al hacer la consulta con la base de datos."
 msgstr "Error al hacer la consulta con la base de datos."
 
-#: blsubform.cpp:1981
+#: blsubform.cpp:1990
 msgid "Error al intentar borrar"
-msgstr ""
+msgstr "Error al intentar borrar"
 
 #: blcountryview.cpp:237
 msgid "Error al intentar borrar el pais"
 msgstr "Error al intentar borrar el país"
 
-#: blfunctions.cpp:576
+#: blfunctions.cpp:618
 msgid "Error del programa"
 msgstr "Error del programa"
 
-#: blimportexport.cpp:1470
+#: blfunctions.cpp:347
+msgid "Error en FLIP [ blfunctions->generaPDF() ]"
+msgstr ""
+
+#: blfunctions.cpp:340
+msgid "Error en PYTHON [ blfunctions->generaPDF() ]"
+msgstr ""
+
+#: blfunctions.cpp:357
+msgid "Error en bgtrml2pdf [ blfunctions->generaPDF() ]"
+msgstr ""
+
+#: blimportexport.cpp:1471
 msgid ""
 "Error en el XML.\n"
 "Documento mal formado."
@@ -361,66 +442,78 @@ msgstr ""
 "Error en el XML.\n"
 "Documento mal formateado."
 
-#: blsubform.cpp:1886
+#: blsubform.cpp:1895
 msgid "Error inesperado en el guardado. [BlSubForm::guardar]"
-msgstr ""
+msgstr "ERROR: Debe introducir una fecha final del balance anterior."
 
-#: bldblogindialog.cpp:109
+#: bldblogindialog.cpp:110
 msgid "Error: usuario y/o contrasenya incorrectos"
 msgstr "Error: usuario y/o contraseña incorrectos"
+
+#: blsubform.cpp:2502 blsubform.cpp:2516
+msgid "Errr al copiar listado.rml [ BlSubForm->imprimirPDF() ]"
+msgstr ""
 
 #: blworkspace.cpp:90
 msgid "Esc"
 msgstr "Esc"
 
-#: ui_blsubformbase.h:613
+#: ui_blsubformbase.h:612
 msgid "Escriba aqui la consulta SQL"
 msgstr "Escriba aquí la consulta SQL"
 
-#: blimportexport.cpp:400 blimportexport.cpp:1413
+#: blimportexport.cpp:401 blimportexport.cpp:1414
 msgid "Exportando :"
 msgstr "Exportando :"
 
-#: blimportexport.cpp:698
+#: blimportexport.cpp:699
 msgid "Exportando nueva forma de pago"
 msgstr "Exportando nueva forma de pago"
 
-#: blimportexport.cpp:2105
+#: blimportexport.cpp:2106
 msgid "Familia"
 msgstr "Familia"
 
-#: blsubform.cpp:1789 blsubform.cpp:1815
+#: blsubform.cpp:1798 blsubform.cpp:1824
 msgid "Fila inexistente"
-msgstr ""
+msgstr "Fila inexistente"
 
 #: ui_blsubformbase.h:605
 msgid "Filas por pagina:"
 msgstr "Filas por página:"
 
-#: ui_blformconfigbase.h:281 ui_blbankeditbase.h:89
+#: ui_blformlistfilterbase.h:126
+msgid "Filtrar por"
+msgstr ""
+
+#: ui_blformconfigbase.h:283 ui_blbankeditbase.h:92
 msgid "Form"
 msgstr "Form"
 
-#: ui_blformconfigbase.h:286
+#: ui_blformconfigbase.h:288
 msgid "Form Elements"
 msgstr "Form Elements"
 
-#: ui_bldatesearchbase.h:86 ui_blsearchwidgetbase.h:98
+#: ui_bldatesearchbase.h:82 ui_blsearchwidgetbase.h:102
 msgid "Form1"
 msgstr "Búsqueda de fecha"
 
-#: blimportexport.cpp:1997
+#: blimportexport.cpp:1998
 msgid "Forma de pago"
 msgstr "Forma de pago"
 
-#: blform.cpp:371
+#: blform.cpp:372
 msgid "Guardar"
 msgstr "Guardar"
 
-#: ui_blcountrybase.h:301 ui_blcountrybase.h:306 blcountryview.cpp:116
+#: ui_blcountrybase.h:290 ui_blcountrybase.h:293 blcountryview.cpp:116
 #: blcountryview.cpp:188
 msgid "Guardar pais"
 msgstr "Guardar país"
+
+#: ui_blformlistfilterbase.h:141
+msgid "Hacer coincidir todo el campo"
+msgstr ""
 
 #: blcountryview.cpp:48 blcountryview.cpp:60 blcountryview.cpp:70
 msgid "Id pais"
@@ -430,56 +523,56 @@ msgstr "ID país"
 msgid "Id provincia"
 msgstr "ID provincia"
 
-#: blsubform.cpp:2271
+#: blsubform.cpp:2306
 msgid "Imprimiendo "
 msgstr "Imprimiendo "
 
-#: blform.cpp:446
+#: blform.cpp:447
 msgid "Imprimir ficha"
 msgstr "Imprimir ficha"
 
-#: blwindowlistdock.cpp:149 blwindowlistdock.cpp:150
+#: blwindowlistdock.cpp:161 blwindowlistdock.cpp:162
 msgid "Indexador"
 msgstr "Indexador"
 
-#: blfunctions.cpp:526
+#: blfunctions.cpp:568
 msgid "Informacion de depuracion"
 msgstr "Información de depuración"
 
-#: blfunctions.cpp:556
+#: blfunctions.cpp:598
 msgid "Informacion del programa"
 msgstr "Información del programa"
 
-#: blimportexport.cpp:1997
+#: blimportexport.cpp:1998
 msgid "Insertada"
 msgstr "Insertada"
 
-#: blimportexport.cpp:2813
+#: blimportexport.cpp:2814
 msgid "La factura ya existe y no se va a insertar."
 msgstr "La factura ya existe y no se va a insertar."
 
-#: blimportexport.cpp:2151
+#: blimportexport.cpp:2152
 msgid "La familia del articulo no existe"
 msgstr "La familia del artículo no existe"
 
-#: blimportexport.cpp:2341 blimportexport.cpp:2569 blimportexport.cpp:2793
-#: blimportexport.cpp:3033
+#: blimportexport.cpp:2342 blimportexport.cpp:2570 blimportexport.cpp:2794
+#: blimportexport.cpp:3034
 msgid "La forma de pago del presupuesto no existe"
 msgstr "La forma de pago indicada en el presupuesto no existe"
 
-#: ui_bldblogindialogbase.h:149
+#: ui_bldblogindialogbase.h:151
 msgid "Lanzador Bulmages"
 msgstr "Lanzador Bulmagés"
 
-#: ui_blsearchwidgetbase.h:104
+#: ui_blsearchwidgetbase.h:107
 msgid "Limpiar campo"
 msgstr "Limpiar campo"
 
-#: ui_blerrordialogbase.h:109
+#: ui_blerrordialogbase.h:111
 msgid "Mensaje"
 msgstr "Mensaje"
 
-#: ui_bldblogindialogbase.h:150
+#: ui_bldblogindialogbase.h:152
 msgid "Mensaje de error:"
 msgstr "Mensaje de error:"
 
@@ -487,27 +580,27 @@ msgstr "Mensaje de error:"
 msgid "Mensual"
 msgstr "Mensual"
 
-#: ui_blcountrybase.h:265 ui_blcountrybase.h:270
+#: ui_blcountrybase.h:266 ui_blcountrybase.h:269
 msgid "Mostrar/ocultar detalle"
 msgstr "Mostrar/ocultar el detalle"
 
-#: blimportexport.cpp:2083
+#: blimportexport.cpp:2084
 msgid "No se ha encontrado el padre de esta familia."
 msgstr "No se ha encontrado el padre de esta familia."
 
-#: blform.cpp:352
+#: blform.cpp:353
 msgid "No se ha podido borrar"
 msgstr "No se ha podido borrar"
 
 #: blplugins.cpp:96
 msgid "No se ha podido cargar la libreria: "
-msgstr ""
+msgstr "No se ha podido cargar la libreria: "
 
-#: blform.cpp:386
+#: blform.cpp:387
 msgid "No se pudo cerrar la ventana debido a un error"
 msgstr "No se pudo cerrar la ventana debido a un error"
 
-#: blcompanydialog.cpp:494 blsubform.cpp:215
+#: blcompanydialog.cpp:498 blsubform.cpp:215
 msgid "Nombre"
 msgstr "Nombre"
 
@@ -515,15 +608,15 @@ msgstr "Nombre"
 msgid "Nombre de campo"
 msgstr "Nombre del campo"
 
-#: ui_blformconfigbase.h:282 ui_blformconfigbase.h:284
+#: ui_blformconfigbase.h:284 ui_blformconfigbase.h:286
 msgid "Nombre de la Tabla"
 msgstr "Nombre de la tabla"
 
-#: ui_bldblogindialogbase.h:153
+#: ui_bldblogindialogbase.h:155
 msgid "Nombre de usuario:"
 msgstr "Nombre de usuario:"
 
-#: ui_blcountrybase.h:260
+#: ui_blcountrybase.h:262
 msgid "Nombre del pais:"
 msgstr "Nombre del país:"
 
@@ -531,15 +624,15 @@ msgstr "Nombre del país:"
 msgid "Nombre pais"
 msgstr "Nombre país"
 
-#: ui_blcountrybase.h:277 ui_blcountrybase.h:282
+#: ui_blcountrybase.h:274 ui_blcountrybase.h:277
 msgid "Nuevo pais"
 msgstr "Nuevo país"
 
-#: blfunctions.cpp:530
+#: blfunctions.cpp:572
 msgid "Omitir &clase"
 msgstr "Omitir &clase"
 
-#: blform.cpp:445
+#: blform.cpp:446
 msgid "Opciones avanzadas de ficha"
 msgstr "Opciones avanzadas de ficha"
 
@@ -567,7 +660,7 @@ msgstr "Paginación"
 msgid "Pais"
 msgstr "País"
 
-#: ui_blcountrybase.h:258
+#: ui_blcountrybase.h:260
 msgid "Paises"
 msgstr "Países"
 
@@ -575,7 +668,11 @@ msgstr "Países"
 msgid "Para entrar, antes tiene que seleccionar una empresa."
 msgstr "Para entrar, antes tiene que seleccionar una empresa."
 
-#: ui_blformconfigbase.h:288
+#: blsearchwidget.cpp:576
+msgid "Pegar"
+msgstr ""
+
+#: ui_blformconfigbase.h:290
 msgid "Propietario de la tablas"
 msgstr "Propietario de la tablas"
 
@@ -583,12 +680,12 @@ msgstr "Propietario de la tablas"
 msgid "Provincia"
 msgstr "Provincia"
 
-#: ui_blformconfigbase.h:291
+#: ui_blformconfigbase.h:293
 msgid "Qt Scripting"
 msgstr "Qt Scripting"
 
 # Consulta SQL
-#: ui_blsubformbase.h:616
+#: ui_blsubformbase.h:614
 msgid "Query"
 msgstr "Consulta SQL"
 
@@ -596,11 +693,11 @@ msgstr "Consulta SQL"
 msgid "Quincenal"
 msgstr "Quincenal"
 
-#: ui_bldblogindialogbase.h:152
+#: ui_bldblogindialogbase.h:154
 msgid "Registro de entrada:"
 msgstr "Registro de entrada:"
 
-#: ui_blsubformbase.h:619
+#: ui_blsubformbase.h:617
 msgid "SQL"
 msgstr "SQL"
 
@@ -612,7 +709,7 @@ msgstr ""
 "Se va a borrar el país seleccionado.\n"
 "Esta operación puede ocasionar la pérdida de datos."
 
-#: bldatesearch.cpp:182
+#: bldatesearch.cpp:190
 msgid "Seleccione fecha"
 msgstr "Seleccione fecha"
 
@@ -620,7 +717,7 @@ msgstr "Seleccione fecha"
 msgid "Seleccione un pais para guardar"
 msgstr "Debe seleccionar un país para poder guardar"
 
-#: ui_blcompanydialogbase.h:184 ui_blcompanydialogbase.h:187
+#: ui_blcompanydialogbase.h:188 ui_blcompanydialogbase.h:190
 msgid "Seleccione una empresa"
 msgstr "Seleccione una empresa"
 
@@ -632,15 +729,15 @@ msgstr "Semanal"
 msgid "Semestral"
 msgstr "Semestral"
 
-#: ui_blprogressbarbase.h:67
+#: ui_blprogressbarbase.h:69
 msgid "TextLabel"
 msgstr "TextLabel"
 
-#: blformlist.cpp:326
+#: blformlist.cpp:336
 msgid "Tiene que seleccionar un elemento"
 msgstr "Debe seleccionar un elemento"
 
-#: blcompanydialog.cpp:494
+#: blcompanydialog.cpp:498
 msgid "Tipo"
 msgstr "Tipo"
 
@@ -652,76 +749,76 @@ msgstr "Total filas:"
 msgid "Total paginas:"
 msgstr "Total páginas:"
 
-#: ui_blprogressbarbase.h:66
+#: ui_blprogressbarbase.h:68
 msgid "Trabajando"
 msgstr "Trabajando"
 
-#: blimportexport.cpp:2477
+#: blimportexport.cpp:2478
 #, fuzzy
 msgid "Tratando DAlbaran"
 msgstr "Tratando albarán"
 
-#: blimportexport.cpp:2703
+#: blimportexport.cpp:2704
 msgid "Tratando DFactura"
 msgstr "Tratando factura"
 
-#: blimportexport.cpp:2250
+#: blimportexport.cpp:2251
 msgid "Tratando DPedidoCliente"
 msgstr "Tratando pedido del cliente"
 
-#: blimportexport.cpp:2941
+#: blimportexport.cpp:2942
 msgid "Tratando DPresupuesto"
 msgstr "Tratando presupuesto"
 
-#: blimportexport.cpp:2449
+#: blimportexport.cpp:2450
 msgid "Tratando LAlbaran"
 msgstr "Tratando albarán"
 
-#: blimportexport.cpp:2675
+#: blimportexport.cpp:2676
 msgid "Tratando LFactura"
 msgstr "Tratando factura"
 
-#: blimportexport.cpp:2222
+#: blimportexport.cpp:2223
 msgid "Tratando LPedidoCliente"
 msgstr "Tratando pedido del cliente"
 
-#: blimportexport.cpp:2913
+#: blimportexport.cpp:2914
 msgid "Tratando LPresupuesto"
 msgstr "Tratando presupuesto"
 
-#: blimportexport.cpp:2498
+#: blimportexport.cpp:2499
 msgid "Tratando albaran"
 msgstr "Tratando albarán"
 
-#: blimportexport.cpp:2013
+#: blimportexport.cpp:2014
 msgid "Tratando almacen"
 msgstr "Tratando almacén"
 
-#: blimportexport.cpp:2124
+#: blimportexport.cpp:2125
 msgid "Tratando articulo"
 msgstr "Tratando artículo"
 
-#: blimportexport.cpp:1936
+#: blimportexport.cpp:1937
 msgid "Tratando el proveedor"
 msgstr "Tratando el proveedor"
 
-#: blimportexport.cpp:2724
+#: blimportexport.cpp:2725
 msgid "Tratando factura"
 msgstr "Tratando factura"
 
-#: blimportexport.cpp:2063
+#: blimportexport.cpp:2064
 msgid "Tratando familia"
 msgstr "Tratando familia"
 
-#: blimportexport.cpp:1970
+#: blimportexport.cpp:1971
 msgid "Tratando la forma de pago"
 msgstr "Tratando la froma de pago"
 
-#: blimportexport.cpp:2271
+#: blimportexport.cpp:2272
 msgid "Tratando pedido cliente"
 msgstr "Tratando el pedido del cliente"
 
-#: blimportexport.cpp:2962
+#: blimportexport.cpp:2963
 msgid "Tratando presupuesto"
 msgstr "Tratando presupuesto"
 
@@ -729,15 +826,15 @@ msgstr "Tratando presupuesto"
 msgid "Trimestral"
 msgstr "Trimestral"
 
-#: ui_blformconfigbase.h:289
+#: ui_blformconfigbase.h:291
 msgid "User Preferences"
 msgstr "Preferencias de usuario"
 
-#: ui_blformconfigbase.h:287
+#: ui_blformconfigbase.h:289
 msgid "Usuario Actual"
 msgstr "Usuario actual"
 
-#: blsubform.cpp:2546
+#: blsubform.cpp:2591
 msgid "Ver/Ocultar configurador de subformulario"
 msgstr "Ver/Ocultar configurador de subformulario"
 
@@ -745,33 +842,33 @@ msgstr "Ver/Ocultar configurador de subformulario"
 msgid "Visible"
 msgstr "Visible"
 
-#: blimportexport.cpp:2096
+#: blimportexport.cpp:2097
 msgid "Ya existe esta familia."
 msgstr "Ya existe esta familia."
 
-#: blimportexport.cpp:1987
+#: blimportexport.cpp:1988
 msgid "Ya existe esta forma de pago."
 msgstr "Ya existe esta forma de pago."
 
-#: blimportexport.cpp:2035
+#: blimportexport.cpp:2036
 msgid "Ya existe este almacen."
 msgstr "Ya existe este almacén."
 
-#: blimportexport.cpp:2185
+#: blimportexport.cpp:2186
 msgid "Ya existe este articulo."
 msgstr "Ya existe este artículo."
 
-#: blimportexport.cpp:2105
+#: blimportexport.cpp:2106
 msgid "insertada"
 msgstr "insertada"
 
-#: blimportexport.cpp:2044 blimportexport.cpp:2207
+#: blimportexport.cpp:2045 blimportexport.cpp:2208
 msgid "insertado"
 msgstr "insertado"
 
-#: blsubform.cpp:2312 blsubform.cpp:2330
+#: blsubform.cpp:2347 blsubform.cpp:2365
 msgid "no se ha inicializado bien la clase"
-msgstr ""
+msgstr "no se ha inicializado bien la clase"
 
 #~ msgid "</B> Insertado</P>"
 #~ msgstr "</B> Insertado</P>"

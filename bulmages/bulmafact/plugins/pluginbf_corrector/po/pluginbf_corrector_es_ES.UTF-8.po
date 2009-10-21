@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-05-16 15:33+0200\n"
+"POT-Creation-Date: 2009-10-21 10:26+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -114,70 +114,70 @@ msgstr ""
 "#-#-#-#-#  pluginabrevs.pot (PACKAGE VERSION)  #-#-#-#-#\n"
 "#-#-#-#-#  bulmages_suite.pot (PACKAGE VERSION)  #-#-#-#-#\n"
 
-#: ui_confreglasbase.h:283
+#: ui_confreglasbase.h:284
 msgid "Apunte con Cuenta"
 msgstr "Apunte con Cuenta"
 
-#: ui_confreglasbase.h:291
+#: ui_confreglasbase.h:292
 msgid "Apunte con Descripcion"
 msgstr "Apunte con Descripcion"
 
-#: ui_confreglasbase.h:284
+#: ui_confreglasbase.h:285
 msgid "Apunte con Saldo"
 msgstr "Apunte con Saldo"
 
-#: ui_confreglasbase.h:294
+#: ui_confreglasbase.h:295
 msgid "Cerrar"
 msgstr "Cerrar"
 
-#: ui_confreglasbase.h:280
+#: ui_confreglasbase.h:281
 msgid "Comprobacion por asientos"
 msgstr "Comprobacion por asientos"
 
-#: ui_confreglasbase.h:281
+#: ui_confreglasbase.h:282
 msgid "Condicion:"
 msgstr "Condicion:"
 
-#: ui_correctorbase.h:106 ui_correctorbase.h:111
+#: ui_correctorbase.h:102 ui_correctorbase.h:105
 msgid "Configurar"
 msgstr "Configurar"
 
-#: ui_correctorbase.h:92
+#: ui_correctorbase.h:93
 msgid "Corrector"
 msgstr "Corrector"
 
-#: ui_correctorbase.h:95 ui_correctorbase.h:100
+#: ui_correctorbase.h:95 ui_correctorbase.h:98
 msgid "Corregir"
 msgstr "Corregir"
 
-#: ui_confreglasbase.h:282
+#: ui_confreglasbase.h:283
 msgid "Deben existir registros que cumplan esta condicion en el periodo"
 msgstr "Deben existir registros que cumplan esta condicion en el periodo"
 
-#: ui_confreglasbase.h:293
+#: ui_confreglasbase.h:294
 msgid "Periodicidad"
 msgstr "Periodicidad"
 
-#: ui_confreglasbase.h:279
+#: ui_confreglasbase.h:280
 msgid "Regla:"
 msgstr "Regla:"
 
-#: ui_confreglasbase.h:275
+#: ui_confreglasbase.h:276
 msgid "Reglas de Corrector"
 msgstr "Reglas de Corrector"
 
-#: ui_confreglasbase.h:292
+#: ui_confreglasbase.h:293
 msgid "Reglas sobre Apuntes"
 msgstr "Reglas sobre Apuntes"
 
-#: ui_confreglasbase.h:287
+#: ui_confreglasbase.h:288
 msgid "igual"
 msgstr "igual"
 
-#: ui_confreglasbase.h:289
+#: ui_confreglasbase.h:290
 msgid "mayor"
 msgstr "mayor"
 
-#: ui_confreglasbase.h:288
+#: ui_confreglasbase.h:289
 msgid "menor"
 msgstr "menor"

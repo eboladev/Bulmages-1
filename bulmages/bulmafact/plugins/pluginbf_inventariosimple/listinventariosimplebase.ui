@@ -12,11 +12,11 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Cuotas Socio</string>
+   <string>Inventario Simple</string>
   </property>
   <property name="windowIcon">
-   <iconset resource="../pluginbf_profesor/gestionaula.qrc">
-    <normaloff>:/ImgGestionAula/icons/mix_money_32.png</normaloff>:/ImgGestionAula/icons/mix_money_32.png</iconset>
+   <iconset resource="../../../bulmages.qrc">
+    <normaloff>:/Images/product-family.png</normaloff>:/Images/product-family.png</iconset>
   </property>
   <layout class="QGridLayout">
    <property name="margin">
@@ -92,7 +92,7 @@
         </size>
        </property>
        <property name="pixmap">
-        <pixmap resource="../pluginbf_profesor/gestionaula.qrc">:/ImgGestionAula/icons/mix_money_32.png</pixmap>
+        <pixmap resource="../../../bulmages.qrc">:/Images/product-family.png</pixmap>
        </property>
        <property name="scaledContents">
         <bool>true</bool>

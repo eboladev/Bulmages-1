@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-05-16 15:28+0200\n"
+"POT-Creation-Date: 2009-10-21 10:25+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -114,19 +114,19 @@ msgstr ""
 "#-#-#-#-#  pluginabrevs.pot (PACKAGE VERSION)  #-#-#-#-#\n"
 "#-#-#-#-#  bulmages_suite.pot (PACKAGE VERSION)  #-#-#-#-#\n"
 
-#: ui_zbase.h:327
+#: ui_zbase.h:314
 msgid "&Aceptar"
 msgstr "&Aceptar"
 
-#: ui_zbase.h:328
+#: ui_zbase.h:315
 msgid "&Cancelar"
 msgstr "&Cancelar"
 
-#: ui_zbase.h:312 ui_zbase.h:317 ui_zlistbase.h:289 ui_zlistbase.h:294
+#: ui_zbase.h:302 ui_zbase.h:305 ui_zlistbase.h:265 ui_zlistbase.h:268
 msgid "Actualizar listado"
 msgstr "Actualizar listado"
 
-#: zview.cpp:64 zlist.cpp:59 ui_zbase.h:321
+#: zlist.cpp:59 zview.cpp:64 ui_zbase.h:308
 msgid "Almacen"
 msgstr "Almacen"
 
@@ -142,35 +142,35 @@ msgstr "Anulado"
 msgid "Base Imponible"
 msgstr "Base Imponible"
 
-#: ui_zbase.h:300 ui_zbase.h:305
+#: ui_zbase.h:294 ui_zbase.h:297
 msgid "Borrar almacen"
 msgstr "Borrar almacen"
 
-#: ui_zlistbase.h:245 ui_zlistbase.h:250
+#: ui_zlistbase.h:237 ui_zlistbase.h:240
 msgid "Borrar contrato"
 msgstr "Borrar contrato"
 
-#: ui_zlistbase.h:298
+#: ui_zlistbase.h:271
 msgid "Buscar:"
 msgstr "Buscar:"
 
-#: ui_zlistbase.h:299
+#: ui_zlistbase.h:272
 msgid "Caducados"
 msgstr "Caducados"
 
-#: ui_zlistbase.h:278 ui_zlistbase.h:283
+#: ui_zlistbase.h:258 ui_zlistbase.h:261
 msgid "Configurar listado"
 msgstr "Configurar listado"
 
-#: ui_zbase.h:309
+#: ui_zbase.h:300
 msgid "Ctrl+D"
 msgstr "Ctrl+D"
 
-#: ui_zbase.h:297
+#: ui_zbase.h:292
 msgid "Ctrl+S"
 msgstr "Ctrl+S"
 
-#: ui_zbase.h:284
+#: ui_zbase.h:283
 msgid "Cuadre de Caja"
 msgstr "Cuadre de Caja"
 
@@ -178,7 +178,7 @@ msgstr "Cuadre de Caja"
 msgid "Cuadre de caja"
 msgstr "Cuadre de caja"
 
-#: ui_zlistbase.h:219
+#: ui_zlistbase.h:220
 msgid "Cuadres de Caja"
 msgstr "Cuadres de Caja"
 
@@ -186,7 +186,7 @@ msgstr "Cuadres de Caja"
 msgid "Descripcion"
 msgstr "Descripcion"
 
-#: ui_zlistbase.h:234 ui_zlistbase.h:239
+#: ui_zlistbase.h:230 ui_zlistbase.h:233
 msgid "Editar contrato"
 msgstr "Editar contrato"
 
@@ -198,11 +198,11 @@ msgstr "Error al crear el almacen"
 msgid "Error al editar el almacen"
 msgstr "Error al editar el almacen"
 
-#: zview.cpp:59 zview.cpp:76 zlist.cpp:57 ui_zbase.h:322
+#: zlist.cpp:57 zview.cpp:59 zview.cpp:76 ui_zbase.h:309
 msgid "Fecha"
 msgstr "Fecha"
 
-#: ui_zlistbase.h:267 ui_zlistbase.h:272
+#: ui_zlistbase.h:251 ui_zlistbase.h:254
 msgid "Filtrar contratos"
 msgstr "Filtrar contratos"
 
@@ -210,15 +210,15 @@ msgstr "Filtrar contratos"
 msgid "Forma de pago"
 msgstr "Forma de pago"
 
-#: ui_zbase.h:326
+#: ui_zbase.h:313
 msgid "General"
 msgstr "General"
 
-#: ui_zbase.h:288 ui_zbase.h:293
+#: ui_zbase.h:286 ui_zbase.h:289
 msgid "Guardar almacen"
 msgstr "Guardar almacen"
 
-#: zview.cpp:60 zview.cpp:81 zlist.cpp:58 ui_zbase.h:323
+#: zlist.cpp:58 zview.cpp:60 zview.cpp:81 ui_zbase.h:310
 msgid "Hora"
 msgstr "Hora"
 
@@ -238,11 +238,11 @@ msgstr "Id albaran"
 msgid "Id forma de pago"
 msgstr "Id forma de pago"
 
-#: zview.cpp:63 zlist.cpp:62
+#: zlist.cpp:62 zview.cpp:63
 msgid "Id. almacen"
 msgstr "Id. almacen"
 
-#: ui_zlistbase.h:256 ui_zlistbase.h:261
+#: ui_zlistbase.h:244 ui_zlistbase.h:247
 msgid "Imprimir listado"
 msgstr "Imprimir listado"
 
@@ -250,11 +250,11 @@ msgstr "Imprimir listado"
 msgid "Impuestos"
 msgstr "Impuestos"
 
-#: ui_zlistbase.h:223 ui_zlistbase.h:228
+#: ui_zlistbase.h:223 ui_zlistbase.h:226
 msgid "Nuevo contrato"
 msgstr "Nuevo contrato"
 
-#: ui_zbase.h:324
+#: ui_zbase.h:311
 msgid "Num. Tickets"
 msgstr "Num. Tickets"
 
@@ -278,6 +278,6 @@ msgstr "Referencia"
 msgid "Tickets"
 msgstr "Tickets"
 
-#: zview.cpp:61 zview.cpp:82 zlist.cpp:60 ui_zbase.h:325
+#: zlist.cpp:60 zview.cpp:61 zview.cpp:82 ui_zbase.h:312
 msgid "Total"
 msgstr "Total"

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-05-16 15:23+0200\n"
+"POT-Creation-Date: 2009-10-21 10:27+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -114,46 +114,345 @@ msgstr ""
 "#-#-#-#-#  pluginabrevs.pot (PACKAGE VERSION)  #-#-#-#-#\n"
 "#-#-#-#-#  bulmages_suite.pot (PACKAGE VERSION)  #-#-#-#-#\n"
 
-#: q19qtoolbutton.cpp:91
-msgid "*.q19"
-msgstr "*.q19"
+#: q19writer.cpp:149 q19writer.cpp:228
+#, qt-format
+msgid ""
+"\n"
+"%3 : %1 recibos, %2 EUR. "
+msgstr ""
+"\n"
+"%3 : %1 recibos, %2 EUR. "
 
-#: ui_q19base.h:222
+#: q19writer.cpp:312
+#, qt-format
+msgid "%1 (%2) supera la longitud maxima (%3 caracteres)"
+msgstr "%1 (%2) supera la longitud máxima (%3 caracteres)"
+
+#: q19writer.cpp:243
+#, qt-format
+msgid ""
+"%2\n"
+".El fichero de remesa bancaria generado no es aprovechable. Ha fallado la "
+"generacion en el recibo con referencia %1"
+msgstr ""
+"%2\n"
+".El fichero de remesa bancaria generado no es aprovechable. Ha fallado la "
+"generación en el recibo con referencia %1"
+
+#: q19writer.cpp:73 q19view.cpp:90
+msgid "*.q19;;*"
+msgstr "*.q19;;*"
+
+#: ui_q19base.h:274
+msgid "+"
+msgstr "+"
+
+#: ui_q19base.h:308
 msgid "..."
 msgstr "..."
 
-#: ui_q19base.h:225
+#: ui_q19base.h:284
+msgid ""
+"<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/"
+"REC-html40/strict.dtd\">\n"
+"<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css"
+"\">\n"
+"p, li { white-space: pre-wrap; }\n"
+"</style></head><body style=\" font-family:'Sans Serif'; font-size:9pt; font-"
+"weight:400; font-style:normal;\">\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-"
+"right:0px; -qt-block-indent:0; text-indent:0px;\">Patron del texto que "
+"recibiran los clientes de su banco como concepto. El concepto sera el texto "
+"introducido aqui sustituyendo los siguientes parametros por su valor para "
+"cada factura</p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-"
+"right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-"
+"weight:600;\">%serie</span> - Serie de la factura</p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-"
+"right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-"
+"weight:600;\">%num</span> - Numero de facturra</p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-"
+"right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-"
+"weight:600;\">%id</span> - identificador interno de la factura</p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-"
+"right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-"
+"weight:600;\">%fechafac[</span><span style=\" font-weight:600; font-style:"
+"italic;\">dd.MM.yyyy</span><span style=\" font-weight:600;\">]</span> - "
+"fecha de factura en algun formato aceptado por postgresql</p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-"
+"right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-"
+"weight:600;\">%fecharec[</span><span style=\" font-weight:600; font-style:"
+"italic;\">dd.MM.yyyy</span><span style=\" font-weight:600;\">]</span> - "
+"fecha de cargo del recibo en algun formato aceptado por postgresql (puede "
+"coincidir o no con la fecha de la factura, segun lo que indique en Fecha de "
+"Cargo)</p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-"
+"right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-"
+"weight:600;\">%desc</span> - Texto de descripcion de la factura</p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-"
+"right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-"
+"weight:600;\">%ref</span> - referencia de la factura.</p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-"
+"right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-"
+"weight:600;\">%base</span> - base imponible</p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-"
+"right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-"
+"weight:600;\">%imp</span> - impuestos</p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-"
+"right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-"
+"weight:600;\">%total</span> - total con impuestos incluidos</p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-"
+"right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-"
+"weight:600;\">%coment</span> - comentario de la factura</p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-"
+"right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-"
+"weight:600;\">%contact</span> - persona de contacto</p>\n"
+"<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; "
+"margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"></"
+"p></body></html>"
+msgstr ""
+"<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/"
+"REC-html40/strict.dtd\">\n"
+"<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css"
+"\">\n"
+"p, li { white-space: pre-wrap; }\n"
+"</style></head><body style=\" font-family:'Sans Serif'; font-size:9pt; font-"
+"weight:400; font-style:normal;\">\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-"
+"right:0px; -qt-block-indent:0; text-indent:0px;\">Patrón del texto que "
+"recibirán los clientes de su banco como concepto. El concepto será el texto "
+"introducido aquí sustituyendo los siguientes parámetros por su valor para "
+"cada factura</p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-"
+"right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-"
+"weight:600;\">%serie</span> - Serie de la factura</p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-"
+"right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-"
+"weight:600;\">%num</span> - Número de facturra</p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-"
+"right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-"
+"weight:600;\">%id</span> - identificador interno de la factura</p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-"
+"right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-"
+"weight:600;\">%fechafac[</span><span style=\" font-weight:600; font-style:"
+"italic;\">dd.MM.yyyy</span><span style=\" font-weight:600;\">]</span> - "
+"fecha de factura en algún formato aceptado por postgresql</p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-"
+"right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-"
+"weight:600;\">%fecharec[</span><span style=\" font-weight:600; font-style:"
+"italic;\">dd.MM.yyyy</span><span style=\" font-weight:600;\">]</span> - "
+"fecha de cargo del recibo en algún formato aceptado por postgresql (puede "
+"coincidir o no con la fecha de la factura, segun lo que indique en Fecha de "
+"Cargo)</p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-"
+"right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-"
+"weight:600;\">%desc</span> - Texto de descripción de la factura</p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-"
+"right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-"
+"weight:600;\">%ref</span> - referencia de la factura.</p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-"
+"right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-"
+"weight:600;\">%base</span> - base imponible</p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-"
+"right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-"
+"weight:600;\">%imp</span> - impuestos</p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-"
+"right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-"
+"weight:600;\">%total</span> - total con impuestos incluidos</p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-"
+"right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-"
+"weight:600;\">%coment</span> - comentario de la factura</p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-"
+"right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-"
+"weight:600;\">%contact</span> - persona de contacto</p>\n"
+"<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; "
+"margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"></"
+"p></body></html>"
+
+#: ui_q19base.h:309
 msgid "Aceptar"
 msgstr "Aceptar"
 
-#: ui_q19base.h:221
+#: ui_q19base.h:280
+msgid "Anos"
+msgstr "Años"
+
+#: ui_q19base.h:307
 msgid "Archivo"
 msgstr "Archivo"
 
-#: ui_q19base.h:220
+#: ui_q19base.h:270
 msgid "Banco"
 msgstr "Banco"
 
-#: ui_q19base.h:226
+#: q19writer.cpp:456
+#, qt-format
+msgid ""
+"Banco de Cliente '%1'  (para mi '%2') invalido en el recibo con id %3 (ref. %"
+"4), para cliente %5 (%6)"
+msgstr ""
+"Banco de Cliente '%1'  (para mi '%2') inválido en el recibo con id %3 (ref. %"
+"4), para cliente %5 (%6)"
+
+#: ui_q19base.h:310
 msgid "Cancelar"
 msgstr "Cancelar"
 
-#: q19view.cpp:78
+#: ui_q19base.h:282
+msgid "Concepto"
+msgstr "Concepto"
+
+#: q19writer.cpp:311
+msgid "Datos de recibos incorrectos"
+msgstr "Datos de recibos incorrectos"
+
+#: q19writer.cpp:455
+msgid "Datos incorrectos"
+msgstr "Datos incorrectos"
+
+#: ui_q19base.h:277
+msgid "Dias"
+msgstr "Días"
+
+#: q19writer.cpp:477
+msgid "El CIF del ordenante"
+msgstr "El CIF del ordenante"
+
+#: q19writer.cpp:345 q19writer.cpp:606
+msgid "El CIF del presentador (propiedades de Empresa)"
+msgstr "El CIF del presentador (propiedades de Empresa)"
+
+#: q19view.cpp:66
 msgid "Error al crear el archivo"
 msgstr "Error al crear el archivo"
 
-#: ui_q19base.h:219
+#: q19writer.cpp:236
+#, qt-format
+msgid ""
+"Excluidos %3 de %2 recibos por falta de fecha de vencimiento y otros %1 por "
+"falta de banco"
+msgstr ""
+"Excluidos %3 de %2 recibos por falta de fecha de vencimiento y otros %1 por "
+"falta de banco"
+
+#: ui_q19base.h:306
+#, c-format
+msgid "FRA %serie%num %desc "
+msgstr "FRA %serie%num %desc "
+
+#: q19writer.cpp:262
+msgid "Falta NIF de su empresa"
+msgstr "Falta NIF de su empresa"
+
+#: q19view.cpp:132
+msgid "Falta el  banco"
+msgstr "Falta el  banco"
+
+#: q19writer.cpp:285
+msgid "Falta el nombre de su empresa"
+msgstr "Falta el nombre de su empresa"
+
+#: ui_q19base.h:271
+msgid "Fecha de Cargo"
+msgstr "Fecha de Cargo"
+
+#: ui_q19base.h:273
+msgid "Fecha de factura"
+msgstr "Fecha de factura"
+
+#: q19writer.cpp:71
+msgid "Fichero de remesa bancaria (Cuaderno 19)"
+msgstr "Fichero de remesa bancaria (Cuaderno 19)"
+
+#: q19view.cpp:88
+msgid "Fichero q19 a generar para el banco "
+msgstr "Fichero q19 a generar para el banco "
+
+#: q19writer.cpp:238
+msgid "Fichero(s) generado(s)"
+msgstr "Fichero(s) generado(s)"
+
+#: ui_q19base.h:269
 msgid "Generacion Q19"
 msgstr "Generacion Q19"
 
-#: ui_q19base.h:224
-msgid "Num. Operaciones"
-msgstr "Num. Operaciones"
+#: ui_q19base.h:279
+msgid "Meses"
+msgstr "Meses"
 
-#: q19qtoolbutton.cpp:89
-msgid "Save file"
-msgstr "Save file"
+#: q19view.cpp:116
+msgid ""
+"No hay facturas seleccionadas. Puede utilizar la columna selector para "
+"seleccionar los recibos a incluir en la remesa bancaria."
+msgstr ""
+"No hay facturas seleccionadas. Puede utilizar la columna selector para "
+"seleccionar los recibos a incluir en la remesa bancaria."
 
-#: ui_q19base.h:223
-msgid "Total"
-msgstr "Total"
+#: q19qtoolbutton.cpp:122
+msgid ""
+"No hay recibos seleccionados. Puede utilizar la columna selector para "
+"seleccionar los recibos a incluir en la remesa bancaria."
+msgstr ""
+"No hay recibos seleccionados. Puede utilizar la columna selector para "
+"seleccionar los recibos a incluir en la remesa bancaria."
+
+#: q19writer.cpp:263
+msgid ""
+"No podemos generar remesas bancarias hasta que entre el NIF de su empresa en "
+"Propiedades de Empresa"
+msgstr ""
+"No podemos generar remesas bancarias hasta que entre el NIF de su empresa en "
+"Propiedades de Empresa"
+
+#: q19view.cpp:133
+msgid "Por favor, escoja un banco donde cobrar los recibos a generar."
+msgstr "Por favor, escoja un banco donde cobrar los recibos a generar."
+
+#: q19writer.cpp:243
+msgid "Remesa mal generada"
+msgstr "Remesa mal generada"
+
+#: q19writer.cpp:235
+msgid "Remesa parcialmente generada"
+msgstr "Remesa parcialmente generada"
+
+#: q19qtoolbutton.cpp:122 q19view.cpp:116
+msgid "Remesa vacia"
+msgstr "Remesa vacía"
+
+#: ui_q19base.h:278
+msgid "Semanas"
+msgstr "Semanas"
+
+#: q19writer.cpp:356
+msgid "Su entidad bancaria"
+msgstr "Su entidad bancaria"
+
+#: q19writer.cpp:358
+msgid "Su oficina bancaria"
+msgstr "Su oficina bancaria"
+
+#: q19writer.cpp:238
+#, qt-format
+msgid ""
+"Tiene los siguientes ficheros de recibos para los bancos:\n"
+"%1"
+msgstr ""
+"Tiene los siguientes ficheros de recibos para los bancos:\n"
+"%1"
+
+#: ui_q19base.h:272
+msgid "dd/MM/yyyy"
+msgstr "dd/MM/yyyy"
+
+#~ msgid "*.q19"
+#~ msgstr "*.q19"
+
+#~ msgid "Num. Operaciones"
+#~ msgstr "Num. Operaciones"
+
+#~ msgid "Save file"
+#~ msgstr "Save file"
+
+#~ msgid "Total"
+#~ msgstr "Total"

@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-05-16 14:30+0200\n"
+"POT-Creation-Date: 2009-10-21 10:25+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,16 +18,16 @@ msgstr ""
 "#-#-#-#-#  bulmalib_ca_ES.UTF-8.po (PACKAGE VERSION)  #-#-#-#-#\n"
 "X-Generator: Translate Toolkit 1.1.1\n"
 
-#: pluginbl_importcsv.cpp:55
+#: pluginbl_importcsv.cpp:56
 #, fuzzy
 msgid "&Importacion CSV"
 msgstr "Imputació"
 
-#: ui_importcsvbase.h:198
+#: ui_importcsvbase.h:200
 msgid "..."
 msgstr "..."
 
-#: ui_importcsvbase.h:205
+#: ui_importcsvbase.h:207
 msgid "Aceptar"
 msgstr "Aceptar"
 
@@ -35,7 +35,7 @@ msgstr "Aceptar"
 msgid "All files (*)"
 msgstr "Tots els fitxers (*)"
 
-#: ui_importcsvbase.h:197
+#: ui_importcsvbase.h:199
 #, fuzzy
 msgid "Archivo"
 msgstr ""
@@ -44,17 +44,17 @@ msgstr ""
 "#-#-#-#-#  bulmalib_ca_ES.UTF-8.po (PACKAGE VERSION)  #-#-#-#-#\n"
 "Arxiu"
 
-#: ui_importcsvbase.h:206
+#: ui_importcsvbase.h:208
 msgid "Cancelar"
 msgstr "Cancel·la"
 
 # Potser carregar és mllor
-#: ui_importcsvbase.h:201
+#: ui_importcsvbase.h:203
 #, fuzzy
 msgid "Caracter separador"
 msgstr "Llegir empresa"
 
-#: ui_importcsvbase.h:204
+#: ui_importcsvbase.h:206
 msgid "Composicion de Campos"
 msgstr "Composició de camps"
 
@@ -63,12 +63,12 @@ msgstr "Composició de camps"
 msgid "Error al crear la ventana de importacion"
 msgstr "Error en la càrrega de l'amortizació"
 
-#: pluginbl_importcsv.cpp:56 pluginbl_importcsv.cpp:57
+#: pluginbl_importcsv.cpp:57 pluginbl_importcsv.cpp:58
 #, fuzzy
 msgid "Importacion CSV"
 msgstr "Imputació"
 
-#: ui_importcsvbase.h:196
+#: ui_importcsvbase.h:198
 #, fuzzy
 msgid "Importar CSV"
 msgstr "&Importa"
@@ -77,20 +77,20 @@ msgstr "&Importa"
 msgid "Open file"
 msgstr "Obre fitxer"
 
-#: ui_importcsvbase.h:202
+#: ui_importcsvbase.h:204
 msgid "Primera fila son cabeceras"
 msgstr ""
 
-#: ui_importcsvbase.h:200
+#: ui_importcsvbase.h:202
 msgid "Separado por tabulador"
 msgstr "Separat per tabulador"
 
-#: ui_importcsvbase.h:199
+#: ui_importcsvbase.h:201
 #, fuzzy
 msgid "Separador de campos"
 msgstr "Nom d'usuari:"
 
-#: ui_importcsvbase.h:203
+#: ui_importcsvbase.h:205
 #, fuzzy
 msgid "Tabla Destino"
 msgstr "Compte destí"

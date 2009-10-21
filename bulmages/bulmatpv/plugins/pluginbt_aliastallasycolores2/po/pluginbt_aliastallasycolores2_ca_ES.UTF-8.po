@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-05-16 15:45+0200\n"
+"POT-Creation-Date: 2009-10-21 10:22+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,11 +18,11 @@ msgstr ""
 "#-#-#-#-#  bulmalib_ca_ES.UTF-8.po (PACKAGE VERSION)  #-#-#-#-#\n"
 "X-Generator: Translate Toolkit 1.1.1\n"
 
-#: pluginbt_aliastallasycolores2.cpp:35
+#: pluginbt_aliastallasycolores2.cpp:34
 #, fuzzy
 msgid "Color"
 msgstr "Valor"
 
-#: pluginbt_aliastallasycolores2.cpp:34
+#: pluginbt_aliastallasycolores2.cpp:33
 msgid "Talla"
 msgstr ""

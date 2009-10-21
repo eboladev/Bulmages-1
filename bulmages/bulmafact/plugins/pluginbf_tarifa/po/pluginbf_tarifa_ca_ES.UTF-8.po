@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-05-16 14:49+0200\n"
+"POT-Creation-Date: 2009-10-21 10:25+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -12,11 +12,11 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Translate Toolkit 1.1.1\n"
 
-#: ui_tarifabase.h:270
+#: ui_tarifabase.h:259
 msgid "&Aceptar"
 msgstr "&Accepta"
 
-#: ui_tarifabase.h:271
+#: ui_tarifabase.h:260
 msgid "&Cancelar"
 msgstr "&Cancel·la"
 
@@ -32,8 +32,8 @@ msgstr "&Sí"
 msgid "&Tarifas"
 msgstr "&Tarifes"
 
-#: ui_tarifalistbase.h:179 ui_tarifalistbase.h:184 ui_tarifabase.h:258
-#: ui_tarifabase.h:263
+#: ui_tarifabase.h:250 ui_tarifabase.h:253 ui_tarifalistbase.h:167
+#: ui_tarifalistbase.h:170
 msgid "Actualizar listado"
 msgstr "Actual·litza llistat"
 
@@ -42,16 +42,16 @@ msgstr "Actual·litza llistat"
 msgid "Almacen"
 msgstr "<LI> Magatzem <B>"
 
-#: ui_tarifabase.h:269
+#: ui_tarifabase.h:258
 #, fuzzy
 msgid "Almacen:"
 msgstr "<LI> Magatzem <B>"
 
-#: ui_tarifabase.h:247 ui_tarifabase.h:252
+#: ui_tarifabase.h:243 ui_tarifabase.h:246
 msgid "Borrar"
 msgstr "Esborra"
 
-#: tarifaview.cpp:242 ui_tarifalistbase.h:169 ui_tarifalistbase.h:174
+#: tarifaview.cpp:242 ui_tarifalistbase.h:161 ui_tarifalistbase.h:164
 msgid "Borrar tarifa"
 msgstr "Esborra tarifa"
 
@@ -64,7 +64,7 @@ msgstr "Quantitat Maig Anual"
 msgid "Codigo completo del articulo"
 msgstr "Codi complet de l'article"
 
-#: ui_tarifalistbase.h:159 ui_tarifalistbase.h:164
+#: ui_tarifalistbase.h:155 ui_tarifalistbase.h:158
 #, fuzzy
 msgid "Editar tarifa"
 msgstr "Editar tarifa"
@@ -73,12 +73,12 @@ msgstr "Editar tarifa"
 msgid "Esta a punto de borrar una tarifa. Desea continuar?"
 msgstr ""
 
-#: ui_tarifabase.h:268
+#: ui_tarifabase.h:257
 #, fuzzy
 msgid "Filtrado de articulos:"
 msgstr "Llista d'amortitzacions"
 
-#: ui_tarifabase.h:237 ui_tarifabase.h:242
+#: ui_tarifabase.h:237 ui_tarifabase.h:240
 msgid "Guardar"
 msgstr "Desa"
 
@@ -92,8 +92,8 @@ msgstr "<LI> Magatzem <B>"
 msgid "ID articulo"
 msgstr "<P> Article <B>"
 
-#: tarifalistsubform.cpp:37 tarifaview.cpp:50 listltarifaview.cpp:39
-#: listltarifaview.cpp:63 pluginbf_tarifa.cpp:184
+#: tarifaview.cpp:50 listltarifaview.cpp:39 listltarifaview.cpp:63
+#: pluginbf_tarifa.cpp:184 tarifalistsubform.cpp:37
 msgid "ID tarifa"
 msgstr ""
 
@@ -110,12 +110,12 @@ msgstr "Nom del magatzem"
 msgid "Nombre articulo"
 msgstr "Nom de l'amortització"
 
-#: tarifalistsubform.cpp:36 tarifaview.cpp:51 listltarifaview.cpp:65
+#: tarifaview.cpp:51 listltarifaview.cpp:65 tarifalistsubform.cpp:36
 #, fuzzy
 msgid "Nombre de la tarifa"
 msgstr "Nom de l'entitat:"
 
-#: ui_tarifabase.h:267
+#: ui_tarifabase.h:256
 #, fuzzy
 msgid "Nombre de la tarifa:"
 msgstr "Nom de l'entitat:"
@@ -129,7 +129,7 @@ msgstr "Nom de l'amortització"
 msgid "Nombre tarifa"
 msgstr "Nom de la tarifa"
 
-#: ui_tarifalistbase.h:149 ui_tarifalistbase.h:154
+#: ui_tarifalistbase.h:149 ui_tarifalistbase.h:152
 #, fuzzy
 msgid "Nueva tarifa"
 msgstr "Nova amortització"
@@ -148,7 +148,7 @@ msgid "Precio de venta"
 msgstr "Preu de venta"
 
 #: tarifaview.cpp:47 tarifaview.cpp:101 tarifaview.cpp:160
-#: pluginbf_tarifa.cpp:185 ui_tarifabase.h:233
+#: pluginbf_tarifa.cpp:185 ui_tarifabase.h:234
 msgid "Tarifa"
 msgstr ""
 
@@ -157,7 +157,7 @@ msgid "Tarifa edicion"
 msgstr ""
 
 #: pluginbf_tarifa.cpp:82 pluginbf_tarifa.cpp:83 pluginbf_tarifa.cpp:166
-#: tarifalistview.cpp:43 ui_tarifalistbase.h:146
+#: tarifalistview.cpp:43 ui_tarifalistbase.h:147
 msgid "Tarifas"
 msgstr ""
 

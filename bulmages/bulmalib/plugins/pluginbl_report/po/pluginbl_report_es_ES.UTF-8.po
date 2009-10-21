@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-05-16 14:30+0200\n"
+"POT-Creation-Date: 2009-10-21 10:25+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -114,10 +114,12 @@ msgstr ""
 "#-#-#-#-#  pluginabrevs.pot (PACKAGE VERSION)  #-#-#-#-#\n"
 "#-#-#-#-#  bulmages_suite.pot (PACKAGE VERSION)  #-#-#-#-#\n"
 
-#: pluginbl_report.cpp:99
-msgid "&Informes"
-msgstr "&Informes"
+#: pluginbl_report.cpp:166
+msgid "Informes"
+msgstr ""
 
-#: pluginbl_report.cpp:137 pluginbl_report.cpp:138
-msgid "Informe"
-msgstr "Informe"
+#~ msgid "&Informes"
+#~ msgstr "&Informes"
+
+#~ msgid "Informe"
+#~ msgstr "Informe"

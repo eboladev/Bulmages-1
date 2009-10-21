@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-05-16 15:25+0200\n"
+"POT-Creation-Date: 2009-10-21 10:25+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,7 +18,7 @@ msgstr ""
 "#-#-#-#-#  bulmalib_ca_ES.UTF-8.po (PACKAGE VERSION)  #-#-#-#-#\n"
 "X-Generator: Translate Toolkit 1.1.1\n"
 
-#: ui_listtipostrabajobase.h:113
+#: ui_listtipostrabajobase.h:114
 #, fuzzy
 msgid "&Aceptar"
 msgstr ""
@@ -45,7 +45,7 @@ msgstr ""
 "#-#-#-#-#  - (PACKAGE VERSION)  #-#-#-#-#\n"
 "&Accepta"
 
-#: ui_listtipostrabajobase.h:114
+#: ui_listtipostrabajobase.h:115
 #, fuzzy
 msgid "&Cancelar"
 msgstr ""
@@ -59,22 +59,22 @@ msgstr ""
 msgid "Color tipo trabajo"
 msgstr "Color tipus"
 
-#: pluginbf_tipotrabajo.cpp:199
+#: pluginbf_tipotrabajo.cpp:204
 #, fuzzy
 msgid "ID almacen"
 msgstr "<LI> Magatzem <B>"
 
-#: pluginbf_tipotrabajo.cpp:197
+#: pluginbf_tipotrabajo.cpp:202
 #, fuzzy
 msgid "ID nombre del tipo de trabajo"
 msgstr "Nom de la forma de pagament:"
 
-#: pluginbf_tipotrabajo.cpp:200
+#: pluginbf_tipotrabajo.cpp:205
 #, fuzzy
 msgid "ID tipo de trabajo"
 msgstr "Id tipus d'IVA"
 
-#: pluginbf_tipotrabajo.cpp:201
+#: pluginbf_tipotrabajo.cpp:206
 #, fuzzy
 msgid "Id tipo de trabajo"
 msgstr "Id tipus d'IVA"
@@ -89,12 +89,12 @@ msgstr "Id tipus"
 msgid "Nombre tipo trabajo"
 msgstr "Nom tipus"
 
-#: pluginbf_tipotrabajo.cpp:198
+#: pluginbf_tipotrabajo.cpp:203
 #, fuzzy
 msgid "Numero de cargos necesarios"
 msgstr "Nombre de quotes"
 
-#: ui_listtipostrabajobase.h:112
+#: ui_listtipostrabajobase.h:113
 #, fuzzy
 msgid "Tipos de Trabajo"
 msgstr "Tipus d'assentament"

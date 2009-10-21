@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-05-16 14:56+0200\n"
+"POT-Creation-Date: 2009-10-21 10:23+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -114,36 +114,36 @@ msgstr ""
 "#-#-#-#-#  pluginabrevs.pot (PACKAGE VERSION)  #-#-#-#-#\n"
 "#-#-#-#-#  bulmages_suite.pot (PACKAGE VERSION)  #-#-#-#-#\n"
 
-#: ui_almacenbase.h:354
+#: ui_almacenbase.h:345
 msgid "&Aceptar"
 msgstr "&Aceptar"
 
-#: ui_almacenbase.h:355
+#: ui_almacenbase.h:346
 msgid "&Cancelar"
 msgstr "&Cancelar"
 
-#: ui_almaceneslistbase.h:405 ui_almaceneslistbase.h:410
+#: ui_almaceneslistbase.h:379 ui_almaceneslistbase.h:382
 msgid "Actualizar listado"
 msgstr "Actualizar listado"
 
-#: almacenview.cpp:54 ui_almacenbase.h:346
+#: almacenview.cpp:54 ui_almacenbase.h:337
 msgid "Almacen"
 msgstr "Almacen"
 
-#: almaceneslistview.cpp:218 ui_almaceneslistbase.h:331
+#: almaceneslistview.cpp:218 ui_almaceneslistbase.h:330
 msgid "Almacenes"
 msgstr "Almacenes"
 
-#: ui_almacenbase.h:334 ui_almacenbase.h:339 ui_almaceneslistbase.h:359
-#: ui_almaceneslistbase.h:364
+#: ui_almacenbase.h:328 ui_almacenbase.h:331 ui_almaceneslistbase.h:349
+#: ui_almaceneslistbase.h:352
 msgid "Borrar almacen"
 msgstr "Borrar almacen"
 
-#: ui_almaceneslistbase.h:415
+#: ui_almaceneslistbase.h:386
 msgid "Buscar:"
 msgstr "Buscar:"
 
-#: ui_almacenbase.h:352
+#: ui_almacenbase.h:343
 msgid "Codigo Almacen"
 msgstr "Codigo Almacen"
 
@@ -155,27 +155,27 @@ msgstr "Codigo almacen"
 msgid "Codigo postal"
 msgstr "Codigo postal"
 
-#: ui_almaceneslistbase.h:394 ui_almaceneslistbase.h:399
+#: ui_almaceneslistbase.h:372 ui_almaceneslistbase.h:375
 msgid "Configurar listado"
 msgstr "Configurar listado"
 
-#: ui_almacenbase.h:343 ui_almaceneslistbase.h:368
+#: ui_almacenbase.h:334 ui_almaceneslistbase.h:355
 msgid "Ctrl+D"
 msgstr "Ctrl+D"
 
-#: ui_almaceneslistbase.h:356
+#: ui_almaceneslistbase.h:347
 msgid "Ctrl+E"
 msgstr "Ctrl+E"
 
-#: ui_almaceneslistbase.h:344
+#: ui_almaceneslistbase.h:339
 msgid "Ctrl+N"
 msgstr "Ctrl+N"
 
-#: ui_almaceneslistbase.h:380
+#: ui_almaceneslistbase.h:363
 msgid "Ctrl+P"
 msgstr "Ctrl+P"
 
-#: ui_almacenbase.h:331
+#: ui_almacenbase.h:326
 msgid "Ctrl+S"
 msgstr "Ctrl+S"
 
@@ -183,7 +183,7 @@ msgstr "Ctrl+S"
 msgid "Debe seleccionar una linea"
 msgstr "Debe seleccionar una linea"
 
-#: ui_almacenbase.h:350
+#: ui_almacenbase.h:341
 msgid "Direccion Almacen"
 msgstr "Direccion Almacen"
 
@@ -191,11 +191,11 @@ msgstr "Direccion Almacen"
 msgid "Direccion almacen"
 msgstr "Direccion almacen"
 
-#: ui_almaceneslistbase.h:347 ui_almaceneslistbase.h:352
+#: ui_almaceneslistbase.h:341 ui_almaceneslistbase.h:344
 msgid "Editar almacen"
 msgstr "Editar almacen"
 
-#: ui_almacenbase.h:347
+#: ui_almacenbase.h:338
 msgid "Email Almacen"
 msgstr "Email Almacen"
 
@@ -211,11 +211,11 @@ msgstr "Error al crear el almacen"
 msgid "Error al editar el almacen"
 msgstr "Error al editar el almacen"
 
-#: ui_almaceneslistbase.h:414
+#: ui_almaceneslistbase.h:385
 msgid "F5"
 msgstr "F5"
 
-#: ui_almacenbase.h:348
+#: ui_almacenbase.h:339
 msgid "Fax Almacen"
 msgstr "Fax Almacen"
 
@@ -227,23 +227,23 @@ msgstr "Fax almacen"
 msgid "Fecha almacen"
 msgstr "Fecha almacen"
 
-#: ui_almaceneslistbase.h:418
+#: ui_almaceneslistbase.h:389
 msgid "Fecha final:"
 msgstr "Fecha final:"
 
-#: ui_almaceneslistbase.h:417
+#: ui_almaceneslistbase.h:388
 msgid "Fecha inicial:"
 msgstr "Fecha inicial:"
 
-#: ui_almaceneslistbase.h:383 ui_almaceneslistbase.h:388
+#: ui_almaceneslistbase.h:365 ui_almaceneslistbase.h:368
 msgid "Filtrar pedidos"
 msgstr "Filtrar pedidos"
 
-#: ui_almacenbase.h:353
+#: ui_almacenbase.h:344
 msgid "General"
 msgstr "General"
 
-#: ui_almacenbase.h:322 ui_almacenbase.h:327
+#: ui_almacenbase.h:320 ui_almacenbase.h:323
 msgid "Guardar almacen"
 msgstr "Guardar almacen"
 
@@ -251,15 +251,15 @@ msgstr "Guardar almacen"
 msgid "ID almacen"
 msgstr "ID almacen"
 
-#: ui_almaceneslistbase.h:371 ui_almaceneslistbase.h:376
+#: ui_almaceneslistbase.h:357 ui_almaceneslistbase.h:360
 msgid "Imprimir listado"
 msgstr "Imprimir listado"
 
-#: ui_almaceneslistbase.h:416
+#: ui_almaceneslistbase.h:387
 msgid "Mostrar:"
 msgstr "Mostrar:"
 
-#: ui_almacenbase.h:351
+#: ui_almacenbase.h:342
 msgid "Nombre Almacen"
 msgstr "Nombre Almacen"
 
@@ -267,7 +267,7 @@ msgstr "Nombre Almacen"
 msgid "Nombre almacen"
 msgstr "Nombre almacen"
 
-#: ui_almacenbase.h:318 ui_almaceneslistbase.h:335 ui_almaceneslistbase.h:340
+#: ui_almacenbase.h:317 ui_almaceneslistbase.h:333 ui_almaceneslistbase.h:336
 msgid "Nuevo almacen"
 msgstr "Nuevo almacen"
 
@@ -275,7 +275,7 @@ msgstr "Nuevo almacen"
 msgid "Poblacion almacen"
 msgstr "Poblacion almacen"
 
-#: ui_almacenbase.h:349
+#: ui_almacenbase.h:340
 msgid "Telefono Almacen"
 msgstr "Telefono Almacen"
 
@@ -283,7 +283,7 @@ msgstr "Telefono Almacen"
 msgid "Telefono almacen"
 msgstr "Telefono almacen"
 
-#: ui_almacenbase.h:345
+#: ui_almacenbase.h:336
 msgid "Tienda"
 msgstr "Tienda"
 
@@ -291,7 +291,7 @@ msgstr "Tienda"
 msgid "Tipo almacen"
 msgstr "Tipo almacen"
 
-#: ui_almacenbase.h:344
+#: ui_almacenbase.h:335
 msgid "Tipo de Almacen"
 msgstr "Tipo de Almacen"
 

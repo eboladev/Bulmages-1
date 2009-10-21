@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-05-16 15:35+0200\n"
+"POT-Creation-Date: 2009-10-21 10:24+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,7 +18,7 @@ msgstr ""
 "#-#-#-#-#  bulmalib_ca_ES.UTF-8.po (PACKAGE VERSION)  #-#-#-#-#\n"
 "X-Generator: Translate Toolkit 1.1.1\n"
 
-#: ui_z2zbase.h:395
+#: ui_z2zbase.h:384
 #, fuzzy
 msgid "&Aceptar"
 msgstr ""
@@ -45,7 +45,7 @@ msgstr ""
 "#-#-#-#-#  - (PACKAGE VERSION)  #-#-#-#-#\n"
 "&Accepta"
 
-#: ui_z2zbase.h:396
+#: ui_z2zbase.h:385
 #, fuzzy
 msgid "&Cancelar"
 msgstr ""
@@ -54,80 +54,88 @@ msgstr ""
 "#-#-#-#-#  bulmalib_ca_ES.UTF-8.po (PACKAGE VERSION)  #-#-#-#-#\n"
 "&Cancel·lar"
 
-#: ui_z2zbase.h:402
+#: ui_z2zbase.h:391
 #, fuzzy
 msgid "&Detalle"
 msgstr "&Detalls"
 
-#: ui_z2zbase.h:404
+#: ui_z2zbase.h:394
 #, fuzzy
 msgid "1"
 msgstr "F1"
 
-#: ui_z2zbase.h:375 ui_z2zbase.h:380
+#: ui_z2zbase.h:371 ui_z2zbase.h:374
 #, fuzzy
 msgid "Borrar factura"
 msgstr "Esborra quota"
 
-#: z2zview.cpp:56
+#: z2zview.cpp:59
 msgid "Error al crear la factura"
 msgstr "Error al crear la factura"
 
-#: ui_z2zbase.h:405
+#: z2zview.cpp:272
+msgid "Error en el traspaso"
+msgstr ""
+
+#: ui_z2zbase.h:395
 #, fuzzy
 msgid "Excluir Articulo"
 msgstr "<P> Article <B>"
 
-#: ui_z2zbase.h:403
+#: ui_z2zbase.h:392
 #, fuzzy
 msgid "Excluir Familias"
 msgstr "<P> Família <B>"
 
-#: ui_z2zbase.h:364 ui_z2zbase.h:369
+#: ui_z2zbase.h:364 ui_z2zbase.h:367
 #, fuzzy
 msgid "Guardar factura"
 msgstr "Desa assentament"
 
-#: ui_z2zbase.h:386 ui_z2zbase.h:391
+#: ui_z2zbase.h:378 ui_z2zbase.h:381
 #, fuzzy
 msgid "Imprimir factura"
 msgstr "Imprimeix albarà"
 
-#: ui_z2zbase.h:407
+#: z2zview.cpp:108
+msgid "Lista vacia"
+msgstr ""
+
+#: ui_z2zbase.h:397
 #, fuzzy
 msgid "No cambiar precios de articulos"
 msgstr "&No"
 
-#: ui_z2zbase.h:406
+#: ui_z2zbase.h:396
 msgid "Num Minimo lineas ticket"
 msgstr ""
 
-#: ui_z2zbase.h:408
+#: ui_z2zbase.h:398
 msgid "Opciones"
 msgstr ""
 
-#: ui_z2zbase.h:397
+#: ui_z2zbase.h:386
 msgid "Referencias"
 msgstr ""
 
-#: ui_z2zbase.h:398
+#: ui_z2zbase.h:387
 #, fuzzy
 msgid "Total Tickets"
 msgstr "Totals:"
 
-#: ui_z2zbase.h:399
+#: ui_z2zbase.h:388
 #, fuzzy
 msgid "Total Traspasable"
 msgstr "Total Haver:"
 
-#: ui_z2zbase.h:400
+#: ui_z2zbase.h:389
 msgid "Total aprox a Traspasar"
 msgstr "Total aprox a traspassar"
 
-#: ui_z2zbase.h:401
+#: ui_z2zbase.h:390
 msgid "Traspasar"
 msgstr ""
 
-#: ui_z2zbase.h:361
+#: ui_z2zbase.h:362
 msgid "Traspaso de Z"
 msgstr ""

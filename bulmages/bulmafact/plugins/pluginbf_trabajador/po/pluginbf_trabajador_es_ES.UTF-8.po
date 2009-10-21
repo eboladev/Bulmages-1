@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-05-16 14:54+0200\n"
+"POT-Creation-Date: 2009-10-21 10:23+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -16,11 +16,11 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: trabajadorview.cpp:223
+#: trabajadorview.cpp:224
 msgid "&No"
 msgstr "&No"
 
-#: trabajadorview.cpp:223
+#: trabajadorview.cpp:224
 msgid "&Si"
 msgstr "&Si"
 
@@ -28,87 +28,87 @@ msgstr "&Si"
 msgid "&Trabajadores"
 msgstr "&Trabajadores"
 
-#: ui_trabajadorbase.h:341
+#: ui_trabajadorbase.h:342
 msgid "Activo"
 msgstr "Activo"
 
-#: ui_trabajadorbase.h:345
+#: ui_trabajadorbase.h:346
 msgid "Apellidos:"
 msgstr "Apellidos:"
 
-#: ui_trabajadorbase.h:353 ui_trabajadorbase.h:358
+#: ui_trabajadorbase.h:353 ui_trabajadorbase.h:356
 msgid "Borrar trabajador"
 msgstr "Borrar trabajador"
 
-#: ui_trabajadorbase.h:346
+#: ui_trabajadorbase.h:347
 msgid "Cambiar imagen"
 msgstr "Cambiar imagen"
 
-#: trabajadorview.cpp:222
+#: trabajadorview.cpp:223
 msgid "Desea guardar los cambios?"
 msgstr "Desea guardar los cambios?"
 
-#: ui_trabajadorbase.h:343
+#: ui_trabajadorbase.h:344
 msgid "Direccion:"
 msgstr "Direccion:"
 
-#: ui_trabajadorbase.h:348
+#: ui_trabajadorbase.h:349
 msgid "E-mail:"
 msgstr "E-mail:"
 
-#: trabajadorview.cpp:278
+#: trabajadorview.cpp:279
 msgid "Error al borrar el Trabajador"
 msgstr "Error al borrar el Trabajador"
 
-#: trabajadorview.cpp:253
+#: trabajadorview.cpp:254
 msgid "Error al crear un nuevo Trabajador"
 msgstr "Error al crear un nuevo Trabajador"
 
-#: trabajadorview.cpp:204
+#: trabajadorview.cpp:205
 msgid "Error al guardar el trabajador"
 msgstr "Error al guardar el trabajador"
 
-#: ui_trabajadorbase.h:349
+#: ui_trabajadorbase.h:350
 msgid "General"
 msgstr "General"
 
-#: trabajadorview.cpp:221
+#: trabajadorview.cpp:222
 msgid "Guardar datos del trabajador"
 msgstr "Guardar datos del trabajador"
 
-#: ui_trabajadorbase.h:364 ui_trabajadorbase.h:369
+#: ui_trabajadorbase.h:360 ui_trabajadorbase.h:363
 msgid "Guardar trabajador"
 msgstr "Guardar trabajador"
 
-#: trabajadorview.cpp:294
+#: trabajadorview.cpp:295
 msgid "Imagenes (*.jpg)"
 msgstr "Imagenes (*.jpg)"
 
-#: ui_trabajadorbase.h:350
+#: ui_trabajadorbase.h:351
 msgid "Lista de trabajadores:"
 msgstr "Lista de trabajadores:"
 
-#: ui_trabajadorbase.h:342
+#: ui_trabajadorbase.h:343
 msgid "Nombre:"
 msgstr "Nombre:"
 
-#: ui_trabajadorbase.h:375 ui_trabajadorbase.h:380
+#: ui_trabajadorbase.h:367 ui_trabajadorbase.h:370
 msgid "Nuevo trabajador"
 msgstr "Nuevo trabajador"
 
-#: ui_trabajadorbase.h:344
+#: ui_trabajadorbase.h:345
 msgid "Numero de la Seguridad Social:"
 msgstr "Numero de la Seguridad Social:"
 
-#: trabajadorview.cpp:292
+#: trabajadorview.cpp:293
 msgid "Seleccione archivo"
 msgstr "Seleccione archivo"
 
-#: ui_trabajadorbase.h:347
+#: ui_trabajadorbase.h:348
 msgid "Telefono movil:"
 msgstr "Telefono movil:"
 
-#: ui_trabajadorbase.h:340
+#: ui_trabajadorbase.h:341
 msgid "Telefono:"
 msgstr "Telefono:"
 
@@ -117,6 +117,6 @@ msgid "Trabajador"
 msgstr "Trabajador"
 
 #: pluginbf_trabajador.cpp:84 pluginbf_trabajador.cpp:85
-#: ui_trabajadorbase.h:339
+#: ui_trabajadorbase.h:340
 msgid "Trabajadores"
 msgstr "Trabajadores"

@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-05-16 15:34+0200\n"
+"POT-Creation-Date: 2009-10-21 10:21+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,7 +18,7 @@ msgstr ""
 "#-#-#-#-#  bulmalib_ca_ES.UTF-8.po (PACKAGE VERSION)  #-#-#-#-#\n"
 "X-Generator: Translate Toolkit 1.1.1\n"
 
-#: listdescpedidoclienteview.cpp:42 listlinpedidoclienteview.cpp:55
+#: listlinpedidoclienteview.cpp:55 listdescpedidoclienteview.cpp:42
 #, fuzzy
 msgid "% Descuento"
 msgstr "Document:"
@@ -31,7 +31,7 @@ msgstr "% I.V.A."
 msgid "% Recargo E.Q."
 msgstr "% Recàrrec E.Q."
 
-#: ui_pedidoclientebase.h:708 ui_presupuestoclientebase.h:796
+#: ui_pedidoclientebase.h:691 ui_presupuestoclientebase.h:779
 #, fuzzy
 msgid "&Aceptar"
 msgstr ""
@@ -58,7 +58,7 @@ msgstr ""
 "#-#-#-#-#  - (PACKAGE VERSION)  #-#-#-#-#\n"
 "&Accepta"
 
-#: ui_pedidoclientebase.h:709 ui_presupuestoclientebase.h:797
+#: ui_pedidoclientebase.h:692 ui_presupuestoclientebase.h:780
 #, fuzzy
 msgid "&Cancelar"
 msgstr ""
@@ -67,7 +67,7 @@ msgstr ""
 "#-#-#-#-#  bulmalib_ca_ES.UTF-8.po (PACKAGE VERSION)  #-#-#-#-#\n"
 "&Cancel·lar"
 
-#: ui_pedidoclientebase.h:695
+#: ui_pedidoclientebase.h:678
 #, fuzzy
 msgid "&Comentarios"
 msgstr ""
@@ -76,48 +76,48 @@ msgstr ""
 "#-#-#-#-#  bulmacont_ca.po (PACKAGE VERSION)  #-#-#-#-#\n"
 "Comentaris"
 
-#: ui_pedidoclientebase.h:693 ui_presupuestoclientebase.h:781
+#: ui_pedidoclientebase.h:676 ui_presupuestoclientebase.h:764
 #, fuzzy
 msgid "&Detalle"
 msgstr "&Detalls"
 
-#: genpedqtoolbutton.cpp:152
+#: genpedqtoolbutton.cpp:151
 msgid "&No"
 msgstr "&No"
 
-#: pluginbf_clientepedido.cpp:106
+#: pluginbf_clientepedido.cpp:107
 msgid "&Nuevo pedido de cliente"
 msgstr "&Nova comanda de client"
 
-#: pluginbf_clientepedido.cpp:98
+#: pluginbf_clientepedido.cpp:99
 #, fuzzy
 msgid "&Pedidos de clientes"
 msgstr "Llistat d'assentaments"
 
-#: genpedqtoolbutton.cpp:152
+#: genpedqtoolbutton.cpp:151
 msgid "&Si"
 msgstr "&Sí"
 
-#: ui_pedidoclientebase.h:702 ui_pedidoclientebase.h:703
-#: ui_pedidoclientebase.h:704 ui_pedidoclientebase.h:705
-#: ui_pedidoclientebase.h:706 ui_pedidoclientebase.h:707
-#: ui_presupuestoclientebase.h:790 ui_presupuestoclientebase.h:791
-#: ui_presupuestoclientebase.h:792 ui_presupuestoclientebase.h:793
-#: ui_presupuestoclientebase.h:794 ui_presupuestoclientebase.h:795
+#: ui_pedidoclientebase.h:685 ui_pedidoclientebase.h:686
+#: ui_pedidoclientebase.h:687 ui_pedidoclientebase.h:688
+#: ui_pedidoclientebase.h:689 ui_pedidoclientebase.h:690
+#: ui_presupuestoclientebase.h:773 ui_presupuestoclientebase.h:774
+#: ui_presupuestoclientebase.h:775 ui_presupuestoclientebase.h:776
+#: ui_presupuestoclientebase.h:777 ui_presupuestoclientebase.h:778
 msgid "0.00"
 msgstr "0.00"
 
-#: ui_pedidosclientelistbase.h:455 ui_pedidosclientelistbase.h:460
-#: ui_presupuestoslistbase.h:437 ui_presupuestoslistbase.h:442
+#: ui_pedidosclientelistbase.h:431 ui_pedidosclientelistbase.h:434
+#: ui_presupuestoslistbase.h:411 ui_presupuestoslistbase.h:414
 msgid "Actualizar listado"
 msgstr "Actual·litza llistat"
 
-#: pedidoclienteview.cpp:61 pedidosclientelist.cpp:340
+#: pedidosclientelist.cpp:340 pedidoclienteview.cpp:61
 #, fuzzy
 msgid "Almacen"
 msgstr "<LI> Magatzem <B>"
 
-#: ui_pedidoclientebase.h:692 ui_presupuestoclientebase.h:780
+#: ui_pedidoclientebase.h:675 ui_presupuestoclientebase.h:763
 #, fuzzy
 msgid "Almacen:"
 msgstr "<LI> Magatzem <B>"
@@ -126,24 +126,24 @@ msgstr "<LI> Magatzem <B>"
 msgid "Base Imponible"
 msgstr "Base Imposable"
 
-#: ui_pedidoclientebase.h:697 ui_presupuestoclientebase.h:785
+#: ui_pedidoclientebase.h:680 ui_presupuestoclientebase.h:768
 #, fuzzy
 msgid "Base imponible:"
 msgstr "Empreses disponibles:"
 
-#: ui_pedidoclientebase.h:652 ui_pedidoclientebase.h:657
-#: ui_pedidosclientelistbase.h:407 ui_pedidosclientelistbase.h:412
+#: ui_pedidosclientelistbase.h:399 ui_pedidosclientelistbase.h:402
+#: ui_pedidoclientebase.h:646 ui_pedidoclientebase.h:649
 #, fuzzy
 msgid "Borrar pedido"
 msgstr "Esborrar"
 
-#: ui_presupuestoslistbase.h:391 ui_presupuestoslistbase.h:396
-#: ui_presupuestoclientebase.h:736 ui_presupuestoclientebase.h:741
+#: ui_presupuestoslistbase.h:381 ui_presupuestoslistbase.h:384
+#: ui_presupuestoclientebase.h:730 ui_presupuestoclientebase.h:733
 #, fuzzy
 msgid "Borrar presupuesto"
 msgstr "Tractant el pressupost"
 
-#: ui_pedidosclientelistbase.h:465 ui_presupuestoslistbase.h:447
+#: ui_pedidosclientelistbase.h:438 ui_presupuestoslistbase.h:418
 msgid "Buscar:"
 msgstr "Cerca:"
 
@@ -151,13 +151,13 @@ msgstr "Cerca:"
 msgid "Cantidad"
 msgstr "Quantitat"
 
-#: pedidoclienteview.cpp:60 pedidosclientelist.cpp:331
+#: pedidosclientelist.cpp:331 pedidoclienteview.cpp:60
 #, fuzzy
 msgid "Cliente"
 msgstr "Següent"
 
-#: pedidoclienteview.cpp:91 pedidosclientelist.cpp:52
-#: pedidosclientelist.cpp:84
+#: pedidosclientelist.cpp:52 pedidosclientelist.cpp:84
+#: pedidoclienteview.cpp:91
 #, fuzzy
 msgid "Cliente:"
 msgstr "Pendent:"
@@ -184,8 +184,8 @@ msgstr ""
 msgid "Concepto descuento"
 msgstr "Concepte comptable"
 
-#: ui_pedidosclientelistbase.h:443 ui_pedidosclientelistbase.h:448
-#: ui_presupuestoslistbase.h:426 ui_presupuestoslistbase.h:431
+#: ui_pedidosclientelistbase.h:423 ui_pedidosclientelistbase.h:426
+#: ui_presupuestoslistbase.h:404 ui_presupuestoslistbase.h:407
 msgid "Configurar listado"
 msgstr "Configura llistat"
 
@@ -194,42 +194,42 @@ msgstr "Configura llistat"
 msgid "Contacto"
 msgstr "Concepte"
 
-#: ui_pedidosclientelistbase.h:452
+#: ui_pedidosclientelistbase.h:429
 msgid "Ctrl+B"
 msgstr "Ctrl+B"
 
-#: ui_pedidosclientelistbase.h:416 ui_presupuestoslistbase.h:400
-#: ui_presupuestoclientebase.h:745
+#: ui_pedidosclientelistbase.h:405 ui_presupuestoslistbase.h:387
+#: ui_presupuestoclientebase.h:736
 msgid "Ctrl+D"
 msgstr "Ctrl+D"
 
-#: ui_pedidosclientelistbase.h:404 ui_presupuestoslistbase.h:388
+#: ui_pedidosclientelistbase.h:397 ui_presupuestoslistbase.h:379
 msgid "Ctrl+E"
 msgstr "Ctrl+E"
 
-#: ui_pedidosclientelistbase.h:440
+#: ui_pedidosclientelistbase.h:421
 msgid "Ctrl+F"
 msgstr "Ctrl+F"
 
-#: ui_presupuestoclientebase.h:770
+#: ui_presupuestoclientebase.h:753
 #, fuzzy
 msgid "Ctrl+G"
 msgstr "Ctrl+S"
 
-#: ui_pedidosclientelistbase.h:392 ui_presupuestoslistbase.h:376
+#: ui_pedidosclientelistbase.h:389 ui_presupuestoslistbase.h:371
 msgid "Ctrl+N"
 msgstr "Ctrl+N"
 
-#: ui_pedidosclientelistbase.h:428 ui_presupuestoslistbase.h:412
-#: ui_presupuestoclientebase.h:757
+#: ui_pedidosclientelistbase.h:413 ui_presupuestoslistbase.h:395
+#: ui_presupuestoclientebase.h:744
 msgid "Ctrl+P"
 msgstr "Ctrl+P"
 
-#: ui_presupuestoclientebase.h:733
+#: ui_presupuestoclientebase.h:728
 msgid "Ctrl+S"
 msgstr "Ctrl+S"
 
-#: ui_presupuestoclientebase.h:783
+#: ui_presupuestoclientebase.h:766
 #, fuzzy
 msgid "Datos &generales"
 msgstr "&Dades comptables"
@@ -239,31 +239,31 @@ msgstr "&Dades comptables"
 msgid "Debe seleccionar una linea"
 msgstr "Cal triar un compte"
 
-#: ui_pedidoclientebase.h:694 ui_presupuestoclientebase.h:782
+#: ui_pedidoclientebase.h:677 ui_presupuestoclientebase.h:765
 #, fuzzy
 msgid "Desc&uentos"
 msgstr "Document:"
 
-#: listlinpedidoclienteview.cpp:50 pedidosclientelist.cpp:336
+#: pedidosclientelist.cpp:336 listlinpedidoclienteview.cpp:50
 msgid "Descripcion"
 msgstr "Descripció"
 
-#: ui_pedidoclientebase.h:684 ui_presupuestoclientebase.h:771
+#: ui_pedidoclientebase.h:667 ui_presupuestoclientebase.h:754
 #, fuzzy
 msgid "Descripcion:"
 msgstr "Descripció"
 
-#: ui_pedidoclientebase.h:696 ui_presupuestoclientebase.h:784
+#: ui_pedidoclientebase.h:679 ui_presupuestoclientebase.h:767
 #, fuzzy
 msgid "Descuentos:"
 msgstr "Document:"
 
-#: ui_pedidosclientelistbase.h:395 ui_pedidosclientelistbase.h:400
+#: ui_pedidosclientelistbase.h:391 ui_pedidosclientelistbase.h:394
 #, fuzzy
 msgid "Editar pedido"
 msgstr "Imprimeix la comanda"
 
-#: ui_presupuestoslistbase.h:379 ui_presupuestoslistbase.h:384
+#: ui_presupuestoslistbase.h:373 ui_presupuestoslistbase.h:376
 #, fuzzy
 msgid "Editar presupuesto"
 msgstr "Tractant el pressupost"
@@ -283,50 +283,50 @@ msgstr "Tractant la comana del client"
 msgid "Error al crear el pedido cliente"
 msgstr "Tractant la comana del client"
 
-#: genpedqtoolbutton.cpp:218
+#: genpedqtoolbutton.cpp:220
 #, fuzzy
 msgid "Error inesperado"
 msgstr "inserit"
 
-#: genpedqtoolbutton.cpp:151
+#: genpedqtoolbutton.cpp:150
 msgid ""
 "Existe un pedidocliente a este cliente con la misma referencia que este "
 "pedido. Desea abrirlo para verificar?"
 msgstr ""
 
-#: ui_pedidosclientelistbase.h:464 ui_presupuestoslistbase.h:446
+#: ui_pedidosclientelistbase.h:437 ui_presupuestoslistbase.h:417
 msgid "F5"
 msgstr "F5"
 
-#: pedidoclienteview.cpp:64 pedidosclientelist.cpp:330
+#: pedidosclientelist.cpp:330 pedidoclienteview.cpp:64
 msgid "Fecha"
 msgstr "Data"
 
-#: ui_pedidoclientebase.h:688 ui_presupuestoclientebase.h:775
+#: ui_pedidoclientebase.h:671 ui_presupuestoclientebase.h:758
 #, fuzzy
 msgid "Fecha de creacion:"
 msgstr "Data de compra:"
 
-#: ui_presupuestoclientebase.h:776
+#: ui_presupuestoclientebase.h:759
 #, fuzzy
 msgid "Fecha de vencimiento:"
 msgstr "&Data de l'assentament:"
 
-#: ui_pedidosclientelistbase.h:378 ui_presupuestoslistbase.h:449
+#: ui_pedidosclientelistbase.h:379 ui_presupuestoslistbase.h:420
 msgid "Fecha final:"
 msgstr "Data final:"
 
-#: ui_pedidosclientelistbase.h:377 ui_presupuestoslistbase.h:448
+#: ui_pedidosclientelistbase.h:378 ui_presupuestoslistbase.h:419
 msgid "Fecha inicial:"
 msgstr "Data inicial:"
 
-#: ui_pedidosclientelistbase.h:431 ui_pedidosclientelistbase.h:436
-#: ui_presupuestoslistbase.h:415 ui_presupuestoslistbase.h:420
+#: ui_pedidosclientelistbase.h:415 ui_pedidosclientelistbase.h:418
+#: ui_presupuestoslistbase.h:397 ui_presupuestoslistbase.h:400
 #, fuzzy
 msgid "Filtrar pedidos"
 msgstr "Filtrar"
 
-#: ui_pedidoclientebase.h:690 ui_presupuestoclientebase.h:778
+#: ui_pedidoclientebase.h:673 ui_presupuestoclientebase.h:761
 msgid "Forma de pago:"
 msgstr "Forma de pagament:"
 
@@ -335,17 +335,17 @@ msgstr "Forma de pagament:"
 msgid "Forma pago"
 msgstr "<LI> Forma de pagament <B>"
 
-#: ui_pedidoclientebase.h:641 ui_pedidoclientebase.h:646
+#: ui_pedidoclientebase.h:639 ui_pedidoclientebase.h:642
 #, fuzzy
 msgid "Guardar pedido"
 msgstr "Desar"
 
-#: ui_presupuestoclientebase.h:724 ui_presupuestoclientebase.h:729
+#: ui_presupuestoclientebase.h:722 ui_presupuestoclientebase.h:725
 #, fuzzy
 msgid "Guardar presupuesto"
 msgstr "Tractant el pressupost"
 
-#: ui_pedidoclientebase.h:698 ui_presupuestoclientebase.h:786
+#: ui_pedidoclientebase.h:681 ui_presupuestoclientebase.h:769
 #, fuzzy
 msgid "I.R.P.F.:"
 msgstr "C.I.F.:"
@@ -398,17 +398,17 @@ msgstr "Identificador"
 msgid "Identificador presupuesto"
 msgstr "Tractant el pressupost"
 
-#: ui_pedidosclientelistbase.h:419 ui_pedidosclientelistbase.h:424
-#: ui_presupuestoslistbase.h:403 ui_presupuestoslistbase.h:408
+#: ui_pedidosclientelistbase.h:407 ui_pedidosclientelistbase.h:410
+#: ui_presupuestoslistbase.h:389 ui_presupuestoslistbase.h:392
 #, fuzzy
 msgid "Imprimir listado"
 msgstr "Imprimeix la comanda"
 
-#: ui_pedidoclientebase.h:663 ui_pedidoclientebase.h:668
+#: ui_pedidoclientebase.h:653 ui_pedidoclientebase.h:656
 msgid "Imprimir pedido"
 msgstr "Imprimeix la comanda"
 
-#: ui_presupuestoclientebase.h:748 ui_presupuestoclientebase.h:753
+#: ui_presupuestoclientebase.h:738 ui_presupuestoclientebase.h:741
 #, fuzzy
 msgid "Imprimir presupuesto"
 msgstr "Imprimeix la comanda"
@@ -418,20 +418,20 @@ msgstr "Imprimeix la comanda"
 msgid "Impuestos"
 msgstr "Imputació"
 
-#: ui_pedidoclientebase.h:699 ui_presupuestoclientebase.h:787
+#: ui_pedidoclientebase.h:682 ui_presupuestoclientebase.h:770
 #, fuzzy
 msgid "Impuestos:"
 msgstr "Imputació"
 
-#: ui_presupuestoclientebase.h:761 ui_presupuestoclientebase.h:766
+#: ui_presupuestoclientebase.h:747 ui_presupuestoclientebase.h:750
 msgid "Mostrar/Ocultar cabecera"
 msgstr "Mostrar/Ocultar capçalera"
 
-#: ui_pedidoclientebase.h:675 ui_pedidoclientebase.h:680
+#: ui_pedidoclientebase.h:661 ui_pedidoclientebase.h:664
 msgid "Mostrar/ocultar cabecera"
 msgstr "Mostrar/ocultar capçalera"
 
-#: ui_pedidosclientelistbase.h:379 ui_presupuestoslistbase.h:450
+#: ui_pedidosclientelistbase.h:380 ui_presupuestoslistbase.h:421
 #, fuzzy
 msgid "Mostrar:"
 msgstr "Mostrar assentament"
@@ -446,32 +446,32 @@ msgstr "Tipus de balanç"
 msgid "Nombre articulo"
 msgstr "Nom d'usuari:"
 
-#: ui_pedidosclientelistbase.h:383 ui_pedidosclientelistbase.h:388
+#: ui_pedidosclientelistbase.h:383 ui_pedidosclientelistbase.h:386
 #, fuzzy
 msgid "Nuevo pedido"
 msgstr "Nou assentament"
 
-#: pluginbf_clientepedido.cpp:108 pluginbf_clientepedido.cpp:109
-#: ui_pedidoclientebase.h:638
+#: pluginbf_clientepedido.cpp:109 pluginbf_clientepedido.cpp:110
+#: ui_pedidoclientebase.h:637
 #, fuzzy
 msgid "Nuevo pedido de cliente"
 msgstr "Tractant la comana del client"
 
-#: ui_presupuestoslistbase.h:367 ui_presupuestoslistbase.h:372
+#: ui_presupuestoslistbase.h:365 ui_presupuestoslistbase.h:368
 #, fuzzy
 msgid "Nuevo presupuesto"
 msgstr "Tractant el pressupost"
 
-#: ui_presupuestoclientebase.h:721
+#: ui_presupuestoclientebase.h:720
 msgid "Nuevo presupuesto a cliente"
 msgstr "Nou pressupost a client"
 
-#: ui_pedidoclientebase.h:685
+#: ui_pedidoclientebase.h:668
 #, fuzzy
 msgid "Numero de pedido:"
 msgstr "Nombre de quotes"
 
-#: ui_presupuestoclientebase.h:772
+#: ui_presupuestoclientebase.h:755
 #, fuzzy
 msgid "Numero de presupuesto:"
 msgstr "Tractant el pressupost"
@@ -494,13 +494,13 @@ msgstr "Comanda"
 msgid "Pedido Cliente"
 msgstr "<HR><B>Tractant comana del client"
 
-#: genpedqtoolbutton.cpp:150
+#: genpedqtoolbutton.cpp:149
 #, fuzzy
 msgid "Pedido ya existe"
 msgstr "Comanda"
 
-#: pluginbf_clientepedido.cpp:100 pluginbf_clientepedido.cpp:101
-#: pedidosclientelist.cpp:241 ui_pedidosclientelistbase.h:376
+#: pedidosclientelist.cpp:241 pluginbf_clientepedido.cpp:101
+#: pluginbf_clientepedido.cpp:102 ui_pedidosclientelistbase.h:377
 #, fuzzy
 msgid "Pedidos de clientes"
 msgstr "Llistat d'assentaments"
@@ -518,7 +518,7 @@ msgstr "Comandes processades"
 msgid "Persona de contacto"
 msgstr "Nombre de quotes"
 
-#: ui_pedidoclientebase.h:689 ui_presupuestoclientebase.h:777
+#: ui_pedidoclientebase.h:672 ui_presupuestoclientebase.h:760
 #, fuzzy
 msgid "Persona de contacto:"
 msgstr "Compte d'actiu:"
@@ -528,15 +528,15 @@ msgstr "Compte d'actiu:"
 msgid "Precio de venta s/IVA"
 msgstr "Extracte de comptes"
 
-#: ui_presupuestoslistbase.h:363
+#: ui_presupuestoslistbase.h:362
 msgid "Presupuestos a clientes"
 msgstr "Pressuposts a clients"
 
-#: ui_presupuestoclientebase.h:773
+#: ui_presupuestoclientebase.h:756
 msgid "Pro&cesado"
 msgstr "Pro&cessat"
 
-#: pedidoclienteview.cpp:70 ui_pedidoclientebase.h:686
+#: pedidoclienteview.cpp:70 ui_pedidoclientebase.h:669
 #, fuzzy
 msgid "Procesado"
 msgstr "Propietari"
@@ -545,29 +545,29 @@ msgstr "Propietari"
 msgid "Punteo"
 msgstr ""
 
-#: ui_pedidoclientebase.h:700 ui_presupuestoclientebase.h:788
+#: ui_pedidoclientebase.h:683 ui_presupuestoclientebase.h:771
 #, fuzzy
 msgid "R.E.:"
 msgstr "C.P.:"
 
-#: pedidoclienteview.cpp:71 pedidosclientelist.cpp:332
+#: pedidosclientelist.cpp:332 pedidoclienteview.cpp:71
 msgid "Referencia"
 msgstr "Referència"
 
-#: ui_pedidoclientebase.h:672 ui_presupuestoclientebase.h:758
+#: ui_pedidoclientebase.h:659 ui_presupuestoclientebase.h:745
 msgid "Referencia:"
 msgstr "Referència:"
 
-#: pedidoclienteview.cpp:68 pedidosclientelist.cpp:338
+#: pedidosclientelist.cpp:338 pedidoclienteview.cpp:68
 msgid "Telefono"
 msgstr "Telèfon"
 
-#: ui_pedidoclientebase.h:691 ui_presupuestoclientebase.h:779
+#: ui_pedidoclientebase.h:674 ui_presupuestoclientebase.h:762
 #, fuzzy
 msgid "Telefono de contacto:"
 msgstr "Telèfon del proveïdor"
 
-#: genpedqtoolbutton.cpp:135
+#: genpedqtoolbutton.cpp:134
 #, fuzzy
 msgid "Tiene que seleccionar un cliente"
 msgstr "Ha de seleccionar un element"
@@ -581,8 +581,8 @@ msgstr "Totes les comandes"
 msgid "Total"
 msgstr "Totals:"
 
-#: ui_pedidoclientebase.h:701 ui_pedidosclientelistbase.h:466
-#: ui_presupuestoslistbase.h:451 ui_presupuestoclientebase.h:789
+#: ui_pedidosclientelistbase.h:439 ui_pedidoclientebase.h:684
+#: ui_presupuestoslistbase.h:422 ui_presupuestoclientebase.h:772
 #, fuzzy
 msgid "Total:"
 msgstr "Totals:"
@@ -591,7 +591,7 @@ msgstr "Totals:"
 msgid "Trabajador"
 msgstr "Treballador"
 
-#: ui_pedidoclientebase.h:687 ui_presupuestoclientebase.h:774
+#: ui_pedidoclientebase.h:670 ui_presupuestoclientebase.h:757
 msgid "Trabajador:"
 msgstr "Treballador:"
 

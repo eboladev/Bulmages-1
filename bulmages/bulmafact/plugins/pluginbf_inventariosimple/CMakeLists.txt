@@ -27,6 +27,8 @@ include_directories(
 	${QT_QTASSISTANT_INCLUDE_DIR}
 	${CMAKE_CURRENT_BINARY_DIR}
 	${CMAKE_CURRENT_SOURCE_DIR}
+   ${CMAKE_BINARY_DIR}/bulmafact/plugins/pluginbf_actividad/
+   ${CMAKE_SOURCE_DIR}/bulmafact/plugins/pluginbf_actividad/
 	${CMAKE_BINARY_DIR}/bulmalib/src/
 	${CMAKE_SOURCE_DIR}/bulmalib/src/
 	${CMAKE_BINARY_DIR}/bulmafact/src/
@@ -86,7 +88,7 @@ foreach(dfile ${docs})
    install (FILES ${dfile} DESTINATION share/bulmages/bulmafact-plugins/ RENAME ${dfile}.${plugin})
 endforeach(dfile in ${docs})
 
-add_dependencies(${plugin} bulmafact bulmalib pluginbf_articulo)
+add_dependencies(${plugin} bulmafact bulmalib pluginbf_articulo pluginbf_actividad)
 install(DIRECTORY dbmodels/ 
 		DESTINATION share/bulmages/dbmodels/plugins
 		PATTERN ".svn" EXCLUDE)

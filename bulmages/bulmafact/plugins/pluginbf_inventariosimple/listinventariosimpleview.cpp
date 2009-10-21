@@ -51,6 +51,7 @@ ListInventarioSimpleView::ListInventarioSimpleView ( BfCompany *comp, QWidget *p
     setAttribute ( Qt::WA_DeleteOnClose );
     setupUi ( this );
     mui_listado->setMainCompany ( comp );
+    mui_listado->inicializar();
     mui_listado->cargar();
     meteWindow ( windowTitle(), this, FALSE );
     
@@ -68,7 +69,7 @@ void ListInventarioSimpleView::on_mui_aceptar_released()
         mui_listado->guardar();
         close();
     } catch ( ... ) {
-        mensajeInfo ( _ ( "Error al guardar las cuotas" ) );
+        mensajeInfo ( _ ( "Error al guardar el inventario" ) );
     } // end try
     
     _depura ( "END ListInventarioSimpleView::on_mui_aceptar_released", 0 );
@@ -92,12 +93,13 @@ ListInventarioSimpleSubForm::ListInventarioSimpleSubForm ( QWidget *parent ) : B
 {
     _depura ( "ListInventarioSimpleSubForm::ListInventarioSimpleSubForm", 0 );
     
-    setDbTableName ( "cuotaporalumno" );
-    setDbFieldId ( "numalumnoscuotaporalumno" );
-    addSubFormHeader ( "numalumnoscuotaporalumno", BlDbField::DbInt, BlDbField::DbPrimaryKey, BlSubFormHeader::DbNone, _ ( "Número de alumnos" ) );
-    addSubFormHeader ( "cuotacuotaporalumno", BlDbField::DbNumeric, BlDbField::DbNotNull, BlSubFormHeader::DbNone, _ ( "Cuota" ) );
+    setDbTableName ( "inventariosimple" );
+    setDbFieldId ( "idinventariosimple" );
+    addSubFormHeader ( "idinventariosimple", BlDbField::DbInt, BlDbField::DbPrimaryKey, BlSubFormHeader::DbNone, _ ( "Id Inventario" ) );
+    addSubFormHeader ( "nominventariosimple", BlDbField::DbVarChar, BlDbField::DbNotNull, BlSubFormHeader::DbNone, _ ( "Nombre" ) );
+    addSubFormHeader ( "stockinventariosimple", BlDbField::DbInt, BlDbField::DbNotNull, BlSubFormHeader::DbNone, _ ( "Stock" ) );
     setInsert ( TRUE );
-    
+    setOrdenEnabled ( TRUE );
     _depura ( "END ListInventarioSimpleSubForm::ListInventarioSimpleSubForm", 0 );
 }
 
@@ -108,7 +110,7 @@ void ListInventarioSimpleSubForm::cargar()
 {
     _depura ( "ListInventarioSimpleSubForm::cargar", 0 );
     
-    BlSubForm::cargar ( "SELECT * FROM cuotaporalumno" );
+    BlSubForm::cargar ( "SELECT * FROM inventariosimple" );
     
     _depura ( "END ListInventarioSimpleSubForm::cargar", 0 );
 }

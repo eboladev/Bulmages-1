@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-05-16 14:33+0200\n"
+"POT-Creation-Date: 2009-10-21 10:25+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -15,18 +15,18 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: pluginbl_embed.cpp:134
+#: pluginbl_embed.cpp:135
 msgid "&Dock Aplicacion"
 msgstr "&Dock Aplicación"
 
-#: pluginbl_embed.cpp:139
+#: pluginbl_embed.cpp:140
 msgid "&Embeber Aplicacion"
 msgstr "&Embeber Aplicación"
 
-#: pluginbl_embed.cpp:135 pluginbl_embed.cpp:136
+#: pluginbl_embed.cpp:136 pluginbl_embed.cpp:137
 msgid "Dockear Aplicacion"
 msgstr "Dockear Aplicación"
 
-#: pluginbl_embed.cpp:140 pluginbl_embed.cpp:141
+#: pluginbl_embed.cpp:141 pluginbl_embed.cpp:142
 msgid "Embeber Aplicacion"
 msgstr "Embeber Aplicación"

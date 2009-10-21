@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-05-16 14:32+0200\n"
+"POT-Creation-Date: 2009-10-21 10:25+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -114,11 +114,11 @@ msgstr ""
 "#-#-#-#-#  pluginabrevs.pot (PACKAGE VERSION)  #-#-#-#-#\n"
 "#-#-#-#-#  bulmages_suite.pot (PACKAGE VERSION)  #-#-#-#-#\n"
 
-#: ui_archivobase.h:101
+#: ui_archivobase.h:103
 msgid "..."
 msgstr "..."
 
-#: ui_archivobase.h:102
+#: ui_archivobase.h:104
 msgid "Aceptar"
 msgstr "Aceptar"
 
@@ -126,11 +126,11 @@ msgstr "Aceptar"
 msgid "All files (*)"
 msgstr "Todos los ficheros (*)"
 
-#: ui_archivobase.h:100
+#: ui_archivobase.h:102
 msgid "Archivo"
 msgstr "Archivo"
 
-#: ui_archivobase.h:103
+#: ui_archivobase.h:105
 msgid "Cancelar"
 msgstr "Cancelar"
 
@@ -138,7 +138,7 @@ msgstr "Cancelar"
 msgid "Error al crear la ventana de importacion"
 msgstr "Error al crear la ventana de importacion"
 
-#: ui_archivobase.h:99
+#: ui_archivobase.h:101
 msgid "Importar CSV"
 msgstr "Importar CSV"
 

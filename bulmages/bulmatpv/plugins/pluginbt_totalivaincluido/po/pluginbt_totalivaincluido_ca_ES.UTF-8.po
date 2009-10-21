@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-05-16 15:43+0200\n"
+"POT-Creation-Date: 2009-10-21 10:22+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,24 +18,28 @@ msgstr ""
 "#-#-#-#-#  bulmalib_ca_ES.UTF-8.po (PACKAGE VERSION)  #-#-#-#-#\n"
 "X-Generator: Translate Toolkit 1.1.1\n"
 
-#: ui_totalbase.h:109
+#: ui_totalbase.h:130
 msgid "0.00"
 msgstr "0.00"
 
-#: ui_totalbase.h:110
+#: ui_totalbase.h:131
 msgid "ABRIR CAJON"
 msgstr "OBRE CALAIX"
 
-#: ui_totalbase.h:112
+#: ui_totalbase.h:133
 msgid "COBRAR"
 msgstr ""
 
-#: ui_totalbase.h:108
+#: ui_totalbase.h:129
 msgid "Form"
 msgstr "Form"
 
-#: ui_totalbase.h:111
+#: ui_totalbase.h:132
 msgid "IMPRIMIR TICKET"
+msgstr ""
+
+#: ui_totalbase.h:134
+msgid "Imprimir ticket al cobrar"
 msgstr ""
 
 #: plugintotalivainc.cpp:52

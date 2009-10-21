@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-10-20 14:02+0200\n"
+"POT-Creation-Date: 2009-10-21 10:50+0200\n"
 "PO-Revision-Date: 2009-10-20 14:02+0200\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -17,14 +17,46 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: pluginbf_inventariosimple.cpp:76
+#: ui_listinventariosimplebase.h:119
+msgid "&Aceptar"
+msgstr "&Accepta"
+
+#: pluginbf_inventariosimple.cpp:77
 msgid "&Articulos"
 msgstr "&Articles"
 
-#: pluginbf_inventariosimple.cpp:80
+#: ui_listinventariosimplebase.h:120
+msgid "&Cancelar"
+msgstr "&Cancel·la"
+
+#: pluginbf_inventariosimple.cpp:81
 msgid "&Inventarios"
 msgstr "&Inventaris"
 
-#: pluginbf_inventariosimple.cpp:81 pluginbf_inventariosimple.cpp:82
+#: listinventariosimpleview.cpp:71
+msgid "Error al guardar las cuotas"
+msgstr ""
+
+#: listinventariosimpleview.cpp:97
+msgid "Id Inventario"
+msgstr ""
+
+#: ui_listinventariosimplebase.h:118
+msgid "Inventario Simple"
+msgstr ""
+
+#: listinventariosimpleview.cpp:49
+msgid "InventarioSimple"
+msgstr ""
+
+#: pluginbf_inventariosimple.cpp:82 pluginbf_inventariosimple.cpp:83
 msgid "Inventarios"
 msgstr "Inventaris"
+
+#: listinventariosimpleview.cpp:98
+msgid "Nombre"
+msgstr "Nom"
+
+#: listinventariosimpleview.cpp:99
+msgid "Stock"
+msgstr "estoc"

@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-05-16 14:44+0200\n"
+"POT-Creation-Date: 2009-10-21 10:25+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,11 +18,11 @@ msgstr ""
 "#-#-#-#-#  bulmalib_ca_ES.UTF-8.po (PACKAGE VERSION)  #-#-#-#-#\n"
 "X-Generator: Translate Toolkit 1.1.1\n"
 
-#: ui_proyectobase.h:281
+#: ui_proyectobase.h:270
 msgid "&Aceptar"
 msgstr "&Accepta"
 
-#: ui_proyectobase.h:282
+#: ui_proyectobase.h:271
 msgid "&Cancelar"
 msgstr "&Cancel·la"
 
@@ -40,13 +40,13 @@ msgstr ""
 "#-#-#-#-#  bulmalib_ca_ES.UTF-8.po (PACKAGE VERSION)  #-#-#-#-#\n"
 "Arxiu"
 
-#: ui_listproyectosbase.h:150 ui_listproyectosbase.h:155
-#: ui_listproyectosbase.h:162 ui_listproyectosbase.h:167
+#: ui_listproyectosbase.h:146 ui_listproyectosbase.h:149
+#: ui_listproyectosbase.h:154 ui_listproyectosbase.h:157
 msgid "Borrar amortizacion"
 msgstr "Esborra amortizació"
 
-#: ui_proyectobase.h:256 ui_proyectobase.h:261 ui_proyectobase.h:268
-#: ui_proyectobase.h:273
+#: ui_proyectobase.h:252 ui_proyectobase.h:255 ui_proyectobase.h:260
+#: ui_proyectobase.h:263
 #, fuzzy
 msgid "Borrar proyecto"
 msgstr "Esborra professor"
@@ -74,15 +74,15 @@ msgstr ""
 "#-#-#-#-#  bulmacont_ca.po (PACKAGE VERSION)  #-#-#-#-#\n"
 "Comentaris"
 
-#: ui_listproyectosbase.h:159 ui_proyectobase.h:265 ui_proyectobase.h:277
+#: ui_proyectobase.h:258 ui_proyectobase.h:266 ui_listproyectosbase.h:152
 msgid "Ctrl+D"
 msgstr "Ctrl+D"
 
-#: ui_listproyectosbase.h:147
+#: ui_listproyectosbase.h:144
 msgid "Ctrl+N"
 msgstr "Ctrl+N"
 
-#: ui_proyectobase.h:253
+#: ui_proyectobase.h:250
 msgid "Ctrl+S"
 msgstr "Ctrl+S"
 
@@ -121,7 +121,7 @@ msgstr "Error en la càrrega de l'amortizació"
 msgid "Error al crear el almacen"
 msgstr "Error en la càrrega de l'amortizació"
 
-#: ui_listproyectosbase.h:171
+#: ui_listproyectosbase.h:160
 msgid "F5"
 msgstr "F5"
 
@@ -129,15 +129,15 @@ msgstr "F5"
 msgid "Fecha"
 msgstr "Data"
 
-#: ui_proyectobase.h:279
+#: ui_proyectobase.h:268
 msgid "Gastos"
 msgstr ""
 
-#: ui_proyectobase.h:278
+#: ui_proyectobase.h:267
 msgid "General"
 msgstr "General"
 
-#: ui_proyectobase.h:244 ui_proyectobase.h:249
+#: ui_proyectobase.h:244 ui_proyectobase.h:247
 #, fuzzy
 msgid "Guardar Proyecto"
 msgstr "Desa empresa"
@@ -183,12 +183,12 @@ msgstr "Id Propietari"
 msgid "Identificador"
 msgstr "Identificador"
 
-#: ui_proyectobase.h:280
+#: ui_proyectobase.h:269
 #, fuzzy
 msgid "Ingresos"
 msgstr "Inc registre"
 
-#: ui_listproyectosbase.h:135
+#: ui_listproyectosbase.h:136
 #, fuzzy
 msgid "Listado de Proyectos"
 msgstr "<HR><B>Trotant el proveïdor"
@@ -202,12 +202,12 @@ msgstr "<HR><B>Tractant el pressupost"
 msgid "Nombre"
 msgstr "Nom"
 
-#: ui_listproyectosbase.h:138 ui_listproyectosbase.h:143
+#: ui_listproyectosbase.h:138 ui_listproyectosbase.h:141
 #, fuzzy
 msgid "Nueva amortizacion"
 msgstr "Id compte d'amortizació"
 
-#: ui_proyectobase.h:240
+#: ui_proyectobase.h:241
 #, fuzzy
 msgid "Nuevo proyecto"
 msgstr "Nova empresa"

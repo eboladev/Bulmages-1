@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-05-16 15:28+0200\n"
+"POT-Creation-Date: 2009-10-21 10:24+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -20,7 +20,7 @@ msgstr ""
 
 #: pluginbf_debug.cpp:94
 msgid "Activa/desactiva el modo de depuracion"
-msgstr ""
+msgstr "Activa/desactiva el mode de depuració"
 
 #: pluginbf_debug.cpp:95
 msgid ""

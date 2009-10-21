@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-05-16 15:34+0200\n"
+"POT-Creation-Date: 2009-10-21 10:26+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,7 +18,7 @@ msgstr ""
 "#-#-#-#-#  bulmalib_ca_ES.UTF-8.po (PACKAGE VERSION)  #-#-#-#-#\n"
 "X-Generator: Translate Toolkit 1.1.1\n"
 
-#: ui_pagobase.h:341
+#: ui_pagobase.h:332
 #, fuzzy
 msgid "&Aceptar"
 msgstr ""
@@ -45,7 +45,7 @@ msgstr ""
 "#-#-#-#-#  - (PACKAGE VERSION)  #-#-#-#-#\n"
 "&Accepta"
 
-#: ui_pagobase.h:342
+#: ui_pagobase.h:333
 #, fuzzy
 msgid "&Cancelar"
 msgstr ""
@@ -64,7 +64,7 @@ msgstr "Telèfon del proveïdor"
 msgid "&Pagos a proveedores"
 msgstr "<HR><B>Trotant el proveïdor"
 
-#: ui_pagoslistbase.h:446 ui_pagoslistbase.h:451
+#: ui_pagoslistbase.h:420 ui_pagoslistbase.h:423
 msgid "Actualizar listado"
 msgstr "Actual·litza llistat"
 
@@ -72,23 +72,23 @@ msgstr "Actual·litza llistat"
 msgid "Apellidos trabajador"
 msgstr "Cognoms del treballador"
 
-#: pagoview.cpp:68 pagoslist.cpp:254
+#: pagoslist.cpp:254 pagoview.cpp:68
 #, fuzzy
 msgid "Banco"
 msgstr "Balanç"
 
-#: ui_pagoslistbase.h:372 ui_pagobase.h:340
+#: ui_pagobase.h:331 ui_pagoslistbase.h:371
 #, fuzzy
 msgid "Banco:"
 msgstr "Balanç"
 
-#: ui_pagoslistbase.h:402 ui_pagoslistbase.h:407 ui_pagobase.h:325
-#: ui_pagobase.h:330
+#: ui_pagobase.h:319 ui_pagobase.h:322 ui_pagoslistbase.h:392
+#: ui_pagoslistbase.h:395
 #, fuzzy
 msgid "Borrar pago"
 msgstr "Esborrar"
 
-#: ui_pagoslistbase.h:455
+#: ui_pagoslistbase.h:426
 msgid "Buscar:"
 msgstr "Cerca:"
 
@@ -97,7 +97,7 @@ msgstr "Cerca:"
 msgid "C.I.F. proveedor"
 msgstr "NIF del proveïdor"
 
-#: pagoview.cpp:66 pagoslist.cpp:253
+#: pagoslist.cpp:253 pagoview.cpp:66
 msgid "Cantidad"
 msgstr "Quantitat"
 
@@ -111,7 +111,7 @@ msgstr "Comentaris de l'assentament"
 msgid "Comentario pago"
 msgstr "Comentari"
 
-#: ui_pagoslistbase.h:435 ui_pagoslistbase.h:440
+#: ui_pagoslistbase.h:413 ui_pagoslistbase.h:416
 msgid "Configurar listado"
 msgstr "Configura llistat"
 
@@ -120,12 +120,12 @@ msgstr "Configura llistat"
 msgid "Debe seleccionar una linea"
 msgstr "Cal triar un compte"
 
-#: ui_pagobase.h:337
+#: ui_pagobase.h:328
 #, fuzzy
 msgid "Descripcion del pago:"
 msgstr "Descripció de l'assentament"
 
-#: ui_pagoslistbase.h:391 ui_pagoslistbase.h:396
+#: ui_pagoslistbase.h:385 ui_pagoslistbase.h:388
 #, fuzzy
 msgid "Editar pago"
 msgstr ""
@@ -149,40 +149,40 @@ msgstr "Esborra forma de pagament"
 msgid "Error al crear el pago"
 msgstr "Esborra forma de pagament"
 
-#: pagoview.cpp:64 pagoslist.cpp:252
+#: pagoslist.cpp:252 pagoview.cpp:64
 #, fuzzy
 msgid "Fecha de pago"
 msgstr "<LI> Forma de pagament <B>"
 
-#: ui_pagobase.h:335
+#: ui_pagobase.h:326
 #, fuzzy
 msgid "Fecha de pago:"
 msgstr "Data de compra:"
 
-#: ui_pagoslistbase.h:375
+#: ui_pagoslistbase.h:374
 msgid "Fecha final:"
 msgstr "Data final:"
 
-#: ui_pagoslistbase.h:376
+#: ui_pagoslistbase.h:375
 msgid "Fecha inicial:"
 msgstr "Data inicial:"
 
-#: ui_pagoslistbase.h:424 ui_pagoslistbase.h:429
+#: ui_pagoslistbase.h:406 ui_pagoslistbase.h:409
 #, fuzzy
 msgid "Filtrar pagos"
 msgstr "Filtrar"
 
-#: ui_pagobase.h:314 ui_pagobase.h:319
+#: ui_pagobase.h:312 ui_pagobase.h:315
 #, fuzzy
 msgid "Guardar pago"
 msgstr "Desar"
 
-#: pagoview.cpp:61 pagoslist.cpp:246
+#: pagoslist.cpp:246 pagoview.cpp:61
 #, fuzzy
 msgid "Id pago"
 msgstr "<LI> Forma de pagament <B>"
 
-#: pagoview.cpp:62 pagoslist.cpp:247
+#: pagoslist.cpp:247 pagoview.cpp:62
 #, fuzzy
 msgid "Id proveedor"
 msgstr "NIF del proveïdor"
@@ -192,7 +192,7 @@ msgstr "NIF del proveïdor"
 msgid "Id trabajador"
 msgstr "Id esborrany"
 
-#: ui_pagoslistbase.h:413 ui_pagoslistbase.h:418
+#: ui_pagoslistbase.h:399 ui_pagoslistbase.h:402
 #, fuzzy
 msgid "Imprimir listado"
 msgstr "Imprimeix la comanda"
@@ -207,13 +207,13 @@ msgstr "Nom del proveïdor"
 msgid "Nombre proveedor"
 msgstr "Nom del proveïdor"
 
-#: ui_pagoslistbase.h:380 ui_pagoslistbase.h:385
+#: ui_pagoslistbase.h:378 ui_pagoslistbase.h:381
 #, fuzzy
 msgid "Nuevo pago"
 msgstr "Nou assentament"
 
 #: pluginbf_proveedorpago.cpp:106 pluginbf_proveedorpago.cpp:107
-#: ui_pagobase.h:310
+#: ui_pagobase.h:309
 #, fuzzy
 msgid "Nuevo pago a proveedor"
 msgstr "Telèfon del proveïdor"
@@ -223,13 +223,13 @@ msgstr "Telèfon del proveïdor"
 msgid "Pago"
 msgstr "Pàgina"
 
-#: pluginbf_proveedorpago.cpp:98 pluginbf_proveedorpago.cpp:99
-#: pagoslist.cpp:187 ui_pagoslistbase.h:371
+#: pagoslist.cpp:187 pluginbf_proveedorpago.cpp:98
+#: pluginbf_proveedorpago.cpp:99 ui_pagoslistbase.h:370
 #, fuzzy
 msgid "Pagos a proveedores"
 msgstr "<HR><B>Trotant el proveïdor"
 
-#: ui_pagoslistbase.h:374
+#: ui_pagoslistbase.h:373
 msgid "Pagos efectivos"
 msgstr ""
 
@@ -242,24 +242,24 @@ msgstr "Nova forma de pagament"
 msgid "Prevision pago"
 msgstr "Previsió de pagament"
 
-#: ui_pagoslistbase.h:373
+#: ui_pagoslistbase.h:372
 msgid "Previsiones de Pago"
 msgstr "Previsions de Pagament"
 
-#: pagoview.cpp:71 pagoslist.cpp:49 pagoslist.cpp:74
+#: pagoslist.cpp:49 pagoslist.cpp:74 pagoview.cpp:71
 msgid "Proveedor:"
 msgstr "Proveïdor:"
 
-#: ui_pagobase.h:336
+#: ui_pagobase.h:327
 msgid "Provision de fondos"
 msgstr "Provisió de fons"
 
-#: pagoview.cpp:65 pagoslist.cpp:255
+#: pagoslist.cpp:255 pagoview.cpp:65
 #, fuzzy
 msgid "Referencia de pago"
 msgstr "Nova forma de pagament"
 
-#: ui_pagobase.h:334
+#: ui_pagobase.h:325
 msgid "Referencia:"
 msgstr "Referència:"
 
@@ -268,12 +268,12 @@ msgstr "Referència:"
 msgid "Telefono proveedor"
 msgstr "Telèfon del proveïdor"
 
-#: ui_pagobase.h:338
+#: ui_pagobase.h:329
 #, fuzzy
 msgid "Total pago:"
 msgstr "Total pàgines:"
 
-#: ui_pagoslistbase.h:456
+#: ui_pagoslistbase.h:427
 #, fuzzy
 msgid "Total:"
 msgstr "Totals:"

@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-05-16 14:03+0200\n"
+"POT-Creation-Date: 2009-10-21 10:22+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,39 +18,39 @@ msgstr ""
 "#-#-#-#-#  bulmalib_ca_ES.UTF-8.po (PACKAGE VERSION)  #-#-#-#-#\n"
 "X-Generator: Translate Toolkit 1.1.1\n"
 
-#: ui_abrevsbase.h:97
+#: ui_abrevsbase.h:98
 msgid "APARCAR"
-msgstr ""
+msgstr "APARCAR"
 
-#: abrevs.cpp:101
+#: abrevs.cpp:108
 msgid "Asigne un nombre al ticket antes de aparcarlo."
 msgstr "Assigna un nombre al ticket abans d'aparcar-lo."
 
-#: ui_abrevsbase.h:96
+#: ui_abrevsbase.h:97
 msgid "CLIENTE"
 msgstr "CLIENT"
 
-#: abrevs.cpp:107
+#: abrevs.cpp:114
 #, fuzzy
 msgid "El ticket esta vacio. No se puede aparcar."
 msgstr "&No."
 
-#: ui_trabajadoresbase.h:70 ui_abrevsbase.h:93 ui_ticketsbase.h:57
+#: ui_trabajadoresbase.h:71 ui_abrevsbase.h:94 ui_ticketsbase.h:58
 msgid "Form"
 msgstr "Form"
 
-#: ui_abrevsbase.h:98
+#: ui_abrevsbase.h:99
 msgid "RECUPERAR"
 msgstr ""
 
-#: ui_abrevsbase.h:94
+#: ui_abrevsbase.h:95
 msgid "TECLADO"
 msgstr ""
 
-#: ui_abrevsbase.h:95
+#: ui_abrevsbase.h:96
 msgid "USUARIO"
 msgstr ""
 
-#: abrevs.cpp:117
+#: abrevs.cpp:124
 msgid "Ya existe un ticket aparcado con el mismo nombre."
 msgstr ""

@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-05-16 15:21+0200\n"
+"POT-Creation-Date: 2009-10-21 10:25+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,54 +18,54 @@ msgstr ""
 "#-#-#-#-#  bulmalib_ca_ES.UTF-8.po (PACKAGE VERSION)  #-#-#-#-#\n"
 "X-Generator: Translate Toolkit 1.1.1\n"
 
-#: ui_promediobase.h:296 ui_promediobase.h:311
+#: ui_promediobase.h:297 ui_promediobase.h:312
 #, fuzzy
 msgid "Cantidad Media"
 msgstr "Quantitat"
 
-#: ui_promediobase.h:298 ui_promediobase.h:308
+#: ui_promediobase.h:299 ui_promediobase.h:309
 #, fuzzy
 msgid "Cantidad Menor"
 msgstr "Quantitat"
 
-#: ui_promediobase.h:297 ui_promediobase.h:305
+#: ui_promediobase.h:298 ui_promediobase.h:306
 #, fuzzy
 msgid "Cantidad mayor"
 msgstr "Quantitat"
 
-#: ui_promediobase.h:294
+#: ui_promediobase.h:295
 msgid "Compras"
 msgstr "Compres"
 
-#: ui_promediobase.h:301 ui_promediobase.h:309
+#: ui_promediobase.h:302 ui_promediobase.h:310
 #, fuzzy
 msgid "Precio Mayor"
 msgstr "Adreça:"
 
-#: ui_promediobase.h:300 ui_promediobase.h:306
+#: ui_promediobase.h:301 ui_promediobase.h:307
 #, fuzzy
 msgid "Precio Medio"
 msgstr "Adreça:"
 
-#: ui_promediobase.h:302 ui_promediobase.h:307
+#: ui_promediobase.h:303 ui_promediobase.h:308
 #, fuzzy
 msgid "Precio Menor"
 msgstr "Adreça:"
 
-#: ui_promediobase.h:299 ui_promediobase.h:310
+#: ui_promediobase.h:300 ui_promediobase.h:311
 #, fuzzy
 msgid "Total"
 msgstr "Totals:"
 
-#: ui_promediobase.h:295
+#: ui_promediobase.h:296
 #, fuzzy
 msgid "Und. Compradas"
 msgstr "Compres"
 
-#: ui_promediobase.h:304
+#: ui_promediobase.h:305
 msgid "Und. Vendidas"
 msgstr ""
 
-#: ui_promediobase.h:303
+#: ui_promediobase.h:304
 msgid "Ventas"
 msgstr "Vendes"

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-05-16 15:21+0200\n"
+"POT-Creation-Date: 2009-10-21 10:25+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -114,46 +114,46 @@ msgstr ""
 "#-#-#-#-#  pluginabrevs.pot (PACKAGE VERSION)  #-#-#-#-#\n"
 "#-#-#-#-#  bulmages_suite.pot (PACKAGE VERSION)  #-#-#-#-#\n"
 
-#: ui_promediobase.h:296 ui_promediobase.h:311
+#: ui_promediobase.h:297 ui_promediobase.h:312
 msgid "Cantidad Media"
 msgstr "Cantidad Media"
 
-#: ui_promediobase.h:298 ui_promediobase.h:308
+#: ui_promediobase.h:299 ui_promediobase.h:309
 msgid "Cantidad Menor"
 msgstr "Cantidad Menor"
 
-#: ui_promediobase.h:297 ui_promediobase.h:305
+#: ui_promediobase.h:298 ui_promediobase.h:306
 msgid "Cantidad mayor"
 msgstr "Cantidad mayor"
 
-#: ui_promediobase.h:294
+#: ui_promediobase.h:295
 msgid "Compras"
 msgstr "Compras"
 
-#: ui_promediobase.h:301 ui_promediobase.h:309
+#: ui_promediobase.h:302 ui_promediobase.h:310
 msgid "Precio Mayor"
 msgstr "Precio Mayor"
 
-#: ui_promediobase.h:300 ui_promediobase.h:306
+#: ui_promediobase.h:301 ui_promediobase.h:307
 msgid "Precio Medio"
 msgstr "Precio Medio"
 
-#: ui_promediobase.h:302 ui_promediobase.h:307
+#: ui_promediobase.h:303 ui_promediobase.h:308
 msgid "Precio Menor"
 msgstr "Precio Menor"
 
-#: ui_promediobase.h:299 ui_promediobase.h:310
+#: ui_promediobase.h:300 ui_promediobase.h:311
 msgid "Total"
 msgstr "Total"
 
-#: ui_promediobase.h:295
+#: ui_promediobase.h:296
 msgid "Und. Compradas"
 msgstr "Und. Compradas"
 
-#: ui_promediobase.h:304
+#: ui_promediobase.h:305
 msgid "Und. Vendidas"
 msgstr "Und. Vendidas"
 
-#: ui_promediobase.h:303
+#: ui_promediobase.h:304
 msgid "Ventas"
 msgstr "Ventas"

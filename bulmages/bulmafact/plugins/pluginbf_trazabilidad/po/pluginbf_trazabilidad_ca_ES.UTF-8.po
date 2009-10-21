@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-05-16 14:57+0200\n"
+"POT-Creation-Date: 2009-10-21 10:23+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -12,7 +12,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Translate Toolkit 1.1.1\n"
 
-#: ui_movimientosbase.h:304 ui_movimientosbase.h:309
+#: ui_movimientosbase.h:293 ui_movimientosbase.h:296
 msgid "Actualizar listado"
 msgstr "Actual·litza llistat"
 
@@ -32,23 +32,23 @@ msgstr "Codi magatzem"
 msgid "Codigo articulo"
 msgstr "Codi article"
 
-#: ui_movimientosbase.h:292 ui_movimientosbase.h:297
+#: ui_movimientosbase.h:285 ui_movimientosbase.h:288
 msgid "Configurar listado"
 msgstr "Configura llistat"
 
-#: ui_movimientosbase.h:301
+#: ui_movimientosbase.h:291
 msgid "Ctrl+B"
 msgstr "Ctrl+B"
 
-#: ui_movimientosbase.h:289
+#: ui_movimientosbase.h:283
 msgid "Ctrl+F"
 msgstr "Ctrl+F"
 
-#: ui_movimientosbase.h:277
+#: ui_movimientosbase.h:275
 msgid "Ctrl+P"
 msgstr "Ctrl+P"
 
-#: ui_movimientosbase.h:313
+#: ui_movimientosbase.h:299
 msgid "F5"
 msgstr "F5"
 
@@ -68,15 +68,15 @@ msgstr "factures processades"
 msgid "Fecha"
 msgstr "Data"
 
-#: ui_movimientosbase.h:315
+#: ui_movimientosbase.h:301
 msgid "Fecha final:"
 msgstr "Data final:"
 
-#: ui_movimientosbase.h:316
+#: ui_movimientosbase.h:302
 msgid "Fecha inicial:"
 msgstr "Data inicial:"
 
-#: ui_movimientosbase.h:280 ui_movimientosbase.h:285
+#: ui_movimientosbase.h:277 ui_movimientosbase.h:280
 msgid "Filtrar"
 msgstr "Filtrar"
 
@@ -98,7 +98,7 @@ msgstr "Id magatzem"
 msgid "Id articulo"
 msgstr "Id article"
 
-#: ui_movimientosbase.h:268 ui_movimientosbase.h:273
+#: ui_movimientosbase.h:269 ui_movimientosbase.h:272
 #, fuzzy
 msgid "Imprimir listado"
 msgstr "Imprimeix la comanda"
@@ -107,11 +107,11 @@ msgstr "Imprimeix la comanda"
 msgid "Lote"
 msgstr "Lot"
 
-#: ui_movimientosbase.h:314
+#: ui_movimientosbase.h:300
 msgid "Mostrar:"
 msgstr "Mostrar:"
 
-#: ui_movimientosbase.h:264
+#: ui_movimientosbase.h:266
 #, fuzzy
 msgid "Movimientos"
 msgstr "Assentaments"

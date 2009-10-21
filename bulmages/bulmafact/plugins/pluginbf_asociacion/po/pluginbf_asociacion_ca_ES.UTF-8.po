@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-10-18 22:35+0200\n"
+"POT-Creation-Date: 2009-10-21 10:24+0200\n"
 "PO-Revision-Date: 2009-10-18 22:35+0200\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -21,7 +21,7 @@ msgstr ""
 msgid "&Aceptar"
 msgstr "&Accepta"
 
-#: pluginbf_asociacion.cpp:148
+#: pluginbf_asociacion.cpp:142 pluginbf_asociacion.cpp:148
 msgid "&Asociacion"
 msgstr "&Asociació"
 

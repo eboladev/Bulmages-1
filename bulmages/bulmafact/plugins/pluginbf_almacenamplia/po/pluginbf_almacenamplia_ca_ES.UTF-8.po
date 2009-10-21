@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-05-16 14:56+0200\n"
+"POT-Creation-Date: 2009-10-21 10:23+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,7 +18,7 @@ msgstr ""
 "#-#-#-#-#  bulmalib_ca_ES.UTF-8.po (PACKAGE VERSION)  #-#-#-#-#\n"
 "X-Generator: Translate Toolkit 1.1.1\n"
 
-#: ui_almacenbase.h:354
+#: ui_almacenbase.h:345
 #, fuzzy
 msgid "&Aceptar"
 msgstr ""
@@ -45,7 +45,7 @@ msgstr ""
 "#-#-#-#-#  - (PACKAGE VERSION)  #-#-#-#-#\n"
 "&Accepta"
 
-#: ui_almacenbase.h:355
+#: ui_almacenbase.h:346
 #, fuzzy
 msgid "&Cancelar"
 msgstr ""
@@ -54,31 +54,31 @@ msgstr ""
 "#-#-#-#-#  bulmalib_ca_ES.UTF-8.po (PACKAGE VERSION)  #-#-#-#-#\n"
 "&Cancel·lar"
 
-#: ui_almaceneslistbase.h:405 ui_almaceneslistbase.h:410
+#: ui_almaceneslistbase.h:379 ui_almaceneslistbase.h:382
 msgid "Actualizar listado"
 msgstr "Actual·litza llistat"
 
-#: almacenview.cpp:54 ui_almacenbase.h:346
+#: almacenview.cpp:54 ui_almacenbase.h:337
 #, fuzzy
 msgid "Almacen"
 msgstr "<LI> Magatzem <B>"
 
-#: almaceneslistview.cpp:218 ui_almaceneslistbase.h:331
+#: almaceneslistview.cpp:218 ui_almaceneslistbase.h:330
 #, fuzzy
 msgid "Almacenes"
 msgstr "<LI> Magatzem <B>"
 
-#: ui_almacenbase.h:334 ui_almacenbase.h:339 ui_almaceneslistbase.h:359
-#: ui_almaceneslistbase.h:364
+#: ui_almacenbase.h:328 ui_almacenbase.h:331 ui_almaceneslistbase.h:349
+#: ui_almaceneslistbase.h:352
 #, fuzzy
 msgid "Borrar almacen"
 msgstr "Esborra albarà"
 
-#: ui_almaceneslistbase.h:415
+#: ui_almaceneslistbase.h:386
 msgid "Buscar:"
 msgstr "Cerca:"
 
-#: ui_almacenbase.h:352
+#: ui_almacenbase.h:343
 #, fuzzy
 msgid "Codigo Almacen"
 msgstr "Codi compte"
@@ -93,27 +93,27 @@ msgstr "Codi compte"
 msgid "Codigo postal"
 msgstr "Codi compte"
 
-#: ui_almaceneslistbase.h:394 ui_almaceneslistbase.h:399
+#: ui_almaceneslistbase.h:372 ui_almaceneslistbase.h:375
 msgid "Configurar listado"
 msgstr "Configura llistat"
 
-#: ui_almacenbase.h:343 ui_almaceneslistbase.h:368
+#: ui_almacenbase.h:334 ui_almaceneslistbase.h:355
 msgid "Ctrl+D"
 msgstr "Ctrl+D"
 
-#: ui_almaceneslistbase.h:356
+#: ui_almaceneslistbase.h:347
 msgid "Ctrl+E"
 msgstr "Ctrl+E"
 
-#: ui_almaceneslistbase.h:344
+#: ui_almaceneslistbase.h:339
 msgid "Ctrl+N"
 msgstr "Ctrl+N"
 
-#: ui_almaceneslistbase.h:380
+#: ui_almaceneslistbase.h:363
 msgid "Ctrl+P"
 msgstr "Ctrl+P"
 
-#: ui_almacenbase.h:331
+#: ui_almacenbase.h:326
 msgid "Ctrl+S"
 msgstr "Ctrl+S"
 
@@ -122,7 +122,7 @@ msgstr "Ctrl+S"
 msgid "Debe seleccionar una linea"
 msgstr "Cal triar un compte"
 
-#: ui_almacenbase.h:350
+#: ui_almacenbase.h:341
 #, fuzzy
 msgid "Direccion Almacen"
 msgstr "Adreça:"
@@ -132,12 +132,12 @@ msgstr "Adreça:"
 msgid "Direccion almacen"
 msgstr "Adreça:"
 
-#: ui_almaceneslistbase.h:347 ui_almaceneslistbase.h:352
+#: ui_almaceneslistbase.h:341 ui_almaceneslistbase.h:344
 #, fuzzy
 msgid "Editar almacen"
 msgstr "Editar compte"
 
-#: ui_almacenbase.h:347
+#: ui_almacenbase.h:338
 #, fuzzy
 msgid "Email Almacen"
 msgstr "<LI> Magatzem <B>"
@@ -157,11 +157,11 @@ msgstr "Error en la càrrega de l'amortizació"
 msgid "Error al editar el almacen"
 msgstr "Error en la càrrega de l'amortizació"
 
-#: ui_almaceneslistbase.h:414
+#: ui_almaceneslistbase.h:385
 msgid "F5"
 msgstr "F5"
 
-#: ui_almacenbase.h:348
+#: ui_almacenbase.h:339
 #, fuzzy
 msgid "Fax Almacen"
 msgstr "<LI> Magatzem <B>"
@@ -176,24 +176,24 @@ msgstr "<LI> Magatzem <B>"
 msgid "Fecha almacen"
 msgstr "Data de l'assentament"
 
-#: ui_almaceneslistbase.h:418
+#: ui_almaceneslistbase.h:389
 msgid "Fecha final:"
 msgstr "Data final:"
 
-#: ui_almaceneslistbase.h:417
+#: ui_almaceneslistbase.h:388
 msgid "Fecha inicial:"
 msgstr "Data inicial:"
 
-#: ui_almaceneslistbase.h:383 ui_almaceneslistbase.h:388
+#: ui_almaceneslistbase.h:365 ui_almaceneslistbase.h:368
 #, fuzzy
 msgid "Filtrar pedidos"
 msgstr "Filtrar"
 
-#: ui_almacenbase.h:353
+#: ui_almacenbase.h:344
 msgid "General"
 msgstr "General"
 
-#: ui_almacenbase.h:322 ui_almacenbase.h:327
+#: ui_almacenbase.h:320 ui_almacenbase.h:323
 #, fuzzy
 msgid "Guardar almacen"
 msgstr "Desa balanç"
@@ -203,17 +203,17 @@ msgstr "Desa balanç"
 msgid "ID almacen"
 msgstr "<LI> Magatzem <B>"
 
-#: ui_almaceneslistbase.h:371 ui_almaceneslistbase.h:376
+#: ui_almaceneslistbase.h:357 ui_almaceneslistbase.h:360
 #, fuzzy
 msgid "Imprimir listado"
 msgstr "Imprimeix la comanda"
 
-#: ui_almaceneslistbase.h:416
+#: ui_almaceneslistbase.h:387
 #, fuzzy
 msgid "Mostrar:"
 msgstr "Mostrar assentament"
 
-#: ui_almacenbase.h:351
+#: ui_almacenbase.h:342
 #, fuzzy
 msgid "Nombre Almacen"
 msgstr "Nom del compte"
@@ -223,7 +223,7 @@ msgstr "Nom del compte"
 msgid "Nombre almacen"
 msgstr "Nom del compte"
 
-#: ui_almacenbase.h:318 ui_almaceneslistbase.h:335 ui_almaceneslistbase.h:340
+#: ui_almacenbase.h:317 ui_almaceneslistbase.h:333 ui_almaceneslistbase.h:336
 #, fuzzy
 msgid "Nuevo almacen"
 msgstr "Nou assentament"
@@ -233,7 +233,7 @@ msgstr "Nou assentament"
 msgid "Poblacion almacen"
 msgstr "<HR><B>Tractant magatzem"
 
-#: ui_almacenbase.h:349
+#: ui_almacenbase.h:340
 #, fuzzy
 msgid "Telefono Almacen"
 msgstr "<HR><B>Tractant magatzem"
@@ -243,7 +243,7 @@ msgstr "<HR><B>Tractant magatzem"
 msgid "Telefono almacen"
 msgstr "<HR><B>Tractant magatzem"
 
-#: ui_almacenbase.h:345
+#: ui_almacenbase.h:336
 #, fuzzy
 msgid "Tienda"
 msgstr "Biennal"
@@ -253,7 +253,7 @@ msgstr "Biennal"
 msgid "Tipo almacen"
 msgstr "Tipus de balanç"
 
-#: ui_almacenbase.h:344
+#: ui_almacenbase.h:335
 #, fuzzy
 msgid "Tipo de Almacen"
 msgstr "Tipus de balanç"

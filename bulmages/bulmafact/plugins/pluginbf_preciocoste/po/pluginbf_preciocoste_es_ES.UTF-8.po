@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-05-16 15:29+0200\n"
+"POT-Creation-Date: 2009-10-21 10:24+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -114,13 +114,21 @@ msgstr ""
 "#-#-#-#-#  pluginabrevs.pot (PACKAGE VERSION)  #-#-#-#-#\n"
 "#-#-#-#-#  bulmages_suite.pot (PACKAGE VERSION)  #-#-#-#-#\n"
 
+#: pluginbf_preciocoste.cpp:213
+msgid "Actualizar Margen"
+msgstr ""
+
 #: pluginbf_preciocoste.cpp:55
 msgid "Actualizar PVP"
 msgstr "Actualizar PVP"
 
-#: pluginbf_preciocoste.cpp:54
+#: pluginbf_preciocoste.cpp:54 pluginbf_preciocoste.cpp:212
 msgid "Margen"
 msgstr "Margen"
+
+#: pluginbf_preciocoste.cpp:211
+msgid "P Coste"
+msgstr ""
 
 #: pluginbf_preciocoste.cpp:53
 msgid "Precio Coste"

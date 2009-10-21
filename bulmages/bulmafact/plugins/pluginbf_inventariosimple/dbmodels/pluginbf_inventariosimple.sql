@@ -55,7 +55,7 @@ BEGIN
         CREATE TABLE inventariosimple (
             idinventariosimple SERIAL PRIMARY KEY,
             nominventariosimple VARCHAR NOT NULL,
-            stockinventariosimple INTEGER
+            stockinventariosimple NUMERIC(12,2)
         );
 
     END IF;
@@ -66,7 +66,7 @@ BEGIN
             idprestamo SERIAL PRIMARY KEY,
             idactividad INTEGER NOT NULL REFERENCES actividad(idactividad),
             idinventariosimple INTEGER NOT NULL REFERENCES inventariosimple(idinventariosimple),
-            cantprestamo INTEGER NOT NULL DEFAULT 1,
+            cantprestamo NUMERIC(12,2) NOT NULL DEFAULT 1,
             fechaprestamo DATE DEFAULT now()
         );
     END IF;
@@ -74,6 +74,11 @@ RETURN 0;
 END;
 '
 language 'plpgsql';
+
+SELECT aux();
+DROP FUNCTION aux() CASCADE;
+\echo "Creamos las tablas inventariosimple y prestamo"
+
 
 -- ======================== Actualizada la revision de la base de datos a la version. =====================
 
