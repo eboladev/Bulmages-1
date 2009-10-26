@@ -150,9 +150,7 @@ AlbaranesProveedor::AlbaranesProveedor ( BfCompany *comp, QWidget *parent, Qt::W
 {
     _depura ( "AlbaranesProveedor::AlbaranesProveedor", 0 );
     setupUi ( this );
-    m_proveedor->setMainCompany ( comp );
-    m_articulo->setMainCompany ( comp );
-    mui_list->setMainCompany ( comp );
+    setMainCompany ( comp );
     setSubForm ( mui_list );
     presentar();
     mdb_idalbaranp = "";
