@@ -1021,3 +1021,5 @@ void BlDbRecord::imprimir()
     _depura ( "END BlDbRecord::imprimir", 0 );
 }
 
+
+

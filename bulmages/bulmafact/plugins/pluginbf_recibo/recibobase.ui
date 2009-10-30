@@ -72,13 +72,7 @@
        <property name="frameShadow">
         <enum>QFrame::Raised</enum>
        </property>
-       <layout class="QHBoxLayout">
-        <property name="spacing">
-         <number>5</number>
-        </property>
-        <property name="margin">
-         <number>5</number>
-        </property>
+       <layout class="QHBoxLayout" name="horizontalLayout_4">
         <item>
          <widget class="QToolButton" name="mui_guardar">
           <property name="minimumSize">
@@ -194,6 +188,44 @@
          </widget>
         </item>
         <item>
+         <widget class="QToolButton" name="mui_reemitir">
+          <property name="minimumSize">
+           <size>
+            <width>32</width>
+            <height>32</height>
+           </size>
+          </property>
+          <property name="maximumSize">
+           <size>
+            <width>32</width>
+            <height>32</height>
+           </size>
+          </property>
+          <property name="toolTip">
+           <string>Reemitir Recibo</string>
+          </property>
+          <property name="whatsThis">
+           <string>Reemitir Recibo</string>
+          </property>
+          <property name="text">
+           <string/>
+          </property>
+          <property name="icon">
+           <iconset resource="../../../bulmages.qrc">
+            <normaloff>:/Images/client-delivery-note-to-invoice.png</normaloff>:/Images/client-delivery-note-to-invoice.png</iconset>
+          </property>
+          <property name="iconSize">
+           <size>
+            <width>32</width>
+            <height>32</height>
+           </size>
+          </property>
+          <property name="shortcut">
+           <string>Ctrl+I</string>
+          </property>
+         </widget>
+        </item>
+        <item>
          <spacer>
           <property name="orientation">
            <enum>Qt::Horizontal</enum>
@@ -227,14 +259,7 @@
        <string>&amp;Datos generales</string>
       </attribute>
       <layout class="QGridLayout" name="gridLayout">
-       <item row="0" column="0">
-        <widget class="QCheckBox" name="mui_pagadorecibo">
-         <property name="text">
-          <string>Pagado</string>
-         </property>
-        </widget>
-       </item>
-       <item row="0" column="1" colspan="2">
+       <item row="0" column="0" rowspan="2">
         <widget class="BlSearchWidget" name="mui_idcliente" native="true">
          <property name="sizePolicy">
           <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
@@ -250,7 +275,47 @@
          </property>
         </widget>
        </item>
-       <item row="1" column="0" colspan="2">
+       <item row="0" column="1">
+        <widget class="QCheckBox" name="mui_pagadorecibo">
+         <property name="text">
+          <string>Pagado</string>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="1">
+        <widget class="QCheckBox" name="mui_devueltorecibo">
+         <property name="text">
+          <string>Devuelto</string>
+         </property>
+        </widget>
+       </item>
+       <item row="2" column="0" colspan="2">
+        <layout class="QHBoxLayout" name="horizontalLayout_3">
+         <item>
+          <widget class="QLabel" name="label_2">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+           <property name="minimumSize">
+            <size>
+             <width>150</width>
+             <height>0</height>
+            </size>
+           </property>
+           <property name="text">
+            <string>Forma de Pago</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="BfBuscarFormaPago" name="mui_idforma_pago"/>
+         </item>
+        </layout>
+       </item>
+       <item row="2" column="2">
         <layout class="QHBoxLayout" name="horizontalLayout">
          <item>
           <widget class="QLabel" name="label_3">
@@ -283,36 +348,10 @@
          </item>
         </layout>
        </item>
-       <item row="1" column="2">
-        <layout class="QHBoxLayout" name="horizontalLayout_3">
-         <item>
-          <widget class="QLabel" name="label_2">
-           <property name="sizePolicy">
-            <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-             <horstretch>0</horstretch>
-             <verstretch>0</verstretch>
-            </sizepolicy>
-           </property>
-           <property name="minimumSize">
-            <size>
-             <width>150</width>
-             <height>0</height>
-            </size>
-           </property>
-           <property name="text">
-            <string>Forma de Pago</string>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="BfBuscarFormaPago" name="mui_idforma_pago"/>
-         </item>
-        </layout>
-       </item>
-       <item row="2" column="0" colspan="3">
+       <item row="3" column="0" colspan="3">
         <widget class="BfSubForm" name="mui_list"/>
        </item>
-       <item row="3" column="0" colspan="3">
+       <item row="4" column="0" colspan="3">
         <layout class="QHBoxLayout" name="horizontalLayout_2">
          <item>
           <spacer>
@@ -360,6 +399,12 @@
         </layout>
        </item>
       </layout>
+      <zorder>mui_pagadorecibo</zorder>
+      <zorder>mui_idcliente</zorder>
+      <zorder>mui_list</zorder>
+      <zorder>mui_devueltorecibo</zorder>
+      <zorder>mui_fecharecibo</zorder>
+      <zorder>label_2</zorder>
      </widget>
      <widget class="QWidget" name="tabOtros">
       <attribute name="title">

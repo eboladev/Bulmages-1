@@ -40,7 +40,7 @@
             <drawString x="1.5cm" y="23.2cm">Tipo: [nombretipoactividad]</drawString>
             <drawString x="1.5cm" y="22.4cm">Profesor: [nombreprofesor]</drawString>
             <drawString x="1.5cm" y="21.6cm">Periodo (inicio | fin): [finicialactividad] | [ffinalactividad]</drawString>
-            <!--<drawString x="1.5cm" y="21.0cm">Precio [precioactividad]</drawString>-->
+            <drawString x="1.5cm" y="21.0cm">Precio [precioactividad]</drawString>
             
 <!--END QUERY-->
             
@@ -83,6 +83,9 @@
             <td>Teléfono de contacto:</td>
         </tr>
         <tr>
+            <td>Domiciliación Bancaria:</td>
+        </tr>
+        <tr>
             <td>Alumno 1:</td>
         </tr>
         <tr>
@@ -100,7 +103,7 @@
         
     </blockTable>
     
-    <para style="firma">Firma del tutor</para>
+    <para style="firma">Firma del pare/mare</para>
     
 </story>
 

@@ -60,6 +60,7 @@ public:
     virtual int cargarPost(QString );
 public slots:
     virtual void on_mui_list_editFinish ( int, int );
+    virtual void on_mui_reemitir_released();
 };
 
 #endif

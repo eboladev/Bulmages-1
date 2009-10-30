@@ -180,3 +180,35 @@ void ReciboView::on_mui_list_editFinish ( int, int )
     
     _depura ( "END ReciboView::on_mui_list_editFinish", 0 );
 }
+
+/// Esta funcion trabaja a muy bajo nivel ya que aprovecha una ficha cargada para hacer otra ficha.
+/**
+**/
+void ReciboView::on_mui_reemitir_released (  )
+{
+    _depura ( "ReciboView::on_mui_reemitir_released", 0 );
+    QString id;
+
+   try {
+   setDbValue("idrecibo", "");
+   setNuevo(TRUE);
+
+   mui_fecharecibo->setText("");
+   recogeValores();
+   mainCompany() ->begin();
+   DBsave ( id );
+   setDbValue ( m_campoid, id );
+   mainCompany() ->commit();
+   mui_list->setColumnValue("idrecibo", dbValue("idrecibo"));
+   mui_list->guardar();
+
+   QString query = "INSERT INTO lrecibo (idrecibo, cantlrecibo, conceptolrecibo) VALUES ("+dbValue("idrecibo")+", 12.5, \'Cuota por devolucion recibo\')";
+   mainCompany()->runQuery(query);
+   cargar(dbValue("idrecibo"));
+   mensajeInfo(_("Recibo reemitido"));
+   } catch(...) {
+      mensajeError("Error en la creacion del recibo");
+   } // end try
+
+    _depura ( "END ReciboView::on_mui_reemitir_released", 0 );
+}
