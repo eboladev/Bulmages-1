@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-05-12 23:59+0200\n"
+"POT-Creation-Date: 2009-10-30 16:10+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -20,14 +20,14 @@ msgstr ""
 msgid "Tickets olvidados"
 msgstr ""
 
-#: ui_ticketsdevueltosbase.h:105
+#: ui_ticketsdevueltosbase.h:106
 msgid "Dialog"
 msgstr ""
 
-#: ui_ticketsdevueltosbase.h:106
+#: ui_ticketsdevueltosbase.h:107
 msgid "Referencia Ticket"
 msgstr ""
 
-#: ui_ticketsdevueltosbase.h:107
+#: ui_ticketsdevueltosbase.h:108
 msgid "CERRAR"
 msgstr ""

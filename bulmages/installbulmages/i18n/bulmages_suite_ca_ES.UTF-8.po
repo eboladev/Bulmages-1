@@ -498,7 +498,7 @@ msgstr "&Mode debug"
 
 #: pluginbf_profesor.cpp:114
 msgid "&Monitores"
-msgstr ""
+msgstr "&Monitors"
 
 #: ui_bcasientolistbase.h:419
 msgid "&Mostrar:"
@@ -575,11 +575,11 @@ msgstr ""
 
 #: pluginbf_profesor.cpp:122
 msgid "&Nuevo monitor"
-msgstr ""
+msgstr "&Nou Monitor"
 
 #: pluginbf_tutor.cpp:107
 msgid "&Nuevo padre/socio"
-msgstr ""
+msgstr "&Nou pare/soci"
 
 #: pluginbf_proveedorpago.cpp:104
 msgid "&Nuevo pago a proveedor"
@@ -615,7 +615,7 @@ msgstr "&Altres dades"
 
 #: pluginbf_tutor.cpp:99
 msgid "&Padres/Socios"
-msgstr ""
+msgstr "&Pares/Socis"
 
 #: pluginbf_proveedorpago.cpp:96
 msgid "&Pagos a proveedores"
@@ -910,7 +910,7 @@ msgstr "1234"
 
 #: tutoreslist.cpp:268
 msgid "1er Apellido"
-msgstr ""
+msgstr "1er cognom"
 
 #: ui_tutorbase.h:526 alumnoview.cpp:59 alumnoslist.cpp:275
 msgid "1er apellido"
@@ -918,7 +918,7 @@ msgstr "1er cognom"
 
 #: tutorview.cpp:58
 msgid "1er apellido del tutor"
-msgstr ""
+msgstr "1er cognom del pare"
 
 #: ui_alumnobase.h:508
 msgid "1er. apellido:"
@@ -935,7 +935,7 @@ msgstr "2"
 
 #: tutoreslist.cpp:269
 msgid "2o Apellido"
-msgstr ""
+msgstr "2n cognom"
 
 #: ui_tutorbase.h:527 alumnoview.cpp:60 alumnoslist.cpp:276
 msgid "2o apellido"
@@ -943,7 +943,7 @@ msgstr "2n cognom"
 
 #: tutorview.cpp:59
 msgid "2o apellido del tutor"
-msgstr ""
+msgstr "2n cognom del pare"
 
 #: ui_alumnobase.h:509
 msgid "2º apellido"
@@ -1387,7 +1387,7 @@ msgstr "Activitats"
 
 #: ui_profesorbase.h:509
 msgid "Actividades Impartidas"
-msgstr ""
+msgstr "Activitats Impartides"
 
 #: alumnoview.cpp:66 ui_alumnobase.h:513 ui_trabajadorbase.h:342
 msgid "Activo"
@@ -2018,7 +2018,7 @@ msgstr "Bancs"
 
 #: ui_aboutfapacbase.h:151
 msgid "Barcelona"
-msgstr ""
+msgstr "Barcelona"
 
 #: pedidoproveedorview.cpp:370 facturapview.cpp:431
 #, fuzzy
@@ -2121,7 +2121,7 @@ msgstr "Esborrar"
 
 #: ui_profesoreslistbase.h:333 ui_profesoreslistbase.h:336
 msgid "Borrar Monitor"
-msgstr ""
+msgstr "Esborrar Monitor"
 
 #: ui_partidasbase.h:329 ui_partidasbase.h:332
 msgid "Borrar Partida"
@@ -2517,7 +2517,7 @@ msgstr "CP del compte"
 
 #: profesorview.cpp:59
 msgid "CP del profesor"
-msgstr ""
+msgstr "CP del monitor"
 
 #: ui_zlistbase.h:272 ui_contratoslistbase.h:309
 msgid "Caducados"
@@ -3073,7 +3073,7 @@ msgstr "Comentaris de l'assentament"
 
 #: profesorview.cpp:67
 msgid "Comentarios del profesor"
-msgstr ""
+msgstr "Comentaris del monitor"
 
 #: pluginbf_comercial.cpp:69
 msgid "Comentarios para el comercial"
@@ -3552,7 +3552,7 @@ msgstr "Comptes anuals"
 
 #: listcuotasporalumnoview.cpp:98
 msgid "Cuota"
-msgstr ""
+msgstr "Quota"
 
 #: ui_listcuotasporalumnobase.h:118
 msgid "Cuotas Socio"
@@ -3560,7 +3560,7 @@ msgstr ""
 
 #: pluginbf_alumno.cpp:153 pluginbf_alumno.cpp:154
 msgid "Cuotas por alumno"
-msgstr ""
+msgstr "Quotes per alumne"
 
 #: ui_bcamortizacionbase.h:676
 #, fuzzy
@@ -3569,7 +3569,7 @@ msgstr "Paraula de pas:"
 
 #: listcuotasporalumnoview.cpp:49
 msgid "CuotasPorAlumno"
-msgstr ""
+msgstr "Quotes Per Alumne"
 
 #: ui_bancobase.h:448
 msgid "D.C.:"
@@ -3577,7 +3577,7 @@ msgstr "D.C.:"
 
 #: ui_profesorbase.h:484
 msgid "D.N.I."
-msgstr ""
+msgstr "D.N.I"
 
 #: ui_tecladonumericobase.h:360
 msgid "DEL"
@@ -3585,11 +3585,11 @@ msgstr "DEL"
 
 #: profesoreslist.cpp:293 ui_alumnobase.h:499
 msgid "DNI"
-msgstr ""
+msgstr "DNI"
 
 #: profesorview.cpp:57
 msgid "DNI del profesor"
-msgstr ""
+msgstr "DNI del monitor"
 
 #: ui_blformconfigbase.h:285
 msgid "Database Table"
@@ -4118,7 +4118,7 @@ msgstr "Adreça del compte"
 
 #: profesorview.cpp:58
 msgid "Direccion del profesor"
-msgstr ""
+msgstr "Direcció del monitor"
 
 #: bcamortizacionview.cpp:68
 msgid "Direccion del proveedor"
@@ -4179,7 +4179,7 @@ msgstr "E-&mail:"
 
 #: alumnoview.cpp:64
 msgid "E-Mail"
-msgstr ""
+msgstr "e-mail"
 
 #: bccuentaview.cpp:63
 msgid "E-Mail de la cuenta"
@@ -4187,7 +4187,7 @@ msgstr "Correu electrònic del compte"
 
 #: ui_tutorbase.h:523
 msgid "E-Mail:"
-msgstr ""
+msgstr "E-Mail"
 
 #: ui_bancobase.h:459 ui_trabajadorbase.h:349
 msgid "E-mail:"
@@ -4245,7 +4245,7 @@ msgstr ""
 
 #: ui_profesoreslistbase.h:325 ui_profesoreslistbase.h:328
 msgid "Editar Monitor"
-msgstr ""
+msgstr "Editar Monitor"
 
 #: ui_rutacomerciallistbase.h:310 ui_rutacomerciallistbase.h:313
 msgid "Editar Pedido"
@@ -4346,7 +4346,7 @@ msgstr "Editar compte"
 
 #: pluginbf_tutor.cpp:373 pluginbf_tutor.cpp:390
 msgid "Editar tutor"
-msgstr ""
+msgstr "Editar pare"
 
 #: ui_blsubformbase.h:616
 msgid "Ejecutar consulta"
@@ -4701,7 +4701,7 @@ msgstr "El magatzem del pressupost no existeix<BR>"
 
 #: profesorview.cpp:96
 msgid "Error al crear el profesor"
-msgstr ""
+msgstr "Error creant el monitor"
 
 #: provedit.cpp:104
 #, fuzzy
@@ -4714,7 +4714,7 @@ msgstr "Error al crear el rebut"
 
 #: tutorview.cpp:111
 msgid "Error al crear el tutor"
-msgstr ""
+msgstr "Error al crear el pare"
 
 #: contratoview.cpp:73
 #, fuzzy
@@ -4819,7 +4819,7 @@ msgstr "Error al guardar la partida"
 
 #: listcuotasporalumnoview.cpp:71
 msgid "Error al guardar las cuotas"
-msgstr ""
+msgstr "Error al desar les quotes"
 
 #: listtasaivaview.cpp:70
 #, fuzzy
@@ -4974,7 +4974,7 @@ msgstr ""
 
 #: tutorview.cpp:61
 msgid "Es Socio"
-msgstr ""
+msgstr "Es Soci"
 
 #: blworkspace.cpp:90
 msgid "Esc"
@@ -5039,15 +5039,15 @@ msgstr "Referència"
 
 #: ui_profesorbase.h:506
 msgid "Estudios"
-msgstr ""
+msgstr "Estudis"
 
 #: profesorview.cpp:66
 msgid "Estudios del profesor"
-msgstr ""
+msgstr "Estudis del monitor"
 
 #: ui_profesorbase.h:505
 msgid "Estudios:"
-msgstr ""
+msgstr "Estudis:"
 
 #: q19writer.cpp:236
 #, qt-format
@@ -5188,7 +5188,7 @@ msgstr "Extracte de comptes"
 
 #: alumnoslist.cpp:277
 msgid "F. Nacimiento"
-msgstr ""
+msgstr "Data Neixement"
 
 #: ui_bcbulmacontbase.h:380 ui_bfbulmafactbase.h:176
 msgid "F1"
@@ -5324,7 +5324,7 @@ msgstr "<LI> Magatzem <B>"
 
 #: profesorview.cpp:62
 msgid "Fax del profesor"
-msgstr ""
+msgstr "Fax del monitor"
 
 #: ui_bancobase.h:450
 msgid "Fax:"
@@ -5420,7 +5420,7 @@ msgstr ""
 
 #: alumnoview.cpp:65
 msgid "Fecha Nacimiento"
-msgstr ""
+msgstr "Data Neixement"
 
 #: albaranproveedorview.cpp:59 compraventaview.cpp:68
 #, fuzzy
@@ -5679,7 +5679,7 @@ msgstr "Data de l'assentament"
 
 #: ui_alumnobase.h:500
 msgid "Fecha nacimiento:"
-msgstr ""
+msgstr "Data neixement:"
 
 #: pedidoproveedorview.cpp:58 pedidosproveedorlist.cpp:315
 #, fuzzy
@@ -5788,7 +5788,7 @@ msgstr "Filtrar balanç"
 
 #: ui_profesoreslistbase.h:349 ui_profesoreslistbase.h:352
 msgid "Filtrar Monitores"
-msgstr ""
+msgstr "Filtrar Monitors"
 
 #: ui_rutacomerciallistbase.h:331
 #, fuzzy
@@ -5883,7 +5883,7 @@ msgstr "Form1"
 
 #: ui_tutorbase.h:524
 msgid "Forma Pago"
-msgstr ""
+msgstr "Forma de pagament"
 
 #: bcformapagoview.cpp:36 pluginbf_carteracobros.cpp:124
 #: pluginbf_carteracobros.cpp:242 tutorview.cpp:73 tutorview.cpp:98
@@ -6035,7 +6035,7 @@ msgstr "Gestionar partides"
 
 #: ui_aboutfapacbase.h:152
 msgid "Girona"
-msgstr ""
+msgstr "Girona"
 
 #: ui_balancebase.h:446
 #, fuzzy
@@ -6289,7 +6289,7 @@ msgstr ""
 
 #: ui_tutorbase.h:531
 msgid "Hijos"
-msgstr ""
+msgstr "Fills"
 
 #: ui_compraventabase.h:820
 msgid "Hoja de Compra Venta"
@@ -6376,7 +6376,7 @@ msgstr ""
 
 #: tutorview.cpp:93
 msgid "ID Recibo"
-msgstr ""
+msgstr "ID Rebut"
 
 #: pluginbf_inventario.cpp:126
 #, fuzzy
@@ -6385,7 +6385,7 @@ msgstr "Treballador"
 
 #: tutorview.cpp:97
 msgid "ID Tutor"
-msgstr ""
+msgstr "ID Pare"
 
 #: pluginbf_inventario.cpp:125
 #, fuzzy
@@ -6486,7 +6486,7 @@ msgstr "Nom de la forma de pagament:"
 
 #: tutoreslist.cpp:264
 msgid "ID padre"
-msgstr ""
+msgstr "ID pare"
 
 #: presupuestocontableview.cpp:65
 msgid "ID partida"
@@ -6517,7 +6517,7 @@ msgstr ""
 
 #: profesorview.cpp:55
 msgid "ID profesor"
-msgstr ""
+msgstr "ID monitor"
 
 #: albaranesproveedor.cpp:387 pluginbf_clienteproveedor.cpp:60 provedit.cpp:45
 #: providerslist.cpp:283
@@ -6660,7 +6660,7 @@ msgstr "Id tipus d'IVA"
 
 #: alumnoview.cpp:356
 msgid "Id actividad"
-msgstr ""
+msgstr "Id activitat"
 
 #: btticket.cpp:46 listdescalbaranprovview.cpp:43 albaranclienteview.cpp:72
 #: zview.cpp:72 compraventaview.cpp:82 bfclientealbarandescuentosubform.cpp:44
@@ -6890,8 +6890,13 @@ msgid "Id trabajador"
 msgstr "Id esborrany"
 
 #: tutorview.cpp:260 alumnoview.cpp:324
+#, fuzzy
 msgid "Id tutor"
 msgstr ""
+"#-#-#-#-#  pluginbf_tutor_ca_ES.UTF-8.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"Id pare\n"
+"#-#-#-#-#  pluginbf_alumno_ca_ES.UTF-8.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"Id tutor"
 
 #: pluginbf_alias.cpp:114 pluginbf_asterisk.cpp:108 pluginbf_asterisk.cpp:168
 #, fuzzy
@@ -7745,12 +7750,12 @@ msgstr "identificador"
 
 #: profesorview.cpp:52
 msgid "Monitor"
-msgstr ""
+msgstr "Monitor"
 
 #: pluginbf_profesor.cpp:116 pluginbf_profesor.cpp:117 profesoreslist.cpp:157
 #: ui_profesoreslistbase.h:309
 msgid "Monitores"
-msgstr ""
+msgstr "Monitors"
 
 #: ui_bccentrocostebase.h:277 ui_bccentrocostebase.h:280 ui_familiasbase.h:352
 #: ui_familiasbase.h:355 ui_partidasbase.h:352 ui_partidasbase.h:355
@@ -7849,7 +7854,7 @@ msgstr ""
 
 #: profesorview.cpp:63
 msgid "Movil del profesor"
-msgstr ""
+msgstr "Mòbil del monitor"
 
 #: ui_movimientosbase.h:266
 msgid "Movimientos"
@@ -7882,7 +7887,7 @@ msgstr "NIF del proveïdor"
 
 #: ui_tutorbase.h:513
 msgid "NIF:"
-msgstr ""
+msgstr "NIF:"
 
 #: devolucion2.cpp:439
 msgid "NO IMPLEMENTADO"
@@ -8111,7 +8116,7 @@ msgstr "Nom de camp"
 
 #: alumnoview.cpp:355
 msgid "Nombre actividad"
-msgstr ""
+msgstr "Nom activitat"
 
 #: movimientosview.cpp:184 listltarifaview.cpp:35 listltarifaview.cpp:57
 #: listcontrolstockview.cpp:36 listalmacenview.cpp:98 almaceneslistview.cpp:58
@@ -8141,8 +8146,13 @@ msgid "Nombre alternativo del proveedor"
 msgstr "Nom del proveïdor"
 
 #: actividadview.cpp:209 actividadview.cpp:244 tutorview.cpp:258
+#, fuzzy
 msgid "Nombre alumno"
 msgstr ""
+"#-#-#-#-#  pluginbf_tutor_ca_ES.UTF-8.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"Nom del alumne\n"
+"#-#-#-#-#  pluginbf_alumno_ca_ES.UTF-8.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"Nom alumne"
 
 #: btticket.cpp:97 btticket.cpp:98 movimientosview.cpp:179
 #: listlinpedidoclienteview.cpp:48 listlinfacturaview.cpp:49
@@ -8466,11 +8476,11 @@ msgstr "Nou assentament"
 #: ui_profesoreslistbase.h:317 ui_profesoreslistbase.h:320
 #: ui_profesorbase.h:449
 msgid "Nuevo Monitor"
-msgstr ""
+msgstr "Nou Monitor"
 
 #: ui_tutorbase.h:485
 msgid "Nuevo Padre/Socio"
-msgstr ""
+msgstr "Nou Pare/Soci"
 
 #: ui_rutacomerciallistbase.h:303 ui_rutacomerciallistbase.h:306
 #, fuzzy
@@ -8585,7 +8595,7 @@ msgstr "Nou assentament"
 
 #: pluginbf_tutor.cpp:109 pluginbf_tutor.cpp:110
 msgid "Nuevo padre/socio"
-msgstr ""
+msgstr "Nou pare/soci"
 
 #: ui_pagoslistbase.h:378 ui_pagoslistbase.h:381
 #, fuzzy
@@ -8704,7 +8714,7 @@ msgstr "Nou"
 
 #: tutoreslist.cpp:266
 msgid "Numero Socio"
-msgstr ""
+msgstr "Nombre Soci"
 
 #: albaranproveedorview.cpp:58 compraventaview.cpp:67
 #, fuzzy
@@ -8725,7 +8735,7 @@ msgstr "Nombre de quotes"
 #: tutorview.cpp:66 tutorview.cpp:67 tutorview.cpp:68 tutorview.cpp:69
 #: tutorview.cpp:70 tutorview.cpp:71 tutorview.cpp:72
 msgid "Numero de Socio"
-msgstr ""
+msgstr "Nombre de Soci"
 
 #: albaranesproveedor.cpp:381 albaranclienteview.cpp:75
 #: albaranclientelist.cpp:384 compraventaview.cpp:85
@@ -8843,7 +8853,7 @@ msgstr "Nom del proveïdor"
 
 #: ui_tutorbase.h:515
 msgid "Nº Socio"
-msgstr ""
+msgstr "Num. Soci"
 
 #: ui_bcamortizacionbase.h:654
 #, fuzzy
@@ -9001,19 +9011,19 @@ msgstr ""
 
 #: bccuentaview.cpp:46 tutorview.cpp:53
 msgid "Padre"
-msgstr ""
+msgstr "Pare"
 
 #: tutoreslist.cpp:144 ui_tutoreslistbase.h:243
 msgid "Padres"
-msgstr ""
+msgstr "Pares"
 
 #: pluginbf_tutor.cpp:101 pluginbf_tutor.cpp:102
 msgid "Padres/Socios"
-msgstr ""
+msgstr "Pare/Soci"
 
 #: ui_alumnobase.h:524
 msgid "Padres/Tutores"
-msgstr ""
+msgstr "Pares/Tutors"
 
 #: tutorview.cpp:95 informeqtoolbutton.cpp:313 bfinformereferencia.cpp:263
 #, fuzzy
@@ -9311,7 +9321,7 @@ msgstr "<HR><B>Tractant magatzem"
 
 #: profesorview.cpp:60
 msgid "Poblacion del profesor"
-msgstr ""
+msgstr "Població del monitor"
 
 #: ui_bccuentabase.h:860 ui_profesorbase.h:488 ui_tutorbase.h:519
 #: ui_bancobase.h:461
@@ -9349,7 +9359,7 @@ msgstr "Percentual"
 
 #: tutorview.cpp:259
 msgid "Porcentaje Fact."
-msgstr ""
+msgstr "Porcentatge Fact."
 
 #: listtasaivaview.cpp:96
 #, fuzzy
@@ -10144,7 +10154,7 @@ msgstr "Primer període"
 
 #: bcbulmacont.cpp:808 bfbulmafact.cpp:187
 msgid "Seguro que desea abandonar el programa "
-msgstr ""
+msgstr "Segur que desitja abandonar el programa"
 
 #: bccentrocosteseleccionarview.cpp:43 bccanalseleccionarview.cpp:45
 msgid "Seleccion"
@@ -10168,7 +10178,7 @@ msgstr "Seleccionar partida"
 
 #: pluginbf_tutor.cpp:375 pluginbf_tutor.cpp:394
 msgid "Seleccionar tutor"
-msgstr ""
+msgstr "Seleccionar pare"
 
 #: trabajadorview.cpp:293
 #, fuzzy
@@ -10228,7 +10238,7 @@ msgstr "Sel·lector de BulmaGés"
 
 #: alumnoslist.cpp:80
 msgid "Selector de alumnos"
-msgstr ""
+msgstr "Selector d'alumnes"
 
 #: bccuentalistview.cpp:68 articulolist.cpp:74
 msgid "Selector de articulos"
@@ -10608,7 +10618,7 @@ msgstr ""
 
 #: compraventaview.cpp:711 bfform.cpp:1041
 msgid "Tiene que guardar el documento antes de poder procesarlo."
-msgstr ""
+msgstr "Ha de desar el document abans de poder procesar-lo"
 
 #: articulolist.cpp:161
 #, fuzzy
@@ -11272,7 +11282,7 @@ msgstr "Web del compte"
 
 #: profesorview.cpp:65
 msgid "Web del profesor"
-msgstr ""
+msgstr "Web del monitor"
 
 #: ui_adminbase.h:74
 msgid "X"
@@ -11388,7 +11398,7 @@ msgstr ""
 
 #: profesorview.cpp:64
 msgid "eMail del profesor"
-msgstr ""
+msgstr "e-mail del monitor"
 
 #: balancesubform.cpp:44
 msgid "ejdebe"

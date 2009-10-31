@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-05-12 23:58+0200\n"
+"POT-Creation-Date: 2009-10-30 16:10+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -20,78 +20,78 @@ msgstr ""
 msgid "Cobro"
 msgstr ""
 
-#: ui_cambiobase.h:505
+#: ui_cambiobase.h:506
 msgid "Dialog"
 msgstr ""
 
-#: ui_cambiobase.h:506
+#: ui_cambiobase.h:507
 msgid "Total a cobrar:"
 msgstr ""
 
-#: ui_cambiobase.h:507
+#: ui_cambiobase.h:508
 msgid "Entregado:"
 msgstr ""
 
-#: ui_cambiobase.h:508
+#: ui_cambiobase.h:509
 msgid "A devolver:"
 msgstr ""
 
-#: ui_cambiobase.h:509
+#: ui_cambiobase.h:510
 msgid "7"
 msgstr ""
 
-#: ui_cambiobase.h:510
+#: ui_cambiobase.h:511
 msgid "8"
 msgstr ""
 
-#: ui_cambiobase.h:511
+#: ui_cambiobase.h:512
 msgid "9"
 msgstr ""
 
-#: ui_cambiobase.h:512
+#: ui_cambiobase.h:513
 msgid "4"
 msgstr ""
 
-#: ui_cambiobase.h:513
+#: ui_cambiobase.h:514
 msgid "5"
 msgstr ""
 
-#: ui_cambiobase.h:514
+#: ui_cambiobase.h:515
 msgid "6"
 msgstr ""
 
-#: ui_cambiobase.h:515
+#: ui_cambiobase.h:516
 msgid "1"
 msgstr ""
 
-#: ui_cambiobase.h:516
+#: ui_cambiobase.h:517
 msgid "2"
 msgstr ""
 
-#: ui_cambiobase.h:517
+#: ui_cambiobase.h:518
 msgid "3"
 msgstr ""
 
-#: ui_cambiobase.h:518
+#: ui_cambiobase.h:519
 msgid "0"
 msgstr ""
 
-#: ui_cambiobase.h:519
+#: ui_cambiobase.h:520
 msgid "00"
 msgstr ""
 
-#: ui_cambiobase.h:520
+#: ui_cambiobase.h:521
 msgid "C"
 msgstr ""
 
-#: ui_cambiobase.h:521
+#: ui_cambiobase.h:522
 msgid "EFECTIVO"
 msgstr ""
 
-#: ui_cambiobase.h:522
+#: ui_cambiobase.h:523
 msgid "VISA"
 msgstr ""
 
-#: ui_cambiobase.h:523
+#: ui_cambiobase.h:524
 msgid "CANCELAR"
 msgstr ""

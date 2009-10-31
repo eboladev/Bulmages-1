@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-05-12 23:58+0200\n"
+"POT-Creation-Date: 2009-10-30 16:11+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -16,25 +16,25 @@ msgstr ""
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: tarifalistsubform.cpp:36 tarifaview.cpp:51 listltarifaview.cpp:65
-msgid "Nombre de la tarifa"
+#: tarifaview.cpp:47 tarifaview.cpp:101 tarifaview.cpp:160
+#: pluginbf_tarifa.cpp:185 ui_tarifabase.h:234
+msgid "Tarifa"
 msgstr ""
 
-#: tarifalistsubform.cpp:37 tarifaview.cpp:50 listltarifaview.cpp:39
-#: listltarifaview.cpp:63 pluginbf_tarifa.cpp:184
+#: tarifaview.cpp:50 listltarifaview.cpp:39 listltarifaview.cpp:63
+#: pluginbf_tarifa.cpp:184 tarifalistsubform.cpp:37
 msgid "ID tarifa"
 msgstr ""
 
-#: tarifaview.cpp:47 tarifaview.cpp:101 tarifaview.cpp:160
-#: pluginbf_tarifa.cpp:185 ui_tarifabase.h:233
-msgid "Tarifa"
+#: tarifaview.cpp:51 listltarifaview.cpp:65 tarifalistsubform.cpp:36
+msgid "Nombre de la tarifa"
 msgstr ""
 
 #: tarifaview.cpp:67
 msgid "Tarifa edicion"
 msgstr ""
 
-#: tarifaview.cpp:242 ui_tarifalistbase.h:169 ui_tarifalistbase.h:174
+#: tarifaview.cpp:242 ui_tarifalistbase.h:161 ui_tarifalistbase.h:164
 msgid "Borrar tarifa"
 msgstr ""
 
@@ -86,13 +86,13 @@ msgstr ""
 msgid "Nombre articulo"
 msgstr ""
 
-#: tarifalistview.cpp:43 pluginbf_tarifa.cpp:82 pluginbf_tarifa.cpp:83
-#: pluginbf_tarifa.cpp:166 ui_tarifalistbase.h:146
-msgid "Tarifas"
-msgstr ""
-
 #: pluginbf_tarifa.cpp:81
 msgid "&Tarifas"
+msgstr ""
+
+#: pluginbf_tarifa.cpp:82 pluginbf_tarifa.cpp:83 pluginbf_tarifa.cpp:166
+#: tarifalistview.cpp:43 ui_tarifalistbase.h:147
+msgid "Tarifas"
 msgstr ""
 
 #: pluginbf_tarifa.cpp:119
@@ -115,43 +115,43 @@ msgstr ""
 msgid "Porcentaje variacion"
 msgstr ""
 
-#: ui_tarifalistbase.h:149 ui_tarifalistbase.h:154
-msgid "Nueva tarifa"
-msgstr ""
-
-#: ui_tarifalistbase.h:159 ui_tarifalistbase.h:164
-msgid "Editar tarifa"
-msgstr ""
-
-#: ui_tarifalistbase.h:179 ui_tarifalistbase.h:184 ui_tarifabase.h:258
-#: ui_tarifabase.h:263
-msgid "Actualizar listado"
-msgstr ""
-
-#: ui_tarifabase.h:237 ui_tarifabase.h:242
+#: ui_tarifabase.h:237 ui_tarifabase.h:240
 msgid "Guardar"
 msgstr ""
 
-#: ui_tarifabase.h:247 ui_tarifabase.h:252
+#: ui_tarifabase.h:243 ui_tarifabase.h:246
 msgid "Borrar"
 msgstr ""
 
-#: ui_tarifabase.h:267
+#: ui_tarifabase.h:250 ui_tarifabase.h:253 ui_tarifalistbase.h:167
+#: ui_tarifalistbase.h:170
+msgid "Actualizar listado"
+msgstr ""
+
+#: ui_tarifabase.h:256
 msgid "Nombre de la tarifa:"
 msgstr ""
 
-#: ui_tarifabase.h:268
+#: ui_tarifabase.h:257
 msgid "Filtrado de articulos:"
 msgstr ""
 
-#: ui_tarifabase.h:269
+#: ui_tarifabase.h:258
 msgid "Almacen:"
 msgstr ""
 
-#: ui_tarifabase.h:270
+#: ui_tarifabase.h:259
 msgid "&Aceptar"
 msgstr ""
 
-#: ui_tarifabase.h:271
+#: ui_tarifabase.h:260
 msgid "&Cancelar"
+msgstr ""
+
+#: ui_tarifalistbase.h:149 ui_tarifalistbase.h:152
+msgid "Nueva tarifa"
+msgstr ""
+
+#: ui_tarifalistbase.h:155 ui_tarifalistbase.h:158
+msgid "Editar tarifa"
 msgstr ""

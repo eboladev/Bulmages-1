@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-05-12 23:57+0200\n"
+"POT-Creation-Date: 2009-10-30 16:10+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -16,10 +16,6 @@ msgstr ""
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: pluginbl_report.cpp:99
-msgid "&Informes"
-msgstr ""
-
-#: pluginbl_report.cpp:137 pluginbl_report.cpp:138
-msgid "Informe"
+#: pluginbl_report.cpp:166
+msgid "Informes"
 msgstr ""

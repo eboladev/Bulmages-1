@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-05-12 23:58+0200\n"
+"POT-Creation-Date: 2009-10-30 16:11+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -47,6 +47,18 @@ msgstr ""
 
 #: listproyectosview.cpp:114
 msgid "Error al borrar la amortizacion"
+msgstr ""
+
+#: pluginbc_proyectos.cpp:75
+msgid "&Proyectos"
+msgstr ""
+
+#: pluginbc_proyectos.cpp:76 pluginbc_proyectos.cpp:77
+msgid "Proyectos"
+msgstr ""
+
+#: pluginbc_proyectos.cpp:116
+msgid "Proyectos asociados"
 msgstr ""
 
 #: proyectoview.cpp:53
@@ -113,76 +125,64 @@ msgstr ""
 msgid "Error al crear el almacen"
 msgstr ""
 
-#: pluginbc_proyectos.cpp:75
-msgid "&Proyectos"
-msgstr ""
-
-#: pluginbc_proyectos.cpp:76 pluginbc_proyectos.cpp:77
-msgid "Proyectos"
-msgstr ""
-
-#: pluginbc_proyectos.cpp:116
-msgid "Proyectos asociados"
-msgstr ""
-
-#: ui_listproyectosbase.h:135
-msgid "Listado de Proyectos"
-msgstr ""
-
-#: ui_listproyectosbase.h:138 ui_listproyectosbase.h:143
-msgid "Nueva amortizacion"
-msgstr ""
-
-#: ui_listproyectosbase.h:147
-msgid "Ctrl+N"
-msgstr ""
-
-#: ui_listproyectosbase.h:150 ui_listproyectosbase.h:155
-#: ui_listproyectosbase.h:162 ui_listproyectosbase.h:167
-msgid "Borrar amortizacion"
-msgstr ""
-
-#: ui_listproyectosbase.h:159 ui_proyectobase.h:265 ui_proyectobase.h:277
-msgid "Ctrl+D"
-msgstr ""
-
-#: ui_listproyectosbase.h:171
-msgid "F5"
-msgstr ""
-
-#: ui_proyectobase.h:240
+#: ui_proyectobase.h:241
 msgid "Nuevo proyecto"
 msgstr ""
 
-#: ui_proyectobase.h:244 ui_proyectobase.h:249
+#: ui_proyectobase.h:244 ui_proyectobase.h:247
 msgid "Guardar Proyecto"
 msgstr ""
 
-#: ui_proyectobase.h:253
+#: ui_proyectobase.h:250
 msgid "Ctrl+S"
 msgstr ""
 
-#: ui_proyectobase.h:256 ui_proyectobase.h:261 ui_proyectobase.h:268
-#: ui_proyectobase.h:273
+#: ui_proyectobase.h:252 ui_proyectobase.h:255 ui_proyectobase.h:260
+#: ui_proyectobase.h:263
 msgid "Borrar proyecto"
 msgstr ""
 
-#: ui_proyectobase.h:278
+#: ui_proyectobase.h:258 ui_proyectobase.h:266 ui_listproyectosbase.h:152
+msgid "Ctrl+D"
+msgstr ""
+
+#: ui_proyectobase.h:267
 msgid "General"
 msgstr ""
 
-#: ui_proyectobase.h:279
+#: ui_proyectobase.h:268
 msgid "Gastos"
 msgstr ""
 
-#: ui_proyectobase.h:280
+#: ui_proyectobase.h:269
 msgid "Ingresos"
 msgstr ""
 
-#: ui_proyectobase.h:281
+#: ui_proyectobase.h:270
 msgid "&Aceptar"
 msgstr ""
 
-#: ui_proyectobase.h:282
+#: ui_proyectobase.h:271
 msgid "&Cancelar"
+msgstr ""
+
+#: ui_listproyectosbase.h:136
+msgid "Listado de Proyectos"
+msgstr ""
+
+#: ui_listproyectosbase.h:138 ui_listproyectosbase.h:141
+msgid "Nueva amortizacion"
+msgstr ""
+
+#: ui_listproyectosbase.h:144
+msgid "Ctrl+N"
+msgstr ""
+
+#: ui_listproyectosbase.h:146 ui_listproyectosbase.h:149
+#: ui_listproyectosbase.h:154 ui_listproyectosbase.h:157
+msgid "Borrar amortizacion"
+msgstr ""
+
+#: ui_listproyectosbase.h:160
+msgid "F5"
 msgstr ""

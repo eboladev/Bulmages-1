@@ -19,52 +19,24 @@ msgstr ""
 "X-Generator: Translate Toolkit 1.1.1\n"
 
 #: ui_listcuotasporalumnobase.h:119 ui_alumnobase.h:526
-#, fuzzy
 msgid "&Aceptar"
-msgstr ""
-"#-#-#-#-#  bulmacont_ca2.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"#-#-#-#-#  bulmacont_ca.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"&Accepta\n"
-"#-#-#-#-#  bulmacont_ca.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"D'&acord\n"
-"#-#-#-#-#  bulmacont_ca.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"&Accepta\n"
-"#-#-#-#-#  bulmacont_ca.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"&Accepta\n"
-"#-#-#-#-#  bulmacont_ca.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"&Accepta\n"
-"#-#-#-#-#  bulmacont_ca.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"&Accepta\n"
-"#-#-#-#-#  bulmacont_ca.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"&Accepta\n"
-"#-#-#-#-#  bulmages_ca.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"#-#-#-#-#  - (PACKAGE VERSION)  #-#-#-#-#\n"
-"D'&acord\n"
-"#-#-#-#-#  - (PACKAGE VERSION)  #-#-#-#-#\n"
-"&Accepta\n"
-"#-#-#-#-#  - (PACKAGE VERSION)  #-#-#-#-#\n"
-"&Accepta"
+msgstr "&Acceptar"
 
 #: pluginbf_alumno.cpp:129
 msgid "&Alumnos"
 msgstr "&Alumnes"
 
 #: ui_listcuotasporalumnobase.h:120 ui_alumnobase.h:527
-#, fuzzy
 msgid "&Cancelar"
-msgstr ""
-"#-#-#-#-#  bulmages_ca.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"&Cancel·la\n"
-"#-#-#-#-#  bulmalib_ca_ES.UTF-8.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"&Cancel·lar"
+msgstr "&Cancel·lar"
 
 #: pluginbf_alumno.cpp:162
 msgid "&Clases"
-msgstr ""
+msgstr "&Clases"
 
 #: pluginbf_alumno.cpp:151
 msgid "&Cuotas Socio"
-msgstr ""
+msgstr "&Quotes soci"
 
 #: ui_alumnobase.h:515
 #, fuzzy
@@ -76,9 +48,8 @@ msgid "&No"
 msgstr "&No"
 
 #: pluginbf_alumno.cpp:137
-#, fuzzy
 msgid "&Nuevo alumno"
-msgstr "Nou assentament"
+msgstr "&Nou alumne"
 
 #: claseview.cpp:199
 msgid "&Si"
@@ -110,7 +81,7 @@ msgstr "Actiu"
 
 #: ui_alumnoslistbase.h:365 ui_alumnoslistbase.h:368
 msgid "Actualizar listado"
-msgstr "Actual·litza llistat"
+msgstr "Actual·litzar llistat"
 
 #: alumnoview.cpp:53
 #, fuzzy
@@ -125,40 +96,40 @@ msgstr "Alumnes"
 #: ui_alumnoslistbase.h:310
 #, fuzzy
 msgid "Banco:"
-msgstr "Banc:"
+msgstr "Banc"
 
 #: alumnoslist.cpp:229 ui_alumnoslistbase.h:333 ui_alumnoslistbase.h:336
 #, fuzzy
 msgid "Borrar Alumno"
-msgstr "Esborra quota"
+msgstr "Esborra alumne"
 
 #: ui_clasebase.h:224 ui_clasebase.h:227
 msgid "Borrar Tipo de Actividad"
-msgstr ""
+msgstr "Esborrar tipus d'activitat"
 
 #: ui_alumnobase.h:469 ui_alumnobase.h:472 ui_alumnobase.h:477
 #: ui_alumnobase.h:480
 #, fuzzy
 msgid "Borrar cobro"
-msgstr "Esborra quota"
+msgstr "Esborra cobrament"
 
 #: ui_alumnobase.h:519
 #, fuzzy
 msgid "Borrar imagen"
-msgstr "Esborra assentament"
+msgstr "Esborrar imatge"
 
 #: alumnoview.cpp:287
 msgid "Borrar imagen del alumno"
-msgstr ""
+msgstr "Esborrar imatge de l'alumne"
 
 #: ui_alumnoslistbase.h:372
 msgid "Buscar:"
-msgstr "Cerca:"
+msgstr "Cerca"
 
 #: ui_alumnobase.h:517
 #, fuzzy
 msgid "Cam&biar imagen"
-msgstr "Canviar compte"
+msgstr "Canviar imatge"
 
 #: claseview.cpp:44 alumnoview.cpp:67
 msgid "Clase"
@@ -166,33 +137,33 @@ msgstr "Classe"
 
 #: ui_alumnobase.h:514
 msgid "Clase:"
-msgstr ""
+msgstr "Classe"
 
 #: pluginbf_alumno.cpp:164 pluginbf_alumno.cpp:165
 msgid "Clases"
-msgstr ""
+msgstr "Classes"
 
 #: ui_alumnoslistbase.h:314
 #, fuzzy
 msgid "Cobros efectivos"
-msgstr "Correo electrònic:"
+msgstr "Correu electrònic:"
 
 #: ui_alumnoslistbase.h:313
 #, fuzzy
 msgid "Cobros previstos"
-msgstr "&Cobraments i pagaments"
+msgstr "&Cobraments previstos"
 
 #: ui_alumnobase.h:522
 msgid "Comentarios:"
-msgstr "Comentaris:"
+msgstr "Comentaris"
 
 #: ui_alumnoslistbase.h:357 ui_alumnoslistbase.h:360
 msgid "Configurar listado"
-msgstr "Configura llistat"
+msgstr "Configurar llistat"
 
 #: ui_alumnobase.h:512
 msgid "Correo electronico:"
-msgstr "Correo electrònic:"
+msgstr "Correu electrònic"
 
 #: ui_alumnoslistbase.h:363
 msgid "Ctrl+B"
@@ -232,7 +203,7 @@ msgstr "Quota"
 
 #: ui_listcuotasporalumnobase.h:118
 msgid "Cuotas Socio"
-msgstr ""
+msgstr "Quotes soci"
 
 #: pluginbf_alumno.cpp:153 pluginbf_alumno.cpp:154
 msgid "Cuotas por alumno"
@@ -240,11 +211,11 @@ msgstr "Quotes per alumne"
 
 #: listcuotasporalumnoview.cpp:49
 msgid "CuotasPorAlumno"
-msgstr "Quotes Per Alumne"
+msgstr "Quotes per alumne"
 
 #: ui_alumnobase.h:499
 msgid "DNI"
-msgstr ""
+msgstr "DNI"
 
 #: alumnoslist.cpp:212
 #, fuzzy
@@ -267,15 +238,15 @@ msgstr "e-mail"
 #: alumnoslist.cpp:228 ui_alumnoslistbase.h:325 ui_alumnoslistbase.h:328
 #, fuzzy
 msgid "Editar Alumno"
-msgstr "Editar Alumne"
+msgstr "Editar alumne"
 
 #: pluginbf_alumno.cpp:299 pluginbf_alumno.cpp:316
 msgid "Editar alumno"
-msgstr ""
+msgstr "Editar alumne"
 
 #: claseview.cpp:254
 msgid "Error al borrar el Clase"
-msgstr ""
+msgstr "Error al esborrar la classe"
 
 #: alumnoslist.cpp:184
 msgid "Error al borrar el cobro a cliente"
@@ -284,15 +255,15 @@ msgstr "Error al esborrar el cobrament a client"
 #: alumnoview.cpp:90
 #, fuzzy
 msgid "Error al crear el alumno"
-msgstr "Error en la càrrega de l'amortizació"
+msgstr "Error al crear l'alumne"
 
 #: claseview.cpp:229
 msgid "Error al crear un nuevo Clase"
-msgstr ""
+msgstr "Error al crear una nova classe"
 
 #: claseview.cpp:178
 msgid "Error al guardar el clase"
-msgstr ""
+msgstr "Error al desar la classe"
 
 #: listcuotasporalumnoview.cpp:71
 msgid "Error al guardar las cuotas"
@@ -302,7 +273,7 @@ msgstr "Error al desar les quotes"
 msgid ""
 "Esta seguro que quiere borrar\n"
 "la imagen asociada a este alumno?"
-msgstr ""
+msgstr "Esta segur que vol esborrar la imatge asociada a aquest alumne?"
 
 #: alumnoslist.cpp:277
 msgid "F. Nacimiento"
@@ -318,20 +289,20 @@ msgstr "Data Neixement"
 
 #: ui_alumnoslistbase.h:311
 msgid "Fecha final:"
-msgstr "Data final:"
+msgstr "Data final"
 
 #: ui_alumnoslistbase.h:312
 msgid "Fecha inicial:"
-msgstr "Data inicial:"
+msgstr "Data inicial"
 
 #: ui_alumnobase.h:500
 msgid "Fecha nacimiento:"
-msgstr "Data neixement:"
+msgstr "Data neixement"
 
 #: ui_alumnoslistbase.h:349 ui_alumnoslistbase.h:352
 #, fuzzy
 msgid "Filtrar Alumnos"
-msgstr "Filtrar balanç"
+msgstr "Filtrar alumnes"
 
 #: ui_alumnobase.h:516
 msgid "Fotografia"
@@ -343,29 +314,29 @@ msgstr "General"
 
 #: ui_clasebase.h:231 ui_clasebase.h:234
 msgid "Guardar Tipo de Actividad"
-msgstr ""
+msgstr "Desar tipus d'activitat"
 
 #: ui_alumnobase.h:461 ui_alumnobase.h:464
 #, fuzzy
 msgid "Guardar cobro"
-msgstr "Desa arxiu"
+msgstr "Desar cobrament"
 
 #: claseview.cpp:197
 msgid "Guardar datos del clase"
-msgstr ""
+msgstr "Guardar dades de la classe"
 
 #: alumnoview.cpp:356
 msgid "Id actividad"
-msgstr "Id activitat"
+msgstr "Id. activitat"
 
 #: alumnoview.cpp:56 alumnoview.cpp:321 alumnoview.cpp:354 alumnoslist.cpp:273
 #, fuzzy
 msgid "Id alumno"
-msgstr "Id apunt"
+msgstr "Id. alumne"
 
 #: alumnoview.cpp:324
 msgid "Id tutor"
-msgstr "Id tutor"
+msgstr "Id. tutor"
 
 #: alumnoview.cpp:320 alumnoview.cpp:353
 msgid "Identificador"
@@ -378,15 +349,15 @@ msgstr "Imatges (*.jpg)"
 #: ui_alumnoslistbase.h:341 ui_alumnoslistbase.h:344
 #, fuzzy
 msgid "Imprimir listado"
-msgstr "Imprimeix la comanda"
+msgstr "Imprimeix el llistat"
 
 #: ui_clasebase.h:222
 msgid "Lista de Tipos:"
-msgstr ""
+msgstr "Llista de tipus"
 
 #: alumnoview.cpp:62
 msgid "Movil"
-msgstr ""
+msgstr "Mòbil"
 
 #: alumnoview.cpp:296
 #, fuzzy
@@ -399,7 +370,7 @@ msgstr "&No."
 msgid ""
 "No se ha podido borrar la imagen del alumno.\n"
 "Compruebe que el archivo tenga los permisos correctos."
-msgstr ""
+msgstr "No s'ha pogut esborrar la imatge de l'alumne. \n Combrobi que l'arxiu tingui els permisos necessaris."
 
 #: alumnoview.cpp:261
 #, fuzzy
@@ -427,34 +398,33 @@ msgstr "Nom activitat"
 #: alumnoview.cpp:57 alumnoview.cpp:58
 #, fuzzy
 msgid "Nombre del alumno"
-msgstr "Nom d'usuari:"
+msgstr "Nom de l'alumne"
 
 #: alumnoview.cpp:322
 msgid "Nombre tutor"
-msgstr ""
+msgstr "Nom tutor"
 
 #: ui_clasebase.h:244 ui_alumnobase.h:507
 msgid "Nombre:"
-msgstr "Nom:"
+msgstr "Nom"
 
 #: ui_alumnoslistbase.h:317 ui_alumnoslistbase.h:320 ui_alumnobase.h:458
 #, fuzzy
 msgid "Nuevo Alumno"
-msgstr "Nou assentament"
+msgstr "Nou alumne"
 
 #: ui_clasebase.h:238 ui_clasebase.h:241
 msgid "Nuevo Tipo de Actividad"
-msgstr ""
+msgstr "Nou tipus d'activitat"
 
 #: pluginbf_alumno.cpp:139 pluginbf_alumno.cpp:140 pluginbf_alumno.cpp:297
 #: pluginbf_alumno.cpp:322
-#, fuzzy
 msgid "Nuevo alumno"
-msgstr "Nou assentament"
+msgstr "Nou alumne"
 
 #: listcuotasporalumnoview.cpp:97
 msgid "Número de alumnos"
-msgstr ""
+msgstr "Nombre d'alumnes"
 
 #: alumnoview.cpp:63
 msgid "Observaciones"
@@ -474,7 +444,7 @@ msgstr "Percentual"
 
 #: pluginbf_alumno.cpp:301 pluginbf_alumno.cpp:320
 msgid "Seleccionar alumno"
-msgstr ""
+msgstr "Seleccionar alumne"
 
 #: alumnoview.cpp:252
 #, fuzzy
@@ -491,11 +461,11 @@ msgstr "Telèfon"
 
 #: ui_alumnobase.h:511
 msgid "Telefono fijo:"
-msgstr "Telèfon fix:"
+msgstr "Telèfon fix"
 
 #: ui_alumnobase.h:510
 msgid "Telefono movil:"
-msgstr "Telèfon mòbil:"
+msgstr "Telèfon mòbil"
 
 #: alumnoview.cpp:122
 msgid "Tiene que guardar el documento antes de poder imprimirlo."
@@ -503,7 +473,7 @@ msgstr "Ha de desar el document abans de poder imprimir-lo"
 
 #: ui_clasebase.h:221
 msgid "Tipos de Actividad"
-msgstr ""
+msgstr "Tipus d'activitat"
 
 #~ msgid "&Cuotas por Alumno"
 #~ msgstr "&Quotes per alumne"

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-05-12 23:58+0200\n"
+"POT-Creation-Date: 2009-10-30 16:10+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -20,66 +20,66 @@ msgstr ""
 msgid "Cobrar"
 msgstr ""
 
-#: ui_cobrarbase.h:445
+#: ui_cobrarbase.h:446
 msgid "Dialog"
 msgstr ""
 
-#: ui_cobrarbase.h:446
+#: ui_cobrarbase.h:447
 msgid "Total a cobrar:"
 msgstr ""
 
-#: ui_cobrarbase.h:448
+#: ui_cobrarbase.h:449
 msgid "Entregado:"
 msgstr ""
 
-#: ui_cobrarbase.h:450
+#: ui_cobrarbase.h:451
 msgid "A devolver:"
 msgstr ""
 
-#: ui_cobrarbase.h:452
+#: ui_cobrarbase.h:453
 msgid "7"
 msgstr ""
 
-#: ui_cobrarbase.h:453
+#: ui_cobrarbase.h:454
 msgid "8"
 msgstr ""
 
-#: ui_cobrarbase.h:454
+#: ui_cobrarbase.h:455
 msgid "9"
 msgstr ""
 
-#: ui_cobrarbase.h:455
+#: ui_cobrarbase.h:456
 msgid "4"
 msgstr ""
 
-#: ui_cobrarbase.h:456
+#: ui_cobrarbase.h:457
 msgid "5"
 msgstr ""
 
-#: ui_cobrarbase.h:457
+#: ui_cobrarbase.h:458
 msgid "6"
 msgstr ""
 
-#: ui_cobrarbase.h:458
+#: ui_cobrarbase.h:459
 msgid "1"
 msgstr ""
 
-#: ui_cobrarbase.h:459
+#: ui_cobrarbase.h:460
 msgid "2"
 msgstr ""
 
-#: ui_cobrarbase.h:460
+#: ui_cobrarbase.h:461
 msgid "3"
 msgstr ""
 
-#: ui_cobrarbase.h:461
+#: ui_cobrarbase.h:462
 msgid "0"
 msgstr ""
 
-#: ui_cobrarbase.h:462
+#: ui_cobrarbase.h:463
 msgid "00"
 msgstr ""
 
-#: ui_cobrarbase.h:463
+#: ui_cobrarbase.h:464
 msgid "C"
 msgstr ""

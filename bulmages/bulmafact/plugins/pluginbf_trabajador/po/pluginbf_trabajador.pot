@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-05-12 23:58+0200\n"
+"POT-Creation-Date: 2009-10-30 16:10+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -21,7 +21,7 @@ msgid "&Trabajadores"
 msgstr ""
 
 #: pluginbf_trabajador.cpp:84 pluginbf_trabajador.cpp:85
-#: ui_trabajadorbase.h:339
+#: ui_trabajadorbase.h:340
 msgid "Trabajadores"
 msgstr ""
 
@@ -29,94 +29,94 @@ msgstr ""
 msgid "Trabajador"
 msgstr ""
 
-#: trabajadorview.cpp:204
+#: trabajadorview.cpp:205
 msgid "Error al guardar el trabajador"
 msgstr ""
 
-#: trabajadorview.cpp:221
+#: trabajadorview.cpp:222
 msgid "Guardar datos del trabajador"
 msgstr ""
 
-#: trabajadorview.cpp:222
+#: trabajadorview.cpp:223
 msgid "Desea guardar los cambios?"
 msgstr ""
 
-#: trabajadorview.cpp:223
+#: trabajadorview.cpp:224
 msgid "&Si"
 msgstr ""
 
-#: trabajadorview.cpp:223
+#: trabajadorview.cpp:224
 msgid "&No"
 msgstr ""
 
-#: trabajadorview.cpp:253
+#: trabajadorview.cpp:254
 msgid "Error al crear un nuevo Trabajador"
 msgstr ""
 
-#: trabajadorview.cpp:278
+#: trabajadorview.cpp:279
 msgid "Error al borrar el Trabajador"
 msgstr ""
 
-#: trabajadorview.cpp:292
+#: trabajadorview.cpp:293
 msgid "Seleccione archivo"
 msgstr ""
 
-#: trabajadorview.cpp:294
+#: trabajadorview.cpp:295
 msgid "Imagenes (*.jpg)"
 msgstr ""
 
-#: ui_trabajadorbase.h:340
+#: ui_trabajadorbase.h:341
 msgid "Telefono:"
 msgstr ""
 
-#: ui_trabajadorbase.h:341
+#: ui_trabajadorbase.h:342
 msgid "Activo"
 msgstr ""
 
-#: ui_trabajadorbase.h:342
+#: ui_trabajadorbase.h:343
 msgid "Nombre:"
 msgstr ""
 
-#: ui_trabajadorbase.h:343
+#: ui_trabajadorbase.h:344
 msgid "Direccion:"
 msgstr ""
 
-#: ui_trabajadorbase.h:344
+#: ui_trabajadorbase.h:345
 msgid "Numero de la Seguridad Social:"
 msgstr ""
 
-#: ui_trabajadorbase.h:345
+#: ui_trabajadorbase.h:346
 msgid "Apellidos:"
 msgstr ""
 
-#: ui_trabajadorbase.h:346
+#: ui_trabajadorbase.h:347
 msgid "Cambiar imagen"
 msgstr ""
 
-#: ui_trabajadorbase.h:347
+#: ui_trabajadorbase.h:348
 msgid "Telefono movil:"
 msgstr ""
 
-#: ui_trabajadorbase.h:348
+#: ui_trabajadorbase.h:349
 msgid "E-mail:"
 msgstr ""
 
-#: ui_trabajadorbase.h:349
+#: ui_trabajadorbase.h:350
 msgid "General"
 msgstr ""
 
-#: ui_trabajadorbase.h:350
+#: ui_trabajadorbase.h:351
 msgid "Lista de trabajadores:"
 msgstr ""
 
-#: ui_trabajadorbase.h:353 ui_trabajadorbase.h:358
+#: ui_trabajadorbase.h:353 ui_trabajadorbase.h:356
 msgid "Borrar trabajador"
 msgstr ""
 
-#: ui_trabajadorbase.h:364 ui_trabajadorbase.h:369
+#: ui_trabajadorbase.h:360 ui_trabajadorbase.h:363
 msgid "Guardar trabajador"
 msgstr ""
 
-#: ui_trabajadorbase.h:375 ui_trabajadorbase.h:380
+#: ui_trabajadorbase.h:367 ui_trabajadorbase.h:370
 msgid "Nuevo trabajador"
 msgstr ""

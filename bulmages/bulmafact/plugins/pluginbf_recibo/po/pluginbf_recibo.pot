@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-10-19 01:16+0200\n"
+"POT-Creation-Date: 2009-10-30 16:45+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -65,11 +65,11 @@ msgstr ""
 msgid "Cantidad"
 msgstr ""
 
-#: reciboslist.cpp:343 reciboview.cpp:57 ui_recibobase.h:349
+#: reciboslist.cpp:343 reciboview.cpp:57 ui_recibobase.h:381
 msgid "Pagado"
 msgstr ""
 
-#: reciboslist.cpp:344 ui_recibobase.h:350
+#: reciboslist.cpp:344 ui_recibobase.h:384
 msgid "Fecha"
 msgstr ""
 
@@ -77,7 +77,7 @@ msgstr ""
 msgid "ID Tutor"
 msgstr ""
 
-#: reciboslist.cpp:346 ui_recibobase.h:351
+#: reciboslist.cpp:346 ui_recibobase.h:383
 msgid "Forma de Pago"
 msgstr ""
 
@@ -169,52 +169,64 @@ msgstr ""
 msgid "Tiene que guardar el documento antes de poder imprimirlo."
 msgstr ""
 
-#: ui_recibobase.h:323
+#: reciboview.cpp:208
+msgid "Recibo reemitido"
+msgstr ""
+
+#: ui_recibobase.h:347
 msgid "Nuevo Recibo"
 msgstr ""
 
-#: ui_recibobase.h:326 ui_recibobase.h:329
+#: ui_recibobase.h:350 ui_recibobase.h:353
 msgid "Guardar cobro"
 msgstr ""
 
-#: ui_recibobase.h:332
+#: ui_recibobase.h:356
 msgid "Ctrl+S"
 msgstr ""
 
-#: ui_recibobase.h:334 ui_recibobase.h:337 ui_recibobase.h:342
-#: ui_recibobase.h:345
+#: ui_recibobase.h:358 ui_recibobase.h:361 ui_recibobase.h:366
+#: ui_recibobase.h:369
 msgid "Borrar cobro"
 msgstr ""
 
-#: ui_recibobase.h:340 ui_reciboslistbase.h:334
+#: ui_recibobase.h:364 ui_reciboslistbase.h:334
 msgid "Ctrl+D"
 msgstr ""
 
-#: ui_recibobase.h:348
+#: ui_recibobase.h:372 ui_recibobase.h:380
 msgid "Ctrl+I"
 msgstr ""
 
-#: ui_recibobase.h:352
+#: ui_recibobase.h:374 ui_recibobase.h:377
+msgid "Reemitir Recibo"
+msgstr ""
+
+#: ui_recibobase.h:382
+msgid "Devuelto"
+msgstr ""
+
+#: ui_recibobase.h:385
 msgid "Total"
 msgstr ""
 
-#: ui_recibobase.h:353
+#: ui_recibobase.h:386
 msgid "&Datos generales"
 msgstr ""
 
-#: ui_recibobase.h:354
+#: ui_recibobase.h:387
 msgid "Comentarios:"
 msgstr ""
 
-#: ui_recibobase.h:355
+#: ui_recibobase.h:388
 msgid "Otros datos"
 msgstr ""
 
-#: ui_recibobase.h:356
+#: ui_recibobase.h:389
 msgid "&Aceptar"
 msgstr ""
 
-#: ui_recibobase.h:357
+#: ui_recibobase.h:390
 msgid "&Cancelar"
 msgstr ""
 

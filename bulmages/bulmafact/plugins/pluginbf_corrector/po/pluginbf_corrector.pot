@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-05-12 23:58+0200\n"
+"POT-Creation-Date: 2009-10-30 16:11+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -16,70 +16,70 @@ msgstr ""
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: ui_correctorbase.h:92
-msgid "Corrector"
-msgstr ""
-
-#: ui_correctorbase.h:95 ui_correctorbase.h:100
-msgid "Corregir"
-msgstr ""
-
-#: ui_correctorbase.h:106 ui_correctorbase.h:111
-msgid "Configurar"
-msgstr ""
-
-#: ui_confreglasbase.h:275
+#: ui_confreglasbase.h:276
 msgid "Reglas de Corrector"
 msgstr ""
 
-#: ui_confreglasbase.h:279
+#: ui_confreglasbase.h:280
 msgid "Regla:"
 msgstr ""
 
-#: ui_confreglasbase.h:280
+#: ui_confreglasbase.h:281
 msgid "Comprobacion por asientos"
 msgstr ""
 
-#: ui_confreglasbase.h:281
+#: ui_confreglasbase.h:282
 msgid "Condicion:"
 msgstr ""
 
-#: ui_confreglasbase.h:282
+#: ui_confreglasbase.h:283
 msgid "Deben existir registros que cumplan esta condicion en el periodo"
 msgstr ""
 
-#: ui_confreglasbase.h:283
+#: ui_confreglasbase.h:284
 msgid "Apunte con Cuenta"
 msgstr ""
 
-#: ui_confreglasbase.h:284
+#: ui_confreglasbase.h:285
 msgid "Apunte con Saldo"
 msgstr ""
 
-#: ui_confreglasbase.h:287
+#: ui_confreglasbase.h:288
 msgid "igual"
 msgstr ""
 
-#: ui_confreglasbase.h:288
+#: ui_confreglasbase.h:289
 msgid "menor"
 msgstr ""
 
-#: ui_confreglasbase.h:289
+#: ui_confreglasbase.h:290
 msgid "mayor"
 msgstr ""
 
-#: ui_confreglasbase.h:291
+#: ui_confreglasbase.h:292
 msgid "Apunte con Descripcion"
 msgstr ""
 
-#: ui_confreglasbase.h:292
+#: ui_confreglasbase.h:293
 msgid "Reglas sobre Apuntes"
 msgstr ""
 
-#: ui_confreglasbase.h:293
+#: ui_confreglasbase.h:294
 msgid "Periodicidad"
 msgstr ""
 
-#: ui_confreglasbase.h:294
+#: ui_confreglasbase.h:295
 msgid "Cerrar"
+msgstr ""
+
+#: ui_correctorbase.h:93
+msgid "Corrector"
+msgstr ""
+
+#: ui_correctorbase.h:95 ui_correctorbase.h:98
+msgid "Corregir"
+msgstr ""
+
+#: ui_correctorbase.h:102 ui_correctorbase.h:105
+msgid "Configurar"
 msgstr ""

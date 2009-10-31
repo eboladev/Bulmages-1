@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-05-12 23:58+0200\n"
+"POT-Creation-Date: 2009-10-30 16:10+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -60,34 +60,34 @@ msgstr ""
 msgid "Disponible en stock"
 msgstr ""
 
-#: ui_articulosubformbase.h:218
+#: ui_articulosubformbase.h:219
 msgid "Articulos"
 msgstr ""
 
-#: ui_articulosubformbase.h:219
+#: ui_articulosubformbase.h:220
 msgid "Solo usados"
 msgstr ""
 
-#: ui_articulosubformbase.h:221
+#: ui_articulosubformbase.h:222
 msgid "S&olo presentables"
 msgstr ""
 
-#: ui_articulosubformbase.h:222
+#: ui_articulosubformbase.h:223
 msgid "Alt+O"
 msgstr ""
 
-#: ui_articulosubformbase.h:226 ui_articulosubformbase.h:231
+#: ui_articulosubformbase.h:226 ui_articulosubformbase.h:229
 msgid "Filtrar listado"
 msgstr ""
 
-#: ui_articulosubformbase.h:237 ui_articulosubformbase.h:242
+#: ui_articulosubformbase.h:233 ui_articulosubformbase.h:236
 msgid "Configurar listado"
 msgstr ""
 
-#: ui_articulosubformbase.h:248 ui_articulosubformbase.h:253
+#: ui_articulosubformbase.h:240 ui_articulosubformbase.h:243
 msgid "Actualizar listado"
 msgstr ""
 
-#: ui_articulosubformbase.h:257
+#: ui_articulosubformbase.h:246
 msgid "Buscar:"
 msgstr ""

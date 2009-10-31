@@ -8,21 +8,13 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-05-12 23:58+0200\n"
+"POT-Creation-Date: 2009-10-30 16:11+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
-
-#: pluginbf_compraventa.cpp:78
-msgid "&CompraVenta"
-msgstr ""
-
-#: pluginbf_compraventa.cpp:79 pluginbf_compraventa.cpp:80
-msgid "CompraVenta"
-msgstr ""
 
 #: compraventaview.cpp:66
 msgid "Id albaran proveedor"
@@ -108,7 +100,7 @@ msgstr ""
 msgid "Trabajador"
 msgstr ""
 
-#: compraventaview.cpp:93 ui_compraventabase.h:915
+#: compraventaview.cpp:93 ui_compraventabase.h:882
 msgid "Procesado"
 msgstr ""
 
@@ -176,135 +168,143 @@ msgstr ""
 msgid "Error inesperado en la impresion"
 msgstr ""
 
-#: ui_compraventabase.h:821
+#: pluginbf_compraventa.cpp:78
+msgid "&CompraVenta"
+msgstr ""
+
+#: pluginbf_compraventa.cpp:79 pluginbf_compraventa.cpp:80
+msgid "CompraVenta"
+msgstr ""
+
+#: ui_compraventabase.h:820
 msgid "Hoja de Compra Venta"
 msgstr ""
 
-#: ui_compraventabase.h:824 ui_compraventabase.h:829
+#: ui_compraventabase.h:822 ui_compraventabase.h:825
 msgid "Guardar albaran"
 msgstr ""
 
-#: ui_compraventabase.h:835 ui_compraventabase.h:840
+#: ui_compraventabase.h:829 ui_compraventabase.h:832
 msgid "Borrar albaran"
 msgstr ""
 
-#: ui_compraventabase.h:846 ui_compraventabase.h:851
+#: ui_compraventabase.h:836 ui_compraventabase.h:839
 msgid "Imprimir albaran"
 msgstr ""
 
-#: ui_compraventabase.h:857 ui_compraventabase.h:862
+#: ui_compraventabase.h:843 ui_compraventabase.h:846
 msgid "Ver pedidos con la misma referencia"
 msgstr ""
 
-#: ui_compraventabase.h:868 ui_compraventabase.h:873
+#: ui_compraventabase.h:850 ui_compraventabase.h:853
 msgid "Generar factura a partir de este albaran"
 msgstr ""
 
-#: ui_compraventabase.h:879 ui_compraventabase.h:884
+#: ui_compraventabase.h:857 ui_compraventabase.h:860
 msgid "Agregar a factura"
 msgstr ""
 
-#: ui_compraventabase.h:890 ui_compraventabase.h:895
+#: ui_compraventabase.h:864 ui_compraventabase.h:867
 msgid "Registrar cobro a cliente"
 msgstr ""
 
-#: ui_compraventabase.h:899
+#: ui_compraventabase.h:870
 msgid "Referencia:"
 msgstr ""
 
-#: ui_compraventabase.h:902 ui_compraventabase.h:907
+#: ui_compraventabase.h:872 ui_compraventabase.h:875
 msgid "Mostrar/ocultar cabecera"
 msgstr ""
 
-#: ui_compraventabase.h:911
+#: ui_compraventabase.h:878
 msgid "Descripcion:"
 msgstr ""
 
-#: ui_compraventabase.h:912
+#: ui_compraventabase.h:879
 msgid "Numero de albaran:"
 msgstr ""
 
-#: ui_compraventabase.h:913
+#: ui_compraventabase.h:880
 msgid "&Aceptar"
 msgstr ""
 
-#: ui_compraventabase.h:914
+#: ui_compraventabase.h:881
 msgid "&Cancelar"
 msgstr ""
 
-#: ui_compraventabase.h:916
+#: ui_compraventabase.h:883
 msgid "Trabajador:"
 msgstr ""
 
-#: ui_compraventabase.h:917
+#: ui_compraventabase.h:884
 msgid "Fecha de creacion:"
 msgstr ""
 
-#: ui_compraventabase.h:918
+#: ui_compraventabase.h:885
 msgid "Persona de contacto:"
 msgstr ""
 
-#: ui_compraventabase.h:919
+#: ui_compraventabase.h:886
 msgid "Forma de pago:"
 msgstr ""
 
-#: ui_compraventabase.h:920
+#: ui_compraventabase.h:887
 msgid "Telefono de contacto:"
 msgstr ""
 
-#: ui_compraventabase.h:921
+#: ui_compraventabase.h:888
 msgid "Almacen:"
 msgstr ""
 
-#: ui_compraventabase.h:922
+#: ui_compraventabase.h:889
 msgid "&Detalle Ventas"
 msgstr ""
 
-#: ui_compraventabase.h:923 ui_compraventabase.h:940
+#: ui_compraventabase.h:890 ui_compraventabase.h:907
 msgid "Descuen&tos"
 msgstr ""
 
-#: ui_compraventabase.h:924 ui_compraventabase.h:941
+#: ui_compraventabase.h:891 ui_compraventabase.h:908
 msgid "Comentarios publicos:"
 msgstr ""
 
-#: ui_compraventabase.h:925 ui_compraventabase.h:942
+#: ui_compraventabase.h:892 ui_compraventabase.h:909
 msgid "Comentarios privados:"
 msgstr ""
 
-#: ui_compraventabase.h:926 ui_compraventabase.h:943
+#: ui_compraventabase.h:893 ui_compraventabase.h:910
 msgid "Comentario&s"
 msgstr ""
 
-#: ui_compraventabase.h:927
+#: ui_compraventabase.h:894
 msgid "Descuentos:"
 msgstr ""
 
-#: ui_compraventabase.h:928
+#: ui_compraventabase.h:895
 msgid "Base imponible:"
 msgstr ""
 
-#: ui_compraventabase.h:929
+#: ui_compraventabase.h:896
 msgid "I.R.P.F.:"
 msgstr ""
 
-#: ui_compraventabase.h:930
+#: ui_compraventabase.h:897
 msgid "Impuestos:"
 msgstr ""
 
-#: ui_compraventabase.h:931
+#: ui_compraventabase.h:898
 msgid "R.E.:"
 msgstr ""
 
-#: ui_compraventabase.h:932
+#: ui_compraventabase.h:899
 msgid "Total:"
 msgstr ""
 
-#: ui_compraventabase.h:933 ui_compraventabase.h:934 ui_compraventabase.h:935
-#: ui_compraventabase.h:936 ui_compraventabase.h:937 ui_compraventabase.h:938
+#: ui_compraventabase.h:900 ui_compraventabase.h:901 ui_compraventabase.h:902
+#: ui_compraventabase.h:903 ui_compraventabase.h:904 ui_compraventabase.h:905
 msgid "0.00"
 msgstr ""
 
-#: ui_compraventabase.h:939
+#: ui_compraventabase.h:906
 msgid "&Detalle Compras"
 msgstr ""

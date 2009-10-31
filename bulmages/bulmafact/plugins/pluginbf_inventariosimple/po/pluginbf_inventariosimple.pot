@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-10-20 14:02+0200\n"
+"POT-Creation-Date: 2009-10-30 16:11+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -16,14 +16,70 @@ msgstr ""
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: pluginbf_inventariosimple.cpp:76
+#: listinventariosimpleview.cpp:49
+msgid "InventarioSimple"
+msgstr ""
+
+#: listinventariosimpleview.cpp:72
+msgid "Error al guardar el inventario"
+msgstr ""
+
+#: listinventariosimpleview.cpp:98 pluginbf_inventariosimple.cpp:208
+msgid "Id Inventario"
+msgstr ""
+
+#: listinventariosimpleview.cpp:99 pluginbf_inventariosimple.cpp:209
+msgid "Nombre"
+msgstr ""
+
+#: listinventariosimpleview.cpp:100 pluginbf_inventariosimple.cpp:210
+msgid "Stock"
+msgstr ""
+
+#: pluginbf_inventariosimple.cpp:79
 msgid "&Articulos"
 msgstr ""
 
-#: pluginbf_inventariosimple.cpp:80
+#: pluginbf_inventariosimple.cpp:83
 msgid "&Inventarios"
 msgstr ""
 
-#: pluginbf_inventariosimple.cpp:81 pluginbf_inventariosimple.cpp:82
+#: pluginbf_inventariosimple.cpp:84 pluginbf_inventariosimple.cpp:85
 msgid "Inventarios"
+msgstr ""
+
+#: pluginbf_inventariosimple.cpp:120
+msgid "Id prestamo"
+msgstr ""
+
+#: pluginbf_inventariosimple.cpp:121
+msgid "Id Actividad"
+msgstr ""
+
+#: pluginbf_inventariosimple.cpp:122
+msgid "Id producto"
+msgstr ""
+
+#: pluginbf_inventariosimple.cpp:123
+msgid "Articulo"
+msgstr ""
+
+#: pluginbf_inventariosimple.cpp:124
+msgid "Fecha Prestamo"
+msgstr ""
+
+#: pluginbf_inventariosimple.cpp:125
+msgid "Cantidad"
+msgstr ""
+
+#: ui_listinventariosimplebase.h:118
+msgid "Inventario Simple"
+msgstr ""
+
+#: ui_listinventariosimplebase.h:119
+msgid "&Aceptar"
+msgstr ""
+
+#: ui_listinventariosimplebase.h:120
+msgid "&Cancelar"
 msgstr ""

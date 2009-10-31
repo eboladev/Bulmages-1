@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-05-12 23:58+0200\n"
+"POT-Creation-Date: 2009-10-30 16:11+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -20,10 +20,18 @@ msgstr ""
 msgid "Precio Coste"
 msgstr ""
 
-#: pluginbf_preciocoste.cpp:54
+#: pluginbf_preciocoste.cpp:54 pluginbf_preciocoste.cpp:212
 msgid "Margen"
 msgstr ""
 
 #: pluginbf_preciocoste.cpp:55
 msgid "Actualizar PVP"
+msgstr ""
+
+#: pluginbf_preciocoste.cpp:211
+msgid "P Coste"
+msgstr ""
+
+#: pluginbf_preciocoste.cpp:213
+msgid "Actualizar Margen"
 msgstr ""

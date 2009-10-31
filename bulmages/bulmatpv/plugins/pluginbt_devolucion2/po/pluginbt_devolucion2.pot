@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-05-12 23:59+0200\n"
+"POT-Creation-Date: 2009-10-30 16:10+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -20,7 +20,7 @@ msgstr ""
 msgid "Unds."
 msgstr ""
 
-#: devolucion2.cpp:229 devolucion2.cpp:244 ui_untitled.h:299 ui_untitled.h:306
+#: devolucion2.cpp:229 devolucion2.cpp:244 ui_untitled.h:302 ui_untitled.h:312
 msgid "Producto"
 msgstr ""
 
@@ -36,7 +36,7 @@ msgstr ""
 msgid "Linea"
 msgstr ""
 
-#: devolucion2.cpp:441
+#: devolucion2.cpp:439
 msgid "NO IMPLEMENTADO"
 msgstr ""
 
@@ -44,66 +44,66 @@ msgstr ""
 msgid "Articulo"
 msgstr ""
 
-#: ui_devolucion.h:378
+#: ui_devolucion.h:379
 msgid "Devoluciones"
 msgstr ""
 
-#: ui_devolucion.h:380 ui_untitled.h:293
+#: ui_devolucion.h:381 ui_untitled.h:294
 msgid "Cliente:"
 msgstr ""
 
-#: ui_devolucion.h:381 ui_devolucion.h:383 ui_untitled.h:294 ui_untitled.h:296
+#: ui_devolucion.h:382 ui_devolucion.h:384 ui_untitled.h:295 ui_untitled.h:297
 msgid "-"
 msgstr ""
 
-#: ui_devolucion.h:382 ui_untitled.h:295
+#: ui_devolucion.h:383 ui_untitled.h:296
 msgid "Fecha: del ticket"
 msgstr ""
 
-#: ui_devolucion.h:384 ui_untitled.h:297
+#: ui_devolucion.h:385 ui_untitled.h:298
 msgid "Lineas Ticket"
 msgstr ""
 
-#: ui_devolucion.h:385 ui_untitled.h:301
+#: ui_devolucion.h:386 ui_untitled.h:305
 msgid "->"
 msgstr ""
 
-#: ui_devolucion.h:386 ui_untitled.h:302
+#: ui_devolucion.h:387 ui_untitled.h:306
 msgid "<-"
 msgstr ""
 
-#: ui_devolucion.h:387 ui_untitled.h:303
+#: ui_devolucion.h:388 ui_untitled.h:307
 msgid "Todo"
 msgstr ""
 
-#: ui_devolucion.h:388 ui_untitled.h:304
+#: ui_devolucion.h:389 ui_untitled.h:308
 msgid "Lineas a devolver"
 msgstr ""
 
-#: ui_devolucion.h:389
+#: ui_devolucion.h:390
 msgid "A DEVOLVER"
 msgstr ""
 
-#: ui_devolucion.h:391 ui_untitled.h:308
+#: ui_devolucion.h:392 ui_untitled.h:315
 msgid "EFECTIVO"
 msgstr ""
 
-#: ui_devolucion.h:392 ui_untitled.h:309
+#: ui_devolucion.h:393 ui_untitled.h:316
 msgid "VALE"
 msgstr ""
 
-#: ui_devolucion.h:393 ui_untitled.h:310
+#: ui_devolucion.h:394 ui_untitled.h:317
 msgid "CANCELAR"
 msgstr ""
 
-#: ui_untitled.h:291
+#: ui_untitled.h:292
 msgid "Dialog"
 msgstr ""
 
-#: ui_untitled.h:298 ui_untitled.h:305
+#: ui_untitled.h:300 ui_untitled.h:310
 msgid "Und."
 msgstr ""
 
-#: ui_untitled.h:300 ui_untitled.h:307
+#: ui_untitled.h:304 ui_untitled.h:314
 msgid "Precio"
 msgstr ""

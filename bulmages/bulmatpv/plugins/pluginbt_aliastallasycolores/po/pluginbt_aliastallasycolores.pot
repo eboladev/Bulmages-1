@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-05-12 23:58+0200\n"
+"POT-Creation-Date: 2009-10-30 16:11+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -16,10 +16,10 @@ msgstr ""
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: pluginbt_aliastallasycolores.cpp:37 pluginbt_aliastallasycolores.cpp:39
+#: pluginbt_aliastallasycolores.cpp:39 pluginbt_aliastallasycolores.cpp:41
 msgid "Talla"
 msgstr ""
 
-#: pluginbt_aliastallasycolores.cpp:38 pluginbt_aliastallasycolores.cpp:40
+#: pluginbt_aliastallasycolores.cpp:40 pluginbt_aliastallasycolores.cpp:42
 msgid "Color"
 msgstr ""

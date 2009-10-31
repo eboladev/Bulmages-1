@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-05-12 23:58+0200\n"
+"POT-Creation-Date: 2009-10-30 16:10+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -84,50 +84,50 @@ msgstr ""
 msgid "Id albaran proveedor"
 msgstr ""
 
-#: ui_movimientosbase.h:264
+#: ui_movimientosbase.h:266
 msgid "Movimientos"
 msgstr ""
 
-#: ui_movimientosbase.h:268 ui_movimientosbase.h:273
+#: ui_movimientosbase.h:269 ui_movimientosbase.h:272
 msgid "Imprimir listado"
 msgstr ""
 
-#: ui_movimientosbase.h:277
+#: ui_movimientosbase.h:275
 msgid "Ctrl+P"
 msgstr ""
 
-#: ui_movimientosbase.h:280 ui_movimientosbase.h:285
+#: ui_movimientosbase.h:277 ui_movimientosbase.h:280
 msgid "Filtrar"
 msgstr ""
 
-#: ui_movimientosbase.h:289
+#: ui_movimientosbase.h:283
 msgid "Ctrl+F"
 msgstr ""
 
-#: ui_movimientosbase.h:292 ui_movimientosbase.h:297
+#: ui_movimientosbase.h:285 ui_movimientosbase.h:288
 msgid "Configurar listado"
 msgstr ""
 
-#: ui_movimientosbase.h:301
+#: ui_movimientosbase.h:291
 msgid "Ctrl+B"
 msgstr ""
 
-#: ui_movimientosbase.h:304 ui_movimientosbase.h:309
+#: ui_movimientosbase.h:293 ui_movimientosbase.h:296
 msgid "Actualizar listado"
 msgstr ""
 
-#: ui_movimientosbase.h:313
+#: ui_movimientosbase.h:299
 msgid "F5"
 msgstr ""
 
-#: ui_movimientosbase.h:314
+#: ui_movimientosbase.h:300
 msgid "Mostrar:"
 msgstr ""
 
-#: ui_movimientosbase.h:315
+#: ui_movimientosbase.h:301
 msgid "Fecha final:"
 msgstr ""
 
-#: ui_movimientosbase.h:316
+#: ui_movimientosbase.h:302
 msgid "Fecha inicial:"
 msgstr ""

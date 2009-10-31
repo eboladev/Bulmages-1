@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-05-12 23:58+0200\n"
+"POT-Creation-Date: 2009-10-30 16:10+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -16,123 +16,11 @@ msgstr ""
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: clienteview.cpp:52 ui_clientebase.h:555
-msgid "Cliente"
-msgstr ""
-
-#: clienteview.cpp:55 clientslist.cpp:275
-msgid "ID cliente"
-msgstr ""
-
-#: clienteview.cpp:56
-msgid "Nombre del cliente"
-msgstr ""
-
-#: clienteview.cpp:57 clientslist.cpp:279
-msgid "Nombre alternativo del cliente"
-msgstr ""
-
-#: clienteview.cpp:58
-msgid "C.I.F. del cliente"
-msgstr ""
-
-#: clienteview.cpp:59 clientslist.cpp:280
-msgid "Numero cuenta corriente"
-msgstr ""
-
-#: clienteview.cpp:60 clientslist.cpp:281
-msgid "Direccion"
-msgstr ""
-
-#: clienteview.cpp:61 clientslist.cpp:282
-msgid "Poblacion"
-msgstr ""
-
-#: clienteview.cpp:62
-msgid "Provincia"
-msgstr ""
-
-#: clienteview.cpp:63 clientslist.cpp:283
-msgid "Codigo postal"
-msgstr ""
-
-#: clienteview.cpp:64 clientslist.cpp:284
-msgid "Numero de telefono"
-msgstr ""
-
-#: clienteview.cpp:65
-msgid "Numero de telefono en el trabajo"
-msgstr ""
-
-#: clienteview.cpp:66
-msgid "Numero de telefono movil"
-msgstr ""
-
-#: clienteview.cpp:67 clientslist.cpp:285
-msgid "Numero de fax"
-msgstr ""
-
-#: clienteview.cpp:68
-msgid "Direccion electronica"
-msgstr ""
-
-#: clienteview.cpp:69
-msgid "Identificador de presupuesto"
-msgstr ""
-
-#: clienteview.cpp:70 clientslist.cpp:289
-msgid "Fecha de alta del cliente"
-msgstr ""
-
-#: clienteview.cpp:71 clientslist.cpp:290
-msgid "Fecha de baja del cliente"
-msgstr ""
-
-#: clienteview.cpp:72 clientslist.cpp:291
-msgid "Comentarios"
-msgstr ""
-
-#: clienteview.cpp:73
-msgid "Datos de comercio electronico"
-msgstr ""
-
-#: clienteview.cpp:74
-msgid "Cliente inactivo"
-msgstr ""
-
-#: clienteview.cpp:75
-msgid "Regimen fiscal"
-msgstr ""
-
-#: clienteview.cpp:76 clientslist.cpp:276
-msgid "Codigo"
-msgstr ""
-
-#: clienteview.cpp:77 clientslist.cpp:288
-msgid "Empresa"
-msgstr ""
-
-#: clienteview.cpp:78
-msgid "Forma de pago"
-msgstr ""
-
-#: clienteview.cpp:79
-msgid "Recargo de Equivalencia"
-msgstr ""
-
-#: clienteview.cpp:105
-msgid "Error al crear el cliente"
-msgstr ""
-
-#: clienteview.cpp:163
-msgid "Tiene que guardar el documento antes de poder imprimirlo."
-msgstr ""
-
 #: pluginbf_cliente.cpp:96
 msgid "&Clientes"
 msgstr ""
 
-#: pluginbf_cliente.cpp:98 pluginbf_cliente.cpp:99 ui_clientslistbase.h:261
+#: pluginbf_cliente.cpp:98 pluginbf_cliente.cpp:99 ui_clientslistbase.h:262
 msgid "Clientes"
 msgstr ""
 
@@ -168,8 +56,16 @@ msgstr ""
 msgid "Editar cliente"
 msgstr ""
 
-#: clientslist.cpp:255 ui_clientebase.h:571 ui_clientebase.h:576
+#: clientslist.cpp:255 ui_clientebase.h:572 ui_clientebase.h:575
 msgid "Borrar cliente"
+msgstr ""
+
+#: clientslist.cpp:275 clienteview.cpp:55
+msgid "ID cliente"
+msgstr ""
+
+#: clientslist.cpp:276 clienteview.cpp:76
+msgid "Codigo"
 msgstr ""
 
 #: clientslist.cpp:277
@@ -180,6 +76,34 @@ msgstr ""
 msgid "Nombre de cliente"
 msgstr ""
 
+#: clientslist.cpp:279 clienteview.cpp:57
+msgid "Nombre alternativo del cliente"
+msgstr ""
+
+#: clientslist.cpp:280 clienteview.cpp:59
+msgid "Numero cuenta corriente"
+msgstr ""
+
+#: clientslist.cpp:281 clienteview.cpp:60
+msgid "Direccion"
+msgstr ""
+
+#: clientslist.cpp:282 clienteview.cpp:61
+msgid "Poblacion"
+msgstr ""
+
+#: clientslist.cpp:283 clienteview.cpp:63
+msgid "Codigo postal"
+msgstr ""
+
+#: clientslist.cpp:284 clienteview.cpp:64
+msgid "Numero de telefono"
+msgstr ""
+
+#: clientslist.cpp:285 clienteview.cpp:67
+msgid "Numero de fax"
+msgstr ""
+
 #: clientslist.cpp:286
 msgid "Direccion de correo electronica"
 msgstr ""
@@ -188,162 +112,238 @@ msgstr ""
 msgid "Direccion URL"
 msgstr ""
 
-#: ui_clientslistbase.h:265 ui_clientslistbase.h:270
+#: clientslist.cpp:288 clienteview.cpp:77
+msgid "Empresa"
+msgstr ""
+
+#: clientslist.cpp:289 clienteview.cpp:70
+msgid "Fecha de alta del cliente"
+msgstr ""
+
+#: clientslist.cpp:290 clienteview.cpp:71
+msgid "Fecha de baja del cliente"
+msgstr ""
+
+#: clientslist.cpp:291 clienteview.cpp:72
+msgid "Comentarios"
+msgstr ""
+
+#: clienteview.cpp:52 ui_clientebase.h:561
+msgid "Cliente"
+msgstr ""
+
+#: clienteview.cpp:56
+msgid "Nombre del cliente"
+msgstr ""
+
+#: clienteview.cpp:58
+msgid "C.I.F. del cliente"
+msgstr ""
+
+#: clienteview.cpp:62
+msgid "Provincia"
+msgstr ""
+
+#: clienteview.cpp:65
+msgid "Numero de telefono en el trabajo"
+msgstr ""
+
+#: clienteview.cpp:66
+msgid "Numero de telefono movil"
+msgstr ""
+
+#: clienteview.cpp:68
+msgid "Direccion electronica"
+msgstr ""
+
+#: clienteview.cpp:69
+msgid "Identificador de presupuesto"
+msgstr ""
+
+#: clienteview.cpp:73
+msgid "Datos de comercio electronico"
+msgstr ""
+
+#: clienteview.cpp:74
+msgid "Cliente inactivo"
+msgstr ""
+
+#: clienteview.cpp:75
+msgid "Regimen fiscal"
+msgstr ""
+
+#: clienteview.cpp:78
+msgid "Forma de pago"
+msgstr ""
+
+#: clienteview.cpp:79
+msgid "Recargo de Equivalencia"
+msgstr ""
+
+#: clienteview.cpp:105
+msgid "Error al crear el cliente"
+msgstr ""
+
+#: clienteview.cpp:163
+msgid "Tiene que guardar el documento antes de poder imprimirlo."
+msgstr ""
+
+#: ui_clientslistbase.h:265 ui_clientslistbase.h:268
 msgid "Nuevo"
 msgstr ""
 
-#: ui_clientslistbase.h:276 ui_clientslistbase.h:281
+#: ui_clientslistbase.h:272 ui_clientslistbase.h:275
 msgid "Editar"
 msgstr ""
 
-#: ui_clientslistbase.h:287 ui_clientslistbase.h:292
+#: ui_clientslistbase.h:279 ui_clientslistbase.h:282
 msgid "Borrar"
 msgstr ""
 
-#: ui_clientslistbase.h:298 ui_clientslistbase.h:303
+#: ui_clientslistbase.h:286 ui_clientslistbase.h:289
 msgid "Imprimir listado"
 msgstr ""
 
-#: ui_clientslistbase.h:309 ui_clientslistbase.h:314
+#: ui_clientslistbase.h:293 ui_clientslistbase.h:296
 msgid "Filtrar listado"
 msgstr ""
 
-#: ui_clientslistbase.h:320 ui_clientslistbase.h:325
+#: ui_clientslistbase.h:300 ui_clientslistbase.h:303
 msgid "Configurar listado"
 msgstr ""
 
-#: ui_clientslistbase.h:331 ui_clientslistbase.h:336
+#: ui_clientslistbase.h:307 ui_clientslistbase.h:310
 msgid "Actualizar listado"
 msgstr ""
 
-#: ui_clientslistbase.h:342 ui_clientslistbase.h:347 ui_clientslistbase.h:361
+#: ui_clientslistbase.h:314 ui_clientslistbase.h:317 ui_clientslistbase.h:326
 msgid "Exportar"
 msgstr ""
 
-#: ui_clientslistbase.h:353 ui_clientslistbase.h:358
+#: ui_clientslistbase.h:321 ui_clientslistbase.h:324
 msgid "Importar"
 msgstr ""
 
-#: ui_clientslistbase.h:362
+#: ui_clientslistbase.h:327
 msgid "Buscar:"
 msgstr ""
 
-#: ui_clientslistbase.h:363
+#: ui_clientslistbase.h:328
 msgid "Pro&cesados"
 msgstr ""
 
-#: ui_clientebase.h:559 ui_clientebase.h:564
+#: ui_clientebase.h:564 ui_clientebase.h:567
 msgid "Guardar cliente"
 msgstr ""
 
-#: ui_clientebase.h:568
+#: ui_clientebase.h:570
 msgid "Ctrl+S"
 msgstr ""
 
-#: ui_clientebase.h:580
+#: ui_clientebase.h:578
 msgid "Ctrl+D"
 msgstr ""
 
-#: ui_clientebase.h:583 ui_clientebase.h:588
+#: ui_clientebase.h:580 ui_clientebase.h:583
 msgid "Imprimir informe"
 msgstr ""
 
-#: ui_clientebase.h:592
+#: ui_clientebase.h:586
 msgid "&Aceptar"
 msgstr ""
 
-#: ui_clientebase.h:593
+#: ui_clientebase.h:587
 msgid "&Cancelar"
 msgstr ""
 
-#: ui_clientebase.h:594
+#: ui_clientebase.h:588
 msgid "C.I.F./N.I.F./N.I.E.:"
 msgstr ""
 
+#: ui_clientebase.h:589
+msgid "Codigo de c&liente:"
+msgstr ""
+
+#: ui_clientebase.h:590
+msgid "&Nombre completo:"
+msgstr ""
+
+#: ui_clientebase.h:591
+msgid "&Empresa:"
+msgstr ""
+
+#: ui_clientebase.h:592
+msgid "No&mbre comercial:"
+msgstr ""
+
+#: ui_clientebase.h:593
+msgid "&Direccion:"
+msgstr ""
+
+#: ui_clientebase.h:594
+msgid "Codi&go postal:"
+msgstr ""
+
 #: ui_clientebase.h:595
-msgid "Codigo de cliente:"
+msgid "&Poblacion:"
 msgstr ""
 
 #: ui_clientebase.h:596
-msgid "Nombre completo:"
+msgid "Pro&vincia:"
 msgstr ""
 
 #: ui_clientebase.h:597
-msgid "Empresa:"
+msgid "&Telefono fijo:"
 msgstr ""
 
 #: ui_clientebase.h:598
-msgid "Nombre comercial:"
+msgid "Numero de fa&x:"
 msgstr ""
 
 #: ui_clientebase.h:599
-msgid "Direccion:"
+msgid "Tele&fono del trabajo:"
 msgstr ""
 
 #: ui_clientebase.h:600
-msgid "Codigo postal:"
+msgid "Telefono &movil:"
 msgstr ""
 
 #: ui_clientebase.h:601
-msgid "Poblacion:"
+msgid "Pagina &web:"
 msgstr ""
 
 #: ui_clientebase.h:602
-msgid "Provincia:"
+msgid "Correo electro&nico:"
 msgstr ""
 
 #: ui_clientebase.h:603
-msgid "Telefono fijo:"
+msgid "&Forma de pago:"
 msgstr ""
 
 #: ui_clientebase.h:604
-msgid "Numero de fax:"
-msgstr ""
-
-#: ui_clientebase.h:605
-msgid "Telefono del trabajo:"
-msgstr ""
-
-#: ui_clientebase.h:606
-msgid "Telefono movil:"
-msgstr ""
-
-#: ui_clientebase.h:607
-msgid "Pagina web:"
-msgstr ""
-
-#: ui_clientebase.h:608
-msgid "Correo electronico:"
-msgstr ""
-
-#: ui_clientebase.h:609
-msgid "Forma de pago:"
-msgstr ""
-
-#: ui_clientebase.h:610
 msgid "Aplicar Recargo de Equivalencia"
 msgstr ""
 
-#: ui_clientebase.h:611
-msgid "Regimen fiscal:"
+#: ui_clientebase.h:605
+msgid "&Regimen fiscal:"
 msgstr ""
 
-#: ui_clientebase.h:612
+#: ui_clientebase.h:606
 msgid "&Datos generales"
 msgstr ""
 
-#: ui_clientebase.h:613
-msgid "Comentarios:"
+#: ui_clientebase.h:607
+msgid "Comen&tarios:"
 msgstr ""
 
-#: ui_clientebase.h:614
-msgid "Datos de comercio electronico:"
+#: ui_clientebase.h:608
+msgid "Datos de comercio &electronico:"
 msgstr ""
 
-#: ui_clientebase.h:615
-msgid "Datos bancarios:"
+#: ui_clientebase.h:609
+msgid "Datos &bancarios:"
 msgstr ""
 
-#: ui_clientebase.h:616
-msgid "Otros datos"
+#: ui_clientebase.h:610
+msgid "&Otros datos"
 msgstr ""
