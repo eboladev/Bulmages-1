@@ -142,6 +142,7 @@ BEGIN
             idforma_pago INTEGER REFERENCES forma_pago(idforma_pago),
             descrecibo VARCHAR,
             pagadorecibo BOOLEAN DEFAULT false,
+            devueltorecibo BOOLEAN DEFAULT false,
             idcliente INTEGER REFERENCES cliente(idcliente),
             idbanco INTEGER REFERENCES banco(idbanco)
         );
@@ -150,6 +151,11 @@ BEGIN
     SELECT INTO as attname, relname FROM pg_attribute LEFT JOIN pg_class ON pg_attribute.attrelid=pg_class.oid WHERE attname=''idcliente'' AND relname=''recibo'';
     IF NOT FOUND THEN
         ALTER TABLE recibo ADD COLUMN idcliente INTEGER REFERENCES cliente(idcliente);
+    END IF;
+
+   SELECT INTO as attname, relname FROM pg_attribute LEFT JOIN pg_class ON pg_attribute.attrelid=pg_class.oid WHERE attname=''devueltorecibo'' AND relname=''recibo'';
+    IF NOT FOUND THEN
+        ALTER TABLE recibo ADD COLUMN devueltorecibo BOOLEAN DEFAULT false;
     END IF;
 
     SELECT INTO as attname, relname FROM pg_attribute LEFT JOIN pg_class ON pg_attribute.attrelid=pg_class.oid WHERE attname=''idforma_pago'' AND relname=''recibo'';
@@ -451,6 +457,13 @@ BEGIN
         );
     END IF;
 
+
+
+-- Agregamos el campo de cuota por reemision de recibo
+   SELECT INTO as * FROM configuracion WHERE nombre=''CuotaReemisionRecibo'';
+   IF NOT FOUND THEN
+      INSERT INTO configuracion (nombre, valor) VALUES (''CuotaReemisionRecibo'', ''3.5'');
+   END IF;
 
     RETURN 0;
     
