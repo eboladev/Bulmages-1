@@ -91,6 +91,7 @@ public:
     QString nompresentacion();
     QString valorcampo();
     QString valorcampoprep ( int &error );
+    virtual QString exportXML();
 };
 
 
@@ -143,6 +144,8 @@ public:
     virtual void substrConf( QString &buff) ;
     virtual QString nombrePlantilla(void);
     virtual int generaRML ( void );
+    virtual QString exportXML();
+
 };
 
 #endif

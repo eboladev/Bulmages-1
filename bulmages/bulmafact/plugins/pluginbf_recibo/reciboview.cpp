@@ -79,9 +79,7 @@ ReciboView::ReciboView ( BfCompany *comp, QWidget *parent ) : BfForm ( comp, par
         mui_list->setInsert ( TRUE );
         mui_list->setOrdenEnabled ( TRUE );
 
-	mui_list->cargar("SELECT * from lrecibo WHERE 1=2");
-
-        // ======================================================
+        mui_list->cargar("SELECT * from lrecibo WHERE 1=2");
 
         pintar();
         dialogChanges_cargaInicial();
@@ -164,7 +162,7 @@ int ReciboView::cargarPost ( QString id )
     QString total = mui_list->sumarCampo("cantlrecibo").toQString();
     m_cantrecibo->setText(total);
     setDbValue("cantrecibo", total);
-    
+
     _depura ( "END ReciboView::cargarPost", 0 );
     
     return 0;
@@ -217,3 +215,21 @@ void ReciboView::on_mui_reemitir_released (  )
 
     _depura ( "END ReciboView::on_mui_reemitir_released", 0 );
 }
+
+
+/// Hace la exportacion del campo a XML
+QString ReciboView::exportXML() {
+    _depura ( "ReciboView::exportXML", 0 );
+    QString val;
+    int error;
+    BlDbField *campo;
+
+    val = "<RECIBOVIEW>\n";
+    val += "\t" + BlDbRecord::exportXML().replace("\t<","\t\t<").replace("\n<","\n\t<");
+    val += "\t" + mui_list->exportXML().replace("\t<","\t\t<").replace("\n<","\n\t<");
+    val += "</RECIBOVIEW>\n";
+
+    return val;
+    _depura ( "END ReciboView::exportXML", 0 );
+}
+

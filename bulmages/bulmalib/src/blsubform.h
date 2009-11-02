@@ -72,6 +72,7 @@ public:
     QString nompresentacion();
     int restrictcampo();
     QString nomcampo();
+    virtual QString exportXML();
 };
 
 
@@ -320,6 +321,8 @@ public:
     void setModoEdicion();
     bool modoEdicion();
     bool modoConsulta();
+
+    virtual QString exportXML();
 
 public slots:
     void columnMovedByUser(int column, int oldIndex, int newIndex);

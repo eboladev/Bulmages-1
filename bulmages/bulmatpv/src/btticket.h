@@ -69,6 +69,7 @@ public:
     int guardar();
     int cargar ( QString );
     void borrarLinea ( BlDbRecord *linea );
+    virtual QString exportXML();
 
 public slots:
     virtual void subir();

@@ -148,6 +148,25 @@ QString BlSubFormHeader::nomcampo()
 }
 
 
+/// Hace la exportacion del campo a XML
+QString BlSubFormHeader::exportXML() {
+    _depura ( "BlSubFormHeader::exportXML", 0 );
+    QString val;
+    int error;
+
+    val = "<BLSUBFORMHEADER>\n";
+    val += "\t<NOMCAMPO>" + XMLProtect(m_nomcampo) + "</NOMCAMPO>\n";
+    val += "\t<NOMPRESENTACION>"+ XMLProtect(m_nompresentacion)+"</NOMPRESENTACION>\n";
+    val += "\t<RESTRICCIONES>"+ XMLProtect(QString::number(m_restricciones))+"</RESTRICCIONES>\n";
+    val += "\t<TIPO>"+ XMLProtect(QString::number(m_tipo))+"</TIPO>\n";
+    val += "\t<OPCIONES>"+ XMLProtect(QString::number(m_options))+"</OPCIONES>\n";
+    val += "</BLSUBFORMHEADER>\n";
+    return val;
+    _depura ( "END BlSubFormHeader::exportXML", 0 );
+}
+
+
+
 /// BlSubForm, constructor de la clase base para subformularios.
 /**
 \param parent
@@ -2827,7 +2846,52 @@ bool BlSubForm::modoConsulta()
 }
 
 
+/// Hace la exportacion del campo a XML
+QString BlSubForm::exportXML() {
+    _depura ( "BlSubForm::exportXML", 0 );
+    QString val;
+    int error;
 
+    val = "<BLSUBFORM>\n";
+    val += "\t<QUERY>" + XMLProtect(m_query) + "</QUERY>\n";
+    val += "\t<TABLENAME>" + XMLProtect(m_tablename) + "</TABLENAME>\n";
+    val += "\t<MODO>"+ XMLProtect(QString::number(m_modo))+"</MODO>\n";
+    val += "\t<FILECONFIG>"+ XMLProtect(m_fileconfig)+"</FILECONFIG>\n";
+    val += "\t<CAMPOID>"+ XMLProtect(m_campoid)+"</CAMPOID>\n";
+    val += "\t<INSERCION>" + XMLProtect(QString(m_insercion ? "TRUE" : "FALSE")) + "</INSERCION>\n";
+    val += "\t<PRIMERO>" + XMLProtect(QString(m_primero ? "TRUE" : "FALSE")) + "</PRIMERO>\n";
+    val += "\t<DELETE>" + XMLProtect(QString(m_delete ? "TRUE" : "FALSE")) + "</DELETE>\n";
+    val += "\t<SORTING>" + XMLProtect(QString(m_sorting ? "TRUE" : "FALSE")) + "</SORTING>\n";
+    val += "\t<ORDEN>" + XMLProtect(QString(m_orden ? "TRUE" : "FALSE")) + "</ORDEN>\n";
+    val += "\t<ORDENPORQUERY>" + XMLProtect(QString(m_ordenporquery ? "TRUE" : "FALSE")) + "</ORDENPORQUERY>\n";
+    val += "\t<PROCESACAMBIOS>" + XMLProtect(QString(m_procesacambios ? "TRUE" : "FALSE")) + "</PROCESACAMBIOS>\n";
+    val += "\t<TEXTOCELDAPARAROWSPAN>" + XMLProtect(m_textoceldaParaRowSpan) + "</TEXTOCELDAPARAROWSPAN>\n";
+    val += "\t<COLUMNAPARAROWSPAN>" + XMLProtect(m_columnaParaRowSpan) + "</COLUMNAPARAROWSPAN>\n";
+    val += "\t<FILAINICIALROWSPAN>" + QString::number(m_filaInicialRowSpan) + "</FILAINICIALROWSPAN>\n";
+    val += "\t<CABECERA>\n";
+    BlSubFormHeader *linea;
+    for ( int i = 0; i < m_lcabecera.size(); ++i ) {
+        linea = m_lcabecera.at ( i );
+        val += "\t\t" + linea->exportXML().replace("\t<","\t\t\t<").replace("\n<","\n\t\t<");
+    } // end for
+    val += "\t</CABECERA>\n";
+    val += "\t<LISTA>\n";
+    BlDbSubFormRecord *linea1;
+    for ( int i = 0; i < m_lista.size(); ++i ) {
+        linea1 = m_lista.at ( i );
+        val += "\t\t" + linea1->exportXML().replace("\t<","\t\t\t<").replace("\n<","\n\t\t<");
+    } // end for
+    val += "\t</LISTA>\n";
+    val += "\t<LISTABORRAR>\n";
+    for ( int i = 0; i < m_listaborrar.size(); ++i ) {
+        linea1 = m_lista.at ( i );
+        val += "\t\t" + linea1->exportXML().replace("\t<","\t\t\t<").replace("\n<","\n\t\t<");
+    } // end for
+    val += "\t</LISTABORRAR>\n";
+    val += "</BLSUBFORM>\n";
+    return val;
+    _depura ( "END BlSubForm::exportXML", 0 );
+}
 
 
 /// ===============================================================

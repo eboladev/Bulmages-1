@@ -1049,5 +1049,30 @@ void BtTicket::borrarLinea ( BlDbRecord *linea )
         }
     } else {
         listaLineas() ->removeAt ( listaLineas() ->indexOf ( linea ) );
-    }
+    } // end if
 }
+
+
+/// Hace la exportacion del campo a XML
+QString BtTicket::exportXML() {
+    _depura ( "BtTicket::exportXML", 0 );
+    QString val;
+    int error;
+    BlDbField *campo;
+
+    val = "<BTTICKET>\n";
+    val += "\t" + BlDbRecord::exportXML().replace("\t<","\t\t<").replace("\n<","\n\t<");
+    val += "\t<LISTALINEAS>\n";
+    BlDbRecord *linea1;
+    for ( int i = 0; i < m_listaLineas->size(); ++i ) {
+        linea1 = m_listaLineas->at ( i );
+        val += "\t\t" + linea1->exportXML().replace("\t<","\t\t\t<").replace("\n<","\n\t\t<");
+    } // end for
+    val += "\t</LISTALINEAS>\n";
+    val += "</BTTICKET>\n";
+
+    return val;
+    _depura ( "END BtTicket::exportXML", 0 );
+}
+
+

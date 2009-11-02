@@ -258,6 +258,26 @@ QString BlDbField::valorcampoprep ( int &error )
 }
 
 
+/// Hace la exportacion del campo a XML
+QString BlDbField::exportXML() {
+    _depura ( "BlDbField::exportXML", 0 );
+    QString val;
+    int error;
+
+    val = "<BLDBFIELD>\n";
+    val += "\t<NOMCAMPO>" + XMLProtect(m_nomcampo) + "</NOMCAMPO>\n";
+    val += "\t<VALORCAMPO>"+ XMLProtect(m_valorcampo)+"</VALORCAMPO>\n";
+    val += "\t<VALORCAMPOORIG>"+ XMLProtect(m_valorcampoorig)+"</VALORCAMPOORIG>\n";
+    val += "\t<VALORCAMPOPREP>"+ XMLProtect(valorcampoprep(error))+"</VALORCAMPOPREP>\n";
+    val += "\t<NOMPRESENTACION>"+ XMLProtect(m_nompresentacion)+"</NOMPRESENTACION>\n";
+    val += "\t<RESTRICCIONES>"+ XMLProtect(QString::number(m_restrict))+"</RESTRICCIONES>\n";
+    val += "\t<TIPO>"+ XMLProtect(QString::number(m_tipo))+"</TIPO>\n";
+    val += "</BLDBFIELD>\n";
+    return val;
+    _depura ( "END BlDbField::exportXML", 0 );
+}
+
+
 /// Constructor de la clase que toma por defecto la base de datos con la que va a operar.
 /**
 \param con Puntero a la base de datos con la que vamos a trabajar.
@@ -1019,6 +1039,31 @@ void BlDbRecord::imprimir()
     } // end if
 
     _depura ( "END BlDbRecord::imprimir", 0 );
+}
+
+/// Hace la exportacion del campo a XML
+QString BlDbRecord::exportXML() {
+    _depura ( "BlDbRecord::exportXML", 0 );
+    QString val;
+    int error;
+    BlDbField *campo;
+
+    val = "<BLDBRECORD>\n";
+    val += "\t<TABLENAME>" + XMLProtect(m_tablename) + "</TABLENAME>\n";
+    val += "\t<CAMPOID>" + XMLProtect(m_campoid) + "</CAMPOID>\n";
+    val += "\t<NUEVOCAMPO>" + XMLProtect(QString(m_nuevoCampo ? "TRUE" : "FALSE")) + "</NUEVOCAMPO>\n";
+
+    int i = 0;
+    campo = m_lista.value ( i );
+    while ( campo ) {
+        val += "\t" + campo->exportXML().replace("\t<","\t\t<").replace("\n<","\n\t<");
+        campo = m_lista.value ( ++i );
+    } // end while
+
+    val += "</BLDBRECORD>\n";
+
+    return val;
+    _depura ( "END BlDbRecord::exportXML", 0 );
 }
 
 

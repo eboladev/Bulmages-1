@@ -495,8 +495,6 @@ void BtCompany::x()
     file.write ( "\n", 1 );
     file.write ( "\n", 1 );
 
-// ============================================
-
     file.write ( QString ( "=======================\n" ).rightJustified ( 43, ' ' ).toAscii() );
 
     QString str = "Num tickets " + numtickets.rightJustified ( 10, ' ' );
@@ -523,8 +521,6 @@ void BtCompany::x()
     file.write ( str.rightJustified ( 42, ' ' ).toAscii() );
     file.write ( "\n", 1 );
 
-// ============================================
-
     /// Imprimimos espacios
     file.write ( "\n \n \n \n", 7 );
 
@@ -534,8 +530,6 @@ void BtCompany::x()
     /// El corte de papel.
     file.write ( "\x1D\x56\x01", 3 );
     file.close();
-
-// ========================================
 
     _depura( "END BtCompany::x", 0 );
 }
@@ -643,6 +637,21 @@ QList<BtTicket *> *BtCompany::listaTickets()
 void BtCompany::setTicketActual ( BtTicket *tick )
 {
     _depura ( "BtCompany::setTicketActual", 0 );
+
+
+/// Pruebas de exportacion a XML
+/// ======================================
+    QFile file ( "/tmp/bulmatpv.xml" );
+    /// Guardado del orden y de configuraciones varias.
+    if ( file.open ( QIODevice::WriteOnly ) ) {
+        QTextStream stream ( &file );
+        stream << exportXML();
+        file.close();
+    } // end if
+/// ======================================
+
+
+
     _depura ( "END BtCompany::setTicketActual", 0 );
     m_ticketActual = tick;
 }
@@ -677,7 +686,7 @@ void BtCompany::guardaConf()
 **/
 void BtCompany::cargaConf()
 {
-    _depura ( "Company::cargaConf", 0 );
+    _depura ( "BtCompany::cargaConf", 0 );
     
     QFile file ( g_confpr->valor ( CONF_DIR_USER ) + "bulmatpv_" + dbName() + ".cfn" );
     QDomDocument doc ( "mydocument" );
@@ -713,12 +722,12 @@ void BtCompany::cargaConf()
     /// Cogemos el ancho del indexador
     m_bulmaTPV->restoreState ( QByteArray::fromBase64 ( QByteArray ( principal.firstChildElement ( "TOOLBARSDOCKWIDGETS" ).toElement().text().toAscii() ) ) );
 
-    _depura ( "END BfCompany::cargaConf", 0 );
+    _depura ( "END BtCompany::cargaConf", 0 );
 }
 
 void BtCompany::compruebaUltimaZ()
 {
-    _depura ( "BtBulmaTPV::compruebaUltimaZ", 0 );
+    _depura ( "BtCompany::compruebaUltimaZ", 0 );
         
     // Obtenemos numero de Zs hasta el momento (para saber si es superior a 0. Si no, estamos en
     // el caso de que es la primera Z)
@@ -763,11 +772,11 @@ void BtCompany::compruebaUltimaZ()
                 
                     exit(0);
                 
-                }
+                } // end if
             
-            }
+                } // end if
                     
-        }
+        }// end if
         
         /// Diferencia negativa de fechas (algo esta mal en la fecha del distema
         /// o ya se hizo alguna Z con la fecha mal establecida en este)
@@ -777,15 +786,36 @@ void BtCompany::compruebaUltimaZ()
             
             exit(0);
                     
-        }
+        } // end if
         
         delete curFechaUltimaZ;
         delete curFechaActual;
         delete curDiferencia;
     
-    }
+    } // end if
     
     delete curNumzetas;
     
-    _depura ( "END BtBulmaTPV::compruebaUltimaZ", 0 );
+    _depura ( "END BtCompany::compruebaUltimaZ", 0 );
+}
+
+/// Hace la exportacion del campo a XML
+QString BtCompany::exportXML() {
+    _depura ( "BtCompany::exportXML", 0 );
+    QString val;
+    int error;
+    BlDbField *campo;
+
+    val = "<BTCOMPANY>\n";
+    val += "\t<LISTATICKETS>\n";
+    BtTicket *linea1;
+    for ( int i = 0; i < m_listaTickets.size(); ++i ) {
+        linea1 = m_listaTickets.at ( i );
+        val += "\t\t" + linea1->exportXML().replace("\t<","\t\t\t<").replace("\n<","\n\t\t<");
+    } // end for
+    val += "\t</LISTATICKETS>\n";
+    val += "</BTCOMPANY>\n";
+
+    return val;
+    _depura ( "END BtCompany::exportXML", 0 );
 }

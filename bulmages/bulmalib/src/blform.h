@@ -41,7 +41,7 @@ private:
     /// doble click sobre la lista)
     edmode m_modo;
     QString m_title;
-    QMap<QString,QString> m_variables;
+    QMap<QString,QString> m_variables;   /// Son elementos que han sido incrustados e inicializados por programas externos, generalmente el RML
 
 protected:
     void setModoConsulta();
