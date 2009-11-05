@@ -40,6 +40,11 @@
 #include "bloqmenu.h"
 
 
+///
+/**
+\param bcont
+\return
+**/
 int entryPoint ( QMainWindow *bcont )
 {
     _depura ( "Entrada del plugin Bloqueos", 0 );
@@ -53,9 +58,14 @@ int entryPoint ( QMainWindow *bcont )
 }
 
 
+/// Bloquear la ficha si no lo estaba ya por otro usuario
+/**
+\param ficha
+\return
+**/
 int BlForm_cargar ( BlForm *ficha )
 {
-    _depura ( "Plugin bloqueos::BlForm_cargar", 0 );
+    _depura ( "Plugin formlock::BlForm_cargar", 0 );
     QString query;
 
     query = "SELECT * FROM bloqueo WHERE fichabloqueo = $1 AND identificadorfichabloqueo= $2 AND usuariobloqueo <> $3";
@@ -90,13 +100,20 @@ int BlForm_cargar ( BlForm *ficha )
     } // end if
 
     delete cur1;
-    _depura ( "END Plugin bloqueos::BlForm_cargar", 0 );
+    _depura ( "END Plugin formlock::BlForm_cargar", 0 );
     return 0;
 }
 
 
-int BlForm_DesFicha ( BlForm *ficha )
+/// Dejar la ficha desbloqueada
+/**
+\param ficha
+\return
+**/
+int BlForm_DesBlForm ( BlForm *ficha )
 {
+    _depura ( "Plugin formlock::BlForm_DesBlForm", 0 );
+
     QString query = "";
     if ( ficha->dbValue ( ficha->fieldId() ) != "" ) {
         QString usuario = "";
@@ -117,6 +134,8 @@ int BlForm_DesFicha ( BlForm *ficha )
         } // end if
         delete cur1;
     } // end if
+
+    _depura ( "END Plugin formlock::BlForm_DesBlForm", 0 );
     return 0;
 }
 
@@ -128,8 +147,8 @@ int BlForm_DesFicha ( BlForm *ficha )
 **/
 int BlForm_BlForm ( BlForm *l )
 {
-    _depura ( "BlForm_BlForm", 0 );
+    _depura ( "Plugin formlock::BlForm_BlForm", 0 );
     new BloqMenu ( l );
-    _depura ( "END BlForm_BlForm", 0 );
+    _depura ( "END Plugin formlock::BlForm_BlForm", 0 );
     return 0;
 }
