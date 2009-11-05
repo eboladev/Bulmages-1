@@ -81,7 +81,7 @@ void BloqMenu::pintaMenu ( QMenu *menu )
 **/
 void BloqMenu::trataMenu ( QAction *action )
 {
-    _depura ( "BloqMenu::trataMenu", 2 );
+    _depura ( "BloqMenu::trataMenu", 0 );
     if ( action->objectName() == "desbloquearficha" ) {
         QString table_dot_id = QString("%1.%2").arg(m_BlForm->tableName()).arg(m_BlForm->fieldId());
         QString query = "DELETE FROM bloqueo WHERE fichabloqueo = $1 AND identificadorfichabloqueo= $2";

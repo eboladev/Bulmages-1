@@ -69,7 +69,7 @@ int entryPoint ( QMainWindow *bcont )
 **/
 int BlForm_cargar ( BlForm *ficha )
 {
-    _depura ( "Plugin formlock::BlForm_cargar", 2 );
+    _depura ( "Plugin formlock::BlForm_cargar", 0 );
 
     QString table_dot_id = QString("%1.%2").arg(ficha->tableName()).arg(ficha->fieldId());
     QString query;
@@ -119,7 +119,7 @@ int BlForm_cargar ( BlForm *ficha )
 **/
 int BlForm_DesBlForm ( BlForm *ficha )
 {
-    _depura ( "Plugin formlock::BlForm_DesBlForm", 2 );
+    _depura ( "Plugin formlock::BlForm_DesBlForm", 0 );
 
     QString table_dot_id = QString("%1.%2").arg(ficha->tableName()).arg(ficha->fieldId());
 
