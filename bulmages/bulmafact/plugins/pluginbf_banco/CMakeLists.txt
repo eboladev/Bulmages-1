@@ -59,8 +59,8 @@ if(USE_GETTEXT)
                         ${plugin_SRCS} ${plugin_MOCS})
    GETTEXT_CREATE_TEMPLATE(${plugin} ${CMAKE_CURRENT_BINARY_DIR}
                                 ${CMAKE_CURRENT_SOURCE_DIR} plugin_i18n)
-#   GETTEXT_CREATE_TRANSLATIONS(${CMAKE_CURRENT_BINARY_DIR}/${plugin}.pot
-#                                ALL LANGUAGES es_ES.UTF-8 ca_ES.UTF-8)
+   GETTEXT_CREATE_TRANSLATIONS(${CMAKE_CURRENT_BINARY_DIR}/${plugin}.pot
+                                ALL LANGUAGES es_ES.UTF-8 ca_ES.UTF-8)
 endif(USE_GETTEXT)
 
 # build sources, moc'd sources, and rcc'd sources

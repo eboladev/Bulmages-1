@@ -1,0 +1,99 @@
+# Spanish translations for PACKAGE package
+# Traducciones al español para el paquete PACKAGE.
+# Copyright (C) 2009 THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# Automatically generated, 2009.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: info@iglues.org\n"
+"POT-Creation-Date: 2009-11-06 00:12+0100\n"
+"PO-Revision-Date: 2009-11-06 00:12+0100\n"
+"Last-Translator: Automatically generated\n"
+"Language-Team: none\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: ui_fpagobase.h:347
+msgid "&Aceptar"
+msgstr "&Aceptar"
+
+#: ui_fpagobase.h:348
+msgid "&Cancelar"
+msgstr "&Cancelar"
+
+#: pluginbf_formasdepago.cpp:81
+msgid "&Formas de pago"
+msgstr "&Formas de pago"
+
+#: ui_fpagobase.h:323
+msgid "Banco:"
+msgstr "Banco:"
+
+#: ui_fpagobase.h:334 ui_fpagobase.h:337
+msgid "Borrar forma de pago"
+msgstr "Borrar forma de pago"
+
+#: ui_fpagobase.h:319
+msgid "Descuento:"
+msgstr "Descuento:"
+
+#: fpagoview.cpp:163
+msgid "Desea guardar los cambios."
+msgstr "¿Desea guardar los cambios?"
+
+#: fpagoview.cpp:220
+msgid "Error al intentar borrar la forma de pago"
+msgstr "Error al intentar borrar la forma de pago"
+
+#: fpagoview.cpp:41
+msgid "Forma de Pago"
+msgstr "Forma de pago"
+
+#: ui_fpagobase.h:324
+msgid "Forma de pago:"
+msgstr "Forma de pago:"
+
+#: pluginbf_formasdepago.cpp:83 pluginbf_formasdepago.cpp:84
+#: ui_fpagobase.h:314
+msgid "Formas de pago"
+msgstr "Formas de pago"
+
+#: fpagoview.cpp:162 ui_fpagobase.h:341 ui_fpagobase.h:344
+msgid "Guardar forma de pago"
+msgstr "Guardar forma de pago"
+
+#: ui_fpagobase.h:315
+msgid "Informacion de la forma de pago:"
+msgstr "Informacion de la forma de pago:"
+
+#: ui_fpagobase.h:316
+msgid "Nombre de la forma de pago:"
+msgstr "Nombre de la forma de pago:"
+
+#: ui_fpagobase.h:327 ui_fpagobase.h:330
+msgid "Nueva forma de pago"
+msgstr "Nueva forma de pago"
+
+#: ui_fpagobase.h:318
+msgid "Numero de plazos:"
+msgstr "Número de plazos:"
+
+#: ui_fpagobase.h:317
+msgid "Plazo entre recibos (dias):"
+msgstr "Plazo entre recibos (días):"
+
+#: ui_fpagobase.h:320
+msgid "Plazo primer recibo (dias):"
+msgstr "Plazo primer recibo (dias):"
+
+#: ui_fpagobase.h:321
+msgid "Tipo plazo entre recibos:"
+msgstr "Tipo plazo entre recibos:"
+
+#: ui_fpagobase.h:322
+msgid "Tipo plazo primer pago:"
+msgstr "Tipo plazo primer pago:"

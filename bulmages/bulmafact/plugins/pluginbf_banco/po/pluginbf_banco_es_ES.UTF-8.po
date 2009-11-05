@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-02-17 10:24+0100\n"
+"POT-Creation-Date: 2009-11-06 00:46+0100\n"
 "PO-Revision-Date: 2009-02-17 10:24+0100\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -16,30 +16,30 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: bancoview.cpp:186
+#: pluginbf_banco.cpp:82
+msgid "&Bancos"
+msgstr "&Bancos"
+
+#: bancoview.cpp:188
 msgid "&No"
 msgstr "&No"
 
-#: bancoview.cpp:186
+#: bancoview.cpp:188
 msgid "&Si"
 msgstr "&Si"
 
-#: pluginbf_banco.cpp:82
-msgid "&Trabajadores"
-msgstr "&Trabajadores"
-
-#: ui_bancobase.h:406
+#: ui_bancobase.h:451
 msgid ""
 "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/"
 "REC-html40/strict.dtd\">\n"
 "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css"
 "\">\n"
 "p, li { white-space: pre-wrap; }\n"
-"</style></head><body style=\" font-family:'Sans Serif'; font-size:10pt; font-"
+"</style></head><body style=\" font-family:'Sans'; font-size:10pt; font-"
 "weight:400; font-style:normal;\">\n"
 "<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; "
 "margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-"
-"size:9pt;\"></p></body></html>"
+"family:'Sans Serif'; font-size:9pt;\"></p></body></html>"
 msgstr ""
 "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/"
 "REC-html40/strict.dtd\">\n"
@@ -56,106 +56,144 @@ msgstr ""
 msgid "Banco"
 msgstr "Banco"
 
-#: ui_bancobase.h:401
+#: pluginbf_banco.cpp:84 pluginbf_banco.cpp:85 ui_bancobase.h:424
 msgid "Bancos"
 msgstr "Bancos"
 
-#: ui_bancobase.h:424 ui_bancobase.h:429
-msgid "Borrar trabajador"
-msgstr "Borrar trabajador"
+#: ui_bancobase.h:426 ui_bancobase.h:429
+msgid "Borrar banco"
+msgstr "Borrar banco"
 
-#: ui_bancobase.h:421
+#: ui_bancobase.h:466
 msgid "C.P.:"
 msgstr "C.P.:"
 
-#: ui_bancobase.h:418
+#: ui_bancobase.h:463
 msgid "Comentarios:"
 msgstr "Comentarios:"
 
-#: ui_bancobase.h:412
+#: ui_bancobase.h:457
 msgid "Contacto:"
 msgstr "Contacto:"
 
-#: ui_bancobase.h:403
+#: ui_bancobase.h:448
 msgid "D.C.:"
 msgstr "D.C.:"
 
-#: bancoview.cpp:185
+#: bancoview.cpp:187
 msgid "Desea guardar los cambios?"
 msgstr "Desea guardar los cambios?"
 
-#: ui_bancobase.h:417
+#: ui_bancobase.h:462
 msgid "Direccion"
 msgstr "Direccion"
 
-#: ui_bancobase.h:414
+#: ui_bancobase.h:459
 msgid "E-mail:"
 msgstr "E-mail:"
 
-#: ui_bancobase.h:419
+#: ui_bancobase.h:464
 msgid "Entidad:"
 msgstr "Entidad:"
 
-#: bancoview.cpp:168
+#: bancoview.cpp:170
 msgid "Error al guardar"
 msgstr "Error al guardar"
 
-#: bancoview.cpp:244
+#: bancoview.cpp:246
 msgid "Error inesperado al borrar el banco"
 msgstr "Error inesperado al borrar el banco"
 
-#: bancoview.cpp:216
+#: bancoview.cpp:218
 msgid "Error inesperado el crear el Banco"
 msgstr "Error inesperado el crear el Banco"
 
-#: ui_bancobase.h:405
+#: ui_bancobase.h:450
 msgid "Fax:"
 msgstr "Fax:"
 
-#: bancoview.cpp:184
+#: ui_bancobase.h:433 ui_bancobase.h:436
+msgid "Guardar banco"
+msgstr "Guardar banco"
+
+#: bancoview.cpp:186
 msgid "Guardar datos del trabajador"
 msgstr "Guardar datos del trabajador"
 
-#: ui_bancobase.h:435 ui_bancobase.h:440
-msgid "Guardar trabajador"
-msgstr "Guardar trabajador"
-
-#: ui_bancobase.h:402
+#: ui_bancobase.h:447
 msgid "Informacion del banco:"
 msgstr "Informacion del banco:"
 
-#: ui_bancobase.h:455
+#: ui_bancobase.h:446
 msgid "Lista de bancos:"
 msgstr "Lista de bancos:"
 
-#: ui_bancobase.h:446 ui_bancobase.h:451
-msgid "Nuevo trabajador"
-msgstr "Nuevo trabajador"
+#: ui_bancobase.h:440 ui_bancobase.h:443
+msgid "Nuevo banco"
+msgstr "Nuevo banco"
 
-#: ui_bancobase.h:404
+#: ui_bancobase.h:449
 msgid "Numero de cuenta:"
 msgstr "Numero de cuenta:"
 
-#: ui_bancobase.h:416
+#: ui_bancobase.h:461
 msgid "Poblacion:"
 msgstr "Poblacion:"
 
-#: ui_bancobase.h:411
+#: ui_bancobase.h:456
 msgid "Razon Social:"
 msgstr "Razon Social:"
 
-#: ui_bancobase.h:420
+#: ui_bancobase.h:465
 msgid "Sucursal:"
 msgstr "Sucursal:"
 
-#: ui_bancobase.h:415
+#: ui_bancobase.h:467
+msgid "Sufijo:"
+msgstr ""
+
+#: ui_bancobase.h:460
 msgid "Telefono:"
 msgstr "Telefono:"
 
-#: pluginbf_banco.cpp:84 pluginbf_banco.cpp:85
-msgid "Trabajadores"
-msgstr "Trabajadores"
-
-#: ui_bancobase.h:413
+#: ui_bancobase.h:458
 msgid "URL:"
 msgstr "URL:"
+
+#~ msgid "&Trabajadores"
+#~ msgstr "&Trabajadores"
+
+#~ msgid ""
+#~ "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/"
+#~ "REC-html40/strict.dtd\">\n"
+#~ "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/"
+#~ "css\">\n"
+#~ "p, li { white-space: pre-wrap; }\n"
+#~ "</style></head><body style=\" font-family:'Sans Serif'; font-size:10pt; "
+#~ "font-weight:400; font-style:normal;\">\n"
+#~ "<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; "
+#~ "margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; "
+#~ "font-size:9pt;\"></p></body></html>"
+#~ msgstr ""
+#~ "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/"
+#~ "REC-html40/strict.dtd\">\n"
+#~ "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/"
+#~ "css\">\n"
+#~ "p, li { white-space: pre-wrap; }\n"
+#~ "</style></head><body style=\" font-family:'Sans Serif'; font-size:10pt; "
+#~ "font-weight:400; font-style:normal;\">\n"
+#~ "<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; "
+#~ "margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; "
+#~ "font-size:9pt;\"></p></body></html>"
+
+#~ msgid "Borrar trabajador"
+#~ msgstr "Borrar trabajador"
+
+#~ msgid "Guardar trabajador"
+#~ msgstr "Guardar trabajador"
+
+#~ msgid "Nuevo trabajador"
+#~ msgstr "Nuevo trabajador"
+
+#~ msgid "Trabajadores"
+#~ msgstr "Trabajadores"
