@@ -81,10 +81,11 @@ void BloqMenu::pintaMenu ( QMenu *menu )
 **/
 void BloqMenu::trataMenu ( QAction *action )
 {
-    _depura ( "BloqMenu::trataMenu", 0 );
+    _depura ( "BloqMenu::trataMenu", 2 );
     if ( action->objectName() == "desbloquearficha" ) {
+        QString table_dot_id = QString("%1.%2").arg(m_BlForm->tableName()).arg(m_BlForm->fieldId());
         QString query = "DELETE FROM bloqueo WHERE fichabloqueo = $1 AND identificadorfichabloqueo= $2";
-        m_BlForm->mainCompany()->run ( query , m_BlForm->fieldId(), m_BlForm->dbValue ( m_BlForm->fieldId() ));
+        m_BlForm->mainCompany()->run ( query , table_dot_id, m_BlForm->dbValue ( m_BlForm->fieldId() ));
 
         /// Miramos si existe un boton de guardar, borrar y uno de aceptar y los desactivamos
         QToolButton *pguardar = m_BlForm->findChild<QToolButton *> ( "mui_guardar" );
