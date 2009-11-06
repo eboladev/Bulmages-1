@@ -2993,80 +2993,55 @@ END;
 
 -- ========================== CONTROL DE STOCK ==============================
 
-\echo -n ':: Funcion para disminuir stock ... '
-CREATE FUNCTION disminuyestock() RETURNS "trigger"
-AS '
-DECLARE
-BEGIN
-    -- Hacemos el update del stock del articulo
-    UPDATE articulo SET stockarticulo = stockarticulo + OLD.cantlalbaran WHERE idarticulo= OLD.idarticulo;
-    RETURN NEW;
-END;
-' LANGUAGE plpgsql;
 
-
-\echo -n ':: Disparador que disminuye stock al borrar o actualizar el detalle de un albaran a cliente ... '
-CREATE TRIGGER disminuyestockt
-    AFTER DELETE OR UPDATE ON lalbaran
-    FOR EACH ROW
-    EXECUTE PROCEDURE disminuyestock();
-
-
-\echo -n ':: Funcion para aumentar stock ... '
-CREATE FUNCTION aumentastock() RETURNS "trigger"
-AS '
-DECLARE
-BEGIN
-    -- Hacemos el update del stock del articulo
-    UPDATE articulo SET stockarticulo = stockarticulo - NEW.cantlalbaran WHERE idarticulo = NEW.idarticulo;
-    RETURN NEW;
-END;
-' LANGUAGE plpgsql;
-
-
-\echo -n ':: Disparador que aumenta stock al insertar o actualizar el detalle de un albaran a cliente ... '
-CREATE TRIGGER aumentastockt
-    AFTER INSERT OR UPDATE ON lalbaran
-    FOR EACH ROW
-    EXECUTE PROCEDURE aumentastock();
-
-
-\echo -n ':: Funcion disminuye stockp ... '
-CREATE FUNCTION disminuyestockp() RETURNS "trigger"
+\echo -n ':: Funcion cambia stock por la parte de albaranes de cliente ... '
+CREATE FUNCTION cambiastock() RETURNS "trigger"
 AS '
 DECLARE
 
 BEGIN
     -- Hacemos el update del stock del articulo
-    UPDATE articulo SET stockarticulo = stockarticulo - OLD.cantlalbaranp WHERE idarticulo= OLD.idarticulo;
+    IF TG_OP = ''DELETE'' OR TG_OP = ''UPDATE'' THEN
+      UPDATE articulo SET stockarticulo = stockarticulo + OLD.cantlalbaran WHERE idarticulo= OLD.idarticulo;
+    END IF;
+    IF TG_OP = ''INSERT'' OR TG_OP = ''UPDATE'' THEN
+      UPDATE articulo SET stockarticulo = stockarticulo - NEW.cantlalbaran WHERE idarticulo= NEW.idarticulo;
+    END IF;
     RETURN NEW;
 END;
 ' LANGUAGE plpgsql;
 
 
 \echo -n ':: Disparador que disminuye stock al borrar o actualizar el detalle de un albaran de proveedor ... '
-CREATE TRIGGER disminuyestockpt
-    AFTER DELETE OR UPDATE ON lalbaranp
+CREATE TRIGGER cambiastockt
+    AFTER INSERT OR DELETE OR UPDATE ON lalbaran
     FOR EACH ROW
-    EXECUTE PROCEDURE disminuyestockp();
+    EXECUTE PROCEDURE cambiastock();
 
 
-\echo -n ':: Funcion que aumenta el stock al recibir mercancias de un proveedor ... '
-CREATE FUNCTION aumentastockp() RETURNS "trigger"
+\echo -n ':: Funcion cambia stock por la parte de albaranes de proveedor ... '
+CREATE FUNCTION cambiastockp() RETURNS "trigger"
 AS '
 DECLARE
+
 BEGIN
-    UPDATE articulo SET stockarticulo = stockarticulo + NEW.cantlalbaranp WHERE idarticulo = NEW.idarticulo;
+    -- Hacemos el update del stock del articulo
+    IF TG_OP = ''DELETE'' OR TG_OP = ''UPDATE'' THEN
+      UPDATE articulo SET stockarticulo = stockarticulo - OLD.cantlalbaranp WHERE idarticulo= OLD.idarticulo;
+    END IF;
+    IF TG_OP = ''INSERT'' OR TG_OP = ''UPDATE'' THEN
+      UPDATE articulo SET stockarticulo = stockarticulo + NEW.cantlalbaranp WHERE idarticulo= NEW.idarticulo;
+    END IF;
     RETURN NEW;
 END;
 ' LANGUAGE plpgsql;
 
 
-\echo -n ':: Disparador que aumenta stock al insertar o actualizar el detalle de un albaran de proveedor ... '
-CREATE TRIGGER aumentastockpt
-    AFTER INSERT OR UPDATE ON lalbaranp
+\echo -n ':: Disparador que disminuye stock al borrar o actualizar el detalle de un albaran de proveedor ... '
+CREATE TRIGGER cambiastockpt
+    AFTER INSERT OR DELETE OR UPDATE ON lalbaranp
     FOR EACH ROW
-    EXECUTE PROCEDURE aumentastockp(); 
+    EXECUTE PROCEDURE cambiastockp();
 
 
 \echo -n ':: Funcion que modifica el stock de un articulo ... '
@@ -3112,9 +3087,9 @@ DECLARE
 BEGIN
 	SELECT INTO as * FROM configuracion WHERE nombre = ''DatabaseRevision'';
 	IF FOUND THEN
-		UPDATE CONFIGURACION SET valor = ''0.12.1-0001'' WHERE nombre = ''DatabaseRevision'';
+		UPDATE CONFIGURACION SET valor = ''0.12.1-0003'' WHERE nombre = ''DatabaseRevision'';
 	ELSE
-		INSERT INTO configuracion (nombre, valor) VALUES (''DatabaseRevision'', ''0.12.1-0001'');
+		INSERT INTO configuracion (nombre, valor) VALUES (''DatabaseRevision'', ''0.12.1-0003'');
 	END IF;
 	RETURN 0;
 END;

@@ -77,6 +77,72 @@ DROP FUNCTION compruebarevision() CASCADE;
 
 -- ================================== ACTUALIZACION  ===================================
 
+SELECT drop_if_exists_proc('disminuyestockp', '');
+SELECT drop_if_exists_proc('aumentastockp', '');
+
+SELECT drop_if_exists_proc('cambiastockp', '');
+\echo -n ':: Funcion cambia stock por la parte de albaranes de proveedor ... '
+CREATE FUNCTION cambiastockp() RETURNS "trigger"
+AS '
+DECLARE
+
+BEGIN
+    -- Hacemos el update del stock del articulo
+    IF TG_OP = ''DELETE'' OR TG_OP = ''UPDATE'' THEN
+      UPDATE articulo SET stockarticulo = stockarticulo - OLD.cantlalbaranp WHERE idarticulo= OLD.idarticulo;
+    END IF;
+    IF TG_OP = ''INSERT'' OR TG_OP = ''UPDATE'' THEN
+      UPDATE articulo SET stockarticulo = stockarticulo + NEW.cantlalbaranp WHERE idarticulo= NEW.idarticulo;
+    END IF;
+    RETURN NEW;
+END;
+' LANGUAGE plpgsql;
+
+
+\echo -n ':: Disparador que disminuye stock al borrar o actualizar el detalle de un albaran de proveedor ... '
+CREATE TRIGGER cambiastockpt
+    AFTER INSERT OR DELETE OR UPDATE ON lalbaranp
+    FOR EACH ROW
+    EXECUTE PROCEDURE cambiastockp();
+
+
+
+SELECT drop_if_exists_proc('disminuyestock', '');
+SELECT drop_if_exists_proc('aumentastock', '');
+
+
+SELECT drop_if_exists_proc('cambiastock', '');
+\echo -n ':: Funcion cambia stock por la parte de albaranes de cliente ... '
+CREATE FUNCTION cambiastock() RETURNS "trigger"
+AS '
+DECLARE
+
+BEGIN
+    -- Hacemos el update del stock del articulo
+    IF TG_OP = ''DELETE'' OR TG_OP = ''UPDATE'' THEN
+      UPDATE articulo SET stockarticulo = stockarticulo + OLD.cantlalbaran WHERE idarticulo= OLD.idarticulo;
+    END IF;
+    IF TG_OP = ''INSERT'' OR TG_OP = ''UPDATE'' THEN
+      UPDATE articulo SET stockarticulo = stockarticulo - NEW.cantlalbaran WHERE idarticulo= NEW.idarticulo;
+    END IF;
+    RETURN NEW;
+END;
+' LANGUAGE plpgsql;
+
+
+\echo -n ':: Disparador que disminuye stock al borrar o actualizar el detalle de un albaran de proveedor ... '
+CREATE TRIGGER cambiastockt
+    AFTER INSERT OR DELETE OR UPDATE ON lalbaran
+    FOR EACH ROW
+    EXECUTE PROCEDURE cambiastock();
+
+
+
+
+
+
+
+
 
 -- =====================================================================================
 
@@ -88,16 +154,16 @@ DECLARE
 BEGIN
 	SELECT INTO as * FROM configuracion WHERE nombre = ''DatabaseRevision'';
 	IF FOUND THEN
-		UPDATE CONFIGURACION SET valor = ''0.12.1-0001'' WHERE nombre = ''DatabaseRevision'';
+		UPDATE CONFIGURACION SET valor = ''0.12.1-0003'' WHERE nombre = ''DatabaseRevision'';
 	ELSE
-		INSERT INTO configuracion (nombre, valor) VALUES (''DatabaseRevision'', ''0.12.1-0001'');
+		INSERT INTO configuracion (nombre, valor) VALUES (''DatabaseRevision'', ''0.12.1-0003'');
 	END IF;
 	RETURN 0;
 END;
 '   LANGUAGE plpgsql;
 SELECT actualizarevision();
 DROP FUNCTION actualizarevision() CASCADE;
-\echo "Actualizada la revision de la base de datos a la version 0.12.1"
+\echo "Actualizada la revision de la base de datos a la version 0.12.0003"
 
 DROP FUNCTION drop_if_exists_table(text) CASCADE;
 DROP FUNCTION drop_if_exists_proc(text, text) CASCADE;
