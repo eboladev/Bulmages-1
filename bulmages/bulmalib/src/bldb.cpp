@@ -24,6 +24,8 @@
 #include <QDebug>
 #include <QTextCodec>
 #include <QXmlStreamReader>
+#include <QDomDocument>
+#include <QDomNode>
 
 #include "bldb.h"
 #include "blplugins.h"
@@ -276,6 +278,32 @@ QString BlDbField::exportXML() {
     return val;
     _depura ( "END BlDbField::exportXML", 0 );
 }
+
+
+
+
+
+void BlDbField::syncXML(const QString &text) {
+    _depura ( "BlDbField::syncXML", 0 );
+
+    QDomDocument doc ( "mydocument" );
+
+    if ( !doc.setContent ( text ) ) {
+        _depura ( "END BlDbField::syncXML", 0, "XML Invalido" );
+        return;
+    } // end if
+
+    QDomElement docElem = doc.documentElement();
+    QDomElement principal = docElem.firstChildElement ( "NOMCAMPO" );
+    if (principal.text() == m_nomcampo) {
+        principal = docElem.firstChildElement ( "VALORCAMPO" );
+        m_valorcampo = principal.text();
+    } // end if
+
+
+    _depura ( "BlDbField::syncXML", 0 );
+}
+
 
 
 /// Constructor de la clase que toma por defecto la base de datos con la que va a operar.
@@ -1066,5 +1094,55 @@ QString BlDbRecord::exportXML() {
     _depura ( "END BlDbRecord::exportXML", 0 );
 }
 
+void BlDbRecord::syncXML(const QString &text) {
+    _depura ( "BlDbRecord::syncXML", 0 );
+
+    BlDbField *campo;
+
+    QDomDocument doc ( "mydocument" );
+
+    if ( !doc.setContent ( text ) ) {
+        _depura ( "END BlDbRecord::syncXML", 0, "XML Invalido" );
+        return;
+    } // end if
+
+
+    QDomElement docElem = doc.documentElement();
+    QDomElement principal = docElem.firstChildElement ( "TABLENAME" );
+    m_tablename = principal.text();
+    principal = docElem.firstChildElement ( "CAMPOID" );
+    m_campoid = principal.text();
+    principal = docElem.firstChildElement ( "NUEVOCAMPO" );
+    if (principal.text() == "TRUE") {
+        m_nuevoCampo = TRUE;
+    } else {
+        m_nuevoCampo = FALSE;
+    } // end if
+
+    /// Cogemos la coordenada X
+    QDomNodeList nodos = docElem.elementsByTagName ( "BLDBFIELD" );
+    for ( int i = 0; i < nodos.count(); i++ ) {
+
+        QDomNode ventana = nodos.item ( i );
+        QDomElement e1 = ventana.toElement(); /// try to convert the node to an element.
+        if ( !e1.isNull() ) { /// the node was really an element.
+            QString nodoText = e1.text();
+            /// Pasamos el XML a texto para poder procesarlo como tal.
+            QString result;
+            QTextStream stream ( &result );
+            ventana.save(stream,5);
+            /// Para cada uno de los campos sincronizamos.
+            int i = 0;
+            campo = m_lista.value ( i++ );
+            while ( campo ) {
+                campo->syncXML(result);
+                campo = m_lista.value ( i++ );
+            } // end while
+
+        } // end if
+    } // end for
+
+    _depura ( "BlDbRecord::syncXML", 0 );
+}
 
 

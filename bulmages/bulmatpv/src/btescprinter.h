@@ -90,11 +90,7 @@ enum printerFont {
     fontB
 };
 
-enum justification {
-    left = 0,
-    center,
-    right
-};
+
 
 enum barcodeSystem {
     upca = 0, //UPC-A
@@ -137,6 +133,14 @@ enum qrErrorCorrection {
 
 class BT_EXPORT BtEscPrinter
 {
+
+public:
+enum justification {
+    left = 0,
+    center,
+    right
+};
+
 public:
     BtEscPrinter();
     BtEscPrinter ( QString device );
@@ -171,7 +175,7 @@ public:
     void setHorizontalTabPos ( int numtabs, char* tabspos );
     void setLeftMargin ( unsigned short margin );
     void setPrintingAreaWidth ( unsigned short width ); //width default = 512
-    void setJustification ( justification j );
+    void setJustification ( BtEscPrinter::justification j );
     void setHAbsolutePos ( unsigned short pos );
     void setHRelativePos ( unsigned short pos );
 

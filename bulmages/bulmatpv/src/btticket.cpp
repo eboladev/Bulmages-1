@@ -25,6 +25,9 @@
 #include <QWidget>
 #include <QCloseEvent>
 #include <QFile>
+#include <QDomDocument>
+#include <QDomNode>
+#include <QTextStream>
 
 #include "blmaincompany.h"
 #include "btticket.h"
@@ -708,7 +711,7 @@ void BtTicket::imprimir(bool save)
     BtEscPrinter pr ( g_confpr->valor ( CONF_TICKET_PRINTER_FILE ) );
     pr.initializePrinter();
     pr.setCharacterCodeTable ( page19 );
-    pr.setJustification ( center );
+    pr.setJustification ( BtEscPrinter::center );
 
     if ( g_confpr->valor ( CONF_TPV_PRINTER_LOGO ) != "" ) {
         pr.printImage ( g_confpr->valor ( CONF_TPV_PRINTER_LOGO ) );
@@ -753,14 +756,14 @@ void BtTicket::imprimir(bool save)
     }
     
     pr.setUnderlineMode ( 0 );
-    pr.setJustification ( right );
+    pr.setJustification ( BtEscPrinter::right );
     pr.setCharacterPrintMode ( CHARACTER_FONTA_SELECTED );
     pr.printText ( "Base Imponible: " + total.baseImponible.toQString() + "�\n" );
     pr.printText ( "IVA " + total.iva.toQString() + "%:" + ( total.totalIva - total.baseImponible ).toQString() + "�\n" );
     pr.setCharacterPrintMode ( CHARACTER_FONTA_SELECTED | EMPHASIZED_MODE | DOUBLE_HEIGHT | DOUBLE_WIDTH );
     pr.printText ( "TOTAL: " + total.totalIva.toQString() + "�\n" );
     pr.printText ( "\n\n" );
-    pr.setJustification ( left );
+    pr.setJustification ( BtEscPrinter::left );
     pr.setCharacterPrintMode ( CHARACTER_FONTA_SELECTED );
     pr.printText ( "Le ha atendido " + trabajador.nombre + "\n" );
     pr.printText ( "\n" );
@@ -774,13 +777,13 @@ void BtTicket::imprimir(bool save)
     pr.printText ( "Tel. " + empresa.telefono + "\n" );
     pr.printText ( "\n" );
 
-    pr.setJustification ( center );
+    pr.setJustification ( BtEscPrinter::center );
     pr.setColor ( red );
     pr.printText ( "*** GRACIAS POR SU VISITA ***\n" );
 
     QByteArray qba = dbValue ( "refalbaran" ).toAscii();
     char* barcode = qba.data();
-    pr.setJustification ( center );
+    pr.setJustification ( BtEscPrinter::center );
     pr.setBarcodeFormat ( 2, 50, both, fontB );
     pr.printBarCode ( code39, qba.size(), barcode );
     pr.cutPaperAndFeed ( TRUE, 10 );
@@ -1075,4 +1078,33 @@ QString BtTicket::exportXML() {
     _depura ( "END BtTicket::exportXML", 0 );
 }
 
+
+void BtTicket::syncXML(const QString &text) {
+    _depura ( "BtTicket::syncXML", 0 );
+
+
+    QDomDocument doc ( "mydocument" );
+
+    if ( !doc.setContent ( text ) ) {
+        _depura ( "END BtCompany::syncXML", 0, "XML Invalido" );
+        return;
+    } // end if
+
+    QDomElement docElem = doc.documentElement();
+    QDomElement principal = docElem.firstChildElement ( "BLDBRECORD" );
+    QString result;
+    QTextStream stream ( &result );
+    principal.save(stream,5);
+    BlDbRecord::syncXML(result);
+
+    /// Cogemos la coordenada X
+    QDomNodeList nodos = docElem.elementsByTagName ( "LISTALINEAS" );
+    for ( int i = 0; i < nodos.count(); i++ ) {
+
+    } // end for
+
+
+
+    _depura ( "BtTicket::syncXML", 0 );
+}
 

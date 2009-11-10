@@ -218,7 +218,7 @@ void BtEscPrinter::setPrintingAreaWidth ( unsigned short width ) //width default
     buffer.append ( QByteArray::fromRawData ( header, 4 ) );
 }
 
-void BtEscPrinter::setJustification ( justification j )
+void BtEscPrinter::setJustification ( BtEscPrinter::justification j )
 {
     const char header[3] = {0x1B, 0x61, ( char ) j};
     buffer.append ( QByteArray::fromRawData ( header, 3 ) );

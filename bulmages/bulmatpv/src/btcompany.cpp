@@ -102,6 +102,9 @@ void BtCompany::createMainWindows ( BlSplashScreen *splash )
     /// Hacemos la comprobacion de Z
     compruebaUltimaZ();
 
+    /// Hacemos la sincronizacioin del XML por si hubo tickets sin guardar
+    syncXML("esto es una prueba");
+
     _depura ( "END BtCompany::createMainWindows", 0 );
 }
 
@@ -641,6 +644,7 @@ void BtCompany::setTicketActual ( BtTicket *tick )
 
 /// Pruebas de exportacion a XML
 /// ======================================
+/*
     QFile file ( "/tmp/bulmatpv.xml" );
     /// Guardado del orden y de configuraciones varias.
     if ( file.open ( QIODevice::WriteOnly ) ) {
@@ -648,6 +652,7 @@ void BtCompany::setTicketActual ( BtTicket *tick )
         stream << exportXML();
         file.close();
     } // end if
+*/
 /// ======================================
 
 
@@ -818,4 +823,107 @@ QString BtCompany::exportXML() {
 
     return val;
     _depura ( "END BtCompany::exportXML", 0 );
+}
+
+
+/// Sincroniza la lista de tickets con los guardados en el xml pasado.
+/// Creando los que no estan y modificando los que estan.
+void BtCompany::syncXML(const QString &textxml) {
+    _depura ( "BtCompany::syncXML", 0 );
+
+
+    QFile file ( "/tmp/bulmatpv.xml" );
+    QDomDocument doc ( "mydocument" );
+    if ( !file.open ( QIODevice::ReadOnly ) ) {
+        _depura ( "END BtCompany::syncXML", 0, "Fichero no se puede abrir" );
+        return;
+    } // end if
+    if ( !doc.setContent ( &file ) ) {
+        file.close();
+        _depura ( "END BtCompany::syncXML", 0, "XML Invalido" );
+        return;
+    } // end if
+    file.close();
+
+    QDomElement docElem = doc.documentElement();
+    QDomElement principal = docElem.firstChildElement ( "LISTATICKETS" );
+    /// Cogemos la coordenada X
+    QDomNodeList nodos = docElem.elementsByTagName ( "BTTICKET" );
+    for ( int i = 0; i < nodos.count(); i++ ) {
+
+        QDomNode ventana = nodos.item ( i );
+        QDomElement e1 = ventana.toElement(); /// try to convert the node to an element.
+        if ( !e1.isNull() ) { /// the node was really an element.
+            QString nodoText = e1.text();
+            /// Pasamos el XML a texto para poder procesarlo como tal.
+            QString result;
+            QTextStream stream ( &result );
+            ventana.save(stream,5);
+            /// Para cada elemento de la lista de tickets intentamos sincronizar el ticket. (Basandonos en el id y en el nombre de mesa).
+            /// Si ho ha habido sincronizacion con ningun elemento
+            /// Creamos un ticket nuevo y lo sincronizamos.
+            BtTicket *tick = newBtTicket();
+//            tick->setDbValue ( "idtrabajador", emp->ticketActual() ->dbValue ( "idtrabajador" ) );
+            tick->syncXML(result);
+            listaTickets() ->append ( tick );
+            setTicketActual(tick);
+
+        } // end if
+
+
+
+
+/*
+            BlDbField::DbType type = BlDbField::DbVarChar;
+            QString nomheader = e1.firstChildElement ( "NOMCAMPO" ).toElement().text();
+            if ( exists ( nomheader ) ) return;
+            QString nompheader = e1.firstChildElement ( "NOMPCAMPO" ).toElement().text();
+            QString typeheader = e1.firstChildElement ( "DBTYPECAMPO" ).toElement().text();
+            if ( typeheader == "DBVARCHAR" ) {
+                type = BlDbField::DbVarChar;
+            } else if ( typeheader == "DBINT" ) {
+                type = BlDbField::DbInt;
+            } else if ( typeheader == "DBNUMERIC" ) {
+                type = BlDbField::DbNumeric;
+            } else if ( typeheader == "DBBOOLEAN" ) {
+                type = BlDbField::DbBoolean;
+            } else if ( typeheader == "DBDATE" ) {
+                type = BlDbField::DbDate;
+            } // end if
+
+            int restricciones = ( int ) BlDbField::DbNothing;
+            QDomElement restrict = e1.firstChildElement ( "RESTRICTIONSCAMPO" );
+            while ( !restrict.isNull() ) {
+                QString trestrict = restrict.text();
+                if ( trestrict == "DBNOTHING" ) {
+                    restricciones |= BlDbField::DbVarChar;
+                } else if ( trestrict == "DBNOTNULL" ) {
+                    restricciones |= BlDbField::DbNotNull;
+                } else if ( trestrict == "DBPRIMARYKEY" ) {
+                    restricciones |= BlDbField::DbPrimaryKey;
+                } else if ( trestrict == "DBNOSAVE" ) {
+                    restricciones |= BlDbField::DbNoSave;
+                } else if ( trestrict == "DBAUTO" ) {
+                    restricciones |= BlDbField::DbAuto;
+                } else if ( trestrict == "DBAUTO" ) {
+                    restricciones |= BlDbField::DbAuto;
+                } else if ( trestrict == "DBDUPPRIMARYKEY" ) {
+                    restricciones |= BlDbField::DbDupPrimaryKey;
+                } else if ( trestrict == "DBREQUIRED" ) {
+                    restricciones |= BlDbField::DbRequired;
+                } else if ( trestrict == "DBNOLOAD" ) {
+                    restricciones |= BlDbField::DbNoLoad;
+                } // end if
+                restrict = restrict.nextSiblingElement ( "RESTRICTIONSCAMPO" );
+            } // end while
+
+            addDbField ( nomheader, type, ( BlDbField::DbRestrict ) restricciones, nompheader );
+            generaCampo ( nomheader, nompheader, typeheader );
+        } // end if
+*/
+    } // end for
+
+
+
+    _depura ( "BtCompany::syncXML", 0 );
 }

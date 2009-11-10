@@ -107,7 +107,6 @@ BlForm::~BlForm()
 void BlForm::cargaSpecs()
 {
     _depura ( "BlForm::cargaSpecs", 0 );
-//    QFile file(g_confpr->valor(CONF_DIR_USER) + m_fileconfig + "_" + mainCompany()->dbName() + "_specs.spc");
     QFile file ( CONFIG_DIR_CONFIG + objectName() + "_" + mainCompany() ->dbName() + "_spec.spc" );
     QDomDocument doc ( "mydocument" );
     if ( !file.open ( QIODevice::ReadOnly ) ) {

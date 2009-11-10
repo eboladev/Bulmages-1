@@ -68,6 +68,7 @@ public:
     void setTicketActual ( BtTicket *tick );
     void compruebaUltimaZ();
     virtual QString exportXML();
+    virtual void syncXML(const QString &);
 
 };
 

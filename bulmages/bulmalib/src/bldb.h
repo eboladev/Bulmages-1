@@ -92,6 +92,7 @@ public:
     QString valorcampo();
     QString valorcampoprep ( int &error );
     virtual QString exportXML();
+    virtual void syncXML(const QString &);
 };
 
 
@@ -145,6 +146,7 @@ public:
     virtual QString nombrePlantilla(void);
     virtual int generaRML ( void );
     virtual QString exportXML();
+    virtual void syncXML(const QString &);
 
 };
 

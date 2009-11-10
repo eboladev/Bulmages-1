@@ -129,7 +129,7 @@ void Devolucion::on_mui_vale_released()
     BtEscPrinter pr ( g_confpr->valor ( CONF_TICKET_PRINTER_FILE ) );
     pr.initializePrinter();
     pr.setCharacterCodeTable ( page19 );
-    pr.setJustification ( center );
+    pr.setJustification ( BtEscPrinter::center );
 
     if ( g_confpr->valor ( CONF_TPV_PRINTER_LOGO ) != "" ) {
         pr.printImage ( g_confpr->valor ( CONF_TPV_PRINTER_LOGO ) );
@@ -151,7 +151,7 @@ void Devolucion::on_mui_vale_released()
     pr.printText ( mui_difprice->text() );
 
     pr.printText ( "\n\n" );
-    pr.setJustification ( left );
+    pr.setJustification ( BtEscPrinter::left );
     pr.setCharacterPrintMode ( CHARACTER_FONTA_SELECTED );
     pr.printText ( "Le ha atendido " + trabajador.nombre + "\n" );
     pr.printText ( "\n" );
@@ -159,14 +159,14 @@ void Devolucion::on_mui_vale_released()
     pr.printText ( "Tel. " + empresa.telefono + "\n" );
     pr.printText ( "\n" );
 
-    pr.setJustification ( center );
+    pr.setJustification ( BtEscPrinter::center );
     pr.setColor ( red );
     pr.printText ( "*** GRACIAS POR SU VISITA ***\n" );
 
 
     QByteArray qba = m_ticket->dbValue ( "refalbaran" ).toAscii();
     char* barcode = qba.data();
-    pr.setJustification ( center );
+    pr.setJustification ( BtEscPrinter::center );
     pr.setBarcodeFormat ( 2, 50, both, fontB );
     pr.printBarCode ( code39, qba.size(), barcode );
     pr.cutPaperAndFeed ( TRUE, 10 );

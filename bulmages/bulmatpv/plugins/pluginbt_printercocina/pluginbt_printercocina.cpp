@@ -152,7 +152,7 @@ int impresionCocina(BtTicket *tick) {
       BtEscPrinter pr ( g_confpr->valor(CONF_DIR_USER) + "bulmatpv_cocina.txt" );
       pr.initializePrinter();
       pr.setCharacterCodeTable ( page19 );
-      pr.setJustification ( center );
+      pr.setJustification ( BtEscPrinter::center );
 
 //      if ( g_confpr->valor ( CONF_TPV_PRINTER_LOGO ) != "" ) {
 //          pr.printImage ( g_confpr->valor ( CONF_TPV_PRINTER_LOGO ) );
@@ -166,7 +166,7 @@ int impresionCocina(BtTicket *tick) {
       pr.printText ( fecha.dia + " " + fecha.hora + "\n" );
       pr.printText ( "Cliente: " + cliente.cif + " " + cliente.nombre + "\n" );
 
-      pr.setJustification ( center );
+      pr.setJustification ( BtEscPrinter::center );
       pr.setCharacterSize ( CHAR_WIDTH_2 | CHAR_HEIGHT_2 );
 
       pr.printText ( "Ticket:  " + tick->dbValue("numalbaran") + "\n" );
@@ -210,7 +210,7 @@ int impresionCocina(BtTicket *tick) {
 
       QByteArray qba = tick->dbValue ( "refalbaran" ).toAscii();
       char* barcode = qba.data();
-      pr.setJustification ( center );
+      pr.setJustification ( BtEscPrinter::center );
       pr.setBarcodeFormat ( 2, 50, both, fontB );
       pr.printBarCode ( code39, qba.size(), barcode );
       pr.cutPaperAndFeed ( TRUE, 10 );
