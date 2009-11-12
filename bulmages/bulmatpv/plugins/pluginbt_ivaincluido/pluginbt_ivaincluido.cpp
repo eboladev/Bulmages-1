@@ -245,7 +245,7 @@ int BtTicket_imprimir(BtTicket *tick)
         //pvp = pvp + pvp * iva / BlFixed ( "100" );
         BlFixed pvptotal = BlFixed ( linea->dbValue ( "cantlalbaran" ) ) * pvp;
         pr.printText ( linea->dbValue ( "cantlalbaran" ).rightJustified ( 5, ' ', TRUE ) + " " );
-        pr.printText ( linea->dbValue ( "desclalbaran" ).leftJustified ( 27, ' ', true ) + " " );
+        pr.printText ( linea->dbValue ( "desclalbaran" ).leftJustified ( 27, ' ', TRUE ) + " " );
         QString pvpstr = pvp.toQString();
         QString pvptotalstr = pvptotal.toQString();
         pr.printText ( QString ( pvpstr + "�" ).rightJustified ( 10, ' ', TRUE ) + " " );

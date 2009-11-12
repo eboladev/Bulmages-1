@@ -4,3 +4,10 @@ selection-color: #AAAAAA;
 selection-background-color: blue;}
 
 *#m_filtro {background-color: #FFFF88;}
+
+*#mui_plainText{color: black;
+background-color: #DDDDDD;
+font-family:Courier,Monospace;
+font-size:10px;
+}
+

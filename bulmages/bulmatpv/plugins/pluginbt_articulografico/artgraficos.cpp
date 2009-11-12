@@ -40,6 +40,7 @@ ArtGraficos::~ArtGraficos()
 
 void ArtGraficos::on_mui_list_cellClicked ( int row, int column )
 {
+    _depura("ArtGraficos::on_mui_list_cellClicked");
     QString artvarios = g_confpr->valor ( CONF_ARTICULOS_VARIOS );
     QString codigo = m_articulos[row][column];
     if ( ! artvarios.contains ( codigo ) ) {
@@ -47,6 +48,7 @@ void ArtGraficos::on_mui_list_cellClicked ( int row, int column )
     } else {
         ( ( BtCompany * ) mainCompany() ) ->ticketActual() ->insertarArticuloCodigoNL ( m_articulos[row][column] );
     } // end if
+    _depura("END ArtGraficos::on_mui_list_cellClicked");
 }
 
 void ArtGraficos::on_mui_botonSiguiente_released()

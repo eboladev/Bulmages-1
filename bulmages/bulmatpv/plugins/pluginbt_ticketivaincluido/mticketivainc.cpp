@@ -1,4 +1,4 @@
-kon/***************************************************************************
+/***************************************************************************
  *   Copyright (C) 2007 by Tomeu Borras Riera                              *
  *   tborras@conetxia.com                                                  *
  *   http://www.iglues.org                                                 *
@@ -42,7 +42,10 @@ MTicketIVAInc::MTicketIVAInc ( BtCompany *emp, QWidget *parent ) : BlWidget ( em
     setFocusPolicy ( Qt::NoFocus );
     emp->pWorkspace()->addWindow ( this );
     setWindowTitle ( "Ticket" );
-    
+
+    /// Por defecto hacemos el browser invisible porque es leeeento
+    mui_browser->setVisible(FALSE);
+
     g_plugins->lanza ( "MTicketIVAInc_MTicketIVAInc_Post", this );
     _depura ( "END MTicketIVAInc::MTicketIVAInc", 0 );
 }
@@ -66,15 +69,19 @@ void MTicketIVAInc::pintar()
     //QString html = "<font size=\"1\">";
     QString html = "<p style=\"font-family:monospace; font-size: 12pt;\">";
     QString html1 = "<font size=\"1\">";
+    QString textoplano = "";
+
 
     html1 += "Ticket: " + tick->dbValue ( "nomticket" ) + "<BR>";
+    textoplano += "Ticket: " + tick->dbValue ( "nomticket" ) + "\n";
 
-    QString querytrab = "SELECT * FROM trabajador WHERE idtrabajador = " + tick->dbValue ( "idtrabajador" );
+
+    QString querytrab = "SELECT idtrabajador, nomtrabajador FROM trabajador WHERE idtrabajador = " + tick->dbValue ( "idtrabajador" );
     BlDbRecordSet *curtrab = mainCompany()->loadQuery ( querytrab );
     html1 += "Trabajador: " + tick->dbValue ( "idtrabajador" ) + " " + curtrab->valor ( "nomtrabajador" ) + "<BR>";
     delete curtrab;
     
-    QString query = "SELECT * FROM cliente WHERE idcliente = " + tick->dbValue ( "idcliente" );
+    QString query = "SELECT idcliente,nomcliente FROM cliente WHERE idcliente = " + tick->dbValue ( "idcliente" );
     BlDbRecordSet *cur1 = mainCompany()->loadQuery ( query );
     html1 += "Cliente: " + tick->dbValue ( "idcliente" ) + " " + cur1->valor ( "nomcliente" ) + "<BR>";
     delete cur1;
@@ -83,6 +90,7 @@ void MTicketIVAInc::pintar()
 
     if (tick->dbValue("nomticket") != "") {
       html += "<TR><TD colspan=\"3\" align=\"center\"><B>" + tick->dbValue ( "nomticket" ) + "</B></td></tr>";
+      textoplano = "     " + tick->dbValue("nomticket") + "\n";
     } // end if
 
     BlDbRecord *item;
@@ -90,13 +98,27 @@ void MTicketIVAInc::pintar()
     for ( int i = 0; i < tick->listaLineas()->size(); ++i ) {
         item = tick->listaLineas()->at ( i );
         QString bgcolor = "#FFFFFF";
-        if ( item == tick->lineaActBtTicket() ) bgcolor = "#CCCCFF";
+        if ( item == tick->lineaActBtTicket() ) {
+            bgcolor = "#CCCCFF";
+            textoplano += "> ";
+        } else {
+            textoplano += "  ";
+        }// end if
         html += "<TR>";
         html += "<TD bgcolor=\"" + bgcolor + "\" align=\"right\" width=\"50\">" + item->dbValue ( "cantlalbaran" ) + "</TD>";
+        textoplano += item->dbValue("cantlalbaran").rightJustified ( 7, ' ', TRUE ) + " ";
         html += "<TD bgcolor=\"" + bgcolor + "\">" + item->dbValue ( "nomarticulo" ) + "</TD>";
+        textoplano += item->dbValue("nomarticulo").leftJustified ( 20, ' ', TRUE ) + " ";
         BlFixed totalLinea ( "0.00" );
         totalLinea = BlFixed ( item->dbValue ( "cantlalbaran" ) ) * BlFixed ( item->dbValue ( "pvpivainclalbaran" ) );
         html += "<TD bgcolor=\"" + bgcolor + "\" align=\"right\" width=\"50\">" + totalLinea.toQString() + "</TD>";
+        textoplano += totalLinea.toQString().rightJustified ( 9, ' ', TRUE );
+
+        if ( item == tick->lineaActBtTicket() ) {
+            textoplano += " <";
+        }// end if
+
+        textoplano += " \n";
         html += "</TR>";
     } // end for
     
@@ -218,7 +240,14 @@ void MTicketIVAInc::pintar()
 
 // ======================================
     /// Pintamos el HTML en el textBrowser
+
+if (mui_browser->isVisible()) {
     mui_browser->setText ( html );
+} // end if
+
+if (mui_plainText->isVisible()) {
+    mui_plainText->setPlainText (textoplano);
+} // end if
     _depura ( "END MTicketIVAInc::pintar", 0 );
 }
 
