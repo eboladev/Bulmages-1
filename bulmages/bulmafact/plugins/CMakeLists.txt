@@ -32,6 +32,7 @@ add_subdirectory(pluginbf_ticket)
 #plugin_tc_articulos en desarrollo
 add_subdirectory(pluginbf_tallascolores)
 
+
 add_subdirectory(pluginbf_promedios)
 add_subdirectory(pluginbf_multiimprimir)
 add_subdirectory(pluginbf_q19)

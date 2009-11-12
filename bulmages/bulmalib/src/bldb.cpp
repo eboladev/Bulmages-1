@@ -270,7 +270,9 @@ QString BlDbField::exportXML() {
     val += "\t<NOMCAMPO>" + XMLProtect(m_nomcampo) + "</NOMCAMPO>\n";
     val += "\t<VALORCAMPO>"+ XMLProtect(m_valorcampo)+"</VALORCAMPO>\n";
     val += "\t<VALORCAMPOORIG>"+ XMLProtect(m_valorcampoorig)+"</VALORCAMPOORIG>\n";
-    val += "\t<VALORCAMPOPREP>"+ XMLProtect(valorcampoprep(error))+"</VALORCAMPOPREP>\n";
+    if (m_valorcampo != "") {
+        val += "\t<VALORCAMPOPREP>"+ XMLProtect(valorcampoprep(error))+"</VALORCAMPOPREP>\n";
+    } // end if
     val += "\t<NOMPRESENTACION>"+ XMLProtect(m_nompresentacion)+"</NOMPRESENTACION>\n";
     val += "\t<RESTRICCIONES>"+ XMLProtect(QString::number(m_restrict))+"</RESTRICCIONES>\n";
     val += "\t<TIPO>"+ XMLProtect(QString::number(m_tipo))+"</TIPO>\n";

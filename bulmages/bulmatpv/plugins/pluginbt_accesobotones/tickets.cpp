@@ -9,6 +9,7 @@
 
 Tickets::Tickets ( BlMainCompany *emp, QWidget *parent ) : QDialog ( parent ), BlMainCompanyPointer ( emp )
 {
+    _depura("Tickets::Tickets");
     setupUi ( this );
     BtCompany *emp1 = ( BtCompany * ) emp;
     BtTicket *ticket;
@@ -29,6 +30,7 @@ Tickets::Tickets ( BlMainCompany *emp, QWidget *parent ) : QDialog ( parent ), B
             connect ( toolbutton, SIGNAL ( pressed() ), this, SLOT ( ticketClicked() ) );
         } // end if
     }// end for
+    _depura("END Tickets::Tickets");
 }
 
 
@@ -37,6 +39,7 @@ Tickets::~Tickets()
 
 void Tickets::ticketClicked()
 {
+    _depura("Tickets::ticketClicked");
     BtCompany * emp1 = ( BtCompany * ) mainCompany();
     QPushButton *toolbutton = ( QPushButton * ) sender();
     BtTicket *ticket;
@@ -51,4 +54,5 @@ void Tickets::ticketClicked()
     }// end for
 
     done ( 0 );
+    _depura("END Tickets::ticketClicked");
 }
