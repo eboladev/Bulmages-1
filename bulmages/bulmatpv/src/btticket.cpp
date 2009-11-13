@@ -1101,13 +1101,29 @@ void BtTicket::syncXML(const QString &text) {
     BlDbRecord::syncXML(result);
 
     /// Cogemos la coordenada X
-    QDomNodeList nodos = docElem.elementsByTagName ( "LISTALINEAS" );
+
+    docElem = doc.documentElement();
+    principal = docElem.firstChildElement ( "LISTALINEAS" );
+    /// Cogemos la coordenada X
+    QDomNodeList nodos = docElem.elementsByTagName ( "BLDBRECORD" );
     for ( int i = 0; i < nodos.count(); i++ ) {
 
+        QDomNode ventana = nodos.item ( i );
+        QDomElement e1 = ventana.toElement(); /// try to convert the node to an element.
+        if ( !e1.isNull() ) { /// the node was really an element.
+            QString nodoText = e1.text();
+            /// Pasamos el XML a texto para poder procesarlo como tal.
+            QString result;
+            QTextStream stream ( &result );
+            ventana.save(stream,5);
+            /// Para cada elemento de la lista de tickets intentamos sincronizar el ticket. (Basandonos en el id y en el nombre de mesa).
+            /// Si ho ha habido sincronizacion con ningun elemento
+            /// Creamos un ticket nuevo y lo sincronizamos.
+            BlDbRecord *linea1 = agregarLinea();
+//            tick->setDbValue ( "idtrabajador", emp->ticketActual() ->dbValue ( "idtrabajador" ) );
+            linea1->syncXML(result);
+        } // end if
     } // end for
-
-
-
     _depura ( "BtTicket::syncXML", 0 );
 }
 

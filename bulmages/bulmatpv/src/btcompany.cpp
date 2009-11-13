@@ -849,7 +849,7 @@ void BtCompany::syncXML(const QString &textxml) {
     QDomElement principal = docElem.firstChildElement ( "LISTATICKETS" );
     /// Cogemos la coordenada X
     QDomNodeList nodos = docElem.elementsByTagName ( "BTTICKET" );
-    for ( int i = 0; i < nodos.count(); i++ ) {
+    for ( int i = 0; i < nodos.count() -1; i++ ) {
 
         QDomNode ventana = nodos.item ( i );
         QDomElement e1 = ventana.toElement(); /// try to convert the node to an element.
@@ -862,68 +862,21 @@ void BtCompany::syncXML(const QString &textxml) {
             /// Para cada elemento de la lista de tickets intentamos sincronizar el ticket. (Basandonos en el id y en el nombre de mesa).
             /// Si ho ha habido sincronizacion con ningun elemento
             /// Creamos un ticket nuevo y lo sincronizamos.
-            BtTicket *tick = newBtTicket();
-//            tick->setDbValue ( "idtrabajador", emp->ticketActual() ->dbValue ( "idtrabajador" ) );
-            tick->syncXML(result);
-            listaTickets() ->append ( tick );
-            setTicketActual(tick);
+            
+          m_ticketActual->syncXML(result);
+          mensajeInfo(ticketActual()->dbValue("nomticket"));
+
+          BtTicket *tick = newBtTicket();
+          tick->setDbValue ( "idtrabajador", ticketActual() ->dbValue ( "idtrabajador" ) );
+          listaTickets() ->append ( tick );
+          setTicketActual(tick);
 
         } // end if
 
-
-
-
-/*
-            BlDbField::DbType type = BlDbField::DbVarChar;
-            QString nomheader = e1.firstChildElement ( "NOMCAMPO" ).toElement().text();
-            if ( exists ( nomheader ) ) return;
-            QString nompheader = e1.firstChildElement ( "NOMPCAMPO" ).toElement().text();
-            QString typeheader = e1.firstChildElement ( "DBTYPECAMPO" ).toElement().text();
-            if ( typeheader == "DBVARCHAR" ) {
-                type = BlDbField::DbVarChar;
-            } else if ( typeheader == "DBINT" ) {
-                type = BlDbField::DbInt;
-            } else if ( typeheader == "DBNUMERIC" ) {
-                type = BlDbField::DbNumeric;
-            } else if ( typeheader == "DBBOOLEAN" ) {
-                type = BlDbField::DbBoolean;
-            } else if ( typeheader == "DBDATE" ) {
-                type = BlDbField::DbDate;
-            } // end if
-
-            int restricciones = ( int ) BlDbField::DbNothing;
-            QDomElement restrict = e1.firstChildElement ( "RESTRICTIONSCAMPO" );
-            while ( !restrict.isNull() ) {
-                QString trestrict = restrict.text();
-                if ( trestrict == "DBNOTHING" ) {
-                    restricciones |= BlDbField::DbVarChar;
-                } else if ( trestrict == "DBNOTNULL" ) {
-                    restricciones |= BlDbField::DbNotNull;
-                } else if ( trestrict == "DBPRIMARYKEY" ) {
-                    restricciones |= BlDbField::DbPrimaryKey;
-                } else if ( trestrict == "DBNOSAVE" ) {
-                    restricciones |= BlDbField::DbNoSave;
-                } else if ( trestrict == "DBAUTO" ) {
-                    restricciones |= BlDbField::DbAuto;
-                } else if ( trestrict == "DBAUTO" ) {
-                    restricciones |= BlDbField::DbAuto;
-                } else if ( trestrict == "DBDUPPRIMARYKEY" ) {
-                    restricciones |= BlDbField::DbDupPrimaryKey;
-                } else if ( trestrict == "DBREQUIRED" ) {
-                    restricciones |= BlDbField::DbRequired;
-                } else if ( trestrict == "DBNOLOAD" ) {
-                    restricciones |= BlDbField::DbNoLoad;
-                } // end if
-                restrict = restrict.nextSiblingElement ( "RESTRICTIONSCAMPO" );
-            } // end while
-
-            addDbField ( nomheader, type, ( BlDbField::DbRestrict ) restricciones, nompheader );
-            generaCampo ( nomheader, nompheader, typeheader );
-        } // end if
-*/
     } // end for
 
-
+    mensajeInfo("Pintamos el ticket Actual");
+    ticketActual()->pintar();
 
     _depura ( "BtCompany::syncXML", 0 );
 }
