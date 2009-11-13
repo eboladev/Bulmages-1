@@ -1100,7 +1100,6 @@ void BlDbRecord::syncXML(const QString &text) {
     _depura ( "BlDbRecord::syncXML", 0 );
 
     BlDbField *campo;
-
     QDomDocument doc ( "mydocument" );
 
     if ( !doc.setContent ( text ) ) {
@@ -1123,9 +1122,9 @@ void BlDbRecord::syncXML(const QString &text) {
 
     /// Cogemos la coordenada X
     QDomNodeList nodos = docElem.elementsByTagName ( "BLDBFIELD" );
-    for ( int i = 0; i < nodos.count(); i++ ) {
-
-        QDomNode ventana = nodos.item ( i );
+    int j = 0;
+    while (j < nodos.count()) {
+        QDomNode ventana = nodos.item ( j++ );
         QDomElement e1 = ventana.toElement(); /// try to convert the node to an element.
         if ( !e1.isNull() ) { /// the node was really an element.
             QString nodoText = e1.text();
@@ -1142,8 +1141,7 @@ void BlDbRecord::syncXML(const QString &text) {
             } // end while
 
         } // end if
-    } // end for
-
+    } // end while
     _depura ( "BlDbRecord::syncXML", 0 );
 }
 

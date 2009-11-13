@@ -1110,8 +1110,9 @@ void BtTicket::syncXML(const QString &text) {
     principal = docElem.firstChildElement ( "LISTALINEAS" );
     /// Cogemos la coordenada X
     QDomNodeList nodos = principal.elementsByTagName ( "BLDBRECORD" );
-    for ( int i = 0; i < nodos.count(); i++ ) {
-        QDomNode ventana = nodos.item ( i );
+    int i = 0;
+    while (i < nodos.count()) {
+        QDomNode ventana = nodos.item ( i++ );
         QDomElement e1 = ventana.toElement(); /// try to convert the node to an element.
         if ( !e1.isNull() ) { /// the node was really an element.
             QString nodoText = e1.text();
@@ -1126,7 +1127,7 @@ void BtTicket::syncXML(const QString &text) {
             linea1->syncXML(result);
             m_lineaActual = linea1;
         } // end if
-    } // end for
+    } // end while
     _depura ( "BtTicket::syncXML", 0 );
 }
 

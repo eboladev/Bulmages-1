@@ -824,7 +824,6 @@ QString BtCompany::exportXML() {
 void BtCompany::syncXML(const QString &textxml) {
     _depura ( "BtCompany::syncXML", 0 );
 
-
     QFile file ( "/tmp/bulmatpv.xml" );
     QDomDocument doc ( "mydocument" );
     if ( !file.open ( QIODevice::ReadOnly ) ) {
@@ -842,8 +841,8 @@ void BtCompany::syncXML(const QString &textxml) {
     QDomElement principal = docElem.firstChildElement ( "LISTATICKETS" );
     /// Cogemos la coordenada X
     QDomNodeList nodos = principal.elementsByTagName ( "BTTICKET" );
-    for ( int i = 0; i < nodos.count(); i++ ) {
-
+    int i = 0;
+    while (i < nodos.count() ) {
         QDomNode ventana = nodos.item ( i );
         QDomElement e1 = ventana.toElement(); /// try to convert the node to an element.
         if ( !e1.isNull() ) { /// the node was really an element.
@@ -857,7 +856,7 @@ void BtCompany::syncXML(const QString &textxml) {
             /// Creamos un ticket nuevo y lo sincronizamos.
             
           m_ticketActual->syncXML(result);
-
+          i++;
           if (i < nodos.count()) {
             BtTicket *tick = newBtTicket();
             tick->setDbValue ( "idtrabajador", ticketActual() ->dbValue ( "idtrabajador" ) );
@@ -865,8 +864,7 @@ void BtCompany::syncXML(const QString &textxml) {
             setTicketActual(tick);
           } // end if
         } // end if
-
-    } // end for
+    } // end while
 
     _depura ( "BtCompany::syncXML", 0 );
 }
