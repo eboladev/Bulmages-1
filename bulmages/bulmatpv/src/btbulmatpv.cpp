@@ -166,10 +166,7 @@ void BtBulmaTPV::s_About()
 void BtBulmaTPV::closeEvent ( QCloseEvent * )
 {
     _depura ( "BtBulmaTPV::closeEvent", 0 );
-//    delete m_company;
-//    m_company = NULL;
 #ifdef WINDOWS
-
     exit ( 0 );
 #endif
 

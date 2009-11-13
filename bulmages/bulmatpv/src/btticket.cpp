@@ -800,22 +800,26 @@ void BtTicket::imprimir(bool save)
 
 void BtTicket::subir()
 {
+    _depura("BtTicket::subir");
     if ( listaLineas()->count() > 0 ) {
         int i = listaLineas() ->indexOf ( lineaActBtTicket() );
         if ( i > 0 ) i--;
         setLineaActual ( listaLineas() ->at ( i ) );
         pintar();
     } // end if
+    _depura("END BtTicket::subir");
 }
 
 void BtTicket::bajar()
 {
+    _depura("BtTicket::bajar");
     if ( listaLineas()->count() > 0 ) {
         int i = listaLineas() ->indexOf ( lineaActBtTicket() );
         if ( i < listaLineas() ->size() - 1 ) i++;
         setLineaActual ( listaLineas() ->at ( i ) );
         pintar();
     } // end if
+    _depura("END BtTicket::bajar");
 }
 
 void BtTicket::agregarCantidad ( QString cantidad )
@@ -1105,9 +1109,8 @@ void BtTicket::syncXML(const QString &text) {
     docElem = doc.documentElement();
     principal = docElem.firstChildElement ( "LISTALINEAS" );
     /// Cogemos la coordenada X
-    QDomNodeList nodos = docElem.elementsByTagName ( "BLDBRECORD" );
+    QDomNodeList nodos = principal.elementsByTagName ( "BLDBRECORD" );
     for ( int i = 0; i < nodos.count(); i++ ) {
-
         QDomNode ventana = nodos.item ( i );
         QDomElement e1 = ventana.toElement(); /// try to convert the node to an element.
         if ( !e1.isNull() ) { /// the node was really an element.
@@ -1120,8 +1123,8 @@ void BtTicket::syncXML(const QString &text) {
             /// Si ho ha habido sincronizacion con ningun elemento
             /// Creamos un ticket nuevo y lo sincronizamos.
             BlDbRecord *linea1 = agregarLinea();
-//            tick->setDbValue ( "idtrabajador", emp->ticketActual() ->dbValue ( "idtrabajador" ) );
             linea1->syncXML(result);
+            m_lineaActual = linea1;
         } // end if
     } // end for
     _depura ( "BtTicket::syncXML", 0 );

@@ -51,6 +51,20 @@ BtCompany::~BtCompany()
 {
     _depura ( "BtCompany::~BtCompany", 0 );
 
+/// Pruebas de exportacion a XML
+/// ======================================
+
+    QFile file ( "/tmp/bulmatpv.xml" );
+    /// Guardado del orden y de configuraciones varias.
+    if ( file.open ( QIODevice::WriteOnly ) ) {
+        QTextStream stream ( &file );
+        stream << exportXML();
+        file.close();
+    } // end if
+
+/// ======================================
+
+
     while ( !m_listaTickets.isEmpty() )
         delete m_listaTickets.takeFirst();
 
@@ -641,22 +655,6 @@ void BtCompany::setTicketActual ( BtTicket *tick )
 {
     _depura ( "BtCompany::setTicketActual", 0 );
 
-
-/// Pruebas de exportacion a XML
-/// ======================================
-/*
-    QFile file ( "/tmp/bulmatpv.xml" );
-    /// Guardado del orden y de configuraciones varias.
-    if ( file.open ( QIODevice::WriteOnly ) ) {
-        QTextStream stream ( &file );
-        stream << exportXML();
-        file.close();
-    } // end if
-*/
-/// ======================================
-
-
-
     _depura ( "END BtCompany::setTicketActual", 0 );
     m_ticketActual = tick;
 }
@@ -770,16 +768,11 @@ void BtCompany::compruebaUltimaZ()
                 msgBox.exec();
                 
                 if (msgBox.clickedButton() == si) {
-                
                     z();
-                
                 } else {
-                
                     exit(0);
-                
                 } // end if
-            
-                } // end if
+            } // end if
                     
         }// end if
         
@@ -848,8 +841,8 @@ void BtCompany::syncXML(const QString &textxml) {
     QDomElement docElem = doc.documentElement();
     QDomElement principal = docElem.firstChildElement ( "LISTATICKETS" );
     /// Cogemos la coordenada X
-    QDomNodeList nodos = docElem.elementsByTagName ( "BTTICKET" );
-    for ( int i = 0; i < nodos.count() -1; i++ ) {
+    QDomNodeList nodos = principal.elementsByTagName ( "BTTICKET" );
+    for ( int i = 0; i < nodos.count(); i++ ) {
 
         QDomNode ventana = nodos.item ( i );
         QDomElement e1 = ventana.toElement(); /// try to convert the node to an element.
@@ -864,19 +857,16 @@ void BtCompany::syncXML(const QString &textxml) {
             /// Creamos un ticket nuevo y lo sincronizamos.
             
           m_ticketActual->syncXML(result);
-          mensajeInfo(ticketActual()->dbValue("nomticket"));
 
-          BtTicket *tick = newBtTicket();
-          tick->setDbValue ( "idtrabajador", ticketActual() ->dbValue ( "idtrabajador" ) );
-          listaTickets() ->append ( tick );
-          setTicketActual(tick);
-
+          if (i < nodos.count()) {
+            BtTicket *tick = newBtTicket();
+            tick->setDbValue ( "idtrabajador", ticketActual() ->dbValue ( "idtrabajador" ) );
+            listaTickets() ->append ( tick );
+            setTicketActual(tick);
+          } // end if
         } // end if
 
     } // end for
-
-    mensajeInfo("Pintamos el ticket Actual");
-    ticketActual()->pintar();
 
     _depura ( "BtCompany::syncXML", 0 );
 }
