@@ -195,7 +195,7 @@ int main ( int argc, char **argv )
                 dock = dockedList.value(i);
                 dock->setFeatures(QDockWidget::NoDockWidgetFeatures);
             
-            }
+            } // end for
         
         } // end if
         
@@ -206,8 +206,10 @@ int main ( int argc, char **argv )
             bges->showMaximized();
         } // end if
         
+        // Mostramos la aplicacion
         bges->show();
 
+        // Entramos en el bucle de operacion que durara mientras el programa este en marcha
         valorSalida = g_theApp->exec();
 
         /// Disparamos los plugins con entryPoint.

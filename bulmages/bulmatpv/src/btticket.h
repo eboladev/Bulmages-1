@@ -70,7 +70,7 @@ public:
     int cargar ( QString );
     void borrarLinea ( BlDbRecord *linea );
     virtual QString exportXML();
-    virtual void syncXML(const QString &);
+    virtual bool syncXML(const QString &text, bool insertarSiempre = FALSE);
 
 public slots:
     virtual void subir();

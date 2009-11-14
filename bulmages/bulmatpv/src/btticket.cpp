@@ -1071,6 +1071,7 @@ QString BtTicket::exportXML() {
     BlDbField *campo;
 
     val = "<BTTICKET>\n";
+    val += "\t<NOMTICKET>" + dbValue("nomticket") + "</NOMTICKET>\n"; 
     val += "\t" + BlDbRecord::exportXML().replace("\t<","\t\t<").replace("\n<","\n\t<");
     val += "\t<LISTALINEAS>\n";
     BlDbRecord *linea1;
@@ -1086,7 +1087,7 @@ QString BtTicket::exportXML() {
 }
 
 
-void BtTicket::syncXML(const QString &text) {
+bool BtTicket::syncXML(const QString &text, bool insertarSiempre) {
     _depura ( "BtTicket::syncXML", 0 );
 
 
@@ -1094,11 +1095,20 @@ void BtTicket::syncXML(const QString &text) {
 
     if ( !doc.setContent ( text ) ) {
         _depura ( "END BtCompany::syncXML", 0, "XML Invalido" );
-        return;
+        return 0;
     } // end if
 
     QDomElement docElem = doc.documentElement();
     QDomElement principal = docElem.firstChildElement ( "BLDBRECORD" );
+    /// Comprobamos que los nombres coinciden y si no coinciden salimos pq no ha lugar a sincronizacion.
+    if (!insertarSiempre) {
+    QDomElement nomticket = docElem.firstChildElement ( "NOMTICKET" );
+    if (nomticket.text() != dbValue("nomticket") ) {
+	_depura("END BtTicket::syncXML", 0);
+	return 0;
+    } // end if
+    } // end if
+    
     QString result;
     QTextStream stream ( &result );
     principal.save(stream,5);
@@ -1128,6 +1138,7 @@ void BtTicket::syncXML(const QString &text) {
             m_lineaActual = linea1;
         } // end if
     } // end while
+    return 1;
     _depura ( "BtTicket::syncXML", 0 );
 }
 

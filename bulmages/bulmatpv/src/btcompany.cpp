@@ -117,7 +117,7 @@ void BtCompany::createMainWindows ( BlSplashScreen *splash )
     compruebaUltimaZ();
 
     /// Hacemos la sincronizacioin del XML por si hubo tickets sin guardar
-    syncXML("esto es una prueba");
+    syncXML("null");
 
     _depura ( "END BtCompany::createMainWindows", 0 );
 }
@@ -843,7 +843,9 @@ void BtCompany::syncXML(const QString &textxml) {
     QDomNodeList nodos = principal.elementsByTagName ( "BTTICKET" );
     int i = 0;
     while (i < nodos.count() ) {
-        QDomNode ventana = nodos.item ( i );
+
+        bool sincronizado = 0; /// Indica si el nodo leido ya ha sido sincronizado o no.
+        QDomNode ventana = nodos.item ( i++ );
         QDomElement e1 = ventana.toElement(); /// try to convert the node to an element.
         if ( !e1.isNull() ) { /// the node was really an element.
             QString nodoText = e1.text();
@@ -851,20 +853,56 @@ void BtCompany::syncXML(const QString &textxml) {
             QString result;
             QTextStream stream ( &result );
             ventana.save(stream,5);
-            /// Para cada elemento de la lista de tickets intentamos sincronizar el ticket. (Basandonos en el id y en el nombre de mesa).
+
+            /// El ticket en blanco no se sincroniza
+            QString nomticket = e1.firstChildElement("NOMTICKET").text();
+            if (nomticket != "") {
+
+               /// Para cada elemento de la lista de tickets intentamos sincronizar el ticket. (Basandonos en el id y en el nombre de mesa).
+               BtTicket *linea1;
+               int x = 0;
+               while ( x < m_listaTickets.size() - 1 && !sincronizado) {
+                   linea1 = m_listaTickets.at ( x++ );
+                   sincronizado = (linea1->syncXML(result, false));
+               } // end while
+
             /// Si ho ha habido sincronizacion con ningun elemento
             /// Creamos un ticket nuevo y lo sincronizamos.
-            
-          m_ticketActual->syncXML(result);
-          i++;
-          if (i < nodos.count()) {
-            BtTicket *tick = newBtTicket();
-            tick->setDbValue ( "idtrabajador", ticketActual() ->dbValue ( "idtrabajador" ) );
-            listaTickets() ->append ( tick );
-            setTicketActual(tick);
-          } // end if
+             if (!sincronizado) {
+                /// Hacemos la sincronizacion forzada ya que no ha habido coincidencias anteriores.
+                 BtTicket *tick = newBtTicket();
+                 tick->setDbValue ( "idtrabajador", ticketActual() ->dbValue ( "idtrabajador" ) );
+                 tick->syncXML(result, true);
+                 listaTickets() ->prepend ( tick );
+             } // end if
+           } // end if
         } // end if
     } // end while
+
+
+    /// Borramos los nodos que no aparecen en la sincronizacion ya que al parecer se deben haber borrado.
+    int x = 0;
+    while (x < m_listaTickets.size() -1 ) {
+        bool encontrado = FALSE;
+	BtTicket *linea1 = m_listaTickets.at(x);
+	int i = 0;
+	while (i < nodos.count() && !encontrado) {
+	    QString nombre1 = nodos.item(i++).toElement().firstChildElement("NOMTICKET").text();
+	    if (nombre1 == linea1->dbValue("nomticket")) {
+		encontrado = TRUE;
+	    } // end if
+	} // end while
+	
+	if (!encontrado) {
+	    m_listaTickets.removeAt(x);
+	} else {
+	    x++;
+	} // end if
+    } // end while
+
+
+
+
 
     _depura ( "BtCompany::syncXML", 0 );
 }
