@@ -17,6 +17,7 @@ file(GLOB plugin_UIS *.ui)
 
 set(QT_USE_QTASSISTANT true)
 set(QT_USE_QTXML true)
+set(QT_USE_QTNETWORK true)
 
 INCLUDE(   ${QT_USE_FILE}   )
 
@@ -24,6 +25,7 @@ include_directories(
     ${QT_INCLUDE_DIR}
 	${PGSQL_INCLUDE_DIR}
 	${QT_QTXML_INCLUDE_DIR}
+	${QT_QTNETWORK_INCLUDE_DIR}
 	${QT_QTASSISTANT_INCLUDE_DIR}
 	${CMAKE_CURRENT_BINARY_DIR}
 	${CMAKE_CURRENT_SOURCE_DIR}
@@ -55,14 +57,15 @@ ADD_DEFINITIONS("-D'_(String)=BlI18n(\"${plugin}\",String)'" )
 ADD_DEFINITIONS("-D'N_(String,Int)=BlI18n(\"${plugin}\",String)'" )
 endif(NOT WIN32)
 
-#if(USE_GETTEXT)
-#   set(plugin_i18n ${plugin_SRC} ${plugin_MOC_SRCS} ${plugin_UIS_H}
-#                        ${plugin_SRCS} ${plugin_MOCS})
-#   GETTEXT_CREATE_TEMPLATE(${plugin} ${CMAKE_CURRENT_BINARY_DIR}
-#                                ${CMAKE_CURRENT_SOURCE_DIR} plugin_i18n)
+if(USE_GETTEXT)
+   set(plugin_i18n ${plugin_SRC} ${plugin_MOC_SRCS} ${plugin_UIS_H}
+                        ${plugin_SRCS} ${plugin_MOCS})
+   GETTEXT_CREATE_TEMPLATE(${plugin} ${CMAKE_CURRENT_BINARY_DIR}
+                                ${CMAKE_CURRENT_SOURCE_DIR} plugin_i18n)
 #   GETTEXT_CREATE_TRANSLATIONS(${CMAKE_CURRENT_BINARY_DIR}/${plugin}.pot
 #                                ALL LANGUAGES es_ES.UTF-8 ca_ES.UTF-8)
-#endif(USE_GETTEXT)
+endif(USE_GETTEXT)
+
 # build sources, moc'd sources, and rcc'd sources
 
 if(APPLE)

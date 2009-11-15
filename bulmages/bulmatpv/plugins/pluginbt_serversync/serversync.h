@@ -28,18 +28,24 @@
 
 #include <QLabel>
 #include <QTableWidget>
+#include <QTcpServer>
 
 #include "btticket.h"
 #include "btcompany.h"
 #include "ui_serversyncbase.h"
 
-class ServerSync : public BlWidget, public Ui_ServerSyncBase
-{
-    Q_OBJECT
+class ServerSync : public BlWidget, public Ui_ServerSyncBase {
+Q_OBJECT
 
+public:
+    QTcpServer *m_tcpServer;
+    
 public:
     ServerSync ( BtCompany *emp, QWidget *parent );
     virtual ~ServerSync();
+    
+  public slots:
+    virtual void conection();
 };
 
 #endif

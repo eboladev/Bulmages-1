@@ -26,15 +26,15 @@
 #include <QFile>
 #include <QTextStream>
 
-#include "pluginticketbasicoivainc.h"
+#include "pluginbt_serversync.h"
 #include "blfunctions.h"
 #include "btticket.h"
 #include "btcompany.h"
-#include "mticketivainc.h"
+#include "serversync.h"
 #include "bldockwidget.h"
 
 BlDockWidget *g_doc1 = NULL;
-MTicketIVAInc *g_bud = NULL;
+ServerSync *g_bud = NULL;
 
 ///
 /**
@@ -42,14 +42,14 @@ MTicketIVAInc *g_bud = NULL;
 **/
 int entryPoint ( BtBulmaTPV *tpv )
 {
-    _depura ( "pluginticketbasicoivainc::entryPoint", 0 );
+    _depura ( "pluginbt_serversync::entryPoint", 0 );
 
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale(LC_ALL, "");
-    bindtextdomain ("pluginticketbasicoivainc", g_confpr->valor(CONF_DIR_TRADUCCION).toAscii().constData());
+    bindtextdomain ("pluginbt_serversync", g_confpr->valor(CONF_DIR_TRADUCCION).toAscii().constData());
 
     /// Vamos a probar con un docwindow.
-    g_doc1 = new BlDockWidget ( "Ticket", tpv, "ticketbasico" );
+    g_doc1 = new BlDockWidget ( "Servidor", tpv, "servidor" );
     g_doc1->setFeatures ( QDockWidget::AllDockWidgetFeatures );
     
     g_doc1->setGeometry ( 100, 100, 100, 500 );
@@ -62,7 +62,7 @@ int entryPoint ( BtBulmaTPV *tpv )
 
     g_doc1->show();
 
-    _depura ( "END pluginticketbasicoivainc::entryPoint", 0 );
+    _depura ( "END pluginbt_serversync::entryPoint", 0 );
     
     return 0;
 }
@@ -73,37 +73,26 @@ int entryPoint ( BtBulmaTPV *tpv )
 **/
 int exitPoint ( BtBulmaTPV *tpv )
 {
-    _depura ( "pluginticketbasicoivainc::exitPoint", 0 );
+    _depura ( "pluginbt_serversync::exitPoint", 0 );
     
     delete g_doc1;
     
-    _depura ( "END pluginticketbasicoivainc::exitPoint", 0 );
+    _depura ( "END pluginbt_serversync::exitPoint", 0 );
     
     return 0;
 }
 
 int BtCompany_createMainWindows_Post ( BtCompany *etpv )
 {
-    _depura ( "pluginticketbasicoivainc::BtCompany_createMainWindows_Post", 0 );
+    _depura ( "pluginbt_serversync::BtCompany_createMainWindows_Post", 0 );
     
-    g_bud =  new MTicketIVAInc ( etpv, g_doc1 );
+    g_bud =  new ServerSync ( etpv, g_doc1 );
     g_doc1->setWidget ( ( QWidget * ) g_bud );
     
-    _depura ( "END pluginticketbasicoivainc::BtCompany_createMainWindows_Post", 0 );
+    _depura ( "END pluginbt_serversync::BtCompany_createMainWindows_Post", 0 );
     
     return 0;
 }
 
-int BtTicket_pintar ( BtTicket * )
-{
-    _depura ( "pluginticketbasicoivainc::BtTicket_pintar", 0 );
-    
-    if (g_bud) {
-        g_bud->pintar();
-    } // end if
-    
-    _depura ( "END pluginticketbasicoivainc::BtTicket_pintar", 0 );
-    
-    return 0;
-}
+
 
