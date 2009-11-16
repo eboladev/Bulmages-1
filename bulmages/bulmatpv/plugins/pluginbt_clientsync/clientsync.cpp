@@ -43,7 +43,7 @@ ClientSync::ClientSync ( BtCompany *emp, QWidget *parent ) : BlWidget ( emp, par
     setWindowTitle ( "Cliente" );
     
     m_socket = new QTcpSocket(this);
-    m_socket->connectToHost("192.168.2.200", 5899);
+    m_socket->connectToHost("192.168.1.12", 5899);
 
 
     connect (m_socket, SIGNAL(readyRead()), this, SLOT(readyRead()));
@@ -65,15 +65,21 @@ void ClientSync::readyRead() {
     _depura ( "ClientSync::readyRead", 0 );
 
     QTcpSocket *socket = (QTcpSocket *) sender();
-    QByteArray array="";
-    while (!array.contains("</BTCOMPANY>")) {
-       array += socket->readAll();
-    }// end while
-    
+    static QByteArray array="";
+    array += socket->readAll();
+
     QString mensaje = "Mensaje desde: "+ socket->peerAddress().toString() + "\n";
     QString texto(array);
     mui_plainText->setPlainText(mensaje + texto);
-    ((BtCompany *)mainCompany())->syncXML(texto);
+
+    if (array.contains("</BTCOMPANY>")) {
+	QString mensaje = "Mensaje desde: "+ socket->peerAddress().toString() + "\n";
+	QString texto(array);
+	mui_plainText->setPlainText(mensaje + texto);
+	((BtCompany *)mainCompany())->syncXML(texto);
+	array = "";
+    }// end while
+    
     _depura ( "END ClientSync::readyRead", 0 );
 }
 

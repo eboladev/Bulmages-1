@@ -96,3 +96,15 @@ int BtCompany_createMainWindows_Post ( BtCompany *etpv )
 
 
 
+int Abrevs_on_mui_aparcar_released_Post(Abrevs *av) {
+   QString texto = ((BtCompany *)av->mainCompany())->exportXML();
+   g_bud->send(texto);
+}
+
+int Abrevs_on_mui_recuperar_released_Post(Abrevs *av) {
+   QString texto = ((BtCompany *)av->mainCompany())->exportXML();
+   g_bud->send(texto);
+}
+
+
+

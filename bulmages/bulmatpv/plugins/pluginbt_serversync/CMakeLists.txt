@@ -31,6 +31,8 @@ include_directories(
 	${CMAKE_CURRENT_SOURCE_DIR}
 	${CMAKE_BINARY_DIR}/bulmalib/src/
 	${CMAKE_SOURCE_DIR}/bulmalib/src/
+	${CMAKE_BINARY_DIR}/bulmatpv/plugins/pluginbt_accesobotones/
+	${CMAKE_SOURCE_DIR}/bulmatpv/plugins/pluginbt_accesobotones/
 	${CMAKE_BINARY_DIR}/bulmatpv/src/
 	${CMAKE_SOURCE_DIR}/bulmatpv/src/)
 
@@ -86,6 +88,6 @@ foreach(dfile ${docs})
    install (FILES ${dfile} DESTINATION share/bulmages/bulmatpv-plugins/ RENAME ${dfile}.${plugin})
 endforeach(dfile in ${docs})
 
-add_dependencies(${plugin} bulmatpv bulmalib)
+add_dependencies(${plugin} bulmatpv bulmalib pluginbt_accesobotones)
 
 install_targets(/lib/bulmatpv/plugins ${plugin})

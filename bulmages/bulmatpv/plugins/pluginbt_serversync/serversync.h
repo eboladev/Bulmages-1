@@ -46,7 +46,8 @@ public:
 public:
     ServerSync ( BtCompany *emp, QWidget *parent );
     virtual ~ServerSync();
-    
+    virtual void send(const QString &);
+
   public slots:
     virtual void conection();
     virtual void readyRead();

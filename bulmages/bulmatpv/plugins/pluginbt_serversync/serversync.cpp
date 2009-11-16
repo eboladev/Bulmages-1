@@ -81,25 +81,25 @@ void ServerSync::conection()
 
 void ServerSync::readyRead() {
     _depura ( "ServerSync::readyRead", 0 );
-
+    static QByteArray array = "";
     QTcpSocket *socket = (QTcpSocket *) sender();
-    QByteArray array="";
-    while (!array.contains("</BTCOMPANY>")) {
-       array += socket->readAll();
+    array += socket->readAll();
+    if (array.contains("</BTCOMPANY>")) {
+	QString mensaje = "Mensaje desde: "+ socket->peerAddress().toString() + "\n";
+	//    mui_plainText->appendPlainText(texto);
+	/// Redirigimos el mensaje a todos los clientes conectados al servidor.
+	for (int i = 0; i < m_listaSockets.size(); ++i) {
+		socket = m_listaSockets.at(i);
+		if (socket != (QTcpSocket *) sender()) {
+		socket->write(array);
+		} // end if
+	} // end for
+	QString texto(array);
+	mui_plainText->setPlainText(mensaje + texto);
+	((BtCompany *)mainCompany())->syncXML(texto);
+	array = "";
     }// end while
     
-    QString mensaje = "Mensaje desde: "+ socket->peerAddress().toString() + "\n";
-//    mui_plainText->appendPlainText(texto);
-    /// Redirigimos el mensaje a todos los clientes conectados al servidor.
-    for (int i = 0; i < m_listaSockets.size(); ++i) {
-	socket = m_listaSockets.at(i);
-	if (socket != (QTcpSocket *) sender()) {
-	  socket->write(array);
-	} // end if
-    } // end for
-    QString texto(array);
-    mui_plainText->setPlainText(mensaje + texto);
-    ((BtCompany *)mainCompany())->syncXML(texto);
     _depura ( "END ServerSync::readyRead", 0 );
 }
 
@@ -110,4 +110,16 @@ void ServerSync::readChannelFinished() {
     mui_plainText->setPlainText(mensaje);
     m_listaSockets.removeAll( socket);
     _depura ( "END ServerSync::readyRead", 0 );
+}
+
+void ServerSync::send(const QString & texto) {
+    QTcpSocket *socket;
+//    mui_plainText->appendPlainText(texto);
+    /// Redirigimos el mensaje a todos los clientes conectados al servidor.
+    for (int i = 0; i < m_listaSockets.size(); ++i) {
+	socket = m_listaSockets.at(i);
+	if (socket != (QTcpSocket *) sender()) {
+	  socket->write(texto.toLatin1());
+	} // end if
+    } // end for
 }
