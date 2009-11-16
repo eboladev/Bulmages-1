@@ -1,11 +1,6 @@
 /***************************************************************************
- *   Copyright (C) 2007 by Tomeu Borras Riera                              *
+ *   Copyright (C) 2005 by Tomeu Borras Riera                              *
  *   tborras@conetxia.com                                                  *
- *   http://www.iglues.org                                                 *
- *                                                                         *
- *   Copyright (C) 2009 by Arturo Martin Llado                             *
- *   amartin@conetxia.com                                                  *
- *   http://www.iglues.org                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
  *   it under the terms of the GNU General Public License as published by  *
@@ -23,34 +18,19 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#ifndef SERVERSYNC_H
-#define SERVERSYNC_H
+#ifdef Q_WS_WIN
+# define MY_EXPORT __declspec(dllexport)
+#else
+# define MY_EXPORT
+#endif
 
-#include <QLabel>
-#include <QTableWidget>
-
-
+#include "btbulmatpv.h"
 #include "btticket.h"
 #include "btcompany.h"
-#include "ui_serversyncbase.h"
+#include "abrevs.h"
 
-class QTcpServer;
-
-class ServerSync : public BlWidget, public Ui_ServerSyncBase {
-Q_OBJECT
-
-public:
-    QTcpServer *m_tcpServer;
-    QList <QTcpSocket *> m_listaSockets;
-    
-public:
-    ServerSync ( BtCompany *emp, QWidget *parent );
-    virtual ~ServerSync();
-    
-  public slots:
-    virtual void conection();
-    virtual void readyRead();
-    virtual void readChannelFinished();
-};
-
-#endif
+extern "C" MY_EXPORT int entryPoint ( BtBulmaTPV * );
+extern "C" MY_EXPORT int exitPoint ( BtBulmaTPV * );
+extern "C" MY_EXPORT int BtCompany_createMainWindows_Post ( BtCompany * );
+extern "C" MY_EXPORT int Abrevs_on_mui_aparcar_released_Post(Abrevs *);
+extern "C" MY_EXPORT int Abrevs_on_mui_recuperar_released_Post(Abrevs *);

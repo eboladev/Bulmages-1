@@ -117,7 +117,14 @@ void BtCompany::createMainWindows ( BlSplashScreen *splash )
     compruebaUltimaZ();
 
     /// Hacemos la sincronizacioin del XML por si hubo tickets sin guardar
-    syncXML("null");
+    QFile file ( "/tmp/bulmatpv.xml" );
+    if ( !file.open ( QIODevice::ReadOnly ) ) {
+        _depura ( "END BtCompany::syncXML", 0, "Fichero no se puede abrir" );
+        return;
+    } // end if
+    QString result (file.readAll());
+    file.close();
+    syncXML(result);
 
     _depura ( "END BtCompany::createMainWindows", 0 );
 }
@@ -824,18 +831,13 @@ QString BtCompany::exportXML() {
 void BtCompany::syncXML(const QString &textxml) {
     _depura ( "BtCompany::syncXML", 0 );
 
-    QFile file ( "/tmp/bulmatpv.xml" );
+
     QDomDocument doc ( "mydocument" );
-    if ( !file.open ( QIODevice::ReadOnly ) ) {
-        _depura ( "END BtCompany::syncXML", 0, "Fichero no se puede abrir" );
-        return;
-    } // end if
-    if ( !doc.setContent ( &file ) ) {
-        file.close();
+    if ( !doc.setContent ( textxml ) ) {
         _depura ( "END BtCompany::syncXML", 0, "XML Invalido" );
         return;
     } // end if
-    file.close();
+
 
     QDomElement docElem = doc.documentElement();
     QDomElement principal = docElem.firstChildElement ( "LISTATICKETS" );

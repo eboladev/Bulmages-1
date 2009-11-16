@@ -159,6 +159,9 @@ void Abrevs::on_mui_recuperar_released()
 
     Tickets * trab = new Tickets ( mainCompany(), 0 );
     trab->exec();
+    /// Llamamos a plugins para poder hacer lo pertinente
+    g_plugins->lanza("Abrevs_on_mui_recuperar_released_Post", this);
+
 }
 
 

@@ -23,8 +23,8 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#ifndef SERVERSYNC_H
-#define SERVERSYNC_H
+#ifndef CLIENTSYNC_H
+#define CLIENTSYNC_H
 
 #include <QLabel>
 #include <QTableWidget>
@@ -32,23 +32,22 @@
 
 #include "btticket.h"
 #include "btcompany.h"
-#include "ui_serversyncbase.h"
+#include "ui_clientsyncbase.h"
 
-class QTcpServer;
+class QTcpClient;
 
-class ServerSync : public BlWidget, public Ui_ServerSyncBase {
+class ClientSync : public BlWidget, public Ui_ClientSyncBase {
 Q_OBJECT
 
 public:
-    QTcpServer *m_tcpServer;
-    QList <QTcpSocket *> m_listaSockets;
+    QTcpSocket * m_socket;
     
 public:
-    ServerSync ( BtCompany *emp, QWidget *parent );
-    virtual ~ServerSync();
+    ClientSync ( BtCompany *emp, QWidget *parent );
+    virtual ~ClientSync();
+    virtual void send(const QString &);
     
   public slots:
-    virtual void conection();
     virtual void readyRead();
     virtual void readChannelFinished();
 };

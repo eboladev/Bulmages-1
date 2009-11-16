@@ -24,6 +24,7 @@ add_subdirectory(pluginbt_ticketdevuelto)
 add_subdirectory(pluginbt_printercocina)
 add_subdirectory(pluginbt_modificadores)
 add_subdirectory(pluginbt_serversync)
+add_subdirectory(pluginbt_clientsync)
 
 if(NOT APPLE)
 add_subdirectory(pluginbt_accesobotones)

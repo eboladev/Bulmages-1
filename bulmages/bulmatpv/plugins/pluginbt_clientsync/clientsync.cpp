@@ -25,62 +25,44 @@
 
 #include <QLabel>
 #include <QTextBrowser>
-#include <QTcpServer>
+#include <QHostAddress>
 #include <QTcpSocket>
 
-#include "serversync.h"
+#include "clientsync.h"
 #include "bldb.h"
 #include "btbulmatpv.h"
 #include "btsubform.h"
 
 
-ServerSync::ServerSync ( BtCompany *emp, QWidget *parent ) : BlWidget ( emp, parent )
+ClientSync::ClientSync ( BtCompany *emp, QWidget *parent ) : BlWidget ( emp, parent )
 {
-    _depura ( "ServerSync::ServerSync", 0 );
+    _depura ( "ClientSync::ClientSync", 0 );
     setupUi ( this );
     setFocusPolicy ( Qt::NoFocus );
     emp->pWorkspace()->addWindow ( this );
-    setWindowTitle ( "Servidor" );
-
-     m_tcpServer = new QTcpServer(this);
-     if (!m_tcpServer->listen(QHostAddress::Any, 5899)) {
-         mensajeInfo(m_tcpServer->errorString());
-         close();
-         return;
-     }
-
-     mensajeInfo(QString::number(m_tcpServer->serverPort()));
-
-     connect(m_tcpServer, SIGNAL(newConnection()), this, SLOT(conection()));
-
-
-    g_plugins->lanza ( "ServerSync_ServerSync_Post", this );
-    _depura ( "END ServerSync::ServerSync", 0 );
-}
-
-ServerSync::~ServerSync()
-{
-    _depura ( "ServerSync::~ServerSync", 0 );
-    _depura ( "END ServerSync::~ServerSync", 0 );
-}
-
-
-void ServerSync::conection()
-{
-    _depura ( "ServerSync::conection", 0 );
-    QTcpSocket *socket = m_tcpServer->nextPendingConnection();
-    QHostAddress conectadofrom = socket->peerAddress();
-    m_listaSockets.append(socket);
+    setWindowTitle ( "Cliente" );
     
-    mui_plainText->appendPlainText("hola conectado desde " + conectadofrom.toString() + "\n");
-    
-    connect (socket, SIGNAL(readyRead()), this, SLOT(readyRead()));
-    connect (socket, SIGNAL(readChannelFinished()), this, SLOT(readChannelFinished()));
-    _depura ( "END ServerSync::conection", 0 );
+    m_socket = new QTcpSocket(this);
+    m_socket->connectToHost("192.168.2.200", 5899);
+
+
+    connect (m_socket, SIGNAL(readyRead()), this, SLOT(readyRead()));
+    connect (m_socket, SIGNAL(readChannelFinished()), this, SLOT(readChannelFinished()));
+
+    g_plugins->lanza ( "ClientSync_ClientSync_Post", this );
+    _depura ( "END ClientSync::ClientSync", 0 );
 }
 
-void ServerSync::readyRead() {
-    _depura ( "ServerSync::readyRead", 0 );
+ClientSync::~ClientSync()
+{
+    _depura ( "ClientSync::~ClientSync", 0 );
+    _depura ( "END ClientSync::~ClientSync", 0 );
+}
+
+
+
+void ClientSync::readyRead() {
+    _depura ( "ClientSync::readyRead", 0 );
 
     QTcpSocket *socket = (QTcpSocket *) sender();
     QByteArray array="";
@@ -89,25 +71,21 @@ void ServerSync::readyRead() {
     }// end while
     
     QString mensaje = "Mensaje desde: "+ socket->peerAddress().toString() + "\n";
-//    mui_plainText->appendPlainText(texto);
-    /// Redirigimos el mensaje a todos los clientes conectados al servidor.
-    for (int i = 0; i < m_listaSockets.size(); ++i) {
-	socket = m_listaSockets.at(i);
-	if (socket != (QTcpSocket *) sender()) {
-	  socket->write(array);
-	} // end if
-    } // end for
     QString texto(array);
     mui_plainText->setPlainText(mensaje + texto);
     ((BtCompany *)mainCompany())->syncXML(texto);
-    _depura ( "END ServerSync::readyRead", 0 );
+    _depura ( "END ClientSync::readyRead", 0 );
 }
 
-void ServerSync::readChannelFinished() {
-    _depura ( "ServerSync::readyRead", 0 );
+void ClientSync::readChannelFinished() {
+    _depura ( "ClientSync::readyRead", 0 );
     QTcpSocket *socket = (QTcpSocket *) sender();
     QString mensaje = "Fin de la comunicacion: "+ socket->peerAddress().toString() + "\n";
     mui_plainText->setPlainText(mensaje);
-    m_listaSockets.removeAll( socket);
-    _depura ( "END ServerSync::readyRead", 0 );
+    mensajeInfo("Error de comunicacion con el servidor");
+    _depura ( "END ClientSync::readyRead", 0 );
+}
+
+void ClientSync::send(const QString & texto) {
+    m_socket->write(texto.toLatin1());
 }

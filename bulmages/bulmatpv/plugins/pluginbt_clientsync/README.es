@@ -1,0 +1,29 @@
+#######
+#Plugins
+#######
+#README.es
+#20080501 
+
+Nombre: Cliente de sincronizacion
+
+Biblioteca: libpluginbt_clientsync.so
+
+Descripción: <H1>Sincronizacion de varios terminales</H1>
+<P>Muestra la composición del ticket en pantalla, permitiendo la fácil edición del mismo.</P>
+<HR>
+
+ParmBD: 
+
+ArchivoSQLpatch: 
+
+ArchivoSQLdeins: 
+
+Dependencias:
+
+Incompatibles:
+
+Categorias: Experimentales;
+
+Orden: 4
+
+Comentarios:
