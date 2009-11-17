@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>302</width>
-    <height>503</height>
+    <width>491</width>
+    <height>606</height>
    </rect>
   </property>
   <property name="minimumSize">
@@ -34,10 +34,7 @@
      <property name="lineWidth">
       <number>0</number>
      </property>
-     <layout class="QHBoxLayout" name="horizontalLayout">
-      <property name="spacing">
-       <number>0</number>
-      </property>
+     <layout class="QHBoxLayout" name="horizontalLayout_2">
       <property name="margin">
        <number>0</number>
       </property>
@@ -194,6 +191,47 @@
        </widget>
       </item>
       <item>
+       <widget class="QToolButton" name="mui_configurar">
+        <property name="minimumSize">
+         <size>
+          <width>48</width>
+          <height>48</height>
+         </size>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>48</width>
+          <height>48</height>
+         </size>
+        </property>
+        <property name="focusPolicy">
+         <enum>Qt::NoFocus</enum>
+        </property>
+        <property name="toolTip">
+         <string>Configurar</string>
+        </property>
+        <property name="whatsThis">
+         <string>Configurar</string>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+        <property name="icon">
+         <iconset resource="../../../bulmages.qrc">
+          <normaloff>:/BulmaCont32x32/images/png/i_packageSettings.png</normaloff>:/BulmaCont32x32/images/png/i_packageSettings.png</iconset>
+        </property>
+        <property name="iconSize">
+         <size>
+          <width>32</width>
+          <height>32</height>
+         </size>
+        </property>
+        <property name="checkable">
+         <bool>true</bool>
+        </property>
+       </widget>
+      </item>
+      <item>
        <widget class="QFrame" name="mui_plugbotones">
         <property name="sizePolicy">
          <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
@@ -213,13 +251,6 @@
        </widget>
       </item>
       <item>
-       <widget class="QCheckBox" name="checkBox">
-        <property name="text">
-         <string>Formateado</string>
-        </property>
-       </widget>
-      </item>
-      <item>
        <spacer>
         <property name="orientation">
          <enum>Qt::Horizontal</enum>
@@ -231,6 +262,34 @@
          </size>
         </property>
        </spacer>
+      </item>
+     </layout>
+    </widget>
+   </item>
+   <item>
+    <widget class="QFrame" name="frame_2">
+     <property name="frameShape">
+      <enum>QFrame::NoFrame</enum>
+     </property>
+     <property name="frameShadow">
+      <enum>QFrame::Plain</enum>
+     </property>
+     <property name="lineWidth">
+      <number>0</number>
+     </property>
+     <layout class="QHBoxLayout" name="horizontalLayout">
+      <property name="margin">
+       <number>0</number>
+      </property>
+      <item>
+       <widget class="QCheckBox" name="mui_propiedades">
+        <property name="text">
+         <string>Formateado</string>
+        </property>
+        <property name="checked">
+         <bool>true</bool>
+        </property>
+       </widget>
       </item>
      </layout>
     </widget>
@@ -271,14 +330,14 @@
  </resources>
  <connections>
   <connection>
-   <sender>checkBox</sender>
+   <sender>mui_propiedades</sender>
    <signal>clicked(bool)</signal>
    <receiver>mui_plainText</receiver>
    <slot>setHidden(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>215</x>
-     <y>30</y>
+     <x>226</x>
+     <y>93</y>
     </hint>
     <hint type="destinationlabel">
      <x>179</x>
@@ -287,18 +346,34 @@
    </hints>
   </connection>
   <connection>
-   <sender>checkBox</sender>
+   <sender>mui_propiedades</sender>
    <signal>clicked(bool)</signal>
    <receiver>mui_browser</receiver>
    <slot>setVisible(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>218</x>
-     <y>17</y>
+     <x>229</x>
+     <y>88</y>
     </hint>
     <hint type="destinationlabel">
      <x>240</x>
      <y>137</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>mui_configurar</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>mui_propiedades</receiver>
+   <slot>setVisible(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>253</x>
+     <y>44</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>296</x>
+     <y>88</y>
     </hint>
    </hints>
   </connection>

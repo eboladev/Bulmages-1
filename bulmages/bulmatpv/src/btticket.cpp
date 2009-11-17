@@ -56,6 +56,7 @@ BtTicket::BtTicket ( BlMainCompany *emp, QWidget *parent ) : BlWidget ( emp, par
     addDbField ( "refalbaran", BlDbField::DbVarChar, BlDbField::DbNothing, _( "Referencia" ) );
     addDbField ( "ticketalbaran", BlDbField::DbBoolean, BlDbField::DbNothing, _( "Ticket" ) );
     addDbField ( "idforma_pago", BlDbField::DbInt, BlDbField::DbNothing, _( "Id forma de pago" ) );
+    addDbField ( "bloqueadoticket", BlDbField::DbBoolean, BlDbField::DbNoSave, _( "Bloqueado" ) );
 
     setDbValue ( "ticketalbaran", "TRUE" );
     setDbValue ( "idalmacen", g_confpr->valor ( CONF_IDALMACEN_DEFECTO ) );
@@ -1102,16 +1103,17 @@ bool BtTicket::syncXML(const QString &text, bool insertarSiempre) {
     QDomElement principal = docElem.firstChildElement ( "BLDBRECORD" );
     /// Comprobamos que los nombres coinciden y si no coinciden salimos pq no ha lugar a sincronizacion.
     if (!insertarSiempre) {
-    QDomElement nomticket = docElem.firstChildElement ( "NOMTICKET" );
-    if (nomticket.text() != dbValue("nomticket") ) {
-	_depura("END BtTicket::syncXML", 0);
-	return 0;
-    } // end if
+	QDomElement nomticket = docElem.firstChildElement ( "NOMTICKET" );
+	if (nomticket.text() != dbValue("nomticket") ) {
+	    _depura("END BtTicket::syncXML", 0);
+	    return 0;
+	} // end if
     } // end if
     
     QString result;
     QTextStream stream ( &result );
     principal.save(stream,5);
+    m_listaLineas->clear();
     BlDbRecord::syncXML(result);
 
     /// Cogemos la coordenada X

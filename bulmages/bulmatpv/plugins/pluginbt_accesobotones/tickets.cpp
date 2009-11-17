@@ -18,7 +18,7 @@ Tickets::Tickets ( BlMainCompany *emp, QWidget *parent ) : QDialog ( parent ), B
         if ( ticket->dbValue ( "idtrabajador" ) == emp1->ticketActual() ->dbValue ( "idtrabajador" ) ) {
             QPushButton * toolbutton = new QPushButton ( mui_frame );
             toolbutton->setText ( ticket->dbValue ( "nomticket" ) );
-
+	    
             QVBoxLayout *m_hboxLayout1 = mui_frame->findChild<QVBoxLayout *> ( "hboxLayout1" );
             if ( !m_hboxLayout1 ) {
                 m_hboxLayout1 = new QVBoxLayout ( mui_frame );
@@ -27,7 +27,7 @@ Tickets::Tickets ( BlMainCompany *emp, QWidget *parent ) : QDialog ( parent ), B
                 m_hboxLayout1->setObjectName ( QString::fromUtf8 ( "hboxLayout1" ) );
             } // end if
             m_hboxLayout1->addWidget ( toolbutton );
-            connect ( toolbutton, SIGNAL ( pressed() ), this, SLOT ( ticketClicked() ) );
+            connect ( toolbutton, SIGNAL ( released() ), this, SLOT ( ticketClicked() ) );
         } // end if
     }// end for
     _depura("END Tickets::Tickets");
@@ -43,16 +43,47 @@ void Tickets::ticketClicked()
     BtCompany * emp1 = ( BtCompany * ) mainCompany();
     QPushButton *toolbutton = ( QPushButton * ) sender();
     BtTicket *ticket;
-    for ( int i = 0; i < emp1->listaTickets() ->size(); ++i ) {
-        ticket = emp1->listaTickets() ->at ( i );
+    int i =   0;
+    while ( i < emp1->listaTickets()->size() ) {
+        ticket = emp1->listaTickets() ->at ( i++ );
 
+
+	
         if ( toolbutton->text() == ticket->dbValue ( "nomticket" )
                 && ticket->dbValue ( "idtrabajador" ) == emp1->ticketActual() ->dbValue ( "idtrabajador" ) ) {
-            ( ( BtCompany * ) mainCompany() ) ->setTicketActual ( ticket );
+	  
+	  
+	    /// Si el ticket seleccionado es el actual salimos sin hacer nada
+	    if (ticket == emp1 ->ticketActual()) {
+	      _depura("END Tickets::ticketClicked");
+	      done ( 0 );
+	      return;
+	    } // end if	
+	
+	    /// Pintamos los tickets bloqueados como no seleccionables.
+	    if (ticket->dbValue( "bloqueadoticket") == "TRUE" && ticket->dbValue("nomticket") != "" ) {
+		  if( QMessageBox::warning(this, _("Ticket Bloqueado"),
+                                _("Este ticket esta bloqueado por otro terminal.\n"
+                                   "Desa abrirlo de todos modos?"),
+                                 QMessageBox::Yes
+                                | QMessageBox::No,
+                                QMessageBox::No) == QMessageBox::No) {
+		    _depura("END Tickets::ticketClicked");
+		    return;
+		  } // end if
+		    
+	    } // end if	  
+	  
+	  
+	    emp1 ->ticketActual()->setDbValue("bloqueadoticket", "FALSE");
+            emp1 ->setTicketActual ( ticket );
+	    ticket->setDbValue("bloqueadoticket", "TRUE");
             ticket->pintar();
-        }// end if
-    }// end for
+	    i = emp1->listaTickets()->size();
+	} // end if
+    }// end while
 
-    done ( 0 );
+
     _depura("END Tickets::ticketClicked");
+    done ( 0 );
 }

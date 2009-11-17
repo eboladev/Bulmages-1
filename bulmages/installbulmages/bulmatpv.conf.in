@@ -51,3 +51,6 @@ CONF_BACKGROUND_IMAGE		@CMAKE_INSTALL_PREFIX@/share/bulmages/images/bulmatpv-bac
 # Hoja de estilo a utilizar
 CONF_STYLESHEET                 @CMAKE_INSTALL_PREFIX@/share/bulmages/css/bulmatpv.css
 
+#Para el plugin de sincronizacion (clientsync) debe especificarse que elemento es el master y tiene instalado el serversync
+CONF_TPV_SERVER_SYNC_IP		192.168.2.200
+

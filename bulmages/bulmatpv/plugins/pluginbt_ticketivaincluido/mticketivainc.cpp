@@ -44,7 +44,8 @@ MTicketIVAInc::MTicketIVAInc ( BtCompany *emp, QWidget *parent ) : BlWidget ( em
     setWindowTitle ( "Ticket" );
 
     /// Por defecto hacemos el browser invisible porque es leeeento
-    mui_browser->setVisible(FALSE);
+    mui_plainText->setVisible(FALSE);
+    mui_propiedades->setVisible(FALSE);
 
     g_plugins->lanza ( "MTicketIVAInc_MTicketIVAInc_Post", this );
     _depura ( "END MTicketIVAInc::MTicketIVAInc", 0 );
@@ -127,6 +128,18 @@ void MTicketIVAInc::pintar()
 // ======================================
     
     html += "<BR><HR><BR>";
+    
+    
+    
+    
+    
+    
+    
+/*    
+    
+    
+    
+    
     base basesimp;
     base basesimpreqeq;
     BlDbRecord *linea;
@@ -171,16 +184,7 @@ void MTicketIVAInc::pintar()
     /// De momento aqui no se usan descuentos generales en venta.
     BlFixed porcentt ( "0.00" );
     
-    /*
-        BlDbSubFormRecord *linea1;
-        if (m_listadescuentos->rowCount()) {
-            for (int i = 0; i < m_listadescuentos->rowCount(); ++i) {
-                linea1 = m_listadescuentos->lineaat(i);
-                BlFixed propor(linea1->dbValue("proporcion" + m_listadescuentos->tableName()).toAscii().constData());
-                porcentt = porcentt + propor;
-            } // end for
-        } // end if
-    */
+
 
     /// Calculamos el total de base imponible.
     BlFixed totbaseimp ( "0.00" );
@@ -235,11 +239,14 @@ void MTicketIVAInc::pintar()
     BlFixed total = totiva + totbaseimp + totreqeq - totirpf;
     html1 += "<B>Total: " + total.toQString() + "<BR>";
 
-    html += "</p>";
+
     html1 += "</FONT>";
 
 // ======================================
     /// Pintamos el HTML en el textBrowser
+
+*/ 
+html += "</p>";
 
 if (mui_browser->isVisible()) {
     mui_browser->setText ( html );
@@ -248,6 +255,7 @@ if (mui_browser->isVisible()) {
 if (mui_plainText->isVisible()) {
     mui_plainText->setPlainText (textoplano);
 } // end if
+
     _depura ( "END MTicketIVAInc::pintar", 0 );
 }
 

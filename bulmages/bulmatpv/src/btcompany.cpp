@@ -858,14 +858,15 @@ void BtCompany::syncXML(const QString &textxml) {
 
             /// El ticket en blanco no se sincroniza
             QString nomticket = e1.firstChildElement("NOMTICKET").text();
-            if (nomticket != "") {
+            if (nomticket != "" && nomticket != ticketActual()->dbValue("nomticket")) {
 
                /// Para cada elemento de la lista de tickets intentamos sincronizar el ticket. (Basandonos en el id y en el nombre de mesa).
+	       /// Excepto el ticket actual que no debemos tocarlo ya que esta en funcionamiento.
                BtTicket *linea1;
                int x = 0;
                while ( x < m_listaTickets.size() - 1 && !sincronizado) {
                    linea1 = m_listaTickets.at ( x++ );
-                   sincronizado = (linea1->syncXML(result, false));
+		   sincronizado = (linea1->syncXML(result, false));
                } // end while
 
             /// Si ho ha habido sincronizacion con ningun elemento

@@ -32,6 +32,7 @@
 #include "bldb.h"
 #include "btbulmatpv.h"
 #include "btsubform.h"
+#include "blconfiguration.h"
 
 
 ClientSync::ClientSync ( BtCompany *emp, QWidget *parent ) : BlWidget ( emp, parent )
@@ -43,9 +44,13 @@ ClientSync::ClientSync ( BtCompany *emp, QWidget *parent ) : BlWidget ( emp, par
     setWindowTitle ( "Cliente" );
     
     m_socket = new QTcpSocket(this);
-    m_socket->connectToHost("192.168.1.12", 5899);
+    m_socket->connectToHost(g_confpr->valor(CONF_TPV_SERVER_SYNC_IP), 5899);
 
-
+    QString mensaje = "Nueva Conexion: "+ m_socket->peerAddress().toString() + "\n";
+    mui_plainText->appendPlainText(mensaje);
+    mui_plainText->setMaximumBlockCount(100);
+    
+    
     connect (m_socket, SIGNAL(readyRead()), this, SLOT(readyRead()));
     connect (m_socket, SIGNAL(readChannelFinished()), this, SLOT(readChannelFinished()));
 
@@ -70,16 +75,14 @@ void ClientSync::readyRead() {
 
     QString mensaje = "Mensaje desde: "+ socket->peerAddress().toString() + "\n";
     QString texto(array);
-    mui_plainText->setPlainText(mensaje + texto);
 
     if (array.contains("</BTCOMPANY>")) {
-	QString mensaje = "Mensaje desde: "+ socket->peerAddress().toString() + "\n";
+	mensaje = "Mensaje Completo desde: "+ socket->peerAddress().toString() + "\n";
 	QString texto(array);
-	mui_plainText->setPlainText(mensaje + texto);
 	((BtCompany *)mainCompany())->syncXML(texto);
 	array = "";
     }// end while
-    
+    mui_plainText->appendPlainText(mensaje);    
     _depura ( "END ClientSync::readyRead", 0 );
 }
 
@@ -87,11 +90,14 @@ void ClientSync::readChannelFinished() {
     _depura ( "ClientSync::readyRead", 0 );
     QTcpSocket *socket = (QTcpSocket *) sender();
     QString mensaje = "Fin de la comunicacion: "+ socket->peerAddress().toString() + "\n";
-    mui_plainText->setPlainText(mensaje);
+    mui_plainText->appendPlainText(mensaje);
     mensajeInfo("Error de comunicacion con el servidor");
     _depura ( "END ClientSync::readyRead", 0 );
 }
 
 void ClientSync::send(const QString & texto) {
+    _depura ( "ClientSync::send", 0 );
     m_socket->write(texto.toLatin1());
+    mui_plainText->appendPlainText("Enviando mensaje a:" + m_socket->peerAddress().toString() + "\n" );  
+    _depura ( "END ClientSync::send", 0 );
 }

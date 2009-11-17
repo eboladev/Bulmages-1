@@ -212,6 +212,8 @@
 #define CONF_TPV_CELL_WIDTH          457
 /// Numero de celdas por fila
 #define CONF_TPV_CELLS_PER_ROW       458
+/// Puerto para la sincronizacion de TPVs
+#define CONF_TPV_SERVER_SYNC_IP      459
 
 /// CONF_NUM_AUT_* determina si se utilizaran numeradores automaticos para presupuestos,
 /// albaranes y facturas inicialmente vale "".

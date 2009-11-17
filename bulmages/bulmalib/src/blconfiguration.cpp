@@ -421,7 +421,8 @@ QString BlConfiguration::nombre ( int i )
 	return "CONF_GLOBAL_CONFIG_USER";
     if ( i == CONF_GLOBAL_CONFIG_COMPANY )
 	return "CONF_GLOBAL_CONFIG_COMPANY";   
-    
+    if ( i == CONF_TPV_SERVER_SYNC_IP )
+	return "CONF_TPV_SERVER_SYNC_IP";
     return "";
 }
 

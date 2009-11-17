@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>383</width>
-    <height>264</height>
+    <width>218</width>
+    <height>170</height>
    </rect>
   </property>
   <property name="minimumSize">
@@ -24,7 +24,7 @@
   </property>
   <layout class="QVBoxLayout">
    <property name="margin">
-    <number>5</number>
+    <number>0</number>
    </property>
    <item>
     <widget class="QLineEdit" name="mui_total">
@@ -120,6 +120,9 @@
    </item>
    <item>
     <layout class="QHBoxLayout">
+     <property name="spacing">
+      <number>0</number>
+     </property>
      <item>
       <widget class="QToolButton" name="mui_abrircajon">
        <property name="minimumSize">
@@ -216,6 +219,9 @@
      </property>
      <property name="text">
       <string>Imprimir ticket al cobrar</string>
+     </property>
+     <property name="checked">
+      <bool>true</bool>
      </property>
     </widget>
    </item>

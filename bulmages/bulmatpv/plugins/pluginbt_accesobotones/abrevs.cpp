@@ -131,6 +131,9 @@ void Abrevs::on_mui_aparcar_released()
 
     emp->ticketActual() ->setDbValue ( "nomticket", emp->valorBtInput() );
 
+    /// Quitamos el bloqueo
+    emp->ticketActual() ->setDbValue( "bloqueadoticket", "FALSE");
+    
     /// Llamamos a plugins para poder hacer lo pertinente
     g_plugins->lanza("Abrevs_on_mui_aparcar_released", this);
 
@@ -150,7 +153,10 @@ void Abrevs::on_mui_aparcar_released()
 
     /// Llamamos a plugins para poder hacer lo pertinente
     g_plugins->lanza("Abrevs_on_mui_aparcar_released_Post", this);
-
+    
+    /// Ponemos el nuevo bloqueo
+    tick->setDbValue("bloqueadoticket", "TRUE");
+    
     tick->pintar();
 }
 
