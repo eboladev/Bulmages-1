@@ -197,7 +197,7 @@ void  BtTicket::borrarArticulo ( BlDbRecord *linea, BlFixed cantidad )
     /// Comprueba que haya un articulo seleccionado.
     if ( m_lineaActual == NULL ) {
         return;
-    }
+    } // end if
 
     m_lineaActual->borrar();
 }
@@ -838,31 +838,11 @@ void BtTicket::agregarCantidad ( QString cantidad )
     
     if ( suma == BlFixed ( "0.00" ) ) {
         borrarLinea ( m_lineaActual );
-        //listaLineas() ->removeAt ( listaLineas() ->indexOf ( m_lineaActual ));
-        //m_lineaActual = listaLineas() ->at ( 0 );
     } else {
         m_lineaActual->setDbValue ( "cantlalbaran", suma.toQString() );
     } // end if
     
     pintar();
-    
-    /*
-        BlFixed cant ( cantidad );
-        /// Comprueba la existencia de la linea de ticket.
-        if ( m_lineaActual == NULL ) {
-            mensajeAviso ( "No existe linea" );
-            return;
-        } // end if
-        BlFixed cantorig ( m_lineaActual->dbValue ( "cantlalbaran" ) );
-        BlFixed suma = cant + cantorig;
-        if ( suma == BlFixed ( "0.00" ) ) {
-            listaLineas() ->removeAt ( listaLineas() ->indexOf ( m_lineaActual ) );
-            m_lineaActual = listaLineas() ->at ( 0 );
-        } else {
-            m_lineaActual->setDbValue ( "cantlalbaran", suma.toQString() );
-        } // end if
-        pintar();
-    */
 }
 
 void BtTicket::ponerCantidad ( QString cantidad )
@@ -884,23 +864,6 @@ void BtTicket::ponerCantidad ( QString cantidad )
     } // end if
     
     pintar();
-    
-    /*
-        BlFixed cant ( cantidad );
-        /// Comprueba la existencia de la linea de ticket.
-        if ( m_lineaActual == NULL ) {
-            mensajeAviso ( "No existe linea" );
-            return;
-        } // end if
-
-        if ( cant == 0 ) {
-            listaLineas() ->removeAt ( listaLineas() ->indexOf ( m_lineaActual ) );
-            m_lineaActual = listaLineas() ->at ( 0 );
-        } else {
-            m_lineaActual->setDbValue ( "cantlalbaran", cant.toQString() );
-        } // end if
-        pintar();
-    */
 }
 
 void BtTicket::ponerPrecio ( QString precio )
@@ -1047,7 +1010,10 @@ void BtTicket::borrarLinea ( BlDbRecord *linea )
 {
     if ( linea == NULL )
         return;
-    
+
+    g_plugParams = (void *) linea;
+    g_plugins->lanza("BtTicket_borrarLinea", this);
+       
     int numlinea = listaLineas()->indexOf ( linea );
 
     if ( linea == m_lineaActual ) {

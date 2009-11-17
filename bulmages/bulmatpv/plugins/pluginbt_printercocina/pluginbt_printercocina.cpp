@@ -33,7 +33,20 @@
 #include "btescprinter.h"
 
 typedef QMap<QString, BlFixed> base;
+int impresionCocina(BtTicket *);
 
+/// Necesitamos una lista de elementos borrados para poder tenerlos en cuenta.
+
+
+int BtTicket_borrarLinea ( BtTicket *tick ) {
+
+  BlDbRecord *item = (BlDbRecord *) g_plugParams;
+  if (BlFixed(item->dbValue("unidadescocina")) == 0) {
+      item->setDbValue("cantlalbaran","0");
+      impresionCocina(tick);
+  } // end if
+  return 0;
+}
 
 int BtTicket_agregarLinea_Post ( BtTicket *tick )
 {
