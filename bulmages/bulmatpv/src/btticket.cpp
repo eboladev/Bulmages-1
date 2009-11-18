@@ -596,9 +596,9 @@ void BtTicket::imprimir(bool save)
         if ( guardar() == -1) {
             _depura ( "Error en la llamada a guardar()", 0 );
             return;
-        }
+        } // end if
         
-    }
+    } // end if
 
     /// Disparamos los plugins.
     int res = g_plugins->lanza ( "BtTicket_imprimir", this );

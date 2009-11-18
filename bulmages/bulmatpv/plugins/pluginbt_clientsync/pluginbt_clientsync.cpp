@@ -105,3 +105,8 @@ int Abrevs_on_mui_recuperar_released_Post(Abrevs *av) {
    g_bud->send(texto);
 }
 
+int BtCompany_cobrar_Post(BtCompany *etpv)
+{
+   QString texto = etpv->exportXML();
+   g_bud->send(texto);  
+}

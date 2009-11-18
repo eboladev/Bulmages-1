@@ -53,8 +53,8 @@ BtCompany::~BtCompany()
 
 /// Pruebas de exportacion a XML
 /// ======================================
-
-    QFile file ( "/tmp/bulmatpv.xml" );
+    /// Guardamos los tickets para poder recuperarlos despues
+    QFile file ( g_confpr->valor ( CONF_DIR_USER ) + "tickets_bulmatpv.xml" );
     /// Guardado del orden y de configuraciones varias.
     if ( file.open ( QIODevice::WriteOnly ) ) {
         QTextStream stream ( &file );
@@ -100,6 +100,18 @@ void BtCompany::createMainWindows ( BlSplashScreen *splash )
         
     m_listaTickets.append ( m_ticketActual );
 
+
+    /// Hacemos la sincronizacioin del XML por si hubo tickets sin guardar
+    QFile file ( g_confpr->valor ( CONF_DIR_USER ) + "tickets_bulmatpv.xml" );
+    if ( !file.open ( QIODevice::ReadOnly ) ) {
+        _depura ( "END BtCompany::syncXML", 0, "Fichero no se puede abrir" );
+        return;
+    } // end if
+    QString result (file.readAll());
+    file.close();
+    syncXML(result);    
+    
+    
     /// Disparamos los plugins.
     int res = g_plugins->lanza ( "BtCompany_createMainWindows_Post", this );
     
@@ -116,15 +128,6 @@ void BtCompany::createMainWindows ( BlSplashScreen *splash )
     /// Hacemos la comprobacion de Z
     compruebaUltimaZ();
 
-    /// Hacemos la sincronizacioin del XML por si hubo tickets sin guardar
-    QFile file ( "/tmp/bulmatpv.xml" );
-    if ( !file.open ( QIODevice::ReadOnly ) ) {
-        _depura ( "END BtCompany::syncXML", 0, "Fichero no se puede abrir" );
-        return;
-    } // end if
-    QString result (file.readAll());
-    file.close();
-    syncXML(result);
 
     _depura ( "END BtCompany::createMainWindows", 0 );
 }
@@ -591,7 +594,7 @@ void BtCompany::cobrar(bool imprimir)
         if ( m_ticketActual->guardar() == -1) {
             _depura ( "Error en la llamada a guardar()", 0 );
             return;
-        }
+        }// end if
         
     // Si no, guardamos e imprimimos tambien si se nos indica
     } else {
@@ -599,11 +602,11 @@ void BtCompany::cobrar(bool imprimir)
         if ( m_ticketActual->guardar() == -1) {
             _depura ( "Error en la llamada a guardar()", 0 );
             return;
-        }
+        }// end if
     
         if (imprimir) {
             m_ticketActual->imprimir();
-        }
+        }// end if
     
     } // end if
     m_ticketActual->abrircajon();
@@ -902,10 +905,6 @@ void BtCompany::syncXML(const QString &textxml) {
 	    x++;
 	} // end if
     } // end while
-
-
-
-
 
     _depura ( "BtCompany::syncXML", 0 );
 }
