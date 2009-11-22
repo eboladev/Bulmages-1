@@ -248,9 +248,9 @@ void BlSearchWidget::on_m_inputBusqueda_textChanged ( const QString &val )
     
     /// Si la cadena esta vacia entonces salimos sin hacer nada
     if  (val == "") {
+        setId ( "" );
         _depura ( "END BlSearchWidget::on_m_inputBusqueda_textChanged", 0, "Semaforo parado" );
-        mdb_id = "";
-	return;
+        return;
     } // end if
     
     if ( m_semaforo ) {
