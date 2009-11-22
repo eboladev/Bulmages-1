@@ -194,7 +194,7 @@ void BlSearchWidget::setFieldValue ( QString campo, QString val )
 
 /** Resetea el valor del 'id' y vacia la informacion del formulario.
 */
-void BlSearchWidget::on_mui_clearSearchWidget_released()
+void BlSearchWidget::on_m_clearSearchWidget_released()
 {
     _depura ( "BlSearchWidget::on_mui_clearSearchWidget_released", 0 );
     setId ( "" );
@@ -245,6 +245,14 @@ void BlSearchWidget::on_m_inputBusqueda_editingFinished()
 void BlSearchWidget::on_m_inputBusqueda_textChanged ( const QString &val )
 {
     _depura ( "BlSearchWidget::on_m_inputBusqueda_textChanged", 0 );
+    
+    /// Si la cadena esta vacia entonces salimos sin hacer nada
+    if  (val == "") {
+        _depura ( "END BlSearchWidget::on_m_inputBusqueda_textChanged", 0, "Semaforo parado" );
+        mdb_id = "";
+	return;
+    } // end if
+    
     if ( m_semaforo ) {
         _depura ( "END BlSearchWidget::on_m_inputBusqueda_textChanged", 0, "Semaforo parado" );
         return;

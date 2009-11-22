@@ -14,12 +14,12 @@ CONF_PUERTO			5432
 
 # Parametros de configuracion de programas.
 # Por defecto se proponen estos programas. Configurar a gusto.
-CONF_EDITOR			kate
-CONF_NAVEGADOR			x-www-browser
-CONF_PDF			okular
+CONF_EDITOR			xdg-open
+CONF_NAVEGADOR			xdg-open
+CONF_PDF			xdg-open
 CONF_DIR_TMP			/tmp/
-CONF_ODS			oocalc
-CONF_SXC			kspread
+CONF_ODS			xdg-open
+CONF_SXC			xdg-open
 
 
 
