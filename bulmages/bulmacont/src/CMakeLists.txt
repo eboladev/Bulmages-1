@@ -48,7 +48,6 @@ set(bulmacont_MOCS bcbulmacont.h
            bccentrocosteseleccionarview.h
            bccanalseleccionarview.h
            bcmodelo300imprimir2ps.h
-           bcbloqueafechaview.h
            bctipoivaview.h
            bcformapagoview.h
            bcbuscarcuenta.h

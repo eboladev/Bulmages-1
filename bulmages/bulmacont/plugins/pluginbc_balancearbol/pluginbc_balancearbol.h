@@ -27,6 +27,7 @@
 #include "bcbulmacont.h"
 #include "blpostgresqlclient.h"
 #include "bccompany.h"
+#include "blmaincompanypointer.h"
 
 
 extern "C" MY_EXPORT int entryPoint ( BcBulmaCont * );

@@ -4,12 +4,12 @@ Plugins
 #README
 20080501
 
-Nombre: Diario
+Nombre: Duplicar Asientos Contables
 
 Biblioteca: libpluginbc_duplicarasiento.so
 
 Descripción: <H1>Duplicación de Asientos Contables</H1>
-<P>Permite duplicar asientos</P>
+<P>En la ventana de introducción de asientos permite duplicar el asiento que estamos visualizando dandole a un botón</P>
 <HR>
 
 ParmBD: -
@@ -22,7 +22,7 @@ Dependencias:
 
 Incompatibles:
 
-Reports: balance.rml
+Reports: 
 
 Categorias: Contabilidad general;Experimentales;
 

@@ -37,9 +37,17 @@
 ///
 /**
 **/
-MyPluginDuplicarAsiento::MyPluginDuplicarAsiento(BcCompany *comp, QWidget *parent ) : BlMainCompanyPointer(comp), QToolButton(parent)
+MyPluginDuplicarAsiento::MyPluginDuplicarAsiento(BcAsientoView * as, BcCompany *comp, QWidget *parent ) : BlMainCompanyPointer(comp), QToolButton(parent)
 {
     _depura ( "MyPluginDuplicarAsiento::MyPluginDuplicarAsiento", 0 );
+    setObjectName ( QString::fromUtf8 ( "MyPluginDuplicarAsiento" ) );
+    setStatusTip ( _ ( "Duplicar Asiento" ) );
+    setToolTip ( _ ( "Duplicar Asiento" ) );
+    setMinimumSize ( QSize ( 32, 32 ) );
+    setMaximumSize ( QSize ( 32, 32 ) );
+    setIcon ( QIcon ( QString::fromUtf8 ( ":/BulmaCont32x32/images/png/igualant.xpm" ) ) );
+    setIconSize ( QSize ( 32, 32 ) );
+    m_asiento = as;
     connect (this, SIGNAL(released()), this, SLOT(elslot()));
     _depura ( "END MyPluginDuplicarAsiento::MyPluginDuplicarAsiento", 0 );
 }
@@ -61,53 +69,15 @@ MyPluginDuplicarAsiento::~MyPluginDuplicarAsiento()
 void MyPluginDuplicarAsiento::elslot()
 {
     _depura ( "MyPluginDuplicarAsiento::elslot", 0 );
-  BcAsientoView *l = (BcAsientoView *) parent();
-
     DuplicarAsientoView *dupli = new DuplicarAsientoView ( (BcCompany *)mainCompany(), 0 );
     /// Establecemos los par&aacute;metros para el nuevo asiento a duplicar.
-    dupli->inicializa ( l->mui_ordenasiento->text(), l->mui_ordenasiento->text() );
+    dupli->inicializa ( m_asiento->mui_ordenasiento->text(), m_asiento->mui_ordenasiento->text() );
     dupli->exec();
-    l->cargaasientos();
-    l->boton_fin();
+    m_asiento->cargaasientos();
+    m_asiento->boton_fin();
     delete dupli;
     _depura ( "END MyPluginDuplicarAsiento::elslot", 0 );
 }
-
-
-///
-/**
-\param bges
-**/
-void MyPluginDuplicarAsiento::inicializa ( BcBulmaCont *bges )
-{
-    _depura ( "MyPluginDuplicarAsiento::inicializa", 0 );
-/*
-    /// Creamos el men&uacute;.
-    setMainCompany ( bges->empresaactual() );
-    m_bulmacont = bges;
-    QMenu *pPluginMenu;
-    /// Miramos si existe un menu Herramientas
-    pPluginMenu = bges->menuBar() ->findChild<QMenu *> ( _ ( "menuVentana" ) );
-
-    /// Creamos el men&uacute;.
-    if ( !pPluginMenu ) {
-        pPluginMenu = new QMenu ( _ ( "&Ver" ), bges->menuBar() );
-        pPluginMenu->setObjectName ( QString::fromUtf8 ( "menuVentana" ) );
-    } // end if
-
-    QAction *accion = new QAction ( _ ( "&Libro DuplicarAsiento" ), 0 );
-    accion->setStatusTip ( _ ( "Permite ver el diario" ) );
-    accion->setWhatsThis ( _ ( "Podra disponer de la informacion del diario" ) );
-    accion->setIcon(QIcon(QString::fromUtf8(":/Images/balance-sheet.png")));
-    connect ( accion, SIGNAL ( activated() ), this, SLOT ( elslot() ) );
-    pPluginMenu->addAction ( accion );
-
-    /// A&ntilde;adimos la nueva opci&oacute;n al men&uacute; principal del programa.
-    bges->menuBar() ->insertMenu ( bges->menuVentana->menuAction(), pPluginMenu );
-*/
-    _depura ( "END MyPluginDuplicarAsiento::inicializa", 0 );
-}
-
 
 
 ///
@@ -120,7 +90,7 @@ int entryPoint ( BcBulmaCont *bcont )
 
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale ( LC_ALL, "" );
-    bindtextdomain ( "pluginbc_diario", g_confpr->valor ( CONF_DIR_TRADUCCION ).toAscii().constData() );
+    bindtextdomain ( "pluginbc_duplicarasiento", g_confpr->valor ( CONF_DIR_TRADUCCION ).toAscii().constData() );
 
     _depura ( "END entryPoint::entryPoint", 0 );
     return 0;
@@ -135,7 +105,7 @@ int BcAsientoView_BcAsientoView ( BcAsientoView *l )
 {
     _depura ( "BcAsientoView_BcAsientoView", 0 );
 //================================
-    MyPluginDuplicarAsiento *mui_exporta_efactura2 = new MyPluginDuplicarAsiento ( l->mainCompany(),  l );
+    MyPluginDuplicarAsiento *mui_exporta_efactura2 = new MyPluginDuplicarAsiento ( l, l->mainCompany(),  l );
 
     QHBoxLayout *m_hboxLayout1 = l->mui_plugbotones->findChild<QHBoxLayout *> ( "hboxLayout1" );
     if ( !m_hboxLayout1 ) {

@@ -1,6 +1,7 @@
 /***************************************************************************
- *   Copyright (C) 2005 by Tomeu Borras Riera                              *
- *   tborras@conetxia.com                                                  *
+ *   Copyright (C) 2003 by Josep Burcion                                   *
+ *   josep@burcion.com                                                     *
+ *   http://www.iglues.org Asociación Iglues -- Contabilidad Linux         *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
  *   it under the terms of the GNU General Public License as published by  *
@@ -18,32 +19,49 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#ifdef Q_WS_WIN
-# define MY_EXPORT __declspec(dllexport)
-#else
-# define MY_EXPORT
-#endif
+#ifndef BCBLOQUEAFECHAVIEW_H
+#define BCBLOQUEAFECHAVIEW_H
 
-#include "bcbulmacont.h"
-#include "blpostgresqlclient.h"
-#include "bccompany.h"
-#include "blmaincompanypointer.h"
+#include <QWidget>
 
-extern "C" MY_EXPORT int entryPoint ( BcBulmaCont * );
+#include "blfunctions.h"
+#include "ui_bcbloqueafechabase.h"
+#include "bcform.h"
 
 
-class myplugin4 : public QObject, BlMainCompanyPointer
+class BcCompany ;
+
+
+class BC_EXPORT BcTreeWidgetItem : public QTreeWidgetItem
+{
+public:
+    BcTreeWidgetItem ( QTreeWidget *parent );
+    BcTreeWidgetItem ( QTreeWidgetItem *parent );
+    ~BcTreeWidgetItem();
+    QString ej;
+    QString per;
+};
+
+
+class BC_EXPORT BcBloqueaFechaView : public BcForm, public Ui_BcBloqueaFechaBase
 {
     Q_OBJECT
 
-public:
-    BcBulmaCont *m_bulmacont;
+private:
+    void inicializa();
+    QString qsbloqueado;
+    QString qsabierto;
 
 public:
-    myplugin4();
-    ~myplugin4();
-    void inicializa ( BcBulmaCont * );
+    BcBloqueaFechaView ( BcCompany *emp, QWidget * parent = 0 );
+    ~BcBloqueaFechaView();
 
 public slots:
-    void elslot();
+    virtual void on_mui_crear_released();
+
+private slots:
+    virtual void on_mui_treeWidget_itemDoubleClicked ( QTreeWidgetItem *item, int columna );
 };
+
+#endif
+

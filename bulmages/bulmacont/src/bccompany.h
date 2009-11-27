@@ -88,8 +88,6 @@ public:
     virtual ~BcCompany();
     /// Devuelve un puntero a la clase de la base de datos.
     BlPostgreSqlClient *bdempresa();
-//    BcExtractoView *extractoempresa();
-//    BcDiarioView *diarioempresa();
     BcAsientoView *intapuntsempresa();
     BcAsientoView *intapuntsempresa2();
     int numdigitosempresa();
@@ -131,7 +129,6 @@ public:
     int cambioejercicio();
     void centrocostedefecto();
     void canaldefecto();
-    void bloqueoFechas();
     BcCentroCosteSeleccionarView *getselccostes();
     BcCanalSeleccionarView *getselcanales();
     void recalculasaldos();

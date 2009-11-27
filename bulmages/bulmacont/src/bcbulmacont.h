@@ -36,7 +36,6 @@
 #include "blfunctions.h"
 #include "ui_bcbulmacontbase.h"
 #include "bccompany.h"
-#include "bcbloqueafechaview.h"
 #include "blconfiguration.h"
 #include "blwindowlistdock.h"
 #include "blworkspace.h"
@@ -128,7 +127,6 @@ public slots:
     virtual void on_actionFiltrar_triggered();
     virtual void on_actionRecalcular_Saldos_Iniciales_triggered();
     virtual void on_actionSustituir_Cuentas_triggered();
-    virtual void on_actionBloquear_Fechas_triggered();
     virtual void on_actionCanal_por_Defecto_triggered();
     virtual void on_actionCentros_de_Coste_triggered();
     virtual void on_actionCanales_triggered();

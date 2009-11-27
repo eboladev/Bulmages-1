@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2005 by Tomeu Borras Riera                              *
+ *   Copyright (C) 2003 by Tomeu Borras Riera                              *
  *   tborras@conetxia.com                                                  *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -18,6 +18,9 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
+#ifndef PLUGINBC_BLOQUEOFECHAS
+#define PLUGINBC_BLOQUEOFECHAS
+
 #ifdef Q_WS_WIN
 # define MY_EXPORT __declspec(dllexport)
 #else
@@ -27,12 +30,12 @@
 #include "bcbulmacont.h"
 #include "blpostgresqlclient.h"
 #include "bccompany.h"
-#include "blmaincompanypointer.h"
+
 
 extern "C" MY_EXPORT int entryPoint ( BcBulmaCont * );
 
 
-class myplugin4 : public QObject, BlMainCompanyPointer
+class myBloqFechas : public QObject
 {
     Q_OBJECT
 
@@ -40,10 +43,13 @@ public:
     BcBulmaCont *m_bulmacont;
 
 public:
-    myplugin4();
-    ~myplugin4();
+    myBloqFechas();
+    ~myBloqFechas();
     void inicializa ( BcBulmaCont * );
 
 public slots:
     void elslot();
 };
+
+
+#endif

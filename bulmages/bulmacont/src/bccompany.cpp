@@ -40,7 +40,6 @@
 #include "bccentrocosteseleccionarview.h"
 #include "bccanalseleccionarview.h"
 #include "blplugins.h"
-#include "bcbloqueafechaview.h"
 #include "bcmodelo347listview.h"
 #include "blcountryview.h"
 #include "bcbulmacont.h"
@@ -331,18 +330,7 @@ int BcCompany::canales()
 }
 
 
-/// Crea la ventana de tipos de IVA y la presenta en modo modal.
-/** Es invocada desde la clase principal. */
-/**
-**/
-void BcCompany::bloqueoFechas()
-{
-    _depura ( "BcCompany::bloqueoFechas", 0 );
-    BcBloqueaFechaView *tip = new BcBloqueaFechaView ( this, 0 );
-    m_pWorkspace->addWindow ( tip );
-    tip->show();
-    _depura ( "END BcCompany::bloqueoFechas", 0 );
-}
+
 
 
 /// Crea la ventana de tipos de IVA y la presenta en modo modal.

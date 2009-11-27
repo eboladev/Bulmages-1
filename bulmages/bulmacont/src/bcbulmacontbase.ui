@@ -30,7 +30,7 @@
      <x>0</x>
      <y>0</y>
      <width>800</width>
-     <height>23</height>
+     <height>26</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuVentana">
@@ -106,7 +106,6 @@
     <addaction name="actionRecalcular_Saldos_Iniciales"/>
     <addaction name="actionCerrar_Asientos"/>
     <addaction name="actionSustituir_Cuentas"/>
-    <addaction name="actionBloquear_Fechas"/>
     <addaction name="separator"/>
     <addaction name="actionCanal_por_Defecto"/>
     <addaction name="actionCentro_de_Coste_por_Defecto"/>
@@ -337,11 +336,6 @@
   <action name="actionSustituir_Cuentas">
    <property name="text">
     <string>&amp;Sustituir cuentas</string>
-   </property>
-  </action>
-  <action name="actionBloquear_Fechas">
-   <property name="text">
-    <string>&amp;Bloquear fechas/Crear ejercicio</string>
    </property>
   </action>
   <action name="actionCanal_por_Defecto">

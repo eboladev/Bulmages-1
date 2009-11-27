@@ -29,7 +29,7 @@
 #include "bcbulmacont.h"
 #include "blconfiguration.h"
 #include "bcaboutview.h"
-
+#include "blplugins.h"
 
 ///
 /**
@@ -320,17 +320,6 @@ void BcBulmaCont::on_actionSustituir_Cuentas_triggered()
     _depura ( "BcBulmaCont::on_actionSustituir_Cuentas_triggered", 0 );
     m_empresaactual->reemplazacuentaenasientos();
     _depura ( "BcBulmaCont::on_actionSustituir_Cuentas_triggered", 0 );
-}
-
-
-///
-/**
-**/
-void BcBulmaCont::on_actionBloquear_Fechas_triggered()
-{
-    _depura ( "BcBulmaCont::on_actionBloquear_Fechas_triggered", 0 );
-    m_empresaactual->bloqueoFechas();
-    _depura ( "END BcBulmaCont::on_actionBloquear_Fechas_triggered", 0 );
 }
 
 

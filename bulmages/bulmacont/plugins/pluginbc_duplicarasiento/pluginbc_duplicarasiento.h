@@ -41,11 +41,11 @@ extern "C" MY_EXPORT int BcAsientoView_BcAsientoView ( BcAsientoView * );
 class MyPluginDuplicarAsiento : public QToolButton, BlMainCompanyPointer
 {
     Q_OBJECT
-
+  public:
+    BcAsientoView *m_asiento;
 public:
-    MyPluginDuplicarAsiento(BcCompany *, QWidget *parent = NULL);
+    MyPluginDuplicarAsiento(BcAsientoView *as, BcCompany *comp, QWidget *parent = NULL);
     ~MyPluginDuplicarAsiento();
-    void inicializa ( BcBulmaCont * );
 
 public slots:
     void elslot();
