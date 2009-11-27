@@ -42,7 +42,6 @@ set(bulmacont_MOCS bcbulmacont.h
            bccentrocosteview.h
            bcconfiguracionview.h
            bccambiacuentaview.h
-           bcasientoduplicarview.h
            bcamortizacionview.h
            bcmodelo347listview.h
            bcamortizacionlistview.h

@@ -33,7 +33,6 @@
 
 #include "bcasientoview.h"
 #include "bldatesearch.h"
-#include "bcasientoduplicarview.h"
 #include "bcasientointeligenteview.h"
 #include "bcasientosubform.h"
 #include "bccompany.h"
@@ -47,8 +46,8 @@
 BcAsientoView::BcAsientoView ( BcCompany *emp, QWidget *parent, int )
         : BcAsientoList ( emp, parent )
 {
-    setupUi ( this );
     _depura ( "BcAsientoView::BcAsientoView", 0 );
+    setupUi ( this );
 
     /// Disparamos los plugins.
     int res = g_plugins->lanza ( "BcAsientoView_BcAsientoView", this );
@@ -69,7 +68,7 @@ BcAsientoView::BcAsientoView ( BcCompany *emp, QWidget *parent, int )
     mui_detalles->toggle();
     /// Hacemos la carga del listado de asientos.
     cargaasientos();
-    /// Desplazamos hasta el Ãºltimo asiento.
+    /// Desplazamos hasta el ultimo asiento.
     boton_fin();
     mainCompany() ->meteWindow ( windowTitle(), this );
     dialogChanges_cargaInicial();
@@ -276,13 +275,7 @@ void BcAsientoView::on_mui_fecha_enterPressed()
 void BcAsientoView::on_mui_duplicar_released()
 {
     _depura ( "BcAsientoView::on_mui_duplicar_released", 0 );
-    DuplicarAsientoView *dupli = new DuplicarAsientoView ( mainCompany(), 0 );
-    /// Establecemos los par&aacute;metros para el nuevo asiento a duplicar.
-    dupli->inicializa ( mui_ordenasiento->text(), mui_ordenasiento->text() );
-    dupli->exec();
-    cargaasientos();
-    boton_fin();
-    delete dupli;
+
     _depura ( "END BcAsientoView::on_mui_duplicar_released", 0 );
 }
 
