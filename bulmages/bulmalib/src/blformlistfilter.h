@@ -38,7 +38,7 @@
 
   Forma de uso desde un widget tipo "List" de un listado concreto de plugin:
 
-  1) Agregar un QWidget llamado "mui_filtador" y promocionarlo a BlFormListFilter.
+  1) Agregar un QWidget llamado "mui_filtrador" y promocionarlo a BlFormListFilter.
 
   2) Agregar en la barra de botones un bot&oacute;n (puede usarse el que hay: "mui_filtrar").
 
