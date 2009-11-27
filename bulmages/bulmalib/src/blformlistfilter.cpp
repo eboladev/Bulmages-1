@@ -32,7 +32,7 @@ BlFormListFilter::BlFormListFilter ( QWidget *parent ) : BlWidget ( parent )
    setupUi ( this );
    mui_subform_list = NULL;
    m_columna_actual = -1;
-   hide (  );
+   hide();
 
    /// Disparamos los plugins.
    int res = g_plugins->lanza ( "BlFormListFilter_BlFormListFilter", this );
@@ -50,11 +50,11 @@ BlFormListFilter::BlFormListFilter ( QWidget *parent ) : BlWidget ( parent )
 /**
   \return
 **/
-QString BlFormListFilter::generarFiltro (  )
+QString BlFormListFilter::generarFiltro()
 {
    _depura ( "BlFormListFilter::generaFiltro", 0 );
 
-   if ( m_columna_actual < 0 || isHidden (  ) ) {
+   if ( m_columna_actual < 0 || isHidden() ) {
       return "";
    } // end if
 
@@ -67,34 +67,34 @@ QString BlFormListFilter::generarFiltro (  )
       case BlDbField::DbInt:
       case BlDbField::DbNumeric:
 
-         if ( m_filtro->text (  ).isEmpty (  ) ) {
+         if ( mui_filtro_texto->text().isEmpty() ) {
             return "";
          } // end if
 
-         filtro = generateNumericFilter ( mui_subform_list->dbFieldNameByColumnId ( m_columna_actual ), m_filtro->text (  ) );
+         filtro = generateNumericFilter ( mui_subform_list->dbFieldNameByColumnId ( m_columna_actual ), mui_filtro_texto->text() );
          break;
 
       case BlDbField::DbBoolean:
-         filtro = generateBooleanFilter ( mui_subform_list->dbFieldNameByColumnId ( m_columna_actual ), mui_filtro_boolean->checkState (  ) );
+         filtro = generateBooleanFilter ( mui_subform_list->dbFieldNameByColumnId ( m_columna_actual ), mui_filtro_boolean->checkState() );
          break;
 
       case BlDbField::DbDate:
-         filtro = generateDateFilter ( mui_subform_list->dbFieldNameByColumnId ( m_columna_actual ), m_filtro->text (  ) );
+         filtro = generateDateFilter ( mui_subform_list->dbFieldNameByColumnId ( m_columna_actual ), mui_filtro_texto->text() );
          break;
 
       case BlDbField::DbVarChar:
       default:
 
-         if ( m_filtro->text (  ).isEmpty (  ) ) {
+         if ( mui_filtro_texto->text().isEmpty() ) {
             return "";
          } // end if
 
-         filtro = generateTextFilter ( mui_subform_list->dbFieldNameByColumnId ( m_columna_actual ), m_filtro->text (  ) );
+         filtro = generateTextFilter ( mui_subform_list->dbFieldNameByColumnId ( m_columna_actual ), mui_filtro_texto->text() );
          break;
    } // end switch
 
    /// Si hay una condici&oacute;n, agregamos AND para que se acople bien en la consulta
-   if ( !filtro.isEmpty (  ) ) {
+   if ( !filtro.isEmpty() ) {
       filtro.prepend ( " AND " );
    } // end if
 
@@ -114,22 +114,22 @@ QString BlFormListFilter::generateDateFilter ( QString campo, QString texto )
    QString criterio = QString ( "\"%1\" " ).arg ( campo );
 
    /// Si hay dos fechas, el criterio es un intervalo cerrado
-   if ( !mui_filtro_fecha_ini->text (  ).isEmpty (  ) && !mui_filtro_fecha_fin->text (  ).isEmpty (  ) ) {
-      criterio += QString ( " BETWEEN '%1' AND '%2'" ).arg ( mui_filtro_fecha_ini->text (  ) ).arg ( mui_filtro_fecha_fin->text (  ) );
+   if ( !mui_filtro_fecha_ini->text().isEmpty() && !mui_filtro_fecha_fin->text().isEmpty() ) {
+      criterio += QString ( " BETWEEN '%1' AND '%2'" ).arg ( mui_filtro_fecha_ini->text() ).arg ( mui_filtro_fecha_fin->text() );
    } // end if
 
    /// Si s&oacute;lo est&aacute; la fecha inicial, ser&aacute; la menor del intervalo
-   if ( mui_filtro_fecha_fin->text (  ).isEmpty (  ) ) {
-      criterio += QString ( " >= '%1'" ).arg ( mui_filtro_fecha_ini->text (  ) );
+   if ( mui_filtro_fecha_fin->text().isEmpty() ) {
+      criterio += QString ( " >= '%1'" ).arg ( mui_filtro_fecha_ini->text() );
    } // end if
 
    /// Si s&oacute;lo est&aacute; la fecha final, ser&aacute; la mayor del intervalo
-   if ( mui_filtro_fecha_ini->text (  ).isEmpty (  ) ) {
-      criterio += QString ( " <= '%1'" ).arg ( mui_filtro_fecha_fin->text (  ) );
+   if ( mui_filtro_fecha_ini->text().isEmpty() ) {
+      criterio += QString ( " <= '%1'" ).arg ( mui_filtro_fecha_fin->text() );
    } // end if
 
    /// Sin fechas, no hay filtrado
-   if ( mui_filtro_fecha_ini->text (  ).isEmpty (  ) && mui_filtro_fecha_fin->text (  ).isEmpty (  ) ) {
+   if ( mui_filtro_fecha_ini->text().isEmpty() && mui_filtro_fecha_fin->text().isEmpty() ) {
       criterio = "";
    } // end if
 
@@ -146,7 +146,7 @@ QString BlFormListFilter::generateNumericFilter ( QString campo, QString texto )
 {
    _depura ( "BlFormListFilter::generateNumericFilter", 0 );
 
-   QString criterio = QString ( "\"%1\" %2" ).arg ( campo ).arg ( mui_filtro_compara->currentText (  ) );
+   QString criterio = QString ( "\"%1\" %2" ).arg ( campo ).arg ( mui_filtro_compara->currentText() );
 
    /// Valdrá false si el texto no se pudo traducir como un número
    bool ok = true;
@@ -202,7 +202,7 @@ QString BlFormListFilter::generateTextFilter ( QString campo, QString texto )
    /// Con ILIKE conseguimos que no se diferencie entre mayúsculas y minúsculas al comparar
    QString criterio = QString ( "\"%1\" ILIKE " ).arg ( campo );
 
-   switch ( mui_filtro_coincidencia->currentIndex (  ) ) {
+   switch ( mui_filtro_coincidencia->currentIndex() ) {
 
       case 2: /// Hacer coincidir todo el campo
          criterio += QString ( "'%1'" ).arg ( texto );
@@ -228,17 +228,17 @@ QString BlFormListFilter::generateTextFilter ( QString campo, QString texto )
   Ocultamos los elementos uno por uno y no el grupo completo debido a que
   seg&uacute;n el tipo de campo se mostrar&aacute;n unos campos u otros.
 **/
-void BlFormListFilter::hideFilterWidgets (  )
+void BlFormListFilter::hideFilterWidgets()
 {
    _depura ( "BlFormListFilter::hideFilterWidgets", 0 );
 
-   m_filtro->hide (  );
-   mui_filtro_columna->hide (  );
-   mui_filtro_compara->hide (  );
-   mui_filtro_coincidencia->hide (  );
-   mui_filtro_boolean->hide (  );
-   mui_filtro_fecha_ini->hide (  );
-   mui_filtro_fecha_fin->hide (  );
+   mui_filtro_texto->hide();
+   mui_filtro_columna->hide();
+   mui_filtro_compara->hide();
+   mui_filtro_coincidencia->hide();
+   mui_filtro_boolean->hide();
+   mui_filtro_fecha_ini->hide();
+   mui_filtro_fecha_fin->hide();
 
    _depura ( "END BlFormListFilter::hideFilterWidgets", 0 );
 }
@@ -247,46 +247,46 @@ void BlFormListFilter::hideFilterWidgets (  )
 /// Configura el cuadro del filtrador al tipo de la columna actual
 /**
 **/
-void BlFormListFilter::configureFilterToType (  )
+void BlFormListFilter::configureFilterToType()
 {
    _depura ( "BlFormListFilter::configureFilterToType", 0 );
 
    /// Antes de mostrar los widgets adecuados al tipo, los ocultamos todos
-   hideFilterWidgets (  );
+   hideFilterWidgets();
 
-   if ( m_columna_actual < 0 || isHidden (  ) ) {
+   if ( m_columna_actual < 0 || isHidden() ) {
       return;
    } // end if
 
    /// Mostrar la etiqueta con el nombre de la columna activa para el filtro
-   mui_filtro_columna->show (  );
+   mui_filtro_columna->show();
    mui_filtro_columna->setText ( "\"" + mui_subform_list->dbFieldViewNameByColumnId ( m_columna_actual ) + "\":" );
 
    switch ( mui_subform_list->dbFieldTypeByColumnId ( m_columna_actual ) ) {
 
       /// Mostrar widgets para filtrar fechas
       case BlDbField::DbDate:
-         mui_filtro_fecha_ini->show (  );
-         mui_filtro_fecha_fin->show (  );
+         mui_filtro_fecha_ini->show();
+         mui_filtro_fecha_fin->show();
          break;
 
       /// Mostrar widgets para filtrar números
       case BlDbField::DbInt:
       case BlDbField::DbNumeric:
          mui_filtro_compara->setVisible ( true );
-         m_filtro->show (  );
+         mui_filtro_texto->show();
          break;
 
       /// Mostrar widgets para filtrar booleanos
       case BlDbField::DbBoolean:
-         mui_filtro_boolean->show (  );
+         mui_filtro_boolean->show();
          break;
 
       /// Mostrar widgets para filtrar textos
       case BlDbField::DbVarChar:
       default:
-         m_filtro->show (  );
-         mui_filtro_coincidencia->show (  );
+         mui_filtro_texto->show();
+         mui_filtro_coincidencia->show();
          break;
 
    } // end switch
@@ -313,22 +313,21 @@ void BlFormListFilter::setSubFormList ( BlSubForm *list )
 /// Al pulsar el bot&oacute;n, muestra y oculta el filtrador alternadamente
 /**
 **/
-void BlFormListFilter::showHideFilter (  )
+void BlFormListFilter::showHideFilter()
 {
    _depura ( "BlFormListFilter::showHideFilter", 0 );
 
    /// Si el fitrador estaba oculto, mostrarlo
-   if ( isHidden (  ) ) {
-      show (  );
+   if ( isHidden() ) {
+      show();
       m_columna_actual = mui_subform_list->currentColumn();
-      configureFilterToType (  );
+      configureFilterToType();
    }
 
    /// Si el fitrador era visible, ocultarlo
    else {
-      cleanFilter (  );
-      hide (  );
-      m_columna_actual = -1;
+      cleanFilter();
+      hide();
    } // end if
 
    _depura ( "END BlFormListFilter::showHideFilter", 0 );
@@ -338,12 +337,14 @@ void BlFormListFilter::showHideFilter (  )
 /// Borra los datos del filtrador
 /**
 **/
-void BlFormListFilter::cleanFilter (  )
+void BlFormListFilter::cleanFilter()
 {
    _depura ( "BlFormListFilter::cleanFilter", 0 );
 
-   m_filtro->clear (  );
-   mui_filtro_columna->clear (  );
+   m_columna_actual = -1;
+   mui_filtro_texto->clear();
+   mui_filtro_texto->setStyleSheet ( "" );
+   mui_filtro_columna->clear();
    mui_filtro_compara->setCurrentIndex ( 0 );
    mui_filtro_coincidencia->setCurrentIndex ( 0 );
    mui_filtro_boolean->setCheckState ( Qt::PartiallyChecked );
@@ -362,7 +363,7 @@ void BlFormListFilter::updatePosition ( int fila, int columna, int fila_anterior
    _depura ( "BlFormListFilter::updatePosition", 0 );
 
    /// No seguir si la columna no ha cambiado o el filtrado est&aacute; desactivado
-   if ( ( columna == columna_anterior && !mui_filtro_columna->text (  ).isEmpty (  ) ) || isHidden (  ) ) {
+   if ( ( columna == columna_anterior && !mui_filtro_columna->text().isEmpty() ) || isHidden() ) {
       return;
    } // end if
 
@@ -379,7 +380,44 @@ void BlFormListFilter::updatePosition ( int fila, int columna, int fila_anterior
       m_columna_actual = columna;
    } // end if
 
-   configureFilterToType (  );
+   configureFilterToType();
 
    _depura ( "END BlFormListFilter::updatePosition", 0 );
+}
+
+
+/// Responde a la pulsaci&oacute;n del bot&oacute;n de aplicar filtro
+/**
+  Tras lanzar la se&ntilde;al de que debe aplicarse el filtro,
+  cambia el color de fondo si no hay resultados
+**/
+void BlFormListFilter::on_mui_filtro_aplicar_released()
+{
+   _depura ( "BlFormListFilter::mui_filtro_aplicar_released", 0 );
+
+   emit aplicar_filtro();
+
+   if ( mui_subform_list->rowCount() <= 0 && mui_filtro_texto->isVisible() ) {
+      mui_filtro_texto->setStyleSheet(" QLineEdit { background-color: #ffcccc } ");
+   }
+   else {
+     mui_filtro_texto->setStyleSheet ( "" );
+   }
+
+   _depura ( "END BlFormListFilter::mui_filtro_aplicar_released", 0 );
+}
+
+
+/// Responde a la pulsaci&oacute;n del bot&oacute;n de limpiar filtro
+/**
+**/
+void BlFormListFilter::on_mui_filtro_limpiar_released()
+{
+   _depura ( "BlFormListFilter::on_mui_filtro_limpiar_released", 0 );
+
+   cleanFilter();
+   hideFilterWidgets();
+   emit aplicar_filtro();
+
+   _depura ( "END BlFormListFilter::on_mui_filtro_limpiar_released", 0 );
 }

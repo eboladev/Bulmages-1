@@ -2,6 +2,14 @@
 <ui version="4.0">
  <class>BlFormListFilterBase</class>
  <widget class="QWidget" name="BlFormListFilterBase">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>745</width>
+    <height>40</height>
+   </rect>
+  </property>
   <layout class="QHBoxLayout" name="horizontalLayout">
    <property name="margin">
     <number>0</number>
@@ -21,7 +29,7 @@
          <string>Filtrar por</string>
         </property>
         <property name="buddy">
-         <cstring>m_filtro</cstring>
+         <cstring>mui_filtro_texto</cstring>
         </property>
        </widget>
       </item>
@@ -104,12 +112,6 @@
       </item>
       <item>
        <widget class="BlDateSearch" name="mui_filtro_fecha_fin">
-        <property name="sizePolicy">
-         <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-          <horstretch>0</horstretch>
-          <verstretch>0</verstretch>
-         </sizepolicy>
-        </property>
         <property name="maximumSize">
          <size>
           <width>100</width>
@@ -119,7 +121,7 @@
        </widget>
       </item>
       <item>
-       <widget class="QLineEdit" name="m_filtro"/>
+       <widget class="QLineEdit" name="mui_filtro_texto"/>
       </item>
       <item>
        <widget class="QComboBox" name="mui_filtro_coincidencia">
@@ -144,6 +146,40 @@
           <string>Hacer coincidir todo el campo</string>
          </property>
         </item>
+       </widget>
+      </item>
+      <item>
+       <widget class="QToolButton" name="mui_filtro_limpiar">
+        <property name="toolTip">
+         <string>Limpiar el filtro</string>
+        </property>
+        <property name="whatsThis">
+         <string>Limpiar el filtro</string>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+        <property name="icon">
+         <iconset>
+          <normaloff>:/BulmaCont32x32/images/png/i_editDelete.png</normaloff>:/BulmaCont32x32/images/png/i_editDelete.png</iconset>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QToolButton" name="mui_filtro_aplicar">
+        <property name="toolTip">
+         <string>Aplicar el filtro</string>
+        </property>
+        <property name="whatsThis">
+         <string>Aplicar el filtro</string>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+        <property name="icon">
+         <iconset>
+          <normaloff>:/BulmaCont32x32/images/png/i_ok.png</normaloff>:/BulmaCont32x32/images/png/i_ok.png</iconset>
+        </property>
        </widget>
       </item>
      </layout>
