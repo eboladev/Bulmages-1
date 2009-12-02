@@ -59,7 +59,9 @@ set(bulmacont_MOCS bcbulmacont.h
            bcbuscarcentrocoste.h
            bcbuscarcanal.h 
            bcform.h
-           bccuentalistview.h)
+           bccuentalistview.h
+           bcasientoduplicarview.h
+           bcbloqueafechaview.h)
 
 
 set(QT_USE_QTASSISTANT true)
