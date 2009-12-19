@@ -6,6 +6,7 @@
 #include <QPicture>
 #include <QPainter>
 #include <QPushButton>
+#include <QTextStream>
 
 #include "artgraficos.h"
 #include "blconfiguration.h"
@@ -41,13 +42,48 @@ ArtGraficos::~ArtGraficos()
 void ArtGraficos::on_mui_list_cellClicked ( int row, int column )
 {
     _depura("ArtGraficos::on_mui_list_cellClicked");
+
     QString artvarios = g_confpr->valor ( CONF_ARTICULOS_VARIOS );
     QString codigo = m_articulos[row][column];
-    if ( ! artvarios.contains ( codigo ) ) {
-        ( ( BtCompany * ) mainCompany() ) ->ticketActual() ->insertarArticuloCodigo ( m_articulos[row][column] );
+    QString idArticulo = m_nodarticulos[row][column].firstChildElement("IDARTICULO").toElement().text();
+    BtTicket *tick = (( BtCompany * ) mainCompany() ) ->ticketActual();
+
+
+    /// Buscamos si ya hay una linea con el articulo que buscamos
+    BlDbRecord *m_lineaActual = NULL;
+    BlDbRecord *item;
+    bool nuevaLinea = artvarios.contains ( codigo );
+
+
+    for ( int i = 0; i < tick->listaLineas() ->size(); ++i ) {
+        item = tick->listaLineas() ->at ( i );
+        if ( item->dbValue ( "idarticulo" ) == idArticulo )
+            m_lineaActual = item;
+    }// end for
+
+    if ( m_lineaActual && nuevaLinea == FALSE ) {
+        /// Ya hay una linea con este articulo (es un agregado)
+        BlFixed cantidadib ( m_lineaActual->dbValue ( "cantlalbaran" ) );
+        BlFixed cant1 = cantidadib + BlFixed("1");
+        m_lineaActual->setDbValue ( "cantlalbaran", cant1.toQString() );
     } else {
-        ( ( BtCompany * ) mainCompany() ) ->ticketActual() ->insertarArticuloCodigoNL ( m_articulos[row][column] );
+        /// No hay ningun item con este articulo (es una insercion)
+        m_lineaActual = tick->agregarLinea();
+        m_lineaActual->setDbValue ( "idarticulo", idArticulo );
+	    QString a("1.00");
+        m_lineaActual->setDbValue ( "cantlalbaran", "1.00" );
+	m_lineaActual->setDbValue ( "pvpivainclalbaran", m_nodarticulos[row][column].firstChildElement("PVPIVAINCARTICULO").toElement().text());
+	m_lineaActual->setDbValue ( "pvplalbaran", m_nodarticulos[row][column].firstChildElement("PVPARTICULO").toElement().text());
+	m_lineaActual->setDbValue ( "codigocompletoarticulo", m_nodarticulos[row][column].firstChildElement("PVPIVAINCARTICULO").toElement().text());
+	m_lineaActual->setDbValue ( "nomarticulo", m_nodarticulos[row][column].firstChildElement("NOMARTICULO").toElement().text());
+	m_lineaActual->setDbValue ( "desclalbaran", m_nodarticulos[row][column].firstChildElement("NOMARTICULO").toElement().text());
+	m_lineaActual->setDbValue ( "ivalalbaran", m_nodarticulos[row][column].firstChildElement("IVAARTICULO").toElement().text());
+
     } // end if
+
+    /// Pintamos el ticket ya que se ha modificado.
+    tick->pintar();
+
     _depura("END ArtGraficos::on_mui_list_cellClicked");
 }
 
@@ -66,7 +102,6 @@ void ArtGraficos::muestraPantalla ( int numpantalla )
     m_pantallaActual = numpantalla;
 
     QDomElement docElem = m_doc.documentElement();
-//    QDomElement pantalla = docElem.firstChildElement("PANTALLA");
 
     m_numPantallas = docElem.elementsByTagName ( "PANTALLA" ).count();
 
@@ -97,7 +132,7 @@ void ArtGraficos::muestraPantalla ( int numpantalla )
 
 
     /// Tratamos cada ventana
-//    QWidget *activewindow = NULL;
+
     QDomNodeList nodos = pantalla.elementsByTagName ( "ITEM" );
     int nitem = 0;
 
@@ -117,6 +152,11 @@ void ArtGraficos::muestraPantalla ( int numpantalla )
                     codigo = text;
                 } // end if
 
+                QString pvp = ventana.firstChildElement ( "PVPIVAINCARTICULO" ).toElement().text();
+                if ( pvp.isEmpty() ) {
+                    pvp = text;
+                } // end if
+
 
                 /// Creamos el elemento y lo ponemos en la tabla.
                 QLabel *lab = new QLabel ( NULL );
@@ -133,7 +173,7 @@ void ArtGraficos::muestraPantalla ( int numpantalla )
                 painter.begin ( &picture );        // paint in picture
 //  painter.drawPixmap(0,0,cellwidth.toInt(),cellwidth.toInt(),QPixmap ( g_confpr->valor ( CONF_DIR_THUMB_ARTICLES ) + codigo + ".jpg" ));
 
-                painter.drawPixmap ( 0, 0, cellwidth.toInt(), cellwidth.toInt(), QPixmap ( g_confpr->valor ( CONF_DIR_THUMB_ARTICLES ) + "blanco.jpg" ) );
+//                painter.drawPixmap ( 0, 0, cellwidth.toInt(), cellwidth.toInt(), QPixmap ( g_confpr->valor ( CONF_DIR_THUMB_ARTICLES ) + "blanco.jpg" ) );
 
                 painter.drawPixmap ( 0, 0, cellwidth.toInt(), cellwidth.toInt() - 25, QPixmap ( g_confpr->valor ( CONF_DIR_THUMB_ARTICLES ) + codigo + ".jpg" ) );
 
@@ -142,6 +182,8 @@ void ArtGraficos::muestraPantalla ( int numpantalla )
                 painter.setBackground ( QColor ( 0, 0, 0 ) );
 
                 painter.drawText ( 5, 95, nombre );
+
+		painter.drawText(5, 10, pvp);
 //  painter.setPen(QColor(0,25,0));
 //  painter.drawText(5,10,nombre);
 //  painter.drawText(5,15,nombre);
@@ -155,6 +197,7 @@ void ArtGraficos::muestraPantalla ( int numpantalla )
 
                 mui_list->setCellWidget ( row, column, lab );
                 m_articulos[row][column] = codigo;
+		m_nodarticulos[row][column] = nodos.item ( nitem );
                 nitem ++;
             } // end if
 
@@ -174,6 +217,53 @@ void ArtGraficos::cargaXML ( QString filename )
         return;
     }
     file.close();
+
+    /// Cogemos parametros adicionales para que no haya que ir a buscarlos a la base de datos y asi mejore la velocidad.
+
+    /// Itero sobre las pantallas para obtener los nombres de pantalla y crear los botones pretinentes.
+    QDomElement docElem = m_doc.documentElement();
+    QDomNodeList nodos = docElem.elementsByTagName ( "ITEM" );
+
+    for ( int i = 0; i < nodos.count(); i++ ) {
+        /// Cogemos el titulo de la pantalla
+        QString codigo = nodos.item ( i ).firstChildElement ( "CODIGO" ).text();
+        /// Buscamos los parametros en la base de datos.
+        QString query = "SELECT * FROM articulo LEFT JOIN (SELECT idtipo_iva, porcentasa_iva, fechatasa_iva FROM tasa_iva ) AS t1 ON articulo.idtipo_iva = t1.idtipo_iva WHERE codigocompletoarticulo = '" + codigo + "' ORDER BY t1.fechatasa_iva LIMIT 1";
+        BlDbRecordSet *cur = mainCompany() ->loadQuery ( query );
+        if ( !cur->eof() ) {
+
+		QDomElement tag = m_doc.createElement( "PVPIVAINCARTICULO" );
+		tag.appendChild( m_doc.createTextNode( cur->valor("pvpivaincarticulo") ) );
+		nodos.item(i).appendChild( tag );
+
+		QDomElement tag4 = m_doc.createElement( "PVPARTICULO" );
+		tag4.appendChild( m_doc.createTextNode( cur->valor("pvparticulo") ) );
+		nodos.item(i).appendChild( tag4 );
+
+		QDomElement tag1 = m_doc.createElement( "IDARTICULO" );
+		tag1.appendChild( m_doc.createTextNode( cur->valor("idarticulo") ) );
+		nodos.item(i).appendChild( tag1 );
+
+		QDomElement tag2 = m_doc.createElement( "NOMARTICULO" );
+		tag2.appendChild( m_doc.createTextNode( cur->valor("nomarticulo") ) );
+		nodos.item(i).appendChild( tag2 );
+
+		QDomElement tag3 = m_doc.createElement( "IVAARTICULO" );
+		tag3.appendChild( m_doc.createTextNode( cur->valor("porcentasa_iva") ) );
+		nodos.item(i).appendChild( tag3 );
+
+		/// Ponemos todos los campos del registro cargado para que esten cacheados.
+		for (int j = 0; j < cur->numcampos(); j++) {
+			QDomElement tag3 = m_doc.createElement(cur->nomcampo(j) );
+			tag3.appendChild( m_doc.createTextNode( cur->valor(j) ) );
+			nodos.item(i).appendChild( tag3 );
+		} // end for
+
+        } // end if
+        delete cur;
+
+    } // end for
+
 
 }
 

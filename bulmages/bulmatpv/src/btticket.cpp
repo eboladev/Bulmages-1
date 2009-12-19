@@ -158,25 +158,16 @@ BlDbRecord *BtTicket::insertarArticulo ( QString idArticulo, BlFixed cantidad, b
         m_lineaActual->setDbValue ( "cantlalbaran", cantidad.toQString('.') );
 
         /// Buscamos los parametros en la base de datos.
-//        QString query = "SELECT * FROM articulo WHERE idarticulo = " + idArticulo;
         QString query = "SELECT pvparticulo, codigocompletoarticulo, nomarticulo, porcentasa_iva FROM articulo LEFT JOIN (SELECT idtipo_iva, porcentasa_iva, fechatasa_iva FROM tasa_iva ) AS t1 ON articulo.idtipo_iva = t1.idtipo_iva WHERE idarticulo = " + idArticulo + " ORDER BY t1.fechatasa_iva LIMIT 1";
         BlDbRecordSet *cur = mainCompany() ->loadQuery ( query );
-        
+
         if ( !cur->eof() ) {
             m_lineaActual->setDbValue ( "pvplalbaran", cur->valor ( "pvparticulo" ) );
             m_lineaActual->setDbValue ( "codigocompletoarticulo", cur->valor ( "codigocompletoarticulo" ) );
             m_lineaActual->setDbValue ( "nomarticulo", cur->valor ( "nomarticulo" ) );
             m_lineaActual->setDbValue ( "desclalbaran", cur->valor ( "nomarticulo" ) );
             m_lineaActual->setDbValue ( "ivalalbaran", cur->valor ( "porcentasa_iva") );
-/*
-            if ( cur->valor ( "idtipo_iva" ) != "" ) {
-                QString query2 = "SELECT * FROM tasa_iva WHERE idtipo_iva = " + cur->valor ( "idtipo_iva" ) + " ORDER BY fechatasa_iva LIMIT 1";
-                BlDbRecordSet *cur1 = mainCompany() ->loadQuery ( query2 );
-                if ( !cur1->eof() )
-                    m_lineaActual->setDbValue ( "ivalalbaran", cur1->valor ( "porcentasa_iva" ) );
-                delete cur1;
-            } // end if
-*/
+
         } // end if
         delete cur;
     } // end if
@@ -1015,6 +1006,11 @@ void BtTicket::borrarLinea ( BlDbRecord *linea )
     g_plugins->lanza("BtTicket_borrarLinea", this);
        
     int numlinea = listaLineas()->indexOf ( linea );
+
+    if (dbValue("numalbaran") != "") {
+	mensajeInfo("Operacion no permitida. Debe Cobrar el Ticket");
+	return;
+    } // end if
 
     if ( linea == m_lineaActual ) {
         listaLineas() ->removeAt ( listaLineas() ->indexOf ( linea ) );

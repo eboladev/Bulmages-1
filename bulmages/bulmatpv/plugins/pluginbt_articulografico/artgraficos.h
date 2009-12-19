@@ -16,6 +16,7 @@ class ArtGraficos : public BlWidget, public Ui_ArtGraficosBase
 
 public:
     QString m_articulos[100][100];
+    QDomNode m_nodarticulos[100][100];
     QDomDocument m_doc;
     int m_numPantallas;
     int m_pantallaActual;

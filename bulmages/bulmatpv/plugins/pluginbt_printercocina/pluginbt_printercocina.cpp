@@ -196,7 +196,7 @@ int impresionCocina(BtTicket *tick) {
       pr.printText ( "Uds PRODUCTO                              \n" );
       pr.turnWhiteBlack ( 0 );
 
-      pr.setCharacterSize ( CHAR_WIDTH_2 | CHAR_HEIGHT_2 );
+      pr.setCharacterSize ( CHAR_WIDTH_1 | CHAR_HEIGHT_2 );
 
        /// Iteramos sobre las lineas del ticket para ver que pasa.
        for ( int i = 0; i < tick->listaLineas() ->size(); ++i ) {
