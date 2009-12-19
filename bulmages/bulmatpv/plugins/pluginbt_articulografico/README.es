@@ -4,7 +4,7 @@
 #README.es
 #20080501 
 
-Nombre: Parrilla gráfica
+Nombre: Parrilla gráfica (I.V.A Inc)
 
 Biblioteca: libpluginbt_articulografico.so
 
@@ -19,10 +19,12 @@ ArchivoSQLpatch:
 
 ArchivoSQLdeins: 
 
-Dependencias: libplugintpv.so
+Dependencias: 
 
 Incompatibles: libpluginbt_articulosubform.so
 
 Orden: 40
+
+Categorias: Experimentales;IVA incluido;
 
 Comentarios: Ideal para bares, cafeterías y restaurantes.

@@ -793,8 +793,16 @@ void BtTicket::imprimir(bool save)
 void BtTicket::subir()
 {
     _depura("BtTicket::subir");
-    if ( listaLineas()->count() > 0 ) {
-        int i = listaLineas() ->indexOf ( lineaActBtTicket() );
+    int i;
+
+    if ( listaLineas()->count() > 0) {
+       /// Si no hay ninguna linea actual cogemos la ultima linea del ticket como linea actual
+      if (m_lineaActual == NULL) {
+            i = listaLineas() ->size();
+      } else {
+            i = listaLineas() ->indexOf ( lineaActBtTicket() );
+      }// end if
+
         if ( i > 0 ) i--;
         setLineaActual ( listaLineas() ->at ( i ) );
         pintar();

@@ -25,4 +25,6 @@ Incompatibles: libpluginbt_articulografico.so
 
 Orden:
 
+Categorias: Experimentales;
+
 Comentarios: Ideal para Sistemas con muchos articulos.
