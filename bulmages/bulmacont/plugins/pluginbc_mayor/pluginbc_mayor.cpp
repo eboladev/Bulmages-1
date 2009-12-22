@@ -102,6 +102,7 @@ void MyPluginMayor::inicializa ( BcBulmaCont *bges )
 
     /// A&ntilde;adimos la nueva opci&oacute;n al men&uacute; principal del programa.
     bges->menuBar() ->insertMenu ( bges->menuVentana->menuAction(), pPluginMenu );
+    bges->toolBar->addAction ( accion );
     _depura ( "END MyPluginMayor::inicializa", 0 );
 }
 

@@ -40,7 +40,6 @@
     <addaction name="actionPlan_Contable"/>
     <addaction name="actionAsientos"/>
     <addaction name="actionApuntes_Contables"/>
-    <addaction name="actionLibro_Mayor"/>
    </widget>
    <widget class="QMenu" name="menuAsiento">
     <property name="title">
@@ -140,7 +139,6 @@
    <addaction name="actionPlan_Contable"/>
    <addaction name="actionApuntes_Contables"/>
    <addaction name="actionAsientos"/>
-   <addaction name="actionLibro_Mayor"/>
    <addaction name="actionInicio"/>
    <addaction name="actionAnterior"/>
    <addaction name="actionSiguiente"/>
@@ -240,15 +238,6 @@
    </property>
    <property name="shortcut">
     <string>Ctrl+A</string>
-   </property>
-  </action>
-  <action name="actionLibro_Mayor">
-   <property name="icon">
-    <iconset resource="../../bulmages.qrc">
-     <normaloff>:/Images/bank-statement.png</normaloff>:/Images/bank-statement.png</iconset>
-   </property>
-   <property name="text">
-    <string>Libro &amp;Mayor</string>
    </property>
   </action>
   <action name="actionFormas_de_Pago">
