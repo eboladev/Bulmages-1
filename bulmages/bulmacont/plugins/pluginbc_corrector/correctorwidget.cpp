@@ -21,7 +21,7 @@
 #include "bcasientoview.h"
 #include "correctorwidget.h"
 #include "confreglasview.h"
-
+#include "pluginbc_asiento.h"
 
 /** Inicializacion de la clase.
     En el constructor del corrector no se hacen tareas especiales. */
@@ -197,7 +197,8 @@ void correctorwidget::alink ( const QUrl &url )
     if ( list[0] == "ver" ) {
         empresaactual->muestracuentas();
     } else if ( list[0] == "idasiento" ) {
-        BcAsientoView * view = empresaactual->intapuntsempresa();
+//        BcAsientoView * view = empresaactual->intapuntsempresa();
+        BcAsientoView * view = g_asiento;
         bool ok;
         view->muestraasiento ( list[1].toInt ( &ok ) );
         view->hide();

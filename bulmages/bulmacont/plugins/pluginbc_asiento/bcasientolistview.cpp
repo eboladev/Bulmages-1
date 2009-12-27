@@ -25,7 +25,7 @@
 #include "bcasientolistview.h"
 #include "bcasientoview.h"
 #include "bccompany.h"
-
+#include "pluginbc_asiento.h"
 
 /// El constructor de la clase inicializa algunas estructuras y configura la visi&oacute;n
 /// de la pantalla.
@@ -93,10 +93,9 @@ void BcAsientoListView::on_mui_list_cellDoubleClicked ( int, int )
 {
     _depura ( "BcAsientoListView::on_mui_list_cellDoubleClicked", 0 );
     QString idasiento = mui_list->dbValue ( "idasiento" );
-    ( ( BcCompany * ) mainCompany() ) ->intapuntsempresa() ->muestraasiento ( idasiento );
-    ( ( BcCompany * ) mainCompany() ) ->intapuntsempresa() ->show();
-    ( ( BcCompany * ) mainCompany() ) ->intapuntsempresa() ->setFocus();
-    ( ( BcCompany * ) mainCompany() ) ->muestraapuntes1();
+    g_asiento ->muestraasiento ( idasiento );
+    g_asiento ->show();
+    g_asiento ->setFocus();
     _depura ( "END BcAsientoListView::on_mui_list_cellDoubleClicked", 0 );
 }
 

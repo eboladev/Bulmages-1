@@ -1,9 +1,9 @@
 ###########################################
 # Plugin for bulmacont                    #
 ###########################################
-#pluginbc_duplicarasiento
+#pluginbc_diario
 
-set (plugin pluginbc_duplicarasiento)
+set (plugin pluginbc_asiento)
 set (docs README.es)
 
 file(GLOB plugin_SRC *.c *.cpp *.cxx)
@@ -25,10 +25,7 @@ include_directories(
 	${CMAKE_BINARY_DIR}/bulmalib/src/
 	${CMAKE_SOURCE_DIR}/bulmalib/src/
 	${CMAKE_BINARY_DIR}/bulmacont/src/
-	${CMAKE_SOURCE_DIR}/bulmacont/src/
-   ${CMAKE_BINARY_DIR}/bulmacont/plugins/pluginbc_asiento/
-   ${CMAKE_SOURCE_DIR}/bulmacont/plugins/pluginbc_asiento/
-)
+	${CMAKE_SOURCE_DIR}/bulmacont/src/)
 
 # generate rules for building source files from the resources
 #QT4_WRAP_CPP(plugin_MOC_SRCS ${plugin_MOCS})
@@ -78,7 +75,7 @@ set_target_properties( ${plugin} PROPERTIES
   VERSION "${BULMAGES_VERSION}")
 
 target_link_libraries(${plugin} libbulmacont bulmalib ${QT_LIBRARIES} ${PGSQL_LIBRARIES})
-add_dependencies(${plugin} bulmacont bulmalib pluginbc_asiento)
+add_dependencies(${plugin} bulmacont bulmalib)
 
 install_targets(/lib/bulmacont/plugins ${plugin})
 foreach(dfile ${docs})

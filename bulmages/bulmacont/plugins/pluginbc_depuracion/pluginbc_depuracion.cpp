@@ -79,6 +79,17 @@ int entryPoint ( BcBulmaCont *bcont )
 
     myplugin *corr = new myplugin();
 
+    QMenu *pPluginMenu;
+    /// Miramos si existe un menu Herramientas
+    pPluginMenu = bcont->menuBar() ->findChild<QMenu *> ( _ ( "menuVer" ) );
+
+    /// Creamos el men&uacute;.
+    if ( !pPluginMenu ) {
+        pPluginMenu = new QMenu ( _ ( "&Ver" ), bcont->menuBar() );
+        pPluginMenu->setObjectName ( QString::fromUtf8 ( "menuVer" ) );
+    } // end if
+
+
     /// A&ntilde;ade en el men&uacute; del programa la opci&oacuteMn para
     /// acceder al corrector.
     QAction *viewCorrector = new QAction ( _ ( "&Modo debug" ), 0 );
@@ -93,8 +104,8 @@ int entryPoint ( BcBulmaCont *bcont )
     viewCorrector->setStatusTip ( _ ( "Activa/Desactiva el modo debug" ) );
     viewCorrector->setWhatsThis ( _ ( "Debug.\n\nActiva/Desactiva el modo debug" ) );
     QObject::connect ( viewCorrector, SIGNAL ( toggled ( bool ) ), corr, SLOT ( cambia ( bool ) ) );
-    bcont->mui_MenuVer() ->addSeparator();
-    bcont->mui_MenuVer() ->addAction ( viewCorrector );
+    pPluginMenu ->addSeparator();
+    pPluginMenu ->addAction ( viewCorrector );
     _depura ( "Iniciado correctamente el plugin Corrector", 10 );
     return 0;
 }

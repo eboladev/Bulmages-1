@@ -137,13 +137,14 @@ QMenu *BcBulmaCont::mui_MenuHerramientas()
 /**
 \return
 **/
+/*
 QMenu *BcBulmaCont::mui_MenuVer()
 {
     _depura ( "BcBulmaCont::mui_MenuVer", 0 );
     _depura ( "END BcBulmaCont::mui_MenuVer", 0 );
     return menuVer;
 }
-
+*/
 
 ///
 /**
@@ -191,17 +192,6 @@ void BcBulmaCont::on_actionFormas_de_Pago_triggered()
 ///
 /**
 **/
-void BcBulmaCont::on_actionAsientos_triggered()
-{
-    _depura ( "BcBulmaCont::on_actionAsientos_triggered", 0 );
-    m_empresaactual->muestraasientos();
-    _depura ( "END BcBulmaCont::on_actionAsientos_triggered", 0 );
-}
-
-
-///
-/**
-**/
 void BcBulmaCont::on_actionConfiguracion_triggered()
 {
     _depura ( "BcBulmaCont::on_actionConfiguracion_triggered", 0 );
@@ -209,40 +199,6 @@ void BcBulmaCont::on_actionConfiguracion_triggered()
     _depura ( "END BcBulmaCont::on_actionConfiguracion_triggered", 0 );
 }
 
-
-///
-/**
-**/
-void BcBulmaCont::on_actionApuntes_Contables_triggered()
-{
-    _depura ( "BcBulmaCont::on_actionApuntes_Contables_triggered", 0 );
-    m_empresaactual->muestraapuntes1();
-    _depura ( "END BcBulmaCont::on_actionApuntes_Contables_triggered", 0 );
-}
-
-
-///
-/**
-**/
-void BcBulmaCont::on_actionLibro_Mayor_triggered()
-{
-    _depura ( "BcBulmaCont::on_actionLibro_Mayor_triggered", 0 );
-    m_empresaactual->libromayor();
-    _depura ( "BcBulmaCont::on_actionLibro_Mayor_triggered", 0 );
-}
-
-
-///
-/**
-**/
-void BcBulmaCont::on_actionLibro_Diario_triggered()
-{
-/*
-    _depura ( "BcBulmaCont::on_actionLibro_Diario_triggered", 0 );
-    m_empresaactual->librodiario();
-    _depura ( "END BcBulmaCont::on_actionLibro_Diario_triggered", 0 );
-*/
-}
 
 
 ///
@@ -255,50 +211,6 @@ void BcBulmaCont::on_actionPlan_Contable_triggered()
     _depura ( "END BcBulmaCont::on_actionPlan_Contable_triggered", 0 );
 }
 
-
-
-///
-/**
-**/
-void BcBulmaCont::on_actionImprimir_triggered()
-{
-    _depura ( "BcBulmaCont::on_actionImprimir_triggered", 0 );
-    m_empresaactual->boton_imprimir();
-    _depura ( "END BcBulmaCont::on_actionImprimir_triggered", 0 );
-}
-
-
-///
-/**
-**/
-void BcBulmaCont::on_actionGuardar_triggered()
-{
-    _depura ( "BcBulmaCont::on_actionGuardar_triggered", 0 );
-    m_empresaactual->boton_guardar();
-    _depura ( "END BcBulmaCont::on_actionGuardar_triggered", 0 );
-}
-
-
-///
-/**
-**/
-void BcBulmaCont::on_actionActualizar_triggered()
-{
-    _depura ( "BcBulmaCont::on_actionActualizar_triggered", 0 );
-    m_empresaactual->boton_reload();
-    _depura ( "END BcBulmaCont::on_actionActualizar_triggered", 0 );
-}
-
-
-///
-/**
-**/
-void BcBulmaCont::on_actionFiltrar_triggered()
-{
-    _depura ( "BcBulmaCont::on_actionFiltrar_triggered", 0 );
-    m_empresaactual->Filtro();
-    _depura ( "END BcBulmaCont::on_actionFiltrar_triggered", 0 );
-}
 
 
 ///
@@ -391,61 +303,6 @@ void BcBulmaCont::on_actionOrganizaci_n_en_Cascada_triggered()
 ///
 /**
 **/
-void BcBulmaCont::on_actionAbrir_Asientos_triggered()
-{
-    _depura ( "BcBulmaCont::on_actionAbrir_Asientos_triggered", 0 );
-    m_empresaactual->abrirAsientos();
-    _depura ( "END BcBulmaCont::on_actionAbrir_Asientos_triggered", 0 );
-}
-
-
-///
-/**
-**/
-void BcBulmaCont::on_actionOrdenar_Asientos_triggered()
-{
-    _depura ( "BcBulmaCont::on_actionOrdenar_Asientos_triggered", 0 );
-    m_empresaactual->Ordenarasientos();
-    _depura ( "END BcBulmaCont::on_actionOrdenar_Asientos_triggered", 0 );
-}
-
-
-///
-/**
-**/
-void BcBulmaCont::on_actionAsiento_de_Apertura_triggered()
-{
-    _depura ( "BcBulmaCont::on_actionAsiento_de_Apertura_triggered", 0 );
-    m_empresaactual->abreempresa();
-    _depura ( "END BcBulmaCont::on_actionAsiento_de_Apertura_triggered", 0 );
-}
-
-
-///
-/**
-**/
-void BcBulmaCont::on_actionAsiento_de_Regularizacion_triggered()
-{
-    _depura ( "BcBulmaCont::on_actionAsiento_de_Regularizacion_triggered", 0 );
-    m_empresaactual->regularizaempresa();
-    _depura ( "END BcBulmaCont::on_actionAsiento_de_Regularizacion_triggered", 0 );
-}
-
-
-///
-/**
-**/
-void BcBulmaCont::on_actionAsiento_de_Cierre_triggered()
-{
-    _depura ( "BcBulmaCont::on_actionAsiento_de_Cierre_triggered", 0 );
-    m_empresaactual->cierraempresa();
-    _depura ( "END BcBulmaCont::on_actionAsiento_de_Cierre_triggered", 0 );
-}
-
-
-///
-/**
-**/
 void BcBulmaCont::on_actionCuentas_Anuales_triggered()
 {
     _depura ( "BcBulmaCont::on_actionCuentas_Anuales_triggered", 0 );
@@ -499,50 +356,6 @@ void BcBulmaCont::on_actionPantalla_Completa_triggered()
         showFullScreen();
     } // end if
     _depura ( "END BcBulmaCont::on_actionPantalla_Completa_triggered", 0 );
-}
-
-
-///
-/**
-**/
-void BcBulmaCont::on_actionSiguiente_triggered()
-{
-    _depura ( "BcBulmaCont::on_actionSiguiente_triggered", 0 );
-    m_empresaactual->boton_siguiente();
-    _depura ( "END BcBulmaCont::on_actionSiguiente_triggered", 0 );
-}
-
-
-///
-/**
-**/
-void BcBulmaCont::on_actionAnterior_triggered()
-{
-    _depura ( "BcBulmaCont::on_actionAnterior_triggered", 0 );
-    m_empresaactual->boton_anterior();
-    _depura ( "END BcBulmaCont::on_actionAnterior_triggered", 0 );
-}
-
-
-///
-/**
-**/
-void BcBulmaCont::on_actionInicio_triggered()
-{
-    _depura ( "BcBulmaCont::on_actionInicio_triggered", 0 );
-    m_empresaactual->boton_primero();
-    _depura ( "END BcBulmaCont::on_actionInicio_triggered", 0 );
-}
-
-
-///
-/**
-**/
-void BcBulmaCont::on_actionFin_triggered()
-{
-    _depura ( "BcBulmaCont::on_actionFin_triggered", 0 );
-    m_empresaactual->boton_ultimo();
-    _depura ( "END BcBulmaCont::on_actionFin_triggered", 0 );
 }
 
 
@@ -709,16 +522,6 @@ void BcBulmaCont::slotListadoCuentas()
     _depura ( "END BcBulmaCont::slotListadoCuentas", 0 );
 }
 
-
-///
-/**
-**/
-void BcBulmaCont::slotAsientos()
-{
-    _depura ( "BcBulmaCont::slotAsientos", 0 );
-    m_empresaactual->muestraasientos();
-    _depura ( "END BcBulmaCont::slotAsientos", 0 );
-}
 
 
 ///

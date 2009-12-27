@@ -26,9 +26,9 @@
 #include <QCheckBox>
 #include <QFileDialog>
 
+#include "blmainwindow.h"
+#include "bcbulmacont.h"
 #include "bcextractoview.h"
-#include "bcextractoimprimirview.h"
-#include "bclibromayorimprimir.h"
 #include "bccompany.h"
 #include "bcasientoview.h"
 #include "bcplancontablelistview.h"
@@ -75,6 +75,14 @@ BcExtractoView::BcExtractoView ( BcCompany *emp, QWidget *parent, int ) : BcForm
 
     m_tratarpunteos = TRUE;
 
+
+    /// Conectamos los botones del menu con las acciones de esta ventana.
+    connect (((BcBulmaCont *)g_main)->actionSiguiente, SIGNAL(triggered()), this, SLOT(boton_siguiente()));
+    connect (((BcBulmaCont *)g_main)->actionAnterior, SIGNAL(triggered()), this, SLOT(boton_anterior()));
+    connect (((BcBulmaCont *)g_main)->actionInicio, SIGNAL(triggered()), this, SLOT(boton_inicio()));
+    connect (((BcBulmaCont *)g_main)->actionFin, SIGNAL(triggered()), this, SLOT(boton_fin()));
+
+
     _depura ( "END BcExtractoView::BcExtractoView", 0 );
 }
 
@@ -92,6 +100,7 @@ BcExtractoView::~BcExtractoView()
 }
 
 
+
 ///
 /**
 \param columna
@@ -99,16 +108,32 @@ BcExtractoView::~BcExtractoView()
 void BcExtractoView::on_mui_list_cellDoubleClicked ( int, int columna )
 {
     _depura ( "asientosview::on_mui_list_cellDoubleClicked", 0 );
+
     QString textoHeader;
     textoHeader =  mui_list->cabecera() ->at ( columna ) ->nomcampo().toAscii();
     if ( textoHeader == "ordenasiento" ) {
         QString idasiento = mui_list->dbValue ( "idasiento" );
-        mainCompany() ->intapuntsempresa() ->muestraasiento ( idasiento );
-        mainCompany() ->intapuntsempresa() ->show();
-        mainCompany() ->intapuntsempresa() ->setFocus();
-        mainCompany() ->muestraapuntes1();
+
+        int resur = g_plugins->lanza ( "SNewBcAsientoView", (BcCompany *) mainCompany() );
+        if ( ! resur) {
+            mensajeInfo("No se pudo crear instancia de asientos");
+            return;
+        } // end if
+        BcAsientoView *asiento = (BcAsientoView *) g_plugParams;
+
+        asiento ->muestraasiento ( idasiento );
+        asiento ->show();
+        asiento ->setFocus();
     } // end if
     _depura ( "END asientosview::on_mui_list_cellDoubleClicked", 0 );
+}
+
+///
+void BcExtractoView::on_mui_configurar_released()
+{
+    _depura ( "BcExtractoView::on_mui_configurar_released", 0 );
+    mui_list->showConfig();
+    _depura ( "END BcExtractoView::on_mui_configurar_released", 0 );
 }
 
 
@@ -123,13 +148,7 @@ void BcExtractoView::on_mui_actualizar_released()
 }
 
 
-///
-void BcExtractoView::on_mui_configurar_released()
-{
-    _depura ( "BcExtractoView::on_mui_configurar_released", 0 );
-    mui_list->showConfig();
-    _depura ( "END BcExtractoView::on_mui_configurar_released", 0 );
-}
+
 
 
 /// Esta funci&oacute;n carga el cursor de cuentas que forman el todo por el todo.
@@ -162,18 +181,21 @@ void BcExtractoView::accept()
 }
 
 
+
 /// Esta es la funci&oacute;n que avanza un registro entre las cuentas.
 /**
 **/
 void BcExtractoView::boton_siguiente()
 {
     _depura ( "BcExtractoView::boton_siguiente", 0 );
-    if ( m_cursorcta != NULL ) {
-        if ( !m_cursorcta->isLastRecord() ) {
-            guardar();
-            m_cursorcta->nextRecord();
-            presentar();
-        } // end if
+    if(mainCompany()->pWorkspace()->activeWindow() == this) {
+      if ( m_cursorcta != NULL ) {
+          if ( !m_cursorcta->isLastRecord() ) {
+              guardar();
+              m_cursorcta->nextRecord();
+              presentar();
+          } // end if
+      } // end if
     } // end if
     _depura ( "END BcExtractoView::boton_siguiente", 0 );
 }
@@ -185,12 +207,14 @@ void BcExtractoView::boton_siguiente()
 void BcExtractoView::boton_anterior()
 {
     _depura ( "BcExtractoView::boton_anterior", 0 );
-    if ( m_cursorcta != NULL ) {
-        if ( !m_cursorcta->isFirstRecord() ) {
-            guardar();
-            m_cursorcta->previousRecord();
-            presentar();
-        } // end if
+    if(mainCompany()->pWorkspace()->activeWindow() == this) {
+      if ( m_cursorcta != NULL ) {
+          if ( !m_cursorcta->isFirstRecord() ) {
+              guardar();
+              m_cursorcta->previousRecord();
+              presentar();
+          } // end if
+      } // end if
     } // end if
     _depura ( "END BcExtractoView::boton_anterior", 0 );
 }
@@ -201,10 +225,12 @@ void BcExtractoView::boton_anterior()
 void BcExtractoView::boton_inicio()
 {
     _depura ( "BcExtractoView::boton_inicio", 0 );
-    if ( m_cursorcta != NULL ) {
-        guardar();
-        m_cursorcta->firstRecord();
-        presentar();
+    if(mainCompany()->pWorkspace()->activeWindow() == this) {
+      if ( m_cursorcta != NULL ) {
+          guardar();
+          m_cursorcta->firstRecord();
+          presentar();
+      } // end if
     } // end if
     _depura ( "END BcExtractoView::boton_inicio", 0 );
 }
@@ -215,24 +241,14 @@ void BcExtractoView::boton_inicio()
 void BcExtractoView::boton_fin()
 {
     _depura ( "BcExtractoView::boton_fin", 0 );
-    if ( m_cursorcta != NULL ) {
-        guardar();
-        m_cursorcta->lastRecord();
-        presentar();
+    if(mainCompany()->pWorkspace()->activeWindow() == this) {
+      if ( m_cursorcta != NULL ) {
+          guardar();
+          m_cursorcta->lastRecord();
+          presentar();
+      } // end if
     } // end if
     _depura ( "END BcExtractoView::boton_fin", 0 );
-}
-
-
-/// Imprime el extracto
-/**
-**/
-void BcExtractoView::boton_imprimir()
-{
-    _depura ( "BcExtractoView::boton_imprimir", 0 );
-    BcExtractoImprimirView *print = new BcExtractoImprimirView ( mainCompany(), 0 );
-    print->exec();
-    _depura ( "END BcExtractoView::boton_imprimir", 0 );
 }
 
 
@@ -242,6 +258,7 @@ void BcExtractoView::boton_imprimir()
 void BcExtractoView::boton_guardar()
 {
     _depura ( "BcExtractoView::boton_guardar", 0 );
+/*
     QString fn = QFileDialog::getSaveFileName ( this,
                  _ ( "Guardar libro diario" ),
                  g_confpr->valor ( CONF_DIR_USER ),
@@ -255,8 +272,11 @@ void BcExtractoView::boton_guardar()
         libromayor.inicializa2 ( ( char * ) fn.toAscii().constData() );
         libromayor.accept();
     } // end if
+*/
     _depura ( "END BcExtractoView::boton_guardar", 0 );
 }
+
+
 
 
 /// Limpia los totales
@@ -299,6 +319,7 @@ int BcExtractoView::guardar()
     _depura ( "END BcExtractoView::on_mui_guardar_released", 0 );
 
 }
+
 
 
 /// Esta funci&oacute;n se encarga de montar la consulta que va a hacer a la base de datos.
@@ -453,6 +474,8 @@ void BcExtractoView::presentar()
 }
 
 
+
+
 ///
 /**
 \param codinicial
@@ -469,6 +492,8 @@ void BcExtractoView::inicializa1 ( QString codinicial, QString codfinal, QString
     m_fechafinal1->setText ( normalizafecha ( fecha2 ).toString ( "dd/MM/yyyy" ) );
     _depura ( "END BcExtractoView::inicializa1", 0 );
 }
+
+
 
 
 /// Realiza la casacion de los apuntes.
@@ -625,6 +650,7 @@ void BcExtractoView::on_mui_cargarpunteos_released()
 }
 
 
+
 ///
 /**
 \param idcuenta
@@ -778,8 +804,6 @@ QString BcExtractoView::imprimeExtractoCuenta ( QString idcuenta )
                 salida +=  "<td>" + cursorapt->valor ( "codcontrapartida" ) + " - " + cursorapt->valor ( "desccontrapartida" ) + "</td>";
             } // end if
             salida +=  "</tr>\n";
-//     } // end if
-//     delete cur;
             cursorapt->nextRecord();
         } // end while
 
@@ -810,10 +834,12 @@ QString BcExtractoView::imprimeExtractoCuenta ( QString idcuenta )
 
 
 
+
+
 /// Slot que responde a la Impresion del extracto
 /**
 **/
-void BcExtractoView::on_mui_imprimir_released()
+void BcExtractoView::imprimir()
 {
     _depura ( "BcExtractoView::on_mui_imprimir_released", 0 );
     QString finicial = m_fechainicial1->text();
@@ -863,7 +889,7 @@ void BcExtractoView::on_mui_imprimir_released()
 
 
     /// Tabla temporal de contrapartidas.
-    QString query1 = "CREATE TEMPORARY TABLE contrapart AS select idapunte, ccontrapartida(idapunte) AS contra FROM apunte";
+    QString query1 = "CREATE TEMPORARY TABLE contrapart AS select idapunte, ccontrapartida(idapunte) AS contra FROM apunte LEFT JOIN cuenta ON cuenta.idcuenta = apunte.idcuenta WHERE cuenta.codigo >= '" + codinicial + "' AND cuenta.codigo <= '" + codfinal + "'";
     mainCompany()->runQuery ( query1 );
 
 
@@ -885,7 +911,10 @@ void BcExtractoView::on_mui_imprimir_released()
 
     query = "SELECT * FROM cuenta WHERE idcuenta IN (SELECT idcuenta FROM apunte) AND codigo >= '" + codinicial + "' AND codigo <= '" + codfinal + "' ORDER BY codigo";
     BlDbRecordSet *curcta = mainCompany() ->loadQuery ( query );
-    if ( !curcta ) return;
+    if ( !curcta ) {
+      delete barra;
+      return;
+    } // end if
     barra->setRange ( 0, curcta->numregistros() );
     int i = 0;
     while ( ! curcta->eof() ) {
@@ -910,4 +939,8 @@ void BcExtractoView::on_mui_imprimir_released()
     /// Crea el pdf y lo muestra.
     invocaPDF ( "extracto" );
     _depura ( "END BcExtractoView::on_mui_imprimir_released", 0 );
+    return;
 }
+
+
+

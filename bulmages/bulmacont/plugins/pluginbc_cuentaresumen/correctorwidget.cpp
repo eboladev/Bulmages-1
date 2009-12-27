@@ -19,6 +19,7 @@
  ***************************************************************************/
 
 #include "bcasientoview.h"
+#include "pluginbc_asiento.h"
 #include "correctorwidget.h"
 
 
@@ -68,9 +69,9 @@ void ResumCtaWidget::alink ( const QUrl &url )
         ( ( BcCompany * ) mainCompany() ) ->muestracuentas();
     } else if ( linker == "asiento" ) {
         //QString ordenasiento = l.right(l.length() - 2);
-        ( ( BcCompany * ) mainCompany() ) ->intapuntsempresa();
+        //( ( BcCompany * ) mainCompany() ) ->intapuntsempresa();
     } else {
-        BcAsientoView *view = ( ( BcCompany * ) mainCompany() ) ->intapuntsempresa();
+        BcAsientoView *view = g_asiento;
         bool ok;
         view->muestraasiento ( linker.toInt ( &ok ) );
     } // endif

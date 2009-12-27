@@ -70,6 +70,16 @@ int entryPoint ( BcBulmaCont *bcont )
 
     doc1->setWidget ( g_res );
 
+    QMenu *pPluginMenu;
+    /// Miramos si existe un menu Herramientas
+    pPluginMenu = bcont->menuBar() ->findChild<QMenu *> ( _ ( "menuVer" ) );
+
+    /// Creamos el men&uacute;.
+    if ( !pPluginMenu ) {
+        pPluginMenu = new QMenu ( _ ( "&Ver" ), bcont->menuBar() );
+        pPluginMenu->setObjectName ( QString::fromUtf8 ( "menuVer" ) );
+    } // end if
+
 
     /// A&ntilde;ade en el men&uacute; del programa la opci&oacuteMn para
     /// acceder al corrector.
@@ -81,8 +91,8 @@ int entryPoint ( BcBulmaCont *bcont )
     QObject::connect ( viewCorrector, SIGNAL ( toggled ( bool ) ), doc1, SLOT ( cambiaVisible ( bool ) ) );
     QObject::connect ( doc1, SIGNAL ( cambiaEstadoVisible ( bool ) ), viewCorrector, SLOT ( setChecked ( bool ) ) );
 
-    bcont->mui_MenuVer() ->addSeparator();
-    bcont->mui_MenuVer() ->addAction ( viewCorrector );
+    pPluginMenu ->addSeparator();
+    pPluginMenu ->addAction ( viewCorrector );
 
     QFile file ( g_confpr->valor ( CONF_DIR_USER ) + "pluginresumcta_.cfn" );
     if ( file.exists () ) {

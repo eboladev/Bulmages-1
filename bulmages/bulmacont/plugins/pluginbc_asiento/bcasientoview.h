@@ -52,10 +52,6 @@ public:
     BcAsientoList ( BcCompany *, QWidget *parent );
     virtual ~BcAsientoList();
     void cargaasientos();
-    void boton_inicio();
-    void boton_fin();
-    void boton_siguiente();
-    void boton_anterior();
     void boton_filtrar();
     virtual void muestraasiento ( QString );
     void situarasiento ( QString );
@@ -63,6 +59,12 @@ public:
     bool esultimoasiento();
     QString idasientoanterior();
     QString idasientosiguiente();
+
+public slots:
+    void boton_inicio();
+    void boton_fin();
+    void boton_siguiente();
+    void boton_anterior();
 };
 
 

@@ -31,6 +31,8 @@
 #include <QLayout>
 #include <QLabel>
 
+#include "blmainwindow.h"
+#include "bcbulmacont.h"
 #include "bcasientoview.h"
 #include "bldatesearch.h"
 #include "bcasientointeligenteview.h"
@@ -72,6 +74,13 @@ BcAsientoView::BcAsientoView ( BcCompany *emp, QWidget *parent, int )
     boton_fin();
     mainCompany() ->meteWindow ( windowTitle(), this );
     dialogChanges_cargaInicial();
+
+    /// Conectamos los botones del menu con las acciones de esta ventana.
+    connect (((BcBulmaCont *)g_main)->actionSiguiente, SIGNAL(triggered()), this, SLOT(boton_siguiente()));
+    connect (((BcBulmaCont *)g_main)->actionAnterior, SIGNAL(triggered()), this, SLOT(boton_anterior()));
+    connect (((BcBulmaCont *)g_main)->actionInicio, SIGNAL(triggered()), this, SLOT(boton_inicio()));
+    connect (((BcBulmaCont *)g_main)->actionFin, SIGNAL(triggered()), this, SLOT(boton_fin()));
+
     _depura ( "END BcAsientoView::BcAsientoView", 0 );
 }
 
@@ -530,9 +539,11 @@ void BcAsientoList::cargaasientos()
 void BcAsientoList::boton_inicio()
 {
     _depura ( "BcAsientoList::boton_inicio", 0 );
+    if(mainCompany()->pWorkspace()->activeWindow() == this) {
     if ( cursorasientos->numregistros() != 0 ) {
         cursorasientos->firstRecord();
         cargar ( cursorasientos->valor ( "idasiento" ) );
+    } // end if
     } // end if
     _depura ( "END BcAsientoList::boton_inicio", 0 );
 }
@@ -547,9 +558,11 @@ void BcAsientoList::boton_inicio()
 void BcAsientoList::boton_fin()
 {
     _depura ( "BcAsientoList::boton_fin", 0 );
+    if(mainCompany()->pWorkspace()->activeWindow() == this) {
     if ( cursorasientos->numregistros() != 0 ) {
         cursorasientos->lastRecord();
         cargar ( cursorasientos->valor ( "idasiento" ) );
+    } // end if
     } // end if
     _depura ( "END BcAsientoList::boton_fin", 0 );
 }
@@ -565,6 +578,7 @@ void BcAsientoList::boton_fin()
 void BcAsientoList::boton_siguiente()
 {
     _depura ( "BcAsientoList::boton_siguiente", 0 );
+    if(mainCompany()->pWorkspace()->activeWindow() == this) {
     ///  Si no hay nada que mostrar vacia la pantalla para que no queden resto.
     if ( cursorasientos->numregistros() == 0 ) {
         return;
@@ -573,6 +587,7 @@ void BcAsientoList::boton_siguiente()
         cursorasientos->nextRecord();
         cargar ( cursorasientos->valor ( "idasiento" ) );
     }// end if
+    } // end if
     _depura ( "END BcAsientoList::boton_siguiente", 0 );
 }
 
@@ -588,6 +603,7 @@ void BcAsientoList::boton_siguiente()
 void BcAsientoList::boton_anterior()
 {
     _depura ( "BcAsientoList::boton_anterior", 0 );
+    if(mainCompany()->pWorkspace()->activeWindow() == this) {
     ///  Si no hay nada que mostrar vacia la pantalla para que no queden resto.
     if ( cursorasientos->numregistros() == 0 ) {
         return;
@@ -595,6 +611,7 @@ void BcAsientoList::boton_anterior()
     if ( !cursorasientos->isFirstRecord() ) {
         cursorasientos->previousRecord();
         cargar ( cursorasientos->valor ( "idasiento" ) );
+    } // end if
     } // end if
     _depura ( "END BcAsientoList::boton_anterior", 0 );
 }
@@ -901,8 +918,6 @@ void BcAsientoView::asiento_regularizacion ( QString finicial, QString ffinal )
         BlFixed totaldebe1 ( "0" ), totalhaber1 ( "0" );
         QString concepto = "Asiento de Regularizacion";
         QString fecha = ffinal;
-
-        mainCompany() ->muestraapuntes1();
 
         mainCompany() ->begin();
 

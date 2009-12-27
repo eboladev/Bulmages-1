@@ -27,7 +27,6 @@
 #include "bcsubform.h"
 #include "blfunctions.h"
 #include "bccompany.h"
-#include "bcasientoview.h"
 #include "bltexteditdelegate.h"
 #include "bldoublespinbox.h"
 #include "bcbuscarcanal.h"
@@ -83,6 +82,7 @@ BcCompany *BcSubForm::mainCompany()
     _depura ( "END BcSubForm::mainCompany", 0 );
     return ( ( BcCompany * ) BlMainCompanyPointer::mainCompany() );
 }
+
 
 /// Se ha pulsado la combinacion de teclas Ctrl + +
 /**
@@ -330,12 +330,14 @@ void BcSubForm::editFinished ( int row, int col, BlDbSubFormRecord *rec, BlDbSub
 void BcSubForm::boton_asiento()
 {
     _depura ( "BcSubForm::boton_asiento", 0 );
+/*
     BcCompany *companyact = ( BcCompany * ) mainCompany();
     QString numasiento = dbValue ( "idasiento" );
     if ( numasiento != "" ) {
         companyact->intapuntsempresa() ->muestraasiento ( numasiento.toInt() );
         companyact->muestraapuntes1();
     } // end if
+*/
     _depura ( "END BcSubForm::boton_asiento", 0 );
 }
 

@@ -25,6 +25,7 @@
 #include "bcasientointeligenteview.h"
 #include "bccompany.h"
 #include "bcasientoview.h"
+#include "pluginbc_asiento.h"
 
 #define TIPO_CTA         0
 #define TIPO_FECHA       1
@@ -72,7 +73,7 @@ BcAsientoInteligenteView::BcAsientoInteligenteView ( BcCompany *emp, QWidget *pa
     variablesapunte[VAR_APUNT_CIFCUENTA][0] = "$cifcuenta$";
     mainCompany() ->meteWindow ( windowTitle(), this );
     setmodo ( 0 );
-    mainCompany() ->intapuntsempresa()->mui_inteligente->setDisabled ( TRUE );
+    g_asiento->mui_inteligente->setDisabled ( TRUE );
     _depura ( "END BcAsientoInteligenteView::BcAsientoInteligenteView", 0 );
 }
 
@@ -85,7 +86,7 @@ BcAsientoInteligenteView::~BcAsientoInteligenteView()
     _depura ( "BcAsientoInteligenteView::~BcAsientoInteligenteView", 0 );
     borrawidgets();
     mainCompany() ->sacaWindow ( this );
-    mainCompany() ->intapuntsempresa()->mui_inteligente->setEnabled ( TRUE );
+    g_asiento->mui_inteligente->setEnabled ( TRUE );
     _depura ( "END BcAsientoInteligenteView::~BcAsientoInteligenteView", 0 );
 }
 
@@ -284,21 +285,21 @@ void BcAsientoInteligenteView::on_mui_aceptar_released()
         if ( numasiento != 0 ) {
             recogevalores();
             creaasiento();
-            mainCompany() ->intapuntsempresa() ->muestraasiento ( numasiento );
+            g_asiento ->muestraasiento ( numasiento );
             selectfirst();
         } else {
             /// Se est&aacute; insertando de forma sistem&aacute;tica asientos inteligentes.
             /// Asi que debemos facilitar las cosas al m&aacute;ximo.
             variablespredefinidas[VAR_PRED_FECHAASIENTO][1] = fechaasiento->text().toAscii().constData();
             recogevalores();
-            mainCompany() ->intapuntsempresa() ->setFecha ( fechaasiento->text() );
-            mainCompany() ->intapuntsempresa() ->vaciar();
-            mainCompany() ->intapuntsempresa() ->dialogChanges_cargaInicial();
-            mainCompany() ->intapuntsempresa() ->iniciar_asiento_nuevo();
-            numasiento = mainCompany() ->intapuntsempresa() ->idasiento().toInt();
+            g_asiento ->setFecha ( fechaasiento->text() );
+            g_asiento ->vaciar();
+            g_asiento ->dialogChanges_cargaInicial();
+            g_asiento ->iniciar_asiento_nuevo();
+            numasiento = g_asiento ->idasiento().toInt();
             creaasiento();
-            mainCompany() ->intapuntsempresa() ->cerrar();
-            mainCompany() ->intapuntsempresa() ->dialogChanges_cargaInicial();
+            g_asiento ->cerrar();
+            g_asiento ->dialogChanges_cargaInicial();
             numasiento = 0;
             fechaasiento->selectAll();
             fechaasiento->setFocus();

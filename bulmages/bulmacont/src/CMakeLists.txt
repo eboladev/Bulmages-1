@@ -31,37 +31,26 @@ set(bulmacont_MOCS bcbulmacont.h
            bcaboutview.h
            bcplancontablelistview.h
            bccuentaview.h
-           bcasientointeligenteview.h
-           bcasientolistview.h
            bcregistroivaimprimirview.h
            bcmasapatrimonialview.h
            bcmasapatrimoniallistview.h
-           bccuentasanualesimprimirview.h
-           bccuentasanualesview.h
            bccanalview.h
            bccentrocosteview.h
            bcconfiguracionview.h
            bccambiacuentaview.h
-           bcamortizacionview.h
            bcmodelo347listview.h
-           bcamortizacionlistview.h
            bccentrocosteseleccionarview.h
            bccanalseleccionarview.h
            bcmodelo300imprimir2ps.h
            bctipoivaview.h
            bcformapagoview.h
            bcbuscarcuenta.h
-           bcasientoform.h
-           bcasientoview.h
-           bcasientosubform.h
            bcsubform.h
-           bcasientolistsubform.h
            bcbuscarcentrocoste.h
            bcbuscarcanal.h 
            bcform.h
            bccuentalistview.h
-           bcasientoduplicarview.h
-           bcbloqueafechaview.h)
+           bcasientoduplicarview.h)
 
 
 set(QT_USE_QTASSISTANT true)

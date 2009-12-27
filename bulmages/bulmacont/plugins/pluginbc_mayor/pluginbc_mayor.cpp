@@ -32,10 +32,12 @@
 
 #include "pluginbc_mayor.h"
 #include "bcextractoview.h"
-#include "bccompany.h"
-
 
 BcExtractoView *g_mayor;
+
+
+
+
 
 ///
 /**
@@ -57,6 +59,7 @@ MyPluginMayor::~MyPluginMayor()
 }
 
 
+
 ///
 /**
 **/
@@ -72,6 +75,7 @@ void MyPluginMayor::elslot()
 }
 
 
+
 ///
 /**
 \param bges
@@ -81,16 +85,16 @@ void MyPluginMayor::inicializa ( BcBulmaCont *bges )
     _depura ( "MyPluginMayor::inicializa", 0 );
 
     /// Creamos el men&uacute;.
-    setMainCompany ( bges->empresaactual() );
+    setMainCompany ( (BlMainCompany *)bges->empresaactual() );
     m_bulmacont = bges;
     QMenu *pPluginMenu;
     /// Miramos si existe un menu Herramientas
-    pPluginMenu = bges->menuBar() ->findChild<QMenu *> ( _ ( "menuVentana" ) );
+    pPluginMenu = bges->menuBar() ->findChild<QMenu *> ( _ ( "menuVer" ) );
 
     /// Creamos el men&uacute;.
     if ( !pPluginMenu ) {
         pPluginMenu = new QMenu ( _ ( "&Ver" ), bges->menuBar() );
-        pPluginMenu->setObjectName ( QString::fromUtf8 ( "menuVentana" ) );
+        pPluginMenu->setObjectName ( QString::fromUtf8 ( "menuVer" ) );
     } // end if
 
     QAction *accion = new QAction ( _ ( "&Libro Mayor" ), 0 );
@@ -103,8 +107,10 @@ void MyPluginMayor::inicializa ( BcBulmaCont *bges )
     /// A&ntilde;adimos la nueva opci&oacute;n al men&uacute; principal del programa.
     bges->menuBar() ->insertMenu ( bges->menuVentana->menuAction(), pPluginMenu );
     bges->toolBar->addAction ( accion );
+
     _depura ( "END MyPluginMayor::inicializa", 0 );
 }
+
 
 
 
@@ -120,10 +126,16 @@ int entryPoint ( BcBulmaCont *bcont )
     setlocale ( LC_ALL, "" );
     bindtextdomain ( "pluginbc_mayor", g_confpr->valor ( CONF_DIR_TRADUCCION ).toAscii().constData() );
 
+#ifdef TOMEU_PRUEBAS
+
     g_mayor = NULL;
+#endif
 
     MyPluginMayor *plug = new MyPluginMayor();
     plug->inicializa ( bcont );
+
+
+
     _depura ( "END entryPoint::entryPoint", 0 );
     return 0;
 }

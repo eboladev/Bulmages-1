@@ -21,6 +21,8 @@
 /// @todo Hay que hacer dos lineas de presentacion (una para el listado en las facturas y otro para el listado por si solo)
 /// Incluimos las imagenes que catalogan los tipos de cuentas.
 #include "registroivaview.h"
+#include "pluginbc_asiento.h"
+
 
 #define COL_SELECCION                   0
 #define COL_FCOBROPREVCOBRO             1
@@ -325,7 +327,10 @@ void ListLinPrevCobroView::contextMenu ( int row, int col, const QPoint & pos )
     } // end if
     if ( opcion == menuverasiento ) {
         if ( linea->idasiento() != "" ) {
-            m_companyact->intapuntsempresa() ->muestraasiento ( linea->idasiento().toInt() );
+//            m_companyact->intapuntsempresa() ->muestraasiento ( linea->idasiento().toInt() );
+            g_asiento ->muestraasiento ( linea->idasiento().toInt() );
+
+
         } // end if
     } // end if
     if ( opcion == menuverfact ) {

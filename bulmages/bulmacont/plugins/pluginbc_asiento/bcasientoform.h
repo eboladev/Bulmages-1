@@ -27,9 +27,7 @@
 #include "blfixed.h"
 #include "bcform.h"
 #include "bcasientosubform.h"
-
-
-class BcCompany ;
+#include "bccompany.h"
 
 
 /// Clase BcAsientoForm.

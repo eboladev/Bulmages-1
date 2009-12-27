@@ -34,7 +34,7 @@
 #include "bcasientoview.h"
 #include "bccanalseleccionarview.h"
 #include "bccentrocosteseleccionarview.h"
-
+#include "pluginbc_asiento.h"
 
 #define CUENTA         m_ccuenta
 #define DENOMINACION   m_cdenominacion
@@ -233,8 +233,8 @@ void BalanceTreeView::boton_diario1 ( int tipo )
 void BalanceTreeView::boton_asiento()
 {
     _depura ( "BalanceTreeView::boton_asiento", 0 );
-    mainCompany() ->intapuntsempresa() ->show();
-    mainCompany() ->intapuntsempresa() ->setFocus();
+    g_asiento ->show();
+    g_asiento ->setFocus();
     _depura ( "END BalanceTreeView::boton_asiento", 0 );
 }
 

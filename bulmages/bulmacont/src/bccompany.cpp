@@ -25,10 +25,6 @@
 #include "bccompany.h"
 #include "blcompanydialog.h"
 #include "bcplancontablelistview.h"
-#include "bcasientoview.h"
-#include "bcasientolistview.h"
-#include "bcamortizacionlistview.h"
-#include "bccuentasanualesview.h"
 #include "bccuentaview.h"
 #include "bccanalview.h"
 #include "bccentrocosteview.h"
@@ -57,7 +53,10 @@
 void BcCompany ::s_asiento1()
 {
     _depura ( "BcCompany ::s_asiento1", 0 );
+
+/*
     introapunts2->setWindowState ( ( introapunts2->windowState() &  ~Qt::WindowMinimized ) | Qt::WindowActive );
+*/
     _depura ( "BcCompany ::s_asiento1", 0 );
 }
 
@@ -72,8 +71,10 @@ BcCompany ::BcCompany ( BcBulmaCont *bcont ) : BlMainCompany()
     m_bulmacont = bcont;
     selccostes  = NULL;
     selcanales = NULL;
+/*
     introapunts2 = NULL;
     m_listasientos = NULL;
+*/
     nombre = "";
     _depura ( "END BcCompany ::BcCompany", 0 );
 }
@@ -131,21 +132,23 @@ BcDiarioView *BcCompany::diarioempresa()
 /**
 \return
 **/
+/*
 BcAsientoView *BcCompany::intapuntsempresa()
 {
     return introapunts2;
 }
-
+*/
 
 ///
 /**
 \return
 **/
+/*
 BcAsientoView *BcCompany::intapuntsempresa2()
 {
     return introapunts2;
 }
-
+*/
 
 ///
 /**
@@ -195,7 +198,6 @@ int BcCompany::createMainWindows ( BlSplashScreen *splash )
         if ( selccostes != NULL ) {
             delete selccostes;
             delete selcanales;
-            delete m_listasientos;
         } // end if
 
         /// Inicializamos los selectores de centros de coste y canales.
@@ -203,40 +205,6 @@ int BcCompany::createMainWindows ( BlSplashScreen *splash )
         selcanales = new BcCanalSeleccionarView ( this, 0 );
 
         /// Inicializamos las ventanas de uso generalizado.
-
-        /// Establecemos el porcentaje del carga de informaci&oacute;n en las diferentes ventanas.
-        /// pb = 0%
-/*
-        splash->mensaje ( _ ( "Inicializando extracto" ) );
-        splash->setBarraProgreso ( 7 );
-        m_progressbar->setValue ( 0 );
-        extracto = new BcExtractoView ( this, 0 );
-        m_pWorkspace->addWindow ( extracto );
-*/
-
-        /// pb = 20%
-/*
-        splash->mensaje ( _ ( "Inicializando diario" ) );
-        splash->setBarraProgreso ( 20 );
-        m_progressbar->setValue ( 20 );
-        diario = new BcDiarioView ( this, 0 );
-        m_pWorkspace->addWindow ( diario );
-*/        
-
-        /// pb = 60%
-        splash->mensaje ( _ ( "Inicializando asientos" ) );
-        splash->setBarraProgreso ( 60 );
-        m_progressbar->setValue ( 60 );
-        introapunts2 = new BcAsientoView ( this, 0 );
-        m_pWorkspace->addWindow ( introapunts2 );
-
-        /// pb = 75%
-        splash->mensaje ( _ ( "Inicializando asientos" ) );
-        splash->setBarraProgreso ( 75 );
-        m_progressbar->setValue ( 75 );
-        m_listasientos = new BcAsientoListView ( this );
-        m_listasientos->presentar();
-        m_pWorkspace->addWindow ( m_listasientos );
 
         /// pb = 90%
         splash->mensaje ( _ ( "Inicializando cuentas" ) );
@@ -292,7 +260,7 @@ void BcCompany::maximiza()
 int BcCompany::muestracuentas()
 {
     _depura ( "BcCompany::muestracuentas", 0 );
-    m_listcuentas->setWindowState ( ( introapunts2->windowState() & ~Qt::WindowMinimized ) | Qt::WindowActive );
+    m_listcuentas->setWindowState ( Qt::WindowActive );
     _depura ( "END BcCompany::muestracuentas", 0 );
     return 0;
 }
@@ -373,8 +341,12 @@ int BcCompany::cambioejercicio()
 {
     _depura ( "BcCompany::cambioejercicio", 0 );
     /// El ejercicio ha cambiado y recargamos el cursor de asientos del nuevo ejercicio.
+/*
+
     introapunts2->cargaasientos();
     introapunts2->boton_fin();
+
+*/
     _depura ( "END BcCompany::cambioejercicio", 0 );
     return 0;
 }
@@ -408,31 +380,6 @@ int BcCompany::nuevacuenta()
 }
 
 
-///
-/**
-\return
-**/
-int BcCompany::muestraapuntes1()
-{
-    _depura ( "BcCompany::muestraapuntes1", 0 );
-    introapunts2->setWindowState ( ( introapunts2->windowState() & ~Qt::WindowMinimized ) | Qt::WindowActive );
-    _depura ( "END BcCompany::muestraapuntes1", 0 );
-    return 0;
-}
-
-
-///
-/**
-\return
-**/
-int BcCompany::muestraasientos()
-{
-    _depura ( "BcCompany::muestraasientos", 0 );
-    m_listasientos->setWindowState ( ( m_listasientos->windowState() & ~Qt::WindowMinimized ) | Qt::WindowActive );
-    _depura ( "END BcCompany::muestraasientos", 0 );
-    return 0;
-}
-
 
 ///
 /**
@@ -456,9 +403,11 @@ int BcCompany::propiedadempresa()
 int BcCompany::amortizaciones()
 {
     _depura ( "BcCompany::amortizaciones", 0 );
+/*
     BcAmortizacionListView *amors = new BcAmortizacionListView ( this, 0 );
     m_pWorkspace->addWindow ( amors );
     amors->show();
+*/
     _depura ( "END BcCompany::amortizaciones", 0 );
     return 0;
 }
@@ -482,236 +431,24 @@ int BcCompany::mpatrimoniales()
 
 
 /// Esta funci&oacute;n llama a la pantalla de creacion, modificaci&oacute;n
-/// de masas patrimoniales.
+/// de las cuentas anuales
 /**
 \return
 **/
 int BcCompany::compbalance()
 {
     _depura ( "BcCompany::compbalance", 0 );
+/*
     BcCuentasAnualesView *nueva = new BcCuentasAnualesView ( this, 0 );
     m_pWorkspace->addWindow ( nueva );
     nueva->show();
+*/
     _depura ( "END BcCompany::compbalance", 0 );
     return 0;
 }
 
 
 ///
-/**
-\return
-**/
-int BcCompany::libromayor()
-{
-    _depura ( "BcCompany::libromayor", 0 );
-/*
-    extracto->setWindowState ( ( extracto->windowState() &  ~Qt::WindowMinimized ) | Qt::WindowActive );
-*/
-    _depura ( "END BcCompany::libromayor", 0 );
-    return 0;
-}
-
-
-///
-/**
-\return
-**/
-int BcCompany::boton_siguiente()
-{
-    _depura ( "BcCompany::boton_siguiente", 0 );
-    QWidget *widget;
-    widget = m_pWorkspace->activeWindow();
-    if ( widget == introapunts2 ) {
-        introapunts2->boton_siguiente();
-    } // end if
-    _depura ( "END BcCompany::boton_siguiente", 0 );
-    return 0;
-}
-
-
-///
-/**
-\return
-**/
-int BcCompany::boton_anterior()
-{
-    _depura ( "BcCompany::boton_anterior", 0 );
-    QWidget *widget;
-    widget = m_pWorkspace->activeWindow();
-    if ( widget == introapunts2 ) {
-        introapunts2->boton_anterior();
-    } // end if
-    _depura ( "END BcCompany::boton_anterior", 0 );
-    return 0;
-}
-
-
-///
-/**
-\return
-**/
-int BcCompany::boton_guardar()
-{
-    _depura ( "BcCompany::boton_guardar", 0 );
-    QWidget *widget;
-    widget = m_pWorkspace->activeWindow();
-/*
-    if ( widget == diario ) {
-        diario->boton_guardar();
-    } else {
-*/
-//        extracto->boton_guardar();
-//    } // end if
-    _depura ( "END BcCompany::boton_guardar", 0 );
-    return 0;
-}
-
-
-///
-/**
-\return
-**/
-int BcCompany::boton_imprimir()
-{
-    _depura ( "BcCompany::boton_imprimir", 0 );
-    QWidget *widget = m_pWorkspace->activeWindow();
-
-/*
-    if ( widget == diario ) {
-        diario->boton_imprimir();
-    } else
-*/
-
-/*
-    if ( widget == extracto ) {
-        extracto->boton_imprimir();
-    } // end if
-*/
-    _depura ( "END BcCompany::boton_imprimir", 0 );
-    return 0;
-}
-
-
-///
-/**
-\return
-**/
-int BcCompany::boton_reload()
-{
-    _depura ( "BcCompany::boton_reload", 0 );
-    QWidget *widget;
-    widget = m_pWorkspace->activeWindow();
-/*
-    if ( widget == diario ) {
-        diario->accept();
-    } else
-*/
-/*
- if ( widget == extracto ) {
-        extracto->accept();
-    } // end if
-*/
-    _depura ( "END BcCompany::boton_reload", 0 );
-    return 0;
-}
-
-
-///
-/**
-\return
-**/
-int BcCompany::boton_primero()
-{
-    _depura ( "BcCompany::boton_primero", 0 );
-    QWidget *widget;
-    widget = m_pWorkspace->activeWindow();
-    if ( widget == introapunts2 ) {
-        introapunts2->boton_inicio();
-    }
-
-/*
- else if ( widget == extracto ) {
-        extracto->boton_inicio();
-    } // end if
-*/
-    _depura ( "END BcCompany::boton_primero", 0 );
-    return 0;
-}
-
-
-///
-/**
-\param
-**/
-int BcCompany::boton_ultimo()
-{
-    _depura ( "BcCompany::boton_ultimo", 0 );
-    QWidget *widget;
-    widget = m_pWorkspace->activeWindow();
-    if ( widget == introapunts2 ) {
-        introapunts2->boton_fin();
-    }
-
-/*
- else if ( widget == extracto ) {
-        extracto->boton_fin();
-    } // end if
-*/
-    _depura ( "END BcCompany::boton_ultimo", 0 );
-    return 0;
-}
-
-
-///
-/**
-\return
-**/
-int BcCompany::librodiario()
-{
-    _depura ( "BcCompany::librodiario", 0 );
-/*
-    diario->setWindowState ( ( diario->windowState() & ~Qt::WindowMinimized ) | Qt::WindowActive );
-*/
-    _depura ( "END BcCompany::librodiario", 0 );
-    return 0;
-}
-
-
-///
-/**
-\return
-**/
-/*
-int BcCompany::librobalance()
-{
-    _depura ( "BcCompany::librobalance", 0 );
-    balance->setWindowState ( balance->windowState() & ~Qt::WindowMinimized | Qt::WindowActive );
-    _depura ( "END BcCompany::librobalance", 0 );
-    return 0;
-}
-*/
-
-
-///
-/**
-**/
-void BcCompany::abrirAsientos()
-{
-    _depura ( "BcCompany::Abrirasientos", 0 );
-    BlDbRecordSet *cur = NULL;
-    try {
-        cur = loadQuery ( "SELECT abreasientos()" );
-        g_main->statusBar() ->showMessage ( _ ( "Se han espaciado los asientos" ), 2000 );
-        delete cur;
-        _depura ( "END BcCompany::Abrirasientos", 0 );
-    } catch ( ... ) {
-        mensajeError ( "Ha habido un error al espaciar los asientos" );
-        if ( cur ) delete cur;
-        return;
-    } // end try
-}
-
-
 ///
 /**
 **/
@@ -732,25 +469,6 @@ void BcCompany::cerrarAsientos()
 }
 
 
-/**
-**/
-void BcCompany::Ordenarasientos()
-{
-    _depura ( "BcCompany::Ordenarasientos", 10 );
-    QString query = "SELECT reordenaasientosall()";
-    BlDbRecordSet *cur = NULL;
-    try {
-        cur = loadQuery ( query );
-        g_main->statusBar() ->showMessage ( _ ( "Se han ordenado los asientos" ), 2000 );
-        delete cur;
-        _depura ( "END BcCompany::Ordenarasientos", 10 );
-    } catch ( ... ) {
-        mensajeError ( "Ha habido un error al ordenar los asientos" );
-        if ( cur ) delete cur;
-        return;
-    }
-}
-
 
 ///
 /**
@@ -766,125 +484,6 @@ int BcCompany::listado347()
     return 0;
 }
 
-
-///
-/**
-**/
-void BcCompany::cierraempresa()
-{
-    _depura ( "BcCompany::cierraempresa", 0 );
-    QString hoy = QDate::currentDate().toString ( "dd/MM/yyyy" );
-    QString finicial = "01/01/" + hoy.right ( 4 );
-
-    bool ok;
-    QString text = QInputDialog::getText ( 0,
-                                           _ ( "Fecha inicial" ), _ ( "Fecha inicial ejercicio:" ), QLineEdit::Normal,
-                                           finicial, &ok );
-    if ( ok && !text.isEmpty() ) {
-        finicial = text;
-    } else {
-        return;
-    } // end if
-
-    QString text1 = QInputDialog::getText ( 0,
-                                            _ ( "Fecha final" ), _ ( "Fecha final ejercicio:" ), QLineEdit::Normal,
-                                            hoy, &ok );
-    if ( ok && !text1.isEmpty() ) {
-        hoy = text1;
-    } else {
-        return;
-    } // end if
-
-    introapunts2->show();
-    introapunts2->asiento_cierre ( finicial, hoy );
-    _depura ( "END BcCompany::cierraempresa", 0 );
-}
-
-
-///
-/**
-**/
-void BcCompany::abreempresa()
-{
-    _depura ( "BcCompany::abreempresa", 0 );
-    QString hoy = QDate::currentDate().toString ( "dd/MM/yyyy" );
-    QString finicial = "01/01/" + hoy.right ( 4 );
-
-    bool ok;
-    QString text1 = QInputDialog::getText ( 0,
-                                            _ ( "Fecha" ), _ ( "Fecha:" ), QLineEdit::Normal,
-                                            hoy, &ok );
-    if ( ok && !text1.isEmpty() ) {
-        hoy = text1;
-    } else {
-        return;
-    } // end if
-
-    introapunts2->show();
-    introapunts2->asiento_apertura ( hoy );
-    _depura ( "END BcCompany::abreempresa", 0 );
-}
-
-
-///
-/**
-**/
-void BcCompany::regularizaempresa()
-{
-    _depura ( "BcCompany::regularizaempresa", 0, "Sin parametros" );
-    QString hoy = QDate::currentDate().toString ( "dd/MM/yyyy" );
-    QString finicial = "01/01/" + hoy.right ( 4 );
-
-    bool ok;
-    QString text = QInputDialog::getText ( 0,
-                                           _ ( "Fecha inicial" ), _ ( "Fecha inicial regularizacion:" ), QLineEdit::Normal,
-                                           finicial, &ok );
-    if ( ok && !text.isEmpty() ) {
-        finicial = text;
-    } else {
-        return;
-    } // end if
-
-    QString text1 = QInputDialog::getText ( 0,
-                                            _ ( "Fecha final" ), _ ( "Fecha final regularizacion:" ), QLineEdit::Normal,
-                                            hoy, &ok );
-    if ( ok && !text1.isEmpty() ) {
-        hoy = text1;
-    } else {
-        return;
-    } // end if
-
-    regularizaempresa ( finicial, hoy );
-    _depura ( "END BcCompany::regularizaempresa", 0 );
-}
-
-
-///
-/**
-\param finicial
-\param ffinal
-**/
-void BcCompany::regularizaempresa ( QString finicial, QString ffinal )
-{
-    _depura ( "BcCompany::regularizaempresa", 0, finicial + "--" + ffinal );
-    introapunts2->show();
-    introapunts2->asiento_regularizacion ( finicial, ffinal );
-    _depura ( "END BcCompany::regularizaempresa", 0 );
-}
-
-///
-/**
-**/
-void BcCompany::Filtro()
-{
-    _depura ( "BcCompany::Filtro", 0 );
-    QWidget *widget;
-    widget = m_pWorkspace->activeWindow();
-    if ( widget == introapunts2 ) {
-        introapunts2->boton_filtrar();
-    } // end if
-    _depura ( "END BcCompany::Filtro", 0 );
-}
 
 /// Esta funci&oacute;n reemplaza en los apuntes todas las ocurrencias de una
 /// determinada cuenta por otra cuenta.

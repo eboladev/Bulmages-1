@@ -61,7 +61,7 @@ public:
     BcCompany *empresaactual();
     /// Exporta menues.
     QMenu *mui_MenuHerramientas();
-    QMenu *mui_MenuVer();
+//    QMenu *mui_MenuVer();
     BlWorkspace *workspace();
 
 protected:
@@ -86,8 +86,6 @@ private slots:
     void slotEditPaste();
     /// Slot para mostrar los listados de cuentas.
     void slotListadoCuentas();
-    /// Slot para el libro mayor.
-    void slotAsientos();
     void slotPerdidas();
     void slotCentrosCoste();
     void slotCanales();
@@ -115,16 +113,8 @@ private:
 public slots:
     virtual void on_actionTipos_de_IVA_triggered();
     virtual void on_actionFormas_de_Pago_triggered();
-    virtual void on_actionAsientos_triggered();
     virtual void on_actionConfiguracion_triggered();
-    virtual void on_actionApuntes_Contables_triggered();
-    virtual void on_actionLibro_Mayor_triggered();
-    virtual void on_actionLibro_Diario_triggered();
     virtual void on_actionPlan_Contable_triggered();
-    virtual void on_actionImprimir_triggered();
-    virtual void on_actionGuardar_triggered();
-    virtual void on_actionActualizar_triggered();
-    virtual void on_actionFiltrar_triggered();
     virtual void on_actionRecalcular_Saldos_Iniciales_triggered();
     virtual void on_actionSustituir_Cuentas_triggered();
     virtual void on_actionCanal_por_Defecto_triggered();
@@ -135,24 +125,15 @@ public slots:
     virtual void on_actionOrganizaci_n_en_Cascada_triggered();
     virtual void on_actionAyuda_triggered();
     virtual void on_actionAcerca_de_triggered();
-    virtual void on_actionAbrir_Asientos_triggered();
-    virtual void on_actionOrdenar_Asientos_triggered();
-    virtual void on_actionAsiento_de_Apertura_triggered();
-    virtual void on_actionAsiento_de_Regularizacion_triggered();
-    virtual void on_actionAsiento_de_Cierre_triggered();
     virtual void on_actionCuentas_Anuales_triggered();
     virtual void on_actionMasas_Patrimoniales_triggered();
     virtual void on_actionListado_347_triggered();
     virtual void on_actionAmortizaciones_triggered();
     virtual void on_actionPantalla_Completa_triggered();
-    virtual void on_actionSiguiente_triggered();
-    virtual void on_actionAnterior_triggered();
-    virtual void on_actionInicio_triggered();
-    virtual void on_actionFin_triggered();
-    virtual void on_actionCerrar_Asientos_triggered();
     virtual void on_actionPaises_triggered();
     virtual void informaindexador ( QWidget *w );
     virtual void on_actionIndexador_triggered();
+    virtual void on_actionCerrar_Asientos_triggered();
 };
 
 #endif

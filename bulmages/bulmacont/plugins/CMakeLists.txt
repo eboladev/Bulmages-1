@@ -31,6 +31,8 @@ add_subdirectory(pluginbc_mayor)
 add_subdirectory(pluginbc_cuentaresumen)
 add_subdirectory(pluginbc_duplicarasiento)
 add_subdirectory(pluginbc_bloqueofechas)
+add_subdirectory(pluginbc_asiento)
+
 
 # pluginadocumental deprecated.
 #add_subdirectory(pluginbc_documentoadjunto)

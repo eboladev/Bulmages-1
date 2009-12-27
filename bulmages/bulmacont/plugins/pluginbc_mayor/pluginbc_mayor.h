@@ -28,15 +28,10 @@
 #endif
 
 #include "bcbulmacont.h"
-#include "blpostgresqlclient.h"
-#include "bccompany.h"
-#include "bcextractoview.h"
-
-extern BcExtractoView *g_mayor;
+#include "blmaincompanypointer.h"
+#include "blmaincompany.h"
 
 extern "C" MY_EXPORT int entryPoint ( BcBulmaCont * );
-
-
 
 class MyPluginMayor : public QObject, BlMainCompanyPointer
 {
@@ -52,7 +47,10 @@ public:
 
 public slots:
     void elslot();
+
 };
+
+
 
 
 #endif

@@ -41,9 +41,9 @@
 
 class BcCentroCosteSeleccionarView;
 class BcCanalSeleccionarView;
-class BcAsientoView;
+/* class BcAsientoView; */
 /* class BcDiarioView; */
-class BcAsientoListView;
+/* class BcAsientoListView; */
 class BcCuentaView;
 class BlCountryView;
 /*class BcExtractoView;*/
@@ -69,10 +69,6 @@ private:
     QString nombre;
     int ano;
     QString contrasenya;
-//    BcDiarioView *diario;
-//    BcExtractoView *extracto;
-    BcAsientoView *introapunts2;
-    BcAsientoListView *m_listasientos;
     BcPlanContableListView *m_listcuentas;
     unsigned int numdigitos; /// El n&uacute;mero de d&iacute;gitos que tienen las cuentas.
     /// Hay unos selectores generales, que van a ser estos y que indican con que se trabaja,
@@ -88,40 +84,21 @@ public:
     virtual ~BcCompany();
     /// Devuelve un puntero a la clase de la base de datos.
     BlPostgreSqlClient *bdempresa();
-    BcAsientoView *intapuntsempresa();
-    BcAsientoView *intapuntsempresa2();
+
     int numdigitosempresa();
     QString nomuserempresa();
     QString nombreempresa();
     int muestracuentas();
     int nuevacuenta();
-    int muestraapuntes1();
-    int muestraasientos();
     int propiedadempresa();
-    int libromayor();
-    int librodiario();
     int listado347();
     int createMainWindows ( BlSplashScreen * );
-    int boton_siguiente();
-    int boton_anterior();
-    int boton_primero();
-    int boton_ultimo();
-    int boton_guardar();
-    int boton_imprimir();
-    int boton_reload();
     int ccostes();
     int canales();
     int tiposIVA();
-    int fPago();
-    void cierraempresa();
-    void abreempresa();
-    void regularizaempresa();
-    void regularizaempresa ( QString, QString );
-    void maximiza();
-    void abrirAsientos();
     void cerrarAsientos();
-    void Ordenarasientos();
-    void Filtro();
+    int fPago();
+    void maximiza();
     int mpatrimoniales();
     int compbalance();
     int amortizaciones();

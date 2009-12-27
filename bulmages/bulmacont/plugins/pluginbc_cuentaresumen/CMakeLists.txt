@@ -30,7 +30,9 @@ include_directories(
 	${CMAKE_BINARY_DIR}/bulmalib/src/
 	${CMAKE_SOURCE_DIR}/bulmalib/src/
 	${CMAKE_BINARY_DIR}/bulmacont/src/
-	${CMAKE_SOURCE_DIR}/bulmacont/src/)
+	${CMAKE_SOURCE_DIR}/bulmacont/src/
+   ${CMAKE_BINARY_DIR}/bulmacont/plugins/pluginbc_asiento/
+   ${CMAKE_SOURCE_DIR}/bulmacont/plugins/pluginbc_asiento/)
 
 # generate rules for building source files from the resources
 #QT4_WRAP_CPP(plugin_MOC_SRCS ${plugin_MOCS})
@@ -80,7 +82,7 @@ target_link_libraries(${plugin} libbulmacont bulmalib ${QT_LIBRARIES}
 ${PGSQL_LIBRARIES} )
 
 #think to put here which modules must be compiled "before" this
-add_dependencies(${plugin} bulmacont bulmafact bulmalib)
+add_dependencies(${plugin} bulmacont bulmafact bulmalib pluginbc_asiento)
 
 install_targets(/lib/bulmacont/plugins ${plugin})
 

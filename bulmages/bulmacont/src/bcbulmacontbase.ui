@@ -33,26 +33,13 @@
      <height>26</height>
     </rect>
    </property>
-   <widget class="QMenu" name="menuVentana">
+   <widget class="QMenu" name="menuVer1">
     <property name="title">
      <string>&amp;Ver</string>
     </property>
     <addaction name="actionPlan_Contable"/>
-    <addaction name="actionAsientos"/>
-    <addaction name="actionApuntes_Contables"/>
    </widget>
-   <widget class="QMenu" name="menuAsiento">
-    <property name="title">
-     <string>&amp;Asientos</string>
-    </property>
-    <addaction name="actionAbrir_Asientos"/>
-    <addaction name="actionOrdenar_Asientos"/>
-    <addaction name="separator"/>
-    <addaction name="actionAsiento_de_Apertura"/>
-    <addaction name="actionAsiento_de_Regularizacion"/>
-    <addaction name="actionAsiento_de_Cierre"/>
-   </widget>
-   <widget class="QMenu" name="menuVer">
+   <widget class="QMenu" name="menuVentana">
     <property name="title">
      <string>Ventana</string>
     </property>
@@ -110,12 +97,11 @@
     <addaction name="actionCentro_de_Coste_por_Defecto"/>
    </widget>
    <addaction name="menuEmpresa"/>
-   <addaction name="menuAsiento"/>
    <addaction name="menuListados"/>
-   <addaction name="menuVentana"/>
+   <addaction name="menuVer1"/>
    <addaction name="menuMaestro"/>
    <addaction name="menuHerramientas"/>
-   <addaction name="menuVer"/>
+   <addaction name="menuVentana"/>
    <addaction name="menuAyuda"/>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
@@ -137,8 +123,6 @@
    </attribute>
    <addaction name="actionConfiguracion"/>
    <addaction name="actionPlan_Contable"/>
-   <addaction name="actionApuntes_Contables"/>
-   <addaction name="actionAsientos"/>
    <addaction name="actionInicio"/>
    <addaction name="actionAnterior"/>
    <addaction name="actionSiguiente"/>
@@ -167,31 +151,6 @@
     <string>Ctrl+Q</string>
    </property>
   </action>
-  <action name="actionAbrir_Asientos">
-   <property name="text">
-    <string>&amp;Espaciar asientos</string>
-   </property>
-  </action>
-  <action name="actionOrdenar_Asientos">
-   <property name="text">
-    <string>&amp;Ordenar asientos</string>
-   </property>
-  </action>
-  <action name="actionAsiento_de_Apertura">
-   <property name="text">
-    <string>Asiento de a&amp;pertura</string>
-   </property>
-  </action>
-  <action name="actionAsiento_de_Regularizacion">
-   <property name="text">
-    <string>Asiento de &amp;regularizacion</string>
-   </property>
-  </action>
-  <action name="actionAsiento_de_Cierre">
-   <property name="text">
-    <string>Asiento de &amp;cierre</string>
-   </property>
-  </action>
   <action name="actionCuentas_Anuales">
    <property name="text">
     <string>Cuentas a&amp;nuales</string>
@@ -214,30 +173,6 @@
    </property>
    <property name="text">
     <string>&amp;Plan Contable</string>
-   </property>
-  </action>
-  <action name="actionAsientos">
-   <property name="icon">
-    <iconset resource="../../bulmages.qrc">
-     <normaloff>:/Images/book-list.png</normaloff>:/Images/book-list.png</iconset>
-   </property>
-   <property name="text">
-    <string>&amp;Asientos</string>
-   </property>
-   <property name="shortcut">
-    <string>Ctrl+L</string>
-   </property>
-  </action>
-  <action name="actionApuntes_Contables">
-   <property name="icon">
-    <iconset resource="../../bulmages.qrc">
-     <normaloff>:/Images/book.png</normaloff>:/Images/book.png</iconset>
-   </property>
-   <property name="text">
-    <string>Apuntes &amp;contables</string>
-   </property>
-   <property name="shortcut">
-    <string>Ctrl+A</string>
    </property>
   </action>
   <action name="actionFormas_de_Pago">

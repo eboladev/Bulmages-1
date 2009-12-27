@@ -23,7 +23,7 @@
 #include "registroivaview.h"
 #include "bccompany.h"
 #include "bcasientoview.h"
-
+#include "pluginbc_asiento.h"
 #include <QMenu>
 
 
@@ -133,9 +133,16 @@ void ListRegistroIvaView::on_mui_tablasoportado_cellDoubleClicked ( int, int )
     _depura ( "ListRegistroIvaView::on_mui_tablasoportado_itemDoubleClicked", 0 );
     int idasiento;
     idasiento = mui_tablasoportado->dbValue ( "idasiento" ).toInt();
+/*
     m_companyact->intapuntsempresa() ->muestraasiento ( idasiento );
     m_companyact->intapuntsempresa() ->show();
     m_companyact->intapuntsempresa() ->setFocus();
+*/
+
+    g_asiento ->muestraasiento ( idasiento );
+    g_asiento ->show();
+    g_asiento ->setFocus();
+
     _depura ( "END ListRegistroIvaView::on_mui_tablasoportado_itemDoubleClicked", 0 );
 }
 
@@ -149,9 +156,15 @@ void ListRegistroIvaView::on_mui_tablarepercutido_cellDoubleClicked ( int, int )
     _depura ( "ListRegistroIvaView::on_mui_tablarepercutido_itemDoubleClicked", 0 );
     int idasiento;
     idasiento = mui_tablarepercutido->dbValue ( "idasiento" ).toInt();
+/*
     m_companyact->intapuntsempresa() ->muestraasiento ( idasiento );
     m_companyact->intapuntsempresa() ->show();
     m_companyact->intapuntsempresa() ->setFocus();
+*/
+    g_asiento ->muestraasiento ( idasiento );
+    g_asiento ->show();
+    g_asiento ->setFocus();
+
     _depura ( "END ListRegistroIvaView::on_mui_tablarepercutido_itemDoubleClicked", 0 );
 }
 
@@ -269,9 +282,15 @@ void ListRegistroIvaView::on_mui_tablasoportado_trataMenu ( QAction *ac )
     if ( m_verasiento == ac ) {
         int idasiento;
         idasiento = mui_tablasoportado->dbValue ( "idasiento" ).toInt();
+/*
         m_companyact->intapuntsempresa() ->muestraasiento ( idasiento );
         m_companyact->intapuntsempresa() ->show();
         m_companyact->intapuntsempresa() ->setFocus();
+*/
+        g_asiento ->muestraasiento ( idasiento );
+        g_asiento ->show();
+        g_asiento ->setFocus();
+
     } // end if
     _depura ( "END ListRegistroIvaView::on_mui_tablasoportado_trataMenu", 0 );
 }
@@ -294,9 +313,16 @@ void ListRegistroIvaView::on_mui_tablarepercutido_trataMenu ( QAction *ac )
     if ( m_verasiento == ac ) {
         int idasiento;
         idasiento = mui_tablarepercutido->dbValue ( "idasiento" ).toInt();
+/*
         m_companyact->intapuntsempresa() ->muestraasiento ( idasiento );
         m_companyact->intapuntsempresa() ->show();
         m_companyact->intapuntsempresa() ->setFocus();
+*/
+        g_asiento ->muestraasiento ( idasiento );
+        g_asiento ->show();
+        g_asiento ->setFocus();
+
+
     } // end if
     _depura ( "END ListRegistroIvaView::on_mui_tablarepercutido_trataMenu", 0 );
 }

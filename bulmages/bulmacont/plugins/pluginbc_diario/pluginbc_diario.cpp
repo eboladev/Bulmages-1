@@ -85,12 +85,12 @@ void MyPluginDiario::inicializa ( BcBulmaCont *bges )
     m_bulmacont = bges;
     QMenu *pPluginMenu;
     /// Miramos si existe un menu Herramientas
-    pPluginMenu = bges->menuBar() ->findChild<QMenu *> ( _ ( "menuVentana" ) );
+    pPluginMenu = bges->menuBar() ->findChild<QMenu *> ( _ ( "menuVer" ) );
 
     /// Creamos el men&uacute;.
     if ( !pPluginMenu ) {
         pPluginMenu = new QMenu ( _ ( "&Ver" ), bges->menuBar() );
-        pPluginMenu->setObjectName ( QString::fromUtf8 ( "menuVentana" ) );
+        pPluginMenu->setObjectName ( QString::fromUtf8 ( "menuVer" ) );
     } // end if
 
     QAction *accion = new QAction ( _ ( "&Libro Diario" ), 0 );

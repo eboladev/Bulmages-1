@@ -1,0 +1,465 @@
+# Spanish translations for PACKAGE package
+# Traducciones al español para el paquete PACKAGE.
+# Copyright (C) 2009 THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# Automatically generated, 2009.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: info@iglues.org\n"
+"POT-Creation-Date: 2009-12-26 21:49+0100\n"
+"PO-Revision-Date: 2009-12-26 21:49+0100\n"
+"Last-Translator: Automatically generated\n"
+"Language-Team: none\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: ui_bcasientointeligentebase.h:215
+msgid "&Aceptar"
+msgstr "&Accepta"
+
+#: pluginbc_asiento.cpp:96
+msgid "&Asiento Contable"
+msgstr ""
+
+#: ui_bcasientointeligentebase.h:217
+msgid "&Cancelar"
+msgstr "&Cancel·la"
+
+#: ui_bcasientolistbase.h:421
+msgid "&Concepto:"
+msgstr "&Concepte:"
+
+#: ui_bcasientolistbase.h:420
+msgid "&Ejercicio:"
+msgstr "&Exercici:"
+
+#: ui_bcasientointeligentebase.h:212
+msgid "&Fecha del asiento:"
+msgstr "&Data de l'assentament:"
+
+#: ui_bcasientolistbase.h:419
+msgid "&Mostrar:"
+msgstr "&Mostra:"
+
+#: bcasientoview.cpp:326
+msgid "&No"
+msgstr "&No"
+
+#: ui_bcasientolistbase.h:424
+msgid "&Partida igual a:"
+msgstr "&Partida igual a:"
+
+#: ui_bcasientointeligentebase.h:213
+msgid "&Plantilla:"
+msgstr "&Plantilla:"
+
+#: bcasientoview.cpp:326
+msgid "&Si"
+msgstr "&Sí"
+
+#: pluginbc_asiento.cpp:92
+msgid "&Ver"
+msgstr "&Veure"
+
+#: bcasientolistview.cpp:66
+msgid "(todos)"
+msgstr "(tots)"
+
+#: ui_bcasientolistbase.h:427
+msgid ")"
+msgstr ")"
+
+#: ui_bcasientobase.h:478 ui_bcasientobase.h:481
+msgid "Abrir asiento"
+msgstr "Obrir assistent"
+
+#: ui_bcasientolistbase.h:452 ui_bcasientolistbase.h:455
+msgid "Actualizar"
+msgstr "Actualitza"
+
+#: ui_bcasientobase.h:568
+#, fuzzy
+msgid "Apertura"
+msgstr "Obertura"
+
+#: ui_bcasientointeligentebase.h:210
+#, fuzzy
+msgid "Aplicar Asiento Inteligente"
+msgstr "Assentament inexistent."
+
+#: bcasientolistsubform.cpp:39
+msgid "Apuntes"
+msgstr "Apunts"
+
+#: bcasientointeligenteview.cpp:59 ui_bcasientobase.h:476
+msgid "Asiento"
+msgstr "Assentament"
+
+#: bcasientoform.cpp:42
+#, fuzzy
+msgid "Asiento Contable"
+msgstr "Assentament final"
+
+#: bcasientoview.cpp:324
+msgid "Asiento inexistente."
+msgstr "Assentament inexistent."
+
+#: bcasientolistview.cpp:300
+msgid "Asientos"
+msgstr "Assentaments"
+
+#: ui_bcasientobase.h:553 ui_bcasientobase.h:556
+#, fuzzy
+msgid "Asientos Inteligentes"
+msgstr "Assentament inexistent."
+
+#: bcasientolistview.cpp:46
+msgid "Asientos abiertos"
+msgstr "Assentaments oberts"
+
+#: bcasientolistview.cpp:45
+msgid "Asientos cerrados"
+msgstr "Assentament tancats"
+
+#: bcasientolistsubform.cpp:40
+msgid "Borrador"
+msgstr "Esborrany"
+
+#: bcasientoform.cpp:159 ui_bcasientobase.h:531 ui_bcasientobase.h:534
+msgid "Borrar asiento"
+msgstr "Esborra assentament"
+
+#: bcasientosubform.cpp:50
+msgid "Canal"
+msgstr "Canal"
+
+#: bcasientosubform.cpp:53
+msgid "Centro de coste"
+msgstr "Centre de cost"
+
+#: ui_bcasientobase.h:486 ui_bcasientobase.h:489
+msgid "Cerrar asiento"
+msgstr "Tanca assentament"
+
+#: ui_bcasientobase.h:567
+msgid "Cierre"
+msgstr "Tancament"
+
+#: bcasientolistsubform.cpp:45
+msgid "Clase"
+msgstr "Classe"
+
+#: bcasientosubform.cpp:41
+msgid "Codigo"
+msgstr "Codi"
+
+#: bcasientosubform.cpp:48
+msgid "Comentario"
+msgstr "Comentari"
+
+#: bcasientolistsubform.cpp:41
+msgid "Comentarios"
+msgstr "Comentaris"
+
+#: bcasientoform.cpp:48
+msgid "Comentarios del asiento"
+msgstr "Comentaris de l'assentament"
+
+#: bcasientosubform.cpp:44
+msgid "Concepto contable"
+msgstr "Concepte comptable"
+
+#: bcasientosubform.cpp:51
+msgid "Conciliacion"
+msgstr "Conciliació"
+
+#: ui_bcasientobase.h:524 ui_bcasientobase.h:527 ui_bcasientolistbase.h:445
+#: ui_bcasientolistbase.h:448
+msgid "Configurar"
+msgstr "Arranjament"
+
+#: bcasientosubform.cpp:47
+msgid "Contrapartida"
+msgstr "Contrapartida"
+
+#: ui_bcasientobase.h:484
+#, fuzzy
+msgid "Ctrl+A"
+msgstr "Ctrl+N"
+
+#: ui_bcasientobase.h:492
+#, fuzzy
+msgid "Ctrl+C"
+msgstr "Ctrl+N"
+
+#: ui_bcasientobase.h:537
+msgid "Ctrl+D"
+msgstr "Ctrl+D"
+
+#: ui_bcasientobase.h:522
+msgid "Ctrl+E"
+msgstr "Ctrl+E"
+
+#: ui_bcasientobase.h:559
+#, fuzzy
+msgid "Ctrl+M"
+msgstr "Ctrl+N"
+
+#: ui_bcasientobase.h:514
+msgid "Ctrl+N"
+msgstr "Ctrl+N"
+
+#: ui_bcasientobase.h:500 ui_bcasientointeligentebase.h:211
+msgid "Ctrl+S"
+msgstr "Ctrl+S"
+
+#: bcasientoview.cpp:934
+msgid "Cuenta de Regularizacion incorrecta. Revise la configuracion"
+msgstr ""
+
+#: ui_bcasientointeligentebase.h:214
+#, fuzzy
+msgid "Datos del asiento:"
+msgstr "Data de l'assentament"
+
+#: bcasientolistsubform.cpp:42 bcasientosubform.cpp:45
+msgid "Debe"
+msgstr "Deure"
+
+#: bcasientosubform.cpp:43
+msgid "Descripcion del apunte"
+msgstr "Descripció de l'apunt"
+
+#: bcasientoform.cpp:46
+msgid "Descripcion del asiento"
+msgstr "Descripció de l'assentament"
+
+#: ui_bcasientobase.h:562
+#, fuzzy
+msgid "Descuadre:"
+msgstr "Document:"
+
+#: bcasientoview.cpp:325
+msgid "Desea crear un nuevo asiento en esa posicion?"
+msgstr "Vol crear un nou assentament en aquella posició?"
+
+#: bcasientoform.cpp:412
+msgid "El asiento se ha guardado correctamente."
+msgstr "L'assentament s'ha desat correctament."
+
+#: bcasientointeligenteview.cpp:616
+msgid "Error al crear el asiento"
+msgstr ""
+
+#: ui_bcasientobase.h:539 ui_bcasientobase.h:542
+#, fuzzy
+msgid "Exportar asiento"
+msgstr "Esborra assentament"
+
+#: ui_bcasientobase.h:516 ui_bcasientobase.h:519
+#, fuzzy
+msgid "Extender asiento"
+msgstr "Genera assentament"
+
+#: bcasientolistsubform.cpp:38 bcasientosubform.cpp:40
+msgid "Fecha"
+msgstr "Data"
+
+#: ui_bcasientolistbase.h:423
+#, fuzzy
+msgid "Fecha &final:"
+msgstr "Data final:"
+
+#: ui_bcasientolistbase.h:422
+#, fuzzy
+msgid "Fecha &inicial:"
+msgstr "Data inicial:"
+
+#: bcasientosubform.cpp:61
+msgid "Fecha Factura"
+msgstr "Data factura"
+
+#: bcasientoform.cpp:47
+msgid "Fecha del asiento"
+msgstr "Data de l'assentament"
+
+#: ui_bcasientobase.h:560
+msgid "Fecha:"
+msgstr "Data:"
+
+#: ui_bcasientolistbase.h:438 ui_bcasientolistbase.h:441
+msgid "Filtrar"
+msgstr "Filtrar"
+
+#: ui_bcasientobase.h:494 ui_bcasientobase.h:497
+#, fuzzy
+msgid "Guardar asiento"
+msgstr "Genera assentament"
+
+#: bcasientolistsubform.cpp:43 bcasientosubform.cpp:46
+msgid "Haber"
+msgstr "Haver"
+
+#: bcasientosubform.cpp:49
+msgid "ID Canal"
+msgstr "ID Canal"
+
+#: bcasientosubform.cpp:39
+msgid "Id apunte"
+msgstr "Id apunt"
+
+#: bcasientolistsubform.cpp:44 bcasientoform.cpp:45 bcasientosubform.cpp:57
+msgid "Id asiento"
+msgstr "Id assentament"
+
+#: bcasientosubform.cpp:56
+msgid "Id borrador"
+msgstr "Id esborrany"
+
+#: bcasientosubform.cpp:52
+msgid "Id centro de coste"
+msgstr "Id centre de cost"
+
+#: bcasientosubform.cpp:58
+msgid "Id cuenta"
+msgstr "Id compte"
+
+#: bcasientosubform.cpp:54
+msgid "Id tipo de IVA"
+msgstr "Id tipus d'IVA"
+
+#: bcasientosubform.cpp:60
+msgid "Id. Registro IVA"
+msgstr "Id Registre d'IVA"
+
+#: ui_bcasientobase.h:546 ui_bcasientobase.h:549
+#, fuzzy
+msgid "Importar asiento"
+msgstr "Esborra assentament"
+
+#: ui_bcasientolistbase.h:431 ui_bcasientolistbase.h:434
+msgid "Imprimir"
+msgstr "Imprimeix"
+
+#: bcasientolistview.cpp:233
+msgid "La fecha inicial es posterior a la fecha final."
+msgstr "La data inicial és posterior a la data final."
+
+#: ui_bcasientolistbase.h:418
+#, fuzzy
+msgid "Listado de asientos"
+msgstr "Llistat d'assentaments"
+
+#: bcasientolistsubform.cpp:77 bcasientolistsubform.cpp:94
+#: bcasientosubform.cpp:89 bcasientosubform.cpp:106
+msgid "Mostrar asiento"
+msgstr "Mostrar assentament"
+
+#: bcasientolistsubform.cpp:81 bcasientolistsubform.cpp:100
+#: bcasientosubform.cpp:93 bcasientosubform.cpp:112
+msgid "Mostrar extracto (ano)"
+msgstr "Mostra l'extracte (any)"
+
+#: bcasientolistsubform.cpp:79 bcasientolistsubform.cpp:96
+#: bcasientosubform.cpp:91 bcasientosubform.cpp:108
+msgid "Mostrar extracto (dia)"
+msgstr "Mostra l'extracte (dia)"
+
+#: bcasientolistsubform.cpp:80 bcasientolistsubform.cpp:98
+#: bcasientosubform.cpp:92 bcasientosubform.cpp:110
+msgid "Mostrar extracto (mes)"
+msgstr "Mostra l'extracte (mes)"
+
+#: bcasientosubform.cpp:42
+msgid "Nombre de la cuenta"
+msgstr "Nom del compte"
+
+#: ui_bcasientobase.h:565
+msgid "Normal"
+msgstr "Normal"
+
+#: ui_bcasientobase.h:502 ui_bcasientobase.h:505 ui_bcasientobase.h:508
+#: ui_bcasientobase.h:511
+#, fuzzy
+msgid "Nuevo asiento"
+msgstr "Nou assentament"
+
+#: bcasientosubform.cpp:62
+msgid "Num. Factura"
+msgstr "Nº Factura"
+
+#: bcasientolistsubform.cpp:37 bcasientosubform.cpp:55
+msgid "Orden"
+msgstr "Ordre"
+
+#: bcasientoform.cpp:49
+msgid "Orden de asiento"
+msgstr "Ordre de l'assentament"
+
+#: ui_bcasientobase.h:561
+#, fuzzy
+msgid "Orden del asiento:"
+msgstr "Ordre de l'assentament"
+
+#: pluginbc_asiento.cpp:97
+msgid "Permite ver y modificar asientos"
+msgstr ""
+
+#: pluginbc_asiento.cpp:98
+msgid "Podra disponer de la informacion del asiento"
+msgstr ""
+
+#: ui_bcasientobase.h:566
+msgid "Regularizacion"
+msgstr "Regularització"
+
+#: ui_bcasientointeligentebase.h:216
+msgid "Return"
+msgstr ""
+
+#: ui_bcasientobase.h:570
+#, fuzzy
+msgid "Saldo:"
+msgstr "Saldo"
+
+#: bcasientoform.cpp:160
+msgid "Se va a borrar el asiento. Esta seguro?"
+msgstr "S'esborrarà l'assentament. Està segur?"
+
+#: bcasientoform.cpp:50
+msgid "Tipo de asiento"
+msgstr "Tipus d'assentament"
+
+#: bcasientosubform.cpp:59
+msgid "Tipo de cuenta"
+msgstr "Tipus de compte"
+
+#: bcasientolistview.cpp:44
+msgid "Todos los asientos"
+msgstr "Tots els assentaments"
+
+#: ui_bcasientobase.h:571 ui_bcasientolistbase.h:428
+#, fuzzy
+msgid "Total Debe:"
+msgstr "Totals:"
+
+#: ui_bcasientobase.h:572 ui_bcasientolistbase.h:429
+#, fuzzy
+msgid "Total Haber:"
+msgstr "Total Haver:"
+
+#: pluginbc_asiento.cpp:88
+msgid "menuVentana"
+msgstr "menuVentana"
+
+#: ui_bcasientolistbase.h:425
+msgid "y   ( >="
+msgstr "y   ( >="
+
+#: ui_bcasientolistbase.h:426
+msgid "y <="
+msgstr "y <="

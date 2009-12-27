@@ -1,7 +1,6 @@
 /***************************************************************************
- *   Copyright (C) 2003 by Josep Burcion                                   *
- *   josep@burcion.com                                                     *
- *   http://www.iglues.org Asociación Iglues -- Contabilidad Linux         *
+ *   Copyright (C) 2009 by Tomeu Borras Riera                              *
+ *   tborras@conetxia.com                                                  *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
  *   it under the terms of the GNU General Public License as published by  *
@@ -19,49 +18,48 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#ifndef BCBLOQUEAFECHAVIEW_H
-#define BCBLOQUEAFECHAVIEW_H
+#ifndef PLUGINBC_ASIENTO
+#define PLUGINBC_ASIENTO
 
-#include <QWidget>
+#ifdef Q_WS_WIN
+# define MY_EXPORT __declspec(dllexport)
+#else
+# define MY_EXPORT
+#endif
 
-#include "blfunctions.h"
-#include "ui_bcbloqueafechabase.h"
-#include "bcform.h"
+#include "bcbulmacont.h"
+#include "blpostgresqlclient.h"
+#include "bccompany.h"
+#include "bcasientoview.h"
 
+extern BcAsientoView *g_asiento;
 
-class BcCompany ;
-
-
-class BC_EXPORT BcTreeWidgetItem : public QTreeWidgetItem
-{
-public:
-    BcTreeWidgetItem ( QTreeWidget *parent );
-    BcTreeWidgetItem ( QTreeWidgetItem *parent );
-    ~BcTreeWidgetItem();
-    QString ej;
-    QString per;
-};
+extern "C" MY_EXPORT int entryPoint ( BcBulmaCont * );
+extern "C" MY_EXPORT int SNewBcAsientoView ( BcCompany * );
 
 
-class BC_EXPORT BcBloqueaFechaView : public BcForm, public Ui_BcBloqueaFechaBase
+class MyPluginAsiento : public QObject, BlMainCompanyPointer
 {
     Q_OBJECT
 
-private:
-    void inicializa();
-    QString qsbloqueado;
-    QString qsabierto;
+public:
+    BcBulmaCont *m_bulmacont;
 
 public:
-    BcBloqueaFechaView ( BcCompany *emp, QWidget * parent = 0 );
-    ~BcBloqueaFechaView();
+    MyPluginAsiento();
+    ~MyPluginAsiento();
+    void inicializa ( BcBulmaCont * );
 
 public slots:
-    virtual void on_mui_crear_released();
-
-private slots:
-    virtual void on_mui_treeWidget_itemDoubleClicked ( QTreeWidgetItem *item, int columna );
+    void elslot();
+    void elslot1();
+    void elslot2();
+    void elslot3();
+    void elslot4();
+    void elslot5();
+    void elslot6();
 };
+
 
 #endif
 

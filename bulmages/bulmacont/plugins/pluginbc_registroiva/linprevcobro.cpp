@@ -21,7 +21,7 @@
 #include "linprevcobro.h"
 #include "bcasientointeligenteview.h"
 #include "bcasientoview.h"
-
+#include "pluginbc_asiento.h"
 
 ///
 /**
@@ -324,7 +324,8 @@ int linprevcobro::creaPago()
     /// Para saber si al final se ha hecho el asiento o no almacenamos el valor
     /// actual del asiento para ver despues cual es el numero de asiento y comprobar
     /// si ha cambiado o no.
-    QString idasiento = empresaactual->intapuntsempresa() ->idasiento();
+//    QString idasiento = empresaactual->intapuntsempresa() ->idasiento();
+    QString idasiento = g_asiento ->idasiento();
 
     QDialog *diag = new QDialog ( 0 );
     diag->setModal ( true );
@@ -342,7 +343,8 @@ int linprevcobro::creaPago()
 
     diag->exec();
 
-    QString idasiento1 = empresaactual->intapuntsempresa() ->idasiento();
+//    QString idasiento1 = empresaactual->intapuntsempresa() ->idasiento();
+    QString idasiento1 = g_asiento ->idasiento();
     if ( idasiento1 == idasiento ) {
         delete diag;
         return 0;
