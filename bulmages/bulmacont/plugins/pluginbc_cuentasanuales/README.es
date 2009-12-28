@@ -1,0 +1,35 @@
+=======
+Plugins
+=======
+#README
+20080501
+
+Nombre: Cuentas Anuales
+
+Biblioteca: libpluginbc_cuentasanuales.so
+
+Descripción: <H1>Cuentas Anuales</H1>
+<P>Ver cuentas anual.</P>es
+<P>Permite ver las cuentas anuales.</P>
+<HR>
+
+ParmBD: -
+
+ArchivoSQLpatch: -
+
+ArchivoSQLdeins: -
+
+Dependencias:
+
+Incompatibles:
+
+Reports: 
+
+Categorias: Contabilidad general;Experimentales;
+
+Orden: 20
+
+Comentarios: -
+
+
+    

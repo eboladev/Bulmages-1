@@ -1,0 +1,79 @@
+# Spanish translations for PACKAGE package
+# Traducciones al español para el paquete PACKAGE.
+# Copyright (C) 2009 THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# Automatically generated, 2009.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: info@iglues.org\n"
+"POT-Creation-Date: 2009-12-28 00:56+0100\n"
+"PO-Revision-Date: 2009-12-28 00:56+0100\n"
+"Last-Translator: Automatically generated\n"
+"Language-Team: none\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: pluginbc_cuentasanuales.cpp:99
+msgid "&Asiento"
+msgstr ""
+
+#: ui_bccuentasanualesimprimirbase.h:203
+msgid "&Cancelar"
+msgstr "&Cancel·la"
+
+#: pluginbc_cuentasanuales.cpp:103
+msgid "&Cuentas Anuales"
+msgstr "&Comptes anuals"
+
+#: ui_bccuentasanualesimprimirbase.h:202
+msgid "Acep&tar"
+msgstr "Accep&ta"
+
+#: bccuentasanualesview.cpp:122
+msgid "Archivo"
+msgstr "Fitxer"
+
+#: ui_bccuentasanualesimprimirbase.h:195
+msgid "Balance"
+msgstr "Balanç"
+
+#: bccuentasanualesview.cpp:41 ui_bccuentasanualesbase.h:57
+msgid "Cuentas Anuales"
+msgstr "Comptes anuals"
+
+#: pluginbc_cuentasanuales.cpp:104 pluginbc_cuentasanuales.cpp:105
+msgid "Cuentas anuales"
+msgstr ""
+
+#: ui_bccuentasanualesimprimirbase.h:198 ui_bccuentasanualesimprimirbase.h:201
+#, fuzzy
+msgid "Fecha Final"
+msgstr "Data final"
+
+#: ui_bccuentasanualesimprimirbase.h:197 ui_bccuentasanualesimprimirbase.h:200
+#, fuzzy
+msgid "Fecha Inicial"
+msgstr "Data inicial"
+
+#: ui_bccuentasanualesimprimirbase.h:194
+#, fuzzy
+msgid "Impresion de Balances"
+msgstr "Gestió de &famílies"
+
+#: ui_bccuentasanualesimprimirbase.h:196
+#, fuzzy
+msgid "Primer Periodo"
+msgstr "Primer període"
+
+#: ui_bccuentasanualesimprimirbase.h:199
+#, fuzzy
+msgid "Segundo Periodo"
+msgstr "Primer període"
+
+#: pluginbc_cuentasanuales.cpp:95
+msgid "menuAsiento"
+msgstr ""

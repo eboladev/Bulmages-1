@@ -22,6 +22,7 @@
 #include <QLineEdit>
 #include <QLocale>
 
+#include "bcasientoview.h"
 #include "bccuentasanualesimprimirview.h"
 #include "blfunctions.h"
 #include "bccompany.h"
@@ -156,14 +157,20 @@ void BcCuentasAnualesImprimirView::on_mui_aceptar_released()
 
     /// OJO!! Antes de nada, hay que calcular el asiento de REGULARIZACION que nos guarda el resultado en la 129
     BcAsientoView *asientoReg;
-    ( ( BcCompany * ) mainCompany() ) ->regularizaempresa ( finicial, ffinal );
-    asientoReg = ( ( BcCompany * ) mainCompany() ) ->intapuntsempresa2();
+
+        int resur = g_plugins->lanza ( "SNewBcAsientoView", (BcCompany *) mainCompany() );
+        if ( ! resur) {
+            mensajeInfo("No se pudo crear instancia de asientos");
+            return;
+        } // end if
+        asientoReg = (BcAsientoView *) g_plugParams;
+//    ( ( BcCompany * ) mainCompany() ) ->regularizaempresa ( finicial, ffinal );
+    asientoReg ->asiento_regularizacion ( finicial, ffinal );
 
     /// Ahora, recopilamos todos los apuntes agrupados por cuenta para poder
     /// establecer as&iacute; los valores de cada cuenta para el periodo 1.
     mainCompany() ->begin();
-    query = "SELECT cuenta.idcuenta, numapuntes, cuenta.codigo, saldoant, debe, haber, saldo, debeej, haberej, saldoej FROM (SELECT idcuenta, codigo FROM cuenta) AS cuenta NATURAL JOIN (SELECT idcuenta, count(idcuenta) AS numapuntes,sum(debe) AS debeej, sum(haber) AS haberej, (sum(debe)-sum(hab
-er)) AS saldoej FROM apunte WHERE EXTRACT(year FROM fecha) = EXTRACT(year FROM timestamp '" + finicial + "') GROUP BY idcuenta) AS ejercicio LEFT OUTER JOIN (SELECT idcuenta,sum(debe) AS debe, sum(haber) AS haber, (sum(debe)-sum(haber)) AS saldo FROM apunte WHERE fecha >= '" + finicial + "' AND fecha <= '" + ffinal + "' AND conceptocontable NOT SIMILAR TO '" + asiento + "' GROUP BY idcuenta) AS periodo ON periodo.idcuenta=ejercicio.idcuenta LEFT OUTER JOIN (SELECT idcuenta, (sum(debe)-sum(haber)) AS saldoant FROM apunte WHERE fecha < '" + finicial + "' GROUP BY idcuenta) AS anterior ON cuenta.idcuenta=anterior.idcuenta ORDER BY codigo";
+    query = "SELECT cuenta.idcuenta, numapuntes, cuenta.codigo, saldoant, debe, haber, saldo, debeej, haberej, saldoej FROM (SELECT idcuenta, codigo FROM cuenta) AS cuenta NATURAL JOIN (SELECT idcuenta, count(idcuenta) AS numapuntes,sum(debe) AS debeej, sum(haber) AS haberej, (sum(debe)-sum(haber)) AS saldoej FROM apunte WHERE EXTRACT(year FROM fecha) = EXTRACT(year FROM timestamp '" + finicial + "') GROUP BY idcuenta) AS ejercicio LEFT OUTER JOIN (SELECT idcuenta,sum(debe) AS debe, sum(haber) AS haber, (sum(debe)-sum(haber)) AS saldo FROM apunte WHERE fecha >= '" + finicial + "' AND fecha <= '" + ffinal + "' AND conceptocontable NOT SIMILAR TO '" + asiento + "' GROUP BY idcuenta) AS periodo ON periodo.idcuenta=ejercicio.idcuenta LEFT OUTER JOIN (SELECT idcuenta, (sum(debe)-sum(haber)) AS saldoant FROM apunte WHERE fecha < '" + finicial + "' GROUP BY idcuenta) AS anterior ON cuenta.idcuenta=anterior.idcuenta ORDER BY codigo";
     BlDbRecordSet *hojas;
     hojas = mainCompany() ->loadQuery ( query, "Periodo1" );
     /// Para cada cuenta con sus saldos calculados hay que actualizar hojas del &aacute;rbol.
@@ -175,8 +182,9 @@ er)) AS saldoej FROM apunte WHERE EXTRACT(year FROM fecha) = EXTRACT(year FROM t
     asientoReg->on_mui_borrar_released ( FALSE ); /// borramos el asiento temporal creado indicando que no queremos confirmacion
 
     /// Para el segundo periodo, calculamos el asiento de REGULARIZACION que nos guarda el resultado en la 129
-    ( ( BcCompany * ) mainCompany() ) ->regularizaempresa ( finicial1, ffinal1 );
-    asientoReg = ( ( BcCompany * ) mainCompany() ) ->intapuntsempresa2();
+//    ( ( BcCompany * ) mainCompany() ) ->regularizaempresa ( finicial1, ffinal1 );
+    asientoReg ->asiento_regularizacion ( finicial1, ffinal1 );
+//    asientoReg = ( ( BcCompany * ) mainCompany() ) ->intapuntsempresa2();
 
     /// Ahora, recopilamos todos los apuntes agrupados por cuenta para poder
     /// establecer as&iacute; los valores de cada cuenta para el periodo 2.
