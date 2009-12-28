@@ -70,6 +70,7 @@ void MyPluginMayor::elslot()
       g_mayor = new BcExtractoView ( ( BcCompany * ) mainCompany(), 0 );
       mainCompany() ->pWorkspace() ->addWindow ( g_mayor );
     } // end if
+    g_mayor->hide();
     g_mayor->show();
     _depura ( "END MyPluginMayor::elslot", 0 );
 }
@@ -105,7 +106,7 @@ void MyPluginMayor::inicializa ( BcBulmaCont *bges )
     pPluginMenu->addAction ( accion );
 
     /// A&ntilde;adimos la nueva opci&oacute;n al men&uacute; principal del programa.
-    bges->menuBar() ->insertMenu ( bges->menuVentana->menuAction(), pPluginMenu );
+    bges->menuBar() ->insertMenu ( bges->menuMaestro->menuAction(), pPluginMenu );
     bges->toolBar->addAction ( accion );
 
     _depura ( "END MyPluginMayor::inicializa", 0 );
@@ -126,15 +127,10 @@ int entryPoint ( BcBulmaCont *bcont )
     setlocale ( LC_ALL, "" );
     bindtextdomain ( "pluginbc_mayor", g_confpr->valor ( CONF_DIR_TRADUCCION ).toAscii().constData() );
 
-#ifdef TOMEU_PRUEBAS
-
     g_mayor = NULL;
-#endif
 
     MyPluginMayor *plug = new MyPluginMayor();
     plug->inicializa ( bcont );
-
-
 
     _depura ( "END entryPoint::entryPoint", 0 );
     return 0;

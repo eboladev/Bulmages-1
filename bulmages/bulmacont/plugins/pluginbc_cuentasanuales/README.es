@@ -19,7 +19,7 @@ ArchivoSQLpatch: -
 
 ArchivoSQLdeins: -
 
-Dependencias:
+Dependencias: libpluginbc_asiento.so
 
 Incompatibles:
 
@@ -27,7 +27,7 @@ Reports:
 
 Categorias: Contabilidad general;Experimentales;
 
-Orden: 20
+Orden: 500
 
 Comentarios: -
 

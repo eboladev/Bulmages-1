@@ -67,6 +67,7 @@ void MyPluginDiario::elslot()
       g_diario = new BcDiarioView ( ( BcCompany * ) mainCompany(), 0 );
       mainCompany() ->pWorkspace() ->addWindow ( g_diario );
     } // end if
+    g_diario->hide();
     g_diario->show();
     _depura ( "END MyPluginDiario::elslot", 0 );
 }
@@ -101,7 +102,7 @@ void MyPluginDiario::inicializa ( BcBulmaCont *bges )
     pPluginMenu->addAction ( accion );
 
     /// A&ntilde;adimos la nueva opci&oacute;n al men&uacute; principal del programa.
-    bges->menuBar() ->insertMenu ( bges->menuVentana->menuAction(), pPluginMenu );
+    bges->menuBar() ->insertMenu ( bges->menuMaestro->menuAction(), pPluginMenu );
     _depura ( "END MyPluginDiario::inicializa", 0 );
 }
 

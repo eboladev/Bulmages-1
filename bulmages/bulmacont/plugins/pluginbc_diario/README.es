@@ -18,7 +18,7 @@ ArchivoSQLpatch: -
 
 ArchivoSQLdeins: -
 
-Dependencias:
+Dependencias: libpluginbc_asiento.so;
 
 Incompatibles:
 

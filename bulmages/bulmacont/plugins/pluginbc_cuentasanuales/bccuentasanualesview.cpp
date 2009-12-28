@@ -42,7 +42,8 @@ BcCuentasAnualesView::BcCuentasAnualesView ( BcCompany  *emp, QWidget *parent )
     /// Establecemos cual va a ser la tabla en la que basarse para los permisos
     setDbTableName ( "asiento" );
 
-    this->setAttribute ( Qt::WA_DeleteOnClose );
+//    this->setAttribute ( Qt::WA_DeleteOnClose );
+
     setupUi ( this );
     m_modo = 0;
     inicializatabla();

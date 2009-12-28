@@ -147,6 +147,8 @@ class Contabilidad(Ui_ModificarContabilidadBase, Empresa):
 
          self.i = self.i + 1
          self.progress.setValue(self.progress.value() + 1)
+         
+      self.semaforo = 1
       self.progress.hide()
         
 
@@ -205,48 +207,92 @@ class Contabilidad(Ui_ModificarContabilidadBase, Empresa):
 	  self.i = self.i + 1
 	self.x = self.x - 1
         self.progress.setValue(self.progress.value() + 1)
-
-
       self.progress.hide()
 
-   def marcar(self, plug):
-      self.i = 0
-      while (self.i < self.mui_plugins.rowCount()):
-         if (self.mui_plugins.item(self.i,10).text() == plug):
-            self.mui_plugins.item(self.i,0).setCheckState(Qt.Checked)
-         self.i = self.i + 1
 
-   def desmarcar(self, plug):
-      self.i = 0
-      while (self.i < self.mui_plugins.rowCount()):
-         if (self.mui_plugins.item(self.i,10).text() == plug):
-            self.mui_plugins.item(self.i,0).setCheckState(Qt.Unchecked)
-         self.i = self.i + 1
+   def marcar(self, plug, rec, first = 0):
+      i = 0
+      while (i < self.mui_plugins.rowCount()):
+         if (self.mui_plugins.item(i,10).text() == plug):
+            if (self.mui_plugins.item(i, 0).checkState() == Qt.Unchecked or first == 1):
+              self.mui_plugins.item(i,0).setCheckState(Qt.Checked)
+              if (rec == 1):
+                # Desmarcamos las incompatibilidades
+                self.arr = self.mui_plugins.item(i,6).text().replace(' ;',';').replace('; ',';').split(QString(";"))
+                if self.arr != ['']:
+                        for self.dep in self.arr:
+                            self.desmarcar(self.dep,1)
+                # Marcamos las dependencias
+                self.arr = self.mui_plugins.item(i,5).text().replace(' ;',';').replace('; ',';').split(QString(";"))
+                if self.arr != ['']:
+                        for self.dep in self.arr:
+                            self.marcar(self.dep,1)
+         i = i + 1
+
+   def desmarcar(self, plug, rec, first = 0):
+      i = 0
+      while (i < self.mui_plugins.rowCount()):
+         if (self.mui_plugins.item(i, 0).checkState() == Qt.Checked or first == 1):
+           if (rec == 1):
+              # Marcamos las dependencias
+              self.arr = self.mui_plugins.item(i,5).text().replace(' ;',';').replace('; ',';').split(QString(";"))
+              if self.arr != ['']:
+                 for self.dep in self.arr:
+                    if (self.dep == plug):
+                       self.desmarcar(self.mui_plugins.item(i,10).text(),1)
+                       self.mui_plugins.item(i,0).setCheckState(Qt.Unchecked)
+         i = i + 1
+
+
+   def on_mui_plugins_cellPressed(self, row, col):
+      self.estado = self.mui_plugins.item(row,0).checkState()
+      # Escribimos la descripcion
+      self.mui_descripcion.setText(self.mui_plugins.item(row,1).text() + "<b>" + self.mui_plugins.item(row,10).text() + "</b><br>"+ self.mui_plugins.item(row,3).text() + "<br><b>Categorias:</b> " + self.mui_plugins.item(row,8).text() + "<br><br><b>Dependencias:</b> " + self.mui_plugins.item(row,5).text() + "<br><br><b>Incompatibilidades:</b> " + self.mui_plugins.item(row,6).text() + "<br><br><b>Parches SQL:</b>" + self.mui_plugins.item(row,4).text() + "<br>" + self.mui_plugins.item(row,9).text() + "<br><b>Informes:</b><br>" + self.mui_plugins.item(row,11).text())
+
 
    def on_mui_plugins_cellClicked(self, row, col):
       # Escribimos la descripcion 
       self.mui_descripcion.setText(self.mui_plugins.item(row,1).text() + "<b>" + self.mui_plugins.item(row,10).text() + "</b><br>"+ self.mui_plugins.item(row,3).text() + "<br><b>Categorias:</b> " + self.mui_plugins.item(row,8).text()+ "<br><br><b>Dependencias:</b> " + self.mui_plugins.item(row,5).text() + "<br><br><b>Incompatibilidades:</b> " + self.mui_plugins.item(row,6).text() + "<br><br><b>Parches SQL:</b>" + self.mui_plugins.item(row,4).text() + "<br>" + self.mui_plugins.item(row,9).text() + "<br><b>Informes:</b><br>" + self.mui_plugins.item(row,11).text() )
-     
+      
       if (self.semaforo == 1):
-         # Marcamos las dependencias
-         self.i = 0
-         while (self.i < self.mui_plugins.rowCount()):
-            if (self.mui_plugins.item(self.i, 0).checkState() == Qt.Checked):
-               self.arr = self.mui_plugins.item(self.i,5).text().split(QString(","))
-               for self.dep in self.arr:
-                  self.marcar(self.dep)
-            self.i = self.i +1
-         # Desmarcamos las incompatibilidades
-         self.arr = self.mui_plugins.item(row,6).text().split(QString(","))
-         for self.dep in self.arr:
-            self.desmarcar(self.dep)
-         self.i = 0
-         while (self.i < self.mui_plugins.rowCount()):
-            if (self.mui_plugins.item(self.i, 0).checkState() == Qt.Checked):
-               self.arr = self.mui_plugins.item(self.i,6).text().split(QString(","))
-               for self.dep in self.arr:
-                  self.desmarcar(self.dep)
-            self.i = self.i +1
+	  if (self.estado != self.mui_plugins.item(row,0).checkState()):
+	      # Comprobamos que esta marcado el checkbox de la fila donde hemos clicado:
+	      if (self.mui_plugins.item(row, 0).checkState() == Qt.Unchecked):
+	      # Comprobamos que esta marcado el checkbox de la fila donde hemos clicado:
+		  self.desmarcar(self.mui_plugins.item(row,10).text(),1,1)
+	      if (self.mui_plugins.item(row, 0).checkState() == Qt.Checked):
+		  # Desmarcamos las incompatibilidades
+		  self.arr = self.mui_plugins.item(row,6).text().replace(' ;',';').replace('; ',';').split(QString(";"))
+		  if self.arr != ['']:
+		      Yes = 'Si'
+		      No = 'No'
+		      message = QtGui.QMessageBox(self)
+		      message.setText('El plugin <b>' +str(self.mui_plugins.item(row,10).text() + "</b> tiene incompatibilidades. Quieres desinstalarlas?"))
+		      message.setWindowTitle('Atencion!')
+		      message.setIcon(QtGui.QMessageBox.Warning)
+		      message.addButton(Yes, QtGui.QMessageBox.AcceptRole)
+		      message.addButton(No, QtGui.QMessageBox.RejectRole)
+		      message.exec_()
+		      respuesta = message.clickedButton().text()
+		      if respuesta == Yes:
+			  for self.dep in self.arr:
+			      self.desmarcar(self.dep,1,1)
+		  # Marcamos las dependencias
+		  self.arr = self.mui_plugins.item(row,5).text().replace(' ;',';').replace('; ',';').split(QString(";"))
+		  if self.arr != ['']:
+		      Yes = 'Si'
+		      No = 'No'
+		      message = QtGui.QMessageBox(self)
+		      message.setText('El plugin <b>' +str(self.mui_plugins.item(row,10).text() + "</b> tiene dependencias. Quieres instalarlas?"))
+		      message.setWindowTitle('Atencion!')
+		      message.setIcon(QtGui.QMessageBox.Warning)
+		      message.addButton(Yes, QtGui.QMessageBox.AcceptRole)
+		      message.addButton(No, QtGui.QMessageBox.RejectRole)
+		      message.exec_()
+		      respuesta = message.clickedButton().text()
+		      if respuesta == Yes:
+			  for self.dep in self.arr:
+			      self.marcar(self.dep,1,1)
 
 
    def trataOpenReports(self):

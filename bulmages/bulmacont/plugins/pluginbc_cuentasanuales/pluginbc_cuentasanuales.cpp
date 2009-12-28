@@ -69,6 +69,7 @@ void MyPluginCuentasAnuales::elslot()
       g_cuentasAnuales = new BcCuentasAnualesView ( ( BcCompany * ) mainCompany(), 0 );
       mainCompany() ->pWorkspace() -> addWindow ( g_cuentasAnuales );
     } // end if
+    g_cuentasAnuales->hide();
     g_cuentasAnuales->show();
     _depura ( "END MyPluginCuentasAnuales::elslot", 0 );
 }
@@ -86,8 +87,7 @@ void MyPluginCuentasAnuales::inicializa ( BcBulmaCont *bges )
     setMainCompany ( bges->empresaactual() );
 
     /// Creamos la ventana de asientos que va a ser fija.
-    g_cuentasAnuales = new BcCuentasAnualesView ( ( BcCompany * ) mainCompany(), 0 );
-    mainCompany() ->pWorkspace() ->addWindow ( g_cuentasAnuales );
+    g_cuentasAnuales = NULL;
 
     m_bulmacont = bges;
     QMenu *pPluginMenu;
@@ -103,6 +103,7 @@ void MyPluginCuentasAnuales::inicializa ( BcBulmaCont *bges )
     QAction *accion = new QAction ( _ ( "&Cuentas Anuales" ), 0 );
     accion->setStatusTip ( _ ( "Cuentas anuales" ) );
     accion->setWhatsThis ( _ ( "Cuentas anuales" ) );
+    connect ( accion, SIGNAL ( activated() ), this, SLOT ( elslot() ) );
     pPluginMenu->addAction ( accion );
 
 

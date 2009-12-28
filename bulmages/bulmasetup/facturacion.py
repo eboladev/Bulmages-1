@@ -454,7 +454,6 @@ class Facturacion(Ui_ModificarFacturacionBase, Empresa):
       self.mui_descripcion.setText(self.mui_plugins.item(row,1).text() + "<b>" + self.mui_plugins.item(row,10).text() + "</b><br>"+ self.mui_plugins.item(row,3).text() + "<br><b>Categorias:</b> " + self.mui_plugins.item(row,8).text() + "<br><br><b>Dependencias:</b> " + self.mui_plugins.item(row,5).text() + "<br><br><b>Incompatibilidades:</b> " + self.mui_plugins.item(row,6).text() + "<br><br><b>Parches SQL:</b>" + self.mui_plugins.item(row,4).text() + "<br>" + self.mui_plugins.item(row,9).text() + "<br><b>Informes:</b><br>" + self.mui_plugins.item(row,11).text())
      
    def on_mui_plugins_cellClicked(self, row, col):
-
     if (self.semaforo == 1):
         if (self.estado != self.mui_plugins.item(row,0).checkState()):
             # Comprobamos que esta marcado el checkbox de la fila donde hemos clicado:

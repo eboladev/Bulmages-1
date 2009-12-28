@@ -71,6 +71,7 @@ void MyPluginAsiento::elslot()
       g_asiento = new BcAsientoView ( ( BcCompany * ) mainCompany(), 0 );
       mainCompany() ->pWorkspace() -> addWindow ( g_asiento );
     } // end if
+    g_asiento->hide();
     g_asiento->show();
     _depura ( "END MyPluginAsiento::elslot", 0 );
 }
@@ -87,6 +88,7 @@ void MyPluginAsiento::elslot1()
       g_listasientos->presentar();
       mainCompany()-> pWorkspace() -> addWindow ( g_listasientos );
     } // end if
+    g_listasientos->hide();
     g_listasientos->show();
     _depura ( "END MyPluginAsiento::elslot1", 0 );
 }
@@ -306,7 +308,7 @@ void MyPluginAsiento::inicializa ( BcBulmaCont *bges )
     pPluginMenu->addAction ( accion7 );
 
     /// A&ntilde;adimos la nueva opci&oacute;n al men&uacute; principal del programa.
-    bges->menuBar() ->insertMenu ( bges->menuVentana->menuAction(), pPluginMenu );
+    bges->menuBar() ->insertMenu ( bges->menuMaestro->menuAction(), pPluginMenu );
 
     _depura ( "END MyPluginAsiento::inicializa", 0 );
 }
