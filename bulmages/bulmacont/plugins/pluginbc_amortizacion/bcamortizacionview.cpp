@@ -442,7 +442,15 @@ void BcAmortizacionSubForm::procesaMenu ( QAction *opcion )
     } // end if
     if ( opcion->text() == _ ( "Borrar asiento" ) ) {
         /// Si se va a borrar el asiento.
-        ( ( BcCompany * ) mainCompany() ) ->intapuntsempresa() ->on_mui_borrar_released();
+
+        int resur = g_plugins->lanza ( "SNewBcAsientoView", (BcCompany *) mainCompany() );
+        if ( ! resur) {
+            mensajeInfo("No se pudo crear instancia de asientos");
+            return;
+        } // end if
+        BcAsientoView *asiento = (BcAsientoView *) g_plugParams;
+
+        asiento  ->on_mui_borrar_released();
     } // end if
     if ( opcion->text() == _ ( "Generar asiento" ) ) {
         /// Se va a generar el asiento.
@@ -490,7 +498,15 @@ void BcAmortizacionSubForm::procesaMenu ( QAction *opcion )
         nueva->on_mui_aceptar_released();
 
         /// Cogemos los datos del asiento recien creado.
-        int numasiento1 = ( ( BcCompany * ) mainCompany() ) ->intapuntsempresa() ->idasiento().toInt();
+        int resur = g_plugins->lanza ( "SNewBcAsientoView", (BcCompany *) mainCompany() );
+        if ( ! resur) {
+            mensajeInfo("No se pudo crear instancia de asientos");
+            return;
+        } // end if
+        BcAsientoView *asiento = (BcAsientoView *) g_plugParams;
+
+
+        int numasiento1 = asiento ->idasiento().toInt();
         QString ordenasiento;
         QString SQLQuery = "SELECT * FROM asiento where idasiento = " + QString::number ( numasiento1 );
         mainCompany() ->begin();

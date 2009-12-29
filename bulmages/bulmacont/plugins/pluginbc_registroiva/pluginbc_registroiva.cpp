@@ -94,6 +94,17 @@ void myRegIVA::elslot1()
 **/
 void myRegIVA::inicializa ( BcBulmaCont *bges )
 {
+
+    QMenu *pPluginMenu;
+    /// Miramos si existe un menu Ver
+    pPluginMenu = bges->menuBar() ->findChild<QMenu *> ( _ ( "menuVer" ) );
+
+    /// Creamos el men&uacute;.
+    if ( !pPluginMenu ) {
+        pPluginMenu = new QMenu ( _ ( "&Ver" ), bges->menuBar() );
+        pPluginMenu->setObjectName ( QString::fromUtf8 ( "menuVer" ) );
+    } // end if
+
     /// Creamos el men&uacute;.
     m_bulmacont = bges;
     QAction *accion = new QAction ( _ ( "&Registro de IVA" ), 0 );
@@ -106,10 +117,14 @@ void myRegIVA::inicializa ( BcBulmaCont *bges )
 
     connect ( accion, SIGNAL ( activated() ), this, SLOT ( elslot() ) );
     connect ( accion1, SIGNAL ( activated() ), this, SLOT ( elslot1() ) );
+
+    pPluginMenu->addAction ( accion );
+    pPluginMenu->addAction ( accion1 );
+
     /// A&ntilde;adimos la nueva opci&oacute;n al men&uacute; principal del programa.
-    bges->menuListados->insertAction ( bges->actionCuentas_Anuales, accion );
-    bges->menuListados->insertAction ( bges->actionCuentas_Anuales, accion1 );
-    bges->menuListados->insertSeparator ( bges->actionCuentas_Anuales );
+    bges->menuBar() ->insertMenu ( bges->menuMaestro->menuAction(), pPluginMenu );
+    bges->toolBar->addAction ( accion );
+    bges->toolBar->addAction ( accion1 );
 }
 
 

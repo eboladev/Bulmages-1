@@ -78,7 +78,6 @@
     <property name="title">
      <string>&amp;Listados</string>
     </property>
-    <addaction name="actionCuentas_Anuales"/>
     <addaction name="separator"/>
     <addaction name="separator"/>
     <addaction name="actionListado_347"/>
@@ -149,11 +148,6 @@
    </property>
    <property name="shortcut">
     <string>Ctrl+Q</string>
-   </property>
-  </action>
-  <action name="actionCuentas_Anuales">
-   <property name="text">
-    <string>Cuentas a&amp;nuales</string>
    </property>
   </action>
   <action name="actionMasas_Patrimoniales">

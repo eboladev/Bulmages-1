@@ -1,0 +1,322 @@
+# Spanish translations for PACKAGE package
+# Traducciones al español para el paquete PACKAGE.
+# Copyright (C) 2009 THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# Automatically generated, 2009.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: info@iglues.org\n"
+"POT-Creation-Date: 2009-12-30 00:06+0100\n"
+"PO-Revision-Date: 2009-12-30 00:06+0100\n"
+"Last-Translator: Automatically generated\n"
+"Language-Team: none\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: ui_bcamortizacionbase.h:680
+msgid "&Aceptar"
+msgstr "&Aceptar"
+
+#: pluginbc_amortizacion.cpp:101
+msgid "&Amortizaciones"
+msgstr "&Amortizaciones"
+
+#: ui_bcamortizacionbase.h:674
+msgid "&Calcular"
+msgstr "&Calcular"
+
+#: ui_bcamortizacionbase.h:681
+msgid "&Cancelar"
+msgstr "&Cancelar"
+
+#: ui_bcamortizacionbase.h:670
+msgid "&Decremental"
+msgstr "&Decremental"
+
+#: ui_bcamortizacionbase.h:671
+msgid "&Incremental"
+msgstr "&Incremental"
+
+#: pluginbc_amortizacion.cpp:97
+msgid "&Ver"
+msgstr "&Ver"
+
+#: bcamortizacionview.cpp:70
+msgid "Agrupacion"
+msgstr "Agrupación"
+
+#: ui_bcamortizacionbase.h:653
+msgid "Agrupacion:"
+msgstr "Agrupación:"
+
+#: ui_bcamortizacionbase.h:675
+msgid "Alt+C"
+msgstr "Alt+C"
+
+#: ui_bcamortizacionbase.h:672
+msgid "Alt+I"
+msgstr "Alt+I"
+
+#: ui_bcamortizacionbase.h:679
+msgid "Amor&tizacion"
+msgstr "Amor&tización"
+
+#: bcamortizacionview.cpp:55 ui_bcamortizacionbase.h:635
+msgid "Amortizacion"
+msgstr "Amortización"
+
+#: ui_bcamortizacionbase.h:677
+msgid "Amortizado:"
+msgstr "Amortizado:"
+
+#: bcamortizacionview.cpp:246 bcamortizacionview.cpp:273
+#: bcamortizacionview.cpp:301 bcamortizacionview.cpp:332
+#: ui_bcamortizacionbase.h:658
+msgid "Anual"
+msgstr "Anual"
+
+#: ui_bcamortizacionbase.h:645 ui_bcamortizacionbase.h:648
+#: ui_bcamortizacionlistbase.h:143 ui_bcamortizacionlistbase.h:146
+#: ui_bcamortizacionlistbase.h:151 ui_bcamortizacionlistbase.h:154
+msgid "Borrar amortizacion"
+msgstr "Borrar amortización"
+
+#: bcamortizacionview.cpp:386 bcamortizacionview.cpp:427
+#: bcamortizacionview.cpp:436 bcamortizacionview.cpp:443
+msgid "Borrar asiento"
+msgstr "Borrar asiento"
+
+#: bcamortizacionview.cpp:417
+msgid "Borrar cuota"
+msgstr "Borrar cuota"
+
+#: bcamortizacionview.cpp:80
+msgid "Cantidad"
+msgstr "Cantidad"
+
+#: ui_bcamortizacionbase.h:651 ui_bcamortizacionlistbase.h:149
+msgid "Ctrl+D"
+msgstr "Ctrl+D"
+
+#: ui_bcamortizacionlistbase.h:141
+msgid "Ctrl+N"
+msgstr "Ctrl+N"
+
+#: ui_bcamortizacionbase.h:643
+msgid "Ctrl+S"
+msgstr "Ctrl+S"
+
+#: ui_bcamortizacionbase.h:664
+msgid "Cuenta de activo:"
+msgstr "Cuenta de activo:"
+
+#: ui_bcamortizacionbase.h:667
+msgid "Cuenta de amortizacion:"
+msgstr "Cuenta de amortización:"
+
+#: ui_bcamortizacionbase.h:676
+msgid "Cuotas:"
+msgstr "Cuotas:"
+
+#: bcamortizacionview.cpp:59
+msgid "Descripcion de la amortizacion"
+msgstr "Descripción de la amortización"
+
+#: bcamortizacionview.cpp:385 bcamortizacionview.cpp:436
+msgid "Desvincular asiento"
+msgstr "Desvincular asiento"
+
+#: bcamortizacionview.cpp:68
+msgid "Direccion del proveedor"
+msgstr "Dirección del proveedor"
+
+#: bcamortizacionview.cpp:78
+msgid "Ejercicio"
+msgstr "Ejercicio"
+
+#: bcamortizacionlistview.cpp:107
+msgid "Error al borrar la amortizacion"
+msgstr "Error al borrar la amortización"
+
+#: bcamortizacionview.cpp:211
+msgid "Error en la carga de la amortizacion"
+msgstr "Error en la carga de la amortización"
+
+#: ui_bcamortizacionlistbase.h:157
+msgid "F5"
+msgstr "F5"
+
+#: bcamortizacionlistview.cpp:50
+msgid "Fecha 1 cuota"
+msgstr "Fecha 1.ª cuota"
+
+#: bcamortizacionview.cpp:61
+msgid "Fecha 1a cuota"
+msgstr "Fecha 1.ª cuota"
+
+#: ui_bcamortizacionbase.h:663
+msgid "Fecha 1ª cuota:"
+msgstr "Fecha 1.ª cuota"
+
+#: bcamortizacionlistview.cpp:49
+msgid "Fecha compra"
+msgstr "Fecha compra"
+
+#: ui_bcamortizacionbase.h:655
+msgid "Fecha de compra:"
+msgstr "Fecha de compra:"
+
+#: bcamortizacionview.cpp:60
+msgid "Fecha de la compra"
+msgstr "Fecha de la compra"
+
+#: bcamortizacionview.cpp:79
+msgid "Fecha prevista"
+msgstr "Fecha prevista"
+
+#: bcamortizacionview.cpp:381 bcamortizacionview.cpp:455
+msgid "Generar asiento"
+msgstr "Generar asiento"
+
+#: ui_bcamortizacionbase.h:637 ui_bcamortizacionbase.h:640
+msgid "Guardar amortizacion"
+msgstr "Guardar amortización"
+
+#: bcamortizacionlistview.cpp:47 bcamortizacionview.cpp:71
+#: bcamortizacionview.cpp:83
+msgid "Id amortizacion"
+msgstr "ID amortización"
+
+#: bcamortizacionview.cpp:81
+msgid "Id asiento"
+msgstr "ID asiento"
+
+#: bcamortizacionview.cpp:73
+msgid "Id cuenta amortizacion"
+msgstr "ID cuenta amortización"
+
+#: bcamortizacionview.cpp:82
+msgid "Id lineas de amortizacion"
+msgstr "ID líneas de amortización"
+
+#: bcamortizacionview.cpp:72
+msgid "Identificador"
+msgstr "Identificador"
+
+#: ui_bcamortizacionbase.h:673
+msgid "Li&neal"
+msgstr "Li&neal"
+
+#: ui_bcamortizacionlistbase.h:133
+msgid "Listado de amortizaciones"
+msgstr "Listado de amortizaciones"
+
+#: bcamortizacionview.cpp:248 bcamortizacionview.cpp:275
+#: bcamortizacionview.cpp:303 bcamortizacionview.cpp:334
+#: ui_bcamortizacionbase.h:661
+msgid "Mensual"
+msgstr "Mensual"
+
+#: bcamortizacionview.cpp:65
+msgid "Metodo"
+msgstr "Método"
+
+#: ui_bcamortizacionbase.h:668
+msgid "Metodo:"
+msgstr "Método:"
+
+#: bcamortizacionview.cpp:66
+msgid "NIF del proveedor"
+msgstr "NIF del proveedor"
+
+#: bcamortizacionlistview.cpp:48
+msgid "Nombre"
+msgstr "Nombre"
+
+#: bcamortizacionview.cpp:58
+msgid "Nombre de la amortizacion"
+msgstr "Nombre de la amortización"
+
+#: bcamortizacionview.cpp:67
+msgid "Nombre del proveedor"
+msgstr "Nombre del proveedor"
+
+#: ui_bcamortizacionbase.h:652
+msgid "Nombre:"
+msgstr "Nombre:"
+
+#: ui_bcamortizacionlistbase.h:135 ui_bcamortizacionlistbase.h:138
+msgid "Nueva amortizacion"
+msgstr "Nueva amortización"
+
+#: bcamortizacionlistview.cpp:51
+msgid "Num cuotas"
+msgstr "Número cuotas"
+
+#: bcamortizacionview.cpp:64
+msgid "Numero de cuotas"
+msgstr "Número de cuotas"
+
+#: ui_bcamortizacionbase.h:654
+msgid "Nº de cuotas:"
+msgstr "Número de cuotas:"
+
+#: ui_bcamortizacionbase.h:678
+msgid "Pendiente:"
+msgstr "Pendiente:"
+
+#: bcamortizacionview.cpp:63
+msgid "Periodicidad"
+msgstr "Periodicidad"
+
+#: ui_bcamortizacionbase.h:665
+msgid "Periodicidad:"
+msgstr "Periodicidad:"
+
+#: pluginbc_amortizacion.cpp:102
+msgid "Permite ver las amortizaciones"
+msgstr ""
+
+#: pluginbc_amortizacion.cpp:103
+msgid "Podra disponer de la informacion de las amortizaciones"
+msgstr ""
+
+#: ui_bcamortizacionbase.h:669
+msgid "Porcent&ual"
+msgstr "Porcent&ual"
+
+#: bcamortizacionview.cpp:250 bcamortizacionview.cpp:277
+#: bcamortizacionview.cpp:305 bcamortizacionview.cpp:336
+#: ui_bcamortizacionbase.h:659
+msgid "Semestral"
+msgstr "Semestral"
+
+#: bcamortizacionview.cpp:69
+msgid "Telefono del proveedor"
+msgstr "Teléfono del proveedor"
+
+#: bcamortizacionview.cpp:252 bcamortizacionview.cpp:279
+#: bcamortizacionview.cpp:307 bcamortizacionview.cpp:338
+#: ui_bcamortizacionbase.h:660
+msgid "Trimestral"
+msgstr "Trimestral"
+
+#: ui_bcamortizacionbase.h:666
+msgid "Valor de compra:"
+msgstr "Valor de compra:"
+
+#: bcamortizacionview.cpp:62
+msgid "Valor de la compra"
+msgstr "Valor de la compra"
+
+#: bcamortizacionview.cpp:383 bcamortizacionview.cpp:427
+msgid "Ver asiento"
+msgstr "Ver asiento"
+
+#: pluginbc_amortizacion.cpp:93
+msgid "menuVer"
+msgstr ""

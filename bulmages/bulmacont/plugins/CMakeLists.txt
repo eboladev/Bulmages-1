@@ -33,6 +33,7 @@ add_subdirectory(pluginbc_duplicarasiento)
 add_subdirectory(pluginbc_bloqueofechas)
 add_subdirectory(pluginbc_asiento)
 add_subdirectory(pluginbc_cuentasanuales)
+add_subdirectory(pluginbc_amortizacion)
 
 # pluginadocumental deprecated.
 #add_subdirectory(pluginbc_documentoadjunto)
