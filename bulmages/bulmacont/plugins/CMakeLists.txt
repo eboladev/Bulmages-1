@@ -34,6 +34,7 @@ add_subdirectory(pluginbc_bloqueofechas)
 add_subdirectory(pluginbc_asiento)
 add_subdirectory(pluginbc_cuentasanuales)
 add_subdirectory(pluginbc_amortizacion)
+add_subdirectory(pluginbc_cuenta)
 
 # pluginadocumental deprecated.
 #add_subdirectory(pluginbc_documentoadjunto)
