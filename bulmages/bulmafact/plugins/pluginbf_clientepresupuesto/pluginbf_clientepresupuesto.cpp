@@ -113,8 +113,6 @@ void mypluginpres::inicializa ( BfBulmaFact *bges )
         pPluginMenu->addAction ( npago );
         bges->Fichas->addAction ( npago );
         connect ( npago, SIGNAL ( activated() ), this, SLOT ( elslot1() ) );
-
-
     }// end if
     _depura ( "END mypluginpres::inicializa", 0 );
 }

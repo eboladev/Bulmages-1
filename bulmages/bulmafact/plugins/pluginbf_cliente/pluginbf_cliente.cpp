@@ -175,8 +175,6 @@ int Busqueda_on_mui_buscar_released ( BlSearchWidget *busq )
         } // end if
 
         delete diag;
-
-
         return 1;
     } // end if
 

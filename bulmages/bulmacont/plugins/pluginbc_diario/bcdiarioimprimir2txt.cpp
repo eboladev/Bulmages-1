@@ -21,7 +21,6 @@
 #include <unistd.h>
 
 #include "bcdiarioimprimir2txt.h"
-#include "bcplancontablelistview.h"
 #include "bccompany.h"
 
 

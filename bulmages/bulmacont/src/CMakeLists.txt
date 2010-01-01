@@ -29,8 +29,6 @@ set(bulmacontEx main.cxx)
 
 set(bulmacont_MOCS bcbulmacont.h
            bcaboutview.h
-           bcplancontablelistview.h
-           bccuentaview.h
            bcregistroivaimprimirview.h
            bcmasapatrimonialview.h
            bcmasapatrimoniallistview.h
@@ -49,7 +47,6 @@ set(bulmacont_MOCS bcbulmacont.h
            bcbuscarcentrocoste.h
            bcbuscarcanal.h 
            bcform.h
-           bccuentalistview.h
            bcasientoduplicarview.h)
 
 

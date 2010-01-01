@@ -24,8 +24,7 @@
 
 #include "bccompany.h"
 #include "blcompanydialog.h"
-#include "bcplancontablelistview.h"
-#include "bccuentaview.h"
+// #include "bcplancontablelistview.h"
 #include "bccanalview.h"
 #include "bccentrocosteview.h"
 #include "bcmasapatrimoniallistview.h"
@@ -207,13 +206,14 @@ int BcCompany::createMainWindows ( BlSplashScreen *splash )
         /// Inicializamos las ventanas de uso generalizado.
 
         /// pb = 90%
+/*
         splash->mensaje ( _ ( "Inicializando cuentas" ) );
         splash->setBarraProgreso ( 90 );
         m_progressbar->setValue ( 90 );
         m_listcuentas = new BcPlanContableListView ( this, 0 );
         m_listcuentas->inicializa();
         m_pWorkspace->addWindow ( m_listcuentas );
-
+*/
         /// pb = 100%
         splash->mensaje ( _ ( "Terminado" ) );
         splash->setBarraProgreso ( 100 );
@@ -248,7 +248,7 @@ int BcCompany::createMainWindows ( BlSplashScreen *splash )
 void BcCompany::maximiza()
 {
     _depura ( "BcCompany::maximiza", 0 );
-    m_listcuentas->showMaximized();
+//    m_listcuentas->showMaximized();
     _depura ( "END BcCompany::maximiza", 0 );
 }
 
@@ -260,7 +260,7 @@ void BcCompany::maximiza()
 int BcCompany::muestracuentas()
 {
     _depura ( "BcCompany::muestracuentas", 0 );
-    m_listcuentas->setWindowState ( Qt::WindowActive );
+//    m_listcuentas->setWindowState ( Qt::WindowActive );
     _depura ( "END BcCompany::muestracuentas", 0 );
     return 0;
 }
@@ -352,32 +352,7 @@ int BcCompany::cambioejercicio()
 }
 
 
-/// Crea la ventana de edici&oacute;n de cuentas y devuelve un puntero a esta.
-/**
-\return
-**/
-BcCuentaView* BcCompany::newcuentaview()
-{
-    _depura ( "BcCompany::newcuentaview", 0 );
-    BcCuentaView *nuevae = new BcCuentaView ( this, 0 );
-    _depura ( "END BcCompany::newcuentaview", 0 );
-    return nuevae;
-}
 
-
-///
-/**
-\return
-**/
-int BcCompany::nuevacuenta()
-{
-    _depura ( "BcCompany::nuevacuenta", 0 );
-    BcCuentaView *nuevae = newcuentaview();
-    m_pWorkspace->addWindow ( nuevae );
-    nuevae->show();
-    _depura ( "END BcCompany::nuevacuenta", 0 );
-    return 0;
-}
 
 
 

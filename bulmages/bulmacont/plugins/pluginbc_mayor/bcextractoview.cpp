@@ -31,7 +31,6 @@
 #include "bcextractoview.h"
 #include "bccompany.h"
 #include "bcasientoview.h"
-#include "bcplancontablelistview.h"
 #include "bccentrocosteseleccionarview.h"
 #include "bccanalseleccionarview.h"
 #include "bldatesearch.h"

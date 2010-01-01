@@ -19,7 +19,7 @@
  ***************************************************************************/
 
 #include  "bccambiacuentaview.h"
-#include  "bcplancontablelistview.h"
+//#include  "bcplancontablelistview.h"
 #include  "bccompany.h"
 
 #define NUMDIGITOS   (BcCompany *)mainCompany())->numdigitosempresa()

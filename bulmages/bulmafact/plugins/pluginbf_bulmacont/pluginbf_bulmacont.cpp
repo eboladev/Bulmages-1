@@ -24,7 +24,7 @@
 
 #include "pluginbf_bulmacont.h"
 #include "blfunctions.h"
-#include "bcplancontablelistview.h"
+// #include "bcplancontablelistview.h"
 #include "bfcompany.h"
 
 
@@ -51,6 +51,8 @@ int entryPoint ( BfBulmaFact *bf )
 
 int BfCompany_createMainWindows_Post ( BfCompany *comp )
 {
+
+/*
     g_empresaactual = new BcCompany ( NULL );
     g_empresaactual->setProgressBar ( g_bf->m_pb );
     g_empresaactual->init ( "csoncatiu", "BulmaCont" );
@@ -61,6 +63,7 @@ int BfCompany_createMainWindows_Post ( BfCompany *comp )
     BcPlanContableListView *listcuentas = new BcPlanContableListView ( g_empresaactual, 0 );
     listcuentas->inicializa();
     g_bf->workspace()->addWindow ( listcuentas );
+*/
     return 0;
 }
 

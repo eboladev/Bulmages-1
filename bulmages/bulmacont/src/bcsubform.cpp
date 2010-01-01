@@ -31,7 +31,7 @@
 #include "bldoublespinbox.h"
 #include "bcbuscarcanal.h"
 #include "bcbuscarcentrocoste.h"
-#include "bccuentalistview.h"
+//#include "bccuentalistview.h"
 #include "bcbuscarcuenta.h"
 
 /// Constructor de la clase
@@ -165,12 +165,14 @@ void BcSubForm::pressedAsterisk ( int row, int col, BlDbSubFormRecord *rec, BlDb
     ///TODO: De esta manera se recarga de la base de datos toda la info de las cuentas cada
     /// vez que se necesita la lista de cuentas. Hay que buscar la manera de que este siempre
     /// disponible para no cargar el trabajo a la red ni al gestor de base de datos.
+/* TBR
     BcCuentaListView *listcuentas = new BcCuentaListView ( ( BcCompany * ) mainCompany(), diag, 0, BL_SELECT_MODE );
-//    listcuentas->inicializa();
     connect ( listcuentas, SIGNAL ( selected ( QString ) ), diag, SLOT ( accept() ) );
-
+*/
     diag->exec();
-    QString codigo = listcuentas->codigocuenta();
+// TBR
+//    QString codigo = listcuentas->codigocuenta();
+    QString codigo = "";
     delete diag;
 
     if ( codigo != "" ) {

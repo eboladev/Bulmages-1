@@ -154,6 +154,16 @@ void BlSearchWidget::setFieldValue ( QString val )
     _depura ( "END BlSearchWidget::setFieldValue", 0 );
 }
 
+///
+/**
+\param val
+**/
+void BlSearchWidget::setText ( const QString &val )
+{
+    _depura ( "BlSearchWidget::setText", 0 );
+    m_inputBusqueda->setText(val);
+    _depura ( "END BlSearchWidget::setText", 0 );
+}
 
 
 /** Mediante este metodo le decimos al Widget cual es el CIF del elemento seleccionado.
@@ -284,10 +294,10 @@ void BlSearchWidget::on_m_inputBusqueda_textChanged ( const QString &val )
         QMapIterator<QString, QString> i ( m_valores );
         while ( i.hasNext() ) {
             i.next();
-            m_valores[i.key() ] == cur->valor ( i.key() );
+            m_valores[i.key() ] = cur->valor ( i.key() );
         } // end while
         encontrado = TRUE;
-    }
+    } // end if
     delete cur;
 
 
@@ -328,7 +338,7 @@ void BlSearchWidget::on_m_inputBusqueda_textChanged ( const QString &val )
         QMapIterator<QString, QString> i ( m_valores );
         while ( i.hasNext() ) {
             i.next();
-            m_valores[i.key() ] == "";
+            m_valores[i.key() ] = "";
         } // end while
     } // end if
 
@@ -341,7 +351,7 @@ void BlSearchWidget::on_m_inputBusqueda_textChanged ( const QString &val )
         } // end while
         m_textBusqueda->setText ( cad );
     } // end if
-    _depura ( "END BlSearchWidget::on_m_cifprofesor_textChanged", 0 );
+    _depura ( "END BlSearchWidget::on_m_inputBusqueda_textChanged", 0 );
 
 }
 

@@ -30,8 +30,12 @@
 #include "bcbulmacont.h"
 #include "blmaincompanypointer.h"
 #include "blmaincompany.h"
+#include "blsubform.h"
+#include "blsearchwidget.h"
 
 extern "C" MY_EXPORT int entryPoint ( BcBulmaCont * );
+extern "C" MY_EXPORT int BlSubForm_BlSubForm_Post ( BlSubForm * );
+extern "C" MY_EXPORT int Busqueda_on_mui_buscar_released(BlSearchWidget *);
 
 class MyPluginCuenta : public QObject, BlMainCompanyPointer
 {
@@ -48,6 +52,23 @@ public:
 public slots:
     void elslot();
 
+};
+
+
+class MyPluginCuenta1 : public QObject
+{
+    Q_OBJECT
+
+public:
+    MyPluginCuenta1 ( BlSubForm * );
+    ~MyPluginCuenta1();
+    void editarCuenta( QString);
+    void nuevoCuenta();
+    void seleccionarCuenta(BlSubForm *);
+
+public slots:
+    virtual void s_pintaMenu ( QMenu * );
+    virtual void s_trataMenu ( QAction * );
 };
 
 

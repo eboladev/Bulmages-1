@@ -81,6 +81,13 @@ BcCuentaView::BcCuentaView ( BcCompany  *emp, QWidget *parent, Qt::WFlags fl )
     mui_idprovincia->m_valores["nomprovincia"] = "";
     mui_idprovincia->m_valores["descpais"] = "";
 
+    /// Arreglamos la cuenta
+    mui_padre->setMainCompany(mainCompany());
+    mui_padre->setLabel ( _ ( "Cuenta Padre:" ) );
+    mui_padre->setTableName ( "cuenta" );
+    mui_padre->setFieldId("idcuenta");
+    mui_padre->m_valores["descripcion"] = "";
+    mui_padre->m_valores["codigo"] = "";
 
     dialogChanges_cargaInicial();
     mainCompany() ->meteWindow ( windowTitle(), this );
@@ -151,7 +158,8 @@ int BcCuentaView::nuevacuenta ( QString codpadre )
     }
     delete cur;
     /// Establecemos el valor del padre y del grupo.
-    mui_padre->setcodigocuenta ( codpadre );
+//    mui_padre->setcodigocuenta ( codpadre );
+    mui_padre->setText ( codpadre );
     _depura ( "END BcCuentaView::nuevacuenta", 0 );
     return 0;
 }

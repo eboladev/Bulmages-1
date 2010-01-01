@@ -37,7 +37,7 @@
 #include <QPixmap>
 #include <QDomDocument>
 
-#include "bcplancontablelistview.h"
+//#include "bcplancontablelistview.h"
 #include "blfunctions.h"
 #include "blpostgresqlclient.h"
 #include "bldatesearch.h"

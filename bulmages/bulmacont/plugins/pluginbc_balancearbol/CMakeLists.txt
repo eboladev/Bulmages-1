@@ -28,6 +28,8 @@ include_directories(
 	${CMAKE_SOURCE_DIR}/bulmacont/src/
    ${CMAKE_BINARY_DIR}/bulmacont/plugins/pluginbc_asiento/
    ${CMAKE_SOURCE_DIR}/bulmacont/plugins/pluginbc_asiento/
+   ${CMAKE_BINARY_DIR}/bulmacont/plugins/pluginbc_cuenta/
+   ${CMAKE_SOURCE_DIR}/bulmacont/plugins/pluginbc_cuenta/
 )
 
 # generate rules for building source files from the resources

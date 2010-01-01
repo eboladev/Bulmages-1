@@ -64,6 +64,7 @@ public:
     virtual void setFieldValue ( QString campo, QString val );
     virtual void setLabel(QString label);
     virtual void setTableName(QString tableName);
+    virtual void setText(const QString &);
     void setFieldId ( const QString & );
 
 public slots:

@@ -18,11 +18,14 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
+///NOTA: Hay que cambiar esta clase por la generica BlSearchWidget
+
+
 #include  "bcbuscarcuenta.h"
-#include  "bcplancontablelistview.h"
+// #include  "bcplancontablelistview.h"
 #include  "bccompany.h"
 #include  "blplugins.h"
-#include  "bccuentalistview.h"
+//#include  "bccuentalistview.h"
 
 
 ///
@@ -289,7 +292,10 @@ void BcBuscarCuenta::setcodigocuenta ( QString val )
 **/
 void BcBuscarCuenta::s_searchCuenta()
 {
+/*
     _depura ( "BcBuscarCuenta::s_searchCuenta", 10 );
+
+
     /// Generamos un di&aacute;logo.
     QDialog *diag = new QDialog ( 0 );
     diag->setModal ( true );
@@ -314,6 +320,7 @@ void BcBuscarCuenta::s_searchCuenta()
     delete diag;
 
     _depura ( "END BcBuscarCuenta::s_searchCuenta", 0 );
+*/
 }
 
 

@@ -44,10 +44,10 @@ class BcCanalSeleccionarView;
 /* class BcAsientoView; */
 /* class BcDiarioView; */
 /* class BcAsientoListView; */
-class BcCuentaView;
+/* class BcCuentaView; */
 class BlCountryView;
 /*class BcExtractoView;*/
-class BcPlanContableListView;
+/*class BcPlanContableListView; */
 class BcBulmaCont;
 
 
@@ -69,7 +69,7 @@ private:
     QString nombre;
     int ano;
     QString contrasenya;
-    BcPlanContableListView *m_listcuentas;
+//    BcPlanContableListView *m_listcuentas;
     unsigned int numdigitos; /// El n&uacute;mero de d&iacute;gitos que tienen las cuentas.
     /// Hay unos selectores generales, que van a ser estos y que indican con que se trabaja,
     /// luego estos selectores generales se podr&aacute;n invocar desde distintas partes.
@@ -89,7 +89,7 @@ public:
     QString nomuserempresa();
     QString nombreempresa();
     int muestracuentas();
-    int nuevacuenta();
+//    int nuevacuenta();
     int propiedadempresa();
     int listado347();
     int createMainWindows ( BlSplashScreen * );
@@ -110,7 +110,7 @@ public:
     BcCanalSeleccionarView *getselcanales();
     void recalculasaldos();
     virtual void s_asiento1();
-    BcCuentaView *newcuentaview();
+//    BcCuentaView *newcuentaview();
     void guardaConf();
     void cargaConf();
 };
