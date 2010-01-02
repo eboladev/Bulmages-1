@@ -76,7 +76,6 @@
     <addaction name="separator"/>
     <addaction name="actionListado_347"/>
     <addaction name="separator"/>
-    <addaction name="actionAmortizaciones"/>
    </widget>
    <widget class="QMenu" name="menuHerramientas">
     <property name="title">
@@ -145,11 +144,6 @@
   <action name="actionMasas_Patrimoniales">
    <property name="text">
     <string>Masas &amp;patrimoniales</string>
-   </property>
-  </action>
-  <action name="actionAmortizaciones">
-   <property name="text">
-    <string>&amp;Amortizaciones</string>
    </property>
   </action>
   <action name="actionFormas_de_Pago">

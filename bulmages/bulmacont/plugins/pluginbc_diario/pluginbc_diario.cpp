@@ -103,6 +103,8 @@ void MyPluginDiario::inicializa ( BcBulmaCont *bges )
 
     /// A&ntilde;adimos la nueva opci&oacute;n al men&uacute; principal del programa.
     bges->menuBar() ->insertMenu ( bges->menuMaestro->menuAction(), pPluginMenu );
+    bges->toolBar->addAction ( accion );
+
     _depura ( "END MyPluginDiario::inicializa", 0 );
 }
 
