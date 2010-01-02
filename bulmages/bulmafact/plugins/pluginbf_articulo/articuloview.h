@@ -58,6 +58,7 @@ public slots:
     virtual void on_mui_codigocompletoarticulo_editingFinished();
     virtual void on_mui_cambiarimagen_released();
     virtual void on_mui_borrarimagen_released();
+    virtual void on_mui_idfamilia_valueChanged(QString);
 };
 
 #endif

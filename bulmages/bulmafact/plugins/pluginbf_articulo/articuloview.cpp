@@ -323,3 +323,22 @@ void ArticuloView::on_mui_borrarimagen_released()
     pintarPost();
 }
 
+/** Cuando ponemos la familia podemos intentar averiguar cual es el subcodigo de articulo (siempre que se trate de un articulo nuevo)
+    Solo tiene en consideracion valores numericos para estos articulos.
+*/
+void ArticuloView::on_mui_idfamilia_valueChanged(QString) {
+    _depura("ArticuloView::on_mui_idfamilia_lostFocus");
+    if ( mui_codarticulo->text().isEmpty() && !mui_idfamilia->id().isEmpty()) {
+        QString query = "select coalesce(max(codarticulo::integer),0) +1 as maximo, coalesce(max(length(codarticulo)), 4) AS long from articulo where codarticulo similar to '[0-9]+' AND idfamilia = " + mui_idfamilia->id();
+
+        BlDbRecordSet * cur = mainCompany() ->loadQuery ( query );
+        if( !cur->eof()) {
+            mui_codarticulo->setText(cur->valor("maximo").rightJustified(cur->valor("long").toInt(), '0'));
+        } // end if
+        delete cur;
+        mui_codarticulo->selectAll();
+    } // end if
+    _depura("END ArticuloView::on_mui_idfamilia_lostFocus");
+}
+
+
