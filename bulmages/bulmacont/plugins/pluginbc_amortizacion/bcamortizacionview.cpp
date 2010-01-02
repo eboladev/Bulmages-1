@@ -26,7 +26,6 @@
 #include "bccompany.h"
 #include "blfunctions.h"
 #include "bcasientointeligenteview.h"
-#include "bcbuscarcuenta.h"
 #include "bcasientoview.h"
 
 
@@ -49,7 +48,24 @@ BcAmortizacionView::BcAmortizacionView ( BcCompany *emp, QWidget *parent )
     /// Nueva inicializacion de amortizaciones
     mui_listcuotas->setMainCompany ( emp );
     ctaactivo->setMainCompany ( emp );
+    /// Arreglamos la cuenta
+    ctaactivo->setMainCompany(mainCompany());
+    ctaactivo->setLabel ( _ ( "Cuenta Activo:" ) );
+    ctaactivo->setTableName ( "cuenta" );
+    ctaactivo->setFieldId("idcuenta");
+    ctaactivo->m_valores["descripcion"] = "";
+    ctaactivo->m_valores["codigo"] = "";
+    ctaactivo->hideLabel();
+
     ctaamortizacion->setMainCompany ( emp );
+    /// Arreglamos la cuenta
+    ctaamortizacion->setMainCompany(mainCompany());
+    ctaamortizacion->setLabel ( _ ( "Cuenta de Amortizacion:" ) );
+    ctaamortizacion->setTableName ( "cuenta" );
+    ctaamortizacion->setFieldId("idcuenta");
+    ctaamortizacion->m_valores["descripcion"] = "";
+    ctaamortizacion->m_valores["codigo"] = "";
+    ctaamortizacion->hideLabel();
 
     /// Inicializamos la clase para la base de datos.
     setTitleName ( _ ( "Amortizacion" ) );
@@ -129,12 +145,12 @@ int BcAmortizacionView::guardar()
     try {
         /// Guardamos los datos del formulario
         setDbValue ( "nomamortizacion", nomamortizacion->text() );
-        setDbValue ( "idcuentaactivo",  ctaactivo->idcuenta() );
+        setDbValue ( "idcuentaactivo",  ctaactivo->id() );
         setDbValue ( "valorcompra", valorcompra->text() );
         setDbValue ( "numcuotas", numcuotas->text() );
         setDbValue ( "fechacompra", fechacompra->text() );
         setDbValue ( "fecha1cuota", fecha1cuota->text() );
-        setDbValue ( "idcuentaamortizacion", ctaamortizacion->idcuenta() );
+        setDbValue ( "idcuentaamortizacion", ctaamortizacion->id() );
         setDbValue ( "agrupacion", agrupacion->text() );
 
         QString id = "";
@@ -174,9 +190,9 @@ int BcAmortizacionView::cargar ( QString idamortizacion )
         numcuotas->setText ( dbValue ( "numcuotas" ) );
         fechacompra->setText ( dbValue ( "fechacompra" ) );
         fecha1cuota->setText ( dbValue ( "fecha1cuota" ) );
-        ctaactivo->setidcuenta ( dbValue ( "idcuentaactivo" ) );
+        ctaactivo->setId ( dbValue ( "idcuentaactivo" ) );
         m_idctaactivo = dbValue ( "idcuentaactivo" );
-        ctaamortizacion->setidcuenta ( dbValue ( "idcuentaamortizacion" ) );
+        ctaamortizacion->setId ( dbValue ( "idcuentaamortizacion" ) );
         m_idctaamortizacion = dbValue ( "idcuentaamortizacion" );
         agrupacion->setText ( dbValue ( "agrupacion" ) );
 

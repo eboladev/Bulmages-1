@@ -54,7 +54,15 @@ BcDiarioView::BcDiarioView ( BcCompany  *emp, QWidget *parent, int )
     setDbTableName ( "apunte" );
 
     mui_list->setMainCompany ( emp );
+    /// Arreglamos la cuenta
     mui_contrapartida->setMainCompany ( emp );
+    mui_contrapartida->setLabel ( _ ( "Contrapartida:" ) );
+    mui_contrapartida->setTableName ( "cuenta" );
+    mui_contrapartida->setFieldId("idcuenta");
+    mui_contrapartida->m_valores["descripcion"] = "";
+    mui_contrapartida->m_valores["codigo"] = "";
+    mui_contrapartida->hideLabel();
+
     /// Iniciamos los componentes de la fecha para que al principio aparezcan
     /// como el a&ntilde;o inicial.
     mui_fechainicial->setText ( "01/01/" + QString::number(QDate::currentDate().year()) );
@@ -265,8 +273,8 @@ void BcDiarioView::presentar()
             cadand = " AND ";
         } // end if
 
-        if ( mui_contrapartida->text() != "" ) {
-            cad += cadand + tabla + ".contrapartida = " + mui_contrapartida->idcuenta();
+        if ( mui_contrapartida->fieldValue("codigo") != "" ) {
+            cad += cadand + tabla + ".contrapartida = " + mui_contrapartida->id();
         } // end if
 
         totalcadena = query + cad + " ORDER BY ordenasiento,apunte.haber,codigo ";

@@ -57,6 +57,12 @@ RegistroIvaView::RegistroIvaView ( BcCompany *comp, QWidget *parent )
 
     /// Usurpamos la identidad de mlist y ponemos nuestro propio widget con sus cosillas.
     m_contrapartida->setMainCompany ( comp );
+    m_contrapartida->setLabel ( _ ( "Cuenta Cliente/Proveedor:" ) );
+    m_contrapartida->setTableName ( "cuenta" );
+    m_contrapartida->setFieldId("idcuenta");
+    m_contrapartida->m_valores["descripcion"] = "";
+    m_contrapartida->m_valores["codigo"] = "";
+
     setLineas ( mui_listIva );
     mui_listIva->setMainCompany ( comp );
     mui_listPrevCobro->setMainCompany ( comp );
@@ -198,7 +204,7 @@ int RegistroIvaView::guardar()
     _depura ( "RegistroIvaView::guardar", 0 );
     try {
         mainCompany() ->begin();
-        setcontrapartida ( m_contrapartida->idcuenta() );
+        setcontrapartida ( m_contrapartida->id() );
         setbaseimp ( m_baseImponible->text() );
         setiva ( m_importeiva->text() );
         setffactura ( m_ffactura->text() );
@@ -260,9 +266,9 @@ void RegistroIvaView::on_mui_generarPrevisiones_released()
         rec->setDbValue ( "fprevistaprevcobro", fpcobro.toString ( "dd/MM/yyyy" ) );
         rec->setDbValue ( "cantidadprevistaprevcobro", totalplazo.toQString() );
         rec->setDbValue ( "tipoprevcobro", tipocobro );
-        rec->setDbValue ( "codigoctacliente", m_contrapartida->codigocuenta() );
-        rec->setDbValue ( "idctacliente", m_contrapartida->idcuenta() );
-        rec->setDbValue ( "nomctacliente", m_contrapartida->nomcuenta() );
+        rec->setDbValue ( "codigoctacliente", m_contrapartida->fieldValue("codigo") );
+        rec->setDbValue ( "idctacliente", m_contrapartida->id() );
+        rec->setDbValue ( "nomctacliente", m_contrapartida->fieldValue("descripcion") );
         _depura ( "Pintamos", 3 );
         fpcobro = fpcobro.addDays ( plazoentrerecibo );
         mui_listPrevCobro->nuevoRegistro();

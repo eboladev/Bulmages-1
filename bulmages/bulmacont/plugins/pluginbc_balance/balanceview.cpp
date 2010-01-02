@@ -30,7 +30,6 @@
 #include "blpostgresqlclient.h"
 #include "balanceprintview.h"
 #include "bldatesearch.h"
-#include "bcbuscarcuenta.h"
 #include "bcbuscarcentrocoste.h"
 #include "bccentrocosteseleccionarview.h"
 #include "bccanalseleccionarview.h"
@@ -65,7 +64,23 @@ BalanceView::BalanceView ( BcCompany *emp, QWidget *parent, int )
 
     numdigitos = mainCompany() ->numdigitosempresa();
     m_codigoinicial->setMainCompany ( emp );
+    /// Arreglamos la cuenta
+    m_codigoinicial->setLabel ( _ ( "Cuenta Inicial:" ) );
+    m_codigoinicial->setTableName ( "cuenta" );
+    m_codigoinicial->setFieldId("idcuenta");
+    m_codigoinicial->m_valores["descripcion"] = "";
+    m_codigoinicial->m_valores["codigo"] = "";
+    m_codigoinicial->hideLabel();
+
     m_codigofinal->setMainCompany ( emp );
+    /// Arreglamos la cuenta
+    m_codigofinal->setLabel ( _ ( "Cuenta Final:" ) );
+    m_codigofinal->setTableName ( "cuenta" );
+    m_codigofinal->setFieldId("idcuenta");
+    m_codigofinal->m_valores["descripcion"] = "";
+    m_codigofinal->m_valores["codigo"] = "";
+    m_codigofinal->hideLabel();
+
     /// Inicializamos la tabla de nivel.
     combonivel->insertItem ( 0, "2" );
     combonivel->insertItem ( 1, "3" );
@@ -152,9 +167,9 @@ void BalanceView::presentar()
     _depura ( "BalanceView::presentar", 0 );
     QString finicial = m_fechainicial1->text();
     QString ffinal = m_fechafinal1->text();
-    QString cinicial = m_codigoinicial->codigocuenta().left ( 2 );
+    QString cinicial = m_codigoinicial->fieldValue("codigo").left ( 2 );
     if ( cinicial == "" ) cinicial = "1";
-    QString cfinal = m_codigofinal->codigocuenta();
+    QString cfinal = m_codigofinal->fieldValue("codigo");
     if ( cfinal == "" ) cfinal = "9";
     int nivel = combonivel->currentText().toInt();
     bool jerarquico = checksuperiores->isChecked();
@@ -424,7 +439,7 @@ void BalanceView::imprimir()
 {
     _depura ( "BalanceView::on_mui_imprimir_released", 0 );
     BalancePrintView *balan = new BalancePrintView ( mainCompany() );
-    balan->inicializa1 ( m_codigoinicial->text(), m_codigofinal->text(), m_fechainicial1->text(), m_fechafinal1->text(), FALSE );
+    balan->inicializa1 ( m_codigoinicial->fieldValue("codigo"), m_codigofinal->fieldValue("codigo"), m_fechainicial1->text(), m_fechafinal1->text(), FALSE );
     balan->exec();
     _depura ( "END BalanceView::on_mui_imprimir_released", 0 );
 }

@@ -36,8 +36,24 @@ BcCambiaCuentaView::BcCambiaCuentaView ( BcCompany *emp, QWidget *parent, Qt::WF
 {
     _depura ( "BcCambiaCuentaView::BcCambiaCuentaView", 0 );
     setupUi ( this );
+    /// Preparamos la cuentaorigen para que trabaje sobre cuentas
     mui_codigoorigen->setMainCompany ( emp );
+    mui_codigoorigen->setLabel ( _ ( "Cuenta Origen:" ) );
+    mui_codigoorigen->setTableName ( "cuenta" );
+    mui_codigoorigen->setFieldId("idcuenta");
+    mui_codigoorigen->m_valores["descripcion"] = "";
+    mui_codigoorigen->m_valores["codigo"] = "";
+
+    /// Preparamos la cuentadestino para que trabaje sobre cuentas
     mui_codigodestino->setMainCompany ( emp );
+    mui_codigodestino->setLabel ( _ ( "Cuenta Destino:" ) );
+    mui_codigodestino->setTableName ( "cuenta" );
+    mui_codigodestino->setFieldId("idcuenta");
+    mui_codigodestino->m_valores["descripcion"] = "";
+    mui_codigodestino->m_valores["codigo"] = "";
+
+
+
     _depura ( "END BcCambiaCuentaView::BcCambiaCuentaView", 0 );
 }
 
@@ -58,14 +74,14 @@ BcCambiaCuentaView::~BcCambiaCuentaView()
 void BcCambiaCuentaView::accept()
 {
     _depura ( "BcCambiaCuentaView::accept", 0 );
-    QString origen = mui_codigoorigen->text();
-    QString destino = mui_codigodestino->text();
+    QString origen = mui_codigoorigen->id();
+    QString destino = mui_codigodestino->id();
     QString ainicial = asientoinicial->text();
     QString afinal = asientofinal->text();
     QString finicial = fechainicial->text();
     QString ffinal = fechafinal->text();
     /// Modificamos los borradores.
-    QString query = "UPDATE borrador SET idcuenta = id_cuenta('" + destino + "') WHERE idcuenta = id_cuenta('" + origen + "')";
+    QString query = "UPDATE borrador SET idcuenta = " + destino + " WHERE idcuenta = " + origen + "";
     if ( ainicial != "" ) {
         query = query + " AND idasiento IN (SELECT idasiento FROM asiento WHERE ordenasiento >= " + ainicial + ")";
     } // end if
@@ -80,7 +96,7 @@ void BcCambiaCuentaView::accept()
     } // end if
 
     /// Modificamos las contrapartidas de los borradores.
-    QString query2 = "UPDATE borrador SET contrapartida = id_cuenta('" + destino + "') WHERE contrapartida = id_cuenta('" + origen + "')";
+    QString query2 = "UPDATE borrador SET contrapartida = " + destino + " WHERE contrapartida = " + origen ;
     if ( ainicial != "" ) {
         query2 = query2 + " AND idasiento IN (SELECT idasiento FROM asiento WHERE ordenasiento >= " + ainicial + ")";
     } // end if
@@ -95,7 +111,7 @@ void BcCambiaCuentaView::accept()
     } // end if
 
     /// Modificamos tambi&eacute;n los apuntes.
-    QString query1 = "UPDATE apunte SET idcuenta = id_cuenta('" + destino + "') WHERE idcuenta = id_cuenta('" + origen + "')";
+    QString query1 = "UPDATE apunte SET idcuenta = " + destino + " WHERE idcuenta = " + origen;
     if ( ainicial != "" ) {
         query1 = query1 + " AND idasiento IN (SELECT idasiento FROM asiento WHERE ordenasiento >= " + ainicial + ")";
     } // end if
@@ -110,7 +126,7 @@ void BcCambiaCuentaView::accept()
     } // end if
 
     /// Modificamos tambi&eacute;n las contrapartidas de los apuntes.
-    QString query3 = "UPDATE apunte SET contrapartida = id_cuenta('" + destino + "') WHERE contrapartida = id_cuenta('" + origen + "')";
+    QString query3 = "UPDATE apunte SET contrapartida = " + destino + " WHERE contrapartida = " + origen;
     if ( ainicial != "" ) {
         query3 = query3 + " AND idasiento IN (SELECT idasiento FROM asiento WHERE ordenasiento >= " + ainicial + ")";
     } // end if
@@ -125,7 +141,7 @@ void BcCambiaCuentaView::accept()
     } // end if
 
     /// Modificamos los registros de IVA.
-    QString query4 = "UPDATE registroiva SET contrapartida = id_cuenta('" + destino + "') WHERE contrapartida = id_cuenta('" + origen + "')";
+    QString query4 = "UPDATE registroiva SET contrapartida = " + destino + " WHERE contrapartida = " + origen;
     if ( ainicial != "" ) {
         query4 = query4 + " AND idborrador IN (SELECT idborrador FROM borrador,asiento WHERE ordenasiento >= " + ainicial + " AND borrador.idasiento = asiento.idasiento)";
     } // end if

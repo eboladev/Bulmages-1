@@ -34,7 +34,6 @@
 #include "bccentrocosteseleccionarview.h"
 #include "bccanalseleccionarview.h"
 #include "bldatesearch.h"
-#include "bcbuscarcuenta.h"
 #include "bcextractosubform.h"
 #include "blprogressbar.h"
 
@@ -57,10 +56,30 @@ BcExtractoView::BcExtractoView ( BcCompany *emp, QWidget *parent, int ) : BcForm
 
     /// Iniciamos los componentes
     m_codigoinicial->setMainCompany ( emp );
+    m_codigoinicial->setLabel ( _ ( "Cuenta Inicial:" ) );
+    m_codigoinicial->setTableName ( "cuenta" );
+    m_codigoinicial->setFieldId("idcuenta");
+    m_codigoinicial->m_valores["descripcion"] = "";
+    m_codigoinicial->m_valores["codigo"] = "";
+
     m_codigofinal->setMainCompany ( emp );
+    m_codigofinal->setLabel ( _ ( "Cuenta Final:" ) );
+    m_codigofinal->setTableName ( "cuenta" );
+    m_codigofinal->setFieldId("idcuenta");
+    m_codigofinal->m_valores["descripcion"] = "";
+    m_codigofinal->m_valores["codigo"] = "";
+
     mui_codigocontrapartida->setMainCompany ( emp );
-    m_codigoinicial->hideNombre();
-    m_codigofinal->hideNombre();
+    mui_codigocontrapartida->setLabel ( _ ( "Cuenta Contrapartida:" ) );
+    mui_codigocontrapartida->setTableName ( "cuenta" );
+    mui_codigocontrapartida->setFieldId("idcuenta");
+    mui_codigocontrapartida->m_valores["descripcion"] = "";
+    mui_codigocontrapartida->m_valores["codigo"] = "";
+
+
+    m_codigoinicial->hideLabel();
+    m_codigofinal->hideLabel();
+    mui_codigocontrapartida->hideLabel();
 
     /// Iniciamos los componentes de la fecha para que al principio aparezcan
     /// como el a&ntilde;o inicial.
@@ -158,8 +177,8 @@ void BcExtractoView::on_mui_actualizar_released()
 void BcExtractoView::accept()
 {
     _depura ( "BcExtractoView::accept", 0 );
-    QString codinicial = m_codigoinicial->codigocuenta();
-    QString codfinal = m_codigofinal->codigocuenta();
+    QString codinicial = m_codigoinicial->fieldValue("codigo");
+    QString codfinal = m_codigofinal->fieldValue("codigo");
     QString query;
     /// Si los datos de c&oacute;digo inicial y final est&aacute;n vacios los ponemos
     /// nosotros.
@@ -339,7 +358,7 @@ void BcExtractoView::presentar()
     QString idcuenta;
     QString finicial = m_fechainicial1->text();
     QString ffinal = m_fechafinal1->text();
-    QString contra = mui_codigocontrapartida->text();
+    QString contra = mui_codigocontrapartida->fieldValue("codigo");
     QString cad;
     QString cadaux;
     BlDbRecordSet *cursorapt = NULL;
@@ -664,7 +683,7 @@ QString BcExtractoView::imprimeExtractoCuenta ( QString idcuenta )
         BlFixed debefinal ( "0" ), haberfinal ( "0" ), saldofinal ( "0" );
         QString finicial = m_fechainicial1->text();
         QString ffinal = m_fechafinal1->text();
-        QString contra = mui_codigocontrapartida->text();
+        QString contra = mui_codigocontrapartida->fieldValue("codigo");
 
         /// Preparamos el string para que aparezca una u otra cosa seg&uacute;n el punteo.
         QString tipopunteo;
@@ -874,8 +893,8 @@ void BcExtractoView::imprimir()
     file.close();
     QString fitxersortidatxt = "";
 
-    QString codinicial = m_codigoinicial->codigocuenta();
-    QString codfinal = m_codigofinal->codigocuenta();
+    QString codinicial = m_codigoinicial->fieldValue("codigo");
+    QString codfinal = m_codigofinal->fieldValue("codigo");
 
     QString query;
 

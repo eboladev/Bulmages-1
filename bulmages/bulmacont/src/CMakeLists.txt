@@ -42,7 +42,6 @@ set(bulmacont_MOCS bcbulmacont.h
            bcmodelo300imprimir2ps.h
            bctipoivaview.h
            bcformapagoview.h
-           bcbuscarcuenta.h
            bcsubform.h
            bcbuscarcentrocoste.h
            bcbuscarcanal.h 

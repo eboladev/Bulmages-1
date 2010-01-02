@@ -35,7 +35,6 @@
 #include "bcplancontablelistview.h"
 #include "bccompany.h"
 #include "bcplancontablearbol.h"
-#include "bcbuscarcuenta.h"
 #include "bccanalseleccionarview.h"
 #include "bccentrocosteseleccionarview.h"
 
@@ -54,7 +53,21 @@ BalancePrintView::BalancePrintView ( BcCompany *emp )
     _depura ( "BalancePrintView::BalancePrintView", 0 );
     setupUi ( this );
     m_codigoinicial->setMainCompany ( emp );
+    m_codigoinicial->setLabel ( _ ( "Cuenta Inicial:" ) );
+    m_codigoinicial->setTableName ( "cuenta" );
+    m_codigoinicial->setFieldId("idcuenta");
+    m_codigoinicial->m_valores["descripcion"] = "";
+    m_codigoinicial->m_valores["codigo"] = "";
+    m_codigoinicial->hideLabel();
+
     m_codigofinal->setMainCompany ( emp );
+    m_codigofinal->setLabel ( _ ( "Cuenta Final:" ) );
+    m_codigofinal->setTableName ( "cuenta" );
+    m_codigofinal->setFieldId("idcuenta");
+    m_codigofinal->m_valores["descripcion"] = "";
+    m_codigofinal->m_valores["codigo"] = "";
+    m_codigofinal->hideLabel();
+
     /// Buscamos los diferentes niveles que existen seg&uacute;n existan en la tabla
     /// de cuentas.
     mainCompany() ->begin();
@@ -143,8 +156,8 @@ void BalancePrintView::presentar ( const char* tipus )
     /// Cogemos los valores del formulario.
     QString finicial = m_fechainicial1->text();
     QString ffinal = m_fechafinal1->text();
-    QString cinicial = m_codigoinicial->codigocuenta();
-    QString cfinal = m_codigofinal->codigocuenta();
+    QString cinicial = m_codigoinicial->fieldValue("codigo");
+    QString cfinal = m_codigofinal->fieldValue("codigo");
     int nivel = combonivel->currentText().toInt();
     bool superiores = checksuperiores->isChecked();
 

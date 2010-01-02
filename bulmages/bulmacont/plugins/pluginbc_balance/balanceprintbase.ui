@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>561</width>
-    <height>335</height>
+    <width>599</width>
+    <height>393</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -188,7 +188,7 @@
            </widget>
           </item>
           <item>
-           <widget class="BcBuscarCuenta" name="m_codigoinicial" native="true"/>
+           <widget class="BlSearchWidget" name="m_codigoinicial" native="true"/>
           </item>
          </layout>
         </item>
@@ -238,7 +238,7 @@
            </widget>
           </item>
           <item>
-           <widget class="BcBuscarCuenta" name="m_codigofinal" native="true"/>
+           <widget class="BlSearchWidget" name="m_codigofinal" native="true"/>
           </item>
          </layout>
         </item>
@@ -387,14 +387,15 @@
    <header>../../bulmalib/src/bldatesearch.h</header>
   </customwidget>
   <customwidget>
-   <class>BcBuscarCuenta</class>
+   <class>BlSearchWidget</class>
    <extends>QWidget</extends>
-   <header>bcbuscarcuenta.h</header>
+   <header>blsearchwidget.h</header>
+   <container>1</container>
   </customwidget>
  </customwidgets>
  <resources>
   <include location="../../../bulmages.qrc"/>
-  <include location="../../bulmages.qrc"/>
+  <include location="../../../bulmages.qrc"/>
  </resources>
  <connections/>
 </ui>

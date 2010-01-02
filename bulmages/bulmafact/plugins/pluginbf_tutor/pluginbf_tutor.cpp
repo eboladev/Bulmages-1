@@ -25,7 +25,6 @@
 #include "blfunctions.h"
 #include "tutorview.h"
 #include "tutoreslist.h"
-
 #include "blsearchwidget.h"
 
 TutoresList *g_tutoresList = NULL;

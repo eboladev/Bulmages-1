@@ -30,7 +30,6 @@
 #include "balance1view.h"
 #include "bcplancontablelistview.h"
 #include "bccompany.h"
-#include "bcbuscarcuenta.h"
 #include "bcasientoview.h"
 #include "bccanalseleccionarview.h"
 #include "bccentrocosteseleccionarview.h"
@@ -69,10 +68,25 @@ BalanceTreeView::BalanceTreeView ( BcCompany *emp, QWidget *parent, int )
     unsigned int numdigitos = mainCompany() ->numdigitosempresa();
 
     m_codigoinicial->setMainCompany ( emp );
-    m_codigofinal->setMainCompany ( emp );
+    /// Arreglamos la cuenta
+    m_codigoinicial->setLabel ( _ ( "Cuenta Inicial:" ) );
+    m_codigoinicial->setTableName ( "cuenta" );
+    m_codigoinicial->setFieldId("idcuenta");
+    m_codigoinicial->m_valores["descripcion"] = "";
+    m_codigoinicial->m_valores["codigo"] = "";
 
-    m_codigoinicial->hideNombre();
-    m_codigofinal->hideNombre();
+    m_codigofinal->setMainCompany ( emp );
+    /// Arreglamos la cuenta
+    m_codigofinal->setLabel ( _ ( "Cuenta Final:" ) );
+    m_codigofinal->setTableName ( "cuenta" );
+    m_codigofinal->setFieldId("idcuenta");
+    m_codigofinal->m_valores["descripcion"] = "";
+    m_codigofinal->m_valores["codigo"] = "";
+
+    m_codigoinicial->hideDescripcion();
+    m_codigofinal->hideDescripcion();
+    m_codigoinicial->hideLabel();
+    m_codigofinal->hideLabel();
     /// Hacemos la carga de los centros de coste. Rellenamos el combobox correspondiente.
 //    mui_combocoste->setMainCompany ( emp );
 //    mui_combocoste->setidc_coste ( "0" );
@@ -358,9 +372,9 @@ void BalanceTreeView::presentar()
         for ( int i = 0; i <= mainCompany()->numdigitosempresa(); i++ )
             ptrIt << NULL; // Reservamos las posiciones de la lista que coincidiran con los niveles de cuentas
         BlFixed tsaldoant ( "0.00" ), tdebe ( "0.00" ), thaber ( "0.00" ), tsaldo ( "0.00" );
-        QString cinicial = m_codigoinicial->codigocuenta().left ( 1 );
+        QString cinicial = m_codigoinicial->fieldValue("codigo").left ( 1 );
         if ( cinicial == "" ) cinicial = "10";
-        QString cfinal = m_codigofinal->codigocuenta();
+        QString cfinal = m_codigofinal->fieldValue("codigo");
         unsigned int nivelAnt, nivelCta, nivel = combonivel->currentText().toInt();
         if ( cfinal == "" )
             cfinal = arbol->codigoCuentaMayor ( nivel );

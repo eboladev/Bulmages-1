@@ -1,122 +1,123 @@
-<ui version="4.0" >
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
  <class>BcDiarioBase</class>
- <widget class="QWidget" name="BcDiarioBase" >
-  <property name="geometry" >
+ <widget class="QWidget" name="BcDiarioBase">
+  <property name="geometry">
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>692</width>
+    <width>874</width>
     <height>490</height>
    </rect>
   </property>
-  <property name="focusPolicy" >
+  <property name="focusPolicy">
    <enum>Qt::StrongFocus</enum>
   </property>
-  <property name="windowTitle" >
+  <property name="windowTitle">
    <string>Diario</string>
   </property>
-  <property name="windowIcon" >
-   <iconset resource="../../bulmages.qrc" >
+  <property name="windowIcon">
+   <iconset resource="../../../bulmages.qrc">
     <normaloff>:/Images/balance-sheet.png</normaloff>:/Images/balance-sheet.png</iconset>
   </property>
-  <layout class="QVBoxLayout" >
-   <property name="spacing" >
+  <layout class="QVBoxLayout">
+   <property name="spacing">
     <number>5</number>
    </property>
-   <property name="margin" >
+   <property name="margin">
     <number>5</number>
    </property>
    <item>
-    <layout class="QHBoxLayout" >
-     <property name="spacing" >
+    <layout class="QHBoxLayout">
+     <property name="spacing">
       <number>6</number>
      </property>
-     <property name="margin" >
+     <property name="margin">
       <number>0</number>
      </property>
      <item>
-      <widget class="QLabel" name="pixmapLabel1" >
-       <property name="sizePolicy" >
-        <sizepolicy vsizetype="Fixed" hsizetype="Fixed" >
+      <widget class="QLabel" name="pixmapLabel1">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
          <horstretch>0</horstretch>
          <verstretch>0</verstretch>
         </sizepolicy>
        </property>
-       <property name="minimumSize" >
+       <property name="minimumSize">
         <size>
          <width>48</width>
          <height>48</height>
         </size>
        </property>
-       <property name="maximumSize" >
+       <property name="maximumSize">
         <size>
          <width>48</width>
          <height>48</height>
         </size>
        </property>
-       <property name="pixmap" >
-        <pixmap resource="../../bulmages.qrc" >:/Images/balance-sheet.png</pixmap>
+       <property name="pixmap">
+        <pixmap resource="../../../bulmages.qrc">:/Images/balance-sheet.png</pixmap>
        </property>
-       <property name="scaledContents" >
+       <property name="scaledContents">
         <bool>true</bool>
        </property>
       </widget>
      </item>
      <item>
-      <widget class="QFrame" name="frame_3" >
-       <property name="sizePolicy" >
-        <sizepolicy vsizetype="Fixed" hsizetype="Expanding" >
+      <widget class="QFrame" name="frame_3">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
          <horstretch>0</horstretch>
          <verstretch>0</verstretch>
         </sizepolicy>
        </property>
-       <property name="maximumSize" >
+       <property name="maximumSize">
         <size>
          <width>16777215</width>
          <height>48</height>
         </size>
        </property>
-       <property name="frameShape" >
+       <property name="frameShape">
         <enum>QFrame::StyledPanel</enum>
        </property>
-       <property name="frameShadow" >
+       <property name="frameShadow">
         <enum>QFrame::Raised</enum>
        </property>
-       <layout class="QHBoxLayout" >
-        <property name="spacing" >
+       <layout class="QHBoxLayout">
+        <property name="spacing">
          <number>5</number>
         </property>
-        <property name="margin" >
+        <property name="margin">
          <number>5</number>
         </property>
         <item>
-         <widget class="QToolButton" name="mui_imprimir" >
-          <property name="minimumSize" >
+         <widget class="QToolButton" name="mui_imprimir">
+          <property name="minimumSize">
            <size>
             <width>32</width>
             <height>32</height>
            </size>
           </property>
-          <property name="maximumSize" >
+          <property name="maximumSize">
            <size>
             <width>32</width>
             <height>32</height>
            </size>
           </property>
-          <property name="toolTip" >
+          <property name="toolTip">
            <string>Imprimir</string>
           </property>
-          <property name="whatsThis" >
+          <property name="whatsThis">
            <string>Imprimir</string>
           </property>
-          <property name="text" >
+          <property name="text">
            <string/>
           </property>
-          <property name="icon" >
-           <iconset resource="../../bulmages.qrc" >
+          <property name="icon">
+           <iconset resource="../../../bulmages.qrc">
             <normaloff>:/Images/document-print.png</normaloff>:/Images/document-print.png</iconset>
           </property>
-          <property name="iconSize" >
+          <property name="iconSize">
            <size>
             <width>32</width>
             <height>32</height>
@@ -125,140 +126,140 @@
          </widget>
         </item>
         <item>
-         <widget class="QToolButton" name="mui_filtrar" >
-          <property name="minimumSize" >
+         <widget class="QToolButton" name="mui_filtrar">
+          <property name="minimumSize">
            <size>
             <width>32</width>
             <height>32</height>
            </size>
           </property>
-          <property name="maximumSize" >
+          <property name="maximumSize">
            <size>
             <width>32</width>
             <height>32</height>
            </size>
           </property>
-          <property name="toolTip" >
+          <property name="toolTip">
            <string>Mostrar/ocultar filtro</string>
           </property>
-          <property name="whatsThis" >
+          <property name="whatsThis">
            <string>Mostrar/ocultar filtro</string>
           </property>
-          <property name="text" >
+          <property name="text">
            <string/>
           </property>
-          <property name="icon" >
-           <iconset resource="../../bulmages.qrc" >
+          <property name="icon">
+           <iconset resource="../../../bulmages.qrc">
             <normaloff>:/Images/edit-find.png</normaloff>:/Images/edit-find.png</iconset>
           </property>
-          <property name="iconSize" >
+          <property name="iconSize">
            <size>
             <width>32</width>
             <height>32</height>
            </size>
           </property>
-          <property name="checkable" >
+          <property name="checkable">
            <bool>true</bool>
           </property>
-          <property name="checked" >
+          <property name="checked">
            <bool>true</bool>
           </property>
          </widget>
         </item>
         <item>
-         <widget class="QToolButton" name="mui_configurar" >
-          <property name="minimumSize" >
+         <widget class="QToolButton" name="mui_configurar">
+          <property name="minimumSize">
            <size>
             <width>32</width>
             <height>32</height>
            </size>
           </property>
-          <property name="maximumSize" >
+          <property name="maximumSize">
            <size>
             <width>32</width>
             <height>32</height>
            </size>
           </property>
-          <property name="toolTip" >
+          <property name="toolTip">
            <string>Configurar listado</string>
           </property>
-          <property name="whatsThis" >
+          <property name="whatsThis">
            <string>Configurar listado</string>
           </property>
-          <property name="text" >
+          <property name="text">
            <string/>
           </property>
-          <property name="icon" >
-           <iconset resource="../../bulmages.qrc" >
+          <property name="icon">
+           <iconset resource="../../../bulmages.qrc">
             <normaloff>:/Images/document-properties.png</normaloff>:/Images/document-properties.png</iconset>
           </property>
-          <property name="iconSize" >
+          <property name="iconSize">
            <size>
             <width>32</width>
             <height>32</height>
            </size>
           </property>
-          <property name="checkable" >
+          <property name="checkable">
            <bool>true</bool>
           </property>
-          <property name="checked" >
+          <property name="checked">
            <bool>false</bool>
           </property>
          </widget>
         </item>
         <item>
-         <widget class="QToolButton" name="mui_actualizar" >
-          <property name="minimumSize" >
+         <widget class="QToolButton" name="mui_actualizar">
+          <property name="minimumSize">
            <size>
             <width>32</width>
             <height>32</height>
            </size>
           </property>
-          <property name="maximumSize" >
+          <property name="maximumSize">
            <size>
             <width>32</width>
             <height>32</height>
            </size>
           </property>
-          <property name="toolTip" >
+          <property name="toolTip">
            <string>Actualizar</string>
           </property>
-          <property name="whatsThis" >
+          <property name="whatsThis">
            <string>Actualizar</string>
           </property>
-          <property name="text" >
+          <property name="text">
            <string/>
           </property>
-          <property name="icon" >
-           <iconset resource="../../bulmages.qrc" >
+          <property name="icon">
+           <iconset resource="../../../bulmages.qrc">
             <normaloff>:/Images/view-refresh.png</normaloff>:/Images/view-refresh.png</iconset>
           </property>
-          <property name="iconSize" >
+          <property name="iconSize">
            <size>
             <width>32</width>
             <height>32</height>
            </size>
           </property>
-          <property name="shortcut" >
+          <property name="shortcut">
            <string>F5</string>
           </property>
-          <property name="checkable" >
+          <property name="checkable">
            <bool>false</bool>
           </property>
-          <property name="checked" >
+          <property name="checked">
            <bool>false</bool>
           </property>
          </widget>
         </item>
         <item>
          <spacer>
-          <property name="orientation" >
+          <property name="orientation">
            <enum>Qt::Horizontal</enum>
           </property>
-          <property name="sizeType" >
+          <property name="sizeType">
            <enum>QSizePolicy::Expanding</enum>
           </property>
-          <property name="sizeHint" stdset="0" >
+          <property name="sizeHint" stdset="0">
            <size>
             <width>421</width>
             <height>26</height>
@@ -272,75 +273,75 @@
     </layout>
    </item>
    <item>
-    <widget class="QFrame" name="frame" >
-     <property name="frameShape" >
+    <widget class="QFrame" name="frame">
+     <property name="frameShape">
       <enum>QFrame::StyledPanel</enum>
      </property>
-     <property name="frameShadow" >
+     <property name="frameShadow">
       <enum>QFrame::Raised</enum>
      </property>
-     <layout class="QGridLayout" >
-      <property name="margin" >
+     <layout class="QGridLayout">
+      <property name="margin">
        <number>5</number>
       </property>
-      <property name="spacing" >
+      <property name="spacing">
        <number>5</number>
       </property>
-      <item row="2" column="3" colspan="2" >
-       <widget class="QLabel" name="textLabel1_3_2_2" >
-        <property name="text" >
+      <item row="2" column="3" colspan="2">
+       <widget class="QLabel" name="textLabel1_3_2_2">
+        <property name="text">
          <string>Apuntes con contrapartida:</string>
         </property>
-        <property name="alignment" >
+        <property name="alignment">
          <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
         </property>
        </widget>
       </item>
-      <item row="2" column="5" >
-       <widget class="BcBuscarCuenta" native="1" name="mui_contrapartida" />
+      <item row="2" column="5">
+       <widget class="BlSearchWidget" name="mui_contrapartida" native="true"/>
       </item>
-      <item row="1" column="0" colspan="2" >
-       <widget class="QLabel" name="textLabel1_3_2" >
-        <property name="text" >
+      <item row="1" column="0" colspan="2">
+       <widget class="QLabel" name="textLabel1_3_2">
+        <property name="text">
          <string>Apuntes con saldo inferior a:</string>
         </property>
-        <property name="alignment" >
+        <property name="alignment">
          <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
         </property>
        </widget>
       </item>
-      <item row="1" column="3" colspan="2" >
-       <widget class="QLabel" name="textLabel1_3" >
-        <property name="text" >
+      <item row="1" column="3" colspan="2">
+       <widget class="QLabel" name="textLabel1_3">
+        <property name="text">
          <string>Apuntes con saldo superior a:</string>
         </property>
-        <property name="alignment" >
+        <property name="alignment">
          <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
         </property>
        </widget>
       </item>
-      <item row="2" column="0" colspan="3" >
-       <widget class="QCheckBox" name="mui_asAbiertos" >
-        <property name="text" >
+      <item row="2" column="0" colspan="3">
+       <widget class="QCheckBox" name="mui_asAbiertos">
+        <property name="text">
          <string>&amp;Incluir asientos abiertos</string>
         </property>
        </widget>
       </item>
-      <item row="1" column="5" >
-       <widget class="QLineEdit" name="mui_saldosup" />
+      <item row="1" column="5">
+       <widget class="QLineEdit" name="mui_saldosup"/>
       </item>
-      <item row="1" column="2" >
-       <widget class="QLineEdit" name="mui_saldoinf" />
+      <item row="1" column="2">
+       <widget class="QLineEdit" name="mui_saldoinf"/>
       </item>
-      <item row="0" column="2" >
-       <widget class="BlDateSearch" native="1" name="mui_fechainicial" >
-        <property name="sizePolicy" >
-         <sizepolicy vsizetype="Preferred" hsizetype="Preferred" >
+      <item row="0" column="2">
+       <widget class="BlDateSearch" name="mui_fechainicial" native="true">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
           <horstretch>0</horstretch>
           <verstretch>0</verstretch>
          </sizepolicy>
         </property>
-        <property name="minimumSize" >
+        <property name="minimumSize">
          <size>
           <width>150</width>
           <height>0</height>
@@ -348,19 +349,19 @@
         </property>
        </widget>
       </item>
-      <item row="0" column="0" colspan="2" >
-       <widget class="QLabel" name="TextLabel1_3" >
-        <property name="text" >
+      <item row="0" column="0" colspan="2">
+       <widget class="QLabel" name="TextLabel1_3">
+        <property name="text">
          <string>Fecha inicial:</string>
         </property>
-        <property name="alignment" >
+        <property name="alignment">
          <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
         </property>
        </widget>
       </item>
-      <item row="0" column="5" >
-       <widget class="BlDateSearch" native="1" name="mui_fechafinal" >
-        <property name="minimumSize" >
+      <item row="0" column="5">
+       <widget class="BlDateSearch" name="mui_fechafinal" native="true">
+        <property name="minimumSize">
          <size>
           <width>150</width>
           <height>0</height>
@@ -368,12 +369,12 @@
         </property>
        </widget>
       </item>
-      <item row="0" column="3" colspan="2" >
-       <widget class="QLabel" name="TextLabel1_2_2" >
-        <property name="text" >
+      <item row="0" column="3" colspan="2">
+       <widget class="QLabel" name="TextLabel1_2_2">
+        <property name="text">
          <string>Fecha final:</string>
         </property>
-        <property name="alignment" >
+        <property name="alignment">
          <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
         </property>
        </widget>
@@ -382,9 +383,9 @@
     </widget>
    </item>
    <item>
-    <widget class="BcDiarioSubForm" name="mui_list" >
-     <property name="sizePolicy" >
-      <sizepolicy vsizetype="Expanding" hsizetype="Expanding" >
+    <widget class="BcDiarioSubForm" name="mui_list">
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
        <horstretch>0</horstretch>
        <verstretch>0</verstretch>
       </sizepolicy>
@@ -392,22 +393,22 @@
     </widget>
    </item>
    <item>
-    <layout class="QHBoxLayout" >
-     <property name="spacing" >
+    <layout class="QHBoxLayout">
+     <property name="spacing">
       <number>5</number>
      </property>
-     <property name="margin" >
+     <property name="margin">
       <number>0</number>
      </property>
      <item>
       <spacer>
-       <property name="orientation" >
+       <property name="orientation">
         <enum>Qt::Horizontal</enum>
        </property>
-       <property name="sizeType" >
+       <property name="sizeType">
         <enum>QSizePolicy::Expanding</enum>
        </property>
-       <property name="sizeHint" stdset="0" >
+       <property name="sizeHint" stdset="0">
         <size>
          <width>151</width>
          <height>16</height>
@@ -416,29 +417,29 @@
       </spacer>
      </item>
      <item>
-      <widget class="QLabel" name="TextLabel2" >
-       <property name="text" >
+      <widget class="QLabel" name="TextLabel2">
+       <property name="text">
         <string>Total Debe:</string>
        </property>
       </widget>
      </item>
      <item>
-      <widget class="QLineEdit" name="totaldebe" >
-       <property name="enabled" >
+      <widget class="QLineEdit" name="totaldebe">
+       <property name="enabled">
         <bool>true</bool>
        </property>
-       <property name="sizePolicy" >
-        <sizepolicy vsizetype="Fixed" hsizetype="Fixed" >
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
          <horstretch>0</horstretch>
          <verstretch>0</verstretch>
         </sizepolicy>
        </property>
-       <property name="palette" >
+       <property name="palette">
         <palette>
          <active>
-          <colorrole role="Base" >
-           <brush brushstyle="SolidPattern" >
-            <color alpha="255" >
+          <colorrole role="Base">
+           <brush brushstyle="SolidPattern">
+            <color alpha="255">
              <red>238</red>
              <green>238</green>
              <blue>238</blue>
@@ -447,9 +448,9 @@
           </colorrole>
          </active>
          <inactive>
-          <colorrole role="Base" >
-           <brush brushstyle="SolidPattern" >
-            <color alpha="255" >
+          <colorrole role="Base">
+           <brush brushstyle="SolidPattern">
+            <color alpha="255">
              <red>238</red>
              <green>238</green>
              <blue>238</blue>
@@ -458,9 +459,9 @@
           </colorrole>
          </inactive>
          <disabled>
-          <colorrole role="Base" >
-           <brush brushstyle="SolidPattern" >
-            <color alpha="255" >
+          <colorrole role="Base">
+           <brush brushstyle="SolidPattern">
+            <color alpha="255">
              <red>255</red>
              <green>255</green>
              <blue>255</blue>
@@ -470,7 +471,7 @@
          </disabled>
         </palette>
        </property>
-       <property name="font" >
+       <property name="font">
         <font>
          <family>Sans Serif</family>
          <pointsize>12</pointsize>
@@ -481,41 +482,41 @@
          <strikeout>false</strikeout>
         </font>
        </property>
-       <property name="focusPolicy" >
+       <property name="focusPolicy">
         <enum>Qt::NoFocus</enum>
        </property>
-       <property name="alignment" >
+       <property name="alignment">
         <set>Qt::AlignRight</set>
        </property>
-       <property name="readOnly" >
+       <property name="readOnly">
         <bool>true</bool>
        </property>
       </widget>
      </item>
      <item>
-      <widget class="QLabel" name="TextLabel2_2" >
-       <property name="text" >
+      <widget class="QLabel" name="TextLabel2_2">
+       <property name="text">
         <string>Total Haber:</string>
        </property>
       </widget>
      </item>
      <item>
-      <widget class="QLineEdit" name="totalhaber" >
-       <property name="enabled" >
+      <widget class="QLineEdit" name="totalhaber">
+       <property name="enabled">
         <bool>true</bool>
        </property>
-       <property name="sizePolicy" >
-        <sizepolicy vsizetype="Fixed" hsizetype="Fixed" >
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
          <horstretch>0</horstretch>
          <verstretch>0</verstretch>
         </sizepolicy>
        </property>
-       <property name="palette" >
+       <property name="palette">
         <palette>
          <active>
-          <colorrole role="Base" >
-           <brush brushstyle="SolidPattern" >
-            <color alpha="255" >
+          <colorrole role="Base">
+           <brush brushstyle="SolidPattern">
+            <color alpha="255">
              <red>238</red>
              <green>238</green>
              <blue>238</blue>
@@ -524,9 +525,9 @@
           </colorrole>
          </active>
          <inactive>
-          <colorrole role="Base" >
-           <brush brushstyle="SolidPattern" >
-            <color alpha="255" >
+          <colorrole role="Base">
+           <brush brushstyle="SolidPattern">
+            <color alpha="255">
              <red>238</red>
              <green>238</green>
              <blue>238</blue>
@@ -535,9 +536,9 @@
           </colorrole>
          </inactive>
          <disabled>
-          <colorrole role="Base" >
-           <brush brushstyle="SolidPattern" >
-            <color alpha="255" >
+          <colorrole role="Base">
+           <brush brushstyle="SolidPattern">
+            <color alpha="255">
              <red>255</red>
              <green>255</green>
              <blue>255</blue>
@@ -547,7 +548,7 @@
          </disabled>
         </palette>
        </property>
-       <property name="font" >
+       <property name="font">
         <font>
          <family>Sans Serif</family>
          <pointsize>12</pointsize>
@@ -558,13 +559,13 @@
          <strikeout>false</strikeout>
         </font>
        </property>
-       <property name="focusPolicy" >
+       <property name="focusPolicy">
         <enum>Qt::NoFocus</enum>
        </property>
-       <property name="alignment" >
+       <property name="alignment">
         <set>Qt::AlignRight</set>
        </property>
-       <property name="readOnly" >
+       <property name="readOnly">
         <bool>true</bool>
        </property>
       </widget>
@@ -573,13 +574,8 @@
    </item>
   </layout>
  </widget>
- <layoutdefault spacing="2" margin="5" />
+ <layoutdefault spacing="2" margin="5"/>
  <customwidgets>
-  <customwidget>
-   <class>BcBuscarCuenta</class>
-   <extends>QWidget</extends>
-   <header>bcbuscarcuenta.h</header>
-  </customwidget>
   <customwidget>
    <class>BcDiarioSubForm</class>
    <extends>QFrame</extends>
@@ -591,9 +587,16 @@
    <extends>QWidget</extends>
    <header>../../bulmalib/src/bldatesearch.h</header>
   </customwidget>
+  <customwidget>
+   <class>BlSearchWidget</class>
+   <extends>QWidget</extends>
+   <header>blsearchwidget.h</header>
+   <container>1</container>
+  </customwidget>
  </customwidgets>
  <resources>
-  <include location="../../bulmages.qrc" />
+  <include location="../../../bulmages.qrc"/>
+  <include location="../../bulmages.qrc"/>
  </resources>
  <connections>
   <connection>
@@ -602,11 +605,11 @@
    <receiver>frame</receiver>
    <slot>setShown(bool)</slot>
    <hints>
-    <hint type="sourcelabel" >
+    <hint type="sourcelabel">
      <x>155</x>
      <y>37</y>
     </hint>
-    <hint type="destinationlabel" >
+    <hint type="destinationlabel">
      <x>249</x>
      <y>88</y>
     </hint>

@@ -419,6 +419,33 @@ void BlSearchWidget::setTableName ( QString tableName )
     } // end if
 }
 
+void BlSearchWidget::selectAll ( )
+{
+    m_inputBusqueda->selectAll ( );
+}
+
+void BlSearchWidget::setFocus ( )
+{
+    m_inputBusqueda->setFocus ( );
+}
+
+void BlSearchWidget::hideLabel(){
+  mui_labelBusqueda->hide();
+}
+
+void BlSearchWidget::hideDescripcion(){
+  m_textBusqueda->hide();
+}
+
+void BlSearchWidget::hideBotonBorrar(){
+  m_clearSearchWidget->hide();
+}
+
+void BlSearchWidget::hideBotonBusqueda(){
+  m_buscarWidget->hide();
+}
+
+
 
 /// ===================================================================
 /// Busqueda Delegate para usar con los subforms

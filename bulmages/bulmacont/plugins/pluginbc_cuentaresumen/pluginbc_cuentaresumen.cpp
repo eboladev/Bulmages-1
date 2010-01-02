@@ -111,7 +111,7 @@ int entryPoint ( BcBulmaCont *bcont )
 /**
 \return
 **/
-int BcBuscarCuenta_setidcuenta_post ( BcBuscarCuenta * )
+int Busqueda_on_m_inputBusqueda_textChanged ( BlSearchWidget * )
 {
     g_res->setMensaje ( "<HTML><BODY>No hay cuenta.</BODY></HTML>" );
     return 0;
@@ -123,12 +123,13 @@ int BcBuscarCuenta_setidcuenta_post ( BcBuscarCuenta * )
 \param bcta
 \return
 **/
-int BcBuscarCuenta_s_lostFocus_post ( BcBuscarCuenta *bcta )
+
+int Busqueda_on_m_inputBusqueda_editingFinished_Post ( BlSearchWidget *bcta )
 {
     _depura ( "BcBuscarCuenta_s_lostFocus_post", 0 );
-    QString cod = bcta->codigocuenta();
-    QString nom = bcta->nomcuenta();
-    QString id  = bcta->idcuenta();
+    QString cod = bcta->fieldValue("codigo");
+    QString nom = bcta->fieldValue("descripcion");
+    QString id  = bcta->id();
     if ( id == "" ) return 0;
     BlDbRecordSet *cur = bcta->mainCompany() ->loadQuery ( "SELECT *, debe-haber AS saldo FROM cuenta WHERE idcuenta = " + id );
     if ( !cur ) return 0;

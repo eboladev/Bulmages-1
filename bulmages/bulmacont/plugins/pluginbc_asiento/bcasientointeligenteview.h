@@ -37,14 +37,12 @@
 #include <QPixmap>
 #include <QDomDocument>
 
-//#include "bcplancontablelistview.h"
 #include "blfunctions.h"
 #include "blpostgresqlclient.h"
 #include "bldatesearch.h"
-#include "bcbuscarcuenta.h"
 #include "ui_bcasientointeligentebase.h"
 #include "bcform.h"
-
+#include "blsearchwidget.h"
 
 /// Formulario para la introducci&oacute;n de asientos mediante las plantillas.
 /** Clase que sirve para introducir asientos en el sistema mediante el uso de plantillas
@@ -91,7 +89,7 @@ private:
     QLabel *labelfecha[100];
     QLabel *labelnumero[100];
     QLabel *labeltexto[100];
-    BcBuscarCuenta *varcta[100];
+    BlSearchWidget *varcta[100];
     BlDateSearch *varfecha[100];
     QLineEdit *varnumero[100];
     QLineEdit *vartexto[100];

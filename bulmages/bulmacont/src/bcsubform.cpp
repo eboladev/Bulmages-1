@@ -31,8 +31,6 @@
 #include "bldoublespinbox.h"
 #include "bcbuscarcanal.h"
 #include "bcbuscarcentrocoste.h"
-//#include "bccuentalistview.h"
-#include "bcbuscarcuenta.h"
 
 /// Constructor de la clase
 /**
@@ -537,11 +535,6 @@ QWidget *BcSubFormDelegate::createEditor ( QWidget *parent, const QStyleOptionVi
         editor->setMaximum ( 1000000 );
         _depura ( "END BcSubFormDelegate::createEditor", 0, "BlDoubleSpinBox" );
         return editor;
-    } else if ( linea->nomcampo() == "codigo" ) {
-        BcBuscarCuentaDelegate * editor = new BcBuscarCuentaDelegate ( parent );
-        editor->setMainCompany ( ( BcCompany * ) m_subform->mainCompany() );
-        _depura ( "END BcSubFormDelegate::createEditor", 0, "BcBuscarCuentaDelegate" );
-        return editor;
     } else if ( linea->nomcampo() == "nomcanal" ) {
         BcBuscarCanalDelegate * editor = new BcBuscarCanalDelegate ( parent );
         editor->setMainCompany ( m_subform->mainCompany() );
@@ -609,12 +602,6 @@ void BcSubFormDelegate::setModelData ( QWidget *editor, QAbstractItemModel *mode
         spinBox->interpretText();
         QString value = spinBox->text();
         model->setData ( index, value );
-    } else if ( linea->nomcampo() == "codigo" ) {
-        BcBuscarCuentaDelegate * comboBox = static_cast<BcBuscarCuentaDelegate*> ( editor );
-        QString value = comboBox->currentText();
-        value = value.left ( value.indexOf ( ".-" ) );
-        QString codigoext = extiendecodigo ( value, ( ( BcSubForm* ) m_subform )->mainCompany() ->numdigitosempresa() );
-        model->setData ( index, codigoext );
     } else if ( linea->nomcampo() == "nomcanal" ) {
         BcBuscarCanalDelegate * comboBox = static_cast<BcBuscarCanalDelegate*> ( editor );
         QString value = comboBox->currentText();
@@ -670,12 +657,6 @@ void BcSubFormDelegate::setEditorData ( QWidget *editor, const QModelIndex &inde
         BlDoubleSpinBox *spinBox = static_cast<BlDoubleSpinBox*> ( editor );
         spinBox->setValue ( value.toDouble() );
         spinBox->selectAll();
-    } else if ( linea->nomcampo() == "codigo" ) {
-        QString value = index.model() ->data ( index, Qt::DisplayRole ).toString();
-        BcBuscarCuentaDelegate *comboBox = static_cast<BcBuscarCuentaDelegate*> ( editor );
-        comboBox->addItem ( value );
-        //comboBox->lineEdit()->setText(value);
-        comboBox->lineEdit() ->selectAll();
     } else if ( linea->nomcampo() == "nomcanal" ) {
         QString value = index.model() ->data ( index, Qt::DisplayRole ).toString();
         BcBuscarCanalDelegate *comboBox = static_cast<BcBuscarCanalDelegate*> ( editor );

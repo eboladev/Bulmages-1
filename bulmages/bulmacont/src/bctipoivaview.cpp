@@ -22,8 +22,6 @@
 
 #include "bctipoivaview.h"
 #include "bccompany.h"
-#include "bcbuscarcuenta.h"
-
 
 /// El constructor de la clase prepara las variables globales y llama a la funcion pintar.ç
 /**
@@ -45,7 +43,14 @@ BcTipoIVAView::BcTipoIVAView ( BcCompany *emp, QWidget *parent )
     addDbField ( "porcentajetipoiva", BlDbField::DbNumeric, BlDbField::DbNothing, _ ( "Porcentaje" ) );
     addDbField ( "idcuenta", BlDbField::DbInt, BlDbField::DbNotNull, _ ( "Cuenta" ) );
 
+    /// Arreglamos la cuenta
     mui_idcuenta->setMainCompany ( emp );
+    mui_idcuenta->setLabel ( _ ( "Cuenta:" ) );
+    mui_idcuenta->setTableName ( "cuenta" );
+    mui_idcuenta->setFieldId("idcuenta");
+    mui_idcuenta->m_valores["descripcion"] = "";
+    mui_idcuenta->m_valores["codigo"] = "";
+
     m_curtipoiva = NULL;
 
     dialogChanges_setQObjectExcluido ( mui_comboTipoIVA );
@@ -156,7 +161,7 @@ void BcTipoIVAView::on_mui_crear_released()
                 on_mui_guardar_released();
         } // end if
 
-        if ( mui_idcuenta->text() == "" ) {
+        if ( mui_idcuenta->id() == "" ) {
             mensajeInfo ( "Debe seleccionar una cuenta para asociarle el tipo de IVA" );
             return;
         } // end if
@@ -166,7 +171,7 @@ void BcTipoIVAView::on_mui_crear_released()
             nombreTipoIVA = mui_nombretipoiva->text();
         } // end if
 
-        QString query = "INSERT INTO tipoiva (nombretipoiva, porcentajetipoiva, idcuenta) VALUES ('" + nombreTipoIVA + "', 0, id_cuenta('" + mui_idcuenta->text() + "'))";
+        QString query = "INSERT INTO tipoiva (nombretipoiva, porcentajetipoiva, idcuenta) VALUES ('" + nombreTipoIVA + "', 0, " + mui_idcuenta->id() + ")";
         mainCompany() ->begin();
         mainCompany() ->runQuery ( query );
         BlDbRecordSet *cur = mainCompany() ->loadQuery ( "SELECT max(idtipoiva) AS idtipoiva FROM tipoiva" );

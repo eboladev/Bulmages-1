@@ -238,7 +238,7 @@ void MyPluginCuenta1::seleccionarCuenta ( BlSubForm *sub )
 {
     _depura ( "MyPluginCuenta1::editarCuenta", 0 );
 /*
-    CuentaList *artlist = new CuentaList ( ( BfCompany * ) sub->mainCompany(), NULL, 0, BL_SELECT_MODE );
+    CuentaList *artlist = new CuentaList ( ( BcCompany * ) sub->mainCompany(), NULL, 0, BL_SELECT_MODE );
     /// Esto es convertir un QWidget en un sistema modal de dialogo.
     sub->setEnabled ( false );
     artlist->show();
@@ -293,7 +293,7 @@ int Busqueda_on_mui_buscar_released ( BlSearchWidget *busq )
         diag->setGeometry ( QRect ( 0, 0, 750, 550 ) );
         centrarEnPantalla ( diag );
 
-//        ClientsList *listcuentas = new ClientsList ( ( BfCompany * ) busq->mainCompany(), diag, 0, BL_SELECT_MODE );
+//        ClientsList *listcuentas = new ClientsList ( ( BcCompany * ) busq->mainCompany(), diag, 0, BL_SELECT_MODE );
         /// Creamos una instancia del selector de cuentas.
         BcCuentaListView *listcuentas = new BcCuentaListView ( ( BcCompany * ) busq->mainCompany(), diag, 0, BL_SELECT_MODE );
 
@@ -324,5 +324,168 @@ int Busqueda_on_mui_buscar_released ( BlSearchWidget *busq )
     _depura("END pluginbc_cuenta::Busqueda_on_mui_buscar_released");
     return val;
 }
+
+
+/// ======================================================
+
+int BlSubFormDelegate_createEditor ( BlSubFormDelegate *bl )
+{
+    _depura ( "pluginbc_cuenta::BlSubFormDelegate_createEditor", 0 );
+    int ret = 0;
+    if ( g_nomcampo == "codigo" || g_nomcampo == "codigo1" ) {
+        BlDbCompleterComboBox * editor = new BlDbCompleterComboBox ( g_editor );
+        editor->setObjectName ( "EditCodigoCuenta" );
+        editor->setMainCompany ( ( BcCompany * ) bl->m_subform->mainCompany() );
+        editor->m_valores["descripcion"] = "";
+        editor->m_valores["codigo"] = "";
+        editor->m_tabla = "cuenta";
+        g_plugParams =  editor;
+        ret = -1;
+    } // end if
+
+    _depura ( "END pluginbc_cuenta::BlSubFormDelegate_createEditor", 0 );
+
+    return ret;
+}
+
+
+
+/// Hay cosas que deberian estar en el plugin de cuenta
+int BlSubFormDelegate_setModelData ( BlSubFormDelegate *bl )
+{
+    _depura ( "pluginbc_cuenta::BlSubFormDelegate_setModelData", 0 );
+    int ret = 0;
+    if ( g_editor->objectName() == "EditCodigoCuenta" || g_editor->objectName() == "EditNombreCliente" ) {
+        BlDbCompleterComboBox * comboBox = ( BlDbCompleterComboBox * ) g_editor;
+        QString value = comboBox->currentText();
+        value = value.left ( value.indexOf ( ".-" ) );
+        g_model->setData ( g_index, value );
+        ret = -1;
+    } // end if
+    _depura ( "END pluginbc_cuenta::BlSubFormDelegate_setModelData", 0 );
+    return ret;
+}
+
+
+int BlSubFormDelegate_setEditorData ( BlSubFormDelegate *bl )
+{
+    _depura ( "pluginbc_cuenta::BlSubFormDelegate_setEditorData", 0 );
+    int ret = 0;
+    if ( g_editor->objectName() == "EditCodigoCuenta" || g_editor->objectName() == "EditNombreCliente" ) {
+        QString value = g_index.model() ->data ( g_index, Qt::DisplayRole ).toString();
+        BlDbCompleterComboBox *comboBox = ( BlDbCompleterComboBox * ) g_editor ;
+        comboBox->addItem ( value );
+        ret = -1;
+    } // end if
+    _depura ( "END pluginbc_cuenta::BlSubFormDelegate_setEditorData", 0 );
+    return ret;
+}
+
+int BlSubForm_editFinished ( BlSubForm *sub )
+{
+    _depura ( "pluginbc_cuenta::BlSubForm_editFinished", 0 );
+    if ( sub->m_campoactual->nomcampo() == "codigo" ) {
+   QString query = "SELECT idcuenta FROM cuenta WHERE upper (descripcion ||  ' ' || codigo) LIKE upper('" + sub->m_campoactual->text() + "%')";
+// mensajeInfo(query);
+        BlDbRecordSet *cur = sub->mainCompany() ->loadQuery ( query );
+        if ( !cur->eof() ) {
+            sub->m_registrolinea->setDbValue ( "idcuenta", cur->valor ( "idcuenta" ) );
+        } // end if
+        delete cur;
+    } // end if
+    _depura ( "END pluginbc_cuenta::BlSubForm_editFinished", 0 );
+    return 0;
+}
+
+
+int BlDbCompleterComboBox_textChanged (BlDbCompleterComboBox *bl)
+{
+  _depura("BlDbCompleterComboBox_textChanged", 0);
+
+        if ( bl->m_entrada.size() >= 3 && bl->m_tabla == "cuenta") {
+                QString cadwhere = "";
+                /// Inicializamos los valores de vuelta a ""
+                QMapIterator<QString, QString> i ( bl->m_valores );
+                QString cador = "";
+                while ( i.hasNext() ) {
+                    i.next();
+                    cadwhere = cadwhere + cador + " upper(" + i.key() + ")";
+                    cador = " || ' ' ||";
+                } // end while
+
+                QString SQLQuery = "SELECT * FROM " + bl->m_tabla + " WHERE " + cadwhere + "LIKE  upper('%" + bl->m_entrada + "%')";
+                bl->m_cursorcombo = bl->mainCompany() ->loadQuery ( SQLQuery );
+                bl->clear();
+                while ( !bl->m_cursorcombo->eof() ) {
+                    QMapIterator<QString, QString> i ( bl->m_valores );
+                    QString cad = "";
+                    QString sep = "";
+                    QString cad1 = "";
+                    while ( i.hasNext() ) {
+                        i.next();
+                        cad = cad + sep + bl->m_cursorcombo->valor ( i.key() );
+                        if ( sep == "" ) {
+                            cad1 = i.key();
+                            sep = " ";
+                        } // end if
+                    } // end while
+                    bl->addItem ( cad , QVariant ( bl->m_cursorcombo->valor ( cad1 ) ) );
+                    bl->m_cursorcombo->nextRecord();
+                } // end while
+                delete bl->m_cursorcombo;
+
+  _depura("END BlDbCompleterComboBox_textChanged", 0);
+
+     return 1;
+        } // end if
+  _depura("END BlDbCompleterComboBox_textChanged", 0);
+
+    return 0;
+}
+
+
+
+int BcSubForm_pressedAsterisk ( BcSubForm *sub )
+{
+    _depura ( "BcSubForm_pressedAsterisk" );
+
+    if ( sub->m_campoactual->nomcampo() != "codigo" ) {
+        _depura ( "END BfSubForm::pressedAsterisk", 0 );
+        return 0;
+    } // end if
+
+/*
+    TutoresList *tutoreslist = new TutoresList ( ( BcCompany * ) sub->mainCompany(), NULL, 0, BL_SELECT_MODE );
+    
+    /// Esto es convertir un QWidget en un sistema modal de dialogo.
+    sub->setEnabled ( false );
+    tutoreslist->show();
+    
+    while ( !tutoreslist->isHidden() )
+        g_theApp->processEvents();
+        
+    sub->setEnabled ( true );
+    QString idCliente = tutoreslist->idcliente();
+    
+    delete tutoreslist;
+
+    /// Si no tenemos un idtutor salimos ya que significa que no se ha seleccionado ninguno.
+    if ( idCliente == "" ) {
+        _depura ( "END BfSubForm::pressedAsterisk", 0 );
+        return 0;
+    } // end if
+
+    BlDbRecordSet *cur = sub->mainCompany() ->loadQuery ( "SELECT * FROM cliente WHERE idcliente = " + idCliente );
+    if ( !cur->eof() ) {
+        sub->m_registrolinea->setDbValue ( "idcliente", idCliente );
+        sub->m_registrolinea->setDbValue ( "nomcliente", cur->valor ( "nomcliente" ));
+    } // end if
+    
+    delete cur;
+*/    
+    _depura ( "END BfSubForm_pressedAsterisk" );
+    return 0;
+}
+
 
 

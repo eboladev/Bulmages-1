@@ -350,7 +350,7 @@
        </widget>
       </item>
       <item row="1" column="1" colspan="2">
-       <widget class="BcBuscarCuenta" name="m_codigoinicial" native="true">
+       <widget class="BlSearchWidget" name="m_codigoinicial" native="true">
         <property name="minimumSize">
          <size>
           <width>100</width>
@@ -403,7 +403,7 @@
        </widget>
       </item>
       <item row="3" column="1">
-       <widget class="BcBuscarCuenta" name="m_codigofinal" native="true">
+       <widget class="BlSearchWidget" name="m_codigofinal" native="true">
         <property name="sizePolicy">
          <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
           <horstretch>0</horstretch>
@@ -811,9 +811,10 @@
    <header>../../bulmalib/src/bldatesearch.h</header>
   </customwidget>
   <customwidget>
-   <class>BcBuscarCuenta</class>
+   <class>BlSearchWidget</class>
    <extends>QWidget</extends>
-   <header>bcbuscarcuenta.h</header>
+   <header>blsearchwidget.h</header>
+   <container>1</container>
   </customwidget>
  </customwidgets>
  <tabstops>
@@ -827,7 +828,7 @@
  </tabstops>
  <resources>
   <include location="../../../bulmages.qrc"/>
-  <include location="../../bulmages.qrc"/>
+  <include location="../../../bulmages.qrc"/>
  </resources>
  <connections>
   <connection>

@@ -66,6 +66,13 @@ public:
     virtual void setTableName(QString tableName);
     virtual void setText(const QString &);
     void setFieldId ( const QString & );
+    void selectAll();
+    void setFocus();
+    void hideLabel();
+    void hideDescripcion();
+    void hideBotonBorrar();
+    void hideBotonBusqueda();
+
 
 public slots:
     virtual void on_m_buscarWidget_released();

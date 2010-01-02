@@ -71,7 +71,7 @@ public:
     virtual void pintaidregistroiva ( const QString & ) {}
     ;
     virtual void pintacontrapartida ( const QString &val ) {
-        m_contrapartida->setidcuenta ( val );
+        m_contrapartida->setId ( val );
     };
     virtual void pintabaseimp ( const QString &val ) {
         BlFixed total ( val );

@@ -31,11 +31,19 @@
 #include "blmaincompanypointer.h"
 #include "blmaincompany.h"
 #include "blsubform.h"
+#include "bcsubform.h"
 #include "blsearchwidget.h"
 
 extern "C" MY_EXPORT int entryPoint ( BcBulmaCont * );
 extern "C" MY_EXPORT int BlSubForm_BlSubForm_Post ( BlSubForm * );
 extern "C" MY_EXPORT int Busqueda_on_mui_buscar_released(BlSearchWidget *);
+extern "C" MY_EXPORT int BlSubFormDelegate_createEditor ( BlSubFormDelegate * );
+extern "C" MY_EXPORT int BlSubFormDelegate_setModelData ( BlSubFormDelegate * );
+extern "C" MY_EXPORT int BlSubFormDelegate_setEditorData ( BlSubFormDelegate * );
+extern "C" MY_EXPORT int BlSubForm_editFinished ( BlSubForm * );
+extern "C" MY_EXPORT int BlDbCompleterComboBox_textChanged (BlDbCompleterComboBox *);
+extern "C" MY_EXPORT int BcSubForm_pressedAsterisk ( BcSubForm * );
+
 
 class MyPluginCuenta : public QObject, BlMainCompanyPointer
 {

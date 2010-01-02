@@ -198,8 +198,8 @@ void BcAsientoInteligenteView::cifcuenta ( int idcuenta )
 void BcAsientoInteligenteView::eturn_cta()
 {
     _depura ( "BcAsientoInteligenteView::eturn_cta", 0 );
-    BcBuscarCuenta *numero;
-    numero = ( BcBuscarCuenta * ) sender();
+    BlSearchWidget *numero;
+    numero = ( BlSearchWidget * ) sender();
     selectsiguiente ( numero );
     _depura ( "END BcAsientoInteligenteView::eturn_cta", 0 );
 }
@@ -434,9 +434,14 @@ void BcAsientoInteligenteView::mostrarplantilla()
             labelcta[i]->setGeometry ( QRect ( 5, inc , 150, 25 ) );
             labelcta[i]->setText ( variablescta[i][2] );
             labelcta[i]->show();
-            varcta[i] = new BcBuscarCuenta ( mui_datosAsiento );
+            varcta[i] = new BlSearchWidget ( mui_datosAsiento );
             varcta[i]->setGeometry ( QRect ( 150, inc , 300, 50 ) );
-            varcta[i]->setMainCompany ( mainCompany() );
+            varcta[i]->setMainCompany(mainCompany());
+            varcta[i]->setLabel ( _ ( "Cuenta:" ) );
+            varcta[i]->setTableName ( "cuenta" );
+            varcta[i]->setFieldId("idcuenta");
+            varcta[i]->m_valores["descripcion"] = "";
+            varcta[i]->m_valores["codigo"] = "";
             connect ( varcta[i], SIGNAL ( enterPressed() ), this, SLOT ( eturn_cta() ) );
             connect ( varcta[i], SIGNAL ( textChanged ( const QString & ) ), this, SLOT ( codigo_textChanged ( const QString & ) ) );
             varcta[i]->show();
@@ -543,7 +548,7 @@ void BcAsientoInteligenteView::recogevalores()
             throw - 1;
     } // end for
     for ( i = 0; i < indvariablescta; i++ ) {
-        variablescta[i][1] = varcta[i]->text();
+        variablescta[i][1] = varcta[i]->fieldValue("codigo");
         if ( variablescta[i][1].isEmpty() )
             throw - 1;
     } // end for

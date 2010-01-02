@@ -24,8 +24,6 @@
 #include "blpostgresqlclient.h"
 #include "bccompany.h"
 #include "bcasientointeligenteview.h"
-#include "bcbuscarcuenta.h"
-
 
 /// Inicia los encabezados de la tabla y llama a la presentacion del listado.
 /**
@@ -56,8 +54,15 @@ cobropagoview::cobropagoview ( BcCompany *emp, QWidget *parent )
     mui_listado->addSubFormHeader ( "tipoprevcobro", BlDbField::DbNumeric, BlDbField::DbNothing, BlSubFormHeader::DbNone , _ ( "tipoprevcobro" ) );
     mui_listado->addSubFormHeader ( "docprevcobro", BlDbField::DbNumeric, BlDbField::DbNothing, BlSubFormHeader::DbNone , _ ( "docprevcobro" ) );
     mui_listado->setInsert ( FALSE );
-    /// Dejamos de inicializar el listado.
+    /// Inicializamos el campo cuenta.
     m_cuenta->setMainCompany ( emp );
+    m_cuenta->setLabel ( _ ( "Cuenta:" ) );
+    m_cuenta->setTableName ( "cuenta" );
+    m_cuenta->setFieldId("idcuenta");
+    m_cuenta->m_valores["descripcion"] = "";
+    m_cuenta->m_valores["codigo"] = "";
+
+
     on_mui_actualizar_released();
     m_companyact->meteWindow ( windowTitle(), this );
     _depura ( "END cobropagoview::cobropagoview", 0 );
