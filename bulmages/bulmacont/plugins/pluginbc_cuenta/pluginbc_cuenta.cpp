@@ -412,8 +412,8 @@ int BlDbCompleterComboBox_textChanged (BlDbCompleterComboBox *bl)
                     cadwhere = cadwhere + cador + " upper(" + i.key() + ")";
                     cador = " || ' ' ||";
                 } // end while
-
-                QString SQLQuery = "SELECT * FROM " + bl->m_tabla + " WHERE " + cadwhere + "LIKE  upper('%" + bl->m_entrada + "%')";
+                QString cadwhere1 = " codigo = '" + extiendecodigo(bl->m_entrada, ((BcCompany *)bl->mainCompany())->numdigitosempresa()) + "'";
+                QString SQLQuery = "SELECT * FROM " + bl->m_tabla + " WHERE " +cadwhere1+ " OR " + cadwhere + "LIKE  upper('%" + bl->m_entrada + "%')";
                 bl->m_cursorcombo = bl->mainCompany() ->loadQuery ( SQLQuery );
                 bl->clear();
                 while ( !bl->m_cursorcombo->eof() ) {
@@ -426,7 +426,7 @@ int BlDbCompleterComboBox_textChanged (BlDbCompleterComboBox *bl)
                         cad = cad + sep + bl->m_cursorcombo->valor ( i.key() );
                         if ( sep == "" ) {
                             cad1 = i.key();
-                            sep = " ";
+                            sep = ".-";
                         } // end if
                     } // end while
                     bl->addItem ( cad , QVariant ( bl->m_cursorcombo->valor ( cad1 ) ) );
