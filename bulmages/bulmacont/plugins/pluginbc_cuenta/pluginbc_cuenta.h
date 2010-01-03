@@ -43,7 +43,7 @@ extern "C" MY_EXPORT int BlSubFormDelegate_setEditorData ( BlSubFormDelegate * )
 extern "C" MY_EXPORT int BlSubForm_editFinished ( BlSubForm * );
 extern "C" MY_EXPORT int BlDbCompleterComboBox_textChanged (BlDbCompleterComboBox *);
 extern "C" MY_EXPORT int BcSubForm_pressedAsterisk ( BcSubForm * );
-
+extern "C" MY_EXPORT int Busqueda_on_m_inputBusqueda_textChanged (BlSearchWidget *);
 
 class MyPluginCuenta : public QObject, BlMainCompanyPointer
 {

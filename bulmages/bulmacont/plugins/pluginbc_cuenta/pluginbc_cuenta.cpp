@@ -488,4 +488,27 @@ int BcSubForm_pressedAsterisk ( BcSubForm *sub )
 }
 
 
+int Busqueda_on_m_inputBusqueda_textChanged (BlSearchWidget *wid) {
+    if (wid->tableName() != "cuenta") return 0;
+    QString texto = wid->text();
+    QString codigo = extiendecodigo(wid->text(), ((BcCompany *)wid->mainCompany())->numdigitosempresa() );
+    QString SQLQuery = "SELECT * FROM cuenta WHERE codigo = '" + codigo + "'";
+    BlDbRecordSet *cur = wid->mainCompany() ->loadQuery ( SQLQuery );
+    if ( cur->numregistros() == 1 ) {
+        /// Ponemos el id sin hacer una carga adicional
+        wid->setId( cur->valor ( "idcuenta" ), FALSE);
+        /// Inicializamos los valores de vuelta a ""
+        QMapIterator<QString, QString> i ( wid->m_valores );
+        while ( i.hasNext() ) {
+            i.next();
+            wid->m_valores.insert ( i.key(), cur->valor ( i.key() ) );
+        } // end while
+        wid->m_textBusqueda->setText(cur->valor("codigo") + " " + cur->valor("descripcion"));
+        delete cur;
+        return 1;
+    } // end if
+    delete cur;
+    return 0;
+}
+
 

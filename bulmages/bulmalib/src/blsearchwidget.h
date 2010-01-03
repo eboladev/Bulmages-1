@@ -59,13 +59,15 @@ public:
     virtual QString fieldValue();
     virtual QString fieldValue(QString campo);
     virtual QString tableName();
-    virtual void setId ( QString val );
+    virtual void setId ( QString val, bool cargarvalores = TRUE );
     virtual void setFieldValue ( QString val );
     virtual void setFieldValue ( QString campo, QString val );
     virtual void setLabel(QString label);
     virtual void setTableName(QString tableName);
     virtual void setText(const QString &);
+    QString text();
     void setFieldId ( const QString & );
+    QString fieldId();
     void selectAll();
     void setFocus();
     void hideLabel();

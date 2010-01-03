@@ -105,12 +105,12 @@ void BlSearchWidget::pinta()
 /**
 \param val
 **/
-void BlSearchWidget::setId ( QString val )
+void BlSearchWidget::setId ( QString val, bool cargarvalores )
 {
     _depura ( "BlSearchWidget::setId", 0, val );
     mdb_id = val;
 
-    if ( m_tabla == "" ) {
+    if ( m_tabla == "" || !cargarvalores) {
         return;
     } // end if
 
@@ -429,6 +429,10 @@ void BlSearchWidget::setFocus ( )
     m_inputBusqueda->setFocus ( );
 }
 
+QString BlSearchWidget::text () {
+    return m_inputBusqueda->text();
+}
+
 void BlSearchWidget::hideLabel(){
   mui_labelBusqueda->hide();
 }
@@ -445,7 +449,9 @@ void BlSearchWidget::hideBotonBusqueda(){
   m_buscarWidget->hide();
 }
 
-
+QString BlSearchWidget::fieldId(){
+  return m_campoid;
+}
 
 /// ===================================================================
 /// Busqueda Delegate para usar con los subforms
