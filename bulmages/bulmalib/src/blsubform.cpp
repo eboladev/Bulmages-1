@@ -450,6 +450,16 @@ void BlSubForm::setDelete ( bool f )
 
 ///
 /**
+**/
+bool BlSubForm::isDelete() {
+    _depura ( "BlSubForm::isDelete", 0 );
+    _depura ( "END BlSubForm::isDelete", 0 );
+    return m_delete;
+}
+
+
+///
+/**
 \param row
 \param col
 \return
@@ -699,6 +709,16 @@ void BlSubForm::setDbFieldId ( QString nom )
     _depura ( "BlSubForm::setDbFieldId", 0 );
     m_campoid = nom;
     _depura ( "END BlSubForm::setDbFieldId", 0 );
+}
+
+
+///
+/**
+**/
+QString BlSubForm::dbFieldId() {
+    _depura ( "BlSubForm::dbFieldId", 0 );
+    _depura ( "END BlSubForm::dbFieldId", 0 );
+    return m_campoid;
 }
 
 
@@ -2680,6 +2700,16 @@ void BlSubForm::setInsert ( bool b )
     _depura ( "BlSubForm::setInsert", 0 );
     m_insercion = b;
     _depura ( "END BlSubForm::setInsert", 0 );
+}
+
+
+///
+/**
+**/
+bool BlSubForm::isInsert() {
+    _depura ( "BlSubForm::isInsert", 0 );
+    _depura ( "END BlSubForm::isInsert", 0 );
+    return m_insercion;
 }
 
 

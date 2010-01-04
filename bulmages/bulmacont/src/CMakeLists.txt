@@ -25,6 +25,7 @@
 file(GLOB bulmacont_SRC *.c *.cpp)
 file(GLOB bulmacont_UIS *.ui)
 
+
 set(bulmacontEx main.cxx)
 
 set(bulmacont_MOCS bcbulmacont.h
@@ -47,6 +48,11 @@ set(bulmacont_MOCS bcbulmacont.h
            bcbuscarcanal.h 
            bcform.h
            bcasientoduplicarview.h)
+
+
+# Exclude files with no QObject macro.
+file(GLOB bulmacont_NO_MOCS bcmodelo300imprimir2ps.h)
+list(REMOVE_ITEM bulmacont_MOCS ${bulmacont_NO_MOCS}) 
 
 
 set(QT_USE_QTASSISTANT true)

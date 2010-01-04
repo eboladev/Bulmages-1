@@ -40,7 +40,6 @@ public:
     ~ClienteListSubform();
 };
 
-
 #include "ui_clientslistbase.h"
 
 

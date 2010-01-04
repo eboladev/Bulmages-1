@@ -1,8 +1,9 @@
 PROJECT(bulmafact)
 
 add_subdirectory(src)
-
 add_subdirectory(plugins)
+add_subdirectory(designer)
+
 
 # if you want to add some private code
 # simple put your add_directory in a

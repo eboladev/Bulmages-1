@@ -37,7 +37,6 @@
     convertidos de pdf a postscript. Hereda de \ref BcPsGenerateModel */
 class BC_EXPORT BcModelo300Imprimir2PS: public QDialog, public Ui_BcModelo300Base, public BcPsGenerateModel
 {
-    Q_OBJECT
 
 public:
     BcModelo300Imprimir2PS ( QWidget *parent );

@@ -116,6 +116,11 @@ tabular de datos que puede generar desde listados hasta subformularios
 class BL_EXPORT BlSubForm: public BlWidget, public Ui_BlSubFormBase
 {
     Q_OBJECT
+    Q_PROPERTY(QString tableName READ isDelete WRITE setDbTableName)
+    Q_PROPERTY(QString dbFieldId READ isDelete WRITE setDbFieldId)
+    Q_PROPERTY(bool isDelete READ isDelete WRITE setDelete USER false)
+    Q_PROPERTY(bool isInsert READ isInsert WRITE setInsert USER false)
+
 
 public:
     BlDbSubFormRecord *m_registrolinea;
@@ -236,6 +241,7 @@ public:
     /// Establece el modo de borrado de registros que permite al subformulario
     /// borrar filas con su correspondiente borrado en la base de datos.
     void setDelete ( bool f );
+    bool isDelete ();
     /// Devuelve el elemento del subformulario ubicado en la posici&oacute;n
     /// indicada
     BlDbSubFormField *item ( int row, int col );
@@ -277,6 +283,7 @@ public:
     QString imprimir();
     void sortItems ( int col, Qt::SortOrder orden );
     void setInsert ( bool b );
+    bool isInsert ();
     /// Define que campo se utilizar&aacute; para unir las filas que tengan el mismo texto (rowSpan).
     /// Es &uacute;til en contabilidad para unir filas del mismo asiento.
     void setColumnToRowSpan ( QString campo );
@@ -285,6 +292,7 @@ public:
     void setFileConfig ( QString nom );
     QString fileConfig();
     void setDbFieldId ( QString nom );
+    QString dbFieldId();
     void clear();
     void setRowCount ( int i );
     void setColumnCount ( int i );
