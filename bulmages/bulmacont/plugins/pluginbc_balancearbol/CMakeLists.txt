@@ -80,7 +80,7 @@ set_target_properties( ${plugin} PROPERTIES
   VERSION "${BULMAGES_VERSION}")
 
 target_link_libraries(${plugin} libbulmacont bulmalib ${QT_LIBRARIES} ${PGSQL_LIBRARIES})
-add_dependencies(${plugin} bulmacont bulmalib pluginbc_asiento)
+add_dependencies(${plugin} bulmacont bulmalib pluginbc_asiento pluginbc_cuenta)
 
 install_targets(/lib/bulmacont/plugins ${plugin})
 
