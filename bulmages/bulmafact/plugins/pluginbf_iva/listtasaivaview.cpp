@@ -60,16 +60,16 @@ ListTasaIVAView::ListTasaIVAView ( BfCompany *comp, QWidget *parent )
 ///
 /**
 **/
-void ListTasaIVAView::on_mui_aceptar_released()
+void ListTasaIVAView::on_mui_aceptar_clicked()
 {
-    _depura ( "ListTasaIVAView::on_mui_aceptar_released", 0 );
+    _depura ( "ListTasaIVAView::on_mui_aceptar_clicked", 0 );
     try {
         mui_listado->guardar();
         close();
     } catch ( ... ) {
         mensajeInfo ( _ ( "Error al guardar las tasas de IVA" ) );
     } // end try
-    _depura ( "END ListTasaIVAView::on_mui_aceptar_released", 0 );
+    _depura ( "END ListTasaIVAView::on_mui_aceptar_clicked", 0 );
 }
 
 

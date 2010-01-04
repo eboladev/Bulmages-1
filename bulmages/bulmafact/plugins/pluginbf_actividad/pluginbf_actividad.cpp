@@ -392,9 +392,9 @@ int BlSubForm_BlSubForm_Post ( BlSubForm *sub )
 
 
 
-int Busqueda_on_mui_buscar_released ( BlSearchWidget *busq )
+int Busqueda_on_mui_buscar_clicked ( BlSearchWidget *busq )
 {
-    _depura ( "Busqueda_on_mui_buscar_released", 0 );
+    _depura ( "Busqueda_on_mui_buscar_clicked", 0 );
 
     if ( busq->tableName() == "actividad" ) {
 
@@ -427,7 +427,7 @@ int Busqueda_on_mui_buscar_released ( BlSearchWidget *busq )
         
     } // end if
     
-    _depura ( "END Busqueda_on_mui_buscar_released", 0 );
+    _depura ( "END Busqueda_on_mui_buscar_clicked", 0 );
     
     return 0;
 

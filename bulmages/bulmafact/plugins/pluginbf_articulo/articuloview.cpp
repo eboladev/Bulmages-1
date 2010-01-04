@@ -247,7 +247,7 @@ int ArticuloView::guardarPost()
     Si todo ha ido bien cierra la ventana.
     NOTA: Este metodo no hace la pregunta de desea borrar los cambios ya que
     a veces interesa poder borrar sin preguntar. Por eso la preguna la hace
-    on_mui_borrar_released().
+    on_mui_borrar_clicked().
 */
 /**
 \return
@@ -267,9 +267,9 @@ int ArticuloView::borrarPre()
 */
 /**
 **/
-void ArticuloView::on_mui_cambiarimagen_released()
+void ArticuloView::on_mui_cambiarimagen_clicked()
 {
-    _depura ( "ArticuloView::on_mui_cambiarimagen_released()", 0 );
+    _depura ( "ArticuloView::on_mui_cambiarimagen_clicked()", 0 );
     QPixmap imagen;
 
     m_archivoimagen = QFileDialog::getOpenFileName (
@@ -290,13 +290,13 @@ void ArticuloView::on_mui_cambiarimagen_released()
         mui_imagen->setPixmap ( imagen );
     } // end if
 
-    _depura ( "END ArticuloView::on_mui_cambiarimagen_released()", 0 );
+    _depura ( "END ArticuloView::on_mui_cambiarimagen_clicked()", 0 );
 }
 
 
 /** Elimina la imagen del articulo asociado si existe.
 **/
-void ArticuloView::on_mui_borrarimagen_released()
+void ArticuloView::on_mui_borrarimagen_clicked()
 {
     QString archivoimagen;
     archivoimagen = g_confpr->valor ( CONF_DIR_IMG_ARTICLES ) + mui_codigocompletoarticulo->text() + ".jpg";

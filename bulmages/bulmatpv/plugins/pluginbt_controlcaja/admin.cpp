@@ -13,7 +13,7 @@ Admin::Admin ( BtCompany *emp, QWidget *parent ) : BlWidget ( emp, parent )
 Admin::~Admin()
 {}
 
-void Admin::on_mui_z_released()
+void Admin::on_mui_z_clicked()
 {
     if ( QMessageBox::warning ( this,
                                 _ ( "Salir" ),
@@ -25,12 +25,12 @@ void Admin::on_mui_z_released()
 
 }
 
-void Admin::on_mui_x_released()
+void Admin::on_mui_x_clicked()
 {
     ( ( BtCompany * ) mainCompany() ) ->x();
 }
 
-void Admin::on_mui_salir_released()
+void Admin::on_mui_salir_clicked()
 {
     if ( QMessageBox::warning ( this,
                                 _ ( "Salir" ),

@@ -391,9 +391,9 @@ void BlFormListFilter::updatePosition ( int fila, int columna, int fila_anterior
   Tras lanzar la se&ntilde;al de que debe aplicarse el filtro,
   cambia el color de fondo si no hay resultados
 **/
-void BlFormListFilter::on_mui_filtro_aplicar_released()
+void BlFormListFilter::on_mui_filtro_aplicar_clicked()
 {
-   _depura ( "BlFormListFilter::mui_filtro_aplicar_released", 0 );
+   _depura ( "BlFormListFilter::mui_filtro_aplicar_clicked", 0 );
 
    emit aplicar_filtro();
 
@@ -404,20 +404,20 @@ void BlFormListFilter::on_mui_filtro_aplicar_released()
      mui_filtro_texto->setStyleSheet ( "" );
    }
 
-   _depura ( "END BlFormListFilter::mui_filtro_aplicar_released", 0 );
+   _depura ( "END BlFormListFilter::mui_filtro_aplicar_clicked", 0 );
 }
 
 
 /// Responde a la pulsaci&oacute;n del bot&oacute;n de limpiar filtro
 /**
 **/
-void BlFormListFilter::on_mui_filtro_limpiar_released()
+void BlFormListFilter::on_mui_filtro_limpiar_clicked()
 {
-   _depura ( "BlFormListFilter::on_mui_filtro_limpiar_released", 0 );
+   _depura ( "BlFormListFilter::on_mui_filtro_limpiar_clicked", 0 );
 
    cleanFilter();
    hideFilterWidgets();
    emit aplicar_filtro();
 
-   _depura ( "END BlFormListFilter::on_mui_filtro_limpiar_released", 0 );
+   _depura ( "END BlFormListFilter::on_mui_filtro_limpiar_clicked", 0 );
 }

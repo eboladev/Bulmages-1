@@ -186,11 +186,11 @@ void ListRegistroIvaView::boton_print()
 ///
 /**
 **/
-void ListRegistroIvaView::on_mui_actualizar_released()
+void ListRegistroIvaView::on_mui_actualizar_clicked()
 {
-    _depura ( "ListRegistroIvaView::on_mui_actualizar_released", 0 );
+    _depura ( "ListRegistroIvaView::on_mui_actualizar_clicked", 0 );
     inicializa();
-    _depura ( "END ListRegistroIvaView::on_mui_actualizar_released", 0 );
+    _depura ( "END ListRegistroIvaView::on_mui_actualizar_clicked", 0 );
 }
 
 

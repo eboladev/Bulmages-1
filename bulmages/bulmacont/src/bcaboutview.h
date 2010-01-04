@@ -40,7 +40,7 @@ public:
     ~BcAboutView(); /// Destructor de la clase.
 
 private slots:
-    void on_mui_aceptar_released();
+    void on_mui_aceptar_clicked();
 };
 
 #endif

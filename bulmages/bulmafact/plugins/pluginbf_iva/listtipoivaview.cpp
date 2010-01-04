@@ -60,16 +60,16 @@ ListTipoIVAView::ListTipoIVAView ( BfCompany *comp, QWidget *parent )
 ///
 /**
 **/
-void ListTipoIVAView::on_mui_aceptar_released()
+void ListTipoIVAView::on_mui_aceptar_clicked()
 {
-    _depura ( "ListTipoIVAView::on_mui_aceptar_released", 0 );
+    _depura ( "ListTipoIVAView::on_mui_aceptar_clicked", 0 );
     try {
         mui_listado->guardar();
         close();
     } catch ( ... ) {
         mensajeInfo ( _ ( "Error al guardar los tipos de IVA" ) );
     } // end try
-    _depura ( "END ListTipoIVAView::on_mui_aceptar_released", 0 );
+    _depura ( "END ListTipoIVAView::on_mui_aceptar_clicked", 0 );
 }
 
 

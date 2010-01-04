@@ -188,12 +188,12 @@ void BcAsientoView::asientocerradop()
 /// formulario.
 /**
 **/
-void BcAsientoView::on_mui_nuevoasiento_released()
+void BcAsientoView::on_mui_nuevoasiento_clicked()
 {
-    _depura ( "BcAsientoView::on_mui_nuevoasiento_released", 0 );
+    _depura ( "BcAsientoView::on_mui_nuevoasiento_clicked", 0 );
     mui_fecha->setText ( QDate::currentDate().toString ( "dd/MM/yyyy" ) );
     iniciar_asiento_nuevo();
-    _depura ( "END BcAsientoView::on_mui_nuevoasiento_released", 0 );
+    _depura ( "END BcAsientoView::on_mui_nuevoasiento_clicked", 0 );
 }
 
 
@@ -281,11 +281,11 @@ void BcAsientoView::on_mui_fecha_enterPressed()
     para que actualize los cambios. */
 /**
 **/
-void BcAsientoView::on_mui_duplicar_released()
+void BcAsientoView::on_mui_duplicar_clicked()
 {
-    _depura ( "BcAsientoView::on_mui_duplicar_released", 0 );
+    _depura ( "BcAsientoView::on_mui_duplicar_clicked", 0 );
 
-    _depura ( "END BcAsientoView::on_mui_duplicar_released", 0 );
+    _depura ( "END BcAsientoView::on_mui_duplicar_clicked", 0 );
 }
 
 
@@ -294,9 +294,9 @@ void BcAsientoView::on_mui_duplicar_released()
     para que se opere con los asientos plantilla. */
 /**
 **/
-void BcAsientoView::on_mui_inteligente_released()
+void BcAsientoView::on_mui_inteligente_clicked()
 {
-    _depura ( "BcAsientoView::on_mui_inteligente_released", 0 );
+    _depura ( "BcAsientoView::on_mui_inteligente_clicked", 0 );
     int numasiento;
     if ( estadoBcAsientoForm() != BcAsientoForm::ASCerrado ) {
         /// El asiento esta abierto y por tanto se muestra como abierto.
@@ -308,7 +308,7 @@ void BcAsientoView::on_mui_inteligente_released()
     BcAsientoInteligenteView *nueva = new BcAsientoInteligenteView ( mainCompany(), 0 );
     nueva->inicializa ( numasiento );
     nueva->show();
-    _depura ( "END BcAsientoView::on_mui_inteligente_released", 0 );
+    _depura ( "END BcAsientoView::on_mui_inteligente_clicked", 0 );
 }
 
 
@@ -383,10 +383,10 @@ int BcAsientoView::guardarPost()
 ///
 /**
 **/
-void BcAsientoView::on_mui_borrar_released()
+void BcAsientoView::on_mui_borrar_clicked()
 {
     bool atendido = TRUE; // asumimos que habra que atender al dialogo de confirmacion de borrado
-    on_mui_borrar_released ( atendido );
+    on_mui_borrar_clicked ( atendido );
 }
 
 
@@ -394,9 +394,9 @@ void BcAsientoView::on_mui_borrar_released()
 /**
 \param atendido
 **/
-void BcAsientoView::on_mui_borrar_released ( bool atendido )
+void BcAsientoView::on_mui_borrar_clicked ( bool atendido )
 {
-    _depura ( "BcAsientoView::on_mui_borrar_released", 0 );
+    _depura ( "BcAsientoView::on_mui_borrar_clicked", 0 );
     QString idasientosig = idasientosiguiente();
     QString idasientoant = idasientoanterior();
     int resultadoborrar;
@@ -416,7 +416,7 @@ void BcAsientoView::on_mui_borrar_released ( bool atendido )
             pintar();
         } // end if
     } // end if
-    _depura ( "END BcAsientoView::on_mui_borrar_released", 0 );
+    _depura ( "END BcAsientoView::on_mui_borrar_clicked", 0 );
 }
 
 
@@ -837,11 +837,11 @@ void BcAsientoView::setFecha ( QString val )
 ///
 /**
 **/
-void BcAsientoView::on_mui_abrirasiento_released()
+void BcAsientoView::on_mui_abrirasiento_clicked()
 {
-    _depura ( "BcAsientoView::on_mui_abrirasiento_released", 0 );
+    _depura ( "BcAsientoView::on_mui_abrirasiento_clicked", 0 );
     abrir();
-    _depura ( "END BcAsientoView::on_mui_abrirasiento_released", 0 );
+    _depura ( "END BcAsientoView::on_mui_abrirasiento_clicked", 0 );
 }
 
 
@@ -849,29 +849,29 @@ void BcAsientoView::on_mui_abrirasiento_released()
 /**
 \return
 **/
-void BcAsientoView::on_mui_cerrarasiento_released()
+void BcAsientoView::on_mui_cerrarasiento_clicked()
 {
-    _depura ( "BcAsientoView::on_mui_cerrarasiento_released", 0 );
+    _depura ( "BcAsientoView::on_mui_cerrarasiento_clicked", 0 );
     if ( BlFixed ( m_descuadre->text() ) != 0 )  {
         mensajeInfo ( "Asiento descuadrado, no se puede cerrar" );
-        _depura ( "END BcAsientoView::on_mui_cerrarasiento_released", 0, "Descuadrado" );
+        _depura ( "END BcAsientoView::on_mui_cerrarasiento_clicked", 0, "Descuadrado" );
         return;
     } // end if
     prepguardar();
     cerrar();
-    _depura ( "END BcAsientoView::on_mui_cerrarasiento_released", 0 );
+    _depura ( "END BcAsientoView::on_mui_cerrarasiento_clicked", 0 );
 }
 
 
 ///
 /**
 **/
-void BcAsientoView::on_mui_guardarasiento_released()
+void BcAsientoView::on_mui_guardarasiento_clicked()
 {
-    _depura ( "BcAsientoView::on_mui_guardarasiento_released", 0 );
+    _depura ( "BcAsientoView::on_mui_guardarasiento_clicked", 0 );
     prepguardar();
     BcAsientoForm::guardar();
-    _depura ( "END BcAsientoView::on_mui_guardarasiento_released", 0 );
+    _depura ( "END BcAsientoView::on_mui_guardarasiento_clicked", 0 );
 }
 
 

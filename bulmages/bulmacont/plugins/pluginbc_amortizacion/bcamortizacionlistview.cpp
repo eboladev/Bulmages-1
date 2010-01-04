@@ -77,11 +77,11 @@ BcAmortizacionListView::~BcAmortizacionListView()
 **/
 void BcAmortizacionListView::crear()
 {
-    _depura ( "BcAmortizacionListView::on_mui_crear_released", 0 );
+    _depura ( "BcAmortizacionListView::on_mui_crear_clicked", 0 );
     BcAmortizacionView *amor = new BcAmortizacionView ( ( BcCompany * ) mainCompany(), 0 );
     mainCompany() ->pWorkspace() ->addWindow ( amor );
     amor->show();
-    _depura ( "END BcAmortizacionListView::on_mui_crear_released", 0 );
+    _depura ( "END BcAmortizacionListView::on_mui_crear_clicked", 0 );
 }
 
 
@@ -91,7 +91,7 @@ void BcAmortizacionListView::crear()
 **/
 void BcAmortizacionListView::borrar()
 {
-    _depura ( "BcAmortizacionListView::on_mui_borrar_released", 0 );
+    _depura ( "BcAmortizacionListView::on_mui_borrar_clicked", 0 );
     try {
         QString codigo = mui_listado->dbValue ( "idamortizacion" );
         if ( codigo != "" ) {
@@ -106,7 +106,7 @@ void BcAmortizacionListView::borrar()
     } catch ( ... ) {
         _depura ( _ ( "Error al borrar la amortizacion" ), 2 );
     } // end try
-    _depura ( "END BcAmortizacionListView::on_mui_borrar_released", 0 );
+    _depura ( "END BcAmortizacionListView::on_mui_borrar_clicked", 0 );
 }
 
 

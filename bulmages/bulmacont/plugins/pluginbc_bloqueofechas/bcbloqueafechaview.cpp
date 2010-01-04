@@ -230,9 +230,9 @@ void BcBloqueaFechaView::on_mui_treeWidget_itemDoubleClicked ( QTreeWidgetItem *
 ///
 /**
 **/
-void BcBloqueaFechaView::on_mui_crear_released()
+void BcBloqueaFechaView::on_mui_crear_clicked()
 {
-    _depura ( "BcBloqueaFechaView::on_mui_crear_released", 0 );
+    _depura ( "BcBloqueaFechaView::on_mui_crear_clicked", 0 );
     /// Tomamos el anyo pasado como referencia.
     int ejer = QDate::currentDate().year() - 1;
 
@@ -286,6 +286,6 @@ void BcBloqueaFechaView::on_mui_crear_released()
     /// Presentamos
     inicializa();
 
-    _depura ( "BcBloqueaFechaView::on_mui_crear_released", 0 );
+    _depura ( "BcBloqueaFechaView::on_mui_crear_clicked", 0 );
 }
 

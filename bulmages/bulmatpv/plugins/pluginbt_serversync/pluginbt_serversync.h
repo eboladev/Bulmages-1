@@ -33,5 +33,5 @@ extern "C" MY_EXPORT int entryPoint ( BtBulmaTPV * );
 extern "C" MY_EXPORT int exitPoint ( BtBulmaTPV * );
 extern "C" MY_EXPORT int BtCompany_cobrar_Post(BtCompany *);
 extern "C" MY_EXPORT int BtCompany_createMainWindows_Post ( BtCompany * );
-extern "C" MY_EXPORT int Abrevs_on_mui_aparcar_released_Post(Abrevs *);
-extern "C" MY_EXPORT int Abrevs_on_mui_recuperar_released_Post(Abrevs *);
+extern "C" MY_EXPORT int Abrevs_on_mui_aparcar_clicked_Post(Abrevs *);
+extern "C" MY_EXPORT int Abrevs_on_mui_recuperar_clicked_Post(Abrevs *);

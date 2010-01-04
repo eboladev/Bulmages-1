@@ -74,7 +74,7 @@ public:
     virtual int borrar();
 
 public slots:
-    virtual void on_mui_btcalcular_released();
+    virtual void on_mui_btcalcular_clicked();
 };
 
 #endif

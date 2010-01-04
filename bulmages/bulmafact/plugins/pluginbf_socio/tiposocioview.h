@@ -52,11 +52,11 @@ public:
     ~TiposocioView();
     bool trataModificado();
     virtual int guardar();
-    virtual void on_mui_borrar_released();
+    virtual void on_mui_borrar_clicked();
 
 private slots:
     virtual void on_mui_lista_currentItemChanged ( QListWidgetItem *cur, QListWidgetItem *prev );
-    virtual void on_mui_nuevo_released();
+    virtual void on_mui_nuevo_clicked();
 };
 
 #endif

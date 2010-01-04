@@ -59,9 +59,9 @@ EFacturaRecepcion::~EFacturaRecepcion()
 /**
 \return
 **/
-void EFacturaRecepcion::on_mui_recibir_released()
+void EFacturaRecepcion::on_mui_recibir_clicked()
 {
-    _depura ( "EFacturaRecepcion::on_mui_salir_released", 0 );
+    _depura ( "EFacturaRecepcion::on_mui_salir_clicked", 0 );
 
     /// Obtenemos los valores de configuracion necesarios para obtener eFacturas por e-mail
 
@@ -185,29 +185,29 @@ void EFacturaRecepcion::on_mui_recibir_released()
     delete Email;
     delete Password;
 
-    _depura ( "END EFacturaRecepcion::on_mui_salir_released", 0 );
+    _depura ( "END EFacturaRecepcion::on_mui_salir_clicked", 0 );
 }
 
 
 ///
 /**
 **/
-void EFacturaRecepcion::on_mui_abrir_released()
+void EFacturaRecepcion::on_mui_abrir_clicked()
 {
-    _depura ( "EFacturaRecepcion::on_mui_salir_released", 0 );
+    _depura ( "EFacturaRecepcion::on_mui_salir_clicked", 0 );
 
-    _depura ( "END EFacturaRecepcion::on_mui_salir_released", 0 );
+    _depura ( "END EFacturaRecepcion::on_mui_salir_clicked", 0 );
 }
 
 
 ///
 /**
 **/
-void EFacturaRecepcion::on_mui_salir_released()
+void EFacturaRecepcion::on_mui_salir_clicked()
 {
-    _depura ( "EFacturaRecepcion::on_mui_salir_released", 0 );
+    _depura ( "EFacturaRecepcion::on_mui_salir_clicked", 0 );
 
     close();
 
-    _depura ( "END EFacturaRecepcion::on_mui_salir_released", 0 );
+    _depura ( "END EFacturaRecepcion::on_mui_salir_clicked", 0 );
 }

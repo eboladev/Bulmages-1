@@ -109,7 +109,7 @@ Compra::Compra ( BtCompany *emp, QWidget *parent ) : BlWidget ( emp, parent )
     */
 }
 
-void Compra::on_mui_aceptar_released()
+void Compra::on_mui_aceptar_clicked()
 {
     close();
 

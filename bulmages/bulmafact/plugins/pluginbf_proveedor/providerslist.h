@@ -70,8 +70,8 @@ public:
     QString nomprovider();
 
 public slots:
-    virtual void on_mui_exportar_released();
-    virtual void on_mui_importar_released();
+    virtual void on_mui_exportar_clicked();
+    virtual void on_mui_importar_clicked();
 
 signals:
     void selected ( QString );

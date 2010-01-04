@@ -66,7 +66,7 @@ public:
     virtual ~ListCuotasPorAlumnoView();
 
 public slots:
-    virtual void on_mui_aceptar_released();
+    virtual void on_mui_aceptar_clicked();
 };
 
 #endif

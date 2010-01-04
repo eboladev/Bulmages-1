@@ -45,18 +45,18 @@ public:
     ~CuadranteView();
     void inicializaTrabajadores();
     void inicializaCuadrante ( const QDate &dateorig );
-    virtual void on_mui_imprimir_released();
+    virtual void on_mui_imprimir_clicked();
     void cargaconfig();
     void guardaconfig();
 
 public slots:
-    virtual void on_mui_calendario_released ( const QDate &date );
+    virtual void on_mui_calendario_clicked ( const QDate &date );
     virtual void on_mui_listtrabajadores_itemDoubleClicked ( QTreeWidgetItem *item, int column );
-    virtual void on_mui_editar_released();
+    virtual void on_mui_editar_clicked();
     virtual void on_mui_calendario_customContextMenuRequested ( const QPoint & pos );
-    virtual void on_mui_actualizar_released();
-    virtual void on_mui_limpiar_released();
-    virtual void on_mui_duplicar_released();
+    virtual void on_mui_actualizar_clicked();
+    virtual void on_mui_limpiar_clicked();
+    virtual void on_mui_duplicar_clicked();
 };
 #endif
 

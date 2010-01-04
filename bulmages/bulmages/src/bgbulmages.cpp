@@ -43,31 +43,31 @@ BgBulmaGes::~BgBulmaGes()
 }
 
 
-void BgBulmaGes::on_mui_lanzabulmacont_released()
+void BgBulmaGes::on_mui_lanzabulmacont_clicked()
 {
     launchBulmaCont();
 }
 
 
-void BgBulmaGes::on_mui_lanzabulmafact_released()
+void BgBulmaGes::on_mui_lanzabulmafact_clicked()
 {
     launchBulmaFact();
 }
 
 
-void BgBulmaGes::on_mui_lanzabulmatpv_released()
+void BgBulmaGes::on_mui_lanzabulmatpv_clicked()
 {
     launchBulmaTPV();
 }
 
 
-void BgBulmaGes::on_mui_lanzabulmasetup_released()
+void BgBulmaGes::on_mui_lanzabulmasetup_clicked()
 {
     launchBulmaSetup();
 }
 
 
-void BgBulmaGes::on_mui_cerrar_released()
+void BgBulmaGes::on_mui_cerrar_clicked()
 {
     hide();
 }

@@ -56,12 +56,12 @@ public:
     ~ClaseView();
     bool trataModificado();
     QString idclase();
-    virtual void on_mui_guardar_released();
-    virtual void on_mui_borrar_released();
+    virtual void on_mui_guardar_clicked();
+    virtual void on_mui_borrar_clicked();
 
 private slots:
     virtual void on_mui_lista_currentItemChanged ( QListWidgetItem *cur, QListWidgetItem *prev );
-    virtual void on_mui_nuevo_released();
+    virtual void on_mui_nuevo_clicked();
 };
 
 #endif

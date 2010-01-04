@@ -40,7 +40,7 @@ public:
     ~cobropagoview();
 
 public slots:
-    virtual void on_mui_actualizar_released();
+    virtual void on_mui_actualizar_clicked();
     virtual void s_guardar();
     virtual void s_recalculaSaldo();
 };

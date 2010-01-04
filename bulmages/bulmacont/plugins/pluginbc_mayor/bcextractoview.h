@@ -60,14 +60,14 @@ public:
     void imprimir();
 
 public slots:
-//    virtual void on_mui_imprimir_released();
+//    virtual void on_mui_imprimir_clicked();
 
-    virtual void on_mui_actualizar_released();
+    virtual void on_mui_actualizar_clicked();
     virtual void accept();
-    virtual void on_mui_casacion_released();
-    virtual void on_mui_guardarpunteo_released();
-    virtual void on_mui_cargarpunteos_released();
-    virtual void on_mui_borrapunteo_released();
+    virtual void on_mui_casacion_clicked();
+    virtual void on_mui_guardarpunteo_clicked();
+    virtual void on_mui_cargarpunteos_clicked();
+    virtual void on_mui_borrapunteo_clicked();
 
     virtual void boton_siguiente();
 
@@ -75,7 +75,7 @@ public slots:
     virtual void boton_fin();
     virtual void boton_inicio();
     virtual void boton_guardar();
-    virtual void on_mui_configurar_released();
+    virtual void on_mui_configurar_clicked();
     virtual void on_mui_list_cellDoubleClicked ( int, int columna );
 
 };

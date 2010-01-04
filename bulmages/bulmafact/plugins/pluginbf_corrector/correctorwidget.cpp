@@ -55,13 +55,13 @@ correctorwidget::~correctorwidget()
     Activa la ventana de correcion de reglas \ref confreglasview */
 /**
 **/
-void correctorwidget::on_mui_configurar_released()
+void correctorwidget::on_mui_configurar_clicked()
 {
-    _depura ( "correctorwidget::on_mui_configurar_released", 0 );
+    _depura ( "correctorwidget::on_mui_configurar_clicked", 0 );
     confreglasview *conf = new confreglasview();
     conf->exec();
     delete conf;
-    _depura ( "END correctorwidget::on_mui_configurar_released", 0 );
+    _depura ( "END correctorwidget::on_mui_configurar_clicked", 0 );
 }
 
 
@@ -70,9 +70,9 @@ void correctorwidget::on_mui_configurar_released()
     empresa y sacar la ventana de resultados. */
 /**
 **/
-void correctorwidget::on_mui_corregir_released()
+void correctorwidget::on_mui_corregir_clicked()
 {
-    _depura ( "correctorwidget::on_mui_corregir_released", 0 );
+    _depura ( "correctorwidget::on_mui_corregir_clicked", 0 );
     textBrowser = "<HTML><BODY BGCOLOR='#FFFFFF'>";
     QString cadena;
 
@@ -131,7 +131,7 @@ void correctorwidget::on_mui_corregir_released()
 
     textBrowser += "</BODY></HTML>";
     mui_browser->setHtml ( textBrowser );
-    _depura ( "END correctorwidget::on_mui_corregir_released", 0 );
+    _depura ( "END correctorwidget::on_mui_corregir_clicked", 0 );
 }
 
 

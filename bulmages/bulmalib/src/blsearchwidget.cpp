@@ -204,11 +204,11 @@ void BlSearchWidget::setFieldValue ( QString campo, QString val )
 
 /** Resetea el valor del 'id' y vacia la informacion del formulario.
 */
-void BlSearchWidget::on_m_clearSearchWidget_released()
+void BlSearchWidget::on_m_clearSearchWidget_clicked()
 {
-    _depura ( "BlSearchWidget::on_mui_clearSearchWidget_released", 0 );
+    _depura ( "BlSearchWidget::on_mui_clearSearchWidget_clicked", 0 );
     setId ( "" );
-    _depura ( "END BlSearchWidget::on_mui_clearSearchWidget_released", 0 );
+    _depura ( "END BlSearchWidget::on_mui_clearSearchWidget_clicked", 0 );
 }
 
 
@@ -220,12 +220,12 @@ void BlSearchWidget::on_m_clearSearchWidget_released()
 */
 /**
 **/
-void BlSearchWidget::on_m_buscarWidget_released()
+void BlSearchWidget::on_m_buscarWidget_clicked()
 {
-    _depura ( "BlSearchWidget::on_m_buscarWidget_released", 0 );
+    _depura ( "BlSearchWidget::on_m_buscarWidget_clicked", 0 );
     /// Disparamos los plugins
-    g_plugins->lanza ( "Busqueda_on_mui_buscar_released", this );
-    _depura ( "END BlSearchWidget::on_m_buscarWidget_released", 0 );
+    g_plugins->lanza ( "Busqueda_on_mui_buscar_clicked", this );
+    _depura ( "END BlSearchWidget::on_m_buscarWidget_clicked", 0 );
 }
 
 

@@ -166,7 +166,7 @@ void ConvocatoriasList::borrar()
             ConvocatoriaView * cv = new ConvocatoriaView ( ( BfCompany * ) mainCompany(), 0 );
             if ( cv->cargar ( mdb_idactividad ) )
                 throw - 1;
-            cv->on_mui_borrar_released();
+            cv->on_mui_borrar_clicked();
             cv->close();
         } // end if
         presentar();
@@ -218,9 +218,9 @@ void ConvocatoriasList::submenu ( const QPoint & )
     QAction *del = popup->addAction ( _ ( "Borrar Convocatoria" ) );
     QAction *opcion = popup->exec ( QCursor::pos() );
     if ( opcion == del )
-        on_mui_borrar_released();
+        on_mui_borrar_clicked();
     if ( opcion == edit )
-        on_mui_editar_released();
+        on_mui_editar_clicked();
     delete popup;
     _depura ( "ConvocatoriasList::on_mui_list_customContextMenuRequested", 0 );
 }

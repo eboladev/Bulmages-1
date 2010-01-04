@@ -139,7 +139,7 @@ int BlForm_cargar ( BlForm *fich )
     ContratosList *l = fich->findChild<ContratosList *> ( "ccontratoslist" );
     if ( l ) {
         l->mui_idcliente->setId ( fich->dbValue ( "idcliente" ) );
-        l->on_mui_actualizar_released();
+        l->on_mui_actualizar_clicked();
         return 0;
     } // end if
     return 0;

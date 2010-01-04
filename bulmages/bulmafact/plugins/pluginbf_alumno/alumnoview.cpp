@@ -124,7 +124,7 @@ void AlumnoView::imprimir()
     }
     
     /// Disparamos los plugins
-    int res = g_plugins->lanza ( "AlumnoView_on_mui_imprimir_released", this );
+    int res = g_plugins->lanza ( "AlumnoView_on_mui_imprimir_clicked", this );
     if ( res != 0 ) {
         return;
     } // end if
@@ -241,9 +241,9 @@ int AlumnoView::cargarPost ( QString id )
 */
 /**
 **/
-void AlumnoView::on_mui_cambiarimagen_released()
+void AlumnoView::on_mui_cambiarimagen_clicked()
 {
-    _depura ( "AlumnoView::on_mui_cambiarimagen_released()", 0 );
+    _depura ( "AlumnoView::on_mui_cambiarimagen_clicked()", 0 );
     
     QPixmap imagen;
 
@@ -266,14 +266,14 @@ void AlumnoView::on_mui_cambiarimagen_released()
         mui_imagen->setPixmap ( imagen );
     } // end if
 
-    _depura ( "END AlumnoView::on_mui_cambiarimagen_released()", 0 );
+    _depura ( "END AlumnoView::on_mui_cambiarimagen_clicked()", 0 );
 }
 
 /** Elimina la imagen del alumno asociado, si existe.
 **/
-void AlumnoView::on_mui_borrarimagen_released()
+void AlumnoView::on_mui_borrarimagen_clicked()
 {
-    _depura ( "AlumnoView::on_mui_borrarimagen_released()", 0 );
+    _depura ( "AlumnoView::on_mui_borrarimagen_clicked()", 0 );
 
     QString archivoimagen;
     archivoimagen = g_confpr->valor ( CONF_DIR_IMG_ALUMNOS ) + dbValue ( "idalumno" ) + ".jpg";
@@ -300,7 +300,7 @@ void AlumnoView::on_mui_borrarimagen_released()
 
     pintarPost();
     
-    _depura ( "END AlumnoView::on_mui_borrarimagen_released()", 0 );
+    _depura ( "END AlumnoView::on_mui_borrarimagen_clicked()", 0 );
 }
 
 /// =============================================================================

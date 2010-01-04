@@ -290,9 +290,9 @@ void ContratoView::on_subform2_itemDoubleClicked ( QTableWidgetItem * )
 ///
 /**
 **/
-void ContratoView::on_mui_facturar_released()
+void ContratoView::on_mui_facturar_clicked()
 {
-    _depura ( "ContratoView::on_mui_facturar_released", 0 );
+    _depura ( "ContratoView::on_mui_facturar_clicked", 0 );
     int periodo = 1;
     QString query;
     bool end = FALSE;
@@ -389,7 +389,7 @@ void ContratoView::on_mui_facturar_released()
         delete cur1;
         periodo++;
     } // end while
-    _depura ( "END ContratoView::on_mui_facturar_released", 0 );
+    _depura ( "END ContratoView::on_mui_facturar_clicked", 0 );
 }
 
 /// =============================================================================

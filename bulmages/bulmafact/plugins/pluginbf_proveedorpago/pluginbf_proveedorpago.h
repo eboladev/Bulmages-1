@@ -38,7 +38,7 @@ extern "C" MY_EXPORT int entryPoint ( BfBulmaFact * );
 extern "C" MY_EXPORT int BfCompany_createMainWindows_Post(BfCompany *);
 extern "C" MY_EXPORT int ProveedorView_ProveedorView_Post (ProveedorView *);
 extern "C" MY_EXPORT int ProveedorView_cargarPost_Post (ProveedorView *);
-extern "C" MY_EXPORT int BfBuscarReferencia_on_mui_abrirtodo_released_Post (BfBuscarReferencia *);
+extern "C" MY_EXPORT int BfBuscarReferencia_on_mui_abrirtodo_clicked_Post (BfBuscarReferencia *);
 extern "C" MY_EXPORT int FacturaProveedorView_FacturaProveedorView ( FacturaProveedorView * );
 extern "C" MY_EXPORT int AlbaranProveedorView_AlbaranProveedorView ( AlbaranProveedorView * );
 extern "C" MY_EXPORT int PedidoProveedorView_PedidoProveedorView ( PedidoProveedorView * );

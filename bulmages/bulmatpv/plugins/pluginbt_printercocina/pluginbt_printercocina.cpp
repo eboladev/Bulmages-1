@@ -253,11 +253,11 @@ int BtTicket_imprimir_Post(BtTicket *tick)
     return 1;
 }
 
-int Abrevs_on_mui_aparcar_released( Abrevs *av)
+int Abrevs_on_mui_aparcar_clicked( Abrevs *av)
 {
-    _depura ( "PluginBt_PrinterCocina::Abrevs_on_mui_aparcar_released", 0 );
+    _depura ( "PluginBt_PrinterCocina::Abrevs_on_mui_aparcar_clicked", 0 );
     impresionCocina(((BtCompany *)av->mainCompany())->ticketActual());
-    _depura ( "END PluginBt_PrinterCocina::Abrevs_on_mui_aparcar_released", 0 );
+    _depura ( "END PluginBt_PrinterCocina::Abrevs_on_mui_aparcar_clicked", 0 );
     return 0;
 }
 

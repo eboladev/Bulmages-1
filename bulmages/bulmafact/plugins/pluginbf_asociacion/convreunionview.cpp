@@ -136,7 +136,7 @@ void ConvReunionView::imprimir()
     } // end if
     
     /// Disparamos los plugins
-    int res = g_plugins->lanza ( "ConvReunionView_on_mui_imprimir_released", this );
+    int res = g_plugins->lanza ( "ConvReunionView_on_mui_imprimir_clicked", this );
     if ( res != 0 ) {
         _depura ( "END ConvReunionView::imprimir", 0 );
         return;
@@ -181,7 +181,7 @@ int ConvReunionView::cargarPost ( QString id )
     return 0;
 }
 
-void ConvReunionView::on_mui_email_released (  )
+void ConvReunionView::on_mui_email_clicked (  )
 {
     _depura ( " ConvReunionView::cargarPost", 0 );
     
@@ -206,9 +206,9 @@ void ConvReunionView::on_mui_email_released (  )
     _depura ( "END ConvReunionView::cargarPost", 0 );
 }
 
-void ConvReunionView::on_m_agregarconvocados_released() 
+void ConvReunionView::on_m_agregarconvocados_clicked() 
 {
-    _depura ( "ConvReunionView::on_m_agregarconvocados_released", 0 );
+    _depura ( "ConvReunionView::on_m_agregarconvocados_clicked", 0 );
     
     BlDbSubFormRecord *linea1;
 
@@ -230,7 +230,7 @@ void ConvReunionView::on_m_agregarconvocados_released()
     
     delete cur;
 
-    _depura ( "END ConvReunionView::on_m_agregarconvocados_released", 0 );
+    _depura ( "END ConvReunionView::on_m_agregarconvocados_clicked", 0 );
 }
 
 int ConvReunionView::junta()

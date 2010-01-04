@@ -44,7 +44,7 @@ public:
     void inicializa1 ( QString, QString, int );
     /// Slot que responde a la pulsaci&oacute;n del bot&oacute;n imprimir en el formulario.
     /// Realiza la impresi&oacute;n del listado que tenemos en pantalla.
-    virtual void on_mui_imprimir_released();
+    virtual void on_mui_imprimir_clicked();
 
 private:
     /// Muestra en pantalla los resultados para los datos introducidos.
@@ -54,7 +54,7 @@ public slots:
     /// Slot que responde a la pulsaci&oacute;n del bot&oacute;n actualizar en el formulario.
     /// Supuestamente debe repintar el formulario con las nuevas opciones de filtrado
     /// que se hayan elegido.
-    virtual void on_mui_actualizar_released();
+    virtual void on_mui_actualizar_clicked();
     /// SLOT que responde a la pulsaci&oacute;n del bot&oacute;n imprimir.
     /// Es invocado desde la clase \ref empresa
     virtual void boton_imprimir();
@@ -63,7 +63,7 @@ public slots:
     virtual void boton_guardar();
     /// SLOT que responde a la activaci&oacute;n del bot&oacute;n de configurar listado.
     /// Muestra el configurador de subform3 \ref subform3
-    virtual void on_mui_configurar_released();
+    virtual void on_mui_configurar_clicked();
 };
 
 #endif

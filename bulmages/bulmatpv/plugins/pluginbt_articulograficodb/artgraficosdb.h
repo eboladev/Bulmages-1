@@ -91,8 +91,8 @@ public:
 
 public slots:
     virtual void on_mui_list_cellClicked ( int, int );
-    virtual void on_mui_botonSiguiente_released();
-    virtual void on_mui_botonAnterior_released();
+    virtual void on_mui_botonSiguiente_clicked();
+    virtual void on_mui_botonAnterior_clicked();
     virtual void pulsadoBoton();
 };
 

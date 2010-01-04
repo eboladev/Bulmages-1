@@ -17,8 +17,8 @@ public:
     virtual ~Cobrar();
 
 public slots:
-    virtual void on_mui_cobrar_released();
-    virtual void on_mui_abrircajon_released();
+    virtual void on_mui_cobrar_clicked();
+    virtual void on_mui_abrircajon_clicked();
 };
 
 #endif

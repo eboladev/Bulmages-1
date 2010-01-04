@@ -61,16 +61,16 @@ ListTallasView::ListTallasView ( BfCompany *comp, QWidget *parent )
 /**
 **/
 
-void ListTallasView::on_mui_aceptar_released()
+void ListTallasView::on_mui_aceptar_clicked()
 {
-    _depura ( "ListTallasView::on_mui_aceptar_released", 0 );
+    _depura ( "ListTallasView::on_mui_aceptar_clicked", 0 );
     try {
         mui_listado->guardar();
         close();
     } catch ( ... ) {
         mensajeInfo ( _ ( "Error al guardar los colores" ), this );
     } // end try
-    _depura ( "END ListTallasView::on_mui_aceptar_released", 0 );
+    _depura ( "END ListTallasView::on_mui_aceptar_clicked", 0 );
 }
 
 

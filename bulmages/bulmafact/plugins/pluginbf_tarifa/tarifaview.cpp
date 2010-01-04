@@ -211,7 +211,7 @@ int TarifaView::guardar()
 /// Esta funci&oacute;n se ejecuta cuando se ha pulsado sobre el bot&oacute;n de nuevo.
 /**
 **/
-void TarifaView::on_mui_crear_released()
+void TarifaView::on_mui_crear_clicked()
 {
     _depura ( "TarifaView::INIT_boton_nuevo()\n", 0 );
     vaciar();
@@ -223,7 +223,7 @@ void TarifaView::on_mui_crear_released()
 ///
 /**
 **/
-void TarifaView::on_mui_actualizar_released()
+void TarifaView::on_mui_actualizar_clicked()
 {
     _depura ( "TarifaView::INIT_boton_nuevo()\n", 0 );
     cargar ( m_idtarifa );
@@ -234,7 +234,7 @@ void TarifaView::on_mui_actualizar_released()
 /// Esta funci&oacute;n se ejecuta cuando se ha pulsado sobre el bot&oacute;n de borrar.
 /**
 **/
-void TarifaView::on_mui_borrar_released()
+void TarifaView::on_mui_borrar_clicked()
 {
     _depura ( "TarifaView::INIT_boton_borrar()\n", 0 );
     if ( dbValue ( "idtarifa" ) != "" ) {

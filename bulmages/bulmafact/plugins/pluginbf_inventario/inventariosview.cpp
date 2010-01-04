@@ -34,7 +34,7 @@
 void InventariosView::on_mui_listado_itemDoubleClicked ( QTableWidgetItem * )
 {
     _depura ( "InventariosView::on_mui_listado_itemDoubleClicked", 0 );
-    on_mui_editar_released();
+    on_mui_editar_clicked();
     _depura ( "END InventariosView::on_mui_listado_itemDoubleClicked", 0 );
 }
 
@@ -43,16 +43,16 @@ void InventariosView::on_mui_listado_itemDoubleClicked ( QTableWidgetItem * )
 /**
 \return
 **/
-void InventariosView::on_mui_crear_released()
+void InventariosView::on_mui_crear_clicked()
 {
-    _depura ( "InventariosView::on_mui_crear_released", 0 );
+    _depura ( "InventariosView::on_mui_crear_clicked", 0 );
     InventarioView *bud = new InventarioView ( ( BfCompany * ) mainCompany(), 0 );
     if ( bud->cargar ( "0" ) )
         return;
     mainCompany() ->m_pWorkspace->addWindow ( bud );
     bud->show();
     bud->mui_nominventario->setFocus();
-    _depura ( "END InventariosView::on_mui_crear_released", 0 );
+    _depura ( "END InventariosView::on_mui_crear_clicked", 0 );
 }
 
 
@@ -62,7 +62,7 @@ void InventariosView::on_mui_crear_released()
 void InventariosView::on_mui_listado_itemDoubleClicked()
 {
     _depura ( "InventariosView::on_mui_listado_itemDoubleClicked", 0 );
-    on_mui_editar_released();
+    on_mui_editar_clicked();
     _depura ( "END InventariosView::on_mui_listado_itemDoubleClicked", 0 );
 }
 
@@ -114,9 +114,9 @@ InventariosView::~InventariosView()
 /**
 \return
 **/
-void InventariosView::on_mui_editar_released()
+void InventariosView::on_mui_editar_clicked()
 {
-    _depura ( "InventariosView::on_mui_editar_released", 0 );
+    _depura ( "InventariosView::on_mui_editar_clicked", 0 );
     int a = mui_listado->currentRow();
     if ( a < 0 ) {
         mensajeInfo ( _ ( "Tiene que seleccionar un inventario" ) );
@@ -133,7 +133,7 @@ void InventariosView::on_mui_editar_released()
             presentar();
         } // end if
     } // end if
-    _depura ( "END InventariosView::on_mui_editar_released", 0 );
+    _depura ( "END InventariosView::on_mui_editar_clicked", 0 );
 }
 
 
@@ -141,9 +141,9 @@ void InventariosView::on_mui_editar_released()
 /**
 \return
 **/
-void InventariosView::on_mui_borrar2_released()
+void InventariosView::on_mui_borrar2_clicked()
 {
-    _depura ( "InventariosView::on_mui_borrar2_released", 0 );
+    _depura ( "InventariosView::on_mui_borrar2_clicked", 0 );
     int a = mui_listado->currentRow();
     if ( a < 0 ) {
         mensajeInfo ( _ ( "Tiene que seleccionar un inventario" ) );
@@ -155,21 +155,21 @@ void InventariosView::on_mui_borrar2_released()
             mainCompany() ->m_pWorkspace->addWindow ( inv );
             inv->cargar ( idinventario );
             /// Hacemos el borrado sin mostrar pantalla ni nada.
-            inv->on_mui_borrar2_released();
+            inv->on_mui_borrar2_clicked();
             mui_listado->cargar();
         } // end if
     } // end if
     presentar();
-    _depura ( "END InventariosView::on_mui_borrar2_released", 0 );
+    _depura ( "END InventariosView::on_mui_borrar2_clicked", 0 );
 }
 
 
 ///
 /**
 **/
-void InventariosView::on_mui_imprimir_released()
+void InventariosView::on_mui_imprimir_clicked()
 {
-    _depura ( "InventariosView::on_mui_imprimir_released", 0 );
+    _depura ( "InventariosView::on_mui_imprimir_clicked", 0 );
 
     QString archivo = g_confpr->valor ( CONF_DIR_OPENREPORTS ) + "listado.rml";
     QString archivod = g_confpr->valor ( CONF_DIR_USER ) + "listado.rml";
@@ -248,7 +248,7 @@ void InventariosView::on_mui_imprimir_released()
     } // end if
 
     invocaPDF ( "listado" );
-    _depura ( "END InventariosView::on_mui_imprimir_released", 0 );
+    _depura ( "END InventariosView::on_mui_imprimir_clicked", 0 );
 }
 
 

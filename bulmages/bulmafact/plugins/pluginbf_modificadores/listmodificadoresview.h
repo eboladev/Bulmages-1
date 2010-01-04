@@ -67,7 +67,7 @@ public:
     virtual ~ListModificadoresView();
 
 public slots:
-    virtual void on_mui_aceptar_released() {
+    virtual void on_mui_aceptar_clicked() {
         mui_listado->guardar();
         close();
     }

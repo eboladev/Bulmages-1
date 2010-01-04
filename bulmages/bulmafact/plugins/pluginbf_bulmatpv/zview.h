@@ -52,7 +52,7 @@ public:
 
 public slots:
      virtual void on_mui_list_cellDoubleClicked(int row, int);
-     virtual void on_mui_actualizar_released();
+     virtual void on_mui_actualizar_clicked();
 };
 
 #endif

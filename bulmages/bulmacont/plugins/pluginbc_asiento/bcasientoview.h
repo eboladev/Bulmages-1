@@ -95,20 +95,20 @@ public:
     void asientoabiertop();
     void asientocerradop();
     void iniciar_asiento_nuevo ( QString nuevoordenasiento = "" );
-    virtual void on_mui_borrar_released();
-    virtual void on_mui_borrar_released ( bool );
+    virtual void on_mui_borrar_clicked();
+    virtual void on_mui_borrar_clicked ( bool );
     virtual void asiento_regularizacion ( QString, QString );
     virtual void asiento_cierre ( QString, QString );
     virtual void asiento_apertura ( QString );
 
 public slots:
     virtual void on_mui_list_editFinish ( int, int );
-    virtual void on_mui_abrirasiento_released();
-    virtual void on_mui_cerrarasiento_released();
-    virtual void on_mui_guardarasiento_released();
-    virtual void on_mui_nuevoasiento_released();
-    virtual void on_mui_duplicar_released();
-    virtual void on_mui_inteligente_released();
+    virtual void on_mui_abrirasiento_clicked();
+    virtual void on_mui_cerrarasiento_clicked();
+    virtual void on_mui_guardarasiento_clicked();
+    virtual void on_mui_nuevoasiento_clicked();
+    virtual void on_mui_duplicar_clicked();
+    virtual void on_mui_inteligente_clicked();
     virtual void on_mui_fecha_enterPressed();
     virtual void on_mui_configurar_toggled ( bool checked );
     virtual void on_mui_list_toogledConfig ( bool check );

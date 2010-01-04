@@ -224,55 +224,55 @@ void MTicket::pintar()
 }
 
 
-void MTicket::on_mui_subir_released()
+void MTicket::on_mui_subir_clicked()
 {
-    _depura ( "MTicket::on_mui_subir_released", 0 );
+    _depura ( "MTicket::on_mui_subir_clicked", 0 );
 
     /// Simulamos la pulsacion de la tecla arriba
     ( ( BtCompany * ) mainCompany() )->pulsaTecla ( Qt::Key_Up );
 
-    _depura ( "END MTicket::on_mui_subir_released", 0 );
+    _depura ( "END MTicket::on_mui_subir_clicked", 0 );
 }
 
 
-void MTicket::on_mui_bajar_released()
+void MTicket::on_mui_bajar_clicked()
 {
-     _depura ( "MTicket::on_mui_bajar_released", 0 );
+     _depura ( "MTicket::on_mui_bajar_clicked", 0 );
 
     /// Simulamos la pulsacion de la tecla abajo
     ( ( BtCompany * ) mainCompany() )->pulsaTecla ( Qt::Key_Down );
 
-    _depura ( "END MTicket::on_mui_bajar_released", 0 );
+    _depura ( "END MTicket::on_mui_bajar_clicked", 0 );
 }
 
 
-void MTicket::on_mui_borrar_released()
+void MTicket::on_mui_borrar_clicked()
 {
-     _depura ( "MTicket::on_mui_borrar_released", 0 );
+     _depura ( "MTicket::on_mui_borrar_clicked", 0 );
 
     BtTicket * tick = ( ( BtCompany * ) mainCompany() )->ticketActual();
     tick->ponerCantidad ( "0" );
 
     pintar();
 
-    _depura ( "END MTicket::on_mui_borrar_released", 0 );
+    _depura ( "END MTicket::on_mui_borrar_clicked", 0 );
 }
 
 
-void MTicket::on_mui_imprimir_released()
+void MTicket::on_mui_imprimir_clicked()
 {
-     _depura ( "MTicket::on_mui_imprimir_released", 0 );
+     _depura ( "MTicket::on_mui_imprimir_clicked", 0 );
 
     /// Llamamos al atajo de teclado que llama a BtTicket::imprimir()
     ( ( BtCompany * ) mainCompany() )->pulsaTecla ( Qt::Key_F2 );
 
-    _depura ( "END MTicket::on_mui_imprimir_released", 0 );
+    _depura ( "END MTicket::on_mui_imprimir_clicked", 0 );
 }
 
 
-void MTicket::on_mui_reimprimir_released()
+void MTicket::on_mui_reimprimir_clicked()
 {
-    _depura ( "MTicket::on_mui_reimprimir_released", 0 );
+    _depura ( "MTicket::on_mui_reimprimir_clicked", 0 );
 
     BtTicket *previousTicket = new BtTicket( ( BtCompany * ) mainCompany() );
     BlDbRecordSet *cur = mainCompany()->loadQuery ( "SELECT * FROM albaran WHERE ticketalbaran = TRUE ORDER BY idalbaran DESC LIMIT 1" );
@@ -303,5 +303,5 @@ void MTicket::on_mui_reimprimir_released()
 
     delete cur;
 
-    _depura ( "END MTicket::on_mui_reimprimir_released", 0 );
+    _depura ( "END MTicket::on_mui_reimprimir_clicked", 0 );
 }

@@ -183,7 +183,7 @@ void SociosList::borrar()
             SocioView * cv = new SocioView ( ( BfCompany * ) mainCompany(), 0 );
             if ( cv->cargar ( mdb_idcliente ) )
                 throw - 1;
-            cv->on_mui_borrar_released();
+            cv->on_mui_borrar_clicked();
             cv->close();
         } // end if
         presentar();
@@ -236,9 +236,9 @@ void SociosList::submenu ( const QPoint & )
     QAction *del = popup->addAction ( _ ( "Borrar Tutor" ) );
     QAction *opcion = popup->exec ( QCursor::pos() );
     if ( opcion == del )
-        on_mui_borrar_released();
+        on_mui_borrar_clicked();
     if ( opcion == edit )
-        on_mui_editar_released();
+        on_mui_editar_clicked();
     delete popup;
     _depura ( "SociosList::on_mui_list_customContextMenuRequested", 0 );
 }

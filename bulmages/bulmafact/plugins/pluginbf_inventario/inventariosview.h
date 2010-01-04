@@ -55,14 +55,14 @@ public:
     ~InventariosView();
     void inicializa();
     void presentar();
-    virtual void on_mui_imprimir_released();
-    virtual void on_mui_crear_released();
-    virtual void on_mui_editar_released();
+    virtual void on_mui_imprimir_clicked();
+    virtual void on_mui_crear_clicked();
+    virtual void on_mui_editar_clicked();
     virtual void on_mui_listado_itemDoubleClicked ( QTableWidgetItem * );
 
 public slots:
     virtual void on_mui_listado_itemDoubleClicked();
-    virtual void on_mui_borrar2_released();
+    virtual void on_mui_borrar2_clicked();
 };
 
 #endif

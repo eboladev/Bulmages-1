@@ -1181,7 +1181,7 @@ int BlSubForm::inicializar()
     /// Ordenamos la tabla.
     mui_list->ordenar();
     /// configuramos que registros son visibles y que registros no lo son.
-    on_mui_confcol_released();
+    on_mui_confcol_clicked();
     m_procesacambios = TRUE;
     _depura ( "END BlSubForm::inicializar", 0 );
     return 0;
@@ -1464,7 +1464,7 @@ void BlSubForm::cargar ( BlDbRecordSet *cur )
     if ( m_primero ) {
         cargaconfig();
     } else {
-        on_mui_confcol_released();
+        on_mui_confcol_clicked();
     } // end if
 
     /// Reactivamos el sorting
@@ -2186,7 +2186,7 @@ void BlSubForm::cargaconfig()
         } // end for
 
         file.close();
-        on_mui_confcol_released();
+        on_mui_confcol_clicked();
     } // end if
 
     /// Si se ha producido alg&uacute;n error en la carga hacemos un maquetado autom&aacute;tico.
@@ -2201,9 +2201,9 @@ void BlSubForm::cargaconfig()
 ///
 /**
 **/
-void BlSubForm::on_mui_confcol_released()
+void BlSubForm::on_mui_confcol_clicked()
 {
-    _depura ( "BlSubForm::on_mui_confcol_released", 0 );
+    _depura ( "BlSubForm::on_mui_confcol_clicked", 0 );
     for ( int i = 0; i < mui_listcolumnas->rowCount(); ++i ) {
         if ( mui_listcolumnas->item ( i, 0 ) ->checkState() == Qt::Checked ) {
             mui_list->showColumn ( mui_listcolumnas->item ( i, 3 )->text().toInt() );
@@ -2212,7 +2212,7 @@ void BlSubForm::on_mui_confcol_released()
             mui_list->hideColumn ( mui_listcolumnas->item ( i, 3 )->text().toInt() );
         } // end if
     } // end for
-    _depura ( "END BlSubForm::on_mui_confcol_released", 0 );
+    _depura ( "END BlSubForm::on_mui_confcol_clicked", 0 );
 }
 
 
@@ -2379,9 +2379,9 @@ QString BlSubForm::imprimir()
 /**
 \return
 **/
-void BlSubForm::on_mui_confquery_released()
+void BlSubForm::on_mui_confquery_clicked()
 {
-    _depura ( "BlSubForm::on_mui_confquery_released ", 0 );
+    _depura ( "BlSubForm::on_mui_confquery_clicked ", 0 );
     if ( mainCompany() == NULL ) {
         mensajeInfo ( _ ("no se ha inicializado bien la clase" ) );
         return;
@@ -2389,7 +2389,7 @@ void BlSubForm::on_mui_confquery_released()
     mui_paginaact->setValue ( 1 );
     cargar ( mui_query->toPlainText() );
 //  cargar(m_query);
-    _depura ( "END BlSubForm::on_mui_confquery_released ", 0 );
+    _depura ( "END BlSubForm::on_mui_confquery_clicked ", 0 );
 }
 
 
@@ -2488,28 +2488,28 @@ void BlSubForm::on_mui_list_ctrlBajar ( int row, int col )
 ///
 /**
 **/
-void BlSubForm::on_mui_pagsiguiente_released()
+void BlSubForm::on_mui_pagsiguiente_clicked()
 {
-    _depura ( "BlSubForm::on_mui_pagsiguiente_released", 0 );
+    _depura ( "BlSubForm::on_mui_pagsiguiente_clicked", 0 );
     int pag = mui_paginaact->text().toInt();
     pag++;
     mui_paginaact->setValue ( pag );
     confquery();
-    _depura ( "END BlSubForm::on_mui_pagsiguiente_released", 0 );
+    _depura ( "END BlSubForm::on_mui_pagsiguiente_clicked", 0 );
 }
 
 ///
 /**
 **/
-void BlSubForm::on_mui_paganterior_released()
+void BlSubForm::on_mui_paganterior_clicked()
 {
-    _depura ( "BlSubForm::on_mui_paganterior_released", 0 );
+    _depura ( "BlSubForm::on_mui_paganterior_clicked", 0 );
     int pag = mui_paginaact->text().toInt();
     if ( pag > 1 )
         pag--;
     mui_paginaact->setValue ( pag );
     confquery();
-    _depura ( "END BlSubForm::on_mui_paganterior_released", 0 );
+    _depura ( "END BlSubForm::on_mui_paganterior_clicked", 0 );
 }
 
 
@@ -2673,11 +2673,11 @@ void BlSubForm::toogleConfig()
 ///
 /**
 **/
-void BlSubForm::on_mui_botonCerrar_released()
+void BlSubForm::on_mui_botonCerrar_clicked()
 {
-    _depura ( "BlSubForm::on_mui_botonCerrar_released", 0 );
+    _depura ( "BlSubForm::on_mui_botonCerrar_clicked", 0 );
     toogleConfig();
-    _depura ( "END BlSubForm::on_mui_botonCerrar_released", 0 );
+    _depura ( "END BlSubForm::on_mui_botonCerrar_clicked", 0 );
 }
 
 

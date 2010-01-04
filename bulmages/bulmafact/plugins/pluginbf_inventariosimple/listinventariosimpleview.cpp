@@ -61,9 +61,9 @@ ListInventarioSimpleView::ListInventarioSimpleView ( BfCompany *comp, QWidget *p
 ///
 /**
 **/
-void ListInventarioSimpleView::on_mui_aceptar_released()
+void ListInventarioSimpleView::on_mui_aceptar_clicked()
 {
-    _depura ( "ListInventarioSimpleView::on_mui_aceptar_released", 0 );
+    _depura ( "ListInventarioSimpleView::on_mui_aceptar_clicked", 0 );
     
     try {
         mui_listado->guardar();
@@ -72,7 +72,7 @@ void ListInventarioSimpleView::on_mui_aceptar_released()
         mensajeInfo ( _ ( "Error al guardar el inventario" ) );
     } // end try
     
-    _depura ( "END ListInventarioSimpleView::on_mui_aceptar_released", 0 );
+    _depura ( "END ListInventarioSimpleView::on_mui_aceptar_clicked", 0 );
 }
 
 ///

@@ -166,7 +166,7 @@ void BcCentroCosteView::on_mui_list_itemClicked ( QTreeWidgetItem *it, int )
                                     _ ( "Guardar centro de coste" ),
                                     _ ( "Desea guardar los cambios?" ),
                                     _ ( "&Guardar" ), _ ( "&Cancelar" ), 0, 0, 1 ) == 0 ) {
-            on_mui_guardar_released();
+            on_mui_guardar_clicked();
         } // end if
     } // end if
     idc_coste = previdccoste;
@@ -217,9 +217,9 @@ int BcCentroCosteView::guardar()
 ///
 /**
 **/
-void BcCentroCosteView::on_mui_crear_released()
+void BcCentroCosteView::on_mui_crear_clicked()
 {
-    _depura ( "BcCentroCosteView::on_mui_crear_released", 0 );
+    _depura ( "BcCentroCosteView::on_mui_crear_clicked", 0 );
     /// Si se ha modificado el contenido advertimos y guardamos.
     if ( dialogChanges_hayCambios() ) {
         if ( QMessageBox::warning ( this,
@@ -227,7 +227,7 @@ void BcCentroCosteView::on_mui_crear_released()
                                     _ ( "Desea guardar los cambios?" ),
                                     QMessageBox::Ok,
                                     QMessageBox::Cancel ) == QMessageBox::Ok ) {
-            on_mui_guardar_released();
+            on_mui_guardar_clicked();
         } // end if
     } // end if
 
@@ -250,16 +250,16 @@ void BcCentroCosteView::on_mui_crear_released()
     delete cur;
     mainCompany() ->commit();
     repintar();
-    _depura ( "END BcCentroCosteView::on_mui_crear_released", 0 );
+    _depura ( "END BcCentroCosteView::on_mui_crear_clicked", 0 );
 }
 
 
 ///
 /**
 **/
-void BcCentroCosteView::on_mui_borrar_released()
+void BcCentroCosteView::on_mui_borrar_clicked()
 {
-    _depura ( "BcCentroCosteView::on_mui_borrar_released", 0 );
+    _depura ( "BcCentroCosteView::on_mui_borrar_clicked", 0 );
     try {
         switch ( QMessageBox::warning ( this,
                                         _ ( "Borrar centro de coste" ),
@@ -279,7 +279,7 @@ void BcCentroCosteView::on_mui_borrar_released()
         mainCompany() ->rollback();
         return;
     } // end try
-    _depura ( "END BcCentroCosteView::on_mui_borrar_released", 0 );
+    _depura ( "END BcCentroCosteView::on_mui_borrar_clicked", 0 );
 }
 
 

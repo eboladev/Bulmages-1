@@ -84,11 +84,11 @@ ListProyectosView::~ListProyectosView()
 **/
 void ListProyectosView::crear()
 {
-    _depura ( "ListProyectosView::on_mui_crear_released", 0 );
+    _depura ( "ListProyectosView::on_mui_crear_clicked", 0 );
     ProyectoView *proj = new ProyectoView ( ( BcCompany * ) mainCompany(), 0 );
     mainCompany() ->pWorkspace() ->addWindow ( proj );
     proj->show();
-    _depura ( "END ListProyectosView::on_mui_crear_released", 0 );
+    _depura ( "END ListProyectosView::on_mui_crear_clicked", 0 );
 }
 
 
@@ -98,7 +98,7 @@ void ListProyectosView::crear()
 **/
 void ListProyectosView::borrar()
 {
-    _depura ( "ListProyectosView::on_mui_borrar_released", 0 );
+    _depura ( "ListProyectosView::on_mui_borrar_clicked", 0 );
     try {
         QString codigo = mui_listado->dbValue ( "idamortizacion" );
         if ( codigo != "" ) {
@@ -113,7 +113,7 @@ void ListProyectosView::borrar()
     } catch ( ... ) {
         _depura ( _ ( "Error al borrar la amortizacion" ), 2 );
     } // end try
-    _depura ( "END ListProyectosView::on_mui_borrar_released", 0 );
+    _depura ( "END ListProyectosView::on_mui_borrar_clicked", 0 );
 }
 
 

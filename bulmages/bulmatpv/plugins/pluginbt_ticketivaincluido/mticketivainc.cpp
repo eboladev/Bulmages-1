@@ -259,19 +259,19 @@ if (mui_plainText->isVisible()) {
     _depura ( "END MTicketIVAInc::pintar", 0 );
 }
 
-void MTicketIVAInc::on_mui_subir_released()
+void MTicketIVAInc::on_mui_subir_clicked()
 {
     /// Simulamos la pulsacion de la tecla arriba
     ( ( BtCompany * ) mainCompany() )->pulsaTecla ( Qt::Key_Up );
 }
 
-void MTicketIVAInc::on_mui_bajar_released()
+void MTicketIVAInc::on_mui_bajar_clicked()
 {
     /// Simulamos la pulsacion de la tecla abajo
     ( ( BtCompany * ) mainCompany() )->pulsaTecla ( Qt::Key_Down );
 }
 
-void MTicketIVAInc::on_mui_borrar_released()
+void MTicketIVAInc::on_mui_borrar_clicked()
 {
     BtTicket * tick = ( ( BtCompany * ) mainCompany() )->ticketActual();
     tick->ponerCantidad ( "0" );
@@ -279,7 +279,7 @@ void MTicketIVAInc::on_mui_borrar_released()
     pintar();
 }
 
-void MTicketIVAInc::on_mui_imprimir_released()
+void MTicketIVAInc::on_mui_imprimir_clicked()
 {
     /// Llamamos al atajo de teclado que llama a BtTicket::imprimir()
     ( ( BtCompany * ) mainCompany() )->pulsaTecla ( Qt::Key_F2 );

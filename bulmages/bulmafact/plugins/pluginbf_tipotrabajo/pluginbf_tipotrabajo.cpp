@@ -145,7 +145,7 @@ int TrabajadorView_TrabajadorView_Post ( TrabajadorView *trab )
 \param trab
 \return
 **/
-int TrabajadorView_on_mui_guardar_released ( TrabajadorView *trab )
+int TrabajadorView_on_mui_guardar_clicked ( TrabajadorView *trab )
 {
 
     BusquedaTipoTrabajo * l = trab->findChild<BusquedaTipoTrabajo *> ( "tipotraba" );

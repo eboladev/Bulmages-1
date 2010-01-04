@@ -87,13 +87,13 @@ protected:
     virtual void closeEvent ( QCloseEvent * );
 
 public slots:
-    virtual void on_mui_aceptar_released();
-    virtual void on_mui_borrar_released();
-    virtual void on_mui_eliminar_released();
-    virtual void on_mui_cancelar_released();
-    virtual void on_mui_guardar_released();
+    virtual void on_mui_aceptar_clicked();
+    virtual void on_mui_borrar_clicked();
+    virtual void on_mui_eliminar_clicked();
+    virtual void on_mui_cancelar_clicked();
+    virtual void on_mui_guardar_clicked();
     virtual void on_customContextMenuRequested ( const QPoint &pos );
-    virtual void on_mui_imprimir_released();
+    virtual void on_mui_imprimir_clicked();
 
 signals:
     //virtual void cerrar();

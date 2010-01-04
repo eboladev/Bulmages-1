@@ -273,31 +273,31 @@ bool BlForm::modoConsulta()
 ///
 /**
 **/
-void BlForm::on_mui_cancelar_released()
+void BlForm::on_mui_cancelar_clicked()
 {
-    _depura ( "BlForm::on_mui_cancelar_released", 0 );
+    _depura ( "BlForm::on_mui_cancelar_clicked", 0 );
     close();
-    _depura ( "END BlForm::on_mui_cancelar_released", 0 );
+    _depura ( "END BlForm::on_mui_cancelar_clicked", 0 );
 }
 
 
 ///
 /**
 **/
-void BlForm::on_mui_guardar_released()
+void BlForm::on_mui_guardar_clicked()
 {
-    _depura ( "BlForm::on_mui_guardar_released", 0 );
+    _depura ( "BlForm::on_mui_guardar_clicked", 0 );
     guardar();
-    _depura ( "END BlForm::on_mui_guardar_released", 0 );
+    _depura ( "END BlForm::on_mui_guardar_clicked", 0 );
 }
 
 
 ///
 /**
 **/
-void BlForm::on_mui_aceptar_released()
+void BlForm::on_mui_aceptar_clicked()
 {
-    _depura ( "BlForm::on_mui_aceptar_released", 0 );
+    _depura ( "BlForm::on_mui_aceptar_clicked", 0 );
     try {
         if ( guardar() ) {
             throw - 1;
@@ -306,36 +306,36 @@ void BlForm::on_mui_aceptar_released()
     } catch ( ... ) {
         _depura ( "Error al guardar la ficha", 2 );
     } // end try
-    _depura ( "END BlForm::on_mui_aceptar_released", 0 );
+    _depura ( "END BlForm::on_mui_aceptar_clicked", 0 );
 }
 
 
 ///
 /**
 **/
-void BlForm::on_mui_imprimir_released()
+void BlForm::on_mui_imprimir_clicked()
 {
-    _depura ( "BlForm::on_mui_imprimir_released", 0 );
+    _depura ( "BlForm::on_mui_imprimir_clicked", 0 );
     imprimir();
-    _depura ( "END BlForm::on_mui_imprimir_released", 0 );
+    _depura ( "END BlForm::on_mui_imprimir_clicked", 0 );
 }
 
 
 ///
 /**
 **/
-void BlForm::on_mui_eliminar_released()
+void BlForm::on_mui_eliminar_clicked()
 {
-    on_mui_borrar_released();
+    on_mui_borrar_clicked();
 }
 
 
 ///
 /**
 **/
-void BlForm::on_mui_borrar_released()
+void BlForm::on_mui_borrar_clicked()
 {
-    _depura ( "BlForm::on_mui_borrar_released", 0 );
+    _depura ( "BlForm::on_mui_borrar_clicked", 0 );
 
     int val = QMessageBox::question ( this,
                                       _ ( "Borrar" ) + " " + windowTitle(),
@@ -352,7 +352,7 @@ void BlForm::on_mui_borrar_released()
             mensajeInfo ( windowTitle() + _ ( "No se ha podido borrar" ) );
         }// end if
     } // end if
-    _depura ( "END BlForm::on_mui_borrar_released", 0 );
+    _depura ( "END BlForm::on_mui_borrar_clicked", 0 );
 }
 
 

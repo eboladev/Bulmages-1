@@ -57,9 +57,9 @@ public:
     void procesarLinea ( const QString &linea );
 
 public slots:
-    void on_mui_aceptar_released();
+    void on_mui_aceptar_clicked();
     void on_mui_combotablas_activated ( const QString & text );
-    void on_mui_buscarArchivo_released();
+    void on_mui_buscarArchivo_clicked();
     void on_mui_cabeceras_stateChanged ( int state );
 };
 

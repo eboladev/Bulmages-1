@@ -86,8 +86,8 @@ private slots:
     virtual void boton_diario1 ( int );
 
 public slots:
-    virtual void on_mui_actualizar_released();
-    virtual void on_mui_hojacalculo_released();
+    virtual void on_mui_actualizar_clicked();
+    virtual void on_mui_hojacalculo_clicked();
 };
 
 #endif

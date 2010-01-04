@@ -40,12 +40,12 @@ public:
 
 public slots:
     virtual void on_mui_refLineEdit_returnPressed();
-    virtual void on_mui_todoButton_released();
-    virtual void on_mui_anadirButton_released();
-    virtual void on_mui_sacarButton_released();
-    virtual void on_mui_cancelarButton_released();
-    virtual void on_mui_valeButton_released();
-    virtual void on_mui_efectivoButton_released();
+    virtual void on_mui_todoButton_clicked();
+    virtual void on_mui_anadirButton_clicked();
+    virtual void on_mui_sacarButton_clicked();
+    virtual void on_mui_cancelarButton_clicked();
+    virtual void on_mui_valeButton_clicked();
+    virtual void on_mui_efectivoButton_clicked();
     virtual void refreshDevolver();
 
 /// La parte de las teclas

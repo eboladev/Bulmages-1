@@ -76,12 +76,12 @@ public slots:
     virtual void on_m_filtro_textChanged ( const QString &text );
     virtual void on_m_filtro_editingFinished();
     virtual void on_m_filtro_returnPressed();
-    virtual void on_mui_actualizar_released();
-    virtual void on_mui_imprimir_released();
-    virtual void on_mui_editar_released();
+    virtual void on_mui_actualizar_clicked();
+    virtual void on_mui_imprimir_clicked();
+    virtual void on_mui_editar_clicked();
     virtual void on_mui_configurar_toggled ( bool checked );
-    virtual void on_mui_borrar_released();
-    virtual void on_mui_crear_released();
+    virtual void on_mui_borrar_clicked();
+    virtual void on_mui_crear_clicked();
 
 signals:
     void selected ( QString );

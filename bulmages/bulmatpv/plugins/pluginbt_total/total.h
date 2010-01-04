@@ -16,9 +16,9 @@ public:
     virtual ~Total();
 
 public slots:
-    virtual void on_mui_cobrar_released();
-    virtual void on_mui_abrircajon_released();
-    virtual void on_mui_imprimir_released();
+    virtual void on_mui_cobrar_clicked();
+    virtual void on_mui_abrircajon_clicked();
+    virtual void on_mui_imprimir_clicked();
 };
 
 #endif

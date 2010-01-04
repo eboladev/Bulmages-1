@@ -102,7 +102,7 @@ void TarifaListView::borrar()
         TarifaView *tar = new TarifaView ( ( BfCompany * ) mainCompany(), 0 );
         QObject::connect ( tar, SIGNAL ( guardartarifa() ), this, SLOT ( actualizar() ) );
         tar->cargar ( mui_list->dbValue ( QString ( "idtarifa" ), a ) );
-        tar->on_mui_borrar_released();
+        tar->on_mui_borrar_clicked();
         delete tar;
     } else {
         mensajeInfo ( tr ( "No ha seleccionado ninguna tarifa" ) );

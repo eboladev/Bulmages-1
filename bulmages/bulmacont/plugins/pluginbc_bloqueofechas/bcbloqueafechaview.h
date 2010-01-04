@@ -57,7 +57,7 @@ public:
     ~BcBloqueaFechaView();
 
 public slots:
-    virtual void on_mui_crear_released();
+    virtual void on_mui_crear_clicked();
 
 private slots:
     virtual void on_mui_treeWidget_itemDoubleClicked ( QTreeWidgetItem *item, int columna );

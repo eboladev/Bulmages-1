@@ -77,8 +77,8 @@ public:
 
 
 public slots:
-    virtual void on_m_buscarWidget_released();
-    virtual void on_m_clearSearchWidget_released();
+    virtual void on_m_buscarWidget_clicked();
+    virtual void on_m_clearSearchWidget_clicked();
     virtual void on_m_inputBusqueda_textChanged ( const QString & );
     virtual void on_m_inputBusqueda_editingFinished();
 

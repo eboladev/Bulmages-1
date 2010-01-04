@@ -31,7 +31,7 @@ extern "C" MY_EXPORT int entryPoint ( BfBulmaFact * );
 extern "C" MY_EXPORT int BfCompany_createMainWindows_Post(BfCompany *);
 extern "C" MY_EXPORT int ProveedorView_ProveedorView_Post (ProveedorView *);
 extern "C" MY_EXPORT int ProveedorView_cargarPost_Post (ProveedorView *);
-extern "C" MY_EXPORT int BfBuscarReferencia_on_mui_abrirtodo_released_Post (BfBuscarReferencia *);
+extern "C" MY_EXPORT int BfBuscarReferencia_on_mui_abrirtodo_clicked_Post (BfBuscarReferencia *);
 
 
 class mypluginpedp : public QObject, BlMainCompanyPointer

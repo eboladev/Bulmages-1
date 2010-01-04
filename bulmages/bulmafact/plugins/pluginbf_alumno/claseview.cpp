@@ -145,14 +145,14 @@ void ClaseView::on_mui_lista_currentItemChanged ( QListWidgetItem *cur, QListWid
 /**
 \return
 **/
-void ClaseView::on_mui_guardar_released()
+void ClaseView::on_mui_guardar_clicked()
 {
-    _depura ( "ClaseView::on_mui_guardar_released", 0 );
+    _depura ( "ClaseView::on_mui_guardar_clicked", 0 );
 
 
     try {
         /// Disparamos los plugins.
-        int res = g_plugins->lanza ( "ClaseView_on_mui_guardar_released", this );
+        int res = g_plugins->lanza ( "ClaseView_on_mui_guardar_clicked", this );
         if ( res != 0 ) {
             return;
         } // end if
@@ -180,7 +180,7 @@ void ClaseView::on_mui_guardar_released()
     } // end try
 
 
-    _depura ( "END ClaseView::on_mui_guardar_released", 0 );
+    _depura ( "END ClaseView::on_mui_guardar_clicked", 0 );
 }
 
 
@@ -197,7 +197,7 @@ bool ClaseView::trataModificado()
                                     _ ( "Guardar datos del clase" ),
                                     _ ( "Desea guardar los cambios?" ),
                                     _ ( "&Si" ), _ ( "&No" ), 0, 0, 1 ) == 0 )
-            on_mui_guardar_released();
+            on_mui_guardar_clicked();
         return ( TRUE );
     } // end if
     _depura ( "END ClaseView::trataModificado", 0 );
@@ -210,9 +210,9 @@ bool ClaseView::trataModificado()
 /**
 \return
 **/
-void ClaseView::on_mui_nuevo_released()
+void ClaseView::on_mui_nuevo_clicked()
 {
-    _depura ( "ClaseView::on_mui_nuevo_released", 0 );
+    _depura ( "ClaseView::on_mui_nuevo_clicked", 0 );
     try {
         /// Si se ha modificado el contenido advertimos y guardamos.
         trataModificado();
@@ -224,7 +224,7 @@ void ClaseView::on_mui_nuevo_released()
         mdb_idclase = cur->valor ( "idclase" );
         delete cur;
         pintar();
-        _depura ( "END ClaseView::on_mui_nuevo_released", 0 );
+        _depura ( "END ClaseView::on_mui_nuevo_clicked", 0 );
     } catch ( ... ) {
         mensajeInfo ( _ ( "Error al crear un nuevo Clase" ) );
         mainCompany() ->rollback();
@@ -237,9 +237,9 @@ void ClaseView::on_mui_nuevo_released()
 /**
 \return
 **/
-void ClaseView::on_mui_borrar_released()
+void ClaseView::on_mui_borrar_clicked()
 {
-    _depura ( "ClaseView::on_mui_borrar_released", 0 );
+    _depura ( "ClaseView::on_mui_borrar_clicked", 0 );
     try {
         mui_tab->setDisabled ( TRUE );
         trataModificado();
@@ -249,7 +249,7 @@ void ClaseView::on_mui_borrar_released()
         mainCompany() ->commit();
         mdb_idclase = "";
         pintar();
-        _depura ( "END ClaseView::on_mui_borrar_released", 0 );
+        _depura ( "END ClaseView::on_mui_borrar_clicked", 0 );
     } catch ( ... ) {
         mensajeInfo ( _ ( "Error al borrar el Clase" ) );
         mainCompany() ->rollback();

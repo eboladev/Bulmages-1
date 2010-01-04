@@ -92,22 +92,22 @@ void ArtGraficosDb::on_mui_list_cellClicked ( int row, int column )
     _depura ( "END ArtGraficosDb::on_mui_list_cellClicked", 0 );
 }
 
-void ArtGraficosDb::on_mui_botonSiguiente_released()
+void ArtGraficosDb::on_mui_botonSiguiente_clicked()
 {
-    _depura ( "ArtGraficosDb::on_mui_botonSiguiente_released", 0 );
+    _depura ( "ArtGraficosDb::on_mui_botonSiguiente_clicked", 0 );
 
     muestraPantalla ( m_pantallaActual + 1 );
     
-    _depura ( "END ArtGraficosDb::on_mui_botonSiguiente_released", 0 );
+    _depura ( "END ArtGraficosDb::on_mui_botonSiguiente_clicked", 0 );
 }
 
-void ArtGraficosDb::on_mui_botonAnterior_released()
+void ArtGraficosDb::on_mui_botonAnterior_clicked()
 {
-    _depura ( "ArtGraficosDb::on_mui_botonAnterior_released", 0 );
+    _depura ( "ArtGraficosDb::on_mui_botonAnterior_clicked", 0 );
     
     muestraPantalla ( m_pantallaActual - 1 );
     
-    _depura ( "END ArtGraficosDb::on_mui_botonAnterior_released", 0 );
+    _depura ( "END ArtGraficosDb::on_mui_botonAnterior_clicked", 0 );
 }
 
 void ArtGraficosDb::muestraPantalla ( int numpantalla )

@@ -56,12 +56,12 @@ public:
     ~BcCanalView();
     void mostrarplantilla();
     void pintar();
-    void on_mui_borrar_released();
+    void on_mui_borrar_clicked();
 
 public slots:
     virtual void on_mui_idcanal_valueChanged ( QString );
-    virtual void on_mui_guardar_released();
-    virtual void on_mui_crear_released();
+    virtual void on_mui_guardar_clicked();
+    virtual void on_mui_crear_clicked();
     virtual void closeEvent ( QCloseEvent * );
 };
 

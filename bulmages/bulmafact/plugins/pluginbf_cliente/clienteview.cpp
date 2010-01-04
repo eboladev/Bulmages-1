@@ -155,9 +155,9 @@ int ClienteView::cargarPost ( QString idcliente )
 */
 /**
 **/
-void ClienteView::on_mui_informe_released()
+void ClienteView::on_mui_informe_clicked()
 {
-    _depura ( "ClienteView::on_mui_informe_released", 0 );
+    _depura ( "ClienteView::on_mui_informe_clicked", 0 );
 
     if ( dbValue ( "idcliente" ).isEmpty() ) {
         mensajeInfo ( _ ( "Tiene que guardar el documento antes de poder imprimirlo." ) );
@@ -167,7 +167,7 @@ void ClienteView::on_mui_informe_released()
         inf.generarInforme();
     } // end if
 
-    _depura ( "END ClienteView::on_mui_informe_released", 0 );
+    _depura ( "END ClienteView::on_mui_informe_clicked", 0 );
 }
 
 

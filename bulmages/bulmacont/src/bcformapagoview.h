@@ -54,10 +54,10 @@ public:
     BcFormaPagoView ( BcCompany *, QWidget *parent = 0 );
     ~BcFormaPagoView();
     virtual int guardar();
-    virtual void on_mui_borrar_released();
+    virtual void on_mui_borrar_clicked();
 
 private slots:
-    virtual void on_mui_crear_released();
+    virtual void on_mui_crear_clicked();
     virtual void on_mui_comboFPago_currentIndexChanged ( int i );
 };
 

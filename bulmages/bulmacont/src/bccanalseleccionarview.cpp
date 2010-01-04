@@ -181,9 +181,9 @@ QString BcCanalSeleccionarView::nomcanal()
 ///
 /**
 **/
-void BcCanalSeleccionarView::on_mui_todo_released()
+void BcCanalSeleccionarView::on_mui_todo_clicked()
 {
-    _depura ( "BcCanalSeleccionarView::on_mui_todo_released", 0 );
+    _depura ( "BcCanalSeleccionarView::on_mui_todo_clicked", 0 );
     QTreeWidgetItemIterator m_iterador ( m_listCanales );
 
     while ( *m_iterador ) {
@@ -192,16 +192,16 @@ void BcCanalSeleccionarView::on_mui_todo_released()
     }
 
     delete *m_iterador;
-    _depura ( "END BcCanalSeleccionarView::on_mui_todo_released", 0 );
+    _depura ( "END BcCanalSeleccionarView::on_mui_todo_clicked", 0 );
 }
 
 
 ///
 /**
 **/
-void BcCanalSeleccionarView::on_mui_nada_released()
+void BcCanalSeleccionarView::on_mui_nada_clicked()
 {
-    _depura ( "BcCanalSeleccionarView::on_mui_nada_released", 0 );
+    _depura ( "BcCanalSeleccionarView::on_mui_nada_clicked", 0 );
 
     QTreeWidgetItemIterator m_iterador ( m_listCanales );
 
@@ -211,16 +211,16 @@ void BcCanalSeleccionarView::on_mui_nada_released()
     }
 
     delete *m_iterador;
-    _depura ( "END BcCanalSeleccionarView::on_mui_nada_released", 0 );
+    _depura ( "END BcCanalSeleccionarView::on_mui_nada_clicked", 0 );
 }
 
 
 ///
 /**
 **/
-void BcCanalSeleccionarView::on_mui_invertir_released()
+void BcCanalSeleccionarView::on_mui_invertir_clicked()
 {
-    _depura ( "BcCanalSeleccionarView::on_mui_invertir_released", 0 );
+    _depura ( "BcCanalSeleccionarView::on_mui_invertir_clicked", 0 );
     QTreeWidgetItemIterator m_iterador ( m_listCanales );
 
     while ( *m_iterador ) {
@@ -233,6 +233,6 @@ void BcCanalSeleccionarView::on_mui_invertir_released()
     } // end while
 
     delete *m_iterador;
-    _depura ( "END BcCanalSeleccionarView::on_mui_invertir_released", 0 );
+    _depura ( "END BcCanalSeleccionarView::on_mui_invertir_clicked", 0 );
 }
 

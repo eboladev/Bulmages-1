@@ -193,24 +193,24 @@ void BcMasaPatrimonialListView::dbtabla ( int row, int colummn, int button, cons
 ///
 /**
 **/
-void BcMasaPatrimonialListView::on_mui_editar_released()
+void BcMasaPatrimonialListView::on_mui_editar_clicked()
 {
-    _depura ( "BcMasaPatrimonialListView::on_mui_editar_released", 0 );
+    _depura ( "BcMasaPatrimonialListView::on_mui_editar_clicked", 0 );
     int row = mui_tabla->currentRow();
     int col = mui_tabla->currentColumn();
     QPoint mouse;
     dbtabla ( row, col, 0, mouse );
     inicializatabla();
-    _depura ( "END BcMasaPatrimonialListView::on_mui_editar_released", 0 );
+    _depura ( "END BcMasaPatrimonialListView::on_mui_editar_clicked", 0 );
 }
 
 
 ///
 /**
 **/
-void BcMasaPatrimonialListView::on_mui_borrar_released()
+void BcMasaPatrimonialListView::on_mui_borrar_clicked()
 {
-    _depura ( "BcMasaPatrimonialListView::on_mui_borrar_released", 0 );
+    _depura ( "BcMasaPatrimonialListView::on_mui_borrar_clicked", 0 );
     int row;
     row = mui_tabla->currentRow();
     idmasa = mui_tabla->item ( mui_tabla->currentRow(), 0 ) ->text();
@@ -222,32 +222,32 @@ void BcMasaPatrimonialListView::on_mui_borrar_released()
     mainCompany() ->runQuery ( query );
     mainCompany() ->commit();
     inicializatabla();
-    _depura ( "END BcMasaPatrimonialListView::on_mui_borrar_released", 0 );
+    _depura ( "END BcMasaPatrimonialListView::on_mui_borrar_clicked", 0 );
 }
 
 
 ///
 /**
 **/
-void BcMasaPatrimonialListView::on_mui_nuevo_released()
+void BcMasaPatrimonialListView::on_mui_nuevo_clicked()
 {
-    _depura ( "BcMasaPatrimonialListView::on_mui_nuevo_released", 0 );
+    _depura ( "BcMasaPatrimonialListView::on_mui_nuevo_clicked", 0 );
     BcMasaPatrimonialView *masa = new BcMasaPatrimonialView ( ( BcCompany * ) mainCompany(), this );
     masa->exec();
     delete masa;
     /// Como existe la posibilidad de que hayan cambiado las cosas forzamos un repintado.
     inicializatabla();
-    _depura ( "END BcMasaPatrimonialListView::on_mui_nuevo_released", 0 );
+    _depura ( "END BcMasaPatrimonialListView::on_mui_nuevo_clicked", 0 );
 }
 
 
 ///
 /**
 **/
-void BcMasaPatrimonialListView::on_mui_cancelar_released()
+void BcMasaPatrimonialListView::on_mui_cancelar_clicked()
 {
-    _depura ( "BcMasaPatrimonialListView::on_mui_cancelar_released", 0 );
+    _depura ( "BcMasaPatrimonialListView::on_mui_cancelar_clicked", 0 );
     close();
-    _depura ( "END BcMasaPatrimonialListView::on_mui_cancelar_released", 0 );
+    _depura ( "END BcMasaPatrimonialListView::on_mui_cancelar_clicked", 0 );
 }
 

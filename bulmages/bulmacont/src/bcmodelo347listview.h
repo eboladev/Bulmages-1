@@ -37,8 +37,8 @@ public:
     ~BcModelo347ListView();
 
 private slots:
-    void on_m_boton_recalcular_released();
-    void on_m_boton_imprimir_released();
+    void on_m_boton_recalcular_clicked();
+    void on_m_boton_imprimir_clicked();
     void on_finicial_editingFinished();
     void on_ffinal_editingFinished();
 };

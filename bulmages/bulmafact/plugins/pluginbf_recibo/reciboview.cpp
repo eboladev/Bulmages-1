@@ -120,7 +120,7 @@ void ReciboView::imprimir()
     }
 
     /// Disparamos los plugins
-    int res = g_plugins->lanza ( "ReciboView_on_mui_imprimir_released", this );
+    int res = g_plugins->lanza ( "ReciboView_on_mui_imprimir_clicked", this );
 
     if ( res != 0 ) {
         return;
@@ -183,9 +183,9 @@ void ReciboView::on_mui_list_editFinish ( int, int )
 /// Esta funcion trabaja a muy bajo nivel ya que aprovecha una ficha cargada para hacer otra ficha.
 /**
 **/
-void ReciboView::on_mui_reemitir_released (  )
+void ReciboView::on_mui_reemitir_clicked (  )
 {
-    _depura ( "ReciboView::on_mui_reemitir_released", 0 );
+    _depura ( "ReciboView::on_mui_reemitir_clicked", 0 );
     QString id;
 
    try {
@@ -213,7 +213,7 @@ void ReciboView::on_mui_reemitir_released (  )
       mensajeError("Error en la creacion del recibo");
    } // end try
 
-    _depura ( "END ReciboView::on_mui_reemitir_released", 0 );
+    _depura ( "END ReciboView::on_mui_reemitir_clicked", 0 );
 }
 
 

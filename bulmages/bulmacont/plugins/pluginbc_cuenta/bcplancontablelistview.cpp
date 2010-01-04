@@ -331,9 +331,9 @@ void BcPlanContableListView::on_mui_arbolcuentas_itemDoubleClicked ( QTreeWidget
 /**
 \return
 **/
-void BcPlanContableListView::on_mui_crear_released()
+void BcPlanContableListView::on_mui_crear_clicked()
 {
-    _depura ( "BcPlanContableListView::on_mui_crear_released", 0 );
+    _depura ( "BcPlanContableListView::on_mui_crear_clicked", 0 );
     QString codigo;
 
     BcCuentaView *nuevae = new BcCuentaView ( mainCompany(), 0 );
@@ -349,7 +349,7 @@ void BcPlanContableListView::on_mui_crear_released()
 
     mainCompany() ->pWorkspace() ->addWindow ( nuevae );
     nuevae->show();
-    _depura ( "END BcPlanContableListView::on_mui_crear_released", 0 );
+    _depura ( "END BcPlanContableListView::on_mui_crear_clicked", 0 );
 }
 
 
@@ -362,14 +362,14 @@ void BcPlanContableListView::on_mui_crear_released()
 /**
 \return
 **/
-void BcPlanContableListView::on_mui_editar_released()
+void BcPlanContableListView::on_mui_editar_clicked()
 {
-    _depura ( "BcPlanContableListView::on_mui_editar_released", 0 );
+    _depura ( "BcPlanContableListView::on_mui_editar_clicked", 0 );
     QTreeWidgetItem *it;
     it = mui_arbolcuentas->currentItem();
     if ( !it ) {
         mensajeInfo ( _ ( "Debe seleccionar una cuenta" ) );
-        _depura ( "END BcPlanContableListView::on_mui_editar_released", 0, "Debe seleccionar una cuenta" );
+        _depura ( "END BcPlanContableListView::on_mui_editar_clicked", 0, "Debe seleccionar una cuenta" );
         return;
     }
     on_mui_arbolcuentas_itemClicked ( it, 0 );
@@ -380,7 +380,7 @@ void BcPlanContableListView::on_mui_editar_released()
     nuevae->cargar ( idcuenta() );
     mainCompany() ->pWorkspace() ->addWindow ( nuevae );
     nuevae->show();
-    _depura ( "END BcPlanContableListView::on_mui_editar_released", 0 );
+    _depura ( "END BcPlanContableListView::on_mui_editar_clicked", 0 );
 }
 
 
@@ -388,9 +388,9 @@ void BcPlanContableListView::on_mui_editar_released()
 /**
 \return
 **/
-void BcPlanContableListView::on_mui_borrar_released()
+void BcPlanContableListView::on_mui_borrar_clicked()
 {
-    _depura ( "BcPlanContableListView::on_mui_borrar_released", 0 );
+    _depura ( "BcPlanContableListView::on_mui_borrar_clicked", 0 );
     QTreeWidgetItem *it;
     it = mui_arbolcuentas->currentItem();
     if ( !it ) {
@@ -410,7 +410,7 @@ void BcPlanContableListView::on_mui_borrar_released()
         } // end if
         mainCompany() ->commit();
     } // end if
-    _depura ( "END BcPlanContableListView::on_mui_borrar_released", 0 );
+    _depura ( "END BcPlanContableListView::on_mui_borrar_clicked", 0 );
 }
 
 
@@ -530,9 +530,9 @@ void BcPlanContableListView::imprimir()
 
 /**
 **/
-void BcPlanContableListView::on_mui_exportar_released()
+void BcPlanContableListView::on_mui_exportar_clicked()
 {
-    _depura ( "BcPlanContableListView::on_mui_exportar_released", 0 );
+    _depura ( "BcPlanContableListView::on_mui_exportar_clicked", 0 );
     QFile filexml ( QFileDialog::getSaveFileName ( this,
                     _ ( "Elija el archivo" ),
                     g_confpr->valor ( CONF_DIR_USER ),
@@ -543,15 +543,15 @@ void BcPlanContableListView::on_mui_exportar_released()
     } else {
         mensajeInfo ( "Error al abrir archivo\n" );
     } // end if
-    _depura ( "END BcPlanContableListView::on_mui_exportar_released", 0 );
+    _depura ( "END BcPlanContableListView::on_mui_exportar_clicked", 0 );
 }
 
 
 /**
 **/
-void BcPlanContableListView::on_mui_importar_released()
+void BcPlanContableListView::on_mui_importar_clicked()
 {
-    _depura ( "BcPlanContableListView::on_mui_importar_released", 0 );
+    _depura ( "BcPlanContableListView::on_mui_importar_clicked", 0 );
     QFile filexml ( QFileDialog::getOpenFileName ( this,
                     _ ( "Elija el archivo" ),
                     "/usr/share/bulmages",
@@ -563,7 +563,7 @@ void BcPlanContableListView::on_mui_importar_released()
     } else {
         mensajeInfo ( "Error al abrir archivo\n" );
     } // end if
-    _depura ( "END BcPlanContableListView::on_mui_importar_released", 0 );
+    _depura ( "END BcPlanContableListView::on_mui_importar_clicked", 0 );
 }
 
 
@@ -623,10 +623,10 @@ QString BcPlanContableListView::desccuenta()
 }
 
 
-void BcPlanContableListView::on_mui_actualizar_released()
+void BcPlanContableListView::on_mui_actualizar_clicked()
 {
-    _depura ( "BcPlanContableListView::on_mui_actualizar_released", 0 );
-    _depura ( "END BcPlanContableListView::on_mui_actualizar_released", 0 );
+    _depura ( "BcPlanContableListView::on_mui_actualizar_clicked", 0 );
+    _depura ( "END BcPlanContableListView::on_mui_actualizar_clicked", 0 );
     inicializa();
 }
 

@@ -179,9 +179,9 @@ void FacturaView::pintatotales ( BlFixed iva, BlFixed base, BlFixed total, BlFix
 */
 /**
 **/
-void FacturaView::on_mui_agregaralbaran_released()
+void FacturaView::on_mui_agregaralbaran_clicked()
 {
-    _depura ( "FacturaView::on_mui_agregaralbaran_released", 0 );
+    _depura ( "FacturaView::on_mui_agregaralbaran_clicked", 0 );
 
     QDialog *diag = new QDialog ( 0 );
     diag->setModal ( true );
@@ -190,7 +190,7 @@ void FacturaView::on_mui_agregaralbaran_released()
 
     /// Hacemos que las opciones de filtrado del listado ya esten bien.
     fac->m_cliente->setId ( dbValue ( "idcliente" ) );
-    fac->on_mui_actualizar_released();
+    fac->on_mui_actualizar_clicked();
 
     /// Lanzamos el dialogo.
     diag->exec();
@@ -237,7 +237,7 @@ void FacturaView::on_mui_agregaralbaran_released()
 
     /// Pintamos los totales.
     calculaypintatotales();
-    _depura ( "END FacturaView::on_mui_agregaralbaran_released", 0 );
+    _depura ( "END FacturaView::on_mui_agregaralbaran_clicked", 0 );
 }
 
 
@@ -246,9 +246,9 @@ void FacturaView::on_mui_agregaralbaran_released()
 */
 /**
 **/
-void FacturaView::on_mui_veralbaranes_released()
+void FacturaView::on_mui_veralbaranes_clicked()
 {
-    _depura ( "FacturaView::on_mui_veralbaranes_released", 0 );
+    _depura ( "FacturaView::on_mui_veralbaranes_clicked", 0 );
     AlbaranClienteView *bud = NULL;
     BlDbRecordSet *cur = NULL;
     try {
@@ -271,7 +271,7 @@ void FacturaView::on_mui_veralbaranes_released()
         if ( cur ) delete cur;
         if ( bud ) delete bud;
     } // end try
-    _depura ( "END FacturaView::on_mui_veralbaranes_released", 0 );
+    _depura ( "END FacturaView::on_mui_veralbaranes_clicked", 0 );
 }
 
 

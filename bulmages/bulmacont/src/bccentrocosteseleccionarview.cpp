@@ -211,9 +211,9 @@ QString BcCentroCosteSeleccionarView::nomcoste()
 ///
 /**
 **/
-void BcCentroCosteSeleccionarView::on_mui_todo_released()
+void BcCentroCosteSeleccionarView::on_mui_todo_clicked()
 {
-    _depura ( "BcCentroCosteSeleccionarView::on_mui_todo_released", 0 );
+    _depura ( "BcCentroCosteSeleccionarView::on_mui_todo_clicked", 0 );
     QTreeWidgetItemIterator m_iterador ( mui_listCostes );
 
     while ( *m_iterador ) {
@@ -222,16 +222,16 @@ void BcCentroCosteSeleccionarView::on_mui_todo_released()
     } // end while
 
     delete *m_iterador;
-    _depura ( "END BcCentroCosteSeleccionarView::on_mui_todo_released", 0 );
+    _depura ( "END BcCentroCosteSeleccionarView::on_mui_todo_clicked", 0 );
 }
 
 
 ///
 /**
 **/
-void BcCentroCosteSeleccionarView::on_mui_nada_released()
+void BcCentroCosteSeleccionarView::on_mui_nada_clicked()
 {
-    _depura ( "BcCentroCosteSeleccionarView::on_mui_nada_released", 0 );
+    _depura ( "BcCentroCosteSeleccionarView::on_mui_nada_clicked", 0 );
     QTreeWidgetItemIterator m_iterador ( mui_listCostes );
 
     while ( *m_iterador ) {
@@ -240,16 +240,16 @@ void BcCentroCosteSeleccionarView::on_mui_nada_released()
     } // end while
 
     delete *m_iterador;
-    _depura ( "END BcCentroCosteSeleccionarView::on_mui_nada_released", 0 );
+    _depura ( "END BcCentroCosteSeleccionarView::on_mui_nada_clicked", 0 );
 }
 
 
 ///
 /**
 **/
-void BcCentroCosteSeleccionarView::on_mui_invertir_released()
+void BcCentroCosteSeleccionarView::on_mui_invertir_clicked()
 {
-    _depura ( "BcCentroCosteSeleccionarView::on_mui_invertir_released", 0 );
+    _depura ( "BcCentroCosteSeleccionarView::on_mui_invertir_clicked", 0 );
     QTreeWidgetItemIterator m_iterador ( mui_listCostes );
 
     while ( *m_iterador ) {
@@ -262,6 +262,6 @@ void BcCentroCosteSeleccionarView::on_mui_invertir_released()
     } // end while
 
     delete *m_iterador;
-    _depura ( "END BcCentroCosteSeleccionarView::on_mui_invertir_released", 0 );
+    _depura ( "END BcCentroCosteSeleccionarView::on_mui_invertir_clicked", 0 );
 }
 

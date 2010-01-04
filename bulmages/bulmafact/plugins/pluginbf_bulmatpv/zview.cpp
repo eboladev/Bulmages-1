@@ -154,7 +154,7 @@ void ZView::on_mui_list_cellDoubleClicked ( int row, int )
 }
 
 
-void ZView::on_mui_actualizar_released()
+void ZView::on_mui_actualizar_clicked()
 {
     cargar ( dbValue ( "idz" ) );
 }

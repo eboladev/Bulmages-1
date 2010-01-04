@@ -89,13 +89,13 @@ public:
     void borrar ();
     void imprimir ();
     void presentar ();
-    virtual void on_mui_actualizar_released();
-    virtual void on_mui_crear_released();
+    virtual void on_mui_actualizar_clicked();
+    virtual void on_mui_crear_clicked();
     virtual void on_m_filtro_textChanged ( const QString &text );
     virtual void on_mui_configurar_toggled ( bool checked );
 
 public slots:
-    virtual void on_mui_facturar_released();
+    virtual void on_mui_facturar_clicked();
 
 signals:
     void selected ( QString );

@@ -116,7 +116,7 @@ void TiposocioView::on_mui_lista_currentItemChanged ( QListWidgetItem *cur, QLis
 **/
 int TiposocioView::guardar()
 {
-    _depura ( "TiposocioView::on_mui_guardar_released", 0 );
+    _depura ( "TiposocioView::on_mui_guardar_clicked", 0 );
     try {
         QString query = "UPDATE tiposocio SET ";
         query += "nombretiposocio='" + mainCompany() ->sanearCadena ( mui_nombretiposocio->text() ) + "'";
@@ -141,7 +141,7 @@ int TiposocioView::guardar()
         } // end if
         /// Comprobamos cual es la cadena inicial.
         dialogChanges_cargaInicial();
-        _depura ( "END TiposocioView::on_mui_guardar_released", 0 );
+        _depura ( "END TiposocioView::on_mui_guardar_clicked", 0 );
         return 0;
     } catch ( ... ) {
         mensajeInfo ( _ ( "Error al guardar" ) );
@@ -163,7 +163,7 @@ bool TiposocioView::trataModificado()
                                     _ ( "Guardar datos del tipo de socio" ),
                                     _ ( "Desea guardar los cambios?" ),
                                     _ ( "&Si" ), _ ( "&No" ), 0, 0, 1 ) == 0 )
-            on_mui_guardar_released();
+            on_mui_guardar_clicked();
         return ( TRUE );
     } // end if
     _depura ( "END TiposocioView::trataModificado", 0 );
@@ -176,9 +176,9 @@ bool TiposocioView::trataModificado()
 /**
 \return
 **/
-void TiposocioView::on_mui_nuevo_released()
+void TiposocioView::on_mui_nuevo_clicked()
 {
-    _depura ( "TiposocioView::on_mui_nuevo_released", 0 );
+    _depura ( "TiposocioView::on_mui_nuevo_clicked", 0 );
     try {
         /// Si se ha modificado el contenido advertimos y guardamos.
         trataModificado();
@@ -190,7 +190,7 @@ void TiposocioView::on_mui_nuevo_released()
         mdb_idtiposocio = cur->valor ( "idtiposocio" );
         delete cur;
         pintar();
-        _depura ( "END TiposocioView::on_mui_nuevo_released", 0 );
+        _depura ( "END TiposocioView::on_mui_nuevo_clicked", 0 );
     } catch ( ... ) {
         mensajeInfo ( _ ( "Error inesperado al crear el Tipo de socio" ) );
         mainCompany() ->rollback();
@@ -202,9 +202,9 @@ void TiposocioView::on_mui_nuevo_released()
 /**
 \return
 **/
-void TiposocioView::on_mui_borrar_released()
+void TiposocioView::on_mui_borrar_clicked()
 {
-    _depura ( "TiposocioView::on_mui_borrar_released", 0 );
+    _depura ( "TiposocioView::on_mui_borrar_clicked", 0 );
     if ( mdb_idtiposocio == "" ) return;
     try {
         trataModificado();
@@ -217,7 +217,7 @@ void TiposocioView::on_mui_borrar_released()
         } // end if
         mainCompany() ->commit();
         pintar();
-        _depura ( "END TiposocioView::on_mui_borrar_released", 0 );
+        _depura ( "END TiposocioView::on_mui_borrar_clicked", 0 );
     } catch ( ... ) {
         mensajeInfo ( _ ( "Error inesperado al borrar el Tipo de socio" ) );
         mainCompany() ->rollback();

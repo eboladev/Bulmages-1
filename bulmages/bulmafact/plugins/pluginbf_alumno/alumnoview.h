@@ -86,8 +86,8 @@ public:
     virtual void pintarPost();
     
 public slots:
-    virtual void on_mui_cambiarimagen_released();
-    virtual void on_mui_borrarimagen_released();
+    virtual void on_mui_cambiarimagen_clicked();
+    virtual void on_mui_borrarimagen_clicked();
 };
 
 #endif

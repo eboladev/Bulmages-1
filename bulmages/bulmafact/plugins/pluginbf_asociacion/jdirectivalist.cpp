@@ -177,7 +177,7 @@ void JDirectivaList::borrar()
             JDirectivaView * cv = new JDirectivaView ( ( BfCompany * ) mainCompany(), 0 );
             if ( cv->cargar ( mdb_idjdirectiva ) )
                 throw - 1;
-            cv->on_mui_borrar_released();
+            cv->on_mui_borrar_clicked();
             cv->close();
         } // end if
         presentar();
@@ -230,10 +230,10 @@ void JDirectivaList::submenu ( const QPoint & )
     QAction *opcion = popup->exec ( QCursor::pos() );
     
     if ( opcion == del )
-        on_mui_borrar_released();
+        on_mui_borrar_clicked();
         
     if ( opcion == edit )
-        on_mui_editar_released();
+        on_mui_editar_clicked();
         
     delete popup;
     

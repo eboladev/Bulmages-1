@@ -37,6 +37,6 @@
 extern "C" MY_EXPORT int BtTicket_imprimir_Post ( BtTicket * );
 extern "C" MY_EXPORT int BtTicket_borrarLinea ( BtTicket * );
 extern "C" MY_EXPORT int BtTicket_agregarLinea_Post ( BtTicket *);
-extern "C" MY_EXPORT int Abrevs_on_mui_aparcar_released( Abrevs *);
+extern "C" MY_EXPORT int Abrevs_on_mui_aparcar_clicked( Abrevs *);
 extern "C" MY_EXPORT int BtCompany_cobrar_1(BtCompany *);
 

@@ -66,7 +66,7 @@ ListTiposTrabajoView::ListTiposTrabajoView ( BfCompany *comp, QWidget *parent )
 ///
 /**
 **/
-void ListTiposTrabajoView::on_mui_aceptar_released()
+void ListTiposTrabajoView::on_mui_aceptar_clicked()
 {
     try {
         mui_listado->guardar();

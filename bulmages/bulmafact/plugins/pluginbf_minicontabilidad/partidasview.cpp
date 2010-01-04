@@ -318,7 +318,7 @@ bool PartidasView::trataModificado()
                                     _ ( "Desea guardar los cambios?" ),
                                     QMessageBox::Ok,
                                     QMessageBox::Cancel ) == QMessageBox::Ok ) {
-            on_mui_guardar_released();
+            on_mui_guardar_clicked();
         } // end if
     } // end if
     _depura ( "END PartidasView::trataModificado", 0 );
@@ -392,9 +392,9 @@ void PartidasView::pintar ( QTreeWidgetItem *it )
 /// Inserta en la tabla de Partidas
 /**
 **/
-void PartidasView::on_mui_crear_released()
+void PartidasView::on_mui_crear_clicked()
 {
-    _depura ( "PartidasView::on_mui_crear_released", 0 );
+    _depura ( "PartidasView::on_mui_crear_clicked", 0 );
     try {
         mainCompany()->begin();
         /// Si se ha modificado el contenido advertimos y guardamos.
@@ -417,7 +417,7 @@ void PartidasView::on_mui_crear_released()
         m_idpartida = cur->valor ( "idpartida" );
         delete cur;
         pintar();
-        _depura ( "END PartidasView::on_mui_crear_released", 0 );
+        _depura ( "END PartidasView::on_mui_crear_clicked", 0 );
     } catch ( ... ) {
         mainCompany()->rollback();
         mensajeInfo ( _ ( "Error al crear la partida" ) );
@@ -428,9 +428,9 @@ void PartidasView::on_mui_crear_released()
 ///
 /**
 **/
-void PartidasView::on_mui_borrar_released()
+void PartidasView::on_mui_borrar_clicked()
 {
-    _depura ( "PartidasView::on_mui_borrar_released", 0 );
+    _depura ( "PartidasView::on_mui_borrar_clicked", 0 );
 
     int val = QMessageBox::question ( this,
                                       _ ( "Borrar" ) + " " + windowTitle(),
@@ -446,7 +446,7 @@ void PartidasView::on_mui_borrar_released()
             mensajeInfo ( windowTitle() + " " + _ ( "no se ha podido borrar" ) );
         } // end if
     } // end if
-    _depura ( "END PartidasView::on_mui_borrar_released", 0 );
+    _depura ( "END PartidasView::on_mui_borrar_clicked", 0 );
 }
 
 
@@ -483,9 +483,9 @@ int PartidasView::borrar()
 ///
 /**
 **/
-void PartidasView::on_mui_imprimir_released()
+void PartidasView::on_mui_imprimir_clicked()
 {
-    _depura ( "PartidasView::on_mui_imprimir_released", 0 );
+    _depura ( "PartidasView::on_mui_imprimir_clicked", 0 );
 
     QString archivo = g_confpr->valor ( CONF_DIR_OPENREPORTS ) + "partidas.rml";
     QString archivod = g_confpr->valor ( CONF_DIR_USER ) + "partidas.rml";
@@ -546,24 +546,24 @@ void PartidasView::on_mui_imprimir_released()
         file.close();
     } // end if
     invocaPDF ( "partidas" );
-    _depura ( "END PartidasView::on_mui_imprimir_released", 0 );
+    _depura ( "END PartidasView::on_mui_imprimir_clicked", 0 );
 }
 
 
 ///
 /**
 **/
-void PartidasView::on_mui_aceptar_released()
+void PartidasView::on_mui_aceptar_clicked()
 {
-    _depura ( "PartidasView::on_mui_aceptar_released", 0 );
+    _depura ( "PartidasView::on_mui_aceptar_clicked", 0 );
     QTreeWidgetItem *it = m_listPartidas->currentItem();
     if ( it ) {
         m_idpartida = it->text ( COL_IDPARTIDA );
     } else {
         m_idpartida = "";
     } // end if
-    BfForm::on_mui_aceptar_released();
-    _depura ( "END PartidasView::on_mui_aceptar_released", 0 );
+    BfForm::on_mui_aceptar_clicked();
+    _depura ( "END PartidasView::on_mui_aceptar_clicked", 0 );
 }
 
 

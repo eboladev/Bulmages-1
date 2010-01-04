@@ -53,7 +53,7 @@ public:
     ~EmitirRecibosView();
     
 public slots:
-    virtual void on_mui_crear_released();
+    virtual void on_mui_crear_clicked();
 };
 
 #endif

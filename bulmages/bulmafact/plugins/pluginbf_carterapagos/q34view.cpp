@@ -526,7 +526,7 @@ void Q34View::on_mui_aceptar_clicked()
 }
 
 
-void Q34View::on_mui_buscararchivo_released() {
+void Q34View::on_mui_buscararchivo_clicked() {
  QString fileName = QFileDialog::getSaveFileName(this, tr("Guardar archivo"),
                                                  "",
                                                  tr("Remesas Bancarias (*.q34)"));

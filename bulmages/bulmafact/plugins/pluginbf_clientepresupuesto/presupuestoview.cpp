@@ -149,11 +149,11 @@ void PresupuestoView::s_pintaTotales()
 ///
 /**
 **/
-void PresupuestoView::on_mui_pasarapedido_released()
+void PresupuestoView::on_mui_pasarapedido_clicked()
 {
-    _depura ( "PresupuestoView::on_mui_pasarapedido_released", 0 );
+    _depura ( "PresupuestoView::on_mui_pasarapedido_clicked", 0 );
     generarPedidoCliente();
-    _depura ( "END PresupuestoView::on_mui_pasarapedido_released", 0 );
+    _depura ( "END PresupuestoView::on_mui_pasarapedido_clicked", 0 );
 }
 
 

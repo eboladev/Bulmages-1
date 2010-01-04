@@ -233,7 +233,7 @@ int BcAmortizacionView::cargar ( QString idamortizacion )
 ///
 /**
 **/
-void BcAmortizacionView::on_mui_btcalcular_released()
+void BcAmortizacionView::on_mui_btcalcular_clicked()
 {
     _depura ( "BcAmortizacionView::calculaamortizacion", 0 );
     /// Para hacer el c&iacute;rculo de los plazos de cada amortizaci&oacute;n
@@ -438,7 +438,7 @@ void BcAmortizacionSubForm::procesaMenu ( QAction *opcion )
             mainCompany() ->runQuery ( query );
             mainCompany() ->commit();
         } // end if
-        on_mui_confquery_released();
+        on_mui_confquery_clicked();
     } // end if
     if ( opcion->text() == _ ( "Ver asiento" ) || opcion->text() == _ ( "Borrar asiento" ) ) {
         /// Si se va a mostrar el asiento, o se va a borrar.
@@ -466,7 +466,7 @@ void BcAmortizacionSubForm::procesaMenu ( QAction *opcion )
         } // end if
         BcAsientoView *asiento = (BcAsientoView *) g_plugParams;
 
-        asiento  ->on_mui_borrar_released();
+        asiento  ->on_mui_borrar_clicked();
     } // end if
     if ( opcion->text() == _ ( "Generar asiento" ) ) {
         /// Se va a generar el asiento.
@@ -511,7 +511,7 @@ void BcAmortizacionSubForm::procesaMenu ( QAction *opcion )
         nueva->setmodo ( 1 );
         mainCompany() ->pWorkspace() ->addWindow ( nueva );
         nueva->show();
-        nueva->on_mui_aceptar_released();
+        nueva->on_mui_aceptar_clicked();
 
         /// Cogemos los datos del asiento recien creado.
         int resur = g_plugins->lanza ( "SNewBcAsientoView", (BcCompany *) mainCompany() );
@@ -537,6 +537,6 @@ void BcAmortizacionSubForm::procesaMenu ( QAction *opcion )
         SQLQuery = "UPDATE linamortizacion set idasiento = " + QString::number ( numasiento1 ) + " WHERE idlinamortizacion = " + idlinamortizacion;
         mainCompany() ->runQuery ( SQLQuery );
     } // end if
-//    on_mui_confquery_released();
+//    on_mui_confquery_clicked();
 }
 

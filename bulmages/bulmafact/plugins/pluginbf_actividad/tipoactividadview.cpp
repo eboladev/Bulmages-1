@@ -145,14 +145,14 @@ void TipoActividadView::on_mui_lista_currentItemChanged ( QListWidgetItem *cur, 
 /**
 \return
 **/
-void TipoActividadView::on_mui_guardar_released()
+void TipoActividadView::on_mui_guardar_clicked()
 {
-    _depura ( "TipoActividadView::on_mui_guardar_released", 0 );
+    _depura ( "TipoActividadView::on_mui_guardar_clicked", 0 );
 
 
     try {
         /// Disparamos los plugins.
-        int res = g_plugins->lanza ( "TipoActividadView_on_mui_guardar_released", this );
+        int res = g_plugins->lanza ( "TipoActividadView_on_mui_guardar_clicked", this );
         if ( res != 0 ) {
             return;
         } // end if
@@ -180,7 +180,7 @@ void TipoActividadView::on_mui_guardar_released()
     } // end try
 
 
-    _depura ( "END TipoActividadView::on_mui_guardar_released", 0 );
+    _depura ( "END TipoActividadView::on_mui_guardar_clicked", 0 );
 }
 
 
@@ -197,7 +197,7 @@ bool TipoActividadView::trataModificado()
                                     _ ( "Guardar datos del tipoactividad" ),
                                     _ ( "Desea guardar los cambios?" ),
                                     _ ( "&Si" ), _ ( "&No" ), 0, 0, 1 ) == 0 )
-            on_mui_guardar_released();
+            on_mui_guardar_clicked();
         return ( TRUE );
     } // end if
     _depura ( "END TipoActividadView::trataModificado", 0 );
@@ -210,9 +210,9 @@ bool TipoActividadView::trataModificado()
 /**
 \return
 **/
-void TipoActividadView::on_mui_nuevo_released()
+void TipoActividadView::on_mui_nuevo_clicked()
 {
-    _depura ( "TipoActividadView::on_mui_nuevo_released", 0 );
+    _depura ( "TipoActividadView::on_mui_nuevo_clicked", 0 );
     try {
         /// Si se ha modificado el contenido advertimos y guardamos.
         trataModificado();
@@ -224,7 +224,7 @@ void TipoActividadView::on_mui_nuevo_released()
         mdb_idtipoactividad = cur->valor ( "idtipoactividad" );
         delete cur;
         pintar();
-        _depura ( "END TipoActividadView::on_mui_nuevo_released", 0 );
+        _depura ( "END TipoActividadView::on_mui_nuevo_clicked", 0 );
     } catch ( ... ) {
         mensajeInfo ( _ ( "Error al crear un nuevo TipoActividad" ) );
         mainCompany() ->rollback();
@@ -237,9 +237,9 @@ void TipoActividadView::on_mui_nuevo_released()
 /**
 \return
 **/
-void TipoActividadView::on_mui_borrar_released()
+void TipoActividadView::on_mui_borrar_clicked()
 {
-    _depura ( "TipoActividadView::on_mui_borrar_released", 0 );
+    _depura ( "TipoActividadView::on_mui_borrar_clicked", 0 );
     try {
         mui_tab->setDisabled ( TRUE );
         trataModificado();
@@ -249,7 +249,7 @@ void TipoActividadView::on_mui_borrar_released()
         mainCompany() ->commit();
         mdb_idtipoactividad = "";
         pintar();
-        _depura ( "END TipoActividadView::on_mui_borrar_released", 0 );
+        _depura ( "END TipoActividadView::on_mui_borrar_clicked", 0 );
     } catch ( ... ) {
         mensajeInfo ( _ ( "Error al borrar el TipoActividad" ) );
         mainCompany() ->rollback();

@@ -291,7 +291,7 @@ bool TipoArticuloList::trataModificado()
                                     _ ( "Desea guardar los cambios?" ),
                                     QMessageBox::Ok,
                                     QMessageBox::Cancel ) == QMessageBox::Ok )
-            on_mui_guardar_released();
+            on_mui_guardar_clicked();
         _depura ( "END TipoArticuloList::trataModificado", 0 );
         return TRUE;
     } // end if
@@ -345,9 +345,9 @@ int TipoArticuloList::guardar()
 /**
 \return
 **/
-void TipoArticuloList::on_mui_crear_released()
+void TipoArticuloList::on_mui_crear_clicked()
 {
-    _depura ( "TipoArticuloList::on_mui_crear_released", 0 );
+    _depura ( "TipoArticuloList::on_mui_crear_clicked", 0 );
     BlDbRecordSet *cur = NULL;
     /// Si se ha modificado el contenido advertimos y guardamos.
     trataModificado();
@@ -361,7 +361,7 @@ void TipoArticuloList::on_mui_crear_released()
         m_idtipo = cur->valor ( "idtipo" );
         delete cur;
         pintar();
-        _depura ( "END TipoArticuloList::on_mui_crear_released", 0 );
+        _depura ( "END TipoArticuloList::on_mui_crear_clicked", 0 );
     } catch ( ... ) {
         mensajeInfo ( _ ( "Error en la creacion" ) );
         mainCompany()->rollback();
@@ -375,9 +375,9 @@ void TipoArticuloList::on_mui_crear_released()
 /**
 \return
 **/
-void TipoArticuloList::on_mui_borrar_released()
+void TipoArticuloList::on_mui_borrar_clicked()
 {
-    _depura ( "TipoArticuloList::on_mui_borrar_released", 0 );
+    _depura ( "TipoArticuloList::on_mui_borrar_clicked", 0 );
 
 
     int val = QMessageBox::question ( this,
@@ -395,7 +395,7 @@ void TipoArticuloList::on_mui_borrar_released()
         } // end if
     } // end if
 
-    _depura ( "END TipoArticuloList::on_mui_borrar_released", 0 );
+    _depura ( "END TipoArticuloList::on_mui_borrar_clicked", 0 );
 }
 
 

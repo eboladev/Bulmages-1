@@ -115,7 +115,7 @@ void JDirectivaView::imprimir()
     }
     
     /// Disparamos los plugins
-    int res = g_plugins->lanza ( "JDirectivaView_on_mui_imprimir_released", this );
+    int res = g_plugins->lanza ( "JDirectivaView_on_mui_imprimir_clicked", this );
     if ( res != 0 ) {
         return;
     } // end if

@@ -22,11 +22,11 @@ public:
     virtual ~Abrevs();
 
 public slots:
-    virtual void on_mui_teclado_released();
-    virtual void on_mui_usuario_released();
-    virtual void on_mui_aparcar_released();
-    virtual void on_mui_recuperar_released();
-    virtual void on_mui_cliente_released();
+    virtual void on_mui_teclado_clicked();
+    virtual void on_mui_usuario_clicked();
+    virtual void on_mui_aparcar_clicked();
+    virtual void on_mui_recuperar_clicked();
+    virtual void on_mui_cliente_clicked();
 
 };
 

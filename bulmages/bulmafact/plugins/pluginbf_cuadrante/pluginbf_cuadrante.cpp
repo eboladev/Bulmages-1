@@ -282,7 +282,7 @@ int TrabajadorView_on_mui_lista_currentItemChanged_Post ( TrabajadorView *trab )
 \param trab
 \return
 **/
-int TrabajadorView_on_mui_guardar_released ( TrabajadorView *trab )
+int TrabajadorView_on_mui_guardar_clicked ( TrabajadorView *trab )
 {
     BfSubForm * l = trab->findChild<BfSubForm *> ( "m_ausencias" );
     if (l) {

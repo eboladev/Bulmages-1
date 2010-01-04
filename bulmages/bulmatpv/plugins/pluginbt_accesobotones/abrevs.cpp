@@ -65,7 +65,7 @@ Abrevs::~Abrevs()
     delete m_doc2;
 }
 
-void Abrevs::on_mui_teclado_released()
+void Abrevs::on_mui_teclado_clicked()
 {
 
     if ( m_doc2->isVisible() ) {
@@ -76,7 +76,7 @@ void Abrevs::on_mui_teclado_released()
     }// end if
 }
 
-void Abrevs::on_mui_usuario_released()
+void Abrevs::on_mui_usuario_clicked()
 {
 
     /// Vamos a probar con un docwindow.
@@ -95,7 +95,7 @@ void Abrevs::on_mui_usuario_released()
 //    trab->setWindowModality(Qt::WindowModal);
 }
 
-void Abrevs::on_mui_aparcar_released()
+void Abrevs::on_mui_aparcar_clicked()
 {
     BtCompany * emp = ( BtCompany * ) mainCompany();
     // El nombre del ticket no puede estar vacio.
@@ -135,7 +135,7 @@ void Abrevs::on_mui_aparcar_released()
     emp->ticketActual() ->setDbValue( "bloqueadoticket", "FALSE");
     
     /// Llamamos a plugins para poder hacer lo pertinente
-    g_plugins->lanza("Abrevs_on_mui_aparcar_released", this);
+    g_plugins->lanza("Abrevs_on_mui_aparcar_clicked", this);
 
     BtTicket *tick;
     if ( nomticket == "") {
@@ -152,7 +152,7 @@ void Abrevs::on_mui_aparcar_released()
     emp->pulsaTecla ( Qt::Key_F4, "" );
 
     /// Llamamos a plugins para poder hacer lo pertinente
-    g_plugins->lanza("Abrevs_on_mui_aparcar_released_Post", this);
+    g_plugins->lanza("Abrevs_on_mui_aparcar_clicked_Post", this);
     
     /// Ponemos el nuevo bloqueo
     tick->setDbValue("bloqueadoticket", "TRUE");
@@ -160,18 +160,18 @@ void Abrevs::on_mui_aparcar_released()
     tick->pintar();
 }
 
-void Abrevs::on_mui_recuperar_released()
+void Abrevs::on_mui_recuperar_clicked()
 {
 
     Tickets * trab = new Tickets ( mainCompany(), 0 );
     trab->exec();
     /// Llamamos a plugins para poder hacer lo pertinente
-    g_plugins->lanza("Abrevs_on_mui_recuperar_released_Post", this);
+    g_plugins->lanza("Abrevs_on_mui_recuperar_clicked_Post", this);
 
 }
 
 
-void Abrevs::on_mui_cliente_released()
+void Abrevs::on_mui_cliente_clicked()
 {
     BtCompany * emp = ( BtCompany * ) mainCompany();
 

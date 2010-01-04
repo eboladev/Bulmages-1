@@ -48,7 +48,7 @@
   en el constructor del listado concreto, agregar:
      mui_filtrador->setSubFormList ( mui_list );
      connect ( mui_filtrar, SIGNAL ( released ( ) ), mui_filtrador, SLOT ( showHideFilter ( ) ) );
-     connect ( mui_filtrador, SIGNAL(aplicar_filtro() ), this, SLOT ( on_mui_actualizar_released() ) );
+     connect ( mui_filtrador, SIGNAL(aplicar_filtro() ), this, SLOT ( on_mui_actualizar_clicked() ) );
 
   5) Para que se aplique el filtrado al actualizar el listado, terminar la consulta SQL de presentar() con esto:
      ...WHERE 1 = 1 " + mui_filtrador->generarFiltro());
@@ -81,8 +81,8 @@ public slots:
    virtual void updatePosition ( int fila, int columna, int fila_anterior, int columna_anterior );
 
 private slots:
-   virtual void on_mui_filtro_aplicar_released ();
-   virtual void on_mui_filtro_limpiar_released ();
+   virtual void on_mui_filtro_aplicar_clicked ();
+   virtual void on_mui_filtro_limpiar_clicked ();
 
 private:
    /// Puntero al subformulario con el listado que deseamos filtrar

@@ -89,9 +89,9 @@ int BcConfiguracionView::inicializa()
 ///
 /**
 **/
-void BcConfiguracionView::on_mui_guardar_released()
+void BcConfiguracionView::on_mui_guardar_clicked()
 {
-    _depura ( "BcConfiguracionView::on_mui_guardar_released", 0 );
+    _depura ( "BcConfiguracionView::on_mui_guardar_clicked", 0 );
     /// Iniciamos transaccion.
     mainCompany() ->begin();
     mui_subform->guardar();
@@ -99,7 +99,7 @@ void BcConfiguracionView::on_mui_guardar_released()
     /// Procesamos la transaccion.
     mainCompany() ->commit();
     dialogChanges_cargaInicial();
-    _depura ( "END BcConfiguracionView::on_mui_guardar_released", 0 );
+    _depura ( "END BcConfiguracionView::on_mui_guardar_clicked", 0 );
 }
 
 
@@ -116,7 +116,7 @@ bool BcConfiguracionView::close()
                                      _ ( "Guardar cambios" ),
                                      _ ( "Desea guardar los cambios?" ),
                                      _ ( "&Guardar" ), _ ( "&No guardar" ), 0, 0, 1 ) == 0 ) {
-            on_mui_guardar_released();
+            on_mui_guardar_clicked();
         } // end if
     } // end if
     _depura ( "END BcConfiguracionView::close", 0 );
@@ -133,9 +133,9 @@ bool BcConfiguracionView::close()
     y subcuenta) por lo que siempre considera que las cuentas son 4 d&iacute;gitos. */
 /**
 **/
-void BcConfiguracionView::on_mui_modificarplan_released()
+void BcConfiguracionView::on_mui_modificarplan_clicked()
 {
-    _depura ( "BcConfiguracionView::on_mui_modificarplan_released", 0 );
+    _depura ( "BcConfiguracionView::on_mui_modificarplan_clicked", 0 );
     unsigned int nlong = modcodigo->text().length();
     QString codigo;
     QString query = "SELECT * FROM cuenta";
@@ -161,7 +161,7 @@ void BcConfiguracionView::on_mui_modificarplan_released()
         exit ( 1 );
     } // end if
     dialogChanges_cargaInicial();
-    _depura ( "END BcConfiguracionView::on_mui_modificarplan_released", 0 );
+    _depura ( "END BcConfiguracionView::on_mui_modificarplan_clicked", 0 );
 }
 
 

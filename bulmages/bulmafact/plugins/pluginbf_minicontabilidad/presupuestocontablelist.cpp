@@ -122,9 +122,9 @@ void PresupuestoContableList::editar ( int row )
 */
 void PresupuestoContableList::imprimir()
 {
-    _depura ( "PresupuestoContableList::on_mui_imprimir_released", 0 );
+    _depura ( "PresupuestoContableList::on_mui_imprimir_clicked", 0 );
     mui_list->imprimirPDF ( _ ( "Listado de Presupuestos Contables" ) );
-    _depura ( "PresupuestoContableList::on_mui_imprimir_released", 0 );
+    _depura ( "PresupuestoContableList::on_mui_imprimir_clicked", 0 );
 }
 
 
@@ -135,7 +135,7 @@ void PresupuestoContableList::imprimir()
 */
 void PresupuestoContableList::borrar()
 {
-    _depura ( "PresupuestoContableList::on_mui_borrar_released", 0 );
+    _depura ( "PresupuestoContableList::on_mui_borrar_clicked", 0 );
     try {
         QString idpresupuestocontable = mui_list->dbValue ( "idpresupuestocontable" );
         PresupuestoContableView *cli = new PresupuestoContableView ( ( BfCompany * ) mainCompany(), 0 ) ;
@@ -143,13 +143,13 @@ void PresupuestoContableList::borrar()
             delete cli;
             throw - 1;
         } // end if
-        cli->on_mui_borrar_released();
+        cli->on_mui_borrar_clicked();
         delete cli;
         presentar();
     } catch ( ... ) {
         mensajeInfo ( _ ( "Error al borrar un presupuestocontable" ) );
     } // end try
-    _depura ( "END:PresupuestoContableList::on_mui_borrar_released", 0 );
+    _depura ( "END:PresupuestoContableList::on_mui_borrar_clicked", 0 );
 }
 
 
@@ -198,9 +198,9 @@ void PresupuestoContableList::submenu ( const QPoint & )
     QAction *del = popup->addAction ( _ ( "Borrar presupuestocontable" ) );
     QAction *opcion = popup->exec ( QCursor::pos() );
     if ( opcion == del )
-        on_mui_borrar_released();
+        on_mui_borrar_clicked();
     if ( opcion == edit )
-        on_mui_editar_released();
+        on_mui_editar_clicked();
     delete popup;
 }
 

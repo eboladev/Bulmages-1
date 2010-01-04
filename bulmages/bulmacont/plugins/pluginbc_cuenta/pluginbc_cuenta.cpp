@@ -282,9 +282,9 @@ int BlSubForm_BlSubForm_Post ( BlSubForm *sub )
 }
 
 
-int Busqueda_on_mui_buscar_released ( BlSearchWidget *busq )
+int Busqueda_on_mui_buscar_clicked ( BlSearchWidget *busq )
 {
-    _depura("pluginbc_cuenta::Busqueda_on_mui_buscar_released");
+    _depura("pluginbc_cuenta::Busqueda_on_mui_buscar_clicked");
     int val = 0;
     if ( busq->tableName() == "cuenta" ) {
 
@@ -321,7 +321,7 @@ int Busqueda_on_mui_buscar_released ( BlSearchWidget *busq )
         val = 1;
     } // end if
 
-    _depura("END pluginbc_cuenta::Busqueda_on_mui_buscar_released");
+    _depura("END pluginbc_cuenta::Busqueda_on_mui_buscar_clicked");
     return val;
 }
 

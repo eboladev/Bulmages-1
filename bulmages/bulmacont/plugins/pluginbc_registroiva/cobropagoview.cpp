@@ -63,7 +63,7 @@ cobropagoview::cobropagoview ( BcCompany *emp, QWidget *parent )
     m_cuenta->m_valores["codigo"] = "";
 
 
-    on_mui_actualizar_released();
+    on_mui_actualizar_clicked();
     m_companyact->meteWindow ( windowTitle(), this );
     _depura ( "END cobropagoview::cobropagoview", 0 );
 }
@@ -83,7 +83,7 @@ cobropagoview::~cobropagoview()
 /// SLOT que responde a la pulsacion del boton de actualizar.
 /**
 **/
-void cobropagoview::on_mui_actualizar_released()
+void cobropagoview::on_mui_actualizar_clicked()
 {
     _depura ( "cobropagoview::s_actualizar", 0 );
 

@@ -204,7 +204,7 @@ void CobrosList::borrar()
             CobroView * cv = new CobroView ( ( BfCompany * ) mainCompany(), 0 );
             if ( cv->cargar ( mdb_idcobro ) )
                 throw - 1;
-            cv->on_mui_borrar_released();
+            cv->on_mui_borrar_clicked();
             cv->close();
         } // end if
         presentar();
@@ -256,9 +256,9 @@ void CobrosList::submenu ( const QPoint & )
     QAction *del = popup->addAction ( _ ( "Borrar cobro" ) );
     QAction *opcion = popup->exec ( QCursor::pos() );
     if ( opcion == del )
-        on_mui_borrar_released();
+        on_mui_borrar_clicked();
     if ( opcion == edit )
-        on_mui_editar_released();
+        on_mui_editar_clicked();
     delete popup;
     _depura ( "END CobrosList::submenu", 0 );
 }

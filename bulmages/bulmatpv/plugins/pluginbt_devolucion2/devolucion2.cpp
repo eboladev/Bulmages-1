@@ -412,18 +412,18 @@ void  Devolucion::quitar ( int prow )
     refreshDevolver();
 }
 
-void Devolucion::on_mui_todoButton_released()
+void Devolucion::on_mui_todoButton_clicked()
 {
 
 }
-void Devolucion::on_mui_anadirButton_released()
+void Devolucion::on_mui_anadirButton_clicked()
 {
     if ( mui_ticketTable->currentItem () != NULL ) {
         int row = mui_ticketTable->currentRow ();
         anadir ( row );
     }
 }
-void Devolucion::on_mui_sacarButton_released()
+void Devolucion::on_mui_sacarButton_clicked()
 {
 
     if ( mui_devolverTable->currentItem () != NULL ) {
@@ -431,18 +431,18 @@ void Devolucion::on_mui_sacarButton_released()
         quitar ( row );
     }
 }
-void Devolucion::on_mui_cancelarButton_released() {
+void Devolucion::on_mui_cancelarButton_clicked() {
     this->close();
 }
 
-void Devolucion::on_mui_valeButton_released() {
+void Devolucion::on_mui_valeButton_clicked() {
     QMessageBox::information ( this, _ ( "NO IMPLEMENTADO" ),
                                          QString ( "NO IMPLEMENTADO" ),
                                          QMessageBox::Ok,
                                          QMessageBox::Ok );
 }
 
-void Devolucion::on_mui_efectivoButton_released() {
+void Devolucion::on_mui_efectivoButton_clicked() {
     if ( m_ticket == NULL ) return;
     if ( m_ticket->dbValue ( "idalbaran" ).isEmpty() ) return;
 

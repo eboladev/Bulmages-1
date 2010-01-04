@@ -126,9 +126,9 @@ void ClientsList::editar ( int row )
 */
 void ClientsList::imprimir()
 {
-    _depura ( "ClientsList::on_mui_imprimir_released", 0 );
+    _depura ( "ClientsList::on_mui_imprimir_clicked", 0 );
     mui_list->imprimirPDF ( _ ( "Listado de Clientes" ) );
-    _depura ( "ClientsList::on_mui_imprimir_released", 0 );
+    _depura ( "ClientsList::on_mui_imprimir_clicked", 0 );
 }
 
 
@@ -139,7 +139,7 @@ void ClientsList::imprimir()
 */
 void ClientsList::borrar()
 {
-    _depura ( "ClientsList::on_mui_borrar_released", 0 );
+    _depura ( "ClientsList::on_mui_borrar_clicked", 0 );
     try {
         QString idcliente = mui_list->dbValue ( "idcliente" );
         ClienteView *cli = new ClienteView ( ( BfCompany * ) mainCompany(), 0 ) ;
@@ -147,13 +147,13 @@ void ClientsList::borrar()
             delete cli;
             throw - 1;
         } // end if
-        cli->on_mui_borrar_released();
+        cli->on_mui_borrar_clicked();
         delete cli;
         presentar();
     } catch ( ... ) {
         mensajeInfo ( _ ( "Error al borrar un cliente" ) );
     } // end try
-    _depura ( "END:ClientsList::on_mui_borrar_released", 0 );
+    _depura ( "END:ClientsList::on_mui_borrar_clicked", 0 );
 }
 
 
@@ -161,9 +161,9 @@ void ClientsList::borrar()
     Saca un dialog selector de archivo para que indiquemos a que archivo exportar.
     Llama a bulmafact2XML para hacer la exportacion.
 */
-void ClientsList::on_mui_exportar_released()
+void ClientsList::on_mui_exportar_clicked()
 {
-    _depura ( "ClientsList::on_mui_exportar_released", 0 );
+    _depura ( "ClientsList::on_mui_exportar_clicked", 0 );
     QFile filexml ( QFileDialog::getSaveFileName (
                         this,
                         _ ( "Elija el archivo" ),
@@ -175,7 +175,7 @@ void ClientsList::on_mui_exportar_released()
     } else {
         _depura ( "ERROR AL ABRIR EL ARCHIVO", 2 );
     } // end if
-    _depura ( "END ClientsList::on_mui_exportar_released", 0 );
+    _depura ( "END ClientsList::on_mui_exportar_clicked", 0 );
 }
 
 
@@ -184,9 +184,9 @@ void ClientsList::on_mui_exportar_released()
     Llama a XML2BulmaFact para hacer la importacion.
     Refresca el listado.
 */
-void ClientsList::on_mui_importar_released()
+void ClientsList::on_mui_importar_clicked()
 {
-    _depura ( "ClientsList::on_mui_importar_released", 0 );
+    _depura ( "ClientsList::on_mui_importar_clicked", 0 );
     QFile filexml ( QFileDialog::getOpenFileName (
                         this,
                         _ ( "Elija el archivo" ),
@@ -200,7 +200,7 @@ void ClientsList::on_mui_importar_released()
     } else {
         _depura ( "ERROR AL ABRIR EL ARCHIVO\n", 2 );
     } // end if
-    _depura ( "END ClientsList::on_mui_importar_released", 0 );
+    _depura ( "END ClientsList::on_mui_importar_clicked", 0 );
 }
 
 
@@ -255,9 +255,9 @@ void ClientsList::submenu ( const QPoint & )
     QAction *del = popup->addAction ( _ ( "Borrar cliente" ) );
     QAction *opcion = popup->exec ( QCursor::pos() );
     if ( opcion == del )
-        on_mui_borrar_released();
+        on_mui_borrar_clicked();
     if ( opcion == edit )
-        on_mui_editar_released();
+        on_mui_editar_clicked();
     delete popup;
 }
 

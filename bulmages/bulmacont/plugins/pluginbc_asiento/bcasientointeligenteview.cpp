@@ -274,9 +274,9 @@ void BcAsientoInteligenteView::muestraplantilla ( QString plantilla )
 /// La pulsaci&oacute;n sobre el bot&oacute;n de creaci&oacute;n del asiento.
 /**
 **/
-void BcAsientoInteligenteView::on_mui_aceptar_released()
+void BcAsientoInteligenteView::on_mui_aceptar_clicked()
 {
-    _depura ( "BcAsientoInteligenteView::on_mui_aceptar_released", 0 );
+    _depura ( "BcAsientoInteligenteView::on_mui_aceptar_clicked", 0 );
     try {
 
 
@@ -321,7 +321,7 @@ void BcAsientoInteligenteView::on_mui_aceptar_released()
     } catch ( ... ) {
         mensajeInfo ( "Fue imposible crear el asiento" );
     } /// end try
-    _depura ( "END BcAsientoInteligenteView::on_mui_aceptar_released", 0 );
+    _depura ( "END BcAsientoInteligenteView::on_mui_aceptar_clicked", 0 );
 }
 
 
@@ -910,7 +910,7 @@ void BcAsientoInteligenteView::selectsiguiente ( QObject *edit )
     /// En caso de que se haya encontrado el edit, y sea el &uacute;ltimo
     /// Se hace un aceptar.
     if ( encontrado == 1 ) {
-        on_mui_aceptar_released();
+        on_mui_aceptar_clicked();
     } // end if
     _depura ( "END BcAsientoInteligenteView::selectsiguiente", 0 );
 }
@@ -944,9 +944,9 @@ void BcAsientoInteligenteView::setmodo ( int i )
 ///
 /**
 **/
-void BcAsientoInteligenteView::on_mui_guardar_released()
+void BcAsientoInteligenteView::on_mui_guardar_clicked()
 {
-    _depura ( "BcAsientoInteligenteView::on_mui_guardar_released", 0 );
+    _depura ( "BcAsientoInteligenteView::on_mui_guardar_clicked", 0 );
     guardar();
-    _depura ( "END BcAsientoInteligenteView::on_mui_guardar_released", 0 );
+    _depura ( "END BcAsientoInteligenteView::on_mui_guardar_clicked", 0 );
 }

@@ -185,7 +185,7 @@ void ProveedorList::borrar()
         QString idprov = mui_list->dbValue ( QString ( "idproveedor" ) );
         ProveedorView *prov = new ProveedorView ( ( BfCompany * ) mainCompany() );
         prov->cargar ( idprov );
-        prov->on_mui_borrar_released();
+        prov->on_mui_borrar_clicked();
         delete prov;
         presentar();
     } catch ( ... ) {
@@ -200,16 +200,16 @@ void ProveedorList::borrar()
 **/
 void ProveedorList::imprimir()
 {
-    _depura ( "ProveedorList::on_mui_imprimir_released", 0 );
+    _depura ( "ProveedorList::on_mui_imprimir_clicked", 0 );
     mui_list->imprimirPDF ( _ ( "Listado de Proveedores" ) );
-    _depura ( "END ProveedorList::on_mui_imprimir_released", 0 );
+    _depura ( "END ProveedorList::on_mui_imprimir_clicked", 0 );
 }
 
 
 ///
 /**
 **/
-void ProveedorList::on_mui_exportar_released()
+void ProveedorList::on_mui_exportar_clicked()
 {
     QFile filexml ( QFileDialog::getSaveFileName ( this,
                     _ ( "Seleccione el archivo" ),
@@ -227,7 +227,7 @@ void ProveedorList::on_mui_exportar_released()
 ///
 /**
 **/
-void ProveedorList::on_mui_importar_released()
+void ProveedorList::on_mui_importar_clicked()
 {
     QFile filexml ( QFileDialog::getOpenFileName ( this,
                     _ ( "Elija el archivo" ),

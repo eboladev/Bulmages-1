@@ -59,8 +59,8 @@ public:
     virtual int junta();
     
 public slots:
-    virtual void on_mui_email_released();
-    virtual void on_m_agregarconvocados_released();
+    virtual void on_mui_email_clicked();
+    virtual void on_m_agregarconvocados_clicked();
 };
 
 #endif

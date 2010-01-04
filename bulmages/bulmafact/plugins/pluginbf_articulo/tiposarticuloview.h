@@ -59,13 +59,13 @@ public:
     QString desctipo_articulo();
     virtual int guardar();
     virtual int borrar();
-    virtual void on_mui_borrar_released();
+    virtual void on_mui_borrar_clicked();
     void pintar ( QTreeWidgetItem * );
 
 public slots:
     virtual void pintar();
     virtual void on_m_listTipos_itemDoubleClicked ( QTreeWidgetItem * item, int column );
-    virtual void on_mui_crear_released();
+    virtual void on_mui_crear_clicked();
     virtual void on_m_listTipos_currentItemChanged ( QTreeWidgetItem *current, QTreeWidgetItem *previous );
 
 

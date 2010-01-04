@@ -174,9 +174,9 @@ int BfCompany_createMainWindows_Post ( BfCompany *comp )
     return 0;
 }
 
-int Busqueda_on_mui_buscar_released ( BlSearchWidget *busq )
+int Busqueda_on_mui_buscar_clicked ( BlSearchWidget *busq )
 {
-    _depura ( "Busqueda_on_mui_buscar_released", 0 );
+    _depura ( "Busqueda_on_mui_buscar_clicked", 0 );
 
     if ( busq->tableName() == "profesor" ) {
 
@@ -209,7 +209,7 @@ int Busqueda_on_mui_buscar_released ( BlSearchWidget *busq )
         
     } // end if
     
-    _depura ( "END Busqueda_on_mui_buscar_released", 0 );
+    _depura ( "END Busqueda_on_mui_buscar_clicked", 0 );
     
     return 0;
 

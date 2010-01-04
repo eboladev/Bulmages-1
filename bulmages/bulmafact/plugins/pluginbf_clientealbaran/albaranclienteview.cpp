@@ -181,9 +181,9 @@ void AlbaranClienteView::pintatotales ( BlFixed iva, BlFixed base, BlFixed total
 */
 /**
 **/
-void AlbaranClienteView::on_mui_verpedidocliente_released()
+void AlbaranClienteView::on_mui_verpedidocliente_clicked()
 {
-    _depura ( "AlbaranClienteView::on_mui_verpedidocliente_released", 0 );
+    _depura ( "AlbaranClienteView::on_mui_verpedidocliente_clicked", 0 );
 
     PedidoClienteView *bud = NULL;
     BlDbRecordSet *cur = NULL;
@@ -240,7 +240,7 @@ void AlbaranClienteView::on_mui_verpedidocliente_released()
         if ( bud ) delete bud;
     } // end try
 
-    _depura ( "END AlbaranClienteView::on_mui_verpedidocliente_released", 0 );
+    _depura ( "END AlbaranClienteView::on_mui_verpedidocliente_clicked", 0 );
 }
 
 
@@ -392,7 +392,7 @@ void AlbaranClienteView::agregarFactura()
 
         /// Hacemos que las opciones de filtrado del listado ya est&eacute;n bien.
         fac->m_cliente->setidcliente ( dbValue ( "idcliente" ) );
-        fac->on_mui_actualizar_released();
+        fac->on_mui_actualizar_clicked();
 
         /// Lanzamos el di&aacute;logo.
         diag->exec();
@@ -472,22 +472,22 @@ void AlbaranClienteView::s_pintaTotales()
 ///
 /**
 **/
-void AlbaranClienteView::on_mui_facturar_released()
+void AlbaranClienteView::on_mui_facturar_clicked()
 {
-    _depura ( "AlbaranClienteView::on_mui_facturar_released", 0 );
+    _depura ( "AlbaranClienteView::on_mui_facturar_clicked", 0 );
     generarFactura();
-    _depura ( "END AlbaranClienteView::on_mui_facturar_released", 0 );
+    _depura ( "END AlbaranClienteView::on_mui_facturar_clicked", 0 );
 }
 
 
 ///
 /**
 **/
-void AlbaranClienteView::on_mui_agregarafactura_released()
+void AlbaranClienteView::on_mui_agregarafactura_clicked()
 {
-    _depura ( "AlbaranClienteView::on_mui_agregarafactura_released", 0 );
+    _depura ( "AlbaranClienteView::on_mui_agregarafactura_clicked", 0 );
     agregarFactura();
-    _depura ( "END AlbaranClienteView::on_mui_agregarafactura_released", 0 );
+    _depura ( "END AlbaranClienteView::on_mui_agregarafactura_clicked", 0 );
 }
 
 

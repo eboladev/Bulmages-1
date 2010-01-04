@@ -199,9 +199,9 @@ void CompraVentaView::pintatotales ( BlFixed iva, BlFixed base, BlFixed total, B
 /// Este metodo crea una pantalla de cobro y le pone los datos necesarios.
 /**
 **/
-void CompraVentaView::on_mui_cobrar_released()
+void CompraVentaView::on_mui_cobrar_clicked()
 {
-    _depura ( "CompraVentaView::on_mui_cobrar_released", 0 );
+    _depura ( "CompraVentaView::on_mui_cobrar_clicked", 0 );
     recogeValores();
     CobroView *bud = new CobroView ( mainCompany(), 0 );
     mainCompany()->pWorkspace()->addWindow ( bud );
@@ -211,7 +211,7 @@ void CompraVentaView::on_mui_cobrar_released()
     bud->setDbValue ( "comentcobro", dbValue ( "descalbaran" ) );
     bud->pintar();
     bud->show();
-    _depura ( "END CompraVentaView::on_mui_cobrar_released", 0 );
+    _depura ( "END CompraVentaView::on_mui_cobrar_clicked", 0 );
 }
 
 

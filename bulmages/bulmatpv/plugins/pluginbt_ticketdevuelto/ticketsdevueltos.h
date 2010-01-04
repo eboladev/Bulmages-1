@@ -31,7 +31,7 @@ public:
     virtual ~TicketsDevueltos();
 
 public slots:
-    virtual void on_mui_cancelar_released();
+    virtual void on_mui_cancelar_clicked();
     virtual void on_mui_ref_returnPressed();
 };
 

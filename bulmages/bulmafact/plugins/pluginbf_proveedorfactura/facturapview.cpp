@@ -182,9 +182,9 @@ void FacturaProveedorView::pintatotales ( BlFixed iva, BlFixed base, BlFixed tot
     Los instancia y los carga. */
 /**
 **/
-void FacturaProveedorView::on_mui_veralbaranes_released()
+void FacturaProveedorView::on_mui_veralbaranes_clicked()
 {
-    _depura ( "FacturaProveedorView::on_mui_veralbaranes_released", 0 );
+    _depura ( "FacturaProveedorView::on_mui_veralbaranes_clicked", 0 );
     QString query = "SELECT * FROM albaranp WHERE refalbaranp='" + dbValue ( "reffacturap" ) + "'";
     BlDbRecordSet *cur = mainCompany() ->loadQuery ( query );
     while ( !cur->eof() ) {
@@ -195,7 +195,7 @@ void FacturaProveedorView::on_mui_veralbaranes_released()
         cur->nextRecord();
     } // end while
     delete cur;
-    _depura ( "END FacturaProveedorView::on_mui_veralbaranes_released", 0 );
+    _depura ( "END FacturaProveedorView::on_mui_veralbaranes_clicked", 0 );
 }
 
 

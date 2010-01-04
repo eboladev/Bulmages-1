@@ -183,9 +183,9 @@ void AlbaranProveedorView::pintatotales ( BlFixed iva, BlFixed base, BlFixed tot
 */
 /**
 **/
-void AlbaranProveedorView::on_mui_verpedidosproveedor_released()
+void AlbaranProveedorView::on_mui_verpedidosproveedor_clicked()
 {
-    _depura ( "AlbaranProveedorView::on_mui_verpedidos_released", 0 );
+    _depura ( "AlbaranProveedorView::on_mui_verpedidos_clicked", 0 );
     QString query = "SELECT * FROM pedidoproveedor WHERE refpedidoproveedor = '" + dbValue ( "refalbaranp" ) + "'";
     BlDbRecordSet *cur = mainCompany() ->loadQuery ( query );
     while ( !cur->eof() ) {
@@ -196,7 +196,7 @@ void AlbaranProveedorView::on_mui_verpedidosproveedor_released()
         cur->nextRecord();
     } // end while
     delete cur;
-    _depura ( "END AlbaranProveedorView::on_mui_verpedidos_released", 0 );
+    _depura ( "END AlbaranProveedorView::on_mui_verpedidos_clicked", 0 );
 }
 
 

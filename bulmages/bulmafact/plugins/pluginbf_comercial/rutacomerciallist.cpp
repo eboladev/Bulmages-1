@@ -238,7 +238,7 @@ void RutaComercialList::borrar()
     RutaComercialIncView *rut = new RutaComercialIncView ( ( BfCompany * ) mainCompany(), NULL );
     if ( rut->cargar ( idrutacomercial, idincidenciacomercial ) )
         return;
-    rut->on_mui_borrar_released();
+    rut->on_mui_borrar_clicked();
     _depura ( "END RutaComercialList::borrar", 0 );
 }
 

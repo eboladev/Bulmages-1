@@ -169,7 +169,7 @@ int ProveedorView_cargarPost_Post ( ProveedorView *prov )
 }// end if
 
 
-int BfBuscarReferencia_on_mui_abrirtodo_released_Post ( BfBuscarReferencia *ref )
+int BfBuscarReferencia_on_mui_abrirtodo_clicked_Post ( BfBuscarReferencia *ref )
 {
     QString SQLQuery = "SELECT * FROM facturap WHERE reffacturap = '" + ref->mui_referencia->text() + "'";
     BlDbRecordSet *cur = ref->mainCompany() ->loadQuery ( SQLQuery );

@@ -295,9 +295,9 @@ void BcAsientoListView::presentar()
 **/
 void BcAsientoListView::imprimir()
 {
-    _depura ( "BcAsientoListView::on_mui_imprimir_released", 0 );
+    _depura ( "BcAsientoListView::on_mui_imprimir_clicked", 0 );
     mui_list->imprimirPDF ( _ ( "Asientos" ) );
-    _depura ( "END BcAsientoListView::on_mui_imprimir_released", 0 );
+    _depura ( "END BcAsientoListView::on_mui_imprimir_clicked", 0 );
 }
 
 

@@ -61,7 +61,7 @@ public:
     virtual QString exportXML();
 public slots:
     virtual void on_mui_list_editFinish ( int, int );
-    virtual void on_mui_reemitir_released();
+    virtual void on_mui_reemitir_clicked();
 };
 
 #endif

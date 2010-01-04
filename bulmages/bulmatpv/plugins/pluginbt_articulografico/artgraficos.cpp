@@ -87,12 +87,12 @@ void ArtGraficos::on_mui_list_cellClicked ( int row, int column )
     _depura("END ArtGraficos::on_mui_list_cellClicked");
 }
 
-void ArtGraficos::on_mui_botonSiguiente_released()
+void ArtGraficos::on_mui_botonSiguiente_clicked()
 {
     muestraPantalla ( m_pantallaActual + 1 );
 }
 
-void ArtGraficos::on_mui_botonAnterior_released()
+void ArtGraficos::on_mui_botonAnterior_clicked()
 {
     muestraPantalla ( m_pantallaActual - 1 );
 }

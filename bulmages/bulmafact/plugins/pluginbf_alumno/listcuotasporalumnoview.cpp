@@ -60,9 +60,9 @@ ListCuotasPorAlumnoView::ListCuotasPorAlumnoView ( BfCompany *comp, QWidget *par
 ///
 /**
 **/
-void ListCuotasPorAlumnoView::on_mui_aceptar_released()
+void ListCuotasPorAlumnoView::on_mui_aceptar_clicked()
 {
-    _depura ( "ListCuotasPorAlumnoView::on_mui_aceptar_released", 0 );
+    _depura ( "ListCuotasPorAlumnoView::on_mui_aceptar_clicked", 0 );
     
     try {
         mui_listado->guardar();
@@ -71,7 +71,7 @@ void ListCuotasPorAlumnoView::on_mui_aceptar_released()
         mensajeInfo ( _ ( "Error al guardar las cuotas" ) );
     } // end try
     
-    _depura ( "END ListCuotasPorAlumnoView::on_mui_aceptar_released", 0 );
+    _depura ( "END ListCuotasPorAlumnoView::on_mui_aceptar_clicked", 0 );
 }
 
 ///

@@ -161,9 +161,9 @@ void ArticuloList1::submenu ( const QPoint & )
     QAction *del = popup->addAction ( _ ( "Borrar articulo" ) );
     QAction *opcion = popup->exec ( QCursor::pos() );
     if ( opcion == del )
-        on_mui_borrar_released();
+        on_mui_borrar_clicked();
     if ( opcion == edit )
-        on_mui_editar_released();
+        on_mui_editar_clicked();
     delete popup;
 }
 

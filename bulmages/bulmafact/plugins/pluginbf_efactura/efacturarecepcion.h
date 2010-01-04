@@ -35,10 +35,10 @@ public:
     ~EFacturaRecepcion();
 
 public slots:
-//  virtual void on_mui_examinaECertificado_released();
-    virtual void on_mui_recibir_released();
-    virtual void on_mui_abrir_released();
-    virtual void on_mui_salir_released();
+//  virtual void on_mui_examinaECertificado_clicked();
+    virtual void on_mui_recibir_clicked();
+    virtual void on_mui_abrir_clicked();
+    virtual void on_mui_salir_clicked();
 };
 
 #endif

@@ -17,7 +17,7 @@ TicketsDevueltos::~TicketsDevueltos()
 {}
 
 
-void TicketsDevueltos::on_mui_cancelar_released()
+void TicketsDevueltos::on_mui_cancelar_clicked()
 {
     ( ( QDialog * ) parent() )->accept();
 }
