@@ -174,7 +174,7 @@ QString BlFormListFilter::generateBooleanFilter ( QString campo, Qt::CheckState 
 {
    _depura ( "BlFormListFilter::generateBooleanFilter", 0 );
 
-   QString valor = "";
+   QString valor;
 
    if ( estado == Qt::Checked ) {
       valor = "true";
@@ -184,7 +184,13 @@ QString BlFormListFilter::generateBooleanFilter ( QString campo, Qt::CheckState 
       valor = "false";
    } // end if
 
-   QString criterio = QString ( "\"%1\" = %2" ).arg ( campo ).arg ( valor );
+   QString criterio;
+
+   /// No hay criterio si el CheckBox est&aacute; en el estado indefinido
+   if ( !valor.isEmpty() )
+   {
+      criterio = QString ( "\"%1\" = %2" ).arg ( campo ).arg ( valor );
+   }
 
    _depura ( "END BlFormListFilter::generateBooleanFilter: ", 0, criterio );
    return criterio;
