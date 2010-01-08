@@ -167,9 +167,12 @@ void BlDateSearch::s_searchFecha()
     /// Se pone el 1er dia del calendario a lunes.
     calend->setFirstDayOfWeek ( Qt::Monday );
 
+    /// Evitar fechas demasiado antiguas
+    calend->setMinimumDate( QDate ( 1900, 1, 1 ) );
+
     /// Si el campo estaba vac&iacute;o, seleccionar una fecha imposible, pero mostrar el mes actual
     if ( m_textoFecha->text().isEmpty() ) {
-        calend->setSelectedDate ( QDate ( 1900, 1, 1 ) );
+        calend->setSelectedDate ( calend->minimumDate() );
         calend->setCurrentPage ( QDate::currentDate().year(), QDate::currentDate().month() );
     }
 
