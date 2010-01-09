@@ -310,7 +310,7 @@ void BlSearchWidget::on_m_inputBusqueda_textChanged ( const QString &val )
         while ( i.hasNext() ) {
             i.next();
             cadwhere = cadwhere + cador 
-                        + " upper(" + i.key() + ") LIKE  upper('%" 
+                        + " upper(" + i.key() + "::varchar ) LIKE  upper('%" 
                         + mainCompany()->sanearCadenaUtf8(val) + "%')";
             cador = " OR ";
         } // end while
@@ -523,7 +523,7 @@ void BlDbCompleterComboBox::s_editTextChanged ( const QString &cod )
                 QString cador = "";
                 while ( i.hasNext() ) {
                     i.next();
-                    cadwhere = cadwhere + cador + " upper(" + i.key() + ") LIKE  upper('%" + mainCompany()->sanearCadenaUtf8(cod) + "%')";
+                    cadwhere = cadwhere + cador + " upper(" + i.key() + "::varchar ) LIKE  upper('%" + mainCompany()->sanearCadenaUtf8(cod) + "%')";
                     cador = " OR ";
                 } // end while
                 QString SQLQuery = "SELECT * FROM " + m_tabla + " WHERE " + cadwhere;
