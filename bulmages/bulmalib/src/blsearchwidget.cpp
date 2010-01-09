@@ -280,7 +280,7 @@ void BlSearchWidget::on_m_inputBusqueda_textChanged ( const QString &val )
     QString cador = "";
     while ( i.hasNext() ) {
         i.next();
-        cadwhere = cadwhere + cador + " " + i.key() + " = '" + mainCompany()->sanearCadenaUtf8(val) + "'";
+        cadwhere = cadwhere + cador + " " + i.key() + "::varchar = '" + mainCompany()->sanearCadenaUtf8(val) + "'";
         cador = " OR ";
     } // end while
 
