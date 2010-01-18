@@ -72,8 +72,8 @@ CobrosList::CobrosList ( BfCompany *comp, QWidget *parent, Qt::WFlags flag, edmo
         return;
     m_cliente->setMainCompany ( comp );
     mui_list->setMainCompany ( comp );
-    mui_idbanco->setMainCompany ( comp );
-    mui_idbanco->setidbanco ( "" );
+    mui_idforma_pago->setMainCompany ( comp );
+    mui_idforma_pago->setId ( "" );
     setSubForm ( mui_list );
     /// Establecemos los parametros de busqueda del Cliente
     m_cliente->setLabel ( _ ( "Cliente:" ) );
@@ -109,7 +109,7 @@ void CobrosList::presentar()
 {
     _depura ( "CobrosList::presentar", 0 );
     if ( mainCompany() != NULL ) {
-        mui_list->cargar ( "SELECT * FROM cobro NATURAL LEFT JOIN cliente LEFT JOIN trabajador ON trabajador.idtrabajador = cobro.idtrabajador NATURAL LEFT JOIN banco WHERE 1 = 1 " + generaFiltro() );
+        mui_list->cargar ( "SELECT * FROM cobro LEFT JOIN cliente ON cliente.idcliente = cobro.idcliente LEFT JOIN forma_pago ON cobro.idforma_pago = forma_pago.idforma_pago LEFT JOIN trabajador ON trabajador.idtrabajador = cobro.idtrabajador  WHERE 1 = 1 " + generaFiltro() );
         /// Hacemos el calculo del total.
         BlFixed total = mui_list->sumarCampo ( "cantcobro" );
         m_total->setText ( total.toQString() );
@@ -150,8 +150,8 @@ QString CobrosList::generaFiltro()
     if ( m_fechafin->text() != "" )
         filtro += " AND fechacobro <= '" + m_fechafin->text() + "' ";
 
-    if ( mui_idbanco->idbanco() != "" )
-        filtro += " AND idbanco = " + mui_idbanco->idbanco();
+    if ( mui_idforma_pago->id() != "" )
+        filtro += " AND idforma_pago = " + mui_idforma_pago->id();
 
     _depura ( "END CobrosList::generaFiltro", 0 );
     return ( filtro );
@@ -270,8 +270,8 @@ void CobrosList::setMainCompany ( BfCompany *comp )
     BlMainCompanyPointer::setMainCompany ( comp );
     m_cliente->setMainCompany ( comp );
     mui_list->setMainCompany ( comp );
-    mui_idbanco->setMainCompany ( comp );
-    mui_idbanco->setidbanco ( "" );
+    mui_idforma_pago->setMainCompany ( comp );
+    mui_idforma_pago->setId ( "" );
 }
 
 /** Devuelve el identificador del cobro seleccionado
@@ -317,7 +317,7 @@ CobrosListSubForm::CobrosListSubForm ( QWidget *parent ) : BfSubForm ( parent )
     addSubFormHeader ( "fechacobro", BlDbField::DbDate, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _ ( "Fecha de cobro" ) );
     addSubFormHeader ( "fechavenccobro", BlDbField::DbDate, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _ ( "Fecha de vencimiento" ) );
     addSubFormHeader ( "cantcobro", BlDbField::DbNumeric, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _ ( "Cantidad" ) );
-    addSubFormHeader ( "nombanco", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _ ( "Banco" ) );
+    addSubFormHeader ( "descforma_pago", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _ ( "Forma de Pago" ) );
     addSubFormHeader ( "refcobro", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _ ( "Referencia del cobro" ) );
     addSubFormHeader ( "previsioncobro", BlDbField::DbBoolean, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _ ( "Prevision de cobro" ) );
     addSubFormHeader ( "comentcobro", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _ ( "Comentarios" ) );

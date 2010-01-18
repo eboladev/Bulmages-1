@@ -142,6 +142,7 @@ CREATE TABLE banco (
 -- dias1tforma_pago: Dias antes del primer vencimiento calculando los bloque de 30 como
 --                   meses naturales.
 -- descuentoforma_pago: Descuento automatico para esa forma de pago.
+-- idbanco: Si la forma de pago es a través de un banco este campo nos permite especificar dicho banco.
 \echo -n ':: Forma de pago ... '
 CREATE TABLE forma_pago (
     idforma_pago serial PRIMARY KEY,
@@ -653,7 +654,7 @@ CREATE TABLE cliente (
 -- previsioncobro:
 -- comentcobro: Comentario.
 -- idtrabajador: ???Trabajador que realiza el cobro.
--- idbanco: ???Entidad bancaria que realiza el cobro.
+-- idbanco: ???Entidad bancaria que realiza el cobro. (OBSOLETO, DEBE DESAPARECER)
 \echo -n ':: Cobro ... '
 CREATE TABLE cobro (
     idcobro serial PRIMARY KEY,
@@ -665,7 +666,8 @@ CREATE TABLE cobro (
     previsioncobro boolean DEFAULT FALSE,
     comentcobro character varying(500),
     idtrabajador integer REFERENCES trabajador(idtrabajador),
-    idbanco integer REFERENCES banco(idbanco)
+    idbanco integer REFERENCES banco(idbanco),
+    idforma_pago integer REFERENCES forma_pago(idforma_pago)
 );
    
 \echo -n ':: Funcion que crea restricciones en cobro ... '
@@ -3087,9 +3089,9 @@ DECLARE
 BEGIN
 	SELECT INTO as * FROM configuracion WHERE nombre = ''DatabaseRevision'';
 	IF FOUND THEN
-		UPDATE CONFIGURACION SET valor = ''0.12.1-0003'' WHERE nombre = ''DatabaseRevision'';
+		UPDATE CONFIGURACION SET valor = ''0.12.1-0004'' WHERE nombre = ''DatabaseRevision'';
 	ELSE
-		INSERT INTO configuracion (nombre, valor) VALUES (''DatabaseRevision'', ''0.12.1-0003'');
+		INSERT INTO configuracion (nombre, valor) VALUES (''DatabaseRevision'', ''0.12.1-0004'');
 	END IF;
 	RETURN 0;
 END;

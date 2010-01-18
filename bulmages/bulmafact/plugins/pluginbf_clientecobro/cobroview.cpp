@@ -47,7 +47,7 @@ CobroView::CobroView ( BfCompany *comp, QWidget *parent )
         /// Usurpamos la identidad de mlist y ponemos nuestro propio widget con sus cosillas.
         mui_idcliente->setMainCompany ( comp );
         mui_refcobro->setMainCompany ( comp );
-        mui_idbanco->setMainCompany ( comp );
+        mui_idforma_pago->setMainCompany ( comp );
         mui_idtrabajador->setMainCompany ( comp );
       
         /// Establecemos los parametros de busqueda del Cliente
@@ -68,7 +68,7 @@ CobroView::CobroView ( BfCompany *comp, QWidget *parent )
         addDbField ( "refcobro", BlDbField::DbVarChar, BlDbField::DbNothing, _ ( "Referencia" ) );
         addDbField ( "cantcobro", BlDbField::DbNumeric, BlDbField::DbNotNull, _ ( "Total cobro" ) );
         addDbField ( "comentcobro", BlDbField::DbVarChar, BlDbField::DbNothing, _ ( "Descripcion del cobro" ) );
-        addDbField ( "idbanco", BlDbField::DbInt, BlDbField::DbNothing, _ ( "Banco" ) );
+        addDbField ( "idforma_pago", BlDbField::DbInt, BlDbField::DbNothing, _ ( "Forma de Pago" ) );
         addDbField ( "idtrabajador", BlDbField::DbInt, BlDbField::DbNothing, _ ( "Trabajador" ) );
 
         meteWindow ( windowTitle(), this, FALSE );

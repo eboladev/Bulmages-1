@@ -134,6 +134,7 @@ void GenCobroQToolButton::click()
             bud->setDbValue ( "cantcobro", fpv->m_totalfactura->text() );
             bud->setDbValue ( "refcobro", fpv->dbValue ( "reffactura" ) );
             bud->setDbValue ( "comentcobro", fpv->dbValue ( "descfactura" ) );
+            bud->setDbValue ( "idforma_pago", fpv->dbValue ( "idforma_pago" ) );
             bud->pintar();
             bud->show();
         } // end if
@@ -184,6 +185,7 @@ void GenCobroQToolButton::click()
             CobroView *bud = new CobroView ( ( BfCompany * ) fpv->mainCompany(), 0 );
             fpv->mainCompany() ->m_pWorkspace->addWindow ( bud );
             bud->setDbValue ( "idcliente", fpv->dbValue ( "idcliente" ) );
+            bud->setDbValue ( "idforma_pago", fpv->dbValue ( "idforma_pago" ) );
             bud->setDbValue ( "cantcobro", fpv->m_totalalbaran->text() );
             bud->setDbValue ( "refcobro", fpv->dbValue ( "refalbaran" ) );
             bud->setDbValue ( "comentcobro", fpv->dbValue ( "descalbaran" ) );
@@ -233,6 +235,7 @@ void GenCobroQToolButton::click()
             CobroView *bud = new CobroView ( ( BfCompany * ) fpv->mainCompany(), 0 );
             fpv->mainCompany() ->m_pWorkspace->addWindow ( bud );
             bud->setDbValue ( "idcliente", fpv->dbValue ( "idcliente" ) );
+            bud->setDbValue ( "idforma_pago", fpv->dbValue ( "idforma_pago" ) );
             bud->setDbValue ( "cantcobro", fpv->m_totalpedidocliente->text() );
             bud->setDbValue ( "refcobro", fpv->dbValue ( "refpedidocliente" ) );
             bud->setDbValue ( "comentcobro", fpv->dbValue ( "descpedidocliente" ) );

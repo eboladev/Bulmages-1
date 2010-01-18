@@ -7,8 +7,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>500</width>
-    <height>400</height>
+    <width>596</width>
+    <height>484</height>
    </rect>
   </property>
   <property name="minimumSize">
@@ -262,7 +262,7 @@
         </property>
        </widget>
       </item>
-      <item row="0" column="1">
+      <item row="0" column="2">
        <layout class="QHBoxLayout">
         <item>
          <widget class="BlDateSearch" name="mui_fechacobro">
@@ -295,7 +295,7 @@
         </item>
        </layout>
       </item>
-      <item row="1" column="0">
+      <item row="1" column="0" colspan="2">
        <widget class="QLabel" name="textLabel1_2_4">
         <property name="sizePolicy">
          <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
@@ -311,7 +311,7 @@
         </property>
        </widget>
       </item>
-      <item row="1" column="1">
+      <item row="1" column="2">
        <layout class="QHBoxLayout">
         <item>
          <widget class="BlDateSearch" name="mui_fechavenccobro">
@@ -344,7 +344,7 @@
         </item>
        </layout>
       </item>
-      <item row="2" column="0" colspan="2">
+      <item row="2" column="0" colspan="3">
        <widget class="BlSearchWidget" name="mui_idcliente" native="true">
         <property name="sizePolicy">
          <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
@@ -357,7 +357,7 @@
         </property>
        </widget>
       </item>
-      <item row="3" column="0">
+      <item row="3" column="0" colspan="2">
        <widget class="QLabel" name="textLabel1_2_2_3_2">
         <property name="sizePolicy">
          <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
@@ -376,7 +376,7 @@
         </property>
        </widget>
       </item>
-      <item row="3" column="1">
+      <item row="3" column="2">
        <widget class="QLineEdit" name="mui_comentcobro">
         <property name="sizePolicy">
          <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
@@ -405,7 +405,7 @@
         </property>
        </widget>
       </item>
-      <item row="4" column="1">
+      <item row="4" column="2">
        <layout class="QHBoxLayout">
         <item>
          <widget class="QLineEdit" name="mui_cantcobro">
@@ -455,7 +455,7 @@
        </layout>
       </item>
       <item row="5" column="0">
-       <widget class="QLabel" name="textLabel1_4_5">
+       <widget class="QLabel" name="label11">
         <property name="sizePolicy">
          <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
           <horstretch>0</horstretch>
@@ -463,48 +463,31 @@
          </sizepolicy>
         </property>
         <property name="text">
-         <string>Banco:</string>
+         <string>Forma de pago:</string>
         </property>
         <property name="alignment">
          <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
         </property>
         <property name="buddy">
-         <cstring>mui_idbanco</cstring>
+         <cstring>mui_idforma_pago</cstring>
         </property>
        </widget>
       </item>
-      <item row="5" column="1">
-       <layout class="QHBoxLayout">
-        <item>
-         <spacer>
-          <property name="orientation">
-           <enum>Qt::Horizontal</enum>
-          </property>
-          <property name="sizeHint" stdset="0">
-           <size>
-            <width>40</width>
-            <height>20</height>
-           </size>
-          </property>
-         </spacer>
-        </item>
-        <item>
-         <widget class="BfBuscarBanco" name="mui_idbanco">
-          <property name="sizePolicy">
-           <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-            <horstretch>0</horstretch>
-            <verstretch>0</verstretch>
-           </sizepolicy>
-          </property>
-          <property name="minimumSize">
-           <size>
-            <width>250</width>
-            <height>0</height>
-           </size>
-          </property>
-         </widget>
-        </item>
-       </layout>
+      <item row="5" column="2">
+       <widget class="BfBuscarFormaPago" name="mui_idforma_pago">
+        <property name="minimumSize">
+         <size>
+          <width>150</width>
+          <height>0</height>
+         </size>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>150</width>
+          <height>16777215</height>
+         </size>
+        </property>
+       </widget>
       </item>
       <item row="6" column="0">
        <widget class="QLabel" name="label_4">
@@ -525,7 +508,7 @@
         </property>
        </widget>
       </item>
-      <item row="6" column="1">
+      <item row="6" column="1" colspan="2">
        <widget class="BfBuscarTrabajador" name="mui_idtrabajador">
         <property name="sizePolicy">
          <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
@@ -604,7 +587,7 @@
   <customwidget>
    <class>BlDateSearch</class>
    <extends>QLineEdit</extends>
-   <header>../../bulmalib/src/bldatesearch.h</header>
+   <header>bldatesearch.h</header>
   </customwidget>
   <customwidget>
    <class>BlSearchWidget</class>
@@ -622,9 +605,9 @@
    <header>bfbuscartrabajador.h</header>
   </customwidget>
   <customwidget>
-   <class>BfBuscarBanco</class>
+   <class>BfBuscarFormaPago</class>
    <extends>QComboBox</extends>
-   <header>bfbuscarbanco.h</header>
+   <header>bfbuscarformapago.h</header>
   </customwidget>
  </customwidgets>
  <tabstops>

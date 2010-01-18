@@ -139,7 +139,36 @@ CREATE TRIGGER cambiastockt
 
 
 
+-- para poder especificar la forma de pago en los cobros
+\echo -n ':: Agrega el campo idforma_pago a la tabla de cobros '
+CREATE OR REPLACE FUNCTION aux() RETURNS INTEGER AS '
+DECLARE
+        bs RECORD;
+        cs RECORD;
+BEGIN
 
+
+   SELECT INTO bs attname, relname FROM pg_attribute LEFT JOIN pg_class ON pg_attribute.attrelid=pg_class.oid WHERE attname=''cobro'' AND relname=''idforma_pago'';
+   IF NOT FOUND THEN
+           ALTER TABLE cobro  ADD COLUMN idforma_pago integer REFERENCES forma_pago(idforma_pago) ;
+-- para compatibilidad con las bd de la branch docsMonolitic que usaban idbanco en lugar de 
+-- sufijo
+--           UPDATE banco set sufijobanco = idbanco ;
+   END IF;
+
+   FOR bs IN SELECT * FROM banco LOOP
+      INSERT INTO forma_pago (descforma_pago, idbanco) VALUES (bs.nombanco, bs.idbanco);
+      SELECT INTO cs MAX(idforma_pago) AS idf FROM forma_pago LIMIT 1;
+      UPDATE cobro set idforma_pago = cs.idf WHERE idbanco = bs.idbanco;
+   END LOOP;
+  
+
+
+   RETURN 0;
+END;
+' LANGUAGE plpgsql;
+SELECT aux();
+DROP FUNCTION aux() CASCADE;
 
 
 
@@ -154,9 +183,9 @@ DECLARE
 BEGIN
 	SELECT INTO as * FROM configuracion WHERE nombre = ''DatabaseRevision'';
 	IF FOUND THEN
-		UPDATE CONFIGURACION SET valor = ''0.12.1-0003'' WHERE nombre = ''DatabaseRevision'';
+		UPDATE CONFIGURACION SET valor = ''0.12.1-0004'' WHERE nombre = ''DatabaseRevision'';
 	ELSE
-		INSERT INTO configuracion (nombre, valor) VALUES (''DatabaseRevision'', ''0.12.1-0003'');
+		INSERT INTO configuracion (nombre, valor) VALUES (''DatabaseRevision'', ''0.12.1-0004'');
 	END IF;
 	RETURN 0;
 END;
