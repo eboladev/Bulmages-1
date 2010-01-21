@@ -18,7 +18,7 @@ ArchivoSQLpatch:
 
 ArchivoSQLdeins: 
 
-Dependencias:
+Dependencias: libpluginbf_banco.so
 
 Incompatibles:
 
