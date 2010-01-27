@@ -77,17 +77,17 @@
        </property>
        <layout class="QHBoxLayout">
         <property name="spacing">
-         <number>5</number>
+         <number>2</number>
         </property>
         <property name="margin">
-         <number>5</number>
+         <number>2</number>
         </property>
         <item>
          <widget class="QToolButton" name="mui_guardar">
           <property name="minimumSize">
            <size>
-            <width>32</width>
-            <height>32</height>
+            <width>40</width>
+            <height>40</height>
            </size>
           </property>
           <property name="maximumSize">
@@ -121,8 +121,8 @@
          <widget class="QToolButton" name="mui_borrar">
           <property name="minimumSize">
            <size>
-            <width>32</width>
-            <height>32</height>
+            <width>40</width>
+            <height>40</height>
            </size>
           </property>
           <property name="maximumSize">
@@ -156,8 +156,8 @@
          <widget class="QToolButton" name="mui_facturar">
           <property name="minimumSize">
            <size>
-            <width>32</width>
-            <height>32</height>
+            <width>40</width>
+            <height>40</height>
            </size>
           </property>
           <property name="maximumSize">
@@ -176,8 +176,8 @@
            <string/>
           </property>
           <property name="icon">
-           <iconset>
-            <normaloff>:/BfBulmaFact32x32/images/png/32x32/i_bulmages_ventas_facturas_automaticas.32x32.png</normaloff>:/BfBulmaFact32x32/images/png/32x32/i_bulmages_ventas_facturas_automaticas.32x32.png</iconset>
+           <iconset resource="../../../bulmages.qrc">
+            <normaloff>:/Images/client-delivery-note-to-exist-invoice.png</normaloff>:/Images/client-delivery-note-to-exist-invoice.png</iconset>
           </property>
           <property name="iconSize">
            <size>
