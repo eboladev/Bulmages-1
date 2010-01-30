@@ -331,7 +331,7 @@ ListAlumnosTutorView::ListAlumnosTutorView ( QWidget *parent ) : BfSubForm ( par
 
 ///
 /**
-\param idcontrato
+\param idalumno
 **/
 void ListAlumnosTutorView::cargar ( QString idalumno )
 {
@@ -363,7 +363,7 @@ ListAlumnosActividadView::ListAlumnosActividadView ( QWidget *parent ) : BfSubFo
 
 ///
 /**
-\param idcontrato
+\param idalumno
 **/
 void ListAlumnosActividadView::cargar ( QString idalumno )
 {

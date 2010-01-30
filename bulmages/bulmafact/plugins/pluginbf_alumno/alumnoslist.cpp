@@ -258,7 +258,7 @@ QString AlumnosList::idalumno()
 /// =============================================================================
 ///                    SUBFORMULARIO
 /// =============================================================================
-/** Prepara el subformulario para trabajar con la tabla cobro.
+/** Prepara el subformulario para trabajar con la tabla alumno.
     Establece que no se puedan insertar elementos ya que es un listado.
 */
 AlumnosListSubForm::AlumnosListSubForm ( QWidget *parent ) : BfSubForm ( parent )

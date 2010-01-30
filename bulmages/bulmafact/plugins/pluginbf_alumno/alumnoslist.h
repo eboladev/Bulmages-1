@@ -19,8 +19,8 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#ifndef COBROSLIST_H
-#define COBROSLIST_H
+#ifndef ALUMNOSLIST_H
+#define ALUMNOSLIST_H
 
 #include <QLineEdit>
 
@@ -30,7 +30,7 @@
 #include "blformlist.h"
 
 
-/** Subformulario especializado en el trabajo con Cobros.
+/** Subformulario especializado en el trabajo con Alumnos.
 */
 class AlumnosListSubForm : public BfSubForm
 {
@@ -45,7 +45,7 @@ public:
 #include "ui_alumnoslistbase.h"
 
 
-/** Clase que presenta el listado de Cobros.
+/** Clase que presenta el listado de Alumnos.
     Deriva de la clase Ficha para estandarizacion de Formularios.
     Controla los eventos y la sincronizacion del listado con el filtrado. */
 class AlumnosList : public BlFormList, public Ui_AlumnosListBase
@@ -53,7 +53,7 @@ class AlumnosList : public BlFormList, public Ui_AlumnosListBase
     Q_OBJECT
 
 private:
-    /// Almacena (En el modo seleccion) el identificador del cobro seleccionado.
+    /// Almacena (En el modo seleccion) el identificador del alumno seleccionado.
     QString mdb_idalumno;
 
 public:

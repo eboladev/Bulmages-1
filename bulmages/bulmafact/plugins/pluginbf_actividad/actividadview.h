@@ -69,8 +69,8 @@ public slots:
 
 #include "ui_actividadbase.h"
 
-/** Ventana de ficha de cobro.
-    Se encarga de la presentacion de la ficha de cobro y del tratamiento de eventos producidos
+/** Ventana de ficha de actividad.
+    Se encarga de la presentacion de la ficha de actividad y del tratamiento de eventos producidos
     en dicha ventana. **/
 class ActividadView : public BfForm, public Ui_ActividadBase
 {

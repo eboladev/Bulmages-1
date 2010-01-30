@@ -8,7 +8,7 @@
     <x>0</x>
     <y>0</y>
     <width>788</width>
-    <height>516</height>
+    <height>605</height>
    </rect>
   </property>
   <property name="minimumSize">
@@ -271,7 +271,7 @@
        <item row="0" column="0">
         <widget class="QLabel" name="textLabel2_5">
          <property name="text">
-          <string>Codigo Actividad</string>
+          <string>Codigo Actividad:</string>
          </property>
          <property name="alignment">
           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
@@ -324,7 +324,7 @@
        <item row="2" column="0">
         <widget class="QLabel" name="textLabel2_2_2">
          <property name="text">
-          <string>Lugar</string>
+          <string>Lugar:</string>
          </property>
          <property name="alignment">
           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
@@ -361,20 +361,7 @@
          </property>
         </widget>
        </item>
-       <item row="13" column="1">
-        <spacer>
-         <property name="orientation">
-          <enum>Qt::Vertical</enum>
-         </property>
-         <property name="sizeHint" stdset="0">
-          <size>
-           <width>20</width>
-           <height>40</height>
-          </size>
-         </property>
-        </spacer>
-       </item>
-       <item row="12" column="1" colspan="2">
+       <item row="12" column="1">
         <widget class="BlSearchWidget" name="mui_idprofesor" native="true">
          <property name="sizePolicy">
           <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
@@ -410,7 +397,10 @@
        <item row="5" column="0">
         <widget class="QLabel" name="label_2">
          <property name="text">
-          <string>Tipo de Actividad</string>
+          <string>Tipo de Actividad:</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
          </property>
         </widget>
        </item>
@@ -420,7 +410,10 @@
        <item row="6" column="0">
         <widget class="QLabel" name="label_3">
          <property name="text">
-          <string>Precio Cuota</string>
+          <string>Precio Cuota:</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
          </property>
         </widget>
        </item>
@@ -433,14 +426,20 @@
        <item row="8" column="0">
         <widget class="QLabel" name="label_4">
          <property name="text">
-          <string>Fecha Inicial</string>
+          <string>Fecha Inicial:</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
          </property>
         </widget>
        </item>
        <item row="9" column="0">
         <widget class="QLabel" name="label_5">
          <property name="text">
-          <string>Fecha Final</string>
+          <string>Fecha Final:</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
          </property>
         </widget>
        </item>
@@ -505,7 +504,10 @@
        <item row="7" column="0">
         <widget class="QLabel" name="label_6">
          <property name="text">
-          <string>Periodicidad Cuota</string>
+          <string>Periodicidad Cuota:</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
          </property>
         </widget>
        </item>
@@ -519,7 +521,10 @@
        <item row="10" column="0">
         <widget class="QLabel" name="label_7">
          <property name="text">
-          <string>Hora Inicio</string>
+          <string>Hora Inicio:</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
          </property>
         </widget>
        </item>
@@ -529,12 +534,28 @@
        <item row="11" column="0">
         <widget class="QLabel" name="label_8">
          <property name="text">
-          <string>Duración</string>
+          <string>Duración:</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
          </property>
         </widget>
        </item>
        <item row="11" column="1">
         <widget class="QLineEdit" name="mui_duracionactividad"/>
+       </item>
+       <item row="13" column="0" colspan="3">
+        <spacer>
+         <property name="orientation">
+          <enum>Qt::Vertical</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>20</width>
+           <height>40</height>
+          </size>
+         </property>
+        </spacer>
        </item>
       </layout>
      </widget>
