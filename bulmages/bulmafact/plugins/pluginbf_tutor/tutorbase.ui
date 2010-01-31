@@ -652,6 +652,8 @@
   <tabstop>mui_sociocliente</tabstop>
   <tabstop>mui_numsociocliente</tabstop>
   <tabstop>mui_nomcliente</tabstop>
+  <tabstop>mui_apellido1cliente</tabstop>
+  <tabstop>mui_apellido2cliente</tabstop>
   <tabstop>mui_dircliente</tabstop>
   <tabstop>mui_idprovincia</tabstop>
   <tabstop>mui_poblcliente</tabstop>
@@ -664,8 +666,8 @@
   <tabstop>mui_aceptar</tabstop>
   <tabstop>mui_cancelar</tabstop>
   <tabstop>mui_comentcliente</tabstop>
-  <tabstop>mui_listrecibos</tabstop>
   <tabstop>mui_alumnosList</tabstop>
+  <tabstop>mui_listrecibos</tabstop>
  </tabstops>
  <resources>
   <include location="../../../bulmages.qrc"/>
