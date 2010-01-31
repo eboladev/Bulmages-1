@@ -31,12 +31,14 @@
 #include <QUiLoader>
 
 #include "blform.h"
+#include "blformlist.h"
 #include "blformconfig.h"
 #include "blcombobox.h"
 #include "blplugins.h"
 #include "blradiobutton.h"
 #include "bldatesearch.h"
 #include "blperiodicitycombobox.h"
+#include "blmainwindow.h"
 
 ///
 /**
@@ -763,6 +765,15 @@ int BlForm::guardar()
         /// Hacemos una carga para que se actualizen datos como la referencia.
         cargar ( id );
 
+        /// Si la directiva CONF_REFRESH_LIST esta activada buscamos el listado referente y lo recargamos
+        if (g_confpr->valor(CONF_REFRESH_LIST) == "TRUE") {
+                /// Buscamos el listado que corresponde al widget.
+                QList<BlFormList *> lista = g_main->findChildren<BlFormList *>();
+                for (int i = 0; i < lista.size(); ++i) {
+                    if (((BlFormList *)lista.at(i))->subForm()->tableName() == tableName())
+                        lista.at(i)->presentar();
+                } // end for
+        } // end if
 
         _depura ( "END BlForm::guardar", 0 );
         return 0;

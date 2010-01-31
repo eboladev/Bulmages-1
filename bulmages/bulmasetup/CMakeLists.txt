@@ -18,17 +18,16 @@
 # 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             #
 #                                                                       #
 
-configure_file( ${CMAKE_SOURCE_DIR}/bulmasetup/config.in config.py @ONLY)
+configure_file( ${CMAKE_SOURCE_DIR}/bulmasetup/config.in ${CMAKE_BINARY_DIR}/bulmasetup/config.py @ONLY)
 
-configure_file( ${CMAKE_SOURCE_DIR}/bulmasetup/bulmasetup.in bulmasetup.py @ONLY)
+configure_file( ${CMAKE_SOURCE_DIR}/bulmasetup/bulmasetup.in ${CMAKE_BINARY_DIR}/bulmasetup/bulmasetup.py @ONLY)
 
-
-install(FILES ${CMAKE_BINARY_DIR}/bulmasetup.py DESTINATION bin RENAME bulmasetup
+install(FILES ${CMAKE_BINARY_DIR}/bulmasetup/bulmasetup.py DESTINATION bin RENAME bulmasetup
                PERMISSIONS OWNER_EXECUTE OWNER_WRITE OWNER_READ
                 	    GROUP_EXECUTE GROUP_READ
                             WORLD_READ WORLD_EXECUTE)
 
-install(FILES ${CMAKE_BINARY_DIR}/config.py DESTINATION share/bulmages/bulmasetup)
+install(FILES ${CMAKE_BINARY_DIR}/bulmasetup/config.py DESTINATION share/bulmages/bulmasetup)
 
 
 file(GLOB py_files *.py *.qm)
