@@ -704,6 +704,8 @@
   <tabstop>mui_periodoactividad</tabstop>
   <tabstop>mui_finicialactividad</tabstop>
   <tabstop>mui_ffinalactividad</tabstop>
+  <tabstop>mui_hinicialactividad</tabstop>
+  <tabstop>mui_duracionactividad</tabstop>
   <tabstop>mui_idprofesor</tabstop>
   <tabstop>mui_lunesactividad</tabstop>
   <tabstop>mui_martesactividad</tabstop>
@@ -714,9 +716,9 @@
   <tabstop>mui_domingoactividad</tabstop>
   <tabstop>mui_aceptar</tabstop>
   <tabstop>mui_cancelar</tabstop>
-  <tabstop>mui_faltasAsistenciaList</tabstop>
   <tabstop>mui_comentariosactividad</tabstop>
   <tabstop>mui_alumnosList</tabstop>
+  <tabstop>mui_faltasAsistenciaList</tabstop>
  </tabstops>
  <resources>
   <include location="../../../bulmages.qrc"/>
