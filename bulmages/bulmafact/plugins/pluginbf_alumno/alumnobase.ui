@@ -675,11 +675,12 @@
   <tabstop>mui_telalumno</tabstop>
   <tabstop>mui_emailalumno</tabstop>
   <tabstop>mui_activoalumno</tabstop>
+  <tabstop>mui_idclase</tabstop>
   <tabstop>mui_aceptar</tabstop>
   <tabstop>mui_cancelar</tabstop>
-  <tabstop>mui_observalumno</tabstop>
   <tabstop>mui_cambiarimagen</tabstop>
   <tabstop>mui_borrarimagen</tabstop>
+  <tabstop>mui_observalumno</tabstop>
   <tabstop>mui_tutoresList</tabstop>
   <tabstop>mui_actividadesList</tabstop>
  </tabstops>
