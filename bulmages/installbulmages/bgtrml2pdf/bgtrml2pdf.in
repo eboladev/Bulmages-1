@@ -162,7 +162,7 @@ class _rml_doc(object):
 		#Permitimos includes
 		inc = self.dom.documentElement.getElementsByTagName('include')
 		for node in inc:
-			filename = node.getAttribute('src').encode('ascii')
+			filename = node.getAttribute('src').encode('utf-8')
 			dom1 = xml.dom.minidom.parse(filename)
 			chnod = dom1.documentElement.childNodes
 			for nnode in chnod:
