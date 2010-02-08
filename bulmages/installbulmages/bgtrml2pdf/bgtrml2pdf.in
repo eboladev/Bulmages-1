@@ -215,7 +215,7 @@ class _rml_canvas(object):
 	def _textual(self, node):
 		rc = ''
 		for n in node.childNodes:
-			if n.nodeType == n.ELEMENT_NODE:
+			if n.nodeType == node.ELEMENT_NODE:
 				if n.localName=='pageNumber':
 					rc += str(self.canvas.getPageNumber())
 			elif (n.nodeType == node.CDATA_SECTION_NODE):
@@ -441,9 +441,9 @@ class _rml_flowable(object):
 					self._textual(n)
 				rc += n.toxml()
 			elif (n.nodeType == node.CDATA_SECTION_NODE):
-				rc += n.toxml()
+				rc += n.data
 			elif (n.nodeType == node.TEXT_NODE):
-				rc += n.toxml()
+				rc += n.data
 		return rc.encode(encoding)
 
 	def _table(self, node):

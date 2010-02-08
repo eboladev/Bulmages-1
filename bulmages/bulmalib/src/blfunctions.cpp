@@ -134,24 +134,23 @@ QString XMLProtect ( const QString &string )
     int i;
     for ( i = 0; i < cadena.length(); i++ ) {
         if ( data->unicode() > 127 ) {
-            cadenatmp = cadenatmp + QString ( "<![CDATA[&#" ) + QString::number ( data->unicode() ) + QString ( ";]]>" );
+            cadenatmp = cadenatmp + QString ( "&#" ) + QString::number ( data->unicode() ) + QString ( ";" );
         } else if ( (data->unicode() == 10) | (data->unicode() == 13) ) {
             /// Cambiamos los Intros por el formato HTML.
             cadenatmp = cadenatmp + QString ( "\n" );
 
         } else if ( data->unicode() == 37 ) { // %
-            cadenatmp = cadenatmp + QString ( "<![CDATA[&#37;]]>" );
+            cadenatmp = cadenatmp + QString ( "&#37;" );
         } else if ( data->unicode() == 38 ) { // &
-            cadenatmp = cadenatmp + QString ( "<![CDATA[&#38;]]>" );
+            cadenatmp = cadenatmp + QString ( "&#38;" );
         } else if ( data->unicode() == 62 ) { // >
-            cadenatmp = cadenatmp + QString ( "<![CDATA[&#62;]]>" );
+            cadenatmp = cadenatmp + QString ( "&#62;" );
         } else if ( data->unicode() == 60 ) { // <
-            cadenatmp = cadenatmp + QString ( "<![CDATA[&#60;]]>" );
+            cadenatmp = cadenatmp + QString ( "&#60;" );
         } else if ( data->unicode() == 34 ) { // "
-            cadenatmp = cadenatmp + QString ( "<![CDATA[&#34;]]>" );
+            cadenatmp = cadenatmp + QString ( "&#34;" );
         } else if ( data->unicode() == 39 ) { // '
-            cadenatmp = cadenatmp + QString ( "<![CDATA[&#39;]]>" );
-
+            cadenatmp = cadenatmp + QString ( "&#39;" );
         } else {
             cadenatmp = cadenatmp + QString ( *data );
         } // end if

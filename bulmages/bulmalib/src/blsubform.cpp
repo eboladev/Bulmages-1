@@ -2350,7 +2350,7 @@ QString BlSubForm::imprimir()
     QString fitxersortidarml = "<tr>\n";
     for ( int h = 0; h < mui_listcolumnas->rowCount(); ++h ) {
         if ( mui_listcolumnas->item ( h, 0 ) ->checkState() == Qt::Checked ) {
-            fitxersortidarml += "    <td>" +  mui_listcolumnas->item ( h, 0 ) ->text() + "</td>\n";
+            fitxersortidarml += "    <td>" +  XMLProtect( mui_listcolumnas->item ( h, 0 ) ->text() ) + "</td>\n";
         } // end if
         barra.setValue ( barra.value() + 1 );
     } // end for
@@ -2364,7 +2364,7 @@ QString BlSubForm::imprimir()
                 if ( valor->dbFieldType() & BlDbField::DbNumeric )
                     fitxersortidarml += "    <td>" +  spanish.toString ( valor->text().toDouble(), 'f', 2 ) + "</td>\n";
                 else
-                    fitxersortidarml += "    <td>" +  valor->text() + "</td>\n";
+                    fitxersortidarml += "    <td>" +  XMLProtect( valor->text() ) + "</td>\n";
             } // end if
         } // end for
         fitxersortidarml += "</tr>\n";
