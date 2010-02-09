@@ -477,6 +477,8 @@ BEGIN
 	asientonuevo := TRUE;
 
 	-- Puede darse el caso de que el contable haya borrado el asiento. Y por eso comprobamos que realmente exista en la contabilidad.
+	-- Si idasientofactura es NULL entonces es porque es un INSERT de una nueva factura. En caso contrario
+	-- es un UPDATE de un registro.
 	IF NEW.idasientofactura IS NOT NULL THEN
 		query := 'SELECT idasiento FROM asiento WHERE idasiento =' || NEW.idasientofactura;
 		SELECT INTO bs * FROM dblink(query) AS t1 (idasiento integer);
@@ -495,7 +497,8 @@ BEGIN
 		query := 'UPDATE asiento SET descripcion =''' || concepto || ''', comentariosasiento = ''' || concepto || ''' WHERE idasiento = ' || NEW.idasientofactura;
 		PERFORM dblink_exec(query);
 	ELSE
-		-- Hacemos el update del stock del articulo
+		-- Crea el asiento en la contabilidad y recupera el numero de asiento para actualizar luego
+		-- el campo idasientofactura del registro factura.
 		query := 'INSERT INTO asiento (fecha, descripcion, comentariosasiento) VALUES ( ' || quote_literal(NEW.ffactura) || ', ''' || concepto || ''' , ''' || concepto || ''')';
 		PERFORM dblink_exec(query);
 		SELECT INTO bs * FROM dblink('SELECT max(idasiento) AS id FROM asiento') AS t1 (id integer);
@@ -513,19 +516,19 @@ BEGIN
 	-- Buscamos la cuenta de servicio o de venta
 	SELECT INTO cs MAX(idcuenta) AS id FROM bc_cuenta WHERE codigo LIKE '7000%';
 	IF NOT FOUND THEN
-		RAISE EXCEPTION 'No existe ls cuenta de Ventas 7000...';
+		RAISE EXCEPTION 'No existe la cuenta de Ventas 7000...';
 	END IF;
 	idctaserv := cs.id;
 
 	-- Buscamos la cuenta de IRPF
 	SELECT INTO cs MAX(idcuenta) AS id FROM bc_cuenta WHERE codigo LIKE '4730%';
 	IF NOT FOUND THEN
-		RAISE EXCEPTION 'No existe ls cuenta de IRPF 4730...';
+		RAISE EXCEPTION 'No existe la cuenta de IRPF 4730...';
 	END IF;
 	idctairpf := cs.id;
 
 
-	-- Buscamos el IRP que aplicamos
+	-- Buscamos el IRPF que aplicamos
 	SELECT INTO bs valor::NUMERIC / 100 as val FROM configuracion WHERE nombre ='IRPF';
 	IF FOUND THEN
 		porirpf := bs.val;
@@ -578,14 +581,11 @@ BEGIN
 		END IF;
 	END LOOP;
 
-
-
 	-- Creamos el apunte de cliente.
 	SELECT INTO bs SUM (cantlfactura*pvplfactura*(100-descuentolfactura)/100) AS base FROM lfactura WHERE idfactura = NEW.idfactura;
 	-- Hacemos la insercion del borrador del apunte.
 	query := 'INSERT INTO borrador (fecha, idcuenta, debe, idasiento, descripcion, conceptocontable) VALUES (''' || NEW.ffactura || ''', ' || idctacliente || ', ' || bs.base * totaldesc * (1-porirpf) + totaliva || ', '|| NEW.idasientofactura ||', ''' || concepto1 || ''' ,  ''Factura Cliente'')';
 	PERFORM dblink_exec(query);
-
 
 	-- Creamos el apunte de IRPF
 	IF porirpf <> 0 THEN
@@ -593,7 +593,6 @@ BEGIN
 		query := 'INSERT INTO borrador (fecha, idcuenta, debe, idasiento, descripcion, conceptocontable) VALUES (''' || NEW.ffactura || ''', ' || idctairpf || ', ' || bs.base * totaldesc * porirpf || ', '|| NEW.idasientofactura ||', ''' || concepto1 || ''' ,  ''Factura Cliente'')';
 		PERFORM dblink_exec(query);
 	END IF;
-
 
 	-- Creamos el apunte de servicio.
 	-- Hacemos la insercion del borrador del apunte.
@@ -681,8 +680,6 @@ BEGIN
 	concepto := '[A.Automatico] Factura Proveedor Num:' || NEW.numfacturap;
 	concepto1 := 'Factura Proveedor Num. ' || NEW.numfacturap;
 
-
-
 	-- Puede darse el caso de que el contable haya borrado el asiento. Y por eso comprobamos que realmente exista en la contabilidad.
 	asientonuevo := TRUE;
 	IF NEW.idasientofacturap IS NOT NULL THEN
@@ -734,7 +731,7 @@ BEGIN
 	idctairpf := cs.id;
 
 
-	-- Buscamos el IRP que aplicamos
+	-- Buscamos el IRPF que aplicamos
 	SELECT INTO bs (irpfproveedor / 100) as val FROM proveedor WHERE idproveedor = NEW.idproveedor;
 	IF bs.val IS NOT NULL THEN
 		porirpf := bs.val;
@@ -879,10 +876,9 @@ BEGIN
 
 	IF NEW.idcuentacliente IS NULL THEN
 		-- Buscamos el codigo de cuenta que vaya a corresponderle
-		SELECT INTO bs  max(codigo)::INTEGER as cod FROM bc_cuenta WHERE codigo LIKE '4300%' ;
-		IF FOUND THEN
-			codcta := bs.cod;
-			codcta := codcta +1;
+		SELECT INTO bs max(codigo)::INTEGER as cod FROM bc_cuenta WHERE codigo LIKE '4300%' ;
+		IF bs.cod IS NOT NULL THEN
+			codcta := bs.cod + 1;
 		ELSE
 			codcta := '4300001';
 		END IF;
@@ -972,11 +968,15 @@ BEGIN
 
 	IF NEW.idcuentaproveedor IS NULL THEN
 		-- Buscamos el codigo de cuenta que vaya a corresponderle
-		SELECT INTO bs  max(codigo) as cod FROM bc_cuenta WHERE codigo LIKE '4000%' ;
-		codcta := bs.cod;
-		codcta := codcta +1;
+		SELECT INTO bs max(codigo) as cod FROM bc_cuenta WHERE codigo LIKE '40000%' ;
+
+		IF bs.cod IS NOT NULL THEN
+			codcta := bs.cod + 1;
+		ELSE
+			codcta := '4000001';
+		END IF;
 	
-		-- Buscamos la cuenta padre (la 4300)
+		-- Buscamos la cuenta padre (la 4000)
 		SELECT INTO bs idcuenta FROM bc_cuenta WHERE codigo ='4000';
 		idpadre := bs.idcuenta;
 	
@@ -985,7 +985,7 @@ BEGIN
 		PERFORM dblink_exec(quer);
 	
 	
-		SELECT INTO bs  max(idcuenta) AS id FROM bc_cuenta;
+		SELECT INTO bs max(idcuenta) AS id FROM bc_cuenta;
 	
 		NEW.idcuentaproveedor = bs.id;
 	ELSE
@@ -1019,8 +1019,8 @@ DECLARE
 	query TEXT;
 BEGIN
 	PERFORM conectabulmacont();
-	-- Hacemos el update del stock del articulo
-	IF OLD.idasientobanco IS NOT NULL THEN
+	-- Hacemos el DELETE de la cuenta del banco.
+	IF OLD.idcuentabanco IS NOT NULL THEN
 		query := 'DELETE FROM cuenta WHERE idcuenta = ' || OLD.idcuentabanco;
 		PERFORM dblink_exec(query);
 
@@ -1057,27 +1057,26 @@ BEGIN
 	-- Cogemos el nombre de la cuenta.
 	descripcion := quote_literal(NEW.nombanco);
 
-	-- Hacemos el update del stock del articulo
+	-- Hacemos el INSERT o UPDATE de la cuenta de banco.
 	IF NEW.idcuentabanco IS NULL THEN
-		-- Buscamos el codigo de cuenta que vaya a corresponderle
-		SELECT INTO bs  max(codigo)::INTEGER as cod FROM bc_cuenta WHERE codigo LIKE '5730%' ;
-		IF FOUND THEN
-			codcta := bs.cod;
-			codcta := codcta +1;
+		-- Buscamos el codigo de cuenta que vaya a corresponderle.
+		SELECT INTO bs max(codigo)::INTEGER as cod FROM bc_cuenta WHERE codigo LIKE '5730%' ;
+		IF bs.cod IS NOT NULL THEN
+			codcta := bs.cod + 1;
 		ELSE
 			codcta := '5730001';
 		END IF;
 	
-		-- Buscamos la cuenta padre (la 4300)
+		-- Buscamos la cuenta padre (la 573)
 		SELECT INTO bs idcuenta, tipocuenta FROM bc_cuenta WHERE codigo ='573';
 		idpadre := bs.idcuenta;
 		tipocuenta1 := bs.tipocuenta;
 	
 		-- Creamos el Query de insercion
-		quer := 'INSERT INTO cuenta (descripcion, padre, codigo, tipocuenta) VALUES ( ' || descripcion ||', ' || idpadre || ', ''' || codcta || ''' , '|| tipocuenta1 || ')';
+		quer := 'INSERT INTO cuenta (descripcion, padre, codigo, tipocuenta) VALUES ( ' || descripcion ||', ' || idpadre || ', ' || codcta || ' , '|| tipocuenta1 || ')';
 		PERFORM dblink_exec(quer);
 	
-		SELECT INTO bs  max(idcuenta) AS id FROM bc_cuenta;
+		SELECT INTO bs max(idcuenta) AS id FROM bc_cuenta;
 		NEW.idcuentabanco := bs.id;
 	ELSE
 		quer := 'UPDATE cuenta SET descripcion =' || descripcion || ' WHERE idcuenta =' || NEW.idcuentabanco;
@@ -1151,8 +1150,7 @@ BEGIN
 		-- Buscamos el codigo de cuenta que vaya a corresponderle
 		SELECT INTO cs  max(codigo)::INTEGER as cod FROM bc_cuenta WHERE codigo LIKE '5700%' ;
 		IF cs.cod IS NOT NULL THEN
-			codcta := cs.cod;
-			codcta := codcta +1;
+			codcta := cs.cod + 1;
 		ELSE
 			codcta := '5700001';
 		END IF;
@@ -1161,8 +1159,6 @@ BEGIN
 		SELECT INTO bs idcuenta, tipocuenta FROM bc_cuenta WHERE codigo ='570';
 		idpadre := bs.idcuenta;
 		tipocuenta1 := bs.tipocuenta;
-	
-
 	
 		-- Creamos el Query de insercion
 		quer := 'INSERT INTO cuenta (descripcion, padre, codigo, tipocuenta) VALUES ( ' || descripcion ||', ' || idpadre || ', ''' || codcta || ''' , '|| tipocuenta1 || ')';

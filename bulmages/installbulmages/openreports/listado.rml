@@ -46,7 +46,7 @@
 		<lineStyle kind="OUTLINE" colorName="black"  start="0,0" stop="-1,-1"/>
 		<blockFont name="Helvetica-Bold" size="10" start="0,0" stop="-1,0"/>
 		<blockFont name="Helvetica" size="10" start="0,1" stop="-1,-1"/>
-		<blockFont name="Helvetica" size="8" start="1,1" stop="1,-1"/>
+		<blockFont name="Helvetica" size="8" start="0,0" stop="0,-1"/>
 		<blockValign value="TOP" start="0,0" stop="-1,-1"/>
 	</blockTableStyle>
 </stylesheet>
