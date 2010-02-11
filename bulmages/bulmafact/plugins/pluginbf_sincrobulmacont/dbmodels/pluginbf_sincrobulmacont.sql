@@ -107,11 +107,25 @@ BEGIN
 	IF NOT FOUND THEN
 		ALTER TABLE cobro ADD COLUMN idasientocobro INTEGER;
 	END IF;
+
 	-- Creamos el espacio para almacenar el identificador de cuenta que corresponde al pago
 	SELECT INTO bs * FROM pg_attribute WHERE attname='idasientopago';
 	IF NOT FOUND THEN
 		ALTER TABLE pago ADD COLUMN idasientopago INTEGER;
 	END IF;
+
+	-- Creamos el espacio para almacenar el identificador de cuenta que corresponde a la VENTA familia.
+	SELECT INTO bs * FROM pg_attribute WHERE attname='idcuentaventafamilia';
+	IF NOT FOUND THEN
+		ALTER TABLE familia ADD COLUMN idcuentaventafamilia INTEGER;
+	END IF;
+
+	-- Creamos el espacio para almacenar el identificador de cuenta que corresponde a la COMPRA familia.
+	SELECT INTO bs * FROM pg_attribute WHERE attname='idcuentacomprafamilia';
+	IF NOT FOUND THEN
+		ALTER TABLE familia ADD COLUMN idcuentacomprafamilia INTEGER;
+	END IF;
+
 
 	RETURN 0;
 END;
@@ -420,11 +434,11 @@ BEGIN
 	IF OLD.idasientofactura IS NOT NULL THEN
 		query := 'DELETE FROM registroiva WHERE idborrador IN (SELECT idborrador FROM borrador WHERE idasiento = ' || OLD.idasientofactura || ')';
 		PERFORM dblink_exec(query);
-		query := 'DELETE FROM apunte WHERE idasiento= ' || OLD.idasientofactura;
+		query := 'DELETE FROM apunte WHERE idasiento = ' || OLD.idasientofactura;
 		PERFORM dblink_exec(query);
-		query := 'DELETE FROM  borrador WHERE idasiento= ' || OLD.idasientofactura ;
+		query := 'DELETE FROM borrador WHERE idasiento = ' || OLD.idasientofactura ;
 		PERFORM dblink_exec(query);
-		query := 'DELETE FROM  asiento WHERE idasiento = ' || OLD.idasientofactura ;
+		query := 'DELETE FROM asiento WHERE idasiento = ' || OLD.idasientofactura ;
 		PERFORM dblink_exec(query);
 	END IF;
 
@@ -450,6 +464,7 @@ DECLARE
 	cs RECORD;
 	client RECORD;
 	ctaiva RECORD;
+	ctareq RECORD;
 	cta TEXT;
 	idcta TEXT;
 	idctacliente TEXT;
@@ -465,15 +480,20 @@ DECLARE
 	concepto TEXT;
 	concepto1 TEXT;
 	asientonuevo BOOLEAN;
+
 BEGIN
 	-- conectamos con contabilidad, etc
 	PERFORM conectabulmacont();
+	-- Es necesario controlar la transaccion que se hace en la base de datos enlazada porque no actua
+	-- dentro de la transaccion de esta funcion y si hay un error no desaria los cambios provocando problemas
+	-- de integridad de los datos.
+	-- Hay que hacer un ROLLBACK WORK explicito ANTES de cada RAISE EXCEPTION.
+	PERFORM dblink_exec('BEGIN WORK;');
 	totaliva := 0;
 
 	concepto := '[A. Automatico] Factura Cliente Num.' || NEW.numfactura;
 	concepto1 := 'Factura Cliente Num. ' || NEW.numfactura;
 
-	-- Hacemos el update del stock del articulo
 	asientonuevo := TRUE;
 
 	-- Puede darse el caso de que el contable haya borrado el asiento. Y por eso comprobamos que realmente exista en la contabilidad.
@@ -509,80 +529,98 @@ BEGIN
 	-- Buscamos el cliente y su cuenta.
 	SELECT INTO client idcuentacliente FROM cliente WHERE idcliente=NEW.idcliente;
 	IF NOT FOUND THEN
-		RAISE EXCEPTION 'El cliente no tiene cuenta asociada en la contabilidad';
+		PERFORM dblink_exec('ROLLBACK WORK;');
+		RAISE EXCEPTION 'El cliente no tiene cuenta asociada en la contabilidad.';
 	END IF;
 	idctacliente := client.idcuentacliente;
 
 	-- Buscamos la cuenta de servicio o de venta
 	SELECT INTO cs MAX(idcuenta) AS id FROM bc_cuenta WHERE codigo LIKE '7000%';
 	IF NOT FOUND THEN
+		PERFORM dblink_exec('ROLLBACK WORK;');
 		RAISE EXCEPTION 'No existe la cuenta de Ventas 7000...';
 	END IF;
 	idctaserv := cs.id;
 
+
 	-- Buscamos la cuenta de IRPF
 	SELECT INTO cs MAX(idcuenta) AS id FROM bc_cuenta WHERE codigo LIKE '4730%';
-	IF NOT FOUND THEN
-		RAISE EXCEPTION 'No existe la cuenta de IRPF 4730...';
+	IF cs.id IS NULL THEN
+	      PERFORM dblink_exec('ROLLBACK WORK;');
+	      RAISE EXCEPTION 'No existe la cuenta de IRPF 4730...';
+	ELSE
+	      idctairpf := cs.id;
 	END IF;
-	idctairpf := cs.id;
-
 
 	-- Buscamos el IRPF que aplicamos
 	SELECT INTO bs valor::NUMERIC / 100 as val FROM configuracion WHERE nombre ='IRPF';
-	IF FOUND THEN
-		porirpf := bs.val;
-	ELSE
+	IF bs.val IS NULL THEN
 		porirpf := 0;
+	ELSE
+		porirpf := bs.val;
 	END IF;
 
 	-- Buscamos los decuentos generales a aplicar.
 	SELECT INTO bs 1 - SUM(proporciondfactura) / 100 AS tdesc FROM dfactura WHERE idfactura = NEW.idfactura;
-	IF FOUND THEN
+	IF bs.tdesc IS NULL THEN
+		totaldesc := 1;
+	ELSE
 		totaldesc := bs.tdesc;
 	END IF;
-	totaldesc := 1;
 
-	-- Creamos los apuntes de IVA.
-	FOR  bs IN SELECT SUM (cantlfactura*pvplfactura*(100-descuentolfactura)/100) AS base, round(ivalfactura) AS iva, ivalfactura, reqeqlfactura FROM lfactura  WHERE idfactura = NEW.idfactura GROUP BY ivalfactura, reqeqlfactura LOOP
-		IF bs.iva <> 0 THEN
-			varaux := '4770%' || bs.iva;
-			-- Hacemos la busqueda de la cuenta de IVA correspondiente.
-			SELECT INTO ctaiva * FROM bc_cuenta WHERE codigo LIKE varaux;
-			IF NOT FOUND THEN
-				RAISE EXCEPTION 'No existe una cuenta de IVA para el tipo de IVA %', bs.iva;
-			END IF;
-			cta := ctaiva.codigo;
-			idcta := ctaiva.idcuenta;
 
-			-- Hacemos la insercion del borrador del apunte.
-			query := 'INSERT INTO borrador (fecha, idcuenta, haber, idasiento, descripcion, conceptocontable) VALUES (''' || NEW.ffactura || ''', ' || idcta || ', ' || bs.base * totaldesc * bs.iva / 100 || ', '|| NEW.idasientofactura ||', ''' || concepto1 || ''' ,  ''Factura Cliente'')';
-			PERFORM dblink_exec(query);
+	-- IVA for para diferentes tipos de IVA
+	FOR bs IN SELECT SUM (cantlfactura * pvplfactura * (100 - descuentolfactura) / 100) AS base, round(ivalfactura) AS iva, ivalfactura FROM lfactura WHERE idfactura = NEW.idfactura GROUP BY ivalfactura LOOP
 
-			-- Vamos calculando el total de IVA
-			totaliva := totaliva + bs.base * totaldesc * bs.iva / 100;
-		END IF;
-		IF bs.reqeqlfactura <> 0 THEN
-			varaux := '47701%' || bs.iva;
-			-- Hacemos la busqueda de la cuenta de Recargo correspondiente.
-			SELECT INTO ctaiva * FROM bc_cuenta WHERE codigo LIKE varaux;
-			IF NOT FOUND THEN
-				RAISE EXCEPTION 'No existe una cuenta de Recargo para el tipo de Recargo %', bs.reqeqlfactura;
-			END IF;
-			cta := ctaiva.codigo;
-			idcta := ctaiva.idcuenta;
+	      IF bs.iva <> 0 THEN
+		      varaux := '4770%' || bs.iva;
+		      -- Hacemos la busqueda de la cuenta de IVA correspondiente.
+		      SELECT INTO ctaiva * FROM bc_cuenta WHERE codigo LIKE varaux;
+		      IF NOT FOUND THEN
+			      PERFORM dblink_exec('ROLLBACK WORK;');
+			      RAISE EXCEPTION 'No existe una cuenta de IVA para el tipo de IVA %', bs.iva;
+		      END IF;
+		      cta := ctaiva.codigo;
+		      idcta := ctaiva.idcuenta;
 
-			-- Hacemos la insercion del borrador del apunte.
-			query := 'INSERT INTO borrador (fecha, idcuenta, haber, idasiento, descripcion, conceptocontable) VALUES (''' || NEW.ffactura || ''', ' || idcta || ', ' || bs.base * totaldesc * bs.reqeqlfactura / 100 || ', '|| NEW.idasientofactura ||', ''' || concepto1 || ''' ,  ''Factura Cliente'')';
-			PERFORM dblink_exec(query);
+		      -- Hacemos la insercion del borrador del apunte.
+		      query := 'INSERT INTO borrador (fecha, idcuenta, haber, idasiento, descripcion, conceptocontable) VALUES (''' || NEW.ffactura || ''', ' || idcta || ', ' || bs.base * totaldesc * bs.iva / 100 || ', '|| NEW.idasientofactura ||', ''' || concepto1 || ''' ,  ''Factura Cliente'')';
+		      PERFORM dblink_exec(query);
 
-			-- Vamos calculando el total de IVA
-			totaliva := totaliva + bs.base * totaldesc * bs.reqeqlfactura / 100;
-		END IF;
+		      -- Vamos calculando el total de IVA
+		      totaliva := totaliva + bs.base * totaldesc * bs.iva / 100;
+	      END IF;
+
 	END LOOP;
 
+	-- Recargo de equivalencia
+	FOR bs IN SELECT SUM (cantlfactura * pvplfactura * (100 - descuentolfactura) / 100) AS base, round(reqeqlfactura) as req, reqeqlfactura FROM lfactura WHERE idfactura = NEW.idfactura GROUP BY reqeqlfactura LOOP
+
+	      IF bs.reqeqlfactura <> 0 THEN
+		      varaux := '47710%' || bs.req;
+
+		      -- Hacemos la busqueda de la cuenta de Recargo correspondiente.
+		      SELECT INTO ctareq * FROM bc_cuenta WHERE codigo LIKE varaux;
+		      IF NOT FOUND THEN
+			      PERFORM dblink_exec('ROLLBACK WORK;');
+			      RAISE EXCEPTION 'No existe una cuenta de Recargo para el tipo de Recargo %', bs.reqeqlfactura;
+		      END IF;
+		      cta := ctareq.codigo;
+		      idcta := ctareq.idcuenta;
+
+		      -- Hacemos la insercion del borrador del apunte.
+		      query := 'INSERT INTO borrador (fecha, idcuenta, haber, idasiento, descripcion, conceptocontable) VALUES (''' || NEW.ffactura || ''', ' || idcta || ', ' || bs.base * totaldesc * bs.reqeqlfactura / 100 || ', '|| NEW.idasientofactura ||', ''' || concepto1 || ''' ,  ''Factura Cliente'')';
+		      PERFORM dblink_exec(query);
+
+		      -- Vamos calculando el total de IVA
+		      totaliva := totaliva + bs.base * totaldesc * bs.reqeqlfactura / 100;
+	      END IF;
+
+	END LOOP;
+
+
 	-- Creamos el apunte de cliente.
-	SELECT INTO bs SUM (cantlfactura*pvplfactura*(100-descuentolfactura)/100) AS base FROM lfactura WHERE idfactura = NEW.idfactura;
+	SELECT INTO bs SUM (cantlfactura * pvplfactura * (100 - descuentolfactura) / 100) AS base FROM lfactura WHERE idfactura = NEW.idfactura;
 	-- Hacemos la insercion del borrador del apunte.
 	query := 'INSERT INTO borrador (fecha, idcuenta, debe, idasiento, descripcion, conceptocontable) VALUES (''' || NEW.ffactura || ''', ' || idctacliente || ', ' || bs.base * totaldesc * (1-porirpf) + totaliva || ', '|| NEW.idasientofactura ||', ''' || concepto1 || ''' ,  ''Factura Cliente'')';
 	PERFORM dblink_exec(query);
@@ -594,12 +632,15 @@ BEGIN
 		PERFORM dblink_exec(query);
 	END IF;
 
-	-- Creamos el apunte de servicio.
-	-- Hacemos la insercion del borrador del apunte.
-	query := 'INSERT INTO borrador (fecha, idcuenta, haber, idasiento, descripcion, conceptocontable) VALUES (''' || NEW.ffactura || ''', ' || idctaserv || ', ' || bs.base * totaldesc || ', '|| NEW.idasientofactura ||', ''' || concepto1 || ''' ,  ''Factura Cliente'')';
-	PERFORM dblink_exec(query);
+	-- Hacemos la insercion del borrador del apunte segun familia.
+	FOR cs IN SELECT familia.idcuentaventafamilia, SUM (cantlfactura * pvplfactura * (100 - descuentolfactura) / 100) AS base FROM familia LEFT JOIN articulo ON familia.idfamilia = articulo.idfamilia LEFT JOIN lfactura ON lfactura.idarticulo = articulo.idarticulo WHERE lfactura.idfactura = NEW.idfactura GROUP BY familia.idcuentaventafamilia LOOP
 
+	    query := 'INSERT INTO borrador (fecha, idcuenta, haber, idasiento, descripcion, conceptocontable) VALUES (''' || NEW.ffactura || ''', ' || cs.idcuentaventafamilia || ', ' || cs.base * totaldesc || ', '|| NEW.idasientofactura ||', ''' || concepto1 || ''' ,  ''Factura Cliente'')';
+	    PERFORM dblink_exec(query);
 
+	END LOOP;
+
+	PERFORM dblink_exec('COMMIT WORK;');
 	PERFORM dblink_disconnect();
 	RETURN NEW;
 END;
@@ -1184,6 +1225,289 @@ CREATE TRIGGER syncbulmacontalmacentriggeru
     EXECUTE PROCEDURE syncbulmacontalmacenu();
 
 \echo "Creado el trigger que al modificar o insertar un almacen en la facturacion mete el correspondiente asiento en la contabilidad"
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+-- =================================================================
+--           TRATO DE FAMILIAS
+-- =================================================================
+
+SELECT drop_if_exists_proc ('syncbulmacontfamiliad','');
+CREATE FUNCTION syncbulmacontfamiliad () RETURNS "trigger"
+AS $$
+DECLARE
+	query TEXT;
+BEGIN
+	PERFORM conectabulmacont();
+	-- Hacemos el DELETE de la cuenta de VENTA familia.
+	IF OLD.idcuentaventafamilia IS NOT NULL THEN
+		query := 'DELETE FROM cuenta WHERE idcuenta = ' || OLD.idcuentaventafamilia;
+		PERFORM dblink_exec(query);
+	END IF;
+
+	-- Hacemos el DELETE de la cuenta de COMPRA familia.
+	IF OLD.idcuentacomprafamilia IS NOT NULL THEN
+		query := 'DELETE FROM cuenta WHERE idcuenta = ' || OLD.idcuentacomprafamilia;
+		PERFORM dblink_exec(query);
+	END IF;
+
+
+	PERFORM dblink_disconnect();
+	RETURN OLD;
+END;
+$$ LANGUAGE plpgsql;
+
+
+CREATE TRIGGER syncbulmacontfamiliatriggerd
+    AFTER DELETE ON familia
+    FOR EACH ROW
+    EXECUTE PROCEDURE syncbulmacontfamiliad();
+\echo "Creado el trigger que al borrar una familia borra la respectiva cuenta en la contabilidad"
+
+
+
+
+--si se crea una familia hay que mirar si es de servicios o producto para saber bajo que cuenta padre hay que crearla.
+--si se actualiza y se ha cambiado de servicio a producto o al revés habrá que hacer un delete de la cuenta
+-- padre antigua y un insert en la cuenta padre nueva.
+--
+-- Las cuentas de familias tienen que gestionar las cuentas de VENTA y de COMPRA.
+--
+--hay que cambiar como las facturas se contabilizan para separar los servicios y los productos en su cuenta adecuada.
+
+
+
+
+SELECT drop_if_exists_proc ('syncbulmacontfamiliau','');
+CREATE FUNCTION syncbulmacontfamiliau () RETURNS "trigger"
+AS $$
+DECLARE
+	cs RECORD;
+	bs RECORD;
+	codcta INTEGER;
+	quer TEXT;
+	idpadre INTEGER;
+	descripcion TEXT;
+	tipocuenta1 INTEGER;
+	query TEXT;
+BEGIN
+	-- conectamos con contabilidad, etc
+	PERFORM conectabulmacont();
+
+	-- Cogemos el nombre de la cuenta.
+	descripcion := quote_literal(NEW.nombrefamilia);
+
+	IF NEW.idcuentaventafamilia IS NULL THEN
+
+		-- Discrimina entre producto o servicio para hacer un INSERT.
+		IF NEW.productofisicofamilia IS TRUE THEN
+		    -- Producto VENTA
+			-- Buscamos el codigo de cuenta que vaya a corresponderle.
+			SELECT INTO cs max(codigo)::INTEGER as cod FROM bc_cuenta WHERE codigo LIKE '7000%';
+			IF cs.cod IS NOT NULL THEN
+				codcta := cs.cod + 1;
+			ELSE
+				codcta := '7000001';
+			END IF;
+
+			-- Buscamos la cuenta padre (la 700)
+			SELECT INTO bs idcuenta, tipocuenta FROM bc_cuenta WHERE codigo ='700';
+			idpadre := bs.idcuenta;
+			tipocuenta1 := bs.tipocuenta;
+
+			-- Creamos el Query de insercion
+			quer := 'INSERT INTO cuenta (descripcion, padre, codigo, tipocuenta) VALUES ( ' || descripcion ||', ' || idpadre || ', ''' || codcta || ''' , '|| tipocuenta1 || ')';
+			PERFORM dblink_exec(quer);
+
+			SELECT INTO bs max(idcuenta) AS id FROM bc_cuenta;
+			NEW.idcuentaventafamilia := bs.id;
+
+		    -- Producto COMPRA
+			-- Buscamos el codigo de cuenta que vaya a corresponderle.
+			SELECT INTO cs max(codigo)::INTEGER as cod FROM bc_cuenta WHERE codigo LIKE '6000%';
+			IF cs.cod IS NOT NULL THEN
+				codcta := cs.cod + 1;
+			ELSE
+				codcta := '6000001';
+			END IF;
+
+			-- Buscamos la cuenta padre (la 700)
+			SELECT INTO bs idcuenta, tipocuenta FROM bc_cuenta WHERE codigo ='600';
+			idpadre := bs.idcuenta;
+			tipocuenta1 := bs.tipocuenta;
+
+			-- Creamos el Query de insercion
+			quer := 'INSERT INTO cuenta (descripcion, padre, codigo, tipocuenta) VALUES ( ' || descripcion ||', ' || idpadre || ', ''' || codcta || ''' , '|| tipocuenta1 || ')';
+			PERFORM dblink_exec(quer);
+
+			SELECT INTO bs max(idcuenta) AS id FROM bc_cuenta;
+			NEW.idcuentacomprafamilia := bs.id;
+
+		ELSE
+		    -- Servicio VENTA
+			-- Buscamos el codigo de cuenta que vaya a corresponderle.
+			SELECT INTO cs max(codigo)::INTEGER as cod FROM bc_cuenta WHERE codigo LIKE '7050%';
+			IF cs.cod IS NOT NULL THEN
+				codcta := cs.cod + 1;
+			ELSE
+				codcta := '7050001';
+			END IF;
+
+			-- Buscamos la cuenta padre (la 700)
+			SELECT INTO bs idcuenta, tipocuenta FROM bc_cuenta WHERE codigo ='705';
+			idpadre := bs.idcuenta;
+			tipocuenta1 := bs.tipocuenta;
+
+			-- Creamos el Query de insercion
+			quer := 'INSERT INTO cuenta (descripcion, padre, codigo, tipocuenta) VALUES ( ' || descripcion ||', ' || idpadre || ', ''' || codcta || ''' , '|| tipocuenta1 || ')';
+			PERFORM dblink_exec(quer);
+
+			SELECT INTO bs max(idcuenta) AS id FROM bc_cuenta;
+			NEW.idcuentaventafamilia := bs.id;
+
+		    -- Servicio COMPRA. No se crea porque cada caso es diferente.
+
+		END IF;
+
+	ELSE
+		-- Al hacer el UPDATE hay que ve que no se haya cambiado de PRODUCTO a SERVICIO y viceversa
+		-- o actuar en consecuencia.
+		IF NEW.productofisicofamilia = OLD.productofisicofamilia THEN
+		    -- No se ha cambiado. Solo actualiza datos.
+		    quer := 'UPDATE cuenta SET descripcion =' || descripcion || ' WHERE idcuenta =' || NEW.idcuentaventafamilia;
+		    PERFORM dblink_exec(quer);
+
+		    quer := 'UPDATE cuenta SET descripcion =' || descripcion || ' WHERE idcuenta =' || NEW.idcuentacomprafamilia;
+		    PERFORM dblink_exec(quer);
+
+		ELSE
+		    -- Se ha cambiado, por tanto hay que borrar la cuenta de la rama actual y crearlo
+		    -- en la nueva rama.
+		    query := 'DELETE FROM cuenta WHERE idcuenta = ' || OLD.idcuentaventafamilia;
+		    PERFORM dblink_exec(query);
+
+		    query := 'DELETE FROM cuenta WHERE idcuenta = ' || OLD.idcuentacomprafamilia;
+		    PERFORM dblink_exec(query);
+
+		    -- Discrimina entre producto o servicio para hacer un INSERT.
+		    IF NEW.productofisicofamilia IS TRUE THEN
+			-- Producto VENTA
+			    -- Buscamos el codigo de cuenta que vaya a corresponderle.
+			    SELECT INTO cs max(codigo)::INTEGER as cod FROM bc_cuenta WHERE codigo LIKE '7000%';
+			    IF cs.cod IS NOT NULL THEN
+				    codcta := cs.cod + 1;
+			    ELSE
+				    codcta := '7000001';
+			    END IF;
+
+			    -- Buscamos la cuenta padre (la 700)
+			    SELECT INTO bs idcuenta, tipocuenta FROM bc_cuenta WHERE codigo ='700';
+			    idpadre := bs.idcuenta;
+			    tipocuenta1 := bs.tipocuenta;
+
+			    -- Creamos el Query de insercion
+			    quer := 'INSERT INTO cuenta (descripcion, padre, codigo, tipocuenta) VALUES ( ' || descripcion ||', ' || idpadre || ', ''' || codcta || ''' , '|| tipocuenta1 || ')';
+			    PERFORM dblink_exec(quer);
+
+			    SELECT INTO bs max(idcuenta) AS id FROM bc_cuenta;
+			    NEW.idcuentaventafamilia := bs.id;
+
+			-- Producto COMPRA
+			    -- Buscamos el codigo de cuenta que vaya a corresponderle.
+			    SELECT INTO cs max(codigo)::INTEGER as cod FROM bc_cuenta WHERE codigo LIKE '6000%';
+			    IF cs.cod IS NOT NULL THEN
+				    codcta := cs.cod + 1;
+			    ELSE
+				    codcta := '6000001';
+			    END IF;
+
+			    -- Buscamos la cuenta padre (la 700)
+			    SELECT INTO bs idcuenta, tipocuenta FROM bc_cuenta WHERE codigo ='600';
+			    idpadre := bs.idcuenta;
+			    tipocuenta1 := bs.tipocuenta;
+
+			    -- Creamos el Query de insercion
+			    quer := 'INSERT INTO cuenta (descripcion, padre, codigo, tipocuenta) VALUES ( ' || descripcion ||', ' || idpadre || ', ''' || codcta || ''' , '|| tipocuenta1 || ')';
+			    PERFORM dblink_exec(quer);
+
+			    SELECT INTO bs max(idcuenta) AS id FROM bc_cuenta;
+			    NEW.idcuentacomprafamilia := bs.id;
+
+		    ELSE
+			-- Servicio VENTA
+			    -- Buscamos el codigo de cuenta que vaya a corresponderle.
+			    SELECT INTO cs max(codigo)::INTEGER as cod FROM bc_cuenta WHERE codigo LIKE '7050%';
+			    IF cs.cod IS NOT NULL THEN
+				    codcta := cs.cod + 1;
+			    ELSE
+				    codcta := '7050001';
+			    END IF;
+
+			    -- Buscamos la cuenta padre (la 700)
+			    SELECT INTO bs idcuenta, tipocuenta FROM bc_cuenta WHERE codigo ='705';
+			    idpadre := bs.idcuenta;
+			    tipocuenta1 := bs.tipocuenta;
+
+			    -- Creamos el Query de insercion
+			    quer := 'INSERT INTO cuenta (descripcion, padre, codigo, tipocuenta) VALUES ( ' || descripcion ||', ' || idpadre || ', ''' || codcta || ''' , '|| tipocuenta1 || ')';
+			    PERFORM dblink_exec(quer);
+
+			    SELECT INTO bs max(idcuenta) AS id FROM bc_cuenta;
+			    NEW.idcuentaventafamilia := bs.id;
+
+			-- Servicio COMPRA. No se crea porque cada caso es diferente.
+
+		    END IF;
+
+		END IF;
+
+
+	END IF;
+
+
+	PERFORM dblink_disconnect();
+	RETURN NEW;
+END;
+$$ LANGUAGE plpgsql;
+
+
+CREATE TRIGGER syncbulmacontfamiliatriggeru
+    BEFORE INSERT OR UPDATE ON familia
+    FOR EACH ROW
+    EXECUTE PROCEDURE syncbulmacontfamiliau();
+
+\echo "Creado el trigger que al modificar o insertar una familia en la facturacion mete el correspondiente asiento en la contabilidad"
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 -- ==============================================================================
