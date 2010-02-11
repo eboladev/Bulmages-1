@@ -3,20 +3,16 @@
 ###########################################
 #pluginbf_cliente
 
-set (plugin pluginbf_cliente)
+SET (plugin pluginbf_cliente)
 ADD_DEFINITIONS(-D${plugin})
-set (docs README.es)
-
+SET (docs README.es)
 
 configure_file( ${CMAKE_CURRENT_SOURCE_DIR}/css/${plugin}_es_ES.css.in ${plugin}_es_ES.css @ONLY)
 configure_file( ${CMAKE_CURRENT_SOURCE_DIR}/css/${plugin}_ca_ES.css.in ${plugin}_ca_ES.css @ONLY)
 
-
-
 file(GLOB plugin_SRC *.c *.cpp *.cxx)
 file(GLOB plugin_MOCS *.hpp *.h)
 file(GLOB plugin_UIS *.ui)
-
 
 # Exclude files with no QObject macro.
 file(GLOB plugin_NO_MOCS pdefs.h)
@@ -25,7 +21,7 @@ list(REMOVE_ITEM plugin_MOCS ${plugin_NO_MOCS})
 set(QT_USE_QTASSISTANT true)
 set(QT_USE_QTXML true)
 
-INCLUDE(   ${QT_USE_FILE}   )
+INCLUDE(${QT_USE_FILE})
 
 include_directories(
     ${QT_INCLUDE_DIR}
@@ -96,10 +92,10 @@ endforeach(dfile in ${docs})
 add_dependencies(${plugin} bulmafact bulmalib)
 
 
-FILE(READ ${CMAKE_BINARY_DIR}/${plugin}_es_ES.css VAR_CSS_es_ES)
+FILE(READ ${CMAKE_BINARY_DIR}/bulmafact/plugins/${plugin}/${plugin}_es_ES.css VAR_CSS_es_ES)
 FILE(APPEND ${CMAKE_BINARY_DIR}/css/bulmafact_es_ES.css "${VAR_CSS_es_ES}" )
 
-FILE(READ ${CMAKE_BINARY_DIR}/${plugin}_ca_ES.css VAR_CSS_ca_ES)
+FILE(READ ${CMAKE_BINARY_DIR}/bulmafact/plugins/${plugin}/${plugin}_ca_ES.css VAR_CSS_ca_ES)
 FILE(APPEND ${CMAKE_BINARY_DIR}/css/bulmafact_ca_ES.css "${VAR_CSS_ca_ES}" )
 
 
