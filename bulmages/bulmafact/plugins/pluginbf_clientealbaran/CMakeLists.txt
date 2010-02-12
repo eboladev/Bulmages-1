@@ -19,8 +19,8 @@ list(REMOVE_ITEM plugin_MOCS ${plugin_NO_MOCS})
 set(QT_USE_QTASSISTANT true)
 set(QT_USE_QTXML true)
 
-configure_file( ${CMAKE_CURRENT_SOURCE_DIR}/css/${plugin}_es_ES.css.in ${plugin}_es_ES.css @ONLY)
-configure_file( ${CMAKE_CURRENT_SOURCE_DIR}/css/${plugin}_ca_ES.css.in ${plugin}_ca_ES.css @ONLY)
+configure_file( ${CMAKE_CURRENT_SOURCE_DIR}/css/${plugin}_es_ES.css.in ${CMAKE_BINARY_DIR}/bulmafact/plugins/${plugin}/${plugin}_es_ES.css @ONLY)
+configure_file( ${CMAKE_CURRENT_SOURCE_DIR}/css/${plugin}_ca_ES.css.in ${CMAKE_BINARY_DIR}/bulmafact/plugins/${plugin}/${plugin}_ca_ES.css @ONLY)
 
 INCLUDE(${QT_USE_FILE})
 
