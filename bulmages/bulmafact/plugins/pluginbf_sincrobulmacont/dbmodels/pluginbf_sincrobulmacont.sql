@@ -1329,6 +1329,12 @@ DECLARE
 BEGIN
 	-- conectamos con contabilidad, etc
 	PERFORM conectabulmacont();
+	-- Es necesario controlar la transaccion que se hace en la base de datos enlazada porque no actua
+	-- dentro de la transaccion de esta funcion y si hay un error no desaria los cambios provocando problemas
+	-- de integridad de los datos.
+	-- Hay que hacer un ROLLBACK WORK explicito ANTES de cada RAISE EXCEPTION.
+	PERFORM dblink_exec('bulmafact2cont', 'BEGIN WORK;');
+
 
 	-- Cogemos el nombre de la cuenta.
 	descripcion := quote_literal(NEW.nombrefamilia);
@@ -1500,8 +1506,6 @@ BEGIN
 
 	END IF;
 
-
-	PERFORM dblink_disconnect('bulmafact2cont');
 	RETURN NEW;
 END;
 $$ LANGUAGE plpgsql;
@@ -1513,6 +1517,27 @@ CREATE TRIGGER syncbulmacontfamiliatriggeru
     EXECUTE PROCEDURE syncbulmacontfamiliau();
 
 \echo "Creado el trigger que al modificar o insertar una familia en la facturacion mete el correspondiente asiento en la contabilidad"
+
+
+SELECT drop_if_exists_proc ('syncbulmacontfamiliaup','');
+CREATE FUNCTION syncbulmacontfamiliaup () RETURNS "trigger"
+AS $$
+DECLARE
+BEGIN
+
+      -- Hace un COMMIT de la conexion dblink si todo ha ido bien.
+      PERFORM dblink_exec('bulmafact2cont', 'COMMIT WORK;');
+      PERFORM dblink_disconnect('bulmafact2cont');
+
+      RETURN NULL;
+
+END;
+$$ LANGUAGE plpgsql;
+
+CREATE TRIGGER syncbulmacontfamiliaup
+    AFTER UPDATE OR INSERT ON familia
+    FOR EACH ROW
+    EXECUTE PROCEDURE syncbulmacontfamiliaup();
 
 
 
