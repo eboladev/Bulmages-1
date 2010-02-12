@@ -61,13 +61,13 @@ BEGIN
 	IF FOUND THEN
 		DROP VIEW bc_cuenta;
 	END IF;
-	CREATE OR REPLACE view BC_Cuenta AS SELECT * FROM dblink( 'SELECT idcuenta, codigo, descripcion, tipocuenta FROM cuenta') AS t1 ( idcuenta integer, codigo varchar, descripcion varchar, tipocuenta integer);
+	CREATE OR REPLACE view BC_Cuenta AS SELECT * FROM dblink('bulmafact2cont',  'SELECT idcuenta, codigo, descripcion, tipocuenta FROM cuenta') AS t1 ( idcuenta integer, codigo varchar, descripcion varchar, tipocuenta integer);
 
-	CREATE OR REPLACE VIEW BC_Asiento AS SELECT * FROM dblink( 'SELECT idasiento FROM asiento') AS t1 (idasiento integer);
+	CREATE OR REPLACE VIEW BC_Asiento AS SELECT * FROM dblink('bulmafact2cont',  'SELECT idasiento FROM asiento') AS t1 (idasiento integer);
 
-	CREATE OR REPLACE VIEW BC_Borrador AS SELECT * FROM dblink( 'SELECT idborrador FROM borrador') AS t1 (idborrador integer);
+	CREATE OR REPLACE VIEW BC_Borrador AS SELECT * FROM dblink('bulmafact2cont',  'SELECT idborrador FROM borrador') AS t1 (idborrador integer);
 
-	CREATE OR REPLACE VIEW BC_Apunte AS SELECT * FROM dblink( 'SELECT idapunte FROM apunte') AS t1 (idapunte integer);
+	CREATE OR REPLACE VIEW BC_Apunte AS SELECT * FROM dblink('bulmafact2cont',  'SELECT idapunte FROM apunte') AS t1 (idapunte integer);
 
 	SELECT INTO bs * FROM pg_attribute WHERE attname='idasientofactura';
 	IF NOT FOUND THEN
@@ -136,16 +136,32 @@ DROP FUNCTION aux() CASCADE;
 
 
 
+CREATE OR REPLACE FUNCTION dblink_exists(text)
+RETURNS bool AS $$
+  SELECT COALESCE($1 = ANY (dblink_get_connections()), false)
+$$ LANGUAGE sql;
+
+
 CREATE OR REPLACE FUNCTION conectabulmacont() RETURNS INTEGER
 AS $$
 DECLARE
 	bs RECORD;
 	quer TEXT;
+	check_dblink_connection BOOLEAN;
 BEGIN
 	SELECT INTO bs * FROM configuracion WHERE nombre='DataBaseContabilidad';
 	quer := 'dbname=' || bs.valor;
-	PERFORM dblink_connect(quer);
-	PERFORM dblink_exec( 'SET DATESTYLE TO SQL,European');
+
+	check_dblink_connection = dblink_exists('bulmafact2cont');
+
+	IF check_dblink_connection IS TRUE THEN
+	      -- Si llega aqui es porque algo ha ido mal en alguna parte.
+	      PERFORM dblink_exec('bulmafact2cont', 'ROLLBACK WORK;');
+	ELSE
+	      PERFORM dblink_connect('bulmafact2cont', quer);
+	      PERFORM dblink_exec('bulmafact2cont',  'SET DATESTYLE TO SQL,European');
+	END IF;
+
 	RETURN 0;
 END;
 $$ LANGUAGE plpgsql;
@@ -163,14 +179,14 @@ BEGIN
 	-- Hacemos el update del stock del articulo
 	IF OLD.idasientopago IS NOT NULL THEN
 		query := 'DELETE FROM apunte WHERE idasiento= ' || OLD.idasientopago;
-		PERFORM dblink_exec(query);
+		PERFORM dblink_exec('bulmafact2cont', query);
 		query := 'DELETE FROM  borrador WHERE idasiento= ' || OLD.idasientopago ;
-		PERFORM dblink_exec(query);
+		PERFORM dblink_exec('bulmafact2cont', query);
 		query := 'DELETE FROM  asiento WHERE idasiento = ' || OLD.idasientopago ;
-		PERFORM dblink_exec(query);
+		PERFORM dblink_exec('bulmafact2cont', query);
 	END IF;
 
-	PERFORM dblink_disconnect();
+	PERFORM dblink_disconnect('bulmafact2cont');
 	RETURN OLD;
 END;
 $$ LANGUAGE plpgsql;
@@ -211,7 +227,7 @@ BEGIN
 	asientonuevo := TRUE;
 	IF NEW.idasientopago IS NOT NULL THEN
 		query := 'SELECT idasiento FROM asiento WHERE idasiento =' || NEW.idasientopago;
-		SELECT INTO cs * FROM dblink(query) AS t1 (idasiento integer);
+		SELECT INTO cs * FROM dblink('bulmafact2cont', query) AS t1 (idasiento integer);
 		IF FOUND THEN
 			asientonuevo := FALSE;
 		END IF;
@@ -221,17 +237,17 @@ BEGIN
 	-- Hacemos el update del stock del articulo
 	IF asientonuevo IS FALSE THEN
 		query := 'DELETE FROM apunte WHERE idasiento= ' || NEW.idasientopago;
-		PERFORM dblink_exec(query);
+		PERFORM dblink_exec('bulmafact2cont', query);
 		query := 'DELETE FROM borrador WHERE idasiento= ' || NEW.idasientopago;
-		PERFORM dblink_exec(query);
+		PERFORM dblink_exec('bulmafact2cont', query);
 		query := 'UPDATE asiento SET descripcion = ''' || concepto || ''', comentariosasiento = ''' || concepto || ''' WHERE idasiento = ' || NEW.idasientopago;
-		PERFORM dblink_exec(query);
+		PERFORM dblink_exec('bulmafact2cont', query);
 	ELSE
 		-- Hacemos el update del stock del articulo
 		query := 'INSERT INTO asiento (fecha, descripcion, comentariosasiento) VALUES ( ' || quote_literal(NEW.fechapago) || ', ''' || concepto || ''', ''' || concepto || ''')';
-		PERFORM dblink_exec(query);
+		PERFORM dblink_exec('bulmafact2cont', query);
 
-		SELECT INTO cs * FROM dblink('SELECT max(idasiento) AS id FROM asiento') AS t1 (id integer);
+		SELECT INTO cs * FROM dblink('bulmafact2cont', 'SELECT max(idasiento) AS id FROM asiento') AS t1 (id integer);
 		NEW.idasientopago = cs.id;
 	END IF;
 
@@ -264,15 +280,15 @@ BEGIN
 
 	-- Apunte opr el proveedor
 	query := 'INSERT INTO borrador (fecha, idcuenta, debe, idasiento, descripcion, conceptocontable) VALUES (''' || NEW.fechapago || ''', ' || idctacliente || ', ' || NEW.cantpago || ', '|| NEW.idasientopago ||', ''' || concepto1 || ''', ''Pago'')';
-	PERFORM dblink_exec(query);
+	PERFORM dblink_exec('bulmafact2cont', query);
 
 
 	-- Apunte por caja o banco.
 	query := 'INSERT INTO borrador (fecha, idcuenta, haber, idasiento, descripcion, conceptocontable) VALUES (''' || NEW.fechapago || ''', ' || idctapago || ', ' || NEW.cantpago || ', '|| NEW.idasientopago ||', ''' || concepto1 || ''', ''Pago'')';
-	PERFORM dblink_exec(query);
+	PERFORM dblink_exec('bulmafact2cont', query);
 
 
-	PERFORM dblink_disconnect();
+	PERFORM dblink_disconnect('bulmafact2cont');
 	RETURN NEW;
 END;
 $$ LANGUAGE plpgsql;
@@ -298,14 +314,14 @@ BEGIN
 	-- Hacemos el update del stock del articulo
 	IF OLD.idasientocobro IS NOT NULL THEN
 		query := 'DELETE FROM apunte WHERE idasiento= ' || OLD.idasientocobro;
-		PERFORM dblink_exec(query);
+		PERFORM dblink_exec('bulmafact2cont', query);
 		query := 'DELETE FROM  borrador WHERE idasiento= ' || OLD.idasientocobro ;
-		PERFORM dblink_exec(query);
+		PERFORM dblink_exec('bulmafact2cont', query);
 		query := 'DELETE FROM  asiento WHERE idasiento = ' || OLD.idasientocobro;
-		PERFORM dblink_exec(query);
+		PERFORM dblink_exec('bulmafact2cont', query);
 	END IF;
 
-	PERFORM dblink_disconnect();
+	PERFORM dblink_disconnect('bulmafact2cont');
 	RETURN OLD;
 END;
 $$ LANGUAGE plpgsql;
@@ -346,7 +362,7 @@ BEGIN
 	asientonuevo := TRUE;
 	IF NEW.idasientocobro IS NOT NULL THEN
 		query := 'SELECT idasiento FROM asiento WHERE idasiento =' || NEW.idasientocobro;
-		SELECT INTO cs * FROM dblink(query) AS t1 (idasiento integer);
+		SELECT INTO cs * FROM dblink('bulmafact2cont', query) AS t1 (idasiento integer);
 		IF FOUND THEN
 			asientonuevo := FALSE;
 		END IF;
@@ -357,17 +373,17 @@ BEGIN
 	-- Hacemos el update del stock del articulo
 	IF asientonuevo IS FALSE THEN
 		query := 'DELETE FROM apunte WHERE idasiento= ' || NEW.idasientocobro;
-		PERFORM dblink_exec(query);
+		PERFORM dblink_exec('bulmafact2cont', query);
 		query := 'DELETE FROM borrador WHERE idasiento= ' || NEW.idasientocobro;
-		PERFORM dblink_exec(query);
+		PERFORM dblink_exec('bulmafact2cont', query);
 		query := 'UPDATE asiento SET descripcion = ''' || concepto || ''', comentariosasiento = ''' || concepto || ''' WHERE idasiento = ' || NEW.idasientocobro;
-		PERFORM dblink_exec(query);
+		PERFORM dblink_exec('bulmafact2cont', query);
 	ELSE
 		-- Hacemos el update del stock del articulo
 		query := 'INSERT INTO asiento (fecha, descripcion, comentariosasiento) VALUES ( ' || quote_literal(NEW.fechacobro) || ', ''' || concepto || ''', ''' || concepto || ''')';
-		PERFORM dblink_exec(query);
+		PERFORM dblink_exec('bulmafact2cont', query);
 
-		SELECT INTO cs * FROM dblink('SELECT max(idasiento) AS id FROM asiento') AS t1 (id integer);
+		SELECT INTO cs * FROM dblink('bulmafact2cont', 'SELECT max(idasiento) AS id FROM asiento') AS t1 (id integer);
 		NEW.idasientocobro = cs.id;
 	END IF;
 
@@ -400,15 +416,15 @@ BEGIN
 
 	-- Apunte opr el proveedor
 	query := 'INSERT INTO borrador (fecha, idcuenta, haber, idasiento, descripcion, conceptocontable) VALUES (''' || NEW.fechacobro || ''', ' || idctacliente || ', ' || NEW.cantcobro || ', '|| NEW.idasientocobro ||', ''' || concepto1 || ''', ''Cobro'')';
-	PERFORM dblink_exec(query);
+	PERFORM dblink_exec('bulmafact2cont', query);
 
 
 	-- Apunte por caja o banco.
 	query := 'INSERT INTO borrador (fecha, idcuenta, debe, idasiento, descripcion, conceptocontable) VALUES (''' || NEW.fechacobro || ''', ' || idctacobro || ', ' || NEW.cantcobro || ', '|| NEW.idasientocobro ||', ''' || concepto1 || ''', ''Cobro'')';
-	PERFORM dblink_exec(query);
+	PERFORM dblink_exec('bulmafact2cont', query);
 
 
-	PERFORM dblink_disconnect();
+	PERFORM dblink_disconnect('bulmafact2cont');
 	RETURN NEW;
 END;
 $$ LANGUAGE plpgsql;
@@ -433,16 +449,16 @@ BEGIN
 	-- Hacemos el update del stock del articulo
 	IF OLD.idasientofactura IS NOT NULL THEN
 		query := 'DELETE FROM registroiva WHERE idborrador IN (SELECT idborrador FROM borrador WHERE idasiento = ' || OLD.idasientofactura || ')';
-		PERFORM dblink_exec(query);
+		PERFORM dblink_exec('bulmafact2cont', query);
 		query := 'DELETE FROM apunte WHERE idasiento = ' || OLD.idasientofactura;
-		PERFORM dblink_exec(query);
+		PERFORM dblink_exec('bulmafact2cont', query);
 		query := 'DELETE FROM borrador WHERE idasiento = ' || OLD.idasientofactura ;
-		PERFORM dblink_exec(query);
+		PERFORM dblink_exec('bulmafact2cont', query);
 		query := 'DELETE FROM asiento WHERE idasiento = ' || OLD.idasientofactura ;
-		PERFORM dblink_exec(query);
+		PERFORM dblink_exec('bulmafact2cont', query);
 	END IF;
 
-	PERFORM dblink_disconnect();
+	PERFORM dblink_disconnect('bulmafact2cont');
 	RETURN OLD;
 END;
 $$ LANGUAGE plpgsql;
@@ -488,7 +504,7 @@ BEGIN
 	-- dentro de la transaccion de esta funcion y si hay un error no desaria los cambios provocando problemas
 	-- de integridad de los datos.
 	-- Hay que hacer un ROLLBACK WORK explicito ANTES de cada RAISE EXCEPTION.
-	PERFORM dblink_exec('BEGIN WORK;');
+	PERFORM dblink_exec('bulmafact2cont', 'BEGIN WORK;');
 	totaliva := 0;
 
 	concepto := '[A. Automatico] Factura Cliente Num.' || NEW.numfactura;
@@ -501,7 +517,7 @@ BEGIN
 	-- es un UPDATE de un registro.
 	IF NEW.idasientofactura IS NOT NULL THEN
 		query := 'SELECT idasiento FROM asiento WHERE idasiento =' || NEW.idasientofactura;
-		SELECT INTO bs * FROM dblink(query) AS t1 (idasiento integer);
+		SELECT INTO bs * FROM dblink('bulmafact2cont', query) AS t1 (idasiento integer);
 		IF FOUND THEN
 			asientonuevo := FALSE;
 		END IF;
@@ -509,19 +525,19 @@ BEGIN
 
 	IF asientonuevo IS FALSE THEN
 		query := 'DELETE FROM registroiva WHERE idborrador IN (SELECT idborrador FROM borrador WHERE idasiento = ' || NEW.idasientofactura || ')';
-		PERFORM dblink_exec(query);
+		PERFORM dblink_exec('bulmafact2cont', query);
 		query := 'DELETE FROM apunte WHERE idasiento= ' || NEW.idasientofactura;
-		PERFORM dblink_exec(query);
+		PERFORM dblink_exec('bulmafact2cont', query);
 		query := 'DELETE FROM borrador WHERE idasiento= ' || NEW.idasientofactura;
-		PERFORM dblink_exec(query);
+		PERFORM dblink_exec('bulmafact2cont', query);
 		query := 'UPDATE asiento SET descripcion =''' || concepto || ''', comentariosasiento = ''' || concepto || ''' WHERE idasiento = ' || NEW.idasientofactura;
-		PERFORM dblink_exec(query);
+		PERFORM dblink_exec('bulmafact2cont', query);
 	ELSE
 		-- Crea el asiento en la contabilidad y recupera el numero de asiento para actualizar luego
 		-- el campo idasientofactura del registro factura.
 		query := 'INSERT INTO asiento (fecha, descripcion, comentariosasiento) VALUES ( ' || quote_literal(NEW.ffactura) || ', ''' || concepto || ''' , ''' || concepto || ''')';
-		PERFORM dblink_exec(query);
-		SELECT INTO bs * FROM dblink('SELECT max(idasiento) AS id FROM asiento') AS t1 (id integer);
+		PERFORM dblink_exec('bulmafact2cont', query);
+		SELECT INTO bs * FROM dblink('bulmafact2cont', 'SELECT max(idasiento) AS id FROM asiento') AS t1 (id integer);
 		NEW.idasientofactura = bs.id;
 	END IF;
 
@@ -529,7 +545,7 @@ BEGIN
 	-- Buscamos el cliente y su cuenta.
 	SELECT INTO client idcuentacliente FROM cliente WHERE idcliente=NEW.idcliente;
 	IF NOT FOUND THEN
-		PERFORM dblink_exec('ROLLBACK WORK;');
+		PERFORM dblink_exec('bulmafact2cont', 'ROLLBACK WORK;');
 		RAISE EXCEPTION 'El cliente no tiene cuenta asociada en la contabilidad.';
 	END IF;
 	idctacliente := client.idcuentacliente;
@@ -537,7 +553,7 @@ BEGIN
 	-- Buscamos la cuenta de servicio o de venta
 	SELECT INTO cs MAX(idcuenta) AS id FROM bc_cuenta WHERE codigo LIKE '7000%';
 	IF NOT FOUND THEN
-		PERFORM dblink_exec('ROLLBACK WORK;');
+		PERFORM dblink_exec('bulmafact2cont', 'ROLLBACK WORK;');
 		RAISE EXCEPTION 'No existe la cuenta de Ventas 7000...';
 	END IF;
 	idctaserv := cs.id;
@@ -546,7 +562,7 @@ BEGIN
 	-- Buscamos la cuenta de IRPF
 	SELECT INTO cs MAX(idcuenta) AS id FROM bc_cuenta WHERE codigo LIKE '4730%';
 	IF cs.id IS NULL THEN
-	      PERFORM dblink_exec('ROLLBACK WORK;');
+	      PERFORM dblink_exec('bulmafact2cont', 'ROLLBACK WORK;');
 	      RAISE EXCEPTION 'No existe la cuenta de IRPF 4730...';
 	ELSE
 	      idctairpf := cs.id;
@@ -577,7 +593,7 @@ BEGIN
 		      -- Hacemos la busqueda de la cuenta de IVA correspondiente.
 		      SELECT INTO ctaiva * FROM bc_cuenta WHERE codigo LIKE varaux;
 		      IF NOT FOUND THEN
-			      PERFORM dblink_exec('ROLLBACK WORK;');
+			      PERFORM dblink_exec('bulmafact2cont', 'ROLLBACK WORK;');
 			      RAISE EXCEPTION 'No existe una cuenta de IVA para el tipo de IVA %', bs.iva;
 		      END IF;
 		      cta := ctaiva.codigo;
@@ -585,7 +601,7 @@ BEGIN
 
 		      -- Hacemos la insercion del borrador del apunte.
 		      query := 'INSERT INTO borrador (fecha, idcuenta, haber, idasiento, descripcion, conceptocontable) VALUES (''' || NEW.ffactura || ''', ' || idcta || ', ' || bs.base * totaldesc * bs.iva / 100 || ', '|| NEW.idasientofactura ||', ''' || concepto1 || ''' ,  ''Factura Cliente'')';
-		      PERFORM dblink_exec(query);
+		      PERFORM dblink_exec('bulmafact2cont', query);
 
 		      -- Vamos calculando el total de IVA
 		      totaliva := totaliva + bs.base * totaldesc * bs.iva / 100;
@@ -602,7 +618,7 @@ BEGIN
 		      -- Hacemos la busqueda de la cuenta de Recargo correspondiente.
 		      SELECT INTO ctareq * FROM bc_cuenta WHERE codigo LIKE varaux;
 		      IF NOT FOUND THEN
-			      PERFORM dblink_exec('ROLLBACK WORK;');
+			      PERFORM dblink_exec('bulmafact2cont', 'ROLLBACK WORK;');
 			      RAISE EXCEPTION 'No existe una cuenta de Recargo para el tipo de Recargo %', bs.reqeqlfactura;
 		      END IF;
 		      cta := ctareq.codigo;
@@ -610,7 +626,7 @@ BEGIN
 
 		      -- Hacemos la insercion del borrador del apunte.
 		      query := 'INSERT INTO borrador (fecha, idcuenta, haber, idasiento, descripcion, conceptocontable) VALUES (''' || NEW.ffactura || ''', ' || idcta || ', ' || bs.base * totaldesc * bs.reqeqlfactura / 100 || ', '|| NEW.idasientofactura ||', ''' || concepto1 || ''' ,  ''Factura Cliente'')';
-		      PERFORM dblink_exec(query);
+		      PERFORM dblink_exec('bulmafact2cont', query);
 
 		      -- Vamos calculando el total de IVA
 		      totaliva := totaliva + bs.base * totaldesc * bs.reqeqlfactura / 100;
@@ -623,25 +639,25 @@ BEGIN
 	SELECT INTO bs SUM (cantlfactura * pvplfactura * (100 - descuentolfactura) / 100) AS base FROM lfactura WHERE idfactura = NEW.idfactura;
 	-- Hacemos la insercion del borrador del apunte.
 	query := 'INSERT INTO borrador (fecha, idcuenta, debe, idasiento, descripcion, conceptocontable) VALUES (''' || NEW.ffactura || ''', ' || idctacliente || ', ' || bs.base * totaldesc * (1-porirpf) + totaliva || ', '|| NEW.idasientofactura ||', ''' || concepto1 || ''' ,  ''Factura Cliente'')';
-	PERFORM dblink_exec(query);
+	PERFORM dblink_exec('bulmafact2cont', query);
 
 	-- Creamos el apunte de IRPF
 	IF porirpf <> 0 THEN
 		-- Hacemos la insercion del borrador del apunte.
 		query := 'INSERT INTO borrador (fecha, idcuenta, debe, idasiento, descripcion, conceptocontable) VALUES (''' || NEW.ffactura || ''', ' || idctairpf || ', ' || bs.base * totaldesc * porirpf || ', '|| NEW.idasientofactura ||', ''' || concepto1 || ''' ,  ''Factura Cliente'')';
-		PERFORM dblink_exec(query);
+		PERFORM dblink_exec('bulmafact2cont', query);
 	END IF;
 
 	-- Hacemos la insercion del borrador del apunte segun familia.
 	FOR cs IN SELECT familia.idcuentaventafamilia, SUM (cantlfactura * pvplfactura * (100 - descuentolfactura) / 100) AS base FROM familia LEFT JOIN articulo ON familia.idfamilia = articulo.idfamilia LEFT JOIN lfactura ON lfactura.idarticulo = articulo.idarticulo WHERE lfactura.idfactura = NEW.idfactura GROUP BY familia.idcuentaventafamilia LOOP
 
 	    query := 'INSERT INTO borrador (fecha, idcuenta, haber, idasiento, descripcion, conceptocontable) VALUES (''' || NEW.ffactura || ''', ' || cs.idcuentaventafamilia || ', ' || cs.base * totaldesc || ', '|| NEW.idasientofactura ||', ''' || concepto1 || ''' ,  ''Factura Cliente'')';
-	    PERFORM dblink_exec(query);
+	    PERFORM dblink_exec('bulmafact2cont', query);
 
 	END LOOP;
 
-	PERFORM dblink_exec('COMMIT WORK;');
-	PERFORM dblink_disconnect();
+	PERFORM dblink_exec('bulmafact2cont', 'COMMIT WORK;');
+	PERFORM dblink_disconnect('bulmafact2cont');
 	RETURN NEW;
 END;
 $$ LANGUAGE plpgsql;
@@ -669,16 +685,16 @@ BEGIN
 	-- Hacemos el update del stock del articulo
 	IF OLD.idasientofacturap IS NOT NULL THEN
 		query := 'DELETE FROM registroiva WHERE idborrador IN (SELECT idborrador FROM borrador WHERE idasiento = ' || OLD.idasientofacturap || ')';
-		PERFORM dblink_exec(query);
+		PERFORM dblink_exec('bulmafact2cont', query);
 		query := 'DELETE FROM apunte WHERE idasiento= ' || OLD.idasientofacturap;
-		PERFORM dblink_exec(query);
+		PERFORM dblink_exec('bulmafact2cont', query);
 		query := 'DELETE FROM  borrador WHERE idasiento= ' || OLD.idasientofacturap ;
-		PERFORM dblink_exec(query);
+		PERFORM dblink_exec('bulmafact2cont', query);
 		query := 'DELETE FROM  asiento WHERE idasiento = ' || OLD.idasientofacturap ;
-		PERFORM dblink_exec(query);
+		PERFORM dblink_exec('bulmafact2cont', query);
 	END IF;
 
-	PERFORM dblink_disconnect();
+	PERFORM dblink_disconnect('bulmafact2cont');
 	RETURN OLD;
 END;
 $$ LANGUAGE plpgsql;
@@ -725,7 +741,7 @@ BEGIN
 	asientonuevo := TRUE;
 	IF NEW.idasientofacturap IS NOT NULL THEN
 		query := 'SELECT idasiento FROM asiento WHERE idasiento =' || NEW.idasientofacturap;
-		SELECT INTO cs * FROM dblink(query) AS t1 (idasiento integer);
+		SELECT INTO cs * FROM dblink('bulmafact2cont', query) AS t1 (idasiento integer);
 		IF FOUND THEN
 			asientonuevo := FALSE;
 		END IF;
@@ -734,18 +750,18 @@ BEGIN
 	-- Hacemos el update del stock del articulo
 	IF asientonuevo IS FALSE THEN
 		query := 'DELETE FROM registroiva WHERE idborrador IN (SELECT idborrador FROM borrador WHERE idasiento = ' || NEW.idasientofacturap || ')';
-		PERFORM dblink_exec(query);
+		PERFORM dblink_exec('bulmafact2cont', query);
 		query := 'DELETE FROM apunte WHERE idasiento= ' || NEW.idasientofacturap;
-		PERFORM dblink_exec(query);
+		PERFORM dblink_exec('bulmafact2cont', query);
 		query := 'DELETE FROM borrador WHERE idasiento= ' || NEW.idasientofacturap;
-		PERFORM dblink_exec(query);
+		PERFORM dblink_exec('bulmafact2cont', query);
 		query := 'UPDATE asiento SET descripcion =''' || concepto || ''', comentariosasiento = ''' || concepto || ''' WHERE idasiento = ' || NEW.idasientofacturap;
-		PERFORM dblink_exec(query);
+		PERFORM dblink_exec('bulmafact2cont', query);
 	ELSE
 		-- Hacemos el update del stock del articulo
 		query := 'INSERT INTO asiento (fecha, descripcion, comentariosasiento) VALUES ( ' || quote_literal(NEW.ffacturap) || ', ''' || concepto ||  ''', ''' || concepto || ''')';
-		PERFORM dblink_exec(query);
-		SELECT INTO bs * FROM dblink('SELECT max(idasiento) AS id FROM asiento') AS t1 (id integer);
+		PERFORM dblink_exec('bulmafact2cont', query);
+		SELECT INTO bs * FROM dblink('bulmafact2cont', 'SELECT max(idasiento) AS id FROM asiento') AS t1 (id integer);
 		NEW.idasientofacturap = bs.id;
 	END IF;
 
@@ -799,7 +815,7 @@ BEGIN
 
 			-- Hacemos la insercion del borrador del apunte.
 			query := 'INSERT INTO borrador (fecha, idcuenta, debe, idasiento, descripcion, conceptocontable) VALUES (''' || NEW.ffacturap || ''', ' || idcta || ', ' || bs.base * totaldesc * bs.iva / 100 || ', '|| NEW.idasientofacturap ||', ''' || concepto1 || ''' ,  ''Factura Proveedor'')';
-			PERFORM dblink_exec(query);
+			PERFORM dblink_exec('bulmafact2cont', query);
 
 			-- Vamos calculando el total de IVA
 			totaliva := totaliva + bs.base * totaldesc * bs.iva / 100;
@@ -816,7 +832,7 @@ BEGIN
 
 			-- Hacemos la insercion del borrador del apunte.
 			query := 'INSERT INTO borrador (fecha, idcuenta, debe, idasiento, descripcion, conceptocontable) VALUES (''' || NEW.ffacturap || ''', ' || idcta || ', ' || bs.base * totaldesc * bs.reqeqlfacturap / 100 || ', '|| NEW.idasientofacturap ||', ''' || concepto1 || ''', ''Factura Proveedor'')';
-			PERFORM dblink_exec(query);
+			PERFORM dblink_exec('bulmafact2cont', query);
 
 			-- Vamos calculando el total de IVA
 			totaliva := totaliva + bs.base * totaldesc * bs.reqeqlfacturap / 100;
@@ -832,24 +848,24 @@ BEGIN
 	-- Hacemos la insercion del borrador del apunte al proveedor.
 	total := bs.base * totaldesc * (1 - porirpf) + totaliva;
 	query := 'INSERT INTO borrador (fecha, idcuenta, haber, idasiento, descripcion, conceptocontable) VALUES (''' || NEW.ffacturap || ''', ' || idctaproveedor || ', ' || total || ', '|| NEW.idasientofacturap ||', ''' || concepto1 || ''' , ''Factura Proveedor'')';
-	PERFORM dblink_exec(query);
+	PERFORM dblink_exec('bulmafact2cont', query);
 
 
 	-- Creamos el apunte de IRPF
 	IF porirpf <> 0 THEN
 		-- Hacemos la insercion del borrador del apunte.
 		query := 'INSERT INTO borrador (fecha, idcuenta, haber, idasiento, descripcion, conceptocontable) VALUES (''' || NEW.ffacturap || ''', ' || idctairpf || ', ' || bs.base * totaldesc * porirpf || ', '|| NEW.idasientofacturap ||', ''' || concepto1 || ''' , ''Factura Proveedor'')';
-		PERFORM dblink_exec(query);
+		PERFORM dblink_exec('bulmafact2cont', query);
 	END IF;
 
 
 	-- Creamos el apunte de servicio.
 	-- Hacemos la insercion del borrador del apunte.
 	query := 'INSERT INTO borrador (fecha, idcuenta, debe, idasiento, descripcion, conceptocontable) VALUES (''' || NEW.ffacturap || ''', ' || idctaserv || ', ' || bs.base * totaldesc || ', '|| NEW.idasientofacturap ||', ''' || concepto1 || ''' , ''Factura Proveedor'')';
-	PERFORM dblink_exec(query);
+	PERFORM dblink_exec('bulmafact2cont', query);
 
 
-	PERFORM dblink_disconnect();
+	PERFORM dblink_disconnect('bulmafact2cont');
 	RETURN NEW;
 END;
 $$ LANGUAGE plpgsql;
@@ -861,11 +877,11 @@ CREATE TRIGGER syncbulmacontfacturaptriggeru
     EXECUTE PROCEDURE syncbulmacontfacturapu();
 \echo "Creado el trigger que al modificar o insertar una factura  de proveedor en la facturacion mete el correspondiente asiento en la contabilidad"
 
+
+
 -- ==============================================================================
 -- TRATO DE LOS CLIENTES
 -- ==============================================================================
-
-
 
 SELECT drop_if_exists_proc ('syncbulmacontcliented','');
 CREATE FUNCTION syncbulmacontcliented () RETURNS "trigger"
@@ -877,10 +893,10 @@ BEGIN
 	-- Hacemos el update del stock del articulo
 	IF OLD.idcuentacliente IS NOT NULL THEN
 		query := 'DELETE FROM  cuenta WHERE idcuenta = ' || OLD.idcuentacliente ;
-		PERFORM dblink_exec(query);
+		PERFORM dblink_exec('bulmafact2cont', query);
 	END IF;
 
-	PERFORM dblink_disconnect();
+	PERFORM dblink_disconnect('bulmafact2cont');
 	RETURN OLD;
 END;
 $$ LANGUAGE plpgsql;
@@ -906,9 +922,16 @@ DECLARE
 	descripcion TEXT;
 	cp TEXT;
 	cif TEXT;
+	cuentasiguiente TEXT;
+
 BEGIN
 	PERFORM conectabulmacont();
-	-- Hacemos el update del stock del articulo
+
+	-- Es necesario controlar la transaccion que se hace en la base de datos enlazada porque no actua
+	-- dentro de la transaccion de esta funcion y si hay un error no desaria los cambios provocando problemas
+	-- de integridad de los datos.
+	-- Hay que hacer un ROLLBACK WORK explicito ANTES de cada RAISE EXCEPTION.
+	PERFORM dblink_exec('bulmafact2cont', 'BEGIN WORK;');
 
 	-- Cogemos el nombre de la cuenta.
 	descripcion := quote_literal(NEW.nomcliente);
@@ -917,7 +940,7 @@ BEGIN
 
 	IF NEW.idcuentacliente IS NULL THEN
 		-- Buscamos el codigo de cuenta que vaya a corresponderle
-		SELECT INTO bs max(codigo)::INTEGER as cod FROM bc_cuenta WHERE codigo LIKE '4300%' ;
+		SELECT INTO bs max(codigo::INTEGER) as cod FROM bc_cuenta WHERE codigo LIKE '43000%';
 		IF bs.cod IS NOT NULL THEN
 			codcta := bs.cod + 1;
 		ELSE
@@ -930,19 +953,16 @@ BEGIN
 
 		-- Creamos el Query de insercion
 		quer := 'INSERT INTO cuenta (descripcion, padre, codigo) VALUES ( ' || descripcion ||', ' || idpadre || ', ''' || codcta || ''' )';
-
-		PERFORM dblink_exec(quer);
+		PERFORM dblink_exec('bulmafact2cont', quer);
 	
-	
-		SELECT INTO bs  max(idcuenta) AS id FROM bc_cuenta;
-	
+		SELECT INTO bs max(idcuenta) AS id FROM bc_cuenta;
 		NEW.idcuentacliente = bs.id;
+
 	ELSE
 		quer := 'UPDATE cuenta SET descripcion = ' || descripcion || ', cifent_cuenta = ''' || cif || ''', nombreent_cuenta = ''' || NEW.nomaltcliente || ''', dirent_cuenta = ''' || NEW.dircliente || ''', cpent_cuenta = ''' || cp || ''', telent_cuenta = ''' || NEW.telcliente || ''', bancoent_cuenta = ''' || NEW.bancocliente || ''', emailent_cuenta = ''' || NEW.mailcliente || ''', webent_cuenta = ''' || NEW.urlcliente || ''' WHERE idcuenta= ' || NEW.idcuentacliente;
-		PERFORM dblink_exec(quer);
+		PERFORM dblink_exec('bulmafact2cont', quer);
 	END IF;
 
-	PERFORM dblink_disconnect();
 	RETURN NEW;
 END;
 $$ LANGUAGE plpgsql;
@@ -954,11 +974,31 @@ CREATE TRIGGER syncbulmacontclientetriggeru
     EXECUTE PROCEDURE syncbulmacontclienteu();
 
 
+SELECT drop_if_exists_proc ('syncbulmacontclienteup','');
+CREATE FUNCTION syncbulmacontclienteup () RETURNS "trigger"
+AS $$
+DECLARE
+BEGIN
+
+      -- Hace un COMMIT de la conexion dblink si todo ha ido bien.
+      PERFORM dblink_exec('bulmafact2cont', 'COMMIT WORK;');
+      PERFORM dblink_disconnect('bulmafact2cont');
+
+      RETURN NULL;
+
+END;
+$$ LANGUAGE plpgsql;
+
+CREATE TRIGGER syncbulmacontclienteup
+    AFTER UPDATE OR INSERT ON cliente
+    FOR EACH ROW
+    EXECUTE PROCEDURE syncbulmacontclienteup();
+
+
+
 -- ==============================================================================
 -- TRATO DE LOS PROVEEDORES
 -- ==============================================================================
-
-
 
 
 SELECT drop_if_exists_proc ('syncbulmacontproveedord','');
@@ -971,10 +1011,10 @@ BEGIN
 	-- Hacemos el update del stock del articulo
 	IF OLD.idcuentaproveedor IS NOT NULL THEN
 		query := 'DELETE FROM  cuenta WHERE idcuenta = ' || OLD.idcuentaproveedor ;
-		PERFORM dblink_exec(query);
+		PERFORM dblink_exec('bulmafact2cont', query);
 	END IF;
 
-	PERFORM dblink_disconnect();
+	PERFORM dblink_disconnect('bulmafact2cont');
 	RETURN OLD;
 END;
 $$ LANGUAGE plpgsql;
@@ -1023,7 +1063,7 @@ BEGIN
 	
 		-- Creamos el Query de insercion
 		quer := 'INSERT INTO cuenta (descripcion, padre, codigo) VALUES ( ' || descripcion ||', ' || idpadre || ', ''' || codcta || ''' )';
-		PERFORM dblink_exec(quer);
+		PERFORM dblink_exec('bulmafact2cont', quer);
 	
 	
 		SELECT INTO bs max(idcuenta) AS id FROM bc_cuenta;
@@ -1034,10 +1074,10 @@ BEGIN
 		-- Hay que introducir una validacion de campos.
 		quer := 'UPDATE cuenta SET descripcion = ' || descripcion || ', cifent_cuenta = ''' || NEW.cifproveedor || ''', nombreent_cuenta = ''' || NEW.nomaltproveedor || ''', dirent_cuenta = ''' || NEW.dirproveedor || ''', cpent_cuenta = ''' || NEW.cpproveedor || ''', telent_cuenta = ''' || NEW.telproveedor || ''', emailent_cuenta = ''' || NEW.emailproveedor || ''', webent_cuenta = ''' || NEW.urlproveedor || ''' WHERE idcuenta= ' || NEW.idcuentaproveedor;
 --		RAISE EXCEPTION ' % ', quer;
-		PERFORM dblink_exec(quer);
+		PERFORM dblink_exec('bulmafact2cont', quer);
 	END IF;
 
-	PERFORM dblink_disconnect();
+	PERFORM dblink_disconnect('bulmafact2cont');
 	RETURN NEW;
 END;
 $$ LANGUAGE plpgsql;
@@ -1063,11 +1103,11 @@ BEGIN
 	-- Hacemos el DELETE de la cuenta del banco.
 	IF OLD.idcuentabanco IS NOT NULL THEN
 		query := 'DELETE FROM cuenta WHERE idcuenta = ' || OLD.idcuentabanco;
-		PERFORM dblink_exec(query);
+		PERFORM dblink_exec('bulmafact2cont', query);
 
 	END IF;
 
-	PERFORM dblink_disconnect();
+	PERFORM dblink_disconnect('bulmafact2cont');
 	RETURN OLD;
 END;
 $$ LANGUAGE plpgsql;
@@ -1115,17 +1155,17 @@ BEGIN
 	
 		-- Creamos el Query de insercion
 		quer := 'INSERT INTO cuenta (descripcion, padre, codigo, tipocuenta) VALUES ( ' || descripcion ||', ' || idpadre || ', ' || codcta || ' , '|| tipocuenta1 || ')';
-		PERFORM dblink_exec(quer);
+		PERFORM dblink_exec('bulmafact2cont', quer);
 	
 		SELECT INTO bs max(idcuenta) AS id FROM bc_cuenta;
 		NEW.idcuentabanco := bs.id;
 	ELSE
 		quer := 'UPDATE cuenta SET descripcion =' || descripcion || ' WHERE idcuenta =' || NEW.idcuentabanco;
-		PERFORM dblink_exec(quer);
+		PERFORM dblink_exec('bulmafact2cont', quer);
 	END IF;
 
 
-	PERFORM dblink_disconnect();
+	PERFORM dblink_disconnect('bulmafact2cont');
 	RETURN NEW;
 END;
 $$ LANGUAGE plpgsql;
@@ -1152,9 +1192,9 @@ BEGIN
 	-- Hacemos el update del stock del articulo
 	IF OLD.idcuentaalmacen IS NOT NULL THEN
 		query := 'DELETE FROM cuenta WHERE idcuenta = ' || OLD.idcuentaalmacen;
-		PERFORM dblink_exec(query);
+		PERFORM dblink_exec('bulmafact2cont', query);
 	END IF;
-	PERFORM dblink_disconnect();
+	PERFORM dblink_disconnect('bulmafact2cont');
 	RETURN OLD;
 END;
 $$ LANGUAGE plpgsql;
@@ -1203,17 +1243,17 @@ BEGIN
 	
 		-- Creamos el Query de insercion
 		quer := 'INSERT INTO cuenta (descripcion, padre, codigo, tipocuenta) VALUES ( ' || descripcion ||', ' || idpadre || ', ''' || codcta || ''' , '|| tipocuenta1 || ')';
-		PERFORM dblink_exec(quer);
+		PERFORM dblink_exec('bulmafact2cont', quer);
 	
 		SELECT INTO bs  max(idcuenta) AS id FROM bc_cuenta;
 		NEW.idcuentaalmacen := bs.id;
 	ELSE
 		quer := 'UPDATE cuenta SET descripcion =' || descripcion || ' WHERE idcuenta =' || NEW.idcuentaalmacen;
-		PERFORM dblink_exec(quer);
+		PERFORM dblink_exec('bulmafact2cont', quer);
 	END IF;
 
 
-	PERFORM dblink_disconnect();
+	PERFORM dblink_disconnect('bulmafact2cont');
 	RETURN NEW;
 END;
 $$ LANGUAGE plpgsql;
@@ -1225,18 +1265,6 @@ CREATE TRIGGER syncbulmacontalmacentriggeru
     EXECUTE PROCEDURE syncbulmacontalmacenu();
 
 \echo "Creado el trigger que al modificar o insertar un almacen en la facturacion mete el correspondiente asiento en la contabilidad"
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -1254,17 +1282,17 @@ BEGIN
 	-- Hacemos el DELETE de la cuenta de VENTA familia.
 	IF OLD.idcuentaventafamilia IS NOT NULL THEN
 		query := 'DELETE FROM cuenta WHERE idcuenta = ' || OLD.idcuentaventafamilia;
-		PERFORM dblink_exec(query);
+		PERFORM dblink_exec('bulmafact2cont', query);
 	END IF;
 
 	-- Hacemos el DELETE de la cuenta de COMPRA familia.
 	IF OLD.idcuentacomprafamilia IS NOT NULL THEN
 		query := 'DELETE FROM cuenta WHERE idcuenta = ' || OLD.idcuentacomprafamilia;
-		PERFORM dblink_exec(query);
+		PERFORM dblink_exec('bulmafact2cont', query);
 	END IF;
 
 
-	PERFORM dblink_disconnect();
+	PERFORM dblink_disconnect('bulmafact2cont');
 	RETURN OLD;
 END;
 $$ LANGUAGE plpgsql;
@@ -1278,7 +1306,6 @@ CREATE TRIGGER syncbulmacontfamiliatriggerd
 
 
 
-
 --si se crea una familia hay que mirar si es de servicios o producto para saber bajo que cuenta padre hay que crearla.
 --si se actualiza y se ha cambiado de servicio a producto o al revés habrá que hacer un delete de la cuenta
 -- padre antigua y un insert en la cuenta padre nueva.
@@ -1286,9 +1313,6 @@ CREATE TRIGGER syncbulmacontfamiliatriggerd
 -- Las cuentas de familias tienen que gestionar las cuentas de VENTA y de COMPRA.
 --
 --hay que cambiar como las facturas se contabilizan para separar los servicios y los productos en su cuenta adecuada.
-
-
-
 
 SELECT drop_if_exists_proc ('syncbulmacontfamiliau','');
 CREATE FUNCTION syncbulmacontfamiliau () RETURNS "trigger"
@@ -1329,7 +1353,7 @@ BEGIN
 
 			-- Creamos el Query de insercion
 			quer := 'INSERT INTO cuenta (descripcion, padre, codigo, tipocuenta) VALUES ( ' || descripcion ||', ' || idpadre || ', ''' || codcta || ''' , '|| tipocuenta1 || ')';
-			PERFORM dblink_exec(quer);
+			PERFORM dblink_exec('bulmafact2cont', quer);
 
 			SELECT INTO bs max(idcuenta) AS id FROM bc_cuenta;
 			NEW.idcuentaventafamilia := bs.id;
@@ -1350,7 +1374,7 @@ BEGIN
 
 			-- Creamos el Query de insercion
 			quer := 'INSERT INTO cuenta (descripcion, padre, codigo, tipocuenta) VALUES ( ' || descripcion ||', ' || idpadre || ', ''' || codcta || ''' , '|| tipocuenta1 || ')';
-			PERFORM dblink_exec(quer);
+			PERFORM dblink_exec('bulmafact2cont', quer);
 
 			SELECT INTO bs max(idcuenta) AS id FROM bc_cuenta;
 			NEW.idcuentacomprafamilia := bs.id;
@@ -1372,7 +1396,7 @@ BEGIN
 
 			-- Creamos el Query de insercion
 			quer := 'INSERT INTO cuenta (descripcion, padre, codigo, tipocuenta) VALUES ( ' || descripcion ||', ' || idpadre || ', ''' || codcta || ''' , '|| tipocuenta1 || ')';
-			PERFORM dblink_exec(quer);
+			PERFORM dblink_exec('bulmafact2cont', quer);
 
 			SELECT INTO bs max(idcuenta) AS id FROM bc_cuenta;
 			NEW.idcuentaventafamilia := bs.id;
@@ -1387,19 +1411,19 @@ BEGIN
 		IF NEW.productofisicofamilia = OLD.productofisicofamilia THEN
 		    -- No se ha cambiado. Solo actualiza datos.
 		    quer := 'UPDATE cuenta SET descripcion =' || descripcion || ' WHERE idcuenta =' || NEW.idcuentaventafamilia;
-		    PERFORM dblink_exec(quer);
+		    PERFORM dblink_exec('bulmafact2cont', quer);
 
 		    quer := 'UPDATE cuenta SET descripcion =' || descripcion || ' WHERE idcuenta =' || NEW.idcuentacomprafamilia;
-		    PERFORM dblink_exec(quer);
+		    PERFORM dblink_exec('bulmafact2cont', quer);
 
 		ELSE
 		    -- Se ha cambiado, por tanto hay que borrar la cuenta de la rama actual y crearlo
 		    -- en la nueva rama.
 		    query := 'DELETE FROM cuenta WHERE idcuenta = ' || OLD.idcuentaventafamilia;
-		    PERFORM dblink_exec(query);
+		    PERFORM dblink_exec('bulmafact2cont', query);
 
 		    query := 'DELETE FROM cuenta WHERE idcuenta = ' || OLD.idcuentacomprafamilia;
-		    PERFORM dblink_exec(query);
+		    PERFORM dblink_exec('bulmafact2cont', query);
 
 		    -- Discrimina entre producto o servicio para hacer un INSERT.
 		    IF NEW.productofisicofamilia IS TRUE THEN
@@ -1419,7 +1443,7 @@ BEGIN
 
 			    -- Creamos el Query de insercion
 			    quer := 'INSERT INTO cuenta (descripcion, padre, codigo, tipocuenta) VALUES ( ' || descripcion ||', ' || idpadre || ', ''' || codcta || ''' , '|| tipocuenta1 || ')';
-			    PERFORM dblink_exec(quer);
+			    PERFORM dblink_exec('bulmafact2cont', quer);
 
 			    SELECT INTO bs max(idcuenta) AS id FROM bc_cuenta;
 			    NEW.idcuentaventafamilia := bs.id;
@@ -1440,7 +1464,7 @@ BEGIN
 
 			    -- Creamos el Query de insercion
 			    quer := 'INSERT INTO cuenta (descripcion, padre, codigo, tipocuenta) VALUES ( ' || descripcion ||', ' || idpadre || ', ''' || codcta || ''' , '|| tipocuenta1 || ')';
-			    PERFORM dblink_exec(quer);
+			    PERFORM dblink_exec('bulmafact2cont', quer);
 
 			    SELECT INTO bs max(idcuenta) AS id FROM bc_cuenta;
 			    NEW.idcuentacomprafamilia := bs.id;
@@ -1462,7 +1486,7 @@ BEGIN
 
 			    -- Creamos el Query de insercion
 			    quer := 'INSERT INTO cuenta (descripcion, padre, codigo, tipocuenta) VALUES ( ' || descripcion ||', ' || idpadre || ', ''' || codcta || ''' , '|| tipocuenta1 || ')';
-			    PERFORM dblink_exec(quer);
+			    PERFORM dblink_exec('bulmafact2cont', quer);
 
 			    SELECT INTO bs max(idcuenta) AS id FROM bc_cuenta;
 			    NEW.idcuentaventafamilia := bs.id;
@@ -1477,7 +1501,7 @@ BEGIN
 	END IF;
 
 
-	PERFORM dblink_disconnect();
+	PERFORM dblink_disconnect('bulmafact2cont');
 	RETURN NEW;
 END;
 $$ LANGUAGE plpgsql;
@@ -1489,24 +1513,6 @@ CREATE TRIGGER syncbulmacontfamiliatriggeru
     EXECUTE PROCEDURE syncbulmacontfamiliau();
 
 \echo "Creado el trigger que al modificar o insertar una familia en la facturacion mete el correspondiente asiento en la contabilidad"
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
