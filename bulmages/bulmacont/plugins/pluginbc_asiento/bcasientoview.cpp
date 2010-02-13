@@ -626,16 +626,16 @@ void BcAsientoList::boton_anterior()
 **/
 void BcAsientoList::situarasiento ( QString idasiento )
 {
-    _depura ( "BcAsientoList::situarasiento ", 0, idasiento );
+    _depura ( "BcAsientoList::situarasiento ", 0, idasiento + " Numero de registros: " + cursorasientos->numregistros() );
     try {
-        if ( cursorasientos == NULL )
+        if ( cursorasientos->numregistros() == NULL )
             throw - 1;
         cursorasientos->firstRecord();
         while ( cursorasientos->valor ( "idasiento" ) != idasiento && !cursorasientos->isLastRecord() ) {
             cursorasientos->nextRecord();
         } // end while
     } catch ( ... ) {
-        mensajeInfo ( "Error al intentar situarse en el asiento" );
+        mensajeError ( "Error al intentar situarse en el asiento.\nEs posible que el asiento ya no exista en la base de datos.\nActualice el listado de asientos." );
         throw - 1;
     } // end try
     _depura ( "END BcAsientoList::situarasiento", 0, idasiento );

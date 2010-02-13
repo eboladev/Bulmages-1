@@ -953,7 +953,7 @@ BEGIN
 		NEW.idcuentacliente = bs.id;
 
 	ELSE
-		quer := 'UPDATE cuenta SET descripcion = ' || descripcion || ', cifent_cuenta = ''' || cif || ''', nombreent_cuenta = ''' || NEW.nomaltcliente || ''', dirent_cuenta = ''' || NEW.dircliente || ''', cpent_cuenta = ''' || cp || ''', telent_cuenta = ''' || NEW.telcliente || ''', bancoent_cuenta = ''' || NEW.bancocliente || ''', emailent_cuenta = ''' || NEW.mailcliente || ''', webent_cuenta = ''' || NEW.urlcliente || ''' WHERE idcuenta= ' || NEW.idcuentacliente;
+		quer := 'UPDATE cuenta SET descripcion = ' || descripcion || ', cifent_cuenta = ''' || COALESCE(cif, '') || ''', nombreent_cuenta = ''' || COALESCE(NEW.nomaltcliente, '') || ''', dirent_cuenta = ''' || COALESCE(NEW.dircliente, '') || ''', cpent_cuenta = ''' || COALESCE(cp, '') || ''', telent_cuenta = ''' || COALESCE(NEW.telcliente, '') || ''', bancoent_cuenta = ''' || COALESCE(NEW.bancocliente, '') || ''', emailent_cuenta = ''' || COALESCE(NEW.mailcliente, '') || ''', webent_cuenta = ''' || COALESCE(NEW.urlcliente, '') || ''' WHERE idcuenta = ' || NEW.idcuentacliente;
 		PERFORM dblink_exec('bulmafact2cont', quer);
 	END IF;
 
@@ -1254,7 +1254,7 @@ BEGIN
 			codcta := '5700001';
 		END IF;
 	
-		-- Buscamos la cuenta padre (la 4300)
+		-- Buscamos la cuenta padre (la 5700)
 		SELECT INTO bs idcuenta, tipocuenta FROM bc_cuenta WHERE codigo ='570';
 		idpadre := bs.idcuenta;
 		tipocuenta1 := bs.tipocuenta;
