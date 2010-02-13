@@ -1,5 +1,6 @@
 --
--- Modificación de campos y funciones de la BD para la adaptacion para el plugin de Trazabilidad
+-- Modificación de campos y alta de funciones en la base de datos de BulmaFact
+-- para la sincronización de datos con BulmaCont.
 --
 \echo "********* INICIADO DESINSTALADOR DE ESTRUCTURA DEL PLUGIN DE SINCRONIZACION CON BULMACONT *********"
 
@@ -10,12 +11,6 @@ SET log_min_messages TO WARNING;
 -- SET log_error_verbosity TO TERSE;
 BEGIN;
 
---
--- Estas primeras funciones cambiaran los tipos de columnas que est� como flotantes a NUMERIC.
--- Se trata de un parche que se desea aplicar para almacenar los tipos monetarios
--- ya que actualmente se encuantran almacenados como 'doubles' y es preferible
--- que se almacenen como tipo 'numeric'.
--- Todas devuelven como valor numeico el nmero de filas influenciadas por el cambio
 --
 -- Función auxiliar para borrar funciones limpiamente
 --
@@ -168,6 +163,12 @@ SELECT drop_if_exists_proc ('syncbulmacontalmacend','');
 \echo "Borrado el trigger que al borrar un banco borra la respectiva cuenta en la contabilidad"
 SELECT drop_if_exists_proc ('syncbulmacontalmacenu','');
 \echo "Borrado el trigger que al modificar o insertar un almacen en la facturacion mete el correspondiente asiento en la contabilidad"
+
+
+SELECT drop_if_exists_proc ('syncbulmacontclienteup','');
+SELECT drop_if_exists_proc ('syncbulmacontfamiliaup','');
+SELECT drop_if_exists_proc ('syncbulmacontproveedorup','');
+
 
 -- Agregamos nuevos parametros de configuracion.
 --
