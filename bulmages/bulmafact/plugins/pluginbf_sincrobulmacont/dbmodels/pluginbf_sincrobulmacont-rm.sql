@@ -170,6 +170,9 @@ SELECT drop_if_exists_proc ('syncbulmacontfamiliaup','');
 SELECT drop_if_exists_proc ('syncbulmacontproveedorup','');
 SELECT drop_if_exists_proc ('syncbulmacontcobroup','');
 SELECT drop_if_exists_proc ('syncbulmacontpagoup','');
+SELECT drop_if_exists_proc ('syncbulmacontbancoup','');
+SELECT drop_if_exists_proc ('syncbulmacontalmacenup','');
+
 
 
 -- Agregamos nuevos parametros de configuracion.
