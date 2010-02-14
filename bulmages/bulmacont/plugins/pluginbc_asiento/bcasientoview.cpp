@@ -628,7 +628,7 @@ void BcAsientoList::situarasiento ( QString idasiento )
 {
     _depura ( "BcAsientoList::situarasiento ", 0, idasiento );
     try {
-        if ( cursorasientos->numregistros() )
+        if ( cursorasientos == NULL )
             throw - 1;
         cursorasientos->firstRecord();
         while ( cursorasientos->valor ( "idasiento" ) != idasiento && !cursorasientos->isLastRecord() ) {
