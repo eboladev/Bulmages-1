@@ -171,7 +171,8 @@ DECLARE
 	query TEXT;
 BEGIN
 	PERFORM conectabulmacont();
-	-- Hacemos el update del stock del articulo
+	PERFORM dblink_exec('bulmafact2cont', 'BEGIN WORK;');
+	
 	IF OLD.idasientopago IS NOT NULL THEN
 		query := 'DELETE FROM apunte WHERE idasiento= ' || OLD.idasientopago;
 		PERFORM dblink_exec('bulmafact2cont', query);
@@ -181,6 +182,7 @@ BEGIN
 		PERFORM dblink_exec('bulmafact2cont', query);
 	END IF;
 
+	PERFORM dblink_exec('bulmafact2cont', 'COMMIT WORK;');
 	PERFORM dblink_disconnect('bulmafact2cont');
 	RETURN OLD;
 END;
@@ -213,6 +215,7 @@ DECLARE
 BEGIN
 	-- conectamos con contabilidad, etc
 	PERFORM conectabulmacont();
+	PERFORM dblink_exec('bulmafact2cont', 'BEGIN WORK;');
 
 	concepto := '[A. Automatico] Pago ' || NEW.refpago;
 	concepto1 := 'Pago ' || NEW.refpago;
@@ -229,7 +232,6 @@ BEGIN
 	END IF;
 
 
-	-- Hacemos el update del stock del articulo
 	IF asientonuevo IS FALSE THEN
 		query := 'DELETE FROM apunte WHERE idasiento= ' || NEW.idasientopago;
 		PERFORM dblink_exec('bulmafact2cont', query);
@@ -238,7 +240,6 @@ BEGIN
 		query := 'UPDATE asiento SET descripcion = ''' || concepto || ''', comentariosasiento = ''' || concepto || ''' WHERE idasiento = ' || NEW.idasientopago;
 		PERFORM dblink_exec('bulmafact2cont', query);
 	ELSE
-		-- Hacemos el update del stock del articulo
 		query := 'INSERT INTO asiento (fecha, descripcion, comentariosasiento) VALUES ( ' || quote_literal(NEW.fechapago) || ', ''' || concepto || ''', ''' || concepto || ''')';
 		PERFORM dblink_exec('bulmafact2cont', query);
 
@@ -247,10 +248,11 @@ BEGIN
 	END IF;
 
 
-	-- Buscamos el cliente y su cuenta.
+	-- Buscamos el proveedor y su cuenta.
 	SELECT INTO client idcuentaproveedor FROM proveedor WHERE idproveedor = NEW.idproveedor;
 	IF NOT FOUND THEN
-		RAISE EXCEPTION 'El cliente no tiene cuenta asociada en la contabilidad';
+		PERFORM dblink_exec('bulmafact2cont', 'ROLLBACK WORK;');
+		RAISE EXCEPTION 'El proveedor no tiene cuenta asociada en la contabilidad';
 	END IF;
 	idctacliente := client.idcuentaproveedor;
 
@@ -259,21 +261,21 @@ BEGIN
 	IF NEW.idbanco IS NOT NULL THEN
 		SELECT INTO qbanco idcuentabanco FROM banco WHERE idbanco = NEW.idbanco;
 		IF NOT FOUND THEN
+			PERFORM dblink_exec('bulmafact2cont', 'ROLLBACK WORK;');
 			RAISE EXCEPTION 'El banco no tiene cuenta asociada en la contabilidad';
 		END IF;
 		idctapago := qbanco.idcuentabanco;
 	ELSE
 		-- Buscamos la cuenta de servicio o de venta
 		SELECT INTO cs MAX(idcuenta) AS id FROM bc_cuenta WHERE codigo LIKE '5700%';
-		IF NOT FOUND THEN
+		IF cs.id IS NULL THEN
+			PERFORM dblink_exec('bulmafact2cont', 'ROLLBACK WORK;');
 			RAISE EXCEPTION 'No existe la cuenta de Caja 5700...';
 		END IF;
 		idctapago := cs.id;
 	END IF;
 
-
-
-	-- Apunte opr el proveedor
+	-- Apunte por el proveedor
 	query := 'INSERT INTO borrador (fecha, idcuenta, debe, idasiento, descripcion, conceptocontable) VALUES (''' || NEW.fechapago || ''', ' || idctacliente || ', ' || NEW.cantpago || ', '|| NEW.idasientopago ||', ''' || concepto1 || ''', ''Pago'')';
 	PERFORM dblink_exec('bulmafact2cont', query);
 
@@ -282,8 +284,6 @@ BEGIN
 	query := 'INSERT INTO borrador (fecha, idcuenta, haber, idasiento, descripcion, conceptocontable) VALUES (''' || NEW.fechapago || ''', ' || idctapago || ', ' || NEW.cantpago || ', '|| NEW.idasientopago ||', ''' || concepto1 || ''', ''Pago'')';
 	PERFORM dblink_exec('bulmafact2cont', query);
 
-
-	PERFORM dblink_disconnect('bulmafact2cont');
 	RETURN NEW;
 END;
 $$ LANGUAGE plpgsql;
@@ -295,6 +295,30 @@ CREATE TRIGGER syncbulmacontpagotriggeru
     EXECUTE PROCEDURE syncbulmacontpagou();
 
 \echo "Creado el trigger que al modificar o insertar una factura en la facturacion mete el correspondiente asiento en la contabilidad"
+
+
+SELECT drop_if_exists_proc ('syncbulmacontpagoup','');
+CREATE FUNCTION syncbulmacontpagoup () RETURNS "trigger"
+AS $$
+DECLARE
+BEGIN
+
+      -- Hace un COMMIT de la conexion dblink si todo ha ido bien.
+      PERFORM dblink_exec('bulmafact2cont', 'COMMIT WORK;');
+      PERFORM dblink_disconnect('bulmafact2cont');
+
+      RETURN NULL;
+
+END;
+$$ LANGUAGE plpgsql;
+
+CREATE TRIGGER syncbulmacontpagotriggerup
+    AFTER UPDATE OR INSERT ON pago
+    FOR EACH STATEMENT
+    EXECUTE PROCEDURE syncbulmacontpagoup();
+
+
+
 
 -- =================================================================
 --           TRATO DE LOS COBROS
@@ -400,25 +424,23 @@ BEGIN
 		END IF;
 		idctacobro := qbanco.idcuentabanco;
 	ELSE
-		-- Buscamos la cuenta de servicio o de venta
+		-- Buscamos la cuenta de caja (efectivo)
 		SELECT INTO cs MAX(idcuenta) AS id FROM bc_cuenta WHERE codigo LIKE '5700%';
-		IF NOT FOUND THEN
+		IF cs.id IS NULL THEN
 			PERFORM dblink_exec('bulmafact2cont', 'ROLLBACK WORK;');
 			RAISE EXCEPTION 'No existe ls cuenta de Caja 5700...';
 		END IF;
 		idctacobro := cs.id;
 	END IF;
 
-	-- Apunte opr el proveedor
+	-- Apunte por el cliente
 	query := 'INSERT INTO borrador (fecha, idcuenta, haber, idasiento, descripcion, conceptocontable) VALUES (''' || NEW.fechacobro || ''', ' || idctacliente || ', ' || NEW.cantcobro || ', '|| NEW.idasientocobro ||', ''' || concepto1 || ''', ''Cobro'')';
 	PERFORM dblink_exec('bulmafact2cont', query);
 
 	-- Apunte por caja o banco.
-	query := 'INSERT INTO borrador (fecha, idcuenta, debe, idasiento, descripcion, conceptocontable) VALUES (''' || NEW.fechacobro || ''', ' || idctacobro || ', ' || NEW.cantcobro || ', '|| NEW.idasientocobro ||', ''' || concepto1 || ''', ''Cobro'')';
+	query := 'INSERT INTO borrador (fecha, idcuenta, debe, idasiento, descripcion, conceptocontable) VALUES (''' || NEW.fechacobro || ''', ' || idctacobro || ', ' || NEW.cantcobro || ', '|| NEW.idasientocobro ||', ''' || concepto  || ''', ''Cobro'')';
 	PERFORM dblink_exec('bulmafact2cont', query);
 
-
-	PERFORM dblink_disconnect('bulmafact2cont');
 	RETURN NEW;
 END;
 $$ LANGUAGE plpgsql;
@@ -428,6 +450,31 @@ CREATE TRIGGER syncbulmacontcobrotriggeru
     BEFORE INSERT OR UPDATE ON cobro
     FOR EACH ROW
     EXECUTE PROCEDURE syncbulmacontcobrou();
+
+
+
+SELECT drop_if_exists_proc ('syncbulmacontcobroup','');
+CREATE FUNCTION syncbulmacontcobroup () RETURNS "trigger"
+AS $$
+DECLARE
+BEGIN
+
+      -- Hace un COMMIT de la conexion dblink si todo ha ido bien.
+      PERFORM dblink_exec('bulmafact2cont', 'COMMIT WORK;');
+      PERFORM dblink_disconnect('bulmafact2cont');
+
+      RETURN NULL;
+
+END;
+$$ LANGUAGE plpgsql;
+
+CREATE TRIGGER syncbulmacontcobrotriggerup
+    AFTER UPDATE OR INSERT ON cobro
+    FOR EACH STATEMENT
+    EXECUTE PROCEDURE syncbulmacontcobroup();
+
+
+
 
 \echo "Creado el trigger que al modificar o insertar una factura en la facturacion mete el correspondiente asiento en la contabilidad"
 -- =================================================================
