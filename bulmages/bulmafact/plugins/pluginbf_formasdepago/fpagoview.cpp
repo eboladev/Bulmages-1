@@ -182,7 +182,7 @@ void FPagoView::on_mui_crear_clicked()
     /// Si se ha modificado el contenido advertimos y guardamos.
     trataModificado();
     QString idbanco = mui_idbanco->idbanco();
-    if (idbanco == "") idbanco = "NULL";
+    if ((idbanco == "") || (idbanco == "0")) idbanco = "NULL";
     QString query = "INSERT INTO forma_pago (descforma_pago, dias1tforma_pago, descuentoforma_pago, idbanco) VALUES ('NUEVA FORMA DE PAGO', 0, 0, "+ idbanco +")";
     mainCompany() ->begin();
     int error = mainCompany() ->runQuery ( query );
