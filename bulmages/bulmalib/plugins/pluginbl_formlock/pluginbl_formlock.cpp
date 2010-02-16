@@ -81,7 +81,8 @@ int BlForm_cargar ( BlForm *ficha )
                                           ficha->mainCompany()->currentUser() );
 
     if ( !cur1->eof() ) {
-        mensajeInfo ( _ ( "Ficha bloqueada por otro usuario, no podra hacer modificaciones" ) );
+       mensajeInfo ( _ ( "Esta ficha está siendo utilizada por el usuario \"%1\". Usted no podrá hacer cambios en este momento." )
+               .arg( cur1->valor("usuariobloqueo") ) );
 
         /// Miramos si existe un boton de guardar, borrar y uno de aceptar y los desactivamos
         QToolButton *pguardar = ficha->findChild<QToolButton *> ( "mui_guardar" );
