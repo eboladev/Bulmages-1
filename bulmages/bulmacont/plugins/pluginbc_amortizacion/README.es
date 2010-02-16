@@ -6,7 +6,7 @@ Plugins
 
 Nombre: Amortizaciones
 
-Biblioteca: libpluginbc_amortizaicon.so
+Biblioteca: libpluginbc_amortizacion.so
 
 Descripción: <H1>Amortizaciones</H1>
 <P>Permite gestionar las amortizaciones en la empresa..</P>

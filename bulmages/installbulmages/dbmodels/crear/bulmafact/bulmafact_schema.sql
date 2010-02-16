@@ -312,7 +312,6 @@ AS '
 DECLARE
 
 BEGIN
-    UPDATE familia SET codigocompletofamilia = codigocompletofamilia WHERE padrefamilia = NEW.idfamilia;
     UPDATE articulo SET codigocompletoarticulo = codigocompletoarticulo WHERE articulo.idfamilia = NEW.idfamilia;
     RETURN NEW;
 END;

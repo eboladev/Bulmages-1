@@ -144,18 +144,19 @@ DECLARE
 	quer TEXT;
 	check_dblink_connection BOOLEAN;
 BEGIN
-	SELECT INTO bs * FROM configuracion WHERE nombre='DataBaseContabilidad';
-	quer := 'dbname=' || bs.valor;
+	SELECT INTO bs * FROM configuracion WHERE nombre = 'DataBaseContabilidad';
+	quer := 'dbname =' || bs.valor;
 
 	check_dblink_connection = dblink_exists('bulmafact2cont');
 
 	IF check_dblink_connection IS TRUE THEN
 	      -- Si llega aqui es porque algo ha ido mal en alguna parte.
 	      PERFORM dblink_exec('bulmafact2cont', 'ROLLBACK WORK;');
-	ELSE
-	      PERFORM dblink_connect('bulmafact2cont', quer);
-	      PERFORM dblink_exec('bulmafact2cont',  'SET DATESTYLE TO SQL,European');
+	      PERFORM dblink_disconnect('bulmafact2cont');
 	END IF;
+
+	PERFORM dblink_connect('bulmafact2cont', quer);
+	PERFORM dblink_exec('bulmafact2cont',  'SET DATESTYLE TO SQL,European');
 
 	RETURN 0;
 END;
@@ -301,11 +302,18 @@ SELECT drop_if_exists_proc ('syncbulmacontpagoup','');
 CREATE FUNCTION syncbulmacontpagoup () RETURNS "trigger"
 AS $$
 DECLARE
+      check_dblink_connection BOOLEAN;
 BEGIN
 
-      -- Hace un COMMIT de la conexion dblink si todo ha ido bien.
-      PERFORM dblink_exec('bulmafact2cont', 'COMMIT WORK;');
-      PERFORM dblink_disconnect('bulmafact2cont');
+      check_dblink_connection = dblink_exists('bulmafact2cont');
+      
+      IF check_dblink_connection IS TRUE THEN
+	  -- Hace un COMMIT de la conexion dblink si todo ha ido bien.
+	  PERFORM dblink_exec('bulmafact2cont', 'COMMIT WORK;');
+	  PERFORM dblink_disconnect('bulmafact2cont');
+      ELSE
+	  RAISE EXCEPTION 'Se ha perdido la conexion dblink en syncbulmacontpagoup.';
+      END IF;
 
       RETURN NULL;
 
@@ -457,11 +465,18 @@ SELECT drop_if_exists_proc ('syncbulmacontcobroup','');
 CREATE FUNCTION syncbulmacontcobroup () RETURNS "trigger"
 AS $$
 DECLARE
+      check_dblink_connection BOOLEAN;
 BEGIN
 
-      -- Hace un COMMIT de la conexion dblink si todo ha ido bien.
-      PERFORM dblink_exec('bulmafact2cont', 'COMMIT WORK;');
-      PERFORM dblink_disconnect('bulmafact2cont');
+      check_dblink_connection = dblink_exists('bulmafact2cont');
+      
+      IF check_dblink_connection IS TRUE THEN
+	  -- Hace un COMMIT de la conexion dblink si todo ha ido bien.
+	  PERFORM dblink_exec('bulmafact2cont', 'COMMIT WORK;');
+	  PERFORM dblink_disconnect('bulmafact2cont');
+      ELSE
+	  RAISE EXCEPTION 'Se ha perdido la conexion dblink en syncbulmacontcobroup.';
+      END IF;
 
       RETURN NULL;
 
@@ -880,11 +895,8 @@ BEGIN
 		END IF;
 	END LOOP;
 
-
-
 	-- Calculamos el total de la factura.
 	SELECT INTO bs SUM (cantlfacturap*pvplfacturap*(100-descuentolfacturap)/100) AS base FROM lfacturap WHERE idfacturap = NEW.idfacturap;
-
 
 	-- Hacemos la insercion del borrador del apunte al proveedor.
 	total := bs.base * totaldesc * (1 - porirpf) + totaliva;
@@ -1021,11 +1033,18 @@ SELECT drop_if_exists_proc ('syncbulmacontclienteup','');
 CREATE FUNCTION syncbulmacontclienteup () RETURNS "trigger"
 AS $$
 DECLARE
+      check_dblink_connection BOOLEAN;
 BEGIN
 
-      -- Hace un COMMIT de la conexion dblink si todo ha ido bien.
-      PERFORM dblink_exec('bulmafact2cont', 'COMMIT WORK;');
-      PERFORM dblink_disconnect('bulmafact2cont');
+      check_dblink_connection = dblink_exists('bulmafact2cont');
+      
+      IF check_dblink_connection IS TRUE THEN
+	  -- Hace un COMMIT de la conexion dblink si todo ha ido bien.
+	  PERFORM dblink_exec('bulmafact2cont', 'COMMIT WORK;');
+	  PERFORM dblink_disconnect('bulmafact2cont');
+      ELSE
+	  RAISE EXCEPTION 'Se ha perdido la conexion dblink en syncbulmacontclienteup.';
+      END IF;
 
       RETURN NULL;
 
@@ -1140,11 +1159,18 @@ SELECT drop_if_exists_proc ('syncbulmacontproveedorup','');
 CREATE FUNCTION syncbulmacontproveedorup () RETURNS "trigger"
 AS $$
 DECLARE
+      check_dblink_connection BOOLEAN;
 BEGIN
 
-      -- Hace un COMMIT de la conexion dblink si todo ha ido bien.
-      PERFORM dblink_exec('bulmafact2cont', 'COMMIT WORK;');
-      PERFORM dblink_disconnect('bulmafact2cont');
+      check_dblink_connection = dblink_exists('bulmafact2cont');
+      
+      IF check_dblink_connection IS TRUE THEN
+	  -- Hace un COMMIT de la conexion dblink si todo ha ido bien.
+	  PERFORM dblink_exec('bulmafact2cont', 'COMMIT WORK;');
+	  PERFORM dblink_disconnect('bulmafact2cont');
+      ELSE
+	  RAISE EXCEPTION 'Se ha perdido la conexion dblink en syncbulmacontproveedorup.';
+      END IF;
 
       RETURN NULL;
 
@@ -1257,11 +1283,18 @@ SELECT drop_if_exists_proc ('syncbulmacontbancoup','');
 CREATE FUNCTION syncbulmacontbancoup () RETURNS "trigger"
 AS $$
 DECLARE
+      check_dblink_connection BOOLEAN;
 BEGIN
 
-      -- Hace un COMMIT de la conexion dblink si todo ha ido bien.
-      PERFORM dblink_exec('bulmafact2cont', 'COMMIT WORK;');
-      PERFORM dblink_disconnect('bulmafact2cont');
+      check_dblink_connection = dblink_exists('bulmafact2cont');
+      
+      IF check_dblink_connection IS TRUE THEN
+	  -- Hace un COMMIT de la conexion dblink si todo ha ido bien.
+	  PERFORM dblink_exec('bulmafact2cont', 'COMMIT WORK;');
+	  PERFORM dblink_disconnect('bulmafact2cont');
+      ELSE
+	  RAISE EXCEPTION 'Se ha perdido la conexion dblink en syncbulmacontbancoup.';
+      END IF;
 
       RETURN NULL;
 
@@ -1372,11 +1405,18 @@ SELECT drop_if_exists_proc ('syncbulmacontalmacenup','');
 CREATE FUNCTION syncbulmacontalmacenup () RETURNS "trigger"
 AS $$
 DECLARE
+      check_dblink_connection BOOLEAN;
 BEGIN
 
-      -- Hace un COMMIT de la conexion dblink si todo ha ido bien.
-      PERFORM dblink_exec('bulmafact2cont', 'COMMIT WORK;');
-      PERFORM dblink_disconnect('bulmafact2cont');
+      check_dblink_connection = dblink_exists('bulmafact2cont');
+      
+      IF check_dblink_connection IS TRUE THEN
+	  -- Hace un COMMIT de la conexion dblink si todo ha ido bien.
+	  PERFORM dblink_exec('bulmafact2cont', 'COMMIT WORK;');
+	  PERFORM dblink_disconnect('bulmafact2cont');
+      ELSE
+	  RAISE EXCEPTION 'Se ha perdido la conexion dblink en syncbulmacontalmacenup.';
+      END IF;
 
       RETURN NULL;
 
@@ -1451,6 +1491,7 @@ DECLARE
 	descripcion TEXT;
 	tipocuenta1 INTEGER;
 	query TEXT;
+  check_dblink_connection BOOLEAN;
 BEGIN
 	-- conectamos con contabilidad, etc
 	PERFORM conectabulmacont();
@@ -1459,7 +1500,6 @@ BEGIN
 	-- de integridad de los datos.
 	-- Hay que hacer un ROLLBACK WORK explicito ANTES de cada RAISE EXCEPTION.
 	PERFORM dblink_exec('bulmafact2cont', 'BEGIN WORK;');
-
 
 	-- Cogemos el nombre de la cuenta.
 	descripcion := quote_literal(NEW.nombrefamilia);
@@ -1510,6 +1550,7 @@ BEGIN
 			SELECT INTO bs MAX(idcuenta) AS id FROM bc_cuenta;
 			NEW.idcuentacomprafamilia := bs.id;
 
+
 		ELSE
 		    -- Servicio VENTA
 			-- Buscamos el codigo de cuenta que vaya a corresponderle.
@@ -1520,7 +1561,7 @@ BEGIN
 				codcta := '7050001';
 			END IF;
 
-			-- Buscamos la cuenta padre (la 700)
+			-- Buscamos la cuenta padre (la 705)
 			SELECT INTO bs idcuenta, tipocuenta FROM bc_cuenta WHERE codigo ='705';
 			idpadre := bs.idcuenta;
 			tipocuenta1 := bs.tipocuenta;
@@ -1536,15 +1577,16 @@ BEGIN
 
 		END IF;
 
+
 	ELSE
 		-- Al hacer el UPDATE hay que ve que no se haya cambiado de PRODUCTO a SERVICIO y viceversa
 		-- o actuar en consecuencia.
 		IF NEW.productofisicofamilia = OLD.productofisicofamilia THEN
 		    -- No se ha cambiado. Solo actualiza datos.
-		    quer := 'UPDATE cuenta SET descripcion =' || descripcion || ' WHERE idcuenta =' || NEW.idcuentaventafamilia;
+		    quer := 'UPDATE cuenta SET descripcion = ' || descripcion || ' WHERE idcuenta = ' || NEW.idcuentaventafamilia;
 		    PERFORM dblink_exec('bulmafact2cont', quer);
 
-		    quer := 'UPDATE cuenta SET descripcion =' || descripcion || ' WHERE idcuenta =' || NEW.idcuentacomprafamilia;
+		    quer := 'UPDATE cuenta SET descripcion = ' || descripcion || ' WHERE idcuenta = ' || NEW.idcuentacomprafamilia;
 		    PERFORM dblink_exec('bulmafact2cont', quer);
 
 		ELSE
@@ -1588,7 +1630,7 @@ BEGIN
 				    codcta := '6000001';
 			    END IF;
 
-			    -- Buscamos la cuenta padre (la 700)
+			    -- Buscamos la cuenta padre (la 600)
 			    SELECT INTO bs idcuenta, tipocuenta FROM bc_cuenta WHERE codigo ='600';
 			    idpadre := bs.idcuenta;
 			    tipocuenta1 := bs.tipocuenta;
@@ -1611,7 +1653,7 @@ BEGIN
 			    END IF;
 
 			    -- Buscamos la cuenta padre (la 705)
-			    SELECT INTO bs idcuenta, tipocuenta FROM bc_cuenta WHERE codigo ='705';
+			    SELECT INTO bs idcuenta, tipocuenta FROM bc_cuenta WHERE codigo = '705';
 			    idpadre := bs.idcuenta;
 			    tipocuenta1 := bs.tipocuenta;
 
@@ -1647,11 +1689,18 @@ SELECT drop_if_exists_proc ('syncbulmacontfamiliaup','');
 CREATE FUNCTION syncbulmacontfamiliaup () RETURNS "trigger"
 AS $$
 DECLARE
+  check_dblink_connection BOOLEAN;
 BEGIN
 
-      -- Hace un COMMIT de la conexion dblink si todo ha ido bien.
-      PERFORM dblink_exec('bulmafact2cont', 'COMMIT WORK;');
-      PERFORM dblink_disconnect('bulmafact2cont');
+	check_dblink_connection = dblink_exists('bulmafact2cont');
+	
+	IF check_dblink_connection IS TRUE THEN
+	    -- Hace un COMMIT de la conexion dblink si todo ha ido bien.
+	    PERFORM dblink_exec('bulmafact2cont', 'COMMIT WORK;');
+	    PERFORM dblink_disconnect('bulmafact2cont');
+	ELSE
+	    RAISE EXCEPTION 'Se ha perdido la conexion dblink en syncbulmacontfamiliaup.';
+	END IF;
 
       RETURN NULL;
 
@@ -1662,6 +1711,7 @@ CREATE TRIGGER syncbulmacontfamiliatriggerup
     AFTER UPDATE OR INSERT ON familia
     FOR EACH STATEMENT
     EXECUTE PROCEDURE syncbulmacontfamiliaup();
+
 
 
 

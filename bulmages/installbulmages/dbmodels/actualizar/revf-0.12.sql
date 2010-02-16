@@ -145,24 +145,35 @@ CREATE OR REPLACE FUNCTION aux() RETURNS INTEGER AS '
 DECLARE
         bs RECORD;
         cs RECORD;
+        ds RECORD;
+        es RECORD;
 BEGIN
 
-
-   SELECT INTO bs attname, relname FROM pg_attribute LEFT JOIN pg_class ON pg_attribute.attrelid=pg_class.oid WHERE attname=''cobro'' AND relname=''idforma_pago'';
+   --SELECT INTO bs attname, relname FROM pg_attribute LEFT JOIN pg_class ON pg_attribute.attrelid=pg_class.oid WHERE attname=''cobro'' AND relname=''idforma_pago'';
+   SELECT INTO bs attname FROM pg_attribute WHERE attrelid = ''cobro''::regclass AND attname = ''idforma_pago'' AND attisdropped IS FALSE AND attnum >= 1 ORDER BY attnum;
    IF NOT FOUND THEN
-           ALTER TABLE cobro  ADD COLUMN idforma_pago integer REFERENCES forma_pago(idforma_pago) ;
+           ALTER TABLE cobro ADD COLUMN idforma_pago integer REFERENCES forma_pago(idforma_pago) ;
 -- para compatibilidad con las bd de la branch docsMonolitic que usaban idbanco en lugar de 
 -- sufijo
 --           UPDATE banco set sufijobanco = idbanco ;
    END IF;
 
    FOR bs IN SELECT * FROM banco LOOP
-      INSERT INTO forma_pago (descforma_pago, idbanco) VALUES (bs.nombanco, bs.idbanco);
-      SELECT INTO cs MAX(idforma_pago) AS idf FROM forma_pago LIMIT 1;
-      UPDATE cobro set idforma_pago = cs.idf WHERE idbanco = bs.idbanco;
-   END LOOP;
-  
+   
+      SELECT INTO es idbanco FROM forma_pago WHERE idbanco = bs.idbanco;
+      IF NOT FOUND THEN
+   
+          INSERT INTO forma_pago (descforma_pago, idbanco) VALUES (bs.nombanco, bs.idbanco);
+	  SELECT INTO cs MAX(idforma_pago) AS idf FROM forma_pago LIMIT 1;
+      
+          SELECT INTO ds idbanco FROM cobro WHERE idcobro = bs.idbanco;
+          IF FOUND THEN
+		  UPDATE cobro set idforma_pago = cs.idf WHERE idbanco = bs.idbanco;
+	  END IF;
 
+      END IF;
+
+   END LOOP;
 
    RETURN 0;
 END;
@@ -170,6 +181,27 @@ END;
 SELECT aux();
 DROP FUNCTION aux() CASCADE;
 
+
+
+
+\echo -n ':: Funcion que propaga el codigo completo de la familia ... '
+SELECT drop_if_exists_proc ('propagacodigocompletofamilia','');        
+CREATE FUNCTION propagacodigocompletofamilia() RETURNS "trigger"
+AS '
+DECLARE
+
+BEGIN
+    UPDATE articulo SET codigocompletoarticulo = codigocompletoarticulo WHERE articulo.idfamilia = NEW.idfamilia;
+    RETURN NEW;
+END;
+' LANGUAGE plpgsql;
+
+
+\echo -n ':: Disparador que propaga el codigo completo de la familia ... '
+CREATE TRIGGER propagacodigocompletofamiliatrigger
+    AFTER UPDATE ON familia
+    FOR EACH ROW
+    EXECUTE PROCEDURE propagacodigocompletofamilia();
 
 
 
