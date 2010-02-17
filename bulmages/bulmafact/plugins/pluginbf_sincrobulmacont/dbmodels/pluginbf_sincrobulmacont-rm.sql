@@ -174,6 +174,10 @@ SELECT drop_if_exists_proc ('syncbulmacontbancoup','');
 SELECT drop_if_exists_proc ('syncbulmacontalmacenup','');
 
 
+SELECT drop_if_exists_proc ('syncbulmacontclienteupre','');
+
+
+
 
 -- Agregamos nuevos parametros de configuracion.
 --

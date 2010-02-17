@@ -133,7 +133,7 @@ DROP FUNCTION aux() CASCADE;
 
 CREATE OR REPLACE FUNCTION dblink_exists(text)
 RETURNS bool AS $$
-  SELECT COALESCE($1 = ANY (dblink_get_connections()), false)
+  SELECT COALESCE($1 = ANY (dblink_get_connections()), false);
 $$ LANGUAGE sql;
 
 
@@ -150,9 +150,9 @@ BEGIN
 	check_dblink_connection = dblink_exists('bulmafact2cont');
 
 	IF check_dblink_connection IS TRUE THEN
-	      -- Si llega aqui es porque algo ha ido mal en alguna parte.
-	      PERFORM dblink_exec('bulmafact2cont', 'ROLLBACK WORK;');
-	      PERFORM dblink_disconnect('bulmafact2cont');
+	    RAISE NOTICE 'ROLLBACK dblink';
+	    PERFORM dblink_exec('bulmafact2cont', 'ROLLBACK WORK;');
+	    PERFORM dblink_disconnect('bulmafact2cont');
 	END IF;
 
 	PERFORM dblink_connect('bulmafact2cont', quer);
@@ -965,11 +965,41 @@ CREATE TRIGGER syncbulmacontclientetriggerd
 
 
 
+
+SELECT drop_if_exists_proc ('syncbulmacontclienteupre','');
+CREATE FUNCTION syncbulmacontclienteupre () RETURNS "trigger"
+AS $$
+DECLARE
+BEGIN
+
+      PERFORM conectabulmacont();
+
+      -- Es necesario controlar la transaccion que se hace en la base de datos enlazada porque no actua
+      -- dentro de la transaccion de esta funcion y si hay un error no desaria los cambios provocando problemas
+      -- de integridad de los datos.
+      -- Hay que hacer un ROLLBACK WORK explicito ANTES de cada RAISE EXCEPTION.
+      PERFORM dblink_exec('bulmafact2cont', 'BEGIN WORK;');
+
+      RETURN NULL;
+
+END;
+$$ LANGUAGE plpgsql;
+
+CREATE TRIGGER syncbulmacontclientetriggerupre
+    BEFORE UPDATE OR INSERT ON cliente
+    FOR EACH STATEMENT
+    EXECUTE PROCEDURE syncbulmacontclienteupre();
+
+
+
+
+
 SELECT drop_if_exists_proc ('syncbulmacontclienteu','');
 CREATE FUNCTION syncbulmacontclienteu () RETURNS "trigger"
 AS $$
 DECLARE
 	bs RECORD;
+	cs RECORD;
 	quer TEXT;
 	subquery TEXT;
 	codcta INTEGER;
@@ -980,20 +1010,16 @@ DECLARE
 	cuentasiguiente TEXT;
 
 BEGIN
-	PERFORM conectabulmacont();
-
-	-- Es necesario controlar la transaccion que se hace en la base de datos enlazada porque no actua
-	-- dentro de la transaccion de esta funcion y si hay un error no desaria los cambios provocando problemas
-	-- de integridad de los datos.
-	-- Hay que hacer un ROLLBACK WORK explicito ANTES de cada RAISE EXCEPTION.
-	PERFORM dblink_exec('bulmafact2cont', 'BEGIN WORK;');
 
 	-- Cogemos el nombre de la cuenta.
 	descripcion := quote_literal(NEW.nomcliente);
 	cp := substring(NEW.cpcliente, length(NEW.cpcliente)-4, 5);
 	cif := substring(NEW.cifcliente, length(NEW.cifcliente)-11, 12);
 
-	IF NEW.idcuentacliente IS NULL THEN
+
+	SELECT INTO cs count(idcuenta) AS c_idcuenta FROM bc_cuenta WHERE idcuenta = NEW.idcuentacliente;
+
+	IF (NEW.idcuentacliente IS NULL) OR (cs.c_idcuenta = 0) THEN
 		-- Buscamos el codigo de cuenta que vaya a corresponderle
 		SELECT INTO bs max(codigo::INTEGER) as cod FROM bc_cuenta WHERE codigo LIKE '43000%';
 		IF bs.cod IS NOT NULL THEN
@@ -1040,6 +1066,7 @@ BEGIN
       
       IF check_dblink_connection IS TRUE THEN
 	  -- Hace un COMMIT de la conexion dblink si todo ha ido bien.
+
 	  PERFORM dblink_exec('bulmafact2cont', 'COMMIT WORK;');
 	  PERFORM dblink_disconnect('bulmafact2cont');
       ELSE
