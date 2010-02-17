@@ -1002,7 +1002,7 @@ DECLARE
 	cs RECORD;
 	quer TEXT;
 	subquery TEXT;
-	codcta INTEGER;
+	codcta TEXT;
 	idpadre INTEGER;
 	descripcion TEXT;
 	cp TEXT;
@@ -1021,9 +1021,12 @@ BEGIN
 
 	IF (NEW.idcuentacliente IS NULL) OR (cs.c_idcuenta = 0) THEN
 		-- Buscamos el codigo de cuenta que vaya a corresponderle
-		SELECT INTO bs max(codigo::INTEGER) as cod FROM bc_cuenta WHERE codigo LIKE '43000%';
+		-- El codigo esta formado por una parte fija y otra que se calcula automaticamente.
+		-- Se evita de esta manera la limitacion a 100 cuentas.
+		SELECT INTO bs substring(max(codigo::BIGINT)::text from 6) as cod FROM bc_cuenta WHERE codigo LIKE '43000%';
+
 		IF bs.cod IS NOT NULL THEN
-			codcta := bs.cod + 1;
+			codcta := '430000' || (bs.cod::integer + 1)::text;
 		ELSE
 			codcta := '4300001';
 		END IF;
