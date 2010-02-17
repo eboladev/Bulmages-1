@@ -28,7 +28,7 @@ configure_file( ${CMAKE_SOURCE_DIR}/installbulmages/examples/scripts/actualizabu
 configure_file( ${CMAKE_SOURCE_DIR}/installbulmages/examples/scripts/actualizabulmafact.in actualizabulmafact @ONLY)
 configure_file( ${CMAKE_SOURCE_DIR}/installbulmages/examples/scripts/creabulmacont.in creabulmacont @ONLY)
 configure_file( ${CMAKE_SOURCE_DIR}/installbulmages/examples/scripts/creabulmafact.in creabulmafact @ONLY)
-configure_file( ${CMAKE_SOURCE_DIR}/installbulmages/bgtrml2pdf/bgtrml2pdf.in bgtrml2pdf @ONLY)
+configure_file( ${CMAKE_SOURCE_DIR}/installbulmages/bgtrml2pdf/bgtrml2pdf.in bgtrml2pdf.py  @ONLY)
 
 configure_file( ${CMAKE_SOURCE_DIR}/installbulmages/i18n/create_gettext_files.in create_gettext_files @ONLY)
 configure_file( ${CMAKE_SOURCE_DIR}/installbulmages/i18n/create_message_catalog.in create_message_catalog @ONLY)
@@ -41,11 +41,10 @@ install(DIRECTORY ainteligentes canuales planescontables rev-conf
 				DESTINATION share/bulmages
  				PATTERN ".svn" EXCLUDE)
 
-install(FILES ${CMAKE_BINARY_DIR}/bgtrml2pdf
-		DESTINATION bin/
+install(FILES ${CMAKE_CURRENT_BINARY_DIR}/bgtrml2pdf.py DESTINATION bin RENAME bgtrml2pdf
                 PERMISSIONS OWNER_EXECUTE OWNER_WRITE OWNER_READ
-                	    GROUP_EXECUTE GROUP_READ
-                            WORLD_READ WORLD_EXECUTE)
+                GROUP_EXECUTE GROUP_READ
+                WORLD_READ WORLD_EXECUTE)
 
 file(GLOB f_rml bgtrml2pdf/*.py)
 install(FILES ${f_rml} 
@@ -69,23 +68,20 @@ install(DIRECTORY ainteligentes canuales planescontables ${CMAKE_BINARY_DIR}/css
 install(DIRECTORY man DESTINATION share/
 				PATTERN ".svn" EXCLUDE)
 			
-FILE(GLOB files COPYING ${CMAKE_BINARY_DIR}/version)
+FILE(GLOB files COPYING version)
 install(FILES ${files} DESTINATION share/bulmages)
 
-FILE(GLOB conf_etc ${CMAKE_BINARY_DIR}/bulmacont.conf 
-					${CMAKE_BINARY_DIR}/bulmafact.conf
-					${CMAKE_BINARY_DIR}/bulmages.conf
-					${CMAKE_BINARY_DIR}/bulmatpv.conf)
+FILE(GLOB conf_etc bulmacont.conf bulmafact.conf bulmages.conf bulmatpv.conf)
 install(FILES ${conf_etc} DESTINATION ${BULMAGES_CONFIG_DIR})
 
 install(DIRECTORY examples/databases DESTINATION share/bulmages/examples/
             PATTERN ".svn" EXCLUDE)
 
-FILE(GLOB scripts_ex ${CMAKE_BINARY_DIR}/installbulmages-db
-                     ${CMAKE_BINARY_DIR}/actualizabulmacont
-                     ${CMAKE_BINARY_DIR}/actualizabulmafact
-                     ${CMAKE_BINARY_DIR}/creabulmacont
-                     ${CMAKE_BINARY_DIR}/creabulmafact)
+FILE(GLOB scripts_ex installbulmages-db
+                     actualizabulmacont
+                     actualizabulmafact
+                     creabulmacont
+                     creabulmafact)
 install(FILES ${scripts_ex} DESTINATION share/bulmages/examples/scripts
 	PERMISSIONS OWNER_EXECUTE OWNER_WRITE OWNER_READ
                 	    GROUP_EXECUTE GROUP_READ

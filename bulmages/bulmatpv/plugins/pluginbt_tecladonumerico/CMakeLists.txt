@@ -16,7 +16,7 @@ list(REMOVE_ITEM plugin_MOCS ${plugin_NO_MOCS})
 file(GLOB plugin_UIS *.ui)
 
 
-configure_file( ${CMAKE_CURRENT_SOURCE_DIR}/css/${plugin}.css.in ${plugin}.css @ONLY)
+configure_file( ${CMAKE_CURRENT_SOURCE_DIR}/css/${plugin}.css.in ${CMAKE_CURRENT_BINARY_DIR}/${plugin}.css @ONLY)
 
 
 set(QT_USE_QTASSISTANT true)
@@ -91,7 +91,7 @@ add_dependencies(${plugin} bulmatpv bulmalib)
 
 install_targets(/lib/bulmatpv/plugins ${plugin})
 
-FILE(READ ${CMAKE_BINARY_DIR}/${plugin}.css VAR_CSS)
+FILE(READ ${CMAKE_CURRENT_BINARY_DIR}/${plugin}.css VAR_CSS)
 FILE(APPEND ${CMAKE_BINARY_DIR}/css/bulmatpv.css "${VAR_CSS}" )
 
 install(DIRECTORY images DESTINATION share/bulmages PATTERN ".svn" EXCLUDE)
