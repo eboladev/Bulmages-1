@@ -41,7 +41,7 @@ install(DIRECTORY ainteligentes canuales planescontables rev-conf
 				DESTINATION share/bulmages
  				PATTERN ".svn" EXCLUDE)
 
-install(FILES ${CMAKE_CURRENT_BINARY_DIR}/bgtrml2pdf.py DESTINATION bin RENAME bgtrml2pdf
+install(FILES ${CMAKE_BINARY_DIR}/bgtrml2pdf.py DESTINATION bin RENAME bgtrml2pdf
                 PERMISSIONS OWNER_EXECUTE OWNER_WRITE OWNER_READ
                 GROUP_EXECUTE GROUP_READ
                 WORLD_READ WORLD_EXECUTE)
