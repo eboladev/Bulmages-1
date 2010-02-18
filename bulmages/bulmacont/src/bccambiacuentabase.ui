@@ -6,21 +6,15 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>672</width>
-    <height>151</height>
+    <width>611</width>
+    <height>232</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>Cambiar Cuenta</string>
   </property>
-  <layout class="QGridLayout">
-   <property name="margin">
-    <number>5</number>
-   </property>
-   <property name="spacing">
-    <number>2</number>
-   </property>
-   <item row="3" column="1">
+  <layout class="QGridLayout" name="gridLayout">
+   <item row="0" column="0" colspan="3">
     <layout class="QHBoxLayout">
      <property name="spacing">
       <number>6</number>
@@ -28,32 +22,9 @@
      <property name="margin">
       <number>0</number>
      </property>
-     <item>
-      <widget class="QLabel" name="textLabel1_2_3_3">
-       <property name="sizePolicy">
-        <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
-         <horstretch>0</horstretch>
-         <verstretch>0</verstretch>
-        </sizepolicy>
-       </property>
-       <property name="text">
-        <string>Asiento Final</string>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QLineEdit" name="asientofinal">
-       <property name="sizePolicy">
-        <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-         <horstretch>0</horstretch>
-         <verstretch>0</verstretch>
-        </sizepolicy>
-       </property>
-      </widget>
-     </item>
     </layout>
    </item>
-   <item row="3" column="0">
+   <item row="0" column="3" colspan="3">
     <layout class="QHBoxLayout">
      <property name="spacing">
       <number>6</number>
@@ -61,118 +32,159 @@
      <property name="margin">
       <number>0</number>
      </property>
-     <item>
-      <widget class="QLabel" name="textLabel1_2_3_2">
-       <property name="sizePolicy">
-        <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
-         <horstretch>0</horstretch>
-         <verstretch>0</verstretch>
-        </sizepolicy>
-       </property>
-       <property name="text">
-        <string>Asiento Inicial</string>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QLineEdit" name="asientoinicial">
-       <property name="sizePolicy">
-        <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-         <horstretch>0</horstretch>
-         <verstretch>0</verstretch>
-        </sizepolicy>
-       </property>
-      </widget>
-     </item>
     </layout>
    </item>
-   <item row="2" column="1">
-    <layout class="QHBoxLayout">
-     <property name="spacing">
-      <number>6</number>
+   <item row="1" column="0" colspan="3">
+    <widget class="BlSearchWidget" name="mui_codigoorigen">
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
      </property>
-     <property name="margin">
-      <number>0</number>
+     <property name="minimumSize">
+      <size>
+       <width>0</width>
+       <height>60</height>
+      </size>
      </property>
-     <item>
-      <widget class="QLabel" name="textLabel1_2_3">
-       <property name="sizePolicy">
-        <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
-         <horstretch>0</horstretch>
-         <verstretch>0</verstretch>
-        </sizepolicy>
-       </property>
-       <property name="text">
-        <string>Fecha Final</string>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="BlDateSearch" name="fechafinal">
-       <property name="sizePolicy">
-        <sizepolicy hsizetype="Ignored" vsizetype="Ignored">
-         <horstretch>0</horstretch>
-         <verstretch>0</verstretch>
-        </sizepolicy>
-       </property>
-      </widget>
-     </item>
-    </layout>
+    </widget>
+   </item>
+   <item row="1" column="3" colspan="3">
+    <widget class="BlSearchWidget" name="mui_codigodestino">
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
+     <property name="minimumSize">
+      <size>
+       <width>0</width>
+       <height>60</height>
+      </size>
+     </property>
+    </widget>
    </item>
    <item row="2" column="0">
-    <layout class="QHBoxLayout">
-     <property name="spacing">
-      <number>6</number>
+    <widget class="QLabel" name="textLabel1_2_2">
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
      </property>
-     <property name="margin">
-      <number>0</number>
+     <property name="text">
+      <string>Fecha Inicial</string>
      </property>
-     <item>
-      <widget class="QLabel" name="textLabel1_2_2">
-       <property name="sizePolicy">
-        <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
-         <horstretch>0</horstretch>
-         <verstretch>0</verstretch>
-        </sizepolicy>
-       </property>
-       <property name="text">
-        <string>Fecha Inicial</string>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="BlDateSearch" name="fechainicial">
-       <property name="sizePolicy">
-        <sizepolicy hsizetype="Ignored" vsizetype="Ignored">
-         <horstretch>0</horstretch>
-         <verstretch>0</verstretch>
-        </sizepolicy>
-       </property>
-      </widget>
-     </item>
-    </layout>
+    </widget>
    </item>
-   <item row="0" column="1">
-    <layout class="QHBoxLayout">
-     <property name="spacing">
-      <number>6</number>
+   <item row="2" column="1" colspan="2">
+    <widget class="BlDateSearch" name="fechainicial">
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Ignored" vsizetype="Preferred">
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
      </property>
-     <property name="margin">
-      <number>0</number>
-     </property>
-    </layout>
+    </widget>
    </item>
-   <item row="0" column="0">
-    <layout class="QHBoxLayout">
-     <property name="spacing">
-      <number>6</number>
+   <item row="2" column="3">
+    <widget class="QLabel" name="textLabel1_2_3">
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
      </property>
-     <property name="margin">
-      <number>0</number>
+     <property name="text">
+      <string>Fecha Final</string>
      </property>
-    </layout>
+    </widget>
    </item>
-   <item row="4" column="0" colspan="2">
+   <item row="2" column="4" colspan="2">
+    <widget class="BlDateSearch" name="fechafinal">
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Ignored" vsizetype="Preferred">
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
+    </widget>
+   </item>
+   <item row="3" column="0">
+    <widget class="QLabel" name="textLabel1_2_3_2">
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
+     <property name="text">
+      <string>Asiento Inicial</string>
+     </property>
+    </widget>
+   </item>
+   <item row="3" column="1">
+    <widget class="QLineEdit" name="asientoinicial">
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
+    </widget>
+   </item>
+   <item row="3" column="2">
+    <spacer name="horizontalSpacer">
+     <property name="orientation">
+      <enum>Qt::Horizontal</enum>
+     </property>
+     <property name="sizeHint" stdset="0">
+      <size>
+       <width>118</width>
+       <height>21</height>
+      </size>
+     </property>
+    </spacer>
+   </item>
+   <item row="3" column="3">
+    <widget class="QLabel" name="textLabel1_2_3_3">
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
+     <property name="text">
+      <string>Asiento Final</string>
+     </property>
+    </widget>
+   </item>
+   <item row="3" column="4">
+    <widget class="QLineEdit" name="asientofinal">
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
+    </widget>
+   </item>
+   <item row="3" column="5">
+    <spacer name="horizontalSpacer_2">
+     <property name="orientation">
+      <enum>Qt::Horizontal</enum>
+     </property>
+     <property name="sizeHint" stdset="0">
+      <size>
+       <width>118</width>
+       <height>21</height>
+      </size>
+     </property>
+    </spacer>
+   </item>
+   <item row="5" column="0" colspan="6">
     <layout class="QHBoxLayout">
      <property name="spacing">
       <number>6</number>
@@ -198,8 +210,14 @@
      </item>
      <item>
       <widget class="QPushButton" name="pushButton4">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
        <property name="focusPolicy">
-        <enum>Qt::NoFocus</enum>
+        <enum>Qt::StrongFocus</enum>
        </property>
        <property name="text">
         <string>Aceptar</string>
@@ -211,6 +229,12 @@
      </item>
      <item>
       <widget class="QPushButton" name="pushButton4_2">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
        <property name="text">
         <string>Cerrar</string>
        </property>
@@ -221,11 +245,18 @@
      </item>
     </layout>
    </item>
-   <item row="1" column="0">
-    <widget class="BlSearchWidget" name="mui_codigoorigen"/>
-   </item>
-   <item row="1" column="1">
-    <widget class="BlSearchWidget" name="mui_codigodestino"/>
+   <item row="4" column="0" colspan="6">
+    <spacer name="verticalSpacer">
+     <property name="orientation">
+      <enum>Qt::Vertical</enum>
+     </property>
+     <property name="sizeHint" stdset="0">
+      <size>
+       <width>20</width>
+       <height>40</height>
+      </size>
+     </property>
+    </spacer>
    </item>
   </layout>
  </widget>

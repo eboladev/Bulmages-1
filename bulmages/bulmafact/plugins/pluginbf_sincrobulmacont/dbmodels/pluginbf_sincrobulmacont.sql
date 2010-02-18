@@ -1501,6 +1501,35 @@ CREATE TRIGGER syncbulmacontfamiliatriggerd
 
 
 
+SELECT drop_if_exists_proc ('syncbulmacontfamiliaupre','');
+CREATE FUNCTION syncbulmacontfamiliaupre () RETURNS "trigger"
+AS $$
+DECLARE
+BEGIN
+
+      PERFORM conectabulmacont();
+
+      -- Es necesario controlar la transaccion que se hace en la base de datos enlazada porque no actua
+      -- dentro de la transaccion de esta funcion y si hay un error no desaria los cambios provocando problemas
+      -- de integridad de los datos.
+      -- Hay que hacer un ROLLBACK WORK explicito ANTES de cada RAISE EXCEPTION.
+      PERFORM dblink_exec('bulmafact2cont', 'BEGIN WORK;');
+
+      RETURN NULL;
+
+END;
+$$ LANGUAGE plpgsql;
+
+CREATE TRIGGER syncbulmacontfamiliatriggerupre
+    BEFORE UPDATE OR INSERT ON familia
+    FOR EACH STATEMENT
+    EXECUTE PROCEDURE syncbulmacontfamiliaupre();
+
+
+
+
+
+
 --si se crea una familia hay que mirar si es de servicios o producto para saber bajo que cuenta padre hay que crearla.
 --si se actualiza y se ha cambiado de servicio a producto o al revés habrá que hacer un delete de la cuenta
 -- padre antigua y un insert en la cuenta padre nueva.
@@ -1523,13 +1552,6 @@ DECLARE
 	query TEXT;
   check_dblink_connection BOOLEAN;
 BEGIN
-	-- conectamos con contabilidad, etc
-	PERFORM conectabulmacont();
-	-- Es necesario controlar la transaccion que se hace en la base de datos enlazada porque no actua
-	-- dentro de la transaccion de esta funcion y si hay un error no desaria los cambios provocando problemas
-	-- de integridad de los datos.
-	-- Hay que hacer un ROLLBACK WORK explicito ANTES de cada RAISE EXCEPTION.
-	PERFORM dblink_exec('bulmafact2cont', 'BEGIN WORK;');
 
 	-- Cogemos el nombre de la cuenta.
 	descripcion := quote_literal(NEW.nombrefamilia);

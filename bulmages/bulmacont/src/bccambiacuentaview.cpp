@@ -80,38 +80,13 @@ void BcCambiaCuentaView::accept()
     QString afinal = asientofinal->text();
     QString finicial = fechainicial->text();
     QString ffinal = fechafinal->text();
-    /// Modificamos los borradores.
-    QString query = "UPDATE borrador SET idcuenta = " + destino + " WHERE idcuenta = " + origen + "";
-    if ( ainicial != "" ) {
-        query = query + " AND idasiento IN (SELECT idasiento FROM asiento WHERE ordenasiento >= " + ainicial + ")";
-    } // end if
-    if ( afinal != "" ) {
-        query = query + " AND idasiento IN (SELECT idasiento FROM asiento WHERE ordenasiento <= " + afinal + ")";
-    } // end if
-    if ( finicial != "" ) {
-        query = query + " AND fecha >= '" + finicial + "'";
-    } // end if
-    if ( ffinal != "" ) {
-        query = query + " AND fecha <= '" + ffinal + "'";
-    } // end if
 
-    /// Modificamos las contrapartidas de los borradores.
-    QString query2 = "UPDATE borrador SET contrapartida = " + destino + " WHERE contrapartida = " + origen ;
-    if ( ainicial != "" ) {
-        query2 = query2 + " AND idasiento IN (SELECT idasiento FROM asiento WHERE ordenasiento >= " + ainicial + ")";
-    } // end if
-    if ( afinal != "" ) {
-        query2 = query2 + " AND idasiento IN (SELECT idasiento FROM asiento WHERE ordenasiento <= " + afinal + ")";
-    } // end if
-    if ( finicial != "" ) {
-        query2 = query2 + " AND fecha >= '" + finicial + "'";
-    } // end if
-    if ( ffinal != "" ) {
-        query2 = query2 + " AND fecha <= '" + ffinal + "'";
-    } // end if
+    /// Inicia transaccion.
+    mainCompany() ->begin();
 
-    /// Modificamos tambi&eacute;n los apuntes.
-    QString query1 = "UPDATE apunte SET idcuenta = " + destino + " WHERE idcuenta = " + origen;
+
+    /// Busca los asientos que hay que abrir antes de hacer la actualizacion.
+    QString query1 = "SELECT idasiento FROM apunte WHERE idcuenta = " + origen;
     if ( ainicial != "" ) {
         query1 = query1 + " AND idasiento IN (SELECT idasiento FROM asiento WHERE ordenasiento >= " + ainicial + ")";
     } // end if
@@ -125,8 +100,43 @@ void BcCambiaCuentaView::accept()
         query1 = query1 + " AND fecha <= '" + ffinal + "'";
     } // end if
 
-    /// Modificamos tambi&eacute;n las contrapartidas de los apuntes.
-    QString query3 = "UPDATE apunte SET contrapartida = " + destino + " WHERE contrapartida = " + origen;
+
+    BlDbRecordSet *cur = mainCompany()->loadQuery(query1);
+
+    if (cur != NULL) {
+        cur->firstRecord();
+	while ( !cur->eof() ) {
+	    // Abre los asientos
+	    mainCompany()->runQuery("SELECT abreasiento(" + cur->valor("idasiento") + ")");
+	    cur->nextRecord();
+	} // end while
+    } // end if
+
+
+    /// Ahora todo esta en modo borrador. Se puede iniciar la actualizacion.
+
+
+    /// Modificamos los borradores.
+    QString query2 = "UPDATE borrador SET idcuenta = " + destino + " WHERE idcuenta = " + origen + "";
+    if ( ainicial != "" ) {
+        query2 = query2 + " AND idasiento IN (SELECT idasiento FROM asiento WHERE ordenasiento >= " + ainicial + ")";
+    } // end if
+    if ( afinal != "" ) {
+        query2 = query2 + " AND idasiento IN (SELECT idasiento FROM asiento WHERE ordenasiento <= " + afinal + ")";
+    } // end if
+    if ( finicial != "" ) {
+        query2 = query2 + " AND fecha >= '" + finicial + "'";
+    } // end if
+    if ( ffinal != "" ) {
+        query2 = query2 + " AND fecha <= '" + ffinal + "'";
+    } // end if
+
+
+    mainCompany() ->runQuery ( query2 );
+
+
+    /// Modificamos las contrapartidas de los borradores.
+    QString query3 = "UPDATE borrador SET contrapartida = " + destino + " WHERE contrapartida = " + origen ;
     if ( ainicial != "" ) {
         query3 = query3 + " AND idasiento IN (SELECT idasiento FROM asiento WHERE ordenasiento >= " + ainicial + ")";
     } // end if
@@ -139,6 +149,25 @@ void BcCambiaCuentaView::accept()
     if ( ffinal != "" ) {
         query3 = query3 + " AND fecha <= '" + ffinal + "'";
     } // end if
+
+
+    mainCompany() ->runQuery ( query3 );
+
+
+
+    // Completada la actualizacion se cierran los asientos.
+    
+
+    if (cur != NULL) {
+        cur->firstRecord();
+	while ( !cur->eof() ) {
+	    // Abre los asientos
+	    mainCompany()->runQuery("SELECT cierraasiento(" + cur->valor("idasiento") + ")");
+	    cur->nextRecord();
+	} // end while
+    } // end if
+
+
 
     /// Modificamos los registros de IVA.
     QString query4 = "UPDATE registroiva SET contrapartida = " + destino + " WHERE contrapartida = " + origen;
@@ -154,12 +183,11 @@ void BcCambiaCuentaView::accept()
     if ( ffinal != "" ) {
         query4 = query4 + " AND ffactura <= '" + ffinal + "'";
     } // end if
-    mainCompany() ->begin();
-    mainCompany() ->runQuery ( query );
-    mainCompany() ->runQuery ( query1 );
-    mainCompany() ->runQuery ( query2 );
-    mainCompany() ->runQuery ( query3 );
+
+
     mainCompany() ->runQuery ( query4 );
+
+
     mainCompany() ->commit();
     done ( 1 );
     _depura ( "END BcCambiaCuentaView::accept", 0 );
