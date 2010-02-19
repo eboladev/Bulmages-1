@@ -1550,90 +1550,137 @@ DECLARE
 	descripcion TEXT;
 	tipocuenta1 INTEGER;
 	query TEXT;
-  check_dblink_connection BOOLEAN;
+	check_dblink_connection BOOLEAN;
+	altacuentaventa BOOLEAN;
+	altacuentacompra BOOLEAN;
 BEGIN
-
 	-- Cogemos el nombre de la cuenta.
 	descripcion := quote_literal(NEW.nombrefamilia);
 
-	IF NEW.idcuentaventafamilia IS NULL THEN
+	altacuentaventa := FALSE;
+	altacuentacompra := FALSE;
+
+	-- Entra si es un INSERT o cuando una de las cuentas 'idcuentaventafamilia' o 'idcuentacomprafamilia' apunta a la contabilidad
+	-- pero en realidad no existe. Asi ejecutamos su creacion.
+	SELECT INTO cs idcuenta FROM bc_cuenta WHERE idcuenta = NEW.idcuentaventafamilia;
+	IF NOT FOUND THEN
+	    altacuentaventa := TRUE;
+	END IF;
+
+	SELECT INTO cs idcuenta FROM bc_cuenta WHERE idcuenta = NEW.idcuentacomprafamilia;
+	IF NOT FOUND THEN
+	    altacuentacompra := TRUE;
+	END IF;
+
+
+	IF (TG_OP = 'INSERT') OR (altacuentaventa IS TRUE) OR (altacuentacompra IS TRUE) THEN
 
 		-- Discrimina entre producto o servicio para hacer un INSERT.
 		IF NEW.productofisicofamilia IS TRUE THEN
 		    -- Producto VENTA
-			-- Buscamos el codigo de cuenta que vaya a corresponderle.
-			SELECT INTO cs MAX(codigo::INTEGER) AS cod FROM bc_cuenta WHERE codigo LIKE '7000%';
-			IF cs.cod IS NOT NULL THEN
-				codcta := cs.cod + 1;
-			ELSE
-				codcta := '7000001';
-			END IF;
+			IF (TG_OP = 'INSERT') OR (altacuentaventa IS TRUE) THEN
+			    -- Buscamos el codigo de cuenta que vaya a corresponderle.
+			    SELECT INTO cs MAX(codigo::INTEGER) AS cod FROM bc_cuenta WHERE codigo LIKE '7000%';
+			    IF cs.cod IS NOT NULL THEN
+				    codcta := cs.cod + 1;
+			    ELSE
+				    codcta := '7000001';
+			    END IF;
 
-			-- Buscamos la cuenta padre (la 700)
-			SELECT INTO bs idcuenta, tipocuenta FROM bc_cuenta WHERE codigo ='700';
-			idpadre := bs.idcuenta;
-			tipocuenta1 := bs.tipocuenta;
+			    -- Buscamos la cuenta padre (la 700)
+			    SELECT INTO bs idcuenta, tipocuenta FROM bc_cuenta WHERE codigo ='700';
+			    idpadre := bs.idcuenta;
+			    tipocuenta1 := bs.tipocuenta;
 
-			-- Creamos el Query de insercion
-			quer := 'INSERT INTO cuenta (descripcion, padre, codigo, tipocuenta) VALUES ( ' || descripcion ||', ' || idpadre || ', ''' || codcta || ''' , '|| tipocuenta1 || ')';
-			PERFORM dblink_exec('bulmafact2cont', quer);
+			    -- Creamos el Query de insercion
+			    quer := 'INSERT INTO cuenta (descripcion, padre, codigo, tipocuenta) VALUES ( ' || descripcion ||', ' || idpadre || ', ''' || codcta || ''' , '|| tipocuenta1 || ')';
+			    PERFORM dblink_exec('bulmafact2cont', quer);
 
-			SELECT INTO bs MAX(idcuenta) AS id FROM bc_cuenta;
-			NEW.idcuentaventafamilia := bs.id;
+			    SELECT INTO bs MAX(idcuenta) AS id FROM bc_cuenta;
+			    NEW.idcuentaventafamilia := bs.id;
+			 END IF;
 
 		    -- Producto COMPRA
-			-- Buscamos el codigo de cuenta que vaya a corresponderle.
-			SELECT INTO cs MAX(codigo::INTEGER) as cod FROM bc_cuenta WHERE codigo LIKE '6000%';
-			IF cs.cod IS NOT NULL THEN
-				codcta := cs.cod + 1;
-			ELSE
-				codcta := '6000001';
+			IF (TG_OP = 'INSERT') OR (altacuentacompra IS TRUE) THEN
+			    -- Buscamos el codigo de cuenta que vaya a corresponderle.
+			    SELECT INTO cs MAX(codigo::INTEGER) as cod FROM bc_cuenta WHERE codigo LIKE '6000%';
+			    IF cs.cod IS NOT NULL THEN
+				    codcta := cs.cod + 1;
+			    ELSE
+				    codcta := '6000001';
+			    END IF;
+
+			    -- Buscamos la cuenta padre (la 600)
+			    SELECT INTO bs idcuenta, tipocuenta FROM bc_cuenta WHERE codigo ='600';
+			    idpadre := bs.idcuenta;
+			    tipocuenta1 := bs.tipocuenta;
+
+			    -- Creamos el Query de insercion
+			    quer := 'INSERT INTO cuenta (descripcion, padre, codigo, tipocuenta) VALUES ( ' || descripcion ||', ' || idpadre || ', ''' || codcta || ''' , '|| tipocuenta1 || ')';
+			    PERFORM dblink_exec('bulmafact2cont', quer);
+
+			    SELECT INTO bs MAX(idcuenta) AS id FROM bc_cuenta;
+			    NEW.idcuentacomprafamilia := bs.id;
 			END IF;
-
-			-- Buscamos la cuenta padre (la 600)
-			SELECT INTO bs idcuenta, tipocuenta FROM bc_cuenta WHERE codigo ='600';
-			idpadre := bs.idcuenta;
-			tipocuenta1 := bs.tipocuenta;
-
-			-- Creamos el Query de insercion
-			quer := 'INSERT INTO cuenta (descripcion, padre, codigo, tipocuenta) VALUES ( ' || descripcion ||', ' || idpadre || ', ''' || codcta || ''' , '|| tipocuenta1 || ')';
-			PERFORM dblink_exec('bulmafact2cont', quer);
-
-			SELECT INTO bs MAX(idcuenta) AS id FROM bc_cuenta;
-			NEW.idcuentacomprafamilia := bs.id;
-
 
 		ELSE
 		    -- Servicio VENTA
-			-- Buscamos el codigo de cuenta que vaya a corresponderle.
-			SELECT INTO cs MAX(codigo::INTEGER) AS cod FROM bc_cuenta WHERE codigo LIKE '7050%';
-			IF cs.cod IS NOT NULL THEN
-				codcta := cs.cod + 1;
-			ELSE
-				codcta := '7050001';
-			END IF;
+			IF (TG_OP = 'INSERT') OR (altacuentaventa IS TRUE) THEN
+			    -- Buscamos el codigo de cuenta que vaya a corresponderle.
+			    SELECT INTO cs MAX(codigo::INTEGER) AS cod FROM bc_cuenta WHERE codigo LIKE '7050%';
+			    IF cs.cod IS NOT NULL THEN
+				    codcta := cs.cod + 1;
+			    ELSE
+				    codcta := '7050001';
+			    END IF;
 
-			-- Buscamos la cuenta padre (la 705)
-			SELECT INTO bs idcuenta, tipocuenta FROM bc_cuenta WHERE codigo ='705';
-			idpadre := bs.idcuenta;
-			tipocuenta1 := bs.tipocuenta;
+			    -- Buscamos la cuenta padre (la 705)
+			    SELECT INTO bs idcuenta, tipocuenta FROM bc_cuenta WHERE codigo ='705';
+			    idpadre := bs.idcuenta;
+			    tipocuenta1 := bs.tipocuenta;
 
-			-- Creamos el Query de insercion
-			quer := 'INSERT INTO cuenta (descripcion, padre, codigo, tipocuenta) VALUES ( ' || descripcion ||', ' || idpadre || ', ''' || codcta || ''' , '|| tipocuenta1 || ')';
-			PERFORM dblink_exec('bulmafact2cont', quer);
+			    -- Creamos el Query de insercion
+			    quer := 'INSERT INTO cuenta (descripcion, padre, codigo, tipocuenta) VALUES ( ' || descripcion ||', ' || idpadre || ', ''' || codcta || ''' , '|| tipocuenta1 || ')';
+			    PERFORM dblink_exec('bulmafact2cont', quer);
 
-			SELECT INTO bs MAX(idcuenta) AS id FROM bc_cuenta;
-			NEW.idcuentaventafamilia := bs.id;
+			    SELECT INTO bs MAX(idcuenta) AS id FROM bc_cuenta;
+			    NEW.idcuentaventafamilia := bs.id;
+			 END IF;
 
 		    -- Servicio COMPRA. No se crea porque cada caso es diferente.
+			IF (TG_OP = 'INSERT') OR (altacuentacompra IS TRUE) THEN
+			    -- Buscamos el codigo de cuenta que vaya a corresponderle.
+			    SELECT INTO cs MAX(codigo::INTEGER) as cod FROM bc_cuenta WHERE codigo LIKE '6070%';
+			    IF cs.cod IS NOT NULL THEN
+				    codcta := cs.cod + 1;
+			    ELSE
+				    codcta := '6070001';
+			    END IF;
+
+			    -- Buscamos la cuenta padre (la 607)
+			    SELECT INTO bs idcuenta, tipocuenta FROM bc_cuenta WHERE codigo ='607';
+			    idpadre := bs.idcuenta;
+			    tipocuenta1 := bs.tipocuenta;
+
+			    -- Creamos el Query de insercion
+			    quer := 'INSERT INTO cuenta (descripcion, padre, codigo, tipocuenta) VALUES ( ' || descripcion ||', ' || idpadre || ', ''' || codcta || ''' , '|| tipocuenta1 || ')';
+			    PERFORM dblink_exec('bulmafact2cont', quer);
+
+			    SELECT INTO bs MAX(idcuenta) AS id FROM bc_cuenta;
+			    NEW.idcuentacomprafamilia := bs.id;
+			END IF;
+
 
 		END IF;
 
+	END IF;
 
-	ELSE
-		-- Al hacer el UPDATE hay que ve que no se haya cambiado de PRODUCTO a SERVICIO y viceversa
-		-- o actuar en consecuencia.
+	IF (TG_OP = 'UPDATE') THEN
+
+		-- Al hacer el UPDATE hay que ver que no se haya cambiado de PRODUCTO a SERVICIO o viceversa
+		-- y actuar en consecuencia.
 		IF NEW.productofisicofamilia = OLD.productofisicofamilia THEN
+
 		    -- No se ha cambiado. Solo actualiza datos.
 		    quer := 'UPDATE cuenta SET descripcion = ' || descripcion || ' WHERE idcuenta = ' || NEW.idcuentaventafamilia;
 		    PERFORM dblink_exec('bulmafact2cont', quer);
@@ -1642,8 +1689,9 @@ BEGIN
 		    PERFORM dblink_exec('bulmafact2cont', quer);
 
 		ELSE
+
 		    -- Se ha cambiado, por tanto hay que borrar la cuenta de la rama actual y crearlo
-		    -- en la nueva rama.
+		    -- en la nueva rama. Si la familia tiene datos entonces fallara el borrado impidiendo el cambio de tipo de cuenta.
 		    query := 'DELETE FROM cuenta WHERE idcuenta = ' || OLD.idcuentaventafamilia;
 		    PERFORM dblink_exec('bulmafact2cont', query);
 
@@ -1717,6 +1765,25 @@ BEGIN
 			    NEW.idcuentaventafamilia := bs.id;
 
 			-- Servicio COMPRA. No se crea porque cada caso es diferente.
+			    -- Buscamos el codigo de cuenta que vaya a corresponderle.
+			    SELECT INTO cs MAX(codigo::INTEGER) as cod FROM bc_cuenta WHERE codigo LIKE '6070%';
+			    IF cs.cod IS NOT NULL THEN
+				    codcta := cs.cod + 1;
+			    ELSE
+				    codcta := '6070001';
+			    END IF;
+
+			    -- Buscamos la cuenta padre (la 607)
+			    SELECT INTO bs idcuenta, tipocuenta FROM bc_cuenta WHERE codigo ='607';
+			    idpadre := bs.idcuenta;
+			    tipocuenta1 := bs.tipocuenta;
+
+			    -- Creamos el Query de insercion
+			    quer := 'INSERT INTO cuenta (descripcion, padre, codigo, tipocuenta) VALUES ( ' || descripcion ||', ' || idpadre || ', ''' || codcta || ''' , '|| tipocuenta1 || ')';
+			    PERFORM dblink_exec('bulmafact2cont', quer);
+
+			    SELECT INTO bs MAX(idcuenta) AS id FROM bc_cuenta;
+			    NEW.idcuentacomprafamilia := bs.id;
 
 		    END IF;
 
