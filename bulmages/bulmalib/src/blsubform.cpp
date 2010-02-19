@@ -2408,7 +2408,7 @@ QString BlSubForm::formatFieldTableStory(BlDbSubFormField *value, QLocale spanis
     /// Valor booleano
     else if ( value->dbFieldType() == BlDbField::DbBoolean )
     {
-        /// Mostrar una "x" centrada si el valor es verdadero
+        /// Mostrar un "puntazo" centrado si el valor es verdadero
         if ( value->checkState() == Qt::Checked )
         {
            field += "<td><para style=\"checked\" vAlign=\"middle\">";
