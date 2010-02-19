@@ -401,15 +401,25 @@ void BcPlanContableListView::on_mui_borrar_clicked()
                                        _ ( "Borrar cuenta" ),
                                        _ ( "Se procedera a borrar la cuenta." ),
                                        QMessageBox::Yes, QMessageBox::No );
+
     if ( valor ==  QMessageBox::Yes ) {
-        mainCompany() ->begin();
-        if ( mainCompany() ->runQuery ( "DELETE FROM cuenta WHERE idcuenta = " + it->text ( cidcuenta ) ) == 0 ) {
-            delete it;
-        } else {
-            mensajeInfo ( "No se ha podido borrar la cuenta." );
-        } // end if
-        mainCompany() ->commit();
+
+	try {
+	
+	    mainCompany() ->begin();
+	    mainCompany() ->runQuery ( "DELETE FROM cuenta WHERE idcuenta = " + it->text ( cidcuenta ) );
+	    mainCompany() ->commit();
+	    delete it;
+	
+	} catch (...) {
+	
+	    mainCompany()->rollback();
+	    mensajeInfo ( "No se ha podido borrar la cuenta." );
+	
+	} // end try
+
     } // end if
+
     _depura ( "END BcPlanContableListView::on_mui_borrar_clicked", 0 );
 }
 
