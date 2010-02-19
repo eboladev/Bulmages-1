@@ -2410,7 +2410,10 @@ QString BlSubForm::formatFieldTableStory(BlDbSubFormField *value, QLocale spanis
     {
         /// Mostrar una "x" centrada si el valor es verdadero
         if ( value->checkState() == Qt::Checked )
-           field += "<td><para style=\"checked\" vAlign=\"middle\">x";
+        {
+           field += "<td><para style=\"checked\" vAlign=\"middle\">";
+           field += XMLProtect ( "&#9679;" );
+        }
         else
            field += "<td><para>";
     }
