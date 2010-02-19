@@ -2420,7 +2420,7 @@ QString BlSubForm::formatFieldTableStory(BlDbSubFormField *value, QLocale spanis
     {
         field += "<td><para style=\"text\">";
         field += XMLProtect ( value->text() );
-    }
+    } // end if
 
     /// Cerrar p&aacute;rrafo y campo de la tabla para todos los casos
     field += "</para></td>\n";
