@@ -49,6 +49,25 @@
 		<blockFont name="Helvetica" size="8" start="0,0" stop="0,-1"/>
 		<blockValign value="TOP" start="0,0" stop="-1,-1"/>
 	</blockTableStyle>
+	<paraStyle name="text"
+		fontName="Helvetica"
+		fontSize="10"
+		alignment="LEFT"
+		leftIndent="0.15cm"
+		rightIndent="0.15cm"
+	/>
+	<paraStyle name="checked"
+		fontName="Helvetica-Bold"
+		fontSize="12"
+		alignment="CENTER"
+	/>
+	<paraStyle name="number"
+		fontName="Helvetica"
+		fontSize="10"
+		alignment="RIGHT"
+		leftIndent="0.15cm"
+		rightIndent="0.15cm"
+	/>
 </stylesheet>
 
 <story>

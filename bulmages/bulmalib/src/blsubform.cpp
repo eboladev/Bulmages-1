@@ -1,6 +1,9 @@
 /***************************************************************************
  *   Copyright (C) 2005 by Tomeu Borras Riera                              *
  *   tborras@conetxia.com                                                  *
+ *   Copyright (C) 2010 by Aron Galdon                                     *
+ *   auryn@wanadoo.es                                                      *
+ *   http://www.iglues.org                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
  *   it under the terms of the GNU General Public License as published by  *
@@ -2360,11 +2363,8 @@ QString BlSubForm::imprimir()
         fitxersortidarml += "<tr>\n";
         for ( int j = 0; j < mui_listcolumnas->rowCount(); ++j ) {
             if ( mui_listcolumnas->item ( j, 0 )->checkState() == Qt::Checked ) {
-		BlDbSubFormField *valor = ( BlDbSubFormField * ) mui_list->item ( i, mui_listcolumnas->item ( j, 3)->text().toInt() );
-                if ( valor->dbFieldType() & BlDbField::DbNumeric )
-                    fitxersortidarml += "    <td>" +  spanish.toString ( valor->text().toDouble(), 'f', 2 ) + "</td>\n";
-                else
-                    fitxersortidarml += "    <td>" +  XMLProtect( valor->text() ) + "</td>\n";
+                BlDbSubFormField *valor = ( BlDbSubFormField * ) mui_list->item ( i, mui_listcolumnas->item ( j, 3)->text().toInt() );
+                fitxersortidarml += formatFieldTableStory ( valor, spanish );
             } // end if
         } // end for
         fitxersortidarml += "</tr>\n";
@@ -2372,6 +2372,61 @@ QString BlSubForm::imprimir()
     } // end for
     _depura ( "END BlSubForm::imprimir", 0 );
     return fitxersortidarml;
+}
+
+
+/// Genera las etiquetas RML necesarias para poder mostrar un dato con el estilo adecuado a su tipo
+/// a la hora de imprimirlo como una celda del "BlockTable" ubicado en el "story" del informe "listado"
+/**
+  \param value
+  \param spanish
+\return
+**/
+QString BlSubForm::formatFieldTableStory(BlDbSubFormField *value, QLocale spanish)
+{
+    _depura ( "BlSubForm::formatFieldTableStory", 0 );
+
+    QString field = "    ";
+
+    /// Valor num&eacute;rico o fecha
+    if ( ( value->dbFieldType() == BlDbField::DbInt )
+      || ( value->dbFieldType() == BlDbField::DbNumeric )
+      || ( value->dbFieldType() == BlDbField::DbDate ) )
+    {
+        field += "<td><para style=\"number\">";
+
+        /// Si es un n&uacute;mero con decimales, tenerlo en cuenta
+        if ( value->dbFieldType() & BlDbField::DbNumeric )
+        {
+            int prec = value->text().section(",", 1).count();
+            field += spanish.toString ( value->text().toDouble(), 'f', prec );
+        }
+        else
+            field += XMLProtect ( value->text() );
+    }
+
+    /// Valor booleano
+    else if ( value->dbFieldType() == BlDbField::DbBoolean )
+    {
+        /// Mostrar una "x" centrada si el valor es verdadero
+        if ( value->checkState() == Qt::Checked )
+           field += "<td><para style=\"checked\" vAlign=\"middle\">x";
+        else
+           field += "<td><para>";
+    }
+
+    /// Texto
+    else
+    {
+        field += "<td><para style=\"text\">";
+        field += XMLProtect ( value->text() );
+    }
+
+    /// Cerrar p&aacute;rrafo y campo de la tabla para todos los casos
+    field += "</para></td>\n";
+
+    _depura ( "END BlSubForm::formatFieldTableStory", 0 );
+    return field;
 }
 
 

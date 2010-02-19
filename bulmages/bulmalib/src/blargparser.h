@@ -1,6 +1,6 @@
 /***************************************************************************
- *   Copyright (C) 2009 by Aron Galdon                               *
- *   auryn@wanadoo.es                                               *
+ *   Copyright (C) 2009 by Aron Galdon                                     *
+ *   auryn@wanadoo.es                                                      *
  *   http://www.iglues.org                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *

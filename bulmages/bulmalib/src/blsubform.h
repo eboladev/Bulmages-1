@@ -1,6 +1,8 @@
 /***************************************************************************
  *   Copyright (C) 2005 by Tomeu Borras Riera                              *
  *   tborras@conetxia.com                                                  *
+ *   Copyright (C) 2010 by Aron Galdon                                     *
+ *   auryn@wanadoo.es                                                      *
  *   http://www.iglues.org                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -190,6 +192,9 @@ protected:
     /// Prepara las columnas de la tabla del formulario y pone en
     /// ella los encabezados.
     virtual void pintaCabeceras();
+    /// Genera las etiquetas RML necesarias para poder mostrar un dato con el estilo adecuado a su tipo
+    /// a la hora de imprimirlo como una celda del "BlockTable" ubicado en el "story" del informe "listado"
+    QString formatFieldTableStory(BlDbSubFormField *value, QLocale spanish);
 
 public:
     /// Guarda la configuraci&oacute;n de presentaci&oacute;n del subformulario
