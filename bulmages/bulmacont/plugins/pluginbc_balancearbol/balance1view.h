@@ -34,6 +34,7 @@
 #include "ui_balancetreebase.h"
 #include "bcform.h"
 #include "bcplancontablearbol.h"
+#include "bcasientoview.h"
 
 
 class intapunts3view;

@@ -95,7 +95,6 @@ set_target_properties( ${plugin} PROPERTIES
   VERSION "${BULMAGES_VERSION}")
 
 target_link_libraries(${plugin} libbulmacont bulmalib ${QT_LIBRARIES} ${PGSQL_LIBRARIES} )
-
 #think to put here which modules must be compiled "before" this
 add_dependencies(${plugin} bulmacont bulmalib)
 

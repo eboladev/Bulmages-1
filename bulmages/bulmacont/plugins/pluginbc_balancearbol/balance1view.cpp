@@ -30,10 +30,10 @@
 #include "balance1view.h"
 #include "bcplancontablelistview.h"
 #include "bccompany.h"
-#include "bcasientoview.h"
 #include "bccanalseleccionarview.h"
 #include "bccentrocosteseleccionarview.h"
 #include "pluginbc_asiento.h"
+
 
 #define CUENTA         m_ccuenta
 #define DENOMINACION   m_cdenominacion
@@ -61,7 +61,7 @@ BalanceTreeView::BalanceTreeView ( BcCompany *emp, QWidget *parent, int )
 
     setupUi ( this );
     setAttribute ( Qt::WA_DeleteOnClose );
-    setTitleName ( _ ( "Balance Jerarquico" ) );
+    setTitleName ( _ ( "Balance jerarquico" ) );
     /// Establecemos cual es la tabla en la que basarse para los permisos
     setDbTableName ( "asiento" );
 
@@ -69,7 +69,7 @@ BalanceTreeView::BalanceTreeView ( BcCompany *emp, QWidget *parent, int )
 
     m_codigoinicial->setMainCompany ( emp );
     /// Arreglamos la cuenta
-    m_codigoinicial->setLabel ( _ ( "Cuenta Inicial:" ) );
+    m_codigoinicial->setLabel ( _ ( "Cuenta inicial:" ) );
     m_codigoinicial->setTableName ( "cuenta" );
     m_codigoinicial->setFieldId("idcuenta");
     m_codigoinicial->m_valores["descripcion"] = "";
@@ -77,7 +77,7 @@ BalanceTreeView::BalanceTreeView ( BcCompany *emp, QWidget *parent, int )
 
     m_codigofinal->setMainCompany ( emp );
     /// Arreglamos la cuenta
-    m_codigofinal->setLabel ( _ ( "Cuenta Final:" ) );
+    m_codigofinal->setLabel ( _ ( "Cuenta final:" ) );
     m_codigofinal->setTableName ( "cuenta" );
     m_codigofinal->setFieldId("idcuenta");
     m_codigofinal->m_valores["descripcion"] = "";
@@ -123,11 +123,10 @@ BalanceTreeView::BalanceTreeView ( BcCompany *emp, QWidget *parent, int )
 //     IDCUENTA = 11;
 //     PADRE = 12;
 
-    for ( int i = numdigitos; i >= 2; i-- ) {
+    for ( int i = 2; i <= numdigitos; i++ ) {
         /// Inicializamos la tabla de nivel.
         combonivel->insertItem ( i, QString::number ( i ) );
     } // end for
-
 
     connect ( listado, SIGNAL ( contextMenuRequested ( QTreeWidgetItem *, const QPoint &, int ) ), this, SLOT ( contextmenu ( QTreeWidgetItem *, const QPoint &, int ) ) );
 //     connect ( combonivel, SIGNAL ( activated ( int ) ), this, SLOT ( nivelactivated ( int ) ) );

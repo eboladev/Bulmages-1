@@ -81,19 +81,21 @@ void BlPlugins::cargaLibs ( const QString &libs )
     QStringList dirs = g_confpr->valor ( CONF_DIR_PLUGINS ).split ( ";" );
 
     QStringList plugins = cad.split ( ";" );
+    QString libErrorString;
     for ( QStringList::Iterator it = plugins.begin(); it != plugins.end(); ++it ) {
         cargado = FALSE;
         for ( QStringList::Iterator ot = dirs.begin(); ot != dirs.end(); ++ot ) {
             QString file = *ot + *it;
             QLibrary *lib = new QLibrary ( file );
             lib->load();
+            libErrorString = lib->errorString();
             if ( lib->isLoaded() ) {
                 cargado = TRUE;
                 m_lista.append ( lib );
             } // end if
         } // end for
         if ( ! cargado ) {
-            mensajeInfo ( _ ("No se ha podido cargar la libreria: " ) + *it );
+            mensajeInfo ( _ ("No se ha podido cargar la libreria: " ) + *it + "\n" + libErrorString );
         } // end if
     } // end for
     _depura ( "END BlPlugins::cargaLibs", 0 );

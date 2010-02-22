@@ -8,7 +8,7 @@ Nombre: Balance
 
 Biblioteca: libpluginbc_balance.so
 
-Descripción: <H1>Balance Jerarquico</H1>
+Descripción: <H1>Balance jerarquico</H1>
 <P>Permite hacer un balance jerárquico.</P>
 <HR>
 
@@ -18,7 +18,7 @@ ArchivoSQLpatch: -
 
 ArchivoSQLdeins: -
 
-Dependencias:
+Dependencias: pluginbc_balancearbol;
 
 Incompatibles:
 

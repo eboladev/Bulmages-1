@@ -201,6 +201,7 @@ void BalanceView::presentarSyS ( QString finicial, QString ffinal, QString cinic
     BlFixed tsaldoant ( "0.00" ), tdebe ( "0.00" ), thaber ( "0.00" ), tsaldo ( "0.00" );
     BlDbRecordSet *ramas = NULL;
     BlDbRecordSet *hojas = NULL;
+
     try {
         /// Primero, averiguaremos la cantidad de ramas iniciales que nacen de la ra&iacute;z
         /// (tantas como n&uacute;mero de cuentas de nivel 2) y las vamos creando.
@@ -222,7 +223,6 @@ void BalanceView::presentarSyS ( QString finicial, QString ffinal, QString cinic
         } // end while
         arbol->inicializa ( ramas );
         delete ramas;
-
 
         /// Sacamos la subcadena para centros de coste y canales.
         // Consideraciones para centros de coste y canales
