@@ -1122,11 +1122,38 @@ CREATE TRIGGER syncbulmacontproveedortriggerd
 
 
 
+SELECT drop_if_exists_proc ('syncbulmacontproveedorupre','');
+CREATE FUNCTION syncbulmacontproveedorupre () RETURNS "trigger"
+AS $$
+DECLARE
+BEGIN
+
+      PERFORM conectabulmacont();
+
+      -- Es necesario controlar la transaccion que se hace en la base de datos enlazada porque no actua
+      -- dentro de la transaccion de esta funcion y si hay un error no desaria los cambios provocando problemas
+      -- de integridad de los datos.
+      -- Hay que hacer un ROLLBACK WORK explicito ANTES de cada RAISE EXCEPTION.
+      PERFORM dblink_exec('bulmafact2cont', 'BEGIN WORK;');
+
+      RETURN NULL;
+
+END;
+$$ LANGUAGE plpgsql;
+
+CREATE TRIGGER syncbulmacontproveedortriggerupre
+    BEFORE UPDATE OR INSERT ON proveedor
+    FOR EACH STATEMENT
+    EXECUTE PROCEDURE syncbulmacontproveedorupre();
+
+
+
 SELECT drop_if_exists_proc ('syncbulmacontproveedoru','');
 CREATE FUNCTION syncbulmacontproveedoru () RETURNS "trigger"
 AS $$
 DECLARE
 	bs RECORD;
+	cs RECORD;
 	quer TEXT;
 	subquery TEXT;
 	flecha DATE;
@@ -1135,13 +1162,13 @@ DECLARE
 	grupo INTEGER;
 	descripcion TEXT;
 BEGIN
-	PERFORM conectabulmacont();
-	PERFORM dblink_exec('bulmafact2cont', 'BEGIN WORK;');
-
 	-- Cogemos el nombre de la cuenta.
 	descripcion := quote_literal(NEW.nomproveedor);
 
-	IF NEW.idcuentaproveedor IS NULL THEN
+
+	SELECT INTO cs count(idcuenta) AS p_idcuenta FROM bc_cuenta WHERE idcuenta = NEW.idcuentaproveedor;
+
+	IF (NEW.idcuentaproveedor IS NULL) OR (cs.p_idcuenta = 0) THEN
 		-- Buscamos el codigo de cuenta que vaya a corresponderle
 		SELECT INTO bs MAX(codigo::INTEGER) as cod FROM bc_cuenta WHERE codigo LIKE '40000%' ;
 
@@ -1163,14 +1190,9 @@ BEGIN
 		NEW.idcuentaproveedor = bs.id;
 	ELSE
 
-		IF NEW.idcuentaproveedor IS NULL THEN
-		      PERFORM dblink_exec('bulmafact2cont', 'ROLLBACK WORK;');
-		      RAISE EXCEPTION 'No se dispone de cuenta de proveedor.';
-		END IF;
-
 		quer := 'UPDATE cuenta SET descripcion = ' || descripcion || ', cifent_cuenta = ''' || NEW.cifproveedor || ''', nombreent_cuenta = ''' || COALESCE(NEW.nomaltproveedor, '') || ''', dirent_cuenta = ''' || COALESCE(NEW.dirproveedor, '') || ''', cpent_cuenta = ''' || COALESCE(NEW.cpproveedor, '') || ''', telent_cuenta = ''' || COALESCE(NEW.telproveedor, '') || ''', emailent_cuenta = ''' || COALESCE(NEW.emailproveedor, '') || ''', webent_cuenta = ''' || COALESCE(NEW.urlproveedor, '') || ''' WHERE idcuenta = ' || NEW.idcuentaproveedor;
-
 		PERFORM dblink_exec('bulmafact2cont', quer);
+
 	END IF;
 
 	RETURN NEW;

@@ -176,8 +176,7 @@ SELECT drop_if_exists_proc ('syncbulmacontalmacenup','');
 
 SELECT drop_if_exists_proc ('syncbulmacontclienteupre','');
 SELECT drop_if_exists_proc ('syncbulmacontfamiliaupre','');
-
-
+SELECT drop_if_exists_proc ('syncbulmacontproveedorupre','');
 
 
 
