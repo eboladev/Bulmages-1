@@ -68,7 +68,7 @@ ELSE(CMAKE_PGCONFIG_EXECUTABLE)
 	
 	# the registry settings checked are in order:
 	# - for pgInstaller 8.2.x postgresql version
-	SET(PGSQL_WIN_BASE "[HKEY_LOCAL_MACHINE\\SOFTWARE\\PostgreSQL\\Installations\\postgresql-8.3;Base Directory]")
+	SET(PGSQL_WIN_BASE "[HKEY_LOCAL_MACHINE\\SOFTWARE\\PostgreSQL\\Installations\\postgresql-8.4;Base Directory]")
 	IF(PGSQL_WIN_BASE)
 		IF(MSVC)
 			SET(PGSQL_SEARCH_LIB_PATHS "${PGSQL_WIN_BASE}/lib/ms")
@@ -78,7 +78,7 @@ ELSE(CMAKE_PGCONFIG_EXECUTABLE)
 	ENDIF(PGSQL_WIN_BASE)
 	
 	FIND_PATH(PGSQL_INCLUDE_DIR libpq-fe.h
-	"[HKEY_LOCAL_MACHINE\\SOFTWARE\\PostgreSQL\\Installations\\postgresql-8.3;Base Directory]/include"
+	"[HKEY_LOCAL_MACHINE\\SOFTWARE\\PostgreSQL\\Installations\\postgresql-8.4;Base Directory]/include"
 	/usr/local/pgsql/include
 	/usr/local/include/pgsql
 	/usr/local/include

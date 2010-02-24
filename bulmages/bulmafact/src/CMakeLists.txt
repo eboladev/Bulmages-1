@@ -36,7 +36,13 @@ set(bulmafactEx main.cxx)
 
 set(QT_USE_QTASSISTANT true)
 set(QT_USE_QTXML true)
-set(QT_USE_QTDBUS true)
+
+IF(WIN32)
+    # En MS-Windows no hay soporte directo de QtDBus.
+    #set(QT_USE_QTDBUS true)
+ELSE(WIN32)
+    set(QT_USE_QTDBUS true)
+ENDIF(WIN32)
 
 INCLUDE(${QT_USE_FILE})
 

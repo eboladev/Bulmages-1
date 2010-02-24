@@ -27,7 +27,7 @@
 #include "blconfiguration.h"
 #include "blfunctions.h"
 
-class BlArgParser
+class BL_EXPORT BlArgParser
 {
 public:
    BlArgParser( int argc, char **argv );
@@ -38,7 +38,8 @@ public:
    bool AskPassword();
    bool ShowVersion();
    bool ShowHelp();
- private:
+
+private:
     QString m_dbName;
     QString m_executable;
     QString m_host;
