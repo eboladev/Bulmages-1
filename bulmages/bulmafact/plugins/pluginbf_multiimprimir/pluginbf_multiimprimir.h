@@ -18,12 +18,6 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#ifdef Q_WS_WIN
-# define MY_EXPORT __declspec(dllexport)
-#else
-# define MY_EXPORT
-#endif
-
 #include "facturaslist.h"
 #include "presupuestolist.h"
 #include "pedidosclientelist.h"
@@ -31,21 +25,22 @@
 #include "cobroslist.h"
 #include "reciboslist.h"
 #include "bfbulmafact.h"
+#include "pdefs_pluginbf_multiimprimir.h"
 
 
-extern "C" MY_EXPORT int PresupuestoList_PresupuestoList ( PresupuestoList * );
-extern "C" MY_EXPORT int PresupuestoListSubForm_PresupuestoListSubForm ( PresupuestoListSubForm * );
-extern "C" MY_EXPORT int PedidosClienteList_PedidosClienteList ( PedidosClienteList * );
-extern "C" MY_EXPORT int PedidosClienteListSubform_PedidosClienteListSubform ( PedidosClienteListSubform * );
-extern "C" MY_EXPORT int AlbaranClienteList_AlbaranClienteList ( AlbaranClienteList * );
-extern "C" MY_EXPORT int AlbaranClienteListSubform_AlbaranClienteListSubform ( AlbaranClienteListSubform * );
-extern "C" MY_EXPORT int FacturasList_FacturasList ( FacturasList * );
-extern "C" MY_EXPORT int FacturasListSubform_FacturasListSubform ( FacturasListSubform * );
-extern "C" MY_EXPORT int CobrosList_CobrosList ( CobrosList * );
-extern "C" MY_EXPORT int CobrosListSubForm_CobrosListSubForm ( CobrosListSubForm * );
-extern "C" MY_EXPORT int RecibosListSubForm_RecibosListSubForm ( RecibosListSubForm * );
-extern "C" MY_EXPORT int RecibosList_RecibosList ( RecibosList * );
-extern "C" MY_EXPORT int entryPoint ( BfBulmaFact * );
+extern "C" PLUGINBF_MULTIIMPRIMIR_EXPORT int PresupuestoList_PresupuestoList ( PresupuestoList * );
+extern "C" PLUGINBF_MULTIIMPRIMIR_EXPORT int PresupuestoListSubForm_PresupuestoListSubForm ( PresupuestoListSubForm * );
+extern "C" PLUGINBF_MULTIIMPRIMIR_EXPORT int PedidosClienteList_PedidosClienteList ( PedidosClienteList * );
+extern "C" PLUGINBF_MULTIIMPRIMIR_EXPORT int PedidosClienteListSubform_PedidosClienteListSubform ( PedidosClienteListSubform * );
+extern "C" PLUGINBF_MULTIIMPRIMIR_EXPORT int AlbaranClienteList_AlbaranClienteList ( AlbaranClienteList * );
+extern "C" PLUGINBF_MULTIIMPRIMIR_EXPORT int AlbaranClienteListSubform_AlbaranClienteListSubform ( AlbaranClienteListSubform * );
+extern "C" PLUGINBF_MULTIIMPRIMIR_EXPORT int FacturasList_FacturasList ( FacturasList * );
+extern "C" PLUGINBF_MULTIIMPRIMIR_EXPORT int FacturasListSubform_FacturasListSubform ( FacturasListSubform * );
+extern "C" PLUGINBF_MULTIIMPRIMIR_EXPORT int CobrosList_CobrosList ( CobrosList * );
+extern "C" PLUGINBF_MULTIIMPRIMIR_EXPORT int CobrosListSubForm_CobrosListSubForm ( CobrosListSubForm * );
+extern "C" PLUGINBF_MULTIIMPRIMIR_EXPORT int RecibosListSubForm_RecibosListSubForm ( RecibosListSubForm * );
+extern "C" PLUGINBF_MULTIIMPRIMIR_EXPORT int RecibosList_RecibosList ( RecibosList * );
+extern "C" PLUGINBF_MULTIIMPRIMIR_EXPORT int entryPoint ( BfBulmaFact * );
 
 
 // 
@@ -67,3 +62,4 @@ public slots:
 };
 
 */
+

@@ -38,11 +38,13 @@
 #endif
 
 #include "blwidget.h"
+#include "pdefs.h"
+
 
 class BcCompany;
 
 
-class BC_EXPORT BcCuentasAnualesImprimirView : public QDialog, public Ui_BcCuentasAnualesImprimirBase, public BlMainCompanyPointer
+class MY_EXPORT BcCuentasAnualesImprimirView : public QDialog, public Ui_BcCuentasAnualesImprimirBase, public BlMainCompanyPointer
 {
     Q_OBJECT
 

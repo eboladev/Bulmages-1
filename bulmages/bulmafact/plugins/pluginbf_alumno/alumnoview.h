@@ -34,10 +34,13 @@
 #include "bldatesearch.h"
 #include "bldialogchanges.h"
 #include "bfform.h"
+#include "pdefs_pluginbf_alumno.h"
+
 
 class BfCompany;
 
-class ListAlumnosTutorView : public BfSubForm
+
+class PLUGINBF_ALUMNO_EXPORT ListAlumnosTutorView : public BfSubForm
 {
     Q_OBJECT
     
@@ -49,7 +52,8 @@ public slots:
     virtual void cargar ( QString  );
 };
 
-class ListAlumnosActividadView : public BfSubForm
+
+class PLUGINBF_ALUMNO_EXPORT ListAlumnosActividadView : public BfSubForm
 {
     Q_OBJECT
     
@@ -61,12 +65,14 @@ public slots:
     virtual void cargar ( QString  );
 };
 
+
 #include "ui_alumnobase.h"
+
 
 /** Ventana de ficha de alumno.
     Se encarga de la presentacion de la ficha de alumno y del tratamiento de eventos producidos
     en dicha ventana **/
-class AlumnoView : public BfForm, public Ui_AlumnoBase
+class PLUGINBF_ALUMNO_EXPORT AlumnoView : public BfForm, public Ui_AlumnoBase
 {
     Q_OBJECT
     
@@ -91,3 +97,4 @@ public slots:
 };
 
 #endif
+

@@ -1,0 +1,21 @@
+#ifndef PDEFS_PLUGINBF_SERIESFACTURA_H
+#define PDEFS_PLUGINBF_SERIESFACTURA_H
+
+
+#ifdef WIN32
+
+#ifdef PLUGINBF_SERIESFACTURA
+#define PLUGINBF_SERIESFACTURA_EXPORT __declspec(dllexport)
+#else
+#define PLUGINBF_SERIESFACTURA_EXPORT __declspec(dllimport)
+#endif
+
+#else
+
+#define PLUGINBF_SERIESFACTURA_EXPORT
+
+#endif
+
+
+#endif
+

@@ -20,12 +20,6 @@
 
 #ifndef WIN32
 
-#ifdef Q_WS_WIN
-# define MY_EXPORT __declspec(dllexport)
-#else
-# define MY_EXPORT
-#endif
-
 #include "blfunctions.h"
 #include "blpostgresqlclient.h"
 #include "bccompany.h"
@@ -33,9 +27,9 @@
 #include "blmainwindow.h"
 
 
-extern "C" MY_EXPORT int entryPoint ( BlMainWindow * );
-extern "C" MY_EXPORT int BfCompany_createMainWindows_Post ( BfCompany * );
-extern "C" MY_EXPORT int BcCompany_createMainWindows_Post ( BcCompany * );
+extern "C" int entryPoint ( BlMainWindow * );
+extern "C" int BfCompany_createMainWindows_Post ( BfCompany * );
+extern "C" int BcCompany_createMainWindows_Post ( BcCompany * );
 
 
 

@@ -23,12 +23,13 @@
 #include "blwidget.h"
 #include "bfbuscarreferencia.h"
 #include "blsearchwidget.h"
-#include "pdefs.h"
+#include "pdefs_pluginbf_cliente.h"
 
-extern "C" MY_EXPORT int entryPoint ( BfBulmaFact * );
-extern "C" MY_EXPORT int BfCompany_createMainWindows_Post(BfCompany *);
-extern "C" MY_EXPORT int Busqueda_on_mui_buscar_clicked(BlSearchWidget *);
-extern "C" MY_EXPORT int SNewClienteView (BfCompany *);
+
+extern "C" PLUGINBF_CLIENTE_EXPORT int entryPoint ( BfBulmaFact * );
+extern "C" PLUGINBF_CLIENTE_EXPORT int BfCompany_createMainWindows_Post(BfCompany *);
+extern "C" PLUGINBF_CLIENTE_EXPORT int Busqueda_on_mui_buscar_clicked(BlSearchWidget *);
+extern "C" PLUGINBF_CLIENTE_EXPORT int SNewClienteView (BfCompany *);
 
 
 class MyPlugCli : public QObject, BlMainCompanyPointer

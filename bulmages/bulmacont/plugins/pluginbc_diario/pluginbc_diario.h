@@ -21,19 +21,13 @@
 #ifndef PLUGINBC_DIARIO
 #define PLUGINBC_DIARIO
 
-#ifdef Q_WS_WIN
-# define MY_EXPORT __declspec(dllexport)
-#else
-# define MY_EXPORT
-#endif
-
 #include "bcbulmacont.h"
 #include "blpostgresqlclient.h"
 #include "bccompany.h"
 #include "bcdiarioview.h"
+#include "pdefs.h"
 
-extern BcDiarioView *g_diario;
-
+extern "C" MY_EXPORT BcDiarioView *g_diario;
 extern "C" MY_EXPORT int entryPoint ( BcBulmaCont * );
 
 

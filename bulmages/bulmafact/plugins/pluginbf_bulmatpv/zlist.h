@@ -26,6 +26,7 @@
 #include "blformlist.h"
 #include "bfbulmafact.h"
 #include "ui_zlistbase.h"
+#include "pdefs_pluginbf_bulmatpv.h"
 
 
 class myplugincont : public QObject
@@ -51,7 +52,7 @@ public slots:
     Deriva de Ficha para la estandarizacion de Pantallas.
     Tiene dos modos de funcionamiento (Edicion y Seleccion)
 */
-class ZList : public BlFormList, public Ui_ZListBase
+class PLUGINBF_BULMATPV_EXPORT ZList : public BlFormList, public Ui_ZListBase
 {
     Q_OBJECT
 

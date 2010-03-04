@@ -9,9 +9,8 @@ file(GLOB plugin_SRC *.c *.cpp *.cxx)
 file(GLOB plugin_MOCS *.hpp *.h)
 
 # Exclude files with no QObject macro.
-file(GLOB plugin_NO_MOCS pluginbf_clientealbaranfacturar.h)
+file(GLOB plugin_NO_MOCS pluginbf_clientealbaranfacturar.h pdefs_pluginbf_clientealbaranesfactura.h)
 list(REMOVE_ITEM plugin_MOCS ${plugin_NO_MOCS})
-
 file(GLOB plugin_UIS *.ui)
 
 set(QT_USE_QTASSISTANT true)
@@ -50,6 +49,11 @@ QT4_WRAP_CPP(plugin_MOC_SRCS ${plugin_MOCS})
 #QT4_ADD_RESOURCES(plugin_RCC_SRCS ${plugin_RCCS})
 
 
+IF(WIN32)
+ADD_DEFINITIONS(-DQWT_DLL -DQT_DLL -DQWT_MAKEDLL -DPLUGINBF_CLIENTEALBARANESFACTURA)
+ENDIF(WIN32)
+
+
 #ADD_DEFINITIONS(${QT_DEFINITIONS})
 ADD_DEFINITIONS(-DQT_SHARED)
 
@@ -85,7 +89,7 @@ set_target_properties( ${plugin} PROPERTIES
   SOVERSION "${BULMAGES_VERSION_MAJOR}.${BULMAGES_VERSION_MINOR}"
   VERSION "${BULMAGES_VERSION}")
 
-target_link_libraries(${plugin} bulmalib ${QT_LIBRARIES} ${PGSQL_LIBRARIES})
+target_link_libraries(${plugin} bulmalib pluginbf_clientealbaran pluginbf_clientefactura pluginbf_proveedorfactura ${QT_LIBRARIES} ${PGSQL_LIBRARIES})
 install_targets(/lib/bulmafact/plugins ${plugin})
 
 add_dependencies(${plugin} bulmafact bulmalib pluginbf_clientealbaran pluginbf_clientefactura pluginbf_proveedorfactura)

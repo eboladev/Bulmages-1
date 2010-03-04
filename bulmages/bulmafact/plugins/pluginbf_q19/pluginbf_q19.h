@@ -18,22 +18,16 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#ifdef Q_WS_WIN
-# define MY_EXPORT __declspec(dllexport)
-#else
-# define MY_EXPORT
-#endif
-
-
 #include "cobroslist.h"
 #include "facturaslist.h"
 #include "reciboslist.h"
 #include "bfbulmafact.h"
+#include "pdefs_pluginbf_q19.h"
 
 
-extern "C" MY_EXPORT int CobrosList_CobrosList ( CobrosList * );
-extern "C" MY_EXPORT int RecibosList_RecibosList ( RecibosList * );
-extern "C" MY_EXPORT int FacturasList_FacturasList ( FacturasList * );
-extern "C" MY_EXPORT int entryPoint ( BfBulmaFact * );
+extern "C" PLUGINBF_Q19_EXPORT int CobrosList_CobrosList ( CobrosList * );
+extern "C" PLUGINBF_Q19_EXPORT int RecibosList_RecibosList ( RecibosList * );
+extern "C" PLUGINBF_Q19_EXPORT int FacturasList_FacturasList ( FacturasList * );
+extern "C" PLUGINBF_Q19_EXPORT int entryPoint ( BfBulmaFact * );
 
 

@@ -18,23 +18,20 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#ifdef Q_WS_WIN
-# define MY_EXPORT __declspec(dllexport)
-#else
-# define MY_EXPORT
-#endif
-
 #include "blpostgresqlclient.h"
 #include "clienteview.h"
 #include "articuloview.h"
 #include "bfbulmafact.h"
+#include "pdefs_pluginbf_tarifa.h"
 
 
-extern "C" MY_EXPORT int entryPoint ( BfBulmaFact * );
-extern "C" MY_EXPORT int ClienteView_ClienteView ( ClienteView * );
-extern "C" MY_EXPORT int ArticuloView_ArticuloView ( ArticuloView * );
-extern "C" MY_EXPORT int ArticuloView_cargar ( ArticuloView * );
-extern "C" MY_EXPORT int ArticuloView_guardar_post ( ArticuloView * );
-extern "C" MY_EXPORT int ArticuloView_borrar ( ArticuloView * );
-extern "C" MY_EXPORT int BfSubForm_BfSubForm ( BfSubForm * );
-extern "C" MY_EXPORT int BfSubForm_calculaPVP ( BfSubForm * );
+extern "C" PLUGINBF_TARIFA_EXPORT int entryPoint ( BfBulmaFact * );
+extern "C" PLUGINBF_TARIFA_EXPORT int ClienteView_ClienteView ( ClienteView * );
+extern "C" PLUGINBF_TARIFA_EXPORT int ArticuloView_ArticuloView ( ArticuloView * );
+extern "C" PLUGINBF_TARIFA_EXPORT int ArticuloView_cargar ( ArticuloView * );
+extern "C" PLUGINBF_TARIFA_EXPORT int ArticuloView_guardar_post ( ArticuloView * );
+extern "C" PLUGINBF_TARIFA_EXPORT int ArticuloView_borrar ( ArticuloView * );
+extern "C" PLUGINBF_TARIFA_EXPORT int BfSubForm_BfSubForm ( BfSubForm * );
+extern "C" PLUGINBF_TARIFA_EXPORT int BfSubForm_calculaPVP ( BfSubForm * );
+
+

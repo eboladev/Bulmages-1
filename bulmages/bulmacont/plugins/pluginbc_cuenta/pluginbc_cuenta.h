@@ -18,14 +18,8 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#ifndef PLUGINBC_MAYOR
-#define PLUGINBC_MAYOR
-
-#ifdef Q_WS_WIN
-# define MY_EXPORT __declspec(dllexport)
-#else
-# define MY_EXPORT
-#endif
+#ifndef PLUGINBC_CUENTA
+#define PLUGINBC_CUENTA
 
 #include "bcbulmacont.h"
 #include "blmaincompanypointer.h"
@@ -33,6 +27,7 @@
 #include "blsubform.h"
 #include "bcsubform.h"
 #include "blsearchwidget.h"
+#include "pdefs.h"
 
 extern "C" MY_EXPORT int entryPoint ( BcBulmaCont * );
 extern "C" MY_EXPORT int BlSubForm_BlSubForm_Post ( BlSubForm * );
@@ -44,6 +39,7 @@ extern "C" MY_EXPORT int BlSubForm_editFinished ( BlSubForm * );
 extern "C" MY_EXPORT int BlDbCompleterComboBox_textChanged (BlDbCompleterComboBox *);
 extern "C" MY_EXPORT int BcSubForm_pressedAsterisk ( BcSubForm * );
 extern "C" MY_EXPORT int Busqueda_on_m_inputBusqueda_textChanged (BlSearchWidget *);
+
 
 class MyPluginCuenta : public QObject, BlMainCompanyPointer
 {

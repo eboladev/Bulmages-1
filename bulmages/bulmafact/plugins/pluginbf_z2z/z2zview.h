@@ -37,7 +37,6 @@
 #include "bfcompany.h"
 
 
-
 /// Muestra y administra la ventana de una factura a cliente.
 /** */
 class Z2ZView : public BfForm, public Ui_Z2ZBase

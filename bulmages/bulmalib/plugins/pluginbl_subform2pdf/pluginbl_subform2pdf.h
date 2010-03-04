@@ -21,12 +21,6 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#ifdef Q_WS_WIN
-# define MY_EXPORT __declspec(dllexport)
-#else
-# define MY_EXPORT
-#endif
-
 #include <QMenu>
 #include <QApplication>
 
@@ -34,10 +28,11 @@
 #include "blpostgresqlclient.h"
 #include "blwidget.h"
 #include "blsubform.h"
+#include "pdefs_pluginbl_subform2pdf.h"
 
 
-extern "C" MY_EXPORT int entryPoint ( QApplication * );
-extern "C" MY_EXPORT int BlSubForm_BlSubForm_Post ( BlSubForm * );
+extern "C" PLUGINBL_SUBFORM2PDF_EXPORT int entryPoint ( QApplication * );
+extern "C" PLUGINBL_SUBFORM2PDF_EXPORT int BlSubForm_BlSubForm_Post ( BlSubForm * );
 
 
 class myplugsubformods : public QObject
@@ -53,3 +48,4 @@ public slots:
     virtual void s_pintaMenu ( QMenu * );
     virtual void s_trataMenu ( QAction * );
 };
+

@@ -1,0 +1,21 @@
+#ifndef PDEFS_PLUGINBF_ALMACENAMPLIA_H
+#define PDEFS_PLUGINBF_ALMACENAMPLIA_H
+
+
+#ifdef WIN32
+
+#ifdef PLUGINBF_ALMACENAMPLIA
+#define PLUGINBF_ALMACENAMPLIA_EXPORT __declspec(dllexport)
+#else
+#define PLUGINBF_ALMACENAMPLIA_EXPORT __declspec(dllimport)
+#endif
+
+#else
+
+#define PLUGINBF_ALMACENAMPLIA_EXPORT
+
+#endif
+
+
+#endif
+

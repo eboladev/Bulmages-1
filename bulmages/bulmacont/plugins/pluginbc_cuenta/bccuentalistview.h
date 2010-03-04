@@ -29,7 +29,7 @@
 
 /**
 */
-class BC_EXPORT BcCuentaListSubForm : public BcSubForm
+class BcCuentaListSubForm : public BcSubForm
 {
     Q_OBJECT
 
@@ -44,7 +44,7 @@ public:
 
 /**
 */
-class BC_EXPORT BcCuentaListView : public BlFormList, public Ui_BcCuentaListBase
+class BcCuentaListView : public BlFormList, public Ui_BcCuentaListBase
 {
     Q_OBJECT
 

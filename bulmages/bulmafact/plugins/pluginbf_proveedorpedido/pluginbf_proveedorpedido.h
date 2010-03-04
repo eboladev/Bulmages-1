@@ -17,21 +17,20 @@
  *   Free Software Foundation, Inc.,                                       *
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
- 
- 
-#include "pdefs.h"
+
 #include "blpostgresqlclient.h"
 #include "bfbulmafact.h"
 #include "blwidget.h"
 #include "provedit.h"
 #include "bfbuscarreferencia.h"
+#include "pdefs_pluginbf_proveedorpedido.h"
 
 
-extern "C" MY_EXPORT int entryPoint ( BfBulmaFact * );
-extern "C" MY_EXPORT int BfCompany_createMainWindows_Post(BfCompany *);
-extern "C" MY_EXPORT int ProveedorView_ProveedorView_Post (ProveedorView *);
-extern "C" MY_EXPORT int ProveedorView_cargarPost_Post (ProveedorView *);
-extern "C" MY_EXPORT int BfBuscarReferencia_on_mui_abrirtodo_clicked_Post (BfBuscarReferencia *);
+extern "C" PLUGINBF_PROVEEDORPEDIDO_EXPORT int entryPoint ( BfBulmaFact * );
+extern "C" PLUGINBF_PROVEEDORPEDIDO_EXPORT int BfCompany_createMainWindows_Post(BfCompany *);
+extern "C" PLUGINBF_PROVEEDORPEDIDO_EXPORT int ProveedorView_ProveedorView_Post (ProveedorView *);
+extern "C" PLUGINBF_PROVEEDORPEDIDO_EXPORT int ProveedorView_cargarPost_Post (ProveedorView *);
+extern "C" PLUGINBF_PROVEEDORPEDIDO_EXPORT int BfBuscarReferencia_on_mui_abrirtodo_clicked_Post (BfBuscarReferencia *);
 
 
 class mypluginpedp : public QObject, BlMainCompanyPointer
@@ -50,3 +49,4 @@ public slots:
     void elslot();
     void elslot1();
 };
+

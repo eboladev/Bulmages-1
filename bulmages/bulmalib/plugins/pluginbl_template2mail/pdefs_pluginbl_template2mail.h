@@ -1,0 +1,21 @@
+#ifndef PDEFS_PLUGINBL_TEMPLATE2MAIL_H
+#define PDEFS_PLUGINBL_TEMPLATE2MAIL_H
+
+
+#ifdef WIN32
+
+#ifdef PLUGINBL_TEMPLATE2MAIL
+#define PLUGINBL_TEMPLATE2MAIL_EXPORT __declspec(dllexport)
+#else
+#define PLUGINBL_TEMPLATE2MAIL_EXPORT __declspec(dllimport)
+#endif
+
+#else
+
+#define PLUGINBL_TEMPLATE2MAIL_EXPORT
+
+#endif
+
+
+#endif
+

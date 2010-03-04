@@ -32,6 +32,7 @@
 #include "bldatesearch.h"
 #include "bldialogchanges.h"
 #include "bfform.h"
+#include "pdefs_pluginbf_almacenamplia.h"
 
 
 class BfCompany;
@@ -42,7 +43,7 @@ class BfCompany;
     en dicha ventana.
     Deriva de Ficha para metodos comunes a todas las ventanas.
     Deriva de Cobro para el manejo de la Base de datos. */
-class AlmacenView : public BfForm, public Ui_AlmacenBase
+class PLUGINBF_ALMACENAMPLIA_EXPORT AlmacenView : public BfForm, public Ui_AlmacenBase
 {
     Q_OBJECT
 
@@ -52,3 +53,4 @@ public:
 };
 
 #endif
+

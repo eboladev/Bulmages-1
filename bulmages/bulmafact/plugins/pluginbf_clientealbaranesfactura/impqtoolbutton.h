@@ -32,6 +32,7 @@
 #include "albaranclientelist.h"
 #include "facturaslist.h"
 
+
 class ImpQToolButton : public QToolButton
 {
     Q_OBJECT
@@ -43,12 +44,13 @@ private:
     AlbaranClienteList *m_albaranClienteList;
     FacturasList    *m_facturasList;
 
-
 public:
     ImpQToolButton ( PresupuestoList *pres = NULL, PedidosClienteList *ped = NULL, AlbaranClienteList *alb = NULL,  FacturasList *fac = NULL , QWidget *parent = NULL );
     ~ImpQToolButton();
     void setBoton();
+
 public slots:
     virtual void click();
 
 };
+

@@ -26,12 +26,13 @@
 #include "bfcompany.h"
 #include "bfsubform.h"
 #include "blformlist.h"
-#include "pdefs_minicontabilidad.h"
+#include "pdefs_pluginbf_minicontabilidad.h"
+
 
 /** Subformulario de presupuestocontables.
     Esta clase derivada de BfSubForm presenta todo el listado de presupuestocontables.
 */
-class MY_EXPORT_MINICONTABILIDAD PresupuestoContableListSubform : public BfSubForm
+class PLUGINBF_MINICONTABILIDAD_EXPORT PresupuestoContableListSubform : public BfSubForm
 {
     Q_OBJECT
 
@@ -46,7 +47,7 @@ public:
 
 /** Esta clase implementa la pantalla de listado de presupuestocontables.
 */
-class MY_EXPORT_MINICONTABILIDAD PresupuestoContableList : public BlFormList, public Ui_PresupuestoContableListBase, public BlImportExport
+class PLUGINBF_MINICONTABILIDAD_EXPORT PresupuestoContableList : public BlFormList, public Ui_PresupuestoContableListBase, public BlImportExport
 {
     Q_OBJECT
 

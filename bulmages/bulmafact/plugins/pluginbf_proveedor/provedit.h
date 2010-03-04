@@ -25,12 +25,12 @@
 #include "ui_proveditbase.h"
 #include "bldb.h"
 #include "bfform.h"
-#include "pdefs.h"
+#include "pdefs_pluginbf_proveedor.h"
 
 
 /// Muestra y administra la ventana con la informaci&oacute;n de un proveedor.
 /** */
-class MY_EXPORT ProveedorView : public BfForm, public Ui_ProveedorBase
+class PLUGINBF_PROVEEDOR_EXPORT ProveedorView : public BfForm, public Ui_ProveedorBase
 {
     Q_OBJECT
 
@@ -39,7 +39,7 @@ public:
     ~ProveedorView();
 
 public slots:
-	virtual void on_mui_cifproveedor_lostFocus();
+    virtual void on_mui_cifproveedor_lostFocus();
 
 public:
     virtual int cargarPost ( QString );

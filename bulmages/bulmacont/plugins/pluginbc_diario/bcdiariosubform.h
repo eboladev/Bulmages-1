@@ -25,13 +25,14 @@
 #include "bccompany.h"
 #include "bcsubform.h"
 #include "blwidget.h"
-#include "bldefs.h"
+#include "pdefs.h"
+
 
 ///
 /** SubFormulario de la pantalla de Diario.*/
 
 
-class BC_EXPORT BcDiarioSubForm : public BcSubForm
+class MY_EXPORT BcDiarioSubForm : public BcSubForm
 {
     Q_OBJECT
 

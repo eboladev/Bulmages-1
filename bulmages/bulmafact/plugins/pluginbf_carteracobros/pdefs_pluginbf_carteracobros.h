@@ -1,0 +1,21 @@
+#ifndef PDEFS_PLUGINBF_CARTERACOBROS_H
+#define PDEFS_PLUGINBF_CARTERACOBROS_H
+
+
+#ifdef WIN32
+
+#ifdef PLUGINBF_CARTERACOBROS
+#define PLUGINBF_CARTERACOBROS_EXPORT __declspec(dllexport)
+#else
+#define PLUGINBF_CARTERACOBROS_EXPORT __declspec(dllimport)
+#endif
+
+#else
+
+#define PLUGINBF_CARTERACOBROS_EXPORT
+
+#endif
+
+
+#endif
+

@@ -26,6 +26,7 @@
 #include "blformlist.h"
 #include "bfbulmafact.h"
 #include "bfcompany.h"
+#include "pdefs_pluginbf_carteracobros.h"
 
 
 
@@ -53,7 +54,7 @@ public slots:
 /** Subformulario de contratoes.
     Esta clase derivada de BfSubForm presenta todo el listado de contratoes.
 */
-class CarteraCobrosListSubForm : public BfSubForm
+class PLUGINBF_CARTERACOBROS_EXPORT CarteraCobrosListSubForm : public BfSubForm
 {
     Q_OBJECT
 
@@ -71,7 +72,7 @@ public:
     Tiene dos modos de funcionamiento (Edicion y Seleccion)
 */
 /// \TODO: Deberia crearse la clase BlFormList para poner en ella mas funcionalidades comunes a los listados.
-class CarteraCobrosList : public BlFormList, public Ui_CarteraCobrosListBase, public BlImportExport
+class PLUGINBF_CARTERACOBROS_EXPORT CarteraCobrosList : public BlFormList, public Ui_CarteraCobrosListBase, public BlImportExport
 {
     Q_OBJECT
 

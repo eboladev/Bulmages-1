@@ -1,0 +1,21 @@
+#ifndef PDEFS_PLUGINBF_GESTASSOCIACIO_H
+#define PDEFS_PLUGINBF_GESTASSOCIACIO_H
+
+
+#ifdef WIN32
+
+#ifdef PLUGINBF_GESTASSOCIACIO
+#define PLUGINBF_GESTASSOCIACIO_EXPORT __declspec(dllexport)
+#else
+#define PLUGINBF_GESTASSOCIACIO_EXPORT __declspec(dllimport)
+#endif
+
+#else
+
+#define PLUGINBF_GESTASSOCIACIO_EXPORT
+
+#endif
+
+
+#endif
+

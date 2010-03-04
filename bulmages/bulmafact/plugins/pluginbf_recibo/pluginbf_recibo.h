@@ -18,22 +18,19 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#ifdef Q_WS_WIN
-# define MY_EXPORT __declspec(dllexport)
-#else
-# define MY_EXPORT
-#endif
-
 #include "blpostgresqlclient.h"
 #include "bfbulmafact.h"
 #include "blwidget.h"
 #include "bfbuscarreferencia.h"
 #include "actividadview.h"
+#include "pdefs_pluginbf_recibo.h"
 
-extern "C" MY_EXPORT int SNewReciboView (BfCompany *);
-extern "C" MY_EXPORT int entryPoint ( BfBulmaFact * );
-extern "C" MY_EXPORT int BfCompany_createMainWindows_Post(BfCompany *);
-extern "C" MY_EXPORT int ActividadView_ActividadView(ActividadView *);
+
+extern "C" PLUGINBF_RECIBO_EXPORT int SNewReciboView (BfCompany *);
+extern "C" PLUGINBF_RECIBO_EXPORT int entryPoint ( BfBulmaFact * );
+extern "C" PLUGINBF_RECIBO_EXPORT int BfCompany_createMainWindows_Post(BfCompany *);
+extern "C" PLUGINBF_RECIBO_EXPORT int ActividadView_ActividadView(ActividadView *);
+
 
 class MyPlugProf : public QObject, BlMainCompanyPointer
 {
@@ -68,3 +65,4 @@ public:
 public slots:
     void elslot();
 };
+

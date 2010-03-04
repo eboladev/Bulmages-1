@@ -29,16 +29,15 @@
 #include <QToolButton>
 #include <QWidget>
 
+#include "blplugins.h"
 #include "albaranclientelist.h"
 #include "albaranclienteview.h"
 #include "clientslist.h"
 #include "bfcompany.h"
 #include "facturaview.h"
-#include "blfunctions.h"
 #include "bfinformereferencia.h"
 #include "listdescfacturaview.h"
 #include "listlinfacturaview.h"
-#include "blplugins.h"
 
 
 /** Inicializa la pantalla.

@@ -1,0 +1,21 @@
+#ifndef PDEFS_PLUGINBF_PROVEEDORPEDIDO_H
+#define PDEFS_PLUGINBF_PROVEEDORPEDIDO_H
+
+
+#ifdef WIN32
+
+#ifdef PLUGINBF_PROVEEDORPEDIDO
+#define PLUGINBF_PROVEEDORPEDIDO_EXPORT __declspec(dllexport)
+#else
+#define PLUGINBF_PROVEEDORPEDIDO_EXPORT __declspec(dllimport)
+#endif
+
+#else
+
+#define PLUGINBF_PROVEEDORPEDIDO_EXPORT
+
+#endif
+
+
+#endif
+

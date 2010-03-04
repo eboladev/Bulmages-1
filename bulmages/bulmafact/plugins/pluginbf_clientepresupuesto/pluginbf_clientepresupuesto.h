@@ -17,10 +17,10 @@
  *   Free Software Foundation, Inc.,                                       *
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
+
 #ifndef PLUGINBF_CLIENTEPRESUPUESTO_H
 #define PLUGINBF_CLIENTEPRESUPUESTO_H
 
-#include "pdefs_clientepresupuesto.h"
 #include "blpostgresqlclient.h"
 #include "bfbulmafact.h"
 #include "blwidget.h"
@@ -29,15 +29,16 @@
 #include "pedidoclienteview.h"
 #include "presupuestoview.h"
 #include "bfcompany.h"
+#include "pdefs_pluginbf_clientepresupuesto.h"
 
 
-extern "C" MY_EXPORT_CLIENTEPRESUPUESTO int SNewPresupuestoView (BfCompany *);
-extern "C" MY_EXPORT_CLIENTEPRESUPUESTO int entryPoint ( BfBulmaFact * );
-extern "C" MY_EXPORT_CLIENTEPRESUPUESTO int BfCompany_createMainWindows_Post(BfCompany *);
-extern "C" MY_EXPORT_CLIENTEPRESUPUESTO int ClienteView_ClienteView_Post (ClienteView *);
-extern "C" MY_EXPORT_CLIENTEPRESUPUESTO int ClienteView_cargarPost_Post (ClienteView *);
-extern "C" MY_EXPORT_CLIENTEPRESUPUESTO int BfBuscarReferencia_on_mui_abrirtodo_clicked_Post (BfBuscarReferencia *);
-extern "C" MY_EXPORT_CLIENTEPRESUPUESTO int PedidoClienteView_PedidoClienteView ( PedidoClienteView * );
+extern "C" PLUGINBF_CLIENTEPRESUPUESTO_EXPORT int SNewPresupuestoView (BfCompany *);
+extern "C" PLUGINBF_CLIENTEPRESUPUESTO_EXPORT int entryPoint ( BfBulmaFact * );
+extern "C" PLUGINBF_CLIENTEPRESUPUESTO_EXPORT int BfCompany_createMainWindows_Post(BfCompany *);
+extern "C" PLUGINBF_CLIENTEPRESUPUESTO_EXPORT int ClienteView_ClienteView_Post (ClienteView *);
+extern "C" PLUGINBF_CLIENTEPRESUPUESTO_EXPORT int ClienteView_cargarPost_Post (ClienteView *);
+extern "C" PLUGINBF_CLIENTEPRESUPUESTO_EXPORT int BfBuscarReferencia_on_mui_abrirtodo_clicked_Post (BfBuscarReferencia *);
+extern "C" PLUGINBF_CLIENTEPRESUPUESTO_EXPORT int PedidoClienteView_PedidoClienteView ( PedidoClienteView * );
 
 
 // 

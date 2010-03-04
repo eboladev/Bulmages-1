@@ -26,12 +26,12 @@
 #include <QLabel>
 #include <QCheckBox>
 
-#include "pdefs_minicontabilidad.h"
 #include "ui_presupuestocontablebase.h"
 #include "blpostgresqlclient.h"
 #include "bldatesearch.h"
 #include "blfixed.h"
 #include "bfform.h"
+#include "pdefs_pluginbf_minicontabilidad.h"
 
 
 class BfCompany;
@@ -39,7 +39,7 @@ class BfCompany;
 
 /// Muestra y administra la ventana con la informaci&oacute;n de un presupuesto.
 /** */
-class MY_EXPORT_MINICONTABILIDAD PresupuestoContableView : public BfForm, public Ui_PresupuestoContableBase
+class PLUGINBF_MINICONTABILIDAD_EXPORT PresupuestoContableView : public BfForm, public Ui_PresupuestoContableBase
 {
     Q_OBJECT
 

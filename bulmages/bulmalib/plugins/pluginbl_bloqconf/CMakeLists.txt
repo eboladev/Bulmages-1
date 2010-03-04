@@ -10,7 +10,7 @@ file(GLOB plugin_SRC *.c *.cpp *.cxx)
 file(GLOB plugin_MOCS *.hpp *.h)
 
 # Exclude files with no QObject macro.
-file(GLOB plugin_NO_MOCS pluginbloqconf.h)
+file(GLOB plugin_NO_MOCS pluginbloqconf.h pdefs_pluginbl_bloqconf.h)
 list(REMOVE_ITEM plugin_MOCS ${plugin_NO_MOCS})
 
 file(GLOB plugin_UIS *.ui)
@@ -38,6 +38,11 @@ QT4_WRAP_CPP(plugin_MOC_SRCS ${plugin_MOCS})
 #QT4_ADD_RESOURCES(plugin_RCC_SRCS ${plugin_RCCS})
 
 # build sources, moc'd sources, and rcc'd sources
+
+
+IF(WIN32)
+ADD_DEFINITIONS(-DQWT_DLL -DQT_DLL -DQWT_MAKEDLL -DPLUGINBL_BLOQCONF)
+ENDIF(WIN32)
 
 
 # i18n

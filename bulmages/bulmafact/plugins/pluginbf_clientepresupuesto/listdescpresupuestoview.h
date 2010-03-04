@@ -22,22 +22,21 @@
 #ifndef LISTDESCPRESUPUESTOVIEW_H
 #define LISTDESCPRESUPUESTOVIEW_H
 
-#include "pdefs_clientepresupuesto.h"
 #include "bfsubform.h"
 #include "bfcompany.h"
+#include "pdefs_pluginbf_clientepresupuesto.h"
 
 
 /// Muestra y administra la ventana con la lista de descuentos por presupuesto.
 /** */
-class MY_EXPORT_CLIENTEPRESUPUESTO ListDescuentoPresupuestoView : public BfSubForm
+class PLUGINBF_CLIENTEPRESUPUESTO_EXPORT ListDescuentoPresupuestoView : public BfSubForm
 {
     Q_OBJECT
 
 public:
     QString mdb_idpresupuesto;
     ListDescuentoPresupuestoView ( QWidget *parent = 0 );
-    ~ListDescuentoPresupuestoView() {}
-    ;
+    ~ListDescuentoPresupuestoView() {};
 
 public slots:
     virtual void cargar ( QString idpresupuesto ) {

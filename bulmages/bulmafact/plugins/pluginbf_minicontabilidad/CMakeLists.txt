@@ -12,9 +12,11 @@ file(GLOB plugin_SRC *.c *.cpp *.cxx)
 file(GLOB plugin_MOCS *.hpp *.h)
 file(GLOB plugin_UIS *.ui)
 
+
 # Exclude files with no QObject macro.
-file(GLOB plugin_NO_MOCS pdefs_minicontabilidad.h)
+file(GLOB plugin_NO_MOCS pdefs_pluginbf_minicontabilidad.h)
 list(REMOVE_ITEM plugin_MOCS ${plugin_NO_MOCS})
+
 
 set(QT_USE_QTASSISTANT true)
 set(QT_USE_QTXML true)
@@ -40,7 +42,7 @@ QT4_WRAP_UI(plugin_UIS_H ${plugin_UIS} OPTIONS -tr N_)
 QT4_WRAP_CPP(plugin_MOC_SRCS ${plugin_MOCS})
 
 IF(WIN32)
-ADD_DEFINITIONS(-DQWT_DLL -DQT_DLL -DQWT_MAKEDLL)
+ADD_DEFINITIONS(-DQWT_DLL -DQT_DLL -DQWT_MAKEDLL -DPLUGINBF_MINICONTABILIDAD)
 ENDIF(WIN32)
 
 #ADD_DEFINITIONS(${QT_DEFINITIONS})

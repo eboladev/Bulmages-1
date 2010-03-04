@@ -18,12 +18,6 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#ifdef Q_WS_WIN
-# define MY_EXPORT __declspec(dllexport)
-#else
-# define MY_EXPORT
-#endif
-
 #include <QStringList>
 #include <QWidget>
 #include <QIcon>
@@ -32,11 +26,12 @@
 #include "clientslist.h"
 #include "providerslist.h"
 #include "bfbulmafact.h"
+#include "pdefs_pluginbf_informecliente2sxc.h"
 
 
-extern "C" MY_EXPORT int entryPoint ( BfBulmaFact * );
-extern "C" MY_EXPORT int ClientsList_ClientsList ( ClientsList * );
-extern "C" MY_EXPORT int ProveedorList_ProveedorList ( ProveedorList * );
+extern "C" PLUGINBF_INFORMECLIENTE2SXC_EXPORT int entryPoint ( BfBulmaFact * );
+extern "C" PLUGINBF_INFORMECLIENTE2SXC_EXPORT int ClientsList_ClientsList ( ClientsList * );
+extern "C" PLUGINBF_INFORMECLIENTE2SXC_EXPORT int ProveedorList_ProveedorList ( ProveedorList * );
 
 
 

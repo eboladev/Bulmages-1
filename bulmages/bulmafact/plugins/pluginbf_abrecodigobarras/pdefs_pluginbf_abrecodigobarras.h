@@ -1,0 +1,21 @@
+#ifndef PDEFS_PLUGINBF_ABRECODIGOBARRAS_H
+#define PDEFS_PLUGINBF_ABRECODIGOBARRAS_H
+
+
+#ifdef WIN32
+
+#ifdef PLUGINBF_ABRECODIGOBARRAS
+#define PLUGINBF_ABRECODIGOBARRAS_EXPORT __declspec(dllexport)
+#else
+#define PLUGINBF_ABRECODIGOBARRAS_EXPORT __declspec(dllimport)
+#endif
+
+#else
+
+#define PLUGINBF_ABRECODIGOBARRAS_EXPORT
+
+#endif
+
+
+#endif
+

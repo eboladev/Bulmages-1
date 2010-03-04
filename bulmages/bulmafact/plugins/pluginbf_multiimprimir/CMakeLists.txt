@@ -8,17 +8,18 @@ set (docs README.es)
 
 file(GLOB plugin_SRC *.c *.cpp *.cxx)
 file(GLOB plugin_MOCS *.hpp *.h)
+file(GLOB plugin_UIS *.ui)
+
 
 # Exclude files with no QObject macro.
-file(GLOB plugin_NO_MOCS pluginbf_multiimprimir.h)
+file(GLOB plugin_NO_MOCS pluginbf_multiimprimir.h pdefs_pluginbf_multiimprimir.h)
 list(REMOVE_ITEM plugin_MOCS ${plugin_NO_MOCS})
 
-file(GLOB plugin_UIS *.ui)
 
 set(QT_USE_QTASSISTANT true)
 set(QT_USE_QTXML true)
 
-INCLUDE(   ${QT_USE_FILE}   )
+INCLUDE( ${QT_USE_FILE} )
 
 include_directories(
     ${QT_INCLUDE_DIR}
@@ -51,6 +52,11 @@ include_directories(
 QT4_WRAP_UI(plugin_UIS_H ${plugin_UIS} OPTIONS -tr N_)
 QT4_WRAP_CPP(plugin_MOC_SRCS ${plugin_MOCS})
 #QT4_ADD_RESOURCES(plugin_RCC_SRCS ${plugin_RCCS})
+
+
+IF(WIN32)
+ADD_DEFINITIONS(-DQWT_DLL -DQT_DLL -DQWT_MAKEDLL -DPLUGINBF_MULTIIMPRIMIR)
+ENDIF(WIN32)
 
 
 #ADD_DEFINITIONS(${QT_DEFINITIONS})
@@ -91,7 +97,7 @@ set_target_properties( ${plugin} PROPERTIES
   SOVERSION "${BULMAGES_VERSION_MAJOR}.${BULMAGES_VERSION_MINOR}"
   VERSION "${BULMAGES_VERSION}")
 
-target_link_libraries(${plugin} libbulmafact bulmalib ${QT_LIBRARIES} ${PGSQL_LIBRARIES})
+target_link_libraries(${plugin} libbulmafact bulmalib pluginbf_clientecobro ${QT_LIBRARIES} ${PGSQL_LIBRARIES})
 install_targets(/lib/bulmafact/plugins ${plugin})
 
 foreach(dfile ${docs})

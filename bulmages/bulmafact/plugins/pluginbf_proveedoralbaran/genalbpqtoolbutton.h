@@ -25,10 +25,9 @@
 #include <QString>
 #include "bfcompany.h"
 #include "blfunctions.h"
-#include "pdefs.h"
 
 
-class MY_EXPORT GenAlbProQToolButton : public QToolButton
+class GenAlbProQToolButton : public QToolButton
 {
     Q_OBJECT
 
@@ -40,7 +39,8 @@ public:
     GenAlbProQToolButton ( QWidget *fac,   QWidget *parent = NULL );
     ~GenAlbProQToolButton();
     void setBoton();
-	void generarAlbaranProveedor();
+    void generarAlbaranProveedor();
+
 public slots:
     virtual void click();
 

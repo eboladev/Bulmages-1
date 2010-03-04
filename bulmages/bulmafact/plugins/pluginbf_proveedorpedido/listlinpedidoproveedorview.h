@@ -27,11 +27,12 @@
 #include "bfcompany.h"
 #include "bfsubform.h"
 #include "blfixed.h"
-#include "pdefs.h"
+#include "pdefs_pluginbf_proveedorpedido.h"
+
 
 /// Muestra y administra las l&iacute;neas de detalle de un pedido a un proveedor.
 /** */
-class MY_EXPORT ListLinPedidoProveedorView : public BfSubForm
+class PLUGINBF_PROVEEDORPEDIDO_EXPORT ListLinPedidoProveedorView : public BfSubForm
 {
     Q_OBJECT
 

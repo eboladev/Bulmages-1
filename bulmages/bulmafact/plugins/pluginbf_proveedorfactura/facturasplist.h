@@ -27,11 +27,12 @@
 #include "blfunctions.h"
 #include "bfsubform.h"
 #include "blformlist.h"
-#include "pdefs.h"
+#include "pdefs_pluginbf_proveedorfactura.h"
+
 
 /// Administra el detalle del listado de facturas de proveedor.
 /** */
-class MY_EXPORT FacturasProveedorListSubform : public BfSubForm
+class PLUGINBF_PROVEEDORFACTURA_EXPORT FacturasProveedorListSubform : public BfSubForm
 {
     Q_OBJECT
 
@@ -50,7 +51,7 @@ public slots:
 
 /// Administra el listado de facturas de proveedor.
 /** */
-class MY_EXPORT FacturasProveedorList : public BlFormList, public Ui_FacturasProveedorListBase
+class PLUGINBF_PROVEEDORFACTURA_EXPORT FacturasProveedorList : public BlFormList, public Ui_FacturasProveedorListBase
 {
     Q_OBJECT
 

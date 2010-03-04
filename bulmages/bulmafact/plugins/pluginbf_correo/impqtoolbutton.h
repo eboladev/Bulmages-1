@@ -27,7 +27,6 @@
 #include <QMap>
 #include <QString>
 
-
 #include "facturaview.h"
 #include "presupuestoview.h"
 #include "pedidoclienteview.h"
@@ -43,8 +42,7 @@ private:
     PresupuestoView *m_presupuestoView;
     PedidoClienteView *m_pedidoClienteView;
     AlbaranClienteView *m_albaranClienteView;
-    FacturaView    *m_facturaView;
-
+    FacturaView *m_facturaView;
 
 public:
     EmailQToolButton ( PresupuestoView *, PedidoClienteView *, AlbaranClienteView *,  FacturaView * , QWidget *parent = NULL );

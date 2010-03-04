@@ -34,7 +34,7 @@
 
 class BL_EXPORT BlWidget : public QWidget, public BlMainCompanyPointer
 {
-Q_OBJECT
+    Q_OBJECT
 
 protected:
     virtual void paintEvent(QPaintEvent *);
@@ -46,5 +46,5 @@ public:
 };
 
 
-
 #endif
+

@@ -35,8 +35,7 @@ class RutaComercialListSubForm : public BfSubForm
 
 public:
     RutaComercialListSubForm ( QWidget *parent = 0 );
-    ~RutaComercialListSubForm() {}
-    ;
+    ~RutaComercialListSubForm() {};
 
 public slots:
     virtual void cargar() {

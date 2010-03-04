@@ -21,12 +21,6 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#ifdef Q_WS_WIN
-# define MY_EXPORT __declspec(dllexport)
-#else
-# define MY_EXPORT
-#endif
-
 #include <QMenu>
 #include <QApplication>
 
@@ -35,10 +29,12 @@
 #include "blwidget.h"
 #include "blsubform.h"
 #include "bltreewidget.h"
+#include "pdefs_pluginbl_subform2ods.h"
 
-extern "C" MY_EXPORT int entryPoint ( QApplication * );
-extern "C" MY_EXPORT int BlSubForm_BlSubForm_Post ( BlSubForm * );
-extern "C" MY_EXPORT int BlTreeWidget_BlTreeWidget_Post ( BlTreeWidget * );
+
+extern "C" PLUGINBL_SUBFORM2ODS_EXPORT int entryPoint ( QApplication * );
+extern "C" PLUGINBL_SUBFORM2ODS_EXPORT int BlSubForm_BlSubForm_Post ( BlSubForm * );
+extern "C" PLUGINBL_SUBFORM2ODS_EXPORT int BlTreeWidget_BlTreeWidget_Post ( BlTreeWidget * );
 
 
 class myplugsubformods : public QObject
@@ -59,3 +55,4 @@ public slots:
     virtual void s_trataMenu1 ( QAction * );
 
 };
+

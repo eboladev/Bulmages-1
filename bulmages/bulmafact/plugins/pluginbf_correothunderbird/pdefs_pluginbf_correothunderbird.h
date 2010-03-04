@@ -1,0 +1,21 @@
+#ifndef PDEFS_PLUGINBF_CORREOTHUNDERBIRD_H
+#define PDEFS_PLUGINBF_CORREOTHUNDERBIRD_H
+
+
+#ifdef WIN32
+
+#ifdef PLUGINBF_CORREOTHUNDERBIRD
+#define PLUGINBF_CORREOTHUNDERBIRD_EXPORT __declspec(dllexport)
+#else
+#define PLUGINBF_CORREOTHUNDERBIRD_EXPORT __declspec(dllimport)
+#endif
+
+#else
+
+#define PLUGINBF_CORREOTHUNDERBIRD_EXPORT
+
+#endif
+
+
+#endif
+

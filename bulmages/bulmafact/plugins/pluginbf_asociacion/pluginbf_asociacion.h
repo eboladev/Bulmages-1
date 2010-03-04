@@ -18,20 +18,16 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#ifdef Q_WS_WIN
-# define MY_EXPORT __declspec(dllexport)
-#else
-# define MY_EXPORT
-#endif
-
 #include "blpostgresqlclient.h"
 #include "bfbulmafact.h"
 #include "blwidget.h"
 #include "bfbuscarreferencia.h"
+#include "pdefs_pluginbf_asociacion.h"
 
 
-extern "C" MY_EXPORT int entryPoint ( BfBulmaFact * );
-extern "C" MY_EXPORT int BfCompany_createMainWindows_Post(BfCompany *);
+extern "C" PLUGINBF_ASOCIACION_EXPORT int entryPoint ( BfBulmaFact * );
+extern "C" PLUGINBF_ASOCIACION_EXPORT int BfCompany_createMainWindows_Post(BfCompany *);
+
 
 class MyPlugAsoc : public QObject, BlMainCompanyPointer
 {
@@ -53,3 +49,4 @@ public slots:
     void convjunta();
     void comision();
 };
+

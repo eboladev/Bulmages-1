@@ -18,17 +18,12 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#ifdef Q_WS_WIN
-# define MY_EXPORT __declspec(dllexport)
-#else
-# define MY_EXPORT
-#endif
-
 #include "albaranclientelist.h"
 #include "bfbulmafact.h"
+#include "pdefs_pluginbf_clientealbaranesfactura.h"
 
 
-extern "C" MY_EXPORT int AlbaranClienteList_AlbaranClienteList ( AlbaranClienteList * );
-extern "C" MY_EXPORT int AlbaranClienteListSubform_AlbaranClienteListSubform ( AlbaranClienteListSubform * );
-extern "C" MY_EXPORT int entryPoint ( BfBulmaFact * );
+extern "C" PLUGINBF_CLIENTEALBARANESFACTURA_EXPORT int AlbaranClienteList_AlbaranClienteList ( AlbaranClienteList * );
+extern "C" PLUGINBF_CLIENTEALBARANESFACTURA_EXPORT int AlbaranClienteListSubform_AlbaranClienteListSubform ( AlbaranClienteListSubform * );
+extern "C" PLUGINBF_CLIENTEALBARANESFACTURA_EXPORT int entryPoint ( BfBulmaFact * );
 

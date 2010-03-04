@@ -25,6 +25,7 @@
 #include "ui_comercialclientebase.h"
 #include "bfform.h"
 
+
 class ComercialClienteView : public BfForm, public Ui_ComercialClienteBase
 {
     Q_OBJECT

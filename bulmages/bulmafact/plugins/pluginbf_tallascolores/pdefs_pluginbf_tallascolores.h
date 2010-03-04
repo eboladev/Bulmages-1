@@ -1,0 +1,21 @@
+#ifndef PDEFS_PLUGINBF_TALLASCOLORES_H
+#define PDEFS_PLUGINBF_TALLASCOLORES_H
+
+
+#ifdef WIN32
+
+#ifdef PLUGINBF_TALLASCOLORES
+#define PLUGINBF_TALLASCOLORES_EXPORT __declspec(dllexport)
+#else
+#define PLUGINBF_TALLASCOLORES_EXPORT __declspec(dllimport)
+#endif
+
+#else
+
+#define PLUGINBF_TALLASCOLORES_EXPORT
+
+#endif
+
+
+#endif
+

@@ -18,24 +18,19 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#ifdef Q_WS_WIN
-# define MY_EXPORT __declspec(dllexport)
-#else
-# define MY_EXPORT
-#endif
-
 #include "blpostgresqlclient.h"
 #include "bfbulmafact.h"
 #include "blwidget.h"
 #include "bfbuscarreferencia.h"
 #include "bfsubform.h"
+#include "pdefs_pluginbf_alumno.h"
 
-extern "C" MY_EXPORT int entryPoint ( BfBulmaFact * );
-extern "C" MY_EXPORT int BfCompany_createMainWindows_Post(BfCompany *);
 
-extern "C" MY_EXPORT int BfSubForm_pressedAsterisk(BfSubForm *);
-// extern "C" MY_EXPORT int BlSubForm_BlSubForm_Post ( BlSubForm * );
-extern "C" MY_EXPORT int BlSubForm_BlSubForm_Post ( BlSubForm * );
+extern "C" PLUGINBF_ALUMNO_EXPORT int entryPoint ( BfBulmaFact * );
+extern "C" PLUGINBF_ALUMNO_EXPORT int BfCompany_createMainWindows_Post(BfCompany *);
+extern "C" PLUGINBF_ALUMNO_EXPORT int BfSubForm_pressedAsterisk(BfSubForm *);
+// extern "C" PLUGINBF_ALUMNO_EXPORT int BlSubForm_BlSubForm_Post ( BlSubForm * );
+extern "C" PLUGINBF_ALUMNO_EXPORT int BlSubForm_BlSubForm_Post ( BlSubForm * );
 
 
 class MyPlugProf : public QObject, BlMainCompanyPointer

@@ -27,19 +27,19 @@
 #include "bfcompany.h"
 #include "bfsubform.h"
 #include "blfixed.h"
-#include "pdefs.h"
+#include "pdefs_pluginbf_proveedorfactura.h"
+
 
 /// Muestra y administra las l&iacute;neas de detalle de una factura de proveedor.
 /** */
-class MY_EXPORT ListLinFacturaProveedorView : public BfSubForm
+class PLUGINBF_PROVEEDORFACTURA_EXPORT ListLinFacturaProveedorView : public BfSubForm
 {
     Q_OBJECT
 
 public:
     QString mdb_idfacturap;
     ListLinFacturaProveedorView ( QWidget *parent = 0 );
-    ~ListLinFacturaProveedorView() {}
-    ;
+    ~ListLinFacturaProveedorView() {};
 
 public slots:
     virtual void cargar ( QString idfacturap );

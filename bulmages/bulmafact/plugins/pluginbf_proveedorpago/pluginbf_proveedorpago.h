@@ -18,12 +18,6 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#ifdef Q_WS_WIN
-# define MY_EXPORT __declspec(dllexport)
-#else
-# define MY_EXPORT
-#endif
-
 #include "blpostgresqlclient.h"
 #include "bfbulmafact.h"
 #include "blwidget.h"
@@ -32,16 +26,17 @@
 #include "facturapview.h"
 #include "albaranproveedorview.h"
 #include "pedidoproveedorview.h"
+#include "pdefs_pluginbf_proveedorpago.h"
 
 
-extern "C" MY_EXPORT int entryPoint ( BfBulmaFact * );
-extern "C" MY_EXPORT int BfCompany_createMainWindows_Post(BfCompany *);
-extern "C" MY_EXPORT int ProveedorView_ProveedorView_Post (ProveedorView *);
-extern "C" MY_EXPORT int ProveedorView_cargarPost_Post (ProveedorView *);
-extern "C" MY_EXPORT int BfBuscarReferencia_on_mui_abrirtodo_clicked_Post (BfBuscarReferencia *);
-extern "C" MY_EXPORT int FacturaProveedorView_FacturaProveedorView ( FacturaProveedorView * );
-extern "C" MY_EXPORT int AlbaranProveedorView_AlbaranProveedorView ( AlbaranProveedorView * );
-extern "C" MY_EXPORT int PedidoProveedorView_PedidoProveedorView ( PedidoProveedorView * );
+extern "C" PLUGINBF_PROVEEDORPAGO_EXPORT int entryPoint ( BfBulmaFact * );
+extern "C" PLUGINBF_PROVEEDORPAGO_EXPORT int BfCompany_createMainWindows_Post(BfCompany *);
+extern "C" PLUGINBF_PROVEEDORPAGO_EXPORT int ProveedorView_ProveedorView_Post (ProveedorView *);
+extern "C" PLUGINBF_PROVEEDORPAGO_EXPORT int ProveedorView_cargarPost_Post (ProveedorView *);
+extern "C" PLUGINBF_PROVEEDORPAGO_EXPORT int BfBuscarReferencia_on_mui_abrirtodo_clicked_Post (BfBuscarReferencia *);
+extern "C" PLUGINBF_PROVEEDORPAGO_EXPORT int FacturaProveedorView_FacturaProveedorView ( FacturaProveedorView * );
+extern "C" PLUGINBF_PROVEEDORPAGO_EXPORT int AlbaranProveedorView_AlbaranProveedorView ( AlbaranProveedorView * );
+extern "C" PLUGINBF_PROVEEDORPAGO_EXPORT int PedidoProveedorView_PedidoProveedorView ( PedidoProveedorView * );
 
 
 // 
@@ -61,3 +56,4 @@ public slots:
     void elslot();
     void elslot1();
 };
+

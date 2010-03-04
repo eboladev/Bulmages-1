@@ -18,17 +18,12 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#ifdef Q_WS_WIN
-# define MY_EXPORT __declspec(dllexport)
-#else
-# define MY_EXPORT
-#endif
-
 #include "blfunctions.h"
 #include "blform.h"
 #include "blmaincompany.h"
+#include "pdefs_pluginbl_template.h"
 
 
-extern "C" MY_EXPORT int BlForm_BlForm ( BlForm * );
-extern "C" MY_EXPORT int entryPoint ( QApplication * );
+extern "C" PLUGINBL_TEMPLATE_EXPORT int BlForm_BlForm ( BlForm * );
+extern "C" PLUGINBL_TEMPLATE_EXPORT int entryPoint ( QApplication * );
 

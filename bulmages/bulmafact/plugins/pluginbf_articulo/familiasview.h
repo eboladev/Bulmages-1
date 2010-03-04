@@ -25,14 +25,15 @@
 #include "blfunctions.h"
 #include "ui_familiasbase.h"
 #include "bfform.h"
-#include "pdefs.h"
+#include "pdefs_pluginbf_articulo.h"
+
 
 class BfCompany;
 
 
 /// Muestra y administra la ventana de familias de art&iacute;culos.
 /** */
-class MY_EXPORT FamiliasView : public BfForm, public Ui_familiasbase
+class PLUGINBF_ARTICULO_EXPORT FamiliasView : public BfForm, public Ui_familiasbase
 {
     Q_OBJECT
 

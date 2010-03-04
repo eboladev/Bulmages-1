@@ -24,11 +24,12 @@
 
 #include "bfsubform.h"
 #include "bfcompany.h"
-#include "pdefs.h"
+#include "pdefs_pluginbf_proveedorpedido.h"
+
 
 /// Muestra y administra la ventana de lista de descuentos por pedido a proveedor.
 /** */
-class MY_EXPORT ListDescuentoPedidoProveedorView : public BfSubForm
+class PLUGINBF_PROVEEDORPEDIDO_EXPORT ListDescuentoPedidoProveedorView : public BfSubForm
 {
     Q_OBJECT
 
@@ -41,7 +42,7 @@ public slots:
     virtual void cargar ( QString idpedidoproveedor ) {
 	_depura ( "ListCompArticulo::cargaListCompArticulo\n", 0 );
 	mdb_idpedidoproveedor = idpedidoproveedor;
-        BlSubForm::cargar ( "SELECT * FROM dpedidoproveedor WHERE idpedidoproveedor = " + mdb_idpedidoproveedor );
+	BlSubForm::cargar ( "SELECT * FROM dpedidoproveedor WHERE idpedidoproveedor = " + mdb_idpedidoproveedor );
     };
 
 };

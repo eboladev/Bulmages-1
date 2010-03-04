@@ -24,11 +24,12 @@
 #define BCEXTRACTOSUBFORM_H
 
 #include "bcsubform.h"
+#include "pdefs.h"
 
 
 ///
 /** */
-class BC_EXPORT BcExtractoSubForm : public BcSubForm
+class MY_EXPORT BcExtractoSubForm : public BcSubForm
 {
     Q_OBJECT
 

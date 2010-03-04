@@ -18,7 +18,7 @@ file(GLOB plugin_UIS *.ui)
 set(QT_USE_QTASSISTANT true)
 set(QT_USE_QTXML true)
 
-INCLUDE(   ${QT_USE_FILE}   )
+INCLUDE( ${QT_USE_FILE} )
 
 include_directories(
     ${QT_INCLUDE_DIR}
@@ -39,6 +39,11 @@ include_directories(
 QT4_WRAP_UI(plugin_UIS_H ${plugin_UIS} OPTIONS -tr N_)
 QT4_WRAP_CPP(plugin_MOC_SRCS ${plugin_MOCS})
 #QT4_ADD_RESOURCES(plugin_RCC_SRCS ${plugin_RCCS})
+
+
+IF(WIN32)
+ADD_DEFINITIONS(-DQWT_DLL -DQT_DLL -DQWT_MAKEDLL -DPLUGINBF_ABREREFERENCIA)
+ENDIF(WIN32)
 
 
 #ADD_DEFINITIONS(${QT_DEFINITIONS})

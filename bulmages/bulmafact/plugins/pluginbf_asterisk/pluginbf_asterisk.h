@@ -18,12 +18,6 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#ifdef Q_WS_WIN
-# define MY_EXPORT __declspec(dllexport)
-#else
-# define MY_EXPORT
-#endif
-
 #include <QObject>
 
 #include "bfbulmafact.h"
@@ -31,13 +25,14 @@
 #include "almacenview.h"
 #include "blform.h"
 #include "bfsubform.h"
+#include "pdefs_pluginbf_asterisk.h"
 
 
-extern "C" MY_EXPORT int entryPoint ( BfBulmaFact * );
-extern "C" MY_EXPORT int TrabajadorView_TrabajadorView_Post ( TrabajadorView * );
-extern "C" MY_EXPORT int TrabajadorView_on_mui_lista_currentItemChanged_Post ( TrabajadorView * );
-extern "C" MY_EXPORT int TrabajadorView_on_mui_guardar_clicked ( TrabajadorView * );
-extern "C" MY_EXPORT int AlmacenView_AlmacenView ( AlmacenView * );
-extern "C" MY_EXPORT int BlForm_cargar ( BlForm * );
-extern "C" MY_EXPORT int BlForm_guardar_Post ( BlForm * );
+extern "C" PLUGINBF_ASTERISK_EXPORT int entryPoint ( BfBulmaFact * );
+extern "C" PLUGINBF_ASTERISK_EXPORT int TrabajadorView_TrabajadorView_Post ( TrabajadorView * );
+extern "C" PLUGINBF_ASTERISK_EXPORT int TrabajadorView_on_mui_lista_currentItemChanged_Post ( TrabajadorView * );
+extern "C" PLUGINBF_ASTERISK_EXPORT int TrabajadorView_on_mui_guardar_clicked ( TrabajadorView * );
+extern "C" PLUGINBF_ASTERISK_EXPORT int AlmacenView_AlmacenView ( AlmacenView * );
+extern "C" PLUGINBF_ASTERISK_EXPORT int BlForm_cargar ( BlForm * );
+extern "C" PLUGINBF_ASTERISK_EXPORT int BlForm_guardar_Post ( BlForm * );
 

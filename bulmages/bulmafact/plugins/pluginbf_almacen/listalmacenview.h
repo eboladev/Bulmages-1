@@ -32,6 +32,7 @@
 #include "bldatesearch.h"
 #include "bfsubform.h"
 #include "bfform.h"
+#include "pdefs_pluginbf_almacen.h"
 
 
 class BfCompany;
@@ -39,7 +40,7 @@ class BfCompany;
 
 /// Muestra y administra las l&iacute;neas de detalle del listado de almacenes.
 /** */
-class ListAlmacenSubForm : public BfSubForm
+class PLUGINBF_ALMACEN_EXPORT ListAlmacenSubForm : public BfSubForm
 {
     Q_OBJECT
 
@@ -57,7 +58,7 @@ public slots:
 
 /// Muestra y administra el listado de almacenes.
 /** */
-class ListAlmacenView : public BfForm, public Ui_ListAlmacenBase
+class PLUGINBF_ALMACEN_EXPORT ListAlmacenView : public BfForm, public Ui_ListAlmacenBase
 {
     Q_OBJECT
 

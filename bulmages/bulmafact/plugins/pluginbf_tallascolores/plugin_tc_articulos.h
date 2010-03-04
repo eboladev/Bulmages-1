@@ -18,12 +18,6 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#ifdef Q_WS_WIN
-# define MY_EXPORT __declspec(dllexport)
-#else
-# define MY_EXPORT
-#endif
-
 #include "bfbulmafact.h"
 #include "articuloview.h"
 #include "blsearchwidget.h"
@@ -31,21 +25,23 @@
 #include "bfclientealbaransubform.h"
 #include "listlinfacturaview.h"
 #include "listlinfacturapview.h"
+#include "pdefs_pluginbf_tallascolores.h"
 
 
-extern "C" MY_EXPORT int entryPoint ( BfBulmaFact * );
+extern "C" PLUGINBF_TALLASCOLORES_EXPORT int entryPoint ( BfBulmaFact * );
 
-extern "C" MY_EXPORT int ArticuloView_ArticuloView ( ArticuloView * );
-extern "C" MY_EXPORT int ArticuloView_cargar ( ArticuloView * );
-extern "C" MY_EXPORT int ArticuloView_guardar_post ( ArticuloView * );
+extern "C" PLUGINBF_TALLASCOLORES_EXPORT int ArticuloView_ArticuloView ( ArticuloView * );
+extern "C" PLUGINBF_TALLASCOLORES_EXPORT int ArticuloView_cargar ( ArticuloView * );
+extern "C" PLUGINBF_TALLASCOLORES_EXPORT int ArticuloView_guardar_post ( ArticuloView * );
 
-extern "C" MY_EXPORT int Busqueda_on_m_inputBusqueda_textChanged ( BlSearchWidget * );
+extern "C" PLUGINBF_TALLASCOLORES_EXPORT int Busqueda_on_m_inputBusqueda_textChanged ( BlSearchWidget * );
 
-extern "C" MY_EXPORT int BfProveedorAlbaranSubForm_BfProveedorAlbaranSubForm ( BfProveedorAlbaranSubForm * );
-extern "C" MY_EXPORT int BfClienteAlbaranSubForm_BfClienteAlbaranSubForm ( BfClienteAlbaranSubForm * );
-extern "C" MY_EXPORT int ListLinFacturaView_ListLinFacturaView ( ListLinFacturaView * );
-extern "C" MY_EXPORT int ListLinFacturaProveedorView_ListLinFacturaProveedorView ( ListLinFacturaProveedorView * );
+extern "C" PLUGINBF_TALLASCOLORES_EXPORT int BfProveedorAlbaranSubForm_BfProveedorAlbaranSubForm ( BfProveedorAlbaranSubForm * );
+extern "C" PLUGINBF_TALLASCOLORES_EXPORT int BfClienteAlbaranSubForm_BfClienteAlbaranSubForm ( BfClienteAlbaranSubForm * );
+extern "C" PLUGINBF_TALLASCOLORES_EXPORT int ListLinFacturaView_ListLinFacturaView ( ListLinFacturaView * );
+extern "C" PLUGINBF_TALLASCOLORES_EXPORT int ListLinFacturaProveedorView_ListLinFacturaProveedorView ( ListLinFacturaProveedorView * );
 
-extern "C" MY_EXPORT int BfClienteAlbaranSubForm_cargar ( BfClienteAlbaranSubForm * );
+extern "C" PLUGINBF_TALLASCOLORES_EXPORT int BfClienteAlbaranSubForm_cargar ( BfClienteAlbaranSubForm * );
 
-extern "C" MY_EXPORT int ListLinFacturaView_cargar ( ListLinFacturaView * );
+extern "C" PLUGINBF_TALLASCOLORES_EXPORT int ListLinFacturaView_cargar ( ListLinFacturaView * );
+

@@ -27,11 +27,12 @@
 #include "bfcompany.h"
 #include "blformlist.h"
 #include "ui_almaceneslistbase.h"
+#include "pdefs_pluginbf_almacenamplia.h"
 
 
 /// Muestra y administra la ventana con el listado de almacenes.
 /** */
-class AlmacenesListView : public BlFormList, public Ui_AlmacenesListBase
+class PLUGINBF_ALMACENAMPLIA_EXPORT AlmacenesListView : public BlFormList, public Ui_AlmacenesListBase
 {
     Q_OBJECT
 

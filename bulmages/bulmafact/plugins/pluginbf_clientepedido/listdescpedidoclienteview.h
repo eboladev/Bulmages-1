@@ -24,11 +24,12 @@
 
 #include "bfsubform.h"
 #include "bfcompany.h"
-#include "pdefs.h"
+#include "pdefs_pluginbf_clientepedido.h"
+
 
 /// Muestra y administra la ventana de lista de descuentos por pedido de cliente.
 /** */
-class MY_EXPORT ListDescuentoPedidoClienteView : public BfSubForm
+class PLUGINBF_CLIENTEPEDIDO_EXPORT ListDescuentoPedidoClienteView : public BfSubForm
 {
     Q_OBJECT
 

@@ -21,17 +21,14 @@
 #ifndef PLUGINBC_MAYOR
 #define PLUGINBC_MAYOR
 
-#ifdef Q_WS_WIN
-# define MY_EXPORT __declspec(dllexport)
-#else
-# define MY_EXPORT
-#endif
-
 #include "bcbulmacont.h"
 #include "blmaincompanypointer.h"
 #include "blmaincompany.h"
+#include "pdefs.h"
+
 
 extern "C" MY_EXPORT int entryPoint ( BcBulmaCont * );
+
 
 class MyPluginMayor : public QObject, BlMainCompanyPointer
 {

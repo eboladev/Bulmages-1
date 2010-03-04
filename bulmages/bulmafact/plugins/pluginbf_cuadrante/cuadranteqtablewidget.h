@@ -34,10 +34,12 @@
 
 class BfCompany;
 
+
 /// Reimplementa los items de BlTableWidget para que podamos programar cosas en ellos.
 class CuadranteQTextDocument : public QLabel,/* public QTableWidgetItem,*/  public BlMainCompanyPointer
 {
     Q_OBJECT
+
 public:
     QString mdb_idalmacen;
     QDate   mdb_fechacuadrante;
@@ -59,6 +61,7 @@ public:
     void contextMenuEvent ( QContextMenuEvent * e );
     void mouseDoubleClickEvent ( QMouseEvent * event );
     void setText ( QString );
+
 public slots:
     virtual void refresh();
     void on_customContextMenuRequested ( const QPoint & pos );
@@ -71,6 +74,7 @@ public slots:
 class CuadranteQTableWidget : public QTableWidget
 {
     Q_OBJECT
+
 public:
     CuadranteQTableWidget ( QWidget *parent = 0 );
     ~CuadranteQTableWidget();

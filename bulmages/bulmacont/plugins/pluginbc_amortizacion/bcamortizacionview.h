@@ -22,18 +22,18 @@
 #ifndef BCAMORTIZACIONVIEW_H
 #define BCAMORTIZACIONVIEW_H
 
-#include "bldefs.h"
 #include "bldb.h"
 #include "blpostgresqlclient.h"
 #include "bldialogchanges.h"
 #include "bcsubform.h"
 #include "bcform.h"
+#include "pdefs.h"
 
 
 class BcCompany;
 
 
-class BC_EXPORT BcAmortizacionSubForm : public BcSubForm
+class MY_EXPORT BcAmortizacionSubForm : public BcSubForm
 {
     Q_OBJECT
 
@@ -50,7 +50,7 @@ public:
 
 /// Clase que muestra la ventana de amortizaci&oacute;n.
 /** Formulario de introducci&oacute;n y/o visi&oacute;n de amortizaciones. */
-class BC_EXPORT BcAmortizacionView : public BcForm, public Ui_BcAmortizacionBase
+class MY_EXPORT BcAmortizacionView : public BcForm, public Ui_BcAmortizacionBase
 {
     Q_OBJECT
 

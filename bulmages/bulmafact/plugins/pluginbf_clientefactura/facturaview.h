@@ -26,7 +26,6 @@
 #include <QLabel>
 #include <QCheckBox>
 
-#include "pdefs_clientefactura.h"
 #include "ui_facturabase.h"
 #include "bldatesearch.h"
 #include "bfbuscarformapago.h"
@@ -35,12 +34,14 @@
 #include "bldialogchanges.h"
 #include "bfform.h"
 #include "bfcompany.h"
+#include "blfunctions.h"
+#include "pdefs_pluginbf_clientefactura.h"
 
 
 
 /// Muestra y administra la ventana de una factura a cliente.
 /** */
-class MY_EXPORT_CLIENTEFACTURA FacturaView : public BfForm, public Ui_FacturaBase
+class PLUGINBF_CLIENTEFACTURA_EXPORT FacturaView : public BfForm, public Ui_FacturaBase
 {
     Q_OBJECT
 

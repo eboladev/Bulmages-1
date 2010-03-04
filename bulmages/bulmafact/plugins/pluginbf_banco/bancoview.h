@@ -27,11 +27,12 @@
 
 #include "bfform.h"
 #include "blpostgresqlclient.h"
+#include "pdefs_pluginbf_banco.h"
 
 
 /// Muestra y administra la ventana con la informaci&oacute;n de un banco.
 /** */
-class BancoView : public BfForm, private Ui_BancoBase
+class PLUGINBF_BANCO_EXPORT BancoView : public BfForm, private Ui_BancoBase
 {
     Q_OBJECT
 
@@ -61,3 +62,4 @@ private slots:
 };
 
 #endif
+

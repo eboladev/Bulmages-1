@@ -27,6 +27,7 @@
 #include "blpostgresqlclient.h"
 #include "bccompany.h"
 #include "bcform.h"
+#include "pdefs.h"
 
 
 
@@ -35,7 +36,7 @@
     casaci&oacute;n.
     Y acceso a filtrado. Tambi&eacute;n desde esta pantalla se puede pedir m&aacute;s
     informaci&oacute;n de una cuenta determinada. */
-class BC_EXPORT BcExtractoView : public BcForm, public Ui_BcExtractoBase
+class MY_EXPORT BcExtractoView : public BcForm, public Ui_BcExtractoBase
 {
     Q_OBJECT
 

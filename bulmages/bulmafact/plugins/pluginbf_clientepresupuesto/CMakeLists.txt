@@ -15,7 +15,7 @@ file(GLOB plugin_MOCS *.hpp *.h)
 file(GLOB plugin_UIS *.ui ../pluginbf_clientealbaran/*.ui ../pluginbf_clientepedido/*.ui ../pluginbf_clientefactura/*.ui)
 
 # Exclude files with no QObject macro.
-file(GLOB plugin_NO_MOCS pdefs_clientepresupuesto.h)
+file(GLOB plugin_NO_MOCS pdefs_pluginbf_clientepresupuesto.h)
 list(REMOVE_ITEM plugin_MOCS ${plugin_NO_MOCS})
 
 set(QT_USE_QTASSISTANT true)
@@ -51,7 +51,7 @@ QT4_WRAP_CPP(plugin_MOC_SRCS ${plugin_MOCS})
 #QT4_ADD_RESOURCES(plugin_RCC_SRCS ${plugin_RCCS})
 
 IF(WIN32)
-ADD_DEFINITIONS(-DQWT_DLL -DQT_DLL -DQWT_MAKEDLL)
+ADD_DEFINITIONS(-DQWT_DLL -DQT_DLL -DQWT_MAKEDLL -DPLUGINBF_CLIENTEPRESUPUESTO)
 ENDIF(WIN32)
 
 #ADD_DEFINITIONS(${QT_DEFINITIONS})
@@ -96,13 +96,14 @@ set_target_properties( ${plugin} PROPERTIES
   VERSION "${BULMAGES_VERSION}")
 
 target_link_libraries(${plugin} libbulmafact bulmalib ${QT_LIBRARIES} ${PGSQL_LIBRARIES})
+target_link_libraries(${plugin} LINK_INTERFACE_LIBRARIES pluginbf_clientepedido)
 install_targets(/lib/bulmafact/plugins ${plugin})
 
 foreach(dfile ${docs})
    install (FILES ${dfile} DESTINATION share/bulmages/bulmafact-plugins/ RENAME ${dfile}.${plugin})
 endforeach(dfile in ${docs})
 
-add_dependencies(${plugin} bulmafact bulmalib pluginbf_cliente)
+add_dependencies(${plugin} bulmafact bulmalib pluginbf_cliente pluginbf_clientepedido)
 
 
 FILE(READ ${CMAKE_BINARY_DIR}/bulmafact/plugins/${plugin}/${plugin}_es_ES.css VAR_CSS_es_ES)

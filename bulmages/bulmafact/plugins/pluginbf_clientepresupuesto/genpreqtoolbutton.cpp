@@ -49,6 +49,7 @@
 \param fac
 \param parent
 **/
+/*
 GenPreQToolButton::GenPreQToolButton ( QWidget *fac , QWidget *parent ) : QToolButton ( parent )
 {
     _depura ( "GenPreQToolButton::GenPreQToolButton", 0 );
@@ -56,28 +57,30 @@ GenPreQToolButton::GenPreQToolButton ( QWidget *fac , QWidget *parent ) : QToolB
     setBoton();
     _depura ( "END GenPreQToolButton::GenPreQToolButton", 0 );
 }
-
+*/
 
 ///
 /**
 **/
+/*
 GenPreQToolButton::~GenPreQToolButton()
 {
     _depura ( "GenPreQToolButton::~GenPreQToolButton", 0 );
     _depura ( "END GenPreQToolButton::~GenPreQToolButton", 0 );
 }
-
+*/
 
 ///
 /**
 **/
+/*
 void GenPreQToolButton::setBoton()
 {
     _depura ( "GenPreQToolButton::setBoton", 0 );
     connect ( this, SIGNAL ( clicked() ), this, SLOT ( click() ) );
     setObjectName ( QString::fromUtf8 ( "exporta" ) );
-    setStatusTip ( "Generar Factura" );
-    setToolTip ( "Generar Factura" );
+    setStatusTip ( _("Generar factura") );
+    setToolTip ( _("Generar factura") );
     setMinimumSize ( QSize ( 32, 32 ) );
     setMaximumSize ( QSize ( 32, 32 ) );
     setIcon ( QIcon ( QString::fromUtf8 ( ":/Images/client-delivery-note-to-invoice.png" ) ) );
@@ -85,11 +88,12 @@ void GenPreQToolButton::setBoton()
     setContentsMargins ( 0, 0, 0, 0 );
     _depura ( "END GenPreQToolButton::setBoton", 0 );
 }
-
+*/
 
 ///
 /**
 **/
+/*
 void GenPreQToolButton::click()
 {
     _depura ( "ImpQToolButton::click", 0 );
@@ -110,6 +114,8 @@ void GenPreQToolButton::click()
 
     _depura ( "END ImpQToolButton::click", 0 );
 }
+*/
+
 
 /// Se encarga de generar una factura a partir de un albar&aacute;n.
 /** Primero de todo busca una factura por referencia que tenga este albaran.
@@ -120,6 +126,7 @@ void GenPreQToolButton::click()
 /**
 \return
 **/
+/*
 void GenPreQToolButton::generarFactura()
 {
     _depura ( "GenPreQToolButton::generarFactura", 0 );
@@ -239,7 +246,7 @@ void GenPreQToolButton::generarFactura()
 
     _depura ( "END GenPreQToolButton::generarFactura", 0 );
 }
-
+*/
 
 
 /// Se encarga de generar una factura a partir de un albar&aacute;n.
@@ -251,6 +258,7 @@ void GenPreQToolButton::generarFactura()
 /**
 \return
 **/
+/*
 void GenPreQToolButton::generarFactura1()
 {
     _depura ( "GenPreQToolButton::generarFacturaProveedor1", 0 );
@@ -365,7 +373,7 @@ void GenPreQToolButton::generarFactura1()
 
     _depura ( "END GenPreQToolButton::generarFactura", 0 );
 }
-
+*/
 
 
 
@@ -380,6 +388,7 @@ void GenPreQToolButton::generarFactura1()
 /**
 \return
 **/
+/*
 void GenPreQToolButton::generarFactura2()
 {
     _depura ( "GenPreQToolButton::generarFactura2", 0 );
@@ -494,7 +503,7 @@ void GenPreQToolButton::generarFactura2()
 
     _depura ( "END GenPreQToolButton::generarFactura", 0 );
 }
-
+*/
 // ====================
 
 
@@ -534,8 +543,8 @@ void VerPreQToolButton::setBoton()
     _depura ( "VerPreQToolButton::setBoton", 0 );
     connect ( this, SIGNAL ( clicked() ), this, SLOT ( click() ) );
     setObjectName ( QString::fromUtf8 ( "exporta" ) );
-    setStatusTip ( "Ver Presupuesto" );
-    setToolTip ( "Ver Presupuesto" );
+    setStatusTip ( _("Ver presupuesto con la misma referencia") );
+    setToolTip ( _("Ver presupuesto con la misma referencia") );
     setMinimumSize ( QSize ( 32, 32 ) );
     setMaximumSize ( QSize ( 32, 32 ) );
     setIcon ( QIcon ( QString::fromUtf8 ( ":/Images/client-quote.png" ) ) );

@@ -18,12 +18,6 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#ifdef Q_WS_WIN
-# define MY_EXPORT __declspec(dllexport)
-#else
-# define MY_EXPORT
-#endif
-
 #include <QStringList>
 #include <QWidget>
 #include <QIcon>
@@ -37,15 +31,15 @@
 #include "listlinfacturaview.h"
 #include "listlinfacturapview.h"
 #include "blwidget.h"
-
-extern "C" MY_EXPORT int entryPoint ( BfBulmaFact * );
-extern "C" MY_EXPORT int BfProveedorAlbaranSubForm_BfProveedorAlbaranSubForm ( BfProveedorAlbaranSubForm * );
-extern "C" MY_EXPORT int BfClienteAlbaranSubForm_BfClienteAlbaranSubForm ( BfClienteAlbaranSubForm * );
-extern "C" MY_EXPORT int ListLinFacturaView_ListLinFacturaView ( ListLinFacturaView * );
-extern "C" MY_EXPORT int ListLinFacturaProveedorView_ListLinFacturaProveedorView ( ListLinFacturaProveedorView * );
-extern "C" MY_EXPORT int BfSubForm_on_mui_list_editFinished ( BfSubForm * );
+#include "pdefs_pluginbf_trazabilidad.h"
 
 
+extern "C" PLUGINBF_TRAZABILIDAD_EXPORT int entryPoint ( BfBulmaFact * );
+extern "C" PLUGINBF_TRAZABILIDAD_EXPORT int BfProveedorAlbaranSubForm_BfProveedorAlbaranSubForm ( BfProveedorAlbaranSubForm * );
+extern "C" PLUGINBF_TRAZABILIDAD_EXPORT int BfClienteAlbaranSubForm_BfClienteAlbaranSubForm ( BfClienteAlbaranSubForm * );
+extern "C" PLUGINBF_TRAZABILIDAD_EXPORT int ListLinFacturaView_ListLinFacturaView ( ListLinFacturaView * );
+extern "C" PLUGINBF_TRAZABILIDAD_EXPORT int ListLinFacturaProveedorView_ListLinFacturaProveedorView ( ListLinFacturaProveedorView * );
+extern "C" PLUGINBF_TRAZABILIDAD_EXPORT int BfSubForm_on_mui_list_editFinished ( BfSubForm * );
 
 
 class myplugin : public QObject, BlMainCompanyPointer
@@ -63,3 +57,4 @@ public:
 public slots:
     void elslot();
 };
+

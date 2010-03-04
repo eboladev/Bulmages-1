@@ -18,12 +18,6 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#ifdef Q_WS_WIN
-# define MY_EXPORT __declspec(dllexport)
-#else
-# define MY_EXPORT
-#endif
-
 #include <QStringList>
 #include <QWidget>
 #include <QIcon>
@@ -31,11 +25,11 @@
 
 #include "articulolist.h"
 #include "bfbulmafact.h"
+#include "pdefs_pluginbf_catalogo.h"
 
 
-extern "C" MY_EXPORT int entryPoint ( BfBulmaFact * );
-
-extern "C" MY_EXPORT int ArticuloList_ArticuloList ( ArticuloList * );
+extern "C" PLUGINBF_CATALOGO_EXPORT int entryPoint ( BfBulmaFact * );
+extern "C" PLUGINBF_CATALOGO_EXPORT int ArticuloList_ArticuloList ( ArticuloList * );
 
 
 

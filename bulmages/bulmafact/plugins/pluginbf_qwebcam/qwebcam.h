@@ -20,6 +20,7 @@
 
 #ifndef QWEBCAM_H
 #define QWEBCAM_H
+
 #include <QImage>
 #include <QPixmap>
 #include <QObject>
@@ -30,19 +31,24 @@
 #include <cv.h>
 #include <highgui.h>
 
+
 class QWebCam : public QLabel
 {
     Q_OBJECT
+
 protected:
     void mouseDoubleClickEvent ( QMouseEvent * event ) ;
+
 public:
     QWebCam ( QWidget * parent = 0 );
     ~QWebCam();
     static QImage Ipl2QImage ( const IplImage *newImage );
 //  void resizeEvent ( QResizeEvent * event ) ;
+
 public slots:
     void captureLoop();
     QImage takeShot();
+
 private:
     QPixmap *pixa;
     QImage  qImage;

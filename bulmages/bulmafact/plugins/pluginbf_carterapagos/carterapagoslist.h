@@ -26,7 +26,7 @@
 #include "bfsubform.h"
 #include "blformlist.h"
 #include "bfbulmafact.h"
-
+#include "pdefs_pluginbf_carterapagos.h"
 
 
 
@@ -48,13 +48,10 @@ public slots:
 };
 
 
-
-
-
 /** Subformulario de contratoes.
     Esta clase derivada de BfSubForm presenta todo el blformlist de contratoes.
 */
-class CarteraPagosListSubForm : public BfSubForm
+class PLUGINBF_CARTERAPAGOS_EXPORT CarteraPagosListSubForm : public BfSubForm
 {
     Q_OBJECT
 
@@ -72,7 +69,7 @@ public:
     Tiene dos modos de funcionamiento (Edicion y Seleccion)
 */
 /// \TODO: Deberia crearse la clase Listado para poner en ella mas funcionalidades comunes a los blformlists.
-class CarteraPagosList : public BlFormList, public Ui_CarteraPagosListBase, public BlImportExport
+class PLUGINBF_CARTERAPAGOS_EXPORT CarteraPagosList : public BlFormList, public Ui_CarteraPagosListBase, public BlImportExport
 {
     Q_OBJECT
 
@@ -91,7 +88,6 @@ private:
     QString mdb_nomvencimientop;
     /// Almacena el cifcontratoe del registro seleccionado.
     QString mdb_refcontrato;
-
 
 public:
     CarteraPagosList ( BfCompany *, QWidget *parent = 0, Qt::WFlags flag = 0, edmode editmode = EditMode );
@@ -115,6 +111,7 @@ public:
 public slots:
     void on_mui_q34_clicked();
     void on_mui_suma_clicked();
+
 signals:
     void selected ( QString );
 };

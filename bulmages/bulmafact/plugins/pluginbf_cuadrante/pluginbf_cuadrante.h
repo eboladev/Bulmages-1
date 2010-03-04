@@ -18,12 +18,6 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#ifdef Q_WS_WIN
-# define MY_EXPORT __declspec(dllexport)
-#else
-# define MY_EXPORT
-#endif
-
 #include <QStringList>
 #include <QWidget>
 #include <QIcon>
@@ -35,15 +29,14 @@
 #include "blwidget.h"
 #include "almacenview.h"
 #include "trabajadorview.h"
+#include "pdefs_pluginbf_cuadrante.h"
 
 
-extern "C" MY_EXPORT int entryPoint ( BfBulmaFact * );
-extern "C" MY_EXPORT int AlmacenView_AlmacenView ( AlmacenView * );
-extern "C" MY_EXPORT int TrabajadorView_TrabajadorView ( TrabajadorView * );
-extern "C" MY_EXPORT int TrabajadorView_on_mui_lista_currentItemChanged_Post ( TrabajadorView *trab );
-extern "C" MY_EXPORT int TrabajadorView_on_mui_guardar_clicked ( TrabajadorView *trab );
-
-
+extern "C" PLUGINBF_CUADRANTE_EXPORT int entryPoint ( BfBulmaFact * );
+extern "C" PLUGINBF_CUADRANTE_EXPORT int AlmacenView_AlmacenView ( AlmacenView * );
+extern "C" PLUGINBF_CUADRANTE_EXPORT int TrabajadorView_TrabajadorView ( TrabajadorView * );
+extern "C" PLUGINBF_CUADRANTE_EXPORT int TrabajadorView_on_mui_lista_currentItemChanged_Post ( TrabajadorView *trab );
+extern "C" PLUGINBF_CUADRANTE_EXPORT int TrabajadorView_on_mui_guardar_clicked ( TrabajadorView *trab );
 
 
 class myplugin4 : public QObject, BlMainCompanyPointer
@@ -62,3 +55,4 @@ public slots:
     void elslot();
     void elslot1();
 };
+

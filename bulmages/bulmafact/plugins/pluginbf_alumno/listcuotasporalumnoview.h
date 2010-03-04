@@ -32,6 +32,7 @@
 #include "bldatesearch.h"
 #include "bfsubform.h"
 #include "bfform.h"
+#include "pdefs_pluginbf_alumno.h"
 
 
 class BfCompany;
@@ -39,7 +40,7 @@ class BfCompany;
 
 /// Muestra y administra las l&iacute;neas de detalle del listado de almacenes.
 /** */
-class ListCuotasPorAlumnoSubForm : public BfSubForm
+class PLUGINBF_ALUMNO_EXPORT ListCuotasPorAlumnoSubForm : public BfSubForm
 {
     Q_OBJECT
 
@@ -57,7 +58,7 @@ public slots:
 
 /// Muestra y administra el listado de almacenes.
 /** */
-class ListCuotasPorAlumnoView : public BfForm, public Ui_ListCuotasPorAlumnoBase
+class PLUGINBF_ALUMNO_EXPORT ListCuotasPorAlumnoView : public BfForm, public Ui_ListCuotasPorAlumnoBase
 {
     Q_OBJECT
 
@@ -70,3 +71,4 @@ public slots:
 };
 
 #endif
+

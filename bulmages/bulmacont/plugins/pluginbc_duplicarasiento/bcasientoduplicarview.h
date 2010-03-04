@@ -24,13 +24,14 @@
 
 #include "ui_bcasientoduplicarbase.h"
 #include "blwidget.h"
+#include "pdefs.h"
 
 class BcCompany;
 
 
 ///
 /** */
-class BC_EXPORT DuplicarAsientoView : public QDialog, public Ui_DuplicarAsientoBase, BlMainCompanyPointer
+class MY_EXPORT DuplicarAsientoView : public QDialog, public Ui_DuplicarAsientoBase, BlMainCompanyPointer
 {
     Q_OBJECT
 

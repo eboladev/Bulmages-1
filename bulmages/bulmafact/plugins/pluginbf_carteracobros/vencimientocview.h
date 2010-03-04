@@ -29,12 +29,13 @@
 #include "ui_vencimientocbase.h"
 #include "bfform.h"
 #include "bfcompany.h"
+#include "pdefs_pluginbf_carteracobros.h"
 
 
 
 /// Muestra y administra la ventana con la informaci&oacute;n de un pago.
 /** */
-class VencimientoCView : public BfForm, public Ui_VencimientoCBase
+class PLUGINBF_CARTERACOBROS_EXPORT VencimientoCView : public BfForm, public Ui_VencimientoCBase
 {
     Q_OBJECT
 

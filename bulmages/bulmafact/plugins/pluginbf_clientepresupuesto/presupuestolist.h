@@ -24,22 +24,22 @@
 
 #include <QLineEdit>
 
-#include "pdefs_clientepresupuesto.h"
 #include "bfcompany.h"
 #include "bfbuscararticulo.h"
 #include "bfsubform.h"
 #include "blformlist.h"
+#include "pdefs_pluginbf_clientepresupuesto.h"
 
 
 /// Administra el listado de presupuestos.
 /** */
-class MY_EXPORT_CLIENTEPRESUPUESTO PresupuestoListSubForm : public BfSubForm
+class PLUGINBF_CLIENTEPRESUPUESTO_EXPORT PresupuestoListSubForm : public BfSubForm
 {
     Q_OBJECT
 
 public:
     PresupuestoListSubForm ( QWidget *parent = 0, const char *name = 0 );
-    ~PresupuestoListSubForm() {}
+    ~PresupuestoListSubForm() {};
 
 public slots:
     virtual void cargar();
@@ -52,7 +52,7 @@ public slots:
 
 /// Muestra y administra la ventana con el listado de presupuestos.
 /** */
-class MY_EXPORT_CLIENTEPRESUPUESTO PresupuestoList : public BlFormList, public Ui_PresupuestosListBase
+class PLUGINBF_CLIENTEPRESUPUESTO_EXPORT PresupuestoList : public BlFormList, public Ui_PresupuestosListBase
 {
     Q_OBJECT
 

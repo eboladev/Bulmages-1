@@ -61,9 +61,8 @@ public:
     void pintatotales ( BlFixed, BlFixed, BlFixed, BlFixed, BlFixed, BlFixed );
     void generarFactura();
     void generarFacturaProveedor();
-	virtual int guardarPost();
-	void imprimir();
-
+    virtual int guardarPost();
+    void imprimir();
 
 public slots:
     /// Este slot se activa cuando hay cambios en los subformularios.

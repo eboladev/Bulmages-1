@@ -24,15 +24,16 @@
 #include <QWidget>
 #include <QToolButton>
 #include <QString>
-#include "pdefs_clientefactura.h"
-#include "bfcompany.h"
-#include "blfunctions.h"
 #include <QtXml/QDomDocument>
 #include <QMap>
 #include <QString>
 
+#include "bfcompany.h"
+#include "blfunctions.h"
+#include "pdefs_pluginbf_clientefactura.h"
 
-class MY_EXPORT_CLIENTEFACTURA GenFacQToolButton : public QToolButton
+
+class PLUGINBF_CLIENTEFACTURA_EXPORT GenFacQToolButton : public QToolButton
 {
     Q_OBJECT
 
@@ -44,15 +45,17 @@ public:
     GenFacQToolButton ( QWidget *fac,   QWidget *parent = NULL );
     ~GenFacQToolButton();
     void setBoton();
-	void generarFactura();
-	void generarFactura1();
-	void generarFactura2();
+    void generarFactura();
+    void generarFactura1();
+    void generarFactura2();
+
 public slots:
     virtual void click();
 
 };
 
-class MY_EXPORT_CLIENTEFACTURA AgFacQToolButton : public QToolButton
+
+class PLUGINBF_CLIENTEFACTURA_EXPORT AgFacQToolButton : public QToolButton
 {
     Q_OBJECT
 
@@ -64,7 +67,8 @@ public:
     AgFacQToolButton ( QWidget *fac,   QWidget *parent = NULL );
     ~AgFacQToolButton();
     void setBoton();
-	void generarFactura();
+    void generarFactura();
+
 public slots:
     virtual void click();
 

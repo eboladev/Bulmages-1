@@ -18,27 +18,23 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#ifdef Q_WS_WIN
-# define MY_EXPORT __declspec(dllexport)
-#else
-# define MY_EXPORT
-#endif
-
 #include "blpostgresqlclient.h"
 #include "bfbulmafact.h"
 #include "blwidget.h"
 #include "bfsubform.h"
 #include "bfbuscarreferencia.h"
 #include "blsearchwidget.h"
+#include "pdefs_pluginbf_actividad.h"
 
-extern "C" MY_EXPORT int entryPoint ( BfBulmaFact * );
-extern "C" MY_EXPORT int BfCompany_createMainWindows_Post(BfCompany *);
-extern "C" MY_EXPORT int BlSubFormDelegate_createEditor(BlSubFormDelegate *);
-extern "C" MY_EXPORT int BlSubFormDelegate_setModelData(BlSubFormDelegate *);
-extern "C" MY_EXPORT int BlSubFormDelegate_setEditorData(BlSubFormDelegate *);
-extern "C" MY_EXPORT int BlSubForm_editFinished(BlSubForm *);
-extern "C" MY_EXPORT int BlSubForm_BlSubForm_Post ( BlSubForm * );
-extern "C" MY_EXPORT int Busqueda_on_mui_buscar_clicked ( BlSearchWidget * );
+
+extern "C" PLUGINBF_ACTIVIDAD_EXPORT int entryPoint ( BfBulmaFact * );
+extern "C" PLUGINBF_ACTIVIDAD_EXPORT int BfCompany_createMainWindows_Post(BfCompany *);
+extern "C" PLUGINBF_ACTIVIDAD_EXPORT int BlSubFormDelegate_createEditor(BlSubFormDelegate *);
+extern "C" PLUGINBF_ACTIVIDAD_EXPORT int BlSubFormDelegate_setModelData(BlSubFormDelegate *);
+extern "C" PLUGINBF_ACTIVIDAD_EXPORT int BlSubFormDelegate_setEditorData(BlSubFormDelegate *);
+extern "C" PLUGINBF_ACTIVIDAD_EXPORT int BlSubForm_editFinished(BlSubForm *);
+extern "C" PLUGINBF_ACTIVIDAD_EXPORT int BlSubForm_BlSubForm_Post ( BlSubForm * );
+extern "C" PLUGINBF_ACTIVIDAD_EXPORT int Busqueda_on_mui_buscar_clicked ( BlSearchWidget * );
 
 
 class MyPlugProf : public QObject, BlMainCompanyPointer

@@ -18,18 +18,13 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#ifdef Q_WS_WIN
-# define MY_EXPORT __declspec(dllexport)
-#else
-# define MY_EXPORT
-#endif
-
 #include "blform.h"
 #include "bfbulmafact.h"
+#include "pdefs_pluginbf_clienteproveedor.h"
 
 
-extern "C" MY_EXPORT int BlForm_guardar_Post ( BlForm * );
-extern "C" MY_EXPORT int entryPoint ( BfBulmaFact * );
+extern "C" PLUGINBF_CLIENTEPROVEEDOR_EXPORT int BlForm_guardar_Post ( BlForm * );
+extern "C" PLUGINBF_CLIENTEPROVEEDOR_EXPORT int entryPoint ( BfBulmaFact * );
 
 
 // 

@@ -24,12 +24,13 @@
 #include <QWidget>
 #include <QToolButton>
 #include <QString>
+
 #include "bfcompany.h"
 #include "blfunctions.h"
-#include "pdefs.h"
+#include "pdefs_pluginbf_clientepedido.h"
 
 
-class MY_EXPORT GenPedQToolButton : public QToolButton
+class PLUGINBF_CLIENTEPEDIDO_EXPORT GenPedQToolButton : public QToolButton
 {
     Q_OBJECT
 
@@ -38,10 +39,11 @@ private:
     QWidget *m_object;
 
 public:
-    GenPedQToolButton ( QWidget *fac,   QWidget *parent = NULL );
+    GenPedQToolButton ( QWidget *fac, QWidget *parent = NULL );
     ~GenPedQToolButton();
     void setBoton();
-	void generarFactura1();
+    void generarFactura1();
+
 public slots:
     virtual void click();
 

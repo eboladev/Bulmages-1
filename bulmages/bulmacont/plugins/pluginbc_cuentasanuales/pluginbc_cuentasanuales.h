@@ -21,19 +21,14 @@
 #ifndef PLUGINBC_CUENTASANUALES
 #define PLUGINBC_CUENTASANUALES
 
-#ifdef Q_WS_WIN
-# define MY_EXPORT __declspec(dllexport)
-#else
-# define MY_EXPORT
-#endif
-
 #include "bcbulmacont.h"
 #include "blpostgresqlclient.h"
 #include "bccompany.h"
 #include "bccuentasanualesview.h"
+#include "pdefs.h"
 
-extern BcCuentasAnualesView *g_cuentasAnuales;
 
+extern "C" MY_EXPORT BcCuentasAnualesView *g_cuentasAnuales;
 extern "C" MY_EXPORT int entryPoint ( BcBulmaCont * );
 
 

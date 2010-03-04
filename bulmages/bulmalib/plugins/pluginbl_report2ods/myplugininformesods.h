@@ -4,7 +4,6 @@
 #include <QObject>
 
 
-
 class MyPluginInformesODS : public QObject
 {
     Q_OBJECT

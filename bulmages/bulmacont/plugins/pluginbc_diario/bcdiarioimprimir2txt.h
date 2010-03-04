@@ -36,11 +36,12 @@
 
 #include "blwidget.h"
 #include "bccompany.h"
+#include "pdefs.h"
 
 
 /// Imprime el libro diario.
 /** */
-class BC_EXPORT BcDiarioImprimir2TXT : public BlMainCompanyPointer
+class MY_EXPORT BcDiarioImprimir2TXT : public BlMainCompanyPointer
 {
 public:
     char *finicial;

@@ -30,9 +30,9 @@
 #include <QMap>
 #include <QString>
 
-
 #include "articulolist.h"
 #include "blwidget.h"
+
 
 class CatalogoQToolButton : public QToolButton, BlMainCompanyPointer
 {
@@ -52,3 +52,4 @@ public slots:
 };
 
 #endif
+

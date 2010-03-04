@@ -28,7 +28,6 @@
 #include "bfform.h"
 
 
-
 /// Clase que muestra la ventana de amortizaci&oacute;n.
 /** Formulario de introducci&oacute;n y/o visi&oacute;n de amortizaciones. */
 class VehiculoView : public BfForm, Ui_VehiculoBase
@@ -43,3 +42,4 @@ public:
 };
 
 #endif
+

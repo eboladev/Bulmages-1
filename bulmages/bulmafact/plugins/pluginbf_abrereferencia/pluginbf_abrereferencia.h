@@ -18,17 +18,13 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#ifdef Q_WS_WIN
-# define MY_EXPORT __declspec(dllexport)
-#else
-# define MY_EXPORT
-#endif
-
 #include "bfbuscarreferencia.h"
 #include "bfbulmafact.h"
+#include "pdefs_pluginbf_abrereferencia.h"
 
-extern "C" MY_EXPORT int BfBuscarReferencia_on_mui_rferencia_returnPressed ( BfBuscarReferencia * );
-extern "C" MY_EXPORT int entryPoint ( BfBulmaFact * );
+
+extern "C" PLUGINBF_ABREREFERENCIA_EXPORT int BfBuscarReferencia_on_mui_rferencia_returnPressed ( BfBuscarReferencia * );
+extern "C" PLUGINBF_ABREREFERENCIA_EXPORT int entryPoint ( BfBulmaFact * );
 
 
 // 

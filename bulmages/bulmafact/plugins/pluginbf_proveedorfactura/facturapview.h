@@ -32,12 +32,13 @@
 #include "bfbuscarformapago.h"
 #include "bfbuscaralmacen.h"
 #include "blfunctions.h"
-#include "pdefs.h"
+#include "pdefs_pluginbf_proveedorfactura.h"
+
 
 /** Implementa la pantalla de Facturas de Proveedores.
     Deriva de la clase ficha para heredar metodos comunes a las fichas.
     Tambien deriva de la clase \ref FacturaProveedor para trabajar con la tabla facturap. */
-class MY_EXPORT FacturaProveedorView : public BfForm, public Ui_FacturaProveedorBase
+class PLUGINBF_PROVEEDORFACTURA_EXPORT FacturaProveedorView : public BfForm, public Ui_FacturaProveedorBase
 {
     Q_OBJECT
 

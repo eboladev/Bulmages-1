@@ -10,7 +10,7 @@ file(GLOB plugin_SRC *.c *.cpp *.cxx)
 file(GLOB plugin_MOCS *.hpp *.h)
 
 # Exclude files with no QObject macro.
-file(GLOB plugin_NO_MOCS pluginbf_etiquetado.h)
+file(GLOB plugin_NO_MOCS pluginbf_etiquetado.h pdefs_pluginbf_etiquetado.h)
 list(REMOVE_ITEM plugin_MOCS ${plugin_NO_MOCS})
 
 file(GLOB plugin_UIS *.ui)
@@ -42,6 +42,9 @@ QT4_WRAP_UI(plugin_UIS_H  OPTIONS -tr N_)
 QT4_WRAP_CPP(plugin_MOC_SRCS ${plugin_MOCS})
 #QT4_ADD_RESOURCES(plugin_RCC_SRCS ${plugin_RCCS})
 
+IF(WIN32)
+ADD_DEFINITIONS(-DQWT_DLL -DQT_DLL -DQWT_MAKEDLL -DPLUGINBF_ETIQUETADO)
+ENDIF(WIN32)
 
 #ADD_DEFINITIONS(${QT_DEFINITIONS})
 ADD_DEFINITIONS(-DQT_SHARED)

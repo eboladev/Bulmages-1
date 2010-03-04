@@ -21,24 +21,19 @@
 #ifndef PLUGINBF_INVENTARIOSIMPLE
 #define PLUGINBF_INVENTARIOSIMPLE
 
-
-#ifdef Q_WS_WIN
-# define MY_EXPORT __declspec(dllexport)
-#else
-# define MY_EXPORT
-#endif
-
 #include "blpostgresqlclient.h"
 #include "bfbulmafact.h"
 #include "blwidget.h"
 #include "actividadview.h"
+#include "pdefs_pluginbf_inventariosimple.h"
 
 
-extern "C" MY_EXPORT int entryPoint ( BfBulmaFact * );
-extern "C" MY_EXPORT int ActividadView_ActividadView(ActividadView *);
-extern "C" MY_EXPORT int BlForm_guardar_Post(BlForm *);
-extern "C" MY_EXPORT int BlForm_cargar(BlForm *);
-extern "C" MY_EXPORT int BfSubForm_pressedAsterisk ( BfSubForm * );
+extern "C" PLUGINBF_INVENTARIOSIMPLE_EXPORT int entryPoint ( BfBulmaFact * );
+extern "C" PLUGINBF_INVENTARIOSIMPLE_EXPORT int ActividadView_ActividadView(ActividadView *);
+extern "C" PLUGINBF_INVENTARIOSIMPLE_EXPORT int BlForm_guardar_Post(BlForm *);
+extern "C" PLUGINBF_INVENTARIOSIMPLE_EXPORT int BlForm_cargar(BlForm *);
+extern "C" PLUGINBF_INVENTARIOSIMPLE_EXPORT int BfSubForm_pressedAsterisk ( BfSubForm * );
+
 
 class myplugininvsimple : public QObject, BlMainCompanyPointer
 {

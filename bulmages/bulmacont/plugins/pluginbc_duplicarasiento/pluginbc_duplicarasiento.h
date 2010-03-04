@@ -21,16 +21,11 @@
 #ifndef PLUGINBC_DUPASIENTO
 #define PLUGINBC_DUPASIENTO
 
-#ifdef Q_WS_WIN
-# define MY_EXPORT __declspec(dllexport)
-#else
-# define MY_EXPORT
-#endif
-
 #include "bcbulmacont.h"
 #include "blpostgresqlclient.h"
 #include "bccompany.h"
 #include "bcasientoview.h"
+#include "pdefs.h"
 
 
 extern "C" MY_EXPORT int entryPoint ( BcBulmaCont * );
@@ -41,8 +36,10 @@ extern "C" MY_EXPORT int BcAsientoView_BcAsientoView ( BcAsientoView * );
 class MyPluginDuplicarAsiento : public QToolButton, BlMainCompanyPointer
 {
     Q_OBJECT
-  public:
+
+public:
     BcAsientoView *m_asiento;
+
 public:
     MyPluginDuplicarAsiento(BcAsientoView *as, BcCompany *comp, QWidget *parent = NULL);
     ~MyPluginDuplicarAsiento();

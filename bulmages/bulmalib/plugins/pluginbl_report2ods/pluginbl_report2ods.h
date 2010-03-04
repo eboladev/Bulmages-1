@@ -18,21 +18,17 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#ifdef Q_WS_WIN
-# define MY_EXPORT __declspec(dllexport)
-#else
-# define MY_EXPORT
-#endif
-
 #include "blfunctions.h"
 #include "blpostgresqlclient.h"
 #include "bccompany.h"
 #include "bfcompany.h"
+#include "pdefs_pluginbl_report2ods.h"
 
 
-extern "C" MY_EXPORT int entryPoint ( QMainWindow * );
-extern "C" MY_EXPORT int BfCompany_createMainWindows_Post ( BfCompany * );
-extern "C" MY_EXPORT int BcCompany_createMainWindows_Post ( BcCompany * );
+extern "C" PLUGINBL_REPORT2ODS_EXPORT int entryPoint ( QMainWindow * );
+extern "C" PLUGINBL_REPORT2ODS_EXPORT int BfCompany_createMainWindows_Post ( BfCompany * );
+extern "C" PLUGINBL_REPORT2ODS_EXPORT int BcCompany_createMainWindows_Post ( BcCompany * );
+
 int init();
 
 

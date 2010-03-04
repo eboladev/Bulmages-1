@@ -1,0 +1,21 @@
+#ifndef PDEFS_PLUGINBL_ATTACHDOCUMENT_H
+#define PDEFS_PLUGINBL_ATTACHDOCUMENT_H
+
+
+#ifdef WIN32
+
+#ifdef PLUGINBL_ATTACHDOCUMENT
+#define PLUGINBL_ATTACHDOCUMENT_EXPORT __declspec(dllexport)
+#else
+#define PLUGINBL_ATTACHDOCUMENT_EXPORT __declspec(dllimport)
+#endif
+
+#else
+
+#define PLUGINBL_ATTACHDOCUMENT_EXPORT
+
+#endif
+
+
+#endif
+

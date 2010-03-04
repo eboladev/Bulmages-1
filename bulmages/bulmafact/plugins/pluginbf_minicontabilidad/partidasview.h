@@ -25,14 +25,15 @@
 #include "blfunctions.h"
 #include "ui_partidasbase.h"
 #include "bfform.h"
-#include "pdefs_minicontabilidad.h"
+#include "pdefs_pluginbf_minicontabilidad.h"
+
 
 class BfCompany;
 
 
 /// Muestra y administra la ventana de familias de art&iacute;culos.
 /** */
-class MY_EXPORT_MINICONTABILIDAD PartidasView : public BfForm, public Ui_PartidasBase
+class PLUGINBF_MINICONTABILIDAD_EXPORT PartidasView : public BfForm, public Ui_PartidasBase
 {
     Q_OBJECT
 
@@ -46,7 +47,7 @@ private:
     /// Este semaforo indica si se esta en el proceso de pintado.
     bool m_semaforoPintar;
     QTreeWidgetItem *m_init;
-    
+
 public:
     PartidasView ( BfCompany *, QWidget *parent = 0, bool modoConsulta = FALSE );
     ~PartidasView();

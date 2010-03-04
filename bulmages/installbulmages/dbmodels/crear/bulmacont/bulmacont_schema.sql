@@ -39,11 +39,12 @@ SET search_path = public, pg_catalog;
 
 
 \echo -n ':: plpgsql_call_handler ... '
-CREATE FUNCTION plpgsql_call_handler() RETURNS language_handler
+CREATE OR REPLACE FUNCTION plpgsql_call_handler() RETURNS language_handler
     AS '$libdir/plpgsql', 'plpgsql_call_handler'
     LANGUAGE c;
 
 \echo -n ':: Establecemos el lenguaje de procedimientos ... '
+DROP PROCEDURAL LANGUAGE IF EXISTS plpgsql CASCADE;
 CREATE TRUSTED PROCEDURAL LANGUAGE plpgsql HANDLER plpgsql_call_handler;
 
 

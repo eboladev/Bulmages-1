@@ -26,7 +26,6 @@
 #include <QLabel>
 #include <QCheckBox>
 
-
 #include "listlinpedidoclienteview.h"
 #include "listdescpedidoclienteview.h"
 #include "bldatesearch.h"
@@ -36,14 +35,13 @@
 #include "bldialogchanges.h"
 #include "blfixed.h"
 #include "bfform.h"
-#include "pdefs.h"
-
 #include "ui_pedidoclientebase.h"
+#include "pdefs_pluginbf_clientepedido.h"
 
 
 /// Muestra y administra la ventana con la informaci&oacute;n de un pedido de cliente.
 /** */
-class MY_EXPORT PedidoClienteView : public BfForm, public Ui_PedidoClienteBase
+class PLUGINBF_CLIENTEPEDIDO_EXPORT PedidoClienteView : public BfForm, public Ui_PedidoClienteBase
 {
     Q_OBJECT
 
@@ -57,9 +55,7 @@ public:
     void inicializar();
     void pintatotales ( BlFixed iva, BlFixed base, BlFixed total, BlFixed desc, BlFixed, BlFixed );
 
-
 public slots:
-
     virtual void s_pintaTotales();
     virtual void on_mui_verpresupuesto_clicked();
     virtual void on_mui_pasaraalbaran_clicked();

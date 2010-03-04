@@ -34,14 +34,17 @@
 #include "bldatesearch.h"
 #include "bldialogchanges.h"
 #include "bfform.h"
+#include "pdefs_pluginbf_actividad.h"
+
 
 class BfCompany;
+
 
 extern "C++" class BusquedaProfesor;
 
 /// Muestra y administra los alumnos de una actividad.
 /** */
-class ListAlumnosActividadView : public BfSubForm
+class PLUGINBF_ACTIVIDAD_EXPORT ListAlumnosActividadView : public BfSubForm
 {
     Q_OBJECT
 
@@ -53,9 +56,10 @@ public slots:
     virtual void cargar ( QString idactividad );
 };
 
+
 /// Muestra y administra las faltas de asistencia de una actividad.
 /** */
-class ListFaltasAsistenciaActividadView : public BfSubForm
+class PLUGINBF_ACTIVIDAD_EXPORT ListFaltasAsistenciaActividadView : public BfSubForm
 {
     Q_OBJECT
 
@@ -67,12 +71,14 @@ public slots:
     virtual void cargar ( QString idactividad );
 };
 
+
 #include "ui_actividadbase.h"
+
 
 /** Ventana de ficha de actividad.
     Se encarga de la presentacion de la ficha de actividad y del tratamiento de eventos producidos
     en dicha ventana. **/
-class ActividadView : public BfForm, public Ui_ActividadBase
+class PLUGINBF_ACTIVIDAD_EXPORT ActividadView : public BfForm, public Ui_ActividadBase
 {
     Q_OBJECT
 
@@ -87,3 +93,4 @@ public:
 };
 
 #endif
+

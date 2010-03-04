@@ -26,7 +26,6 @@
 #include <QLabel>
 #include <QCheckBox>
 
-
 #include "blpostgresqlclient.h"
 #include "bldatesearch.h"
 #include "bldialogchanges.h"
@@ -37,6 +36,7 @@ class BfCompany;
 
 
 #include "ui_acontablebase.h"
+
 
 /** Ventana de ficha de cobro.
     Se encarga de la presentacion de la ficha de cobro y del tratamiento de eventos producidos
@@ -58,3 +58,4 @@ public:
 };
 
 #endif
+

@@ -30,7 +30,9 @@
 #include "blpostgresqlclient.h"
 #include "bfform.h"
 
+
 class BfCompany;
+
 
 class ListAlumnosTutorView : public BfSubForm
 {
@@ -44,7 +46,9 @@ public slots:
     virtual void cargar ( QString idcontrato );
 };
 
+
 #include "ui_tutorbase.h"
+
 
 class TutorView : public BfForm, public Ui_TutorBase
 {
@@ -64,3 +68,4 @@ public slots:
 };
 
 #endif
+

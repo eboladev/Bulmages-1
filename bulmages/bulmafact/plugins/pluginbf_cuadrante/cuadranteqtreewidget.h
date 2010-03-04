@@ -28,9 +28,6 @@
 #include "blfunctions.h"
 
 
-
-
-
 /// Clase que deriva de QTableWidget para poder reprogramar ciertos aspectos y
 /// funcionalidades.
 /** Se usa principalmente como tabla para mostrar subformularios.*/
@@ -43,6 +40,7 @@ public:
     ~CuadranteQTreeWidget();
     virtual void startDrag ( Qt::DropActions supportedActions );
 };
+
 
 #endif
 

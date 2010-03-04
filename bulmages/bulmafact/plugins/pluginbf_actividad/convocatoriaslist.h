@@ -28,11 +28,12 @@
 #include "blfunctions.h"
 #include "bfsubform.h"
 #include "blformlist.h"
+#include "pdefs_pluginbf_actividad.h"
 
 
 /** Subformulario especializado en el trabajo con Cobros.
 */
-class ConvocatoriasListSubForm : public BfSubForm
+class PLUGINBF_ACTIVIDAD_EXPORT ConvocatoriasListSubForm : public BfSubForm
 {
     Q_OBJECT
 
@@ -48,7 +49,7 @@ public:
 /** Clase que presenta el listado de Cobros.
     Deriva de la clase BlFormList para estandarizacion de Formularios.
     Controla los eventos y la sincronizacion del listado con el filtrado. */
-class ConvocatoriasList : public BlFormList, public Ui_ConvocatoriasListBase
+class PLUGINBF_ACTIVIDAD_EXPORT ConvocatoriasList : public BlFormList, public Ui_ConvocatoriasListBase
 {
     Q_OBJECT
 

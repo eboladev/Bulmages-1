@@ -18,12 +18,6 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#ifdef Q_WS_WIN
-# define MY_EXPORT __declspec(dllexport)
-#else
-# define MY_EXPORT
-#endif
-
 #include <QStringList>
 #include <QWidget>
 #include <QIcon>
@@ -33,12 +27,13 @@
 #include "blpostgresqlclient.h"
 #include "clienteview.h"
 #include "bfbulmafact.h"
+#include "pdefs_pluginbf_comercial.h"
 
 
-extern "C" MY_EXPORT int entryPoint ( BfBulmaFact * );
-extern "C" MY_EXPORT int ClienteView_ClienteView_Post ( ClienteView * );
-extern "C" MY_EXPORT int ClienteView_Des_ClienteView ( ClienteView * );
+extern "C" PLUGINBF_COMERCIAL_EXPORT int entryPoint ( BfBulmaFact * );
+extern "C" PLUGINBF_COMERCIAL_EXPORT int ClienteView_ClienteView_Post ( ClienteView * );
+extern "C" PLUGINBF_COMERCIAL_EXPORT int ClienteView_Des_ClienteView ( ClienteView * );
 /*
-extern "C" MY_EXPORT int ClienteView_saveClient(ClienteView *);
-extern "C" MY_EXPORT int Cliente_pintaCliente(Cliente *);
+extern "C" PLUGINBF_COMERCIAL_EXPORT int ClienteView_saveClient(ClienteView *);
+extern "C" PLUGINBF_COMERCIAL_EXPORT int Cliente_pintaCliente(Cliente *);
 */

@@ -31,6 +31,7 @@
 #include "bfsubform.h"
 #include "blformlist.h"
 
+
 /** Subformulario especializado en el trabajo con Profesores.
 */
 class ProfesoresListSubForm : public BfSubForm
@@ -42,7 +43,9 @@ public:
     ~ProfesoresListSubForm();
 };
 
+
 #include "ui_profesoreslistbase.h"
+
 
 /** Clase que presenta el listado de Profesores.
     Deriva de la clase BlFormList para estandarizacion de Formularios.

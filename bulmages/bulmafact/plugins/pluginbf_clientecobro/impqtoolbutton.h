@@ -26,9 +26,10 @@
 #include <QString>
 #include "bfcompany.h"
 #include "blfunctions.h"
-#include "pdefs.h"
+#include "pdefs_pluginbf_clientecobro.h"
 
-class MY_EXPORT GenCobroQToolButton : public QToolButton
+
+class PLUGINBF_CLIENTECOBRO_EXPORT GenCobroQToolButton : public QToolButton
 {
     Q_OBJECT
 
@@ -40,6 +41,7 @@ public:
     GenCobroQToolButton ( QWidget *fac,   QWidget *parent = NULL );
     ~GenCobroQToolButton();
     void setBoton();
+
 public slots:
     virtual void click();
 

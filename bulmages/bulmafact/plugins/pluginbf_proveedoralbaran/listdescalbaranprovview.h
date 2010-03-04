@@ -24,19 +24,19 @@
 
 #include "bfsubform.h"
 #include "bfcompany.h"
-#include "pdefs.h"
+#include "pdefs_pluginbf_proveedoralbaran.h"
+
 
 /// Muestra y administra la ventana de lista de descuentos por albar&aacute;n de proveedor.
 /** */
-class MY_EXPORT ListDescuentoAlbaranProvView : public BfSubForm
+class PLUGINBF_PROVEEDORALBARAN_EXPORT ListDescuentoAlbaranProvView : public BfSubForm
 {
     Q_OBJECT
 
 public:
     QString mdb_idalbaranp;
     ListDescuentoAlbaranProvView ( QWidget *parent = 0 );
-    ~ListDescuentoAlbaranProvView() {}
-    ;
+    ~ListDescuentoAlbaranProvView() {};
 
 public slots:
     virtual void cargar ( QString idalbaranp ) {

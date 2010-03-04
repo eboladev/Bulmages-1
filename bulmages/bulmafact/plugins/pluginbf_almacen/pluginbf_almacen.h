@@ -18,21 +18,16 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#ifdef Q_WS_WIN
-# define MY_EXPORT __declspec(dllexport)
-#else
-# define MY_EXPORT
-#endif
-
 #include "blpostgresqlclient.h"
 #include "bfbulmafact.h"
 #include "blwidget.h"
 #include "bfbuscarreferencia.h"
 #include "blsearchwidget.h"
+#include "pdefs_pluginbf_almacen.h"
 
 
-extern "C" MY_EXPORT int entryPoint ( BfBulmaFact * );
-extern "C" MY_EXPORT int SNewAlmacenView (BfCompany *);
+extern "C" PLUGINBF_ALMACEN_EXPORT int entryPoint ( BfBulmaFact * );
+extern "C" PLUGINBF_ALMACEN_EXPORT int SNewAlmacenView (BfCompany *);
 
 
 class MyPlugAlm : public QObject, BlMainCompanyPointer
@@ -50,3 +45,4 @@ public:
 public slots:
     void elslot1();
 };
+

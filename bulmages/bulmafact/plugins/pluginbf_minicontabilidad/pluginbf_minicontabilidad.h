@@ -24,18 +24,19 @@
 #include "bfbuscarreferencia.h"
 #include "blsearchwidget.h"
 #include "bfsubform.h"
-#include "pdefs_minicontabilidad.h"
+#include "pdefs_pluginbf_minicontabilidad.h"
 
-extern "C" MY_EXPORT_MINICONTABILIDAD int entryPoint ( BfBulmaFact * );
-extern "C" MY_EXPORT_MINICONTABILIDAD int BfCompany_createMainWindows_Post(BfCompany *);
-extern "C" MY_EXPORT_MINICONTABILIDAD int Busqueda_on_mui_buscar_clicked(BlSearchWidget *);
-extern "C" MY_EXPORT_MINICONTABILIDAD int BlSubForm_BlSubForm_Post ( BlSubForm * );
-extern "C" MY_EXPORT_MINICONTABILIDAD int BfSubForm_pressedAsterisk ( BfSubForm * );
-extern "C" MY_EXPORT_MINICONTABILIDAD int BlSubForm_BlSubForm_Post ( BlSubForm * );
-extern "C" MY_EXPORT_MINICONTABILIDAD int BlSubFormDelegate_createEditor(BlSubFormDelegate *);
-extern "C" MY_EXPORT_MINICONTABILIDAD int BlSubFormDelegate_setModelData(BlSubFormDelegate *);
-extern "C" MY_EXPORT_MINICONTABILIDAD int BlSubFormDelegate_setEditorData(BlSubFormDelegate *);
-extern "C" MY_EXPORT_MINICONTABILIDAD int BlSubForm_editFinished(BlSubForm *);
+
+extern "C" PLUGINBF_MINICONTABILIDAD_EXPORT int entryPoint ( BfBulmaFact * );
+extern "C" PLUGINBF_MINICONTABILIDAD_EXPORT int BfCompany_createMainWindows_Post(BfCompany *);
+extern "C" PLUGINBF_MINICONTABILIDAD_EXPORT int Busqueda_on_mui_buscar_clicked(BlSearchWidget *);
+extern "C" PLUGINBF_MINICONTABILIDAD_EXPORT int BlSubForm_BlSubForm_Post ( BlSubForm * );
+extern "C" PLUGINBF_MINICONTABILIDAD_EXPORT int BfSubForm_pressedAsterisk ( BfSubForm * );
+extern "C" PLUGINBF_MINICONTABILIDAD_EXPORT int BlSubForm_BlSubForm_Post ( BlSubForm * );
+extern "C" PLUGINBF_MINICONTABILIDAD_EXPORT int BlSubFormDelegate_createEditor(BlSubFormDelegate *);
+extern "C" PLUGINBF_MINICONTABILIDAD_EXPORT int BlSubFormDelegate_setModelData(BlSubFormDelegate *);
+extern "C" PLUGINBF_MINICONTABILIDAD_EXPORT int BlSubFormDelegate_setEditorData(BlSubFormDelegate *);
+extern "C" PLUGINBF_MINICONTABILIDAD_EXPORT int BlSubForm_editFinished(BlSubForm *);
 
 
 
@@ -58,8 +59,9 @@ public slots:
 class MyPlugArt : public QObject, BlMainCompanyPointer
 {
     Q_OBJECT
+
 private:
-  BfBulmaFact *m_bges;
+    BfBulmaFact *m_bges;
 
 public:
     MyPlugArt( BfBulmaFact *);
@@ -71,3 +73,4 @@ public slots:
     void elslot2();
     void elslot1();
 };
+

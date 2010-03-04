@@ -21,19 +21,14 @@
 #ifndef PLUGINBC_ASIENTO
 #define PLUGINBC_ASIENTO
 
-#ifdef Q_WS_WIN
-# define MY_EXPORT __declspec(dllexport)
-#else
-# define MY_EXPORT
-#endif
-
 #include "bcbulmacont.h"
 #include "blpostgresqlclient.h"
 #include "bccompany.h"
 #include "bcasientoview.h"
+#include "pdefs.h"
 
-extern BcAsientoView *g_asiento;
 
+extern "C" MY_EXPORT BcAsientoView *g_asiento;
 extern "C" MY_EXPORT int entryPoint ( BcBulmaCont * );
 extern "C" MY_EXPORT int SNewBcAsientoView ( BcCompany * );
 

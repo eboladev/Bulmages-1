@@ -18,12 +18,6 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#ifdef Q_WS_WIN
-# define MY_EXPORT __declspec(dllexport)
-#else
-# define MY_EXPORT
-#endif
-
 #include <QStringList>
 #include <QWidget>
 #include <QIcon>
@@ -35,14 +29,15 @@
 #include "provedit.h"
 #include "blform.h"
 #include "facturapview.h"
+#include "pdefs_pluginbf_carterapagos.h"
 
 
-extern "C" MY_EXPORT int entryPoint ( BfBulmaFact * );
-extern "C" MY_EXPORT int ProveedorView_ProveedorView_Post ( ProveedorView * );
-extern "C" MY_EXPORT int ProveedorView_cargarPost_Post(ProveedorView *);
-extern "C" MY_EXPORT int BlForm_guardar_Post_Post (BlForm *);
-extern "C" MY_EXPORT int FacturaProveedorView_FacturaProveedorView (FacturaProveedorView *);
-extern "C" MY_EXPORT int FacturaProveedorView_cargarPost_Post ( FacturaProveedorView * );
+extern "C" PLUGINBF_CARTERAPAGOS_EXPORT int entryPoint ( BfBulmaFact * );
+extern "C" PLUGINBF_CARTERAPAGOS_EXPORT int ProveedorView_ProveedorView_Post ( ProveedorView * );
+extern "C" PLUGINBF_CARTERAPAGOS_EXPORT int ProveedorView_cargarPost_Post(ProveedorView *);
+extern "C" PLUGINBF_CARTERAPAGOS_EXPORT int BlForm_guardar_Post_Post (BlForm *);
+extern "C" PLUGINBF_CARTERAPAGOS_EXPORT int FacturaProveedorView_FacturaProveedorView (FacturaProveedorView *);
+extern "C" PLUGINBF_CARTERAPAGOS_EXPORT int FacturaProveedorView_cargarPost_Post ( FacturaProveedorView * );
 
 void generarVencimientos (FacturaProveedorView *);
 

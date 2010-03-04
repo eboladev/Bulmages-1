@@ -8,12 +8,13 @@ set (docs README.es)
 
 file(GLOB plugin_SRC *.c *.cpp *.cxx)
 file(GLOB plugin_MOCS *.hpp *.h)
+file(GLOB plugin_UIS *.ui)
+
 
 # Exclude files with no QObject macro.
-file(GLOB plugin_NO_MOCS pluginbf_informecliente2sxc.h)
+file(GLOB plugin_NO_MOCS pluginbf_informecliente2sxc.h pdefs_pluginbf_informecliente2sxc.h)
 list(REMOVE_ITEM plugin_MOCS ${plugin_NO_MOCS})
 
-file(GLOB plugin_UIS *.ui)
 
 set(QT_USE_QTASSISTANT true)
 set(QT_USE_QTXML true)
@@ -43,6 +44,11 @@ include_directories(
 QT4_WRAP_UI(plugin_UIS_H  OPTIONS -tr N_)
 QT4_WRAP_CPP(plugin_MOC_SRCS ${plugin_MOCS})
 #QT4_ADD_RESOURCES(plugin_RCC_SRCS ${plugin_RCCS})
+
+
+IF(WIN32)
+ADD_DEFINITIONS(-DQWT_DLL -DQT_DLL -DQWT_MAKEDLL -DPLUGINBF_INFORMECLIENTE2SXC)
+ENDIF(WIN32)
 
 
 #ADD_DEFINITIONS(${QT_DEFINITIONS})

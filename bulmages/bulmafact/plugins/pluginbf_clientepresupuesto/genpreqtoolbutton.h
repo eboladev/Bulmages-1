@@ -21,18 +21,19 @@
 #ifndef GENPREQTOOLBUTTON_H
 #define GENPREQTOOLBUTTON_H
 
-
 #include <QtXml/QDomDocument>
 #include <QMap>
 #include <QString>
 #include <QWidget>
 #include <QToolButton>
 #include <QString>
+
 #include "bfcompany.h"
 #include "blfunctions.h"
-#include "pdefs_clientepresupuesto.h"
+#include "pdefs_pluginbf_clientepresupuesto.h"
 
-class MY_EXPORT_CLIENTEPRESUPUESTO GenPreQToolButton : public QToolButton
+/*
+class GenPreQToolButton : public QToolButton
 {
     Q_OBJECT
 
@@ -44,15 +45,17 @@ public:
     GenPreQToolButton ( QWidget *fac,   QWidget *parent = NULL );
     ~GenPreQToolButton();
     void setBoton();
-	void generarFactura();
-	void generarFactura1();
-	void generarFactura2();
+    void generarFactura();
+    void generarFactura1();
+    void generarFactura2();
+
 public slots:
     virtual void click();
 
 };
+*/
 
-class MY_EXPORT_CLIENTEPRESUPUESTO VerPreQToolButton : public QToolButton
+class PLUGINBF_CLIENTEPRESUPUESTO_EXPORT VerPreQToolButton : public QToolButton
 {
     Q_OBJECT
 
@@ -64,10 +67,12 @@ public:
     VerPreQToolButton ( QWidget *fac,   QWidget *parent = NULL );
     ~VerPreQToolButton();
     void setBoton();
-	void verPresupuesto();
+    void verPresupuesto();
+
 public slots:
     virtual void click();
 
 };
 
 #endif
+

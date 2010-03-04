@@ -18,18 +18,13 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#ifdef Q_WS_WIN
-# define MY_EXPORT __declspec(dllexport)
-#else
-# define MY_EXPORT
-#endif
-
 #include "bcbulmacont.h"
 #include "blpostgresqlclient.h"
 #include "bccompany.h"
 #include "bcasientoform.h"
 #include "bcasientosubform.h"
 #include "bcasientoview.h"
+#include "pdefs.h"
 
 
 extern "C" MY_EXPORT int entryPoint ( BcBulmaCont * );

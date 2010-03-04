@@ -18,12 +18,6 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#ifdef Q_WS_WIN
-# define MY_EXPORT __declspec(dllexport)
-#else
-# define MY_EXPORT
-#endif
-
 #include <QStringList>
 #include <QWidget>
 #include <QIcon>
@@ -36,6 +30,8 @@
 #include "blsearchwidget.h"
 #include "bfbuscararticulo.h"
 #include "bfsubform.h"
+#include "pdefs_pluginbf_alias.h"
+
 
 // cuando la usuaria escribe en la celda de código de artículo y este plugin
 // está instalado, buscaremos además de por código de artículo por alias. 
@@ -55,17 +51,18 @@
 // un valor bajo. No se si debería ser una constante o un valor más configurable...
 #define MILISEG_REFRESCO_ESTAD_ALIAS 60000 // 1 min
 
-extern "C" MY_EXPORT int entryPoint ( BfBulmaFact * );
-extern "C" MY_EXPORT int ArticuloView_ArticuloView ( ArticuloView * );
-extern "C" MY_EXPORT int ArticuloView_cargar ( ArticuloView * );
-extern "C" MY_EXPORT int ArticuloView_guardar_post ( ArticuloView * );
 
-extern "C" MY_EXPORT int Busqueda_on_m_inputBusqueda_textChanged ( BlSearchWidget * );
+extern "C" PLUGINBF_ALIAS_EXPORT int entryPoint ( BfBulmaFact * );
+extern "C" PLUGINBF_ALIAS_EXPORT int ArticuloView_ArticuloView ( ArticuloView * );
+extern "C" PLUGINBF_ALIAS_EXPORT int ArticuloView_cargar ( ArticuloView * );
+extern "C" PLUGINBF_ALIAS_EXPORT int ArticuloView_guardar_post ( ArticuloView * );
+
+extern "C" PLUGINBF_ALIAS_EXPORT int Busqueda_on_m_inputBusqueda_textChanged ( BlSearchWidget * );
 /*
 extern "C" MY_EXPORT int BfBuscarArticuloDelegate_textChanged_Post ( BfBuscarArticuloDelegate *baDel );
 extern "C" MY_EXPORT int BfSubForm_on_mui_list_editFinished ( BfSubForm *sf ) ;
 */
-extern "C" MY_EXPORT int BlSubForm_editFinished(BlSubForm *);
-extern "C" MY_EXPORT int BlDbCompleterComboBox_textChanged (BlDbCompleterComboBox *);
+extern "C" PLUGINBF_ALIAS_EXPORT int BlSubForm_editFinished(BlSubForm *);
+extern "C" PLUGINBF_ALIAS_EXPORT int BlDbCompleterComboBox_textChanged (BlDbCompleterComboBox *);
 
 

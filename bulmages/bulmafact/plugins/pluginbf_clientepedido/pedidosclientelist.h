@@ -27,17 +27,18 @@
 #include "blfunctions.h"
 #include "bfsubform.h"
 #include "blformlist.h"
-#include "pdefs.h"
+#include "pdefs_pluginbf_clientepedido.h"
+
 
 /// Administra las l&iacute;neas de detalle del listado de pedidos de cliente.
 /** */
-class MY_EXPORT PedidosClienteListSubform : public BfSubForm
+class PLUGINBF_CLIENTEPEDIDO_EXPORT PedidosClienteListSubform : public BfSubForm
 {
     Q_OBJECT
 
 public:
     PedidosClienteListSubform ( QWidget *parent = 0, const char *name = 0 );
-    ~PedidosClienteListSubform() {}
+    ~PedidosClienteListSubform() {};
 
 public slots:
     virtual void cargar();
@@ -50,7 +51,7 @@ public slots:
 
 /// Muestra y administra el listado de pedidos de cliente.
 /** */
-class MY_EXPORT PedidosClienteList : public BlFormList, public Ui_PedidosClienteListBase
+class PLUGINBF_CLIENTEPEDIDO_EXPORT PedidosClienteList : public BlFormList, public Ui_PedidosClienteListBase
 {
     Q_OBJECT
 

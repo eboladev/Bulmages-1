@@ -1,0 +1,21 @@
+#ifndef PDEFS_PLUGINBF_INVENTARIOSIMPLE_H
+#define PDEFS_PLUGINBF_INVENTARIOSIMPLE_H
+
+
+#ifdef WIN32
+
+#ifdef PLUGINBF_INVENTARIOSIMPLE
+#define PLUGINBF_INVENTARIOSIMPLE_EXPORT __declspec(dllexport)
+#else
+#define PLUGINBF_INVENTARIOSIMPLE_EXPORT __declspec(dllimport)
+#endif
+
+#else
+
+#define PLUGINBF_INVENTARIOSIMPLE_EXPORT
+
+#endif
+
+
+#endif
+

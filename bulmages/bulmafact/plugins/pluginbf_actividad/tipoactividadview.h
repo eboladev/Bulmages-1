@@ -22,16 +22,18 @@
 #ifndef TIPOACTIVIDADVIEW_H
 #define TIPOACTIVIDADVIEW_H
 
-#include "blfunctions.h"
-#include <ui_tipoactividadbase.h>
 
 #include "bfform.h"
 #include "blpostgresqlclient.h"
+#include "blfunctions.h"
+#include "pdefs_pluginbf_actividad.h"
+
+#include <ui_tipoactividadbase.h>
 
 
 /// Muestra y administra la ventana con la informaci&oacute;n de un trabajador.
 /** */
-class TipoActividadView : public BfForm, public Ui_TipoActividadBase
+class PLUGINBF_ACTIVIDAD_EXPORT TipoActividadView : public BfForm, public Ui_TipoActividadBase
 {
     Q_OBJECT
 

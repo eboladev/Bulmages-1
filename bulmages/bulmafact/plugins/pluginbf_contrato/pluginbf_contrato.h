@@ -18,12 +18,6 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#ifdef Q_WS_WIN
-# define MY_EXPORT __declspec(dllexport)
-#else
-# define MY_EXPORT
-#endif
-
 #include <QStringList>
 #include <QWidget>
 #include <QIcon>
@@ -33,9 +27,10 @@
 #include "bfbulmafact.h"
 #include "clienteview.h"
 #include "blform.h"
+#include "pdefs_pluginbf_contrato.h"
 
 
-extern "C" MY_EXPORT int entryPoint ( BfBulmaFact * );
-extern "C" MY_EXPORT int ClienteView_ClienteView ( ClienteView * );
-extern "C" MY_EXPORT int BlForm_cargar ( BlForm * );
+extern "C" PLUGINBF_CONTRATO_EXPORT int entryPoint ( BfBulmaFact * );
+extern "C" PLUGINBF_CONTRATO_EXPORT int ClienteView_ClienteView ( ClienteView * );
+extern "C" PLUGINBF_CONTRATO_EXPORT int BlForm_cargar ( BlForm * );
 

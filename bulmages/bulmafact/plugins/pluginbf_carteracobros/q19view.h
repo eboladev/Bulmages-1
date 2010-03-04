@@ -32,6 +32,7 @@
 #include "bfform.h"
 #include "blmaincompany.h"
 #include "carteracobroslist.h"
+#include "pdefs_pluginbf_carteracobros.h"
 
 
 /** Ventana de ficha de cobro.
@@ -39,7 +40,7 @@
     en dicha ventana.
     Deriva de Ficha para metodos comunes a todas las ventanas.
     Deriva de Cobro para el manejo de la Base de datos. */
-class Q19View : public BfForm, public Ui_Q19Base
+class PLUGINBF_CARTERACOBROS_EXPORT Q19View : public BfForm, public Ui_Q19Base
 {
     Q_OBJECT
 

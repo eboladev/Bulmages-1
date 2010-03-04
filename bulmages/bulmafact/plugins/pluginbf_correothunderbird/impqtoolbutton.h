@@ -31,6 +31,7 @@
 #include "pedidoclienteview.h"
 #include "albaranclienteview.h"
 
+
 class EmailThunderbirdQToolButton : public QToolButton
 {
     Q_OBJECT
@@ -40,13 +41,13 @@ private:
     PresupuestoView *m_presupuestoView;
     PedidoClienteView *m_pedidoClienteView;
     AlbaranClienteView *m_albaranClienteView;
-    FacturaView    *m_facturaView;
-
+    FacturaView *m_facturaView;
 
 public:
     EmailThunderbirdQToolButton ( PresupuestoView *, PedidoClienteView *, AlbaranClienteView *,  FacturaView * , QWidget *parent = NULL );
     ~EmailThunderbirdQToolButton();
     void setBoton();
+
 public slots:
     virtual void click();
 

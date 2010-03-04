@@ -1,5 +1,5 @@
 ###########################################
-# Plugin for bulmafact					  #
+# Plugin for bulmafact			  #
 ###########################################
 #plugintrazabilidad
 
@@ -10,10 +10,16 @@ file(GLOB plugin_SRC *.c *.cpp *.cxx)
 file(GLOB plugin_MOCS *.hpp *.h)
 file(GLOB plugin_UIS *.ui)
 
+
+# Exclude files with no QObject macro.
+file(GLOB plugin_NO_MOCS pdefs_pluginbf_carteracobros.h)
+list(REMOVE_ITEM plugin_MOCS ${plugin_NO_MOCS})
+
+
 set(QT_USE_QTASSISTANT true)
 set(QT_USE_QTXML true)
 
-INCLUDE(   ${QT_USE_FILE}   )
+INCLUDE( ${QT_USE_FILE} )
 
 include_directories(
     ${QT_INCLUDE_DIR}
@@ -40,10 +46,13 @@ QT4_WRAP_CPP(plugin_MOC_SRCS ${plugin_MOCS})
 #QT4_ADD_RESOURCES(plugin_RCC_SRCS ${plugin_RCCS})
 
 
+IF(WIN32)
+ADD_DEFINITIONS(-DQWT_DLL -DQT_DLL -DQWT_MAKEDLL -DPLUGINBF_CARTERACOBROS)
+ENDIF(WIN32)
+
+
 #ADD_DEFINITIONS(${QT_DEFINITIONS})
 ADD_DEFINITIONS(-DQT_SHARED)
-
-
 
 
 # i18n
@@ -66,9 +75,6 @@ if(USE_GETTEXT)
    GETTEXT_CREATE_TRANSLATIONS(${CMAKE_CURRENT_BINARY_DIR}/${plugin}.pot
                                 ALL LANGUAGES es_ES.UTF-8 ca_ES.UTF-8)
 endif(USE_GETTEXT)
-
-
-
 
 
 

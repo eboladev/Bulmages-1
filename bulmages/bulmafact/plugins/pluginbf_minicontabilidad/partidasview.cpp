@@ -29,8 +29,8 @@
 
 #define COL_NOMBREPARTIDA            0
 #define COL_CODIGOCOMPLETOPARTIDA    1
-#define COL_DESCPARTIDA           2
-#define COL_IDPARTIDA             3
+#define COL_DESCPARTIDA              2
+#define COL_IDPARTIDA                3
 #define COL_CODIGOPARTIDA            4
 
 

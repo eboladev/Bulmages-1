@@ -26,6 +26,7 @@
 #include "bfbulmafact.h"
 #include "blwidget.h"
 
+
 class mypluginbf : public QObject, BlMainCompanyPointer
 {
     Q_OBJECT
@@ -41,6 +42,7 @@ public slots:
     void elslot();
     void elslot1();
 };
+
 
 #endif
 

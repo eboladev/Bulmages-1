@@ -3,15 +3,17 @@
 #ifndef BLTREEWIDGET_H
 #define BLTREEWIDGET_H
 
-
 #include <QTreeWidget>
 
+#include "blfunctions.h"
 
-class BlTreeWidget : public QTreeWidget {
-Q_OBJECT
+
+class BL_EXPORT BlTreeWidget : public QTreeWidget {
+    Q_OBJECT
+
 public:
-   BlTreeWidget ( QWidget * parent = 0 );
-   ~BlTreeWidget ();
+    BlTreeWidget ( QWidget * parent = 0 );
+    ~BlTreeWidget ();
 
     virtual void creaMenu ( QMenu * );
     virtual void procesaMenu ( QAction * );
@@ -22,7 +24,6 @@ public slots:
 signals:
     void pintaMenu ( QMenu * );
     void trataMenu ( QAction * );
-
 
 };
 

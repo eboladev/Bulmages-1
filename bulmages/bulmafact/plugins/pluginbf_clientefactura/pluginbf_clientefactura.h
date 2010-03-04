@@ -20,9 +20,8 @@
  
 #ifndef PLUGINBF_CLIENTEFACTURA_H
 #define PLUGINBF_CLIENTEFACTURA_H
- 
 
-#include "pdefs_clientefactura.h"
+
 #include "blpostgresqlclient.h"
 #include "bfbulmafact.h"
 #include "blwidget.h"
@@ -33,16 +32,18 @@
 #include "pedidoclienteview.h"
 #include "presupuestoview.h"
 #include "bfcompany.h"
+#include "pdefs_pluginbf_clientefactura.h"
 
-extern "C" MY_EXPORT_CLIENTEFACTURA int SNewFacturaView (BfCompany *);
-extern "C" MY_EXPORT_CLIENTEFACTURA int entryPoint ( BfBulmaFact * );
-extern "C" MY_EXPORT_CLIENTEFACTURA int BfCompany_createMainWindows_Post(BfCompany *);
-extern "C" MY_EXPORT_CLIENTEFACTURA int ClienteView_ClienteView_Post (ClienteView *);
-extern "C" MY_EXPORT_CLIENTEFACTURA int ClienteView_cargarPost_Post (ClienteView *);
-extern "C" MY_EXPORT_CLIENTEFACTURA int BfBuscarReferencia_on_mui_abrirtodo_clicked_Post (BfBuscarReferencia *);
-extern "C" MY_EXPORT_CLIENTEFACTURA int AlbaranClienteView_AlbaranClienteView ( AlbaranClienteView * );
-extern "C" MY_EXPORT_CLIENTEFACTURA int PedidoClienteView_PedidoClienteView ( PedidoClienteView * );
-extern "C" MY_EXPORT_CLIENTEFACTURA int PresupuestoView_PresupuestoView ( PresupuestoView * );
+
+extern "C" PLUGINBF_CLIENTEFACTURA_EXPORT int SNewFacturaView (BfCompany *);
+extern "C" PLUGINBF_CLIENTEFACTURA_EXPORT int entryPoint ( BfBulmaFact * );
+extern "C" PLUGINBF_CLIENTEFACTURA_EXPORT int BfCompany_createMainWindows_Post(BfCompany *);
+extern "C" PLUGINBF_CLIENTEFACTURA_EXPORT int ClienteView_ClienteView_Post (ClienteView *);
+extern "C" PLUGINBF_CLIENTEFACTURA_EXPORT int ClienteView_cargarPost_Post (ClienteView *);
+extern "C" PLUGINBF_CLIENTEFACTURA_EXPORT int BfBuscarReferencia_on_mui_abrirtodo_clicked_Post (BfBuscarReferencia *);
+extern "C" PLUGINBF_CLIENTEFACTURA_EXPORT int AlbaranClienteView_AlbaranClienteView ( AlbaranClienteView * );
+extern "C" PLUGINBF_CLIENTEFACTURA_EXPORT int PedidoClienteView_PedidoClienteView ( PedidoClienteView * );
+extern "C" PLUGINBF_CLIENTEFACTURA_EXPORT int PresupuestoView_PresupuestoView ( PresupuestoView * );
 
  
 class mypluginfact : public QObject, BlMainCompanyPointer

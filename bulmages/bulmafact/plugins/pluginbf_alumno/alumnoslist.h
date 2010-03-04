@@ -28,11 +28,12 @@
 #include "blfunctions.h"
 #include "bfsubform.h"
 #include "blformlist.h"
+#include "pdefs_pluginbf_alumno.h"
 
 
 /** Subformulario especializado en el trabajo con Alumnos.
 */
-class AlumnosListSubForm : public BfSubForm
+class PLUGINBF_ALUMNO_EXPORT AlumnosListSubForm : public BfSubForm
 {
     Q_OBJECT
 
@@ -48,7 +49,7 @@ public:
 /** Clase que presenta el listado de Alumnos.
     Deriva de la clase Ficha para estandarizacion de Formularios.
     Controla los eventos y la sincronizacion del listado con el filtrado. */
-class AlumnosList : public BlFormList, public Ui_AlumnosListBase
+class PLUGINBF_ALUMNO_EXPORT AlumnosList : public BlFormList, public Ui_AlumnosListBase
 {
     Q_OBJECT
 

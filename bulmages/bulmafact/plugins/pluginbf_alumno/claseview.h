@@ -27,11 +27,12 @@
 
 #include "bfform.h"
 #include "blpostgresqlclient.h"
+#include "pdefs_pluginbf_alumno.h"
 
 
 /// Muestra y administra la ventana con la informaci&oacute;n de un trabajador.
 /** */
-class ClaseView : public BfForm, public Ui_ClaseBase
+class PLUGINBF_ALUMNO_EXPORT ClaseView : public BfForm, public Ui_ClaseBase
 {
     Q_OBJECT
 

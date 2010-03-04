@@ -27,19 +27,19 @@
 #include "bfcompany.h"
 #include "bfsubform.h"
 #include "blfixed.h"
-#include "pdefs.h"
+#include "pdefs_pluginbf_clientepedido.h"
+
 
 /// Muestra y administra las l&iacute;neas de detalle de un pedido de un cliente.
 /** */
-class MY_EXPORT ListLinPedidoClienteView : public BfSubForm
+class PLUGINBF_CLIENTEPEDIDO_EXPORT ListLinPedidoClienteView : public BfSubForm
 {
     Q_OBJECT
 
 public:
     QString mdb_idpedidocliente;
     ListLinPedidoClienteView ( QWidget *parent = 0 );
-    ~ListLinPedidoClienteView() {}
-    ;
+    ~ListLinPedidoClienteView() {};
 
 public slots:
     virtual void cargar ( QString idpedidocliente );

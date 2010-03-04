@@ -27,11 +27,12 @@
 #include "bfcompany.h"
 #include "bfsubform.h"
 #include "blfixed.h"
-#include "pdefs_clientefactura.h"
+#include "pdefs_pluginbf_clientefactura.h"
+
 
 /// Muestra y administra las l&iacute;neas de detalle de una factura a un cliente.
 /** */
-class MY_EXPORT_CLIENTEFACTURA ListLinFacturaView : public BfSubForm
+class PLUGINBF_CLIENTEFACTURA_EXPORT ListLinFacturaView : public BfSubForm
 {
     Q_OBJECT
 
@@ -39,6 +40,7 @@ public:
     QString mdb_idfactura;
     ListLinFacturaView ( QWidget *parent = 0 );
     ~ListLinFacturaView() {};
+
 public slots:
     virtual void cargar ( QString idfactura );
 };

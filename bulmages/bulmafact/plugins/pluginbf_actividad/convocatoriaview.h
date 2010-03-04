@@ -31,6 +31,7 @@
 #include "bldatesearch.h"
 #include "bldialogchanges.h"
 #include "bfform.h"
+#include "pdefs_pluginbf_actividad.h"
 
 
 class BfCompany;
@@ -44,7 +45,7 @@ extern "C++" class BusquedaProfesor;
     en dicha ventana.
     Deriva de Ficha para metodos comunes a todas las ventanas.
     Deriva de Cobro para el manejo de la Base de datos. */
-class ConvocatoriaView : public BfForm, public Ui_ConvocatoriaBase
+class PLUGINBF_ACTIVIDAD_EXPORT ConvocatoriaView : public BfForm, public Ui_ConvocatoriaBase
 {
     Q_OBJECT
 
@@ -57,3 +58,4 @@ public:
 };
 
 #endif
+

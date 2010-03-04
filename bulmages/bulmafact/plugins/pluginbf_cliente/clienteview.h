@@ -24,14 +24,14 @@
 
 #include "bfform.h"
 #include "ui_clientebase.h"
-#include "pdefs.h"
+#include "pdefs_pluginbf_cliente.h"
 
 /** Clase que se encarga de la pantalla de cliente.
     Deriva de la clase BfForm para la estandarizacion de pantallas y
     de la clase Cliente para el manejo con la base de datos.
     Se encarga de recibir y lanzar eventos.
 */
-class MY_EXPORT ClienteView : public BfForm, public Ui_ClienteBase
+class PLUGINBF_CLIENTE_EXPORT ClienteView : public BfForm, public Ui_ClienteBase
 {
     Q_OBJECT
 

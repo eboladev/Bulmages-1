@@ -33,6 +33,8 @@
 #include "bldialogchanges.h"
 #include "bfform.h"
 #include "carterapagoslist.h"
+#include "pdefs_pluginbf_carterapagos.h"
+
 
 class BfCompany;
 
@@ -42,7 +44,7 @@ class BfCompany;
     en dicha ventana.
     Deriva de BlForm para metodos comunes a todas las ventanas.
     Deriva de Cobro para el manejo de la Base de datos. */
-class Q34View : public BfForm, public Ui_Q34Base
+class PLUGINBF_CARTERAPAGOS_EXPORT Q34View : public BfForm, public Ui_Q34Base
 {
     Q_OBJECT
 

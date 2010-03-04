@@ -33,15 +33,17 @@
 #include "blfunctions.h"
 #include "ui_bcdiarioprintbase.h"
 #include "blwidget.h"
+#include "pdefs.h"
 
 /// Declaramos la clase empresa como amiga para que la compilaci&oacute; no sea complicada.
 #include "bccompany.h"
 
 
+
 /// Ventana de impresi&oacute; de diarios.
 /// @class BcDiarioPrintView bcdiarioprintview.h
 /** Es la ventana de impresi&oacute; de diarios. */
-class BC_EXPORT BcDiarioPrintView : public QDialog, public Ui_BcDiarioPrintBase, BlMainCompanyPointer
+class MY_EXPORT BcDiarioPrintView : public QDialog, public Ui_BcDiarioPrintBase, BlMainCompanyPointer
 {
     Q_OBJECT
 

@@ -18,12 +18,6 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#ifdef Q_WS_WIN
-# define MY_EXPORT __declspec(dllexport)
-#else
-# define MY_EXPORT
-#endif
-
 #include <QObject>
 #include "bfbulmafact.h"
 #include "blform.h"
@@ -31,9 +25,10 @@
 #include "articuloview.h"
 #include "articulolist.h"
 #include "bfclientealbaransubform.h"
+#include "pdefs_pluginbf_ivaincluido.h"
 
 
-extern "C" MY_EXPORT int entryPoint ( BfBulmaFact * );
-extern "C" MY_EXPORT int ArticuloView_ArticuloView_Post ( ArticuloView * );
-extern "C" MY_EXPORT int ArticuloListSubForm_ArticuloListSubForm_Post ( ArticuloListSubForm * );
-extern "C" MY_EXPORT int BfClienteAlbaranSubForm_BfClienteAlbaranSubForm_Post (BfClienteAlbaranSubForm *);
+extern "C" PLUGINBF_IVAINCLUIDO_EXPORT int entryPoint ( BfBulmaFact * );
+extern "C" PLUGINBF_IVAINCLUIDO_EXPORT int ArticuloView_ArticuloView_Post ( ArticuloView * );
+extern "C" PLUGINBF_IVAINCLUIDO_EXPORT int ArticuloListSubForm_ArticuloListSubForm_Post ( ArticuloListSubForm * );
+extern "C" PLUGINBF_IVAINCLUIDO_EXPORT int BfClienteAlbaranSubForm_BfClienteAlbaranSubForm_Post (BfClienteAlbaranSubForm *);

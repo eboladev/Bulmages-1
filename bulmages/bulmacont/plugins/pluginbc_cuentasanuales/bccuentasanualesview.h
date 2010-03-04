@@ -27,6 +27,7 @@
 #include "blfunctions.h"
 #include "ui_bccuentasanualesbase.h"
 #include "bcform.h"
+#include "pdefs.h"
 
 
 class BcCompany;
@@ -36,7 +37,7 @@ class BcCompany;
 /** Clase que muestra un listado de todos los balances introducidos en el sistema.
     Sirve como punto de entrada a la generaci&oacute;n de los balances permitiendo la
     importaci&oacute;n/exportaci&oacute;n de los mismos, su modificaci&oacute;n y su impresi&oacute;n. */
-class BC_EXPORT BcCuentasAnualesView : public BcForm, public Ui_BcCuentasAnualesBase
+class MY_EXPORT BcCuentasAnualesView : public BcForm, public Ui_BcCuentasAnualesBase
 {
     Q_OBJECT
 

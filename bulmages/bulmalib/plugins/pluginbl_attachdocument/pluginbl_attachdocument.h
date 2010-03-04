@@ -18,22 +18,17 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#ifdef Q_WS_WIN
-# define MY_EXPORT __declspec(dllexport)
-#else
-# define MY_EXPORT
-#endif
-
 #include "blfunctions.h"
 #include "blpostgresqlclient.h"
 #include "blmaincompany.h"
 #include "bcbulmacont.h"
 #include "bfbulmafact.h"
 #include "blform.h"
+#include "pdefs_pluginbl_attachdocument.h"
 
 
-extern "C" MY_EXPORT int entryPoint ( QMainWindow * );
-extern "C" MY_EXPORT int BlForm_cargar ( BlForm * );
-extern "C" MY_EXPORT int BlForm_DesBlForm ( BlForm * );
-extern "C" MY_EXPORT int BlForm_BlForm ( BlForm * );
+extern "C" PLUGINBL_ATTACHDOCUMENT_EXPORT int entryPoint ( QMainWindow * );
+extern "C" PLUGINBL_ATTACHDOCUMENT_EXPORT int BlForm_cargar ( BlForm * );
+extern "C" PLUGINBL_ATTACHDOCUMENT_EXPORT int BlForm_DesBlForm ( BlForm * );
+extern "C" PLUGINBL_ATTACHDOCUMENT_EXPORT int BlForm_BlForm ( BlForm * );
 

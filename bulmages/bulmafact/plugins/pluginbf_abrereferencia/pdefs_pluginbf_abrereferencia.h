@@ -1,0 +1,21 @@
+#ifndef PDEFS_PLUGINBF_ABREREFERENCIA_H
+#define PDEFS_PLUGINBF_ABREREFERENCIA_H
+
+
+#ifdef WIN32
+
+#ifdef PLUGINBF_ABREREFERENCIA
+#define PLUGINBF_ABREREFERENCIA_EXPORT __declspec(dllexport)
+#else
+#define PLUGINBF_ABREREFERENCIA_EXPORT __declspec(dllimport)
+#endif
+
+#else
+
+#define PLUGINBF_ABREREFERENCIA_EXPORT
+
+#endif
+
+
+#endif
+

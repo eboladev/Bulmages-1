@@ -31,7 +31,8 @@
 #include "bldatesearch.h"
 #include "bldialogchanges.h"
 #include "bfform.h"
-#include "pdefs.h"
+#include "pdefs_pluginbf_clientecobro.h"
+
 
 class BfCompany;
 
@@ -41,7 +42,7 @@ class BfCompany;
     en dicha ventana.
     Deriva de Ficha para metodos comunes a todas las ventanas.
     Deriva de Cobro para el manejo de la Base de datos. */
-class MY_EXPORT CobroView : public BfForm, public Ui_CobroBase
+class PLUGINBF_CLIENTECOBRO_EXPORT CobroView : public BfForm, public Ui_CobroBase
 {
     Q_OBJECT
 

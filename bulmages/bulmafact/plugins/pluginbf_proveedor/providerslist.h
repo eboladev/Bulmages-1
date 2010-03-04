@@ -25,11 +25,12 @@
 #include "blimportexport.h"
 #include "bfsubform.h"
 #include "blformlist.h"
-#include "pdefs.h"
+#include "pdefs_pluginbf_proveedor.h"
+
 
 /// Administra el listado de proveedores.
 /** */
-class MY_EXPORT ProveedorListSubform : public BfSubForm
+class PLUGINBF_PROVEEDOR_EXPORT ProveedorListSubform : public BfSubForm
 {
     Q_OBJECT
 
@@ -48,7 +49,7 @@ public slots:
 
 /// Muestra y administra la ventana con el listado de proveedores.
 /** */
-class MY_EXPORT ProveedorList : public BlFormList, public Ui_ProveedorListBase, public BlImportExport
+class PLUGINBF_PROVEEDOR_EXPORT ProveedorList : public BlFormList, public Ui_ProveedorListBase, public BlImportExport
 {
     Q_OBJECT
 

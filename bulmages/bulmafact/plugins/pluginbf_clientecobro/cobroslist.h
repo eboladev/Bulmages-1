@@ -28,11 +28,12 @@
 #include "blfunctions.h"
 #include "bfsubform.h"
 #include "blformlist.h"
-#include "pdefs.h"
+#include "pdefs_pluginbf_clientecobro.h"
+
 
 /** Subformulario especializado en el trabajo con Cobros.
 */
-class MY_EXPORT CobrosListSubForm : public BfSubForm
+class PLUGINBF_CLIENTECOBRO_EXPORT CobrosListSubForm : public BfSubForm
 {
     Q_OBJECT
 
@@ -48,7 +49,7 @@ public:
 /** Clase que presenta el listado de Cobros.
     Deriva de la clase Ficha para estandarizacion de Formularios.
     Controla los eventos y la sincronizacion del listado con el filtrado. */
-class MY_EXPORT CobrosList : public BlFormList, public Ui_CobrosListBase
+class PLUGINBF_CLIENTECOBRO_EXPORT CobrosList : public BlFormList, public Ui_CobrosListBase
 {
     Q_OBJECT
 
@@ -70,6 +71,7 @@ public:
     void crear();
     void editar ( int );
     void submenu ( const QPoint & );
+
 signals:
     /// Estando en modo seleccion al seleccionar un elemento se emite esta se&ntilde;al.
     void selected ( QString );

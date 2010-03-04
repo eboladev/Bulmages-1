@@ -22,17 +22,17 @@
 #ifndef FACTURASLIST_H
 #define FACTURASLIST_H
 
-#include "pdefs_clientefactura.h"
 #include "bfbuscararticulo.h"
 #include "bfcompany.h"
 #include "blfunctions.h"
 #include "bfsubform.h"
 #include "blformlist.h"
+#include "pdefs_pluginbf_clientefactura.h"
 
 
 /// Administra el detalle del listado de facturas a clientes.
 /** */
-class MY_EXPORT_CLIENTEFACTURA FacturasListSubform : public BfSubForm
+class PLUGINBF_CLIENTEFACTURA_EXPORT FacturasListSubform : public BfSubForm
 {
     Q_OBJECT
 
@@ -51,7 +51,7 @@ public slots:
 
 /// Administra el listado de facturas a clientes.
 /** */
-class MY_EXPORT_CLIENTEFACTURA FacturasList : public BlFormList, public Ui_FacturasListBase
+class PLUGINBF_CLIENTEFACTURA_EXPORT FacturasList : public BlFormList, public Ui_FacturasListBase
 {
     Q_OBJECT
 

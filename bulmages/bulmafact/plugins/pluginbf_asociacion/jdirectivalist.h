@@ -28,11 +28,12 @@
 #include "blfunctions.h"
 #include "bfsubform.h"
 #include "blformlist.h"
+#include "pdefs_pluginbf_asociacion.h"
 
 
 /** Subformulario especializado en el trabajo con Cobros.
 */
-class JDirectivaListSubForm : public BfSubForm
+class PLUGINBF_ASOCIACION_EXPORT JDirectivaListSubForm : public BfSubForm
 {
     Q_OBJECT
 
@@ -48,7 +49,7 @@ public:
 /** Clase que presenta el listado de Cobros.
     Deriva de la clase BlFormList para estandarizacion de Formularios.
     Controla los eventos y la sincronizacion del listado con el filtrado. */
-class JDirectivaList : public BlFormList, public Ui_JDirectivaListBase
+class PLUGINBF_ASOCIACION_EXPORT JDirectivaList : public BlFormList, public Ui_JDirectivaListBase
 {
     Q_OBJECT
 

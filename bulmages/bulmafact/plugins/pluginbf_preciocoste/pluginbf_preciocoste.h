@@ -18,23 +18,17 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-
-#ifdef Q_WS_WIN
-# define MY_EXPORT __declspec(dllexport)
-#else
-# define MY_EXPORT
-#endif
-
 #include <QObject>
 #include "bfbulmafact.h"
 #include "articuloview.h"
 #include "blform.h"
 #include "bfsubform.h"
 #include "articulolist.h"
+#include "pdefs_pluginbf_preciocoste.h"
 
 
-extern "C" MY_EXPORT int entryPoint ( BfBulmaFact * );
-extern "C" MY_EXPORT int ArticuloView_ArticuloView_Post ( ArticuloView * );
-extern "C" MY_EXPORT int BfSubForm_on_mui_list_editFinished ( BfSubForm * );
-extern "C" MY_EXPORT int ArticuloListSubForm_ArticuloListSubForm_Post ( ArticuloListSubForm * );
+extern "C" PLUGINBF_PRECIOCOSTE_EXPORT int entryPoint ( BfBulmaFact * );
+extern "C" PLUGINBF_PRECIOCOSTE_EXPORT int ArticuloView_ArticuloView_Post ( ArticuloView * );
+extern "C" PLUGINBF_PRECIOCOSTE_EXPORT int BfSubForm_on_mui_list_editFinished ( BfSubForm * );
+extern "C" PLUGINBF_PRECIOCOSTE_EXPORT int ArticuloListSubForm_ArticuloListSubForm_Post ( ArticuloListSubForm * );
 

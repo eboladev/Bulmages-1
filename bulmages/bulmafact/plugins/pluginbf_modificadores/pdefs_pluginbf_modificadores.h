@@ -1,0 +1,21 @@
+#ifndef PDEFS_PLUGINBF_MODIFICADORES_H
+#define PDEFS_PLUGINBF_MODIFICADORES_H
+
+
+#ifdef WIN32
+
+#ifdef PLUGINBF_MODIFICADORES
+#define PLUGINBF_MODIFICADORES_EXPORT __declspec(dllexport)
+#else
+#define PLUGINBF_MODIFICADORES_EXPORT __declspec(dllimport)
+#endif
+
+#else
+
+#define PLUGINBF_MODIFICADORES_EXPORT
+
+#endif
+
+
+#endif
+

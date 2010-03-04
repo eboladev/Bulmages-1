@@ -26,15 +26,16 @@
 #include "pedidoclienteview.h"
 #include "presupuestoview.h"
 #include "bfcompany.h"
-#include "pdefs.h"
+#include "pdefs_pluginbf_clientepedido.h"
 
-extern "C" MY_EXPORT int SNewPedidoClienteView (BfCompany *);
-extern "C" MY_EXPORT int entryPoint ( BfBulmaFact * );
-extern "C" MY_EXPORT int BfCompany_createMainWindows_Post(BfCompany *);
-extern "C" MY_EXPORT int ClienteView_ClienteView_Post (ClienteView *);
-extern "C" MY_EXPORT int ClienteView_cargarPost_Post (ClienteView *);
-extern "C" MY_EXPORT int BfBuscarReferencia_on_mui_abrirtodo_clicked_Post (BfBuscarReferencia *);
-extern "C" MY_EXPORT int PresupuestoView_PresupuestoView ( PresupuestoView * );
+
+extern "C" PLUGINBF_CLIENTEPEDIDO_EXPORT int SNewPedidoClienteView (BfCompany *);
+extern "C" PLUGINBF_CLIENTEPEDIDO_EXPORT int entryPoint ( BfBulmaFact * );
+extern "C" PLUGINBF_CLIENTEPEDIDO_EXPORT int BfCompany_createMainWindows_Post(BfCompany *);
+extern "C" PLUGINBF_CLIENTEPEDIDO_EXPORT int ClienteView_ClienteView_Post (ClienteView *);
+extern "C" PLUGINBF_CLIENTEPEDIDO_EXPORT int ClienteView_cargarPost_Post (ClienteView *);
+extern "C" PLUGINBF_CLIENTEPEDIDO_EXPORT int BfBuscarReferencia_on_mui_abrirtodo_clicked_Post (BfBuscarReferencia *);
+extern "C" PLUGINBF_CLIENTEPEDIDO_EXPORT int PresupuestoView_PresupuestoView ( PresupuestoView * );
 
 
 // 

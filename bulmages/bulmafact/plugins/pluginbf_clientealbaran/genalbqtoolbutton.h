@@ -17,18 +17,20 @@
  *   Free Software Foundation, Inc.,                                       *
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
+
 #include <QtXml/QDomDocument>
 #include <QMap>
 #include <QString>
 #include <QWidget>
 #include <QToolButton>
 #include <QString>
+
 #include "bfcompany.h"
 #include "blfunctions.h"
-#include "pdefs.h"
+#include "pdefs_pluginbf_clientealbaran.h"
 
 
-class MY_EXPORT GenAlbQToolButton : public QToolButton
+class PLUGINBF_CLIENTEALBARAN_EXPORT GenAlbQToolButton : public QToolButton
 {
     Q_OBJECT
 
@@ -40,8 +42,9 @@ public:
     GenAlbQToolButton ( QWidget *fac,   QWidget *parent = NULL );
     ~GenAlbQToolButton();
     void setBoton();
-	void generarFactura1();
-	void generarFactura2();
+    void generarFactura1();
+    void generarFactura2();
+
 public slots:
     virtual void click();
 

@@ -18,12 +18,6 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#ifdef Q_WS_WIN
-# define MY_EXPORT __declspec(dllexport)
-#else
-# define MY_EXPORT
-#endif
-
 #include <QStringList>
 #include <QWidget>
 #include <QIcon>
@@ -32,11 +26,10 @@
 #include "blapplication.h"
 #include "bfbulmafact.h"
 #include "blpostgresqlclient.h"
+#include "pdefs_pluginbf_example.h"
 
 
-extern "C" MY_EXPORT int entryPoint ( BfBulmaFact * );
-
-
+extern "C" PLUGINBF_EXAMPLE_EXPORT int entryPoint ( BfBulmaFact * );
 
 
 class myplugin : public QObject

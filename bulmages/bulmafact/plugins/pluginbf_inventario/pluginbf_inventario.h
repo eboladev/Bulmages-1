@@ -18,23 +18,18 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#ifdef Q_WS_WIN
-# define MY_EXPORT __declspec(dllexport)
-#else
-# define MY_EXPORT
-#endif
-
 #include "blpostgresqlclient.h"
 #include "bfbulmafact.h"
 #include "blwidget.h"
 #include "articuloview.h"
+#include "pdefs_pluginbf_inventario.h"
 
 
-extern "C" MY_EXPORT int entryPoint ( BfBulmaFact * );
-extern "C" MY_EXPORT int ArticuloView_ArticuloView ( ArticuloView * );
-extern "C" MY_EXPORT int BlForm_cargar ( BlForm * );
-extern "C" MY_EXPORT int BlForm_guardar_Post ( BlForm * );
-extern "C" MY_EXPORT int BfSubForm_on_mui_list_editFinished ( BfSubForm * );
+extern "C" PLUGINBF_INVENTARIO_EXPORT int entryPoint ( BfBulmaFact * );
+extern "C" PLUGINBF_INVENTARIO_EXPORT int ArticuloView_ArticuloView ( ArticuloView * );
+extern "C" PLUGINBF_INVENTARIO_EXPORT int BlForm_cargar ( BlForm * );
+extern "C" PLUGINBF_INVENTARIO_EXPORT int BlForm_guardar_Post ( BlForm * );
+extern "C" PLUGINBF_INVENTARIO_EXPORT int BfSubForm_on_mui_list_editFinished ( BfSubForm * );
 
 
 class myplugininv : public QObject, BlMainCompanyPointer
@@ -52,3 +47,4 @@ public:
 public slots:
     void elslot();
 };
+

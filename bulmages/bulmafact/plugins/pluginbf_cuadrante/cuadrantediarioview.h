@@ -58,5 +58,7 @@ public slots:
     virtual void on_mui_limpiar_clicked();
     virtual void on_mui_duplicar_clicked();
 };
+
+
 #endif
 

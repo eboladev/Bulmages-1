@@ -32,6 +32,7 @@
 #include "bldatesearch.h"
 #include "bldialogchanges.h"
 #include "bfform.h"
+#include "pdefs_pluginbf_carterapagos.h"
 
 
 class BfCompany;
@@ -39,7 +40,7 @@ class BfCompany;
 
 /// Muestra y administra la ventana con la informaci&oacute;n de un pago.
 /** */
-class VencimientoPView : public BfForm, public Ui_VencimientoPBase
+class PLUGINBF_CARTERAPAGOS_EXPORT VencimientoPView : public BfForm, public Ui_VencimientoPBase
 {
     Q_OBJECT
 

@@ -26,13 +26,14 @@
 #include "blimportexport.h"
 #include "bfsubform.h"
 #include "blformlist.h"
-#include "pdefs.h"
+#include "pdefs_pluginbf_articulo.h"
+
 
 /** Clase que maneja el subformulario de la lista de art&iacute;culos.
     Deriva de BfSubForm y agrega la configuracion para tratar especificamente
     con la tabla articulo.
 */
-class MY_EXPORT ArticuloListSubForm : public BfSubForm
+class PLUGINBF_ARTICULO_EXPORT ArticuloListSubForm : public BfSubForm
 {
     Q_OBJECT
 
@@ -48,7 +49,7 @@ public:
 /** Clase que maneja la ventana de listado de articulos
     Se encarga del control y manejo de la venta que presenta el listado de articulos.
 */
-class MY_EXPORT ArticuloList : public BlFormList, public Ui_ArticuloListBase, public BlImportExport
+class PLUGINBF_ARTICULO_EXPORT ArticuloList : public BlFormList, public Ui_ArticuloListBase, public BlImportExport
 {
     Q_OBJECT
 

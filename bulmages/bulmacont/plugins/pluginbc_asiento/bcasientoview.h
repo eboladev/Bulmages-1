@@ -30,9 +30,10 @@
 #include "bldatesearch.h"
 #include "bcasientoform.h"
 #include "ui_bcasientobase.h"
+#include "pdefs.h"
 
 
-class BcCompany ;
+class BcCompany;
 
 
 /// Clase BcAsientoList. Se encarga de controlar la ventana de introducci&oacute;n de apuntes.
@@ -40,7 +41,7 @@ class BcCompany ;
     acci&oacute;n y casi toda la interactuaci&oacute;n del usuario con el programa.
     Pretende conseguir una interficie que resulte muy r&iacute;gida y c&oacute;moda para
     el usuario que introduzca datos. Hereda intapunts3dlg. */
-class BC_EXPORT BcAsientoList : public BcAsientoForm
+class MY_EXPORT BcAsientoList : public BcAsientoForm
 {
     Q_OBJECT
 
@@ -68,7 +69,7 @@ public slots:
 };
 
 
-class BC_EXPORT BcAsientoView : public BcAsientoList, public Ui_BcAsientoBase
+class MY_EXPORT BcAsientoView : public BcAsientoList, public Ui_BcAsientoBase
 {
     Q_OBJECT
 
@@ -120,7 +121,7 @@ public slots:
 
 
 /// Captura todos los eventos del SpinBox 'mui_ordenasiento'.
-class BC_EXPORT eventos_mui_ordenasiento : public QObject
+class eventos_mui_ordenasiento : public QObject
 {
     Q_OBJECT
 

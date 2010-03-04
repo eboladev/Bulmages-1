@@ -17,6 +17,7 @@
  *   Free Software Foundation, Inc.,                                       *
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
+
 #include <QtXml/QDomDocument>
 #include <QMap>
 #include <QString>
@@ -25,10 +26,9 @@
 #include <QString>
 #include "bfcompany.h"
 #include "blfunctions.h"
-#include "pdefs.h"
 
 
-class MY_EXPORT GenFacProQToolButton : public QToolButton
+class GenFacProQToolButton : public QToolButton
 {
     Q_OBJECT
 
@@ -40,8 +40,9 @@ public:
     GenFacProQToolButton ( QWidget *fac,   QWidget *parent = NULL );
     ~GenFacProQToolButton();
     void setBoton();
-	void generarFacturaProveedor();
-	void generarFacturaProveedor1();
+    void generarFacturaProveedor();
+    void generarFacturaProveedor1();
+
 public slots:
     virtual void click();
 

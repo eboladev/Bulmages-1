@@ -23,12 +23,13 @@
 #include "blwidget.h"
 #include "bfbuscarreferencia.h"
 #include "blsearchwidget.h"
-#include "pdefs.h"
+#include "pdefs_pluginbf_proveedor.h"
 
-extern "C" MY_EXPORT int entryPoint ( BfBulmaFact * );
-extern "C" MY_EXPORT int BfCompany_createMainWindows_Post(BfCompany *);
-extern "C" MY_EXPORT int Busqueda_on_mui_buscar_clicked(BlSearchWidget *);
-extern "C" MY_EXPORT int SNewProveedorView (BfCompany *);
+
+extern "C" PLUGINBF_PROVEEDOR_EXPORT int entryPoint ( BfBulmaFact * );
+extern "C" PLUGINBF_PROVEEDOR_EXPORT int BfCompany_createMainWindows_Post(BfCompany *);
+extern "C" PLUGINBF_PROVEEDOR_EXPORT int Busqueda_on_mui_buscar_clicked(BlSearchWidget *);
+extern "C" PLUGINBF_PROVEEDOR_EXPORT int SNewProveedorView (BfCompany *);
 
 
 class MyPlugPro : public QObject, BlMainCompanyPointer
@@ -47,3 +48,4 @@ public slots:
     void elslot();
     void elslot1();
 };
+

@@ -29,22 +29,26 @@
 #include <QLabel>
 #include <QCheckBox>
 
-
 #include "blpostgresqlclient.h"
 #include "bldatesearch.h"
 #include "bldialogchanges.h"
 #include "bfform.h"
+#include "pdefs_pluginbf_asociacion.h"
+
 
 class BfCompany;
 
+
 extern "C++" class BusquedaProfesor;
 
+
 #include "ui_convreunionbase.h"
+
 
 /** Ventana de ficha de reunion.
     Se encarga de la presentacion de la ficha de reunion y del tratamiento de eventos producidos
     en dicha ventana. **/
-class ConvReunionView : public BfForm, public Ui_ConvReunionBase
+class PLUGINBF_ASOCIACION_EXPORT ConvReunionView : public BfForm, public Ui_ConvReunionBase
 {
     Q_OBJECT
 
@@ -64,3 +68,4 @@ public slots:
 };
 
 #endif
+

@@ -31,6 +31,7 @@
 #include "bldatesearch.h"
 #include "bldialogchanges.h"
 #include "bfform.h"
+#include "pdefs_pluginbf_bulmatpv.h"
 
 
 class BfCompany;
@@ -41,7 +42,7 @@ class BfCompany;
     en dicha ventana.
     Deriva de Ficha para metodos comunes a todas las ventanas.
     Deriva de Cobro para el manejo de la Base de datos. */
-class ZView : public BfForm, public Ui_ZBase
+class PLUGINBF_BULMATPV_EXPORT ZView : public BfForm, public Ui_ZBase
 {
     Q_OBJECT
 

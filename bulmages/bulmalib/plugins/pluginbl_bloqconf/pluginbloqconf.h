@@ -18,20 +18,16 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#ifdef Q_WS_WIN
-# define MY_EXPORT __declspec(dllexport)
-#else
-# define MY_EXPORT
-#endif
-
 #include "blmainwindow.h"
 #include "blfunctions.h"
 #include "bccompany.h"
 #include "bfcompany.h"
 #include "blsubform.h"
+#include "pdefs_pluginbl_bloqconf.h"
 
-extern "C" MY_EXPORT int entryPoint ( BlMainWindow * );
-extern "C" MY_EXPORT int BfCompany_createMainWindows_Post ( BfCompany * );
-extern "C" MY_EXPORT int BcCompany_createMainWindows_Post ( BcCompany * );
-extern "C" MY_EXPORT int BlSubForm_BlSubForm_Post ( BlSubForm * );
+
+extern "C" PLUGINBL_BLOQCONF_EXPORT int entryPoint ( BlMainWindow * );
+extern "C" PLUGINBL_BLOQCONF_EXPORT int BfCompany_createMainWindows_Post ( BfCompany * );
+extern "C" PLUGINBL_BLOQCONF_EXPORT int BcCompany_createMainWindows_Post ( BcCompany * );
+extern "C" PLUGINBL_BLOQCONF_EXPORT int BlSubForm_BlSubForm_Post ( BlSubForm * );
 

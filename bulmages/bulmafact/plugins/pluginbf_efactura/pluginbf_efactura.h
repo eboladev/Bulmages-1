@@ -18,12 +18,6 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#ifdef Q_WS_WIN
-# define MY_EXPORT __declspec(dllexport)
-#else
-# define MY_EXPORT
-#endif
-
 #include <QStringList>
 #include <QWidget>
 #include <QIcon>
@@ -34,12 +28,12 @@
 #include "bfcompany.h"
 #include "facturasplist.h"
 #include "blwidget.h"
+#include "pdefs_pluginbf_efactura.h"
 
 
-extern "C" MY_EXPORT int entryPoint ( BfBulmaFact * );
-extern "C" MY_EXPORT int FacturaView_FacturaView ( FacturaView * );
-extern "C" MY_EXPORT int FacturasProveedorList_FacturasProveedorList_Post ( FacturasProveedorList * );
-
+extern "C" PLUGINBF_EFACTURA_EXPORT int entryPoint ( BfBulmaFact * );
+extern "C" PLUGINBF_EFACTURA_EXPORT int FacturaView_FacturaView ( FacturaView * );
+extern "C" PLUGINBF_EFACTURA_EXPORT int FacturasProveedorList_FacturasProveedorList_Post ( FacturasProveedorList * );
 
 
 class efacturabf : public QObject, BlMainCompanyPointer
@@ -57,3 +51,4 @@ public slots:
     void elslot();
     void elslot1();
 };
+
