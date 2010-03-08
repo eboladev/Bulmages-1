@@ -98,8 +98,13 @@ myplugclipboard::~myplugclipboard()
 void myplugclipboard::s_pintaMenu ( QMenu *menu )
 {
     _depura ( "myplugclipboard::s_pintaMenu", 0 );
+
+    BlSubForm *subform = ( BlSubForm * ) parent();
+
     menu->addSeparator();
+ 
     menu->addAction ( _ ( "Pegar desde hoja de calculo" ) );
+    menu->addAction ( _ ( "Actualizar desde hoja de calculo" ) );
     _depura ( "END myplugclipboard::s_pintaMenu", 0 );
 }
 
@@ -111,13 +116,20 @@ void myplugclipboard::s_pintaMenu ( QMenu *menu )
 void myplugclipboard::s_trataMenu ( QAction *action )
 {
     _depura ( "myplugclipboard::s_trataMenu", 0 );
-    if ( action->text() == _ ( "Pegar desde Hoja de Calculo" ) ) {
+
+    if ( action->text() == _ ( "Pegar desde hoja de calculo" ) ) {
         if ( g_theApp->clipboard() ->text().contains ( "\t" ) ) {
             pegaODS();
         } else {
             pegaSXC();
         } // end if
+    } else if ( action->text() == _ ( "Actualizar desde hoja de calculo" ) ) {
+        if ( g_theApp->clipboard() ->text().contains ( "\t" ) ) {
+            pegaActualizaODS();
+        } else {
+        } // end if
     } // end if
+    
     _depura ( "myplugclipboard::s_trataMenu", 0 );
 }
 
@@ -160,6 +172,80 @@ void myplugclipboard::pegaSXC()
     } // end for
     _depura ( "END myplugclipboard::pegaSXC", 0 );
 }
+
+
+/// Funcion que pega desde OpenOffice.org, que copia al portapapeles la informacion con separador de campos un tabulador.
+/**
+**/
+void myplugclipboard::pegaActualizaODS()
+{
+    _depura ( "myplugclipboard::pegaActualizaODS", 0 );
+
+    BlSubForm *subform = ( BlSubForm * ) parent();
+    QString clipboard = g_theApp->clipboard() ->text();
+
+    try {
+      subform->mainCompany() ->begin();
+      
+      QStringList lineas = clipboard.split ( "\n" );
+
+      /// La primera linea tiene los nombres de las columnas.
+  // QStringList campos = lineas.at(0).simplified().split(" ");
+      QStringList campos = lineas.at ( 0 ).split ( "\t" );
+
+      /// Calculamos el tamanyo de cada campo.
+      int numcampos = campos.size();
+  
+      
+      QString query;
+      
+      
+      /// Iteramos para cada linea
+      for ( int i = 1; i < lineas.size() - 1 ; ++i ) {
+	  QStringList campos_valores = lineas.at ( i ).split ( "\t" );
+
+	  
+	  query = "UPDATE " + subform->tableName() + " SET ";
+	  QString field_indice = "";
+
+	  
+	  /// Iteramos para cada columna.
+	  for ( int j = 0; j < numcampos; ++j ) {
+	    
+	      /// Cogemos un valor.
+	      query += subform->mainCompany()->sanearCadena( campos.at (j) ) + " = '" +  subform->mainCompany()->sanearCadena( campos_valores.at (j) ) + "' ";
+	      
+	      if ( campos.at (j) == subform->dbFieldId() ) {
+		  field_indice = campos_valores.at (j);
+	      } // end if
+	      
+	      if (j < numcampos - 1) {
+		  query += ", ";
+	      } // end if
+	      
+	  } // end for
+	  
+
+	  query += " WHERE " + subform->dbFieldId() + " = '" + field_indice + "';";
+	  int res = subform->mainCompany() ->runQuery(query);
+ 
+      } // end for
+      
+      subform->mainCompany() ->commit();
+      
+      mensajeInfo(_("Actualizacion completada con exito."));
+      
+    } catch (...) {
+      
+	  subform->mainCompany() ->rollback();
+      
+    } // end try
+    
+
+
+    _depura ( "END myplugclipboard::pegaActualizaODS", 0 );
+}
+
 
 
 /// Funcion que pega desde OpenOffice.org, que copia al portapapeles la informacion con separador de campos un tabulador.

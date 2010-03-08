@@ -334,6 +334,7 @@ public:
     void setModoEdicion();
     bool modoEdicion();
     bool modoConsulta();
+    edmode mode();
 
     virtual QString exportXML();
 

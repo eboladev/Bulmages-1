@@ -28,6 +28,8 @@
 #include "blsubform.h"
 #include "blpostgresqlclient.h"
 #include "blwidget.h"
+#include "blmaincompanypointer.h"
+#include "blmaincompany.h"
 #include "pdefs_pluginbl_clipboard.h"
 
 
@@ -35,7 +37,10 @@ extern "C" PLUGINBL_CLIPBOARD_EXPORT int entryPoint ( QApplication * );
 extern "C" PLUGINBL_CLIPBOARD_EXPORT int BlSubForm_BlSubForm_Post ( BlSubForm * );
 
 
-class myplugclipboard : public QObject
+class BlMainCompany;
+
+
+class myplugclipboard : public QObject, public BlMainCompanyPointer
 {
     Q_OBJECT
 
@@ -44,6 +49,7 @@ public:
     ~myplugclipboard();
     void pegaSXC();
     void pegaODS();
+    void pegaActualizaODS();
 
 public slots:
     virtual void s_pintaMenu ( QMenu * );

@@ -2934,6 +2934,18 @@ bool BlSubForm::modoConsulta()
 }
 
 
+///
+/**
+\return
+**/
+edmode BlSubForm::mode()
+{
+    _depura ( "BlSubForm::mode", 0 );
+    _depura ( "END BlSubForm::mode", 0 );
+    return m_modo;
+}
+
+
 /// Hace la exportacion del campo a XML
 QString BlSubForm::exportXML() {
     _depura ( "BlSubForm::exportXML", 0 );

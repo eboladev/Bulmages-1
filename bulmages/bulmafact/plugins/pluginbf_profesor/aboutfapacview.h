@@ -27,7 +27,8 @@
 #include "blfunctions.h"
 #include <ui_aboutfapacbase.h>
 
-class BF_EXPORT AboutFapacView : public QDialog, private Ui::AboutFapacBase
+
+class AboutFapacView : public QDialog, private Ui::AboutFapacBase
 {
     Q_OBJECT
 
