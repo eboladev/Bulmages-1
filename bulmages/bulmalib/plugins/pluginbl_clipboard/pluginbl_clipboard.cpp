@@ -102,9 +102,13 @@ void myplugclipboard::s_pintaMenu ( QMenu *menu )
     BlSubForm *subform = ( BlSubForm * ) parent();
 
     menu->addSeparator();
- 
-    menu->addAction ( _ ( "Pegar desde hoja de calculo" ) );
-    menu->addAction ( _ ( "Actualizar desde hoja de calculo" ) );
+
+    if (subform->isInsert() ) {
+        menu->addAction ( _ ( "Pegar desde hoja de calculo" ) );
+    } else {
+        menu->addAction ( _ ( "Actualizar desde hoja de calculo" ) );
+    } // end if
+
     _depura ( "END myplugclipboard::s_pintaMenu", 0 );
 }
 
@@ -186,7 +190,7 @@ void myplugclipboard::pegaActualizaODS()
 
     try {
       subform->mainCompany() ->begin();
-      
+ 
       QStringList lineas = clipboard.split ( "\n" );
 
       /// La primera linea tiene los nombres de las columnas.
@@ -195,11 +199,9 @@ void myplugclipboard::pegaActualizaODS()
 
       /// Calculamos el tamanyo de cada campo.
       int numcampos = campos.size();
-  
-      
+
       QString query;
-      
-      
+ 
       /// Iteramos para cada linea
       for ( int i = 1; i < lineas.size() - 1 ; ++i ) {
 	  QStringList campos_valores = lineas.at ( i ).split ( "\t" );
