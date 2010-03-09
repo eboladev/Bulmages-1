@@ -1497,6 +1497,7 @@ void BlSubForm::setOrdenPorQuery ( bool ordenactivado )
 /**
 \param query La consulta SQL a cargar en el subformulario.
 **/
+/*
 void BlSubForm::cargar ( QString query )
 {
     _depura ( "BlSubForm::cargar", 0 );
@@ -1531,6 +1532,97 @@ void BlSubForm::cargar ( QString query )
     } // end try
     _depura ( "END BlSubForm::cargar", 0 );
 }
+*/
+
+
+void BlSubForm::cargar ( QString query )
+{
+    _depura ( "BlSubForm::cargar", 0 );
+    /// Si el query no existe no hacemos nada.
+    if ( query == "" ) {
+        _depura ( "BlSubForm::cargar", 0, "Query inexistente" );
+        return;
+    } // end if
+
+    try {
+
+        /// Guardar los valores necesarios para poder mantener la posici&oaucte;n en la lista tras realizar un cambio o borrado
+        int prev_col = -1; /// Columna activa antes de ejecutar la recarga
+        int prev_row = -1; /// Fila activa antes de ejecutar la recarga
+        QString prev_row_id; /// Identificador que había en dicha fila
+        QString prev_prev_row_id; /// Identificador que había en la fila anterior a la activa
+        QString next_prev_row_id; /// Identificador que había en la fila posterior a la activa
+
+        if ( rowCount() > 0 && currentRow() > -1 )
+        {
+            prev_row = currentRow();
+            prev_col = currentColumn();
+
+            if ( prev_row > 0 ) {
+                prev_prev_row_id = dbValue(dbFieldId(), prev_row - 1);
+            } // end if
+
+            if (prev_row < rowCount()) {
+                prev_row_id = dbValue(dbFieldId());
+            } // end if
+
+            if (prev_row < rowCount() - 1) {
+                next_prev_row_id =dbValue(dbFieldId(), prev_row + 1);
+            } // end if
+        } // end if
+        /// Fin de Guardar los valores necesarios para poder mantener la posici&oaucte;n en la lista tras realizar un cambio o borrado
+
+        m_query = query;
+        /// Tratramos con la paginacion.
+        int limit = mui_filaspagina->text().toInt();
+        if ( limit <= 0 ) {
+            limit = 500;
+        } // end if
+
+        int pagact = mui_paginaact->text().toInt();
+        if ( pagact <= 0 ) {
+            pagact = 1;
+        } // end if
+        int offset = limit * ( pagact - 1 );
+
+        BlDbRecordSet *cur = mainCompany() ->loadQuery ( query, "", limit, offset );
+
+        if (!cur) throw -1;
+
+        cargar ( cur );
+        delete cur;
+
+        /// Restaurar la posición anterior a la carga si es posible
+        if ( prev_row > -1 ) {
+
+           int fila_futura = -1;
+
+           // Al modificar se queda igual, pero al borrar una fila, la siguiente ocupa su mismo lugar
+           if ( ( prev_row < rowCount() )
+           && ( ( !prev_row_id.isEmpty() && dbValue ( dbFieldId(), prev_row ) == prev_row_id )
+                || ( !next_prev_row_id.isEmpty() && dbValue ( dbFieldId(), prev_row ) == next_prev_row_id ) ) ) {
+              fila_futura = prev_row;
+           }
+
+           // Si no hay siguiente fila, usar la que tuviera antes
+           else if ( !prev_prev_row_id.isEmpty() && dbValue ( dbFieldId(), rowCount() - 1 ) == prev_prev_row_id ) {
+              fila_futura = rowCount() - 1;
+           } // end if
+
+           if ( fila_futura > -1 ) {
+               mui_list->setCurrentCell ( fila_futura, prev_col ) ;
+               mui_list->scrollToItem ( mui_list->currentItem(), QAbstractItemView::PositionAtCenter ) ;
+           } // end if
+
+        } // end if
+        /// Fin de Restaurar la posición anterior a la carga si es posible
+
+    } catch ( ... ) {
+        _depura ( "BlSubForm::cargar", 2, "Error en la carga de datos" );
+    } // end try
+    _depura ( "END BlSubForm::cargar", 0 );
+}
+
 
 
 /// Devuelve la linea que se esta tratando actualmente.

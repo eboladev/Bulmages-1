@@ -18,21 +18,21 @@
 # 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             #
 #                                                                       #
 
-configure_file( ${CMAKE_SOURCE_DIR}/installbulmages/version.in version @ONLY)
-configure_file( ${CMAKE_SOURCE_DIR}/installbulmages/bulmages.conf.in bulmages.conf @ONLY)
-configure_file( ${CMAKE_SOURCE_DIR}/installbulmages/bulmafact.conf.in bulmafact.conf @ONLY)
-configure_file( ${CMAKE_SOURCE_DIR}/installbulmages/bulmacont.conf.in bulmacont.conf @ONLY)
-configure_file( ${CMAKE_SOURCE_DIR}/installbulmages/bulmatpv.conf.in bulmatpv.conf @ONLY)
-configure_file( ${CMAKE_SOURCE_DIR}/installbulmages/examples/scripts/installbulmages-db.in installbulmages-db @ONLY)
-configure_file( ${CMAKE_SOURCE_DIR}/installbulmages/examples/scripts/actualizabulmacont.in actualizabulmacont @ONLY)
-configure_file( ${CMAKE_SOURCE_DIR}/installbulmages/examples/scripts/actualizabulmafact.in actualizabulmafact @ONLY)
-configure_file( ${CMAKE_SOURCE_DIR}/installbulmages/examples/scripts/creabulmacont.in creabulmacont @ONLY)
-configure_file( ${CMAKE_SOURCE_DIR}/installbulmages/examples/scripts/creabulmafact.in creabulmafact @ONLY)
-configure_file( ${CMAKE_SOURCE_DIR}/installbulmages/bgtrml2pdf/bgtrml2pdf.in bgtrml2pdf.py  @ONLY)
+configure_file( ${CMAKE_SOURCE_DIR}/installbulmages/version.in ${CMAKE_BINARY_DIR}/version @ONLY)
+configure_file( ${CMAKE_SOURCE_DIR}/installbulmages/bulmages.conf.in ${CMAKE_BINARY_DIR}/bulmages.conf @ONLY)
+configure_file( ${CMAKE_SOURCE_DIR}/installbulmages/bulmafact.conf.in ${CMAKE_BINARY_DIR}/bulmafact.conf @ONLY)
+configure_file( ${CMAKE_SOURCE_DIR}/installbulmages/bulmacont.conf.in ${CMAKE_BINARY_DIR}/bulmacont.conf @ONLY)
+configure_file( ${CMAKE_SOURCE_DIR}/installbulmages/bulmatpv.conf.in ${CMAKE_BINARY_DIR}/bulmatpv.conf @ONLY)
+configure_file( ${CMAKE_SOURCE_DIR}/installbulmages/examples/scripts/installbulmages-db.in ${CMAKE_BINARY_DIR}/installbulmages-db @ONLY)
+configure_file( ${CMAKE_SOURCE_DIR}/installbulmages/examples/scripts/actualizabulmacont.in ${CMAKE_BINARY_DIR}/actualizabulmacont @ONLY)
+configure_file( ${CMAKE_SOURCE_DIR}/installbulmages/examples/scripts/actualizabulmafact.in ${CMAKE_BINARY_DIR}/actualizabulmafact @ONLY)
+configure_file( ${CMAKE_SOURCE_DIR}/installbulmages/examples/scripts/creabulmacont.in ${CMAKE_BINARY_DIR}/creabulmacont @ONLY)
+configure_file( ${CMAKE_SOURCE_DIR}/installbulmages/examples/scripts/creabulmafact.in ${CMAKE_BINARY_DIR}/creabulmafact @ONLY)
+configure_file( ${CMAKE_SOURCE_DIR}/installbulmages/bgtrml2pdf/bgtrml2pdf.in ${CMAKE_BINARY_DIR}/bgtrml2pdf.py  @ONLY)
 
-configure_file( ${CMAKE_SOURCE_DIR}/installbulmages/i18n/create_gettext_files.in create_gettext_files @ONLY)
-configure_file( ${CMAKE_SOURCE_DIR}/installbulmages/i18n/create_message_catalog.in create_message_catalog @ONLY)
-configure_file( ${CMAKE_SOURCE_DIR}/installbulmages/i18n/update_message_catalog_lang.in update_message_catalog_lang @ONLY)
+configure_file( ${CMAKE_SOURCE_DIR}/installbulmages/i18n/create_gettext_files.in ${CMAKE_BINARY_DIR}/create_gettext_files @ONLY)
+configure_file( ${CMAKE_SOURCE_DIR}/installbulmages/i18n/create_message_catalog.in {CMAKE_BINARY_DIR}/create_message_catalog @ONLY)
+configure_file( ${CMAKE_SOURCE_DIR}/installbulmages/i18n/update_message_catalog_lang.in {CMAKE_BINARY_DIR}/update_message_catalog_lang @ONLY)
 
 
 
@@ -68,23 +68,28 @@ install(DIRECTORY ainteligentes canuales planescontables ${CMAKE_BINARY_DIR}/css
 install(DIRECTORY man DESTINATION share/
 				PATTERN ".svn" EXCLUDE)
 			
-FILE(GLOB files COPYING version)
+FILE(GLOB files ${CMAKE_CURRENT_SOURCE_DIR}/COPYING.txt ${CMAKE_BINARY_DIR}/version)
 install(FILES ${files} DESTINATION share/bulmages)
 
-FILE(GLOB conf_etc bulmacont.conf bulmafact.conf bulmages.conf bulmatpv.conf)
+FILE(GLOB conf_etc 
+	${CMAKE_BINARY_DIR}/bulmacont.conf 
+	${CMAKE_BINARY_DIR}/bulmafact.conf 
+	${CMAKE_BINARY_DIR}/bulmages.conf 
+	${CMAKE_BINARY_DIR}/bulmatpv.conf)
 install(FILES ${conf_etc} DESTINATION ${BULMAGES_CONFIG_DIR})
 
 install(DIRECTORY examples/databases DESTINATION share/bulmages/examples/
             PATTERN ".svn" EXCLUDE)
 
-FILE(GLOB scripts_ex installbulmages-db
-                     actualizabulmacont
-                     actualizabulmafact
-                     creabulmacont
-                     creabulmafact)
+FILE(GLOB scripts_ex ${CMAKE_BINARY_DIR}/installbulmages-db
+                     ${CMAKE_BINARY_DIR}/actualizabulmacont
+                     ${CMAKE_BINARY_DIR}/actualizabulmafact
+                     ${CMAKE_BINARY_DIR}/creabulmacont
+                     ${CMAKE_BINARY_DIR}/creabulmafact)
+
 install(FILES ${scripts_ex} DESTINATION share/bulmages/examples/scripts
-	PERMISSIONS OWNER_EXECUTE OWNER_WRITE OWNER_READ
-                	    GROUP_EXECUTE GROUP_READ
-                            WORLD_READ WORLD_EXECUTE)
+	PERMISSIONS OWNER_WRITE OWNER_READ
+                	    GROUP_READ
+                            WORLD_READ )
 
 
