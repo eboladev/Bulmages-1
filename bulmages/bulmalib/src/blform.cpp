@@ -716,7 +716,7 @@ int BlForm::cargar ( QString id, bool paint )
 	} else if ( exists ( "cod" + m_tablename)) {
 	  wtitle = wtitle + "[" + dbValue ( "cod" + m_tablename) + "]";
 	} else {
-	  wtitle = wtitle + dbValue ( m_campoid );
+		wtitle = wtitle + dbValue ( m_campoid );
 	} // end if
 
         setWindowTitle ( wtitle );
@@ -817,6 +817,17 @@ int BlForm::borrar()
         borrarPre();
         int err;
         err =  BlDbRecord::borrar();
+
+        /// Si la directiva CONF_REFRESH_LIST esta activada buscamos el listado referente y lo recargamos
+        if (g_confpr->valor(CONF_REFRESH_LIST) == "TRUE") {
+                /// Buscamos el listado que corresponde al widget.
+                QList<BlFormList *> lista = g_main->findChildren<BlFormList *>();
+                for (int i = 0; i < lista.size(); ++i) {
+                    if (((BlFormList *)lista.at(i))->subForm()->tableName() == tableName())
+                        lista.at(i)->presentar();
+                } // end for
+        } // end if
+
         _depura ( "END BlForm::borrar", 0 );
         return err;
     } catch ( ... ) {
