@@ -1593,7 +1593,7 @@ void BlSubForm::cargar ( QString query )
         delete cur;
 
         /// Restaurar la posición anterior a la carga si es posible
-        if ( prev_row > -1 ) {
+        if ( rowCount() > 0 && currentRow() > -1 ) {
 
            int fila_futura = -1;
 
