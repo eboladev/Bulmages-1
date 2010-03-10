@@ -13,7 +13,7 @@ class QDESIGNER_WIDGET_EXPORT BfSubForm : public QTableWidget
 
 public:
     BfSubForm(QWidget *parent = 0);
-    
+
 };
 
 #endif
