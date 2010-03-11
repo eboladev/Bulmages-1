@@ -252,8 +252,8 @@ void BfCompany::guardaConf()
         QTextStream stream ( &file );
         stream << "<CONFIG>\n";
         stream << "\t<PRINCIPAL>\n";
-        stream << "\t\t\t<X>" + QString::number ( m_bulmafact->x() ) + "</X>\n";
-        stream << "\t\t\t<Y>" + QString::number ( m_bulmafact->y() ) + "</Y>\n";
+        stream << "\t\t\t<X>" + QString::number ( m_bulmafact->geometry().x() ) + "</X>\n";
+        stream << "\t\t\t<Y>" + QString::number ( m_bulmafact->geometry().y() ) + "</Y>\n";
         stream << "\t\t\t<WIDTH>" + QString::number ( m_bulmafact->width() ) + "</WIDTH>\n";
         stream << "\t\t\t<HEIGHT>" + QString::number ( m_bulmafact->height() ) + "</HEIGHT>\n";
         stream << "\t\t\t<INDEXADOR>" + ( m_bulmafact->actionIndexador->isChecked() ? QString ( "TRUE" ) : QString ( "FALSE" ) ) + "</INDEXADOR>\n";
