@@ -1547,30 +1547,29 @@ void BlSubForm::cargar ( QString query )
     try {
 
         /// Guardar los valores necesarios para poder mantener la posici&oaucte;n en la lista tras realizar un cambio o borrado
-        int prev_col = -1; /// Columna activa antes de ejecutar la recarga
-        int prev_row = -1; /// Fila activa antes de ejecutar la recarga
-        QString prev_row_id; /// Identificador que había en dicha fila
-        QString prev_prev_row_id; /// Identificador que había en la fila anterior a la activa
-        QString next_prev_row_id; /// Identificador que había en la fila posterior a la activa
+        int active_col = -1; /// Columna activa antes de ejecutar la recarga
+        int active_row = -1; /// Fila activa antes de ejecutar la recarga
+        QString active_row_id; /// Identificador que había en dicha fila
+        QString prev_active_row_id; /// Identificador que había en la fila anterior a la activa
+        QString next_active_row_id; /// Identificador que había en la fila posterior a la activa
 
+        /// Si la tabla no est&aacute; vac&iacute;a y tiene alguna fila activa, guardar los datos necesarios
         if ( rowCount() > 0 && currentRow() > -1 )
         {
-            prev_row = currentRow();
-            prev_col = currentColumn();
+            active_row = currentRow();
+            active_col = currentColumn();
 
-            // Tomar el identificador de la fila anterior (si es que la hay)
-            if ( prev_row > 0 ) {
-                prev_prev_row_id = dbValue(dbFieldId(), prev_row - 1);
+            /// Tomar el identificador de la fila anterior (si es que la hay)
+            if ( active_row > 0 ) {
+                prev_active_row_id = dbValue(dbFieldId(), active_row - 1);
             } // end if
 
-            // Tomar el identificador de la fila actual
-            if (prev_row < rowCount()) {
-                prev_row_id = dbValue(dbFieldId());
-            } // end if
+            /// Tomar el identificador de la fila actual
+            active_row_id = dbValue(dbFieldId());
 
-            // Tomar el identificador de la fila siguiente (si es que la hay)
-            if (prev_row < rowCount() - 1) {
-                next_prev_row_id =dbValue(dbFieldId(), prev_row + 1);
+            /// Tomar el identificador de la fila siguiente (si es que la hay)
+            if ( active_row < rowCount() - 1 ) {
+                next_active_row_id = dbValue(dbFieldId(), active_row + 1);
             } // end if
         } // end if
         /// Fin de Guardar los valores necesarios para poder mantener la posici&oaucte;n en la lista tras realizar un cambio o borrado
@@ -1596,34 +1595,33 @@ void BlSubForm::cargar ( QString query )
         delete cur;
 
         /// Restaurar la posición anterior a la carga si es posible
-        if ( rowCount() > 0 && prev_row > -1 ) {
+        /// La condición "active_row <= rowCount()" sirve cuando un filtrado reduce la cantidad de filas
+        if ( rowCount() > 0 && active_row > -1 && active_row <= rowCount() ) {
 
            int fila_futura = -1;
 
-           // Si la fila activa no era la &uacute;ltima,
-           if ( prev_row < rowCount() ) {
+           /// Si la fila activa no era la &uacute;ltima,
+           if ( !next_active_row_id.isEmpty() ) {
 
-              // y sigue siendo la misma (no ha sido borrada)...
-              if ( ( !prev_row_id.isEmpty() && dbValue ( dbFieldId(), prev_row ) == prev_row_id )
+              /// y sigue siendo la misma (no ha sido borrada)...
+              if ( ( !active_row_id.isEmpty() && dbValue ( dbFieldId(), active_row ) == active_row_id )
 
-              // o ha sido borrada pero hay otra despu&eacute;s que ha ocupado su lugar...
-                   || ( !next_prev_row_id.isEmpty() && dbValue ( dbFieldId(), prev_row ) == next_prev_row_id )
+              /// o ha sido borrada pero hay otra despu&eacute;s que ha ocupado su lugar...
+                 || ( !next_active_row_id.isEmpty() && dbValue ( dbFieldId(), active_row ) == next_active_row_id ) ) {
 
-              // o ha sido borrada y era la &uacute;ltima de la p&aacute;gina actual (podr&iacute;a haber aparecido un fila de la siguiente)...
-                   || ( next_prev_row_id.isEmpty() && prev_row == rowCount() - 1 )) {
+                 /// ... usar el mismo n&uacute;mero de fila
+                 fila_futura = active_row;
+              } // end if
+          } // end if
 
-                 // ... usar el mismo n&uacute;mero de fila
-                 fila_futura = prev_row;
-              }
-          }
-
-           // Si la fila ha sido borrada y despu&eacute;s no ha aparecido otra, intentar usar la que tuviera antes
-           else if ( !prev_prev_row_id.isEmpty() && dbValue ( dbFieldId(), rowCount() - 1 ) == prev_prev_row_id ) {
-              fila_futura = rowCount() - 1;
+           /// Si la fila era la &uacute;ltima, seguir en la &uacute;ltima, pase lo que pase
+           else
+           {
+               fila_futura = rowCount() - 1;
            } // end if
 
            if ( fila_futura > -1 ) {
-               mui_list->setCurrentCell ( fila_futura, prev_col ) ;
+               mui_list->setCurrentCell ( fila_futura, active_col ) ;
                mui_list->scrollToItem ( mui_list->currentItem(), QAbstractItemView::PositionAtCenter ) ;
            } // end if
 
