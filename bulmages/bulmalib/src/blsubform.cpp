@@ -1558,14 +1558,17 @@ void BlSubForm::cargar ( QString query )
             prev_row = currentRow();
             prev_col = currentColumn();
 
+            // Tomar el identificador de la fila anterior (si es que la hay)
             if ( prev_row > 0 ) {
                 prev_prev_row_id = dbValue(dbFieldId(), prev_row - 1);
             } // end if
 
+            // Tomar el identificador de la fila actual
             if (prev_row < rowCount()) {
                 prev_row_id = dbValue(dbFieldId());
             } // end if
 
+            // Tomar el identificador de la fila siguiente (si es que la hay)
             if (prev_row < rowCount() - 1) {
                 next_prev_row_id =dbValue(dbFieldId(), prev_row + 1);
             } // end if
@@ -1593,18 +1596,28 @@ void BlSubForm::cargar ( QString query )
         delete cur;
 
         /// Restaurar la posición anterior a la carga si es posible
-        if ( rowCount() > 0 && currentRow() > -1 ) {
+        if ( rowCount() > 0 && prev_row > -1 ) {
 
            int fila_futura = -1;
 
-           // Al modificar se queda igual, pero al borrar una fila, la siguiente ocupa su mismo lugar
-           if ( ( prev_row < rowCount() )
-           && ( ( !prev_row_id.isEmpty() && dbValue ( dbFieldId(), prev_row ) == prev_row_id )
-                || ( !next_prev_row_id.isEmpty() && dbValue ( dbFieldId(), prev_row ) == next_prev_row_id ) ) ) {
-              fila_futura = prev_row;
-           }
+           // Si la fila activa no era la &uacute;ltima,
+           if ( prev_row < rowCount() ) {
 
-           // Si no hay siguiente fila, usar la que tuviera antes
+              // y sigue siendo la misma (no ha sido borrada)...
+              if ( ( !prev_row_id.isEmpty() && dbValue ( dbFieldId(), prev_row ) == prev_row_id )
+
+              // o ha sido borrada pero hay otra despu&eacute;s que ha ocupado su lugar...
+                   || ( !next_prev_row_id.isEmpty() && dbValue ( dbFieldId(), prev_row ) == next_prev_row_id )
+
+              // o ha sido borrada y era la &uacute;ltima de la p&aacute;gina actual (podr&iacute;a haber aparecido un fila de la siguiente)...
+                   || ( next_prev_row_id.isEmpty() && prev_row == rowCount() - 1 )) {
+
+                 // ... usar el mismo n&uacute;mero de fila
+                 fila_futura = prev_row;
+              }
+          }
+
+           // Si la fila ha sido borrada y despu&eacute;s no ha aparecido otra, intentar usar la que tuviera antes
            else if ( !prev_prev_row_id.isEmpty() && dbValue ( dbFieldId(), rowCount() - 1 ) == prev_prev_row_id ) {
               fila_futura = rowCount() - 1;
            } // end if
