@@ -31,8 +31,8 @@ configure_file( ${CMAKE_SOURCE_DIR}/installbulmages/examples/scripts/creabulmafa
 configure_file( ${CMAKE_SOURCE_DIR}/installbulmages/bgtrml2pdf/bgtrml2pdf.in ${CMAKE_BINARY_DIR}/bgtrml2pdf.py  @ONLY)
 
 configure_file( ${CMAKE_SOURCE_DIR}/installbulmages/i18n/create_gettext_files.in ${CMAKE_BINARY_DIR}/create_gettext_files @ONLY)
-configure_file( ${CMAKE_SOURCE_DIR}/installbulmages/i18n/create_message_catalog.in {CMAKE_BINARY_DIR}/create_message_catalog @ONLY)
-configure_file( ${CMAKE_SOURCE_DIR}/installbulmages/i18n/update_message_catalog_lang.in {CMAKE_BINARY_DIR}/update_message_catalog_lang @ONLY)
+configure_file( ${CMAKE_SOURCE_DIR}/installbulmages/i18n/create_message_catalog.in ${CMAKE_BINARY_DIR}/create_message_catalog @ONLY)
+configure_file( ${CMAKE_SOURCE_DIR}/installbulmages/i18n/update_message_catalog_lang.in ${CMAKE_BINARY_DIR}/update_message_catalog_lang @ONLY)
 
 
 

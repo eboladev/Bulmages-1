@@ -216,6 +216,21 @@ void ArticuloList1::on_mui_list_cellDoubleClicked ( int, int )
     _depura ( "END ArticuloList1::on_mui_list_cellDoubleClicked", 0 );
 }
 
+
+///
+/**
+**/
+void ArticuloList1::on_mui_seleccionar_clicked()
+{
+    _depura ( "ArticuloList1::on_mui_seleccionar_clicked", 0 );
+    /// Se ejecuta la misma accion que generando un doble click en la fila seleccionada en el listado.
+    QString idarticulo =  mui_list->dbValue ( "idarticulo" );
+    ( ( BtCompany * ) mainCompany() )->ticketActual() ->insertarArticulo ( idarticulo, BlFixed ( "1" ) );
+    _depura ( "END ArticuloList1::on_mui_seleccionar_clicked", 0 );
+}
+
+
+
 /// =============================================================================
 ///                    SUBFORMULARIO
 /// =============================================================================

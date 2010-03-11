@@ -71,6 +71,9 @@ public:
     void submenu ( const QPoint & );
     virtual void on_mui_list_cellDoubleClicked ( int, int );
 
+public slots:
+    virtual void on_mui_seleccionar_clicked();
+
 signals:
     void selected ( QString );
 };
