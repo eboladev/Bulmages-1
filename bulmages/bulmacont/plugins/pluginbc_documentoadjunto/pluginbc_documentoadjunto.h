@@ -18,15 +18,14 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#ifdef Q_WS_WIN
-# define MY_EXPORT __declspec(dllexport)
-#else
-# define MY_EXPORT
-#endif
-
+#ifndef PLUGINBC_DOCUMENTOADJUNTO_H
+#define PLUGINBC_DOCUMENTOADJUNTO_H
 
 #include "bcbulmacont.h"
 
 
-extern "C" MY_EXPORT int entryPoint ( BcBulmaCont * );
+extern "C" PLUGINBC_DOCUMENTOADJUNTO_EXPORT int entryPoint ( BcBulmaCont * );
+
+
+#endif
 

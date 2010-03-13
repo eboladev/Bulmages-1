@@ -15,7 +15,7 @@
    <string>Familias</string>
   </property>
   <property name="windowIcon">
-   <iconset>
+   <iconset resource="../../../bulmages.qrc">
     <normaloff>:/Images/product-family.png</normaloff>:/Images/product-family.png</iconset>
   </property>
   <layout class="QVBoxLayout">
@@ -48,7 +48,7 @@
         <string/>
        </property>
        <property name="pixmap">
-        <pixmap>:/Images/product-family.png</pixmap>
+        <pixmap resource="../../../bulmages.qrc">:/Images/product-family.png</pixmap>
        </property>
        <property name="scaledContents">
         <bool>true</bool>
@@ -103,7 +103,7 @@
            <string/>
           </property>
           <property name="icon">
-           <iconset>
+           <iconset resource="../../../bulmages.qrc">
             <normaloff>:/Images/document-new.png</normaloff>:/Images/document-new.png</iconset>
           </property>
           <property name="iconSize">
@@ -138,7 +138,7 @@
            <string/>
           </property>
           <property name="icon">
-           <iconset>
+           <iconset resource="../../../bulmages.qrc">
             <normaloff>:/Images/edit-delete.png</normaloff>:/Images/edit-delete.png</iconset>
           </property>
           <property name="iconSize">
@@ -173,7 +173,7 @@
            <string/>
           </property>
           <property name="icon">
-           <iconset>
+           <iconset resource="../../../bulmages.qrc">
             <normaloff>:/Images/edit-save.png</normaloff>:/Images/edit-save.png</iconset>
           </property>
           <property name="iconSize">
@@ -208,7 +208,7 @@
            <string/>
           </property>
           <property name="icon">
-           <iconset>
+           <iconset resource="../../../bulmages.qrc">
             <normaloff>:/Images/document-print.png</normaloff>:/Images/document-print.png</iconset>
           </property>
           <property name="iconSize">
@@ -281,7 +281,7 @@
         <string/>
        </property>
        <property name="icon">
-        <iconset>
+        <iconset resource="../../../bulmages.qrc">
          <normaloff>:/Images/document-open.png</normaloff>:/Images/document-open.png</iconset>
        </property>
        <property name="iconSize">
@@ -413,21 +413,18 @@
         <property name="title">
          <string>Imputacion Contable</string>
         </property>
-        <layout class="QVBoxLayout">
-         <property name="spacing">
-          <number>5</number>
-         </property>
-         <property name="margin">
-          <number>5</number>
-         </property>
-         <item>
+        <layout class="QGridLayout" name="gridLayout">
+         <item row="0" column="0">
           <widget class="QRadioButton" name="mui_serviciofamilia">
            <property name="text">
             <string>Servicio.</string>
            </property>
           </widget>
          </item>
-         <item>
+         <item row="0" column="1" rowspan="2">
+          <widget class="QWidget" name="mui_contable_frame" native="true"/>
+         </item>
+         <item row="1" column="0">
           <widget class="QRadioButton" name="mui_productofamilia">
            <property name="text">
             <string>Producto.</string>
@@ -497,7 +494,7 @@
   <tabstop>mui_cancelar</tabstop>
  </tabstops>
  <resources>
-  <include location="../../bulmages.qrc"/>
+  <include location="../../../bulmages.qrc"/>
  </resources>
  <connections>
   <connection>

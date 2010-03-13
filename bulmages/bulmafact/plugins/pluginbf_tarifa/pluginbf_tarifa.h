@@ -18,6 +18,9 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
+#ifndef PLUGINBF_TARIFA_H
+#define PLUGINBF_TARIFA_H
+
 #include "blpostgresqlclient.h"
 #include "clienteview.h"
 #include "articuloview.h"
@@ -34,4 +37,6 @@ extern "C" PLUGINBF_TARIFA_EXPORT int ArticuloView_borrar ( ArticuloView * );
 extern "C" PLUGINBF_TARIFA_EXPORT int BfSubForm_BfSubForm ( BfSubForm * );
 extern "C" PLUGINBF_TARIFA_EXPORT int BfSubForm_calculaPVP ( BfSubForm * );
 
+
+#endif
 

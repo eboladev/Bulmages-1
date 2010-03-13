@@ -59,5 +59,6 @@ public slots:
     void elslot1();
 };
 
+
 #endif
 

@@ -66,7 +66,12 @@ FamiliasView::FamiliasView ( BfCompany *comp, QWidget *parent, bool modoConsulta
     mui_descFamilia->setEnabled ( FALSE );
     mui_codCompletoFamilia->setEnabled ( FALSE );
     mui_codFamilia->setEnabled ( FALSE );
-
+    
+    /// Disparamos los plugins.
+    int res = g_plugins->lanza ( "FamiliasView_FamiliasView", this );
+    if ( res != 0 ) {
+	return;
+    } // end if
 
     if ( modoConsulta ) {
         setModoConsulta();

@@ -18,7 +18,11 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
+#ifndef PLUGINBF_TIPOTRABAJO_H
+#define PLUGINBF_TIPOTRABAJO_H
+
 #include <QObject>
+
 #include "bfbulmafact.h"
 #include "trabajadorview.h"
 #include "almacenview.h"
@@ -35,4 +39,6 @@ extern "C" PLUGINBF_TIPOTRABAJO_EXPORT int AlmacenView_AlmacenView ( AlmacenView
 extern "C" PLUGINBF_TIPOTRABAJO_EXPORT int BlForm_cargar ( BlForm * );
 extern "C" PLUGINBF_TIPOTRABAJO_EXPORT int BlForm_guardar_Post ( BlForm * );
 
+
+#endif
 

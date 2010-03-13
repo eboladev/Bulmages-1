@@ -27,13 +27,13 @@
 #include "blfunctions.h"
 #include "ui_bcbloqueafechabase.h"
 #include "bcform.h"
-#include "pdefs.h"
+#include "pdefs_pluginbc_bloqueofechas.h"
 
 
 class BcCompany ;
 
 
-class MY_EXPORT BcTreeWidgetItem : public QTreeWidgetItem
+class PLUGINBC_BLOQUEOFECHAS_EXPORT BcTreeWidgetItem : public QTreeWidgetItem
 {
 public:
     BcTreeWidgetItem ( QTreeWidget *parent );
@@ -44,7 +44,7 @@ public:
 };
 
 
-class MY_EXPORT BcBloqueaFechaView : public BcForm, public Ui_BcBloqueaFechaBase
+class PLUGINBC_BLOQUEOFECHAS_EXPORT BcBloqueaFechaView : public BcForm, public Ui_BcBloqueaFechaBase
 {
     Q_OBJECT
 

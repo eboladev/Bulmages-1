@@ -18,6 +18,9 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
+#ifndef PLUGINBF_CLIENTEPROVEEDOR_H
+#define PLUGINBF_CLIENTEPROVEEDOR_H
+
 #include "blform.h"
 #include "bfbulmafact.h"
 #include "pdefs_pluginbf_clienteproveedor.h"
@@ -46,3 +49,7 @@ public slots:
 };
 
 */
+
+
+#endif
+

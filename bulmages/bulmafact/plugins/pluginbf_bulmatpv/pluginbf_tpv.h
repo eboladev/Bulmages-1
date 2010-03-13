@@ -18,6 +18,9 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
+#ifndef PLUGINBF_BULMATPV_H
+#define PLUGINBF_BULMATPV_H
+
 #include <QStringList>
 #include <QWidget>
 #include <QIcon>
@@ -29,4 +32,7 @@
 
 
 extern "C" PLUGINBF_BULMATPV_EXPORT int entryPoint ( BfBulmaFact * );
+
+
+#endif
 

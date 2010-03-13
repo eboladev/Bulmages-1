@@ -1,0 +1,21 @@
+#ifndef PDEFS_PLUGINBT_BUSCAARTICULO_H
+#define PDEFS_PLUGINBT_BUSCAARTICULO_H
+
+
+#ifdef WIN32
+
+#ifdef PLUGINBT_BUSCAARTICULO
+#define PLUGINBT_BUSCAARTICULO_EXPORT __declspec(dllexport)
+#else
+#define PLUGINBT_BUSCAARTICULO_EXPORT __declspec(dllimport)
+#endif
+
+#else
+
+#define PLUGINBT_BUSCAARTICULO_EXPORT
+
+#endif
+
+
+#endif
+

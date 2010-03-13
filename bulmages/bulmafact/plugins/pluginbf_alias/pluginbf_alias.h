@@ -18,6 +18,9 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
+#ifndef PLUGINBF_ALIAS_H
+#define PLUGINBF_ALIAS_H
+
 #include <QStringList>
 #include <QWidget>
 #include <QIcon>
@@ -65,4 +68,6 @@ extern "C" MY_EXPORT int BfSubForm_on_mui_list_editFinished ( BfSubForm *sf ) ;
 extern "C" PLUGINBF_ALIAS_EXPORT int BlSubForm_editFinished(BlSubForm *);
 extern "C" PLUGINBF_ALIAS_EXPORT int BlDbCompleterComboBox_textChanged (BlDbCompleterComboBox *);
 
+
+#endif
 

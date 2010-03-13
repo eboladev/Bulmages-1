@@ -18,20 +18,21 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#ifdef Q_WS_WIN
-# define MY_EXPORT __declspec(dllexport)
-#else
-# define MY_EXPORT
-#endif
+#ifndef PLUGINBC_PROYECTOS_H
+#define PLUGINBC_PROYECTOS_H
 
 #include <QObject>
+
 #include "bcbulmacont.h"
 #include "bccentrocosteview.h"
 #include "blform.h"
+#include "pdefs_pluginbc_proyectos.h"
 
 
-extern "C" MY_EXPORT int entryPoint ( BcBulmaCont * );
-extern "C" MY_EXPORT int BcCentroCosteView_BcCentroCosteView ( BcCentroCosteView * );
-extern "C" MY_EXPORT int BlForm_cargar ( BlForm * );
+extern "C" PLUGINBC_PROYECTOS_EXPORT int entryPoint ( BcBulmaCont * );
+extern "C" PLUGINBC_PROYECTOS_EXPORT int BcCentroCosteView_BcCentroCosteView ( BcCentroCosteView * );
+extern "C" PLUGINBC_PROYECTOS_EXPORT int BlForm_cargar ( BlForm * );
 
+
+#endif
 

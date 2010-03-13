@@ -24,12 +24,12 @@
 #define BCEXTRACTOSUBFORM_H
 
 #include "bcsubform.h"
-#include "pdefs.h"
+#include "pdefs_pluginbc_mayor.h"
 
 
 ///
 /** */
-class MY_EXPORT BcExtractoSubForm : public BcSubForm
+class PLUGINBC_MAYOR_EXPORT BcExtractoSubForm : public BcSubForm
 {
     Q_OBJECT
 
@@ -41,6 +41,7 @@ public slots:
     virtual void s_pintaMenu ( QMenu *menu );
     virtual void s_trataMenu ( QAction *action );
 };
+
 
 #endif
 

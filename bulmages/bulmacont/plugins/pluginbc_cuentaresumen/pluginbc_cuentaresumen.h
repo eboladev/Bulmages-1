@@ -18,20 +18,23 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#ifdef Q_WS_WIN
-# define MY_EXPORT __declspec(dllexport)
-#else
-# define MY_EXPORT
-#endif
+#ifndef PLUGINBC_CUENTARESUMEN_H
+#define PLUGINBC_CUENTARESUMEN_H
 
 #include "bcbulmacont.h"
 #include "blpostgresqlclient.h"
 #include "bccompany.h"
 #include "bcsubform.h"
 #include "blsearchwidget.h"
+#include "pdefs_pluginbc_cuentaresumen.h"
 
-extern "C" MY_EXPORT int entryPoint ( BcBulmaCont * );
-extern "C" MY_EXPORT int Busqueda_on_m_inputBusqueda_editingFinished_Post ( BlSearchWidget * );
-extern "C" MY_EXPORT int Busqueda_on_m_inputBusqueda_textChanged ( BlSearchWidget * );
-extern "C" MY_EXPORT int BcSubForm_on_mui_list_cellChanged_post ( BcSubForm * );
-extern "C" MY_EXPORT int BcBulmaCont_closeEvent ( BcBulmaCont * );
+
+extern "C" PLUGINBC_CUENTARESUMEN_EXPORT int entryPoint ( BcBulmaCont * );
+extern "C" PLUGINBC_CUENTARESUMEN_EXPORT int Busqueda_on_m_inputBusqueda_editingFinished_Post ( BlSearchWidget * );
+extern "C" PLUGINBC_CUENTARESUMEN_EXPORT int Busqueda_on_m_inputBusqueda_textChanged ( BlSearchWidget * );
+extern "C" PLUGINBC_CUENTARESUMEN_EXPORT int BcSubForm_on_mui_list_cellChanged_post ( BcSubForm * );
+extern "C" PLUGINBC_CUENTARESUMEN_EXPORT int BcBulmaCont_closeEvent ( BcBulmaCont * );
+
+
+#endif
+

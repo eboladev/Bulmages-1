@@ -1,0 +1,21 @@
+#ifndef PDEFS_PLUGINBT_TOTALIVAINCLUIDO_H
+#define PDEFS_PLUGINBT_TOTALIVAINCLUIDO_H
+
+
+#ifdef WIN32
+
+#ifdef PLUGINBT_TOTALIVAINCLUIDO
+#define PLUGINBT_TOTALIVAINCLUIDO_EXPORT __declspec(dllexport)
+#else
+#define PLUGINBT_TOTALIVAINCLUIDO_EXPORT __declspec(dllimport)
+#endif
+
+#else
+
+#define PLUGINBT_TOTALIVAINCLUIDO_EXPORT
+
+#endif
+
+
+#endif
+

@@ -18,11 +18,8 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#ifdef Q_WS_WIN
-# define MY_EXPORT __declspec(dllexport)
-#else
-# define MY_EXPORT
-#endif
+#ifndef PLUGINBC_EXAMPLE_H
+#define PLUGINBC_EXAMPLE_H
 
 #include <QStringList>
 #include <QWidget>
@@ -33,10 +30,10 @@
 #include "bcbulmacont.h"
 #include "blpostgresqlclient.h"
 #include "bccompany.h"
+#include "pdefs_pluginbc_example.h"
 
 
-extern "C" MY_EXPORT int entryPoint ( BcBulmaCont * );
-
+extern "C" PLUGINBC_EXAMPLE_EXPORT int entryPoint ( BcBulmaCont * );
 
 
 class myplugin : public QObject
@@ -54,4 +51,7 @@ public:
 public slots:
     void elslot();
 };
+
+
+#endif
 

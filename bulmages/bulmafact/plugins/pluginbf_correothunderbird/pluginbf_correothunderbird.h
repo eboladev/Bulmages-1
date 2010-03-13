@@ -21,6 +21,9 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
+#ifndef PLUGINBF_CORREOTHUNDERBIRD_H
+#define PLUGINBF_CORREOTHUNDERBIRD_H
+
 #include "facturaview.h"
 #include "presupuestoview.h"
 #include "pedidoclienteview.h"
@@ -34,4 +37,7 @@ extern "C" PLUGINBF_CORREOTHUNDERBIRD_EXPORT int PedidoClienteView_PedidoCliente
 extern "C" PLUGINBF_CORREOTHUNDERBIRD_EXPORT int PresupuestoView_PresupuestoView ( PresupuestoView * );
 extern "C" PLUGINBF_CORREOTHUNDERBIRD_EXPORT int FacturaView_FacturaView ( FacturaView * );
 extern "C" PLUGINBF_CORREOTHUNDERBIRD_EXPORT int entryPoint ( BfBulmaFact * );
+
+
+#endif
 

@@ -18,20 +18,22 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#ifdef Q_WS_WIN
-# define MY_EXPORT __declspec(dllexport)
-#else
-# define MY_EXPORT
-#endif
+#ifndef PLUGINBT_MODIFICADORES_H
+#define PLUGINBT_MODIFICADORES_H
 
 #include "blfunctions.h"
 #include "btbulmatpv.h"
 #include "btcompany.h"
 #include "mticketivainc.h"
 #include "mticket.h"
+#include "pdefs_pluginbt_modificadores.h"
 
-extern "C" MY_EXPORT int entryPoint ( BtBulmaTPV * );
-extern "C" MY_EXPORT int BtCompany_createMainWindows_Post ( BtCompany * );
-extern "C" MY_EXPORT int MTicketIVAInc_MTicketIVAInc_Post (MTicketIVAInc *);
-extern "C" MY_EXPORT int MTicket_MTicket_Post (MTicket *);
+
+extern "C" PLUGINBT_MODIFICADORES_EXPORT int entryPoint ( BtBulmaTPV * );
+extern "C" PLUGINBT_MODIFICADORES_EXPORT int BtCompany_createMainWindows_Post ( BtCompany * );
+extern "C" PLUGINBT_MODIFICADORES_EXPORT int MTicketIVAInc_MTicketIVAInc_Post (MTicketIVAInc *);
+extern "C" PLUGINBT_MODIFICADORES_EXPORT int MTicket_MTicket_Post (MTicket *);
+
+
+#endif
 

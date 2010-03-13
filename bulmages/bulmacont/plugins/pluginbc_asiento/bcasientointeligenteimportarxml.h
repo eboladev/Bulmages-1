@@ -28,14 +28,14 @@
 
 #include "blwidget.h"
 #include "bccompany.h"
-#include "pdefs.h"
+#include "pdefs_pluginbc_asiento.h"
 
 
 /// Sirve para importar asientos inteligentes (plantillas) dentro de la empresa en uso.
 /** Esta clase es un analizador (parser) XML cuya funci&oacute;n es importar a la base
     de datos abierta una plantilla de asiento inteligente. Para ello utiliza las clases
     SAX de Qt. */
-class MY_EXPORT BcAsientoInteligenteImportarXML: public QXmlDefaultHandler, public BlMainCompanyPointer
+class PLUGINBC_ASIENTO_EXPORT BcAsientoInteligenteImportarXML: public QXmlDefaultHandler, public BlMainCompanyPointer
 {
 private:
     /// Indica el tag que el parser está procesando en este preciso momento.

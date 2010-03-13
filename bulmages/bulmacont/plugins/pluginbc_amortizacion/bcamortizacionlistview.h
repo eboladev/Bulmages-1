@@ -24,14 +24,15 @@
 
 #include "ui_bcamortizacionlistbase.h"
 #include "blformlist.h"
-#include "pdefs.h"
+#include "pdefs_pluginbc_amortizacion.h"
 
-class BcCompany ;
+
+class BcCompany;
 
 
 /** Trata la ventana de Listado de Amortizaciones.
 */
-class MY_EXPORT BcAmortizacionListView : public BlFormList, public Ui_BcAmortizacionListBase
+class PLUGINBC_AMORTIZACION_EXPORT BcAmortizacionListView : public BlFormList, public Ui_BcAmortizacionListBase
 {
     Q_OBJECT
 

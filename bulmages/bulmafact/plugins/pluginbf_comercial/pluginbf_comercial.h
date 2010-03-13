@@ -18,6 +18,9 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
+#ifndef PLUGINBF_COMERCIAL_H
+#define PLUGINBF_COMERCIAL_H
+
 #include <QStringList>
 #include <QWidget>
 #include <QIcon>
@@ -37,3 +40,7 @@ extern "C" PLUGINBF_COMERCIAL_EXPORT int ClienteView_Des_ClienteView ( ClienteVi
 extern "C" PLUGINBF_COMERCIAL_EXPORT int ClienteView_saveClient(ClienteView *);
 extern "C" PLUGINBF_COMERCIAL_EXPORT int Cliente_pintaCliente(Cliente *);
 */
+
+
+#endif
+

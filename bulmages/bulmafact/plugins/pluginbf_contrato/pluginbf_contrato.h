@@ -18,6 +18,9 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
+#ifndef PLUGINBF_CONTRATO_H
+#define PLUGINBF_CONTRATO_H
+
 #include <QStringList>
 #include <QWidget>
 #include <QIcon>
@@ -33,4 +36,7 @@
 extern "C" PLUGINBF_CONTRATO_EXPORT int entryPoint ( BfBulmaFact * );
 extern "C" PLUGINBF_CONTRATO_EXPORT int ClienteView_ClienteView ( ClienteView * );
 extern "C" PLUGINBF_CONTRATO_EXPORT int BlForm_cargar ( BlForm * );
+
+
+#endif
 

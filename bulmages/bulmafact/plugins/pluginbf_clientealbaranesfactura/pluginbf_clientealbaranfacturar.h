@@ -18,6 +18,9 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
+#ifndef PLUGINBF_CLIENTEALBARANFACTURA_H
+#define PLUGINBF_CLIENTEALBARANFACTURA_H
+
 #include "albaranclientelist.h"
 #include "bfbulmafact.h"
 #include "pdefs_pluginbf_clientealbaranesfactura.h"
@@ -26,4 +29,7 @@
 extern "C" PLUGINBF_CLIENTEALBARANESFACTURA_EXPORT int AlbaranClienteList_AlbaranClienteList ( AlbaranClienteList * );
 extern "C" PLUGINBF_CLIENTEALBARANESFACTURA_EXPORT int AlbaranClienteListSubform_AlbaranClienteListSubform ( AlbaranClienteListSubform * );
 extern "C" PLUGINBF_CLIENTEALBARANESFACTURA_EXPORT int entryPoint ( BfBulmaFact * );
+
+
+#endif
 

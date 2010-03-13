@@ -18,6 +18,9 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
+#ifndef PLUGINBF_CORREO_H
+#define PLUGINBF_CORREO_H
+
 #include "facturaview.h"
 #include "presupuestoview.h"
 #include "pedidoclienteview.h"
@@ -52,3 +55,7 @@ public slots:
 };
 
 */
+
+
+#endif
+

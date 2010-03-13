@@ -1,0 +1,21 @@
+#ifndef PDEFS_PLUGINBT_ARTICULOSUBFORM_H
+#define PDEFS_PLUGINBT_ARTICULOSUBFORM_H
+
+
+#ifdef WIN32
+
+#ifdef PLUGINBT_ARTICULOSUBFORM
+#define PLUGINBT_ARTICULOSUBFORM_EXPORT __declspec(dllexport)
+#else
+#define PLUGINBT_ARTICULOSUBFORM_EXPORT __declspec(dllimport)
+#endif
+
+#else
+
+#define PLUGINBT_ARTICULOSUBFORM_EXPORT
+
+#endif
+
+
+#endif
+

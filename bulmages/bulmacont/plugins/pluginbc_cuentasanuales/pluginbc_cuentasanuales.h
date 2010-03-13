@@ -18,18 +18,18 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#ifndef PLUGINBC_CUENTASANUALES
-#define PLUGINBC_CUENTASANUALES
+#ifndef PLUGINBC_CUENTASANUALES_H
+#define PLUGINBC_CUENTASANUALES_H
 
 #include "bcbulmacont.h"
 #include "blpostgresqlclient.h"
 #include "bccompany.h"
 #include "bccuentasanualesview.h"
-#include "pdefs.h"
+#include "pdefs_pluginbc_cuentasanuales.h"
 
 
-extern "C" MY_EXPORT BcCuentasAnualesView *g_cuentasAnuales;
-extern "C" MY_EXPORT int entryPoint ( BcBulmaCont * );
+extern "C" PLUGINBC_CUENTASANUALES_EXPORT BcCuentasAnualesView *g_cuentasAnuales;
+extern "C" PLUGINBC_CUENTASANUALES_EXPORT int entryPoint ( BcBulmaCont * );
 
 
 class MyPluginCuentasAnuales : public QObject, BlMainCompanyPointer

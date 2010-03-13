@@ -22,23 +22,25 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#ifdef Q_WS_WIN
-# define MY_EXPORT __declspec(dllexport)
-#else
-# define MY_EXPORT
-#endif
+#ifndef PLUGINBT_IVAINCLUIDO_H
+#define PLUGINBT_IVAINCLUIDO_H
 
 #include "btbulmatpv.h"
 #include "articulolist.h"
 #include "btcompany.h"
 #include "btticket.h"
+#include "pdefs_pluginbt_ivaincluido.h"
 
 
-//extern "C" MY_EXPORT int entryPoint ( BulmaTPV * );
-extern "C" MY_EXPORT int BtTicket_insertarArticulo_Post ( BtTicket * );
-extern "C" MY_EXPORT int BtTicket_agregarLinea_Post ( BtTicket *);
-extern "C" MY_EXPORT int BtTicket_ponerPrecio_Post ( BtTicket * );
-extern "C" MY_EXPORT int BtTicket_imprimir ( BtTicket * );
-extern "C" MY_EXPORT int ArticuloListSubForm_ArticuloListSubForm_Post(ArticuloListSubForm *);
-extern "C" MY_EXPORT int BtCompany_x ( BtCompany * );
-extern "C" MY_EXPORT int BtCompany_z ( BtCompany * );
+//extern "C" PLUGINBT_IVAINCLUIDO_EXPORT int entryPoint ( BulmaTPV * );
+extern "C" PLUGINBT_IVAINCLUIDO_EXPORT int BtTicket_insertarArticulo_Post ( BtTicket * );
+extern "C" PLUGINBT_IVAINCLUIDO_EXPORT int BtTicket_agregarLinea_Post ( BtTicket *);
+extern "C" PLUGINBT_IVAINCLUIDO_EXPORT int BtTicket_ponerPrecio_Post ( BtTicket * );
+extern "C" PLUGINBT_IVAINCLUIDO_EXPORT int BtTicket_imprimir ( BtTicket * );
+extern "C" PLUGINBT_IVAINCLUIDO_EXPORT int ArticuloListSubForm_ArticuloListSubForm_Post(ArticuloListSubForm *);
+extern "C" PLUGINBT_IVAINCLUIDO_EXPORT int BtCompany_x ( BtCompany * );
+extern "C" PLUGINBT_IVAINCLUIDO_EXPORT int BtCompany_z ( BtCompany * );
+
+
+#endif
+

@@ -22,13 +22,11 @@
 #ifndef BCEXTRACTOVIEW_H
 #define BCEXTRACTOVIEW_H
 
-
 #include "ui_bcextractobase.h"
 #include "blpostgresqlclient.h"
 #include "bccompany.h"
 #include "bcform.h"
-#include "pdefs.h"
-
+#include "pdefs_pluginbc_mayor.h"
 
 
 /// Esta clase mantiene la generaci&oacute;n de extractos contables.
@@ -36,7 +34,7 @@
     casaci&oacute;n.
     Y acceso a filtrado. Tambi&eacute;n desde esta pantalla se puede pedir m&aacute;s
     informaci&oacute;n de una cuenta determinada. */
-class MY_EXPORT BcExtractoView : public BcForm, public Ui_BcExtractoBase
+class PLUGINBC_MAYOR_EXPORT BcExtractoView : public BcForm, public Ui_BcExtractoBase
 {
     Q_OBJECT
 
@@ -49,8 +47,6 @@ public:
     BcExtractoView ( BcCompany *, QWidget *parent = 0, int flags = 0 );
     ~BcExtractoView();
 
-
-
     void inicializa1 ( QString, QString, QString, QString, int );
     void vaciar();
     void presentar();
@@ -62,16 +58,13 @@ public:
 
 public slots:
 //    virtual void on_mui_imprimir_clicked();
-
     virtual void on_mui_actualizar_clicked();
     virtual void accept();
     virtual void on_mui_casacion_clicked();
     virtual void on_mui_guardarpunteo_clicked();
     virtual void on_mui_cargarpunteos_clicked();
     virtual void on_mui_borrapunteo_clicked();
-
     virtual void boton_siguiente();
-
     virtual void boton_anterior();
     virtual void boton_fin();
     virtual void boton_inicio();

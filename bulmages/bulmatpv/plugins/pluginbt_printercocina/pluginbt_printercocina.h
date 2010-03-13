@@ -22,21 +22,23 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#ifdef Q_WS_WIN
-# define MY_EXPORT __declspec(dllexport)
-#else
-# define MY_EXPORT
-#endif
+#ifndef PLUGINBT_PRINTERCOCINA_H
+#define PLUGINBT_PRINTERCOCINA_H
 
 #include "btbulmatpv.h"
 #include "articulolist.h"
 #include "btcompany.h"
 #include "btticket.h"
 #include "abrevs.h"
+#include "pdefs_pluginbt_printercocina.h"
 
-extern "C" MY_EXPORT int BtTicket_imprimir_Post ( BtTicket * );
-extern "C" MY_EXPORT int BtTicket_borrarLinea ( BtTicket * );
-extern "C" MY_EXPORT int BtTicket_agregarLinea_Post ( BtTicket *);
-extern "C" MY_EXPORT int Abrevs_on_mui_aparcar_clicked( Abrevs *);
-extern "C" MY_EXPORT int BtCompany_cobrar_1(BtCompany *);
+
+extern "C" PLUGINBT_PRINTERCOCINA_EXPORT int BtTicket_imprimir_Post ( BtTicket * );
+extern "C" PLUGINBT_PRINTERCOCINA_EXPORT int BtTicket_borrarLinea ( BtTicket * );
+extern "C" PLUGINBT_PRINTERCOCINA_EXPORT int BtTicket_agregarLinea_Post ( BtTicket *);
+extern "C" PLUGINBT_PRINTERCOCINA_EXPORT int Abrevs_on_mui_aparcar_clicked( Abrevs *);
+extern "C" PLUGINBT_PRINTERCOCINA_EXPORT int BtCompany_cobrar_1(BtCompany *);
+
+
+#endif
 

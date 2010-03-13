@@ -18,6 +18,9 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
+#ifndef PLUGINBF_Q19_H
+#define PLUGINBF_Q19_H
+
 #include "cobroslist.h"
 #include "facturaslist.h"
 #include "reciboslist.h"
@@ -30,4 +33,6 @@ extern "C" PLUGINBF_Q19_EXPORT int RecibosList_RecibosList ( RecibosList * );
 extern "C" PLUGINBF_Q19_EXPORT int FacturasList_FacturasList ( FacturasList * );
 extern "C" PLUGINBF_Q19_EXPORT int entryPoint ( BfBulmaFact * );
 
+
+#endif
 

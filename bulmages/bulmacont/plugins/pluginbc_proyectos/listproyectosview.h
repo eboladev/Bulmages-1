@@ -26,7 +26,7 @@
 #include "blformlist.h"
 
 
-class BcCompany ;
+class BcCompany;
 
 
 /** Trata la ventana de Listado de Amortizaciones.
@@ -34,8 +34,8 @@ class BcCompany ;
 class ListProyectosView : public BlFormList, public Ui_ListProyectosBase
 {
     Q_OBJECT
-private:
 
+private:
     /// Esta variable contiene el idamortizacion cuando se devuelve un parametro.
     QString mdb_idpresupuestoc;
     /// Esta variable contiene el nomamortizacion cuando se devuelve un parametro.
@@ -53,6 +53,7 @@ signals:
     void selected ( QString );
 
 };
+
 
 #endif
 

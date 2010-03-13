@@ -28,12 +28,12 @@
 #include "bcform.h"
 #include "bcasientosubform.h"
 #include "bccompany.h"
-#include "pdefs.h"
+#include "pdefs_pluginbc_asiento.h"
 
 
 /// Clase BcAsientoForm.
 /** */
-class MY_EXPORT BcAsientoForm : public BcForm
+class PLUGINBC_ASIENTO_EXPORT BcAsientoForm : public BcForm
 {
     Q_OBJECT
 

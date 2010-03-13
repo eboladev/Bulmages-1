@@ -1,0 +1,21 @@
+#ifndef PDEFS_PLUGINBT_TICKETIVAINCLUIDO_H
+#define PDEFS_PLUGINBT_TICKETIVAINCLUIDO_H
+
+
+#ifdef WIN32
+
+#ifdef PLUGINBT_TICKETIVAINCLUIDO
+#define PLUGINBT_TICKETIVAINCLUIDO_EXPORT __declspec(dllexport)
+#else
+#define PLUGINBT_TICKETIVAINCLUIDO_EXPORT __declspec(dllimport)
+#endif
+
+#else
+
+#define PLUGINBT_TICKETIVAINCLUIDO_EXPORT
+
+#endif
+
+
+#endif
+

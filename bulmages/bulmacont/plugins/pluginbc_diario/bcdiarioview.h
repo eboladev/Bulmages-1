@@ -24,7 +24,7 @@
 
 #include "ui_bcdiariobase.h"
 #include "bcform.h"
-#include "pdefs.h"
+#include "pdefs_pluginbc_diario.h"
 
 
 class BcCompany;
@@ -32,7 +32,7 @@ class BcCompany;
 
 /// Libro diario.
 /** Clase que muestra el libro diario de la empresa entre dos fechas. */
-class MY_EXPORT BcDiarioView : public BcForm, public Ui::BcDiarioBase
+class PLUGINBC_DIARIO_EXPORT BcDiarioView : public BcForm, public Ui::BcDiarioBase
 {
     Q_OBJECT
 

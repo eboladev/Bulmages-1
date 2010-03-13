@@ -23,13 +23,13 @@
 #define BCASIENTOLISTSUBFORM_H
 
 #include "bcsubform.h"
-#include "pdefs.h"
+#include "pdefs_pluginbc_asiento.h"
 
 
 /// Muestra un listado de todos los asientos existentes e informa de si est&aacute;n
 /// abiertos o cerrados.
 /** */
-class MY_EXPORT BcAsientoListSubForm : public BcSubForm
+class PLUGINBC_ASIENTO_EXPORT BcAsientoListSubForm : public BcSubForm
 {
     Q_OBJECT
 

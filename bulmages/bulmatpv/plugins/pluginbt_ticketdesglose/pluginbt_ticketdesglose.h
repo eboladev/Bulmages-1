@@ -18,24 +18,20 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#ifdef Q_WS_WIN
-# define MY_EXPORT __declspec(dllexport)
-#else
-# define MY_EXPORT
-#endif
+#ifndef PLUGINBT_TICKETDESGLOSE_H
+#define PLUGINBT_TICKETDESGLOSE_H
 
 #include "blfunctions.h"
 #include "btbulmatpv.h"
 #include "btticket.h"
 #include "btcompany.h"
+#include "pdefs_pluginbt_ticketdesglose.h"
 
 
-extern "C" MY_EXPORT int entryPoint ( BtBulmaTPV * );
-extern "C" MY_EXPORT int Ticket_pintar ( BtTicket * );
-extern "C" MY_EXPORT int BtCompany_createMainWindows_Post ( BtCompany * );
+extern "C" PLUGINBT_TICKETDESGLOSE_EXPORT int entryPoint ( BtBulmaTPV * );
+extern "C" PLUGINBT_TICKETDESGLOSE_EXPORT int Ticket_pintar ( BtTicket * );
+extern "C" PLUGINBT_TICKETDESGLOSE_EXPORT int BtCompany_createMainWindows_Post ( BtCompany * );
 
 
-
-
-
+#endif
 

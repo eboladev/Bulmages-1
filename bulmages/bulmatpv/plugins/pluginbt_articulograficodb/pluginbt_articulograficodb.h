@@ -21,15 +21,18 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#ifdef Q_WS_WIN
-# define MY_EXPORT __declspec(dllexport)
-#else
-# define MY_EXPORT
-#endif
+#ifndef PLUGINBT_ARTICULOGRAFICODB_H
+#define PLUGINBT_ARTICULOGRAFICODB_H
 
 #include "blfunctions.h"
 #include "btbulmatpv.h"
 #include "btcompany.h"
+#include "pdefs_pluginbt_articulograficodb.h"
 
-extern "C" MY_EXPORT int entryPoint ( BtBulmaTPV * );
-extern "C" MY_EXPORT int BtCompany_createMainWindows_Post ( BtCompany * );
+
+extern "C" PLUGINBT_ARTICULOGRAFICODB_EXPORT int entryPoint ( BtBulmaTPV * );
+extern "C" PLUGINBT_ARTICULOGRAFICODB_EXPORT int BtCompany_createMainWindows_Post ( BtCompany * );
+
+
+#endif
+

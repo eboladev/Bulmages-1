@@ -18,6 +18,9 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
+#ifndef PLUGINBF_INFORMECLIENTE_H
+#define PLUGINBF_INFORMECLIENTE_H
+
 #include <QStringList>
 #include <QWidget>
 #include <QIcon>
@@ -32,4 +35,7 @@
 extern "C" PLUGINBF_INFORMECLIENTE_EXPORT int entryPoint ( BfBulmaFact * );
 extern "C" PLUGINBF_INFORMECLIENTE_EXPORT int ClientsList_ClientsList ( ClientsList * );
 extern "C" PLUGINBF_INFORMECLIENTE_EXPORT int ArticuloList_ArticuloList ( ArticuloList * );
+
+
+#endif
 

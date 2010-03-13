@@ -18,16 +18,16 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#ifndef PLUGINBC_BLOQUEOFECHAS
-#define PLUGINBC_BLOQUEOFECHAS
+#ifndef PLUGINBC_BLOQUEOFECHAS_H
+#define PLUGINBC_BLOQUEOFECHAS_H
 
 #include "bcbulmacont.h"
 #include "blpostgresqlclient.h"
 #include "bccompany.h"
-#include "pdefs.h"
+#include "pdefs_pluginbc_bloqueofechas.h"
 
 
-extern "C" MY_EXPORT int entryPoint ( BcBulmaCont * );
+extern "C" PLUGINBC_BLOQUEOFECHAS_EXPORT int entryPoint ( BcBulmaCont * );
 
 
 class myBloqFechas : public QObject
@@ -48,3 +48,4 @@ public slots:
 
 
 #endif
+

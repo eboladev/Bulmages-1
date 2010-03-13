@@ -1,0 +1,21 @@
+#ifndef PDEFS_PLUGINBC_DOCUMENTOADJUNTO_H
+#define PDEFS_PLUGINBC_DOCUMENTOADJUNTO_H
+
+
+#ifdef WIN32
+
+#ifdef PLUGINBC_DOCUMENTOADJUNTO
+#define PLUGINBC_DOCUMENTOADJUNTO_EXPORT __declspec(dllexport)
+#else
+#define PLUGINBC_DOCUMENTOADJUNTO_EXPORT __declspec(dllimport)
+#endif
+
+#else
+
+#define PLUGINBC_DOCUMENTOADJUNTO_EXPORT
+
+#endif
+
+
+#endif
+

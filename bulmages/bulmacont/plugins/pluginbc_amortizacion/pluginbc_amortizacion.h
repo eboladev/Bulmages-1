@@ -18,16 +18,16 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#ifndef PLUGINBC_AMORTIZACION
-#define PLUGINBC_AMORTIZACION
+#ifndef PLUGINBC_AMORTIZACION_H
+#define PLUGINBC_AMORTIZACION_H
 
 #include "bcbulmacont.h"
 #include "blmaincompanypointer.h"
 #include "blmaincompany.h"
-#include "pdefs.h"
+#include "pdefs_pluginbc_amortizacion.h"
 
 
-extern "C" MY_EXPORT int entryPoint ( BcBulmaCont * );
+extern "C" PLUGINBC_AMORTIZACION_EXPORT int entryPoint ( BcBulmaCont * );
 
 
 class MyPluginAmortizacion : public QObject, BlMainCompanyPointer
@@ -46,8 +46,6 @@ public slots:
     void elslot();
 
 };
-
-
 
 
 #endif

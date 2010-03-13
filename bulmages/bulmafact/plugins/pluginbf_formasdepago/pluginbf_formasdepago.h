@@ -18,6 +18,9 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
+#ifndef PLUGINBF_FORMASDEPAGO_H
+#define PLUGINBF_FORMASDEPAGO_H
+
 #include "blpostgresqlclient.h"
 #include "bfbulmafact.h"
 #include "blwidget.h"
@@ -45,4 +48,7 @@ public:
 public slots:
     void elslot1();
 };
+
+
+#endif
 

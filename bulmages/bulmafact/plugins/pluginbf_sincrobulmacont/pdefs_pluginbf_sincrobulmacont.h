@@ -1,0 +1,21 @@
+#ifndef PDEFS_PLUGINBF_SINCROBULMACONT_H
+#define PDEFS_PLUGINBF_SINCROBULMACONT_H
+
+
+#ifdef WIN32
+
+#ifdef PLUGINBF_SINCROBULMACONT
+#define PLUGINBF_SINCROBULMACONT_EXPORT __declspec(dllexport)
+#else
+#define PLUGINBF_SINCROBULMACONT_EXPORT __declspec(dllimport)
+#endif
+
+#else
+
+#define PLUGINBF_SINCROBULMACONT_EXPORT
+
+#endif
+
+
+#endif
+

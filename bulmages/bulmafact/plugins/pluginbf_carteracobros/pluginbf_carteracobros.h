@@ -18,6 +18,9 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
+#ifndef PLUGINBF_CARTERACOBROS_H
+#define PLUGINBF_CARTERACOBROS_H
+
 #include <QStringList>
 #include <QWidget>
 #include <QIcon>
@@ -40,4 +43,7 @@ extern "C" PLUGINBF_CARTERACOBROS_EXPORT int FacturaView_cargarPost_Post ( Factu
 extern "C" PLUGINBF_CARTERACOBROS_EXPORT int FacturaView_borrarPre ( FacturaView * );
 
 void generarVencimientos (FacturaView *);
+
+
+#endif
 

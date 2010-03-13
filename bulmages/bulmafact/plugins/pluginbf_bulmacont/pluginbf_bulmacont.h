@@ -18,6 +18,9 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
+#ifndef PLUGINBF_BULMACONT_H
+#define PLUGINBF_BULMACONT_H
+
 #include "bfbulmafact.h"
 #include "bcbulmacont.h"
 #include "pdefs_pluginbf_bulmacont.h"
@@ -25,4 +28,7 @@
 
 extern "C" PLUGINBF_BULMACONT_EXPORT int entryPoint ( BfBulmaFact * );
 extern "C" PLUGINBF_BULMACONT_EXPORT int BfCompany_createMainWindows_Post(BfCompany *);
+
+
+#endif
 

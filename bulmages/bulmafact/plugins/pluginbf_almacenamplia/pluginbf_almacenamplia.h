@@ -18,6 +18,9 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
+#ifndef PLUGINBF_AMPLIAALMACEN_H
+#define PLUGINBF_AMPLIAALMACEN_H
+
 #include <QObject>
 
 #include "bfbulmafact.h"
@@ -27,4 +30,7 @@
 
 extern "C" PLUGINBF_ALMACENAMPLIA_EXPORT int entryPoint ( BfBulmaFact * );
 extern "C" PLUGINBF_ALMACENAMPLIA_EXPORT int BfCompany_s_almacenes ( BfCompany * );
+
+
+#endif
 

@@ -17,11 +17,13 @@
  *   Free Software Foundation, Inc.,                                       *
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
+
 #ifndef TIPTRAB1_H
 #define TIPTRAB1_H
 
 #include <QObject>
 #include "bcbulmacont.h"
+
 
 class mytiptrab : public QObject
 {
@@ -41,3 +43,4 @@ public slots:
 
 
 #endif
+

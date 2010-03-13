@@ -18,20 +18,23 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#ifdef Q_WS_WIN
-# define MY_EXPORT __declspec(dllexport)
-#else
-# define MY_EXPORT
-#endif
+#ifndef PLUGINBT_SERVERSYNC_H
+#define PLUGINBT_SERVERSYNC_H
 
 #include "btbulmatpv.h"
 #include "btticket.h"
 #include "btcompany.h"
 #include "abrevs.h"
+#include "pdefs_pluginbt_serversync.h"
 
-extern "C" MY_EXPORT int entryPoint ( BtBulmaTPV * );
-extern "C" MY_EXPORT int exitPoint ( BtBulmaTPV * );
-extern "C" MY_EXPORT int BtCompany_cobrar_Post(BtCompany *);
-extern "C" MY_EXPORT int BtCompany_createMainWindows_Post ( BtCompany * );
-extern "C" MY_EXPORT int Abrevs_on_mui_aparcar_clicked_Post(Abrevs *);
-extern "C" MY_EXPORT int Abrevs_on_mui_recuperar_clicked_Post(Abrevs *);
+
+extern "C" PLUGINBT_SERVERSYNC_EXPORT int entryPoint ( BtBulmaTPV * );
+extern "C" PLUGINBT_SERVERSYNC_EXPORT int exitPoint ( BtBulmaTPV * );
+extern "C" PLUGINBT_SERVERSYNC_EXPORT int BtCompany_cobrar_Post(BtCompany *);
+extern "C" PLUGINBT_SERVERSYNC_EXPORT int BtCompany_createMainWindows_Post ( BtCompany * );
+extern "C" PLUGINBT_SERVERSYNC_EXPORT int Abrevs_on_mui_aparcar_clicked_Post(Abrevs *);
+extern "C" PLUGINBT_SERVERSYNC_EXPORT int Abrevs_on_mui_recuperar_clicked_Post(Abrevs *);
+
+
+#endif
+

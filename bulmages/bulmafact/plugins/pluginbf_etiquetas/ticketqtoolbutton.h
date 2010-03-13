@@ -41,11 +41,11 @@ private:
     BfCompany *m_companyact;
     AlbaranProveedorView *m_albaranProveedorView;
 
-
 public:
     TicketQToolButton ( AlbaranProveedorView * , QWidget *parent = NULL );
     ~TicketQToolButton();
     void setBoton();
+
 public slots:
     virtual void click();
 

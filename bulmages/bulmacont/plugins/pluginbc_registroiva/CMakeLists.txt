@@ -8,18 +8,17 @@ set (docs README.es) #add the README.nn files
 
 file(GLOB plugin_SRC *.c *.cpp *.cxx)
 file(GLOB plugin_MOCS *.hpp *.h)
+file(GLOB plugin_UIS *.ui)
 
 # Exclude files with no QObject macro.
-file(GLOB plugin_NO_MOCS linprevcobro.h listlinprevcobro.h iva.h registroiva.h pluginbc_registroiva.h listiva.h)
+file(GLOB plugin_NO_MOCS pdefs_pluginbc_registroiva.h linprevcobro.h listlinprevcobro.h iva.h registroiva.h pluginbc_registroiva.h listiva.h)
 list(REMOVE_ITEM plugin_MOCS ${plugin_NO_MOCS})
-
-file(GLOB plugin_UIS *.ui)
 
 
 set(QT_USE_QTASSISTANT true)
 set(QT_USE_QTXML true)
 
-INCLUDE(   ${QT_USE_FILE}   )
+INCLUDE( ${QT_USE_FILE} )
 
 include_directories(
     ${QT_INCLUDE_DIR}
@@ -45,7 +44,7 @@ QT4_WRAP_CPP(plugin_MOC_SRCS ${plugin_MOCS})
 
 
 IF(WIN32)
-ADD_DEFINITIONS(-DQWT_DLL -DQT_DLL -DQWT_MAKEDLL)
+ADD_DEFINITIONS(-DQWT_DLL -DQT_DLL -DQWT_MAKEDLL -DPLUGINBC_REGISTROIVA)
 ENDIF(WIN32)
 
 

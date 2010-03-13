@@ -43,7 +43,7 @@
 #include "ui_bcasientointeligentebase.h"
 #include "bcform.h"
 #include "blsearchwidget.h"
-#include "pdefs.h"
+#include "pdefs_pluginbc_asiento.h"
 
 
 /// Formulario para la introducci&oacute;n de asientos mediante las plantillas.
@@ -61,7 +61,7 @@
     al asiento abierto.
     En el segundo caso se genera un asiento nuevo por cada introducci&oacute;n de plantilla.
 */
-class MY_EXPORT BcAsientoInteligenteView : public BcForm, public Ui_BcAsientoInteligenteBase
+class PLUGINBC_ASIENTO_EXPORT BcAsientoInteligenteView : public BcForm, public Ui_BcAsientoInteligenteBase
 {
     Q_OBJECT
 

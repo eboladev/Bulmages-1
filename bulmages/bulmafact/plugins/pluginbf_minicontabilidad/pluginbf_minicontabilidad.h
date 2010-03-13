@@ -18,6 +18,9 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
+#ifndef PLUGINBF_MINICONTABILIDAD_H
+#define PLUGINBF_MINICONTABILIDAD_H
+
 #include "blpostgresqlclient.h"
 #include "bfbulmafact.h"
 #include "blwidget.h"
@@ -37,7 +40,6 @@ extern "C" PLUGINBF_MINICONTABILIDAD_EXPORT int BlSubFormDelegate_createEditor(B
 extern "C" PLUGINBF_MINICONTABILIDAD_EXPORT int BlSubFormDelegate_setModelData(BlSubFormDelegate *);
 extern "C" PLUGINBF_MINICONTABILIDAD_EXPORT int BlSubFormDelegate_setEditorData(BlSubFormDelegate *);
 extern "C" PLUGINBF_MINICONTABILIDAD_EXPORT int BlSubForm_editFinished(BlSubForm *);
-
 
 
 class MyPlugArt1 : public QObject
@@ -73,4 +75,7 @@ public slots:
     void elslot2();
     void elslot1();
 };
+
+
+#endif
 

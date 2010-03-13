@@ -18,16 +18,16 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#ifndef PLUGINBC_MAYOR
-#define PLUGINBC_MAYOR
+#ifndef PLUGINBC_MAYOR_H
+#define PLUGINBC_MAYOR_H
 
 #include "bcbulmacont.h"
 #include "blmaincompanypointer.h"
 #include "blmaincompany.h"
-#include "pdefs.h"
+#include "pdefs_pluginbc_mayor.h"
 
 
-extern "C" MY_EXPORT int entryPoint ( BcBulmaCont * );
+extern "C" PLUGINBC_MAYOR_EXPORT int entryPoint ( BcBulmaCont * );
 
 
 class MyPluginMayor : public QObject, BlMainCompanyPointer
@@ -46,8 +46,6 @@ public slots:
     void elslot();
 
 };
-
-
 
 
 #endif

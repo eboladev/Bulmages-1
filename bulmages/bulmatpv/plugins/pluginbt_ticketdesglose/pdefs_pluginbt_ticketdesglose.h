@@ -1,0 +1,21 @@
+#ifndef PDEFS_PLUGINBT_TICKETDESGLOSE_H
+#define PDEFS_PLUGINBT_TICKETDESGLOSE_H
+
+
+#ifdef WIN32
+
+#ifdef PLUGINBT_TICKETDESGLOSE
+#define PLUGINBT_TICKETDESGLOSE_EXPORT __declspec(dllexport)
+#else
+#define PLUGINBT_TICKETDESGLOSE_EXPORT __declspec(dllimport)
+#endif
+
+#else
+
+#define PLUGINBT_TICKETDESGLOSE_EXPORT
+
+#endif
+
+
+#endif
+

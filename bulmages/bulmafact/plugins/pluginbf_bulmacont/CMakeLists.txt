@@ -18,7 +18,7 @@ file(GLOB plugin_UIS *.ui)
 set(QT_USE_QTASSISTANT true)
 set(QT_USE_QTXML true)
 
-INCLUDE(   ${QT_USE_FILE}   )
+INCLUDE( ${QT_USE_FILE} )
 
 include_directories(
     ${QT_INCLUDE_DIR}

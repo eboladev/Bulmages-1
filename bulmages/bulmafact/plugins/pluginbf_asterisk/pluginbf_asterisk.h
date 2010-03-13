@@ -18,6 +18,9 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
+#ifndef PLUGINBF_ASTERISK_H
+#define PLUGINBF_ASTERISK_H
+
 #include <QObject>
 
 #include "bfbulmafact.h"
@@ -35,4 +38,7 @@ extern "C" PLUGINBF_ASTERISK_EXPORT int TrabajadorView_on_mui_guardar_clicked ( 
 extern "C" PLUGINBF_ASTERISK_EXPORT int AlmacenView_AlmacenView ( AlmacenView * );
 extern "C" PLUGINBF_ASTERISK_EXPORT int BlForm_cargar ( BlForm * );
 extern "C" PLUGINBF_ASTERISK_EXPORT int BlForm_guardar_Post ( BlForm * );
+
+
+#endif
 

@@ -25,13 +25,13 @@
 #include "bldefs.h"
 #include "bcsubform.h"
 #include "blfixed.h"
-#include "pdefs.h"
+#include "pdefs_pluginbc_asiento.h"
 
 
 /** Implementa el subformulario de asientos contables.
     Deriva de BcSubForm.
 */
-class MY_EXPORT BcAsientoSubForm : public BcSubForm
+class PLUGINBC_ASIENTO_EXPORT BcAsientoSubForm : public BcSubForm
 {
     Q_OBJECT
 

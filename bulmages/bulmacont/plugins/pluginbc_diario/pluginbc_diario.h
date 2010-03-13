@@ -18,17 +18,18 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#ifndef PLUGINBC_DIARIO
-#define PLUGINBC_DIARIO
+#ifndef PLUGINBC_DIARIO_H
+#define PLUGINBC_DIARIO_H
 
 #include "bcbulmacont.h"
 #include "blpostgresqlclient.h"
 #include "bccompany.h"
 #include "bcdiarioview.h"
-#include "pdefs.h"
+#include "pdefs_pluginbc_diario.h"
 
-extern "C" MY_EXPORT BcDiarioView *g_diario;
-extern "C" MY_EXPORT int entryPoint ( BcBulmaCont * );
+
+extern "C" PLUGINBC_DIARIO_EXPORT BcDiarioView *g_diario;
+extern "C" PLUGINBC_DIARIO_EXPORT int entryPoint ( BcBulmaCont * );
 
 
 

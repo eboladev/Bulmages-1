@@ -18,19 +18,15 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#ifdef Q_WS_WIN
-# define MY_EXPORT __declspec(dllexport)
-#else
-# define MY_EXPORT
-#endif
+#ifndef PLUGINBC_DEPURACION_H
+#define PLUGINBC_DEPURACION_H
 
 #include "bcbulmacont.h"
 #include "blpostgresqlclient.h"
+#include "pdefs_pluginbc_depuracion.h"
 
 
-extern "C" MY_EXPORT int entryPoint ( BcBulmaCont * );
-
-
+extern "C" PLUGINBC_DEPURACION_EXPORT int entryPoint ( BcBulmaCont * );
 
 
 class myplugin : public QObject
@@ -44,3 +40,7 @@ public:
 public slots:
     void cambia ( bool );
 };
+
+
+#endif
+

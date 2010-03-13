@@ -18,6 +18,9 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
+#ifndef PLUGINBF_DEBUG_H
+#define PLUGINBF_DEBUG_H
+
 #include "bfbulmafact.h"
 #include "blpostgresqlclient.h"
 #include "bfcompany.h"
@@ -38,4 +41,7 @@ public:
 public slots:
     void cambia ( bool );
 };
+
+
+#endif
 

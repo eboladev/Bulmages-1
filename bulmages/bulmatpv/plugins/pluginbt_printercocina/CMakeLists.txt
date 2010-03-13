@@ -1,24 +1,25 @@
 ###########################################
 # Plugin for bulmatpv                     #
 ###########################################
-# pluginbt_ivaincluido
+# pluginbt_printercocina
 
 set (plugin pluginbt_printercocina)
 set (docs README.es)
 
 file(GLOB plugin_SRC *.c *.cpp *.cxx)
 file(GLOB plugin_MOCS *.hpp *.h)
+file(GLOB plugin_UIS *.ui)
+
 
 # Exclude files with no QObject macro.
 file(GLOB plugin_NO_MOCS pluginbt_printercocina.h)
 list(REMOVE_ITEM plugin_MOCS ${plugin_NO_MOCS})
 
-file(GLOB plugin_UIS *.ui)
 
 set(QT_USE_QTASSISTANT true)
 set(QT_USE_QTXML true)
 
-INCLUDE(   ${QT_USE_FILE}   )
+INCLUDE( ${QT_USE_FILE} )
 
 include_directories(
     ${QT_INCLUDE_DIR}
@@ -47,6 +48,11 @@ include_directories(
 QT4_WRAP_UI(plugin_UIS_H ${plugin_UIS} OPTIONS -tr N_)
 QT4_WRAP_CPP(plugin_MOC_SRCS ${plugin_MOCS})
 #QT4_ADD_RESOURCES(plugin_RCC_SRCS ${plugin_RCCS})
+
+
+IF(WIN32)
+ADD_DEFINITIONS(-DQWT_DLL -DQT_DLL -DQWT_MAKEDLL -DPLUGINBT_PRINTERCOCINA)
+ENDIF(WIN32)
 
 
 #ADD_DEFINITIONS(${QT_DEFINITIONS})
@@ -85,12 +91,12 @@ set_target_properties( ${plugin} PROPERTIES
   SOVERSION "${BULMAGES_VERSION_MAJOR}.${BULMAGES_VERSION_MINOR}"
   VERSION "${BULMAGES_VERSION}")
 
-target_link_libraries(${plugin} libbulmatpv bulmalib ${QT_LIBRARIES} ${PGSQL_LIBRARIES})
+target_link_libraries(${plugin} libbulmatpv bulmalib pluginbt_accesobotones ${QT_LIBRARIES} ${PGSQL_LIBRARIES})
 
 foreach(dfile ${docs})
    install (FILES ${dfile} DESTINATION share/bulmages/bulmatpv-plugins/ RENAME ${dfile}.${plugin})
 endforeach(dfile in ${docs})
 
-add_dependencies(${plugin} bulmatpv bulmalib bulmafact pluginbt_articulosubform pluginbf_articulo)
+add_dependencies(${plugin} bulmatpv bulmalib bulmafact pluginbt_articulosubform pluginbf_articulo pluginbt_accesobotones)
 
 install_targets(/lib/bulmatpv/plugins ${plugin})

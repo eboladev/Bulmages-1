@@ -18,6 +18,9 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
+#ifndef PLUGINBF_ABRECODIGOBARRAS_H
+#define PLUGINBF_ABRECODIGOBARRAS_H
+
 #include <QStringList>
 #include <QWidget>
 #include <QIcon>
@@ -48,4 +51,7 @@ public:
 public slots:
     void elslot();
 };
+
+
+#endif
 

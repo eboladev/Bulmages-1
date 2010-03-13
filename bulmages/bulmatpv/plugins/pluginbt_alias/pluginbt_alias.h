@@ -18,20 +18,20 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#ifdef Q_WS_WIN
-# define MY_EXPORT __declspec(dllexport)
-#else
-# define MY_EXPORT
-#endif
+#ifndef PLUGINBT_ALIAS_H
+#define PLUGINBT_ALIAS_H
 
 #include "blfunctions.h"
 #include "btbulmatpv.h"
 #include "btcompany.h"
 #include "btticket.h"
+#include "pdefs_pluginbt_alias.h"
 
 
-//extern "C" MY_EXPORT int entryPoint ( BulmaTPV * );
-extern "C" MY_EXPORT int BtTicket_insertarArticuloCodigoNL_Post ( BtTicket * );
-extern "C" MY_EXPORT int BtTicket_insertarArticuloCodigo_Post ( BtTicket * );
+//extern "C" PLUGINBT_ALIAS_EXPORT int entryPoint ( BulmaTPV * );
+extern "C" PLUGINBT_ALIAS_EXPORT int BtTicket_insertarArticuloCodigoNL_Post ( BtTicket * );
+extern "C" PLUGINBT_ALIAS_EXPORT int BtTicket_insertarArticuloCodigo_Post ( BtTicket * );
 
+
+#endif
 

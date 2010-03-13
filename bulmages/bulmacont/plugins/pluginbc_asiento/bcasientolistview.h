@@ -24,7 +24,7 @@
 
 #include "ui_bcasientolistbase.h"
 #include "blformlist.h"
-#include "pdefs.h"
+#include "pdefs_pluginbc_asiento.h"
 
 
 class BcCompany;
@@ -33,7 +33,7 @@ class BcCompany;
 /// Muestra un listado de todos los asientos existentes e informa de si est&aacute;n
 /// abiertos o cerrados.
 /** */
-class MY_EXPORT BcAsientoListView : public BlFormList, public Ui_BcAsientoListBase
+class PLUGINBC_ASIENTO_EXPORT BcAsientoListView : public BlFormList, public Ui_BcAsientoListBase
 {
     Q_OBJECT
 

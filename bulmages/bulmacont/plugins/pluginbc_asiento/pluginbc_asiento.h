@@ -18,19 +18,19 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#ifndef PLUGINBC_ASIENTO
-#define PLUGINBC_ASIENTO
+#ifndef PLUGINBC_ASIENTO_H
+#define PLUGINBC_ASIENTO_H
 
 #include "bcbulmacont.h"
 #include "blpostgresqlclient.h"
 #include "bccompany.h"
+#include "pdefs_pluginbc_asiento.h"
 #include "bcasientoview.h"
-#include "pdefs.h"
 
 
-extern "C" MY_EXPORT BcAsientoView *g_asiento;
-extern "C" MY_EXPORT int entryPoint ( BcBulmaCont * );
-extern "C" MY_EXPORT int SNewBcAsientoView ( BcCompany * );
+extern "C" PLUGINBC_ASIENTO_EXPORT BcAsientoView *g_asiento;
+extern "C" PLUGINBC_ASIENTO_EXPORT int entryPoint ( BcBulmaCont * );
+extern "C" PLUGINBC_ASIENTO_EXPORT int SNewBcAsientoView ( BcCompany * );
 
 
 class MyPluginAsiento : public QObject, BlMainCompanyPointer

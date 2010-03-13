@@ -18,6 +18,9 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
+#ifndef PLUGINBF_RESUMENARTICULO_H
+#define PLUGINBF_RESUMENARTICULO_H
+
 #include "blpostgresqlclient.h"
 #include "articuloview.h"
 #include "bfbulmafact.h"
@@ -31,4 +34,6 @@ extern "C" PLUGINBF_RESUMENARTICULO_EXPORT int ArticuloView_cargar ( ArticuloVie
 //extern "C" PLUGINBF_RESUMENARTICULO_EXPORT int ArticuloView_guardar_post ( ArticuloView * );
 //extern "C" PLUGINBF_RESUMENARTICULO_EXPORT int ArticuloView_borrar ( ArticuloView * );
 
+
+#endif
 

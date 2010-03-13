@@ -18,6 +18,9 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
+#ifndef PLUGINBF_PRECIOCOSTE_H
+#define PLUGINBF_PRECIOCOSTE_H
+
 #include <QObject>
 #include "bfbulmafact.h"
 #include "articuloview.h"
@@ -31,4 +34,7 @@ extern "C" PLUGINBF_PRECIOCOSTE_EXPORT int entryPoint ( BfBulmaFact * );
 extern "C" PLUGINBF_PRECIOCOSTE_EXPORT int ArticuloView_ArticuloView_Post ( ArticuloView * );
 extern "C" PLUGINBF_PRECIOCOSTE_EXPORT int BfSubForm_on_mui_list_editFinished ( BfSubForm * );
 extern "C" PLUGINBF_PRECIOCOSTE_EXPORT int ArticuloListSubForm_ArticuloListSubForm_Post ( ArticuloListSubForm * );
+
+
+#endif
 

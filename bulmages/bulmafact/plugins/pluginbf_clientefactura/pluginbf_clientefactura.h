@@ -21,7 +21,6 @@
 #ifndef PLUGINBF_CLIENTEFACTURA_H
 #define PLUGINBF_CLIENTEFACTURA_H
 
-
 #include "blpostgresqlclient.h"
 #include "bfbulmafact.h"
 #include "blwidget.h"

@@ -18,19 +18,18 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#ifndef PLUGINBC_DUPASIENTO
-#define PLUGINBC_DUPASIENTO
+#ifndef PLUGINBC_DUPLICARASIENTO_H
+#define PLUGINBC_DUPLICARASIENTO_H
 
 #include "bcbulmacont.h"
 #include "blpostgresqlclient.h"
 #include "bccompany.h"
 #include "bcasientoview.h"
-#include "pdefs.h"
+#include "pdefs_pluginbc_duplicarasiento.h"
 
 
-extern "C" MY_EXPORT int entryPoint ( BcBulmaCont * );
-extern "C" MY_EXPORT int BcAsientoView_BcAsientoView ( BcAsientoView * );
-
+extern "C" PLUGINBC_DUPLICARASIENTO_EXPORT int entryPoint ( BcBulmaCont * );
+extern "C" PLUGINBC_DUPLICARASIENTO_EXPORT int BcAsientoView_BcAsientoView ( BcAsientoView * );
 
 
 class MyPluginDuplicarAsiento : public QToolButton, BlMainCompanyPointer

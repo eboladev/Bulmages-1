@@ -30,7 +30,7 @@
 #include "bldatesearch.h"
 #include "bcasientoform.h"
 #include "ui_bcasientobase.h"
-#include "pdefs.h"
+#include "pdefs_pluginbc_asiento.h"
 
 
 class BcCompany;
@@ -41,7 +41,7 @@ class BcCompany;
     acci&oacute;n y casi toda la interactuaci&oacute;n del usuario con el programa.
     Pretende conseguir una interficie que resulte muy r&iacute;gida y c&oacute;moda para
     el usuario que introduzca datos. Hereda intapunts3dlg. */
-class MY_EXPORT BcAsientoList : public BcAsientoForm
+class PLUGINBC_ASIENTO_EXPORT BcAsientoList : public BcAsientoForm
 {
     Q_OBJECT
 
@@ -69,7 +69,7 @@ public slots:
 };
 
 
-class MY_EXPORT BcAsientoView : public BcAsientoList, public Ui_BcAsientoBase
+class PLUGINBC_ASIENTO_EXPORT BcAsientoView : public BcAsientoList, public Ui_BcAsientoBase
 {
     Q_OBJECT
 

@@ -18,6 +18,9 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
+#ifndef PLUGINBF_CARTERAPAGOS_H
+#define PLUGINBF_CARTERAPAGOS_H
+
 #include <QStringList>
 #include <QWidget>
 #include <QIcon>
@@ -40,4 +43,7 @@ extern "C" PLUGINBF_CARTERAPAGOS_EXPORT int FacturaProveedorView_FacturaProveedo
 extern "C" PLUGINBF_CARTERAPAGOS_EXPORT int FacturaProveedorView_cargarPost_Post ( FacturaProveedorView * );
 
 void generarVencimientos (FacturaProveedorView *);
+
+
+#endif
 

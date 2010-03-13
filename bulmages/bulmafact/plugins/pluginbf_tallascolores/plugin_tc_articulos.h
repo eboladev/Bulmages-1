@@ -18,6 +18,9 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
+#ifndef PLUGINBF_TALLASCOLORES_H
+#define PLUGINBF_TALLASCOLORES_H
+
 #include "bfbulmafact.h"
 #include "articuloview.h"
 #include "blsearchwidget.h"
@@ -44,4 +47,7 @@ extern "C" PLUGINBF_TALLASCOLORES_EXPORT int ListLinFacturaProveedorView_ListLin
 extern "C" PLUGINBF_TALLASCOLORES_EXPORT int BfClienteAlbaranSubForm_cargar ( BfClienteAlbaranSubForm * );
 
 extern "C" PLUGINBF_TALLASCOLORES_EXPORT int ListLinFacturaView_cargar ( ListLinFacturaView * );
+
+
+#endif
 

@@ -20,14 +20,9 @@
  *   Free Software Foundation, Inc.,                                       *
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
+
 #ifndef PLUGINBC_CUENTASANUALES2ODS_H
 #define PLUGINBC_CUENTASANUALES2ODS_H
-
-#ifdef Q_WS_WIN
-# define MY_EXPORT __declspec(dllexport)
-#else
-# define MY_EXPORT
-#endif
 
 #include <QStringList>
 #include <QWidget>
@@ -41,9 +36,10 @@
 #include "bccompany.h"
 #include "blfixed.h"
 #include "bcplancontablearbol.h"
+#include "pdefs_pluginbc_cuentasanuales2ods.h"
 
 
-extern "C" MY_EXPORT int entryPoint ( BcBulmaCont * );
+extern "C" PLUGINBC_CUENTASANUALES2ODS_EXPORT int entryPoint ( BcBulmaCont * );
 
 
 
@@ -96,3 +92,4 @@ public slots:
 };
 
 #endif
+

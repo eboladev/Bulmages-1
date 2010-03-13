@@ -27,13 +27,13 @@
 #include "bldialogchanges.h"
 #include "bcsubform.h"
 #include "bcform.h"
-#include "pdefs.h"
+#include "pdefs_pluginbc_amortizacion.h"
 
 
 class BcCompany;
 
 
-class MY_EXPORT BcAmortizacionSubForm : public BcSubForm
+class PLUGINBC_AMORTIZACION_EXPORT BcAmortizacionSubForm : public BcSubForm
 {
     Q_OBJECT
 
@@ -50,7 +50,7 @@ public:
 
 /// Clase que muestra la ventana de amortizaci&oacute;n.
 /** Formulario de introducci&oacute;n y/o visi&oacute;n de amortizaciones. */
-class MY_EXPORT BcAmortizacionView : public BcForm, public Ui_BcAmortizacionBase
+class PLUGINBC_AMORTIZACION_EXPORT BcAmortizacionView : public BcForm, public Ui_BcAmortizacionBase
 {
     Q_OBJECT
 

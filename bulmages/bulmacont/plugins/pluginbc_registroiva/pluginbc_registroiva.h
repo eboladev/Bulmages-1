@@ -18,19 +18,25 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
+#ifndef PLUGINBC_REGISTROIVA_H
+#define PLUGINBC_REGISTROIVA_H
+
 #include "bcbulmacont.h"
 #include "blpostgresqlclient.h"
 #include "bccompany.h"
 #include "bcasientoform.h"
 #include "bcasientosubform.h"
 #include "bcasientoview.h"
-#include "pdefs.h"
+#include "pdefs_pluginbc_registroiva.h"
 
 
-extern "C" MY_EXPORT int entryPoint ( BcBulmaCont * );
-extern "C" MY_EXPORT int BcAsientoForm_guardaAsiento1_post ( BcAsientoForm * );
-extern "C" MY_EXPORT int empresa_cobPag ( BcCompany * );
-extern "C" MY_EXPORT int empresa_registroiva ( BcCompany * );
-extern "C" MY_EXPORT int BcAsientoSubForm_boton_iva ( BcAsientoSubForm * );
-extern "C" MY_EXPORT int BcAsientoView_BcAsientoView ( BcAsientoView * );
+extern "C" PLUGINBC_REGISTROIVA_EXPORT int entryPoint ( BcBulmaCont * );
+extern "C" PLUGINBC_REGISTROIVA_EXPORT int BcAsientoForm_guardaAsiento1_post ( BcAsientoForm * );
+extern "C" PLUGINBC_REGISTROIVA_EXPORT int empresa_cobPag ( BcCompany * );
+extern "C" PLUGINBC_REGISTROIVA_EXPORT int empresa_registroiva ( BcCompany * );
+extern "C" PLUGINBC_REGISTROIVA_EXPORT int BcAsientoSubForm_boton_iva ( BcAsientoSubForm * );
+extern "C" PLUGINBC_REGISTROIVA_EXPORT int BcAsientoView_BcAsientoView ( BcAsientoView * );
+
+
+#endif
 

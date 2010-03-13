@@ -20,14 +20,9 @@
  *   Free Software Foundation, Inc.,                                       *
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
+
 #ifndef PLUGINBC_CAASLODS_H
 #define PLUGINBC_CAASLODS_H
-
-#ifdef Q_WS_WIN
-# define MY_EXPORT __declspec(dllexport)
-#else
-# define MY_EXPORT
-#endif
 
 #include <QStringList>
 #include <QWidget>
@@ -38,8 +33,10 @@
 
 #include "bcbulmacont.h"
 #include "datosview.h"
+#include "pdefs_pluginbc_caaslods.h"
 
-extern "C" MY_EXPORT int entryPoint ( BcBulmaCont * );
+
+extern "C" PLUGINBC_CAASLODS_EXPORT int entryPoint ( BcBulmaCont * );
 
 
 //Cuentas Anuales Abreviadas Asociación Sin Lucro CAAASL
@@ -68,3 +65,4 @@ public slots:
 
 
 #endif
+

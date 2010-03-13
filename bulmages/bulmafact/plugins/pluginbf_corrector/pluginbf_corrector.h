@@ -18,6 +18,9 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
+#ifndef PLUGINBF_CORRECTOR_H
+#define PLUGINBF_CORRECTOR_H
+
 #include "bfbulmafact.h"
 #include "blpostgresqlclient.h"
 #include "bfcompany.h"
@@ -26,4 +29,7 @@
 
 extern "C" PLUGINBF_CORRECTOR_EXPORT int entryPoint ( BfBulmaFact * );
 extern "C" PLUGINBF_CORRECTOR_EXPORT int BfBulmaFact_closeEvent ( BfBulmaFact * );
+
+
+#endif
 

@@ -18,6 +18,9 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
+#ifndef PLUGINBF_QWEBCAM_H
+#define PLUGINBF_QWEBCAM_H
+
 #include "blpostgresqlclient.h"
 #include "clienteview.h"
 #include "articuloview.h"
@@ -41,4 +44,7 @@ void elslot();
 void inicializa(bulmafact *bges);
 };
 */
+
+
+#endif
 

@@ -21,18 +21,14 @@
 #ifndef PLUGINBT_ARTICULOSUBFORM_H
 #define PLUGINBT_ARTICULOSUBFORM_H
 
-#ifdef Q_WS_WIN
-# define MY_EXPORT __declspec(dllexport)
-#else
-# define MY_EXPORT
-#endif
-
 #include "btbulmatpv.h"
 #include "btcompany.h"
+#include "pdefs_pluginbt_articulosubform.h"
 
 
-extern "C" MY_EXPORT int entryPoint ( BtBulmaTPV * );
-extern "C" MY_EXPORT int BtCompany_createMainWindows_Post ( BtCompany * );
+extern "C" PLUGINBT_ARTICULOSUBFORM_EXPORT int entryPoint ( BtBulmaTPV * );
+extern "C" PLUGINBT_ARTICULOSUBFORM_EXPORT int BtCompany_createMainWindows_Post ( BtCompany * );
+
 
 #endif
 

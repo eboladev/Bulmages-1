@@ -18,8 +18,8 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#ifndef PLUGINBC_CUENTA
-#define PLUGINBC_CUENTA
+#ifndef PLUGINBC_CUENTA_H
+#define PLUGINBC_CUENTA_H
 
 #include "bcbulmacont.h"
 #include "blmaincompanypointer.h"
@@ -27,18 +27,19 @@
 #include "blsubform.h"
 #include "bcsubform.h"
 #include "blsearchwidget.h"
-#include "pdefs.h"
+#include "pdefs_pluginbc_cuenta.h"
 
-extern "C" MY_EXPORT int entryPoint ( BcBulmaCont * );
-extern "C" MY_EXPORT int BlSubForm_BlSubForm_Post ( BlSubForm * );
-extern "C" MY_EXPORT int Busqueda_on_mui_buscar_clicked(BlSearchWidget *);
-extern "C" MY_EXPORT int BlSubFormDelegate_createEditor ( BlSubFormDelegate * );
-extern "C" MY_EXPORT int BlSubFormDelegate_setModelData ( BlSubFormDelegate * );
-extern "C" MY_EXPORT int BlSubFormDelegate_setEditorData ( BlSubFormDelegate * );
-extern "C" MY_EXPORT int BlSubForm_editFinished ( BlSubForm * );
-extern "C" MY_EXPORT int BlDbCompleterComboBox_textChanged (BlDbCompleterComboBox *);
-extern "C" MY_EXPORT int BcSubForm_pressedAsterisk ( BcSubForm * );
-extern "C" MY_EXPORT int Busqueda_on_m_inputBusqueda_textChanged (BlSearchWidget *);
+
+extern "C" PLUGINBC_CUENTA_EXPORT int entryPoint ( BcBulmaCont * );
+extern "C" PLUGINBC_CUENTA_EXPORT int BlSubForm_BlSubForm_Post ( BlSubForm * );
+extern "C" PLUGINBC_CUENTA_EXPORT int Busqueda_on_mui_buscar_clicked(BlSearchWidget *);
+extern "C" PLUGINBC_CUENTA_EXPORT int BlSubFormDelegate_createEditor ( BlSubFormDelegate * );
+extern "C" PLUGINBC_CUENTA_EXPORT int BlSubFormDelegate_setModelData ( BlSubFormDelegate * );
+extern "C" PLUGINBC_CUENTA_EXPORT int BlSubFormDelegate_setEditorData ( BlSubFormDelegate * );
+extern "C" PLUGINBC_CUENTA_EXPORT int BlSubForm_editFinished ( BlSubForm * );
+extern "C" PLUGINBC_CUENTA_EXPORT int BlDbCompleterComboBox_textChanged (BlDbCompleterComboBox *);
+extern "C" PLUGINBC_CUENTA_EXPORT int BcSubForm_pressedAsterisk ( BcSubForm * );
+extern "C" PLUGINBC_CUENTA_EXPORT int Busqueda_on_m_inputBusqueda_textChanged (BlSearchWidget *);
 
 
 class MyPluginCuenta : public QObject, BlMainCompanyPointer
@@ -74,8 +75,6 @@ public slots:
     virtual void s_pintaMenu ( QMenu * );
     virtual void s_trataMenu ( QAction * );
 };
-
-
 
 
 #endif

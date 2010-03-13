@@ -18,24 +18,23 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#ifdef Q_WS_WIN
-# define MY_EXPORT __declspec(dllexport)
-#else
-# define MY_EXPORT
-#endif
+#ifndef PLUGINBF_ETIQUETAS_H
+#define PLUGINBF_ETIQUETAS_H
 
 #include "albaranproveedorview.h"
 #include "bfbulmafact.h"
+#include "pdefs_pluginbf_etiquetas.h"
 
-extern "C" MY_EXPORT int AlbaranProveedorView_AlbaranProveedorView ( AlbaranProveedorView * );
+
+extern "C" PLUGINBF_ETIQUETAS_EXPORT int AlbaranProveedorView_AlbaranProveedorView ( AlbaranProveedorView * );
 
 /*
-extern "C" MY_EXPORT int PedidoClienteView_PedidoClienteView(PedidoClienteView *);
-extern "C" MY_EXPORT int PresupuestoView_PresupuestoView(PresupuestoView *);
+extern "C" PLUGINBF_ETIQUETAS_EXPORT int PedidoClienteView_PedidoClienteView(PedidoClienteView *);
+extern "C" PLUGINBF_ETIQUETAS_EXPORT int PresupuestoView_PresupuestoView(PresupuestoView *);
 
-extern "C" MY_EXPORT int FacturaView_FacturaView(FacturaView *);
+extern "C" PLUGINBF_ETIQUETAS_EXPORT int FacturaView_FacturaView(FacturaView *);
 */
-extern "C" MY_EXPORT int entryPoint ( BfBulmaFact * );
+extern "C" PLUGINBF_ETIQUETAS_EXPORT int entryPoint ( BfBulmaFact * );
 
 
 // 
@@ -57,3 +56,6 @@ public slots:
 };
 
 */
+
+#endif
+

@@ -18,19 +18,17 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#ifdef Q_WS_WIN
-# define MY_EXPORT __declspec(dllexport)
-#else
-# define MY_EXPORT
-#endif
+#ifndef PLUGINBC_BALANCEARBOL_H
+#define PLUGINBC_BALANCEARBOL_H
 
 #include "bcbulmacont.h"
 #include "blpostgresqlclient.h"
 #include "bccompany.h"
 #include "blmaincompanypointer.h"
+#include "pdefs_pluginbc_balancearbol.h"
 
 
-extern "C" MY_EXPORT int entryPoint ( BcBulmaCont * );
+extern "C" PLUGINBC_BALANCEARBOL_EXPORT int entryPoint ( BcBulmaCont * );
 
 
 class myplugin4 : public QObject, BlMainCompanyPointer
@@ -48,3 +46,7 @@ public:
 public slots:
     void elslot();
 };
+
+
+#endif
+

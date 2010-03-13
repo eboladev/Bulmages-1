@@ -18,22 +18,25 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#ifdef Q_WS_WIN
-# define MY_EXPORT __declspec(dllexport)
-#else
-# define MY_EXPORT
-#endif
+#ifndef PLUGINBT_ALIASTALLASYCOLORES_H
+#define PLUGINBT_ALIASTALLASYCOLORES_H
 
 #include "btbulmatpv.h"
 #include "btcompany.h"
 #include "btticket.h"
 #include "mticket.h"
 #include "mticketivainc.h"
+#include "pdefs_pluginbt_aliastallasycolores.h"
 
-extern "C" MY_EXPORT int BtTicket_insertarArticuloCodigo_Post ( BtTicket * );
-extern "C" MY_EXPORT int BtTicket_insertarArticuloCodigoNL_Post ( BtTicket * );
-extern "C" MY_EXPORT int BtTicket_agregarLinea_Post ( BtTicket * );
-extern "C" MY_EXPORT int MTicket_pintar ( MTicket * );
-extern "C" MY_EXPORT int MTicketIVAInc_pintar ( MTicketIVAInc * );
-extern "C" MY_EXPORT int BtTicket_imprimir(BtTicket *);
-extern "C" MY_EXPORT int BtTicket_imprimirIVAInc(BtTicket *);
+
+extern "C" PLUGINBT_ALIASTALLASYCOLORES_EXPORT int BtTicket_insertarArticuloCodigo_Post ( BtTicket * );
+extern "C" PLUGINBT_ALIASTALLASYCOLORES_EXPORT int BtTicket_insertarArticuloCodigoNL_Post ( BtTicket * );
+extern "C" PLUGINBT_ALIASTALLASYCOLORES_EXPORT int BtTicket_agregarLinea_Post ( BtTicket * );
+extern "C" PLUGINBT_ALIASTALLASYCOLORES_EXPORT int MTicket_pintar ( MTicket * );
+extern "C" PLUGINBT_ALIASTALLASYCOLORES_EXPORT int MTicketIVAInc_pintar ( MTicketIVAInc * );
+extern "C" PLUGINBT_ALIASTALLASYCOLORES_EXPORT int BtTicket_imprimir(BtTicket *);
+extern "C" PLUGINBT_ALIASTALLASYCOLORES_EXPORT int BtTicket_imprimirIVAInc(BtTicket *);
+
+
+#endif
+

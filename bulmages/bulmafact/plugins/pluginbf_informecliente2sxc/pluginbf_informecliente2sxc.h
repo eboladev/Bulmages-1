@@ -18,6 +18,9 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
+#ifndef PLUGINBF_INFORMECLIENTE2SXC_H
+#define PLUGINBF_INFORMECLIENTE2SXC_H
+
 #include <QStringList>
 #include <QWidget>
 #include <QIcon>
@@ -34,4 +37,5 @@ extern "C" PLUGINBF_INFORMECLIENTE2SXC_EXPORT int ClientsList_ClientsList ( Clie
 extern "C" PLUGINBF_INFORMECLIENTE2SXC_EXPORT int ProveedorList_ProveedorList ( ProveedorList * );
 
 
+#endif
 

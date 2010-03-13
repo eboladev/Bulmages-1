@@ -31,7 +31,7 @@
 #include "bcform.h"
 
 
-class BcCompany ;
+class BcCompany;
 
 
 /// Balance de Sumas y Saldos plano.
@@ -68,4 +68,6 @@ public slots:
     void on_mui_actualizar_clicked();
 };
 
+
 #endif
+

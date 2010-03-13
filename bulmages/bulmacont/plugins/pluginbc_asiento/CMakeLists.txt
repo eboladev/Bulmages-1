@@ -1,7 +1,7 @@
 ###########################################
 # Plugin for bulmacont                    #
 ###########################################
-#pluginbc_diario
+#pluginbc_asiento
 
 set (plugin pluginbc_asiento)
 set (docs README.es)
@@ -10,10 +10,16 @@ file(GLOB plugin_SRC *.c *.cpp *.cxx)
 file(GLOB plugin_MOCS *.hpp *.h)
 file(GLOB plugin_UIS *.ui)
 
+
+# Exclude files with no QObject macro.
+file(GLOB plugin_NO_MOCS pdefs_pluginbc_asiento.h)
+list(REMOVE_ITEM plugin_MOCS ${plugin_NO_MOCS})
+
+
 set(QT_USE_QTASSISTANT true)
 set(QT_USE_QTXML true)
 
-INCLUDE(   ${QT_USE_FILE}   )
+INCLUDE( ${QT_USE_FILE} )
 
 include_directories(
     ${QT_INCLUDE_DIR}
@@ -37,8 +43,9 @@ QT4_WRAP_CPP(plugin_MOC_SRCS ${plugin_MOCS})
 
 
 IF(WIN32)
-ADD_DEFINITIONS(-DQWT_DLL -DQT_DLL -DQWT_MAKEDLL)
-ENDIF(WIN32) 
+ADD_DEFINITIONS(-DQWT_DLL -DQT_DLL -DQWT_MAKEDLL -DPLUGINBC_ASIENTO)
+ENDIF(WIN32)
+
 
 #ADD_DEFINITIONS(${QT_DEFINITIONS})
 ADD_DEFINITIONS(-DQT_SHARED)

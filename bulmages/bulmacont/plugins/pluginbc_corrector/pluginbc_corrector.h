@@ -18,17 +18,17 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#ifdef Q_WS_WIN
-# define MY_EXPORT __declspec(dllexport)
-#else
-# define MY_EXPORT
-#endif
+#ifndef PLUGINBC_CORRECTOR_H
+#define PLUGINBC_CORRECTOR_H
 
 #include "bcbulmacont.h"
 #include "blpostgresqlclient.h"
 #include "bccompany.h"
+#include "pdefs_pluginbc_corrector.h"
 
 
-extern "C" MY_EXPORT int entryPoint ( BcBulmaCont * );
-extern "C" MY_EXPORT int BcBulmaCont_closeEvent ( BcBulmaCont * );
+extern "C" PLUGINBC_CORRECTOR_EXPORT int entryPoint ( BcBulmaCont * );
+extern "C" PLUGINBC_CORRECTOR_EXPORT int BcBulmaCont_closeEvent ( BcBulmaCont * );
+
+#endif
 

@@ -18,6 +18,9 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
+#ifndef PLUGINBF_IVAINCLUIDO_H
+#define PLUGINBF_IVAINCLUIDO_H
+
 #include <QObject>
 #include "bfbulmafact.h"
 #include "blform.h"
@@ -32,3 +35,7 @@ extern "C" PLUGINBF_IVAINCLUIDO_EXPORT int entryPoint ( BfBulmaFact * );
 extern "C" PLUGINBF_IVAINCLUIDO_EXPORT int ArticuloView_ArticuloView_Post ( ArticuloView * );
 extern "C" PLUGINBF_IVAINCLUIDO_EXPORT int ArticuloListSubForm_ArticuloListSubForm_Post ( ArticuloListSubForm * );
 extern "C" PLUGINBF_IVAINCLUIDO_EXPORT int BfClienteAlbaranSubForm_BfClienteAlbaranSubForm_Post (BfClienteAlbaranSubForm *);
+
+
+#endif
+
