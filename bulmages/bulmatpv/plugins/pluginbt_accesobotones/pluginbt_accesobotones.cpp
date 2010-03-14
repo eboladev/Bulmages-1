@@ -20,8 +20,11 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#include <QX11EmbedContainer>
 #include <QProcess>
+
+#ifndef WIN32
+#include <QX11EmbedContainer>
+#endif
 
 #include "pluginbt_accesobotones.h"
 #include "btcompany.h"

@@ -1,8 +1,11 @@
 #include <QWidget>
 #include <QProcess>
 #include <QDockWidget>
-#include <QX11EmbedContainer>
 #include <QMainWindow>
+
+#ifndef WIN32
+#include <QX11EmbedContainer>
+#endif
 
 #include "abrevs.h"
 #include "blfunctions.h"
@@ -51,10 +54,14 @@ Abrevs::Abrevs ( BlMainCompany *emp, QWidget *parent ) : BlWidget ( emp, parent 
     QString winId = "";
     winId = m_proc->readAllStandardOutput();
 
+#ifndef WIN32
 
     QX11EmbedContainer *container = new QX11EmbedContainer ( m_doc2 );
     container->embedClient ( winId.toInt() );
     m_doc2->setWidget ( container );
+
+#endif
+
 }
 
 
