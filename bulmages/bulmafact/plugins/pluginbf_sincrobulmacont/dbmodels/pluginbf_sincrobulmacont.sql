@@ -121,6 +121,20 @@ BEGIN
 		ALTER TABLE familia ADD COLUMN idcuentacomprafamilia INTEGER;
 	END IF;
 
+	-- Creamos el espacio para almacenar las cuentas definidas por el usuario
+	-- para las familias que sobreescriben la configuracion por defecto.
+	SELECT INTO bs * FROM pg_attribute WHERE attname='prefcuentaventafamilia';
+	IF NOT FOUND THEN
+		ALTER TABLE familia ADD COLUMN prefcuentaventafamilia CHARACTER VARYING(12);
+		ALTER TABLE familia ADD COLUMN origenidcuentaventafamilia INTEGER;
+	END IF;
+
+	SELECT INTO bs * FROM pg_attribute WHERE attname='prefcuentacomprafamilia';
+	IF NOT FOUND THEN
+		ALTER TABLE familia ADD COLUMN prefcuentacomprafamilia CHARACTER VARYING(12);
+		ALTER TABLE familia ADD COLUMN origenidcuentacomprafamilia INTEGER;
+	END IF;
+
 
 	RETURN 0;
 END;
@@ -675,7 +689,7 @@ BEGIN
 		      SELECT INTO ctareq * FROM bc_cuenta WHERE codigo LIKE varaux;
 		      IF NOT FOUND THEN
 			      PERFORM dblink_exec('bulmafact2cont', 'ROLLBACK WORK;');
-			      RAISE EXCEPTION 'No existe una cuenta de Recargo para el tipo de Recargo %', bs.reqeqlfactura;
+			      RAISE EXCEPTION 'No existe una cuenta (4771xxx) de Recargo para el tipo de Recargo %', bs.reqeqlfactura;
 		      END IF;
 		      cta := ctareq.codigo;
 		      idcta := ctareq.idcuenta;
@@ -881,7 +895,7 @@ BEGIN
 			-- Hacemos la busqueda de la cuenta de Recargo correspondiente.
 			SELECT INTO ctaiva * FROM bc_cuenta WHERE codigo LIKE varaux;
 			IF NOT FOUND THEN
-				RAISE EXCEPTION 'No existe una cuenta de Recargo para el tipo de Recargo %', bs.reqeqlfacturap;
+				RAISE EXCEPTION 'No existe una cuenta (47201xx) de Recargo para el tipo de Recargo %', bs.reqeqlfacturap;
 			END IF;
 			cta := ctaiva.codigo;
 			idcta := ctaiva.idcuenta;

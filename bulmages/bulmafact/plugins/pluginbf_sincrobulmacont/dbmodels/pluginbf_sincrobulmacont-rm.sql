@@ -126,6 +126,22 @@ BEGIN
 		ALTER TABLE pago DROP COLUMN idasientopago;
 	END IF;
 
+	SELECT INTO bs * FROM pg_attribute WHERE attname='prefcuentaventafamilia';
+	IF NOT FOUND THEN
+--		ALTER TABLE familia ADD COLUMN prefcuentaventafamilia CHARACTER VARYING(12);
+--		ALTER TABLE familia ADD COLUMN origenidcuentaventafamilia INTEGER;
+		ALTER TABLE familia DROP COLUMN prefcuentaventafamilia;
+		ALTER TABLE familia DROP COLUMN origenidcuentaventafamilia;
+	END IF;
+
+	SELECT INTO bs * FROM pg_attribute WHERE attname='prefcuentacomprafamilia';
+	IF NOT FOUND THEN
+--		ALTER TABLE familia ADD COLUMN prefcuentacomprafamilia CHARACTER VARYING(12);
+--		ALTER TABLE familia ADD COLUMN origenidcuentacomprafamilia INTEGER;
+		ALTER TABLE familia DROP COLUMN prefcuentacomprafamilia;
+		ALTER TABLE familia DROP COLUMN origenidcuentacomprafamilia;
+	END IF;
+
 	RETURN 0;
 END;
 $$   LANGUAGE plpgsql;

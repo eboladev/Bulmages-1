@@ -354,6 +354,15 @@ int FamiliasView::guardar()
             mensajeInfo ( _ ( "Debe seleccionar una familia" ) );
             return -1;
         } // end if
+
+	mainCompany()->begin();
+
+        /// Disparamos los plugins.
+        int res1 = g_plugins->lanza ( "FamiliasView_PreGuardar", this );
+	if ( res1 != 0 ) {
+	    throw -1;
+	} // end if
+
         if ( mui_productofamilia->isChecked() ) {
             prodfam = " TRUE ";
         } else {
@@ -365,8 +374,15 @@ int FamiliasView::guardar()
                         mainCompany()->sanearCadena ( mui_codFamilia->text() ) + "', productofisicofamilia= " + prodfam + " WHERE idfamilia =" + m_idfamilia;
         int error = mainCompany()->runQuery ( query );
         if ( error ) {
-            throw - 1;
+            throw -1;
         } // end if
+
+        /// Disparamos los plugins.
+        int res2 = g_plugins->lanza ( "FamiliasView_PostGuardar", this );
+	if ( res2 != 0 ) {
+	    throw -1;
+	} // end if
+
         /// Guardamos la informacion de la fila que esta seleccionada para volver
         /// a ponerla despues.
         QTreeWidgetItem *posicionCursor;
@@ -378,9 +394,12 @@ int FamiliasView::guardar()
         } // end if
         dialogChanges_cargaInicial();
         _depura ( "END FamiliasView::guardar", 0 );
+
+	mainCompany()->commit();
         return 0;
     } catch ( ... ) {
         mensajeInfo ( _ ( "Error al guardar la familia" ) );
+	mainCompany()->rollback();
         return -1;
     } // end try
 }
