@@ -48,10 +48,21 @@
   en el constructor del listado concreto, agregar:
      mui_filtrador->setSubFormList ( mui_list );
      connect ( mui_filtrar, SIGNAL ( released ( ) ), mui_filtrador, SLOT ( showHideFilter ( ) ) );
-     connect ( mui_filtrador, SIGNAL(aplicar_filtro() ), this, SLOT ( on_mui_actualizar_clicked() ) );
+     connect ( mui_filtrador, SIGNAL(aplicar_filtro() ), this, SLOT ( aplicar_filtro() ) );
+     connect ( mui_filtrador, SIGNAL(cerrar_filtro() ), mui_filtrar, SLOT( click() ) );
 
-  5) Para que se aplique el filtrado al actualizar el listado, terminar la consulta SQL de presentar() con esto:
-     ...WHERE 1 = 1 " + mui_filtrador->generarFiltro());
+  5) Agregar un atributo privado:
+   QString m_filtro_generi
+
+  6) Agregar un slot:
+   void TareaList::aplicar_filtro()
+   {
+      m_filtro_generi = mui_filtrador->generarFiltro();
+      presentar();
+   }
+
+  7) Para que se aplique el filtrado al actualizar el listado, terminar la consulta SQL de presentar() con esto:
+     ...WHERE 1 = 1 " + m_filtro_generi);
 
 **/
 class BL_EXPORT BlFormListFilter : public BlWidget, public Ui_BlFormListFilterBase
@@ -90,6 +101,7 @@ private:
 
 signals:
    void aplicar_filtro();
+   void cerrar_filtro();
 };
 
 #endif // BLFORMLISTFILTER_H

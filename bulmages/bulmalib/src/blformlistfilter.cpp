@@ -261,6 +261,7 @@ void BlFormListFilter::configureFilterToType()
    hideFilterWidgets();
 
    if ( m_columna_actual < 0 || isHidden() ) {
+      emit cerrar_filtro();
       return;
    } // end if
 
