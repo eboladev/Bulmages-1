@@ -1757,7 +1757,6 @@ void BlSubForm::on_mui_list_cellRePosition ( int row, int col )
     switch ( key ) {
     case Qt::Key_Return:
     case Qt::Key_Enter:
-    case Qt::Key_Tab:
         if ( !m_insercion ) {
             /// Se ha hecho un enter sobre una tabla sin insercion con lo que lanzamos un doble click para que sea
             /// La accion simulada.
@@ -1771,6 +1770,11 @@ void BlSubForm::on_mui_list_cellRePosition ( int row, int col )
             situarse ( row, col );
         } // end if
         break;
+    case Qt::Key_Tab:
+        if ( m_insercion ) {
+	    situarse ( row, col );
+	} // end if
+	break;
     case Qt::Key_Down:
         situarse ( row, col );
         situarse1 ( row, col );
@@ -2689,7 +2693,7 @@ void BlSubForm::imprimirPDF ( const QString &titular )
 //    QString archivod = g_confpr->valor ( CONF_DIR_USER ) + titular + ".rml";
     QString archivologo = g_confpr->valor ( CONF_DIR_OPENREPORTS ) + "logo.jpg";
     /// Copiamos el archivo.
-#ifdef WINDOWS
+#ifdef WIN32
 
     archivo = "copy " + archivo + " " + archivod;
 #else
@@ -2703,7 +2707,7 @@ void BlSubForm::imprimirPDF ( const QString &titular )
     } // end if
     
     /// Copiamos el logo.
-#ifdef WINDOWS
+#ifdef WIN32
 
     archivologo = "copy " + archivologo + " " + g_confpr->valor ( CONF_DIR_USER ) + "logo.jpg";
 #else

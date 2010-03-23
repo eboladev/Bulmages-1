@@ -297,7 +297,9 @@ int BfSubForm_pressedAsterisk ( BfSubForm *sub )
     ArticuloList *artlist = new ArticuloList ( ( BfCompany * ) sub->mainCompany(), NULL, 0, BL_SELECT_MODE );
     /// Esto es convertir un QWidget en un sistema modal de dialogo.
     sub->setEnabled ( false );
+    centrarEnPantalla(artlist);
     artlist->show();
+    artlist->m_filtro->setFocus(Qt::PopupFocusReason);
     while ( !artlist->isHidden() )
         g_theApp->processEvents();
     sub->setEnabled ( true );

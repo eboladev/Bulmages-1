@@ -84,6 +84,7 @@ signals:
     void cellRePosition ( int, int );
     void pulsadomas ( int, int, int );
     void pressedAsterisk ( int, int );
+    void pressedF2 ( int, int );
     void pressedPlus ( int, int );
     void pressedMinus ( int, int );
     void pressedSlash ( int, int );

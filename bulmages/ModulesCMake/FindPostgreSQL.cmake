@@ -33,8 +33,8 @@
 #                                                                       #
 
 FIND_PROGRAM(CMAKE_PGCONFIG_EXECUTABLE pg_config)
-
 ########################################
+
 IF(CMAKE_PGCONFIG_EXECUTABLE)
 	# MESSAGE("DEBUG: pg_config executable found")
 

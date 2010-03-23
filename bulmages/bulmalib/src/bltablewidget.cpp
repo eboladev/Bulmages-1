@@ -22,6 +22,8 @@
 #include <QEvent>
 #include <QLineEdit>
 #include <QTextEdit>
+#include <QBrush>
+#include <QColor>
 
 #include "bltablewidget.h"
 #include "blconfiguration.h"
@@ -40,6 +42,7 @@ BlTableWidget::BlTableWidget ( QWidget *parent ) : QTableWidget ( parent )
     settipoorden ( -1 );
     installEventFilter ( this );
     connect ( this, SIGNAL ( itemChanged ( QTableWidgetItem * ) ), this, SLOT ( sitemChanged ( QTableWidgetItem * ) ) );
+    connect ( this, SIGNAL ( currentItemChanged ( QTableWidgetItem *, QTableWidgetItem * ) ), this, SLOT ( celdaChanged ( QTableWidgetItem *, QTableWidgetItem * ) ) );
     _depura ( "END BlTableWidget::BlTableWidget", 0 );
 }
 
@@ -327,6 +330,10 @@ bool BlTableWidget::eventFilter ( QObject *obj, QEvent *event )
                 emit pressedAsterisk ( row, col );
                 return TRUE;
             } // end if
+            break;
+        case Qt::Key_F2:
+            emit pressedAsterisk ( row, col );
+            return TRUE;
             break;
         case Qt::Key_Up:
             if ( ( mod & Qt::ControlModifier ) || ( mod & Qt::AltModifier ) ) {

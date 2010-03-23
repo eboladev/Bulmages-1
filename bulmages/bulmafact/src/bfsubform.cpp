@@ -103,9 +103,6 @@ void BfSubForm::pressedAsterisk ( int row, int col, BlDbSubFormRecord *rec, BlDb
         return;
     } // end if
 
-
-
-
     _depura ( "END BfSubForm::pressedAsterisk", 0 );
 }
 
