@@ -570,9 +570,9 @@ DECLARE
 BEGIN
 	SELECT INTO as * FROM configuracion WHERE nombre=''PluginBf_Profesor'';
 	IF FOUND THEN
-		UPDATE CONFIGURACION SET valor=''0.11.1-0001'' WHERE nombre=''PluginBf_Profesor'';
+		UPDATE CONFIGURACION SET valor=''0.12.1-0001'' WHERE nombre=''PluginBf_Profesor'';
 	ELSE
-		INSERT INTO configuracion (nombre, valor) VALUES (''PluginBf_Profesor'', ''0.11.1-0001'');
+		INSERT INTO configuracion (nombre, valor) VALUES (''PluginBf_Profesor'', ''0.12.1-0001'');
 	END IF;
 	RETURN 0;
 END;
