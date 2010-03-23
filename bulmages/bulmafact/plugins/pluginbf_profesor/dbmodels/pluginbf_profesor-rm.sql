@@ -97,6 +97,21 @@ BEGIN
         DROP TABLE profesor CASCADE;
     END IF;
 
+-- Quitamos restricciones para la tabla de clientes
+-- y agregamos unas menos restrictivas
+   SELECT INTO as * FROM pg_constraint WHERE conname =''cliente_codcliente_key'';
+   IF NOT FOUND THEN
+      ALTER TABLE cliente ADD constraint cliente_nomcliente_key UNIQUE (nomcliente);
+      ALTER TABLE cliente ADD CONSTRAINT cliente_codcliente_key UNIQUE (codcliente);
+      ALTER TABLE cliente ADD CONSTRAINT cliente_cifcliente_key UNIQUE (cifcliente);
+    END IF;
+
+   SELECT INTO as * FROM pg_constraint WHERE conname =''cliente_fapac_key'';
+   IF FOUND THEN
+      ALTER TABLE cliente DROP CONSTRAINT cliente_fapac_key;
+   END IF;
+
+
     RETURN 0;
     
 END;

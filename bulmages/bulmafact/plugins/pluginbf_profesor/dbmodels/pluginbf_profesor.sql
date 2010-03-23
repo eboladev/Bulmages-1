@@ -465,6 +465,20 @@ BEGIN
       INSERT INTO configuracion (nombre, valor) VALUES (''CuotaReemisionRecibo'', ''3.5'');
    END IF;
 
+-- Quitamos restricciones para la tabla de clientes
+-- y agregamos unas menos restrictivas
+   SELECT INTO as * FROM pg_constraint WHERE conname =''cliente_codcliente_key'';
+   IF FOUND THEN
+      ALTER TABLE cliente DROP constraint cliente_nomcliente_key;
+      ALTER TABLE cliente DROP CONSTRAINT cliente_codcliente_key;
+      ALTER TABLE cliente DROP CONSTRAINT cliente_cifcliente_key;
+   END IF;
+
+   SELECT INTO as * FROM pg_constraint WHERE conname =''cliente_fapac_key'';
+   IF NOT FOUND THEN
+      ALTER TABLE cliente ADD CONSTRAINT cliente_fapac_key UNIQUE (nomcliente, cifcliente, apellido1cliente, apellido2cliente);
+   END IF;
+
     RETURN 0;
     
 END;
