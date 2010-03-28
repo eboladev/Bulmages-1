@@ -57,7 +57,7 @@ int FamiliasView_FamiliasView ( FamiliasView *famv )
 
 
 
-int FamiliasView_PreGuardar ( FamiliasView *famv )
+int FamiliasView_Guardar_Pre ( FamiliasView *famv )
 {
     BlDbRecordSet *rec_venta;
     BlDbRecordSet *tmp_venta;
@@ -173,7 +173,7 @@ int FamiliasView_PreGuardar ( FamiliasView *famv )
 }
 
 
-int FamiliasView_PostGuardar ( FamiliasView *famv )
+int FamiliasView_Guardar_Post ( FamiliasView *famv )
 {
     /// Guarda los datos en la base de datos.
     QString query = "UPDATE familia SET prefcuentaventafamilia = '" + famv->mainCompany()->sanearCadena(famv->findChild<QLineEdit *>("mui_cuenta_venta")->text()) + "',  prefcuentacomprafamilia = '" + famv->mainCompany()->sanearCadena(famv->findChild<QLineEdit *>("mui_cuenta_compra")->text()) + "' WHERE idfamilia = '" + famv->idFamilia() + "'";

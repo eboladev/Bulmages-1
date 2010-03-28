@@ -31,8 +31,8 @@ extern "C" PLUGINBF_SINCROBULMACONT_EXPORT int entryPoint ( BfBulmaFact * );
 //extern "C" PLUGINBF_SINCROBULMACONT_EXPORT int BfCompany_createMainWindows_Post(BfCompany *);
 
 extern "C" PLUGINBF_SINCROBULMACONT_EXPORT int FamiliasView_FamiliasView ( FamiliasView * );
-extern "C" PLUGINBF_SINCROBULMACONT_EXPORT int FamiliasView_PreGuardar ( FamiliasView * );
-extern "C" PLUGINBF_SINCROBULMACONT_EXPORT int FamiliasView_PostGuardar ( FamiliasView * );
+extern "C" PLUGINBF_SINCROBULMACONT_EXPORT int FamiliasView_Guardar_Pre ( FamiliasView * );
+extern "C" PLUGINBF_SINCROBULMACONT_EXPORT int FamiliasView_Guardar_Post ( FamiliasView * );
 
 
 #endif

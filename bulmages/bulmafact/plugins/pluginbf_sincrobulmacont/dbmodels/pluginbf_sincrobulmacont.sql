@@ -804,6 +804,8 @@ DECLARE
 BEGIN
 	-- conectamos con contabilidad, etc
 	PERFORM conectabulmacont();
+	PERFORM dblink_exec('bulmafact2cont', 'BEGIN WORK;');
+
 	concepto := '[A.Automatico] Factura Proveedor Num:' || NEW.numfacturap;
 	concepto1 := 'Factura Proveedor Num. ' || NEW.numfacturap;
 
@@ -926,12 +928,16 @@ BEGIN
 	END IF;
 
 
-	-- Creamos el apunte de servicio.
-	-- Hacemos la insercion del borrador del apunte.
-	query := 'INSERT INTO borrador (fecha, idcuenta, debe, idasiento, descripcion, conceptocontable) VALUES (''' || NEW.ffacturap || ''', ' || idctaserv || ', ' || bs.base * totaldesc || ', '|| NEW.idasientofacturap ||', ''' || concepto1 || ''' , ''Factura Proveedor'')';
-	PERFORM dblink_exec('bulmafact2cont', query);
+	-- Hacemos la insercion del borrador del apunte segun familia.
+	FOR cs IN SELECT familia.idcuentacomprafamilia, SUM (cantlfacturap * pvplfacturap * (100 - descuentolfacturap) / 100) AS base FROM familia LEFT JOIN articulo ON familia.idfamilia = articulo.idfamilia LEFT JOIN lfacturap ON lfacturap.idarticulo = articulo.idarticulo WHERE lfacturap.idfacturap = NEW.idfacturap GROUP BY familia.idcuentacomprafamilia LOOP
+
+	    query := 'INSERT INTO borrador (fecha, idcuenta, debe, idasiento, descripcion, conceptocontable) VALUES (''' || NEW.ffacturap || ''', ' || cs.idcuentacomprafamilia || ', ' || cs.base * totaldesc || ', '|| NEW.idasientofacturap ||', ''' || concepto1 || ''' , ''Factura Proveedor'')';
+	    PERFORM dblink_exec('bulmafact2cont', query);
+
+	END LOOP;
 
 
+	PERFORM dblink_exec('bulmafact2cont', 'COMMIT WORK;');
 	PERFORM dblink_disconnect('bulmafact2cont');
 	RETURN NEW;
 END;

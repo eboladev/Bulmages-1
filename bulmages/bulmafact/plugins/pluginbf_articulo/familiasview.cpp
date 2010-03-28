@@ -358,7 +358,7 @@ int FamiliasView::guardar()
 	mainCompany()->begin();
 
         /// Disparamos los plugins.
-        int res1 = g_plugins->lanza ( "FamiliasView_PreGuardar", this );
+        int res1 = g_plugins->lanza ( "FamiliasView_Guardar_Pre", this );
 	if ( res1 != 0 ) {
 	    throw -1;
 	} // end if
@@ -378,7 +378,7 @@ int FamiliasView::guardar()
         } // end if
 
         /// Disparamos los plugins.
-        int res2 = g_plugins->lanza ( "FamiliasView_PostGuardar", this );
+        int res2 = g_plugins->lanza ( "FamiliasView_Guardar_Post", this );
 	if ( res2 != 0 ) {
 	    throw -1;
 	} // end if
