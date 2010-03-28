@@ -53,6 +53,7 @@ int ArticuloList_ArticuloList ( ArticuloList *l )
 {
     _depura ( "ArticuloList_ArticuloList", 0 );
 //================================
+
     CatalogoQToolButton *mui_exporta_efactura2 = new CatalogoQToolButton ( l,  l->mui_plugbotones );
 
     QHBoxLayout *m_hboxLayout1 = l->mui_plugbotones->findChild<QHBoxLayout *> ( "hboxLayout1" );
@@ -63,6 +64,7 @@ int ArticuloList_ArticuloList ( ArticuloList *l )
         m_hboxLayout1->setObjectName ( QString::fromUtf8 ( "hboxLayout1" ) );
     } // end if
     m_hboxLayout1->addWidget ( mui_exporta_efactura2 );
+
 //================================
     _depura ( "END ArticuloList_ArticuloList", 0 );
     return 0;

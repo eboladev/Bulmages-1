@@ -84,7 +84,12 @@ set_target_properties( ${plugin} PROPERTIES
   SOVERSION "${BULMAGES_VERSION_MAJOR}.${BULMAGES_VERSION_MINOR}"
   VERSION "${BULMAGES_VERSION}")
 
+if(WIN32)
 target_link_libraries(${plugin} libbulmacont bulmalib pluginbc_asiento ${QT_LIBRARIES} ${PGSQL_LIBRARIES} )
+else(WIN32)
+target_link_libraries(${plugin} libbulmacont bulmalib ${QT_LIBRARIES} ${PGSQL_LIBRARIES} )
+endif(WIN32)
+
 #think to put here which modules must be compiled "before" this
 add_dependencies(${plugin} bulmacont bulmafact bulmalib pluginbc_asiento)
 

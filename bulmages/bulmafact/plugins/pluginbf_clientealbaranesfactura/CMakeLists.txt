@@ -89,7 +89,12 @@ set_target_properties( ${plugin} PROPERTIES
   SOVERSION "${BULMAGES_VERSION_MAJOR}.${BULMAGES_VERSION_MINOR}"
   VERSION "${BULMAGES_VERSION}")
 
-target_link_libraries(${plugin} bulmalib pluginbf_clientealbaran pluginbf_clientefactura pluginbf_proveedorfactura ${QT_LIBRARIES} ${PGSQL_LIBRARIES})
+if(WIN32)
+target_link_libraries(${plugin} bulmalib libbulmafact pluginbf_clientealbaran pluginbf_clientefactura pluginbf_proveedorfactura ${QT_LIBRARIES} ${PGSQL_LIBRARIES})
+else(WIN32)
+target_link_libraries(${plugin} bulmalib libbulmafact ${QT_LIBRARIES} ${PGSQL_LIBRARIES})
+endif(WIN32)
+
 install_targets(/lib/bulmafact/plugins ${plugin})
 
 add_dependencies(${plugin} bulmafact bulmalib pluginbf_clientealbaran pluginbf_clientefactura pluginbf_proveedorfactura)

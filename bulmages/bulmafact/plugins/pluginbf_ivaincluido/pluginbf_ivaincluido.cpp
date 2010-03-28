@@ -65,7 +65,7 @@ int ArticuloView_ArticuloView_Post ( ArticuloView *trab )
     hboxLayout160->addWidget ( textLabel2_9_26 );
     textLabel2_9_26->setText ( "PVP Iva Inc." );
 
-    QLineEdit *passtrab = new QLineEdit ( trab->m_frameplugin );
+    BlDoubleSpinBox *passtrab = new BlDoubleSpinBox ( trab->m_frameplugin );
     passtrab->setObjectName ( QString::fromUtf8 ( "mui_pvpivaincarticulo" ) );
     hboxLayout160->addWidget ( passtrab );
 

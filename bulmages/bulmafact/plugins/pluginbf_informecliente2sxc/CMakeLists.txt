@@ -85,7 +85,7 @@ set_target_properties( ${plugin} PROPERTIES
   SOVERSION "${BULMAGES_VERSION_MAJOR}.${BULMAGES_VERSION_MINOR}"
   VERSION "${BULMAGES_VERSION}")
 
-target_link_libraries(${plugin} bulmalib ${QT_LIBRARIES} ${PGSQL_LIBRARIES})
+target_link_libraries(${plugin} bulmalib libbulmafact ${QT_LIBRARIES} ${PGSQL_LIBRARIES})
 install_targets(/lib/bulmafact/plugins ${plugin})
 
 foreach(dfile ${docs})

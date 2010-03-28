@@ -42,7 +42,6 @@ BlTableWidget::BlTableWidget ( QWidget *parent ) : QTableWidget ( parent )
     settipoorden ( -1 );
     installEventFilter ( this );
     connect ( this, SIGNAL ( itemChanged ( QTableWidgetItem * ) ), this, SLOT ( sitemChanged ( QTableWidgetItem * ) ) );
-    connect ( this, SIGNAL ( currentItemChanged ( QTableWidgetItem *, QTableWidgetItem * ) ), this, SLOT ( celdaChanged ( QTableWidgetItem *, QTableWidgetItem * ) ) );
     _depura ( "END BlTableWidget::BlTableWidget", 0 );
 }
 
