@@ -530,14 +530,14 @@ void BlForm::pintar()
     for ( int i = 0; i < m_lista.size(); ++i ) {
         campo = m_lista.at ( i );
         /// Buscamos los QLineEdit con nombre coincidente.
-        QLineEdit *l = findChild<QLineEdit *> ( "mui_" + campo->nomcampo() );
-        if ( l ) {
-            l->setText ( campo->valorcampo() );
+        QLineEdit *l1 = findChild<QLineEdit *> ( "mui_" + campo->nomcampo() );
+        if ( l1 ) {
+            l1->setText ( campo->valorcampo() );
         } // end if
         /// Buscamos los QPlainTextEdit con nombre coincidente.
-        QPlainTextEdit *l9 = findChild<QPlainTextEdit *> ( "mui_" + campo->nomcampo() );
-        if ( l9 ) {
-            l9->setPlainText( campo->valorcampo() );
+        QPlainTextEdit *l2 = findChild<QPlainTextEdit *> ( "mui_" + campo->nomcampo() );
+        if ( l2 ) {
+            l2->setPlainText( campo->valorcampo() );
         } // end if
         /// Buscamos los QTextEdit con nombre coincidente.
         QTextEdit *l3 = findChild<QTextEdit *> ( "mui_" + campo->nomcampo() );
@@ -546,20 +546,20 @@ void BlForm::pintar()
         } // end if
         /// Buscamos BlWidgets que coincidan con el campo supuestamente
         /// sirve para los campos personales.
-        BlWidget *l1 = findChild<BlWidget *> ( "mui_" + campo->nomcampo() );
-        if ( l1 ) {
-            l1->setFieldValue ( campo->valorcampo() );
+        BlWidget *l4 = findChild<BlWidget *> ( "mui_" + campo->nomcampo() );
+        if ( l4 ) {
+            l4->setFieldValue ( campo->valorcampo() );
         } // end if
 
         /// Buscamos BlComboBox que coincidan con el campo supuestamente
         /// sirve para los campos personales.
-        BlPeriodicityComboBox *l8 = findChild<BlPeriodicityComboBox *> ( "mui_" + campo->nomcampo() );
-        if ( l8 ) {
-            l8->setperiodo ( campo->valorcampo() );
+        BlPeriodicityComboBox *l5 = findChild<BlPeriodicityComboBox *> ( "mui_" + campo->nomcampo() );
+        if ( l5 ) {
+            l5->setperiodo ( campo->valorcampo() );
         } else {
-            BlComboBox *l2 = findChild<BlComboBox *> ( "mui_" + campo->nomcampo() );
-            if ( l2 ) {
-                l2->setFieldValue ( campo->valorcampo() );
+            BlComboBox *l6 = findChild<BlComboBox *> ( "mui_" + campo->nomcampo() );
+            if ( l6 ) {
+                l6->setFieldValue ( campo->valorcampo() );
             } else {
                 /// Buscamos BlComboBox que coincidan con el campo supuestamente
                 /// sirve para los campos personales.
@@ -570,26 +570,31 @@ void BlForm::pintar()
             } // end if
         } // end if
 
+        /// Buscamos un BlDoubleSpinBox con nombre coincidente.
+        BlDoubleSpinBox *l8 = findChild<BlDoubleSpinBox *> ( "mui_" + campo->nomcampo() );
+        if ( l8 )
+            l8->setValue ( campo->valorcampo().toDouble() );
+
         /// Buscamos los QCheckBox con nombre coincidente.
-        QCheckBox *l5 = findChild<QCheckBox *> ( "mui_" + campo->nomcampo() );
-        if ( l5 ) {
+        QCheckBox *l9 = findChild<QCheckBox *> ( "mui_" + campo->nomcampo() );
+        if ( l9 ) {
             if ( campo->valorcampo() == "t" ) {
-                l5->setCheckState( Qt::Checked );
+                l9->setCheckState( Qt::Checked );
             } else if ( campo->valorcampo() == "f" ) {
-                l5->setCheckState( Qt::Unchecked );
-            } else if ( l5->isTristate() ) {
+                l9->setCheckState( Qt::Unchecked );
+            } else if ( l9->isTristate() ) {
                 /// El estado indeterminado se aplica cuando el campo es triestado.
-                l5->setCheckState( Qt::PartiallyChecked );
+                l9->setCheckState( Qt::PartiallyChecked );
             } // end if
         } // end if
 
         /// Buscamos los 'Radio Buttons' y los preparamos.
-        QList<BlRadioButton *> l6 = findChildren<BlRadioButton *> ( QRegExp ( "mui_" + campo->nomcampo() + "_*" ) );
-        for ( int i = 0; i < l6.size(); ++i ) {
-            if ( l6.at ( i ) ->fieldValue() == campo->valorcampo() ) {
-                l6.at ( i ) ->setChecked ( TRUE );
+        QList<BlRadioButton *> l10 = findChildren<BlRadioButton *> ( QRegExp ( "mui_" + campo->nomcampo() + "_*" ) );
+        for ( int i = 0; i < l10.size(); ++i ) {
+            if ( l10.at ( i ) ->fieldValue() == campo->valorcampo() ) {
+                l10.at ( i ) ->setChecked ( TRUE );
             } else {
-                l6.at ( i ) ->setChecked ( FALSE );
+                l10.at ( i ) ->setChecked ( FALSE );
             } // end if
         } // end for
     } // end for
@@ -613,14 +618,14 @@ void BlForm::recogeValores()
     for ( int i = 0; i < m_lista.size(); ++i ) {
         campo = m_lista.at ( i );
         /// Buscamos un QLineEdit con nombre coincidente.
-        QLineEdit *l = findChild<QLineEdit *> ( "mui_" + campo->nomcampo() );
-        if ( l )
-            campo->set ( l->text() );
+        QLineEdit *l1 = findChild<QLineEdit *> ( "mui_" + campo->nomcampo() );
+        if ( l1 )
+            campo->set ( l1->text() );
 
         /// Buscamos un QPlainTextEdit con nombre coincidente.
-        QPlainTextEdit *l9 = findChild<QPlainTextEdit *> ( "mui_" + campo->nomcampo() );
-        if ( l9 )
-            campo->set ( l9->toPlainText() );
+        QPlainTextEdit *l2 = findChild<QPlainTextEdit *> ( "mui_" + campo->nomcampo() );
+        if ( l2 )
+            campo->set ( l2->toPlainText() );
 
         /// Buscamos un QTextEdit con nombre coincidente.
         QTextEdit *l3 = findChild<QTextEdit *> ( "mui_" + campo->nomcampo() );
@@ -628,18 +633,18 @@ void BlForm::recogeValores()
             campo->set ( l3->toPlainText() );
 
         /// Buscamos BlWidgets que coincidan con el campo. Supuestamente sirve para los campos personales.
-        BlWidget *l1 = findChild<BlWidget *> ( "mui_" + campo->nomcampo() );
-        if ( l1 )
-            campo->set ( l1->fieldValue() );
+        BlWidget *l4 = findChild<BlWidget *> ( "mui_" + campo->nomcampo() );
+        if ( l4 )
+            campo->set ( l4->fieldValue() );
 
         /// Buscamos BlComboBox que coincidan con el campo. Supuestamente sirve para los campos personales.
-        BlPeriodicityComboBox *l8 = findChild<BlPeriodicityComboBox *> ( "mui_" + campo->nomcampo() );
-        if ( l8 ) {
-            campo->set(l8->periodo() );
+        BlPeriodicityComboBox *l5 = findChild<BlPeriodicityComboBox *> ( "mui_" + campo->nomcampo() );
+        if ( l5 ) {
+            campo->set(l5->periodo() );
         } else {
-            BlComboBox *l2 = findChild<BlComboBox *> ( "mui_" + campo->nomcampo() );
-            if ( l2 ) {
-                campo->set ( l2->fieldValue() );
+            BlComboBox *l6 = findChild<BlComboBox *> ( "mui_" + campo->nomcampo() );
+            if ( l6 ) {
+                campo->set ( l6->fieldValue() );
             } else {
                 /// Buscamos QComboBox que coincidan con el campo. Supuestamente sirve para los campos personales.
                 QComboBox *l7 = findChild<QComboBox *> ( "mui_" + campo->nomcampo() );
@@ -648,10 +653,16 @@ void BlForm::recogeValores()
                 } // end if
             } // end if
         } // end if
+
+        /// Buscamos un BlDoubleSpinBox con nombre coincidente.
+        BlDoubleSpinBox *l8 = findChild<BlDoubleSpinBox *> ( "mui_" + campo->nomcampo() );
+        if ( l8 )
+            campo->set ( QString::number(l8->value()) );
+
         /// Buscamos un QCheckBox con nombre coincidente.
-        QCheckBox *l5 = findChild<QCheckBox *> ( "mui_" + campo->nomcampo() );
-        if ( l5 ) {
-            switch ( l5->checkState() ) {
+        QCheckBox *l9 = findChild<QCheckBox *> ( "mui_" + campo->nomcampo() );
+        if ( l9 ) {
+            switch ( l9->checkState() ) {
                 case Qt::Checked:
                     campo->set ( "TRUE" );
                     break;
@@ -667,12 +678,12 @@ void BlForm::recogeValores()
         } // end if
 
         /// Buscamos los 'Radio Buttons' y los preparamos.
-        QList<BlRadioButton *> l6 = findChildren<BlRadioButton *> ( QRegExp ( "mui_" + campo->nomcampo() + "_*" ) );
-        if ( l6.size() > 0 ) {
+        QList<BlRadioButton *> l10 = findChildren<BlRadioButton *> ( QRegExp ( "mui_" + campo->nomcampo() + "_*" ) );
+        if ( l10.size() > 0 ) {
             int aux = 0;
-            for ( int i = 0; i < l6.size(); ++i ) {
-                if ( l6.at ( i ) ->isChecked() ) {
-                    campo->set ( l6.at ( i ) ->fieldValue() );
+            for ( int i = 0; i < l10.size(); ++i ) {
+                if ( l10.at ( i ) ->isChecked() ) {
+                    campo->set ( l10.at ( i ) ->fieldValue() );
                     aux = 1;
                 } // end if
             } // end for

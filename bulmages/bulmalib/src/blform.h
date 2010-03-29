@@ -26,6 +26,7 @@
 #include <QCloseEvent>
 
 #include "bldialogchanges.h"
+#include "bldoublespinbox.h"
 #include "blfunctions.h"
 #include "blmaincompany.h"
 #include "blwidget.h"
