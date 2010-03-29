@@ -56,10 +56,10 @@
          <enum>Qt::NoFocus</enum>
         </property>
         <property name="toolTip">
-         <string>Imprimir ticket</string>
+         <string>imprimir ticket</string>
         </property>
         <property name="whatsThis">
-         <string>Imprimir ticket</string>
+         <string>imprimir ticket</string>
         </property>
         <property name="text">
          <string/>
@@ -229,6 +229,9 @@
         <property name="checkable">
          <bool>true</bool>
         </property>
+        <property name="popupMode">
+         <enum>QToolButton::DelayedPopup</enum>
+        </property>
        </widget>
       </item>
       <item>
@@ -267,7 +270,13 @@
     </widget>
    </item>
    <item>
-    <widget class="QFrame" name="frame_2">
+    <widget class="QFrame" name="mui_frame">
+     <property name="minimumSize">
+      <size>
+       <width>60</width>
+       <height>60</height>
+      </size>
+     </property>
      <property name="frameShape">
       <enum>QFrame::NoFrame</enum>
      </property>
@@ -277,17 +286,58 @@
      <property name="lineWidth">
       <number>0</number>
      </property>
-     <layout class="QHBoxLayout" name="horizontalLayout">
-      <property name="margin">
-       <number>0</number>
-      </property>
-      <item>
+     <layout class="QGridLayout" name="gridLayout">
+      <item row="0" column="0">
        <widget class="QCheckBox" name="mui_propiedades">
+        <property name="minimumSize">
+         <size>
+          <width>0</width>
+          <height>60</height>
+         </size>
+        </property>
         <property name="text">
          <string>Formateado</string>
         </property>
         <property name="checked">
          <bool>true</bool>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="1">
+       <widget class="QToolButton" name="mui_borrarticket">
+        <property name="minimumSize">
+         <size>
+          <width>48</width>
+          <height>48</height>
+         </size>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>48</width>
+          <height>48</height>
+         </size>
+        </property>
+        <property name="toolTip">
+         <string>Borrar ticket</string>
+        </property>
+        <property name="whatsThis">
+         <string>Borrar ticket</string>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+        <property name="icon">
+         <iconset resource="../../../bulmages.qrc">
+          <normaloff>:/Images/edit-delete.png</normaloff>:/Images/edit-delete.png</iconset>
+        </property>
+        <property name="iconSize">
+         <size>
+          <width>45</width>
+          <height>45</height>
+         </size>
+        </property>
+        <property name="autoRaise">
+         <bool>false</bool>
         </property>
        </widget>
       </item>
@@ -341,7 +391,7 @@
     </hint>
     <hint type="destinationlabel">
      <x>179</x>
-     <y>359</y>
+     <y>605</y>
     </hint>
    </hints>
   </connection>
@@ -364,16 +414,16 @@
   <connection>
    <sender>mui_configurar</sender>
    <signal>toggled(bool)</signal>
-   <receiver>mui_propiedades</receiver>
+   <receiver>mui_frame</receiver>
    <slot>setVisible(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>253</x>
-     <y>44</y>
+     <x>236</x>
+     <y>11</y>
     </hint>
     <hint type="destinationlabel">
-     <x>296</x>
-     <y>88</y>
+     <x>416</x>
+     <y>55</y>
     </hint>
    </hints>
   </connection>

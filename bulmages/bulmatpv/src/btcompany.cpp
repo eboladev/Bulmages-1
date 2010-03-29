@@ -94,6 +94,7 @@ void BtCompany::createMainWindows ( BlSplashScreen *splash )
 
     /// Creamos los nuevos tickets.
     m_ticketActual = newBtTicket();
+    m_ticketActual->setDbValue("nomticket", "Ticket actual");
     
     if ( !m_ticketActual )
         _depura ( "error en el sistema, reservando memoria.", 0 );
@@ -103,14 +104,18 @@ void BtCompany::createMainWindows ( BlSplashScreen *splash )
 
     /// Hacemos la sincronizacioin del XML por si hubo tickets sin guardar
     QFile file ( g_confpr->valor ( CONF_DIR_USER ) + "tickets_bulmatpv.xml" );
-    if ( !file.open ( QIODevice::ReadOnly ) ) {
-        _depura ( "END BtCompany::syncXML", 0, "Fichero no se puede abrir" );
-        return;
+
+    if (file.exists()) {
+        if ( !file.open ( QIODevice::ReadOnly ) ) {
+            _depura ( "END BtCompany::syncXML", 0, "Fichero no se puede abrir" );
+            return;
+        } // end if
+        QString result (file.readAll());
+        file.close();
+        syncXML(result);    
     } // end if
-    QString result (file.readAll());
-    file.close();
-    syncXML(result);    
-    
+
+
     
     /// Disparamos los plugins.
     int res = g_plugins->lanza ( "BtCompany_createMainWindows_Post", this );
@@ -875,7 +880,7 @@ void BtCompany::syncXML(const QString &textxml) {
             /// Si ho ha habido sincronizacion con ningun elemento
             /// Creamos un ticket nuevo y lo sincronizamos.
              if (!sincronizado) {
-                /// Hacemos la sincronizacion forzada ya que no ha habido coincidencias anteriores.
+        	 /// Hacemos la sincronizacion forzada ya que no ha habido coincidencias anteriores.
                  BtTicket *tick = newBtTicket();
                  tick->setDbValue ( "idtrabajador", ticketActual() ->dbValue ( "idtrabajador" ) );
                  tick->syncXML(result, true);

@@ -42,13 +42,16 @@ MTicketIVAInc::MTicketIVAInc ( BtCompany *emp, QWidget *parent ) : BlWidget ( em
     setFocusPolicy ( Qt::NoFocus );
     emp->pWorkspace()->addWindow ( this );
     setWindowTitle ( "Ticket" );
+    m_parent = parent;
 
     /// Por defecto hacemos el browser invisible porque es leeeento
     mui_plainText->setVisible(FALSE);
-    mui_propiedades->setVisible(FALSE);
+    mui_frame->setVisible(FALSE);
+    
 
     g_plugins->lanza ( "MTicketIVAInc_MTicketIVAInc_Post", this );
     _depura ( "END MTicketIVAInc::MTicketIVAInc", 0 );
+    pintar();
 }
 
 MTicketIVAInc::~MTicketIVAInc()
@@ -60,12 +63,10 @@ MTicketIVAInc::~MTicketIVAInc()
 void MTicketIVAInc::pintar()
 {
     _depura ( "MTicketIVAInc::pintar", 0 );
-
     if ( g_plugins->lanza ( "MTicketIVAInc_pintar", this ) ) {
         _depura ( "END MTicketIVAInc::pintar", 0 );
         return;
     } // end if
-
     BtTicket *tick = ( ( BtCompany * ) mainCompany() )->ticketActual();
     //QString html = "<font size=\"1\">";
     QString html = "<p style=\"font-family:monospace; font-size: 12pt;\">";
@@ -128,7 +129,6 @@ void MTicketIVAInc::pintar()
 // ======================================
     
     html += "<BR><HR><BR>";
-    
     
     
     
@@ -248,6 +248,11 @@ void MTicketIVAInc::pintar()
 */ 
 html += "</p>";
 
+/// Establece el valor en la carga inicial antes de que algo sea visible.
+if (!m_parent->isVisible()) {
+    mui_browser->setText ( html );
+} // end if
+
 if (mui_browser->isVisible()) {
     mui_browser->setText ( html );
 } // end if
@@ -255,6 +260,7 @@ if (mui_browser->isVisible()) {
 if (mui_plainText->isVisible()) {
     mui_plainText->setPlainText (textoplano);
 } // end if
+
 
     _depura ( "END MTicketIVAInc::pintar", 0 );
 }
@@ -283,4 +289,30 @@ void MTicketIVAInc::on_mui_imprimir_clicked()
 {
     /// Llamamos al atajo de teclado que llama a BtTicket::imprimir()
     ( ( BtCompany * ) mainCompany() )->pulsaTecla ( Qt::Key_F2 );
+}
+
+void MTicketIVAInc::on_mui_borrarticket_clicked()
+{
+  BtCompany *emp = ( ( BtCompany * ) mainCompany() );
+  
+  
+    BtTicket *ticket;
+    QString tmp = "-" + emp->ticketActual()->dbValue ( "nomticket" ) + "-\n";
+    fprintf(stderr, tmp.toAscii()  );
+   // if (emp->ticketActual()->dbValue ( "nomticket" ).isEmpty()) {
+      for ( int i = 0; i < emp->listaTickets() ->size(); ++i ) {
+	  ticket = emp->listaTickets() ->at ( i );
+	  if ( emp->ticketActual()->dbValue ( "nomticket" ) == ticket->dbValue ( "nomticket" ) ) {
+	    emp->listaTickets()->removeAt(i);
+	    
+	  } // end if
+      } // end for
+    //} // end if
+    
+    /// Eliminamos el ticket actual.
+    delete emp->ticketActual();
+    /// Creamos un nuevo ticket vacio.
+    ticket = emp-> newBtTicket();
+    emp->setTicketActual(ticket);
+    ticket->pintar();
 }

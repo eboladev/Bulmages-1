@@ -38,6 +38,8 @@ class MTicketIVAInc : public BlWidget, public Ui_MTicketIVAIncBase
 {
     Q_OBJECT
 
+    QWidget *m_parent;
+
 public:
     MTicketIVAInc ( BtCompany *emp, QWidget *parent );
     virtual ~MTicketIVAInc();
@@ -48,6 +50,7 @@ public slots:
     virtual void on_mui_bajar_clicked();
     virtual void on_mui_borrar_clicked();
     virtual void on_mui_imprimir_clicked();
+    virtual void on_mui_borrarticket_clicked();
     
 };
 

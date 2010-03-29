@@ -853,6 +853,10 @@ void BtTicket::ponerCantidad ( QString cantidad )
         mensajeAviso ( "No existe linea" );
         return;
     } // end if
+    
+    if (cantidad.isEmpty()) {
+	return;
+    } // end if
 
     if ( cant == 0 ) {
         borrarLinea ( m_lineaActual );
