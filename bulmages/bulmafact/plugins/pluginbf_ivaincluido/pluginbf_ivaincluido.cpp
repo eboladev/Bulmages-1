@@ -66,6 +66,9 @@ int ArticuloView_ArticuloView_Post ( ArticuloView *trab )
     textLabel2_9_26->setText ( "PVP Iva Inc." );
 
     BlDoubleSpinBox *passtrab = new BlDoubleSpinBox ( trab->m_frameplugin );
+    passtrab->setValue ( 0.0 );
+    passtrab->setMinimum( -10000000 );
+    passtrab->setMaximum(  10000000 );
     passtrab->setObjectName ( QString::fromUtf8 ( "mui_pvpivaincarticulo" ) );
     hboxLayout160->addWidget ( passtrab );
 
