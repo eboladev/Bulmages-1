@@ -94,6 +94,11 @@ void MTicketIVAInc::pintar()
       html += "<TR><TD colspan=\"3\" align=\"center\"><B>" + tick->dbValue ( "nomticket" ) + "</B></td></tr>";
       textoplano = "     " + tick->dbValue("nomticket") + "\n";
     } // end if
+    
+    html += "<TR>";
+    html += "<TD WIDTH=\"10%\">" + QString(_("CANT:")) + "</TD><TD WIDTH=\"80%\">" + QString(_("ARTICULO:")) + "</TD><TD WIDTH=\"10%\">" + QString(_("PRECIO:")) + "</TD>";
+    html += "</TR>";
+    html += "<TR><TD COLSPAN=\"3\"><HR></TD></TR>";
 
     BlDbRecord *item;
     
@@ -293,16 +298,15 @@ void MTicketIVAInc::on_mui_imprimir_clicked()
 
 void MTicketIVAInc::on_mui_borrarticket_clicked()
 {
-  BtCompany *emp = ( ( BtCompany * ) mainCompany() );
-  
-  
+
+    BtCompany *emp = ( ( BtCompany * ) mainCompany() );
     BtTicket *ticket;
-    QString tmp = "-" + emp->ticketActual()->dbValue ( "nomticket" ) + "-\n";
-    fprintf(stderr, tmp.toAscii()  );
+    QString nomticketactual = emp->ticketActual()->dbValue ( "nomticket" );
+
    // if (emp->ticketActual()->dbValue ( "nomticket" ).isEmpty()) {
       for ( int i = 0; i < emp->listaTickets() ->size(); ++i ) {
 	  ticket = emp->listaTickets() ->at ( i );
-	  if ( emp->ticketActual()->dbValue ( "nomticket" ) == ticket->dbValue ( "nomticket" ) ) {
+	  if ( nomticketactual == ticket->dbValue ( "nomticket" ) ) {
 	    emp->listaTickets()->removeAt(i);
 	    
 	  } // end if
@@ -314,5 +318,11 @@ void MTicketIVAInc::on_mui_borrarticket_clicked()
     /// Creamos un nuevo ticket vacio.
     ticket = emp-> newBtTicket();
     emp->setTicketActual(ticket);
+    
+    /// Solo agregamos a la lista si es el ticket actual.
+    if (nomticketactual == emp->ticketActual()->nomTicketDefecto()) {
+	emp->listaTickets()->append(ticket);
+    } // end if
+    
     ticket->pintar();
 }

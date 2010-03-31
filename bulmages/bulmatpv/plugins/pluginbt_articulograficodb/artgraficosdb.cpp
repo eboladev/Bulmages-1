@@ -122,29 +122,34 @@ void ArtGraficosDb::muestraPantalla ( int numpantalla )
     if ( m_pantallaActual > m_numPantallas - 1 ) m_pantallaActual = 0;
     if ( m_pantallaActual < 0 ) m_pantallaActual = m_numPantallas - 1;
     
-    // Obtenemos datos de la familia de esta pantalla
+    /// Obtenemos datos de la familia de esta pantalla
     FamiliaArticulos fa = m_listfamilias.value(m_pantallaActual);
     
-    // Celdas por fila
+    /// Celdas por fila
     QString grid = g_confpr->valor ( CONF_TPV_CELLS_PER_ROW );
 
-    // Ancho y alto de la celda en pixeles
+    /// Ancho y alto de la celda en pixeles
     QString cellwidth = g_confpr->valor ( CONF_TPV_CELL_WIDTH );
 
     /// Cogemos el titulo de la pantalla
     QString titulo = fa.m_nombrefamilia;
     mui_titulo->setText ( titulo );
 
-    // Hacemos una parrilla cuadrada
+    /// Calcula el numero de filas y columnas que tiene que tener la parrilla en pantalla
+    int numarticulos = fa.m_listaarticulos.count();
+    int numrows = numarticulos / grid.toInt();
+    if ( numarticulos % grid.toInt() !=0 ) numrows++;
+     
     mui_list->clear();
-    mui_list->setRowCount ( grid.toInt() );
+    mui_list->setRowCount ( numrows );
     mui_list->setColumnCount ( grid.toInt() );
 
-    // Recorremos las filas para configurar el alto
-    for ( int row = 0; row < grid.toInt(); row++ )
+    int numcells = grid.toInt() * numrows;
+    /// Recorremos las filas para configurar el alto
+    for ( int row = 0; row < numrows; row++ )
         mui_list->setRowHeight ( row, cellwidth.toInt() );
         
-    // Recorremos las columnas para configurar el ancho
+    /// Recorremos las columnas para configurar el ancho
     for ( int column  = 0; column < grid.toInt(); column++ )
         mui_list->setColumnWidth ( column, cellwidth.toInt() );
 
@@ -152,14 +157,16 @@ void ArtGraficosDb::muestraPantalla ( int numpantalla )
 //    QWidget *activewindow = NULL;
     
     int nitem = 0;
-    int numarticulos = fa.m_listaarticulos.count();
+    
+    
     NodoArticulo na;
 
-    for ( int row = 0; row < grid.toInt(); row++ ) {
+    for ( int row = 0; row < numrows; row++ ) {
     
         for ( int column = 0; column < grid.toInt(); column++ ) {
 
-            if ( nitem < numarticulos ) {
+            //if ( nitem < numarticulos ) {
+            if ( nitem < numcells ) {
             
                 // Obtenemos el articulo en la posicion nitem
                 na = fa.m_listaarticulos.value(nitem);

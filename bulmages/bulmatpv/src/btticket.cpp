@@ -67,6 +67,8 @@ BtTicket::BtTicket ( BlMainCompany *emp, QWidget *parent ) : BlWidget ( emp, par
 
     m_lineaActual = NULL;
     m_listaLineas = new QList<BlDbRecord *>;
+    
+    m_nomTicketDefecto = _("Ticket actual"); 
 
     g_plugins->lanza ( "BtTicket_BtTicket_Post", this );
 
@@ -78,6 +80,15 @@ BtTicket::~BtTicket()
     _depura ( "BtTicket::~BtTicket", 0 );
     _depura ( "END BtTicket::~BtTicket", 0 );
 }
+
+
+QString BtTicket::nomTicketDefecto()
+{
+    _depura ( "BtTicket::nomTicketDefecto", 0 );
+    return m_nomTicketDefecto;
+    _depura ( "END BtTicket::nomTicketDefecto", 0 );
+}
+
 
 BlDbRecord * BtTicket::agregarLinea()
 {

@@ -111,7 +111,7 @@ void Abrevs::on_mui_aparcar_clicked()
     } // end if
 
 
-    if ( emp->valorBtInput() == "" ) {
+    if ( emp->valorBtInput() == emp->ticketActual()->nomTicketDefecto()) {
         mensajeAviso ( _ ( "Asigne un nombre al ticket antes de aparcarlo." ) );
         return;
     } // end if
@@ -145,7 +145,7 @@ void Abrevs::on_mui_aparcar_clicked()
     g_plugins->lanza("Abrevs_on_mui_aparcar_clicked", this);
 
     BtTicket *tick;
-    if ( nomticket == "") {
+    if ( nomticket == emp->ticketActual()->nomTicketDefecto()) {
       tick = emp->newBtTicket();
       tick->setDbValue ( "idtrabajador", emp->ticketActual() ->dbValue ( "idtrabajador" ) );
       emp->listaTickets() ->append ( tick );

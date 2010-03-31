@@ -43,6 +43,7 @@ MTicket::MTicket ( BtCompany *emp, QWidget *parent ) : BlWidget ( emp, parent )
     emp->pWorkspace() ->addWindow ( this );
     setWindowTitle ( "Ticket" );
     g_plugins->lanza ( "MTicket_MTicket_Post", this );
+    mui_frame->setVisible(FALSE);
 
     _depura ( "END MTicket::MTicket", 0 );
 }
@@ -64,12 +65,12 @@ void MTicket::pintar()
         return;
     } // end if
 
-    BtTicket *tick =     ( ( BtCompany * ) mainCompany() ) ->ticketActual();
+    BtTicket *tick = ( ( BtCompany * ) mainCompany() ) ->ticketActual();
     //QString html = "<font size=\"1\">";
     QString html = "<p style=\"font-family:monospace; font-size: 12pt;\">";
     QString html1 = "<font size=\"1\">";
 
-    html1 += "Ticket: " + tick->dbValue ( "nomticket" ) + "<BR>";
+    html1 += "Ticket: "+ tick->dbValue ( "nomticket" ) + "<BR>";
 
     QString querytrab = "SELECT * FROM trabajador WHERE idtrabajador = " + tick->dbValue ( "idtrabajador" );
     BlDbRecordSet *curtrab = mainCompany() ->loadQuery ( querytrab );
@@ -80,11 +81,19 @@ void MTicket::pintar()
     BlDbRecordSet *cur1 = mainCompany() ->loadQuery ( query );
     html1 += "Cliente: " + tick->dbValue ( "idcliente" ) + " " + cur1->valor ( "nomcliente" ) + "<BR>";
     delete cur1;
+    
+
 
     html += "<TABLE border=\"0\" width=\"100%\">";
+
+    if (tick->dbValue("nomticket") != "") {
+      html += "<TR><TD colspan=\"3\" align=\"center\"><B>" + tick->dbValue ( "nomticket" ) + "</B></TD></tr>";
+    } // end if
+    
     html += "<TR>";
     html += "<TD WIDTH=\"10%\">" + QString(_("CANT:")) + "</TD><TD WIDTH=\"80%\">" + QString(_("ARTICULO:")) + "</TD><TD WIDTH=\"10%\">" + QString(_("PRECIO:")) + "</TD>";
     html += "</TR>";
+    html += "<TR><TD COLSPAN=\"3\"><HR></TD></TR>";
 
     BlDbRecord *item;
 
@@ -304,4 +313,38 @@ void MTicket::on_mui_reimprimir_clicked()
     delete cur;
 
     _depura ( "END MTicket::on_mui_reimprimir_clicked", 0 );
+}
+
+void MTicket::on_mui_borrarticket_clicked()
+{
+    _depura ( "MTicket::on_mui_borrarticket_clicked", 0 );
+    
+    BtCompany *emp = ( ( BtCompany * ) mainCompany() );
+    BtTicket *ticket;
+    QString nomticketactual = emp->ticketActual()->dbValue ( "nomticket" );
+
+   // if (emp->ticketActual()->dbValue ( "nomticket" ).isEmpty()) {
+      for ( int i = 0; i < emp->listaTickets() ->size(); ++i ) {
+	  ticket = emp->listaTickets() ->at ( i );
+	  if ( nomticketactual == ticket->dbValue ( "nomticket" ) ) {
+	    emp->listaTickets()->removeAt(i);
+	    
+	  } // end if
+      } // end for
+    //} // end if
+    
+    /// Eliminamos el ticket actual.
+    delete emp->ticketActual();
+    /// Creamos un nuevo ticket vacio.
+    ticket = emp-> newBtTicket();
+    emp->setTicketActual(ticket);
+    
+    /// Solo agregamos a la lista si es el ticket actual.
+    if (nomticketactual == emp->ticketActual()->nomTicketDefecto()) {
+	emp->listaTickets()->append(ticket);
+    } // end if
+    
+    ticket->pintar();
+    
+    _depura ( "END MTicket::on_mui_borrarticket_clicked", 0 );
 }

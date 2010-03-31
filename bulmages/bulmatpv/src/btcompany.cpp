@@ -94,12 +94,12 @@ void BtCompany::createMainWindows ( BlSplashScreen *splash )
 
     /// Creamos los nuevos tickets.
     m_ticketActual = newBtTicket();
-    m_ticketActual->setDbValue("nomticket", "Ticket actual");
+    //m_ticketActual->setDbValue("nomticket", "");
     
     if ( !m_ticketActual )
         _depura ( "error en el sistema, reservando memoria.", 0 );
         
-    m_listaTickets.append ( m_ticketActual );
+    //m_listaTickets.append ( m_ticketActual );
 
 
     /// Hacemos la sincronizacioin del XML por si hubo tickets sin guardar
@@ -577,7 +577,8 @@ BtTicket *BtCompany::newBtTicket()
         return bud;
         
     bud = new BtTicket ( this, NULL );
-    
+    bud->setDbValue("nomticket", bud->nomTicketDefecto());
+
     _depura ( "END BtCompany::newBtTicket", 0 );
     
     return bud;
@@ -631,12 +632,13 @@ void BtCompany::cobrar(bool imprimir)
     for ( int i = 0; i < m_listaTickets.size(); ++i ) {
         ticket = m_listaTickets.at ( i );
 
-        if ( "" == ticket->dbValue ( "nomticket" ) && idtrabajador == ticket->dbValue ( "idtrabajador" ) ) {
+        if ( ticket->nomTicketDefecto() == ticket->dbValue ( "nomticket" ) && idtrabajador == ticket->dbValue ( "idtrabajador" ) ) {
             setTicketActual ( ticket );
             ticket->pintar();
             ticketv = ticket;
-        }// end if
-    }// end for
+        } // end if
+
+    } // end for
 
     /// Si el trabajador no tiene ticket vacio lo creamos y le ponemos el idtrabajador.
     if ( !ticketv ) {

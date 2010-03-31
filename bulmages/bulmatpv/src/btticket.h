@@ -42,6 +42,7 @@ class BT_EXPORT BtTicket :  public BlWidget, public BlDbRecord
 private:
     QList<BlDbRecord *> *m_listaLineas;
     BlDbRecord *m_lineaActual;
+    QString m_nomTicketDefecto;
 
 public:
     virtual void pintar();
@@ -49,6 +50,7 @@ public:
 public:
     BtTicket ( BlMainCompany *emp = NULL, QWidget *parent = 0 );
     virtual ~BtTicket();
+    QString nomTicketDefecto();
     BlDbRecord *agregarLinea();
     QList<BlDbRecord *> *listaLineas();
     /// Inserta o agrega cantidad de articulos al ticket
