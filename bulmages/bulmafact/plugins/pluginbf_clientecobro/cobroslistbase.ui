@@ -10,8 +10,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>750</width>
-    <height>550</height>
+    <width>612</width>
+    <height>514</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -543,18 +543,37 @@
            <number>0</number>
           </property>
           <item>
-           <widget class="QCheckBox" name="mui_previsiones">
+           <widget class="QLabel" name="label_2">
             <property name="text">
-             <string>Cobros previstos</string>
+             <string>Tipo de cobro:</string>
             </property>
            </widget>
           </item>
           <item>
-           <widget class="QCheckBox" name="mui_efectivos">
-            <property name="text">
-             <string>Cobros efectivos</string>
+           <widget class="QComboBox" name="mui_tipocobro">
+            <property name="minimumSize">
+             <size>
+              <width>150</width>
+              <height>0</height>
+             </size>
             </property>
            </widget>
+          </item>
+          <item>
+           <spacer name="verticalSpacer">
+            <property name="orientation">
+             <enum>Qt::Vertical</enum>
+            </property>
+            <property name="sizeType">
+             <enum>QSizePolicy::Ignored</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>20</width>
+              <height>40</height>
+             </size>
+            </property>
+           </spacer>
           </item>
          </layout>
         </item>
@@ -605,7 +624,7 @@
          <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
         </property>
         <property name="buddy">
-         <cstring>mui_idforma_pago</cstring>
+         <cstring>mui_formapago</cstring>
         </property>
        </widget>
       </item>
@@ -642,7 +661,7 @@
        </widget>
       </item>
       <item row="2" column="2">
-       <widget class="BfBuscarFormaPago" name="mui_idforma_pago">
+       <widget class="BfBuscarFormaPago" name="mui_formapago">
         <property name="minimumSize">
          <size>
           <width>150</width>

@@ -40,6 +40,7 @@
 #include "blperiodicitycombobox.h"
 #include "blmainwindow.h"
 
+
 ///
 /**
 \param parent
@@ -603,9 +604,9 @@ void BlForm::pintar()
 }
 
 
-/** Recoge de forma automatica los valores que tienen los QLineEdit y los pone en la
+/** Recoge de forma automatica los valores que tienen los 'widgets' y los pone en la
     estructura de BlDbRecord.
-    Para que funcionen bien los QLineEdit deben tener como nombre el mismo campo que
+    Para que funcionen bien los 'widgets' deben tener como nombre el mismo campo que
     el correspondiente en la base de datos precedidos de mui_
 */
 /**
@@ -882,13 +883,10 @@ void BlForm::pintarPost()
 }
 
 
-
-
 /// Sustituye valores en el texto pasado como variables por su valor.
 /// tipoEscape puede ser 0 --> Sin parseo
 ///    1 --> ParseoXML
 ///    2 --> ParseoPython
-
 void BlForm::substrVars ( QString &buff, int tipoEscape )
 {
 
@@ -931,7 +929,6 @@ void BlForm::substrVars ( QString &buff, int tipoEscape )
     } // end while
 
 }
-
 
 
 /// Busca strings del tipo [xxxx] entro del texto pasado y los sustituye

@@ -53,6 +53,11 @@ CobrosList::CobrosList ( QWidget *parent, Qt::WFlags flag, edmode editmodo )
     m_cliente->m_valores["cifcliente"] = "";
     m_cliente->m_valores["nomcliente"] = "";    hideBusqueda();
 
+    mui_tipocobro->insertItem ( 0, _ ( "Todos los cobros" ) );
+    mui_tipocobro->insertItem ( 1, _ ( "Solo previsiones" ) );
+    mui_tipocobro->insertItem ( 2, _ ( "Cobro real" ) );
+    mui_tipocobro->setCurrentIndex ( 1 );
+
     _depura ( "END CobrosList::CobrosList", 0 );
 }
 
@@ -72,8 +77,8 @@ CobrosList::CobrosList ( BfCompany *comp, QWidget *parent, Qt::WFlags flag, edmo
         return;
     m_cliente->setMainCompany ( comp );
     mui_list->setMainCompany ( comp );
-    mui_idforma_pago->setMainCompany ( comp );
-    mui_idforma_pago->setId ( "" );
+    mui_formapago->setMainCompany ( comp );
+    mui_formapago->setId ( "" );
     setSubForm ( mui_list );
     /// Establecemos los parametros de busqueda del Cliente
     m_cliente->setLabel ( _ ( "Cliente:" ) );
@@ -109,7 +114,8 @@ void CobrosList::presentar()
 {
     _depura ( "CobrosList::presentar", 0 );
     if ( mainCompany() != NULL ) {
-        mui_list->cargar ( "SELECT * FROM cobro LEFT JOIN cliente ON cliente.idcliente = cobro.idcliente LEFT JOIN forma_pago ON cobro.idforma_pago = forma_pago.idforma_pago LEFT JOIN trabajador ON trabajador.idtrabajador = cobro.idtrabajador  WHERE 1 = 1 " + generaFiltro() );
+	QString query = "SELECT * FROM cobro LEFT JOIN cliente ON cliente.idcliente = cobro.idcliente LEFT JOIN forma_pago ON cobro.idforma_pago = forma_pago.idforma_pago LEFT JOIN trabajador ON trabajador.idtrabajador = cobro.idtrabajador WHERE 1 = 1 " + generaFiltro();
+        mui_list->cargar ( query );
         /// Hacemos el calculo del total.
         BlFixed total = mui_list->sumarCampo ( "cantcobro" );
         m_total->setText ( total.toQString() );
@@ -134,14 +140,12 @@ QString CobrosList::generaFiltro()
         filtro += " AND cobro.idcliente = " + m_cliente->id();
     } // end if
 
-    QString subfiltro = " AND ";
-    if ( mui_efectivos->isChecked() ) {
-        filtro += " AND NOT previsioncobro";
-        subfiltro = " OR ";
-    } // end if
-
-    if ( mui_previsiones->isChecked() ) {
-        filtro += subfiltro + " previsioncobro";
+    if ( mui_tipocobro->currentIndex() == 1 ) {
+        /// Muestra solo las de prevision.
+        filtro += " AND previsioncobro ";
+    } else if ( mui_tipocobro->currentIndex() == 2 ) {
+        /// Muestra solo las de NO prevision.
+        filtro += " AND NOT previsioncobro ";
     } // end if
 
     if ( m_fechain->text() != "" )
@@ -150,8 +154,8 @@ QString CobrosList::generaFiltro()
     if ( m_fechafin->text() != "" )
         filtro += " AND fechacobro <= '" + m_fechafin->text() + "' ";
 
-    if ( mui_idforma_pago->id() != "" )
-        filtro += " AND idforma_pago = " + mui_idforma_pago->id();
+    if ( mui_formapago->id() != "" )
+        filtro += " AND cobro.idforma_pago = " + mui_formapago->id() ;
 
     _depura ( "END CobrosList::generaFiltro", 0 );
     return ( filtro );
@@ -270,8 +274,8 @@ void CobrosList::setMainCompany ( BfCompany *comp )
     BlMainCompanyPointer::setMainCompany ( comp );
     m_cliente->setMainCompany ( comp );
     mui_list->setMainCompany ( comp );
-    mui_idforma_pago->setMainCompany ( comp );
-    mui_idforma_pago->setId ( "" );
+    mui_formapago->setMainCompany ( comp );
+    mui_formapago->setId ( "" );
 }
 
 /** Devuelve el identificador del cobro seleccionado
