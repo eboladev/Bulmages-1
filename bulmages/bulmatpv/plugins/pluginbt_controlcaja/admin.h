@@ -12,6 +12,8 @@ class Admin : public BlWidget, public Ui_AdminBase
 {
     Q_OBJECT
 
+    BtCompany *m_btCompany;
+
 public:
     Admin ( BtCompany *emp, QWidget *parent );
     virtual ~Admin();

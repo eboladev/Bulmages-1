@@ -7,6 +7,7 @@
 Admin::Admin ( BtCompany *emp, QWidget *parent ) : BlWidget ( emp, parent )
 {
     setupUi ( this );
+    m_btCompany = emp;
 }
 
 
@@ -20,14 +21,14 @@ void Admin::on_mui_z_clicked()
                                 _ ( "Realmente desea Realizar la Z?" ),
                                 QMessageBox::Ok,
                                 QMessageBox::Cancel ) == QMessageBox::Ok ) {
-        ( ( BtCompany * ) mainCompany() ) ->z();
+        m_btCompany->z();
     } // end if
 
 }
 
 void Admin::on_mui_x_clicked()
 {
-    ( ( BtCompany * ) mainCompany() ) ->x();
+    m_btCompany->x();
 }
 
 void Admin::on_mui_salir_clicked()

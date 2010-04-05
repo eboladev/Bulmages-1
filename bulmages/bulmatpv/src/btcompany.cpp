@@ -140,19 +140,26 @@ void BtCompany::createMainWindows ( BlSplashScreen *splash )
 void BtCompany::z()
 {
     _depura( "BtCompany::z", 0 );
+
+    QString queryfechas;
     
     if ( g_plugins->lanza ( "BtCompany_z", this ) )
         return;
     
     begin();
-    
+
     /// Obtenemos fecha de la ultima Z
     QString query = "SELECT idz, fechaz FROM z ORDER BY idz DESC LIMIT 1";
     BlDbRecordSet *curFechaUltimaZ = loadQuery ( query );
     
+    if ( curFechaUltimaZ->numregistros() == 0) {
+        queryfechas = "SELECT DISTINCT fechaalbaran FROM albaran WHERE idz IS NULL ORDER BY fechaalbaran ASC";
+    } else {
+        queryfechas = "SELECT DISTINCT fechaalbaran FROM albaran WHERE idz IS NULL AND fechaalbaran > '" + curFechaUltimaZ->valor("fechaz") + "' ORDER BY fechaalbaran ASC";
+    } // end if
+    
     /// Buscamos las fechas de los tickets que quedan pendientes de hacer Z
     /// Hacemos una Z por cada fecha que exista en los tickets y no tenga Z asociada
-    QString queryfechas = "SELECT DISTINCT fechaalbaran FROM albaran WHERE idz IS NULL AND fechaalbaran > '" + curFechaUltimaZ->valor("fechaz") + "' ORDER BY fechaalbaran ASC";
     BlDbRecordSet *curfechas = loadQuery ( queryfechas );
     
     while ( !curfechas->eof() ) {
@@ -404,6 +411,7 @@ void BtCompany::z()
 
 void BtCompany::x()
 {
+
     _depura( "BtCompany::x", 0 );
 
     if ( g_plugins->lanza ( "BtCompany_x", this ) )
