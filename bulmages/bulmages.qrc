@@ -382,6 +382,9 @@
         <file>images/png/i_tuxPeq.png</file>
     </qresource>
     <qresource prefix="/Genericos48x48" >
+        <file>images/png/48x48/i_bulmages_pos_x.48x48.png</file>
+        <file>images/png/48x48/i_bulmages_pos_z.48x48.png</file>
+        <file>images/oxygen/actions/48x48/add_product.png</file>
         <file>images/logotipo/definitivo/variacion 18 - logotipo 02.jpg</file>
         <file>images/logotipo/definitivo/variacion 18 - logotipo 05.jpg</file>
         <file>images/png/bulmacont.png</file>

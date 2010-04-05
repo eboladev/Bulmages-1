@@ -321,7 +321,7 @@
           </property>
           <property name="icon">
            <iconset resource="../../../bulmages.qrc">
-            <normaloff>:/Images/document-import.png</normaloff>:/Images/document-import.png</iconset>
+            <normaloff>:/Genericos48x48/images/oxygen/actions/48x48/add_product.png</normaloff>:/Genericos48x48/images/oxygen/actions/48x48/add_product.png</iconset>
           </property>
           <property name="iconSize">
            <size>

@@ -2,6 +2,7 @@
 #include "btcompany.h"
 #include "blplugins.h"
 
+
 BtInput::BtInput ( BtCompany *emp )
 {
     /// Establece valores iniciales.
@@ -21,13 +22,20 @@ void BtInput::pulsaTecla ( int tecla, const QString &texto )
 void BtInput::keyPressEvent ( QKeyEvent *e )
 {
     switch ( e->key() ) {
-        case Qt::Key_F1:
+        case Qt::Key_F3:
+            setText ( "MESA " );
+            break;
+        case Qt::Key_F4:
+            // Limpia el display.
+            setText ( "" );
+            break;
+        case Qt::Key_F5:
             m_empresaTPV->cobrar();
             break;
-        case Qt::Key_F2:
+        case Qt::Key_F6:
             m_empresaTPV->ticketActual() ->imprimir();
             break;
-        case Qt::Key_F3:
+        case Qt::Key_F7:
             m_empresaTPV->ticketActual() ->abrircajon();
             break;
         case Qt::Key_Up:
@@ -52,10 +60,6 @@ void BtInput::keyPressEvent ( QKeyEvent *e )
             m_empresaTPV->ticketActual() ->ponerPrecio ( text() );
             setText ( "" );
             break;
-        case Qt::Key_F4:
-            // Limpia el display.
-            setText ( "" );
-            break;
         case Qt::Key_Return:
             m_empresaTPV->ticketActual() ->insertarArticuloCodigo ( text() );
             setText ( "" );
@@ -63,9 +67,6 @@ void BtInput::keyPressEvent ( QKeyEvent *e )
         case Qt::Key_Enter:
             m_empresaTPV->ticketActual() ->insertarArticuloCodigoNL ( text() );
             setText ( "" );
-            break;
-        case Qt::Key_F5:
-            setText ( "MESA " );
             break;
         default:
             QLineEdit::keyPressEvent ( e );

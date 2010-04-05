@@ -135,7 +135,7 @@
         </size>
        </property>
        <property name="text">
-        <string>ABRIR CAJON</string>
+        <string>Abrir cajon</string>
        </property>
        <property name="icon">
         <iconset resource="../../../bulmages.qrc">
@@ -146,6 +146,9 @@
          <width>48</width>
          <height>48</height>
         </size>
+       </property>
+       <property name="toolButtonStyle">
+        <enum>Qt::ToolButtonTextUnderIcon</enum>
        </property>
       </widget>
      </item>
@@ -164,7 +167,7 @@
         </size>
        </property>
        <property name="text">
-        <string>IMPRIMIR TICKET</string>
+        <string>Imprimir ticket</string>
        </property>
        <property name="icon">
         <iconset resource="../../../bulmages.qrc">
@@ -175,6 +178,9 @@
          <width>48</width>
          <height>48</height>
         </size>
+       </property>
+       <property name="toolButtonStyle">
+        <enum>Qt::ToolButtonTextUnderIcon</enum>
        </property>
       </widget>
      </item>
@@ -193,7 +199,7 @@
         </size>
        </property>
        <property name="text">
-        <string>COBRAR</string>
+        <string>Cobrar</string>
        </property>
        <property name="icon">
         <iconset resource="../../../bulmages.qrc">
@@ -204,6 +210,9 @@
          <width>48</width>
          <height>48</height>
         </size>
+       </property>
+       <property name="toolButtonStyle">
+        <enum>Qt::ToolButtonTextUnderIcon</enum>
        </property>
       </widget>
      </item>

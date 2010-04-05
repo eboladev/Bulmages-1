@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>218</width>
-    <height>170</height>
+    <width>306</width>
+    <height>234</height>
    </rect>
   </property>
   <property name="minimumSize">
@@ -138,7 +138,7 @@
         </size>
        </property>
        <property name="text">
-        <string>ABRIR CAJON</string>
+        <string>Abrir cajon</string>
        </property>
        <property name="icon">
         <iconset resource="../../../bulmages.qrc">
@@ -149,6 +149,9 @@
          <width>48</width>
          <height>48</height>
         </size>
+       </property>
+       <property name="toolButtonStyle">
+        <enum>Qt::ToolButtonTextUnderIcon</enum>
        </property>
       </widget>
      </item>
@@ -167,7 +170,7 @@
         </size>
        </property>
        <property name="text">
-        <string>IMPRIMIR TICKET</string>
+        <string>Imprimir ticket</string>
        </property>
        <property name="icon">
         <iconset resource="../../../bulmages.qrc">
@@ -178,6 +181,9 @@
          <width>48</width>
          <height>48</height>
         </size>
+       </property>
+       <property name="toolButtonStyle">
+        <enum>Qt::ToolButtonTextUnderIcon</enum>
        </property>
       </widget>
      </item>
@@ -196,7 +202,7 @@
         </size>
        </property>
        <property name="text">
-        <string>COBRAR</string>
+        <string>Cobrar</string>
        </property>
        <property name="icon">
         <iconset resource="../../../bulmages.qrc">
@@ -207,6 +213,9 @@
          <width>48</width>
          <height>48</height>
         </size>
+       </property>
+       <property name="toolButtonStyle">
+        <enum>Qt::ToolButtonTextUnderIcon</enum>
        </property>
       </widget>
      </item>
@@ -219,6 +228,12 @@
      </property>
      <property name="text">
       <string>Imprimir ticket al cobrar</string>
+     </property>
+     <property name="iconSize">
+      <size>
+       <width>16</width>
+       <height>16</height>
+      </size>
      </property>
      <property name="checked">
       <bool>true</bool>

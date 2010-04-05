@@ -138,6 +138,6 @@ void TecladoNumerico::on_mui_minus_clicked() {
 
 void TecladoNumerico::on_mui_mesa_clicked() {
     playSound();
-    ( ( BtCompany * ) mainCompany() ) ->pulsaTecla ( Qt::Key_F5, "" );
+    ( ( BtCompany * ) mainCompany() ) ->pulsaTecla ( Qt::Key_F3, "" );
 }
 

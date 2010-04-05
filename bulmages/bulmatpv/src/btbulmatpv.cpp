@@ -133,15 +133,16 @@ BtBulmaTPV::~BtBulmaTPV()
 void BtBulmaTPV::s_ventanaCompleta()
 {
     _depura ( "BtBulmaTPV::s_ventanaCompleta", 0 );
-    
+
     if ( isFullScreen() ) {
         showNormal();
     } else {
         showFullScreen();
     } // end if
-    
+
     _depura ( "END BtBulmaTPV::s_ventanaCompleta", 0 );
 }
+
 
 /** Metodo que responde a la pulsacion de About en el menu.
     Inicializa la ventana de About y la muestra.
@@ -152,11 +153,12 @@ void BtBulmaTPV::s_About()
 {
     _depura ( "BtBulmaTPV::s_About", 0 );
     
-    AboutView about;
+    BtAboutView about;
     about.exec();
     
     _depura ( "END BtBulmaTPV::s_About", 0 );
 }
+
 
 /** Evento de cerrar la ventana principal.
     Libera parte de la memoria reservada. Ya que sabemos que se va a cerrar el programa.
@@ -173,6 +175,7 @@ void BtBulmaTPV::closeEvent ( QCloseEvent * )
     _depura ( "END BtBulmaTPV::closeEvent", 0 );
 }
 
+
 ///
 /**
 \return
@@ -184,6 +187,7 @@ BlWorkspace * BtBulmaTPV::workspace()
     return pWorkspace;
 }
 
+
 void BtBulmaTPV::keyReleaseEvent ( QKeyEvent * e )
 {
     _depura ( "BtBulmaTPV::keyReleaseEvent", 0 );
@@ -191,7 +195,9 @@ void BtBulmaTPV::keyReleaseEvent ( QKeyEvent * e )
     _depura ( "END BtBulmaTPV::keyReleaseEvent", 0 );
 }
 
+
 BtCompany *BtBulmaTPV::empresaTPV()
 {
     return m_empresaTPV;
 }
+

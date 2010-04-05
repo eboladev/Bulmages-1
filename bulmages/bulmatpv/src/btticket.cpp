@@ -68,7 +68,7 @@ BtTicket::BtTicket ( BlMainCompany *emp, QWidget *parent ) : BlWidget ( emp, par
     m_lineaActual = NULL;
     m_listaLineas = new QList<BlDbRecord *>;
     
-    m_nomTicketDefecto = _("Ticket actual"); 
+    m_nomTicketDefecto = _("Ticket actual");
 
     g_plugins->lanza ( "BtTicket_BtTicket_Post", this );
 
@@ -98,8 +98,8 @@ BlDbRecord * BtTicket::agregarLinea()
     BlDbRecord * item = new BlDbRecord ( mainCompany() );
     item->setDbTableName ( "lalbaran" );
     item->setDbFieldId ( "numlalbaran" );
-    item->addDbField ( "idalbaran", BlDbField::DbInt, BlDbField::DbNotNull, _( "Id Albaran" ) );
-    item->addDbField ( "numlalbaran", BlDbField::DbInt, BlDbField::DbPrimaryKey, _( "Id lalbaran" ) );
+    item->addDbField ( "idalbaran", BlDbField::DbInt, BlDbField::DbNotNull, _( "Id albaran" ) );
+    item->addDbField ( "numlalbaran", BlDbField::DbInt, BlDbField::DbPrimaryKey, _( "Id linea albaran" ) );
     item->addDbField ( "cantlalbaran", BlDbField::DbNumeric, BlDbField::DbNotNull, _( "Cantidad" ) );
     item->addDbField ( "pvplalbaran", BlDbField::DbNumeric, BlDbField::DbNotNull, _( "Precio" ) );
     item->addDbField ( "ivalalbaran", BlDbField::DbNumeric, BlDbField::DbNotNull, _( "IVA" ) );
@@ -988,24 +988,26 @@ int BtTicket::guardar()
         QString id;
         mainCompany() ->begin();
         DBsave ( id );
+
         BlDbRecord *item;
         
         for ( int i = 0; i < listaLineas() ->size(); ++i ) {
             QString id1;
             item = listaLineas() ->at ( i );
-            item->setDbValue ( "idalbaran", id );
+            int f = item->setDbValue ( "idalbaran", id );
             item->setDbValue ( "ordenlalbaran", QString::number ( i ) );
             item->DBsave ( id1 );
         } // end for
+	    fprintf(stderr, "G\n");
         
-        mainCompany() ->commit();
         setDbValue("idalbaran", id);
         BlDbRecordSet *cur = mainCompany() ->loadQuery ( "SELECT * FROM albaran WHERE idalbaran = " + id );
         setDbValue("refalbaran", cur->valor("refalbaran"));
         setDbValue("numalbaran", cur->valor("numalbaran"));
 
-        delete cur;
+        mainCompany() ->commit();
 
+        delete cur;
         _depura ( "END BtTicket::guardar", 0 );
         
         return 0;
