@@ -1370,6 +1370,10 @@ void BlSubForm::cargar ( BlDbRecordSet *cur )
             } // end if
             /// Rellena la tabla con los datos.
             mui_list->setItem ( i, j, camp );
+            /// Pintar de verde el fondo de las celdas editables
+            if ( ! ( m_lcabecera[j]->options() & BlSubFormHeader::DbNoWrite ) ) {
+               mui_list->item ( i, j )->setBackgroundColor ( QColor ( 245, 255, 245 ) );
+            } // end if
         } // end for
         barra->setValue ( i );
     } // end for
