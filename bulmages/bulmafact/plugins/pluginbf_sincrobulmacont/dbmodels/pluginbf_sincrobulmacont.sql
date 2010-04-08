@@ -577,8 +577,8 @@ BEGIN
 	PERFORM dblink_exec('bulmafact2cont', 'BEGIN WORK;');
 	totaliva := 0;
 
-	concepto := '[A. Automatico] Factura Cliente Num.' || NEW.numfactura;
-	concepto1 := 'Factura Cliente Num. ' || NEW.numfactura;
+	concepto := '[A. Automatico] Factura Cliente Num: '  || NEW.codigoserie_factura || ' / ' || NEW.numfactura;
+	concepto1 := 'Factura Cliente Num: ' || NEW.codigoserie_factura || ' / ' || NEW.numfactura;
 
 	asientonuevo := TRUE;
 
@@ -806,8 +806,8 @@ BEGIN
 	PERFORM conectabulmacont();
 	PERFORM dblink_exec('bulmafact2cont', 'BEGIN WORK;');
 
-	concepto := '[A.Automatico] Factura Proveedor Num:' || NEW.numfacturap;
-	concepto1 := 'Factura Proveedor Num. ' || NEW.numfacturap;
+	concepto := '[A.Automatico] Factura Proveedor Num: ' || NEW.numfacturap;
+	concepto1 := 'Factura Proveedor Num: ' || NEW.numfacturap;
 
 	-- Puede darse el caso de que el contable haya borrado el asiento. Y por eso comprobamos que realmente exista en la contabilidad.
 	asientonuevo := TRUE;
