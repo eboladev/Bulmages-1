@@ -1605,7 +1605,7 @@ void BlSubForm::cargar ( QString query )
            int fila_futura = -1;
 
            /// Si la fila activa no era la &uacute;ltima,
-           if ( !next_active_row_id.isEmpty() ) {
+           if ( !next_active_row_id.isEmpty() && active_row < rowCount() ) {
 
               /// y sigue siendo la misma (no ha sido borrada)...
               if ( ( !active_row_id.isEmpty() && dbValue ( dbFieldId(), active_row ) == active_row_id )
