@@ -48,18 +48,19 @@ ZList::ZList ( BfCompany *comp, QWidget *parent, Qt::WFlags flag )
     int res = g_plugins->lanza ( "ZList_ZList", this );
     if ( res != 0 )
         return;
+
     mui_list->setMainCompany ( comp );
     setSubForm ( mui_list );
 
     mui_list->setDbTableName ( "z" );
     mui_list->setDbFieldId ( "idz" );
     mui_list->addSubFormHeader ( "idz", BlDbField::DbInt, BlDbField::DbNotNull | BlDbField::DbPrimaryKey, BlSubFormHeader::DbHideView | BlSubFormHeader::DbNoWrite, _ ( "ID Z" ) );
-    mui_list->addSubFormHeader ( "fechaz", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _ ( "Fecha" ) );
+    mui_list->addSubFormHeader ( "fechaz", BlDbField::DbDate, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _ ( "Fecha" ) );
     mui_list->addSubFormHeader ( "horaz", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _ ( "Hora" ) );
     mui_list->addSubFormHeader ( "nomalmacen", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _ ( "Almacen" ) );
-    mui_list->addSubFormHeader ( "totalz", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _ ( "Total" ) );
-    mui_list->addSubFormHeader ( "numtickets", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _ ( "Tickets" ) );
-    mui_list->addSubFormHeader ( "idalmacen", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _ ( "Id. almacen" ) );
+    mui_list->addSubFormHeader ( "totalz", BlDbField::DbNumeric, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _ ( "Total" ) );
+    mui_list->addSubFormHeader ( "numtickets", BlDbField::DbInt, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _ ( "Tickets" ) );
+    mui_list->addSubFormHeader ( "idalmacen", BlDbField::DbInt, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _ ( "Id. almacen" ) );
 
     mui_list->setInsert ( FALSE );
     mui_list->setDelete ( FALSE );

@@ -6,7 +6,7 @@
 
 Nombre: Búscar clientes en el TPV.
 
-Biblioteca: libpluginbuscacliente.so
+Biblioteca: libpluginbt_buscacliente.so
 
 Descripción: <H1>Búsqueda de clientes en el TPV</H1>
 <P>Muestra una ventana de diálogo de búsqueda de clientes sobre el que podemos escribir el

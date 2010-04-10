@@ -27,6 +27,7 @@
 #include <QProgressDialog>
 #include <QEvent>
 #include <QTextStream>
+#include <QObject>
 
 #include "blfunctions.h"
 

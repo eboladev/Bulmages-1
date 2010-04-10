@@ -49,7 +49,7 @@ int entryPoint ( BtBulmaTPV *tpv )
 
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale ( LC_ALL, "" );
-    bindtextdomain ( "pluginbusquedacliente", g_confpr->valor ( CONF_DIR_TRADUCCION ).toAscii().constData() );
+    bindtextdomain ( "pluginbt_buscacliente", g_confpr->valor ( CONF_DIR_TRADUCCION ).toAscii().constData() );
 
     g_emp = tpv->empresaTPV();
 
@@ -89,4 +89,5 @@ int Busqueda_on_m_inputBusqueda_editingFinished_Post ( BlSearchWidget *busc )
     } // end if
     return 0;
 }
+
 

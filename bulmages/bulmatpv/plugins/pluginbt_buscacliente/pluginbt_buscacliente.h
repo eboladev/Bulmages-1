@@ -31,6 +31,5 @@ extern "C" PLUGINBT_BUSCACLIENTE_EXPORT int entryPoint ( BtBulmaTPV * );
 extern "C" PLUGINBT_BUSCACLIENTE_EXPORT int BtCompany_createMainWindows_Post ( BtCompany * );
 extern "C" PLUGINBT_BUSCACLIENTE_EXPORT int Busqueda_on_m_inputBusqueda_editingFinished_Post ( BlSearchWidget * );
 
-
 #endif
 

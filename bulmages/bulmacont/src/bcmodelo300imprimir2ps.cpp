@@ -29,7 +29,6 @@
 #include <QRadioButton>
 #include <QLineEdit>
 #include <QMessageBox>
-#include <QObject>
 
 #include "bcmodelo300imprimir2ps.h"
 #include "blconfiguration.h"

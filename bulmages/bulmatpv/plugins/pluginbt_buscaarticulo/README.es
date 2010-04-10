@@ -4,7 +4,7 @@
 #README.es
 #20080501 
 
-Nombre: Búscar artículos en el TPV.
+Nombre: Busca artículos en el TPV.
 
 Biblioteca: libpluginbt_buscaarticulo.so
 
