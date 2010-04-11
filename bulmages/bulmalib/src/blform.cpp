@@ -573,8 +573,19 @@ void BlForm::pintar()
 
         /// Buscamos un BlDoubleSpinBox con nombre coincidente.
         BlDoubleSpinBox *l8 = findChild<BlDoubleSpinBox *> ( "mui_" + campo->nomcampo() );
-        if ( l8 )
+        if ( l8 ) {
             l8->setValue ( campo->valorcampo().toDouble() );
+            /// Buscamos los decimales que tiene el campo y establecemos el numero de decimales a ese valor.
+            QString query2 = "SELECT numeric_scale FROM information_schema.columns WHERE table_name = '"+tableName()+"' and column_name='"+campo->nomcampo()+"';";
+            /// Cargamos el query y lo recorremos
+            BlDbRecordSet *cur = mainCompany() ->loadQuery ( query2 );
+            if ( !cur->eof() ) {
+                l8->setDecimals(cur->valor("numeric_scale").toInt());
+            } // end if
+            delete cur;
+
+        } // end if
+
 
         /// Buscamos los QCheckBox con nombre coincidente.
         QCheckBox *l9 = findChild<QCheckBox *> ( "mui_" + campo->nomcampo() );
