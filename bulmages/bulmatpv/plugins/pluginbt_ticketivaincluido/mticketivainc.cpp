@@ -170,26 +170,35 @@ void MTicketIVAInc::on_mui_borrarticket_clicked()
     BtCompany *emp = ( ( BtCompany * ) mainCompany() );
     BtTicket *ticket;
     QString nomticketactual = emp->ticketActual()->dbValue ( "nomticket" );
+    QString nomticketdefecto = emp->ticketActual()->nomTicketDefecto();
+    int i;
 
-   // if (emp->ticketActual()->dbValue ( "nomticket" ).isEmpty()) {
-      for ( int i = 0; i < emp->listaTickets() ->size(); ++i ) {
-	  ticket = emp->listaTickets() ->at ( i );
-	  if ( nomticketactual == ticket->dbValue ( "nomticket" ) ) {
+    for ( i = 0; i < emp->listaTickets() ->size(); ++i ) {
+	ticket = emp->listaTickets() ->at ( i );
+	if ( nomticketactual == ticket->dbValue ( "nomticket" ) ) {
 	    emp->listaTickets()->removeAt(i);
 	    
-	  } // end if
+	} // end if
       } // end for
-    //} // end if
     
     /// Eliminamos el ticket actual.
-    delete emp->ticketActual();
-    /// Creamos un nuevo ticket vacio.
-    ticket = emp-> newBtTicket();
-    emp->setTicketActual(ticket);
+    delete emp->ticketActual();    
     
     /// Solo agregamos a la lista si es el ticket actual.
-    if (nomticketactual == emp->ticketActual()->nomTicketDefecto()) {
+    if (nomticketactual == nomticketdefecto) {
+        /// Creamos un nuevo ticket vacio.
+	ticket = emp->newBtTicket();
+	emp->setTicketActual(ticket);
 	emp->listaTickets()->append(ticket);
+    } else {
+	/// Localizamos el ticket por defecto.
+	for ( i = 0; i < emp->listaTickets() ->size(); ++i ) {
+	    ticket = emp->listaTickets() ->at ( i );
+	    if ( nomticketdefecto == ticket->dbValue ( "nomticket" ) ) {
+		emp->setTicketActual(ticket);
+	        break;
+	    } // end if
+	} // end for
     } // end if
     
     ticket->pintar();
