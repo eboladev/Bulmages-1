@@ -76,7 +76,6 @@ private:
     BlPostgreSqlClient *m_dbConnection; ///< Puntero a la base de datos a utilizar
     QString m_valorcampoorig;         ///< indica el valor del campo en un estado anterior para determinar si ha habido cambios.
 
-
 public:
     BlDbField ( BlPostgreSqlClient *com, QString nom, DbType typ, int res, QString nomp = "" );
     virtual ~BlDbField();

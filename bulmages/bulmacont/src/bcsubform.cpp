@@ -533,6 +533,7 @@ QWidget *BcSubFormDelegate::createEditor ( QWidget *parent, const QStyleOptionVi
         BlDoubleSpinBox * editor = new BlDoubleSpinBox ( parent );
         editor->setMinimum ( -1000000 );
         editor->setMaximum ( 1000000 );
+        editor->setDecimals(linea->numericPrecision());
         _depura ( "END BcSubFormDelegate::createEditor", 0, "BlDoubleSpinBox" );
         return editor;
     } else if ( linea->nomcampo() == "nomcanal" ) {

@@ -316,35 +316,10 @@ QWidget *BtSubFormDelegate::createEditor ( QWidget *parent, const QStyleOptionVi
         BlDoubleSpinBox * editor = new BlDoubleSpinBox ( parent );
         editor->setMinimum ( -1000000 );
         editor->setMaximum ( 1000000 );
+        editor->setDecimals(linea->numericPrecision());
         return editor;
-
-        /*
-            } else if (linea->nomcampo() == "codigocompletoarticulo") {
-                BfBuscarArticuloDelegate *editor = new BfBuscarArticuloDelegate(parent);
-                editor->setMainCompany((BfCompany *)m_subform->mainCompany());
-                return editor;
-            } else if (linea->nomcampo() == "desctipo_iva") {
-                BfBuscarTipoIVADelegate *editor = new BfBuscarTipoIVADelegate(parent);
-                editor->setMainCompany((BfCompany *)m_subform->mainCompany());
-                return editor;
-            } else if (linea->nomcampo() == "nomtrabajador") {
-                BfBuscarTrabajadorDelegate *editor = new BfBuscarTrabajadorDelegate(parent);
-                editor->setMainCompany((BfCompany *)m_subform->mainCompany());
-                return editor;
-            } else if (linea->nomcampo() == "nomalmacen") {
-                BfBuscarAlmacenDelegate *editor = new BfBuscarAlmacenDelegate(parent);
-                editor->setMainCompany((BfCompany *)m_subform->mainCompany());
-                return editor;
-            } else  {
-        //        QWidget *it = QItemDelegate::createEditor(parent, option, index);
-        //        if (linea->dbFieldType() == DbInt) {
-                    /// es un numero y se alinea a la derecha.
-        //        } else {
-
-        //        } // end if
-        */
-        return QItemDelegate::createEditor ( parent, option, index );
     } // end if
+    return QItemDelegate::createEditor ( parent, option, index );
     _depura ( "END BtSubFormDelegate::createEditor", 0 );
    return 0;
 }

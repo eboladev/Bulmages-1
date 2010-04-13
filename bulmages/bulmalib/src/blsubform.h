@@ -64,6 +64,8 @@ protected:
     unsigned int m_restricciones; ///< Las restricciones de la columna en el recordset
     BlDbField::DbType m_tipo;  ///< El tipo de los datos
     unsigned int m_options;  ///< Las opciones para la columna en el SubFormulario
+    int m_numericPrecision;           ///< indica la precision en decimales si el campo es de tipo numerico
+
 
 public:
     BlSubFormHeader ( QString nom, BlDbField::DbType typ, int res, int opt, QString nomp = "" );
@@ -75,6 +77,8 @@ public:
     int restrictcampo();
     QString nomcampo();
     virtual QString exportXML();
+    const int numericPrecision();
+    void setNumericPrecision(int pres);
 };
 
 

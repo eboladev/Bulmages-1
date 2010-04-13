@@ -520,15 +520,9 @@ QWidget *BfSubFormDelegate::createEditor ( QWidget *parent, const QStyleOptionVi
         BlDoubleSpinBox * editor = new BlDoubleSpinBox ( parent );
         editor->setMinimum ( -10000000 );
         editor->setMaximum ( 10000000 );
+        editor->setDecimals(linea->numericPrecision());
         _depura ( "END BfSubFormDelegate::createEditor", 0, "QSPinBox" );
         return editor;
-/*
-    } else if ( linea->nomcampo() == "codigocompletoarticulo" ) {
-        BfBuscarArticuloDelegate * editor = new BfBuscarArticuloDelegate ( parent );
-        editor->setMainCompany ( ( BfCompany * ) m_subform->mainCompany() );
-        _depura ( "END BfSubFormDelegate::createEditor", 0, "BfBuscarArticulo" );
-        return editor;
-*/
     } else if ( linea->nomcampo() == "desctipo_iva" ) {
         BfBuscarTipoIVADelegate * editor = new BfBuscarTipoIVADelegate ( parent );
         editor->setMainCompany ( ( BfCompany * ) m_subform->mainCompany() );
@@ -593,13 +587,6 @@ void BfSubFormDelegate::setModelData ( QWidget *editor, QAbstractItemModel *mode
                 emit cant_changed ( m_subform->lista()->at ( index.row() ) );
             } // end if
         } // end if
-/*
-    } else if ( linea->nomcampo() == "codigocompletoarticulo" ) {
-        BfBuscarArticuloDelegate * comboBox = static_cast<BfBuscarArticuloDelegate*> ( editor );
-        QString value = comboBox->currentText();
-        value = value.left ( value.indexOf ( ".-" ) );
-        model->setData ( index, value );
-*/
     } else if ( linea->nomcampo() == "desctipo_iva" ) {
         BfBuscarTipoIVADelegate * comboBox = static_cast<BfBuscarTipoIVADelegate*> ( editor );
         QString value = comboBox->currentText();
@@ -643,12 +630,6 @@ void BfSubFormDelegate::setEditorData ( QWidget* editor, const QModelIndex& inde
         BlDoubleSpinBox *spinBox = static_cast<BlDoubleSpinBox*> ( editor );
         spinBox->setValue ( value.toDouble() );
         spinBox->selectAll();
-/*
-    } else if ( linea->nomcampo() == "codigocompletoarticulo" ) {
-        QString value = index.model() ->data ( index, Qt::DisplayRole ).toString();
-        BfBuscarArticuloDelegate *comboBox = static_cast<BfBuscarArticuloDelegate*> ( editor );
-        comboBox->addItem ( value );
-*/
     } else if ( linea->nomcampo() == "desctipo_iva" ) {
         QString value = index.model() ->data ( index, Qt::DisplayRole ).toString();
         BfBuscarTipoIVADelegate *comboBox = static_cast<BfBuscarTipoIVADelegate*> ( editor );

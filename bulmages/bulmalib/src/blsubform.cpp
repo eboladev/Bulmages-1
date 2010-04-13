@@ -299,6 +299,31 @@ void BlSubForm::setMainCompany ( BlMainCompany *emp )
 {
     _depura ( "BlMainCompanyPointer::setMainCompany", 0 );
     BlMainCompanyPointer::setMainCompany ( emp );
+
+
+    if ( tableName() != "" && mainCompany() != NULL ) {
+      /// Averiguamos de los campos que ya estan introducidos la precision de los de tipo numerico.
+      BlSubFormHeader *linea;
+      for ( int i = 0; i < m_lcabecera.size(); ++i ) {
+          linea = m_lcabecera.at ( i );
+
+          /// Comprobamos la precision del campo (si este es del tipo numerico) y la guardamos.
+          /// Lo hacemos aqui y no en el constructor de BlDbField porque precisamos del nombre de la tabla para
+          /// poder hacer la consulta sobre la precisión del campo y ese dato solo esta en BlDbRecord.
+          /// Buscamos los decimales que tiene el campo y establecemos el numero de decimales a ese valor.
+          /// NOTA: En caso de que no haya sido posible calcular la precisión esta se establece por defecto como 2.
+          if (linea->dbFieldType() == BlDbField::DbNumeric ) {
+
+                QString query2 = "SELECT numeric_scale FROM information_schema.columns WHERE table_name = '"+tableName()+"' and column_name='"+linea->nomcampo()+"';";
+                BlDbRecordSet *cur = mainCompany() ->loadQuery ( query2 );
+                if ( !cur->eof() ) {
+                    linea->setNumericPrecision(cur->valor("numeric_scale").toInt());
+                } // end if
+                delete cur;
+          } // end if
+      } // end for
+    } // end if
+
     cargaSpecs();
     _depura ( "END BlMainCompanyPointer::setMainCompany", 0 );
 }
@@ -932,6 +957,21 @@ BlSubFormHeader * BlSubForm::header ( const QString &head )
     return NULL;
 }
 
+
+
+
+const int BlSubFormHeader::numericPrecision() {
+    _depura ( "BlSubFormHeader::numericPrecision", 0 );
+    return m_numericPrecision;
+    _depura ( "END BlSubFormHeader::numericPrecision", 0 );
+}
+
+
+void BlSubFormHeader::setNumericPrecision(int pres) {
+    _depura ( "BlSubFormHeader::setNumericPrecision", 0 );
+    m_numericPrecision = pres;
+    _depura ( "END BlSubFormHeader::setNumericPrecision", 0 );
+}
 
 
 
@@ -1870,6 +1910,32 @@ int BlSubForm::addSubFormHeader ( QString nom, BlDbField::DbType typ, int res, i
     if ( opt & BlSubFormHeader::DbDisableView ) {
         it->setFlags ( Qt::ItemIsEnabled | Qt::ItemIsSelectable | Qt::ItemIsEditable );
     } // end if
+
+
+
+
+    /// Comprobamos la precision del campo (si este es del tipo numerico) y la guardamos.
+    /// Lo hacemos aqui y no en el constructor de BlDbField porque precisamos del nombre de la tabla para
+    /// poder hacer la consulta sobre la precisión del campo y ese dato solo esta en BlDbRecord.
+    /// Buscamos los decimales que tiene el campo y establecemos el numero de decimales a ese valor.
+
+    /// NOTA: En caso de que no haya sido posible calcular la precisión esta se establece por defecto como 2.
+
+    if (typ == BlDbField::DbNumeric ) {
+      if ( tableName() != "" && mainCompany() != NULL ) {
+          QString query2 = "SELECT numeric_scale FROM information_schema.columns WHERE table_name = '"+tableName()+"' and column_name='"+nom+"';";
+          BlDbRecordSet *cur = mainCompany() ->loadQuery ( query2 );
+          if ( !cur->eof() ) {
+              camp->setNumericPrecision(cur->valor("numeric_scale").toInt());
+          } // end if
+          delete cur;
+      } else {
+              camp->setNumericPrecision(2);
+      } // end if
+    } // end if
+
+
+
 
 
     mui_listcolumnas->setItem ( mui_listcolumnas->rowCount() - 1, 0, it );
@@ -3160,6 +3226,7 @@ QWidget *BlSubFormDelegate::createEditor ( QWidget *parent, const QStyleOptionVi
         BlDoubleSpinBox * editor = new BlDoubleSpinBox ( parent );
         editor->setMinimum ( -100000000 );
         editor->setMaximum ( 100000000 );
+        editor->setDecimals(linea->numericPrecision());
         _depura ( "END BfSubFormDelegate::createEditor", 0, "QSPinBox" );
         return editor;
     } else if ( linea->dbFieldType() == BlDbField::DbInt ) {

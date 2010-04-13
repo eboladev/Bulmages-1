@@ -181,7 +181,7 @@ QString BlDbField::valorcampo()
 BlDbField::BlDbField ( BlPostgreSqlClient *com, QString nom, DbType typ, int res, QString nomp )
 {
     _depura ( "BlDbField::BlDbField", 0 );
-    m_dbConnection = com;
+    setDbConnection(com);
     m_nomcampo = nom;
     m_tipo = typ;
     m_restrict = res;
@@ -307,7 +307,6 @@ void BlDbField::syncXML(const QString &text) {
 }
 
 
-
 /// Constructor de la clase que toma por defecto la base de datos con la que va a operar.
 /**
 \param con Puntero a la base de datos con la que vamos a trabajar.
@@ -317,6 +316,7 @@ BlDbRecord::BlDbRecord ( BlMainCompany *con )
     _depura ( "BlDbRecord::BlDbRecord", 0 );
     m_dbConnection = con;
     m_nuevoCampo = TRUE;
+    m_tablename="";
     _depura ( "END BlDbRecord::BlDbRecord", 0 );
 }
 
@@ -733,12 +733,25 @@ la clase para que aprenda a operar con una tabla determinada.
 int BlDbRecord::addDbField ( QString nom, BlDbField::DbType typ, int res, QString nomp = "" )
 {
     _depura ( "BlDbRecord::addDbField", 0 );
-    BlDbField *camp = new BlDbField ( m_dbConnection, nom, typ, res, nomp );
-    camp->set
-    ( "" );
-    m_lista.append ( camp );
-    _depura ( "END BlDbRecord::addDbField", 0 );
-    return 0;
+
+    try {
+
+        BlDbField *camp = new BlDbField ( m_dbConnection, nom, typ, res, nomp );
+        camp->set
+        ( "" );
+        m_lista.append ( camp );
+
+        _depura ( "END BlDbRecord::addDbField", 0 );
+        return 0;
+
+
+    } catch(...) {
+        _depura("Error en la inserción del campo al registro");
+    } // end try
+
+
+
+
 }
 
 
@@ -1070,6 +1083,9 @@ void BlDbRecord::imprimir()
 
     _depura ( "END BlDbRecord::imprimir", 0 );
 }
+
+
+
 
 /// Hace la exportacion del campo a XML
 QString BlDbRecord::exportXML() {
