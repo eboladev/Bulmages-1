@@ -160,7 +160,7 @@
          <string/>
         </property>
         <property name="icon">
-         <iconset>
+         <iconset resource="../../bulmages.qrc">
           <normaloff>:/BulmaCont32x32/images/png/i_editDelete.png</normaloff>:/BulmaCont32x32/images/png/i_editDelete.png</iconset>
         </property>
        </widget>
@@ -177,7 +177,7 @@
          <string/>
         </property>
         <property name="icon">
-         <iconset>
+         <iconset resource="../../bulmages.qrc">
           <normaloff>:/BulmaCont32x32/images/png/i_ok.png</normaloff>:/BulmaCont32x32/images/png/i_ok.png</iconset>
         </property>
        </widget>
@@ -197,6 +197,57 @@
  <includes>
   <include location="local">local_BlI18n.h</include>
  </includes>
- <resources/>
- <connections/>
+ <resources>
+  <include location="../../bulmages.qrc"/>
+ </resources>
+ <connections>
+  <connection>
+   <sender>mui_filtro_texto</sender>
+   <signal>returnPressed()</signal>
+   <receiver>mui_filtro_aplicar</receiver>
+   <slot>click()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>404</x>
+     <y>17</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>727</x>
+     <y>21</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>mui_filtro_fecha_fin</sender>
+   <signal>returnPressed()</signal>
+   <receiver>mui_filtro_aplicar</receiver>
+   <slot>click()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>331</x>
+     <y>24</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>730</x>
+     <y>29</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>mui_filtro_fecha_ini</sender>
+   <signal>returnPressed()</signal>
+   <receiver>mui_filtro_aplicar</receiver>
+   <slot>click()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>229</x>
+     <y>18</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>720</x>
+     <y>13</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
 </ui>
