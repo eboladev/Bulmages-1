@@ -54,11 +54,15 @@ ArtGraficosDb::ArtGraficosDb ( BlMainCompany *emp, QWidget *parent ) : BlWidget 
     
     m_numPantallas = 0;
     m_pantallaActual = 0;
-    mui_list->horizontalHeader()->hide();
-    mui_list->verticalHeader()->hide();
+    
+    /// Inicializa la variable.
+    mui_list = new QTableWidget();
     
     // Crea las pantallas en funcion de las familias de la BD
     ponPantallas();
+    
+    // Renderiza las pantallas y las almacena para mostrar cuando sea necesario.
+    renderPantallas ();
     // Muestra la primera pantalla creada
     muestraPantalla ( 0 );
     
@@ -68,163 +72,170 @@ ArtGraficosDb::ArtGraficosDb ( BlMainCompany *emp, QWidget *parent ) : BlWidget 
 ArtGraficosDb::~ArtGraficosDb()
 {
     _depura ( "ArtGraficosDb::~ArtGraficosDb", 0 );
+    
+    /// Libera la memoria de las pantallas.
+    for (int i = 0; i < m_pantallas.count(); i++) {
+	QTableWidget *pantalla = m_pantallas.at(i);
+	delete pantalla;
+    } // end for    
+    
     _depura ( "END ArtGraficosDb::~ArtGraficosDb", 0 );
 }
 
-void ArtGraficosDb::on_mui_list_cellClicked ( int row, int column )
+void ArtGraficosDb::cellClicked ( int row, int column )
 {
-    _depura ( "ArtGraficosDb::on_mui_list_cellClicked", 0 );
-    
+    _depura ( "ArtGraficosDb::cellClicked", 0 );
     // Obtenemos el item de la celda
     BtLabel *label = (BtLabel *) mui_list->cellWidget(row, column);
-    
+  
     // Celda vacia. No hacemos nada.
     if (label == NULL) { return; }
 
     QString artvarios = g_confpr->valor ( CONF_ARTICULOS_VARIOS );
-    
+   
     if ( ! artvarios.contains ( label->m_codigoarticulo ) ) {
         ( ( BtCompany * ) mainCompany() )->ticketActual()->insertarArticuloCodigo ( label->m_codigoarticulo );
     } else {
         ( ( BtCompany * ) mainCompany() )->ticketActual()->insertarArticuloCodigoNL ( label->m_codigoarticulo );
     } // end if
         
-    _depura ( "END ArtGraficosDb::on_mui_list_cellClicked", 0 );
+
+    _depura ( "END ArtGraficosDb::cellClicked", 0 );
 }
 
-void ArtGraficosDb::on_mui_botonSiguiente_clicked()
+void ArtGraficosDb::on_mui_botonSiguiente_pressed()
 {
-    _depura ( "ArtGraficosDb::on_mui_botonSiguiente_clicked", 0 );
+    _depura ( "ArtGraficosDb::on_mui_botonSiguiente_pressed", 0 );
 
     muestraPantalla ( m_pantallaActual + 1 );
     
-    _depura ( "END ArtGraficosDb::on_mui_botonSiguiente_clicked", 0 );
+    _depura ( "END ArtGraficosDb::on_mui_botonSiguiente_pressed", 0 );
 }
 
-void ArtGraficosDb::on_mui_botonAnterior_clicked()
+void ArtGraficosDb::on_mui_botonAnterior_pressed()
 {
-    _depura ( "ArtGraficosDb::on_mui_botonAnterior_clicked", 0 );
+    _depura ( "ArtGraficosDb::on_mui_botonAnterior_pressed", 0 );
     
     muestraPantalla ( m_pantallaActual - 1 );
     
-    _depura ( "END ArtGraficosDb::on_mui_botonAnterior_clicked", 0 );
+    _depura ( "END ArtGraficosDb::on_mui_botonAnterior_pressed", 0 );
 }
 
-void ArtGraficosDb::muestraPantalla ( int numpantalla )
-{
-    _depura ( "ArtGraficosDb::muestraPantalla", 0 );
 
-    m_pantallaActual = numpantalla;
+void ArtGraficosDb::muestraPantalla ( int numPantalla ) {
+  
+    /// Hace un bucle sinfin de pantallas.
+    if (numPantalla < 0) {
+	/// Muestra la ultima pantalla.
+	numPantalla = m_numPantallas - 1;
+    } else if (numPantalla == m_numPantallas) {
+	/// Muestra la primera pantalla.
+	numPantalla = 0;
+    } // end if
+  
+    m_pantallaActual = numPantalla;
+    QTableWidget *pantalla = m_pantallas.at(numPantalla);
+    mui_render->takeWidget();
+    mui_render->setWidget(pantalla);
+    mui_list = pantalla;
+    mui_titulo->setText( pantalla->accessibleName() );
+}
+
+
+void ArtGraficosDb::renderPantallas ()
+{
+    _depura ( "ArtGraficosDb::renderPantallas", 0 );
 
     m_numPantallas = m_listfamilias.count();
 
-    /// Simulamos un sistema ciclico.
-    if ( m_pantallaActual > m_numPantallas - 1 ) m_pantallaActual = 0;
-    if ( m_pantallaActual < 0 ) m_pantallaActual = m_numPantallas - 1;
-    
-    /// Obtenemos datos de la familia de esta pantalla
-    FamiliaArticulos fa = m_listfamilias.value(m_pantallaActual);
-    
     /// Celdas por fila
     QString grid = g_confpr->valor ( CONF_TPV_CELLS_PER_ROW );
 
     /// Ancho y alto de la celda en pixeles
     QString cellwidth = g_confpr->valor ( CONF_TPV_CELL_WIDTH );
 
-    /// Cogemos el titulo de la pantalla
-    QString titulo = fa.m_nombrefamilia;
-    mui_titulo->setText ( titulo );
+    /// Recorremos todas las familias para crear todas las pantallas.
+    for (int i = 0; i < m_numPantallas; i++) {
+    
+	/// Creamos una pantalla nueva
+	QTableWidget *pantalla = new QTableWidget();
+	connect(pantalla, SIGNAL(cellClicked ( int, int )), this,  SLOT(cellClicked ( int, int )));
+	
+	pantalla->setHorizontalScrollMode(QAbstractItemView::ScrollPerPixel);
+	pantalla->setVerticalScrollMode(QAbstractItemView::ScrollPerPixel);
 
-    /// Calcula el numero de filas y columnas que tiene que tener la parrilla en pantalla
-    int numarticulos = fa.m_listaarticulos.count();
-    int numrows = numarticulos / grid.toInt();
-    if ( numarticulos % grid.toInt() !=0 ) numrows++;
-     
-    mui_list->clear();
-    mui_list->setRowCount ( numrows );
-    mui_list->setColumnCount ( grid.toInt() );
+	FamiliaArticulos familia = m_listfamilias.value(i);
+	pantalla->setAccessibleName(familia.m_nombrefamilia);
+	
+	pantalla->horizontalHeader()->hide();
+	pantalla->verticalHeader()->hide();
 
-    int numcells = grid.toInt() * numrows;
-    /// Recorremos las filas para configurar el alto
-    for ( int row = 0; row < numrows; row++ )
-        mui_list->setRowHeight ( row, cellwidth.toInt() );
+        /// Calcula el numero de filas y columnas que tiene que tener la parrilla en pantalla
+	int numarticulos = familia.m_listaarticulos.count();
+	int numrows = numarticulos / grid.toInt();
+	if ( numarticulos % grid.toInt() !=0 ) numrows++;
+
+	pantalla->clear();
+	pantalla->setRowCount ( numrows );
+	pantalla->setColumnCount ( grid.toInt() );
+
+	int numcells = grid.toInt() * numrows;
+	
+	/// Recorremos las filas para configurar el alto
+	for ( int row = 0; row < numrows; row++ )
+	    pantalla->setRowHeight ( row, cellwidth.toInt() );
         
-    /// Recorremos las columnas para configurar el ancho
-    for ( int column  = 0; column < grid.toInt(); column++ )
-        mui_list->setColumnWidth ( column, cellwidth.toInt() );
+	/// Recorremos las columnas para configurar el ancho
+	for ( int column  = 0; column < grid.toInt(); column++ )
+	    pantalla->setColumnWidth ( column, cellwidth.toInt() );
+	
+	int nitem = 0;
+	NodoArticulo na;
 
-    /// Tratamos cada ventana
-//    QWidget *activewindow = NULL;
-    
-    int nitem = 0;
-    
-    
-    NodoArticulo na;
+	for ( int row = 0; row < numrows; row++ ) {
+	    for ( int column = 0; column < grid.toInt(); column++ ) {
+		if ( nitem < numcells ) {
+		    // Obtenemos el articulo en la posicion nitem
+		    na = familia.m_listaarticulos.value(nitem);
+		
+		    QString nombre = na.m_nombrearticulo;
+		    QString codigo = na.m_codigoarticulo;
+		    
+		    /// Creamos el elemento y lo ponemos en la tabla.
+		    BtLabel *lab = new BtLabel();
+		    lab->m_codigoarticulo = codigo;
+		    
+		    // Probamos con una Picture
+		    QPicture picture;
+		    QPainter painter;
+		    painter.begin ( &picture ); // paint in picture
+		    
+		    painter.drawPixmap ( 0, 0, cellwidth.toInt(), cellwidth.toInt(), QPixmap ( g_confpr->valor ( CONF_DIR_THUMB_ARTICLES ) + "blanco.jpg" ) );
 
-    for ( int row = 0; row < numrows; row++ ) {
-    
-        for ( int column = 0; column < grid.toInt(); column++ ) {
+		    // Si existe la imagen del articulo, esta se superpondra a la de blanco.jpg, dejando 20px por debajo
+		    // para que se vea el texto negro sobre blanco
+		    painter.drawPixmap ( 0, 0, cellwidth.toInt(), cellwidth.toInt() - 20, QPixmap ( g_confpr->valor ( CONF_DIR_THUMB_ARTICLES ) + codigo + ".jpg" ) );
 
-            //if ( nitem < numarticulos ) {
-            if ( nitem < numcells ) {
-            
-                // Obtenemos el articulo en la posicion nitem
-                na = fa.m_listaarticulos.value(nitem);
-            
-                QString nombre = na.m_nombrearticulo;
-                QString codigo = na.m_codigoarticulo;
-                
-                /// Creamos el elemento y lo ponemos en la tabla.
-                //QLabel *lab = new QLabel ( NULL );
-                BtLabel *lab = new BtLabel();
-                lab->m_codigoarticulo = codigo;
-                
-                /// El escalado completo tarda demasiado.
-//                lab->setPixmap(QPixmap("/var/bulmages/articles/"+text+".jpg", "no", Qt::OrderedDither | Qt::OrderedAlphaDither | Qt::AvoidDither).scaled(cellwidth.toInt(),cellwidth.toInt()));
-                /// El escalado lateral tambien tarda demasiado
-//                lab->setPixmap(QPixmap("/var/bulmages/articles/"+text+".jpg").scaledToWidth(cellwidth.toInt()));
-                /// Ponemos las imagenes sin escalado.
-//                lab->setPixmap ( QPixmap ( g_confpr->valor ( CONF_DIR_THUMB_ARTICLES ) + text + ".jpg" ) );
+		    painter.setPen ( QColor ( 0, 0, 0 ) );
+		    painter.setBackground ( QColor ( 0, 0, 0 ) );
 
-                // Probamos con una Picture
-                QPicture picture;
-                QPainter painter;
-                painter.begin ( &picture );        // paint in picture
-                
-//  painter.drawPixmap(0,0,cellwidth.toInt(),cellwidth.toInt(),QPixmap ( g_confpr->valor ( CONF_DIR_THUMB_ARTICLES ) + codigo + ".jpg" ));
+		    painter.drawText ( 5, (g_confpr->valor ( CONF_TPV_CELL_WIDTH ).toInt() - 5), nombre );
+		    
+		    painter.end(); // painting done
 
-                painter.drawPixmap ( 0, 0, cellwidth.toInt(), cellwidth.toInt(), QPixmap ( g_confpr->valor ( CONF_DIR_THUMB_ARTICLES ) + "blanco.jpg" ) );
+		    lab->setPicture ( picture );
 
-				// Si existe la imagen del articulo, esta se superpondra a la de blanco.jpg, dejando 20px por debajo
-				// para que se vea el texto negro sobre blanco
-				painter.drawPixmap ( 0, 0, cellwidth.toInt(), cellwidth.toInt() - 20, QPixmap ( g_confpr->valor ( CONF_DIR_THUMB_ARTICLES ) + codigo + ".jpg" ) );
+		    pantalla->setCellWidget ( row, column, lab );
 
-//         painter.drawEllipse(10,20, 80,70); // draw an ellipse
+		    nitem++;
+		
+		} // end if
+	    } // end for
+	} // end for
 
-                painter.setPen ( QColor ( 0, 0, 0 ) );
-                painter.setBackground ( QColor ( 0, 0, 0 ) );
+	/// Ya tenemos la pantalla creada y dibujada y ahora la guardamos en el QList.
+	m_pantallas.append(pantalla);
 
-                //painter.drawText ( 5, 95, nombre );
-                painter.drawText ( 5, (g_confpr->valor ( CONF_TPV_CELL_WIDTH ).toInt() - 5), nombre );
-                
-                //  painter.setPen(QColor(0,25,0));
-                //  painter.drawText(5,10,nombre);
-                //  painter.drawText(5,15,nombre);
-                //  painter.drawText(5,5,codigo);
-                //  painter.drawText(5,10,cellwidth);
-
-                painter.end();                     // painting done
-
-                lab->setPicture ( picture );
-
-                mui_list->setCellWidget ( row, column, lab );
-
-                nitem++;
-            
-            } // end if
-
-        } // end for
-        
     } // end for
 
     _depura ( "END ArtGraficosDb::muestraPantalla", 0 );
@@ -254,7 +265,6 @@ void ArtGraficosDb::ponPantallas()
         QPushButton *pb = new QPushButton ( titulo, g_pantallas );
         
         pb->setText ( titulo );
-        //pb->setObjectName ( QString::fromUtf8 ("familia_pb_") + QString::number ( i ) );
         pb->setObjectName ( QString::number ( i ) );
         
         /// Hago la conexion del pulsado con el metodo pulsadoBoton para que se cambie la pantalla.

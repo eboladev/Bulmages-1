@@ -103,6 +103,8 @@ if(NOT WIN32)
 set( BULMAGES_CONFIG_DIR /etc/bulmages CACHE PATH "The location of bulmages configuration dir")
 endif(NOT WIN32)
 
+
+
 # Remove directory to prevent that css files can grow with plugins css merge.
 FILE(REMOVE_RECURSE ${CMAKE_BINARY_DIR}/css)
 
@@ -201,6 +203,7 @@ INCLUDE(CPack)
 #if(BULMAGES_CONFIG_DIR STREQUAL "")
 #   set (BULMAGES_CONFIG_DIR /etc/bulmages)
 #endif(BULMAGES_CONFIG_DIR STREQUAL "")
+
 
 MARK_AS_ADVANCED(
 	BULMAGES_VERSION

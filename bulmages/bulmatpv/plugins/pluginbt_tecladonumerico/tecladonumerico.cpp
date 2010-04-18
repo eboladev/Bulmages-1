@@ -15,11 +15,8 @@ TecladoNumerico::~TecladoNumerico()
 
 void TecladoNumerico::playSound()
 {
-    QString archivoaudio = "/usr/share/sounds/pop.wav";
-    if (QFile(archivoaudio).exists()) {
-        system (QString("play " + archivoaudio).toAscii());
-    } // end if
 }
+
 
 void TecladoNumerico::on_mui_00_clicked() {
     playSound();

@@ -64,6 +64,7 @@ BlSubFormHeader::BlSubFormHeader ( QString nom, BlDbField::DbType typ, int res, 
     m_restricciones = res;
     m_options = opt;
     m_nompresentacion = nomp;
+    m_numericPrecision = 2;
     _depura ( "END BlSubFormHeader::BlSubFormHeader", 0 );
 }
 
@@ -314,7 +315,7 @@ void BlSubForm::setMainCompany ( BlMainCompany *emp )
           /// NOTA: En caso de que no haya sido posible calcular la precisión esta se establece por defecto como 2.
           if (linea->dbFieldType() == BlDbField::DbNumeric ) {
 
-                QString query2 = "SELECT numeric_scale FROM information_schema.columns WHERE table_name = '"+tableName()+"' and column_name='"+linea->nomcampo()+"';";
+                QString query2 = "SELECT numeric_scale FROM information_schema.columns WHERE table_name = '" + tableName() + "' and column_name = '" + linea->nomcampo() + "';";
                 BlDbRecordSet *cur = mainCompany() ->loadQuery ( query2 );
                 if ( !cur->eof() ) {
                     linea->setNumericPrecision(cur->valor("numeric_scale").toInt());
@@ -388,8 +389,6 @@ void BlSubForm::cargaSpecs()
                     restricciones |= BlDbField::DbPrimaryKey;
                 } else if ( trestrict == "DBNOSAVE" ) {
                     restricciones |= BlDbField::DbNoSave;
-//                } else if ( trestrict == "DBAUTO" ) {
-//                    restricciones |= BlDbField::DbAuto;
                 } else if ( trestrict == "DBAUTO" ) {
                     restricciones |= BlDbField::DbAuto;
                 } else if ( trestrict == "DBDUPPRIMARYKEY" ) {

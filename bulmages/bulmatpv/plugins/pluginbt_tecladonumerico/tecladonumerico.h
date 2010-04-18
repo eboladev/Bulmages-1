@@ -3,6 +3,7 @@
 
 #include <QWidget>
 #include <QTableWidget>
+#include <QFile>
 
 #include "blfunctions.h"
 #include "ui_tecladonumericobase.h"

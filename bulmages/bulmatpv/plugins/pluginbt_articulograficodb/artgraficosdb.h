@@ -82,17 +82,20 @@ public:
     int m_numPantallas;
     int m_pantallaActual;
     QList<FamiliaArticulos> m_listfamilias;
+    QList<QTableWidget *> m_pantallas;
+    QTableWidget *mui_list;
 
 public:
     ArtGraficosDb ( BlMainCompany *emp, QWidget *parent );
     virtual ~ArtGraficosDb();
     void muestraPantalla ( int );
+    void renderPantallas();
     void ponPantallas();
 
 public slots:
-    virtual void on_mui_list_cellClicked ( int, int );
-    virtual void on_mui_botonSiguiente_clicked();
-    virtual void on_mui_botonAnterior_clicked();
+    virtual void on_mui_botonSiguiente_pressed();
+    virtual void on_mui_botonAnterior_pressed();
+    virtual void cellClicked ( int, int );
     virtual void pulsadoBoton();
 };
 

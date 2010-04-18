@@ -76,7 +76,7 @@ ZView::ZView ( BfCompany *comp, QWidget *parent )
         mui_list->addSubFormHeader ( "fechaalbaran",  BlDbField::DbDate, BlDbField::DbNoSave, BlSubFormHeader::DbNoWrite, _ ( "Fecha" ) );
         mui_list->addSubFormHeader ( "procesadoalbaran",  BlDbField::DbBoolean, BlDbField::DbNoSave, BlSubFormHeader::DbNoWrite, _ ( "Procesado" ) );
         mui_list->addSubFormHeader ( "idforma_pago",  BlDbField::DbInt, BlDbField::DbNoSave, BlSubFormHeader::DbNoWrite, _ ( "Id forma de pago" ) );
-        mui_list->addSubFormHeader ( "descforma_pago",  BlDbField::DbInt, BlDbField::DbNoSave, BlSubFormHeader::DbNoWrite,  _ ( "Forma de pago" ) );
+        mui_list->addSubFormHeader ( "descforma_pago",  BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNoWrite,  _ ( "Forma de pago" ) );
         mui_list->addSubFormHeader ( "anuladoalbaran",  BlDbField::DbBoolean, BlDbField::DbNoSave, BlSubFormHeader::DbNoWrite, _ ( "Anulado" ) );
         mui_list->addSubFormHeader ( "horaalbaran",  BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNoWrite, _ ( "Hora" ) );
         mui_list->addSubFormHeader ( "totalalbaran",  BlDbField::DbNumeric, BlDbField::DbNoSave, BlSubFormHeader::DbNoWrite, _ ( "Total" ) );
