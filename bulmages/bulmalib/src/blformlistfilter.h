@@ -47,7 +47,7 @@
   4) Para que el filtro pueda acceder al listado y se muestre y oculte al pulsar el bot&oacute;n,
   en el constructor del listado concreto, agregar:
      mui_filtrador->setSubFormList ( mui_list );
-     connect ( mui_filtrar, SIGNAL ( released ( ) ), mui_filtrador, SLOT ( showHideFilter ( ) ) );
+     connect ( mui_filtrar, SIGNAL ( released () ), mui_filtrador->mui_filtro_limpiar, SLOT ( click() ) );
      connect ( mui_filtrador, SIGNAL(aplicar_filtro() ), this, SLOT ( aplicar_filtro() ) );
      connect ( mui_filtrador, SIGNAL(cerrar_filtro() ), mui_filtrar, SLOT( click() ) );
 
