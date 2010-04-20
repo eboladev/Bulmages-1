@@ -46,23 +46,13 @@
 
   4) Para que el filtro pueda acceder al listado y se muestre y oculte al pulsar el bot&oacute;n,
   en el constructor del listado concreto, agregar:
-     mui_filtrador->setSubFormList ( mui_list );
-     connect ( mui_filtrar, SIGNAL ( released () ), mui_filtrador->mui_filtro_limpiar, SLOT ( click() ) );
-     connect ( mui_filtrador, SIGNAL(aplicar_filtro() ), this, SLOT ( aplicar_filtro() ) );
-     connect ( mui_filtrador, SIGNAL(cerrar_filtro() ), mui_filtrar, SLOT( click() ) );
+      mui_filtrador->setSubFormList ( mui_list );
+      connect ( mui_filtrar, SIGNAL ( clicked() ), mui_filtrador, SLOT ( showHideFilter() ));
+      connect ( mui_filtrador, SIGNAL ( aplicar_filtro() ), this->mui_actualizar, SLOT ( click() ));
+      connect ( mui_filtrador, SIGNAL ( cerrar_filtro() ), mui_filtrar, SLOT ( click() ));
 
-  5) Agregar un atributo privado:
-   QString m_filtro_generi
-
-  6) Agregar un slot:
-   void TareaList::aplicar_filtro()
-   {
-      m_filtro_generi = mui_filtrador->generarFiltro();
-      presentar();
-   }
-
-  7) Para que se aplique el filtrado al actualizar el listado, terminar la consulta SQL de presentar() con esto:
-     ...WHERE 1 = 1 " + m_filtro_generi);
+  5) Para que se aplique el filtrado al actualizar el listado, agregar "mui_filtrador->generarFiltro()"
+   como condición del WHERE de "presentar()" (el AND ya viene incluido en la condición).
 
 **/
 class BL_EXPORT BlFormListFilter : public BlWidget, public Ui_BlFormListFilterBase

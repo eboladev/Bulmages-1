@@ -331,10 +331,11 @@ void BlFormListFilter::showHideFilter()
       configureFilterToType();
    }
 
-   /// Si el fitrador era visible, ocultarlo
+   /// Si el fitrador era visible, ocultarlo y desactivar el filtro
    else {
       cleanFilter();
       hide();
+      emit aplicar_filtro(); /// Para que se restablezca el listado
    } // end if
 
    _depura ( "END BlFormListFilter::showHideFilter", 0 );
@@ -423,8 +424,8 @@ void BlFormListFilter::on_mui_filtro_limpiar_clicked()
    _depura ( "BlFormListFilter::on_mui_filtro_limpiar_clicked", 0 );
 
    cleanFilter();
-   hideFilterWidgets();
-   emit aplicar_filtro();
+   emit cerrar_filtro(); /// Para que se oculte este filtrador
+   emit aplicar_filtro(); /// Para que se restablezca el listado
 
    _depura ( "END BlFormListFilter::on_mui_filtro_limpiar_clicked", 0 );
 }
