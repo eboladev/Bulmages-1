@@ -111,17 +111,19 @@ void MTicketIVAInc::pintar()
             plainTextContent += "  ";
         } // end if
 
-        BlFixed totalLinea ( "0.00" );
-        totalLinea = BlFixed ( item->dbValue ( "cantlalbaran" ) ) * BlFixed ( item->dbValue ( "pvpivainclalbaran" ) );
+        BlFixed cant ( item->dbValue ( "cantlalbaran" ) );
+        BlFixed pvpund ( item->dbValue ( "pvpivainclalbaran" ) );
+        BlFixed totalLinea = cant * pvpund;
+        int precision = cant.precision() > pvpund.precision() ? cant.precision() : pvpund.precision();
 
         plainTextContent += item->dbValue("cantlalbaran").rightJustified ( 7, ' ', TRUE ) + " ";
         plainTextContent += item->dbValue("nomarticulo").leftJustified ( 20, ' ', TRUE ) + " ";
-        plainTextContent += totalLinea.toQString().rightJustified ( 9, ' ', TRUE ) + "\n";
+        plainTextContent += totalLinea.toQString('0', precision).rightJustified ( 9, ' ', TRUE ) + "\n";
 
         htmlContent += "<tr>";
         htmlContent += "<td bgcolor=\"" + bgColor + "\" align=\"right\" width=\"50\">" + item->dbValue ( "cantlalbaran" ) + "</td>";
         htmlContent += "<td bgcolor=\"" + bgColor + "\">" + item->dbValue ( "nomarticulo" ) + "</td>";
-        htmlContent += "<td bgcolor=\"" + bgColor + "\" align=\"right\" width=\"50\">" + totalLinea.toQString() + "</td>";
+        htmlContent += "<td bgcolor=\"" + bgColor + "\" align=\"right\" width=\"50\">" + totalLinea.toQString('0', precision) + "</td>";
         htmlContent += "</tr>";
 
     } // end for

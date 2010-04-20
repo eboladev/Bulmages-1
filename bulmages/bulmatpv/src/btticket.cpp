@@ -160,12 +160,12 @@ BlDbRecord *BtTicket::insertarArticulo ( QString idArticulo, BlFixed cantidad, b
         /// Ya hay una linea con este articulo (es un agregado)
         BlFixed cantidadib ( m_lineaActual->dbValue ( "cantlalbaran" ) );
         BlFixed cant1 = cantidadib + cantidad;
-        m_lineaActual->setDbValue ( "cantlalbaran", cant1.toQString() );
+        m_lineaActual->setDbValue ( "cantlalbaran", cant1.toQString('.') );
     } else {
         /// No hay ningun item con este articulo (es una insercion)
         m_lineaActual = agregarLinea();
         m_lineaActual->setDbValue ( "idarticulo", idArticulo );
-	    QString a = cantidad.toQString();
+	     QString a = cantidad.toQString();
         m_lineaActual->setDbValue ( "cantlalbaran", cantidad.toQString('.') );
 
         /// Buscamos los parametros en la base de datos.
@@ -858,6 +858,12 @@ void BtTicket::agregarCantidad ( QString cantidad )
 void BtTicket::ponerCantidad ( QString cantidad )
 {
     BlFixed cant ( cantidad );
+
+    /// En el TPV si no se ponen decimales por defecto se extiende a 2. Aunque deberia ser un parametro o la longitud de los campos de la
+    /// Base de Datos.
+    if (cant.precision() < 2)
+        cant.setPrecision(2);
+
     
     /// Comprueba la existencia de la linea de ticket.
     if ( m_lineaActual == NULL ) {
@@ -874,7 +880,7 @@ void BtTicket::ponerCantidad ( QString cantidad )
         //listaLineas() ->removeAt ( listaLineas() ->indexOf ( m_lineaActual ));
         //m_lineaActual = listaLineas() ->at ( 0 );
     } else {
-        m_lineaActual->setDbValue ( "cantlalbaran", cant.toQString() );
+        m_lineaActual->setDbValue ( "cantlalbaran", cant.toQString('0', cant.precision()) );
     } // end if
     
     pintar();
@@ -890,7 +896,12 @@ void BtTicket::ponerPrecio ( QString precio )
         return;
     } // end if
     
-    m_lineaActual->setDbValue ( "pvplalbaran", valor.toQString() );
+    /// En el TPV si no se ponen decimales por defecto se extiende a 2. Aunque deberia ser un parametro o la longitud de los campos de la
+    /// Base de Datos.
+    if (valor.precision() < 2)
+        valor.setPrecision(2);
+
+    m_lineaActual->setDbValue ( "pvplalbaran", valor.toQString('0', valor.precision()) );
 
     g_plugins->lanza ( "BtTicket_ponerPrecio_Post", this );
 

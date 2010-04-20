@@ -35,9 +35,9 @@ private:
 
 public:
     BlFixed_numerator value;
-    int precision;
+    int m_precision;
     void equalize_precision ( BlFixed & );
-    void setprecision ( int );
+    void setPrecision ( int );
     class scale
     {
       public:
@@ -47,6 +47,7 @@ public:
     static scale SCALE;
 
 public:
+    int precision() {return m_precision;};
     BlFixed ( int x, int p );
     BlFixed ( QString a );
     BlFixed ( const char *a );
@@ -54,7 +55,7 @@ public:
     BlFixed operator [] ( int ) const;
     BlFixed operator = ( BlFixed );
     BlFixed operator = ( int );
-    QString toQString ( QChar separadorDecimal = '0', int precision = 2 );
+    QString toQString ( QChar separadorDecimal = '0', int precision = -1 );
     friend BlFixed operator + ( BlFixed, BlFixed );
     friend BlFixed operator - ( BlFixed, BlFixed );
     friend BlFixed operator * ( BlFixed, BlFixed );

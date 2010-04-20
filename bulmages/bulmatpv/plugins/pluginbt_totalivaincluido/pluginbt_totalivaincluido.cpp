@@ -92,23 +92,27 @@ int BtTicket_pintar ( BtTicket *tick )
     base basesimp;
     base basesimpreqeq;
     BlDbRecord *linea;
+    int precision=0;
+    int maxprecision=0;
     
     /// Impresion de los contenidos.
     QString l;
     BlFixed total ( "0.00" );
     BlFixed descuentolinea ( "0.00" );
     for ( int i = 0; i < tick->listaLineas() ->size(); ++i ) {
-        linea = tick->listaLineas() ->at ( i );
-        BlFixed cant ( linea->dbValue ( "cantlalbaran" ) );
-        BlFixed pvpund ( linea->dbValue ( "pvpivainclalbaran" ) );
-        BlFixed cantpvp = cant * pvpund;
-        total = total + cantpvp;
+        if (linea = tick->listaLineas() ->at ( i ) ) {
+            BlFixed cant ( linea->dbValue ( "cantlalbaran" ) );
+            BlFixed pvpund ( linea->dbValue ( "pvpivainclalbaran" ) );
+            BlFixed cantpvp = cant * pvpund;
+            precision = cant.precision() > pvpund.precision() ? cant.precision() : pvpund.precision();
+            maxprecision = precision > maxprecision ? precision : maxprecision;
+            total = total + cantpvp;
+        } // end if
     } // end for
 
     /// Pintamos el total
     if ( g_tot )
-        g_tot->mui_total->setText ( total.toQString() );
-
+        g_tot->mui_total->setText ( total.toQString('0', maxprecision) );
     _depura ( "END plugintotal::Ticket_pintar", 0 );
 
     return 0;

@@ -63,7 +63,6 @@ int BtTicket_insertarArticulo_Post ( BtTicket *tick )
         BlDbRecordSet *cur = tick->mainCompany() ->loadQuery ( query );
         if ( !cur->eof() ) {
             tick->lineaActBtTicket()->setDbValue ( "pvpivainclalbaran", cur->valor ( "pvpivaincarticulo" ) );
-
         } // end if
         delete cur;
 

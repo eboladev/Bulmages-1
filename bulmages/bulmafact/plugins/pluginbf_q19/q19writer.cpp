@@ -427,7 +427,7 @@ QString Q19Writer::import ( BlDbRecordSet *cur, QString nomcamp, int longitud )
 QString Q19Writer::import ( BlFixed f, int longitud )
 {
 
-	f.setprecision ( 2 );
+	f.setPrecision ( 2 );
 	QString res = QString::number ( f.value );
 	if ( f.value < 0 )
 	{
