@@ -36,16 +36,16 @@ Total::~Total()
 
 void Total::on_mui_cobrar_clicked()
 {
-    //( ( BtCompany * ) mainCompany() ) ->pulsaTecla ( Qt::Key_F1 );
+    //( ( BtCompany * ) mainCompany() ) ->pulsaTecla ( Qt::Key_F5 );
     ( ( BtCompany * ) mainCompany() )->cobrar(mui_imprimiralcobrar->isChecked());
 }
 
 void Total::on_mui_abrircajon_clicked()
 {
-    ( ( BtCompany * ) mainCompany() ) ->pulsaTecla ( Qt::Key_F3 );
+    ( ( BtCompany * ) mainCompany() ) ->pulsaTecla ( Qt::Key_F7 );
 }
 
 void Total::on_mui_imprimir_clicked()
 {
-    ( ( BtCompany * ) mainCompany() ) ->pulsaTecla ( Qt::Key_F2 );
+    ( ( BtCompany * ) mainCompany() ) ->pulsaTecla ( Qt::Key_F6 );
 }

@@ -172,6 +172,7 @@ void MTicketIVAInc::on_mui_borrarticket_clicked()
     BtCompany *emp = ( ( BtCompany * ) mainCompany() );
     BtTicket *ticket;
     QString nomticketactual = emp->ticketActual()->dbValue ( "nomticket" );
+    QString idtrabajador = emp->ticketActual()->dbValue ( "idtrabajador" );
     QString nomticketdefecto = emp->ticketActual()->nomTicketDefecto();
     int i;
 
@@ -190,6 +191,7 @@ void MTicketIVAInc::on_mui_borrarticket_clicked()
     if (nomticketactual == nomticketdefecto) {
         /// Creamos un nuevo ticket vacio.
 	ticket = emp->newBtTicket();
+	ticket->setDbValue("idtrabajador", idtrabajador);
 	emp->setTicketActual(ticket);
 	emp->listaTickets()->append(ticket);
     } else {

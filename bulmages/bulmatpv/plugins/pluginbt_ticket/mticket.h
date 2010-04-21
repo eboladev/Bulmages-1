@@ -47,6 +47,7 @@ public slots:
     virtual void on_mui_imprimir_clicked();
     virtual void on_mui_reimprimir_clicked();
     virtual void on_mui_borrarticket_clicked();
+    virtual void on_mui_formatear_clicked();
 };
 
 

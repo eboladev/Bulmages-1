@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>371</width>
-    <height>422</height>
+    <width>549</width>
+    <height>568</height>
    </rect>
   </property>
   <property name="minimumSize">
@@ -305,6 +305,16 @@
      </property>
      <layout class="QHBoxLayout" name="horizontalLayout_2">
       <item>
+       <widget class="QCheckBox" name="mui_formatear">
+        <property name="text">
+         <string>Formatear</string>
+        </property>
+        <property name="checked">
+         <bool>true</bool>
+        </property>
+       </widget>
+      </item>
+      <item>
        <spacer name="horizontalSpacer_2">
         <property name="orientation">
          <enum>Qt::Horizontal</enum>
@@ -356,6 +366,9 @@
      </property>
     </widget>
    </item>
+   <item>
+    <widget class="QTextBrowser" name="mui_plainText"/>
+   </item>
   </layout>
  </widget>
  <resources>
@@ -375,6 +388,38 @@
     <hint type="destinationlabel">
      <x>185</x>
      <y>77</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>mui_formatear</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>mui_browser</receiver>
+   <slot>setVisible(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>24</x>
+     <y>75</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>146</x>
+     <y>177</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>mui_formatear</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>mui_plainText</receiver>
+   <slot>setHidden(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>63</x>
+     <y>76</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>108</x>
+     <y>408</y>
     </hint>
    </hints>
   </connection>

@@ -43,7 +43,8 @@ MTicket::MTicket ( BtCompany *emp, QWidget *parent ) : BlWidget ( emp, parent )
     emp->pWorkspace() ->addWindow ( this );
     setWindowTitle ( "Ticket" );
     g_plugins->lanza ( "MTicket_MTicket_Post", this );
-    mui_frame->setVisible(FALSE);
+    
+    mui_plainText->setVisible(FALSE);
 
     _depura ( "END MTicket::MTicket", 0 );
 }
@@ -66,169 +67,75 @@ void MTicket::pintar()
     } // end if
 
     BtTicket *tick = ( ( BtCompany * ) mainCompany() ) ->ticketActual();
-    //QString html = "<font size=\"1\">";
-    QString html = "<p style=\"font-family:monospace; font-size: 12pt;\">";
-    QString html1 = "<font size=\"1\">";
+    QString htmlContent = "<p style=\"font-family:monospace; font-size: 12pt;\">";
+    QString plainTextContent = "";
+    QString query;
 
-    html1 += "Ticket: "+ tick->dbValue ( "nomticket" ) + "<BR>";
+    htmlContent += "Ticket: "+ tick->dbValue ( "nomticket" ) + "<BR>";
+    plainTextContent += "Ticket: " + tick->dbValue ( "nomticket" ) + "\n";
 
-    QString querytrab = "SELECT * FROM trabajador WHERE idtrabajador = " + tick->dbValue ( "idtrabajador" );
-    BlDbRecordSet *curtrab = mainCompany() ->loadQuery ( querytrab );
-    html1 += "Trabajador: " + tick->dbValue ( "idtrabajador" ) + " " + curtrab->valor ( "nomtrabajador" ) + "<BR>";
-    delete curtrab;
+    query = "SELECT * FROM trabajador WHERE idtrabajador = " + tick->dbValue ( "idtrabajador" );
+    BlDbRecordSet *rsTrabajador = mainCompany() ->loadQuery ( query );
+    plainTextContent += "Trabajador: " + rsTrabajador->valor ( "nomtrabajador" ) + "\n";
+    htmlContent += "Trabajador: " + rsTrabajador->valor ( "nomtrabajador" ) + "<BR>";
+    delete rsTrabajador;
 
-    QString query = "SELECT * FROM cliente WHERE idcliente = " + tick->dbValue ( "idcliente" );
-    BlDbRecordSet *cur1 = mainCompany() ->loadQuery ( query );
-    html1 += "Cliente: " + tick->dbValue ( "idcliente" ) + " " + cur1->valor ( "nomcliente" ) + "<BR>";
-    delete cur1;
+    query = "SELECT * FROM cliente WHERE idcliente = " + tick->dbValue ( "idcliente" );
+    BlDbRecordSet *rsCliente = mainCompany() ->loadQuery ( query );
+    plainTextContent += "Cliente: " + rsCliente->valor ( "nomcliente" ) + "\n";
+    htmlContent += "Cliente: " + rsCliente->valor ( "nomcliente" ) + "<BR>";
+    delete rsCliente;
     
 
 
-    html += "<TABLE border=\"0\" width=\"100%\">";
+    htmlContent += "<TABLE border=\"0\" width=\"100%\">";
 
-    if (tick->dbValue("nomticket") != "") {
-      html += "<TR><TD colspan=\"3\" align=\"center\"><B>" + tick->dbValue ( "nomticket" ) + "</B></TD></tr>";
-    } // end if
+//     if (tick->dbValue("nomticket") != "") {
+//       htmlContent += "<TR><TD colspan=\"3\" align=\"center\"><B>" + tick->dbValue ( "nomticket" ) + "</B></TD></tr>";
+//     } // end if
     
-    html += "<TR>";
-    html += "<TD WIDTH=\"10%\">" + QString(_("CANT:")) + "</TD><TD WIDTH=\"80%\">" + QString(_("ARTICULO:")) + "</TD><TD WIDTH=\"10%\">" + QString(_("PRECIO:")) + "</TD>";
-    html += "</TR>";
-    html += "<TR><TD COLSPAN=\"3\"><HR></TD></TR>";
+    htmlContent += "<TR>";
+    htmlContent += "<TD WIDTH=\"10%\">" + QString(_("CANT:")) + "</TD><TD WIDTH=\"80%\">" + QString(_("ARTICULO:")) + "</TD><TD WIDTH=\"10%\">" + QString(_("PRECIO:")) + "</TD>";
+    htmlContent += "</TR>";
+    htmlContent += "<TR><TD COLSPAN=\"3\"><HR></TD></TR>";
+    
+    plainTextContent += "\n";
+    plainTextContent += "  " + QString(_("CANT:")) + "  " + QString(_("ARTICULO:")) + "  " + QString(_("PRECIO:")) + "\n";
+    plainTextContent += "----------------------------------------\n";
 
     BlDbRecord *item;
 
     for ( int i = 0; i < tick->listaLineas() ->size(); ++i ) {
         item = tick->listaLineas() ->at ( i );
         QString bgcolor = "#FFFFFF";
-        if ( item == tick->lineaActBtTicket() ) bgcolor = "#CCCCFF";
-        html += "<TR>";
-        html += "<TD bgcolor=\"" + bgcolor + "\" align=\"right\">" + item->dbValue ( "cantlalbaran" ) + "</TD>";
-        html += "<TD bgcolor=\"" + bgcolor + "\">" + item->dbValue ( "nomarticulo" ) + "</TD>";
-        BlFixed totalLinea ( "0.00" );
-        totalLinea = BlFixed ( item->dbValue ( "cantlalbaran" ) ) * BlFixed ( item->dbValue ( "pvplalbaran" ) );
-        html += "<TD bgcolor=\"" + bgcolor + "\" align=\"right\">" + totalLinea.toQString() + "</TD>";
-        html += "</TR>";
+        if ( item == tick->lineaActBtTicket() ) {
+	  bgcolor = "#CCCCFF";
+          plainTextContent += "> ";
+	} else {
+            plainTextContent += "  ";
+	} // end if
+       
+        htmlContent += "<TR>";
+        htmlContent += "<TD bgcolor=\"" + bgcolor + "\" align=\"right\">" + item->dbValue ( "cantlalbaran" ) + "</TD>";
+        htmlContent += "<TD bgcolor=\"" + bgcolor + "\">" + item->dbValue ( "nomarticulo" ) + "</TD>";
+	
+	BlFixed totalLinea ( "0.00" );
+	totalLinea = BlFixed ( item->dbValue ( "cantlalbaran" ) ) * BlFixed ( item->dbValue ( "pvpivainclalbaran" ) );
+	htmlContent += "<TD bgcolor=\"" + bgcolor + "\" align=\"right\">" + totalLinea.toQString() + "</TD>";
+	
+	plainTextContent += item->dbValue("cantlalbaran").rightJustified ( 7, ' ', TRUE ) + " ";
+        plainTextContent += item->dbValue("nomarticulo").leftJustified ( 20, ' ', TRUE ) + " ";
+        plainTextContent += totalLinea.toQString().rightJustified ( 9, ' ', TRUE ) + "\n";
+	
+        htmlContent += "</TR>";
     } // end for
 
-    html += "</TABLE>";
-
-// ======================================
-
-    html += "<BR><HR><BR>";
-
-    base basesimp;
-    base basesimpreqeq;
-    BlDbRecord *linea;
-
-    /// Impresion de los contenidos.
-    QString l;
-    BlFixed irpf ( "0" );
-
-    BlDbRecordSet *cur = mainCompany()->loadQuery ( "SELECT * FROM configuracion WHERE nombre = 'IRPF'" );
-
-    if ( cur ) {
-        if ( !cur->eof() ) {
-            irpf = BlFixed ( cur->valor ( "valor" ) );
-        } // end if
-        delete cur;
-    } // end if
-
-    BlFixed descuentolinea ( "0.00" );
-
-    for ( int i = 0; i < tick->listaLineas() ->size(); ++i ) {
-        linea = tick->listaLineas() ->at ( i );
-        BlFixed cant ( linea->dbValue ( "cantlalbaran" ) );
-        BlFixed pvpund ( linea->dbValue ( "pvplalbaran" ) );
-        BlFixed desc1 ( linea->dbValue ( "descuentolalbaran" ) );
-        BlFixed cantpvp = cant * pvpund;
-        BlFixed base = cantpvp - cantpvp * desc1 / 100;
-        descuentolinea = descuentolinea + ( cantpvp * desc1 / 100 );
-        basesimp[linea->dbValue ( "ivalalbaran" ) ] = basesimp[linea->dbValue ( "ivalalbaran" ) ] + base;
-        basesimpreqeq[linea->dbValue ( "reqeqlalbaran" ) ] = basesimpreqeq[linea->dbValue ( "reqeqlalbaran" ) ] + base;
-    } // end for
-
-    BlFixed basei ( "0.00" );
-    base::Iterator it;
-
-    for ( it = basesimp.begin(); it != basesimp.end(); ++it ) {
-        basei = basei + it.value();
-    } // end for
-
-    /// Calculamos el total de los descuentos.
-    /// De momento aqui no se usan descuentos generales en venta.
-    BlFixed porcentt ( "0.00" );
-    /*
-        BlDbSubFormRecord *linea1;
-        if (m_listadescuentos->rowCount()) {
-            for (int i = 0; i < m_listadescuentos->rowCount(); ++i) {
-                linea1 = m_listadescuentos->lineaat(i);
-                BlFixed propor(linea1->dbValue("proporcion" + m_listadescuentos->tableName()).toAscii().constData());
-                porcentt = porcentt + propor;
-            } // end for
-        } // end if
-    */
-
-    /// Calculamos el total de base imponible.
-    BlFixed totbaseimp ( "0.00" );
-    BlFixed parbaseimp ( "0.00" );
-
-    for ( it = basesimp.begin(); it != basesimp.end(); ++it ) {
-        if ( porcentt > BlFixed ( "0.00" ) ) {
-            parbaseimp = it.value() - it.value() * porcentt / 100;
-        } else {
-            parbaseimp = it.value();
-        } // end if
-        html1 += "Base Imp " + it.key() + "% " + parbaseimp.toQString() + "<BR>";
-        totbaseimp = totbaseimp + parbaseimp;
-    } // end for
-
-    /// Calculamos el total de IVA.
-    BlFixed totiva ( "0.00" );
-    BlFixed pariva ( "0.00" );
-
-    for ( it = basesimp.begin(); it != basesimp.end(); ++it ) {
-        BlFixed piva ( it.key().toAscii().constData() );
-        if ( porcentt > BlFixed ( "0.00" ) ) {
-            pariva = ( it.value() - it.value() * porcentt / 100 ) * piva / 100;
-        } else {
-            pariva = it.value() * piva / 100;
-        } // end if
-        html1 += "IVA " + it.key() + "% " + pariva.toQString() + "<BR>";
-        totiva = totiva + pariva;
-    } // end for
-
-    /// Calculamos el total de recargo de equivalencia.
-    BlFixed totreqeq ( "0.00" );
-    BlFixed parreqeq ( "0.00" );
-
-    for ( it = basesimpreqeq.begin(); it != basesimpreqeq.end(); ++it ) {
-        BlFixed preqeq ( it.key().toAscii().constData() );
-        if ( porcentt > BlFixed ( "0.00" ) ) {
-            parreqeq = ( it.value() - it.value() * porcentt / 100 ) * preqeq / 100;
-        } else {
-            parreqeq = it.value() * preqeq / 100;
-        } // end if
-        html1 += "R.Eq " + it.key() + "% " + parreqeq.toQString() + "<BR>";
-        totreqeq = totreqeq + parreqeq;
-    } // end for
-
-    BlFixed totirpf = totbaseimp * irpf / 100;
-
-    html1 += "<B>Base Imp. " + totbaseimp.toQString() + "<BR>";
-    html1 += "<B>IVA. " + totiva.toQString() + "<BR>";
-    html1 += "<B>IRPF. " + totirpf.toQString() + "<BR>";
-
-    BlFixed total = totiva + totbaseimp + totreqeq - totirpf;
-    html1 += "<B>Total: " + total.toQString() + "<BR>";
-
-    html += "</p>";
-    html1 += "</FONT>";
-
-// ======================================
-
+    htmlContent += "</TABLE>";
+    htmlContent += "<BR><HR><BR>";
+    
     /// Pintamos el HTML en el textBrowser
-    mui_browser->setText ( html );
-
+    mui_browser->setText ( htmlContent );
+    mui_plainText->setText ( plainTextContent );
     _depura ( "END MTicket::pintar", 0 );
 }
 
@@ -321,6 +228,7 @@ void MTicket::on_mui_borrarticket_clicked()
     
     BtCompany *emp = ( ( BtCompany * ) mainCompany() );
     BtTicket *ticket;
+    QString idtrabajador = emp->ticketActual()->dbValue ( "idtrabajador" );
     QString nomticketactual = emp->ticketActual()->dbValue ( "nomticket" );
 
    // if (emp->ticketActual()->dbValue ( "nomticket" ).isEmpty()) {
@@ -337,8 +245,9 @@ void MTicket::on_mui_borrarticket_clicked()
     delete emp->ticketActual();
     /// Creamos un nuevo ticket vacio.
     ticket = emp-> newBtTicket();
+    ticket->setDbValue("idtrabajador", idtrabajador);
     emp->setTicketActual(ticket);
-    
+    emp->listaTickets()->append(ticket);
     /// Solo agregamos a la lista si es el ticket actual.
     if (nomticketactual == emp->ticketActual()->nomTicketDefecto()) {
 	emp->listaTickets()->append(ticket);
@@ -347,4 +256,11 @@ void MTicket::on_mui_borrarticket_clicked()
     ticket->pintar();
     
     _depura ( "END MTicket::on_mui_borrarticket_clicked", 0 );
+}
+
+void MTicket::on_mui_formatear_clicked()
+{
+    _depura ( "MTicket::on_mui_formatear_clicked", 0 );
+    
+    _depura ( "END MTicket::on_mui_formatear_clicked", 0 );
 }
