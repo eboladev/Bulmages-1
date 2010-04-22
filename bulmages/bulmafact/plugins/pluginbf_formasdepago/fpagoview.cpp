@@ -47,9 +47,27 @@ FPagoView::FPagoView ( BfCompany *emp, QWidget *parent )
     /// Inicializamos el banco.
     mui_idbanco->setMainCompany ( emp );
 
+    /// Disparamos los plugins.
+    int res = g_plugins->lanza ( "FPagoView_FPagoView", this );
+    if ( res != 0 ) {
+        return;
+    } // end if
+
     meteWindow ( windowTitle(), this );
     pintar();
     _depura ( "END FPagoView::FPagoView", 0 );
+}
+
+
+///
+/**
+\return
+**/
+QString FPagoView::idFormaPago()
+{
+    _depura ( "FPagoView::idFormaPago", 0 );
+    _depura ( "END FPagoView::idFormaPago", 0 );
+    return mdb_idforma_pago;
 }
 
 
@@ -123,18 +141,34 @@ int FPagoView::guardar()
     try {
 	QString idbanco = mui_idbanco->idbanco();
 	if (idbanco == "") idbanco = "NULL";
+	
+	/// Disparamos los plugins.
+        int res1 = g_plugins->lanza ( "FPagoView_Guardar_Pre", this );
+        if ( res1 != 0 ) {
+            return -1;
+        } // end if
+	
         QString query = "UPDATE forma_pago SET idbanco = "+ idbanco +", descforma_pago = '" +
                         mainCompany() ->sanearCadena ( mui_descforma_pago->text() ) + "', dias1tforma_pago= " +
                         mainCompany() ->sanearCadena ( mui_dias1tforma_pago->text() ) + " , descuentoforma_pago = " +
                         mainCompany() ->sanearCadena ( mui_descuentoforma_pago->text() ) + " WHERE idforma_pago =" + mdb_idforma_pago;
         mainCompany() ->runQuery ( query );
+	
         if ( m_cursorFPagoView != NULL ) {
             delete m_cursorFPagoView;
         } // end if
+
+	/// Disparamos los plugins.
+        int res2 = g_plugins->lanza ( "FPagoView_Guardar_Post", this );
+        if ( res2 != 0 ) {
+            return -1;
+        } // end if
+
         m_cursorFPagoView = mainCompany() ->loadQuery ( "SELECT * FROM forma_pago ORDER BY idforma_pago" );
         if ( m_item ) {
             m_item->setText ( mui_descforma_pago->text() );
         } // end if
+        
         dialogChanges_cargaInicial();
 
         /// Emitimos la senyal apropiada en el qapplication2

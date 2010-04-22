@@ -48,6 +48,13 @@ BancoView::BancoView ( BfCompany *emp, QWidget *parent )
     setModoEdicion();
     m_cursorbancos = NULL;
     m_item = NULL;
+
+    /// Disparamos los plugins.
+    int res = g_plugins->lanza ( "BancoView_BancoView", this );
+    if ( res != 0 ) {
+        return;
+    } // end if
+
     pintar();
     meteWindow ( windowTitle(), this );
     _depura ( "END BancoView::BancoView", 0 );
@@ -92,6 +99,17 @@ BancoView::~BancoView()
 ///
 /**
 **/
+QString BancoView::idBanco()
+{
+    _depura ( "BancoView::idBanco", 0 );
+    _depura ( "END BancoView::idBanco", 0 );
+    return mdb_idbanco;
+}
+
+
+///
+/**
+**/
 void BancoView::on_mui_lista_currentItemChanged ( QListWidgetItem *cur, QListWidgetItem * )
 {
     _depura ( "on_mui_lista_currentItemChanged", 0 );
@@ -128,8 +146,22 @@ void BancoView::on_mui_lista_currentItemChanged ( QListWidgetItem *cur, QListWid
 **/
 int BancoView::guardar()
 {
-    _depura ( "BancoView::on_mui_guardar_clicked", 0 );
+    _depura ( "BancoView::guardar", 0 );
     try {
+
+        if ( mdb_idbanco.isEmpty() ) {
+            mensajeInfo ( _ ( "Debe seleccionar un banco" ) );
+            return -1;
+        } // end if
+        
+//	mainCompany()->begin();
+	
+        /// Disparamos los plugins.
+        int res1 = g_plugins->lanza ( "BancoView_Guardar_Pre", this );
+        if ( res1 != 0 ) {
+            return -1;
+        } // end if
+    
         QString query = "UPDATE banco SET ";
         query += "nombanco='" + mainCompany() ->sanearCadena ( mui_nombanco->text() ) + "'";
         query += ", dirbanco='" + mainCompany() ->sanearCadena ( mui_dirbanco->text() ) + "'";
@@ -149,8 +181,16 @@ int BancoView::guardar()
         query += " WHERE idbanco=" + mainCompany() ->sanearCadena ( mdb_idbanco );
 
         int error = mainCompany() ->runQuery ( query );
+
         if ( error ) {
             mainCompany() ->rollback();
+            return -1;
+        } // end if
+
+        /// Disparamos los plugins.
+        int res2 = g_plugins->lanza ( "BancoView_Guardar_Post", this );
+        if ( res2 != 0 ) {
+//            mainCompany() ->rollback();
             return -1;
         } // end if
         if ( m_cursorbancos != NULL ) {
@@ -162,12 +202,17 @@ int BancoView::guardar()
         if ( m_item ) {
             m_item->setText ( mui_nombanco->text() );
         } // end if
+
         /// Comprobamos cual es la cadena inicial.
         dialogChanges_cargaInicial();
-        _depura ( "END BancoView::on_mui_guardar_clicked", 0 );
+        _depura ( "END BancoView::guardar", 0 );
+
+//	mainCompany()->commit();
+
         return 0;
     } catch ( ... ) {
         mensajeInfo ( _ ( "Error al guardar" ) );
+//	mainCompany()->rollback();
         return -1;
     } // end try
 }

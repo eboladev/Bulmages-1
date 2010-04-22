@@ -33,6 +33,10 @@ include_directories(
 	${CMAKE_SOURCE_DIR}/bulmafact/src/
 	${CMAKE_BINARY_DIR}/bulmafact/plugins/pluginbf_articulo
 	${CMAKE_SOURCE_DIR}/bulmafact/plugins/pluginbf_articulo
+	${CMAKE_BINARY_DIR}/bulmafact/plugins/pluginbf_banco
+	${CMAKE_SOURCE_DIR}/bulmafact/plugins/pluginbf_banco
+	${CMAKE_BINARY_DIR}/bulmafact/plugins/pluginbf_formasdepago
+	${CMAKE_SOURCE_DIR}/bulmafact/plugins/pluginbf_formasdepago
 	${CMAKE_SOURCE_DIR}/bulmacont/src/
 	${CMAKE_BINARY_DIR}/bulmacont/src/
 	)
@@ -84,7 +88,7 @@ set_target_properties( ${plugin} PROPERTIES
   SOVERSION "${BULMAGES_VERSION_MAJOR}.${BULMAGES_VERSION_MINOR}"
   VERSION "${BULMAGES_VERSION}")
 
-target_link_libraries(${plugin} libbulmafact bulmalib libbulmacont pluginbf_articulo ${QT_LIBRARIES} ${PGSQL_LIBRARIES})
+target_link_libraries(${plugin} libbulmafact bulmalib libbulmacont pluginbf_articulo pluginbf_formasdepago pluginbf_banco ${QT_LIBRARIES} ${PGSQL_LIBRARIES})
 
 install_targets(/lib/bulmafact/plugins ${plugin})
 
@@ -92,7 +96,7 @@ foreach(dfile ${docs})
    install (FILES ${dfile} DESTINATION share/bulmages/bulmafact-plugins/ RENAME ${dfile}.${plugin})
 endforeach(dfile in ${docs})
 
-add_dependencies(${plugin} bulmafact bulmalib bulmacont pluginbf_articulo)
+add_dependencies(${plugin} bulmafact bulmalib bulmacont pluginbf_articulo pluginbf_formasdepago pluginbf_banco)
 
 
 install(DIRECTORY dbmodels/ 

@@ -57,6 +57,7 @@ public:
     void setModoConsulta();
     void setModoEdicion();
     bool trataModificado();
+    QString idFormaPago();
     virtual int guardar();
     virtual void on_mui_borrar_clicked();
     virtual void on_mui_aceptar_clicked();

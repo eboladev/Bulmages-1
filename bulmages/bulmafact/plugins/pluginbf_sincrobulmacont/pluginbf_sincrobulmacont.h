@@ -24,15 +24,28 @@
 #include "bfbulmafact.h"
 #include "bcbulmacont.h"
 #include "familiasview.h"
+#include "fpagoview.h"
+#include "bancoview.h"
 #include "pdefs_pluginbf_sincrobulmacont.h"
 
 
 extern "C" PLUGINBF_SINCROBULMACONT_EXPORT int entryPoint ( BfBulmaFact * );
-//extern "C" PLUGINBF_SINCROBULMACONT_EXPORT int BfCompany_createMainWindows_Post(BfCompany *);
 
+/// Familias
 extern "C" PLUGINBF_SINCROBULMACONT_EXPORT int FamiliasView_FamiliasView ( FamiliasView * );
 extern "C" PLUGINBF_SINCROBULMACONT_EXPORT int FamiliasView_Guardar_Pre ( FamiliasView * );
 extern "C" PLUGINBF_SINCROBULMACONT_EXPORT int FamiliasView_Guardar_Post ( FamiliasView * );
+
+/// Formas de pago
+extern "C" PLUGINBF_SINCROBULMACONT_EXPORT int FPagoView_FPagoView ( FPagoView * );
+extern "C" PLUGINBF_SINCROBULMACONT_EXPORT int FPagoView_Guardar_Pre ( FPagoView * );
+extern "C" PLUGINBF_SINCROBULMACONT_EXPORT int FPagoView_Guardar_Post ( FPagoView * );
+
+
+/// Bancos
+extern "C" PLUGINBF_SINCROBULMACONT_EXPORT int BancoView_BancoView ( BancoView * );
+extern "C" PLUGINBF_SINCROBULMACONT_EXPORT int BancoView_Guardar_Pre ( BancoView * );
+extern "C" PLUGINBF_SINCROBULMACONT_EXPORT int BancoView_Guardar_Post ( BancoView * );
 
 
 #endif

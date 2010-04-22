@@ -105,14 +105,21 @@ void Abrevs::on_mui_usuario_clicked()
 void Abrevs::on_mui_aparcar_clicked()
 {
     BtCompany * emp = ( BtCompany * ) mainCompany();
+    
+    QString valorBtInput = emp->valorBtInput();
+    
     // El nombre del ticket no puede estar vacio.
-    if ( emp->valorBtInput() == "" ) {
+    if ( valorBtInput == "" ) {
+	/// Establece en BtInput el nombre del ticket actual y lo utiliza al aparcarlo.
         emp->setValorBtInput(emp->ticketActual()->dbValue ( "nomticket" ));
     } // end if
 
 
     if ( emp->valorBtInput() == emp->ticketActual()->nomTicketDefecto()) {
         mensajeAviso ( _ ( "Asigne un nombre al ticket antes de aparcarlo." ) );
+        /// Restaura el BtInput antes de regresar. Evita que aparezca, por error, en el 'display' el texto
+        /// establecido en la condicion anterior que evita que el nombre del ticket este vacio.
+        emp->setValorBtInput(valorBtInput);
         return;
     } // end if
 
@@ -136,6 +143,7 @@ void Abrevs::on_mui_aparcar_clicked()
 
     QString nomticket = emp->ticketActual() -> dbValue("nomticket");
 
+    /// El nombre del ticket a aparcar lo coge del BtInput.
     emp->ticketActual() ->setDbValue ( "nomticket", emp->valorBtInput() );
 
     /// Quitamos el bloqueo

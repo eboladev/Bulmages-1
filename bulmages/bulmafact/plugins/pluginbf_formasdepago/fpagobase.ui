@@ -199,7 +199,7 @@
       <item row="7" column="1">
        <widget class="BfBuscarBanco" name="mui_idbanco"/>
       </item>
-      <item row="8" column="0" colspan="2">
+      <item row="9" column="0" colspan="2">
        <spacer>
         <property name="orientation">
          <enum>Qt::Vertical</enum>
@@ -214,6 +214,16 @@
          </size>
         </property>
        </spacer>
+      </item>
+      <item row="8" column="0" colspan="2">
+       <widget class="QWidget" name="mui_plugin_frame" native="true">
+        <property name="minimumSize">
+         <size>
+          <width>0</width>
+          <height>2</height>
+         </size>
+        </property>
+       </widget>
       </item>
      </layout>
     </widget>
@@ -459,7 +469,7 @@
  </customwidgets>
  <resources>
   <include location="../../../bulmages.qrc"/>
-  <include location="../../bulmages.qrc"/>
+  <include location="../../../bulmages.qrc"/>
  </resources>
  <connections/>
 </ui>

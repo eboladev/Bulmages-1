@@ -127,20 +127,45 @@ BEGIN
 	END IF;
 
 	SELECT INTO bs * FROM pg_attribute WHERE attname='prefcuentaventafamilia';
-	IF NOT FOUND THEN
+	IF FOUND THEN
 --		ALTER TABLE familia ADD COLUMN prefcuentaventafamilia CHARACTER VARYING(12);
 --		ALTER TABLE familia ADD COLUMN origenidcuentaventafamilia INTEGER;
+--		ALTER TABLE familia ADD COLUMN idcuentaventafamilia INTEGER;
+		ALTER TABLE familia DROP COLUMN idcuentaventafamilia;
 		ALTER TABLE familia DROP COLUMN prefcuentaventafamilia;
 		ALTER TABLE familia DROP COLUMN origenidcuentaventafamilia;
 	END IF;
 
 	SELECT INTO bs * FROM pg_attribute WHERE attname='prefcuentacomprafamilia';
-	IF NOT FOUND THEN
+	IF FOUND THEN
 --		ALTER TABLE familia ADD COLUMN prefcuentacomprafamilia CHARACTER VARYING(12);
 --		ALTER TABLE familia ADD COLUMN origenidcuentacomprafamilia INTEGER;
+--		ALTER TABLE familia ADD COLUMN idcuentacomprafamilia INTEGER;
+		ALTER TABLE familia DROP COLUMN idcuentacomprafamilia;
 		ALTER TABLE familia DROP COLUMN prefcuentacomprafamilia;
 		ALTER TABLE familia DROP COLUMN origenidcuentacomprafamilia;
 	END IF;
+
+
+	SELECT INTO bs * FROM pg_attribute WHERE attname='prefcuentaforma_pago';
+	IF FOUND THEN
+--		ALTER TABLE forma_pago ADD COLUMN prefcuentaforma_pago CHARACTER VARYING(12);
+--		ALTER TABLE forma_pago ADD COLUMN origenidcuentaforma_pago INTEGER;
+--		ALTER TABLE forma_pago ADD COLUMN idcuentaforma_pago INTEGER;
+		ALTER TABLE forma_pago DROP COLUMN idcuentaforma_pago;
+		ALTER TABLE forma_pago DROP COLUMN prefcuentaforma_pago;
+		ALTER TABLE forma_pago DROP COLUMN origenidcuentaforma_pago;
+	END IF;
+
+
+	SELECT INTO bs * FROM pg_attribute WHERE attname='prefcuentabanco';
+	IF FOUND THEN
+--		ALTER TABLE banco ADD COLUMN prefcuentabanco CHARACTER VARYING(12);
+--		ALTER TABLE banco ADD COLUMN origenidcuentabanco INTEGER;
+		ALTER TABLE banco DROP COLUMN prefcuentabanco;
+		ALTER TABLE banco DROP COLUMN origenidcuentabanco;
+	END IF;
+
 
 	RETURN 0;
 END;
@@ -179,6 +204,8 @@ SELECT drop_if_exists_proc ('syncbulmacontalmacend','');
 \echo "Borrado el trigger que al borrar un banco borra la respectiva cuenta en la contabilidad"
 SELECT drop_if_exists_proc ('syncbulmacontalmacenu','');
 \echo "Borrado el trigger que al modificar o insertar un almacen en la facturacion mete el correspondiente asiento en la contabilidad"
+SELECT drop_if_exists_proc ('syncbulmacontforma_pagod','');
+SELECT drop_if_exists_proc ('syncbulmacontforma_pagou','');
 
 
 SELECT drop_if_exists_proc ('syncbulmacontclienteup','');
@@ -188,11 +215,14 @@ SELECT drop_if_exists_proc ('syncbulmacontcobroup','');
 SELECT drop_if_exists_proc ('syncbulmacontpagoup','');
 SELECT drop_if_exists_proc ('syncbulmacontbancoup','');
 SELECT drop_if_exists_proc ('syncbulmacontalmacenup','');
+SELECT drop_if_exists_proc ('syncbulmacontforma_pagoup','');
 
 
 SELECT drop_if_exists_proc ('syncbulmacontclienteupre','');
 SELECT drop_if_exists_proc ('syncbulmacontfamiliaupre','');
 SELECT drop_if_exists_proc ('syncbulmacontproveedorupre','');
+
+
 
 
 

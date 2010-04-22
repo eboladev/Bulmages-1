@@ -109,6 +109,8 @@ BEGIN
 		ALTER TABLE pago ADD COLUMN idasientopago INTEGER;
 	END IF;
 
+
+
 	-- Creamos el espacio para almacenar el identificador de cuenta que corresponde a la VENTA familia.
 	SELECT INTO bs * FROM pg_attribute WHERE attname='idcuentaventafamilia';
 	IF NOT FOUND THEN
@@ -134,6 +136,33 @@ BEGIN
 		ALTER TABLE familia ADD COLUMN prefcuentacomprafamilia CHARACTER VARYING(12);
 		ALTER TABLE familia ADD COLUMN origenidcuentacomprafamilia INTEGER;
 	END IF;
+
+
+
+	-- Creamos el espacio para almacenar el identificador de cuenta que corresponde a la forma_pago.
+	SELECT INTO bs * FROM pg_attribute WHERE attname='idcuentaforma_pago';
+	IF NOT FOUND THEN
+		ALTER TABLE forma_pago ADD COLUMN idcuentaforma_pago INTEGER;
+	END IF;
+
+
+	-- Creamos el espacio para almacenar las cuentas definidas por el usuario
+	-- para los bancos que sobreescriben la configuracion por defecto.
+	SELECT INTO bs * FROM pg_attribute WHERE attname='prefcuentaforma_pago';
+	IF NOT FOUND THEN
+		ALTER TABLE forma_pago ADD COLUMN prefcuentaforma_pago CHARACTER VARYING(12);
+		ALTER TABLE forma_pago ADD COLUMN origenidcuentaforma_pago INTEGER;
+	END IF;
+
+
+	-- Creamos el espacio para almacenar las cuentas definidas por el usuario
+	-- para los bancos que sobreescriben la configuracion por defecto.
+	SELECT INTO bs * FROM pg_attribute WHERE attname='prefcuentabanco';
+	IF NOT FOUND THEN
+		ALTER TABLE banco ADD COLUMN prefcuentabanco CHARACTER VARYING(12);
+		ALTER TABLE banco ADD COLUMN origenidcuentabanco INTEGER;
+	END IF;
+
 
 
 	RETURN 0;
@@ -271,10 +300,10 @@ BEGIN
 	END IF;
 	idctacliente := client.idcuentaproveedor;
 
-
 	-- Buscamos el banco
 	IF NEW.idbanco IS NOT NULL THEN
 		SELECT INTO qbanco idcuentabanco FROM banco WHERE idbanco = NEW.idbanco;
+
 		IF NOT FOUND THEN
 			PERFORM dblink_exec('bulmafact2cont', 'ROLLBACK WORK;');
 			RAISE EXCEPTION 'El banco no tiene cuenta asociada en la contabilidad';
@@ -385,6 +414,7 @@ DECLARE
 	cs RECORD;
 	client RECORD;
 	qbanco RECORD;
+	qforma_pago RECORD;
 	idctacliente TEXT;
 	query TEXT;
 	subquery TEXT;
@@ -437,14 +467,31 @@ BEGIN
 	idctacliente := client.idcuentacliente;
 
 
-	-- Buscamos el banco
-	IF NEW.idbanco IS NOT NULL THEN
-		SELECT INTO qbanco idcuentabanco FROM banco WHERE idbanco = NEW.idbanco;
+	IF NEW.idforma_pago IS NOT NULL THEN
+
+		SELECT INTO qforma_pago idcuentaforma_pago, idbanco FROM forma_pago WHERE idforma_pago = NEW.idforma_pago;
 		IF NOT FOUND THEN
 			PERFORM dblink_exec('bulmafact2cont', 'ROLLBACK WORK;');
-			RAISE EXCEPTION 'El banco no tiene cuenta asociada en la contabilidad';
+			RAISE EXCEPTION 'La forma de pago no tiene cuenta asociada en la contabilidad';
 		END IF;
-		idctacobro := qbanco.idcuentabanco;
+
+		-- Si existe idbanco, entonces es un banco y se tiene que buscar la cuenta contable que le corresponde
+		-- a ese banco.
+		IF qforma_pago.idbanco IS NOT NULL THEN
+
+		    SELECT INTO qbanco idcuentabanco FROM banco WHERE idbanco = qforma_pago.idbanco;
+		    IF NOT FOUND THEN
+			    PERFORM dblink_exec('bulmafact2cont', 'ROLLBACK WORK;');
+			    RAISE EXCEPTION 'El banco no tiene cuenta asociada en la contabilidad';
+		    END IF;
+		    idctacobro := qbanco.idcuentabanco;
+
+		ELSE
+
+		    idctacobro := qforma_pago.idcuentaforma_pago;
+
+		END IF;
+
 	ELSE
 		-- Buscamos la cuenta de caja (efectivo)
 		SELECT INTO cs MAX(idcuenta) AS id FROM bc_cuenta WHERE codigo LIKE '5700%';
@@ -1269,11 +1316,10 @@ BEGIN
 	PERFORM conectabulmacont();
 	PERFORM dblink_exec('bulmafact2cont', 'BEGIN WORK;');
 
-	-- Hacemos el DELETE de la cuenta del banco.
+	-- Hacemos el DELETE de la cuenta de banco.
 	IF OLD.idcuentabanco IS NOT NULL THEN
 		query := 'DELETE FROM cuenta WHERE idcuenta = ' || OLD.idcuentabanco;
 		PERFORM dblink_exec('bulmafact2cont', query);
-
 	END IF;
 
 	PERFORM dblink_exec('bulmafact2cont', 'COMMIT WORK;');
@@ -1281,6 +1327,7 @@ BEGIN
 	RETURN OLD;
 END;
 $$ LANGUAGE plpgsql;
+
 
 
 CREATE TRIGGER syncbulmacontbancotriggerd
@@ -1291,16 +1338,22 @@ CREATE TRIGGER syncbulmacontbancotriggerd
 
 
 
+
 SELECT drop_if_exists_proc ('syncbulmacontbancou','');
 CREATE FUNCTION syncbulmacontbancou () RETURNS "trigger"
 AS $$
 DECLARE
+	cs RECORD;
 	bs RECORD;
 	codcta INTEGER;
 	quer TEXT;
 	idpadre INTEGER;
 	descripcion TEXT;
 	tipocuenta1 INTEGER;
+	query TEXT;
+	check_dblink_connection BOOLEAN;
+	altacuentabanco BOOLEAN;
+
 BEGIN
 	-- conectamos con contabilidad, etc
 	PERFORM conectabulmacont();
@@ -1309,31 +1362,45 @@ BEGIN
 	-- Cogemos el nombre de la cuenta.
 	descripcion := quote_literal(NEW.nombanco);
 
-	-- Hacemos el INSERT o UPDATE de la cuenta de banco.
-	IF NEW.idcuentabanco IS NULL THEN
-		-- Buscamos el codigo de cuenta que vaya a corresponderle.
-		SELECT INTO bs MAX(codigo::INTEGER) AS cod FROM bc_cuenta WHERE codigo LIKE '5730%';
+	altacuentabanco := FALSE;
 
-		IF bs.cod IS NOT NULL THEN
-			codcta := bs.cod + 1;
-		ELSE
-			codcta := '5730001';
-		END IF;
-	
-		-- Buscamos la cuenta padre (la 573)
-		SELECT INTO bs idcuenta, tipocuenta FROM bc_cuenta WHERE codigo = '573';
-		idpadre := bs.idcuenta;
-		tipocuenta1 := bs.tipocuenta;
-	
-		-- Creamos el Query de insercion
-		quer := 'INSERT INTO cuenta (descripcion, padre, codigo, tipocuenta) VALUES ( ' || descripcion ||', ' || idpadre || ', ' || codcta || ' , '|| tipocuenta1 || ')';
-		PERFORM dblink_exec('bulmafact2cont', quer);
-	
-		SELECT INTO bs MAX(idcuenta) AS id FROM bc_cuenta;
-		NEW.idcuentabanco := bs.id;
-	ELSE
+	-- Entra si es un INSERT o cuando la cuenta 'idcuentabanco' apunta a la contabilidad
+	-- pero en realidad no existe. Asi ejecutamos su creacion.
+	SELECT INTO cs idcuenta FROM bc_cuenta WHERE idcuenta = NEW.idcuentabanco;
+	IF NOT FOUND THEN
+	    altacuentabanco := TRUE;
+	END IF;
+
+
+	IF (TG_OP = 'INSERT') OR (altacuentabanco IS TRUE) THEN
+	    -- Buscamos el codigo de cuenta que vaya a corresponderle.
+	    SELECT INTO cs MAX(codigo::INTEGER) AS cod FROM bc_cuenta WHERE codigo LIKE '5720%';
+	    IF cs.cod IS NOT NULL THEN
+		    codcta := cs.cod + 1;
+	    ELSE
+		    codcta := '5720001';
+	    END IF;
+
+	    -- Buscamos la cuenta padre (la 573)
+	    SELECT INTO bs idcuenta, tipocuenta FROM bc_cuenta WHERE codigo ='572';
+	    idpadre := bs.idcuenta;
+	    tipocuenta1 := bs.tipocuenta;
+
+	    -- Creamos el Query de insercion
+	    quer := 'INSERT INTO cuenta (descripcion, padre, codigo, tipocuenta) VALUES ( ' || descripcion ||', ' || idpadre || ', ''' || codcta || ''' , '|| tipocuenta1 || ')';
+	    PERFORM dblink_exec('bulmafact2cont', quer);
+
+	    SELECT INTO bs MAX(idcuenta) AS id FROM bc_cuenta;
+	    NEW.idcuentabanco := bs.id;
+	END IF;
+
+
+	IF (TG_OP = 'UPDATE') THEN
+
+		-- No se ha cambiado. Solo actualiza datos.
 		quer := 'UPDATE cuenta SET descripcion = ' || descripcion || ' WHERE idcuenta = ' || NEW.idcuentabanco;
 		PERFORM dblink_exec('bulmafact2cont', quer);
+
 	END IF;
 
 	RETURN NEW;
@@ -1377,6 +1444,151 @@ CREATE TRIGGER syncbulmacontbancotriggerup
     AFTER UPDATE OR INSERT ON banco
     FOR EACH STATEMENT
     EXECUTE PROCEDURE syncbulmacontbancoup();
+
+
+
+
+-- =================================================================
+--           TRATO DE LAS FORMAS DE PAGO
+-- =================================================================
+
+SELECT drop_if_exists_proc ('syncbulmacontforma_pagod','');
+CREATE FUNCTION syncbulmacontforma_pagod () RETURNS "trigger"
+AS $$
+DECLARE
+	query TEXT;
+BEGIN
+	PERFORM conectabulmacont();
+	PERFORM dblink_exec('bulmafact2cont', 'BEGIN WORK;');
+
+	-- Hacemos el DELETE de la cuenta de forma_pago.
+	IF OLD.idcuentaforma_pago IS NOT NULL THEN
+		query := 'DELETE FROM cuenta WHERE idcuenta = ' || OLD.idcuentaforma_pago;
+		PERFORM dblink_exec('bulmafact2cont', query);
+	END IF;
+
+	PERFORM dblink_exec('bulmafact2cont', 'COMMIT WORK;');
+	PERFORM dblink_disconnect('bulmafact2cont');
+	RETURN OLD;
+END;
+$$ LANGUAGE plpgsql;
+
+
+
+CREATE TRIGGER syncbulmacontforma_pagotriggerd
+    AFTER DELETE ON forma_pago
+    FOR EACH ROW
+    EXECUTE PROCEDURE syncbulmacontforma_pagod();
+\echo "Creado el trigger que al borrar una forma de pago borra la respectiva cuenta en la contabilidad"
+
+
+
+
+SELECT drop_if_exists_proc ('syncbulmacontforma_pagou','');
+CREATE FUNCTION syncbulmacontforma_pagou () RETURNS "trigger"
+AS $$
+DECLARE
+	cs RECORD;
+	bs RECORD;
+	codcta INTEGER;
+	quer TEXT;
+	idpadre INTEGER;
+	descripcion TEXT;
+	tipocuenta1 INTEGER;
+	query TEXT;
+	check_dblink_connection BOOLEAN;
+	altacuentaforma_pago BOOLEAN;
+
+BEGIN
+	-- conectamos con contabilidad, etc
+	PERFORM conectabulmacont();
+	PERFORM dblink_exec('bulmafact2cont', 'BEGIN WORK;');
+
+	-- Cogemos el nombre de la cuenta.
+	descripcion := quote_literal(NEW.descforma_pago);
+
+	altacuentaforma_pago := FALSE;
+
+	-- Entra si es un INSERT o cuando la cuenta 'idcuentaforma_pago' apunta a la contabilidad
+	-- pero en realidad no existe. Asi ejecutamos su creacion.
+	SELECT INTO cs idcuenta FROM bc_cuenta WHERE idcuenta = NEW.idcuentaforma_pago;
+	IF NOT FOUND THEN
+	    altacuentaforma_pago := TRUE;
+	END IF;
+
+
+	IF (TG_OP = 'INSERT') OR (altacuentaforma_pago IS TRUE) THEN
+	    -- Buscamos el codigo de cuenta que vaya a corresponderle.
+	    SELECT INTO cs MAX(codigo::INTEGER) AS cod FROM bc_cuenta WHERE codigo LIKE '5700%';
+	    IF cs.cod IS NOT NULL THEN
+		    codcta := cs.cod + 1;
+	    ELSE
+		    codcta := '5700001';
+	    END IF;
+
+	    -- Buscamos la cuenta padre (la 570)
+	    SELECT INTO bs idcuenta, tipocuenta FROM bc_cuenta WHERE codigo ='570';
+	    idpadre := bs.idcuenta;
+	    tipocuenta1 := bs.tipocuenta;
+
+	    -- Creamos el Query de insercion
+	    quer := 'INSERT INTO cuenta (descripcion, padre, codigo, tipocuenta) VALUES ( ' || descripcion ||', ' || idpadre || ', ''' || codcta || ''' , '|| tipocuenta1 || ')';
+	    PERFORM dblink_exec('bulmafact2cont', quer);
+
+	    SELECT INTO bs MAX(idcuenta) AS id FROM bc_cuenta;
+	    NEW.idcuentaforma_pago := bs.id;
+	END IF;
+
+
+	IF (TG_OP = 'UPDATE') THEN
+
+		-- No se ha cambiado. Solo actualiza datos.
+		quer := 'UPDATE cuenta SET descripcion = ' || descripcion || ' WHERE idcuenta = ' || NEW.idcuentaforma_pago;
+		PERFORM dblink_exec('bulmafact2cont', quer);
+
+	END IF;
+
+	RETURN NEW;
+END;
+$$ LANGUAGE plpgsql;
+
+
+CREATE TRIGGER syncbulmacontforma_pagotriggeru
+    BEFORE INSERT OR UPDATE ON forma_pago
+    FOR EACH ROW
+    EXECUTE PROCEDURE syncbulmacontforma_pagou();
+
+\echo "Creado el trigger que al modificar o insertar una forma de pago en la facturacion mete el correspondiente asiento en la contabilidad"
+
+
+
+
+SELECT drop_if_exists_proc ('syncbulmacontforma_pagoup','');
+CREATE FUNCTION syncbulmacontforma_pagoup () RETURNS "trigger"
+AS $$
+DECLARE
+      check_dblink_connection BOOLEAN;
+BEGIN
+
+      check_dblink_connection = dblink_exists('bulmafact2cont');
+      
+      IF check_dblink_connection IS TRUE THEN
+	  -- Hace un COMMIT de la conexion dblink si todo ha ido bien.
+	  PERFORM dblink_exec('bulmafact2cont', 'COMMIT WORK;');
+	  PERFORM dblink_disconnect('bulmafact2cont');
+      ELSE
+	  RAISE EXCEPTION 'Se ha perdido la conexion dblink en syncbulmacontforma_pagoup.';
+      END IF;
+
+      RETURN NULL;
+
+END;
+$$ LANGUAGE plpgsql;
+
+CREATE TRIGGER syncbulmacontforma_pagotriggerup
+    AFTER UPDATE OR INSERT ON forma_pago
+    FOR EACH STATEMENT
+    EXECUTE PROCEDURE syncbulmacontforma_pagoup();
 
 
 
