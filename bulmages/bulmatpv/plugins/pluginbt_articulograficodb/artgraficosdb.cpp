@@ -45,8 +45,8 @@ FamiliaArticulos::~FamiliaArticulos() {}
 BtLabel::BtLabel() {}
 BtLabel::~BtLabel() {}
 
-ArtGraficosDb::ArtGraficosDb ( BlMainCompany *emp, QWidget *parent ) : BlWidget ( emp, parent )
-{
+
+ArtGraficosDb::ArtGraficosDb ( BlMainCompany *emp, QWidget *parent ) : BlWidget ( emp, parent ) {
     _depura ( "ArtGraficosDb::ArtGraficosDb", 0 );
     
     setupUi ( this );
@@ -57,7 +57,7 @@ ArtGraficosDb::ArtGraficosDb ( BlMainCompany *emp, QWidget *parent ) : BlWidget 
     
     /// Inicializa la variable.
     mui_list = new QTableWidget();
-    
+
     // Crea las pantallas en funcion de las familias de la BD
     ponPantallas();
     
@@ -65,12 +65,11 @@ ArtGraficosDb::ArtGraficosDb ( BlMainCompany *emp, QWidget *parent ) : BlWidget 
     renderPantallas ();
     // Muestra la primera pantalla creada
     muestraPantalla ( 0 );
-    
+
     _depura ( "END ArtGraficosDb::ArtGraficosDb", 0 );
 }
 
-ArtGraficosDb::~ArtGraficosDb()
-{
+ArtGraficosDb::~ArtGraficosDb() {
     _depura ( "ArtGraficosDb::~ArtGraficosDb", 0 );
     
     /// Libera la memoria de las pantallas.
@@ -85,6 +84,7 @@ ArtGraficosDb::~ArtGraficosDb()
 void ArtGraficosDb::cellClicked ( int row, int column )
 {
     _depura ( "ArtGraficosDb::cellClicked", 0 );
+
     // Obtenemos el item de la celda
     BtLabel *label = (BtLabel *) mui_list->cellWidget(row, column);
   
@@ -98,7 +98,8 @@ void ArtGraficosDb::cellClicked ( int row, int column )
     } else {
         ( ( BtCompany * ) mainCompany() )->ticketActual()->insertarArticuloCodigoNL ( label->m_codigoarticulo );
     } // end if
-        
+
+
 
     _depura ( "END ArtGraficosDb::cellClicked", 0 );
 }
@@ -107,7 +108,14 @@ void ArtGraficosDb::on_mui_botonSiguiente_pressed()
 {
     _depura ( "ArtGraficosDb::on_mui_botonSiguiente_pressed", 0 );
 
+
+
     muestraPantalla ( m_pantallaActual + 1 );
+
+    setUpdatesEnabled(true);
+    repaint();
+    setUpdatesEnabled(false);
+
     
     _depura ( "END ArtGraficosDb::on_mui_botonSiguiente_pressed", 0 );
 }
@@ -115,15 +123,23 @@ void ArtGraficosDb::on_mui_botonSiguiente_pressed()
 void ArtGraficosDb::on_mui_botonAnterior_pressed()
 {
     _depura ( "ArtGraficosDb::on_mui_botonAnterior_pressed", 0 );
+
+
     
-    muestraPantalla ( m_pantallaActual - 1 );
-    
+    muestraPantalla ( m_pantallaActual - 1 ); 
+
+    setUpdatesEnabled(true);
+    repaint();
+    setUpdatesEnabled(false);
+
     _depura ( "END ArtGraficosDb::on_mui_botonAnterior_pressed", 0 );
 }
 
 
 void ArtGraficosDb::muestraPantalla ( int numPantalla ) {
-  
+    _depura ( "ArtGraficosDb::muestraPantalla", 0 );
+
+
     /// Hace un bucle sinfin de pantallas.
     if (numPantalla < 0) {
 	/// Muestra la ultima pantalla.
@@ -133,12 +149,26 @@ void ArtGraficosDb::muestraPantalla ( int numPantalla ) {
 	numPantalla = 0;
     } // end if
   
+
+
     m_pantallaActual = numPantalla;
     QTableWidget *pantalla = m_pantallas.at(numPantalla);
-    mui_render->takeWidget();
+
+/*    mui_render->takeWidget()->hide();
+    pantalla->show();
     mui_render->setWidget(pantalla);
+//if (mui_list) mui_list->hide();
+//    pantalla->showMaximized();
+//    mui_render->setWidgetResizable(TRUE);
+//    pantalla->resize();
+//    pantalla->show();
+*/
+    mui_stack->setCurrentWidget(pantalla);
     mui_list = pantalla;
     mui_titulo->setText( pantalla->accessibleName() );
+
+
+    _depura ( "END ArtGraficosDb::muestraPantalla", 0 );
 }
 
 
@@ -158,7 +188,7 @@ void ArtGraficosDb::renderPantallas ()
     for (int i = 0; i < m_numPantallas; i++) {
     
 	/// Creamos una pantalla nueva
-	QTableWidget *pantalla = new QTableWidget();
+	QTableWidget *pantalla = new QTableWidget(mui_stack);
 	connect(pantalla, SIGNAL(cellClicked ( int, int )), this,  SLOT(cellClicked ( int, int )));
 	
 	pantalla->setHorizontalScrollMode(QAbstractItemView::ScrollPerPixel);
@@ -210,16 +240,20 @@ void ArtGraficosDb::renderPantallas ()
 		    QPainter painter;
 		    painter.begin ( &picture ); // paint in picture
 		    
-		    painter.drawPixmap ( 0, 0, cellwidth.toInt(), cellwidth.toInt(), QPixmap ( g_confpr->valor ( CONF_DIR_THUMB_ARTICLES ) + "blanco.jpg" ) );
+
+          QFile f(g_confpr->valor ( CONF_DIR_THUMB_ARTICLES ) + codigo + ".jpg");
 
 		    // Si existe la imagen del articulo, esta se superpondra a la de blanco.jpg, dejando 20px por debajo
 		    // para que se vea el texto negro sobre blanco
-		    painter.drawPixmap ( 0, 0, cellwidth.toInt(), cellwidth.toInt() - 20, QPixmap ( g_confpr->valor ( CONF_DIR_THUMB_ARTICLES ) + codigo + ".jpg" ) );
-
-		    painter.setPen ( QColor ( 0, 0, 0 ) );
-		    painter.setBackground ( QColor ( 0, 0, 0 ) );
-
-		    painter.drawText ( 5, (g_confpr->valor ( CONF_TPV_CELL_WIDTH ).toInt() - 5), nombre );
+          if (f.exists()) {
+            /// Es importante pasar el pixmap ya escalado porque sino en cada renderizado se reescala de nuevo el pixmap.
+            QPixmap p= QPixmap( g_confpr->valor ( CONF_DIR_THUMB_ARTICLES ) + codigo + ".jpg" ).scaled(cellwidth.toInt(),cellwidth.toInt()-20);
+            painter.drawPixmap ( 0, 0, p );
+          } else {
+            painter.setPen ( QColor ( 0, 0, 0 ) );
+            painter.setBackground ( QColor ( 0, 0, 0 ) );
+            painter.drawText ( 5, (g_confpr->valor ( CONF_TPV_CELL_WIDTH ).toInt() - 25), nombre );
+          } // end if
 		    
 		    painter.end(); // painting done
 
@@ -234,7 +268,8 @@ void ArtGraficosDb::renderPantallas ()
 	} // end for
 
 	/// Ya tenemos la pantalla creada y dibujada y ahora la guardamos en el QList.
-	m_pantallas.append(pantalla);
+    m_pantallas.append(pantalla);
+    mui_stack->addWidget(pantalla);
 
     } // end for
 
@@ -301,6 +336,7 @@ void ArtGraficosDb::ponPantallas()
     
     /// Agrego el widget al BLDockWidget
     widget->setLayout ( hboxLayout1 );
+
     g_pantallas->setWidget ( widget );
     
     _depura ( "END ArtGraficosDb::ponPantallas", 0 );
@@ -310,7 +346,13 @@ void ArtGraficosDb::pulsadoBoton()
 {
     _depura ( "ArtGraficosDb::pulsadoBoton", 0 );
     
+    
     muestraPantalla ( sender()->objectName().toInt() );
     
+    setUpdatesEnabled(true);
+    repaint();
+    setUpdatesEnabled(false);
+    
+
     _depura ( "END ArtGraficosDb::pulsadoBoton", 0 );
 }

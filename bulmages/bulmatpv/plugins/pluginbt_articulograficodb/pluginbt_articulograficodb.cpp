@@ -63,7 +63,7 @@ int BtCompany_createMainWindows_Post ( BtCompany *etpv )
 {
     _depura ( "BtCompany_createMainWindows_Post", 0 );
 
-    g_graf = new ArtGraficosDb ( etpv, NULL );
+    g_graf = new ArtGraficosDb ( etpv, g_main );
     g_main->setCentralWidget ( g_graf );
     
     _depura ( "BtCompany_createMainWindows_Post", 0 );

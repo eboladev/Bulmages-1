@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>731</width>
+    <width>764</width>
     <height>653</height>
    </rect>
   </property>
@@ -14,9 +14,6 @@
    <string>Form</string>
   </property>
   <layout class="QGridLayout" name="gridLayout">
-   <property name="margin">
-    <number>0</number>
-   </property>
    <item row="0" column="0">
     <widget class="QFrame" name="frame">
      <property name="frameShape">
@@ -117,29 +114,11 @@
     </widget>
    </item>
    <item row="1" column="0">
-    <widget class="QScrollArea" name="mui_render">
-     <property name="frameShape">
-      <enum>QFrame::NoFrame</enum>
+    <widget class="QStackedWidget" name="mui_stack">
+     <property name="lineWidth">
+      <number>0</number>
      </property>
-     <property name="verticalScrollBarPolicy">
-      <enum>Qt::ScrollBarAlwaysOff</enum>
-     </property>
-     <property name="horizontalScrollBarPolicy">
-      <enum>Qt::ScrollBarAlwaysOff</enum>
-     </property>
-     <property name="widgetResizable">
-      <bool>true</bool>
-     </property>
-     <widget class="QWidget" name="scrollAreaWidgetContents">
-      <property name="geometry">
-       <rect>
-        <x>0</x>
-        <y>0</y>
-        <width>731</width>
-        <height>601</height>
-       </rect>
-      </property>
-     </widget>
+     <widget class="QWidget" name="page"/>
     </widget>
    </item>
   </layout>
