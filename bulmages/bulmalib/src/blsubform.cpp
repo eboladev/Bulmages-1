@@ -1401,6 +1401,10 @@ void BlSubForm::cargar ( BlDbRecordSet *cur )
         reg = m_lista.at ( i );
         QRegExp patronFecha ( "^.*00:00:00.*$" ); /// Para emparejar los valores fechas.
         for ( int j = 0; j < reg->lista() ->size(); ++j ) {
+           /// Pintar de verde el fondo de la cabecera de las columnas editables
+           if ( i == 0 && ! ( m_lcabecera [ j ] -> options() & BlSubFormHeader::DbNoWrite ) ) {
+              mui_list->horizontalHeaderItem ( j ) -> setBackgroundColor ( QColor ( 245, 255, 245 ) );
+           } // end if
             camp = ( BlDbSubFormField * ) reg->lista() ->at ( j );
             /// Si es una fecha lo truncamos a 10 caracteres para presentar solo la fecha.
             if ( patronFecha.exactMatch ( camp->valorcampo() ) ) {
@@ -1409,10 +1413,6 @@ void BlSubForm::cargar ( BlDbRecordSet *cur )
             } // end if
             /// Rellena la tabla con los datos.
             mui_list->setItem ( i, j, camp );
-            /// Pintar de verde el fondo de las celdas editables
-            if ( ! ( m_lcabecera[j]->options() & BlSubFormHeader::DbNoWrite ) ) {
-               mui_list->item ( i, j )->setBackgroundColor ( QColor ( 245, 255, 245 ) );
-            } // end if
         } // end for
         barra->setValue ( i );
     } // end for
