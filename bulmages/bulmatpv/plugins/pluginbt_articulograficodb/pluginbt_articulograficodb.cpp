@@ -55,7 +55,7 @@ int entryPoint ( BtBulmaTPV *tpv )
     g_pantallas->cargaconf();
 
     _depura ( "END entryPoint", 0 );
-    
+
     return 0;
 }
 
@@ -65,8 +65,8 @@ int BtCompany_createMainWindows_Post ( BtCompany *etpv )
 
     g_graf = new ArtGraficosDb ( etpv, g_main );
     g_main->setCentralWidget ( g_graf );
-    
+
     _depura ( "BtCompany_createMainWindows_Post", 0 );
-    
+
     return 0;
 }

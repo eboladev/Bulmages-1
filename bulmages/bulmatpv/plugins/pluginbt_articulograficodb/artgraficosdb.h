@@ -64,14 +64,17 @@ public:
 // Clase que guarda la informacion de un articulo en pantalla
 // Por cada elemento de la rejilla que contenga un articulo
 // su informacion se guarda en esta clase (su codigo y su imagen, por ahora)
-class BtLabel : public QLabel {
-
+class BtLabel : public QLabel
+{
+Q_OBJECT
 public:
     BtLabel();
     ~BtLabel();
-    
+    void mousePressEvent ( QMouseEvent * e );
 public:
-    QString m_codigoarticulo;
+    QString m_codigoarticulo[100][100];      /// Como maximo 100 x 100 articulos es más que suficiente
+signals:
+    void cellPressed(int, int);
 };
 
 class ArtGraficosDb : public BlWidget, public Ui_ArtGraficosDbBase
@@ -82,7 +85,7 @@ public:
     int m_numPantallas;
     int m_pantallaActual;
     QList<FamiliaArticulos> m_listfamilias;
-    QList<QTableWidget *> m_pantallas;
+    QList<QWidget *> m_pantallas;
     QTableWidget *mui_list;
 
 public:

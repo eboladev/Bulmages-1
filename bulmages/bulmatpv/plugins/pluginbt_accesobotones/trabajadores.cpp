@@ -15,12 +15,13 @@ Trabajadores::Trabajadores ( BlMainCompany *emp, QWidget *parent ) : QDialog ( p
     while ( !cur->eof() ) {
         QPushButton * toolbutton = new QPushButton ( mui_frame );
         toolbutton->setText ( cur->valor ( "nomtrabajador" ) + " " + cur->valor ( "apellidostrabajador" ) );
+        toolbutton->setMaximumHeight(200);
 
         QVBoxLayout *m_hboxLayout1 = mui_frame->findChild<QVBoxLayout *> ( "hboxLayout1" );
         if ( !m_hboxLayout1 ) {
             m_hboxLayout1 = new QVBoxLayout ( mui_frame );
-            m_hboxLayout1->setSpacing ( 5 );
-            m_hboxLayout1->setMargin ( 5 );
+            m_hboxLayout1->setSpacing ( 0 );
+            m_hboxLayout1->setMargin ( 0 );
             m_hboxLayout1->setObjectName ( QString::fromUtf8 ( "hboxLayout1" ) );
         } // end if
         m_hboxLayout1->addWidget ( toolbutton );
