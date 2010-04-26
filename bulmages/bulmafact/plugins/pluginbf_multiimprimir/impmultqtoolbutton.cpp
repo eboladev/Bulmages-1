@@ -838,3 +838,387 @@ void EmailQToolButton::click()
 }
 
 
+
+
+
+
+
+// ==================================================================================
+
+
+///
+/**
+\param pres
+\param ped
+\param alb
+\param fac
+\param cob
+\param parent
+**/
+ProcesarQToolButton::ProcesarQToolButton ( PresupuestoList *pres, PedidosClienteList *ped, AlbaranClienteList *alb,  FacturasList *fac, CobrosList *cob , QWidget *parent ) : QToolButton ( parent )
+{
+    _depura ( "ProcesarQToolButton::ProcesarQToolButton", 0 );
+    m_presupuestoList = pres;
+    m_pedidosClienteList = ped;
+    m_albaranClienteList = alb;
+    m_facturasList = fac;
+    m_cobrosList = cob;
+
+    m_listado = (BlFormList *) parent->parent()->parent();
+
+    setBoton();
+    _depura ( "END ProcesarQToolButton::ProcesarQToolButton", 0 );
+}
+
+
+///
+/**
+**/
+ProcesarQToolButton::~ProcesarQToolButton()
+{
+    _depura ( "ProcesarQToolButton::~ProcesarQToolButton", 0 );
+    _depura ( "END ProcesarQToolButton::~ProcesarQToolButton", 0 );
+}
+
+
+///
+/**
+**/
+void ProcesarQToolButton::setBoton()
+{
+    _depura ( "ProcesarQToolButton::setBoton", 0 );
+    connect ( this, SIGNAL ( clicked() ), this, SLOT ( click() ) );
+    setObjectName ( QString::fromUtf8 ( "procesa" ) );
+    setStatusTip ( _ ( "Procesar elementos seleccionados" ) );
+    setToolTip ( _ ( "Procesar elementos seleccionados" ) );
+    setMinimumSize ( QSize ( 32, 32 ) );
+    setIcon ( QIcon ( QString::fromUtf8 ( ":/BulmaCont32x32/images/png/i_ok.png" ) ) );
+    setIconSize ( QSize ( 22, 22 ) );
+    _depura ( "END ProcesarQToolButton::setBoton", 0 );
+}
+
+
+///
+/**
+**/
+void ProcesarQToolButton::click()
+{
+    _depura ( "ProcesarQToolButton::click", 0 );
+
+    // Es posible que esto se haya cargado antes de cargar el company por eso
+    // No me fio de que la asignacion en el constructor haya ido bien y reasigno aqui
+
+
+    QString res = "";
+
+
+    if ( m_presupuestoList != NULL ) {
+        m_companyact = ( BfCompany * ) m_presupuestoList->mainCompany();
+        BlSubForm *sub = m_presupuestoList->mui_list;
+        QString ids = "";
+        QString separador = "";
+        /// Reseteamos los valores
+        for ( int i = 0; i < sub->rowCount(); i++ ) {
+            BlDbSubFormRecord *rec = sub->lineaat ( i );
+            rec->refresh();
+            QString val = rec->dbValue ( "selector" );
+            if ( val == "TRUE" ) {
+                ids += separador + rec->dbValue ( "presupuesto" );
+                separador = ",";
+            } // end if
+        } // end for
+        QString query = "UPDATE presupuesto set procesadopresupuesto = TRUE WHERE idpresupuesto in ("+ids+")";
+        m_companyact->runQuery ( query );
+    } // end if
+
+
+
+    if ( m_pedidosClienteList != NULL ) {
+        m_companyact = ( BfCompany * ) m_pedidosClienteList->mainCompany();
+        BlSubForm *sub = m_pedidosClienteList->mui_list;
+        QString ids = "";
+        QString separador = "";
+
+        /// Reseteamos los valores
+        for ( int i = 0; i < sub->rowCount(); i++ ) {
+            BlDbSubFormRecord *rec = sub->lineaat ( i );
+
+            rec->refresh();
+            QString val = rec->dbValue ( "selector" );
+            if ( val == "TRUE" ) {
+                ids += separador + rec->dbValue ( "idpedido" );
+                separador = ",";
+            } // end if
+        } // end for
+        QString query = "UPDATE pedidocliente set procesadopedidocliente = TRUE WHERE idpedidocliente in ("+ids+")";
+        m_companyact->runQuery ( query );
+    } // end if
+
+
+
+
+    if ( m_albaranClienteList != NULL ) {
+        m_companyact = ( BfCompany * ) m_albaranClienteList->mainCompany();
+        BlSubForm *sub = m_albaranClienteList->mui_list;
+        QString ids = "";
+        QString separador = "";
+
+        /// Reseteamos los valores
+        for ( int i = 0; i < sub->rowCount(); i++ ) {
+            BlDbSubFormRecord *rec = sub->lineaat ( i );
+            rec->refresh();
+            QString val = rec->dbValue ( "selector" );
+            if ( val == "TRUE" ) {
+                ids += separador + rec->dbValue ( "idalbaran" );
+                separador = ",";
+            } // end if
+        } // end for
+        QString query = "UPDATE albaran set procesadoalbaran = TRUE WHERE idalbaran in ("+ids+")";
+        m_companyact->runQuery ( query );
+    } // end if
+
+
+
+
+    if ( m_facturasList != NULL ) {
+        m_companyact = ( BfCompany * ) m_facturasList->mainCompany();
+        BlSubForm *sub = m_facturasList->mui_list;
+        QString ids = "";
+        QString separador = "";
+
+        /// Reseteamos los valores
+        for ( int i = 0; i < sub->rowCount(); i++ ) {
+            BlDbSubFormRecord *rec = sub->lineaat ( i );
+            rec->refresh();
+            QString val = rec->dbValue ( "selector" );
+            if ( val == "TRUE" ) {
+                ids += separador + rec->dbValue ( "idfactura" );
+                separador = ",";
+            } // end if
+        } // end for
+
+        QString query = "UPDATE factura set procesadafactura = TRUE WHERE idfactura in ("+ids+")";
+        m_companyact->runQuery ( query );
+    } // end if
+
+    if ( m_cobrosList != NULL ) {
+        m_companyact = ( BfCompany * ) m_cobrosList->mainCompany();
+        BlSubForm *sub = m_cobrosList->mui_list;
+        QString ids = "";
+        QString separador = "";
+
+        /// Reseteamos los valores
+        for ( int i = 0; i < sub->rowCount(); i++ ) {
+            BlDbSubFormRecord *rec = sub->lineaat ( i );
+            rec->refresh();
+            QString val = rec->dbValue ( "selector" );
+            if ( val == "TRUE" ) {
+                ids += separador + rec->dbValue ( "idcobro" );
+                separador = ",";
+            } // end if
+        } // end for
+        QString query = "UPDATE cobro set previsioncobro = FALSE WHERE idcobro in ("+ids+")";
+        m_companyact->runQuery ( query );
+    } // end if
+
+
+    _depura ( "END ProcesarQToolButton::click", 0 );
+}
+
+
+
+
+
+
+// ==================================================================================
+
+
+///
+/**
+\param pres
+\param ped
+\param alb
+\param fac
+\param cob
+\param parent
+**/
+SumarQToolButton::SumarQToolButton ( PresupuestoList *pres, PedidosClienteList *ped, AlbaranClienteList *alb,  FacturasList *fac, CobrosList *cob , QWidget *parent ) : QToolButton ( parent )
+{
+    _depura ( "SumarQToolButton::SumarQToolButton", 0 );
+    m_presupuestoList = pres;
+    m_pedidosClienteList = ped;
+    m_albaranClienteList = alb;
+    m_facturasList = fac;
+    m_cobrosList = cob;
+
+    m_listado = (BlFormList *) parent->parent()->parent();
+
+    setBoton();
+    _depura ( "END SumarQToolButton::SumarQToolButton", 0 );
+}
+
+
+///
+/**
+**/
+SumarQToolButton::~SumarQToolButton()
+{
+    _depura ( "SumarQToolButton::~SumarQToolButton", 0 );
+    _depura ( "END SumarQToolButton::~SumarQToolButton", 0 );
+}
+
+
+///
+/**
+**/
+void SumarQToolButton::setBoton()
+{
+    _depura ( "SumarQToolButton::setBoton", 0 );
+    connect ( this, SIGNAL ( clicked() ), this, SLOT ( click() ) );
+    setObjectName ( QString::fromUtf8 ( "procesa" ) );
+    setStatusTip ( _ ( "Procesar elementos seleccionados" ) );
+    setToolTip ( _ ( "Procesar elementos seleccionados" ) );
+    setMinimumSize ( QSize ( 32, 32 ) );
+    setIcon ( QIcon (  g_confpr->valor ( CONF_PROGDATA ) + "icons/suma.png" ) );
+    setIconSize ( QSize ( 22, 22 ) );
+    _depura ( "END SumarQToolButton::setBoton", 0 );
+}
+
+
+///
+/**
+**/
+void SumarQToolButton::click()
+{
+    _depura ( "SumarQToolButton::click", 0 );
+
+    // Es posible que esto se haya cargado antes de cargar el company por eso
+    // No me fio de que la asignacion en el constructor haya ido bien y reasigno aqui
+
+
+    QString res = "";
+
+
+    if ( m_presupuestoList != NULL ) {
+        m_companyact = ( BfCompany * ) m_presupuestoList->mainCompany();
+        BlSubForm *sub = m_presupuestoList->mui_list;
+        QString ids = "";
+        QString separador = "";
+        /// Reseteamos los valores
+        for ( int i = 0; i < sub->rowCount(); i++ ) {
+            BlDbSubFormRecord *rec = sub->lineaat ( i );
+            rec->refresh();
+            QString val = rec->dbValue ( "selector" );
+            if ( val == "TRUE" ) {
+                ids += separador + rec->dbValue ( "idpresupuesto" );
+                separador = ",";
+            } // end if
+        } // end for
+        QString query = "SELECT coalesce(SUM(totalpresupuesto), 0) AS total FROM  presupuesto WHERE idpresupuesto in ("+ids+")";
+        BlDbRecordSet *curs = m_companyact->loadQuery ( query );
+        mensajeInfo(curs->valor ( "total" ));
+        delete curs;
+    } // end if
+
+
+
+    if ( m_pedidosClienteList != NULL ) {
+        m_companyact = ( BfCompany * ) m_pedidosClienteList->mainCompany();
+        BlSubForm *sub = m_pedidosClienteList->mui_list;
+        QString ids = "";
+        QString separador = "";
+
+        /// Reseteamos los valores
+        for ( int i = 0; i < sub->rowCount(); i++ ) {
+            BlDbSubFormRecord *rec = sub->lineaat ( i );
+
+            rec->refresh();
+            QString val = rec->dbValue ( "selector" );
+            if ( val == "TRUE" ) {
+                ids += separador + rec->dbValue ( "idpedido" );
+                separador = ",";
+            } // end if
+        } // end for
+        QString query = "SELECT coalesce(SUM(totalpedidocliente), 0) AS total FROM  pedidocliente WHERE idpedidocliente in ("+ids+")";
+        BlDbRecordSet *curs = m_companyact->loadQuery ( query );
+        mensajeInfo(curs->valor ( "total" ));
+    } // end if
+
+
+
+
+    if ( m_albaranClienteList != NULL ) {
+        m_companyact = ( BfCompany * ) m_albaranClienteList->mainCompany();
+        BlSubForm *sub = m_albaranClienteList->mui_list;
+        QString ids = "";
+        QString separador = "";
+
+        /// Reseteamos los valores
+        for ( int i = 0; i < sub->rowCount(); i++ ) {
+            BlDbSubFormRecord *rec = sub->lineaat ( i );
+            rec->refresh();
+            QString val = rec->dbValue ( "selector" );
+            if ( val == "TRUE" ) {
+                ids += separador + rec->dbValue ( "idalbaran" );
+                separador = ",";
+            } // end if
+        } // end for
+        QString query = "SELECT coalesce(SUM(totalalbaran), 0) AS total FROM  albaran WHERE idalbaran in ("+ids+")";
+        BlDbRecordSet *curs = m_companyact->loadQuery ( query );
+        mensajeInfo(curs->valor ( "total" ));
+    } // end if
+
+
+
+
+    if ( m_facturasList != NULL ) {
+        m_companyact = ( BfCompany * ) m_facturasList->mainCompany();
+        BlSubForm *sub = m_facturasList->mui_list;
+        QString ids = "";
+        QString separador = "";
+
+        /// Reseteamos los valores
+        for ( int i = 0; i < sub->rowCount(); i++ ) {
+            BlDbSubFormRecord *rec = sub->lineaat ( i );
+            rec->refresh();
+            QString val = rec->dbValue ( "selector" );
+            if ( val == "TRUE" ) {
+                ids += separador + rec->dbValue ( "idfactura" );
+                separador = ",";
+            } // end if
+        } // end for
+
+        QString query = "SELECT coalesce(SUM(totalfactura), 0) AS total FROM  factura WHERE idfactura in ("+ids+")";
+        BlDbRecordSet *curs = m_companyact->loadQuery ( query );
+        mensajeInfo(curs->valor ( "total" ));
+    } // end if
+
+    if ( m_cobrosList != NULL ) {
+        m_companyact = ( BfCompany * ) m_cobrosList->mainCompany();
+        BlSubForm *sub = m_cobrosList->mui_list;
+        QString ids = "";
+        QString separador = "";
+
+        /// Reseteamos los valores
+        for ( int i = 0; i < sub->rowCount(); i++ ) {
+            BlDbSubFormRecord *rec = sub->lineaat ( i );
+            rec->refresh();
+            QString val = rec->dbValue ( "selector" );
+            if ( val == "TRUE" ) {
+                ids += separador + rec->dbValue ( "idcobro" );
+                separador = ",";
+            } // end if
+        } // end for
+        QString query = "SELECT coalesce(SUM(cantcobro), 0) AS total FROM  cobro WHERE idcobro in ("+ids+")";
+        BlDbRecordSet *curs = m_companyact->loadQuery ( query );
+        mensajeInfo(curs->valor ( "total" ));
+    } // end if
+
+
+    _depura ( "END SumarQToolButton::click", 0 );
+}
+
+
+
+
+

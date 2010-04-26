@@ -142,6 +142,8 @@ int CobrosList_CobrosList ( CobrosList *l )
     SelQToolButton *sel = new SelQToolButton ( NULL, NULL, NULL, NULL, l, l->mui_plugbotones );
     ImpQToolButton *imp = new ImpQToolButton ( NULL, NULL, NULL, NULL, l, l->mui_plugbotones );
 //    EmailQToolButton *email = new EmailQToolButton(NULL, NULL, NULL, NULL, l, l->mui_plugbotones);
+    ProcesarQToolButton * procesar = new ProcesarQToolButton ( NULL, NULL, NULL, NULL, l, l->mui_plugbotones );
+    SumarQToolButton * sumar = new SumarQToolButton ( NULL, NULL, NULL, NULL, l, l->mui_plugbotones );
 
     QHBoxLayout *m_hboxLayout1 = l->mui_plugbotones->findChild<QHBoxLayout *> ( "hboxLayout1" );
     if ( !m_hboxLayout1 ) {
@@ -153,6 +155,9 @@ int CobrosList_CobrosList ( CobrosList *l )
     m_hboxLayout1->addWidget ( sel );
     m_hboxLayout1->addWidget ( imp );
 //    m_hboxLayout1->addWidget(email);
+    m_hboxLayout1->addWidget ( procesar);
+    m_hboxLayout1->addWidget ( sumar);
+
 
     _depura ( "END CobrosList_CobrosList", 0 );
     return 0;
@@ -171,6 +176,9 @@ int PresupuestoList_PresupuestoList ( PresupuestoList *l )
     SelQToolButton *sel = new SelQToolButton ( l, NULL, NULL, NULL, NULL, l->mui_plugbotones );
     ImpQToolButton *imp = new ImpQToolButton ( l, NULL, NULL, NULL, NULL, l->mui_plugbotones );
     EmailQToolButton *email = new EmailQToolButton ( l, NULL, NULL, NULL, NULL, l->mui_plugbotones );
+    ProcesarQToolButton * procesar = new ProcesarQToolButton ( l, NULL, NULL, NULL, NULL, l->mui_plugbotones );
+    SumarQToolButton * sumar = new SumarQToolButton ( l, NULL, NULL, NULL, NULL, l->mui_plugbotones );
+
 
     QHBoxLayout *m_hboxLayout1 = l->mui_plugbotones->findChild<QHBoxLayout *> ( "hboxLayout1" );
     if ( !m_hboxLayout1 ) {
@@ -182,6 +190,9 @@ int PresupuestoList_PresupuestoList ( PresupuestoList *l )
     m_hboxLayout1->addWidget ( sel );
     m_hboxLayout1->addWidget ( imp );
     m_hboxLayout1->addWidget ( email );
+    m_hboxLayout1->addWidget ( procesar);
+    m_hboxLayout1->addWidget ( sumar);
+
 
     _depura ( "END PresupuestoList_PresupuestoList", 0 );
     return 0;
@@ -200,6 +211,8 @@ int PedidosClienteList_PedidosClienteList ( PedidosClienteList *l )
     SelQToolButton *sel = new SelQToolButton ( NULL, l, NULL, NULL, NULL, l->mui_plugbotones );
     ImpQToolButton *imp = new ImpQToolButton ( NULL, l, NULL, NULL, NULL, l->mui_plugbotones );
     EmailQToolButton *email = new EmailQToolButton ( NULL, l, NULL, NULL, NULL, l->mui_plugbotones );
+    ProcesarQToolButton * procesar = new ProcesarQToolButton ( NULL, l, NULL, NULL, NULL, l->mui_plugbotones );
+    SumarQToolButton * sumar = new SumarQToolButton ( NULL, l, NULL, NULL, NULL, l->mui_plugbotones );
 
     QHBoxLayout *m_hboxLayout1 = l->mui_plugbotones->findChild<QHBoxLayout *> ( "hboxLayout1" );
     if ( !m_hboxLayout1 ) {
@@ -212,6 +225,9 @@ int PedidosClienteList_PedidosClienteList ( PedidosClienteList *l )
     m_hboxLayout1->addWidget ( sel );
     m_hboxLayout1->addWidget ( imp );
     m_hboxLayout1->addWidget ( email );
+    m_hboxLayout1->addWidget ( procesar);
+    m_hboxLayout1->addWidget ( sumar);
+
 
     _depura ( "END PedidosClienteList_PedidosClienteList", 0 );
     return 0;
@@ -230,6 +246,9 @@ int AlbaranClienteList_AlbaranClienteList ( AlbaranClienteList *l )
     SelQToolButton *sel = new SelQToolButton ( NULL,  NULL, l, NULL, NULL, l->mui_plugbotones );
     ImpQToolButton *imp = new ImpQToolButton ( NULL,  NULL, l, NULL, NULL, l->mui_plugbotones );
     EmailQToolButton *email = new EmailQToolButton ( NULL,  NULL, l, NULL, NULL, l->mui_plugbotones );
+    ProcesarQToolButton * procesar = new ProcesarQToolButton ( NULL, NULL, l, NULL, NULL, l->mui_plugbotones );
+    SumarQToolButton * sumar = new SumarQToolButton ( NULL, NULL, l, NULL, NULL, l->mui_plugbotones );
+
 
     QHBoxLayout *m_hboxLayout1 = l->mui_plugbotones->findChild<QHBoxLayout *> ( "hboxLayout1" );
     if ( !m_hboxLayout1 ) {
@@ -241,6 +260,10 @@ int AlbaranClienteList_AlbaranClienteList ( AlbaranClienteList *l )
     m_hboxLayout1->addWidget ( sel );
     m_hboxLayout1->addWidget ( imp );
     m_hboxLayout1->addWidget ( email );
+    m_hboxLayout1->addWidget ( procesar);
+    m_hboxLayout1->addWidget ( sumar);
+
+
 
     _depura ( "END PedidosClienteList_PedidosClienteList", 0 );
     return 0;
@@ -259,6 +282,8 @@ int FacturasList_FacturasList ( FacturasList *l )
     SelQToolButton *sel = new SelQToolButton ( NULL, NULL, NULL, l, NULL, l->mui_plugbotones );
     ImpQToolButton *imp = new ImpQToolButton ( NULL, NULL, NULL, l, NULL, l->mui_plugbotones );
     EmailQToolButton *email = new EmailQToolButton ( NULL, NULL, NULL, l, NULL, l->mui_plugbotones );
+    ProcesarQToolButton * procesar = new ProcesarQToolButton ( NULL, NULL, NULL, l, NULL, l->mui_plugbotones );
+    SumarQToolButton * sumar = new SumarQToolButton ( NULL, NULL, NULL, l, NULL, l->mui_plugbotones );
 
     QHBoxLayout *m_hboxLayout1 = l->mui_plugbotones->findChild<QHBoxLayout *> ( "hboxLayout1" );
     if ( !m_hboxLayout1 ) {
@@ -270,6 +295,8 @@ int FacturasList_FacturasList ( FacturasList *l )
     m_hboxLayout1->addWidget ( sel );
     m_hboxLayout1->addWidget ( imp );
     m_hboxLayout1->addWidget ( email );
+    m_hboxLayout1->addWidget ( procesar);
+    m_hboxLayout1->addWidget ( sumar);
 
     _depura ( "END FacturasList_FacturasList", 0 );
     return 0;

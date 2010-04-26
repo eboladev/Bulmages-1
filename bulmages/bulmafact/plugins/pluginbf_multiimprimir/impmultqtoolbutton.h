@@ -103,4 +103,53 @@ public slots:
 
 };
 
+
+class ProcesarQToolButton : public QToolButton
+{
+    Q_OBJECT
+
+private:
+    BfCompany *m_companyact;
+    PresupuestoList *m_presupuestoList;
+    PedidosClienteList *m_pedidosClienteList;
+    AlbaranClienteList *m_albaranClienteList;
+    FacturasList    *m_facturasList;
+    CobrosList *m_cobrosList;
+    BlFormList *m_listado;
+
+public:
+    ProcesarQToolButton ( PresupuestoList *pres = NULL, PedidosClienteList *ped = NULL, AlbaranClienteList *alb = NULL,  FacturasList *fac = NULL, CobrosList *cob = NULL , QWidget *parent = NULL );
+    ~ProcesarQToolButton();
+    void setBoton();
+public slots:
+    virtual void click();
+
+};
+
+
+
+class SumarQToolButton : public QToolButton
+{
+    Q_OBJECT
+
+private:
+    BfCompany *m_companyact;
+    PresupuestoList *m_presupuestoList;
+    PedidosClienteList *m_pedidosClienteList;
+    AlbaranClienteList *m_albaranClienteList;
+    FacturasList    *m_facturasList;
+    CobrosList *m_cobrosList;
+    BlFormList *m_listado;
+
+public:
+    SumarQToolButton ( PresupuestoList *pres = NULL, PedidosClienteList *ped = NULL, AlbaranClienteList *alb = NULL,  FacturasList *fac = NULL, CobrosList *cob = NULL , QWidget *parent = NULL );
+    ~SumarQToolButton();
+    void setBoton();
+public slots:
+    virtual void click();
+
+};
+
+
+
 #endif

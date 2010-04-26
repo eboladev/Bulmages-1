@@ -109,4 +109,7 @@ foreach(dfile ${docs})
    install (FILES ${dfile} DESTINATION share/bulmages/bulmafact-plugins/ RENAME ${dfile}.${plugin})
 endforeach(dfile in ${docs})
 
+set(files suma.png)
+install(FILES ${files} DESTINATION share/bulmages/icons)
+
 add_dependencies(${plugin} bulmafact bulmalib pluginbf_clientecobro pluginbf_clientefactura pluginbf_clientealbaran pluginbf_clientepedido pluginbf_recibo)
