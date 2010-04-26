@@ -45,6 +45,7 @@ MTicket::MTicket ( BtCompany *emp, QWidget *parent ) : BlWidget ( emp, parent )
     g_plugins->lanza ( "MTicket_MTicket_Post", this );
     
     mui_plainText->setVisible(FALSE);
+    mui_frame->setVisible(FALSE);
 
     _depura ( "END MTicket::MTicket", 0 );
 }
@@ -65,6 +66,8 @@ void MTicket::pintar()
         _depura ( "END MTicket::pintar", 0 );
         return;
     } // end if
+
+QString buscar;
 
     BtTicket *tick = ( ( BtCompany * ) mainCompany() ) ->ticketActual();
     QString htmlContent = "<p style=\"font-family:monospace; font-size: 12pt;\">";
@@ -93,6 +96,7 @@ void MTicket::pintar()
 //     if (tick->dbValue("nomticket") != "") {
 //       htmlContent += "<TR><TD colspan=\"3\" align=\"center\"><B>" + tick->dbValue ( "nomticket" ) + "</B></TD></tr>";
 //     } // end if
+
     
     htmlContent += "<TR>";
     htmlContent += "<TD WIDTH=\"10%\">" + QString(_("CANT:")) + "</TD><TD WIDTH=\"80%\">" + QString(_("ARTICULO:")) + "</TD><TD WIDTH=\"10%\">" + QString(_("PRECIO:")) + "</TD>";
@@ -109,6 +113,7 @@ void MTicket::pintar()
         item = tick->listaLineas() ->at ( i );
         QString bgcolor = "#FFFFFF";
         if ( item == tick->lineaActBtTicket() ) {
+    	  buscar = item->dbValue ( "nomarticulo" );
 	  bgcolor = "#CCCCFF";
           plainTextContent += "> ";
 	} else {
@@ -136,6 +141,12 @@ void MTicket::pintar()
     /// Pintamos el HTML en el textBrowser
     mui_browser->setText ( htmlContent );
     mui_plainText->setText ( plainTextContent );
+
+    mui_browser->find ( buscar );
+    QTextCursor cursor = mui_browser->textCursor();
+    cursor.clearSelection();
+    mui_browser->setTextCursor( cursor );
+    
     _depura ( "END MTicket::pintar", 0 );
 }
 

@@ -72,6 +72,9 @@ void MTicketIVAInc::pintar()
         return;
     } // end if
 
+
+    QString buscar;
+
     BtTicket *ticket = ( ( BtCompany * ) mainCompany() )->ticketActual();
 
     QString plainTextContent = "";
@@ -103,8 +106,8 @@ void MTicketIVAInc::pintar()
     for ( int i = 0; i < ticket->listaLineas()->size(); ++i ) {
         item = ticket->listaLineas()->at ( i );
         QString bgColor = "#FFFFFF";
-
         if ( item == ticket->lineaActBtTicket() ) {
+	    buscar = item->dbValue ( "nomarticulo" );
             bgColor = "#CCCCFF";
             plainTextContent += "> ";
         } else {
@@ -136,6 +139,11 @@ void MTicketIVAInc::pintar()
 
     mui_browser->setText ( htmlContent );
     mui_plainText->setPlainText ( plainTextContent );
+    
+    mui_browser->find ( buscar );
+    QTextCursor cursor = mui_browser->textCursor();
+    cursor.clearSelection();
+    mui_browser->setTextCursor( cursor );
 
     _depura ( "END MTicketIVAInc::pintar", 0 );
 }

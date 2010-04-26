@@ -110,6 +110,8 @@ int BtTicket_insertarArticuloCodigoNL_Post ( BtTicket *tick )
 int MTicket_pintar ( MTicket *mtick )
 {
     _depura ( "pluginbt_aliastallasycolores::MTicket_pintar", 0 );
+    
+    QString buscar;
 
     BtTicket *tick =     ( ( BtCompany * ) mtick->mainCompany() ) ->ticketActual();
     QString htmlContent = "<p style=\"font-family:monospace; font-size: 12pt;\">";
@@ -146,6 +148,7 @@ int MTicket_pintar ( MTicket *mtick )
         item = tick->listaLineas() ->at ( i );
         QString bgcolor = "#FFFFFF";
         if ( item == tick->lineaActBtTicket() ) { 
+	  buscar = item->dbValue ( "nomarticulo" );
 	  bgcolor = "#CCFFFF";
 	  plainTextContent += "> ";
         } else {
@@ -174,98 +177,103 @@ int MTicket_pintar ( MTicket *mtick )
     
     htmlContent += "</TABLE>";
     htmlContent += "<BR><HR><BR>";
-//     base basesimp;
-//     base basesimpreqeq;
-//     BlDbRecord *linea;
-//     /// Impresion de los contenidos.
-//     QString l;
-//     BlFixed irpf ( "0" );
-// 
-//     BlDbRecordSet *cur = mtick->mainCompany() ->loadQuery ( "SELECT * FROM configuracion WHERE nombre = 'IRPF'" );
-//     if ( cur ) {
-//         if ( !cur->eof() ) {
-//             irpf = BlFixed ( cur->valor ( "valor" ) );
-//         } // end if
-//         delete cur;
-//     } // end if
-// 
-// 
-//     BlFixed descuentolinea ( "0.00" );
-//     for ( int i = 0; i < tick->listaLineas() ->size(); ++i ) {
-//         linea = tick->listaLineas() ->at ( i );
-//         BlFixed cant ( linea->dbValue ( "cantlalbaran" ) );
-//         BlFixed pvpund ( linea->dbValue ( "pvplalbaran" ) );
-//         BlFixed desc1 ( linea->dbValue ( "descuentolalbaran" ) );
-//         BlFixed cantpvp = cant * pvpund;
-//         BlFixed base = cantpvp - cantpvp * desc1 / 100;
-//         descuentolinea = descuentolinea + ( cantpvp * desc1 / 100 );
-//         basesimp[linea->dbValue ( "ivalalbaran" ) ] = basesimp[linea->dbValue ( "ivalalbaran" ) ] + base;
-//         basesimpreqeq[linea->dbValue ( "reqeqlalbaran" ) ] = basesimpreqeq[linea->dbValue ( "reqeqlalbaran" ) ] + base;
-//     } // end for
-// 
-//     BlFixed basei ( "0.00" );
-//     base::Iterator it;
-//     for ( it = basesimp.begin(); it != basesimp.end(); ++it ) {
-//         basei = basei + it.value();
-//     } // end for
-// 
-//     /// Calculamos el total de los descuentos.
-//     /// De momento aqui no se usan descuentos generales en venta.
-//     BlFixed porcentt ( "0.00" );
-// 
-//     /// Calculamos el total de base imponible.
-//     BlFixed totbaseimp ( "0.00" );
-//     BlFixed parbaseimp ( "0.00" );
-//     for ( it = basesimp.begin(); it != basesimp.end(); ++it ) {
-//         if ( porcentt > BlFixed ( "0.00" ) ) {
-//             parbaseimp = it.value() - it.value() * porcentt / 100;
-//         } else {
-//             parbaseimp = it.value();
-//         } // end if
-//         htmlContent += "Base Imp " + it.key() + "% " + parbaseimp.toQString() + "<BR>";
-//         totbaseimp = totbaseimp + parbaseimp;
-//     } // end for
-// 
-//     /// Calculamos el total de IVA.
-//     BlFixed totiva ( "0.00" );
-//     BlFixed pariva ( "0.00" );
-//     for ( it = basesimp.begin(); it != basesimp.end(); ++it ) {
-//         BlFixed piva ( it.key().toAscii().constData() );
-//         if ( porcentt > BlFixed ( "0.00" ) ) {
-//             pariva = ( it.value() - it.value() * porcentt / 100 ) * piva / 100;
-//         } else {
-//             pariva = it.value() * piva / 100;
-//         } // end if
-//         htmlContent += "IVA " + it.key() + "% " + pariva.toQString() + "<BR>";
-//         totiva = totiva + pariva;
-//     } // end for
-// 
-//     /// Calculamos el total de recargo de equivalencia.
-//     BlFixed totreqeq ( "0.00" );
-//     BlFixed parreqeq ( "0.00" );
-//     for ( it = basesimpreqeq.begin(); it != basesimpreqeq.end(); ++it ) {
-//         BlFixed preqeq ( it.key().toAscii().constData() );
-//         if ( porcentt > BlFixed ( "0.00" ) ) {
-//             parreqeq = ( it.value() - it.value() * porcentt / 100 ) * preqeq / 100;
-//         } else {
-//             parreqeq = it.value() * preqeq / 100;
-//         } // end if
-//         htmlContent += "R.Eq " + it.key() + "% " + parreqeq.toQString() + "<BR>";
-//         totreqeq = totreqeq + parreqeq;
-//     } // end for
-// 
-//     BlFixed totirpf = totbaseimp * irpf / 100;
-//     htmlContent += "<B>Base Imp. " + totbaseimp.toQString() + "<BR>";
-//     htmlContent += "<B>IVA. " + totiva.toQString() + "<BR>";
-//     htmlContent += "<B>IRPF. " + totirpf.toQString() + "<BR>";
-//     BlFixed total = totiva + totbaseimp + totreqeq - totirpf;
-//     htmlContent += "<B>Total: " + total.toQString() + "<BR>";
-//     htmlContent += "</p>";
-//     htmlContent += "</FONT>";
+    plainTextContent += "\n";
+    base basesimp;
+    base basesimpreqeq;
+    BlDbRecord *linea;
+    /// Impresion de los contenidos.
+    QString l;
+    BlFixed irpf ( "0" );
+
+    BlDbRecordSet *cur = mtick->mainCompany() ->loadQuery ( "SELECT * FROM configuracion WHERE nombre = 'IRPF'" );
+    if ( cur ) {
+        if ( !cur->eof() ) {
+            irpf = BlFixed ( cur->valor ( "valor" ) );
+        } // end if
+        delete cur;
+    } // end if
+
+
+    BlFixed descuentolinea ( "0.00" );
+    for ( int i = 0; i < tick->listaLineas() ->size(); ++i ) {
+        linea = tick->listaLineas() ->at ( i );
+        BlFixed cant ( linea->dbValue ( "cantlalbaran" ) );
+        BlFixed pvpund ( linea->dbValue ( "pvplalbaran" ) );
+        BlFixed desc1 ( linea->dbValue ( "descuentolalbaran" ) );
+        BlFixed cantpvp = cant * pvpund;
+        BlFixed base = cantpvp - cantpvp * desc1 / 100;
+        descuentolinea = descuentolinea + ( cantpvp * desc1 / 100 );
+        basesimp[linea->dbValue ( "ivalalbaran" ) ] = basesimp[linea->dbValue ( "ivalalbaran" ) ] + base;
+        basesimpreqeq[linea->dbValue ( "reqeqlalbaran" ) ] = basesimpreqeq[linea->dbValue ( "reqeqlalbaran" ) ] + base;
+    } // end for
+
+    BlFixed basei ( "0.00" );
+    base::Iterator it;
+    for ( it = basesimp.begin(); it != basesimp.end(); ++it ) {
+        basei = basei + it.value();
+    } // end for
+
+    /// Calculamos el total de los descuentos.
+    /// De momento aqui no se usan descuentos generales en venta.
+    BlFixed porcentt ( "0.00" );
+
+    /// Calculamos el total de base imponible.
+    BlFixed totbaseimp ( "0.00" );
+    BlFixed parbaseimp ( "0.00" );
+    for ( it = basesimp.begin(); it != basesimp.end(); ++it ) {
+        if ( porcentt > BlFixed ( "0.00" ) ) {
+            parbaseimp = it.value() - it.value() * porcentt / 100;
+        } else {
+            parbaseimp = it.value();
+        } // end if
+        plainTextContent += "Base Imp " + it.key() + "% " + parbaseimp.toQString() + "\n";
+        totbaseimp = totbaseimp + parbaseimp;
+    } // end for
+
+    /// Calculamos el total de IVA.
+    BlFixed totiva ( "0.00" );
+    BlFixed pariva ( "0.00" );
+    for ( it = basesimp.begin(); it != basesimp.end(); ++it ) {
+        BlFixed piva ( it.key().toAscii().constData() );
+        if ( porcentt > BlFixed ( "0.00" ) ) {
+            pariva = ( it.value() - it.value() * porcentt / 100 ) * piva / 100;
+        } else {
+            pariva = it.value() * piva / 100;
+        } // end if
+        plainTextContent += "IVA " + it.key() + "% " + pariva.toQString() + "\n";
+        totiva = totiva + pariva;
+    } // end for
+
+    /// Calculamos el total de recargo de equivalencia.
+    BlFixed totreqeq ( "0.00" );
+    BlFixed parreqeq ( "0.00" );
+    for ( it = basesimpreqeq.begin(); it != basesimpreqeq.end(); ++it ) {
+        BlFixed preqeq ( it.key().toAscii().constData() );
+        if ( porcentt > BlFixed ( "0.00" ) ) {
+            parreqeq = ( it.value() - it.value() * porcentt / 100 ) * preqeq / 100;
+        } else {
+            parreqeq = it.value() * preqeq / 100;
+        } // end if
+        plainTextContent += "R.Eq " + it.key() + "% " + parreqeq.toQString() + "\n";
+        totreqeq = totreqeq + parreqeq;
+    } // end for
+
+    BlFixed totirpf = totbaseimp * irpf / 100;
+    plainTextContent += "Base Imp. " + totbaseimp.toQString() + "\n";
+    plainTextContent += "IVA. " + totiva.toQString() + "\n";
+    plainTextContent += "IRPF. " + totirpf.toQString() + "\n";
+    BlFixed total = totiva + totbaseimp + totreqeq - totirpf;
+    plainTextContent += "Total: " + total.toQString();
 
     /// Pintamos el HTML en el textBrowser
     mtick->mui_browser->setText ( htmlContent );
     mtick->mui_plainText->setText ( plainTextContent );
+    
+    mtick->mui_browser->find ( buscar );
+    QTextCursor cursor = mtick->mui_browser->textCursor();
+    cursor.clearSelection();
+    mtick->mui_browser->setTextCursor( cursor );
+    
     _depura ( "END pluginbt_aliastallasycolores::MTicket::pintar", 0 );
     return -1;
 }
@@ -277,6 +285,7 @@ int MTicketIVAInc_pintar ( MTicketIVAInc *mtick )
   _depura ( "pluginbt_aliastallasycolores::MTicketIVAInc_pintar", 0 );
   
   QString query;
+  QString buscar;
   
   BtTicket *tick = ( ( BtCompany * ) mtick->mainCompany() )->ticketActual();
   QString plainTextContent = "";
@@ -314,6 +323,7 @@ int MTicketIVAInc_pintar ( MTicketIVAInc *mtick )
       item = tick->listaLineas()->at ( i );
       QString bgcolor = "#FFFFFF";
       if ( item == tick->lineaActBtTicket() ) {
+	    buscar = item->dbValue ( "nomarticulo" );
             bgcolor = "#CCCCFF";
             plainTextContent += "> ";
         } else {
@@ -379,6 +389,11 @@ int MTicketIVAInc_pintar ( MTicketIVAInc *mtick )
   } // end for
   mtick->mui_browser->setText ( htmlContent );
   mtick->mui_plainText->setPlainText ( plainTextContent );
+  
+  mtick->mui_browser->find ( buscar );
+  QTextCursor cursor = mtick->mui_browser->textCursor();
+  cursor.clearSelection();
+  mtick->mui_browser->setTextCursor( cursor );
   
   _depura ( "END pluginbt_aliastallasycolores::MTicketIVAInc::pintar", 0 );
   
