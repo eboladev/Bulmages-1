@@ -905,9 +905,14 @@ void ProcesarQToolButton::click()
 {
     _depura ( "ProcesarQToolButton::click", 0 );
 
-    // Es posible que esto se haya cargado antes de cargar el company por eso
-    // No me fio de que la asignacion en el constructor haya ido bien y reasigno aqui
+    if ( QMessageBox::question ( this,
+                                  _ ( "Procesar elementos" ),
+                                  _ ( "Va a procesar todos los elementos seleccionados. Desea continuar ?" ),
+                                  _ ( "&Si" ), _ ( "&No" ), QString::null, 0, 1 ) ) {
 
+        _depura ( "END ProcesarQToolButton::click", 0 );
+        return;
+    }
 
     QString res = "";
 
@@ -923,12 +928,13 @@ void ProcesarQToolButton::click()
             rec->refresh();
             QString val = rec->dbValue ( "selector" );
             if ( val == "TRUE" ) {
-                ids += separador + rec->dbValue ( "presupuesto" );
+                ids += separador + rec->dbValue ( "idpresupuesto" );
                 separador = ",";
             } // end if
         } // end for
         QString query = "UPDATE presupuesto set procesadopresupuesto = TRUE WHERE idpresupuesto in ("+ids+")";
-        m_companyact->runQuery ( query );
+        if (separador == ",") 
+          m_companyact->runQuery ( query );
     } // end if
 
 
@@ -946,12 +952,13 @@ void ProcesarQToolButton::click()
             rec->refresh();
             QString val = rec->dbValue ( "selector" );
             if ( val == "TRUE" ) {
-                ids += separador + rec->dbValue ( "idpedido" );
+                ids += separador + rec->dbValue ( "idpedidocliente" );
                 separador = ",";
             } // end if
         } // end for
         QString query = "UPDATE pedidocliente set procesadopedidocliente = TRUE WHERE idpedidocliente in ("+ids+")";
-        m_companyact->runQuery ( query );
+        if (separador == ",") 
+          m_companyact->runQuery ( query );
     } // end if
 
 
@@ -974,7 +981,8 @@ void ProcesarQToolButton::click()
             } // end if
         } // end for
         QString query = "UPDATE albaran set procesadoalbaran = TRUE WHERE idalbaran in ("+ids+")";
-        m_companyact->runQuery ( query );
+        if (separador == ",") 
+          m_companyact->runQuery ( query );
     } // end if
 
 
@@ -998,7 +1006,8 @@ void ProcesarQToolButton::click()
         } // end for
 
         QString query = "UPDATE factura set procesadafactura = TRUE WHERE idfactura in ("+ids+")";
-        m_companyact->runQuery ( query );
+        if (separador == ",") 
+          m_companyact->runQuery ( query );
     } // end if
 
     if ( m_cobrosList != NULL ) {
@@ -1018,7 +1027,8 @@ void ProcesarQToolButton::click()
             } // end if
         } // end for
         QString query = "UPDATE cobro set previsioncobro = FALSE WHERE idcobro in ("+ids+")";
-        m_companyact->runQuery ( query );
+        if (separador == ",") 
+          m_companyact->runQuery ( query );
     } // end if
 
 
