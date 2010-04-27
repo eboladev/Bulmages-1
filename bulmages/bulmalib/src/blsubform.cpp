@@ -1400,10 +1400,12 @@ void BlSubForm::cargar ( BlDbRecordSet *cur )
     for ( int i = 0; i < m_lista.size(); ++i ) {
         reg = m_lista.at ( i );
         QRegExp patronFecha ( "^.*00:00:00.*$" ); /// Para emparejar los valores fechas.
+        QFont bold;
+        bold.setBold ( true );
         for ( int j = 0; j < reg->lista() ->size(); ++j ) {
-           /// Pintar de verde el fondo de la cabecera de las columnas editables
+           /// Poner en negrita el texto de la cabecera de las columnas editables
            if ( i == 0 && ! ( m_lcabecera [ j ] -> options() & BlSubFormHeader::DbNoWrite ) ) {
-              mui_list->horizontalHeaderItem ( j ) -> setBackgroundColor ( QColor ( 245, 255, 245 ) );
+              mui_list->horizontalHeaderItem ( j ) -> setFont( bold );
            } // end if
             camp = ( BlDbSubFormField * ) reg->lista() ->at ( j );
             /// Si es una fecha lo truncamos a 10 caracteres para presentar solo la fecha.
