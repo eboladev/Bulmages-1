@@ -1125,9 +1125,11 @@ void SumarQToolButton::click()
             } // end if
         } // end for
         QString query = "SELECT coalesce(SUM(totalpresupuesto), 0) AS total FROM  presupuesto WHERE idpresupuesto in ("+ids+")";
-        BlDbRecordSet *curs = m_companyact->loadQuery ( query );
-        mensajeInfo(curs->valor ( "total" ));
-        delete curs;
+        if (separador == ",") {
+          BlDbRecordSet *curs = m_companyact->loadQuery ( query );
+          mensajeInfo("Total : " + curs->valor ( "total" ));
+          delete curs;
+        } // end if
     } // end if
 
 
@@ -1150,8 +1152,11 @@ void SumarQToolButton::click()
             } // end if
         } // end for
         QString query = "SELECT coalesce(SUM(totalpedidocliente), 0) AS total FROM  pedidocliente WHERE idpedidocliente in ("+ids+")";
-        BlDbRecordSet *curs = m_companyact->loadQuery ( query );
-        mensajeInfo(curs->valor ( "total" ));
+        if (separador == ",") {
+          BlDbRecordSet *curs = m_companyact->loadQuery ( query );
+          mensajeInfo("Total : " + curs->valor ( "total" ));
+          delete curs;
+        } // end if
     } // end if
 
 
@@ -1174,8 +1179,11 @@ void SumarQToolButton::click()
             } // end if
         } // end for
         QString query = "SELECT coalesce(SUM(totalalbaran), 0) AS total FROM  albaran WHERE idalbaran in ("+ids+")";
-        BlDbRecordSet *curs = m_companyact->loadQuery ( query );
-        mensajeInfo(curs->valor ( "total" ));
+        if (separador == ",") {
+          BlDbRecordSet *curs = m_companyact->loadQuery ( query );
+          mensajeInfo("Total : " + curs->valor ( "total" ));
+          delete curs;
+        } // end if
     } // end if
 
 
@@ -1199,8 +1207,11 @@ void SumarQToolButton::click()
         } // end for
 
         QString query = "SELECT coalesce(SUM(totalfactura), 0) AS total FROM  factura WHERE idfactura in ("+ids+")";
-        BlDbRecordSet *curs = m_companyact->loadQuery ( query );
-        mensajeInfo(curs->valor ( "total" ));
+        if (separador == ",") {
+          BlDbRecordSet *curs = m_companyact->loadQuery ( query );
+          mensajeInfo("Total : " + curs->valor ( "total" ));
+          delete curs;
+        } // end if
     } // end if
 
     if ( m_cobrosList != NULL ) {
@@ -1220,8 +1231,11 @@ void SumarQToolButton::click()
             } // end if
         } // end for
         QString query = "SELECT coalesce(SUM(cantcobro), 0) AS total FROM  cobro WHERE idcobro in ("+ids+")";
-        BlDbRecordSet *curs = m_companyact->loadQuery ( query );
-        mensajeInfo(curs->valor ( "total" ));
+        if (separador == ",") {
+          BlDbRecordSet *curs = m_companyact->loadQuery ( query );
+          mensajeInfo("Total : " + curs->valor ( "total" ));
+          delete curs;
+        } // end if
     } // end if
 
 
