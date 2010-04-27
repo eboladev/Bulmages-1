@@ -222,7 +222,7 @@ void ArtGraficosDb::renderPantallas ()
         QScrollArea *scroll = new QScrollArea();
         BtLabel *lab = new BtLabel();
         QPicture *picture = new QPicture();
-//        lab->setFixedSize ( cellwidth.toInt() * numcols, cellwidth.toInt() * numrows );
+        lab->setFixedSize ( cellwidth.toInt() * (numcols), cellwidth.toInt() * (numrows +1) );
         lab->setAlignment ( Qt::AlignTop );
         lab->setAccessibleName ( familia.m_nombrefamilia );
         connect(lab, SIGNAL(cellPressed ( int, int )), this,  SLOT(cellClicked ( int, int )));
@@ -282,6 +282,12 @@ void ArtGraficosDb::renderPantallas ()
                 } // end if
             } // end for
         } // end for
+
+
+//         painter.drawText ( cellwidth.toInt() * numcols/2 - 30 , cellwidth.toInt() *numrows + ( g_confpr->valor ( CONF_TPV_CELL_WIDTH ).toInt() + 25 ), "Iglues/BulmaTPV" );
+//         QPixmap p = QPixmap ( 100, 100  );
+//         p.fill();
+//         painter.drawPixmap ( 0, cellwidth.toInt() * (numrows+1), p );
 
         painter.end(); // painting done
 
