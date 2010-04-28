@@ -174,7 +174,7 @@ BEGIN
 	END IF;
 
 
-	SELECT INTO bs attname, relname FROM pg_attribute LEFT JOIN pg_class ON pg_attribute.attrelid=pg_class.oid WHERE attname=''forma_pago'' AND relname=''idbanco'';
+	SELECT INTO bs attname, relname FROM pg_attribute LEFT JOIN pg_class ON pg_attribute.attrelid=pg_class.oid WHERE attname=''idbanco'' AND relname=''forma_pago'';
 	IF NOT FOUND THEN
            ALTER TABLE forma_pago  ADD COLUMN idbanco integer REFERENCES banco(idbanco) ;
 -- para compatibilidad con las bd de la branch docsMonolitic que usaban idbanco en lugar de 
