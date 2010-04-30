@@ -30,10 +30,14 @@
 #include <QPainter>
 #include <QPushButton>
 #include <QScrollArea>
+#include <QScrollBar>
+#include <QSizePolicy>
 
 #include "artgraficosdb.h"
 #include "blconfiguration.h"
 #include "bldockwidget.h"
+#include "btwindowsstyle.h"
+
 
 extern BlDockWidget *g_pantallas;
 
@@ -107,7 +111,6 @@ void ArtGraficosDb::cellClicked ( int row, int column )
 
     QString artvarios = g_confpr->valor ( CONF_ARTICULOS_VARIOS );
 
-
     QString codigo = label->m_codigoarticulo[row][column];
 
 
@@ -141,8 +144,6 @@ void ArtGraficosDb::on_mui_botonAnterior_pressed()
 {
     _depura ( "ArtGraficosDb::on_mui_botonAnterior_pressed", 0 );
 
-
-
     muestraPantalla ( m_pantallaActual - 1 );
 
 /*
@@ -169,16 +170,11 @@ void ArtGraficosDb::muestraPantalla ( int numPantalla )
     } // end if
 
 
-
     m_pantallaActual = numPantalla;
     QWidget *pantalla = m_pantallas.at ( numPantalla );
 
     mui_stack->setCurrentIndex ( numPantalla );
-
-
-
     mui_titulo->setText ( pantalla->accessibleName() );
-
 
     _depura ( "END ArtGraficosDb::muestraPantalla", 0 );
 }
@@ -220,6 +216,11 @@ void ArtGraficosDb::renderPantallas ()
         if ( numarticulos % grid.toInt() != 0 ) numrows++;
 
         QScrollArea *scroll = new QScrollArea();
+        
+        scroll->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOn);
+        
+        
+        
         BtLabel *lab = new BtLabel();
         QPicture *picture = new QPicture();
         lab->setFixedSize ( cellwidth.toInt() * (numcols), cellwidth.toInt() * (numrows +1) );
@@ -294,9 +295,17 @@ void ArtGraficosDb::renderPantallas ()
         lab->setPicture ( *picture );
         scroll->setWidget(lab);
         lab->show();
-        /// Ya tenemos la pantalla creada y dibujada y ahora la guardamos en el QList.
+	
+	BtWindowsStyle *btwindowsstyle = new BtWindowsStyle();
+	scroll->verticalScrollBar()->setStyle( btwindowsstyle );
+	scroll->horizontalScrollBar()->setStyle( btwindowsstyle );
+
+
+    /// Ya tenemos la pantalla creada y dibujada y ahora la guardamos en el QList.
         m_pantallas.append ( lab );
         mui_stack->addWidget ( scroll );
+//        mui_stack->setSizePolicy( QSizePolicy() );
+
     } // end for
     _depura ( "END ArtGraficosDb::muestraPantalla", 0 );
 }

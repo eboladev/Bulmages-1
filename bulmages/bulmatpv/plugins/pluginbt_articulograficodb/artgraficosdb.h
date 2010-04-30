@@ -26,6 +26,7 @@
 
 #include <QDomDocument>
 #include <QTableWidget>
+#include <QWindowsStyle>
 
 #include "blfunctions.h"
 #include "blwidget.h"
