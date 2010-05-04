@@ -15,6 +15,7 @@ file(GLOB plugin_UIS *.ui)
 file(GLOB plugin_NO_MOCS pdefs_pluginbt_cobrar.h pluginbt_cobrar.h)
 list(REMOVE_ITEM plugin_MOCS ${plugin_NO_MOCS})
 
+configure_file( ${CMAKE_CURRENT_SOURCE_DIR}/css/${plugin}.css.in ${CMAKE_CURRENT_BINARY_DIR}/${plugin}.css @ONLY)
 
 set(QT_USE_QTASSISTANT true)
 set(QT_USE_QTXML true)
@@ -88,3 +89,8 @@ endforeach(dfile in ${docs})
 add_dependencies(${plugin} bulmatpv bulmalib)
 
 install_targets(/lib/bulmatpv/plugins ${plugin})
+
+FILE(READ ${CMAKE_CURRENT_BINARY_DIR}/${plugin}.css VAR_CSS)
+FILE(APPEND ${CMAKE_BINARY_DIR}/css/bulmatpv.css "${VAR_CSS}" )
+
+install(DIRECTORY images DESTINATION share/bulmages PATTERN ".svn" EXCLUDE)
