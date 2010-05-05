@@ -23,6 +23,7 @@
 #define BTBULMATPV_H
 
 #include <QWorkspace>
+#include <QStackedWidget>
 
 #include "blfunctions.h"
 #include "blworkspace.h"
@@ -49,6 +50,7 @@ private:
     BlWorkspace *pWorkspace;
     /// La clase corazon de la aplicacion y centralizadora de mensajes y componentes.
     BtCompany *m_empresaTPV;
+    QStackedWidget *m_stackedWidget;
 
 public:
     BtBulmaTPV ( QString bd );
@@ -62,7 +64,8 @@ public slots:
     virtual void closeEvent ( QCloseEvent * );
     virtual void s_ventanaCompleta();
     virtual void s_About();
-
+    virtual void setCentralBtWidget(QWidget *wid);
+    virtual QWidget *centralBtWidget();
 };
 
 #endif

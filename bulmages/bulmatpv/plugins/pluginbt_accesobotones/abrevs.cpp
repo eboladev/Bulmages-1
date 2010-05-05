@@ -102,6 +102,8 @@ void Abrevs::on_mui_usuario_clicked()
 //    trab->setWindowModality(Qt::WindowModal);
 }
 
+
+
 void Abrevs::on_mui_aparcar_clicked()
 {
     BtCompany * emp = ( BtCompany * ) mainCompany();
@@ -177,12 +179,10 @@ void Abrevs::on_mui_aparcar_clicked()
 
 void Abrevs::on_mui_recuperar_clicked()
 {
-
     Tickets * trab = new Tickets ( mainCompany(), 0 );
     trab->exec();
     /// Llamamos a plugins para poder hacer lo pertinente
     g_plugins->lanza("Abrevs_on_mui_recuperar_clicked_Post", this);
-
 }
 
 

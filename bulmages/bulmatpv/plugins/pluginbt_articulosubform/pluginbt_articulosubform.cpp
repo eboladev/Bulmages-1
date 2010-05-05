@@ -124,7 +124,7 @@ int BtCompany_createMainWindows_Post ( BtCompany *etpv )
 {
     _depura("BtCompany_createMainWindows_Post",0);
     ArticuloList1 *lan = new ArticuloList1 ( ( BfCompany * ) etpv, NULL, 0, BL_SELECT_MODE );
-    g_main->setCentralWidget ( lan );
+    ((BtBulmaTPV *)g_main)->setCentralBtWidget ( lan );
     _depura("END BtCompany_createMainWindows_Post",0);
 
     return 0;

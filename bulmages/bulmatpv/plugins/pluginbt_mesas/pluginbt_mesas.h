@@ -1,8 +1,6 @@
 /***************************************************************************
  *   Copyright (C) 2005 by Tomeu Borras Riera                              *
  *   tborras@conetxia.com                                                  *
- *   Copyright (C) 2006 by Fco. Javier M. C.                               *
- *   fcojavmc@todo-redes.com                                               *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
  *   it under the terms of the GNU General Public License as published by  *
@@ -20,50 +18,18 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#include <QPushButton>
-#include <QVBoxLayout>
+#ifndef PLUGINBT_CONTROLMESAS_H
+#define PLUGINBT_CONTROLMESAS_H
 
-#include "pluginbt_articulografico.h"
+#include "blfunctions.h"
+#include "btbulmatpv.h"
 #include "btcompany.h"
-#include "artgraficos.h"
-#include "blplugins.h"
-#include "btticket.h"
-#include "bldockwidget.h"
+#include "pdefs_pluginbt_mesas.h"
 
 
-BlDockWidget *g_pantallas;
-ArtGraficos *g_graf;
+extern "C" PLUGINBT_MESAS_EXPORT int entryPoint ( BtBulmaTPV * );
+extern "C" PLUGINBT_MESAS_EXPORT int BtCompany_createMainWindows_Post ( BtCompany * );
 
 
-///
-/**
-\return
-**/
-int entryPoint ( BtBulmaTPV *tpv )
-{
-    _depura ( "entryPoint", 0 );
+#endif
 
-    /// Inicializa el sistema de traducciones 'gettext'.
-    setlocale ( LC_ALL, "" );
-    bindtextdomain ( "pluginbt_articulografico", g_confpr->valor ( CONF_DIR_TRADUCCION ).toAscii().constData() );
-
-
-    /// Ponemos el widget de pantallas.
-    g_pantallas = new BlDockWidget ( "Pantallas", tpv, "pantallasdock" );
-    g_pantallas->setObjectName ( "pantallasdock" );
-    g_pantallas->setFeatures ( QDockWidget::AllDockWidgetFeatures );
-    tpv->addDockWidget ( Qt::RightDockWidgetArea, g_pantallas );
-    g_pantallas->show();
-    g_pantallas->cargaconf();
-
-    _depura ( "END entryPoint", 0 );
-    return 0;
-}
-
-
-int BtCompany_createMainWindows_Post ( BtCompany *etpv )
-{
-    g_graf = new ArtGraficos ( etpv, NULL );
-    ((BtBulmaTPV *)g_main)->setCentralBtWidget ( g_graf );
-    return 0;
-}

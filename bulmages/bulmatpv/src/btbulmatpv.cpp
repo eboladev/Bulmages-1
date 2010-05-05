@@ -55,14 +55,20 @@ BtBulmaTPV::BtBulmaTPV ( QString bd ) : BlMainWindow()
     setUpdatesEnabled ( TRUE );
     pWorkspace = new BlWorkspace ( this );
     pWorkspace->setScrollBarsEnabled ( TRUE );
-    QFrame *m_frame1 = new QFrame();
+//     QFrame *m_frame1 = new QFrame();
     QProgressBar *m_pb = new QProgressBar();
     m_pb->setMaximum ( 100 );
     m_pb->setMinimum ( 0 );
     m_pb->setValue ( 0 );
     /// Hacemos que el ProgressBar est&eacute; invisible hasta que se seleccione una empresa.
     m_pb->setVisible ( FALSE );
-    setCentralWidget ( m_frame1 );
+//     setCentralWidget ( m_frame1 );
+
+
+    m_stackedWidget = new QStackedWidget(this);
+    BlMainWindow::setCentralWidget(m_stackedWidget);
+
+
     /// Creamos un VerticalLayout donde metemos el contenido central del QMainWindow.
     QVBoxLayout *vboxlayout = new QVBoxLayout ( this->centralWidget() );
     vboxlayout->setSpacing ( 0 );
@@ -199,5 +205,17 @@ void BtBulmaTPV::keyReleaseEvent ( QKeyEvent * e )
 BtCompany *BtBulmaTPV::empresaTPV()
 {
     return m_empresaTPV;
+}
+
+
+void BtBulmaTPV::setCentralBtWidget(QWidget *wid) {
+
+  m_stackedWidget->addWidget(wid);
+  m_stackedWidget->setCurrentWidget(wid);
+}
+
+
+QWidget *BtBulmaTPV::centralBtWidget() {
+    return m_stackedWidget->currentWidget();
 }
 

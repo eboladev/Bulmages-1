@@ -28,6 +28,8 @@
 #include <QTextStream>
 #include <QDomDocument>
 
+
+
 #include "stdio.h"
 #include "blplugins.h"
 #include "btbulmatpv.h"
@@ -41,6 +43,8 @@ BtCompany::BtCompany ( BtBulmaTPV* bges ) : BlMainCompany(), BtInput ( this )
 {
     _depura ( "BtCompany::BtCompany", 0 );
     m_bulmaTPV = bges;
+
+
     _depura ( "END BtCompany::BtCompany", 0 );
 }
 
@@ -923,3 +927,6 @@ void BtCompany::syncXML(const QString &textxml) {
 
     _depura ( "BtCompany::syncXML", 0 );
 }
+
+
+

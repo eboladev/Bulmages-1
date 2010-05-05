@@ -1,8 +1,6 @@
 /***************************************************************************
- *   Copyright (C) 2005 by Tomeu Borras Riera                              *
+ *   Copyright (C) 2010 by Tomeu Borras Riera                              *
  *   tborras@conetxia.com                                                  *
- *   Copyright (C) 2006 by Fco. Javier M. C.                               *
- *   fcojavmc@todo-redes.com                                               *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
  *   it under the terms of the GNU General Public License as published by  *
@@ -20,19 +18,17 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#include <QPushButton>
-#include <QVBoxLayout>
-
-#include "pluginbt_articulografico.h"
+#include "pluginbt_mesas.h"
 #include "btcompany.h"
-#include "artgraficos.h"
+#include "mesas.h"
 #include "blplugins.h"
 #include "btticket.h"
 #include "bldockwidget.h"
+#include "blapplication.h"
 
 
-BlDockWidget *g_pantallas;
-ArtGraficos *g_graf;
+Mesas *g_admin;
+BlDockWidget *g_admin1;
 
 
 ///
@@ -45,25 +41,44 @@ int entryPoint ( BtBulmaTPV *tpv )
 
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale ( LC_ALL, "" );
-    bindtextdomain ( "pluginbt_articulografico", g_confpr->valor ( CONF_DIR_TRADUCCION ).toAscii().constData() );
-
-
-    /// Ponemos el widget de pantallas.
-    g_pantallas = new BlDockWidget ( "Pantallas", tpv, "pantallasdock" );
-    g_pantallas->setObjectName ( "pantallasdock" );
-    g_pantallas->setFeatures ( QDockWidget::AllDockWidgetFeatures );
-    tpv->addDockWidget ( Qt::RightDockWidgetArea, g_pantallas );
-    g_pantallas->show();
-    g_pantallas->cargaconf();
+    bindtextdomain ( "pluginbt_mesas", g_confpr->valor ( CONF_DIR_TRADUCCION ).toAscii().constData() );
 
     _depura ( "END entryPoint", 0 );
+    return 0;
+}
+
+///
+/**
+\return
+**/
+int exitPoint ( BtBulmaTPV *tpv )
+{
+    _depura ( "PluginBt_ControlCaja::exitPoint", 0 );
+    delete g_admin;
+    _depura ( "END PluginBt_VontrolCaja::exitPoint", 0 );
     return 0;
 }
 
 
 int BtCompany_createMainWindows_Post ( BtCompany *etpv )
 {
-    g_graf = new ArtGraficos ( etpv, NULL );
-    ((BtBulmaTPV *)g_main)->setCentralBtWidget ( g_graf );
+    g_admin = new Mesas ( etpv, g_admin1 );
+//    g_admin1->setWidget ( g_admin );
+
+
+
+    // ============ Pruebas con abrevs
+    QFrame *fr = g_main->findChild<QFrame *> ( "mui_frameabrevs" );
+    if ( fr ) {
+        QHBoxLayout *m_hboxLayout1 = fr->findChild<QHBoxLayout *> ( "hboxLayout1" );
+        if ( !m_hboxLayout1 ) {
+            m_hboxLayout1 = new QHBoxLayout ( fr );
+            m_hboxLayout1->setSpacing ( 5 );
+            m_hboxLayout1->setMargin ( 5 );
+            m_hboxLayout1->setObjectName ( QString::fromUtf8 ( "hboxLayout1" ) );
+        } // end if
+        m_hboxLayout1->addWidget ( g_admin );
+    } // end if
+
     return 0;
 }
