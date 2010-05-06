@@ -99,4 +99,8 @@ install(DIRECTORY clipart/
       DESTINATION share/bulmages/images/clipart
       PATTERN ".svn" EXCLUDE)
 
+install(DIRECTORY icons/ 
+      DESTINATION share/bulmages/icons
+      PATTERN ".svn" EXCLUDE)
+
 install_targets(/lib/bulmatpv/plugins ${plugin})

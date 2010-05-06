@@ -17,6 +17,12 @@ Mesas * g_mesas;
 Mesas::Mesas ( BtCompany *emp, QWidget *parent ) : BlWidget ( emp, parent )
 {
     setupUi ( this );
+
+    /// Cambiamos el icono de las mesas.
+//    mui_mesas->setMinimumSize ( QSize ( 32, 32 ) );
+    mui_mesas->setIcon ( QIcon ( g_confpr->valor ( CONF_PROGDATA ) + "icons/table.svg" ) );
+//    mui_mesas->setIconSize ( QSize ( 32, 32 ) );
+
     m_centralWidget = NULL;
     m_distro = NULL;
     g_mesas = this;
@@ -52,7 +58,7 @@ DistroMesas::DistroMesas ( BtCompany *emp, QWidget *parent ) : BlWidget ( emp, p
 {
   setupUi(this);
 
-  m_background = "/tmp/background_example.svg";
+  m_background = "";
   g_escala = 200;
 
   importXML("");
@@ -62,7 +68,6 @@ DistroMesas::DistroMesas ( BtCompany *emp, QWidget *parent ) : BlWidget ( emp, p
 
 DistroMesas::~DistroMesas()
 {
-  mensajeInfo("destruyendo distromesas");
   exportXML();
 }
 
