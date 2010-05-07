@@ -253,9 +253,17 @@ void PedidosProveedorList::editar ( int row )
 void PedidosProveedorList::crear()
 {
     _depura ( "PedidosProveedorList::crear", 0 );
-    PedidoProveedorView *prov = new PedidoProveedorView ( ( BfCompany * ) mainCompany(), 0 );
-    mainCompany() ->m_pWorkspace->addWindow ( prov );
-    prov->show();
+    PedidoProveedorView *ppv = new PedidoProveedorView ( ( BfCompany * ) mainCompany(), 0 );
+    mainCompany() ->m_pWorkspace->addWindow ( ppv );
+    ppv->pintar();
+    
+    /// Si se crea el nuevo pedido desde la lista de pedidos a un proveedor,
+    /// entonces se crea el  pedido a este proveedor.
+    if (m_proveedor->id() != "") {
+	ppv->mui_idproveedor->setId( m_proveedor->id() );
+    } // end if
+    
+    ppv->show();
     _depura ( "END PedidosProveedorList::crear", 0 );
 }
 

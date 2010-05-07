@@ -196,10 +196,18 @@ QString PedidosClienteList::generarFiltro()
 void PedidosClienteList::crear()
 {
     _depura ( "PedidosClienteList:crear", 0 );
-    PedidoClienteView *prov = new PedidoClienteView ( ( BfCompany * ) mainCompany(), 0 );
-    mainCompany() ->m_pWorkspace->addWindow ( prov );
-    prov->inicializar();
-    prov->show();
+    PedidoClienteView *pcv = new PedidoClienteView ( ( BfCompany * ) mainCompany(), 0 );
+    mainCompany() ->m_pWorkspace->addWindow ( pcv );
+    pcv->inicializar();
+    pcv->pintar();
+    
+    /// Si se crea el nuevo pedido desde la lista de pedidos de un cliente,
+    /// entonces se crea el pedido para este cliente.
+    if (m_cliente->id() != "") {
+	pcv->mui_idcliente->setId( m_cliente->id() );
+    } // end if
+    
+    pcv->show();
     _depura ( "END PedidosClienteList:crear", 0 );
 }
 

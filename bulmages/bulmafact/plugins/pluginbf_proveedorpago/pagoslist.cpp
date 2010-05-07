@@ -173,11 +173,17 @@ void PagosList::editar ( int )
 void PagosList::crear()
 {
     _depura ( "PagosList::crear", 0 );
-    PagoView *bud = new PagoView ( ( BfCompany * ) mainCompany(), 0 );
-    mainCompany() ->m_pWorkspace->addWindow ( bud );
-    bud->show();
-    bud->setDbValue ( "idproveedor", m_proveedor->id() );
-    bud->pintar();
+    PagoView *pv = new PagoView ( ( BfCompany * ) mainCompany(), 0 );
+    mainCompany() ->m_pWorkspace->addWindow ( pv );
+    pv->pintar();
+
+    /// Si se crea el nuevo pago desde la lista de pagos a un proveedor,
+    /// entonces se crea el pago a este proveedor.
+    if (m_proveedor->id() != "") {
+	pv->mui_idproveedor->setId( m_proveedor->id() );
+    } // end if
+    
+    pv->show();
 }
 
 

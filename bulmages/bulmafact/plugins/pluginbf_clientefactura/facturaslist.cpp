@@ -333,11 +333,19 @@ void FacturasList::setidarticulo ( QString val )
 void FacturasList::crear()
 {
     _depura ( "FacturasList::crear", 0 );
-    FacturaView * bud = new FacturaView ( ( BfCompany * ) mainCompany(), 0 );
-    mainCompany()->m_pWorkspace->addWindow ( bud );
-    bud->inicializar();
-    bud->show();
-    bud->mui_descfactura->setFocus ( Qt::OtherFocusReason );
+    FacturaView *fv = new FacturaView ( ( BfCompany * ) mainCompany(), 0 );
+    mainCompany()->m_pWorkspace->addWindow ( fv );
+    fv->inicializar();
+    fv->pintar();
+    
+    /// Si se crea el nueva factura desde la lista de facturas de un cliente,
+    /// entonces se crea la factura para este cliente.
+    if (m_cliente->id() != "") {
+	fv->mui_idcliente->setId( m_cliente->id() );
+    } // end if
+    
+    fv->show();
+    fv->mui_descfactura->setFocus ( Qt::OtherFocusReason );
     _depura ( "END FacturasList::crear", 0 );
 }
 

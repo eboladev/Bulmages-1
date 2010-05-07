@@ -84,12 +84,19 @@ QString AlbaranClienteList::idCliDelivNote()
 void AlbaranClienteList::crear()
 {
     _depura ( "AlbaranClienteList::crear", 0 );
-    AlbaranClienteView *bud = new AlbaranClienteView ( ( BfCompany * ) mainCompany(), 0 );
-    mainCompany()->m_pWorkspace->addWindow ( bud );
-    bud->inicializar();
-    bud->pintar();
-    bud->show();
-    bud->mui_descalbaran->setFocus ( Qt::OtherFocusReason );
+    AlbaranClienteView *acv = new AlbaranClienteView ( ( BfCompany * ) mainCompany(), 0 );
+    mainCompany()->m_pWorkspace->addWindow ( acv );
+    acv->inicializar();
+    acv->pintar();
+    
+    /// Si se crea el nuevo albaran desde la lista de albaranes de un cliente,
+    /// entonces se crea el albaran para este cliente.
+    if (m_cliente->id() != "") {
+	acv->mui_idcliente->setId( m_cliente->id() );
+    } // end if
+
+    acv->show();
+    acv->mui_descalbaran->setFocus ( Qt::OtherFocusReason );
     _depura ( "END AlbaranClienteList::crear", 0 );
 }
 

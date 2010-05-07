@@ -169,11 +169,17 @@ QString CobrosList::generaFiltro()
 void CobrosList::crear()
 {
     _depura ( "CobrosList::crear", 0 );
-    CobroView *bud = new CobroView ( ( BfCompany * ) mainCompany(), 0 );
-    mainCompany() ->m_pWorkspace->addWindow ( bud );
-    bud->show();
-    bud->setDbValue ( "idcliente", m_cliente->id() );
-    bud->pintar();
+    CobroView *cv = new CobroView ( ( BfCompany * ) mainCompany(), 0 );
+    mainCompany() ->m_pWorkspace->addWindow ( cv );
+    cv->pintar();
+    
+    /// Si se crea el nuevo cobro desde la lista de cobros de un cliente,
+    /// entonces se crea el cobro para este cliente.
+    if (m_cliente->id() != "") {
+	cv->mui_idcliente->setId( m_cliente->id() );
+    } // end if
+
+    cv->show();
     _depura ( "CobrosList::crear", 0 );
 }
 

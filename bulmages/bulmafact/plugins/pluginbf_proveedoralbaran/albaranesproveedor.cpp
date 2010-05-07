@@ -88,11 +88,19 @@ void AlbaranesProveedor::crear()
 {
     _depura ( "AlbaranesProveedor::crear", 0 );
     if ( mainCompany() != NULL ) {
-        AlbaranProveedorView *albp = new AlbaranProveedorView ( ( BfCompany * ) mainCompany(), 0 );
-        mainCompany()->pWorkspace()->addWindow ( albp );
-        albp->inicializar();
-        albp->show();
-        albp->mui_descalbaranp->setFocus ( Qt::OtherFocusReason );
+        AlbaranProveedorView *apv = new AlbaranProveedorView ( ( BfCompany * ) mainCompany(), 0 );
+        mainCompany()->pWorkspace()->addWindow ( apv );
+        apv->inicializar();
+	apv->pintar();
+	
+	/// Si se crea el nuevo albaran desde la lista de albaranes de un proveedor,
+	/// entonces se crea el albaran para este proveedor.
+	if (m_proveedor->id() != "") {
+	    apv->mui_idproveedor->setId( m_proveedor->id() );
+	} // end if
+	
+        apv->show();
+        apv->mui_descalbaranp->setFocus ( Qt::OtherFocusReason );
     }// end if
     _depura ( "END AlbaranesProveedor::crear", 0 );
 }

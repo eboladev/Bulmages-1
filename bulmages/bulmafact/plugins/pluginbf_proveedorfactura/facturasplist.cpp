@@ -327,11 +327,19 @@ void FacturasProveedorList::setidarticulo ( QString val )
 void FacturasProveedorList::crear()
 {
     _depura ( "FacturasProveedorList::crear", 0 );
-    FacturaProveedorView *fact = new FacturaProveedorView ( ( BfCompany * ) mainCompany(), 0 );
-    mainCompany()->pWorkspace()->addWindow ( fact );
-    fact->inicializar();
-    fact->show();
-    fact->mui_descfacturap->setFocus ( Qt::OtherFocusReason );
+    FacturaProveedorView *fpv = new FacturaProveedorView ( ( BfCompany * ) mainCompany(), 0 );
+    mainCompany()->pWorkspace()->addWindow ( fpv );
+    fpv->inicializar();
+    fpv->pintar();
+
+    /// Si se crea el nueva factura desde la lista de facturas de un proveedor,
+    /// entonces se crea la factura para este proveedor.
+    if (m_proveedor->id() != "") {
+	fpv->mui_idproveedor->setId( m_proveedor->id() );
+    } // end if
+    
+    fpv->show();
+    fpv->mui_descfacturap->setFocus ( Qt::OtherFocusReason );
     _depura ( "END FacturasProveedorList::crear", 0 );
 }
 

@@ -185,11 +185,19 @@ void PresupuestoList::setidarticulo ( QString val )
 void PresupuestoList::crear()
 {
     _depura ( "PresupuestoList::crear", 0 );
-    PresupuestoView * bud = new PresupuestoView ( ( BfCompany * ) mainCompany(), 0 );
-    mainCompany()->m_pWorkspace->addWindow ( bud );
-    bud->inicializar();
-    bud->show();
-    bud->mui_descpresupuesto->setFocus ( Qt::OtherFocusReason );
+    PresupuestoView *pv = new PresupuestoView ( ( BfCompany * ) mainCompany(), 0 );
+    mainCompany()->m_pWorkspace->addWindow ( pv );
+    pv->inicializar();
+    pv->pintar();
+    
+    /// Si se crea el nuevo presupuesto desde la lista de presupuestos de un cliente,
+    /// entonces se crea el presupuesto para este cliente.
+    if (m_cliente->id() != "") {
+	pv->mui_idcliente->setId( m_cliente->id() );
+    } // end if
+    
+    pv->show();
+    pv->mui_descpresupuesto->setFocus ( Qt::OtherFocusReason );
     _depura ( "END PresupuestoList::crear", 0 );
 }
 
