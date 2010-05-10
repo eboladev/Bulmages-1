@@ -89,7 +89,7 @@ ClientsList::~ClientsList()
 void ClientsList::presentar()
 {
     _depura ( "ClientsList::presenta", 0 );
-    mui_list->cargar ( "SELECT * FROM cliente  WHERE lower(nomcliente) LIKE lower('%" + m_filtro->text() + "%') ORDER BY nomcliente" );
+    mui_list->cargar ( "SELECT * FROM cliente WHERE lower(nomcliente) LIKE lower('%" + m_filtro->text() + "%') OR lower(cifcliente) LIKE lower('%" + m_filtro->text() + "%') ORDER BY nomcliente" );
     _depura ( "END ClientsList::presenta", 0 );
 }
 
