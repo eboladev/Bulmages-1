@@ -749,23 +749,30 @@ int BlImportExport::bulmafact2XML ( QFile &xmlfile, unsigned long long int tipo 
         BlDbRecordSet *curc = dbConnection->loadQuery ( query );
         while ( !curc->eof() ) {
             stream << "<CLIENTE>\n";
-            stream << "\t<IDCLIENTE>" << XMLProtect ( curc->valor ( "idcliente" ) ) << "</IDCLIENTE>\n";
             stream << "\t<NOMCLIENTE>" << XMLProtect ( curc->valor ( "nomcliente" ) ) << "</NOMCLIENTE>\n";
             stream << "\t<NOMALTCLIENTE>" << XMLProtect ( curc->valor ( "nomaltcliente" ) ) << "</NOMALTCLIENTE>\n";
             stream << "\t<CIFCLIENTE>" << XMLProtect ( curc->valor ( "cifcliente" ) ) << "</CIFCLIENTE>\n";
+            stream << "\t<CODCLIENTE>" << XMLProtect ( curc->valor ( "codcliente" ) ) << "</CODCLIENTE>\n";
             stream << "\t<BANCOCLIENTE>" << XMLProtect ( curc->valor ( "bancocliente" ) ) << "</BANCOCLIENTE>\n";
             stream << "\t<DIRCLIENTE>" << XMLProtect ( curc->valor ( "dircliente" ) ) << "</DIRCLIENTE>\n";
             stream << "\t<POBLCLIENTE>" << XMLProtect ( curc->valor ( "poblcliente" ) ) << "</POBLCLIENTE>\n";
             stream << "\t<CPCLIENTE>" << XMLProtect ( curc->valor ( "cpcliente" ) ) << "</CPCLIENTE>\n";
             stream << "\t<TELCLIENTE>" << XMLProtect ( curc->valor ( "telcliente" ) ) << "</TELCLIENTE>\n";
+            stream << "\t<TELTRABCLIENTE>" << XMLProtect ( curc->valor ( "teltrabcliente" ) ) << "</TELTRABCLIENTE>\n";
+            stream << "\t<MOVILCLIENTE>" << XMLProtect ( curc->valor ( "movilcliente" ) ) << "</MOVILCLIENTE>\n";
             stream << "\t<FAXCLIENTE>" << XMLProtect ( curc->valor ( "faxcliente" ) ) << "</FAXCLIENTE>\n";
             stream << "\t<MAILCLIENTE>" << XMLProtect ( curc->valor ( "mailcliente" ) ) << "</MAILCLIENTE>\n";
             stream << "\t<URLCLIENTE>" << XMLProtect ( curc->valor ( "urlcliente" ) ) << "</URLCLIENTE>\n";
+            stream << "\t<CORPCLIENTE>" << XMLProtect ( curc->valor ( "corpcliente" ) ) << "</CORPCLIENTE>\n";
             stream << "\t<FALTACLIENTE>" << XMLProtect ( curc->valor ( "faltacliente" ) ) << "</FALTACLIENTE>\n";
             stream << "\t<FBAJACLIENTE>" << XMLProtect ( curc->valor ( "fbajacliente" ) ) << "</FBAJACLIENTE>\n";
+            stream << "\t<REGIMENFISCALCLIENTE>" << XMLProtect ( curc->valor ( "regimenfiscalcliente" ) ) << "</REGIMENFISCALCLIENTE>\n";
             stream << "\t<COMENTCLIENTE>" << XMLProtect ( curc->valor ( "comentcliente" ) ) << "</COMENTCLIENTE>\n";
+            stream << "\t<ECOMMERCEDATACLIENTE>" << XMLProtect ( curc->valor ( "ecommercedatacliente" ) ) << "</ECOMMERCEDATACLIENTE>\n";
             stream << "\t<INACTIVOCLIENTE>" << XMLProtect ( curc->valor ( "inactivocliente" ) ) << "</INACTIVOCLIENTE>\n";
-            stream << "\t<PROVCLIENTE>" << XMLProtect ( curc->valor ( "provcliente" ) ) << "</PROVCLIENTE>\n";
+            stream << "\t<RECARGOEQCLIENTE>" << XMLProtect ( curc->valor ( "recargoeqcliente" ) ) << "</RECARGOEQCLIENTE>\n";
+            stream << "\t<IDFORMA_PAGO>" << XMLProtect ( curc->valor ( "idforma_pago" ) ) << "</IDFORMA_PAGO>\n";
+            stream << "\t<IDPROVINCIA>" << XMLProtect ( curc->valor ( "idprovincia" ) ) << "</IDPROVINCIA>\n";
             stream << "</CLIENTE>\n";
             curc->nextRecord();
         } // end while
@@ -793,6 +800,7 @@ int BlImportExport::bulmafact2XML ( QFile &xmlfile, unsigned long long int tipo 
             stream << "\t<URLPROVEEDOR>" << XMLProtect ( curc->valor ( "urlproveedor" ) ) << "</URLPROVEEDOR>\n";
             stream << "\t<CLAVEPROVEEDOR>" << XMLProtect ( curc->valor ( "clavewebproveedor" ) ) << "</CLAVEPROVEEDOR>\n";
             stream << "\t<INACTIVOPROVEEDOR>" << XMLProtect ( curc->valor ( "inactivoproveedor" ) ) << "</INACTIVOPROVEEDOR>\n";
+            stream << "\t<PROVPROVEEDOR>" << XMLProtect ( curc->valor ( "idprovincia" ) ) << "</PROVPROVEEDOR>\n";
             stream << "</PROVEEDOR>\n";
             curc->nextRecord();
         } // end while
@@ -1908,16 +1916,82 @@ int ImportBulmaFact::trataCliente()
         if ( !cur->eof() ) {
             /// El cliente ya existe se pueden hacer modificaciones.
             pgimport->mensajeria ( _ ( "<LI> El cliente ya existe se pueden hacer modificaciones</LI>\n" ) );
-            QString query1 = "UPDATE cliente SET nomcliente = '" + valores["NOMCLIENTE"] + "' WHERE cifcliente = '" + valores["CIFCLIENTE"] + "'";
-            dbConnection->runQuery ( query1 );
-        } else {
+	    
+	    QString query = "UPDATE cliente SET ";
+	    query += "nomcliente = "; query += valores["NOMCLIENTE"] == "" ? "NULL" : "'" + valores["NOMCLIENTE"]  + "'"; query += ",";
+	    query += "nomaltcliente = "; query += valores["NOMALTCLIENTE"] == "" ? "NULL" : "'" + valores["NOMALTCLIENTE"]  + "'"; query += ",";
+	    query += "cifcliente = "; query += valores["CIFCLIENTE"] == "" ? "NULL" : "'" + valores["CIFCLIENTE"]  + "'"; query += ",";
+	    query += "codcliente = "; query += valores["CODCLIENTE"] == "" ? "NULL" : "'" + valores["CODCLIENTE"]  + "'"; query += ",";
+	    query += "bancocliente = "; query += valores["BANCOCLIENTE"] == "" ? "NULL" : "'" + valores["BANCOCLIENTE"]  + "'"; query += ",";
+	    query += "dircliente = "; query += valores["DIRCLIENTE"] == "" ? "NULL" : "'" + valores["DIRCLIENTE"]  + "'"; query += ",";
+	    query += "poblcliente = "; query += valores["POBLCLIENTE"] == "" ? "NULL" : "'" + valores["POBLCLIENTE"]  + "'"; query += ",";
+	    query += "cpcliente = "; query += valores["CPCLIENTE"] == "" ? "NULL" : "'" + valores["CPCLIENTE"]  + "'"; query += ",";
+	    query += "telcliente = "; query += valores["TELCLIENTE"] == "" ? "NULL" : "'" + valores["TELCLIENTE"]  + "'"; query += ",";
+	    query += "teltrabcliente = "; query += valores["TELTRABCLIENTE"] == "" ? "NULL" : "'" + valores["TELTRABCLIENTE"]  + "'"; query += ",";
+	    query += "movilcliente = "; query += valores["MOVILCLIENTE"] == "" ? "NULL" : "'" + valores["MOVILCLIENTE"]  + "'"; query += ",";
+	    query += "faxcliente = "; query += valores["FAXCLIENTE"] == "" ? "NULL" : "'" + valores["FAXCLIENTE"]  + "'"; query += ",";
+	    query += "mailcliente = "; query += valores["MAILCLIENTE"] == "" ? "NULL" : "'" + valores["MAILCLIENTE"]  + "'"; query += ",";
+	    query += "urlcliente = "; query += valores["URLCLIENTE"] == "" ? "NULL" : "'" + valores["URLCLIENTE"]  + "'"; query += ",";
+	    query += "corpcliente = "; query += valores["CORPCLIENTE"] == "" ? "NULL" : "'" + valores["CORPCLIENTE"]  + "'"; query += ",";
+	    query += "faltacliente = "; query += valores["FALTACLIENTE"] == "" ? "NULL" : "'" + valores["FALTACLIENTE"]  + "'"; query += ",";
+	    query += "fbajacliente = "; query += valores["FBAJACLIENTE"] == "" ? "NULL" : "'" + valores["FBAJACLIENTE"]  + "'"; query += ",";
+	    query += "regimenfiscalcliente = "; query += valores["REGIMENFISCALCLIENTE"] == "" ? "NULL" : "'" + valores["REGIMENFISCALCLIENTE"]  + "'"; query += ",";
+	    query += "comentcliente = "; query += valores["COMENTCLIENTE"] == "" ? "NULL" : "'" + valores["COMENTCLIENTE"]  + "'"; query += ",";
+	    query += "ecommercedatacliente = "; query += valores["ECOMMERCEDATACLIENTE"] == "" ? "NULL" : "'" + valores["ECOMMERCEDATACLIENTE"]  + "'"; query += ",";
+	    query += "inactivocliente = "; query += valores["INACTIVOCLIENTE"] == "" ? "NULL" : "'" + valores["INACTIVOCLIENTE"]  + "'"; query += ",";
+	    query += "recargoeqcliente = "; query += valores["RECARGOEQCLIENTE"] == "" ? "NULL" : "'" + valores["RECARGOEQCLIENTE"]  + "'"; query += ",";
+	    query += "idforma_pago = "; query += valores["IDFORMA_PAGO"] == "" ? "NULL" : "'" + valores["IDFORMA_PAGO"]  + "'"; query += ",";
+	    query += "idprovincia = "; query += valores["IDPROVINCIA"] == "" ? "NULL" : "'" + valores["IDPROVINCIA"]  + "'";
+	    query += " WHERE cifcliente = '" + valores["CIFCLIENTE"] + "'";
+
+            dbConnection->runQuery ( query );
+
+	} else {
+
             /// El cliente no existe, se debe hacer una insercion de este.
             pgimport->mensajeria ( _ ( "<LI> El cliente no existe, se debe hacer una insercion de este</LI>\n" ) );
-            QString query1 = "INSERT INTO cliente (cifcliente, nomcliente) VALUES ('" + valores["CIFCLIENTE"] + "','" + valores["NOMCLIENTE"] + "')";
-            dbConnection->runQuery ( query1 );
-        } // end if
+
+	    QString query = "INSERT INTO cliente (nomcliente, nomaltcliente, cifcliente, \
+	    codcliente, bancocliente, dircliente, poblcliente, cpcliente, \
+	    telcliente, teltrabcliente, movilcliente, faxcliente, mailcliente, \
+	    urlcliente, corpcliente, faltacliente, fbajacliente, regimenfiscalcliente, \
+	    comentcliente, ecommercedatacliente, inactivocliente, recargoeqcliente, \
+	    idforma_pago, idprovincia) VALUES (";
+	    
+	    query += valores["NOMCLIENTE"] == "" ? "NULL" : "'" + valores["NOMCLIENTE"]  + "'"; query += ",";
+	    query += valores["NOMALTCLIENTE"] == "" ? "NULL" : "'" + valores["NOMALTCLIENTE"]  + "'"; query += ",";
+	    query += valores["CIFCLIENTE"] == "" ? "NULL" : "'" + valores["CIFCLIENTE"]  + "'"; query += ",";
+	    query += valores["CODCLIENTE"] == "" ? "NULL" : "'" + valores["CODCLIENTE"]  + "'"; query += ",";
+	    query += valores["BANCOCLIENTE"] == "" ? "NULL" : "'" + valores["BANCOCLIENTE"]  + "'"; query += ",";
+	    query += valores["DIRCLIENTE"] == "" ? "NULL" : "'" + valores["DIRCLIENTE"]  + "'"; query += ",";
+	    query += valores["POBLCLIENTE"] == "" ? "NULL" : "'" + valores["POBLCLIENTE"]  + "'"; query += ",";
+	    query += valores["CPCLIENTE"] == "" ? "NULL" : "'" + valores["CPCLIENTE"]  + "'"; query += ",";
+	    query += valores["TELCLIENTE"] == "" ? "NULL" : "'" + valores["TELCLIENTE"]  + "'"; query += ",";
+	    query += valores["TELTRABCLIENTE"] == "" ? "NULL" : "'" + valores["TELTRABCLIENTE"]  + "'"; query += ",";
+	    query += valores["MOVILCLIENTE"] == "" ? "NULL" : "'" + valores["MOVILCLIENTE"]  + "'"; query += ",";
+	    query += valores["FAXCLIENTE"] == "" ? "NULL" : "'" + valores["FAXCLIENTE"]  + "'"; query += ",";
+	    query += valores["MAILCLIENTE"] == "" ? "NULL" : "'" + valores["MAILCLIENTE"]  + "'"; query += ",";
+	    query += valores["URLCLIENTE"] == "" ? "NULL" : "'" + valores["URLCLIENTE"]  + "'"; query += ",";
+	    query += valores["CORPCLIENTE"] == "" ? "NULL" : "'" + valores["CORPCLIENTE"]  + "'"; query += ",";
+	    query += valores["FALTACLIENTE"] == "" ? "NULL" : "'" + valores["FALTACLIENTE"]  + "'"; query += ",";
+	    query += valores["FBAJACLIENTE"] == "" ? "NULL" : "'" + valores["FBAJACLIENTE"]  + "'"; query += ",";
+	    query += valores["REGIMENFISCALCLIENTE"] == "" ? "NULL" : "'" + valores["REGIMENFISCALCLIENTE"]  + "'"; query += ",";
+	    query += valores["COMENTCLIENTE"] == "" ? "NULL" : "'" + valores["COMENTCLIENTE"]  + "'"; query += ",";
+	    query += valores["ECOMMERCEDATACLIENTE"] == "" ? "NULL" : "'" + valores["ECOMMERCEDATACLIENTE"]  + "'"; query += ",";
+	    query += valores["INACTIVOCLIENTE"] == "" ? "NULL" : "'" + valores["INACTIVOCLIENTE"]  + "'"; query += ",";
+	    query += valores["RECARGOEQCLIENTE"] == "" ? "NULL" : "'" + valores["RECARGOEQCLIENTE"]  + "'"; query += ",";
+	    query += valores["IDFORMA_PAGO"] == "" ? "NULL" : "'" + valores["IDFORMA_PAGO"]  + "'"; query += ",";
+	    query += valores["IDPROVINCIA"] == "" ? "NULL" : "'" + valores["IDPROVINCIA"]  + "'";
+	    query += ")";
+	    
+            dbConnection->runQuery ( query );
+
+	} // end if
+	
         delete cur;
+	
     } // end if
+    
     pgimport->mensajeria ( "<HR>" );
     valores.clear();
     _depura ( "END ImportBulmaFact::trataCliente", 0 );
