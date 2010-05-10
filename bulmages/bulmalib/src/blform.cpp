@@ -987,6 +987,8 @@ int BlForm::trataTags ( QString &buff, int tipoEscape )
             connect ( button1, SIGNAL ( released ( ) ), diag, SLOT ( reject() ) );
             int ret = diag->exec();
             if ( ret ) {
+
+        	/// Recorre los QLineEdit.
                 QList<QLineEdit *> l2 = iface->findChildren<QLineEdit *>();
                 QListIterator<QLineEdit *> it2 ( l2 );
                 while ( it2.hasNext() ) {
@@ -996,6 +998,24 @@ int BlForm::trataTags ( QString &buff, int tipoEscape )
                     addDbField ( nombre, BlDbField::DbVarChar, BlDbField::DbNoSave, nombre  );
                     setDbValue ( nombre, valor );
                 } // end while
+                
+                /// Recorre los QCheckBox.
+                QList<QCheckBox *> qcb = iface->findChildren<QCheckBox *>();
+                QListIterator<QCheckBox *> itqcb ( qcb );
+
+                while ( itqcb.hasNext() ) {
+                    QCheckBox *item = itqcb.next();
+                    QString nombre = item->objectName().right ( item->objectName().size() - 4 );
+                    QString valor = "false";
+                    if ( item->isChecked() ) {
+                        valor = "true";
+                    } else {
+                	valor = "false";
+		    } // end if
+                    addDbField ( nombre, BlDbField::DbBoolean, BlDbField::DbNoSave, nombre  );
+                    setDbValue ( nombre, valor );
+                } // end while
+                
 		QVariant exportaRML = iface->property("exportaRML");
 		if (exportaRML.isValid() ) {
 			QStringList props = exportaRML.toStringList();
@@ -1006,36 +1026,47 @@ int BlForm::trataTags ( QString &buff, int tipoEscape )
 				QStringList cami = camp.split(".");
 				QObject *actual=iface;
 				QListIterator<QString> iCami(cami);
+				
 				while(iCami.hasNext() && actual) {
-				QString nom = iCami.next();
-				QObject *fill = actual->findChild<QObject *>("mui_"+nom);
-				if (!fill) {
+
+				    QString nom = iCami.next();
+				    QObject *fill = actual->findChild<QObject *>("mui_"+nom);
+
+				    if (!fill) {
 					fill = actual->findChild<QObject *>(nom);
-				}
-				if (fill) {
-				actual = fill;
-				} else {
-				QVariant valor =  actual->property(nom.toUtf8().data());
-				m_variables[camp] =valor.toString();
-				if (valor.canConvert<QObject*>()) {
-					actual = valor.value<QObject*>();
+				    } // end if
+
+				    if (fill) {
+					actual = fill;
+				    } else {
+				    
+					QVariant valor = actual->property(nom.toUtf8().data());
+					m_variables[camp] =valor.toString();
+					
+					if (valor.canConvert<QObject*>()) {
+					    actual = valor.value<QObject*>();
 					} else {
-					actual = NULL;
-					}
+					    actual = NULL;
+					} // end if
 				
-				}
-				} // while components nom prop
+				    } // end if
+				    
+				} // end while
 				
-			} // while props
-		}
+			} // end while
+			
+		} // end if
 
             } // end if
+            
             delete diag;
+            
             // Si se ha pulsado cancelar entonce se sale del informe.
             if ( !ret ) return 0;
+            
         } else {
             mensajeInfo ( "Archivo de Interficie no existe" );
-        }// end if
+        } // end if
 
         buff.replace ( pos, rx70.matchedLength(), "" );
         pos = 0;
