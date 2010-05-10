@@ -74,7 +74,7 @@ BEGIN
 		fechabloqueo    date default now(),
 		horabloqueo     time default now()
 		);
-
+		GRANT ALL ON TABLE bloqueo TO public;
 	END IF;
 
 
