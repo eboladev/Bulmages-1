@@ -204,6 +204,77 @@ CREATE TRIGGER propagacodigocompletofamiliatrigger
     EXECUTE PROCEDURE propagacodigocompletofamilia();
 
 
+\echo -n ':: Funcion que cambia el tipo de dato en documentos de proveedor ... '
+
+
+
+
+
+CREATE OR REPLACE FUNCTION aux() RETURNS INTEGER AS '
+DECLARE
+        bs RECORD;
+BEGIN
+	SELECT INTO bs * FROM pg_attribute WHERE attname=''numpedidoproveedor'';
+	IF FOUND THEN
+		ALTER TABLE pedidoproveedor ALTER COLUMN numpedidoproveedor TYPE CHARACTER VARYING(20);
+	END IF;
+	IF FOUND THEN
+		ALTER TABLE albaranp ALTER COLUMN numalbaranp TYPE CHARACTER VARYING(20);
+	END IF;
+	RETURN 0;
+END;
+' LANGUAGE plpgsql;
+SELECT aux();
+DROP FUNCTION aux() CASCADE;
+
+
+\echo -n ':: Funcion con restricciones en pedidos a proveedor ... '
+CREATE OR REPLACE FUNCTION restriccionespedidoproveedor() RETURNS "trigger"
+AS '
+DECLARE
+    asd RECORD;
+
+BEGIN
+    IF NEW.fechapedidoproveedor IS NULL THEN
+	NEW.fechapedidoproveedor := now();
+    END IF;
+    IF NEW.numpedidoproveedor IS NULL THEN
+	NEW.numpedidoproveedor := NEW.idpedidoproveedor;
+    END IF;
+    IF NEW.refpedidoproveedor IS NULL OR NEW.refpedidoproveedor = '''' THEN
+	SELECT INTO asd crearef() AS m;
+	IF FOUND THEN
+	    NEW.refpedidoproveedor := asd.m;
+	END IF;
+    END IF;
+    RETURN NEW;
+END;
+' LANGUAGE plpgsql;
+
+
+\echo -n ':: Funcion con restricciones en los albaranes de proveedor ... '
+CREATE OR REPLACE FUNCTION restriccionesalbaranp() RETURNS "trigger"
+AS '
+DECLARE
+    asd RECORD;
+
+BEGIN
+    IF NEW.fechaalbaranp IS NULL THEN
+	NEW.fechaalbaranp := now();
+    END IF;
+    IF NEW.numalbaranp IS NULL THEN
+	NEW.numalbaranp := NEW.idalbaranp;
+    END IF;
+    IF NEW.refalbaranp IS NULL OR NEW.refalbaranp = '''' THEN
+	SELECT INTO asd crearef() AS m;
+	IF FOUND THEN
+	    NEW.refalbaranp := asd.m;
+	END IF;
+    END IF;
+    RETURN NEW;
+END;
+' LANGUAGE plpgsql;
+
 
 -- =====================================================================================
 
@@ -215,16 +286,16 @@ DECLARE
 BEGIN
 	SELECT INTO as * FROM configuracion WHERE nombre = ''DatabaseRevision'';
 	IF FOUND THEN
-		UPDATE CONFIGURACION SET valor = ''0.12.1-0004'' WHERE nombre = ''DatabaseRevision'';
+		UPDATE CONFIGURACION SET valor = ''0.12.1-0005'' WHERE nombre = ''DatabaseRevision'';
 	ELSE
-		INSERT INTO configuracion (nombre, valor) VALUES (''DatabaseRevision'', ''0.12.1-0004'');
+		INSERT INTO configuracion (nombre, valor) VALUES (''DatabaseRevision'', ''0.12.1-0005'');
 	END IF;
 	RETURN 0;
 END;
 '   LANGUAGE plpgsql;
 SELECT actualizarevision();
 DROP FUNCTION actualizarevision() CASCADE;
-\echo "Actualizada la revision de la base de datos a la version 0.12.0003"
+\echo "Actualizada la revision de la base de datos a la version 0.12-1.0005"
 
 DROP FUNCTION drop_if_exists_table(text) CASCADE;
 DROP FUNCTION drop_if_exists_proc(text, text) CASCADE;

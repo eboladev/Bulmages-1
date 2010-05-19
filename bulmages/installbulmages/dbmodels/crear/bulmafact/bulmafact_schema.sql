@@ -1821,7 +1821,7 @@ CREATE TRIGGER totalesautomaticosfacturaptriggerd1
 \echo -n ':: Albaran de proveedor ... '
 CREATE TABLE albaranp (
    idalbaranp serial PRIMARY KEY,
-   numalbaranp integer NOT NULL UNIQUE,
+   numalbaranp character varying(20) NOT NULL UNIQUE,
    descalbaranp character varying(150),
    refalbaranp character varying(12) NOT NULL,
    fechaalbaranp date DEFAULT now(),
@@ -1850,12 +1850,7 @@ BEGIN
 	NEW.fechaalbaranp := now();
     END IF;
     IF NEW.numalbaranp IS NULL THEN
-	SELECT INTO asd max(numalbaranp) AS m FROM albaranp;
-	IF asd.m IS NOT NULL THEN
-	    NEW.numalbaranp := asd.m + 1;
-	ELSE
-	    NEW.numalbaranp := 1;
-	END IF;
+	NEW.numalbaranp := NEW.idalbaranp;
     END IF;
     IF NEW.refalbaranp IS NULL OR NEW.refalbaranp = '''' THEN
 	SELECT INTO asd crearef() AS m;
@@ -2457,7 +2452,7 @@ END;
 \echo -n ':: Pedido a proveedor ... '
 CREATE TABLE pedidoproveedor (
     idpedidoproveedor serial PRIMARY KEY,
-    numpedidoproveedor integer UNIQUE NOT NULL,
+    numpedidoproveedor character varying(20) UNIQUE NOT NULL,
     fechapedidoproveedor date DEFAULT now(),
     refpedidoproveedor character varying(12) NOT NULL,   
     descpedidoproveedor character varying(150),
@@ -2486,12 +2481,7 @@ BEGIN
 	NEW.fechapedidoproveedor := now();
     END IF;
     IF NEW.numpedidoproveedor IS NULL THEN
-	SELECT INTO asd max(numpedidoproveedor) AS m FROM pedidoproveedor;
-	IF asd.m IS NOT NULL THEN
-	    NEW.numpedidoproveedor := asd.m + 1;
-	ELSE
-	    NEW.numpedidoproveedor := 1;
-	END IF;
+	NEW.numpedidoproveedor := NEW.idpedidoproveedor;
     END IF;
     IF NEW.refpedidoproveedor IS NULL OR NEW.refpedidoproveedor = '''' THEN
 	SELECT INTO asd crearef() AS m;
@@ -3088,9 +3078,9 @@ DECLARE
 BEGIN
 	SELECT INTO as * FROM configuracion WHERE nombre = ''DatabaseRevision'';
 	IF FOUND THEN
-		UPDATE CONFIGURACION SET valor = ''0.12.1-0004'' WHERE nombre = ''DatabaseRevision'';
+		UPDATE CONFIGURACION SET valor = ''0.12.1-0005'' WHERE nombre = ''DatabaseRevision'';
 	ELSE
-		INSERT INTO configuracion (nombre, valor) VALUES (''DatabaseRevision'', ''0.12.1-0004'');
+		INSERT INTO configuracion (nombre, valor) VALUES (''DatabaseRevision'', ''0.12.1-0005'');
 	END IF;
 	RETURN 0;
 END;
