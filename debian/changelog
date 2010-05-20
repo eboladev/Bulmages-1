@@ -1,13 +1,28 @@
-bulmages (0.11.2~svn2865-1) unstable; urgency=low
+bulmages (0.12+svn3849-1) unstable; urgency=low
 
-  * New upstream version of the svn.
+  [Leopold Palomo-Avellaneda]
+
+  * New upstream version 0.12.1.
   * Added --list-missing to the dh_install.
+  * New maintainer: Bulmages-pkg-debian <bulmages-pkg-debian@lists.berlios.de>
+    Now all of us are Uploaders and we maintain the package in group. René
+    Merou is not interested in the package.
+  * Clarified Removed dependency of kpdf. Closes: Bug#522584
+  * Compacted the bulmages suite. Now we have less packages:
+    - bulmacont + bulmacont-plugins -> bulmacont
+    - bulmafact + bulmafact-plugins -> bulmafact
+    - bulmatpv + bulmatpv-plugins -> bulmatpv
+    - bulmages-servers + bulmages-admin -> bulmages-servers-admin
+    - bulmages -> bulmages-full (with the launcher)
+  * Remove the package, remove the bug but modified the text. Closes: Bug#581234
 
- -- Leopold Palomo Avellaneda <leo@alaxarxa.net>  Sun, 21 Dec 2008 21:23:48 +0100
+
+ -- Leopold Palomo-Avellaneda <leo@alaxarxa.net>  Wed, 20 May 2010 18:24:53 +0000
+
 
 bulmages (0.11.1-3) unstable; urgency=low
 
-  * Closes: #496382
+  * Note in the Readme.Debian about the dangerous scripts. Closes: #496382
 
  -- Leopold Palomo Avellaneda <leo@alaxarxa.net>  Tue, 09 Sep 2008 14:59:03 +0200
 
