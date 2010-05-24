@@ -1,5 +1,5 @@
 #!/usr/bin/python
-# -*- coding: utf8 -*-
+# -*- coding: utf-8 -*-
 
 #Uso: 
 ###########################################################################
@@ -210,7 +210,7 @@ doc.set_cell_property('bold', False)
 
 
 
-doc.new_sheet("PATRIMONIO NETO Y PASIVO")n
+doc.new_sheet("PATRIMONIO NETO Y PASIVO")
 doc.set_column_property(1, 'width', '0.5in')
 doc.set_column_property(2, 'width', '5in')
 
@@ -418,7 +418,7 @@ doc.set_cell_property('bold', False)
 
 
 
-doc.new_sheet("RESULTADO")n
+doc.new_sheet("RESULTADO")
 doc.set_column_property(1, 'width', '0.5in')
 doc.set_column_property(2, 'width', '5in')
 
