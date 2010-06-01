@@ -29,6 +29,7 @@ public slots:
   virtual void on_mui_escala_clicked();
   virtual void on_mui_escala1_clicked();
   virtual void on_mui_cerrar_clicked();
+  virtual void on_mui_borrar_clicked();
 };
 
 

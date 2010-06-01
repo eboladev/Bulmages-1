@@ -13,6 +13,7 @@
 
 int g_escala;
 Mesas * g_mesas;
+Mesa  * g_mesaAct;
 
 Mesas::Mesas ( BtCompany *emp, QWidget *parent ) : BlWidget ( emp, parent )
 {
@@ -26,6 +27,7 @@ Mesas::Mesas ( BtCompany *emp, QWidget *parent ) : BlWidget ( emp, parent )
     m_centralWidget = NULL;
     m_distro = NULL;
     g_mesas = this;
+    g_mesaAct = NULL;
 }
 
 
@@ -101,6 +103,13 @@ void DistroMesas::on_mui_cerrar_clicked() {
   g_mesas->on_mui_mesas_clicked();
 }
 
+
+void DistroMesas::on_mui_borrar_clicked() {
+  if (g_mesaAct != NULL ) {
+      delete g_mesaAct;
+      g_mesaAct = NULL;
+  } // end if
+}
 
 
 void DistroMesas::paintEvent ( QPaintEvent * event ) {
@@ -232,6 +241,30 @@ void Mesa::paintEvent ( QPaintEvent * event ) {
         QSvgRenderer arender(QString(m_filename), this);
         arender.render(&painter, QRectF (0, 15, g_escala, g_escala));
 
+    if (g_mesaAct == this) {
+            painter.setPen(QColor(0, 0, 0, 127));
+            painter.setPen(Qt::DashDotLine);
+//            painter.drawText(0,20,"ACTUAL");
+            painter.drawRect(0,0,g_escala,g_escala);
+
+            painter.setPen(QColor(0, 0, 0, 127));
+            painter.setPen(Qt::DashDotLine);
+            painter.setBrush(Qt::green);
+//            painter.drawText(0,20,"ACTUAL");
+            painter.drawRect(0,0,5,5);
+            painter.drawRect(0,g_escala -5, 5, 5);
+            painter.drawRect(g_escala -5,0, 5, 5);
+            painter.drawRect(g_escala -5,g_escala -5, 5, 5);
+
+            painter.drawRect(g_escala / 2 -3,g_escala -5, 5, 5);
+            painter.drawRect(g_escala / 2 -3, 0, 5, 5);
+            painter.drawRect(0,g_escala / 2 -3, 5, 5);
+            painter.drawRect(g_escala - 5,g_escala / 2 -3, 5, 5);
+
+        
+    } // end if
+
+
         painter.end();
 
 }
@@ -242,6 +275,12 @@ void Mesa::mousePressEvent(QMouseEvent* event)
 {
     if (event -> button() == Qt::LeftButton) {
       event->accept(); // do not propagate
+      if (g_mesaAct != this) {
+        Mesa *old = g_mesaAct;
+        g_mesaAct = this;
+        if (old != NULL) old->repaint();
+        repaint();
+      } // end if
       if (isWindow())
           offset = event->globalPos() - pos();
       else
