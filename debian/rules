@@ -34,52 +34,52 @@ endif
 
 configure: configure-stamp
 configure-stamp:
-        dh_testdir
+	dh_testdir
         #This part should be looked when prepare the relase
 
-        cd bulmages; mkdir build.debian; cd build.debian; cmake \
+	cd bulmages; mkdir build.debian; cd build.debian; cmake \
         -DCMAKE_INSTALL_PREFIX=/usr \
         -DCMAKE_SHARED_LINKER_FLAGS="-Wl,--as-needed" \
         -DCMAKE_MODULE_LINKER_FLAGS="-Wl,--as-needed" \
         -DCMAKE_EXE_LINKER_FLAGS="-Wl,--as-needed" \
         ../;
 
-        touch configure-stamp
+	touch configure-stamp
 
 
 build: build-stamp
 
 build-stamp: configure-stamp 
-        dh_testdir
+	dh_testdir
 
         # Add here commands to compile the package.
-        cd bulmages/build.debian; $(MAKE) ;
+	cd bulmages/build.debian; $(MAKE) ;
 
-        touch build-stamp
+	touch build-stamp
 
 clean:
-        dh_testdir
-        dh_testroot
-        rm -f build-stamp configure-stamp
+	dh_testdir
+	dh_testroot
+	rm -f build-stamp configure-stamp
 
 #       Add here commands to clean up after the build process.
-        -rm -rf bulmages/build.debian
-        dh_clean 
+	-rm -rf bulmages/build.debian
+	dh_clean 
 
 install: build
 
-        dh_testdir
-        dh_testroot
-        dh_clean -k 
-        dh_installdirs
+	dh_testdir
+	dh_testroot
+	dh_clean -k 
+	dh_installdirs
 
         # Add here commands to install the package into debian/tmp
-        cd bulmages/build.debian; $(MAKE) install DESTDIR=$(CURDIR)/debian/tmp
+	cd bulmages/build.debian; $(MAKE) install DESTDIR=$(CURDIR)/debian/tmp
 
         #####################
         #here put the install files
 
-        dh_compress
+	dh_compress
 
 
 # Build architecture-independent files here.
@@ -88,67 +88,67 @@ binary-indep: build install
 
 # Build architecture-dependent files here.
 binary-arch: build install
-        dh_testdir
-        dh_testroot
-        dh_installchangelogs 
+	dh_testdir
+	dh_testroot
+	dh_installchangelogs 
 
 #       dh_installdocs debian/README.*Debian 
-        dh_installdocs 
-        dh_installexamples
-        dh_install --sourcedir=debian/tmp --list-missing
+	dh_installdocs 
+	dh_installexamples
+	dh_install --sourcedir=debian/tmp --list-missing
 
 #If the private modules are not in a default directory (like
 #/usr/share/$package or /usr/lib/$package) you should pass the directory
 #to dh_pysupport and dh_python:
-        dh_pysupport    -pbulmages /usr/share/bulmages/bgtrml2pdf
+	dh_pysupport    -pbulmages /usr/share/bulmages/bgtrml2pdf
 #       dh_python       -pbulmages /usr/share/bulmages/bgtrml2pdf
 
-        dh_pysupport    -pbulmages-servers-admin /usr/share/bulmages/bulmasetup
+	dh_pysupport    -pbulmages-servers-admin /usr/share/bulmages/bulmasetup
 #       dh_python       -pbulmages-servers-admin /usr/share/bulmages/bulmasetup
 
 
-        dh_installdebconf
+	dh_installdebconf
 
-        install -D -o root -g root -m 0644 debian/bulmacont.lintian $(CURDIR)/debian/bulmacont/usr/share/lintian/overrides/bulmacont
-        install -D -o root -g root -m 0644 debian/bulmafact.lintian $(CURDIR)/debian/bulmafact/usr/share/lintian/overrides/bulmafact
-        install -D -o root -g root -m 0644 debian/bulmatpv.lintian $(CURDIR)/debian/bulmatpv/usr/share/lintian/overrides/bulmatpv
-
-
-        dh_installmenu
-
-        dh_installman   -pbulmacont debian/tmp/usr/share/man/bulmacont.1
-        dh_installman   -pbulmacont debian/tmp/usr/share/man/bulmacont.conf.1  
-        dh_installman   -pbulmafact debian/tmp/usr/share/man/bulmafact.1
-        dh_installman   -pbulmafact debian/tmp/usr/share/man/bulmafact.conf.1  
-        dh_installman   -pbulmatpv debian/tmp/usr/share/man/bulmatpv.1
-        dh_installman   -pbulmatpv debian/tmp/usr/share/man/bulmatpv.conf.1
-        dh_installman   -pbulmages debian/tmp/usr/share/man/bulmages.1
-        dh_installman   -pbulmages debian/tmp/usr/share/man/bulmages.conf.1
-        dh_installman   -pbulmages debian/tmp/usr/share/man/bgtrml2pdf.1
-        dh_installman   -pbulmages-admin debian/tmp/usr/share/man/bulmasetup.1
-
-        dh_installdocs  -pbulmacont debian/tmp/usr/share/bulmages/doc/bulmacont_files
-        dh_installdocs  -pbulmacont debian/tmp/usr/share/bulmages/doc/bulmacont.html
-
-        dh_installdocs  -pbulmafact debian/tmp/usr/share/bulmages/doc/bulmafact_files
-        dh_installdocs  -pbulmafact debian/tmp/usr/share/bulmages/doc/bulmafact.html
-
-        dh_installdocs  -pbulmages-servers-admin debian/tmp/usr/share/bulmages/doc/bulmasetup_files
-        dh_installdocs  -pbulmages-servers-admin debian/tmp/usr/share/bulmages/doc/bulmasetup.html
+	install -D -o root -g root -m 0644 debian/bulmacont.lintian $(CURDIR)/debian/bulmacont/usr/share/lintian/overrides/bulmacont
+	install -D -o root -g root -m 0644 debian/bulmafact.lintian $(CURDIR)/debian/bulmafact/usr/share/lintian/overrides/bulmafact
+	install -D -o root -g root -m 0644 debian/bulmatpv.lintian $(CURDIR)/debian/bulmatpv/usr/share/lintian/overrides/bulmatpv
 
 
-        dh_installman
-        dh_link
-        dh_strip
-        dh_compress
-        dh_fixperms
+	dh_installmenu
 
-        dh_makeshlibs
-        dh_shlibdeps 
-        dh_installdeb
-        dh_gencontrol
-        dh_md5sums
-        dh_builddeb
+	dh_installman   -pbulmacont debian/tmp/usr/share/man/bulmacont.1
+	dh_installman   -pbulmacont debian/tmp/usr/share/man/bulmacont.conf.1  
+	dh_installman   -pbulmafact debian/tmp/usr/share/man/bulmafact.1
+	dh_installman   -pbulmafact debian/tmp/usr/share/man/bulmafact.conf.1  
+	dh_installman   -pbulmatpv debian/tmp/usr/share/man/bulmatpv.1
+	dh_installman   -pbulmatpv debian/tmp/usr/share/man/bulmatpv.conf.1
+	dh_installman   -pbulmages debian/tmp/usr/share/man/bulmages.1
+	dh_installman   -pbulmages debian/tmp/usr/share/man/bulmages.conf.1
+	dh_installman   -pbulmages debian/tmp/usr/share/man/bgtrml2pdf.1
+	dh_installman   -pbulmages-admin debian/tmp/usr/share/man/bulmasetup.1
+
+	dh_installdocs  -pbulmacont debian/tmp/usr/share/bulmages/doc/bulmacont_files
+	dh_installdocs  -pbulmacont debian/tmp/usr/share/bulmages/doc/bulmacont.html
+
+	dh_installdocs  -pbulmafact debian/tmp/usr/share/bulmages/doc/bulmafact_files
+	dh_installdocs  -pbulmafact debian/tmp/usr/share/bulmages/doc/bulmafact.html
+
+	dh_installdocs  -pbulmages-servers-admin debian/tmp/usr/share/bulmages/doc/bulmasetup_files
+	dh_installdocs  -pbulmages-servers-admin debian/tmp/usr/share/bulmages/doc/bulmasetup.html
+
+
+	dh_installman
+	dh_link
+	dh_strip
+	dh_compress
+	dh_fixperms
+
+	dh_makeshlibs
+	dh_shlibdeps 
+	dh_installdeb
+	dh_gencontrol
+	dh_md5sums
+	dh_builddeb
 
 binary: binary-indep binary-arch
 .PHONY: build clean binary-indep binary-arch binary install configure
