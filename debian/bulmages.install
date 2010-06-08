@@ -90,20 +90,6 @@ usr/lib/libbulmalib.so.0.12.0
 usr/share/bulmages/bgtrml2pdf/bgcolor.py
 usr/share/bulmages/bgtrml2pdf/bgutils.py
 usr/share/bulmages/bgtrml2pdf/svgimage.py
-usr/share/bulmages/bulmalib-plugins/README.es.pluginbl_attachdocument
-usr/share/bulmages/bulmalib-plugins/README.es.pluginbl_bloqconf
-usr/share/bulmages/bulmalib-plugins/README.es.pluginbl_clipboard
-usr/share/bulmages/bulmalib-plugins/README.es.pluginbl_embed
-usr/share/bulmages/bulmalib-plugins/README.es.pluginbl_formlock
-usr/share/bulmages/bulmalib-plugins/README.es.pluginbl_importcsv
-usr/share/bulmages/bulmalib-plugins/README.es.pluginbl_report
-usr/share/bulmages/bulmalib-plugins/README.es.pluginbl_report2ods
-usr/share/bulmages/bulmalib-plugins/README.es.pluginbl_subform2ods
-usr/share/bulmages/bulmalib-plugins/README.es.pluginbl_subform2pdf
-usr/share/bulmages/bulmalib-plugins/README.es.pluginbl_subform2sxc
-usr/share/bulmages/bulmalib-plugins/README.es.pluginbl_template
-usr/share/bulmages/bulmalib-plugins/README.es.pluginbl_template2mail
-usr/share/bulmages/bulmalib-plugins/README.es.pluginbl_template2ods
 
 usr/share/bulmages/COPYING.txt
 usr/share/bulmages/css/bulmages.css

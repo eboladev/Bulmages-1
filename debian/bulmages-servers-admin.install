@@ -1,4 +1,5 @@
 usr/bin/bulmasetup
+usr/share/bulmages/bulmalib-plugins/README.es.*
 usr/share/bulmages/bulmasetup/aboutbase.py
 usr/share/bulmages/bulmasetup/about.py
 usr/share/bulmages/bulmasetup/bulmasetupbase.py
