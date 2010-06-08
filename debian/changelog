@@ -6,7 +6,11 @@ bulmages (0.12+svn3849-1) unstable; urgency=low
   * Added --list-missing to the dh_install.
   * New maintainer: Bulmages-pkg-debian <bulmages-pkg-debian@lists.berlios.de>
     Now all of us are Uploaders and we maintain the package in group. René
-    Merou is not interested in the package.
+    Merou is not interested in the package, neither and Miguel Gea Milvaques. 
+    Thanks to both by the job done. 
+  * Two news Uploaders:
+    Iker Salmón San Millán <shaola@esdebian.org> and 
+    Otilio Santos Martinez <otilio@apdo.com> 
   * Clarified Removed dependency of kpdf. Closes: Bug#522584
   * Compacted the bulmages suite. Now we have less packages:
     - bulmacont + bulmacont-plugins -> bulmacont

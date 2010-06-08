@@ -123,6 +123,25 @@ IF(ENABLE_PCH)
 	ENDIF(NOT "${CMAKE_MAJOR_VERSION}.${CMAKE_MINOR_VERSION}" STRLESS "2.6")
 ENDIF(ENABLE_PCH)
 
+##############################################################################
+# Sets the location of nonstandard shared libraries
+##############################################################################
+
+# Use, i.e. don't skip the full RPATH for the build tree
+set(CMAKE_SKIP_BUILD_RPATH  FALSE)
+
+# When building, don't use the install RPATH already
+# (but later on when installing)
+set(CMAKE_BUILD_WITH_INSTALL_RPATH FALSE)
+
+# The RPATH to be used when installing
+set(CMAKE_INSTALL_RPATH "${CMAKE_INSTALL_PREFIX}/lib")
+
+# Add the automatically determined parts of the RPATH
+# which point to directories outside the build tree to the install RPATH
+set(CMAKE_INSTALL_RPATH_USE_LINK_PATH TRUE)
+
+
 ########### bulmages library ##########
 message(STATUS "Working on bulmalib")
 add_subdirectory(bulmalib)
