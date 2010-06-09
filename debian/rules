@@ -144,7 +144,7 @@ binary-arch: build install
 	dh_fixperms
 
 	dh_makeshlibs
-	dh_shlibdeps 
+	dh_shlibdeps   -l/usr/lib/bulmacont/plugins/:/usr/lib/bulmafact/plugins/
 	dh_installdeb
 	dh_gencontrol
 	dh_md5sums
