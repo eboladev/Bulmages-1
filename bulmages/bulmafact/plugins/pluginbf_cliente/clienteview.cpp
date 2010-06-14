@@ -122,6 +122,28 @@ ClienteView::~ClienteView()
 }
 
 
+int ClienteView::guardar()
+{
+ 
+	int res1;
+
+        /// Disparamos los plugins.
+        res1 = g_plugins->lanza ( "ClienteView_Guardar_Pre", this );
+	if ( res1 != 0 ) {
+	    throw -1;
+	} // end if
+
+	BfForm::guardar();
+
+        /// Disparamos los plugins.
+        res1 = g_plugins->lanza ( "ClienteView_Guardar_Post", this );
+	if ( res1 != 0 ) {
+	    throw -1;
+	} // end if
+	
+}
+
+
 /**
 * cargar
 *

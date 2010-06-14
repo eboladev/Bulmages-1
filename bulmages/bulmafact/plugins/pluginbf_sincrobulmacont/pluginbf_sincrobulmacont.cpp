@@ -27,6 +27,8 @@
 #include "familiacuenta.h"
 #include "fpagocuenta.h"
 #include "bancocuenta.h"
+#include "proveedorcuenta.h"
+#include "clientecuenta.h"
 
 
 
@@ -373,6 +375,228 @@ int BancoView_Guardar_Post ( BancoView *bancov )
     QString query = "UPDATE banco SET prefcuentabanco = '" + bancov->mainCompany()->sanearCadena(bancov->findChild<QLineEdit *>("mui_cuenta_banco")->text()) + "' WHERE idbanco = '" + bancov->idBanco() + "'";
    
     bancov->mainCompany()->runQuery(query);
+
+    return 0;
+}
+
+
+
+/* PROVEEDOR */
+/********************************************/
+int ProveedorView_ProveedorView_Post ( ProveedorView *proveedor )
+{
+  
+    ProveedorCuenta *proveedorcuenta = new ProveedorCuenta(proveedor);
+
+    return 0;
+}
+
+
+int ProveedorView_cargarPost_Post ( ProveedorView *proveedor )
+{
+    BlDbRecordSet *rec;
+
+    QString query = "SELECT prefcuentaproveedor FROM proveedor WHERE idproveedor = '" + proveedor->dbValue(proveedor->fieldId()) + "' LIMIT 1";
+        
+    proveedor->mainCompany()->begin();
+    
+    rec = proveedor->mainCompany()->loadQuery(query);
+    
+    proveedor->findChild<QLineEdit *>("mui_cuenta_proveedor")->setText( rec->valor("prefcuentaproveedor") );
+    
+    proveedor->mainCompany()->commit();
+}
+
+
+int ProveedorView_Guardar_Pre ( ProveedorView *proveedor )
+{
+    BlDbRecordSet *rec_proveedor;
+    BlDbRecordSet *tmp_proveedor;
+    QString query;
+
+    try {
+
+      proveedor->mainCompany()->run("SELECT conectabulmacont()");
+      
+      /// Hace la comprobacion de los datos introducidos y que son validos en la contabilidad.
+      /// La cuenta que se especifique tiene que existir en la contabilidad. No se crean de forma
+      /// automatica.
+      QString cuentaproveedor = proveedor->mainCompany()->sanearCadena(proveedor->findChild<QLineEdit *>("mui_cuenta_proveedor")->text());
+          
+      if (cuentaproveedor.isEmpty()) {
+	/// En el caso de dejar vacio el campo de cuenta preferente
+	/// se mira si antes se hizo utilizo la cuenta preferente
+	/// y restaura la cuenta original.
+	query = "SELECT origenidcuentaproveedor FROM proveedor WHERE idproveedor = " + proveedor->dbValue(proveedor->fieldId());
+	tmp_proveedor = proveedor->mainCompany()->loadQuery(query);
+
+	if (!tmp_proveedor->valor("origenidcuentaproveedor").isEmpty()) {
+	    /// Restaura cuenta original
+	    query = "UPDATE proveedor SET idcuentaproveedor = " + tmp_proveedor->valor("origenidcuentaproveedor") + " WHERE idproveedor = " + proveedor->dbValue(proveedor->fieldId());
+	    proveedor->mainCompany()->runQuery(query);
+	    
+	    /// Vacia campo origen.
+	    query = "UPDATE proveedor SET origenidcuentaproveedor = NULL WHERE idproveedor = " + proveedor->dbValue(proveedor->fieldId());
+	    proveedor->mainCompany()->runQuery(query);
+	} // end if
+	
+      } else {
+	QString query_proveedor = "SELECT idcuenta FROM bc_cuenta WHERE codigo = '" + cuentaproveedor + "' LIMIT 1";
+	rec_proveedor = proveedor->mainCompany()->loadQuery(query_proveedor);
+	
+	if (rec_proveedor->numregistros() <= 0) {
+	  throw -300;
+	} // end if
+	
+	/// Almacena la informacion de la cuenta antes de sobreescribirla.
+	/// Verifica primero que el campo este vacio.
+	query = "SELECT origenidcuentaproveedor FROM proveedor WHERE idproveedor = " + proveedor->dbValue(proveedor->fieldId());
+	tmp_proveedor = proveedor->mainCompany()->loadQuery(query);
+	
+	if (tmp_proveedor->valor("origenidcuentaproveedor").isEmpty()) {
+	  query = "SELECT idcuentaproveedor FROM proveedor WHERE idproveedor = " + proveedor->dbValue(proveedor->fieldId());
+	  tmp_proveedor = proveedor->mainCompany()->loadQuery(query);
+	  query = "UPDATE proveedor SET origenidcuentaproveedor = " + tmp_proveedor->valor("idcuentaproveedor") + " WHERE idproveedor = " + proveedor->dbValue(proveedor->fieldId());
+	  proveedor->mainCompany()->runQuery(query);
+	} // end if
+
+	query = "UPDATE proveedor SET idcuentaproveedor = " + rec_proveedor->valor("idcuenta") + " WHERE idproveedor = " + proveedor->dbValue(proveedor->fieldId());
+	proveedor->mainCompany()->runQuery(query);
+	
+      } // end if
+
+      /// Traspasa datos para poder usarlos en Guardar_Post
+      proveedor->findChild<QLineEdit *>("tmp_cuenta_proveedor")->setText( proveedor->mainCompany()->sanearCadena(proveedor->findChild<QLineEdit *>("mui_cuenta_proveedor")->text()) );
+
+    } catch (int e) {
+	if (e == -300) {
+	  mensajeError("La cuenta no existe en la contabilidad.");
+	} // end if
+	throw -1;
+    } // end try
+
+    return 0;
+}
+
+
+int ProveedorView_Guardar_Post ( ProveedorView *proveedor )
+{
+
+    /// Guarda los datos en la base de datos.
+    QString query = "UPDATE proveedor SET prefcuentaproveedor = '" + proveedor->mainCompany()->sanearCadena(proveedor->findChild<QLineEdit *>("tmp_cuenta_proveedor")->text()) + "' WHERE idproveedor = '" + proveedor->dbValue(proveedor->fieldId()) + "'";
+    
+    proveedor->mainCompany()->runQuery(query);
+
+    return 0;
+}
+
+
+
+/* CLIENTE */
+/********************************************/
+int ClienteView_ClienteView_Post ( ClienteView *cliente )
+{
+  
+    ClienteCuenta *clientecuenta = new ClienteCuenta(cliente);
+
+    return 0;
+}
+
+
+int ClienteView_cargarPost_Post ( ClienteView *cliente )
+{
+    BlDbRecordSet *rec;
+
+    QString query = "SELECT prefcuentacliente FROM cliente WHERE idcliente = '" + cliente->dbValue(cliente->fieldId()) + "' LIMIT 1";
+        
+    cliente->mainCompany()->begin();
+    
+    rec = cliente->mainCompany()->loadQuery(query);
+    
+    cliente->findChild<QLineEdit *>("mui_cuenta_cliente")->setText( rec->valor("prefcuentacliente") );
+    
+    cliente->mainCompany()->commit();
+}
+
+
+int ClienteView_Guardar_Pre ( ClienteView *cliente )
+{
+    BlDbRecordSet *rec_cliente;
+    BlDbRecordSet *tmp_cliente;
+    QString query;
+
+    try {
+
+      cliente->mainCompany()->run("SELECT conectabulmacont()");
+      
+      /// Hace la comprobacion de los datos introducidos y que son validos en la contabilidad.
+      /// La cuenta que se especifique tiene que existir en la contabilidad. No se crean de forma
+      /// automatica.
+      QString cuentacliente = cliente->mainCompany()->sanearCadena(cliente->findChild<QLineEdit *>("mui_cuenta_cliente")->text());
+          
+      if (cuentacliente.isEmpty()) {
+	/// En el caso de dejar vacio el campo de cuenta preferente
+	/// se mira si antes se hizo utilizo la cuenta preferente
+	/// y restaura la cuenta original.
+	query = "SELECT origenidcuentacliente FROM cliente WHERE idcliente = " + cliente->dbValue(cliente->fieldId());
+	tmp_cliente = cliente->mainCompany()->loadQuery(query);
+
+	if (!tmp_cliente->valor("origenidcuentacliente").isEmpty()) {
+	    /// Restaura cuenta original
+	    query = "UPDATE cliente SET idcuentacliente = " + tmp_cliente->valor("origenidcuentacliente") + " WHERE idcliente = " + cliente->dbValue(cliente->fieldId());
+	    cliente->mainCompany()->runQuery(query);
+	    
+	    /// Vacia campo origen.
+	    query = "UPDATE cliente SET origenidcuentacliente = NULL WHERE idcliente = " + cliente->dbValue(cliente->fieldId());
+	    cliente->mainCompany()->runQuery(query);
+	} // end if
+	
+      } else {
+	QString query_cliente = "SELECT idcuenta FROM bc_cuenta WHERE codigo = '" + cuentacliente + "' LIMIT 1";
+	rec_cliente = cliente->mainCompany()->loadQuery(query_cliente);
+	
+	if (rec_cliente->numregistros() <= 0) {
+	  throw -300;
+	} // end if
+	
+	/// Almacena la informacion de la cuenta antes de sobreescribirla.
+	/// Verifica primero que el campo este vacio.
+	query = "SELECT origenidcuentacliente FROM cliente WHERE idcliente = " + cliente->dbValue(cliente->fieldId());
+	tmp_cliente = cliente->mainCompany()->loadQuery(query);
+	
+	if (tmp_cliente->valor("origenidcuentacliente").isEmpty()) {
+	  query = "SELECT idcuentacliente FROM cliente WHERE idcliente = " + cliente->dbValue(cliente->fieldId());
+	  tmp_cliente = cliente->mainCompany()->loadQuery(query);
+	  query = "UPDATE cliente SET origenidcuentacliente = " + tmp_cliente->valor("idcuentacliente") + " WHERE idcliente = " + cliente->dbValue(cliente->fieldId());
+	  cliente->mainCompany()->runQuery(query);
+	} // end if
+
+	query = "UPDATE cliente SET idcuentacliente = " + rec_cliente->valor("idcuenta") + " WHERE idcliente = " + cliente->dbValue(cliente->fieldId());
+	cliente->mainCompany()->runQuery(query);
+	
+      } // end if
+
+      /// Traspasa datos para poder usarlos en Guardar_Post
+      cliente->findChild<QLineEdit *>("tmp_cuenta_cliente")->setText( cliente->mainCompany()->sanearCadena(cliente->findChild<QLineEdit *>("mui_cuenta_cliente")->text()) );
+
+    } catch (int e) {
+	if (e == -300) {
+	  mensajeError("La cuenta no existe en la contabilidad.");
+	} // end if
+	throw -1;
+    } // end try
+
+    return 0;
+}
+
+
+int ClienteView_Guardar_Post ( ClienteView *cliente )
+{
+
+    /// Guarda los datos en la base de datos.
+    QString query = "UPDATE cliente SET prefcuentacliente = '" + cliente->mainCompany()->sanearCadena(cliente->findChild<QLineEdit *>("tmp_cuenta_cliente")->text()) + "' WHERE idcliente = '" + cliente->dbValue(cliente->fieldId()) + "'";
+   
+    cliente->mainCompany()->runQuery(query);
 
     return 0;
 }

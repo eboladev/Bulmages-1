@@ -167,6 +167,24 @@ BEGIN
 	END IF;
 
 
+	SELECT INTO bs * FROM pg_attribute WHERE attname='prefcuentacliente';
+	IF FOUND THEN
+--		ALTER TABLE cliente ADD COLUMN prefcuentacliente CHARACTER VARYING(12);
+--		ALTER TABLE cliente ADD COLUMN origenidcuentacliente INTEGER;
+		ALTER TABLE cliente DROP COLUMN prefcuentacliente;
+		ALTER TABLE cliente DROP COLUMN origenidcuentacliente;
+	END IF;
+
+
+	SELECT INTO bs * FROM pg_attribute WHERE attname='prefcuentaproveedor';
+	IF FOUND THEN
+--		ALTER TABLE proveedor ADD COLUMN prefcuentaproveedor CHARACTER VARYING(12);
+--		ALTER TABLE proveedor ADD COLUMN origenidcuentaproveedor INTEGER;
+		ALTER TABLE proveedor DROP COLUMN prefcuentaproveedor;
+		ALTER TABLE proveedor DROP COLUMN origenidcuentaproveedor;
+	END IF;
+
+
 	RETURN 0;
 END;
 $$   LANGUAGE plpgsql;

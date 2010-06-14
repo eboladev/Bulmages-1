@@ -37,6 +37,10 @@ include_directories(
 	${CMAKE_SOURCE_DIR}/bulmafact/plugins/pluginbf_banco
 	${CMAKE_BINARY_DIR}/bulmafact/plugins/pluginbf_formasdepago
 	${CMAKE_SOURCE_DIR}/bulmafact/plugins/pluginbf_formasdepago
+	${CMAKE_BINARY_DIR}/bulmafact/plugins/pluginbf_proveedor
+	${CMAKE_SOURCE_DIR}/bulmafact/plugins/pluginbf_proveedor
+	${CMAKE_BINARY_DIR}/bulmafact/plugins/pluginbf_cliente
+	${CMAKE_SOURCE_DIR}/bulmafact/plugins/pluginbf_cliente
 	${CMAKE_SOURCE_DIR}/bulmacont/src/
 	${CMAKE_BINARY_DIR}/bulmacont/src/
 	)
@@ -88,7 +92,8 @@ set_target_properties( ${plugin} PROPERTIES
   SOVERSION "${BULMAGES_VERSION_MAJOR}.${BULMAGES_VERSION_MINOR}"
   VERSION "${BULMAGES_VERSION}")
 
-target_link_libraries(${plugin} libbulmafact bulmalib libbulmacont pluginbf_articulo pluginbf_formasdepago pluginbf_banco ${QT_LIBRARIES} ${PGSQL_LIBRARIES})
+#target_link_libraries(${plugin} libbulmafact bulmalib libbulmacont pluginbf_articulo pluginbf_formasdepago pluginbf_banco ${QT_LIBRARIES} ${PGSQL_LIBRARIES})
+target_link_libraries(${plugin} libbulmafact bulmalib libbulmacont ${QT_LIBRARIES} ${PGSQL_LIBRARIES})
 
 install_targets(/lib/bulmafact/plugins ${plugin})
 

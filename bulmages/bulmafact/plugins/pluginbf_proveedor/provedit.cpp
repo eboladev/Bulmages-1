@@ -117,6 +117,27 @@ ProveedorView::~ProveedorView()
 }
 
 
+int ProveedorView::guardar()
+{
+ 
+	int res1;
+
+        /// Disparamos los plugins.
+        res1 = g_plugins->lanza ( "ProveedorView_Guardar_Pre", this );
+	if ( res1 != 0 ) {
+	    throw -1;
+	} // end if
+
+	BfForm::guardar();
+
+        /// Disparamos los plugins.
+        res1 = g_plugins->lanza ( "ProveedorView_Guardar_Post", this );
+	if ( res1 != 0 ) {
+	    throw -1;
+	} // end if
+	
+}
+
 
 /**
 */
@@ -150,6 +171,5 @@ int ProveedorView::cargarPost ( QString idprov )
     _depura ( "END ProveedorView::cargar", 0 );
     return 0;
 }
-
 
 

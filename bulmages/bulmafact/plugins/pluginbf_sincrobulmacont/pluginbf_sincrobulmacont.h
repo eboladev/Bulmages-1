@@ -26,6 +26,8 @@
 #include "familiasview.h"
 #include "fpagoview.h"
 #include "bancoview.h"
+#include "clienteview.h"
+#include "provedit.h"
 #include "pdefs_pluginbf_sincrobulmacont.h"
 
 
@@ -46,6 +48,20 @@ extern "C" PLUGINBF_SINCROBULMACONT_EXPORT int FPagoView_Guardar_Post ( FPagoVie
 extern "C" PLUGINBF_SINCROBULMACONT_EXPORT int BancoView_BancoView ( BancoView * );
 extern "C" PLUGINBF_SINCROBULMACONT_EXPORT int BancoView_Guardar_Pre ( BancoView * );
 extern "C" PLUGINBF_SINCROBULMACONT_EXPORT int BancoView_Guardar_Post ( BancoView * );
+
+
+/// Proveedores
+extern "C" PLUGINBF_SINCROBULMACONT_EXPORT int ProveedorView_ProveedorView_Post ( ProveedorView * );
+extern "C" PLUGINBF_SINCROBULMACONT_EXPORT int ProveedorView_cargarPost_Post ( ProveedorView *);
+extern "C" PLUGINBF_SINCROBULMACONT_EXPORT int ProveedorView_Guardar_Pre ( ProveedorView * );
+extern "C" PLUGINBF_SINCROBULMACONT_EXPORT int ProveedorView_Guardar_Post ( ProveedorView * );
+
+
+/// Clientes
+extern "C" PLUGINBF_SINCROBULMACONT_EXPORT int ClienteView_ClienteView_Post ( ClienteView * );
+extern "C" PLUGINBF_SINCROBULMACONT_EXPORT int ClienteView_cargarPost_Post ( ClienteView *);
+extern "C" PLUGINBF_SINCROBULMACONT_EXPORT int ClienteView_Guardar_Pre ( ClienteView * );
+extern "C" PLUGINBF_SINCROBULMACONT_EXPORT int ClienteView_Guardar_Post ( ClienteView * );
 
 
 #endif

@@ -164,6 +164,22 @@ BEGIN
 	END IF;
 
 
+	-- Creamos el espacio para almacenar las cuentas definidas por el usuario
+	-- para los clientes que sobreescriben la configuracion por defecto.
+	SELECT INTO bs * FROM pg_attribute WHERE attname='prefcuentacliente';
+	IF NOT FOUND THEN
+		ALTER TABLE cliente ADD COLUMN prefcuentacliente CHARACTER VARYING(12);
+		ALTER TABLE cliente ADD COLUMN origenidcuentacliente INTEGER;
+	END IF;
+
+	-- Creamos el espacio para almacenar las cuentas definidas por el usuario
+	-- para los proveedores que sobreescriben la configuracion por defecto.
+	SELECT INTO bs * FROM pg_attribute WHERE attname='prefcuentaproveedor';
+	IF NOT FOUND THEN
+		ALTER TABLE proveedor ADD COLUMN prefcuentaproveedor CHARACTER VARYING(12);
+		ALTER TABLE proveedor ADD COLUMN origenidcuentaproveedor INTEGER;
+	END IF;
+
 
 	RETURN 0;
 END;
