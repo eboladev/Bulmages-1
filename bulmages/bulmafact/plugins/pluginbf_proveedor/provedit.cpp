@@ -117,7 +117,7 @@ ProveedorView::~ProveedorView()
 }
 
 
-int ProveedorView::guardar()
+int ProveedorView::guardarPost()
 {
  
 	int res1;
@@ -127,8 +127,6 @@ int ProveedorView::guardar()
 	if ( res1 != 0 ) {
 	    throw -1;
 	} // end if
-
-	BfForm::guardar();
 
         /// Disparamos los plugins.
         res1 = g_plugins->lanza ( "ProveedorView_Guardar_Post", this );

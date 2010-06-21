@@ -422,7 +422,10 @@ int ProveedorView_Guardar_Pre ( ProveedorView *proveedor )
       /// La cuenta que se especifique tiene que existir en la contabilidad. No se crean de forma
       /// automatica.
       QString cuentaproveedor = proveedor->mainCompany()->sanearCadena(proveedor->findChild<QLineEdit *>("mui_cuenta_proveedor")->text());
-          
+      
+      if ( proveedor->dbValue(proveedor->fieldId()).isEmpty() ) return -1;
+
+      
       if (cuentaproveedor.isEmpty()) {
 	/// En el caso de dejar vacio el campo de cuenta preferente
 	/// se mira si antes se hizo utilizo la cuenta preferente
@@ -533,7 +536,10 @@ int ClienteView_Guardar_Pre ( ClienteView *cliente )
       /// La cuenta que se especifique tiene que existir en la contabilidad. No se crean de forma
       /// automatica.
       QString cuentacliente = cliente->mainCompany()->sanearCadena(cliente->findChild<QLineEdit *>("mui_cuenta_cliente")->text());
-          
+
+      if ( cliente->dbValue(cliente->fieldId()).isEmpty() ) return -1;
+
+      
       if (cuentacliente.isEmpty()) {
 	/// En el caso de dejar vacio el campo de cuenta preferente
 	/// se mira si antes se hizo utilizo la cuenta preferente

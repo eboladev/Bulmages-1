@@ -122,7 +122,7 @@ ClienteView::~ClienteView()
 }
 
 
-int ClienteView::guardar()
+int ClienteView::guardarPost()
 {
  
 	int res1;
@@ -132,8 +132,6 @@ int ClienteView::guardar()
 	if ( res1 != 0 ) {
 	    throw -1;
 	} // end if
-
-	BfForm::guardar();
 
         /// Disparamos los plugins.
         res1 = g_plugins->lanza ( "ClienteView_Guardar_Post", this );
