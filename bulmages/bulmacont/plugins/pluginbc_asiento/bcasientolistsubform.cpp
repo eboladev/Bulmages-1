@@ -92,7 +92,9 @@ void BcAsientoListSubForm::s_trataMenu ( QAction *action )
     _depura ( "BcAsientoSubForm::s_trataMenu", 0 );
     if ( !action ) return;
     if ( action->text() == _ ( "Mostrar asiento" ) )
-        boton_asiento();
+      
+	emit cellDoubleClicked ( 0, 0);
+    
     if ( action->text() == _ ( "Mostrar extracto (dia)" ) )
         boton_extracto1 ( 0 );
     if ( action->text() == _ ( "Mostrar extracto (mes)" ) )
