@@ -1093,26 +1093,31 @@ void BlSubForm::situarse ( unsigned int row, unsigned int col, bool back )
     unsigned int ncol = col;
     BlSubFormHeader *linea = m_lcabecera.at ( ncol );
     if ( !linea ) {
-        _depura ( "END BlSubForm::situarse", 0, QString::number ( nrow ) + " " + QString::number ( ncol ) );
+	  _depura ( "END BlSubForm::situarse", 0, QString::number ( nrow ) + " " + QString::number ( ncol ) );
         return;
     } // end if
     bool invalido = TRUE;
 
     /// Mientras no se encuentre un candidato y haya candidatos vamos recorriendo celdas inversamente.
     while ( back && invalido && nrow >= 0 ) {
-	  ncol--;
+
 	  /// Si estamos al principio de la linea cogemos el principio de la linea anterior
-	  if ( ncol < 0 ) {
+	  if ( ncol == 0 ) {
+		if ( nrow > 0 ) nrow--;
+		else break;
+
 		ncol = ( unsigned int ) m_lcabecera.count() - 1;
-		nrow--;
+	  }
+	  else {
+		ncol--;
 	  } // end if
+
 	  linea = m_lcabecera.at ( ncol );
 	  invalido = FALSE;
 	  if ( ( linea->options() & BlSubFormHeader::DbHideView )
-	  ||   ( linea->options() & BlSubFormHeader::DbNoWrite )
-	  ||   ( nrow < 0 ) )
+	  ||   ( linea->options() & BlSubFormHeader::DbNoWrite ) )
 		invalido = TRUE;
-    } // end while
+     } // end while
 
     /// Mientras no se encuentre un candidato y haya candidatos vamos recorriendo celdas.
     while ( !back && invalido && nrow < row + 2 ) {
@@ -1810,7 +1815,7 @@ void BlSubForm::on_mui_list_cellRePosition ( int row, int col )
     int key = mui_list->m_teclasalida;
 
     /// Miramos si hemos completado la linea y si es asi creamos una linea nueva
-    if ( row == mui_list->rowCount() - 1 && campoCompleto ( row ) ) {
+    if ( m_insercion && row == mui_list->rowCount() - 1 && campoCompleto ( row ) ) {
         nuevoRegistro();
         creado = TRUE;
     } // end if
@@ -1835,9 +1840,7 @@ void BlSubForm::on_mui_list_cellRePosition ( int row, int col )
 	    situarse ( row, col, true );
 	break;
     case Qt::Key_Tab:
-        if ( m_insercion ) {
 	    situarse ( row, col );
-	} // end if
 	break;
     case Qt::Key_Down:
         situarse ( row, col );
@@ -3389,6 +3392,7 @@ bool BlSubFormDelegate::eventFilter ( QObject *obj, QEvent *event )
                 return TRUE;
             } // end if
 
+	  case Qt::Key_Backtab:
         case Qt::Key_Tab:
             return TRUE;
         } // end switch
@@ -3414,6 +3418,7 @@ bool BlSubFormDelegate::eventFilter ( QObject *obj, QEvent *event )
                 return TRUE;
             } // end if
 
+	  case Qt::Key_Backtab:
         case Qt::Key_Tab:
  	    ((QWidget *)obj)->clearFocus();
             QApplication::sendEvent ( m_subform->mui_list, event );
