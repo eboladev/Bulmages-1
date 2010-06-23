@@ -1083,8 +1083,9 @@ void BlSubForm::pintaCabeceras()
 /**
 \param row
 \param col
+\param back Recorrer las celdas en orden inverso (por defecto, falso)
 **/
-void BlSubForm::situarse ( unsigned int row, unsigned int col )
+void BlSubForm::situarse ( unsigned int row, unsigned int col, bool back )
 {
     _depura ( "BlSubForm::situarse", 0, QString::number ( row ) + " " + QString::number ( col ) );
 
@@ -1097,20 +1098,35 @@ void BlSubForm::situarse ( unsigned int row, unsigned int col )
     } // end if
     bool invalido = TRUE;
 
+    /// Mientras no se encuentre un candidato y haya candidatos vamos recorriendo celdas inversamente.
+    while ( back && invalido && nrow >= 0 ) {
+	  ncol--;
+	  /// Si estamos al principio de la linea cogemos el principio de la linea anterior
+	  if ( ncol < 0 ) {
+		ncol = ( unsigned int ) m_lcabecera.count() - 1;
+		nrow--;
+	  } // end if
+	  linea = m_lcabecera.at ( ncol );
+	  invalido = FALSE;
+	  if ( ( linea->options() & BlSubFormHeader::DbHideView )
+	  ||   ( linea->options() & BlSubFormHeader::DbNoWrite )
+	  ||   ( nrow < 0 ) )
+		invalido = TRUE;
+    } // end while
+
     /// Mientras no se encuentre un candidato y haya candidatos vamos recorriendo celdas.
-    while ( invalido && nrow < row + 2 ) {
-        ncol++;
-        /// Si estamos al final de la linea cogemos el principio de la linea siguiente
-        if ( ncol == ( unsigned int ) m_lcabecera.count() ) {
-            ncol = 0;
-            nrow++;
-        } // end if
-        linea = m_lcabecera.at ( ncol );
-        invalido = FALSE;
-        if ( linea->options() & BlSubFormHeader::DbHideView )
-            invalido = TRUE;
-        if ( linea->options() & BlSubFormHeader::DbNoWrite )
-            invalido = TRUE;
+    while ( !back && invalido && nrow < row + 2 ) {
+	  ncol++;
+	  /// Si estamos al final de la linea cogemos el principio de la linea siguiente
+	  if ( ncol == ( unsigned int ) m_lcabecera.count() ) {
+		ncol = 0;
+		nrow++;
+	  } // end if
+	  linea = m_lcabecera.at ( ncol );
+	  invalido = FALSE;
+	  if ( ( linea->options() & BlSubFormHeader::DbHideView )
+	  ||   ( linea->options() & BlSubFormHeader::DbNoWrite ) )
+		 invalido = TRUE;
     } // end while
 
     if (!invalido) {
@@ -1815,6 +1831,9 @@ void BlSubForm::on_mui_list_cellRePosition ( int row, int col )
             situarse ( row, col );
         } // end if
         break;
+    case Qt::Key_Backtab:
+	    situarse ( row, col, true );
+	break;
     case Qt::Key_Tab:
         if ( m_insercion ) {
 	    situarse ( row, col );

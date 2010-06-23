@@ -273,6 +273,7 @@ bool BlTableWidget::eventFilter ( QObject *obj, QEvent *event )
         switch ( key ) {
         case Qt::Key_Return:
         case Qt::Key_Enter:
+	  case Qt::Key_Backtab:
         case Qt::Key_Tab:
             m_teclasalida = key;
             return TRUE;
@@ -300,12 +301,12 @@ bool BlTableWidget::eventFilter ( QObject *obj, QEvent *event )
         case Qt::Key_Return:
         case Qt::Key_Enter:
         case Qt::Key_Tab:
-            if ( ! ( mod & Qt::ShiftModifier ) ) {
+		if ( ! ( mod & Qt::ShiftModifier ) ) {
                 m_teclasalida = key;
                 emit cellRePosition ( row, col );
                 return TRUE;
                 break;
-            }// end if
+		}// end if
         case Qt::Key_Slash:
             if ( ( mod & Qt::ControlModifier ) || ( mod & Qt::AltModifier ) ) {
                 emit pressedSlash ( row, col );

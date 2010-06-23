@@ -305,7 +305,7 @@ public:
     void clear();
     void setRowCount ( int i );
     void setColumnCount ( int i );
-    void situarse ( unsigned int, unsigned int );
+    void situarse ( unsigned int, unsigned int, bool back = false );
     void situarse1 ( unsigned int, unsigned int );
     int addSubFormHeader ( QString nom, BlDbField::DbType typ, int res, int opt, QString nomp );
     BlDbSubFormRecord *newDbSubFormRecord();
