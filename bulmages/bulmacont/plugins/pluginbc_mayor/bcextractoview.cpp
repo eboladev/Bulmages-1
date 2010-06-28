@@ -306,6 +306,9 @@ void BcExtractoView::vaciar()
     inicialdebe->setText ( "0" );
     inicialhaber->setText ( "0" );
     inicialsaldo->setText ( "0" );
+    totaldebeparcial->setText ( "0" );
+    totalhaberparcial->setText ( "0" );
+    totalsaldoparcial->setText ( "0" );
     totaldebe->setText ( "0" );
     totalhaber->setText ( "0" );
     totalsaldo->setText ( "0" );
@@ -354,6 +357,7 @@ void BcExtractoView::presentar()
 
     BlFixed debe ( "0.00" ), haber ( "0.00" ), saldo ( "0.00" );
     BlFixed debeinicial ( "0.00" ), haberinicial ( "0.00" ), saldoinicial ( "0.00" );
+    BlFixed debeparcial ( "0.00" ), haberparcial ( "0.00" ), saldoparcial ( "0.00" );
     BlFixed debefinal ( "0.00" ), haberfinal ( "0.00" ), saldofinal ( "0.00" );
     QString idcuenta;
     QString finicial = m_fechainicial1->text();
@@ -465,9 +469,12 @@ void BcExtractoView::presentar()
             while ( !cursorapt->eof() ) {
                 debe = BlFixed ( cursorapt->valor ( "debe" ) );
                 haber = BlFixed ( cursorapt->valor ( "haber" ) );
+                saldoparcial = saldoparcial + debe - haber;
                 saldo = saldo + debe - haber;
                 debefinal = debefinal + debe;
+                debeparcial = debeparcial + debe;
                 haberfinal = haberfinal + haber;
+                haberparcial = haberparcial + haber;
                 if ( mui_list->lineaat ( i ) )
                     mui_list->setDbValue ( "saldo", i++, saldo.toQString() );
                 cursorapt->nextRecord();
@@ -477,6 +484,9 @@ void BcExtractoView::presentar()
             totaldebe->setText ( debefinal.toQString() );
             totalhaber->setText ( haberfinal.toQString() );
             totalsaldo->setText ( saldofinal.toQString() );
+            totaldebeparcial->setText ( debeparcial.toQString() );
+            totalhaberparcial->setText ( haberparcial.toQString() );
+            totalsaldoparcial->setText ( saldoparcial.toQString() );
         } // end if
         delete cursorapt;
         cursorapt = NULL;
