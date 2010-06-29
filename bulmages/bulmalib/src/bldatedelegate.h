@@ -1,6 +1,6 @@
 /***************************************************************************
- *   Copyright (C) 2009 by Aron Galdon                               *
- *   auryn@wanadoo.es                                               *
+ *   Copyright (C) 2010 by Aron Galdon                                     *
+ *   auryn@wanadoo.es                                                      *
  *   http://www.iglues.org                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -19,8 +19,8 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#ifndef TDATEDELEGATE_H
-#define TDATEDELEGATE_H
+#ifndef BLDATEDELEGATE_H
+#define BLDATEDELEGATE_H
 
 #include "bldatesearch.h"
 #include "tsystem.h"
@@ -28,15 +28,14 @@
 
 /** Lista desplegable en campo de listado.
 */
-class BlDateDelegate
-   : public QItemDelegate
+class BlDateDelegate: public QItemDelegate
 {
    public:
-	BlDateDelegate(BlMainCompany *comp, QObject *parent);
-	QWidget *createEditor(QWidget *parent, const QStyleOptionViewItem &vis, const QModelIndex &index) const;
-	void setEditorData(QWidget *editor, const QModelIndex &index) const;
-	void setModelData(QWidget *editor, QAbstractItemModel *model, const QModelIndex &index) const;
-	void updateEditorGeometry(QWidget *editor, const QStyleOptionViewItem &vis, const QModelIndex &index) const;
+	BlDateDelegate ( BlMainCompany *comp, QObject *parent ) ;
+	QWidget *createEditor ( QWidget *parent, const QStyleOptionViewItem &vis, const QModelIndex &index )  const;
+	void setEditorData ( QWidget *editor, const QModelIndex &index )  const;
+	void setModelData ( QWidget *editor, QAbstractItemModel *model, const QModelIndex &index )  const;
+	void updateEditorGeometry ( QWidget *editor, const QStyleOptionViewItem &vis, const QModelIndex &index )  const;
 
    private:
 	BlMainCompany *m_company;
