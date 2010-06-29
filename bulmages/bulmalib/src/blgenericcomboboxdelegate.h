@@ -27,6 +27,9 @@
 
 
 /** Lista desplegable en campo de listado.
+Modo de empleo:
+Agregar esta l&iacute;nea en el m&eacute;todo cargar del listado que hereda de BlSubForm:
+mui_list->setItemDelegateForColumn ( <n&uacute;mero de columna>, new BlGenericComboBoxDelegate ( mainCompany(), this, <tabla>, <campo id>, <campo visible> ) );
 */
 class BlGenericComboBoxDelegate: public QItemDelegate
 {
