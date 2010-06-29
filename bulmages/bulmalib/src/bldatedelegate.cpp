@@ -24,7 +24,7 @@
 /// Constructor
 /**
    \param comp
-   \param padre
+   \param parent
 **/
 BlDateDelegate::BlDateDelegate ( BlMainCompany *comp, QObject *parent ): QItemDelegate ( parent ), m_company ( comp )
 {
@@ -36,7 +36,7 @@ BlDateDelegate::BlDateDelegate ( BlMainCompany *comp, QObject *parent ): QItemDe
 
 /// Crear la lista desplegable que servir&aacute; para editar el campo
 /**
-   \param padre
+   \param parent
    \param vis Par&aacute;metros de visualizaci&oacute;n para el elemento en la vista
    \param index &Iacute;ndice en el modelo del dato a editar
 **/
