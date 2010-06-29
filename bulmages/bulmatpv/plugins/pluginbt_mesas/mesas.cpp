@@ -210,6 +210,8 @@ Mesa::Mesa ( BtCompany *emp, QWidget *parent ) : BlWidget ( emp, parent )
   setContextMenuPolicy(Qt::CustomContextMenu);
   connect(this, SIGNAL(customContextMenuRequested(const QPoint &)), this, SLOT(ctxMenu(const QPoint &)));
   m_nombreMesa = "Sin Definir";
+  m_XScale = 0;
+  m_YScale = 0;
 }
 
 
@@ -321,6 +323,8 @@ void Mesa::ctxMenu(const QPoint &pos) {
     menu->addAction(tr("Cambiar imagen"), this, SLOT(test_slot()));
     menu->addAction(tr("Cambiar nombre"), this, SLOT(cambiarNombre()));
     menu->addAction(tr("Abrir Mesa"), this, SLOT(abrirMesa()));
+    menu->addAction(tr("Aumentar Escala"), this, SLOT(abrirMesa()));
+    menu->addAction(tr("Disminuir Escala"), this, SLOT(abrirMesa()));
     menu->exec(mapToGlobal(pos));
 }
 
@@ -429,6 +433,8 @@ QString Mesa::exportXML() {
   val += "\t<NOMBRE>" + m_nombreMesa + "</NOMBRE>\n";
   val += "\t<POSX>" + QString::number(x()) + "</POSX>\n";
   val += "\t<POSY>" + QString::number(y()) + "</POSY>\n";
+  val += "\t<XSCALE>" + QString::number(y()) + "</XSCALE>\n";
+  val += "\t<YSCALE>" + QString::number(y()) + "</YSCALE>\n";
   val += "</MESA>\n";
 
   return val;
@@ -454,6 +460,11 @@ void Mesa::importXML(const QString val) {
     QDomElement posx = docElem.firstChildElement ( "POSX" );
     QDomElement posy = docElem.firstChildElement ( "POSY" );
     setGeometry(posx.text().toInt(),posy.text().toInt(),g_escala + 20 , g_escala + 20);
+
+    QDomElement xscale = docElem.firstChildElement ( "XSCALE" );
+    QDomElement yscale = docElem.firstChildElement ( "YSCALE" );
+    m_XScale = xscale.text().toInt();
+    m_YScale = yscale.text().toInt();
 
     repaint();
 }

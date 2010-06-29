@@ -61,6 +61,8 @@ public:
   QPoint offset;
   QString m_filename;
   QString m_nombreMesa;
+  int m_XScale;
+  int m_YScale;
 
 public:
   Mesa( BtCompany *emp, QWidget *parent);
