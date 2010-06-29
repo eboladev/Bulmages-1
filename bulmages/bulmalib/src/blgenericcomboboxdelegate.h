@@ -31,7 +31,7 @@
 class BlGenericComboBoxDelegate: public QItemDelegate
 {
    public:
-	BlGenericComboBoxDelegate ( BlMainCompany *comp, QObject *parent, QString table, QString id_field, QString text_field, QString cond = "" ) ;
+	BlGenericComboBoxDelegate ( BlMainCompany *comp, QObject *parent, QString table, QString id_field, QString text_field, bool allow_null = true, QString cond = "" ) ;
 	void paint ( QPainter *pintor, const QStyleOptionViewItem &vis, const QModelIndex &index ) const;
 	QWidget *createEditor ( QWidget *parent, const QStyleOptionViewItem &vis, const QModelIndex &index ) const;
 	void setEditorData ( QWidget *editor, const QModelIndex &index ) const;
@@ -43,6 +43,7 @@ class BlGenericComboBoxDelegate: public QItemDelegate
 	QString m_table;
 	QString m_id_field;
 	QString m_text_field;
+	bool m_allow_null;
 	QString m_cond;
 };
 

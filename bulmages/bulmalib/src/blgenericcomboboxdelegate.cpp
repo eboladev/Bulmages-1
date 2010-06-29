@@ -28,14 +28,16 @@
    \param table
    \param id_field
    \param text_field
+   \param allow_null Por defecto se admite el valor nulo
    \param cond Condición opcional para un WHERE de consulta
 **/
-BlGenericComboBoxDelegate::BlGenericComboBoxDelegate ( BlMainCompany *comp, QObject *parent, QString table, QString id_field, QString text_field, QString cond )
+BlGenericComboBoxDelegate::BlGenericComboBoxDelegate ( BlMainCompany *comp, QObject *parent, QString table, QString id_field, QString text_field, bool allow_null, QString cond )
    : QItemDelegate ( parent )
    , m_company ( comp )
    , m_table ( table )
    , m_id_field ( id_field )
    , m_text_field ( text_field )
+   , m_allow_null ( allow_null )
    , m_cond ( cond )
 {
    _depura ( "BlGenericComboBoxDelegate::BlGenericComboBoxDelegate", 0 ) ;
@@ -56,27 +58,26 @@ void BlGenericComboBoxDelegate::paint ( QPainter *painter, const QStyleOptionVie
 
    // La posición no coincide: no tiene en cuenta las cabeceras
    QPoint pos = vis.rect.topLeft();
-   pos.setX ( pos.x() + 5 ) ;
-   pos.setY ( pos.y() + 17 ) ;
+   pos.setX ( pos.x() + 5 );
+   pos.setY ( pos.y() + 17 );
 
    QString id = index.model()->data ( index ) .toString();
 
-   if ( !id.isEmpty() ) {
+   if ( !id.isEmpty () )
+   {
+	// Aquí no usamos la condición, ya que tenemos el "id" concreto a mostrar y no es necesario filtrar más
 	QString consulta = QString ( "SELECT %1 FROM %2 WHERE %3 = %4" )
 				 .arg ( m_text_field )
 				 .arg ( m_table )
 				 .arg ( m_id_field )
-				 .arg ( index.model()->data ( index ) .toString() ) ;
+				 .arg ( index.model()->data ( index ) .toString() );
 
-	if ( !m_cond.isEmpty() ) {
-	   consulta += QString ( " AND %1" )
-			   .arg ( m_cond ) ;
-	} // end if
-
-	painter->drawText ( pos, m_company->loadQuery ( consulta ) ->valor ( m_text_field )  ) ;
-   } else {
-	QItemDelegate::paint ( painter, vis, index ) ;
-   } // end if
+	painter->drawText ( pos, m_company->loadQuery ( consulta )->valor ( m_text_field ) );
+   }
+   else
+   {
+	QItemDelegate::paint ( painter, vis, index );
+   }
 
    _depura ( "END BlGenericComboBoxDelegate::paint", 0 ) ;
 }
@@ -93,24 +94,25 @@ QWidget *BlGenericComboBoxDelegate::createEditor ( QWidget *parent, const QStyle
    _depura ( "BlGenericComboBoxDelegate::createEditor", 0 ) ;
 
    QString consulta = QString ( "SELECT %1, %2 FROM %3" )
-			    .arg ( m_id_field )
-			    .arg ( m_text_field )
-			    .arg ( m_table ) ;
+			    .arg(m_id_field)
+			    .arg(m_text_field)
+			    .arg(m_table);
 
-   if ( !m_cond.isEmpty() ) {
+   if (!m_cond.isEmpty())
+   {
 	consulta += QString ( " WHERE %1" )
-			.arg ( m_cond ) ;
-   } // end if
+			.arg(m_cond);
+   }
 
    consulta += QString ( " ORDER BY %2" )
-		   .arg ( m_text_field ) ;
+		   .arg ( m_text_field );
 
-   BlComboBox *cbox = new BlComboBox ( parent ) ;
-   cbox->setMainCompany ( m_company ) ;
-   cbox->setQuery ( consulta ) ;
-   cbox->setFieldId ( m_id_field ) ;
+   BlComboBox *cbox = new BlComboBox ( parent );
+   cbox->setMainCompany ( m_company );
+   cbox->setQuery ( consulta );
+   cbox->setFieldId ( m_id_field );
    cbox->m_valores[m_text_field] = "";
-   cbox->setAllowNull ( true ) ;
+   cbox->setAllowNull ( true );
 
    _depura ( "END BlGenericComboBoxDelegate::createEditor", 0 ) ;
 
@@ -127,7 +129,10 @@ void BlGenericComboBoxDelegate::setEditorData ( QWidget *editor, const QModelInd
 {
    _depura ( "BlGenericComboBoxDelegate::setEditorData", 0 ) ;
 
-   ( ( BlComboBox * ) editor ) ->setId ( index.model()->data ( index ) .toString() ) ;
+   BlComboBox *cbox = ( BlComboBox *) editor;
+   QString id = index.model()->data ( index ) .toString();
+
+   cbox->setId(id);
 
    _depura ( "END BlGenericComboBoxDelegate::setEditorData", 0 ) ;
 }
@@ -143,7 +148,15 @@ void BlGenericComboBoxDelegate::setModelData ( QWidget *editor, QAbstractItemMod
 {
    _depura ( "BlGenericComboBoxDelegate::setModelData", 0 ) ;
 
-   model->setData ( index, ( ( BlComboBox * ) editor ) ->id() ) ;
+   QString id = ( ( BlComboBox *) editor ) ->id();
+
+   // No permitir dejar el campo vacío si así se ha establecido
+   if ( ( id.isEmpty() && !m_allow_null ) )
+   {
+	return;
+   }
+
+   model->setData ( index, id );
 
    _depura ( "END BlGenericComboBoxDelegate::setModelData", 0 ) ;
 }
