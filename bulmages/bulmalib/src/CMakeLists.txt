@@ -64,6 +64,8 @@ set(bulmalib_SRCS	blpostgresqlclient.cpp
 			blradiobutton.cpp
 			blcombobox.cpp
 			blcomboboxdelegate.cpp
+			bldatedelegate.cpp
+			blgenericcomboboxdelegate.cpp
 			blprogressbar.cpp
 			blmainwindow.cpp
 			blbankedit.cpp
@@ -97,6 +99,8 @@ set(bulmalib_MOCS	bldblogindialog.h
 			blradiobutton.h
 			blcombobox.h
 			blcomboboxdelegate.h
+			bldatedelegate.h
+			blgenericcomboboxdelegate.h
 			blmonthcalendar.h
 			blsearchwidget.h
 			blform.h			
@@ -118,8 +122,8 @@ set (bulmalib_HDRS	blmaincompanypointer.h
 			blimportexport.h
 			blplugins.h
 			blpostgresqlclient.h
-         blargparser.h
-)
+			blargparser.h
+			tprevima.h)
 			
 			
 #headers that are not moc'ed
