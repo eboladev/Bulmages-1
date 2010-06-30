@@ -23,7 +23,8 @@
 #define BLDATEDELEGATE_H
 
 #include "bldatesearch.h"
-#include "tsystem.h"
+#include <QItemDelegate>
+//#include "tsystem.h"
 
 
 /** Lista desplegable en campo de listado.

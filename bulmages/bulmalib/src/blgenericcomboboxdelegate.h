@@ -23,7 +23,7 @@
 #define BLGENERICCOMBOBOXDELEGATE_H
 
 #include "blcombobox.h"
-#include "tsystem.h"
+#include <QItemDelegate>
 
 
 /** Lista desplegable en campo de listado.
