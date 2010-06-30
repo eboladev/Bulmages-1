@@ -123,7 +123,7 @@ set (bulmalib_HDRS	blmaincompanypointer.h
 			blplugins.h
 			blpostgresqlclient.h
 			blargparser.h
-			tprevima.h)
+			)
 			
 			
 #headers that are not moc'ed
