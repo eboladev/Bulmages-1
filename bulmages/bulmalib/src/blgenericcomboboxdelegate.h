@@ -29,12 +29,12 @@
 /** Lista desplegable en campo de listado.
 Modo de empleo:
 Agregar esta l&iacute;nea en el m&eacute;todo cargar del listado que hereda de BlSubForm:
-mui_list->setItemDelegateForColumn ( <n&uacute;mero de columna>, new BlGenericComboBoxDelegate ( mainCompany(), this, <tabla>, <campo id>, <campo visible> ) );
+mui_list->setItemDelegateForColumn ( <n&uacute;mero de columna>, new BlGenericComboBoxDelegate ( <n&uacute;mero de columna del campo oculto con el id>, mainCompany(), this, <tabla>, <campo id>, <campo visible> ) );
 */
 class BlGenericComboBoxDelegate: public QItemDelegate
 {
    public:
-	BlGenericComboBoxDelegate ( BlMainCompany *comp, QObject *parent, QString table, QString id_field, QString text_field, bool allow_null = true, QString cond = "" ) ;
+	BlGenericComboBoxDelegate ( int id_column, BlMainCompany *comp, QObject *parent, QString table, QString id_field, QString text_field, bool allow_null = true, QString cond = "" ) ;
 	void paint ( QPainter *pintor, const QStyleOptionViewItem &vis, const QModelIndex &index ) const;
 	QWidget *createEditor ( QWidget *parent, const QStyleOptionViewItem &vis, const QModelIndex &index ) const;
 	void setEditorData ( QWidget *editor, const QModelIndex &index ) const;
@@ -43,6 +43,7 @@ class BlGenericComboBoxDelegate: public QItemDelegate
 
    private:
 	BlMainCompany *m_company;
+	int m_id_column;
 	QString m_table;
 	QString m_id_field;
 	QString m_text_field;

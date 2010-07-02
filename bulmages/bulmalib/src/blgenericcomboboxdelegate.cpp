@@ -31,8 +31,9 @@
    \param allow_null Por defecto se admite el valor nulo
    \param cond Condición opcional para un WHERE de consulta
 **/
-BlGenericComboBoxDelegate::BlGenericComboBoxDelegate ( BlMainCompany *comp, QObject *parent, QString table, QString id_field, QString text_field, bool allow_null, QString cond )
+BlGenericComboBoxDelegate::BlGenericComboBoxDelegate ( int id_column, BlMainCompany *comp, QObject *parent, QString table, QString id_field, QString text_field, bool allow_null, QString cond )
    : QItemDelegate ( parent )
+   , m_id_column ( id_column )
    , m_company ( comp )
    , m_table ( table )
    , m_id_field ( id_field )
@@ -56,12 +57,17 @@ void BlGenericComboBoxDelegate::paint ( QPainter *painter, const QStyleOptionVie
 {
    _depura ( "BlGenericComboBoxDelegate::paint", 0 ) ;
 
+   QModelIndex index_ant = index.model()->index( index.row(), m_id_column );
+
+   painter->setPen ( Qt::NoPen );
+   QItemDelegate::paint ( painter, vis, index );
+
    // La posición no coincide: no tiene en cuenta las cabeceras
    QPoint pos = vis.rect.topLeft();
    pos.setX ( pos.x() + 5 );
    pos.setY ( pos.y() + 17 );
 
-   QString id = index.model()->data ( index ) .toString();
+   QString id = index_ant.model()->data ( index_ant ) .toString();
 
    if ( !id.isEmpty () )
    {
@@ -70,13 +76,14 @@ void BlGenericComboBoxDelegate::paint ( QPainter *painter, const QStyleOptionVie
 				 .arg ( m_text_field )
 				 .arg ( m_table )
 				 .arg ( m_id_field )
-				 .arg ( index.model()->data ( index ) .toString() );
+				 .arg ( index_ant.model()->data ( index_ant ) .toString() );
 
+	painter->setPen ( Qt::SolidLine );
 	painter->drawText ( pos, m_company->loadQuery ( consulta )->valor ( m_text_field ) );
    }
-   else
+//   else
    {
-	QItemDelegate::paint ( painter, vis, index );
+	//QItemDelegate::paint ( painter, vis, index );
    }
 
    _depura ( "END BlGenericComboBoxDelegate::paint", 0 ) ;
@@ -130,7 +137,8 @@ void BlGenericComboBoxDelegate::setEditorData ( QWidget *editor, const QModelInd
    _depura ( "BlGenericComboBoxDelegate::setEditorData", 0 ) ;
 
    BlComboBox *cbox = ( BlComboBox *) editor;
-   QString id = index.model()->data ( index ) .toString();
+   QModelIndex index_ant = index.model()->index( index.row(), m_id_column );
+   QString id = index_ant.data().toString();
 
    cbox->setId(id);
 
@@ -148,6 +156,8 @@ void BlGenericComboBoxDelegate::setModelData ( QWidget *editor, QAbstractItemMod
 {
    _depura ( "BlGenericComboBoxDelegate::setModelData", 0 ) ;
 
+   QModelIndex index_ant = index.model()->index( index.row(), m_id_column );
+
    QString id = ( ( BlComboBox *) editor ) ->id();
 
    // No permitir dejar el campo vacío si así se ha establecido
@@ -156,7 +166,7 @@ void BlGenericComboBoxDelegate::setModelData ( QWidget *editor, QAbstractItemMod
 	return;
    }
 
-   model->setData ( index, id );
+   model->setData ( index_ant, id );
 
    _depura ( "END BlGenericComboBoxDelegate::setModelData", 0 ) ;
 }
