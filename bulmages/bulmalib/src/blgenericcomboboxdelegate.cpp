@@ -32,7 +32,7 @@
    \param cond Condición opcional para un WHERE de consulta
 **/
 BlGenericComboBoxDelegate::BlGenericComboBoxDelegate ( int id_column, BlMainCompany *comp, QObject *parent, QString table, QString id_field, QString text_field, bool allow_null, QString cond )
-   : QItemDelegate ( parent )
+   : BlSubFormDelegate ( parent )
    , m_id_column ( id_column )
    , m_company ( comp )
    , m_table ( table )
@@ -59,15 +59,14 @@ void BlGenericComboBoxDelegate::paint ( QPainter *painter, const QStyleOptionVie
 
    QModelIndex index_ant = index.model()->index( index.row(), m_id_column );
 
-   painter->setPen ( Qt::NoPen );
-   QItemDelegate::paint ( painter, vis, index );
+   BlSubFormDelegate::paint ( painter, vis, index );
 
    // La posición no coincide: no tiene en cuenta las cabeceras
    QPoint pos = vis.rect.topLeft();
    pos.setX ( pos.x() + 5 );
    pos.setY ( pos.y() + 17 );
 
-   QString id = index_ant.model()->data ( index_ant ) .toString();
+   QString id = index_ant.model()->data ( index_ant ).toString();
 
    if ( !id.isEmpty () )
    {
@@ -78,12 +77,10 @@ void BlGenericComboBoxDelegate::paint ( QPainter *painter, const QStyleOptionVie
 				 .arg ( m_id_field )
 				 .arg ( index_ant.model()->data ( index_ant ) .toString() );
 
+	QString valor = m_company->loadQuery ( consulta )->valor ( m_text_field );
+
 	painter->setPen ( Qt::SolidLine );
 	painter->drawText ( pos, m_company->loadQuery ( consulta )->valor ( m_text_field ) );
-   }
-//   else
-   {
-	//QItemDelegate::paint ( painter, vis, index );
    }
 
    _depura ( "END BlGenericComboBoxDelegate::paint", 0 ) ;

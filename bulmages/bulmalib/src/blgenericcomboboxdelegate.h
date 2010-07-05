@@ -22,8 +22,8 @@
 #ifndef BLGENERICCOMBOBOXDELEGATE_H
 #define BLGENERICCOMBOBOXDELEGATE_H
 
+#include "blsubform.h"
 #include "blcombobox.h"
-#include <QItemDelegate>
 
 
 /** Lista desplegable en campo de listado.
@@ -31,7 +31,7 @@ Modo de empleo:
 Agregar esta l&iacute;nea en el m&eacute;todo cargar del listado que hereda de BlSubForm:
 mui_list->setItemDelegateForColumn ( <n&uacute;mero de columna>, new BlGenericComboBoxDelegate ( <n&uacute;mero de columna del campo oculto con el id>, mainCompany(), this, <tabla>, <campo id>, <campo visible> ) );
 */
-class BlGenericComboBoxDelegate: public QItemDelegate
+class BlGenericComboBoxDelegate: public BlSubFormDelegate
 {
    public:
 	BlGenericComboBoxDelegate ( int id_column, BlMainCompany *comp, QObject *parent, QString table, QString id_field, QString text_field, bool allow_null = true, QString cond = "" ) ;
