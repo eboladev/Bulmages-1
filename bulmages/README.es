@@ -3,6 +3,7 @@ Software de Gestión Empresarial BulmaGés
 
 (C) 2003 - 2010 Asociación IGLUES
 http://www.iglues.org
+
 ========================================
 #README.es
 
