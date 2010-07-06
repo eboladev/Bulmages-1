@@ -57,14 +57,14 @@ void BlGenericComboBoxDelegate::paint ( QPainter *painter, const QStyleOptionVie
 {
    _depura ( "BlGenericComboBoxDelegate::paint", 0 ) ;
 
-   QModelIndex index_ant = index.model()->index( index.row(), m_id_column );
+   QModelIndex index_id_field = index.model()->index( index.row(), m_id_column );
 
    // La posición no coincide: no tiene en cuenta las cabeceras
    QPoint pos = vis.rect.topLeft();
    pos.setX ( pos.x() + 5 );
    pos.setY ( pos.y() + 17 );
 
-   QString id = index_ant.model()->data ( index_ant ).toString();
+   QString id = index_id_field.model()->data ( index_id_field ).toString();
 
    // Si hay un identificador y todav&iacute;a no se ha escrito un texto, buscarlo en la base de datos y ponerlo en el campo
    if ( !id.isEmpty () && index.model()->data ( index ).toString().isEmpty() ) {
@@ -73,7 +73,7 @@ void BlGenericComboBoxDelegate::paint ( QPainter *painter, const QStyleOptionVie
 				 .arg ( m_text_field )
 				 .arg ( m_table )
 				 .arg ( m_id_field )
-				 .arg ( index_ant.model()->data ( index_ant ) .toString() );
+				 .arg ( index_id_field.model()->data ( index_id_field ) .toString() );
 
 	QString valor = m_company->loadQuery ( consulta )->valor ( m_text_field );
 
@@ -134,8 +134,8 @@ void BlGenericComboBoxDelegate::setEditorData ( QWidget *editor, const QModelInd
    _depura ( "BlGenericComboBoxDelegate::setEditorData", 0 ) ;
 
    BlComboBox *cbox = ( BlComboBox *) editor;
-   QModelIndex index_ant = index.model()->index( index.row(), m_id_column );
-   QString id = index_ant.data().toString();
+   QModelIndex index_id_field = index.model()->index( index.row(), m_id_column );
+   QString id = index_id_field.data().toString();
 
    cbox->setId(id);
 
@@ -153,7 +153,7 @@ void BlGenericComboBoxDelegate::setModelData ( QWidget *editor, QAbstractItemMod
 {
    _depura ( "BlGenericComboBoxDelegate::setModelData", 0 ) ;
 
-   QModelIndex index_ant = index.model()->index( index.row(), m_id_column );
+   QModelIndex index_id_field = index.model()->index( index.row(), m_id_column );
 
    QString id = ( ( BlComboBox *) editor )->id();
    QString text = ( ( BlComboBox *) editor )->currentText();
@@ -163,7 +163,7 @@ void BlGenericComboBoxDelegate::setModelData ( QWidget *editor, QAbstractItemMod
 	return;
    } // end if
 
-   model->setData ( index_ant, id );
+   model->setData ( index_id_field, id );
    model->setData ( index, text );
 
    _depura ( "END BlGenericComboBoxDelegate::setModelData", 0 ) ;
