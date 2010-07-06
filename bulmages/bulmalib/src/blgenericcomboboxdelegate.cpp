@@ -77,41 +77,14 @@ BlGenericComboBoxDelegate::BlGenericComboBoxDelegate ( int fk_column, QString fk
    \param vis Parámetros de visualización para el elemento en la vista
    \param index Índice en el modelo del dato a editar
 **/
-void BlGenericComboBoxDelegate::paint ( QPainter *painter, const QStyleOptionViewItem &vis, const QModelIndex &index ) const
-{
-   _depura ( "BlGenericComboBoxDelegate::paint", 0 ) ;
-
-   QModelIndex index_id_field = index.model()->index( index.row(), m_fk_column );
-
-   // La posición no coincide: no tiene en cuenta las cabeceras
-   QPoint pos = vis.rect.topLeft();
-   pos.setX ( pos.x() + 5 );
-   pos.setY ( pos.y() + 17 );
-
-   QString id = index_id_field.model()->data ( index_id_field ).toString();
-
-   /// Si hay un identificador y todav&iacute;a no se ha escrito un texto, buscarlo en la base de datos y ponerlo en el campo
-   if ( !id.isEmpty () && index.model()->data ( index ).toString().isEmpty() ) {
-
-	/// Aquí no usamos la condición, ya que tenemos el "id" concreto a mostrar y no es necesario filtrar más
-	QString consulta = QString ( "SELECT %1 FROM %2 WHERE %3 = %4" )
-				 .arg ( m_text_field )
-				 .arg ( m_table )
-				 .arg ( m_id_field )
-				 .arg ( index_id_field.model()->data ( index_id_field ) .toString() );
-
-	QString valor = m_company->loadQuery ( consulta )->valor ( m_text_field );
-
-/// Dibujar el texto tenía pegas: la ordenación, filtrado e impresión de la tabla no funcionar&aacute; para esa columna
-//	drawDisplay ( painter, vis, vis.rect, valor );
-//	drawFocus ( painter, vis, vis.rect );
-   }
-   else {
-	BlSubFormDelegate::paint ( painter, vis, index );
-   } // end if
-
-   _depura ( "END BlGenericComboBoxDelegate::paint", 0 ) ;
-}
+//void BlGenericComboBoxDelegate::paint ( QPainter *painter, const QStyleOptionViewItem &vis, const QModelIndex &index ) const
+//{
+//   _depura ( "BlGenericComboBoxDelegate::paint", 0 ) ;
+//
+//   BlSubFormDelegate::paint ( painter, vis, index );
+//
+//   _depura ( "END BlGenericComboBoxDelegate::paint", 0 ) ;
+//}
 
 
 /// Crear la lista desplegable que servirá para editar el campo
