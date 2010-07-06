@@ -23,17 +23,20 @@
 
 /// Constructor
 /**
+   \param fk_column
+   \param fk_field_name
    \param comp
    \param parent
    \param table
    \param id_field
    \param text_field
+   \param combo_field_name
    \param allow_null Por defecto se admite el valor nulo
    \param cond Condición opcional para un WHERE de consulta
 **/
-BlGenericComboBoxDelegate::BlGenericComboBoxDelegate ( int id_column, BlMainCompany *comp, QObject *parent, QString table, QString id_field, QString text_field, bool allow_null, QString cond )
+BlGenericComboBoxDelegate::BlGenericComboBoxDelegate ( int fk_column, QString fk_field_name, BlMainCompany *comp, QObject *parent, QString table, QString id_field, QString text_field, QString combo_field_name, bool allow_null, QString cond )
    : BlSubFormDelegate ( parent )
-   , m_id_column ( id_column )
+   , m_fk_column ( fk_column )
    , m_company ( comp )
    , m_table ( table )
    , m_id_field ( id_field )
@@ -42,6 +45,27 @@ BlGenericComboBoxDelegate::BlGenericComboBoxDelegate ( int id_column, BlMainComp
    , m_cond ( cond )
 {
    _depura ( "BlGenericComboBoxDelegate::BlGenericComboBoxDelegate", 0 ) ;
+
+   /// En vez de dibujar los valores en paint, los establecemos como datos de la tabla
+   /// para evitar pegas con ordenación, filtros e impresión
+   for ( int i = 0; i < m_subform->mui_list->rowCount(); i++ )
+   {
+	QString fk_id = m_subform->dbValue ( fk_field_name, i );
+
+	if ( fk_id.isEmpty() ) {
+	   continue;
+	}
+
+	QString consulta = QString ( "SELECT %1 FROM %2 WHERE %3 = %4" )
+				 .arg ( m_text_field )
+				 .arg ( m_table )
+				 .arg ( m_id_field )
+				 .arg ( fk_id );
+
+	QString valor = comp->loadQuery ( consulta )->valor ( m_text_field );
+
+	m_subform->setDbValue(combo_field_name, i, valor);
+   }
 
    _depura ( "END BlGenericComboBoxDelegate::BlGenericComboBoxDelegate", 0 ) ;
 }
@@ -57,7 +81,7 @@ void BlGenericComboBoxDelegate::paint ( QPainter *painter, const QStyleOptionVie
 {
    _depura ( "BlGenericComboBoxDelegate::paint", 0 ) ;
 
-   QModelIndex index_id_field = index.model()->index( index.row(), m_id_column );
+   QModelIndex index_id_field = index.model()->index( index.row(), m_fk_column );
 
    // La posición no coincide: no tiene en cuenta las cabeceras
    QPoint pos = vis.rect.topLeft();
@@ -68,6 +92,7 @@ void BlGenericComboBoxDelegate::paint ( QPainter *painter, const QStyleOptionVie
 
    /// Si hay un identificador y todav&iacute;a no se ha escrito un texto, buscarlo en la base de datos y ponerlo en el campo
    if ( !id.isEmpty () && index.model()->data ( index ).toString().isEmpty() ) {
+
 	/// Aquí no usamos la condición, ya que tenemos el "id" concreto a mostrar y no es necesario filtrar más
 	QString consulta = QString ( "SELECT %1 FROM %2 WHERE %3 = %4" )
 				 .arg ( m_text_field )
@@ -77,9 +102,9 @@ void BlGenericComboBoxDelegate::paint ( QPainter *painter, const QStyleOptionVie
 
 	QString valor = m_company->loadQuery ( consulta )->valor ( m_text_field );
 
-	/// Dibujar el texto tiene una pega: la ordenación y filtrado de la tabla no funcionar&aacute; en esta columna
-	drawDisplay ( painter, vis, vis.rect, valor );
-	drawFocus ( painter, vis, vis.rect );
+/// Dibujar el texto tenía pegas: la ordenación, filtrado e impresión de la tabla no funcionar&aacute; para esa columna
+//	drawDisplay ( painter, vis, vis.rect, valor );
+//	drawFocus ( painter, vis, vis.rect );
    }
    else {
 	BlSubFormDelegate::paint ( painter, vis, index );
@@ -135,10 +160,10 @@ void BlGenericComboBoxDelegate::setEditorData ( QWidget *editor, const QModelInd
    _depura ( "BlGenericComboBoxDelegate::setEditorData", 0 ) ;
 
    BlComboBox *cbox = ( BlComboBox *) editor;
-   QModelIndex index_id_field = index.model()->index( index.row(), m_id_column );
+   QModelIndex index_id_field = index.model()->index( index.row(), m_fk_column );
    QString id = index_id_field.data().toString();
 
-   cbox->setId(id);
+   cbox->setId ( id );
 
    _depura ( "END BlGenericComboBoxDelegate::setEditorData", 0 ) ;
 }
@@ -154,7 +179,7 @@ void BlGenericComboBoxDelegate::setModelData ( QWidget *editor, QAbstractItemMod
 {
    _depura ( "BlGenericComboBoxDelegate::setModelData", 0 ) ;
 
-   QModelIndex index_id_field = index.model()->index( index.row(), m_id_column );
+   QModelIndex index_id_field = index.model()->index( index.row(), m_fk_column );
 
    QString id = ( ( BlComboBox *) editor )->id();
    QString text = ( ( BlComboBox *) editor )->currentText();
