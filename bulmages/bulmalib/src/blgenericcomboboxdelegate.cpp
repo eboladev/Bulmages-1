@@ -66,9 +66,9 @@ void BlGenericComboBoxDelegate::paint ( QPainter *painter, const QStyleOptionVie
 
    QString id = index_id_field.model()->data ( index_id_field ).toString();
 
-   // Si hay un identificador y todav&iacute;a no se ha escrito un texto, buscarlo en la base de datos y ponerlo en el campo
+   /// Si hay un identificador y todav&iacute;a no se ha escrito un texto, buscarlo en la base de datos y ponerlo en el campo
    if ( !id.isEmpty () && index.model()->data ( index ).toString().isEmpty() ) {
-	// Aquí no usamos la condición, ya que tenemos el "id" concreto a mostrar y no es necesario filtrar más
+	/// Aquí no usamos la condición, ya que tenemos el "id" concreto a mostrar y no es necesario filtrar más
 	QString consulta = QString ( "SELECT %1 FROM %2 WHERE %3 = %4" )
 				 .arg ( m_text_field )
 				 .arg ( m_table )
@@ -77,6 +77,7 @@ void BlGenericComboBoxDelegate::paint ( QPainter *painter, const QStyleOptionVie
 
 	QString valor = m_company->loadQuery ( consulta )->valor ( m_text_field );
 
+	/// Dibujar el texto tiene una pega: la ordenación y filtrado de la tabla no funcionar&aacute; en esta columna
 	drawDisplay ( painter, vis, vis.rect, valor );
 	drawFocus ( painter, vis, vis.rect );
    }
@@ -158,7 +159,7 @@ void BlGenericComboBoxDelegate::setModelData ( QWidget *editor, QAbstractItemMod
    QString id = ( ( BlComboBox *) editor )->id();
    QString text = ( ( BlComboBox *) editor )->currentText();
 
-   // No permitir dejar el campo vacío si así se ha establecido
+   /// No permitir dejar el campo vac&iacute;o si as&iacute; se ha establecido
    if ( ( id.isEmpty() && !m_allow_null ) ) {
 	return;
    } // end if
