@@ -23,38 +23,95 @@
 
 /// Constructor
 /**
-   \param fk_column
-   \param fk_field_name
-   \param comp
-   \param parent
-   \param table
-   \param id_field
-   \param text_field
-   \param combo_field_name
-   \param allow_null Por defecto se admite el valor nulo
-   \param cond Condición opcional para un WHERE de consulta
+  \param comp
+  \param parent
 **/
-BlGenericComboBoxDelegate::BlGenericComboBoxDelegate ( int fk_column, QString fk_field_name, BlMainCompany *comp, QObject *parent, QString table, QString id_field, QString text_field, QString combo_field_name, bool allow_null, QString cond )
+BlGenericComboBoxDelegate::BlGenericComboBoxDelegate ( BlMainCompany *comp, QObject *parent)
    : BlSubFormDelegate ( parent )
-   , m_fk_column ( fk_column )
    , m_company ( comp )
-   , m_table ( table )
-   , m_id_field ( id_field )
-   , m_text_field ( text_field )
-   , m_allow_null ( allow_null )
-   , m_cond ( cond )
+   , m_allowNull ( true )
+   , m_fk_column ( -1 )
 {
    _depura ( "BlGenericComboBoxDelegate::BlGenericComboBoxDelegate", 0 ) ;
+
+   _depura ( "END BlGenericComboBoxDelegate::BlGenericComboBoxDelegate", 0 ) ;
+}
+
+
+///
+/**
+  \param table
+  \param id_field
+  \param text_field
+**/
+void BlGenericComboBoxDelegate::set_foreign_table ( const QString &table, const QString &id_field, const QString &text_field )
+{
+   m_table = table;
+   m_id_field = id_field;
+   m_text_field = text_field;
+}
+
+
+///
+/**
+  \param fk_column
+  \param fk_field_name
+**/
+void BlGenericComboBoxDelegate::set_foreign_field ( unsigned int fk_column, QString fk_field_name )
+{
+   m_fk_column = fk_column;
+   m_fk_field_name = fk_field_name;
+}
+
+
+///
+/**
+  \param fi_field_name
+  \param fi_fk_field_name
+**/
+void BlGenericComboBoxDelegate::set_filter_id ( const QString &fi_field_name, const QString &fi_fk_field_name )
+{
+   m_fi_field_name = fi_field_name;
+   m_fi_fk_field_name = fi_fk_field_name;
+}
+
+
+///
+/**
+  \param cond
+**/
+void BlGenericComboBoxDelegate::set_where_condition ( const QString &cond )
+{
+   m_cond = cond;
+}
+
+
+///
+/**
+  \param v
+**/
+void BlGenericComboBoxDelegate::setAllowNull ( bool v )
+{
+   m_allowNull = v;
+}
+
+
+/// Verificar la inicializaci&oaucte;n de los atributos
+/// y poner el concepto que le corresponda a cada campo de la columna
+/**
+  \param combo_field_name
+**/
+void BlGenericComboBoxDelegate::initialize ( const QString &combo_field_name )
+{
+   _depura ( "BlGenericComboBoxDelegate::initialize", 0 ) ;
 
    /// En vez de dibujar los valores en paint, los establecemos como datos de la tabla
    /// para evitar pegas con ordenación, filtros e impresión
    for ( int i = 0; i < m_subform->mui_list->rowCount(); i++ )
    {
-	QString fk_id = m_subform->dbValue ( fk_field_name, i );
+	QString fk_id = m_subform->dbValue ( m_fk_field_name, i );
 
-	if ( fk_id.isEmpty() ) {
-	   continue;
-	}
+	if ( fk_id.isEmpty() ) continue;
 
 	QString consulta = QString ( "SELECT %1 FROM %2 WHERE %3 = %4" )
 				 .arg ( m_text_field )
@@ -62,29 +119,21 @@ BlGenericComboBoxDelegate::BlGenericComboBoxDelegate ( int fk_column, QString fk
 				 .arg ( m_id_field )
 				 .arg ( fk_id );
 
-	QString valor = comp->loadQuery ( consulta )->valor ( m_text_field );
+	/// Filtrar usando otra columna de la tabla si se ha indicado
+	if ( !m_fi_field_name.isEmpty() && !m_fi_fk_field_name.isEmpty() )
+	{
+	   consulta += QString ( " AND %1 = %2 ")
+			   .arg ( m_fi_field_name )
+			   .arg ( m_subform->dbValue ( m_fi_fk_field_name ) );
+	}
+
+	QString valor = m_company->loadQuery ( consulta )->valor ( m_text_field );
 
 	m_subform->setDbValue(combo_field_name, i, valor);
-   }
+   } // end for
 
-   _depura ( "END BlGenericComboBoxDelegate::BlGenericComboBoxDelegate", 0 ) ;
+   _depura ( "END BlGenericComboBoxDelegate::initialize", 0 ) ;
 }
-
-
-/// Personalizar el aspecto del campo
-/**
-   \param painter
-   \param vis Parámetros de visualización para el elemento en la vista
-   \param index Índice en el modelo del dato a editar
-**/
-//void BlGenericComboBoxDelegate::paint ( QPainter *painter, const QStyleOptionViewItem &vis, const QModelIndex &index ) const
-//{
-//   _depura ( "BlGenericComboBoxDelegate::paint", 0 ) ;
-//
-//   BlSubFormDelegate::paint ( painter, vis, index );
-//
-//   _depura ( "END BlGenericComboBoxDelegate::paint", 0 ) ;
-//}
 
 
 /// Crear la lista desplegable que servirá para editar el campo
@@ -158,9 +207,7 @@ void BlGenericComboBoxDelegate::setModelData ( QWidget *editor, QAbstractItemMod
    QString text = ( ( BlComboBox *) editor )->currentText();
 
    /// No permitir dejar el campo vac&iacute;o si as&iacute; se ha establecido
-   if ( ( id.isEmpty() && !m_allow_null ) ) {
-	return;
-   } // end if
+   if ( ( id.isEmpty() && !m_allowNull ) ) return;
 
    model->setData ( index_id_field, id );
    model->setData ( index, text );

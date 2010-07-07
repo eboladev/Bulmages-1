@@ -28,26 +28,25 @@
 
 /** Lista desplegable en campo de listado.
 Modo de empleo:
-Agregar esta l&iacute;nea en el m&eacute;todo cargar del listado que hereda de BlSubForm,
-justo despu&eucte;s de BfSubForm::cargar(consulta):
-mui_list->setItemDelegateForColumn (
-   <n&uacute;mero de columna>,
-   new BlGenericComboBoxDelegate (
-	<n&uacute;mero de columna del campo oculto con el id>,
-	<nombre del campo oculto con el id>, mainCompany(),
-	this,
-	<tabla>,
-	<nombre del campo identificador en la tabla ajena>,
-	<nombre del campo a visualizar de la tabla ajena>,
-	<nombre del campo desplegable>
-   )
-);
+Agregar estas l&iacute;neas en el m&eacute;todo cargar del listado que hereda de BlSubForm,
+justo despu&eucte;s de BfSubForm::cargar ( consulta ):
+BlGenericComboBoxDelegate *cbd = new BlGenericComboBoxDelegate ( mainCompany(), this );
+cbd->set_foreign_table ( <tabla ajena>, <nombre del campo identificador>, <valor a mostrar> );
+cbd->set_foreign_field ( <nº de la columna>, <nombre del campo> );
+cbd->setAllowNull ( <true | false> );
+cbd->initialize ( <nombre del campo virtual para el desplegable> );
+mui_list->setItemDelegateForColumn ( <columna>, cbd );
 */
 class BlGenericComboBoxDelegate: public BlSubFormDelegate
 {
    public:
-	BlGenericComboBoxDelegate ( int fk_column, QString fk_field_name, BlMainCompany *comp, QObject *parent, QString table, QString id_field, QString text_field, QString combo_field_name, bool allow_null = true, QString cond = "" );
-//	void paint ( QPainter *pintor, const QStyleOptionViewItem &vis, const QModelIndex &index ) const;
+	BlGenericComboBoxDelegate ( BlMainCompany *comp, QObject *parent );
+	void set_foreign_table ( const QString &table, const QString &id_field, const QString &text_field );
+	void set_foreign_field ( unsigned int fk_column, QString fk_field_name );
+	void set_filter_id ( const QString &fi_field_name, const QString &fi_fk_field_name );
+	void set_where_condition ( const QString &cond );
+	void setAllowNull ( bool v );
+	void initialize ( const QString &combo_field_name );
 	QWidget *createEditor ( QWidget *parent, const QStyleOptionViewItem &vis, const QModelIndex &index ) const;
 	void setEditorData ( QWidget *editor, const QModelIndex &index ) const;
 	void setModelData ( QWidget *editor, QAbstractItemModel *model, const QModelIndex &index ) const;
@@ -55,11 +54,14 @@ class BlGenericComboBoxDelegate: public BlSubFormDelegate
 
    private:
 	BlMainCompany *m_company;
-	int m_fk_column;
+	unsigned int m_fk_column;
+	QString m_fk_field_name;
+	QString m_fi_field_name;
+	QString m_fi_fk_field_name;
 	QString m_table;
 	QString m_id_field;
 	QString m_text_field;
-	bool m_allow_null;
+	bool m_allowNull;
 	QString m_cond;
 };
 
