@@ -188,7 +188,13 @@ void BcExtractoView::accept()
     if ( codfinal == "" ) {
         codfinal = "9999999";
     } // end if
-    query = "SELECT * FROM cuenta WHERE idcuenta IN (SELECT idcuenta FROM apunte) AND codigo >= '" + codinicial + "' AND codigo <= '" + codfinal + "' ORDER BY codigo";
+    
+    if ( mui_asAbiertos->isChecked() ) {
+	/// Incluye asientos abiertos.
+	query = "SELECT * FROM cuenta WHERE idcuenta IN (SELECT idcuenta FROM apunte UNION SELECT idcuenta FROM borrador) AND codigo >= '" + codinicial + "' AND codigo <= '" + codfinal + "' ORDER BY codigo";
+    } else {
+	query = "SELECT * FROM cuenta WHERE idcuenta IN (SELECT idcuenta FROM apunte) AND codigo >= '" + codinicial + "' AND codigo <= '" + codfinal + "' ORDER BY codigo";
+    } // end if
 
     if ( m_cursorcta != NULL ) {
         delete m_cursorcta;
@@ -438,6 +444,8 @@ void BcExtractoView::presentar()
         query += " LEFT JOIN (SELECT idcanal AS id_canal, nombre AS nombrecanal FROM canal) AS t6 ON t6.id_canal = t1.idcanal ";
         query += " LEFT JOIN (SELECT idcuenta AS idcontrapartida, codigo AS codcontrapartida FROM cuenta) as t8 ON t8.idcontrapartida = t1.contrapartida WHERE 1=1 " + clase;
         query += " ORDER BY t1.fecha, ordenasiento, t1.orden";
+
+	fprintf(stderr, query.toAscii() );
 
         mui_list->cargar ( query );
 
