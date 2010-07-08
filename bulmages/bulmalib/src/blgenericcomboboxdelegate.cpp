@@ -113,6 +113,14 @@ void BlGenericComboBoxDelegate::initialize ( const QString &combo_field_name )
 {
    _depura ( "BlGenericComboBoxDelegate::initialize", 0 );
 
+   if ( m_fk_column <= -1
+   || m_fk_field_name.isEmpty()
+   || m_table.isEmpty()
+   || m_id_field.isEmpty()
+   || m_text_field.isEmpty() ) {
+	mensajeError ( _( "Falta definir algún parámetro necesario para BlGenericComboBoxDelegate." ) , (QWidget *) parent() );
+   }
+
    /// En vez de dibujar los valores en paint, los establecemos como datos de la tabla
    /// para evitar pegas con ordenación, filtros e impresión
    for ( int i = 0; i < m_subform->mui_list->rowCount(); i++ )

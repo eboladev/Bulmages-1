@@ -57,7 +57,7 @@ class BlGenericComboBoxDelegate: public BlSubFormDelegate
 
    private:
 	BlMainCompany *m_company;
-	unsigned int m_fk_column;
+	int m_fk_column;
 	QString m_fk_field_name;
 	QString m_fi_field_name;
 	QString m_fi_fk_field_name;
