@@ -32,9 +32,9 @@ BlGenericComboBoxDelegate::BlGenericComboBoxDelegate ( BlMainCompany *comp, QObj
    , m_allowNull ( true )
    , m_fk_column ( -1 )
 {
-   _depura ( "BlGenericComboBoxDelegate::BlGenericComboBoxDelegate", 0 ) ;
+   _depura ( "BlGenericComboBoxDelegate::BlGenericComboBoxDelegate", 0 );
 
-   _depura ( "END BlGenericComboBoxDelegate::BlGenericComboBoxDelegate", 0 ) ;
+   _depura ( "END BlGenericComboBoxDelegate::BlGenericComboBoxDelegate", 0 );
 }
 
 
@@ -46,9 +46,13 @@ BlGenericComboBoxDelegate::BlGenericComboBoxDelegate ( BlMainCompany *comp, QObj
 **/
 void BlGenericComboBoxDelegate::set_foreign_table ( const QString &table, const QString &id_field, const QString &text_field )
 {
+   _depura ( "BlGenericComboBoxDelegate::set_foreign_table", 0 );
+
    m_table = table;
    m_id_field = id_field;
    m_text_field = text_field;
+
+   _depura ( "END BlGenericComboBoxDelegate::set_foreign_table", 0 );
 }
 
 
@@ -59,8 +63,12 @@ void BlGenericComboBoxDelegate::set_foreign_table ( const QString &table, const 
 **/
 void BlGenericComboBoxDelegate::set_foreign_field ( unsigned int fk_column, QString fk_field_name )
 {
+   _depura ( "BlGenericComboBoxDelegate::set_foreign_field", 0 );
+
    m_fk_column = fk_column;
    m_fk_field_name = fk_field_name;
+
+   _depura ( "END BlGenericComboBoxDelegate::set_foreign_field", 0 );
 }
 
 
@@ -103,7 +111,7 @@ void BlGenericComboBoxDelegate::setAllowNull ( bool v )
 **/
 void BlGenericComboBoxDelegate::initialize ( const QString &combo_field_name )
 {
-   _depura ( "BlGenericComboBoxDelegate::initialize", 0 ) ;
+   _depura ( "BlGenericComboBoxDelegate::initialize", 0 );
 
    /// En vez de dibujar los valores en paint, los establecemos como datos de la tabla
    /// para evitar pegas con ordenación, filtros e impresión
@@ -113,26 +121,12 @@ void BlGenericComboBoxDelegate::initialize ( const QString &combo_field_name )
 
 	if ( fk_id.isEmpty() ) continue;
 
-	QString consulta = QString ( "SELECT %1 FROM %2 WHERE %3 = %4" )
-				 .arg ( m_text_field )
-				 .arg ( m_table )
-				 .arg ( m_id_field )
-				 .arg ( fk_id );
-
-	/// Filtrar usando otra columna de la tabla si se ha indicado
-	if ( !m_fi_field_name.isEmpty() && !m_fi_fk_field_name.isEmpty() )
-	{
-	   consulta += QString ( " AND %1 = %2 ")
-			   .arg ( m_fi_field_name )
-			   .arg ( m_subform->dbValue ( m_fi_fk_field_name ) );
-	}
-
-	QString valor = m_company->loadQuery ( consulta )->valor ( m_text_field );
+	QString valor = m_company->loadQuery ( query_only_one ( fk_id ) )->valor ( m_text_field );
 
 	m_subform->setDbValue(combo_field_name, i, valor);
    } // end for
 
-   _depura ( "END BlGenericComboBoxDelegate::initialize", 0 ) ;
+   _depura ( "END BlGenericComboBoxDelegate::initialize", 0 );
 }
 
 
@@ -144,29 +138,16 @@ void BlGenericComboBoxDelegate::initialize ( const QString &combo_field_name )
 **/
 QWidget *BlGenericComboBoxDelegate::createEditor ( QWidget *parent, const QStyleOptionViewItem &vis, const QModelIndex &index )  const
 {
-   _depura ( "BlGenericComboBoxDelegate::createEditor", 0 ) ;
-
-   QString consulta = QString ( "SELECT %1, %2 FROM %3" )
-			    .arg(m_id_field)
-			    .arg(m_text_field)
-			    .arg(m_table);
-
-   if (!m_cond.isEmpty()) {
-	consulta += QString ( " WHERE %1" )
-			.arg(m_cond);
-   } // end if
-
-   consulta += QString ( " ORDER BY %2" )
-		   .arg ( m_text_field );
+   _depura ( "BlGenericComboBoxDelegate::createEditor", 0 );
 
    BlComboBox *cbox = new BlComboBox ( parent );
    cbox->setMainCompany ( m_company );
-   cbox->setQuery ( consulta );
+   cbox->setQuery ( query() );
    cbox->setFieldId ( m_id_field );
    cbox->m_valores[m_text_field] = "";
    cbox->setAllowNull ( true );
 
-   _depura ( "END BlGenericComboBoxDelegate::createEditor", 0 ) ;
+   _depura ( "END BlGenericComboBoxDelegate::createEditor", 0 );
 
    return cbox;
 }
@@ -179,15 +160,20 @@ QWidget *BlGenericComboBoxDelegate::createEditor ( QWidget *parent, const QStyle
 **/
 void BlGenericComboBoxDelegate::setEditorData ( QWidget *editor, const QModelIndex &index )  const
 {
-   _depura ( "BlGenericComboBoxDelegate::setEditorData", 0 ) ;
+   _depura ( "BlGenericComboBoxDelegate::setEditorData", 0 );
 
    BlComboBox *cbox = ( BlComboBox *) editor;
    QModelIndex index_id_field = index.model()->index( index.row(), m_fk_column );
    QString id = index_id_field.data().toString();
 
+   if ( !m_fi_field_name.isEmpty() && !m_fi_fk_field_name.isEmpty() )
+   {
+	cbox->setQuery ( query ( index.row() ) );
+   } // end if
+
    cbox->setId ( id );
 
-   _depura ( "END BlGenericComboBoxDelegate::setEditorData", 0 ) ;
+   _depura ( "END BlGenericComboBoxDelegate::setEditorData", 0 );
 }
 
 
@@ -199,7 +185,7 @@ void BlGenericComboBoxDelegate::setEditorData ( QWidget *editor, const QModelInd
 **/
 void BlGenericComboBoxDelegate::setModelData ( QWidget *editor, QAbstractItemModel *model, const QModelIndex &index )  const
 {
-   _depura ( "BlGenericComboBoxDelegate::setModelData", 0 ) ;
+   _depura ( "BlGenericComboBoxDelegate::setModelData", 0 );
 
    QModelIndex index_id_field = index.model()->index( index.row(), m_fk_column );
 
@@ -212,7 +198,7 @@ void BlGenericComboBoxDelegate::setModelData ( QWidget *editor, QAbstractItemMod
    model->setData ( index_id_field, id );
    model->setData ( index, text );
 
-   _depura ( "END BlGenericComboBoxDelegate::setModelData", 0 ) ;
+   _depura ( "END BlGenericComboBoxDelegate::setModelData", 0 );
 }
 
 
@@ -224,9 +210,79 @@ void BlGenericComboBoxDelegate::setModelData ( QWidget *editor, QAbstractItemMod
 **/
 void BlGenericComboBoxDelegate::updateEditorGeometry ( QWidget *editor, const QStyleOptionViewItem &vis, const QModelIndex &index )  const
 {
-   _depura ( "BlGenericComboBoxDelegate::updateEditorGeometry", 0 ) ;
+   _depura ( "BlGenericComboBoxDelegate::updateEditorGeometry", 0 );
 
-   editor->setGeometry ( vis.rect ) ;
+   editor->setGeometry ( vis.rect );
 
-   _depura ( "END BlGenericComboBoxDelegate::updateEditorGeometry", 0 ) ;
+   _depura ( "END BlGenericComboBoxDelegate::updateEditorGeometry", 0 );
+}
+
+
+///
+/**
+  \param row
+**/
+QString BlGenericComboBoxDelegate::query ( int row ) const
+{
+   _depura ( "BlGenericComboBoxDelegate::query", 0 );
+
+   QString q = QString ( "SELECT %1, %2 FROM %3" )
+			    .arg(m_id_field)
+			    .arg(m_text_field)
+			    .arg(m_table);
+
+   if ( !m_cond.isEmpty() ) {
+	q += QString ( " WHERE %1" )
+			.arg(m_cond);
+   } // end if
+
+
+   /// Filtrar usando otra columna de la tabla si se ha indicado
+   if ( row > -1 )
+   {
+	QString fi_fk_field_value = m_subform->dbValue( m_fi_fk_field_name, row );
+
+	/// Filtrar por otra columna si dicha columna contiene un valor identificador
+	/// En caso de que no, se muestra el listado completo como si no hubiera filtro
+	if ( !fi_fk_field_value.isEmpty() )
+	{
+
+	   if ( m_cond.isEmpty() ) {
+		q += QString ( " WHERE " );
+	   } else {
+		q += QString ( " AND " );
+	   } // end if
+
+	   q += QString ( "%1 = %2")
+			   .arg ( m_fi_field_name )
+			   .arg ( fi_fk_field_value );
+	} // end if
+   } // end if
+
+   q += QString ( " ORDER BY %1" )
+		   .arg ( m_text_field );
+
+   _depura ( "END BlGenericComboBoxDelegate::query", 0 );
+
+   return q;
+}
+
+
+///
+/**
+  \param id
+**/
+QString BlGenericComboBoxDelegate::query_only_one ( const QString &fk_id ) const
+{
+   _depura ( "BlGenericComboBoxDelegate::query_only_one", 0 );
+
+   QString q = QString ( "SELECT %1 FROM %2 WHERE %3 = %4" )
+		   .arg ( m_text_field )
+		   .arg ( m_table )
+		   .arg ( m_id_field )
+		   .arg ( fk_id );
+
+   _depura ( "END BlGenericComboBoxDelegate::query_only_one", 0 );
+
+   return q;
 }

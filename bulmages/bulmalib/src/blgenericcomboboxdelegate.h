@@ -51,6 +51,8 @@ class BlGenericComboBoxDelegate: public BlSubFormDelegate
 	void setEditorData ( QWidget *editor, const QModelIndex &index ) const;
 	void setModelData ( QWidget *editor, QAbstractItemModel *model, const QModelIndex &index ) const;
 	void updateEditorGeometry ( QWidget *editor, const QStyleOptionViewItem &vis, const QModelIndex &index ) const;
+	QString query ( int row = -1 ) const;
+	QString query_only_one ( const QString &fk_id ) const;
 
    private:
 	BlMainCompany *m_company;
