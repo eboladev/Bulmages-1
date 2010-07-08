@@ -31,9 +31,10 @@ Modo de empleo:
 Agregar estas l&iacute;neas en el m&eacute;todo cargar del listado que hereda de BlSubForm,
 justo despu&eucte;s de BfSubForm::cargar ( consulta ):
 BlGenericComboBoxDelegate *cbd = new BlGenericComboBoxDelegate ( mainCompany(), this );
-cbd->set_foreign_table ( <tabla ajena>, <nombre del campo identificador>, <valor a mostrar> );
-cbd->set_foreign_field ( <nº de la columna>, <nombre del campo> );
-cbd->setAllowNull ( <true | false> );
+cbd->set_foreign_table ( <tabla ajena>, <campo id en la tabla ajena>, <campo de la tabla ajena a mostrar en el desplegable> );
+cbd->set_foreign_field ( <nº de la columna que referencia a un elemento de la tabla ajena>, <nombre del mismo campo de antes> );
+[ cbd->setAllowNull ( <true | false> ); ]
+[ cbd->set_filter_id ( <campo id en la tabla usada por el desplegable>, <campo id en la tabla del listado> ); ]
 cbd->initialize ( <nombre del campo virtual para el desplegable> );
 mui_list->setItemDelegateForColumn ( <columna>, cbd );
 */
