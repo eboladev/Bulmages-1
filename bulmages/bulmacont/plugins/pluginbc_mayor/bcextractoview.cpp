@@ -445,8 +445,6 @@ void BcExtractoView::presentar()
         query += " LEFT JOIN (SELECT idcuenta AS idcontrapartida, codigo AS codcontrapartida FROM cuenta) as t8 ON t8.idcontrapartida = t1.contrapartida WHERE 1=1 " + clase;
         query += " ORDER BY t1.fecha, ordenasiento, t1.orden";
 
-	fprintf(stderr, query.toAscii() );
-
         mui_list->cargar ( query );
 
 

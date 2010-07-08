@@ -337,8 +337,9 @@ bool BalanceTreeView::generaBalance()
     QString ejercicio = ffinal.right ( 4 );
 
     /// Cargamos las cuentas afectadas con sus saldos y demas cosas.
-    query = "SELECT cuenta.idcuenta, numapuntes, cuenta.codigo, saldoant, debe, haber, (COALESCE(saldop,0) + COALESCE(saldoant,0)) AS saldo, debeej, haberej, saldoej FROM (SELECT idcuenta, codigo FROM cuenta) AS cuenta NATURAL JOIN (SELECT idcuenta, count(idcuenta) AS numapuntes, COALESCE(sum(debe),0) AS debeej, COALESCE(sum(haber),0) AS haberej, (COALESCE(sum(debe),0)-COALESCE(sum(haber),0)) AS saldoej FROM apunte WHERE EXTRACT(year FROM fecha) = '" + ejercicio + "' GROUP BY idcuenta) AS ejercicio LEFT OUTER JOIN (SELECT idcuenta,sum(debe) AS debe, COALESCE(sum(haber),0) AS haber, (COALESCE(sum(debe),0)-COALESCE(sum(haber),0)) AS saldop FROM apunte WHERE fecha >= '" + finicial + "' AND fecha <= '" + ffinal + "' AND conceptocontable !~* '.*asiento.*(cierre|regularizaci).*' " + clauswhere + " GROUP BY idcuenta) AS periodo ON periodo.idcuenta=ejercicio.idcuenta LEFT OUTER JOIN (SELECT idcuenta, (COALESCE(sum(debe),0)-COALESCE(sum(haber),0)) AS saldoant FROM apunte WHERE fecha < '" + finicial + "'" + clauswhere + " GROUP BY idcuenta) AS anterior ON cuenta.idcuenta=anterior.idcuenta ORDER BY codigo";
+    query = "SELECT cuenta.idcuenta, numapuntes, cuenta.codigo, saldoant, debe, haber, (COALESCE(saldop,0) + COALESCE(saldoant,0)) AS saldo, debeej, haberej, saldoej FROM (SELECT idcuenta, codigo FROM cuenta) AS cuenta NATURAL JOIN (SELECT idcuenta, count(idcuenta) AS numapuntes, COALESCE(sum(debe),0) AS debeej, COALESCE(sum(haber),0) AS haberej, (COALESCE(sum(debe),0)-COALESCE(sum(haber),0)) AS saldoej FROM apunte WHERE EXTRACT(year FROM fecha) = '" + ejercicio + "' GROUP BY idcuenta) AS ejercicio LEFT OUTER JOIN (SELECT idcuenta, COALESCE(sum(debe),0) AS debe, COALESCE(sum(haber),0) AS haber, (COALESCE(sum(debe),0)-COALESCE(sum(haber),0)) AS saldop FROM apunte WHERE fecha >= '" + finicial + "' AND fecha <= '" + ffinal + "' AND (conceptocontable !~* '.*asiento.*(cierre|regularizaci).*' OR conceptocontable IS NULL) " + clauswhere + " GROUP BY idcuenta) AS periodo ON periodo.idcuenta=ejercicio.idcuenta LEFT OUTER JOIN (SELECT idcuenta, (COALESCE(sum(debe),0)-COALESCE(sum(haber),0)) AS saldoant FROM apunte WHERE fecha < '" + finicial + "'" + clauswhere + " GROUP BY idcuenta) AS anterior ON cuenta.idcuenta=anterior.idcuenta ORDER BY codigo";
 
+    
     BlDbRecordSet *hojas;
     hojas = mainCompany() ->loadQuery ( query );
     if ( hojas == NULL ) {
@@ -371,8 +372,11 @@ void BalanceTreeView::presentar()
         for ( int i = 0; i <= mainCompany()->numdigitosempresa(); i++ )
             ptrIt << NULL; // Reservamos las posiciones de la lista que coincidiran con los niveles de cuentas
         BlFixed tsaldoant ( "0.00" ), tdebe ( "0.00" ), thaber ( "0.00" ), tsaldo ( "0.00" );
+        
         QString cinicial = m_codigoinicial->fieldValue("codigo").left ( 1 );
+
         if ( cinicial == "" ) cinicial = "10";
+        
         QString cfinal = m_codigofinal->fieldValue("codigo");
         unsigned int nivelAnt, nivelCta, nivel = combonivel->currentText().toInt();
         if ( cfinal == "" )
