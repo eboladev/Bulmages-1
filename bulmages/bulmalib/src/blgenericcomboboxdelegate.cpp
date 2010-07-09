@@ -38,11 +38,11 @@ BlGenericComboBoxDelegate::BlGenericComboBoxDelegate ( BlMainCompany *comp, QObj
 }
 
 
-///
+/// Establecer el acceso a los datos que mostrar&aacute; la lista desplegable
 /**
-  \param table
-  \param id_field
-  \param text_field
+  \param table Tabla de la que tomar&aacute; los datos la lista desplegable
+  \param id_field Campo identificador de dicha tabla
+  \param text_field Campo con los valores a mostrar en la lista desplegable
 **/
 void BlGenericComboBoxDelegate::set_foreign_table ( const QString &table, const QString &id_field, const QString &text_field )
 {
@@ -56,10 +56,11 @@ void BlGenericComboBoxDelegate::set_foreign_table ( const QString &table, const 
 }
 
 
-///
+/// Establecer qu&eacute; campo de la tabla referencia a la tabla de la que
+/// tomar&aacute; sus datos la lista desplegable
 /**
-  \param fk_column
-  \param fk_field_name
+  \param fk_column N&uacute;mero de columna
+  \param fk_field_name Nombre del campo
 **/
 void BlGenericComboBoxDelegate::set_foreign_field ( unsigned int fk_column, QString fk_field_name )
 {
@@ -72,10 +73,15 @@ void BlGenericComboBoxDelegate::set_foreign_field ( unsigned int fk_column, QStr
 }
 
 
-///
+/// Establecer un filtrado opcional usando un identificador adicional de la
+/// tabla del desplegable compar&acute;ndolo con otro campo identificador
+/// de la tabla del listado
+/// Ejemplo: filtrar el desplegable seg&uacute;n el valor de otro en la mismo listado
+/// Nota: no abusar de este filtro, ya que recarga el desplegable para cada
+/// registro que editamos y puede ralentizar el uso del programa
 /**
-  \param fi_field_name
-  \param fi_fk_field_name
+  \param fi_field_name Campo identificador en la tabla del desplegable
+  \param fi_fk_field_name Campo identificador en la tabla del listado
 **/
 void BlGenericComboBoxDelegate::set_filter_id ( const QString &fi_field_name, const QString &fi_fk_field_name )
 {
@@ -84,9 +90,9 @@ void BlGenericComboBoxDelegate::set_filter_id ( const QString &fi_field_name, co
 }
 
 
-///
+/// Establecer un filtrado opcional sobre la tabla usada por el desplegable
 /**
-  \param cond
+  \param cond Condici&oacute;n para la cl&aacute;usula WHERE
 **/
 void BlGenericComboBoxDelegate::set_where_condition ( const QString &cond )
 {
@@ -142,7 +148,8 @@ void BlGenericComboBoxDelegate::initialize ( const QString &combo_field_name )
 /**
    \param parent
    \param vis Parámetros de visualización para el elemento en la vista
-   \param index Índice en el modelo del dato a editar
+   \param index &Iacute;ndice en el modelo del dato a editar
+   \return Widget editor
 **/
 QWidget *BlGenericComboBoxDelegate::createEditor ( QWidget *parent, const QStyleOptionViewItem &vis, const QModelIndex &index )  const
 {
@@ -164,7 +171,7 @@ QWidget *BlGenericComboBoxDelegate::createEditor ( QWidget *parent, const QStyle
 /// Poner la lista desplegable en la posición indicada por el valor del campo a editar
 /**
    \param editor
-   \param index Índice en el modelo del dato a editar
+   \param index &Iacute;ndice en el modelo del dato a editar
 **/
 void BlGenericComboBoxDelegate::setEditorData ( QWidget *editor, const QModelIndex &index )  const
 {
@@ -189,7 +196,7 @@ void BlGenericComboBoxDelegate::setEditorData ( QWidget *editor, const QModelInd
 /**
    \param editor
    \param model
-   \param index Índice en el modelo del dato a editar
+   \param index &Iacute;ndice en el modelo del dato a editar
 **/
 void BlGenericComboBoxDelegate::setModelData ( QWidget *editor, QAbstractItemModel *model, const QModelIndex &index )  const
 {
@@ -213,8 +220,8 @@ void BlGenericComboBoxDelegate::setModelData ( QWidget *editor, QAbstractItemMod
 /// Establece el tama&ntilde;o y posición del widget editor
 /**
    \param editor
-   \param vis Parámetros de visualización para el elemento en la vista
-   \param index Índice en el modelo del dato a editar
+   \param vis Par&aacute;metros de visualización para el elemento en la vista
+   \param index &Iacute;ndice en el modelo del dato a editar
 **/
 void BlGenericComboBoxDelegate::updateEditorGeometry ( QWidget *editor, const QStyleOptionViewItem &vis, const QModelIndex &index )  const
 {
@@ -226,9 +233,9 @@ void BlGenericComboBoxDelegate::updateEditorGeometry ( QWidget *editor, const QS
 }
 
 
-///
+/// Formar la consulta que rellena al desplegable
 /**
-  \param row
+  \param row Si se indica (>-1), utilizar el filtrado opcional sobre otro campo
 **/
 QString BlGenericComboBoxDelegate::query ( int row ) const
 {
@@ -276,9 +283,9 @@ QString BlGenericComboBoxDelegate::query ( int row ) const
 }
 
 
-///
+/// Devolver el valor de para cierto identificador de la tabla del desplegable
 /**
-  \param id
+  \param fk_id
 **/
 QString BlGenericComboBoxDelegate::query_only_one ( const QString &fk_id ) const
 {
