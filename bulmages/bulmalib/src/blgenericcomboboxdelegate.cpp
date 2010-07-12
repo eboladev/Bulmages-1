@@ -191,6 +191,19 @@ void BlGenericComboBoxDelegate::setEditorData ( QWidget *editor, const QModelInd
 
    cbox->setId ( id );
 
+   /// Si no hay id previo, usar el primer elemento si no se permite el valor nulo
+   if ( id.isEmpty() && !m_allowNull )
+   {
+	/// Si s&oacute;lo tenemos el valor nulo disponible en la lista desplegable,
+	/// avisar de ello, ya que es un valor requerido
+	if ( cbox->count() <= 1 )
+	{
+	   mensajeError ( _( "No existen elementos en el listado \"%1\", y el campo \"%2\" requiere alguno." ).arg ( m_table ).arg ( m_combo_field_name ) , (QWidget *) parent() );
+	   return;
+	}
+	cbox->setCurrentIndex ( 1 );
+   }
+
    connect ( cbox, SIGNAL ( activated ( QString ) ),
 		 this, SLOT ( emit_currentValueChangedByUser ( QString ) ) );
 
