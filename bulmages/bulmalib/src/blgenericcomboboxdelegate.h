@@ -40,6 +40,8 @@ mui_list->setItemDelegateForColumn ( <columna>, cbd );
 */
 class BlGenericComboBoxDelegate: public BlSubFormDelegate
 {
+   Q_OBJECT
+
    public:
 	BlGenericComboBoxDelegate ( BlMainCompany *comp, QObject *parent );
 	void set_foreign_table ( const QString &table, const QString &id_field, const QString &text_field );
@@ -58,6 +60,7 @@ class BlGenericComboBoxDelegate: public BlSubFormDelegate
    private:
 	BlMainCompany *m_company;
 	int m_fk_column;
+	QString m_combo_field_name;
 	QString m_fk_field_name;
 	QString m_fi_field_name;
 	QString m_fi_fk_field_name;
@@ -66,6 +69,12 @@ class BlGenericComboBoxDelegate: public BlSubFormDelegate
 	QString m_text_field;
 	bool m_allowNull;
 	QString m_cond;
+
+   private slots:
+	void emit_currentValueChangedByUser ( QString value );
+
+   signals:
+	void currentValueChangedByUser ( QString value );
 };
 
 #endif

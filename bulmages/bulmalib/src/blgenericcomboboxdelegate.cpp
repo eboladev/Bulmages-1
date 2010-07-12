@@ -119,11 +119,14 @@ void BlGenericComboBoxDelegate::initialize ( const QString &combo_field_name )
 {
    _depura ( "BlGenericComboBoxDelegate::initialize", 0 );
 
+   m_combo_field_name = combo_field_name;
+
    if ( m_fk_column <= -1
    || m_fk_field_name.isEmpty()
    || m_table.isEmpty()
    || m_id_field.isEmpty()
-   || m_text_field.isEmpty() ) {
+   || m_text_field.isEmpty()
+   || m_combo_field_name.isEmpty() ) {
 	mensajeError ( _( "Falta definir algún parámetro necesario para BlGenericComboBoxDelegate." ) , (QWidget *) parent() );
    }
 
@@ -187,6 +190,9 @@ void BlGenericComboBoxDelegate::setEditorData ( QWidget *editor, const QModelInd
    } // end if
 
    cbox->setId ( id );
+
+   connect ( cbox, SIGNAL ( activated ( QString ) ),
+		 this, SLOT ( emit_currentValueChangedByUser ( QString ) ) );
 
    _depura ( "END BlGenericComboBoxDelegate::setEditorData", 0 );
 }
@@ -300,4 +306,22 @@ QString BlGenericComboBoxDelegate::query_only_one ( const QString &fk_id ) const
    _depura ( "END BlGenericComboBoxDelegate::query_only_one", 0 );
 
    return q;
+}
+
+
+/// Emite la se&ntilde;al de valor cambiado
+/**
+  \param value
+**/
+void BlGenericComboBoxDelegate::emit_currentValueChangedByUser ( QString value )
+{
+   _depura ( "BlGenericComboBoxDelegate::emit_currentValueChangedByUser", 0, value );
+
+   /// Evitar emitir la se&ntilde;al si en realidad no hay cambio de valor
+   if ( m_subform->dbValue ( m_combo_field_name, m_subform->currentRow() ) != value )
+   {
+	emit currentValueChangedByUser ( value );
+   }
+
+   _depura ( "END BlGenericComboBoxDelegate::emit_currentValueChangedByUser", 0, value );
 }
