@@ -34,7 +34,7 @@ BlDateDelegate::BlDateDelegate ( BlMainCompany *comp, QObject *parent ): QItemDe
 }
 
 
-/// Crear la lista desplegable que servir&aacute; para editar el campo
+/// Crear el calendario que servir&aacute; para editar el campo
 /**
    \param parent
    \param vis Par&aacute;metros de visualizaci&oacute;n para el elemento en la vista
@@ -53,7 +53,7 @@ QWidget *BlDateDelegate::createEditor ( QWidget *parent, const QStyleOptionViewI
 }
 
 
-/// Poner la lista desplegable en la posici&oacute;n indicada por el valor del campo a editar
+/// Poner el buscador de fecha en la posici&oacute;n indicada por el valor del campo a editar
 /**
    \param editor
    \param index &Iacute;ndice en el modelo del dato a editar
