@@ -35,14 +35,16 @@ mui_list->setItemDelegateForColumn ( <columna>, new BlDateDelegate ( mainCompany
 class BlDateDelegate: public QItemDelegate
 {
    public:
-	BlDateDelegate ( BlMainCompany *comp, QObject *parent ) ;
+	BlDateDelegate ( BlMainCompany *comp, QObject *parent, bool allowNull = true ) ;
 	QWidget *createEditor ( QWidget *parent, const QStyleOptionViewItem &vis, const QModelIndex &index )  const;
 	void setEditorData ( QWidget *editor, const QModelIndex &index )  const;
 	void setModelData ( QWidget *editor, QAbstractItemModel *model, const QModelIndex &index )  const;
 	void updateEditorGeometry ( QWidget *editor, const QStyleOptionViewItem &vis, const QModelIndex &index )  const;
+	void setAllowNull ( bool v );
 
    private:
 	BlMainCompany *m_company;
+	bool m_allowNull;
 };
 
 #endif

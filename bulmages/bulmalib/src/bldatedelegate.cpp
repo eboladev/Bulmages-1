@@ -25,8 +25,12 @@
 /**
    \param comp
    \param parent
+   \param allowNull
 **/
-BlDateDelegate::BlDateDelegate ( BlMainCompany *comp, QObject *parent ): QItemDelegate ( parent ), m_company ( comp )
+BlDateDelegate::BlDateDelegate ( BlMainCompany *comp, QObject *parent, bool allowNull )
+   : QItemDelegate ( parent )
+   , m_company ( comp )
+   , m_allowNull ( allowNull )
 {
    _depura ( "BlDateDelegate::BlDateDelegate", 0 ) ;
 
@@ -62,9 +66,16 @@ void BlDateDelegate::setEditorData ( QWidget *editor, const QModelIndex &index )
 {
    _depura ( "BlDateDelegate::setEditorData", 0 ) ;
 
-   BlDateSearch *ds =  ( BlDateSearch * ) editor;
-   QString fecha = index.model()->data ( index ) .toString();
-   ds->setfecha ( fecha ) ;
+   BlDateSearch *ds = ( BlDateSearch * ) editor;
+   QString fecha = index.model()->data ( index ).toString();
+
+   /// Si no hay fecha previa, usar la de hoy si no se permite el valor nulo
+   if ( fecha.isEmpty() && !m_allowNull )
+   {
+	fecha = QDate::currentDate().toString("dd/MM/yyyy");
+   }
+
+   ds->setfecha ( fecha );
 
    _depura ( "END BlDateDelegate::setEditorData", 0 ) ;
 }
@@ -100,4 +111,14 @@ void BlDateDelegate::updateEditorGeometry ( QWidget *editor, const QStyleOptionV
    editor->setGeometry ( vis.rect ) ;
 
    _depura ( "END BlDateDelegate::updateEditorGeometry", 0 ) ;
+}
+
+
+///
+/**
+  \param v
+**/
+void BlDateDelegate::setAllowNull ( bool v )
+{
+   m_allowNull = v;
 }
