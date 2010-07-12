@@ -24,10 +24,13 @@
 
 #include "bldatesearch.h"
 #include <QItemDelegate>
-//#include "tsystem.h"
 
 
-/** Lista desplegable en campo de listado.
+/** Calendario flotante para seleccionar fechas en un campo de listado.
+Modo de empleo:
+Agregar esta l&iacute;nea en el m&eacute;todo "cargar" del listado que hereda de BlSubForm,
+justo despu&eucte;s de BfSubForm::cargar ( consulta ):
+mui_list->setItemDelegateForColumn ( <columna>, new BlDateDelegate ( mainCompany(), this ) );
 */
 class BlDateDelegate: public QItemDelegate
 {
