@@ -43,7 +43,7 @@ def saldoCuenta(cuenta):
    global conn
 #   query =  "SELECT coalesce((SUM(apunte.debe) - SUM(apunte.haber)), 0) AS saldo FROM cuenta LEFT JOIN apunte ON apunte.idcuenta = cuenta.idcuenta WHERE cuenta.codigo like '" +  str(cuenta)  + "%' AND fecha >= '[fechainicialactual]' AND fecha <= '[fechafinalactual]' AND apunte.conceptocontable not ilike '%%asiento%%cierre%%' and apunte.conceptocontable not ilike '%%asiento%%regularizaci%%'" 
 
-   query =  "SELECT (COALESCE(SUM(apunte.debe),0) - COALESCE(SUM(apunte.haber),0)) AS saldo FROM cuenta LEFT JOIN apunte ON apunte.idcuenta = cuenta.idcuenta WHERE cuenta.codigo like '" +  str(cuenta)  + "%' AND fecha <= '[fechafinalactual]' AND apunte.conceptocontable not ilike '%%asiento%%cierre%%' and apunte.conceptocontable not ilike '%%asiento%%regularizaci%%'" 
+   query =  "SELECT (COALESCE(SUM(apunte.debe),0) - COALESCE(SUM(apunte.haber),0)) AS saldo FROM cuenta LEFT JOIN apunte ON apunte.idcuenta = cuenta.idcuenta WHERE cuenta.codigo like '" +  str(cuenta)  + "%' AND fecha <= '[fechafinalactual]' AND (apunte.conceptocontable not ilike '%%asiento%%cierre%%' and apunte.conceptocontable not ilike '%%asiento%%regularizaci%%' or apunte.conceptocontable is null)" 
 
 
 
@@ -58,7 +58,7 @@ def saldoCuentaAnt(cuenta):
    global conn
 #   query =  "SELECT coalesce((SUM(apunte.debe) - SUM(apunte.haber)), 0) AS saldo FROM cuenta LEFT JOIN apunte ON apunte.idcuenta = cuenta.idcuenta WHERE cuenta.codigo like '" +  str(cuenta)  + "%' AND fecha >= '[fechainicialanterior]' AND fecha <= '[fechafinalanterior]'AND apunte.conceptocontable not ilike '%%asiento%%cierre%%' and apunte.conceptocontable not ilike '%%asiento%%regularizaci%%'" 
 
-   query =  "SELECT (COALESCE(SUM(apunte.debe),0) - COALESCE(SUM(apunte.haber),0)) AS saldo FROM cuenta LEFT JOIN apunte ON apunte.idcuenta = cuenta.idcuenta WHERE cuenta.codigo like '" +  str(cuenta)  + "%' AND fecha <= '[fechafinalanterior]'AND apunte.conceptocontable not ilike '%%asiento%%cierre%%' and apunte.conceptocontable not ilike '%%asiento%%regularizaci%%'" 
+   query =  "SELECT (COALESCE(SUM(apunte.debe),0) - COALESCE(SUM(apunte.haber),0)) AS saldo FROM cuenta LEFT JOIN apunte ON apunte.idcuenta = cuenta.idcuenta WHERE cuenta.codigo like '" +  str(cuenta)  + "%' AND fecha <= '[fechafinalanterior]'AND (apunte.conceptocontable not ilike '%%asiento%%cierre%%' and apunte.conceptocontable not ilike '%%asiento%%regularizaci%%' or apunte.conceptocontable is null)" 
 
    cur1 = conn.cursor(cursor_factory=psycopg2.extras.DictCursor)
    
@@ -454,7 +454,7 @@ doc.set_column_property(1, 'width', '0.5in')\n\
 doc.set_column_property(2, 'width', '5in')\n\
 \
 doc.set_cell_property('bold', True)\n\
-doc.set_cell_value(2,2, 'string', 'CUENTA DE PÉRDIDAS Y GANANCIAS ABREVIADA CORRESPONDIENTE AL EJERCICIO TERMINADO')\n\
+doc.set_cell_value(2,2, 'string', 'CUENTA DE PERDIDAS Y GANANCIAS ABREVIADA CORRESPONDIENTE AL EJERCICIO TERMINADO')\n\
 doc.set_cell_value(2,4, 'string', 'PERDIDAS Y GANANCIAS')\n\
 doc.set_cell_value(3,4, 'string', 'NOTAS')\n\
 doc.set_cell_value(4,4, 'string', 'Ejercicio N')\n\
@@ -531,7 +531,7 @@ doc.set_cell_property('bold', False)\n\
 \
 \
 doc.set_cell_property('bold', True)\n\
-doc.set_cell_value(2,18, 'string', 'A) RESULTADO DE EXPLOTACIÓN')\n\
+doc.set_cell_value(2,18, 'string', 'A) RESULTADO DE EXPLOTACION')\n\
 doc.set_cell_value(4,18, 'formula', '=D6+D7+D8+D9+D10+D11+D12+D13+D14+D15+D16')\n\
 doc.set_cell_value(5,18, 'formula', '=E6+E7+E8+E9+E10+E11+E12+E13+E14+E15+E16')\n\
 doc.set_cell_property('bold', False)\n\

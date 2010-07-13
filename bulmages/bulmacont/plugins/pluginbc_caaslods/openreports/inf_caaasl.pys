@@ -25,9 +25,9 @@
 #   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             #
 ###########################################################################
 
-# pathtitle="Comptes Anuals\Normals\Sin Lucro\Asocianción Sin Lucro"
+# pathtitle="Comptes Anuals\Normals\Sin Lucro\Asociancion Sin Lucro"
 
-# title="Cuentas Anuales Asocianción Sin Lucro"
+# title="Cuentas Anuales Asociancion Sin Lucro"
 # CAPGC08
 import psycopg2
 import psycopg2.extras
@@ -41,7 +41,7 @@ def saldoCuenta(cuenta):
    global conn
 #   query =  "SELECT coalesce((SUM(apunte.debe) - SUM(apunte.haber)), 0) AS saldo FROM cuenta LEFT JOIN apunte ON apunte.idcuenta = cuenta.idcuenta WHERE cuenta.codigo like '" +  str(cuenta)  + "%' AND fecha >= '[fechainicialactual]' AND fecha <= '[fechafinalactual]' AND apunte.conceptocontable not ilike '%%asiento%%cierre%%' and apunte.conceptocontable not ilike '%%asiento%%regularizaci%%'" 
 
-   query =  "SELECT (COALESCE(SUM(apunte.debe),0) - COALESCE(SUM(apunte.haber),0)) AS saldo FROM cuenta LEFT JOIN apunte ON apunte.idcuenta = cuenta.idcuenta WHERE cuenta.codigo like '" +  str(cuenta)  + "%' AND fecha <= '[fechafinalactual]' AND apunte.conceptocontable not ilike '%%asiento%%cierre%%' and apunte.conceptocontable not ilike '%%asiento%%regularizaci%%'" 
+   query =  "SELECT (COALESCE(SUM(apunte.debe),0) - COALESCE(SUM(apunte.haber),0)) AS saldo FROM cuenta LEFT JOIN apunte ON apunte.idcuenta = cuenta.idcuenta WHERE cuenta.codigo like '" +  str(cuenta)  + "%' AND fecha <= '[fechafinalactual]' AND (apunte.conceptocontable not ilike '%%asiento%%cierre%%' and apunte.conceptocontable not ilike '%%asiento%%regularizaci%%' or apunte.conceptocontable is null)" 
 
 
 
@@ -56,7 +56,7 @@ def saldoCuentaAnt(cuenta):
    global conn
 #   query =  "SELECT coalesce((SUM(apunte.debe) - SUM(apunte.haber)), 0) AS saldo FROM cuenta LEFT JOIN apunte ON apunte.idcuenta = cuenta.idcuenta WHERE cuenta.codigo like '" +  str(cuenta)  + "%' AND fecha >= '[fechainicialanterior]' AND fecha <= '[fechafinalanterior]'AND apunte.conceptocontable not ilike '%%asiento%%cierre%%' and apunte.conceptocontable not ilike '%%asiento%%regularizaci%%'" 
 
-   query =  "SELECT (COALESCE(SUM(apunte.debe),0) - COALESCE(SUM(apunte.haber),0)) AS saldo FROM cuenta LEFT JOIN apunte ON apunte.idcuenta = cuenta.idcuenta WHERE cuenta.codigo like '" +  str(cuenta)  + "%' AND fecha <= '[fechafinalanterior]'AND apunte.conceptocontable not ilike '%%asiento%%cierre%%' and apunte.conceptocontable not ilike '%%asiento%%regularizaci%%'" 
+   query =  "SELECT (COALESCE(SUM(apunte.debe),0) - COALESCE(SUM(apunte.haber),0)) AS saldo FROM cuenta LEFT JOIN apunte ON apunte.idcuenta = cuenta.idcuenta WHERE cuenta.codigo like '" +  str(cuenta)  + "%' AND fecha <= '[fechafinalanterior]' AND (apunte.conceptocontable not ilike '%%asiento%%cierre%%' and apunte.conceptocontable not ilike '%%asiento%%regularizaci%%' or apunte.conceptocontable is null)" 
 
    cur1 = conn.cursor(cursor_factory=psycopg2.extras.DictCursor)
    
@@ -85,7 +85,7 @@ doc.set_column_property(2, 'width', '5in')
 # ============================
 
 doc.set_cell_property('bold', True)
-doc.set_cell_value(2, 2, 'string', 'BALANCE DE SITUACIÓN ABREVIADO')
+doc.set_cell_value(2, 2, 'string', 'BALANCE DE SITUACION ABREVIADO')
 doc.set_cell_value(2, 3, 'string', '" + QDateTime::currentDateTime().toString() + "')
 doc.set_cell_value(2, 5, 'string', 'ACTIVO')
 doc.set_cell_value(3, 5, 'string', 'Ejercicio N')
@@ -180,7 +180,7 @@ doc.new_sheet(\"Pasivo\")n\
 doc.set_column_property(1, 'width', '0.5in')
 doc.set_column_property(2, 'width', '5in')
 doc.set_cell_property('bold', True)
-doc.set_cell_value(2, 2, 'string', 'BALANCE DE SITUACIÓN ABREVIADO')
+doc.set_cell_value(2, 2, 'string', 'BALANCE DE SITUACION ABREVIADO')
 doc.set_cell_value(2, 5, 'string', 'PASIVO')
 doc.set_cell_value(3, 5, 'string', 'Ejercicio N')
 doc.set_cell_value(4, 5, 'string', 'Ejercicio N-1')
@@ -305,7 +305,7 @@ doc.set_cell_value(2, 18, 'string', '       6. Variaciones de las provisiones de
 doc.set_cell_value(3, 18, 'float', '" + ( saldoCuenta ( 655 ) +  saldoCuenta ( 693 ) +  saldoCuenta ( 694 ) + saldoCuenta ( 695 ) + ( saldoCuenta ( 793 ) ) +  ( saldoCuenta ( 794 ) ) + ( saldoCuenta ( 795 ) ) ).toQString ( '.' ) + "')
 doc.set_cell_value(4, 18, 'float', '" + ( saldoCuentaAnt ( 655 ) +  saldoCuentaAnt ( 693 ) +  saldoCuentaAnt ( 694 ) + saldoCuentaAnt ( 695 ) + ( saldoCuentaAnt ( 793 ) ) +  ( saldoCuentaAnt ( 794 ) ) + ( saldoCuentaAnt ( 795 ) ) ).toQString ( '.' ) + "')
 \
-doc.set_cell_value(2, 20, 'string', '   I.   RESULTADOS POSITIVOS DE LA EXPLOTACIÓN')
+doc.set_cell_value(2, 20, 'string', '   I.   RESULTADOS POSITIVOS DE LA EXPLOTACION')
 doc.set_cell_value(2, 21, 'string', '        (B1+B2+B3-A1-A2-A3-A4-A5-A6)')
 doc.set_cell_value(3, 20, 'formula', '= if ((Haber.C8+Haber.C13+Haber.C14-C8-C12-C13-C16-C17-C18)>0;Haber.C8+Haber.C13+Haber.C14-C8-C12-C13-C16-C17-C18;T(0))')
 doc.set_cell_value(4, 20, 'formula', '= if((Haber.D8+Haber.D13+Haber.D14-D8-D12-D13-D16-D17-D18) >0;Haber.D8+Haber.D13+Haber.D14-D8-D12-D13-D16-D17-D18;T(0))')
@@ -435,7 +435,7 @@ doc.set_cell_value(2, 14, 'string', '       3. Otros ingresos')
 doc.set_cell_value(3, 14, 'float', '" + ( - ( saldoCuenta ( 73 ) + saldoCuenta ( 74 ) + saldoCuenta ( 75 ) + saldoCuenta ( 790 ) ) ).toQString ( '.' ) + "')
 doc.set_cell_value(4, 14, 'float', '" + ( - ( saldoCuentaAnt ( 73 ) + saldoCuentaAnt ( 74 ) + saldoCuentaAnt ( 75 ) + saldoCuentaAnt ( 790 ) ) ).toQString ( '.' ) + "')
 \
-doc.set_cell_value(2, 16, 'string', '   I.   RESULTADOS NEGATIVOS DE EXPLOTACIÓN')
+doc.set_cell_value(2, 16, 'string', '   I.   RESULTADOS NEGATIVOS DE EXPLOTACION')
 doc.set_cell_value(2, 17, 'string', '        (A1+A2+A3+A4+A5+A6-B1-B2-B3)')
 doc.set_cell_value(3, 16, 'formula', '=if((Debe.C8+Debe.C12+Debe.C13+Debe.C16+Debe.C17+Debe.C18-C8-C13-C14)>0;Debe.C8+Debe.C12+Debe.C13+Debe.C16+Debe.C17+Debe.C18-C8-C13-C14;T(0))')
 doc.set_cell_value(4, 16, 'formula', '=if((Debe.D8+Debe.D12+Debe.D13+Debe.D16+Debe.D17+Debe.D18-D8-D13-D14)>0;Debe.D8+Debe.D12+Debe.D13+Debe.D16+Debe.D17+Debe.D18-D8-D13-D14;T(0))')

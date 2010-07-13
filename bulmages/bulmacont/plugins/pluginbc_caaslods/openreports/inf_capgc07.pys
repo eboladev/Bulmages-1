@@ -41,7 +41,7 @@ def saldoCuenta(cuenta):
    global conn
 #   query =  "SELECT coalesce((SUM(apunte.debe) - SUM(apunte.haber)), 0) AS saldo FROM cuenta LEFT JOIN apunte ON apunte.idcuenta = cuenta.idcuenta WHERE cuenta.codigo like '" +  str(cuenta)  + "%' AND fecha >= '[fechainicialactual]' AND fecha <= '[fechafinalactual]' AND apunte.conceptocontable not ilike '%%asiento%%cierre%%' and apunte.conceptocontable not ilike '%%asiento%%regularizaci%%'" 
 
-   query =  "SELECT (COALESCE(SUM(apunte.debe),0) - COALESCE(SUM(apunte.haber),0)) AS saldo FROM cuenta LEFT JOIN apunte ON apunte.idcuenta = cuenta.idcuenta WHERE cuenta.codigo like '" +  str(cuenta)  + "%' AND fecha <= '[fechafinalactual]' AND apunte.conceptocontable not ilike '%%asiento%%cierre%%' and apunte.conceptocontable not ilike '%%asiento%%regularizaci%%'" 
+   query =  "SELECT (COALESCE(SUM(apunte.debe),0) - COALESCE(SUM(apunte.haber),0)) AS saldo FROM cuenta LEFT JOIN apunte ON apunte.idcuenta = cuenta.idcuenta WHERE cuenta.codigo like '" +  str(cuenta)  + "%' AND fecha <= '[fechafinalactual]' AND (apunte.conceptocontable not ilike '%%asiento%%cierre%%' and apunte.conceptocontable not ilike '%%asiento%%regularizaci%%' or apunte.conceptocontable is null)" 
 
 
 
@@ -56,7 +56,7 @@ def saldoCuentaAnt(cuenta):
    global conn
 #   query =  "SELECT coalesce((SUM(apunte.debe) - SUM(apunte.haber)), 0) AS saldo FROM cuenta LEFT JOIN apunte ON apunte.idcuenta = cuenta.idcuenta WHERE cuenta.codigo like '" +  str(cuenta)  + "%' AND fecha >= '[fechainicialanterior]' AND fecha <= '[fechafinalanterior]'AND apunte.conceptocontable not ilike '%%asiento%%cierre%%' and apunte.conceptocontable not ilike '%%asiento%%regularizaci%%'" 
 
-   query =  "SELECT (COALESCE(SUM(apunte.debe),0) - COALESCE(SUM(apunte.haber),0)) AS saldo FROM cuenta LEFT JOIN apunte ON apunte.idcuenta = cuenta.idcuenta WHERE cuenta.codigo like '" +  str(cuenta)  + "%' AND fecha <= '[fechafinalanterior]'AND apunte.conceptocontable not ilike '%%asiento%%cierre%%' and apunte.conceptocontable not ilike '%%asiento%%regularizaci%%'" 
+   query =  "SELECT (COALESCE(SUM(apunte.debe),0) - COALESCE(SUM(apunte.haber),0)) AS saldo FROM cuenta LEFT JOIN apunte ON apunte.idcuenta = cuenta.idcuenta WHERE cuenta.codigo like '" +  str(cuenta)  + "%' AND fecha <= '[fechafinalanterior]'AND (apunte.conceptocontable not ilike '%%asiento%%cierre%%' and apunte.conceptocontable not ilike '%%asiento%%regularizaci%%' or apunte.conceptocontable is null)" 
 
    cur1 = conn.cursor(cursor_factory=psycopg2.extras.DictCursor)
    
@@ -103,7 +103,7 @@ doc = ooolib.Calc(\"Activo\")\n\
 doc.set_column_property(1, 'width', '0.5in')\n\
 doc.set_column_property(2, 'width', '5in')\n\
 doc.set_cell_property('bold', True)\n\
-doc.set_cell_value(2, 2, 'string', 'BALANCE DE SITUACIÓN')\n\
+doc.set_cell_value(2, 2, 'string', 'BALANCE DE SITUACION')\n\
 doc.set_cell_value(2, 3, 'string', '" + QDateTime::currentDateTime().toString() + "')\n\
 doc.set_cell_value(4, 2, 'string', 'ACTIVO')\n\
 doc.set_cell_value(2, 5, 'string', 'Periodo: de " + meses.at ( mesInicio ) + " a " + meses.at ( mesFin ) + "')\n\
@@ -400,7 +400,7 @@ doc.set_cell_property('bold', False)\n\
                                      doc.set_column_property(1, 'width', '0.5in')\n\
                                      doc.set_column_property(2, 'width', '5in')\n\
                                      doc.set_cell_property('bold', True)\n\
-                                     doc.set_cell_value(2, 2, 'string', 'BALANCE DE SITUACIÓN')\n\
+                                     doc.set_cell_value(2, 2, 'string', 'BALANCE DE SITUACION')\n\
                                      doc.set_cell_value(2, 3, 'string', '" + QDateTime::currentDateTime().toString() + "')\n\
                                      doc.set_cell_value(4, 2, 'string', 'PASIVO')\n\
                                      doc.set_cell_value(2, 5, 'string', 'Periodo: de " + meses.at ( mesInicio ) + " a " + meses.at ( mesFin ) + "')\n\
@@ -721,7 +721,7 @@ doc.set_cell_property('bold', False)\n\
                                      doc.set_column_property(1, 'width', '0.5in')\n\
                                      doc.set_column_property(2, 'width', '5in')\n\
                                      doc.set_cell_property('bold', True)\n\
-                                     doc.set_cell_value(2, 2, 'string', 'CUENTA DE PÉRDIDAS Y GANANCIAS')\n\
+                                     doc.set_cell_value(2, 2, 'string', 'CUENTA DE PERDIDAS Y GANANCIAS')\n\
                                      doc.set_cell_value(2, 3, 'string', '" + QDateTime::currentDateTime().toString() + "')\n\
                                      doc.set_cell_value(4, 2, 'string', 'DEBE')\n\
                                      doc.set_cell_value(2, 5, 'string', 'Periodo: de " + meses.at ( mesInicio ) + " a " + meses.at ( mesFin ) + "')\n\
@@ -814,7 +814,7 @@ doc.set_cell_property('bold', False)\n\
 
                                      codigoPython.append ( "\
                                      \
-                                     doc.set_cell_value(2, 27, 'string', '   I.   BENEFICIOS DE EXLOTACIÓN')\n\
+                                     doc.set_cell_value(2, 27, 'string', '   I.   BENEFICIOS DE EXLOTACION')\n\
                                      doc.set_cell_value(2, 28, 'string', '        (B1+B2+B3+B4-A1-A2-A3-A4-A5-A6)')\n\
                                      doc.set_cell_value(3, 27, 'formula', '=IF(Haber.C8+Haber.C12+Haber.C13+Haber.C14-C8-C9-C13-C16-C17-C21>0;Haber.C8+Haber.C12+Haber.C13+Haber.C14-C8-C9-C13-C16-C17-C21;0)')\n\
                                      doc.set_cell_value(4, 27, 'formula', '=IF(Haber.D8+Haber.D12+Haber.D13+Haber.D14-D8-D9-D13-D16-D17-D21>0;Haber.D8+Haber.D12+Haber.D13+Haber.D14-D8-D9-D13-D16-D17-D21;0)')\n\
@@ -936,7 +936,7 @@ doc.set_cell_property('bold', False)\n\
                                      doc.set_column_property(1, 'width', '0.5in')\n\
                                      doc.set_column_property(2, 'width', '5in')\n\
                                      doc.set_cell_property('bold', True)\n\
-                                     doc.set_cell_value(2, 2, 'string', 'CUENTA DE PÉRDIDAS Y GANANCIAS')\n\
+                                     doc.set_cell_value(2, 2, 'string', 'CUENTA DE PERDIDAS Y GANANCIAS')\n\
                                      doc.set_cell_value(2, 3, 'string', '" + QDateTime::currentDateTime().toString() + "')\n\
                                      doc.set_cell_value(4, 2, 'string', 'HABER')\n\
                                      doc.set_cell_value(2, 5, 'string', 'Periodo: de " + meses.at ( mesInicio ) + " a " + meses.at ( mesFin ) + "')\n\
@@ -998,7 +998,7 @@ doc.set_cell_property('bold', False)\n\
 
                                      codigoPython.append ( "\
                                      \
-                                     doc.set_cell_value(2, 19, 'string', '   I.   PÉRDIDAS DE EXPLOTACIÓN')\n\
+                                     doc.set_cell_value(2, 19, 'string', '   I.   PERDIDAS DE EXPLOTACION')\n\
                                      doc.set_cell_value(2, 20, 'string', '        (A1+A2+A3+A4+A5+A6-B1-B2-B3-B4)')\n\
                                      doc.set_cell_value(3, 19, 'formula', '=IF(Debe.C8+Debe.C9+Debe.C13+Debe.C16+Debe.C17+Debe.C21-C8-C12-C13-C14>0;Debe.C8+Debe.C9+Debe.C13+Debe.C16+Debe.C17+Debe.C21-C8-C12-C13-C14;0)')\n\
                                      doc.set_cell_value(4, 19, 'formula', '=IF(Debe.D8+Debe.D9+Debe.D13+Debe.D16+Debe.D17+Debe.D21-D8-D12-D13-D14>0;Debe.D8+Debe.D9+Debe.D13+Debe.D16+Debe.D17+Debe.D21-D8-D12-D13-D14;0)')\n\
@@ -1076,7 +1076,7 @@ doc.set_cell_property('bold', False)\n\
 
                                      codigoPython.append ( "\
                                      \
-                                     doc.set_cell_value(2, 40, 'string', '   III. PÉRDIDAS DE LAS ACTIVIDADES ORDINARIAS')\n\
+                                     doc.set_cell_value(2, 40, 'string', '   III. PERDIDAS DE LAS ACTIVIDADES ORDINARIAS')\n\
                                      doc.set_cell_value(2, 41, 'string', '        (BI+BII-AI-AII)')\n\
                                      doc.set_cell_value(3, 40, 'formula', '=IF(C19+C37-Debe.C27-Debe.C38>0;C19+C37-Debe.C27-Debe.C38;0)')\n\
                                      doc.set_cell_value(4, 40, 'formula', '=IF(D19+D37-Debe.D27-Debe.D38>0;D19+D37-Debe.D27-Debe.D38;0)')\n\
@@ -1118,7 +1118,7 @@ doc.set_cell_property('bold', False)\n\
 
                                      codigoPython.append ( "\
                                      \
-                                     doc.set_cell_value(2, 52, 'string', '   V.  PÉRDIDAS ANTES DE IMPUESTOS')\n\
+                                     doc.set_cell_value(2, 52, 'string', '   V.  PERDIDAS ANTES DE IMPUESTOS')\n\
                                      doc.set_cell_value(2, 53, 'string', '       (BIII+BIV-AIII-AIV)')\n\
                                      doc.set_cell_value(3, 52, 'formula', '=IF(C40+C49-Debe.C41-Debe.C50>0;C40+C49-Debe.C41-Debe.C50;0)')\n\
                                      doc.set_cell_value(4, 52, 'formula', '=IF(D40+D49-Debe.D41-Debe.D50>0;D40+D49-Debe.D41-Debe.D50;0)')\n\
@@ -1129,7 +1129,7 @@ doc.set_cell_property('bold', False)\n\
 
                                      codigoPython.append ( "\
                                      \
-                                     doc.set_cell_value(2, 55, 'string', '   VI. RESULTADO DEL EJERCICIO (PÉRDIDAS)')\n\
+                                     doc.set_cell_value(2, 55, 'string', '   VI. RESULTADO DEL EJERCICIO (PERDIDAS)')\n\
                                      doc.set_cell_value(2, 56, 'string', '       (BV+A15+A16)')\n\
                                      doc.set_cell_value(3, 55, 'formula', '=IF(C52>0;C52+Debe.C56+Debe.C57;0)')\n\
                                      doc.set_cell_value(4, 55, 'formula', '=IF(D52>0;D52+Debe.D56+Debe.D57;0)')\n\
