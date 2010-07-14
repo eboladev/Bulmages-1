@@ -112,6 +112,19 @@ void DistroMesas::on_mui_borrar_clicked() {
 }
 
 
+void DistroMesas::on_mui_ver_ticket_clicked() {
+  if (g_mesaAct) {
+    g_mesaAct->abrirMesa();
+  } // end if
+}
+
+
+void DistroMesas::on_mui_cambiar_nombre_clicked() {
+  if (g_mesaAct) {
+    g_mesaAct->cambiarNombre();
+  } // end if
+}
+
 void DistroMesas::paintEvent ( QPaintEvent * event ) {
 
         QPainter painter;
@@ -210,8 +223,9 @@ Mesa::Mesa ( BtCompany *emp, QWidget *parent ) : BlWidget ( emp, parent )
   setContextMenuPolicy(Qt::CustomContextMenu);
   connect(this, SIGNAL(customContextMenuRequested(const QPoint &)), this, SLOT(ctxMenu(const QPoint &)));
   m_nombreMesa = "Sin Definir";
-  m_XScale = 0;
-  m_YScale = 0;
+  m_XScale = 100;
+  m_YScale = 100;
+  m_escalando = 0;
 }
 
 
@@ -240,28 +254,31 @@ void Mesa::paintEvent ( QPaintEvent * event ) {
 
         painter.drawText(0, 10, m_nombreMesa);
 
+if (m_escalando == 0)  {
         QSvgRenderer arender(QString(m_filename), this);
-        arender.render(&painter, QRectF (0, 15, g_escala, g_escala));
+//        arender.render(&painter, QRectF (0, 15, g_escala, g_escala));
+        arender.render(&painter, QRectF (0, 15, m_XScale, m_YScale));
+}
 
     if (g_mesaAct == this) {
             painter.setPen(QColor(0, 0, 0, 127));
             painter.setPen(Qt::DashDotLine);
 //            painter.drawText(0,20,"ACTUAL");
-            painter.drawRect(0,0,g_escala,g_escala);
+            painter.drawRect(0,0,m_XScale,m_YScale);
 
             painter.setPen(QColor(0, 0, 0, 127));
             painter.setPen(Qt::DashDotLine);
             painter.setBrush(Qt::green);
 //            painter.drawText(0,20,"ACTUAL");
             painter.drawRect(0,0,5,5);
-            painter.drawRect(0,g_escala -5, 5, 5);
-            painter.drawRect(g_escala -5,0, 5, 5);
-            painter.drawRect(g_escala -5,g_escala -5, 5, 5);
+            painter.drawRect(0,m_YScale -5, 5, 5);
+            painter.drawRect(m_XScale -5,0, 5, 5);
+            painter.drawRect(m_XScale -5,m_YScale -5, 5, 5);
 
-            painter.drawRect(g_escala / 2 -3,g_escala -5, 5, 5);
-            painter.drawRect(g_escala / 2 -3, 0, 5, 5);
-            painter.drawRect(0,g_escala / 2 -3, 5, 5);
-            painter.drawRect(g_escala - 5,g_escala / 2 -3, 5, 5);
+            painter.drawRect(m_XScale / 2 -3,m_YScale -5, 5, 5);
+            painter.drawRect(m_XScale / 2 -3, 0, 5, 5);
+            painter.drawRect(0,m_YScale / 2 -3, 5, 5);
+            painter.drawRect(m_XScale - 5,m_YScale / 2 -3, 5, 5);
 
         
     } // end if
@@ -287,19 +304,143 @@ void Mesa::mousePressEvent(QMouseEvent* event)
           offset = event->globalPos() - pos();
       else
           offset = event->pos();
+
+      /// Hacemos la comprobacion de escalado hacia abajo.
+//      mensajeInfo(QString::number(offset.x()));
+//      mensajeInfo(QString::number(event->globalPos().y()));
+//      mensajeInfo(QString::number(m_XScale));
+      if (offset.x() > m_XScale -6 && offset.y() > m_YScale - 6) {
+          m_escalando = 1;
+      } else if (offset.x() > m_XScale /2-3 && offset.x() < m_XScale /2 +3 && offset.y() > m_YScale - 6) {
+          m_escalando = 2;
+      } else if (offset.y() > m_YScale /2-3 && offset.y() < m_YScale /2 +3 && offset.x() > m_XScale - 6) {
+          m_escalando = 3;
+      } else if (offset.x() < 6  && offset.y() < 6) {
+          m_escalando = 4;
+      } else if (offset.x() > m_XScale -6 && offset.y() < 6) {
+          /// Arriba a la derecha
+          m_escalando = 5;
+      } else if (offset.y() > m_YScale -6 && offset.x() < 6) {
+          /// Abajo a la izquierda
+          m_escalando = 6;
+      } else if (offset.y() > m_YScale /2-3 && offset.y() < m_YScale /2 +3 && offset.x() < 6) {
+          /// Enmedio a la izquierda
+          m_escalando = 7;
+      } else if (offset.x() > m_XScale /2-3 && offset.x() < m_XScale /2 +3 && offset.y() < 6) {
+          /// Arriba enmedio
+          m_escalando = 8;
+      } else {
+        /// Movemos el elemento sin escalar.
+        m_escalando  = 9;
+      } // end if
+
     } // end if
 }
 
 void Mesa::mouseMoveEvent(QMouseEvent* event)
 {
 
+      if (m_escalando > 0 && m_escalando < 9 ) {
+        if (m_escalando == 1) {
+          if (isWindow()) {
+              m_XScale += (event->globalPos().x() - offset.x());
+              m_YScale += (event->globalPos().y() - offset.y());
+          } else {
+              m_XScale += (event->pos().x() - offset.x());
+              m_YScale += (event->pos().y() - offset.y());
+          } // end if
+        } else if (m_escalando == 2) {
+          if (isWindow()) {
+              m_YScale += (event->globalPos().y() - offset.y());
+          } else {
+              m_YScale += (event->pos().y() - offset.y());
+          } // end if
+        } else if (m_escalando == 3) {
+          if (isWindow()) {
+              m_XScale += (event->globalPos().x() - offset.x());
+          } else {
+              m_XScale += (event->pos().x() - offset.x());
+          } // end if
+        } else if (m_escalando == 4) {
+          /// Arriba a la izquierda
+          if (isWindow()) {
+              m_XScale -= (event->globalPos().x() - offset.x());
+              m_YScale -= (event->globalPos().y() - offset.y());
+              move(event->globalPos() - offset);
+          } else {
+              m_XScale -= (event->pos().x() - offset.x());
+              m_YScale -= (event->pos().y() - offset.y());
+              move(mapToParent(event->pos() - offset));
+          } // end if
+        } else if (m_escalando == 5) {
+          /// Arriba a la derecha
+          if (isWindow()) {
+              m_XScale += (event->globalPos().x() - offset.x());
+              m_YScale -= (event->globalPos().y() - offset.y());
+              QPoint roffset = event->globalPos() - offset;
+              roffset.setX(x());
+              move(roffset);
+          } else {
+              m_XScale += (event->pos().x() - offset.x());
+              m_YScale -= (event->pos().y() - offset.y());
+              QPoint roffset = event->pos() - offset;
+              roffset.setX(mapFromParent(pos()).x());
+              move(mapToParent(roffset));
+          } // end if
+        } else if (m_escalando == 6) {
+          /// Abajo a la izquierda
+          if (isWindow()) {
+              m_XScale -= (event->globalPos().x() - offset.x());
+              m_YScale += (event->globalPos().y() - offset.y());
+              QPoint roffset = event->globalPos() - offset;
+              roffset.setY(y());
+              move(roffset);
+          } else {
+              m_XScale -= (event->pos().x() - offset.x());
+              m_YScale += (event->pos().y() - offset.y());
+              QPoint roffset = event->pos() - offset;
+              roffset.setY(mapFromParent(pos()).y());
+              move(mapToParent(roffset));
+          } // end if
+        } else if (m_escalando == 7) {
+          /// Enmedio a la izquierda
+          if (isWindow()) {
+              m_XScale -= (event->globalPos().x() - offset.x());
+              QPoint roffset = event->globalPos() - offset;
+              roffset.setY(y());
+              move(roffset);
+          } else {
+              m_XScale -= (event->pos().x() - offset.x());
+              QPoint roffset = event->pos() - offset;
+              roffset.setY(mapFromParent(pos()).y());
+              move(mapToParent(roffset));
+          } // end if
+        } else if (m_escalando == 8) {   
+          /// El cuadro de arriba en el centro
+          if (isWindow()) {
+              m_YScale -= (event->globalPos().y() - offset.y());
+              QPoint roffset = event->globalPos() - offset;
+              roffset.setX(x());
+              move(roffset);
+          } else {
+              m_YScale -= (event->pos().y() - offset.y());
+              QPoint roffset = event->pos() - offset;
+              roffset.setX(mapFromParent(pos()).x());
+              move(mapToParent(roffset));
+          } // end if
+        }
 
+//          setGeometry(posx.text().toInt(),posy.text().toInt(),m_XScale , m_YScale );
+          if (m_XScale > 20 && m_YScale > 20)
+            setFixedSize(m_XScale+10 ,m_YScale+10);
+              
+      } else if (m_escalando == 9) {
+          if (isWindow())
+              move(event->globalPos() - offset);
+          else
+              move(mapToParent(event->pos() - offset));
+      } // end if
       event->accept(); // do not propagate
-      if (isWindow())
-          move(event->globalPos() - offset);
-      else
-          move(mapToParent(event->pos() - offset));
-
 }
 
 void Mesa::mouseReleaseEvent(QMouseEvent* event)
@@ -307,6 +448,10 @@ void Mesa::mouseReleaseEvent(QMouseEvent* event)
     if (event -> button() == Qt::LeftButton) {
       event->accept(); // do not propagate
       offset = QPoint();
+      if (m_escalando > 0) {
+        m_escalando = 0;
+        repaint();
+      } // end if
     } // end if
 }
 
@@ -433,8 +578,8 @@ QString Mesa::exportXML() {
   val += "\t<NOMBRE>" + m_nombreMesa + "</NOMBRE>\n";
   val += "\t<POSX>" + QString::number(x()) + "</POSX>\n";
   val += "\t<POSY>" + QString::number(y()) + "</POSY>\n";
-  val += "\t<XSCALE>" + QString::number(y()) + "</XSCALE>\n";
-  val += "\t<YSCALE>" + QString::number(y()) + "</YSCALE>\n";
+  val += "\t<XSCALE>" + QString::number(m_XScale) + "</XSCALE>\n";
+  val += "\t<YSCALE>" + QString::number(m_YScale) + "</YSCALE>\n";
   val += "</MESA>\n";
 
   return val;
@@ -459,12 +604,14 @@ void Mesa::importXML(const QString val) {
 
     QDomElement posx = docElem.firstChildElement ( "POSX" );
     QDomElement posy = docElem.firstChildElement ( "POSY" );
-    setGeometry(posx.text().toInt(),posy.text().toInt(),g_escala + 20 , g_escala + 20);
+//    setGeometry(posx.text().toInt(),posy.text().toInt(),g_escala + 20 , g_escala + 20);
 
     QDomElement xscale = docElem.firstChildElement ( "XSCALE" );
     QDomElement yscale = docElem.firstChildElement ( "YSCALE" );
     m_XScale = xscale.text().toInt();
     m_YScale = yscale.text().toInt();
+    setGeometry(posx.text().toInt(),posy.text().toInt(),m_XScale+1 , m_YScale+1 );
+    setFixedSize(m_XScale+10 ,m_YScale+10);
 
     repaint();
 }

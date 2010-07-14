@@ -30,6 +30,8 @@ public slots:
   virtual void on_mui_escala1_clicked();
   virtual void on_mui_cerrar_clicked();
   virtual void on_mui_borrar_clicked();
+  virtual void on_mui_ver_ticket_clicked();
+  virtual void on_mui_cambiar_nombre_clicked();
 };
 
 
@@ -63,6 +65,7 @@ public:
   QString m_nombreMesa;
   int m_XScale;
   int m_YScale;
+  int m_escalando;
 
 public:
   Mesa( BtCompany *emp, QWidget *parent);
