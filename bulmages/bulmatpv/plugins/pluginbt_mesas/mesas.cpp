@@ -14,6 +14,8 @@
 int g_escala;
 Mesas * g_mesas;
 Mesa  * g_mesaAct;
+bool  g_bloqueo;
+
 
 Mesas::Mesas ( BtCompany *emp, QWidget *parent ) : BlWidget ( emp, parent )
 {
@@ -62,6 +64,14 @@ DistroMesas::DistroMesas ( BtCompany *emp, QWidget *parent ) : BlWidget ( emp, p
 
   m_background = "";
   g_escala = 200;
+  g_bloqueo = TRUE;
+
+  mui_borrar -> setVisible(!g_bloqueo);
+  mui_cambiar_imagen -> setVisible(!g_bloqueo);
+  mui_mesa6 -> setVisible(!g_bloqueo);
+  mui_cambiar_nombre -> setVisible(!g_bloqueo);
+
+
 
   importXML("");
 
@@ -124,6 +134,22 @@ void DistroMesas::on_mui_cambiar_nombre_clicked() {
     g_mesaAct->cambiarNombre();
   } // end if
 }
+
+void DistroMesas::on_mui_cambiar_imagen_clicked() {
+  if (g_mesaAct) {
+    g_mesaAct->cambiarImagen();
+  } // end if
+}
+
+void DistroMesas::on_mui_bloquear_toggled(bool bloq) {
+  g_bloqueo = !bloq;
+  mui_borrar -> setVisible(!g_bloqueo);
+  mui_cambiar_imagen -> setVisible(!g_bloqueo);
+  mui_mesa6 -> setVisible(!g_bloqueo);
+  mui_cambiar_nombre -> setVisible(!g_bloqueo);
+  repaint();
+}
+
 
 void DistroMesas::paintEvent ( QPaintEvent * event ) {
 
@@ -261,15 +287,14 @@ if (m_escalando == 0)  {
 }
 
     if (g_mesaAct == this) {
+        if (!g_bloqueo) {
             painter.setPen(QColor(0, 0, 0, 127));
             painter.setPen(Qt::DashDotLine);
-//            painter.drawText(0,20,"ACTUAL");
             painter.drawRect(0,0,m_XScale,m_YScale);
 
             painter.setPen(QColor(0, 0, 0, 127));
             painter.setPen(Qt::DashDotLine);
             painter.setBrush(Qt::green);
-//            painter.drawText(0,20,"ACTUAL");
             painter.drawRect(0,0,5,5);
             painter.drawRect(0,m_YScale -5, 5, 5);
             painter.drawRect(m_XScale -5,0, 5, 5);
@@ -281,7 +306,11 @@ if (m_escalando == 0)  {
             painter.drawRect(m_XScale - 5,m_YScale / 2 -3, 5, 5);
 
         
-    } // end if
+      } else {
+            painter.setPen(Qt::DashDotLine);
+            painter.drawRect(0,0,m_XScale,m_YScale);
+      }// end if
+    } //end if
 
 
         painter.end();
@@ -306,40 +335,38 @@ void Mesa::mousePressEvent(QMouseEvent* event)
           offset = event->pos();
 
       /// Hacemos la comprobacion de escalado hacia abajo.
-//      mensajeInfo(QString::number(offset.x()));
-//      mensajeInfo(QString::number(event->globalPos().y()));
-//      mensajeInfo(QString::number(m_XScale));
-      if (offset.x() > m_XScale -6 && offset.y() > m_YScale - 6) {
-          m_escalando = 1;
-      } else if (offset.x() > m_XScale /2-3 && offset.x() < m_XScale /2 +3 && offset.y() > m_YScale - 6) {
-          m_escalando = 2;
-      } else if (offset.y() > m_YScale /2-3 && offset.y() < m_YScale /2 +3 && offset.x() > m_XScale - 6) {
-          m_escalando = 3;
-      } else if (offset.x() < 6  && offset.y() < 6) {
-          m_escalando = 4;
-      } else if (offset.x() > m_XScale -6 && offset.y() < 6) {
-          /// Arriba a la derecha
-          m_escalando = 5;
-      } else if (offset.y() > m_YScale -6 && offset.x() < 6) {
-          /// Abajo a la izquierda
-          m_escalando = 6;
-      } else if (offset.y() > m_YScale /2-3 && offset.y() < m_YScale /2 +3 && offset.x() < 6) {
-          /// Enmedio a la izquierda
-          m_escalando = 7;
-      } else if (offset.x() > m_XScale /2-3 && offset.x() < m_XScale /2 +3 && offset.y() < 6) {
-          /// Arriba enmedio
-          m_escalando = 8;
-      } else {
-        /// Movemos el elemento sin escalar.
-        m_escalando  = 9;
+      if (!g_bloqueo) {
+          if (offset.x() > m_XScale -6 && offset.y() > m_YScale - 6) {
+              m_escalando = 1;
+          } else if (offset.x() > m_XScale /2-3 && offset.x() < m_XScale /2 +3 && offset.y() > m_YScale - 6) {
+              m_escalando = 2;
+          } else if (offset.y() > m_YScale /2-3 && offset.y() < m_YScale /2 +3 && offset.x() > m_XScale - 6) {
+              m_escalando = 3;
+          } else if (offset.x() < 6  && offset.y() < 6) {
+              m_escalando = 4;
+          } else if (offset.x() > m_XScale -6 && offset.y() < 6) {
+              /// Arriba a la derecha
+              m_escalando = 5;
+          } else if (offset.y() > m_YScale -6 && offset.x() < 6) {
+              /// Abajo a la izquierda
+              m_escalando = 6;
+          } else if (offset.y() > m_YScale /2-3 && offset.y() < m_YScale /2 +3 && offset.x() < 6) {
+              /// Enmedio a la izquierda
+              m_escalando = 7;
+          } else if (offset.x() > m_XScale /2-3 && offset.x() < m_XScale /2 +3 && offset.y() < 6) {
+              /// Arriba enmedio
+              m_escalando = 8;
+          } else {
+            /// Movemos el elemento sin escalar.
+            m_escalando  = 9;
+          } // end if
       } // end if
-
     } // end if
 }
 
 void Mesa::mouseMoveEvent(QMouseEvent* event)
 {
-
+    if (!g_bloqueo) {
       if (m_escalando > 0 && m_escalando < 9 ) {
         if (m_escalando == 1) {
           if (isWindow()) {
@@ -441,11 +468,12 @@ void Mesa::mouseMoveEvent(QMouseEvent* event)
               move(mapToParent(event->pos() - offset));
       } // end if
       event->accept(); // do not propagate
+  } // end if
 }
 
 void Mesa::mouseReleaseEvent(QMouseEvent* event)
 {
-    if (event -> button() == Qt::LeftButton) {
+    if (event -> button() == Qt::LeftButton && !g_bloqueo) {
       event->accept(); // do not propagate
       offset = QPoint();
       if (m_escalando > 0) {
@@ -465,7 +493,7 @@ void Mesa::mouseDoubleClickEvent ( QMouseEvent * event ) {
 
 void Mesa::ctxMenu(const QPoint &pos) {
     QMenu *menu = new QMenu;
-    menu->addAction(tr("Cambiar imagen"), this, SLOT(test_slot()));
+    menu->addAction(tr("Cambiar imagen"), this, SLOT(cambiarImagen()));
     menu->addAction(tr("Cambiar nombre"), this, SLOT(cambiarNombre()));
     menu->addAction(tr("Abrir Mesa"), this, SLOT(abrirMesa()));
     menu->addAction(tr("Aumentar Escala"), this, SLOT(abrirMesa()));
@@ -473,7 +501,7 @@ void Mesa::ctxMenu(const QPoint &pos) {
     menu->exec(mapToGlobal(pos));
 }
 
-void Mesa::test_slot() {
+void Mesa::cambiarImagen() {
    m_filename = QFileDialog::getOpenFileName(
                     this,
                     "Choose a file",

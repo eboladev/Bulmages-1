@@ -32,6 +32,8 @@ public slots:
   virtual void on_mui_borrar_clicked();
   virtual void on_mui_ver_ticket_clicked();
   virtual void on_mui_cambiar_nombre_clicked();
+  virtual void on_mui_cambiar_imagen_clicked();
+  virtual void on_mui_bloquear_toggled(bool bloq);
 };
 
 
@@ -79,7 +81,7 @@ public:
   QString exportXML();
 public slots:
   virtual void ctxMenu(const QPoint &pos);
-  virtual void test_slot();
+  virtual void cambiarImagen();
   virtual void cambiarNombre();
   virtual void abrirMesa();
 };
