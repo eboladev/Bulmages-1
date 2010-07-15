@@ -22,9 +22,7 @@ Mesas::Mesas ( BtCompany *emp, QWidget *parent ) : BlWidget ( emp, parent )
     setupUi ( this );
 
     /// Cambiamos el icono de las mesas.
-//    mui_mesas->setMinimumSize ( QSize ( 32, 32 ) );
     mui_mesas->setIcon ( QIcon ( g_confpr->valor ( CONF_PROGDATA ) + "icons/table.svg" ) );
-//    mui_mesas->setIconSize ( QSize ( 32, 32 ) );
 
     m_centralWidget = NULL;
     m_distro = NULL;
@@ -473,12 +471,16 @@ void Mesa::mouseMoveEvent(QMouseEvent* event)
 
 void Mesa::mouseReleaseEvent(QMouseEvent* event)
 {
-    if (event -> button() == Qt::LeftButton && !g_bloqueo) {
-      event->accept(); // do not propagate
-      offset = QPoint();
-      if (m_escalando > 0) {
-        m_escalando = 0;
-        repaint();
+    if (event -> button() == Qt::LeftButton) {
+      if (!g_bloqueo) {
+        event->accept(); // do not propagate
+        offset = QPoint();
+        if (m_escalando > 0) {
+          m_escalando = 0;
+          repaint();
+        } // end if
+      } else {
+        abrirMesa();
       } // end if
     } // end if
 }
