@@ -132,7 +132,7 @@
      </property>
      <property name="icon">
       <iconset resource="../../../bulmages.qrc">
-       <normaloff>:/Images/document-import.png</normaloff>:/Images/document-import.png</iconset>
+       <normaloff>:/Genericos48x48/images/oxygen/actions/48x48/ticket_parking_in.png</normaloff>:/Genericos48x48/images/oxygen/actions/48x48/ticket_parking_in.png</iconset>
      </property>
      <property name="iconSize">
       <size>
@@ -164,7 +164,7 @@
      </property>
      <property name="icon">
       <iconset resource="../../../bulmages.qrc">
-       <normaloff>:/Images/document-export.png</normaloff>:/Images/document-export.png</iconset>
+       <normaloff>:/Genericos48x48/images/oxygen/actions/48x48/ticket_parking_out.png</normaloff>:/Genericos48x48/images/oxygen/actions/48x48/ticket_parking_out.png</iconset>
      </property>
      <property name="iconSize">
       <size>
