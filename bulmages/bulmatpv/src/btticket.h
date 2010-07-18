@@ -43,6 +43,7 @@ private:
     QList<BlDbRecord *> *m_listaLineas;
     BlDbRecord *m_lineaActual;
     QString m_nomTicketDefecto;
+    QMap<QString,QString> m_variables;   /// Son elementos que han sido incrustados e inicializados por programas externos, generalmente el RML
 
 public:
     virtual void pintar();
@@ -73,6 +74,18 @@ public:
     void borrarLinea ( BlDbRecord *linea );
     virtual QString exportXML();
     virtual bool syncXML(const QString &text, bool insertarSiempre = FALSE);
+
+    virtual int generaRML ( const QString & );
+    virtual int generaRML ( void );
+    virtual int trataTags ( QString &buff, int tipoEscape = 0 );
+    virtual QString trataIncludeFile ( const QString &file, int tipoEscape = 0 );
+    virtual QString trataQuery ( const QString &query, const QString &datos, int tipoEscape = 0 );
+    QString trataCursor ( BlDbRecordSet *cur, const QString &datos, int tipoEscape = 0 );
+    virtual QString trataIfQuery ( const QString &query, const QString &datos );
+    virtual QString trataIf ( const QString &query, const QString &datos, const QString &datos1 );
+    virtual QString trataExists ( const QString &query, const QString &datos );
+    void substrVars(QString &buff, int tipoEscape = 0);
+
 
 public slots:
     virtual void subir();

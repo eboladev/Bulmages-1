@@ -28,6 +28,17 @@
 #include <QDomDocument>
 #include <QDomNode>
 #include <QTextStream>
+#include <QHBoxLayout>
+#include <QObject>
+#include <QPushButton>
+
+
+#include <QCheckBox>
+#include <QInputDialog>
+#include <QUiLoader>
+
+
+
 
 #include "blmaincompany.h"
 #include "btticket.h"
@@ -1141,4 +1152,491 @@ bool BtTicket::syncXML(const QString &text, bool insertarSiempre) {
     return 1;
     _depura ( "BtTicket::syncXML", 0 );
 }
+
+
+
+
+
+/// ================================ VAMOS A TRATAR DE HACER LA IMPRESION SENCILLA CON PLANTILLAS ============================
+
+/// Sustituye valores en el texto pasado como variables por su valor.
+/// tipoEscape puede ser 0 --> Sin parseo
+///    1 --> ParseoXML
+///    2 --> ParseoPython
+void BtTicket::substrVars ( QString &buff, int tipoEscape )
+{
+
+    int pos = 0;
+
+    /// Tratamos la sustitucion de variables de m_variables
+    QMapIterator<QString, QString> i ( m_variables );
+    while ( i.hasNext() ) {
+        i.next();
+        buff.replace ( "[" + i.key() + "]", i.value() );
+    } // end while
+
+
+    substrConf ( buff );
+
+    pos =  0;
+
+    /// Buscamos parametros en el query y los ponemos.
+    QRegExp rx ( "\\[(\\w*)\\]" );
+    QString tmp;
+    while ( ( pos = rx.indexIn ( buff, pos ) ) != -1 ) {
+        if ( exists ( rx.cap ( 1 ) ) ) {
+                        
+            switch ( tipoEscape ) {
+            case 1:
+                buff.replace ( pos, rx.matchedLength(), xmlEscape ( dbValue ( rx.cap ( 1 ) ) ) );
+                break;
+            case 2:
+                buff.replace ( pos, rx.matchedLength(), pythonEscape ( dbValue ( rx.cap ( 1 ) ) ) );
+                break;
+            default:
+                buff.replace ( pos, rx.matchedLength(), dbValue ( rx.cap ( 1 ) ) );
+
+            } // end switch
+
+            pos = 0;
+        } else {
+            pos += rx.matchedLength();
+        }
+    } // end while
+
+}
+
+
+/// Busca strings del tipo [xxxx] entro del texto pasado y los sustituye
+/// Por valores existentes en la base de datos.
+/// Tambien busca los parametros PARAM e IFACE para tambien tratarlos.
+/// Devuelve 1 Si todo esta OK o 0 Si hay algun error
+/**
+\param buff El texto entero sobre el que se hace el reemplazo de sentencias.
+**/
+int BtTicket::trataTags ( QString &buff, int tipoEscape )
+{
+    _depura ( "BtTicket::trataTags", 0 );
+
+    ///Buscamos interfaces, los preguntamos y los ponemos.
+    int pos = 0;
+
+    QRegExp rx70 ( "<!--\\s*IFACE\\s*SRC\\s*=\\s*\"([^\"]*)\"\\s*-->" );
+    rx70.setMinimal ( TRUE );
+    while ( ( pos = rx70.indexIn ( buff, pos ) ) != -1 ) {
+        QString cadarchivo = rx70.cap ( 1 );
+
+        substrConf ( cadarchivo );
+
+        QFile fichero ( cadarchivo );
+        if ( fichero.exists() ) {
+            QUiLoader loader;
+            fichero.open ( QFile::ReadOnly );
+            QWidget *iface = loader.load ( &fichero, this );
+            fichero.close();
+            QDialog *diag = new QDialog ( 0 );
+            diag->setModal ( true );
+
+            /// Creamos un layout donde estara el contenido de la ventana y la ajustamos al QDialog
+            /// para que sea redimensionable y aparezca el titulo de la ventana.
+            QHBoxLayout *layout = new QHBoxLayout;
+            layout->addWidget ( iface );
+            layout->setMargin ( 5 );
+            layout->setSpacing ( 5 );
+            diag->setLayout ( layout );
+            diag->setWindowTitle ( iface->windowTitle() );
+            diag->setGeometry ( 0, 0, iface->width(), iface->height() );
+            QPushButton *button = iface->findChild<QPushButton *> ( "mui_aceptar" );
+            connect ( button, SIGNAL ( released ( ) ), diag, SLOT ( accept() ) );
+            QPushButton *button1 = iface->findChild<QPushButton *> ( "mui_cancelar" );
+            connect ( button1, SIGNAL ( released ( ) ), diag, SLOT ( reject() ) );
+            int ret = diag->exec();
+            if ( ret ) {
+
+         /// Recorre los QLineEdit.
+                QList<QLineEdit *> l2 = iface->findChildren<QLineEdit *>();
+                QListIterator<QLineEdit *> it2 ( l2 );
+                while ( it2.hasNext() ) {
+                    QLineEdit * item = it2.next();
+                    QString nombre = item->objectName().right ( item->objectName().size() - 4 );
+                    QString valor = item->text();
+                    addDbField ( nombre, BlDbField::DbVarChar, BlDbField::DbNoSave, nombre  );
+                    setDbValue ( nombre, valor );
+                } // end while
+                
+                /// Recorre los QCheckBox.
+                QList<QCheckBox *> qcb = iface->findChildren<QCheckBox *>();
+                QListIterator<QCheckBox *> itqcb ( qcb );
+
+                while ( itqcb.hasNext() ) {
+                    QCheckBox *item = itqcb.next();
+                    QString nombre = item->objectName().right ( item->objectName().size() - 4 );
+                    QString valor = "false";
+                    if ( item->isChecked() ) {
+                        valor = "true";
+                    } else {
+                  valor = "false";
+          } // end if
+                    addDbField ( nombre, BlDbField::DbBoolean, BlDbField::DbNoSave, nombre  );
+                    setDbValue ( nombre, valor );
+                } // end while
+                
+      QVariant exportaRML = iface->property("exportaRML");
+      if (exportaRML.isValid() ) {
+         QStringList props = exportaRML.toStringList();
+      
+         QListIterator<QString> iProps(props);
+         while (iProps.hasNext()) {
+            QString camp = iProps.next();
+            QStringList cami = camp.split(".");
+            QObject *actual=iface;
+            QListIterator<QString> iCami(cami);
+            
+            while(iCami.hasNext() && actual) {
+
+                QString nom = iCami.next();
+                QObject *fill = actual->findChild<QObject *>("mui_"+nom);
+
+                if (!fill) {
+               fill = actual->findChild<QObject *>(nom);
+                } // end if
+
+                if (fill) {
+               actual = fill;
+                } else {
+                
+               QVariant valor = actual->property(nom.toUtf8().data());
+               m_variables[camp] =valor.toString();
+               
+               if (valor.canConvert<QObject*>()) {
+                   actual = valor.value<QObject*>();
+               } else {
+                   actual = NULL;
+               } // end if
+            
+                } // end if
+                
+            } // end while
+            
+         } // end while
+         
+      } // end if
+
+            } // end if
+            
+            delete diag;
+            
+            // Si se ha pulsado cancelar entonce se sale del informe.
+            if ( !ret ) return 0;
+            
+        } else {
+            mensajeInfo ( "Archivo de Interficie no existe" );
+        } // end if
+
+        buff.replace ( pos, rx70.matchedLength(), "" );
+        pos = 0;
+    } // end while
+
+
+    /// Buscamos establecimiento de variables y los ponemos en m_variables
+    pos = 0;
+    QRegExp rx54 ( "<!--\\s*SETVAR\\s*NAME\\s*=\\s*\"([^\"]*)\"\\s*VALUE\\s*=\\s*\"([^\"]*)\"\\s*-->" );
+    rx54.setMinimal ( TRUE );
+    while ( ( pos = rx54.indexIn ( buff, pos ) ) != -1 ) {
+        QString valor = rx54.cap ( 2 );
+        substrVars ( valor, tipoEscape );
+        m_variables[rx54.cap ( 1 ) ] = valor;
+        buff.replace ( pos, rx54.matchedLength(), "" );
+        pos = 0;
+    } // end while
+
+    /// Tratamos las variables establecidas.
+    substrVars ( buff, tipoEscape );
+
+
+    /// Buscamos Query's en condicional
+    pos = 0;
+    QRegExp rx19 ( "<!--\\s*INCLUDE\\s*FILE\\s*=\\s*\"([^\"]*)\"\\s*-->" );
+    rx19.setMinimal ( TRUE );
+    while ( ( pos = rx19.indexIn ( buff, pos ) ) != -1 ) {
+        QString ldetalle = trataIncludeFile ( rx19.cap ( 1 ), tipoEscape );
+        buff.replace ( pos, rx19.matchedLength(), ldetalle );
+        pos = 0;
+    } // end while
+
+    /// Buscamos Existencia de Ficheros
+    pos = 0;
+    QRegExp rx9 ( "<!--\\s*EXISTS\\s*FILE\\s*=\\s*\"([^\"]*)\"\\s*-->(.*)<!--\\s*END\\s*EXISTS\\s*-->" );
+    rx9.setMinimal ( TRUE );
+    while ( ( pos = rx9.indexIn ( buff, pos ) ) != -1 ) {
+        QString ldetalle = trataExists ( rx9.cap ( 1 ), rx9.cap ( 2 ) );
+        buff.replace ( pos, rx9.matchedLength(), ldetalle );
+        pos = 0;
+    } // end while
+
+    /// Buscamos Query's en condicional
+    pos = 0;
+    QRegExp rx4 ( "<!--\\s*IF\\s*QUERY\\s*=\\s*\"([^\"]*)\"\\s*-->(.*)<!--\\s*END\\s*IF\\s*QUERY\\s*-->" );
+    rx4.setMinimal ( TRUE );
+    while ( ( pos = rx4.indexIn ( buff, pos ) ) != -1 ) {
+        QString ldetalle = trataIfQuery ( rx4.cap ( 1 ), rx4.cap ( 2 ) );
+        buff.replace ( pos, rx4.matchedLength(), ldetalle );
+        pos = 0;
+    } // end while
+
+    /// Buscamos Query's por tratar
+    pos = 0;
+    QRegExp rx1 ( "<!--\\s*QUERY\\s*=\\s*\"([^\"]*)\"\\s*-->(.*)<!--\\s*END\\s*QUERY\\s*-->" );
+    rx1.setMinimal ( TRUE );
+    while ( ( pos = rx1.indexIn ( buff, pos ) ) != -1 ) {
+        QString ldetalle = trataQuery ( rx1.cap ( 1 ), rx1.cap ( 2 ), tipoEscape );
+        buff.replace ( pos, rx1.matchedLength(), ldetalle );
+        pos = 0;
+    } // end while
+
+    /// Buscamos SubQuery's en condicional
+    pos = 0;
+    QRegExp rx14 ( "<!--\\s*IF\\s*SUBQUERY\\s*=\\s*\"([^\"]*)\"\\s*-->(.*)<!--\\s*END\\s*IF\\s*SUBQUERY\\s*-->" );
+    rx14.setMinimal ( TRUE );
+    while ( ( pos = rx14.indexIn ( buff, pos ) ) != -1 ) {
+        QString ldetalle = trataIfQuery ( rx14.cap ( 1 ), rx14.cap ( 2 ) );
+        buff.replace ( pos, rx14.matchedLength(), ldetalle );
+        pos = 0;
+    } // end while
+
+    /// Buscamos SubQuery's por tratar
+    pos = 0;
+    QRegExp rx7 ( "<!--\\s*SUBQUERY\\s*=\\s*\"([^\"]*)\"\\s*-->(.*)<!--\\s*END\\s*SUBQUERY\\s*-->" );
+    rx7.setMinimal ( TRUE );
+    while ( ( pos = rx7.indexIn ( buff, pos ) ) != -1 ) {
+        QString ldetalle = trataQuery ( rx7.cap ( 1 ), rx7.cap ( 2 ), tipoEscape );
+        buff.replace ( pos, rx7.matchedLength(), ldetalle );
+        pos = 0;
+    } // end while
+
+    /// Buscamos Query's en condicional
+    pos = 0;
+    QRegExp rx11 ( "<!--\\s*IF\\s*=\\s*\"([^\"]*)\"\\s*-->(.*)<!--\\s*ELSE\\s*-->(.*)<!--\\s*END\\s*IF\\s*-->" );
+    rx11.setMinimal ( TRUE );
+    while ( ( pos = rx11.indexIn ( buff, pos ) ) != -1 ) {
+        QString ldetalle = trataIf ( rx11.cap ( 1 ), rx11.cap ( 2 ), rx11.cap ( 3 ) );
+        buff.replace ( pos, rx11.matchedLength(), ldetalle );
+        pos = 0;
+    } // end while
+
+    _depura ( "END BtTicket::trataTags", 0 );
+    return 1;
+}
+
+
+/// Trata las lineas de detalle encontradas dentro de los tags <!--LINEAS DETALLE-->
+/**
+\param det Texto de entrada para ser tratado por iteracion.
+\return Si el query tiene elementos lo devuelve el parametro. En caso contrario no devuelve nada.
+**/
+QString BtTicket::trataIfQuery ( const QString &query, const QString &datos )
+{
+    _depura ( "BtTicket::trataIfQuery", 0 );
+    QString result = "";
+    QString query1 = query;
+
+    /// Buscamos parametros en el query y los ponemos.
+    substrVars ( query1 );
+
+    /// Cargamos el query y lo recorremos
+    BlDbRecordSet *cur = mainCompany() ->loadQuery ( query1 );
+    if ( !cur ) return "";
+    if ( !cur->eof() ) {
+        result = datos;
+    } // end while
+    delete cur;
+    _depura ( "END BtTicket::trataIfQuery", 0 );
+    return result;
+}
+
+
+/// Trata las lineas de detalle encontradas dentro de los tags <!--LINEAS DETALLE-->
+/**
+\param det Texto de entrada para ser tratado por iteracion.
+\return Si el query tiene elementos lo devuelve el parametro. En caso contrario no devuelve nada.
+**/
+QString BtTicket::trataIf ( const QString &query, const QString &datos, const QString &datos1 )
+{
+    _depura ( "BtTicket::trataIfQuery", 0 );
+    QString result = "";
+    QString query1 = query;
+
+    /// Buscamos parametros en el query y los ponemos.
+    substrVars ( query1 );
+
+    QString query2 = "SELECT (" + query1 + ") AS res";
+    /// Cargamos el query y lo recorremos
+    BlDbRecordSet *cur = mainCompany() ->loadQuery ( query2 );
+    if ( !cur ) return "";
+    if ( !cur->eof() ) {
+        if ( cur->valor ( "res" ) == "t" ) {
+            result = datos;
+        } else {
+            result = datos1;
+        } // end if
+    } // end while
+    delete cur;
+    _depura ( "END BtTicket::trataIf", 0 );
+    return result;
+}
+
+
+/// Trata las lineas de detalle encontradas dentro de los tags <!--LINEAS DETALLE-->
+/**
+\param det Texto de entrada para ser tratado por iteracion.
+\return
+**/
+QString BtTicket::trataIncludeFile ( const QString &file, int tipoEscape )
+{
+    _depura ( "BtTicket::trataIncludeFile", 0 );
+    QString read = "";
+    QFile arch ( file );
+    if ( arch.open ( QIODevice::ReadOnly ) ) {
+        QTextStream in ( &arch );
+        while ( !in.atEnd() ) {
+            read += in.readLine();
+        } // end while
+        arch.close();
+    } // end if
+    /// Buscamos parametros en el query y los ponemos.
+    substrVars ( read, tipoEscape );
+
+
+    _depura ( "END BtTicket::trataIncludeFile", 0 );
+    return read;
+
+}
+
+/// Trata las lineas de detalle encontradas dentro de los tags <!--LINEAS DETALLE-->
+/**
+\param det Texto de entrada para ser tratado por iteracion.
+\return
+**/
+QString BtTicket::trataQuery ( const QString &query, const QString &datos, int tipoEscape )
+{
+    _depura ( "BtTicket::trataQuery", 0 );
+    QString result = "";
+    QString query1 = query;
+
+    /// Buscamos parametros en el query y los ponemos.
+    substrVars ( query1, tipoEscape );
+
+    /// Cargamos el query y lo recorremos
+    result = trataCursor ( mainCompany() ->loadQuery ( query1 ), datos, tipoEscape );
+    _depura ( "END BtTicket::trataQuery", 0 );
+    return result;
+
+}
+
+QString BtTicket::trataCursor ( BlDbRecordSet *cur, const QString &datos, int tipoEscape )
+{
+    _depura ( "BtTicket::trataCursor", 0 );
+    QString result = "";
+    
+    if ( !cur ) {
+        _depura ( "END BtTicket::trataCursor", 0 , "cur==NULL" );
+        return "";
+    };
+    while ( !cur->eof() ) {
+        QString salidatemp = datos;
+
+        /// Buscamos cadenas perdidas adicionales que puedan quedar por poner.
+        //_depura("salidatemp =",0,salidatemp);
+        QRegExp rx ( "\\[(\\w*)\\]" );
+        int pos =  0;
+        while ( ( pos = rx.indexIn ( salidatemp, pos ) ) != -1 ) {
+            //_depura("substituïm ",0,rx.cap(1));
+            if ( cur->numcampo ( rx.cap ( 1 ) ) != -1 ) {
+                switch ( tipoEscape ) {
+                case 1:
+                    salidatemp.replace ( pos, rx.matchedLength(), xmlEscape ( cur->valor ( rx.cap ( 1 ), -1, TRUE ) )  );
+                    break;
+                case 2:
+                    salidatemp.replace ( pos, rx.matchedLength(), pythonEscape ( cur->valor ( rx.cap ( 1 ), -1, TRUE ) )  );
+                    break;
+                default:
+                    salidatemp.replace ( pos, rx.matchedLength(), cur->valor ( rx.cap ( 1 ), -1, TRUE ) );
+                    break;
+                } // emd switch
+                pos = 0;
+            } else {
+                pos += rx.matchedLength();
+            }
+        } // end while
+
+        result += salidatemp;
+        cur->nextRecord();
+    } // end while
+    delete cur;
+    _depura ( "END BtTicket::trataCursor", 0 );
+    return result;
+}
+
+
+/// Trata las lineas de detalle encontradas dentro de los tags <!--LINEAS DETALLE-->
+/**
+\param det Texto de entrada para ser tratado por iteracion.
+\return Si el query tiene elementos lo devuelve el parametro. En caso contrario no devuelve nada.
+**/
+QString BtTicket::trataExists ( const QString &query, const QString &datos )
+{
+    _depura ( "BtTicket::trataExists", 0 );
+
+    QString result = "";
+    QString query1 = query;
+
+    /// Buscamos parametros en el query y los ponemos.
+    substrVars ( query1 );
+
+    QFile file ( query1 );
+    if ( file.exists() )
+        result = datos;
+    _depura ( "END BtTicket::trataExists", 0 );
+
+    return result;
+}
+
+
+int BtTicket::generaRML ( void )
+{
+    _depura ( "BtTicket::generaRML", 0 );
+    int err = BlDbRecord::generaRML();
+    _depura ( "END BtTicket::generaRML", 0 );
+    return err;
+}
+
+///
+/**
+**/
+int BtTicket::generaRML ( const QString &arch )
+{
+    _depura ( "BtTicket::generaRML", 0, arch );
+
+    /// Vaciamos las variables de RML
+    m_variables.clear();
+
+    /// Ponemos en m_variables CONF_DBNAME y CONF_DBUSER
+    m_variables["CONF_DBNAME"] = mainCompany()->dbName();
+    m_variables["CONF_DBUSER"] = mainCompany()->currentUser();
+
+    /// Disparamos los plugins
+    int res = g_plugins->lanza ( "BtTicket_generaRML", this );
+    if ( res != 0 ) {
+        return 1;
+    } // end if
+
+    res = BlDbRecord::generaRML ( arch );
+
+    _depura ( "END BtTicket::generaRML", 0 );
+    return res;
+}
+
+
+
+
 
