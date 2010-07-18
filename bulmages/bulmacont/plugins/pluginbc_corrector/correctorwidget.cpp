@@ -98,14 +98,14 @@ void correctorwidget::on_mui_corregir_clicked()
     } // end while
     delete cur;
 
-    /// Calculo de la ecuacion fundamental contable A+I = P+N+G
+    /// Calculo de la ecuacion fundamental contable A+G = P+N+I
     /// -------------------------------------------------------
     query = " SELECT asiento.idasiento AS idasiento, asiento.ordenasiento AS ordenasiento, ingresos, activos, gastos, netos, pasivos FROM asiento ";
-    query += " LEFT JOIN (SELECT idasiento, sum(apunte.debe) - sum(apunte.haber) AS ingresos FROM cuenta, apunte WHERE apunte.idcuenta = cuenta.idcuenta AND cuenta.tipocuenta = 4 GROUP BY idasiento) AS ing ON asiento.idasiento = ing.idasiento ";
-    query += " LEFT JOIN (SELECT idasiento, sum(apunte.debe) - sum(apunte.haber) AS gastos FROM cuenta, apunte WHERE apunte.idcuenta = cuenta.idcuenta AND cuenta.tipocuenta = 5 GROUP BY idasiento) AS gas ON asiento.idasiento = gas.idasiento ";
-    query += " LEFT JOIN (SELECT idasiento, sum(apunte.debe) - sum(apunte.haber) AS activos FROM cuenta, apunte WHERE apunte.idcuenta = cuenta.idcuenta AND cuenta.tipocuenta = 1 GROUP BY idasiento) AS act ON act.idasiento = asiento.idasiento ";
-    query += " LEFT JOIN (SELECT idasiento, sum(apunte.debe) - sum(apunte.haber) AS pasivos FROM cuenta, apunte WHERE apunte.idcuenta = cuenta.idcuenta AND cuenta.tipocuenta = 2 GROUP BY idasiento) AS pas ON pas.idasiento = asiento.idasiento ";
-    query += " LEFT JOIN (SELECT idasiento, sum(apunte.debe) - sum(apunte.haber) AS netos FROM cuenta, apunte WHERE apunte.idcuenta = cuenta.idcuenta AND cuenta.tipocuenta = 3 GROUP BY idasiento) AS net ON net.idasiento = asiento.idasiento ";
+    query += " LEFT JOIN (SELECT idasiento, COALESCE(sum(apunte.debe),0) - COALESCE(sum(apunte.haber),0) AS ingresos FROM cuenta, apunte WHERE apunte.idcuenta = cuenta.idcuenta AND cuenta.tipocuenta = 4 GROUP BY idasiento) AS ing ON asiento.idasiento = ing.idasiento ";
+    query += " LEFT JOIN (SELECT idasiento, COALESCE(sum(apunte.debe),0) - COALESCE(sum(apunte.haber),0) AS gastos FROM cuenta, apunte WHERE apunte.idcuenta = cuenta.idcuenta AND cuenta.tipocuenta = 5 GROUP BY idasiento) AS gas ON asiento.idasiento = gas.idasiento ";
+    query += " LEFT JOIN (SELECT idasiento, COALESCE(sum(apunte.debe),0) - COALESCE(sum(apunte.haber),0) AS activos FROM cuenta, apunte WHERE apunte.idcuenta = cuenta.idcuenta AND cuenta.tipocuenta = 1 GROUP BY idasiento) AS act ON act.idasiento = asiento.idasiento ";
+    query += " LEFT JOIN (SELECT idasiento, COALESCE(sum(apunte.debe),0) - COALESCE(sum(apunte.haber),0) AS pasivos FROM cuenta, apunte WHERE apunte.idcuenta = cuenta.idcuenta AND cuenta.tipocuenta = 2 GROUP BY idasiento) AS pas ON pas.idasiento = asiento.idasiento ";
+    query += " LEFT JOIN (SELECT idasiento, COALESCE(sum(apunte.debe),0) - COALESCE(sum(apunte.haber),0) AS netos FROM cuenta, apunte WHERE apunte.idcuenta = cuenta.idcuenta AND cuenta.tipocuenta = 3 GROUP BY idasiento) AS net ON net.idasiento = asiento.idasiento ";
     query += " ORDER BY ordenasiento";
     cur = dbConnection->loadQuery ( query );
     while ( !cur->eof() ) {
@@ -115,7 +115,7 @@ void correctorwidget::on_mui_corregir_clicked()
         act = cur->valor ( "activos" ).toFloat();
         pas = cur->valor ( "pasivos" ).toFloat();
         net = cur->valor ( "netos" ).toFloat();
-        if ( ( -act - gas - pas - net + ing ) > 0.01 ) {
+        if ( abs( act + gas + pas + net + ing ) > 0.01 ) {
             QString cadena;
             cadena = "<img src='" + g_confpr->valor ( CONF_PROGDATA ) + "icons/messagebox_critical.png'>&nbsp;&nbsp;<B><I>Error critico:</I></B><BR>El asiento num. <B>" + cur->valor ( "ordenasiento" ) + "</B> no cumple la ecuacion fundamental." + QString::number ( act ) + " + " + QString::number ( gas ) + " = " + QString::number ( pas ) + " + " + QString::number ( net ) + " + " + QString::number ( ing );
             agregarError ( cadena, "asiento", "idasiento=" + cur->valor ( "idasiento" ) );

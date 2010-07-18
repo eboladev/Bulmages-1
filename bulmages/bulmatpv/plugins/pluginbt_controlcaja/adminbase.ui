@@ -42,7 +42,7 @@
      </property>
      <property name="icon">
       <iconset resource="../../../bulmages.qrc">
-       <normaloff>:/Genericos48x48/images/png/48x48/i_bulmages_pos_x.48x48.png</normaloff>:/Genericos48x48/images/png/48x48/i_bulmages_pos_x.48x48.png</iconset>
+       <normaloff>:/Genericos48x48/images/oxygen/actions/48x48/cash_X.png</normaloff>:/Genericos48x48/images/oxygen/actions/48x48/cash_X.png</iconset>
      </property>
      <property name="iconSize">
       <size>
@@ -77,7 +77,7 @@
      </property>
      <property name="icon">
       <iconset resource="../../../bulmages.qrc">
-       <normaloff>:/Genericos48x48/images/png/48x48/i_bulmages_pos_z.48x48.png</normaloff>:/Genericos48x48/images/png/48x48/i_bulmages_pos_z.48x48.png</iconset>
+       <normaloff>:/Genericos48x48/images/oxygen/actions/48x48/cash_Z.png</normaloff>:/Genericos48x48/images/oxygen/actions/48x48/cash_Z.png</iconset>
      </property>
      <property name="iconSize">
       <size>
