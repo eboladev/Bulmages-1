@@ -485,14 +485,19 @@ void BlFormList::trataPermisos ( QString nomtabla )
         /// Buscamos los permisos que tiene el usuario y desactivamos botones.
         QToolButton * b = findChild<QToolButton *> ( "mui_editar" );
         if ( b ) b->setDisabled ( TRUE );
-        QToolButton *c = findChild<QToolButton *> ( "mui_borrar" );
-        if ( c ) c->setDisabled ( TRUE );
         QToolButton *e = findChild<QToolButton *> ( "mui_importar" );
         if ( e ) e->setDisabled ( TRUE );
         QToolButton *d = findChild<QToolButton *> ( "mui_exportar" );
         if ( d ) d->setDisabled ( TRUE );
     } // end if
 
+
+
+    if ( !mainCompany() ->hasTablePrivilege ( nomtabla, "DELETE" ) ) {
+	  /// Buscamos los permisos que tiene el usuario y desactivamos botones.
+	  QToolButton *b = findChild<QToolButton *> ( "mui_borrar" );
+	  if ( b ) b->setDisabled ( TRUE );
+    } // end if
 
     _depura ( "END BlFormList::trataPermisos", 0 );
 }
