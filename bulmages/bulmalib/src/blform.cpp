@@ -1099,7 +1099,7 @@ int BlForm::trataTags ( QString &buff, int tipoEscape )
         pos = 0;
     } // end while
 
-    /// Buscamos Query's en condicional
+    /// Buscamos Existencia de Ficheros
     pos = 0;
     QRegExp rx9 ( "<!--\\s*EXISTS\\s*FILE\\s*=\\s*\"([^\"]*)\"\\s*-->(.*)<!--\\s*END\\s*EXISTS\\s*-->" );
     rx9.setMinimal ( TRUE );
@@ -1129,7 +1129,7 @@ int BlForm::trataTags ( QString &buff, int tipoEscape )
         pos = 0;
     } // end while
 
-    /// Buscamos Query's en condicional
+    /// Buscamos SubQuery's en condicional
     pos = 0;
     QRegExp rx14 ( "<!--\\s*IF\\s*SUBQUERY\\s*=\\s*\"([^\"]*)\"\\s*-->(.*)<!--\\s*END\\s*IF\\s*SUBQUERY\\s*-->" );
     rx14.setMinimal ( TRUE );
@@ -1139,7 +1139,7 @@ int BlForm::trataTags ( QString &buff, int tipoEscape )
         pos = 0;
     } // end while
 
-    /// Buscamos Query's por tratar
+    /// Buscamos SubQuery's por tratar
     pos = 0;
     QRegExp rx7 ( "<!--\\s*SUBQUERY\\s*=\\s*\"([^\"]*)\"\\s*-->(.*)<!--\\s*END\\s*SUBQUERY\\s*-->" );
     rx7.setMinimal ( TRUE );

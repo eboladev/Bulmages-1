@@ -221,8 +221,10 @@ public:
     void printQRCode ( qrModel model, int dotSize, qrErrorCorrection error, unsigned short numData, char* data ); //1<=dotSize<=16
     void printTest();
 
+    QByteArray buffer();
+
 private:
-    QByteArray buffer;
-    QString device;
+    QByteArray m_buffer;
+    QString m_device;
 };
 #endif

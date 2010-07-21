@@ -139,9 +139,11 @@ public:
     virtual void imprimir();
     virtual int cargar ( QString );
     virtual int trataTags ( QString &buff, int tipoEscape = 0 );
+    virtual int trataTags ( QByteArray &buff, int tipoEscape = 0 );
     virtual QString story ( void );
     virtual int generaRML ( const QString & );
     virtual void substrConf( QString &buff) ;
+    virtual void substrConf( QByteArray &buff) ;
     virtual QString nombrePlantilla(void);
     virtual int generaRML ( void );
     virtual QString exportXML();

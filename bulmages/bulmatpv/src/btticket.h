@@ -77,14 +77,43 @@ public:
 
     virtual int generaRML ( const QString & );
     virtual int generaRML ( void );
-    virtual int trataTags ( QString &buff, int tipoEscape = 0 );
-    virtual QString trataIncludeFile ( const QString &file, int tipoEscape = 0 );
-    virtual QString trataQuery ( const QString &query, const QString &datos, int tipoEscape = 0 );
-    QString trataCursor ( BlDbRecordSet *cur, const QString &datos, int tipoEscape = 0 );
-    virtual QString trataIfQuery ( const QString &query, const QString &datos );
-    virtual QString trataIf ( const QString &query, const QString &datos, const QString &datos1 );
-    virtual QString trataExists ( const QString &query, const QString &datos );
-    void substrVars(QString &buff, int tipoEscape = 0);
+    virtual int trataTags ( QByteArray &buff, int tipoEscape = 0 );
+    virtual QByteArray trataIncludeFile ( const QString &file, int tipoEscape = 0 );
+    virtual QByteArray trataIncludeImg ( const QString &file, int tipoEscape = 0 );
+    virtual QByteArray trataSetCharacterPrintMode( const QString &param, int tipoEscape = 0 );
+    virtual QByteArray trataSetCharacterSpacing( const QString &param, int tipoEscape = 0 );
+    virtual QByteArray trataSetCharacterCodeTable( const QString &param, int tipoEscape = 0 );
+    virtual QByteArray trataSetUnderlineMode( const QString &param, int tipoEscape = 0 );
+    virtual QByteArray trataSetCharacterSize( const QString &param, int tipoEscape = 0 );
+    virtual QByteArray trataSetSmoothing( const QString &param, int tipoEscape = 0 );
+    virtual QByteArray trataSetDoubleStrike( const QString &param, int tipoEscape = 0 );
+    virtual QByteArray trataTurnUpsideDown( const QString &param, int tipoEscape = 0 );
+    virtual QByteArray trataTurn90CWRotation( const QString &param, const QString &param1, int tipoEscape = 0 );
+    virtual QByteArray trataQuery ( const QString &query, const QByteArray &datos, int tipoEscape = 0 );
+    virtual QByteArray trataTurnWhiteBlack( const QString &param, int tipoEscape = 0 );
+    virtual QByteArray trataSetColor( const QString &param, int tipoEscape = 0 );
+    virtual QByteArray trataHorizontalTab( int tipoEscape = 0 );
+    virtual QByteArray trataSetHorizontalTabPos( const QString &param, const QString &param1, int tipoEscape = 0 );
+    virtual QByteArray trataSetLeftMargin( const QString &param, int tipoEscape = 0 );
+    virtual QByteArray trataSetPrintingAreaWidth( const QString &param, int tipoEscape = 0 );
+    virtual QByteArray trataSetJustification( const QString &param, int tipoEscape = 0 );
+    virtual QByteArray trataSetHAbsolutePos( const QString &param, int tipoEscape = 0 );
+    virtual QByteArray trataSetHRelativePos( const QString &param, int tipoEscape = 0 );
+    virtual QByteArray trataSetBarcodeFormat( const QString &param, const QString &param1, const QString &param2, const QString &param3, int tipoEscape = 0 );
+    virtual QByteArray trataPrintBarCode( const QString &param, const QString &param1, const QString &param2, int tipoEscape = 0 );
+    virtual QByteArray trataSetBarCodeWidth( const QString &param, int tipoEscape = 0 );
+    virtual QByteArray trataSetBarCodeHeight( const QString &param, int tipoEscape = 0 );
+    virtual QByteArray trataSelectPageMode(int tipoEscape = 0 );
+    virtual QByteArray trataSetPrintArea( const QString &param, const QString &param1, const QString &param2, const QString &param3, int tipoEscape = 0 );
+    virtual QByteArray trataSetPrintDirection( const QString &param, int tipoEscape = 0 );
+    virtual QByteArray trataSetVAbsolutePos( const QString &param, int tipoEscape = 0 );
+    virtual QByteArray trataSetVRelativePos( const QString &param, int tipoEscape = 0 );
+
+    QByteArray trataCursor ( BlDbRecordSet *cur, const QByteArray &datos, int tipoEscape = 0 );
+    virtual QByteArray trataIfQuery ( const QString &query, const QByteArray &datos );
+    virtual QByteArray trataIf ( const QString &query, const QByteArray &datos, const QByteArray &datos1 );
+    virtual QByteArray trataExists ( const QString &query, const QByteArray &datos );
+    void substrVars(QByteArray &buff, int tipoEscape = 0);
 
 
 public slots:

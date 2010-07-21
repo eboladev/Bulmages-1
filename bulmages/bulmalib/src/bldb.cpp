@@ -863,6 +863,18 @@ void BlDbRecord::substrConf ( QString &buff )
     } // end for
 }
 
+void BlDbRecord::substrConf ( QByteArray &buff )
+{
+    ///\TODO: Este tratamiento esta repetido en BlForm::trataTags y en PedidoProveedorView::imprimir.
+    ///       Se puede simplificar?
+    /// Tratamos la sustitucion de los valores de configuracion.
+    for ( int i = 0; i < 500; i++ ) {
+        if ( g_confpr->nombre ( i ) != "" ) {
+            buff.replace ( QString("[" + g_confpr->nombre ( i ) + "]").toAscii(), g_confpr->valor ( i ).toAscii() );
+        } // end if
+    } // end for
+}
+
 int BlDbRecord::trataTags ( QString &buff, int tipoEscape )
 {
     QString fitxersortidatxt = "";
@@ -873,6 +885,18 @@ int BlDbRecord::trataTags ( QString &buff, int tipoEscape )
 
     return 1;
 }
+
+int BlDbRecord::trataTags ( QByteArray &buff, int tipoEscape )
+{
+    QString fitxersortidatxt = "";
+
+    substrConf ( buff );
+    buff.replace ( "[ficha]", m_tablename.toAscii() );
+    buff.replace ( "[story]", story().toAscii() );
+
+    return 1;
+}
+
 
 
 /// Este metodo es usado en las impresiones con RML para generar una cuadricula con el registro.
@@ -995,6 +1019,7 @@ int BlDbRecord::generaRML ( const QString &arch )
     file.open ( QIODevice::ReadOnly );
     QTextStream stream ( &file );
     stream.setCodec ( codec );
+if (tipoescape != 0) {
     QString buff = stream.readAll();
     file.close();
 
@@ -1043,18 +1068,31 @@ int BlDbRecord::generaRML ( const QString &arch )
                         } else {
                             // este caso es mas normal, caracter entre 0 i 2^16
                             codepoint = ( *i ).unicode();
-                        }
-                    }
+                        } // end if
+                    } // end if
                     _depura ( ( QString ) "escric " + *i + " com " + codepoint, 0 );
                     stream << "&#" << codepoint << ";" ;
-                }
-            }
+                } // end if
+            } // end for
             _depura ( "END Llistat amb referencies de caracters", 0 );
         }
         file.close();
-
     } // end if
 
+} else {
+    QByteArray buff = file.readAll();
+    file.close();
+
+    /// Hacemos el tratamiento avanzado de TAGS
+    if ( !trataTags ( buff, tipoescape ) ) {
+        return 0;
+    } // end if
+
+    if ( file.open ( QIODevice::WriteOnly ) ) {
+        file.write(buff);
+        file.close();
+    } // end if
+} // end if
     _depura ( "END BlDbRecord::generaRML", 0 );
     return 1;
 }
