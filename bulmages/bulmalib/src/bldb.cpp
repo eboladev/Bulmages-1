@@ -995,7 +995,7 @@ int BlDbRecord::generaRML ( const QString &arch )
         codec = QTextCodec::codecForName ( xmlReader.documentEncoding().toString().toUtf8() );
         if ( !codec ) { // sembla que no va, per UTF32 (=UCS4)
             _depura ( "El fitxer " + archivod + " te una codificacio (" +
-                      xmlReader.documentEncoding().toString() + ") que no entenem", 2 );
+                      xmlReader.documentEncoding().toString() + ") que no entenem", 0 );
 //             file.close();
 //             return 0;
             codec = QTextCodec::codecForName ( "UTF-8" );

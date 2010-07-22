@@ -106,6 +106,7 @@ void ArtGraficosDb::cellClicked ( int row, int column )
 
     // Celda vacia. No hacemos nada.
     if ( label == NULL ) {
+	_depura ( "END ArtGraficosDb::cellClicked", 0, "Celda Vacia" );
         return;
     }
 

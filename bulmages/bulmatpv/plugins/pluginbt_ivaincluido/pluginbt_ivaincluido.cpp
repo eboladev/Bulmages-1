@@ -84,6 +84,7 @@ int BtTicket_ponerPrecio_Post ( BtTicket *tick ) {
     return 0;
 }
 
+/* COMO AHORA SE USAN PLANTILLAS TODO ESTO SOBRA 
 int BtTicket_imprimir(BtTicket *tick)
 {
     _depura ( "PluginBt_IvaIncluido::BtTicket_imprimir", 0 );
@@ -307,6 +308,9 @@ int BtTicket_imprimir(BtTicket *tick)
     _depura ( "END PluginBt_IvaIncluido::BtTicket_imprimir", 0 );    
     return 1;
 }
+
+
+*/
 
 int BtCompany_z(BtCompany * emp)
 {

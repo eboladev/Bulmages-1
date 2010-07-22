@@ -108,6 +108,10 @@ public:
     virtual QByteArray trataSetPrintDirection( const QString &param, int tipoEscape = 0 );
     virtual QByteArray trataSetVAbsolutePos( const QString &param, int tipoEscape = 0 );
     virtual QByteArray trataSetVRelativePos( const QString &param, int tipoEscape = 0 );
+    virtual QByteArray trataCutPaper( const QString &param, int tipoEscape = 0 );
+    virtual QByteArray trataCutPaperAndFeed( const QString &param,  const QString &param1, int tipoEscape = 0 );
+    virtual QByteArray trataRightJustified( const QString &param, const QString &param1, const QString &param2, const QString &param3, int tipoEscape = 0 );
+    virtual QByteArray trataLeftJustified( const QString &param, const QString &param1, const QString &param2, const QString &param3, int tipoEscape = 0 );
 
     QByteArray trataCursor ( BlDbRecordSet *cur, const QByteArray &datos, int tipoEscape = 0 );
     virtual QByteArray trataIfQuery ( const QString &query, const QByteArray &datos );

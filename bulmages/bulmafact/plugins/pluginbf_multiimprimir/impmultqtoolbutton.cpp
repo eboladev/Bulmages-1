@@ -439,7 +439,7 @@ void ImpQToolButton::click()
             } // end for
         } // end if
 
-	    QString comando = "cupsdoprint -P" +g_confpr->valor(CONF_CUPS_DEFAULT_PRINTER) + " " + res;
+	    QString comando = "lp -d" +g_confpr->valor(CONF_CUPS_DEFAULT_PRINTER) + " " + res;
 	    system ( comando.toAscii().data() );
 	    comando = "rm " + res;
 	    system ( comando.toAscii().data() );
