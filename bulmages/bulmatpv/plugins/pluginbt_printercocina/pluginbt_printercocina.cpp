@@ -231,7 +231,7 @@ int impresionCocina(BtTicket *tick) {
 
        /// Si realmente hay algo que imprimir entonces lo sacamos.
        if (hayalgoqueimprimir) {
-              QString comando = "cupsdoprint -P " + curimpresoras->valor("colaprintercocina") +" " +g_confpr->valor(CONF_DIR_USER) + "bulmatpv_cocina.txt";
+              QString comando = "lp -d " + curimpresoras->valor("colaprintercocina") +" " +g_confpr->valor(CONF_DIR_USER) + "bulmatpv_cocina.txt";
               system ( comando.toAscii().data() );
        } // end if
 

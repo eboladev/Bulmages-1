@@ -1,0 +1,31 @@
+<!-- SETJUSTIFICATION "CENTER" -->INFORME X
+<!-- QUERY="SELECT * FROM configuracion WHERE nombre='NombreEmpresa'" -->[valor]<!-- END QUERY --> <!-- QUERY="SELECT * FROM configuracion WHERE nombre='CIF'" -->[valor]<!-- END QUERY -->
+<!-- QUERY="SELECT * FROM configuracion WHERE nombre='DireccionCompleta'" -->[valor]<!-- END QUERY -->
+<!-- QUERY="SELECT * FROM configuracion WHERE nombre='CodPostal'" -->[valor]<!-- END QUERY -->     <!-- QUERY="SELECT * FROM configuracion WHERE nombre='Ciudad'" -->[valor]<!-- END QUERY -->
+<!-- QUERY="SELECT * FROM configuracion WHERE nombre='Provincia'" -->[valor]<!-- END QUERY -->
+<!-- QUERY="SELECT * FROM configuracion WHERE nombre='Telefono'" -->[valor]<!-- END QUERY -->
+<!-- QUERY="SELECT now()::DATE AS fecha" -->[fecha]<!-- END QUERY -->   <!-- QUERY="SELECT now()::TIME AS hora" -->[hora]<!-- END QUERY -->
+<!-- QUERY="SELECT * FROM trabajador WHERE idtrabajador=[idtrabajador]" -->[nomtrabajador]<!-- END QUERY -->
+<!-- QUERY="SELECT * FROM cliente WHERE idcliente=[idcliente]" -->[cifcliente] [nomcliente]<!-- END QUERY -->
+<!-- QUERY="SELECT * FROM almacen WHERE idalmacen=[idalmacen]" -->[nomalmacen]<!-- END QUERY -->
+<!-- TURNWHITEBLACK "1"-->
+ Uds. PRODUCTO               P.U. IMPORTE
+<!-- TURNWHITEBLACK "0"-->
+<!-- QUERY="SELECT *, (cantlalbaran*pvpivainclalbaran)::NUMERIC(12,2) AS subtotal FROM lalbaran  WHERE idalbaran=[idalbaran]" --><!-- RIGHTJUSTIFIED "[cantlalbaran]" "5" " " "TRUE"--> <!-- LEFTJUSTIFIED "[desclalbaran]" "20" " " "TRUE"--> <!-- RIGHTJUSTIFIED "[pvpivainclalbaran]" "6" " " "TRUE" --> <!-- RIGHTJUSTIFIED "[subtotal]" "6" " " "TRUE" -->
+<!-- END QUERY -->
+<!-- TURNWHITEBLACK "1"-->
+ Uds. PRODUCTO               P.U. IMPORTE
+<!-- TURNWHITEBLACK "0"-->
+
+<!-- SETJUSTIFICATION "RIGHT" --><!-- SETUNDERLINEMODE "0" --><!-- SETCHARACTERSIZE "119" --><!-- SETCHARACTERPRINTMODE " DOUBLE_WIDTH DOUBLE_HEIGHT CHARACTER_FONTA_SELECTED" -->
+<!-- QUERY="SELECT sum(cantlalbaran*pvpivainclalbaran)::NUMERIC(12,2) AS subtotal FROM lalbaran  WHERE idalbaran=[idalbaran]" -->Total: <!-- RIGHTJUSTIFIED "[subtotal]" "6" " " "TRUE" --><!-- END QUERY -->
+
+<!-- SETCHARACTERSIZE "0" --><!-- SETJUSTIFICATION "CENTER" -->
+   GRACIAS POR SU VISITA
+   
+<!-- SETBARCODEFORMAT "2" "50" "BOTH" "FONTB" --><!-- PRINTBARCODE "CODE39" "6" "[refalbaran]" -->
+
+
+<!-- CUTPAPERANDFEED "TRUE" "5"-->
+
+

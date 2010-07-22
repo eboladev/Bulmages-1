@@ -38,7 +38,7 @@ extern "C" PLUGINBT_IVAINCLUIDO_EXPORT int BtTicket_agregarLinea_Post ( BtTicket
 extern "C" PLUGINBT_IVAINCLUIDO_EXPORT int BtTicket_ponerPrecio_Post ( BtTicket * );
 // extern "C" PLUGINBT_IVAINCLUIDO_EXPORT int BtTicket_imprimir ( BtTicket * );
 extern "C" PLUGINBT_IVAINCLUIDO_EXPORT int ArticuloListSubForm_ArticuloListSubForm_Post(ArticuloListSubForm *);
-extern "C" PLUGINBT_IVAINCLUIDO_EXPORT int BtCompany_x ( BtCompany * );
+//extern "C" PLUGINBT_IVAINCLUIDO_EXPORT int BtCompany_x ( BtCompany * );
 extern "C" PLUGINBT_IVAINCLUIDO_EXPORT int BtCompany_z ( BtCompany * );
 
 

@@ -192,7 +192,21 @@ void BtCompany::z()
         runQuery ( query );
 
         commit();
+	
+	m_ticketActual -> generaRML("informe_Z.txt");
 
+	if (!g_confpr->valor ( CONF_CASHBOX_FILE).isEmpty() && g_confpr->valor ( CONF_CASHBOX_FILE) != "/dev/null") {
+	    QString comando = "cat " + g_confpr->valor(CONF_DIR_USER) + "informe_Z.txt" + "  > " + g_confpr->valor ( CONF_CASHBOX_FILE );
+	    system ( comando.toAscii().data() );
+	} else if (g_confpr->valor(CONF_CUPS_DEFAULT_PRINTER).isEmpty() || g_confpr->valor(CONF_CUPS_DEFAULT_PRINTER) == "None") {
+	    _depura("Debe establecer el parametro CONF_CUPS_DEFAULT_PRINTER o CONF_CASHBOX_FILE para abrir el cajon " , 2);
+	} else {
+	    QString comando = "lp -d" + g_confpr->valor(CONF_CUPS_DEFAULT_PRINTER) + " " + g_confpr->valor(CONF_DIR_USER) + "informe_Z.txt";
+	    system ( comando.toAscii().data() );
+	} // end if 
+	
+	
+/*
         QString querycont = "SELECT count(idalbaran) AS numtickets, sum(totalalbaran) as total FROM albaran WHERE idz = " + idz + " AND ticketalbaran = TRUE AND idforma_pago = " + g_confpr->valor ( CONF_IDFORMA_PAGO_CONTADO );
         BlDbRecordSet *cur1 = loadQuery ( querycont );
         QString numticketscont = cur1->valor ( "numtickets" );
@@ -403,7 +417,7 @@ void BtCompany::z()
         /// El corte de papel.
         file.write ( "\x1D\x56\x01", 3 );
         file.close();
-        
+*/        
         curfechas->nextRecord();
     
     } // end while
@@ -421,6 +435,20 @@ void BtCompany::x()
     if ( g_plugins->lanza ( "BtCompany_x", this ) )
         return;
 
+    m_ticketActual -> generaRML("informe_X.txt");
+
+    if (!g_confpr->valor ( CONF_CASHBOX_FILE).isEmpty() && g_confpr->valor ( CONF_CASHBOX_FILE) != "/dev/null") {
+        QString comando = "cat " + g_confpr->valor(CONF_DIR_USER) + "informe_X.txt" + "  > " + g_confpr->valor ( CONF_CASHBOX_FILE );
+        system ( comando.toAscii().data() );
+    } else if (g_confpr->valor(CONF_CUPS_DEFAULT_PRINTER).isEmpty() || g_confpr->valor(CONF_CUPS_DEFAULT_PRINTER) == "None") {
+        _depura("Debe establecer el parametro CONF_CUPS_DEFAULT_PRINTER o CONF_CASHBOX_FILE para abrir el cajon " , 2);
+    } else {
+        QString comando = "lp -d" + g_confpr->valor(CONF_CUPS_DEFAULT_PRINTER) + " " + g_confpr->valor(CONF_DIR_USER) + "informe_X.txt";
+        system ( comando.toAscii().data() );
+    } // end if    
+
+
+/*
     QString query = "SELECT count(idalbaran) AS numtickets, sum(totalalbaran) as total FROM albaran WHERE idz IS NULL AND ticketalbaran = TRUE";
     BlDbRecordSet *cur = loadQuery ( query );
     QString numtickets = cur->valor ( "numtickets" );
@@ -574,7 +602,7 @@ void BtCompany::x()
     /// El corte de papel.
     file.write ( "\x1D\x56\x01", 3 );
     file.close();
-
+*/
     _depura( "END BtCompany::x", 0 );
 }
 
