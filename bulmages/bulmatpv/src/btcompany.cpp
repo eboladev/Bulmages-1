@@ -159,7 +159,7 @@ void BtCompany::z()
     if ( curFechaUltimaZ->numregistros() == 0) {
         queryfechas = "SELECT DISTINCT fechaalbaran FROM albaran WHERE idz IS NULL ORDER BY fechaalbaran ASC";
     } else {
-        queryfechas = "SELECT DISTINCT fechaalbaran FROM albaran WHERE idz IS NULL AND fechaalbaran > '" + curFechaUltimaZ->valor("fechaz") + "' ORDER BY fechaalbaran ASC";
+        queryfechas = "SELECT DISTINCT fechaalbaran FROM albaran WHERE idz IS NULL AND fechaalbaran >= '" + curFechaUltimaZ->valor("fechaz") + "' ORDER BY fechaalbaran ASC";
     } // end if
     
     /// Buscamos las fechas de los tickets que quedan pendientes de hacer Z

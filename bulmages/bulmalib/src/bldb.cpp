@@ -856,7 +856,7 @@ void BlDbRecord::substrConf ( QString &buff )
     ///\TODO: Este tratamiento esta repetido en BlForm::trataTags y en PedidoProveedorView::imprimir.
     ///       Se puede simplificar?
     /// Tratamos la sustitucion de los valores de configuracion.
-    for ( int i = 0; i < 500; i++ ) {
+    for ( int i = 0; i < 1000; i++ ) {
         if ( g_confpr->nombre ( i ) != "" ) {
             buff.replace ( "[" + g_confpr->nombre ( i ) + "]", g_confpr->valor ( i ) );
         } // end if
@@ -868,7 +868,7 @@ void BlDbRecord::substrConf ( QByteArray &buff )
     ///\TODO: Este tratamiento esta repetido en BlForm::trataTags y en PedidoProveedorView::imprimir.
     ///       Se puede simplificar?
     /// Tratamos la sustitucion de los valores de configuracion.
-    for ( int i = 0; i < 500; i++ ) {
+    for ( int i = 0; i < 1000; i++ ) {
         if ( g_confpr->nombre ( i ) != "" ) {
             buff.replace ( QString("[" + g_confpr->nombre ( i ) + "]").toAscii(), g_confpr->valor ( i ).toAscii() );
         } // end if

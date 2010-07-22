@@ -1542,7 +1542,10 @@ int BtTicket::trataTags ( QByteArray &buff, int tipoEscape )
     while ( ( pos = rx69.indexIn ( buff, 0 ) ) != -1 ) {
         QByteArray ldetalle = trataSetUnderlineMode ( rx69.cap ( 1 ), tipoEscape );
         buff.replace ( pos, rx69.matchedLength(), ldetalle );
-        pos = buff.indexOf("<!--");
+	buff = cadant + buff;
+        pos = buff.indexOf("<!-- SETUNDERLINEMODE");
+	cadant = buff.left(pos);
+	buff = buff.right(buff.length()-pos);
     } // end while
     buff = cadant + buff;
     

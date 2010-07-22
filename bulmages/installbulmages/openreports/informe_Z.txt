@@ -1,30 +1,43 @@
-<!-- SETJUSTIFICATION "CENTER" -->INFORME Z
+<!-- SETUNDERLINEMODE "0" --><!-- SETCHARACTERSIZE "119" --><!-- SETCHARACTERPRINTMODE "DOUBLE_WIDTH DOUBLE_HEIGHT CHARACTER_FONTA_SELECTED" --><!-- SETJUSTIFICATION "CENTER" -->INFORME Z
+<!-- SETCHARACTERPRINTMODE "DOUBLE_HEIGHT CHARACTER_FONTB_SELECTED" -->
+<!-- SETJUSTIFICATION "LEFT" -->
+<!-- QUERY="SELECT count(idalbaran)::NUMERIC(12,2) AS numtickets FROM albaran WHERE idz IN (SELECT max(idz) AS id FROM z) AND ticketalbaran = TRUE AND idforma_pago = [CONF_IDFORMA_PAGO_CONTADO]" -->
+<!-- SUBQUERY="SELECT sum(cantlalbaran) AS unidades, sum(pvpivainclalbaran * cantlalbaran)::NUMERIC(12,2) as total FROM lalbaran NATURAL LEFT JOIN articulo  WHERE idalbaran IN (SELECT idalbaran FROM albaran WHERE idz IN (SELECT max(idz) AS id FROM z) AND idforma_pago = [CONF_IDFORMA_PAGO_CONTADO])" -->
+<!-- LEFTJUSTIFIED "Total Tickets Contado:" "35" " " "TRUE"--> <!-- RIGHTJUSTIFIED "[numtickets]" "10" " " "TRUE" -->
+<!-- LEFTJUSTIFIED "Unidades Vendidas Contado:" "35" " " "TRUE"--> <!-- RIGHTJUSTIFIED "[unidades]" "10" " " "TRUE" -->
+<!-- LEFTJUSTIFIED "Total Vendido Contado:" "35" " " "TRUE"--> <!-- RIGHTJUSTIFIED "[total]" "10" " " "TRUE" --><!-- END SUBQUERY --><!-- END QUERY --> 
+
+<!-- QUERY="SELECT count(idalbaran)::NUMERIC(12,2) AS numtickets FROM albaran WHERE idz IN (SELECT max(idz) AS id FROM z) AND ticketalbaran = TRUE AND idforma_pago = [CONF_IDFORMA_PAGO_VISA]" -->
+<!-- SUBQUERY="SELECT sum(cantlalbaran) AS unidades, sum(pvpivainclalbaran * cantlalbaran)::NUMERIC(12,2) as total FROM lalbaran NATURAL LEFT JOIN articulo  WHERE idalbaran IN (SELECT idalbaran FROM albaran WHERE idz IN (SELECT max(idz) AS id FROM z) AND idforma_pago = [CONF_IDFORMA_PAGO_VISA])" -->
+<!-- LEFTJUSTIFIED "Total Tickets Visa:" "35" " " "TRUE"--> <!-- RIGHTJUSTIFIED "[numtickets]" "10" " " "TRUE" -->
+<!-- LEFTJUSTIFIED "Unidades Vendidas Visa:" "35" " " "TRUE"--> <!-- RIGHTJUSTIFIED "[unidades]" "10" " " "TRUE" -->
+<!-- LEFTJUSTIFIED "Total Vendido Visa:" "35" " " "TRUE"--> <!-- RIGHTJUSTIFIED "[total]" "10" " " "TRUE" --><!-- END SUBQUERY --> <!-- END QUERY --> 
+
+<!-- QUERY="SELECT count(idalbaran)::NUMERIC(12,2) AS numtickets FROM albaran WHERE idz IN (SELECT max(idz) AS id FROM z) AND ticketalbaran = TRUE" -->
+<!-- SUBQUERY="SELECT sum(cantlalbaran) AS unidades, sum(pvpivainclalbaran * cantlalbaran)::NUMERIC(12,2) as total FROM lalbaran NATURAL LEFT JOIN articulo  WHERE idalbaran IN (SELECT idalbaran FROM albaran WHERE idz IN (SELECT max(idz) AS id FROM z))" -->
+<!-- LEFTJUSTIFIED "Total Tickets:" "35" " " "TRUE"--> <!-- RIGHTJUSTIFIED "[numtickets]" "10" " " "TRUE" -->
+<!-- LEFTJUSTIFIED "Unidades Vendidas:" "35" " " "TRUE"--> <!-- RIGHTJUSTIFIED "[unidades]" "10" " " "TRUE" -->
+<!-- LEFTJUSTIFIED "Total Vendido:" "35" " " "TRUE"--> <!-- RIGHTJUSTIFIED "[total]" "10" " " "TRUE" --><!-- END SUBQUERY --><!-- END QUERY -->
+<!-- SETJUSTIFICATION "CENTER" -->
+Informe por familias
+------------------------------------------
+<!-- SETCHARACTERPRINTMODE " " --><!-- SETJUSTIFICATION "LEFT" -->
+<!-- QUERY="SELECT * FROM familia" --><!-- SETUNDERLINEMODE "1" -->[codigofamilia] [nombrefamilia]<!-- SETUNDERLINEMODE "0" --><!-- SUBQUERY="SELECT sum(cantlalbaran) AS unidades, sum(pvpivainclalbaran * cantlalbaran)::NUMERIC(12,2) as total FROM lalbaran NATURAL LEFT JOIN articulo  WHERE idalbaran IN (SELECT idalbaran FROM albaran WHERE idz IN (SELECT max(idz) AS id FROM z))  AND idfamilia = [idfamilia]"-->
+<!-- LEFTJUSTIFIED "Unidades Vendidas:" "20" " " "TRUE"--> <!-- RIGHTJUSTIFIED "[unidades]" "10" " " "TRUE" -->
+<!-- LEFTJUSTIFIED "Total Vendido:" "20" " " "TRUE"--> <!-- RIGHTJUSTIFIED "[total]" "10" " " "TRUE" -->
+<!-- END SUBQUERY --> 
+<!-- END QUERY --> 
+
+<!-- SETJUSTIFICATION "CENTER" -->
+------------------------------------------
+
 <!-- QUERY="SELECT * FROM configuracion WHERE nombre='NombreEmpresa'" -->[valor]<!-- END QUERY --> <!-- QUERY="SELECT * FROM configuracion WHERE nombre='CIF'" -->[valor]<!-- END QUERY -->
 <!-- QUERY="SELECT * FROM configuracion WHERE nombre='DireccionCompleta'" -->[valor]<!-- END QUERY -->
 <!-- QUERY="SELECT * FROM configuracion WHERE nombre='CodPostal'" -->[valor]<!-- END QUERY -->     <!-- QUERY="SELECT * FROM configuracion WHERE nombre='Ciudad'" -->[valor]<!-- END QUERY -->
 <!-- QUERY="SELECT * FROM configuracion WHERE nombre='Provincia'" -->[valor]<!-- END QUERY -->
 <!-- QUERY="SELECT * FROM configuracion WHERE nombre='Telefono'" -->[valor]<!-- END QUERY -->
-<!-- QUERY="SELECT now()::DATE AS fecha" -->[fecha]<!-- END QUERY -->   <!-- QUERY="SELECT now()::TIME AS hora" -->[hora]<!-- END QUERY -->
-<!-- QUERY="SELECT * FROM trabajador WHERE idtrabajador=[idtrabajador]" -->[nomtrabajador]<!-- END QUERY -->
-<!-- QUERY="SELECT * FROM cliente WHERE idcliente=[idcliente]" -->[cifcliente] [nomcliente]<!-- END QUERY -->
+<!-- QUERY="SELECT now()::DATE AS fecha" -->Fecha: [fecha]<!-- END QUERY -->   <!-- QUERY="SELECT now()::TIME AS hora" -->[hora]<!-- END QUERY -->
 <!-- QUERY="SELECT * FROM almacen WHERE idalmacen=[idalmacen]" -->[nomalmacen]<!-- END QUERY -->
-<!-- TURNWHITEBLACK "1"-->
- Uds. PRODUCTO               P.U. IMPORTE
-<!-- TURNWHITEBLACK "0"-->
-<!-- QUERY="SELECT *, (cantlalbaran*pvpivainclalbaran)::NUMERIC(12,2) AS subtotal FROM lalbaran  WHERE idalbaran=[idalbaran]" --><!-- RIGHTJUSTIFIED "[cantlalbaran]" "5" " " "TRUE"--> <!-- LEFTJUSTIFIED "[desclalbaran]" "20" " " "TRUE"--> <!-- RIGHTJUSTIFIED "[pvpivainclalbaran]" "6" " " "TRUE" --> <!-- RIGHTJUSTIFIED "[subtotal]" "6" " " "TRUE" -->
-<!-- END QUERY -->
-<!-- TURNWHITEBLACK "1"-->
- Uds. PRODUCTO               P.U. IMPORTE
-<!-- TURNWHITEBLACK "0"-->
-
-<!-- SETJUSTIFICATION "RIGHT" --><!-- SETUNDERLINEMODE "0" --><!-- SETCHARACTERSIZE "119" --><!-- SETCHARACTERPRINTMODE " DOUBLE_WIDTH DOUBLE_HEIGHT CHARACTER_FONTA_SELECTED" -->
-<!-- QUERY="SELECT sum(cantlalbaran*pvpivainclalbaran)::NUMERIC(12,2) AS subtotal FROM lalbaran  WHERE idalbaran=[idalbaran]" -->Total: <!-- RIGHTJUSTIFIED "[subtotal]" "6" " " "TRUE" --><!-- END QUERY -->
-
-<!-- SETCHARACTERSIZE "0" --><!-- SETJUSTIFICATION "CENTER" -->
-   GRACIAS POR SU VISITA
-   
-<!-- SETBARCODEFORMAT "2" "50" "BOTH" "FONTB" --><!-- PRINTBARCODE "CODE39" "6" "[refalbaran]" -->
-
 
 <!-- CUTPAPERANDFEED "TRUE" "5"-->
 

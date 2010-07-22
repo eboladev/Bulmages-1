@@ -3,11 +3,12 @@
 <!-- QUERY="SELECT * FROM configuracion WHERE nombre='DireccionCompleta'" -->[valor]<!-- END QUERY -->
 <!-- QUERY="SELECT * FROM configuracion WHERE nombre='CodPostal'" -->[valor]<!-- END QUERY -->     <!-- QUERY="SELECT * FROM configuracion WHERE nombre='Ciudad'" -->[valor]<!-- END QUERY -->
 <!-- QUERY="SELECT * FROM configuracion WHERE nombre='Provincia'" -->[valor]<!-- END QUERY -->
-<!-- QUERY="SELECT * FROM configuracion WHERE nombre='Telefono'" -->[valor]<!-- END QUERY -->
-<!-- QUERY="SELECT now()::DATE AS fecha" -->[fecha]<!-- END QUERY -->   <!-- QUERY="SELECT now()::TIME AS hora" -->[hora]<!-- END QUERY -->
-<!-- QUERY="SELECT * FROM trabajador WHERE idtrabajador=[idtrabajador]" -->[nomtrabajador]<!-- END QUERY -->
-<!-- QUERY="SELECT * FROM cliente WHERE idcliente=[idcliente]" -->[cifcliente] [nomcliente]<!-- END QUERY -->
-<!-- QUERY="SELECT * FROM almacen WHERE idalmacen=[idalmacen]" -->[nomalmacen]<!-- END QUERY -->
+<!-- QUERY="SELECT * FROM configuracion WHERE nombre='Telefono'" -->Tel. [valor]<!-- END QUERY -->
+<!-- QUERY="SELECT now()::DATE AS fecha" -->Fecha: [fecha]<!-- END QUERY -->   <!-- QUERY="SELECT now()::TIME AS hora" -->[hora]<!-- END QUERY -->
+<!-- QUERY="SELECT * FROM trabajador WHERE idtrabajador=[idtrabajador]" -->Le atendio: [nomtrabajador]<!-- END QUERY -->
+<!-- QUERY="SELECT * FROM cliente WHERE idcliente=[idcliente]" -->Cliente: [cifcliente] [nomcliente]<!-- END QUERY -->
+<!-- QUERY="SELECT * FROM almacen WHERE idalmacen=[idalmacen]" -->Almacen: [nomalmacen]<!-- END QUERY -->
+<!-- QUERY="SELECT * FROM forma_pago WHERE idforma_pago=[idforma_pago]" -->Forma de Pago:[descforma_pago]<!-- END QUERY -->
 <!-- TURNWHITEBLACK "1"-->
  Uds. PRODUCTO               P.U. IMPORTE
 <!-- TURNWHITEBLACK "0"-->
