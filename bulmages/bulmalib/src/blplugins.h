@@ -33,7 +33,7 @@
 class BL_EXPORT BlPlugins
 {
 private:
-    QList<QLibrary *> m_lista;
+    QList<QLibrary *> m_plugins;
 
 public:
     BlPlugins();
@@ -41,6 +41,7 @@ public:
     void cargaLibs ( const QString &libs );
     int lanza ( const char *func, void *clase );
     int lanza ( const char *func, void *clase, void **ret );
+    QList<QLibrary *> pluginsLoaded();
 };
 
 //extern BL_EXPORT BlPlugins *g_plugins;

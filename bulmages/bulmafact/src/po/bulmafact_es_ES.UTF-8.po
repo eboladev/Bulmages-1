@@ -103,6 +103,16 @@ msgid ""
 "right:0px; -qt-block-indent:0; text-indent:0px;\">Facturacion GPL - Version "
 "0.12.0 -</p></body></html>"
 msgstr ""
+"<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/"
+"REC-html40/strict.dtd\">\n"
+"<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css"
+"\">\n"
+"p, li { white-space: pre-wrap; }\n"
+"</style></head><body style=\" font-family:'Sans Serif'; font-size:9pt; font-"
+"weight:600; font-style:normal;\">\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-"
+"right:0px; -qt-block-indent:0; text-indent:0px;\">Facturación GPL - Versión "
+"0.12.0 -</p></body></html>"
 
 #: ui_bfaboutbase.h:298
 msgid "A&utores"
@@ -134,7 +144,7 @@ msgstr "Artículo:"
 
 #: ui_bfbulmafactbase.h:226
 msgid "Avanzados"
-msgstr ""
+msgstr "Avanzados"
 
 #: bfform.cpp:500
 msgid "Base Imponible"
@@ -154,15 +164,15 @@ msgstr "Cobrado"
 
 #: bfproveedoralbaransubform.cpp:48 bfclientealbaransubform.cpp:46
 msgid "Codigo completo articulo"
-msgstr "Codigo completo articulo"
+msgstr "Código completo artículo"
 
 #: bfseriefacturaview.cpp:80
 msgid "Codigo serie factura"
-msgstr "Codigo serie factura"
+msgstr "Código serie factura"
 
 #: bfaboutview.cpp:40
 msgid "Compilado usando la version de QT:"
-msgstr "Compilado usando la version de QT:"
+msgstr "Compilado usando la versión de QT:"
 
 #: bfclientealbarandescuentosubform.cpp:42
 msgid "Concepto descuento"
@@ -170,7 +180,7 @@ msgstr "Concepto descuento"
 
 #: bfconfiguracionview.cpp:51
 msgid "Configuracion"
-msgstr "Configuracion"
+msgstr "Configuración"
 
 #: ui_bfbulmafactbase.h:182
 msgid "Ctrl+I"
@@ -186,7 +196,7 @@ msgstr "Descripción"
 
 #: bfseriefacturaview.cpp:81
 msgid "Descripcion serie factura"
-msgstr "Descripcion serie factura"
+msgstr "Descripción serie factura"
 
 #: bfform.cpp:458
 msgid "Descuento"
@@ -201,8 +211,8 @@ msgid ""
 "El codigo del articulo no existe.\n"
 "ATENCION: No se guadara bien el documento hasta que sea valido."
 msgstr ""
-"El codigo del articulo no existe.\n"
-"ATENCION: No se guadara bien el documento hasta que sea valido."
+"El código del artículo no existe.\n"
+"ATENCIÓN: No se guadará bien el documento hasta que sea válido."
 
 #: bfinformereferencia.cpp:144 bfinformereferencia.cpp:176
 #: bfinformereferencia.cpp:214 bfinformereferencia.cpp:261
@@ -215,7 +225,7 @@ msgstr "Error inesperado en BulmaFact. El programa se cerrará."
 
 #: bfform.cpp:1044
 msgid "Error inesperado en la impresion"
-msgstr "Error inesperado en la impresion"
+msgstr "Error inesperado en la impresión"
 
 #: ui_bfbulmafactbase.h:176
 msgid "F1"
@@ -262,7 +272,7 @@ msgstr "Id albarán"
 
 #: bfproveedoralbaransubform.cpp:47 bfclientealbaransubform.cpp:45
 msgid "Id articulo"
-msgstr "Id articulo"
+msgstr "Id artículo"
 
 #: bfclientealbarandescuentosubform.cpp:41
 msgid "Id descuento"
@@ -315,15 +325,15 @@ msgstr "Nombre"
 
 #: bfproveedoralbaransubform.cpp:49 bfclientealbaransubform.cpp:47
 msgid "Nombre articulo"
-msgstr "Nombre articulo"
+msgstr "Nombre artículo"
 
 #: bfproveedoralbaransubform.cpp:50
 msgid "Numero de linea"
-msgstr "Numero de linea"
+msgstr "Número de línea"
 
 #: bfclientealbaransubform.cpp:48
 msgid "Nº linea"
-msgstr "Nº linea"
+msgstr "Nº línea"
 
 #: bfproveedoralbaransubform.cpp:58 bfclientealbaransubform.cpp:56
 msgid "Orden"
@@ -411,9 +421,8 @@ msgid "Tiene que guardar el documento antes de poder procesarlo."
 msgstr "Tiene que guardar el documento antes de poder procesarlo."
 
 #: bfbuscartipoarticulo.cpp:37
-#, fuzzy
 msgid "Tipo Articulo:"
-msgstr "Tipo Articulos"
+msgstr "Tipo Artículo:"
 
 #: bfform.cpp:551
 msgid "Total"
@@ -434,680 +443,3 @@ msgstr "Venta&na"
 #: ui_bfbulmafactbase.h:172
 msgid "Ventana &completa"
 msgstr "Ventana &completa"
-
-#~ msgid "&Acerca de BulmaFact"
-#~ msgstr "&Acerca de BulmaFact"
-
-#~ msgid "&Almacenes"
-#~ msgstr "&Almacenes"
-
-#~ msgid "&Articulos"
-#~ msgstr "&Artículos"
-
-#~ msgid "&Clientes"
-#~ msgstr "&Clientes"
-
-#~ msgid "&Comentarios:"
-#~ msgstr "&Comentarios:"
-
-#, fuzzy
-#~ msgid "&Código:"
-#~ msgstr "Código:"
-
-#~ msgid "&Datos generales"
-#~ msgstr "&Datos generales"
-
-#~ msgid "&Formas de pago"
-#~ msgstr "&Formas de pago"
-
-#~ msgid "&No"
-#~ msgstr "&No"
-
-#~ msgid "&Nombre empresa:"
-#~ msgstr "&Nombre empresa:"
-
-#~ msgid "&Proveedores"
-#~ msgstr "&Proveedores"
-
-#~ msgid "&Si"
-#~ msgstr "&Sí"
-
-#, fuzzy
-#~ msgid "&Teléfono:"
-#~ msgstr "Teléfono:"
-
-#~ msgid "&Tipos de articulo"
-#~ msgstr "&Tipos de artículo"
-
-#~ msgid "&Trabajadores"
-#~ msgstr "&Trabajadores"
-
-#~ msgid "1"
-#~ msgstr "1"
-
-#~ msgid ""
-#~ "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/"
-#~ "REC-html40/strict.dtd\">\n"
-#~ "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/"
-#~ "css\">\n"
-#~ "p, li { white-space: pre-wrap; }\n"
-#~ "</style></head><body style=\" font-family:'Sans Serif'; font-size:10pt; "
-#~ "font-weight:400; font-style:normal;\">\n"
-#~ "<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; "
-#~ "margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; "
-#~ "font-size:9pt;\"></p></body></html>"
-#~ msgstr ""
-#~ "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/"
-#~ "REC-html40/strict.dtd\">\n"
-#~ "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/"
-#~ "css\">\n"
-#~ "p, li { white-space: pre-wrap; }\n"
-#~ "</style></head><body style=\" font-family:'Sans Serif'; font-size:10pt; "
-#~ "font-weight:400; font-style:normal;\">\n"
-#~ "<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; "
-#~ "margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; "
-#~ "font-size:9pt;\"></p></body></html>"
-
-#~ msgid "Abreviacion"
-#~ msgstr "Abreviación"
-
-#~ msgid "Acerca de BulmaFact"
-#~ msgstr "Acerca de BulmaFact"
-
-#~ msgid "Activar el &control de stock."
-#~ msgstr "Activar el &control de stock."
-
-#~ msgid "Activo"
-#~ msgstr "Activo"
-
-#~ msgid "Almacen"
-#~ msgstr "Almacén"
-
-#~ msgid "Almacenes"
-#~ msgstr "Almacenes"
-
-#~ msgid "Apellidos:"
-#~ msgstr "Apellidos:"
-
-#~ msgid "Articulo&s"
-#~ msgstr "Artículo&s"
-
-#~ msgid "Articulos"
-#~ msgstr "Artículos"
-
-#~ msgid "Banco"
-#~ msgstr "Banco"
-
-#~ msgid "Bancos"
-#~ msgstr "Bancos"
-
-#~ msgid "Borrar"
-#~ msgstr "Borrar"
-
-#~ msgid "Borrar Familia"
-#~ msgstr "Borrar Familia"
-
-#~ msgid "Borrar articulo"
-#~ msgstr "Borrar artículo"
-
-#~ msgid "Borrar forma de pago"
-#~ msgstr "Borrar forma de pago"
-
-#~ msgid "Borrar trabajador"
-#~ msgstr "Borrar trabajador"
-
-#~ msgid "BulmaFact - Facturacion GPL"
-#~ msgstr "BulmaFact - Facturación GPL"
-
-#~ msgid "Buscar:"
-#~ msgstr "Buscar:"
-
-#~ msgid "C&omponentes"
-#~ msgstr "C&omponentes"
-
-#~ msgid "C.I.F."
-#~ msgstr "C.I.F."
-
-#~ msgid "C.I.F./N.I.F./N.I.E.:"
-#~ msgstr "C.I.F./N.I.F./N.I.E.:"
-
-#~ msgid "C.P.:"
-#~ msgstr "C.P.:"
-
-#~ msgid "Cam&biar imagen"
-#~ msgstr "Cam&biar imagen"
-
-#~ msgid "Cambiar imagen"
-#~ msgstr "Cambiar imagen"
-
-#~ msgid "Cargando traducciones"
-#~ msgstr "Cargando traducciones"
-
-#~ msgid "Clien&te:"
-#~ msgstr "Clien&te:"
-
-#~ msgid "Cliente:"
-#~ msgstr "Cliente:"
-
-#~ msgid "Codigo"
-#~ msgstr "Código"
-
-#~ msgid "Codigo almacen"
-#~ msgstr "Codigo almacen"
-
-#~ msgid "Codigo cliente"
-#~ msgstr "Código cliente"
-
-#~ msgid "Codigo completo"
-#~ msgstr "Código completo"
-
-#~ msgid "Codigo completo del articulo"
-#~ msgstr "Código completo del artículo"
-
-#~ msgid "Codigo completo:"
-#~ msgstr "Código completo:"
-
-#~ msgid "Codigo de cliente:"
-#~ msgstr "Código de cliente:"
-
-#~ msgid "Codigo del articulo:"
-#~ msgstr "Código del articulo:"
-
-#~ msgid "Codigo postal"
-#~ msgstr "Código postal"
-
-#~ msgid "Codigo postal:"
-#~ msgstr "Código postal:"
-
-#~ msgid "Codigo reducido:"
-#~ msgstr "Codigo reducido:"
-
-#~ msgid "Codigo:"
-#~ msgstr "Código:"
-
-#~ msgid "Comentarios:"
-#~ msgstr "Comentarios:"
-
-#~ msgid "Contacto:"
-#~ msgstr "Contacto:"
-
-#~ msgid "Contenido de la familia:"
-#~ msgstr "Contenido de la familia:"
-
-#~ msgid "Correo electronico:"
-#~ msgstr "Correo electrónico:"
-
-#, fuzzy
-#~ msgid "Código &postal:"
-#~ msgstr "Código postal:"
-
-#~ msgid "D.C.:"
-#~ msgstr "D.C.:"
-
-#~ msgid "Datos &bancarios:"
-#~ msgstr "Datos &bancarios:"
-
-#~ msgid "Datos bancarios:"
-#~ msgstr "Datos bancarios:"
-
-#, fuzzy
-#~ msgid "Datos de comercio &electrónico:"
-#~ msgstr "Datos de comercio electrónico:"
-
-#~ msgid "Datos de comercio electronico:"
-#~ msgstr "Datos de comercio electrónico:"
-
-#~ msgid "Debe seleccionar una familia"
-#~ msgstr "Debe seleccionar una familia"
-
-#~ msgid "Descripcio&n"
-#~ msgstr "Descripció&n"
-
-#~ msgid "Descripcion abreviada del articulo"
-#~ msgstr "Descripción abreviada del artículo"
-
-#~ msgid "Descripcion del tipo de articulo"
-#~ msgstr "Descripción del tipo de artículo"
-
-#~ msgid "Descripcion tipo de I.V.A."
-#~ msgstr "Descripción tipo de I.V.A."
-
-#~ msgid "Descripcion:"
-#~ msgstr "Descripción:"
-
-#~ msgid "Descuento:"
-#~ msgstr "Descuento:"
-
-#~ msgid "Desea eliminar"
-#~ msgstr "Desea eliminar"
-
-#~ msgid "Desea guardar los cambios."
-#~ msgstr "¿Desea guardar los cambios?"
-
-#~ msgid "Desea guardar los cambios?"
-#~ msgstr "¿Desea guardar los cambios?"
-
-#~ msgid "Di&visiones"
-#~ msgstr "Di&visiones"
-
-#, fuzzy
-#~ msgid "Di&visión:"
-#~ msgstr "Di&visiones"
-
-#~ msgid "Direccion"
-#~ msgstr "Dirección"
-
-#~ msgid "Direccion URL"
-#~ msgstr "Dirección URL"
-
-#~ msgid "Direccion de URL"
-#~ msgstr "Dirección de URL"
-
-#~ msgid "Direccion de correo electronica"
-#~ msgstr "Dirección de correo electrónica"
-
-#~ msgid "Direccion de correo electronico"
-#~ msgstr "Dirección de correo electrónico"
-
-#~ msgid "Direccion electronica"
-#~ msgstr "Dirección electrónica"
-
-#~ msgid "Direccion:"
-#~ msgstr "Dirección:"
-
-#, fuzzy
-#~ msgid "Direcció&n:"
-#~ msgstr "Dirección:"
-
-#~ msgid "E-&mail:"
-#~ msgstr "E-&mail:"
-
-#~ msgid "E-mail:"
-#~ msgstr "E-mail:"
-
-#~ msgid "Editar articulo"
-#~ msgstr "Editar artículo"
-
-#~ msgid "Empresa:"
-#~ msgstr "Empresa:"
-
-#~ msgid "Entidad:"
-#~ msgstr "Entidad:"
-
-#~ msgid "Error al borrar el Trabajador"
-#~ msgstr "Error al borrar el Trabajador"
-
-#~ msgid "Error al borrar el articulo"
-#~ msgstr "Error al borrar el artículo"
-
-#~ msgid "Error al borrar la familia"
-#~ msgstr "Error al borrar la familia"
-
-#~ msgid "Error al crear el articulo"
-#~ msgstr "Error al crear el artículo"
-
-#~ msgid "Error al crear la familia"
-#~ msgstr "Error al crear la familia"
-
-#~ msgid "Error al crear un nuevo Trabajador"
-#~ msgstr "Error al crear un nuevo Trabajador"
-
-#~ msgid "Error al guardar"
-#~ msgstr "Error al guardar"
-
-#~ msgid "Error al guardar el trabajador"
-#~ msgstr "Error al guardar el trabajador"
-
-#~ msgid "Error al guardar la familia"
-#~ msgstr "Error al guardar la familia"
-
-#~ msgid "Error al guardar las tasas de IVA"
-#~ msgstr "Error al guardar las tasas de IVA"
-
-#~ msgid "Error al guardar los almacenes"
-#~ msgstr "Error al guardar los almacenes"
-
-#~ msgid "Error al guardar los tipos de IVA"
-#~ msgstr "Error al guardar los tipos de IVA"
-
-#~ msgid "Error al intentar borrar la forma de pago"
-#~ msgstr "Error al intentar borrar la forma de pago"
-
-#~ msgid "Error inesperado al borrar el banco"
-#~ msgstr "Error inesperado al borrar el banco"
-
-#~ msgid "Error inesperado el crear el Banco"
-#~ msgstr "Error inesperado el crear el Banco"
-
-#~ msgid ""
-#~ "Esta a punto de borrar un articulo. Estos datos pueden dar problemas."
-#~ msgstr ""
-#~ "Esta a punto de borrar un artículo. Estos datos pueden dar problemas."
-
-#~ msgid "Facturacion GPL - Version 0.12.0 -"
-#~ msgstr "Facturación GPL - Versión 0.12.0 -"
-
-#~ msgid "Familia"
-#~ msgstr "Familia"
-
-#~ msgid "Familias"
-#~ msgstr "Familias"
-
-#~ msgid "Fax:"
-#~ msgstr "Fax:"
-
-#~ msgid "Fecha Entrada en Vigor"
-#~ msgstr "Fecha Entrada en Vigor"
-
-#~ msgid "Forma de Pago"
-#~ msgstr "Forma de Pago"
-
-#~ msgid "Forma de pago:"
-#~ msgstr "Forma de pago:"
-
-#~ msgid "Formas de pago"
-#~ msgstr "Formas de pago"
-
-#~ msgid "General"
-#~ msgstr "General"
-
-#~ msgid "Gestion de &familias"
-#~ msgstr "Gestion de &familias"
-
-#~ msgid "Guardar Familia"
-#~ msgstr "Guardar Familia"
-
-#~ msgid "Guardar datos del trabajador"
-#~ msgstr "Guardar datos del trabajador"
-
-#~ msgid "Guardar familia"
-#~ msgstr "Guardar familia"
-
-#~ msgid "Guardar forma de pago"
-#~ msgstr "Guardar forma de pago"
-
-#~ msgid "Guardar trabajador"
-#~ msgstr "Guardar trabajador"
-
-#~ msgid "ID articulo"
-#~ msgstr "ID artículo"
-
-#~ msgid "Id Tasa IVA"
-#~ msgstr "Id Tasa IVA"
-
-#~ msgid "Id Tipo IVA"
-#~ msgstr "Id Tipo IVA"
-
-#~ msgid "Id almacen"
-#~ msgstr "Id almacén"
-
-#~ msgid "Id familia"
-#~ msgstr "Id familia"
-
-#~ msgid "Imagen del articulo:"
-#~ msgstr "Imagen del artículo:"
-
-#~ msgid "Imagenes (*.jpg)"
-#~ msgstr "Imágenes (*.jpg)"
-
-#~ msgid "Importar articulos"
-#~ msgstr "Importar artículos"
-
-#~ msgid "Imprimir Familias"
-#~ msgstr "Imprimir Familias"
-
-#~ msgid "Informacion de la forma de pago:"
-#~ msgstr "Información de la forma de pago:"
-
-#~ msgid "Informacion del articulo:"
-#~ msgstr "Información del artículo:"
-
-#~ msgid "Informacion del banco:"
-#~ msgstr "Información del banco:"
-
-#~ msgid "Inicializando listado de articulos"
-#~ msgstr "Inicializando listado de artículos"
-
-#~ msgid "Lista de bancos:"
-#~ msgstr "Lista de bancos:"
-
-#~ msgid "Lista de trabajadores:"
-#~ msgstr "Lista de trabajadores:"
-
-#~ msgid "Mostrar / Ocultar Detalle"
-#~ msgstr "Mostrar / Ocultar Detalle"
-
-#~ msgid "Nombre almacen"
-#~ msgstr "Nombre almacen"
-
-#~ msgid "Nombre comercia&l:"
-#~ msgstr "Nombre comercia&l:"
-
-#~ msgid "Nombre comercial:"
-#~ msgstr "Nombre comercial:"
-
-#~ msgid "Nombre completo:"
-#~ msgstr "Nombre completo:"
-
-#~ msgid "Nombre de la forma de pago:"
-#~ msgstr "Nombre de la forma de pago:"
-
-#~ msgid "Nombre del articulo"
-#~ msgstr "Nombre del artículo"
-
-#~ msgid "Nombre del articulo:"
-#~ msgstr "Nombre del artículo:"
-
-#~ msgid "Nombre:"
-#~ msgstr "Nombre:"
-
-#, fuzzy
-#~ msgid "Nuestro código de c&liente:"
-#~ msgstr "Código de cliente:"
-
-#~ msgid "Nueva Familia"
-#~ msgstr "Nueva Familia"
-
-#~ msgid "Nueva forma de pago"
-#~ msgstr "Nueva forma de pago"
-
-#~ msgid "Nuevo &articulo..."
-#~ msgstr "Nuevo &artículo..."
-
-#~ msgid "Nuevo &cliente..."
-#~ msgstr "Nuevo &cliente..."
-
-#~ msgid "Nuevo &proveedor..."
-#~ msgstr "Nuevo &proveedor..."
-
-#~ msgid "Nuevo articulo"
-#~ msgstr "Nuevo artículo"
-
-#~ msgid "Nuevo trabajador"
-#~ msgstr "Nuevo trabajador"
-
-#~ msgid "Numero cuenta corriente"
-#~ msgstr "Número cuenta corriente"
-
-#~ msgid "Numero de cuenta corriente"
-#~ msgstr "Número de cuenta corriente"
-
-#~ msgid "Numero de cuenta:"
-#~ msgstr "Número de cuenta:"
-
-#~ msgid "Numero de fax"
-#~ msgstr "Número de fax"
-
-#~ msgid "Numero de fax:"
-#~ msgstr "Número de fax:"
-
-#~ msgid "Numero de la Seguridad Social:"
-#~ msgstr "Número de la Seguridad Social:"
-
-#~ msgid "Numero de plazos:"
-#~ msgstr "Número de plazos:"
-
-#~ msgid "Numero de telefono"
-#~ msgstr "Número de teléfono"
-
-#~ msgid "Numero de telefono en el trabajo"
-#~ msgstr "Número de teléfono en el trabajo"
-
-#~ msgid "Numero de telefono movil"
-#~ msgstr "Número de teléfono movil"
-
-#, fuzzy
-#~ msgid "Número de &fax:"
-#~ msgstr "Número de fax:"
-
-#~ msgid "Observaciones sobre el articulo"
-#~ msgstr "Observaciones sobre el artículo"
-
-#~ msgid "Otros datos:"
-#~ msgstr "Otros datos:"
-
-#~ msgid "P.V.P. articulo"
-#~ msgstr "P.V.P. artículo"
-
-#~ msgid "Pagina web:"
-#~ msgstr "Página web:"
-
-#~ msgid "Plazo entre recibos (dias):"
-#~ msgstr "Plazo entre recibos (días):"
-
-#~ msgid "Plazo primer recibo (dias):"
-#~ msgstr "Plazo primer recibo (días):"
-
-#~ msgid "Poblacion"
-#~ msgstr "Población"
-
-#~ msgid "Poblacion:"
-#~ msgstr "Población:"
-
-#, fuzzy
-#~ msgid "Població&n:"
-#~ msgstr "Población:"
-
-#~ msgid "Porcentaje IVA"
-#~ msgstr "Porcentaje IVA"
-
-#~ msgid "Porcentaje Recargo Equivalencia"
-#~ msgstr "Porcentaje Recargo Equivalencia"
-
-#~ msgid "Pro&cesados"
-#~ msgstr "Pro&cesados"
-
-#~ msgid "Procesa&dos"
-#~ msgstr "Procesa&dos"
-
-#~ msgid "Producto."
-#~ msgstr "Producto."
-
-#~ msgid "Productos &suministrados"
-#~ msgstr "Productos &suministrados"
-
-#~ msgid "Proveedor:"
-#~ msgstr "Proveedor:"
-
-#~ msgid "Provincia:"
-#~ msgstr "Provincia:"
-
-#, fuzzy
-#~ msgid "Página &web:"
-#~ msgstr "Página web:"
-
-#~ msgid "Razon Social:"
-#~ msgstr "Razón Social:"
-
-#~ msgid "Regimen &fiscal:"
-#~ msgstr "Regimen &fiscal:"
-
-#~ msgid "Resumen por articulos"
-#~ msgstr "Resumen por artículos"
-
-#~ msgid "S&olo presentables"
-#~ msgstr "&Sólo presentables"
-
-#~ msgid "Se&ries de factura"
-#~ msgstr "Se&ries de factura"
-
-#~ msgid "Seleccione archivo"
-#~ msgstr "Seleccione archivo"
-
-#~ msgid "Selector de articulos"
-#~ msgstr "Selector de artículos"
-
-#~ msgid "Servicio."
-#~ msgstr "Servicio."
-
-#~ msgid "Solo usados"
-#~ msgstr "Sólo usados"
-
-#~ msgid "Subcodigo:"
-#~ msgstr "Subcódigo:"
-
-#~ msgid "Sucursal:"
-#~ msgstr "Sucursal:"
-
-#~ msgid "Tasa IVA"
-#~ msgstr "Tasa IVA"
-
-#~ msgid "Tasas de IVA"
-#~ msgstr "Tasas de IVA"
-
-#~ msgid "Telefono del trabajo:"
-#~ msgstr "Teléfono del trabajo:"
-
-#~ msgid "Telefono fijo:"
-#~ msgstr "Teléfono fijo:"
-
-#~ msgid "Telefono movil:"
-#~ msgstr "Teléfono móvil:"
-
-#~ msgid "Telefono:"
-#~ msgstr "Teléfono:"
-
-#~ msgid "Texto para etiqueta:"
-#~ msgstr "Texto para etiqueta:"
-
-#~ msgid "Tiene que seleccionar un articulo"
-#~ msgstr "Tiene que seleccionar un artículo"
-
-#~ msgid "Tipo Articulos"
-#~ msgstr "Tipo Articulos"
-
-#~ msgid "Tipo IVA"
-#~ msgstr "Tipo IVA"
-
-#~ msgid "Tipo de I.V.A."
-#~ msgstr "Tipo de I.V.A."
-
-#~ msgid "Tipo de I.V.A.:"
-#~ msgstr "Tipo de I.V.A.:"
-
-#~ msgid "Tipo de articulo"
-#~ msgstr "Tipo de artículo"
-
-#~ msgid "Tipo de articulo:"
-#~ msgstr "Tipo de artículo:"
-
-#~ msgid "Tipo plazo entre recibos:"
-#~ msgstr "Tipo plazo entre recibos:"
-
-#~ msgid "Tipo plazo primer pago:"
-#~ msgstr "Tipo plazo primer pago:"
-
-#~ msgid "Tipos de IVA"
-#~ msgstr "Tipos de IVA"
-
-#~ msgid "Trabajador"
-#~ msgstr "Trabajador"
-
-#~ msgid "Trabajadores"
-#~ msgstr "Trabajadores"
-
-#~ msgid "URL:"
-#~ msgstr "URL:"
-
-#~ msgid "no se ha podido borrar"
-#~ msgstr "no se ha podido borrar"

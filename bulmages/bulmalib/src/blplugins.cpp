@@ -91,7 +91,7 @@ void BlPlugins::cargaLibs ( const QString &libs )
             libErrorString = lib->errorString();
             if ( lib->isLoaded() ) {
                 cargado = TRUE;
-                m_lista.append ( lib );
+                m_plugins.append ( lib );
             } // end if
         } // end for
         if ( ! cargado ) {
@@ -111,8 +111,8 @@ int BlPlugins::lanza ( const char *func, void *clase )
 {
     _depura ( "BlPlugins::lanza", 0, func );
     int a = 0;
-    for ( int i = 0; i < m_lista.size(); ++i ) {
-        myFunction = ( MyPrototype ) m_lista.at ( i ) ->resolve ( func );
+    for ( int i = 0; i < m_plugins.size(); ++i ) {
+        myFunction = ( MyPrototype ) m_plugins.at ( i ) ->resolve ( func );
         if ( myFunction && a == 0 ) {
             a = myFunction ( clase );
         } // end if
@@ -130,8 +130,8 @@ int BlPlugins::lanza ( const char *func, void *clase, void **ret )
 {
     _depura ( "BlPlugins::lanza", 0, func );
     int a = 0;
-    for ( int i = 0; i < m_lista.size(); ++i ) {
-        myFunction1 = ( MyPrototype1 ) m_lista.at ( i ) ->resolve ( func );
+    for ( int i = 0; i < m_plugins.size(); ++i ) {
+        myFunction1 = ( MyPrototype1 ) m_plugins.at ( i ) ->resolve ( func );
         if ( myFunction1 && a == 0 ) {
             _depura ( "Plugins_lanza ", 0, "Encontrada una funcion correspondiente con el prototipo" );
             a = myFunction1 ( clase, ret );
@@ -142,3 +142,16 @@ int BlPlugins::lanza ( const char *func, void *clase, void **ret )
     _depura ( "END BlPlugins::lanza", 0 );
     return a;
 }
+
+
+///
+/**
+\return
+**/
+QList<QLibrary *> BlPlugins::pluginsLoaded()
+{
+    _depura ( "BlPlugins::pluginsLoaded", 0 );
+    return m_plugins;
+    _depura ( "BlPlugins::pluginsLoaded", 0 );
+}
+

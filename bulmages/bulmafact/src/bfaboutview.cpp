@@ -20,9 +20,11 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#include "QString"
+#include <QString>
 
 #include "bfaboutview.h"
+#include "blplugins.h"
+
 
 /// Rellena con datos los QTextEdit y muestra el formulario.
 /**
@@ -34,6 +36,8 @@ BfAboutView::BfAboutView ( QDialog *parent ) : QDialog ( parent )
     QString str_autores;
     QString str_soporte;
     QString str_licencia;
+    QString str_sistema;
+    
     setupUi ( this );
     centrarEnPantalla ( this );
 
@@ -410,10 +414,22 @@ BfAboutView::BfAboutView ( QDialog *parent ) : QDialog ( parent )
                    "<P> " \
                    "<H2>END OF TERMS AND CONDITIONS</H2>";
 
+
+    str_sistema = "<h2>" + _("Idiomas y traducciones:") + "</h2>";
+
+    str_sistema += _("Idioma:") + " " + QString(getenv("LANG")) + "<br><br>";
+    
+    str_sistema += "<h2>" + _("Plugins:") + "</h2>";
+    
+    for (int i = 0; i < g_plugins->pluginsLoaded().size(); ++i) {
+	str_sistema += g_plugins->pluginsLoaded().at(i)->fileName() + "<br>";
+    }
+
     textEdit_sobre->setHtml ( str_sobre );
     textEdit_autores->setHtml ( str_autores );
     textEdit_soporte->setHtml ( str_soporte );
     textEdit_licencia->setHtml ( str_licencia );
+    textEdit_sistema->setHtml ( str_sistema );
 }
 
 

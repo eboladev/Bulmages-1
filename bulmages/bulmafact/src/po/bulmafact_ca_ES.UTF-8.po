@@ -60,14 +60,13 @@ msgstr "&Indexador"
 
 #: ui_bfbulmafactbase.h:168
 msgid "&Propiedades de la empresa..."
-msgstr "&propietats de l'empresa..."
+msgstr "&Propietats de l'empresa..."
 
 #: ui_bfbulmafactbase.h:166
 msgid "&Salir del programa"
 msgstr "&Sortir del programa"
 
 #: ui_bfaboutbase.h:293
-#, fuzzy
 msgid ""
 "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/"
 "REC-html40/strict.dtd\">\n"
@@ -80,14 +79,16 @@ msgid ""
 "margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-"
 "size:9pt;\"></p></body></html>"
 msgstr ""
+"<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/"
+"REC-html40/strict.dtd\">\n"
 "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css"
 "\">\n"
 "p, li { white-space: pre-wrap; }\n"
-"</style></head><body style=\" font-family:'Sans Serif'; font-size:9pt; font-"
-"weight:400; font-style:normal; text-decoration:none;\">\n"
+"</style></head><body style=\" font-family:'Sans Serif'; font-size:10pt; font-"
+"weight:400; font-style:normal;\">\n"
 "<p style=\"-qt-paragraph-type:empty; margin-top:12px; margin-bottom:12px; "
-"margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"></"
-"p></body></html>"
+"margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-"
+"size:9pt;\"></p></body></html>"
 
 #: ui_bfaboutbase.h:287
 msgid ""
@@ -102,6 +103,16 @@ msgid ""
 "right:0px; -qt-block-indent:0; text-indent:0px;\">Facturacion GPL - Version "
 "0.12.0 -</p></body></html>"
 msgstr ""
+"<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/"
+"REC-html40/strict.dtd\">\n"
+"<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css"
+"\">\n"
+"p, li { white-space: pre-wrap; }\n"
+"</style></head><body style=\" font-family:'Sans Serif'; font-size:9pt; font-"
+"weight:600; font-style:normal;\">\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-"
+"right:0px; -qt-block-indent:0; text-indent:0px;\">Facturació GPL - Versió "
+"0.12.0 -</p></body></html>"
 
 #: ui_bfaboutbase.h:298
 msgid "A&utores"
@@ -133,7 +144,7 @@ msgstr "Article:"
 
 #: ui_bfbulmafactbase.h:226
 msgid "Avanzados"
-msgstr ""
+msgstr "Avançats"
 
 #: bfform.cpp:500
 msgid "Base Imponible"
@@ -196,11 +207,12 @@ msgid "E&mpresa"
 msgstr "E&mpresa"
 
 #: bfsubform.cpp:225
-#, fuzzy
 msgid ""
 "El codigo del articulo no existe.\n"
 "ATENCION: No se guadara bien el documento hasta que sea valido."
-msgstr "codi &No."
+msgstr ""
+"El codi de l'article no existeix.\n"
+"ATENCIÓ: No es desarà bé el document fins que no sigui vàlid."
 
 #: bfinformereferencia.cpp:144 bfinformereferencia.cpp:176
 #: bfinformereferencia.cpp:214 bfinformereferencia.cpp:261
@@ -213,7 +225,7 @@ msgstr "Error inesperat en BulmaFact. El programa se tancarà."
 
 #: bfform.cpp:1044
 msgid "Error inesperado en la impresion"
-msgstr ""
+msgstr "Error inesperat en la impresió"
 
 #: ui_bfbulmafactbase.h:176
 msgid "F1"
@@ -256,11 +268,11 @@ msgstr "I.V.A."
 #: bfclientealbarandescuentosubform.cpp:44 bfproveedoralbaransubform.cpp:57
 #: bfclientealbaransubform.cpp:55
 msgid "Id albaran"
-msgstr "ID albarà"
+msgstr "Id albarà"
 
 #: bfproveedoralbaransubform.cpp:47 bfclientealbaransubform.cpp:45
 msgid "Id articulo"
-msgstr "ID article"
+msgstr "Id article"
 
 #: bfclientealbarandescuentosubform.cpp:41
 msgid "Id descuento"
@@ -268,7 +280,7 @@ msgstr "Id descompte"
 
 #: ui_bfbulmafactbase.h:165
 msgid "Iglues/BulmaFact - Facturacion GPL"
-msgstr ""
+msgstr "Iglues/BulmaFact - Facturació GPL"
 
 #: ui_bfbulmafactbase.h:178 ui_bfbulmafactbase.h:180
 msgid "Indexador"
@@ -279,22 +291,20 @@ msgid "Informe"
 msgstr "Informe"
 
 #: ui_bfbuscarreferenciabase.h:92
-#, fuzzy
 msgid "Informe por referencia"
-msgstr "Informe"
+msgstr "Informe per referència"
 
 #: main.cxx:171
 msgid "Inicializando componentes"
-msgstr ""
+msgstr "Inicialitzant components"
 
 #: main.cxx:103
 msgid "Iniciando clases"
 msgstr "Inicialitzant classes"
 
 #: main.cxx:165
-#, fuzzy
 msgid "Lanzando plugins"
-msgstr "Llançador BulmaGés"
+msgstr "Llançant plugins"
 
 #: main.cxx:129
 msgid "Leyendo configuracion"
@@ -323,7 +333,7 @@ msgstr "Número de línia"
 
 #: bfclientealbaransubform.cpp:48
 msgid "Nº linea"
-msgstr ""
+msgstr "Nº línia"
 
 #: bfproveedoralbaransubform.cpp:58 bfclientealbaransubform.cpp:56
 msgid "Orden"
@@ -331,11 +341,11 @@ msgstr "Ordre"
 
 #: ui_bfbulmafactbase.h:184
 msgid "Ordenar &ventanas"
-msgstr ""
+msgstr "Ordenar &finestres"
 
 #: ui_bfbulmafactbase.h:183
 msgid "Organizacio&n en cascada"
-msgstr ""
+msgstr "Organització en cascada"
 
 #: bfclientealbaransubform.cpp:51
 msgid "P.V.P."
@@ -351,7 +361,7 @@ msgstr "Països/Províncies"
 
 #: ui_bfbulmafactbase.h:188
 msgid "Paises y provincias"
-msgstr ""
+msgstr "Països i províncies"
 
 #: bfinformereferencia.cpp:143 bfinformereferencia.cpp:175
 #: bfinformereferencia.cpp:213 bfinformereferencia.cpp:260
@@ -411,9 +421,8 @@ msgid "Tiene que guardar el documento antes de poder procesarlo."
 msgstr "Ha de desar el document abans de poder procesar-lo"
 
 #: bfbuscartipoarticulo.cpp:37
-#, fuzzy
 msgid "Tipo Articulo:"
-msgstr "Tipus Articles"
+msgstr "Tipus Article"
 
 #: bfform.cpp:551
 msgid "Total"
@@ -435,941 +444,3 @@ msgstr "Fi&nestra"
 msgid "Ventana &completa"
 msgstr "Finestra &Completa"
 
-#~ msgid "&Acerca de BulmaFact"
-#~ msgstr "Qu&ant a BulmaFact"
-
-#~ msgid "&Almacenes"
-#~ msgstr "M&agatzems"
-
-#~ msgid "&Aplicar Recargo de Equivalencia."
-#~ msgstr "&Aplicar Recareg d'Equivalència."
-
-#~ msgid "&Articulos"
-#~ msgstr "&Articles"
-
-#~ msgid "&Clientes"
-#~ msgstr "&Clients"
-
-#~ msgid "&Comentarios:"
-#~ msgstr "&Comentaris:"
-
-#~ msgid "&Contratos"
-#~ msgstr "&Contractes"
-
-#, fuzzy
-#~ msgid "&Código:"
-#~ msgstr "Codi:"
-
-#~ msgid "&Datos generales"
-#~ msgstr "&Dades generals"
-
-#~ msgid "&Formas de pago"
-#~ msgstr "&Formes de pagament"
-
-#~ msgid "&IRPF que aplica:"
-#~ msgstr "&IRPF que aplica:"
-
-#~ msgid "&No"
-#~ msgstr "&No"
-
-#~ msgid "&Nombre empresa:"
-#~ msgstr "&Nom empresa:"
-
-#~ msgid "&Proveedores"
-#~ msgstr "&Proveïdors"
-
-#~ msgid "&Si"
-#~ msgstr "&Sí"
-
-#, fuzzy
-#~ msgid "&Teléfono:"
-#~ msgstr "Telèfon:"
-
-#~ msgid "&Tipos de articulo"
-#~ msgstr "&Tipus d'article"
-
-#~ msgid "&Trabajadores"
-#~ msgstr "&Treballadors"
-
-#, fuzzy
-#~ msgid ""
-#~ "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/"
-#~ "REC-html40/strict.dtd\">\n"
-#~ "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/"
-#~ "css\">\n"
-#~ "p, li { white-space: pre-wrap; }\n"
-#~ "</style></head><body style=\" font-family:'Sans Serif'; font-size:10pt; "
-#~ "font-weight:400; font-style:normal;\">\n"
-#~ "<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; "
-#~ "margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; "
-#~ "font-size:9pt;\"></p></body></html>"
-#~ msgstr ""
-#~ "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/"
-#~ "css\">\n"
-#~ "p, li { white-space: pre-wrap; }\n"
-#~ "</style></head><body style=\" font-family:'Sans Serif'; font-size:9pt; "
-#~ "font-weight:400; font-style:normal; text-decoration:none;\">\n"
-#~ "<p style=\"-qt-paragraph-type:empty; margin-top:12px; margin-bottom:12px; "
-#~ "margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"
-#~ "\"></p></body></html>"
-
-#~ msgid ""
-#~ "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/"
-#~ "REC-html40/strict.dtd\">\n"
-#~ "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/"
-#~ "css\">\n"
-#~ "p, li { white-space: pre-wrap; }\n"
-#~ "</style></head><body style=\" font-family:'Sans Serif'; font-size:7pt; "
-#~ "font-weight:400; font-style:normal;\">\n"
-#~ "<p style=\"-qt-paragraph-type:empty; margin-top:12px; margin-bottom:12px; "
-#~ "margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; "
-#~ "font-size:9pt;\"></p></body></html>"
-#~ msgstr ""
-#~ "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/"
-#~ "REC-html40/strict.dtd\">\n"
-#~ "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/"
-#~ "css\">\n"
-#~ "p, li { white-space: pre-wrap; }\n"
-#~ "</style></head><body style=\" font-family:'Sans Serif'; font-size:7pt; "
-#~ "font-weight:400; font-style:normal;\">\n"
-#~ "<p style=\"-qt-paragraph-type:empty; margin-top:12px; margin-bottom:12px; "
-#~ "margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; "
-#~ "font-size:9pt;\"></p></body></html>"
-
-#~ msgid "Abreviacion"
-#~ msgstr "Abreujament"
-
-#~ msgid "Acerca de BulmaFact"
-#~ msgstr "Sobre BulmaFact"
-
-#~ msgid "Activar el &control de stock."
-#~ msgstr "Activar el &control d'estoc."
-
-#~ msgid "Activo"
-#~ msgstr "Actiu"
-
-#~ msgid "Actualizar listado"
-#~ msgstr "Actual·litza llistat"
-
-#~ msgid "Almacen"
-#~ msgstr "Magatzem"
-
-#~ msgid "Almacenes"
-#~ msgstr "Magatzems"
-
-#~ msgid "Alt+O"
-#~ msgstr "Alt+O"
-
-#~ msgid "Apellidos:"
-#~ msgstr "Cognoms:"
-
-#~ msgid "Aplicar Recargo de Equivalencia"
-#~ msgstr "Aplicar Recarreg d'equivalència"
-
-#~ msgid "Articulo&s"
-#~ msgstr "Article&s"
-
-#~ msgid "Articulos"
-#~ msgstr "Articles"
-
-#~ msgid "Banco"
-#~ msgstr "Banc"
-
-#~ msgid "Banco proveedor"
-#~ msgstr "Banc proveïdor"
-
-#~ msgid "Bancos"
-#~ msgstr "Bancs"
-
-#~ msgid "Borrar"
-#~ msgstr "Esborrar"
-
-#~ msgid "Borrar Familia"
-#~ msgstr "Esborrar Família"
-
-#~ msgid "Borrar Tipo de articulo"
-#~ msgstr "Esborrar Tipus d'article"
-
-#~ msgid "Borrar articulo"
-#~ msgstr "Borrar article"
-
-#~ msgid "Borrar cliente"
-#~ msgstr "Esborrar client"
-
-#~ msgid "Borrar forma de pago"
-#~ msgstr "Esborrar forma de pagament"
-
-#~ msgid "Borrar proveedor"
-#~ msgstr "Esborrar proveïdor"
-
-#~ msgid "Borrar trabajador"
-#~ msgstr "Esborrar treballador"
-
-#~ msgid "BulmaFact - Facturacion GPL"
-#~ msgstr "BulmaFact - Facturació GPL"
-
-#~ msgid "Buscar:"
-#~ msgstr "Cercar:"
-
-#~ msgid "C&omponentes"
-#~ msgstr "C&omponents"
-
-#~ msgid "C.I.&F. / N.I.F."
-#~ msgstr "C.I.&F. / N.I.F."
-
-#~ msgid "C.I.F."
-#~ msgstr "C.I.F."
-
-#~ msgid "C.I.F. del cliente"
-#~ msgstr "C.I.F. del client"
-
-#~ msgid "C.I.F. del proveedor"
-#~ msgstr "C.I.F. del proveïdor"
-
-#~ msgid "C.I.F./N.I.F./N.I.E.:"
-#~ msgstr "C.I.F./N.I.F./N.I.E.:"
-
-#~ msgid "C.P.:"
-#~ msgstr "C.P.:"
-
-#~ msgid "Cam&biar imagen"
-#~ msgstr "Canv&iar imatge"
-
-#~ msgid "Cambiar imagen"
-#~ msgstr "Canviar imatge"
-
-#~ msgid "Cantidad de componente de articulo"
-#~ msgstr "Quantitat de components d'article"
-
-#~ msgid "Cargando traducciones"
-#~ msgstr "Carregant traduccions"
-
-#~ msgid "Clave de acceso a la web del proveedor"
-#~ msgstr "Clau d'accés al web del proveïdor"
-
-#~ msgid "Clien&te:"
-#~ msgstr "Clien&t:"
-
-#~ msgid "Cliente"
-#~ msgstr "Client"
-
-#~ msgid "Cliente inactivo"
-#~ msgstr "Client inactiu"
-
-#~ msgid "Cliente:"
-#~ msgstr "Client:"
-
-#~ msgid "Clientes"
-#~ msgstr "Clients"
-
-#~ msgid "Clientes (*.xml)"
-#~ msgstr "Clients (*.xml)"
-
-#~ msgid "Codigo"
-#~ msgstr "Codi"
-
-#~ msgid "Codigo almacen"
-#~ msgstr "Codi magatzem"
-
-#~ msgid "Codigo cliente"
-#~ msgstr "Codi client"
-
-#~ msgid "Codigo completo"
-#~ msgstr "Codi complet"
-
-#~ msgid "Codigo completo del articulo"
-#~ msgstr "Codi complet del article"
-
-#~ msgid "Codigo completo:"
-#~ msgstr "Codi complet:"
-
-#~ msgid "Codigo de cliente:"
-#~ msgstr "Codi de client:"
-
-#~ msgid "Codigo del articulo:"
-#~ msgstr "Codi d'article:"
-
-#~ msgid "Codigo postal"
-#~ msgstr "Codi postal"
-
-#~ msgid "Codigo postal:"
-#~ msgstr "Codi postal:"
-
-#~ msgid "Codigo:"
-#~ msgstr "Codi:"
-
-#~ msgid "Comentarios"
-#~ msgstr "Comentaris"
-
-#~ msgid "Comentarios:"
-#~ msgstr "Comentaris:"
-
-#~ msgid "Configurar listado"
-#~ msgstr "Configura llistat"
-
-#~ msgid "Contacto:"
-#~ msgstr "Contacte:"
-
-#~ msgid "Contenido de la familia:"
-#~ msgstr "Contingut de la família:"
-
-#~ msgid "Correo electronico:"
-#~ msgstr "Correu electrònic:"
-
-#~ msgid "Ctrl+D"
-#~ msgstr "Ctrl+D"
-
-#~ msgid "Ctrl+F"
-#~ msgstr "Ctrl+F"
-
-#~ msgid "Ctrl+N"
-#~ msgstr "Ctrl+N"
-
-#~ msgid "Ctrl+S"
-#~ msgstr "Ctrl+S"
-
-#, fuzzy
-#~ msgid "Código &postal:"
-#~ msgstr "Codi postal:"
-
-#~ msgid "D.C.:"
-#~ msgstr "D.C.:"
-
-#~ msgid "Datos &bancarios:"
-#~ msgstr "Dades &bancaris:"
-
-#~ msgid "Datos bancarios:"
-#~ msgstr "Dades bancaris:"
-
-#, fuzzy
-#~ msgid "Datos de comercio &electrónico:"
-#~ msgstr "Dades de comerç electrònic:"
-
-#~ msgid "Datos de comercio electronico:"
-#~ msgstr "Dades de comerç electrònic:"
-
-#~ msgid "Debe seleccionar una familia"
-#~ msgstr "Ha de seleccionar una família"
-
-#~ msgid "Descripcio&n"
-#~ msgstr "Desc&ripció"
-
-#~ msgid "Descripcion abreviada del articulo"
-#~ msgstr "Descripció abreujada de l'article"
-
-#~ msgid "Descripcion del tipo de articulo"
-#~ msgstr "Descripció del tipus d'article"
-
-#~ msgid "Descripcion tipo de I.V.A."
-#~ msgstr "Descripció tipus d'I.V.A."
-
-#~ msgid "Descripcion:"
-#~ msgstr "Descripció:"
-
-#~ msgid "Descuento:"
-#~ msgstr "Descompte:"
-
-#~ msgid "Desea eliminar"
-#~ msgstr "Desitja eliminar"
-
-#~ msgid "Desea guardar los cambios."
-#~ msgstr "Desitja desar els canvis?"
-
-#~ msgid "Desea guardar los cambios?"
-#~ msgstr "Desitja desar els canvis?"
-
-#~ msgid "Di&visiones"
-#~ msgstr "Di&visions"
-
-#, fuzzy
-#~ msgid "Di&visión:"
-#~ msgstr "Di&visions"
-
-#~ msgid "Direccion"
-#~ msgstr "Direcció"
-
-#~ msgid "Direccion URL"
-#~ msgstr "Direcció URL"
-
-#~ msgid "Direccion de URL"
-#~ msgstr "Direcció de URL"
-
-#~ msgid "Direccion de correo electronica"
-#~ msgstr "Direcció de correu electrònic"
-
-#~ msgid "Direccion de correo electronico"
-#~ msgstr "Direcció de correu electrònic"
-
-#~ msgid "Direccion electronica"
-#~ msgstr "Direcció electrònica"
-
-#~ msgid "Direccion:"
-#~ msgstr "Direcció:"
-
-#, fuzzy
-#~ msgid "Direcció&n:"
-#~ msgstr "Direcció:"
-
-#~ msgid "Disponible en stock"
-#~ msgstr "Disposable en estoc"
-
-#~ msgid "E-&mail:"
-#~ msgstr "E-&mail:"
-
-#~ msgid "E-mail:"
-#~ msgstr "E-mail:"
-
-#~ msgid "Editar articulo"
-#~ msgstr "Editar article"
-
-#~ msgid "Editar cliente"
-#~ msgstr "Editar client"
-
-#~ msgid "Elija el archivo"
-#~ msgstr "Trii el arxiu"
-
-#~ msgid "Empresa"
-#~ msgstr "Empresa"
-
-#~ msgid "Empresa:"
-#~ msgstr "Empresa:"
-
-#~ msgid "Entidad:"
-#~ msgstr "Entitat:"
-
-#~ msgid "Error al borrar el articulo"
-#~ msgstr "Error al esborrar l'article"
-
-#~ msgid "Error al borrar el proveedor"
-#~ msgstr "Error al esborrar el proveïdor"
-
-#~ msgid "Error al borrar un cliente"
-#~ msgstr "Esborrar un client"
-
-#~ msgid "Error al crear el articulo"
-#~ msgstr "Error al crear l'article"
-
-#~ msgid "Error al crear el cliente"
-#~ msgstr "Error al crear el client"
-
-#~ msgid "Error al crear el proveedor"
-#~ msgstr "Error al crear el proveïdor"
-
-#, fuzzy
-#~ msgid "Error al guardar"
-#~ msgstr "Error del programa"
-
-#, fuzzy
-#~ msgid "Error al guardar los almacenes"
-#~ msgstr "Desitja desar els canvis?"
-
-#, fuzzy
-#~ msgid "Error al intentar borrar la forma de pago"
-#~ msgstr "<LI>Dades insuficients per a tractar la forma de pagament."
-
-#~ msgid ""
-#~ "Esta a punto de borrar un articulo. Estos datos pueden dar problemas."
-#~ msgstr ""
-#~ "Està a punt d'esborrar un article. Aquests dades poden donar problemes."
-
-#~ msgid "Exportar"
-#~ msgstr "Exportar"
-
-#~ msgid "Exportar articulos"
-#~ msgstr "Exportar articles"
-
-#~ msgid "F2"
-#~ msgstr "F2"
-
-#~ msgid "F3"
-#~ msgstr "F3"
-
-#~ msgid "Facturacion GPL - Version 0.12.0 -"
-#~ msgstr "Facturació GPL - Versió 0.12.0 -"
-
-#~ msgid "Familia"
-#~ msgstr "Família"
-
-#~ msgid "Familias"
-#~ msgstr "Famílies"
-
-#~ msgid "Fax:"
-#~ msgstr "Fax:"
-
-#~ msgid "Fecha Entrada en Vigor"
-#~ msgstr "Data Entrada en Vigor"
-
-#~ msgid "Fecha de alta del cliente"
-#~ msgstr "Data d'alta del client"
-
-#~ msgid "Fecha de baja del cliente"
-#~ msgstr "Data de baixa del client"
-
-#~ msgid "Filtrar listado"
-#~ msgstr "Filtrar llistat"
-
-#~ msgid "Forma de Pago"
-#~ msgstr "Forma de pagament"
-
-#~ msgid "Forma de pago"
-#~ msgstr "Forma de pagament"
-
-#~ msgid "Forma de pago:"
-#~ msgstr "Forma de pagament:"
-
-#~ msgid "Forma_Pago"
-#~ msgstr "Forma_Pagament"
-
-#~ msgid "Formas de pago"
-#~ msgstr "Formes de pagament"
-
-#~ msgid "General"
-#~ msgstr "General"
-
-#~ msgid "Gestion de &familias"
-#~ msgstr "Gestió de &famílies"
-
-#~ msgid "Guardar"
-#~ msgstr "Desar"
-
-#~ msgid "Guardar Familia"
-#~ msgstr "Desar Família"
-
-#~ msgid "Guardar Tipo de articulo"
-#~ msgstr "Desar Tipus d'article"
-
-#~ msgid "Guardar cliente"
-#~ msgstr "Desar client"
-
-#~ msgid "Guardar datos del trabajador"
-#~ msgstr "Desar dades del treballador"
-
-#~ msgid "Guardar familia"
-#~ msgstr "Desar família"
-
-#~ msgid "Guardar forma de pago"
-#~ msgstr "Desar forma de pagament"
-
-#~ msgid "Guardar proveedor"
-#~ msgstr "Desar proveïdor"
-
-#~ msgid "Guardar trabajador"
-#~ msgstr "Desar treballador"
-
-#~ msgid "ID articulo"
-#~ msgstr "ID article"
-
-#~ msgid "ID cliente"
-#~ msgstr "ID client"
-
-#~ msgid "ID componente"
-#~ msgstr "ID component"
-
-#~ msgid "ID proveedor"
-#~ msgstr "ID proveïdor"
-
-#~ msgid "IRPF"
-#~ msgstr "IRPF"
-
-#~ msgid "Id"
-#~ msgstr "Id"
-
-#~ msgid "Id Tasa IVA"
-#~ msgstr "ID Taxa IVA"
-
-#~ msgid "Id Tipo IVA"
-#~ msgstr "ID tipus IVA"
-
-#~ msgid "Id almacen"
-#~ msgstr "ID magatzem"
-
-#~ msgid "Id familia"
-#~ msgstr "ID família"
-
-#~ msgid "Identificador"
-#~ msgstr "Identificador"
-
-#~ msgid "Identificador de presupuesto"
-#~ msgstr "Identificador de pressuposts"
-
-#~ msgid "Imagen del articulo:"
-#~ msgstr "Imatge de l'article:"
-
-#~ msgid "Imagenes (*.jpg)"
-#~ msgstr "Imatges (*.jpg)"
-
-#~ msgid "Importar"
-#~ msgstr "Importar"
-
-#~ msgid "Importar articulos"
-#~ msgstr "Importar articles"
-
-#~ msgid "Imprimir Familias"
-#~ msgstr "Imprimir Famílies"
-
-#~ msgid "Imprimir informe"
-#~ msgstr "Imprimir Informe"
-
-#~ msgid "Imprimir listado"
-#~ msgstr "Imprimir llistat"
-
-#~ msgid "Inactivo"
-#~ msgstr "Inactiu"
-
-#~ msgid "Incluir en control de stock"
-#~ msgstr "Incloure en control d'estoc"
-
-#~ msgid "Incluir en presentaciones"
-#~ msgstr "Incloure en presentacions"
-
-#~ msgid "Informacion de la forma de pago:"
-#~ msgstr "Informació de la forma de pagament:"
-
-#~ msgid "Informacion del articulo:"
-#~ msgstr "Informació de l'article:"
-
-#~ msgid "Informacion del banco:"
-#~ msgstr "Informació del banc:"
-
-#~ msgid "Inicializando listado de articulos"
-#~ msgstr "Inicialitzant el llistat d'articles"
-
-#~ msgid "Inicializando listado de clientes"
-#~ msgstr "Inicialitzant el llistat de clients"
-
-#~ msgid "Inicializando listado de proveedores"
-#~ msgstr "Inicialitzant el llistat de proveïdors"
-
-#~ msgid "Lista de bancos:"
-#~ msgstr "Llista de bancs:"
-
-#~ msgid "Lista de trabajadores:"
-#~ msgstr "Llista de treballadors:"
-
-#~ msgid "Listado de Clientes"
-#~ msgstr "Llistat de Clients"
-
-#~ msgid "Listado de Proveedores"
-#~ msgstr "Llistat de proveïdors"
-
-#~ msgid "Mostrar / Ocultar Detalle"
-#~ msgstr "Mostra / Oculta Detall"
-
-#~ msgid "Nombre almacen"
-#~ msgstr "Nom magatzem"
-
-#~ msgid "Nombre alternativo"
-#~ msgstr "Nom alternatiu"
-
-#~ msgid "Nombre alternativo del cliente"
-#~ msgstr "Nom alternatiu del client"
-
-#~ msgid "Nombre alternativo del proveedor"
-#~ msgstr "Nombre alternatiu del proveïdor"
-
-#~ msgid "Nombre comercia&l:"
-#~ msgstr "Nom comercia&l:"
-
-#~ msgid "Nombre comercial:"
-#~ msgstr "Nom comercial:"
-
-#~ msgid "Nombre completo:"
-#~ msgstr "Nom complet:"
-
-#~ msgid "Nombre de cliente"
-#~ msgstr "Nom de client"
-
-#~ msgid "Nombre de la forma de pago:"
-#~ msgstr "Nombre de la forma de pagament:"
-
-#~ msgid "Nombre del articulo"
-#~ msgstr "Nom de l'article"
-
-#~ msgid "Nombre del articulo:"
-#~ msgstr "Nom de l'article:"
-
-#~ msgid "Nombre del cliente"
-#~ msgstr "Nom del client"
-
-#~ msgid "Nombre del proveedor"
-#~ msgstr "Nombre del proveïdor"
-
-#~ msgid "Nombre:"
-#~ msgstr "Nom:"
-
-#, fuzzy
-#~ msgid "Nuestro código de c&liente:"
-#~ msgstr "Codi de client:"
-
-#~ msgid "Nueva Familia"
-#~ msgstr "Nova Família"
-
-#~ msgid "Nueva forma de pago"
-#~ msgstr "Nova forma de pagament"
-
-#~ msgid "Nuevo &articulo..."
-#~ msgstr "Nou &article..."
-
-#~ msgid "Nuevo &cliente..."
-#~ msgstr "Nou &client..."
-
-#~ msgid "Nuevo &proveedor..."
-#~ msgstr "Nou &proveïdor..."
-
-#~ msgid "Nuevo Tipo de articulo"
-#~ msgstr "Nou Tipus d'article"
-
-#~ msgid "Nuevo articulo"
-#~ msgstr "Nou article"
-
-#~ msgid "Nuevo cliente"
-#~ msgstr "Nou client"
-
-#~ msgid "Nuevo trabajador"
-#~ msgstr "Nou treballador"
-
-#~ msgid "Numero cuenta corriente"
-#~ msgstr "Nom de compte corrent"
-
-#~ msgid "Numero de cuenta corriente"
-#~ msgstr "Nombre de compte corrent"
-
-#~ msgid "Numero de cuenta:"
-#~ msgstr "Número de compte:"
-
-#~ msgid "Numero de fax"
-#~ msgstr "Nombre de fax"
-
-#~ msgid "Numero de fax:"
-#~ msgstr "Nombre de fax:"
-
-#~ msgid "Numero de la Seguridad Social:"
-#~ msgstr "Nombre de la Seguretat Social:"
-
-#~ msgid "Numero de plazos:"
-#~ msgstr "Nombre de terminis:"
-
-#~ msgid "Numero de telefono"
-#~ msgstr "Nombre de telèfon"
-
-#~ msgid "Numero de telefono en el trabajo"
-#~ msgstr "Nombre de telèfon en el treball"
-
-#~ msgid "Numero de telefono movil"
-#~ msgstr "Nombre de telèfon mòbil"
-
-#, fuzzy
-#~ msgid "Número de &fax:"
-#~ msgstr "Nombre de fax:"
-
-#~ msgid "Observaciones"
-#~ msgstr "Observacions"
-
-#~ msgid "Observaciones sobre el articulo"
-#~ msgstr "Observacions sobre l'article"
-
-#~ msgid "Otros datos:"
-#~ msgstr "Altres dades:"
-
-#~ msgid "P.V.P. articulo"
-#~ msgstr "P.V.P. article"
-
-#~ msgid "P.V.P. base"
-#~ msgstr "P.V.P. base"
-
-#~ msgid "Pagina web:"
-#~ msgstr "Pàgina web:"
-
-#~ msgid "Peso Unidad"
-#~ msgstr "Pes Unitat"
-
-#~ msgid "Plazo entre recibos (dias):"
-#~ msgstr "Termini entre rebuts (dies):"
-
-#~ msgid "Plazo primer recibo (dias):"
-#~ msgstr "Termini primer rebut (dies):"
-
-#~ msgid "Poblacion"
-#~ msgstr "Població"
-
-#~ msgid "Poblacion:"
-#~ msgstr "Població:"
-
-#, fuzzy
-#~ msgid "Població&n:"
-#~ msgstr "Població:"
-
-#~ msgid "Porcentaje IVA"
-#~ msgstr "Percentatge IVA"
-
-#~ msgid "Porcentaje Recargo Equivalencia"
-#~ msgstr "Percentatge Recarreg Equivalència"
-
-#~ msgid "Precio venta. s/IVA:"
-#~ msgstr "Preu venta. s/IVA:"
-
-#~ msgid "Pro&cesados"
-#~ msgstr "Pro&cessats"
-
-#~ msgid "Procesa&dos"
-#~ msgstr "Processa&ts"
-
-#~ msgid "Productos &suministrados"
-#~ msgstr "Productes &subministrats"
-
-#~ msgid "Proveedor"
-#~ msgstr "Proveïdor"
-
-#~ msgid "Proveedor:"
-#~ msgstr "Proveïdor:"
-
-#~ msgid "Proveedores"
-#~ msgstr "Proveïdors"
-
-#~ msgid "Proveedores (*.xml)"
-#~ msgstr "Proveïdors (*.xml)"
-
-#~ msgid "Provincia"
-#~ msgstr "Provincia"
-
-#~ msgid "Provincia:"
-#~ msgstr "Provincia:"
-
-#, fuzzy
-#~ msgid "Página &web:"
-#~ msgstr "Pàgina web:"
-
-#~ msgid "Razon Social:"
-#~ msgstr "Raó social:"
-
-#~ msgid "Recargo de Equivalencia"
-#~ msgstr "Recarreg d'Equivalència"
-
-#~ msgid "Regimen &fiscal:"
-#~ msgstr "Règim &fiscal:"
-
-#~ msgid "Regimen Fiscal"
-#~ msgstr "Règim Fiscal"
-
-#~ msgid "Regimen fiscal"
-#~ msgstr "Règim fiscal"
-
-#~ msgid "Regimen fiscal:"
-#~ msgstr "Règim fiscal:"
-
-#~ msgid "Resumen por articulos"
-#~ msgstr "Resum per articles"
-
-#~ msgid "S&olo presentables"
-#~ msgstr "S&olament presentables"
-
-#~ msgid "Se&ries de factura"
-#~ msgstr "Sè&ries de factura"
-
-#~ msgid "Seleccione archivo"
-#~ msgstr "Seleccioni arxiu"
-
-#~ msgid "Seleccione el archivo"
-#~ msgstr "Seleccioni el arxiu"
-
-#~ msgid "Selector de articulos"
-#~ msgstr "Selector d'articles"
-
-#~ msgid "Selector de clientes"
-#~ msgstr "Selector de clients"
-
-#~ msgid "Selector de proveedores"
-#~ msgstr "Selector de proveïdors"
-
-#~ msgid "Solo usados"
-#~ msgstr "Solament usats"
-
-#~ msgid "Stock"
-#~ msgstr "estoc"
-
-#~ msgid "Subcodigo:"
-#~ msgstr "Subcodi:"
-
-#~ msgid "Sucursal:"
-#~ msgstr "Sucursal:"
-
-#~ msgid "Tasa IVA"
-#~ msgstr "Taxa d'IVA"
-
-#~ msgid "Tasas de IVA"
-#~ msgstr "Taxes d'IVA"
-
-#~ msgid "Telefono del trabajo:"
-#~ msgstr "Telèfon del treball:"
-
-#~ msgid "Telefono fijo:"
-#~ msgstr "Telèfon fix:"
-
-#~ msgid "Telefono movil:"
-#~ msgstr "Telèfon mòbil:"
-
-#~ msgid "Telefono:"
-#~ msgstr "Telèfon:"
-
-#~ msgid "Texto para etiqueta:"
-#~ msgstr "Text per a l'etiqueta:"
-
-#~ msgid "Tiene que seleccionar un articulo"
-#~ msgstr "Ha de seleccionar un article"
-
-#~ msgid "Tipo Articulos"
-#~ msgstr "Tipus Articles"
-
-#~ msgid "Tipo IVA"
-#~ msgstr "Tipus d'IVA"
-
-#~ msgid "Tipo de I.V.A."
-#~ msgstr "Tipus de I.V.A."
-
-#~ msgid "Tipo de I.V.A.:"
-#~ msgstr "Tipus d'I.V.A.:"
-
-#~ msgid "Tipo de articulo"
-#~ msgstr "Tipus d'article"
-
-#~ msgid "Tipo de articulo:"
-#~ msgstr "Tipus d'article:"
-
-#~ msgid "Tipo plazo entre recibos:"
-#~ msgstr "Tipus de termini entre rebuts:"
-
-#~ msgid "Tipo plazo primer pago:"
-#~ msgstr "Tipus de termini primer rebut:"
-
-#~ msgid "Tipos de IVA"
-#~ msgstr "Tipus d'IVA"
-
-#~ msgid "Tipos de articulo"
-#~ msgstr "Tipus d'article"
-
-#~ msgid "Todos"
-#~ msgstr "Tots"
-
-#~ msgid "Trabajador"
-#~ msgstr "Treballador"
-
-#~ msgid "Trabajadores"
-#~ msgstr "Treballadors"
-
-#~ msgid "URL"
-#~ msgstr "URL"
-
-#~ msgid "URL:"
-#~ msgstr "URL:"
-
-#~ msgid "Vencidos"
-#~ msgstr "Vençuts"
-
-#~ msgid "Ver"
-#~ msgstr "Ver"
-
-#~ msgid "Vigentes"
-#~ msgstr "Vigents"
-
-#~ msgid "Volumen Unidad"
-#~ msgstr "Volum Unitat"

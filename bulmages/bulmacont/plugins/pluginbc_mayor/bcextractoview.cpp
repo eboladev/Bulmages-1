@@ -129,7 +129,7 @@ void BcExtractoView::on_mui_list_cellDoubleClicked ( int, int columna )
 
     QString textoHeader;
     textoHeader =  mui_list->cabecera() ->at ( columna ) ->nomcampo().toAscii();
-    if ( textoHeader == "ordenasiento" ) {
+    //if ( textoHeader == "ordenasiento" ) {
         QString idasiento = mui_list->dbValue ( "idasiento" );
 
         int resur = g_plugins->lanza ( "SNewBcAsientoView", (BcCompany *) mainCompany() );
@@ -142,7 +142,7 @@ void BcExtractoView::on_mui_list_cellDoubleClicked ( int, int columna )
         asiento ->muestraasiento ( idasiento );
         asiento ->show();
         asiento ->setFocus();
-    } // end if
+    //} // end if
     _depura ( "END asientosview::on_mui_list_cellDoubleClicked", 0 );
 }
 

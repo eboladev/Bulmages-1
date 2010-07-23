@@ -116,7 +116,7 @@ msgstr ""
 
 #: pluginbf_abrecodigobarras.cpp:73
 msgid "Introduzca codigo"
-msgstr "Introduzca cdigo"
+msgstr "Introduzca código"
 
 #: pluginbf_abrecodigobarras.cpp:72
 msgid "QInputDialog::getText()"

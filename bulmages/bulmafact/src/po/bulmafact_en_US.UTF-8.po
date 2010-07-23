@@ -20,15 +20,15 @@ msgstr "% Discount"
 
 #: bfproveedoralbaransubform.cpp:54
 msgid "% I.V.A."
-msgstr "% I.V.A."
+msgstr "% V.A.T."
 
 #: bfproveedoralbaransubform.cpp:55
 msgid "% R.E."
-msgstr ""
+msgstr "% A.V."
 
 #: bfclientealbaransubform.cpp:53
 msgid "% Recargo E.Q."
-msgstr "% Surcharge E.Q."
+msgstr "% Additional V.A.T."
 
 #: ui_bfseriefacturabase.h:85 ui_bfconfiguracionbase.h:119
 msgid "&Aceptar"
@@ -40,7 +40,7 @@ msgstr "&About"
 
 #: ui_bfbulmafactbase.h:174
 msgid "&Acerca de Iglues/BulmaFact"
-msgstr ""
+msgstr "&About Iglues/BulmaFact"
 
 #: ui_bfseriefacturabase.h:84 ui_bfconfiguracionbase.h:120
 msgid "&Cancelar"
@@ -52,7 +52,7 @@ msgstr "&Close"
 
 #: ui_bfbulmafactbase.h:175
 msgid "&Documentacion"
-msgstr "&Documntation"
+msgstr "&Documentation"
 
 #: ui_bfbulmafactbase.h:177
 msgid "&Indexador"
@@ -60,11 +60,11 @@ msgstr "&Indexador"
 
 #: ui_bfbulmafactbase.h:168
 msgid "&Propiedades de la empresa..."
-msgstr "&Properties of the company..."
+msgstr "&Company settings..."
 
 #: ui_bfbulmafactbase.h:166
 msgid "&Salir del programa"
-msgstr "&To leave the program"
+msgstr "&Quit"
 
 #: ui_bfaboutbase.h:293
 msgid ""
@@ -124,7 +124,7 @@ msgstr "Article:"
 
 #: ui_bfbulmafactbase.h:226
 msgid "Avanzados"
-msgstr ""
+msgstr "Advance"
 
 #: bfform.cpp:500
 msgid "Base Imponible"
@@ -136,7 +136,7 @@ msgstr "Amount"
 
 #: main.cxx:159
 msgid "Cargando plugins"
-msgstr ""
+msgstr "Loading plugins"
 
 #: bfinformereferencia.cpp:216
 msgid "Cobrado"
@@ -156,7 +156,7 @@ msgstr "Compiled using the QT version:"
 
 #: bfclientealbarandescuentosubform.cpp:42
 msgid "Concepto descuento"
-msgstr ""
+msgstr "Discount concept"
 
 #: bfconfiguracionview.cpp:51
 msgid "Configuracion"
@@ -203,7 +203,7 @@ msgstr "Unexpected error in BulmaFact. The program was closed."
 
 #: bfform.cpp:1044
 msgid "Error inesperado en la impresion"
-msgstr ""
+msgstr "Unexpected printing error"
 
 #: ui_bfbulmafactbase.h:176
 msgid "F1"
@@ -229,7 +229,7 @@ msgstr "Family:"
 #: ui_bfbulmafactbase.h:210 ui_bfbulmafactbase.h:212 ui_bfbulmafactbase.h:215
 #: ui_bfbulmafactbase.h:218 ui_bfbulmafactbase.h:221 ui_bfbulmafactbase.h:224
 msgid "Fichas"
-msgstr "Cards"
+msgstr "Forms"
 
 #: ui_bfbuscarreferenciabase.h:90
 msgid "Form1"
@@ -303,11 +303,11 @@ msgstr "Name"
 
 #: bfproveedoralbaransubform.cpp:49 bfclientealbaransubform.cpp:47
 msgid "Nombre articulo"
-msgstr "Name article"
+msgstr "Article name"
 
 #: bfproveedoralbaransubform.cpp:50
 msgid "Numero de linea"
-msgstr ""
+msgstr "Line number"
 
 #: bfclientealbaransubform.cpp:48
 msgid "Nº linea"
@@ -319,7 +319,7 @@ msgstr "Order"
 
 #: ui_bfbulmafactbase.h:184
 msgid "Ordenar &ventanas"
-msgstr "Order &windows"
+msgstr "&Windows order"
 
 #: ui_bfbulmafactbase.h:183
 msgid "Organizacio&n en cascada"
@@ -364,7 +364,7 @@ msgstr "Properties of the company"
 
 #: bfform.cpp:538
 msgid "R.E."
-msgstr "R.E."
+msgstr "A.T."
 
 #: bfbuscarreferencia.cpp:70
 msgid "Referencia"
@@ -409,7 +409,7 @@ msgstr "Total"
 
 #: bfform.cpp:460
 msgid "Total Desc."
-msgstr "Desc Total."
+msgstr "Total discount"
 
 #: bfconfiguracionview.cpp:90
 msgid "Valor"
@@ -421,850 +421,5 @@ msgstr "Wind&ow"
 
 #: ui_bfbulmafactbase.h:172
 msgid "Ventana &completa"
-msgstr "Complete &window"
+msgstr "Full &window"
 
-#~ msgid "&Acerca de BulmaFact"
-#~ msgstr "&About BulmaFact"
-
-#~ msgid "&Almacenes"
-#~ msgstr "&Warehouses"
-
-#~ msgid "&Aplicar Recargo de Equivalencia."
-#~ msgstr "&To apply Surcharge of Equivalence."
-
-#~ msgid "&Articulos"
-#~ msgstr "&Article"
-
-#~ msgid "&Clientes"
-#~ msgstr "&Clients"
-
-#~ msgid "&Comentarios:"
-#~ msgstr "&Commentaries:"
-
-#~ msgid "&Contratos"
-#~ msgstr "&Contracts"
-
-#, fuzzy
-#~ msgid "&Código:"
-#~ msgstr "Code:"
-
-#~ msgid "&Datos generales"
-#~ msgstr "&General performances"
-
-#~ msgid "&Formas de pago"
-#~ msgstr "&Modes of payment"
-
-#~ msgid "&IRPF que aplica:"
-#~ msgstr "&IRPF that applies:"
-
-#~ msgid "&No"
-#~ msgstr "&No"
-
-#~ msgid "&Nombre empresa:"
-#~ msgstr "&Name company:"
-
-#~ msgid "&Proveedores"
-#~ msgstr "&Suppliers"
-
-#~ msgid "&Si"
-#~ msgstr "&Yes"
-
-#, fuzzy
-#~ msgid "&Teléfono:"
-#~ msgstr "Telephone:"
-
-#~ msgid "&Tipos de articulo"
-#~ msgstr "&Types of article"
-
-#~ msgid "&Trabajadores"
-#~ msgstr "&Workers"
-
-#~ msgid "Abreviacion"
-#~ msgstr "Abbreviation"
-
-#~ msgid "Acerca de BulmaFact"
-#~ msgstr "About BulmaFact"
-
-#~ msgid "Activar el &control de stock."
-#~ msgstr "Activate the stock &control."
-
-#~ msgid "Activo"
-#~ msgstr "Assets"
-
-#~ msgid "Actualizar listado"
-#~ msgstr "Update listing"
-
-#~ msgid "Almacen"
-#~ msgstr "Warehouse"
-
-#~ msgid "Almacenes"
-#~ msgstr "Warehouses"
-
-#~ msgid "Alt+O"
-#~ msgstr "Alt+O"
-
-#~ msgid "Apellidos:"
-#~ msgstr "Last names:"
-
-#~ msgid "Aplicar Recargo de Equivalencia"
-#~ msgstr "Apply Surcharge of Equivalence"
-
-#~ msgid "Articulo&s"
-#~ msgstr "Article&s"
-
-#~ msgid "Articulos"
-#~ msgstr "Article"
-
-#~ msgid "Banco"
-#~ msgstr "Bank"
-
-#~ msgid "Banco proveedor"
-#~ msgstr "Bank supplier"
-
-#~ msgid "Bancos"
-#~ msgstr "Banks"
-
-#~ msgid "Borrar"
-#~ msgstr "Erase"
-
-#~ msgid "Borrar Familia"
-#~ msgstr "Erase family"
-
-#~ msgid "Borrar Tipo de articulo"
-#~ msgstr "Erase Type of article"
-
-#~ msgid "Borrar articulo"
-#~ msgstr "Erase article"
-
-#~ msgid "Borrar cliente"
-#~ msgstr "Erase client"
-
-#~ msgid "Borrar forma de pago"
-#~ msgstr "Erase mode of payment"
-
-#~ msgid "Borrar proveedor"
-#~ msgstr "Erase supplier"
-
-#~ msgid "Borrar trabajador"
-#~ msgstr "Erase worker"
-
-#~ msgid "BulmaFact - Facturacion GPL"
-#~ msgstr "BulmaFact - Invoicing GPL"
-
-#~ msgid "Buscar:"
-#~ msgstr "Look for:"
-
-#~ msgid "C&omponentes"
-#~ msgstr "C&omponents"
-
-#~ msgid "C.I.&F. / N.I.F."
-#~ msgstr "C.I.&F. / N.I.F."
-
-#~ msgid "C.I.F."
-#~ msgstr "C.I.F."
-
-#~ msgid "C.I.F. del cliente"
-#~ msgstr "C.I.F. of the client"
-
-#~ msgid "C.I.F. del proveedor"
-#~ msgstr "C.I.F. of the supplier"
-
-#~ msgid "C.I.F./N.I.F./N.I.E.:"
-#~ msgstr "C.I.F./N.I.F./N.I.E.:"
-
-#~ msgid "C.P.:"
-#~ msgstr "C.P.:"
-
-#~ msgid "Cam&biar imagen"
-#~ msgstr "Cha&nge image"
-
-#~ msgid "Cambiar imagen"
-#~ msgstr "Change image"
-
-#~ msgid "Cantidad de componente de articulo"
-#~ msgstr "Amount of component of article"
-
-#~ msgid "Clave de acceso a la web del proveedor"
-#~ msgstr "Key of access to the Web of the supplier"
-
-#~ msgid "Cliente"
-#~ msgstr "Client"
-
-#~ msgid "Cliente inactivo"
-#~ msgstr "Inactive client"
-
-#~ msgid "Cliente:"
-#~ msgstr "Client:"
-
-#~ msgid "Clientes"
-#~ msgstr "Clients"
-
-#~ msgid "Clientes (*.xml)"
-#~ msgstr "Clientes (*.xml"
-
-#~ msgid "Codigo"
-#~ msgstr "Code"
-
-#~ msgid "Codigo almacen"
-#~ msgstr "Code warehouse"
-
-#~ msgid "Codigo cliente"
-#~ msgstr "Code client"
-
-#~ msgid "Codigo completo"
-#~ msgstr "Complete code"
-
-#~ msgid "Codigo completo del articulo"
-#~ msgstr "Complete code of article"
-
-#~ msgid "Codigo completo:"
-#~ msgstr "Complete code:"
-
-#~ msgid "Codigo de cliente:"
-#~ msgstr "Code of client:"
-
-#~ msgid "Codigo del articulo:"
-#~ msgstr "Code of article:"
-
-#~ msgid "Codigo postal"
-#~ msgstr "Postal Code"
-
-#~ msgid "Codigo postal:"
-#~ msgstr "Postal code:"
-
-#~ msgid "Codigo:"
-#~ msgstr "Code:"
-
-#~ msgid "Comentarios"
-#~ msgstr "Commentaries"
-
-#~ msgid "Comentarios:"
-#~ msgstr "Commentaries:"
-
-#~ msgid "Configurar listado"
-#~ msgstr "Form listing"
-
-#~ msgid "Contacto:"
-#~ msgstr "Contact:"
-
-#~ msgid "Contenido de la familia:"
-#~ msgstr "Content of the family:"
-
-#~ msgid "Correo electronico:"
-#~ msgstr "Electronic mail:"
-
-#~ msgid "Ctrl+D"
-#~ msgstr "Ctrl+D"
-
-#~ msgid "Ctrl+F"
-#~ msgstr "Ctrl+F"
-
-#~ msgid "Ctrl+N"
-#~ msgstr "Ctrl+N"
-
-#~ msgid "Ctrl+S"
-#~ msgstr "Ctrl+S"
-
-#, fuzzy
-#~ msgid "Código &postal:"
-#~ msgstr "Postal code:"
-
-#~ msgid "Datos &bancarios:"
-#~ msgstr "Banking &data:"
-
-#~ msgid "Datos bancarios:"
-#~ msgstr "Banking data:"
-
-#, fuzzy
-#~ msgid "Datos de comercio &electrónico:"
-#~ msgstr "Data of electronic commerce:"
-
-#~ msgid "Datos de comercio electronico:"
-#~ msgstr "Data of electronic commerce:"
-
-#~ msgid "Debe seleccionar una familia"
-#~ msgstr "It must select a family"
-
-#~ msgid "Descripcio&n"
-#~ msgstr "Descriptio&n"
-
-#~ msgid "Descripcion abreviada del articulo"
-#~ msgstr "Been brief description of the article"
-
-#~ msgid "Descripcion del tipo de articulo"
-#~ msgstr "Description of the type of article"
-
-#~ msgid "Descripcion tipo de I.V.A."
-#~ msgstr "Description type of I.V.A."
-
-#~ msgid "Descripcion:"
-#~ msgstr "Description:"
-
-#~ msgid "Descuento:"
-#~ msgstr "Discount:"
-
-#~ msgid "Desea eliminar"
-#~ msgstr "It wishes to eliminate"
-
-#~ msgid "Desea guardar los cambios."
-#~ msgstr "It wishes to keep the changes?"
-
-#~ msgid "Desea guardar los cambios?"
-#~ msgstr "It wishes to keep the changes?"
-
-#~ msgid "Di&visiones"
-#~ msgstr "Di&visions"
-
-#, fuzzy
-#~ msgid "Di&visión:"
-#~ msgstr "Di&visions"
-
-#~ msgid "Direccion"
-#~ msgstr "Address"
-
-#~ msgid "Direccion URL"
-#~ msgstr "Direction URL"
-
-#~ msgid "Direccion de URL"
-#~ msgstr "Direction of URL"
-
-#~ msgid "Direccion de correo electronica"
-#~ msgstr "Direction of electronic mail"
-
-#~ msgid "Direccion de correo electronico"
-#~ msgstr "Direction of electronic mail"
-
-#~ msgid "Direccion electronica"
-#~ msgstr "Electronic direction"
-
-#~ msgid "Direccion:"
-#~ msgstr "Address:"
-
-#, fuzzy
-#~ msgid "Direcció&n:"
-#~ msgstr "Address:"
-
-#~ msgid "Disponible en stock"
-#~ msgstr "Available in stock"
-
-#~ msgid "E-&mail:"
-#~ msgstr "E-&mail:"
-
-#~ msgid "E-mail:"
-#~ msgstr "E-mail:"
-
-#~ msgid "Editar articulo"
-#~ msgstr "Publish article"
-
-#~ msgid "Editar cliente"
-#~ msgstr "Publish client"
-
-#~ msgid "Elija el archivo"
-#~ msgstr "Choose the file"
-
-#~ msgid "Empresa"
-#~ msgstr "Company"
-
-#~ msgid "Empresa:"
-#~ msgstr "Company:"
-
-#~ msgid "Error al borrar el articulo"
-#~ msgstr "Error when erasing article"
-
-#~ msgid "Error al borrar el proveedor"
-#~ msgstr "Error when erasing the supplier"
-
-#~ msgid "Error al borrar un cliente"
-#~ msgstr "Error when erasing a client"
-
-#~ msgid "Error al crear el articulo"
-#~ msgstr "Error when creating article"
-
-#~ msgid "Error al crear el cliente"
-#~ msgstr "Error when creating the client"
-
-#~ msgid "Error al crear el proveedor"
-#~ msgstr "Error when creating the supplier"
-
-#~ msgid ""
-#~ "Esta a punto de borrar un articulo. Estos datos pueden dar problemas."
-#~ msgstr "This on the verge of erasing article. These data can give problems."
-
-#~ msgid "Exportar"
-#~ msgstr "Export"
-
-#~ msgid "Exportar articulos"
-#~ msgstr "Export articules"
-
-#~ msgid "F2"
-#~ msgstr "F2"
-
-#~ msgid "F3"
-#~ msgstr "F3"
-
-#~ msgid "Familia"
-#~ msgstr "Family"
-
-#~ msgid "Familias"
-#~ msgstr "Family"
-
-#~ msgid "Fax:"
-#~ msgstr "Fax:"
-
-#~ msgid "Fecha Entrada en Vigor"
-#~ msgstr "Date Taken Effect"
-
-#~ msgid "Fecha de alta del cliente"
-#~ msgstr "Date of discharge of the client"
-
-#~ msgid "Fecha de baja del cliente"
-#~ msgstr "Date of loss of the client"
-
-#~ msgid "Filtrar listado"
-#~ msgstr "Filter listing"
-
-#, fuzzy
-#~ msgid "Forma de Pago"
-#~ msgstr ""
-#~ "#-#-#-#-#  bulmacont_en_US.UTF-8.po (PACKAGE VERSION)  #-#-#-#-#\n"
-#~ "Modes of payment\n"
-#~ "#-#-#-#-#  bulmafact_en_US.UTF-8.po  #-#-#-#-#\n"
-
-#~ msgid "Forma de pago"
-#~ msgstr "Mode of payment"
-
-#~ msgid "Forma de pago:"
-#~ msgstr "Mode of payment:"
-
-#~ msgid "Forma_Pago"
-#~ msgstr "Forms_Payment"
-
-#~ msgid "Formas de pago"
-#~ msgstr "Modes of payment"
-
-#~ msgid "General"
-#~ msgstr "General"
-
-#~ msgid "Gestion de &familias"
-#~ msgstr "Management of &families"
-
-#~ msgid "Guardar"
-#~ msgstr "Keep"
-
-#~ msgid "Guardar Familia"
-#~ msgstr "Keep Family"
-
-#~ msgid "Guardar Tipo de articulo"
-#~ msgstr "Keep Type from article"
-
-#~ msgid "Guardar cliente"
-#~ msgstr "Keep client"
-
-#~ msgid "Guardar datos del trabajador"
-#~ msgstr "Keep data from the worker"
-
-#~ msgid "Guardar familia"
-#~ msgstr "Keep family"
-
-#~ msgid "Guardar forma de pago"
-#~ msgstr "Keep mode of payment"
-
-#~ msgid "Guardar proveedor"
-#~ msgstr "Keep supplier"
-
-#~ msgid "Guardar trabajador"
-#~ msgstr "Keep worker"
-
-#~ msgid "ID articulo"
-#~ msgstr "ID article"
-
-#~ msgid "ID cliente"
-#~ msgstr "ID client"
-
-#~ msgid "ID componente"
-#~ msgstr "ID component"
-
-#~ msgid "ID proveedor"
-#~ msgstr "ID supplier"
-
-#~ msgid "IRPF"
-#~ msgstr "IRPF"
-
-#~ msgid "Id"
-#~ msgstr "Id"
-
-#~ msgid "Id Tasa IVA"
-#~ msgstr "Rate IVA"
-
-#~ msgid "Id Tipo IVA"
-#~ msgstr "Id Type IVA"
-
-#~ msgid "Id almacen"
-#~ msgstr "id warehouse"
-
-#~ msgid "Id familia"
-#~ msgstr "Id family"
-
-#~ msgid "Identificador"
-#~ msgstr "Identifier"
-
-#~ msgid "Identificador de presupuesto"
-#~ msgstr "Identifier of budget"
-
-#~ msgid "Imagen del articulo:"
-#~ msgstr "Image of article:"
-
-#~ msgid "Imagenes (*.jpg)"
-#~ msgstr "Images (*.jpg)"
-
-#~ msgid "Importar"
-#~ msgstr "Matter"
-
-#~ msgid "Importar articulos"
-#~ msgstr "Concern articles"
-
-#~ msgid "Imprimir Familias"
-#~ msgstr "Print Family"
-
-#~ msgid "Imprimir informe"
-#~ msgstr "Print report"
-
-#~ msgid "Imprimir listado"
-#~ msgstr "Print listing"
-
-#~ msgid "Inactivo"
-#~ msgstr "Inactive"
-
-#~ msgid "Incluir en control de stock"
-#~ msgstr "Include in stock control"
-
-#~ msgid "Incluir en presentaciones"
-#~ msgstr "Include in presentations"
-
-#~ msgid "Informacion de la forma de pago:"
-#~ msgstr "Information of the mode of payment:"
-
-#~ msgid "Informacion del articulo:"
-#~ msgstr "Information of article:"
-
-#~ msgid "Informacion del banco:"
-#~ msgstr "Information of the bank:"
-
-#~ msgid "Lista de bancos:"
-#~ msgstr "List of banks:"
-
-#~ msgid "Lista de trabajadores:"
-#~ msgstr "List of workers:"
-
-#~ msgid "Listado de Clientes"
-#~ msgstr "Listing of Clients"
-
-#~ msgid "Listado de Proveedores"
-#~ msgstr "Listing of Suppliers"
-
-#~ msgid "Mostrar / Ocultar Detalle"
-#~ msgstr "Show/hide Detail"
-
-#~ msgid "Nombre almacen"
-#~ msgstr "Name warehouse"
-
-#~ msgid "Nombre alternativo"
-#~ msgstr "Alternative name"
-
-#~ msgid "Nombre alternativo del cliente"
-#~ msgstr "Alternative name of the client"
-
-#~ msgid "Nombre alternativo del proveedor"
-#~ msgstr "Alternative name of the supplier"
-
-#~ msgid "Nombre comercia&l:"
-#~ msgstr "Commercial nam&e:"
-
-#~ msgid "Nombre comercial:"
-#~ msgstr "Commercial name:"
-
-#~ msgid "Nombre completo:"
-#~ msgstr "Complete name:"
-
-#~ msgid "Nombre de cliente"
-#~ msgstr "Name of client"
-
-#~ msgid "Nombre de la forma de pago:"
-#~ msgstr "Name of the mode of payment:"
-
-#~ msgid "Nombre del articulo"
-#~ msgstr "Article name"
-
-#~ msgid "Nombre del articulo:"
-#~ msgstr "Name of article:"
-
-#~ msgid "Nombre del cliente"
-#~ msgstr "Name of the client"
-
-#~ msgid "Nombre del proveedor"
-#~ msgstr "Name of the supplier"
-
-#~ msgid "Nombre:"
-#~ msgstr "Name:"
-
-#, fuzzy
-#~ msgid "Nuestro código de c&liente:"
-#~ msgstr "Code of client:"
-
-#~ msgid "Nueva Familia"
-#~ msgstr "New femily"
-
-#~ msgid "Nueva forma de pago"
-#~ msgstr "New mode of payment"
-
-#~ msgid "Nuevo &articulo..."
-#~ msgstr "New &article..."
-
-#~ msgid "Nuevo &cliente..."
-#~ msgstr "New &client..."
-
-#~ msgid "Nuevo &proveedor..."
-#~ msgstr "New &supplier..."
-
-#~ msgid "Nuevo Tipo de articulo"
-#~ msgstr "New Type of article"
-
-#~ msgid "Nuevo articulo"
-#~ msgstr "New article"
-
-#~ msgid "Nuevo cliente"
-#~ msgstr "New client"
-
-#~ msgid "Nuevo trabajador"
-#~ msgstr "New worker"
-
-#~ msgid "Numero cuenta corriente"
-#~ msgstr "Number current account"
-
-#~ msgid "Numero de cuenta corriente"
-#~ msgstr "Number of current account"
-
-#~ msgid "Numero de fax"
-#~ msgstr "Number of fax"
-
-#~ msgid "Numero de fax:"
-#~ msgstr "Number of fax:"
-
-#~ msgid "Numero de la Seguridad Social:"
-#~ msgstr "Number of the Social Security:"
-
-#~ msgid "Numero de plazos:"
-#~ msgstr "Number of terms:"
-
-#~ msgid "Numero de telefono"
-#~ msgstr "Number of telephone"
-
-#~ msgid "Numero de telefono en el trabajo"
-#~ msgstr "Number of telephone in the work"
-
-#~ msgid "Numero de telefono movil"
-#~ msgstr "Number of telephone mobil"
-
-#, fuzzy
-#~ msgid "Número de &fax:"
-#~ msgstr "Number of fax:"
-
-#~ msgid "Observaciones"
-#~ msgstr "Observations"
-
-#~ msgid "Observaciones sobre el articulo"
-#~ msgstr "Observations on the article"
-
-#~ msgid "Otros datos:"
-#~ msgstr "Other data:"
-
-#~ msgid "P.V.P. articulo"
-#~ msgstr "P.V.P. article"
-
-#~ msgid "P.V.P. base"
-#~ msgstr "P.V.P. bases"
-
-#~ msgid "Pagina web:"
-#~ msgstr "Web page:"
-
-#~ msgid "Peso Unidad"
-#~ msgstr "Weight Unit"
-
-#~ msgid "Plazo entre recibos (dias):"
-#~ msgstr "Term between receipts (day):"
-
-#~ msgid "Plazo primer recibo (dias):"
-#~ msgstr "Term first receipt (day):"
-
-#~ msgid "Poblacion"
-#~ msgstr "Population"
-
-#~ msgid "Poblacion:"
-#~ msgstr "Population:"
-
-#, fuzzy
-#~ msgid "Població&n:"
-#~ msgstr "Population:"
-
-#~ msgid "Porcentaje IVA"
-#~ msgstr "Percentage IVA"
-
-#~ msgid "Porcentaje Recargo Equivalencia"
-#~ msgstr "Percentage Surcharge Equivalence"
-
-#~ msgid "Pro&cesados"
-#~ msgstr "Pro&cessings"
-
-#~ msgid "Procesa&dos"
-#~ msgstr "Processi&ngs"
-
-#~ msgid "Productos &suministrados"
-#~ msgstr "Provided &products"
-
-#~ msgid "Proveedor"
-#~ msgstr "Supplier"
-
-#~ msgid "Proveedor:"
-#~ msgstr "Supplier:"
-
-#~ msgid "Proveedores"
-#~ msgstr "Suppliers"
-
-#~ msgid "Proveedores (*.xml)"
-#~ msgstr "Suppliers (*.xml)"
-
-#~ msgid "Provincia"
-#~ msgstr "Province"
-
-#~ msgid "Provincia:"
-#~ msgstr "Province:"
-
-#, fuzzy
-#~ msgid "Página &web:"
-#~ msgstr "Web page:"
-
-#~ msgid "Recargo de Equivalencia"
-#~ msgstr "Surcharge of Equivalence"
-
-#~ msgid "Regimen &fiscal:"
-#~ msgstr "Fiscal &regime:"
-
-#~ msgid "Regimen Fiscal"
-#~ msgstr "Fiscal Regime"
-
-#~ msgid "Regimen fiscal"
-#~ msgstr "Fiscal regime"
-
-#~ msgid "Regimen fiscal:"
-#~ msgstr "Fiscal regime:"
-
-#~ msgid "Resumen por articulos"
-#~ msgstr "Summary by articles"
-
-#~ msgid "S&olo presentables"
-#~ msgstr "S&ingle presentables"
-
-#~ msgid "Se&ries de factura"
-#~ msgstr "Se&ries of invoice"
-
-#~ msgid "Seleccione archivo"
-#~ msgstr "Select file"
-
-#~ msgid "Seleccione el archivo"
-#~ msgstr "Select the file"
-
-#~ msgid "Selector de articulos"
-#~ msgstr "Selector of article"
-
-#~ msgid "Selector de clientes"
-#~ msgstr "Selector of clients"
-
-#~ msgid "Selector de proveedores"
-#~ msgstr "Selector of suppliers"
-
-#~ msgid "Solo usados"
-#~ msgstr "Single used"
-
-#~ msgid "Stock"
-#~ msgstr "Stock"
-
-#~ msgid "Subcodigo:"
-#~ msgstr "Subcode:"
-
-#~ msgid "Tasas de IVA"
-#~ msgstr "Rates of IVA"
-
-#~ msgid "Telefono del trabajo:"
-#~ msgstr "Telephone of the work:"
-
-#~ msgid "Telefono fijo:"
-#~ msgstr "Telephone fixed:"
-
-#~ msgid "Telefono movil:"
-#~ msgstr "Telephone mobil:"
-
-#~ msgid "Telefono:"
-#~ msgstr "Telephone:"
-
-#~ msgid "Texto para etiqueta:"
-#~ msgstr "Text for label:"
-
-#~ msgid "Tiene que seleccionar un articulo"
-#~ msgstr "It must select article"
-
-#~ msgid "Tipo Articulos"
-#~ msgstr "Article Type "
-
-#~ msgid "Tipo IVA"
-#~ msgstr "Type IVA"
-
-#~ msgid "Tipo de I.V.A."
-#~ msgstr "Type of I.V.A."
-
-#~ msgid "Tipo de I.V.A.:"
-#~ msgstr "Type of I.V.A.:"
-
-#~ msgid "Tipo de articulo"
-#~ msgstr "Type of the article"
-
-#~ msgid "Tipo de articulo:"
-#~ msgstr "Type of article:"
-
-#~ msgid "Tipo plazo entre recibos:"
-#~ msgstr "Type term between receipts:"
-
-#~ msgid "Tipo plazo primer pago:"
-#~ msgstr "Type term first payment:"
-
-#~ msgid "Tipos de IVA"
-#~ msgstr "Types of IVA"
-
-#~ msgid "Tipos de articulo"
-#~ msgstr "Types of article"
-
-#~ msgid "Todos"
-#~ msgstr "All"
-
-#~ msgid "Trabajador"
-#~ msgstr "Worker"
-
-#~ msgid "Trabajadores"
-#~ msgstr "Workers"
-
-#~ msgid "URL"
-#~ msgstr "URL"
-
-#~ msgid "URL:"
-#~ msgstr "URL:"
-
-#~ msgid "Vencidos"
-#~ msgstr "Won"
-
-#~ msgid "Ver"
-#~ msgstr "See"
-
-#~ msgid "Vigentes"
-#~ msgstr "Effective"
-
-#~ msgid "Volumen Unidad"
-#~ msgstr "Volume Unit"
