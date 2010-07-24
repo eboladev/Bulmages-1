@@ -19,7 +19,7 @@ CONF_TPV_CELL_WIDTH     120
 #Numero de elementos por fila
 CONF_TPV_CELLS_PER_ROW  6
 
-CONF_DIR_THUMB_ARTICLES		/var/bulmages/articles_thumbs/
+CONF_DIR_THUMB_ARTICLES		/var/bulmages/articles/
 CONF_TICKET_PRINTER_FILE	/dev/null
 CONF_TPV_VISOR_FILE		/dev/null
 CONF_CASHBOX_FILE		/dev/null

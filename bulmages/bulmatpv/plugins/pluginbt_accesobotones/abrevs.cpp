@@ -20,22 +20,23 @@ Abrevs::Abrevs ( BlMainCompany *emp, QWidget *parent ) : BlWidget ( emp, parent 
 {
     setupUi ( this );
 
-    /// Vamos a probar con un docwindow.
+    /// Creamos un docwindow.
     m_doc2 = new QDockWidget ( "Teclado", g_main );
     m_doc2->setFeatures ( QDockWidget::AllDockWidgetFeatures );
     g_main->addDockWidget ( Qt::TopDockWidgetArea, m_doc2 );
     m_doc2->hide();
-/// **** PRUEBAS DE EMBEBIDO
 
     m_proc = new QProcess();
 
-    /*
-        m_proc->start("xvkbd");
+    /// Hay varios teclados embebidos que se pueden utilizar. Pero el que mejor funciona
+    /// Es el matchbox-keyboard
+/*
+        m_proc->start("kvkbd");
         if (!m_proc->waitForStarted())
             return;
         QString winId = "";
-        while (winId == "") winId = windowID("xvkbd - Virtual Keyboard");
-    */
+        while (winId == "") winId = windowID("kvkbd");
+*/
 
 
     /*
@@ -48,11 +49,14 @@ Abrevs::Abrevs ( BlMainCompany *emp, QWidget *parent ) : BlWidget ( emp, parent 
 
 
     m_proc->start ( "matchbox-keyboard -xid es" );
-    if ( !m_proc->waitForStarted() )
+    if ( !m_proc->waitForStarted() ) {
+	mui_teclado->hide();
         return;
+    } // end if
     m_proc->waitForReadyRead();
     QString winId = "";
     winId = m_proc->readAllStandardOutput();
+
 
 #ifndef WIN32
 
@@ -79,27 +83,14 @@ void Abrevs::on_mui_teclado_clicked()
         m_doc2->hide();
     } else {
         m_doc2->show();
-// g_main->topDock()->setHeight(400);
     }// end if
 }
 
 void Abrevs::on_mui_usuario_clicked()
 {
 
-    /// Vamos a probar con un docwindow.
-    /*
-        QDockWidget *doc2 = new QDockWidget("Trabajadores", g_main);
-        doc2->setFeatures(QDockWidget::AllDockWidgetFeatures);
-        g_main->addDockWidget(Qt::TopDockWidgetArea, doc2);
-        doc2->show();
-    */
-/// **** PRUEBAS DE EMBEBIDO
-
     Trabajadores * trab = new Trabajadores ( mainCompany(), 0 );
-
-//    doc2->setWidget(trab);
     trab->exec();
-//    trab->setWindowModality(Qt::WindowModal);
 }
 
 

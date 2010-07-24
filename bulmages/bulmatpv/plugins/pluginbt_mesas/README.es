@@ -22,6 +22,8 @@ Dependencias: libpluginbt_accesobotones.so
 
 Incompatibles:
 
+Categorias: Utilidades avanzadas; Experimentales; Restauracion;
+
 Orden: 5
 
 Comentarios: 

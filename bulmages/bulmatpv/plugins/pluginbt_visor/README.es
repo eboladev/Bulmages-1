@@ -24,6 +24,8 @@ Dependencias:
 
 Incompatibles:
 
-Orden:
+Categorias: Utilidades avanzadas; Experimentales;
+
+Orden: 10
 
 Comentarios: Testeado con un visor Samsung Bixolon BCD1000

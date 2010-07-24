@@ -23,6 +23,8 @@ Dependencias: libplugintpv.so
 
 Incompatibles:
 
-Orden:
+Categorias: Utilidades avanzadas; Experimentales;
+
+Orden: 10
 
 Comentarios: Ideal para comercios donde haya que buscar los artículos.

@@ -18,9 +18,9 @@ ArchivoSQLpatch:
 
 ArchivoSQLdeins: 
 
-Dependencias: libpluginbt_ivaincluido.so
+Dependencias: libplugintpv.so; libpluginbt_ivaincluido.so
 
-Incompatibles:
+Incompatibles: libpluginbt_ticket.so
 
 Categorias: Experimentales;IVA incluido;
 

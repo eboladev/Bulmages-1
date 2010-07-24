@@ -13,6 +13,7 @@ Descripción: <H1>Acceso rápido</H1>
 También permite la creación de múltiples tickets a la vez para cada uno de los trabajadores.
 Permitiendo el aparcado de los mismos (botón APARCAR) y recuperación de los mismos (botón RECUPERAR).
 Se permite la inserción del cliente introduciendo el codigo del cliente y pulsando sobre el botón CLIENTE.</P>
+<P>Para el correcto funcionamiento del teclado en pantalla es preciso instalar matchbox-keyboard</P>
 <HR>
 
 ParmBD: 

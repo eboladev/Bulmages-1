@@ -18,13 +18,13 @@ ArchivoSQLpatch:
 
 ArchivoSQLdeins: 
 
-Dependencias: libpluginbt_printercocina.so
+Dependencias: libpluginbf_printercocina.so
 
 Incompatibles:
 
 Orden: 810
 
-Categorias: Experimentales;IVA incluido;
+Categorias: Experimentales; Restauracion;
 
 
 Comentarios: 

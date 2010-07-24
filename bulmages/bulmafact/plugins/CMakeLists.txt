@@ -49,6 +49,7 @@ add_subdirectory(pluginbf_alias)
 add_subdirectory(pluginbf_datosbase)
 
 add_subdirectory(pluginbf_ivaincluido)
+add_subdirectory(pluginbf_printercocina)
 
 add_subdirectory(pluginbf_bulmacont)
 
