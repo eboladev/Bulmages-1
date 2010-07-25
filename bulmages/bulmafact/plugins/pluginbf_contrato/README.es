@@ -11,6 +11,7 @@ Biblioteca: libpluginbf_contrato.so
 Descripción: <H1>Contratos</H1>
 <P>Permite la gestión de contratos con clientes. A partir de dichos contratos se permite una facturación
 automática periódica.</P>
+<B>Author:</B>Tomeu Borrás (tborras@conetxia.com)<BR>
 <HR>
 
 ParmBD: PluginBf_Contrato

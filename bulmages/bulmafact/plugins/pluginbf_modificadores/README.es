@@ -14,19 +14,20 @@ nos  dejará especificar si queremos un filete muy hecho, poco hecho o si
 queremos la bebida sin cubitos, etc</P>
 <P> Para ello en el menu de articulos aparece la opcion modificadores que nos
 permite introducir todos aquellos modificadores que consideremos oportunos</P>
+<B>Author:</B>Tomeu Borrás (tborras@conetxia.com)<BR>
 <HR>
 
-ParmBD:
+ParmBD: PluginBf_Modificadores
 
 ArchivoSQLpatch: pluginbf_modificadores.sql
 
-ArchivoSQLdeins: 
+ArchivoSQLdeins: pluginbf_modificadores-rm.sql
 
-Dependencias: pluginbf_articulo
+Dependencias: libpluginbf_articulo
 
 Incompatibles:
 
-Categorias: Facturacion avanzada;
+Categorias: Facturacion avanzada; Restauracion;
 
 Orden: 750
 

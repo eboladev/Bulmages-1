@@ -14,6 +14,7 @@ Descripción: <H1>Control de Ingresos y Gastos</H1>
 <PARA>Presenta la opcion de introducir ingresos y gastos por partidas para generar un balance.</PARA>
 <BR>
 <PARA>Tambien permite introducir presupuestos contables y contrastarlos con los presupuestos realizados.</PARA>
+<B>Author:</B>Tomeu Borrás (tborras@conetxia.com)<BR>
 <HR>
 
 ParmBD: PluginBf_MiniContabilidad

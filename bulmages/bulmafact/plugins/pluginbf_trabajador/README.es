@@ -18,6 +18,7 @@ tendremos acceso a la ventana de gestion de trabajadores</P>
 la parte izquierda aparecen los detalles del trabajador seleccionado. Para crear un nuevo trabajador tenemos el botón superior de <B>Nuevo</B> que al ser pulsado directamente creará un nuevo trabajador con el nombre <B>NUEVO TRABAJADOR el cual poddra editarse como cualquier otro elemento de la lista de trabajadores</P>
 <BR>
 <P>Al pulsar sobre un elemento de la lista de trabajadores los datos de éste aparecen en el formulario para poder ser cambiados</P>
+<B>Author:</B>Tomeu Borrás (tborras@conetxia.com)<BR>
 <HR>
 
 ParmBD:

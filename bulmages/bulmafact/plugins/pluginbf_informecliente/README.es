@@ -10,6 +10,7 @@ Biblioteca: libpluginbf_informecliente.so
 
 Descripción: <H1>Informe Clientes</H1>
 <P>Genera un informe de ventas a clientes configurable mediante RML.</P>
+<B>Author:</B>Tomeu Borrás (tborras@conetxia.com)<BR>
 <HR>
 
 ParmBD: 

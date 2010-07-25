@@ -10,6 +10,7 @@ Biblioteca: libpluginbf_actividad.so
 
 Descripción: <H1>Actividades</H1>
 <P>Gestionar las actividades llevadas a cabo por la asociacion.</P>
+<B>Author:</B>Tomeu Borrás (tborras@conetxia.com)<BR>
 <HR>
 
 

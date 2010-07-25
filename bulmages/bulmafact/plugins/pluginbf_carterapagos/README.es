@@ -19,6 +19,7 @@ podran cambiarse manualmente.</B></PARA>
 pagos con la norma Q34</PARA>
 <PARA>Es un buen sustituto, algo más elaborado que la gestion de pagos de factura. Útil para aquellas empresas que pretenden
 llevar una gestión de pagos avanzada.</PARA>
+<B>Author:</B>Tomeu Borrás (tborras@conetxia.com)<BR>
 <HR>
 
 ParmBD:

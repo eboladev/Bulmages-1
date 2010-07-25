@@ -4,7 +4,7 @@
 #README.es
 #20080501 
 
-Nombre: Alias TPV
+Nombre: Alias Tallas y Colores 2 TPV
 
 Biblioteca: libpluginbt_aliastallasycolores2.so
 

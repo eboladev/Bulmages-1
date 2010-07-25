@@ -10,6 +10,7 @@ Biblioteca: libpluginbf_recibo.so
 
 Descripción: <H1>Recibos</H1>
 <P>Gestionar los recibos emitidos por la asociacion.</P>
+<B>Author:</B>Tomeu Borrás (tborras@conetxia.com)<BR>
 <HR>
 
 

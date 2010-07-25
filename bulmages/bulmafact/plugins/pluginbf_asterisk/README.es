@@ -13,6 +13,7 @@ Descripción: <H1>Asterisk</H1>
 <P>Requiere el pluginalmacen y el plugincuadrante, sin los cuales no funcionará.
 También incluye en el código fuente ejemplos de scritps de validacion hecho en php para ser
 puestos en marcha en la centralita con agi.</P>
+<B>Author:</B>Tomeu Borrás (tborras@conetxia.com)<BR>
 <HR>
 
 ParmBD: PluginBf_Asterisk

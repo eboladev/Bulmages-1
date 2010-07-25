@@ -1,86 +1,101 @@
-<ui version="4.0" >
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
  <class>BtBulmaTPVBase</class>
- <widget class="QMainWindow" name="BtBulmaTPVBase" >
-  <property name="geometry" >
+ <widget class="QMainWindow" name="BtBulmaTPVBase">
+  <property name="geometry">
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>320</width>
-    <height>240</height>
+    <width>658</width>
+    <height>471</height>
    </rect>
   </property>
-  <property name="windowTitle" >
+  <property name="windowTitle">
    <string>Iglues/BtBulmaTPV</string>
   </property>
-  <property name="windowIcon" >
-   <iconset resource="../../bulmages.qrc" >
+  <property name="windowIcon">
+   <iconset resource="../../bulmages.qrc">
     <normaloff>:/Images/bulmatpv.png</normaloff>:/Images/bulmatpv.png</iconset>
   </property>
-  <widget class="QWidget" name="centralwidget" />
-  <widget class="QStatusBar" name="statusbar" />
-  <action name="actionSobre_BtBulmaTPV" >
-   <property name="text" >
+  <widget class="QWidget" name="centralwidget"/>
+  <widget class="QStatusBar" name="statusbar"/>
+  <action name="actionSobre_BtBulmaTPV">
+   <property name="text">
     <string>Sobre BtBulmaTPV</string>
    </property>
   </action>
-  <action name="actionSobre_Bulmages" >
-   <property name="text" >
+  <action name="actionSobre_Bulmages">
+   <property name="text">
     <string>Sobre Bulmages</string>
    </property>
   </action>
-  <action name="actionSobre_Qt" >
-   <property name="text" >
+  <action name="actionSobre_Qt">
+   <property name="text">
     <string>Sobre Qt</string>
    </property>
   </action>
-  <action name="actionCerrar" >
-   <property name="text" >
+  <action name="actionCerrar">
+   <property name="text">
     <string>Cerrar</string>
    </property>
   </action>
-  <action name="actionModificar_Cliente" >
-   <property name="text" >
+  <action name="actionModificar_Cliente">
+   <property name="text">
     <string>Preferencias</string>
    </property>
   </action>
-  <action name="actionA_adir_Cliente_2" >
-   <property name="text" >
+  <action name="actionA_adir_Cliente_2">
+   <property name="text">
     <string>Anyadir</string>
    </property>
   </action>
-  <action name="actionModificar" >
-   <property name="text" >
+  <action name="actionModificar">
+   <property name="text">
     <string>Modificar</string>
    </property>
   </action>
-  <action name="actionBorrar" >
-   <property name="text" >
+  <action name="actionBorrar">
+   <property name="text">
     <string>Borrar</string>
    </property>
   </action>
-  <action name="actionIdentificaci_n" >
-   <property name="text" >
+  <action name="actionIdentificaci_n">
+   <property name="text">
     <string>Identificacion</string>
    </property>
   </action>
-  <action name="actionEstad_sticas" >
-   <property name="text" >
+  <action name="actionEstad_sticas">
+   <property name="text">
     <string>Estadisticas</string>
    </property>
   </action>
-  <action name="actionCuentas_Pendientes" >
-   <property name="text" >
+  <action name="actionCuentas_Pendientes">
+   <property name="text">
     <string>Pendiente</string>
    </property>
   </action>
-  <action name="actionAdministrador" >
-   <property name="text" >
+  <action name="actionAdministrador">
+   <property name="text">
     <string>Administrador</string>
+   </property>
+  </action>
+  <action name="actionVentana_Completa">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>Ventana &amp;Completa</string>
+   </property>
+   <property name="toolTip">
+    <string>Ventana Completa</string>
+   </property>
+   <property name="shortcut">
+    <string>F11</string>
    </property>
   </action>
  </widget>
  <resources>
-  <include location="../../bulmages.qrc" />
+  <include location="../../bulmages.qrc"/>
  </resources>
  <connections/>
 </ui>

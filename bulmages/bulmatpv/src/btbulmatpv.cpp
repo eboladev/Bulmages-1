@@ -98,7 +98,7 @@ BtBulmaTPV::BtBulmaTPV ( QString bd ) : BlMainWindow()
     m_pb->setVisible ( FALSE );
     statusBar() ->showMessage ( bd, 2000 );
     setWindowTitle ( bd );
-    
+
     _depura ( "END BtBulmaTPV::BtBulmaTPV", 0 );
 }
 
@@ -149,6 +149,16 @@ void BtBulmaTPV::s_ventanaCompleta()
     _depura ( "END BtBulmaTPV::s_ventanaCompleta", 0 );
 }
 
+
+///
+/**
+**/
+void BtBulmaTPV::on_actionVentana_Completa_triggered()
+{
+    _depura ( "BtBulmaTPV::on_actionVentana_Completa_triggered", 0 );
+    s_ventanaCompleta();
+    _depura ( "END BtBulmaTPV::on_actionVentana_Completa_triggered", 0 );
+}
 
 /** Metodo que responde a la pulsacion de About en el menu.
     Inicializa la ventana de About y la muestra.

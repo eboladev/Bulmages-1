@@ -10,6 +10,7 @@ Biblioteca: libpluginbf_alumno.so
 
 Descripción: <H1> Alumnos</H1>
 <P>Gestionar los alumnos de una APA.</P>
+<B>Author:</B>Tomeu Borrás (tborras@conetxia.com)<BR>
 <HR>
 
 ParmBD:

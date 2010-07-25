@@ -11,6 +11,7 @@ Biblioteca: libpluginbf_comercial.so
 Descripción: <H1>Comerciales</H1>
 <P>Permite llevar la gestión de los comerciales de la empresa.
 Teniendo un planing de visitas y de rutas a realizar.</P>
+<B>Author:</B>Tomeu Borrás (tborras@conetxia.com)<BR>
 <HR>
 
 ParmBD: PluginBf_Comercial

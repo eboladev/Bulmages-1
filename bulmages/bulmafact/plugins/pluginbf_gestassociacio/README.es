@@ -11,6 +11,7 @@ Biblioteca: libpluginbf_example.so
 Descripción: <H1>Ejemplo</H1>
 <P>Sirve para demostrar el funcionamiento de los plugins. Es, principalmente
 un ejemplo de programacion.</P>
+<B>Author:</B>Tomeu Borrás (tborras@conetxia.com)<BR>
 <HR>
 
 ParmBD: 

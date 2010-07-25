@@ -16,8 +16,9 @@ Las impresoras deben estar guardadas en la tabla printercocina que (de momento) 
 debe ser mantenida a través del SQL. Supuestamente es el técnico quien instala las impresoras y modifica la
 base de datos para que estas tenga efecto.
 </P>
-<P>Importante que las impresoras deben ser ticketeras compatibles ESC/POS y deben estar compartidas con CUPS. En la tabla
+<P>Importante que las impresoras deben ser ticketeras compatibles <B>ESC/POS</B> y deben estar compartidas con CUPS. En la tabla
 printer cocina hay que poner el nombre de la cola cups de la impresora</P>
+<B>Author:</B>Tomeu Borrás (tborras@conetxia.com)<BR>
 <HR>
 
 ParmBD: PluginBf_PrinterCocina

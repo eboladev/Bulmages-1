@@ -11,6 +11,7 @@ Biblioteca: libpluginbf_ticket.so
 Descripción: <H1>Impresion de Tickets</H1>
 <P>Imprime albaranes en forma de tickets en impresoras ESC/POS.</P>
 <P>Precisa de la impresora conectada al dispositivo serie o usb. De momento no hace control de desconexión por lo que si la impresora se bloquea el programa también lo hace.</P>
+<B>Author:</B>Tomeu Borrás (tborras@conetxia.com)<BR>
 <HR>
 
 ParmBD: 

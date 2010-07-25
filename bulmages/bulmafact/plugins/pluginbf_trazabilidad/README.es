@@ -11,6 +11,7 @@ Biblioteca: libpluginbf_trazabilidad.so
 Descripción: <H1>Trazabilidad</H1>
 <P>Permite el control de trazabilidad por lotes. Agrega una tabla de movimientos de material y un campo
     "lote" que permite identificar productos desde su compra hasta su venta.</P>
+<B>Author:</B>Tomeu Borrás (tborras@conetxia.com)<BR>
 <HR>
 
 ParmBD: PluginBf_Trazabilidad

@@ -11,6 +11,7 @@ Biblioteca: libpluginbf_bulmacont.so
 Descripción: <H1>Contabilidad en bulmaFact</H1>
 <P>Abre una instancia de contabilidad junto a la facturacion para poder usar pantallas de la contabilidad
 en la facturacion.</P>
+<B>Author:</B>Tomeu Borrás (tborras@conetxia.com)<BR>
 <HR>
 
 ParmBD: 

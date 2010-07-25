@@ -10,6 +10,7 @@ Biblioteca: libpluginbf_multiimprimir.so
 
 Descripción: <H1>Impresiones Multiples</H1>
 <P>Permite la selección de multiples documentos (presupuestos, pedidos, albaranes o facturas) y realizar algunas operacions comunes a todos ellos con un sólo click (imprimir, enviar por e-mail, etc).</P>
+<B>Author:</B>Tomeu Borrás (tborras@conetxia.com)<BR>
 <HR>
 
 ParmBD: 

@@ -19,6 +19,7 @@ podran cambiarse manualmente.</B></PARA>
 cobros</PARA>
 <PARA>Es un buen sustituto, algo más elaborado que la gestion de cobros de factura. Útil para aquellas empresas que pretenden
 llevar una gestión de cobros avanzada.</PARA>
+<B>Author:</B>Tomeu Borrás (tborras@conetxia.com)<BR>
 <HR>
 
 ParmBD:

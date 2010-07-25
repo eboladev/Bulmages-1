@@ -30,6 +30,8 @@ Descripción: <H1>Sincronizacion BulmaCont</H1>
 <P>Mediante estos scripts se puede hacer una sincronizacion manual en lugar de una sincronizacion automatica.</P>
 <P>Las opciones de sincronizacion son ''standar'' si quiere opciones de sincronización especiales modifique los scripts
 para que se ajusten a sus necesidades.</P>
+<B>Author:</B>Tomeu Borrás (tborras@conetxia.com)<BR>
+<B>Author:</B>Fco. Javier MC  (comercial@todo-redes.com)<BR>
 <HR>
 
 ParmBD: PluginBf_SincroBulmaCont

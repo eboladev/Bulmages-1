@@ -10,6 +10,7 @@ Biblioteca: libpluginbf_inventariosimple.so
 
 Descripción: <H1>Inventario Simple Para Asociaciones</H1>
 <P>Permite crear la relación de posesiones pertenecientes a la asociación, controlar de forma simplificada su stock y hacer cesiones del material..</P>
+<B>Author:</B>Tomeu Borrás (tborras@conetxia.com)<BR>
 <HR>
 
 ParmBD: PluginBf_InventarioSimple

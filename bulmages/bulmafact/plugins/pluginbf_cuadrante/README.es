@@ -11,6 +11,7 @@ Biblioteca: libpluginbf_cuadrante.so
 Descripción: <H1>Cuadrante de personal</H1>
 <P>Gestiona la creación de cuadrantes de trabajo pudiendo asignar las horas que
 corresponda a cada trabajador y la plublicación del cuadrante en formato PDF.</P>
+<B>Author:</B>Tomeu Borrás (tborras@conetxia.com)<BR>
 <HR>
 
 ParmBD: PluginBf_Cuadrante

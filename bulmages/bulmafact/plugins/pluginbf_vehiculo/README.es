@@ -10,6 +10,7 @@ Biblioteca: libpluginbf_vehiculo.so
 
 Descripción: <H1>Vehiculos</H1>
 <P>Gestión de flotas de vehículos de la empresa. Kilometrajes, etc</P>
+<B>Author:</B>Tomeu Borrás (tborras@conetxia.com)<BR>
 <HR>
 
 ParmBD: PluginBf_Vehiculos

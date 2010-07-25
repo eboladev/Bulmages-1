@@ -10,6 +10,7 @@ Biblioteca: libpluginbf_abrereferencia.so
 
 Descripción: <H1>Apertura por referencia</H1>
 <P>Al pulsar el Enter sobre el campo de referencia se intenta abrir la ficha que tiene dicha referencia.</P>
+<B>Author:</B>Tomeu Borrás (tborras@conetxia.com)<BR>
 <HR>
 
 ParmBD: 

@@ -15,6 +15,7 @@ Descripción: <H1>Gestion de articulos</H1>
 <BR>
 <PARA>Al instalar el plugin aparecerá el menu Articulos en la aplicacion con las opciones <B>Listado de Articulos</B> y la
 opcion <B>Nuevo Articulo</B></PARA>
+<B>Author:</B>Tomeu Borrás (tborras@conetxia.com)<BR>
 <HR>
 
 ParmBD:

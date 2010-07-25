@@ -9,7 +9,8 @@ Nombre: Facturas a clientes
 Biblioteca: libpluginbf_clientefactura.so
 
 Descripción: <H1>Facturas a clientes</H1>
-<P>Soporte para facturas a clientes.</P>
+<P>Soporte para emisión de facturas a clientes.</P>
+<B>Author:</B>Tomeu Borrás (tborras@conetxia.com)<BR>
 <HR>
 
 ParmBD:

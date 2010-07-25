@@ -10,6 +10,7 @@ Biblioteca: libpluginbf_clientecobro.so
 
 Descripción: <H1>Cobros</H1>
 <P>Gestionar los cobros realizados a los clientes.</P>
+<B>Author:</B>Tomeu Borrás (tborras@conetxia.com)<BR>
 <HR>
 
 ParmBD:

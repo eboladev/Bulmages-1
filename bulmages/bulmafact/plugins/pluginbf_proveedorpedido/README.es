@@ -10,6 +10,7 @@ Biblioteca: libpluginbf_proveedorpedido.so
 
 Descripción: <H1>Pedidos a proveedores</H1>
 <P>Soporte para pedidos a proveedores.</P>
+<B>Author:</B>Tomeu Borrás (tborras@conetxia.com)<BR>
 <HR>
 
 ParmBD:

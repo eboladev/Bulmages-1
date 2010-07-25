@@ -10,6 +10,7 @@ Biblioteca: libpluginbf_socio.so
 
 Descripción: <H1>Ejemplo</H1>
 <P>Gestion de socios.</P>
+<B>Author:</B>Tomeu Borrás (tborras@conetxia.com)<BR>
 <HR>
 
 ParmBD: PluginBf_Socio

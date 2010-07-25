@@ -10,6 +10,7 @@ Biblioteca: libpluginbf_tutor.so
 
 Descripción: <H1>Tutores</H1>
 <P>Gestionar los tutores de la asociacion.</P>
+<B>Author:</B>Tomeu Borrás (tborras@conetxia.com)<BR>
 <HR>
 
 

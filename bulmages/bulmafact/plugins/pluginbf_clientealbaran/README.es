@@ -10,6 +10,7 @@ Biblioteca: libpluginbf_clientealbaran.so
 
 Descripción: <H1>Albaranes a clientes</H1>
 <P> Soporte para albaranes a clientes.</P>
+<B>Author:</B>Tomeu Borrás (tborras@conetxia.com)<BR>
 <HR>
 
 ParmBD:

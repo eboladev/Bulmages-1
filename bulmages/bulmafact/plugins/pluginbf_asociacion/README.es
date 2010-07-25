@@ -10,6 +10,7 @@ Biblioteca: libpluginbf_asociacion.so
 
 Descripción: <H1>Asociacion</H1>
 <P>Gestionar las cuestiones asociativas de una asociacion.</P>
+<B>Author:</B>Tomeu Borrás (tborras@conetxia.com)<BR>
 <HR>
 
 

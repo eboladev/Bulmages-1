@@ -10,6 +10,7 @@ Biblioteca: libpluginbf_debug.so
 
 Descripción: <H1>Modo Debug</H1>
 <P>Agrega en el menu ver la opcion Modo Debug que comienza a hacer las trazas del programa para poder ser depurado, tambián habilita la aparicion de warnings (si se producen) en ventanas emergentes. <br><br>Sólo tiene interés para los desarrolladores.</P>
+<B>Author:</B>Tomeu Borrás (tborras@conetxia.com)<BR>
 <HR>
 
 ParmBD: 

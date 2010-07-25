@@ -10,6 +10,7 @@ Biblioteca: libpluginbf_proveedoralbaran.so
 
 Descripción: <H1>Albaranes de Proveedor</H1>
 <P> Soporte para albaranes de proveedor.</P>
+<B>Author:</B>Tomeu Borrás (tborras@conetxia.com)<BR>
 <HR>
 
 ParmBD:

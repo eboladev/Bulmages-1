@@ -10,6 +10,7 @@ Biblioteca: libpluginbf_clientepresupuesto.so
 
 Descripción:  <H1>Presupuestos a clientes</H1>
 <P>Soporte para presupuestos a clientes.</P>
+<B>Author:</B>Tomeu Borrás (tborras@conetxia.com)<BR>
 <HR>
 
 ParmBD:

@@ -10,6 +10,7 @@ Biblioteca: libpluginbf_inventario.so
 
 Descripción: <H1>Inventarios</H1>
 <P>Creación de inventarios y control de stock. Inventarios en múltiples almacenes y con rehubicación.</P>
+<B>Author:</B>Tomeu Borrás (tborras@conetxia.com)<BR>
 <HR>
 
 ParmBD: PluginBf_Inventario

@@ -11,6 +11,7 @@ Biblioteca: libpluginbf_almacenamplia.so
 Descripción: <H1>Ampliacion de Almacenes</H1>
 <P>Crea la ficha de almacenes y amplia la información que en ella se presenta.
 Sirve para aquellas gestiones que requieran de un uso mejorado y ampliable de los almacenes.</P>
+<B>Author:</B>Tomeu Borrás (tborras@conetxia.com)<BR>
 <HR>
 
 ParmBD: 

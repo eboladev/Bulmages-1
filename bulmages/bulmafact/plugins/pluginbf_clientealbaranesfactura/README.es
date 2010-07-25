@@ -4,12 +4,13 @@
 #README.es
 #20080501
 
-Nombre: Albaranes a clientes y facturas
+Nombre: Pasar de albaranes a facturas de cliente
 
 Biblioteca: libpluginbf_clientealbaranesfactura.so
 
 Descripción: <H1>Albaranes a clientes y facturas</H1>
 <P> Soporte para albaranes a clientes y facturas.</P>
+<B>Author:</B>Tomeu Borrás (tborras@conetxia.com)<BR>
 <HR>
 
 ParmBD:

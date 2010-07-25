@@ -10,6 +10,7 @@ Biblioteca: libpluginbf_almacen.so
 
 Descripción: <H1>Almacenes</H1>
 <P>Gestionar los almacenes.</P>
+<B>Author:</B>Tomeu Borrás (tborras@conetxia.com)<BR>
 <HR>
 
 ParmBD:

@@ -10,6 +10,7 @@ Biblioteca: libpluginbf_formasdepago.so
 
 Descripción: <H1>Formas de Pago</H1>
 <P>Gestionar las formas de pago.</P>
+<B>Author:</B>Tomeu Borrás (tborras@conetxia.com)<BR>
 <HR>
 
 ParmBD:

@@ -10,6 +10,7 @@ Biblioteca: libpluginbf_etiquetas.so
 
 Descripción: <H1>Crear etiquetas</H1> 
 <P>Permite la creación de etiquetas para los artículos, la etiqueta es personalizable mediante el archivo RML correspondiente.<br>Útil en comercios donde hay que etiquetar los productos.</P>
+<B>Author:</B>Tomeu Borrás (tborras@conetxia.com)<BR>
 <HR>
 
 

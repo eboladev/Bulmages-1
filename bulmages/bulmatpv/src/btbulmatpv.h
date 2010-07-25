@@ -66,6 +66,7 @@ public slots:
     virtual void s_About();
     virtual void setCentralBtWidget(QWidget *wid);
     virtual QWidget *centralBtWidget();
+    virtual void on_actionVentana_Completa_triggered();
 };
 
 #endif

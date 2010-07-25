@@ -10,6 +10,7 @@ Biblioteca: libpluginbf_preciocoste.so
 
 Descripción: <H1>Precios de Coste</H1>
 <P>Agrega el control de precios de coste. Además cuando efectuamos compras nuevas de un producto pregunta si deseamos actualizar el precio de coste.</P>
+<B>Author:</B>Tomeu Borrás (tborras@conetxia.com)<BR>
 <HR>
 
 ParmBD: PluginBf_PrecioCoste
