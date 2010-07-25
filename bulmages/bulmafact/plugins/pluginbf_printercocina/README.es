@@ -6,26 +6,18 @@
 
 Nombre: Impresion en Cocina
 
-Biblioteca: 
+Biblioteca: libpluginbf_printercocina.so
 
 Descripción: <H1>Impresion en Cocina</H1>
-<P>Permite la impresion de pedidos generados en bulmatpv en la cocina</>
+<P>Da el soporte a la impresion de pedidos generados en bulmatpv en la cocina</>
 <P> Este componente modifica la base de datos para agregarle los campos necesarios para la impresion en cocina.</P>
-<P> Por ahora no incorpora interfaz para el manejo de impresoras de cocina. Pero se puede lograr
-facilmente creando un archivo /etc/bulmages/ArticuloBase_bulmafact_spec.spc</P>
-<P> Y poner el contenido: 
-<PRE>
-<FICHA>
-    <CAMPO>
-        <NOMCAMPO>idprintercocina</NOMCAMPO>
-        <NOMPCAMPO>Impresora de Cocina</NOMPCAMPO>
-        <DBTYPECAMPO>DBINT</DBTYPECAMPO>
-        <RESTRICTIONSCAMPO>DBNOTHING</RESTRICTIONSCAMPO>
-    </CAMPO>
-</FICHA>
-
-</PRE>
+<P> Tambien agrega el selector de impresora de cocina a la ficha de articulos.
+Las impresoras deben estar guardadas en la tabla printercocina que (de momento) no tiene gestion en bulmafact y 
+debe ser mantenida a través del SQL. Supuestamente es el técnico quien instala las impresoras y modifica la
+base de datos para que estas tenga efecto.
 </P>
+<P>Importante que las impresoras deben ser ticketeras compatibles ESC/POS y deben estar compartidas con CUPS. En la tabla
+printer cocina hay que poner el nombre de la cola cups de la impresora</P>
 <HR>
 
 ParmBD: PluginBf_PrinterCocina
