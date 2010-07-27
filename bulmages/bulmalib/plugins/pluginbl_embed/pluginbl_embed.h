@@ -31,6 +31,6 @@ extern "C" int entryPoint ( BlMainWindow * );
 extern "C" int BfCompany_createMainWindows_Post ( BfCompany * );
 extern "C" int BcCompany_createMainWindows_Post ( BcCompany * );
 
-
+extern "C"  int init67();
 
 #endif

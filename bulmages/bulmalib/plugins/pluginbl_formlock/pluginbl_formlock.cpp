@@ -122,30 +122,34 @@ int BlForm_DesBlForm ( BlForm *ficha )
 {
     _depura ( "Plugin formlock::BlForm_DesBlForm", 0 );
 
-    QString table_dot_id = QString("%1.%2").arg(ficha->tableName()).arg(ficha->fieldId());
+    if (!ficha->fieldId().isEmpty()) {
+    if ( ficha->dbValue(ficha->fieldId()) != "") {
+      
+	QString table_dot_id = QString("%1.%2").arg(ficha->tableName()).arg(ficha->fieldId());
 
-    QString query = "";
-    if ( ficha->dbValue ( ficha->fieldId() ) != "" ) {
-        QString usuario = "";
-        BlDbRecordSet *cur = ficha->mainCompany()->loadQuery ( "SELECT current_user" );
-        if ( !cur->eof() ) {
-            usuario = cur->valor ( "current_user" );
-        } // end if
-        delete cur;
-        query = "SELECT * FROM bloqueo WHERE fichabloqueo = $1 AND identificadorfichabloqueo= $2 AND usuariobloqueo = $3";
-        BlDbRecordSet *cur1 = ficha->mainCompany()->load( query , 
-                                                          table_dot_id,
-                                                          ficha->dbValue ( ficha->fieldId() ) ,
-                                                          usuario );
-        if ( !cur1->eof() ) {
-            query = "DELETE FROM bloqueo WHERE fichabloqueo = $1 AND identificadorfichabloqueo= $2";
-            ficha->mainCompany()->run ( query ,
-                                        table_dot_id,
-                                        ficha->dbValue ( ficha->fieldId() ));
-        } // end if
-        delete cur1;
+	QString query = "";
+	if ( ficha->dbValue ( ficha->fieldId() ) != "" ) {
+	    QString usuario = "";
+	    BlDbRecordSet *cur = ficha->mainCompany()->loadQuery ( "SELECT current_user" );
+	    if ( !cur->eof() ) {
+		usuario = cur->valor ( "current_user" );
+	    } // end if
+	    delete cur;
+	    query = "SELECT * FROM bloqueo WHERE fichabloqueo = $1 AND identificadorfichabloqueo= $2 AND usuariobloqueo = $3";
+	    BlDbRecordSet *cur1 = ficha->mainCompany()->load( query , 
+							      table_dot_id,
+							      ficha->dbValue ( ficha->fieldId() ) ,
+							      usuario );
+	    if ( !cur1->eof() ) {
+		query = "DELETE FROM bloqueo WHERE fichabloqueo = $1 AND identificadorfichabloqueo= $2";
+		ficha->mainCompany()->run ( query ,
+					    table_dot_id,
+					    ficha->dbValue ( ficha->fieldId() ));
+	    } // end if
+	    delete cur1;
+	} // end if
     } // end if
-
+    } // end if
     _depura ( "END Plugin formlock::BlForm_DesBlForm", 0 );
     return 0;
 }

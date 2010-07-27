@@ -32,6 +32,7 @@
 #include <QObject>
 #include <QProcess>
 #include <QX11EmbedContainer>
+#include <QTextStream>
 
 #include "local_BlI18n.h"
 #include "pluginbl_embed.h"
@@ -41,10 +42,112 @@
 #include "bldockwidget.h"
 #include "blworkspace.h"
 #include "bx11embedcontainer.h"
-
+#include "blform.h"
 
 QMainWindow *g_bges = NULL;
 BlMainCompany *g_emp = NULL;
+
+
+///
+/**
+**/
+
+/*
+MyPluginEmbedODS::MyPluginEmbedODS()
+{
+    _depura ( "MyPluginEmbedODS::MyPluginEmbedODS", 0 );
+    _depura ( "END MyPluginEmbedODS::MyPluginEmbedODS", 0 );
+}
+*/
+
+
+///
+/**
+**/
+
+/*
+MyPluginEmbedODS::~MyPluginEmbedODS()
+{
+    _depura ( "MyPluginEmbedODS::~MyPluginEmbedODS", 0 );
+    _depura ( "END MyPluginEmbedODS::~MyPluginEmbedODS", 0 );
+}
+*/
+
+
+
+///
+/**
+**/
+
+void myplugincont::embedPYS( )
+{
+    _depura ( "MyPluginEmbedODS::elslot", 0 );
+
+    BlForm *ficha = new BlForm ( g_emp, 0 );
+
+    if ( !ficha->generaRML ( sender()->objectName() ) ) return;
+
+    QString archivod = sender()->objectName();
+    QString archivo =  sender()->objectName().left ( sender()->objectName().size() - 4 );
+
+    delete ficha;
+
+
+        QFile file;
+        file.setFileName ( g_confpr->valor ( CONF_DIR_OPENREPORTS ) + archivod );
+        file.open ( QIODevice::ReadOnly );
+        QTextStream stream ( &file );
+        QString buff = stream.readAll();
+        file.close();
+
+        /// Buscamos el titulo
+        QString titulo = archivod;
+        QRegExp rx3 ( " title\\s*=\\s*\"(.*)\"" );
+        rx3.setMinimal ( TRUE );
+        if ( rx3.indexIn ( buff, 0 )  != -1 ) {
+            titulo = rx3.cap ( 1 );
+        } // end if
+    
+        /// Buscamos el icono
+        QString icon = ":/BulmaCont32x32/images/png/i_lo32-app-bulmages.png" ;
+        QRegExp rx4 ( "icon\\s*=\\s*\"(.*)\"" );
+        rx4.setMinimal ( TRUE );
+        if ( rx4.indexIn ( buff, 0 )  != -1 ) {
+            icon = rx4.cap ( 1 );
+        } // end if
+    
+    
+    
+    QDir::setCurrent ( g_confpr->valor ( CONF_DIR_USER ) );
+    QString cadsys;
+
+    QString cadena = " python " + archivo + ".pys";
+    
+    
+    QProcess *m_proc = new QProcess();
+
+    m_proc->start ( cadena );
+    if ( !m_proc->waitForStarted() ) {
+        return;
+    } // end if
+    m_proc->waitForReadyRead();
+    QString winId = "";
+    winId = m_proc->readAllStandardOutput();
+
+    BlWorkspace *work = g_bges ->findChild<BlWorkspace *> (  );
+    if ( work ) {
+        BX11EmbedContainer * container = new BX11EmbedContainer ( g_emp, work );
+        container->setAttribute ( Qt::WA_DeleteOnClose );
+        container->setWindowIcon ( QIcon ( icon ) );
+        work->addWindow ( container );
+        if ( g_emp )
+            g_emp->meteWindow ( titulo, container, FALSE );
+        container->embedClient ( winId.toInt() );
+        container->show();
+    } // end if
+    
+    _depura ( "END MyPluginEmbedODS::elslot", 0 );
+}
 
 
 ///
@@ -156,17 +259,137 @@ int entryPoint ( BlMainWindow *bges )
 }
 
 
+int init67 (  )
+{
 
 
+    myplugincont *mcont = new myplugincont;
+    
+
+    QMenu *pPluginMenu = NULL;
+    /// Miramos si existe un menu Informes
+    pPluginMenu = g_bges->menuBar() ->findChild<QMenu *> ( "menuInformesODS" );
+    QMenu *pPluginVer = g_bges->menuBar()->findChild<QMenu *> ( "menuVentana" );
+
+    /// Buscamos ficheros que tengan el nombre de la tabla
+    QDir dir ( g_confpr->valor ( CONF_DIR_OPENREPORTS ) );
+    dir.setFilter ( QDir::Files | QDir::NoSymLinks );
+    dir.setSorting ( QDir::Size | QDir::Reversed );
+    /// Hacemos un filtrado de busqueda
+    QStringList filters;
+    filters << "embed_*.pys";
+    dir.setNameFilters ( filters );
+
+    QFileInfoList list = dir.entryInfoList();
+
+    for ( int i = 0; i < list.size(); ++i ) {
+        QFileInfo fileInfo = list.at ( i );
+
+        QFile file;
+        file.setFileName ( g_confpr->valor ( CONF_DIR_OPENREPORTS ) + fileInfo.fileName() );
+        file.open ( QIODevice::ReadOnly );
+        QTextStream stream ( &file );
+        QString buff = stream.readAll();
+        file.close();
+
+        /// Buscamos el titulo
+        QString titulo = fileInfo.fileName();
+        QRegExp rx3 ( "title\\s*=\\s*\"(.*)\"" );
+        rx3.setMinimal ( TRUE );
+        if ( rx3.indexIn ( buff, 0 )  != -1 ) {
+            titulo = rx3.cap ( 1 );
+	    
+        } // end if
+
+        QString pathtitulo = fileInfo.fileName();
+        QRegExp rx1 ( "pathtitle\\s*=\\s*\"(.*)\"" );
+        rx1.setMinimal ( TRUE );
+        if ( rx1.indexIn ( buff, 0 )  != -1 ) {
+            pathtitulo = rx1.cap ( 1 );
+	} else {
+	    pathtitulo = titulo;
+        } // end if
+
+
+	QMenuBar *menubar =g_bges->menuBar();
+	QMenu *menu = NULL;
+	QStringList path = pathtitulo.split("\\");
+
+
+	if (path.size() > 1) {
+		    QList<QMenu *> allPButtons = menubar->findChildren<QMenu *>();
+		    bool encontrado = FALSE;
+		    for (int j = 0; j < allPButtons.size(); ++j) {
+			if (allPButtons.at(j)->title() == path[0]) {
+			    encontrado = TRUE;
+			    menu = allPButtons.at(j);
+			} // end if
+		    } // end for
+
+		    if (!encontrado) {
+			QMenu *pPluginMenu1 = new QMenu (  path[0] , menubar );
+			menubar->insertMenu ( pPluginVer->menuAction(), pPluginMenu1 );
+			menu = pPluginMenu1;
+		    } // end if
+	} else {
+
+		    if (!pPluginMenu) {
+			    pPluginMenu = new QMenu ( _ ( "Informes &ODS" ), g_bges->menuBar() );
+			    pPluginMenu->setObjectName ( QString::fromUtf8 ( "menuInformesODS" ) );
+			    g_bges->menuBar()->insertMenu ( pPluginVer->menuAction(), pPluginMenu );
+		    } // end if
+		    menu = pPluginMenu;
+	} // end if
+	
+
+
+	for (int i = 1; i < path.size()-1; ++i) {
+	    QList<QMenu *> allPButtons = menu->findChildren<QMenu *>();
+	    bool encontrado = FALSE;
+	    for (int j = 0; j < allPButtons.size(); ++j) {
+		if (allPButtons.at(j)->title() == path[i]) {
+		    encontrado = TRUE;
+		    menu = allPButtons.at(j);
+		} // end if
+	    } // end for
+
+	    if (!encontrado) {
+		QMenu *pPluginMenu1 = new QMenu ( path[i] , menu );
+		menu->addMenu (  pPluginMenu1 );
+		menu = pPluginMenu1;
+	    } // end if
+
+	} // end for
+
+        /// Creamos el men&uacute;.
+        QAction *accion = new QAction ( path[path.size()-1], 0 );
+        accion->setObjectName ( fileInfo.fileName() );
+        accion->setStatusTip ( titulo);
+        accion->setWhatsThis ( titulo );
+        mcont->connect ( accion, SIGNAL ( activated() ), mcont, SLOT ( embedPYS() ) );
+        menu->addAction ( accion );
+    } // end for
+
+    _depura ( "Iniciado correctamente el plugin", 10 );
+    
+
+    return 0;
+    
+}
+   
+   
+   
 int BfCompany_createMainWindows_Post ( BfCompany *cmp )
 {
     g_emp = cmp;
+    init67();
     return 0;
 }
 
 int BcCompany_createMainWindows_Post ( BcCompany *cmp )
 {
     g_emp = cmp;
+    init67();
     return 0;
 }
 

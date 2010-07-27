@@ -1,0 +1,25 @@
+#!/usr/bin/python
+# -*- coding: utf8 -*-
+
+# pathtitle="&Pruebas\Informes\Prueba de Interfaces"
+# title="Pruebas de interface"
+#<!- -IFACE SRC="[CONF_DIR_OPENREPORTS]inf_ventas.ui"-->
+#<!- -PARAM NAME="fecha_inicial" TYPE="date"-->
+#<!- -PARAM NAME="fecha_final" TYPE="date"-->
+import psycopg2
+import psycopg2.extras
+import ooolib
+import os
+import sys
+import ooolib
+
+from PyQt4 import QtGui
+
+app = QtGui.QApplication(sys.argv)
+
+widget = QtGui.QWidget()
+widget.resize(250, 150)
+widget.setWindowTitle('simple')
+widget.show()
+
+sys.exit(app.exec_())

@@ -73,4 +73,9 @@ foreach(dfile ${docs})
 DESTINATION share/bulmages/bulmalib-plugins/ RENAME ${dfile}.${plugin})
 endforeach(dfile in ${docs})
 
+file(GLOB report_files openreports/*.ui openreports/*.pys openreports/*.rml)
+
+install (FILES ${report_files} DESTINATION share/bulmages/openreports)
+
+
 ADD_LOCAL_BLI18N_HEADER( ${plugin} )

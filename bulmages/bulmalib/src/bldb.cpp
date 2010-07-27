@@ -411,15 +411,15 @@ QString BlDbRecord::fieldId()
 {
     _depura ( "BlDbRecord::fieldId", 0 );
     if (m_campoid.isEmpty()) {
-      if (! dbValue ( "id" + m_tablename ).isEmpty() ) {
+      if ( exists ( "id" + m_tablename ) ) {
 	  m_campoid = "id" + m_tablename;
       } // end if
     } // end if
-      if (m_campoid.isEmpty() ) {
+    if (m_campoid.isEmpty() ) {
 
-       if(! dbValue ( "num" + m_tablename ).isEmpty()) {
+       if(exists ( "num" + m_tablename )) {
 	  m_campoid = "num" + m_tablename;
-    } // end if
+	} // end if
     } // end if
     _depura ( "END BlDbRecord::fieldId", 0, m_campoid );
     return m_campoid;

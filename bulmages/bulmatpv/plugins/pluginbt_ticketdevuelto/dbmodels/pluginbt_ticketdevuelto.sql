@@ -84,7 +84,7 @@ CREATE OR REPLACE FUNCTION actualizarevision() RETURNS INTEGER AS '
 DECLARE
 	bs RECORD;
 BEGIN
-	SELECT INTO bs * FROM configuracion WHERE nombre=''PluginBtTicketDevuelto'';
+	SELECT INTO bs * FROM configuracion WHERE nombre=''PluginBt_TicketDevuelto'';
 	IF FOUND THEN
 		UPDATE CONFIGURACION SET valor=''0.11.1-0001'' WHERE nombre=''PluginBt_TicketDevuelto'';
 	ELSE
