@@ -1147,7 +1147,7 @@ void SumarQToolButton::click()
             rec->refresh();
             QString val = rec->dbValue ( "selector" );
             if ( val == "TRUE" ) {
-                ids += separador + rec->dbValue ( "idpedido" );
+                ids += separador + rec->dbValue ( "idpedidocliente" );
                 separador = ",";
             } // end if
         } // end for
