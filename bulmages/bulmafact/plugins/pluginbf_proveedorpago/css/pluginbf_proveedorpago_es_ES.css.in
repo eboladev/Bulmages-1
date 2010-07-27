@@ -1,0 +1,4 @@
+#PagosListBase #mui_list {
+	background-image: url(@CMAKE_INSTALL_PREFIX@/share/bulmages/images/es_ES/pluginbf_proveedorpago-list.png);
+}
+
