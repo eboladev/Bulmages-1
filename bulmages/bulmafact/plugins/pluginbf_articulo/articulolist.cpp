@@ -35,6 +35,7 @@
 #include "bfbuscartipoarticulo.h"
 #include "blfunctions.h"
 #include "blplugins.h"
+#include "bldbsubform.h"
 
 
 /** Constructor de la ventana de listado de articulos
@@ -202,15 +203,37 @@ QString ArticuloList::formaQuery()
                  " UNION SELECT DISTINCT idarticulo FROM lalbaranp"
                  " UNION SELECT DISTINCT idarticulo FROM lfacturap"
                  ") ";
-    if ( m_filtro->text() != "" )
-        query += " AND lower(nomarticulo) LIKE lower('%" + m_filtro->text() + "%') ";
+
+    /// busca en todos los campos de tipo varchar.
+    if ( m_filtro->text() != "" ) {
+	    
+	query += " AND (";
+	bool andor = true;
+    
+	/// Recorre todas las columnas.
+	for (int i=0; i < mui_list->columnCount(); i++) {
+	  if (mui_list->dbFieldTypeByColumnId(i) == BlDbField::DbVarChar) {  
+	    if (andor) {
+	      query += " lower(" + mui_list->dbFieldNameByColumnId(i) + ") LIKE lower('%" + mainCompany()->sanearCadenaUtf8(m_filtro->text()) + "%') ";
+	      andor = false;
+	    } else {
+	      query += " OR lower(" + mui_list->dbFieldNameByColumnId(i) + ") LIKE lower('%" + mainCompany()->sanearCadenaUtf8(m_filtro->text()) + "%') ";
+	    } // end if
+	  } // end if
+	} // end for
+	
+	query += " ) ";
+    } // end if
+    
     if ( m_familia->idfamilia() != "" ) {
         query += " AND idfamilia IN (SELECT idfamilia FROM familia WHERE codigocompletofamilia LIKE '" + m_familia->codigocompletofamilia() + "%')";
     } // end if
     if ( m_tipoarticulo->idtipo_articulo() != "" ) {
         query += " AND idtipo_articulo = " + m_tipoarticulo->idtipo_articulo();
     } // end if
+      
     query += " ORDER BY codigocompletoarticulo";
+
     return ( query );
     _depura ( "ArticuloList::END_formaQuery()\n", 0 );
 }
