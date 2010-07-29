@@ -9,9 +9,9 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
 "POT-Creation-Date: 2009-10-30 16:45+0100\n"
-"PO-Revision-Date: 2009-10-19 01:16+0200\n"
-"Last-Translator: Automatically generated\n"
-"Language-Team: none\n"
+"PO-Revision-Date: 2010-07-28 15:58+0200\n"
+"Last-Translator: Walter Garcia-Fontes\n"
+"Language-Team: CATALAN\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -39,19 +39,17 @@ msgstr "Rebuts"
 
 #: reciboslist.cpp:81 emitirrecibosview.cpp:63
 msgid "Actividad:"
-msgstr "Activitat"
+msgstr "Activitat:"
 
 #: ui_reciboslistbase.h:360 ui_reciboslistbase.h:363
 msgid "Actualizar listado"
 msgstr "Actual·litza llistat"
 
 #: ui_reciboslistbase.h:308
-#, fuzzy
 msgid "Banco:"
 msgstr "Banc"
 
 #: ui_reciboslistbase.h:328 ui_reciboslistbase.h:331
-#, fuzzy
 msgid "Borrar Actividad"
 msgstr "Esborra Activitat"
 
@@ -66,7 +64,7 @@ msgstr "Esborra rebut"
 
 #: ui_reciboslistbase.h:367
 msgid "Buscar:"
-msgstr "Cerca"
+msgstr "Cerca:"
 
 #: reciboslist.cpp:342 emitirrecibosview.cpp:57 reciboview.cpp:52
 msgid "Cantidad"
@@ -78,7 +76,7 @@ msgstr "Quantitat linia rebut"
 
 #: ui_recibobase.h:387
 msgid "Comentarios:"
-msgstr "Comentaris"
+msgstr "Comentaris:"
 
 #: reciboview.cpp:76
 msgid "Concepto"
@@ -121,14 +119,12 @@ msgid "Ctrl+S"
 msgstr "Ctrl+S"
 
 #: reciboslist.cpp:269
-#, fuzzy
 msgid "Debe seleccionar una fila primero"
-msgstr "Cal triar un compte"
+msgstr "Heu de seleccionar una fila primer"
 
 #: reciboslist.cpp:226
-#, fuzzy
 msgid "Debe seleccionar una linea"
-msgstr "Cal triar un compte"
+msgstr "Heu de seleccionar una línia"
 
 #: reciboview.cpp:55
 msgid "Descripcion"
@@ -136,32 +132,31 @@ msgstr "Descripció"
 
 #: ui_recibobase.h:382
 msgid "Devuelto"
-msgstr "Tornat"
+msgstr "Retornat"
 
 #: ui_reciboslistbase.h:320 ui_reciboslistbase.h:323
-#, fuzzy
 msgid "Editar Actividad"
-msgstr "Editar compte"
+msgstr "Editar Activitat"
 
 #: reciboslist.cpp:287
 msgid "Editar recibo"
-msgstr "Editar rebut"
+msgstr "Edita rebut"
 
 #: ui_emitirrecibosbase.h:243
 msgid "Emiitr Recibos"
-msgstr "Emetre rebuts"
+msgstr "Emet rebuts"
 
 #: ui_emitirrecibosbase.h:240
 msgid "Emitir Recibos"
-msgstr "Emetre rebuts"
+msgstr "Emet rebuts"
 
 #: ui_emitirrecibosbase.h:247
 msgid "Emitir las Cuotas de Socios"
-msgstr "Emetre les quotes dels socis"
+msgstr "Emet les quotes dels socis"
 
 #: pluginbf_recibo.cpp:134 pluginbf_recibo.cpp:135
 msgid "Emitir recibos"
-msgstr "Emetre rebuts"
+msgstr "Emet rebuts"
 
 #: ui_emitirrecibosbase.h:249
 msgid "Emitir sólo la actividad Seleccionada"
@@ -169,19 +164,19 @@ msgstr "Emetre només la activitat seleccionada"
 
 #: ui_emitirrecibosbase.h:248
 msgid "Emitir todas las Actividades"
-msgstr "Emetre totes les activitats"
+msgstr "Emet totes les activitats"
 
 #: emitirrecibosview.cpp:53
 msgid "EmitirRecibos"
-msgstr "Emetre rebuts"
+msgstr "Emet rebuts"
 
 #: reciboslist.cpp:241
 msgid "Error al borrar el cobro a cliente"
-msgstr "Error al esborrar el cobrament a client"
+msgstr "Error en esborrar el cobrament a client"
 
 #: emitirrecibosview.cpp:73 reciboview.cpp:88
 msgid "Error al crear el recibo"
-msgstr "Error al crear el rebut"
+msgstr "Error en crear el rebut"
 
 #: ui_reciboslistbase.h:366
 msgid "F5"
@@ -192,31 +187,28 @@ msgid "Fecha"
 msgstr "Data"
 
 #: reciboview.cpp:56
-#, fuzzy
 msgid "Fecha de creacion"
 msgstr "Data de compra"
 
 #: ui_reciboslistbase.h:307 ui_emitirrecibosbase.h:252
 msgid "Fecha final:"
-msgstr "Data final"
+msgstr "Data final:"
 
 #: ui_reciboslistbase.h:306 ui_emitirrecibosbase.h:251
 msgid "Fecha inicial:"
 msgstr "Data inicial"
 
 #: ui_reciboslistbase.h:344 ui_reciboslistbase.h:347
-#, fuzzy
 msgid "Filtrar Actividades"
-msgstr "Filtrar activitats"
+msgstr "Filtra activitats"
 
 #: reciboslist.cpp:346 ui_recibobase.h:383
 msgid "Forma de Pago"
 msgstr "Forma de pagament"
 
 #: ui_recibobase.h:350 ui_recibobase.h:353
-#, fuzzy
 msgid "Guardar cobro"
-msgstr "Desar arxiu"
+msgstr "Desa arxiu"
 
 #: reciboview.cpp:54
 msgid "ID Forma Pago"
@@ -231,7 +223,6 @@ msgid "ID Tutor"
 msgstr "Id. tutor"
 
 #: reciboview.cpp:53
-#, fuzzy
 msgid "ID cliente"
 msgstr "Id. client"
 
@@ -244,7 +235,6 @@ msgid "Id Forma PAgo"
 msgstr "Id. forma pagament"
 
 #: emitirrecibosview.cpp:58
-#, fuzzy
 msgid "Id cliente"
 msgstr "Id client"
 
@@ -253,7 +243,6 @@ msgid "Identificador"
 msgstr "Identificador"
 
 #: ui_reciboslistbase.h:336 ui_reciboslistbase.h:339
-#, fuzzy
 msgid "Imprimir listado"
 msgstr "Imprimeix la comanda"
 
@@ -266,7 +255,6 @@ msgid "Notificar por e-mail"
 msgstr "Notificar per e-mail"
 
 #: ui_reciboslistbase.h:312 ui_reciboslistbase.h:315
-#, fuzzy
 msgid "Nuevo Actividad"
 msgstr "Nova activitat"
 
@@ -292,7 +280,7 @@ msgstr "Rebut"
 
 #: reciboview.cpp:208
 msgid "Recibo reemitido"
-msgstr "Rebut reemes"
+msgstr "Rebut reemès"
 
 #: reciboslist.cpp:209 pluginbf_recibo.cpp:117 pluginbf_recibo.cpp:118
 #: ui_reciboslistbase.h:305
@@ -317,7 +305,7 @@ msgstr "Rebuts pagats"
 
 #: ui_recibobase.h:374 ui_recibobase.h:377
 msgid "Reemitir Recibo"
-msgstr "Reemetre rebut"
+msgstr "Reemet rebut"
 
 #: emitirrecibosview.cpp:161
 msgid "Terminado"
@@ -325,16 +313,15 @@ msgstr "Finalitzat"
 
 #: reciboview.cpp:119
 msgid "Tiene que guardar el documento antes de poder imprimirlo."
-msgstr "Ha de desar el document abans de poder imprimir-lo"
+msgstr "Heu de desar el document abans de poder imprimir-lo"
 
 #: reciboslist.cpp:124
 msgid "Todos los recibos"
 msgstr "Tots els rebuts"
 
 #: ui_recibobase.h:385
-#, fuzzy
 msgid "Total"
-msgstr "Totals"
+msgstr "Total"
 
 #: reciboslist.cpp:347
 msgid "Tutor"

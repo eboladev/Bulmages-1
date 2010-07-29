@@ -9,9 +9,9 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
 "POT-Creation-Date: 2009-10-21 10:24+0200\n"
-"PO-Revision-Date: 2009-10-19 01:16+0200\n"
-"Last-Translator: Automatically generated\n"
-"Language-Team: none\n"
+"PO-Revision-Date: 2010-07-28 17:38+0200\n"
+"Last-Translator: Walter Garcia-Fontes\n"
+"Language-Team: CATALAN\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -19,11 +19,11 @@ msgstr ""
 
 #: ui_profesorbase.h:510
 msgid "&Aceptar"
-msgstr "&Acceptar"
+msgstr "&Accepta"
 
 #: ui_profesorbase.h:511
 msgid "&Cancelar"
-msgstr "&Cancel·lar"
+msgstr "&Cancel·la"
 
 #: ui_profesorbase.h:495
 msgid "&Datos generales"
@@ -64,7 +64,7 @@ msgstr ""
 #: pluginbf_profesor.cpp:130 pluginbf_profesor.cpp:131
 #: pluginbf_profesor.cpp:132 ui_aboutfapacbase.h:144
 msgid "About FAPAC"
-msgstr "Quant FAPAC"
+msgstr "Quant a FAPAC"
 
 #: ui_profesorbase.h:509
 msgid "Actividades Impartidas"
@@ -75,7 +75,6 @@ msgid "Actualizar listado"
 msgstr "Actual·litza llistat"
 
 #: ui_profesoreslistbase.h:310
-#, fuzzy
 msgid "Banco:"
 msgstr "Banc"
 
@@ -85,7 +84,7 @@ msgstr "Barcelona"
 
 #: ui_profesoreslistbase.h:333 ui_profesoreslistbase.h:336
 msgid "Borrar Monitor"
-msgstr "Esborrar Monitor"
+msgstr "Esborra Monitor"
 
 #: ui_profesorbase.h:469 ui_profesorbase.h:472 ui_profesorbase.h:477
 #: ui_profesorbase.h:480
@@ -181,14 +180,12 @@ msgid "DNI del profesor"
 msgstr "DNI del monitor"
 
 #: profesoreslist.cpp:218
-#, fuzzy
 msgid "Debe seleccionar una fila primero"
-msgstr "Cal triar un compte"
+msgstr "Heu de seleccionar una fila primer"
 
 #: profesoreslist.cpp:175
-#, fuzzy
 msgid "Debe seleccionar una linea"
-msgstr "Cal triar un compte"
+msgstr "Heu de seleccionar una línia"
 
 #: profesorview.cpp:58
 msgid "Direccion del profesor"
@@ -196,24 +193,23 @@ msgstr "Direcció del monitor"
 
 #: ui_profesorbase.h:486
 msgid "Direccion:"
-msgstr "Adreça"
+msgstr "Adreça:"
 
 #: ui_profesoreslistbase.h:325 ui_profesoreslistbase.h:328
 msgid "Editar Monitor"
-msgstr "Editar Monitor"
+msgstr "Edita Monitor"
 
 #: profesoreslist.cpp:237
-#, fuzzy
 msgid "Editar profesor"
-msgstr "Editar monitor"
+msgstr "Edita monitor"
 
 #: profesoreslist.cpp:190
 msgid "Error al borrar el cobro a cliente"
-msgstr "Error al esborrar el cobrament a client"
+msgstr "Error en esborrar el cobrament a client"
 
 #: profesorview.cpp:96
 msgid "Error al crear el profesor"
-msgstr "Error creant el monitor"
+msgstr "Error en crear el monitor"
 
 #: ui_profesorbase.h:506
 msgid "Estudios"
@@ -225,7 +221,7 @@ msgstr "Estudis del monitor"
 
 #: ui_profesorbase.h:505
 msgid "Estudios:"
-msgstr "Estudis"
+msgstr "Estudis:"
 
 #: ui_profesoreslistbase.h:371
 msgid "F5"
@@ -236,18 +232,16 @@ msgid "Fax del profesor"
 msgstr "Fax del monitor"
 
 #: profesorview.cpp:87
-#, fuzzy
 msgid "Fecha Final"
 msgstr "Data final"
 
 #: profesorview.cpp:86
-#, fuzzy
 msgid "Fecha Inicial"
 msgstr "Data inicial"
 
 #: ui_profesoreslistbase.h:311
 msgid "Fecha final:"
-msgstr "Data final"
+msgstr "Data final:"
 
 #: ui_profesoreslistbase.h:312
 msgid "Fecha inicial:"
@@ -255,33 +249,29 @@ msgstr "Data inicial"
 
 #: ui_profesoreslistbase.h:349 ui_profesoreslistbase.h:352
 msgid "Filtrar Monitores"
-msgstr "Filtrar Monitors"
+msgstr "Filtra Monitors"
 
 #: ui_aboutfapacbase.h:152
 msgid "Girona"
 msgstr "Girona"
 
 #: ui_profesorbase.h:461 ui_profesorbase.h:464
-#, fuzzy
 msgid "Guardar cobro"
-msgstr "Desa arxiu"
+msgstr "Desa cobrament"
 
 #: profesorview.cpp:82
-#, fuzzy
 msgid "ID Actividad"
-msgstr "Activitat"
+msgstr "ID Activitat"
 
 #: profesorview.cpp:55
 msgid "ID profesor"
 msgstr "ID monitor"
 
 #: profesoreslist.cpp:291
-#, fuzzy
 msgid "Id profesor"
-msgstr "NIF del proveïdor"
+msgstr "ID professor"
 
 #: ui_profesoreslistbase.h:341 ui_profesoreslistbase.h:344
-#, fuzzy
 msgid "Imprimir listado"
 msgstr "Imprimeix la comanda"
 
@@ -311,7 +301,6 @@ msgid "Nombre completo:"
 msgstr "Nom complet"
 
 #: profesorview.cpp:56
-#, fuzzy
 msgid "Nombre del profesor"
 msgstr "Nom del monitor"
 
@@ -321,21 +310,18 @@ msgid "Nuevo Monitor"
 msgstr "Nou Monitor"
 
 #: pluginbf_profesor.cpp:124 pluginbf_profesor.cpp:125
-#, fuzzy
 msgid "Nuevo profesor"
-msgstr "Nova empresa"
+msgstr "Nou monitor"
 
 #: ui_profesorbase.h:491
-#, fuzzy
 msgid "Numero de fax:"
-msgstr "Nombre de quotes"
+msgstr "Número de fax:"
 
 #: ui_profesorbase.h:508
 msgid "Otros datos"
 msgstr "Altres Dades"
 
 #: ui_profesorbase.h:492
-#, fuzzy
 msgid "Pagina web:"
 msgstr "Pàgina web"
 
@@ -352,14 +338,12 @@ msgid "Poblacion:"
 msgstr "Població"
 
 #: profesorview.cpp:85
-#, fuzzy
 msgid "Precio"
 msgstr "Preu"
 
 #: ui_profesorbase.h:489
-#, fuzzy
 msgid "Provincia:"
-msgstr "Provincia"
+msgstr "Provincia:"
 
 #: ui_aboutfapacbase.h:154
 msgid "Tarragona"
@@ -382,13 +366,8 @@ msgid "Telefono movil:"
 msgstr "Telèfon mòbil"
 
 #: profesorview.cpp:124
-#, fuzzy
 msgid "Tiene que guardar el documento antes de poder imprimirlo."
-msgstr "Ha de desar el document abanç de poder imprimir-lo"
-"#-#-#-#-#  pluginbf_asociacion_ca_ES.UTF-8.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"Ha de guardar el document abans de poder imprimir-lo\n"
-"#-#-#-#-#  pluginbf_recibo_ca_ES.UTF-8.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"Ha de desar el document abans de poder imprimir-lo"
+msgstr "Heu de desar el document abanç de poder imprimir-lo"
 
 #: profesorview.cpp:84
 msgid "Tipo"

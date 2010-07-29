@@ -5,26 +5,20 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
 "POT-Creation-Date: 2009-10-21 10:24+0200\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
+"PO-Revision-Date: 2010-07-28 16:12+0200\n"
+"Last-Translator: Walter Garcia-Fontes <walter.garcia@upf.edu>\n"
+"Language-Team: CATALAN\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
-"#-#-#-#-#  bulmacont_ca2.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"X-Generator: KBabel 1.11.4\n"
-"#-#-#-#-#  bulmages_ca.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"X-Generator: Translate Toolkit 1.1.1\n"
-"#-#-#-#-#  bulmalib_ca_ES.UTF-8.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"X-Generator: Translate Toolkit 1.1.1\n"
+"Content-Transfer-Encoding: 8bit"
 
 #: ui_tutorbase.h:511
 msgid "&Aceptar"
-msgstr "&Acceptar"
+msgstr "&Accepta"
 
 #: ui_tutorbase.h:512
 msgid "&Cancelar"
-msgstr "&Cancel·lar"
+msgstr "&Cancel·la"
 
 #: ui_tutorbase.h:528
 msgid "&Datos generales"
@@ -64,7 +58,7 @@ msgstr "2n cognom del pare"
 
 #: ui_tutoreslistbase.h:294 ui_tutoreslistbase.h:297
 msgid "Actualizar listado"
-msgstr "Actual·litzar llistat"
+msgstr "Actual·litza llistat"
 
 #: ui_tutorbase.h:525
 msgid "Banco:"
@@ -76,11 +70,11 @@ msgstr "Esborrar tutor"
 
 #: ui_tutorbase.h:496 ui_tutorbase.h:499 ui_tutorbase.h:504 ui_tutorbase.h:507
 msgid "Borrar cobro"
-msgstr "Esborrar cobrament"
+msgstr "Esborra cobrament"
 
 #: ui_tutoreslistbase.h:301
 msgid "Buscar:"
-msgstr "Cercar"
+msgstr "Cerca"
 
 #: tutoreslist.cpp:271
 msgid "C.I.F."
@@ -150,12 +144,12 @@ msgstr "Ctrl+S"
 #: tutoreslist.cpp:202
 
 msgid "Debe seleccionar una fila primero"
-msgstr "Cal triar una fila"
+msgstr "Heu de seleccionar una fila primer"
 
 #: tutoreslist.cpp:160
 
 msgid "Debe seleccionar una linea"
-msgstr "Cal triar una línia"
+msgstr "Heu de seleccionar una línia"
 
 #: tutoreslist.cpp:274
 
@@ -183,11 +177,11 @@ msgstr "E-mail"
 #: tutoreslist.cpp:218 ui_tutoreslistbase.h:254 ui_tutoreslistbase.h:257
 
 msgid "Editar Tutor"
-msgstr "Editar tutor"
+msgstr "Edita tutor"
 
 #: pluginbf_tutor.cpp:373 pluginbf_tutor.cpp:390
 msgid "Editar tutor"
-msgstr "Editar pare"
+msgstr "Edita pare"
 
 #: tutoreslist.cpp:281
 
@@ -196,15 +190,15 @@ msgstr "&Empresa"
 
 #: tutoreslist.cpp:174
 msgid "Error al borrar el cobro a cliente"
-msgstr "Error al esborrar el cobrament"
+msgstr "Error en esborrar el cobrament"
 
 #: tutorview.cpp:111
 msgid "Error al crear el tutor"
-msgstr "Error al crear el pare"
+msgstr "Error en crear el pare"
 
 #: tutorview.cpp:61
 msgid "Es Socio"
-msgstr "Es Soci"
+msgstr "És Soci"
 
 #: ui_tutoreslistbase.h:300
 msgid "F5"
@@ -227,7 +221,7 @@ msgstr "Data de baixa del pare"
 #: ui_tutoreslistbase.h:278 ui_tutoreslistbase.h:281
 
 msgid "Filtrar Tutores"
-msgstr "Filtrar pares"
+msgstr "Filtra pares"
 
 #: ui_tutorbase.h:524
 msgid "Forma Pago"
@@ -269,7 +263,7 @@ msgstr "Id. alumne"
 
 #: tutorview.cpp:260
 msgid "Id tutor"
-msgstr "Id. pare"
+msgstr "Id. tutor"
 
 #: tutorview.cpp:256
 msgid "Identificador"
@@ -304,7 +298,7 @@ msgstr "Nom del pare"
 
 #: ui_tutorbase.h:516
 msgid "Nombre:"
-msgstr "Nom"
+msgstr "Nom:"
 
 #: ui_tutorbase.h:485
 msgid "Nuevo Padre/Socio"
@@ -337,12 +331,12 @@ msgstr "Codi de compte corrent"
 #: tutorview.cpp:66 tutorview.cpp:67 tutorview.cpp:68 tutorview.cpp:69
 #: tutorview.cpp:70 tutorview.cpp:71 tutorview.cpp:72
 msgid "Numero de Socio"
-msgstr "Nombre de soci"
+msgstr "Número de soci"
 
 #: tutoreslist.cpp:278
 
 msgid "Numero de fax"
-msgstr "Nombre de fax"
+msgstr "Número de fax"
 
 #: tutoreslist.cpp:277
 
@@ -367,7 +361,7 @@ msgstr "Pares"
 
 #: pluginbf_tutor.cpp:101 pluginbf_tutor.cpp:102
 msgid "Padres/Socios"
-msgstr "Pare/Soci"
+msgstr "Pares/Socis"
 
 #: tutorview.cpp:95
 
@@ -384,7 +378,7 @@ msgstr "Població"
 
 #: tutorview.cpp:259
 msgid "Porcentaje Fact."
-msgstr "Porcentatge Fact."
+msgstr "Percentatge Fact."
 
 #: tutorview.cpp:74
 msgid "Provincia"
@@ -417,7 +411,7 @@ msgstr "Telèfon mòbil"
 
 #: tutorview.cpp:156
 msgid "Tiene que guardar el documento antes de poder imprimirlo."
-msgstr "Ha de desar el document abans de poder imprimir-lo"
+msgstr "Heu de desar el document abans de poder imprimir-lo"
 
 
 #~ msgid "&Nuevo tutor"

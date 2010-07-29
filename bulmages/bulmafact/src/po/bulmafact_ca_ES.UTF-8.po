@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: info@iglues.org\n"
 "POT-Creation-Date: 2009-10-21 10:19+0200\n"
-"PO-Revision-Date: 2009-01-26 09:35+0100\n"
-"Language-Team:  <es@li.org>\n"
+"PO-Revision-Date: 2010-07-28 13:53+0200\n"
+"Language-Team:  Catalan\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -28,7 +28,7 @@ msgstr "% R.E."
 
 #: bfclientealbaransubform.cpp:53
 msgid "% Recargo E.Q."
-msgstr "% Recarreg E.Q."
+msgstr "% Recàrrec E.Q."
 
 #: ui_bfseriefacturabase.h:85 ui_bfconfiguracionbase.h:119
 msgid "&Aceptar"
@@ -36,7 +36,7 @@ msgstr "&Accepta"
 
 #: ui_bfaboutbase.h:292
 msgid "&Acerca de"
-msgstr "&Sobre "
+msgstr "&Quant a "
 
 #: ui_bfbulmafactbase.h:174
 msgid "&Acerca de Iglues/BulmaFact"
@@ -48,7 +48,7 @@ msgstr "&Cancel·la"
 
 #: ui_bfaboutbase.h:301
 msgid "&Cerrar"
-msgstr "Tan&car"
+msgstr "Tan&ca"
 
 #: ui_bfbulmafactbase.h:175
 msgid "&Documentacion"
@@ -64,7 +64,7 @@ msgstr "&Propietats de l'empresa..."
 
 #: ui_bfbulmafactbase.h:166
 msgid "&Salir del programa"
-msgstr "&Sortir del programa"
+msgstr "&Sort del programa"
 
 #: ui_bfaboutbase.h:293
 msgid ""
@@ -225,7 +225,7 @@ msgstr "Error inesperat en BulmaFact. El programa se tancarà."
 
 #: bfform.cpp:1044
 msgid "Error inesperado en la impresion"
-msgstr "Error inesperat en la impresió"
+msgstr "Error inesperat en la impressió"
 
 #: ui_bfbulmafactbase.h:176
 msgid "F1"
@@ -304,7 +304,7 @@ msgstr "Inicialitzant classes"
 
 #: main.cxx:165
 msgid "Lanzando plugins"
-msgstr "Llançant plugins"
+msgstr "Llençant plugins"
 
 #: main.cxx:129
 msgid "Leyendo configuracion"
@@ -341,7 +341,7 @@ msgstr "Ordre"
 
 #: ui_bfbulmafactbase.h:184
 msgid "Ordenar &ventanas"
-msgstr "Ordenar &finestres"
+msgstr "Ordena &finestres"
 
 #: ui_bfbulmafactbase.h:183
 msgid "Organizacio&n en cascada"
@@ -398,7 +398,7 @@ msgstr "Es perdran els canvis no desats"
 
 #: bfbulmafact.cpp:187
 msgid "Seguro que desea abandonar el programa "
-msgstr "Segur que desitja abandonar el programa"
+msgstr "Segur que desitgeu abandonar el programa"
 
 #: bfseriefacturaview.cpp:48
 msgid "Serie de Factura"
@@ -418,7 +418,7 @@ msgstr "Terminat"
 
 #: bfform.cpp:1041
 msgid "Tiene que guardar el documento antes de poder procesarlo."
-msgstr "Ha de desar el document abans de poder procesar-lo"
+msgstr "Heu de desar el document abans de poder procesar-lo"
 
 #: bfbuscartipoarticulo.cpp:37
 msgid "Tipo Articulo:"

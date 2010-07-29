@@ -5,9 +5,9 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
 "POT-Creation-Date: 2009-10-21 10:25+0200\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
+"PO-Revision-Date: 2010-07-28 14:25+0200\n"
+"Last-Translator: Walter Garcia-Fontes <walter.garcia@upf.edu>\n"
+"Language-Team: CATALAN\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -20,7 +20,7 @@ msgstr ""
 
 #: ui_listcuotasporalumnobase.h:119 ui_alumnobase.h:526
 msgid "&Aceptar"
-msgstr "&Acceptar"
+msgstr "&Accepta"
 
 #: pluginbf_alumno.cpp:129
 msgid "&Alumnos"
@@ -28,18 +28,17 @@ msgstr "&Alumnes"
 
 #: ui_listcuotasporalumnobase.h:120 ui_alumnobase.h:527
 msgid "&Cancelar"
-msgstr "&Cancel·lar"
+msgstr "&Cancel·la"
 
 #: pluginbf_alumno.cpp:162
 msgid "&Clases"
-msgstr "&Clases"
+msgstr "&Classes"
 
 #: pluginbf_alumno.cpp:151
 msgid "&Cuotas Socio"
 msgstr "&Quotes soci"
 
 #: ui_alumnobase.h:515
-#, fuzzy
 msgid "&Datos generales"
 msgstr "&Dades comptables"
 
@@ -81,10 +80,9 @@ msgstr "Actiu"
 
 #: ui_alumnoslistbase.h:365 ui_alumnoslistbase.h:368
 msgid "Actualizar listado"
-msgstr "Actual·litzar llistat"
+msgstr "Actual·litza llistat"
 
 #: alumnoview.cpp:53
-#, fuzzy
 msgid "Alumno"
 msgstr "Alumne"
 
@@ -94,42 +92,37 @@ msgid "Alumnos"
 msgstr "Alumnes"
 
 #: ui_alumnoslistbase.h:310
-#, fuzzy
 msgid "Banco:"
-msgstr "Banc"
+msgstr "Banc:"
 
 #: alumnoslist.cpp:229 ui_alumnoslistbase.h:333 ui_alumnoslistbase.h:336
-#, fuzzy
 msgid "Borrar Alumno"
 msgstr "Esborra alumne"
 
 #: ui_clasebase.h:224 ui_clasebase.h:227
 msgid "Borrar Tipo de Actividad"
-msgstr "Esborrar tipus d'activitat"
+msgstr "Esborra tipus d'activitat"
 
 #: ui_alumnobase.h:469 ui_alumnobase.h:472 ui_alumnobase.h:477
 #: ui_alumnobase.h:480
-#, fuzzy
 msgid "Borrar cobro"
 msgstr "Esborra cobrament"
 
 #: ui_alumnobase.h:519
-#, fuzzy
 msgid "Borrar imagen"
-msgstr "Esborrar imatge"
+msgstr "Esborra imatge"
 
 #: alumnoview.cpp:287
 msgid "Borrar imagen del alumno"
-msgstr "Esborrar imatge de l'alumne"
+msgstr "Esborra imatge de l'alumne"
 
 #: ui_alumnoslistbase.h:372
 msgid "Buscar:"
-msgstr "Cerca"
+msgstr "Cerca:"
 
 #: ui_alumnobase.h:517
-#, fuzzy
 msgid "Cam&biar imagen"
-msgstr "Canviar imatge"
+msgstr "Canvia imatge"
 
 #: claseview.cpp:44 alumnoview.cpp:67
 msgid "Clase"
@@ -144,26 +137,24 @@ msgid "Clases"
 msgstr "Classes"
 
 #: ui_alumnoslistbase.h:314
-#, fuzzy
 msgid "Cobros efectivos"
-msgstr "Correu electrònic:"
+msgstr "Cobraments efectius"
 
 #: ui_alumnoslistbase.h:313
-#, fuzzy
 msgid "Cobros previstos"
 msgstr "&Cobraments previstos"
 
 #: ui_alumnobase.h:522
 msgid "Comentarios:"
-msgstr "Comentaris"
+msgstr "Comentaris:"
 
 #: ui_alumnoslistbase.h:357 ui_alumnoslistbase.h:360
 msgid "Configurar listado"
-msgstr "Configurar llistat"
+msgstr "Configura llistat"
 
 #: ui_alumnobase.h:512
 msgid "Correo electronico:"
-msgstr "Correu electrònic"
+msgstr "Correu electrònic:"
 
 #: ui_alumnoslistbase.h:363
 msgid "Ctrl+B"
@@ -218,66 +209,64 @@ msgid "DNI"
 msgstr "DNI"
 
 #: alumnoslist.cpp:212
-#, fuzzy
 msgid "Debe seleccionar una fila primero"
-msgstr "Cal triar una fila"
+msgstr "Heu de seleccionar una fila"
 
 #: alumnoslist.cpp:170
-#, fuzzy
 msgid "Debe seleccionar una linea"
-msgstr "Cal triar una linia"
+msgstr "Heu de seleccionar una linia"
 
 #: claseview.cpp:198
 msgid "Desea guardar los cambios?"
-msgstr "Desitja desar els canvis?"
+msgstr "Desitgeu desar els canvis?"
 
 #: alumnoview.cpp:64
 msgid "E-Mail"
 msgstr "e-mail"
 
 #: alumnoslist.cpp:228 ui_alumnoslistbase.h:325 ui_alumnoslistbase.h:328
-#, fuzzy
 msgid "Editar Alumno"
-msgstr "Editar alumne"
+msgstr "Edita alumne"
 
 #: pluginbf_alumno.cpp:299 pluginbf_alumno.cpp:316
 msgid "Editar alumno"
-msgstr "Editar alumne"
+msgstr "Edita alumne"
 
 #: claseview.cpp:254
 msgid "Error al borrar el Clase"
-msgstr "Error al esborrar la classe"
+msgstr "Error en esborrar la classe"
 
 #: alumnoslist.cpp:184
 msgid "Error al borrar el cobro a cliente"
-msgstr "Error al esborrar el cobrament a client"
+msgstr "Error en esborrar el cobrament a client"
 
 #: alumnoview.cpp:90
-#, fuzzy
 msgid "Error al crear el alumno"
-msgstr "Error al crear l'alumne"
+msgstr "Error en crear l'alumne"
 
 #: claseview.cpp:229
 msgid "Error al crear un nuevo Clase"
-msgstr "Error al crear una nova classe"
+msgstr "Error en crear una nova classe"
 
 #: claseview.cpp:178
 msgid "Error al guardar el clase"
-msgstr "Error al desar la classe"
+msgstr "Error en desar la classe"
 
 #: listcuotasporalumnoview.cpp:71
 msgid "Error al guardar las cuotas"
-msgstr "Error al desar les quotes"
+msgstr "Error en desar les quotes"
 
 #: alumnoview.cpp:288
 msgid ""
 "Esta seguro que quiere borrar\n"
 "la imagen asociada a este alumno?"
-msgstr "Esta segur que vol esborrar la imatge asociada a aquest alumne?"
+msgstr ""
+"Teniu seguretat que voleu esborrar la \n"
+"imatge associada a aquest alumne?"
 
 #: alumnoslist.cpp:277
 msgid "F. Nacimiento"
-msgstr "Data Neixement"
+msgstr "Data Naixement"
 
 #: ui_alumnoslistbase.h:371
 msgid "F5"
@@ -285,7 +274,7 @@ msgstr "F5"
 
 #: alumnoview.cpp:65
 msgid "Fecha Nacimiento"
-msgstr "Data Neixement"
+msgstr "Data Naixement"
 
 #: ui_alumnoslistbase.h:311
 msgid "Fecha final:"
@@ -297,12 +286,11 @@ msgstr "Data inicial"
 
 #: ui_alumnobase.h:500
 msgid "Fecha nacimiento:"
-msgstr "Data neixement"
+msgstr "Data naixement"
 
 #: ui_alumnoslistbase.h:349 ui_alumnoslistbase.h:352
-#, fuzzy
 msgid "Filtrar Alumnos"
-msgstr "Filtrar alumnes"
+msgstr "Filtra alumnes"
 
 #: ui_alumnobase.h:516
 msgid "Fotografia"
@@ -314,23 +302,21 @@ msgstr "General"
 
 #: ui_clasebase.h:231 ui_clasebase.h:234
 msgid "Guardar Tipo de Actividad"
-msgstr "Desar tipus d'activitat"
+msgstr "Desa tipus d'activitat"
 
 #: ui_alumnobase.h:461 ui_alumnobase.h:464
-#, fuzzy
 msgid "Guardar cobro"
-msgstr "Desar cobrament"
+msgstr "Desa cobrament"
 
 #: claseview.cpp:197
 msgid "Guardar datos del clase"
-msgstr "Guardar dades de la classe"
+msgstr "Guarda dades de la classe"
 
 #: alumnoview.cpp:356
 msgid "Id actividad"
 msgstr "Id. activitat"
 
 #: alumnoview.cpp:56 alumnoview.cpp:321 alumnoview.cpp:354 alumnoslist.cpp:273
-#, fuzzy
 msgid "Id alumno"
 msgstr "Id. alumne"
 
@@ -347,7 +333,6 @@ msgid "Imagenes (*.jpg)"
 msgstr "Imatges (*.jpg)"
 
 #: ui_alumnoslistbase.h:341 ui_alumnoslistbase.h:344
-#, fuzzy
 msgid "Imprimir listado"
 msgstr "Imprimeix el llistat"
 
@@ -360,32 +345,39 @@ msgid "Movil"
 msgstr "Mòbil"
 
 #: alumnoview.cpp:296
-#, fuzzy
 msgid ""
 "No se ha podido borrar el archivo.\n"
 "Compruebe que el archivo tenga los permisos correctos."
-msgstr "&No."
+msgstr ""
+"No s'ha pogut esborrar el fitxer.\n"
+"Comproveu que el fitxer tingui els permissos correctes."
 
 #: alumnoview.cpp:207
 msgid ""
 "No se ha podido borrar la imagen del alumno.\n"
 "Compruebe que el archivo tenga los permisos correctos."
-msgstr "No s'ha pogut esborrar la imatge de l'alumne. \n Combrobi que l'arxiu tingui els permisos necessaris."
+msgstr ""
+"No s'ha pogut esborrar la imatge de l'alumne. \n"
+"Combroveu que el fitxer tingui els permissos correctes."
 
 #: alumnoview.cpp:261
-#, fuzzy
 msgid ""
 "No se ha podido cargar la imagen.\n"
 "Compruebe que la imagen sea valida."
-msgstr "&No."
+msgstr ""
+"No s'ha pogut desar la imatge.\n"
+"Reviseu els permissos d'escriptura i que disposi\n"
+"d'espai lliure suficient al disc dur."
 
 #: alumnoview.cpp:183
-#, fuzzy
 msgid ""
 "No se ha podido guardar la imagen.\n"
 "Revise los permisos de escritura y que disponga\n"
 "de espacio libre suficiente en el disco duro."
-msgstr "&No."
+msgstr ""
+"No s'ha pogut desar la imatge.\n"
+"Reviseu els permissos d'escriptura i que disposi\n"
+"d'espai lliure suficient al disc dur.."
 
 #: alumnoslist.cpp:274
 msgid "Nombre"
@@ -396,7 +388,6 @@ msgid "Nombre actividad"
 msgstr "Nom activitat"
 
 #: alumnoview.cpp:57 alumnoview.cpp:58
-#, fuzzy
 msgid "Nombre del alumno"
 msgstr "Nom de l'alumne"
 
@@ -406,7 +397,7 @@ msgstr "Nom tutor"
 
 #: ui_clasebase.h:244 ui_alumnobase.h:507
 msgid "Nombre:"
-msgstr "Nom"
+msgstr "Nom:"
 
 #: ui_alumnoslistbase.h:317 ui_alumnoslistbase.h:320 ui_alumnobase.h:458
 #, fuzzy
@@ -440,16 +431,15 @@ msgstr "Pares/Tutors"
 
 #: alumnoview.cpp:323
 msgid "Porcentaje"
-msgstr "Percentual"
+msgstr "Percentatge"
 
 #: pluginbf_alumno.cpp:301 pluginbf_alumno.cpp:320
 msgid "Seleccionar alumno"
-msgstr "Seleccionar alumne"
+msgstr "Selecciona alumne"
 
 #: alumnoview.cpp:252
-#, fuzzy
 msgid "Seleccione un archivo de imagen"
-msgstr "Seleccioni una empresa"
+msgstr "Seleccioneu una empresa"
 
 #: alumnoslist.cpp:80
 msgid "Selector de alumnos"
@@ -469,7 +459,7 @@ msgstr "Telèfon mòbil"
 
 #: alumnoview.cpp:122
 msgid "Tiene que guardar el documento antes de poder imprimirlo."
-msgstr "Ha de desar el document abans de poder imprimir-lo"
+msgstr "Heu de desar el document abans de poder imprimir-lo"
 
 #: ui_clasebase.h:221
 msgid "Tipos de Actividad"
