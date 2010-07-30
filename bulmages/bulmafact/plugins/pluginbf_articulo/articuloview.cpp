@@ -341,10 +341,13 @@ void ArticuloView::on_mui_idfamilia_valueChanged(QString) {
     if ( mui_codarticulo->text().isEmpty() && !mui_idfamilia->id().isEmpty()) {
         QString query = "select coalesce(max(codarticulo::integer),0) +1 as maximo, coalesce(max(length(codarticulo)), 4) AS long from articulo where codarticulo similar to '[0-9]+' AND idfamilia = " + mui_idfamilia->id();
 
-        BlDbRecordSet * cur = mainCompany() ->loadQuery ( query );
-        if( !cur->eof()) {
-            mui_codarticulo->setText(cur->valor("maximo").rightJustified(cur->valor("long").toInt(), '0'));
-        } // end if
+        BlDbRecordSet *cur = mainCompany() ->loadQuery ( query );
+	/// Protege de errores en la consulta a la base de datos y cuando no devuelven informacion.
+	if ( cur != NULL ) {
+	  if( !cur->eof()) {
+	      mui_codarticulo->setText(cur->valor("maximo").rightJustified(cur->valor("long").toInt(), '0'));
+	  } // end if
+	} // end if
         delete cur;
         mui_codarticulo->selectAll();
     } // end if
