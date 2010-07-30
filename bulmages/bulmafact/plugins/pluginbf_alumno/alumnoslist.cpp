@@ -79,7 +79,8 @@ AlumnosList::AlumnosList ( BfCompany *comp, QWidget *parent, Qt::WFlags flag, ed
     } else {
         setWindowTitle ( _ ( "Selector de alumnos" ) );
         mui_editar->setHidden ( TRUE );
-        mui_crear->setHidden ( TRUE );
+	/// Vamos a permitir la insercion de alumnos desde un listado en QDialog generando una insercion de alumnos tambien en QDialog
+//        mui_crear->setHidden ( TRUE );
         mui_borrar->setHidden ( TRUE );
         mui_imprimir->setHidden ( TRUE );
     } // end if
@@ -138,10 +139,54 @@ QString AlumnosList::generaFiltro()
 void AlumnosList::crear()
 {
     _depura ( "AlumnosList::crear", 0 );
-    AlumnoView *bud = new AlumnoView ( ( BfCompany * ) mainCompany(), 0 );
-    mainCompany() ->m_pWorkspace->addWindow ( bud );
-    bud->show();
-    bud->pintar();
+    
+    if (modoConsulta()) {
+	/// El modo consulta funciona algo diferente
+        QDialog *diag = new QDialog ( 0 );
+        diag->setModal ( true );
+        diag->setGeometry ( QRect ( 0, 0, 750, 550 ) );
+        centrarEnPantalla ( diag );
+
+	AlumnoView *bud = new AlumnoView ( ( BfCompany * ) mainCompany(), 0 );
+        /// Creamos un layout donde estara el contenido de la ventana y la ajustamos al QDialog
+        bud->connect ( bud, SIGNAL ( destroyed ( QObject * ) ), diag, SLOT ( accept() ) );
+
+        /// para que sea redimensionable y aparezca el titulo de la ventana.
+        QHBoxLayout *layout = new QHBoxLayout;
+        layout->addWidget ( bud );
+        layout->setMargin ( 0 );
+        layout->setSpacing ( 0 );
+        diag->setLayout ( layout );
+        diag->setWindowTitle ( bud->windowTitle() );
+
+	bud->show();
+	bud->pintar();
+
+	QString idalumnoold = "";
+	BlDbRecordSet *curold = mainCompany()->loadQuery("SELECT max(idalumno) AS id FROM alumno");
+	if( !curold->eof()) {
+		      idalumnoold = curold->valor("id");
+	} // end if
+	delete curold;
+	
+        diag->exec();      
+      
+	BlDbRecordSet *cur = mainCompany()->loadQuery("SELECT max(idalumno) AS id FROM alumno");
+	if( !cur->eof()) {
+		      if (idalumnoold != cur->valor("id")) {
+			mdb_idalumno = cur->valor("id");
+			close();
+			emit ( selected ( mdb_idalumno ) );
+		      } // end if
+	} // end if
+	delete cur;
+	
+    } else {
+      AlumnoView *bud = new AlumnoView ( ( BfCompany * ) mainCompany(), 0 );
+      mainCompany() ->m_pWorkspace->addWindow ( bud );
+      bud->show();
+      bud->pintar();
+    } // end if
     _depura ( "AlumnosList::crear", 0 );
 }
 

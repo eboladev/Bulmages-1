@@ -161,13 +161,23 @@ void ProfesoresList::crear()
 
 	bud->show();
 	bud->pintar();
+
+	QString idprofesorold = "";
+	BlDbRecordSet *curold = mainCompany()->loadQuery("SELECT max(idprofesor) AS id FROM profesor");
+	if( !curold->eof()) {
+		      idprofesorold = curold->valor("id");
+	} // end if
+	delete curold;
+	
 	
         diag->exec();      
       
 	BlDbRecordSet *cur = mainCompany()->loadQuery("SELECT max(idprofesor) AS id FROM profesor");
 	if( !cur->eof()) {
+		  if (cur->valor("id") != idprofesorold) {
 		      mdb_idprofesor = cur->valor("id");
 	              emit ( selected ( mdb_idprofesor ) );
+		  } // end if
 	} // end if
 	delete cur;
 	

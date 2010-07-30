@@ -358,8 +358,20 @@ void MyPlugAl1::nuevoAlumno( )
     BlSubForm * subf = ( BlSubForm * ) parent();
     AlumnoView * art = new AlumnoView ( ( BfCompany * ) subf->mainCompany(), 0 );
     subf->mainCompany() ->m_pWorkspace->addWindow ( art );
+    subf->setEnabled(false);
     art->hide();
     art->show();
+    
+    while ( !art->isHidden() )
+        g_theApp->processEvents();
+    subf->setEnabled ( true );
+    QString idAlumno = art->dbValue("idalumno");
+    if (idAlumno != "") {
+        subf->lineaact()->setDbValue ( "idalumno", idAlumno );
+        subf->lineaact()->setDbValue ( "nombrealumno1", art->dbValue ( "nombrealumno" ) );      
+    } // end if
+    delete art;    
+    
     _depura ( "END MyPlugAl1::editarAlumno", 0 );
 }
 
