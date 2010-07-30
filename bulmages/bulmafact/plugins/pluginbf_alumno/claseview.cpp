@@ -216,7 +216,7 @@ void ClaseView::on_mui_nuevo_clicked()
     try {
         /// Si se ha modificado el contenido advertimos y guardamos.
         trataModificado();
-        QString query = "INSERT INTO clase (nomclase) VALUES ('*** NUEVO TIPO DE ACTIVIDAD ***')";
+        QString query = "INSERT INTO clase (nomclase) VALUES ('*** NUEVA AULA ***')";
         mainCompany() ->begin();
         mainCompany() ->runQuery ( query );
         BlDbRecordSet *cur = mainCompany() ->loadQuery ( "SELECT max(idclase) AS idclase FROM clase" );

@@ -12,11 +12,11 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Tipos de Actividad</string>
+   <string>Aulas</string>
   </property>
   <property name="windowIcon">
-   <iconset resource="../pluginbf_profesor/gestionaula.qrc">
-    <normaloff>:/ImgGestionAula/icons/actividad.png</normaloff>:/ImgGestionAula/icons/actividad.png</iconset>
+   <iconset resource="../../../bulmages.qrc">
+    <normaloff>:/Images/warehouse.png</normaloff>:/Images/warehouse.png</iconset>
   </property>
   <layout class="QGridLayout">
    <property name="margin">
@@ -40,7 +40,7 @@
       </size>
      </property>
      <property name="title">
-      <string>Lista de Tipos:</string>
+      <string>Aulas:</string>
      </property>
      <layout class="QGridLayout">
       <property name="margin">
@@ -91,7 +91,7 @@
         </size>
        </property>
        <property name="pixmap">
-        <pixmap resource="../pluginbf_profesor/gestionaula.qrc">:/ImgGestionAula/icons/actividad.png</pixmap>
+        <pixmap resource="../../../bulmages.qrc">:/Images/warehouse.png</pixmap>
        </property>
        <property name="scaledContents">
         <bool>true</bool>
