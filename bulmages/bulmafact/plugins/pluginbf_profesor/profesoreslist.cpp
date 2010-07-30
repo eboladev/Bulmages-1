@@ -140,11 +140,43 @@ void ProfesoresList::crear()
 {
     _depura ( "ProfesoresList::crear", 0 );
     
-    ProfesorView *bud = new ProfesorView ( ( BfCompany * ) mainCompany(), 0 );
-    mainCompany() ->m_pWorkspace->addWindow ( bud );
-    bud->show();
-    bud->pintar();
-    
+    if (modoConsulta()) {
+	/// El modo consulta funciona algo diferente
+        QDialog *diag = new QDialog ( 0 );
+        diag->setModal ( true );
+        diag->setGeometry ( QRect ( 0, 0, 750, 550 ) );
+        centrarEnPantalla ( diag );
+
+	ProfesorView *bud = new ProfesorView ( ( BfCompany * ) mainCompany(), 0 );
+        /// Creamos un layout donde estara el contenido de la ventana y la ajustamos al QDialog
+        bud->connect ( bud, SIGNAL ( destroyed ( QObject * ) ), diag, SLOT ( accept() ) );
+
+        /// para que sea redimensionable y aparezca el titulo de la ventana.
+        QHBoxLayout *layout = new QHBoxLayout;
+        layout->addWidget ( bud );
+        layout->setMargin ( 0 );
+        layout->setSpacing ( 0 );
+        diag->setLayout ( layout );
+        diag->setWindowTitle ( bud->windowTitle() );
+
+	bud->show();
+	bud->pintar();
+	
+        diag->exec();      
+      
+	BlDbRecordSet *cur = mainCompany()->loadQuery("SELECT max(idprofesor) AS id FROM profesor");
+	if( !cur->eof()) {
+		      mdb_idprofesor = cur->valor("id");
+	              emit ( selected ( mdb_idprofesor ) );
+	} // end if
+	delete cur;
+	
+    } else {
+      ProfesorView *bud = new ProfesorView ( ( BfCompany * ) mainCompany(), 0 );
+      mainCompany() ->m_pWorkspace->addWindow ( bud );
+      bud->show();
+      bud->pintar();
+    }
     _depura ( "ProfesoresList::crear", 0 );
 }
 
