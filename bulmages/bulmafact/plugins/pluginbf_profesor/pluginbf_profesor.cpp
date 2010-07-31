@@ -103,7 +103,7 @@ void MyPlugProf::inicializa ( BfBulmaFact *bges )
     if ( bges->company()->hasTablePrivilege ( "profesor", "SELECT" ) ) {
 
         /// Miramos si existe un menu Docencia
-        QMenu *pPluginMenu = bges->newMenu ( "&Docencia", "menuDocencia", "menuMaestro" );
+        QMenu *pPluginMenu = bges->newMenu ( "&Activitats", "menuActivitats", "menuMaestro" );
 
         /// Agregamos un separador
         pPluginMenu->addSeparator();

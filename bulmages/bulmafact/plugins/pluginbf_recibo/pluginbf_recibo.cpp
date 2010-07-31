@@ -106,7 +106,7 @@ void MyPlugProf::inicializa ( BfBulmaFact *bges )
     if ( bges->company()->hasTablePrivilege ( "cobro", "SELECT" ) ) {
 
         /// Miramos si existe un menu Ventas
-        QMenu *pPluginMenu = bges->newMenu ( "&Gestion", "menuGestion", "menuMaestro" );
+        QMenu *pPluginMenu = bges->newMenu ( "&Economia", "menuEconomia", "menuMaestro" );
         pPluginMenu->addSeparator();
 
         /// El men&uacute; de Tarifas en la secci&oacute;n de art&iacute;culos.

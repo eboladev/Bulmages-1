@@ -76,7 +76,7 @@ void myplugininvsimple::inicializa ( BfBulmaFact *bges )
     setMainCompany ( bges->company() );
 
     /// Miramos si existe un menu Articulos
-    QMenu *pPluginMenu = bges->newMenu ( _("&Articulos"), "menuArticulos", "menuMaestro" );
+    QMenu *pPluginMenu = bges->newMenu ( _("&Inventari"), "menuInventari", "menuMaestro" );
     pPluginMenu->addSeparator();
 
 

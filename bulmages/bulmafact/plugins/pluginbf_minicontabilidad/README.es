@@ -27,7 +27,7 @@ Dependencias:
 
 Incompatibles:
 
-Orden: 29
+Orden: 210
 
 Reports: presupuestocontable.pys; presupuestocontable.rml
 

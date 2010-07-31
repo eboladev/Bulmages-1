@@ -100,7 +100,7 @@ void MyPlugProf::inicializa ( BfBulmaFact *bges )
     if ( bges->company()->hasTablePrivilege ( "cobro", "SELECT" ) ) {
 
         /// Miramos si existe un menu Ventas
-        QMenu *pPluginMenu = bges->newMenu ( "&Docencia", "menuDocencia", "menuMaestro" );
+        QMenu *pPluginMenu = bges->newMenu ( "&Activitats", "menuActivitats", "menuMaestro" );
         pPluginMenu->addSeparator();
 
         QAction *ntipoact = new QAction ( _ ( "&Tipos de Actividad" ), 0 );

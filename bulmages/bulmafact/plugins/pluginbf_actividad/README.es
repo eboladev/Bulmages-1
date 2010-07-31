@@ -28,6 +28,6 @@ Reports: actividad.rml; impers_actividad_cartel.rml; impers_actividad_faltas_de_
 
 Categorias: Asociaciones de padres de alumnos; Experimentales;
 
-Orden: 200
+Orden: 220
 
 Comentarios:

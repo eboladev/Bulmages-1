@@ -102,7 +102,7 @@ void MyPlugArt::inicializa ( )
     if ( m_bges->company()->hasTablePrivilege ( "partida", "SELECT" ) ) {
 
         /// Miramos si existe un menu Articulos
-        QMenu *pPluginMenu = m_bges->newMenu ( _("Gestion"), "menuGestion", "menuMaestro" );
+        QMenu *pPluginMenu = m_bges->newMenu ( _("Economia"), "menuEconomia", "menuMaestro" );
         pPluginMenu->addSeparator();
 
         pPluginMenu->addSeparator();
