@@ -61,7 +61,7 @@ ClientsList::ClientsList ( BfCompany *comp, QWidget *parent, Qt::WFlags flag, ed
     } else {
         setWindowTitle ( _ ( "Selector de clientes" ) );
         mui_editar->setHidden ( TRUE );
-        mui_crear->setHidden ( TRUE );
+//        mui_crear->setHidden ( TRUE );
         mui_borrar->setHidden ( TRUE );
         mui_exportar->setHidden ( TRUE );
         mui_importar->setHidden ( TRUE );
@@ -230,14 +230,60 @@ QString ClientsList::cifclient()
 **/
 void ClientsList::crear()
 {
-    ClienteView *bud = new ClienteView ( ( BfCompany * ) mainCompany() , 0 );
-    mainCompany()->m_pWorkspace->addWindow ( bud );
-    bud->pintar();
-    bud->show();
-    bud->setWindowTitle ( _ ( "Nuevo cliente" ) );
-    /// Deshabilitamos las pestanyas que no se utilizan al crear un nuevo cliente.
-    bud->desactivaDocumentos();
-    bud->mui_cifcliente->setFocus ( Qt::OtherFocusReason );
+    _depura ( "ClientsList::crear", 0 );
+    if (modoConsulta()) {
+	/// El modo consulta funciona algo diferente
+        QDialog *diag = new QDialog ( 0 );
+        diag->setModal ( true );
+        diag->setGeometry ( QRect ( 0, 0, 750, 550 ) );
+        centrarEnPantalla ( diag );
+
+	ClienteView *bud = new ClienteView ( ( BfCompany * ) mainCompany(), 0 );
+        /// Creamos un layout donde estara el contenido de la ventana y la ajustamos al QDialog
+        bud->connect ( bud, SIGNAL ( destroyed ( QObject * ) ), diag, SLOT ( accept() ) );
+
+        /// para que sea redimensionable y aparezca el titulo de la ventana.
+        QHBoxLayout *layout = new QHBoxLayout;
+        layout->addWidget ( bud );
+        layout->setMargin ( 0 );
+        layout->setSpacing ( 0 );
+        diag->setLayout ( layout );
+        diag->setWindowTitle ( bud->windowTitle() );
+
+	bud->show();
+	bud->pintar();
+
+	QString idclienteold = "";
+	BlDbRecordSet *curold = mainCompany()->loadQuery("SELECT max(idcliente) AS id FROM cliente");
+	if( !curold->eof()) {
+		      idclienteold = curold->valor("id");
+	} // end if
+	delete curold;
+	
+	bud->mui_cifcliente->setFocus ( Qt::OtherFocusReason );	
+        diag->exec();      
+      
+	BlDbRecordSet *cur = mainCompany()->loadQuery("SELECT max(idcliente) AS id FROM cliente");
+	if( !cur->eof()) {
+		  if (cur->valor("id") != idclienteold) {
+		      mdb_idcliente = cur->valor("id");
+	              emit ( selected ( mdb_idcliente ) );
+		  } // end if
+	} // end if
+	delete cur;
+	
+    } else {
+	ClienteView *bud = new ClienteView ( ( BfCompany * ) mainCompany() , 0 );
+	mainCompany()->m_pWorkspace->addWindow ( bud );
+	bud->pintar();
+	bud->show();
+	bud->setWindowTitle ( _ ( "Nuevo cliente" ) );
+	/// Deshabilitamos las pestanyas que no se utilizan al crear un nuevo cliente.
+	bud->desactivaDocumentos();
+	bud->mui_cifcliente->setFocus ( Qt::OtherFocusReason );
+    } // end if
+    _depura ( "END ClientsList::crear", 0 );
+
 }
 
 
@@ -246,7 +292,7 @@ void ClientsList::crear()
 */
 void ClientsList::submenu ( const QPoint & )
 {
-    _depura ( "ArticuloList::on_mui_list_customContextMenuRequested", 0 );
+    _depura ( "ClientsList::submenu", 0 );
     int a = mui_list->currentRow();
     if ( a < 0 )
         return;
@@ -259,6 +305,7 @@ void ClientsList::submenu ( const QPoint & )
     if ( opcion == edit )
         on_mui_editar_clicked();
     delete popup;
+    _depura ( "END ClientsList::submenu", 0 );
 }
 
 /// =============================================================================
