@@ -46,6 +46,7 @@ AlumnosList::AlumnosList ( QWidget *parent, Qt::WFlags flag, edmode editmodo )
     if ( res != 0 )
         return;
     mdb_idalumno = "";
+    
     setSubForm ( mui_list );
     hideBusqueda();
 
@@ -85,6 +86,13 @@ AlumnosList::AlumnosList ( BfCompany *comp, QWidget *parent, Qt::WFlags flag, ed
         mui_imprimir->setHidden ( TRUE );
     } // end if
 
+    mui_idclase->setMainCompany ( mainCompany() );
+    mui_idclase->setQuery ( "SELECT * FROM clase ORDER BY nomclase" );
+    mui_idclase->setTableName ( "clase" );
+    mui_idclase->setFieldId ( "idclase" );
+    mui_idclase->m_valores["nomclase"] = "";
+    mui_idclase->setAllowNull ( TRUE );
+    mui_idclase->setId ( "" );
 
     hideBusqueda();
     /// Hacemos el tratamiento de los permisos que desabilita botones en caso de no haber suficientes permisos.
@@ -127,6 +135,10 @@ QString AlumnosList::generaFiltro()
         filtro += " ) ";
     } // end if
 
+    if (mui_idclase->id() != "") {
+      filtro += " AND idclase = " + mui_idclase->id();
+    } // end if
+    
     _depura ( "END AlumnosList::generaFiltro", 0 );
     return ( filtro );
 }
@@ -285,8 +297,19 @@ void AlumnosList::submenu ( const QPoint & )
 **/
 void AlumnosList::setMainCompany ( BfCompany *comp )
 {
+    _depura ( "AlumnosList::setMainCompany", 0 );
     BlMainCompanyPointer::setMainCompany ( comp );
     mui_list->setMainCompany ( comp );
+    
+    mui_idclase->setMainCompany ( mainCompany() );
+    mui_idclase->setQuery ( "SELECT * FROM clase ORDER BY nomclase" );
+    mui_idclase->setTableName ( "clase" );
+    mui_idclase->setFieldId ( "idclase" );
+    mui_idclase->m_valores["nomclase"] = "";
+    mui_idclase->setAllowNull ( TRUE );
+    mui_idclase->setId ( "" );
+    _depura ( "END AlumnosList::setMainCompany", 0 );
+
 }
 
 /** Devuelve el identificador del cobro seleccionado

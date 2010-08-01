@@ -52,12 +52,12 @@
       <item row="1" column="2">
        <widget class="QLabel" name="textLabel1_5">
         <property name="text">
-         <string>Banco:</string>
+         <string>Curso:</string>
         </property>
        </widget>
       </item>
       <item row="2" column="2">
-       <widget class="BfBuscarBanco" name="mui_idbanco">
+       <widget class="BlComboBox" name="mui_idclase">
         <property name="sizePolicy">
          <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
           <horstretch>0</horstretch>
@@ -543,14 +543,14 @@
    <container>1</container>
   </customwidget>
   <customwidget>
-   <class>BfBuscarBanco</class>
-   <extends>QComboBox</extends>
-   <header>bfbuscarbanco.h</header>
-  </customwidget>
-  <customwidget>
    <class>AlumnosListSubForm</class>
    <extends>QTableWidget</extends>
    <header>alumnoslist.h</header>
+  </customwidget>
+  <customwidget>
+   <class>BlComboBox</class>
+   <extends>QComboBox</extends>
+   <header>blcombobox.h</header>
   </customwidget>
  </customwidgets>
  <resources>
