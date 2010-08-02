@@ -62,7 +62,7 @@ ProveedorList::ProveedorList ( BfCompany *comp, QWidget *parent, Qt::WFlags flag
     } else {
         setWindowTitle ( _ ( "Selector de proveedores" ) );
         mui_editar->setHidden ( TRUE );
-        mui_crear->setHidden ( TRUE );
+//        mui_crear->setHidden ( TRUE );
         mui_borrar->setHidden ( TRUE );
         mui_exportar->setHidden ( TRUE );
         mui_importar->setHidden ( TRUE );
@@ -138,9 +138,58 @@ void ProveedorList::presentar()
 void ProveedorList::crear()
 {
     _depura ( "ProveedorList::crear", 0 );
-    ProveedorView *prov = new ProveedorView ( ( BfCompany * ) mainCompany() );
-    mainCompany() ->m_pWorkspace->addWindow ( prov );
-    prov->show();
+    
+    if (modoConsulta()) {
+	/// El modo consulta funciona algo diferente
+        QDialog *diag = new QDialog ( 0 );
+        diag->setModal ( true );
+        diag->setGeometry ( QRect ( 0, 0, 750, 550 ) );
+        centrarEnPantalla ( diag );
+
+	ProveedorView *bud = new ProveedorView ( ( BfCompany * ) mainCompany(), 0 );
+        /// Creamos un layout donde estara el contenido de la ventana y la ajustamos al QDialog
+        bud->connect ( bud, SIGNAL ( destroyed ( QObject * ) ), diag, SLOT ( accept() ) );
+
+        /// para que sea redimensionable y aparezca el titulo de la ventana.
+        QHBoxLayout *layout = new QHBoxLayout;
+        layout->addWidget ( bud );
+        layout->setMargin ( 0 );
+        layout->setSpacing ( 0 );
+        diag->setLayout ( layout );
+        diag->setWindowTitle ( bud->windowTitle() );
+
+	bud->show();
+	bud->pintar();
+
+	QString idproveedorold = "";
+	BlDbRecordSet *curold = mainCompany()->loadQuery("SELECT max(idproveedor) AS id FROM proveedor");
+	if( !curold->eof()) {
+		      idproveedorold = curold->valor("id");
+	} // end if
+	delete curold;
+	
+	bud->mui_cifproveedor->setFocus ( Qt::OtherFocusReason );	
+        diag->exec();      
+      
+	BlDbRecordSet *cur = mainCompany()->loadQuery("SELECT max(idproveedor) AS id FROM proveedor");
+	if( !cur->eof()) {
+		  if (cur->valor("id") != idproveedorold) {
+		      m_idprovider = cur->valor("id");
+	              emit ( selected ( m_idprovider ) );
+		  } // end if
+	} // end if
+	delete cur;
+	
+    } else {    
+    
+	ProveedorView *prov = new ProveedorView ( ( BfCompany * ) mainCompany() );
+	mainCompany() ->m_pWorkspace->addWindow ( prov );
+	prov->show();
+	prov->setWindowTitle ( _ ( "Nuevo proveedor" ) );
+	/// Deshabilitamos las pestanyas que no se utilizan al crear un nuevo cliente.
+	prov->desactivaDocumentos();
+	prov->mui_cifproveedor->setFocus ( Qt::OtherFocusReason );
+    } // end if
     _depura ( "END ProveedorList::crear", 0 );
 }
 
