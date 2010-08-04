@@ -316,7 +316,6 @@ public:
     BlDbSubFormRecord *lineaat ( int row );
     virtual void imprimirPDF ( const QString & );
     virtual void nuevoRegistro();
-    virtual int borrar();
     virtual int borrar ( int );
     virtual int guardar();
     virtual void cargar ( QString query );
@@ -340,9 +339,13 @@ public:
     bool modoConsulta();
     edmode mode();
 
+    /// Metodos relacionados con el menu superior del SubFormulario
+    void preparaMenu();
+    
     virtual QString exportXML();
 
 public slots:
+    virtual int borrar();
     void columnMovedByUser(int column, int oldIndex, int newIndex);
     virtual void on_mui_list_cellRePosition ( int, int );
     void on_mui_list_cellChanged ( int, int );
@@ -361,6 +364,7 @@ public slots:
     virtual void on_mui_list_itemClicked ( QTableWidgetItem *item );
     virtual void on_mui_list_cellDoubleClicked ( int row, int col );
     virtual void toogleConfig();
+    virtual void toogleMenuConfig();
     virtual void on_mui_botonCerrar_clicked();
     virtual void on_mui_list_itemChanged ( QTableWidgetItem *it );
     virtual void editFinished ( int, int, BlDbSubFormRecord *, BlDbSubFormField * );
@@ -371,6 +375,7 @@ public slots:
 
 signals:
     void toogledConfig ( bool );
+    void toogledMenuConfig ( bool );
     void editFinish ( int, int );
     void pushAsterisk ( int, int );
     void pushPlus ( int, int );

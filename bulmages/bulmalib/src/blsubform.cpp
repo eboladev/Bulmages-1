@@ -254,6 +254,7 @@ BlSubForm::BlSubForm ( QWidget *parent ) : BlWidget ( parent )
     mui_paginaact->setValue ( 1 );
     /// Ocultamos la configuracion.
     hideConfig();
+    mui_menusubform->setVisible(FALSE);
     /// Limpiamos la lista.
     m_lista.clear();
     m_listaborrar.clear();
@@ -264,6 +265,10 @@ BlSubForm::BlSubForm ( QWidget *parent ) : BlWidget ( parent )
     m_prevRow = -1;
     setDelete ( TRUE );
 
+    
+    /// Preparamos el menu de subformulario
+    preparaMenu();
+    
     /// Disparamos los plugins.
     g_plugins->lanza ( "BlSubForm_BlSubForm_Post", this );
     m_procesacambios = TRUE;
@@ -2844,6 +2849,30 @@ void BlSubForm::imprimirPDF ( const QString &titular )
     _depura ( "END BlSubForm::imprimir", 0 );
 }
 
+void BlSubForm::preparaMenu() {
+    _depura ( "BlSubForm::preparaMenu", 0 );
+    
+    QHBoxLayout *m_hboxLayout1 = mui_menusubform->findChild<QHBoxLayout *> ( "hboxLayout1" );
+    if ( !m_hboxLayout1 ) {
+        m_hboxLayout1 = new QHBoxLayout ( mui_menusubform );
+        m_hboxLayout1->setSpacing (0 );
+        m_hboxLayout1->setMargin ( 0 );
+        m_hboxLayout1->setObjectName ( QString::fromUtf8 ( "hboxLayout1" ) );
+    } // end if
+
+    QToolButton *sel = new QToolButton ( mui_menusubform );
+    sel->setStatusTip ( "Generar Q19" );
+    sel->setToolTip ( "Generar archivo Q19 de los elementos seleccionados" );
+    sel->setMinimumSize ( QSize ( 22, 22 ) );
+    sel->setIcon ( QIcon ( g_confpr->valor ( CONF_PROGDATA ) + "icons/q19.png" ) );
+    sel->setIconSize ( QSize ( 22, 22 ) );    
+    m_hboxLayout1->addWidget ( sel );
+    connect (sel, SIGNAL(released()), this, SLOT(borrar()));
+    _depura ( "END BlSubForm::preparaMenu", 0 );
+}
+
+
+
 ///
 /**
 \return
@@ -2885,6 +2914,8 @@ void BlSubForm::contextMenuEvent ( QContextMenuEvent * )
     QAction *ajusta = popup->addAction ( _ ( "Ajustar alturas" ) );
 
     popup->addSeparator();
+    QAction *menuconfig = popup->addAction ( _ ( "Ver/Ocultar menu de subformulario" ) );
+
     QAction *verconfig = popup->addAction ( _ ( "Ver/Ocultar configurador de subformulario" ) );
 
     QAction *opcion = popup->exec ( QCursor::pos() );
@@ -2906,7 +2937,9 @@ void BlSubForm::contextMenuEvent ( QContextMenuEvent * )
         resizeRowToContents ( row );
     if ( opcion == verconfig )
         toogleConfig();
-
+    if ( opcion == menuconfig )
+        toogleMenuConfig();
+    
     emit trataMenu ( opcion );
 
     /// Activamos las herederas.
@@ -2927,6 +2960,16 @@ void BlSubForm::toogleConfig()
     _depura ( "END BlSubForm::toogleConfig", 0 );
 }
 
+///
+/**
+**/
+void BlSubForm::toogleMenuConfig()
+{
+    _depura ( "BlSubForm::toogleMenuConfig", 0 );
+    mui_menusubform->setVisible ( mui_menusubform->isHidden() );
+    emit toogledMenuConfig ( mui_menusubform->isVisible() );
+    _depura ( "END BlSubForm::toogleMenuConfig", 0 );
+}
 
 ///
 /**
