@@ -74,7 +74,7 @@ ArticuloList::ArticuloList ( BfCompany *comp, QWidget *parent, Qt::WFlags flag, 
     } else {
         setWindowTitle ( _ ( "Selector de articulos" ) );
         mui_editar->setHidden ( TRUE );
-        mui_crear->setHidden ( TRUE );
+//        mui_crear->setHidden ( TRUE );
         mui_borrar->setHidden ( TRUE );
         mui_exportar->setHidden ( TRUE );
         mui_importar->setHidden ( TRUE );
@@ -327,11 +327,54 @@ void ArticuloList::submenu ( const QPoint & )
 void ArticuloList::crear()
 {
     _depura ( "ArticuloList::crear", 0 );
-    ArticuloView * art = new ArticuloView ( ( BfCompany * ) mainCompany() );
-    mainCompany()->m_pWorkspace->addWindow ( art );
-    art->pintar();
-    art->show();
-    art->setWindowTitle ( _ ( "Nuevo Articulo" ) );
+    if (modoConsulta()) {
+	/// El modo consulta funciona algo diferente
+        QDialog *diag = new QDialog ( 0 );
+        diag->setModal ( true );
+        diag->setGeometry ( QRect ( 0, 0, 750, 550 ) );
+        centrarEnPantalla ( diag );
+
+	ArticuloView *bud = new ArticuloView ( ( BfCompany * ) mainCompany(), 0 );
+        /// Creamos un layout donde estara el contenido de la ventana y la ajustamos al QDialog
+        bud->connect ( bud, SIGNAL ( destroyed ( QObject * ) ), diag, SLOT ( accept() ) );
+
+        /// para que sea redimensionable y aparezca el titulo de la ventana.
+        QHBoxLayout *layout = new QHBoxLayout;
+        layout->addWidget ( bud );
+        layout->setMargin ( 0 );
+        layout->setSpacing ( 0 );
+        diag->setLayout ( layout );
+        diag->setWindowTitle ( bud->windowTitle() );
+
+	bud->show();
+	bud->pintar();
+
+	QString idarticuloold = "";
+	BlDbRecordSet *curold = mainCompany()->loadQuery("SELECT max(idarticulo) AS id FROM articulo");
+	if( !curold->eof()) {
+		      idarticuloold = curold->valor("id");
+	} // end if
+	delete curold;
+	
+        diag->exec();      
+      
+	BlDbRecordSet *cur = mainCompany()->loadQuery("SELECT max(idarticulo) AS id FROM articulo");
+	if( !cur->eof()) {
+		      if (idarticuloold != cur->valor("id")) {
+			mdb_idarticulo = cur->valor("id");
+			close();
+			emit ( selected ( mdb_idarticulo ) );
+		      } // end if
+	} // end if
+	delete cur;
+	
+    } else {    
+      ArticuloView * art = new ArticuloView ( ( BfCompany * ) mainCompany() );
+      mainCompany()->m_pWorkspace->addWindow ( art );
+      art->pintar();
+      art->show();
+      art->setWindowTitle ( _ ( "Nuevo Articulo" ) );
+    } // end if
     _depura ( "END ArticuloList::crear", 0 );
 }
 
