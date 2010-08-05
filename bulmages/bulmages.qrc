@@ -89,6 +89,7 @@
         <file alias="adjustfiles.png">images/oxygen/actions/48x48/adjustfiles.png</file>
         <file alias="toggleconfig.png">images/oxygen/actions/48x48/toggleconfig.png</file>
         <file alias="togglemenu.png">images/oxygen/actions/48x48/togglemenu.png</file>
+        <file alias="exportods.png">images/oxygen/actions/48x48/exportods.png</file>
 
     </qresource>
     <qresource prefix="/BulmaCont32x32" >

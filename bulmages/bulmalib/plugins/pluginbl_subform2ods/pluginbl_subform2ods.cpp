@@ -87,7 +87,7 @@ void myplugsubformods::s_pintaMenu ( QMenu *menu )
 {
     _depura ( "myplugsubformods::s_pintaMenu", 0 );
     menu->addSeparator();
-    menu->addAction ( _ ( "Exportar a hoja de calculo (ODS)" ) );
+    menu->addAction ( QIcon( ":/Images/exportods.png" ), _ ( "Exportar a hoja de calculo (ODS)" ) );
     _depura ( "END myplugsubformods::s_pintaMenu", 0 );
 }
 
@@ -99,7 +99,7 @@ void myplugsubformods::s_pintaMenu1 ( QMenu *menu )
 {
     _depura ( "myplugsubformods::s_pintaMenu1", 0 );
     menu->addSeparator();
-    menu->addAction ( _ ( "Exportar a hoja de calculo (ODS)" ) );
+    menu->addAction ( QIcon( ":/Images/exportods.png" ), _ ( "Exportar a hoja de calculo (ODS)" ) );
     _depura ( "END myplugsubformods::s_pintaMenu1", 0 );
 }
 
@@ -406,6 +406,38 @@ int BlSubForm_BlSubForm_Post ( BlSubForm *sub )
     return 0;
 }
 
+
+///
+/**
+\param sub
+\return
+**/
+int BlSubForm_preparaMenu ( BlSubForm *sub ) {
+    _depura ( "BlSubForm_preparaMenu", 0 );
+
+    myplugsubformods *subformods = new myplugsubformods ( sub );
+    
+    QHBoxLayout *m_hboxLayout1 = sub->mui_menusubform->findChild<QHBoxLayout *> ( "hboxLayout1" );
+    if ( !m_hboxLayout1 ) {
+        m_hboxLayout1 = new QHBoxLayout ( sub->mui_menusubform );
+        m_hboxLayout1->setSpacing (0 );
+        m_hboxLayout1->setMargin ( 0 );
+        m_hboxLayout1->setObjectName ( QString::fromUtf8 ( "hboxLayout1" ) );
+    } // end if
+    
+
+      QToolButton *sel = new QToolButton ( sub->mui_menusubform );
+      sel->setStatusTip ( "Exportar a hoja de calculo (ODS)" );
+      sel->setToolTip ( "Exportar a hoja de calculo (ODS)" );
+      sel->setMinimumSize ( QSize ( 18, 18 ) );
+      sel->setIcon ( QIcon ( ":/Images/exportods.png" ) );
+      sel->setIconSize ( QSize ( 18, 18 ) );    
+      m_hboxLayout1->addWidget ( sel );
+      sel->connect (sel, SIGNAL(released()), subformods, SLOT(sacaods ( )));
+
+    _depura ( "END BlSubForm_preparaMenu", 0 );
+    return 0;
+}
 
 
 // ===================

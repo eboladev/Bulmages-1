@@ -35,6 +35,7 @@
 extern "C" PLUGINBL_SUBFORM2ODS_EXPORT int entryPoint ( QApplication * );
 extern "C" PLUGINBL_SUBFORM2ODS_EXPORT int BlSubForm_BlSubForm_Post ( BlSubForm * );
 extern "C" PLUGINBL_SUBFORM2ODS_EXPORT int BlTreeWidget_BlTreeWidget_Post ( BlTreeWidget * );
+extern "C" PLUGINBL_SUBFORM2ODS_EXPORT int BlSubForm_preparaMenu ( BlSubForm * );
 
 
 class myplugsubformods : public QObject
@@ -45,10 +46,10 @@ public:
     myplugsubformods ( BlSubForm * );
     myplugsubformods ( BlTreeWidget * );
     ~myplugsubformods();
-    void sacaods();
     void sacaods1();
 
 public slots:
+    virtual void sacaods();
     virtual void s_pintaMenu ( QMenu * );
     virtual void s_trataMenu ( QAction * );
     virtual void s_pintaMenu1 ( QMenu * );
