@@ -33,7 +33,7 @@
 
 extern "C" PLUGINBL_SUBFORM2PDF_EXPORT int entryPoint ( QApplication * );
 extern "C" PLUGINBL_SUBFORM2PDF_EXPORT int BlSubForm_BlSubForm_Post ( BlSubForm * );
-
+extern "C" PLUGINBL_SUBFORM2PDF_EXPORT int BlSubForm_preparaMenu ( BlSubForm * );
 
 class myplugsubformods : public QObject
 {
@@ -42,10 +42,11 @@ class myplugsubformods : public QObject
 public:
     myplugsubformods ( BlSubForm * );
     ~myplugsubformods();
-    void imprimir();
+
 
 public slots:
     virtual void s_pintaMenu ( QMenu * );
     virtual void s_trataMenu ( QAction * );
+    virtual void imprimir();
 };
 

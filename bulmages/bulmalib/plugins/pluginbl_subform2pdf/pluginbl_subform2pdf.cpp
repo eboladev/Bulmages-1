@@ -76,7 +76,7 @@ void myplugsubformods::s_pintaMenu ( QMenu *menu )
 {
     _depura ( "myplugsubformods::s_pintaMenu", 0 );
     menu->addSeparator();
-    menu->addAction ( _ ( "Imprimir" ) );
+    menu->addAction ( QIcon(":/Images/document-print.png"), _ ( "Imprimir" ) );
     _depura ( "END myplugsubformods::s_pintaMenu", 0 );
 }
 
@@ -121,6 +121,39 @@ int BlSubForm_BlSubForm_Post ( BlSubForm *sub )
     sub->QObject::connect ( sub, SIGNAL ( pintaMenu ( QMenu * ) ), subformods, SLOT ( s_pintaMenu ( QMenu * ) ) );
     sub->QObject::connect ( sub, SIGNAL ( trataMenu ( QAction * ) ), subformods, SLOT ( s_trataMenu ( QAction * ) ) );
     _depura ( "END BlSubForm_BlSubForm_Post", 0 );
+    return 0;
+}
+
+
+///
+/**
+\param sub
+\return
+**/
+int BlSubForm_preparaMenu ( BlSubForm *sub ) {
+    _depura ( "BlSubForm_preparaMenu", 0 );
+
+    myplugsubformods *subformods = new myplugsubformods ( sub );
+    
+    QHBoxLayout *m_hboxLayout1 = sub->mui_menusubform->findChild<QHBoxLayout *> ( "hboxLayout1" );
+    if ( !m_hboxLayout1 ) {
+        m_hboxLayout1 = new QHBoxLayout ( sub->mui_menusubform );
+        m_hboxLayout1->setSpacing (0 );
+        m_hboxLayout1->setMargin ( 0 );
+        m_hboxLayout1->setObjectName ( QString::fromUtf8 ( "hboxLayout1" ) );
+    } // end if
+    
+
+      QToolButton *sel = new QToolButton ( sub->mui_menusubform );
+      sel->setStatusTip ( "Imprimir" );
+      sel->setToolTip ( "Imprimir" );
+      sel->setMinimumSize ( QSize ( 18, 18 ) );
+      sel->setIcon ( QIcon ( ":/Images/document-print.png" ) );
+      sel->setIconSize ( QSize ( 18, 18 ) );    
+      m_hboxLayout1->addWidget ( sel );
+      sel->connect (sel, SIGNAL(released()), subformods, SLOT(imprimir ( )));
+
+    _depura ( "END BlSubForm_preparaMenu", 0 );
     return 0;
 }
 

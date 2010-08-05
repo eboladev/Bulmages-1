@@ -309,7 +309,6 @@ public:
     void setDbValue ( const QString &campo, int row, const QString &valor );
     BlDbSubFormRecord *lineaact();
     BlDbSubFormRecord *lineaat ( int row );
-    virtual void imprimirPDF ( const QString & );
     virtual void nuevoRegistro();
     virtual int borrar ( int );
     virtual int guardar();
@@ -340,6 +339,7 @@ public:
     virtual QString exportXML();
 
 public slots:
+    virtual void imprimirPDF ( const QString & );
     virtual int borrar();
     void columnMovedByUser(int column, int oldIndex, int newIndex);
     virtual void on_mui_list_cellRePosition ( int, int );

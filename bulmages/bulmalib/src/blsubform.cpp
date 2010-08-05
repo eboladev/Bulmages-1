@@ -2876,7 +2876,10 @@ void BlSubForm::imprimirPDF ( const QString &titular )
 
 void BlSubForm::preparaMenu() {
     _depura ( "BlSubForm::preparaMenu", 0 );
-    
+
+    /// Disparamos los plugins.
+    g_plugins->lanza ( "BlSubForm_preparaMenu", this );
+
     QHBoxLayout *m_hboxLayout1 = mui_menusubform->findChild<QHBoxLayout *> ( "hboxLayout1" );
     if ( !m_hboxLayout1 ) {
         m_hboxLayout1 = new QHBoxLayout ( mui_menusubform );
@@ -2976,16 +2979,21 @@ void BlSubForm::contextMenuEvent ( QContextMenuEvent * )
     popup->addSeparator();
 
     QAction *ajustc = popup->addAction ( _ ( "Ajustar columa" ) );
+    ajustc->setIcon ( QIcon ( ":/Images/adjustrow.png" ) );
     QAction *ajustac = popup->addAction ( _ ( "Ajustar altura" ) );
-
+    ajustac->setIcon ( QIcon ( ":/Images/adjustfile.png" ) );
+    
     QAction *ajust = popup->addAction ( _ ( "Ajustar columnas" ) );
+    ajust->setIcon ( QIcon ( ":/Images/adjustrows.png" ) );
     QAction *ajusta = popup->addAction ( _ ( "Ajustar alturas" ) );
+    ajusta->setIcon ( QIcon ( ":/Images/adjustfiles.png" ) );
 
     popup->addSeparator();
     QAction *menuconfig = popup->addAction ( _ ( "Ver/Ocultar menu de subformulario" ) );
-
+    menuconfig->setIcon ( QIcon ( ":/Images/togglemenu.png" ) );
     QAction *verconfig = popup->addAction ( _ ( "Ver/Ocultar configurador de subformulario" ) );
-
+    verconfig->setIcon ( QIcon ( ":/Images/toggleconfig.png" ) );
+    
     QAction *opcion = popup->exec ( QCursor::pos() );
 
     /// Si no hay ninguna opcion pulsada se sale sin hacer nada
