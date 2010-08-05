@@ -82,6 +82,11 @@
 	<file alias="iconbulmatpv.svg">images/oxygen/applications/iconbulmatpv.svg</file>
 	<file alias="iconbulmages.svg">images/oxygen/applications/iconbulmages.svg</file>
 	<file alias="iconbulmacont.svg">images/oxygen/applications/iconbulmacont.svg</file>
+        <file alias="delete-line.png">images/oxygen/actions/48x48/delete-line.png</file>
+        <file alias="adjustrow.png">images/oxygen/actions/48x48/adjustrow.png</file>
+        <file alias="adjustrows.png">images/oxygen/actions/48x48/adjustrows.png</file>
+        <file alias="adjustfile.png">images/oxygen/actions/48x48/adjustfile.png</file>
+        <file alias="adjustfiles.png">images/oxygen/actions/48x48/adjustfiles.png</file>
 
     </qresource>
     <qresource prefix="/BulmaCont32x32" >
