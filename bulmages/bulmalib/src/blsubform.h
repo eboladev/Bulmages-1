@@ -274,12 +274,7 @@ public:
     int currentColumn();
     /// Establece la forma de redimensionado de las columnas del subformulario.
     void setResizeMode ( QHeaderView::ResizeMode modo );
-    /// Redimensiona las columnas del subformulario para ajustarlas
-    /// a los contenidos.
-    void resizeColumnsToContents();
-    /// Redimensiona las filas del subformulario para ajustarlas
-    /// a los contenidos.
-    void resizeRowsToContents();
+
     /// Redimensiona las columnas del subformulario para ajustarlas a los contenidos
     void resizeColumnToContents ( int i );
     /// Ajusta la fila indicada a sus contenidos.
@@ -363,8 +358,6 @@ public slots:
     virtual void on_mui_list_itemDoubleClicked ( QTableWidgetItem *item );
     virtual void on_mui_list_itemClicked ( QTableWidgetItem *item );
     virtual void on_mui_list_cellDoubleClicked ( int row, int col );
-    virtual void toogleConfig();
-    virtual void toogleMenuConfig();
     virtual void on_mui_botonCerrar_clicked();
     virtual void on_mui_list_itemChanged ( QTableWidgetItem *it );
     virtual void editFinished ( int, int, BlDbSubFormRecord *, BlDbSubFormField * );
@@ -372,7 +365,16 @@ public slots:
     virtual void pressedPlus ( int, int, BlDbSubFormRecord *, BlDbSubFormField * );
     virtual void pressedMinus ( int, int, BlDbSubFormRecord *, BlDbSubFormField * );
     virtual void pressedSlash ( int, int, BlDbSubFormRecord *, BlDbSubFormField * );
-
+    /// Redimensiona las columnas del subformulario para ajustarlas
+    /// a los contenidos.
+    void resizeColumnsToContents();
+    /// Redimensiona las filas del subformulario para ajustarlas
+    /// a los contenidos.
+    void resizeRowsToContents();
+    virtual void toogleConfig();
+    virtual void toogleMenuConfig();
+    virtual int borrarLineaActual();
+    
 signals:
     void toogledConfig ( bool );
     void toogledMenuConfig ( bool );

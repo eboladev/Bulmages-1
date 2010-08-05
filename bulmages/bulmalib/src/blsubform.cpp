@@ -264,10 +264,6 @@ BlSubForm::BlSubForm ( QWidget *parent ) : BlWidget ( parent )
     m_prevCol = -1;
     m_prevRow = -1;
     setDelete ( TRUE );
-
-    
-    /// Preparamos el menu de subformulario
-    preparaMenu();
     
     /// Disparamos los plugins.
     g_plugins->lanza ( "BlSubForm_BlSubForm_Post", this );
@@ -1196,7 +1192,9 @@ void BlSubForm::pintar()
     mui_list->setColumnCount ( m_lcabecera.count() );
     pintaCabeceras();
     if ( m_primero ) {
-        cargaconfig();
+        cargaconfig();	
+	/// Preparamos el menu de subformulario
+	preparaMenu();
     } // end if
     nuevoRegistro();
     m_procesacambios = TRUE;
@@ -1243,6 +1241,8 @@ int BlSubForm::inicializar()
     pintaCabeceras();
     if ( m_primero ) {
         cargaconfig();
+	/// Preparamos el menu de subformulario
+	preparaMenu();
     } // end if
 
     nuevoRegistro();
@@ -1537,6 +1537,8 @@ void BlSubForm::cargar ( BlDbRecordSet *cur )
     /// Configuramos que registros son visibles y que registros no lo son
     if ( m_primero ) {
         cargaconfig();
+	/// Preparamos el menu de subformulario
+	preparaMenu();
     } else {
         on_mui_confcol_clicked();
     } // end if
@@ -2146,6 +2148,12 @@ int BlSubForm::guardar()
 }
 
 
+int BlSubForm::borrarLineaActual() {
+      _depura ( "BlSubForm::borrarLineaActual", 0 );
+      _depura ( "BlSubForm::borrarLineaActual", 0 );
+      return 	borrar(currentRow());
+}
+
 ///
 /**
 \return
@@ -2324,6 +2332,14 @@ void BlSubForm::guardaconfig()
             stream << mui_listcolumnas->item ( i, 3 )->text() << "\n";
         } // end for
 
+	/// Guardamos el estado del menu de subformulario.
+	if (mui_menusubform->isHidden()) {
+	  stream << "0";
+	} else {
+	  stream << "1";
+	} // end if
+
+
         file.close();
     } // end if
     _depura ( "END BlSubForm::guardaconfig", 0 );
@@ -2392,6 +2408,15 @@ void BlSubForm::cargaconfig()
                 } // end if
             } // end for
         } // end for
+
+
+	/// Guardamos el estado del menu de subformulario.
+	linea = stream.readLine();
+	if (linea == "1") {
+	  mui_menusubform->setVisible(TRUE);
+	} else {
+	  mui_menusubform->setVisible(FALSE);
+	} // end if
 
         file.close();
         on_mui_confcol_clicked();
@@ -2859,15 +2884,58 @@ void BlSubForm::preparaMenu() {
         m_hboxLayout1->setMargin ( 0 );
         m_hboxLayout1->setObjectName ( QString::fromUtf8 ( "hboxLayout1" ) );
     } // end if
+    
+    if ( m_delete ) {
+      QToolButton *sel = new QToolButton ( mui_menusubform );
+      sel->setStatusTip ( "Generar Q19" );
+      sel->setToolTip ( "Borrar Linea" );
+      sel->setMinimumSize ( QSize ( 18, 18 ) );
+      sel->setIcon ( QIcon ( ":/Images/edit-delete.png" ) );
+      sel->setIconSize ( QSize ( 18, 18 ) );    
+      m_hboxLayout1->addWidget ( sel );
+      connect (sel, SIGNAL(released()), this, SLOT(borrarLineaActual()));
+    } // end if
+    
+    /// Ajuste de la columna
+    QToolButton *sel1 = new QToolButton ( mui_menusubform );
+    sel1->setStatusTip ( "Ajustar Columna" );
+    sel1->setToolTip ( "Ajustar Columna" );
+    sel1->setMinimumSize ( QSize ( 18, 18 ) );
+    sel1->setIcon ( QIcon ( ":/Images/view-refresh.png" ) );
+    sel1->setIconSize ( QSize ( 18, 18 ) );    
+    m_hboxLayout1->addWidget ( sel1 );    
+    connect (sel1, SIGNAL(released()), this, SLOT(resizeColumnsToContents()));    
 
-    QToolButton *sel = new QToolButton ( mui_menusubform );
-    sel->setStatusTip ( "Generar Q19" );
-    sel->setToolTip ( "Generar archivo Q19 de los elementos seleccionados" );
-    sel->setMinimumSize ( QSize ( 22, 22 ) );
-    sel->setIcon ( QIcon ( g_confpr->valor ( CONF_PROGDATA ) + "icons/q19.png" ) );
-    sel->setIconSize ( QSize ( 22, 22 ) );    
-    m_hboxLayout1->addWidget ( sel );
-    connect (sel, SIGNAL(released()), this, SLOT(borrar()));
+    /// Ajuste de la altura
+    QToolButton *sel2 = new QToolButton ( mui_menusubform );
+    sel2->setStatusTip ( "Ajustar Columna" );
+    sel2->setToolTip ( "Ajustar Columna" );
+    sel2->setMinimumSize ( QSize ( 18, 18 ) );
+    sel2->setIcon ( QIcon ( ":/Images/view-refresh.png" ) );
+    sel2->setIconSize ( QSize ( 18, 18 ) );    
+    m_hboxLayout1->addWidget ( sel2 );    
+    connect (sel2, SIGNAL(released()), this, SLOT(resizeRowsToContents()));   
+    
+    /// Ver configuracion del subformulario
+    QToolButton *sel3 = new QToolButton ( mui_menusubform );
+    sel3->setStatusTip ( "Ver/Ocultar configurador de subformulario" );
+    sel3->setToolTip ( "Ver/Ocultar configurador de subformulario" );
+    sel3->setMinimumSize ( QSize ( 18, 18 ) );
+    sel3->setIcon ( QIcon ( ":/Images/account_plan.png" ) );
+    sel3->setIconSize ( QSize ( 18, 18 ) );    
+    m_hboxLayout1->addWidget ( sel3 );    
+    connect (sel3, SIGNAL(released()), this, SLOT(toogleConfig()));  
+    
+    /// Ocultar Menu
+    QToolButton *sel4 = new QToolButton ( mui_menusubform );
+    sel4->setStatusTip ( "Ver/Ocultar menu de subformulario" );
+    sel4->setToolTip ( "Ver/Ocultar menu de subformulario" );
+    sel4->setMinimumSize ( QSize ( 18, 18 ) );
+    sel4->setIcon ( QIcon ( ":/Images/account_plan.png" ) );
+    sel4->setIconSize ( QSize ( 18, 18 ) );    
+    m_hboxLayout1->addWidget ( sel4 );    
+    connect (sel4, SIGNAL(released()), this, SLOT(toogleMenuConfig())); 
+    
     _depura ( "END BlSubForm::preparaMenu", 0 );
 }
 
