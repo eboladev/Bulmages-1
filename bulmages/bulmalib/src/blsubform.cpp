@@ -2890,7 +2890,7 @@ void BlSubForm::preparaMenu() {
       sel->setStatusTip ( "Generar Q19" );
       sel->setToolTip ( "Borrar Linea" );
       sel->setMinimumSize ( QSize ( 18, 18 ) );
-      sel->setIcon ( QIcon ( ":/Images/edit-delete.png" ) );
+      sel->setIcon ( QIcon ( ":/Images/delete-line.png" ) );
       sel->setIconSize ( QSize ( 18, 18 ) );    
       m_hboxLayout1->addWidget ( sel );
       connect (sel, SIGNAL(released()), this, SLOT(borrarLineaActual()));
@@ -2898,20 +2898,20 @@ void BlSubForm::preparaMenu() {
     
     /// Ajuste de la columna
     QToolButton *sel1 = new QToolButton ( mui_menusubform );
-    sel1->setStatusTip ( "Ajustar Columna" );
-    sel1->setToolTip ( "Ajustar Columna" );
+    sel1->setStatusTip ( "Ajustar Columnas" );
+    sel1->setToolTip ( "Ajustar Columnas" );
     sel1->setMinimumSize ( QSize ( 18, 18 ) );
-    sel1->setIcon ( QIcon ( ":/Images/view-refresh.png" ) );
+    sel1->setIcon ( QIcon ( ":/Images/adjustrows.png" ) );
     sel1->setIconSize ( QSize ( 18, 18 ) );    
     m_hboxLayout1->addWidget ( sel1 );    
     connect (sel1, SIGNAL(released()), this, SLOT(resizeColumnsToContents()));    
 
     /// Ajuste de la altura
     QToolButton *sel2 = new QToolButton ( mui_menusubform );
-    sel2->setStatusTip ( "Ajustar Columna" );
-    sel2->setToolTip ( "Ajustar Columna" );
+    sel2->setStatusTip ( "Ajustar Filas" );
+    sel2->setToolTip ( "Ajustar Filas" );
     sel2->setMinimumSize ( QSize ( 18, 18 ) );
-    sel2->setIcon ( QIcon ( ":/Images/view-refresh.png" ) );
+    sel2->setIcon ( QIcon ( ":/Images/adjustfiles.png" ) );
     sel2->setIconSize ( QSize ( 18, 18 ) );    
     m_hboxLayout1->addWidget ( sel2 );    
     connect (sel2, SIGNAL(released()), this, SLOT(resizeRowsToContents()));   
@@ -2921,7 +2921,7 @@ void BlSubForm::preparaMenu() {
     sel3->setStatusTip ( "Ver/Ocultar configurador de subformulario" );
     sel3->setToolTip ( "Ver/Ocultar configurador de subformulario" );
     sel3->setMinimumSize ( QSize ( 18, 18 ) );
-    sel3->setIcon ( QIcon ( ":/Images/account_plan.png" ) );
+    sel3->setIcon ( QIcon ( ":/Images/toggleconfig.png" ) );
     sel3->setIconSize ( QSize ( 18, 18 ) );    
     m_hboxLayout1->addWidget ( sel3 );    
     connect (sel3, SIGNAL(released()), this, SLOT(toogleConfig()));  
@@ -2931,7 +2931,7 @@ void BlSubForm::preparaMenu() {
     sel4->setStatusTip ( "Ver/Ocultar menu de subformulario" );
     sel4->setToolTip ( "Ver/Ocultar menu de subformulario" );
     sel4->setMinimumSize ( QSize ( 18, 18 ) );
-    sel4->setIcon ( QIcon ( ":/Images/account_plan.png" ) );
+    sel4->setIcon ( QIcon ( ":/Images/togglemenu.png" ) );
     sel4->setIconSize ( QSize ( 18, 18 ) );    
     m_hboxLayout1->addWidget ( sel4 );    
     connect (sel4, SIGNAL(released()), this, SLOT(toogleMenuConfig())); 
