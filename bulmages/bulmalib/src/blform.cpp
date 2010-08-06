@@ -110,6 +110,14 @@ BlForm::~BlForm()
 void BlForm::cargaSpecs()
 {
     _depura ( "BlForm::cargaSpecs", 0 );
+    
+        /// Disparamos los plugins
+    int res1 = g_plugins->lanza ( "BlForm_cargaSpecs", this );
+    if ( res1 != 0 ) {
+        _depura ( "END BlForm::cargaSpecs", 0, "Salida por plugins" );
+        return;
+    } // end if
+    
     QFile file ( CONFIG_DIR_CONFIG + objectName() + "_" + mainCompany() ->dbName() + "_spec.spc" );
     QDomDocument doc ( "mydocument" );
     if ( !file.open ( QIODevice::ReadOnly ) ) {
@@ -181,6 +189,9 @@ void BlForm::cargaSpecs()
             generaCampo ( nomheader, nompheader, typeheader );
         } // end if
     } // end for
+
+    /// Disparamos los plugins
+    int res = g_plugins->lanza ( "BlForm_cargaSpecs_Post", this );
 
     _depura ( "END BlForm::cargaSpecs", 0 );
 }

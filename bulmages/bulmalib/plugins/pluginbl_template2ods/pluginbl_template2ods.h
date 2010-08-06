@@ -24,6 +24,6 @@
 #include "pdefs_pluginbl_template2ods.h"
 
 
-extern "C" PLUGINBL_TEMPLATE2ODS_EXPORT int BlForm_BlForm ( BlForm * );
+extern "C" PLUGINBL_TEMPLATE2ODS_EXPORT int BlForm_cargaSpecs ( BlForm * );
 extern "C" PLUGINBL_TEMPLATE2ODS_EXPORT int entryPoint ( QApplication * );
 
