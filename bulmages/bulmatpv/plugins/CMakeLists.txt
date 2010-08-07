@@ -27,6 +27,7 @@ add_subdirectory(pluginbt_serversync)
 add_subdirectory(pluginbt_clientsync)
 add_subdirectory(pluginbt_mesas)
 add_subdirectory(pluginbt_dockapp)
+add_subdirectory(pluginbt_serverlight)
 
 if(NOT APPLE)
 add_subdirectory(pluginbt_accesobotones)
