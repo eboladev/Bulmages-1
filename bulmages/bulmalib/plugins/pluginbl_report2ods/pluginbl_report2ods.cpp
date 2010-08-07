@@ -146,6 +146,13 @@ int init (  )
 	    pathtitulo = titulo;
         } // end if
 
+        /// Buscamos el icono
+        QString icon = ":/Images/template2ods.png";
+        QRegExp rx4 ( " icon\\s*=\\s*\"(.*)\"" );
+        rx4.setMinimal ( TRUE );
+        if ( rx4.indexIn ( buff, 0 )  != -1 ) {
+            icon = rx4.cap ( 1 );
+        } // end if
 
 	QMenuBar *menubar =g_bges->menuBar();
 	QMenu *menu = NULL;
@@ -199,6 +206,7 @@ int init (  )
 
         /// Creamos el men&uacute;.
         QAction *accion = new QAction ( path[path.size()-1], 0 );
+        accion->setIcon(QIcon(icon));
         accion->setObjectName ( fileInfo.fileName() );
         accion->setStatusTip ( titulo);
         accion->setWhatsThis ( titulo );

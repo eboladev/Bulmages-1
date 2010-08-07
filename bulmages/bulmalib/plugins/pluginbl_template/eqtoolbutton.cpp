@@ -115,9 +115,17 @@ EQToolButton::EQToolButton ( QWidget *parent ) : QToolButton ( parent )
 	    } // end while
 
 
+            /// Buscamos Query's por tratar
+            QString icon = ":/Images/template2rml.png";
+            QRegExp rx2 ( " icon\\s*=\\s*\"(.*)\"" );
+            rx2.setMinimal ( TRUE );
+            if ( rx2.indexIn ( buff, 0 )  != -1 ) {
+                icon = rx2.cap ( 1 );
+            } // end while
+
 	    QAction *accion = menu->addAction ( titulo );
 	    accion->setObjectName ( fileInfo.fileName() );
-	    accion->setIcon(QIcon(":/Images/template2rml.png"));
+	    accion->setIcon(QIcon(icon));
 	    connect ( accion, SIGNAL ( triggered ( bool ) ), this, SLOT ( trataMenu ( ) ) );
 	}
 	setMenu(menu);
@@ -178,7 +186,16 @@ void EQToolButton::pintaMenu ( QMenu *menu )
         } // end while
 
 
-        QAction *accion = ajust->addAction (QIcon(":/Images/template2rml.png"), titulo );
+        /// Buscamos Query's por tratar
+        QString icon = ":/Images/template2rml.png";
+        QRegExp rx2 ( " icon\\s*=\\s*\"(.*)\"" );
+        rx2.setMinimal ( TRUE );
+        if ( rx2.indexIn ( buff, 0 )  != -1 ) {
+            icon = rx2.cap ( 1 );
+        } // end while
+
+
+        QAction *accion = ajust->addAction (QIcon(icon), titulo );
         accion->setObjectName ( fileInfo.fileName() );
     }
     _depura ( "END EQToolButton::pintaMenu", 0 );

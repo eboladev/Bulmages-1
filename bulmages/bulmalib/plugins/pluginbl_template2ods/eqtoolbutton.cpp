@@ -109,16 +109,25 @@ EQToolButton::EQToolButton ( QWidget *parent ) : QToolButton ( parent )
 
 	    /// Buscamos Query's por tratar
 	    QString titulo = fileInfo.fileName();
-	    QRegExp rx1 ( "title\\s*=\\s*\"(.*)\"" );
+	    QRegExp rx1 ( " title\\s*=\\s*\"(.*)\"" );
 	    rx1.setMinimal ( TRUE );
 	    if ( rx1.indexIn ( buff, 0 )  != -1 ) {
 		titulo = rx1.cap ( 1 );
 	    } // end while
 
 
+            /// Buscamos Query's por tratar
+            QString icon = ":/Images/template2ods.png";
+            QRegExp rx2 ( " icon\\s*=\\s*\"(.*)\"" );
+            rx2.setMinimal ( TRUE );
+            if ( rx2.indexIn ( buff, 0 )  != -1 ) {
+                icon = rx2.cap ( 1 );
+            } // end if
+
+
 	    QAction *accion = menu->addAction ( titulo );
 	    accion->setObjectName ( fileInfo.fileName() );
-	    accion->setIcon(QIcon(":/Images/template2ods.png"));
+	    accion->setIcon(QIcon(icon));
 	    connect ( accion, SIGNAL ( triggered ( bool ) ), this, SLOT ( trataMenu ( ) ) );
 	}
 	setMenu(menu);
@@ -173,16 +182,23 @@ void EQToolButton::pintaMenu ( QMenu *menu )
 
         /// Buscamos Query's por tratar
         QString titulo = fileInfo.fileName();
-        QRegExp rx1 ( "title\\s*=\\s*\"(.*)\"" );
+        QRegExp rx1 ( " title\\s*=\\s*\"(.*)\"" );
         rx1.setMinimal ( TRUE );
         if ( rx1.indexIn ( buff, 0 )  != -1 ) {
             titulo = rx1.cap ( 1 );
         } // end while
 
+        /// Buscamos Query's por tratar
+        QString icon = ":/Images/template2ods.png";
+        QRegExp rx2 ( "icon\\s*=\\s*\"(.*)\"" );
+        rx2.setMinimal ( TRUE );
+        if ( rx2.indexIn ( buff, 0 )  != -1 ) {
+            icon = rx2.cap ( 1 );
+        } // end while
 
         QAction *accion = ajust->addAction ( titulo );
         accion->setObjectName ( fileInfo.fileName() );
-	accion->setIcon(QIcon(":/Images/template2ods.png"));
+	accion->setIcon(QIcon(icon));
     }
     _depura ( "END EQToolButton::pintaMenu", 0 );
 }

@@ -124,7 +124,7 @@ int init (  )
 
         /// Buscamos el titulo
         QString titulo = fileInfo.fileName();
-        QRegExp rx3 ( "title\\s*=\\s*\"(.*)\"" );
+        QRegExp rx3 ( " title\\s*=\\s*\"(.*)\"" );
         rx3.setMinimal ( TRUE );
         if ( rx3.indexIn ( buff, 0 )  != -1 ) {
             titulo = rx3.cap ( 1 );
@@ -138,6 +138,15 @@ int init (  )
         } else {
 	    pathtitulo = titulo;
 	} // end while
+
+
+        /// Buscamos el icono
+        QString icon = ":/Images/template2rml.png";
+        QRegExp rx6 ( " icon\\s*=\\s*\"(.*)\"" );
+        rx6.setMinimal ( TRUE );
+        if ( rx6.indexIn ( buff, 0 )  != -1 ) {
+            icon = rx6.cap ( 1 );
+        } // end while
 
 
 	QMenuBar *menubar =g_bges->menuBar();
@@ -156,8 +165,8 @@ int init (  )
 		    } // end for
 
 		    if (!encontrado) {
-			QMenu *pPluginMenu1 = new QMenu (  path[0] , menubar );
-			menubar->insertMenu ( pPluginVer->menuAction(), pPluginMenu1 );
+			QMenu *pPluginMenu1 = new QMenu (path[0] , menubar );
+                        menubar->insertMenu ( pPluginVer->menuAction(), pPluginMenu1 );
 			menu = pPluginMenu1;
 		    } // end if
 	} else {
@@ -192,6 +201,7 @@ int init (  )
 
         /// Creamos el men&uacute;.
         QAction *accion = new QAction ( path[path.size()-1], 0 );
+        accion->setIcon(QIcon(icon));
         accion->setObjectName ( fileInfo.fileName() );
         accion->setStatusTip ( titulo);
         accion->setWhatsThis ( titulo );
