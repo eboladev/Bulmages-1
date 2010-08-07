@@ -90,8 +90,8 @@
         <file alias="toggleconfig.png">images/oxygen/actions/48x48/toggleconfig.png</file>
         <file alias="togglemenu.png">images/oxygen/actions/48x48/togglemenu.png</file>
         <file alias="exportods.png">images/oxygen/actions/48x48/exportods.png</file>
-        <file alias="template2ods.png">images/oxygen/actions/48x48/template2ods.png</file>
-        <file alias="template2rml.png">images/oxygen/actions/48x48/template2rml.png</file>
+        <file alias="template2ods.png">images/oxygen/actions/48x48/application-vnd.oasis.opendocument.spreadsheet.png</file>
+        <file alias="template2rml.png">images/oxygen/actions/48x48/application-pdf.png</file>
     </qresource>
     <qresource prefix="/BulmaCont32x32" >
         <file>images/png/decrypted.png</file>

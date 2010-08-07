@@ -72,6 +72,7 @@ EQToolButton::EQToolButton ( QWidget *parent ) : QToolButton ( parent )
 	m_hboxLayout1->addWidget ( this );
 
 	setMinimumSize ( QSize ( 32, 32 ) );
+        setMaximumSize ( QSize ( 32, 32 ) );
 	setIcon ( QIcon ( ":/Images/template2ods.png" ) );
 	setIconSize ( QSize ( 32, 32 ) );  	
 	setPopupMode(QToolButton::InstantPopup);  
@@ -85,7 +86,7 @@ EQToolButton::EQToolButton ( QWidget *parent ) : QToolButton ( parent )
 	dir.setSorting ( QDir::Size | QDir::Reversed );
 	/// Hacemos un filtrado de busqueda
 	QStringList filters;
-	filters << "*" + m_BlForm->tableName() + "*.pys";
+	filters << "*impers_" + m_BlForm->tableName() + "*.pys";
 	dir.setNameFilters ( filters );
 
 
@@ -154,7 +155,7 @@ void EQToolButton::pintaMenu ( QMenu *menu )
     dir.setSorting ( QDir::Size | QDir::Reversed );
     /// Hacemos un filtrado de busqueda
     QStringList filters;
-    filters << "*" + m_BlForm->tableName() + "*.pys";
+    filters << "*impers_" + m_BlForm->tableName() + "*.pys";
     dir.setNameFilters ( filters );
 
 
@@ -204,7 +205,7 @@ void EQToolButton::trataMenu ( QAction *action )
 	dir.setSorting ( QDir::Size | QDir::Reversed );
 	/// Hacemos un filtrado de busqueda
 	QStringList filters;
-	filters << "*" + m_BlForm->tableName() + "*.pys";
+	filters << "*impers_" + m_BlForm->tableName() + "*.pys";
 	dir.setNameFilters ( filters );
 
 
