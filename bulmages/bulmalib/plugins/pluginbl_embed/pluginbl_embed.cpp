@@ -1,4 +1,4 @@
-/***************************************************************************
+/*******************************************f********************************
  *   Copyright (C) 2005 by Tomeu Borras Riera                              *
  *   tborras@conetxia.com                                                  *
  *                                                                         *
@@ -109,7 +109,7 @@ void myplugincont::embedPYS( )
         } // end if
     
         /// Buscamos el icono
-        QString icon = ":/BulmaCont32x32/images/png/i_lo32-app-bulmages.png" ;
+        QString icon = ":/Images/externalapp.png" ;
         QRegExp rx4 ( "icon\\s*=\\s*\"(.*)\"" );
         rx4.setMinimal ( TRUE );
         if ( rx4.indexIn ( buff, 0 )  != -1 ) {
@@ -294,11 +294,21 @@ int init67 (  )
 
         /// Buscamos el titulo
         QString titulo = fileInfo.fileName();
-        QRegExp rx3 ( "title\\s*=\\s*\"(.*)\"" );
+        QRegExp rx3 ( " title\\s*=\\s*\"(.*)\"" );
         rx3.setMinimal ( TRUE );
         if ( rx3.indexIn ( buff, 0 )  != -1 ) {
             titulo = rx3.cap ( 1 );
 	    
+        } // end if
+
+
+        /// Buscamos el titulo
+        QString icon = ":/Images/externalapp.png";
+        QRegExp rx4 ( " icon\\s*=\\s*\"(.*)\"" );
+        rx4.setMinimal ( TRUE );
+        if ( rx4.indexIn ( buff, 0 )  != -1 ) {
+            icon = rx4.cap ( 1 );
+            
         } // end if
 
         QString pathtitulo = fileInfo.fileName();
@@ -363,6 +373,7 @@ int init67 (  )
 
         /// Creamos el men&uacute;.
         QAction *accion = new QAction ( path[path.size()-1], 0 );
+        accion->setIcon(QIcon(icon));
         accion->setObjectName ( fileInfo.fileName() );
         accion->setStatusTip ( titulo);
         accion->setWhatsThis ( titulo );
