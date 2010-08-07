@@ -72,7 +72,7 @@ EQToolButton::EQToolButton ( QWidget *parent ) : QToolButton ( parent )
 	m_hboxLayout1->addWidget ( this );
 
 	setMinimumSize ( QSize ( 32, 32 ) );
-	setIcon ( QIcon ( ":/Images/exportods.png" ) );
+	setIcon ( QIcon ( ":/Images/template2ods.png" ) );
 	setIconSize ( QSize ( 32, 32 ) );  	
 	setPopupMode(QToolButton::InstantPopup);  
 	
@@ -117,6 +117,7 @@ EQToolButton::EQToolButton ( QWidget *parent ) : QToolButton ( parent )
 
 	    QAction *accion = menu->addAction ( titulo );
 	    accion->setObjectName ( fileInfo.fileName() );
+	    accion->setIcon(QIcon(":/Images/template2ods.png"));
 	    connect ( accion, SIGNAL ( triggered ( bool ) ), this, SLOT ( trataMenu ( ) ) );
 	}
 	setMenu(menu);
@@ -145,8 +146,8 @@ EQToolButton::~EQToolButton()
 void EQToolButton::pintaMenu ( QMenu *menu )
 {
     _depura ( "EQToolButton::pintaMenu", 0 );
-    QMenu *ajust = menu->addMenu ( _ ( "Informes personales ODS" ) );
-
+    QMenu *ajust = menu->addMenu ( QIcon(":/Images/template2ods.png"), _ ( "Informes personales ODS" ) );
+	
     /// Buscamos ficheros que tengan el nombre de la tabla
     QDir dir ( g_confpr->valor ( CONF_DIR_OPENREPORTS ) );
     dir.setFilter ( QDir::Files | QDir::NoSymLinks );
@@ -180,6 +181,7 @@ void EQToolButton::pintaMenu ( QMenu *menu )
 
         QAction *accion = ajust->addAction ( titulo );
         accion->setObjectName ( fileInfo.fileName() );
+	accion->setIcon(QIcon(":/Images/template2ods.png"));
     }
     _depura ( "END EQToolButton::pintaMenu", 0 );
 }

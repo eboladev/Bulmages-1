@@ -46,12 +46,10 @@ int entryPoint ( QApplication * )
 \param l
 \return
 **/
-int BlForm_BlForm ( BlForm *l )
+int BlForm_cargaSpecs ( BlForm *l )
 {
     _depura ( "BlForm_BlForm", 0 );
-
     new EQToolButton ( l );
-
     _depura ( "END BlForm_BlForm", 0 );
     return 0;
 }

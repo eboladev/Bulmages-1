@@ -24,13 +24,14 @@
 #include <QWidget>
 #include <QString>
 #include <QMap>
+#include <QToolButton>
 
 #include "blfunctions.h"
 #include "blmaincompany.h"
 #include "blform.h"
 
 
-class EQToolButton : public QWidget
+class EQToolButton : public QToolButton
 {
     Q_OBJECT
 
@@ -45,7 +46,7 @@ public:
 public slots:
     //virtual void click();
     virtual void pintaMenu ( QMenu * );
-    virtual void trataMenu ( QAction *action );
+    virtual void trataMenu ( QAction *action = NULL );
 
 };
 
