@@ -41,7 +41,7 @@ extern "C" PLUGINBF_ARTICULO_EXPORT int BlSubFormDelegate_setModelData(BlSubForm
 extern "C" PLUGINBF_ARTICULO_EXPORT int BlSubFormDelegate_setEditorData(BlSubFormDelegate *);
 extern "C" PLUGINBF_ARTICULO_EXPORT int BlSubForm_editFinished(BlSubForm *);
 extern "C" PLUGINBF_ARTICULO_EXPORT int BlDbCompleterComboBox_textChanged (BlDbCompleterComboBox *);
-
+extern "C" PLUGINBF_ARTICULO_EXPORT int BlSubForm_preparaMenu ( BlSubForm *);
 
 class MyPlugArt1 : public QObject
 {
@@ -50,13 +50,14 @@ class MyPlugArt1 : public QObject
 public:
     MyPlugArt1 ( BlSubForm * );
     ~MyPlugArt1();
-    void editarArticulo( QString);
-    void nuevoArticulo();
-    void seleccionarArticulo(BfSubForm *);
+
 
 public slots:
     virtual void s_pintaMenu ( QMenu * );
     virtual void s_trataMenu ( QAction * );
+    void editarArticulo( QString);
+    void nuevoArticulo();
+    void seleccionarArticulo(BfSubForm *sub=NULL);
 };
 
 

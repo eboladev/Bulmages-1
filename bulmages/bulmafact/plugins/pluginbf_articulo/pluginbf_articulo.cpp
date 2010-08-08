@@ -371,11 +371,11 @@ void MyPlugArt1::s_pintaMenu ( QMenu *menu )
     BlSubFormHeader *header = sub->header ( "codigocompletoarticulo" );
     if ( header ) {
         menu->addSeparator();
-        menu->addAction ( _ ( "Nuevo articulo" ) );
+        menu->addAction ( QIcon ( ":/Images/product.png"), _ ( "Nuevo articulo" ) );
         QString idarticulo = sub->dbValue ( "idarticulo" );
         if ( idarticulo != "" ) menu->addAction ( _ ( "Editar articulo" ) );
         if ( ! ( header->options() & BlSubFormHeader::DbNoWrite ) )  {
-            menu->addAction ( _ ( "Seleccionar articulo" ) );
+            menu->addAction ( QIcon ( ":/Images/product-list.png"), _ ( "Seleccionar articulo" ) );
         } // end if
     } // end if
     _depura ( "END MyPlugArt1::s_pintaMenu", 0 );
@@ -431,11 +431,38 @@ void MyPlugArt1::editarArticulo ( QString idarticulo )
 void MyPlugArt1::nuevoArticulo( )
 {
     _depura ( "MyPlugArt1::editarArticulo", 0 );
-    BlSubForm * subf = ( BlSubForm * ) parent();
-    ArticuloView * art = new ArticuloView ( ( BfCompany * ) subf->mainCompany(), 0 );
+  
+    BlSubForm * sub = ( BlSubForm * ) parent();
+/*      ArticuloView * art = new ArticuloView ( ( BfCompany * ) subf->mainCompany(), 0 );
     subf->mainCompany() ->m_pWorkspace->addWindow ( art );
     art->hide();
     art->show();
+*/
+    QString idarticleold="0";
+    BlDbRecordSet *cur = sub->mainCompany() ->loadQuery ( "SELECT max(idarticulo) as id FROM articulo " );
+    if ( !cur->eof() ) {
+	idarticleold = cur->valor("id");
+    } // end if
+    delete cur;
+    
+    ArticuloView *artlist = new ArticuloView ( ( BfCompany * ) sub->mainCompany(), 0 );
+    /// Esto es convertir un QWidget en un sistema modal de dialogo.
+    sub->setEnabled ( false );
+    artlist->show();
+    while ( !artlist->isHidden() )
+        g_theApp->processEvents();
+    sub->setEnabled ( true );
+    delete artlist;
+
+    cur = sub->mainCompany() ->loadQuery ( "SELECT * FROM articulo ORDER BY idarticulo DESC LIMIT 1" );
+    if ( !cur->eof() ) {
+	if (cur->valor("idarticulo") != idarticleold) {
+	  sub->lineaact()->setDbValue ( "idarticulo", cur->valor("idarticulo") );
+	  sub->lineaact()->setDbValue ( "codigocompletoarticulo", cur->valor ( "codigocompletoarticulo" ) );
+	  sub->lineaact()->setDbValue ( "nomarticulo", cur->valor ( "nomarticulo" ) );
+	} // end if
+    } // end if
+    delete cur;
     _depura ( "END MyPlugArt1::editarArticulo", 0 );
 }
 
@@ -447,6 +474,9 @@ void MyPlugArt1::seleccionarArticulo ( BfSubForm *sub )
 {
     _depura ( "MyPlugArt1::editarArticulo", 0 );
 
+    if (!sub) sub= (BfSubForm *) parent();
+    
+    
     ArticuloList *artlist = new ArticuloList ( ( BfCompany * ) sub->mainCompany(), NULL, 0, BL_SELECT_MODE );
     /// Esto es convertir un QWidget en un sistema modal de dialogo.
     sub->setEnabled ( false );
@@ -490,6 +520,66 @@ int BlSubForm_BlSubForm_Post ( BlSubForm *sub )
     return 0;
 }
 
+
+
+
+/// Miramos de poner los iconos del menu de subformularios
+///
+/**
+\param sub
+\return
+**/
+int BlSubForm_preparaMenu ( BlSubForm *sub ) {
+    _depura ( "BlSubForm_preparaMenu", 0 );
+
+
+    BlSubFormHeader *header = sub->header ( "codigocompletoarticulo" );
+    if ( header ) {
+//        menu->addSeparator();
+//        menu->addAction ( _ ( "Nuevo articulo" ) );
+	MyPlugArt1 *subformods = new MyPlugArt1 ( sub );
+	
+	QHBoxLayout *m_hboxLayout1 = sub->mui_menusubform->findChild<QHBoxLayout *> ( "hboxLayout1" );
+	if ( !m_hboxLayout1 ) {
+	    m_hboxLayout1 = new QHBoxLayout ( sub->mui_menusubform );
+	    m_hboxLayout1->setSpacing (0 );
+	    m_hboxLayout1->setMargin ( 0 );
+	    m_hboxLayout1->setObjectName ( QString::fromUtf8 ( "hboxLayout1" ) );
+	} // end if
+	
+
+	  QToolButton *sel = new QToolButton ( sub->mui_menusubform );
+	  sel->setStatusTip ( "Nuevo Articulo" );
+	  sel->setToolTip ( "Nuevo Articulo" );
+	  sel->setMinimumSize ( QSize ( 18, 18 ) );
+	  sel->setIcon ( QIcon ( ":/Images/product.png" ) );
+	  sel->setIconSize ( QSize ( 18, 18 ) );    
+	  m_hboxLayout1->addWidget ( sel );
+	  sel->connect (sel, SIGNAL(released()), subformods, SLOT(nuevoArticulo()));
+	
+	  QToolButton *sel1 = new QToolButton ( sub->mui_menusubform );
+	  sel1->setStatusTip ( "Seleccionar Articulo" );
+	  sel1->setToolTip ( "Seleccionar Articulo" );
+	  sel1->setMinimumSize ( QSize ( 18, 18 ) );
+	  sel1->setIcon ( QIcon ( ":/Images/product-list.png" ) );
+	  sel1->setIconSize ( QSize ( 18, 18 ) );    
+	  m_hboxLayout1->addWidget ( sel1 );
+	  sel1->connect (sel1, SIGNAL(released()), subformods, SLOT(seleccionarArticulo()));
+	
+/*	
+        QString idarticulo = sub->dbValue ( "idarticulo" );
+        if ( idarticulo != "" ) menu->addAction ( _ ( "Editar articulo" ) );
+        if ( ! ( header->options() & BlSubFormHeader::DbNoWrite ) )  {
+            menu->addAction ( _ ( "Seleccionar articulo" ) );
+        } // end if
+*/
+    } // end if
+    
+
+    _depura ( "END BlSubForm_preparaMenu", 0 );
+    return 0;
+}
+/// Terminamos el tema de iconos en el menu de subformulario
 
 int BlSubFormDelegate_createEditor ( BlSubFormDelegate *bl )
 {

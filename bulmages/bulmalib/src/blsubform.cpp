@@ -2975,6 +2975,7 @@ void BlSubForm::contextMenuEvent ( QContextMenuEvent * )
     if ( m_delete ) {
         popup->addSeparator();
         del = popup->addAction ( _ ( "Borrar registro" ) );
+	del->setIcon ( QIcon ( ":/Images/delete-line.png" ) );
     } // end if
     popup->addSeparator();
 
