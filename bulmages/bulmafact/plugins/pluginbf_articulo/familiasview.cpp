@@ -76,9 +76,9 @@ FamiliasView::FamiliasView ( BfCompany *comp, QWidget *parent, bool modoConsulta
     if ( modoConsulta ) {
         setModoConsulta();
         groupBox1->hide();
-        mui_detalles->hide();
-        mui_crear->hide();
-        mui_guardar->hide();
+//        mui_detalles->hide();
+//        mui_crear->hide();
+//        mui_guardar->hide();
         mui_borrar->hide();
         mui_cancelar->hide();
         mui_aceptar->hide();
