@@ -433,11 +433,7 @@ void MyPlugArt1::nuevoArticulo( )
     _depura ( "MyPlugArt1::editarArticulo", 0 );
   
     BlSubForm * sub = ( BlSubForm * ) parent();
-/*      ArticuloView * art = new ArticuloView ( ( BfCompany * ) subf->mainCompany(), 0 );
-    subf->mainCompany() ->m_pWorkspace->addWindow ( art );
-    art->hide();
-    art->show();
-*/
+    
     QString idarticleold="0";
     BlDbRecordSet *cur = sub->mainCompany() ->loadQuery ( "SELECT max(idarticulo) as id FROM articulo " );
     if ( !cur->eof() ) {
@@ -531,12 +527,8 @@ int BlSubForm_BlSubForm_Post ( BlSubForm *sub )
 **/
 int BlSubForm_preparaMenu ( BlSubForm *sub ) {
     _depura ( "BlSubForm_preparaMenu", 0 );
-
-
     BlSubFormHeader *header = sub->header ( "codigocompletoarticulo" );
     if ( header ) {
-//        menu->addSeparator();
-//        menu->addAction ( _ ( "Nuevo articulo" ) );
 	MyPlugArt1 *subformods = new MyPlugArt1 ( sub );
 	
 	QHBoxLayout *m_hboxLayout1 = sub->mui_menusubform->findChild<QHBoxLayout *> ( "hboxLayout1" );
@@ -547,7 +539,7 @@ int BlSubForm_preparaMenu ( BlSubForm *sub ) {
 	    m_hboxLayout1->setObjectName ( QString::fromUtf8 ( "hboxLayout1" ) );
 	} // end if
 	
-
+	if ( ! ( header->options() & BlSubFormHeader::DbNoWrite ) )  {
 	  QToolButton *sel = new QToolButton ( sub->mui_menusubform );
 	  sel->setStatusTip ( "Nuevo Articulo" );
 	  sel->setToolTip ( "Nuevo Articulo" );
@@ -565,14 +557,7 @@ int BlSubForm_preparaMenu ( BlSubForm *sub ) {
 	  sel1->setIconSize ( QSize ( 18, 18 ) );    
 	  m_hboxLayout1->addWidget ( sel1 );
 	  sel1->connect (sel1, SIGNAL(released()), subformods, SLOT(seleccionarArticulo()));
-	
-/*	
-        QString idarticulo = sub->dbValue ( "idarticulo" );
-        if ( idarticulo != "" ) menu->addAction ( _ ( "Editar articulo" ) );
-        if ( ! ( header->options() & BlSubFormHeader::DbNoWrite ) )  {
-            menu->addAction ( _ ( "Seleccionar articulo" ) );
-        } // end if
-*/
+	} // end if
     } // end if
     
 
