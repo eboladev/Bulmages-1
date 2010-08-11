@@ -294,11 +294,11 @@ void MyPlugAl1::s_pintaMenu ( QMenu *menu )
 	header = sub->header ( "nombrealumno" );
     if ( header ) {
         menu->addSeparator();
-        menu->addAction ( _ ( "Nuevo alumno" ) );
+        menu->addAction ( QIcon ( ":/ImgGestionAula/icons/alumno.png" ), _ ( "Nuevo alumno" ) );
         QString idalumno = sub->dbValue ( "idalumno" );
-        if ( idalumno != "" ) menu->addAction ( _ ( "Editar alumno" ) );
+        if ( idalumno != "" ) menu->addAction ( QIcon ( ":/ImgGestionAula/icons/alumno.png" ), _ ( "Editar alumno" ) );
         if ( ! ( header->options() & BlSubFormHeader::DbNoWrite ) )  {
-            menu->addAction ( _ ( "Seleccionar alumno" ) );
+            menu->addAction ( QIcon ( ":/ImgGestionAula/icons/alumno-list.png" ), _ ( "Seleccionar alumno" ) );
         } // end if
     } // end if
     _depura ( "END MyPlugAl1::s_pintaMenu", 0 );
@@ -382,7 +382,9 @@ void MyPlugAl1::nuevoAlumno( )
 void MyPlugAl1::seleccionarAlumno ( BfSubForm *sub )
 {
     _depura ( "MyPlugAl1::editarAlumno", 0 );
-
+    
+    if (!sub) sub= (BfSubForm *) parent();
+    
     AlumnosList *artlist = new AlumnosList ( ( BfCompany * ) sub->mainCompany(), NULL, 0, BL_SELECT_MODE );
     /// Esto es convertir un QWidget en un sistema modal de dialogo.
     sub->setEnabled ( false );
@@ -426,6 +428,55 @@ int BlSubForm_BlSubForm_Post ( BlSubForm *sub )
 }
 
 
+
+/// Miramos de poner los iconos del menu de subformularios
+///
+/**
+\param sub
+\return
+**/
+int BlSubForm_preparaMenu ( BlSubForm *sub ) {
+    _depura ( "BlSubForm_preparaMenu", 0 );
+
+    BlSubFormHeader *header = sub->header ( "nombrealumno1" );
+    if (!header) 
+        header = sub->header ( "nombrealumno" );
+    if ( header ) {
+        MyPlugAl1 *subformods = new MyPlugAl1 ( sub );
+        
+        QHBoxLayout *m_hboxLayout1 = sub->mui_menusubform->findChild<QHBoxLayout *> ( "hboxLayout1" );
+        if ( !m_hboxLayout1 ) {
+            m_hboxLayout1 = new QHBoxLayout ( sub->mui_menusubform );
+            m_hboxLayout1->setSpacing (0 );
+            m_hboxLayout1->setMargin ( 0 );
+            m_hboxLayout1->setObjectName ( QString::fromUtf8 ( "hboxLayout1" ) );
+        } // end if
+        
+        if ( ! ( header->options() & BlSubFormHeader::DbNoWrite ) )  {
+          QToolButton *sel = new QToolButton ( sub->mui_menusubform );
+          sel->setStatusTip ( "Nuevo Alumno" );
+          sel->setToolTip ( "Nuevo Alumno" );
+          sel->setMinimumSize ( QSize ( 18, 18 ) );
+          sel->setIcon ( QIcon ( ":/ImgGestionAula/icons/alumno.png" ) );
+          sel->setIconSize ( QSize ( 18, 18 ) );    
+          m_hboxLayout1->addWidget ( sel );
+          sel->connect (sel, SIGNAL(released()), subformods, SLOT(nuevoAlumno()));
+        
+          QToolButton *sel1 = new QToolButton ( sub->mui_menusubform );
+          sel1->setStatusTip ( "Seleccionar Alumno" );
+          sel1->setToolTip ( "Seleccionar Alumno" );
+          sel1->setMinimumSize ( QSize ( 18, 18 ) );
+          sel1->setIcon ( QIcon ( ":/ImgGestionAula/icons/alumno-list.png" ) );
+          sel1->setIconSize ( QSize ( 18, 18 ) );    
+          m_hboxLayout1->addWidget ( sel1 );
+          sel1->connect (sel1, SIGNAL(released()), subformods, SLOT(seleccionarAlumno()));
+        } // end if
+    } // end if
+    
+
+    _depura ( "END BlSubForm_preparaMenu", 0 );
+    return 0;
+}
 
 
 

@@ -34,7 +34,7 @@ extern "C" PLUGINBF_ALUMNO_EXPORT int BfCompany_createMainWindows_Post(BfCompany
 extern "C" PLUGINBF_ALUMNO_EXPORT int BfSubForm_pressedAsterisk(BfSubForm *);
 // extern "C" PLUGINBF_ALUMNO_EXPORT int BlSubForm_BlSubForm_Post ( BlSubForm * );
 extern "C" PLUGINBF_ALUMNO_EXPORT int BlSubForm_BlSubForm_Post ( BlSubForm * );
-
+extern "C" PLUGINBF_ALUMNO_EXPORT int BlSubForm_preparaMenu ( BlSubForm * );
 
 class MyPlugProf : public QObject, BlMainCompanyPointer
 {
@@ -64,11 +64,12 @@ class MyPlugAl1 : public QObject
 public:
     MyPlugAl1 ( BlSubForm * );
     ~MyPlugAl1();
-    void editarAlumno( QString);
-    void nuevoAlumno();
-    void seleccionarAlumno(BfSubForm *);
+
 
 public slots:
+    void editarAlumno( QString);
+    void nuevoAlumno();
+    void seleccionarAlumno(BfSubForm *sub = NULL);
     virtual void s_pintaMenu ( QMenu * );
     virtual void s_trataMenu ( QAction * );
 };
