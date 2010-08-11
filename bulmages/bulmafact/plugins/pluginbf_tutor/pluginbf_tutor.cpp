@@ -367,11 +367,11 @@ void MyPlugTutor1::s_pintaMenu ( QMenu *menu )
     BlSubFormHeader *header = sub->header ( "nomcliente" );
     if ( header ) {
         menu->addSeparator();
-        menu->addAction ( _ ( "Nuevo tutor" ) );
+        menu->addAction (QIcon ( QString::fromUtf8 ( ":/ImgGestionAula/icons/tutor.png" ) ),  _ ( "Nuevo tutor" ) );
         QString idtutor = sub->dbValue ( "idcliente" );
-        if ( idtutor != "" ) menu->addAction ( _ ( "Editar tutor" ) );
+        if ( idtutor != "" ) menu->addAction (QIcon ( QString::fromUtf8 ( ":/ImgGestionAula/icons/tutor.png" ) ),  _ ( "Editar tutor" ) );
         if ( ! ( header->options() & BlSubFormHeader::DbNoWrite ) )  {
-            menu->addAction ( _ ( "Seleccionar tutor" ) );
+            menu->addAction ( QIcon ( QString::fromUtf8 ( ":/ImgGestionAula/icons/tutor-list.png" ) ), _ ( "Seleccionar tutor" ) );
         } // end if
     } // end if
     _depura ( "END MyPlugTutor1::s_pintaMenu", 0 );
@@ -427,13 +427,27 @@ void MyPlugTutor1::editarTutor ( QString idtutor )
 **/
 void MyPlugTutor1::nuevoTutor( )
 {
-    _depura ( "MyPlugTutor1::editarTutor", 0 );
+    _depura ( "MyPlugTutor1::nuevoTutor", 0 );
+    
     BlSubForm * subf = ( BlSubForm * ) parent();
     TutorView * art = new TutorView ( ( BfCompany * ) subf->mainCompany(), 0 );
     subf->mainCompany() ->m_pWorkspace->addWindow ( art );
+    subf->setEnabled(false);
     art->hide();
     art->show();
-    _depura ( "END MyPlugTutor1::editarTutor", 0 );
+    
+    while ( !art->isHidden() )
+        g_theApp->processEvents();
+    subf->setEnabled ( true );
+    QString idCliente = art->dbValue("idcliente");
+    if (idCliente != "") {
+        subf->lineaact()->setDbValue ( "idcliente", idCliente );
+	subf->lineaact()->setDbValue ( "cifcliente", art->dbValue ( "cifcliente" ) );
+        subf->lineaact()->setDbValue ( "nomcliente", art->dbValue ( "nomcliente" ) );      
+    } // end if
+    delete art;  
+    
+    _depura ( "END MyPlugTutor1::nuevoTutor", 0 );
 }
 
 
@@ -443,7 +457,9 @@ void MyPlugTutor1::nuevoTutor( )
 void MyPlugTutor1::seleccionarTutor ( BfSubForm *sub )
 {
     _depura ( "MyPlugTutor1::editarTutor", 0 );
-
+    
+    if (!sub) sub= (BfSubForm *) parent();
+    
     TutoresList *artlist = new TutoresList ( ( BfCompany * ) sub->mainCompany(), NULL, 0, BL_SELECT_MODE );
     /// Esto es convertir un QWidget en un sistema modal de dialogo.
     sub->setEnabled ( false );
@@ -488,4 +504,50 @@ int BlSubForm_BlSubForm_Post ( BlSubForm *sub )
 }
 
 
+/// Miramos de poner los iconos del menu de subformularios
+///
+/**
+\param sub
+\return
+**/
+int BlSubForm_preparaMenu ( BlSubForm *sub ) {
+    _depura ( "BlSubForm_preparaMenu", 0 );
+
+    BlSubFormHeader *header = sub->header ( "cifcliente" );
+    if ( header ) {
+        MyPlugTutor1 *subformods = new MyPlugTutor1 ( sub );
+        
+        QHBoxLayout *m_hboxLayout1 = sub->mui_menusubform->findChild<QHBoxLayout *> ( "hboxLayout1" );
+        if ( !m_hboxLayout1 ) {
+            m_hboxLayout1 = new QHBoxLayout ( sub->mui_menusubform );
+            m_hboxLayout1->setSpacing (0 );
+            m_hboxLayout1->setMargin ( 0 );
+            m_hboxLayout1->setObjectName ( QString::fromUtf8 ( "hboxLayout1" ) );
+        } // end if
+        
+        if ( ! ( header->options() & BlSubFormHeader::DbNoWrite ) )  {
+          QToolButton *sel = new QToolButton ( sub->mui_menusubform );
+          sel->setStatusTip ( "Nuevo Tutor" );
+          sel->setToolTip ( "Nuevo Tutor" );
+          sel->setMinimumSize ( QSize ( 18, 18 ) );
+          sel->setIcon ( QIcon ( QString::fromUtf8 ( ":/ImgGestionAula/icons/tutor.png" ) ));
+          sel->setIconSize ( QSize ( 18, 18 ) );    
+          m_hboxLayout1->addWidget ( sel );
+          sel->connect (sel, SIGNAL(released()), subformods, SLOT(nuevoTutor()));
+        
+          QToolButton *sel1 = new QToolButton ( sub->mui_menusubform );
+          sel1->setStatusTip ( "Seleccionar Tutor" );
+          sel1->setToolTip ( "Seleccionar Tutor" );
+          sel1->setMinimumSize ( QSize ( 18, 18 ) );
+          sel1->setIcon ( QIcon ( QString::fromUtf8 ( ":/ImgGestionAula/icons/tutor-list.png" ) ) );
+          sel1->setIconSize ( QSize ( 18, 18 ) );    
+          m_hboxLayout1->addWidget ( sel1 );
+          sel1->connect (sel1, SIGNAL(released()), subformods, SLOT(seleccionarTutor()));
+        } // end if
+    } // end if
+    
+
+    _depura ( "END BlSubForm_preparaMenu", 0 );
+    return 0;
+}
 

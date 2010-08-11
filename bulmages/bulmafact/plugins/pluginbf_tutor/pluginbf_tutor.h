@@ -67,11 +67,12 @@ class MyPlugTutor1 : public QObject
 public:
     MyPlugTutor1 ( BlSubForm * );
     ~MyPlugTutor1();
-    void editarTutor( QString);
-    void nuevoTutor();
-    void seleccionarTutor(BfSubForm *);
+
 
 public slots:
+    void editarTutor( QString);
+    void nuevoTutor();
+    void seleccionarTutor(BfSubForm *sub=NULL);
     virtual void s_pintaMenu ( QMenu * );
     virtual void s_trataMenu ( QAction * );
 };
