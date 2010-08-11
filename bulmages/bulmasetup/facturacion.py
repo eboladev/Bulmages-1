@@ -119,31 +119,31 @@ class Facturacion(Ui_ModificarFacturacionBase, Empresa):
 
       # Copiamos los archivos genericos
       # Copiamos las plantillas
-      self.string = "cp /usr/local/share/bulmages/openreports/informereferencia.rml" +  " /opt/bulmages/openreports_" + self.database
+      self.string = "cp " + plugins.confopenreports + "informereferencia.rml" +  " /opt/bulmages/openreports_" + self.database
       self.writecommand(self.string)
       self.process.start(self.string)
       self.process.waitForFinished(-1)
-      self.string = "cp /usr/local/share/bulmages/openreports/plantilla.rml" +  " /opt/bulmages/openreports_" + self.database
+      self.string = "cp " + plugins.confopenreports + "plantilla.rml" +  " /opt/bulmages/openreports_" + self.database
       self.writecommand(self.string)
       self.process.start(self.string)
       self.process.waitForFinished(-1)
-      self.string = "cp /usr/local/share/bulmages/openreports/plantilla1.rml" +  " /opt/bulmages/openreports_" + self.database
+      self.string = "cp " + plugins.confopenreports + "plantilla1.rml" +  " /opt/bulmages/openreports_" + self.database
       self.writecommand(self.string)
       self.process.start(self.string)
       self.process.waitForFinished(-1)
-      self.string = "cp /usr/local/share/bulmages/openreports/estilos.rml" +  " /opt/bulmages/openreports_" + self.database
+      self.string = "cp " + plugins.confopenreports + "estilos.rml" +  " /opt/bulmages/openreports_" + self.database
       self.writecommand(self.string)
       self.process.start(self.string)
       self.process.waitForFinished(-1)
-      self.string = "cp /usr/local/share/bulmages/openreports/listado.rml" +  " /opt/bulmages/openreports_" + self.database
+      self.string = "cp " + plugins.confopenreports + "listado.rml" +  " /opt/bulmages/openreports_" + self.database
       self.writecommand(self.string)
       self.process.start(self.string)
       self.process.waitForFinished(-1)
-      self.string = "cp /usr/local/share/bulmages/openreports/logo.jpg" +  " /opt/bulmages/openreports_" + self.database
+      self.string = "cp " + plugins.confopenreports + "logo.jpg" +  " /opt/bulmages/openreports_" + self.database
       self.writecommand(self.string)
       self.process.start(self.string)
       self.process.waitForFinished(-1)
-      self.string = "cp /usr/local/share/bulmages/openreports/ficha.rml" +  " /opt/bulmages/openreports_" + self.database
+      self.string = "cp " + plugins.confopenreports + "ficha.rml" +  " /opt/bulmages/openreports_" + self.database
       self.writecommand(self.string)
       self.process.start(self.string)
       self.process.waitForFinished(-1)
@@ -165,7 +165,7 @@ class Facturacion(Ui_ModificarFacturacionBase, Empresa):
 	    self.j = 0
 	    while (self.j < len ( self.arra)):
 	      # Copiamos las plantillas
-	      self.string = "cp /usr/local/share/bulmages/openreports/" +self.arra[self.j] + " /opt/bulmages/openreports_" + self.database
+	      self.string = "cp " + plugins.confopenreports + self.arra[self.j] + " /opt/bulmages/openreports_" + self.database
 	      self.writecommand(self.string)
 	      self.process.start(self.string)
 	      self.process.waitForFinished(-1)
@@ -189,7 +189,7 @@ class Facturacion(Ui_ModificarFacturacionBase, Empresa):
 	    self.j = 0
 	    while (self.j < len ( self.arra)):
 	      # Copiamos las plantillas
-	      self.string = "cp /usr/local/share/bulmages/openreports/" + self.arra[self.j] + " /opt/bulmages/openreports_" + self.database
+	      self.string = "cp " + plugins.confopenreports + self.arra[self.j] + " /opt/bulmages/openreports_" + self.database
 	      self.writecommand(self.string)
 	      self.process.start(self.string)
 	      self.process.waitForFinished(-1)

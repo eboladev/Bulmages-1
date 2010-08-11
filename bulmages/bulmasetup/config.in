@@ -13,7 +13,7 @@ plugins.pathdbparches = '@CMAKE_INSTALL_PREFIX@/share/bulmages/dbmodels/actualiz
 plugins.pathdbplugins = '@CMAKE_INSTALL_PREFIX@/share/bulmages/dbmodels/plugins/'
 plugins.configfiles = '@BULMAGES_CONFIG_DIR@/'
 plugins.confsharebulmages = '@CMAKE_INSTALL_PREFIX@/share/bulmages/'
-
+plugins.confopenreports = '@CMAKE_INSTALL_PREFIX@/share/bulmages/openreports/'
 
 # Variables para la version de desarrollo
 #sys.path.append('/home/talvarez/bulmages/trunk/bulmages/bulmasetup')
