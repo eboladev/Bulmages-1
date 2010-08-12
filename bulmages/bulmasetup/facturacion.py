@@ -112,6 +112,8 @@ class Facturacion(Ui_ModificarFacturacionBase, Empresa):
       self.process.start(self.string)
       self.process.waitForFinished(-1)
 
+
+
       # Hacemos un backup de openreports
       self.string = "cp -R /opt/bulmages/openreports_" + self.database + " /opt/bulmages/openreports_" + self.database + "_old"
       self.process.start(self.string)
@@ -215,22 +217,32 @@ class Facturacion(Ui_ModificarFacturacionBase, Empresa):
       self.out = QTextStream(self.file)
       
       # Leemos las lineas iniciales (hasta el parametro deseado) y las ponemos de nuevo.
+      self.encontradoopenreports  = 0;
+      self.encontradoarticles = 0;
       self.text = self.vin.readLine()
-      while (not (self.text.isNull()) and not(self.text.contains("CONF_DIR_OPENREPORTS")) ):
+      while (not (self.text.isNull())):
+	# and not(self.text.contains("CONF_DIR_OPENREPORTS")) ):
+	if (self.text.contains("CONF_DIR_OPENREPORTS")):
+	  # Escribimos el parametro como lo deseamos
+	  #self.out << "\n\nCONF_DIR_OPENREPORTS /opt/bulmages/openreports_" + self.database +"/\n\n"
+	  self.encontradoopenreports = 1;
+
+	if (self.text.contains("CONF_DIR_IMG_ARTICLES")):
+	  # Escribimos el parametro como lo deseamos
+	  #self.out << "\n\nCONF_DIR_IMG_ARTICLES /opt/bulmages/imgarticles_" + self.database +"/\n\n"
+	  self.encontradoarticles = 1;
+
         self.out << self.text << "\n"
         self.text = self.vin.readLine()
 
-      # Escribimos el parametro como lo deseamos
-      self.out << "\n\nCONF_DIR_OPENREPORTS /opt/bulmages/openreports_" + self.database +"/\n\n"
-
-
-      # Terminamos de poner el resto de las linea.
-      if (not (self.text.isNull()) ):
-        self.text = self.vin.readLine()
-      while (not (self.text.isNull()) ):
-        self.out << self.text << "\n"
-        self.text = self.vin.readLine()
-        
+      if (self.encontradoopenreports == 0):
+	  # Escribimos el parametro como lo deseamos
+	  self.out << "\n\nCONF_DIR_OPENREPORTS /opt/bulmages/openreports_" + self.database +"/\n\n"
+	
+      if (self.encontradoarticles == 0):
+	  # Escribimos el parametro como lo deseamos
+	  self.out << "\n\nCONF_DIR_IMG_ARTICLES /opt/bulmages/imgarticles_" + self.database +"/\n\n"
+	      
       # Cerramos los ficheros.
       self.file.close()
       self.file1.close()
@@ -248,6 +260,12 @@ class Facturacion(Ui_ModificarFacturacionBase, Empresa):
       self.process.start(self.string)
       self.process.waitForFinished(-1)
       #self.writecommand(self.process.readAllStandardOutput())
+
+      # Creamos el directorio especifico para guardar las imagenes
+      self.string = "mkdir -p -m 777 /opt/bulmages/imgarticles_" + self.database 
+      self.process.start(self.string)
+      self.process.waitForFinished(-1)
+
 
       # Hacemos un backup del archivo
       self.string = "cp " + plugins.configfiles + "bulmafact_" + self.database + ".conf " + plugins.configfiles + "bulmafact_" + self.database + ".conf~ "
@@ -377,9 +395,33 @@ class Facturacion(Ui_ModificarFacturacionBase, Empresa):
         self.out << "\n"
         
         # Terminamos de poner el resto de las linea.
-        while (not (self.text.isNull()) ):
-          self.out << self.text << "\n"
-          self.text = self.vin.readLine()
+#        while (not (self.text.isNull()) ):
+#          self.out << self.text << "\n"
+#          self.text = self.vin.readLine()
+
+
+
+	# Leemos las lineas iniciales (hasta el parametro deseado) y las ponemos de nuevo.
+	self.encontradoarticles = 0;
+	self.text = self.vin.readLine()
+	while (not (self.text.isNull())):
+
+
+	  if (self.text.contains("CONF_DIR_THUMB_ARTICLES")):
+	    # Escribimos el parametro como lo deseamos
+	    self.out << "\n\nCONF_DIR_IMG_ARTICLES /opt/bulmages/imgarticles_" + self.database +"/\n\n"
+	    self.encontradoarticles = 1;
+
+	  self.out << self.text << "\n"
+	  self.text = self.vin.readLine()
+
+
+	if (self.encontradoarticles == 0):
+	    # Escribimos el parametro como lo deseamos
+	    self.out << "\n\nCONF_DIR_THUMB_ARTICLES /opt/bulmages/imgarticles_" + self.database +"/\n\n"
+	    
+
+
 
         self.file.close()
         self.file1.close()
