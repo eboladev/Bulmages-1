@@ -82,11 +82,11 @@
 	<file alias="iconbulmatpv.svg">images/oxygen/applications/iconbulmatpv.svg</file>
 	<file alias="iconbulmages.svg">images/oxygen/applications/iconbulmages.svg</file>
 	<file alias="iconbulmacont.svg">images/oxygen/applications/iconbulmacont.svg</file>
-        <file alias="delete-line.png">images/oxygen/actions/48x48/delete-line.png</file>
-        <file alias="adjustrow.png">images/oxygen/actions/48x48/adjustrow.png</file>
-        <file alias="adjustrows.png">images/oxygen/actions/48x48/adjustrows.png</file>
-        <file alias="adjustfile.png">images/oxygen/actions/48x48/adjustfile.png</file>
-        <file alias="adjustfiles.png">images/oxygen/actions/48x48/adjustfiles.png</file>
+        <file alias="delete-line.png">images/oxygen/actions/48x48/delete-one-line.png</file>
+        <file alias="adjust-one-row.png">images/oxygen/actions/48x48/adjust-one-row.png</file>
+        <file alias="adjust-all-rows.png">images/oxygen/actions/48x48/adjust-all-rows.png</file>
+        <file alias="adjust-one-line.png">images/oxygen/actions/48x48/adjust-one-line.png</file>
+        <file alias="adjust-all-lines.png">images/oxygen/actions/48x48/adjust-all-lines.png</file>
         <file alias="toggleconfig.png">images/oxygen/actions/48x48/toggleconfig.png</file>
         <file alias="togglemenu.png">images/oxygen/actions/48x48/togglemenu.png</file>
         <file alias="exportods.png">images/oxygen/actions/48x48/exportods.png</file>
