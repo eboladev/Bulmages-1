@@ -1,4 +1,4 @@
-/***************************************************************************
+OF/***************************************************************************
  *   Copyright (C) 2005 by Tomeu Borras Riera                              *
  *   tborras@conetxia.com                                                  *
  *   Copyright (C) 2010 by Aron Galdon                                     *
@@ -2893,7 +2893,7 @@ void BlSubForm::preparaMenu() {
       sel->setStatusTip ( "Generar Q19" );
       sel->setToolTip ( "Borrar Linea" );
       sel->setMinimumSize ( QSize ( 18, 18 ) );
-      sel->setIcon ( QIcon ( ":/Images/delete-line.png" ) );
+      sel->setIcon ( QIcon ( ":/Images/delete-one-line.png" ) );
       sel->setIconSize ( QSize ( 18, 18 ) );    
       m_hboxLayout1->addWidget ( sel );
       connect (sel, SIGNAL(released()), this, SLOT(borrarLineaActual()));
@@ -2904,7 +2904,7 @@ void BlSubForm::preparaMenu() {
     sel1->setStatusTip ( "Ajustar Columnas" );
     sel1->setToolTip ( "Ajustar Columnas" );
     sel1->setMinimumSize ( QSize ( 18, 18 ) );
-    sel1->setIcon ( QIcon ( ":/Images/adjustrows.png" ) );
+    sel1->setIcon ( QIcon ( ":/Images/adjust-all-rows.png" ) );
     sel1->setIconSize ( QSize ( 18, 18 ) );    
     m_hboxLayout1->addWidget ( sel1 );    
     connect (sel1, SIGNAL(released()), this, SLOT(resizeColumnsToContents()));    
@@ -2914,7 +2914,7 @@ void BlSubForm::preparaMenu() {
     sel2->setStatusTip ( "Ajustar Filas" );
     sel2->setToolTip ( "Ajustar Filas" );
     sel2->setMinimumSize ( QSize ( 18, 18 ) );
-    sel2->setIcon ( QIcon ( ":/Images/adjustfiles.png" ) );
+    sel2->setIcon ( QIcon ( ":/Images/adjust-one-line.png" ) );
     sel2->setIconSize ( QSize ( 18, 18 ) );    
     m_hboxLayout1->addWidget ( sel2 );    
     connect (sel2, SIGNAL(released()), this, SLOT(resizeRowsToContents()));   
@@ -2975,19 +2975,19 @@ void BlSubForm::contextMenuEvent ( QContextMenuEvent * )
     if ( m_delete ) {
         popup->addSeparator();
         del = popup->addAction ( _ ( "Borrar registro" ) );
-	del->setIcon ( QIcon ( ":/Images/delete-line.png" ) );
+	del->setIcon ( QIcon ( ":/Images/delete-one-line.png" ) );
     } // end if
     popup->addSeparator();
 
     QAction *ajustc = popup->addAction ( _ ( "Ajustar columa" ) );
-    ajustc->setIcon ( QIcon ( ":/Images/adjustrow.png" ) );
+    ajustc->setIcon ( QIcon ( ":/Images/adjust-one-row.png" ) );
     QAction *ajustac = popup->addAction ( _ ( "Ajustar altura" ) );
-    ajustac->setIcon ( QIcon ( ":/Images/adjustfile.png" ) );
+    ajustac->setIcon ( QIcon ( ":/Images/adjust-one-line.png" ) );
     
     QAction *ajust = popup->addAction ( _ ( "Ajustar columnas" ) );
-    ajust->setIcon ( QIcon ( ":/Images/adjustrows.png" ) );
+    ajust->setIcon ( QIcon ( ":/Images/adjust-all-rows.png" ) );
     QAction *ajusta = popup->addAction ( _ ( "Ajustar alturas" ) );
-    ajusta->setIcon ( QIcon ( ":/Images/adjustfiles.png" ) );
+    ajusta->setIcon ( QIcon ( ":/Images/adjust-all-lines.png" ) );
 
     popup->addSeparator();
     QAction *menuconfig = popup->addAction ( _ ( "Ver/Ocultar menu de subformulario" ) );
