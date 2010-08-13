@@ -1,0 +1,218 @@
+<?xml version="1.0" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 20010904//EN" "http://www.w3.org/TR/2001/REC-SVG-20010904/DTD/svg10.dtd">
+<!-- Created using Karbon14, part of koffice: http://www.koffice.org/karbon -->
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="102.4pt" height="102.4pt">
+  <defs>
+    <filter id="defitem0" filterUnits="objectBoundingBox" primitiveUnits="objectBoundingBox" x="-0.10000000000" y="-0.10000000000" width="1.20000000000" height="1.20000000000">
+     <feGaussianBlur result="" in="" x="-0.10000000000" y="-0.10000000000" width="1.20000000000" height="1.20000000000" stdDeviation="0.0411409, 0.0231991"/>
+    </filter>
+    <radialGradient id="defitem1" gradientUnits="userSpaceOnUse" gradientTransform="matrix(1 0 0 0.999665 -17 -8.99699)" cx="102" cy="112.305" fx="8.26451" fy="9.09945" r="139.559" spreadMethod="pad" >
+      <stop stop-color="#b7b8b9" offset="0" stop-opacity="1" />
+      <stop stop-color="#ececec" offset="0.18851" stop-opacity="1" />
+      <stop stop-color="#fafafa" offset="0.257181" stop-opacity="1" />
+      <stop stop-color="#ffffff" offset="0.301113" stop-opacity="1" />
+      <stop stop-color="#fafafa" offset="0.5313" stop-opacity="1" />
+      <stop stop-color="#ebecec" offset="0.8449" stop-opacity="1" />
+      <stop stop-color="#e1e2e3" offset="1" stop-opacity="1" />
+    </radialGradient>
+    <linearGradient id="defitem2" gradientUnits="userSpaceOnUse" gradientTransform="translate(-151, -172)" x1="153" y1="175.557" x2="153" y2="172.444" spreadMethod="pad" >
+      <stop stop-color="#ffffff" offset="0" stop-opacity="1" />
+      <stop stop-color="#dddddd" offset="1" stop-opacity="1" />
+    </linearGradient>
+    <linearGradient id="defitem3" gradientUnits="userSpaceOnUse" gradientTransform="translate(-151.444, -172.444)" x1="154.101" y1="175.101" x2="151.9" y2="172.901" spreadMethod="pad" >
+      <stop stop-color="#bbbbbb" offset="0" stop-opacity="1" />
+      <stop stop-color="#616161" offset="1" stop-opacity="1" />
+    </linearGradient>
+    <linearGradient id="defitem4" gradientUnits="userSpaceOnUse" gradientTransform="translate(-151, -164)" x1="153" y1="167.557" x2="153" y2="164.444" spreadMethod="pad" >
+      <stop stop-color="#ffffff" offset="0" stop-opacity="1" />
+      <stop stop-color="#dddddd" offset="1" stop-opacity="1" />
+    </linearGradient>
+    <linearGradient id="defitem5" gradientUnits="userSpaceOnUse" gradientTransform="translate(-151.444, -164.444)" x1="154.101" y1="167.101" x2="151.9" y2="164.9" spreadMethod="pad" >
+      <stop stop-color="#bbbbbb" offset="0" stop-opacity="1" />
+      <stop stop-color="#616161" offset="1" stop-opacity="1" />
+    </linearGradient>
+    <linearGradient id="defitem6" gradientUnits="userSpaceOnUse" gradientTransform="translate(-151, -156)" x1="153" y1="159.557" x2="153" y2="156.444" spreadMethod="pad" >
+      <stop stop-color="#ffffff" offset="0" stop-opacity="1" />
+      <stop stop-color="#dddddd" offset="1" stop-opacity="1" />
+    </linearGradient>
+    <linearGradient id="defitem7" gradientUnits="userSpaceOnUse" gradientTransform="translate(-151.444, -156.444)" x1="154.101" y1="159.101" x2="151.9" y2="156.9" spreadMethod="pad" >
+      <stop stop-color="#bbbbbb" offset="0" stop-opacity="1" />
+      <stop stop-color="#616161" offset="1" stop-opacity="1" />
+    </linearGradient>
+    <linearGradient id="defitem8" gradientUnits="userSpaceOnUse" gradientTransform="translate(-151, -148)" x1="153" y1="151.557" x2="153" y2="148.444" spreadMethod="pad" >
+      <stop stop-color="#ffffff" offset="0" stop-opacity="1" />
+      <stop stop-color="#dddddd" offset="1" stop-opacity="1" />
+    </linearGradient>
+    <linearGradient id="defitem9" gradientUnits="userSpaceOnUse" gradientTransform="translate(-151.444, -148.444)" x1="154.101" y1="151.101" x2="151.9" y2="148.9" spreadMethod="pad" >
+      <stop stop-color="#bbbbbb" offset="0" stop-opacity="1" />
+      <stop stop-color="#616161" offset="1" stop-opacity="1" />
+    </linearGradient>
+    <linearGradient id="defitem10" gradientUnits="userSpaceOnUse" gradientTransform="translate(-151, -140)" x1="153" y1="143.557" x2="153" y2="140.444" spreadMethod="pad" >
+      <stop stop-color="#ffffff" offset="0" stop-opacity="1" />
+      <stop stop-color="#dddddd" offset="1" stop-opacity="1" />
+    </linearGradient>
+    <linearGradient id="defitem11" gradientUnits="userSpaceOnUse" gradientTransform="translate(-151.444, -140.444)" x1="154.101" y1="143.101" x2="151.9" y2="140.9" spreadMethod="pad" >
+      <stop stop-color="#bbbbbb" offset="0" stop-opacity="1" />
+      <stop stop-color="#616161" offset="1" stop-opacity="1" />
+    </linearGradient>
+    <linearGradient id="defitem12" gradientUnits="userSpaceOnUse" gradientTransform="translate(-151, -132)" x1="153" y1="135.557" x2="153" y2="132.444" spreadMethod="pad" >
+      <stop stop-color="#ffffff" offset="0" stop-opacity="1" />
+      <stop stop-color="#dddddd" offset="1" stop-opacity="1" />
+    </linearGradient>
+    <linearGradient id="defitem13" gradientUnits="userSpaceOnUse" gradientTransform="translate(-151.444, -132.444)" x1="154.101" y1="135.101" x2="151.9" y2="132.9" spreadMethod="pad" >
+      <stop stop-color="#bbbbbb" offset="0" stop-opacity="1" />
+      <stop stop-color="#616161" offset="1" stop-opacity="1" />
+    </linearGradient>
+    <linearGradient id="defitem14" gradientUnits="userSpaceOnUse" gradientTransform="translate(-151, -124)" x1="153" y1="127.557" x2="153" y2="124.444" spreadMethod="pad" >
+      <stop stop-color="#ffffff" offset="0" stop-opacity="1" />
+      <stop stop-color="#dddddd" offset="1" stop-opacity="1" />
+    </linearGradient>
+    <linearGradient id="defitem15" gradientUnits="userSpaceOnUse" gradientTransform="translate(-151.444, -124.444)" x1="154.101" y1="127.101" x2="151.9" y2="124.9" spreadMethod="pad" >
+      <stop stop-color="#bbbbbb" offset="0" stop-opacity="1" />
+      <stop stop-color="#616161" offset="1" stop-opacity="1" />
+    </linearGradient>
+    <linearGradient id="defitem16" gradientUnits="userSpaceOnUse" gradientTransform="translate(-151, -116)" x1="153" y1="119.557" x2="153" y2="116.444" spreadMethod="pad" >
+      <stop stop-color="#ffffff" offset="0" stop-opacity="1" />
+      <stop stop-color="#dddddd" offset="1" stop-opacity="1" />
+    </linearGradient>
+    <linearGradient id="defitem17" gradientUnits="userSpaceOnUse" gradientTransform="translate(-151.444, -116.444)" x1="154.101" y1="119.101" x2="151.9" y2="116.9" spreadMethod="pad" >
+      <stop stop-color="#bbbbbb" offset="0" stop-opacity="1" />
+      <stop stop-color="#616161" offset="1" stop-opacity="1" />
+    </linearGradient>
+    <linearGradient id="defitem18" gradientUnits="userSpaceOnUse" gradientTransform="translate(-151, -108)" x1="153" y1="111.557" x2="153" y2="108.444" spreadMethod="pad" >
+      <stop stop-color="#ffffff" offset="0" stop-opacity="1" />
+      <stop stop-color="#dddddd" offset="1" stop-opacity="1" />
+    </linearGradient>
+    <linearGradient id="defitem19" gradientUnits="userSpaceOnUse" gradientTransform="translate(-151.444, -108.444)" x1="154.101" y1="111.101" x2="151.9" y2="108.9" spreadMethod="pad" >
+      <stop stop-color="#bbbbbb" offset="0" stop-opacity="1" />
+      <stop stop-color="#616161" offset="1" stop-opacity="1" />
+    </linearGradient>
+    <linearGradient id="defitem20" gradientUnits="userSpaceOnUse" gradientTransform="translate(-151, -100)" x1="153" y1="103.557" x2="153" y2="100.444" spreadMethod="pad" >
+      <stop stop-color="#ffffff" offset="0" stop-opacity="1" />
+      <stop stop-color="#dddddd" offset="1" stop-opacity="1" />
+    </linearGradient>
+    <linearGradient id="defitem21" gradientUnits="userSpaceOnUse" gradientTransform="translate(-151.444, -100.444)" x1="154.101" y1="103.101" x2="151.9" y2="100.9" spreadMethod="pad" >
+      <stop stop-color="#bbbbbb" offset="0" stop-opacity="1" />
+      <stop stop-color="#616161" offset="1" stop-opacity="1" />
+    </linearGradient>
+    <linearGradient id="defitem22" gradientUnits="userSpaceOnUse" gradientTransform="translate(-151, -92)" x1="153" y1="95.5566" x2="153" y2="92.4442" spreadMethod="pad" >
+      <stop stop-color="#ffffff" offset="0" stop-opacity="1" />
+      <stop stop-color="#dddddd" offset="1" stop-opacity="1" />
+    </linearGradient>
+    <linearGradient id="defitem23" gradientUnits="userSpaceOnUse" gradientTransform="translate(-151.444, -92.444)" x1="154.101" y1="95.1006" x2="151.9" y2="92.9005" spreadMethod="pad" >
+      <stop stop-color="#bbbbbb" offset="0" stop-opacity="1" />
+      <stop stop-color="#616161" offset="1" stop-opacity="1" />
+    </linearGradient>
+    <linearGradient id="defitem24" gradientUnits="userSpaceOnUse" gradientTransform="translate(-151, -84)" x1="153" y1="87.5566" x2="153" y2="84.4442" spreadMethod="pad" >
+      <stop stop-color="#ffffff" offset="0" stop-opacity="1" />
+      <stop stop-color="#dddddd" offset="1" stop-opacity="1" />
+    </linearGradient>
+    <linearGradient id="defitem25" gradientUnits="userSpaceOnUse" gradientTransform="translate(-151.444, -84.444)" x1="154.101" y1="87.1006" x2="151.9" y2="84.9005" spreadMethod="pad" >
+      <stop stop-color="#bbbbbb" offset="0" stop-opacity="1" />
+      <stop stop-color="#616161" offset="1" stop-opacity="1" />
+    </linearGradient>
+    <linearGradient id="defitem26" gradientUnits="userSpaceOnUse" gradientTransform="translate(-151, -76)" x1="153" y1="79.5566" x2="153" y2="76.4442" spreadMethod="pad" >
+      <stop stop-color="#ffffff" offset="0" stop-opacity="1" />
+      <stop stop-color="#dddddd" offset="1" stop-opacity="1" />
+    </linearGradient>
+    <linearGradient id="defitem27" gradientUnits="userSpaceOnUse" gradientTransform="translate(-151.444, -76.444)" x1="154.101" y1="79.1006" x2="151.9" y2="76.9005" spreadMethod="pad" >
+      <stop stop-color="#bbbbbb" offset="0" stop-opacity="1" />
+      <stop stop-color="#616161" offset="1" stop-opacity="1" />
+    </linearGradient>
+    <linearGradient id="defitem28" gradientUnits="userSpaceOnUse" gradientTransform="matrix(1 0 0 11.8498 -16 -241.938)" x1="28" y1="24.4585" x2="16" y2="24.4585" spreadMethod="pad" >
+      <stop stop-color="#a3c8ff" offset="0" stop-opacity="1" />
+      <stop stop-color="#bfd9ff" offset="1" stop-opacity="1" />
+    </linearGradient>
+  </defs>
+  <g id="layer1">
+    <path id="path7865" fill="#000000" fill-opacity="1" fill-rule="nonzero" filter="url(#defitem0)" d="M0 0L0 112C0 112 63.1562 112 63.1562 112L55.8514 112L57.2234 0Z"  transform="matrix(1.04167 0 0 1.02679 64.2175 6.18124)" />
+    <path id="path34" fill="#ffffff" fill-opacity="1" fill-rule="nonzero" d="M0 1.77636e-15L0 112C0 112 57.688 112 57.688 112L58.8827 0Z"  transform="translate(66.7244, 8.44856)" />
+    <path id="path59" fill="url(#defitem1)" fill-rule="nonzero" d="M1 0C0.449 0 0 0.44885 0 0.99966L0 108.964C0 109.515 0.449 109.963 1 109.963L57.4428 109.963L57.7015 0.99966L56.7015 1.59872e-14Z"  transform="translate(67.7244, 9.44857)" />
+    <g id="g89" transform="translate(70.7244, 112.449)">
+      <circle id="circle96" r="1.6pt" cx="1.6pt" cy="1.6pt" fill="url(#defitem2)" fill-rule="nonzero"/>
+      <circle id="circle103" r="1.2448pt" cx="1.2448pt" cy="1.2448pt" transform="translate(0.444, 0.444)" fill="url(#defitem3)" fill-rule="nonzero"/>
+    </g>
+    <g id="g105" transform="translate(70.7244, 104.449)">
+      <circle id="circle112" r="1.6pt" cx="1.6pt" cy="1.6pt" fill="url(#defitem4)" fill-rule="nonzero"/>
+      <circle id="circle119" r="1.2448pt" cx="1.2448pt" cy="1.2448pt" transform="translate(0.444, 0.444)" fill="url(#defitem5)" fill-rule="nonzero"/>
+    </g>
+    <g id="g121" transform="translate(70.7244, 96.4486)">
+      <circle id="circle128" r="1.6pt" cx="1.6pt" cy="1.6pt" fill="url(#defitem6)" fill-rule="nonzero"/>
+      <circle id="circle135" r="1.2448pt" cx="1.2448pt" cy="1.2448pt" transform="translate(0.444, 0.444)" fill="url(#defitem7)" fill-rule="nonzero"/>
+    </g>
+    <g id="g137" transform="translate(70.7244, 88.4486)">
+      <circle id="circle144" r="1.6pt" cx="1.6pt" cy="1.6pt" fill="url(#defitem8)" fill-rule="nonzero"/>
+      <circle id="circle151" r="1.2448pt" cx="1.2448pt" cy="1.2448pt" transform="translate(0.444, 0.444)" fill="url(#defitem9)" fill-rule="nonzero"/>
+    </g>
+    <g id="g153" transform="translate(70.7244, 80.4486)">
+      <circle id="circle160" r="1.6pt" cx="1.6pt" cy="1.6pt" fill="url(#defitem10)" fill-rule="nonzero"/>
+      <circle id="circle167" r="1.2448pt" cx="1.2448pt" cy="1.2448pt" transform="translate(0.444, 0.444)" fill="url(#defitem11)" fill-rule="nonzero"/>
+    </g>
+    <g id="g169" transform="translate(70.7244, 72.4486)">
+      <circle id="circle176" r="1.6pt" cx="1.6pt" cy="1.6pt" fill="url(#defitem12)" fill-rule="nonzero"/>
+      <circle id="circle183" r="1.2448pt" cx="1.2448pt" cy="1.2448pt" transform="translate(0.444, 0.444)" fill="url(#defitem13)" fill-rule="nonzero"/>
+    </g>
+    <g id="g185" transform="translate(70.7244, 64.4486)">
+      <circle id="circle192" r="1.6pt" cx="1.6pt" cy="1.6pt" fill="url(#defitem14)" fill-rule="nonzero"/>
+      <circle id="circle199" r="1.2448pt" cx="1.2448pt" cy="1.2448pt" transform="translate(0.444, 0.444)" fill="url(#defitem15)" fill-rule="nonzero"/>
+    </g>
+    <g id="g201" transform="translate(70.7244, 56.4486)">
+      <circle id="circle208" r="1.6pt" cx="1.6pt" cy="1.6pt" fill="url(#defitem16)" fill-rule="nonzero"/>
+      <circle id="circle215" r="1.2448pt" cx="1.2448pt" cy="1.2448pt" transform="translate(0.444, 0.444)" fill="url(#defitem17)" fill-rule="nonzero"/>
+    </g>
+    <g id="g217" transform="translate(70.7244, 48.4486)">
+      <circle id="circle224" r="1.6pt" cx="1.6pt" cy="1.6pt" fill="url(#defitem18)" fill-rule="nonzero"/>
+      <circle id="circle231" r="1.2448pt" cx="1.2448pt" cy="1.2448pt" transform="translate(0.444, 0.444)" fill="url(#defitem19)" fill-rule="nonzero"/>
+    </g>
+    <g id="g233" transform="translate(70.7244, 40.4486)">
+      <circle id="circle240" r="1.6pt" cx="1.6pt" cy="1.6pt" fill="url(#defitem20)" fill-rule="nonzero"/>
+      <circle id="circle247" r="1.2448pt" cx="1.2448pt" cy="1.2448pt" transform="translate(0.444, 0.444)" fill="url(#defitem21)" fill-rule="nonzero"/>
+    </g>
+    <g id="g249" transform="translate(70.7244, 32.4486)">
+      <circle id="circle256" r="1.6pt" cx="1.6pt" cy="1.6pt" fill="url(#defitem22)" fill-rule="nonzero"/>
+      <circle id="circle263" r="1.2448pt" cx="1.2448pt" cy="1.2448pt" transform="translate(0.444, 0.444)" fill="url(#defitem23)" fill-rule="nonzero"/>
+    </g>
+    <g id="g265" transform="translate(70.7244, 24.4486)">
+      <circle id="circle272" r="1.6pt" cx="1.6pt" cy="1.6pt" fill="url(#defitem24)" fill-rule="nonzero"/>
+      <circle id="circle279" r="1.2448pt" cx="1.2448pt" cy="1.2448pt" transform="translate(0.444, 0.444)" fill="url(#defitem25)" fill-rule="nonzero"/>
+    </g>
+    <g id="g281" transform="translate(70.7244, 16.4486)">
+      <circle id="circle288" r="1.6pt" cx="1.6pt" cy="1.6pt" fill="url(#defitem26)" fill-rule="nonzero"/>
+      <circle id="circle295" r="1.2448pt" cx="1.2448pt" cy="1.2448pt" transform="translate(0.444, 0.444)" fill="url(#defitem27)" fill-rule="nonzero"/>
+    </g>
+    <rect id="rect87" transform="translate(78.7244, 16.7547)" fill="url(#defitem28)" fill-rule="nonzero" width="9.6pt" height="76.6256pt"/>
+    <rect id="rect297" transform="translate(79.0135, 32.4486)" fill="#a7a7a7" fill-opacity="1" fill-rule="nonzero" width="37.025pt" height="0.8pt"/>
+    <rect id="rect299" transform="translate(79.0135, 40.4486)" fill="#a7a7a7" fill-opacity="1" fill-rule="nonzero" width="37.025pt" height="0.8pt"/>
+    <rect id="rect301" transform="translate(79.0135, 48.4486)" fill="#a7a7a7" fill-opacity="1" fill-rule="nonzero" width="37.025pt" height="0.8pt"/>
+    <rect id="rect303" transform="translate(79.0135, 56.4486)" fill="#a7a7a7" fill-opacity="1" fill-rule="nonzero" width="37.025pt" height="0.8pt"/>
+    <rect id="rect305" transform="translate(79.0135, 64.4486)" fill="#a7a7a7" fill-opacity="1" fill-rule="nonzero" width="37.025pt" height="0.8pt"/>
+    <rect id="rect307" transform="translate(79.0135, 72.4486)" fill="#a7a7a7" fill-opacity="1" fill-rule="nonzero" width="37.025pt" height="0.8pt"/>
+    <rect id="rect309" transform="translate(79.0135, 80.4486)" fill="#a7a7a7" fill-opacity="1" fill-rule="nonzero" width="37.025pt" height="0.8pt"/>
+    <rect id="rect311" transform="translate(79.2244, 88.4486)" fill="#a7a7a7" fill-opacity="1" fill-rule="nonzero" width="36.4196pt" height="0.8pt"/>
+    <rect id="rect313" transform="translate(79.2244, 96.4486)" fill="#a7a7a7" fill-opacity="1" fill-rule="nonzero" width="36.2064pt" height="0.8pt"/>
+    <rect id="rect315" transform="translate(79.2244, 104.449)" fill="#a7a7a7" fill-opacity="1" fill-rule="nonzero" width="36.3531pt" height="0.8pt"/>
+    <rect id="rect317" transform="translate(90.7244, 16.488)" fill="#a7a7a7" fill-opacity="1" fill-rule="nonzero" width="0.8pt" height="76.7684pt"/>
+    <rect id="rect319" transform="translate(106.724, 16.488)" fill="#a7a7a7" fill-opacity="1" fill-rule="nonzero" width="0.8pt" height="76.7684pt"/>
+    <rect id="rect321" transform="translate(122.724, 16.9486)" fill="#a7a7a7" fill-opacity="1" fill-rule="nonzero" width="0.8pt" height="76.4pt"/>
+    <rect id="rect325" transform="translate(78.6736, 24.4486)" fill="#a7a7a7" fill-opacity="1" fill-rule="nonzero" width="37.2969pt" height="0.8pt"/>
+    <path id="path327" fill="#a7a7a7" fill-opacity="1" fill-rule="nonzero" d="M45.1879 96L1 96L1 1L46.0704 1L47.0704 0L0 0L0 97L45.1879 97Z"  transform="translate(78.7244, 16.4486)" />
+    <rect id="rect379" transform="translate(78.7244, 112.449)" fill="#80b3ff" fill-opacity="1" fill-rule="nonzero" width="10.4pt" height="0.8pt"/>
+    <rect id="rect379-8" transform="translate(78.7438, 16.4077)" fill="#80b3ff" fill-opacity="1" fill-rule="nonzero" width="10.4pt" height="0.8pt"/>
+    <rect id="rect373-8" transform="translate(90.6946, 17.0132)" fill="#80b3ff" fill-opacity="1" fill-rule="nonzero" width="0.8pt" height="76.773pt"/>
+    <rect id="rect373" transform="translate(78.7244, 17.0842)" fill="#80b3ff" fill-opacity="1" fill-rule="nonzero" width="0.8pt" height="76.6284pt"/>
+    <rect id="rect379-8-5" transform="translate(78.7527, 24.4279)" fill="#80b3ff" fill-opacity="1" fill-rule="nonzero" width="10.4pt" height="0.8pt"/>
+    <rect id="rect379-8-54" transform="translate(78.7642, 32.4294)" fill="#80b3ff" fill-opacity="1" fill-rule="nonzero" width="10.4pt" height="0.8pt"/>
+    <rect id="rect379-8-4" transform="translate(78.7527, 40.473)" fill="#80b3ff" fill-opacity="1" fill-rule="nonzero" width="10.4pt" height="0.8pt"/>
+    <rect id="rect379-8-3" transform="translate(78.7181, 48.4304)" fill="#80b3ff" fill-opacity="1" fill-rule="nonzero" width="10.4pt" height="0.8pt"/>
+    <rect id="rect379-8-7" transform="translate(78.7411, 56.4298)" fill="#80b3ff" fill-opacity="1" fill-rule="nonzero" width="10.4pt" height="0.8pt"/>
+    <rect id="rect379-8-6" transform="translate(78.841, 64.4198)" fill="#80b3ff" fill-opacity="1" fill-rule="nonzero" width="10.4pt" height="0.8pt"/>
+    <rect id="rect379-8-43" transform="translate(78.7718, 72.4443)" fill="#80b3ff" fill-opacity="1" fill-rule="nonzero" width="10.4pt" height="0.8pt"/>
+    <rect id="rect379-8-49" transform="translate(78.6759, 80.509)" fill="#80b3ff" fill-opacity="1" fill-rule="nonzero" width="10.4pt" height="0.8pt"/>
+    <rect id="rect379-8-68" transform="translate(78.7296, 88.4643)" fill="#80b3ff" fill-opacity="1" fill-rule="nonzero" width="10.4pt" height="0.8pt"/>
+    <rect id="rect379-8-2" transform="translate(78.6433, 96.4794)" fill="#80b3ff" fill-opacity="1" fill-rule="nonzero" width="10.4pt" height="0.8pt"/>
+    <rect id="rect379-8-64" transform="translate(78.6874, 104.414)" fill="#80b3ff" fill-opacity="1" fill-rule="nonzero" width="10.4pt" height="0.8pt"/>
+    <path id="path3012" fill="none" stroke="#ff0000" stroke-opacity="1" stroke-width="1.201" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="4" stroke-dasharray=" 7.206,1.201" d="M0 0L63.3809 0"  transform="translate(14.4436, 112.854)" />
+    <path id="path3012-7" fill="none" stroke="#ff0000" stroke-opacity="1" stroke-width="1.201" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="4" stroke-dasharray=" 7.206,1.201" d="M0 0L63.3809 0"  transform="translate(14.4369, 16.9205)" />
+    <path id="path3012-4" fill="#00d400" fill-opacity="1" fill-rule="nonzero" d="M0 92.6832L2.375 96.8395L4.78125 92.6832L3 92.6832L3 4.15625L4.78125 4.15625L2.375 0L0 4.15625L1.78125 4.15625L1.78125 92.6832Z"  transform="translate(28.262, 16.4237)" />
+  </g>
+</svg>
