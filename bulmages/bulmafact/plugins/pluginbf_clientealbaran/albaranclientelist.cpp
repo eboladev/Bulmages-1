@@ -165,6 +165,16 @@ AlbaranClienteList::AlbaranClienteList ( BfCompany *comp, QWidget *parent, Qt::W
     m_cliente->m_valores["cifcliente"] = "";
     m_cliente->m_valores["nomcliente"] = "";
 
+    /// Iniciamos el buscador de trabajadores.
+    m_idtrabajador->setMainCompany ( mainCompany() );
+    m_idtrabajador->setQuery ( "SELECT * FROM trabajador ORDER BY apellidostrabajador, nomtrabajador" );
+    m_idtrabajador->setTableName ( "trabajador" );
+    m_idtrabajador->setFieldId ( "idtrabajador" );
+    m_idtrabajador->m_valores["apellidostrabajador"] = "";
+    m_idtrabajador->m_valores["nomtrabajador"] = "";
+    m_idtrabajador->setAllowNull ( TRUE );
+    m_idtrabajador->setId("");
+    
     presentar();
     mdb_idalbaran = "";
     if ( modoEdicion() )
@@ -206,6 +216,18 @@ void AlbaranClienteList::setMainCompany ( BfCompany *comp )
     m_cliente->setMainCompany ( comp );
     m_articulo->setMainCompany ( comp );
     mui_list->setMainCompany ( comp );
+    
+    
+    /// Iniciamos el buscador de trabajadores.
+    m_idtrabajador->setMainCompany ( mainCompany() );
+    m_idtrabajador->setQuery ( "SELECT * FROM trabajador ORDER BY apellidostrabajador, nomtrabajador" );
+    m_idtrabajador->setTableName ( "trabajador" );
+    m_idtrabajador->setFieldId ( "idtrabajador" );
+    m_idtrabajador->m_valores["apellidostrabajador"] = "";
+    m_idtrabajador->m_valores["nomtrabajador"] = "";
+    m_idtrabajador->setAllowNull ( TRUE );   
+    m_idtrabajador->setId("");
+    
     _depura ( "END AlbaranClienteList::setMainCompany", 0 );
 }
 
@@ -361,6 +383,10 @@ QString AlbaranClienteList::generarFiltro()
     if ( m_fechafin->text() != "" )
         filtro += " AND fechaalbaran <= '" + m_fechafin->text() + "' ";
 
+    if (m_idtrabajador->id() != "") {
+	filtro += " AND idtrabajador = " + m_idtrabajador->id();
+    } // end if
+    
     _depura ( "END AlbaranClienteList::generarFiltro", 0 );
     return ( filtro );
 }
