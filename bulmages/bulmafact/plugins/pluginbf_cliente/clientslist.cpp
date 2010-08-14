@@ -89,8 +89,34 @@ ClientsList::~ClientsList()
 void ClientsList::presentar()
 {
     _depura ( "ClientsList::presenta", 0 );
-    mui_list->cargar ( "SELECT * FROM cliente WHERE lower(nomcliente) LIKE lower('%" + m_filtro->text() + "%') OR lower(cifcliente) LIKE lower('%" + m_filtro->text() + "%') ORDER BY nomcliente" );
+    mui_list->cargar ( "SELECT * FROM cliente WHERE 1=1 " + generaFiltro() );
     _depura ( "END ClientsList::presenta", 0 );
+}
+
+/** Metodo auxiliar que crea la clausula WHERE del query de carga  \ref presenta()
+    La clausula WHERE utiliza todas las opciones de filtrado para crearse. */
+/**
+\return
+**/
+const QString ClientsList::generaFiltro()
+{
+    _depura ( "ClientsList::generaFiltro", 0 );
+    /// Tratamiento de los filtros.
+    QString filtro = "";
+    if ( m_filtro->text() != "" ) {
+        filtro = " AND ( lower(nomcliente) LIKE lower('%" + m_filtro->text() + "%') ";
+        filtro += " OR lower(cifcliente) LIKE lower('%" + m_filtro->text() + "%')) ";
+    } // end if
+    if ( m_facturas->isChecked()) {
+        filtro += " AND idcliente IN (SELECT DISTINCT idcliente FROM factura WHERE procesadafactura = FALSE)";
+    } // end if
+
+    if ( m_albaranes->isChecked()) {
+        filtro += " AND idcliente IN (SELECT DISTINCT idcliente FROM albaran WHERE procesadoalbaran = FALSE)";
+    } // end if
+    
+    _depura ( "END ClientsList::generaFiltro", 0 );
+    return ( filtro );
 }
 
 

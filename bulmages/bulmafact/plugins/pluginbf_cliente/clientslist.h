@@ -71,6 +71,7 @@ public:
     QString nomclient();
     QString cifclient();
     void submenu ( const QPoint & );
+    const QString generaFiltro();
 
 public slots:
     virtual void on_mui_exportar_clicked();
