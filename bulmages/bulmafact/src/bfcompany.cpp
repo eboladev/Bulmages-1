@@ -258,7 +258,7 @@ void BfCompany::guardaConf()
         stream << "\t\t\t<HEIGHT>" + QString::number ( m_bulmafact->height() ) + "</HEIGHT>\n";
         stream << "\t\t\t<INDEXADOR>" + ( m_bulmafact->actionIndexador->isChecked() ? QString ( "TRUE" ) : QString ( "FALSE" ) ) + "</INDEXADOR>\n";
         stream << "\t\t\t<TOOLBARSDOCKWIDGETS>" + QString ( m_bulmafact->saveState().toBase64() ) + "</TOOLBARSDOCKWIDGETS>\n";
-	  stream << "\t\t\t<MAXIMIZED>" + ( m_bulmafact->isMaximized() ? QString ( "TRUE" ) : QString ( "FALSE" ) ) + "</MAXIMIZED>\n";
+        stream << "\t\t\t<MAXIMIZED>" + ( m_bulmafact->isMaximized() ? QString ( "TRUE" ) : QString ( "FALSE" ) ) + "</MAXIMIZED>\n";
         stream << "\t</PRINCIPAL>\n";
 
 
@@ -322,7 +322,7 @@ void BfCompany::cargaConf()
 
     /// Vemos si tiene maximizado o no
     if (principal.firstChildElement ( "MAXIMIZED" ).toElement().text() == "TRUE")
-	 m_bulmafact->showMaximized();
+	 m_bulmafact->setWindowState(Qt::WindowMaximized);
 
     /// Cogemos el indexador
     QString indexador = principal.firstChildElement ( "INDEXADOR" ).toElement().text();
