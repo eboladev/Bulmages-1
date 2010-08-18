@@ -258,7 +258,20 @@ void BfCompany::guardaConf()
         stream << "\t\t\t<HEIGHT>" + QString::number ( m_bulmafact->height() ) + "</HEIGHT>\n";
         stream << "\t\t\t<INDEXADOR>" + ( m_bulmafact->actionIndexador->isChecked() ? QString ( "TRUE" ) : QString ( "FALSE" ) ) + "</INDEXADOR>\n";
         stream << "\t\t\t<TOOLBARSDOCKWIDGETS>" + QString ( m_bulmafact->saveState().toBase64() ) + "</TOOLBARSDOCKWIDGETS>\n";
-	    stream << "\t\t\t<MAXIMIZED>" + ( m_bulmafact->windowState() == Qt::WindowMaximized ? QString ( "TRUE" ) : QString ( "FALSE" ) ) + "</MAXIMIZED>\n";
+
+	  /// Saber si una ventana est&aacuta; maximizada en
+	  /// una sesi&oacute;n NX no es tan sencillo
+	  QString max_conf = "\t\t\t<MAXIMIZED>%1</MAXIMIZED>\n";
+	  if ( m_bulmafact->windowState() == Qt::WindowMaximized
+	    || m_bulmafact->windowState() == Qt::WindowFullScreen
+	    || ( m_bulmafact->geometry().x() == 0
+		   && m_bulmafact->geometry().y() < g_theApp->desktop()->height() * 0.1
+		   && m_bulmafact->width() == g_theApp->desktop()->width()
+		   && m_bulmafact->height() > ( g_theApp->desktop()->height() * 0.8 ) ) )
+	     stream << max_conf.arg( "TRUE" );
+	  else
+	     stream << max_conf.arg( "FALSE" );
+
         stream << "\t</PRINCIPAL>\n";
 
 
