@@ -249,31 +249,29 @@ void BfCompany::guardaConf()
     QFile file ( g_confpr->valor ( CONF_DIR_USER ) + "bulmafact_" + dbName() + ".cfn" );
     /// Guardado del orden y de configuraciones varias.
     if ( file.open ( QIODevice::WriteOnly ) ) {
+
+	 /// Saber si una ventana est&aacuta; maximizada en
+	 /// una sesi&oacute;n NX no es tan sencillo
+	 bool isMaximized = false;
+	 if ( m_bulmafact->windowState() == Qt::WindowMaximized
+	   || m_bulmafact->windowState() == Qt::WindowFullScreen
+	   || ( m_bulmafact->geometry().x() == 0
+		  && m_bulmafact->geometry().y() < g_theApp->desktop()->height() * 0.1
+		  && m_bulmafact->width() == g_theApp->desktop()->width()
+		  && m_bulmafact->height() > ( g_theApp->desktop()->height() * 0.8 ) ) )
+	     isMaximized = true;
+
         QTextStream stream ( &file );
         stream << "<CONFIG>\n";
         stream << "\t<PRINCIPAL>\n";
         stream << "\t\t\t<X>" + QString::number ( m_bulmafact->geometry().x() ) + "</X>\n";
-        stream << "\t\t\t<Y>" + QString::number ( m_bulmafact->geometry().y() ) + "</Y>\n";
+	  stream << "\t\t\t<Y>" + QString::number ( isMaximized ? 0 : m_bulmafact->geometry().y() ) + "</Y>\n";
         stream << "\t\t\t<WIDTH>" + QString::number ( m_bulmafact->width() ) + "</WIDTH>\n";
         stream << "\t\t\t<HEIGHT>" + QString::number ( m_bulmafact->height() ) + "</HEIGHT>\n";
-        stream << "\t\t\t<INDEXADOR>" + ( m_bulmafact->actionIndexador->isChecked() ? QString ( "TRUE" ) : QString ( "FALSE" ) ) + "</INDEXADOR>\n";
+	  stream << "\t\t\t<INDEXADOR>" + ( QString ( m_bulmafact->actionIndexador->isChecked() ? "TRUE" : "FALSE" ) ) + "</INDEXADOR>\n";
         stream << "\t\t\t<TOOLBARSDOCKWIDGETS>" + QString ( m_bulmafact->saveState().toBase64() ) + "</TOOLBARSDOCKWIDGETS>\n";
-
-	  /// Saber si una ventana est&aacuta; maximizada en
-	  /// una sesi&oacute;n NX no es tan sencillo
-	  QString max_conf = "\t\t\t<MAXIMIZED>%1</MAXIMIZED>\n";
-	  if ( m_bulmafact->windowState() == Qt::WindowMaximized
-	    || m_bulmafact->windowState() == Qt::WindowFullScreen
-	    || ( m_bulmafact->geometry().x() == 0
-		   && m_bulmafact->geometry().y() < g_theApp->desktop()->height() * 0.1
-		   && m_bulmafact->width() == g_theApp->desktop()->width()
-		   && m_bulmafact->height() > ( g_theApp->desktop()->height() * 0.8 ) ) )
-	     stream << max_conf.arg( "TRUE" );
-	  else
-	     stream << max_conf.arg( "FALSE" );
-
+	  stream << "\t\t\t<MAXIMIZED>" + QString ( isMaximized ? "TRUE" : "FALSE" ) + "</MAXIMIZED>\n";
         stream << "\t</PRINCIPAL>\n";
-
 
         for ( int i = 0; i < m_listventanas->numVentanas(); i++ ) {
             QObject *obj = m_listventanas->ventana ( i );
