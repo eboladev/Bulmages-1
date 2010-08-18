@@ -265,7 +265,7 @@ void BfCompany::guardaConf()
         stream << "<CONFIG>\n";
         stream << "\t<PRINCIPAL>\n";
         stream << "\t\t\t<X>" + QString::number ( m_bulmafact->geometry().x() ) + "</X>\n";
-	  stream << "\t\t\t<Y>" + QString::number ( isMaximized ? 0 : m_bulmafact->geometry().y() ) + "</Y>\n";
+	  stream << "\t\t\t<Y>" + QString::number ( m_bulmafact->geometry().y() ) + "</Y>\n";
         stream << "\t\t\t<WIDTH>" + QString::number ( m_bulmafact->width() ) + "</WIDTH>\n";
         stream << "\t\t\t<HEIGHT>" + QString::number ( m_bulmafact->height() ) + "</HEIGHT>\n";
 	  stream << "\t\t\t<INDEXADOR>" + ( QString ( m_bulmafact->actionIndexador->isChecked() ? "TRUE" : "FALSE" ) ) + "</INDEXADOR>\n";
@@ -328,12 +328,11 @@ void BfCompany::cargaConf()
     /// Cogemos el alto
     QString nheight = principal.firstChildElement ( "HEIGHT" ).toElement().text();
 
-    /// Establecemos la geometria de la ventana principal.
-    m_bulmafact->setGeometry ( nx.toInt(), ny.toInt(), nwidth.toInt(), nheight.toInt() );
-
-    /// Vemos si tiene maximizado o no
+    /// Si est&aacute; maximizada, ignoramos las otras dimensiones
     if (principal.firstChildElement ( "MAXIMIZED" ).toElement().text() == "TRUE")
 	 m_bulmafact->setWindowState(Qt::WindowMaximized);
+    else /// Establecemos la geometria de la ventana principal.
+	 m_bulmafact->setGeometry ( nx.toInt(), ny.toInt(), nwidth.toInt(), nheight.toInt() );
 
     /// Cogemos el indexador
     QString indexador = principal.firstChildElement ( "INDEXADOR" ).toElement().text();
