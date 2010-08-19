@@ -73,9 +73,9 @@ void MyPluginCarteraCobros::inicializa ( BfBulmaFact *bges )
     /// Miramos si existe un menu Ventas
 	QMenu *pPluginMenu = bges->newMenu("&Compras", "menuVentas", "menuMaestro");
 
-    QAction *accion = new QAction ( "&Cartera de Cobros", 0 );
-    accion->setStatusTip ( "Cartera de Cobros" );
-    accion->setWhatsThis ( "Cartera de Cobros" );
+    QAction *accion = new QAction ( "&Cartera de cobros", 0 );
+    accion->setStatusTip ( "Cartera de cobros" );
+    accion->setWhatsThis ( "Cartera de cobros" );
     connect ( accion, SIGNAL ( activated() ), this, SLOT ( elslot() ) );
     /// A&ntilde;adimos la nueva opci&oacute;n al men&uacute; principal del programa.
     pPluginMenu->addSeparator();
@@ -96,7 +96,7 @@ void MyPluginCarteraCobros::inicializa ( BfBulmaFact *bges )
 **/
 int entryPoint ( BfBulmaFact *bges )
 {
-    _depura ( "Punto de Entrada del plugin de Cartera de Cobros\n", 0 );
+    _depura ( "Punto de Entrada del plugin de cartera de cobros\n", 0 );
     MyPluginCarteraCobros *plug = new MyPluginCarteraCobros();
     plug->inicializa ( bges );
     return 0;
@@ -118,12 +118,12 @@ int ClienteView_ClienteView_Post ( ClienteView *art )
     l->setMainCompany ( art->mainCompany() );
     l->setDbTableName ( "vencimientocliente" );
     l->setDbFieldId ( "idvencimientocliente" );
-    l->addSubFormHeader ( "idvencimientocliente", BlDbField::DbInt, BlDbField::DbPrimaryKey, BlSubFormHeader::DbHideView , QApplication::translate("TrabajadorView", "ID Vencimiento"));
-    l->addSubFormHeader ( "diasvencimientocliente", BlDbField::DbInt, BlDbField::DbNotNull, BlSubFormHeader::DbNone , QApplication::translate ( "TrabajadorView", "Dias tras Factura" ) );
+    l->addSubFormHeader ( "idvencimientocliente", BlDbField::DbInt, BlDbField::DbPrimaryKey, BlSubFormHeader::DbHideView , QApplication::translate("TrabajadorView", "Id vencimiento"));
+    l->addSubFormHeader ( "diasvencimientocliente", BlDbField::DbInt, BlDbField::DbNotNull, BlSubFormHeader::DbNone , QApplication::translate ( "TrabajadorView", "Dias tras factura" ) );
     l->addSubFormHeader ( "porcentajevencimientocliente", BlDbField::DbNumeric, BlDbField::DbNotNull, BlSubFormHeader::DbNone, QApplication::translate ( "TrabajadorView", "Porcentaje" ) );
-    l->addSubFormHeader ( "descforma_pago", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone, QApplication::translate ( "TrabajadorView", "Forma de Pago" ) );
-    l->addSubFormHeader ( "idcliente", BlDbField::DbInt, BlDbField::DbNotNull, BlSubFormHeader::DbHideView | BlSubFormHeader::DbNoWrite , QApplication::translate ( "TrabajadorView", "Id Articulo" ) );
-    l->addSubFormHeader ( "idforma_pago", BlDbField::DbInt, BlDbField::DbNotNull, BlSubFormHeader::DbNone, QApplication::translate ( "TrabajadorView", "ID Forma de Pago" ) );
+    l->addSubFormHeader ( "descforma_pago", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone, QApplication::translate ( "TrabajadorView", "Forma de pago" ) );
+    l->addSubFormHeader ( "idcliente", BlDbField::DbInt, BlDbField::DbNotNull, BlSubFormHeader::DbHideView | BlSubFormHeader::DbNoWrite , QApplication::translate ( "TrabajadorView", "Id cliente" ) );
+    l->addSubFormHeader ( "idforma_pago", BlDbField::DbInt, BlDbField::DbNotNull, BlSubFormHeader::DbNone, QApplication::translate ( "TrabajadorView", "Id forma de pago" ) );
     l->setInsert ( TRUE );
     l->setDelete ( TRUE );
     l->setSortingEnabled ( FALSE );
@@ -200,7 +200,7 @@ int BlForm_guardar_Post_Post ( BlForm *art )
 		if (l1->rowCount() > 1) {
 
 			QMessageBox msgBox;
-			msgBox.setText("Hay Vencimientos generados para esta factura. Que desea hacer?");
+			msgBox.setText("Hay vencimientos generados para esta factura. Que desea hacer?");
 			QPushButton *guardarButton = msgBox.addButton("Guardar", QMessageBox::ActionRole);
 			QPushButton *regenerarButton = msgBox.addButton("Regenerar", QMessageBox::ActionRole);
 			QPushButton *nadaButton = msgBox.addButton("Dejar Actuales", QMessageBox::ActionRole);
@@ -236,14 +236,14 @@ int FacturaView_FacturaView (FacturaView *factp) {
     l->setMainCompany ( factp->mainCompany() );
     l->setDbTableName ( "vencimientoc" );
     l->setDbFieldId ( "idvencimientoc" );
-    l->addSubFormHeader ( "idvencimientoc", BlDbField::DbInt, BlDbField::DbPrimaryKey, BlSubFormHeader::DbHideView , QApplication::translate("TrabajadorView", "ID Vencimiento"));
+    l->addSubFormHeader ( "idvencimientoc", BlDbField::DbInt, BlDbField::DbPrimaryKey, BlSubFormHeader::DbHideView , QApplication::translate("TrabajadorView", "Id vencimiento"));
     l->addSubFormHeader ( "fechavencimientoc", BlDbField::DbDate, BlDbField::DbNotNull, BlSubFormHeader::DbNone , QApplication::translate ( "TrabajadorView", "Fecha" ) );
     l->addSubFormHeader ( "cantvencimientoc", BlDbField::DbInt, BlDbField::DbNotNull, BlSubFormHeader::DbNone, QApplication::translate ( "TrabajadorView", "Cantidad" ) );
-    l->addSubFormHeader ( "descforma_pago", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone, QApplication::translate ( "TrabajadorView", "Forma de Pago" ) );
+    l->addSubFormHeader ( "descforma_pago", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone, QApplication::translate ( "TrabajadorView", "Forma de pago" ) );
     l->addSubFormHeader ( "procesadovencimientoc", BlDbField::DbBoolean, BlDbField::DbNothing, BlSubFormHeader::DbNone, QApplication::translate ( "TrabajadorView", "Procesado" ) );
-    l->addSubFormHeader ( "idfactura", BlDbField::DbInt, BlDbField::DbNotNull, BlSubFormHeader::DbHideView | BlSubFormHeader::DbNoWrite , QApplication::translate ( "TrabajadorView", "Id Articulo" ) );
-    l->addSubFormHeader ( "idforma_pago", BlDbField::DbInt, BlDbField::DbNotNull, BlSubFormHeader::DbHideView | BlSubFormHeader::DbNoWrite, QApplication::translate ( "TrabajadorView", "ID Forma de Pago" ) );
-    l->addSubFormHeader ( "idcliente", BlDbField::DbInt, BlDbField::DbNotNull, BlSubFormHeader::DbHideView | BlSubFormHeader::DbNoWrite , QApplication::translate ( "Cliente", "Id Cliente" ) );
+    l->addSubFormHeader ( "idfactura", BlDbField::DbInt, BlDbField::DbNotNull, BlSubFormHeader::DbHideView | BlSubFormHeader::DbNoWrite , QApplication::translate ( "TrabajadorView", "Id factura" ) );
+    l->addSubFormHeader ( "idforma_pago", BlDbField::DbInt, BlDbField::DbNotNull, BlSubFormHeader::DbHideView | BlSubFormHeader::DbNoWrite, QApplication::translate ( "TrabajadorView", "Id forma de pago" ) );
+    l->addSubFormHeader ( "idcliente", BlDbField::DbInt, BlDbField::DbNotNull, BlSubFormHeader::DbHideView | BlSubFormHeader::DbNoWrite , QApplication::translate ( "Cliente", "Id cliente" ) );
     l->setInsert ( TRUE );
     l->setDelete ( TRUE );
     l->setSortingEnabled ( FALSE );

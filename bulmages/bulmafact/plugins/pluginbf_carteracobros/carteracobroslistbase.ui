@@ -15,7 +15,7 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Cartera de Cobros</string>
+   <string>Cartera de cobros</string>
   </property>
   <property name="windowIcon">
    <iconset>
@@ -94,13 +94,13 @@
            <string/>
           </property>
           <property name="icon">
-           <iconset>
-            <normaloff>:/Images/document-new.svg</normaloff>:/Images/document-new.svg</iconset>
+           <iconset resource="../../../bulmages.qrc">
+            <normaloff>:/Images/document-new.png</normaloff>:/Images/document-new.png</iconset>
           </property>
           <property name="iconSize">
            <size>
-            <width>32</width>
-            <height>32</height>
+            <width>22</width>
+            <height>22</height>
            </size>
           </property>
          </widget>
@@ -123,13 +123,13 @@
            <string/>
           </property>
           <property name="icon">
-           <iconset>
-            <normaloff>:/Images/document-open.svg</normaloff>:/Images/document-open.svg</iconset>
+           <iconset resource="../../../bulmages.qrc">
+            <normaloff>:/Images/document-open.png</normaloff>:/Images/document-open.png</iconset>
           </property>
           <property name="iconSize">
            <size>
-            <width>32</width>
-            <height>32</height>
+            <width>22</width>
+            <height>22</height>
            </size>
           </property>
          </widget>
@@ -152,13 +152,13 @@
            <string/>
           </property>
           <property name="icon">
-           <iconset>
-            <normaloff>:Images/edit-delete.svg</normaloff>:Images/edit-delete.svg</iconset>
+           <iconset resource="../../../bulmages.qrc">
+            <normaloff>:/Images/edit-delete.png</normaloff>:/Images/edit-delete.png</iconset>
           </property>
           <property name="iconSize">
            <size>
-            <width>32</width>
-            <height>32</height>
+            <width>22</width>
+            <height>22</height>
            </size>
           </property>
          </widget>
@@ -181,13 +181,13 @@
            <string/>
           </property>
           <property name="icon">
-           <iconset>
-            <normaloff>:/Images/document-print.svg</normaloff>:/Images/document-print.svg</iconset>
+           <iconset resource="../../../bulmages.qrc">
+            <normaloff>:/Images/document-print.png</normaloff>:/Images/document-print.png</iconset>
           </property>
           <property name="iconSize">
            <size>
-            <width>32</width>
-            <height>32</height>
+            <width>22</width>
+            <height>22</height>
            </size>
           </property>
          </widget>
@@ -210,13 +210,13 @@
            <string/>
           </property>
           <property name="icon">
-           <iconset>
-            <normaloff>:/Images/edit-find.svg</normaloff>:/Images/edit-find.svg</iconset>
+           <iconset resource="../../../bulmages.qrc">
+            <normaloff>:/Images/edit-find.png</normaloff>:/Images/edit-find.png</iconset>
           </property>
           <property name="iconSize">
            <size>
-            <width>32</width>
-            <height>32</height>
+            <width>22</width>
+            <height>22</height>
            </size>
           </property>
           <property name="checkable">
@@ -242,13 +242,13 @@
            <string/>
           </property>
           <property name="icon">
-           <iconset>
-            <normaloff>:/Images/document-properties.svg</normaloff>:/Images/document-properties.svg</iconset>
+           <iconset resource="../../../bulmages.qrc">
+            <normaloff>:/Images/document-properties.png</normaloff>:/Images/document-properties.png</iconset>
           </property>
           <property name="iconSize">
            <size>
-            <width>32</width>
-            <height>32</height>
+            <width>22</width>
+            <height>22</height>
            </size>
           </property>
           <property name="checkable">
@@ -274,13 +274,13 @@
            <string/>
           </property>
           <property name="icon">
-           <iconset>
-            <normaloff>:/Images/view-refresh.svg</normaloff>:/Images/view-refresh.svg</iconset>
+           <iconset resource="../../../bulmages.qrc">
+            <normaloff>:/Images/view-refresh.png</normaloff>:/Images/view-refresh.png</iconset>
           </property>
           <property name="iconSize">
            <size>
-            <width>32</width>
-            <height>32</height>
+            <width>22</width>
+            <height>22</height>
            </size>
           </property>
          </widget>
@@ -309,13 +309,13 @@
            <string/>
           </property>
           <property name="icon">
-           <iconset>
-            <normaloff>../../../../../../../usr/local/share/bulmages/icons/q19.png</normaloff>../../../../../../../usr/local/share/bulmages/icons/q19.png</iconset>
+           <iconset resource="../../../bulmages.qrc">
+            <normaloff>:/Genericos32x32/images/png/q34.png</normaloff>:/Genericos32x32/images/png/q34.png</iconset>
           </property>
           <property name="iconSize">
            <size>
-            <width>32</width>
-            <height>32</height>
+            <width>22</width>
+            <height>22</height>
            </size>
           </property>
          </widget>
@@ -338,13 +338,13 @@
            <string/>
           </property>
           <property name="icon">
-           <iconset>
-            <normaloff>../../../../../../../usr/local/share/bulmages/icons/suma.png</normaloff>../../../../../../../usr/local/share/bulmages/icons/suma.png</iconset>
+           <iconset resource="../../../bulmages.qrc">
+            <normaloff>:/Genericos32x32/images/png/suma.png</normaloff>:/Genericos32x32/images/png/suma.png</iconset>
           </property>
           <property name="iconSize">
            <size>
-            <width>32</width>
-            <height>32</height>
+            <width>22</width>
+            <height>22</height>
            </size>
           </property>
          </widget>
@@ -418,7 +418,7 @@
       <item row="0" column="0">
        <widget class="QLabel" name="label_3">
         <property name="text">
-         <string>Fecha Inicial</string>
+         <string>Fecha inicial</string>
         </property>
         <property name="buddy">
          <cstring>mui_fechainicial</cstring>
@@ -451,7 +451,7 @@
       <item row="1" column="0">
        <widget class="QLabel" name="label_4">
         <property name="text">
-         <string>Fecha Final</string>
+         <string>Fecha final</string>
         </property>
         <property name="buddy">
          <cstring>mui_fechafinal</cstring>
@@ -471,7 +471,7 @@
       <item row="1" column="2">
        <widget class="QLabel" name="label_5">
         <property name="text">
-         <string>Forma Pago</string>
+         <string>Forma de cobro</string>
         </property>
         <property name="buddy">
          <cstring>mui_idforma_pago</cstring>

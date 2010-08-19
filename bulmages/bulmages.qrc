@@ -390,6 +390,9 @@
         <file>images/png/i_reload.png</file>
         <file>images/png/i_save.xpm</file>
         <file>images/png/i_tuxPeq.png</file>
+        <file>images/png/q19.png</file>
+        <file>images/png/q34.png</file>
+        <file>images/png/suma.png</file>
     </qresource>
     <qresource prefix="/Genericos48x48" >
         <file>images/png/48x48/i_bulmages_pos_x.48x48.png</file>

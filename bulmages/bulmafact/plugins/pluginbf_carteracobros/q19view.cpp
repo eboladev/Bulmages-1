@@ -66,7 +66,7 @@ Q19View::Q19View ( CarteraCobrosList *fac, BfCompany *comp, QWidget *parent )
             QString val = rec->dbValue ( "selector" );
             if ( val == "TRUE" ) {
 		if (rec->dbValue("descforma_pago") != "Transferencia") 
-			mensajeInfo("Hay Vencimientos que no pueden ser Remesados");
+			mensajeInfo("Hay vencimientos que no pueden ser Remesados");
 		if (rec->dbValue("estadovencimientoc") != "Pendiente") 
 			mensajeInfo("Hay vencimientos con estado no Pendiente");
                 a = a + BlFixed ( rec->dbValue ( "cantvencimientoc" ) );
