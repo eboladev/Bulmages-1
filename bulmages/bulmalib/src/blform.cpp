@@ -380,7 +380,11 @@ void BlForm::closeEvent ( QCloseEvent *e )
     _depura ( "BlForm::closeEvent", 0, windowTitle() );
 
     try {
-        if ( dialogChanges_hayCambios() ) {
+	  /// Si el bot&oacute;n est&aacute; oculto es por no tener permiso para guardar
+	  QPushButton * p = findChild<QPushButton *> ( "mui_aceptar" );
+
+	  if ( !p->isHidden()
+	  && ( dialogChanges_hayCambios() ) ) {
             int val = QMessageBox::warning ( this,
                                              _ ( "Guardar" ) + " " + windowTitle(),
                                              _ ( "Desea guardar los cambios?" ),
