@@ -548,6 +548,9 @@ void BlForm::setTitleName ( QString nom )
 void BlForm::pintar()
 {
     _depura ( "BlForm::pintar", 0 );
+
+    bool readOnly = !mainCompany() ->hasTablePrivilege ( tableName(), "UPDATE" );
+
     BlDbField *campo;
     /// Recorremos todos los campos definidos.
     for ( int i = 0; i < m_lista.size(); ++i ) {
@@ -556,22 +559,26 @@ void BlForm::pintar()
         QLineEdit *l1 = findChild<QLineEdit *> ( "mui_" + campo->nomcampo() );
         if ( l1 ) {
             l1->setText ( campo->valorcampo() );
+		l1->setReadOnly ( readOnly );
         } // end if
         /// Buscamos los QPlainTextEdit con nombre coincidente.
         QPlainTextEdit *l2 = findChild<QPlainTextEdit *> ( "mui_" + campo->nomcampo() );
         if ( l2 ) {
             l2->setPlainText( campo->valorcampo() );
-        } // end if
+		l2->setReadOnly( readOnly );
+	   } // end if
         /// Buscamos los QTextEdit con nombre coincidente.
         QTextEdit *l3 = findChild<QTextEdit *> ( "mui_" + campo->nomcampo() );
         if ( l3 ) {
             l3->setText ( campo->valorcampo() );
+		l3->setReadOnly ( readOnly );
         } // end if
         /// Buscamos BlWidgets que coincidan con el campo supuestamente
         /// sirve para los campos personales.
         BlWidget *l4 = findChild<BlWidget *> ( "mui_" + campo->nomcampo() );
         if ( l4 ) {
             l4->setFieldValue ( campo->valorcampo() );
+		l4->setDisabled ( readOnly );
         } // end if
 
         /// Buscamos BlComboBox que coincidan con el campo supuestamente
@@ -583,6 +590,7 @@ void BlForm::pintar()
             BlComboBox *l6 = findChild<BlComboBox *> ( "mui_" + campo->nomcampo() );
             if ( l6 ) {
                 l6->setFieldValue ( campo->valorcampo() );
+		    l6->setDisabled ( readOnly );
             } else {
                 /// Buscamos BlComboBox que coincidan con el campo supuestamente
                 /// sirve para los campos personales.
@@ -597,6 +605,7 @@ void BlForm::pintar()
         BlDoubleSpinBox *l8 = findChild<BlDoubleSpinBox *> ( "mui_" + campo->nomcampo() );
         if ( l8 ) {
             l8->setValue ( campo->valorcampo().toDouble() );
+		l8->setDisabled ( readOnly );
             /// Buscamos los decimales que tiene el campo y establecemos el numero de decimales a ese valor.
             QString query2 = "SELECT numeric_scale FROM information_schema.columns WHERE table_name = '"+tableName()+"' and column_name='"+campo->nomcampo()+"';";
             /// Cargamos el query y lo recorremos
@@ -620,7 +629,8 @@ void BlForm::pintar()
                 /// El estado indeterminado se aplica cuando el campo es triestado.
                 l9->setCheckState( Qt::PartiallyChecked );
             } // end if
-        } // end if
+		l9->setDisabled ( readOnly );
+	   } // end if
 
         /// Buscamos los 'Radio Buttons' y los preparamos.
         QList<BlRadioButton *> l10 = findChildren<BlRadioButton *> ( QRegExp ( "mui_" + campo->nomcampo() + "_*" ) );
@@ -630,6 +640,7 @@ void BlForm::pintar()
             } else {
                 l10.at ( i ) ->setChecked ( FALSE );
             } // end if
+		l10.at ( i ) ->setDisabled( readOnly );
         } // end for
     } // end for
     pintarPost();
@@ -761,7 +772,7 @@ int BlForm::cargar ( QString id, bool paint )
 	} else if ( exists ( "cod" + m_tablename)) {
 	  wtitle = wtitle + "[" + dbValue ( "cod" + m_tablename) + "]";
 	} else {
-		wtitle = wtitle + dbValue ( m_campoid );
+	   wtitle = wtitle + dbValue ( m_campoid );
 	} // end if
 
         setWindowTitle ( wtitle );
