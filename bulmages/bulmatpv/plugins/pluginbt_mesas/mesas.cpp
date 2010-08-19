@@ -7,6 +7,7 @@
 #include <QInputDialog>
 #include <QTextStream>
 #include <QDomDocument>
+#include <QTimer>
 
 #include "blmainwindow.h"
 #include "blplugins.h"
@@ -73,6 +74,11 @@ DistroMesas::DistroMesas ( BtCompany *emp, QWidget *parent ) : BlWidget ( emp, p
 
   importXML("");
 
+  
+  QTimer *timer = new QTimer(this);
+  connect(timer, SIGNAL(timeout()), this, SLOT(repaint()));
+  timer->start(5000);
+  
 }
 
 
@@ -261,22 +267,37 @@ void Mesa::paintEvent ( QPaintEvent * event ) {
 
         QPainter painter;
         painter.begin ( this ); // paint in picture
-
-            painter.setPen(QColor(0, 0, 0, 255));
-
-
+	painter.setPen(QColor(0, 0, 0, 255));
+	QFont sansFont("Helvetica [Cronyx]", 8);
+	QFont normal("Helvetica [Cronyx]", 10);
+	painter.setFont(normal);
+	
     BtCompany * emp = ( BtCompany * ) mainCompany();
 
     /// Miramos que no haya ningun ticket abierto con el nombre usado
-    BtTicket *ticket;
+    BtTicket *ticket = NULL;;
     for ( int i = 0; i < emp->listaTickets() ->size(); ++i ) {
         ticket = emp->listaTickets() ->at ( i );
         if ( m_nombreMesa == ticket->dbValue ( "nomticket" )) {
+	  
+	    if (ticket->dbValue("idalbaran") != "") {
+	       painter.setBrush(Qt::cyan);
+		painter.drawRect(QRectF (0, 0, m_XScale, 30));
+		painter.setBrush(Qt::NoBrush);
+
+	    } // end if
+	  
+	  
+	    int min = ticket->elapsed() / 60000;
+	    int sec = (ticket->elapsed() % 60000) / 1000;
+	    QString tiempo = QString::number(min) + ":" + QString::number(sec);
+	    painter.setFont(sansFont);
+	    painter.drawText(0,20, tiempo);
+	    painter.setFont(normal);
             painter.setPen(QColor(255, 0, 0, 127));
         }// end if
     }// end for
-
-        painter.drawText(0, 10, m_nombreMesa);
+    painter.drawText(0, 10, m_nombreMesa);
 
 if (m_escalando == 0)  {
         QSvgRenderer arender(QString(m_filename), this);

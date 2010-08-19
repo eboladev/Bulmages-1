@@ -83,6 +83,8 @@ BtTicket::BtTicket ( BlMainCompany *emp, QWidget *parent ) : BlWidget ( emp, par
 
     g_plugins->lanza ( "BtTicket_BtTicket_Post", this );
 
+    start();
+    
     _depura ( "END BtTicket::BtTicket", 0 );
 }
 
