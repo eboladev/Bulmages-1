@@ -90,6 +90,17 @@ FacturasList::FacturasList ( BfCompany *comp, QWidget *parent, Qt::WFlags flag, 
     m_cliente->setTableName ( "cliente" );
     m_cliente->m_valores["cifcliente"] = "";
     m_cliente->m_valores["nomcliente"] = "";
+    
+        /// Iniciamos el buscador de trabajadores.
+    mui_seriefactura->setMainCompany ( mainCompany() );
+    mui_seriefactura->setQuery ( "SELECT * FROM serie_factura ORDER BY descserie_factura" );
+    mui_seriefactura->setTableName ( "serie_factura" );
+    mui_seriefactura->setFieldId ( "codigoserie_factura" );
+    mui_seriefactura->m_valores["codigoserie_factura"] = "";
+    mui_seriefactura->m_valores["descserie_factura"] = "";
+    mui_seriefactura->setAllowNull ( TRUE );
+    mui_seriefactura->setId("");
+    
     presentar();
     mdb_idfactura = "";
     if ( modoEdicion() ) {
@@ -196,6 +207,12 @@ QString FacturasList::generaFiltro()
     if ( m_fechafin->text() != "" ) {
         filtro += " AND ffactura <= '" + m_fechafin->text() + "' ";
     } // end if
+    
+    if (mui_seriefactura->id() != "") {
+	filtro += " AND codigoserie_factura = '"+mui_seriefactura->id()+"'";
+    } // end if
+    
+    
     _depura ( "END FacturasList::generaFiltro", 0 );
     return ( filtro );
 }
@@ -287,6 +304,18 @@ void FacturasList::setMainCompany ( BfCompany *comp )
     m_cliente->setMainCompany ( comp );
     m_articulo->setMainCompany ( comp );
     mui_list->setMainCompany ( comp );
+    
+        /// Iniciamos el buscador de trabajadores.
+    mui_seriefactura->setMainCompany ( mainCompany() );
+    mui_seriefactura->setQuery ( "SELECT * FROM serie_factura ORDER BY descserie_factura" );
+    mui_seriefactura->setTableName ( "serie_factura" );
+    mui_seriefactura->setFieldId ( "codigoserie_factura" );
+    mui_seriefactura->m_valores["codigoserie_factura"] = "";
+    mui_seriefactura->m_valores["descserie_factura"] = "";
+    mui_seriefactura->setAllowNull ( TRUE );
+    mui_seriefactura->setId("");    
+    
+    
     _depura ( "END FacturasList::setMainCompany", 0 );
 }
 

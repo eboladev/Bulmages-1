@@ -752,7 +752,7 @@
        </widget>
       </item>
       <item row="1" column="2">
-       <widget class="BfBuscarSerieFactura" name="mui_seriefactura">
+       <widget class="BlComboBox" name="mui_seriefactura">
         <property name="sizePolicy">
          <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
           <horstretch>0</horstretch>
@@ -914,9 +914,9 @@
    <header>blsearchwidget.h</header>
   </customwidget>
   <customwidget>
-   <class>BfBuscarSerieFactura</class>
+   <class>BlComboBox</class>
    <extends>QComboBox</extends>
-   <header>bfbuscarseriefactura.h</header>
+   <header>blcombobox.h</header>
   </customwidget>
  </customwidgets>
  <resources>
