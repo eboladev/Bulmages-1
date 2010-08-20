@@ -81,6 +81,7 @@ BlFormList::BlFormList ( QWidget *parent, Qt::WFlags f, edmode modo ) : BlWidget
 {
     _depura ( "BlFormList::BlFormList", 0 );
     m_modo = modo;
+    m_listado = NULL;
     _depura ( "END BlFormList::BlFormList", 0 );
 }
 
@@ -96,6 +97,7 @@ BlFormList::BlFormList ( BlMainCompany *emp, QWidget *parent, Qt::WFlags f, edmo
 {
     _depura ( "BlFormList::BlFormList", 0 );
     m_modo = modo;
+    m_listado = NULL;
     _depura ( "END BlFormList::BlFormList", 0 );
 }
 

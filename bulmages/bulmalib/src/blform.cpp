@@ -826,8 +826,13 @@ int BlForm::guardar()
                 /// Buscamos el listado que corresponde al widget.
                 QList<BlFormList *> lista = g_main->findChildren<BlFormList *>();
                 for (int i = 0; i < lista.size(); ++i) {
-                    if (((BlFormList *)lista.at(i))->subForm()->tableName() == tableName())
-                        lista.at(i)->presentar();
+                    /// Puede darse el caso de que un listado no tenga asignado subform y haga petar el programa
+                    if (((BlFormList *)lista.at(i))->subForm()) {
+                       if (((BlFormList *)lista.at(i))->subForm()->tableName() == tableName())
+                           lista.at(i)->presentar();
+                    } else {
+                       mensajeInfo("No se establecio SubForm para el formulario " + ((BlFormList *)lista.at(i))->objectName());
+                    } // end if
                 } // end for
         } // end if
 

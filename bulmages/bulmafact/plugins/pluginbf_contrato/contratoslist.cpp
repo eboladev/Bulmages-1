@@ -76,6 +76,7 @@ ContratosList::ContratosList ( BfCompany *comp, QWidget *parent, Qt::WFlags flag
         mui_imprimir->setHidden ( TRUE );
     } // end if
     presenta();
+    setSubForm(mui_list);
     trataPermisos ( "contrato" );
     _depura ( "END ContratosList::ContratosList", 0 );
 }
