@@ -50,6 +50,7 @@ ListLinPedidoClienteView::ListLinPedidoClienteView ( QWidget *parent ) : BfSubFo
     addSubFormHeader ( "desclpedidocliente", BlDbField::DbVarChar, BlDbField::DbNotNull, BlSubFormHeader::DbNone, _ ( "Descripcion" ) );
     addSubFormHeader ( "cantlpedidocliente", BlDbField::DbNumeric, BlDbField::DbNotNull, BlSubFormHeader::DbNone, _ ( "Cantidad" ) );
     addSubFormHeader ( "pvplpedidocliente", BlDbField::DbNumeric, BlDbField::DbNotNull, BlSubFormHeader::DbNone, _ ( "Precio de venta s/IVA" ) );
+    addSubFormHeader ( "totallpedidocliente", BlDbField::DbNumeric, BlDbField::DbNoSave, BlSubFormHeader::DbNoWrite, _ ( "Total Linea" ) );
     addSubFormHeader ( "ivalpedidocliente", BlDbField::DbNumeric, BlDbField::DbNotNull, BlSubFormHeader::DbNone, _ ( "% I.V.A." ) );
     addSubFormHeader ( "reqeqlpedidocliente", BlDbField::DbNumeric, BlDbField::DbNothing, BlSubFormHeader::DbNone, _ ( "% Recargo E.Q." ) );
     addSubFormHeader ( "descuentolpedidocliente", BlDbField::DbNumeric, BlDbField::DbNotNull, BlSubFormHeader::DbNone, _ ( "% Descuento" ) );
@@ -75,7 +76,7 @@ void ListLinPedidoClienteView::cargar ( QString idpedidocliente )
 {
     _depura ( "ListLinPedidoClienteView::cargar", 0 );
     mdb_idpedidocliente = idpedidocliente;
-    BlSubForm::cargar ( "SELECT * FROM lpedidocliente LEFT JOIN articulo ON lpedidocliente.idarticulo = articulo.idarticulo WHERE idpedidocliente = " + mdb_idpedidocliente + " ORDER BY ordenlpedidocliente" );
+    BlSubForm::cargar ( "SELECT *, (cantlpedidocliente * pvplpedidocliente)::NUMERIC(12,2) AS totallpedidocliente FROM lpedidocliente LEFT JOIN articulo ON lpedidocliente.idarticulo = articulo.idarticulo WHERE idpedidocliente = " + mdb_idpedidocliente + " ORDER BY ordenlpedidocliente" );
     _depura ( "END ListLinPedidoClienteView::cargar", 0 );
 }
 

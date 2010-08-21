@@ -49,6 +49,7 @@ BfClienteAlbaranSubForm::BfClienteAlbaranSubForm ( QWidget *parent )
     addSubFormHeader ( "desclalbaran", BlDbField::DbVarChar, BlDbField::DbNotNull, BlSubFormHeader::DbNone, _ ( "Descripcion" ) );
     addSubFormHeader ( "cantlalbaran", BlDbField::DbNumeric, BlDbField::DbNotNull, BlSubFormHeader::DbNone, _ ( "Cantidad" ) );
     addSubFormHeader ( "pvplalbaran", BlDbField::DbNumeric, BlDbField::DbNotNull, BlSubFormHeader::DbNone, _ ( "P.V.P." ) );
+    addSubFormHeader ( "totallalbaran", BlDbField::DbNumeric, BlDbField::DbNoSave, BlSubFormHeader::DbNoWrite, _ ( "Total Linea" ) );
     addSubFormHeader ( "ivalalbaran", BlDbField::DbNumeric, BlDbField::DbNotNull, BlSubFormHeader::DbNone, _ ( "I.V.A." ) );
     addSubFormHeader ( "reqeqlalbaran", BlDbField::DbNumeric, BlDbField::DbNothing, BlSubFormHeader::DbNone, _ ( "% Recargo E.Q." ) );
     addSubFormHeader ( "descuentolalbaran", BlDbField::DbNumeric, BlDbField::DbNotNull, BlSubFormHeader::DbNone, _ ( "% Descuento" ) );
@@ -76,7 +77,7 @@ void BfClienteAlbaranSubForm::cargar ( QString idalbaran )
     if ( res != 0 )
         return;
 
-    BlSubForm::cargar ( "SELECT * FROM lalbaran LEFT JOIN articulo ON lalbaran.idarticulo = articulo.idarticulo WHERE idalbaran=" + mdb_idalbaran + "   ORDER BY ordenlalbaran" );
+    BlSubForm::cargar ( "SELECT *, (cantlalbaran * pvplalbaran)::NUMERIC(12,2) AS totallalbaran FROM lalbaran LEFT JOIN articulo ON lalbaran.idarticulo = articulo.idarticulo WHERE idalbaran=" + mdb_idalbaran + "   ORDER BY ordenlalbaran" );
     _depura ( "END BfClienteAlbaranSubForm::cargar", 0 );
 }
 

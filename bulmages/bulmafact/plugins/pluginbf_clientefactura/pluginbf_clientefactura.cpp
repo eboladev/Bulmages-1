@@ -26,6 +26,7 @@
 #include "blfunctions.h"
 #include "facturaview.h"
 #include "facturaslist.h"
+#include "blfixed.h"
 
 #include "genfacqtoolbutton.h"
 
@@ -279,4 +280,10 @@ int SNewFacturaView ( BfCompany *v )
     g_plugParams = h;
     return 1;
 }
+
+
+
+
+
+
 

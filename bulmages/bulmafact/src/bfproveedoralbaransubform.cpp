@@ -51,6 +51,7 @@ BfProveedorAlbaranSubForm::BfProveedorAlbaranSubForm ( QWidget *parent ) : BfSub
     addSubFormHeader ( "desclalbaranp", BlDbField::DbVarChar, BlDbField::DbNotNull, BlSubFormHeader::DbNone, _ ( "Descripcion" ) );
     addSubFormHeader ( "cantlalbaranp", BlDbField::DbNumeric, BlDbField::DbNotNull, BlSubFormHeader::DbNone, _ ( "Cantidad" ) );
     addSubFormHeader ( "pvplalbaranp", BlDbField::DbNumeric, BlDbField::DbNotNull, BlSubFormHeader::DbNone, _ ( "Precio" ) );
+    addSubFormHeader ( "totallalbaranp", BlDbField::DbNumeric, BlDbField::DbNoSave, BlSubFormHeader::DbNoWrite, _ ( "Total Linea" ) );
     addSubFormHeader ( "ivalalbaranp", BlDbField::DbNumeric, BlDbField::DbNotNull, BlSubFormHeader::DbNone, _ ( "% I.V.A." ) );
     addSubFormHeader ( "reqeqlalbaranp", BlDbField::DbNumeric, BlDbField::DbNothing, BlSubFormHeader::DbNone, _ ( "% R.E." ) );
     addSubFormHeader ( "descuentolalbaranp", BlDbField::DbNumeric, BlDbField::DbNotNull, BlSubFormHeader::DbNone, _ ( "% Descuento" ) );
@@ -73,7 +74,7 @@ void BfProveedorAlbaranSubForm::cargar ( QString idalbaranp )
 {
     _depura ( "ListLinPedidoProveedorView::cargar", 0 );
     mdb_idalbaranp = idalbaranp;
-    BlSubForm::cargar ( "SELECT * FROM lalbaranp LEFT JOIN articulo ON lalbaranp.idarticulo = articulo.idarticulo WHERE idalbaranp = " + mdb_idalbaranp + " ORDER BY ordenlalbaranp" );
+    BlSubForm::cargar ( "SELECT *, (cantlalbaranp * pvplalbaranp)::NUMERIC(12,2) AS totallalbaranp FROM lalbaranp LEFT JOIN articulo ON lalbaranp.idarticulo = articulo.idarticulo WHERE idalbaranp = " + mdb_idalbaranp + " ORDER BY ordenlalbaranp" );
     _depura ( "END ListLinPedidoProveedorView::cargar", 0 );
 }
 

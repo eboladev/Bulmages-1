@@ -50,6 +50,7 @@ ListLinPresupuestoView::ListLinPresupuestoView ( QWidget *parent ) : BfSubForm (
     addSubFormHeader ( "desclpresupuesto", BlDbField::DbVarChar, BlDbField::DbNotNull, BlSubFormHeader::DbNone, _ ( "Descripcion" ) );
     addSubFormHeader ( "cantlpresupuesto", BlDbField::DbNumeric, BlDbField::DbNotNull, BlSubFormHeader::DbNone, _ ( "Cantidad" ) );
     addSubFormHeader ( "pvplpresupuesto", BlDbField::DbNumeric, BlDbField::DbNotNull, BlSubFormHeader::DbNone, _ ( "Precio de venta s/IVA" ) );
+    addSubFormHeader ( "totallpresupuesto", BlDbField::DbNumeric, BlDbField::DbNoSave, BlSubFormHeader::DbNoWrite, _ ( "Total Linea" ) );
     addSubFormHeader ( "ivalpresupuesto", BlDbField::DbNumeric, BlDbField::DbNotNull, BlSubFormHeader::DbNone, _ ( "% I.V.A." ) );
     addSubFormHeader ( "reqeqlpresupuesto", BlDbField::DbNumeric, BlDbField::DbNothing, BlSubFormHeader::DbNone, _ ( "% Recargo E.Q." ) );
     addSubFormHeader ( "descuentolpresupuesto", BlDbField::DbNumeric, BlDbField::DbNotNull, BlSubFormHeader::DbNone, _ ( "% Descuento" ) );
@@ -74,7 +75,7 @@ void ListLinPresupuestoView::cargar ( QString idpresupuesto )
     _depura ( "ListLinPresupuestoView::cargar", 0 );
     mdb_idpresupuesto = idpresupuesto;
     /// Al hacer la carge usamos el ordenlpresupuesto para indicar que el campo de ordenacion es el que toca.
-    BlSubForm::cargar ( "SELECT * FROM lpresupuesto LEFT JOIN articulo ON lpresupuesto.idarticulo = articulo.idarticulo WHERE idpresupuesto = " + mdb_idpresupuesto + " ORDER BY ordenlpresupuesto" );
+    BlSubForm::cargar ( "SELECT *, (cantlpresupuesto * pvplpresupuesto)::NUMERIC(12,2) AS totallpresupuesto FROM lpresupuesto LEFT JOIN articulo ON lpresupuesto.idarticulo = articulo.idarticulo WHERE idpresupuesto = " + mdb_idpresupuesto + " ORDER BY ordenlpresupuesto" );
     _depura ( "END ListLinPresupuestoView::cargar", 0 );
 }
 

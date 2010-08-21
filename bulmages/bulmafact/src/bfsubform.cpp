@@ -265,9 +265,15 @@ void BfSubForm::editFinished ( int row, int col, BlDbSubFormRecord *rec, BlDbSub
             delete cur;
     } // end if
 
-    /*
-        BlSubForm::on_mui_list_cellChanged ( row, col );
-    */
+    /// Hago la actualizacion del campo total
+    if ( (camp->nomcampo() == "codigocompletoarticulo") || (camp->nomcampo() == "cant" + m_tablename) || (camp->nomcampo() == "pvp" + m_tablename)) {
+      if (existsHeader("cant" + m_tablename) && existsHeader("pvp" + m_tablename) && existsHeader("total" + m_tablename) ) {
+	/// El campo total es calculado, asi que tratamos su actualización aqui aunque bien podri
+	BlFixed total = BlFixed(rec->dbValue("cant" + m_tablename)) * BlFixed(rec->dbValue("pvp" + m_tablename));
+	rec->setDbValue ( "total"+m_tablename, total.toQString('0',2) );
+      } // end if
+    } // end if
+    
     /// Refrescamos el registro.
     rec->refresh();
     _depura ( "END BfSubForm::editFinished", 0 );
