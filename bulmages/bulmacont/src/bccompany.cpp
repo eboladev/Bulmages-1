@@ -437,7 +437,7 @@ void BcCompany::cerrarAsientos()
         delete cur;
         blDebug ( "END BcCompany::cerrarAsientos", 0 );
     } catch ( ... ) {
-        mensajeError ( "Ha habido un error al cerrar los asientos" );
+        blMsgError ( "Ha habido un error al cerrar los asientos" );
         if ( cur ) delete cur;
         return;
     } // end try
@@ -479,7 +479,7 @@ void BcCompany::reemplazacuentaenasientos()
 void BcCompany::recalculasaldos()
 {
     blDebug ( "BcCompany::recalculasaldos", 0 );
-    mensajeInfo ( "recalcular Saldos" );
+    blMsgInfo ( "recalcular Saldos" );
     BlDbRecordSet *cur = loadQuery ( "SELECT recalculasaldos()" );
     delete cur;
     blDebug ( "END BcCompany::recalculasaldos", 0 );

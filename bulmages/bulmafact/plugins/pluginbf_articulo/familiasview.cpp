@@ -351,7 +351,7 @@ int FamiliasView::guardar()
     QString prodfam;
     try {
         if ( m_idfamilia.isEmpty() ) {
-            mensajeInfo ( _ ( "Debe seleccionar una familia" ) );
+            blMsgInfo ( _ ( "Debe seleccionar una familia" ) );
             return -1;
         } // end if
 
@@ -398,7 +398,7 @@ int FamiliasView::guardar()
 	mainCompany()->commit();
         return 0;
     } catch ( ... ) {
-        mensajeInfo ( _ ( "Error al guardar la familia" ) );
+        blMsgInfo ( _ ( "Error al guardar la familia" ) );
 	mainCompany()->rollback();
         return -1;
     } // end try
@@ -459,7 +459,7 @@ void FamiliasView::on_mui_crear_clicked()
         blDebug ( "END FamiliasView::on_mui_crear_clicked", 0 );
     } catch ( ... ) {
         mainCompany()->rollback();
-        mensajeInfo ( _ ( "Error al crear la familia" ) );
+        blMsgInfo ( _ ( "Error al crear la familia" ) );
     } // end try
 }
 
@@ -482,7 +482,7 @@ void FamiliasView::on_mui_borrar_clicked()
             dialogChanges_cargaInicial();
             blDebug ( windowTitle() + " " + "borrado satisfactoriamente.", 10 );
         } else {
-            mensajeInfo ( windowTitle() + " " + _ ( "no se ha podido borrar" ) );
+            blMsgInfo ( windowTitle() + " " + _ ( "no se ha podido borrar" ) );
         } // end if
     } // end if
     blDebug ( "END FamiliasView::on_mui_borrar_clicked", 0 );
@@ -498,7 +498,7 @@ int FamiliasView::borrar()
 {
     blDebug ( "FamiliasView::borrar", 0 );
     if ( m_idfamilia == "" ) {
-        mensajeInfo ( _ ( "Debe seleccionar una familia" ) );
+        blMsgInfo ( _ ( "Debe seleccionar una familia" ) );
         return -1;
     } // end if
     try {
@@ -512,7 +512,7 @@ int FamiliasView::borrar()
         pintar();
         blDebug ( "END FamiliasView::borrar", 0 );
     } catch ( ... ) {
-        mensajeInfo ( _ ( "Error al borrar la familia" ) );
+        blMsgInfo ( _ ( "Error al borrar la familia" ) );
         return -1;
     } // end try
     return 0;

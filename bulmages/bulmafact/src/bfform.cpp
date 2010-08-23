@@ -1038,10 +1038,10 @@ void BfForm::imprimir()
     } catch ( int e ) {
         if ( e == 100 ) {
             /// El documento no se ha guardado y no se dispone en la base de datos de estos datos.
-            mensajeInfo ( _ ( "Tiene que guardar el documento antes de poder procesarlo." ) );
+            blMsgInfo ( _ ( "Tiene que guardar el documento antes de poder procesarlo." ) );
         } // end if
     } catch ( ... ) {
-        mensajeInfo ( _ ( "Error inesperado en la impresion" ) );
+        blMsgInfo ( _ ( "Error inesperado en la impresion" ) );
     } // end try
 }
 

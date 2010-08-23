@@ -87,7 +87,7 @@ AlumnoView::AlumnoView ( BfCompany *comp, QWidget *parent ) : BfForm ( comp, par
         
     } catch ( ... ) {
     
-        mensajeInfo ( _ ( "Error al crear el alumno" ), this );
+        blMsgInfo ( _ ( "Error al crear el alumno" ), this );
         
     } // end try
     
@@ -119,7 +119,7 @@ void AlumnoView::imprimir()
 
     if ( dbValue ( "idalumno" ).isEmpty() ) {
         /// El documento no se ha guardado y no se dispone en la base de datos de estos datos.
-        mensajeInfo ( _ ( "Tiene que guardar el documento antes de poder imprimirlo." ), this );
+        blMsgInfo ( _ ( "Tiene que guardar el documento antes de poder imprimirlo." ), this );
         return;
     }
     
@@ -180,7 +180,7 @@ int AlumnoView::guardarPost()
 
         /// Coge la imagen del recuadro y la guarda en un archivo con el nombre correcto.
         if ( mui_imagen->pixmap()->save ( g_confpr->valor ( CONF_DIR_IMG_ALUMNOS ) + dbValue ( "idalumno" ) + ".jpg" ) == false ) {
-            mensajeError ( _ ( "No se ha podido guardar la imagen.\nRevise los permisos de escritura y que disponga\nde espacio libre suficiente en el disco duro." ) );
+            blMsgError ( _ ( "No se ha podido guardar la imagen.\nRevise los permisos de escritura y que disponga\nde espacio libre suficiente en el disco duro." ) );
         } // end if
 
         
@@ -204,7 +204,7 @@ int AlumnoView::borrarPre()
     if ( archivo.exists() ) {
     
         if ( archivo.remove() == false ) {
-            mensajeError ( _ ( "No se ha podido borrar la imagen del alumno.\nCompruebe que el archivo tenga los permisos correctos." ) );
+            blMsgError ( _ ( "No se ha podido borrar la imagen del alumno.\nCompruebe que el archivo tenga los permisos correctos." ) );
         } // end if
             
     } // end if
@@ -258,7 +258,7 @@ void AlumnoView::on_mui_cambiarimagen_clicked()
     if ( !m_archivoimagen.isNull() ) {
         /// Comprueba que la imagen del archivo es valida.
         if ( imagen.load ( m_archivoimagen ) == false ) {
-            mensajeError ( _ ( "No se ha podido cargar la imagen.\nCompruebe que la imagen sea valida." ) );
+            blMsgError ( _ ( "No se ha podido cargar la imagen.\nCompruebe que la imagen sea valida." ) );
             return;
         } // end if
 
@@ -293,7 +293,7 @@ void AlumnoView::on_mui_borrarimagen_clicked()
         if ( val == QMessageBox::Yes ) {
             /// Se borra el archivo de la imagen y se muestra la imagen por defecto en el QLabel.
             if ( archivo.remove() == false ) {
-                mensajeError ( _ ( "No se ha podido borrar el archivo.\nCompruebe que el archivo tenga los permisos correctos." ) );
+                blMsgError ( _ ( "No se ha podido borrar el archivo.\nCompruebe que el archivo tenga los permisos correctos." ) );
             } // end if
         } // end if
     } // end if

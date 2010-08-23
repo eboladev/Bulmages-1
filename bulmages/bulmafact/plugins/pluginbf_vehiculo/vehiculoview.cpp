@@ -98,7 +98,7 @@ int VehiculoView::guardar()
         dialogChanges_cargaInicial();
         return 0;
     } catch ( ... ) {
-        mensajeInfo ( _ ( "Error al guardar la ficha" ) );
+        blMsgInfo ( _ ( "Error al guardar la ficha" ) );
         return -1;
     } // end try
     blDebug ( "END VehiculoView::guardar", 0 );
@@ -131,7 +131,7 @@ int VehiculoView::cargar ( QString idvehiculo )
         blDebug ( "END VehiculoView::cargar", 0 );
         return 0;
     } catch ( ... ) {
-        mensajeInfo ( _ ( "Error al cargar los datos en la ficha." ) );
+        blMsgInfo ( _ ( "Error al cargar los datos en la ficha." ) );
         return -1;
     }
 }

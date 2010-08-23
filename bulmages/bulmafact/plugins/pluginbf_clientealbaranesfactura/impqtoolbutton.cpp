@@ -109,7 +109,7 @@ void ImpQToolButton::click()
         /// Como estamos en un plugin buscamos nuevas formas de creacion de objetos.
         int resur = g_plugins->lanza ( "SNewFacturaView", m_companyact );
         if ( !resur ) {
-            mensajeInfo ( "no se pudo crear instancia de factura" );
+            blMsgInfo ( "no se pudo crear instancia de factura" );
             return;
         } // end if
         FacturaView *fac = ( FacturaView * ) g_plugParams;
@@ -129,7 +129,7 @@ void ImpQToolButton::click()
                 /// Como estamos en un plugin buscamos nuevas formas de creacion de objetos.
                 int resur = g_plugins->lanza ( "SNewAlbaranClienteView", m_companyact );
                 if ( !resur ) {
-                    mensajeInfo ( "no se pudo crear instancia de albaran" );
+                    blMsgInfo ( "no se pudo crear instancia de albaran" );
                     return;
                 } // end if
                 AlbaranClienteView *pres = ( AlbaranClienteView * ) g_plugParams;

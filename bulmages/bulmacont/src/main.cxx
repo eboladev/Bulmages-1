@@ -187,7 +187,7 @@ int main ( int argc, char **argv )
       /// Disparamos los plugins con entryPoint.
       g_plugins->lanza ( "exitPoint", bges );
    } catch ( ... ) {
-      mensajeInfo ( _( "Error inesperado en BulmaCont, el programa se cerrara." ) );
+      blMsgInfo ( _( "Error inesperado en BulmaCont, el programa se cerrara." ) );
    } // end try
 
    /// Liberamos memoria.

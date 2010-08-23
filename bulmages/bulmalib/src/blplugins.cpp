@@ -95,7 +95,7 @@ void BlPlugins::cargaLibs ( const QString &libs )
             } // end if
         } // end for
         if ( ! cargado ) {
-            mensajeInfo ( _ ("No se ha podido cargar la libreria: " ) + *it + "\n" + libErrorString );
+            blMsgInfo ( _ ("No se ha podido cargar la libreria: " ) + *it + "\n" + libErrorString );
         } // end if
     } // end for
     blDebug ( "END BlPlugins::cargaLibs", 0 );

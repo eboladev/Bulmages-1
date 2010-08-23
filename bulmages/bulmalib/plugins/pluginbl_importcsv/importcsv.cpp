@@ -47,7 +47,7 @@ ImportCSV::ImportCSV ( BlMainCompany *comp, QWidget *parent )
 
         mainCompany()->meteWindow ( windowTitle(), this );
     } catch ( ... ) {
-        mensajeInfo ( _ ( "Error al crear la ventana de importacion" ) );
+        blMsgInfo ( _ ( "Error al crear la ventana de importacion" ) );
     } // end try
     blDebug ( "END ImportCSV::ImportCSV", 0 );
 }
@@ -74,7 +74,7 @@ void ImportCSV::on_mui_buscarArchivo_clicked()
 void ImportCSV::on_mui_aceptar_clicked()
 {
     blDebug ( "ImportCSV::on_mui_aceptar_clicked", 0 );
-    mensajeInfo ( "aceptar pulsado" );
+    blMsgInfo ( "aceptar pulsado" );
 
     QFile file ( mui_archivo->text() );
     if ( !file.open ( QIODevice::ReadOnly | QIODevice::Text ) )

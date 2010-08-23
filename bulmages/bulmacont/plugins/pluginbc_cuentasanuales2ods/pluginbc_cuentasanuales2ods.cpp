@@ -71,7 +71,7 @@ bool PluginBc_CuentasAnuales2ODS::Arboles()
     ramas = dbConnection->loadQuery ( query, "Ramas" );
     dbConnection->commit();
     if ( ramas == NULL ) {
-        mensajeInfo ( _ ( "Error con la base de datos" ) );
+        blMsgInfo ( _ ( "Error con la base de datos" ) );
         return 0;
     }
 
@@ -100,7 +100,7 @@ bool PluginBc_CuentasAnuales2ODS::Arboles()
     hojas = dbConnection->loadQuery ( query, "Ejercicio N" );
     dbConnection->commit();
     if ( hojas == NULL ) {
-        mensajeInfo ( _ ( "Error con la base de datos" ) );
+        blMsgInfo ( _ ( "Error con la base de datos" ) );
         return 0;
     }
 
@@ -117,7 +117,7 @@ bool PluginBc_CuentasAnuales2ODS::Arboles()
     hojas = dbConnection->loadQuery ( query, "Ejercicio N-1" );
     dbConnection->commit();
     if ( hojas == NULL ) {
-        mensajeInfo ( _ ( "Error con la base de datos" ) );
+        blMsgInfo ( _ ( "Error con la base de datos" ) );
         return 0;
     }
 
@@ -147,7 +147,7 @@ OK, aqui poden haver passat 3 coses.
      // Si hi ha hagut el error estare en aquest punt i puc donar el missatge
         // de error i esborrar les variables que ja no faci servir.
         // Per exemple d'aquesta forma:
-           mensajeInfo("Error con la base de datos");
+           blMsgInfo("Error con la base de datos");
            if (cur) delete cur;
         }
 
@@ -204,7 +204,7 @@ OK, aqui poden haver passat 3 coses.
 //     if (cur != NULL)
 //  resultado = cur->valor ( "saldototal" );
 //     else
-//  mensajeInfo(_("Error con la base de datos"));
+//  blMsgInfo(_("Error con la base de datos"));
 //
 //     blDebug ( "END PluginBc_CuentasAnuales2ODS::saldoCuenta", 0 );
 //     return resultado;
@@ -255,7 +255,7 @@ BlFixed PluginBc_CuentasAnuales2ODS::saldoCuentaAnt ( int cuenta )
 //     if (cur != NULL)
 //  resultado = cur->valor ( "saldototal" );
 //     else
-//  mensajeInfo(_("Error con la base de datos"));
+//  blMsgInfo(_("Error con la base de datos"));
 //
 //     blDebug ( "END PluginBc_CuentasAnuales2ODS::saldoCuentaAnt", 0 );
 //     return resultado;
@@ -308,11 +308,11 @@ bool PluginBc_CuentasAnuales2ODS::formDatosBalance ( CAnuales tipus )
     delete dv;
 
     if ( ejercicioActual_fechaBalance.isEmpty() ) {
-        mensajeError ( _ ( "ERROR: Debe introducir una fecha en el balance actual." ) );
+        blMsgError ( _ ( "ERROR: Debe introducir una fecha en el balance actual." ) );
         resultado = 0;
     } else {
         if ( ejercicioAnterior_fechaBalance.isEmpty() ) {
-            mensajeError ( _ ( "ERROR: Debe introducir una fecha en el balance anterior." ) );
+            blMsgError ( _ ( "ERROR: Debe introducir una fecha en el balance anterior." ) );
             resultado = 0;
         }
     } // end if
@@ -369,7 +369,7 @@ void PluginBc_CuentasAnuales2ODS::balanceSituacionODS ( CAnuales tipus )
         break;
 
     default:
-        mensajeError ( _ ( "ERROR: Funcion no implementada todavia." ) );
+        blMsgError ( _ ( "ERROR: Funcion no implementada todavia." ) );
         break;
     }
 
@@ -387,7 +387,7 @@ void PluginBc_CuentasAnuales2ODS::balanceSituacionODS ( CAnuales tipus )
         stream << archivosalida.toAscii();
         file.close();
     } else
-        mensajeError ( _ ( "ERROR: No se ha podido crear el archivo" ) );
+        blMsgError ( _ ( "ERROR: No se ha podido crear el archivo" ) );
 
     cadena = " cd " + g_confpr->valor ( CONF_DIR_USER ) + "; python " + archivod;
     system ( cadena.toAscii() );
@@ -594,10 +594,10 @@ void PluginBc_CuentasAnuales2ODS::mensajeAdvertenciaPGC ( CAnuales tipus )
         break;
 
     default:
-        mensajeError ( _ ( "ERROR: Funcion no implementada todavia." ) );
+        blMsgError ( _ ( "ERROR: Funcion no implementada todavia." ) );
         break;
     }
 
-    mensajeAviso ( _ ( "Advertencia: ha escojido las " ) + pgc + _ ( "El resultado solo sera correcto si coincide con el plan contable de su empresa." ) );
+    blMsgWarning ( _ ( "Advertencia: ha escojido las " ) + pgc + _ ( "El resultado solo sera correcto si coincide con el plan contable de su empresa." ) );
 }
 

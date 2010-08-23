@@ -221,7 +221,7 @@ int main ( int argc, char **argv )
 	delete g_confpr;
 	
    } catch ( ... ) {
-        mensajeInfo ( _( "Error inesperado en BulmaTPV. El programa se cerrara." ) );
+        blMsgInfo ( _( "Error inesperado en BulmaTPV. El programa se cerrara." ) );
    } // end try
 
 

@@ -204,7 +204,7 @@ void AlmacenesListView::editar ( int row )
         } // end if
         blDebug ( "END AlmacenesListView::editar", 0 );
     } catch ( ... ) {
-        mensajeInfo ( _ ( "Error al editar el almacen" ) );
+        blMsgInfo ( _ ( "Error al editar el almacen" ) );
     } // end try
 }
 
@@ -229,7 +229,7 @@ void AlmacenesListView::borrar()
     blDebug ( "AlmacenesListView::borrar", 0 );
     int a = mui_list->currentRow();
     if ( a < 0 ) {
-        mensajeInfo ( _ ( "Debe seleccionar una linea" ) );
+        blMsgInfo ( _ ( "Debe seleccionar una linea" ) );
         return;
     } // end if
     try {
@@ -251,7 +251,7 @@ void AlmacenesListView::borrar()
         } // end if
         presentar();
     } catch ( ... ) {
-        mensajeInfo ( _ ( "Error al borrar el almacen" ) );
+        blMsgInfo ( _ ( "Error al borrar el almacen" ) );
     } // end try
     blDebug ( "END AlmacenesListView::borrar", 0 );
 }

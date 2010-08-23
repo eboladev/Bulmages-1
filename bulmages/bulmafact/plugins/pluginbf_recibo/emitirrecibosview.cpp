@@ -70,7 +70,7 @@ EmitirRecibosView::EmitirRecibosView ( BfCompany *comp, QWidget *parent )
 
     } catch ( ... ) {
     
-        mensajeInfo ( _ ( "Error al crear el recibo" ), this );
+        blMsgInfo ( _ ( "Error al crear el recibo" ), this );
         
     } // end try
     
@@ -158,7 +158,7 @@ void EmitirRecibosView::on_mui_crear_clicked() {
     
     delete cur;
     
-    mensajeInfo(_("Terminado"));
+    blMsgInfo(_("Terminado"));
     
     m_progreso->setValue(0);
     

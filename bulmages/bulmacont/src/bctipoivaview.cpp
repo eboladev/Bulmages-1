@@ -162,7 +162,7 @@ void BcTipoIVAView::on_mui_crear_clicked()
         } // end if
 
         if ( mui_idcuenta->id() == "" ) {
-            mensajeInfo ( "Debe seleccionar una cuenta para asociarle el tipo de IVA" );
+            blMsgInfo ( "Debe seleccionar una cuenta para asociarle el tipo de IVA" );
             return;
         } // end if
 

@@ -235,7 +235,7 @@ void myplugclipboard::pegaActualizaODS()
       
       subform->mainCompany() ->commit();
       
-      mensajeInfo(_("Actualizacion completada con exito."));
+      blMsgInfo(_("Actualizacion completada con exito."));
       
     } catch (...) {
       

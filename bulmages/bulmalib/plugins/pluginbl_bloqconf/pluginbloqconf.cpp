@@ -73,7 +73,7 @@ void MyPluginBloqConf::elslot( )
 
     QString cad = "chmod a-w " + g_confpr->valor(CONF_DIR_USER) + "*.cfn";
     system ( cad.toAscii().constData() );
-    mensajeInfo("Configuraciones Bloqueadas. Se mantendra la configuracion establecida al cargar el programa. Cualquier configuracion posterior a la carga del programa se perdera.");
+    blMsgInfo("Configuraciones Bloqueadas. Se mantendra la configuracion establecida al cargar el programa. Cualquier configuracion posterior a la carga del programa se perdera.");
     blDebug ( "END MyPluginBloqConf::elslot", 0 );
 }
 
@@ -86,7 +86,7 @@ void MyPluginBloqConf::elslot1( )
 
     QString cad = "chmod a+w " + g_confpr->valor(CONF_DIR_USER) + "*.cfn";
     system ( cad.toAscii().constData() );
-    mensajeInfo("Configuraciones Desbloqueadas. Las configuraciones se guardaran al cerrar el programa.");
+    blMsgInfo("Configuraciones Desbloqueadas. Las configuraciones se guardaran al cerrar el programa.");
 
     blDebug ( "END MyPluginBloqConf::elslot", 0 );
 }
@@ -100,7 +100,7 @@ void MyPluginBloqConf::elslot2( )
 
     QString cad = "rm" + g_confpr->valor(CONF_DIR_USER) + "*.cfn";
     system ( cad.toAscii().constData() );
-    mensajeInfo("Configuraciones Borradas. Las configuraciones se guardaran al cerrar el programa.");
+    blMsgInfo("Configuraciones Borradas. Las configuraciones se guardaran al cerrar el programa.");
 
     blDebug ( "END MyPluginBloqConf::elslot2", 0 );
 }

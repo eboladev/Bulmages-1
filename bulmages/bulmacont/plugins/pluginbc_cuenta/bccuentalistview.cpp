@@ -158,7 +158,7 @@ void BcCuentaListView::borrar()
         blDebug ( "BcCuentaListView::on_mui_borrar_clicked", 0 );
         int a = mui_list->currentRow();
         if ( a < 0 ) {
-            mensajeInfo ( _( "Tiene que seleccionar un articulo" ), this );
+            blMsgInfo ( _( "Tiene que seleccionar un articulo" ), this );
             return;
         } // end if
         try {
@@ -175,7 +175,7 @@ void BcCuentaListView::borrar()
             } // end if
             blDebug ( "END BcCuentaListView::on_mui_borrar_clicked", 0 );
         } catch ( ... ) {
-            mensajeInfo ( _( "Error al borrar el articulo" ), this );
+            blMsgInfo ( _( "Error al borrar el articulo" ), this );
         } // end try
     */
 }

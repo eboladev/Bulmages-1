@@ -86,9 +86,9 @@ void BL_EXPORT blDebugOn();
 void BL_EXPORT blDebugOff();
 
 
-void BL_EXPORT mensajeInfo ( QString cad, QWidget *parent = 0 );
-void BL_EXPORT mensajeAviso ( QString cad, QWidget *parent = 0 );
-void BL_EXPORT mensajeError ( QString cad, QWidget *parent = 0 );
+void BL_EXPORT blMsgInfo ( QString cad, QWidget *parent = 0 );
+void BL_EXPORT blMsgWarning ( QString cad, QWidget *parent = 0 );
+void BL_EXPORT blMsgError ( QString cad, QWidget *parent = 0 );
 /// En la impresion de documentos con trml2pdf esta funcion hace casi todo el trabajo.
 /// de la invocacion de trml2pdf.
 /// Para evitar trabajo duplicado. El archivo debe estar ubicado ya en el directorio.

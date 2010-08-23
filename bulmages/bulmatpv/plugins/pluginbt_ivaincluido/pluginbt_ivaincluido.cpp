@@ -108,7 +108,7 @@ int BtCompany_z(BtCompany * emp)
     BlDbRecordSet *curfechas = emp->loadQuery ( queryfechas );
     
     while ( !curfechas->eof() ) {
-        //mensajeInfo(curfechas->valor("fechaalbaran"));
+        //blMsgInfo(curfechas->valor("fechaalbaran"));
 	
         emp->begin();
         query = "INSERT INTO z (idalmacen) VALUES(" + g_confpr->valor ( CONF_IDALMACEN_DEFECTO ) + ")";

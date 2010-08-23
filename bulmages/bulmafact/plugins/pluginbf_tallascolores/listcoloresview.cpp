@@ -68,7 +68,7 @@ void ListColoresView::on_mui_aceptar_clicked()
         mui_listado->guardar();
         close();
     } catch ( ... ) {
-        mensajeInfo ( _ ( "Error al guardar los colores" ) );
+        blMsgInfo ( _ ( "Error al guardar los colores" ) );
     } // end try
     blDebug ( "END ListColoresView::on_mui_aceptar_clicked", 0 );
 }

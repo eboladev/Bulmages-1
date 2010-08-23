@@ -155,7 +155,7 @@ void ConvReunionList::borrar()
     blDebug ( "ConvReunionList::borrar", 0 );
     int a = mui_list->currentRow();
     if ( a < 0 ) {
-        mensajeInfo ( _ ( "Debe seleccionar una linea" ) );
+        blMsgInfo ( _ ( "Debe seleccionar una linea" ) );
         return;
     } // end if
     try {
@@ -169,7 +169,7 @@ void ConvReunionList::borrar()
         } // end if
         presentar();
     } catch ( ... ) {
-        mensajeInfo ( _ ( "Error al borrar el cobro a cliente" ) );
+        blMsgInfo ( _ ( "Error al borrar el cobro a cliente" ) );
     } // end try
     blDebug ( "END:ConvReunionList::borrar", 0 );
 }
@@ -196,7 +196,7 @@ void ConvReunionList::editar ( int )
             emit ( selected ( mdb_idreunion ) );
         } // end if
     } catch ( ... ) {
-        mensajeInfo ( _ ( "Debe seleccionar una fila primero" ) );
+        blMsgInfo ( _ ( "Debe seleccionar una fila primero" ) );
     } // end try
     blDebug ( "END ConvReunionList::on_mui_list_cellDoubleClicked", 0 );
 

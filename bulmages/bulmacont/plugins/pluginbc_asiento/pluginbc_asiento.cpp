@@ -106,7 +106,7 @@ void MyPluginAsiento::elslot2()
         delete cur;
         blDebug ( "END BcCompany::Abrirasientos", 0 );
     } catch ( ... ) {
-        mensajeError ( "Ha habido un error al espaciar los asientos" );
+        blMsgError ( "Ha habido un error al espaciar los asientos" );
         if ( cur ) delete cur;
         return;
     } // end try
@@ -127,7 +127,7 @@ void MyPluginAsiento::elslot3()
         delete cur;
         blDebug ( "END BcCompany::Ordenarasientos", 10 );
     } catch ( ... ) {
-        mensajeError ( "Ha habido un error al ordenar los asientos" );
+        blMsgError ( "Ha habido un error al ordenar los asientos" );
         if ( cur ) delete cur;
         return;
     }

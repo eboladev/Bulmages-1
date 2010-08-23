@@ -165,7 +165,7 @@ void correctorwidget::alink ( const QUrl &url )
         /// Como estamos en un plugin buscamos nuevas formas de creacion de objetos.
         int resur = g_plugins->lanza ( "SNewClienteView", ( BfCompany * ) mainCompany() );
         if ( !resur ) {
-            mensajeInfo ( "No se pudo crear instancia de cliente" );
+            blMsgInfo ( "No se pudo crear instancia de cliente" );
             return;
         } // end if
         ClienteView *prov = ( ClienteView * ) g_plugParams;
@@ -179,7 +179,7 @@ void correctorwidget::alink ( const QUrl &url )
         /// Como estamos en un plugin buscamos nuevas formas de creacion de objetos.
         int resur = g_plugins->lanza ( "SNewFacturaView", ( BfCompany * ) mainCompany() );
         if ( !resur ) {
-            mensajeInfo ( "No se pudo crear instancia de factura" );
+            blMsgInfo ( "No se pudo crear instancia de factura" );
             return;
         } // end if
         FacturaView *prov = ( FacturaView * ) g_plugParams;
@@ -193,7 +193,7 @@ void correctorwidget::alink ( const QUrl &url )
         /// Como estamos en un plugin buscamos nuevas formas de creacion de objetos.
         int resur = g_plugins->lanza ( "SNewProveedorView", ( BfCompany * ) mainCompany() );
         if ( !resur ) {
-            mensajeInfo ( "No se pudo crear instancia de cliente" );
+            blMsgInfo ( "No se pudo crear instancia de cliente" );
             return;
         } // end if
         ProveedorView *prov = ( ProveedorView * ) g_plugParams;

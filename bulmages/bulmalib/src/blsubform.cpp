@@ -2044,7 +2044,7 @@ QString BlSubForm::dbValue ( const QString &campo, int row )
         blDebug ( "END BlSubForm::dbValue", 0 );
         return rec->dbValue ( campo );
     } catch ( ... ) {
-        mensajeInfo ( _ ("Fila inexistente" ));
+        blMsgInfo ( _ ("Fila inexistente" ));
         throw - 1;
     }
 }
@@ -2070,7 +2070,7 @@ void BlSubForm::setDbValue ( const QString &campo, int row, const QString &valor
         rec->setDbValue ( campo, valor );
         blDebug ( "END BlSubForm::setDbValue", 0 );
     } catch ( ... ) {
-        mensajeInfo ( _ ("Fila inexistente" ) );
+        blMsgInfo ( _ ("Fila inexistente" ) );
         throw - 1;
     }
 }
@@ -2141,7 +2141,7 @@ int BlSubForm::guardar()
             throw - 1;
         } // end if
     } catch ( ... ) {
-        mensajeError ( _ ("Error inesperado en el guardado. [BlSubForm::guardar]" ) );
+        blMsgError ( _ ("Error inesperado en el guardado. [BlSubForm::guardar]" ) );
         throw - 1;
     } // end try
     return -1;
@@ -2184,7 +2184,7 @@ int BlSubForm::borrar()
         blDebug ( "END BlSubForm::borrar", 0 );
         return error;
     } catch ( ... ) {
-        mensajeError ( _ ("Error al borrar. [BlSubForm::borrar]" ));
+        blMsgError ( _ ("Error al borrar. [BlSubForm::borrar]" ));
         return -1;
     } // end try
 }
@@ -2242,7 +2242,7 @@ int BlSubForm::borrar ( int row )
         return 0;
 
     } catch ( ... ) {
-        mensajeInfo ( _ ("Error al intentar borrar" ) );
+        blMsgInfo ( _ ("Error al intentar borrar" ) );
         blDebug ( "BlSubForm::borrar error al borrar", 3 );
         throw - 1;
     } // end try
@@ -2671,7 +2671,7 @@ void BlSubForm::on_mui_confquery_clicked()
 {
     blDebug ( "BlSubForm::on_mui_confquery_clicked ", 0 );
     if ( mainCompany() == NULL ) {
-        mensajeInfo ( _ ("no se ha inicializado bien la clase" ) );
+        blMsgInfo ( _ ("no se ha inicializado bien la clase" ) );
         return;
     } // end if
     mui_paginaact->setValue ( 1 );
@@ -2689,7 +2689,7 @@ void BlSubForm::confquery()
 {
     blDebug ( "BlSubForm::confquery", 0 );
     if ( mainCompany() == NULL ) {
-        mensajeInfo ( _ ("no se ha inicializado bien la clase" ) );
+        blMsgInfo ( _ ("no se ha inicializado bien la clase" ) );
         return;
     } // end if
 
@@ -2826,7 +2826,7 @@ void BlSubForm::imprimirPDF ( const QString &titular )
 
     int result1 = system ( archivo.toAscii() );
     if (result1 == -1) {
-	mensajeError(_("Errr al copiar listado.rml [ BlSubForm->imprimirPDF() ]"));
+	blMsgError(_("Errr al copiar listado.rml [ BlSubForm->imprimirPDF() ]"));
     } // end if
     
     /// Copiamos el logo.
@@ -2840,7 +2840,7 @@ void BlSubForm::imprimirPDF ( const QString &titular )
 
     int result2 = system ( archivologo.toAscii() );
     if (result2 == -1) {
-	mensajeError(_("Errr al copiar listado.rml [ BlSubForm->imprimirPDF() ]"));
+	blMsgError(_("Errr al copiar listado.rml [ BlSubForm->imprimirPDF() ]"));
     } // end if
 
     QFile file;

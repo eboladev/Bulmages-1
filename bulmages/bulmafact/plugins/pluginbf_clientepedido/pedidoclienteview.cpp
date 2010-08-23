@@ -94,7 +94,7 @@ PedidoClienteView::PedidoClienteView ( BfCompany *comp, QWidget *parent )
         mui_idcliente->m_valores["nomcliente"] = "";
         meteWindow ( windowTitle(), this, FALSE );
     } catch ( ... ) {
-        mensajeInfo ( _ ( "Error al crear el pedido cliente" ), this );
+        blMsgInfo ( _ ( "Error al crear el pedido cliente" ), this );
     } // end try
     blDebug ( "END PedidoClienteView::PedidoClienteView", 0 );
 }
@@ -184,7 +184,7 @@ void PedidoClienteView::generarAlbaran()
                 /// de estos datos. Se utilizan en su lugar los del formulario.
                 /// Verifica que exista, por lo menos, un cliente seleccionado.
                 if ( mui_idcliente->idcliente().isEmpty() ) {
-                    mensajeInfo ( _( "Tiene que seleccionar un cliente" ), this );
+                    blMsgInfo ( _( "Tiene que seleccionar un cliente" ), this );
                     return;
                 } else {
                     SQLQuery = "SELECT * FROM albaran WHERE refalbaran = '" + mui_refpedidocliente->text() + "' AND idcliente = " + mui_idcliente->idcliente();
@@ -267,7 +267,7 @@ void PedidoClienteView::generarAlbaran()
             bud->show();
 
         } catch ( ... ) {
-            mensajeInfo ( _( "Error inesperado" ), this );
+            blMsgInfo ( _( "Error inesperado" ), this );
             if ( cur ) delete cur;
             if ( bud ) delete bud;
         } // end try

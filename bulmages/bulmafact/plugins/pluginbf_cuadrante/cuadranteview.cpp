@@ -67,7 +67,7 @@ CuadranteView::CuadranteView ( BfCompany *comp, QWidget *parent )
 
         meteWindow ( windowTitle(), this, FALSE );
     } catch ( ... ) {
-        mensajeInfo ( _ ( "Error al crear el almacen" ) );
+        blMsgInfo ( _ ( "Error al crear el almacen" ) );
     } // end try
     blDebug ( "END CuadranteView::CuadranteView", 0 );
 }

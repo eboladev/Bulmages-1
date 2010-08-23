@@ -104,7 +104,7 @@ PresupuestoView::PresupuestoView ( BfCompany *comp, QWidget *parent )
         /// Disparamos los plugins por flanco descendente.
         g_plugins->lanza ( "PresupuestoView_PresupuestoView_Post", this );
     } catch ( ... ) {
-        mensajeInfo ( _ ( "Error al crear el presupuesto" ), this );
+        blMsgInfo ( _ ( "Error al crear el presupuesto" ), this );
     } // end try
     blDebug ( "Fin de la inicializacion de PresupuestoView", 0 );
 }
@@ -225,7 +225,7 @@ void PresupuestoView::generarPedidoCliente()
                 /// de estos datos. Se utilizan en su lugar los del formulario.
                 /// Verifica que exista, por lo menos, un cliente seleccionado.
                 if ( mui_idcliente->idcliente().isEmpty() ) {
-                    mensajeInfo ( _( "Tiene que seleccionar un cliente" ), this );
+                    blMsgInfo ( _( "Tiene que seleccionar un cliente" ), this );
                     return;
                 } else {
                     SQLQuery = "SELECT * FROM pedidocliente WHERE refpedidocliente = '" + mui_refpresupuesto->text() + "' AND idcliente = " + mui_idcliente->idcliente();
@@ -317,7 +317,7 @@ void PresupuestoView::generarPedidoCliente()
             bud->show();
 
         } catch ( ... ) {
-            mensajeInfo ( _( "Error inesperado" ), this );
+            blMsgInfo ( _( "Error inesperado" ), this );
             if ( cur ) delete cur;
             if ( bud ) delete bud;
         } // end try

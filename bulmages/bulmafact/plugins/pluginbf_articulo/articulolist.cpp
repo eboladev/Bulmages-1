@@ -159,7 +159,7 @@ void ArticuloList::borrar()
     blDebug ( "ArticuloList::on_mui_borrar_clicked", 0 );
     int a = mui_list->currentRow();
     if ( a < 0 ) {
-        mensajeInfo ( _ ( "Tiene que seleccionar un articulo" ) );
+        blMsgInfo ( _ ( "Tiene que seleccionar un articulo" ) );
         return;
     } // end if
     try {
@@ -176,7 +176,7 @@ void ArticuloList::borrar()
         } // end if
         blDebug ( "END ArticuloList::on_mui_borrar_clicked", 0 );
     } catch ( ... ) {
-        mensajeInfo ( _ ( "Error al borrar el articulo" ) );
+        blMsgInfo ( _ ( "Error al borrar el articulo" ) );
     } // end try
 }
 

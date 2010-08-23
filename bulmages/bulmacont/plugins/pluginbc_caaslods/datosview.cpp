@@ -78,20 +78,20 @@ void DatosView::on_mui_aceptar_clicked() {
    std::cout << "fechaFinalAnterior = " << fechaFinalAnterior.toAscii().constData() << std::endl;
 
    if ( fechaInicialActual.isEmpty() ) {
-        mensajeError ( _ ( "ERROR: Debe introducir una fecha inicial del balance actual." ) );
+        blMsgError ( _ ( "ERROR: Debe introducir una fecha inicial del balance actual." ) );
         resultado = false;
     } else {
         if ( fechaFinalActual.isEmpty() ) {
-            mensajeError ( _ ( "ERROR: Debe introducir una fecha final del balance actual." ) );
+            blMsgError ( _ ( "ERROR: Debe introducir una fecha final del balance actual." ) );
             resultado = false;
         }
          else {
             if ( fechaInicialAnterior.isEmpty() ) {
-               mensajeError ( _ ( "ERROR: Debe introducir una fecha inicial del balance anterior." ) );
+               blMsgError ( _ ( "ERROR: Debe introducir una fecha inicial del balance anterior." ) );
                resultado = false;
             } else {
             if ( fechaFinalAnterior.isEmpty() ) {
-               mensajeError ( _ ( "ERROR: Debe introducir una fecha final del balance anterior." ) );
+               blMsgError ( _ ( "ERROR: Debe introducir una fecha final del balance anterior." ) );
                resultado = false;
             }
          }
@@ -113,7 +113,7 @@ void DatosView::on_mui_aceptar_clicked() {
          invocaPYS ( archivo );
       }
       else{
-         mensajeError ( _("ERROR: Ha habido un error generando el informe"));
+         blMsgError ( _("ERROR: Ha habido un error generando el informe"));
       }
    }
    

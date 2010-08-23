@@ -68,7 +68,7 @@ void ListTallasView::on_mui_aceptar_clicked()
         mui_listado->guardar();
         close();
     } catch ( ... ) {
-        mensajeInfo ( _ ( "Error al guardar los colores" ), this );
+        blMsgInfo ( _ ( "Error al guardar los colores" ), this );
     } // end try
     blDebug ( "END ListTallasView::on_mui_aceptar_clicked", 0 );
 }

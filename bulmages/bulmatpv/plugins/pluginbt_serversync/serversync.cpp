@@ -44,7 +44,7 @@ ServerSync::ServerSync ( BtCompany *emp, QWidget *parent ) : BlWidget ( emp, par
 
     m_tcpServer = new QTcpServer(this);
     if (!m_tcpServer->listen(QHostAddress::Any, 5899)) {
-         mensajeInfo(m_tcpServer->errorString());
+         blMsgInfo(m_tcpServer->errorString());
          close();
          return;
     }

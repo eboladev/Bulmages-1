@@ -66,9 +66,9 @@ Q19View::Q19View ( CarteraCobrosList *fac, BfCompany *comp, QWidget *parent )
             QString val = rec->dbValue ( "selector" );
             if ( val == "TRUE" ) {
 		if (rec->dbValue("descforma_pago") != "Transferencia") 
-			mensajeInfo("Hay vencimientos que no pueden ser Remesados");
+			blMsgInfo("Hay vencimientos que no pueden ser Remesados");
 		if (rec->dbValue("estadovencimientoc") != "Pendiente") 
-			mensajeInfo("Hay vencimientos con estado no Pendiente");
+			blMsgInfo("Hay vencimientos con estado no Pendiente");
                 a = a + BlFixed ( rec->dbValue ( "cantvencimientoc" ) );
 		numop++;
             } // end if
@@ -81,7 +81,7 @@ Q19View::Q19View ( CarteraCobrosList *fac, BfCompany *comp, QWidget *parent )
         dialogChanges_cargaInicial();
 
     } catch ( ... ) {
-        mensajeInfo ( tr ( "Error al crear el archivo" ) );
+        blMsgInfo ( tr ( "Error al crear el archivo" ) );
     } // end try
     blDebug ( "END Q19View::Q19View", 0 );
 }
@@ -555,8 +555,8 @@ void Q19View::on_mui_aceptar_clicked()
             } // end if
         } // end for
 
-        mensajeInfo ( "Numero de Operaciones: " + QString::number ( j ) );
-        mensajeInfo ( "Total del archivo: " + total.toQString() );
+        blMsgInfo ( "Numero de Operaciones: " + QString::number ( j ) );
+        blMsgInfo ( "Total del archivo: " + total.toQString() );
 
         totalOrdenante ( out, total.toQString().remove ( ',' ).remove ( '.' ), QString::number ( j ), QString::number ( j + 2 ) );
         totalGeneral ( out, total.toQString().remove ( ',' ).remove ( '.' ), QString::number ( j ), QString::number ( j + 4 ) );

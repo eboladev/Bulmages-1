@@ -223,7 +223,7 @@ int RegistroIvaView::guardar()
         mainCompany() ->commit();
         dialogChanges_cargaInicial();
     } catch ( ... ) {
-        mensajeInfo ( "Error al guardar el Registro de IVA" );
+        blMsgInfo ( "Error al guardar el Registro de IVA" );
         mainCompany() ->rollback();
     } // end try
     blDebug ( "END RegistroIvaView::guardar" );

@@ -91,7 +91,7 @@ void ClientSync::readChannelFinished() {
     QTcpSocket *socket = (QTcpSocket *) sender();
     QString mensaje = "Fin de la comunicacion: "+ socket->peerAddress().toString() + "\n";
     mui_plainText->appendPlainText(mensaje);
-    mensajeInfo("Error de comunicacion con el servidor");
+    blMsgInfo("Error de comunicacion con el servidor");
     blDebug ( "END ClientSync::readyRead", 0 );
 }
 

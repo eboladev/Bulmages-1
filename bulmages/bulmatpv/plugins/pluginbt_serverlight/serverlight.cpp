@@ -46,7 +46,7 @@ ServerLight::ServerLight ( BtCompany *emp ) : BlWidget (emp, 0)
 
     m_tcpServer = new QTcpServer(this);
     if (!m_tcpServer->listen(QHostAddress::Any, 11637)) {
-         mensajeInfo(m_tcpServer->errorString());
+         blMsgInfo(m_tcpServer->errorString());
          return;
     }
 

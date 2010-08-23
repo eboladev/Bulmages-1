@@ -157,7 +157,7 @@ void ConvocatoriasList::borrar()
     blDebug ( "ConvocatoriasList::borrar", 0 );
     int a = mui_list->currentRow();
     if ( a < 0 ) {
-        mensajeInfo ( _ ( "Debe seleccionar una linea" ) );
+        blMsgInfo ( _ ( "Debe seleccionar una linea" ) );
         return;
     } // end if
     try {
@@ -171,7 +171,7 @@ void ConvocatoriasList::borrar()
         } // end if
         presentar();
     } catch ( ... ) {
-        mensajeInfo ( _ ( "Error al borrar el cobro a cliente" ) );
+        blMsgInfo ( _ ( "Error al borrar el cobro a cliente" ) );
     } // end try
     blDebug ( "END:ConvocatoriasList::borrar", 0 );
 }
@@ -198,7 +198,7 @@ void ConvocatoriasList::editar ( int )
             emit ( selected ( mdb_idactividad ) );
         } // end if
     } catch ( ... ) {
-        mensajeInfo ( _ ( "Debe seleccionar una fila primero" ) );
+        blMsgInfo ( _ ( "Debe seleccionar una fila primero" ) );
     } // end try
     blDebug ( "END ConvocatoriasList::on_mui_list_cellDoubleClicked", 0 );
 

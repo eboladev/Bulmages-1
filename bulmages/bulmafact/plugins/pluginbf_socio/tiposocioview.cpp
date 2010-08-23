@@ -144,7 +144,7 @@ int TiposocioView::guardar()
         blDebug ( "END TiposocioView::on_mui_guardar_clicked", 0 );
         return 0;
     } catch ( ... ) {
-        mensajeInfo ( _ ( "Error al guardar" ) );
+        blMsgInfo ( _ ( "Error al guardar" ) );
         return -1;
     } // end try
 }
@@ -192,7 +192,7 @@ void TiposocioView::on_mui_nuevo_clicked()
         pintar();
         blDebug ( "END TiposocioView::on_mui_nuevo_clicked", 0 );
     } catch ( ... ) {
-        mensajeInfo ( _ ( "Error inesperado al crear el Tipo de socio" ) );
+        blMsgInfo ( _ ( "Error inesperado al crear el Tipo de socio" ) );
         mainCompany() ->rollback();
     } // end catch
 }
@@ -219,7 +219,7 @@ void TiposocioView::on_mui_borrar_clicked()
         pintar();
         blDebug ( "END TiposocioView::on_mui_borrar_clicked", 0 );
     } catch ( ... ) {
-        mensajeInfo ( _ ( "Error inesperado al borrar el Tipo de socio" ) );
+        blMsgInfo ( _ ( "Error inesperado al borrar el Tipo de socio" ) );
         mainCompany() ->rollback();
     } // end try
 }

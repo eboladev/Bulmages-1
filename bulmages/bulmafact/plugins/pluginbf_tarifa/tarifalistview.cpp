@@ -105,7 +105,7 @@ void TarifaListView::borrar()
         tar->on_mui_borrar_clicked();
         delete tar;
     } else {
-        mensajeInfo ( tr ( "No ha seleccionado ninguna tarifa" ) );
+        blMsgInfo ( tr ( "No ha seleccionado ninguna tarifa" ) );
     } // end if
     blDebug ( "END TarifaListView::borrar\n", 0 );
 }

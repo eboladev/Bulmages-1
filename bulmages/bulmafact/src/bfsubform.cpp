@@ -219,7 +219,7 @@ void BfSubForm::editFinished ( int row, int col, BlDbSubFormRecord *rec, BlDbSub
                 calculaPVP ( rec );
             } // end if
         } else {
-            mensajeAviso ( _ ( "El codigo del articulo no existe.\nATENCION: No se guadara bien el documento hasta que sea valido." ) );
+            blMsgWarning ( _ ( "El codigo del articulo no existe.\nATENCION: No se guadara bien el documento hasta que sea valido." ) );
             /// \TODO Preparo para revisarlo para la version 0.11.2 o posterior.
             /** El codigo introducido no existe en la base de datos.
             Aqui se tiene que dar la siguiente informacion:
@@ -244,10 +244,10 @@ void BfSubForm::editFinished ( int row, int col, BlDbSubFormRecord *rec, BlDbSub
             msgBox.exec();
 
             if (msgBox.clickedButton() == botonCrear) {
-             mensajeInfo("Crear", this);
+             blMsgInfo("Crear", this);
 
             } else if (msgBox.clickedButton() == botonSeleccionar) {
-             mensajeInfo("Seleccionar", this);
+             blMsgInfo("Seleccionar", this);
 
             } else if (msgBox.clickedButton() == botonEditar) {
 

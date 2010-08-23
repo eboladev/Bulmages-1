@@ -204,7 +204,7 @@ QString BlDbField::valorcampoprep ( int &error )
     QString valor = "";
     if ( ( m_restrict & DbNotNull ) && ! ( m_restrict & DbAuto ) ) {
         if ( m_valorcampo == "" ) {
-            mensajeAviso ( "El campo '" + m_nompresentacion + "' no puede estar vacio." );
+            blMsgWarning ( "El campo '" + m_nompresentacion + "' no puede estar vacio." );
             error = -20200;
             blDebug ( "END BlDbField::valorcampoprep", 0, m_nomcampo + " " + m_valorcampo + "-->" + valor );
             return valor;
@@ -705,7 +705,7 @@ QString BlDbRecord::dbValueprep ( QString nomb )
     } // end while
 
     if ( !campo ) {
-        mensajeAviso ( "No se ha encontrado el campo '" + nomb + "'." );
+        blMsgWarning ( "No se ha encontrado el campo '" + nomb + "'." );
         return "";
     } // end if
 
@@ -797,7 +797,7 @@ int BlDbRecord::borrar()
         blDebug ( "END BlDbRecord::borrar", 0 );
         return 0;
     } catch ( ... ) {
-        mensajeInfo ( "se produjo un error al borrar el elemento" );
+        blMsgInfo ( "se produjo un error al borrar el elemento" );
         blDebug ( "BlDbRecord::borrar() Error al borrar elemento", 3 );
         throw - 1;
     }
@@ -820,7 +820,7 @@ int BlDbRecord::guardar()
         blDebug ( "END BlDbRecord::guardar", 0 );
         return 0;
     } catch ( ... ) {
-        mensajeError ( "BlDbRecord:: Se ha producido un error al guardar los datos." );
+        blMsgError ( "BlDbRecord:: Se ha producido un error al guardar los datos." );
         throw -100;
     } // end try
 }
@@ -846,7 +846,7 @@ int BlDbRecord::cargar ( QString id )
         blDebug ( "END BlDbRecord::cargar", 0 );
         return 0;
     } catch ( ... ) {
-        mensajeError ( "BlDbRecord::cargar Se ha producido un error al cargar el registro." );
+        blMsgError ( "BlDbRecord::cargar Se ha producido un error al cargar el registro." );
         return -1;
     } // end try
 }
@@ -956,7 +956,7 @@ int BlDbRecord::generaRML ( const QString &arch )
 
     int result1 = system ( archivo.toAscii().constData() );
     if (result1 == -1) {
-	mensajeError(_("Error al copiar el archivo RML [ bldb->generaRML() ]"));
+	blMsgError(_("Error al copiar el archivo RML [ bldb->generaRML() ]"));
     } // end if
     
     /// Copiamos el logo
@@ -970,7 +970,7 @@ int BlDbRecord::generaRML ( const QString &arch )
 
     int result2 = system ( archivologo.toAscii().constData() );
     if (result2 == -1) {
-	mensajeError(_("Error al copiar el archivo de logo [ bldb->generaRML() ]"));
+	blMsgError(_("Error al copiar el archivo de logo [ bldb->generaRML() ]"));
     } // end if
     
     QFile file;

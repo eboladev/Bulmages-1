@@ -71,7 +71,7 @@ void InventarioView::on_mui_guardar2_clicked()
 {
     blDebug ( "InventarioView::on_mui_guardar2_clicked", 0 );
     if ( mui_nominventario->text() == "" ) {
-        mensajeInfo ( _ ( "Tiene que escribir una descripcion de inventario antes de guardar" ) );
+        blMsgInfo ( _ ( "Tiene que escribir una descripcion de inventario antes de guardar" ) );
         return;
     } // end if
     setfechainventario ( mui_fechainventario->text() );

@@ -160,7 +160,7 @@ void BcCuentasAnualesImprimirView::on_mui_aceptar_clicked()
 
         int resur = g_plugins->lanza ( "SNewBcAsientoView", (BcCompany *) mainCompany() );
         if ( ! resur) {
-            mensajeInfo("No se pudo crear instancia de asientos");
+            blMsgInfo("No se pudo crear instancia de asientos");
             return;
         } // end if
         asientoReg = (BcAsientoView *) g_plugParams;

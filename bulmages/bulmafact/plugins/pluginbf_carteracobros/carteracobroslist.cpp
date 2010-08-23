@@ -201,7 +201,7 @@ void CarteraCobrosList::borrar()
                 delete bud;
                 presenta();
     } catch ( ... ) {
-        mensajeInfo ( tr ( "Error al borrar un vencimientoc" ) );
+        blMsgInfo ( tr ( "Error al borrar un vencimientoc" ) );
     } // end try
     blDebug ( "END:CarteraCobrosList::on_mui_borrar_clicked", 0 );
 }
@@ -350,7 +350,7 @@ void CarteraCobrosList::on_mui_suma_clicked() {
                 a = a + BlFixed ( rec->dbValue ( "cantvencimientoc" ) );
             } // end if
         } // end for
-	mensajeInfo ("Suma:" + a.toQString());
+	blMsgInfo ("Suma:" + a.toQString());
 }
 
 /// =============================================================================

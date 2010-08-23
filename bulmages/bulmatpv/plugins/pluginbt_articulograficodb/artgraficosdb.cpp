@@ -54,7 +54,7 @@ void BtLabel::mousePressEvent ( QMouseEvent * e ) {
          int cellwidth = g_confpr->valor(CONF_TPV_CELL_WIDTH ).toInt();
          /// Evitamos un posible SegFault por division por 0.
          if (cellwidth == 0) cellwidth = 1;
-//         mensajeInfo(QString::number(e->x()));
+//         blMsgInfo(QString::number(e->x()));
          emit (cellPressed(e->x() / cellwidth, e->y() / cellwidth));
          e->accept();
      }// end if

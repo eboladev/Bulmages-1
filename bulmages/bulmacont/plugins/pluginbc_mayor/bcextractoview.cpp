@@ -134,7 +134,7 @@ void BcExtractoView::on_mui_list_cellDoubleClicked ( int, int columna )
 
         int resur = g_plugins->lanza ( "SNewBcAsientoView", (BcCompany *) mainCompany() );
         if ( ! resur) {
-            mensajeInfo("No se pudo crear instancia de asientos");
+            blMsgInfo("No se pudo crear instancia de asientos");
             return;
         } // end if
         BcAsientoView *asiento = (BcAsientoView *) g_plugParams;
@@ -498,7 +498,7 @@ void BcExtractoView::presentar()
         cursorapt = NULL;
         ajustes();
     } catch ( ... ) {
-        mensajeInfo ( "Error en los calculos" );
+        blMsgInfo ( "Error en los calculos" );
         /// Liberamos memoria que pueda haber quedado reservada.
         if ( cursorapt ) delete cursorapt;
         if ( cursoraux ) delete cursoraux;
@@ -563,7 +563,7 @@ void BcExtractoView::on_mui_casacion_clicked()
         presentar();
 	m_tratarpunteos = TRUE;
     } catch ( ... ) {
-        mensajeError ( "Se produjo un error en la casacion" );
+        blMsgError ( "Se produjo un error en la casacion" );
     } // end try
     blDebug ( "END BcExtractoView::on_mui_casacion_clicked", 0 );
 }
@@ -634,7 +634,7 @@ void BcExtractoView::on_mui_borrapunteo_clicked()
 	    m_tratarpunteos = TRUE;
         } // end if
     } catch ( ... ) {
-        mensajeInfo ( _ ( "Se ha producido un error" ) );
+        blMsgInfo ( _ ( "Se ha producido un error" ) );
     } // end try
     blDebug ( "END BcExtractoView::on_mui_borrapunteo_clicked", 0 );
 }
@@ -677,7 +677,7 @@ void BcExtractoView::on_mui_cargarpunteos_clicked()
         presentar();
 	m_tratarpunteos = TRUE;
     } catch ( ... ) {
-        mensajeInfo ( "Error en la carga del punteo" );
+        blMsgInfo ( "Error en la carga del punteo" );
         mainCompany()->rollback();
     } // end try
     blDebug ( "END BcExtractoView::on_mui_cargarpunteos_clicked", 0 );
@@ -861,7 +861,7 @@ QString BcExtractoView::imprimeExtractoCuenta ( QString idcuenta )
         blDebug ( "END BcExtractoView::imprimeExtractoCuenta", 0 );
         return salida;
     } catch ( ... ) {
-        mensajeError ( "Ocurrio un error inesperado" );
+        blMsgError ( "Ocurrio un error inesperado" );
         return "";
     }
 }

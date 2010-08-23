@@ -281,7 +281,7 @@ void BlCompanyDialog::accept()
         setTipoEmpresa ( itemfilaactual3->text() );
         done ( 0 );
     } else
-        mensajeInfo ( _ ( "Para entrar, antes tiene que seleccionar una empresa." ) );
+        blMsgInfo ( _ ( "Para entrar, antes tiene que seleccionar una empresa." ) );
     blDebug ( "END BlCompanyDialog::accept", 0 );
 }
 

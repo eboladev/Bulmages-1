@@ -215,7 +215,7 @@ int BlSubForm_editFinished ( BlSubForm *sub )
     blDebug ( "pluginbf_tutor::BlSubForm_editFinished", 0 );
     if ( sub->m_campoactual->nomcampo() == "nombrealumno1" ) {
 	QString query = "SELECT idalumno FROM alumno WHERE upper (apellido1alumno || ' ' || apellido2alumno || ' ' || nombrealumno) LIKE upper('" + sub->m_campoactual->text() + "%')";
-//	mensajeInfo(query);
+//	blMsgInfo(query);
         BlDbRecordSet *cur = sub->mainCompany() ->loadQuery ( query );
         if ( !cur->eof() ) {
             sub->m_registrolinea->setDbValue ( "idalumno", cur->valor ( "idalumno" ) );

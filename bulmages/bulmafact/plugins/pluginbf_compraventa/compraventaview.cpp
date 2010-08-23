@@ -134,7 +134,7 @@ CompraVentaView::CompraVentaView ( BfCompany *comp, QWidget *parent )
         /// Disparamos los plugins por flanco descendente.
         g_plugins->lanza ( "CompraVentaView_CompraVentaView_Post", this );
     } catch ( ... ) {
-        mensajeInfo ( _ ( "Error al crear el albaran a cliente" ), this );
+        blMsgInfo ( _ ( "Error al crear el albaran a cliente" ), this );
     } // end try
     blDebug ( "END CompraVentaView::CompraVentaView", 0 );
 }
@@ -236,7 +236,7 @@ void CompraVentaView::on_mui_idcliente_valueChanged ( QString id )
             subform3->setIdProveedor ( cur->valor ( "idproveedor" ) );
             m_descuentos3->setIdProveedor ( cur->valor ( "idproveedor" ) );
         } else {
-            mensajeInfo ( "No hay proveedor para este cliente" );
+            blMsgInfo ( "No hay proveedor para este cliente" );
         } // end if
         delete cur;
     } else {
@@ -447,7 +447,7 @@ void CompraVentaView::generarFacturaProveedor()
             /// de estos datos. Se utilizan en su lugar los del formulario.
             /// Verifica que exista, por lo menos, un cliente seleccionado.
             if ( m_albaranp->dbValue ( "idproveedor" ).isEmpty() ) {
-                mensajeInfo ( _ ( "Tiene que seleccionar un proveedor" ), this );
+                blMsgInfo ( _ ( "Tiene que seleccionar un proveedor" ), this );
                 return;
             } else {
                 SQLQuery = "SELECT * FROM facturap WHERE reffacturap = '" + m_albaranp->dbValue ( "refalbaranp" ) + "' AND idproveedor = " + m_albaranp->dbValue ( "idproveedor" );
@@ -530,7 +530,7 @@ void CompraVentaView::generarFacturaProveedor()
         bud->close();
 
     } catch ( ... ) {
-        mensajeInfo ( _ ( "Error inesperado" ), this );
+        blMsgInfo ( _ ( "Error inesperado" ), this );
         if ( cur ) delete cur;
         if ( bud ) delete bud;
     } // end try
@@ -568,7 +568,7 @@ void CompraVentaView::generarFactura()
             /// de estos datos. Se utilizan en su lugar los del formulario.
             /// Verifica que exista, por lo menos, un cliente seleccionado.
             if ( mui_idcliente->id().isEmpty() ) {
-                mensajeInfo ( _ ( "Tiene que seleccionar un cliente" ), this );
+                blMsgInfo ( _ ( "Tiene que seleccionar un cliente" ), this );
                 return;
             } else {
                 SQLQuery = "SELECT * FROM factura WHERE reffactura = '" + mui_refalbaran->text() + "' AND idcliente = " + mui_idcliente->id();
@@ -592,7 +592,7 @@ void CompraVentaView::generarFactura()
 
             int resur = g_plugins->lanza ( "SNewFacturaView", ( BfCompany * ) mainCompany() );
             if ( !resur ) {
-                mensajeInfo ( "No se pudo crear instancia de factura" );
+                blMsgInfo ( "No se pudo crear instancia de factura" );
                 return;
             } // end if
             bud = ( FacturaView * ) g_plugParams;
@@ -610,7 +610,7 @@ void CompraVentaView::generarFactura()
         /// Creamos la factura.
         int resur = g_plugins->lanza ( "SNewFacturaView", ( BfCompany * ) mainCompany() );
         if ( !resur ) {
-            mensajeInfo ( "No se pudo crear instancia de factura" );
+            blMsgInfo ( "No se pudo crear instancia de factura" );
             return;
         } // end if
         bud = ( FacturaView * ) g_plugParams;
@@ -681,7 +681,7 @@ void CompraVentaView::generarFactura()
         mui_procesadoalbaran->setChecked ( TRUE );
 
     } catch ( ... ) {
-        mensajeInfo ( _ ( "Error inesperado" ), this );
+        blMsgInfo ( _ ( "Error inesperado" ), this );
         if ( cur ) delete cur;
         if ( bud ) delete bud;
     } // end try
@@ -708,11 +708,11 @@ void CompraVentaView::imprimir()
     } catch ( int e ) {
         if ( e == 100 ) {
             /// El documento no se ha guardado y no se dispone en la base de datos de estos datos.
-            mensajeInfo ( _ ( "Tiene que guardar el documento antes de poder procesarlo." ), this );
+            blMsgInfo ( _ ( "Tiene que guardar el documento antes de poder procesarlo." ), this );
             throw ( -1 );
         } // end if
     } catch ( ... ) {
-        mensajeInfo ( _ ( "Error inesperado en la impresion" ), this );
+        blMsgInfo ( _ ( "Error inesperado en la impresion" ), this );
     } // end try
 
 }

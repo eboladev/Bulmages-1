@@ -363,7 +363,7 @@ void BlForm::on_mui_borrar_clicked()
             blDebug ( windowTitle() + " " + "borrado satisfactoriamente.", 10 );
             close();
         } else {
-            mensajeInfo ( windowTitle() + _ ( "No se ha podido borrar" ) );
+            blMsgInfo ( windowTitle() + _ ( "No se ha podido borrar" ) );
         }// end if
     } // end if
     blDebug ( "END BlForm::on_mui_borrar_clicked", 0 );
@@ -401,7 +401,7 @@ void BlForm::closeEvent ( QCloseEvent *e )
         /// sacar las ventanas de listventanas.
 //        sacaWindow();
     } catch ( ... ) {
-        mensajeInfo ( _ ( "No se pudo cerrar la ventana debido a un error" ) );
+        blMsgInfo ( _ ( "No se pudo cerrar la ventana debido a un error" ) );
         e->ignore();
     } // end try
     blDebug ( "END BlForm::closeEvent", 0 );
@@ -831,7 +831,7 @@ int BlForm::guardar()
                        if (((BlFormList *)lista.at(i))->subForm()->tableName() == tableName())
                            lista.at(i)->presentar();
                     } else {
-                       mensajeInfo("No se establecio SubForm para el formulario " + ((BlFormList *)lista.at(i))->objectName());
+                       blMsgInfo("No se establecio SubForm para el formulario " + ((BlFormList *)lista.at(i))->objectName());
                     } // end if
                 } // end for
         } // end if
@@ -842,13 +842,13 @@ int BlForm::guardar()
         /// Valor del error diferente a -1 significa que ya se ha mostrado algun mensaje de
         /// error y no hay que mostrar otro.
         if ( valor == -1 ) {
-            mensajeInfo ( "Error inesperado al guardar" );
+            blMsgInfo ( "Error inesperado al guardar" );
         } // end if
         mainCompany() ->rollback();
         return -1;
 
     } catch ( ... ) {
-        mensajeInfo ( "Error inesperado al guardar" );
+        blMsgInfo ( "Error inesperado al guardar" );
         mainCompany() ->rollback();
         return -1;
     } // end try
@@ -1103,7 +1103,7 @@ int BlForm::trataTags ( QString &buff, int tipoEscape )
             if ( !ret ) return 0;
             
         } else {
-            mensajeInfo ( "Archivo de Interficie no existe" );
+            blMsgInfo ( "Archivo de Interficie no existe" );
         } // end if
 
         buff.replace ( pos, rx70.matchedLength(), "" );

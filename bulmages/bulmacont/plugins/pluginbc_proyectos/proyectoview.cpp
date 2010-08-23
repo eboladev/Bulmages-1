@@ -106,7 +106,7 @@ ProyectoView::ProyectoView ( BcCompany *comp, QWidget *parent )
         dialogChanges_cargaInicial();
         meteWindow ( windowTitle(), this, FALSE );
     } catch ( ... ) {
-        mensajeInfo ( _ ( "Error al crear el almacen" ) );
+        blMsgInfo ( _ ( "Error al crear el almacen" ) );
     } // end try
     blDebug ( "END ProyectoView::ProyectoView", 0 );
 }

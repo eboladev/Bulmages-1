@@ -67,7 +67,7 @@ void ListTipoIVAView::on_mui_aceptar_clicked()
         mui_listado->guardar();
         close();
     } catch ( ... ) {
-        mensajeInfo ( _ ( "Error al guardar los tipos de IVA" ) );
+        blMsgInfo ( _ ( "Error al guardar los tipos de IVA" ) );
     } // end try
     blDebug ( "END ListTipoIVAView::on_mui_aceptar_clicked", 0 );
 }

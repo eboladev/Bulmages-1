@@ -166,9 +166,9 @@ int FamiliasView_Guardar_Pre ( FamiliasView *famv )
      } // end if
     } catch (int e) {
 	if (e == -300) {
-	  mensajeError("Cuenta de venta no existe en la contabilidad.");
+	  blMsgError("Cuenta de venta no existe en la contabilidad.");
 	} else if (e == -400) {
-	  mensajeError("Cuenta de compra no existe en la contabilidad.");
+	  blMsgError("Cuenta de compra no existe en la contabilidad.");
 	} // end if
 	throw -1;
     } // end try
@@ -261,7 +261,7 @@ int FPagoView_Guardar_Pre ( FPagoView *fpagov )
 
     } catch (int e) {
 	if (e == -300) {
-	  mensajeError("La cuenta no existe en la contabilidad.");
+	  blMsgError("La cuenta no existe en la contabilidad.");
 	} // end if
 	throw -1;
     } // end try
@@ -360,7 +360,7 @@ int BancoView_Guardar_Pre ( BancoView *bancov )
 
     } catch (int e) {
 	if (e == -300) {
-	  mensajeError("La cuenta no existe en la contabilidad.");
+	  blMsgError("La cuenta no existe en la contabilidad.");
 	} // end if
 	throw -1;
     } // end try
@@ -473,7 +473,7 @@ int ProveedorView_Guardar_Pre ( ProveedorView *proveedor )
 
     } catch (int e) {
 	if (e == -300) {
-	  mensajeError("La cuenta no existe en la contabilidad.");
+	  blMsgError("La cuenta no existe en la contabilidad.");
 	} // end if
 	throw -1;
     } // end try
@@ -587,7 +587,7 @@ int ClienteView_Guardar_Pre ( ClienteView *cliente )
 
     } catch (int e) {
 	if (e == -300) {
-	  mensajeError("La cuenta no existe en la contabilidad.");
+	  blMsgError("La cuenta no existe en la contabilidad.");
 	} // end if
 	throw -1;
     } // end try

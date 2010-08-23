@@ -75,7 +75,7 @@ CobroView::CobroView ( BfCompany *comp, QWidget *parent )
         pintar();
         dialogChanges_cargaInicial();
     } catch ( ... ) {
-        mensajeInfo ( _ ( "Error al crear el cobro" ), this );
+        blMsgInfo ( _ ( "Error al crear el cobro" ), this );
     } // end try
     blDebug ( "END CobroView::CobroView", 0 );
 }
@@ -123,7 +123,7 @@ void CobroView::imprimir()
 
     if ( dbValue ( "idcliente" ).isEmpty() ) {
         /// El documento no se ha guardado y no se dispone en la base de datos de estos datos.
-        mensajeInfo ( _ ( "Tiene que guardar el documento antes de poder imprimirlo." ), this );
+        blMsgInfo ( _ ( "Tiene que guardar el documento antes de poder imprimirlo." ), this );
         return;
     }
     /// Disparamos los plugins
@@ -150,7 +150,7 @@ int CobroView::guardarPost()
     BlDbRecordSet *cur = mainCompany()->loadQuery ( query );
 
     if ( cur->valor ( "total" ) == cur1->valor ( "totalc" ) ) {
-        mensajeInfo ( _("Toda la referencia esta cobrada. Se procesaran todos los documentos con esta referencia") );
+        blMsgInfo ( _("Toda la referencia esta cobrada. Se procesaran todos los documentos con esta referencia") );
         QString query2 = "UPDATE factura set procesadafactura = TRUE WHERE reffactura='" + dbValue ( "refcobro" ) + "'";
         mainCompany()->runQuery ( query2 );
     } // end if

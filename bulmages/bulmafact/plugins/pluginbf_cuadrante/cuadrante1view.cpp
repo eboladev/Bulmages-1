@@ -82,7 +82,7 @@ Cuadrante1View::Cuadrante1View ( BfCompany *comp, QWidget *parent )
         dialogChanges_cargaInicial();
         meteWindow ( windowTitle(), this, FALSE );
     } catch ( ... ) {
-        mensajeInfo ( _ ( "Error al crear el almacen" ) );
+        blMsgInfo ( _ ( "Error al crear el almacen" ) );
     } // end try
     blDebug ( "END Cuadrante1View::Cuadrante1View", 0 );
 }

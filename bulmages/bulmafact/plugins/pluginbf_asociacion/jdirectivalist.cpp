@@ -167,7 +167,7 @@ void JDirectivaList::borrar()
     int a = mui_list->currentRow();
     
     if ( a < 0 ) {
-        mensajeInfo ( _ ( "Debe seleccionar una linea" ) );
+        blMsgInfo ( _ ( "Debe seleccionar una linea" ) );
         return;
     } // end if
     
@@ -182,7 +182,7 @@ void JDirectivaList::borrar()
         } // end if
         presentar();
     } catch ( ... ) {
-        mensajeInfo ( _ ( "Error al borrar el cobro a cliente" ) );
+        blMsgInfo ( _ ( "Error al borrar el cobro a cliente" ) );
     } // end try
     
     blDebug ( "END:JDirectivaList::borrar", 0 );
@@ -206,7 +206,7 @@ void JDirectivaList::editar ( int )
             emit ( selected ( mdb_idjdirectiva ) );
         } // end if
     } catch ( ... ) {
-        mensajeInfo ( _ ( "Debe seleccionar una fila primero" ) );
+        blMsgInfo ( _ ( "Debe seleccionar una fila primero" ) );
     } // end try
     
     blDebug ( "END JDirectivaList::editar", 0 );

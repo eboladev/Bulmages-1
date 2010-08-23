@@ -163,7 +163,7 @@ int BcAmortizacionView::guardar()
         blDebug ( "END BcAmortizacionView::guardar", 0 );
         return 0;
     } catch ( ... ) {
-        mensajeInfo ( "Error en el guardado" );
+        blMsgInfo ( "Error en el guardado" );
         return -1;
     } // end try
 }
@@ -224,7 +224,7 @@ int BcAmortizacionView::cargar ( QString idamortizacion )
         blDebug ( "END BcAmortizacionView::cargar", 0 );
         return 0;
     } catch ( ... ) {
-        mensajeInfo ( _ ( "Error en la carga de la amortizacion" ) );
+        blMsgInfo ( _ ( "Error en la carga de la amortizacion" ) );
         return -1;
     } // end try
 }
@@ -461,7 +461,7 @@ void BcAmortizacionSubForm::procesaMenu ( QAction *opcion )
 
         int resur = g_plugins->lanza ( "SNewBcAsientoView", (BcCompany *) mainCompany() );
         if ( ! resur) {
-            mensajeInfo("No se pudo crear instancia de asientos");
+            blMsgInfo("No se pudo crear instancia de asientos");
             return;
         } // end if
         BcAsientoView *asiento = (BcAsientoView *) g_plugParams;
@@ -516,7 +516,7 @@ void BcAmortizacionSubForm::procesaMenu ( QAction *opcion )
         /// Cogemos los datos del asiento recien creado.
         int resur = g_plugins->lanza ( "SNewBcAsientoView", (BcCompany *) mainCompany() );
         if ( ! resur) {
-            mensajeInfo("No se pudo crear instancia de asientos");
+            blMsgInfo("No se pudo crear instancia de asientos");
             return;
         } // end if
         BcAsientoView *asiento = (BcAsientoView *) g_plugParams;

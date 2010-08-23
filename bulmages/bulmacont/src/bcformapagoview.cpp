@@ -235,7 +235,7 @@ void BcFormaPagoView::on_mui_borrar_clicked()
 {
     blDebug ( "BcFormaPagoView::borrar", 0 );
     if ( mui_comboFPago->currentIndex() == -1 ) {
-        mensajeInfo ( _ ( "Tiene que seleccionar una forma de pago antes de borrarla" ) );
+        blMsgInfo ( _ ( "Tiene que seleccionar una forma de pago antes de borrarla" ) );
         return;
     } else {
         switch ( QMessageBox::warning ( this,

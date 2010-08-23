@@ -273,7 +273,7 @@ void FacturasList::borrar()
     blDebug ( "FacturasList::borrar", 0 );
     int a = mui_list->currentRow();
     if ( a < 0 ) {
-        mensajeInfo ( _ ( "Debe seleccionar una linea" ), this );
+        blMsgInfo ( _ ( "Debe seleccionar una linea" ), this );
         return;
     } // end if
     try {
@@ -287,7 +287,7 @@ void FacturasList::borrar()
         } // end if
         presentar();
     } catch ( ... ) {
-        mensajeInfo ( _ ( "Error al borrar la factura a cliente" ), this );
+        blMsgInfo ( _ ( "Error al borrar la factura a cliente" ), this );
     } // end try
     blDebug ( "END FacturasList::borrar", 0 );
 }

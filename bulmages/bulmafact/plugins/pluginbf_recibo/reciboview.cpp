@@ -84,7 +84,7 @@ ReciboView::ReciboView ( BfCompany *comp, QWidget *parent ) : BfForm ( comp, par
         pintar();
         dialogChanges_cargaInicial();
     } catch ( ... ) {
-        mensajeInfo ( _ ( "Error al crear el recibo" ), this );
+        blMsgInfo ( _ ( "Error al crear el recibo" ), this );
     } // end try
 
     blDebug ( "END ReciboView::ReciboView", 0 );
@@ -115,7 +115,7 @@ void ReciboView::imprimir()
 
     if ( dbValue ( "idcliente" ).isEmpty() ) {
         /// El documento no se ha guardado y no se dispone en la base de datos de estos datos.
-        mensajeInfo ( _ ( "Tiene que guardar el documento antes de poder imprimirlo." ), this );
+        blMsgInfo ( _ ( "Tiene que guardar el documento antes de poder imprimirlo." ), this );
         return;
     }
 
@@ -208,9 +208,9 @@ void ReciboView::on_mui_reemitir_clicked (  )
    } // end if
 
    cargar(dbValue("idrecibo"));
-   mensajeInfo(_("Recibo reemitido"));
+   blMsgInfo(_("Recibo reemitido"));
    } catch(...) {
-      mensajeError("Error en la creacion del recibo");
+      blMsgError("Error en la creacion del recibo");
    } // end try
 
     blDebug ( "END ReciboView::on_mui_reemitir_clicked", 0 );

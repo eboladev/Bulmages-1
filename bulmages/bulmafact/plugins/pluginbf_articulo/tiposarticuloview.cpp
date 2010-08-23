@@ -136,7 +136,7 @@ void TipoArticuloList::pintar()
         m_semaforoPintar = FALSE;
         blDebug ( "END TipoArticuloList::pintar", 0 );
     } catch ( ... ) {
-        mensajeInfo ( _ ( "Error en la carga" ) );
+        blMsgInfo ( _ ( "Error en la carga" ) );
         if ( cursoraux1 ) delete cursoraux1;
     } // end try
 }
@@ -363,7 +363,7 @@ void TipoArticuloList::on_mui_crear_clicked()
         pintar();
         blDebug ( "END TipoArticuloList::on_mui_crear_clicked", 0 );
     } catch ( ... ) {
-        mensajeInfo ( _ ( "Error en la creacion" ) );
+        blMsgInfo ( _ ( "Error en la creacion" ) );
         mainCompany()->rollback();
         return;
     } // end try
@@ -391,7 +391,7 @@ void TipoArticuloList::on_mui_borrar_clicked()
             dialogChanges_cargaInicial();
             blDebug ( windowTitle() + " " + "borrado satisfactoriamente.", 10 );
         } else {
-            mensajeInfo ( windowTitle() + " " + _ ( "no se ha podido borrar" ) );
+            blMsgInfo ( windowTitle() + " " + _ ( "no se ha podido borrar" ) );
         } // end if
     } // end if
 
@@ -408,7 +408,7 @@ int TipoArticuloList::borrar()
 {
     blDebug ( "TipoArticuloList::borrar", 0 );
     if ( m_idtipo == "" ) {
-        mensajeInfo ( _ ( "Debe seleccionar un tipo" ) );
+        blMsgInfo ( _ ( "Debe seleccionar un tipo" ) );
         return -1;
     } // end if
     try {
@@ -422,7 +422,7 @@ int TipoArticuloList::borrar()
         pintar();
         blDebug ( "END TipoArticuloList::borrar", 0 );
     } catch ( ... ) {
-        mensajeInfo ( _ ( "Error al borrar la familia" ) );
+        blMsgInfo ( _ ( "Error al borrar la familia" ) );
         return -1;
     } // end try
     return 0;

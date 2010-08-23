@@ -98,7 +98,7 @@ AlbaranProveedorView::AlbaranProveedorView ( BfCompany *comp, QWidget *parent )
         mui_idalmacen->setId ( "0" );
         meteWindow ( windowTitle(), this, FALSE );
     } catch ( ... ) {
-        mensajeInfo ( _ ( "Error al crear el albaran proveedor" ), this );
+        blMsgInfo ( _ ( "Error al crear el albaran proveedor" ), this );
     } // end try
     blDebug ( "END AlbaranProveedorView::AlbaranProveedorView", 0 );
 }

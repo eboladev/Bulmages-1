@@ -77,7 +77,7 @@ PagoView::PagoView ( BfCompany *comp, QWidget *parent )
         pintar();
         dialogChanges_cargaInicial();
     } catch ( ... ) {
-        mensajeInfo ( _ ( "Error al crear el pago" ), this );
+        blMsgInfo ( _ ( "Error al crear el pago" ), this );
     } // end try
     blDebug ( "Fin de la inicializacion de PagoView\n", 0 );
     blDebug ( "END PagoView::PagoView", 0 );

@@ -208,7 +208,7 @@ int BfSubForm_on_mui_list_editFinished ( BfSubForm *subform )
             BlFixed val = BlFixed ( cur->valor ( "valminimsalmacen" ) );
             BlFixed valb = BlFixed ( camp->valorcampo() );
             if ( stock - valb <= val )
-                mensajeAviso ( _ ( "Stock minimo superado" ) );
+                blMsgWarning ( _ ( "Stock minimo superado" ) );
         } // end if
         delete cur;
     } // end if

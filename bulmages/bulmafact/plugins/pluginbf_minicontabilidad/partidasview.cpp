@@ -337,7 +337,7 @@ int PartidasView::guardar()
     QString prodfam;
     try {
         if ( m_idpartida.isEmpty() ) {
-            mensajeInfo ( _ ( "Debe seleccionar una partida" ) );
+            blMsgInfo ( _ ( "Debe seleccionar una partida" ) );
             return -1;
         } // end if
 
@@ -361,7 +361,7 @@ int PartidasView::guardar()
         blDebug ( "END PartidasView::guardar", 0 );
         return 0;
     } catch ( ... ) {
-        mensajeInfo ( _ ( "Error al guardar la partida" ) );
+        blMsgInfo ( _ ( "Error al guardar la partida" ) );
         return -1;
     } // end try
 }
@@ -420,7 +420,7 @@ void PartidasView::on_mui_crear_clicked()
         blDebug ( "END PartidasView::on_mui_crear_clicked", 0 );
     } catch ( ... ) {
         mainCompany()->rollback();
-        mensajeInfo ( _ ( "Error al crear la partida" ) );
+        blMsgInfo ( _ ( "Error al crear la partida" ) );
     } // end try
 }
 
@@ -443,7 +443,7 @@ void PartidasView::on_mui_borrar_clicked()
             dialogChanges_cargaInicial();
             blDebug ( windowTitle() + " " + "borrado satisfactoriamente.", 10 );
         } else {
-            mensajeInfo ( windowTitle() + " " + _ ( "no se ha podido borrar" ) );
+            blMsgInfo ( windowTitle() + " " + _ ( "no se ha podido borrar" ) );
         } // end if
     } // end if
     blDebug ( "END PartidasView::on_mui_borrar_clicked", 0 );
@@ -459,7 +459,7 @@ int PartidasView::borrar()
 {
     blDebug ( "PartidasView::borrar", 0 );
     if ( m_idpartida == "" ) {
-        mensajeInfo ( _ ( "Debe seleccionar una partida" ) );
+        blMsgInfo ( _ ( "Debe seleccionar una partida" ) );
         return -1;
     } // end if
     try {
@@ -473,7 +473,7 @@ int PartidasView::borrar()
         pintar();
         blDebug ( "END PartidasView::borrar", 0 );
     } catch ( ... ) {
-        mensajeInfo ( _ ( "Error al borrar la partida" ) );
+        blMsgInfo ( _ ( "Error al borrar la partida" ) );
         return -1;
     } // end try
     return 0;

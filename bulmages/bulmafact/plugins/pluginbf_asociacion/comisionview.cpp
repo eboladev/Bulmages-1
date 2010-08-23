@@ -75,7 +75,7 @@ ComisionView::ComisionView ( BfCompany *comp, QWidget *parent )
         pintar();
         dialogChanges_cargaInicial();
     } catch ( ... ) {
-        mensajeInfo ( _ ( "Error al crear el comision" ), this );
+        blMsgInfo ( _ ( "Error al crear el comision" ), this );
     } // end try
     blDebug ( "END ComisionView::ComisionView", 0 );
 }
@@ -103,7 +103,7 @@ void ComisionView::imprimir()
 
     if ( dbValue ( "idcomision" ).isEmpty() ) {
         /// El documento no se ha guardado y no se dispone en la base de datos de estos datos.
-        mensajeInfo ( _ ( "Tiene que guardar el documento antes de poder imprimirlo." ), this );
+        blMsgInfo ( _ ( "Tiene que guardar el documento antes de poder imprimirlo." ), this );
         return;
     }
     /// Disparamos los plugins

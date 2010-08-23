@@ -175,7 +175,7 @@ void TipoActividadView::on_mui_guardar_clicked()
         /// Comprobamos cual es la cadena inicial.
         dialogChanges_cargaInicial();
     } catch ( ... ) {
-        mensajeInfo ( _ ( "Error al guardar el tipoactividad" ) );
+        blMsgInfo ( _ ( "Error al guardar el tipoactividad" ) );
         mainCompany() ->rollback();
     } // end try
 
@@ -226,7 +226,7 @@ void TipoActividadView::on_mui_nuevo_clicked()
         pintar();
         blDebug ( "END TipoActividadView::on_mui_nuevo_clicked", 0 );
     } catch ( ... ) {
-        mensajeInfo ( _ ( "Error al crear un nuevo TipoActividad" ) );
+        blMsgInfo ( _ ( "Error al crear un nuevo TipoActividad" ) );
         mainCompany() ->rollback();
     } // end try
 }
@@ -251,7 +251,7 @@ void TipoActividadView::on_mui_borrar_clicked()
         pintar();
         blDebug ( "END TipoActividadView::on_mui_borrar_clicked", 0 );
     } catch ( ... ) {
-        mensajeInfo ( _ ( "Error al borrar el TipoActividad" ) );
+        blMsgInfo ( _ ( "Error al borrar el TipoActividad" ) );
         mainCompany() ->rollback();
     }// end try
 }

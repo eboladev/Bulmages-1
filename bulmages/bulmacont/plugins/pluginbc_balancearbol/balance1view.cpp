@@ -289,7 +289,7 @@ bool BalanceTreeView::generaBalance()
     ramas = mainCompany() ->loadQuery ( query, "Ramas" );
     mainCompany() ->commit();
     if ( ramas == NULL ) {
-        mensajeInfo ( _ ( "Error con la base de datos" ) );
+        blMsgInfo ( _ ( "Error con la base de datos" ) );
         return 0;
     }
 
@@ -326,12 +326,12 @@ bool BalanceTreeView::generaBalance()
 
     QString finicial = m_fechainicial1->text();
     if ( finicial == "" ) {
-        mensajeInfo ( _ ( "Introduzca la Fecha Inicial" ) );
+        blMsgInfo ( _ ( "Introduzca la Fecha Inicial" ) );
         return 0;
     }
     QString ffinal = m_fechafinal1->text();
     if ( ffinal == "" ) {
-        mensajeInfo ( _ ( "Introduzca la Fecha Final" ) );
+        blMsgInfo ( _ ( "Introduzca la Fecha Final" ) );
         return 0;
     }
     QString ejercicio = ffinal.right ( 4 );
@@ -343,7 +343,7 @@ bool BalanceTreeView::generaBalance()
     BlDbRecordSet *hojas;
     hojas = mainCompany() ->loadQuery ( query );
     if ( hojas == NULL ) {
-        mensajeInfo ( _ ( "Error con la base de datos" ) );
+        blMsgInfo ( _ ( "Error con la base de datos" ) );
         return 0;
     }
 

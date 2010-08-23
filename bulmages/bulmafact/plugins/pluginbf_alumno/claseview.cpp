@@ -175,7 +175,7 @@ void ClaseView::on_mui_guardar_clicked()
         /// Comprobamos cual es la cadena inicial.
         dialogChanges_cargaInicial();
     } catch ( ... ) {
-        mensajeInfo ( _ ( "Error al guardar el clase" ) );
+        blMsgInfo ( _ ( "Error al guardar el clase" ) );
         mainCompany() ->rollback();
     } // end try
 
@@ -226,7 +226,7 @@ void ClaseView::on_mui_nuevo_clicked()
         pintar();
         blDebug ( "END ClaseView::on_mui_nuevo_clicked", 0 );
     } catch ( ... ) {
-        mensajeInfo ( _ ( "Error al crear un nuevo Clase" ) );
+        blMsgInfo ( _ ( "Error al crear un nuevo Clase" ) );
         mainCompany() ->rollback();
     } // end try
 }
@@ -251,7 +251,7 @@ void ClaseView::on_mui_borrar_clicked()
         pintar();
         blDebug ( "END ClaseView::on_mui_borrar_clicked", 0 );
     } catch ( ... ) {
-        mensajeInfo ( _ ( "Error al borrar el Clase" ) );
+        blMsgInfo ( _ ( "Error al borrar el Clase" ) );
         mainCompany() ->rollback();
     }// end try
 }

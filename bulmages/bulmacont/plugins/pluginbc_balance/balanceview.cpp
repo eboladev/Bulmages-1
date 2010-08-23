@@ -408,7 +408,7 @@ void BalanceView::presentarSyS ( QString finicial, QString ffinal, QString cinic
         delete arbol;
         mainCompany() ->commit();
     } catch ( ... ) {
-        mensajeInfo ( "error en los calculos" );
+        blMsgInfo ( "error en los calculos" );
         mainCompany() ->rollback();
         /// Libermos posible memoria utilizada
         if ( ramas ) delete ramas;

@@ -68,9 +68,9 @@ Q34View::Q34View ( CarteraPagosList *fac, BfCompany *comp, QWidget *parent )
             QString val = rec->dbValue ( "selector" );
             if ( val == "TRUE" ) {
 		if (rec->dbValue("descforma_pago") != "Transferencia") 
-			mensajeInfo("Hay Vencimientos que no pueden ser Remesados");
+			blMsgInfo("Hay Vencimientos que no pueden ser Remesados");
 		if (rec->dbValue("estadovencimientop") != "Pendiente") 
-			mensajeInfo("Hay vencimientos con estado no Pendiente");
+			blMsgInfo("Hay vencimientos con estado no Pendiente");
                 a = a + BlFixed ( rec->dbValue ( "cantvencimientop" ) );
 		numop++;
             } // end if
@@ -83,7 +83,7 @@ Q34View::Q34View ( CarteraPagosList *fac, BfCompany *comp, QWidget *parent )
         dialogChanges_cargaInicial();
 
     } catch ( ... ) {
-        mensajeInfo ( tr ( "Error al crear el archivo" ) );
+        blMsgInfo ( tr ( "Error al crear el archivo" ) );
     } // end try
     blDebug ( "END Q34View::Q34View", 0 );
 }

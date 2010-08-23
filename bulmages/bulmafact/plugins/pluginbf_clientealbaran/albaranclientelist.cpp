@@ -312,7 +312,7 @@ void AlbaranClienteList::borrar()
     blDebug ( "AlbaranClienteList::borrar", 0 );
     int a = mui_list->currentRow();
     if ( a < 0 ) {
-        mensajeInfo ( _ ( "Debe seleccionar una linea" ), this );
+        blMsgInfo ( _ ( "Debe seleccionar una linea" ), this );
         return;
     } // end if
     try {
@@ -326,7 +326,7 @@ void AlbaranClienteList::borrar()
         } // end if
         presentar();
     } catch ( ... ) {
-        mensajeInfo ( _ ( "Error al borrar el albaran a cliente" ), this );
+        blMsgInfo ( _ ( "Error al borrar el albaran a cliente" ), this );
     } // end try
     blDebug ( "END AlbaranClienteList::borrar", 0 );
 }

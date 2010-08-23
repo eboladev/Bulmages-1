@@ -98,12 +98,12 @@ void EmailThunderbirdQToolButton::click()
         QString query = "SELECT mailcliente from cliente WHERE idcliente=" + idcliente;
         
         if (id == "") {
-            mensajeInfo("Este presupuesto aún no se ha guardado en la base de datos. Por favor, guárdelo e inténtelo de nuevo.");
+            blMsgInfo("Este presupuesto aún no se ha guardado en la base de datos. Por favor, guárdelo e inténtelo de nuevo.");
             return;
         }
         
         if (idcliente == "") {
-            mensajeInfo("No hay seleccionado ningún cliente en el presupuesto. Por favor, selecciónelo e inténtelo de nuevo.");
+            blMsgInfo("No hay seleccionado ningún cliente en el presupuesto. Por favor, selecciónelo e inténtelo de nuevo.");
             return;
         }
         
@@ -134,12 +134,12 @@ void EmailThunderbirdQToolButton::click()
         QString query = "SELECT mailcliente from cliente WHERE idcliente=" + idcliente;
         
         if (id == "") {
-            mensajeInfo("Este pedido aún no se ha guardado en la base de datos. Por favor, guárdelo e inténtelo de nuevo.");
+            blMsgInfo("Este pedido aún no se ha guardado en la base de datos. Por favor, guárdelo e inténtelo de nuevo.");
             return;
         }
         
         if (idcliente == "") {
-            mensajeInfo("No hay seleccionado ningún cliente en el pedido. Por favor, selecciónelo e inténtelo de nuevo.");
+            blMsgInfo("No hay seleccionado ningún cliente en el pedido. Por favor, selecciónelo e inténtelo de nuevo.");
             return;
         }
         
@@ -170,12 +170,12 @@ void EmailThunderbirdQToolButton::click()
         QString query = "SELECT mailcliente from cliente WHERE idcliente=" + idcliente;
         
         if (id == "") {
-            mensajeInfo("Este albaran aún no se ha guardado en la base de datos. Por favor, guárdelo e inténtelo de nuevo.");
+            blMsgInfo("Este albaran aún no se ha guardado en la base de datos. Por favor, guárdelo e inténtelo de nuevo.");
             return;
         }
         
         if (idcliente == "") {
-            mensajeInfo("No hay seleccionado ningún cliente en el albarán. Por favor, selecciónelo e inténtelo de nuevo.");
+            blMsgInfo("No hay seleccionado ningún cliente en el albarán. Por favor, selecciónelo e inténtelo de nuevo.");
             return;
         }
         
@@ -208,12 +208,12 @@ void EmailThunderbirdQToolButton::click()
         QString query = "SELECT mailcliente from cliente WHERE idcliente=" + idcliente;
         
         if (id == "") {
-            mensajeInfo("Este presupuesto aún no se ha guardado en la base de datos. Por favor, guárdelo e inténtelo de nuevo.");
+            blMsgInfo("Este presupuesto aún no se ha guardado en la base de datos. Por favor, guárdelo e inténtelo de nuevo.");
             return;
         }
         
         if (idcliente == "") {
-            mensajeInfo("No hay seleccionado ningún cliente en el presupuesto. Por favor, selecciónelo e inténtelo de nuevo.");
+            blMsgInfo("No hay seleccionado ningún cliente en el presupuesto. Por favor, selecciónelo e inténtelo de nuevo.");
             return;
         }
         

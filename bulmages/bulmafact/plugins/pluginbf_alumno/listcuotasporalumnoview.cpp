@@ -68,7 +68,7 @@ void ListCuotasPorAlumnoView::on_mui_aceptar_clicked()
         mui_listado->guardar();
         close();
     } catch ( ... ) {
-        mensajeInfo ( _ ( "Error al guardar las cuotas" ) );
+        blMsgInfo ( _ ( "Error al guardar las cuotas" ) );
     } // end try
     
     blDebug ( "END ListCuotasPorAlumnoView::on_mui_aceptar_clicked", 0 );

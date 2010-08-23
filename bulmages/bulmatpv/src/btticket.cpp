@@ -894,7 +894,7 @@ void BtTicket::agregarCantidad ( QString cantidad )
     
     /// Comprueba la existencia de la linea de ticket.
     if ( m_lineaActual == NULL ) {
-        mensajeAviso ( "No existe linea" );
+        blMsgWarning ( "No existe linea" );
         return;
     } // end if
     
@@ -922,7 +922,7 @@ void BtTicket::ponerCantidad ( QString cantidad )
     
     /// Comprueba la existencia de la linea de ticket.
     if ( m_lineaActual == NULL ) {
-        mensajeAviso ( "No existe linea" );
+        blMsgWarning ( "No existe linea" );
         return;
     } // end if
     
@@ -947,7 +947,7 @@ void BtTicket::ponerPrecio ( QString precio )
     
     /// Comprueba la existencia de la linea de ticket.
     if ( m_lineaActual == NULL ) {
-        mensajeAviso ( "No existe linea" );
+        blMsgWarning ( "No existe linea" );
         return;
     } // end if
     
@@ -1027,7 +1027,7 @@ int BtTicket::cargar ( QString id )
         delete cur;
         
     } catch ( ... ) {
-        mensajeInfo ( "Error en la carga" );
+        blMsgInfo ( "Error en la carga" );
     }
     
     return 0;
@@ -1047,7 +1047,7 @@ int BtTicket::guardar()
     try {
 
         if ( listaLineas() ->count() == 0 ) {
-                mensajeAviso ( _( "El ticket esta vacio." ) );
+                blMsgWarning ( _( "El ticket esta vacio." ) );
                 return -1;
         } // end if
 
@@ -1080,7 +1080,7 @@ int BtTicket::guardar()
         
     } catch ( ... ) {
     
-        mensajeInfo ( "Error inesperado con la base de datos" );
+        blMsgInfo ( "Error inesperado con la base de datos" );
         mainCompany() ->rollback();
         
         return -1;
@@ -1099,7 +1099,7 @@ void BtTicket::borrarLinea ( BlDbRecord *linea )
     int numlinea = listaLineas()->indexOf ( linea );
 
     if (dbValue("numalbaran") != "") {
-	mensajeInfo("Operacion no permitida. Debe Cobrar el Ticket");
+	blMsgInfo("Operacion no permitida. Debe Cobrar el Ticket");
 	return;
     } // end if
 
@@ -1374,7 +1374,7 @@ int BtTicket::trataTags ( QByteArray &buff, int tipoEscape )
             if ( !ret ) return 0;
             
         } else {
-            mensajeInfo ( "Archivo de Interficie no existe" );
+            blMsgInfo ( "Archivo de Interficie no existe" );
         } // end if
 
         buff.replace ( pos, rx70.matchedLength(), "" );

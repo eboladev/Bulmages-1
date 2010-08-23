@@ -231,7 +231,7 @@ void BcAsientoListView::presentar()
         /// Primero se comprueba que la fecha final sea mayor que la fecha inicial.
         if ( QDateTime::fromString ( buscafechainicial, "dd/MM/yyyy" ) > QDateTime::fromString ( buscafechafinal, "dd/MM/yyyy" ) ) {
             /// Error de fechas.
-            mensajeAviso ( _ ( "La fecha inicial es posterior a la fecha final." ) );
+            blMsgWarning ( _ ( "La fecha inicial es posterior a la fecha final." ) );
             return;
         } else {
             if ( pand ) {

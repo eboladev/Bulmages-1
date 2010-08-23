@@ -95,7 +95,7 @@ void RegIVAQToolButton::click()
         ( ( BcCompany * ) las->mainCompany() ) ->pWorkspace() ->addWindow ( nuevae );
         nuevae->show();
     } catch ( ... ) {
-        mensajeInfo ( "Debe seleccionar un apunte" );
+        blMsgInfo ( "Debe seleccionar un apunte" );
     } // end try
 
     blDebug ( "END ImpQToolButton::click", 0 );

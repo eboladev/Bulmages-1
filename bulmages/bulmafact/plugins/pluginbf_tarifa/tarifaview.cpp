@@ -187,7 +187,7 @@ int TarifaView::guardar()
     /// - \TODO: Se comprueba que no exista un nombre igual.
     /// Si existe un 'idtarifa' se actualiza sus datos (UPDATE).
     if ( mui_nomtarifa->text().isEmpty() ) {
-        mensajeAviso ( tr ( "El nombre de la tarifa no puede estar vacio." ) );
+        blMsgWarning ( tr ( "El nombre de la tarifa no puede estar vacio." ) );
         return -1;
     } // end if
 

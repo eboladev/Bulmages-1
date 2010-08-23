@@ -176,7 +176,7 @@ void ZList::editar ( int row )
         } // end if
         blDebug ( "END ZList::editar", 0 );
     } catch ( ... ) {
-        mensajeInfo ( _ ( "Error al editar el almacen" ) );
+        blMsgInfo ( _ ( "Error al editar el almacen" ) );
     } // end try
 
 }
@@ -203,7 +203,7 @@ void ZList::borrar()
     /*
         int a = mui_list->currentRow();
         if (a < 0) {
-            mensajeInfo(tr("Debe seleccionar una linea"));
+            blMsgInfo(tr("Debe seleccionar una linea"));
             return;
         } // end if
         try {
@@ -219,7 +219,7 @@ void ZList::borrar()
             } // end if
             presentar();
         } catch (...) {
-            mensajeInfo(tr("Error al borrar el almacen"));
+            blMsgInfo(tr("Error al borrar el almacen"));
         } // end try
     */
     blDebug ( "END ZList::borrar", 0 );

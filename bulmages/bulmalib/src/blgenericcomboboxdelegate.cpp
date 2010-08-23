@@ -127,7 +127,7 @@ void BlGenericComboBoxDelegate::initialize ( const QString &combo_field_name )
    || m_id_field.isEmpty()
    || m_text_field.isEmpty()
    || m_combo_field_name.isEmpty() ) {
-	mensajeError ( _( "Falta definir algún parámetro necesario para BlGenericComboBoxDelegate." ) , (QWidget *) parent() );
+	blMsgError ( _( "Falta definir algún parámetro necesario para BlGenericComboBoxDelegate." ) , (QWidget *) parent() );
    }
 
    /// En vez de dibujar los valores en paint, los establecemos como datos de la tabla
@@ -198,7 +198,7 @@ void BlGenericComboBoxDelegate::setEditorData ( QWidget *editor, const QModelInd
 	/// avisar de ello, ya que es un valor requerido
 	if ( cbox->count() <= 1 )
 	{
-	   mensajeError ( _( "No existen elementos en el listado \"%1\", y el campo \"%2\" requiere alguno." ).arg ( m_table ).arg ( m_combo_field_name ) , (QWidget *) parent() );
+	   blMsgError ( _( "No existen elementos en el listado \"%1\", y el campo \"%2\" requiere alguno." ).arg ( m_table ).arg ( m_combo_field_name ) , (QWidget *) parent() );
 	   return;
 	}
 	cbox->setCurrentIndex ( 1 );

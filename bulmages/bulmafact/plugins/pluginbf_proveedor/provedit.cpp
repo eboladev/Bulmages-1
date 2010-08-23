@@ -101,7 +101,7 @@ ProveedorView::ProveedorView ( BfCompany *comp, QWidget *parent )
         /// Disparamos los plugins.
         g_plugins->lanza ( "ProveedorView_ProveedorView_Post", this );
     } catch ( ... ) {
-        mensajeInfo ( _( "Error al crear el proveedor" ) );
+        blMsgInfo ( _( "Error al crear el proveedor" ) );
     } // end try
 
     blDebug ( "END ProveedorView::ProveedorView", 0 );
@@ -146,7 +146,7 @@ void ProveedorView::on_mui_cifproveedor_lostFocus()
     blDebug ( "ProveedorView::on_mui_cifproveedor_lostFocus", 0 );
     QChar digito;
     if ( !validarCIFNIF ( mui_cifproveedor->text(), digito ) ) {
-        mensajeInfo ( _("El CIF del proveedor no parece ser valido. Digito:") + " " + QString ( digito ) );
+        blMsgInfo ( _("El CIF del proveedor no parece ser valido. Digito:") + " " + QString ( digito ) );
     } // end if
     blDebug ( "END ProveedorView::on_mui_cifproveedor_lostFocus", 0 );
 }

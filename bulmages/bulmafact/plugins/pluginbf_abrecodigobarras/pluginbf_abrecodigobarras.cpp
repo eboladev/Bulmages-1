@@ -77,7 +77,7 @@ void myplugin::elslot()
             /// Como estamos en un plugin buscamos nuevas formas de creacion de objetos.
             int resur = g_plugins->lanza ( "SNewFacturaView", ( BfCompany * ) mainCompany() );
             if ( !resur ) {
-                mensajeInfo ( "no se pudo crear instancia de factura" );
+                blMsgInfo ( "no se pudo crear instancia de factura" );
                 return;
             } // end if
             FacturaView *prov = ( FacturaView * ) g_plugParams;
@@ -91,7 +91,7 @@ void myplugin::elslot()
             /// Como estamos en un plugin buscamos nuevas formas de creacion de objetos.
             int resur = g_plugins->lanza ( "SNewPresupuestoView", ( BfCompany * ) mainCompany() );
             if ( !resur ) {
-                mensajeInfo ( "no se pudo crear instancia de pedido cliente" );
+                blMsgInfo ( "no se pudo crear instancia de pedido cliente" );
                 return;
             } // end if
             PresupuestoView * prov =  ( PresupuestoView * ) g_plugParams;
@@ -105,7 +105,7 @@ void myplugin::elslot()
             /// Como estamos en un plugin buscamos nuevas formas de creacion de objetos.
             int resur = g_plugins->lanza ( "SNewPedidoClienteView", ( BfCompany * ) mainCompany() );
             if ( !resur ) {
-                mensajeInfo ( "no se pudo crear instancia de pedido cliente" );
+                blMsgInfo ( "no se pudo crear instancia de pedido cliente" );
                 return;
             } // end if
             PedidoClienteView * prov = ( PedidoClienteView * ) g_plugParams;
@@ -120,7 +120,7 @@ void myplugin::elslot()
             /// Como estamos en un plugin buscamos nuevas formas de creacion de objetos.
             int resur = g_plugins->lanza ( "SNewAlbaranClienteView", ( BfCompany * ) mainCompany() );
             if ( !resur ) {
-                mensajeInfo ( "no se pudo crear instancia de factura" );
+                blMsgInfo ( "no se pudo crear instancia de factura" );
                 return;
             } // end if
             AlbaranClienteView *prov = ( AlbaranClienteView * ) g_plugParams;

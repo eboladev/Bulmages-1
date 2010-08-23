@@ -150,7 +150,7 @@ int BancoView::guardar()
     try {
 
         if ( mdb_idbanco.isEmpty() ) {
-            mensajeInfo ( _ ( "Debe seleccionar un banco" ) );
+            blMsgInfo ( _ ( "Debe seleccionar un banco" ) );
             return -1;
         } // end if
         
@@ -211,7 +211,7 @@ int BancoView::guardar()
 
         return 0;
     } catch ( ... ) {
-        mensajeInfo ( _ ( "Error al guardar" ) );
+        blMsgInfo ( _ ( "Error al guardar" ) );
 //	mainCompany()->rollback();
         return -1;
     } // end try
@@ -260,7 +260,7 @@ void BancoView::on_mui_nuevo_clicked()
         pintar();
         blDebug ( "END BancoView::on_mui_nuevo_clicked", 0 );
     } catch ( ... ) {
-        mensajeInfo ( _ ( "Error inesperado el crear el Banco" ) );
+        blMsgInfo ( _ ( "Error inesperado el crear el Banco" ) );
         mainCompany() ->rollback();
     } // end catch
 }
@@ -288,7 +288,7 @@ void BancoView::on_mui_borrar_clicked()
         pintar();
         blDebug ( "END BancoView::on_mui_borrar_clicked", 0 );
     } catch ( ... ) {
-        mensajeInfo ( _ ( "Error inesperado al borrar el banco" ) );
+        blMsgInfo ( _ ( "Error inesperado al borrar el banco" ) );
         mainCompany() ->rollback();
     } // end try
 }

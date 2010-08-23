@@ -202,7 +202,7 @@ void TrabajadorView::on_mui_guardar_clicked()
         /// Comprobamos cual es la cadena inicial.
         dialogChanges_cargaInicial();
     } catch ( ... ) {
-        mensajeInfo ( _ ( "Error al guardar el trabajador" ) );
+        blMsgInfo ( _ ( "Error al guardar el trabajador" ) );
         mainCompany() ->rollback();
     } // end try
     blDebug ( "END TrabajadorView::on_mui_guardar_clicked", 0 );
@@ -251,7 +251,7 @@ void TrabajadorView::on_mui_nuevo_clicked()
         pintar();
         blDebug ( "END TrabajadorView::on_mui_nuevo_clicked", 0 );
     } catch ( ... ) {
-        mensajeInfo ( _ ( "Error al crear un nuevo Trabajador" ) );
+        blMsgInfo ( _ ( "Error al crear un nuevo Trabajador" ) );
         mainCompany() ->rollback();
     } // end try
 }
@@ -276,7 +276,7 @@ void TrabajadorView::on_mui_borrar_clicked()
         pintar();
         blDebug ( "END TrabajadorView::on_mui_borrar_clicked", 0 );
     } catch ( ... ) {
-        mensajeInfo ( _ ( "Error al borrar el Trabajador" ) );
+        blMsgInfo ( _ ( "Error al borrar el Trabajador" ) );
         mainCompany() ->rollback();
     }// end try
 }

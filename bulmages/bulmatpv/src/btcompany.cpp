@@ -168,7 +168,7 @@ void BtCompany::z()
     
     while ( !curfechas->eof() ) {
         
-        //mensajeInfo(curfechas->valor("fechaalbaran"));
+        //blMsgInfo(curfechas->valor("fechaalbaran"));
         
         query = "SELECT count(idz) AS numtickets, sum(totalalbaran) AS total FROM albaran WHERE idz IS NULL AND ticketalbaran = TRUE AND fechaalbaran = '" + curfechas->valor("fechaalbaran") + "'";
         BlDbRecordSet *cur = loadQuery ( query );
@@ -837,7 +837,7 @@ void BtCompany::compruebaUltimaZ()
         /// o ya se hizo alguna Z con la fecha mal establecida en este)
         if ( (curDiferencia->valor("diferencia")).toInt() < 0 ) {
         
-            mensajeInfo("La fecha de la ultima Zeta es " + curFechaUltimaZ->valor("fechaz") + " y la fecha actual es " + curFechaActual->valor("fecha") + ". Parece que hay un problema con la fecha del sistema ya que no es coherente con la fecha de la ultima Zeta (el programa no se podra seguir usando hasta no resolver este problema)");
+            blMsgInfo("La fecha de la ultima Zeta es " + curFechaUltimaZ->valor("fechaz") + " y la fecha actual es " + curFechaActual->valor("fecha") + ". Parece que hay un problema con la fecha del sistema ya que no es coherente con la fecha de la ultima Zeta (el programa no se podra seguir usando hasta no resolver este problema)");
             
             exit(0);
                     

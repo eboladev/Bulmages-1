@@ -95,7 +95,7 @@ void ContratosList::borrar() {
         delete cont;
         presentar();
     } catch ( ... ) {
-        mensajeInfo ( _ ( "Error al borrar un contrato" ) );
+        blMsgInfo ( _ ( "Error al borrar un contrato" ) );
     } // end try
     blDebug ( "END:ContratosList::on_mui_borrar_clicked", 0 );
 }
@@ -299,7 +299,7 @@ void ContratosList::on_mui_facturar_clicked()
         delete cur;
 
     } catch ( ... ) {
-        mensajeInfo ( "Error inesperado" );
+        blMsgInfo ( "Error inesperado" );
         if ( cur ) delete cur;
         return;
     } // end try

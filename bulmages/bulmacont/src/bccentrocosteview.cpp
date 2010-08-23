@@ -275,7 +275,7 @@ void BcCentroCosteView::on_mui_borrar_clicked()
             repintar();
         } // end switch
     } catch ( ... ) {
-        mensajeInfo ( _ ( "No se pudo borrar el Centro de Coste" ) );
+        blMsgInfo ( _ ( "No se pudo borrar el Centro de Coste" ) );
         mainCompany() ->rollback();
         return;
     } // end try

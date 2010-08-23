@@ -207,7 +207,7 @@ void MTicket::on_mui_reimprimir_clicked()
     // Si el numero de resultados devuelto = 0 entonces no existe ticket previo.
     if (cur->numregistros() == 0) {
 
-	mensajeInfo(_("No existe ningun ticket anterior para imprimir."));
+	blMsgInfo(_("No existe ningun ticket anterior para imprimir."));
 
     } else {
 

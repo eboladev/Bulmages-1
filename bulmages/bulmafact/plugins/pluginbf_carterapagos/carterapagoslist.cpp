@@ -198,7 +198,7 @@ void CarteraPagosList::borrar()
                 delete bud;
                 presenta();
     } catch ( ... ) {
-        mensajeInfo ( tr ( "Error al borrar un vencimientop" ) );
+        blMsgInfo ( tr ( "Error al borrar un vencimientop" ) );
     } // end try
     blDebug ( "END:CarteraPagosList::on_mui_borrar_clicked", 0 );
 }
@@ -347,7 +347,7 @@ void CarteraPagosList::on_mui_suma_clicked() {
                 a = a + BlFixed ( rec->dbValue ( "cantvencimientop" ) );
             } // end if
         } // end for
-	mensajeInfo ("Suma:" + a.toQString());
+	blMsgInfo ("Suma:" + a.toQString());
 }
 
 /// =============================================================================

@@ -228,7 +228,7 @@ int BcAsientoSubForm_boton_iva ( BcAsientoSubForm *as )
         ( ( BcCompany * ) as->mainCompany() ) ->pWorkspace() ->addWindow ( nuevae );
         nuevae->show();
     } catch ( ... ) {
-        mensajeInfo ( _ ( "Debe seleccionar un apunte" ) );
+        blMsgInfo ( _ ( "Debe seleccionar un apunte" ) );
         return 0;
     } // end try
     blDebug ( "END BcAsientoSubForm_boton_iva", 0 );

@@ -77,7 +77,7 @@ JDirectivaView::JDirectivaView ( BfCompany *comp, QWidget *parent )
         pintar();
         dialogChanges_cargaInicial();
     } catch ( ... ) {
-        mensajeInfo ( _ ( "Error al crear el jdirectiva" ), this );
+        blMsgInfo ( _ ( "Error al crear el jdirectiva" ), this );
     } // end try
     
     blDebug ( "END JDirectivaView::JDirectivaView", 0 );
@@ -110,7 +110,7 @@ void JDirectivaView::imprimir()
 
     if ( dbValue ( "idjdirectiva" ).isEmpty() ) {
         /// El documento no se ha guardado y no se dispone en la base de datos de estos datos.
-        mensajeInfo ( _ ( "Tiene que guardar el documento antes de poder imprimirlo." ), this );
+        blMsgInfo ( _ ( "Tiene que guardar el documento antes de poder imprimirlo." ), this );
         return;
     }
     

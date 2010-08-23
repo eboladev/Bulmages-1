@@ -72,7 +72,7 @@ void ListTiposTrabajoView::on_mui_aceptar_clicked()
         mui_listado->guardar();
         close();
     } catch ( ... ) {
-        mensajeInfo ( "Error al guardar los tipos de trabajo" );
+        blMsgInfo ( "Error al guardar los tipos de trabajo" );
     } // end try
 }
 

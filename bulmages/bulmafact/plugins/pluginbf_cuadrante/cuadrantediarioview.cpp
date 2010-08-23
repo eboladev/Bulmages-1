@@ -95,7 +95,7 @@ CuadranteDiarioView::CuadranteDiarioView ( BfCompany *comp, QWidget *parent )
 
         meteWindow ( windowTitle(), this, FALSE );
     } catch ( ... ) {
-        mensajeInfo ( _ ( "Error al iniciar el cuadrante" ) );
+        blMsgInfo ( _ ( "Error al iniciar el cuadrante" ) );
     } // end try
     blDebug ( "END CuadranteDiarioView::CuadranteDiarioView", 0 );
 }

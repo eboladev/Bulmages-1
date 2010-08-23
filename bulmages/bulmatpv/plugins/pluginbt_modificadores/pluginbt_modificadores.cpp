@@ -121,7 +121,7 @@ int MTicket_MTicket_Post (MTicket *tick) {
       } // end if
       m_hboxLayout1->addWidget ( sel );
     } else {
-      mensajeInfo("No existe el mui_plugbotones");
+      blMsgInfo("No existe el mui_plugbotones");
     } // end if
 }
 

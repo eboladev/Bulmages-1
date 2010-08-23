@@ -107,7 +107,7 @@ void ImpQToolButton::click()
 
 	/// Hacer comprobacion de la variable PRINTER
 	if (g_confpr->valor(CONF_CUPS_DEFAULT_PRINTER).isEmpty() || g_confpr->valor(CONF_CUPS_DEFAULT_PRINTER) == "None") {
-	    mensajeInfo("No existe impresora por defecto. Establezca la variable CONF_CUPS_DEFAULT_PRINTER");
+	    blMsgInfo("No existe impresora por defecto. Establezca la variable CONF_CUPS_DEFAULT_PRINTER");
         blDebug ( "END ImpQToolButton::click", 0 );
 	    return;
 	} // end if
@@ -134,7 +134,7 @@ void ImpQToolButton::click()
                     /// Como estamos en un plugin buscamos nuevas formas de creacion de objetos.
                     int resur = g_plugins->lanza ( "SNewPresupuestoView", m_companyact );
                     if ( !resur ) {
-                        mensajeInfo ( "no se pudo crear instancia de presupuesto" );
+                        blMsgInfo ( "no se pudo crear instancia de presupuesto" );
                         return;
                     } // end if
                     PresupuestoView *pres = ( PresupuestoView * ) g_plugParams;
@@ -171,7 +171,7 @@ void ImpQToolButton::click()
                     /// Como estamos en un plugin buscamos nuevas formas de creacion de objetos.
                     int resur = g_plugins->lanza ( "SNewFacturaView", m_companyact );
                     if ( !resur ) {
-                        mensajeInfo ( _ ( "no se pudo crear instancia de factura" ) );
+                        blMsgInfo ( _ ( "no se pudo crear instancia de factura" ) );
                         return;
                     } // end if
                     FacturaView *pres = ( FacturaView * ) g_plugParams;
@@ -207,7 +207,7 @@ void ImpQToolButton::click()
                     /// Como estamos en un plugin buscamos nuevas formas de creacion de objetos.
                     int resur = g_plugins->lanza ( "SNewPedidoClienteView", m_companyact );
                     if ( !resur ) {
-                        mensajeInfo ( _ ( "no se pudo crear instancia de pedido cliente" ) );
+                        blMsgInfo ( _ ( "no se pudo crear instancia de pedido cliente" ) );
                         return;
                     } // end if
                     PedidoClienteView *pres = ( PedidoClienteView * ) g_plugParams;
@@ -244,7 +244,7 @@ void ImpQToolButton::click()
                     /// Como estamos en un plugin buscamos nuevas formas de creacion de objetos.
                     int resur = g_plugins->lanza ( "SNewAlbaranClienteView", m_companyact );
                     if ( !resur ) {
-                        mensajeInfo ( _ ( "no se pudo crear instancia de albaran" ) );
+                        blMsgInfo ( _ ( "no se pudo crear instancia de albaran" ) );
                         return;
                     } // end if
                     AlbaranClienteView *pres = ( AlbaranClienteView * ) g_plugParams;
@@ -319,7 +319,7 @@ void ImpQToolButton::click()
                     /// Como estamos en un plugin buscamos nuevas formas de creacion de objetos.
                     int resur = g_plugins->lanza ( "SNewCobroView", m_companyact );
                     if ( !resur ) {
-                        mensajeInfo ( "no se pudo crear instancia de cobro" );
+                        blMsgInfo ( "no se pudo crear instancia de cobro" );
                         return;
                     } // end if
                     CobroView *pres = ( CobroView * ) g_plugParams;
@@ -419,7 +419,7 @@ void ImpQToolButton::click()
                     /// Como estamos en un plugin buscamos nuevas formas de creacion de objetos.
                     int resur = g_plugins->lanza ( "SNewReciboView", m_companyact );
                     if ( !resur ) {
-                        mensajeInfo ( _ ( "no se pudo crear instancia de pedido cliente" ) );
+                        blMsgInfo ( _ ( "no se pudo crear instancia de pedido cliente" ) );
                         return;
                     } // end if
                     ReciboView *pres = ( ReciboView * ) g_plugParams;
@@ -446,7 +446,7 @@ void ImpQToolButton::click()
         blDebug ( "END ImpQToolButton::click", 0 );
 
     } catch ( ... ) {
-        mensajeInfo ( "Error en los calculos" );
+        blMsgInfo ( "Error en los calculos" );
         /// Si ha quedado memoria reservada la liberamos.
         if ( cur1 ) delete cur1;
         if ( cur ) delete cur;
@@ -626,7 +626,7 @@ void EmailQToolButton::click()
                 /// Como estamos en un plugin buscamos nuevas formas de creacion de objetos.
                 int resur = g_plugins->lanza ( "SNewPresupuestoView", m_companyact );
                 if ( !resur ) {
-                    mensajeInfo ( _ ( "no se pudo crear instancia de presupuesto" ) );
+                    blMsgInfo ( _ ( "no se pudo crear instancia de presupuesto" ) );
                     return;
                 } // end if
                 PresupuestoView *pres = ( PresupuestoView * ) g_plugParams;
@@ -670,7 +670,7 @@ void EmailQToolButton::click()
                 /// Como estamos en un plugin buscamos nuevas formas de creacion de objetos.
                 int resur = g_plugins->lanza ( "SNewPedidoClienteView", m_companyact );
                 if ( !resur ) {
-                    mensajeInfo ( _ ( "no se pudo crear instancia de pedido cliente" ) );
+                    blMsgInfo ( _ ( "no se pudo crear instancia de pedido cliente" ) );
                     return;
                 } // end if
                 PedidoClienteView *pres = ( PedidoClienteView * ) g_plugParams;
@@ -715,7 +715,7 @@ void EmailQToolButton::click()
                 /// Como estamos en un plugin buscamos nuevas formas de creacion de objetos.
                 int resur = g_plugins->lanza ( "SNewPedidoClienteView", m_companyact );
                 if ( !resur ) {
-                    mensajeInfo ( _ ( "no se pudo crear instancia de pedido cliente" ) );
+                    blMsgInfo ( _ ( "no se pudo crear instancia de pedido cliente" ) );
                     return;
                 } // end if
                 PedidoClienteView *pres = ( PedidoClienteView * ) g_plugParams;                pres->cargar ( id );
@@ -764,7 +764,7 @@ void EmailQToolButton::click()
                 /// Como estamos en un plugin buscamos nuevas formas de creacion de objetos.
                 int resur = g_plugins->lanza ( "SNewFacturaView", m_companyact );
                 if ( !resur ) {
-                    mensajeInfo ( _ ( "no se pudo crear instancia de factura" ) );
+                    blMsgInfo ( _ ( "no se pudo crear instancia de factura" ) );
                     return;
                 } // end if
                 FacturaView *pres = ( FacturaView * ) g_plugParams;
@@ -1127,7 +1127,7 @@ void SumarQToolButton::click()
         QString query = "SELECT coalesce(SUM(totalpresupuesto), 0) AS total FROM  presupuesto WHERE idpresupuesto in ("+ids+")";
         if (separador == ",") {
           BlDbRecordSet *curs = m_companyact->loadQuery ( query );
-          mensajeInfo("Total : " + curs->valor ( "total" ));
+          blMsgInfo("Total : " + curs->valor ( "total" ));
           delete curs;
         } // end if
     } // end if
@@ -1154,7 +1154,7 @@ void SumarQToolButton::click()
         QString query = "SELECT coalesce(SUM(totalpedidocliente), 0) AS total FROM  pedidocliente WHERE idpedidocliente in ("+ids+")";
         if (separador == ",") {
           BlDbRecordSet *curs = m_companyact->loadQuery ( query );
-          mensajeInfo("Total : " + curs->valor ( "total" ));
+          blMsgInfo("Total : " + curs->valor ( "total" ));
           delete curs;
         } // end if
     } // end if
@@ -1181,7 +1181,7 @@ void SumarQToolButton::click()
         QString query = "SELECT coalesce(SUM(totalalbaran), 0) AS total FROM  albaran WHERE idalbaran in ("+ids+")";
         if (separador == ",") {
           BlDbRecordSet *curs = m_companyact->loadQuery ( query );
-          mensajeInfo("Total : " + curs->valor ( "total" ));
+          blMsgInfo("Total : " + curs->valor ( "total" ));
           delete curs;
         } // end if
     } // end if
@@ -1209,7 +1209,7 @@ void SumarQToolButton::click()
         QString query = "SELECT coalesce(SUM(totalfactura), 0) AS total FROM  factura WHERE idfactura in ("+ids+")";
         if (separador == ",") {
           BlDbRecordSet *curs = m_companyact->loadQuery ( query );
-          mensajeInfo("Total : " + curs->valor ( "total" ));
+          blMsgInfo("Total : " + curs->valor ( "total" ));
           delete curs;
         } // end if
     } // end if
@@ -1233,7 +1233,7 @@ void SumarQToolButton::click()
         QString query = "SELECT coalesce(SUM(cantcobro), 0) AS total FROM  cobro WHERE idcobro in ("+ids+")";
         if (separador == ",") {
           BlDbRecordSet *curs = m_companyact->loadQuery ( query );
-          mensajeInfo("Total : " + curs->valor ( "total" ));
+          blMsgInfo("Total : " + curs->valor ( "total" ));
           delete curs;
         } // end if
     } // end if

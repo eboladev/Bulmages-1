@@ -234,7 +234,7 @@ void PedidosClienteList::editar ( int row )
             emit ( selected ( m_idpedidocliente ) );
         } // end if
     } catch ( ... ) {
-        mensajeInfo ( _ ( "Error al cargar el pedido cliente" ), this );
+        blMsgInfo ( _ ( "Error al cargar el pedido cliente" ), this );
     } // end try
     blDebug ( "END ProveedorList::editar", 0 );
 }
@@ -260,7 +260,7 @@ void PedidosClienteList::borrar()
     blDebug ( "PedidosClienteList::borrar", 0 );
     int a = mui_list->currentRow();
     if ( a < 0 ) {
-        mensajeInfo ( _ ( "Debe seleccionar una linea" ), this );
+        blMsgInfo ( _ ( "Debe seleccionar una linea" ), this );
         return;
     } // end if
     try {
@@ -275,7 +275,7 @@ void PedidosClienteList::borrar()
         } // end if
         presentar();
     } catch ( ... ) {
-        mensajeInfo ( _ ( "Error al borrar el pedido de cliente" ), this );
+        blMsgInfo ( _ ( "Error al borrar el pedido de cliente" ), this );
     } // end try
     blDebug ( "END PedidosClienteList::borrar", 0 );
 }

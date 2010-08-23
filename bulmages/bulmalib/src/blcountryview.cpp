@@ -157,7 +157,7 @@ int BlCountryView::guardar()
     QString id;
 
     if ( dbValue ( "idpais" ).isEmpty() ) {
-        mensajeInfo ( _ ( "Seleccione un pais para guardar" ) );
+        blMsgInfo ( _ ( "Seleccione un pais para guardar" ) );
     } else {
         setDbValue ( "descpais", mui_descpais->text() );
         setDbValue ( "cod2pais", mui_cod2pais->text() );
@@ -203,7 +203,7 @@ void BlCountryView::on_mui_crear_clicked()
         mostrarplantilla();
         blDebug ( "END BlCountryView::on_mui_crear_clicked", 0 );
     } catch ( ... ) {
-        mensajeInfo ( _ ( "Error al crear el banco" ) );
+        blMsgInfo ( _ ( "Error al crear el banco" ) );
         mainCompany() ->rollback();
     } // end try
 }
@@ -216,7 +216,7 @@ void BlCountryView::on_mui_borrar_clicked()
 {
     blDebug ( "BlCountryView::on_mui_borrar_clicked", 0 );
     if ( (m_countryId == "") | (m_countryId == "0") ) {
-        mensajeInfo ( _ ( "Debe seleccionar un elemento de la lista" ) );
+        blMsgInfo ( _ ( "Debe seleccionar un elemento de la lista" ) );
         return;
     } // end if
     switch ( QMessageBox::warning ( this,
@@ -234,7 +234,7 @@ void BlCountryView::on_mui_borrar_clicked()
             pintar();
             mui_datospais->setDisabled ( TRUE );
         } catch ( ... ) {
-            mensajeInfo ( _ ( "Error al intentar borrar el pais" ) );
+            blMsgInfo ( _ ( "Error al intentar borrar el pais" ) );
             mainCompany() ->rollback();
         } // end try
     } // end switch

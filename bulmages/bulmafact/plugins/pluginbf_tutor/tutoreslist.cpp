@@ -157,7 +157,7 @@ void TutoresList::borrar()
     blDebug ( "TutoresList::borrar", 0 );
     int a = mui_list->currentRow();
     if ( a < 0 ) {
-        mensajeInfo ( _ ( "Debe seleccionar una linea" ) );
+        blMsgInfo ( _ ( "Debe seleccionar una linea" ) );
         return;
     } // end if
     try {
@@ -171,7 +171,7 @@ void TutoresList::borrar()
         } // end if
         presentar();
     } catch ( ... ) {
-        mensajeInfo ( _ ( "Error al borrar el cobro a cliente" ) );
+        blMsgInfo ( _ ( "Error al borrar el cobro a cliente" ) );
     } // end try
     blDebug ( "END:TutoresList::borrar", 0 );
 }
@@ -199,7 +199,7 @@ void TutoresList::editar ( int )
             emit ( selected ( mdb_idcliente ) );
         } // end if
     } catch ( ... ) {
-        mensajeInfo ( _ ( "Debe seleccionar una fila primero" ) );
+        blMsgInfo ( _ ( "Debe seleccionar una fila primero" ) );
     } // end try
     blDebug ( "END TutoresList::on_mui_list_cellDoubleClicked", 0 );
 

@@ -288,7 +288,7 @@ void BcDiarioView::presentar()
         delete cur;
         blDebug ( "END BcDiarioView::presentar", 0 );
     } catch ( ... ) {
-        mensajeInfo ( "Error en los calculos" );
+        blMsgInfo ( "Error en los calculos" );
         /// Liberamos memoria que pueda haber quedado reservada.
         if ( cur ) delete cur;
     }// end try

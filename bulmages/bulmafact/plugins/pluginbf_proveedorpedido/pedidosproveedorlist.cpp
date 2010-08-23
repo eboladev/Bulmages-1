@@ -199,7 +199,7 @@ void PedidosProveedorList::borrar()
     blDebug ( "PedidosProveedorList::borrar", 0 );
     int a = mui_list->currentRow();
     if ( a < 0 ) {
-        mensajeInfo ( _ ( "Debe seleccionar una linea" ), this );
+        blMsgInfo ( _ ( "Debe seleccionar una linea" ), this );
         return;
     } // end if
     try {
@@ -214,7 +214,7 @@ void PedidosProveedorList::borrar()
         } // end if
         presentar();
     } catch ( ... ) {
-        mensajeInfo ( _ ( "Error al borrar el pedido a proveedor" ), this );
+        blMsgInfo ( _ ( "Error al borrar el pedido a proveedor" ), this );
     } // end try
     blDebug ( "END PedidosProveedorList::borrar", 0 );
 }
@@ -241,7 +241,7 @@ void PedidosProveedorList::editar ( int row )
             emit ( selected ( mdb_idpedidoproveedor ) );
         } // end if
     } catch ( ... ) {
-        mensajeInfo ( _ ( "Error al cargar el pedido proveedor" ), this );
+        blMsgInfo ( _ ( "Error al cargar el pedido proveedor" ), this );
     } // end try
     blDebug ( "END PedidosProveedorList::editar", 0 );
 }

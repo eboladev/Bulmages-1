@@ -185,7 +185,7 @@ int BcPlanContableListView::inicializa()
 
         inicializatabla();
     } catch ( ... ) {
-        mensajeInfo ( "Error en la carga" );
+        blMsgInfo ( "Error en la carga" );
         blDebug ( "END BcPlanContableListView::inicializa", 0, "Error en la carga" );
         return -1;
     } // end try
@@ -368,7 +368,7 @@ void BcPlanContableListView::on_mui_editar_clicked()
     QTreeWidgetItem *it;
     it = mui_arbolcuentas->currentItem();
     if ( !it ) {
-        mensajeInfo ( _ ( "Debe seleccionar una cuenta" ) );
+        blMsgInfo ( _ ( "Debe seleccionar una cuenta" ) );
         blDebug ( "END BcPlanContableListView::on_mui_editar_clicked", 0, "Debe seleccionar una cuenta" );
         return;
     }
@@ -394,7 +394,7 @@ void BcPlanContableListView::on_mui_borrar_clicked()
     QTreeWidgetItem *it;
     it = mui_arbolcuentas->currentItem();
     if ( !it ) {
-        mensajeInfo ( _ ( "Debe seleccionar una cuenta" ) );
+        blMsgInfo ( _ ( "Debe seleccionar una cuenta" ) );
         return;
     } // end if
     int valor = QMessageBox::warning ( 0,
@@ -414,7 +414,7 @@ void BcPlanContableListView::on_mui_borrar_clicked()
 	} catch (...) {
 	
 	    mainCompany()->rollback();
-	    mensajeInfo ( "No se ha podido borrar la cuenta." );
+	    blMsgInfo ( "No se ha podido borrar la cuenta." );
 	
 	} // end try
 
@@ -551,7 +551,7 @@ void BcPlanContableListView::on_mui_exportar_clicked()
         bulmages2XML ( filexml, IMPORT_CUENTAS );
         filexml.close();
     } else {
-        mensajeInfo ( "Error al abrir archivo\n" );
+        blMsgInfo ( "Error al abrir archivo\n" );
     } // end if
     blDebug ( "END BcPlanContableListView::on_mui_exportar_clicked", 0 );
 }
@@ -571,7 +571,7 @@ void BcPlanContableListView::on_mui_importar_clicked()
         filexml.close();
         inicializa();
     } else {
-        mensajeInfo ( "Error al abrir archivo\n" );
+        blMsgInfo ( "Error al abrir archivo\n" );
     } // end if
     blDebug ( "END BcPlanContableListView::on_mui_importar_clicked", 0 );
 }

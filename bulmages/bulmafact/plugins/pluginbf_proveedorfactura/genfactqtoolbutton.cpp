@@ -134,7 +134,7 @@ void GenFacProQToolButton::generarFacturaProveedor()
             /// de estos datos. Se utilizan en su lugar los del formulario.
             /// Verifica que exista, por lo menos, un cliente seleccionado.
             if ( fpv->mui_idproveedor->id().isEmpty() ) {
-                mensajeInfo ( _ ( "Tiene que seleccionar un proveedor" ), this );
+                blMsgInfo ( _ ( "Tiene que seleccionar un proveedor" ), this );
                 return;
             } else {
                 SQLQuery = "SELECT * FROM facturap WHERE reffacturap = '" + fpv->mui_refalbaranp->text() + "' AND idproveedor = " + fpv->mui_idproveedor->id();
@@ -199,7 +199,7 @@ void GenFacProQToolButton::generarFacturaProveedor()
         bud->calculaypintatotales();
 
     } catch ( ... ) {
-        mensajeInfo ( _ ( "Error inesperado" ), this );
+        blMsgInfo ( _ ( "Error inesperado" ), this );
         if ( cur ) delete cur;
         if ( bud ) delete bud;
     } // end try
@@ -240,7 +240,7 @@ void GenFacProQToolButton::generarFacturaProveedor1()
             /// de estos datos. Se utilizan en su lugar los del formulario.
             /// Verifica que exista, por lo menos, un cliente seleccionado.
             if ( fpv->mui_idproveedor->id().isEmpty() ) {
-                mensajeInfo ( _ ( "Tiene que seleccionar un proveedor" ), this );
+                blMsgInfo ( _ ( "Tiene que seleccionar un proveedor" ), this );
                 return;
             } else {
                 SQLQuery = "SELECT * FROM facturap WHERE reffacturap = '" + fpv->mui_refpedidoproveedor->text() + "' AND idproveedor = " + fpv->mui_idproveedor->id();
@@ -305,7 +305,7 @@ void GenFacProQToolButton::generarFacturaProveedor1()
         bud->calculaypintatotales();
 
     } catch ( ... ) {
-        mensajeInfo ( _ ( "Error inesperado" ), this );
+        blMsgInfo ( _ ( "Error inesperado" ), this );
         if ( cur ) delete cur;
         if ( bud ) delete bud;
     } // end try

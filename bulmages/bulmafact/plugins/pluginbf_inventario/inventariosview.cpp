@@ -119,7 +119,7 @@ void InventariosView::on_mui_editar_clicked()
     blDebug ( "InventariosView::on_mui_editar_clicked", 0 );
     int a = mui_listado->currentRow();
     if ( a < 0 ) {
-        mensajeInfo ( _ ( "Tiene que seleccionar un inventario" ) );
+        blMsgInfo ( _ ( "Tiene que seleccionar un inventario" ) );
         return;
     } else {
         QString idinventario = mui_listado->dbValue ( "idinventario" );
@@ -146,7 +146,7 @@ void InventariosView::on_mui_borrar2_clicked()
     blDebug ( "InventariosView::on_mui_borrar2_clicked", 0 );
     int a = mui_listado->currentRow();
     if ( a < 0 ) {
-        mensajeInfo ( _ ( "Tiene que seleccionar un inventario" ) );
+        blMsgInfo ( _ ( "Tiene que seleccionar un inventario" ) );
         return;
     } else {
         QString idinventario = mui_listado->dbValue ( "idinventario" );

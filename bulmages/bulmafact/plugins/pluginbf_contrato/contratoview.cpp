@@ -70,7 +70,7 @@ ContratoView::ContratoView ( BfCompany *comp, QWidget *parent )
         setListaLineas ( mui_lineas );
         meteWindow ( windowTitle(), this, FALSE );
     } catch ( ... ) {
-        mensajeInfo ( _ ( "Error al crear la contrato" ) );
+        blMsgInfo ( _ ( "Error al crear la contrato" ) );
     }
     blDebug ( "END ContratoView::ContratoView" );
 }
@@ -316,7 +316,7 @@ void ContratoView::on_mui_facturar_clicked()
             /// Como estamos en un plugin buscamos nuevas formas de creacion de objetos.
             int resur = g_plugins->lanza ( "SNewFacturaView", ( BfCompany * ) mainCompany() );
             if ( !resur ) {
-                mensajeInfo ( "no se pudo crear instancia de factura" );
+                blMsgInfo ( "no se pudo crear instancia de factura" );
                 return;
             } // end if
             FacturaView *fac = ( FacturaView * ) g_plugParams;	    

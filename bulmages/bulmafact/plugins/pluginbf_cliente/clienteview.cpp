@@ -102,7 +102,7 @@ ClienteView::ClienteView ( BfCompany *comp, QWidget *parent )
         /// Disparamos los plugins.
         res = g_plugins->lanza ( "ClienteView_ClienteView_Post", this );
     } catch ( ... ) {
-        mensajeInfo ( _ ( "Error al crear el cliente" ) );
+        blMsgInfo ( _ ( "Error al crear el cliente" ) );
     } // end try
     blDebug ( "END ClienteView::ClienteView", 0 );
 }
@@ -180,7 +180,7 @@ void ClienteView::on_mui_informe_clicked()
     blDebug ( "ClienteView::on_mui_informe_clicked", 0 );
 
     if ( dbValue ( "idcliente" ).isEmpty() ) {
-        mensajeInfo ( _ ( "Tiene que guardar el documento antes de poder imprimirlo." ) );
+        blMsgInfo ( _ ( "Tiene que guardar el documento antes de poder imprimirlo." ) );
     } else {
         BfInformeCliente inf ( mainCompany() );
         inf.setCliente ( dbValue ( "idcliente" ) );
@@ -200,7 +200,7 @@ void ClienteView::on_mui_cifcliente_lostFocus()
     blDebug ( "ClienteView::on_mui_cifcliente_lostFocus", 0 );
     QChar digito;
     if ( !validarCIFNIF ( mui_cifcliente->text(), digito ) ) {
-        mensajeInfo ( "Error en el CIF del cliente. Control:" + QString ( digito ) );
+        blMsgInfo ( "Error en el CIF del cliente. Control:" + QString ( digito ) );
     } // end if
     blDebug ( "END ClienteView::on_mui_cifcliente_lostFocus", 0 );
 }

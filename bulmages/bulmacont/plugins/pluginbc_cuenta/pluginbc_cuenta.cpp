@@ -386,7 +386,7 @@ int BlSubForm_editFinished ( BlSubForm *sub )
     blDebug ( "pluginbc_cuenta::BlSubForm_editFinished", 0 );
     if ( sub->m_campoactual->nomcampo() == "codigo" ) {
    QString query = "SELECT idcuenta FROM cuenta WHERE upper (descripcion ||  ' ' || codigo) LIKE upper('" + sub->m_campoactual->text() + "%')";
-// mensajeInfo(query);
+// blMsgInfo(query);
         BlDbRecordSet *cur = sub->mainCompany() ->loadQuery ( query );
         if ( !cur->eof() ) {
             sub->m_registrolinea->setDbValue ( "idcuenta", cur->valor ( "idcuenta" ) );

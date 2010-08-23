@@ -243,7 +243,7 @@ void BcAsientoView::iniciar_asiento_nuevo ( QString nuevoordenasiento )
         blDebug ( "END BcAsientoView::iniciar_asiento_nuevo", 0 );
         return;
     } catch ( ... ) {
-        mensajeInfo ( "Asiento no pudo crearse" );
+        blMsgInfo ( "Asiento no pudo crearse" );
         mainCompany() ->rollback();
     } // end try
 }
@@ -635,7 +635,7 @@ void BcAsientoList::situarasiento ( QString idasiento )
             cursorasientos->nextRecord();
         } // end while
     } catch ( ... ) {
-        mensajeError ( "Error al intentar situarse en el asiento.\nEs posible que el asiento ya no exista en la base de datos.\nActualice el listado de asientos." );
+        blMsgError ( "Error al intentar situarse en el asiento.\nEs posible que el asiento ya no exista en la base de datos.\nActualice el listado de asientos." );
         throw - 1;
     } // end try
     blDebug ( "END BcAsientoList::situarasiento", 0, idasiento );
@@ -721,7 +721,7 @@ void BcAsientoList::boton_filtrar()
 **/
 void BcAsientoList::muestraasiento ( QString )
 {
-    mensajeInfo ( "Funcion no implementada." );
+    blMsgInfo ( "Funcion no implementada." );
 }
 
 
@@ -853,7 +853,7 @@ void BcAsientoView::on_mui_cerrarasiento_clicked()
 {
     blDebug ( "BcAsientoView::on_mui_cerrarasiento_clicked", 0 );
     if ( BlFixed ( m_descuadre->text() ) != 0 )  {
-        mensajeInfo ( "Asiento descuadrado, no se puede cerrar" );
+        blMsgInfo ( "Asiento descuadrado, no se puede cerrar" );
         blDebug ( "END BcAsientoView::on_mui_cerrarasiento_clicked", 0, "Descuadrado" );
         return;
     } // end if
@@ -924,7 +924,7 @@ void BcAsientoView::asiento_regularizacion ( QString finicial, QString ffinal )
         QString querycomp = "SELECT * FROM asiento where clase = 1 and fecha <= '" + ffinal + "' AND fecha >= '" + ffinal + "'";                                                      
         BlDbRecordSet *curcomp = mainCompany() -> loadQuery(querycomp);                        
         while (!curcomp -> eof() ) {                                                       
-                mensajeInfo("Vamos a borrar el asiento " + curcomp->valor("ordenasiento"));
+                blMsgInfo("Vamos a borrar el asiento " + curcomp->valor("ordenasiento"));
                 muestraasiento(curcomp->valor("idasiento").toInt());                       
                 BcAsientoForm::borrar ( FALSE );                                                
                 curcomp->nextRecord();                                              
@@ -946,7 +946,7 @@ void BcAsientoView::asiento_regularizacion ( QString finicial, QString ffinal )
         QString query = "SELECT * FROM cuenta WHERE codigo in (SELECT valor FROM configuracion WHERE nombre='CuentaRegularizacion')";
         cur = mainCompany() ->loadQuery ( query );
         if ( cur->eof() ) {
-          mensajeInfo(_("Cuenta de Regularizacion incorrecta. Revise la configuracion"));
+          blMsgInfo(_("Cuenta de Regularizacion incorrecta. Revise la configuracion"));
           throw - 1;
         } // end if
         idcuenta1 = cur->valor ( "idcuenta" ).toInt();
@@ -1023,7 +1023,7 @@ void BcAsientoView::asiento_regularizacion ( QString finicial, QString ffinal )
         cargaasientos();
         muestraasiento ( idasiento );
     } catch ( ... ) {
-        mensajeInfo ( "Error en los calculos" );
+        blMsgInfo ( "Error en los calculos" );
         mainCompany() ->rollback();
     } // end try
     blDebug ( "END BcAsientoView::regularizacion", 0 );
@@ -1043,7 +1043,7 @@ void BcAsientoView::asiento_cierre ( QString finicial, QString ffinal )
         QString querycomp = "SELECT * FROM asiento where clase = 2 and fecha <= '" + ffinal + "' AND fecha >= '" + ffinal + "'";                                                      
         BlDbRecordSet *curcomp = mainCompany() -> loadQuery(querycomp);                        
         while (!curcomp -> eof() ) {                                                       
-                mensajeInfo("Vamos a borrar el asiento " + curcomp->valor("ordenasiento"));
+                blMsgInfo("Vamos a borrar el asiento " + curcomp->valor("ordenasiento"));
                 muestraasiento(curcomp->valor("idasiento").toInt());                       
                 BcAsientoForm::borrar ( FALSE );                                                
                 curcomp->nextRecord();                                              
@@ -1104,7 +1104,7 @@ void BcAsientoView::asiento_cierre ( QString finicial, QString ffinal )
         cargaasientos();
         muestraasiento ( idasiento );
     } catch ( ... ) {
-        mensajeInfo ( "Error en los calculos" );
+        blMsgInfo ( "Error en los calculos" );
         mainCompany() ->rollback();
     } // end try
 }
@@ -1121,7 +1121,7 @@ void BcAsientoView::asiento_apertura ( QString ffinal )
         QString querycomp = "SELECT * FROM asiento where clase = 3 and fecha <= '" + ffinal + "' AND fecha >= '" + ffinal + "'";                                                      
         BlDbRecordSet *curcomp = mainCompany() -> loadQuery(querycomp);                        
         while (!curcomp -> eof() ) {                                                       
-                mensajeInfo("Vamos a borrar el asiento " + curcomp->valor("ordenasiento"));
+                blMsgInfo("Vamos a borrar el asiento " + curcomp->valor("ordenasiento"));
                 muestraasiento(curcomp->valor("idasiento").toInt());                       
                 BcAsientoForm::borrar ( FALSE );                                                
                 curcomp->nextRecord();                                              
@@ -1179,7 +1179,7 @@ void BcAsientoView::asiento_apertura ( QString ffinal )
         cargaasientos();
         muestraasiento ( idasiento );
     } catch ( ... ) {
-        mensajeInfo ( "Error en los calculos" );
+        blMsgInfo ( "Error en los calculos" );
         mainCompany() ->rollback();
     } // end try
 }

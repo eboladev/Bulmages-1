@@ -56,7 +56,7 @@ Z2ZView::Z2ZView ( BfCompany *comp, QWidget *parent )
 
     } catch ( ... ) {
     
-        mensajeInfo ( _( "Error al crear la factura" ), this );
+        blMsgInfo ( _( "Error al crear la factura" ), this );
 
     }
 
@@ -105,7 +105,7 @@ void Z2ZView::calculaTotalTickets()
 
     } else {
 
-        mensajeInfo ( _("Lista vacia") );
+        blMsgInfo ( _("Lista vacia") );
         return;
 
     } // end if
@@ -149,7 +149,7 @@ void Z2ZView::on_mui_traspasar_clicked()
         BlFixed totaltraspasado ( "0.00" );
 
         if ( g_confpr->valor ( CONF_FACT_ALT ) == "" ) {
-            mensajeInfo ( "Debe configurar el parametro CONF_FACT_ALT" );
+            blMsgInfo ( "Debe configurar el parametro CONF_FACT_ALT" );
             return;
         } // end if
         BlPostgreSqlClient *db;
@@ -269,7 +269,7 @@ void Z2ZView::on_mui_traspasar_clicked()
 
     } catch ( ... ) {
     
-        mensajeInfo ( _("Error en el traspaso") );
+        blMsgInfo ( _("Error en el traspaso") );
 
     }// end try
 

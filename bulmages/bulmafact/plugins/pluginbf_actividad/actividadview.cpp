@@ -105,7 +105,7 @@ ActividadView::ActividadView ( BfCompany *comp, QWidget *parent )
 
         mui_idtipoactividad->setId ( "" );
     } catch ( ... ) {
-        mensajeInfo ( _ ( "Error al crear el actividad" ), this );
+        blMsgInfo ( _ ( "Error al crear el actividad" ), this );
     } // end try
     
     blDebug ( "END ActividadView::ActividadView", 0 );
@@ -136,7 +136,7 @@ void ActividadView::imprimir()
 
     if ( dbValue ( "idprofesor" ).isEmpty() ) {
         /// El documento no se ha guardado y no se dispone en la base de datos de estos datos.
-        mensajeInfo ( _ ( "Tiene que guardar el documento antes de poder imprimirlo." ), this );
+        blMsgInfo ( _ ( "Tiene que guardar el documento antes de poder imprimirlo." ), this );
         return;
     }
     

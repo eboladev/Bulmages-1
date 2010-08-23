@@ -98,7 +98,7 @@ ConvReunionView::ConvReunionView ( BfCompany *comp, QWidget *parent ) : BfForm (
         
     } catch ( ... ) {
     
-        mensajeInfo ( _ ( "Error al crear la reunion" ), this );
+        blMsgInfo ( _ ( "Error al crear la reunion" ), this );
         
     } // end try
     
@@ -130,7 +130,7 @@ void ConvReunionView::imprimir()
     
     if ( dbValue ( "idreunion" ).isEmpty() ) {
         /// El documento no se ha guardado y no se dispone en la base de datos de estos datos.
-        mensajeInfo ( _ ( "Tiene que guardar el documento antes de poder imprimirlo." ), this );
+        blMsgInfo ( _ ( "Tiene que guardar el documento antes de poder imprimirlo." ), this );
         blDebug ( "END ConvReunionView::imprimir", 0 );
         return;
     } // end if

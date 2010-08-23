@@ -114,7 +114,7 @@ FacturaView::FacturaView ( BfCompany *comp, QWidget *parent )
         m_totalfactura->setAlignment ( Qt::AlignRight );
         meteWindow ( windowTitle(), this, FALSE );
     } catch ( ... ) {
-        mensajeInfo ( _ ( "Error al crear la factura" ), this );
+        blMsgInfo ( _ ( "Error al crear la factura" ), this );
     }
     blDebug ( "END FacturaView::FacturaView" );
 }
@@ -262,11 +262,11 @@ void FacturaView::on_mui_veralbaranes_clicked()
                 cur->nextRecord();
             } // end while
         } else {
-            mensajeInfo ( _ ( "No hay albaranes con esta referencia" ), this );
+            blMsgInfo ( _ ( "No hay albaranes con esta referencia" ), this );
         } // end if
         delete cur;
     } catch ( ... ) {
-        mensajeInfo ( _ ( "Error inesperado" ), this );
+        blMsgInfo ( _ ( "Error inesperado" ), this );
         if ( cur ) delete cur;
         if ( bud ) delete bud;
     } // end try

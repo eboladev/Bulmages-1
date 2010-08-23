@@ -138,7 +138,7 @@ void GenAlbQToolButton::generarFactura1()
             /// de estos datos. Se utilizan en su lugar los del formulario.
             /// Verifica que exista, por lo menos, un cliente seleccionado.
             if ( fpv->mui_idcliente->id().isEmpty() ) {
-                mensajeInfo ( _ ( "Tiene que seleccionar un cliente" ), this );
+                blMsgInfo ( _ ( "Tiene que seleccionar un cliente" ), this );
                 return;
             } else {
                 SQLQuery = "SELECT * FROM albaran WHERE refalbaran = '" + fpv->mui_refpedidocliente->text() + "' AND idcliente = " + fpv->mui_idcliente->id();
@@ -224,7 +224,7 @@ void GenAlbQToolButton::generarFactura1()
 	fpv->mui_procesadopedidocliente->setChecked(TRUE);
 
     } catch ( ... ) {
-        mensajeInfo ( _ ( "Error inesperado" ), this );
+        blMsgInfo ( _ ( "Error inesperado" ), this );
         if ( cur ) delete cur;
         if ( bud ) delete bud;
     } // end try
@@ -270,7 +270,7 @@ void GenAlbQToolButton::generarFactura2()
             /// de estos datos. Se utilizan en su lugar los del formulario.
             /// Verifica que exista, por lo menos, un cliente seleccionado.
             if ( fpv->mui_idcliente->id().isEmpty() ) {
-                mensajeInfo ( _ ( "Tiene que seleccionar un cliente" ), this );
+                blMsgInfo ( _ ( "Tiene que seleccionar un cliente" ), this );
                 return;
             } else {
                 SQLQuery = "SELECT * FROM albaran WHERE refalbaran = '" + fpv->mui_refpresupuesto->text() + "' AND idcliente = " + fpv->mui_idcliente->id();
@@ -356,7 +356,7 @@ void GenAlbQToolButton::generarFactura2()
 	fpv->mui_procesadopresupuesto->setChecked(TRUE);
 
     } catch ( ... ) {
-        mensajeInfo ( _ ( "Error inesperado" ), this );
+        blMsgInfo ( _ ( "Error inesperado" ), this );
         if ( cur ) delete cur;
         if ( bud ) delete bud;
     } // end try

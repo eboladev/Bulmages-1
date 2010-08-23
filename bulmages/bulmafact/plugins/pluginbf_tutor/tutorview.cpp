@@ -108,7 +108,7 @@ TutorView::TutorView ( BfCompany *comp, QWidget *parent ) : BfForm ( comp, paren
         
     } catch ( ... ) {
     
-        mensajeInfo ( _ ( "Error al crear el tutor" ), this );
+        blMsgInfo ( _ ( "Error al crear el tutor" ), this );
         
     } // end try
     
@@ -153,7 +153,7 @@ void TutorView::imprimir()
 
     if ( dbValue ( "idcliente" ).isEmpty() ) {
         /// El documento no se ha guardado y no se dispone en la base de datos de estos datos.
-        mensajeInfo ( _ ( "Tiene que guardar el documento antes de poder imprimirlo." ), this );
+        blMsgInfo ( _ ( "Tiene que guardar el documento antes de poder imprimirlo." ), this );
         return;
     }
     

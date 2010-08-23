@@ -273,7 +273,7 @@ void CuadranteQTextDocument::addTrabajador ( QString idtrabajador )
     } catch ( ... ) {
         mainCompany() ->rollback();
         if ( cur ) delete cur;
-        mensajeInfo ( "Error al agregar el trabajador al cuadrante" );
+        blMsgInfo ( "Error al agregar el trabajador al cuadrante" );
     } // end try
     blDebug ( "END CuadranteQTextDocument::addTrabajador", 0 );
 }
@@ -303,7 +303,7 @@ void CuadranteQTextDocument::setAlmFecha ( QString idalmacen, const QDate &date 
         pintaCuadrante ( idalmacen, date );
     } catch ( ... ) {
         mainCompany() ->rollback();
-        mensajeInfo ( "Error en la carga" );
+        blMsgInfo ( "Error en la carga" );
         if ( cur1 ) delete cur1;
         return;
     } // end try
@@ -542,7 +542,7 @@ void ImpCuadrante::generar()
         m_html = html;
         blDebug ( "END ImpCuadrante::generar", 0 );
     } catch ( ... ) {
-        mensajeInfo ( "Error en el pintado" );
+        blMsgInfo ( "Error en el pintado" );
         if ( cur ) delete cur;
         if ( cur1 ) delete cur1;
         return;

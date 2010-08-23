@@ -93,7 +93,7 @@ ProfesorView::ProfesorView ( BfCompany *comp, QWidget *parent )
         pintar();
         dialogChanges_cargaInicial();
     } catch ( ... ) {
-        mensajeInfo ( _ ( "Error al crear el profesor" ), this );
+        blMsgInfo ( _ ( "Error al crear el profesor" ), this );
     } // end try
     
     blDebug ( "END ProfesorView::ProfesorView", 0 );
@@ -121,7 +121,7 @@ void ProfesorView::imprimir()
 
     if ( dbValue ( "idprofesor" ).isEmpty() ) {
         /// El documento no se ha guardado y no se dispone en la base de datos de estos datos.
-        mensajeInfo ( _ ( "Tiene que guardar el documento antes de poder imprimirlo." ), this );
+        blMsgInfo ( _ ( "Tiene que guardar el documento antes de poder imprimirlo." ), this );
         return;
     }
     

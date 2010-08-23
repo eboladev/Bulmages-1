@@ -114,7 +114,7 @@ ArticuloView::ArticuloView ( BfCompany *comp, QWidget *parent )
         meteWindow ( windowTitle(), this, FALSE );
         dialogChanges_cargaInicial();
     } catch ( ... ) {
-        mensajeInfo ( _ ( "Error al crear el articulo" ) );
+        blMsgInfo ( _ ( "Error al crear el articulo" ) );
     } // end try
     blDebug ( "END ArticuloView::ArticuloView", 0 );
 }
@@ -230,7 +230,7 @@ int ArticuloView::guardarPost()
 
         /// Coge la imagen del recuadro y la guarda en un archivo con el nombre correcto.
         if ( mui_imagen->pixmap()->save ( g_confpr->valor ( CONF_DIR_IMG_ARTICLES ) + cur1->valor ( "codigocompletoarticulo" ) + ".jpg" ) == false ) {
-            mensajeError ( _ ( "No se ha podido guardar la imagen.\nRevise los permisos de escritura y que disponga\nde espacio libre suficiente en el disco duro." ) );
+            blMsgError ( _ ( "No se ha podido guardar la imagen.\nRevise los permisos de escritura y que disponga\nde espacio libre suficiente en el disco duro." ) );
         } // end if
 
         delete cur1;
@@ -292,7 +292,7 @@ void ArticuloView::on_mui_cambiarimagen_clicked()
     if ( !m_archivoimagen.isNull() ) {
         /// Comprueba que la imagen del archivo es valida.
         if ( imagen.load ( m_archivoimagen ) == false ) {
-            mensajeError ( _ ( "No se ha podido cargar la imagen.\nCompruebe que la imagen sea valida." ) );
+            blMsgError ( _ ( "No se ha podido cargar la imagen.\nCompruebe que la imagen sea valida." ) );
             return;
         } // end if
 
@@ -325,7 +325,7 @@ void ArticuloView::on_mui_borrarimagen_clicked()
             /// Se borra el archivo de la imagen y se muestra la imagen por defecto en el QLabel.
 
             if ( archivo.remove() == false ) {
-                mensajeError ( _ ( "No se ha podido borrar el archivo.\nCompruebe que el archivo tenga los permisos correctos." ) );
+                blMsgError ( _ ( "No se ha podido borrar el archivo.\nCompruebe que el archivo tenga los permisos correctos." ) );
             } // end if
         } // end if
     } // end if

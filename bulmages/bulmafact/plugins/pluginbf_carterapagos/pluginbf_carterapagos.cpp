@@ -157,7 +157,7 @@ int ProveedorView_cargarPost_Post ( ProveedorView *art )
 
 void generarVencimientos (FacturaProveedorView *art) {
 			BlDbRecordSet *cur1 = art->mainCompany()->loadQuery("SELECT totalfacturap FROM facturap WHERE idfacturap = " + art->dbValue("idfacturap"));
-			mensajeInfo( "El total de la factura es :" + cur1->valor("totalfacturap"));
+			blMsgInfo( "El total de la factura es :" + cur1->valor("totalfacturap"));
 			BlFixed contado("0.00");
 
 			BlDbRecordSet *cur = art->mainCompany()->loadQuery("SELECT * FROM vencimientoproveedor WHERE idproveedor = " + art->dbValue("idproveedor"));

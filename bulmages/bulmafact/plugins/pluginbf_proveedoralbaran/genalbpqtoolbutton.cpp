@@ -130,7 +130,7 @@ void GenAlbProQToolButton::generarAlbaranProveedor()
             /// de estos datos. Se utilizan en su lugar los del formulario.
             /// Verifica que exista, por lo menos, un cliente seleccionado.
             if ( fpv->mui_idproveedor->id().isEmpty() ) {
-                mensajeInfo ( _ ( "Tiene que seleccionar un proveedor" ), this );
+                blMsgInfo ( _ ( "Tiene que seleccionar un proveedor" ), this );
                 return;
             } else {
                 SQLQuery = "SELECT * FROM albaranp WHERE refalbaranp = '" + fpv->mui_refpedidoproveedor->text() + "' AND idproveedor = " + fpv->mui_idproveedor->id();
@@ -195,7 +195,7 @@ void GenAlbProQToolButton::generarAlbaranProveedor()
         bud->calculaypintatotales();
 
     } catch ( ... ) {
-        mensajeInfo ( _ ( "Error inesperado" ), this );
+        blMsgInfo ( _ ( "Error inesperado" ), this );
         if ( cur ) delete cur;
         if ( bud ) delete bud;
     } // end try

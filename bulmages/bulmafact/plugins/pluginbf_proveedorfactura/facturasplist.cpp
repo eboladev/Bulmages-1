@@ -221,7 +221,7 @@ void FacturasProveedorList::editar ( int row )
             emit ( selected ( mdb_idfacturap ) );
         } // end if
     } catch ( ... ) {
-        mensajeInfo ( _ ( "Error al cargar la factura proveedor" ), this );
+        blMsgInfo ( _ ( "Error al cargar la factura proveedor" ), this );
     } // end try
     blDebug ( "END FacturasProveedorList::editar", 0 );
 }
@@ -240,7 +240,7 @@ void FacturasProveedorList::borrar()
     blDebug ( "FacturasProveedorList::borrar", 0 );
     int a = mui_list->currentRow();
     if ( a < 0 ) {
-        mensajeInfo ( _ ( "Debe seleccionar una linea" ), this );
+        blMsgInfo ( _ ( "Debe seleccionar una linea" ), this );
         return;
     } // end if
     try {
@@ -251,7 +251,7 @@ void FacturasProveedorList::borrar()
         delete bud;
         presentar();
     } catch ( ... ) {
-        mensajeInfo ( _ ( "Error al borrar la factura de proveedor" ), this );
+        blMsgInfo ( _ ( "Error al borrar la factura de proveedor" ), this );
     } // end try
     blDebug ( "END FacturasProveedorList::borrar", 0 );
 }

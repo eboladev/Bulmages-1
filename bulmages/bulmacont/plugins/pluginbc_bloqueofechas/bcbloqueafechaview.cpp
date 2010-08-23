@@ -256,7 +256,7 @@ void BcBloqueaFechaView::on_mui_crear_clicked()
     /// Comprobamos que el ejercicio introducido sea valido.
     if ( !ok ) return;
     if ( ejer < 1000 ) {
-        mensajeInfo ( "Ejercicio invalido" );
+        blMsgInfo ( "Ejercicio invalido" );
         return;
     } // end if
     QString query = "SELECT * FROM ejercicios WHERE ejercicio = " + QString::number ( ejer );
@@ -264,7 +264,7 @@ void BcBloqueaFechaView::on_mui_crear_clicked()
     if ( cur ) {
         if ( cur->numregistros() > 0 ) {
             delete cur;
-            mensajeInfo ( _ ( "Ejercicios ya contemplado" ) );
+            blMsgInfo ( _ ( "Ejercicios ya contemplado" ) );
             return;
         } // end if
     } // end if
@@ -278,7 +278,7 @@ void BcBloqueaFechaView::on_mui_crear_clicked()
             mainCompany() ->runQuery ( consultabd );
             mainCompany()->commit();
         } catch ( ... ) {
-            mensajeInfo ( "Error con la base de datos" );
+            blMsgInfo ( "Error con la base de datos" );
             mainCompany()->rollback();
         } // end try
     } // end for

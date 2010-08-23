@@ -69,7 +69,7 @@ void ListInventarioSimpleView::on_mui_aceptar_clicked()
         mui_listado->guardar();
         close();
     } catch ( ... ) {
-        mensajeInfo ( _ ( "Error al guardar el inventario" ) );
+        blMsgInfo ( _ ( "Error al guardar el inventario" ) );
     } // end try
     
     blDebug ( "END ListInventarioSimpleView::on_mui_aceptar_clicked", 0 );

@@ -251,7 +251,7 @@ void FPagoView::on_mui_borrar_clicked()
         groupBox1->setDisabled ( TRUE );
         blDebug ( "END FPagoView::on_mui_borrar_clicked", 0 );
     } catch ( ... ) {
-        mensajeInfo ( _ ( "Error al intentar borrar la forma de pago" ) );
+        blMsgInfo ( _ ( "Error al intentar borrar la forma de pago" ) );
         mainCompany() ->rollback();
     } // end try
 }

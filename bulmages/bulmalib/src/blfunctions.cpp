@@ -222,7 +222,7 @@ float blFloatRound ( float n, unsigned d )
 
 
 /// Esta funcion convierte un numero con decimales a un entero. Usando la regla
-/// que si el el primer decimal es mayor o igual a 5 se devuelve el entero superior. AInteligentesView
+/// que si el el primer decimal es mayor o igual a 5 se devuelve el entero superior.
 /// valor = Numero a convertir.
 int blDoubleToInt ( double valor )
 {
@@ -324,7 +324,7 @@ void reemplazaarchivo ( QString archivo, QString texto1, QString texto2, QString
     QString cadena = " sed -e \"s&" + texto1 + "&" + texto2 + "&g\"  " + archivo + " > " + archivo2 + "";
     int result = system ( cadena.toAscii().data() );
     if (result == -1) {
-	mensajeError(_("Error al ejecutar el comando 'sed' [ blfunctions.cpp->reemplazaarchivo() ]."));
+	blMsgError(_("Error al ejecutar el comando 'sed' [ blfunctions.cpp->reemplazaarchivo() ]."));
     } // end if
 }
 
@@ -343,14 +343,14 @@ void generaPDF ( const QString arch )
 
     int result1 = system ( cadsys.toAscii() );
     if (result1 == -1) {
-	mensajeError(_("Error en PYTHON [ blfunctions->generaPDF() ]"));
+	blMsgError(_("Error en PYTHON [ blfunctions->generaPDF() ]"));
     } // end if
     
     blDebug ( cadsys, 0 );
     cadsys = g_confpr->valor ( CONF_FLIP ) + " -u " + g_confpr->valor ( CONF_DIR_USER ) + arch + ".pdf";
     int result2 = system ( cadsys.toAscii().data() );
     if (result2 == -1) {
-	mensajeError(_("Error en FLIP [ blfunctions->generaPDF() ]"));
+	blMsgError(_("Error en FLIP [ blfunctions->generaPDF() ]"));
     } // end if
 
     blDebug ( cadsys, 0 );
@@ -360,7 +360,7 @@ void generaPDF ( const QString arch )
     cadsys = "bgtrml2pdf " + arch + ".rml > " + arch + ".pdf";
     int result3 = system ( cadsys.toAscii().data() );
     if (result3 == -1) {
-	mensajeError(_("Error en bgtrml2pdf [ blfunctions->generaPDF() ]"));
+	blMsgError(_("Error en bgtrml2pdf [ blfunctions->generaPDF() ]"));
     } // end if
 
 #endif
@@ -379,13 +379,13 @@ void generaPYS ( const QString arch )
     QString cadena = "rm " + g_confpr->valor ( CONF_DIR_USER ) + arch + ".ods";
     int result1 = system ( cadena.toAscii() );
     if (result1 == -1) {
-	mensajeError(_("Error al borrar archivo .ods [ blfunctions->generaPYS() ]"));
+	blMsgError(_("Error al borrar archivo .ods [ blfunctions->generaPYS() ]"));
     } // end if
 
     cadena = " cd " + g_confpr->valor ( CONF_DIR_USER ) + "; python " + arch + ".pys";
     int result2 = system ( cadena.toAscii() );
     if (result2 == -1) {
-	mensajeError(_("Error al ejecutar PYTHON [ blfunctions->generaPYS() ]"));
+	blMsgError(_("Error al ejecutar PYTHON [ blfunctions->generaPYS() ]"));
     } // end if
 
 }
@@ -399,7 +399,7 @@ void invocaPYS ( const QString arch )
       QString cadena = g_confpr->valor ( CONF_ODS ) + " " + g_confpr->valor ( CONF_DIR_USER ) + arch + ".ods &";
       int result = system ( cadena.toAscii() );
       if (result == -1) {
-	  mensajeError(_("Error al ejecutar oocalc [ blfunctions->invocaPYS() ]"));
+	  blMsgError(_("Error al ejecutar oocalc [ blfunctions->invocaPYS() ]"));
       } // end if
     } // end if
 
@@ -414,7 +414,7 @@ void invocaPDF ( const QString arch )
     QString cadsys = g_confpr->valor ( CONF_PDF ) + " " + g_confpr->valor ( CONF_DIR_USER ) + arch + ".pdf &";
     int result = system ( cadsys.toAscii().data() );
     if (result == -1) {
-	mensajeError(_("Error al ejecutar el visor de PDF [ blfunctions->invocaPDF() ]"));
+	blMsgError(_("Error al ejecutar el visor de PDF [ blfunctions->invocaPDF() ]"));
     } // end if
     
 }
@@ -428,7 +428,7 @@ void mailsendPDF ( const QString arch, const QString to, const QString subject, 
     QString cadsys = "mailsend -h " + arch + " -d " + to + " -f bulmages@iglues.org -t test@iglues.org -sub " + subject + " -m " + message;
     int result = system ( cadsys.toAscii().data() );
     if (result == -1) {
-	mensajeError(_("Error al ejecutar mailsend [ blfunctions->mailsendPDF() ]"));
+	blMsgError(_("Error al ejecutar mailsend [ blfunctions->mailsendPDF() ]"));
     } // end if
     
 }
@@ -447,7 +447,7 @@ QString windowID ( const QString &app )
 
     int result = system ( cad.toAscii() );
     if (result == -1) {
-	mensajeError(_("Error al ejecutar xwininfo [ blfunctions->windowID() ]"));
+	blMsgError(_("Error al ejecutar xwininfo [ blfunctions->windowID() ]"));
     } // end if
     
 
@@ -599,7 +599,7 @@ void blDebug ( const QString &cad, int nivel, const QString &param )
 //}
 #endif
 
-void mensajeInfo ( QString cad, QWidget *parent )
+void blMsgInfo ( QString cad, QWidget *parent )
 {
     QMessageBox msgBox;
     msgBox.information ( parent,
@@ -609,7 +609,7 @@ void mensajeInfo ( QString cad, QWidget *parent )
 }
 
 
-void mensajeAviso ( QString cad, QWidget *parent )
+void blMsgWarning ( QString cad, QWidget *parent )
 {
     QMessageBox msgBox;
     msgBox.warning ( parent,
@@ -619,7 +619,7 @@ void mensajeAviso ( QString cad, QWidget *parent )
 }
 
 
-void mensajeError ( QString cad, QWidget *parent )
+void blMsgError ( QString cad, QWidget *parent )
 {
     QMessageBox msgBox;
     msgBox.critical ( parent,

@@ -168,7 +168,7 @@ int BfSubForm_on_mui_list_editFinished ( BfSubForm *subform )
                 rec->setDbValue ( "pvp" + subform->tableName(), cur->valor ( "preciocostearticulo" ) );
             } // end if
         } else {
-            mensajeAviso ( subform->tr ( "Articulo inexistente" ) );
+            blMsgWarning ( subform->tr ( "Articulo inexistente" ) );
             delete cur;
             return -1;
         } // end if

@@ -78,7 +78,7 @@ VencimientoPView::VencimientoPView ( BfCompany *comp, QWidget *parent )
         pintar();
         dialogChanges_cargaInicial();
     } catch ( ... ) {
-        mensajeInfo ( tr ( "Error al crear el pago" ), this );
+        blMsgInfo ( tr ( "Error al crear el pago" ), this );
     } // end try
     blDebug ( "END VencimientoPView::VencimientoPView", 0 );
 }

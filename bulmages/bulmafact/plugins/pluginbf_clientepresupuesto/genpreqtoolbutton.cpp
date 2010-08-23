@@ -153,7 +153,7 @@ void GenPreQToolButton::generarFactura()
             /// de estos datos. Se utilizan en su lugar los del formulario.
             /// Verifica que exista, por lo menos, un cliente seleccionado.
             if ( fpv->mui_idcliente->id().isEmpty() ) {
-                mensajeInfo ( _ ( "Tiene que seleccionar un cliente" ), this );
+                blMsgInfo ( _ ( "Tiene que seleccionar un cliente" ), this );
                 return;
             } else {
                 SQLQuery = "SELECT * FROM factura WHERE reffactura = '" + fpv->mui_refalbaran->text() + "' AND idcliente = " + fpv->mui_idcliente->id();
@@ -238,7 +238,7 @@ void GenPreQToolButton::generarFactura()
         fpv->mui_procesadoalbaran->setChecked ( TRUE );
 
     } catch ( ... ) {
-        mensajeInfo ( _ ( "Error inesperado" ), this );
+        blMsgInfo ( _ ( "Error inesperado" ), this );
         if ( cur ) delete cur;
         if ( bud ) delete bud;
     } // end try
@@ -282,7 +282,7 @@ void GenPreQToolButton::generarFactura1()
             /// de estos datos. Se utilizan en su lugar los del formulario.
             /// Verifica que exista, por lo menos, un cliente seleccionado.
             if ( fpv->mui_idcliente->id().isEmpty() ) {
-                mensajeInfo ( _ ( "Tiene que seleccionar un cliente" ), this );
+                blMsgInfo ( _ ( "Tiene que seleccionar un cliente" ), this );
                 return;
             } else {
                 SQLQuery = "SELECT * FROM factura WHERE reffactura = '" + fpv->mui_refpedidocliente->text() + "' AND idcliente = " + fpv->mui_idcliente->id();
@@ -365,7 +365,7 @@ void GenPreQToolButton::generarFactura1()
         bud->show();
 
     } catch ( ... ) {
-        mensajeInfo ( _ ( "Error inesperado" ), this );
+        blMsgInfo ( _ ( "Error inesperado" ), this );
         if ( cur ) delete cur;
         if ( bud ) delete bud;
     } // end try
@@ -412,7 +412,7 @@ void GenPreQToolButton::generarFactura2()
             /// de estos datos. Se utilizan en su lugar los del formulario.
             /// Verifica que exista, por lo menos, un cliente seleccionado.
             if ( fpv->mui_idcliente->id().isEmpty() ) {
-                mensajeInfo ( _ ( "Tiene que seleccionar un cliente" ), this );
+                blMsgInfo ( _ ( "Tiene que seleccionar un cliente" ), this );
                 return;
             } else {
                 SQLQuery = "SELECT * FROM factura WHERE reffactura = '" + fpv->mui_refpresupuesto->text() + "' AND idcliente = " + fpv->mui_idcliente->id();
@@ -495,7 +495,7 @@ void GenPreQToolButton::generarFactura2()
         bud->show();
 
     } catch ( ... ) {
-        mensajeInfo ( _ ( "Error inesperado" ), this );
+        blMsgInfo ( _ ( "Error inesperado" ), this );
         if ( cur ) delete cur;
         if ( bud ) delete bud;
     } // end try
@@ -597,7 +597,7 @@ void VerPreQToolButton::verPresupuesto()
             /// de estos datos. Se utilizan en su lugar los del formulario.
             /// Verifica que exista, por lo menos, un cliente seleccionado.
             if ( fpv->mui_idcliente->id().isEmpty() ) {
-                mensajeInfo ( _ ( "Tiene que seleccionar un cliente" ), this );
+                blMsgInfo ( _ ( "Tiene que seleccionar un cliente" ), this );
                 return;
             } else {
                 SQLQuery = "SELECT * FROM presupuesto WHERE refpresupuesto = '" + fpv->mui_refpedidocliente->text() + "' AND idcliente = " + fpv->mui_idcliente->id();
@@ -620,14 +620,14 @@ void VerPreQToolButton::verPresupuesto()
                 cur->nextRecord();
             } // end while
         } else {
-            mensajeInfo ( _ ( "No hay presupuestos con la misma referencia." ), this );
+            blMsgInfo ( _ ( "No hay presupuestos con la misma referencia." ), this );
             blDebug ( "No hay presupuestos con la misma referencia.", 2 );
         } // end if
 
         delete cur;
 
     } catch ( ... ) {
-        mensajeInfo ( _ ( "Error inesperado." ), this );
+        blMsgInfo ( _ ( "Error inesperado." ), this );
         if ( cur ) delete cur;
         if ( bud ) delete bud;
     } // end try

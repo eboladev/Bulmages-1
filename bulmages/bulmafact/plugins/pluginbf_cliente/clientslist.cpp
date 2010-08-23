@@ -177,7 +177,7 @@ void ClientsList::borrar()
         delete cli;
         presentar();
     } catch ( ... ) {
-        mensajeInfo ( _ ( "Error al borrar un cliente" ) );
+        blMsgInfo ( _ ( "Error al borrar un cliente" ) );
     } // end try
     blDebug ( "END:ClientsList::on_mui_borrar_clicked", 0 );
 }

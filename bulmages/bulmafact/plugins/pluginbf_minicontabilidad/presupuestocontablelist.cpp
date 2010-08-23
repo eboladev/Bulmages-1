@@ -147,7 +147,7 @@ void PresupuestoContableList::borrar()
         delete cli;
         presentar();
     } catch ( ... ) {
-        mensajeInfo ( _ ( "Error al borrar un presupuestocontable" ) );
+        blMsgInfo ( _ ( "Error al borrar un presupuestocontable" ) );
     } // end try
     blDebug ( "END:PresupuestoContableList::on_mui_borrar_clicked", 0 );
 }

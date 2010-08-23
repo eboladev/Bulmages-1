@@ -200,7 +200,7 @@ void PagosList::borrar()
     blDebug ( "PagosList::borrar", 0 );
     int a = mui_list->currentRow();
     if ( a < 0 ) {
-        mensajeInfo ( _ ( "Debe seleccionar una linea" ), this );
+        blMsgInfo ( _ ( "Debe seleccionar una linea" ), this );
         return;
     } // end if
     try {
@@ -212,7 +212,7 @@ void PagosList::borrar()
         } // end if
         presentar();
     } catch ( ... )  {
-        mensajeInfo ( _ ( "Error al borrar el pago" ), this );
+        blMsgInfo ( _ ( "Error al borrar el pago" ), this );
     } // end try
     blDebug ( "END PagosList::borrar", 0 );
 }

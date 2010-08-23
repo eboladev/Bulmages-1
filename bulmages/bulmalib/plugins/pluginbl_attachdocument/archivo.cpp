@@ -45,7 +45,7 @@ Archivo::Archivo ( BlMainCompany *comp, QWidget *parent )
         setupUi ( this );
 
     } catch ( ... ) {
-        mensajeInfo ( _ ( "Error al crear la ventana de importacion" ) );
+        blMsgInfo ( _ ( "Error al crear la ventana de importacion" ) );
     } // end try
     blDebug ( "END Archivo::Archivo", 0 );
 }

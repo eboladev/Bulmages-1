@@ -238,7 +238,7 @@ void ProveedorList::borrar()
         delete prov;
         presentar();
     } catch ( ... ) {
-        mensajeInfo ( _ ( "Error al borrar el proveedor" ) );
+        blMsgInfo ( _ ( "Error al borrar el proveedor" ) );
     } // end try
     blDebug ( "END ProveedorList::borrar", 0 );
 }

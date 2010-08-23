@@ -155,7 +155,7 @@ int ClienteView_cargarPost_Post ( ClienteView *art )
 
 void generarVencimientos (FacturaView *art) {
 			BlDbRecordSet *cur1 = art->mainCompany()->loadQuery("SELECT totalfactura FROM factura WHERE idfactura = " + art->dbValue("idfactura"));
-			mensajeInfo( "El total de la factura es :" + cur1->valor("totalfactura"));
+			blMsgInfo( "El total de la factura es :" + cur1->valor("totalfactura"));
 			BlFixed contado("0.00");
 
 			BlDbRecordSet *cur = art->mainCompany()->loadQuery("SELECT * FROM vencimientocliente WHERE idcliente = " + art->dbValue("idcliente"));

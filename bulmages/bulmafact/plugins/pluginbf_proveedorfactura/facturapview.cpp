@@ -98,7 +98,7 @@ FacturaProveedorView::FacturaProveedorView ( BfCompany *comp, QWidget *parent )
         m_totalfacturap->setAlignment ( Qt::AlignRight );
         meteWindow ( windowTitle(), this, FALSE );
     } catch ( ... ) {
-        mensajeInfo ( _ ( "Error al crear la factura proveedor" ), this );
+        blMsgInfo ( _ ( "Error al crear la factura proveedor" ), this );
     } // end try
     blDebug ( "END FacturaProveedorView::FacturaProveedorView", 0 );
 }

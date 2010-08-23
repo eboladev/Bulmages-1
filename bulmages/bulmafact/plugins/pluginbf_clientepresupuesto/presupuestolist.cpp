@@ -289,7 +289,7 @@ void PresupuestoList::editar ( int row )
         } // end if
         blDebug ( "END PresupuestoList::editar", 0 );
     } catch ( ... ) {
-        mensajeInfo ( _ ( "Error al editar el presupuesto" ), this );
+        blMsgInfo ( _ ( "Error al editar el presupuesto" ), this );
     } // end try
 }
 
@@ -315,7 +315,7 @@ void PresupuestoList::borrar()
     blDebug ( "PresupuestoList::borrar", 0 );
     int a = mui_list->currentRow();
     if ( a < 0 ) {
-        mensajeInfo ( _ ( "Debe seleccionar una linea" ), this );
+        blMsgInfo ( _ ( "Debe seleccionar una linea" ), this );
         return;
     } // end if
     try {
@@ -329,7 +329,7 @@ void PresupuestoList::borrar()
         } // end if
         presentar();
     } catch ( ... ) {
-        mensajeInfo ( _ ( "Error al borrar el presupuesto" ), this );
+        blMsgInfo ( _ ( "Error al borrar el presupuesto" ), this );
     } // end try
     blDebug ( "END PresupuestoList::borrar", 0 );
 }

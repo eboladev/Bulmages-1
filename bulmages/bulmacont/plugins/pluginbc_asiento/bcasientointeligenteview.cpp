@@ -319,7 +319,7 @@ void BcAsientoInteligenteView::on_mui_aceptar_clicked()
         } // end if
 
     } catch ( ... ) {
-        mensajeInfo ( "Fue imposible crear el asiento" );
+        blMsgInfo ( "Fue imposible crear el asiento" );
     } /// end try
     blDebug ( "END BcAsientoInteligenteView::on_mui_aceptar_clicked", 0 );
 }
@@ -618,7 +618,7 @@ void BcAsientoInteligenteView::creaasiento()
             mainCompany() ->commit();
         } // end for
     } catch ( ... ) {
-        mensajeInfo ( _ ( "Error al crear el asiento" ) );
+        blMsgInfo ( _ ( "Error al crear el asiento" ) );
         mainCompany() ->rollback();
         return;
     } // end try

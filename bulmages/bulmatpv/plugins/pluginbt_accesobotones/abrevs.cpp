@@ -109,7 +109,7 @@ void Abrevs::on_mui_aparcar_clicked()
 
 
     if ( emp->valorBtInput() == emp->ticketActual()->nomTicketDefecto()) {
-        mensajeAviso ( _ ( "Asigne un nombre al ticket antes de aparcarlo." ) );
+        blMsgWarning ( _ ( "Asigne un nombre al ticket antes de aparcarlo." ) );
         /// Restaura el BtInput antes de regresar. Evita que aparezca, por error, en el 'display' el texto
         /// establecido en la condicion anterior que evita que el nombre del ticket este vacio.
         emp->setValorBtInput(valorBtInput);
@@ -118,7 +118,7 @@ void Abrevs::on_mui_aparcar_clicked()
 
 
     if ( emp->ticketActual() ->listaLineas() ->count() == 0 ) {
-        mensajeAviso ( _ ( "El ticket esta vacio. No se puede aparcar." ) );
+        blMsgWarning ( _ ( "El ticket esta vacio. No se puede aparcar." ) );
         return;
     } // end if
 
@@ -128,7 +128,7 @@ void Abrevs::on_mui_aparcar_clicked()
     for ( int i = 0; i < emp->listaTickets() ->size(); ++i ) {
         ticket = emp->listaTickets() ->at ( i );
         if ( emp->valorBtInput() == ticket->dbValue ( "nomticket" ) && ticket != emp->ticketActual()) {
-            mensajeAviso ( _ ( "Ya existe un ticket aparcado con el mismo nombre." ) );
+            blMsgWarning ( _ ( "Ya existe un ticket aparcado con el mismo nombre." ) );
             return;
         }// end if
     }// end for

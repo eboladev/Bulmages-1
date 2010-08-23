@@ -335,7 +335,7 @@ void BlFormList::on_mui_editar_clicked()
     blDebug ( "ArticuloList::INIT_s_editArticle", 0 );
     int a = m_listado->currentRow();
     if ( a < 0 ) {
-        mensajeInfo ( _ ( "Tiene que seleccionar un elemento" ) );
+        blMsgInfo ( _ ( "Tiene que seleccionar un elemento" ) );
         return;
     } // end if
     editar ( a );
