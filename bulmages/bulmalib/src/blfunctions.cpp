@@ -36,6 +36,7 @@
 #include "blmainwindow.h"
 #include "local_BlI18n.h"
 
+
 /// Esta funcion permite editar un texto en un QTextEdit y devuelve el texto editado.
 QString editaTexto ( QString texto )
 {
@@ -52,6 +53,7 @@ QString editaTexto ( QString texto )
     return vuelta;
 }
 
+
 /// Reformatea una cadena de caracteres para poder ser escrita desde un script.
 /// La conversion es a strings de C
 /// cambia los slash por slash + slash
@@ -65,6 +67,7 @@ QString parsearCode ( const QString &cad )
     result.replace ( "\t", "\\t" );
     return result;
 }
+
 
 /// Escapa los minimos caracteres necesarios para
 /// escribir a cadena a XML, sin usar CDATA, para ahorrar bytes y porque (me suena que) puede no
@@ -80,6 +83,8 @@ QString xmlEscape ( const QString& param )
 
     return text;
 }
+
+
 /// Escapa los caracteres necesarios para que la cadena pueda ser embebida dentro de un
 /// script en python
 QString pythonEscape ( const QString& param )
@@ -89,6 +94,7 @@ QString pythonEscape ( const QString& param )
     text.replace ( "\n", "\\n" );
     return text;
 }
+
 
 QString genEscape ( const QString &param, int tipoEscape )
 {
@@ -106,6 +112,7 @@ QString genEscape ( const QString &param, int tipoEscape )
     } // end switch
     return param1;
 }
+
 
 /// Proteje cadenas de texto pasandoles una sustitucion de codigos especiales de XML.
 /// Nota: ahora ficha.cpp ya respeta el encoding del XML
@@ -208,7 +215,7 @@ QString blExtendStringWithZeros ( QString cad, unsigned int num1 )
 /// n = Numero a redondear
 /// d = Numero de decimales
 /// Devuelve numero redondeado
-float fround ( float n, unsigned d )
+float blFloatRound ( float n, unsigned d )
 {
     return floor ( n * pow ( 10., d ) + .5 ) / pow ( 10., d );
 }
@@ -217,7 +224,7 @@ float fround ( float n, unsigned d )
 /// Esta funcion convierte un numero con decimales a un entero. Usando la regla
 /// que si el el primer decimal es mayor o igual a 5 se devuelve el entero superior. AInteligentesView
 /// valor = Numero a convertir.
-int roundI ( double valor )
+int blDoubleToInt ( double valor )
 {
     int retorno;
     double mayor = floor ( valor );
@@ -233,7 +240,7 @@ int roundI ( double valor )
 /// Esta funcion extiende la fecha pasada como parametro
 /// QString y devuelve la fecha en formato QDate.
 /// fechaintro string con la fecha a ser normalizada.
-QDate normalizafecha ( QString fechaintro )
+QDate blNormalizeDate ( QString fechaintro )
 {
     QDate fecharesult;
     int d, M, y;

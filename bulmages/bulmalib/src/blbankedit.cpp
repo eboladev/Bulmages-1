@@ -197,7 +197,7 @@ void BlBankEdit::s_cuentatextChanged ( const QString &texto )
             s_searchFecha();
         if ( texto == "*" )
             m_cuenta->setText ( QDate::currentDate().toString ( "dd/MM/yyyy" ) );
-        m_cuenta->setText ( normalizafecha ( texto ).toString ( "dd/MM/yyyy" ) );
+        m_cuenta->setText ( blNormalizeDate ( texto ).toString ( "dd/MM/yyyy" ) );
         if ( texto == "" ) {
             m_cuenta->setText ( "" );
             return;

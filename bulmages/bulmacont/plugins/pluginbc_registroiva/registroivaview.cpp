@@ -252,7 +252,7 @@ void RegistroIvaView::on_mui_generarPrevisiones_clicked()
     BlFixed totalplazo = totalfactura / numpagos;
     QString tipocobro;
     /// Vaciamos la lista de previsi&oacute;n para que no haga cosas raras.
-    QDate ffactura = normalizafecha ( m_ffactura->text() );
+    QDate ffactura = blNormalizeDate ( m_ffactura->text() );
     QDate fpcobro = ffactura.addDays ( plazoprimerpago );
     for ( int i = 0; i < numpagos; i++ ) {
         /// Hay que saber si es un cobro o un pago.

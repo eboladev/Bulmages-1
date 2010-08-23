@@ -108,7 +108,7 @@ QString BlDateLineEdit::fieldValue()
 void BlDateLineEdit::on_mui_editingFinished()
 {
     _depura ( "BlDateLineEdit::on_mui_editingFinished", 0 );
-    setText ( normalizafecha ( text() ).toString ( "dd/MM/yyyy" ) );
+    setText ( blNormalizeDate ( text() ).toString ( "dd/MM/yyyy" ) );
     _depura ( "END BlDateLineEdit::on_mui_editingFinished", 0 );
 }
 
@@ -129,7 +129,7 @@ bool BlDateLineEdit::eventFilter ( QObject *obj, QEvent *event )
             switch (key) {
             case Qt::Key_Return:
             case Qt::Key_Enter:
-                setText(normalizafecha(text()).toString());
+                setText(blNormalizeDate(text()).toString());
                 break;
           } // end switch
         } // end if

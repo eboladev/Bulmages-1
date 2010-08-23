@@ -424,12 +424,12 @@ void ListLinPrevCobroView::valueLineChanged ( int row, int col )
     if ( linea != NULL ) {
         switch ( col ) {
         case COL_FPREVISTAPREVCOBRO:
-            linea->setfprevistaprevcobro ( normalizafecha ( valor ).toString ( "dd/MM/yyyy" ) );
+            linea->setfprevistaprevcobro ( blNormalizeDate ( valor ).toString ( "dd/MM/yyyy" ) );
             item ( row, col ) ->setText ( linea->fprevistaprevcobro() );
             break;
         case COL_FCOBROPREVCOBRO:
-            linea->setfcobroprevcobro ( normalizafecha ( valor ).toString ( "dd/MM/yyyy" ) );
-            linea->setfprevistaprevcobro ( normalizafecha ( valor ).toString ( "dd/MM/yyyy" ) );
+            linea->setfcobroprevcobro ( blNormalizeDate ( valor ).toString ( "dd/MM/yyyy" ) );
+            linea->setfprevistaprevcobro ( blNormalizeDate ( valor ).toString ( "dd/MM/yyyy" ) );
             item ( row, col ) ->setText ( linea->fcobroprevcobro() );
             item ( row, COL_FPREVISTAPREVCOBRO ) ->setText ( linea->fprevistaprevcobro() );
             break;

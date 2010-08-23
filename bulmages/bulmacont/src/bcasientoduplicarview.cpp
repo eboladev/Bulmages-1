@@ -110,7 +110,7 @@ void DuplicarAsientoView::on_mui_aceptar_clicked()
     QString ordenasiento;
 
     QString textordeninicial;
-    QDate fedinicial = normalizafecha ( fdinicial->text() );
+    QDate fedinicial = blNormalizeDate ( fdinicial->text() );
 
     /*
         /// Buscamos el orden asiento para la duplicaci&oacute;n.

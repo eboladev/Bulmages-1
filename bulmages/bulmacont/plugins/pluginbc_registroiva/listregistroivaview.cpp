@@ -39,8 +39,8 @@ ListRegistroIvaView::ListRegistroIvaView ( BcCompany * emp, QString, QWidget *pa
     setAttribute ( Qt::WA_DeleteOnClose );
     setupUi ( this );
     m_companyact = emp;
-    finicial->setText ( normalizafecha ( "01/01" ).toString ( "dd/MM/yyyy" ) );
-    ffinal->setText ( normalizafecha ( "31/12" ).toString ( "dd/MM/yyyy" ) );
+    finicial->setText ( blNormalizeDate ( "01/01" ).toString ( "dd/MM/yyyy" ) );
+    ffinal->setText ( blNormalizeDate ( "31/12" ).toString ( "dd/MM/yyyy" ) );
     emp->meteWindow ( windowTitle(), this );
 
     /// DEFINICIONES PARA LA TABLA DE IVA Soportado.

@@ -238,7 +238,7 @@ void BcAmortizacionView::on_mui_btcalcular_clicked()
     _depura ( "BcAmortizacionView::calculaamortizacion", 0 );
     /// Para hacer el c&iacute;rculo de los plazos de cada amortizaci&oacute;n
     /// Hay que obtener diversos datos.
-    QDate f1cuota = normalizafecha ( fecha1cuota->text() );
+    QDate f1cuota = blNormalizeDate ( fecha1cuota->text() );
     int ncuotas = numcuotas->text().toInt();
     QString periodicidadtxt = periodicidad->currentText();
     double valcuota;

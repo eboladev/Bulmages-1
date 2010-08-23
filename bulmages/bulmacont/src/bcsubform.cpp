@@ -303,7 +303,7 @@ void BcSubForm::editFinished ( int row, int col, BlDbSubFormRecord *rec, BlDbSub
         delete cur;
     } // end if
     if ( camp->nomcampo() == "fecha" ) {
-        QString nfecha = normalizafecha ( camp->text() ).toString ( "dd/MM/yyyy" );
+        QString nfecha = blNormalizeDate ( camp->text() ).toString ( "dd/MM/yyyy" );
         rec->setDbValue ( "fecha", nfecha );
     } // end if
     if ( camp->nomcampo() == "debe" ) {
@@ -358,7 +358,7 @@ void BcSubForm::boton_extracto1 ( int tipo )
     QString fecha = dbValue ( "fecha" ).left ( 10 );
     QString codigo = dbValue ( "codigo" );
     if ( fecha != "" && codigo != "" ) {
-        fechaact = normalizafecha ( fecha );
+        fechaact = blNormalizeDate ( fecha );
         switch ( tipo ) {
         case 0:
             fecha1.setYMD ( fechaact.year(), fechaact.month(), fechaact.day() );
@@ -395,8 +395,8 @@ void BcSubForm::boton_diario1 ( int tipo )
 /*
     BcCompany *companyact = ( BcCompany * ) mainCompany();
     QDate fecha1, fecha2, fechaact, fechaact1;
-    fechaact = normalizafecha ( dbValue ( "fecha" ).left ( 10 ) );
-    fechaact1 = normalizafecha ( dbValue ( "fecha" ).left ( 10 ) );
+    fechaact = blNormalizeDate ( dbValue ( "fecha" ).left ( 10 ) );
+    fechaact1 = blNormalizeDate ( dbValue ( "fecha" ).left ( 10 ) );
     if ( dbValue ( "fecha" ).left ( 10 ) != "" ) {
         switch ( tipo ) {
         case 0:
@@ -437,7 +437,7 @@ void BcSubForm::boton_balance1 ( int tipo )
     QString codigo = dbValue ( "codigo" );
     QDate fecha1, fecha2, fechaact, fechaact1;
     if ( fecha != "" && codigo != "" ) {
-        fechaact = normalizafecha ( fecha );
+        fechaact = blNormalizeDate ( fecha );
         switch ( tipo ) {
         case 0:
             fecha1.setYMD ( fechaact.year(), fechaact.month(), fechaact.day() );

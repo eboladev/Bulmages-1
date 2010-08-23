@@ -150,8 +150,8 @@ void BalanceView::inicializa1 ( QString codinicial, QString codfinal, QString fe
     _depura ( "BalanceView::inicializa1", 0 );
     m_codigoinicial->setText ( codinicial );
     m_codigofinal->setText ( codfinal );
-    m_fechainicial1->setText ( normalizafecha ( fecha1 ).toString ( "dd/MM/yyyy" ) );
-    m_fechafinal1->setText ( normalizafecha ( fecha2 ).toString ( "dd/MM/yyyy" ) );
+    m_fechainicial1->setText ( blNormalizeDate ( fecha1 ).toString ( "dd/MM/yyyy" ) );
+    m_fechafinal1->setText ( blNormalizeDate ( fecha2 ).toString ( "dd/MM/yyyy" ) );
     _depura ( "END BalanceView::inicializa1", 0 );
 }
 

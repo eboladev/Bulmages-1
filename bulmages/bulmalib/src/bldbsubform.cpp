@@ -225,9 +225,9 @@ bool BlDbSubFormField::operator< ( const QTableWidgetItem &other )
 
         if ( this->dbFieldType() == BlDbField::DbDate ) {
             _depura ( "BlDbSubFormField::operator < es del tipo fecha:", 0, this->nomcampo() + QString::number ( this->dbFieldType() ) );
-            QDate fech = normalizafecha ( this->valorcampo() );
+            QDate fech = blNormalizeDate ( this->valorcampo() );
             QString db1 = fech.toString ( Qt::ISODate );
-            QDate fech1 = normalizafecha ( val );
+            QDate fech1 = blNormalizeDate ( val );
             QString db2 = fech1.toString ( Qt::ISODate );
             return ( db1 < db2 );
         } // end if

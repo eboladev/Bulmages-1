@@ -175,8 +175,8 @@ void BalanceTreeView::boton_extracto1 ( int tipo )
 /*
     QDate fecha1, fecha2, fechaact, fechaact1;
     if ( !m_fechainicial1->text().isEmpty() ) {
-        fechaact = normalizafecha ( m_fechainicial1->text() );
-        fechaact1 = normalizafecha ( m_fechafinal1->text() );
+        fechaact = blNormalizeDate ( m_fechainicial1->text() );
+        fechaact1 = blNormalizeDate ( m_fechafinal1->text() );
         switch ( tipo ) {
         case 0:
             fecha1.setYMD ( fechaact.year(), fechaact.month(), fechaact.day() );
@@ -214,8 +214,8 @@ void BalanceTreeView::boton_diario1 ( int tipo )
 /*
     QDate fecha1, fecha2, fechaact, fechaact1;
     if ( !m_fechainicial1->text().isEmpty() ) {
-        fechaact = normalizafecha ( m_fechainicial1->text() );
-        fechaact1 = normalizafecha ( m_fechafinal1->text() );
+        fechaact = blNormalizeDate ( m_fechainicial1->text() );
+        fechaact1 = blNormalizeDate ( m_fechafinal1->text() );
         switch ( tipo ) {
         case 0:
             fecha1.setYMD ( fechaact.year(), fechaact.month(), fechaact.day() );
@@ -266,8 +266,8 @@ void BalanceTreeView::inicializa1 ( QString codinicial, QString codfinal, QStrin
 
     m_codigoinicial->setText ( codinicial );
     m_codigofinal->setText ( codfinal );
-    m_fechainicial1->setText ( normalizafecha ( fecha1 ).toString ( "dd/MM/yyyy" ) );
-    m_fechafinal1->setText ( normalizafecha ( fecha2 ).toString ( "dd/MM/yyyy" ) );
+    m_fechainicial1->setText ( blNormalizeDate ( fecha1 ).toString ( "dd/MM/yyyy" ) );
+    m_fechafinal1->setText ( blNormalizeDate ( fecha2 ).toString ( "dd/MM/yyyy" ) );
     /// Establecemos el centro de coste correspondiente.
 //    mui_combocoste->setidc_coste ( QString::number ( idc_coste ) );
 

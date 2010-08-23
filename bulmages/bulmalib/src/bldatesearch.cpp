@@ -178,7 +178,7 @@ void BlDateSearch::s_searchFecha()
 
     /// Si ya hay una fecha en el campo, abrir el calendario con ese d&iacute;a seleccionado inicialmente
     else {
-        calend->setSelectedDate ( normalizafecha ( m_textoFecha->text() ) );
+        calend->setSelectedDate ( blNormalizeDate ( m_textoFecha->text() ) );
     }
 
     connect ( calend, SIGNAL ( activated ( const QDate & ) ), diag, SLOT ( accept() ) );
@@ -221,7 +221,7 @@ void BlDateSearch::s_fechatextChanged ( const QString &texto )
         s_searchFecha();
     if ( texto == "*" )
         m_textoFecha->setText ( QDate::currentDate().toString ( "dd/MM/yyyy" ) );
-        m_textoFecha->setText ( normalizafecha ( texto ).toString ( "dd/MM/yyyy" ) );
+        m_textoFecha->setText ( blNormalizeDate ( texto ).toString ( "dd/MM/yyyy" ) );
     if ( texto == "" ) {
         m_textoFecha->setText ( "" );
         return;

@@ -50,11 +50,11 @@
 /// Extiende un string a un numero de cuenta sustituyendo los '.' por ceros.
 QString BL_EXPORT blExtendStringWithZeros ( QString, unsigned int );
 /// Redondeo de numeros en punto flotante.
-float BL_EXPORT fround ( float, unsigned );
+float BL_EXPORT blFloatRound ( float, unsigned );
 /// Esta funcion convierte un numero con decimales a un entero.
-int roundI ( double );
+int blDoubleToInt ( double );
 /// Procesa el string pasado como parametro y devuelve una estructura del tipo QDate.
-QDate BL_EXPORT normalizafecha ( QString );
+QDate BL_EXPORT blNormalizeDate ( QString );
 
 
 /// Escapa los mínimos caracteres necesarios para 

@@ -40,8 +40,8 @@ BcModelo347ListView::BcModelo347ListView ( BcCompany *emp, QString ejerActual, Q
     _depura ( "BcModelo347ListView::BcModelo347ListView", 0 );
     setupUi ( this );
     importe->setText ( "3005.06" );
-    finicial->setText ( normalizafecha ( "01/01/" + ejerActual ).toString ( "dd/MM/yyyy" ) );
-    ffinal->setText ( normalizafecha ( "31/12/" + ejerActual ).toString ( "dd/MM/yyyy" ) );
+    finicial->setText ( blNormalizeDate ( "01/01/" + ejerActual ).toString ( "dd/MM/yyyy" ) );
+    ffinal->setText ( blNormalizeDate ( "31/12/" + ejerActual ).toString ( "dd/MM/yyyy" ) );
     /// Carga las tablas en pantalla.
     on_m_boton_recalcular_clicked();
     centrarEnPantalla ( this );
@@ -203,7 +203,7 @@ void BcModelo347ListView::on_m_boton_imprimir_clicked()
 void BcModelo347ListView::on_finicial_editingFinished()
 {
     _depura ( "BcModelo347ListView::finicial_exit", 0 );
-    finicial->setText ( normalizafecha ( finicial->text() ).toString ( "dd/MM/yyyy" ) );
+    finicial->setText ( blNormalizeDate ( finicial->text() ).toString ( "dd/MM/yyyy" ) );
     _depura ( "END BcModelo347ListView::finicial_exit", 0 );
 }
 
@@ -214,7 +214,7 @@ void BcModelo347ListView::on_finicial_editingFinished()
 void BcModelo347ListView::on_ffinal_editingFinished()
 {
     _depura ( "BcModelo347ListView::ffinal_exit", 0 );
-    ffinal->setText ( normalizafecha ( ffinal->text() ).toString ( "dd/MM/yyyy" ) );
+    ffinal->setText ( blNormalizeDate ( ffinal->text() ).toString ( "dd/MM/yyyy" ) );
     _depura ( "END BcModelo347ListView::ffinal_exit", 0 );
 }
 

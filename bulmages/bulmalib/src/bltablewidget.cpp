@@ -151,9 +151,9 @@ bool BlTableWidgetItem::operator< ( const QTableWidgetItem & other ) const
         } // end if
         /// Comprobamos si es una fecha
         if ( cad[2] == '/' && cad[5] == '/' ) {
-            QDate fcad = normalizafecha ( cad );
+            QDate fcad = blNormalizeDate ( cad );
             QString acad = fcad.toString ( Qt::ISODate );
-            QDate fcad1 = normalizafecha ( cad1 );
+            QDate fcad1 = blNormalizeDate ( cad1 );
             QString acad1 = fcad1.toString ( Qt::ISODate );
             if ( acad[4] == '-' && acad1[4] == '-' && acad[7] == '-' && acad1[7] == '-' ) {
                 _depura ( "END BlTableWidgetItem::operator<", 0 );

@@ -211,7 +211,7 @@ QByteArray Q19View::cabeceraOrdenante ( QTextStream &out, QString idvencimientoc
     cab_orden.append ( fechaemfich.toAscii() );
 
     /// Fecha de cargo
-    QString fechacargo = normalizafecha ( curcobro->valor ( "fechacobro" ) ).toString ( "ddMMyy" );
+    QString fechacargo = blNormalizeDate ( curcobro->valor ( "fechacobro" ) ).toString ( "ddMMyy" );
     cab_orden.append ( fechacargo.toAscii() );
 
     /// Nombre del cliente Ordenante Longitud: 40
