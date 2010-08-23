@@ -559,26 +559,26 @@ void BlForm::pintar()
         QLineEdit *l1 = findChild<QLineEdit *> ( "mui_" + campo->nomcampo() );
         if ( l1 ) {
             l1->setText ( campo->valorcampo() );
-		l1->setReadOnly ( readOnly );
+		if ( readOnly ) l1->setReadOnly ( true );
         } // end if
         /// Buscamos los QPlainTextEdit con nombre coincidente.
         QPlainTextEdit *l2 = findChild<QPlainTextEdit *> ( "mui_" + campo->nomcampo() );
         if ( l2 ) {
             l2->setPlainText( campo->valorcampo() );
-		l2->setReadOnly( readOnly );
+		if ( readOnly ) l2->setReadOnly ( true );
 	   } // end if
         /// Buscamos los QTextEdit con nombre coincidente.
         QTextEdit *l3 = findChild<QTextEdit *> ( "mui_" + campo->nomcampo() );
         if ( l3 ) {
             l3->setText ( campo->valorcampo() );
-		l3->setReadOnly ( readOnly );
+		if ( readOnly ) l3->setReadOnly ( true );
         } // end if
         /// Buscamos BlWidgets que coincidan con el campo supuestamente
         /// sirve para los campos personales.
         BlWidget *l4 = findChild<BlWidget *> ( "mui_" + campo->nomcampo() );
         if ( l4 ) {
             l4->setFieldValue ( campo->valorcampo() );
-		l4->setDisabled ( readOnly );
+		if ( readOnly ) l4->setDisabled( true );
         } // end if
 
         /// Buscamos BlComboBox que coincidan con el campo supuestamente
@@ -590,7 +590,7 @@ void BlForm::pintar()
             BlComboBox *l6 = findChild<BlComboBox *> ( "mui_" + campo->nomcampo() );
             if ( l6 ) {
                 l6->setFieldValue ( campo->valorcampo() );
-		    l6->setDisabled ( readOnly );
+		    if ( readOnly ) l6->setDisabled( true );
             } else {
                 /// Buscamos BlComboBox que coincidan con el campo supuestamente
                 /// sirve para los campos personales.
@@ -605,7 +605,7 @@ void BlForm::pintar()
         BlDoubleSpinBox *l8 = findChild<BlDoubleSpinBox *> ( "mui_" + campo->nomcampo() );
         if ( l8 ) {
             l8->setValue ( campo->valorcampo().toDouble() );
-		l8->setDisabled ( readOnly );
+		if ( readOnly ) l8->setDisabled( true );
             /// Buscamos los decimales que tiene el campo y establecemos el numero de decimales a ese valor.
             QString query2 = "SELECT numeric_scale FROM information_schema.columns WHERE table_name = '"+tableName()+"' and column_name='"+campo->nomcampo()+"';";
             /// Cargamos el query y lo recorremos
@@ -629,7 +629,7 @@ void BlForm::pintar()
                 /// El estado indeterminado se aplica cuando el campo es triestado.
                 l9->setCheckState( Qt::PartiallyChecked );
             } // end if
-		l9->setDisabled ( readOnly );
+		if ( readOnly ) l9->setDisabled( true );
 	   } // end if
 
         /// Buscamos los 'Radio Buttons' y los preparamos.
@@ -640,7 +640,7 @@ void BlForm::pintar()
             } else {
                 l10.at ( i ) ->setChecked ( FALSE );
             } // end if
-		l10.at ( i ) ->setDisabled( readOnly );
+		if ( readOnly ) l10.at ( i ) ->setDisabled( true );
         } // end for
     } // end for
     pintarPost();
