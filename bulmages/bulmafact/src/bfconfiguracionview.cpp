@@ -45,7 +45,7 @@
 **/
 BfConfiguracionView::BfConfiguracionView ( BfCompany *comp, QWidget *parent ) : BfForm ( comp, parent )
 {
-    _depura ( "BfConfiguracionView::BfConfiguracionView", 1 );
+    blDebug ( "BfConfiguracionView::BfConfiguracionView", 1 );
     setupUi ( this );
 
     setTitleName ( _ ( "Configuracion" ) );
@@ -57,7 +57,7 @@ BfConfiguracionView::BfConfiguracionView ( BfCompany *comp, QWidget *parent ) : 
     mui_listado->cargar();
 
     meteWindow ( windowTitle(), this, FALSE );
-    _depura ( "END BfConfiguracionView::BfConfiguracionView", 1 );
+    blDebug ( "END BfConfiguracionView::BfConfiguracionView", 1 );
 }
 
 
@@ -67,8 +67,8 @@ BfConfiguracionView::BfConfiguracionView ( BfCompany *comp, QWidget *parent ) : 
 **/
 BfConfiguracionView::~BfConfiguracionView()
 {
-    _depura ( "BfConfiguracionView::~BfConfiguracionView", 0 );
-    _depura ( "END BfConfiguracionView::~BfConfiguracionView", 0 );
+    blDebug ( "BfConfiguracionView::~BfConfiguracionView", 0 );
+    blDebug ( "END BfConfiguracionView::~BfConfiguracionView", 0 );
 }
 
 
@@ -82,7 +82,7 @@ BfConfiguracionView::~BfConfiguracionView()
 **/
 BfConfiguracionSubForm::BfConfiguracionSubForm ( QWidget *parent ) : BfSubForm ( parent )
 {
-    _depura ( "BfConfiguracionSubForm::BfConfiguracionSubForm", 0 );
+    blDebug ( "BfConfiguracionSubForm::BfConfiguracionSubForm", 0 );
     setDbTableName ( "configuracion" );
     setDbFieldId ( "nombre" );
     addSubFormHeader ( "nombreorig", BlDbField::DbVarChar, BlDbField::DbDupPrimaryKey | BlDbField::DbNoSave, BlSubFormHeader::DbHideView | BlSubFormHeader::DbDisableView, "nombre" );
@@ -90,6 +90,6 @@ BfConfiguracionSubForm::BfConfiguracionSubForm ( QWidget *parent ) : BfSubForm (
     addSubFormHeader ( "valor", BlDbField::DbVarChar, BlDbField::DbNotNull, BlSubFormHeader::DbNone, _ ( "Valor" ) );
     setInsert ( FALSE );
     setDelete ( FALSE );
-    _depura ( "END BfConfiguracionSubForm::BfConfiguracionSubForm", 0 );
+    blDebug ( "END BfConfiguracionSubForm::BfConfiguracionSubForm", 0 );
 }
 

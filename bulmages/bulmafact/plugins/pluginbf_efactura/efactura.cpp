@@ -35,7 +35,7 @@
 EFactura::EFactura ( BfCompany *emp, QWidget *parent ) : BfForm ( emp, parent )
 {
 
-    _depura ( "EFactura::EFactura", 2 );
+    blDebug ( "EFactura::EFactura", 2 );
 
     QString query;
 
@@ -56,7 +56,7 @@ EFactura::EFactura ( BfCompany *emp, QWidget *parent ) : BfForm ( emp, parent )
 //  mui_URLServidorValidaCert->setText(cur3->valor("valor"));
 //  delete cur3;
 
-    _depura ( "END EFactura::EFactura", 2 );
+    blDebug ( "END EFactura::EFactura", 2 );
 }
 
 
@@ -65,8 +65,8 @@ EFactura::EFactura ( BfCompany *emp, QWidget *parent ) : BfForm ( emp, parent )
 **/
 EFactura::~EFactura()
 {
-    _depura ( "EFactura::~EFactura", 0 );
-    _depura ( "EFactura::~EFactura", 0 );
+    blDebug ( "EFactura::~EFactura", 0 );
+    blDebug ( "EFactura::~EFactura", 0 );
 }
 
 
@@ -76,7 +76,7 @@ EFactura::~EFactura()
 void EFactura::on_mui_guardar_clicked()
 {
 
-    _depura ( "EFactura::on_mui_guardar_clicked", 0 );
+    blDebug ( "EFactura::on_mui_guardar_clicked", 0 );
 
     QString query;
 
@@ -102,7 +102,7 @@ void EFactura::on_mui_guardar_clicked()
     query += "')";
     mainCompany() ->runQuery ( query );
 
-    _depura ( "END EFactura::on_mui_guardar_clicked", 0 );
+    blDebug ( "END EFactura::on_mui_guardar_clicked", 0 );
 }
 
 
@@ -111,7 +111,7 @@ void EFactura::on_mui_guardar_clicked()
 */
 void EFactura::on_mui_examinaECertificado_clicked()
 {
-    _depura ( "EFactura::on_mui_examinar_clicked", 0 );
+    blDebug ( "EFactura::on_mui_examinar_clicked", 0 );
 
     QString s = QFileDialog::getOpenFileName (
                     this,
@@ -125,7 +125,7 @@ void EFactura::on_mui_examinaECertificado_clicked()
     if ( s != "" )
         mui_ficheroECertificado->setText ( s );
 
-    _depura ( "END EFactura::on_mui_examinar_clicked", 0 );
+    blDebug ( "END EFactura::on_mui_examinar_clicked", 0 );
 }
 
 
@@ -134,13 +134,13 @@ void EFactura::on_mui_examinaECertificado_clicked()
 **/
 void EFactura::on_mui_cancelar_clicked()
 {
-    _depura ( "EFactura::on_mui_cancelar_clicked", 0 );
+    blDebug ( "EFactura::on_mui_cancelar_clicked", 0 );
 
 //  QString query = "SELECT * FROM configuracion";
 //  BlDbRecordSet *cur = mainCompany()->loadQuery(query);
 //
 //  while(!cur->eof()) {
-//   _depura(cur->valor("nombre"), 0);
+//   blDebug(cur->valor("nombre"), 0);
 //   cur->nextRecord();
 //  } // end while
 //
@@ -150,5 +150,5 @@ void EFactura::on_mui_cancelar_clicked()
 //  mainCompany()->begin();
 //  mainCompany()->runQuery(query);
 //  mainCompany()->rollback();
-    _depura ( "END EFactura::on_mui_cancelar_clicked", 0 );
+    blDebug ( "END EFactura::on_mui_cancelar_clicked", 0 );
 }

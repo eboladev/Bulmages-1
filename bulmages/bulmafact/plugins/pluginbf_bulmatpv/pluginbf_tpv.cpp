@@ -37,8 +37,8 @@
 **/
 myplugincont::myplugincont()
 {
-    _depura ( "myplugincont::myplugincont", 0 );
-    _depura ( "END myplugincont::myplugincont", 0 );
+    blDebug ( "myplugincont::myplugincont", 0 );
+    blDebug ( "END myplugincont::myplugincont", 0 );
 }
 
 ///
@@ -46,8 +46,8 @@ myplugincont::myplugincont()
 **/
 myplugincont::~myplugincont()
 {
-    _depura ( "myplugincont::~myplugincont", 0 );
-    _depura ( "END myplugincont::~myplugincont", 0 );
+    blDebug ( "myplugincont::~myplugincont", 0 );
+    blDebug ( "END myplugincont::~myplugincont", 0 );
 }
 
 
@@ -56,11 +56,11 @@ myplugincont::~myplugincont()
 **/
 void myplugincont::elslot()
 {
-    _depura ( "myplugincont::elslot", 0 );
+    blDebug ( "myplugincont::elslot", 0 );
     ZList *vehiculoview = new ZList ( ( BfCompany * ) m_dbConnection );
     m_bulmafact->workspace() ->addWindow ( vehiculoview );
     vehiculoview->show();
-    _depura ( "END myplugincont::elslot", 0 );
+    blDebug ( "END myplugincont::elslot", 0 );
 }
 
 
@@ -70,7 +70,7 @@ void myplugincont::elslot()
 **/
 void myplugincont::inicializa ( BfBulmaFact *bges )
 {
-    _depura ( "myplugincont::inicializa", 0 );
+    blDebug ( "myplugincont::inicializa", 0 );
 
     /// Miramos si existe un menu Ventas
     QMenu *pPluginMenu = NULL;
@@ -94,7 +94,7 @@ void myplugincont::inicializa ( BfBulmaFact *bges )
     /// A&ntilde;adimos la nueva opci&oacute;n al men&uacute; principal del programa.
     pPluginMenu->addSeparator();
     pPluginMenu->addAction ( accion );
-    _depura ( "END myplugincont::inicializa", 0 );
+    blDebug ( "END myplugincont::inicializa", 0 );
 }
 
 
@@ -105,7 +105,7 @@ void myplugincont::inicializa ( BfBulmaFact *bges )
 **/
 int entryPoint ( BfBulmaFact *bges )
 {
-    _depura ( "entryPoint", 0, "Punto de Entrada del plugin PluginContratos" );
+    blDebug ( "entryPoint", 0, "Punto de Entrada del plugin PluginContratos" );
 
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale ( LC_ALL, "" );
@@ -113,7 +113,7 @@ int entryPoint ( BfBulmaFact *bges )
 
     myplugincont *plug = new myplugincont();
     plug->inicializa ( bges );
-    _depura ( "END entryPoint", 0, "Punto de Entrada del plugin PluginContratos" );
+    blDebug ( "END entryPoint", 0, "Punto de Entrada del plugin PluginContratos" );
     return 0;
 }
 

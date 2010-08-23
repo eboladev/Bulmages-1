@@ -35,7 +35,7 @@
 **/
 int entryPoint ( BfBulmaFact * )
 {
-    _depura ( "Estoy dentro del plugin de catalogo", 0 );
+    blDebug ( "Estoy dentro del plugin de catalogo", 0 );
 
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale ( LC_ALL, "" );
@@ -51,7 +51,7 @@ int entryPoint ( BfBulmaFact * )
 **/
 int ArticuloList_ArticuloList ( ArticuloList *l )
 {
-    _depura ( "ArticuloList_ArticuloList", 0 );
+    blDebug ( "ArticuloList_ArticuloList", 0 );
 //================================
 
     CatalogoQToolButton *mui_exporta_efactura2 = new CatalogoQToolButton ( l,  l->mui_plugbotones );
@@ -66,7 +66,7 @@ int ArticuloList_ArticuloList ( ArticuloList *l )
     m_hboxLayout1->addWidget ( mui_exporta_efactura2 );
 
 //================================
-    _depura ( "END ArticuloList_ArticuloList", 0 );
+    blDebug ( "END ArticuloList_ArticuloList", 0 );
     return 0;
 }
 

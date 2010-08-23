@@ -36,7 +36,7 @@
 ProveedorView::ProveedorView ( BfCompany *comp, QWidget *parent )
         : BfForm ( comp, parent )
 {
-    _depura ( "ProveedorView::ProveedorView", 0 );
+    blDebug ( "ProveedorView::ProveedorView", 0 );
     setAttribute ( Qt::WA_DeleteOnClose );
     try {
         setTitleName ( _ ( "Proveedor" ) );
@@ -104,7 +104,7 @@ ProveedorView::ProveedorView ( BfCompany *comp, QWidget *parent )
         mensajeInfo ( _( "Error al crear el proveedor" ) );
     } // end try
 
-    _depura ( "END ProveedorView::ProveedorView", 0 );
+    blDebug ( "END ProveedorView::ProveedorView", 0 );
 }
 
 ///
@@ -112,8 +112,8 @@ ProveedorView::ProveedorView ( BfCompany *comp, QWidget *parent )
 **/
 ProveedorView::~ProveedorView()
 {
-    _depura ( "ProveedorView::~ProveedorView", 0 );
-    _depura ( "END ProveedorView::~ProveedorView", 0 );
+    blDebug ( "ProveedorView::~ProveedorView", 0 );
+    blDebug ( "END ProveedorView::~ProveedorView", 0 );
 }
 
 
@@ -143,12 +143,12 @@ int ProveedorView::guardarPost()
 **/
 void ProveedorView::on_mui_cifproveedor_lostFocus()
 {
-    _depura ( "ProveedorView::on_mui_cifproveedor_lostFocus", 0 );
+    blDebug ( "ProveedorView::on_mui_cifproveedor_lostFocus", 0 );
     QChar digito;
     if ( !validarCIFNIF ( mui_cifproveedor->text(), digito ) ) {
         mensajeInfo ( _("El CIF del proveedor no parece ser valido. Digito:") + " " + QString ( digito ) );
     } // end if
-    _depura ( "END ProveedorView::on_mui_cifproveedor_lostFocus", 0 );
+    blDebug ( "END ProveedorView::on_mui_cifproveedor_lostFocus", 0 );
 }
 
 
@@ -163,10 +163,10 @@ void ProveedorView::on_mui_cifproveedor_lostFocus()
 **/
 int ProveedorView::cargarPost ( QString idprov )
 {
-    _depura ( "ProveedorView::cargar", 0, idprov );
+    blDebug ( "ProveedorView::cargar", 0, idprov );
     /// Lanzamos los plugins de carga
     g_plugins->lanza ( "ProveedorView_cargarPost_Post", this );
-    _depura ( "END ProveedorView::cargar", 0 );
+    blDebug ( "END ProveedorView::cargar", 0 );
     return 0;
 }
 

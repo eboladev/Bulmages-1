@@ -31,7 +31,7 @@
 BfBuscarTipoArticulo::BfBuscarTipoArticulo ( QWidget *parent )
         : BlSearchWidget ( parent )
 {
-    _depura ( "BfBuscarTipoArticulo::BfBuscarTipoArticulo", 0 );
+    blDebug ( "BfBuscarTipoArticulo::BfBuscarTipoArticulo", 0 );
 
     /// Establecemos los parametros de busqueda del Cliente
     setLabel ( _ ( "Tipo Articulo:" ) );
@@ -39,7 +39,7 @@ BfBuscarTipoArticulo::BfBuscarTipoArticulo ( QWidget *parent )
     m_valores["codtipo_articulo"] = "";
     m_valores["desctipo_articulo"] = "";
 
-    _depura ( "END BfBuscarTipoArticulo::BfBuscarTipoArticulo", 0 );
+    blDebug ( "END BfBuscarTipoArticulo::BfBuscarTipoArticulo", 0 );
 }
 
 
@@ -49,8 +49,8 @@ BfBuscarTipoArticulo::BfBuscarTipoArticulo ( QWidget *parent )
 **/
 BfBuscarTipoArticulo::~BfBuscarTipoArticulo()
 {
-    _depura ( "BfBuscarTipoArticulo::~BfBuscarTipoArticulo", 0 );
-    _depura ( "END BfBuscarTipoArticulo::~BfBuscarTipoArticulo", 0 );
+    blDebug ( "BfBuscarTipoArticulo::~BfBuscarTipoArticulo", 0 );
+    blDebug ( "END BfBuscarTipoArticulo::~BfBuscarTipoArticulo", 0 );
 }
 
 
@@ -63,9 +63,9 @@ BfBuscarTipoArticulo::~BfBuscarTipoArticulo()
 **/
 void BfBuscarTipoArticulo::setidtipo_articulo ( QString val )
 {
-    _depura ( "BfBuscarTipoArticulo::setidtipo_articulo", 0 );
+    blDebug ( "BfBuscarTipoArticulo::setidtipo_articulo", 0 );
     setId ( val );
-    _depura ( "END BfBuscarTipoArticulo::setidtipo_articulo", 0 );
+    blDebug ( "END BfBuscarTipoArticulo::setidtipo_articulo", 0 );
 }
 
 
@@ -79,7 +79,7 @@ void BfBuscarTipoArticulo::setidtipo_articulo ( QString val )
 **/
 void BfBuscarTipoArticulo::setcodtipo_articulo ( QString val )
 {
-    _depura ( "BfBuscarTipoArticulo::setcodtipo_articulo", 0 );
+    blDebug ( "BfBuscarTipoArticulo::setcodtipo_articulo", 0 );
 
     QString SQLQuery = "SELECT * FROM tipo_articulo WHERE codtipo_articulo = '" + val + "'";
     BlDbRecordSet *cur = mainCompany() ->loadQuery ( SQLQuery );
@@ -92,7 +92,7 @@ void BfBuscarTipoArticulo::setcodtipo_articulo ( QString val )
 
     delete cur;
 
-    _depura ( "END BfBuscarTipoArticulo::setcodtipo_articulo", 0 );
+    blDebug ( "END BfBuscarTipoArticulo::setcodtipo_articulo", 0 );
 }
 
 
@@ -105,8 +105,8 @@ void BfBuscarTipoArticulo::setcodtipo_articulo ( QString val )
 **/
 QString BfBuscarTipoArticulo::codtipo_articulo()
 {
-    _depura ( "BfBuscarTipoArticulo::codtipo_articulo", 0 );
-    _depura ( "END BfBuscarTipoArticulo::codtipo_articulo", 0 );
+    blDebug ( "BfBuscarTipoArticulo::codtipo_articulo", 0 );
+    blDebug ( "END BfBuscarTipoArticulo::codtipo_articulo", 0 );
     return m_valores["codtipo_articulo"];
 }
 
@@ -119,8 +119,8 @@ QString BfBuscarTipoArticulo::codtipo_articulo()
 **/
 QString BfBuscarTipoArticulo::idtipo_articulo()
 {
-    _depura ( "BfBuscarTipoArticulo::idtipo_articulo", 0 );
-    _depura ( "END BfBuscarTipoArticulo::idtipo_articulo", 0 );
+    blDebug ( "BfBuscarTipoArticulo::idtipo_articulo", 0 );
+    blDebug ( "END BfBuscarTipoArticulo::idtipo_articulo", 0 );
     return id();
 }
 
@@ -134,8 +134,8 @@ QString BfBuscarTipoArticulo::idtipo_articulo()
 **/
 QString BfBuscarTipoArticulo::desctipo_articulo()
 {
-    _depura ( "BfBuscarTipoArticulo::desctipo_articulo", 0 );
-    _depura ( "END BfBuscarTipoArticulo::desctipo_articulo", 0 );
+    blDebug ( "BfBuscarTipoArticulo::desctipo_articulo", 0 );
+    blDebug ( "END BfBuscarTipoArticulo::desctipo_articulo", 0 );
     return m_valores["desctipo_articulo"];
 }
 

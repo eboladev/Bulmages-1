@@ -28,7 +28,7 @@
 ListControlStockView::ListControlStockView ( QWidget *parent, const char * )
         : BfSubForm ( parent )
 {
-    _depura ( "ListControlStockView::ListControlStockView", 0 );
+    blDebug ( "ListControlStockView::ListControlStockView", 0 );
     setDbTableName ( "controlstock" );
     setDbFieldId ( "idarticulo" );
     addSubFormHeader ( "punteocontrolstock", BlDbField::DbBoolean, BlDbField::DbNothing, BlSubFormHeader::DbNone, _ ( "Punteado" ) );
@@ -45,7 +45,7 @@ ListControlStockView::ListControlStockView ( QWidget *parent, const char * )
     addSubFormHeader ( "idalmacenpk", BlDbField::DbInt,  BlDbField::DbNoSave | BlDbField::DbDupPrimaryKey, BlSubFormHeader::DbNone | BlSubFormHeader::DbHideView | BlSubFormHeader::DbDisableView, "idalmacen" );
     setInsert ( FALSE );
     mdb_idinventario = "";
-    _depura ( "END ListControlStockView::ListControlStockView", 0 );
+    blDebug ( "END ListControlStockView::ListControlStockView", 0 );
 }
 
 
@@ -56,14 +56,14 @@ ListControlStockView::ListControlStockView ( QWidget *parent, const char * )
 /*
 int ListControlStockView::borrar()
 {
-//    _depura ( "ListControlStockView::borrar", 0 );
+//    blDebug ( "ListControlStockView::borrar", 0 );
     fprintf(stderr, "f");
     mdb_idinventario = dbValue("idinventario");
 ///zhixiong    mainCompany() ->runQuery ( "DELETE FROM inventario WHERE idinventario = " +  dbValue ( "idinventario" ) );
     QString temp = QString("--") + dbValue("idinventario") + " - " + dbValue("idarticulo") + QString("--");
     fprintf(stderr, temp.toAscii());
 //    mainCompany() ->runQuery ( "DELETE FROM controlstock WHERE idinventario = " + mdb_idinventario );
-    _depura ( "END ListControlStockView::borrar", 0 );
+    blDebug ( "END ListControlStockView::borrar", 0 );
     return 0;
 }
 */
@@ -73,11 +73,11 @@ int ListControlStockView::borrar()
 **/
 void ListControlStockView::pregenerar()
 {
-    _depura ( "ListControlStockView::pregenerar", 0 );
+    blDebug ( "ListControlStockView::pregenerar", 0 );
     QString query;
     query = "SELECT * FROM (SELECT * FROM articulo, almacen) AS t1 LEFT JOIN (SELECT stocknewcontrolstock, idarticulo AS idarticulopk, idalmacen AS idalmacenpk, idinventario AS idinventariopk FROM controlstock WHERE idinventario = 1) AS t2 ON t1.idarticulo = t2.idarticulopk AND t1.idalmacen = t2.idalmacenpk ORDER BY codigoalmacen, codigocompletoarticulo;";
 //    BlSubForm::cargar ( query );
-    _depura ( "END ListControlStockView::pregenerar", 0 );
+    blDebug ( "END ListControlStockView::pregenerar", 0 );
 }
 
 
@@ -86,8 +86,8 @@ void ListControlStockView::pregenerar()
 **/
 ListControlStockView::~ListControlStockView()
 {
-    _depura ( "ListControlStockView::~ListControlStockView", 0 );
-    _depura ( "END ListControlStockView::~ListControlStockView", 0 );
+    blDebug ( "ListControlStockView::~ListControlStockView", 0 );
+    blDebug ( "END ListControlStockView::~ListControlStockView", 0 );
 }
 
 
@@ -98,9 +98,9 @@ ListControlStockView::~ListControlStockView()
 /*
 int ListControlStockView::guardar()
 {
-    _depura ( "ListControlStockView::guardar", 0 );
+    blDebug ( "ListControlStockView::guardar", 0 );
     BfSubForm::guardar();
-    _depura ( "END ListControlStockView::guardar", 0 );
+    blDebug ( "END ListControlStockView::guardar", 0 );
     return 0;
 }
 */

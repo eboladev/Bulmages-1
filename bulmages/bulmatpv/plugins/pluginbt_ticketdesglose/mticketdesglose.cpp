@@ -17,23 +17,23 @@ typedef QMap<QString, BlFixed> base;
 
 MTicketDesglose::MTicketDesglose ( BtCompany *emp, QWidget *parent ) : QTextBrowser ( parent ) , BlMainCompanyPointer ( emp )
 {
-    _depura ( "MTicketDesglose::MTicketDesglose", 0 );
+    blDebug ( "MTicketDesglose::MTicketDesglose", 0 );
 //    emp->pWorkspace() ->addWindow ( this );
 //    setWindowTitle ( "Ticket" );
-    _depura ( "END MTicketDesglose::MTicketDesglose", 0 );
+    blDebug ( "END MTicketDesglose::MTicketDesglose", 0 );
 }
 
 
 MTicketDesglose::~MTicketDesglose()
 {
-    _depura ( "MTicketDesglose::~MTicketDesglose", 0 );
-    _depura ( "END MTicketDesglose::~MTicketDesglose", 0 );
+    blDebug ( "MTicketDesglose::~MTicketDesglose", 0 );
+    blDebug ( "END MTicketDesglose::~MTicketDesglose", 0 );
 }
 
 
 void MTicketDesglose::pintar()
 {
-    _depura ( "MTicketDesglose::pintar", 0 );
+    blDebug ( "MTicketDesglose::pintar", 0 );
     BtTicket *tick =     ( ( BtCompany * ) mainCompany() ) ->ticketActual();
     //QString html = "<font size=\"1\">";
     QString html = "<p style=\"font-family:monospace; font-size: 12pt;\">";
@@ -177,6 +177,6 @@ void MTicketDesglose::pintar()
 // ======================================
     /// Pintamos el HTML en el textBrowser
     setText ( html1 );
-    _depura ( "END MTicketDesglose::pintar", 0 );
+    blDebug ( "END MTicketDesglose::pintar", 0 );
 }
 

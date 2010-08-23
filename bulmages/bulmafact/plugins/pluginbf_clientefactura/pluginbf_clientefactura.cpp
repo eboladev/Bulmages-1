@@ -38,8 +38,8 @@ FacturasList *g_facturasList = NULL;
 **/
 mypluginfact::mypluginfact()
 {
-    _depura ( "mypluginfact::mypluginfact", 0 );
-    _depura ( "END mypluginfact::mypluginfact", 0 );
+    blDebug ( "mypluginfact::mypluginfact", 0 );
+    blDebug ( "END mypluginfact::mypluginfact", 0 );
 }
 
 
@@ -48,8 +48,8 @@ mypluginfact::mypluginfact()
 **/
 mypluginfact::~mypluginfact()
 {
-    _depura ( "mypluginfact::~mypluginfact", 0 );
-    _depura ( "END mypluginfact::~mypluginfact", 0 );
+    blDebug ( "mypluginfact::~mypluginfact", 0 );
+    blDebug ( "END mypluginfact::~mypluginfact", 0 );
 }
 
 
@@ -58,12 +58,12 @@ mypluginfact::~mypluginfact()
 **/
 void mypluginfact::elslot()
 {
-    _depura ( "mypluginfact::elslot", 0 );
+    blDebug ( "mypluginfact::elslot", 0 );
     if ( g_facturasList ) {
         g_facturasList->hide();
         g_facturasList->show();
     }// end if
-    _depura ( "END mypluginfact::elslot", 0 );
+    blDebug ( "END mypluginfact::elslot", 0 );
 }
 
 ///
@@ -71,12 +71,12 @@ void mypluginfact::elslot()
 **/
 void mypluginfact::elslot1()
 {
-    _depura ( "mypluginfact::elslot1", 0 );
+    blDebug ( "mypluginfact::elslot1", 0 );
     FacturaView * bud = new FacturaView ( ( BfCompany * ) mainCompany(), NULL );
     mainCompany() ->m_pWorkspace->addWindow ( bud );
     bud->inicializar();
     bud->show();
-    _depura ( "END mypluginfact::elslot1", 0 );
+    blDebug ( "END mypluginfact::elslot1", 0 );
 }
 
 
@@ -87,7 +87,7 @@ void mypluginfact::elslot1()
 **/
 void mypluginfact::inicializa ( BfBulmaFact *bges )
 {
-    _depura ( "mypluginfact::inicializa", 0 );
+    blDebug ( "mypluginfact::inicializa", 0 );
 
     if ( bges->company()->hasTablePrivilege ( "factura", "SELECT" ) ) {
         /// Miramos si existe un menu Ventas
@@ -115,7 +115,7 @@ void mypluginfact::inicializa ( BfBulmaFact *bges )
 
 
     }// end if
-    _depura ( "END mypluginfact::inicializa", 0 );
+    blDebug ( "END mypluginfact::inicializa", 0 );
 }
 
 
@@ -126,7 +126,7 @@ void mypluginfact::inicializa ( BfBulmaFact *bges )
 **/
 int entryPoint ( BfBulmaFact *bges )
 {
-    _depura ( "Punto de Entrada del plugin de Facturas a Clientes\n", 0 );
+    blDebug ( "Punto de Entrada del plugin de Facturas a Clientes\n", 0 );
 
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale ( LC_ALL, "" );
@@ -197,7 +197,7 @@ int BfBuscarReferencia_on_mui_abrirtodo_clicked_Post ( BfBuscarReferencia *ref )
 int AlbaranClienteView_AlbaranClienteView ( AlbaranClienteView *l )
 {
 
-    _depura ( "PluginFactura_AlbaranClienteView_AlbaranClienteView", 0 );
+    blDebug ( "PluginFactura_AlbaranClienteView_AlbaranClienteView", 0 );
     GenFacQToolButton *mui_exporta_efactura2 = new GenFacQToolButton ( l, l->mui_plugbotones );
     AgFacQToolButton *mui_exporta_efactura = new AgFacQToolButton ( l, l->mui_plugbotones );
 
@@ -212,7 +212,7 @@ int AlbaranClienteView_AlbaranClienteView ( AlbaranClienteView *l )
     m_hboxLayout1->addWidget ( mui_exporta_efactura2 );
     m_hboxLayout1->addWidget ( mui_exporta_efactura );
 
-    _depura ( "END PluginFactura_AlbaranClienteView_AlbaranClienteView", 0 );
+    blDebug ( "END PluginFactura_AlbaranClienteView_AlbaranClienteView", 0 );
 
     return 0;
 }
@@ -225,7 +225,7 @@ int AlbaranClienteView_AlbaranClienteView ( AlbaranClienteView *l )
 int PedidoClienteView_PedidoClienteView ( PedidoClienteView *l )
 {
 
-    _depura ( "PluginFactura_PedidoClienteView_PedidoClienteView", 0 );
+    blDebug ( "PluginFactura_PedidoClienteView_PedidoClienteView", 0 );
 
     GenFacQToolButton *mui_exporta_efactura2 = new GenFacQToolButton ( l, l->mui_plugbotones );
 
@@ -239,7 +239,7 @@ int PedidoClienteView_PedidoClienteView ( PedidoClienteView *l )
     }// end if
     m_hboxLayout1->addWidget ( mui_exporta_efactura2 );
 
-    _depura ( "END PluginFactura_PedidoClienteView_PedidoClienteView", 0 );
+    blDebug ( "END PluginFactura_PedidoClienteView_PedidoClienteView", 0 );
 
     return 0;
 }
@@ -253,7 +253,7 @@ int PedidoClienteView_PedidoClienteView ( PedidoClienteView *l )
 int PresupuestoView_PresupuestoView ( PresupuestoView *l )
 {
 
-    _depura ( "PluginFactura_PresupuestoView_PresupuestoView", 0 );
+    blDebug ( "PluginFactura_PresupuestoView_PresupuestoView", 0 );
 
     GenFacQToolButton *mui_exporta_efactura2 = new GenFacQToolButton ( l, l->mui_plugbotones );
 
@@ -267,7 +267,7 @@ int PresupuestoView_PresupuestoView ( PresupuestoView *l )
     }// end if
     m_hboxLayout1->addWidget ( mui_exporta_efactura2 );
 
-    _depura ( "END PluginFactura_PresupuestoView_PresupuestoView", 0 );
+    blDebug ( "END PluginFactura_PresupuestoView_PresupuestoView", 0 );
 
     return 0;
 }

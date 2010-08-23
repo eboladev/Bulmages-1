@@ -35,8 +35,8 @@ ClientsList *g_clientesList = NULL;
 **/
 MyPlugCli::MyPlugCli()
 {
-    _depura ( "MyPlugCli::MyPlugCli", 0 );
-    _depura ( "END MyPlugCli::MyPlugCli", 0 );
+    blDebug ( "MyPlugCli::MyPlugCli", 0 );
+    blDebug ( "END MyPlugCli::MyPlugCli", 0 );
 }
 
 
@@ -45,8 +45,8 @@ MyPlugCli::MyPlugCli()
 **/
 MyPlugCli::~MyPlugCli()
 {
-    _depura ( "MyPlugCli::~MyPlugCli", 0 );
-    _depura ( "END MyPlugCli::~MyPlugCli", 0 );
+    blDebug ( "MyPlugCli::~MyPlugCli", 0 );
+    blDebug ( "END MyPlugCli::~MyPlugCli", 0 );
 }
 
 
@@ -55,12 +55,12 @@ MyPlugCli::~MyPlugCli()
 **/
 void MyPlugCli::elslot()
 {
-    _depura ( "MyPlugCli::elslot", 0 );
+    blDebug ( "MyPlugCli::elslot", 0 );
     if ( g_clientesList ) {
         g_clientesList->hide();
         g_clientesList->show();
     }// end if
-    _depura ( "END MyPlugCli::elslot", 0 );
+    blDebug ( "END MyPlugCli::elslot", 0 );
 }
 
 ///
@@ -68,11 +68,11 @@ void MyPlugCli::elslot()
 **/
 void MyPlugCli::elslot1()
 {
-    _depura ( "MyPlugCli::elslot1", 0 );
+    blDebug ( "MyPlugCli::elslot1", 0 );
     ClienteView * bud = new ClienteView ( ( BfCompany * ) mainCompany(), NULL );
     mainCompany() ->m_pWorkspace->addWindow ( bud );
     bud->show();
-    _depura ( "END MyPlugCli::elslot1", 0 );
+    blDebug ( "END MyPlugCli::elslot1", 0 );
 }
 
 
@@ -83,7 +83,7 @@ void MyPlugCli::elslot1()
 **/
 void MyPlugCli::inicializa ( BfBulmaFact *bges )
 {
-    _depura ( "MyPlugCli::inicializa", 0 );
+    blDebug ( "MyPlugCli::inicializa", 0 );
 
     if ( bges->company()->hasTablePrivilege ( "cliente", "SELECT" ) ) {
 
@@ -110,7 +110,7 @@ void MyPlugCli::inicializa ( BfBulmaFact *bges )
         connect ( npago, SIGNAL ( activated() ), this, SLOT ( elslot1() ) );
 
     }// end if
-    _depura ( "END MyPlugCli::inicializa", 0 );
+    blDebug ( "END MyPlugCli::inicializa", 0 );
 }
 
 
@@ -124,7 +124,7 @@ void MyPlugCli::inicializa ( BfBulmaFact *bges )
 **/
 int entryPoint ( BfBulmaFact *bges )
 {
-    _depura ( "Punto de Entrada del plugin de Clientes\n", 0 );
+    blDebug ( "Punto de Entrada del plugin de Clientes\n", 0 );
 
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale ( LC_ALL, "" );

@@ -36,8 +36,8 @@ SociosList *g_sociosList = NULL;
 **/
 MyPlugProf::MyPlugProf()
 {
-    _depura ( "MyPlugProf::MyPlugProf", 0 );
-    _depura ( "END MyPlugProf::MyPlugProf", 0 );
+    blDebug ( "MyPlugProf::MyPlugProf", 0 );
+    blDebug ( "END MyPlugProf::MyPlugProf", 0 );
 }
 
 
@@ -46,8 +46,8 @@ MyPlugProf::MyPlugProf()
 **/
 MyPlugProf::~MyPlugProf()
 {
-    _depura ( "MyPlugProf::~MyPlugProf", 0 );
-    _depura ( "END MyPlugProf::~MyPlugProf", 0 );
+    blDebug ( "MyPlugProf::~MyPlugProf", 0 );
+    blDebug ( "END MyPlugProf::~MyPlugProf", 0 );
 }
 
 
@@ -56,12 +56,12 @@ MyPlugProf::~MyPlugProf()
 **/
 void MyPlugProf::elslot()
 {
-    _depura ( "MyPlugProf::elslot", 0 );
+    blDebug ( "MyPlugProf::elslot", 0 );
     if ( g_sociosList ) {
         g_sociosList->hide();
         g_sociosList->show();
     }// end if
-    _depura ( "END MyPlugProf::elslot", 0 );
+    blDebug ( "END MyPlugProf::elslot", 0 );
 }
 
 ///
@@ -69,11 +69,11 @@ void MyPlugProf::elslot()
 **/
 void MyPlugProf::elslot1()
 {
-    _depura ( "MyPlugProf::elslot1", 0 );
+    blDebug ( "MyPlugProf::elslot1", 0 );
     SocioView * bud = new SocioView ( ( BfCompany * ) mainCompany(), NULL );
     mainCompany() ->m_pWorkspace->addWindow ( bud );
     bud->show();
-    _depura ( "END MyPlugProf::elslot1", 0 );
+    blDebug ( "END MyPlugProf::elslot1", 0 );
 }
 
 ///
@@ -81,11 +81,11 @@ void MyPlugProf::elslot1()
 **/
 void MyPlugProf::elslot2()
 {
-    _depura ( "MyPlugProf::elslot2", 0 );
+    blDebug ( "MyPlugProf::elslot2", 0 );
     TiposocioView * bud = new TiposocioView ( ( BfCompany * ) mainCompany(), NULL );
     mainCompany() ->m_pWorkspace->addWindow ( bud );
     bud->show();
-    _depura ( "END MyPlugProf::elslot2", 0 );
+    blDebug ( "END MyPlugProf::elslot2", 0 );
 }
 
 
@@ -95,7 +95,7 @@ void MyPlugProf::elslot2()
 **/
 void MyPlugProf::inicializa ( BfBulmaFact *bges )
 {
-    _depura ( "MyPlugProf::inicializa", 0 );
+    blDebug ( "MyPlugProf::inicializa", 0 );
 
     if ( bges->company()->hasTablePrivilege ( "cliente", "SELECT" ) ) {
 
@@ -132,7 +132,7 @@ void MyPlugProf::inicializa ( BfBulmaFact *bges )
         bges->Fichas->addAction ( tiposoc );
         connect ( tiposoc, SIGNAL ( activated() ), this, SLOT ( elslot2() ) );
     }// end if
-    _depura ( "END MyPlugProf::inicializa", 0 );
+    blDebug ( "END MyPlugProf::inicializa", 0 );
 }
 
 
@@ -143,7 +143,7 @@ void MyPlugProf::inicializa ( BfBulmaFact *bges )
 **/
 int entryPoint ( BfBulmaFact *bges )
 {
-    _depura ( "Punto de entrada del plugin de socios\n", 0 );
+    blDebug ( "Punto de entrada del plugin de socios\n", 0 );
 
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale ( LC_ALL, "" );
@@ -157,20 +157,20 @@ int entryPoint ( BfBulmaFact *bges )
 
 int BfCompany_createMainWindows_Post ( BfCompany *comp )
 {
-    _depura ( "pluginbf_socio::BfCompany_createMainWindows_Post", 0 );
+    blDebug ( "pluginbf_socio::BfCompany_createMainWindows_Post", 0 );
     if ( comp->hasTablePrivilege ( "cliente", "SELECT" ) ) {
         g_sociosList = new SociosList ( comp, NULL );
         comp->m_pWorkspace->addWindow ( g_sociosList );
         g_sociosList->hide();
     }// end if
-    _depura ( "END pluginbf_socio::BfCompany_createMainWindows_Post", 0 );
+    blDebug ( "END pluginbf_socio::BfCompany_createMainWindows_Post", 0 );
     return 0;
 }
 
 
 int BlSubFormDelegate_createEditor ( BlSubFormDelegate *bl )
 {
-    _depura ( "pluginbf_socio::BlSubFormDelegate_createEditor", 0 );
+    blDebug ( "pluginbf_socio::BlSubFormDelegate_createEditor", 0 );
     int ret = 0;
     if ( g_nomcampo == "nombrealumno" || g_nomcampo == "nombrealumno1" ) {
         BlDbCompleterComboBox * editor = new BlDbCompleterComboBox ( g_editor );
@@ -193,7 +193,7 @@ int BlSubFormDelegate_createEditor ( BlSubFormDelegate *bl )
         g_plugParams =  editor;
         ret = -1;
     } // end if
-    _depura ( "END pluginbf_socio::BlSubFormDelegate_createEditor", 0 );
+    blDebug ( "END pluginbf_socio::BlSubFormDelegate_createEditor", 0 );
 
     return ret;
 }
@@ -203,7 +203,7 @@ int BlSubFormDelegate_createEditor ( BlSubFormDelegate *bl )
 /// Hay cosas que deberian estar en el plugin de alumno
 int BlSubFormDelegate_setModelData ( BlSubFormDelegate *bl )
 {
-    _depura ( "pluginbf_socio::BlSubFormDelegate_setModelData", 0 );
+    blDebug ( "pluginbf_socio::BlSubFormDelegate_setModelData", 0 );
     int ret = 0;
     if ( g_editor->objectName() == "EditNombreAlumno" || g_editor->objectName() == "EditNombreCliente" ) {
         BlDbCompleterComboBox * comboBox = ( BlDbCompleterComboBox * ) g_editor;
@@ -212,14 +212,14 @@ int BlSubFormDelegate_setModelData ( BlSubFormDelegate *bl )
         g_model->setData ( g_index, value );
         ret = -1;
     } // end if
-    _depura ( "END pluginbf_socio::BlSubFormDelegate_setModelData", 0 );
+    blDebug ( "END pluginbf_socio::BlSubFormDelegate_setModelData", 0 );
     return ret;
 }
 
 
 int BlSubFormDelegate_setEditorData ( BlSubFormDelegate *bl )
 {
-    _depura ( "pluginbf_socio::BlSubFormDelegate_setEditorData", 0 );
+    blDebug ( "pluginbf_socio::BlSubFormDelegate_setEditorData", 0 );
     int ret = 0;
     if ( g_editor->objectName() == "EditNombreAlumno" || g_editor->objectName() == "EditNombreCliente" ) {
         QString value = g_index.model() ->data ( g_index, Qt::DisplayRole ).toString();
@@ -227,13 +227,13 @@ int BlSubFormDelegate_setEditorData ( BlSubFormDelegate *bl )
         comboBox->addItem ( value );
         ret = -1;
     } // end if
-    _depura ( "END pluginbf_socio::BlSubFormDelegate_setEditorData", 0 );
+    blDebug ( "END pluginbf_socio::BlSubFormDelegate_setEditorData", 0 );
     return ret;
 }
 
 int BlSubForm_editFinished ( BlSubForm *sub )
 {
-    _depura ( "pluginbf_socio::BlSubForm_editFinished", 0 );
+    blDebug ( "pluginbf_socio::BlSubForm_editFinished", 0 );
     if ( sub->m_campoactual->nomcampo() == "nombrealumno1" ) {
 	QString query = "SELECT idalumno FROM alumno WHERE upper (apellido1alumno || ' ' || apellido2alumno || ' ' || nombrealumno) LIKE upper('" + sub->m_campoactual->text() + "%')";
 //	mensajeInfo(query);
@@ -250,13 +250,13 @@ int BlSubForm_editFinished ( BlSubForm *sub )
         } // end if
         delete cur;
     } // end if
-    _depura ( "END pluginbf_socio::BlSubForm_editFinished", 0 );
+    blDebug ( "END pluginbf_socio::BlSubForm_editFinished", 0 );
     return 0;
 }
 
 
 int BlDbCompleterComboBox_textChanged (BlDbCompleterComboBox *bl) {
-  _depura("BlDbCompleterComboBox_textChanged", 0);
+  blDebug("BlDbCompleterComboBox_textChanged", 0);
 
         if ( bl->m_entrada.size() >= 3 && bl->m_tabla == "alumno") {
                 QString cadwhere = "";
@@ -290,11 +290,11 @@ int BlDbCompleterComboBox_textChanged (BlDbCompleterComboBox *bl) {
                 } // end while
                 delete bl->m_cursorcombo;
 
-  _depura("END BlDbCompleterComboBox_textChanged", 0);
+  blDebug("END BlDbCompleterComboBox_textChanged", 0);
 
 	  return 1;
         } // end if
-  _depura("END BlDbCompleterComboBox_textChanged", 0);
+  blDebug("END BlDbCompleterComboBox_textChanged", 0);
 
     return 0;
 }
@@ -303,10 +303,10 @@ int BlDbCompleterComboBox_textChanged (BlDbCompleterComboBox *bl) {
 
 int BfSubForm_pressedAsterisk ( BfSubForm *sub )
 {
-    _depura ( "BfSubForm_pressedAsterisk" );
+    blDebug ( "BfSubForm_pressedAsterisk" );
 
     if ( sub->m_campoactual->nomcampo() != "nomcliente" ) {
-        _depura ( "END BfSubForm::pressedAsterisk", 0 );
+        blDebug ( "END BfSubForm::pressedAsterisk", 0 );
         return 0;
     } // end if
 
@@ -326,7 +326,7 @@ int BfSubForm_pressedAsterisk ( BfSubForm *sub )
 
     /// Si no tenemos un idtutor salimos ya que significa que no se ha seleccionado ninguno.
     if ( idCliente == "" ) {
-        _depura ( "END BfSubForm::pressedAsterisk", 0 );
+        blDebug ( "END BfSubForm::pressedAsterisk", 0 );
         return 0;
     } // end if
 
@@ -338,7 +338,7 @@ int BfSubForm_pressedAsterisk ( BfSubForm *sub )
     
     delete cur;
     
-    _depura ( "END BfSubForm_pressedAsterisk" );
+    blDebug ( "END BfSubForm_pressedAsterisk" );
 
     return 0;
 }
@@ -363,8 +363,8 @@ int BfSubForm_pressedAsterisk ( BfSubForm *sub )
 **/
 MyPlugTutor1::MyPlugTutor1 ( BlSubForm *parent ) : QObject ( parent )
 {
-    _depura ( "MyPlugTutor1::MyPlugTutor1", 0 );
-    _depura ( "END MyPlugTutor1::MyPlugTutor1", 0 );
+    blDebug ( "MyPlugTutor1::MyPlugTutor1", 0 );
+    blDebug ( "END MyPlugTutor1::MyPlugTutor1", 0 );
 }
 
 ///
@@ -372,8 +372,8 @@ MyPlugTutor1::MyPlugTutor1 ( BlSubForm *parent ) : QObject ( parent )
 **/
 MyPlugTutor1::~MyPlugTutor1()
 {
-    _depura ( "MyPlugTutor1::~MyPlugTutor1", 0 );
-    _depura ( "END MyPlugTutor1::~MyPlugTutor1", 0 );
+    blDebug ( "MyPlugTutor1::~MyPlugTutor1", 0 );
+    blDebug ( "END MyPlugTutor1::~MyPlugTutor1", 0 );
 }
 
 
@@ -383,7 +383,7 @@ MyPlugTutor1::~MyPlugTutor1()
 **/
 void MyPlugTutor1::s_pintaMenu ( QMenu *menu )
 {
-    _depura ( "MyPlugTutor1::s_pintaMenu", 0 );
+    blDebug ( "MyPlugTutor1::s_pintaMenu", 0 );
     BfSubForm *sub = ( BfSubForm * ) parent();
     BlSubFormHeader *header = sub->header ( "nomcliente" );
     if ( header ) {
@@ -395,7 +395,7 @@ void MyPlugTutor1::s_pintaMenu ( QMenu *menu )
             menu->addAction ( _ ( "Seleccionar socio" ) );
         } // end if
     } // end if
-    _depura ( "END MyPlugTutor1::s_pintaMenu", 0 );
+    blDebug ( "END MyPlugTutor1::s_pintaMenu", 0 );
 }
 
 
@@ -405,7 +405,7 @@ void MyPlugTutor1::s_pintaMenu ( QMenu *menu )
 **/
 void MyPlugTutor1::s_trataMenu ( QAction *action )
 {
-    _depura ( "MyPlugTutor1::s_trataMenu", 0 );
+    blDebug ( "MyPlugTutor1::s_trataMenu", 0 );
     BfSubForm *sub = ( BfSubForm * ) parent();
     if ( action->text() == _ ( "Editar socio" ) ) {
         QString idtutor = sub->dbValue ( "idcliente" );
@@ -417,7 +417,7 @@ void MyPlugTutor1::s_trataMenu ( QAction *action )
         nuevoTutor();
     } // end if
 
-    _depura ( "END MyPlugTutor1::s_trataMenu", 0 );
+    blDebug ( "END MyPlugTutor1::s_trataMenu", 0 );
 }
 
 
@@ -426,19 +426,19 @@ void MyPlugTutor1::s_trataMenu ( QAction *action )
 **/
 void MyPlugTutor1::editarTutor ( QString idtutor )
 {
-    _depura ( "MyPlugTutor1::editarTutor", 0 );
+    blDebug ( "MyPlugTutor1::editarTutor", 0 );
     BlSubForm * subf = ( BlSubForm * ) parent();
     SocioView * art = new SocioView ( ( BfCompany * ) subf->mainCompany(), 0 );
     subf->mainCompany() ->m_pWorkspace->addWindow ( art );
     /// Si la carga no va bien entonces terminamos.
     if ( art->cargar ( idtutor ) ) {
         delete art;
-        _depura ( "END MyPlugTutor1::editarTutor", 0, "Carga Erronea" );
+        blDebug ( "END MyPlugTutor1::editarTutor", 0, "Carga Erronea" );
         return;
     } // end if
     art->hide();
     art->show();
-    _depura ( "END MyPlugTutor1::editarTutor", 0 );
+    blDebug ( "END MyPlugTutor1::editarTutor", 0 );
 }
 
 
@@ -448,13 +448,13 @@ void MyPlugTutor1::editarTutor ( QString idtutor )
 **/
 void MyPlugTutor1::nuevoTutor( )
 {
-    _depura ( "MyPlugTutor1::editarTutor", 0 );
+    blDebug ( "MyPlugTutor1::editarTutor", 0 );
     BlSubForm * subf = ( BlSubForm * ) parent();
     SocioView * art = new SocioView ( ( BfCompany * ) subf->mainCompany(), 0 );
     subf->mainCompany() ->m_pWorkspace->addWindow ( art );
     art->hide();
     art->show();
-    _depura ( "END MyPlugTutor1::editarTutor", 0 );
+    blDebug ( "END MyPlugTutor1::editarTutor", 0 );
 }
 
 
@@ -463,7 +463,7 @@ void MyPlugTutor1::nuevoTutor( )
 **/
 void MyPlugTutor1::seleccionarTutor ( BfSubForm *sub )
 {
-    _depura ( "MyPlugTutor1::editarTutor", 0 );
+    blDebug ( "MyPlugTutor1::editarTutor", 0 );
 
     SociosList *artlist = new SociosList ( ( BfCompany * ) sub->mainCompany(), NULL, 0, BL_SELECT_MODE );
     /// Esto es convertir un QWidget en un sistema modal de dialogo.
@@ -477,7 +477,7 @@ void MyPlugTutor1::seleccionarTutor ( BfSubForm *sub )
 
     /// Si no tenemos un idtutor salimos ya que significa que no se ha seleccionado ninguno.
     if ( idTutor == "" ) {
-        _depura ( "END BfSubForm::pressedAsterisk", 0 );
+        blDebug ( "END BfSubForm::pressedAsterisk", 0 );
         return;
     } // end if
 
@@ -489,7 +489,7 @@ void MyPlugTutor1::seleccionarTutor ( BfSubForm *sub )
     } // end if
     delete cur;
 
-    _depura ( "END MyPlugTutor1::editarTutor", 0 );
+    blDebug ( "END MyPlugTutor1::editarTutor", 0 );
 }
 
 
@@ -500,10 +500,10 @@ void MyPlugTutor1::seleccionarTutor ( BfSubForm *sub )
 **/
 int BlSubForm_BlSubForm_Post ( BlSubForm *sub )
 {
-    _depura ( "BlSubForm_BlSubForm_Post", 0 );
+    blDebug ( "BlSubForm_BlSubForm_Post", 0 );
     MyPlugTutor1 *subformods = new MyPlugTutor1 ( sub );
     sub->QObject::connect ( sub, SIGNAL ( pintaMenu ( QMenu * ) ), subformods, SLOT ( s_pintaMenu ( QMenu * ) ) );
     sub->QObject::connect ( sub, SIGNAL ( trataMenu ( QAction * ) ), subformods, SLOT ( s_trataMenu ( QAction * ) ) );
-    _depura ( "END BlSubForm_BlSubForm_Post", 0 );
+    blDebug ( "END BlSubForm_BlSubForm_Post", 0 );
     return 0;
 }

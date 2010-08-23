@@ -34,8 +34,8 @@
 **/
 mytiptrab::mytiptrab()
 {
-    _depura ( "mytiptrab::mytiptrab", 0 );
-    _depura ( "END mytiptrab::mytiptrab", 0 );
+    blDebug ( "mytiptrab::mytiptrab", 0 );
+    blDebug ( "END mytiptrab::mytiptrab", 0 );
 }
 
 
@@ -44,8 +44,8 @@ mytiptrab::mytiptrab()
 **/
 mytiptrab::~mytiptrab()
 {
-    _depura ( "mytiptrab::~mytiptrab", 0 );
-    _depura ( "END mytiptrab::~mytiptrab", 0 );
+    blDebug ( "mytiptrab::~mytiptrab", 0 );
+    blDebug ( "END mytiptrab::~mytiptrab", 0 );
 }
 
 
@@ -54,11 +54,11 @@ mytiptrab::~mytiptrab()
 **/
 void mytiptrab::elslot()
 {
-    _depura ( "mytiptrab::elslot", 0 );
+    blDebug ( "mytiptrab::elslot", 0 );
     ListTiposTrabajoView *l = new ListTiposTrabajoView ( ( BfCompany * ) m_bulmafact->company(), 0 );
     m_bulmafact->workspace() ->addWindow ( l );
     l->show();
-    _depura ( "END mytiptrab::elslot", 0 );
+    blDebug ( "END mytiptrab::elslot", 0 );
 }
 
 
@@ -86,7 +86,7 @@ void mytiptrab::inicializa ( BfBulmaFact *bges )
 **/
 int entryPoint ( BfBulmaFact *bges )
 {
-    _depura ( "Estoy dentro del plugin de tipos de trabajo", 0 );
+    blDebug ( "Estoy dentro del plugin de tipos de trabajo", 0 );
 
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale ( LC_ALL, "" );
@@ -105,7 +105,7 @@ int entryPoint ( BfBulmaFact *bges )
 **/
 int TrabajadorView_TrabajadorView_Post ( TrabajadorView *trab )
 {
-    _depura ( "TrabajadorView_TrabajadorView_Post", 0 );
+    blDebug ( "TrabajadorView_TrabajadorView_Post", 0 );
 
     QHBoxLayout *hboxLayout160 = new QHBoxLayout();
     hboxLayout160->setSpacing ( 2 );
@@ -166,7 +166,7 @@ int TrabajadorView_on_mui_guardar_clicked ( TrabajadorView *trab )
 **/
 int TrabajadorView_on_mui_lista_currentItemChanged_Post ( TrabajadorView *trab )
 {
-    _depura("pluginbf_tipotrabajo::TrabajadorView_on_mui_lista_currentItemChanged_Post");
+    blDebug("pluginbf_tipotrabajo::TrabajadorView_on_mui_lista_currentItemChanged_Post");
     if (trab) {
 	BusquedaTipoTrabajo * l = trab->findChild<BusquedaTipoTrabajo *> ( "tipotraba" );
 	if (l) {
@@ -177,7 +177,7 @@ int TrabajadorView_on_mui_lista_currentItemChanged_Post ( TrabajadorView *trab )
 	    delete cur;
 	} // end if
     } // end if
-    _depura("END pluginbf_tipotrabajo::TrabajadorView_on_mui_lista_currentItemChanged_Post");
+    blDebug("END pluginbf_tipotrabajo::TrabajadorView_on_mui_lista_currentItemChanged_Post");
     return 0;
 }
 
@@ -189,7 +189,7 @@ int TrabajadorView_on_mui_lista_currentItemChanged_Post ( TrabajadorView *trab )
 **/
 int AlmacenView_AlmacenView ( AlmacenView *alm )
 {
-    _depura ( "esxtoy en la clase almacen", 0 );
+    blDebug ( "esxtoy en la clase almacen", 0 );
 
     BfSubForm *form = new BfSubForm ( alm );
     delete form->m_delegate;
@@ -235,13 +235,13 @@ int BlForm_cargar ( BlForm *fich )
 **/
 int BlForm_guardar_Post ( BlForm *fich )
 {
-    _depura ( "BlForm_guardar_Post", 0 );
+    blDebug ( "BlForm_guardar_Post", 0 );
     BlSubForm * form = fich->findChild<BlSubForm *> ( "mui_tipostrabajo" );
     if ( form ) {
         form->setColumnValue ( "idalmacen", fich->dbValue ( "idalmacen" ) );
         form->guardar();
     }
-    _depura ( "END BlForm_guardar_Post", 0 );
+    blDebug ( "END BlForm_guardar_Post", 0 );
     return 0;
 }
 
@@ -258,8 +258,8 @@ int BlForm_guardar_Post ( BlForm *fich )
 **/
 QSubForm3BfDelegate::QSubForm3BfDelegate ( QObject *parent = 0 ) : BfSubFormDelegate ( parent )
 {
-    _depura ( "QSubForm3BfDelegate::QSubForm3BfDelegate", 0 );
-    _depura ( "END QSubForm3BfDelegate::QSubForm3BfDelegate", 0 );
+    blDebug ( "QSubForm3BfDelegate::QSubForm3BfDelegate", 0 );
+    blDebug ( "END QSubForm3BfDelegate::QSubForm3BfDelegate", 0 );
 }
 
 
@@ -268,8 +268,8 @@ QSubForm3BfDelegate::QSubForm3BfDelegate ( QObject *parent = 0 ) : BfSubFormDele
 **/
 QSubForm3BfDelegate::~QSubForm3BfDelegate()
 {
-    _depura ( "QSubForm3BfDelegate::~QSubForm3BfDelegate", 0 );
-    _depura ( "END QSubForm3BfDelegate::~QSubForm3BfDelegate", 0 );
+    blDebug ( "QSubForm3BfDelegate::~QSubForm3BfDelegate", 0 );
+    blDebug ( "END QSubForm3BfDelegate::~QSubForm3BfDelegate", 0 );
 }
 
 
@@ -282,7 +282,7 @@ QSubForm3BfDelegate::~QSubForm3BfDelegate()
 **/
 QWidget *QSubForm3BfDelegate::createEditor ( QWidget *parent, const QStyleOptionViewItem &option, const QModelIndex &index ) const
 {
-    _depura ( "QSubForm3BfDelegate::createEditor", 0 );
+    blDebug ( "QSubForm3BfDelegate::createEditor", 0 );
     BlSubFormHeader *linea;
     linea = m_subform->cabecera() ->at ( index.column() );
 
@@ -293,7 +293,7 @@ QWidget *QSubForm3BfDelegate::createEditor ( QWidget *parent, const QStyleOption
     } else  {
         return BfSubFormDelegate::createEditor ( parent, option, index );
     } // end if
-    _depura ( "END QSubForm3BfDelegate::createEditor", 0 );
+    blDebug ( "END QSubForm3BfDelegate::createEditor", 0 );
 }
 
 
@@ -306,7 +306,7 @@ QWidget *QSubForm3BfDelegate::createEditor ( QWidget *parent, const QStyleOption
 **/
 void QSubForm3BfDelegate::setModelData ( QWidget *editor, QAbstractItemModel *model, const QModelIndex &index ) const
 {
-    _depura ( "QSubForm3BfDelegate::setModelData", 0 );
+    blDebug ( "QSubForm3BfDelegate::setModelData", 0 );
 
     /// Si la fila o columna pasadas son invalidas salimos.
     if ( index.column() < 0 || index.row() < 0 )
@@ -322,7 +322,7 @@ void QSubForm3BfDelegate::setModelData ( QWidget *editor, QAbstractItemModel *mo
     } else {
         BfSubFormDelegate::setModelData ( editor, model, index );
     } // end if
-    _depura ( "END QSubForm3BfDelegate::setModelData", 0 );
+    blDebug ( "END QSubForm3BfDelegate::setModelData", 0 );
 }
 
 
@@ -333,7 +333,7 @@ void QSubForm3BfDelegate::setModelData ( QWidget *editor, QAbstractItemModel *mo
 **/
 void QSubForm3BfDelegate::setEditorData ( QWidget* editor, const QModelIndex& index ) const
 {
-    _depura ( "QSubForm3BfDelegate::setEditorData", 0 );
+    blDebug ( "QSubForm3BfDelegate::setEditorData", 0 );
     BlSubFormHeader *linea;
     linea = m_subform->cabecera() ->at ( index.column() );
     if ( linea->nomcampo() == "nomtipotrabajo" ) {
@@ -343,7 +343,7 @@ void QSubForm3BfDelegate::setEditorData ( QWidget* editor, const QModelIndex& in
     } else {
         BfSubFormDelegate::setEditorData ( editor, index );
     } // end if
-    _depura ( "END QSubForm3BfDelegate::setEditorData", 0 );
+    blDebug ( "END QSubForm3BfDelegate::setEditorData", 0 );
 }
 
 

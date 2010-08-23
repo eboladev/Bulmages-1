@@ -33,9 +33,9 @@
 **/
 void InventariosView::on_mui_listado_itemDoubleClicked ( QTableWidgetItem * )
 {
-    _depura ( "InventariosView::on_mui_listado_itemDoubleClicked", 0 );
+    blDebug ( "InventariosView::on_mui_listado_itemDoubleClicked", 0 );
     on_mui_editar_clicked();
-    _depura ( "END InventariosView::on_mui_listado_itemDoubleClicked", 0 );
+    blDebug ( "END InventariosView::on_mui_listado_itemDoubleClicked", 0 );
 }
 
 
@@ -45,14 +45,14 @@ void InventariosView::on_mui_listado_itemDoubleClicked ( QTableWidgetItem * )
 **/
 void InventariosView::on_mui_crear_clicked()
 {
-    _depura ( "InventariosView::on_mui_crear_clicked", 0 );
+    blDebug ( "InventariosView::on_mui_crear_clicked", 0 );
     InventarioView *bud = new InventarioView ( ( BfCompany * ) mainCompany(), 0 );
     if ( bud->cargar ( "0" ) )
         return;
     mainCompany() ->m_pWorkspace->addWindow ( bud );
     bud->show();
     bud->mui_nominventario->setFocus();
-    _depura ( "END InventariosView::on_mui_crear_clicked", 0 );
+    blDebug ( "END InventariosView::on_mui_crear_clicked", 0 );
 }
 
 
@@ -61,9 +61,9 @@ void InventariosView::on_mui_crear_clicked()
 **/
 void InventariosView::on_mui_listado_itemDoubleClicked()
 {
-    _depura ( "InventariosView::on_mui_listado_itemDoubleClicked", 0 );
+    blDebug ( "InventariosView::on_mui_listado_itemDoubleClicked", 0 );
     on_mui_editar_clicked();
-    _depura ( "END InventariosView::on_mui_listado_itemDoubleClicked", 0 );
+    blDebug ( "END InventariosView::on_mui_listado_itemDoubleClicked", 0 );
 }
 
 
@@ -72,9 +72,9 @@ void InventariosView::on_mui_listado_itemDoubleClicked()
 **/
 void InventariosView::presentar()
 {
-    _depura ( "InventariosView::presentar", 0 );
+    blDebug ( "InventariosView::presentar", 0 );
     mui_listado->cargar();
-    _depura ( "END InventariosView::presentar", 0 );
+    blDebug ( "END InventariosView::presentar", 0 );
 }
 
 ///
@@ -85,7 +85,7 @@ void InventariosView::presentar()
 InventariosView::InventariosView ( BfCompany *comp, QWidget *parent, Qt::WFlags flag, edmode editmode )
         : BlFormList ( comp, parent, flag, editmode )
 {
-    _depura ( "InventariosView::InventariosView", 0 );
+    blDebug ( "InventariosView::InventariosView", 0 );
     setAttribute ( Qt::WA_DeleteOnClose );
     setupUi ( this );
     mui_listado->setMainCompany ( comp );
@@ -96,7 +96,7 @@ InventariosView::InventariosView ( BfCompany *comp, QWidget *parent, Qt::WFlags 
     } else {
         setWindowTitle ( _ ( "Selector de Inventarios" ) );
     } // end if
-    _depura ( "END InventariosView::InventariosView", 0 );
+    blDebug ( "END InventariosView::InventariosView", 0 );
 }
 
 
@@ -105,8 +105,8 @@ InventariosView::InventariosView ( BfCompany *comp, QWidget *parent, Qt::WFlags 
 **/
 InventariosView::~InventariosView()
 {
-    _depura ( "InventariosView::~InventariosView", 0 );
-    _depura ( "END InventariosView::~InventariosView", 0 );
+    blDebug ( "InventariosView::~InventariosView", 0 );
+    blDebug ( "END InventariosView::~InventariosView", 0 );
 }
 
 
@@ -116,7 +116,7 @@ InventariosView::~InventariosView()
 **/
 void InventariosView::on_mui_editar_clicked()
 {
-    _depura ( "InventariosView::on_mui_editar_clicked", 0 );
+    blDebug ( "InventariosView::on_mui_editar_clicked", 0 );
     int a = mui_listado->currentRow();
     if ( a < 0 ) {
         mensajeInfo ( _ ( "Tiene que seleccionar un inventario" ) );
@@ -133,7 +133,7 @@ void InventariosView::on_mui_editar_clicked()
             presentar();
         } // end if
     } // end if
-    _depura ( "END InventariosView::on_mui_editar_clicked", 0 );
+    blDebug ( "END InventariosView::on_mui_editar_clicked", 0 );
 }
 
 
@@ -143,7 +143,7 @@ void InventariosView::on_mui_editar_clicked()
 **/
 void InventariosView::on_mui_borrar2_clicked()
 {
-    _depura ( "InventariosView::on_mui_borrar2_clicked", 0 );
+    blDebug ( "InventariosView::on_mui_borrar2_clicked", 0 );
     int a = mui_listado->currentRow();
     if ( a < 0 ) {
         mensajeInfo ( _ ( "Tiene que seleccionar un inventario" ) );
@@ -160,7 +160,7 @@ void InventariosView::on_mui_borrar2_clicked()
         } // end if
     } // end if
     presentar();
-    _depura ( "END InventariosView::on_mui_borrar2_clicked", 0 );
+    blDebug ( "END InventariosView::on_mui_borrar2_clicked", 0 );
 }
 
 
@@ -169,7 +169,7 @@ void InventariosView::on_mui_borrar2_clicked()
 **/
 void InventariosView::on_mui_imprimir_clicked()
 {
-    _depura ( "InventariosView::on_mui_imprimir_clicked", 0 );
+    blDebug ( "InventariosView::on_mui_imprimir_clicked", 0 );
 
     QString archivo = g_confpr->valor ( CONF_DIR_OPENREPORTS ) + "listado.rml";
     QString archivod = g_confpr->valor ( CONF_DIR_USER ) + "listado.rml";
@@ -248,7 +248,7 @@ void InventariosView::on_mui_imprimir_clicked()
     } // end if
 
     invocaPDF ( "listado" );
-    _depura ( "END InventariosView::on_mui_imprimir_clicked", 0 );
+    blDebug ( "END InventariosView::on_mui_imprimir_clicked", 0 );
 }
 
 
@@ -262,10 +262,10 @@ void InventariosView::on_mui_imprimir_clicked()
 **/
 void InventariosSubForm::cargar()
 {
-    _depura ( "InventariosSubForm::cargar", 0 );
+    blDebug ( "InventariosSubForm::cargar", 0 );
     QString SQLQuery = "SELECT * FROM inventario";
     BlSubForm::cargar ( SQLQuery );
-    _depura ( "END InventariosSubForm::cargar", 0 );
+    blDebug ( "END InventariosSubForm::cargar", 0 );
 }
 
 
@@ -275,7 +275,7 @@ void InventariosSubForm::cargar()
 **/
 InventariosSubForm::InventariosSubForm ( QWidget *parent ) : BfSubForm ( parent )
 {
-    _depura ( "InventariosSubForm::InventariosSubForm", 0 );
+    blDebug ( "InventariosSubForm::InventariosSubForm", 0 );
     setDbTableName ( "inventario" );
     setDbFieldId ( "idinventario" );
     addSubFormHeader ( "idinventario", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbHideView, _ ( "Id inventario" ) );
@@ -284,6 +284,6 @@ InventariosSubForm::InventariosSubForm ( QWidget *parent ) : BfSubForm ( parent 
     setInsert ( FALSE );
     setDelete ( FALSE );
     setSortingEnabled ( TRUE );
-    _depura ( "END InventariosSubForm::InventariosSubForm", 0 );
+    blDebug ( "END InventariosSubForm::InventariosSubForm", 0 );
 }
 

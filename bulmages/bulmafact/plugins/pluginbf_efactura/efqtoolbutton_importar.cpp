@@ -47,11 +47,11 @@
 **/
 EFQToolButtonImportar::EFQToolButtonImportar ( FacturasProveedorList *faclistado, QWidget *parent ) : QToolButton ( parent ), BlMainCompanyPointer()
 {
-    _depura ( "EFQToolButtonImportar::EFQToolButtonImportar", 0 );
+    blDebug ( "EFQToolButtonImportar::EFQToolButtonImportar", 0 );
     m_faclistado = faclistado;
     setMainCompany ( faclistado->mainCompany() );
     connect ( this, SIGNAL ( clicked() ), this, SLOT ( click() ) );
-    _depura ( "END EFQToolButtonImportar::EFQToolButtonImportar", 0 );
+    blDebug ( "END EFQToolButtonImportar::EFQToolButtonImportar", 0 );
 }
 
 
@@ -60,8 +60,8 @@ EFQToolButtonImportar::EFQToolButtonImportar ( FacturasProveedorList *faclistado
 **/
 EFQToolButtonImportar::~EFQToolButtonImportar()
 {
-    _depura ( "EFQToolButtonImportar::~EFQToolButtonImportar", 0 );
-    _depura ( "END EFQToolButtonImportar::~EFQToolButtonImportar", 0 );
+    blDebug ( "EFQToolButtonImportar::~EFQToolButtonImportar", 0 );
+    blDebug ( "END EFQToolButtonImportar::~EFQToolButtonImportar", 0 );
 }
 
 
@@ -73,14 +73,14 @@ EFQToolButtonImportar::~EFQToolButtonImportar()
 **/
 QString EFQToolButtonImportar::obten_valor_nodo ( QString nombre, QDomDocument *doc )
 {
-    _depura ( "EFQToolButtonImportar_EFQToolButtonImportar::obten_valor_nodo", 0 );
+    blDebug ( "EFQToolButtonImportar_EFQToolButtonImportar::obten_valor_nodo", 0 );
     QDomNodeList lista_nodos = doc->elementsByTagName ( nombre );
     QDomNode nodo = lista_nodos.item ( 0 );
 
     if ( nodo.isNull() )
-        _depura ( "No hay un nodo con ese nombre", 2 );
+        blDebug ( "No hay un nodo con ese nombre", 2 );
 
-    _depura ( "END EFQToolButtonImportar_EFQToolButtonImportar::obten_valor_nodo", 0 );
+    blDebug ( "END EFQToolButtonImportar_EFQToolButtonImportar::obten_valor_nodo", 0 );
 
     return nodo.toElement().text();
 }
@@ -95,7 +95,7 @@ QString EFQToolButtonImportar::obten_valor_nodo ( QString nombre, QDomDocument *
 **/
 QString EFQToolButtonImportar::obten_descuento_factura ( QDomDocument *doc, QList< QMap<QString, QString> > &lista_descuentos )
 {
-    _depura ( "EFQToolButtonImportar_EFQToolButtonImportar::obten_descuento_factura", 0 );
+    blDebug ( "EFQToolButtonImportar_EFQToolButtonImportar::obten_descuento_factura", 0 );
     // Obtenemos el nodo padre
     QDomNodeList lista_padre = doc->elementsByTagName ( "Invoice" );
     QDomNode padre = lista_padre.item ( 0 );
@@ -133,7 +133,7 @@ QString EFQToolButtonImportar::obten_descuento_factura ( QDomDocument *doc, QLis
         nodo1 = nodo1.nextSiblingElement ( "cac:AllowanceCharge" );
     }
 
-    _depura ( "END EFQToolButtonImportar_EFQToolButtonImportar::obten_descuento_factura", 0 );
+    blDebug ( "END EFQToolButtonImportar_EFQToolButtonImportar::obten_descuento_factura", 0 );
 
     return total_descuento.toQString();
 }
@@ -149,7 +149,7 @@ QString EFQToolButtonImportar::obten_descuento_factura ( QDomDocument *doc, QLis
 **/
 void EFQToolButtonImportar::obten_linea_factura ( QDomDocument *doc, QMap<QString, QString> &mapa_lfactura, int i )
 {
-    _depura ( "EFQToolButtonImportar_EFQToolButtonImportar::obten_linea_factura", 0 );
+    blDebug ( "EFQToolButtonImportar_EFQToolButtonImportar::obten_linea_factura", 0 );
     QDomNodeList lista_lineas = doc->elementsByTagName ( "cac:InvoiceLine" );
     QDomNode padre = lista_lineas.item ( i );
     QDomNode tmp;
@@ -195,7 +195,7 @@ void EFQToolButtonImportar::obten_linea_factura ( QDomDocument *doc, QMap<QStrin
 
     mapa_lfactura["idarticulo"] = tmp.toElement().text();
 
-    _depura ( "END EFQToolButtonImportar_EFQToolButtonImportar::obten_linea_factura", 0 );
+    blDebug ( "END EFQToolButtonImportar_EFQToolButtonImportar::obten_linea_factura", 0 );
 }
 
 
@@ -210,7 +210,7 @@ void EFQToolButtonImportar::obten_linea_factura ( QDomDocument *doc, QMap<QStrin
 **/
 QString EFQToolButtonImportar::obten_id_proveedor ( QDomDocument *doc )
 {
-    _depura ( "EFQToolButtonImportar_EFQToolButtonImportar::obten_id_proveedor", 0 );
+    blDebug ( "EFQToolButtonImportar_EFQToolButtonImportar::obten_id_proveedor", 0 );
     // Nos situamos sobre la parte que identifica al vendedor
     QDomNodeList lista_nodos = doc->elementsByTagName ( "cac:SellerParty" );
     // Obtenemos el nodo padre de esta seccion
@@ -222,7 +222,7 @@ QString EFQToolButtonImportar::obten_id_proveedor ( QDomDocument *doc )
     nodo = nodo.firstChildElement ( "cac:PartyIdentification" );
     nodo = nodo.firstChildElement ( "cac:ID" );
 
-    _depura ( "END EFQToolButtonImportar_EFQToolButtonImportar::obten_id_proveedor", 0 );
+    blDebug ( "END EFQToolButtonImportar_EFQToolButtonImportar::obten_id_proveedor", 0 );
 
     return nodo.toElement().text();
 }
@@ -234,7 +234,7 @@ QString EFQToolButtonImportar::obten_id_proveedor ( QDomDocument *doc )
 **/
 void EFQToolButtonImportar::importa_factura_ubl()
 {
-    _depura ( "EFQToolButtonImportar::importa_factura_ubl", 0 );
+    blDebug ( "EFQToolButtonImportar::importa_factura_ubl", 0 );
 
     QString fichero = QFileDialog::getOpenFileName (
                           this,
@@ -280,7 +280,7 @@ void EFQToolButtonImportar::importa_factura_ubl()
     BlDbRecordSet *proveedor = mainCompany() ->loadQuery ( query );
 
     if ( proveedor->numregistros() == 0 ) {
-        _depura ( "El proveedor con CIF " + idProveedor + " no existe en la base de datos. Hay que crearlo antes de importar esta factura.", 2 );
+        blDebug ( "El proveedor con CIF " + idProveedor + " no existe en la base de datos. Hay que crearlo antes de importar esta factura.", 2 );
 
         return;
     }
@@ -346,7 +346,7 @@ void EFQToolButtonImportar::importa_factura_ubl()
         numlineas = i + 1;
 
     if ( numlineas == 0 ) {
-        _depura ( "Esta factura es erronea. No contiene ninguna linea asociada", 2 );
+        blDebug ( "Esta factura es erronea. No contiene ninguna linea asociada", 2 );
         exit ( -1 );
     }
 
@@ -391,7 +391,7 @@ void EFQToolButtonImportar::importa_factura_ubl()
         /// Si no obtenemos resultados cargamos en el cursor articulo los
         /// valores que necesitamos (idarticulo y nomarticulo)
         if ( articulo->numregistros() == 0 ) {
-            _depura ( "El articulo con codigo completo " + mapa_lfactura["idarticulo"] + " no existe en la base de datos. Se importara como articulo generico.", 2 );
+            blDebug ( "El articulo con codigo completo " + mapa_lfactura["idarticulo"] + " no existe en la base de datos. Se importara como articulo generico.", 2 );
 
             /// Obtenemos el codigo de articulo generico
             query = "SELECT valor FROM configuracion WHERE nombre = 'CodArticuloGenerico'";
@@ -467,7 +467,7 @@ void EFQToolButtonImportar::importa_factura_ubl()
 
     fp->setDbValue ( "procesadafacturap", "" );
 
-    _depura ( "END EFQToolButtonImportar::importa_factura_ubl", 0 );
+    blDebug ( "END EFQToolButtonImportar::importa_factura_ubl", 0 );
 }
 
 
@@ -476,7 +476,7 @@ void EFQToolButtonImportar::importa_factura_ubl()
 **/
 void EFQToolButtonImportar::click()
 {
-    _depura ( "EFQToolButtonImportar::click", 0 );
+    blDebug ( "EFQToolButtonImportar::click", 0 );
     importa_factura_ubl();
-    _depura ( "END EFQToolButtonImportar::click", 0 );
+    blDebug ( "END EFQToolButtonImportar::click", 0 );
 }

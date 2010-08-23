@@ -30,10 +30,10 @@
 BcBuscarCentroCoste::BcBuscarCentroCoste ( QWidget *parent, const char * )
         : BlComboBox ( parent )
 {
-    _depura ( "BcBuscarCentroCoste::BcBuscarCentroCoste", 0 );
+    blDebug ( "BcBuscarCentroCoste::BcBuscarCentroCoste", 0 );
     m_cursorcombo = NULL;
     connect ( this, SIGNAL ( activated ( int ) ), this, SLOT ( m_activated ( int ) ) );
-    _depura ( "END BcBuscarCentroCoste::BcBuscarCentroCoste", 0 );
+    blDebug ( "END BcBuscarCentroCoste::BcBuscarCentroCoste", 0 );
 }
 
 
@@ -42,8 +42,8 @@ BcBuscarCentroCoste::BcBuscarCentroCoste ( QWidget *parent, const char * )
 **/
 BcBuscarCentroCoste::~BcBuscarCentroCoste()
 {
-    _depura ( "BcBuscarCentroCoste::~BcBuscarCentroCoste", 0 );
-    _depura ( "END BcBuscarCentroCoste::~BcBuscarCentroCoste", 0 );
+    blDebug ( "BcBuscarCentroCoste::~BcBuscarCentroCoste", 0 );
+    blDebug ( "END BcBuscarCentroCoste::~BcBuscarCentroCoste", 0 );
 }
 
 
@@ -53,12 +53,12 @@ BcBuscarCentroCoste::~BcBuscarCentroCoste()
 **/
 QString BcBuscarCentroCoste::idc_coste()
 {
-    _depura ( "BcBuscarCentroCoste::idc_coste", 0 );
+    blDebug ( "BcBuscarCentroCoste::idc_coste", 0 );
     int index = currentIndex();
     if ( index > 0 ) {
         return ( m_cursorcombo->valor ( "idc_coste", index - 1 ) );
     } else {
-        _depura ( "END BcBuscarCentroCoste::idc_coste", 0 );
+        blDebug ( "END BcBuscarCentroCoste::idc_coste", 0 );
         return "";
     } // end if
 }
@@ -70,8 +70,8 @@ QString BcBuscarCentroCoste::idc_coste()
 **/
 QString BcBuscarCentroCoste::fieldValue()
 {
-    _depura ( "BcBuscarCentroCoste::fieldValue", 0 );
-    _depura ( "END BcBuscarCentroCoste::fieldValue", 0 );
+    blDebug ( "BcBuscarCentroCoste::fieldValue", 0 );
+    blDebug ( "END BcBuscarCentroCoste::fieldValue", 0 );
     return idc_coste();
 }
 
@@ -82,12 +82,12 @@ QString BcBuscarCentroCoste::fieldValue()
 **/
 void BcBuscarCentroCoste::m_activated ( int index )
 {
-    _depura ( "BcBuscarCentroCoste::m_activated", 0 );
+    blDebug ( "BcBuscarCentroCoste::m_activated", 0 );
     if ( index > 0 ) {
         emit ( valueChanged ( m_cursorcombo->valor ( "idc_coste", index - 1 ) ) );
     } else {
         emit ( valueChanged ( "" ) );
-        _depura ( "END BcBuscarCentroCoste::m_activated", 0 );
+        blDebug ( "END BcBuscarCentroCoste::m_activated", 0 );
     } // end if
 }
 
@@ -98,7 +98,7 @@ void BcBuscarCentroCoste::m_activated ( int index )
 **/
 void BcBuscarCentroCoste::setidc_coste ( QString idc_coste )
 {
-    _depura ( "BcBuscarCentroCoste::setidc_coste", 0, idc_coste );
+    blDebug ( "BcBuscarCentroCoste::setidc_coste", 0, idc_coste );
     if ( m_cursorcombo != NULL ) {
         delete m_cursorcombo;
     } // end if
@@ -116,7 +116,7 @@ void BcBuscarCentroCoste::setidc_coste ( QString idc_coste )
         m_cursorcombo->nextRecord();
     } //end while
     setCurrentIndex ( i1 );
-    _depura ( "END BcBuscarCentroCoste::setidc_coste", 0, idc_coste );
+    blDebug ( "END BcBuscarCentroCoste::setidc_coste", 0, idc_coste );
 }
 
 
@@ -126,9 +126,9 @@ void BcBuscarCentroCoste::setidc_coste ( QString idc_coste )
 **/
 void BcBuscarCentroCoste::setFieldValue ( QString idc_coste )
 {
-    _depura ( "BcBuscarCentroCoste::setFieldValue", 0 );
+    blDebug ( "BcBuscarCentroCoste::setFieldValue", 0 );
     setidc_coste ( idc_coste );
-    _depura ( "END BcBuscarCentroCoste::setFieldValue", 0 );
+    blDebug ( "END BcBuscarCentroCoste::setFieldValue", 0 );
 }
 
 /// ===================================================================
@@ -144,9 +144,9 @@ void BcBuscarCentroCoste::setFieldValue ( QString idc_coste )
 BcBuscarCentroCosteDelegate::BcBuscarCentroCosteDelegate ( QWidget *parent )
         : BlComboBox ( parent )
 {
-    _depura ( "BcBuscarCentroCosteDelegate::BcBuscarCentroCosteDelegate", 0 );
+    blDebug ( "BcBuscarCentroCosteDelegate::BcBuscarCentroCosteDelegate", 0 );
     setEditable ( false );
-    _depura ( "END BcBuscarCentroCosteDelegate::BcBuscarCentroCosteDelegate", 0 );
+    blDebug ( "END BcBuscarCentroCosteDelegate::BcBuscarCentroCosteDelegate", 0 );
 }
 
 
@@ -155,8 +155,8 @@ BcBuscarCentroCosteDelegate::BcBuscarCentroCosteDelegate ( QWidget *parent )
 **/
 BcBuscarCentroCosteDelegate::~BcBuscarCentroCosteDelegate()
 {
-    _depura ( "BcBuscarCentroCosteDelegate::~BcBuscarCentroCosteDelegate", 10 );
-    _depura ( "END BcBuscarCentroCosteDelegate::~BcBuscarCentroCosteDelegate", 0 );
+    blDebug ( "BcBuscarCentroCosteDelegate::~BcBuscarCentroCosteDelegate", 10 );
+    blDebug ( "END BcBuscarCentroCosteDelegate::~BcBuscarCentroCosteDelegate", 0 );
 }
 
 
@@ -170,7 +170,7 @@ BcBuscarCentroCosteDelegate::~BcBuscarCentroCosteDelegate()
 **/
 void BcBuscarCentroCosteDelegate::set ( const QString &cod )
 {
-    _depura ( "BcBuscarCentroCosteDelegate::set", 0 );
+    blDebug ( "BcBuscarCentroCosteDelegate::set", 0 );
 
     int index = 0;
 
@@ -187,7 +187,7 @@ void BcBuscarCentroCosteDelegate::set ( const QString &cod )
     delete m_cursorcombo;
     setEditText ( cod );
     setCurrentIndex ( index );
-    _depura ( "END BcBuscarCentroCosteDelegate::set", 0 );
+    blDebug ( "END BcBuscarCentroCosteDelegate::set", 0 );
 }
 
 

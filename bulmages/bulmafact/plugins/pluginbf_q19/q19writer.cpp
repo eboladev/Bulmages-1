@@ -37,10 +37,10 @@
 Q19Writer::Q19Writer ( BfCompany *emp ) : QObject()
 {
 
-	_depura ( "Q19Writer::Q19Writer", 0 );
+	blDebug ( "Q19Writer::Q19Writer", 0 );
 	m_empresa = emp;
 	regex=QRegExp ( "(.{1,40})\\s(.*)",Qt::CaseInsensitive,QRegExp::RegExp2 );
-	_depura ( "END Q19Writer::Q19Writer", 0 );
+	blDebug ( "END Q19Writer::Q19Writer", 0 );
 }
 
 
@@ -49,8 +49,8 @@ Q19Writer::Q19Writer ( BfCompany *emp ) : QObject()
 **/
 Q19Writer::~Q19Writer()
 {
-	_depura ( "Q19Writer::~Q19Writer", 0 );
-	_depura ( "END Q19Writer::~Q19Writer", 0 );
+	blDebug ( "Q19Writer::~Q19Writer", 0 );
+	blDebug ( "END Q19Writer::~Q19Writer", 0 );
 }
 
 
@@ -65,20 +65,20 @@ QWidget *Q19Writer::parentWidget( )
 **/
 void Q19Writer::genera ( BlDbRecordSet  *curcobro, QString fileName , QStringList *idsGenerats)
 {
-      _depura ( "Q19Writer::genera", 0 );
+      blDebug ( "Q19Writer::genera", 0 );
       QString refActual ( "cap rebut" );
       if (fileName.length()==0) {
           fileName = QFileDialog::getSaveFileName ( parentWidget(), _ ( "Fichero de remesa bancaria (Cuaderno 19)" ),
                        "",
                        _ ( "*.q19;;*" ) );
       }
-      _depura("nom de fitxer ",0,fileName);
+      blDebug("nom de fitxer ",0,fileName);
       if (fileName.length()>0) { // else ha apretat cancel?lar
        
 	try
 	{
 		int cobraments=curcobro->numregistros();
-		_depura ( "nom de fitxer ",0,fileName );
+		blDebug ( "nom de fitxer ",0,fileName );
 		BlDbRecordSet  *curbanc;
 		/*
 		http://www.cam.es/1/empresas/servicios/pdf/c19.pdf
@@ -95,7 +95,7 @@ void Q19Writer::genera ( BlDbRecordSet  *curcobro, QString fileName , QStringLis
 
 		*/
 		bool bancUnic = ( curcobro->valor ( "idbanco",0 ) == curcobro->valor ( "idbanco",curcobro->numregistros()-1 ) );
-		_depura ( "bancUnic=",0,bancUnic?"si":"no" );
+		blDebug ( "bancUnic=",0,bancUnic?"si":"no" );
 		QString idbanc ( "" );
 		QFile file;
 		QTextStream out ( &file );
@@ -156,7 +156,7 @@ void Q19Writer::genera ( BlDbRecordSet  *curcobro, QString fileName , QStringLis
 						if ( bancUnic )
 						{
 							file.setFileName ( fileName );
-							_depura ( "creare' ",0,fileName );
+							blDebug ( "creare' ",0,fileName );
 						}
 						else
 						{
@@ -171,7 +171,7 @@ void Q19Writer::genera ( BlDbRecordSet  *curcobro, QString fileName , QStringLis
 							nomNou+="_"+curbanc->valor ( "nombanco" ).replace ( QRegExp ( "[^a-zA-Z0-9_]" ),"-" )
 							        +extensio;
 							file.setFileName ( nomNou );
-							_depura ( "creare' el nom que m'he muntat: ",0,fileName );
+							blDebug ( "creare' el nom que m'he muntat: ",0,fileName );
 						}
 						if ( !file.open ( QIODevice::WriteOnly | QIODevice::Text ) )
 							return;
@@ -239,7 +239,7 @@ void Q19Writer::genera ( BlDbRecordSet  *curcobro, QString fileName , QStringLis
 	}
 	catch ( QString e )
 	{
-		_depura ( "Error ",0,refActual+":"+e );
+		blDebug ( "Error ",0,refActual+":"+e );
 		QMessageBox::critical ( parentWidget(),_ ( "Remesa mal generada" ),_( "%2\n.El fichero de remesa bancaria generado no es aprovechable. Ha fallado la generacion en el recibo con referencia %1" ).arg ( refActual ).arg ( e ) );
                 if (idsGenerats) 
                 {
@@ -247,7 +247,7 @@ void Q19Writer::genera ( BlDbRecordSet  *curcobro, QString fileName , QStringLis
                 }
 	}
       }
-	_depura ( "END Q19Writer::genera", 0 );
+	blDebug ( "END Q19Writer::genera", 0 );
 }
 
 QString Q19Writer::nifOrdenante ( void )
@@ -331,7 +331,7 @@ cada Entidad.
 **/
 void Q19Writer::cabeceraPresentador ( QTextStream &out, QString sufijo , BlDbRecordSet *curbanco )
 {
-	_depura ( "Q19Writer::cabeceraPresentador", 0 );
+	blDebug ( "Q19Writer::cabeceraPresentador", 0 );
 
 	/// CABECERA PRESENTADOR
 	/// Generamos la cabecera presentador
@@ -364,7 +364,7 @@ void Q19Writer::cabeceraPresentador ( QTextStream &out, QString sufijo , BlDbRec
 	<< QString ( 14, ' ' )
 	/// Hi ha d'haver salts de linia o no?. Un fitxer d'exemple que tinc en porta.
 	<< "\x0a";
-	_depura ( "END Q19Writer::cabeceraPresentador", 0 );
+	blDebug ( "END Q19Writer::cabeceraPresentador", 0 );
 }
 
 
@@ -376,7 +376,7 @@ void Q19Writer::cabeceraPresentador ( QTextStream &out, QString sufijo , BlDbRec
 **/
 void Q19Writer::cabeceraOrdenante ( QTextStream &out, QString sufijo , BlDbRecordSet *curbanco, QDate fechaCargo )
 {
-	_depura ( "Q19Writer::cabeceraOrdenante", 0 );
+	blDebug ( "Q19Writer::cabeceraOrdenante", 0 );
 
 	/// GENERAMOS LA CABECERA ORDENANTE
 	/// REGISTRO DEL ORDENANTE
@@ -448,7 +448,7 @@ QString Q19Writer::import ( BlFixed f, int longitud )
 **/
 int Q19Writer::cobroQ19 ( QTextStream &out, QString sufijo,   BlDbRecordSet *curcobro )
 {
-	_depura ( "Q19Writer::cobroQ19", 0 );
+	blDebug ( "Q19Writer::cobroQ19", 0 );
 	QString bancocliente = curcobro->valor ( "bancocliente" ).remove ( QRegExp ( "[^0-9]" ) );
 	if ( bancocliente.size() != 20 )
 	{
@@ -509,7 +509,7 @@ int Q19Writer::cobroQ19 ( QTextStream &out, QString sufijo,   BlDbRecordSet *cur
 			// i==0 -> segon, tercer, quart camp de concepte, i==2 ->  cinque, sise, sete camp de concepte ...
 			for ( int numCamp = ( ( i-1 ) *3 ) + 2; numCamp < i*3+2; numCamp++ )
 			{
-				_depura ( "opcional inici ",0," numCamp="+QString::number ( numCamp )
+				blDebug ( "opcional inici ",0," numCamp="+QString::number ( numCamp )
 				          +" concepte='"+concepte+"'" );
 				bool finalLinia= ( ( concepte.length() >40 ) && ( numCamp % 2 ==0 ) );
 				if ( finalLinia ) // cada camp es mitja linia, a final de linia partim per espai en blanc
@@ -522,14 +522,14 @@ int Q19Writer::cobroQ19 ( QTextStream &out, QString sufijo,   BlDbRecordSet *cur
 					} // else hi ha mes de 40 caracters sense un espai, tractem com si fos principi de linia
 
 				}
-				_depura ( "opcional mig ",0," numCamp="+QString::number ( numCamp )
+				blDebug ( "opcional mig ",0," numCamp="+QString::number ( numCamp )
 				          +" concepte='"+concepte+"'" );
 
 				if ( !finalLinia )  {
 					out << concepte.leftJustified ( 40, ' ',true );
 					concepte = concepte.mid ( 40 );
 				} // end if
-				_depura ( "opcional fi ",0," numCamp="+QString::number ( numCamp )
+				blDebug ( "opcional fi ",0," numCamp="+QString::number ( numCamp )
 				          +" concepte='"+concepte+"'" );
 
 			} // fi for camps del registre
@@ -540,7 +540,7 @@ int Q19Writer::cobroQ19 ( QTextStream &out, QString sufijo,   BlDbRecordSet *cur
 		} // fi else registre opcional
 
 	} //fi for i registres del rebut
-	_depura ( "END Q19Writer::cobroQ19", 0 );
+	blDebug ( "END Q19Writer::cobroQ19", 0 );
 	return i;
 }
 
@@ -556,7 +556,7 @@ int Q19Writer::cobroQ19 ( QTextStream &out, QString sufijo,   BlDbRecordSet *cur
 void Q19Writer::totalOrdenante ( QTextStream &out,  QString sufijo , BlDbRecordSet *curbanco,
                                  BlFixed importes, int rebuts, int registros )
 {
-	_depura ( "Q19Writer::totalOrdenante", 0 );
+	blDebug ( "Q19Writer::totalOrdenante", 0 );
 	/// CABECERA TOTAL ORDENANTE
 	/// Registro en Euros. Longitud: 2
 	out << "58" // pag. 28 diu 08, pag. 23 diu 58
@@ -588,7 +588,7 @@ void Q19Writer::totalOrdenante ( QTextStream &out,  QString sufijo , BlDbRecordS
 	/// Espacio libre Longitud: 18
 	<< QString ( 20+18, ' ' )
 	<<"\x0a";
-	_depura ( "END Q19Writer::totalOrdenante", 0 );
+	blDebug ( "END Q19Writer::totalOrdenante", 0 );
 
 }
 
@@ -596,7 +596,7 @@ void Q19Writer::totalOrdenante ( QTextStream &out,  QString sufijo , BlDbRecordS
 void Q19Writer::totalPresentador ( QTextStream &out,  QString sufijo , BlDbRecordSet *curbanco,
                                    BlFixed importes, int rebuts, int registros , int ordenants )
 {
-	_depura ( "Q19Writer::totalPresentador", 0 );
+	blDebug ( "Q19Writer::totalPresentador", 0 );
 	/// CABECERA TOTAL ORDENANTE
 	/// Registro en Euros. Longitud: 2
 	out << "59" //pag. 24 diu 59,pag. 29 diu 09
@@ -631,7 +631,7 @@ void Q19Writer::totalPresentador ( QTextStream &out,  QString sufijo , BlDbRecor
 	/// Espacio libre Longitud: 18
 	<< QString ( 20+18, ' ' )
 	<<"\x0a";
-	_depura ( "END Q19Writer::totalPresentador", 0 );
+	blDebug ( "END Q19Writer::totalPresentador", 0 );
 
 }
 

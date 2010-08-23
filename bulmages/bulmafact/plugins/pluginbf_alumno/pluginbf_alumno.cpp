@@ -38,8 +38,8 @@ AlumnosList *g_alumnosList = NULL;
 **/
 MyPlugProf::MyPlugProf()
 {
-    _depura ( "MyPlugProf::MyPlugProf", 0 );
-    _depura ( "END MyPlugProf::MyPlugProf", 0 );
+    blDebug ( "MyPlugProf::MyPlugProf", 0 );
+    blDebug ( "END MyPlugProf::MyPlugProf", 0 );
 }
 
 ///
@@ -47,8 +47,8 @@ MyPlugProf::MyPlugProf()
 **/
 MyPlugProf::~MyPlugProf()
 {
-    _depura ( "MyPlugProf::~MyPlugProf", 0 );
-    _depura ( "END MyPlugProf::~MyPlugProf", 0 );
+    blDebug ( "MyPlugProf::~MyPlugProf", 0 );
+    blDebug ( "END MyPlugProf::~MyPlugProf", 0 );
 }
 
 ///
@@ -56,14 +56,14 @@ MyPlugProf::~MyPlugProf()
 **/
 void MyPlugProf::elslot()
 {
-    _depura ( "MyPlugProf::elslot", 0 );
+    blDebug ( "MyPlugProf::elslot", 0 );
     
     if ( g_alumnosList ) {
         g_alumnosList->hide();
         g_alumnosList->show();
     } // end if
     
-    _depura ( "END MyPlugProf::elslot", 0 );
+    blDebug ( "END MyPlugProf::elslot", 0 );
 }
 
 ///
@@ -71,13 +71,13 @@ void MyPlugProf::elslot()
 **/
 void MyPlugProf::elslot1()
 {
-    _depura ( "MyPlugProf::elslot1", 0 );
+    blDebug ( "MyPlugProf::elslot1", 0 );
     
     AlumnoView * bud = new AlumnoView ( ( BfCompany * ) mainCompany(), NULL );
     mainCompany()->m_pWorkspace->addWindow ( bud );
     bud->show();
     
-    _depura ( "END MyPlugProf::elslot1", 0 );
+    blDebug ( "END MyPlugProf::elslot1", 0 );
 }
 
 ///
@@ -85,13 +85,13 @@ void MyPlugProf::elslot1()
 **/
 void MyPlugProf::elslot2()
 {
-    _depura ( "MyPlugProf::elslot2", 0 );
+    blDebug ( "MyPlugProf::elslot2", 0 );
     
     ListCuotasPorAlumnoView * bud = new ListCuotasPorAlumnoView ( ( BfCompany * ) mainCompany(), NULL );
     mainCompany()->m_pWorkspace->addWindow ( bud );
     bud->show();
     
-    _depura ( "END MyPlugProf::elslot2", 0 );
+    blDebug ( "END MyPlugProf::elslot2", 0 );
 }
 
 ///
@@ -99,11 +99,11 @@ void MyPlugProf::elslot2()
 **/
 void MyPlugProf::elslot3()
 {
-    _depura ( "MyPlugProf::elslot3", 0 );
+    blDebug ( "MyPlugProf::elslot3", 0 );
     ClaseView * bud = new ClaseView ( ( BfCompany * ) mainCompany(), NULL );
     mainCompany() ->m_pWorkspace->addWindow ( bud );
     bud->show();
-    _depura ( "END MyPlugProf::elslot3", 0 );
+    blDebug ( "END MyPlugProf::elslot3", 0 );
 }
 
 
@@ -113,7 +113,7 @@ void MyPlugProf::elslot3()
 **/
 void MyPlugProf::inicializa ( BfBulmaFact *bges )
 {
-    _depura ( "MyPlugProf::inicializa", 0 );
+    blDebug ( "MyPlugProf::inicializa", 0 );
 
     if ( bges->company()->hasTablePrivilege ( "alumno", "SELECT" ) ) {
 
@@ -169,7 +169,7 @@ void MyPlugProf::inicializa ( BfBulmaFact *bges )
 
     } // end if
     
-    _depura ( "END MyPlugProf::inicializa", 0 );
+    blDebug ( "END MyPlugProf::inicializa", 0 );
 }
 
 ///
@@ -179,7 +179,7 @@ void MyPlugProf::inicializa ( BfBulmaFact *bges )
 **/
 int entryPoint ( BfBulmaFact *bges )
 {
-    _depura ( "Punto de entrada del plugin de alumnos\n", 0 );
+    blDebug ( "Punto de entrada del plugin de alumnos\n", 0 );
 
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale ( LC_ALL, "" );
@@ -188,14 +188,14 @@ int entryPoint ( BfBulmaFact *bges )
     MyPlugProf *plug = new MyPlugProf();
     plug->inicializa ( bges );
     
-    _depura ( "END Punto de entrada del plugin de alumnos\n", 0 );
+    blDebug ( "END Punto de entrada del plugin de alumnos\n", 0 );
     
     return 0;
 }
 
 int BfCompany_createMainWindows_Post ( BfCompany *comp )
 {
-    _depura ( "BfCompany_createMainWindows_Post", 0 );
+    blDebug ( "BfCompany_createMainWindows_Post", 0 );
 
     if ( comp->hasTablePrivilege ( "alumno", "SELECT" ) ) {
         g_alumnosList = new AlumnosList ( comp, NULL );
@@ -203,17 +203,17 @@ int BfCompany_createMainWindows_Post ( BfCompany *comp )
         g_alumnosList->hide();
     } // end if
     
-    _depura ( "END BfCompany_createMainWindows_Post", 0 );
+    blDebug ( "END BfCompany_createMainWindows_Post", 0 );
 
     return 0;
 }
 
 int BfSubForm_pressedAsterisk ( BfSubForm *sub )
 {
-    _depura ( "BfSubForm_pressedAsterisk" );
+    blDebug ( "BfSubForm_pressedAsterisk" );
 
     if ( sub->m_campoactual->nomcampo() != "nombrealumno1" ) {
-        _depura ( "END BfSubForm::pressedAsterisk", 0 );
+        blDebug ( "END BfSubForm::pressedAsterisk", 0 );
         return 0;
     } // end if
 
@@ -233,7 +233,7 @@ int BfSubForm_pressedAsterisk ( BfSubForm *sub )
 
     /// Si no tenemos un idarticulo salimos ya que significa que no se ha seleccionado ninguno.
     if ( idAlumno == "" ) {
-        _depura ( "END BfSubForm::pressedAsterisk", 0 );
+        blDebug ( "END BfSubForm::pressedAsterisk", 0 );
         return 0;
     } // end if
 
@@ -245,7 +245,7 @@ int BfSubForm_pressedAsterisk ( BfSubForm *sub )
     
     delete cur;
     
-    _depura ( "END BfSubForm_pressedAsterisk" );
+    blDebug ( "END BfSubForm_pressedAsterisk" );
 
     return 0;
 }
@@ -267,8 +267,8 @@ int BfSubForm_pressedAsterisk ( BfSubForm *sub )
 **/
 MyPlugAl1::MyPlugAl1 ( BlSubForm *parent ) : QObject ( parent )
 {
-    _depura ( "MyPlugAl1::MyPlugAl1", 0 );
-    _depura ( "END MyPlugAl1::MyPlugAl1", 0 );
+    blDebug ( "MyPlugAl1::MyPlugAl1", 0 );
+    blDebug ( "END MyPlugAl1::MyPlugAl1", 0 );
 }
 
 ///
@@ -276,8 +276,8 @@ MyPlugAl1::MyPlugAl1 ( BlSubForm *parent ) : QObject ( parent )
 **/
 MyPlugAl1::~MyPlugAl1()
 {
-    _depura ( "MyPlugAl1::~MyPlugAl1", 0 );
-    _depura ( "END MyPlugAl1::~MyPlugAl1", 0 );
+    blDebug ( "MyPlugAl1::~MyPlugAl1", 0 );
+    blDebug ( "END MyPlugAl1::~MyPlugAl1", 0 );
 }
 
 
@@ -287,7 +287,7 @@ MyPlugAl1::~MyPlugAl1()
 **/
 void MyPlugAl1::s_pintaMenu ( QMenu *menu )
 {
-    _depura ( "MyPlugAl1::s_pintaMenu", 0 );
+    blDebug ( "MyPlugAl1::s_pintaMenu", 0 );
     BfSubForm *sub = ( BfSubForm * ) parent();
     BlSubFormHeader *header = sub->header ( "nombrealumno1" );
     if (!header) 
@@ -301,7 +301,7 @@ void MyPlugAl1::s_pintaMenu ( QMenu *menu )
             menu->addAction ( QIcon ( ":/ImgGestionAula/icons/alumno-list.png" ), _ ( "Seleccionar alumno" ) );
         } // end if
     } // end if
-    _depura ( "END MyPlugAl1::s_pintaMenu", 0 );
+    blDebug ( "END MyPlugAl1::s_pintaMenu", 0 );
 }
 
 
@@ -311,7 +311,7 @@ void MyPlugAl1::s_pintaMenu ( QMenu *menu )
 **/
 void MyPlugAl1::s_trataMenu ( QAction *action )
 {
-    _depura ( "MyPlugAl1::s_trataMenu", 0 );
+    blDebug ( "MyPlugAl1::s_trataMenu", 0 );
     BfSubForm *sub = ( BfSubForm * ) parent();
     if ( action->text() == _ ( "Editar alumno" ) ) {
         QString idalumno = sub->dbValue ( "idalumno" );
@@ -323,7 +323,7 @@ void MyPlugAl1::s_trataMenu ( QAction *action )
         nuevoAlumno();
     } // end if
 
-    _depura ( "END MyPlugAl1::s_trataMenu", 0 );
+    blDebug ( "END MyPlugAl1::s_trataMenu", 0 );
 }
 
 
@@ -332,19 +332,19 @@ void MyPlugAl1::s_trataMenu ( QAction *action )
 **/
 void MyPlugAl1::editarAlumno ( QString idalumno )
 {
-    _depura ( "MyPlugAl1::editarAlumno", 0 );
+    blDebug ( "MyPlugAl1::editarAlumno", 0 );
     BlSubForm * subf = ( BlSubForm * ) parent();
     AlumnoView * art = new AlumnoView ( ( BfCompany * ) subf->mainCompany(), 0 );
     subf->mainCompany() ->m_pWorkspace->addWindow ( art );
     /// Si la carga no va bien entonces terminamos.
     if ( art->cargar ( idalumno ) ) {
         delete art;
-        _depura ( "END AlumnosList::editar", 0, "Carga Erronea" );
+        blDebug ( "END AlumnosList::editar", 0, "Carga Erronea" );
         return;
     } // end if
     art->hide();
     art->show();
-    _depura ( "END MyPlugAl1::editarAlumno", 0 );
+    blDebug ( "END MyPlugAl1::editarAlumno", 0 );
 }
 
 
@@ -354,7 +354,7 @@ void MyPlugAl1::editarAlumno ( QString idalumno )
 **/
 void MyPlugAl1::nuevoAlumno( )
 {
-    _depura ( "MyPlugAl1::editarAlumno", 0 );
+    blDebug ( "MyPlugAl1::editarAlumno", 0 );
     BlSubForm * subf = ( BlSubForm * ) parent();
     AlumnoView * art = new AlumnoView ( ( BfCompany * ) subf->mainCompany(), 0 );
     subf->mainCompany() ->m_pWorkspace->addWindow ( art );
@@ -372,7 +372,7 @@ void MyPlugAl1::nuevoAlumno( )
     } // end if
     delete art;    
     
-    _depura ( "END MyPlugAl1::editarAlumno", 0 );
+    blDebug ( "END MyPlugAl1::editarAlumno", 0 );
 }
 
 
@@ -381,7 +381,7 @@ void MyPlugAl1::nuevoAlumno( )
 **/
 void MyPlugAl1::seleccionarAlumno ( BfSubForm *sub )
 {
-    _depura ( "MyPlugAl1::editarAlumno", 0 );
+    blDebug ( "MyPlugAl1::editarAlumno", 0 );
     
     if (!sub) sub= (BfSubForm *) parent();
     
@@ -397,7 +397,7 @@ void MyPlugAl1::seleccionarAlumno ( BfSubForm *sub )
 
     /// Si no tenemos un idalumno salimos ya que significa que no se ha seleccionado ninguno.
     if ( idAlumno == "" ) {
-        _depura ( "END BfSubForm::pressedAsterisk", 0 );
+        blDebug ( "END BfSubForm::pressedAsterisk", 0 );
         return;
     } // end if
 
@@ -408,7 +408,7 @@ void MyPlugAl1::seleccionarAlumno ( BfSubForm *sub )
     } // end if
     delete cur;
 
-    _depura ( "END MyPlugAl1::editarAlumno", 0 );
+    blDebug ( "END MyPlugAl1::editarAlumno", 0 );
 }
 
 
@@ -419,11 +419,11 @@ void MyPlugAl1::seleccionarAlumno ( BfSubForm *sub )
 **/
 int BlSubForm_BlSubForm_Post ( BlSubForm *sub )
 {
-    _depura ( "BlSubForm_BlSubForm_Post", 0 );
+    blDebug ( "BlSubForm_BlSubForm_Post", 0 );
     MyPlugAl1 *subformods = new MyPlugAl1 ( sub );
     sub->QObject::connect ( sub, SIGNAL ( pintaMenu ( QMenu * ) ), subformods, SLOT ( s_pintaMenu ( QMenu * ) ) );
     sub->QObject::connect ( sub, SIGNAL ( trataMenu ( QAction * ) ), subformods, SLOT ( s_trataMenu ( QAction * ) ) );
-    _depura ( "END BlSubForm_BlSubForm_Post", 0 );
+    blDebug ( "END BlSubForm_BlSubForm_Post", 0 );
     return 0;
 }
 
@@ -436,7 +436,7 @@ int BlSubForm_BlSubForm_Post ( BlSubForm *sub )
 \return
 **/
 int BlSubForm_preparaMenu ( BlSubForm *sub ) {
-    _depura ( "BlSubForm_preparaMenu", 0 );
+    blDebug ( "BlSubForm_preparaMenu", 0 );
 
     BlSubFormHeader *header = sub->header ( "nombrealumno1" );
     if (!header) 
@@ -474,7 +474,7 @@ int BlSubForm_preparaMenu ( BlSubForm *sub ) {
     } // end if
     
 
-    _depura ( "END BlSubForm_preparaMenu", 0 );
+    blDebug ( "END BlSubForm_preparaMenu", 0 );
     return 0;
 }
 

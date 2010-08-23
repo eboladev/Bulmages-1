@@ -50,7 +50,7 @@
 ArticuloView::ArticuloView ( BfCompany *comp, QWidget *parent )
         : BfForm ( comp, parent )
 {
-    _depura ( "ArticuloView::ArticuloView", 0 );
+    blDebug ( "ArticuloView::ArticuloView", 0 );
     setAttribute ( Qt::WA_DeleteOnClose );
     try {
         setupUi ( this );
@@ -116,7 +116,7 @@ ArticuloView::ArticuloView ( BfCompany *comp, QWidget *parent )
     } catch ( ... ) {
         mensajeInfo ( _ ( "Error al crear el articulo" ) );
     } // end try
-    _depura ( "END ArticuloView::ArticuloView", 0 );
+    blDebug ( "END ArticuloView::ArticuloView", 0 );
 }
 
 
@@ -125,8 +125,8 @@ ArticuloView::ArticuloView ( BfCompany *comp, QWidget *parent )
 **/
 ArticuloView::~ArticuloView()
 {
-    _depura ( "ArticuloView::~ArticuloView", 0 );
-    _depura ( "END ArticuloView::~ArticuloView", 0 );
+    blDebug ( "ArticuloView::~ArticuloView", 0 );
+    blDebug ( "END ArticuloView::~ArticuloView", 0 );
 }
 
 
@@ -137,7 +137,7 @@ ArticuloView::~ArticuloView()
 **/
 void ArticuloView::pintarPost()
 {
-    _depura ( "ArticuloView::pintar", 0 );
+    blDebug ( "ArticuloView::pintar", 0 );
 
     /// Comprueba que exista la imagen del articulo y sino carga la imagen por defecto para indicar
     /// que el articulo no tiene imagen asociada.
@@ -156,7 +156,7 @@ void ArticuloView::pintarPost()
         mui_imagen->setPixmap ( QPixmap ( g_confpr->valor ( CONF_PROGDATA ) + "images/logopeq.png" ) );
     } // end if
 
-    _depura ( "END ArticuloView::pintar", 0 );
+    blDebug ( "END ArticuloView::pintar", 0 );
 }
 
 
@@ -169,7 +169,7 @@ void ArticuloView::pintarPost()
 **/
 int ArticuloView::cargarPost ( QString idarticulo )
 {
-    _depura ( "ArticuloView::cargar", 0 );
+    blDebug ( "ArticuloView::cargar", 0 );
 
     /// Disparamos los plugins.
     int res = g_plugins->lanza ( "ArticuloView_cargar", this );
@@ -180,7 +180,7 @@ int ArticuloView::cargarPost ( QString idarticulo )
     /// Cargamos los componentes.
     m_componentes->cargar ( idarticulo );
 
-    _depura ( "END ArticuloView::cargar", 0 );
+    blDebug ( "END ArticuloView::cargar", 0 );
     return 0;
 }
 
@@ -194,7 +194,7 @@ int ArticuloView::cargarPost ( QString idarticulo )
 **/
 void ArticuloView::on_mui_codigocompletoarticulo_editingFinished()
 {
-    _depura ( "ArticuloView::on_m_codigocompletoarticulo_editingFinished", 0 );
+    blDebug ( "ArticuloView::on_m_codigocompletoarticulo_editingFinished", 0 );
 
     if ( mui_codigocompletoarticulo->text() == dbValue ( "codigocompletoarticulo" ) ) {
         return;
@@ -206,7 +206,7 @@ void ArticuloView::on_mui_codigocompletoarticulo_editingFinished()
         cargar ( cur->valor ( "idarticulo" ) );
     } // end if
     delete cur;
-    _depura ( "END ArticuloView::on_m_codigocompletoarticulo_editingFinished", 0 );
+    blDebug ( "END ArticuloView::on_m_codigocompletoarticulo_editingFinished", 0 );
 }
 
 
@@ -221,7 +221,7 @@ void ArticuloView::on_mui_codigocompletoarticulo_editingFinished()
 **/
 int ArticuloView::guardarPost()
 {
-    _depura ( "ArticuloView::guardarPost", 0 );
+    blDebug ( "ArticuloView::guardarPost", 0 );
     /// Guardamos la imagen, si es que existe.
     if ( !m_archivoimagen.isEmpty() ) {
         BlDbRecordSet * cur1 = mainCompany() ->loadQuery ( "SELECT codigocompletoarticulo FROM articulo WHERE idarticulo = " + dbValue ( "idarticulo" ) );
@@ -244,7 +244,7 @@ int ArticuloView::guardarPost()
     /// Disparamos los plugins
     g_plugins->lanza ( "ArticuloView_guardar_post", this );
 
-    _depura ( "END ArticuloView::guardarPost", 0 );
+    blDebug ( "END ArticuloView::guardarPost", 0 );
     return 0;
 
 }
@@ -264,9 +264,9 @@ int ArticuloView::guardarPost()
 **/
 int ArticuloView::borrarPre()
 {
-    _depura ( "ArticuloView::borrar", 0 );
+    blDebug ( "ArticuloView::borrar", 0 );
     m_componentes->borrar();
-    _depura ( "END ArticuloView::borrar", 0 );
+    blDebug ( "END ArticuloView::borrar", 0 );
     return 0;
 }
 
@@ -279,7 +279,7 @@ int ArticuloView::borrarPre()
 **/
 void ArticuloView::on_mui_cambiarimagen_clicked()
 {
-    _depura ( "ArticuloView::on_mui_cambiarimagen_clicked()", 0 );
+    blDebug ( "ArticuloView::on_mui_cambiarimagen_clicked()", 0 );
     QPixmap imagen;
 
     m_archivoimagen = QFileDialog::getOpenFileName (
@@ -300,7 +300,7 @@ void ArticuloView::on_mui_cambiarimagen_clicked()
         mui_imagen->setPixmap ( imagen );
     } // end if
 
-    _depura ( "END ArticuloView::on_mui_cambiarimagen_clicked()", 0 );
+    blDebug ( "END ArticuloView::on_mui_cambiarimagen_clicked()", 0 );
 }
 
 
@@ -337,7 +337,7 @@ void ArticuloView::on_mui_borrarimagen_clicked()
     Solo tiene en consideracion valores numericos para estos articulos.
 */
 void ArticuloView::on_mui_idfamilia_valueChanged(QString) {
-    _depura("ArticuloView::on_mui_idfamilia_lostFocus");
+    blDebug("ArticuloView::on_mui_idfamilia_lostFocus");
     if ( mui_codarticulo->text().isEmpty() && !mui_idfamilia->id().isEmpty()) {
         QString query = "select coalesce(max(codarticulo::integer),0) +1 as maximo, coalesce(max(length(codarticulo)), 4) AS long from articulo where codarticulo similar to '[0-9]+' AND idfamilia = " + mui_idfamilia->id();
 
@@ -351,7 +351,7 @@ void ArticuloView::on_mui_idfamilia_valueChanged(QString) {
         delete cur;
         mui_codarticulo->selectAll();
     } // end if
-    _depura("END ArticuloView::on_mui_idfamilia_lostFocus");
+    blDebug("END ArticuloView::on_mui_idfamilia_lostFocus");
 }
 
 

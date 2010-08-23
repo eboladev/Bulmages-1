@@ -35,10 +35,10 @@ ApunteContableView *g_ap = NULL;
 **/
 MyPlugArt::MyPlugArt( BfBulmaFact *bges) 
 {
-    _depura ( "MyPlugArt::MyPlugArt", 0 );
+    blDebug ( "MyPlugArt::MyPlugArt", 0 );
     setMainCompany(bges->company());
     m_bges = bges;
-    _depura ( "END MyPlugArt::MyPlugArt", 0 );
+    blDebug ( "END MyPlugArt::MyPlugArt", 0 );
 }
 
 
@@ -47,8 +47,8 @@ MyPlugArt::MyPlugArt( BfBulmaFact *bges)
 **/
 MyPlugArt::~MyPlugArt()
 {
-    _depura ( "MyPlugArt::~MyPlugArt", 0 );
-    _depura ( "END MyPlugArt::~MyPlugArt", 0 );
+    blDebug ( "MyPlugArt::~MyPlugArt", 0 );
+    blDebug ( "END MyPlugArt::~MyPlugArt", 0 );
 }
 
 ///
@@ -56,11 +56,11 @@ MyPlugArt::~MyPlugArt()
 **/
 void MyPlugArt::elslot1()
 {
-    _depura ( "MyPlugArt::elslot1", 0 );
+    blDebug ( "MyPlugArt::elslot1", 0 );
     PresupuestoContableList *pag = new PresupuestoContableList ( ( BfCompany * ) mainCompany(), 0 );
     mainCompany() ->m_pWorkspace->addWindow ( pag );
     pag->show();
-    _depura ( "END MyPlugArt::elslot1", 0 );
+    blDebug ( "END MyPlugArt::elslot1", 0 );
 }
 
 
@@ -69,10 +69,10 @@ void MyPlugArt::elslot1()
 **/
 void MyPlugArt::elslot2()
 {
-    _depura ( "MyPlugArt::elslot3", 0 );
+    blDebug ( "MyPlugArt::elslot3", 0 );
     g_ap->hide();
     g_ap->show();
-    _depura ( "END MyPlugArt::elslot3", 0 );
+    blDebug ( "END MyPlugArt::elslot3", 0 );
 }
 
 
@@ -82,11 +82,11 @@ void MyPlugArt::elslot2()
 **/
 void MyPlugArt::elslot3()
 {
-    _depura ( "MyPlugArt::elslot3", 0 );
+    blDebug ( "MyPlugArt::elslot3", 0 );
     PartidasView *pag = new PartidasView ( ( BfCompany * ) mainCompany(), 0, FALSE );
     mainCompany() ->m_pWorkspace->addWindow ( pag );
     pag->show();
-    _depura ( "END MyPlugArt::elslot3", 0 );
+    blDebug ( "END MyPlugArt::elslot3", 0 );
 }
 
 
@@ -97,7 +97,7 @@ void MyPlugArt::elslot3()
 **/
 void MyPlugArt::inicializa ( ) 
 {
-    _depura ( "MyPlugArt::inicializa", 0 );
+    blDebug ( "MyPlugArt::inicializa", 0 );
 
     if ( m_bges->company()->hasTablePrivilege ( "partida", "SELECT" ) ) {
 
@@ -131,7 +131,7 @@ void MyPlugArt::inicializa ( )
         connect ( tfam2, SIGNAL ( activated() ), this, SLOT ( elslot1() ) );
 
      }// end if
-    _depura ( "END MyPlugArt::inicializa", 0 );
+    blDebug ( "END MyPlugArt::inicializa", 0 );
 }
 
 
@@ -145,7 +145,7 @@ void MyPlugArt::inicializa ( )
 **/
 int entryPoint ( BfBulmaFact *bges )
 {
-    _depura ( "Punto de Entrada del plugin de MiniContabilidad\n", 0 );
+    blDebug ( "Punto de Entrada del plugin de MiniContabilidad\n", 0 );
 
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale ( LC_ALL, "" );
@@ -213,7 +213,7 @@ int Busqueda_on_mui_buscar_clicked ( BlSearchWidget *busq )
 
 int BlSubFormDelegate_createEditor ( BlSubFormDelegate *bl )
 {
-    _depura ( "pluginbf_minicontabilidad::BlSubFormDelegate_createEditor", 0 );
+    blDebug ( "pluginbf_minicontabilidad::BlSubFormDelegate_createEditor", 0 );
     int ret = 0;
     if ( g_nomcampo == "codigocompletopartida"  ) {
         BlDbCompleterComboBox * editor = new BlDbCompleterComboBox ( g_editor );
@@ -225,7 +225,7 @@ int BlSubFormDelegate_createEditor ( BlSubFormDelegate *bl )
         g_plugParams =  editor;
         ret = -1;
     } // end if
-    _depura ( "END pluginbf_minicontabilidad::BlSubFormDelegate_createEditor", 0 );
+    blDebug ( "END pluginbf_minicontabilidad::BlSubFormDelegate_createEditor", 0 );
 
     return ret;
 }
@@ -235,7 +235,7 @@ int BlSubFormDelegate_createEditor ( BlSubFormDelegate *bl )
 
 int BlSubFormDelegate_setModelData ( BlSubFormDelegate *bl )
 {
-    _depura ( "pluginbf_minicontabilidad::BlSubFormDelegate_setModelData", 0 );
+    blDebug ( "pluginbf_minicontabilidad::BlSubFormDelegate_setModelData", 0 );
     int ret = 0;
     if ( g_editor->objectName() == "EditCodigoCompletoPartida" ) {
         BlDbCompleterComboBox * comboBox = ( BlDbCompleterComboBox * ) g_editor;
@@ -244,14 +244,14 @@ int BlSubFormDelegate_setModelData ( BlSubFormDelegate *bl )
         g_model->setData ( g_index, value );
         ret = -1;
     } // end if
-    _depura ( "END pluginbf_minicontabilidad::BlSubFormDelegate_setModelData", 0 );
+    blDebug ( "END pluginbf_minicontabilidad::BlSubFormDelegate_setModelData", 0 );
     return ret;
 }
 
 
 int BlSubFormDelegate_setEditorData ( BlSubFormDelegate *bl )
 {
-    _depura ( "pluginbf_minicontabilidad::BlSubFormDelegate_setEditorData", 0 );
+    blDebug ( "pluginbf_minicontabilidad::BlSubFormDelegate_setEditorData", 0 );
     int ret = 0;
     if ( g_editor->objectName() == "EditCodigoCompletoPartida"  ) {
         QString value = g_index.model() ->data ( g_index, Qt::DisplayRole ).toString();
@@ -259,14 +259,14 @@ int BlSubFormDelegate_setEditorData ( BlSubFormDelegate *bl )
         comboBox->addItem ( value );
         ret = -1;
     } // end if
-    _depura ( "END pluginbf_minicontabilidad::BlSubFormDelegate_setEditorData", 0 );
+    blDebug ( "END pluginbf_minicontabilidad::BlSubFormDelegate_setEditorData", 0 );
     return ret;
 }
 
 
 int BlSubForm_editFinished ( BlSubForm *sub )
 {
-    _depura ( "pluginbf_minicontabilidad::BlSubForm_editFinished", 0 );
+    blDebug ( "pluginbf_minicontabilidad::BlSubForm_editFinished", 0 );
     if ( sub->m_campoactual->nomcampo() == "codigocompletopartida" ) {
 	QString query = "SELECT idpartida, nombrepartida, codigocompletopartida FROM partida WHERE upper (codigocompletopartida) LIKE upper('" + sub->m_campoactual->text() + "%')";
 
@@ -278,14 +278,14 @@ int BlSubForm_editFinished ( BlSubForm *sub )
         } // end if
         delete cur;
     } // end if
-    _depura ( "END pluginbf_minicontabilidad::BlSubForm_editFinished", 0 );
+    blDebug ( "END pluginbf_minicontabilidad::BlSubForm_editFinished", 0 );
     return 0;
 }
 
 
 /*
 int BlDbCompleterComboBox_textChanged (BlDbCompleterComboBox *bl) {
-  _depura("BlDbCompleterComboBox_textChanged", 0);
+  blDebug("BlDbCompleterComboBox_textChanged", 0);
 
         if ( bl->m_entrada.size() >= 3 && bl->m_tabla == "alumno") {
                 QString cadwhere = "";
@@ -319,11 +319,11 @@ int BlDbCompleterComboBox_textChanged (BlDbCompleterComboBox *bl) {
                 } // end while
                 delete bl->m_cursorcombo;
 
-  _depura("END BlDbCompleterComboBox_textChanged", 0);
+  blDebug("END BlDbCompleterComboBox_textChanged", 0);
 
 	  return 1;
         } // end if
-  _depura("END BlDbCompleterComboBox_textChanged", 0);
+  blDebug("END BlDbCompleterComboBox_textChanged", 0);
 
     return 0;
 }
@@ -342,10 +342,10 @@ int BlDbCompleterComboBox_textChanged (BlDbCompleterComboBox *bl) {
 
 int BfSubForm_pressedAsterisk ( BfSubForm *sub )
 {
-    _depura ( "BfSubForm_pressedAsterisk" );
+    blDebug ( "BfSubForm_pressedAsterisk" );
 
     if ( sub->m_campoactual->nomcampo() != "codigocompletopartida" ) {
-        _depura ( "END BfSubForm::pressedAsterisk", 0 );
+        blDebug ( "END BfSubForm::pressedAsterisk", 0 );
         return 0;
     } // end if
 
@@ -383,7 +383,7 @@ int BfSubForm_pressedAsterisk ( BfSubForm *sub )
         } // end if
         delete diag;
 
-    _depura ( "END BfSubForm_pressedAsterisk" );
+    blDebug ( "END BfSubForm_pressedAsterisk" );
 
     return 1;
 }
@@ -404,8 +404,8 @@ int BfSubForm_pressedAsterisk ( BfSubForm *sub )
 **/
 MyPlugArt1::MyPlugArt1 ( BlSubForm *parent ) : QObject ( parent )
 {
-    _depura ( "MyPlugArt1::MyPlugArt1", 0 );
-    _depura ( "END MyPlugArt1::MyPlugArt1", 0 );
+    blDebug ( "MyPlugArt1::MyPlugArt1", 0 );
+    blDebug ( "END MyPlugArt1::MyPlugArt1", 0 );
 }
 
 ///
@@ -413,8 +413,8 @@ MyPlugArt1::MyPlugArt1 ( BlSubForm *parent ) : QObject ( parent )
 **/
 MyPlugArt1::~MyPlugArt1()
 {
-    _depura ( "MyPlugArt1::~MyPlugArt1", 0 );
-    _depura ( "END MyPlugArt1::~MyPlugArt1", 0 );
+    blDebug ( "MyPlugArt1::~MyPlugArt1", 0 );
+    blDebug ( "END MyPlugArt1::~MyPlugArt1", 0 );
 }
 
 
@@ -424,7 +424,7 @@ MyPlugArt1::~MyPlugArt1()
 **/
 void MyPlugArt1::s_pintaMenu ( QMenu *menu )
 {
-    _depura ( "MyPlugArt1::s_pintaMenu", 0 );
+    blDebug ( "MyPlugArt1::s_pintaMenu", 0 );
     BfSubForm *sub = ( BfSubForm * ) parent();
     BlSubFormHeader *header = sub->header ( "codigocompletopartida" );
     if ( header ) {
@@ -432,7 +432,7 @@ void MyPlugArt1::s_pintaMenu ( QMenu *menu )
         menu->addAction ( _ ( "Gestionar partidas" ) );
 	menu->addAction ( _ ( "Seleccionar partida" ) );
     } // end if
-    _depura ( "END MyPlugArt1::s_pintaMenu", 0 );
+    blDebug ( "END MyPlugArt1::s_pintaMenu", 0 );
 }
 
 
@@ -442,7 +442,7 @@ void MyPlugArt1::s_pintaMenu ( QMenu *menu )
 **/
 void MyPlugArt1::s_trataMenu ( QAction *action )
 {
-    _depura ( "MyPlugArt1::s_trataMenu", 0 );
+    blDebug ( "MyPlugArt1::s_trataMenu", 0 );
     BfSubForm *sub = ( BfSubForm * ) parent();
     if ( action->text() == _ ( "Gestionar partidas" ) ) {
             gestionarPartidas ( sub);
@@ -450,7 +450,7 @@ void MyPlugArt1::s_trataMenu ( QAction *action )
         seleccionarPartida ( sub );
     } // end if
 
-    _depura ( "END MyPlugArt1::s_trataMenu", 0 );
+    blDebug ( "END MyPlugArt1::s_trataMenu", 0 );
 }
 
 
@@ -459,11 +459,11 @@ void MyPlugArt1::s_trataMenu ( QAction *action )
 **/
 void MyPlugArt1::gestionarPartidas (  BfSubForm *sub )
 {
-    _depura ( "MyPlugArt1::editarArticulo", 0 );
+    blDebug ( "MyPlugArt1::editarArticulo", 0 );
     PartidasView *pag = new PartidasView ( ( BfCompany * ) sub->mainCompany(), 0, FALSE );
     sub->mainCompany() ->m_pWorkspace->addWindow ( pag );
     pag->show();
-    _depura ( "END MyPlugArt1::editarArticulo", 0 );
+    blDebug ( "END MyPlugArt1::editarArticulo", 0 );
 }
 
 
@@ -473,7 +473,7 @@ void MyPlugArt1::gestionarPartidas (  BfSubForm *sub )
 **/
 void MyPlugArt1::seleccionarPartida ( BfSubForm *sub )
 {
-    _depura ( "MyPlugArt1::editarArticulo", 0 );
+    blDebug ( "MyPlugArt1::editarArticulo", 0 );
 
         QDialog *diag = new QDialog ( 0 );
         diag->setModal ( true );
@@ -507,7 +507,7 @@ void MyPlugArt1::seleccionarPartida ( BfSubForm *sub )
 	} // end if
     delete diag;
     
-    _depura ( "END MyPlugArt1::editarArticulo", 0 );
+    blDebug ( "END MyPlugArt1::editarArticulo", 0 );
 }
 
 
@@ -518,11 +518,11 @@ void MyPlugArt1::seleccionarPartida ( BfSubForm *sub )
 **/
 int BlSubForm_BlSubForm_Post ( BlSubForm *sub )
 {
-    _depura ( "BlSubForm_BlSubForm_Post", 0 );
+    blDebug ( "BlSubForm_BlSubForm_Post", 0 );
     MyPlugArt1 *subformods = new MyPlugArt1 ( sub );
     sub->QObject::connect ( sub, SIGNAL ( pintaMenu ( QMenu * ) ), subformods, SLOT ( s_pintaMenu ( QMenu * ) ) );
     sub->QObject::connect ( sub, SIGNAL ( trataMenu ( QAction * ) ), subformods, SLOT ( s_trataMenu ( QAction * ) ) );
-    _depura ( "END BlSubForm_BlSubForm_Post", 0 );
+    blDebug ( "END BlSubForm_BlSubForm_Post", 0 );
     return 0;
 }
 

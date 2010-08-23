@@ -34,11 +34,11 @@
 QWebCamView::QWebCamView ( BfCompany *comp, QWidget *parent )
         : QWidget ( parent ) , BlDialogChanges ( this ), BlDbRecord ( comp )
 {
-    _depura ( "QWebCamView::QWebCamView", 0 );
+    blDebug ( "QWebCamView::QWebCamView", 0 );
     setAttribute ( Qt::WA_DeleteOnClose );
     m_companyact = comp;
     setupUi ( this );
-    _depura ( "END QWebCamView::QWebCamView", 0 );
+    blDebug ( "END QWebCamView::QWebCamView", 0 );
 }
 
 
@@ -47,9 +47,9 @@ QWebCamView::QWebCamView ( BfCompany *comp, QWidget *parent )
 **/
 QWebCamView::~QWebCamView()
 {
-    _depura ( "QWebCamView::~QWebCamView", 0 );
+    blDebug ( "QWebCamView::~QWebCamView", 0 );
     m_companyact->sacaWindow ( this );
-    _depura ( "END QWebCamView::~QWebCamView", 0 );
+    blDebug ( "END QWebCamView::~QWebCamView", 0 );
 }
 
 
@@ -64,9 +64,9 @@ QWebCamView::~QWebCamView()
 **/
 int QWebCamView::cargar ( QString idarticulo )
 {
-    _depura ( "QWebCamView::cargar", 0, idarticulo );
+    blDebug ( "QWebCamView::cargar", 0, idarticulo );
 
-    _depura ( "END QWebCamView::cargar", 0 );
+    blDebug ( "END QWebCamView::cargar", 0 );
     return 0;
 }
 

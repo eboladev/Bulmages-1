@@ -39,7 +39,7 @@
 Archivo::Archivo ( BlMainCompany *comp, QWidget *parent )
         : BlWidget ( comp, parent )
 {
-    _depura ( "Archivo::Archivo", 0 );
+    blDebug ( "Archivo::Archivo", 0 );
     setAttribute ( Qt::WA_DeleteOnClose );
     try {
         setupUi ( this );
@@ -47,17 +47,17 @@ Archivo::Archivo ( BlMainCompany *comp, QWidget *parent )
     } catch ( ... ) {
         mensajeInfo ( _ ( "Error al crear la ventana de importacion" ) );
     } // end try
-    _depura ( "END Archivo::Archivo", 0 );
+    blDebug ( "END Archivo::Archivo", 0 );
 }
 
 /** No precisa acciones adicionales en el destructor.
 */
 Archivo::~Archivo()
 {
-    _depura ( "Archivo::~Archivo", 0 );
+    blDebug ( "Archivo::~Archivo", 0 );
     /// ATENCION: Hacer esto es un error ya que puede machacar procesos dependientes del listado.
     // ((BfCompany *)mainCompany())->refreshCobrosCliente();
-    _depura ( "END Archivo::~Archivo", 0 );
+    blDebug ( "END Archivo::~Archivo", 0 );
 }
 
 void Archivo::on_mui_buscarArchivo_clicked()
@@ -71,7 +71,7 @@ void Archivo::on_mui_buscarArchivo_clicked()
 */
 void Archivo::on_mui_aceptar_clicked()
 {
-    _depura ( "Archivo::on_mui_aceptar_clicked", 0 );
+    blDebug ( "Archivo::on_mui_aceptar_clicked", 0 );
     /*
         QFile file ( mui_archivo->text() );
         if ( !file.open ( QIODevice::ReadOnly | QIODevice::Text ) )
@@ -89,5 +89,5 @@ void Archivo::on_mui_aceptar_clicked()
         mainCompany()->commit();
         file.close();
     */
-    _depura ( "END Archivo::on_mui_aceptar_clicked", 0 );
+    blDebug ( "END Archivo::on_mui_aceptar_clicked", 0 );
 }

@@ -48,8 +48,8 @@ BlMainCompany *g_emp = NULL;
 **/
 MyPluginInformesODS::MyPluginInformesODS()
 {
-    _depura ( "MyPluginInformesODS::MyPluginInformesODS", 0 );
-    _depura ( "END MyPluginInformesODS::MyPluginInformesODS", 0 );
+    blDebug ( "MyPluginInformesODS::MyPluginInformesODS", 0 );
+    blDebug ( "END MyPluginInformesODS::MyPluginInformesODS", 0 );
 }
 
 ///
@@ -57,8 +57,8 @@ MyPluginInformesODS::MyPluginInformesODS()
 **/
 MyPluginInformesODS::~MyPluginInformesODS()
 {
-    _depura ( "MyPluginInformesODS::~MyPluginInformesODS", 0 );
-    _depura ( "END MyPluginInformesODS::~MyPluginInformesODS", 0 );
+    blDebug ( "MyPluginInformesODS::~MyPluginInformesODS", 0 );
+    blDebug ( "END MyPluginInformesODS::~MyPluginInformesODS", 0 );
 }
 
 
@@ -69,7 +69,7 @@ MyPluginInformesODS::~MyPluginInformesODS()
 **/
 void MyPluginInformesODS::elslot1( )
 {
-    _depura ( "MyPluginInformesODS::elslot", 0 );
+    blDebug ( "MyPluginInformesODS::elslot", 0 );
 
     BlForm *ficha = new BlForm ( g_emp, 0 );
 
@@ -80,7 +80,7 @@ void MyPluginInformesODS::elslot1( )
     invocaPYS ( archivo );
 
     delete ficha;
-    _depura ( "END MyPluginInformesODS::elslot", 0 );
+    blDebug ( "END MyPluginInformesODS::elslot", 0 );
 }
 
 
@@ -93,7 +93,7 @@ int entryPoint ( QMainWindow *bges )
 
 int init (  )
 {
-    _depura ( "Entrada del plugin ", 0 );
+    blDebug ( "Entrada del plugin ", 0 );
 
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale ( LC_ALL, "" );
@@ -214,7 +214,7 @@ int init (  )
         menu->addAction ( accion );
     } // end for
 
-    _depura ( "Iniciado correctamente el plugin", 10 );
+    blDebug ( "Iniciado correctamente el plugin", 10 );
     return 0;
 }
 

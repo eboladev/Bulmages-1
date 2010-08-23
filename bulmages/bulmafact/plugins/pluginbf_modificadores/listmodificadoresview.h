@@ -47,7 +47,7 @@ public:
 
 public slots:
     virtual void cargar() {
-        _depura ( "ListModificadoresSubForm::cargar\n", 0 );
+        blDebug ( "ListModificadoresSubForm::cargar\n", 0 );
         BlSubForm::cargar ( "SELECT * FROM modificador" );
     }
 };

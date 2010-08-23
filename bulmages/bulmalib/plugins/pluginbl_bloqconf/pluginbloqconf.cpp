@@ -48,8 +48,8 @@ BlMainCompany *g_emp = NULL;
 **/
 MyPluginBloqConf::MyPluginBloqConf()
 {
-    _depura ( "MyPluginBloqConf::MyPluginBloqConf", 0 );
-    _depura ( "END MyPluginBloqConf::MyPluginBloqConf", 0 );
+    blDebug ( "MyPluginBloqConf::MyPluginBloqConf", 0 );
+    blDebug ( "END MyPluginBloqConf::MyPluginBloqConf", 0 );
 }
 
 ///
@@ -57,8 +57,8 @@ MyPluginBloqConf::MyPluginBloqConf()
 **/
 MyPluginBloqConf::~MyPluginBloqConf()
 {
-    _depura ( "MyPluginBloqConf::~MyPluginBloqConf", 0 );
-    _depura ( "END MyPluginBloqConf::~MyPluginBloqConf", 0 );
+    blDebug ( "MyPluginBloqConf::~MyPluginBloqConf", 0 );
+    blDebug ( "END MyPluginBloqConf::~MyPluginBloqConf", 0 );
 }
 
 
@@ -69,12 +69,12 @@ MyPluginBloqConf::~MyPluginBloqConf()
 **/
 void MyPluginBloqConf::elslot( )
 {
-    _depura ( "MyPluginBloqConf::elslot", 0 );
+    blDebug ( "MyPluginBloqConf::elslot", 0 );
 
     QString cad = "chmod a-w " + g_confpr->valor(CONF_DIR_USER) + "*.cfn";
     system ( cad.toAscii().constData() );
     mensajeInfo("Configuraciones Bloqueadas. Se mantendra la configuracion establecida al cargar el programa. Cualquier configuracion posterior a la carga del programa se perdera.");
-    _depura ( "END MyPluginBloqConf::elslot", 0 );
+    blDebug ( "END MyPluginBloqConf::elslot", 0 );
 }
 
 ///
@@ -82,13 +82,13 @@ void MyPluginBloqConf::elslot( )
 **/
 void MyPluginBloqConf::elslot1( )
 {
-    _depura ( "MyPluginBloqConf::elslot", 0 );
+    blDebug ( "MyPluginBloqConf::elslot", 0 );
 
     QString cad = "chmod a+w " + g_confpr->valor(CONF_DIR_USER) + "*.cfn";
     system ( cad.toAscii().constData() );
     mensajeInfo("Configuraciones Desbloqueadas. Las configuraciones se guardaran al cerrar el programa.");
 
-    _depura ( "END MyPluginBloqConf::elslot", 0 );
+    blDebug ( "END MyPluginBloqConf::elslot", 0 );
 }
 
 ///
@@ -96,13 +96,13 @@ void MyPluginBloqConf::elslot1( )
 **/
 void MyPluginBloqConf::elslot2( )
 {
-    _depura ( "MyPluginBloqConf::elslot2", 0 );
+    blDebug ( "MyPluginBloqConf::elslot2", 0 );
 
     QString cad = "rm" + g_confpr->valor(CONF_DIR_USER) + "*.cfn";
     system ( cad.toAscii().constData() );
     mensajeInfo("Configuraciones Borradas. Las configuraciones se guardaran al cerrar el programa.");
 
-    _depura ( "END MyPluginBloqConf::elslot2", 0 );
+    blDebug ( "END MyPluginBloqConf::elslot2", 0 );
 }
 
 ///
@@ -111,7 +111,7 @@ void MyPluginBloqConf::elslot2( )
 **/
 void MyPluginBloqConf::s_pintaMenu ( QMenu *menu )
 {
-    _depura ( "MyPluginBloqConf::s_pintaMenu", 0 );
+    blDebug ( "MyPluginBloqConf::s_pintaMenu", 0 );
     
     BlSubForm *sub = (BlSubForm *) sender();
     int modo = !sub->modoEdicion();
@@ -130,7 +130,7 @@ void MyPluginBloqConf::s_pintaMenu ( QMenu *menu )
     
     
     menu->addAction ( ac );
-    _depura ( "END MyPluginBloqConf::s_pintaMenu", 0 );
+    blDebug ( "END MyPluginBloqConf::s_pintaMenu", 0 );
 }
 
 
@@ -140,7 +140,7 @@ void MyPluginBloqConf::s_pintaMenu ( QMenu *menu )
 **/
 void MyPluginBloqConf::s_trataMenu ( QAction *action )
 {
-    _depura ( "MyPluginBloqConf::s_trataMenu", 0 );
+    blDebug ( "MyPluginBloqConf::s_trataMenu", 0 );
     if ( action->text() == _ ( "Bloqueo Configuracion" ) ) {
             BlSubForm *sub = (BlSubForm *) sender();
             int modo = !sub->modoEdicion();
@@ -156,14 +156,14 @@ void MyPluginBloqConf::s_trataMenu ( QAction *action )
               system ( cad.toAscii().constData() );
             } // end if
     } // end if
-    _depura ( "END MyPluginBloqConf::s_trataMenu", 0 );
+    blDebug ( "END MyPluginBloqConf::s_trataMenu", 0 );
 }
 
 
 
 int entryPoint ( BlMainWindow *bges )
 {
-    _depura ( "Entrada del plugin Bloqconf", 0 );
+    blDebug ( "Entrada del plugin Bloqconf", 0 );
 
     g_bges = bges;
 
@@ -206,7 +206,7 @@ int entryPoint ( BlMainWindow *bges )
     pPluginMenu->addAction ( accion1 );
     pPluginMenu->addAction ( accion2 );
 
-    _depura ( "Iniciado correctamente el plugin dock", 10 );
+    blDebug ( "Iniciado correctamente el plugin dock", 10 );
     return 0;
 }
 
@@ -233,11 +233,11 @@ int BcCompany_createMainWindows_Post ( BcCompany *cmp )
 **/
 int BlSubForm_BlSubForm_Post ( BlSubForm *sub )
 {
-    _depura ( "BlSubForm_BlSubForm_Post", 0 );
+    blDebug ( "BlSubForm_BlSubForm_Post", 0 );
     MyPluginBloqConf *subformods = new MyPluginBloqConf (  );
     sub->QObject::connect ( sub, SIGNAL ( pintaMenu ( QMenu * ) ), subformods, SLOT ( s_pintaMenu ( QMenu * ) ) );
     sub->QObject::connect ( sub, SIGNAL ( trataMenu ( QAction * ) ), subformods, SLOT ( s_trataMenu ( QAction * ) ) );
-    _depura ( "END BlSubForm_BlSubForm_Post", 0 );
+    blDebug ( "END BlSubForm_BlSubForm_Post", 0 );
     return 0;
 }
 

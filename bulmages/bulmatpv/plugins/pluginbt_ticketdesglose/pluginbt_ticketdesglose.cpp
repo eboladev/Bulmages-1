@@ -41,7 +41,7 @@ MTicketDesglose *g_bud;
 **/
 int entryPoint ( BtBulmaTPV *tpv )
 {
-    _depura ( "entryPoint PluginBt_TicketDesglose::entryPoint", 0 );
+    blDebug ( "entryPoint PluginBt_TicketDesglose::entryPoint", 0 );
 
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale ( LC_ALL, "" );
@@ -56,7 +56,7 @@ int entryPoint ( BtBulmaTPV *tpv )
     g_doc1->cargaconf();
     g_doc1->show();
 
-    _depura ( "END PluginBt_TicketDesglose::entryPoint", 0 );
+    blDebug ( "END PluginBt_TicketDesglose::entryPoint", 0 );
     return 0;
 }
 

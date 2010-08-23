@@ -41,7 +41,7 @@ ArtGraficos *g_graf;
 **/
 int entryPoint ( BtBulmaTPV *tpv )
 {
-    _depura ( "entryPoint", 0 );
+    blDebug ( "entryPoint", 0 );
 
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale ( LC_ALL, "" );
@@ -56,7 +56,7 @@ int entryPoint ( BtBulmaTPV *tpv )
     g_pantallas->show();
     g_pantallas->cargaconf();
 
-    _depura ( "END entryPoint", 0 );
+    blDebug ( "END entryPoint", 0 );
     return 0;
 }
 

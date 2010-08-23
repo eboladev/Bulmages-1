@@ -42,8 +42,8 @@ BcDiarioView *g_diario;
 **/
 MyPluginDiario::MyPluginDiario()
 {
-    _depura ( "MyPluginDiario::MyPluginDiario", 0 );
-    _depura ( "END MyPluginDiario::MyPluginDiario", 0 );
+    blDebug ( "MyPluginDiario::MyPluginDiario", 0 );
+    blDebug ( "END MyPluginDiario::MyPluginDiario", 0 );
 }
 
 
@@ -52,8 +52,8 @@ MyPluginDiario::MyPluginDiario()
 **/
 MyPluginDiario::~MyPluginDiario()
 {
-    _depura ( "MyPluginDiario::~MyPluginDiario", 0 );
-    _depura ( "END MyPluginDiario::~MyPluginDiario", 0 );
+    blDebug ( "MyPluginDiario::~MyPluginDiario", 0 );
+    blDebug ( "END MyPluginDiario::~MyPluginDiario", 0 );
 }
 
 
@@ -62,14 +62,14 @@ MyPluginDiario::~MyPluginDiario()
 **/
 void MyPluginDiario::elslot()
 {
-    _depura ( "MyPluginDiario::elslot", 0 );
+    blDebug ( "MyPluginDiario::elslot", 0 );
     if (g_diario == NULL) {
       g_diario = new BcDiarioView ( ( BcCompany * ) mainCompany(), 0 );
       mainCompany() ->pWorkspace() ->addWindow ( g_diario );
     } // end if
     g_diario->hide();
     g_diario->show();
-    _depura ( "END MyPluginDiario::elslot", 0 );
+    blDebug ( "END MyPluginDiario::elslot", 0 );
 }
 
 
@@ -79,7 +79,7 @@ void MyPluginDiario::elslot()
 **/
 void MyPluginDiario::inicializa ( BcBulmaCont *bges )
 {
-    _depura ( "MyPluginDiario::inicializa", 0 );
+    blDebug ( "MyPluginDiario::inicializa", 0 );
 
     /// Creamos el men&uacute;.
     setMainCompany ( bges->empresaactual() );
@@ -105,7 +105,7 @@ void MyPluginDiario::inicializa ( BcBulmaCont *bges )
     bges->menuBar() ->insertMenu ( bges->menuMaestro->menuAction(), pPluginMenu );
     bges->toolBar->addAction ( accion );
 
-    _depura ( "END MyPluginDiario::inicializa", 0 );
+    blDebug ( "END MyPluginDiario::inicializa", 0 );
 }
 
 
@@ -116,7 +116,7 @@ void MyPluginDiario::inicializa ( BcBulmaCont *bges )
 **/
 int entryPoint ( BcBulmaCont *bcont )
 {
-    _depura ( "entryPoint::entryPoint", 0 );
+    blDebug ( "entryPoint::entryPoint", 0 );
 
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale ( LC_ALL, "" );
@@ -126,7 +126,7 @@ int entryPoint ( BcBulmaCont *bcont )
 
     MyPluginDiario *plug = new MyPluginDiario();
     plug->inicializa ( bcont );
-    _depura ( "END entryPoint::entryPoint", 0 );
+    blDebug ( "END entryPoint::entryPoint", 0 );
     return 0;
 }
 

@@ -29,7 +29,7 @@
 **/
 BalanceSubForm::BalanceSubForm ( QWidget *parent, const char * ) : BcSubForm ( parent )
 {
-    _depura ( "BalanceSubForm::BalanceSubForm", 0 );
+    blDebug ( "BalanceSubForm::BalanceSubForm", 0 );
     setDbTableName ( "borrador" );
     setFileConfig ( "balancesubform" );
     setDbFieldId ( "idborrador" );
@@ -45,7 +45,7 @@ BalanceSubForm::BalanceSubForm ( QWidget *parent, const char * ) : BcSubForm ( p
     addSubFormHeader ( "ejhaber", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _ ( "ejhaber" ) );
     addSubFormHeader ( "ejsaldo", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _ ( "ejsaldo" ) );
     setInsert ( FALSE );
-    _depura ( "END BalanceSubForm::BalanceSubForm", 0 );
+    blDebug ( "END BalanceSubForm::BalanceSubForm", 0 );
 }
 
 
@@ -55,7 +55,7 @@ BalanceSubForm::BalanceSubForm ( QWidget *parent, const char * ) : BcSubForm ( p
 **/
 void BalanceSubForm::contextMenuEvent ( QContextMenuEvent * )
 {
-    _depura ( "BcSubForm::contextMenuEvent", 0 );
+    blDebug ( "BcSubForm::contextMenuEvent", 0 );
     QAction *del = NULL;
     int row = currentRow();
     if ( row < 0 ) {
@@ -115,6 +115,6 @@ void BalanceSubForm::contextMenuEvent ( QContextMenuEvent * )
         boton_extracto1 ( 2 );
     } // end if
     delete popup;
-    _depura ( "END BcSubForm::contextMenuEvent", 0 );
+    blDebug ( "END BcSubForm::contextMenuEvent", 0 );
 }
 

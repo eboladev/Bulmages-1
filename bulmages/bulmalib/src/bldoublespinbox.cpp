@@ -27,11 +27,11 @@
 **/
 BlDoubleSpinBox::BlDoubleSpinBox ( QWidget *parent ) : QDoubleSpinBox ( parent )
 {
-    _depura ( "BlDoubleSpinBox::BlDoubleSpinBox", 0 );
+    blDebug ( "BlDoubleSpinBox::BlDoubleSpinBox", 0 );
     installEventFilter ( this );
     setAlignment ( Qt::AlignRight );
     setButtonSymbols ( QAbstractSpinBox::PlusMinus );
-    _depura ( "END BlDoubleSpinBox::BlDoubleSpinBox", 0 );
+    blDebug ( "END BlDoubleSpinBox::BlDoubleSpinBox", 0 );
 }
 
 
@@ -40,8 +40,8 @@ BlDoubleSpinBox::BlDoubleSpinBox ( QWidget *parent ) : QDoubleSpinBox ( parent )
 **/
 BlDoubleSpinBox::~BlDoubleSpinBox()
 {
-    _depura ( "BlDoubleSpinBox::~BlDoubleSpinBox", 0 );
-    _depura ( "END BlDoubleSpinBox::~BlDoubleSpinBox", 0 );
+    blDebug ( "BlDoubleSpinBox::~BlDoubleSpinBox", 0 );
+    blDebug ( "END BlDoubleSpinBox::~BlDoubleSpinBox", 0 );
 }
 
 
@@ -51,10 +51,10 @@ BlDoubleSpinBox::~BlDoubleSpinBox()
 **/
 QString const BlDoubleSpinBox::text()
 {
-    _depura ( "BlDoubleSpinBox::text", 0 );
+    blDebug ( "BlDoubleSpinBox::text", 0 );
     QString a = QDoubleSpinBox::text();
     //a = a.replace(",", ".");
-    _depura ( "END BlDoubleSpinBox::text", 0 );
+    blDebug ( "END BlDoubleSpinBox::text", 0 );
     return a;
 }
 
@@ -65,9 +65,9 @@ QString const BlDoubleSpinBox::text()
 **/
 void BlDoubleSpinBox::setValue ( double valor )
 {
-    _depura ( "BlDoubleSpinBox::setValue", 0 );
+    blDebug ( "BlDoubleSpinBox::setValue", 0 );
     QDoubleSpinBox::setValue ( valor );
-    _depura ( "END BlDoubleSpinBox::setValue", 0 );
+    blDebug ( "END BlDoubleSpinBox::setValue", 0 );
 }
 
 
@@ -79,7 +79,7 @@ void BlDoubleSpinBox::setValue ( double valor )
 **/
 bool BlDoubleSpinBox::eventFilter ( QObject *obj, QEvent *event )
 {
-    _depura ( "BlDoubleSpinBox::eventFilter", 0 );
+    blDebug ( "BlDoubleSpinBox::eventFilter", 0 );
     /// Si es una pulsacion o release de tecla se hace la funcionalidad especificada.
     if ( event->type() == QEvent::KeyPress ) {
         QKeyEvent * keyEvent = static_cast<QKeyEvent *> ( event );
@@ -98,7 +98,7 @@ bool BlDoubleSpinBox::eventFilter ( QObject *obj, QEvent *event )
             return TRUE;
         } // end switch
     } // end if
-    _depura ( "END BlDoubleSpinBox::eventFilter", 0 );
+    blDebug ( "END BlDoubleSpinBox::eventFilter", 0 );
     return QDoubleSpinBox::eventFilter ( obj, event );
 }
 

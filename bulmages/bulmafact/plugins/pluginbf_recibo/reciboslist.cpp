@@ -41,7 +41,7 @@
 RecibosList::RecibosList ( QWidget *parent, Qt::WFlags flag, edmode editmodo )
         : BlFormList ( NULL, parent, flag, editmodo )
 {
-    _depura ( "RecibosList::RecibosList", 0 );
+    blDebug ( "RecibosList::RecibosList", 0 );
     
     setupUi ( this );
     
@@ -55,7 +55,7 @@ RecibosList::RecibosList ( QWidget *parent, Qt::WFlags flag, edmode editmodo )
     hideBusqueda();
     iniciaForm();
     
-    _depura ( "END RecibosList::RecibosList", 0 );
+    blDebug ( "END RecibosList::RecibosList", 0 );
 }
 
 /** Inicializa todos los componentes.
@@ -65,7 +65,7 @@ RecibosList::RecibosList ( QWidget *parent, Qt::WFlags flag, edmode editmodo )
 RecibosList::RecibosList ( BfCompany *comp, QWidget *parent, Qt::WFlags flag, edmode editmodo )
         : BlFormList ( comp, parent, flag, editmodo )
 {
-    _depura ( "RecibosList::RecibosList", 0 );
+    blDebug ( "RecibosList::RecibosList", 0 );
     
     setupUi ( this );
     
@@ -101,20 +101,20 @@ RecibosList::RecibosList ( BfCompany *comp, QWidget *parent, Qt::WFlags flag, ed
     
     presentar();
 
-    _depura ( "END RecibosList::RecibosList", 0 );
+    blDebug ( "END RecibosList::RecibosList", 0 );
 }
 
 /** No requiere acciones especiales en el destructor.
 */
 RecibosList::~RecibosList()
 {
-    _depura ( "RecibosList::~RecibosList", 0 );
-    _depura ( "END RecibosList::~RecibosList", 0 );
+    blDebug ( "RecibosList::~RecibosList", 0 );
+    blDebug ( "END RecibosList::~RecibosList", 0 );
 }
 
 void RecibosList::iniciaForm()
 {
-    _depura ( "RecibosList::iniciaForm" );
+    blDebug ( "RecibosList::iniciaForm" );
     
     /// Disparamos los plugins.
     int res = g_plugins->lanza ( "RecibosList_iniciaForm", this );
@@ -126,7 +126,7 @@ void RecibosList::iniciaForm()
     mui_procesada->insertItem ( 2, _ ( "Recibos no pagados" ) );
     mui_procesada->setCurrentIndex ( 0 );
     
-    _depura ( "END RecibosList::iniciaForm" );
+    blDebug ( "END RecibosList::iniciaForm" );
 }
 
 /** Hace la carga del listado.
@@ -135,14 +135,14 @@ void RecibosList::iniciaForm()
 */
 void RecibosList::presentar()
 {
-    _depura ( "RecibosList::presentar", 0 );
+    blDebug ( "RecibosList::presentar", 0 );
     
     if ( mainCompany() != NULL ) {
 	QString query = "SELECT * FROM recibo LEFT JOIN forma_pago ON recibo.idforma_pago = forma_pago.idforma_pago LEFT JOIN cliente ON recibo.idcliente = cliente.idcliente LEFT JOIN banco ON recibo.idbanco = banco.idbanco WHERE 1 = 1 " + generaFiltro() ;
         mui_list->cargar ( query );
     } // end if
     
-    _depura ( "END RecibosList::presentar", 0 );
+    blDebug ( "END RecibosList::presentar", 0 );
 }
 
 
@@ -150,7 +150,7 @@ void RecibosList::presentar()
 */
 QString RecibosList::generaFiltro()
 {
-    _depura ( "RecibosList::generaFiltro", 0 );
+    blDebug ( "RecibosList::generaFiltro", 0 );
     
     QString filtro = "";
     
@@ -180,7 +180,7 @@ QString RecibosList::generaFiltro()
 	QString nombreactividad = mui_idactividad->fieldValue("nombreactividad");
 	filtro += " AND idrecibo IN (SELECT idrecibo FROM lrecibo WHERE conceptolrecibo LIKE '%" + nombreactividad + "%')";
     } // end if
-    _depura ( "END RecibosList::generaFiltro", 0 );
+    blDebug ( "END RecibosList::generaFiltro", 0 );
     
     return ( filtro );
 }
@@ -190,25 +190,25 @@ QString RecibosList::generaFiltro()
 */
 void RecibosList::crear()
 {
-    _depura ( "RecibosList::crear", 0 );
+    blDebug ( "RecibosList::crear", 0 );
     
     ReciboView *bud = new ReciboView ( ( BfCompany * ) mainCompany(), 0 );
     mainCompany() ->m_pWorkspace->addWindow ( bud );
     bud->show();
     bud->pintar();
     
-    _depura ( "END RecibosList::crear", 0 );
+    blDebug ( "END RecibosList::crear", 0 );
 }
 
 /** La impresion de listados esta completamente delegada a la clase SubForm3
 */
 void RecibosList::imprimir()
 {
-    _depura ( "RecibosList::imprimir", 0 );
+    blDebug ( "RecibosList::imprimir", 0 );
     
     mui_list->imprimirPDF ( _ ( "Recibos" ) );
     
-    _depura ( "END RecibosList::imprimir", 0 );
+    blDebug ( "END RecibosList::imprimir", 0 );
 }
 
 /** SLOT que responde a la pulsacion del boton borrar.
@@ -219,7 +219,7 @@ void RecibosList::imprimir()
 */
 void RecibosList::borrar()
 {
-    _depura ( "RecibosList::borrar", 0 );
+    blDebug ( "RecibosList::borrar", 0 );
     
     int a = mui_list->currentRow();
     if ( a < 0 ) {
@@ -241,7 +241,7 @@ void RecibosList::borrar()
         mensajeInfo ( _ ( "Error al borrar el cobro a cliente" ) );
     } // end try
     
-    _depura ( "END:RecibosList::borrar", 0 );
+    blDebug ( "END:RecibosList::borrar", 0 );
 }
 
 /** SLOT que responde al doble click en el subformulario.
@@ -250,7 +250,7 @@ void RecibosList::borrar()
 /// \TODO: Deberia crearse el metodo editar y este llamar a ese.
 void RecibosList::editar ( int )
 {
-    _depura ( "RecibosList::editar", 0 );
+    blDebug ( "RecibosList::editar", 0 );
     
     try {
         mdb_idrecibo = mui_list->dbValue ( "idrecibo" );
@@ -269,7 +269,7 @@ void RecibosList::editar ( int )
         mensajeInfo ( _ ( "Debe seleccionar una fila primero" ) );
     } // end try
     
-    _depura ( "END RecibosList::editar", 0 );
+    blDebug ( "END RecibosList::editar", 0 );
 }
 
 /** SLOT que responde a la peticion de menu contextual en el subformulario.
@@ -277,7 +277,7 @@ void RecibosList::editar ( int )
 /// \TODO: Revisar si este metodo es util.
 void RecibosList::submenu ( const QPoint & )
 {
-    _depura ( "RecibosList::submenu", 0 );
+    blDebug ( "RecibosList::submenu", 0 );
     
     int a = mui_list->currentRow();
     if ( a < 0 )
@@ -296,27 +296,27 @@ void RecibosList::submenu ( const QPoint & )
         
     delete popup;
     
-    _depura ( "END RecibosList::submenu", 0 );
+    blDebug ( "END RecibosList::submenu", 0 );
 }
 
 /** Inicializa la clase con el puntero a la company que se esta utilizando
 **/
 void RecibosList::setMainCompany ( BfCompany *comp )
 {
-    _depura ( "RecibosList::setMainCompany", 0 );
+    blDebug ( "RecibosList::setMainCompany", 0 );
     
     BlMainCompanyPointer::setMainCompany ( comp );
     mui_list->setMainCompany ( comp );
     
-    _depura ( "END RecibosList::setMainCompany", 0 );
+    blDebug ( "END RecibosList::setMainCompany", 0 );
 }
 
 /** Devuelve el identificador del cobro seleccionado
 **/
 QString RecibosList::idrecibo()
 {
-    _depura ( "RecibosList::idrecibo", 0 );
-    _depura ( "END RecibosList::idrecibo", 0 );
+    blDebug ( "RecibosList::idrecibo", 0 );
+    blDebug ( "END RecibosList::idrecibo", 0 );
     
     return mdb_idrecibo;
 }
@@ -329,7 +329,7 @@ QString RecibosList::idrecibo()
 */
 RecibosListSubForm::RecibosListSubForm ( QWidget *parent ) : BfSubForm ( parent )
 {
-    _depura ( "RecibosListSubForm::RecibosListSubForm", 0 );
+    blDebug ( "RecibosListSubForm::RecibosListSubForm", 0 );
     
     /// Disparamos los plugins.
     int res = g_plugins->lanza ( "RecibosListSubForm_RecibosListSubForm", this );
@@ -351,11 +351,11 @@ RecibosListSubForm::RecibosListSubForm ( QWidget *parent ) : BfSubForm ( parent 
     setDelete ( FALSE );
     setSortingEnabled ( TRUE );
     
-    _depura ( "END RecibosListSubForm::RecibosListSubForm", 0 );
+    blDebug ( "END RecibosListSubForm::RecibosListSubForm", 0 );
 }
 
 RecibosListSubForm::~RecibosListSubForm()
 {
-    _depura ( "RecibosListSubForm::~RecibosListSubForm", 0 );
-    _depura ( "END RecibosListSubForm::~RecibosListSubForm", 0 );
+    blDebug ( "RecibosListSubForm::~RecibosListSubForm", 0 );
+    blDebug ( "END RecibosListSubForm::~RecibosListSubForm", 0 );
 }

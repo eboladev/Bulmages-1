@@ -37,12 +37,12 @@ class BlFixed;
 BfForm::BfForm ( BfCompany *comp, QWidget *parent, Qt::WFlags f, edmode modo )
         : BlForm ( comp, parent, f, modo )
 {
-    _depura ( "BfForm::BfForm", 0 );
+    blDebug ( "BfForm::BfForm", 0 );
     
     m_listalineas = NULL;
     m_listadescuentos = NULL;
     
-    _depura ( "END BfForm::BfForm", 0 );
+    blDebug ( "END BfForm::BfForm", 0 );
 }
 
 ///
@@ -51,11 +51,11 @@ BfForm::BfForm ( BfCompany *comp, QWidget *parent, Qt::WFlags f, edmode modo )
 **/
 BfForm::~BfForm()
 {
-    _depura ( "BfForm::~BfForm", 0, this->windowTitle() );
+    blDebug ( "BfForm::~BfForm", 0, this->windowTitle() );
     
     mainCompany() ->sacaWindow ( this );
     
-    _depura ( "END BfForm::~BfForm", 0 );
+    blDebug ( "END BfForm::~BfForm", 0 );
 }
 
 ///
@@ -64,8 +64,8 @@ BfForm::~BfForm()
 **/
 BfCompany * BfForm::mainCompany()
 {
-    _depura ( "BfForm::company", 0 );
-    _depura ( "END BfForm::company", 0 );
+    blDebug ( "BfForm::company", 0 );
+    blDebug ( "END BfForm::company", 0 );
     
     return ( BfCompany * ) BlForm::mainCompany();
 }
@@ -79,7 +79,7 @@ BfCompany * BfForm::mainCompany()
 **/
 void BfForm::calculaypintatotales()
 {
-    _depura ( "BfForm::calculaypintatotales", 0 );
+    blDebug ( "BfForm::calculaypintatotales", 0 );
     
     base basesimp;
     base basesimpreqeq;
@@ -201,7 +201,7 @@ void BfForm::calculaypintatotales()
     BlFixed totirpf = totbaseimp * irpf / 100;
     pintatotales ( totiva, totbaseimp, totiva + totbaseimp + totreqeq - totirpf, ( basei * porcentt / 100 ) + descuentolinea, totirpf, totreqeq );
     
-    _depura ( "END BfForm::calculaypintatotales", 0 );
+    blDebug ( "END BfForm::calculaypintatotales", 0 );
 }
 
 /// Busca strings del tipo [xxxx] entro del texto pasado y los sustituye
@@ -211,7 +211,7 @@ void BfForm::calculaypintatotales()
 **/
 int BfForm::trataTags ( QString &buff, int tipoEscape )
 {
-    _depura ( "BfForm::trataTags", 0 );
+    blDebug ( "BfForm::trataTags", 0 );
     
     int pos =  0;
 
@@ -275,14 +275,14 @@ int BfForm::trataTags ( QString &buff, int tipoEscape )
 
     trataTagsBf ( buff, tipoEscape );
     
-    _depura ( "END BfForm::trataTags", 0 );
+    blDebug ( "END BfForm::trataTags", 0 );
     
     return ret;
 }
 
 void BfForm::trataTagsBf ( QString &buff, int tipoEscape )
 {
-    _depura ( "BfForm::trataTagsBf", 0 );
+    blDebug ( "BfForm::trataTagsBf", 0 );
 
     QString fitxersortidatxt = "";
     BlDbRecordSet *cur = NULL;
@@ -334,7 +334,7 @@ void BfForm::trataTagsBf ( QString &buff, int tipoEscape )
 
         /// Si no hay lista de lineas salimos.
         if (!m_listalineas) {
-            _depura ( "END BfForm::trataTagsBf", 0 );
+            blDebug ( "END BfForm::trataTagsBf", 0 );
             return;
         } // end if
 
@@ -580,7 +580,7 @@ void BfForm::trataTagsBf ( QString &buff, int tipoEscape )
         
     }
 
-    _depura ( "END BfForm::trataTagsBf", 0 );
+    blDebug ( "END BfForm::trataTagsBf", 0 );
 }
 
 /// Trata las lineas de detalle encontradas dentro de los tags <!--LINEAS DETALLE-->
@@ -590,7 +590,7 @@ void BfForm::trataTagsBf ( QString &buff, int tipoEscape )
 **/
 QString BfForm::trataLineasDetalle ( const QString &det, int tipoEscape )
 {
-    _depura ( "BfForm::trataLineasDetalle", 0 );
+    blDebug ( "BfForm::trataLineasDetalle", 0 );
     
     QString result = "";
 
@@ -649,7 +649,7 @@ QString BfForm::trataLineasDetalle ( const QString &det, int tipoEscape )
         
     } // end for
 
-    _depura ( "END BfForm::trataLineasDetalle", 0 );
+    blDebug ( "END BfForm::trataLineasDetalle", 0 );
     
     return result;
 }
@@ -661,7 +661,7 @@ QString BfForm::trataLineasDetalle ( const QString &det, int tipoEscape )
 **/
 QString BfForm::trataLineasDescuento ( const QString &det, int tipoEscape )
 {
-    _depura ( "BfForm::trataLineasDescuento", 0 );
+    blDebug ( "BfForm::trataLineasDescuento", 0 );
     
     QString result = "";
 
@@ -717,7 +717,7 @@ QString BfForm::trataLineasDescuento ( const QString &det, int tipoEscape )
         
     } // end for
     
-    _depura ( "END BfForm::trataLineasDescuento", 0 );
+    blDebug ( "END BfForm::trataLineasDescuento", 0 );
     
     return result;
 }
@@ -730,7 +730,7 @@ QString BfForm::trataLineasDescuento ( const QString &det, int tipoEscape )
 **/
 QString BfForm::trataTotales ( const QString &det, int bimporeq )
 {
-    _depura ( "BfForm::trataTotales", 0 );
+    blDebug ( "BfForm::trataTotales", 0 );
     
     QString result = "";
     QString salidatemp = "";
@@ -956,16 +956,16 @@ QString BfForm::trataTotales ( const QString &det, int bimporeq )
 
     } // end switch
 
-    _depura ( "END BfForm::trataTotales", 0 );
+    blDebug ( "END BfForm::trataTotales", 0 );
     
     return result;
 }
 
 int BfForm::generaRML ( void )
 {
-    _depura ( "BfForm::generaRML(void)", 0 );
+    blDebug ( "BfForm::generaRML(void)", 0 );
     int err = BlForm::generaRML();
-    _depura ( "END BfForm::generaRML(void)", 0 );
+    blDebug ( "END BfForm::generaRML(void)", 0 );
     return err;
     
 }
@@ -973,8 +973,8 @@ int BfForm::generaRML ( void )
 
 QString BfForm::nombrePlantilla ( void )
 {
-    _depura ( "BfForm::nombrePlantilla", 0 );
-    _depura ( "END BfForm::nombrePlantilla", 0 );
+    blDebug ( "BfForm::nombrePlantilla", 0 );
+    blDebug ( "END BfForm::nombrePlantilla", 0 );
     
     return m_tablename;
 }
@@ -986,7 +986,7 @@ QString BfForm::nombrePlantilla ( void )
 **/
 int BfForm::generaRML ( const QString &arch )
 {
-    _depura ( "BfForm::generaRML, con argumento const QString &arch", 0, arch );
+    blDebug ( "BfForm::generaRML, con argumento const QString &arch", 0, arch );
     
     try {
 
@@ -1002,16 +1002,16 @@ int BfForm::generaRML ( const QString &arch )
 
         BlForm::generaRML ( arch );
 
-        _depura ( "END BfForm::generaRML, con argumento const QString &arch", 0 );
+        blDebug ( "END BfForm::generaRML, con argumento const QString &arch", 0 );
         
         return 1;
 
     } catch ( int e ) {
-        _depura ( "Error en el procesado del archivo RML", 2 );
+        blDebug ( "Error en el procesado del archivo RML", 2 );
         throw e;
 
     } catch ( ... ) {
-        _depura ( "Error en el procesado del archivo RML", 2 );
+        blDebug ( "Error en el procesado del archivo RML", 2 );
         throw ( -1 );
     } // end try
 }
@@ -1022,7 +1022,7 @@ int BfForm::generaRML ( const QString &arch )
 **/
 void BfForm::imprimir()
 {
-    _depura ( "BfForm::imprimir", 0 );
+    blDebug ( "BfForm::imprimir", 0 );
     
     try {
         /// Disparamos los plugins
@@ -1033,7 +1033,7 @@ void BfForm::imprimir()
 
         BlForm::imprimir();
 
-        _depura ( "END BfForm::imprimir", 0 );
+        blDebug ( "END BfForm::imprimir", 0 );
 
     } catch ( int e ) {
         if ( e == 100 ) {
@@ -1051,11 +1051,11 @@ void BfForm::imprimir()
 **/
 void BfForm::setListaLineas ( BfSubForm *form )
 {
-    _depura ( "BfForm::setListaLineas", 0 );
+    blDebug ( "BfForm::setListaLineas", 0 );
     
     m_listalineas = form;
     
-    _depura ( "END BfForm::setListaLineas", 0 );
+    blDebug ( "END BfForm::setListaLineas", 0 );
 }
 
 ///
@@ -1064,11 +1064,11 @@ void BfForm::setListaLineas ( BfSubForm *form )
 **/
 void BfForm::setListaDescuentos ( BfSubForm *form )
 {
-    _depura ( "BfForm::setListaDescuentos", 0 );
+    blDebug ( "BfForm::setListaDescuentos", 0 );
     
     m_listadescuentos = form;
     
-    _depura ( "END BfForm::setListaDescuentos", 0 );
+    blDebug ( "END BfForm::setListaDescuentos", 0 );
 }
 
 ///
@@ -1077,8 +1077,8 @@ void BfForm::setListaDescuentos ( BfSubForm *form )
 **/
 BfSubForm* BfForm::getlistalineas()
 {
-    _depura ( "BfForm::getlistalineas", 0 );
-    _depura ( "END BfForm::getlistalineas", 0 );
+    blDebug ( "BfForm::getlistalineas", 0 );
+    blDebug ( "END BfForm::getlistalineas", 0 );
     
     return m_listalineas;
 }
@@ -1089,8 +1089,8 @@ BfSubForm* BfForm::getlistalineas()
 **/
 BfSubForm* BfForm::getlistadescuentos()
 {
-    _depura ( "BfForm::getlistadescuentos", 0 );
-    _depura ( "END BfForm::getlistadescuentos", 0 );
+    blDebug ( "BfForm::getlistadescuentos", 0 );
+    blDebug ( "END BfForm::getlistadescuentos", 0 );
     
     return m_listadescuentos;
 }

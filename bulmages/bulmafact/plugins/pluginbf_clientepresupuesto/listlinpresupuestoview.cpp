@@ -35,7 +35,7 @@
 **/
 ListLinPresupuestoView::ListLinPresupuestoView ( QWidget *parent ) : BfSubForm ( parent )
 {
-    _depura ( "ListLinPresupuestoView::ListLinPresupuestoView", 0 );
+    blDebug ( "ListLinPresupuestoView::ListLinPresupuestoView", 0 );
     setDbTableName ( "lpresupuesto" );
     setDbFieldId ( "idlpresupuesto" );
     /// Disparamos los plugins.
@@ -62,7 +62,7 @@ ListLinPresupuestoView::ListLinPresupuestoView ( QWidget *parent ) : BfSubForm (
 
     /// Lanzamos los plugins
     g_plugins->lanza ( "ListLinPresupuestoView_ListLinPresupuestoView_Post", this );
-    _depura ( "END ListLinPresupuestoView::ListLinPresupuestoView", 0 );
+    blDebug ( "END ListLinPresupuestoView::ListLinPresupuestoView", 0 );
 }
 
 
@@ -72,11 +72,11 @@ ListLinPresupuestoView::ListLinPresupuestoView ( QWidget *parent ) : BfSubForm (
 **/
 void ListLinPresupuestoView::cargar ( QString idpresupuesto )
 {
-    _depura ( "ListLinPresupuestoView::cargar", 0 );
+    blDebug ( "ListLinPresupuestoView::cargar", 0 );
     mdb_idpresupuesto = idpresupuesto;
     /// Al hacer la carge usamos el ordenlpresupuesto para indicar que el campo de ordenacion es el que toca.
     BlSubForm::cargar ( "SELECT *, (cantlpresupuesto * pvplpresupuesto)::NUMERIC(12,2) AS totallpresupuesto FROM lpresupuesto LEFT JOIN articulo ON lpresupuesto.idarticulo = articulo.idarticulo WHERE idpresupuesto = " + mdb_idpresupuesto + " ORDER BY ordenlpresupuesto" );
-    _depura ( "END ListLinPresupuestoView::cargar", 0 );
+    blDebug ( "END ListLinPresupuestoView::cargar", 0 );
 }
 
 

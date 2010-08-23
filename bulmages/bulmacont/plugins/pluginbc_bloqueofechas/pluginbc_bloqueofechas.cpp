@@ -39,8 +39,8 @@
 **/
 myBloqFechas::myBloqFechas()
 {
-    _depura ( "myBloqFechas::myBloqFechas", 0 );
-    _depura ( "END myBloqFechas::myBloqFechas", 0 );
+    blDebug ( "myBloqFechas::myBloqFechas", 0 );
+    blDebug ( "END myBloqFechas::myBloqFechas", 0 );
 }
 
 
@@ -49,8 +49,8 @@ myBloqFechas::myBloqFechas()
 **/
 myBloqFechas::~myBloqFechas()
 {
-    _depura ( "myBloqFechas::~myBloqFechas", 0 );
-    _depura ( "END myBloqFechas::~myBloqFechas", 0 );
+    blDebug ( "myBloqFechas::~myBloqFechas", 0 );
+    blDebug ( "END myBloqFechas::~myBloqFechas", 0 );
 }
 
 
@@ -59,11 +59,11 @@ myBloqFechas::~myBloqFechas()
 **/
 void myBloqFechas::elslot()
 {
-    _depura ( "myBloqFechas::elslot", 0 );
+    blDebug ( "myBloqFechas::elslot", 0 );
     BcBloqueaFechaView *tip = new BcBloqueaFechaView ( (BcCompany *)m_bulmacont->empresaactual(), 0 );
     m_bulmacont->workspace()->addWindow ( tip );
     tip->show();
-    _depura ( "END myBloqFechas::elslot", 0 );
+    blDebug ( "END myBloqFechas::elslot", 0 );
 }
 
 
@@ -109,7 +109,7 @@ void myBloqFechas::inicializa ( BcBulmaCont *bges )
 **/
 int entryPoint ( BcBulmaCont *bcont )
 {
-    _depura ( "Punto de entrada del plugin bloqueo de Fechas", 0 );
+    blDebug ( "Punto de entrada del plugin bloqueo de Fechas", 0 );
 
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale ( LC_ALL, "" );

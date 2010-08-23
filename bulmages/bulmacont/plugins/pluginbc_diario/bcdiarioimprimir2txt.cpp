@@ -30,9 +30,9 @@
 **/
 BcDiarioImprimir2TXT::BcDiarioImprimir2TXT ( BcCompany  *emp ) : BlMainCompanyPointer ( emp )
 {
-    _depura ( "BcDiarioImprimir2TXT::BcDiarioImprimir2TXT", 0 );
+    blDebug ( "BcDiarioImprimir2TXT::BcDiarioImprimir2TXT", 0 );
     fichero = NULL;
-    _depura ( "END BcDiarioImprimir2TXT::BcDiarioImprimir2TXT", 0 );
+    blDebug ( "END BcDiarioImprimir2TXT::BcDiarioImprimir2TXT", 0 );
 }
 
 
@@ -41,8 +41,8 @@ BcDiarioImprimir2TXT::BcDiarioImprimir2TXT ( BcCompany  *emp ) : BlMainCompanyPo
 **/
 BcDiarioImprimir2TXT::~BcDiarioImprimir2TXT()
 {
-    _depura ( "BcDiarioImprimir2TXT::~BcDiarioImprimir2TXT", 0 );
-    _depura ( "END BcDiarioImprimir2TXT::~BcDiarioImprimir2TXT", 0 );
+    blDebug ( "BcDiarioImprimir2TXT::~BcDiarioImprimir2TXT", 0 );
+    blDebug ( "END BcDiarioImprimir2TXT::~BcDiarioImprimir2TXT", 0 );
 }
 
 
@@ -53,10 +53,10 @@ BcDiarioImprimir2TXT::~BcDiarioImprimir2TXT()
 **/
 void BcDiarioImprimir2TXT::inicializa1 ( char *finicial1, char *ffinal1 )
 {
-    _depura ( "BcDiarioImprimir2TXT::inicializa1", 0 );
+    blDebug ( "BcDiarioImprimir2TXT::inicializa1", 0 );
     finicial = finicial1;
     ffinal = ffinal1;
-    _depura ( "BcDiarioImprimir2TXT::inicializa1", 0 );
+    blDebug ( "BcDiarioImprimir2TXT::inicializa1", 0 );
 }
 
 
@@ -66,9 +66,9 @@ void BcDiarioImprimir2TXT::inicializa1 ( char *finicial1, char *ffinal1 )
 **/
 void BcDiarioImprimir2TXT::inicializa2 ( char *fich )
 {
-    _depura ( "BcDiarioImprimir2TXT::inicializa2", 0 );
+    blDebug ( "BcDiarioImprimir2TXT::inicializa2", 0 );
     fichero = fich;
-    _depura ( "BcDiarioImprimir2TXT::inicializa2", 0 );
+    blDebug ( "BcDiarioImprimir2TXT::inicializa2", 0 );
 }
 
 
@@ -77,7 +77,7 @@ void BcDiarioImprimir2TXT::inicializa2 ( char *fich )
 **/
 void BcDiarioImprimir2TXT::accept()
 {
-    _depura ( "BcDiarioImprimir2TXT::accept", 0 );
+    blDebug ( "BcDiarioImprimir2TXT::accept", 0 );
     float debe, haber;
     int idcuenta;
     int idasiento;
@@ -130,6 +130,6 @@ void BcDiarioImprimir2TXT::accept()
     /// Hacemos la llamada de sistema para imprimir.
     QString cadaux = g_confpr->valor ( CONF_EDITOR ) + " diario.txt";
     system ( cadaux.toAscii().constData() );
-    _depura ( "END BcDiarioImprimir2TXT::accept", 0 );
+    blDebug ( "END BcDiarioImprimir2TXT::accept", 0 );
 }
 

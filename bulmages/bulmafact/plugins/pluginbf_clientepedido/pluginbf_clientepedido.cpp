@@ -37,8 +37,8 @@ PedidosClienteList *g_pedidosClienteList = NULL;
 **/
 mypluginped::mypluginped()
 {
-    _depura ( "mypluginped::mypluginped", 0 );
-    _depura ( "END mypluginped::mypluginped", 0 );
+    blDebug ( "mypluginped::mypluginped", 0 );
+    blDebug ( "END mypluginped::mypluginped", 0 );
 }
 
 
@@ -47,8 +47,8 @@ mypluginped::mypluginped()
 **/
 mypluginped::~mypluginped()
 {
-    _depura ( "mypluginped::~mypluginped", 0 );
-    _depura ( "END mypluginped::~mypluginped", 0 );
+    blDebug ( "mypluginped::~mypluginped", 0 );
+    blDebug ( "END mypluginped::~mypluginped", 0 );
 }
 
 
@@ -57,12 +57,12 @@ mypluginped::~mypluginped()
 **/
 void mypluginped::elslot()
 {
-    _depura ( "mypluginped::elslot", 0 );
+    blDebug ( "mypluginped::elslot", 0 );
     if ( g_pedidosClienteList ) {
         g_pedidosClienteList->hide();
         g_pedidosClienteList->show();
     }// end if
-    _depura ( "END mypluginped::elslot", 0 );
+    blDebug ( "END mypluginped::elslot", 0 );
 }
 
 ///
@@ -70,12 +70,12 @@ void mypluginped::elslot()
 **/
 void mypluginped::elslot1()
 {
-    _depura ( "mypluginped::elslot1", 0 );
+    blDebug ( "mypluginped::elslot1", 0 );
     PedidoClienteView * bud = new PedidoClienteView ( ( BfCompany * ) mainCompany(), NULL );
     mainCompany() ->m_pWorkspace->addWindow ( bud );
     bud->inicializar();
     bud->show();
-    _depura ( "END mypluginped::elslot1", 0 );
+    blDebug ( "END mypluginped::elslot1", 0 );
 }
 
 
@@ -86,7 +86,7 @@ void mypluginped::elslot1()
 **/
 void mypluginped::inicializa ( BfBulmaFact *bges )
 {
-    _depura ( "mypluginped::inicializa", 0 );
+    blDebug ( "mypluginped::inicializa", 0 );
 
     if ( bges->company()->hasTablePrivilege ( "pedidocliente", "SELECT" ) ) {
 
@@ -114,7 +114,7 @@ void mypluginped::inicializa ( BfBulmaFact *bges )
 
 
     }// end if
-    _depura ( "END mypluginped::inicializa", 0 );
+    blDebug ( "END mypluginped::inicializa", 0 );
 }
 
 
@@ -125,7 +125,7 @@ void mypluginped::inicializa ( BfBulmaFact *bges )
 **/
 int entryPoint ( BfBulmaFact *bges )
 {
-    _depura ( "Punto de Entrada del plugin de Pedidos de Clientes\n", 0 );
+    blDebug ( "Punto de Entrada del plugin de Pedidos de Clientes\n", 0 );
 
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale ( LC_ALL, "" );
@@ -196,7 +196,7 @@ int BfBuscarReferencia_on_mui_abrirtodo_clicked_Post ( BfBuscarReferencia *ref )
 int PresupuestoView_PresupuestoView ( PresupuestoView *l )
 {
 
-    _depura ( "PluginPedidoCliente_PresupuestoView_PresupuestoView", 0 );
+    blDebug ( "PluginPedidoCliente_PresupuestoView_PresupuestoView", 0 );
 
     GenPedQToolButton *mui_exporta_efactura2 = new GenPedQToolButton ( l, l->mui_plugbotones );
 
@@ -210,7 +210,7 @@ int PresupuestoView_PresupuestoView ( PresupuestoView *l )
     }// end if
     m_hboxLayout1->addWidget ( mui_exporta_efactura2 );
 
-    _depura ( "END PluginPedidoCliente_PresupuestoView_PresupuestoView", 0 );
+    blDebug ( "END PluginPedidoCliente_PresupuestoView_PresupuestoView", 0 );
 
     return 0;
 }

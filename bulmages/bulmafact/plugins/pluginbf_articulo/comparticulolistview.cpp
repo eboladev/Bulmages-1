@@ -36,7 +36,7 @@
 ListCompArticuloView::ListCompArticuloView ( QWidget *parent, const char * )
         : BfSubForm ( parent )
 {
-    _depura ( "ListCompArticuloView::ListCompArticuloView", 0 );
+    blDebug ( "ListCompArticuloView::ListCompArticuloView", 0 );
     setDbTableName ( "comparticulo" );
     setDbFieldId ( "idcomponente" );
     addSubFormHeader ( "codigocompletoarticulo", BlDbField::DbVarChar, BlDbField::DbNoSave | BlDbField::DbNotNull, BlSubFormHeader::DbNone, _ ( "Codigo completo del articulo" ) );
@@ -46,7 +46,7 @@ ListCompArticuloView::ListCompArticuloView ( QWidget *parent, const char * )
     addSubFormHeader ( "idarticulo", BlDbField::DbInt, BlDbField::DbPrimaryKey | BlDbField::DbNotNull, BlSubFormHeader::DbHideView | BlSubFormHeader::DbNoWrite, _ ( "ID articulo" ) );
     setInsert ( TRUE );
     setOrdenEnabled ( FALSE );
-    _depura ( "END ListCompArticuloView::ListCompArticuloView", 0 );
+    blDebug ( "END ListCompArticuloView::ListCompArticuloView", 0 );
 }
 
 
@@ -60,12 +60,12 @@ ListCompArticuloView::ListCompArticuloView ( QWidget *parent, const char * )
 **/
 void ListCompArticuloView::pressedAsterisk ( int row, int col )
 {
-    _depura ( "ListCompArticuloView::pressedAsterisk", 0 );
+    blDebug ( "ListCompArticuloView::pressedAsterisk", 0 );
     BlDbSubFormRecord *rec = lineaat ( row );
     BlDbSubFormField *camp = ( BlDbSubFormField * ) item ( row, col );
     if ( camp->nomcampo() != "codigocompletoarticulo" )
         return;
-    _depura ( "ListCompArticuloView::searchArticle", 0 );
+    blDebug ( "ListCompArticuloView::searchArticle", 0 );
     ArticuloList *artlist = new ArticuloList ( ( BfCompany * ) mainCompany(), NULL, 0, BL_SELECT_MODE );
     /// Esto es convertir un QWidget en un sistema modal de dialogo.
     this->setEnabled ( false );
@@ -81,7 +81,7 @@ void ListCompArticuloView::pressedAsterisk ( int row, int col )
         rec->setDbValue ( "codigocompletoarticulo", cur->valor ( "codigocompletoarticulo" ) );
         rec->setDbValue ( "nomarticulo", cur->valor ( "nomarticulo" ) );
     } // end if
-    _depura ( "END ListCompArticuloView::pressedAsterisk", 0 );
+    blDebug ( "END ListCompArticuloView::pressedAsterisk", 0 );
 }
 
 
@@ -94,7 +94,7 @@ void ListCompArticuloView::pressedAsterisk ( int row, int col )
 **/
 void ListCompArticuloView::editFinished ( int row, int col )
 {
-    _depura ( "ListCompArticuloView::editFinished", 0 );
+    blDebug ( "ListCompArticuloView::editFinished", 0 );
     BlDbSubFormRecord *rec = lineaat ( row );
     BlDbSubFormField *camp = ( BlDbSubFormField * ) item ( row, col );
     camp->refresh();
@@ -106,7 +106,7 @@ void ListCompArticuloView::editFinished ( int row, int col )
             rec->setDbValue ( "nomarticulo", cur->valor ( "nomarticulo" ) );
         } // end if
     } // end if
-    _depura ( "END ListCompArticuloView::editFinished", 0 );
+    blDebug ( "END ListCompArticuloView::editFinished", 0 );
 }
 
 
@@ -116,8 +116,8 @@ void ListCompArticuloView::editFinished ( int row, int col )
 **/
 ListCompArticuloView::~ListCompArticuloView()
 {
-    _depura ( "ListCompArticuloView::~ListCompArticuloView", 0 );
-    _depura ( "END ListCompArticuloView::~ListCompArticuloView", 0 );
+    blDebug ( "ListCompArticuloView::~ListCompArticuloView", 0 );
+    blDebug ( "END ListCompArticuloView::~ListCompArticuloView", 0 );
 }
 
 
@@ -128,10 +128,10 @@ ListCompArticuloView::~ListCompArticuloView()
 **/
 void ListCompArticuloView::cargar ( QString idarticulo )
 {
-    _depura ( "ListCompActiculo::cargar", 0 );
+    blDebug ( "ListCompActiculo::cargar", 0 );
     mdb_idarticulo = idarticulo;
     BlSubForm::cargar ( "SELECT * FROM comparticulo, articulo WHERE comparticulo.idarticulo=" + mdb_idarticulo + " AND articulo.idarticulo = comparticulo.idcomponente" );
-    _depura ( "END ListCompActiculo::cargar", 0 );
+    blDebug ( "END ListCompActiculo::cargar", 0 );
 }
 
 

@@ -43,7 +43,7 @@ public:
 
 public slots:
     virtual void cargar() {
-        _depura ( "ListZonaComercialSubForm::cargar\n", 0 );
+        blDebug ( "ListZonaComercialSubForm::cargar\n", 0 );
         BlSubForm::cargar ( "SELECT * FROM zonacomercial" );
     };
 };

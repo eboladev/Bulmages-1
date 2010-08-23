@@ -34,7 +34,7 @@
 BcCanalSeleccionarView::BcCanalSeleccionarView ( BcCompany *emp, QWidget *parent )
         : QDialog ( parent ), BlMainCompanyPointer ( emp )
 {
-    _depura ( "BcCanalSeleccionarView::BcCanalSeleccionarView", 0 );
+    blDebug ( "BcCanalSeleccionarView::BcCanalSeleccionarView", 0 );
     setupUi ( this );
     numdigitos = ( ( BcCompany * ) mainCompany() ) ->numdigitosempresa();
     m_iterador = new QTreeWidgetItemIterator ( m_listCanales );
@@ -46,7 +46,7 @@ BcCanalSeleccionarView::BcCanalSeleccionarView ( BcCompany *emp, QWidget *parent
     m_listCanales->setHeaderLabels ( etiquetas );
 
     cargacanales();
-    _depura ( "END BcCanalSeleccionarView::BcCanalSeleccionarView", 0 );
+    blDebug ( "END BcCanalSeleccionarView::BcCanalSeleccionarView", 0 );
 }
 
 
@@ -55,9 +55,9 @@ BcCanalSeleccionarView::BcCanalSeleccionarView ( BcCompany *emp, QWidget *parent
 **/
 BcCanalSeleccionarView::~BcCanalSeleccionarView()
 {
-    _depura ( "BcCanalSeleccionarView::~BcCanalSeleccionarView", 0 );
+    blDebug ( "BcCanalSeleccionarView::~BcCanalSeleccionarView", 0 );
     delete m_iterador;
-    _depura ( "END BcCanalSeleccionarView::~BcCanalSeleccionarView", 0 );
+    blDebug ( "END BcCanalSeleccionarView::~BcCanalSeleccionarView", 0 );
 }
 
 
@@ -66,7 +66,7 @@ BcCanalSeleccionarView::~BcCanalSeleccionarView()
 **/
 void BcCanalSeleccionarView::cargacanales()
 {
-    _depura ( "BcCanalSeleccionarView::cargacanales", 0 );
+    blDebug ( "BcCanalSeleccionarView::cargacanales", 0 );
     QMap <int, QTreeWidgetItem *> Lista;
     QTreeWidgetItem *it;
 
@@ -90,7 +90,7 @@ void BcCanalSeleccionarView::cargacanales()
     } // end while
 
     delete cursoraux1;
-    _depura ( "END BcCanalSeleccionarView::cargacanales", 0 );
+    blDebug ( "END BcCanalSeleccionarView::cargacanales", 0 );
 }
 
 
@@ -102,10 +102,10 @@ void BcCanalSeleccionarView::cargacanales()
 **/
 int BcCanalSeleccionarView::firstcanal()
 {
-    _depura ( "BcCanalSeleccionarView::firstcanal", 0 );
+    blDebug ( "BcCanalSeleccionarView::firstcanal", 0 );
     delete m_iterador;
     m_iterador = new QTreeWidgetItemIterator ( m_listCanales );
-    _depura ( "END BcCanalSeleccionarView::firstcanal", 0 );
+    blDebug ( "END BcCanalSeleccionarView::firstcanal", 0 );
     return nextcanal();
 }
 
@@ -116,7 +116,7 @@ int BcCanalSeleccionarView::firstcanal()
 **/
 int BcCanalSeleccionarView::nextcanal()
 {
-    _depura ( "BcCanalSeleccionarView::nextcanal", 0 );
+    blDebug ( "BcCanalSeleccionarView::nextcanal", 0 );
     int idcanal = 0;
     fprintf ( stderr, "nextcanal\n" );
     while ( ( **m_iterador ) && idcanal == 0 ) {
@@ -128,7 +128,7 @@ int BcCanalSeleccionarView::nextcanal()
         ++ ( *m_iterador );
     } // end while
 
-    _depura ( "END BcCanalSeleccionarView::nextcanal", 0 );
+    blDebug ( "END BcCanalSeleccionarView::nextcanal", 0 );
     return idcanal;
 }
 
@@ -139,7 +139,7 @@ int BcCanalSeleccionarView::nextcanal()
 **/
 QString BcCanalSeleccionarView::cadcanal()
 {
-    _depura ( "BcCanalSeleccionarView::cadcanal", 0 );
+    blDebug ( "BcCanalSeleccionarView::cadcanal", 0 );
 
     int idcanal;
     QString ccanales = "";
@@ -153,7 +153,7 @@ QString BcCanalSeleccionarView::cadcanal()
         idcanal = nextcanal();
     } // end while
 
-    _depura ( "END BcCanalSeleccionarView::cadcanal", 0 );
+    blDebug ( "END BcCanalSeleccionarView::cadcanal", 0 );
     return ccanales;
 }
 
@@ -164,7 +164,7 @@ QString BcCanalSeleccionarView::cadcanal()
 **/
 QString BcCanalSeleccionarView::nomcanal()
 {
-    _depura ( "BcCanalSeleccionarView::nomcanal", 0 );
+    blDebug ( "BcCanalSeleccionarView::nomcanal", 0 );
     QTreeWidgetItemIterator m_iterador ( m_listCanales );
     QString value = "";
 
@@ -173,7 +173,7 @@ QString BcCanalSeleccionarView::nomcanal()
     } // end if
 
     delete *m_iterador;
-    _depura ( "END BcCanalSeleccionarView::nomcanal", 0 );
+    blDebug ( "END BcCanalSeleccionarView::nomcanal", 0 );
     return value;
 }
 
@@ -183,7 +183,7 @@ QString BcCanalSeleccionarView::nomcanal()
 **/
 void BcCanalSeleccionarView::on_mui_todo_clicked()
 {
-    _depura ( "BcCanalSeleccionarView::on_mui_todo_clicked", 0 );
+    blDebug ( "BcCanalSeleccionarView::on_mui_todo_clicked", 0 );
     QTreeWidgetItemIterator m_iterador ( m_listCanales );
 
     while ( *m_iterador ) {
@@ -192,7 +192,7 @@ void BcCanalSeleccionarView::on_mui_todo_clicked()
     }
 
     delete *m_iterador;
-    _depura ( "END BcCanalSeleccionarView::on_mui_todo_clicked", 0 );
+    blDebug ( "END BcCanalSeleccionarView::on_mui_todo_clicked", 0 );
 }
 
 
@@ -201,7 +201,7 @@ void BcCanalSeleccionarView::on_mui_todo_clicked()
 **/
 void BcCanalSeleccionarView::on_mui_nada_clicked()
 {
-    _depura ( "BcCanalSeleccionarView::on_mui_nada_clicked", 0 );
+    blDebug ( "BcCanalSeleccionarView::on_mui_nada_clicked", 0 );
 
     QTreeWidgetItemIterator m_iterador ( m_listCanales );
 
@@ -211,7 +211,7 @@ void BcCanalSeleccionarView::on_mui_nada_clicked()
     }
 
     delete *m_iterador;
-    _depura ( "END BcCanalSeleccionarView::on_mui_nada_clicked", 0 );
+    blDebug ( "END BcCanalSeleccionarView::on_mui_nada_clicked", 0 );
 }
 
 
@@ -220,7 +220,7 @@ void BcCanalSeleccionarView::on_mui_nada_clicked()
 **/
 void BcCanalSeleccionarView::on_mui_invertir_clicked()
 {
-    _depura ( "BcCanalSeleccionarView::on_mui_invertir_clicked", 0 );
+    blDebug ( "BcCanalSeleccionarView::on_mui_invertir_clicked", 0 );
     QTreeWidgetItemIterator m_iterador ( m_listCanales );
 
     while ( *m_iterador ) {
@@ -233,6 +233,6 @@ void BcCanalSeleccionarView::on_mui_invertir_clicked()
     } // end while
 
     delete *m_iterador;
-    _depura ( "END BcCanalSeleccionarView::on_mui_invertir_clicked", 0 );
+    blDebug ( "END BcCanalSeleccionarView::on_mui_invertir_clicked", 0 );
 }
 

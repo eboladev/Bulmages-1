@@ -42,7 +42,7 @@
 ListModificadoresView::ListModificadoresView ( BfCompany *comp, QWidget *parent )
         : BfForm ( comp, parent )
 {
-    _depura ( "INIT_ListModificadoresView::ListModificadoresView", 1 );
+    blDebug ( "INIT_ListModificadoresView::ListModificadoresView", 1 );
     setTitleName ( _ ( "Serie de Factura" ) );
     setDbTableName ( "serie_factura" );
     setAttribute ( Qt::WA_DeleteOnClose );
@@ -50,7 +50,7 @@ ListModificadoresView::ListModificadoresView ( BfCompany *comp, QWidget *parent 
     mui_listado->setMainCompany ( comp );
     mui_listado->cargar();
     meteWindow ( windowTitle(), this );
-    _depura ( "END_ListModificadoresView::ListModificadoresView", 1 );
+    blDebug ( "END_ListModificadoresView::ListModificadoresView", 1 );
 }
 
 
@@ -59,8 +59,8 @@ ListModificadoresView::ListModificadoresView ( BfCompany *comp, QWidget *parent 
 **/
 ListModificadoresView::~ListModificadoresView()
 {
-    _depura ( "ListModificadoresView::~ListModificadoresView", 0 );
-    _depura ( "END ListModificadoresView::~ListModificadoresView", 0 );
+    blDebug ( "ListModificadoresView::~ListModificadoresView", 0 );
+    blDebug ( "END ListModificadoresView::~ListModificadoresView", 0 );
 }
 
 
@@ -71,13 +71,13 @@ ListModificadoresView::~ListModificadoresView()
 **/
 ListModificadoresSubForm::ListModificadoresSubForm ( QWidget *parent ) : BfSubForm ( parent )
 {
-    _depura ( "ListModificadoresSubForm::ListModificadoresSubForm", 0 );
+    blDebug ( "ListModificadoresSubForm::ListModificadoresSubForm", 0 );
     setDbTableName ( "modificador" );
     setDbFieldId ( "idmodificador" );
     addSubFormHeader ( "idmodificador", BlDbField::DbInt, BlDbField::DbPrimaryKey, BlSubFormHeader::DbHideView | BlSubFormHeader::DbDisableView, "Id" );
     addSubFormHeader ( "varpreciomodificador", BlDbField::DbNumeric, BlDbField::DbNotNull, BlSubFormHeader::DbNone, _ ( "Alt. Precio" ) );
     addSubFormHeader ( "nombremodificador", BlDbField::DbVarChar, BlDbField::DbNotNull, BlSubFormHeader::DbNone, _ ( "Nombre Modificador" ) );
     setInsert ( TRUE );
-    _depura ( "END ListModificadoresSubForm::ListModificadoresSubForm", 0 );
+    blDebug ( "END ListModificadoresSubForm::ListModificadoresSubForm", 0 );
 }
 

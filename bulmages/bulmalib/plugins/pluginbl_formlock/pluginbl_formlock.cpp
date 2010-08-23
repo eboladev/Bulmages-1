@@ -47,8 +47,8 @@
 **/
 int entryPoint ( QMainWindow *bcont )
 {
-    _depura ( "Entrada del plugin Bloqueos", 0 );
-    _depura ( "Iniciado correctamente el plugin Bloqueos", 10 );
+    blDebug ( "Entrada del plugin Bloqueos", 0 );
+    blDebug ( "Iniciado correctamente el plugin Bloqueos", 10 );
 
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale ( LC_ALL, "" );
@@ -69,7 +69,7 @@ int entryPoint ( QMainWindow *bcont )
 **/
 int BlForm_cargar ( BlForm *ficha )
 {
-    _depura ( "Plugin formlock::BlForm_cargar", 0 );
+    blDebug ( "Plugin formlock::BlForm_cargar", 0 );
 
     QString table_dot_id = QString("%1.%2").arg(ficha->tableName()).arg(ficha->fieldId());
     QString query;
@@ -108,7 +108,7 @@ int BlForm_cargar ( BlForm *ficha )
     } // end if
 
     delete cur1;
-    _depura ( "END Plugin formlock::BlForm_cargar", 0 );
+    blDebug ( "END Plugin formlock::BlForm_cargar", 0 );
     return 0;
 }
 
@@ -120,7 +120,7 @@ int BlForm_cargar ( BlForm *ficha )
 **/
 int BlForm_DesBlForm ( BlForm *ficha )
 {
-    _depura ( "Plugin formlock::BlForm_DesBlForm", 0 );
+    blDebug ( "Plugin formlock::BlForm_DesBlForm", 0 );
 
     if (!ficha->fieldId().isEmpty()) {
     if ( ficha->dbValue(ficha->fieldId()) != "") {
@@ -150,7 +150,7 @@ int BlForm_DesBlForm ( BlForm *ficha )
 	} // end if
     } // end if
     } // end if
-    _depura ( "END Plugin formlock::BlForm_DesBlForm", 0 );
+    blDebug ( "END Plugin formlock::BlForm_DesBlForm", 0 );
     return 0;
 }
 
@@ -162,8 +162,8 @@ int BlForm_DesBlForm ( BlForm *ficha )
 **/
 int BlForm_BlForm ( BlForm *l )
 {
-    _depura ( "Plugin formlock::BlForm_BlForm", 0 );
+    blDebug ( "Plugin formlock::BlForm_BlForm", 0 );
     new BloqMenu ( l );
-    _depura ( "END Plugin formlock::BlForm_BlForm", 0 );
+    blDebug ( "END Plugin formlock::BlForm_BlForm", 0 );
     return 0;
 }

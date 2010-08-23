@@ -37,8 +37,8 @@ AlbaranClienteList *g_albaranClienteList = NULL;
 **/
 mypluginalb::mypluginalb()
 {
-    _depura ( "mypluginalb::mypluginalb", 0 );
-    _depura ( "END mypluginalb::mypluginalb", 0 );
+    blDebug ( "mypluginalb::mypluginalb", 0 );
+    blDebug ( "END mypluginalb::mypluginalb", 0 );
 }
 
 
@@ -47,8 +47,8 @@ mypluginalb::mypluginalb()
 **/
 mypluginalb::~mypluginalb()
 {
-    _depura ( "mypluginalb::~mypluginalb", 0 );
-    _depura ( "END mypluginalb::~mypluginalb", 0 );
+    blDebug ( "mypluginalb::~mypluginalb", 0 );
+    blDebug ( "END mypluginalb::~mypluginalb", 0 );
 }
 
 
@@ -57,12 +57,12 @@ mypluginalb::~mypluginalb()
 **/
 void mypluginalb::elslot()
 {
-    _depura ( "mypluginalb::elslot", 0 );
+    blDebug ( "mypluginalb::elslot", 0 );
     if ( g_albaranClienteList ) {
         g_albaranClienteList->hide();
         g_albaranClienteList->show();
     }// end if
-    _depura ( "END mypluginalb::elslot", 0 );
+    blDebug ( "END mypluginalb::elslot", 0 );
 }
 
 ///
@@ -70,12 +70,12 @@ void mypluginalb::elslot()
 **/
 void mypluginalb::elslot1()
 {
-    _depura ( "mypluginalb::elslot1", 0 );
+    blDebug ( "mypluginalb::elslot1", 0 );
     AlbaranClienteView * bud = new AlbaranClienteView ( ( BfCompany * ) mainCompany(), NULL );
     mainCompany() ->m_pWorkspace->addWindow ( bud );
     bud->inicializar();
     bud->show();
-    _depura ( "END mypluginalb::elslot1", 0 );
+    blDebug ( "END mypluginalb::elslot1", 0 );
 }
 
 
@@ -86,7 +86,7 @@ void mypluginalb::elslot1()
 **/
 void mypluginalb::inicializa ( BfBulmaFact *bges )
 {
-    _depura ( "mypluginalb::inicializa", 0 );
+    blDebug ( "mypluginalb::inicializa", 0 );
 
     if ( bges->company()->hasTablePrivilege ( "albaran", "SELECT" ) ) {
 
@@ -114,7 +114,7 @@ void mypluginalb::inicializa ( BfBulmaFact *bges )
 
 
     }// end if
-    _depura ( "END mypluginalb::inicializa", 0 );
+    blDebug ( "END mypluginalb::inicializa", 0 );
 }
 
 
@@ -125,7 +125,7 @@ void mypluginalb::inicializa ( BfBulmaFact *bges )
 **/
 int entryPoint ( BfBulmaFact *bges )
 {
-    _depura ( "Punto de Entrada del plugin de Albaranes a Clientes\n", 0 );
+    blDebug ( "Punto de Entrada del plugin de Albaranes a Clientes\n", 0 );
 
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale ( LC_ALL, "" );
@@ -196,7 +196,7 @@ int BfBuscarReferencia_on_mui_abrirtodo_clicked_Post ( BfBuscarReferencia *ref )
 int PedidoClienteView_PedidoClienteView ( PedidoClienteView *l )
 {
 
-    _depura ( "PluginFactura_PedidoClienteView_PedidoClienteView", 0 );
+    blDebug ( "PluginFactura_PedidoClienteView_PedidoClienteView", 0 );
 
     GenAlbQToolButton *mui_exporta_efactura2 = new GenAlbQToolButton ( l, l->mui_plugbotones );
 
@@ -210,7 +210,7 @@ int PedidoClienteView_PedidoClienteView ( PedidoClienteView *l )
     }// end if
     m_hboxLayout1->addWidget ( mui_exporta_efactura2 );
 
-    _depura ( "END PluginFactura_PedidoClienteView_PedidoClienteView", 0 );
+    blDebug ( "END PluginFactura_PedidoClienteView_PedidoClienteView", 0 );
 
     return 0;
 }
@@ -224,7 +224,7 @@ int PedidoClienteView_PedidoClienteView ( PedidoClienteView *l )
 int PresupuestoView_PresupuestoView ( PresupuestoView *l )
 {
 
-    _depura ( "PluginFactura_PresupuestoView_PresupuestoView", 0 );
+    blDebug ( "PluginFactura_PresupuestoView_PresupuestoView", 0 );
 
     GenAlbQToolButton *mui_exporta_efactura2 = new GenAlbQToolButton ( l, l->mui_plugbotones );
 
@@ -238,7 +238,7 @@ int PresupuestoView_PresupuestoView ( PresupuestoView *l )
     }// end if
     m_hboxLayout1->addWidget ( mui_exporta_efactura2 );
 
-    _depura ( "END PluginFactura_PresupuestoView_PresupuestoView", 0 );
+    blDebug ( "END PluginFactura_PresupuestoView_PresupuestoView", 0 );
 
     return 0;
 }

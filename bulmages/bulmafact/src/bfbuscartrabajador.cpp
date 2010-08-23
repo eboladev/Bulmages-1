@@ -34,13 +34,13 @@
 BfBuscarTrabajador::BfBuscarTrabajador ( QWidget *parent )
         : BlComboBox ( parent )
 {
-    _depura ( "BfBuscarTrabajador::BfBuscarTrabajador", 0 );
+    blDebug ( "BfBuscarTrabajador::BfBuscarTrabajador", 0 );
 
     m_comboRecordSet = NULL;
     m_table = "trabajador";
     m_null = TRUE;
 
-    _depura ( "END BfBuscarTrabajador::BfBuscarTrabajador", 0 );
+    blDebug ( "END BfBuscarTrabajador::BfBuscarTrabajador", 0 );
 }
 
 
@@ -50,8 +50,8 @@ BfBuscarTrabajador::BfBuscarTrabajador ( QWidget *parent )
 **/
 BfBuscarTrabajador::~BfBuscarTrabajador()
 {
-    _depura ( "BfBuscarTrabajador::~BfBuscarTrabajador", 0 );
-    _depura ( "END BfBuscarTrabajador::~BfBuscarTrabajador", 0 );
+    blDebug ( "BfBuscarTrabajador::~BfBuscarTrabajador", 0 );
+    blDebug ( "END BfBuscarTrabajador::~BfBuscarTrabajador", 0 );
 }
 
 
@@ -65,7 +65,7 @@ BfBuscarTrabajador::~BfBuscarTrabajador()
 **/
 void BfBuscarTrabajador::setId ( QString idtrabajador )
 {
-    _depura ( "BfBuscarTrabajador::setidtrabajador", 0 );
+    blDebug ( "BfBuscarTrabajador::setidtrabajador", 0 );
 
     /// Si lo que se pasa como forma de pago es un valor malo cogemos la forma de pago por defecto.
     if ( idtrabajador == "0" ) {
@@ -96,7 +96,7 @@ void BfBuscarTrabajador::setId ( QString idtrabajador )
 
     setCurrentIndex ( i1 );
 
-    _depura ( "END BfBuscarTrabajador::setidtrabajador", 0 );
+    blDebug ( "END BfBuscarTrabajador::setidtrabajador", 0 );
 }
 
 
@@ -108,8 +108,8 @@ void BfBuscarTrabajador::setId ( QString idtrabajador )
 **/
 QString BfBuscarTrabajador::id()
 {
-    _depura ( "BfBuscarTrabajador::idtrabajador", 0 );
-    _depura ( "END BfBuscarTrabajador::idtrabajador", 0 );
+    blDebug ( "BfBuscarTrabajador::idtrabajador", 0 );
+    blDebug ( "END BfBuscarTrabajador::idtrabajador", 0 );
 
     if ( !m_comboRecordSet ) {
         return "0";
@@ -128,7 +128,7 @@ QString BfBuscarTrabajador::id()
 **/
 void BfBuscarTrabajador::m_activated ( int index )
 {
-    _depura ( "BfBuscarTrabajador::m_activated", 0 );
+    blDebug ( "BfBuscarTrabajador::m_activated", 0 );
 
     if ( index > 0 ) {
         emit ( valueChanged ( m_comboRecordSet->valor ( "idtrabajador", index - 1 ) ) );
@@ -136,7 +136,7 @@ void BfBuscarTrabajador::m_activated ( int index )
         emit ( valueChanged ( "" ) );
     } // end if
 
-    _depura ( "END BfBuscarTrabajador::m_activated", 0 );
+    blDebug ( "END BfBuscarTrabajador::m_activated", 0 );
 }
 
 /// ========================= ITEM DELEGATE ===============================0
@@ -151,13 +151,13 @@ void BfBuscarTrabajador::m_activated ( int index )
 BfBuscarTrabajadorDelegate::BfBuscarTrabajadorDelegate ( QWidget *parent )
         : BlComboBox ( parent )
 {
-    _depura ( "BfBuscarTrabajadorDelegate::BfBuscarTrabajadorDelegate", 0 );
+    blDebug ( "BfBuscarTrabajadorDelegate::BfBuscarTrabajadorDelegate", 0 );
 
     m_comboRecordSet = NULL;
     setSizeAdjustPolicy ( QComboBox::AdjustToContents );
     connect ( this, SIGNAL ( activated ( int ) ), this, SLOT ( m_activated ( int ) ) );
 
-    _depura ( "END BfBuscarTrabajadorDelegate::BfBuscarTrabajadorDelegate", 0 );
+    blDebug ( "END BfBuscarTrabajadorDelegate::BfBuscarTrabajadorDelegate", 0 );
 }
 
 
@@ -167,13 +167,13 @@ BfBuscarTrabajadorDelegate::BfBuscarTrabajadorDelegate ( QWidget *parent )
 **/
 BfBuscarTrabajadorDelegate::~BfBuscarTrabajadorDelegate()
 {
-    _depura ( "BfBuscarTrabajadorDelegate::~BfBuscarTrabajadorDelegate", 0 );
+    blDebug ( "BfBuscarTrabajadorDelegate::~BfBuscarTrabajadorDelegate", 0 );
 
     if ( m_comboRecordSet != NULL ) {
         delete m_comboRecordSet;
     } // end if
 
-    _depura ( "END BfBuscarTrabajadorDelegate::~BfBuscarTrabajadorDelegate", 0 );
+    blDebug ( "END BfBuscarTrabajadorDelegate::~BfBuscarTrabajadorDelegate", 0 );
 }
 
 
@@ -186,7 +186,7 @@ BfBuscarTrabajadorDelegate::~BfBuscarTrabajadorDelegate()
 **/
 void BfBuscarTrabajadorDelegate::set ( const QString &cod )
 {
-    _depura ( "BfBuscarTrabajadorDelegate::set", 0 );
+    blDebug ( "BfBuscarTrabajadorDelegate::set", 0 );
     int index = 0;
     QString codigo = cod;
 
@@ -207,6 +207,6 @@ void BfBuscarTrabajadorDelegate::set ( const QString &cod )
     setEditText ( cod );
     setCurrentIndex ( index );
 
-    _depura ( "END BfBuscarTrabajadorDelegate::set", 0 );
+    blDebug ( "END BfBuscarTrabajadorDelegate::set", 0 );
 }
 

@@ -35,7 +35,7 @@
 ListProyectosView::ListProyectosView ( BcCompany *emp, QWidget *parent,  Qt::WFlags flag, edmode editmodo )
         : BlFormList ( emp, parent, flag, editmodo )
 {
-    _depura ( "ListProyectosView::ListProyectosView", 0 );
+    blDebug ( "ListProyectosView::ListProyectosView", 0 );
 
     this->setAttribute ( Qt::WA_DeleteOnClose );
     setupUi ( this );
@@ -60,7 +60,7 @@ ListProyectosView::ListProyectosView ( BcCompany *emp, QWidget *parent,  Qt::WFl
         mui_borrar->setHidden ( TRUE );
     } // end if
 
-    _depura ( "END ListProyectosView::ListProyectosView", 0 );
+    blDebug ( "END ListProyectosView::ListProyectosView", 0 );
 }
 
 
@@ -71,9 +71,9 @@ ListProyectosView::ListProyectosView ( BcCompany *emp, QWidget *parent,  Qt::WFl
 **/
 ListProyectosView::~ListProyectosView()
 {
-    _depura ( "ListProyectosView::~ListProyectosView", 0 );
+    blDebug ( "ListProyectosView::~ListProyectosView", 0 );
     sacaWindow();
-    _depura ( "END ListProyectosView::~ListProyectosView", 0 );
+    blDebug ( "END ListProyectosView::~ListProyectosView", 0 );
 }
 
 
@@ -84,11 +84,11 @@ ListProyectosView::~ListProyectosView()
 **/
 void ListProyectosView::crear()
 {
-    _depura ( "ListProyectosView::on_mui_crear_clicked", 0 );
+    blDebug ( "ListProyectosView::on_mui_crear_clicked", 0 );
     ProyectoView *proj = new ProyectoView ( ( BcCompany * ) mainCompany(), 0 );
     mainCompany() ->pWorkspace() ->addWindow ( proj );
     proj->show();
-    _depura ( "END ListProyectosView::on_mui_crear_clicked", 0 );
+    blDebug ( "END ListProyectosView::on_mui_crear_clicked", 0 );
 }
 
 
@@ -98,7 +98,7 @@ void ListProyectosView::crear()
 **/
 void ListProyectosView::borrar()
 {
-    _depura ( "ListProyectosView::on_mui_borrar_clicked", 0 );
+    blDebug ( "ListProyectosView::on_mui_borrar_clicked", 0 );
     try {
         QString codigo = mui_listado->dbValue ( "idamortizacion" );
         if ( codigo != "" ) {
@@ -111,9 +111,9 @@ void ListProyectosView::borrar()
             presentar();
         } // end if
     } catch ( ... ) {
-        _depura ( _ ( "Error al borrar la amortizacion" ), 2 );
+        blDebug ( _ ( "Error al borrar la amortizacion" ), 2 );
     } // end try
-    _depura ( "END ListProyectosView::on_mui_borrar_clicked", 0 );
+    blDebug ( "END ListProyectosView::on_mui_borrar_clicked", 0 );
 }
 
 
@@ -130,7 +130,7 @@ void ListProyectosView::borrar()
 **/
 void ListProyectosView::editar ( int row )
 {
-    _depura ( "ListProyectosView::editAmortizacion " + row, 0 );
+    blDebug ( "ListProyectosView::editAmortizacion " + row, 0 );
     mdb_idpresupuestoc = mui_listado->dbValue ( "idpresupuestoc" );
     mdb_nompresupuestoc = mui_listado->dbValue ( "nompresupuestoc" );
     if ( modoEdicion() ) {
@@ -143,6 +143,6 @@ void ListProyectosView::editar ( int row )
         close();
         emit ( selected ( mdb_idpresupuestoc ) );
     } // end if
-    _depura ( "END ListProyectosView::editAmortizacion", 0 );
+    blDebug ( "END ListProyectosView::editAmortizacion", 0 );
 }
 

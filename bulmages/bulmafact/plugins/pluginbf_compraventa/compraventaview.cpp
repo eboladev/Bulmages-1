@@ -55,7 +55,7 @@
 CompraVentaView::CompraVentaView ( BfCompany *comp, QWidget *parent )
         : BfForm ( comp, parent )
 {
-    _depura ( "CompraVentaView::CompraVentaView", 0 );
+    blDebug ( "CompraVentaView::CompraVentaView", 0 );
     setAttribute ( Qt::WA_DeleteOnClose );
     try {
         setupUi ( this );
@@ -136,7 +136,7 @@ CompraVentaView::CompraVentaView ( BfCompany *comp, QWidget *parent )
     } catch ( ... ) {
         mensajeInfo ( _ ( "Error al crear el albaran a cliente" ), this );
     } // end try
-    _depura ( "END CompraVentaView::CompraVentaView", 0 );
+    blDebug ( "END CompraVentaView::CompraVentaView", 0 );
 }
 
 
@@ -149,9 +149,9 @@ CompraVentaView::CompraVentaView ( BfCompany *comp, QWidget *parent )
 **/
 CompraVentaView::~CompraVentaView()
 {
-    _depura ( "CompraVentaView::~CompraVentaView", 0 );
+    blDebug ( "CompraVentaView::~CompraVentaView", 0 );
     delete m_albaranp;
-    _depura ( "END CompraVentaView::~CompraVentaView", 0 );
+    blDebug ( "END CompraVentaView::~CompraVentaView", 0 );
 }
 
 
@@ -160,11 +160,11 @@ CompraVentaView::~CompraVentaView()
 **/
 void CompraVentaView::inicializar()
 {
-    _depura ( "CompraVentaView::inicializar", 0 );
+    blDebug ( "CompraVentaView::inicializar", 0 );
     subform2->inicializar();
     m_descuentos->inicializar();
     dialogChanges_cargaInicial();
-    _depura ( "END CompraVentaView::inicializar", 0 );
+    blDebug ( "END CompraVentaView::inicializar", 0 );
 }
 
 
@@ -180,14 +180,14 @@ void CompraVentaView::inicializar()
 **/
 void CompraVentaView::pintatotales ( BlFixed iva, BlFixed base, BlFixed total, BlFixed desc, BlFixed irpf, BlFixed reqeq )
 {
-    _depura ( "CompraVentaView::pintatotales", 0 );
+    blDebug ( "CompraVentaView::pintatotales", 0 );
     m_totalBases->setText ( base.toQString() );
     m_totalTaxes->setText ( iva.toQString() );
     m_totalalbaran->setText ( total.toQString() );
     m_totalDiscounts->setText ( desc.toQString() );
     m_totalIRPF->setText ( QString ( irpf.toQString() ) );
     m_totalReqEq->setText ( QString ( reqeq.toQString() ) );
-    _depura ( "END CompraVentaView::pintatotales", 0 );
+    blDebug ( "END CompraVentaView::pintatotales", 0 );
 }
 
 
@@ -201,7 +201,7 @@ void CompraVentaView::pintatotales ( BlFixed iva, BlFixed base, BlFixed total, B
 **/
 void CompraVentaView::on_mui_cobrar_clicked()
 {
-    _depura ( "CompraVentaView::on_mui_cobrar_clicked", 0 );
+    blDebug ( "CompraVentaView::on_mui_cobrar_clicked", 0 );
     recogeValores();
     CobroView *bud = new CobroView ( mainCompany(), 0 );
     mainCompany()->pWorkspace()->addWindow ( bud );
@@ -211,7 +211,7 @@ void CompraVentaView::on_mui_cobrar_clicked()
     bud->setDbValue ( "comentcobro", dbValue ( "descalbaran" ) );
     bud->pintar();
     bud->show();
-    _depura ( "END CompraVentaView::on_mui_cobrar_clicked", 0 );
+    blDebug ( "END CompraVentaView::on_mui_cobrar_clicked", 0 );
 }
 
 
@@ -221,7 +221,7 @@ void CompraVentaView::on_mui_cobrar_clicked()
 **/
 void CompraVentaView::on_mui_idcliente_valueChanged ( QString id )
 {
-    _depura ( "CompraVentaView::on_mui_idcliente_valueChanged", 0 );
+    blDebug ( "CompraVentaView::on_mui_idcliente_valueChanged", 0 );
     subform2->setIdCliente ( id );
     subform3->setIdCliente ( id );
 
@@ -245,7 +245,7 @@ void CompraVentaView::on_mui_idcliente_valueChanged ( QString id )
         m_descuentos3->setIdProveedor ( "" );
     } // end if
 
-    _depura ( "END CompraVentaView::on_m_cliente_valueChanged", 0 );
+    blDebug ( "END CompraVentaView::on_m_cliente_valueChanged", 0 );
 }
 
 
@@ -256,10 +256,10 @@ void CompraVentaView::on_mui_idcliente_valueChanged ( QString id )
 **/
 void CompraVentaView::on_mui_idalmacen_valueChanged ( QString id )
 {
-    _depura ( "CompraVentaView::on_mui_idalmacen_valueChanged", 2 );
+    blDebug ( "CompraVentaView::on_mui_idalmacen_valueChanged", 2 );
     subform2->setIdAlmacen ( id );
     subform3->setIdAlmacen ( id );
-    _depura ( "END CompraVentaView::on_mui_idalmacen_valueChanged", 2 );
+    blDebug ( "END CompraVentaView::on_mui_idalmacen_valueChanged", 2 );
 }
 
 
@@ -268,9 +268,9 @@ void CompraVentaView::on_mui_idalmacen_valueChanged ( QString id )
 **/
 void CompraVentaView::s_pintaTotales()
 {
-    _depura ( "CompraVentaView::s_pintaTotales", 0 );
+    blDebug ( "CompraVentaView::s_pintaTotales", 0 );
     calculaypintatotales();
-    _depura ( "END CompraVentaView::s_pintaTotales", 0 );
+    blDebug ( "END CompraVentaView::s_pintaTotales", 0 );
 }
 
 
@@ -279,9 +279,9 @@ void CompraVentaView::s_pintaTotales()
 **/
 void CompraVentaView::on_m_descuentos_editFinish ( int, int )
 {
-    _depura ( "CompraVentaView::on_m_descuentos_editFinish", 0 );
+    blDebug ( "CompraVentaView::on_m_descuentos_editFinish", 0 );
     calculaypintatotales();
-    _depura ( "END CompraVentaView::on_m_descuentos_editFinish", 0 );
+    blDebug ( "END CompraVentaView::on_m_descuentos_editFinish", 0 );
 }
 
 
@@ -290,9 +290,9 @@ void CompraVentaView::on_m_descuentos_editFinish ( int, int )
 **/
 void CompraVentaView::on_subform2_editFinish ( int, int )
 {
-    _depura ( "CompraVentaView::on_subform2_editFinish", 0 );
+    blDebug ( "CompraVentaView::on_subform2_editFinish", 0 );
     calculaypintatotales();
-    _depura ( "END CompraVentaView::on_subform2_editFinish", 0 );
+    blDebug ( "END CompraVentaView::on_subform2_editFinish", 0 );
 }
 
 
@@ -310,10 +310,10 @@ void CompraVentaView::on_subform2_editFinish ( int, int )
 **/
 int CompraVentaView::borrarPre()
 {
-    _depura ( "CompraVentaView::borrar", 0 );
+    blDebug ( "CompraVentaView::borrar", 0 );
     m_listalineas->borrar();
     m_listadescuentos->borrar();
-    _depura ( "END CompraVentaView::borrar", 0 );
+    blDebug ( "END CompraVentaView::borrar", 0 );
     return 0;
 }
 
@@ -332,7 +332,7 @@ int CompraVentaView::borrarPre()
 **/
 int CompraVentaView::cargarPost ( QString idalbaran )
 {
-    _depura ( "CompraVentaView::cargar", 0 );
+    blDebug ( "CompraVentaView::cargar", 0 );
     try {
         m_listalineas->cargar ( idalbaran );
         m_listadescuentos->cargar ( idalbaran );
@@ -355,10 +355,10 @@ int CompraVentaView::cargarPost ( QString idalbaran )
         g_plugins->lanza ( "AlbaranCliente_cargarPost_Post", this );
 
         calculaypintatotales();
-        _depura ( "END CompraVentaView::cargar", 0 );
+        blDebug ( "END CompraVentaView::cargar", 0 );
         return 0;
     } catch ( ... ) {
-        _depura ( "error en la funcion CompraVentaView::cargar", 2 );
+        blDebug ( "error en la funcion CompraVentaView::cargar", 2 );
         return 0;
     } // end try
 }
@@ -378,7 +378,7 @@ int CompraVentaView::cargarPost ( QString idalbaran )
 **/
 int CompraVentaView::guardarPost()
 {
-    _depura ( "CompraVentaView::guardarPost", 0 );
+    blDebug ( "CompraVentaView::guardarPost", 0 );
     try {
 // setDbValue("idalmacen" , mdb_idalmacen->text());
 // BlDbRecord::guardar();
@@ -407,9 +407,9 @@ int CompraVentaView::guardarPost()
             generarFacturaProveedor();
         } // end if
 
-        _depura ( "END CompraVentaView::guardarPost", 0 );
+        blDebug ( "END CompraVentaView::guardarPost", 0 );
     } catch ( ... ) {
-        _depura ( "error en la funicon", 2 );
+        blDebug ( "error en la funicon", 2 );
     } // end try
     return 0;
 }
@@ -428,7 +428,7 @@ int CompraVentaView::guardarPost()
 **/
 void CompraVentaView::generarFacturaProveedor()
 {
-    _depura ( "AlbaranProveedorView::generarFacturaProveedor", 0 );
+    blDebug ( "AlbaranProveedorView::generarFacturaProveedor", 0 );
 
 
     FacturaProveedorView *bud = NULL;
@@ -535,7 +535,7 @@ void CompraVentaView::generarFacturaProveedor()
         if ( bud ) delete bud;
     } // end try
 
-    _depura ( "END CompraVentaView::generarFactura", 0 );
+    blDebug ( "END CompraVentaView::generarFactura", 0 );
 }
 
 
@@ -550,7 +550,7 @@ void CompraVentaView::generarFacturaProveedor()
 **/
 void CompraVentaView::generarFactura()
 {
-    _depura ( "AlbaranClienteView::generarFactura", 0 );
+    blDebug ( "AlbaranClienteView::generarFactura", 0 );
 
     FacturaView *bud = NULL;
     BlDbRecordSet *cur = NULL;
@@ -686,7 +686,7 @@ void CompraVentaView::generarFactura()
         if ( bud ) delete bud;
     } // end try
 
-    _depura ( "END AlbaranClienteView::generarFactura", 0 );
+    blDebug ( "END AlbaranClienteView::generarFactura", 0 );
 }
 
 
@@ -694,7 +694,7 @@ void CompraVentaView::generarFactura()
 void CompraVentaView::imprimir()
 {
 
-    _depura ( "BfForm::imprimir", 0 );
+    blDebug ( "BfForm::imprimir", 0 );
     try {
 
         /// Si devuelve 0 significa que el archivo RML se ha generado mal
@@ -703,7 +703,7 @@ void CompraVentaView::imprimir()
             invocaPDF ( "compraventa" );
         } // end if
 
-        _depura ( "END BfForm::imprimir", 0 );
+        blDebug ( "END BfForm::imprimir", 0 );
 
     } catch ( int e ) {
         if ( e == 100 ) {

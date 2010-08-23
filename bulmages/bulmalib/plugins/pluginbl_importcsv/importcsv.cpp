@@ -39,7 +39,7 @@
 ImportCSV::ImportCSV ( BlMainCompany *comp, QWidget *parent )
         : BlWidget ( comp, parent )
 {
-    _depura ( "ImportCSV::ImportCSV", 0 );
+    blDebug ( "ImportCSV::ImportCSV", 0 );
     setAttribute ( Qt::WA_DeleteOnClose );
     try {
         setupUi ( this );
@@ -49,17 +49,17 @@ ImportCSV::ImportCSV ( BlMainCompany *comp, QWidget *parent )
     } catch ( ... ) {
         mensajeInfo ( _ ( "Error al crear la ventana de importacion" ) );
     } // end try
-    _depura ( "END ImportCSV::ImportCSV", 0 );
+    blDebug ( "END ImportCSV::ImportCSV", 0 );
 }
 
 /** No precisa acciones adicionales en el destructor.
 */
 ImportCSV::~ImportCSV()
 {
-    _depura ( "ImportCSV::~ImportCSV", 0 );
+    blDebug ( "ImportCSV::~ImportCSV", 0 );
     /// ATENCION: Hacer esto es un error ya que puede machacar procesos dependientes del listado.
     // ((BfCompany *)mainCompany())->refreshCobrosCliente();
-    _depura ( "END ImportCSV::~ImportCSV", 0 );
+    blDebug ( "END ImportCSV::~ImportCSV", 0 );
 }
 
 void ImportCSV::on_mui_buscarArchivo_clicked()
@@ -73,7 +73,7 @@ void ImportCSV::on_mui_buscarArchivo_clicked()
 */
 void ImportCSV::on_mui_aceptar_clicked()
 {
-    _depura ( "ImportCSV::on_mui_aceptar_clicked", 0 );
+    blDebug ( "ImportCSV::on_mui_aceptar_clicked", 0 );
     mensajeInfo ( "aceptar pulsado" );
 
     QFile file ( mui_archivo->text() );
@@ -92,7 +92,7 @@ void ImportCSV::on_mui_aceptar_clicked()
     mainCompany()->commit();
     file.close();
 
-    _depura ( "END ImportCSV::on_mui_aceptar_clicked", 0 );
+    blDebug ( "END ImportCSV::on_mui_aceptar_clicked", 0 );
 }
 
 void ImportCSV::on_mui_cabeceras_stateChanged ( int state )

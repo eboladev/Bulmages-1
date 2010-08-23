@@ -37,10 +37,10 @@ MyDevButtonTD * g_plug;
 **/
 MyDevButtonTD::MyDevButtonTD ( const QString & text, QWidget * parent, BtCompany *emp ) : QPushButton ( text,  parent )
 {
-    _depura ( "MyDevButtonTD::MyDevButtonTD", 0 );
+    blDebug ( "MyDevButtonTD::MyDevButtonTD", 0 );
     m_emp = emp;
     connect ( this, SIGNAL ( released() ), this, SLOT ( on_click() ) );
-    _depura ( "END MyDevButtonTD::MyDevButtonTD", 0 );
+    blDebug ( "END MyDevButtonTD::MyDevButtonTD", 0 );
 }
 
 
@@ -49,8 +49,8 @@ MyDevButtonTD::MyDevButtonTD ( const QString & text, QWidget * parent, BtCompany
 **/
 MyDevButtonTD::~MyDevButtonTD()
 {
-    _depura ( "MyDevButtonTD::~MyDevButtonTD", 0 );
-    _depura ( "END MyDevButtonTD::~MyDevButtonTD", 0 );
+    blDebug ( "MyDevButtonTD::~MyDevButtonTD", 0 );
+    blDebug ( "END MyDevButtonTD::~MyDevButtonTD", 0 );
 }
 
 
@@ -60,7 +60,7 @@ MyDevButtonTD::~MyDevButtonTD()
 **/
 void MyDevButtonTD::on_click (  )
 {
-    _depura ( "MyDevButtonTD::on_click", 0 );
+    blDebug ( "MyDevButtonTD::on_click", 0 );
     QDialog *diag = new QDialog;
     TicketsDevueltos *camb = new TicketsDevueltos ( m_emp, diag );
     diag->setModal ( true );
@@ -78,7 +78,7 @@ void MyDevButtonTD::on_click (  )
 
     delete diag;
 
-    _depura ( "END MyDevButtonTD::on_click", 0 );
+    blDebug ( "END MyDevButtonTD::on_click", 0 );
 }
 
 
@@ -88,13 +88,13 @@ void MyDevButtonTD::on_click (  )
 **/
 int entryPoint ( BtBulmaTPV *tpv )
 {
-    _depura ( "entryPoint", 0 );
+    blDebug ( "entryPoint", 0 );
 
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale ( LC_ALL, "" );
     bindtextdomain ( "pluginbt_ticketdevuelto", g_confpr->valor ( CONF_DIR_TRADUCCION ).toAscii().constData() );
 
-    _depura ( "END entryPoint", 0 );
+    blDebug ( "END entryPoint", 0 );
     return 0;
 }
 

@@ -29,8 +29,8 @@
 **/
 BlWorkspace::BlWorkspace ( QWidget * )
 {
-    _depura ( "BlWorkspace::BlWorkspace", 0 );
-    _depura ( "END BlWorkspace::BlWorkspace", 0 );
+    blDebug ( "BlWorkspace::BlWorkspace", 0 );
+    blDebug ( "END BlWorkspace::BlWorkspace", 0 );
 }
 
 
@@ -39,8 +39,8 @@ BlWorkspace::BlWorkspace ( QWidget * )
 **/
 BlWorkspace::~BlWorkspace()
 {
-    _depura ( "BlWorkspace::~BlWorkspace", 0 );
-    _depura ( "END BlWorkspace::~BlWorkspace", 0 );
+    blDebug ( "BlWorkspace::~BlWorkspace", 0 );
+    blDebug ( "END BlWorkspace::~BlWorkspace", 0 );
 }
 
 
@@ -50,7 +50,7 @@ BlWorkspace::~BlWorkspace()
 **/
 void BlWorkspace::addWindow ( QWidget * w )
 {
-    _depura ( "BlWorkspace::addWindow", 0 );
+    blDebug ( "BlWorkspace::addWindow", 0 );
     int tamdispW;
     int tamdispH;
     int tamventanadecoW;
@@ -90,6 +90,6 @@ void BlWorkspace::addWindow ( QWidget * w )
     accionEsc->setShortcut ( _ ( "Esc" ) );
     connect ( accionEsc, SIGNAL ( triggered() ), w, SLOT ( close() ) );
     w->addAction ( accionEsc );
-    _depura ( "END BlWorkspace::addWindow", 0 );
+    blDebug ( "END BlWorkspace::addWindow", 0 );
 }
 

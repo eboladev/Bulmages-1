@@ -32,10 +32,10 @@
     ficheros de XML a la base de datos de BulmaCont. */
 BcAsientoInteligenteImportarXML::BcAsientoInteligenteImportarXML ( BcCompany *emp ) : QXmlDefaultHandler(), BlMainCompanyPointer ( emp )
 {
-    _depura ( "BcAsientoInteligenteImportarXML::BcAsientoInteligenteImportarXML", 0 );
+    blDebug ( "BcAsientoInteligenteImportarXML::BcAsientoInteligenteImportarXML", 0 );
     tag = "";
     data = "";
-    _depura ( "END BcAsientoInteligenteImportarXML::BcAsientoInteligenteImportarXML", 0 );
+    blDebug ( "END BcAsientoInteligenteImportarXML::BcAsientoInteligenteImportarXML", 0 );
 }
 
 /// Se ha encontrado en el parser del XML un tag de inicio.
@@ -50,7 +50,7 @@ BcAsientoInteligenteImportarXML::BcAsientoInteligenteImportarXML ( BcCompany *em
     parseo aun habiendo encontrado errores. */
 bool BcAsientoInteligenteImportarXML::startElement ( const QString&, const QString&, const QString& qName, const QXmlAttributes& )
 {
-    _depura ( "BcAsientoInteligenteImportarXML::startElement", 0 );
+    blDebug ( "BcAsientoInteligenteImportarXML::startElement", 0 );
     tag = qName;
     QString SQLQuery;
     if ( tag == "ainteligente" ) {
@@ -77,7 +77,7 @@ bool BcAsientoInteligenteImportarXML::startElement ( const QString&, const QStri
         } // end if
         delete cur;
     } // end if
-    _depura ( "END BcAsientoInteligenteImportarXML::startElement", 0 );
+    blDebug ( "END BcAsientoInteligenteImportarXML::startElement", 0 );
     return TRUE;
 }
 
@@ -97,7 +97,7 @@ bool BcAsientoInteligenteImportarXML::startElement ( const QString&, const QStri
   */
 bool BcAsientoInteligenteImportarXML::endElement ( const QString&, const QString&, const QString& qName )
 {
-    _depura ( "BcAsientoInteligenteImportarXML::endElement", 0 );
+    blDebug ( "BcAsientoInteligenteImportarXML::endElement", 0 );
     QString SQLQuery;
     if ( qName == "ainteligente" ) {
         SQLQuery.sprintf ( "UPDATE ainteligente SET descripcion = '%s' WHERE idainteligente = %s\n", tvalores["descripcion"].toAscii().constData(), tvalores["idainteligente"].toAscii().constData() );
@@ -157,7 +157,7 @@ bool BcAsientoInteligenteImportarXML::endElement ( const QString&, const QString
     } // end if
     tag = "";
     data = "";
-    _depura ( "END BcAsientoInteligenteImportarXML::endElement", 0 );
+    blDebug ( "END BcAsientoInteligenteImportarXML::endElement", 0 );
     return TRUE;
 }
 
@@ -171,12 +171,12 @@ bool BcAsientoInteligenteImportarXML::endElement ( const QString&, const QString
 **/
 bool BcAsientoInteligenteImportarXML::characters ( const QString& ch )
 {
-    _depura ( "BcAsientoInteligenteImportarXML::characters", 0 );
+    blDebug ( "BcAsientoInteligenteImportarXML::characters", 0 );
     if ( tag != "" ) {
         data = ch;
         tvalores[tag] = data;
     } // end if
-    _depura ( "END BcAsientoInteligenteImportarXML::characters", 0 );
+    blDebug ( "END BcAsientoInteligenteImportarXML::characters", 0 );
     return TRUE;
 }
 

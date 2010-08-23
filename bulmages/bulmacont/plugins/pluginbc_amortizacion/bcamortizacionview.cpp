@@ -37,7 +37,7 @@
 BcAmortizacionView::BcAmortizacionView ( BcCompany *emp, QWidget *parent )
         : BcForm ( emp, parent )
 {
-    _depura ( "BcAmortizacionView::BcAmortizacionView", 0 );
+    blDebug ( "BcAmortizacionView::BcAmortizacionView", 0 );
 
     this->setAttribute ( Qt::WA_DeleteOnClose );
     setupUi ( this );
@@ -102,7 +102,7 @@ BcAmortizacionView::BcAmortizacionView ( BcCompany *emp, QWidget *parent )
 
     /// Fin de nuevas amortizaciones
     meteWindow ( windowTitle(), this );
-    _depura ( "END BcAmortizacionView::BcAmortizacionView", 0 );
+    blDebug ( "END BcAmortizacionView::BcAmortizacionView", 0 );
 }
 
 
@@ -111,8 +111,8 @@ BcAmortizacionView::BcAmortizacionView ( BcCompany *emp, QWidget *parent )
 **/
 BcAmortizacionView::~BcAmortizacionView()
 {
-    _depura ( "BcAmortizacionView::~BcAmortizacionView", 0 );
-    _depura ( "END BcAmortizacionView::~BcAmortizacionView", 0 );
+    blDebug ( "BcAmortizacionView::~BcAmortizacionView", 0 );
+    blDebug ( "END BcAmortizacionView::~BcAmortizacionView", 0 );
 }
 
 
@@ -122,7 +122,7 @@ BcAmortizacionView::~BcAmortizacionView()
 **/
 int BcAmortizacionView::borrar()
 {
-    _depura ( "BcAmortizacionView::borrar", 0 );
+    blDebug ( "BcAmortizacionView::borrar", 0 );
     if ( m_idamortizacion != "" ) {
         QString query = "DELETE FROM linamortizacion WHERE idamortizacion = " + m_idamortizacion;
         mainCompany() ->runQuery ( query );
@@ -130,7 +130,7 @@ int BcAmortizacionView::borrar()
         mainCompany() ->runQuery ( query );
         close();
     } // end if
-    _depura ( "END BcAmortizacionView::borrar", 0 );
+    blDebug ( "END BcAmortizacionView::borrar", 0 );
     return 0;
 }
 
@@ -141,7 +141,7 @@ int BcAmortizacionView::borrar()
 **/
 int BcAmortizacionView::guardar()
 {
-    _depura ( "BcAmortizacionView::guardar", 0 );
+    blDebug ( "BcAmortizacionView::guardar", 0 );
     try {
         /// Guardamos los datos del formulario
         setDbValue ( "nomamortizacion", nomamortizacion->text() );
@@ -160,7 +160,7 @@ int BcAmortizacionView::guardar()
         mui_listcuotas->setColumnValue ( "idamortizacion", id );
         mui_listcuotas->guardar();
         cargar ( id );
-        _depura ( "END BcAmortizacionView::guardar", 0 );
+        blDebug ( "END BcAmortizacionView::guardar", 0 );
         return 0;
     } catch ( ... ) {
         mensajeInfo ( "Error en el guardado" );
@@ -177,7 +177,7 @@ int BcAmortizacionView::guardar()
 **/
 int BcAmortizacionView::cargar ( QString idamortizacion )
 {
-    _depura ( "BcAmortizacionView::cargar", 0, idamortizacion );
+    blDebug ( "BcAmortizacionView::cargar", 0, idamortizacion );
     try {
         m_idamortizacion = idamortizacion;
         BlDbRecord::cargar ( m_idamortizacion );
@@ -221,7 +221,7 @@ int BcAmortizacionView::cargar ( QString idamortizacion )
         dialogChanges_cargaInicial();
         mainCompany() ->meteWindow ( windowTitle() + dbValue ( "idamortizacion" ), this );
 
-        _depura ( "END BcAmortizacionView::cargar", 0 );
+        blDebug ( "END BcAmortizacionView::cargar", 0 );
         return 0;
     } catch ( ... ) {
         mensajeInfo ( _ ( "Error en la carga de la amortizacion" ) );
@@ -235,7 +235,7 @@ int BcAmortizacionView::cargar ( QString idamortizacion )
 **/
 void BcAmortizacionView::on_mui_btcalcular_clicked()
 {
-    _depura ( "BcAmortizacionView::calculaamortizacion", 0 );
+    blDebug ( "BcAmortizacionView::calculaamortizacion", 0 );
     /// Para hacer el c&iacute;rculo de los plazos de cada amortizaci&oacute;n
     /// Hay que obtener diversos datos.
     QDate f1cuota = blNormalizeDate ( fecha1cuota->text() );
@@ -357,7 +357,7 @@ void BcAmortizacionView::on_mui_btcalcular_clicked()
         } // end for
     } // end if
     mui_listcuotas->setInsert ( TRUE );
-    _depura ( "BcAmortizacionView::calculaamortizacion", 0 );
+    blDebug ( "BcAmortizacionView::calculaamortizacion", 0 );
 }
 
 
@@ -372,8 +372,8 @@ void BcAmortizacionView::on_mui_btcalcular_clicked()
 **/
 BcAmortizacionSubForm::BcAmortizacionSubForm ( QWidget *parent ) : BcSubForm ( parent )
 {
-    _depura ( "BcAmortizacionSubForm::BcAmortizacionSubForm", 0 );
-    _depura ( "END BcAmortizacionSubForm::BcAmortizacionSubForm", 0 );
+    blDebug ( "BcAmortizacionSubForm::BcAmortizacionSubForm", 0 );
+    blDebug ( "END BcAmortizacionSubForm::BcAmortizacionSubForm", 0 );
 }
 
 
@@ -382,8 +382,8 @@ BcAmortizacionSubForm::BcAmortizacionSubForm ( QWidget *parent ) : BcSubForm ( p
 **/
 BcAmortizacionSubForm::~BcAmortizacionSubForm()
 {
-    _depura ( "BcAmortizacionSubForm::~BcAmortizacionSubForm", 0 );
-    _depura ( "END BcAmortizacionSubForm::~BcAmortizacionSubForm", 0 );
+    blDebug ( "BcAmortizacionSubForm::~BcAmortizacionSubForm", 0 );
+    blDebug ( "END BcAmortizacionSubForm::~BcAmortizacionSubForm", 0 );
 }
 
 
@@ -393,7 +393,7 @@ BcAmortizacionSubForm::~BcAmortizacionSubForm()
 **/
 void BcAmortizacionSubForm::creaMenu ( QMenu *menu )
 {
-    _depura ( "BcAmortizacionSubForm::creaMenu", 0 );
+    blDebug ( "BcAmortizacionSubForm::creaMenu", 0 );
     QAction *opt1 = menu->addAction ( _ ( "Generar asiento" ) );
     menu->addSeparator();
     QAction *opt2 = menu->addAction ( _ ( "Ver asiento" ) );
@@ -412,7 +412,7 @@ void BcAmortizacionSubForm::creaMenu ( QMenu *menu )
         opt3->setEnabled ( TRUE );
         opt4->setEnabled ( TRUE );
     } // end if
-    _depura ( "END BcAmortizacionSubForm::creaMenu", 0 );
+    blDebug ( "END BcAmortizacionSubForm::creaMenu", 0 );
 }
 
 
@@ -423,7 +423,7 @@ void BcAmortizacionSubForm::creaMenu ( QMenu *menu )
 **/
 void BcAmortizacionSubForm::procesaMenu ( QAction *opcion )
 {
-    _depura ( "BcAmortizacionSubForm:: procesaMenu, funcion para ser sobreescrita", 0 );
+    blDebug ( "BcAmortizacionSubForm:: procesaMenu, funcion para ser sobreescrita", 0 );
 
     /// Si no se ha seleccionado ninguna accion salimos.
     if ( ! opcion )

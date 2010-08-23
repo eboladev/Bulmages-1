@@ -42,8 +42,8 @@
 
 int entryPoint ( QMainWindow *bcont )
 {
-    _depura ( "Entrada del plugin Bloqueos", 0 );
-    _depura ( "Iniciado correctamente el plugin Bloqueos", 10 );
+    blDebug ( "Entrada del plugin Bloqueos", 0 );
+    blDebug ( "Iniciado correctamente el plugin Bloqueos", 10 );
 
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale ( LC_ALL, "" );
@@ -54,9 +54,9 @@ int entryPoint ( QMainWindow *bcont )
 
 int BlForm_cargar ( BlForm *ficha )
 {
-    _depura ( "PluginBl_AttachDocument::BlForm_cargar", 0 );
+    blDebug ( "PluginBl_AttachDocument::BlForm_cargar", 0 );
     return 0;
-    _depura ( "END PluginBl_AttachDocument::BlForm_cargar", 0 );
+    blDebug ( "END PluginBl_AttachDocument::BlForm_cargar", 0 );
 }
 
 
@@ -72,8 +72,8 @@ int BlForm_DesFicha ( BlForm *ficha )
 **/
 int BlForm_BlForm ( BlForm *l )
 {
-    _depura ( "PluginBl_AttacgDocument::BlForm_BlForm", 0 );
+    blDebug ( "PluginBl_AttacgDocument::BlForm_BlForm", 0 );
     new ArchMenu ( l );
-    _depura ( "END PluginBl_AttachDocument::BlForm_BlForm", 0 );
+    blDebug ( "END PluginBl_AttachDocument::BlForm_BlForm", 0 );
     return 0;
 }

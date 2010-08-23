@@ -46,8 +46,8 @@ BcAsientoListView *g_listasientos;
 **/
 MyPluginAsiento::MyPluginAsiento()
 {
-    _depura ( "MyPluginAsiento::MyPluginAsiento", 0 );
-    _depura ( "END MyPluginAsiento::MyPluginAsiento", 0 );
+    blDebug ( "MyPluginAsiento::MyPluginAsiento", 0 );
+    blDebug ( "END MyPluginAsiento::MyPluginAsiento", 0 );
 }
 
 
@@ -56,8 +56,8 @@ MyPluginAsiento::MyPluginAsiento()
 **/
 MyPluginAsiento::~MyPluginAsiento()
 {
-    _depura ( "MyPluginAsiento::~MyPluginAsiento", 0 );
-    _depura ( "END MyPluginAsiento::~MyPluginAsiento", 0 );
+    blDebug ( "MyPluginAsiento::~MyPluginAsiento", 0 );
+    blDebug ( "END MyPluginAsiento::~MyPluginAsiento", 0 );
 }
 
 
@@ -66,14 +66,14 @@ MyPluginAsiento::~MyPluginAsiento()
 **/
 void MyPluginAsiento::elslot()
 {
-    _depura ( "MyPluginAsiento::elslot", 0 );
+    blDebug ( "MyPluginAsiento::elslot", 0 );
     if (g_asiento == NULL) {
       g_asiento = new BcAsientoView ( ( BcCompany * ) mainCompany(), 0 );
       mainCompany() ->pWorkspace() -> addWindow ( g_asiento );
     } // end if
     g_asiento->hide();
     g_asiento->show();
-    _depura ( "END MyPluginAsiento::elslot", 0 );
+    blDebug ( "END MyPluginAsiento::elslot", 0 );
 }
 
 
@@ -82,7 +82,7 @@ void MyPluginAsiento::elslot()
 **/
 void MyPluginAsiento::elslot1()
 {
-    _depura ( "MyPluginAsiento::elslot1", 0 );
+    blDebug ( "MyPluginAsiento::elslot1", 0 );
     if (g_listasientos == NULL) {
       g_listasientos = new BcAsientoListView ( ( BcCompany * ) mainCompany() );
       g_listasientos->presentar();
@@ -90,7 +90,7 @@ void MyPluginAsiento::elslot1()
     } // end if
     g_listasientos->hide();
     g_listasientos->show();
-    _depura ( "END MyPluginAsiento::elslot1", 0 );
+    blDebug ( "END MyPluginAsiento::elslot1", 0 );
 }
 
 /// Espaciar Asientos
@@ -98,19 +98,19 @@ void MyPluginAsiento::elslot1()
 **/
 void MyPluginAsiento::elslot2()
 {
-    _depura ( "MyPluginAsiento::elslot2", 0 );
+    blDebug ( "MyPluginAsiento::elslot2", 0 );
     BlDbRecordSet *cur = NULL;
     try {
         cur = mainCompany()->loadQuery ( "SELECT abreasientos()" );
         g_main->statusBar() ->showMessage ( _ ( "Se han espaciado los asientos" ), 2000 );
         delete cur;
-        _depura ( "END BcCompany::Abrirasientos", 0 );
+        blDebug ( "END BcCompany::Abrirasientos", 0 );
     } catch ( ... ) {
         mensajeError ( "Ha habido un error al espaciar los asientos" );
         if ( cur ) delete cur;
         return;
     } // end try
-    _depura ( "END MyPluginAsiento::elslot2", 0 );
+    blDebug ( "END MyPluginAsiento::elslot2", 0 );
 }
 
 /// Ordenar Asientos
@@ -118,20 +118,20 @@ void MyPluginAsiento::elslot2()
 **/
 void MyPluginAsiento::elslot3()
 {
-    _depura ( "MyPluginAsiento::elslot3", 0 );
+    blDebug ( "MyPluginAsiento::elslot3", 0 );
     QString query = "SELECT reordenaasientosall()";
     BlDbRecordSet *cur = NULL;
     try {
         cur = mainCompany()->loadQuery ( query );
         g_main->statusBar() ->showMessage ( _ ( "Se han ordenado los asientos" ), 2000 );
         delete cur;
-        _depura ( "END BcCompany::Ordenarasientos", 10 );
+        blDebug ( "END BcCompany::Ordenarasientos", 10 );
     } catch ( ... ) {
         mensajeError ( "Ha habido un error al ordenar los asientos" );
         if ( cur ) delete cur;
         return;
     }
-    _depura ( "END MyPluginAsiento::elslot3", 0 );
+    blDebug ( "END MyPluginAsiento::elslot3", 0 );
 }
 
 /// Asiento de Apertura
@@ -139,7 +139,7 @@ void MyPluginAsiento::elslot3()
 **/
 void MyPluginAsiento::elslot4()
 {
-    _depura ( "MyPluginAsiento::elslot4", 0 );
+    blDebug ( "MyPluginAsiento::elslot4", 0 );
     QString hoy = QDate::currentDate().toString ( "dd/MM/yyyy" );
     QString finicial = "01/01/" + hoy.right ( 4 );
 
@@ -155,7 +155,7 @@ void MyPluginAsiento::elslot4()
 
     g_asiento->show();
     g_asiento->asiento_apertura ( hoy );
-    _depura ( "END MyPluginAsiento::elslot4", 0 );
+    blDebug ( "END MyPluginAsiento::elslot4", 0 );
 }
 
 /// Asiento de Cierre
@@ -163,7 +163,7 @@ void MyPluginAsiento::elslot4()
 **/
 void MyPluginAsiento::elslot5()
 {
-    _depura ( "MyPluginAsiento::elslot5", 0 );
+    blDebug ( "MyPluginAsiento::elslot5", 0 );
     QString hoy = QDate::currentDate().toString ( "dd/MM/yyyy" );
     QString finicial = "01/01/" + hoy.right ( 4 );
 
@@ -188,7 +188,7 @@ void MyPluginAsiento::elslot5()
 
     g_asiento->show();
     g_asiento->asiento_cierre ( finicial, hoy );
-    _depura ( "END MyPluginAsiento::elslot5", 0 );
+    blDebug ( "END MyPluginAsiento::elslot5", 0 );
 }
 
 /// Asiento de Regularización
@@ -196,7 +196,7 @@ void MyPluginAsiento::elslot5()
 **/
 void MyPluginAsiento::elslot6()
 {
-    _depura ( "MyPluginAsiento::elslot6", 0 );
+    blDebug ( "MyPluginAsiento::elslot6", 0 );
 
 
     QString hoy = QDate::currentDate().toString ( "dd/MM/yyyy" );
@@ -226,7 +226,7 @@ void MyPluginAsiento::elslot6()
     g_asiento->asiento_regularizacion ( finicial, hoy );
 
 
-    _depura ( "END MyPluginAsiento::elslot6", 0 );
+    blDebug ( "END MyPluginAsiento::elslot6", 0 );
 }
 
 ///
@@ -235,7 +235,7 @@ void MyPluginAsiento::elslot6()
 **/
 void MyPluginAsiento::inicializa ( BcBulmaCont *bges )
 {
-    _depura ( "MyPluginAsiento::inicializa", 0 );
+    blDebug ( "MyPluginAsiento::inicializa", 0 );
 
     /// Creamos el men&uacute;.
     setMainCompany ( bges->empresaactual() );
@@ -310,7 +310,7 @@ void MyPluginAsiento::inicializa ( BcBulmaCont *bges )
     /// A&ntilde;adimos la nueva opci&oacute;n al men&uacute; principal del programa.
     bges->menuBar() ->insertMenu ( bges->menuMaestro->menuAction(), pPluginMenu );
 
-    _depura ( "END MyPluginAsiento::inicializa", 0 );
+    blDebug ( "END MyPluginAsiento::inicializa", 0 );
 }
 
 
@@ -321,7 +321,7 @@ void MyPluginAsiento::inicializa ( BcBulmaCont *bges )
 **/
 int entryPoint ( BcBulmaCont *bcont )
 {
-    _depura ( "entryPoint::entryPoint", 0 );
+    blDebug ( "entryPoint::entryPoint", 0 );
 
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale ( LC_ALL, "" );
@@ -331,7 +331,7 @@ int entryPoint ( BcBulmaCont *bcont )
 
     MyPluginAsiento *plug = new MyPluginAsiento();
     plug->inicializa ( bcont );
-    _depura ( "END entryPoint::entryPoint", 0 );
+    blDebug ( "END entryPoint::entryPoint", 0 );
     return 0;
 }
 

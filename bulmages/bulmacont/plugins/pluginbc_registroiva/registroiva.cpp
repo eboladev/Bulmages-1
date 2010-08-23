@@ -39,7 +39,7 @@ typedef QMap<QString, BlFixed> base;
 **/
 RegistroIva::RegistroIva ( BcCompany *comp, QWidget *parent ) : BcForm ( comp, parent )
 {
-    _depura ( "RegistroIva::RegistroIva", 0 );
+    blDebug ( "RegistroIva::RegistroIva", 0 );
     setTitleName ( _ ( "Registro IVA" ) );
     setDbTableName ( "registroiva" );
     setDbFieldId ( "idregistroiva" );
@@ -60,7 +60,7 @@ RegistroIva::RegistroIva ( BcCompany *comp, QWidget *parent ) : BcForm ( comp, p
     addDbField ( "factura", BlDbField::DbVarChar, BlDbField::DbNothing, _ ( "Factura" ) );
     addDbField ( "femisionregistroiva", BlDbField::DbDate, BlDbField::DbNotNull, _ ( "Fecha emision" ) );
     addDbField ( "serieregistroiva", BlDbField::DbVarChar, BlDbField::DbNothing, _ ( "Serie" ) );
-    _depura ( "END RegistroIva::RegistroIva", 0 );
+    blDebug ( "END RegistroIva::RegistroIva", 0 );
 }
 
 
@@ -69,8 +69,8 @@ RegistroIva::RegistroIva ( BcCompany *comp, QWidget *parent ) : BcForm ( comp, p
 **/
 RegistroIva::~RegistroIva()
 {
-    _depura ( "RegistroIva::~RegistroIva", 0 );
-    _depura ( "RegistroIva::~RegistroIva", 0 );
+    blDebug ( "RegistroIva::~RegistroIva", 0 );
+    blDebug ( "RegistroIva::~RegistroIva", 0 );
 }
 
 
@@ -80,7 +80,7 @@ RegistroIva::~RegistroIva()
 **/
 int RegistroIva::borrar()
 {
-    _depura ( "RegistroIva::borraRegistroIva", 0 );
+    blDebug ( "RegistroIva::borraRegistroIva", 0 );
     if ( dbValue ( "idregistroiva" ) != "" ) {
         mainCompany() ->begin();
         try {
@@ -93,15 +93,15 @@ int RegistroIva::borrar()
             if ( error ) throw - 1;
 
             mainCompany() ->commit();
-            _depura ( "Registro borrado satisfactoriamente", 2 );
+            blDebug ( "Registro borrado satisfactoriamente", 2 );
             dialogChanges_cargaInicial();
             close();
         } catch ( ... ) {
-            _depura ( "No se pudo borrar el registro de IVA", 2 );
+            blDebug ( "No se pudo borrar el registro de IVA", 2 );
             mainCompany() ->rollback();
         } // end try
     } // end if
-    _depura ( "END RegistroIva::borraRegistroIva", 0 );
+    blDebug ( "END RegistroIva::borraRegistroIva", 0 );
     return 0;
 }
 
@@ -111,9 +111,9 @@ int RegistroIva::borrar()
 **/
 void RegistroIva::vaciaRegistroIva()
 {
-    _depura ( "RegistroIva::vaciaRegistroIva", 0 );
+    blDebug ( "RegistroIva::vaciaRegistroIva", 0 );
     DBclear();
-    _depura ( "END RegistroIva::vaciaRegistroIva", 0 );
+    blDebug ( "END RegistroIva::vaciaRegistroIva", 0 );
 }
 
 
@@ -122,7 +122,7 @@ void RegistroIva::vaciaRegistroIva()
 **/
 void RegistroIva::pintaRegistroIva()
 {
-    _depura ( "RegistroIva::pintaRegistroIva", 0 );
+    blDebug ( "RegistroIva::pintaRegistroIva", 0 );
     pintaidregistroiva ( dbValue ( "idregistroiva" ) );
     pintacontrapartida ( dbValue ( "contrapartida" ) );
     pintabaseimp ( dbValue ( "baseimp" ) );
@@ -141,7 +141,7 @@ void RegistroIva::pintaRegistroIva()
     pintafemisionregistroiva ( dbValue ( "femisionregistroiva" ) );
     pintaserieregistroiva ( dbValue ( "serieregistroiva" ) );
     calculaypintatotales();
-    _depura ( "END RegistroIva::pintaRegistroIva", 0 );
+    blDebug ( "END RegistroIva::pintaRegistroIva", 0 );
 }
 
 
@@ -152,7 +152,7 @@ void RegistroIva::pintaRegistroIva()
 **/
 int RegistroIva::cargar ( QString id )
 {
-    _depura ( "RegistroIva::cargaRegistroIva", 0 );
+    blDebug ( "RegistroIva::cargaRegistroIva", 0 );
     int error = 0;
     QString query = "SELECT * FROM registroiva WHERE idregistroiva = " + id;
     BlDbRecordSet *cur = mainCompany() ->loadQuery ( query );
@@ -167,12 +167,12 @@ int RegistroIva::cargar ( QString id )
 
     /// Tratamiento de excepciones.
     if ( error ) {
-        _depura ( "Error en la carga del registro\n", 0 );
+        blDebug ( "Error en la carga del registro\n", 0 );
         return -1;
     } // end if
 
     dialogChanges_cargaInicial();
-    _depura ( "END RegistroIva::cargaRegistroIva", 0 );
+    blDebug ( "END RegistroIva::cargaRegistroIva", 0 );
     return 0;
 }
 
@@ -183,16 +183,16 @@ int RegistroIva::cargar ( QString id )
 **/
 int RegistroIva::guardar()
 {
-    _depura ( "RegistroIva::guardaRegistroIva", 0 );
+    blDebug ( "RegistroIva::guardaRegistroIva", 0 );
     QString id;
     try {
         DBsave ( id );
         setidregistroiva ( id );
     } catch ( ... ) {
-        _depura ( "RegistroIva::guardar Error al guardar", 2 );
+        blDebug ( "RegistroIva::guardar Error al guardar", 2 );
         throw - 1;
     } // end try
-    _depura ( "END RegistroIva::guardaRegistroIva", 0 );
+    blDebug ( "END RegistroIva::guardaRegistroIva", 0 );
     return 0;
 }
 
@@ -212,7 +212,7 @@ int RegistroIva::guardar()
 **/
 int RegistroIva::buscaborradorservicio ( int idborrador )
 {
-    _depura ( "RegistroIva::buscaborradorservicio", 0 );
+    blDebug ( "RegistroIva::buscaborradorservicio", 0 );
     QString SQLQuery;
     int registro = 0;
     try {
@@ -223,7 +223,7 @@ int RegistroIva::buscaborradorservicio ( int idborrador )
         error = mainCompany() ->runQuery ( SQLQuery );
 
         if ( error ) {
-            _depura ( "Error en la creacion del temporary table", 2 );
+            blDebug ( "Error en la creacion del temporary table", 2 );
             mainCompany() ->rollback();
             return -1;
         } // end if
@@ -295,10 +295,10 @@ int RegistroIva::buscaborradorservicio ( int idborrador )
         error = mainCompany() ->runQuery ( SQLQuery );
         mainCompany() ->commit();
     } catch ( ... ) {
-        _depura ( "RegistroIva:: Error en transaccion", 2 );
+        blDebug ( "RegistroIva:: Error en transaccion", 2 );
         mainCompany() ->rollback();
     } // end try
-    _depura ( "END RegistroIva::buscaborradorservicio", 0 );
+    blDebug ( "END RegistroIva::buscaborradorservicio", 0 );
     return registro;
 }
 
@@ -312,7 +312,7 @@ int RegistroIva::buscaborradorservicio ( int idborrador )
 **/
 int RegistroIva::buscaborradorcliente ( int idborrador )
 {
-    _depura ( "RegistroIva::buscaborradorcliente", 0 );
+    blDebug ( "RegistroIva::buscaborradorcliente", 0 );
     QString SQLQuery;
     int registro = 0;
     try {
@@ -366,10 +366,10 @@ int RegistroIva::buscaborradorcliente ( int idborrador )
         error = mainCompany() ->runQuery ( SQLQuery );
         mainCompany() ->commit();
     } catch ( ... ) {
-        _depura ( "RegistroIva:: Error en buscaborradorcliente", 2 );
+        blDebug ( "RegistroIva:: Error en buscaborradorcliente", 2 );
         mainCompany() ->rollback();
     } // end try
-    _depura ( "ENd RegistroIva::buscaborradorcliente", 0 );
+    blDebug ( "ENd RegistroIva::buscaborradorcliente", 0 );
     return registro;
 }
 
@@ -388,7 +388,7 @@ int RegistroIva::buscaborradorcliente ( int idborrador )
 **/
 void RegistroIva::inicializa1 ( int idapunte1 )
 {
-    _depura ( "RegistroIva::inicializa1", 0 );
+    blDebug ( "RegistroIva::inicializa1", 0 );
     QString query, cadena;
     int idborrador;
     /// Busca si a este apunte le corresponde un borrador.
@@ -416,7 +416,7 @@ void RegistroIva::inicializa1 ( int idapunte1 )
     } // end if
     delete cursoriva;
     pintaRegistroIva();
-    _depura ( "END RegistroIva::inicializa1", 0 );
+    blDebug ( "END RegistroIva::inicializa1", 0 );
 }
 
 
@@ -436,7 +436,7 @@ void RegistroIva::inicializa1 ( int idapunte1 )
 **/
 int RegistroIva::buscaborradoriva ( int idborrador )
 {
-    _depura ( "RegistroIva::buscaborradoriva", 0 );
+    blDebug ( "RegistroIva::buscaborradoriva", 0 );
     int error = 0;
     try {
         mainCompany() ->begin();
@@ -444,16 +444,16 @@ int RegistroIva::buscaborradoriva ( int idborrador )
         SQLQuery.sprintf ( "CREATE TEMPORARY TABLE lacosa AS SELECT borrador.debe AS ivadebe, borrador.haber AS ivahaber, idborrador, bcontrapartidaborr(idborrador) AS contrapartida , cuenta.idcuenta AS idcuenta, codigo, borrador.fecha AS fecha  FROM borrador, cuenta WHERE borrador.idcuenta=cuenta.idcuenta AND borrador.idasiento IN (SELECT idasiento FROM borrador WHERE idborrador = %d)", idborrador );
         error = mainCompany() ->runQuery ( SQLQuery );
         if ( error ) {
-            _depura ( "error en la base de datos", 2 );
-            _depura ( SQLQuery, 2 );
+            blDebug ( "error en la base de datos", 2 );
+            blDebug ( SQLQuery, 2 );
         } // end if
 
         SQLQuery.sprintf ( "DELETE FROM lacosa WHERE idborrador NOT IN (SELECT idborrador FROM lacosa WHERE idborrador = %d UNION SELECT contrapartida AS idborrador FROM lacosa WHERE idborrador = %d) AND contrapartida NOT IN (SELECT idborrador FROM lacosa WHERE idborrador = %d UNION SELECT contrapartida AS idborrador FROM lacosa WHERE idborrador = %d)", idborrador, idborrador, idborrador, idborrador );
         error = mainCompany() ->runQuery ( SQLQuery );
 
         if ( error ) {
-            _depura ( "error en la base de datos", 2 );
-            _depura ( SQLQuery, 2 );
+            blDebug ( "error en la base de datos", 2 );
+            blDebug ( SQLQuery, 2 );
         } // end if
 
         /// Cargamos los registros que quedan porque seguro que son de IVA.
@@ -463,15 +463,15 @@ int RegistroIva::buscaborradoriva ( int idborrador )
         //BlDbRecordSet *cur = mainCompany()->loadQuery(SQLQuery);
         m_lineas->cargar ( SQLQuery );
         recalculaIva();
-        _depura ( "limpiamos la base de datos" );
+        blDebug ( "limpiamos la base de datos" );
         SQLQuery = "DROP TABLE lacosa";
         error = mainCompany() ->runQuery ( SQLQuery );
         mainCompany() ->commit();
     } catch ( ... ) {
-        _depura ( "Error al buscar el borrador", 2 );
+        blDebug ( "Error al buscar el borrador", 2 );
         mainCompany() ->rollback();
     } // end try
-    _depura ( "END RegistroIva::buscaborradoriva", 0 );
+    blDebug ( "END RegistroIva::buscaborradoriva", 0 );
     return 0;
 }
 
@@ -482,7 +482,7 @@ int RegistroIva::buscaborradoriva ( int idborrador )
 **/
 void RegistroIva::buscafecha ( int idborrador )
 {
-    _depura ( "RegistroIva::buscafecha", 0 );
+    blDebug ( "RegistroIva::buscafecha", 0 );
     QString SQLQuery;
     BlDbRecordSet *cur = mainCompany() ->loadQuery ( "SELECT fecha from borrador WHERE idborrador = " + QString::number ( idborrador ) );
     if ( !cur->eof() ) {
@@ -490,7 +490,7 @@ void RegistroIva::buscafecha ( int idborrador )
         setfemisionregistroiva ( cur->valor ( "fecha" ).left ( 10 ) );
     } // end if
     delete cur;
-    _depura ( "END RegistroIva::buscafecha", 0 );
+    blDebug ( "END RegistroIva::buscafecha", 0 );
 }
 
 
@@ -504,7 +504,7 @@ void RegistroIva::buscafecha ( int idborrador )
 **/
 void RegistroIva::buscaNumFactura ( int idborrador )
 {
-    _depura ( "RegistroIva::buscaNumFactura", 0 );
+    blDebug ( "RegistroIva::buscaNumFactura", 0 );
     QString query;
     BlDbRecordSet *recordset;
     QString cadena;
@@ -549,6 +549,6 @@ void RegistroIva::buscaNumFactura ( int idborrador )
         setnumorden ( QString::number ( numord ) );
     } // end if
     delete recordset; /// Fin proposici&oacute;n n&uacute;meros factura y orden.
-    _depura ( "END RegistroIva::buscaNumFactura", 0 );
+    blDebug ( "END RegistroIva::buscaNumFactura", 0 );
 }
 

@@ -43,7 +43,7 @@
 Cuadrante1View::Cuadrante1View ( BfCompany *comp, QWidget *parent )
         : BfForm ( comp, parent )
 {
-    _depura ( "Cuadrante1View::Cuadrante1View", 0 );
+    blDebug ( "Cuadrante1View::Cuadrante1View", 0 );
     setAttribute ( Qt::WA_DeleteOnClose );
     try {
         setupUi ( this );
@@ -84,7 +84,7 @@ Cuadrante1View::Cuadrante1View ( BfCompany *comp, QWidget *parent )
     } catch ( ... ) {
         mensajeInfo ( _ ( "Error al crear el almacen" ) );
     } // end try
-    _depura ( "END Cuadrante1View::Cuadrante1View", 0 );
+    blDebug ( "END Cuadrante1View::Cuadrante1View", 0 );
 }
 
 
@@ -94,8 +94,8 @@ Cuadrante1View::Cuadrante1View ( BfCompany *comp, QWidget *parent )
 **/
 Cuadrante1View::~Cuadrante1View()
 {
-    _depura ( "Cuadrante1View::~Cuadrante1View", 0 );
-    _depura ( "END Cuadrante1View::~Cuadrante1View", 0 );
+    blDebug ( "Cuadrante1View::~Cuadrante1View", 0 );
+    blDebug ( "END Cuadrante1View::~Cuadrante1View", 0 );
 }
 
 

@@ -37,11 +37,11 @@
 **/
 EFacturaRecepcion::EFacturaRecepcion ( BfCompany *emp, QWidget *parent ) : BfForm ( emp, parent )
 {
-    _depura ( "EFacturaRecepcion::EFacturaRecepcion", 0 );
+    blDebug ( "EFacturaRecepcion::EFacturaRecepcion", 0 );
     QString query;
 
     setupUi ( this );  // Para que el form se inicialice bien
-    _depura ( "END EFacturaRecepcion::EFacturaRecepcion", 0 );
+    blDebug ( "END EFacturaRecepcion::EFacturaRecepcion", 0 );
 }
 
 
@@ -50,8 +50,8 @@ EFacturaRecepcion::EFacturaRecepcion ( BfCompany *emp, QWidget *parent ) : BfFor
 **/
 EFacturaRecepcion::~EFacturaRecepcion()
 {
-    _depura ( "EFacturaRecepcion::~EFacturaRecepcion", 0 );
-    _depura ( "EFacturaRecepcion::~EFacturaRecepcion", 0 );
+    blDebug ( "EFacturaRecepcion::~EFacturaRecepcion", 0 );
+    blDebug ( "EFacturaRecepcion::~EFacturaRecepcion", 0 );
 }
 
 
@@ -61,7 +61,7 @@ EFacturaRecepcion::~EFacturaRecepcion()
 **/
 void EFacturaRecepcion::on_mui_recibir_clicked()
 {
-    _depura ( "EFacturaRecepcion::on_mui_salir_clicked", 0 );
+    blDebug ( "EFacturaRecepcion::on_mui_salir_clicked", 0 );
 
     /// Obtenemos los valores de configuracion necesarios para obtener eFacturas por e-mail
 
@@ -82,7 +82,7 @@ void EFacturaRecepcion::on_mui_recibir_clicked()
     QDir *direfactura = new QDir ( dirEmail->valor ( "valor" ) );
 
     if ( !direfactura->exists() ) {
-        _depura ( "El directorio especificado en la configuracion para la eFactura no existe. Por favor, creelo e intentelo de nuevo", 2 );
+        blDebug ( "El directorio especificado en la configuracion para la eFactura no existe. Por favor, creelo e intentelo de nuevo", 2 );
 
         return;
     }
@@ -127,7 +127,7 @@ void EFacturaRecepcion::on_mui_recibir_clicked()
             /// Entramos en el directorio
 
             if ( !direfactura->cd ( fileInfo->fileName() ) ) {
-                _depura ( "Error intentando entrar en " + fileInfo->fileName(), 2 );
+                blDebug ( "Error intentando entrar en " + fileInfo->fileName(), 2 );
                 continue;
             }
 
@@ -140,7 +140,7 @@ void EFacturaRecepcion::on_mui_recibir_clicked()
             archivos = new QFileInfoList ( direfactura->entryInfoList() );
 
             if ( archivos->size() > 1 ) {
-                _depura ( "El directorio " + direfactura->absolutePath() + " contiene mas de un archivo. Por favor, arreglelo dejando solo el fichero XML que contenga la e-factura.", 2 );
+                blDebug ( "El directorio " + direfactura->absolutePath() + " contiene mas de un archivo. Por favor, arreglelo dejando solo el fichero XML que contenga la e-factura.", 2 );
                 direfactura->cdUp();
                 continue;
             }
@@ -185,7 +185,7 @@ void EFacturaRecepcion::on_mui_recibir_clicked()
     delete Email;
     delete Password;
 
-    _depura ( "END EFacturaRecepcion::on_mui_salir_clicked", 0 );
+    blDebug ( "END EFacturaRecepcion::on_mui_salir_clicked", 0 );
 }
 
 
@@ -194,9 +194,9 @@ void EFacturaRecepcion::on_mui_recibir_clicked()
 **/
 void EFacturaRecepcion::on_mui_abrir_clicked()
 {
-    _depura ( "EFacturaRecepcion::on_mui_salir_clicked", 0 );
+    blDebug ( "EFacturaRecepcion::on_mui_salir_clicked", 0 );
 
-    _depura ( "END EFacturaRecepcion::on_mui_salir_clicked", 0 );
+    blDebug ( "END EFacturaRecepcion::on_mui_salir_clicked", 0 );
 }
 
 
@@ -205,9 +205,9 @@ void EFacturaRecepcion::on_mui_abrir_clicked()
 **/
 void EFacturaRecepcion::on_mui_salir_clicked()
 {
-    _depura ( "EFacturaRecepcion::on_mui_salir_clicked", 0 );
+    blDebug ( "EFacturaRecepcion::on_mui_salir_clicked", 0 );
 
     close();
 
-    _depura ( "END EFacturaRecepcion::on_mui_salir_clicked", 0 );
+    blDebug ( "END EFacturaRecepcion::on_mui_salir_clicked", 0 );
 }

@@ -57,7 +57,7 @@
 BalanceTreeView::BalanceTreeView ( BcCompany *emp, QWidget *parent, int )
         : BcForm ( emp, parent )
 {
-    _depura ( "BalanceTreeView::BalanceTreeView", 0 );
+    blDebug ( "BalanceTreeView::BalanceTreeView", 0 );
 
     setupUi ( this );
     setAttribute ( Qt::WA_DeleteOnClose );
@@ -140,7 +140,7 @@ BalanceTreeView::BalanceTreeView ( BcCompany *emp, QWidget *parent, int )
     m_fechafinal1->setText ( cadena );
     meteWindow ( windowTitle(), this, FALSE );
 
-    _depura ( "END BalanceTreeView::BalanceTreeView", 0 );
+    blDebug ( "END BalanceTreeView::BalanceTreeView", 0 );
 }
 
 
@@ -149,11 +149,11 @@ BalanceTreeView::BalanceTreeView ( BcCompany *emp, QWidget *parent, int )
 **/
 BalanceTreeView::~BalanceTreeView()
 {
-    _depura ( "BalanceTreeView::~BalanceTreeView", 0 );
+    blDebug ( "BalanceTreeView::~BalanceTreeView", 0 );
 
     sacaWindow();
 
-    _depura ( "END BalanceTreeView::~BalanceTreeView", 0 );
+    blDebug ( "END BalanceTreeView::~BalanceTreeView", 0 );
 }
 
 
@@ -171,7 +171,7 @@ BalanceTreeView::~BalanceTreeView()
 **/
 void BalanceTreeView::boton_extracto1 ( int tipo )
 {
-    _depura ( "BalanceTreeView::boton_extracto1", 0 );
+    blDebug ( "BalanceTreeView::boton_extracto1", 0 );
 /*
     QDate fecha1, fecha2, fechaact, fechaact1;
     if ( !m_fechainicial1->text().isEmpty() ) {
@@ -197,7 +197,7 @@ void BalanceTreeView::boton_extracto1 ( int tipo )
     mainCompany() ->extractoempresa() ->show();
     mainCompany() ->extractoempresa() ->setFocus();
 */
-    _depura ( "END BalanceTreeView::boton_extracto1", 0 );
+    blDebug ( "END BalanceTreeView::boton_extracto1", 0 );
 }
 
 
@@ -210,7 +210,7 @@ void BalanceTreeView::boton_extracto1 ( int tipo )
 **/
 void BalanceTreeView::boton_diario1 ( int tipo )
 {
-    _depura ( "BalanceTreeView::boton_diario1", 0 );
+    blDebug ( "BalanceTreeView::boton_diario1", 0 );
 /*
     QDate fecha1, fecha2, fechaact, fechaact1;
     if ( !m_fechainicial1->text().isEmpty() ) {
@@ -236,7 +236,7 @@ void BalanceTreeView::boton_diario1 ( int tipo )
     mainCompany() ->diarioempresa() ->show();
     mainCompany() ->diarioempresa() ->setFocus();
 */
-    _depura ( "END BalanceTreeView::boton_diario1", 0 );
+    blDebug ( "END BalanceTreeView::boton_diario1", 0 );
 }
 
 
@@ -245,10 +245,10 @@ void BalanceTreeView::boton_diario1 ( int tipo )
 **/
 void BalanceTreeView::boton_asiento()
 {
-    _depura ( "BalanceTreeView::boton_asiento", 0 );
+    blDebug ( "BalanceTreeView::boton_asiento", 0 );
     g_asiento ->show();
     g_asiento ->setFocus();
-    _depura ( "END BalanceTreeView::boton_asiento", 0 );
+    blDebug ( "END BalanceTreeView::boton_asiento", 0 );
 }
 
 
@@ -262,7 +262,7 @@ void BalanceTreeView::boton_asiento()
 **/
 void BalanceTreeView::inicializa1 ( QString codinicial, QString codfinal, QString fecha1, QString fecha2, int idc_coste )
 {
-    _depura ( "BalanceTreeView::inicializa1", 0 );
+    blDebug ( "BalanceTreeView::inicializa1", 0 );
 
     m_codigoinicial->setText ( codinicial );
     m_codigofinal->setText ( codfinal );
@@ -271,13 +271,13 @@ void BalanceTreeView::inicializa1 ( QString codinicial, QString codfinal, QStrin
     /// Establecemos el centro de coste correspondiente.
 //    mui_combocoste->setidc_coste ( QString::number ( idc_coste ) );
 
-    _depura ( "END BalanceTreeView::inicializa1", 0 );
+    blDebug ( "END BalanceTreeView::inicializa1", 0 );
 }
 
 
 bool BalanceTreeView::generaBalance()
 {
-    _depura ( "BalanceTreeView::generaBalance", 0 );
+    blDebug ( "BalanceTreeView::generaBalance", 0 );
 
     /// Vamos a crear una estructura tipo arbol (usando la clase BcPlanContableArbol).
 
@@ -353,7 +353,7 @@ bool BalanceTreeView::generaBalance()
         hojas->nextRecord();
     } // end while
     delete hojas;
-    _depura ( "END BalanceTreeView::generaBalance", 0 );
+    blDebug ( "END BalanceTreeView::generaBalance", 0 );
     return 1;
 }
 
@@ -363,7 +363,7 @@ bool BalanceTreeView::generaBalance()
 **/
 void BalanceTreeView::presentar()
 {
-    _depura ( "BalanceTreeView::presentar", 0 );
+    blDebug ( "BalanceTreeView::presentar", 0 );
 
     if ( generaBalance() ) {
 
@@ -512,7 +512,7 @@ void BalanceTreeView::presentar()
         totalsaldo->setText ( spain.toString ( totalSaldo, 'f', 2 ) );
     } // end if
 
-    _depura ( "END BalanceTreeView::presentar", 0 );
+    blDebug ( "END BalanceTreeView::presentar", 0 );
 }
 
 
@@ -522,7 +522,7 @@ void BalanceTreeView::presentar()
 **/
 // void BalanceTreeView::nivelactivated ( int nivel )
 // {
-//     _depura ( "BalanceTreeView::nivelactivated", 0 );
+//     blDebug ( "BalanceTreeView::nivelactivated", 0 );
 //
 //     combonivel->setCurrentIndex ( nivel );
 //     int nivel1 = combonivel->currentText().toInt();
@@ -533,7 +533,7 @@ void BalanceTreeView::presentar()
 //         j++;
 //     } // end while
 //
-//     _depura ( "END BalanceTreeView::nivelactivated", 0 );
+//     blDebug ( "END BalanceTreeView::nivelactivated", 0 );
 // }
 
 
@@ -543,7 +543,7 @@ void BalanceTreeView::presentar()
 **/
 // void BalanceTreeView::nivelactivated1 ( int nivel, QTreeWidgetItem *ot )
 // {
-//     _depura ( "BalanceTreeView::nivelactivated1", 0 );
+//     blDebug ( "BalanceTreeView::nivelactivated1", 0 );
 //     if ( ot ) {
 //         if ( ot->text ( NIVEL ).toInt()  < nivel ) {
 //             ot->treeWidget() ->setItemExpanded ( ot, TRUE );
@@ -558,7 +558,7 @@ void BalanceTreeView::presentar()
 //         } // end for
 //
 //     } // end if
-//     _depura ( "END BalanceTreeView::nivelactivated1", 0 );
+//     blDebug ( "END BalanceTreeView::nivelactivated1", 0 );
 // }
 
 
@@ -571,7 +571,7 @@ void BalanceTreeView::presentar()
     a la funci&oacute;n que da respuesta a dicha petici&oacute;n. */
 void BalanceTreeView::contextmenu ( const QPoint &point )
 {
-    _depura ( "BalanceTreeView::contextmenu", 0 );
+    blDebug ( "BalanceTreeView::contextmenu", 0 );
 
     QMenu *menupopup = new QMenu ( this );
     QAction *opt1 = menupopup->addAction ( _ ( "Ver Diario (este dia)" ) );
@@ -603,7 +603,7 @@ void BalanceTreeView::contextmenu ( const QPoint &point )
     } // end if
 
     delete menupopup;
-    _depura ( "END BalanceTreeView::contextmenu", 0 );
+    blDebug ( "END BalanceTreeView::contextmenu", 0 );
 }
 
 
@@ -614,13 +614,13 @@ void BalanceTreeView::contextmenu ( const QPoint &point )
 **/
 void BalanceTreeView::imprimir()
 {
-    _depura ( "BalanceTreeView::on_mui_imprimir_clicked", 0 );
+    blDebug ( "BalanceTreeView::on_mui_imprimir_clicked", 0 );
 //      QString queryalance();
 //
     generaRML ( "balance.rml" );
     invocaPDF ( "balance" );
 
-    _depura ( "END BalanceTreeView::on_mui_imprimir_clicked", 0 );
+    blDebug ( "END BalanceTreeView::on_mui_imprimir_clicked", 0 );
 }
 
 
@@ -629,9 +629,9 @@ void BalanceTreeView::imprimir()
 **/
 void BalanceTreeView::on_mui_actualizar_clicked()
 {
-    _depura ( "BalanceTreeView::on_mui_actualizar_clicked", 0 );
+    blDebug ( "BalanceTreeView::on_mui_actualizar_clicked", 0 );
     presentar();
-    _depura ( "END BalanceTreeView::on_mui_actualizar_clicked", 0 );
+    blDebug ( "END BalanceTreeView::on_mui_actualizar_clicked", 0 );
 }
 
 ///
@@ -639,7 +639,7 @@ void BalanceTreeView::on_mui_actualizar_clicked()
 **/
 void BalanceTreeView::on_mui_hojacalculo_clicked()
 {
-    _depura ( "BalanceTreeView::on_mui_hojacalculo_clicked", 0 );
+    blDebug ( "BalanceTreeView::on_mui_hojacalculo_clicked", 0 );
 
 //     QString query;
 //     int num1;
@@ -749,6 +749,6 @@ void BalanceTreeView::on_mui_hojacalculo_clicked()
 //     cadena = "kspread " + g_confpr->valor ( CONF_DIR_USER ) + "listadosxc.sxc &";
 //     system ( cadena.toAscii() );
 
-    _depura ( "END BalanceTreeView::on_mui_hojacalculo_clicked", 0 );
+    blDebug ( "END BalanceTreeView::on_mui_hojacalculo_clicked", 0 );
 }
 

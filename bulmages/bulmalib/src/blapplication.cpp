@@ -36,8 +36,8 @@ BlApplication *g_theApp;
 **/
 BlApplication::BlApplication ( int &argc, char **argv ) : QApplication ( argc, argv )
 {
-    _depura ( "BlApplication::BlApplication", 0 );
-    _depura ( "END BlApplication::BlApplication", 0 );
+    blDebug ( "BlApplication::BlApplication", 0 );
+    blDebug ( "END BlApplication::BlApplication", 0 );
 }
 
 
@@ -46,8 +46,8 @@ BlApplication::BlApplication ( int &argc, char **argv ) : QApplication ( argc, a
 **/
 BlApplication::~BlApplication()
 {
-    _depura ( "BlApplication::~BlApplication", 0 );
-    _depura ( "END BlApplication::~BlApplication", 0 );
+    blDebug ( "BlApplication::~BlApplication", 0 );
+    blDebug ( "END BlApplication::~BlApplication", 0 );
 }
 
 
@@ -59,13 +59,13 @@ BlApplication::~BlApplication()
 **/
 bool BlApplication::notify ( QObject *o, QEvent *e )
 {
-//    _depura ( "BlApplication::notify", 0 );
+//    blDebug ( "BlApplication::notify", 0 );
     try {
-//        _depura ( "END BlApplication::notify", 0 );
+//        blDebug ( "END BlApplication::notify", 0 );
         return QApplication::notify ( o, e );
     } catch ( ... ) {
-//        _depura ( "END BlApplication::notify", 0, "Error inesperado en la aplicacion" );
-        _depura ( "END BlApplication::notify", 2, "Error inesperado en la aplicacion" );
+//        blDebug ( "END BlApplication::notify", 0, "Error inesperado en la aplicacion" );
+        blDebug ( "END BlApplication::notify", 2, "Error inesperado en la aplicacion" );
         return FALSE;
     } // end try
 }

@@ -31,8 +31,8 @@
 **/
 myplugininv::myplugininv()
 {
-    _depura ( "myplugininv::myplugininv", 0 );
-    _depura ( "END myplugininv::myplugininv", 0 );
+    blDebug ( "myplugininv::myplugininv", 0 );
+    blDebug ( "END myplugininv::myplugininv", 0 );
 }
 
 
@@ -41,8 +41,8 @@ myplugininv::myplugininv()
 **/
 myplugininv::~myplugininv()
 {
-    _depura ( "myplugininv::~myplugininv", 0 );
-    _depura ( "END myplugininv::~myplugininv", 0 );
+    blDebug ( "myplugininv::~myplugininv", 0 );
+    blDebug ( "END myplugininv::~myplugininv", 0 );
 }
 
 
@@ -51,11 +51,11 @@ myplugininv::~myplugininv()
 **/
 void myplugininv::elslot()
 {
-    _depura ( "myplugininv::elslot", 0 );
+    blDebug ( "myplugininv::elslot", 0 );
     InventariosView *tar = new InventariosView ( ( BfCompany * ) mainCompany(), NULL );
     mainCompany() ->m_pWorkspace->addWindow ( tar );
     tar->show();
-    _depura ( "END myplugininv::elslot", 0 );
+    blDebug ( "END myplugininv::elslot", 0 );
 }
 
 
@@ -65,7 +65,7 @@ void myplugininv::elslot()
 **/
 void myplugininv::inicializa ( BfBulmaFact *bges )
 {
-    _depura ( "myplugininv::inicializa", 0 );
+    blDebug ( "myplugininv::inicializa", 0 );
     /// El men&uacute; de Tarifas en la secci&oacute;n de art&iacute;culos.
     m_bges = bges;
     setMainCompany ( bges->company() );
@@ -81,7 +81,7 @@ void myplugininv::inicializa ( BfBulmaFact *bges )
 
     pPluginMenu->addAction ( planCuentas );
     connect ( planCuentas, SIGNAL ( activated() ), this, SLOT ( elslot() ) );
-    _depura ( "END myplugininv::inicializa", 0 );
+    blDebug ( "END myplugininv::inicializa", 0 );
 }
 
 
@@ -92,7 +92,7 @@ void myplugininv::inicializa ( BfBulmaFact *bges )
 **/
 int entryPoint ( BfBulmaFact *bges )
 {
-    _depura ( "Punto de Entrada del plugin de Tarifas\n", 0 );
+    blDebug ( "Punto de Entrada del plugin de Tarifas\n", 0 );
 
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale ( LC_ALL, "" );
@@ -111,7 +111,7 @@ int entryPoint ( BfBulmaFact *bges )
 **/
 int ArticuloView_ArticuloView ( ArticuloView *art )
 {
-    _depura ( "ArticuloView_ArticuloView", 0 );
+    blDebug ( "ArticuloView_ArticuloView", 0 );
     BfSubForm *l = new BfSubForm ( art );
     l->setMainCompany ( art->mainCompany() );
     l->setObjectName ( QString::fromUtf8 ( "m_lmin" ) );
@@ -129,7 +129,7 @@ int ArticuloView_ArticuloView ( ArticuloView *art )
     l->setSortingEnabled ( FALSE );
     art->dialogChanges_setQObjectExcluido ( l->mui_list );
 
-    _depura ( "END ArticuloView_ArticuloView", 0 );
+    blDebug ( "END ArticuloView_ArticuloView", 0 );
     return 0;
 }
 
@@ -162,7 +162,7 @@ int BlForm_guardar_Post ( BlForm *fich )
 
 int BfSubForm_on_mui_list_editFinished ( BfSubForm *subform )
 {
-    _depura ( "BfSubForm_on_mui_list_editFinished", 0 );
+    blDebug ( "BfSubForm_on_mui_list_editFinished", 0 );
 
     if ( subform->currentColumn() < 1 ) {
         return 0;

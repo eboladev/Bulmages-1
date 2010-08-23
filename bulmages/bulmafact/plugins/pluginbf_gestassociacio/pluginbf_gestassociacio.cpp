@@ -37,8 +37,8 @@
 **/
 myplugin::myplugin()
 {
-    _depura ( "myplugin::myplugin", 0 );
-    _depura ( "END myplugin::myplugin", 0 );
+    blDebug ( "myplugin::myplugin", 0 );
+    blDebug ( "END myplugin::myplugin", 0 );
 }
 
 
@@ -47,8 +47,8 @@ myplugin::myplugin()
 **/
 myplugin::~myplugin()
 {
-    _depura ( "myplugin::~myplugin", 0 );
-    _depura ( "END myplugin::~myplugin", 0 );
+    blDebug ( "myplugin::~myplugin", 0 );
+    blDebug ( "END myplugin::~myplugin", 0 );
 }
 
 
@@ -57,14 +57,14 @@ myplugin::~myplugin()
 **/
 void myplugin::elslot()
 {
-    _depura ( "myplugin::elslot", 0 );
+    blDebug ( "myplugin::elslot", 0 );
     fprintf ( stderr, "S'ha activado el slot\n" );
     QMessageBox::warning ( 0,
                            _ ( "Titulo de la ventana" ),
                            _ ( "Mensaje." ),
                            QMessageBox::Ok,
                            QMessageBox::Cancel );
-    _depura ( "END myplugin::elslot", 0 );
+    blDebug ( "END myplugin::elslot", 0 );
 }
 
 
@@ -74,7 +74,7 @@ void myplugin::elslot()
 **/
 void myplugin::inicializa ( BfBulmaFact *bges )
 {
-    _depura ( "myplugin::inicializa", 0 );
+    blDebug ( "myplugin::inicializa", 0 );
     QMenu *pPluginMenu;
     /// Miramos si existe un menu Herramientas
     pPluginMenu = bges->menuBar() ->findChild<QMenu *> ( "Herramientas" );
@@ -93,7 +93,7 @@ void myplugin::inicializa ( BfBulmaFact *bges )
     pPluginMenu->addAction ( accion );
     /// A&ntilde;adimos la nueva opci&oacute;n al men&uacute; principal del programa.
     bges->menuBar() ->insertMenu ( bges->menuVentana->menuAction(), pPluginMenu );
-    _depura ( "END myplugin::inicializa", 0 );
+    blDebug ( "END myplugin::inicializa", 0 );
 }
 
 
@@ -103,7 +103,7 @@ void myplugin::inicializa ( BfBulmaFact *bges )
 **/
 int entryPoint ( BfBulmaFact *bges )
 {
-    _depura ( "Estoy dentro del plugin de demo", 0 );
+    blDebug ( "Estoy dentro del plugin de demo", 0 );
 
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale ( LC_ALL, "" );

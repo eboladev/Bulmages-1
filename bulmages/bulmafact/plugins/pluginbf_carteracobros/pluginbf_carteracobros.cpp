@@ -32,8 +32,8 @@
 **/
 MyPluginCarteraCobros::MyPluginCarteraCobros()
 {
-    _depura ( "MyPluginCarteraCobros::MyPluginCarteraCobros", 0 );
-    _depura ( "END MyPluginCarteraCobros::MyPluginCarteraCobros", 0 );
+    blDebug ( "MyPluginCarteraCobros::MyPluginCarteraCobros", 0 );
+    blDebug ( "END MyPluginCarteraCobros::MyPluginCarteraCobros", 0 );
 }
 
 ///
@@ -41,8 +41,8 @@ MyPluginCarteraCobros::MyPluginCarteraCobros()
 **/
 MyPluginCarteraCobros::~MyPluginCarteraCobros()
 {
-    _depura ( "MyPluginCarteraCobros::~MyPluginCarteraCobros", 0 );
-    _depura ( "END MyPluginCarteraCobros::~MyPluginCarteraCobros", 0 );
+    blDebug ( "MyPluginCarteraCobros::~MyPluginCarteraCobros", 0 );
+    blDebug ( "END MyPluginCarteraCobros::~MyPluginCarteraCobros", 0 );
 }
 
 
@@ -51,11 +51,11 @@ MyPluginCarteraCobros::~MyPluginCarteraCobros()
 **/
 void MyPluginCarteraCobros::elslot()
 {
-    _depura ( "MyPluginCarteraCobros::elslot", 0 );
+    blDebug ( "MyPluginCarteraCobros::elslot", 0 );
     CarteraCobrosList *vehiculoview = new CarteraCobrosList ( ( BfCompany * ) m_conexionbase );
     m_bulmafact->workspace() ->addWindow ( vehiculoview );
     vehiculoview->show();
-    _depura ( "END MyPluginCarteraCobros::elslot", 0 );
+    blDebug ( "END MyPluginCarteraCobros::elslot", 0 );
 }
 
 
@@ -65,7 +65,7 @@ void MyPluginCarteraCobros::elslot()
 **/
 void MyPluginCarteraCobros::inicializa ( BfBulmaFact *bges )
 {
-    _depura ( "MyPluginCarteraCobros::inicializa", 0 );
+    blDebug ( "MyPluginCarteraCobros::inicializa", 0 );
     /// Creamos el men&uacute;.
     m_conexionbase = bges->company();
     m_bulmafact = bges;
@@ -81,7 +81,7 @@ void MyPluginCarteraCobros::inicializa ( BfBulmaFact *bges )
     pPluginMenu->addSeparator();
     pPluginMenu->addAction ( accion );
 	bges->Listados->addAction (accion);
-    _depura ( "END MyPluginCarteraCobros::inicializa", 0 );
+    blDebug ( "END MyPluginCarteraCobros::inicializa", 0 );
 }
 
 
@@ -96,7 +96,7 @@ void MyPluginCarteraCobros::inicializa ( BfBulmaFact *bges )
 **/
 int entryPoint ( BfBulmaFact *bges )
 {
-    _depura ( "Punto de Entrada del plugin de cartera de cobros\n", 0 );
+    blDebug ( "Punto de Entrada del plugin de cartera de cobros\n", 0 );
     MyPluginCarteraCobros *plug = new MyPluginCarteraCobros();
     plug->inicializa ( bges );
     return 0;
@@ -110,7 +110,7 @@ int entryPoint ( BfBulmaFact *bges )
 **/
 int ClienteView_ClienteView_Post ( ClienteView *art )
 {
-    _depura ( "ArticuloView_ArticuloView", 0 );
+    blDebug ( "ArticuloView_ArticuloView", 0 );
 
     /// Agregamos el subformulario de validaciones.
     BfSubForm *l = new BfSubForm ( art );
@@ -131,7 +131,7 @@ int ClienteView_ClienteView_Post ( ClienteView *art )
 
     art->mui_tab->addTab ( l, "Vencimientos" );
     l->cargar("SELECT * FROM vencimientocliente WHERE idcliente IS NULL");
-    _depura ( "END ArticuloView_ArticuloView", 0 );
+    blDebug ( "END ArticuloView_ArticuloView", 0 );
     return 0;
 }
 
@@ -143,12 +143,12 @@ int ClienteView_ClienteView_Post ( ClienteView *art )
 **/
 int ClienteView_cargarPost_Post ( ClienteView *art )
 {
-    _depura ( "ArticuloView_cargar", 0 );
+    blDebug ( "ArticuloView_cargar", 0 );
     BfSubForm *l = art->findChild<BfSubForm *> ( "vencimientocliente" );
     if ( l ) {
         l->cargar ( "SELECT * FROM vencimientocliente LEFT JOIN forma_pago ON vencimientocliente.idforma_pago = forma_pago.idforma_pago WHERE idcliente =  " + art->dbValue("idcliente"));
     } // end if
-    _depura ( "END ArticuloView_cargar", 0 );
+    blDebug ( "END ArticuloView_cargar", 0 );
     return 0;
 }
 
@@ -184,7 +184,7 @@ void generarVencimientos (FacturaView *art) {
 **/
 int BlForm_guardar_Post_Post ( BlForm *art )
 {
-    _depura ( "ArticuloView_guardar_post", 0 );
+    blDebug ( "ArticuloView_guardar_post", 0 );
     try {
 
         BfSubForm *l = art->findChild<BfSubForm *> ( "vencimientocliente" );
@@ -220,7 +220,7 @@ int BlForm_guardar_Post_Post ( BlForm *art )
         } // end if
         return 0;
     } catch ( ... ) {
-        _depura ( "Hubo un error al guardar los vencimientos", 2 );
+        blDebug ( "Hubo un error al guardar los vencimientos", 2 );
         return 0;
     } // end try
 }
@@ -229,7 +229,7 @@ int BlForm_guardar_Post_Post ( BlForm *art )
 
 
 int FacturaView_FacturaView (FacturaView *factp) {
-    _depura ( "ArticuloView_ArticuloView", 0 );
+    blDebug ( "ArticuloView_ArticuloView", 0 );
     /// Agregamos el subformulario de validaciones.
     BfSubForm *l = new BfSubForm ( factp );
     l->setObjectName ( QString::fromUtf8 ( "vencimientoc" ) );
@@ -251,7 +251,7 @@ int FacturaView_FacturaView (FacturaView *factp) {
 
     factp->m_desdfgs->addTab ( l, "Vencimientos" );
     l->cargar("SELECT * FROM vencimientoc WHERE idfactura IS NULL");
-    _depura ( "END ArticuloView_ArticuloView", 0 );
+    blDebug ( "END ArticuloView_ArticuloView", 0 );
     return 0;
 }
 
@@ -262,7 +262,7 @@ int FacturaView_FacturaView (FacturaView *factp) {
 **/
 int FacturaView_cargarPost_Post ( FacturaView *art )
 {
-    _depura ( "FacturaView_cargarPost_Post", 0 );
+    blDebug ( "FacturaView_cargarPost_Post", 0 );
 
     /// Para que funcione el identificador de factura debe ser valido
     if (art->dbValue("idfactura") != "") {
@@ -272,7 +272,7 @@ int FacturaView_cargarPost_Post ( FacturaView *art )
 		l->cargar ( "SELECT * FROM vencimientoc LEFT JOIN forma_pago ON vencimientoc.idforma_pago = forma_pago.idforma_pago WHERE idfactura =  " + art->dbValue("idfactura"));
 	} // end if
     } // end if
-    _depura ( "END FacturaView_cargarPost_Post", 0 );
+    blDebug ( "END FacturaView_cargarPost_Post", 0 );
     return 0;
 }
 
@@ -284,7 +284,7 @@ int FacturaView_cargarPost_Post ( FacturaView *art )
 **/
 int FacturaView_borrarPre ( FacturaView *art )
 {
-    _depura ( "FacturaView_borrarPre", 0 );
+    blDebug ( "FacturaView_borrarPre", 0 );
 
     /// Para que funcione el identificador de factura debe ser valido
     if (art->dbValue("idfactura") != "") {
@@ -294,6 +294,6 @@ int FacturaView_borrarPre ( FacturaView *art )
 		l->mainCompany()->runQuery ( "DELETE FROM vencimientoc WHERE idfactura =  " + art->dbValue("idfactura"));
 	} // end if
     } // end if
-    _depura ( "END FacturaView_borrarPre", 0 );
+    blDebug ( "END FacturaView_borrarPre", 0 );
     return 0;
 }

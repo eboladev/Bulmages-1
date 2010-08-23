@@ -33,8 +33,8 @@
 **/
 MyPlugAlm::MyPlugAlm()
 {
-    _depura ( "MyPlugAlm::MyPlugAlm", 0 );
-    _depura ( "END MyPlugAlm::MyPlugAlm", 0 );
+    blDebug ( "MyPlugAlm::MyPlugAlm", 0 );
+    blDebug ( "END MyPlugAlm::MyPlugAlm", 0 );
 }
 
 
@@ -43,8 +43,8 @@ MyPlugAlm::MyPlugAlm()
 **/
 MyPlugAlm::~MyPlugAlm()
 {
-    _depura ( "MyPlugAlm::~MyPlugAlm", 0 );
-    _depura ( "END MyPlugAlm::~MyPlugAlm", 0 );
+    blDebug ( "MyPlugAlm::~MyPlugAlm", 0 );
+    blDebug ( "END MyPlugAlm::~MyPlugAlm", 0 );
 }
 
 
@@ -53,11 +53,11 @@ MyPlugAlm::~MyPlugAlm()
 **/
 void MyPlugAlm::elslot1()
 {
-    _depura ( "MyPlugAlm::elslot1", 0 );
+    blDebug ( "MyPlugAlm::elslot1", 0 );
     ListAlmacenView * bud = new ListAlmacenView ( ( BfCompany * ) mainCompany(), NULL );
     mainCompany() ->m_pWorkspace->addWindow ( bud );
     bud->show();
-    _depura ( "END MyPlugAlm::elslot1", 0 );
+    blDebug ( "END MyPlugAlm::elslot1", 0 );
 }
 
 
@@ -68,7 +68,7 @@ void MyPlugAlm::elslot1()
 **/
 void MyPlugAlm::inicializa ( BfBulmaFact *bges )
 {
-    _depura ( "MyPlugAlm::inicializa", 0 );
+    blDebug ( "MyPlugAlm::inicializa", 0 );
 
     if ( bges->company()->hasTablePrivilege ( "almacen", "SELECT" ) ) {
 
@@ -88,7 +88,7 @@ void MyPlugAlm::inicializa ( BfBulmaFact *bges )
         connect ( planCuentas, SIGNAL ( activated() ), this, SLOT ( elslot1() ) );
 
     }// end if
-    _depura ( "END MyPlugAlm::inicializa", 0 );
+    blDebug ( "END MyPlugAlm::inicializa", 0 );
 }
 
 
@@ -102,7 +102,7 @@ void MyPlugAlm::inicializa ( BfBulmaFact *bges )
 **/
 int entryPoint ( BfBulmaFact *bges )
 {
-    _depura ( "Punto de Entrada del plugin de Trabajadors\n", 0 );
+    blDebug ( "Punto de Entrada del plugin de Trabajadors\n", 0 );
 
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale ( LC_ALL, "" );

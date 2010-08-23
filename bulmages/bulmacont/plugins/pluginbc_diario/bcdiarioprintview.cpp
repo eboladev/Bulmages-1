@@ -41,10 +41,10 @@
 BcDiarioPrintView::BcDiarioPrintView ( BcCompany  *emp, QWidget *parent )
         : QDialog ( parent ), BlMainCompanyPointer ( emp )
 {
-    _depura ( "BcDiarioPrintView::BcDiarioPrintView", 0 );
+    blDebug ( "BcDiarioPrintView::BcDiarioPrintView", 0 );
     setupUi ( this );
     numdigitos = ( ( BcCompany * ) mainCompany() ) ->numdigitosempresa();
-    _depura ( "END BcDiarioPrintView::BcDiarioPrintView", 0 );
+    blDebug ( "END BcDiarioPrintView::BcDiarioPrintView", 0 );
 }
 
 
@@ -53,8 +53,8 @@ BcDiarioPrintView::BcDiarioPrintView ( BcCompany  *emp, QWidget *parent )
 **/
 BcDiarioPrintView::~BcDiarioPrintView()
 {
-    _depura ( "BcDiarioPrintView::~BcDiarioPrintView", 0 );
-    _depura ( "END BcDiarioPrintView::~BcDiarioPrintView", 0 );
+    blDebug ( "BcDiarioPrintView::~BcDiarioPrintView", 0 );
+    blDebug ( "END BcDiarioPrintView::~BcDiarioPrintView", 0 );
 }
 
 
@@ -66,7 +66,7 @@ BcDiarioPrintView::~BcDiarioPrintView()
 **/
 QString BcDiarioPrintView::montaQuery()
 {
-    _depura ( "BcDiarioPrintView::montaQuery", 0 );
+    blDebug ( "BcDiarioPrintView::montaQuery", 0 );
     BcDiarioView *diario = g_diario;
     QString query;
     QString fecha;
@@ -98,7 +98,7 @@ QString BcDiarioPrintView::montaQuery()
         tabla = "apunte";
     } // end if
     query = "SELECT asiento.ordenasiento, " + tabla + ".contrapartida, " + tabla + ".fecha, asiento.fecha AS fechaasiento,cuenta.tipocuenta, cuenta.descripcion, " + tabla + ".conceptocontable," + tabla + ".descripcion AS descapunte, to_char(" + tabla + ".debe,'MI999G999G990D99') AS debe, to_char(" + tabla + ".haber,'MI999G999G990D99') AS haber, cuenta.idcuenta, asiento.idasiento, " + tabla + ".idc_coste, " + tabla + ".idcanal, cuenta.codigo AS codigocuenta FROM asiento, " + tabla + ", cuenta WHERE asiento.idasiento=" + tabla + ".idasiento AND " + tabla + ".idcuenta = cuenta.idcuenta AND " + tabla + ".fecha >= '" + finicial + "' AND " + tabla + ".fecha <= '" + ffinal + "' " + ccostes + " " + ccanales + " ORDER BY asiento.ordenasiento, " + tabla + ".orden";
-    _depura ( "END BcDiarioPrintView::montaQuery", 0 );
+    blDebug ( "END BcDiarioPrintView::montaQuery", 0 );
     return query;
 }
 
@@ -109,7 +109,7 @@ QString BcDiarioPrintView::montaQuery()
 **/
 void BcDiarioPrintView::accept()
 {
-    _depura ( "BcDiarioPrintView::accept", 0 );
+    blDebug ( "BcDiarioPrintView::accept", 0 );
     /// Versi&oacute;n por si s&oacute;lo permitimos elegir una opci&oacute;n.
     if ( radiotexto->isChecked() ) {
         if ( radionormal->isChecked() ) {
@@ -124,7 +124,7 @@ void BcDiarioPrintView::accept()
             presentar ( "htmlapren" );
         } // end if
     } // end if
-    _depura ( "END BcDiarioPrintView::accept", 0 );
+    blDebug ( "END BcDiarioPrintView::accept", 0 );
 }
 
 
@@ -134,7 +134,7 @@ void BcDiarioPrintView::accept()
 **/
 void BcDiarioPrintView::presentar ( const char *tipus )
 {
-    _depura ( "BcDiarioPrintView::presentar", 0 );
+    blDebug ( "BcDiarioPrintView::presentar", 0 );
     BcDiarioView *diario = g_diario;
     int txt, html, txtapren, htmlapren;
     float debe, haber;
@@ -367,6 +367,6 @@ void BcDiarioPrintView::presentar ( const char *tipus )
             } // end if
         } // end if
     } // end if
-    _depura ( "END BcDiarioPrintView::presentar", 0 );
+    blDebug ( "END BcDiarioPrintView::presentar", 0 );
 }
 

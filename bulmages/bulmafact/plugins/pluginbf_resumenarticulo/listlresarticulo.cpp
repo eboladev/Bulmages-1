@@ -28,7 +28,7 @@
 **/
 ListLResArticulo::ListLResArticulo ( QWidget *parent ) : BfSubForm ( parent )
 {
-    _depura ( "ListLResArticulo::ListLResArticulo", 0 );
+    blDebug ( "ListLResArticulo::ListLResArticulo", 0 );
     setDbTableName ( "lfactura" );
     setDbFieldId ( "idlfactura" );
 
@@ -46,7 +46,7 @@ ListLResArticulo::ListLResArticulo ( QWidget *parent ) : BfSubForm ( parent )
     setInsert ( FALSE );
     setDelete ( FALSE );
     setSortingEnabled ( TRUE );
-    _depura ( "END ListLResArticulo::ListLResArticulo", 0 );
+    blDebug ( "END ListLResArticulo::ListLResArticulo", 0 );
 }
 
 
@@ -56,11 +56,11 @@ ListLResArticulo::ListLResArticulo ( QWidget *parent ) : BfSubForm ( parent )
 **/
 void ListLResArticulo::cargar ( QString idarticulo )
 {
-    _depura ( "ListLResArticulo::cargar\n", 0 );
+    blDebug ( "ListLResArticulo::cargar\n", 0 );
     mdb_idarticulo = idarticulo;
     QString SQLQuery = "SELECT * FROM lfactura LEFT JOIN factura ON factura.idfactura= lfactura.idfactura LEFT JOIN cliente ON cliente.idcliente = factura.idcliente WHERE idarticulo =" + mdb_idarticulo;
     BfSubForm::cargar ( SQLQuery );
-    _depura ( "END ListLResArticulo::cargar\n", 0 );
+    blDebug ( "END ListLResArticulo::cargar\n", 0 );
 }
 
 
@@ -72,7 +72,7 @@ void ListLResArticulo::cargar ( QString idarticulo )
 **/
 ListEntregas::ListEntregas ( QWidget *parent ) : BfSubForm ( parent )
 {
-    _depura ( "ListEntregas::ListEntregas", 0 );
+    blDebug ( "ListEntregas::ListEntregas", 0 );
     setDbTableName ( "lalbaran" );
     setDbFieldId ( "idlalbaran" );
 
@@ -89,7 +89,7 @@ ListEntregas::ListEntregas ( QWidget *parent ) : BfSubForm ( parent )
     setInsert ( FALSE );
     setDelete ( FALSE );
     setSortingEnabled ( TRUE );
-    _depura ( "END ListEntregas::ListEntregas", 0 );
+    blDebug ( "END ListEntregas::ListEntregas", 0 );
 }
 
 
@@ -99,11 +99,11 @@ ListEntregas::ListEntregas ( QWidget *parent ) : BfSubForm ( parent )
 **/
 void ListEntregas::cargar ( QString idarticulo )
 {
-    _depura ( "ListEntregas::cargar\n", 0 );
+    blDebug ( "ListEntregas::cargar\n", 0 );
     mdb_idarticulo = idarticulo;
     QString SQLQuery = "SELECT * FROM lalbaran LEFT JOIN albaran ON albaran.idalbaran= lalbaran.idalbaran LEFT JOIN cliente ON cliente.idcliente = albaran.idcliente WHERE idarticulo =" + mdb_idarticulo;
     BfSubForm::cargar ( SQLQuery );
-    _depura ( "END ListEntregas::cargar\n", 0 );
+    blDebug ( "END ListEntregas::cargar\n", 0 );
 }
 
 
@@ -115,7 +115,7 @@ void ListEntregas::cargar ( QString idarticulo )
 **/
 ListCompras::ListCompras ( QWidget *parent ) : BfSubForm ( parent )
 {
-    _depura ( "ListCompras::ListCompras", 0 );
+    blDebug ( "ListCompras::ListCompras", 0 );
     setDbTableName ( "lfacturap" );
     setDbFieldId ( "idlfacturap" );
 
@@ -132,7 +132,7 @@ ListCompras::ListCompras ( QWidget *parent ) : BfSubForm ( parent )
     setInsert ( FALSE );
     setDelete ( FALSE );
     setSortingEnabled ( TRUE );
-    _depura ( "END ListCompras::ListCompras", 0 );
+    blDebug ( "END ListCompras::ListCompras", 0 );
 }
 
 
@@ -142,11 +142,11 @@ ListCompras::ListCompras ( QWidget *parent ) : BfSubForm ( parent )
 **/
 void ListCompras::cargar ( QString idarticulo )
 {
-    _depura ( "ListCompras::cargar\n", 0 );
+    blDebug ( "ListCompras::cargar\n", 0 );
     mdb_idarticulo = idarticulo;
     QString SQLQuery = "SELECT * FROM lfacturap LEFT JOIN facturap ON facturap.idfacturap= lfacturap.idfacturap LEFT JOIN proveedor ON proveedor.idproveedor = facturap.idproveedor WHERE idarticulo =" + mdb_idarticulo;
     BfSubForm::cargar ( SQLQuery );
-    _depura ( "END ListCompras::cargar\n", 0 );
+    blDebug ( "END ListCompras::cargar\n", 0 );
 }
 
 
@@ -159,7 +159,7 @@ void ListCompras::cargar ( QString idarticulo )
 **/
 ListRecogidas::ListRecogidas ( QWidget *parent ) : BfSubForm ( parent )
 {
-    _depura ( "ListRecogidas::ListRecogidas", 0 );
+    blDebug ( "ListRecogidas::ListRecogidas", 0 );
     setDbTableName ( "lalbaranp" );
     setDbFieldId ( "idlalbaranp" );
 
@@ -176,7 +176,7 @@ ListRecogidas::ListRecogidas ( QWidget *parent ) : BfSubForm ( parent )
     setInsert ( FALSE );
     setDelete ( FALSE );
     setSortingEnabled ( TRUE );
-    _depura ( "END ListRecogidas::ListRecogidas", 0 );
+    blDebug ( "END ListRecogidas::ListRecogidas", 0 );
 }
 
 
@@ -186,10 +186,10 @@ ListRecogidas::ListRecogidas ( QWidget *parent ) : BfSubForm ( parent )
 **/
 void ListRecogidas::cargar ( QString idarticulo )
 {
-    _depura ( "ListRecogidas::cargar\n", 0 );
+    blDebug ( "ListRecogidas::cargar\n", 0 );
     mdb_idarticulo = idarticulo;
     QString SQLQuery = "SELECT * FROM lalbaranp LEFT JOIN albaranp ON albaranp.idalbaranp= lalbaranp.idalbaranp LEFT JOIN proveedor ON proveedor.idproveedor = albaranp.idproveedor WHERE idarticulo =" + mdb_idarticulo;
     BfSubForm::cargar ( SQLQuery );
-    _depura ( "END ListRecogidas::cargar\n", 0 );
+    blDebug ( "END ListRecogidas::cargar\n", 0 );
 }
 

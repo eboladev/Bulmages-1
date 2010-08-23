@@ -46,7 +46,7 @@
 ContratoView::ContratoView ( BfCompany *comp, QWidget *parent )
         : Contrato ( comp, parent )
 {
-    _depura ( "ContratoView::ContratoView", 0 );
+    blDebug ( "ContratoView::ContratoView", 0 );
     setAttribute ( Qt::WA_DeleteOnClose );
     try {
         setupUi ( this );
@@ -72,7 +72,7 @@ ContratoView::ContratoView ( BfCompany *comp, QWidget *parent )
     } catch ( ... ) {
         mensajeInfo ( _ ( "Error al crear la contrato" ) );
     }
-    _depura ( "END ContratoView::ContratoView" );
+    blDebug ( "END ContratoView::ContratoView" );
 }
 
 
@@ -83,8 +83,8 @@ ContratoView::ContratoView ( BfCompany *comp, QWidget *parent )
 **/
 ContratoView::~ContratoView()
 {
-    _depura ( "ContratoView::~ContratoView", 0 );
-    _depura ( "END ContratoView::~ContratoView", 0 );
+    blDebug ( "ContratoView::~ContratoView", 0 );
+    blDebug ( "END ContratoView::~ContratoView", 0 );
 }
 
 
@@ -94,10 +94,10 @@ ContratoView::~ContratoView()
 **/
 void ContratoView::inicializar()
 {
-    _depura ( "ContratoView::inicializar", 0 );
+    blDebug ( "ContratoView::inicializar", 0 );
     subform2->inicializar();
     dialogChanges_cargaInicial();
-    _depura ( "END ContratoView::inicializar", 0 );
+    blDebug ( "END ContratoView::inicializar", 0 );
 }
 
 
@@ -111,7 +111,7 @@ void ContratoView::inicializar()
 **/
 int ContratoView::cargar ( QString id )
 {
-    _depura ( "ContratoView::cargar", 0 );
+    blDebug ( "ContratoView::cargar", 0 );
     try {
         Contrato::cargar ( id );
         if ( dbValue ( "idcontrato" ) != "" ) {
@@ -124,7 +124,7 @@ int ContratoView::cargar ( QString id )
     } catch ( ... ) {
         return -1;
     } // end try
-    _depura ( "END ContratoView::cargar", 0 );
+    blDebug ( "END ContratoView::cargar", 0 );
     return 0;
 }
 
@@ -140,7 +140,7 @@ int ContratoView::cargar ( QString id )
 **/
 int ContratoView::guardar()
 {
-    _depura ( "ContratoView::guardar", 0 );
+    blDebug ( "ContratoView::guardar", 0 );
     try {
         setDbValue ( "refcontrato", mui_refcontrato->text() );
         setDbValue ( "nomcontrato", mui_nomcontrato->text() );
@@ -153,10 +153,10 @@ int ContratoView::guardar()
         Contrato::guardar();
         dialogChanges_cargaInicial();
     } catch ( ... ) {
-        _depura ( "ContratoView::guardar error al guardar", 0 );
+        blDebug ( "ContratoView::guardar error al guardar", 0 );
         throw - 1;
     } // end try
-    _depura ( "END ContratoView::guardar", 0 );
+    blDebug ( "END ContratoView::guardar", 0 );
     return 0;
 }
 
@@ -167,9 +167,9 @@ int ContratoView::guardar()
 **/
 void ContratoView::on_m_cliente_valueChanged ( QString id )
 {
-    _depura ( "ContratoView::on_m_cliente_valueChanged", 0 );
+    blDebug ( "ContratoView::on_m_cliente_valueChanged", 0 );
     subform2->setIdCliente ( id );
-    _depura ( "END ContratoView::on_m_cliente_valueChanged", 0 );
+    blDebug ( "END ContratoView::on_m_cliente_valueChanged", 0 );
 }
 
 
@@ -179,9 +179,9 @@ void ContratoView::on_m_cliente_valueChanged ( QString id )
 **/
 void ContratoView::pintaidcliente ( QString id )
 {
-    _depura ( "ContratoView::pintaidcliente", 0 );
+    blDebug ( "ContratoView::pintaidcliente", 0 );
     mui_idcliente->setId ( id );
-    _depura ( "END ContratoView::pintaidcliente", 0 );
+    blDebug ( "END ContratoView::pintaidcliente", 0 );
 }
 
 
@@ -191,9 +191,9 @@ void ContratoView::pintaidcliente ( QString id )
 **/
 void ContratoView::pintafincontrato ( QString id )
 {
-    _depura ( "ContratoView::pintafincontrato", 0 );
+    blDebug ( "ContratoView::pintafincontrato", 0 );
     mui_fincontrato->setText ( id );
-    _depura ( "ContratoView::pintafincontrato", 0 );
+    blDebug ( "ContratoView::pintafincontrato", 0 );
 }
 
 
@@ -203,9 +203,9 @@ void ContratoView::pintafincontrato ( QString id )
 **/
 void ContratoView::pintaffincontrato ( QString id )
 {
-    _depura ( "ContratoView::pintaffincontrato", 0 );
+    blDebug ( "ContratoView::pintaffincontrato", 0 );
     mui_ffincontrato->setText ( id );
-    _depura ( "END ContratoView::pintaffincontrato", 0 );
+    blDebug ( "END ContratoView::pintaffincontrato", 0 );
 }
 
 
@@ -215,9 +215,9 @@ void ContratoView::pintaffincontrato ( QString id )
 **/
 void ContratoView::pintadescontrato ( QString id )
 {
-    _depura ( "ContratoView::pintadescontrato", 0 );
+    blDebug ( "ContratoView::pintadescontrato", 0 );
     mui_descontrato->setText ( id );
-    _depura ( "END ContratoView::pintadescontrato", 0 );
+    blDebug ( "END ContratoView::pintadescontrato", 0 );
 }
 
 
@@ -227,9 +227,9 @@ void ContratoView::pintadescontrato ( QString id )
 **/
 void ContratoView::pintarefcontrato ( QString id )
 {
-    _depura ( "ContratoView::pintarefcontrato", 0 );
+    blDebug ( "ContratoView::pintarefcontrato", 0 );
     mui_refcontrato->setText ( id );
-    _depura ( "END ContratoView::pintarefcontrato", 0 );
+    blDebug ( "END ContratoView::pintarefcontrato", 0 );
 }
 
 
@@ -239,9 +239,9 @@ void ContratoView::pintarefcontrato ( QString id )
 **/
 void ContratoView::pintanomcontrato ( QString id )
 {
-    _depura ( "ContratoView::pintanomcontrato", 0 );
+    blDebug ( "ContratoView::pintanomcontrato", 0 );
     mui_nomcontrato->setText ( id );
-    _depura ( "ContratoView::pintanomcontrato", 0 );
+    blDebug ( "ContratoView::pintanomcontrato", 0 );
 }
 
 
@@ -251,7 +251,7 @@ void ContratoView::pintanomcontrato ( QString id )
 **/
 void ContratoView::pintaperiodicidadcontrato ( QString id )
 {
-    _depura ( "ContratoView::pintaperiodicidadcontrato", 0, id );
+    blDebug ( "ContratoView::pintaperiodicidadcontrato", 0, id );
     mui_periodicidadcontrato->setperiodo ( id );
 }
 
@@ -262,9 +262,9 @@ void ContratoView::pintaperiodicidadcontrato ( QString id )
 **/
 void ContratoView::pintaloccontrato ( QString id )
 {
-    _depura ( "ContratoView::pintaloccontrato", 0 );
+    blDebug ( "ContratoView::pintaloccontrato", 0 );
     mui_loccontrato->setText ( id );
-    _depura ( "END ContratoView::pintaloccontrato", 0 );
+    blDebug ( "END ContratoView::pintaloccontrato", 0 );
 }
 
 
@@ -274,7 +274,7 @@ void ContratoView::pintaloccontrato ( QString id )
 **/
 void ContratoView::on_subform2_itemDoubleClicked ( QTableWidgetItem * )
 {
-    _depura ( "ContratoView::on_subform2_itemDoubleClicked", 0 );
+    blDebug ( "ContratoView::on_subform2_itemDoubleClicked", 0 );
     QString idfactura = subform2->dbValue ( QString ( "idfactura" ), subform2->currentRow() );
     FacturaView *prov = new FacturaView ( ( BfCompany * ) mainCompany(), 0 );
     if ( prov->cargar ( idfactura ) ) {
@@ -283,7 +283,7 @@ void ContratoView::on_subform2_itemDoubleClicked ( QTableWidgetItem * )
     } // end if
     mainCompany() ->m_pWorkspace->addWindow ( prov );
     prov->show();
-    _depura ( "END ContratoView::on_subform2_itemDoubleClicked", 0 );
+    blDebug ( "END ContratoView::on_subform2_itemDoubleClicked", 0 );
 }
 
 
@@ -292,7 +292,7 @@ void ContratoView::on_subform2_itemDoubleClicked ( QTableWidgetItem * )
 **/
 void ContratoView::on_mui_facturar_clicked()
 {
-    _depura ( "ContratoView::on_mui_facturar_clicked", 0 );
+    blDebug ( "ContratoView::on_mui_facturar_clicked", 0 );
     int periodo = 1;
     QString query;
     bool end = FALSE;
@@ -309,7 +309,7 @@ void ContratoView::on_mui_facturar_clicked()
         BlDbRecordSet *cur = mainCompany() ->loadQuery ( query );
         if ( cur->valor ( "cuenta" ) != "0" ) {
             if ( cur->valor ( "cuenta" ) != "1" ) {
-                _depura ( "Detectada doble factura en un periodo", 2, cur->valor ( "cuenta" ) );
+                blDebug ( "Detectada doble factura en un periodo", 2, cur->valor ( "cuenta" ) );
             } // end if
         } else {
             // GENERAMOS LA FACTURA
@@ -389,7 +389,7 @@ void ContratoView::on_mui_facturar_clicked()
         delete cur1;
         periodo++;
     } // end while
-    _depura ( "END ContratoView::on_mui_facturar_clicked", 0 );
+    blDebug ( "END ContratoView::on_mui_facturar_clicked", 0 );
 }
 
 /// =============================================================================
@@ -402,7 +402,7 @@ void ContratoView::on_mui_facturar_clicked()
 **/
 FacturasContratoListSubForm::FacturasContratoListSubForm ( QWidget *parent, const char * ) : BfSubForm ( parent )
 {
-    _depura ( "FacturasContratoListSubForm::FacturasContratoListSubForm", 0 );
+    blDebug ( "FacturasContratoListSubForm::FacturasContratoListSubForm", 0 );
     setDbTableName ( "factura" );
     setDbFieldId ( "idfactura" );
     setFileConfig ( "contratofactura" );
@@ -427,7 +427,7 @@ FacturasContratoListSubForm::FacturasContratoListSubForm ( QWidget *parent, cons
     setInsert ( FALSE );
     setDelete ( FALSE );
     setSortingEnabled ( TRUE );
-    _depura ( "END FacturasContratoListSubForm::FacturasContratoListSubForm", 0 );
+    blDebug ( "END FacturasContratoListSubForm::FacturasContratoListSubForm", 0 );
 }
 
 

@@ -146,55 +146,55 @@ public:
         setDbValue ( "serieregistroiva", val );
     };
     virtual void pintaidregistroiva ( const QString & ) {
-        _depura ( "funcion no implementada", 2 );
+        blDebug ( "funcion no implementada", 2 );
     };
     virtual void pintacontrapartida ( const QString & ) {
-        _depura ( "funcion no implementada", 2 );
+        blDebug ( "funcion no implementada", 2 );
     };
     virtual void pintabaseimp ( const QString & ) {
-        _depura ( "funcion no implementada", 2 );
+        blDebug ( "funcion no implementada", 2 );
     };
     virtual void pintaiva ( const QString & ) {
-        _depura ( "funcion no implementada", 2 );
+        blDebug ( "funcion no implementada", 2 );
     };
     virtual void pintaffactura ( const QString & ) {
-        _depura ( "funcion no implementada", 2 );
+        blDebug ( "funcion no implementada", 2 );
     };
     virtual void pintafactura ( const QString & ) {
-        _depura ( "funcion no implementada", 2 );
+        blDebug ( "funcion no implementada", 2 );
     };
     virtual void pintaidborrador ( const QString & ) {
-        _depura ( "funcion no implementada", 2 );
+        blDebug ( "funcion no implementada", 2 );
     };
     virtual void pintaincregistro ( const QString & ) {
-        _depura ( "funcion no implementada", 2 );
+        blDebug ( "funcion no implementada", 2 );
     };
     virtual void pintaregularizacion ( const QString & ) {
-        _depura ( "funcion no implementada", 2 );
+        blDebug ( "funcion no implementada", 2 );
     };
     virtual void pintaplan349 ( const QString & ) {
-        _depura ( "funcion no implementada", 2 );
+        blDebug ( "funcion no implementada", 2 );
     };
     virtual void pintanumorden ( const QString & ) {
-        _depura ( "funcion no implementada", 2 );
+        blDebug ( "funcion no implementada", 2 );
     };
     virtual void pintacif ( const QString & ) {
-        _depura ( "funcion no implementada", 2 );
+        blDebug ( "funcion no implementada", 2 );
     };
     virtual void pintaidfpago ( const QString & ) {
-        _depura ( "funcion no implementada", 2 );
+        blDebug ( "funcion no implementada", 2 );
     };
     virtual void pintafactemitida ( const QString & ) {
-        _depura ( "funcion no implementada", 2 );
+        blDebug ( "funcion no implementada", 2 );
     };
     virtual void pintarectificaaregistroiva ( const QString & ) {
-        _depura ( "funcion no implementada", 2 );
+        blDebug ( "funcion no implementada", 2 );
     };
     virtual void pintafemisionregistroiva ( const QString & ) {
-        _depura ( "funcion no implementada", 2 );
+        blDebug ( "funcion no implementada", 2 );
     };
     virtual void pintaserieregistroiva ( const QString & ) {
-        _depura ( "funcion no implementada", 2 );
+        blDebug ( "funcion no implementada", 2 );
     };
     virtual ~RegistroIva();
     virtual int cargar ( QString );
@@ -204,7 +204,7 @@ public:
     virtual void calculaypintatotales() {}
     ;
     virtual void recalculaIva() {
-        _depura ( "no implementada", 2 );
+        blDebug ( "no implementada", 2 );
     };
     void vaciaRegistroIva();
     int buscaborradorservicio ( int );

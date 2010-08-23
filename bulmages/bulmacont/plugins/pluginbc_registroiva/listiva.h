@@ -48,7 +48,7 @@ public:
     void guardaListIva();
     void vaciar();
     virtual void pintaListIva() {
-        _depura ( "Esta funcion aun no ha sido implementada\n", 2 );
+        blDebug ( "Esta funcion aun no ha sido implementada\n", 2 );
     };
     int cargaListIva ( QString );
     void borrar();

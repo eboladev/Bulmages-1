@@ -40,8 +40,8 @@
 **/
 PluginBc_CuentasAnuales2ODS::PluginBc_CuentasAnuales2ODS()
 {
-    _depura ( "PluginBc_CuentasAnuales2ODS::PluginBc_CuentasAnuales2ODS", 0 );
-    _depura ( "END PluginBc_CuentasAnuales2ODS::PluginBc_CuentasAnuales2ODS", 0 );
+    blDebug ( "PluginBc_CuentasAnuales2ODS::PluginBc_CuentasAnuales2ODS", 0 );
+    blDebug ( "END PluginBc_CuentasAnuales2ODS::PluginBc_CuentasAnuales2ODS", 0 );
 }
 
 
@@ -50,14 +50,14 @@ PluginBc_CuentasAnuales2ODS::PluginBc_CuentasAnuales2ODS()
 **/
 PluginBc_CuentasAnuales2ODS::~PluginBc_CuentasAnuales2ODS()
 {
-    _depura ( "PluginBc_CuentasAnuales2ODS::~PluginBc_CuentasAnuales2ODS", 0 );
-    _depura ( "END PluginBc_CuentasAnuales2ODS::~PluginBc_CuentasAnuales2ODS", 0 );
+    blDebug ( "PluginBc_CuentasAnuales2ODS::~PluginBc_CuentasAnuales2ODS", 0 );
+    blDebug ( "END PluginBc_CuentasAnuales2ODS::~PluginBc_CuentasAnuales2ODS", 0 );
 }
 
 
 bool PluginBc_CuentasAnuales2ODS::Arboles()
 {
-    _depura ( "PluginBc_CuentasAnuales2ODS::Arboles", 0 );
+    blDebug ( "PluginBc_CuentasAnuales2ODS::Arboles", 0 );
 
     /// Para no acceder constantemete a la BD cada vez que se quiere averiguar el saldo
     /// de una cuenta, vamos a crear una estructura tipo arbol (usando la clase Arbol) donde,
@@ -127,7 +127,7 @@ bool PluginBc_CuentasAnuales2ODS::Arboles()
         hojas->nextRecord();
     } // end while
 
-    _depura ( "END PluginBc_CuentasAnuales2ODS::Arboles", 0 );
+    blDebug ( "END PluginBc_CuentasAnuales2ODS::Arboles", 0 );
     return 1;
 }
 
@@ -188,7 +188,7 @@ OK, aqui poden haver passat 3 coses.
 **/
 // BlFixed PluginBc_CuentasAnuales2ODS::saldoCuenta ( int cuenta )
 // {
-//     _depura ( "PluginBc_CuentasAnuales2ODS::saldoCuenta", 0 );
+//     blDebug ( "PluginBc_CuentasAnuales2ODS::saldoCuenta", 0 );
 //
 //     /// Ejercicio actual.
 //     BlDbRecordSet *cur;
@@ -206,7 +206,7 @@ OK, aqui poden haver passat 3 coses.
 //     else
 //  mensajeInfo(_("Error con la base de datos"));
 //
-//     _depura ( "END PluginBc_CuentasAnuales2ODS::saldoCuenta", 0 );
+//     blDebug ( "END PluginBc_CuentasAnuales2ODS::saldoCuenta", 0 );
 //     return resultado;
 // }
 
@@ -218,7 +218,7 @@ OK, aqui poden haver passat 3 coses.
 **/
 BlFixed PluginBc_CuentasAnuales2ODS::saldoCuentaAnt ( int cuenta )
 {
-    _depura ( "PluginBc_CuentasAnuales2ODS::saldoCuentaAnt", 0 );
+    blDebug ( "PluginBc_CuentasAnuales2ODS::saldoCuentaAnt", 0 );
 
     BlFixed resultado;
     QString cta = QString::number ( cuenta );
@@ -228,7 +228,7 @@ BlFixed PluginBc_CuentasAnuales2ODS::saldoCuentaAnt ( int cuenta )
     else
         resultado = BlFixed ( "0.00" );
 
-    _depura ( "PluginBc_CuentasAnuales2ODS::saldoCuentaAnt", 0 );
+    blDebug ( "PluginBc_CuentasAnuales2ODS::saldoCuentaAnt", 0 );
     return resultado;
 }
 
@@ -239,7 +239,7 @@ BlFixed PluginBc_CuentasAnuales2ODS::saldoCuentaAnt ( int cuenta )
 **/
 // BlFixed PluginBc_CuentasAnuales2ODS::saldoCuentaAnt ( int cuenta )
 // {
-//     _depura ( "PluginBc_CuentasAnuales2ODS::saldoCuentaAnt", 0 );
+//     blDebug ( "PluginBc_CuentasAnuales2ODS::saldoCuentaAnt", 0 );
 //
 //     /// Ejercicio anterior.
 //     BlDbRecordSet *cur;
@@ -257,7 +257,7 @@ BlFixed PluginBc_CuentasAnuales2ODS::saldoCuentaAnt ( int cuenta )
 //     else
 //  mensajeInfo(_("Error con la base de datos"));
 //
-//     _depura ( "END PluginBc_CuentasAnuales2ODS::saldoCuentaAnt", 0 );
+//     blDebug ( "END PluginBc_CuentasAnuales2ODS::saldoCuentaAnt", 0 );
 //     return resultado;
 // }
 
@@ -269,7 +269,7 @@ BlFixed PluginBc_CuentasAnuales2ODS::saldoCuentaAnt ( int cuenta )
 **/
 BlFixed PluginBc_CuentasAnuales2ODS::saldoCuenta ( int cuenta )
 {
-    _depura ( "PluginBc_CuentasAnuales2ODS::saldoCuenta", 0 );
+    blDebug ( "PluginBc_CuentasAnuales2ODS::saldoCuenta", 0 );
 
     BlFixed resultado;
     QString cta = QString::number ( cuenta );
@@ -279,7 +279,7 @@ BlFixed PluginBc_CuentasAnuales2ODS::saldoCuenta ( int cuenta )
     else
         resultado = BlFixed ( "0.00" );
 
-    _depura ( "PluginBc_CuentasAnuales2ODS::saldoCuenta", 0 );
+    blDebug ( "PluginBc_CuentasAnuales2ODS::saldoCuenta", 0 );
     return resultado;
 }
 
@@ -290,7 +290,7 @@ BlFixed PluginBc_CuentasAnuales2ODS::saldoCuenta ( int cuenta )
 **/
 bool PluginBc_CuentasAnuales2ODS::formDatosBalance ( CAnuales tipus )
 {
-    _depura ( "PluginBc_CuentasAnuales2ODS::formDatosBalance", 0 );
+    blDebug ( "PluginBc_CuentasAnuales2ODS::formDatosBalance", 0 );
     int resultado;
 
     datosView *dv = new datosView ( 0 );
@@ -322,7 +322,7 @@ bool PluginBc_CuentasAnuales2ODS::formDatosBalance ( CAnuales tipus )
 //         return;
 //     } // end if
 
-    _depura ( "END PluginBc_CuentasAnuales2ODS::formDatosBalance", 0 );
+    blDebug ( "END PluginBc_CuentasAnuales2ODS::formDatosBalance", 0 );
 
     return resultado;
 }
@@ -340,7 +340,7 @@ bool PluginBc_CuentasAnuales2ODS::formDatosBalance ( CAnuales tipus )
 **/
 void PluginBc_CuentasAnuales2ODS::balanceSituacionODS ( CAnuales tipus )
 {
-    _depura ( "PluginBc_CuentasAnuales2ODS::balanceSituacionODS", 0 );
+    blDebug ( "PluginBc_CuentasAnuales2ODS::balanceSituacionODS", 0 );
     /// Se genera el Balance de Situacion en formato ODS (Hoja de calculo OpenOffice.org).
 
     /// BUG: Se necesita usar .toQString('.') porque sino los decimales no
@@ -393,7 +393,7 @@ void PluginBc_CuentasAnuales2ODS::balanceSituacionODS ( CAnuales tipus )
     system ( cadena.toAscii() );
     cadena = g_confpr->valor ( CONF_ODS ) + " " + g_confpr->valor ( CONF_DIR_USER ) + "canualesods.ods &";
     system ( cadena.toAscii() );
-    _depura ( "END PluginBc_CuentasAnuales2ODS::balanceSituacionODS", 0 );
+    blDebug ( "END PluginBc_CuentasAnuales2ODS::balanceSituacionODS", 0 );
 }
 
 //Cuentas Anuales Abreviadas Asociacion Sin Lucro CAAASL
@@ -408,7 +408,7 @@ void PluginBc_CuentasAnuales2ODS::balanceSituacionODS ( CAnuales tipus )
 **/
 void PluginBc_CuentasAnuales2ODS::inicializa ( BcBulmaCont *bcont )
 {
-    _depura ( "PluginBc_CuentasAnuales2ODS::inicializa", 0 );
+    blDebug ( "PluginBc_CuentasAnuales2ODS::inicializa", 0 );
 
     /// Creamos el men&uacute;.
     QMenu *pPluginMenu = new QMenu ( _ ( "&Cuentas Anuales" ) );
@@ -462,7 +462,7 @@ void PluginBc_CuentasAnuales2ODS::inicializa ( BcBulmaCont *bcont )
     empresaact = bcont->empresaactual();
     dbConnection = empresaact->bdempresa();
 
-    _depura ( "END PluginBc_CuentasAnuales2ODS::inicializa", 0 );
+    blDebug ( "END PluginBc_CuentasAnuales2ODS::inicializa", 0 );
 }
 
 
@@ -472,7 +472,7 @@ void PluginBc_CuentasAnuales2ODS::inicializa ( BcBulmaCont *bcont )
 **/
 int entryPoint ( BcBulmaCont *bcont )
 {
-    _depura ( "Estoy dentro del plugin\n", 0 );
+    blDebug ( "Estoy dentro del plugin\n", 0 );
 
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale ( LC_ALL, "" );
@@ -493,7 +493,7 @@ int entryPoint ( BcBulmaCont *bcont )
 **/
 BlFixed PluginBc_CuentasAnuales2ODS::cuentaPositiva ( BlFixed valor )
 {
-    _depura ( "PluginBc_CuentasAnuales2ODS::cuentaPositiva", 0 );
+    blDebug ( "PluginBc_CuentasAnuales2ODS::cuentaPositiva", 0 );
     /// Comprueba que sea un numero positivo
     BlFixed resultado;
     if ( valor > BlFixed ( "0.00" ) )
@@ -510,7 +510,7 @@ BlFixed PluginBc_CuentasAnuales2ODS::cuentaPositiva ( BlFixed valor )
 **/
 BlFixed PluginBc_CuentasAnuales2ODS::cuentaNegativa ( BlFixed valor )
 {
-    _depura ( "PluginBc_CuentasAnuales2ODS::cuentaNegativa", 0 );
+    blDebug ( "PluginBc_CuentasAnuales2ODS::cuentaNegativa", 0 );
     /// Comprueba que sea un numero negativo
     BlFixed resultado;
     if ( valor < BlFixed ( "0.00" ) )

@@ -37,7 +37,7 @@ typedef QMap<QString, BlFixed> base;
 
 MTicket::MTicket ( BtCompany *emp, QWidget *parent ) : BlWidget ( emp, parent )
 {
-    _depura ( "MTicket::MTicket", 0 );
+    blDebug ( "MTicket::MTicket", 0 );
     setupUi ( this );
     setFocusPolicy ( Qt::NoFocus );
     emp->pWorkspace() ->addWindow ( this );
@@ -47,23 +47,23 @@ MTicket::MTicket ( BtCompany *emp, QWidget *parent ) : BlWidget ( emp, parent )
     mui_plainText->setVisible(FALSE);
     mui_frame->setVisible(FALSE);
 
-    _depura ( "END MTicket::MTicket", 0 );
+    blDebug ( "END MTicket::MTicket", 0 );
 }
 
 
 MTicket::~MTicket()
 {
-    _depura ( "MTicket::~MTicket", 0 );
-    _depura ( "END MTicket::~MTicket", 0 );
+    blDebug ( "MTicket::~MTicket", 0 );
+    blDebug ( "END MTicket::~MTicket", 0 );
 }
 
 
 void MTicket::pintar()
 {
-    _depura ( "MTicket::pintar", 0 );
+    blDebug ( "MTicket::pintar", 0 );
 
     if ( g_plugins->lanza ( "MTicket_pintar", this ) ) {
-        _depura ( "END MTicket::pintar", 0 );
+        blDebug ( "END MTicket::pintar", 0 );
         return;
     } // end if
 
@@ -147,59 +147,59 @@ QString buscar;
     cursor.clearSelection();
     mui_browser->setTextCursor( cursor );
     
-    _depura ( "END MTicket::pintar", 0 );
+    blDebug ( "END MTicket::pintar", 0 );
 }
 
 
 void MTicket::on_mui_subir_clicked()
 {
-    _depura ( "MTicket::on_mui_subir_clicked", 0 );
+    blDebug ( "MTicket::on_mui_subir_clicked", 0 );
 
     /// Simulamos la pulsacion de la tecla arriba
     ( ( BtCompany * ) mainCompany() )->pulsaTecla ( Qt::Key_Up );
 
-    _depura ( "END MTicket::on_mui_subir_clicked", 0 );
+    blDebug ( "END MTicket::on_mui_subir_clicked", 0 );
 }
 
 
 void MTicket::on_mui_bajar_clicked()
 {
-     _depura ( "MTicket::on_mui_bajar_clicked", 0 );
+     blDebug ( "MTicket::on_mui_bajar_clicked", 0 );
 
     /// Simulamos la pulsacion de la tecla abajo
     ( ( BtCompany * ) mainCompany() )->pulsaTecla ( Qt::Key_Down );
 
-    _depura ( "END MTicket::on_mui_bajar_clicked", 0 );
+    blDebug ( "END MTicket::on_mui_bajar_clicked", 0 );
 }
 
 
 void MTicket::on_mui_borrar_clicked()
 {
-     _depura ( "MTicket::on_mui_borrar_clicked", 0 );
+     blDebug ( "MTicket::on_mui_borrar_clicked", 0 );
 
     BtTicket * tick = ( ( BtCompany * ) mainCompany() )->ticketActual();
     tick->ponerCantidad ( "0" );
 
     pintar();
 
-    _depura ( "END MTicket::on_mui_borrar_clicked", 0 );
+    blDebug ( "END MTicket::on_mui_borrar_clicked", 0 );
 }
 
 
 void MTicket::on_mui_imprimir_clicked()
 {
-     _depura ( "MTicket::on_mui_imprimir_clicked", 0 );
+     blDebug ( "MTicket::on_mui_imprimir_clicked", 0 );
 
     /// Llamamos al atajo de teclado que llama a BtTicket::imprimir()
     ( ( BtCompany * ) mainCompany() )->pulsaTecla ( Qt::Key_F2 );
 
-    _depura ( "END MTicket::on_mui_imprimir_clicked", 0 );
+    blDebug ( "END MTicket::on_mui_imprimir_clicked", 0 );
 }
 
 
 void MTicket::on_mui_reimprimir_clicked()
 {
-    _depura ( "MTicket::on_mui_reimprimir_clicked", 0 );
+    blDebug ( "MTicket::on_mui_reimprimir_clicked", 0 );
 
     BtTicket *previousTicket = new BtTicket( ( BtCompany * ) mainCompany() );
     BlDbRecordSet *cur = mainCompany()->loadQuery ( "SELECT * FROM albaran WHERE ticketalbaran = TRUE ORDER BY idalbaran DESC LIMIT 1" );
@@ -230,12 +230,12 @@ void MTicket::on_mui_reimprimir_clicked()
 
     delete cur;
 
-    _depura ( "END MTicket::on_mui_reimprimir_clicked", 0 );
+    blDebug ( "END MTicket::on_mui_reimprimir_clicked", 0 );
 }
 
 void MTicket::on_mui_borrarticket_clicked()
 {
-    _depura ( "MTicket::on_mui_borrarticket_clicked", 0 );
+    blDebug ( "MTicket::on_mui_borrarticket_clicked", 0 );
     
     BtCompany *emp = ( ( BtCompany * ) mainCompany() );
     BtTicket *ticket;
@@ -266,12 +266,12 @@ void MTicket::on_mui_borrarticket_clicked()
     
     ticket->pintar();
     
-    _depura ( "END MTicket::on_mui_borrarticket_clicked", 0 );
+    blDebug ( "END MTicket::on_mui_borrarticket_clicked", 0 );
 }
 
 void MTicket::on_mui_formatear_clicked()
 {
-    _depura ( "MTicket::on_mui_formatear_clicked", 0 );
+    blDebug ( "MTicket::on_mui_formatear_clicked", 0 );
     
-    _depura ( "END MTicket::on_mui_formatear_clicked", 0 );
+    blDebug ( "END MTicket::on_mui_formatear_clicked", 0 );
 }

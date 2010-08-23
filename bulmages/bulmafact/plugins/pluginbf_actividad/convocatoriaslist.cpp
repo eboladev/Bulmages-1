@@ -39,7 +39,7 @@
 ConvocatoriasList::ConvocatoriasList ( QWidget *parent, Qt::WFlags flag, edmode editmodo )
         : BlFormList ( NULL, parent, flag, editmodo )
 {
-    _depura ( "ConvocatoriasList::ConvocatoriasList", 0 );
+    blDebug ( "ConvocatoriasList::ConvocatoriasList", 0 );
     setupUi ( this );
     /// Disparamos los plugins.
     int res = g_plugins->lanza ( "ConvocatoriasList_ConvocatoriasList", this );
@@ -49,7 +49,7 @@ ConvocatoriasList::ConvocatoriasList ( QWidget *parent, Qt::WFlags flag, edmode 
     setSubForm ( mui_list );
     hideBusqueda();
 
-    _depura ( "END ConvocatoriasList::ConvocatoriasList", 0 );
+    blDebug ( "END ConvocatoriasList::ConvocatoriasList", 0 );
 }
 
 
@@ -60,7 +60,7 @@ ConvocatoriasList::ConvocatoriasList ( QWidget *parent, Qt::WFlags flag, edmode 
 ConvocatoriasList::ConvocatoriasList ( BfCompany *comp, QWidget *parent, Qt::WFlags flag, edmode editmodo )
         : BlFormList ( comp, parent, flag, editmodo )
 {
-    _depura ( "ConvocatoriasList::ConvocatoriasList", 0 );
+    blDebug ( "ConvocatoriasList::ConvocatoriasList", 0 );
     setupUi ( this );
     /// Disparamos los plugins.
     int res = g_plugins->lanza ( "ConvocatoriasList_ConvocatoriasList", this );
@@ -78,7 +78,7 @@ ConvocatoriasList::ConvocatoriasList ( BfCompany *comp, QWidget *parent, Qt::WFl
     hideBusqueda();
     /// Hacemos el tratamiento de los permisos que desabilita botones en caso de no haber suficientes permisos.
     trataPermisos ( "cobro" );
-    _depura ( "END ConvocatoriasList::ConvocatoriasList", 0 );
+    blDebug ( "END ConvocatoriasList::ConvocatoriasList", 0 );
 }
 
 
@@ -86,8 +86,8 @@ ConvocatoriasList::ConvocatoriasList ( BfCompany *comp, QWidget *parent, Qt::WFl
 */
 ConvocatoriasList::~ConvocatoriasList()
 {
-    _depura ( "ConvocatoriasList::~ConvocatoriasList", 0 );
-    _depura ( "END ConvocatoriasList::~ConvocatoriasList", 0 );
+    blDebug ( "ConvocatoriasList::~ConvocatoriasList", 0 );
+    blDebug ( "END ConvocatoriasList::~ConvocatoriasList", 0 );
 }
 
 
@@ -97,11 +97,11 @@ ConvocatoriasList::~ConvocatoriasList()
 */
 void ConvocatoriasList::presentar()
 {
-    _depura ( "ConvocatoriasList::presentar", 0 );
+    blDebug ( "ConvocatoriasList::presentar", 0 );
     if ( mainCompany() != NULL ) {
         mui_list->cargar ( "SELECT * FROM actividad WHERE 1 = 1 " + generaFiltro() );
     } // end if
-    _depura ( "END ConvocatoriasList::presentar", 0 );
+    blDebug ( "END ConvocatoriasList::presentar", 0 );
 }
 
 
@@ -109,14 +109,14 @@ void ConvocatoriasList::presentar()
 */
 QString ConvocatoriasList::generaFiltro()
 {
-    _depura ( "ConvocatoriasList::generaFiltro", 0 );
+    blDebug ( "ConvocatoriasList::generaFiltro", 0 );
     QString filtro = "";
     if ( m_filtro->text() != "" ) {
         filtro = " AND ( lower(nombreactividad) LIKE lower('%" + m_filtro->text() + "%') ";
         filtro += " ) ";
     } // end if
 
-    _depura ( "END ConvocatoriasList::generaFiltro", 0 );
+    blDebug ( "END ConvocatoriasList::generaFiltro", 0 );
     return ( filtro );
 }
 
@@ -127,12 +127,12 @@ QString ConvocatoriasList::generaFiltro()
 */
 void ConvocatoriasList::crear()
 {
-    _depura ( "ConvocatoriasList::crear", 0 );
+    blDebug ( "ConvocatoriasList::crear", 0 );
     ConvocatoriaView *bud = new ConvocatoriaView ( ( BfCompany * ) mainCompany(), 0 );
     mainCompany() ->m_pWorkspace->addWindow ( bud );
     bud->show();
     bud->pintar();
-    _depura ( "ConvocatoriasList::crear", 0 );
+    blDebug ( "ConvocatoriasList::crear", 0 );
 }
 
 
@@ -140,9 +140,9 @@ void ConvocatoriasList::crear()
 */
 void ConvocatoriasList::imprimir()
 {
-    _depura ( "ConvocatoriasList::imprimir", 0 );
+    blDebug ( "ConvocatoriasList::imprimir", 0 );
     mui_list->imprimirPDF ( _ ( "Convocatorias" ) );
-    _depura ( "END ConvocatoriasList::imprimir", 0 );
+    blDebug ( "END ConvocatoriasList::imprimir", 0 );
 }
 
 
@@ -154,7 +154,7 @@ void ConvocatoriasList::imprimir()
 */
 void ConvocatoriasList::borrar()
 {
-    _depura ( "ConvocatoriasList::borrar", 0 );
+    blDebug ( "ConvocatoriasList::borrar", 0 );
     int a = mui_list->currentRow();
     if ( a < 0 ) {
         mensajeInfo ( _ ( "Debe seleccionar una linea" ) );
@@ -173,7 +173,7 @@ void ConvocatoriasList::borrar()
     } catch ( ... ) {
         mensajeInfo ( _ ( "Error al borrar el cobro a cliente" ) );
     } // end try
-    _depura ( "END:ConvocatoriasList::borrar", 0 );
+    blDebug ( "END:ConvocatoriasList::borrar", 0 );
 }
 
 
@@ -183,7 +183,7 @@ void ConvocatoriasList::borrar()
 /// \TODO: Deberia crearse el metodo editar y este llamar a ese.
 void ConvocatoriasList::editar ( int )
 {
-    _depura ( "ConvocatoriasList::on_mui_list_cellDoubleClicked", 0 );
+    blDebug ( "ConvocatoriasList::on_mui_list_cellDoubleClicked", 0 );
     try {
         mdb_idactividad = mui_list->dbValue ( "idactividad" );
         if ( modoEdicion() ) {
@@ -200,7 +200,7 @@ void ConvocatoriasList::editar ( int )
     } catch ( ... ) {
         mensajeInfo ( _ ( "Debe seleccionar una fila primero" ) );
     } // end try
-    _depura ( "END ConvocatoriasList::on_mui_list_cellDoubleClicked", 0 );
+    blDebug ( "END ConvocatoriasList::on_mui_list_cellDoubleClicked", 0 );
 
 }
 
@@ -209,7 +209,7 @@ void ConvocatoriasList::editar ( int )
 /// \TODO: Revisar si este metodo es util.
 void ConvocatoriasList::submenu ( const QPoint & )
 {
-    _depura ( "ConvocatoriasList::on_mui_list_customContextMenuRequested", 0 );
+    blDebug ( "ConvocatoriasList::on_mui_list_customContextMenuRequested", 0 );
     int a = mui_list->currentRow();
     if ( a < 0 )
         return;
@@ -222,7 +222,7 @@ void ConvocatoriasList::submenu ( const QPoint & )
     if ( opcion == edit )
         on_mui_editar_clicked();
     delete popup;
-    _depura ( "ConvocatoriasList::on_mui_list_customContextMenuRequested", 0 );
+    blDebug ( "ConvocatoriasList::on_mui_list_customContextMenuRequested", 0 );
 }
 
 /** Inicializa la clase con el puntero a la company que se esta utilizando
@@ -237,8 +237,8 @@ void ConvocatoriasList::setMainCompany ( BfCompany *comp )
 **/
 QString ConvocatoriasList::idactividad()
 {
-    _depura ( "ConvocatoriasList::idactividad", 0 );
-    _depura ( "END ConvocatoriasList::idactividad", 0 );
+    blDebug ( "ConvocatoriasList::idactividad", 0 );
+    blDebug ( "END ConvocatoriasList::idactividad", 0 );
     return mdb_idactividad;
 }
 
@@ -252,7 +252,7 @@ QString ConvocatoriasList::idactividad()
 */
 ConvocatoriasListSubForm::ConvocatoriasListSubForm ( QWidget *parent ) : BfSubForm ( parent )
 {
-    _depura ( "ConvocatoriasListSubForm::ConvocatoriasListSubForm", 0 );
+    blDebug ( "ConvocatoriasListSubForm::ConvocatoriasListSubForm", 0 );
     /// Disparamos los plugins.
     int res = g_plugins->lanza ( "ConvocatoriasListSubForm_ConvocatoriasListSubForm", this );
     if ( res != 0 )
@@ -265,13 +265,13 @@ ConvocatoriasListSubForm::ConvocatoriasListSubForm ( QWidget *parent ) : BfSubFo
     setInsert ( FALSE );
     setDelete ( FALSE );
     setSortingEnabled ( TRUE );
-    _depura ( "END ConvocatoriasListSubForm::ConvocatoriasListSubForm", 0 );
+    blDebug ( "END ConvocatoriasListSubForm::ConvocatoriasListSubForm", 0 );
 }
 
 
 ConvocatoriasListSubForm::~ConvocatoriasListSubForm()
 {
-    _depura ( "ConvocatoriasListSubForm::~ConvocatoriasListSubForm", 0 );
-    _depura ( "END ConvocatoriasListSubForm::~ConvocatoriasListSubForm", 0 );
+    blDebug ( "ConvocatoriasListSubForm::~ConvocatoriasListSubForm", 0 );
+    blDebug ( "END ConvocatoriasListSubForm::~ConvocatoriasListSubForm", 0 );
 }
 

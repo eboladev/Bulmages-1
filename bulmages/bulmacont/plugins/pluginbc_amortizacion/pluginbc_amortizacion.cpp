@@ -44,8 +44,8 @@ BcAmortizacionListView *g_amortizacionlist;
 **/
 MyPluginAmortizacion::MyPluginAmortizacion()
 {
-    _depura ( "MyPluginAmortizacion::MyPluginAmortizacion", 0 );
-    _depura ( "END MyPluginAmortizacion::MyPluginAmortizacion", 0 );
+    blDebug ( "MyPluginAmortizacion::MyPluginAmortizacion", 0 );
+    blDebug ( "END MyPluginAmortizacion::MyPluginAmortizacion", 0 );
 }
 
 
@@ -54,8 +54,8 @@ MyPluginAmortizacion::MyPluginAmortizacion()
 **/
 MyPluginAmortizacion::~MyPluginAmortizacion()
 {
-    _depura ( "MyPluginAmortizacion::~MyPluginAmortizacion", 0 );
-    _depura ( "END MyPluginAmortizacion::~MyPluginAmortizacion", 0 );
+    blDebug ( "MyPluginAmortizacion::~MyPluginAmortizacion", 0 );
+    blDebug ( "END MyPluginAmortizacion::~MyPluginAmortizacion", 0 );
 }
 
 
@@ -65,14 +65,14 @@ MyPluginAmortizacion::~MyPluginAmortizacion()
 **/
 void MyPluginAmortizacion::elslot()
 {
-    _depura ( "MyPluginAmortizacion::elslot", 0 );
+    blDebug ( "MyPluginAmortizacion::elslot", 0 );
     if (g_amortizacionlist == NULL) {
       g_amortizacionlist = new BcAmortizacionListView ( ( BcCompany * ) mainCompany(), 0 );
       mainCompany() ->pWorkspace() ->addWindow ( g_amortizacionlist );
     } // end if
     g_amortizacionlist->hide();
     g_amortizacionlist->show();
-    _depura ( "END MyPluginAmortizacion::elslot", 0 );
+    blDebug ( "END MyPluginAmortizacion::elslot", 0 );
 }
 
 
@@ -83,7 +83,7 @@ void MyPluginAmortizacion::elslot()
 **/
 void MyPluginAmortizacion::inicializa ( BcBulmaCont *bges )
 {
-    _depura ( "MyPluginAmortizacion::inicializa", 0 );
+    blDebug ( "MyPluginAmortizacion::inicializa", 0 );
 
     /// Creamos el men&uacute;.
     setMainCompany ( (BlMainCompany *)bges->empresaactual() );
@@ -109,7 +109,7 @@ void MyPluginAmortizacion::inicializa ( BcBulmaCont *bges )
     bges->menuBar() ->insertMenu ( bges->menuMaestro->menuAction(), pPluginMenu );
     bges->toolBar->addAction ( accion );
 
-    _depura ( "END MyPluginAmortizacion::inicializa", 0 );
+    blDebug ( "END MyPluginAmortizacion::inicializa", 0 );
 }
 
 
@@ -121,7 +121,7 @@ void MyPluginAmortizacion::inicializa ( BcBulmaCont *bges )
 **/
 int entryPoint ( BcBulmaCont *bcont )
 {
-    _depura ( "entryPoint::entryPoint", 0 );
+    blDebug ( "entryPoint::entryPoint", 0 );
 
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale ( LC_ALL, "" );
@@ -132,7 +132,7 @@ int entryPoint ( BcBulmaCont *bcont )
     MyPluginAmortizacion *plug = new MyPluginAmortizacion();
     plug->inicializa ( bcont );
 
-    _depura ( "END entryPoint::entryPoint", 0 );
+    blDebug ( "END entryPoint::entryPoint", 0 );
     return 0;
 }
 

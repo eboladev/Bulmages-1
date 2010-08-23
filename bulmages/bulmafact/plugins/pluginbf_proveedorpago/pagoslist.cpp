@@ -41,7 +41,7 @@
 PagosList::PagosList ( QWidget *parent, Qt::WFlags flag, edmode editmodo )
         : BlFormList ( NULL, parent, flag, editmodo )
 {
-    _depura ( "PagosList::PagosList", 0 );
+    blDebug ( "PagosList::PagosList", 0 );
     setupUi ( this );
     mdb_idpago = "";
     setSubForm ( mui_list );
@@ -51,7 +51,7 @@ PagosList::PagosList ( QWidget *parent, Qt::WFlags flag, edmode editmodo )
     m_proveedor->m_valores["cifproveedor"] = "";
     m_proveedor->m_valores["nomproveedor"] = "";
     hideBusqueda();
-    _depura ( "END PagosList::PagosList", 0 );
+    blDebug ( "END PagosList::PagosList", 0 );
 }
 
 
@@ -64,7 +64,7 @@ PagosList::PagosList ( QWidget *parent, Qt::WFlags flag, edmode editmodo )
 PagosList::PagosList ( BfCompany *comp, QWidget *parent, Qt::WFlags flag, edmode editmodo )
         : BlFormList ( comp, parent, flag, editmodo )
 {
-    _depura ( "PagosList::PagosList", 0 );
+    blDebug ( "PagosList::PagosList", 0 );
     setupUi ( this );
     m_proveedor->setMainCompany ( comp );
     mui_list->setMainCompany ( comp );
@@ -85,14 +85,14 @@ PagosList::PagosList ( BfCompany *comp, QWidget *parent, Qt::WFlags flag, edmode
     hideBusqueda();
     /// Hacemos el tratamiento de los permisos que desabilita botones en caso de no haber suficientes permisos.
     trataPermisos ( "pago" );
-    _depura ( "END PagosList::PagosList", 0 );
+    blDebug ( "END PagosList::PagosList", 0 );
 }
 
 
 PagosList::~PagosList()
 {
-    _depura ( "PagosList::~PagosList", 0 );
-    _depura ( "END PagosList::~PagosList", 0 );
+    blDebug ( "PagosList::~PagosList", 0 );
+    blDebug ( "END PagosList::~PagosList", 0 );
 }
 
 
@@ -100,20 +100,20 @@ PagosList::~PagosList()
 
 void PagosList::presentar()
 {
-    _depura ( "PagosList::presentar()", 0 );
+    blDebug ( "PagosList::presentar()", 0 );
     if ( mainCompany() != NULL ) {
         mui_list->cargar ( "SELECT * FROM pago NATURAL LEFT JOIN proveedor NATURAL LEFT JOIN trabajador NATURAL LEFT JOIN banco WHERE 1 = 1 " + generaFiltro() );
         /// Hacemos el calculo del total.
         BlFixed total = mui_list->sumarCampo ( "cantpago" );
         m_total->setText ( total.toQString() );
     } // end if
-    _depura ( "END PagosList::presentar()", 0 );
+    blDebug ( "END PagosList::presentar()", 0 );
 }
 
 
 QString PagosList::generaFiltro()
 {
-    _depura ( "PagosList::generaFiltro", 0 );
+    blDebug ( "PagosList::generaFiltro", 0 );
 
     QString filtro = "";
     if ( m_filtro->text() != "" ) {
@@ -145,7 +145,7 @@ QString PagosList::generaFiltro()
     if ( mui_idbanco->idbanco() != "" )
         filtro += " AND idbanco = " + mui_idbanco->idbanco();
 
-    _depura ( "END PagosList::generaFiltro", 0 );
+    blDebug ( "END PagosList::generaFiltro", 0 );
     return ( filtro );
 }
 
@@ -172,7 +172,7 @@ void PagosList::editar ( int )
 
 void PagosList::crear()
 {
-    _depura ( "PagosList::crear", 0 );
+    blDebug ( "PagosList::crear", 0 );
     PagoView *pv = new PagoView ( ( BfCompany * ) mainCompany(), 0 );
     mainCompany() ->m_pWorkspace->addWindow ( pv );
     pv->pintar();
@@ -189,15 +189,15 @@ void PagosList::crear()
 
 void PagosList::imprimir()
 {
-    _depura ( "PagosList::imprimir", 0 );
+    blDebug ( "PagosList::imprimir", 0 );
     mui_list->imprimirPDF ( _ ( "Pagos a proveedores" ) );
-    _depura ( "END PagosList::imprimir", 0 );
+    blDebug ( "END PagosList::imprimir", 0 );
 }
 
 
 void PagosList::borrar()
 {
-    _depura ( "PagosList::borrar", 0 );
+    blDebug ( "PagosList::borrar", 0 );
     int a = mui_list->currentRow();
     if ( a < 0 ) {
         mensajeInfo ( _ ( "Debe seleccionar una linea" ), this );
@@ -214,18 +214,18 @@ void PagosList::borrar()
     } catch ( ... )  {
         mensajeInfo ( _ ( "Error al borrar el pago" ), this );
     } // end try
-    _depura ( "END PagosList::borrar", 0 );
+    blDebug ( "END PagosList::borrar", 0 );
 }
 
 void PagosList::setMainCompany ( BfCompany *comp )
 {
-    _depura ( "PagosList::setMainCompany", 0 );
+    blDebug ( "PagosList::setMainCompany", 0 );
     BlMainCompanyPointer::setMainCompany ( comp );
     m_proveedor->setMainCompany ( comp );
     mui_list->setMainCompany ( comp );
     mui_idbanco->setMainCompany ( comp );
     mui_idbanco->setidbanco ( "" );
-    _depura ( "END PagosList::setMainCompany", 0 );
+    blDebug ( "END PagosList::setMainCompany", 0 );
 }
 
 

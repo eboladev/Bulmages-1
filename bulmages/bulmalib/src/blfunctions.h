@@ -78,12 +78,12 @@ void BL_EXPORT reemplazaarchivo ( QString, QString, QString, QString );
 QString BL_EXPORT editaTexto ( QString texto );
 
 #if CONFIG_DEBUG == TRUE
-void BL_EXPORT _depura ( const QString &cad, int nivel = 0, const QString & param = "" );
+void BL_EXPORT blDebug ( const QString &cad, int nivel = 0, const QString & param = "" );
 #else
-#define _depura(...)       // sin debug
+#define blDebug(...)       // sin debug
 #endif
-void BL_EXPORT _debugOn();
-void BL_EXPORT _debugOff();
+void BL_EXPORT blDebugOn();
+void BL_EXPORT blDebugOff();
 
 
 void BL_EXPORT mensajeInfo ( QString cad, QWidget *parent = 0 );

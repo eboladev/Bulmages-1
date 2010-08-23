@@ -35,10 +35,10 @@
 **/
 void AlbaranClienteListSubform::cargar()
 {
-    _depura ( "AlbaranClienteListSubform::cargar", 0 );
+    blDebug ( "AlbaranClienteListSubform::cargar", 0 );
     QString SQLQuery = "SELECT * FROM albaran";
     BlSubForm::cargar ( SQLQuery );
-    _depura ( "END AlbaranClienteListSubform::cargar", 0 );
+    blDebug ( "END AlbaranClienteListSubform::cargar", 0 );
 }
 
 
@@ -48,9 +48,9 @@ void AlbaranClienteListSubform::cargar()
 **/
 void AlbaranClienteListSubform::cargar ( QString query )
 {
-    _depura ( "AlbaranClienteListSubform::cargar", 0 );
+    blDebug ( "AlbaranClienteListSubform::cargar", 0 );
     BlSubForm::cargar ( query );
-    _depura ( "END AlbaranClienteListSubform::cargar", 0 );
+    blDebug ( "END AlbaranClienteListSubform::cargar", 0 );
 }
 
 
@@ -60,9 +60,9 @@ void AlbaranClienteListSubform::cargar ( QString query )
 **/
 void AlbaranClienteList::setidcliente ( QString val )
 {
-    _depura ( "AlbaranClienteList::setidcliente", 0 );
+    blDebug ( "AlbaranClienteList::setidcliente", 0 );
     m_cliente->setId ( val );
-    _depura ( "END AlbaranClienteList::setidcliente", 0 );
+    blDebug ( "END AlbaranClienteList::setidcliente", 0 );
 }
 
 
@@ -72,8 +72,8 @@ void AlbaranClienteList::setidcliente ( QString val )
 **/
 QString AlbaranClienteList::idCliDelivNote()
 {
-    _depura ( "AlbaranClienteList::idCliDelivNote", 0 );
-    _depura ( "END AlbaranClienteList::idCliDelivNote", 0 );
+    blDebug ( "AlbaranClienteList::idCliDelivNote", 0 );
+    blDebug ( "END AlbaranClienteList::idCliDelivNote", 0 );
     return mdb_idalbaran;
 }
 
@@ -83,7 +83,7 @@ QString AlbaranClienteList::idCliDelivNote()
 **/
 void AlbaranClienteList::crear()
 {
-    _depura ( "AlbaranClienteList::crear", 0 );
+    blDebug ( "AlbaranClienteList::crear", 0 );
     AlbaranClienteView *acv = new AlbaranClienteView ( ( BfCompany * ) mainCompany(), 0 );
     mainCompany()->m_pWorkspace->addWindow ( acv );
     acv->inicializar();
@@ -97,7 +97,7 @@ void AlbaranClienteList::crear()
 
     acv->show();
     acv->mui_descalbaran->setFocus ( Qt::OtherFocusReason );
-    _depura ( "END AlbaranClienteList::crear", 0 );
+    blDebug ( "END AlbaranClienteList::crear", 0 );
 }
 
 
@@ -117,7 +117,7 @@ void AlbaranClienteList::crear()
 AlbaranClienteList::AlbaranClienteList ( QWidget *parent, Qt::WFlags flag, edmode editmodo )
         : BlFormList ( NULL, parent, flag, editmodo )
 {
-    _depura ( "AlbaranClienteList::AlbaranClienteList", 0 );
+    blDebug ( "AlbaranClienteList::AlbaranClienteList", 0 );
     setupUi ( this );
     /// Disparamos los plugins.
     int res = g_plugins->lanza ( "AlbaranClienteList_AlbaranClienteList", this );
@@ -127,7 +127,7 @@ AlbaranClienteList::AlbaranClienteList ( QWidget *parent, Qt::WFlags flag, edmod
     setSubForm ( mui_list );
     hideBusqueda();
     iniciaForm();
-    _depura ( "END AlbaranClienteList::AlbaranClienteList", 0 );
+    blDebug ( "END AlbaranClienteList::AlbaranClienteList", 0 );
 }
 
 
@@ -147,7 +147,7 @@ AlbaranClienteList::AlbaranClienteList ( QWidget *parent, Qt::WFlags flag, edmod
 AlbaranClienteList::AlbaranClienteList ( BfCompany *comp, QWidget *parent, Qt::WFlags flag, edmode editmodo )
         : BlFormList ( comp, parent, flag, editmodo )
 {
-    _depura ( "AlbaranClienteList::AlbaranClienteList", 0 );
+    blDebug ( "AlbaranClienteList::AlbaranClienteList", 0 );
     setupUi ( this );
     /// Disparamos los plugins.
     int res = g_plugins->lanza ( "AlbaranClienteList_AlbaranClienteList", this );
@@ -182,7 +182,7 @@ AlbaranClienteList::AlbaranClienteList ( BfCompany *comp, QWidget *parent, Qt::W
     hideBusqueda();
     /// Hacemos el tratamiento de los permisos que desabilita botones en caso de no haber suficientes permisos.
     trataPermisos ( "albaran" );
-    _depura ( "END AlbaranClienteList::AlbaranClienteList", 0 );
+    blDebug ( "END AlbaranClienteList::AlbaranClienteList", 0 );
 }
 
 
@@ -192,7 +192,7 @@ AlbaranClienteList::AlbaranClienteList ( BfCompany *comp, QWidget *parent, Qt::W
 **/
 void AlbaranClienteList::iniciaForm()
 {
-    _depura ( "AlbaranClienteList::iniciaForm" );
+    blDebug ( "AlbaranClienteList::iniciaForm" );
     /// Disparamos los plugins.
     int res = g_plugins->lanza ( "AlbaranClienteList_iniciaForm", this );
     if ( res != 0 )
@@ -201,7 +201,7 @@ void AlbaranClienteList::iniciaForm()
     mui_procesada->insertItem ( 1, _ ( "Albaranes procesados" ) );
     mui_procesada->insertItem ( 2, _ ( "Albaranes no procesados" ) );
     mui_procesada->setCurrentIndex ( 2 );
-    _depura ( "END AlbaranClienteList::iniciaForm" );
+    blDebug ( "END AlbaranClienteList::iniciaForm" );
 }
 
 
@@ -211,7 +211,7 @@ void AlbaranClienteList::iniciaForm()
 **/
 void AlbaranClienteList::setMainCompany ( BfCompany *comp )
 {
-    _depura ( "AlbaranClienteList::setMainCompany", 0 );
+    blDebug ( "AlbaranClienteList::setMainCompany", 0 );
     BlMainCompanyPointer::setMainCompany ( comp );
     m_cliente->setMainCompany ( comp );
     m_articulo->setMainCompany ( comp );
@@ -228,7 +228,7 @@ void AlbaranClienteList::setMainCompany ( BfCompany *comp )
     m_idtrabajador->setAllowNull ( TRUE );   
     m_idtrabajador->setId("");
     
-    _depura ( "END AlbaranClienteList::setMainCompany", 0 );
+    blDebug ( "END AlbaranClienteList::setMainCompany", 0 );
 }
 
 
@@ -237,8 +237,8 @@ void AlbaranClienteList::setMainCompany ( BfCompany *comp )
 **/
 AlbaranClienteList::~AlbaranClienteList()
 {
-    _depura ( "AlbaranClienteList::~AlbaranClienteList", 0 );
-    _depura ( "END AlbaranClienteList::~AlbaranClienteList", 0 );
+    blDebug ( "AlbaranClienteList::~AlbaranClienteList", 0 );
+    blDebug ( "END AlbaranClienteList::~AlbaranClienteList", 0 );
 }
 
 
@@ -249,7 +249,7 @@ AlbaranClienteList::~AlbaranClienteList()
 **/
 void AlbaranClienteList::presentar()
 {
-    _depura ( "AlbaranClienteList::presentar" );
+    blDebug ( "AlbaranClienteList::presentar" );
 
     mui_list->cargar ( "SELECT *, totalalbaran AS total, bimpalbaran AS base, impalbaran AS impuestos FROM albaran LEFT JOIN  cliente ON albaran.idcliente = cliente.idcliente LEFT JOIN almacen ON albaran.idalmacen = almacen.idalmacen LEFT JOIN forma_pago ON albaran.idforma_pago = forma_pago.idforma_pago WHERE 1 = 1 " + generarFiltro() );
 
@@ -261,7 +261,7 @@ void AlbaranClienteList::presentar()
         delete cur;
     } // end if
 
-    _depura ( "END AlbaranClienteList::presentar" );
+    blDebug ( "END AlbaranClienteList::presentar" );
 }
 
 
@@ -281,7 +281,7 @@ void AlbaranClienteList::presentar()
 **/
 void AlbaranClienteList::editar ( int row )
 {
-    _depura ( "AlbaranClienteList::editar", 0 );
+    blDebug ( "AlbaranClienteList::editar", 0 );
     mdb_idalbaran = mui_list->dbValue ( QString ( "idalbaran" ), row );
     if ( modoEdicion() ) {
         AlbaranClienteView * prov = new AlbaranClienteView ( ( BfCompany * ) mainCompany(), 0 );
@@ -294,7 +294,7 @@ void AlbaranClienteList::editar ( int row )
     } else {
         emit ( selected ( mdb_idalbaran ) );
     } // end if
-    _depura ( "END AlbaranClienteList::editar", 0 );
+    blDebug ( "END AlbaranClienteList::editar", 0 );
 }
 
 
@@ -309,7 +309,7 @@ void AlbaranClienteList::editar ( int row )
 **/
 void AlbaranClienteList::borrar()
 {
-    _depura ( "AlbaranClienteList::borrar", 0 );
+    blDebug ( "AlbaranClienteList::borrar", 0 );
     int a = mui_list->currentRow();
     if ( a < 0 ) {
         mensajeInfo ( _ ( "Debe seleccionar una linea" ), this );
@@ -328,7 +328,7 @@ void AlbaranClienteList::borrar()
     } catch ( ... ) {
         mensajeInfo ( _ ( "Error al borrar el albaran a cliente" ), this );
     } // end try
-    _depura ( "END AlbaranClienteList::borrar", 0 );
+    blDebug ( "END AlbaranClienteList::borrar", 0 );
 }
 
 
@@ -336,9 +336,9 @@ void AlbaranClienteList::borrar()
 */
 void AlbaranClienteList::imprimir()
 {
-    _depura ( "AlbaranClienteList::imprimir", 0 );
+    blDebug ( "AlbaranClienteList::imprimir", 0 );
     mui_list->imprimirPDF ( _ ( "Albaranes a clientes" ) );
-    _depura ( "END AlbaranClienteList::imprimir", 0 );
+    blDebug ( "END AlbaranClienteList::imprimir", 0 );
 }
 
 
@@ -351,7 +351,7 @@ void AlbaranClienteList::imprimir()
 QString AlbaranClienteList::generarFiltro()
 {
     /// Tratamiento de los filtros.
-    _depura ( "AlbaranClienteList::generarFiltro", 0 );
+    blDebug ( "AlbaranClienteList::generarFiltro", 0 );
     QString filtro = "";
 
     if ( m_filtro->text() != "" ) {
@@ -387,7 +387,7 @@ QString AlbaranClienteList::generarFiltro()
 	filtro += " AND idtrabajador = " + m_idtrabajador->id();
     } // end if
     
-    _depura ( "END AlbaranClienteList::generarFiltro", 0 );
+    blDebug ( "END AlbaranClienteList::generarFiltro", 0 );
     return ( filtro );
 }
 
@@ -404,7 +404,7 @@ QString AlbaranClienteList::generarFiltro()
 **/
 AlbaranClienteListSubform::AlbaranClienteListSubform ( QWidget *parent ) : BfSubForm ( parent )
 {
-    _depura ( "AlbaranClienteListSubform::AlbaranClienteListSubform", 0 );
+    blDebug ( "AlbaranClienteListSubform::AlbaranClienteListSubform", 0 );
 
     /// Disparamos los plugins.
     int res = g_plugins->lanza ( "AlbaranClienteListSubform_AlbaranClienteListSubform", this );
@@ -431,7 +431,7 @@ AlbaranClienteListSubform::AlbaranClienteListSubform ( QWidget *parent ) : BfSub
     setInsert ( FALSE );
     setDelete ( FALSE );
     setSortingEnabled ( TRUE );
-    _depura ( "END AlbaranClienteListSubform::AlbaranClienteListSubform", 0 );
+    blDebug ( "END AlbaranClienteListSubform::AlbaranClienteListSubform", 0 );
 }
 
 
@@ -440,6 +440,6 @@ AlbaranClienteListSubform::AlbaranClienteListSubform ( QWidget *parent ) : BfSub
 **/
 AlbaranClienteListSubform::~AlbaranClienteListSubform()
 {
-    _depura ( "AlbaranClienteListSubform::~AlbaranClienteListSubform", 0 );
-    _depura ( "END AlbaranClienteListSubform::~AlbaranClienteListSubform", 0 );
+    blDebug ( "AlbaranClienteListSubform::~AlbaranClienteListSubform", 0 );
+    blDebug ( "END AlbaranClienteListSubform::~AlbaranClienteListSubform", 0 );
 }

@@ -42,14 +42,14 @@
 InventarioView::InventarioView ( BfCompany *comp, QWidget *parent )
         :  Inventario ( comp, parent )
 {
-    _depura ( "InventarioView::InventarioView", 0 );
+    blDebug ( "InventarioView::InventarioView", 0 );
     setAttribute ( Qt::WA_DeleteOnClose );
     setupUi ( this );
     subform2->setMainCompany ( comp );
     mui_idfamilia->setMainCompany ( comp );
     setListControlStock ( subform2 );
     meteWindow ( windowTitle(), this, FALSE );
-    _depura ( "END InventarioView::InventarioView", 0 );
+    blDebug ( "END InventarioView::InventarioView", 0 );
 }
 
 
@@ -58,8 +58,8 @@ InventarioView::InventarioView ( BfCompany *comp, QWidget *parent )
 **/
 InventarioView::~InventarioView()
 {
-    _depura ( "InventarioView::~InventarioView", 0 );
-    _depura ( "END InventarioView::~InventarioView", 0 );
+    blDebug ( "InventarioView::~InventarioView", 0 );
+    blDebug ( "END InventarioView::~InventarioView", 0 );
 }
 
 
@@ -69,7 +69,7 @@ InventarioView::~InventarioView()
 **/
 void InventarioView::on_mui_guardar2_clicked()
 {
-    _depura ( "InventarioView::on_mui_guardar2_clicked", 0 );
+    blDebug ( "InventarioView::on_mui_guardar2_clicked", 0 );
     if ( mui_nominventario->text() == "" ) {
         mensajeInfo ( _ ( "Tiene que escribir una descripcion de inventario antes de guardar" ) );
         return;
@@ -77,7 +77,7 @@ void InventarioView::on_mui_guardar2_clicked()
     setfechainventario ( mui_fechainventario->text() );
     setnominventario ( mui_nominventario->text() );
     Inventario::guardar();
-    _depura ( "END InventarioView::on_mui_guardar2_clicked", 0 );
+    blDebug ( "END InventarioView::on_mui_guardar2_clicked", 0 );
 }
 
 
@@ -87,10 +87,10 @@ void InventarioView::on_mui_guardar2_clicked()
 **/
 int InventarioView::sacaWindow()
 {
-    _depura ( "InventarioView::sacaWindow", 0 );
+    blDebug ( "InventarioView::sacaWindow", 0 );
     companyact->sacaWindow ( this );
     return 0;
-    _depura ( "END InventarioView::sacaWindow", 0 );
+    blDebug ( "END InventarioView::sacaWindow", 0 );
 }
 
 
@@ -99,7 +99,7 @@ int InventarioView::sacaWindow()
 **/
 void InventarioView::on_mui_borrar2_clicked()
 {
-    _depura ( "InventarioView::on_mui_borrar2_clicked", 0 );
+    blDebug ( "InventarioView::on_mui_borrar2_clicked", 0 );
     if ( dbValue ( "idinventario" ) != "" ) {
         if ( QMessageBox::question ( this,
                                      _ ( "Borrar inventario" ),
@@ -108,7 +108,7 @@ void InventarioView::on_mui_borrar2_clicked()
             Inventario::borrar();
         } // end if
     } // end if
-    _depura ( "END InventarioView::on_mui_borrar2_clicked", 0 );
+    blDebug ( "END InventarioView::on_mui_borrar2_clicked", 0 );
 }
 
 
@@ -117,8 +117,8 @@ void InventarioView::on_mui_borrar2_clicked()
 **/
 void InventarioView::pintaidinventario ( QString )
 {
-    _depura ( "InventarioView::pintaidinventario", 0 );
-    _depura ( "END InventarioView::pintaidinventario", 0 );
+    blDebug ( "InventarioView::pintaidinventario", 0 );
+    blDebug ( "END InventarioView::pintaidinventario", 0 );
 }
 
 
@@ -128,9 +128,9 @@ void InventarioView::pintaidinventario ( QString )
 **/
 void InventarioView::pintafechainventario ( QString id )
 {
-    _depura ( "InventarioView::pintaidinventario", 0 );
+    blDebug ( "InventarioView::pintaidinventario", 0 );
     mui_fechainventario->setText ( id );
-    _depura ( "InventarioView::pintaidinventario", 0 );
+    blDebug ( "InventarioView::pintaidinventario", 0 );
 }
 
 
@@ -140,9 +140,9 @@ void InventarioView::pintafechainventario ( QString id )
 **/
 void InventarioView::pintanominventario ( QString id )
 {
-    _depura ( "InventarioView::pintaidinventario", 0 );
+    blDebug ( "InventarioView::pintaidinventario", 0 );
     mui_nominventario->setText ( id );
-    _depura ( "InventarioView::pintaidinventario", 0 );
+    blDebug ( "InventarioView::pintaidinventario", 0 );
 }
 
 
@@ -151,13 +151,13 @@ void InventarioView::pintanominventario ( QString id )
 **/
 void InventarioView::on_mui_aceptar_clicked()
 {
-    _depura ( "InventarioView::on_mui_aceptar_clicked", 0 );
+    blDebug ( "InventarioView::on_mui_aceptar_clicked", 0 );
     setfechainventario ( mui_fechainventario->text() );
     setnominventario ( mui_nominventario->text() );
     if ( !Inventario::guardar() ) {
         close();
     } // end if
-    _depura ( "END InventarioView::on_mui_aceptar_clicked", 0 );
+    blDebug ( "END InventarioView::on_mui_aceptar_clicked", 0 );
 }
 
 
@@ -166,9 +166,9 @@ void InventarioView::on_mui_aceptar_clicked()
 **/
 void InventarioView::on_mui_pregenerar_clicked()
 {
-    _depura ( "InventarioView::on_mui_pregenerar_clicked", 0 );
+    blDebug ( "InventarioView::on_mui_pregenerar_clicked", 0 );
     pregenerar();
-    _depura ( "END InventarioView::on_mui_pregenerar_clicked", 0 );
+    blDebug ( "END InventarioView::on_mui_pregenerar_clicked", 0 );
 }
 
 
@@ -177,9 +177,9 @@ void InventarioView::on_mui_pregenerar_clicked()
 **/
 void InventarioView::on_mui_actualizar_clicked()
 {
-    _depura ( "InventarioView::on_mui_actualizar_clicked", 0 );
+    blDebug ( "InventarioView::on_mui_actualizar_clicked", 0 );
     cargar ( dbValue ( "idinventario" ) );
-    _depura ( "END InventarioView::on_mui_actualizar_clicked", 0 );
+    blDebug ( "END InventarioView::on_mui_actualizar_clicked", 0 );
 }
 
 

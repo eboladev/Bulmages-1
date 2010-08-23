@@ -37,8 +37,8 @@
 **/
 myplugin::myplugin()
 {
-    _depura ( "myplugin::myplugin", 0 );
-    _depura ( "myplugin::myplugin", 0 );
+    blDebug ( "myplugin::myplugin", 0 );
+    blDebug ( "myplugin::myplugin", 0 );
 }
 
 
@@ -47,8 +47,8 @@ myplugin::myplugin()
 **/
 myplugin::~myplugin()
 {
-    _depura ( "myplugin::~myplugin", 0 );
-    _depura ( "myplugin::~myplugin", 0 );
+    blDebug ( "myplugin::~myplugin", 0 );
+    blDebug ( "myplugin::~myplugin", 0 );
 }
 
 
@@ -57,14 +57,14 @@ myplugin::~myplugin()
 **/
 void myplugin::elslot()
 {
-    _depura ( "myplugin::elslot", 0 );
+    blDebug ( "myplugin::elslot", 0 );
     fprintf ( stderr, "Sa ha activado el slot\n" );
     QMessageBox::warning ( 0,
                            _ ( "Titulo de la ventana" ),
                            ( "Mensaje." ),
                            QMessageBox::Ok,
                            QMessageBox::Cancel );
-    _depura ( "END myplugin::elslot", 0 );
+    blDebug ( "END myplugin::elslot", 0 );
 }
 
 
@@ -74,7 +74,7 @@ void myplugin::elslot()
 **/
 void myplugin::inicializa ( BcBulmaCont *bcont )
 {
-    _depura ( "myplugin::inicializa", 0 );
+    blDebug ( "myplugin::inicializa", 0 );
 
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale ( LC_ALL, "" );
@@ -89,7 +89,7 @@ void myplugin::inicializa ( BcBulmaCont *bcont )
     pPluginMenu->addAction ( accion );
     /// A&ntilde;adimos la nueva opci&oacute;n al men&uacute; principal del programa.
     bcont->menuBar() ->addMenu ( pPluginMenu );
-    _depura ( "END myplugin::inicializa", 0 );
+    blDebug ( "END myplugin::inicializa", 0 );
 }
 
 
@@ -99,7 +99,7 @@ void myplugin::inicializa ( BcBulmaCont *bcont )
 **/
 int entryPoint ( BcBulmaCont *bcont )
 {
-    _depura ( "Estoy dentro del plugin\n", 0 );
+    blDebug ( "Estoy dentro del plugin\n", 0 );
     myplugin *plug = new myplugin();
     plug->inicializa ( bcont );
     /// S&Oacute;LO A MODO DE EJEMPLO: se modifica el t&iacute;tulo de la ventana principal

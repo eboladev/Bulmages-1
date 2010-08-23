@@ -40,7 +40,7 @@ ArtGraficosDb *g_graf;
 **/
 int entryPoint ( BtBulmaTPV *tpv )
 {
-    _depura ( "entryPoint", 0 );
+    blDebug ( "entryPoint", 0 );
 
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale ( LC_ALL, "" );
@@ -54,19 +54,19 @@ int entryPoint ( BtBulmaTPV *tpv )
     g_pantallas->show();
     g_pantallas->cargaconf();
 
-    _depura ( "END entryPoint", 0 );
+    blDebug ( "END entryPoint", 0 );
 
     return 0;
 }
 
 int BtCompany_createMainWindows_Post ( BtCompany *etpv )
 {
-    _depura ( "BtCompany_createMainWindows_Post", 0 );
+    blDebug ( "BtCompany_createMainWindows_Post", 0 );
 
     g_graf = new ArtGraficosDb ( etpv, g_main );
     ((BtBulmaTPV *)g_main)->setCentralBtWidget ( g_graf );
 
-    _depura ( "BtCompany_createMainWindows_Post", 0 );
+    blDebug ( "BtCompany_createMainWindows_Post", 0 );
 
     return 0;
 }

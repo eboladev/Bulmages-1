@@ -46,8 +46,8 @@
 **/
 myplugin::myplugin()
 {
-    _depura ( "myplugin::myplugin", 0 );
-    _depura ( "END myplugin::myplugin", 0 );
+    blDebug ( "myplugin::myplugin", 0 );
+    blDebug ( "END myplugin::myplugin", 0 );
 }
 
 
@@ -56,8 +56,8 @@ myplugin::myplugin()
 **/
 myplugin::~myplugin()
 {
-    _depura ( "myplugin::~myplugin", 0 );
-    _depura ( "END myplugin::~myplugin", 0 );
+    blDebug ( "myplugin::~myplugin", 0 );
+    blDebug ( "END myplugin::~myplugin", 0 );
 }
 
 
@@ -67,7 +67,7 @@ myplugin::~myplugin()
 **/
 void myplugin::elslot()
 {
-    _depura ( "myplugin::elslot", 0 );
+    blDebug ( "myplugin::elslot", 0 );
     bool ok;
     QString text = QInputDialog::getText ( 0, _ ( "QInputDialog::getText()" ),
                                            _ ( "Introduzca codigo" ), QLineEdit::Normal, "", &ok );
@@ -141,7 +141,7 @@ void myplugin::elslot()
             prov->show();
         } // end if
     } // end if
-    _depura ( "END myplugin::elslot", 0 );
+    blDebug ( "END myplugin::elslot", 0 );
 }
 
 
@@ -151,7 +151,7 @@ void myplugin::elslot()
 **/
 void myplugin::inicializa ( BfBulmaFact *bges )
 {
-    _depura ( "myplugin::inicializa", 0 );
+    blDebug ( "myplugin::inicializa", 0 );
     /// Creamos el men&uacute;.
     setMainCompany ( bges->company() );
     m_bulmafact = bges;
@@ -164,7 +164,7 @@ void myplugin::inicializa ( BfBulmaFact *bges )
     accion->setWhatsThis ( "Abre documentos a partir del codigo de barras" );
     connect ( accion, SIGNAL ( activated() ), this, SLOT ( elslot() ) );
     pPluginMenu->addAction ( accion );
-    _depura ( "END myplugin::inicializa", 0 );
+    blDebug ( "END myplugin::inicializa", 0 );
 }
 
 
@@ -174,7 +174,7 @@ void myplugin::inicializa ( BfBulmaFact *bges )
 **/
 int entryPoint ( BfBulmaFact *bges )
 {
-    _depura ( "entryPoint", 0 );
+    blDebug ( "entryPoint", 0 );
 
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale ( LC_ALL, "" );
@@ -182,7 +182,7 @@ int entryPoint ( BfBulmaFact *bges )
 
     myplugin *plug = new myplugin();
     plug->inicializa ( bges );
-    _depura ( "END entryPoint", 0 );
+    blDebug ( "END entryPoint", 0 );
     return 0;
 }
 

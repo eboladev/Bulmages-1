@@ -12,7 +12,7 @@
 FPagoCuenta::FPagoCuenta (QWidget *parent) : QWidget(parent)
 {
 
-    _depura ( "FPagoCuentaCuenta::FPagoCuentaCuenta", 1 );
+    blDebug ( "FPagoCuentaCuenta::FPagoCuentaCuenta", 1 );
 
     m_fpagoview = (FPagoView *) parent;
 
@@ -37,7 +37,7 @@ FPagoCuenta::FPagoCuenta (QWidget *parent) : QWidget(parent)
     frame->setLayout(layout_fpago);
 
 
-    _depura ( "END FPagoCuentaCuenta::FPagoCuentaCuenta", 1 );
+    blDebug ( "END FPagoCuentaCuenta::FPagoCuentaCuenta", 1 );
 
 }
 
@@ -47,8 +47,8 @@ FPagoCuenta::FPagoCuenta (QWidget *parent) : QWidget(parent)
 **/
 FPagoCuenta::~FPagoCuenta()
 {
-    _depura ( "FPagoCuenta::~FPagoCuenta", 0 );
-    _depura ( "END FPagoCuenta::~FPagoCuenta", 0 );
+    blDebug ( "FPagoCuenta::~FPagoCuenta", 0 );
+    blDebug ( "END FPagoCuenta::~FPagoCuenta", 0 );
 }
 
 

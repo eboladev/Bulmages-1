@@ -31,7 +31,7 @@
 **/
 int entryPoint ( BfBulmaFact * )
 {
-    _depura ( "Estoy dentro del plugin de precio de Coste", 0 );
+    blDebug ( "Estoy dentro del plugin de precio de Coste", 0 );
 
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale ( LC_ALL, "" );
@@ -48,7 +48,7 @@ int entryPoint ( BfBulmaFact * )
 **/
 int ArticuloView_ArticuloView_Post ( ArticuloView *trab )
 {
-    _depura ( "ArticuloView_ArticuloView_Post", 0 );
+    blDebug ( "ArticuloView_ArticuloView_Post", 0 );
 
     trab->addDbField ( "preciocostearticulo", BlDbField::DbNumeric, BlDbField::DbNothing, _ ( "Precio Coste" ) );
     trab->addDbField ( "margenarticulo", BlDbField::DbNumeric, BlDbField::DbNothing, _ ( "Margen" ) );
@@ -104,7 +104,7 @@ int ArticuloView_ArticuloView_Post ( ArticuloView *trab )
 
 int BfSubForm_on_mui_list_editFinished ( BfSubForm *subform )
 {
-    _depura ( "BfSubForm_on_mui_list_editFinished", 0 );
+    blDebug ( "BfSubForm_on_mui_list_editFinished", 0 );
     int err;
     BlDbRecordSet *cur = NULL;
     BlDbRecordSet *cur1 = NULL;

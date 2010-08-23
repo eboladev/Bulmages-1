@@ -37,12 +37,12 @@
 **/
 Q19QToolButton::Q19QToolButton ( CobrosList *cob , QWidget *parent ) : QToolButton ( parent )
 {
-    _depura ( "Q19QToolButton::Q19QToolButton", 0 );
+    blDebug ( "Q19QToolButton::Q19QToolButton", 0 );
     m_cobrosList = cob;
     m_recibosList=NULL;
     m_q19 = new Q19Writer( (BfCompany *) cob->mainCompany());
     setBoton();
-    _depura ( "END Q19QToolButton::Q19QToolButton", 0 );
+    blDebug ( "END Q19QToolButton::Q19QToolButton", 0 );
 }
 
 ///
@@ -52,12 +52,12 @@ Q19QToolButton::Q19QToolButton ( CobrosList *cob , QWidget *parent ) : QToolButt
 **/
 Q19QToolButton::Q19QToolButton ( RecibosList *cob , QWidget *parent ) : QToolButton ( parent )
 {
-    _depura ( "Q19QToolButton::Q19QToolButton", 0 );
+    blDebug ( "Q19QToolButton::Q19QToolButton", 0 );
     m_recibosList = cob;
     m_cobrosList = NULL;
     m_q19 = new Q19Writer( (BfCompany *) cob->mainCompany());
     setBoton();
-    _depura ( "END Q19QToolButton::Q19QToolButton", 0 );
+    blDebug ( "END Q19QToolButton::Q19QToolButton", 0 );
 }
 
 ///
@@ -65,9 +65,9 @@ Q19QToolButton::Q19QToolButton ( RecibosList *cob , QWidget *parent ) : QToolBut
 **/
 Q19QToolButton::~Q19QToolButton()
 {
-    _depura ( "Q19QToolButton::~Q19QToolButton", 0 );
+    blDebug ( "Q19QToolButton::~Q19QToolButton", 0 );
      delete m_q19;
-    _depura ( "END Q19QToolButton::~Q19QToolButton", 0 );
+    blDebug ( "END Q19QToolButton::~Q19QToolButton", 0 );
 }
 
 
@@ -76,7 +76,7 @@ Q19QToolButton::~Q19QToolButton()
 **/
 void Q19QToolButton::setBoton()
 {
-    _depura ( "Q19QToolButton::setBoton", 0 );
+    blDebug ( "Q19QToolButton::setBoton", 0 );
     connect ( this, SIGNAL ( clicked() ), this, SLOT ( click() ) );
     setObjectName ( QString::fromUtf8 ( "exporta" ) );
     setStatusTip ( "Generar Q19" );
@@ -84,7 +84,7 @@ void Q19QToolButton::setBoton()
     setMinimumSize ( QSize ( 32, 32 ) );
     setIcon ( QIcon ( g_confpr->valor ( CONF_PROGDATA ) + "icons/q19.png"  ) );
     setIconSize ( QSize ( 22, 22 ) );
-    _depura ( "END Q19QToolButton::setBoton", 0 );
+    blDebug ( "END Q19QToolButton::setBoton", 0 );
 }
 
 
@@ -94,7 +94,7 @@ void Q19QToolButton::setBoton()
 **/
 void Q19QToolButton::click()
 {
-    _depura ( "Q19QToolButton::click", 0 );
+    blDebug ( "Q19QToolButton::click", 0 );
     BlSubForm *sub = NULL;
     if (m_cobrosList) {
        sub = m_cobrosList->mui_list;
@@ -126,7 +126,7 @@ void Q19QToolButton::click()
        } else {
 	  m_companyact = ( BfCompany * ) m_recibosList->mainCompany();
        } // end if
-       _depura("buscare ids ",0,ids);
+       blDebug("buscare ids ",0,ids);
 
        QString query = "";
        if (m_cobrosList) {
@@ -147,6 +147,6 @@ void Q19QToolButton::click()
        delete curcobro;
      }
 
-    _depura ( "END Q19QToolButton::click", 0 );
+    blDebug ( "END Q19QToolButton::click", 0 );
 }
 

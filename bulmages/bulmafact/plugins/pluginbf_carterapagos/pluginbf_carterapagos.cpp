@@ -34,8 +34,8 @@
 **/
 MyPluginCarteraPagos::MyPluginCarteraPagos()
 {
-    _depura ( "MyPluginCarteraPagos::MyPluginCarteraPagos", 0 );
-    _depura ( "END MyPluginCarteraPagos::MyPluginCarteraPagos", 0 );
+    blDebug ( "MyPluginCarteraPagos::MyPluginCarteraPagos", 0 );
+    blDebug ( "END MyPluginCarteraPagos::MyPluginCarteraPagos", 0 );
 }
 
 ///
@@ -43,8 +43,8 @@ MyPluginCarteraPagos::MyPluginCarteraPagos()
 **/
 MyPluginCarteraPagos::~MyPluginCarteraPagos()
 {
-    _depura ( "MyPluginCarteraPagos::~MyPluginCarteraPagos", 0 );
-    _depura ( "END MyPluginCarteraPagos::~MyPluginCarteraPagos", 0 );
+    blDebug ( "MyPluginCarteraPagos::~MyPluginCarteraPagos", 0 );
+    blDebug ( "END MyPluginCarteraPagos::~MyPluginCarteraPagos", 0 );
 }
 
 
@@ -53,11 +53,11 @@ MyPluginCarteraPagos::~MyPluginCarteraPagos()
 **/
 void MyPluginCarteraPagos::elslot()
 {
-    _depura ( "MyPluginCarteraPagos::elslot", 0 );
+    blDebug ( "MyPluginCarteraPagos::elslot", 0 );
     CarteraPagosList *vehiculoview = new CarteraPagosList ( ( BfCompany * ) m_conexionbase );
     m_bulmafact->workspace() ->addWindow ( vehiculoview );
     vehiculoview->show();
-    _depura ( "END MyPluginCarteraPagos::elslot", 0 );
+    blDebug ( "END MyPluginCarteraPagos::elslot", 0 );
 }
 
 
@@ -67,7 +67,7 @@ void MyPluginCarteraPagos::elslot()
 **/
 void MyPluginCarteraPagos::inicializa ( BfBulmaFact *bges )
 {
-    _depura ( "MyPluginCarteraPagos::inicializa", 0 );
+    blDebug ( "MyPluginCarteraPagos::inicializa", 0 );
     /// Creamos el men&uacute;.
     m_conexionbase = bges->company();
     m_bulmafact = bges;
@@ -83,7 +83,7 @@ void MyPluginCarteraPagos::inicializa ( BfBulmaFact *bges )
     pPluginMenu->addSeparator();
     pPluginMenu->addAction ( accion );
 	bges->Listados->addAction (accion);
-    _depura ( "END MyPluginCarteraPagos::inicializa", 0 );
+    blDebug ( "END MyPluginCarteraPagos::inicializa", 0 );
 }
 
 
@@ -98,7 +98,7 @@ void MyPluginCarteraPagos::inicializa ( BfBulmaFact *bges )
 **/
 int entryPoint ( BfBulmaFact *bges )
 {
-    _depura ( "Punto de Entrada del plugin de Cartera de Pagos\n", 0 );
+    blDebug ( "Punto de Entrada del plugin de Cartera de Pagos\n", 0 );
     MyPluginCarteraPagos *plug = new MyPluginCarteraPagos();
     plug->inicializa ( bges );
     return 0;
@@ -112,7 +112,7 @@ int entryPoint ( BfBulmaFact *bges )
 **/
 int ProveedorView_ProveedorView_Post ( ProveedorView *art )
 {
-    _depura ( "ArticuloView_ArticuloView", 0 );
+    blDebug ( "ArticuloView_ArticuloView", 0 );
 
     /// Agregamos el subformulario de validaciones.
     BfSubForm *l = new BfSubForm ( art );
@@ -133,7 +133,7 @@ int ProveedorView_ProveedorView_Post ( ProveedorView *art )
 
     art->mui_tab->addTab ( l, "Vencimientos" );
     l->cargar("SELECT * FROM vencimientoproveedor WHERE idproveedor IS NULL");
-    _depura ( "END ArticuloView_ArticuloView", 0 );
+    blDebug ( "END ArticuloView_ArticuloView", 0 );
     return 0;
 }
 
@@ -145,12 +145,12 @@ int ProveedorView_ProveedorView_Post ( ProveedorView *art )
 **/
 int ProveedorView_cargarPost_Post ( ProveedorView *art )
 {
-    _depura ( "ArticuloView_cargar", 0 );
+    blDebug ( "ArticuloView_cargar", 0 );
     BfSubForm *l = art->findChild<BfSubForm *> ( "vencimientoproveedor" );
     if ( l ) {
         l->cargar ( "SELECT * FROM vencimientoproveedor LEFT JOIN forma_pago ON vencimientoproveedor.idforma_pago = forma_pago.idforma_pago WHERE idproveedor =  " + art->dbValue("idproveedor"));
     } // end if
-    _depura ( "END ArticuloView_cargar", 0 );
+    blDebug ( "END ArticuloView_cargar", 0 );
     return 0;
 }
 
@@ -186,7 +186,7 @@ void generarVencimientos (FacturaProveedorView *art) {
 **/
 int BlForm_guardar_Post_Post ( BlForm *art )
 {
-    _depura ( "ArticuloView_guardar_post", 0 );
+    blDebug ( "ArticuloView_guardar_post", 0 );
     try {
 
         BfSubForm *l = art->findChild<BfSubForm *> ( "vencimientoproveedor" );
@@ -222,7 +222,7 @@ int BlForm_guardar_Post_Post ( BlForm *art )
         } // end if
         return 0;
     } catch ( ... ) {
-        _depura ( "Hubo un error al guardar los vencimientos", 2 );
+        blDebug ( "Hubo un error al guardar los vencimientos", 2 );
         return 0;
     } // end try
 }
@@ -231,7 +231,7 @@ int BlForm_guardar_Post_Post ( BlForm *art )
 
 
 int FacturaProveedorView_FacturaProveedorView (FacturaProveedorView *factp) {
-    _depura ( "ArticuloView_ArticuloView", 0 );
+    blDebug ( "ArticuloView_ArticuloView", 0 );
     /// Agregamos el subformulario de validaciones.
     BfSubForm *l = new BfSubForm ( factp );
     l->setObjectName ( QString::fromUtf8 ( "vencimientop" ) );
@@ -253,7 +253,7 @@ int FacturaProveedorView_FacturaProveedorView (FacturaProveedorView *factp) {
 
     factp->discounts->addTab ( l, "Vencimientos" );
     l->cargar("SELECT * FROM vencimientop WHERE idfacturap IS NULL");
-    _depura ( "END ArticuloView_ArticuloView", 0 );
+    blDebug ( "END ArticuloView_ArticuloView", 0 );
     return 0;
 }
 
@@ -264,12 +264,12 @@ int FacturaProveedorView_FacturaProveedorView (FacturaProveedorView *factp) {
 **/
 int FacturaProveedorView_cargarPost_Post ( FacturaProveedorView *art )
 {
-    _depura ( "FacturaProveedorView_cargarPost_Post", 0 );
+    blDebug ( "FacturaProveedorView_cargarPost_Post", 0 );
     BfSubForm *l = art->findChild<BfSubForm *> ( "vencimientop" );
     if ( l ) {
         l->cargar ( "SELECT * FROM vencimientop LEFT JOIN forma_pago ON vencimientop.idforma_pago = forma_pago.idforma_pago WHERE idfacturap =  " + art->dbValue("idfacturap"));
     } // end if
-    _depura ( "END FacturaProveedorView_cargarPost_Post", 0 );
+    blDebug ( "END FacturaProveedorView_cargarPost_Post", 0 );
     return 0;
 }
 

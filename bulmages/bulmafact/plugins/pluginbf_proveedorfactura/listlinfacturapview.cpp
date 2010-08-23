@@ -36,7 +36,7 @@
 ListLinFacturaProveedorView::ListLinFacturaProveedorView ( QWidget *parent )
         : BfSubForm ( parent )
 {
-    _depura ( "ListLinFacturaProveedorView::ListLinFacturaProveedorView", 0 );
+    blDebug ( "ListLinFacturaProveedorView::ListLinFacturaProveedorView", 0 );
     setDbTableName ( "lfacturap" );
     setDbFieldId ( "idlfacturap" );
 
@@ -63,7 +63,7 @@ ListLinFacturaProveedorView::ListLinFacturaProveedorView ( QWidget *parent )
     /// Disparamos los plugins.
     g_plugins->lanza ( "ListLinFacturaProveedorView_ListLinFacturaProveedorView_Post", this );
 
-    _depura ( "END ListLinFacturaProveedorView::ListLinFacturaProveedorView", 0 );
+    blDebug ( "END ListLinFacturaProveedorView::ListLinFacturaProveedorView", 0 );
 }
 
 ///
@@ -72,8 +72,8 @@ ListLinFacturaProveedorView::ListLinFacturaProveedorView ( QWidget *parent )
 **/
 void ListLinFacturaProveedorView::cargar ( QString idfacturap )
 {
-    _depura ( "ListLinFacturaProveedorView::cargar", 0 );
+    blDebug ( "ListLinFacturaProveedorView::cargar", 0 );
     mdb_idfacturap = idfacturap;
     BlSubForm::cargar ( "SELECT * FROM lfacturap LEFT JOIN articulo ON lfacturap.idarticulo = articulo.idarticulo WHERE idfacturap = " + mdb_idfacturap + " ORDER BY ordenlfacturap" );
-    _depura ( "END ListLinFacturaProveedorView::cargar", 0 );
+    blDebug ( "END ListLinFacturaProveedorView::cargar", 0 );
 }

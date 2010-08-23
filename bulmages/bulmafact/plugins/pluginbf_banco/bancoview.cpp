@@ -38,7 +38,7 @@
 BancoView::BancoView ( BfCompany *emp, QWidget *parent )
         : BfForm ( emp, parent )
 {
-    _depura ( "BancoView::BancoView", 0 );
+    blDebug ( "BancoView::BancoView", 0 );
     setTitleName ( _ ( "Banco" ) );
     /// Indicamos que vamos a operar con la tabla banco para que los permisos se traten adecuadamente.
     setDbTableName ( "banco" );
@@ -57,7 +57,7 @@ BancoView::BancoView ( BfCompany *emp, QWidget *parent )
 
     pintar();
     meteWindow ( windowTitle(), this );
-    _depura ( "END BancoView::BancoView", 0 );
+    blDebug ( "END BancoView::BancoView", 0 );
 }
 
 
@@ -66,7 +66,7 @@ BancoView::BancoView ( BfCompany *emp, QWidget *parent )
 **/
 void BancoView::pintar()
 {
-    _depura ( "BancoView::pintar", 0 );
+    blDebug ( "BancoView::pintar", 0 );
     mui_lista->clear();
     if ( m_cursorbancos != NULL ) {
         delete m_cursorbancos;
@@ -79,7 +79,7 @@ void BancoView::pintar()
 
     /// Comprobamos cual es la cadena inicial.
     dialogChanges_cargaInicial();
-    _depura ( "END BancoView::pintar", 0 );
+    blDebug ( "END BancoView::pintar", 0 );
 }
 
 
@@ -88,11 +88,11 @@ void BancoView::pintar()
 **/
 BancoView::~BancoView()
 {
-    _depura ( "BancoView::~BancoView", 0 );
+    blDebug ( "BancoView::~BancoView", 0 );
     if ( m_cursorbancos != NULL ) {
         delete m_cursorbancos;
     } // end if
-    _depura ( "END BancoView::~BancoView", 0 );
+    blDebug ( "END BancoView::~BancoView", 0 );
 }
 
 
@@ -101,8 +101,8 @@ BancoView::~BancoView()
 **/
 QString BancoView::idBanco()
 {
-    _depura ( "BancoView::idBanco", 0 );
-    _depura ( "END BancoView::idBanco", 0 );
+    blDebug ( "BancoView::idBanco", 0 );
+    blDebug ( "END BancoView::idBanco", 0 );
     return mdb_idbanco;
 }
 
@@ -112,7 +112,7 @@ QString BancoView::idBanco()
 **/
 void BancoView::on_mui_lista_currentItemChanged ( QListWidgetItem *cur, QListWidgetItem * )
 {
-    _depura ( "on_mui_lista_currentItemChanged", 0 );
+    blDebug ( "on_mui_lista_currentItemChanged", 0 );
     if ( cur )
         groupBox1->setEnabled ( TRUE );
     int row = mui_lista->row ( cur );
@@ -136,7 +136,7 @@ void BancoView::on_mui_lista_currentItemChanged ( QListWidgetItem *cur, QListWid
     m_item = cur;
     /// Comprobamos cual es la cadena inicial.
     dialogChanges_cargaInicial();
-    _depura ( "END on_mui_lista_currentItemChanged", 0 );
+    blDebug ( "END on_mui_lista_currentItemChanged", 0 );
 }
 
 
@@ -146,7 +146,7 @@ void BancoView::on_mui_lista_currentItemChanged ( QListWidgetItem *cur, QListWid
 **/
 int BancoView::guardar()
 {
-    _depura ( "BancoView::guardar", 0 );
+    blDebug ( "BancoView::guardar", 0 );
     try {
 
         if ( mdb_idbanco.isEmpty() ) {
@@ -205,7 +205,7 @@ int BancoView::guardar()
 
         /// Comprobamos cual es la cadena inicial.
         dialogChanges_cargaInicial();
-        _depura ( "END BancoView::guardar", 0 );
+        blDebug ( "END BancoView::guardar", 0 );
 
 //	mainCompany()->commit();
 
@@ -224,7 +224,7 @@ int BancoView::guardar()
 **/
 bool BancoView::trataModificado()
 {
-    _depura ( "BancoView::trataModificado", 0 );
+    blDebug ( "BancoView::trataModificado", 0 );
     /// Si se ha modificado el contenido advertimos y guardamos.
     if ( dialogChanges_hayCambios() ) {
         if ( QMessageBox::warning ( this,
@@ -234,7 +234,7 @@ bool BancoView::trataModificado()
             on_mui_guardar_clicked();
         return ( TRUE );
     } // end if
-    _depura ( "END BancoView::trataModificado", 0 );
+    blDebug ( "END BancoView::trataModificado", 0 );
     return ( FALSE );
 }
 
@@ -246,7 +246,7 @@ bool BancoView::trataModificado()
 **/
 void BancoView::on_mui_nuevo_clicked()
 {
-    _depura ( "BancoView::on_mui_nuevo_clicked", 0 );
+    blDebug ( "BancoView::on_mui_nuevo_clicked", 0 );
     try {
         /// Si se ha modificado el contenido advertimos y guardamos.
         trataModificado();
@@ -258,7 +258,7 @@ void BancoView::on_mui_nuevo_clicked()
         mdb_idbanco = cur->valor ( "idbanco" );
         delete cur;
         pintar();
-        _depura ( "END BancoView::on_mui_nuevo_clicked", 0 );
+        blDebug ( "END BancoView::on_mui_nuevo_clicked", 0 );
     } catch ( ... ) {
         mensajeInfo ( _ ( "Error inesperado el crear el Banco" ) );
         mainCompany() ->rollback();
@@ -273,7 +273,7 @@ void BancoView::on_mui_nuevo_clicked()
 **/
 void BancoView::on_mui_borrar_clicked()
 {
-    _depura ( "BancoView::on_mui_borrar_clicked", 0 );
+    blDebug ( "BancoView::on_mui_borrar_clicked", 0 );
     if ( mdb_idbanco == "" ) return;
     try {
         trataModificado();
@@ -286,7 +286,7 @@ void BancoView::on_mui_borrar_clicked()
         } // end if
         mainCompany() ->commit();
         pintar();
-        _depura ( "END BancoView::on_mui_borrar_clicked", 0 );
+        blDebug ( "END BancoView::on_mui_borrar_clicked", 0 );
     } catch ( ... ) {
         mensajeInfo ( _ ( "Error inesperado al borrar el banco" ) );
         mainCompany() ->rollback();
@@ -299,8 +299,8 @@ void BancoView::on_mui_borrar_clicked()
 **/
 void BancoView::imprimir()
 {
-    _depura ( "BancoView::imprimir", 0 );
-    _depura ( "END BancoView::imprimir", 0 );
+    blDebug ( "BancoView::imprimir", 0 );
+    blDebug ( "END BancoView::imprimir", 0 );
 }
 
 

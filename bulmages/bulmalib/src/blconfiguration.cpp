@@ -76,7 +76,7 @@ void initConfiguration ( QString config )
 /// 1) bulmages.conf -> archivo para todos los programas del paquete Bulmages.
 /// 2) bulmaxxx.conf -> archivo especifico a un solo programa del paquete.
 ///
-/// NOTA: No se puede utilizar _depura dentro de esta clase porque necesita
+/// NOTA: No se puede utilizar blDebug dentro de esta clase porque necesita
 /// valores que no se disponen antes de leer el archivo de configuraci&oacute;n.
 
 
@@ -86,7 +86,7 @@ void initConfiguration ( QString config )
 **/
 BlConfiguration::BlConfiguration ( QString nombreprograma )
 {
-//    _depura("BlConfiguration::BlConfiguration", 0);
+//    blDebug("BlConfiguration::BlConfiguration", 0);
 
     /// Definimos los directorios donde buscar primero.
     m_dirGlobalConf = CONFIG_DIR_CONFIG;
@@ -179,7 +179,7 @@ BlConfiguration::BlConfiguration ( QString nombreprograma )
     setValor ( CONF_LOGIN_USER, "" );
     setValor ( CONF_PASSWORD_USER, "" );
 
-//    _depura("END BlConfiguration::BlConfiguration", 0);
+//    blDebug("END BlConfiguration::BlConfiguration", 0);
 }
 
 
@@ -188,8 +188,8 @@ BlConfiguration::BlConfiguration ( QString nombreprograma )
 **/
 BlConfiguration::~BlConfiguration()
 {
-//    _depura("BlConfiguration::~BlConfiguration", 0);
-//    _depura("END BlConfiguration::~BlConfiguration", 0);
+//    blDebug("BlConfiguration::~BlConfiguration", 0);
+//    blDebug("END BlConfiguration::~BlConfiguration", 0);
 }
 
 
@@ -434,7 +434,7 @@ QString BlConfiguration::nombre ( int i )
 **/
 void BlConfiguration::saveconfig()
 {
-//    _depura("BlConfiguration::saveconfig", 0);
+//    blDebug("BlConfiguration::saveconfig", 0);
     QString dir1 = getenv ( "HOME" );
     dir1 = dir1 + "/.bulmages/" + m_dirLocalConf;
 
@@ -452,7 +452,7 @@ void BlConfiguration::saveconfig()
         } // end if
     } // end for
     file.close();
-//    _depura("END BlConfiguration::saveconfig", 0);
+//    blDebug("END BlConfiguration::saveconfig", 0);
 }
 
 
@@ -465,7 +465,7 @@ void BlConfiguration::saveconfig()
 **/
 bool BlConfiguration::leeconfig ( QString fich )
 {
-//    _depura("BlConfiguration::leeconfig", 0);
+//    blDebug("BlConfiguration::leeconfig", 0);
     QFile arch ( fich );
     if ( arch.open ( QIODevice::ReadOnly ) ) {
         QString cadaux1 = "Leyendo configuracion" + fich + "\n";
@@ -484,7 +484,7 @@ bool BlConfiguration::leeconfig ( QString fich )
 
             for ( int i = 0; i < 1000; i++ ) {
                 if (  list[0] == nombre ( i )  && nombre ( i ) != "" ) {
-                    _depura ( "[" + nombre ( i ) + "]" + "--->" + cad, 0 );
+                    blDebug ( "[" + nombre ( i ) + "]" + "--->" + cad, 0 );
                     cad = cad.right ( cad.length() - nombre ( i ).length() );
                     cad = cad.trimmed();
                     m_valores[i] = cad;
@@ -495,7 +495,7 @@ bool BlConfiguration::leeconfig ( QString fich )
         fprintf ( stderr, "%s", "FIN Leyendo configuracion\n" );
         return TRUE;
     } // end if
-//    _depura("END BlConfiguration::leeconfig", 0);
+//    blDebug("END BlConfiguration::leeconfig", 0);
     return FALSE;
 }
 
@@ -507,12 +507,12 @@ bool BlConfiguration::leeconfig ( QString fich )
 **/
 QString BlConfiguration::valor ( int i )
 {
-//    _depura("BlConfiguration::valor", 0);
+//    blDebug("BlConfiguration::valor", 0);
     if ( m_valores.contains ( i ) ) {
         return ( m_valores[i] );
     } // end if
     return "";
-//    _depura("END BlConfiguration::valor", 0);
+//    blDebug("END BlConfiguration::valor", 0);
 }
 
 
@@ -523,8 +523,8 @@ QString BlConfiguration::valor ( int i )
 **/
 void BlConfiguration::setValor ( int i, QString valor )
 {
-//    _depura("BlConfiguration::setValor", 0);
+//    blDebug("BlConfiguration::setValor", 0);
     m_valores[i] = valor;
-//    _depura("END BlConfiguration::setValor", 0);
+//    blDebug("END BlConfiguration::setValor", 0);
 }
 

@@ -37,13 +37,13 @@
 **/
 int entryPoint ( QApplication * )
 {
-    _depura ( "entryPoint" , 0, "Punto de Entrada del plugin de Subformods" );
+    blDebug ( "entryPoint" , 0, "Punto de Entrada del plugin de Subformods" );
 
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale ( LC_ALL, "" );
     bindtextdomain ( "pluginbl_subform2ods", g_confpr->valor ( CONF_DIR_TRADUCCION ).toAscii().constData() );
 
-    _depura ( "END entryPoint", 0, "Punto de Entrada del plugin de Subformods" );
+    blDebug ( "END entryPoint", 0, "Punto de Entrada del plugin de Subformods" );
     return 0;
 }
 
@@ -54,8 +54,8 @@ int entryPoint ( QApplication * )
 **/
 myplugsubformods::myplugsubformods ( BlSubForm *parent ) : QObject ( parent )
 {
-    _depura ( "myplugsubformods::myplugsubformods", 0 );
-    _depura ( "END myplugsubformods::myplugsubformods", 0 );
+    blDebug ( "myplugsubformods::myplugsubformods", 0 );
+    blDebug ( "END myplugsubformods::myplugsubformods", 0 );
 }
 
 
@@ -65,8 +65,8 @@ myplugsubformods::myplugsubformods ( BlSubForm *parent ) : QObject ( parent )
 **/
 myplugsubformods::myplugsubformods ( BlTreeWidget *parent ) : QObject ( parent )
 {
-    _depura ( "myplugsubformods::myplugsubformods", 0 );
-    _depura ( "END myplugsubformods::myplugsubformods", 0 );
+    blDebug ( "myplugsubformods::myplugsubformods", 0 );
+    blDebug ( "END myplugsubformods::myplugsubformods", 0 );
 }
 
 ///
@@ -74,8 +74,8 @@ myplugsubformods::myplugsubformods ( BlTreeWidget *parent ) : QObject ( parent )
 **/
 myplugsubformods::~myplugsubformods()
 {
-    _depura ( "myplugsubformods::~myplugsubformods", 0 );
-    _depura ( "END myplugsubformods::~myplugsubformods", 0 );
+    blDebug ( "myplugsubformods::~myplugsubformods", 0 );
+    blDebug ( "END myplugsubformods::~myplugsubformods", 0 );
 }
 
 
@@ -85,10 +85,10 @@ myplugsubformods::~myplugsubformods()
 **/
 void myplugsubformods::s_pintaMenu ( QMenu *menu )
 {
-    _depura ( "myplugsubformods::s_pintaMenu", 0 );
+    blDebug ( "myplugsubformods::s_pintaMenu", 0 );
     menu->addSeparator();
     menu->addAction ( QIcon( ":/Images/exportods.png" ), _ ( "Exportar a hoja de calculo (ODS)" ) );
-    _depura ( "END myplugsubformods::s_pintaMenu", 0 );
+    blDebug ( "END myplugsubformods::s_pintaMenu", 0 );
 }
 
 ///
@@ -97,10 +97,10 @@ void myplugsubformods::s_pintaMenu ( QMenu *menu )
 **/
 void myplugsubformods::s_pintaMenu1 ( QMenu *menu )
 {
-    _depura ( "myplugsubformods::s_pintaMenu1", 0 );
+    blDebug ( "myplugsubformods::s_pintaMenu1", 0 );
     menu->addSeparator();
     menu->addAction ( QIcon( ":/Images/exportods.png" ), _ ( "Exportar a hoja de calculo (ODS)" ) );
-    _depura ( "END myplugsubformods::s_pintaMenu1", 0 );
+    blDebug ( "END myplugsubformods::s_pintaMenu1", 0 );
 }
 
 
@@ -110,11 +110,11 @@ void myplugsubformods::s_pintaMenu1 ( QMenu *menu )
 **/
 void myplugsubformods::s_trataMenu ( QAction *action )
 {
-    _depura ( "myplugsubformods::s_trataMenu", 0 );
+    blDebug ( "myplugsubformods::s_trataMenu", 0 );
     if ( action->text() == _ ( "Exportar a hoja de calculo (ODS)" ) ) {
         sacaods();
     } // end if
-    _depura ( "END myplugsubformods::s_trataMenu", 0 );
+    blDebug ( "END myplugsubformods::s_trataMenu", 0 );
 }
 
 
@@ -124,11 +124,11 @@ void myplugsubformods::s_trataMenu ( QAction *action )
 **/
 void myplugsubformods::s_trataMenu1 ( QAction *action )
 {
-    _depura ( "myplugsubformods::s_trataMenu1", 0 );
+    blDebug ( "myplugsubformods::s_trataMenu1", 0 );
     if ( action->text() == _ ( "Exportar a hoja de calculo (ODS)" ) ) {
         sacaods1();
     } // end if
-    _depura ( "END myplugsubformods::s_trataMenu1", 0 );
+    blDebug ( "END myplugsubformods::s_trataMenu1", 0 );
 }
 
 
@@ -137,7 +137,7 @@ void myplugsubformods::s_trataMenu1 ( QAction *action )
 **/
 void myplugsubformods::sacaods()
 {
-    _depura ( "myplugsubformods::sacaods", 0 );
+    blDebug ( "myplugsubformods::sacaods", 0 );
 
     QString archivod = g_confpr->valor ( CONF_DIR_USER ) + "listadoods.py";
     BlSubForm * subf = ( BlSubForm * ) parent();
@@ -250,7 +250,7 @@ void myplugsubformods::sacaods()
     cadena = g_confpr->valor(CONF_ODS)  + " " + g_confpr->valor ( CONF_DIR_USER ) + "listadoods.ods &";
     system ( cadena.toAscii() );
 
-    _depura ( "END myplugsubformods::sacaods", 0 );
+    blDebug ( "END myplugsubformods::sacaods", 0 );
 }
 
 
@@ -263,7 +263,7 @@ void myplugsubformods::sacaods()
 **/
 void myplugsubformods::sacaods1()
 {
-    _depura ( "myplugsubformods::sacaods", 0 );
+    blDebug ( "myplugsubformods::sacaods", 0 );
 
     QString archivod = g_confpr->valor ( CONF_DIR_USER ) + "listadoods.py";
     BlTreeWidget * subf = ( BlTreeWidget * ) parent();
@@ -381,7 +381,7 @@ void myplugsubformods::sacaods1()
     cadena = g_confpr->valor(CONF_ODS) + " " + g_confpr->valor ( CONF_DIR_USER ) + "listadoods.ods &";
     system ( cadena.toAscii() );
 
-    _depura ( "END myplugsubformods::sacaods", 0 );
+    blDebug ( "END myplugsubformods::sacaods", 0 );
 }
 
 
@@ -398,11 +398,11 @@ void myplugsubformods::sacaods1()
 **/
 int BlSubForm_BlSubForm_Post ( BlSubForm *sub )
 {
-    _depura ( "BlSubForm_BlSubForm_Post", 0 );
+    blDebug ( "BlSubForm_BlSubForm_Post", 0 );
     myplugsubformods *subformods = new myplugsubformods ( sub );
     sub->QObject::connect ( sub, SIGNAL ( pintaMenu ( QMenu * ) ), subformods, SLOT ( s_pintaMenu ( QMenu * ) ) );
     sub->QObject::connect ( sub, SIGNAL ( trataMenu ( QAction * ) ), subformods, SLOT ( s_trataMenu ( QAction * ) ) );
-    _depura ( "END BlSubForm_BlSubForm_Post", 0 );
+    blDebug ( "END BlSubForm_BlSubForm_Post", 0 );
     return 0;
 }
 
@@ -413,7 +413,7 @@ int BlSubForm_BlSubForm_Post ( BlSubForm *sub )
 \return
 **/
 int BlSubForm_preparaMenu ( BlSubForm *sub ) {
-    _depura ( "BlSubForm_preparaMenu", 0 );
+    blDebug ( "BlSubForm_preparaMenu", 0 );
 
     myplugsubformods *subformods = new myplugsubformods ( sub );
     
@@ -435,7 +435,7 @@ int BlSubForm_preparaMenu ( BlSubForm *sub ) {
       m_hboxLayout1->addWidget ( sel );
       sel->connect (sel, SIGNAL(released()), subformods, SLOT(sacaods ( )));
 
-    _depura ( "END BlSubForm_preparaMenu", 0 );
+    blDebug ( "END BlSubForm_preparaMenu", 0 );
     return 0;
 }
 
@@ -453,11 +453,11 @@ int BlSubForm_preparaMenu ( BlSubForm *sub ) {
 **/
 int BlTreeWidget_BlTreeWidget_Post ( BlTreeWidget *sub )
 {
-    _depura ( "BlTreeWidget_BlTreeWidget_Post", 0 );
+    blDebug ( "BlTreeWidget_BlTreeWidget_Post", 0 );
     myplugsubformods *subformods = new myplugsubformods ( sub );
     sub->QObject::connect ( sub, SIGNAL ( pintaMenu ( QMenu * ) ), subformods, SLOT ( s_pintaMenu1 ( QMenu * ) ) );
     sub->QObject::connect ( sub, SIGNAL ( trataMenu ( QAction * ) ), subformods, SLOT ( s_trataMenu1 ( QAction * ) ) );
-    _depura ( "END BlTreeWidget_BlTreeWidget_Post", 0 );
+    blDebug ( "END BlTreeWidget_BlTreeWidget_Post", 0 );
     return 0;
 }
 

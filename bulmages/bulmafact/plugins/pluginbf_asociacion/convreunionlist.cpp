@@ -39,7 +39,7 @@
 ConvReunionList::ConvReunionList ( QWidget *parent, Qt::WFlags flag, edmode editmodo )
         : BlFormList ( NULL, parent, flag, editmodo )
 {
-    _depura ( "ConvReunionList::ConvReunionList", 0 );
+    blDebug ( "ConvReunionList::ConvReunionList", 0 );
     setupUi ( this );
     setAttribute ( Qt::WA_DeleteOnClose );
     /// Disparamos los plugins.
@@ -50,7 +50,7 @@ ConvReunionList::ConvReunionList ( QWidget *parent, Qt::WFlags flag, edmode edit
     setSubForm ( mui_list );
     hideBusqueda();
 
-    _depura ( "END ConvReunionList::ConvReunionList", 0 );
+    blDebug ( "END ConvReunionList::ConvReunionList", 0 );
 }
 
 
@@ -61,7 +61,7 @@ ConvReunionList::ConvReunionList ( QWidget *parent, Qt::WFlags flag, edmode edit
 ConvReunionList::ConvReunionList ( BfCompany *comp, QWidget *parent, Qt::WFlags flag, edmode editmodo )
         : BlFormList ( comp, parent, flag, editmodo )
 {
-    _depura ( "ConvReunionList::ConvReunionList", 0 );
+    blDebug ( "ConvReunionList::ConvReunionList", 0 );
     setupUi ( this );
     setAttribute ( Qt::WA_DeleteOnClose );
     /// Disparamos los plugins.
@@ -80,7 +80,7 @@ ConvReunionList::ConvReunionList ( BfCompany *comp, QWidget *parent, Qt::WFlags 
     hideBusqueda();
     /// Hacemos el tratamiento de los permisos que desabilita botones en caso de no haber suficientes permisos.
     trataPermisos ( "reunion" );
-    _depura ( "END ConvReunionList::ConvReunionList", 0 );
+    blDebug ( "END ConvReunionList::ConvReunionList", 0 );
 }
 
 
@@ -88,8 +88,8 @@ ConvReunionList::ConvReunionList ( BfCompany *comp, QWidget *parent, Qt::WFlags 
 */
 ConvReunionList::~ConvReunionList()
 {
-    _depura ( "ConvReunionList::~ConvReunionList", 0 );
-    _depura ( "END ConvReunionList::~ConvReunionList", 0 );
+    blDebug ( "ConvReunionList::~ConvReunionList", 0 );
+    blDebug ( "END ConvReunionList::~ConvReunionList", 0 );
 }
 
 
@@ -99,11 +99,11 @@ ConvReunionList::~ConvReunionList()
 */
 void ConvReunionList::presentar()
 {
-    _depura ( "ConvReunionList::presentar", 0 );
+    blDebug ( "ConvReunionList::presentar", 0 );
     if ( mainCompany() != NULL ) {
         mui_list->cargar ( "SELECT * FROM reunion  WHERE 1 = 1 " + generaFiltro() );
     } // end if
-    _depura ( "END ConvReunionList::presentar", 0 );
+    blDebug ( "END ConvReunionList::presentar", 0 );
 }
 
 
@@ -111,10 +111,10 @@ void ConvReunionList::presentar()
 */
 QString ConvReunionList::generaFiltro()
 {
-    _depura ( "ConvReunionList::generaFiltro", 0 );
+    blDebug ( "ConvReunionList::generaFiltro", 0 );
     QString filtro = "";
 
-    _depura ( "END ConvReunionList::generaFiltro", 0 );
+    blDebug ( "END ConvReunionList::generaFiltro", 0 );
     return ( filtro );
 }
 
@@ -125,12 +125,12 @@ QString ConvReunionList::generaFiltro()
 */
 void ConvReunionList::crear()
 {
-    _depura ( "ConvReunionList::crear", 0 );
+    blDebug ( "ConvReunionList::crear", 0 );
     ConvReunionView *bud = new ConvReunionView ( ( BfCompany * ) mainCompany(), 0 );
     mainCompany() ->m_pWorkspace->addWindow ( bud );
     bud->show();
     bud->pintar();
-    _depura ( "ConvReunionList::crear", 0 );
+    blDebug ( "ConvReunionList::crear", 0 );
 }
 
 
@@ -138,9 +138,9 @@ void ConvReunionList::crear()
 */
 void ConvReunionList::imprimir()
 {
-    _depura ( "ConvReunionList::imprimir", 0 );
+    blDebug ( "ConvReunionList::imprimir", 0 );
     mui_list->imprimirPDF ( _ ( "Reuniones" ) );
-    _depura ( "END ConvReunionList::imprimir", 0 );
+    blDebug ( "END ConvReunionList::imprimir", 0 );
 }
 
 
@@ -152,7 +152,7 @@ void ConvReunionList::imprimir()
 */
 void ConvReunionList::borrar()
 {
-    _depura ( "ConvReunionList::borrar", 0 );
+    blDebug ( "ConvReunionList::borrar", 0 );
     int a = mui_list->currentRow();
     if ( a < 0 ) {
         mensajeInfo ( _ ( "Debe seleccionar una linea" ) );
@@ -171,7 +171,7 @@ void ConvReunionList::borrar()
     } catch ( ... ) {
         mensajeInfo ( _ ( "Error al borrar el cobro a cliente" ) );
     } // end try
-    _depura ( "END:ConvReunionList::borrar", 0 );
+    blDebug ( "END:ConvReunionList::borrar", 0 );
 }
 
 
@@ -181,7 +181,7 @@ void ConvReunionList::borrar()
 /// \TODO: Deberia crearse el metodo editar y este llamar a ese.
 void ConvReunionList::editar ( int )
 {
-    _depura ( "ConvReunionList::on_mui_list_cellDoubleClicked", 0 );
+    blDebug ( "ConvReunionList::on_mui_list_cellDoubleClicked", 0 );
     try {
         mdb_idreunion = mui_list->dbValue ( "idreunion" );
         if ( modoEdicion() ) {
@@ -198,7 +198,7 @@ void ConvReunionList::editar ( int )
     } catch ( ... ) {
         mensajeInfo ( _ ( "Debe seleccionar una fila primero" ) );
     } // end try
-    _depura ( "END ConvReunionList::on_mui_list_cellDoubleClicked", 0 );
+    blDebug ( "END ConvReunionList::on_mui_list_cellDoubleClicked", 0 );
 
 }
 
@@ -207,7 +207,7 @@ void ConvReunionList::editar ( int )
 /// \TODO: Revisar si este metodo es util.
 void ConvReunionList::submenu ( const QPoint & )
 {
-    _depura ( "ConvReunionList::on_mui_list_customContextMenuRequested", 0 );
+    blDebug ( "ConvReunionList::on_mui_list_customContextMenuRequested", 0 );
     int a = mui_list->currentRow();
     if ( a < 0 )
         return;
@@ -220,7 +220,7 @@ void ConvReunionList::submenu ( const QPoint & )
     if ( opcion == edit )
         on_mui_editar_clicked();
     delete popup;
-    _depura ( "ConvReunionList::on_mui_list_customContextMenuRequested", 0 );
+    blDebug ( "ConvReunionList::on_mui_list_customContextMenuRequested", 0 );
 }
 
 /** Inicializa la clase con el puntero a la company que se esta utilizando
@@ -235,8 +235,8 @@ void ConvReunionList::setMainCompany ( BfCompany *comp )
 **/
 QString ConvReunionList::idreunion()
 {
-    _depura ( "ConvReunionList::idreunion", 0 );
-    _depura ( "END ConvReunionList::idreunion", 0 );
+    blDebug ( "ConvReunionList::idreunion", 0 );
+    blDebug ( "END ConvReunionList::idreunion", 0 );
     return mdb_idreunion;
 }
 
@@ -250,7 +250,7 @@ QString ConvReunionList::idreunion()
 */
 ConvReunionListSubForm::ConvReunionListSubForm ( QWidget *parent ) : BfSubForm ( parent )
 {
-    _depura ( "ConvReunionListSubForm::ConvReunionListSubForm", 0 );
+    blDebug ( "ConvReunionListSubForm::ConvReunionListSubForm", 0 );
     /// Disparamos los plugins.
     int res = g_plugins->lanza ( "ConvReunionListSubForm_ConvReunionListSubForm", this );
     if ( res != 0 )
@@ -265,13 +265,13 @@ ConvReunionListSubForm::ConvReunionListSubForm ( QWidget *parent ) : BfSubForm (
     setInsert ( FALSE );
     setDelete ( FALSE );
     setSortingEnabled ( TRUE );
-    _depura ( "END ConvReunionListSubForm::ConvReunionListSubForm", 0 );
+    blDebug ( "END ConvReunionListSubForm::ConvReunionListSubForm", 0 );
 }
 
 
 ConvReunionListSubForm::~ConvReunionListSubForm()
 {
-    _depura ( "ConvReunionListSubForm::~ConvReunionListSubForm", 0 );
-    _depura ( "END ConvReunionListSubForm::~ConvReunionListSubForm", 0 );
+    blDebug ( "ConvReunionListSubForm::~ConvReunionListSubForm", 0 );
+    blDebug ( "END ConvReunionListSubForm::~ConvReunionListSubForm", 0 );
 }
 

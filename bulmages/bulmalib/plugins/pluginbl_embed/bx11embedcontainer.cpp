@@ -29,7 +29,7 @@
 **/
 BX11EmbedContainer::BX11EmbedContainer ( BlMainCompany *emp, QWidget *parent ) : QX11EmbedContainer ( parent ), BlMainCompanyPointer ( emp )
 {
-    _depura ( "END BX11EmbedContainer::BX11EmbedContainer", 0 );
+    blDebug ( "END BX11EmbedContainer::BX11EmbedContainer", 0 );
 }
 
 
@@ -38,9 +38,9 @@ BX11EmbedContainer::BX11EmbedContainer ( BlMainCompany *emp, QWidget *parent ) :
 **/
 BX11EmbedContainer::~BX11EmbedContainer()
 {
-    _depura ( "BX11EmbedContainer::~BX11EmbedContainer", 0, this->windowTitle() );
+    blDebug ( "BX11EmbedContainer::~BX11EmbedContainer", 0, this->windowTitle() );
     sacaWindow();
-    _depura ( "END BX11EmbedContainer::~BX11EmbedContainer", 0 );
+    blDebug ( "END BX11EmbedContainer::~BX11EmbedContainer", 0 );
 }
 
 
@@ -50,12 +50,12 @@ BX11EmbedContainer::~BX11EmbedContainer()
 **/
 int BX11EmbedContainer::sacaWindow()
 {
-    _depura ( "BX11EmbedContainer::sacaWindow", 0 );
+    blDebug ( "BX11EmbedContainer::sacaWindow", 0 );
     discardClient();
     if ( mainCompany() != NULL ) {
         mainCompany() ->sacaWindow ( this );
     } // end if
-    _depura ( "END BX11EmbedContainer::sacaWindow", 0 );
+    blDebug ( "END BX11EmbedContainer::sacaWindow", 0 );
     return 0;
 }
 

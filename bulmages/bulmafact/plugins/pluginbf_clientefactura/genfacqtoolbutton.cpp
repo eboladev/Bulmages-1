@@ -49,10 +49,10 @@
 **/
 GenFacQToolButton::GenFacQToolButton ( QWidget *fac , QWidget *parent ) : QToolButton ( parent )
 {
-    _depura ( "GenFacQToolButton::GenFacQToolButton", 0 );
+    blDebug ( "GenFacQToolButton::GenFacQToolButton", 0 );
     m_object = fac;
     setBoton();
-    _depura ( "END GenFacQToolButton::GenFacQToolButton", 0 );
+    blDebug ( "END GenFacQToolButton::GenFacQToolButton", 0 );
 }
 
 
@@ -61,8 +61,8 @@ GenFacQToolButton::GenFacQToolButton ( QWidget *fac , QWidget *parent ) : QToolB
 **/
 GenFacQToolButton::~GenFacQToolButton()
 {
-    _depura ( "GenFacQToolButton::~GenFacQToolButton", 0 );
-    _depura ( "END GenFacQToolButton::~GenFacQToolButton", 0 );
+    blDebug ( "GenFacQToolButton::~GenFacQToolButton", 0 );
+    blDebug ( "END GenFacQToolButton::~GenFacQToolButton", 0 );
 }
 
 
@@ -71,7 +71,7 @@ GenFacQToolButton::~GenFacQToolButton()
 **/
 void GenFacQToolButton::setBoton()
 {
-    _depura ( "GenFacQToolButton::setBoton", 0 );
+    blDebug ( "GenFacQToolButton::setBoton", 0 );
     connect ( this, SIGNAL ( clicked() ), this, SLOT ( click() ) );
     setObjectName ( QString::fromUtf8 ( "exporta" ) );
     setStatusTip ( "Generar Factura" );
@@ -81,7 +81,7 @@ void GenFacQToolButton::setBoton()
     setIcon ( QIcon ( QString::fromUtf8 ( ":/Images/client-delivery-note-to-invoice.png" ) ) );
     setIconSize ( QSize ( 32, 32 ) );
     setContentsMargins ( 0, 0, 0, 0 );
-    _depura ( "END GenFacQToolButton::setBoton", 0 );
+    blDebug ( "END GenFacQToolButton::setBoton", 0 );
 }
 
 
@@ -90,7 +90,7 @@ void GenFacQToolButton::setBoton()
 **/
 void GenFacQToolButton::click()
 {
-    _depura ( "ImpQToolButton::click", 0 );
+    blDebug ( "ImpQToolButton::click", 0 );
 
     if ( m_object->objectName() == "AlbaranClienteBase" ) {
         generarFactura();
@@ -106,7 +106,7 @@ void GenFacQToolButton::click()
     }// end if
 
 
-    _depura ( "END ImpQToolButton::click", 0 );
+    blDebug ( "END ImpQToolButton::click", 0 );
 }
 
 /// Se encarga de generar una factura a partir de un albar&aacute;n.
@@ -120,7 +120,7 @@ void GenFacQToolButton::click()
 **/
 void GenFacQToolButton::generarFactura()
 {
-    _depura ( "GenFacQToolButton::generarFactura", 0 );
+    blDebug ( "GenFacQToolButton::generarFactura", 0 );
     AlbaranClienteView *fpv = ( AlbaranClienteView * ) m_object;
 
     /// Disparamos los plugins.
@@ -239,7 +239,7 @@ void GenFacQToolButton::generarFactura()
     } // end try
 
 
-    _depura ( "END GenFacQToolButton::generarFactura", 0 );
+    blDebug ( "END GenFacQToolButton::generarFactura", 0 );
 }
 
 
@@ -255,7 +255,7 @@ void GenFacQToolButton::generarFactura()
 **/
 void GenFacQToolButton::generarFactura1()
 {
-    _depura ( "GenFacQToolButton::generarFacturaProveedor1", 0 );
+    blDebug ( "GenFacQToolButton::generarFacturaProveedor1", 0 );
 
     PedidoClienteView *fpv = ( PedidoClienteView * ) m_object;
 
@@ -368,7 +368,7 @@ void GenFacQToolButton::generarFactura1()
     } // end try
 
 
-    _depura ( "END GenFacQToolButton::generarFactura", 0 );
+    blDebug ( "END GenFacQToolButton::generarFactura", 0 );
 }
 
 
@@ -387,7 +387,7 @@ void GenFacQToolButton::generarFactura1()
 **/
 void GenFacQToolButton::generarFactura2()
 {
-    _depura ( "GenFacQToolButton::generarFactura2", 0 );
+    blDebug ( "GenFacQToolButton::generarFactura2", 0 );
 
     PresupuestoView *fpv = ( PresupuestoView * ) m_object;
 
@@ -501,7 +501,7 @@ void GenFacQToolButton::generarFactura2()
     } // end try
 
 
-    _depura ( "END GenFacQToolButton::generarFactura", 0 );
+    blDebug ( "END GenFacQToolButton::generarFactura", 0 );
 }
 
 
@@ -521,10 +521,10 @@ void GenFacQToolButton::generarFactura2()
 **/
 AgFacQToolButton::AgFacQToolButton ( QWidget *fac , QWidget *parent ) : QToolButton ( parent )
 {
-    _depura ( "AgFacQToolButton::AgFacQToolButton", 0 );
+    blDebug ( "AgFacQToolButton::AgFacQToolButton", 0 );
     m_object = fac;
     setBoton();
-    _depura ( "END AgFacQToolButton::AgFacQToolButton", 0 );
+    blDebug ( "END AgFacQToolButton::AgFacQToolButton", 0 );
 }
 
 
@@ -533,8 +533,8 @@ AgFacQToolButton::AgFacQToolButton ( QWidget *fac , QWidget *parent ) : QToolBut
 **/
 AgFacQToolButton::~AgFacQToolButton()
 {
-    _depura ( "AgFacQToolButton::~AgFacQToolButton", 0 );
-    _depura ( "END AgFacQToolButton::~AgFacQToolButton", 0 );
+    blDebug ( "AgFacQToolButton::~AgFacQToolButton", 0 );
+    blDebug ( "END AgFacQToolButton::~AgFacQToolButton", 0 );
 }
 
 
@@ -543,7 +543,7 @@ AgFacQToolButton::~AgFacQToolButton()
 **/
 void AgFacQToolButton::setBoton()
 {
-    _depura ( "AgFacQToolButton::setBoton", 0 );
+    blDebug ( "AgFacQToolButton::setBoton", 0 );
     connect ( this, SIGNAL ( clicked() ), this, SLOT ( click() ) );
     setObjectName ( QString::fromUtf8 ( "exporta" ) );
     setStatusTip ( "Agregar a Factura" );
@@ -553,7 +553,7 @@ void AgFacQToolButton::setBoton()
     setIcon ( QIcon ( QString::fromUtf8 ( ":/Images/client-delivery-note-add-to-invoice.png" ) ) );
     setIconSize ( QSize ( 32, 32 ) );
     setContentsMargins ( 0, 0, 0, 0 );
-    _depura ( "END AgFacQToolButton::setBoton", 0 );
+    blDebug ( "END AgFacQToolButton::setBoton", 0 );
 }
 
 
@@ -562,13 +562,13 @@ void AgFacQToolButton::setBoton()
 **/
 void AgFacQToolButton::click()
 {
-    _depura ( "ImpQToolButton::click", 0 );
+    blDebug ( "ImpQToolButton::click", 0 );
 
     if ( m_object->objectName() == "AlbaranClienteBase" ) {
         generarFactura();
     }// end if
 
-    _depura ( "END ImpQToolButton::click", 0 );
+    blDebug ( "END ImpQToolButton::click", 0 );
 }
 
 /// Se encarga de generar una factura a partir de un albar&aacute;n.
@@ -582,7 +582,7 @@ void AgFacQToolButton::click()
 **/
 void AgFacQToolButton::generarFactura()
 {
-    _depura ( "AgFacQToolButton::generarFactura", 0 );
+    blDebug ( "AgFacQToolButton::generarFactura", 0 );
     AlbaranClienteView *fpv = ( AlbaranClienteView * ) m_object;
 
     QDialog *diag = new QDialog ( 0 );
@@ -641,7 +641,7 @@ void AgFacQToolButton::generarFactura()
     /// Procesamos el albaran
     fpv->mui_procesadoalbaran->setChecked ( TRUE );
 
-    _depura ( "END AgFacQToolButton::generarFactura", 0 );
+    blDebug ( "END AgFacQToolButton::generarFactura", 0 );
 }
 
 

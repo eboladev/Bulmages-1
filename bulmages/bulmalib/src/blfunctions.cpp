@@ -196,7 +196,7 @@ QString blXMLDecode ( const QString &string )
 /// Devuelve un QString con la cuenta extendida al nmero de digitos indicado.
 QString blExtendStringWithZeros ( QString cad, unsigned int num1 )
 {
-    _depura ( "BlFunctions::blExtendStringWithZeros", 0, cad + "--" + QString::number ( num1 ) );
+    blDebug ( "BlFunctions::blExtendStringWithZeros", 0, cad + "--" + QString::number ( num1 ) );
     QString cod = cad;
     int num = num1;
     if ( cod.length() < num ) {
@@ -206,7 +206,7 @@ QString blExtendStringWithZeros ( QString cad, unsigned int num1 )
             cod.replace ( pos, 1, str7 );
         } // end if
     } // end if
-    _depura ( "END BlFunctions::blExtendStringWithZeros", 0 );
+    blDebug ( "END BlFunctions::blExtendStringWithZeros", 0 );
     return ( cod );
 }
 
@@ -333,7 +333,7 @@ void reemplazaarchivo ( QString archivo, QString texto1, QString texto2, QString
 /// el trabajo de la invocaci&oacute;n de bgtrml2pdf para evitar trabajo duplicado.
 void generaPDF ( const QString arch )
 {
-    _depura ( "generaPDF " + arch, 0 );
+    blDebug ( "generaPDF " + arch, 0 );
 
     QDir::setCurrent ( g_confpr->valor ( CONF_DIR_USER ) );
     QString cadsys;
@@ -346,14 +346,14 @@ void generaPDF ( const QString arch )
 	mensajeError(_("Error en PYTHON [ blfunctions->generaPDF() ]"));
     } // end if
     
-    _depura ( cadsys, 0 );
+    blDebug ( cadsys, 0 );
     cadsys = g_confpr->valor ( CONF_FLIP ) + " -u " + g_confpr->valor ( CONF_DIR_USER ) + arch + ".pdf";
     int result2 = system ( cadsys.toAscii().data() );
     if (result2 == -1) {
 	mensajeError(_("Error en FLIP [ blfunctions->generaPDF() ]"));
     } // end if
 
-    _depura ( cadsys, 0 );
+    blDebug ( cadsys, 0 );
 
 #else
 
@@ -365,14 +365,14 @@ void generaPDF ( const QString arch )
 
 #endif
 
-    _depura ( "END generaPDF " + arch, 0 );
+    blDebug ( "END generaPDF " + arch, 0 );
 }
 
 
 /// Genera un ODS a partir de un pys sin abrirlo.
 void generaPYS ( const QString arch )
 {
-    _depura ( "generaPYS " + arch, 0 );
+    blDebug ( "generaPYS " + arch, 0 );
     QDir::setCurrent ( g_confpr->valor ( CONF_DIR_USER ) );
     QString cadsys;
 
@@ -469,13 +469,13 @@ QString windowID ( const QString &app )
 }
 
 
-void _debugOn ()
+void blDebugOn ()
 {
     g_confpr->setValor ( CONF_DEBUG, "TRUE" );
 }
 
 
-void _debugOff ()
+void blDebugOff ()
 {
     g_confpr->setValor ( CONF_DEBUG, "FALSE" );
 }
@@ -489,7 +489,7 @@ void _debugOff ()
 /// nivel 5 = Termina depuracion indiscriminada.
 /// nivel 10 = Salida a terminal.
 #if CONFIG_DEBUG == TRUE
-void _depura ( const QString &cad, int nivel, const QString &param )
+void blDebug ( const QString &cad, int nivel, const QString &param )
 {
     /// Si el objeto confpr no esta creado puede dar segmentation fault.
     if ( g_confpr == NULL ) {
@@ -593,7 +593,7 @@ void _depura ( const QString &cad, int nivel, const QString &param )
 
 //#else
 //
-//inline void _depura ( const QString &, int , const QString & )
+//inline void blDebug ( const QString &, int , const QString & )
 //{
 //    return;
 //}
@@ -733,10 +733,10 @@ QString num2texto ( QString numero, QString moneda, QString singular )
     QString ones = "";
     QString cpostfijos = "";
     while ( breakdown_key.toDouble() > 0.5 ) {
-//  _depura(num_string, 2);
+//  blDebug(num_string, 2);
         breakdown["entero" + breakdown_key + "number"] = /*floor(*/ QString::number ( entero_breakdown.toLongLong() / breakdown_key.toLongLong() );
 
-//  _depura(breakdown["entero"+breakdown_key+"number"], 2);
+//  blDebug(breakdown["entero"+breakdown_key+"number"], 2);
 
         //echo " ".$breakdown["entero"][$breakdown_key]["number"]."<br>";
         if ( breakdown["entero" + breakdown_key+"number"].toLongLong() > 0 ) {

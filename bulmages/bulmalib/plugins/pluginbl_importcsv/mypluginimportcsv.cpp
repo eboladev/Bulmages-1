@@ -32,8 +32,8 @@ extern BlMainCompany *g_emp_importcsv;
 **/
 mypluginimportcsv::mypluginimportcsv()
 {
-    _depura ( "mypluginimportcsv::mypluginimportcsv", 0 );
-    _depura ( "END mypluginimportcsv::mypluginimportcsv", 0 );
+    blDebug ( "mypluginimportcsv::mypluginimportcsv", 0 );
+    blDebug ( "END mypluginimportcsv::mypluginimportcsv", 0 );
 }
 
 ///
@@ -41,8 +41,8 @@ mypluginimportcsv::mypluginimportcsv()
 **/
 mypluginimportcsv::~mypluginimportcsv()
 {
-    _depura ( "mypluginimportcsv::~mypluginimportcsv", 0 );
-    _depura ( "END mypluginimportcsv::~mypluginimportcsv", 0 );
+    blDebug ( "mypluginimportcsv::~mypluginimportcsv", 0 );
+    blDebug ( "END mypluginimportcsv::~mypluginimportcsv", 0 );
 }
 
 
@@ -51,11 +51,11 @@ mypluginimportcsv::~mypluginimportcsv()
 **/
 void mypluginimportcsv::elslot()
 {
-    _depura ( "mypluginimportcsv::elslot", 0 );
+    blDebug ( "mypluginimportcsv::elslot", 0 );
 
     ImportCSV *imp = new ImportCSV ( g_emp_importcsv, 0 );
     g_emp_importcsv->pWorkspace() ->addWindow ( imp );
     imp->show();
 
-    _depura ( "END mypluginimportcsv::elslot", 0 );
+    blDebug ( "END mypluginimportcsv::elslot", 0 );
 }

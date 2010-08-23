@@ -39,7 +39,7 @@
 ClaseView::ClaseView ( BfCompany *emp, QWidget *parent )
         : BfForm ( emp, parent )
 {
-    _depura ( "ClaseView::ClaseView", 0 );
+    blDebug ( "ClaseView::ClaseView", 0 );
 
     setTitleName ( _ ( "Clase" ) );
     setDbTableName ( "clase" );
@@ -61,7 +61,7 @@ ClaseView::ClaseView ( BfCompany *emp, QWidget *parent )
     } // end if
     pintar();
     meteWindow ( windowTitle(), this, FALSE );
-    _depura ( "END ClaseView::ClaseView", 0 );
+    blDebug ( "END ClaseView::ClaseView", 0 );
 }
 
 
@@ -70,8 +70,8 @@ ClaseView::ClaseView ( BfCompany *emp, QWidget *parent )
 **/
 void ClaseView::imprimir()
 {
-    _depura ( "ClaseView::imprimir", 0 );
-    _depura ( "END ClaseView::imprimir", 0 );
+    blDebug ( "ClaseView::imprimir", 0 );
+    blDebug ( "END ClaseView::imprimir", 0 );
 }
 
 /// Carga el query de la base de datos y carga el qlistview.
@@ -79,7 +79,7 @@ void ClaseView::imprimir()
 **/
 void ClaseView::pintar()
 {
-    _depura ( "ClaseView::pintar", 0 );
+    blDebug ( "ClaseView::pintar", 0 );
 
     mui_lista->clear();
 
@@ -94,7 +94,7 @@ void ClaseView::pintar()
 
     /// Comprobamos cual es la cadena inicial.
     dialogChanges_cargaInicial();
-    _depura ( "END ClaseView::pintar", 0 );
+    blDebug ( "END ClaseView::pintar", 0 );
 }
 
 
@@ -103,11 +103,11 @@ void ClaseView::pintar()
 **/
 ClaseView::~ClaseView()
 {
-    _depura ( "ClaseView::~ClaseView", 0 );
+    blDebug ( "ClaseView::~ClaseView", 0 );
     if ( m_cursorclasees != NULL ) {
         delete m_cursorclasees;
     } // end if
-    _depura ( "END ClaseView::~ClaseView", 0 );
+    blDebug ( "END ClaseView::~ClaseView", 0 );
 }
 
 
@@ -118,7 +118,7 @@ ClaseView::~ClaseView()
 **/
 void ClaseView::on_mui_lista_currentItemChanged ( QListWidgetItem *cur, QListWidgetItem * )
 {
-    _depura ( "on_mui_lista_currentItemChanged", 0 );
+    blDebug ( "on_mui_lista_currentItemChanged", 0 );
     if ( !cur ) return;
     mui_tab->setEnabled ( TRUE );
 
@@ -137,7 +137,7 @@ void ClaseView::on_mui_lista_currentItemChanged ( QListWidgetItem *cur, QListWid
 
     dialogChanges_cargaInicial();
 
-    _depura ( "END on_mui_lista_currentItemChanged", 0 );
+    blDebug ( "END on_mui_lista_currentItemChanged", 0 );
 }
 
 
@@ -147,7 +147,7 @@ void ClaseView::on_mui_lista_currentItemChanged ( QListWidgetItem *cur, QListWid
 **/
 void ClaseView::on_mui_guardar_clicked()
 {
-    _depura ( "ClaseView::on_mui_guardar_clicked", 0 );
+    blDebug ( "ClaseView::on_mui_guardar_clicked", 0 );
 
 
     try {
@@ -180,7 +180,7 @@ void ClaseView::on_mui_guardar_clicked()
     } // end try
 
 
-    _depura ( "END ClaseView::on_mui_guardar_clicked", 0 );
+    blDebug ( "END ClaseView::on_mui_guardar_clicked", 0 );
 }
 
 
@@ -190,7 +190,7 @@ void ClaseView::on_mui_guardar_clicked()
 **/
 bool ClaseView::trataModificado()
 {
-    _depura ( "ClaseView::trataModificado", 0 );
+    blDebug ( "ClaseView::trataModificado", 0 );
     /// Si se ha modificado el contenido advertimos y guardamos.
     if ( dialogChanges_hayCambios() ) {
         if ( QMessageBox::warning ( this,
@@ -200,7 +200,7 @@ bool ClaseView::trataModificado()
             on_mui_guardar_clicked();
         return ( TRUE );
     } // end if
-    _depura ( "END ClaseView::trataModificado", 0 );
+    blDebug ( "END ClaseView::trataModificado", 0 );
     return ( FALSE );
 }
 
@@ -212,7 +212,7 @@ bool ClaseView::trataModificado()
 **/
 void ClaseView::on_mui_nuevo_clicked()
 {
-    _depura ( "ClaseView::on_mui_nuevo_clicked", 0 );
+    blDebug ( "ClaseView::on_mui_nuevo_clicked", 0 );
     try {
         /// Si se ha modificado el contenido advertimos y guardamos.
         trataModificado();
@@ -224,7 +224,7 @@ void ClaseView::on_mui_nuevo_clicked()
         mdb_idclase = cur->valor ( "idclase" );
         delete cur;
         pintar();
-        _depura ( "END ClaseView::on_mui_nuevo_clicked", 0 );
+        blDebug ( "END ClaseView::on_mui_nuevo_clicked", 0 );
     } catch ( ... ) {
         mensajeInfo ( _ ( "Error al crear un nuevo Clase" ) );
         mainCompany() ->rollback();
@@ -239,7 +239,7 @@ void ClaseView::on_mui_nuevo_clicked()
 **/
 void ClaseView::on_mui_borrar_clicked()
 {
-    _depura ( "ClaseView::on_mui_borrar_clicked", 0 );
+    blDebug ( "ClaseView::on_mui_borrar_clicked", 0 );
     try {
         mui_tab->setDisabled ( TRUE );
         trataModificado();
@@ -249,7 +249,7 @@ void ClaseView::on_mui_borrar_clicked()
         mainCompany() ->commit();
         mdb_idclase = "";
         pintar();
-        _depura ( "END ClaseView::on_mui_borrar_clicked", 0 );
+        blDebug ( "END ClaseView::on_mui_borrar_clicked", 0 );
     } catch ( ... ) {
         mensajeInfo ( _ ( "Error al borrar el Clase" ) );
         mainCompany() ->rollback();
@@ -265,8 +265,8 @@ void ClaseView::on_mui_borrar_clicked()
 **/
 QString ClaseView::idclase()
 {
-    _depura ( "ClaseView::idclase", 0 );
-    _depura ( "END ClaseView::idclase", 0 );
+    blDebug ( "ClaseView::idclase", 0 );
+    blDebug ( "END ClaseView::idclase", 0 );
     return mdb_idclase;
 }
 

@@ -37,13 +37,13 @@
 BlComboBox::BlComboBox ( QWidget *parent )
         : QComboBox ( parent ), BlMainCompanyPointer()
 {
-    _depura ( "BlComboBox::BlComboBox", 0 );
+    blDebug ( "BlComboBox::BlComboBox", 0 );
     m_comboRecordSet = NULL;
     connect ( this, SIGNAL ( activated ( int ) ), this, SLOT ( m_activated ( int ) ) );
     connect ( g_theApp, SIGNAL ( tablaCambiada ( const QString & ) ), this, SLOT ( onTablaCambiada ( const QString & ) ) );
     m_null = TRUE;
 
-    _depura ( "END BlComboBox::BlComboBox", 0 );
+    blDebug ( "END BlComboBox::BlComboBox", 0 );
 }
 
 
@@ -52,10 +52,10 @@ BlComboBox::BlComboBox ( QWidget *parent )
 **/
 BlComboBox::~BlComboBox()
 {
-    _depura ( "BlComboBox::~BlComboBox", 0 );
+    blDebug ( "BlComboBox::~BlComboBox", 0 );
     if ( m_comboRecordSet != NULL )
         delete m_comboRecordSet;
-    _depura ( "END BlComboBox::~BlComboBox", 0 );
+    blDebug ( "END BlComboBox::~BlComboBox", 0 );
 }
 
 
@@ -64,11 +64,11 @@ BlComboBox::~BlComboBox()
 **/
 void BlComboBox::onTablaCambiada ( const QString &t )
 {
-    _depura ( "BlComboBox::onTablaCambiada", 0 );
+    blDebug ( "BlComboBox::onTablaCambiada", 0 );
     if ( m_table == t ) {
         setId ( id() );
     } // end if
-    _depura ( "END BlComboBox::onTablaCambiada", 0 );
+    blDebug ( "END BlComboBox::onTablaCambiada", 0 );
 }
 
 
@@ -81,7 +81,7 @@ void BlComboBox::onTablaCambiada ( const QString &t )
 **/
 void BlComboBox::setId ( QString id )
 {
-    _depura ( "BlComboBox::setId", 0, id );
+    blDebug ( "BlComboBox::setId", 0, id );
     if ( m_comboRecordSet != NULL ) {
         delete m_comboRecordSet;
     } // end if
@@ -121,7 +121,7 @@ void BlComboBox::setId ( QString id )
     } // end while
 
     setCurrentIndex ( i1 );
-    _depura ( "END BlComboBox::setIdProvincia", 0 );
+    blDebug ( "END BlComboBox::setIdProvincia", 0 );
 }
 
 
@@ -131,9 +131,9 @@ void BlComboBox::setId ( QString id )
 **/
 void BlComboBox::setFieldValue ( QString id )
 {
-    _depura ( "BlComboBox::setFieldValue", 0 );
+    blDebug ( "BlComboBox::setFieldValue", 0 );
     setId ( id );
-    _depura ( "END BlComboBox::setFieldValue", 0 );
+    blDebug ( "END BlComboBox::setFieldValue", 0 );
 }
 
 
@@ -143,7 +143,7 @@ void BlComboBox::setFieldValue ( QString id )
 **/
 void BlComboBox::m_activated ( int index )
 {
-    _depura ( "BlComboBox::m_activated", 0 );
+    blDebug ( "BlComboBox::m_activated", 0 );
     if ( index > 0 ) {
         if ( m_null ) {
             emit ( valueChanged ( m_comboRecordSet->valor ( m_fieldId, index - 1 ) ) );
@@ -153,7 +153,7 @@ void BlComboBox::m_activated ( int index )
     } else {
         emit ( valueChanged ( "" ) );
     }
-    _depura ( "END BlComboBox::m_activated", 0 );
+    blDebug ( "END BlComboBox::m_activated", 0 );
 }
 
 
@@ -163,7 +163,7 @@ void BlComboBox::m_activated ( int index )
 **/
 QString BlComboBox::id()
 {
-    _depura ( "BlComboBox::id", 0 );
+    blDebug ( "BlComboBox::id", 0 );
     if ( currentIndex() >= 0 ) {
 
         /// Si el campo tiene un elemento nulo, al seleccionarlo hay que devolver una cadena vac&iacute;a,
@@ -181,7 +181,7 @@ QString BlComboBox::id()
         } // end if
 
     } // end if
-    _depura ( "END BlComboBox::id", 0 );
+    blDebug ( "END BlComboBox::id", 0 );
     return "";
 }
 
@@ -192,8 +192,8 @@ QString BlComboBox::id()
 **/
 QString BlComboBox::fieldValue()
 {
-    _depura ( "BlComboBox::fieldValue", 0 );
-    _depura ( "END BlComboBox::fieldValue", 0 );
+    blDebug ( "BlComboBox::fieldValue", 0 );
+    blDebug ( "END BlComboBox::fieldValue", 0 );
     return id();
 }
 

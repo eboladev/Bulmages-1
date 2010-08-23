@@ -35,8 +35,8 @@ FacturasProveedorList *g_facturasProveedorList = NULL;
 **/
 mypluginfactp::mypluginfactp()
 {
-    _depura ( "mypluginfactp::mypluginfactp", 0 );
-    _depura ( "END mypluginfactp::mypluginfactp", 0 );
+    blDebug ( "mypluginfactp::mypluginfactp", 0 );
+    blDebug ( "END mypluginfactp::mypluginfactp", 0 );
 }
 
 
@@ -45,8 +45,8 @@ mypluginfactp::mypluginfactp()
 **/
 mypluginfactp::~mypluginfactp()
 {
-    _depura ( "mypluginfactp::~mypluginfactp", 0 );
-    _depura ( "END mypluginfactp::~mypluginfactp", 0 );
+    blDebug ( "mypluginfactp::~mypluginfactp", 0 );
+    blDebug ( "END mypluginfactp::~mypluginfactp", 0 );
 }
 
 
@@ -55,12 +55,12 @@ mypluginfactp::~mypluginfactp()
 **/
 void mypluginfactp::elslot()
 {
-    _depura ( "mypluginfactp::elslot", 0 );
+    blDebug ( "mypluginfactp::elslot", 0 );
     if ( g_facturasProveedorList ) {
         g_facturasProveedorList->hide();
         g_facturasProveedorList->show();
     }// end if
-    _depura ( "END mypluginfactp::elslot", 0 );
+    blDebug ( "END mypluginfactp::elslot", 0 );
 }
 
 ///
@@ -68,12 +68,12 @@ void mypluginfactp::elslot()
 **/
 void mypluginfactp::elslot1()
 {
-    _depura ( "mypluginfactp::elslot1", 0 );
+    blDebug ( "mypluginfactp::elslot1", 0 );
     FacturaProveedorView * bud = new FacturaProveedorView ( ( BfCompany * ) mainCompany(), NULL );
     mainCompany() ->m_pWorkspace->addWindow ( bud );
     bud->inicializar();
     bud->show();
-    _depura ( "END mypluginfactp::elslot1", 0 );
+    blDebug ( "END mypluginfactp::elslot1", 0 );
 }
 
 
@@ -84,7 +84,7 @@ void mypluginfactp::elslot1()
 **/
 void mypluginfactp::inicializa ( BfBulmaFact *bges )
 {
-    _depura ( "mypluginfactp::inicializa", 0 );
+    blDebug ( "mypluginfactp::inicializa", 0 );
 
     if ( bges->company()->hasTablePrivilege ( "facturap", "SELECT" ) ) {
         /// Miramos si existe un menu Compras
@@ -112,7 +112,7 @@ void mypluginfactp::inicializa ( BfBulmaFact *bges )
 
 
     }// end if
-    _depura ( "END mypluginfactp::inicializa", 0 );
+    blDebug ( "END mypluginfactp::inicializa", 0 );
 }
 
 
@@ -123,7 +123,7 @@ void mypluginfactp::inicializa ( BfBulmaFact *bges )
 **/
 int entryPoint ( BfBulmaFact *bges )
 {
-    _depura ( "Punto de Entrada del plugin de Facturas de Proveedor\n", 0 );
+    blDebug ( "Punto de Entrada del plugin de Facturas de Proveedor\n", 0 );
 
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale ( LC_ALL, "" );
@@ -192,7 +192,7 @@ int BfBuscarReferencia_on_mui_abrirtodo_clicked_Post ( BfBuscarReferencia *ref )
 **/
 int AlbaranProveedorView_AlbaranProveedorView ( AlbaranProveedorView *l )
 {
-    _depura ( "PluginPagos_AlbaranProveedorView_AlbaranProveedorView", 0 );
+    blDebug ( "PluginPagos_AlbaranProveedorView_AlbaranProveedorView", 0 );
     GenFacProQToolButton *mui_exporta_efactura2 = new GenFacProQToolButton ( l, l->mui_plugbotones );
 
     QHBoxLayout *m_hboxLayout1 = l->mui_plugbotones->findChild<QHBoxLayout *> ( "hboxLayout1" );
@@ -205,7 +205,7 @@ int AlbaranProveedorView_AlbaranProveedorView ( AlbaranProveedorView *l )
     }// end if
     m_hboxLayout1->addWidget ( mui_exporta_efactura2 );
 
-    _depura ( "END PluginPagos_AlbaranProveedorView_AlbaranProveedorView", 0 );
+    blDebug ( "END PluginPagos_AlbaranProveedorView_AlbaranProveedorView", 0 );
     return 0;
 }
 
@@ -216,7 +216,7 @@ int AlbaranProveedorView_AlbaranProveedorView ( AlbaranProveedorView *l )
 **/
 int PedidoProveedorView_PedidoProveedorView ( PedidoProveedorView *l )
 {
-    _depura ( "PluginPagos_PedidoProveedorView_PedidoProveedorView", 0 );
+    blDebug ( "PluginPagos_PedidoProveedorView_PedidoProveedorView", 0 );
 
     GenFacProQToolButton *mui_exporta_efactura2 = new GenFacProQToolButton ( l, l->mui_plugbotones );
 
@@ -230,7 +230,7 @@ int PedidoProveedorView_PedidoProveedorView ( PedidoProveedorView *l )
     }// end if
     m_hboxLayout1->addWidget ( mui_exporta_efactura2 );
 
-    _depura ( "END PluginPagos_PedidoProveedorView_PedidoProveedorView", 0 );
+    blDebug ( "END PluginPagos_PedidoProveedorView_PedidoProveedorView", 0 );
     return 0;
 }
 

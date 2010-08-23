@@ -33,12 +33,12 @@
 BfBuscarRegimenFiscal::BfBuscarRegimenFiscal ( QWidget *parent )
         : BlComboBox ( parent )
 {
-    _depura ( "BfBuscarRegimenFiscal::BfBuscarRegimenFiscal", 0 );
+    blDebug ( "BfBuscarRegimenFiscal::BfBuscarRegimenFiscal", 0 );
     connect ( this, SIGNAL ( activated ( int ) ), this, SLOT ( m_activated ( int ) ) );
     addItem ( "Normal" );
     addItem ( "Intracomunitario" );
     addItem ( "Extracomunitario" );
-    _depura ( "END BfBuscarRegimenFiscal::BfBuscarRegimenFiscal", 0 );
+    blDebug ( "END BfBuscarRegimenFiscal::BfBuscarRegimenFiscal", 0 );
 }
 
 
@@ -48,8 +48,8 @@ BfBuscarRegimenFiscal::BfBuscarRegimenFiscal ( QWidget *parent )
 **/
 BfBuscarRegimenFiscal::~BfBuscarRegimenFiscal()
 {
-    _depura ( "BfBuscarRegimenFiscal::~BfBuscarRegimenFiscal", 0 );
-    _depura ( "END BfBuscarRegimenFiscal::~BfBuscarRegimenFiscal", 0 );
+    blDebug ( "BfBuscarRegimenFiscal::~BfBuscarRegimenFiscal", 0 );
+    blDebug ( "END BfBuscarRegimenFiscal::~BfBuscarRegimenFiscal", 0 );
 }
 
 
@@ -63,7 +63,7 @@ BfBuscarRegimenFiscal::~BfBuscarRegimenFiscal()
 **/
 void BfBuscarRegimenFiscal::setRegimenFiscal ( QString regimen )
 {
-    _depura ( "BfBuscarRegimenFiscal::setRegimenFiscal", 0, regimen );
+    blDebug ( "BfBuscarRegimenFiscal::setRegimenFiscal", 0, regimen );
     if ( regimen == "Normal" ) {
         setCurrentIndex ( 0 );
     } else if ( regimen == "Intracomunitario" ) {
@@ -71,7 +71,7 @@ void BfBuscarRegimenFiscal::setRegimenFiscal ( QString regimen )
     } else if ( regimen == "Extracomunitario" ) {
         setCurrentIndex ( 2 );
     } // end if
-    _depura ( "END BfBuscarRegimenFiscal::setRegimenFiscal", 0 );
+    blDebug ( "END BfBuscarRegimenFiscal::setRegimenFiscal", 0 );
 }
 
 
@@ -81,9 +81,9 @@ void BfBuscarRegimenFiscal::setRegimenFiscal ( QString regimen )
 **/
 void BfBuscarRegimenFiscal::setFieldValue ( QString regimen )
 {
-    _depura ( "BfBuscarRegimenFiscal::setFieldValue", 0 );
+    blDebug ( "BfBuscarRegimenFiscal::setFieldValue", 0 );
     setRegimenFiscal ( regimen );
-    _depura ( "END BfBuscarRegimenFiscal::setFieldValue", 0 );
+    blDebug ( "END BfBuscarRegimenFiscal::setFieldValue", 0 );
 }
 
 
@@ -93,13 +93,13 @@ void BfBuscarRegimenFiscal::setFieldValue ( QString regimen )
 **/
 void BfBuscarRegimenFiscal::m_activated ( int index )
 {
-    _depura ( "BfBuscarRegimenFiscal::m_activated", 0 );
+    blDebug ( "BfBuscarRegimenFiscal::m_activated", 0 );
     if ( index > 0 ) {
         emit ( valueChanged ( currentText() ) );
     } else {
         emit ( valueChanged ( "" ) );
     } // end if
-    _depura ( "END BfBuscarRegimenFiscal::m_activated", 0 );
+    blDebug ( "END BfBuscarRegimenFiscal::m_activated", 0 );
 }
 
 
@@ -110,8 +110,8 @@ void BfBuscarRegimenFiscal::m_activated ( int index )
 **/
 QString BfBuscarRegimenFiscal::regimenFiscal()
 {
-    _depura ( "BfBuscarRegimenFiscal::regimenFiscal", 0 );
-    _depura ( "END BfBuscarRegimenFiscal::regimenFiscal", 0 );
+    blDebug ( "BfBuscarRegimenFiscal::regimenFiscal", 0 );
+    blDebug ( "END BfBuscarRegimenFiscal::regimenFiscal", 0 );
     return ( currentText() );
 }
 
@@ -123,8 +123,8 @@ QString BfBuscarRegimenFiscal::regimenFiscal()
 **/
 QString BfBuscarRegimenFiscal::fieldValue()
 {
-    _depura ( "BfBuscarRegimenFiscal::regimenFiscal", 0 );
-    _depura ( "END BfBuscarRegimenFiscal::regimenFiscal", 0 );
+    blDebug ( "BfBuscarRegimenFiscal::regimenFiscal", 0 );
+    blDebug ( "END BfBuscarRegimenFiscal::regimenFiscal", 0 );
     return ( currentText() );
 }
 

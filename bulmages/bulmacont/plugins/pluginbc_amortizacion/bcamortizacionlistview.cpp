@@ -34,7 +34,7 @@
 BcAmortizacionListView::BcAmortizacionListView ( BcCompany *emp, QWidget *parent )
         : BlFormList ( emp, parent )
 {
-    _depura ( "BcAmortizacionListView::BcAmortizacionListView", 0 );
+    blDebug ( "BcAmortizacionListView::BcAmortizacionListView", 0 );
 
     this->setAttribute ( Qt::WA_DeleteOnClose );
     setupUi ( this );
@@ -53,7 +53,7 @@ BcAmortizacionListView::BcAmortizacionListView ( BcCompany *emp, QWidget *parent
     presentar();
 
     meteWindow ( windowTitle() );
-    _depura ( "END BcAmortizacionListView::BcAmortizacionListView", 0 );
+    blDebug ( "END BcAmortizacionListView::BcAmortizacionListView", 0 );
 }
 
 
@@ -64,9 +64,9 @@ BcAmortizacionListView::BcAmortizacionListView ( BcCompany *emp, QWidget *parent
 **/
 BcAmortizacionListView::~BcAmortizacionListView()
 {
-    _depura ( "BcAmortizacionListView::~BcAmortizacionListView", 0 );
+    blDebug ( "BcAmortizacionListView::~BcAmortizacionListView", 0 );
     sacaWindow();
-    _depura ( "END BcAmortizacionListView::~BcAmortizacionListView", 0 );
+    blDebug ( "END BcAmortizacionListView::~BcAmortizacionListView", 0 );
 }
 
 
@@ -77,11 +77,11 @@ BcAmortizacionListView::~BcAmortizacionListView()
 **/
 void BcAmortizacionListView::crear()
 {
-    _depura ( "BcAmortizacionListView::on_mui_crear_clicked", 0 );
+    blDebug ( "BcAmortizacionListView::on_mui_crear_clicked", 0 );
     BcAmortizacionView *amor = new BcAmortizacionView ( ( BcCompany * ) mainCompany(), 0 );
     mainCompany() ->pWorkspace() ->addWindow ( amor );
     amor->show();
-    _depura ( "END BcAmortizacionListView::on_mui_crear_clicked", 0 );
+    blDebug ( "END BcAmortizacionListView::on_mui_crear_clicked", 0 );
 }
 
 
@@ -91,7 +91,7 @@ void BcAmortizacionListView::crear()
 **/
 void BcAmortizacionListView::borrar()
 {
-    _depura ( "BcAmortizacionListView::on_mui_borrar_clicked", 0 );
+    blDebug ( "BcAmortizacionListView::on_mui_borrar_clicked", 0 );
     try {
         QString codigo = mui_listado->dbValue ( "idamortizacion" );
         if ( codigo != "" ) {
@@ -104,9 +104,9 @@ void BcAmortizacionListView::borrar()
             presentar();
         } // end if
     } catch ( ... ) {
-        _depura ( _ ( "Error al borrar la amortizacion" ), 2 );
+        blDebug ( _ ( "Error al borrar la amortizacion" ), 2 );
     } // end try
-    _depura ( "END BcAmortizacionListView::on_mui_borrar_clicked", 0 );
+    blDebug ( "END BcAmortizacionListView::on_mui_borrar_clicked", 0 );
 }
 
 
@@ -123,7 +123,7 @@ void BcAmortizacionListView::borrar()
 **/
 void BcAmortizacionListView::editar ( int row )
 {
-    _depura ( "BcAmortizacionListView::editAmortizacion " + row, 0 );
+    blDebug ( "BcAmortizacionListView::editAmortizacion " + row, 0 );
     mdb_idamortizacion = mui_listado->dbValue ( "idamortizacion" );
     mdb_nomamortizacion = mui_listado->dbValue ( "nomamortizacion" );
     if ( modoEdicion() ) {
@@ -136,6 +136,6 @@ void BcAmortizacionListView::editar ( int row )
         close();
         emit ( selected ( mdb_idamortizacion ) );
     } // end if
-    _depura ( "END BcAmortizacionListView::editAmortizacion", 0 );
+    blDebug ( "END BcAmortizacionListView::editAmortizacion", 0 );
 }
 

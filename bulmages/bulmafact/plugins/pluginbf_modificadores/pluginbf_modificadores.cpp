@@ -33,8 +33,8 @@
 **/
 MyPlugModificadores::MyPlugModificadores()
 {
-    _depura ( "MyPlugModificadores::MyPlugModificadores", 0 );
-    _depura ( "END MyPlugModificadores::MyPlugModificadores", 0 );
+    blDebug ( "MyPlugModificadores::MyPlugModificadores", 0 );
+    blDebug ( "END MyPlugModificadores::MyPlugModificadores", 0 );
 }
 
 
@@ -43,8 +43,8 @@ MyPlugModificadores::MyPlugModificadores()
 **/
 MyPlugModificadores::~MyPlugModificadores()
 {
-    _depura ( "MyPlugModificadores::~MyPlugModificadores", 0 );
-    _depura ( "END MyPlugModificadores::~MyPlugModificadores", 0 );
+    blDebug ( "MyPlugModificadores::~MyPlugModificadores", 0 );
+    blDebug ( "END MyPlugModificadores::~MyPlugModificadores", 0 );
 }
 
 
@@ -53,11 +53,11 @@ MyPlugModificadores::~MyPlugModificadores()
 **/
 void MyPlugModificadores::elslot1()
 {
-    _depura ( "MyPlugModificadores::elslot1", 0 );
+    blDebug ( "MyPlugModificadores::elslot1", 0 );
     ListModificadoresView * bud = new ListModificadoresView ( ( BfCompany * ) mainCompany(), NULL );
     mainCompany() ->m_pWorkspace->addWindow ( bud );
     bud->show();
-    _depura ( "END MyPlugModificadores::elslot1", 0 );
+    blDebug ( "END MyPlugModificadores::elslot1", 0 );
 }
 
 
@@ -68,7 +68,7 @@ void MyPlugModificadores::elslot1()
 **/
 void MyPlugModificadores::inicializa ( BfBulmaFact *bges )
 {
-    _depura ( "MyPlugModificadores::inicializa", 0 );
+    blDebug ( "MyPlugModificadores::inicializa", 0 );
 
     if ( bges->company()->hasTablePrivilege ( "serie_factura", "SELECT" ) ) {
 
@@ -87,7 +87,7 @@ void MyPlugModificadores::inicializa ( BfBulmaFact *bges )
         connect ( modificadoresArticulo, SIGNAL ( activated() ), this, SLOT ( elslot1() ) );
 
     }// end if
-    _depura ( "END MyPlugModificadores::inicializa", 0 );
+    blDebug ( "END MyPlugModificadores::inicializa", 0 );
 }
 
 
@@ -101,7 +101,7 @@ void MyPlugModificadores::inicializa ( BfBulmaFact *bges )
 **/
 int entryPoint ( BfBulmaFact *bges )
 {
-    _depura ( "Punto de Entrada del plugin de Modificadores\n", 0 );
+    blDebug ( "Punto de Entrada del plugin de Modificadores\n", 0 );
 
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale ( LC_ALL, "" );

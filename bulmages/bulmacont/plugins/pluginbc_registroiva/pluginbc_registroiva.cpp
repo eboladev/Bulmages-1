@@ -45,8 +45,8 @@
 **/
 myRegIVA::myRegIVA()
 {
-    _depura ( "myRegIVA::myRegIVA", 0 );
-    _depura ( "END myRegIVA::myRegIVA", 0 );
+    blDebug ( "myRegIVA::myRegIVA", 0 );
+    blDebug ( "END myRegIVA::myRegIVA", 0 );
 }
 
 
@@ -55,8 +55,8 @@ myRegIVA::myRegIVA()
 **/
 myRegIVA::~myRegIVA()
 {
-    _depura ( "myRegIVA::~myRegIVA", 0 );
-    _depura ( "END myRegIVA::~myRegIVA", 0 );
+    blDebug ( "myRegIVA::~myRegIVA", 0 );
+    blDebug ( "END myRegIVA::~myRegIVA", 0 );
 }
 
 
@@ -65,13 +65,13 @@ myRegIVA::~myRegIVA()
 **/
 void myRegIVA::elslot()
 {
-    _depura ( "myRegIVA::elslot", 0 );
+    blDebug ( "myRegIVA::elslot", 0 );
     ListRegistroIvaView *perd = new ListRegistroIvaView ( m_bulmacont->empresaactual(), "0" );
     perd->inicializa();
     m_bulmacont->empresaactual() ->pWorkspace() ->addWindow ( perd );
     perd->show();
-    _depura ( "END empresa_registroiva", 0 );
-    _depura ( "END myRegIVA::elslot", 0 );
+    blDebug ( "END empresa_registroiva", 0 );
+    blDebug ( "END myRegIVA::elslot", 0 );
 }
 
 
@@ -80,11 +80,11 @@ void myRegIVA::elslot()
 **/
 void myRegIVA::elslot1()
 {
-    _depura ( "myRegIVA::elslot1", 0 );
+    blDebug ( "myRegIVA::elslot1", 0 );
     cobropagoview *adoc = new cobropagoview ( m_bulmacont->empresaactual(), 0 );
     m_bulmacont->empresaactual() ->pWorkspace() ->addWindow ( adoc );
     adoc->show();
-    _depura ( "END myRegIVA::elslot1", 0 );
+    blDebug ( "END myRegIVA::elslot1", 0 );
 }
 
 
@@ -134,7 +134,7 @@ void myRegIVA::inicializa ( BcBulmaCont *bges )
 **/
 int entryPoint ( BcBulmaCont *bcont )
 {
-    _depura ( "Punto de entrada del plugin registroIVA", 0 );
+    blDebug ( "Punto de entrada del plugin registroIVA", 0 );
 
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale ( LC_ALL, "" );
@@ -153,7 +153,7 @@ int entryPoint ( BcBulmaCont *bcont )
 **/
 int BcAsientoView_BcAsientoView ( BcAsientoView *l )
 {
-    _depura ( "BcAsientoView_BcAsientoView", 0 );
+    blDebug ( "BcAsientoView_BcAsientoView", 0 );
 //================================
     RegIVAQToolButton *mui_exporta_efactura2 = new RegIVAQToolButton ( l,  l->mui_plugbotones );
 
@@ -166,7 +166,7 @@ int BcAsientoView_BcAsientoView ( BcAsientoView *l )
     } // end if
     m_hboxLayout1->addWidget ( mui_exporta_efactura2 );
 //================================
-    _depura ( "END BcAsientoView_BcAsientoView", 0 );
+    blDebug ( "END BcAsientoView_BcAsientoView", 0 );
     return 0;
 }
 
@@ -178,7 +178,7 @@ int BcAsientoView_BcAsientoView ( BcAsientoView *l )
 **/
 int BcAsientoForm_guardaAsiento1_post ( BcAsientoForm *as )
 {
-    _depura ( "BcAsientoForm_guardaAsiento1_post", 0 );
+    blDebug ( "BcAsientoForm_guardaAsiento1_post", 0 );
     BcCompany *companyact = as->companyact();
     QString cuentas = "";
     QString query = "SELECT valor FROM configuracion WHERE nombre = 'RegistroEmitida' OR nombre = 'RegistroSoportada'";
@@ -206,7 +206,7 @@ int BcAsientoForm_guardaAsiento1_post ( BcAsientoForm *as )
         cursborr->nextRecord();
     } // end while
     delete cursborr;
-    _depura ( "END BcAsientoForm_guardaAsiento1_post", 0 );
+    blDebug ( "END BcAsientoForm_guardaAsiento1_post", 0 );
     return 0;
 }
 
@@ -219,7 +219,7 @@ int BcAsientoForm_guardaAsiento1_post ( BcAsientoForm *as )
 **/
 int BcAsientoSubForm_boton_iva ( BcAsientoSubForm *as )
 {
-    _depura ( "BcAsientoSubForm_boton_iva", 0 );
+    blDebug ( "BcAsientoSubForm_boton_iva", 0 );
     as->guardar();
     try {
         int idborrador = as->dbValue ( "idborrador" ).toInt();
@@ -231,7 +231,7 @@ int BcAsientoSubForm_boton_iva ( BcAsientoSubForm *as )
         mensajeInfo ( _ ( "Debe seleccionar un apunte" ) );
         return 0;
     } // end try
-    _depura ( "END BcAsientoSubForm_boton_iva", 0 );
+    blDebug ( "END BcAsientoSubForm_boton_iva", 0 );
     return 0;
 }
 

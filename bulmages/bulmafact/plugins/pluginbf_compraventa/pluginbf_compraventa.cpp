@@ -31,8 +31,8 @@
 **/
 myplugincv::myplugincv()
 {
-    _depura ( "myplugincv::myplugincv", 0 );
-    _depura ( "END myplugincv::myplugincv", 0 );
+    blDebug ( "myplugincv::myplugincv", 0 );
+    blDebug ( "END myplugincv::myplugincv", 0 );
 }
 
 
@@ -41,8 +41,8 @@ myplugincv::myplugincv()
 **/
 myplugincv::~myplugincv()
 {
-    _depura ( "myplugincv::~myplugincv", 0 );
-    _depura ( "END myplugincv::~myplugincv", 0 );
+    blDebug ( "myplugincv::~myplugincv", 0 );
+    blDebug ( "END myplugincv::~myplugincv", 0 );
 }
 
 
@@ -51,13 +51,13 @@ myplugincv::~myplugincv()
 **/
 void myplugincv::elslot()
 {
-    _depura ( "myplugincv::elslot", 0 );
+    blDebug ( "myplugincv::elslot", 0 );
 
     CompraVentaView *tar = new CompraVentaView ( ( BfCompany * ) mainCompany(), NULL );
     mainCompany() ->m_pWorkspace->addWindow ( tar );
     tar->show();
 
-    _depura ( "END myplugincv::elslot", 0 );
+    blDebug ( "END myplugincv::elslot", 0 );
 }
 
 
@@ -67,7 +67,7 @@ void myplugincv::elslot()
 **/
 void myplugincv::inicializa ( BfBulmaFact *bges )
 {
-    _depura ( "myplugincv::inicializa", 0 );
+    blDebug ( "myplugincv::inicializa", 0 );
     /// El men&uacute; de Tarifas en la secci&oacute;n de art&iacute;culos.
     m_bges = bges;
     setMainCompany ( bges->company() );
@@ -82,7 +82,7 @@ void myplugincv::inicializa ( BfBulmaFact *bges )
     pPluginMenu->addAction ( planCuentas );
     bges->Listados->addAction ( planCuentas );
     connect ( planCuentas, SIGNAL ( activated() ), this, SLOT ( elslot() ) );
-    _depura ( "END myplugincv::inicializa", 0 );
+    blDebug ( "END myplugincv::inicializa", 0 );
 }
 
 
@@ -93,7 +93,7 @@ void myplugincv::inicializa ( BfBulmaFact *bges )
 **/
 int entryPoint ( BfBulmaFact *bges )
 {
-    _depura ( "Punto de Entrada del plugin de CompraVenta\n", 0 );
+    blDebug ( "Punto de Entrada del plugin de CompraVenta\n", 0 );
 
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale ( LC_ALL, "" );

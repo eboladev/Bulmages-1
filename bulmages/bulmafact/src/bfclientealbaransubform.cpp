@@ -35,7 +35,7 @@
 BfClienteAlbaranSubForm::BfClienteAlbaranSubForm ( QWidget *parent )
         : BfSubForm ( parent )
 {
-    _depura ( "BfClienteAlbaranSubForm::BfClienteAlbaranSubForm", 0 );
+    blDebug ( "BfClienteAlbaranSubForm::BfClienteAlbaranSubForm", 0 );
     setDbTableName ( "lalbaran" );
     setDbFieldId ( "numlalbaran" );
     /// Disparamos los plugins.
@@ -59,7 +59,7 @@ BfClienteAlbaranSubForm::BfClienteAlbaranSubForm ( QWidget *parent )
     setOrdenEnabled ( TRUE );
     /// Disparamos los plugins.
     g_plugins->lanza ( "BfClienteAlbaranSubForm_BfClienteAlbaranSubForm_Post", this );
-    _depura ( "END BfClienteAlbaranSubForm::BfClienteAlbaranSubForm", 0 );
+    blDebug ( "END BfClienteAlbaranSubForm::BfClienteAlbaranSubForm", 0 );
 
 }
 
@@ -70,7 +70,7 @@ BfClienteAlbaranSubForm::BfClienteAlbaranSubForm ( QWidget *parent )
 **/
 void BfClienteAlbaranSubForm::cargar ( QString idalbaran )
 {
-    _depura ( "BfClienteAlbaranSubForm::cargar", 0 );
+    blDebug ( "BfClienteAlbaranSubForm::cargar", 0 );
     mdb_idalbaran = idalbaran;
     /// Disparamos los plugins.
     int res = g_plugins->lanza ( "BfClienteAlbaranSubForm_cargar", this );
@@ -78,7 +78,7 @@ void BfClienteAlbaranSubForm::cargar ( QString idalbaran )
         return;
 
     BlSubForm::cargar ( "SELECT *, (cantlalbaran * pvplalbaran)::NUMERIC(12,2) AS totallalbaran FROM lalbaran LEFT JOIN articulo ON lalbaran.idarticulo = articulo.idarticulo WHERE idalbaran=" + mdb_idalbaran + "   ORDER BY ordenlalbaran" );
-    _depura ( "END BfClienteAlbaranSubForm::cargar", 0 );
+    blDebug ( "END BfClienteAlbaranSubForm::cargar", 0 );
 }
 
 

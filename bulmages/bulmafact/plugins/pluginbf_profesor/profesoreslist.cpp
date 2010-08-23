@@ -41,7 +41,7 @@
 ProfesoresList::ProfesoresList ( QWidget *parent, Qt::WFlags flag, edmode editmodo )
         : BlFormList ( NULL, parent, flag, editmodo )
 {
-    _depura ( "ProfesoresList::ProfesoresList", 0 );
+    blDebug ( "ProfesoresList::ProfesoresList", 0 );
     
     setupUi ( this );
     
@@ -54,7 +54,7 @@ ProfesoresList::ProfesoresList ( QWidget *parent, Qt::WFlags flag, edmode editmo
     setSubForm ( mui_list );
     hideBusqueda();
 
-    _depura ( "END ProfesoresList::ProfesoresList", 0 );
+    blDebug ( "END ProfesoresList::ProfesoresList", 0 );
 }
 
 /** Inicializa todos los componentes.
@@ -64,7 +64,7 @@ ProfesoresList::ProfesoresList ( QWidget *parent, Qt::WFlags flag, edmode editmo
 ProfesoresList::ProfesoresList ( BfCompany *comp, QWidget *parent, Qt::WFlags flag, edmode editmodo )
         : BlFormList ( comp, parent, flag, editmodo )
 {
-    _depura ( "ProfesoresList::ProfesoresList", 0 );
+    blDebug ( "ProfesoresList::ProfesoresList", 0 );
     
     setupUi ( this );
     
@@ -88,7 +88,7 @@ ProfesoresList::ProfesoresList ( BfCompany *comp, QWidget *parent, Qt::WFlags fl
     /// Hacemos el tratamiento de los permisos que desabilita botones en caso de no haber suficientes permisos.
     trataPermisos ( "profesor" );
     
-    _depura ( "END ProfesoresList::ProfesoresList", 0 );
+    blDebug ( "END ProfesoresList::ProfesoresList", 0 );
 }
 
 
@@ -96,8 +96,8 @@ ProfesoresList::ProfesoresList ( BfCompany *comp, QWidget *parent, Qt::WFlags fl
 */
 ProfesoresList::~ProfesoresList()
 {
-    _depura ( "ProfesoresList::~ProfesoresList", 0 );
-    _depura ( "END ProfesoresList::~ProfesoresList", 0 );
+    blDebug ( "ProfesoresList::~ProfesoresList", 0 );
+    blDebug ( "END ProfesoresList::~ProfesoresList", 0 );
 }
 
 
@@ -107,20 +107,20 @@ ProfesoresList::~ProfesoresList()
 */
 void ProfesoresList::presentar()
 {
-    _depura ( "ProfesoresList::presentar", 0 );
+    blDebug ( "ProfesoresList::presentar", 0 );
     
     if ( mainCompany() != NULL ) {
         mui_list->cargar ( "SELECT * FROM profesor WHERE 1 = 1 " + generaFiltro() );
     } // end if
     
-    _depura ( "END ProfesoresList::presentar", 0 );
+    blDebug ( "END ProfesoresList::presentar", 0 );
 }
 
 /** Metodo auxiliar que genera la clausula WHERE del listado con las opciones de filtrado especificadas.
 */
 QString ProfesoresList::generaFiltro()
 {
-    _depura ( "ProfesoresList::generaFiltro", 0 );
+    blDebug ( "ProfesoresList::generaFiltro", 0 );
     
     QString filtro = "";
     if ( m_filtro->text() != "" ) {
@@ -128,7 +128,7 @@ QString ProfesoresList::generaFiltro()
         filtro += " ) ";
     } // end if
 
-    _depura ( "END ProfesoresList::generaFiltro", 0 );
+    blDebug ( "END ProfesoresList::generaFiltro", 0 );
     
     return ( filtro );
 }
@@ -138,7 +138,7 @@ QString ProfesoresList::generaFiltro()
 */
 void ProfesoresList::crear()
 {
-    _depura ( "ProfesoresList::crear", 0 );
+    blDebug ( "ProfesoresList::crear", 0 );
     
     if (modoConsulta()) {
 	/// El modo consulta funciona algo diferente
@@ -187,18 +187,18 @@ void ProfesoresList::crear()
       bud->show();
       bud->pintar();
     }
-    _depura ( "ProfesoresList::crear", 0 );
+    blDebug ( "ProfesoresList::crear", 0 );
 }
 
 /** La impresion de listados esta completamente delegada a la clase SubForm3
 */
 void ProfesoresList::imprimir()
 {
-    _depura ( "ProfesoresList::imprimir", 0 );
+    blDebug ( "ProfesoresList::imprimir", 0 );
     
     mui_list->imprimirPDF ( _ ( "Monitores" ) );
     
-    _depura ( "END ProfesoresList::imprimir", 0 );
+    blDebug ( "END ProfesoresList::imprimir", 0 );
 }
 
 /** SLOT que responde a la pulsacion del boton borrar.
@@ -209,7 +209,7 @@ void ProfesoresList::imprimir()
 */
 void ProfesoresList::borrar()
 {
-    _depura ( "ProfesoresList::borrar", 0 );
+    blDebug ( "ProfesoresList::borrar", 0 );
     
     int a = mui_list->currentRow();
     
@@ -232,7 +232,7 @@ void ProfesoresList::borrar()
         mensajeInfo ( _ ( "Error al borrar el cobro a cliente" ) );
     } // end try
     
-    _depura ( "END:ProfesoresList::borrar", 0 );
+    blDebug ( "END:ProfesoresList::borrar", 0 );
 }
 
 /** SLOT que responde al doble click en el subformulario.
@@ -241,7 +241,7 @@ void ProfesoresList::borrar()
 /// \TODO: Deberia crearse el metodo editar y este llamar a ese.
 void ProfesoresList::editar ( int )
 {
-    _depura ( "ProfesoresList::editar", 0 );
+    blDebug ( "ProfesoresList::editar", 0 );
     
     try {
         mdb_idprofesor = mui_list->dbValue ( "idprofesor" );
@@ -260,7 +260,7 @@ void ProfesoresList::editar ( int )
         mensajeInfo ( _ ( "Debe seleccionar una fila primero" ) );
     } // end try
     
-    _depura ( "END ProfesoresList::editar", 0 );
+    blDebug ( "END ProfesoresList::editar", 0 );
 }
 
 /** SLOT que responde a la peticion de menu contextual en el subformulario.
@@ -268,7 +268,7 @@ void ProfesoresList::editar ( int )
 /// \TODO: Revisar si este metodo es util.
 void ProfesoresList::submenu ( const QPoint & )
 {
-    _depura ( "ProfesoresList::submenu", 0 );
+    blDebug ( "ProfesoresList::submenu", 0 );
     
     int a = mui_list->currentRow();
     
@@ -288,27 +288,27 @@ void ProfesoresList::submenu ( const QPoint & )
         
     delete popup;
     
-    _depura ( "END ProfesoresList::submenu", 0 );
+    blDebug ( "END ProfesoresList::submenu", 0 );
 }
 
 /** Inicializa la clase con el puntero a la company que se esta utilizando
 **/
 void ProfesoresList::setMainCompany ( BfCompany *comp )
 {
-    _depura ( "ProfesoresList::setMainCompany", 0 );
+    blDebug ( "ProfesoresList::setMainCompany", 0 );
     
     BlMainCompanyPointer::setMainCompany ( comp );
     mui_list->setMainCompany ( comp );
     
-    _depura ( "END ProfesoresList::setMainCompany", 0 );
+    blDebug ( "END ProfesoresList::setMainCompany", 0 );
 }
 
 /** Devuelve el identificador del cobro seleccionado
 **/
 QString ProfesoresList::idprofesor()
 {
-    _depura ( "ProfesoresList::idprofesor", 0 );
-    _depura ( "END ProfesoresList::idprofesor", 0 );
+    blDebug ( "ProfesoresList::idprofesor", 0 );
+    blDebug ( "END ProfesoresList::idprofesor", 0 );
     
     return mdb_idprofesor;
 }
@@ -321,7 +321,7 @@ QString ProfesoresList::idprofesor()
 */
 ProfesoresListSubForm::ProfesoresListSubForm ( QWidget *parent ) : BfSubForm ( parent )
 {
-    _depura ( "ProfesoresListSubForm::ProfesoresListSubForm", 0 );
+    blDebug ( "ProfesoresListSubForm::ProfesoresListSubForm", 0 );
     
     /// Disparamos los plugins.
     int res = g_plugins->lanza ( "ProfesoresListSubForm_ProfesoresListSubForm", this );
@@ -340,11 +340,11 @@ ProfesoresListSubForm::ProfesoresListSubForm ( QWidget *parent ) : BfSubForm ( p
     setDelete ( FALSE );
     setSortingEnabled ( TRUE );
     
-    _depura ( "END ProfesoresListSubForm::ProfesoresListSubForm", 0 );
+    blDebug ( "END ProfesoresListSubForm::ProfesoresListSubForm", 0 );
 }
 
 ProfesoresListSubForm::~ProfesoresListSubForm()
 {
-    _depura ( "ProfesoresListSubForm::~ProfesoresListSubForm", 0 );
-    _depura ( "END ProfesoresListSubForm::~ProfesoresListSubForm", 0 );
+    blDebug ( "ProfesoresListSubForm::~ProfesoresListSubForm", 0 );
+    blDebug ( "END ProfesoresListSubForm::~ProfesoresListSubForm", 0 );
 }

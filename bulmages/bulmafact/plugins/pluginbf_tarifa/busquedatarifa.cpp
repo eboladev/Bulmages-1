@@ -30,11 +30,11 @@
 BusquedaTarifa::BusquedaTarifa ( QWidget *parent )
         : BlComboBox ( parent )
 {
-    _depura ( "BusquedaTarifa::BusquedaTarifa", 0 );
+    blDebug ( "BusquedaTarifa::BusquedaTarifa", 0 );
     m_cursorcombo = NULL;
     setMouseTracking ( TRUE );
     connect ( this, SIGNAL ( activated ( int ) ), this, SLOT ( m_activated ( int ) ) );
-    _depura ( "END BusquedaTarifa::BusquedaTarifa", 0 );
+    blDebug ( "END BusquedaTarifa::BusquedaTarifa", 0 );
 }
 
 
@@ -43,8 +43,8 @@ BusquedaTarifa::BusquedaTarifa ( QWidget *parent )
 **/
 BusquedaTarifa::~BusquedaTarifa()
 {
-    _depura ( "BusquedaTarifa::~BusquedaTarifa", 0 );
-    _depura ( "END BusquedaTarifa::~BusquedaTarifa", 0 );
+    blDebug ( "BusquedaTarifa::~BusquedaTarifa", 0 );
+    blDebug ( "END BusquedaTarifa::~BusquedaTarifa", 0 );
 }
 
 
@@ -54,7 +54,7 @@ BusquedaTarifa::~BusquedaTarifa()
 **/
 void BusquedaTarifa::setIdTarifa ( QString idtarifa )
 {
-    _depura ( "BusquedaTarifa::setIdTarifa", 0 );
+    blDebug ( "BusquedaTarifa::setIdTarifa", 0 );
 //    mdb_idtarifa = idtarifa;
     if ( m_cursorcombo != NULL ) {
         delete m_cursorcombo;
@@ -73,34 +73,34 @@ void BusquedaTarifa::setIdTarifa ( QString idtarifa )
         m_cursorcombo->nextRecord();
     }
     setCurrentIndex ( i1 );
-    _depura ( "END BusquedaTarifa::setIdTarifa", 0 );
+    blDebug ( "END BusquedaTarifa::setIdTarifa", 0 );
 }
 
 
 void BusquedaTarifa::m_activated ( int index )
 {
-    _depura ( "BusquedaTarifa::m_activated", 0 );
+    blDebug ( "BusquedaTarifa::m_activated", 0 );
     if ( index > 0 ) {
         emit ( valueChanged ( m_cursorcombo->valor ( "idtarifa", index - 1 ) ) );
     } else {
         emit ( valueChanged ( "" ) );
     } // end if
 
-    _depura ( "END BusquedaTarifa::m_activated", 0 );
+    blDebug ( "END BusquedaTarifa::m_activated", 0 );
 
 }
 
 
 QString BusquedaTarifa::idtarifa()
 {
-    _depura ( "BusquedaTarifa::idtarifa", 0 );
+    blDebug ( "BusquedaTarifa::idtarifa", 0 );
 
     int index = currentIndex();
     if ( index > 0 ) {
-        _depura ( "END BusquedaTarifa::idtarifa", 0, m_cursorcombo->valor ( "idtarifa", index - 1 ) );
+        blDebug ( "END BusquedaTarifa::idtarifa", 0, m_cursorcombo->valor ( "idtarifa", index - 1 ) );
         return ( m_cursorcombo->valor ( "idtarifa", index - 1 ) );
     } else {
-        _depura ( "END BusquedaTarifa::idtarifa", 0 );
+        blDebug ( "END BusquedaTarifa::idtarifa", 0 );
         return "";
     } // end if
 
@@ -109,16 +109,16 @@ QString BusquedaTarifa::idtarifa()
 
 QString BusquedaTarifa::fieldValue()
 {
-    _depura ( "BusquedaTarifa::fieldValue", 0 );
-    _depura ( "END BusquedaTarifa::fieldValue", 0 );
+    blDebug ( "BusquedaTarifa::fieldValue", 0 );
+    blDebug ( "END BusquedaTarifa::fieldValue", 0 );
     return idtarifa();
 }
 
 
 void BusquedaTarifa::setFieldValue ( QString idtarifa )
 {
-    _depura ( "BusquedaTarifa::setFieldValue", 0 );
+    blDebug ( "BusquedaTarifa::setFieldValue", 0 );
     setIdTarifa ( idtarifa );
-    _depura ( "END BusquedaTarifa::setFieldValue", 0 );
+    blDebug ( "END BusquedaTarifa::setFieldValue", 0 );
 }
 

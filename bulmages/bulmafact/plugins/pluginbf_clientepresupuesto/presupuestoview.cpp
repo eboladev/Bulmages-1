@@ -49,7 +49,7 @@
 PresupuestoView::PresupuestoView ( BfCompany *comp, QWidget *parent )
         : BfForm ( comp, parent )
 {
-    _depura ( "Inicializacion de PresupuestoView", 0 );
+    blDebug ( "Inicializacion de PresupuestoView", 0 );
     setAttribute ( Qt::WA_DeleteOnClose );
     try {
         setupUi ( this );
@@ -106,7 +106,7 @@ PresupuestoView::PresupuestoView ( BfCompany *comp, QWidget *parent )
     } catch ( ... ) {
         mensajeInfo ( _ ( "Error al crear el presupuesto" ), this );
     } // end try
-    _depura ( "Fin de la inicializacion de PresupuestoView", 0 );
+    blDebug ( "Fin de la inicializacion de PresupuestoView", 0 );
 }
 
 
@@ -115,11 +115,11 @@ PresupuestoView::PresupuestoView ( BfCompany *comp, QWidget *parent )
 **/
 void PresupuestoView::inicializar()
 {
-    _depura ( "PresupuestoView::inicializar", 0 );
+    blDebug ( "PresupuestoView::inicializar", 0 );
     subform2->inicializar();
     m_descuentos->inicializar();
     dialogChanges_cargaInicial();
-    _depura ( "END PresupuestoView::inicializar", 0 );
+    blDebug ( "END PresupuestoView::inicializar", 0 );
 }
 
 
@@ -128,10 +128,10 @@ void PresupuestoView::inicializar()
 **/
 PresupuestoView::~PresupuestoView()
 {
-    _depura ( "PresupuestoView::~PresupuestoView", 0 );
+    blDebug ( "PresupuestoView::~PresupuestoView", 0 );
     /// Disparamos los plugins.
     g_plugins->lanza ( "PresupuestoView_DesPresupuestoView", this );
-    _depura ( "END PresupuestoView::~PresupuestoView", 0 );
+    blDebug ( "END PresupuestoView::~PresupuestoView", 0 );
 }
 
 
@@ -140,9 +140,9 @@ PresupuestoView::~PresupuestoView()
 **/
 void PresupuestoView::s_pintaTotales()
 {
-    _depura ( "PresupuestoView::s_pintaTotales", 0 );
+    blDebug ( "PresupuestoView::s_pintaTotales", 0 );
     calculaypintatotales();
-    _depura ( "END PresupuestoView::s_pintaTotales", 0 );
+    blDebug ( "END PresupuestoView::s_pintaTotales", 0 );
 }
 
 
@@ -151,9 +151,9 @@ void PresupuestoView::s_pintaTotales()
 **/
 void PresupuestoView::on_mui_pasarapedido_clicked()
 {
-    _depura ( "PresupuestoView::on_mui_pasarapedido_clicked", 0 );
+    blDebug ( "PresupuestoView::on_mui_pasarapedido_clicked", 0 );
     generarPedidoCliente();
-    _depura ( "END PresupuestoView::on_mui_pasarapedido_clicked", 0 );
+    blDebug ( "END PresupuestoView::on_mui_pasarapedido_clicked", 0 );
 }
 
 
@@ -162,9 +162,9 @@ void PresupuestoView::on_mui_pasarapedido_clicked()
 **/
 void PresupuestoView::on_m_descuentos_editFinish ( int, int )
 {
-    _depura ( "PresupuestoView::on_m_descuentos_editFinish", 0 );
+    blDebug ( "PresupuestoView::on_m_descuentos_editFinish", 0 );
     calculaypintatotales();
-    _depura ( "END PresupuestoView::on_m_descuentos_editFinish", 0 );
+    blDebug ( "END PresupuestoView::on_m_descuentos_editFinish", 0 );
 }
 
 
@@ -173,9 +173,9 @@ void PresupuestoView::on_m_descuentos_editFinish ( int, int )
 **/
 void PresupuestoView::on_subform2_editFinish ( int, int )
 {
-    _depura ( "PresupuestoView::on_subform2_editFinish", 0 );
+    blDebug ( "PresupuestoView::on_subform2_editFinish", 0 );
     calculaypintatotales();
-    _depura ( "END PresupuestoView::on_subform2_editFinish", 0 );
+    blDebug ( "END PresupuestoView::on_subform2_editFinish", 0 );
 }
 
 
@@ -190,14 +190,14 @@ void PresupuestoView::on_subform2_editFinish ( int, int )
 **/
 void PresupuestoView::pintatotales ( BlFixed iva, BlFixed base, BlFixed total, BlFixed desc, BlFixed irpf, BlFixed reqeq )
 {
-    _depura ( "PresupuestoView::pintatotales", 0 );
+    blDebug ( "PresupuestoView::pintatotales", 0 );
     m_totalBases->setText ( QString ( base.toQString() ) );
     m_totalTaxes->setText ( QString ( iva.toQString() ) );
     m_totalPresupuestoCliente->setText ( QString ( total.toQString() ) );
     m_totalDiscounts->setText ( QString ( desc.toQString() ) );
     m_totalIRPF->setText ( QString ( irpf.toQString() ) );
     m_totalReqEq->setText ( QString ( reqeq.toQString() ) );
-    _depura ( "END PresupuestoView::pintatotales", 0 );
+    blDebug ( "END PresupuestoView::pintatotales", 0 );
 }
 
 
@@ -207,7 +207,7 @@ void PresupuestoView::pintatotales ( BlFixed iva, BlFixed base, BlFixed total, B
 **/
 void PresupuestoView::generarPedidoCliente()
 {
-    _depura ( "PresupuestoView::generarPedidoCliente", 0 );
+    blDebug ( "PresupuestoView::generarPedidoCliente", 0 );
     /*
         PedidoClienteView *bud = NULL;
         BlDbRecordSet *cur = NULL;
@@ -322,7 +322,7 @@ void PresupuestoView::generarPedidoCliente()
             if ( bud ) delete bud;
         } // end try
     */
-    _depura ( "END PresupuestoView::generarPedidoCliente", 0 );
+    blDebug ( "END PresupuestoView::generarPedidoCliente", 0 );
 }
 
 
@@ -332,10 +332,10 @@ void PresupuestoView::generarPedidoCliente()
 **/
 void PresupuestoView::on_mui_idcliente_valueChanged ( QString id )
 {
-    _depura ( "PresupuestoView::on_mui_idcliente_valueChanged", 0 );
+    blDebug ( "PresupuestoView::on_mui_idcliente_valueChanged", 0 );
     subform2->setIdCliente ( id );
     mui_idforma_pago->setIdCliente ( id );
-    _depura ( "END PresupuestoView::on_mui_idcliente_valueChanged", 0 );
+    blDebug ( "END PresupuestoView::on_mui_idcliente_valueChanged", 0 );
 }
 
 
@@ -345,9 +345,9 @@ void PresupuestoView::on_mui_idcliente_valueChanged ( QString id )
 **/
 void PresupuestoView::on_mui_idalmacen_valueChanged ( QString id )
 {
-    _depura ( "PresupuestoView::on_mui_idalmacen_valueChanged", 0 );
+    blDebug ( "PresupuestoView::on_mui_idalmacen_valueChanged", 0 );
     m_listalineas->setIdAlmacen ( id );
-    _depura ( "END PresupuestoView::on_mui_idalmacen_valueChanged", 0 );
+    blDebug ( "END PresupuestoView::on_mui_idalmacen_valueChanged", 0 );
 }
 
 
@@ -357,13 +357,13 @@ void PresupuestoView::on_mui_idalmacen_valueChanged ( QString id )
 **/
 int PresupuestoView::borrarPre()
 {
-    _depura ( "PresupuestoView::borrar", 0 );
+    blDebug ( "PresupuestoView::borrar", 0 );
     /// Disparamos los plugins con presupuesto_imprimirPresupuesto.
     g_plugins->lanza ( "Presupuesto_borrarPre", this );
     m_listalineas->borrar();
     m_listadescuentos->borrar();
 
-    _depura ( "END PresupuestoView::borrar", 0 );
+    blDebug ( "END PresupuestoView::borrar", 0 );
     return 0;
 }
 
@@ -375,14 +375,14 @@ int PresupuestoView::borrarPre()
 **/
 int PresupuestoView::cargarPost ( QString idbudget )
 {
-    _depura ( "PresupuestoView::cargarPost", 0 );
+    blDebug ( "PresupuestoView::cargarPost", 0 );
 
     m_listalineas->cargar ( idbudget );
     m_listadescuentos->cargar ( idbudget );
 
     calculaypintatotales();
 
-    _depura ( "END PresupuestoView::cargar", 0 );
+    blDebug ( "END PresupuestoView::cargar", 0 );
     return 0;
 }
 
@@ -393,7 +393,7 @@ int PresupuestoView::cargarPost ( QString idbudget )
 **/
 int PresupuestoView::guardarPost()
 {
-    _depura ( "PresupuestoView::guardarPost", 0 );
+    blDebug ( "PresupuestoView::guardarPost", 0 );
 
     m_listalineas->setColumnValue ( "idpresupuesto", dbValue ( "idpresupuesto" ) );
     m_listadescuentos->setColumnValue ( "idpresupuesto", dbValue ( "idpresupuesto" ) );
@@ -403,7 +403,7 @@ int PresupuestoView::guardarPost()
     /// Disparamos los plugins con presupuesto_imprimirPresupuesto.
     g_plugins->lanza ( "Presupuesto_guardarPost_Post", this );
 
-    _depura ( "END PresupuestoView::guardar", 0 );
+    blDebug ( "END PresupuestoView::guardar", 0 );
     return 0;
 }
 
@@ -414,7 +414,7 @@ int PresupuestoView::guardarPost()
 **/
 QString PresupuestoView::detalleArticulos()
 {
-    _depura ( "PresupuestoView::detalleArticulos", 0 );
+    blDebug ( "PresupuestoView::detalleArticulos", 0 );
     QString texto = "";
     BlDbRecordSet *cur = mainCompany() ->loadQuery ( "SELECT * FROM lpresupuesto LEFT JOIN articulo ON lpresupuesto.idarticulo = articulo.idarticulo WHERE presentablearticulo AND idpresupuesto=" + dbValue ( "idpresupuesto" ) );
     int i = 0;
@@ -448,7 +448,7 @@ QString PresupuestoView::detalleArticulos()
         cur->nextRecord();
     } // end while
     delete cur;
-    _depura ( "END PresupuestoView::detalleArticulos", 0 );
+    blDebug ( "END PresupuestoView::detalleArticulos", 0 );
     return texto;
 }
 

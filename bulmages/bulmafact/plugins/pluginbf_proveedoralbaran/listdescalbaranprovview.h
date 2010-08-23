@@ -40,7 +40,7 @@ public:
 
 public slots:
     virtual void cargar ( QString idalbaranp ) {
-        _depura ( "ListDescuentoAlbaranProvView::cargar\n", 0 );
+        blDebug ( "ListDescuentoAlbaranProvView::cargar\n", 0 );
         mdb_idalbaranp = idalbaranp;
         BlSubForm::cargar ( "SELECT * FROM dalbaranp WHERE idalbaranp = " + mdb_idalbaranp );
     };

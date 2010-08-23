@@ -44,8 +44,8 @@ BcCuentasAnualesView *g_cuentasAnuales;
 **/
 MyPluginCuentasAnuales::MyPluginCuentasAnuales()
 {
-    _depura ( "MyPluginCuentasAnuales::MyPluginCuentasAnuales", 0 );
-    _depura ( "END MyPluginCuentasAnuales::MyPluginCuentasAnuales", 0 );
+    blDebug ( "MyPluginCuentasAnuales::MyPluginCuentasAnuales", 0 );
+    blDebug ( "END MyPluginCuentasAnuales::MyPluginCuentasAnuales", 0 );
 }
 
 
@@ -54,8 +54,8 @@ MyPluginCuentasAnuales::MyPluginCuentasAnuales()
 **/
 MyPluginCuentasAnuales::~MyPluginCuentasAnuales()
 {
-    _depura ( "MyPluginCuentasAnuales::~MyPluginCuentasAnuales", 0 );
-    _depura ( "END MyPluginCuentasAnuales::~MyPluginCuentasAnuales", 0 );
+    blDebug ( "MyPluginCuentasAnuales::~MyPluginCuentasAnuales", 0 );
+    blDebug ( "END MyPluginCuentasAnuales::~MyPluginCuentasAnuales", 0 );
 }
 
 
@@ -64,14 +64,14 @@ MyPluginCuentasAnuales::~MyPluginCuentasAnuales()
 **/
 void MyPluginCuentasAnuales::elslot()
 {
-    _depura ( "MyPluginCuentasAnuales::elslot", 0 );
+    blDebug ( "MyPluginCuentasAnuales::elslot", 0 );
     if (g_cuentasAnuales == NULL) {
       g_cuentasAnuales = new BcCuentasAnualesView ( ( BcCompany * ) mainCompany(), 0 );
       mainCompany() ->pWorkspace() -> addWindow ( g_cuentasAnuales );
     } // end if
     g_cuentasAnuales->hide();
     g_cuentasAnuales->show();
-    _depura ( "END MyPluginCuentasAnuales::elslot", 0 );
+    blDebug ( "END MyPluginCuentasAnuales::elslot", 0 );
 }
 
 
@@ -81,7 +81,7 @@ void MyPluginCuentasAnuales::elslot()
 **/
 void MyPluginCuentasAnuales::inicializa ( BcBulmaCont *bges )
 {
-    _depura ( "MyPluginCuentasAnuales::inicializa", 0 );
+    blDebug ( "MyPluginCuentasAnuales::inicializa", 0 );
 
     /// Creamos el men&uacute;.
     setMainCompany ( bges->empresaactual() );
@@ -110,7 +110,7 @@ void MyPluginCuentasAnuales::inicializa ( BcBulmaCont *bges )
     /// A&ntilde;adimos la nueva opci&oacute;n al men&uacute; principal del programa.
     bges->menuBar() ->insertMenu ( bges->menuVentana->menuAction(), pPluginMenu );
 
-    _depura ( "END MyPluginCuentasAnuales::inicializa", 0 );
+    blDebug ( "END MyPluginCuentasAnuales::inicializa", 0 );
 }
 
 
@@ -121,7 +121,7 @@ void MyPluginCuentasAnuales::inicializa ( BcBulmaCont *bges )
 **/
 int entryPoint ( BcBulmaCont *bcont )
 {
-    _depura ( "entryPoint::entryPoint", 0 );
+    blDebug ( "entryPoint::entryPoint", 0 );
 
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale ( LC_ALL, "" );
@@ -131,7 +131,7 @@ int entryPoint ( BcBulmaCont *bcont )
 
     MyPluginCuentasAnuales *plug = new MyPluginCuentasAnuales();
     plug->inicializa ( bcont );
-    _depura ( "END entryPoint::entryPoint", 0 );
+    blDebug ( "END entryPoint::entryPoint", 0 );
     return 0;
 }
 

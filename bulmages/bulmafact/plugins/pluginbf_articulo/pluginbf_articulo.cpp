@@ -36,8 +36,8 @@ ArticuloList *g_articulosList = NULL;
 **/
 MyPlugArt::MyPlugArt()
 {
-    _depura ( "MyPlugArt::MyPlugArt", 0 );
-    _depura ( "END MyPlugArt::MyPlugArt", 0 );
+    blDebug ( "MyPlugArt::MyPlugArt", 0 );
+    blDebug ( "END MyPlugArt::MyPlugArt", 0 );
 }
 
 
@@ -46,8 +46,8 @@ MyPlugArt::MyPlugArt()
 **/
 MyPlugArt::~MyPlugArt()
 {
-    _depura ( "MyPlugArt::~MyPlugArt", 0 );
-    _depura ( "END MyPlugArt::~MyPlugArt", 0 );
+    blDebug ( "MyPlugArt::~MyPlugArt", 0 );
+    blDebug ( "END MyPlugArt::~MyPlugArt", 0 );
 }
 
 
@@ -56,12 +56,12 @@ MyPlugArt::~MyPlugArt()
 **/
 void MyPlugArt::elslot()
 {
-    _depura ( "MyPlugArt::elslot", 0 );
+    blDebug ( "MyPlugArt::elslot", 0 );
     if ( g_articulosList ) {
         g_articulosList->hide();
         g_articulosList->show();
     }// end if
-    _depura ( "END MyPlugArt::elslot", 0 );
+    blDebug ( "END MyPlugArt::elslot", 0 );
 }
 
 
@@ -70,11 +70,11 @@ void MyPlugArt::elslot()
 **/
 void MyPlugArt::elslot1()
 {
-    _depura ( "MyPlugArt::elslot1", 0 );
+    blDebug ( "MyPlugArt::elslot1", 0 );
     ArticuloView * bud = new ArticuloView ( ( BfCompany * ) mainCompany(), NULL );
     mainCompany() ->m_pWorkspace->addWindow ( bud );
     bud->show();
-    _depura ( "END MyPlugArt::elslot1", 0 );
+    blDebug ( "END MyPlugArt::elslot1", 0 );
 }
 
 
@@ -83,11 +83,11 @@ void MyPlugArt::elslot1()
 **/
 void MyPlugArt::elslot2()
 {
-    _depura ( "MyPlugArt::elslot2", 0 );
+    blDebug ( "MyPlugArt::elslot2", 0 );
     TipoArticuloList *pag = new TipoArticuloList ( ( BfCompany * ) mainCompany(), 0, FALSE );
     mainCompany() ->m_pWorkspace->addWindow ( pag );
     pag->show();
-    _depura ( "END MyPlugArt::elslot2", 0 );
+    blDebug ( "END MyPlugArt::elslot2", 0 );
 }
 
 
@@ -96,11 +96,11 @@ void MyPlugArt::elslot2()
 **/
 void MyPlugArt::elslot3()
 {
-    _depura ( "MyPlugArt::elslot3", 0 );
+    blDebug ( "MyPlugArt::elslot3", 0 );
     FamiliasView *pag = new FamiliasView ( ( BfCompany * ) mainCompany(), 0, FALSE );
     mainCompany() ->m_pWorkspace->addWindow ( pag );
     pag->show();
-    _depura ( "END MyPlugArt::elslot3", 0 );
+    blDebug ( "END MyPlugArt::elslot3", 0 );
 }
 
 
@@ -110,7 +110,7 @@ void MyPlugArt::elslot3()
 **/
 void MyPlugArt::inicializa ( BfBulmaFact *bges )
 {
-    _depura ( "MyPlugArt::inicializa", 0 );
+    blDebug ( "MyPlugArt::inicializa", 0 );
 
     if ( bges->company()->hasTablePrivilege ( "articulo", "SELECT" ) ) {
 
@@ -156,7 +156,7 @@ void MyPlugArt::inicializa ( BfBulmaFact *bges )
         connect ( tfam, SIGNAL ( activated() ), this, SLOT ( elslot3() ) );
 
     }// end if
-    _depura ( "END MyPlugArt::inicializa", 0 );
+    blDebug ( "END MyPlugArt::inicializa", 0 );
 }
 
 
@@ -167,7 +167,7 @@ void MyPlugArt::inicializa ( BfBulmaFact *bges )
 **/
 int entryPoint ( BfBulmaFact *bges )
 {
-    _depura ( "Punto de Entrada del plugin de Clientes\n", 0 );
+    blDebug ( "Punto de Entrada del plugin de Clientes\n", 0 );
 
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale ( LC_ALL, "" );
@@ -290,7 +290,7 @@ int BfSubForm_pressedAsterisk ( BfSubForm *sub )
 {
 
     if ( sub->m_campoactual->nomcampo() != "codigocompletoarticulo" ) {
-        _depura ( "END BfSubForm::pressedAsterisk", 0 );
+        blDebug ( "END BfSubForm::pressedAsterisk", 0 );
         return 0;
     } // end if
 
@@ -308,7 +308,7 @@ int BfSubForm_pressedAsterisk ( BfSubForm *sub )
 
     /// Si no tenemos un idarticulo salimos ya que significa que no se ha seleccionado ninguno.
     if ( idArticle == "" ) {
-        _depura ( "END BfSubForm::pressedAsterisk", 0 );
+        blDebug ( "END BfSubForm::pressedAsterisk", 0 );
         return 0;
     } // end if
 
@@ -346,8 +346,8 @@ int SNewArticuloView ( BfCompany *v )
 **/
 MyPlugArt1::MyPlugArt1 ( BlSubForm *parent ) : QObject ( parent )
 {
-    _depura ( "MyPlugArt1::MyPlugArt1", 0 );
-    _depura ( "END MyPlugArt1::MyPlugArt1", 0 );
+    blDebug ( "MyPlugArt1::MyPlugArt1", 0 );
+    blDebug ( "END MyPlugArt1::MyPlugArt1", 0 );
 }
 
 ///
@@ -355,8 +355,8 @@ MyPlugArt1::MyPlugArt1 ( BlSubForm *parent ) : QObject ( parent )
 **/
 MyPlugArt1::~MyPlugArt1()
 {
-    _depura ( "MyPlugArt1::~MyPlugArt1", 0 );
-    _depura ( "END MyPlugArt1::~MyPlugArt1", 0 );
+    blDebug ( "MyPlugArt1::~MyPlugArt1", 0 );
+    blDebug ( "END MyPlugArt1::~MyPlugArt1", 0 );
 }
 
 
@@ -366,7 +366,7 @@ MyPlugArt1::~MyPlugArt1()
 **/
 void MyPlugArt1::s_pintaMenu ( QMenu *menu )
 {
-    _depura ( "MyPlugArt1::s_pintaMenu", 0 );
+    blDebug ( "MyPlugArt1::s_pintaMenu", 0 );
     BfSubForm *sub = ( BfSubForm * ) parent();
     BlSubFormHeader *header = sub->header ( "codigocompletoarticulo" );
     if ( header ) {
@@ -378,7 +378,7 @@ void MyPlugArt1::s_pintaMenu ( QMenu *menu )
             menu->addAction ( QIcon ( ":/Images/product-list.png"), _ ( "Seleccionar articulo" ) );
         } // end if
     } // end if
-    _depura ( "END MyPlugArt1::s_pintaMenu", 0 );
+    blDebug ( "END MyPlugArt1::s_pintaMenu", 0 );
 }
 
 
@@ -388,7 +388,7 @@ void MyPlugArt1::s_pintaMenu ( QMenu *menu )
 **/
 void MyPlugArt1::s_trataMenu ( QAction *action )
 {
-    _depura ( "MyPlugArt1::s_trataMenu", 0 );
+    blDebug ( "MyPlugArt1::s_trataMenu", 0 );
     BfSubForm *sub = ( BfSubForm * ) parent();
     if ( action->text() == _ ( "Editar articulo" ) ) {
         QString idarticulo = sub->dbValue ( "idarticulo" );
@@ -400,7 +400,7 @@ void MyPlugArt1::s_trataMenu ( QAction *action )
         nuevoArticulo();
     } // end if
 
-    _depura ( "END MyPlugArt1::s_trataMenu", 0 );
+    blDebug ( "END MyPlugArt1::s_trataMenu", 0 );
 }
 
 
@@ -409,19 +409,19 @@ void MyPlugArt1::s_trataMenu ( QAction *action )
 **/
 void MyPlugArt1::editarArticulo ( QString idarticulo )
 {
-    _depura ( "MyPlugArt1::editarArticulo", 0 );
+    blDebug ( "MyPlugArt1::editarArticulo", 0 );
     BlSubForm * subf = ( BlSubForm * ) parent();
     ArticuloView * art = new ArticuloView ( ( BfCompany * ) subf->mainCompany(), 0 );
     subf->mainCompany() ->m_pWorkspace->addWindow ( art );
     /// Si la carga no va bien entonces terminamos.
     if ( art->cargar ( idarticulo ) ) {
         delete art;
-        _depura ( "END ArticuloList::editar", 0, "Carga erronea" );
+        blDebug ( "END ArticuloList::editar", 0, "Carga erronea" );
         return;
     } // end if
     art->hide();
     art->show();
-    _depura ( "END MyPlugArt1::editarArticulo", 0 );
+    blDebug ( "END MyPlugArt1::editarArticulo", 0 );
 }
 
 
@@ -430,7 +430,7 @@ void MyPlugArt1::editarArticulo ( QString idarticulo )
 **/
 void MyPlugArt1::nuevoArticulo( )
 {
-    _depura ( "MyPlugArt1::editarArticulo", 0 );
+    blDebug ( "MyPlugArt1::editarArticulo", 0 );
   
     BlSubForm * sub = ( BlSubForm * ) parent();
     
@@ -459,7 +459,7 @@ void MyPlugArt1::nuevoArticulo( )
 	} // end if
     } // end if
     delete cur;
-    _depura ( "END MyPlugArt1::editarArticulo", 0 );
+    blDebug ( "END MyPlugArt1::editarArticulo", 0 );
 }
 
 
@@ -468,7 +468,7 @@ void MyPlugArt1::nuevoArticulo( )
 **/
 void MyPlugArt1::seleccionarArticulo ( BfSubForm *sub )
 {
-    _depura ( "MyPlugArt1::editarArticulo", 0 );
+    blDebug ( "MyPlugArt1::editarArticulo", 0 );
 
     if (!sub) sub= (BfSubForm *) parent();
     
@@ -485,7 +485,7 @@ void MyPlugArt1::seleccionarArticulo ( BfSubForm *sub )
 
     /// Si no tenemos un idarticulo salimos ya que significa que no se ha seleccionado ninguno.
     if ( idArticle == "" ) {
-        _depura ( "END BfSubForm::pressedAsterisk", 0 );
+        blDebug ( "END BfSubForm::pressedAsterisk", 0 );
         return;
     } // end if
 
@@ -497,7 +497,7 @@ void MyPlugArt1::seleccionarArticulo ( BfSubForm *sub )
     } // end if
     delete cur;
 
-    _depura ( "END MyPlugArt1::editarArticulo", 0 );
+    blDebug ( "END MyPlugArt1::editarArticulo", 0 );
 }
 
 
@@ -508,11 +508,11 @@ void MyPlugArt1::seleccionarArticulo ( BfSubForm *sub )
 **/
 int BlSubForm_BlSubForm_Post ( BlSubForm *sub )
 {
-    _depura ( "BlSubForm_BlSubForm_Post", 0 );
+    blDebug ( "BlSubForm_BlSubForm_Post", 0 );
     MyPlugArt1 *subformods = new MyPlugArt1 ( sub );
     sub->QObject::connect ( sub, SIGNAL ( pintaMenu ( QMenu * ) ), subformods, SLOT ( s_pintaMenu ( QMenu * ) ) );
     sub->QObject::connect ( sub, SIGNAL ( trataMenu ( QAction * ) ), subformods, SLOT ( s_trataMenu ( QAction * ) ) );
-    _depura ( "END BlSubForm_BlSubForm_Post", 0 );
+    blDebug ( "END BlSubForm_BlSubForm_Post", 0 );
     return 0;
 }
 
@@ -526,7 +526,7 @@ int BlSubForm_BlSubForm_Post ( BlSubForm *sub )
 \return
 **/
 int BlSubForm_preparaMenu ( BlSubForm *sub ) {
-    _depura ( "BlSubForm_preparaMenu", 0 );
+    blDebug ( "BlSubForm_preparaMenu", 0 );
     BlSubFormHeader *header = sub->header ( "codigocompletoarticulo" );
     if ( header ) {
 	MyPlugArt1 *subformods = new MyPlugArt1 ( sub );
@@ -561,14 +561,14 @@ int BlSubForm_preparaMenu ( BlSubForm *sub ) {
     } // end if
     
 
-    _depura ( "END BlSubForm_preparaMenu", 0 );
+    blDebug ( "END BlSubForm_preparaMenu", 0 );
     return 0;
 }
 /// Terminamos el tema de iconos en el menu de subformulario
 
 int BlSubFormDelegate_createEditor ( BlSubFormDelegate *bl )
 {
-    _depura ( "pluginbf_articulo::BlSubFormDelegate_createEditor", 0 );
+    blDebug ( "pluginbf_articulo::BlSubFormDelegate_createEditor", 0 );
     int ret = 0;
     if ( g_nomcampo == "codigocompletoarticulo" ) {
         BlDbCompleterComboBox * editor = new BlDbCompleterComboBox ( g_editor );
@@ -581,7 +581,7 @@ int BlSubFormDelegate_createEditor ( BlSubFormDelegate *bl )
         ret = -1;
     } // end if
 
-    _depura ( "END pluginbf_articulo::BlSubFormDelegate_createEditor", 0 );
+    blDebug ( "END pluginbf_articulo::BlSubFormDelegate_createEditor", 0 );
 
     return ret;
 }
@@ -590,7 +590,7 @@ int BlSubFormDelegate_createEditor ( BlSubFormDelegate *bl )
 /// Hay cosas que deberian estar en el plugin de alumno
 int BlSubFormDelegate_setModelData ( BlSubFormDelegate *bl )
 {
-    _depura ( "pluginbf_articulo::BlSubFormDelegate_setModelData", 0 );
+    blDebug ( "pluginbf_articulo::BlSubFormDelegate_setModelData", 0 );
     int ret = 0;
     if ( g_editor->objectName() == "EditCodigoCompletoArticulo" ) {
         BlDbCompleterComboBox * comboBox = ( BlDbCompleterComboBox * ) g_editor;
@@ -599,14 +599,14 @@ int BlSubFormDelegate_setModelData ( BlSubFormDelegate *bl )
         g_model->setData ( g_index, value );
         ret = -1;
     } // end if
-    _depura ( "END pluginbf_articulo::BlSubFormDelegate_setModelData", 0 );
+    blDebug ( "END pluginbf_articulo::BlSubFormDelegate_setModelData", 0 );
     return ret;
 }
 
 
 int BlSubFormDelegate_setEditorData ( BlSubFormDelegate *bl )
 {
-    _depura ( "pluginbf_articulo::BlSubFormDelegate_setEditorData", 0 );
+    blDebug ( "pluginbf_articulo::BlSubFormDelegate_setEditorData", 0 );
     int ret = 0;
     if ( g_editor->objectName() == "EditCodigoCompletoArticulo" ) {
         QString value = g_index.model() ->data ( g_index, Qt::DisplayRole ).toString();
@@ -614,14 +614,14 @@ int BlSubFormDelegate_setEditorData ( BlSubFormDelegate *bl )
         comboBox->addItem ( value );
         ret = -1;
     } // end if
-    _depura ( "END pluginbf_articulo::BlSubFormDelegate_setEditorData", 0 );
+    blDebug ( "END pluginbf_articulo::BlSubFormDelegate_setEditorData", 0 );
     return ret;
 }
 
 
 int BlSubForm_editFinished ( BlSubForm *sub )
 {
-    _depura ( "pluginbf_articulo::BlSubForm_editFinished", 0 );
+    blDebug ( "pluginbf_articulo::BlSubForm_editFinished", 0 );
     if ( sub->m_campoactual->nomcampo() == "codigocompletoarticulo" ) {
         QString params[1]= {  sub->m_campoactual->text() };
 	QString query = "SELECT idarticulo FROM articulo WHERE codigocompletoarticulo = $1";
@@ -631,13 +631,13 @@ int BlSubForm_editFinished ( BlSubForm *sub )
         } // end if
         delete cur;
     } // end if
-    _depura ( "END pluginbf_articulo::BlSubForm_editFinished", 0 );
+    blDebug ( "END pluginbf_articulo::BlSubForm_editFinished", 0 );
     return 0;
 }
 
 
 int BlDbCompleterComboBox_textChanged (BlDbCompleterComboBox *bl) {
-  _depura("BlDbCompleterComboBox_textChanged", 0, "plugin_articulo");
+  blDebug("BlDbCompleterComboBox_textChanged", 0, "plugin_articulo");
 
   if ( bl->m_entrada.size() >= 3 && bl->m_tabla == "articulo") {
            // no se si es el autoComplete o que pero em criden a
@@ -670,7 +670,7 @@ int BlDbCompleterComboBox_textChanged (BlDbCompleterComboBox *bl) {
                 delete bl->m_cursorcombo;
            }
    } // end if
-   _depura("END BlDbCompleterComboBox_textChanged", 0, "plugin_articulo");
+   blDebug("END BlDbCompleterComboBox_textChanged", 0, "plugin_articulo");
 
    return 0;
 }

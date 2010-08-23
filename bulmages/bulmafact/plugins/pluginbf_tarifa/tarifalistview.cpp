@@ -34,7 +34,7 @@
 TarifaListView::TarifaListView ( BfCompany *comp, QWidget *parent, Qt::WFlags flag, edmode editmodo )
         : BlFormList ( comp, parent, flag, editmodo ), BlImportExport ( comp )
 {
-    _depura ( "TarifaListView::INIT_TarifaListView()\n", 0 );
+    blDebug ( "TarifaListView::INIT_TarifaListView()\n", 0 );
     setAttribute ( Qt::WA_DeleteOnClose );
     setupUi ( this );
     mui_list->setMainCompany ( mainCompany() );
@@ -45,7 +45,7 @@ TarifaListView::TarifaListView ( BfCompany *comp, QWidget *parent, Qt::WFlags fl
     /// Hacemos el tratamiento de los permisos que desabilita botones en caso de no haber suficientes permisos.
     //trataPermisos ( "tarifas" );
 
-    _depura ( "TarifaListView::END_TarifaListView()\n", 0 );
+    blDebug ( "TarifaListView::END_TarifaListView()\n", 0 );
 }
 
 
@@ -54,9 +54,9 @@ TarifaListView::TarifaListView ( BfCompany *comp, QWidget *parent, Qt::WFlags fl
 **/
 TarifaListView::~TarifaListView()
 {
-    _depura ( "TarifaListView::INIT_destructor()\n", 0 );
+    blDebug ( "TarifaListView::INIT_destructor()\n", 0 );
     mainCompany() ->sacaWindow ( this );
-    _depura ( "TarifaListView::END_destructor()\n", 0 );
+    blDebug ( "TarifaListView::END_destructor()\n", 0 );
 }
 
 
@@ -66,13 +66,13 @@ TarifaListView::~TarifaListView()
 **/
 void TarifaListView::editar ( int row )
 {
-    _depura ( "TarifaListView::editar", 0 );
+    blDebug ( "TarifaListView::editar", 0 );
     TarifaView *tar = new TarifaView ( ( BfCompany * ) mainCompany(), 0 );
     QObject::connect ( tar, SIGNAL ( guardartarifa() ), this, SLOT ( actualizar() ) );
     mainCompany() ->m_pWorkspace->addWindow ( tar );
     tar->cargar ( mui_list->dbValue ( QString ( "idtarifa" ), row ) );
     tar->show();
-    _depura ( "END TarifaListView::editar", 0 );
+    blDebug ( "END TarifaListView::editar", 0 );
 }
 
 
@@ -81,13 +81,13 @@ void TarifaListView::editar ( int row )
 **/
 void TarifaListView::crear()
 {
-    _depura ( "TarifaListView::crear", 0 );
+    blDebug ( "TarifaListView::crear", 0 );
     TarifaView *tar = new TarifaView ( ( BfCompany * ) mainCompany(), parentWidget() );
     QObject::connect ( tar, SIGNAL ( guardartarifa() ), this, SLOT ( actualizar() ) );
     mainCompany() ->m_pWorkspace->addWindow ( tar );
     tar->setWindowTitle ( tr ( "Nueva tarifa" ) );
     tar->show();
-    _depura ( "END  TarifaListView::crear", 0 );
+    blDebug ( "END  TarifaListView::crear", 0 );
 }
 
 
@@ -96,7 +96,7 @@ void TarifaListView::crear()
 **/
 void TarifaListView::borrar()
 {
-    _depura ( "TarifaListView::borrar\n", 0 );
+    blDebug ( "TarifaListView::borrar\n", 0 );
     int a = mui_list->currentRow();
     if ( a >= 0 ) {
         TarifaView *tar = new TarifaView ( ( BfCompany * ) mainCompany(), 0 );
@@ -107,7 +107,7 @@ void TarifaListView::borrar()
     } else {
         mensajeInfo ( tr ( "No ha seleccionado ninguna tarifa" ) );
     } // end if
-    _depura ( "END TarifaListView::borrar\n", 0 );
+    blDebug ( "END TarifaListView::borrar\n", 0 );
 }
 
 
@@ -116,8 +116,8 @@ void TarifaListView::borrar()
 **/
 void TarifaListView::actualizar()
 {
-    _depura ( "TarifaListView::actualizar\n", 0 );
+    blDebug ( "TarifaListView::actualizar\n", 0 );
     mui_list->cargar();
-    _depura ( "END TarifaListView::actualizar\n", 0 );
+    blDebug ( "END TarifaListView::actualizar\n", 0 );
 }
 

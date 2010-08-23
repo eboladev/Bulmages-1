@@ -25,9 +25,9 @@
 **/
 BcPlanContableArbol::BcPlanContableArbol()
 {
-    _depura ( "BcPlanContableArbol::BcPlanContableArbol", 0 );
+    blDebug ( "BcPlanContableArbol::BcPlanContableArbol", 0 );
 
-    _depura ( "END BcPlanContableArbol::BcPlanContableArbol", 0 );
+    blDebug ( "END BcPlanContableArbol::BcPlanContableArbol", 0 );
 }
 
 
@@ -36,9 +36,9 @@ BcPlanContableArbol::BcPlanContableArbol()
 **/
 BcPlanContableArbol::~BcPlanContableArbol()
 {
-    _depura ( "BcPlanContableArbol::~BcPlanContableArbol", 0 );
+    blDebug ( "BcPlanContableArbol::~BcPlanContableArbol", 0 );
 
-    _depura ( "END BcPlanContableArbol::~BcPlanContableArbol", 0 );
+    blDebug ( "END BcPlanContableArbol::~BcPlanContableArbol", 0 );
 }
 
 
@@ -48,7 +48,7 @@ BcPlanContableArbol::~BcPlanContableArbol()
 **/
 void BcPlanContableArbol::nuevaRama ( BlDbRecordSet *ramas )
 {
-    _depura ( "BcPlanContableArbol::nuevaRama", 0 );
+    blDebug ( "BcPlanContableArbol::nuevaRama", 0 );
 
     /// Rellenamos los valores de inicializacion para una hoja.
     hoja = new tipohoja;
@@ -60,7 +60,7 @@ void BcPlanContableArbol::nuevaRama ( BlDbRecordSet *ramas )
     hoja->ramas = NULL;
     raiz << hoja;
 
-    _depura ( "END BcPlanContableArbol::nuevaRama", 0 );
+    blDebug ( "END BcPlanContableArbol::nuevaRama", 0 );
 }
 
 
@@ -70,7 +70,7 @@ void BcPlanContableArbol::nuevaRama ( BlDbRecordSet *ramas )
 **/
 void BcPlanContableArbol::inicializa ( BlDbRecordSet *ramas )
 {
-    _depura ( "BcPlanContableArbol::inicializa", 0 );
+    blDebug ( "BcPlanContableArbol::inicializa", 0 );
 
     QString padre;
     tiporama* guia = NULL;
@@ -109,7 +109,7 @@ void BcPlanContableArbol::inicializa ( BlDbRecordSet *ramas )
         } // end while
     } // end for
 
-    _depura ( "END BcPlanContableArbol::inicializa", 0 );
+    blDebug ( "END BcPlanContableArbol::inicializa", 0 );
 }
 
 
@@ -120,7 +120,7 @@ void BcPlanContableArbol::inicializa ( BlDbRecordSet *ramas )
 **/
 void BcPlanContableArbol::SintetizarRamas ( BlDbRecordSet **cuentas, tiporama **ramas )
 {
-    _depura ( "BcPlanContableArbol::SintetizarRamas", 0 );
+    blDebug ( "BcPlanContableArbol::SintetizarRamas", 0 );
 
     tiporama *guia, *rama;
     tipohoja *hoja;
@@ -152,7 +152,7 @@ void BcPlanContableArbol::SintetizarRamas ( BlDbRecordSet **cuentas, tiporama **
         SintetizarRamas ( &ptrcuentas, & ( hoja->ramas ) );
     } // end while
 
-    _depura ( "END BcPlanContableArbol::SintetizarRamas", 0 );
+    blDebug ( "END BcPlanContableArbol::SintetizarRamas", 0 );
 }
 
 
@@ -162,7 +162,7 @@ void BcPlanContableArbol::SintetizarRamas ( BlDbRecordSet **cuentas, tiporama **
 **/
 void BcPlanContableArbol::actualizaHojas ( BlDbRecordSet *cuenta )
 {
-    _depura ( "BcPlanContableArbol::actualizaHojas", 0 );
+    blDebug ( "BcPlanContableArbol::actualizaHojas", 0 );
 
     int i = 0;
     bool actualizado = false;
@@ -191,7 +191,7 @@ void BcPlanContableArbol::actualizaHojas ( BlDbRecordSet *cuenta )
         } // end if
     } // end if
 
-    _depura ( "END BcPlanContableArbol::actualizaHojas", 0 );
+    blDebug ( "END BcPlanContableArbol::actualizaHojas", 0 );
 }
 
 
@@ -203,7 +203,7 @@ void BcPlanContableArbol::actualizaHojas ( BlDbRecordSet *cuenta )
 **/
 void BcPlanContableArbol::ActualizarHoja ( tiporama** ramaraiz, BlDbRecordSet* cuenta, bool* actualizado )
 {
-    _depura ( "BcPlanContableArbol::ActualizarHoja", 0 );
+    blDebug ( "BcPlanContableArbol::ActualizarHoja", 0 );
 
     tiporama* rama = *ramaraiz;
     int idcuenta = cuenta->valor ( "idcuenta" ).toInt();
@@ -220,7 +220,7 @@ void BcPlanContableArbol::ActualizarHoja ( tiporama** ramaraiz, BlDbRecordSet* c
             rama->hoja->haberej = BlFixed ( cuenta->valor ( "haberej" ) );
             rama->hoja->saldoej = BlFixed ( cuenta->valor ( "saldoej" ) );
             rama->hoja->numapuntes = cuenta->valor ( "numapuntes" ).toInt();
-            _depura ( "BcPlanContableArbol::ActualizarHoja", 2, cuenta->valor ( "codigo" ) + " " + QString::number ( rama->hoja->numapuntes ) );
+            blDebug ( "BcPlanContableArbol::ActualizarHoja", 2, cuenta->valor ( "codigo" ) + " " + QString::number ( rama->hoja->numapuntes ) );
             *actualizado = true;
         } else {
             if ( rama->hoja->ramas ) {
@@ -241,7 +241,7 @@ void BcPlanContableArbol::ActualizarHoja ( tiporama** ramaraiz, BlDbRecordSet* c
         rama = rama->sgte;
     } // end while
 
-    _depura ( "END BcPlanContableArbol::ActualizarHoja", 0 );
+    blDebug ( "END BcPlanContableArbol::ActualizarHoja", 0 );
 }
 
 
@@ -250,12 +250,12 @@ void BcPlanContableArbol::ActualizarHoja ( tiporama** ramaraiz, BlDbRecordSet* c
 **/
 void BcPlanContableArbol::inicia()
 {
-    _depura ( "BcPlanContableArbol::inicia", 0 );
+    blDebug ( "BcPlanContableArbol::inicia", 0 );
 
     /// Cuando se inicia un recorrido por el BcPlanContableArbol, se resetea el que apunta a la hoja activa.
     hojaactiva = NULL;
 
-    _depura ( "END BcPlanContableArbol::inicia", 0 );
+    blDebug ( "END BcPlanContableArbol::inicia", 0 );
 }
 
 
@@ -267,7 +267,7 @@ void BcPlanContableArbol::inicia()
 **/
 // bool BcPlanContableArbol::deshoja ( unsigned int nivel, bool superiores )
 // {
-//     _depura ( "BcPlanContableArbol::deshoja", 0 );
+//     blDebug ( "BcPlanContableArbol::deshoja", 0 );
 //     unsigned int i;
 //     bool deshojada = false;
 //     if ( nivel > 2 ) {
@@ -321,7 +321,7 @@ void BcPlanContableArbol::inicia()
 //     } // end if
 //     return deshojada;
 //
-//     _depura ( "END BcPlanContableArbol::deshoja", 0 );
+//     blDebug ( "END BcPlanContableArbol::deshoja", 0 );
 // }
 
 
@@ -333,7 +333,7 @@ void BcPlanContableArbol::inicia()
 **/
 bool BcPlanContableArbol::deshoja ( unsigned int nivel, bool superiores )
 {
-    _depura ( "BcPlanContableArbol::deshoja", 0 );
+    blDebug ( "BcPlanContableArbol::deshoja", 0 );
     int i;
     bool deshojada = false;
     if ( nivel > 2 ) {
@@ -380,7 +380,7 @@ bool BcPlanContableArbol::deshoja ( unsigned int nivel, bool superiores )
         } // end if
     } // end if
 
-    _depura ( "END BcPlanContableArbol::deshoja", 0 );
+    blDebug ( "END BcPlanContableArbol::deshoja", 0 );
     return deshojada;
 }
 
@@ -394,7 +394,7 @@ bool BcPlanContableArbol::deshoja ( unsigned int nivel, bool superiores )
 **/
 // void BcPlanContableArbol::Deshojar ( tiporama *rama, unsigned int nivel, bool superiores, bool *deshojada )
 // {
-//     _depura ( "BcPlanContableArbol::Deshojar", 0 );
+//     blDebug ( "BcPlanContableArbol::Deshojar", 0 );
 //
 //     unsigned int nivelhoja = rama->hoja->codigo.length();
 //     if ( hojaactiva >= rama->hoja->codigo ) {
@@ -438,13 +438,13 @@ bool BcPlanContableArbol::deshoja ( unsigned int nivel, bool superiores )
 //         } // end if
 //     } // end if
 //
-//     _depura ( "END BcPlanContableArbol::Deshojar", 0 );
+//     blDebug ( "END BcPlanContableArbol::Deshojar", 0 );
 // }
 
 
 void BcPlanContableArbol::Deshojar ( tiporama *rama, unsigned int nivel, bool superiores, bool *deshojada )
 {
-    _depura ( "BcPlanContableArbol::Deshojar", 0 );
+    blDebug ( "BcPlanContableArbol::Deshojar", 0 );
 
     unsigned int nivelhoja = rama->hoja->codigo.length();
     if ( hojaactiva && hojaactiva->codigo >= rama->hoja->codigo ) {
@@ -488,7 +488,7 @@ void BcPlanContableArbol::Deshojar ( tiporama *rama, unsigned int nivel, bool su
         } // end if
     } // end if
 
-    _depura ( "END BcPlanContableArbol::Deshojar", 0 );
+    blDebug ( "END BcPlanContableArbol::Deshojar", 0 );
 }
 
 
@@ -499,7 +499,7 @@ void BcPlanContableArbol::Deshojar ( tiporama *rama, unsigned int nivel, bool su
 **/
 QString BcPlanContableArbol::hojaActual ( QString valor )
 {
-    _depura ( "BcPlanContableArbol::hojaActual", 0 );
+    blDebug ( "BcPlanContableArbol::hojaActual", 0 );
 
     QString resultado;
     if ( valor == "saldoant" )
@@ -523,9 +523,9 @@ QString BcPlanContableArbol::hojaActual ( QString valor )
     else if ( valor == "idcuenta" )
         resultado.setNum ( hoja->idcuenta );
     else
-        _depura ( "Campo " + valor + " no encontrado en la hoja del arbol", 2 );
+        blDebug ( "Campo " + valor + " no encontrado en la hoja del arbol", 2 );
 
-    _depura ( "END BcPlanContableArbol::hojaActual", 0 );
+    blDebug ( "END BcPlanContableArbol::hojaActual", 0 );
     return resultado;
 }
 
@@ -538,7 +538,7 @@ QString BcPlanContableArbol::hojaActual ( QString valor )
 **/
 bool BcPlanContableArbol::irHoja ( QString codigo, unsigned int nivel )
 {
-    _depura ( "BcPlanContableArbol::irHoja", 0 );
+    blDebug ( "BcPlanContableArbol::irHoja", 0 );
 
     inicia();
     while ( deshoja ( nivel, true ) && hojaActual ( "codigo" ) != codigo );
@@ -548,7 +548,7 @@ bool BcPlanContableArbol::irHoja ( QString codigo, unsigned int nivel )
         return false;
     } // end if
 
-    _depura ( "END BcPlanContableArbol::irHoja", 0 );
+    blDebug ( "END BcPlanContableArbol::irHoja", 0 );
 }
 
 
@@ -559,7 +559,7 @@ bool BcPlanContableArbol::irHoja ( QString codigo, unsigned int nivel )
 **/
 QString BcPlanContableArbol::codigoCuentaMayor ( unsigned int nivel )
 {
-    _depura ( "BcPlanContableArbol::codigoCuentaMayor", 0 );
+    blDebug ( "BcPlanContableArbol::codigoCuentaMayor", 0 );
 
     QString codigo;
 
@@ -567,7 +567,7 @@ QString BcPlanContableArbol::codigoCuentaMayor ( unsigned int nivel )
     while ( deshoja ( nivel, true ) );
     codigo = hojaActual ( "codigo" );
 
-    _depura ( "END BcPlanContableArbol::codigoCuentaMayor", 0 );
+    blDebug ( "END BcPlanContableArbol::codigoCuentaMayor", 0 );
     return codigo;
 }
 
@@ -580,7 +580,7 @@ QString BcPlanContableArbol::codigoCuentaMayor ( unsigned int nivel )
 **/
 QString BcPlanContableArbol::hijoMayor ( QString cuenta, unsigned int nivel )
 {
-    _depura ( "BcPlanContableArbol::hijoMayor", 0 );
+    blDebug ( "BcPlanContableArbol::hijoMayor", 0 );
 
     QString codigohoja, codigohijo = cuenta;
 
@@ -591,6 +591,6 @@ QString BcPlanContableArbol::hijoMayor ( QString cuenta, unsigned int nivel )
             codigohijo = codigohoja;
     }
 
-    _depura ( "BcPlanContableArbol::hijoMayor", 0 );
+    blDebug ( "BcPlanContableArbol::hijoMayor", 0 );
     return codigohijo;
 }

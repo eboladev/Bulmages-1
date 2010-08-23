@@ -41,7 +41,7 @@ int g_minLenAlias = 0;
 int entryPoint ( BfBulmaFact *bges )
 {
 
-    _depura ( "Punto de entrada del plugin de alias\n", 0 );
+    blDebug ( "Punto de entrada del plugin de alias\n", 0 );
 
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale ( LC_ALL, "" );
@@ -101,7 +101,7 @@ bool posibleAlias ( QString alias, BlMainCompany *eb )
 **/
 int ArticuloView_ArticuloView ( ArticuloView *art )
 {
-    _depura ( "ArticuloView_ArticuloView", 0 );
+    blDebug ( "ArticuloView_ArticuloView", 0 );
 
     /// Agregamos el subformulario de validaciones.
     BfSubForm *l = new BfSubForm ( art );
@@ -119,7 +119,7 @@ int ArticuloView_ArticuloView ( ArticuloView *art )
 
     art->mui_tab->addTab ( l, "Alias" );
 
-    _depura ( "END ArticuloView_ArticuloView", 0 );
+    blDebug ( "END ArticuloView_ArticuloView", 0 );
     return 0;
 }
 
@@ -131,12 +131,12 @@ int ArticuloView_ArticuloView ( ArticuloView *art )
 **/
 int ArticuloView_cargar ( ArticuloView *art )
 {
-    _depura ( "ArticuloView_cargar", 0 );
+    blDebug ( "ArticuloView_cargar", 0 );
     BfSubForm *l = art->findChild<BfSubForm *> ( "lalias" );
     if ( l ) {
         l->cargar ( "SELECT * FROM alias WHERE idarticulo = " + art->dbValue ( "idarticulo" ) );
     } // end if
-    _depura ( "END ArticuloView_cargar", 0 );
+    blDebug ( "END ArticuloView_cargar", 0 );
     return 0;
 }
 
@@ -149,7 +149,7 @@ int ArticuloView_cargar ( ArticuloView *art )
 **/
 int ArticuloView_guardar_post ( ArticuloView *art )
 {
-    _depura ( "ArticuloView_guardar_post", 0 );
+    blDebug ( "ArticuloView_guardar_post", 0 );
     try {
         BfSubForm *l = art->findChild<BfSubForm *> ( "lalias" );
         l->setColumnValue ( "idarticulo", art->dbValue ( "idarticulo" ) );
@@ -157,7 +157,7 @@ int ArticuloView_guardar_post ( ArticuloView *art )
         invalidaEstadAlias();
         return 0;
     } catch ( ... ) {
-        _depura ( "Hubo un error al guardar los alias", 2 );
+        blDebug ( "Hubo un error al guardar los alias", 2 );
         return 0;
     }
 }
@@ -199,11 +199,11 @@ int Busqueda_on_m_inputBusqueda_textChanged ( BlSearchWidget *busc )
 
 int BfBuscarArticuloDelegate_textChanged_Post ( BfBuscarArticuloDelegate *baDel )
 {
-    _depura ( "BfBuscarArticuloDelegate_textChanged_Post", 0 );
+    blDebug ( "BfBuscarArticuloDelegate_textChanged_Post", 0 );
 
     bool encontrado = FALSE;
     if ( posibleAlias ( baDel->entrada(), baDel->mainCompany() ) ) {
-        _depura ( "possible Alias ", 0, baDel->entrada() );
+        blDebug ( "possible Alias ", 0, baDel->entrada() );
         QString SQLQuery = "SELECT codigocompletoarticulo,nomarticulo,cadalias FROM alias LEFT JOIN articulo ON alias.idarticulo = articulo.idarticulo WHERE cadalias ~=~ $1";
         QString valors[1] = {baDel->entrada() };
         BlDbRecordSet *cur = baDel->mainCompany() ->loadQuery ( SQLQuery, 1, valors );
@@ -219,7 +219,7 @@ int BfBuscarArticuloDelegate_textChanged_Post ( BfBuscarArticuloDelegate *baDel 
         }
         delete cur;
     }
-    _depura ( "END BfBuscarArticuloDelegate_textChanged_Post", 0 );
+    blDebug ( "END BfBuscarArticuloDelegate_textChanged_Post", 0 );
 
     if ( encontrado ) {
         return -1;
@@ -231,11 +231,11 @@ int BfBuscarArticuloDelegate_textChanged_Post ( BfBuscarArticuloDelegate *baDel 
 
 int BfSubForm_on_mui_list_editFinished ( BfSubForm *sf )
 {
-    _depura ( "BfSubForm_on_mui_list_editFinished", 0 );
+    blDebug ( "BfSubForm_on_mui_list_editFinished", 0 );
     BlDbSubFormField *camp = sf->m_campoactual;
     if  ( camp->nomcampo() == "codigocompletoarticulo" ) {
       if ( posibleAlias ( camp->text(), sf->mainCompany() ) ) {
-        _depura ( "possible Alias ", 0, camp->text() );
+        blDebug ( "possible Alias ", 0, camp->text() );
         QString SQLQuery = "SELECT codigocompletoarticulo FROM alias LEFT JOIN articulo ON alias.idarticulo = articulo.idarticulo WHERE cadalias ~=~ $1";
         QString valors[1] = { camp->text() };
         BlDbRecordSet *cur = sf->mainCompany() ->loadQuery ( SQLQuery, 1, valors );
@@ -245,7 +245,7 @@ int BfSubForm_on_mui_list_editFinished ( BfSubForm *sf )
         delete cur;
       }
     }
-    _depura ( "END BfSubForm_on_mui_list_editFinished", 0 );
+    blDebug ( "END BfSubForm_on_mui_list_editFinished", 0 );
 
     return 0;
 
@@ -258,7 +258,7 @@ int BfSubForm_on_mui_list_editFinished ( BfSubForm *sf )
 
 int BlSubForm_editFinished ( BlSubForm *sub )
 {
-    _depura ( "pluginbf_alias::BlSubForm_editFinished", 0 );
+    blDebug ( "pluginbf_alias::BlSubForm_editFinished", 0 );
     if ( sub->m_campoactual->nomcampo() == "codigocompletoarticulo" ) {
       QString val = sub->m_campoactual->text();
         QString valors[1] = {val};
@@ -283,16 +283,16 @@ int BlSubForm_editFinished ( BlSubForm *sub )
            } // end if possible alias
         } // end if és codi d'article complet
         delete cur;
-	_depura ( "END pluginbf_alias::BlSubForm_editFinished", 0 );
+	blDebug ( "END pluginbf_alias::BlSubForm_editFinished", 0 );
 	return 1;
     } // end if és buscador d'article
-    _depura ( "END pluginbf_alias::BlSubForm_editFinished", 0 );
+    blDebug ( "END pluginbf_alias::BlSubForm_editFinished", 0 );
     return 0;
 }
 
 
 int BlDbCompleterComboBox_textChanged (BlDbCompleterComboBox *bl) {
-  _depura("BlDbCompleterComboBox_textChanged", 0);
+  blDebug("BlDbCompleterComboBox_textChanged", 0);
 
         if ( bl->m_entrada.size() >= 3 && bl->m_tabla == "articulo") {
            // no se si es el autoComplete o què però em criden a
@@ -336,13 +336,13 @@ int BlDbCompleterComboBox_textChanged (BlDbCompleterComboBox *bl) {
                   } // end while
                   delete bl->m_cursorcombo;
                 }
-           _depura("END BlDbCompleterComboBox_textChanged", 0);
+           blDebug("END BlDbCompleterComboBox_textChanged", 0);
 
 	   return 1;
            } //end if te .- 
 
         } // end if
-  _depura("END BlDbCompleterComboBox_textChanged", 0);
+  blDebug("END BlDbCompleterComboBox_textChanged", 0);
 
     return 0;
 }

@@ -42,7 +42,7 @@ ClientSync *g_bud = NULL;
 **/
 int entryPoint ( BtBulmaTPV *tpv )
 {
-    _depura ( "pluginbt_clientsync::entryPoint", 0 );
+    blDebug ( "pluginbt_clientsync::entryPoint", 0 );
 
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale(LC_ALL, "");
@@ -62,7 +62,7 @@ int entryPoint ( BtBulmaTPV *tpv )
 
     g_doc1->show();
 
-    _depura ( "END pluginbt_clientsync::entryPoint", 0 );
+    blDebug ( "END pluginbt_clientsync::entryPoint", 0 );
     
     return 0;
 }
@@ -73,23 +73,23 @@ int entryPoint ( BtBulmaTPV *tpv )
 **/
 int exitPoint ( BtBulmaTPV *tpv )
 {
-    _depura ( "pluginbt_clientsync::exitPoint", 0 );
+    blDebug ( "pluginbt_clientsync::exitPoint", 0 );
     
     delete g_doc1;
     
-    _depura ( "END pluginbt_clientsync::exitPoint", 0 );
+    blDebug ( "END pluginbt_clientsync::exitPoint", 0 );
     
     return 0;
 }
 
 int BtCompany_createMainWindows_Post ( BtCompany *etpv )
 {
-    _depura ( "pluginbt_clientsync::BtCompany_createMainWindows_Post", 0 );
+    blDebug ( "pluginbt_clientsync::BtCompany_createMainWindows_Post", 0 );
     
     g_bud =  new ClientSync ( etpv, g_doc1 );
     g_doc1->setWidget ( ( QWidget * ) g_bud );
     
-    _depura ( "END pluginbt_clientsync::BtCompany_createMainWindows_Post", 0 );
+    blDebug ( "END pluginbt_clientsync::BtCompany_createMainWindows_Post", 0 );
     
     return 0;
 }

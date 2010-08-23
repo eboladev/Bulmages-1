@@ -29,10 +29,10 @@
 BcBuscarCanal::BcBuscarCanal ( QWidget *parent )
         : BlComboBox ( parent )
 {
-    _depura ( "BcBuscarCanal::BcBuscarCanal", 0 );
+    blDebug ( "BcBuscarCanal::BcBuscarCanal", 0 );
     m_cursorcombo = NULL;
     connect ( this, SIGNAL ( activated ( int ) ), this, SLOT ( m_activated ( int ) ) );
-    _depura ( "END BcBuscarCanal::BcBuscarCanal", 0 );
+    blDebug ( "END BcBuscarCanal::BcBuscarCanal", 0 );
 }
 
 
@@ -41,8 +41,8 @@ BcBuscarCanal::BcBuscarCanal ( QWidget *parent )
 **/
 BcBuscarCanal::~BcBuscarCanal()
 {
-    _depura ( "BcBuscarCanal::~BcBuscarCanal", 0 );
-    _depura ( "END BcBuscarCanal::~BcBuscarCanal", 0 );
+    blDebug ( "BcBuscarCanal::~BcBuscarCanal", 0 );
+    blDebug ( "END BcBuscarCanal::~BcBuscarCanal", 0 );
 }
 
 
@@ -52,7 +52,7 @@ BcBuscarCanal::~BcBuscarCanal()
 **/
 void BcBuscarCanal::setidcanal ( QString idcanal )
 {
-    _depura ( "BcBuscarCanal::setidcanal", 0, idcanal );
+    blDebug ( "BcBuscarCanal::setidcanal", 0, idcanal );
     if ( m_cursorcombo != NULL ) {
         delete m_cursorcombo;
     } // end if
@@ -70,7 +70,7 @@ void BcBuscarCanal::setidcanal ( QString idcanal )
         m_cursorcombo->nextRecord();
     } //end while
     setCurrentIndex ( i1 );
-    _depura ( "END BcBuscarCanal::setidcanal", 0, idcanal );
+    blDebug ( "END BcBuscarCanal::setidcanal", 0, idcanal );
 }
 
 
@@ -80,9 +80,9 @@ void BcBuscarCanal::setidcanal ( QString idcanal )
 **/
 void BcBuscarCanal::setFieldValue ( QString idcanal )
 {
-    _depura ( "BcBuscarCanal::setFieldValue", 0 );
+    blDebug ( "BcBuscarCanal::setFieldValue", 0 );
     setidcanal ( idcanal );
-    _depura ( "END BcBuscarCanal::setFieldValue", 0 );
+    blDebug ( "END BcBuscarCanal::setFieldValue", 0 );
 }
 
 
@@ -92,13 +92,13 @@ void BcBuscarCanal::setFieldValue ( QString idcanal )
 **/
 void BcBuscarCanal::m_activated ( int index )
 {
-    _depura ( "BcBuscarCanal::m_activated", 0 );
+    blDebug ( "BcBuscarCanal::m_activated", 0 );
     if ( index > 0 ) {
         emit ( valueChanged ( m_cursorcombo->valor ( "idcanal", index - 1 ) ) );
     } else {
         emit ( valueChanged ( "" ) );
     } // end if
-    _depura ( "END BcBuscarCanal::m_activated", 0 );
+    blDebug ( "END BcBuscarCanal::m_activated", 0 );
 }
 
 
@@ -108,14 +108,14 @@ void BcBuscarCanal::m_activated ( int index )
 **/
 QString BcBuscarCanal::idcanal()
 {
-    _depura ( "BcBuscarCanal::idcanal", 0 );
+    blDebug ( "BcBuscarCanal::idcanal", 0 );
     int index = currentIndex();
     if ( index > 0 ) {
         return ( m_cursorcombo->valor ( "idcanal", index - 1 ) );
     } else {
         return "";
     } // end if
-    _depura ( "END BcBuscarCanal::idcanal", 0 );
+    blDebug ( "END BcBuscarCanal::idcanal", 0 );
 }
 
 
@@ -140,9 +140,9 @@ QString BcBuscarCanal::fieldValue()
 BcBuscarCanalDelegate::BcBuscarCanalDelegate ( QWidget *parent )
         : BlComboBox ( parent )
 {
-    _depura ( "BcBuscarCanalDelegate::BcBuscarCanalDelegate", 10 );
+    blDebug ( "BcBuscarCanalDelegate::BcBuscarCanalDelegate", 10 );
     setEditable ( false );
-    _depura ( "END BcBuscarCanalDelegate::BcBuscarCanalDelegate", 0 );
+    blDebug ( "END BcBuscarCanalDelegate::BcBuscarCanalDelegate", 0 );
 }
 
 
@@ -152,8 +152,8 @@ BcBuscarCanalDelegate::BcBuscarCanalDelegate ( QWidget *parent )
 **/
 BcBuscarCanalDelegate::~BcBuscarCanalDelegate()
 {
-    _depura ( "BcBuscarCanalDelegate::~BcBuscarCanalDelegate", 10 );
-    _depura ( "END BcBuscarCanalDelegate::~BcBuscarCanalDelegate", 0 );
+    blDebug ( "BcBuscarCanalDelegate::~BcBuscarCanalDelegate", 10 );
+    blDebug ( "END BcBuscarCanalDelegate::~BcBuscarCanalDelegate", 0 );
 }
 
 
@@ -167,7 +167,7 @@ BcBuscarCanalDelegate::~BcBuscarCanalDelegate()
 **/
 void BcBuscarCanalDelegate::set ( const QString &codigo )
 {
-    _depura ( "BcBuscarCanalDelegate::set", 0 );
+    blDebug ( "BcBuscarCanalDelegate::set", 0 );
     int index = 0;
 
     m_cursorcombo = mainCompany() ->loadQuery ( "SELECT nombre FROM canal ORDER BY nombre" );
@@ -186,6 +186,6 @@ void BcBuscarCanalDelegate::set ( const QString &codigo )
     setEditText ( codigo );
     setCurrentIndex ( index );
 
-    _depura ( "END BcBuscarCanalDelegate::set", 0 );
+    blDebug ( "END BcBuscarCanalDelegate::set", 0 );
 }
 

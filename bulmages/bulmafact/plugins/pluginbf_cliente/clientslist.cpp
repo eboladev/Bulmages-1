@@ -41,7 +41,7 @@
 ClientsList::ClientsList ( BfCompany *comp, QWidget *parent, Qt::WFlags flag, edmode editmode )
         : BlFormList ( comp, parent, flag, editmode ), BlImportExport ( comp )
 {
-    _depura ( "ClientsList::ClientsList", 0 );
+    blDebug ( "ClientsList::ClientsList", 0 );
     setupUi ( this );
 
     /// Disparamos los plugins.
@@ -70,7 +70,7 @@ ClientsList::ClientsList ( BfCompany *comp, QWidget *parent, Qt::WFlags flag, ed
     presentar();
     /// Hacemos el tratamiento de los permisos que desabilita botones en caso de no haber suficientes permisos.
     trataPermisos ( "cliente" );
-    _depura ( "END ClientsList::ClientsList", 0 );
+    blDebug ( "END ClientsList::ClientsList", 0 );
 }
 
 
@@ -78,8 +78,8 @@ ClientsList::ClientsList ( BfCompany *comp, QWidget *parent, Qt::WFlags flag, ed
 */
 ClientsList::~ClientsList()
 {
-    _depura ( "ClientsList::~ClientsList", 0 );
-    _depura ( "END ClientsList::~ClientsList", 0 );
+    blDebug ( "ClientsList::~ClientsList", 0 );
+    blDebug ( "END ClientsList::~ClientsList", 0 );
 }
 
 
@@ -88,9 +88,9 @@ ClientsList::~ClientsList()
 /// \TODO: Mejorar el sistema de filtrado incluyendo una funcion de generar Filtro.
 void ClientsList::presentar()
 {
-    _depura ( "ClientsList::presenta", 0 );
+    blDebug ( "ClientsList::presenta", 0 );
     mui_list->cargar ( "SELECT * FROM cliente WHERE 1=1 " + generaFiltro() );
-    _depura ( "END ClientsList::presenta", 0 );
+    blDebug ( "END ClientsList::presenta", 0 );
 }
 
 /** Metodo auxiliar que crea la clausula WHERE del query de carga  \ref presenta()
@@ -100,7 +100,7 @@ void ClientsList::presentar()
 **/
 const QString ClientsList::generaFiltro()
 {
-    _depura ( "ClientsList::generaFiltro", 0 );
+    blDebug ( "ClientsList::generaFiltro", 0 );
     /// Tratamiento de los filtros.
     QString filtro = "";
     if ( m_filtro->text() != "" ) {
@@ -115,7 +115,7 @@ const QString ClientsList::generaFiltro()
         filtro += " AND idcliente IN (SELECT DISTINCT idcliente FROM albaran WHERE procesadoalbaran = FALSE)";
     } // end if
     
-    _depura ( "END ClientsList::generaFiltro", 0 );
+    blDebug ( "END ClientsList::generaFiltro", 0 );
     return ( filtro );
 }
 
@@ -128,7 +128,7 @@ const QString ClientsList::generaFiltro()
 */
 void ClientsList::editar ( int row )
 {
-    _depura ( "ClientsList::editar", 0 );
+    blDebug ( "ClientsList::editar", 0 );
     mdb_idcliente = mui_list->dbValue ( "idcliente", row );
     mdb_cifcliente = mui_list->dbValue ( "cifcliente", row );
     mdb_nomcliente = mui_list->dbValue ( "nomcliente", row );
@@ -143,7 +143,7 @@ void ClientsList::editar ( int row )
     } else {
         emit ( selected ( mdb_idcliente ) );
     } // end if
-    _depura ( "END ClientsList::editar", 0 );
+    blDebug ( "END ClientsList::editar", 0 );
 }
 
 
@@ -152,9 +152,9 @@ void ClientsList::editar ( int row )
 */
 void ClientsList::imprimir()
 {
-    _depura ( "ClientsList::on_mui_imprimir_clicked", 0 );
+    blDebug ( "ClientsList::on_mui_imprimir_clicked", 0 );
     mui_list->imprimirPDF ( _ ( "Listado de Clientes" ) );
-    _depura ( "ClientsList::on_mui_imprimir_clicked", 0 );
+    blDebug ( "ClientsList::on_mui_imprimir_clicked", 0 );
 }
 
 
@@ -165,7 +165,7 @@ void ClientsList::imprimir()
 */
 void ClientsList::borrar()
 {
-    _depura ( "ClientsList::on_mui_borrar_clicked", 0 );
+    blDebug ( "ClientsList::on_mui_borrar_clicked", 0 );
     try {
         QString idcliente = mui_list->dbValue ( "idcliente" );
         ClienteView *cli = new ClienteView ( ( BfCompany * ) mainCompany(), 0 ) ;
@@ -179,7 +179,7 @@ void ClientsList::borrar()
     } catch ( ... ) {
         mensajeInfo ( _ ( "Error al borrar un cliente" ) );
     } // end try
-    _depura ( "END:ClientsList::on_mui_borrar_clicked", 0 );
+    blDebug ( "END:ClientsList::on_mui_borrar_clicked", 0 );
 }
 
 
@@ -189,7 +189,7 @@ void ClientsList::borrar()
 */
 void ClientsList::on_mui_exportar_clicked()
 {
-    _depura ( "ClientsList::on_mui_exportar_clicked", 0 );
+    blDebug ( "ClientsList::on_mui_exportar_clicked", 0 );
     QFile filexml ( QFileDialog::getSaveFileName (
                         this,
                         _ ( "Elija el archivo" ),
@@ -199,9 +199,9 @@ void ClientsList::on_mui_exportar_clicked()
         bulmafact2XML ( filexml, IMPORT_CLIENTES );
         filexml.close();
     } else {
-        _depura ( "ERROR AL ABRIR EL ARCHIVO", 2 );
+        blDebug ( "ERROR AL ABRIR EL ARCHIVO", 2 );
     } // end if
-    _depura ( "END ClientsList::on_mui_exportar_clicked", 0 );
+    blDebug ( "END ClientsList::on_mui_exportar_clicked", 0 );
 }
 
 
@@ -212,7 +212,7 @@ void ClientsList::on_mui_exportar_clicked()
 */
 void ClientsList::on_mui_importar_clicked()
 {
-    _depura ( "ClientsList::on_mui_importar_clicked", 0 );
+    blDebug ( "ClientsList::on_mui_importar_clicked", 0 );
     QFile filexml ( QFileDialog::getOpenFileName (
                         this,
                         _ ( "Elija el archivo" ),
@@ -224,9 +224,9 @@ void ClientsList::on_mui_importar_clicked()
         filexml.close();
         presentar();
     } else {
-        _depura ( "ERROR AL ABRIR EL ARCHIVO\n", 2 );
+        blDebug ( "ERROR AL ABRIR EL ARCHIVO\n", 2 );
     } // end if
-    _depura ( "END ClientsList::on_mui_importar_clicked", 0 );
+    blDebug ( "END ClientsList::on_mui_importar_clicked", 0 );
 }
 
 
@@ -256,7 +256,7 @@ QString ClientsList::cifclient()
 **/
 void ClientsList::crear()
 {
-    _depura ( "ClientsList::crear", 0 );
+    blDebug ( "ClientsList::crear", 0 );
     if (modoConsulta()) {
 	/// El modo consulta funciona algo diferente
         QDialog *diag = new QDialog ( 0 );
@@ -308,7 +308,7 @@ void ClientsList::crear()
 	bud->desactivaDocumentos();
 	bud->mui_cifcliente->setFocus ( Qt::OtherFocusReason );
     } // end if
-    _depura ( "END ClientsList::crear", 0 );
+    blDebug ( "END ClientsList::crear", 0 );
 
 }
 
@@ -318,7 +318,7 @@ void ClientsList::crear()
 */
 void ClientsList::submenu ( const QPoint & )
 {
-    _depura ( "ClientsList::submenu", 0 );
+    blDebug ( "ClientsList::submenu", 0 );
     int a = mui_list->currentRow();
     if ( a < 0 )
         return;
@@ -331,7 +331,7 @@ void ClientsList::submenu ( const QPoint & )
     if ( opcion == edit )
         on_mui_editar_clicked();
     delete popup;
-    _depura ( "END ClientsList::submenu", 0 );
+    blDebug ( "END ClientsList::submenu", 0 );
 }
 
 /// =============================================================================
@@ -342,7 +342,7 @@ void ClientsList::submenu ( const QPoint & )
 */
 ClienteListSubform::ClienteListSubform ( QWidget *parent, const char * ) : BfSubForm ( parent )
 {
-    _depura ( "ClienteListSubform::ClienteListSubform", 0 );
+    blDebug ( "ClienteListSubform::ClienteListSubform", 0 );
     setDbTableName ( "cliente" );
     setDbFieldId ( "idcliente" );
     addSubFormHeader ( "idcliente", BlDbField::DbInt, BlDbField::DbNotNull | BlDbField::DbPrimaryKey, BlSubFormHeader::DbHideView | BlSubFormHeader::DbNoWrite, _ ( "ID cliente" ) );
@@ -365,11 +365,11 @@ ClienteListSubform::ClienteListSubform ( QWidget *parent, const char * ) : BfSub
     setInsert ( FALSE );
     setDelete ( FALSE );
     setSortingEnabled ( TRUE );
-    _depura ( "END ClienteListSubform::ClienteListSubform", 0 );
+    blDebug ( "END ClienteListSubform::ClienteListSubform", 0 );
 }
 
 ClienteListSubform::~ClienteListSubform()
 {
-    _depura ( "ClienteListSubform::~ClienteListSubform", 0 );
-    _depura ( "END ClienteListSubform::~ClienteListSubform", 0 );
+    blDebug ( "ClienteListSubform::~ClienteListSubform", 0 );
+    blDebug ( "END ClienteListSubform::~ClienteListSubform", 0 );
 }

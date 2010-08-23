@@ -9,8 +9,8 @@
 **/
 plugin_tc_articulos::plugin_tc_articulos()
 {
-    _depura ( "plugin_tc_articulos::plugin_tc_articulos", 0 );
-    _depura ( "END plugin_tc_articulos::plugin_tc_articulos", 0 );
+    blDebug ( "plugin_tc_articulos::plugin_tc_articulos", 0 );
+    blDebug ( "END plugin_tc_articulos::plugin_tc_articulos", 0 );
 }
 
 
@@ -20,8 +20,8 @@ plugin_tc_articulos::plugin_tc_articulos()
 
 plugin_tc_articulos::~plugin_tc_articulos()
 {
-    _depura ( "plugin_tc_articulos::~plugin_tc_articulos", 0 );
-    _depura ( "END plugin_tc_articulos::~plugin_tc_articulos", 0 );
+    blDebug ( "plugin_tc_articulos::~plugin_tc_articulos", 0 );
+    blDebug ( "END plugin_tc_articulos::~plugin_tc_articulos", 0 );
 }
 
 
@@ -31,11 +31,11 @@ plugin_tc_articulos::~plugin_tc_articulos()
 
 void plugin_tc_articulos::tallas()
 {
-    _depura ( "plugin_tc_articulos::tallas", 0 );
+    blDebug ( "plugin_tc_articulos::tallas", 0 );
     ListTallasView *tallas = new ListTallasView ( m_bulmafact->company(), 0 );
     m_bulmafact->company()->pWorkspace()->addWindow ( tallas );
     tallas->show();
-    _depura ( "END plugin_tc_articulos::tallas", 0 );
+    blDebug ( "END plugin_tc_articulos::tallas", 0 );
 }
 
 
@@ -45,11 +45,11 @@ void plugin_tc_articulos::tallas()
 
 void plugin_tc_articulos::colores()
 {
-    _depura ( "plugin_tc_articulos::colores", 0 );
+    blDebug ( "plugin_tc_articulos::colores", 0 );
     ListColoresView *colores = new ListColoresView ( m_bulmafact->company(), 0 );
     m_bulmafact->company()->pWorkspace()->addWindow ( colores );
     colores->show();
-    _depura ( "END plugin_tc_articulos::colores", 0 );
+    blDebug ( "END plugin_tc_articulos::colores", 0 );
 }
 
 
@@ -60,7 +60,7 @@ void plugin_tc_articulos::colores()
 
 void plugin_tc_articulos::inicializa ( BfBulmaFact *bges )
 {
-    _depura ( "plugin_tc_articulos::inicializa", 0 );
+    blDebug ( "plugin_tc_articulos::inicializa", 0 );
 
     m_bulmafact = bges;
     QMenu *pPluginMenuTallasColores;
@@ -88,7 +88,7 @@ void plugin_tc_articulos::inicializa ( BfBulmaFact *bges )
 
     /// A&ntilde;adimos la nueva opci&oacute;n al men&uacute; principal del programa.
     bges->menuBar() ->insertMenu ( bges->menuVentana->menuAction(), pPluginMenuTallasColores );
-    _depura ( "END plugin_tc_articulos::inicializa", 0 );
+    blDebug ( "END plugin_tc_articulos::inicializa", 0 );
 }
 
 

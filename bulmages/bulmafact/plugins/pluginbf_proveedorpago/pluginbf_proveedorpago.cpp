@@ -35,8 +35,8 @@ PagosList *g_pagosList = NULL;
 **/
 mypluginpag::mypluginpag()
 {
-    _depura ( "mypluginpag::mypluginpag", 0 );
-    _depura ( "END mypluginpag::mypluginpag", 0 );
+    blDebug ( "mypluginpag::mypluginpag", 0 );
+    blDebug ( "END mypluginpag::mypluginpag", 0 );
 }
 
 
@@ -45,8 +45,8 @@ mypluginpag::mypluginpag()
 **/
 mypluginpag::~mypluginpag()
 {
-    _depura ( "mypluginpag::~mypluginpag", 0 );
-    _depura ( "END mypluginpag::~mypluginpag", 0 );
+    blDebug ( "mypluginpag::~mypluginpag", 0 );
+    blDebug ( "END mypluginpag::~mypluginpag", 0 );
 }
 
 
@@ -55,12 +55,12 @@ mypluginpag::~mypluginpag()
 **/
 void mypluginpag::elslot()
 {
-    _depura ( "mypluginpag::elslot", 0 );
+    blDebug ( "mypluginpag::elslot", 0 );
     if ( g_pagosList ) {
         g_pagosList->hide();
         g_pagosList->show();
     }// end if
-    _depura ( "END mypluginpag::elslot", 0 );
+    blDebug ( "END mypluginpag::elslot", 0 );
 }
 
 ///
@@ -68,11 +68,11 @@ void mypluginpag::elslot()
 **/
 void mypluginpag::elslot1()
 {
-    _depura ( "mypluginpag::elslot1", 0 );
+    blDebug ( "mypluginpag::elslot1", 0 );
     PagoView * bud = new PagoView ( ( BfCompany * ) mainCompany(), NULL );
     mainCompany() ->m_pWorkspace->addWindow ( bud );
     bud->show();
-    _depura ( "END mypluginpag::elslot1", 0 );
+    blDebug ( "END mypluginpag::elslot1", 0 );
 }
 
 
@@ -83,7 +83,7 @@ void mypluginpag::elslot1()
 **/
 void mypluginpag::inicializa ( BfBulmaFact *bges )
 {
-    _depura ( "mypluginpag::inicializa", 0 );
+    blDebug ( "mypluginpag::inicializa", 0 );
 
     if ( bges->company()->hasTablePrivilege ( "pago", "SELECT" ) ) {
         /// Miramos si existe un menu Compras
@@ -111,7 +111,7 @@ void mypluginpag::inicializa ( BfBulmaFact *bges )
 
 
     }// end if
-    _depura ( "END mypluginpag::inicializa", 0 );
+    blDebug ( "END mypluginpag::inicializa", 0 );
 }
 
 
@@ -122,7 +122,7 @@ void mypluginpag::inicializa ( BfBulmaFact *bges )
 **/
 int entryPoint ( BfBulmaFact *bges )
 {
-    _depura ( "Punto de Entrada del plugin de Tarifas\n", 0 );
+    blDebug ( "Punto de Entrada del plugin de Tarifas\n", 0 );
 
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale ( LC_ALL, "" );
@@ -193,7 +193,7 @@ int BfBuscarReferencia_on_mui_abrirtodo_clicked_Post ( BfBuscarReferencia *ref )
 **/
 int FacturaProveedorView_FacturaProveedorView ( FacturaProveedorView *l )
 {
-    _depura ( "PluginPagos_FacturaProveedorView_FacturaProveedorView", 0 );
+    blDebug ( "PluginPagos_FacturaProveedorView_FacturaProveedorView", 0 );
     GenPagoQToolButton *mui_exporta_efactura2 = new GenPagoQToolButton ( l, l->mui_plugbotones );
 
     QHBoxLayout *m_hboxLayout1 = l->mui_plugbotones->findChild<QHBoxLayout *> ( "hboxLayout1" );
@@ -205,7 +205,7 @@ int FacturaProveedorView_FacturaProveedorView ( FacturaProveedorView *l )
         m_hboxLayout1->setObjectName ( QString::fromUtf8 ( "hboxLayout1" ) );
     }// end if
     m_hboxLayout1->addWidget ( mui_exporta_efactura2 );
-    _depura ( "END PluginPagos_FacturaProveedorView_FacturaProveedorView", 0 );
+    blDebug ( "END PluginPagos_FacturaProveedorView_FacturaProveedorView", 0 );
     return 0;
 }
 
@@ -216,7 +216,7 @@ int FacturaProveedorView_FacturaProveedorView ( FacturaProveedorView *l )
 **/
 int AlbaranProveedorView_AlbaranProveedorView ( AlbaranProveedorView *l )
 {
-    _depura ( "PluginPagos_AlbaranProveedorView_AlbaranProveedorView", 0 );
+    blDebug ( "PluginPagos_AlbaranProveedorView_AlbaranProveedorView", 0 );
     GenPagoQToolButton *mui_exporta_efactura2 = new GenPagoQToolButton ( l, l->mui_plugbotones );
 
     QHBoxLayout *m_hboxLayout1 = l->mui_plugbotones->findChild<QHBoxLayout *> ( "hboxLayout1" );
@@ -228,7 +228,7 @@ int AlbaranProveedorView_AlbaranProveedorView ( AlbaranProveedorView *l )
         m_hboxLayout1->setObjectName ( QString::fromUtf8 ( "hboxLayout1" ) );
     }// end if
     m_hboxLayout1->addWidget ( mui_exporta_efactura2 );
-    _depura ( "END PluginPagos_AlbaranProveedorView_AlbaranProveedorView", 0 );
+    blDebug ( "END PluginPagos_AlbaranProveedorView_AlbaranProveedorView", 0 );
     return 0;
 }
 
@@ -239,7 +239,7 @@ int AlbaranProveedorView_AlbaranProveedorView ( AlbaranProveedorView *l )
 **/
 int PedidoProveedorView_PedidoProveedorView ( PedidoProveedorView *l )
 {
-    _depura ( "PluginPagos_PedidoProveedorView_PedidoProveedorView", 0 );
+    blDebug ( "PluginPagos_PedidoProveedorView_PedidoProveedorView", 0 );
     GenPagoQToolButton *mui_exporta_efactura2 = new GenPagoQToolButton ( l, l->mui_plugbotones );
 
     QHBoxLayout *m_hboxLayout1 = l->mui_plugbotones->findChild<QHBoxLayout *> ( "hboxLayout1" );
@@ -251,7 +251,7 @@ int PedidoProveedorView_PedidoProveedorView ( PedidoProveedorView *l )
         m_hboxLayout1->setObjectName ( QString::fromUtf8 ( "hboxLayout1" ) );
     }// end if
     m_hboxLayout1->addWidget ( mui_exporta_efactura2 );
-    _depura ( "END PluginPagos_PedidoProveedorView_PedidoProveedorView", 0 );
+    blDebug ( "END PluginPagos_PedidoProveedorView_PedidoProveedorView", 0 );
     return 0;
 }
 

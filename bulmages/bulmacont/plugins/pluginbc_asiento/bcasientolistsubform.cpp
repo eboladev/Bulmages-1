@@ -30,7 +30,7 @@
 BcAsientoListSubForm::BcAsientoListSubForm ( QWidget *parent, const char * )
         : BcSubForm ( parent )
 {
-    _depura ( "BcAsientoListSubForm::BcAsientoListSubForm", 0 );
+    blDebug ( "BcAsientoListSubForm::BcAsientoListSubForm", 0 );
     setDbTableName ( "asiento" );
     setFileConfig ( "BcAsientoListSubForm" );
     setDbFieldId ( "idasiento" );
@@ -51,7 +51,7 @@ BcAsientoListSubForm::BcAsientoListSubForm ( QWidget *parent, const char * )
     connect ( this, SIGNAL ( pintaMenu ( QMenu * ) ), this, SLOT ( s_pintaMenu ( QMenu * ) ) );
     connect ( this, SIGNAL ( trataMenu ( QAction * ) ), this, SLOT ( s_trataMenu ( QAction * ) ) );
 
-    _depura ( "END BcAsientoListSubForm::BcAsientoListSubForm", 0 );
+    blDebug ( "END BcAsientoListSubForm::BcAsientoListSubForm", 0 );
 }
 
 
@@ -60,8 +60,8 @@ BcAsientoListSubForm::BcAsientoListSubForm ( QWidget *parent, const char * )
 **/
 BcAsientoListSubForm::~BcAsientoListSubForm()
 {
-    _depura ( "BcAsientoListSubForm::~BcAsientoListSubForm", 0 );
-    _depura ( "END BcAsientoListSubForm::~BcAsientoListSubForm", 0 );
+    blDebug ( "BcAsientoListSubForm::~BcAsientoListSubForm", 0 );
+    blDebug ( "END BcAsientoListSubForm::~BcAsientoListSubForm", 0 );
 }
 
 
@@ -72,14 +72,14 @@ BcAsientoListSubForm::~BcAsientoListSubForm()
 **/
 void BcAsientoListSubForm::s_pintaMenu ( QMenu *menu )
 {
-    _depura ( "BcAsientoSubForm::s_pintaMenu", 0 );
+    blDebug ( "BcAsientoSubForm::s_pintaMenu", 0 );
     menu->addSeparator();
     menu->addAction ( _ ( "Mostrar asiento" ) );
     menu->addSeparator();
     menu->addAction ( _ ( "Mostrar extracto (dia)" ) );
     menu->addAction ( _ ( "Mostrar extracto (mes)" ) );
     menu->addAction ( _ ( "Mostrar extracto (ano)" ) );
-    _depura ( "BcAsientoSubForm::s_pintaMenu", 0 );
+    blDebug ( "BcAsientoSubForm::s_pintaMenu", 0 );
 }
 
 /// Slot que trata la activacion de un elemento en el menu contextual.
@@ -89,7 +89,7 @@ void BcAsientoListSubForm::s_pintaMenu ( QMenu *menu )
 **/
 void BcAsientoListSubForm::s_trataMenu ( QAction *action )
 {
-    _depura ( "BcAsientoSubForm::s_trataMenu", 0 );
+    blDebug ( "BcAsientoSubForm::s_trataMenu", 0 );
     if ( !action ) return;
     if ( action->text() == _ ( "Mostrar asiento" ) )
       
@@ -102,7 +102,7 @@ void BcAsientoListSubForm::s_trataMenu ( QAction *action )
     if ( action->text() == _ ( "Mostrar extracto (ano)" ) )
         boton_extracto1 ( 2 );
 
-    _depura ( "END BcAsientoSubForm::s_trataMenu", 0 );
+    blDebug ( "END BcAsientoSubForm::s_trataMenu", 0 );
 }
 
 ///
@@ -113,7 +113,7 @@ void BcAsientoListSubForm::s_trataMenu ( QAction *action )
 /*
 void BcAsientoListSubForm::contextMenuEvent ( QContextMenuEvent * )
 {
-    _depura ( "BcAsientoListSubForm::contextMenuEvent", 0 );
+    blDebug ( "BcAsientoListSubForm::contextMenuEvent", 0 );
     QAction *del = NULL;
     int row = currentRow();
     if ( row < 0 ) {
@@ -171,6 +171,6 @@ void BcAsientoListSubForm::contextMenuEvent ( QContextMenuEvent * )
         showConfig();
     } // end if
     delete popup;
-    _depura ( "END BcAsientoListSubForm::contextMenuEvent", 0 );
+    blDebug ( "END BcAsientoListSubForm::contextMenuEvent", 0 );
 }
 */

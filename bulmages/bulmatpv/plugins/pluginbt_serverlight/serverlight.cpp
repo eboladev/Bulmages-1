@@ -42,7 +42,7 @@
 
 ServerLight::ServerLight ( BtCompany *emp ) : BlWidget (emp, 0)
 {
-    _depura ( "ServerLight::ServerLight", 0 );
+    blDebug ( "ServerLight::ServerLight", 0 );
 
     m_tcpServer = new QTcpServer(this);
     if (!m_tcpServer->listen(QHostAddress::Any, 11637)) {
@@ -53,21 +53,21 @@ ServerLight::ServerLight ( BtCompany *emp ) : BlWidget (emp, 0)
     connect(m_tcpServer, SIGNAL(newConnection()), this, SLOT(conection()));
 
     g_plugins->lanza ( "ServerLight_ServerLight_Post", this );
-    _depura ( "END ServerLight::ServerLight", 0 );
+    blDebug ( "END ServerLight::ServerLight", 0 );
 }
 
 
 ServerLight::~ServerLight()
 {
-    _depura ( "ServerLight::~ServerLight", 0 );
-    _depura ( "END ServerLight::~ServerLight", 0 );
+    blDebug ( "ServerLight::~ServerLight", 0 );
+    blDebug ( "END ServerLight::~ServerLight", 0 );
 }
 
 
 void ServerLight::conection()
 {
     fprintf(stderr, "conexion\n");
-    _depura ( "ServerLight::conection", 0 );
+    blDebug ( "ServerLight::conection", 0 );
     QTcpSocket *socket = m_tcpServer->nextPendingConnection();
     QHostAddress conectadofrom = socket->peerAddress();
     m_listaSockets.append(socket);
@@ -76,12 +76,12 @@ void ServerLight::conection()
     //fprintf(stderr, texto.toAscii());
 
     connect (socket, SIGNAL(readyRead()), this, SLOT(readyRead()));
-    _depura ( "END ServerLight::conection", 0 );
+    blDebug ( "END ServerLight::conection", 0 );
 }
 
 
 void ServerLight::readyRead() {
-    _depura ( "ServerLight::readyRead", 0 );
+    blDebug ( "ServerLight::readyRead", 0 );
     static QByteArray array = "";
     QTcpSocket *socket = (QTcpSocket *) sender();
     array += socket->readAll();
@@ -111,12 +111,12 @@ void ServerLight::readyRead() {
 
     } // end if
 
-    _depura ( "END ServerLight::readyRead", 0 );
+    blDebug ( "END ServerLight::readyRead", 0 );
 }
 
 
 void ServerLight::send(const QString & texto) {
-    _depura ( "ServerLight::send", 0 );
+    blDebug ( "ServerLight::send", 0 );
     //fprintf(stderr, "ENVIANDO\n");
     QTcpSocket *socket;
     /// Redirigimos el mensaje a todos los clientes conectados al servidor.
@@ -130,7 +130,7 @@ void ServerLight::send(const QString & texto) {
 	} // end if
     } // end for
     //fprintf(stderr, "FIN ENVIO");
-    _depura ( "END ServerLight::send", 0 );
+    blDebug ( "END ServerLight::send", 0 );
 }
 
 

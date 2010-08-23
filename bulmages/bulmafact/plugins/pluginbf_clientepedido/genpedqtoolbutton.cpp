@@ -47,10 +47,10 @@
 **/
 GenPedQToolButton::GenPedQToolButton ( QWidget *fac , QWidget *parent ) : QToolButton ( parent )
 {
-    _depura ( "GenPedQToolButton::GenPedQToolButton", 0 );
+    blDebug ( "GenPedQToolButton::GenPedQToolButton", 0 );
     m_object = fac;
     setBoton();
-    _depura ( "END GenPedQToolButton::GenPedQToolButton", 0 );
+    blDebug ( "END GenPedQToolButton::GenPedQToolButton", 0 );
 }
 
 
@@ -59,8 +59,8 @@ GenPedQToolButton::GenPedQToolButton ( QWidget *fac , QWidget *parent ) : QToolB
 **/
 GenPedQToolButton::~GenPedQToolButton()
 {
-    _depura ( "GenPedQToolButton::~GenPedQToolButton", 0 );
-    _depura ( "END GenPedQToolButton::~GenPedQToolButton", 0 );
+    blDebug ( "GenPedQToolButton::~GenPedQToolButton", 0 );
+    blDebug ( "END GenPedQToolButton::~GenPedQToolButton", 0 );
 }
 
 
@@ -69,7 +69,7 @@ GenPedQToolButton::~GenPedQToolButton()
 **/
 void GenPedQToolButton::setBoton()
 {
-    _depura ( "GenPedQToolButton::setBoton", 0 );
+    blDebug ( "GenPedQToolButton::setBoton", 0 );
     connect ( this, SIGNAL ( clicked() ), this, SLOT ( click() ) );
     setObjectName ( QString::fromUtf8 ( "exporta" ) );
     setStatusTip ( "Generar Pedido" );
@@ -79,7 +79,7 @@ void GenPedQToolButton::setBoton()
     setIcon ( QIcon ( QString::fromUtf8 ( ":/Images/client-quote-to-order.png" ) ) );
     setIconSize ( QSize ( 32, 32 ) );
     setContentsMargins ( 0, 0, 0, 0 );
-    _depura ( "END GenPedQToolButton::setBoton", 0 );
+    blDebug ( "END GenPedQToolButton::setBoton", 0 );
 }
 
 
@@ -88,14 +88,14 @@ void GenPedQToolButton::setBoton()
 **/
 void GenPedQToolButton::click()
 {
-    _depura ( "ImpQToolButton::click", 0 );
+    blDebug ( "ImpQToolButton::click", 0 );
 
     if ( m_object->objectName() == "PresupuestoClienteBase" ) {
         generarFactura1();
     }// end if
 
 
-    _depura ( "END ImpQToolButton::click", 0 );
+    blDebug ( "END ImpQToolButton::click", 0 );
 }
 
 
@@ -110,7 +110,7 @@ void GenPedQToolButton::click()
 **/
 void GenPedQToolButton::generarFactura1()
 {
-    _depura ( "GenPedQToolButton::generarFactura1", 0 );
+    blDebug ( "GenPedQToolButton::generarFactura1", 0 );
 
     PresupuestoView *fpv = ( PresupuestoView * ) m_object;
 
@@ -223,7 +223,7 @@ void GenPedQToolButton::generarFactura1()
     } // end try
 
 
-    _depura ( "END GenPedQToolButton::generarFactura1", 0 );
+    blDebug ( "END GenPedQToolButton::generarFactura1", 0 );
 }
 
 

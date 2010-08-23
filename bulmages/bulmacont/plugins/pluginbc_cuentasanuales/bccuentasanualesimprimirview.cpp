@@ -45,10 +45,10 @@
 BcCuentasAnualesImprimirView::BcCuentasAnualesImprimirView ( BcCompany  *emp, QWidget *parent )
         : QDialog ( parent ), BlMainCompanyPointer ( emp )
 {
-    _depura ( "BcCuentasAnualesImprimirView::BcCuentasAnualesImprimirView", 0 );
+    blDebug ( "BcCuentasAnualesImprimirView::BcCuentasAnualesImprimirView", 0 );
     setupUi ( this );
     fichero = NULL;
-    _depura ( "END BcCuentasAnualesImprimirView::BcCuentasAnualesImprimirView", 0 );
+    blDebug ( "END BcCuentasAnualesImprimirView::BcCuentasAnualesImprimirView", 0 );
 
 }
 
@@ -58,8 +58,8 @@ BcCuentasAnualesImprimirView::BcCuentasAnualesImprimirView ( BcCompany  *emp, QW
 **/
 BcCuentasAnualesImprimirView::~BcCuentasAnualesImprimirView()
 {
-    _depura ( "BcCuentasAnualesImprimirView::~BcCuentasAnualesImprimirView", 0 );
-    _depura ( "END BcCuentasAnualesImprimirView::~BcCuentasAnualesImprimirView", 0 );
+    blDebug ( "BcCuentasAnualesImprimirView::~BcCuentasAnualesImprimirView", 0 );
+    blDebug ( "END BcCuentasAnualesImprimirView::~BcCuentasAnualesImprimirView", 0 );
 }
 
 
@@ -80,7 +80,7 @@ BcCuentasAnualesImprimirView::~BcCuentasAnualesImprimirView()
 **/
 void BcCuentasAnualesImprimirView::on_mui_aceptar_clicked()
 {
-    _depura ( "BcCuentasAnualesImprimirView::on_mui_aceptar_clicked", 0 );
+    blDebug ( "BcCuentasAnualesImprimirView::on_mui_aceptar_clicked", 0 );
     QString finicial = mui_fechainicial->text();
     QString ffinal = mui_fechafinal->text();
     QString finicial1 = mui_fechainicial1->text();
@@ -245,7 +245,7 @@ void BcCuentasAnualesImprimirView::on_mui_aceptar_clicked()
 
     /// Una vez que tenemos el objeto bien generado y a punto pasamos a la generacion del PDF.
     imprimir ( finicial, ffinal, finicial1, ffinal1 );
-    _depura ( "END BcCuentasAnualesImprimirView::on_mui_aceptar_clicked", 0 );
+    blDebug ( "END BcCuentasAnualesImprimirView::on_mui_aceptar_clicked", 0 );
 }
 
 
@@ -257,7 +257,7 @@ void BcCuentasAnualesImprimirView::on_mui_aceptar_clicked()
 **/
 bool BcCuentasAnualesImprimirView::procesaFormula ( const QDomNode &formula )
 {
-    _depura ( "BcCuentasAnualesImprimirView::procesaFormula", 0 );
+    blDebug ( "BcCuentasAnualesImprimirView::procesaFormula", 0 );
     QDomElement valor = formula.firstChildElement ( "VALORACT" );
     //
     QString valors = valor.toElement().text();
@@ -287,7 +287,7 @@ bool BcCuentasAnualesImprimirView::procesaFormula ( const QDomNode &formula )
     QString tvaloracts = tvaloract.toQString();
     QString tvalorants = tvalorant.toQString();
     agregaValores ( formula, tvaloracts, tvalorants );
-    _depura ( "END BcCuentasAnualesImprimirView::procesaFormula", 0 );
+    blDebug ( "END BcCuentasAnualesImprimirView::procesaFormula", 0 );
     return TRUE;
 }
 
@@ -301,7 +301,7 @@ bool BcCuentasAnualesImprimirView::procesaFormula ( const QDomNode &formula )
 **/
 bool BcCuentasAnualesImprimirView::procesaOperador ( const QDomNode &operador )
 {
-    _depura ( "BcCuentasAnualesImprimirView::procesaOperador", 0, operador.toElement().text() );
+    blDebug ( "BcCuentasAnualesImprimirView::procesaOperador", 0, operador.toElement().text() );
     QDomElement valor = operador.firstChildElement ( "VALORACT" );
     if ( !valor.isNull() )
         return TRUE;
@@ -328,7 +328,7 @@ bool BcCuentasAnualesImprimirView::procesaOperador ( const QDomNode &operador )
             } // end if
         } // end for
     } // end if
-    _depura ( "BcCuentasAnualesImprimirView::procesaOperador", 0 );
+    blDebug ( "BcCuentasAnualesImprimirView::procesaOperador", 0 );
     return FALSE;
 }
 
@@ -342,14 +342,14 @@ bool BcCuentasAnualesImprimirView::procesaOperador ( const QDomNode &operador )
 **/
 bool BcCuentasAnualesImprimirView::valorItem ( const QDomNode &formula, QString &valoract, QString &valorant )
 {
-    _depura ( "BcCuentasAnualesImprimirView::valorItem", 0, formula.toElement().tagName() );
+    blDebug ( "BcCuentasAnualesImprimirView::valorItem", 0, formula.toElement().tagName() );
     QDomElement valor = formula.namedItem ( "VALORACT" ).toElement();
     if ( valor.isNull() ) {
         return FALSE;
     } // end if
     valoract = valor.text();
     valorant = formula.namedItem ( "VALORANT" ).toElement().text();
-    _depura ( "END BcCuentasAnualesImprimirView::valorItem", 0, formula.toElement().text() + "--" + valoract );
+    blDebug ( "END BcCuentasAnualesImprimirView::valorItem", 0, formula.toElement().text() + "--" + valoract );
     return TRUE;
 }
 
@@ -362,7 +362,7 @@ bool BcCuentasAnualesImprimirView::valorItem ( const QDomNode &formula, QString 
 **/
 void BcCuentasAnualesImprimirView::agregaValores ( const QDomNode &nodo, const QString &valoract, const QString &valorant )
 {
-    _depura ( "BcCuentasAnualesImprimirView::agregaValores", 0, nodo.toElement().tagName() + " " + valoract );
+    blDebug ( "BcCuentasAnualesImprimirView::agregaValores", 0, nodo.toElement().tagName() + " " + valoract );
     QDomElement enodo = nodo.toElement();
     BlFixed fvaloract ( valoract );
     BlFixed fvalorant ( valorant );
@@ -419,7 +419,7 @@ void BcCuentasAnualesImprimirView::agregaValores ( const QDomNode &nodo, const Q
     QDomNode n = nodo;
     enodo.appendChild ( valoract1 );
     enodo.appendChild ( valorant1 );
-    _depura ( "END BcCuentasAnualesImprimirView::agregaValores", 0 );
+    blDebug ( "END BcCuentasAnualesImprimirView::agregaValores", 0 );
 }
 
 
@@ -432,7 +432,7 @@ void BcCuentasAnualesImprimirView::agregaValores ( const QDomNode &nodo, const Q
 **/
 void BcCuentasAnualesImprimirView::imprimir ( QString periodo1finicial, QString periodo1ffinal, QString periodo2finicial, QString periodo2ffinal )
 {
-    _depura ( "BcCuentasAnualesImprimirView::imprimir", 0 );
+    blDebug ( "BcCuentasAnualesImprimirView::imprimir", 0 );
     QString archivo = g_confpr->valor ( CONF_DIR_OPENREPORTS ) + "canuales.rml";
     QString archivod = g_confpr->valor ( CONF_DIR_USER ) + "canuales.rml";
     QString archivologo = g_confpr->valor ( CONF_DIR_OPENREPORTS ) + "logo.jpg";
@@ -514,7 +514,7 @@ void BcCuentasAnualesImprimirView::imprimir ( QString periodo1finicial, QString 
     } // end if
 
     invocaPDF ( "canuales" );
-    _depura ( "END BcCuentasAnualesImprimirView::imprimir", 0 );
+    blDebug ( "END BcCuentasAnualesImprimirView::imprimir", 0 );
 }
 
 
@@ -525,7 +525,7 @@ void BcCuentasAnualesImprimirView::imprimir ( QString periodo1finicial, QString 
 **/
 void BcCuentasAnualesImprimirView::setidbalance ( QString id )
 {
-    _depura ( "BcCuentasAnualesImprimirView::setidbalance", 0 );
+    blDebug ( "BcCuentasAnualesImprimirView::setidbalance", 0 );
     QFile f ( id );
     if ( !f.open ( QIODevice::ReadOnly ) )
         return;
@@ -535,6 +535,6 @@ void BcCuentasAnualesImprimirView::setidbalance ( QString id )
     } // end if
     f.close();
     m_nomBalance->setText ( id );
-    _depura ( "END BcCuentasAnualesImprimirView::setidbalance", 0 );
+    blDebug ( "END BcCuentasAnualesImprimirView::setidbalance", 0 );
 }
 

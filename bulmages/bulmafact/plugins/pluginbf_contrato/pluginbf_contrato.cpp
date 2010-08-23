@@ -37,8 +37,8 @@
 **/
 myplugincont::myplugincont()
 {
-    _depura ( "myplugincont::myplugincont", 0 );
-    _depura ( "END myplugincont::myplugincont", 0 );
+    blDebug ( "myplugincont::myplugincont", 0 );
+    blDebug ( "END myplugincont::myplugincont", 0 );
 }
 
 ///
@@ -46,8 +46,8 @@ myplugincont::myplugincont()
 **/
 myplugincont::~myplugincont()
 {
-    _depura ( "myplugincont::~myplugincont", 0 );
-    _depura ( "END myplugincont::~myplugincont", 0 );
+    blDebug ( "myplugincont::~myplugincont", 0 );
+    blDebug ( "END myplugincont::~myplugincont", 0 );
 }
 
 
@@ -56,11 +56,11 @@ myplugincont::~myplugincont()
 **/
 void myplugincont::elslot()
 {
-    _depura ( "myplugincont::elslot", 0 );
+    blDebug ( "myplugincont::elslot", 0 );
     ContratosList *vehiculoview = new ContratosList ( ( BfCompany * ) m_dbConnection );
     m_bulmafact->workspace() ->addWindow ( vehiculoview );
     vehiculoview->show();
-    _depura ( "END myplugincont::elslot", 0 );
+    blDebug ( "END myplugincont::elslot", 0 );
 }
 
 
@@ -70,7 +70,7 @@ void myplugincont::elslot()
 **/
 void myplugincont::inicializa ( BfBulmaFact *bges )
 {
-    _depura ( "myplugincont::inicializa", 0 );
+    blDebug ( "myplugincont::inicializa", 0 );
     /// Creamos el men&uacute;.
     m_dbConnection = bges->company();
     m_bulmafact = bges;
@@ -86,7 +86,7 @@ void myplugincont::inicializa ( BfBulmaFact *bges )
     pPluginMenu->addSeparator();
     pPluginMenu->addAction ( accion );
     bges->Listados->addAction ( accion );
-    _depura ( "END myplugincont::inicializa", 0 );
+    blDebug ( "END myplugincont::inicializa", 0 );
 }
 
 
@@ -97,7 +97,7 @@ void myplugincont::inicializa ( BfBulmaFact *bges )
 **/
 int entryPoint ( BfBulmaFact *bges )
 {
-    _depura ( "entryPoint", 0, "Punto de Entrada del plugin PluginBf_Contrato" );
+    blDebug ( "entryPoint", 0, "Punto de Entrada del plugin PluginBf_Contrato" );
 
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale ( LC_ALL, "" );
@@ -105,7 +105,7 @@ int entryPoint ( BfBulmaFact *bges )
 
     myplugincont *plug = new myplugincont();
     plug->inicializa ( bges );
-    _depura ( "END entryPoint", 0, "Punto de Entrada del plugin PluginBf_Contrato" );
+    blDebug ( "END entryPoint", 0, "Punto de Entrada del plugin PluginBf_Contrato" );
     return 0;
 }
 
@@ -117,13 +117,13 @@ int entryPoint ( BfBulmaFact *bges )
 **/
 int ClienteView_ClienteView ( ClienteView *art )
 {
-    _depura ( "ClienteView_ClienteView", 0 );
+    blDebug ( "ClienteView_ClienteView", 0 );
     /// Para que funcione bien debemos iniciar con BL_SELECT_MODE y luego pasar a BL_EDIT_MODE ya que si no se hace un meteWindow y no es deseable.
     ContratosList *l = new ContratosList ( ( ( BfCompany * ) art->mainCompany() ), art, 0, BL_SELECT_MODE );
     l->setObjectName ( QString::fromUtf8 ( "ccontratoslist" ) );
     art->mui_tab->addTab ( l, "Contratos" );
     l->setModoEdicion();
-    _depura ( "END ClienteView_ClienteView", 0 );
+    blDebug ( "END ClienteView_ClienteView", 0 );
     return 0;
 }
 
@@ -135,7 +135,7 @@ int ClienteView_ClienteView ( ClienteView *art )
 **/
 int BlForm_cargar ( BlForm *fich )
 {
-    _depura ( "BlForm_cargar", 0 );
+    blDebug ( "BlForm_cargar", 0 );
     ContratosList *l = fich->findChild<ContratosList *> ( "ccontratoslist" );
     if ( l ) {
         l->mui_idcliente->setId ( fich->dbValue ( "idcliente" ) );

@@ -62,7 +62,7 @@ void BtLabel::mousePressEvent ( QMouseEvent * e ) {
 
 ArtGraficosDb::ArtGraficosDb ( BlMainCompany *emp, QWidget *parent ) : BlWidget ( emp, parent )
 {
-    _depura ( "ArtGraficosDb::ArtGraficosDb", 0 );
+    blDebug ( "ArtGraficosDb::ArtGraficosDb", 0 );
 
     setupUi ( this );
     setObjectName ( "ArtGraficosDb" );
@@ -81,12 +81,12 @@ ArtGraficosDb::ArtGraficosDb ( BlMainCompany *emp, QWidget *parent ) : BlWidget 
     // Muestra la primera pantalla creada
     muestraPantalla ( 0 );
 
-    _depura ( "END ArtGraficosDb::ArtGraficosDb", 0 );
+    blDebug ( "END ArtGraficosDb::ArtGraficosDb", 0 );
 }
 
 ArtGraficosDb::~ArtGraficosDb()
 {
-    _depura ( "ArtGraficosDb::~ArtGraficosDb", 0 );
+    blDebug ( "ArtGraficosDb::~ArtGraficosDb", 0 );
 
     /// Libera la memoria de las pantallas.
     for ( int i = 0; i < m_pantallas.count(); i++ ) {
@@ -94,19 +94,19 @@ ArtGraficosDb::~ArtGraficosDb()
         delete pantalla;
     } // end for
 
-    _depura ( "END ArtGraficosDb::~ArtGraficosDb", 0 );
+    blDebug ( "END ArtGraficosDb::~ArtGraficosDb", 0 );
 }
 
 void ArtGraficosDb::cellClicked ( int row, int column )
 {
-    _depura ( "ArtGraficosDb::cellClicked", 0 );
+    blDebug ( "ArtGraficosDb::cellClicked", 0 );
 
     // Obtenemos el item de la celda
     BtLabel *label = ( BtLabel * ) ( (QScrollArea *) mui_stack->currentWidget())->widget();
 
     // Celda vacia. No hacemos nada.
     if ( label == NULL ) {
-	_depura ( "END ArtGraficosDb::cellClicked", 0, "Celda Vacia" );
+	blDebug ( "END ArtGraficosDb::cellClicked", 0, "Celda Vacia" );
         return;
     }
 
@@ -121,12 +121,12 @@ void ArtGraficosDb::cellClicked ( int row, int column )
         ( ( BtCompany * ) mainCompany() )->ticketActual()->insertarArticuloCodigoNL ( codigo );
     } // end if
 
-    _depura ( "END ArtGraficosDb::cellClicked", 0 );
+    blDebug ( "END ArtGraficosDb::cellClicked", 0 );
 }
 
 void ArtGraficosDb::on_mui_botonSiguiente_pressed()
 {
-    _depura ( "ArtGraficosDb::on_mui_botonSiguiente_pressed", 0 );
+    blDebug ( "ArtGraficosDb::on_mui_botonSiguiente_pressed", 0 );
 
 
 
@@ -138,12 +138,12 @@ void ArtGraficosDb::on_mui_botonSiguiente_pressed()
     setUpdatesEnabled ( false );
 */
 
-    _depura ( "END ArtGraficosDb::on_mui_botonSiguiente_pressed", 0 );
+    blDebug ( "END ArtGraficosDb::on_mui_botonSiguiente_pressed", 0 );
 }
 
 void ArtGraficosDb::on_mui_botonAnterior_pressed()
 {
-    _depura ( "ArtGraficosDb::on_mui_botonAnterior_pressed", 0 );
+    blDebug ( "ArtGraficosDb::on_mui_botonAnterior_pressed", 0 );
 
     muestraPantalla ( m_pantallaActual - 1 );
 
@@ -152,13 +152,13 @@ void ArtGraficosDb::on_mui_botonAnterior_pressed()
     repaint();
     setUpdatesEnabled ( false );
 */
-    _depura ( "END ArtGraficosDb::on_mui_botonAnterior_pressed", 0 );
+    blDebug ( "END ArtGraficosDb::on_mui_botonAnterior_pressed", 0 );
 }
 
 
 void ArtGraficosDb::muestraPantalla ( int numPantalla )
 {
-    _depura ( "ArtGraficosDb::muestraPantalla", 0 );
+    blDebug ( "ArtGraficosDb::muestraPantalla", 0 );
 
 
     /// Hace un bucle sinfin de pantallas.
@@ -177,13 +177,13 @@ void ArtGraficosDb::muestraPantalla ( int numPantalla )
     mui_stack->setCurrentIndex ( numPantalla );
     mui_titulo->setText ( pantalla->accessibleName() );
 
-    _depura ( "END ArtGraficosDb::muestraPantalla", 0 );
+    blDebug ( "END ArtGraficosDb::muestraPantalla", 0 );
 }
 
 
 void ArtGraficosDb::renderPantallas ()
 {
-    _depura ( "ArtGraficosDb::renderPantallas", 0 );
+    blDebug ( "ArtGraficosDb::renderPantallas", 0 );
 
     m_numPantallas = m_listfamilias.count();
 
@@ -308,12 +308,12 @@ void ArtGraficosDb::renderPantallas ()
 //        mui_stack->setSizePolicy( QSizePolicy() );
 
     } // end for
-    _depura ( "END ArtGraficosDb::muestraPantalla", 0 );
+    blDebug ( "END ArtGraficosDb::muestraPantalla", 0 );
 }
 
 void ArtGraficosDb::ponPantallas()
 {
-    _depura ( "ArtGraficosDb::ponPantallas", 0 );
+    blDebug ( "ArtGraficosDb::ponPantallas", 0 );
 
     /// Creo el Widget que estara ubicado en el dockwidget que se ha creado en pluginbt_articulograficodb.cpp
     QWidget *widget = new QWidget;
@@ -375,12 +375,12 @@ void ArtGraficosDb::ponPantallas()
 
     g_pantallas->setWidget ( widget );
 
-    _depura ( "END ArtGraficosDb::ponPantallas", 0 );
+    blDebug ( "END ArtGraficosDb::ponPantallas", 0 );
 }
 
 void ArtGraficosDb::pulsadoBoton()
 {
-    _depura ( "ArtGraficosDb::pulsadoBoton", 0 );
+    blDebug ( "ArtGraficosDb::pulsadoBoton", 0 );
 
 
     muestraPantalla ( sender()->objectName().toInt() );
@@ -391,5 +391,5 @@ void ArtGraficosDb::pulsadoBoton()
     setUpdatesEnabled ( false );
 */
 
-    _depura ( "END ArtGraficosDb::pulsadoBoton", 0 );
+    blDebug ( "END ArtGraficosDb::pulsadoBoton", 0 );
 }

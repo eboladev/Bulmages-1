@@ -31,7 +31,7 @@
 **/
 BcAboutView::BcAboutView ( QWidget *parent ) : QDialog ( parent )
 {
-    _depura ( "BcAboutView::BcAboutView", 0 );
+    blDebug ( "BcAboutView::BcAboutView", 0 );
 
     QString str_sobre;
     QString str_autores;
@@ -426,7 +426,7 @@ BcAboutView::BcAboutView ( QWidget *parent ) : QDialog ( parent )
     textEdit_autores->setHtml ( str_autores );
     textEdit_soporte->setHtml ( str_soporte );
     textEdit_licencia->setHtml ( str_licencia );
-    _depura ( "END BcAboutView::BcAboutView", 0 );
+    blDebug ( "END BcAboutView::BcAboutView", 0 );
 }
 
 
@@ -437,8 +437,8 @@ BcAboutView::BcAboutView ( QWidget *parent ) : QDialog ( parent )
 **/
 BcAboutView::~BcAboutView()
 {
-    _depura ( "BcAboutView::~BcAboutView", 0 );
-    _depura ( "END BcAboutView::~BcAboutView", 0 );
+    blDebug ( "BcAboutView::~BcAboutView", 0 );
+    blDebug ( "END BcAboutView::~BcAboutView", 0 );
 }
 
 
@@ -447,8 +447,8 @@ BcAboutView::~BcAboutView()
 **/
 void BcAboutView::on_mui_aceptar_clicked()
 {
-    _depura ( "BcAboutView::on_mui_aceptar_clicked", 0 );
+    blDebug ( "BcAboutView::on_mui_aceptar_clicked", 0 );
     close();
-    _depura ( "END BcAboutView::on_mui_aceptar_clicked", 0 );
+    blDebug ( "END BcAboutView::on_mui_aceptar_clicked", 0 );
 }
 

@@ -33,8 +33,8 @@
 **/
 MyPlugSeriesFactura::MyPlugSeriesFactura()
 {
-    _depura ( "MyPlugSeriesFactura::MyPlugSeriesFactura", 0 );
-    _depura ( "END MyPlugSeriesFactura::MyPlugSeriesFactura", 0 );
+    blDebug ( "MyPlugSeriesFactura::MyPlugSeriesFactura", 0 );
+    blDebug ( "END MyPlugSeriesFactura::MyPlugSeriesFactura", 0 );
 }
 
 
@@ -43,8 +43,8 @@ MyPlugSeriesFactura::MyPlugSeriesFactura()
 **/
 MyPlugSeriesFactura::~MyPlugSeriesFactura()
 {
-    _depura ( "MyPlugSeriesFactura::~MyPlugSeriesFactura", 0 );
-    _depura ( "END MyPlugSeriesFactura::~MyPlugSeriesFactura", 0 );
+    blDebug ( "MyPlugSeriesFactura::~MyPlugSeriesFactura", 0 );
+    blDebug ( "END MyPlugSeriesFactura::~MyPlugSeriesFactura", 0 );
 }
 
 
@@ -53,11 +53,11 @@ MyPlugSeriesFactura::~MyPlugSeriesFactura()
 **/
 void MyPlugSeriesFactura::elslot1()
 {
-    _depura ( "MyPlugSeriesFactura::elslot1", 0 );
+    blDebug ( "MyPlugSeriesFactura::elslot1", 0 );
     BfSerieFacturaView * bud = new BfSerieFacturaView ( ( BfCompany * ) mainCompany(), NULL );
     mainCompany() ->m_pWorkspace->addWindow ( bud );
     bud->show();
-    _depura ( "END MyPlugSeriesFactura::elslot1", 0 );
+    blDebug ( "END MyPlugSeriesFactura::elslot1", 0 );
 }
 
 
@@ -68,7 +68,7 @@ void MyPlugSeriesFactura::elslot1()
 **/
 void MyPlugSeriesFactura::inicializa ( BfBulmaFact *bges )
 {
-    _depura ( "MyPlugSeriesFactura::inicializa", 0 );
+    blDebug ( "MyPlugSeriesFactura::inicializa", 0 );
 
     if ( bges->company()->hasTablePrivilege ( "serie_factura", "SELECT" ) ) {
 
@@ -87,7 +87,7 @@ void MyPlugSeriesFactura::inicializa ( BfBulmaFact *bges )
         connect ( seriesFactura, SIGNAL ( activated() ), this, SLOT ( elslot1() ) );
 
     }// end if
-    _depura ( "END MyPlugSeriesFactura::inicializa", 0 );
+    blDebug ( "END MyPlugSeriesFactura::inicializa", 0 );
 }
 
 
@@ -101,7 +101,7 @@ void MyPlugSeriesFactura::inicializa ( BfBulmaFact *bges )
 **/
 int entryPoint ( BfBulmaFact *bges )
 {
-    _depura ( "Punto de Entrada del plugin de Trabajadors\n", 0 );
+    blDebug ( "Punto de Entrada del plugin de Trabajadors\n", 0 );
 
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale ( LC_ALL, "" );

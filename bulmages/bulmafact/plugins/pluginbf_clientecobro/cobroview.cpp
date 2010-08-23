@@ -39,7 +39,7 @@
 CobroView::CobroView ( BfCompany *comp, QWidget *parent )
         : BfForm ( comp, parent )
 {
-    _depura ( "CobroView::CobroView", 0 );
+    blDebug ( "CobroView::CobroView", 0 );
     setAttribute ( Qt::WA_DeleteOnClose );
     try {
         setupUi ( this );
@@ -77,7 +77,7 @@ CobroView::CobroView ( BfCompany *comp, QWidget *parent )
     } catch ( ... ) {
         mensajeInfo ( _ ( "Error al crear el cobro" ), this );
     } // end try
-    _depura ( "END CobroView::CobroView", 0 );
+    blDebug ( "END CobroView::CobroView", 0 );
 }
 
 
@@ -85,8 +85,8 @@ CobroView::CobroView ( BfCompany *comp, QWidget *parent )
 */
 CobroView::~CobroView()
 {
-    _depura ( "CobroView::~CobroView", 0 );
-    _depura ( "END CobroView::~CobroView", 0 );
+    blDebug ( "CobroView::~CobroView", 0 );
+    blDebug ( "END CobroView::~CobroView", 0 );
 }
 
 int CobroView::trataTags ( QString &buff )
@@ -117,7 +117,7 @@ QString CobroView::nombrePlantilla ( void )
 
 void CobroView::imprimir()
 {
-    _depura ( "CobroView::imprimir", 0 );
+    blDebug ( "CobroView::imprimir", 0 );
     /// Comprobamos que se disponen de los datos minimos para imprimir el recibo.
     QString SQLQuery = "";
 
@@ -133,7 +133,7 @@ void CobroView::imprimir()
     } // end if
     BfForm::imprimir();
 
-    _depura ( "END CobroView::imprimir", 0 );
+    blDebug ( "END CobroView::imprimir", 0 );
 }
 
 
@@ -141,7 +141,7 @@ void CobroView::imprimir()
      con la misma referencia se procesan dichas facturas **/
 int CobroView::guardarPost()
 {
-    _depura ( "CobroView::guardarPost", 0 );
+    blDebug ( "CobroView::guardarPost", 0 );
 
     QString query1 = "SELECT COALESCE(sum (cantcobro), 0) AS totalc FROM cobro WHERE refcobro='" + dbValue ( "refcobro" ) + "'";
     BlDbRecordSet *cur1 = mainCompany()->loadQuery ( query1 );
@@ -156,7 +156,7 @@ int CobroView::guardarPost()
     } // end if
     delete cur;
     delete cur1;
-    _depura ( "END CobroView::guardarPost", 0 );
+    blDebug ( "END CobroView::guardarPost", 0 );
     return 0;
 }
 

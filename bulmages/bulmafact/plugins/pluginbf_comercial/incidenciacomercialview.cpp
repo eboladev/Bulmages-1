@@ -47,7 +47,7 @@
 IncidenciaComercialView::IncidenciaComercialView ( BfCompany *comp, QWidget *parent )
         : IncidenciaComercial ( comp, parent )
 {
-    _depura ( "IncidenciaComercialView::IncidenciaComercialView", 0 );
+    blDebug ( "IncidenciaComercialView::IncidenciaComercialView", 0 );
     setAttribute ( Qt::WA_DeleteOnClose );
     setupUi ( this );
     dialogChanges_cargaInicial();
@@ -58,7 +58,7 @@ IncidenciaComercialView::IncidenciaComercialView ( BfCompany *comp, QWidget *par
     mui_idcliente->setTableName ( "cliente" );
     mui_idcliente->m_valores["cifcliente"] = "";
     mui_idcliente->m_valores["nomcliente"] = "";
-    _depura ( "END IncidenciaComercialView::IncidenciaComercialView", 0 );
+    blDebug ( "END IncidenciaComercialView::IncidenciaComercialView", 0 );
 }
 
 
@@ -69,7 +69,7 @@ IncidenciaComercialView::IncidenciaComercialView ( BfCompany *comp, QWidget *par
 IncidenciaComercialView::IncidenciaComercialView ( QWidget *parent )
         :  IncidenciaComercial ( NULL, parent )
 {
-    _depura ( "IncidenciaComercialView::IncidenciaComercialView", 0 );
+    blDebug ( "IncidenciaComercialView::IncidenciaComercialView", 0 );
     setAttribute ( Qt::WA_DeleteOnClose );
     setupUi ( this );
     /// Usurpamos la identidad de mlist y ponemos nuestro propio widget con sus cosillas.
@@ -80,7 +80,7 @@ IncidenciaComercialView::IncidenciaComercialView ( QWidget *parent )
     mui_idcliente->setTableName ( "cliente" );
     mui_idcliente->m_valores["cifcliente"] = "";
     mui_idcliente->m_valores["nomcliente"] = "";
-    _depura ( "END IncidenciaComercialView::IncidenciaComercialView", 0 );
+    blDebug ( "END IncidenciaComercialView::IncidenciaComercialView", 0 );
 }
 
 
@@ -89,7 +89,7 @@ IncidenciaComercialView::IncidenciaComercialView ( QWidget *parent )
 **/
 IncidenciaComercialView::~IncidenciaComercialView()
 {
-    _depura ( "END IncidenciaComercialView::IncidenciaComercialView", 0 );
+    blDebug ( "END IncidenciaComercialView::IncidenciaComercialView", 0 );
 }
 
 
@@ -99,7 +99,7 @@ IncidenciaComercialView::~IncidenciaComercialView()
 **/
 void IncidenciaComercialView::closeEvent ( QCloseEvent *e )
 {
-    _depura ( "closeEvent", 0 );
+    blDebug ( "closeEvent", 0 );
     if ( dialogChanges_hayCambios() ) {
         int val = QMessageBox::warning ( this,
                                          _ ( "Guardar la incidencia" ),
@@ -118,12 +118,12 @@ void IncidenciaComercialView::closeEvent ( QCloseEvent *e )
 **/
 void IncidenciaComercialView::setMainCompany ( BfCompany *comp )
 {
-    _depura ( "IncidenciaComercialView::setcompany", 0 );
+    blDebug ( "IncidenciaComercialView::setcompany", 0 );
     BlMainCompanyPointer::setMainCompany ( comp );
     mui_idcliente->setMainCompany ( comp );
     mui_idtrabajador->setMainCompany ( comp );
     mui_idtrabajador->setId ( "0" );
-    _depura ( "END IncidenciaComercialView::setcompany", 0 );
+    blDebug ( "END IncidenciaComercialView::setcompany", 0 );
 
 }
 
@@ -134,7 +134,7 @@ void IncidenciaComercialView::setMainCompany ( BfCompany *comp )
 **/
 int IncidenciaComercialView::guardar()
 {
-    _depura ( "IncidenciaComercialView::guardar", 0 );
+    blDebug ( "IncidenciaComercialView::guardar", 0 );
     if ( mui_fechaincidenciacomercial->text() == "" )
         return 0;
     setDbValue ( "fechaincidenciacomercial", mui_fechaincidenciacomercial->text() );
@@ -145,7 +145,7 @@ int IncidenciaComercialView::guardar()
     setDbValue ( "horaincidenciacomercial", mui_horaincidenciacomercial->text() );
     setDbValue ( "refincidenciacomercial", mui_refincidenciacomercial->text() );
     int err = IncidenciaComercial::guardar();
-    _depura ( "END IncidenciaComercialView::guardar", 0 );
+    blDebug ( "END IncidenciaComercialView::guardar", 0 );
     return err;
 }
 
@@ -157,7 +157,7 @@ int IncidenciaComercialView::guardar()
 **/
 int IncidenciaComercialView::cargar ( QString id )
 {
-    _depura ( "IncidenciaComercialView::cargar", 0 );
+    blDebug ( "IncidenciaComercialView::cargar", 0 );
     int err = IncidenciaComercial::cargar ( id );
     setWindowTitle ( _ ( "Incidencia comercial" ) + " " + dbValue ( "idincidenciacomercial" ) );
     mui_fechaincidenciacomercial->setText ( dbValue ( "fechaincidenciacomercial" ) );
@@ -168,7 +168,7 @@ int IncidenciaComercialView::cargar ( QString id )
     mui_horaincidenciacomercial->setText ( dbValue ( "horaincidenciacomercial" ) );
     mui_refincidenciacomercial->setText ( dbValue ( "refincidenciacomercial" ) );
     dialogChanges_cargaInicial();
-    _depura ( "END IncidenciaComercialView::cargar", 0 );
+    blDebug ( "END IncidenciaComercialView::cargar", 0 );
     return err;
 }
 

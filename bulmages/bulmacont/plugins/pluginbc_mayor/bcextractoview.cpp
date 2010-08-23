@@ -46,7 +46,7 @@
 **/
 BcExtractoView::BcExtractoView ( BcCompany *emp, QWidget *parent, int ) : BcForm ( emp, parent )
 {
-    _depura ( "BcExtractoView::BcExtractoView", 0 );
+    blDebug ( "BcExtractoView::BcExtractoView", 0 );
     setupUi ( this );
 
     setTitleName ( _ ( "Extracto de Cuentas" ) );
@@ -101,7 +101,7 @@ BcExtractoView::BcExtractoView ( BcCompany *emp, QWidget *parent, int ) : BcForm
     connect (((BcBulmaCont *)g_main)->actionFin, SIGNAL(triggered()), this, SLOT(boton_fin()));
 
 
-    _depura ( "END BcExtractoView::BcExtractoView", 0 );
+    blDebug ( "END BcExtractoView::BcExtractoView", 0 );
 }
 
 
@@ -110,11 +110,11 @@ BcExtractoView::BcExtractoView ( BcCompany *emp, QWidget *parent, int ) : BcForm
 **/
 BcExtractoView::~BcExtractoView()
 {
-    _depura ( "BcExtractoView::~BcExtractoView", 0 );
+    blDebug ( "BcExtractoView::~BcExtractoView", 0 );
     guardar();
     delete m_cursorcta;
     mainCompany() ->sacaWindow ( this );
-    _depura ( "END BcExtractoView::~BcExtractoView", 0 );
+    blDebug ( "END BcExtractoView::~BcExtractoView", 0 );
 }
 
 
@@ -125,7 +125,7 @@ BcExtractoView::~BcExtractoView()
 **/
 void BcExtractoView::on_mui_list_cellDoubleClicked ( int, int columna )
 {
-    _depura ( "asientosview::on_mui_list_cellDoubleClicked", 0 );
+    blDebug ( "asientosview::on_mui_list_cellDoubleClicked", 0 );
 
     QString textoHeader;
     textoHeader =  mui_list->cabecera() ->at ( columna ) ->nomcampo().toAscii();
@@ -143,15 +143,15 @@ void BcExtractoView::on_mui_list_cellDoubleClicked ( int, int columna )
         asiento ->show();
         asiento ->setFocus();
     //} // end if
-    _depura ( "END asientosview::on_mui_list_cellDoubleClicked", 0 );
+    blDebug ( "END asientosview::on_mui_list_cellDoubleClicked", 0 );
 }
 
 ///
 void BcExtractoView::on_mui_configurar_clicked()
 {
-    _depura ( "BcExtractoView::on_mui_configurar_clicked", 0 );
+    blDebug ( "BcExtractoView::on_mui_configurar_clicked", 0 );
     mui_list->showConfig();
-    _depura ( "END BcExtractoView::on_mui_configurar_clicked", 0 );
+    blDebug ( "END BcExtractoView::on_mui_configurar_clicked", 0 );
 }
 
 
@@ -160,9 +160,9 @@ void BcExtractoView::on_mui_configurar_clicked()
 **/
 void BcExtractoView::on_mui_actualizar_clicked()
 {
-    _depura ( "BcExtractoView::on_mui_actualizar_clicked", 0 );
+    blDebug ( "BcExtractoView::on_mui_actualizar_clicked", 0 );
     accept();
-    _depura ( "END BcExtractoView::on_mui_actualizar_clicked", 0 );
+    blDebug ( "END BcExtractoView::on_mui_actualizar_clicked", 0 );
 }
 
 
@@ -176,7 +176,7 @@ void BcExtractoView::on_mui_actualizar_clicked()
 **/
 void BcExtractoView::accept()
 {
-    _depura ( "BcExtractoView::accept", 0 );
+    blDebug ( "BcExtractoView::accept", 0 );
     QString codinicial = m_codigoinicial->fieldValue("codigo");
     QString codfinal = m_codigofinal->fieldValue("codigo");
     QString query;
@@ -201,7 +201,7 @@ void BcExtractoView::accept()
     } // end if
     m_cursorcta = mainCompany() ->loadQuery ( query );
     presentar();
-    _depura ( "END BcExtractoView::accept", 0 );
+    blDebug ( "END BcExtractoView::accept", 0 );
 }
 
 
@@ -211,7 +211,7 @@ void BcExtractoView::accept()
 **/
 void BcExtractoView::boton_siguiente()
 {
-    _depura ( "BcExtractoView::boton_siguiente", 0 );
+    blDebug ( "BcExtractoView::boton_siguiente", 0 );
     if(mainCompany()->pWorkspace()->activeWindow() == this) {
       if ( m_cursorcta != NULL ) {
           if ( !m_cursorcta->isLastRecord() ) {
@@ -221,7 +221,7 @@ void BcExtractoView::boton_siguiente()
           } // end if
       } // end if
     } // end if
-    _depura ( "END BcExtractoView::boton_siguiente", 0 );
+    blDebug ( "END BcExtractoView::boton_siguiente", 0 );
 }
 
 
@@ -230,7 +230,7 @@ void BcExtractoView::boton_siguiente()
 **/
 void BcExtractoView::boton_anterior()
 {
-    _depura ( "BcExtractoView::boton_anterior", 0 );
+    blDebug ( "BcExtractoView::boton_anterior", 0 );
     if(mainCompany()->pWorkspace()->activeWindow() == this) {
       if ( m_cursorcta != NULL ) {
           if ( !m_cursorcta->isFirstRecord() ) {
@@ -240,7 +240,7 @@ void BcExtractoView::boton_anterior()
           } // end if
       } // end if
     } // end if
-    _depura ( "END BcExtractoView::boton_anterior", 0 );
+    blDebug ( "END BcExtractoView::boton_anterior", 0 );
 }
 
 /// Retrocede al principio de las cuentas.
@@ -248,7 +248,7 @@ void BcExtractoView::boton_anterior()
 **/
 void BcExtractoView::boton_inicio()
 {
-    _depura ( "BcExtractoView::boton_inicio", 0 );
+    blDebug ( "BcExtractoView::boton_inicio", 0 );
     if(mainCompany()->pWorkspace()->activeWindow() == this) {
       if ( m_cursorcta != NULL ) {
           guardar();
@@ -256,7 +256,7 @@ void BcExtractoView::boton_inicio()
           presentar();
       } // end if
     } // end if
-    _depura ( "END BcExtractoView::boton_inicio", 0 );
+    blDebug ( "END BcExtractoView::boton_inicio", 0 );
 }
 
 /// Avanza al final de las cuentas.
@@ -264,7 +264,7 @@ void BcExtractoView::boton_inicio()
 **/
 void BcExtractoView::boton_fin()
 {
-    _depura ( "BcExtractoView::boton_fin", 0 );
+    blDebug ( "BcExtractoView::boton_fin", 0 );
     if(mainCompany()->pWorkspace()->activeWindow() == this) {
       if ( m_cursorcta != NULL ) {
           guardar();
@@ -272,7 +272,7 @@ void BcExtractoView::boton_fin()
           presentar();
       } // end if
     } // end if
-    _depura ( "END BcExtractoView::boton_fin", 0 );
+    blDebug ( "END BcExtractoView::boton_fin", 0 );
 }
 
 
@@ -281,7 +281,7 @@ void BcExtractoView::boton_fin()
 **/
 void BcExtractoView::boton_guardar()
 {
-    _depura ( "BcExtractoView::boton_guardar", 0 );
+    blDebug ( "BcExtractoView::boton_guardar", 0 );
 /*
     QString fn = QFileDialog::getSaveFileName ( this,
                  _ ( "Guardar libro diario" ),
@@ -297,7 +297,7 @@ void BcExtractoView::boton_guardar()
         libromayor.accept();
     } // end if
 */
-    _depura ( "END BcExtractoView::boton_guardar", 0 );
+    blDebug ( "END BcExtractoView::boton_guardar", 0 );
 }
 
 
@@ -308,7 +308,7 @@ void BcExtractoView::boton_guardar()
 **/
 void BcExtractoView::vaciar()
 {
-    _depura ( "BcExtractoView::vaciar", 0 );
+    blDebug ( "BcExtractoView::vaciar", 0 );
     inicialdebe->setText ( "0" );
     inicialhaber->setText ( "0" );
     inicialsaldo->setText ( "0" );
@@ -318,7 +318,7 @@ void BcExtractoView::vaciar()
     totaldebe->setText ( "0" );
     totalhaber->setText ( "0" );
     totalsaldo->setText ( "0" );
-    _depura ( "END BcExtractoView::vaciar", 0 );
+    blDebug ( "END BcExtractoView::vaciar", 0 );
 }
 
 
@@ -327,8 +327,8 @@ void BcExtractoView::vaciar()
 **/
 void BcExtractoView::ajustes()
 {
-    _depura ( "BcExtractoView::ajustes", 0 );
-    _depura ( "END BcExtractoView::ajustes", 0 );
+    blDebug ( "BcExtractoView::ajustes", 0 );
+    blDebug ( "END BcExtractoView::ajustes", 0 );
 }
 
 
@@ -337,13 +337,13 @@ void BcExtractoView::ajustes()
 **/
 int BcExtractoView::guardar()
 {
-    _depura ( "BcExtractoView::on_mui_guardar_clicked", 0 );
+    blDebug ( "BcExtractoView::on_mui_guardar_clicked", 0 );
     if (m_tratarpunteos) {
 	if (! mui_asAbiertos->isChecked() ) 
 	    mui_list->guardar();
     } // end if
     return 0;
-    _depura ( "END BcExtractoView::on_mui_guardar_clicked", 0 );
+    blDebug ( "END BcExtractoView::on_mui_guardar_clicked", 0 );
 
 }
 
@@ -355,7 +355,7 @@ int BcExtractoView::guardar()
 **/
 void BcExtractoView::presentar()
 {
-    _depura ( "BcExtractoView::presentar", 0 );
+    blDebug ( "BcExtractoView::presentar", 0 );
 
     /// Guardamos el punteo
     guardar();
@@ -504,7 +504,7 @@ void BcExtractoView::presentar()
         if ( cursoraux ) delete cursoraux;
         return;
     } // end catch
-    _depura ( "END BcExtractoView::presentar", 0 );
+    blDebug ( "END BcExtractoView::presentar", 0 );
 }
 
 
@@ -519,12 +519,12 @@ void BcExtractoView::presentar()
 **/
 void BcExtractoView::inicializa1 ( QString codinicial, QString codfinal, QString fecha1, QString fecha2, int )
 {
-    _depura ( "BcExtractoView::inicializa1", 0 );
+    blDebug ( "BcExtractoView::inicializa1", 0 );
     m_codigoinicial->setText ( codinicial );
     m_codigofinal->setText ( codfinal );
     m_fechainicial1->setText ( blNormalizeDate ( fecha1 ).toString ( "dd/MM/yyyy" ) );
     m_fechafinal1->setText ( blNormalizeDate ( fecha2 ).toString ( "dd/MM/yyyy" ) );
-    _depura ( "END BcExtractoView::inicializa1", 0 );
+    blDebug ( "END BcExtractoView::inicializa1", 0 );
 }
 
 
@@ -535,7 +535,7 @@ void BcExtractoView::inicializa1 ( QString codinicial, QString codfinal, QString
 **/
 void BcExtractoView::on_mui_casacion_clicked()
 {
-    _depura ( "BcExtractoView::on_mui_casacion_clicked", 0 );
+    blDebug ( "BcExtractoView::on_mui_casacion_clicked", 0 );
     try {
         QString query = "SELECT * FROM apunte WHERE punteo = FALSE AND haber <> 0 AND idcuenta = " + m_cursorcta->valor ( "idcuenta" ) + " ORDER BY fecha";
         BlDbRecordSet *curshaber = mainCompany() ->loadQuery ( query );
@@ -565,7 +565,7 @@ void BcExtractoView::on_mui_casacion_clicked()
     } catch ( ... ) {
         mensajeError ( "Se produjo un error en la casacion" );
     } // end try
-    _depura ( "END BcExtractoView::on_mui_casacion_clicked", 0 );
+    blDebug ( "END BcExtractoView::on_mui_casacion_clicked", 0 );
 }
 
 
@@ -574,7 +574,7 @@ void BcExtractoView::on_mui_casacion_clicked()
 **/
 void BcExtractoView::on_mui_guardarpunteo_clicked()
 {
-    _depura ( "BcExtractoView::on_mui_guardarpunteo_clicked", 0 );
+    blDebug ( "BcExtractoView::on_mui_guardarpunteo_clicked", 0 );
 
     /// Guardamos el punteo por lo que pueda ser.
     guardar();
@@ -603,7 +603,7 @@ void BcExtractoView::on_mui_guardarpunteo_clicked()
             fclose ( mifile );
         } // end if
     } // end if
-    _depura ( "END BcExtractoView::on_mui_guardarpunteo_clicked", 0 );
+    blDebug ( "END BcExtractoView::on_mui_guardarpunteo_clicked", 0 );
 }
 
 
@@ -615,7 +615,7 @@ void BcExtractoView::on_mui_guardarpunteo_clicked()
 **/
 void BcExtractoView::on_mui_borrapunteo_clicked()
 {
-    _depura ( "BcExtractoView::on_mui_borrapunteo_clicked", 0 );
+    blDebug ( "BcExtractoView::on_mui_borrapunteo_clicked", 0 );
     try {
         int valor = QMessageBox::warning ( 0,
                                            _ ( "Borrar punteo" ),
@@ -636,7 +636,7 @@ void BcExtractoView::on_mui_borrapunteo_clicked()
     } catch ( ... ) {
         mensajeInfo ( _ ( "Se ha producido un error" ) );
     } // end try
-    _depura ( "END BcExtractoView::on_mui_borrapunteo_clicked", 0 );
+    blDebug ( "END BcExtractoView::on_mui_borrapunteo_clicked", 0 );
 }
 
 
@@ -647,7 +647,7 @@ void BcExtractoView::on_mui_borrapunteo_clicked()
     ya que en dicho caso la carga del punteo no funciona correctamente. */
 void BcExtractoView::on_mui_cargarpunteos_clicked()
 {
-    _depura ( "BcExtractoView::on_mui_cargarpunteos_clicked", 0 );
+    blDebug ( "BcExtractoView::on_mui_cargarpunteos_clicked", 0 );
     try {
         QString fn = QFileDialog::getOpenFileName ( this,
                      _ ( "Cargar punteo" ),
@@ -680,7 +680,7 @@ void BcExtractoView::on_mui_cargarpunteos_clicked()
         mensajeInfo ( "Error en la carga del punteo" );
         mainCompany()->rollback();
     } // end try
-    _depura ( "END BcExtractoView::on_mui_cargarpunteos_clicked", 0 );
+    blDebug ( "END BcExtractoView::on_mui_cargarpunteos_clicked", 0 );
 }
 
 
@@ -692,7 +692,7 @@ void BcExtractoView::on_mui_cargarpunteos_clicked()
 **/
 QString BcExtractoView::imprimeExtractoCuenta ( QString idcuenta )
 {
-    _depura ( "BcExtractoView::imprimeExtractoCuenta", 0, idcuenta );
+    blDebug ( "BcExtractoView::imprimeExtractoCuenta", 0, idcuenta );
     try {
         QString salida = "";
         BlFixed debeinicial ( "0" ), haberinicial ( "0" ), saldoinicial ( "0" );
@@ -721,7 +721,7 @@ QString BcExtractoView::imprimeExtractoCuenta ( QString idcuenta )
         BlDbRecordSet *cursorapt;
 
         if ( idcuenta == "" ) {
-            _depura ( "END BcExtractoView::imprimeExtractoCuenta", 0, "No hay cuenta" );
+            blDebug ( "END BcExtractoView::imprimeExtractoCuenta", 0, "No hay cuenta" );
             return "";
         } // end if
 
@@ -858,7 +858,7 @@ QString BcExtractoView::imprimeExtractoCuenta ( QString idcuenta )
         salida += "<spacer length=\"5mm\" width=\"1mm\"/>\n";
 
         delete cursorapt;
-        _depura ( "END BcExtractoView::imprimeExtractoCuenta", 0 );
+        blDebug ( "END BcExtractoView::imprimeExtractoCuenta", 0 );
         return salida;
     } catch ( ... ) {
         mensajeError ( "Ocurrio un error inesperado" );
@@ -875,7 +875,7 @@ QString BcExtractoView::imprimeExtractoCuenta ( QString idcuenta )
 **/
 void BcExtractoView::imprimir()
 {
-    _depura ( "BcExtractoView::on_mui_imprimir_clicked", 0 );
+    blDebug ( "BcExtractoView::on_mui_imprimir_clicked", 0 );
     QString finicial = m_fechainicial1->text();
     QString ffinal = m_fechafinal1->text();
     QString archivo = g_confpr->valor ( CONF_DIR_OPENREPORTS ) + "extracto.rml";
@@ -972,7 +972,7 @@ void BcExtractoView::imprimir()
     } // end if
     /// Crea el pdf y lo muestra.
     invocaPDF ( "extracto" );
-    _depura ( "END BcExtractoView::on_mui_imprimir_clicked", 0 );
+    blDebug ( "END BcExtractoView::on_mui_imprimir_clicked", 0 );
     return;
 }
 

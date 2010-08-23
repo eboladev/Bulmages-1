@@ -49,7 +49,7 @@ public:
 
 public slots:
     virtual void cargar() {
-        _depura ( "BfSerieFacturaSubForm::cargar\n", 0 );
+        blDebug ( "BfSerieFacturaSubForm::cargar\n", 0 );
         BlSubForm::cargar ( "SELECT *, codigoserie_factura AS codigoserie_facturaorig FROM serie_factura" );
     }
 };

@@ -54,7 +54,7 @@
 ArticuloList1::ArticuloList1 ( BfCompany *comp, QWidget *parent, Qt::WFlags flag, edmode editmodo )
         : BlFormList ( comp, parent, flag, editmodo )
 {
-    _depura ( "ArticuloList1::ArticuloList1", 0 );
+    blDebug ( "ArticuloList1::ArticuloList1", 0 );
     setupUi ( this );
 
     setObjectName ( "ArticuloList1" );
@@ -63,7 +63,7 @@ ArticuloList1::ArticuloList1 ( BfCompany *comp, QWidget *parent, Qt::WFlags flag
     /// Disparamos los plugins.
     int res = g_plugins->lanza ( "ArticuloList1_ArticuloList1", this );
     if ( res != 0 ) {
-        _depura ( "END ArticuloList1::ArticuloList1", 0, "Salida por plugin" );
+        blDebug ( "END ArticuloList1::ArticuloList1", 0, "Salida por plugin" );
         return;
     } // end if
     m_tipoarticulo->setMainCompany ( comp );
@@ -78,7 +78,7 @@ ArticuloList1::ArticuloList1 ( BfCompany *comp, QWidget *parent, Qt::WFlags flag
     hideBusqueda();
     /// Hacemos el tratamiento de los permisos que desabilita botones en caso de no haber suficientes permisos.
     trataPermisos ( "articulo" );
-    _depura ( "END ArticuloList1::ArticuloList1", 0 );
+    blDebug ( "END ArticuloList1::ArticuloList1", 0 );
 }
 
 
@@ -87,9 +87,9 @@ ArticuloList1::ArticuloList1 ( BfCompany *comp, QWidget *parent, Qt::WFlags flag
 **/
 void ArticuloList1::presentar()
 {
-    _depura ( "ArticuloList1::INIT_presenta", 0 );
+    blDebug ( "ArticuloList1::INIT_presenta", 0 );
     mui_list->cargar ( formaQuery() );
-    _depura ( "ArticuloList1::END_presenta", 0 );
+    blDebug ( "ArticuloList1::END_presenta", 0 );
 }
 
 
@@ -99,8 +99,8 @@ void ArticuloList1::presentar()
 **/
 ArticuloList1::~ArticuloList1()
 {
-    _depura ( "ArticuloList1::~ArticuloList1", 0 );
-    _depura ( "END ArticuloList1::~ArticuloList1", 0 );
+    blDebug ( "ArticuloList1::~ArticuloList1", 0 );
+    blDebug ( "END ArticuloList1::~ArticuloList1", 0 );
 }
 
 
@@ -114,7 +114,7 @@ ArticuloList1::~ArticuloList1()
 **/
 QString ArticuloList1::formaQuery()
 {
-    _depura ( "ArticuloList1::formaQuery", 0 );
+    blDebug ( "ArticuloList1::formaQuery", 0 );
     QString query = "";
     query += "SELECT * FROM articulo NATURAL LEFT JOIN tipo_iva NATURAL LEFT JOIN tipo_articulo WHERE 1 = 1 ";
     if ( m_presentablearticulo->isChecked() )
@@ -138,7 +138,7 @@ QString ArticuloList1::formaQuery()
     } // end if
     query += " ORDER BY codigocompletoarticulo";
     return ( query );
-    _depura ( "ArticuloList1::END_formaQuery()\n", 0 );
+    blDebug ( "ArticuloList1::END_formaQuery()\n", 0 );
 }
 
 
@@ -152,7 +152,7 @@ QString ArticuloList1::formaQuery()
 **/
 void ArticuloList1::submenu ( const QPoint & )
 {
-    _depura ( "ArticuloList1::on_mui_list_customContextMenuRequested", 0 );
+    blDebug ( "ArticuloList1::on_mui_list_customContextMenuRequested", 0 );
     int a = mui_list->currentRow();
     if ( a < 0 )
         return;
@@ -175,8 +175,8 @@ void ArticuloList1::submenu ( const QPoint & )
 **/
 QString ArticuloList1::idarticulo()
 {
-    _depura ( "ArticuloList1::idarticulo", 0 );
-    _depura ( "END ArticuloList1::idarticulo", 0 );
+    blDebug ( "ArticuloList1::idarticulo", 0 );
+    blDebug ( "END ArticuloList1::idarticulo", 0 );
     return mdb_idarticulo;
 }
 
@@ -187,8 +187,8 @@ QString ArticuloList1::idarticulo()
 **/
 QString ArticuloList1::nomarticulo()
 {
-    _depura ( "ArticuloList1::nomarticulo", 0 );
-    _depura ( "END ArticuloList1::nomarticulo", 0 );
+    blDebug ( "ArticuloList1::nomarticulo", 0 );
+    blDebug ( "END ArticuloList1::nomarticulo", 0 );
     return mdb_nomarticulo;
 }
 
@@ -199,8 +199,8 @@ QString ArticuloList1::nomarticulo()
 **/
 QString ArticuloList1::codigocompletoarticulo()
 {
-    _depura ( "ArticuloList1::codigocompletoarticulo", 0 );
-    _depura ( "END ArticuloList1::codigocompletoarticulo", 0 );
+    blDebug ( "ArticuloList1::codigocompletoarticulo", 0 );
+    blDebug ( "END ArticuloList1::codigocompletoarticulo", 0 );
     return mdb_codigocompletoarticulo;
 }
 
@@ -210,10 +210,10 @@ QString ArticuloList1::codigocompletoarticulo()
 **/
 void ArticuloList1::on_mui_list_cellDoubleClicked ( int, int )
 {
-    _depura ( "ArticuloList1::on_mui_list_cellDoubleClicked", 0 );
+    blDebug ( "ArticuloList1::on_mui_list_cellDoubleClicked", 0 );
     QString idarticulo =  mui_list->dbValue ( "idarticulo" );
     ( ( BtCompany * ) mainCompany() )->ticketActual() ->insertarArticulo ( idarticulo, BlFixed ( "1" ) );
-    _depura ( "END ArticuloList1::on_mui_list_cellDoubleClicked", 0 );
+    blDebug ( "END ArticuloList1::on_mui_list_cellDoubleClicked", 0 );
 }
 
 
@@ -222,11 +222,11 @@ void ArticuloList1::on_mui_list_cellDoubleClicked ( int, int )
 **/
 void ArticuloList1::on_mui_seleccionar_clicked()
 {
-    _depura ( "ArticuloList1::on_mui_seleccionar_clicked", 0 );
+    blDebug ( "ArticuloList1::on_mui_seleccionar_clicked", 0 );
     /// Se ejecuta la misma accion que generando un doble click en la fila seleccionada en el listado.
     QString idarticulo =  mui_list->dbValue ( "idarticulo" );
     ( ( BtCompany * ) mainCompany() )->ticketActual() ->insertarArticulo ( idarticulo, BlFixed ( "1" ) );
-    _depura ( "END ArticuloList1::on_mui_seleccionar_clicked", 0 );
+    blDebug ( "END ArticuloList1::on_mui_seleccionar_clicked", 0 );
 }
 
 
@@ -243,7 +243,7 @@ void ArticuloList1::on_mui_seleccionar_clicked()
 ArticuloList1SubForm1::ArticuloList1SubForm1 ( QWidget *parent, const char * )
         : BfSubForm ( parent )
 {
-    _depura ( "ArticuloList1SubForm1::ArticuloList1SubForm1", 0 );
+    blDebug ( "ArticuloList1SubForm1::ArticuloList1SubForm1", 0 );
 
     setDbTableName ( "articulo" );
     setDbFieldId ( "idarticulo" );
@@ -267,7 +267,7 @@ ArticuloList1SubForm1::ArticuloList1SubForm1 ( QWidget *parent, const char * )
     setSortingEnabled ( TRUE );
     /// Disparamos los plugins.
     g_plugins->lanza ( "ArticuloList1SubForm1_ArticuloList1SubForm1_Post", this );
-    _depura ( "END ArticuloList1SubForm1::ArticuloList1SubForm1", 0 );
+    blDebug ( "END ArticuloList1SubForm1::ArticuloList1SubForm1", 0 );
 }
 
 
@@ -276,7 +276,7 @@ ArticuloList1SubForm1::ArticuloList1SubForm1 ( QWidget *parent, const char * )
 **/
 ArticuloList1SubForm1::~ArticuloList1SubForm1()
 {
-    _depura ( "ArticuloList1SubForm1::~ArticuloList1SubForm1", 0 );
-    _depura ( "END ArticuloList1SubForm1::~ArticuloList1SubForm1", 0 );
+    blDebug ( "ArticuloList1SubForm1::~ArticuloList1SubForm1", 0 );
+    blDebug ( "END ArticuloList1SubForm1::~ArticuloList1SubForm1", 0 );
 
 }

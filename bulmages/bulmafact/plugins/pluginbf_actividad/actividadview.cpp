@@ -41,7 +41,7 @@
 ActividadView::ActividadView ( BfCompany *comp, QWidget *parent )
         : BfForm ( comp, parent )
 {
-    _depura ( "ActividadView::ActividadView", 0 );
+    blDebug ( "ActividadView::ActividadView", 0 );
     
     setAttribute ( Qt::WA_DeleteOnClose );
     
@@ -108,28 +108,28 @@ ActividadView::ActividadView ( BfCompany *comp, QWidget *parent )
         mensajeInfo ( _ ( "Error al crear el actividad" ), this );
     } // end try
     
-    _depura ( "END ActividadView::ActividadView", 0 );
+    blDebug ( "END ActividadView::ActividadView", 0 );
 }
 
 /** No precisa acciones adicionales en el destructor.
 */
 ActividadView::~ActividadView()
 {
-    _depura ( "ActividadView::~ActividadView", 0 );
-    _depura ( "END ActividadView::~ActividadView", 0 );
+    blDebug ( "ActividadView::~ActividadView", 0 );
+    blDebug ( "END ActividadView::~ActividadView", 0 );
 }
 
 QString ActividadView::nombrePlantilla ( void )
 {
-    _depura ( "ActividadView::nombrePlantilla", 0 );
-    _depura ( "END ActividadView::nombrePlantilla", 0 );
+    blDebug ( "ActividadView::nombrePlantilla", 0 );
+    blDebug ( "END ActividadView::nombrePlantilla", 0 );
     
     return QString ( "actividad" );
 }
 
 void ActividadView::imprimir()
 {
-    _depura ( "ActividadView::imprimir", 0 );
+    blDebug ( "ActividadView::imprimir", 0 );
     
     /// Comprobamos que se disponen de los datos minimos para imprimir el recibo.
     QString SQLQuery = "";
@@ -148,12 +148,12 @@ void ActividadView::imprimir()
     
     BfForm::imprimir();
 
-    _depura ( "END ActividadView::imprimir", 0 );
+    blDebug ( "END ActividadView::imprimir", 0 );
 }
 
 int ActividadView::guardarPost()
 {
-    _depura ( "ActividadView::guardarPost", 0 );
+    blDebug ( "ActividadView::guardarPost", 0 );
     
     mui_alumnosList->setColumnValue ( "idactividad", dbValue ( "idactividad" ) );
     mui_alumnosList->guardar();
@@ -161,30 +161,30 @@ int ActividadView::guardarPost()
     mui_faltasAsistenciaList->setColumnValue ( "idactividad", dbValue ( "idactividad" ) );
     mui_faltasAsistenciaList->guardar();
     
-    _depura ( "END ActividadView::guardarPost", 0 );
+    blDebug ( "END ActividadView::guardarPost", 0 );
     return 0;
 }
 
 int ActividadView::borrarPre()
 {
-    _depura ( "ActividadView::borrarPre", 0 );
+    blDebug ( "ActividadView::borrarPre", 0 );
     
     QString query = "DELETE FROM alumnoactividad WHERE idactividad=" + dbValue ( "idactividad" );
     mainCompany()->runQuery ( query );
     
-    _depura ( "END ActividadView::borrarPre", 0 );
+    blDebug ( "END ActividadView::borrarPre", 0 );
     
     return 0;
 }
 
 int ActividadView::cargarPost ( QString id )
 {
-    _depura ( "ActividadView::cargarPost", 0 );
+    blDebug ( "ActividadView::cargarPost", 0 );
 
     mui_alumnosList->cargar ( id );
     mui_faltasAsistenciaList->cargar ( id );
 
-    _depura ( "END ActividadView::cargarPost", 0 );
+    blDebug ( "END ActividadView::cargarPost", 0 );
     
     return 0;
 }
@@ -199,7 +199,7 @@ int ActividadView::cargarPost ( QString id )
 **/
 ListAlumnosActividadView::ListAlumnosActividadView ( QWidget *parent ) : BfSubForm ( parent )
 {
-    _depura ( "ListAlumnosActividadView::ListAlumnosActividadView", 0 );
+    blDebug ( "ListAlumnosActividadView::ListAlumnosActividadView", 0 );
     
     setDbTableName ( "alumnoactividad" );
     setDbFieldId ( "idalumnoactividad" );
@@ -211,7 +211,7 @@ ListAlumnosActividadView::ListAlumnosActividadView ( QWidget *parent ) : BfSubFo
     setInsert ( TRUE );
     setSortingEnabled ( TRUE );
     
-    _depura ( "END ListAlumnosActividadView::ListAlumnosActividadView", 0 );
+    blDebug ( "END ListAlumnosActividadView::ListAlumnosActividadView", 0 );
 }
 
 ///
@@ -220,11 +220,11 @@ ListAlumnosActividadView::ListAlumnosActividadView ( QWidget *parent ) : BfSubFo
 **/
 void ListAlumnosActividadView::cargar ( QString idactividad )
 {
-    _depura ( "ListAlumnosActividadView::cargar", 0 );
+    blDebug ( "ListAlumnosActividadView::cargar", 0 );
     
     BlSubForm::cargar ( "SELECT *, (apellido1alumno || ' ' || apellido2alumno || ', ' || nombrealumno) AS nombrealumno1 FROM alumnoactividad LEFT JOIN alumno ON alumnoactividad.idalumno = alumno.idalumno WHERE alumnoactividad.idactividad=" + idactividad  );
     
-    _depura ( "END ListAlumnosActividadView::cargar", 0 );
+    blDebug ( "END ListAlumnosActividadView::cargar", 0 );
 }
 
 ///
@@ -233,7 +233,7 @@ void ListAlumnosActividadView::cargar ( QString idactividad )
 **/
 ListFaltasAsistenciaActividadView::ListFaltasAsistenciaActividadView ( QWidget *parent ) : BfSubForm ( parent )
 {
-    _depura ( "ListAlumnosActividadView::ListAlumnosActividadView", 0 );
+    blDebug ( "ListAlumnosActividadView::ListAlumnosActividadView", 0 );
     
     setDbTableName ( "faltaasistenciaalumnoactividad" );
     setDbFieldId ( "idfaltaasistenciaalumnoactividad" );
@@ -246,7 +246,7 @@ ListFaltasAsistenciaActividadView::ListFaltasAsistenciaActividadView ( QWidget *
     setInsert ( TRUE );
     setSortingEnabled ( TRUE );
     
-    _depura ( "END ListAlumnosActividadView::ListAlumnosActividadView", 0 );
+    blDebug ( "END ListAlumnosActividadView::ListAlumnosActividadView", 0 );
 }
 
 ///
@@ -255,9 +255,9 @@ ListFaltasAsistenciaActividadView::ListFaltasAsistenciaActividadView ( QWidget *
 **/
 void ListFaltasAsistenciaActividadView::cargar ( QString idactividad )
 {
-    _depura ( "ListAlumnosActividadView::cargar", 0 );
+    blDebug ( "ListAlumnosActividadView::cargar", 0 );
     
     BlSubForm::cargar ( "SELECT *, (apellido1alumno || ' ' || apellido2alumno || ', ' || nombrealumno) AS nombrealumno1 FROM faltaasistenciaalumnoactividad LEFT JOIN alumno ON faltaasistenciaalumnoactividad.idalumno = alumno.idalumno WHERE faltaasistenciaalumnoactividad.idactividad=" + idactividad  );
     
-    _depura ( "END ListAlumnosActividadView::cargar", 0 );
+    blDebug ( "END ListAlumnosActividadView::cargar", 0 );
 }

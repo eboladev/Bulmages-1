@@ -33,10 +33,10 @@
 BfBuscarTipoIVA::BfBuscarTipoIVA ( QWidget *parent )
         : BlComboBox ( parent )
 {
-    _depura ( "BfBuscarTipoIVA::BfBuscarTipoIVA", 0 );
+    blDebug ( "BfBuscarTipoIVA::BfBuscarTipoIVA", 0 );
     m_comboRecordSet = NULL;
     m_table = "tipo_iva";
-    _depura ( "END BfBuscarTipoIVA::BfBuscarTipoIVA", 0 );
+    blDebug ( "END BfBuscarTipoIVA::BfBuscarTipoIVA", 0 );
 }
 
 
@@ -46,8 +46,8 @@ BfBuscarTipoIVA::BfBuscarTipoIVA ( QWidget *parent )
 **/
 BfBuscarTipoIVA::~BfBuscarTipoIVA()
 {
-    _depura ( "BfBuscarTipoIVA::~BfBuscarTipoIVA", 0 );
-    _depura ( "END BfBuscarTipoIVA::~BfBuscarTipoIVA", 0 );
+    blDebug ( "BfBuscarTipoIVA::~BfBuscarTipoIVA", 0 );
+    blDebug ( "END BfBuscarTipoIVA::~BfBuscarTipoIVA", 0 );
 }
 
 
@@ -61,7 +61,7 @@ BfBuscarTipoIVA::~BfBuscarTipoIVA()
 **/
 void BfBuscarTipoIVA::setId ( QString idtipo_iva )
 {
-    _depura ( "BfBuscarTipoIVA::setidtipo_iva", 0 );
+    blDebug ( "BfBuscarTipoIVA::setidtipo_iva", 0 );
 
     if ( m_comboRecordSet != NULL ) {
         delete m_comboRecordSet;
@@ -90,7 +90,7 @@ void BfBuscarTipoIVA::setId ( QString idtipo_iva )
 
     setCurrentIndex ( i1 );
 
-    _depura ( "END BfBuscarTipoIVA::setidtipo_iva", 0 );
+    blDebug ( "END BfBuscarTipoIVA::setidtipo_iva", 0 );
 }
 
 
@@ -102,8 +102,8 @@ void BfBuscarTipoIVA::setId ( QString idtipo_iva )
 **/
 QString BfBuscarTipoIVA::id()
 {
-    _depura ( "BfBuscarTipoIVA::idtipo_iva", 0 );
-    _depura ( "END BfBuscarTipoIVA::idtipo_iva", 0 );
+    blDebug ( "BfBuscarTipoIVA::idtipo_iva", 0 );
+    blDebug ( "END BfBuscarTipoIVA::idtipo_iva", 0 );
 
     /// Como puede haber habido un error con la base de datos debemos tratar dicho caso.
     if ( !m_comboRecordSet ) return "0";
@@ -119,7 +119,7 @@ QString BfBuscarTipoIVA::id()
 **/
 void BfBuscarTipoIVA::m_activated ( int index )
 {
-    _depura ( "BfBuscarTipoIVA::m_activated", 0 );
+    blDebug ( "BfBuscarTipoIVA::m_activated", 0 );
 
     if ( index > 0 ) {
         emit ( valueChanged ( m_comboRecordSet->valor ( "idtipo_iva", index - 1 ) ) );
@@ -127,7 +127,7 @@ void BfBuscarTipoIVA::m_activated ( int index )
         emit ( valueChanged ( "" ) );
     } // end if
 
-    _depura ( "END BfBuscarTipoIVA::m_activated", 0 );
+    blDebug ( "END BfBuscarTipoIVA::m_activated", 0 );
 }
 
 
@@ -144,11 +144,11 @@ void BfBuscarTipoIVA::m_activated ( int index )
 BfBuscarTipoIVADelegate::BfBuscarTipoIVADelegate ( QWidget *parent )
         : BlComboBox ( parent )
 {
-    _depura ( "BfBuscarTipoIVADelegate::BfBuscarTipoIVADelegate", 0 );
+    blDebug ( "BfBuscarTipoIVADelegate::BfBuscarTipoIVADelegate", 0 );
     m_comboRecordSet = NULL;
     setSizeAdjustPolicy ( QComboBox::AdjustToContents );
     connect ( this, SIGNAL ( activated ( int ) ), this, SLOT ( m_activated ( int ) ) );
-    _depura ( "END BfBuscarTipoIVADelegate::BfBuscarTipoIVADelegate", 0 );
+    blDebug ( "END BfBuscarTipoIVADelegate::BfBuscarTipoIVADelegate", 0 );
 }
 
 
@@ -158,8 +158,8 @@ BfBuscarTipoIVADelegate::BfBuscarTipoIVADelegate ( QWidget *parent )
 **/
 BfBuscarTipoIVADelegate::~BfBuscarTipoIVADelegate()
 {
-    _depura ( "BfBuscarTipoIVADelegate::~BfBuscarTipoIVADelegate", 0 );
-    _depura ( "END BfBuscarTipoIVADelegate::~BfBuscarTipoIVADelegate", 0 );
+    blDebug ( "BfBuscarTipoIVADelegate::~BfBuscarTipoIVADelegate", 0 );
+    blDebug ( "END BfBuscarTipoIVADelegate::~BfBuscarTipoIVADelegate", 0 );
 }
 
 
@@ -172,7 +172,7 @@ BfBuscarTipoIVADelegate::~BfBuscarTipoIVADelegate()
 **/
 void BfBuscarTipoIVADelegate::set ( const QString &cod )
 {
-    _depura ( "BfBuscarTipoIVADelegate::set", 0 );
+    blDebug ( "BfBuscarTipoIVADelegate::set", 0 );
 
     int index = 0;
     QString codigo = cod;
@@ -198,6 +198,6 @@ void BfBuscarTipoIVADelegate::set ( const QString &cod )
     setEditText ( cod );
     setCurrentIndex ( index );
 
-    _depura ( "END BfBuscarTipoIVADelegate::set", 0 );
+    blDebug ( "END BfBuscarTipoIVADelegate::set", 0 );
 }
 

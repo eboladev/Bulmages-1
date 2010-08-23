@@ -49,10 +49,10 @@
 **/
 GenPagoQToolButton::GenPagoQToolButton ( QWidget *fac , QWidget *parent ) : QToolButton ( parent )
 {
-    _depura ( "GenPagoQToolButton::GenPagoQToolButton", 0 );
+    blDebug ( "GenPagoQToolButton::GenPagoQToolButton", 0 );
     m_object = fac;
     setBoton();
-    _depura ( "END GenPagoQToolButton::GenPagoQToolButton", 0 );
+    blDebug ( "END GenPagoQToolButton::GenPagoQToolButton", 0 );
 }
 
 
@@ -61,8 +61,8 @@ GenPagoQToolButton::GenPagoQToolButton ( QWidget *fac , QWidget *parent ) : QToo
 **/
 GenPagoQToolButton::~GenPagoQToolButton()
 {
-    _depura ( "GenPagoQToolButton::~GenPagoQToolButton", 0 );
-    _depura ( "END GenPagoQToolButton::~GenPagoQToolButton", 0 );
+    blDebug ( "GenPagoQToolButton::~GenPagoQToolButton", 0 );
+    blDebug ( "END GenPagoQToolButton::~GenPagoQToolButton", 0 );
 }
 
 
@@ -71,7 +71,7 @@ GenPagoQToolButton::~GenPagoQToolButton()
 **/
 void GenPagoQToolButton::setBoton()
 {
-    _depura ( "GenPagoQToolButton::setBoton", 0 );
+    blDebug ( "GenPagoQToolButton::setBoton", 0 );
     connect ( this, SIGNAL ( clicked() ), this, SLOT ( click() ) );
     setObjectName ( QString::fromUtf8 ( "exporta" ) );
     setStatusTip ( "Generar Pago" );
@@ -81,7 +81,7 @@ void GenPagoQToolButton::setBoton()
     setIcon ( QIcon ( QString::fromUtf8 ( ":/Images/pay.png" ) ) );
     setIconSize ( QSize ( 32, 32 ) );
     setContentsMargins ( 0, 0, 0, 0 );
-    _depura ( "END GenPagoQToolButton::setBoton", 0 );
+    blDebug ( "END GenPagoQToolButton::setBoton", 0 );
 }
 
 
@@ -90,7 +90,7 @@ void GenPagoQToolButton::setBoton()
 **/
 void GenPagoQToolButton::click()
 {
-    _depura ( "ImpQToolButton::click", 0 );
+    blDebug ( "ImpQToolButton::click", 0 );
 
     if ( m_object->objectName() == "FacturaProveedorBase" ) {
         FacturaProveedorView *fpv = ( FacturaProveedorView * ) m_object;
@@ -128,7 +128,7 @@ void GenPagoQToolButton::click()
         bud->show();
     }// end if
 
-    _depura ( "END ImpQToolButton::click", 0 );
+    blDebug ( "END ImpQToolButton::click", 0 );
 }
 
 

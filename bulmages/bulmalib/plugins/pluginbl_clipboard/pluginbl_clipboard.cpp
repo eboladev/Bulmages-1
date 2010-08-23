@@ -43,13 +43,13 @@
 **/
 int entryPoint ( QApplication * )
 {
-    _depura ( "entryPoint", 0, "Punto de Entrada del plugin de Clipboard" );
+    blDebug ( "entryPoint", 0, "Punto de Entrada del plugin de Clipboard" );
 
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale ( LC_ALL, "" );
     bindtextdomain ( "pluginbl_clipboard", g_confpr->valor ( CONF_DIR_TRADUCCION ).toAscii().constData() );
 
-    _depura ( "END entryPoint", 0, "Punto de Entrada del plugin de Clipboard" );
+    blDebug ( "END entryPoint", 0, "Punto de Entrada del plugin de Clipboard" );
     return 0;
 }
 
@@ -61,11 +61,11 @@ int entryPoint ( QApplication * )
 **/
 int BlSubForm_BlSubForm_Post ( BlSubForm *sub )
 {
-    _depura ( "BlSubForm_BlSubForm_Post", 0 );
+    blDebug ( "BlSubForm_BlSubForm_Post", 0 );
     myplugclipboard *subformclip = new myplugclipboard ( sub );
     sub->connect ( sub, SIGNAL ( pintaMenu ( QMenu * ) ), subformclip, SLOT ( s_pintaMenu ( QMenu * ) ) );
     sub->connect ( sub, SIGNAL ( trataMenu ( QAction * ) ), subformclip, SLOT ( s_trataMenu ( QAction * ) ) );
-    _depura ( "END BlSubForm_BlSubForm_Post", 0 );
+    blDebug ( "END BlSubForm_BlSubForm_Post", 0 );
     return 0;
 }
 
@@ -76,8 +76,8 @@ int BlSubForm_BlSubForm_Post ( BlSubForm *sub )
 **/
 myplugclipboard::myplugclipboard ( BlSubForm *parent ) : QObject ( parent )
 {
-    _depura ( "myplugclipboard::myplugclipboard", 0 );
-    _depura ( "END myplugclipboard::myplugclipboard", 0 );
+    blDebug ( "myplugclipboard::myplugclipboard", 0 );
+    blDebug ( "END myplugclipboard::myplugclipboard", 0 );
 }
 
 
@@ -86,8 +86,8 @@ myplugclipboard::myplugclipboard ( BlSubForm *parent ) : QObject ( parent )
 **/
 myplugclipboard::~myplugclipboard()
 {
-    _depura ( "myplugclipboard::~myplugclipboard", 0 );
-    _depura ( "END myplugclipboard::~myplugclipboard", 0 );
+    blDebug ( "myplugclipboard::~myplugclipboard", 0 );
+    blDebug ( "END myplugclipboard::~myplugclipboard", 0 );
 }
 
 
@@ -97,7 +97,7 @@ myplugclipboard::~myplugclipboard()
 **/
 void myplugclipboard::s_pintaMenu ( QMenu *menu )
 {
-    _depura ( "myplugclipboard::s_pintaMenu", 0 );
+    blDebug ( "myplugclipboard::s_pintaMenu", 0 );
 
     BlSubForm *subform = ( BlSubForm * ) parent();
 
@@ -109,7 +109,7 @@ void myplugclipboard::s_pintaMenu ( QMenu *menu )
         menu->addAction ( _ ( "Actualizar desde hoja de calculo" ) );
     } // end if
 
-    _depura ( "END myplugclipboard::s_pintaMenu", 0 );
+    blDebug ( "END myplugclipboard::s_pintaMenu", 0 );
 }
 
 
@@ -119,7 +119,7 @@ void myplugclipboard::s_pintaMenu ( QMenu *menu )
 **/
 void myplugclipboard::s_trataMenu ( QAction *action )
 {
-    _depura ( "myplugclipboard::s_trataMenu", 0 );
+    blDebug ( "myplugclipboard::s_trataMenu", 0 );
 
     if ( action->text() == _ ( "Pegar desde hoja de calculo" ) ) {
         if ( g_theApp->clipboard() ->text().contains ( "\t" ) ) {
@@ -134,7 +134,7 @@ void myplugclipboard::s_trataMenu ( QAction *action )
         } // end if
     } // end if
     
-    _depura ( "myplugclipboard::s_trataMenu", 0 );
+    blDebug ( "myplugclipboard::s_trataMenu", 0 );
 }
 
 
@@ -143,7 +143,7 @@ void myplugclipboard::s_trataMenu ( QAction *action )
 **/
 void myplugclipboard::pegaSXC()
 {
-    _depura ( "myplugclipboard::pegaSXC", 0 );
+    blDebug ( "myplugclipboard::pegaSXC", 0 );
     BlSubForm *subform = ( BlSubForm * ) parent();
     QString clipboard = g_theApp->clipboard() ->text();
 
@@ -174,7 +174,7 @@ void myplugclipboard::pegaSXC()
             linea1->setDbValue ( campos.at ( j ), valorcampo );
         } // end for
     } // end for
-    _depura ( "END myplugclipboard::pegaSXC", 0 );
+    blDebug ( "END myplugclipboard::pegaSXC", 0 );
 }
 
 
@@ -183,7 +183,7 @@ void myplugclipboard::pegaSXC()
 **/
 void myplugclipboard::pegaActualizaODS()
 {
-    _depura ( "myplugclipboard::pegaActualizaODS", 0 );
+    blDebug ( "myplugclipboard::pegaActualizaODS", 0 );
 
     BlSubForm *subform = ( BlSubForm * ) parent();
     QString clipboard = g_theApp->clipboard() ->text();
@@ -245,7 +245,7 @@ void myplugclipboard::pegaActualizaODS()
     
 
 
-    _depura ( "END myplugclipboard::pegaActualizaODS", 0 );
+    blDebug ( "END myplugclipboard::pegaActualizaODS", 0 );
 }
 
 
@@ -255,7 +255,7 @@ void myplugclipboard::pegaActualizaODS()
 **/
 void myplugclipboard::pegaODS()
 {
-    _depura ( "myplugclipboard::pegaODS", 0 );
+    blDebug ( "myplugclipboard::pegaODS", 0 );
     BlSubForm *subform = ( BlSubForm * ) parent();
     QString clipboard = g_theApp->clipboard() ->text();
 
@@ -284,7 +284,7 @@ void myplugclipboard::pegaODS()
             linea1->setDbValue ( campos.at ( j ), campos_valores.at ( j ) );
         } // end for
     } // end for
-    _depura ( "END myplugclipboard::pegaODS", 0 );
+    blDebug ( "END myplugclipboard::pegaODS", 0 );
 }
 
 

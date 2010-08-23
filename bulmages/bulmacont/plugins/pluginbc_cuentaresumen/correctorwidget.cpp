@@ -33,10 +33,10 @@
 ResumCtaWidget::ResumCtaWidget ( BcCompany *emp, QWidget* parent, Qt::WFlags fl )
         : QWidget ( parent, fl ), BlMainCompanyPointer ( emp )
 {
-    _depura ( "ResumCtaWidget::ResumCtaWidget", 0 );
+    blDebug ( "ResumCtaWidget::ResumCtaWidget", 0 );
     setupUi ( this );
     QObject::connect ( mui_browser, SIGNAL ( anchorClicked ( const QUrl ) ), this, SLOT ( alink ( const QUrl ) ) );
-    _depura ( "END ResumCtaWidget::ResumCtaWidget", 0 );
+    blDebug ( "END ResumCtaWidget::ResumCtaWidget", 0 );
 }
 
 
@@ -45,8 +45,8 @@ ResumCtaWidget::ResumCtaWidget ( BcCompany *emp, QWidget* parent, Qt::WFlags fl 
 **/
 ResumCtaWidget::~ResumCtaWidget()
 {
-    _depura ( "ResumCtaWidget::~ResumCtaWidget", 0 );
-    _depura ( "END ResumCtaWidget::~ResumCtaWidget", 0 );
+    blDebug ( "ResumCtaWidget::~ResumCtaWidget", 0 );
+    blDebug ( "END ResumCtaWidget::~ResumCtaWidget", 0 );
 }
 
 
@@ -60,9 +60,9 @@ ResumCtaWidget::~ResumCtaWidget()
 **/
 void ResumCtaWidget::alink ( const QUrl &url )
 {
-    _depura ( "ResumCtaWidget::alink", 0 );
+    blDebug ( "ResumCtaWidget::alink", 0 );
     QString linker = url.fragment();
-    _depura ( linker, 10 );
+    blDebug ( linker, 10 );
 
     ///TODO: REVISAR ESTA FUNCION QUE NO HACE BIEN SU TRABAJO.
     if ( linker == "ver" ) {
@@ -75,7 +75,7 @@ void ResumCtaWidget::alink ( const QUrl &url )
         bool ok;
         view->muestraasiento ( linker.toInt ( &ok ) );
     } // endif
-    _depura ( "END ResumCtaWidget::alink", 0 );
+    blDebug ( "END ResumCtaWidget::alink", 0 );
 }
 
 
@@ -85,7 +85,7 @@ void ResumCtaWidget::alink ( const QUrl &url )
 **/
 void ResumCtaWidget::cambia ( bool a )
 {
-    _depura ( "ResumCtaWidget::cambia", 0 );
+    blDebug ( "ResumCtaWidget::cambia", 0 );
     if ( a ) {
         dock->hide();
         dock->show();
@@ -93,7 +93,7 @@ void ResumCtaWidget::cambia ( bool a )
     } else {
         dock->hide();
     } // end if
-    _depura ( "END ResumCtaWidget::cambia", 0 );
+    blDebug ( "END ResumCtaWidget::cambia", 0 );
 }
 
 
@@ -103,8 +103,8 @@ void ResumCtaWidget::cambia ( bool a )
 **/
 void ResumCtaWidget::setMensaje ( QString mensaje )
 {
-    _depura ( "ResumCtaWidget::setMensaje", 0 );
+    blDebug ( "ResumCtaWidget::setMensaje", 0 );
     mui_browser->setHtml ( mensaje );
-    _depura ( "END ResumCtaWidget::setMensaje", 0 );
+    blDebug ( "END ResumCtaWidget::setMensaje", 0 );
 
 }

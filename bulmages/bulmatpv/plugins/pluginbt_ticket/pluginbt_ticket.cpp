@@ -44,7 +44,7 @@ MTicket *g_bud;
 **/
 int entryPoint ( BtBulmaTPV *tpv )
 {
-    _depura ( "pluginticketbasico::entryPoint", 0 );
+    blDebug ( "pluginticketbasico::entryPoint", 0 );
 
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale ( LC_ALL, "" );
@@ -64,7 +64,7 @@ int entryPoint ( BtBulmaTPV *tpv )
     g_doc1->cargaconf();
     g_doc1->show();
 
-    _depura ( "END pluginticketbasico::entryPoint", 0 );
+    blDebug ( "END pluginticketbasico::entryPoint", 0 );
     
     return 0;
 }
@@ -76,11 +76,11 @@ int entryPoint ( BtBulmaTPV *tpv )
 **/
 int exitPoint ( BtBulmaTPV *tpv )
 {
-    _depura ( "pluginticketbasico::exitPoint", 0 );
+    blDebug ( "pluginticketbasico::exitPoint", 0 );
     
     delete g_doc1;
     
-    _depura ( "END pluginticketbasico::exitPoint", 0 );
+    blDebug ( "END pluginticketbasico::exitPoint", 0 );
     
     return 0;
 }
@@ -88,12 +88,12 @@ int exitPoint ( BtBulmaTPV *tpv )
 
 int BtCompany_createMainWindows_Post ( BtCompany *etpv )
 {
-    _depura ( "pluginticketbasico::BtCompany_createMainWindows_Post", 0 );
+    blDebug ( "pluginticketbasico::BtCompany_createMainWindows_Post", 0 );
     
     g_bud =  new MTicket ( etpv, g_doc1 );
     g_doc1->setWidget ( ( QWidget * ) g_bud );
     
-    _depura ( "END pluginticketbasico::BtCompany_createMainWindows_Post", 0 );
+    blDebug ( "END pluginticketbasico::BtCompany_createMainWindows_Post", 0 );
 
     return 0;
 }
@@ -101,12 +101,12 @@ int BtCompany_createMainWindows_Post ( BtCompany *etpv )
 
 int BtTicket_pintar ( BtTicket * )
 {
-    _depura ( "pluginticketbasico::BtTicket_pintar", 0 );
+    blDebug ( "pluginticketbasico::BtTicket_pintar", 0 );
     
     if (g_bud)
         g_bud->pintar();
     
-    _depura ( "END pluginticketbasico::BtTicket_pintar", 0 );
+    blDebug ( "END pluginticketbasico::BtTicket_pintar", 0 );
     
     return 0;
 }

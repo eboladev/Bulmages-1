@@ -36,9 +36,9 @@
 **/
 BfInformeCliente::BfInformeCliente ( BfCompany *comp )
 {
-    _depura ( "BfInformeCliente::BfInformeCliente", 0 );
+    blDebug ( "BfInformeCliente::BfInformeCliente", 0 );
     companyact = comp;
-    _depura ( "END BfInformeCliente::BfInformeCliente", 0 );
+    blDebug ( "END BfInformeCliente::BfInformeCliente", 0 );
 }
 
 
@@ -47,8 +47,8 @@ BfInformeCliente::BfInformeCliente ( BfCompany *comp )
 **/
 BfInformeCliente::~BfInformeCliente()
 {
-    _depura ( "BfInformeCliente::~BfInformeCliente", 0 );
-    _depura ( "END BfInformeCliente::~BfInformeCliente", 0 );
+    blDebug ( "BfInformeCliente::~BfInformeCliente", 0 );
+    blDebug ( "END BfInformeCliente::~BfInformeCliente", 0 );
 }
 
 
@@ -58,9 +58,9 @@ BfInformeCliente::~BfInformeCliente()
 **/
 void BfInformeCliente::setCliente ( QString val )
 {
-    _depura ( "BfInformeCliente::setCliente", 0 );
+    blDebug ( "BfInformeCliente::setCliente", 0 );
     m_idcliente = val;
-    _depura ( "END BfInformeCliente::setCliente", 0 );
+    blDebug ( "END BfInformeCliente::setCliente", 0 );
 }
 
 
@@ -69,7 +69,7 @@ void BfInformeCliente::setCliente ( QString val )
 **/
 void BfInformeCliente::generarInforme()
 {
-    _depura ( "BfInformeCliente::generarInforme", 0 );
+    blDebug ( "BfInformeCliente::generarInforme", 0 );
     QString archivo = g_confpr->valor ( CONF_DIR_OPENREPORTS ) + "informecliente.rml";
     QString archivod = g_confpr->valor ( CONF_DIR_USER ) + "informecliente.rml";
     QString archivologo = g_confpr->valor ( CONF_DIR_OPENREPORTS ) + "logo.jpg";
@@ -303,7 +303,7 @@ void BfInformeCliente::generarInforme()
         file.close();
     } // end if
     invocaPDF ( "informecliente" );
-    _depura ( "END BfInformeCliente::generarInforme", 0 );
+    blDebug ( "END BfInformeCliente::generarInforme", 0 );
 }
 
 

@@ -37,8 +37,8 @@ un eventHandler especifico
 **/
 CuadranteQTreeWidget::CuadranteQTreeWidget ( QWidget *parent ) : QTreeWidget ( parent )
 {
-    _depura ( "CuadranteQTreeWidget::CuadranteQTreeWidget", 0 );
-    _depura ( "END CuadranteQTreeWidget::CuadranteQTreeWidget", 0 );
+    blDebug ( "CuadranteQTreeWidget::CuadranteQTreeWidget", 0 );
+    blDebug ( "END CuadranteQTreeWidget::CuadranteQTreeWidget", 0 );
 }
 
 
@@ -47,7 +47,7 @@ CuadranteQTreeWidget::CuadranteQTreeWidget ( QWidget *parent ) : QTreeWidget ( p
 **/
 CuadranteQTreeWidget::~CuadranteQTreeWidget()
 {
-    _depura ( "END ~CuadranteQTreeWidget", 0 );
+    blDebug ( "END ~CuadranteQTreeWidget", 0 );
 }
 
 
@@ -56,7 +56,7 @@ CuadranteQTreeWidget::~CuadranteQTreeWidget()
 **/
 void CuadranteQTreeWidget::startDrag ( Qt::DropActions supportedActions )
 {
-    _depura ( "CuadranteQTreeWidget::startDrag", 0 );
+    blDebug ( "CuadranteQTreeWidget::startDrag", 0 );
 
     QDrag *drag = new QDrag ( this );
     QMimeData *mimeData = new QMimeData;
@@ -68,7 +68,7 @@ void CuadranteQTreeWidget::startDrag ( Qt::DropActions supportedActions )
 
     Qt::DropAction dropAction = drag->start ( Qt::ActionMask );
 
-    _depura ( "finalizado", 0 , QString::number ( dropAction ) );
+    blDebug ( "finalizado", 0 , QString::number ( dropAction ) );
 
 }
 

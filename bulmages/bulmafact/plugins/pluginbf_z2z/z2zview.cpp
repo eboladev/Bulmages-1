@@ -46,7 +46,7 @@
 Z2ZView::Z2ZView ( BfCompany *comp, QWidget *parent )
         : BfForm ( comp, parent )
 {
-    _depura ( "Z2ZView::Z2ZView", 0 );
+    blDebug ( "Z2ZView::Z2ZView", 0 );
     setupUi ( this );
     setAttribute ( Qt::WA_DeleteOnClose );
 
@@ -60,7 +60,7 @@ Z2ZView::Z2ZView ( BfCompany *comp, QWidget *parent )
 
     }
 
-    _depura ( "END Z2ZView::Z2ZView" );
+    blDebug ( "END Z2ZView::Z2ZView" );
 }
 
 
@@ -71,8 +71,8 @@ Z2ZView::Z2ZView ( BfCompany *comp, QWidget *parent )
 **/
 Z2ZView::~Z2ZView()
 {
-    _depura ( "Z2ZView::~Z2ZView", 0 );
-    _depura ( "END Z2ZView::~Z2ZView", 0 );
+    blDebug ( "Z2ZView::~Z2ZView", 0 );
+    blDebug ( "END Z2ZView::~Z2ZView", 0 );
 }
 
 

@@ -29,11 +29,11 @@
 **/
 linprevcobro::linprevcobro ( BcCompany *comp )
 {
-    _depura ( "linprevcobro::linprevcobro", 0 );
+    blDebug ( "linprevcobro::linprevcobro", 0 );
     empresaactual = comp;
     dbConnection = comp->bdempresa();
     vacialinprevcobro();
-    _depura ( "END linprevcobro::linprevcobro", 0 );
+    blDebug ( "END linprevcobro::linprevcobro", 0 );
 }
 
 
@@ -44,7 +44,7 @@ linprevcobro::linprevcobro ( BcCompany *comp )
 **/
 linprevcobro::linprevcobro ( BcCompany *comp, QString idprevcobro )
 {
-    _depura ( "linprevcobro::linprevcobro", 0 );
+    blDebug ( "linprevcobro::linprevcobro", 0 );
     empresaactual = comp;
     dbConnection = comp->bdempresa();
     QString SQLQuery = "SELECT * FROM prevcobro "
@@ -72,7 +72,7 @@ linprevcobro::linprevcobro ( BcCompany *comp, QString idprevcobro )
     } else {
         vacialinprevcobro();
     }// end if
-    _depura ( "END linprevcobro::linprevcobro", 0 );
+    blDebug ( "END linprevcobro::linprevcobro", 0 );
 }
 
 
@@ -98,7 +98,7 @@ linprevcobro::linprevcobro ( BcCompany *comp, QString idprevcobro )
 **/
 linprevcobro::linprevcobro ( BcCompany *comp, QString a, QString b, QString c, QString d, QString e, QString f, QString g, QString h, QString i, QString j, QString k, QString l, QString m, QString idctacliente, QString codigoctacliente, QString nomctacliente )
 {
-    _depura ( "linprevcobro::linprevcobro", 0 );
+    blDebug ( "linprevcobro::linprevcobro", 0 );
     empresaactual = comp;
     dbConnection = comp->bdempresa();
     mdb_idprevcobro = a;
@@ -117,7 +117,7 @@ linprevcobro::linprevcobro ( BcCompany *comp, QString a, QString b, QString c, Q
     mdb_idctacliente = idctacliente;
     mdb_codigoctacliente = codigoctacliente;
     mdb_nomctacliente = nomctacliente;
-    _depura ( "END linprevcobro::linprevcobro", 0 );
+    blDebug ( "END linprevcobro::linprevcobro", 0 );
 }
 
 
@@ -126,8 +126,8 @@ linprevcobro::linprevcobro ( BcCompany *comp, QString a, QString b, QString c, Q
 **/
 linprevcobro::~linprevcobro()
 {
-    _depura ( "linprevcobro::~linprevcobro", 0 );
-    _depura ( "END linprevcobro::~linprevcobro", 0 );
+    blDebug ( "linprevcobro::~linprevcobro", 0 );
+    blDebug ( "END linprevcobro::~linprevcobro", 0 );
 }
 
 
@@ -136,7 +136,7 @@ linprevcobro::~linprevcobro()
 **/
 void linprevcobro::vacialinprevcobro()
 {
-    _depura ( "linprevcobro::vacialinprevcobro", 0 );
+    blDebug ( "linprevcobro::vacialinprevcobro", 0 );
     mdb_idprevcobro = "";
     mdb_fprevistaprevcobro = "";
     mdb_fcobroprevcobro = "";
@@ -153,7 +153,7 @@ void linprevcobro::vacialinprevcobro()
     mdb_idctacliente = "";
     mdb_codigoctacliente = "";
     mdb_nomctacliente = "";
-    _depura ( "END linprevcobro::vacialinprevcobro", 0 );
+    blDebug ( "END linprevcobro::vacialinprevcobro", 0 );
 }
 
 
@@ -162,14 +162,14 @@ void linprevcobro::vacialinprevcobro()
 **/
 void linprevcobro::borrar()
 {
-    _depura ( "linprevcobro::borrar", 0 );
+    blDebug ( "linprevcobro::borrar", 0 );
     if ( mdb_idprevcobro != "" ) {
         dbConnection->begin();
         dbConnection->runQuery ( "DELETE FROM prevcobro WHERE idprevcobro = " + mdb_idprevcobro );
         dbConnection->commit();
         vacialinprevcobro();
     } // end if
-    _depura ( "END linprevcobro::borrar", 0 );
+    blDebug ( "END linprevcobro::borrar", 0 );
 }
 
 
@@ -178,7 +178,7 @@ void linprevcobro::borrar()
 **/
 void linprevcobro::guardalinprevcobro()
 {
-    _depura ( "linprevcobro::guardalinprevcobro", 0 );
+    blDebug ( "linprevcobro::guardalinprevcobro", 0 );
     if ( mdb_idfpago == "" ) {
         mdb_idfpago = "NULL";
     } // end if
@@ -228,7 +228,7 @@ void linprevcobro::guardalinprevcobro()
         dbConnection->runQuery ( SQLQuery );
         dbConnection->commit();
     } // end if
-    _depura ( "END linprevcobro::guardalinprevcobro", 0 );
+    blDebug ( "END linprevcobro::guardalinprevcobro", 0 );
 }
 
 
@@ -238,7 +238,7 @@ void linprevcobro::guardalinprevcobro()
 **/
 void linprevcobro::setcodigocuenta ( QString val )
 {
-    _depura ( "linprevcobro::setcodigocuenta", 0 );
+    blDebug ( "linprevcobro::setcodigocuenta", 0 );
     fprintf ( stderr, "setcodigocuenta(%s)\n", val.toAscii().constData() );
     mdb_codigocuenta = blExtendStringWithZeros ( val, empresaactual->numdigitosempresa() );
     QString SQLQuery = "SELECT idcuenta, descripcion FROM cuenta WHERE codigo = '" + mdb_codigocuenta + "'";
@@ -248,7 +248,7 @@ void linprevcobro::setcodigocuenta ( QString val )
         mdb_idcuenta = cur->valor ( "idcuenta" );
     } // end if
     delete cur;
-    _depura ( "END linprevcobro::setcodigocuenta", 0 );
+    blDebug ( "END linprevcobro::setcodigocuenta", 0 );
 }
 
 
@@ -258,7 +258,7 @@ void linprevcobro::setcodigocuenta ( QString val )
 **/
 void linprevcobro::setidcuenta ( QString val )
 {
-    _depura ( "linprevcobro::setidcuenta", 0 );
+    blDebug ( "linprevcobro::setidcuenta", 0 );
     fprintf ( stderr, "setidcuenta(%s)\n", val.toAscii().constData() );
     mdb_idcuenta = val;
     QString SQLQuery = "SELECT codigo, descripcion FROM cuenta WHERE idcuenta = " + mdb_idcuenta + "";
@@ -269,7 +269,7 @@ void linprevcobro::setidcuenta ( QString val )
     } // end if
     delete cur;
     fprintf ( stderr, "end setidcuenta\n" );
-    _depura ( "END linprevcobro::setidcuenta", 0 );
+    blDebug ( "END linprevcobro::setidcuenta", 0 );
 }
 
 
@@ -287,7 +287,7 @@ void linprevcobro::setidcuenta ( QString val )
 **/
 int linprevcobro::creaPago()
 {
-    _depura ( "linprevcobro::creaPago", 0 );
+    blDebug ( "linprevcobro::creaPago", 0 );
     /// Si la previsi&oacute;n no esta guardada en la base de datos salimos para que no
     /// haya problemas.
     if ( idprevcobro() == "" )
@@ -352,7 +352,7 @@ int linprevcobro::creaPago()
     mdb_idasiento = idasiento1;
     guardalinprevcobro();
     delete diag;
-    _depura ( "END linprevcobro::creaPago", 0 );
+    blDebug ( "END linprevcobro::creaPago", 0 );
     return 1;
 }
 
@@ -363,7 +363,7 @@ int linprevcobro::creaPago()
 **/
 void linprevcobro::setcodigoctacliente ( QString val )
 {
-    _depura ( "linprevcobro::setcodigoctacliente", 0 );
+    blDebug ( "linprevcobro::setcodigoctacliente", 0 );
     fprintf ( stderr, "setcodigocuenta(%s)\n", val.toAscii().constData() );
     mdb_codigoctacliente = blExtendStringWithZeros ( val, empresaactual->numdigitosempresa() );
     QString SQLQuery = "SELECT idcuenta, descripcion FROM cuenta WHERE codigo = '" + mdb_codigoctacliente + "'";
@@ -373,7 +373,7 @@ void linprevcobro::setcodigoctacliente ( QString val )
         mdb_idctacliente = cur->valor ( "idcuenta" );
     }// end if
     delete cur;
-    _depura ( "END linprevcobro::setcodigoctacliente", 0 );
+    blDebug ( "END linprevcobro::setcodigoctacliente", 0 );
 }
 
 
@@ -383,7 +383,7 @@ void linprevcobro::setcodigoctacliente ( QString val )
 **/
 void linprevcobro::setidctacliente ( QString val )
 {
-    _depura ( "linprevcobro::setidctacliente", 0 );
+    blDebug ( "linprevcobro::setidctacliente", 0 );
     fprintf ( stderr, "setidcuenta(%s)\n", val.toAscii().constData() );
     mdb_idctacliente = val;
     QString SQLQuery = "SELECT codigo, descripcion FROM cuenta WHERE idcuenta = " + mdb_idctacliente + "";
@@ -394,6 +394,6 @@ void linprevcobro::setidctacliente ( QString val )
     } // end if
     delete cur;
     fprintf ( stderr, "end setidcuenta\n" );
-    _depura ( "END slinprevcobro::setidctacliente", 0 );
+    blDebug ( "END slinprevcobro::setidctacliente", 0 );
 }
 

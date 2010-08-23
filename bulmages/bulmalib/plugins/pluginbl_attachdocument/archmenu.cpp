@@ -43,11 +43,11 @@
 **/
 ArchMenu::ArchMenu ( QWidget *parent ) : QWidget ( parent )
 {
-    _depura ( "ArchMenu::ArchMenu", 0 );
+    blDebug ( "ArchMenu::ArchMenu", 0 );
     connect ( parent, SIGNAL ( pintaMenu ( QMenu * ) ), this, SLOT ( pintaMenu ( QMenu * ) ) );
     connect ( parent, SIGNAL ( trataMenu ( QAction * ) ), this, SLOT ( trataMenu ( QAction * ) ) );
     m_BlForm = ( BlForm * ) parent;
-    _depura ( "END ArchMenu::ArchMenu", 0 );
+    blDebug ( "END ArchMenu::ArchMenu", 0 );
 }
 
 
@@ -56,8 +56,8 @@ ArchMenu::ArchMenu ( QWidget *parent ) : QWidget ( parent )
 **/
 ArchMenu::~ArchMenu()
 {
-    _depura ( "ArchMenu::~ArchMenu", 0 );
-    _depura ( "END ArchMenu::~ArchMenu", 0 );
+    blDebug ( "ArchMenu::~ArchMenu", 0 );
+    blDebug ( "END ArchMenu::~ArchMenu", 0 );
 }
 
 
@@ -67,7 +67,7 @@ ArchMenu::~ArchMenu()
 **/
 void ArchMenu::pintaMenu ( QMenu *menu )
 {
-    _depura ( "ArchMenu::pintaMenu", 0 );
+    blDebug ( "ArchMenu::pintaMenu", 0 );
     QMenu *nmenu = menu->addMenu ( tr ( "Archivo Documental" ) );
     QAction *addaction = nmenu->addAction ( tr ( "Agregar Archivo " ) );
     addaction->setObjectName ( "addarchivo" );
@@ -85,7 +85,7 @@ void ArchMenu::pintaMenu ( QMenu *menu )
         cur->nextRecord();
     } // end while
     delete cur;
-    _depura ( "END ArchMenu::pintaMenu", 0 );
+    blDebug ( "END ArchMenu::pintaMenu", 0 );
 }
 
 
@@ -95,7 +95,7 @@ void ArchMenu::pintaMenu ( QMenu *menu )
 **/
 void ArchMenu::trataMenu ( QAction *action )
 {
-    _depura ( "ArchMenu::trataMenu", 0 );
+    blDebug ( "ArchMenu::trataMenu", 0 );
     if ( action->objectName() == "addarchivo" ) {
         QDialog *diag = new QDialog;
         Archivo *camb = new Archivo ( m_BlForm->mainCompany(), diag );
@@ -141,7 +141,7 @@ void ArchMenu::trataMenu ( QAction *action )
         m_BlForm->mainCompany()->runQuery ( query );
     } // end if
 
-    _depura ( "END ArchMenu::trataMenu", 0 );
+    blDebug ( "END ArchMenu::trataMenu", 0 );
     return;
 }
 

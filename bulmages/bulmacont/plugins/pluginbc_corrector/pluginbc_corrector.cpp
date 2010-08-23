@@ -44,7 +44,7 @@ QAction *viewCorrector;
 **/
 int entryPoint ( BcBulmaCont *bcont )
 {
-    _depura ( "Entrada del plugin Corrector", 10 );
+    blDebug ( "Entrada del plugin Corrector", 10 );
 
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale ( LC_ALL, "" );
@@ -102,7 +102,7 @@ int entryPoint ( BcBulmaCont *bcont )
         viewCorrector->setChecked ( FALSE );
     } // end if
 
-    _depura ( "Iniciado correctamente el plugin Corrector", 10 );
+    blDebug ( "Iniciado correctamente el plugin Corrector", 10 );
     return 0;
 }
 

@@ -29,14 +29,14 @@
 **/
 BlProgressBar::BlProgressBar (  ) : QDialog ( 0, Qt::SplashScreen )
 {
-    _depura ( "BlProgressBar::BlProgressBar", 0 );
+    blDebug ( "BlProgressBar::BlProgressBar", 0 );
     if ( g_confpr->valor ( CONF_SHOW_PROGRESS_BAR ) == "TRUE" ) {
         setupUi ( this );
         QDesktopWidget *pantalla = new QDesktopWidget();
         setGeometry ( ( pantalla->screenGeometry().width() / 2 ) - this->width() / 2, ( pantalla->screenGeometry().height() / 2 ) - this->height() / 2, this->width(), this->height() );
         delete pantalla;
     } // end if
-    _depura ( "END BlProgressBar::BlProgressBar", 0 );
+    blDebug ( "END BlProgressBar::BlProgressBar", 0 );
 }
 
 
@@ -45,7 +45,7 @@ BlProgressBar::BlProgressBar (  ) : QDialog ( 0, Qt::SplashScreen )
 **/
 void BlProgressBar::setText ( const QString &tex )
 {
-    _depura ( "BlProgressBar::setText", 0 );
+    blDebug ( "BlProgressBar::setText", 0 );
 
     if ( g_confpr->valor ( CONF_SHOW_PROGRESS_BAR ) == "TRUE" ) {
         mui_label1->setText ( tex );
@@ -53,7 +53,7 @@ void BlProgressBar::setText ( const QString &tex )
         for ( int i = 0; i < 20; i++ )
             repaint();
     } // end if
-    _depura ( "END BlProgressBar::setText", 0 );
+    blDebug ( "END BlProgressBar::setText", 0 );
 }
 
 
@@ -62,8 +62,8 @@ void BlProgressBar::setText ( const QString &tex )
 **/
 BlProgressBar::~BlProgressBar()
 {
-    _depura ( "BlProgressBar::~BlProgressBar", 0 );
-    _depura ( "END BlProgressBar::~BlProgressBar", 0 );
+    blDebug ( "BlProgressBar::~BlProgressBar", 0 );
+    blDebug ( "END BlProgressBar::~BlProgressBar", 0 );
 }
 
 
@@ -72,10 +72,10 @@ BlProgressBar::~BlProgressBar()
 **/
 void BlProgressBar::setValue ( int value )
 {
-    _depura ( "BlProgressBar::setValue", 0 );
+    blDebug ( "BlProgressBar::setValue", 0 );
     if ( g_confpr->valor ( CONF_SHOW_PROGRESS_BAR ) == "TRUE" )
         mui_progressBar->setValue ( value );
-    _depura ( "END BlProgressBar::setValue", 0 );
+    blDebug ( "END BlProgressBar::setValue", 0 );
 
 }
 
@@ -85,8 +85,8 @@ void BlProgressBar::setValue ( int value )
 **/
 int BlProgressBar::value()
 {
-    _depura ( "BlProgressBar::value", 0 );
-    _depura ( "END BlProgressBar::value", 0 );
+    blDebug ( "BlProgressBar::value", 0 );
+    blDebug ( "END BlProgressBar::value", 0 );
     if ( g_confpr->valor ( CONF_SHOW_PROGRESS_BAR ) == "TRUE" ) {
         return mui_progressBar->value();
     } else {
@@ -100,10 +100,10 @@ int BlProgressBar::value()
 **/
 void BlProgressBar::setRange ( int range,  int range1 )
 {
-    _depura ( "BlProgressBar::setRange", 0 );
+    blDebug ( "BlProgressBar::setRange", 0 );
     if ( g_confpr->valor ( CONF_SHOW_PROGRESS_BAR ) == "TRUE" )
         mui_progressBar->setRange ( range, range1 );
-    _depura ( "END BlProgressBar::setRange", 0 );
+    blDebug ( "END BlProgressBar::setRange", 0 );
 }
 
 
@@ -112,10 +112,10 @@ void BlProgressBar::setRange ( int range,  int range1 )
 **/
 void BlProgressBar::show (  )
 {
-    _depura ( "BlProgressBar::show", 0 );
+    blDebug ( "BlProgressBar::show", 0 );
     if ( g_confpr->valor ( CONF_SHOW_PROGRESS_BAR ) == "TRUE" ) {
         QWidget::show();
     } // end if
-    _depura ( "END BlProgressBar::show", 0 );
+    blDebug ( "END BlProgressBar::show", 0 );
 }
 

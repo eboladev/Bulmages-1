@@ -37,7 +37,7 @@
 BcCuentasAnualesView::BcCuentasAnualesView ( BcCompany  *emp, QWidget *parent )
         : BcForm ( emp, parent )
 {
-    _depura ( "BcCuentasAnualesView::BcCuentasAnualesView", 0 );
+    blDebug ( "BcCuentasAnualesView::BcCuentasAnualesView", 0 );
     setTitleName ( _ ( "Cuentas Anuales" ) );
     /// Establecemos cual va a ser la tabla en la que basarse para los permisos
     setDbTableName ( "asiento" );
@@ -48,7 +48,7 @@ BcCuentasAnualesView::BcCuentasAnualesView ( BcCompany  *emp, QWidget *parent )
     m_modo = 0;
     inicializatabla();
     mainCompany() ->meteWindow ( windowTitle(), this );
-    _depura ( "END BcCuentasAnualesView::BcCuentasAnualesView", 0 );
+    blDebug ( "END BcCuentasAnualesView::BcCuentasAnualesView", 0 );
 }
 
 
@@ -57,9 +57,9 @@ BcCuentasAnualesView::BcCuentasAnualesView ( BcCompany  *emp, QWidget *parent )
 **/
 BcCuentasAnualesView::~BcCuentasAnualesView()
 {
-    _depura ( "BcCuentasAnualesView::~BcCuentasAnualesView\n", 0 );
+    blDebug ( "BcCuentasAnualesView::~BcCuentasAnualesView\n", 0 );
     mainCompany() ->sacaWindow ( this );
-    _depura ( "END BcCuentasAnualesView::~BcCuentasAnualesView\n", 0 );
+    blDebug ( "END BcCuentasAnualesView::~BcCuentasAnualesView\n", 0 );
 }
 
 
@@ -68,9 +68,9 @@ BcCuentasAnualesView::~BcCuentasAnualesView()
 **/
 void BcCuentasAnualesView::setmodoselector()
 {
-    _depura ( "BcCuentasAnualesView::setmodoselector", 0 );
+    blDebug ( "BcCuentasAnualesView::setmodoselector", 0 );
     m_modo = 1;
-    _depura ( "END BcCuentasAnualesView::setmodoselector", 0 );
+    blDebug ( "END BcCuentasAnualesView::setmodoselector", 0 );
 }
 
 
@@ -79,9 +79,9 @@ void BcCuentasAnualesView::setmodoselector()
 **/
 void BcCuentasAnualesView::setmodoeditor()
 {
-    _depura ( "BcCuentasAnualesView::setmodoeditor", 0 );
+    blDebug ( "BcCuentasAnualesView::setmodoeditor", 0 );
     m_modo = 0;
-    _depura ( "END BcCuentasAnualesView::setmodoeditor", 0 );
+    blDebug ( "END BcCuentasAnualesView::setmodoeditor", 0 );
 }
 
 
@@ -91,8 +91,8 @@ void BcCuentasAnualesView::setmodoeditor()
 **/
 QString BcCuentasAnualesView::nomBalance()
 {
-    _depura ( "BcCuentasAnualesView::nomBalance", 0 );
-    _depura ( "END BcCuentasAnualesView::nomBalance", 0 );
+    blDebug ( "BcCuentasAnualesView::nomBalance", 0 );
+    blDebug ( "END BcCuentasAnualesView::nomBalance", 0 );
     return m_nomBalance;
 }
 
@@ -103,8 +103,8 @@ QString BcCuentasAnualesView::nomBalance()
 **/
 QString BcCuentasAnualesView::idBalance()
 {
-    _depura ( "BcCuentasAnualesView::idBalance", 0 );
-    _depura ( "END BcCuentasAnualesView::idBalance", 0 );
+    blDebug ( "BcCuentasAnualesView::idBalance", 0 );
+    blDebug ( "END BcCuentasAnualesView::idBalance", 0 );
     return m_idBalance;
 }
 
@@ -115,7 +115,7 @@ QString BcCuentasAnualesView::idBalance()
 **/
 void BcCuentasAnualesView::inicializatabla()
 {
-    _depura ( "BcCuentasAnualesView::inicializatabla", 0 );
+    blDebug ( "BcCuentasAnualesView::inicializatabla", 0 );
 
     mui_listado->clear();
     mui_listado->setColumnCount ( 2 );
@@ -156,7 +156,7 @@ void BcCuentasAnualesView::inicializatabla()
 
         mui_listado->setItem ( i, COL_NOMBRE, newItem2 );
     } // end for
-    _depura ( "END BcCuentasAnualesView::inicializatabla", 0 );
+    blDebug ( "END BcCuentasAnualesView::inicializatabla", 0 );
 }
 
 
@@ -165,9 +165,9 @@ void BcCuentasAnualesView::inicializatabla()
 **/
 void BcCuentasAnualesView::on_mui_listado_itemDoubleClicked ( QTableWidgetItem * )
 {
-    _depura ( "BcCuentasAnualesView::on_listado_itemDoubleclicked", 0 );
+    blDebug ( "BcCuentasAnualesView::on_listado_itemDoubleclicked", 0 );
     imprimir();
-    _depura ( "END BcCuentasAnualesView::on_listado_itemDoubleclicked", 0 );
+    blDebug ( "END BcCuentasAnualesView::on_listado_itemDoubleclicked", 0 );
 }
 
 
@@ -176,13 +176,13 @@ void BcCuentasAnualesView::on_mui_listado_itemDoubleClicked ( QTableWidgetItem *
 **/
 void BcCuentasAnualesView::imprimir()
 {
-    _depura ( "BcCuentasAnualesView::imprimir", 0 );
+    blDebug ( "BcCuentasAnualesView::imprimir", 0 );
     QString idbalance = mui_listado->item ( mui_listado->currentRow(), COL_ARCHIVO ) ->text();
     BcCuentasAnualesImprimirView *b = new BcCuentasAnualesImprimirView ( mainCompany(), 0 );
     b->setidbalance ( idbalance );
     b->exec();
     delete b;
-    _depura ( "END BcCuentasAnualesView::imprimir", 0 );
+    blDebug ( "END BcCuentasAnualesView::imprimir", 0 );
 
 }
 

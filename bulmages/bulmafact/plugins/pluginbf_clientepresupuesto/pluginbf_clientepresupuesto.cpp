@@ -37,8 +37,8 @@ PresupuestoList *g_presupuestosList = NULL;
 **/
 mypluginpres::mypluginpres()
 {
-    _depura ( "mypluginpres::mypluginpres", 0 );
-    _depura ( "END mypluginpres::mypluginpres", 0 );
+    blDebug ( "mypluginpres::mypluginpres", 0 );
+    blDebug ( "END mypluginpres::mypluginpres", 0 );
 }
 
 
@@ -47,8 +47,8 @@ mypluginpres::mypluginpres()
 **/
 mypluginpres::~mypluginpres()
 {
-    _depura ( "mypluginpres::~mypluginpres", 0 );
-    _depura ( "END mypluginpres::~mypluginpres", 0 );
+    blDebug ( "mypluginpres::~mypluginpres", 0 );
+    blDebug ( "END mypluginpres::~mypluginpres", 0 );
 }
 
 
@@ -57,12 +57,12 @@ mypluginpres::~mypluginpres()
 **/
 void mypluginpres::elslot()
 {
-    _depura ( "mypluginpres::elslot", 0 );
+    blDebug ( "mypluginpres::elslot", 0 );
     if ( g_presupuestosList ) {
         g_presupuestosList->hide();
         g_presupuestosList->show();
     }// end if
-    _depura ( "END mypluginpres::elslot", 0 );
+    blDebug ( "END mypluginpres::elslot", 0 );
 }
 
 ///
@@ -70,12 +70,12 @@ void mypluginpres::elslot()
 **/
 void mypluginpres::elslot1()
 {
-    _depura ( "mypluginpres::elslot1", 0 );
+    blDebug ( "mypluginpres::elslot1", 0 );
     PresupuestoView * bud = new PresupuestoView ( ( BfCompany * ) mainCompany(), NULL );
     mainCompany() ->m_pWorkspace->addWindow ( bud );
     bud->inicializar();
     bud->show();
-    _depura ( "END mypluginpres::elslot1", 0 );
+    blDebug ( "END mypluginpres::elslot1", 0 );
 }
 
 
@@ -86,7 +86,7 @@ void mypluginpres::elslot1()
 **/
 void mypluginpres::inicializa ( BfBulmaFact *bges )
 {
-    _depura ( "mypluginpres::inicializa", 0 );
+    blDebug ( "mypluginpres::inicializa", 0 );
 
     if ( bges->company()->hasTablePrivilege ( "presupuesto", "SELECT" ) ) {
 
@@ -114,7 +114,7 @@ void mypluginpres::inicializa ( BfBulmaFact *bges )
         bges->Fichas->addAction ( npago );
         connect ( npago, SIGNAL ( activated() ), this, SLOT ( elslot1() ) );
     }// end if
-    _depura ( "END mypluginpres::inicializa", 0 );
+    blDebug ( "END mypluginpres::inicializa", 0 );
 }
 
 
@@ -125,7 +125,7 @@ void mypluginpres::inicializa ( BfBulmaFact *bges )
 **/
 int entryPoint ( BfBulmaFact *bges )
 {
-    _depura ( "Punto de entrada del plugin de presupuestos a clientes\n", 0 );
+    blDebug ( "Punto de entrada del plugin de presupuestos a clientes\n", 0 );
 
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale ( LC_ALL, "" );
@@ -198,7 +198,7 @@ int BfBuscarReferencia_on_mui_abrirtodo_clicked_Post ( BfBuscarReferencia *ref )
 int PedidoClienteView_PedidoClienteView ( PedidoClienteView *l )
 {
 
-    _depura ( "PedidoClienteView_PedidoClienteView", 0 );
+    blDebug ( "PedidoClienteView_PedidoClienteView", 0 );
 
     VerPreQToolButton *mui_exporta_epresupuesto2 = new VerPreQToolButton ( l, l->mui_plugbotones );
 
@@ -212,7 +212,7 @@ int PedidoClienteView_PedidoClienteView ( PedidoClienteView *l )
     }// end if
     m_hboxLayout1->addWidget ( mui_exporta_epresupuesto2 );
 
-    _depura ( "END PedidoClienteView_PedidoClienteView", 0 );
+    blDebug ( "END PedidoClienteView_PedidoClienteView", 0 );
 
     return 0;
 }

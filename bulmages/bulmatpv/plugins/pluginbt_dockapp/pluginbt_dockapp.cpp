@@ -36,13 +36,13 @@ DockApp *g_admin;
 **/
 int entryPoint ( BtBulmaTPV *tpv )
 {
-    _depura ( "entryPoint", 0 );
+    blDebug ( "entryPoint", 0 );
 
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale ( LC_ALL, "" );
     bindtextdomain ( "pluginbt_dockapp", g_confpr->valor ( CONF_DIR_TRADUCCION ).toAscii().constData() );
 
-    _depura ( "END entryPoint", 0 );
+    blDebug ( "END entryPoint", 0 );
     return 0;
 }
 
@@ -52,9 +52,9 @@ int entryPoint ( BtBulmaTPV *tpv )
 **/
 int exitPoint ( BtBulmaTPV *tpv )
 {
-    _depura ( "PluginBt_DockApp::exitPoint", 0 );
+    blDebug ( "PluginBt_DockApp::exitPoint", 0 );
 
-    _depura ( "END PluginBt_DockApp::exitPoint", 0 );
+    blDebug ( "END PluginBt_DockApp::exitPoint", 0 );
     return 0;
 }
 

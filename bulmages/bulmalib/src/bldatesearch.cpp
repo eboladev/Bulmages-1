@@ -29,7 +29,7 @@
 **/
 BlDateSearch::BlDateSearch ( QWidget *parent ) : BlWidget ( parent )
 {
-    _depura ( "BlDateSearch::BlDateSearch", 0 );
+    blDebug ( "BlDateSearch::BlDateSearch", 0 );
     setupUi ( this );
     QObject::connect ( m_busquedaFecha, SIGNAL ( clicked ( bool ) ), this, SLOT ( s_searchFecha() ) );
    
@@ -39,7 +39,7 @@ BlDateSearch::BlDateSearch ( QWidget *parent ) : BlWidget ( parent )
 
     /// Establecemos la delegacion del foco en el texto
     setFocusProxy(m_textoFecha);
-    _depura ( "END BlDateSearch::BlDateSearch", 0 );
+    blDebug ( "END BlDateSearch::BlDateSearch", 0 );
 }
 
 
@@ -48,8 +48,8 @@ BlDateSearch::BlDateSearch ( QWidget *parent ) : BlWidget ( parent )
 **/
 BlDateSearch::~BlDateSearch()
 {
-    _depura ( "BlDateSearch::~BlDateSearch", 0 );
-    _depura ( "END BlDateSearch::~BlDateSearch", 0 );
+    blDebug ( "BlDateSearch::~BlDateSearch", 0 );
+    blDebug ( "END BlDateSearch::~BlDateSearch", 0 );
 }
 
 
@@ -59,9 +59,9 @@ BlDateSearch::~BlDateSearch()
 **/
 void BlDateSearch::setfecha ( QString val )
 {
-    _depura ( "BlDateSearch::setfecha", 0 );
+    blDebug ( "BlDateSearch::setfecha", 0 );
     m_textoFecha->setText ( val );
-    _depura ( "END BlDateSearch::setfecha", 0 );
+    blDebug ( "END BlDateSearch::setfecha", 0 );
 }
 
 ///
@@ -70,10 +70,10 @@ void BlDateSearch::setfecha ( QString val )
 **/
 void BlDateSearch::setText ( QString val )
 {
-    _depura ( "BlDateSearch::setText", 0 );
+    blDebug ( "BlDateSearch::setText", 0 );
     s_fechalostFocus();
     m_textoFecha->setText ( val );
-    _depura ( "END BlDateSearch::setText", 0 );
+    blDebug ( "END BlDateSearch::setText", 0 );
 }
 
 
@@ -83,9 +83,9 @@ void BlDateSearch::setText ( QString val )
 **/
 void BlDateSearch::setFieldValue ( QString val )
 {
-    _depura ( "BlDateSearch::setFieldValue", 0 );
+    blDebug ( "BlDateSearch::setFieldValue", 0 );
     m_textoFecha->setText ( val );
-    _depura ( "END BlDateSearch::setFieldValue", 0 );
+    blDebug ( "END BlDateSearch::setFieldValue", 0 );
 }
 
 
@@ -95,8 +95,8 @@ void BlDateSearch::setFieldValue ( QString val )
 **/
 QString BlDateSearch::fecha()
 {
-    _depura ( "BlDateSearch::fecha", 0 );
-    _depura ( "END BlDateSearch::fecha", 0 );
+    blDebug ( "BlDateSearch::fecha", 0 );
+    blDebug ( "END BlDateSearch::fecha", 0 );
     s_fechalostFocus();
     return m_textoFecha->text();
 }
@@ -108,8 +108,8 @@ QString BlDateSearch::fecha()
 **/
 QString BlDateSearch::text()
 {
-    _depura ( "BlDateSearch::text", 0 );
-    _depura ( "END BlDateSearch::text", 0 );
+    blDebug ( "BlDateSearch::text", 0 );
+    blDebug ( "END BlDateSearch::text", 0 );
     s_fechalostFocus();
     return m_textoFecha->text();
 }
@@ -121,9 +121,9 @@ QString BlDateSearch::text()
 **/
 QString BlDateSearch::fieldValue()
 {
-    _depura ( "BlDateSearch::fieldValue", 0 );
+    blDebug ( "BlDateSearch::fieldValue", 0 );
     s_fechalostFocus();
-    _depura ( "END BlDateSearch::fieldValue", 0 );
+    blDebug ( "END BlDateSearch::fieldValue", 0 );
     return m_textoFecha->text();
 }
 
@@ -133,10 +133,10 @@ QString BlDateSearch::fieldValue()
 **/
 void BlDateSearch::s_returnPressed()
 {
-    _depura ( "BlDateSearch::s_enterPressed", 0 );
+    blDebug ( "BlDateSearch::s_enterPressed", 0 );
     s_fechalostFocus();
     emit returnPressed();
-    _depura ( "END BlDateSearch::s_enterPressed", 0 );
+    blDebug ( "END BlDateSearch::s_enterPressed", 0 );
 }
 
 
@@ -145,9 +145,9 @@ void BlDateSearch::s_returnPressed()
 **/
 void BlDateSearch::selectAll()
 {
-    _depura ( "BlDateSearch::selectAll", 0 );
+    blDebug ( "BlDateSearch::selectAll", 0 );
     m_textoFecha->selectAll();
-    _depura ( "END BlDateSearch::selectAll", 0 );
+    blDebug ( "END BlDateSearch::selectAll", 0 );
 }
 
 
@@ -159,7 +159,7 @@ void BlDateSearch::selectAll()
 **/
 void BlDateSearch::s_searchFecha()
 {
-    _depura ( "BlDateSearch::s_searchFecha", 0 );
+    blDebug ( "BlDateSearch::s_searchFecha", 0 );
 
     QDialog *diag = new QDialog ( 0 );
     diag->setModal ( true );
@@ -205,7 +205,7 @@ void BlDateSearch::s_searchFecha()
     emit ( valueChanged ( m_textoFecha->text() ) );
     emit ( editingFinished () );
 
-    _depura ( "END BlDateSearch::s_searchFecha", 0 );
+    blDebug ( "END BlDateSearch::s_searchFecha", 0 );
 }
 
 
@@ -216,7 +216,7 @@ void BlDateSearch::s_searchFecha()
 **/
 void BlDateSearch::s_fechatextChanged ( const QString &texto )
 {
-    _depura ( "BlDateSearch::s_fechatextChanged", 0 );
+    blDebug ( "BlDateSearch::s_fechatextChanged", 0 );
     if ( texto == "+" )
         s_searchFecha();
     if ( texto == "*" )
@@ -227,7 +227,7 @@ void BlDateSearch::s_fechatextChanged ( const QString &texto )
         return;
     } // end if
     emit ( valueChanged ( m_textoFecha->text() ) );
-    _depura ( "END BlDateSearch::s_fechatextChanged", 0 );
+    blDebug ( "END BlDateSearch::s_fechatextChanged", 0 );
 }
 
 
@@ -236,11 +236,11 @@ void BlDateSearch::s_fechatextChanged ( const QString &texto )
 **/
 void BlDateSearch::s_fechalostFocus()
 {
-    _depura ( "BlDateSearch::s_fechalostFocus", 0 );
+    blDebug ( "BlDateSearch::s_fechalostFocus", 0 );
     QString fech = m_textoFecha->text();
     if ( fech != "" )
         s_fechatextChanged ( fech );
-    _depura ( "END BlDateSearch::s_fechalostFocus", 0 );
+    blDebug ( "END BlDateSearch::s_fechalostFocus", 0 );
 }
 
 
@@ -250,7 +250,7 @@ void BlDateSearch::s_fechalostFocus()
 **/
 QDate BlDateSearch::date()
 {
-    _depura ( "BlDateSearch::fecha", 0 );
-    _depura ( "END BlDateSearch::fecha", 0 );
+    blDebug ( "BlDateSearch::fecha", 0 );
+    blDebug ( "END BlDateSearch::fecha", 0 );
     return QDate::fromString(m_textoFecha->text(), "dd/MM/yyyy");
 }

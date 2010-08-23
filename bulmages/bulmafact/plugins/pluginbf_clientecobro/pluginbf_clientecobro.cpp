@@ -38,8 +38,8 @@ CobrosList *g_cobrosList = NULL;
 **/
 myplugincob::myplugincob()
 {
-    _depura ( "myplugincob::myplugincob", 0 );
-    _depura ( "END myplugincob::myplugincob", 0 );
+    blDebug ( "myplugincob::myplugincob", 0 );
+    blDebug ( "END myplugincob::myplugincob", 0 );
 }
 
 
@@ -48,8 +48,8 @@ myplugincob::myplugincob()
 **/
 myplugincob::~myplugincob()
 {
-    _depura ( "myplugincob::~myplugincob", 0 );
-    _depura ( "END myplugincob::~myplugincob", 0 );
+    blDebug ( "myplugincob::~myplugincob", 0 );
+    blDebug ( "END myplugincob::~myplugincob", 0 );
 }
 
 
@@ -58,12 +58,12 @@ myplugincob::~myplugincob()
 **/
 void myplugincob::elslot()
 {
-    _depura ( "myplugincob::elslot", 0 );
+    blDebug ( "myplugincob::elslot", 0 );
     if ( g_cobrosList ) {
         g_cobrosList->hide();
         g_cobrosList->show();
     }// end if
-    _depura ( "END myplugincob::elslot", 0 );
+    blDebug ( "END myplugincob::elslot", 0 );
 }
 
 ///
@@ -71,11 +71,11 @@ void myplugincob::elslot()
 **/
 void myplugincob::elslot1()
 {
-    _depura ( "myplugincob::elslot1", 0 );
+    blDebug ( "myplugincob::elslot1", 0 );
     CobroView * bud = new CobroView ( ( BfCompany * ) mainCompany(), NULL );
     mainCompany() ->m_pWorkspace->addWindow ( bud );
     bud->show();
-    _depura ( "END myplugincob::elslot1", 0 );
+    blDebug ( "END myplugincob::elslot1", 0 );
 }
 
 
@@ -86,7 +86,7 @@ void myplugincob::elslot1()
 **/
 void myplugincob::inicializa ( BfBulmaFact *bges )
 {
-    _depura ( "myplugincob::inicializa", 0 );
+    blDebug ( "myplugincob::inicializa", 0 );
 
     if ( bges->company()->hasTablePrivilege ( "cobro", "SELECT" ) ) {
 
@@ -113,7 +113,7 @@ void myplugincob::inicializa ( BfBulmaFact *bges )
         bges->Fichas->addAction ( npago );
         connect ( npago, SIGNAL ( activated() ), this, SLOT ( elslot1() ) );
     }// end if
-    _depura ( "END myplugincob::inicializa", 0 );
+    blDebug ( "END myplugincob::inicializa", 0 );
 }
 
 
@@ -124,7 +124,7 @@ void myplugincob::inicializa ( BfBulmaFact *bges )
 **/
 int entryPoint ( BfBulmaFact *bges )
 {
-    _depura ( "Punto de Entrada del plugin de Cobros\n", 0 );
+    blDebug ( "Punto de Entrada del plugin de Cobros\n", 0 );
 
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale ( LC_ALL, "" );
@@ -196,7 +196,7 @@ int BfBuscarReferencia_on_mui_abrirtodo_clicked_Post ( BfBuscarReferencia *ref )
 **/
 int FacturaView_FacturaView ( FacturaView *l )
 {
-    _depura ( "PluginCobros_FacturaView_FacturaView", 0 );
+    blDebug ( "PluginCobros_FacturaView_FacturaView", 0 );
     GenCobroQToolButton *mui_exporta_efactura2 = new GenCobroQToolButton ( l, l->mui_plugbotones );
 
     QHBoxLayout *m_hboxLayout1 = l->mui_plugbotones->findChild<QHBoxLayout *> ( "hboxLayout1" );
@@ -208,7 +208,7 @@ int FacturaView_FacturaView ( FacturaView *l )
         m_hboxLayout1->setObjectName ( QString::fromUtf8 ( "hboxLayout1" ) );
     }// end if
     m_hboxLayout1->addWidget ( mui_exporta_efactura2 );
-    _depura ( "END PluginCobros_FacturaView_FacturaView", 0 );
+    blDebug ( "END PluginCobros_FacturaView_FacturaView", 0 );
     return 0;
 }
 
@@ -219,7 +219,7 @@ int FacturaView_FacturaView ( FacturaView *l )
 **/
 int AlbaranClienteView_AlbaranClienteView ( AlbaranClienteView *l )
 {
-    _depura ( "PluginCobros_AlbaranClienteView_AlbaranClienteView", 0 );
+    blDebug ( "PluginCobros_AlbaranClienteView_AlbaranClienteView", 0 );
     GenCobroQToolButton *mui_exporta_efactura2 = new GenCobroQToolButton ( l, l->mui_plugbotones );
 
     QHBoxLayout *m_hboxLayout1 = l->mui_plugbotones->findChild<QHBoxLayout *> ( "hboxLayout1" );
@@ -231,7 +231,7 @@ int AlbaranClienteView_AlbaranClienteView ( AlbaranClienteView *l )
         m_hboxLayout1->setObjectName ( QString::fromUtf8 ( "hboxLayout1" ) );
     }// end if
     m_hboxLayout1->addWidget ( mui_exporta_efactura2 );
-    _depura ( "END PluginCobros_AlbaranClienteView_AlbaranClienteView", 0 );
+    blDebug ( "END PluginCobros_AlbaranClienteView_AlbaranClienteView", 0 );
     return 0;
 }
 
@@ -242,7 +242,7 @@ int AlbaranClienteView_AlbaranClienteView ( AlbaranClienteView *l )
 **/
 int PedidoClienteView_PedidoClienteView ( PedidoClienteView *l )
 {
-    _depura ( "PluginCobros_PedidoClienteView_PedidoClienteView", 0 );
+    blDebug ( "PluginCobros_PedidoClienteView_PedidoClienteView", 0 );
     GenCobroQToolButton *mui_exporta_efactura2 = new GenCobroQToolButton ( l, l->mui_plugbotones );
 
     QHBoxLayout *m_hboxLayout1 = l->mui_plugbotones->findChild<QHBoxLayout *> ( "hboxLayout1" );
@@ -254,7 +254,7 @@ int PedidoClienteView_PedidoClienteView ( PedidoClienteView *l )
         m_hboxLayout1->setObjectName ( QString::fromUtf8 ( "hboxLayout1" ) );
     }// end if
     m_hboxLayout1->addWidget ( mui_exporta_efactura2 );
-    _depura ( "END PluginCobros_PedidoClienteView_PedidoClienteView", 0 );
+    blDebug ( "END PluginCobros_PedidoClienteView_PedidoClienteView", 0 );
     return 0;
 }
 

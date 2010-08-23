@@ -29,9 +29,9 @@
 **/
 void BlFormList::setModoConsulta()
 {
-    _depura ( "BlFormList::setModoConsulta", 0 );
+    blDebug ( "BlFormList::setModoConsulta", 0 );
     m_modo = BL_SELECT_MODE;
-    _depura ( "END BlFormList::setModoConsulta", 0 );
+    blDebug ( "END BlFormList::setModoConsulta", 0 );
 
 }
 
@@ -41,9 +41,9 @@ void BlFormList::setModoConsulta()
 **/
 void BlFormList::setModoEdicion()
 {
-    _depura ( "BlFormList::setModoEdicion", 0 );
+    blDebug ( "BlFormList::setModoEdicion", 0 );
     m_modo = BL_EDIT_MODE;
-    _depura ( "END BlFormList::setModoEdicion", 0 );
+    blDebug ( "END BlFormList::setModoEdicion", 0 );
 }
 
 
@@ -53,8 +53,8 @@ void BlFormList::setModoEdicion()
 **/
 bool BlFormList::modoEdicion()
 {
-    _depura ( "BlFormList::modoEdicion", 0 );
-    _depura ( "END BlFormList::modoEdicion", 0 );
+    blDebug ( "BlFormList::modoEdicion", 0 );
+    blDebug ( "END BlFormList::modoEdicion", 0 );
     return m_modo == BL_EDIT_MODE;
 }
 
@@ -65,8 +65,8 @@ bool BlFormList::modoEdicion()
 **/
 bool BlFormList::modoConsulta()
 {
-    _depura ( "BlFormList::modoConsulta", 0 );
-    _depura ( "END BlFormList::modoConsulta", 0 );
+    blDebug ( "BlFormList::modoConsulta", 0 );
+    blDebug ( "END BlFormList::modoConsulta", 0 );
     return m_modo == BL_SELECT_MODE;
 }
 
@@ -79,10 +79,10 @@ bool BlFormList::modoConsulta()
 **/
 BlFormList::BlFormList ( QWidget *parent, Qt::WFlags f, edmode modo ) : BlWidget ( parent, f )
 {
-    _depura ( "BlFormList::BlFormList", 0 );
+    blDebug ( "BlFormList::BlFormList", 0 );
     m_modo = modo;
     m_listado = NULL;
-    _depura ( "END BlFormList::BlFormList", 0 );
+    blDebug ( "END BlFormList::BlFormList", 0 );
 }
 
 
@@ -95,10 +95,10 @@ BlFormList::BlFormList ( QWidget *parent, Qt::WFlags f, edmode modo ) : BlWidget
 **/
 BlFormList::BlFormList ( BlMainCompany *emp, QWidget *parent, Qt::WFlags f, edmode modo ) : BlWidget ( emp, parent, f )
 {
-    _depura ( "BlFormList::BlFormList", 0 );
+    blDebug ( "BlFormList::BlFormList", 0 );
     m_modo = modo;
     m_listado = NULL;
-    _depura ( "END BlFormList::BlFormList", 0 );
+    blDebug ( "END BlFormList::BlFormList", 0 );
 }
 
 
@@ -107,9 +107,9 @@ BlFormList::BlFormList ( BlMainCompany *emp, QWidget *parent, Qt::WFlags f, edmo
 **/
 BlFormList::~BlFormList()
 {
-    _depura ( "BlFormList::~BlFormList", 0, this->windowTitle() );
+    blDebug ( "BlFormList::~BlFormList", 0, this->windowTitle() );
     sacaWindow();
-    _depura ( "END BlFormList::~BlFormList", 0 );
+    blDebug ( "END BlFormList::~BlFormList", 0 );
 }
 
 
@@ -119,9 +119,9 @@ BlFormList::~BlFormList()
 **/
 int BlFormList::sacaWindow()
 {
-    _depura ( "BlFormList::sacaWindow", 0 );
+    blDebug ( "BlFormList::sacaWindow", 0 );
     mainCompany() ->sacaWindow ( this );
-    _depura ( "END BlFormList::sacaWindow", 0 );
+    blDebug ( "END BlFormList::sacaWindow", 0 );
     return 0;
 }
 
@@ -133,9 +133,9 @@ int BlFormList::sacaWindow()
 **/
 int BlFormList::meteWindow ( QString title )
 {
-    _depura ( "BlFormList::meteWindow", 0 );
+    blDebug ( "BlFormList::meteWindow", 0 );
     mainCompany() ->meteWindow ( title, this );
-    _depura ( "END BlFormList::meteWindow", 0 );
+    blDebug ( "END BlFormList::meteWindow", 0 );
     return 0;
 }
 
@@ -148,9 +148,9 @@ int BlFormList::meteWindow ( QString title )
 **/
 void BlFormList::on_mui_list_cellDoubleClicked ( int a, int )
 {
-    _depura ( "ArticuloList::on_mui_list_cellDoubleClicked", 0 );
+    blDebug ( "ArticuloList::on_mui_list_cellDoubleClicked", 0 );
     editar ( a );
-    _depura ( "END ArticuloList::on_mui_list_cellDoubleClicked", 0 );
+    blDebug ( "END ArticuloList::on_mui_list_cellDoubleClicked", 0 );
 }
 
 
@@ -159,7 +159,7 @@ void BlFormList::on_mui_list_cellDoubleClicked ( int a, int )
 **/
 void BlFormList::editar ( int )
 {
-    _depura ( "metodo para ser reimplementado en clases hijas", 2 );
+    blDebug ( "metodo para ser reimplementado en clases hijas", 2 );
 }
 
 
@@ -168,7 +168,7 @@ void BlFormList::editar ( int )
 **/
 void BlFormList::crear()
 {
-    _depura ( "metodo para ser reimplementado en clases hijas", 2 );
+    blDebug ( "metodo para ser reimplementado en clases hijas", 2 );
 }
 
 
@@ -177,7 +177,7 @@ void BlFormList::crear()
 **/
 void BlFormList::borrar()
 {
-    _depura ( "metodo para ser reimplementado en clases hijas", 2 );
+    blDebug ( "metodo para ser reimplementado en clases hijas", 2 );
 }
 
 
@@ -186,9 +186,9 @@ void BlFormList::borrar()
 **/
 void BlFormList::imprimir()
 {
-    _depura ( "BlFormList::imprimir", 0 );
+    blDebug ( "BlFormList::imprimir", 0 );
     m_listado->imprimirPDF ( "" );
-    _depura ( "END BlFormList::imprimir", 0 );
+    blDebug ( "END BlFormList::imprimir", 0 );
 }
 
 /// Este metodo carga el subformulario con un SELECT generico. Si no quiere usarse este select
@@ -197,10 +197,10 @@ void BlFormList::imprimir()
 **/
 void BlFormList::presentar()
 {
-    _depura ( "BlFormList::presentar", 0 );
+    blDebug ( "BlFormList::presentar", 0 );
     QString query = "SELECT * FROM " + m_listado->tableName();
     m_listado->cargar ( query );
-    _depura ( "END BlFormList::presentar", 0 );
+    blDebug ( "END BlFormList::presentar", 0 );
 }
 
 
@@ -210,7 +210,7 @@ void BlFormList::presentar()
 **/
 void BlFormList::setSubForm ( BlSubForm *list )
 {
-    _depura ( "BlFormList::setSubForm", 0 );
+    blDebug ( "BlFormList::setSubForm", 0 );
     m_listado = list;
     /// Establecemos el mismo modo en el subformulario que en el listado.
     if ( m_modo == BL_EDIT_MODE ) {
@@ -218,7 +218,7 @@ void BlFormList::setSubForm ( BlSubForm *list )
     } else {
         m_listado->setModoConsulta();
     } // end if
-    _depura ( "END BlFormList::setSubForm", 0 );
+    blDebug ( "END BlFormList::setSubForm", 0 );
 }
 
 
@@ -229,8 +229,8 @@ void BlFormList::setSubForm ( BlSubForm *list )
 **/
 BlSubForm *BlFormList::subForm ( )
 {
-    _depura ( "BlFormList::subForm", 0 );
-    _depura ( "END BlFormList::subForm", 0 );
+    blDebug ( "BlFormList::subForm", 0 );
+    blDebug ( "END BlFormList::subForm", 0 );
     return m_listado;
 }
 
@@ -241,11 +241,11 @@ BlSubForm *BlFormList::subForm ( )
 **/
 void BlFormList::on_m_filtro_textChanged ( const QString &text )
 {
-    _depura ( "BlFormList::on_m_filtro_textChanged", 0 );
+    blDebug ( "BlFormList::on_m_filtro_textChanged", 0 );
     if ( text.size() >= 3 ) {
         on_mui_actualizar_clicked();
     } // end if
-    _depura ( "END BlFormList::on_m_filtro_textChanged", 0 );
+    blDebug ( "END BlFormList::on_m_filtro_textChanged", 0 );
 }
 
 
@@ -254,14 +254,14 @@ void BlFormList::on_m_filtro_textChanged ( const QString &text )
 **/
 void BlFormList::on_m_filtro_editingFinished()
 {
-    _depura ( "BlFormList::on_m_filtro_editFinished", 0 );
+    blDebug ( "BlFormList::on_m_filtro_editFinished", 0 );
     static QString valant = "";
     QLineEdit *line = findChild<QLineEdit *> ( "m_filtro" );
     if ( line->text() != valant ) {
         valant = line->text();
         on_mui_actualizar_clicked();
     } // end if
-    _depura ( "END BlFormList::on_m_filtro_editFinished", 0 );
+    blDebug ( "END BlFormList::on_m_filtro_editFinished", 0 );
 }
 
 
@@ -272,11 +272,11 @@ void BlFormList::on_m_filtro_editingFinished()
 */
 void BlFormList::on_m_filtro_returnPressed()
 {
-    _depura ( "BlFormList::on_mui_importar_clicked", 0 );
+    blDebug ( "BlFormList::on_mui_importar_clicked", 0 );
     if ( m_listado->lista()->count() == 1 ) {
         editar ( 0 );
     } // end if
-    _depura ( "END BlFormList::on_mui_importar_clicked", 0 );
+    blDebug ( "END BlFormList::on_mui_importar_clicked", 0 );
 }
 
 
@@ -285,9 +285,9 @@ void BlFormList::on_m_filtro_returnPressed()
 **/
 void BlFormList::on_mui_actualizar_clicked()
 {
-    _depura ( "BlFormList::on_mui_actualizar_clicked", 0 );
+    blDebug ( "BlFormList::on_mui_actualizar_clicked", 0 );
     presentar();
-    _depura ( "END BlFormList::on_mui_actualizar_clicked", 0 );
+    blDebug ( "END BlFormList::on_mui_actualizar_clicked", 0 );
 }
 
 
@@ -296,9 +296,9 @@ void BlFormList::on_mui_actualizar_clicked()
 **/
 void BlFormList::on_mui_imprimir_clicked()
 {
-    _depura ( "BlFormList::on_mui_imprimir_clicked", 0 );
+    blDebug ( "BlFormList::on_mui_imprimir_clicked", 0 );
     imprimir();
-    _depura ( "END BlFormList::on_mui_imprimir_clicked", 0 );
+    blDebug ( "END BlFormList::on_mui_imprimir_clicked", 0 );
 }
 
 
@@ -307,9 +307,9 @@ void BlFormList::on_mui_imprimir_clicked()
 **/
 void BlFormList::on_mui_crear_clicked()
 {
-    _depura ( "BlFormList::on_mui_crear_clicked", 0 );
+    blDebug ( "BlFormList::on_mui_crear_clicked", 0 );
     crear();
-    _depura ( "END BlFormList::on_mui_crear_clicked", 0 );
+    blDebug ( "END BlFormList::on_mui_crear_clicked", 0 );
 }
 
 
@@ -318,9 +318,9 @@ void BlFormList::on_mui_crear_clicked()
 **/
 void BlFormList::on_mui_borrar_clicked()
 {
-    _depura ( "BlFormList::on_mui_borrar_clicked", 0 );
+    blDebug ( "BlFormList::on_mui_borrar_clicked", 0 );
     borrar();
-    _depura ( "END BlFormList::on_mui_borrar_clicked", 0 );
+    blDebug ( "END BlFormList::on_mui_borrar_clicked", 0 );
 }
 
 
@@ -332,14 +332,14 @@ void BlFormList::on_mui_borrar_clicked()
 **/
 void BlFormList::on_mui_editar_clicked()
 {
-    _depura ( "ArticuloList::INIT_s_editArticle", 0 );
+    blDebug ( "ArticuloList::INIT_s_editArticle", 0 );
     int a = m_listado->currentRow();
     if ( a < 0 ) {
         mensajeInfo ( _ ( "Tiene que seleccionar un elemento" ) );
         return;
     } // end if
     editar ( a );
-    _depura ( "ArticuloList::END_s_editArticle", 0 );
+    blDebug ( "ArticuloList::END_s_editArticle", 0 );
 }
 
 
@@ -349,13 +349,13 @@ void BlFormList::on_mui_editar_clicked()
 **/
 void BlFormList::on_mui_configurar_toggled ( bool checked )
 {
-    _depura ( "BlFormList::on_mui_configurar_toggled", 0 );
+    blDebug ( "BlFormList::on_mui_configurar_toggled", 0 );
     if ( checked ) {
         m_listado->showConfig();
     } else {
         m_listado->hideConfig();
     } // end if
-    _depura ( "END BlFormList::on_mui_configurar_toggled", 0 );
+    blDebug ( "END BlFormList::on_mui_configurar_toggled", 0 );
 }
 
 
@@ -367,9 +367,9 @@ void BlFormList::on_mui_configurar_toggled ( bool checked )
 **/
 void BlFormList::on_mui_list_customContextMenuRequested ( const QPoint &p )
 {
-    _depura ( "BlFormList::on_mui_list_customContextMenuRequested", 0 );
+    blDebug ( "BlFormList::on_mui_list_customContextMenuRequested", 0 );
     submenu ( p );
-    _depura ( "END BlFormList::on_mui_list_customContextMenuRequested", 0 );
+    blDebug ( "END BlFormList::on_mui_list_customContextMenuRequested", 0 );
 }
 
 
@@ -381,7 +381,7 @@ void BlFormList::on_mui_list_customContextMenuRequested ( const QPoint &p )
 **/
 void BlFormList::submenu ( const QPoint & )
 {
-    _depura ( "ArticuloList::on_mui_list_customContextMenuRequested", 0 );
+    blDebug ( "ArticuloList::on_mui_list_customContextMenuRequested", 0 );
     int a = m_listado->currentRow();
     if ( a < 0 )
         return;
@@ -403,12 +403,12 @@ void BlFormList::submenu ( const QPoint & )
 **/
 void BlFormList::on_mui_list_toogledConfig ( bool check )
 {
-    _depura ( "BlFormList::on_mui_list_toogledConfig", 0 );
+    blDebug ( "BlFormList::on_mui_list_toogledConfig", 0 );
 
     QToolButton *botonconfigurar = findChild<QToolButton *> ( "mui_configurar" );
     if ( botonconfigurar )
         botonconfigurar->setChecked ( check );
-    _depura ( "END BlFormList::on_mui_list_toogledConfig", 0 );
+    blDebug ( "END BlFormList::on_mui_list_toogledConfig", 0 );
 }
 
 
@@ -417,11 +417,11 @@ void BlFormList::on_mui_list_toogledConfig ( bool check )
 **/
 void BlFormList::hideBotonera()
 {
-    _depura ( "BlFormList::hideBotonera", 0 );
+    blDebug ( "BlFormList::hideBotonera", 0 );
     QWidget *botonera = findChild<QWidget *> ( "m_botonera" );
     if ( botonera )
         botonera->hide();
-    _depura ( "END BlFormList::hideBotonera", 0 );
+    blDebug ( "END BlFormList::hideBotonera", 0 );
 }
 
 
@@ -430,11 +430,11 @@ void BlFormList::hideBotonera()
 **/
 void BlFormList::showBotonera()
 {
-    _depura ( "BlFormList::showBotonera", 0 );
+    blDebug ( "BlFormList::showBotonera", 0 );
     QWidget *botonera = findChild<QWidget *> ( "m_botonera" );
     if ( botonera )
         botonera->show();
-    _depura ( "END BlFormList::showBotonera", 0 );
+    blDebug ( "END BlFormList::showBotonera", 0 );
 }
 
 
@@ -443,11 +443,11 @@ void BlFormList::showBotonera()
 **/
 void BlFormList::hideBusqueda()
 {
-    _depura ( "BlFormList::hideBusqueda", 0 );
+    blDebug ( "BlFormList::hideBusqueda", 0 );
     QWidget *busqueda = findChild<QWidget *> ( "m_busqueda" );
     if ( busqueda )
         busqueda->hide();
-    _depura ( "END BlFormList::hideBusqueda", 0 );
+    blDebug ( "END BlFormList::hideBusqueda", 0 );
 }
 
 
@@ -456,11 +456,11 @@ void BlFormList::hideBusqueda()
 **/
 void BlFormList::showBusqueda()
 {
-    _depura ( "BlFormList::showBusqueda", 0 );
+    blDebug ( "BlFormList::showBusqueda", 0 );
     QWidget *busqueda = findChild<QWidget *> ( "m_busqueda" );
     if ( busqueda )
         busqueda->show();
-    _depura ( "END BlFormList::showBusqueda", 0 );
+    blDebug ( "END BlFormList::showBusqueda", 0 );
 }
 
 ///
@@ -469,7 +469,7 @@ void BlFormList::showBusqueda()
 **/
 void BlFormList::trataPermisos ( QString nomtabla )
 {
-    _depura ( "BlFormList::trataPermisos", 0 );
+    blDebug ( "BlFormList::trataPermisos", 0 );
 
     QToolButton * b;
 
@@ -490,6 +490,6 @@ void BlFormList::trataPermisos ( QString nomtabla )
 	  if ( b ) b->setDisabled ( TRUE );
     } // end if
 
-    _depura ( "END BlFormList::trataPermisos", 0 );
+    blDebug ( "END BlFormList::trataPermisos", 0 );
 }
 

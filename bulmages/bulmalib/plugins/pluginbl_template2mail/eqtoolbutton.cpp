@@ -40,11 +40,11 @@
 **/
 EQToolButtonMail::EQToolButtonMail ( QWidget *parent ) : QWidget ( parent )
 {
-    _depura ( "EQToolButtonMail::EQToolButtonMail", 0 );
+    blDebug ( "EQToolButtonMail::EQToolButtonMail", 0 );
     connect ( parent, SIGNAL ( pintaMenu ( QMenu * ) ), this, SLOT ( pintaMenu ( QMenu * ) ) );
     connect ( parent, SIGNAL ( trataMenu ( QAction * ) ), this, SLOT ( trataMenu ( QAction * ) ) );
     m_BlForm = ( BlForm * ) parent;
-    _depura ( "END EQToolButtonMail::EQToolButtonMail", 0 );
+    blDebug ( "END EQToolButtonMail::EQToolButtonMail", 0 );
 }
 
 
@@ -53,8 +53,8 @@ EQToolButtonMail::EQToolButtonMail ( QWidget *parent ) : QWidget ( parent )
 **/
 EQToolButtonMail::~EQToolButtonMail()
 {
-    _depura ( "EQToolButtonMail::~EQToolButtonMail", 0 );
-    _depura ( "END EQToolButtonMail::~EQToolButtonMail", 0 );
+    blDebug ( "EQToolButtonMail::~EQToolButtonMail", 0 );
+    blDebug ( "END EQToolButtonMail::~EQToolButtonMail", 0 );
 }
 
 
@@ -64,7 +64,7 @@ EQToolButtonMail::~EQToolButtonMail()
 **/
 void EQToolButtonMail::pintaMenu ( QMenu *menu )
 {
-    _depura ( "EQToolButtonMail::pintaMenu", 0 );
+    blDebug ( "EQToolButtonMail::pintaMenu", 0 );
     QMenu *ajust = menu->addMenu ( _ ( "Inf. personales por e-mail" ) );
 
     /// Buscamos ficheros que tengan el nombre de la tabla
@@ -101,7 +101,7 @@ void EQToolButtonMail::pintaMenu ( QMenu *menu )
         QAction * action = ajust->addAction ( titulo );
         action->setObjectName ( "em_" + fileInfo.fileName() );
     }
-    _depura ( "END EQToolButtonMail::pintaMenu", 0 );
+    blDebug ( "END EQToolButtonMail::pintaMenu", 0 );
 }
 
 
@@ -111,7 +111,7 @@ void EQToolButtonMail::pintaMenu ( QMenu *menu )
 **/
 void EQToolButtonMail::trataMenu ( QAction *action )
 {
-    _depura ( "EQToolButtonMail::trataMenu", 0 );
+    blDebug ( "EQToolButtonMail::trataMenu", 0 );
 
     /// Buscamos ficheros que tengan el nombre de la tabla
     QDir dir ( g_confpr->valor ( CONF_DIR_OPENREPORTS ) );
@@ -159,7 +159,7 @@ void EQToolButtonMail::trataMenu ( QAction *action )
             } // end if
         } // end if
     }
-    _depura ( "END EQToolButtonMail::trataMenu", 0 );
+    blDebug ( "END EQToolButtonMail::trataMenu", 0 );
 }
 
 

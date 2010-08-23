@@ -35,8 +35,8 @@ PedidosProveedorList *g_pedidosProveedorList = NULL;
 **/
 mypluginpedp::mypluginpedp()
 {
-    _depura ( "mypluginpedp::mypluginpedp", 0 );
-    _depura ( "END mypluginpedp::mypluginpedp", 0 );
+    blDebug ( "mypluginpedp::mypluginpedp", 0 );
+    blDebug ( "END mypluginpedp::mypluginpedp", 0 );
 }
 
 
@@ -45,8 +45,8 @@ mypluginpedp::mypluginpedp()
 **/
 mypluginpedp::~mypluginpedp()
 {
-    _depura ( "mypluginpedp::~mypluginpedp", 0 );
-    _depura ( "END mypluginpedp::~mypluginpedp", 0 );
+    blDebug ( "mypluginpedp::~mypluginpedp", 0 );
+    blDebug ( "END mypluginpedp::~mypluginpedp", 0 );
 }
 
 
@@ -55,12 +55,12 @@ mypluginpedp::~mypluginpedp()
 **/
 void mypluginpedp::elslot()
 {
-    _depura ( "mypluginpedp::elslot", 0 );
+    blDebug ( "mypluginpedp::elslot", 0 );
     if ( g_pedidosProveedorList ) {
         g_pedidosProveedorList->hide();
         g_pedidosProveedorList->show();
     }// end if
-    _depura ( "END mypluginpedp::elslot", 0 );
+    blDebug ( "END mypluginpedp::elslot", 0 );
 }
 
 ///
@@ -68,11 +68,11 @@ void mypluginpedp::elslot()
 **/
 void mypluginpedp::elslot1()
 {
-    _depura ( "mypluginpedp::elslot1", 0 );
+    blDebug ( "mypluginpedp::elslot1", 0 );
     PedidoProveedorView * bud = new PedidoProveedorView ( ( BfCompany * ) mainCompany(), NULL );
     mainCompany() ->m_pWorkspace->addWindow ( bud );
     bud->show();
-    _depura ( "END mypluginpedp::elslot1", 0 );
+    blDebug ( "END mypluginpedp::elslot1", 0 );
 }
 
 
@@ -83,7 +83,7 @@ void mypluginpedp::elslot1()
 **/
 void mypluginpedp::inicializa ( BfBulmaFact *bges )
 {
-    _depura ( "mypluginpedp::inicializa", 0 );
+    blDebug ( "mypluginpedp::inicializa", 0 );
 
     if ( bges->company()->hasTablePrivilege ( "pedidoproveedor", "SELECT" ) ) {
 
@@ -112,7 +112,7 @@ void mypluginpedp::inicializa ( BfBulmaFact *bges )
 
 
     }// end if
-    _depura ( "END mypluginpedp::inicializa", 0 );
+    blDebug ( "END mypluginpedp::inicializa", 0 );
 }
 
 
@@ -123,7 +123,7 @@ void mypluginpedp::inicializa ( BfBulmaFact *bges )
 **/
 int entryPoint ( BfBulmaFact *bges )
 {
-    _depura ( "Punto de Entrada del plugin de pedidos a proveedor\n", 0 );
+    blDebug ( "Punto de Entrada del plugin de pedidos a proveedor\n", 0 );
 
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale ( LC_ALL, "" );

@@ -32,7 +32,7 @@
 **/
 int entryPoint ( BfBulmaFact * )
 {
-    _depura ( "Estoy dentro del plugin de tipos de almacenes", 0 );
+    blDebug ( "Estoy dentro del plugin de tipos de almacenes", 0 );
 
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale ( LC_ALL, "" );
@@ -49,11 +49,11 @@ int entryPoint ( BfBulmaFact * )
 **/
 int BfCompany_s_almacenes ( BfCompany *bges )
 {
-    _depura ( "BfCompany_s_almacenes", 0 );
+    blDebug ( "BfCompany_s_almacenes", 0 );
     AlmacenesListView *lser = new AlmacenesListView ( bges, 0 );
     bges->pWorkspace() ->addWindow ( lser );
     lser->show();
-    _depura ( "END BfCompany_s_almacenes", 0 );
+    blDebug ( "END BfCompany_s_almacenes", 0 );
     /// Este plugin reemplaza completamente la funcion llamante y por eso devuelve un valor distinto de 0
     return 1;
 }

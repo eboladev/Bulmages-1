@@ -31,7 +31,7 @@
 BcCuentaView::BcCuentaView ( BcCompany  *emp, QWidget *parent, Qt::WFlags fl )
         : BcForm ( emp, parent, fl )
 {
-    _depura ( "BcCuentaView::BcCuentaView", 0 );
+    blDebug ( "BcCuentaView::BcCuentaView", 0 );
     setAttribute ( Qt::WA_DeleteOnClose );
     setupUi ( this );
 
@@ -91,7 +91,7 @@ BcCuentaView::BcCuentaView ( BcCompany  *emp, QWidget *parent, Qt::WFlags fl )
 
     dialogChanges_cargaInicial();
     mainCompany() ->meteWindow ( windowTitle(), this );
-    _depura ( "END BcCuentaView::BcCuentaView", 0 );
+    blDebug ( "END BcCuentaView::BcCuentaView", 0 );
 }
 
 
@@ -100,8 +100,8 @@ BcCuentaView::BcCuentaView ( BcCompany  *emp, QWidget *parent, Qt::WFlags fl )
 **/
 BcCuentaView::~BcCuentaView()
 {
-    _depura ( "BcCuentaView::~BcCuentaView", 0 );
-    _depura ( "END BcCuentaView::~BcCuentaView", 0 );
+    blDebug ( "BcCuentaView::~BcCuentaView", 0 );
+    blDebug ( "END BcCuentaView::~BcCuentaView", 0 );
 }
 
 
@@ -112,7 +112,7 @@ BcCuentaView::~BcCuentaView()
 **/
 int BcCuentaView::nuevacuenta ( QString codpadre )
 {
-    _depura ( "BcCuentaView::nuevacuenta", 0 );
+    blDebug ( "BcCuentaView::nuevacuenta", 0 );
 
     /// Suponiendo que las cuentas son num&eacute;ricas, al crear una nueva cuenta
     /// buscamos entre las que ser&aacute;n sus hermanas y le asignamos el n&uacute;mero
@@ -160,7 +160,7 @@ int BcCuentaView::nuevacuenta ( QString codpadre )
     /// Establecemos el valor del padre y del grupo.
 //    mui_padre->setcodigocuenta ( codpadre );
     mui_padre->setText ( codpadre );
-    _depura ( "END BcCuentaView::nuevacuenta", 0 );
+    blDebug ( "END BcCuentaView::nuevacuenta", 0 );
     return 0;
 }
 

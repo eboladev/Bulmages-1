@@ -41,7 +41,7 @@
 JDirectivaView::JDirectivaView ( BfCompany *comp, QWidget *parent )
         : BfForm ( comp, parent )
 {
-    _depura ( "JDirectivaView::JDirectivaView", 0 );
+    blDebug ( "JDirectivaView::JDirectivaView", 0 );
     
     setAttribute ( Qt::WA_DeleteOnClose );
     
@@ -80,22 +80,22 @@ JDirectivaView::JDirectivaView ( BfCompany *comp, QWidget *parent )
         mensajeInfo ( _ ( "Error al crear el jdirectiva" ), this );
     } // end try
     
-    _depura ( "END JDirectivaView::JDirectivaView", 0 );
+    blDebug ( "END JDirectivaView::JDirectivaView", 0 );
 }
 
 /** No precisa acciones adicionales en el destructor.
 */
 JDirectivaView::~JDirectivaView()
 {
-    _depura ( "JDirectivaView::~JDirectivaView", 0 );
-    _depura ( "END JDirectivaView::~JDirectivaView", 0 );
+    blDebug ( "JDirectivaView::~JDirectivaView", 0 );
+    blDebug ( "END JDirectivaView::~JDirectivaView", 0 );
 }
 
 
 QString JDirectivaView::nombrePlantilla ( void )
 {
-    _depura ( "JDirectivaView::~nombrePlantilla", 0 );
-    _depura ( "END JDirectivaView::~nombrePlantilla", 0 );
+    blDebug ( "JDirectivaView::~nombrePlantilla", 0 );
+    blDebug ( "END JDirectivaView::~nombrePlantilla", 0 );
     
     return QString ( "jdirectiva" );
 }
@@ -103,7 +103,7 @@ QString JDirectivaView::nombrePlantilla ( void )
 
 void JDirectivaView::imprimir()
 {
-    _depura ( "JDirectivaView::imprimir", 0 );
+    blDebug ( "JDirectivaView::imprimir", 0 );
     
     /// Comprobamos que se disponen de los datos minimos para imprimir el jdirectiva.
     QString SQLQuery = "";
@@ -122,17 +122,17 @@ void JDirectivaView::imprimir()
     
     BfForm::imprimir();
 
-    _depura ( "END JDirectivaView::imprimir", 0 );
+    blDebug ( "END JDirectivaView::imprimir", 0 );
 }
 
 int JDirectivaView::guardarPost()
 {
-    _depura ( "JDirectivaView::guardarPost", 0 );
+    blDebug ( "JDirectivaView::guardarPost", 0 );
     
     mui_list->setColumnValue("idjdirectiva", dbValue("idjdirectiva") );
     mui_list->guardar();
     
-    _depura ( "END JDirectivaView::guardarPost", 0 );
+    blDebug ( "END JDirectivaView::guardarPost", 0 );
     return 0;
 }
 
@@ -143,11 +143,11 @@ int JDirectivaView::borrarPre()
 
 int JDirectivaView::cargarPost ( QString id )
 {
-    _depura ( "JDirectivaView::cargarPost", 0 );
+    blDebug ( "JDirectivaView::cargarPost", 0 );
     
     mui_list->cargar("SELECT * FROM miembrojdirectiva NATURAL LEFT JOIN cliente WHERE idjdirectiva = " + id);
     
-    _depura ( "END JDirectivaView::cargarPost", 0 );
+    blDebug ( "END JDirectivaView::cargarPost", 0 );
     
     return 0;
 }

@@ -31,13 +31,13 @@
 BfBuscarFamilia::BfBuscarFamilia ( QWidget *parent )
         : BlSearchWidget ( parent )
 {
-    _depura ( "BfBuscarFamilia::BfBuscarFamilia", 0 );
+    blDebug ( "BfBuscarFamilia::BfBuscarFamilia", 0 );
     /// Establecemos los parametros de busqueda del Cliente
     setLabel ( _ ( "Familia:" ) );
     setTableName ( "familia" );
     m_valores["codigocompletofamilia"] = "";
     m_valores["nombrefamilia"] = "";
-    _depura ( "END BfBuscarFamilia::BfBuscarFamilia", 0 );
+    blDebug ( "END BfBuscarFamilia::BfBuscarFamilia", 0 );
 }
 
 
@@ -47,8 +47,8 @@ BfBuscarFamilia::BfBuscarFamilia ( QWidget *parent )
 **/
 BfBuscarFamilia::~BfBuscarFamilia()
 {
-    _depura ( "BfBuscarFamilia::~BfBuscarFamilia", 0 );
-    _depura ( "END BfBuscarFamilia::~BfBuscarFamilia", 0 );
+    blDebug ( "BfBuscarFamilia::~BfBuscarFamilia", 0 );
+    blDebug ( "END BfBuscarFamilia::~BfBuscarFamilia", 0 );
 }
 
 
@@ -58,9 +58,9 @@ BfBuscarFamilia::~BfBuscarFamilia()
 **/
 void BfBuscarFamilia::setidfamilia ( QString val )
 {
-    _depura ( "BfBuscarFamilia::setidfamilia", 0 );
+    blDebug ( "BfBuscarFamilia::setidfamilia", 0 );
     setId ( val );
-    _depura ( "END BfBuscarFamilia::setidfamilia", 0 );
+    blDebug ( "END BfBuscarFamilia::setidfamilia", 0 );
 }
 
 ///
@@ -69,7 +69,7 @@ void BfBuscarFamilia::setidfamilia ( QString val )
 **/
 void BfBuscarFamilia::setcodigocompletofamilia ( QString val )
 {
-    _depura ( "BfBuscarFamilia::setcodigocompletofamilia", 0 );
+    blDebug ( "BfBuscarFamilia::setcodigocompletofamilia", 0 );
 
     QString SQLQuery = "SELECT * FROM familia WHERE codigocompletofamilia='" + val + "'";
     BlDbRecordSet *cur = mainCompany() ->loadQuery ( SQLQuery );
@@ -81,7 +81,7 @@ void BfBuscarFamilia::setcodigocompletofamilia ( QString val )
     } // end if
 
     delete cur;
-    _depura ( "END BfBuscarFamilia::setcodigocompletofamilia", 0 );
+    blDebug ( "END BfBuscarFamilia::setcodigocompletofamilia", 0 );
 }
 
 
@@ -93,8 +93,8 @@ void BfBuscarFamilia::setcodigocompletofamilia ( QString val )
 **/
 QString BfBuscarFamilia::codigocompletofamilia()
 {
-    _depura ( "BfBuscarFamilia::codigocompletofamilia", 0 );
-    _depura ( "END BfBuscarFamilia::codigocompletofamilia", 0 );
+    blDebug ( "BfBuscarFamilia::codigocompletofamilia", 0 );
+    blDebug ( "END BfBuscarFamilia::codigocompletofamilia", 0 );
     return m_valores["codigocompletofamilia"];
 }
 
@@ -105,8 +105,8 @@ QString BfBuscarFamilia::codigocompletofamilia()
 **/
 QString BfBuscarFamilia::idfamilia()
 {
-    _depura ( "BfBuscarFamilia::idfamilia", 0 );
-    _depura ( "END BfBuscarFamilia::idfamilia", 0 );
+    blDebug ( "BfBuscarFamilia::idfamilia", 0 );
+    blDebug ( "END BfBuscarFamilia::idfamilia", 0 );
     return id();
 }
 
@@ -118,8 +118,8 @@ QString BfBuscarFamilia::idfamilia()
 **/
 QString BfBuscarFamilia::nombrefamilia()
 {
-    _depura ( "BfBuscarFamilia::nombrefamilia", 0 );
-    _depura ( "END BfBuscarFamilia::nombrefamilia", 0 );
+    blDebug ( "BfBuscarFamilia::nombrefamilia", 0 );
+    blDebug ( "END BfBuscarFamilia::nombrefamilia", 0 );
     return m_valores["nombrefamilia"];
 }
 

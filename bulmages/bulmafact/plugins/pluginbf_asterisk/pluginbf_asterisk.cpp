@@ -31,7 +31,7 @@
 **/
 int entryPoint ( BfBulmaFact * )
 {
-    _depura ( "Estoy dentro del plugin de validacion con Asterisk", 0 );
+    blDebug ( "Estoy dentro del plugin de validacion con Asterisk", 0 );
 
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale ( LC_ALL, "" );
@@ -48,7 +48,7 @@ int entryPoint ( BfBulmaFact * )
 **/
 int TrabajadorView_TrabajadorView_Post ( TrabajadorView *trab )
 {
-    _depura ( "TrabajadorView_TrabajadorView_Post", 0 );
+    blDebug ( "TrabajadorView_TrabajadorView_Post", 0 );
 
     trab->addDbField ( "passasterisktrabajador", BlDbField::DbVarChar, BlDbField::DbNothing, _ ( "Password." ) );
     trab->addDbField ( "validasiempreasterisktrabajador", BlDbField::DbBoolean, BlDbField::DbNothing, _ ( "Valida siempre." ) );
@@ -123,7 +123,7 @@ int TrabajadorView_TrabajadorView_Post ( TrabajadorView *trab )
 **/
 int AlmacenView_AlmacenView ( AlmacenView *alm )
 {
-    _depura ( "AlmacenView_AlmacenView", 0 );
+    blDebug ( "AlmacenView_AlmacenView", 0 );
 
     alm->addDbField ( "extasteriskalmacen", BlDbField::DbVarChar, BlDbField::DbNothing, _ ( "Extension." ) );
 
@@ -173,7 +173,7 @@ int AlmacenView_AlmacenView ( AlmacenView *alm )
 
     alm->mui_tab->addTab ( l, "Validaciones Asterisk" );
 
-    _depura ( "END AlmacenView_AlmacenView", 0 );
+    blDebug ( "END AlmacenView_AlmacenView", 0 );
     return 0;
 }
 

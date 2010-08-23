@@ -33,8 +33,8 @@
 **/
 MyPlugFPago::MyPlugFPago()
 {
-    _depura ( "MyPlugFPago::MyPlugFPago", 0 );
-    _depura ( "END MyPlugFPago::MyPlugFPago", 0 );
+    blDebug ( "MyPlugFPago::MyPlugFPago", 0 );
+    blDebug ( "END MyPlugFPago::MyPlugFPago", 0 );
 }
 
 
@@ -43,8 +43,8 @@ MyPlugFPago::MyPlugFPago()
 **/
 MyPlugFPago::~MyPlugFPago()
 {
-    _depura ( "MyPlugFPago::~MyPlugFPago", 0 );
-    _depura ( "END MyPlugFPago::~MyPlugFPago", 0 );
+    blDebug ( "MyPlugFPago::~MyPlugFPago", 0 );
+    blDebug ( "END MyPlugFPago::~MyPlugFPago", 0 );
 }
 
 
@@ -53,11 +53,11 @@ MyPlugFPago::~MyPlugFPago()
 **/
 void MyPlugFPago::elslot1()
 {
-    _depura ( "MyPlugFPago::elslot1", 0 );
+    blDebug ( "MyPlugFPago::elslot1", 0 );
     FPagoView * bud = new FPagoView ( ( BfCompany * ) mainCompany(), NULL );
     mainCompany() ->m_pWorkspace->addWindow ( bud );
     bud->show();
-    _depura ( "END MyPlugFPago::elslot1", 0 );
+    blDebug ( "END MyPlugFPago::elslot1", 0 );
 }
 
 
@@ -68,7 +68,7 @@ void MyPlugFPago::elslot1()
 **/
 void MyPlugFPago::inicializa ( BfBulmaFact *bges )
 {
-    _depura ( "MyPlugFPago::inicializa", 0 );
+    blDebug ( "MyPlugFPago::inicializa", 0 );
 
     if ( bges->company()->hasTablePrivilege ( "forma_pago", "SELECT" ) ) {
 
@@ -87,7 +87,7 @@ void MyPlugFPago::inicializa ( BfBulmaFact *bges )
         connect ( planCuentas, SIGNAL ( activated() ), this, SLOT ( elslot1() ) );
 
     }// end if
-    _depura ( "END MyPlugFPago::inicializa", 0 );
+    blDebug ( "END MyPlugFPago::inicializa", 0 );
 }
 
 
@@ -101,7 +101,7 @@ void MyPlugFPago::inicializa ( BfBulmaFact *bges )
 **/
 int entryPoint ( BfBulmaFact *bges )
 {
-    _depura ( "Entra plugin pluginbf_formasdepago\n", 0 );
+    blDebug ( "Entra plugin pluginbf_formasdepago\n", 0 );
 
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale ( LC_ALL, "" );

@@ -41,7 +41,7 @@
 ProfesorView::ProfesorView ( BfCompany *comp, QWidget *parent )
         : BfForm ( comp, parent )
 {
-    _depura ( "ProfesorView::ProfesorView", 0 );
+    blDebug ( "ProfesorView::ProfesorView", 0 );
     
     setAttribute ( Qt::WA_DeleteOnClose );
     
@@ -96,15 +96,15 @@ ProfesorView::ProfesorView ( BfCompany *comp, QWidget *parent )
         mensajeInfo ( _ ( "Error al crear el profesor" ), this );
     } // end try
     
-    _depura ( "END ProfesorView::ProfesorView", 0 );
+    blDebug ( "END ProfesorView::ProfesorView", 0 );
 }
 
 /** No precisa acciones adicionales en el destructor.
 */
 ProfesorView::~ProfesorView()
 {
-    _depura ( "ProfesorView::~ProfesorView", 0 );
-    _depura ( "END ProfesorView::~ProfesorView", 0 );
+    blDebug ( "ProfesorView::~ProfesorView", 0 );
+    blDebug ( "END ProfesorView::~ProfesorView", 0 );
 }
 
 QString ProfesorView::nombrePlantilla ( void )
@@ -114,7 +114,7 @@ QString ProfesorView::nombrePlantilla ( void )
 
 void ProfesorView::imprimir()
 {
-    _depura ( "ProfesorView::imprimir", 0 );
+    blDebug ( "ProfesorView::imprimir", 0 );
     
     /// Comprobamos que se disponen de los datos minimos para imprimir el recibo.
     QString SQLQuery = "";
@@ -133,22 +133,22 @@ void ProfesorView::imprimir()
     
     BfForm::imprimir();
 
-    _depura ( "END ProfesorView::imprimir", 0 );
+    blDebug ( "END ProfesorView::imprimir", 0 );
 }
 
 int ProfesorView::guardarPost()
 {
-    _depura ( "ProfesorView::guardarPost", 0 );
+    blDebug ( "ProfesorView::guardarPost", 0 );
 
-    _depura ( "END ProfesorView::guardarPost", 0 );
+    blDebug ( "END ProfesorView::guardarPost", 0 );
     return 0;
 }
 
 int ProfesorView::cargarPost(QString id)
 {
-    _depura ( "ProfesorView::cargarPost", 0 );
+    blDebug ( "ProfesorView::cargarPost", 0 );
 
     m_actividades->cargar("SELECT * FROM actividad NATURAL LEFT JOIN tipoactividad WHERE idprofesor = " + id);
-    _depura ( "END ProfesorView::cargarPost", 0 );
+    blDebug ( "END ProfesorView::cargarPost", 0 );
     return 0;
 }

@@ -51,7 +51,7 @@ typedef QMap<QString, BlFixed> base;
 
 BtTicket::BtTicket ( BlMainCompany *emp, QWidget *parent ) : BlWidget ( emp, parent ), BlDbRecord ( emp )
 {
-    _depura ( "BtTicket::BtTicket", 0 );
+    blDebug ( "BtTicket::BtTicket", 0 );
     /// Inicializamos los parametros del ticket para la base de datos.
     setDbTableName ( "albaran" );
     setDbFieldId ( "idalbaran" );
@@ -85,27 +85,27 @@ BtTicket::BtTicket ( BlMainCompany *emp, QWidget *parent ) : BlWidget ( emp, par
 
     start();
     
-    _depura ( "END BtTicket::BtTicket", 0 );
+    blDebug ( "END BtTicket::BtTicket", 0 );
 }
 
 BtTicket::~BtTicket()
 {
-    _depura ( "BtTicket::~BtTicket", 0 );
-    _depura ( "END BtTicket::~BtTicket", 0 );
+    blDebug ( "BtTicket::~BtTicket", 0 );
+    blDebug ( "END BtTicket::~BtTicket", 0 );
 }
 
 
 QString BtTicket::nomTicketDefecto()
 {
-    _depura ( "BtTicket::nomTicketDefecto", 0 );
+    blDebug ( "BtTicket::nomTicketDefecto", 0 );
     return m_nomTicketDefecto;
-    _depura ( "END BtTicket::nomTicketDefecto", 0 );
+    blDebug ( "END BtTicket::nomTicketDefecto", 0 );
 }
 
 
 BlDbRecord * BtTicket::agregarLinea()
 {
-    _depura ( "BtTicket::agregarLinea", 0 );
+    blDebug ( "BtTicket::agregarLinea", 0 );
 
     /// Creamos un nuevo BlDbRecord y lo inicializamos.
     BlDbRecord * item = new BlDbRecord ( mainCompany() );
@@ -127,7 +127,7 @@ BlDbRecord * BtTicket::agregarLinea()
 
     item->setDbValue ( "descuentolalbaran", "0" );
 
-    _depura ( "Hacemos el append", 0 );
+    blDebug ( "Hacemos el append", 0 );
 
     /// Agregamos el BlDbRecord a la lista de lineas de ticket.
     m_listaLineas->append ( item );
@@ -135,19 +135,19 @@ BlDbRecord * BtTicket::agregarLinea()
     g_plugParams = (void *) item;
     g_plugins->lanza("BtTicket_agregarLinea_Post", this);
 
-    _depura ( "END BtTicket::agregarLinea", 0 );
+    blDebug ( "END BtTicket::agregarLinea", 0 );
     return item;
 }
 
 void BtTicket::pintar()
 {
-    _depura ( "BtTicket::pintar", 0, "Metodo para reimplementar en clases derivadas" );
+    blDebug ( "BtTicket::pintar", 0, "Metodo para reimplementar en clases derivadas" );
     /// Disparamos los plugins.
     int res = g_plugins->lanza ( "BtTicket_pintar", this );
     if ( res != 0 ) {
         return;
     } // end if
-    _depura ( "END BtTicket::pintar", 0 );
+    blDebug ( "END BtTicket::pintar", 0 );
 }
 
 QList<BlDbRecord *> *BtTicket::listaLineas()
@@ -158,7 +158,7 @@ QList<BlDbRecord *> *BtTicket::listaLineas()
 
 BlDbRecord *BtTicket::insertarArticulo ( QString idArticulo, BlFixed cantidad, bool nuevaLinea )
 {
-    _depura ( "BtTicket::insertarArticulo", 0 );
+    blDebug ( "BtTicket::insertarArticulo", 0 );
     /// Buscamos si ya hay una linea con el articulo que buscamos
     m_lineaActual = NULL;
     BlDbRecord *item;
@@ -202,7 +202,7 @@ BlDbRecord *BtTicket::insertarArticulo ( QString idArticulo, BlFixed cantidad, b
     /// Pintamos el ticket ya que se ha modificado.
     pintar();
 
-    _depura ( "END BtTicket::insertarArticulo", 0 );
+    blDebug ( "END BtTicket::insertarArticulo", 0 );
     return m_lineaActual;
 }
 
@@ -257,7 +257,7 @@ void BtTicket::abrircajon()
     QFile file ( filestr );
     
     if ( !file.open ( QIODevice::WriteOnly | QIODevice::Unbuffered ) ) {
-        _depura ( "Error en la Impresion de ticket", 2 );
+        blDebug ( "Error en la Impresion de ticket", 2 );
     } // end if
 
     QStringList secuencia = g_confpr->valor (CONF_CASHBOX_OPEN_CODE).split(",");
@@ -275,7 +275,7 @@ void BtTicket::abrircajon()
         QString comando = "cat " + g_confpr->valor(CONF_DIR_USER) + "bulmatpv_abrircajon.txt" + "  > " + g_confpr->valor ( CONF_CASHBOX_FILE );
         system ( comando.toAscii().data() );
     } else if (g_confpr->valor(CONF_CUPS_DEFAULT_PRINTER).isEmpty() || g_confpr->valor(CONF_CUPS_DEFAULT_PRINTER) == "None") {
-        _depura("Debe establecer el parametro CONF_CUPS_DEFAULT_PRINTER o CONF_CASHBOX_FILE para abrir el cajon " , 2);
+        blDebug("Debe establecer el parametro CONF_CUPS_DEFAULT_PRINTER o CONF_CASHBOX_FILE para abrir el cajon " , 2);
     } else {
         QString comando = "lp -d" + g_confpr->valor(CONF_CUPS_DEFAULT_PRINTER) + " " + g_confpr->valor(CONF_DIR_USER) + "bulmatpv_abrircajon.txt";
         system ( comando.toAscii().data() );
@@ -293,7 +293,7 @@ void  BtTicket::imprimir()
 
     QFile file ( g_confpr->valor ( CONF_TICKET_PRINTER_FILE ) );
     if ( !file.open ( QIODevice::WriteOnly | QIODevice::Unbuffered ) ) {
-        _depura ( "Error en la Impresion de ticket", 2 );
+        blDebug ( "Error en la Impresion de ticket", 2 );
     } // end if
     BlDbRecordSet *cur = mainCompany() ->loadQuery ( "SELECT * FROM configuracion WHERE nombre='NombreEmpresa'" );
     if ( !cur->eof() ) {
@@ -605,12 +605,12 @@ void  BtTicket::imprimir()
 void BtTicket::imprimir(bool save)
 {
 
-    _depura("BtTicket::imprimir",0);
+    blDebug("BtTicket::imprimir",0);
 
     if (save) {
         
         if ( guardar() == -1) {
-            _depura ( "Error en la llamada a guardar()", 0 );
+            blDebug ( "Error en la llamada a guardar()", 0 );
             return;
         } // end if
         
@@ -622,7 +622,7 @@ void BtTicket::imprimir(bool save)
     int res = g_plugins->lanza ( "BtTicket_imprimir", this );
     if ( res != 0 ) {
         g_plugins->lanza("BtTicket_imprimir_Post", this);
-        _depura("END BtTicket::imprimir",0);
+        blDebug("END BtTicket::imprimir",0);
         return;
     } // end if
     
@@ -807,7 +807,7 @@ void BtTicket::imprimir(bool save)
     pr.print();
 
     g_plugins->lanza("BtTicket_imprimir_Post", this);
-    _depura("END BtTicket::imprimir",0);
+    blDebug("END BtTicket::imprimir",0);
 }
 
 */
@@ -816,12 +816,12 @@ void BtTicket::imprimir(bool save)
 void BtTicket::imprimir(bool save)
 {
 
-    _depura("BtTicket::imprimir",0);
+    blDebug("BtTicket::imprimir",0);
 
     if (save) {
         
         if ( guardar() == -1) {
-            _depura ( "Error en la llamada a guardar()", 0 );
+            blDebug ( "Error en la llamada a guardar()", 0 );
             return;
         } // end if
         
@@ -831,7 +831,7 @@ void BtTicket::imprimir(bool save)
     int res = g_plugins->lanza ( "BtTicket_imprimir", this );
     if ( res != 0 ) {
         g_plugins->lanza("BtTicket_imprimir_Post", this);
-        _depura("END BtTicket::imprimir",0);
+        blDebug("END BtTicket::imprimir",0);
         return;
     } // end if
     
@@ -842,7 +842,7 @@ void BtTicket::imprimir(bool save)
         QString comando = "cat " + g_confpr->valor(CONF_DIR_USER) + "ticket_normal.txt" + "  > " + g_confpr->valor ( CONF_CASHBOX_FILE );
         system ( comando.toAscii().data() );
     } else if (g_confpr->valor(CONF_CUPS_DEFAULT_PRINTER).isEmpty() || g_confpr->valor(CONF_CUPS_DEFAULT_PRINTER) == "None") {
-        _depura("Debe establecer el parametro CONF_CUPS_DEFAULT_PRINTER o CONF_CASHBOX_FILE para abrir el cajon " , 2);
+        blDebug("Debe establecer el parametro CONF_CUPS_DEFAULT_PRINTER o CONF_CASHBOX_FILE para abrir el cajon " , 2);
     } else {
         QString comando = "lp -d" + g_confpr->valor(CONF_CUPS_DEFAULT_PRINTER) + " " + g_confpr->valor(CONF_DIR_USER) + "ticket_normal.txt";
         system ( comando.toAscii().data() );
@@ -850,7 +850,7 @@ void BtTicket::imprimir(bool save)
 
     
     g_plugins->lanza("BtTicket_imprimir_Post", this);
-    _depura("END BtTicket::imprimir",0);
+    blDebug("END BtTicket::imprimir",0);
 }
 
 
@@ -858,7 +858,7 @@ void BtTicket::imprimir(bool save)
 
 void BtTicket::subir()
 {
-    _depura("BtTicket::subir");
+    blDebug("BtTicket::subir");
     int i;
 
     if ( listaLineas()->count() > 0) {
@@ -873,19 +873,19 @@ void BtTicket::subir()
         setLineaActual ( listaLineas() ->at ( i ) );
         pintar();
     } // end if
-    _depura("END BtTicket::subir");
+    blDebug("END BtTicket::subir");
 }
 
 void BtTicket::bajar()
 {
-    _depura("BtTicket::bajar");
+    blDebug("BtTicket::bajar");
     if ( listaLineas()->count() > 0 ) {
         int i = listaLineas() ->indexOf ( lineaActBtTicket() );
         if ( i < listaLineas() ->size() - 1 ) i++;
         setLineaActual ( listaLineas() ->at ( i ) );
         pintar();
     } // end if
-    _depura("END BtTicket::bajar");
+    blDebug("END BtTicket::bajar");
 }
 
 void BtTicket::agregarCantidad ( QString cantidad )
@@ -965,7 +965,7 @@ void BtTicket::ponerPrecio ( QString precio )
 
 void BtTicket::insertarArticuloCodigo ( QString codigo )
 {
-    _depura ( "BtTicket::insertarArticuloCodigo", 0 );
+    blDebug ( "BtTicket::insertarArticuloCodigo", 0 );
 
     QString query = "SELECT idarticulo FROM articulo WHERE codigocompletoarticulo= '" + codigo + "'";
     BlDbRecordSet *cur = mainCompany() ->loadQuery ( query );
@@ -978,14 +978,14 @@ void BtTicket::insertarArticuloCodigo ( QString codigo )
 
     g_plugins->lanza ( "BtTicket_insertarArticuloCodigo_Post", this );
     
-    _depura ( "END BtTicket::insertarArticuloCodigo", 0 );
+    blDebug ( "END BtTicket::insertarArticuloCodigo", 0 );
 
 }
 
 
 void BtTicket::insertarArticuloCodigoNL ( QString codigo )
 {
-    _depura("BtTicket::insertarArticuloCodigoNL",0);
+    blDebug("BtTicket::insertarArticuloCodigoNL",0);
     
     QString query = "SELECT idarticulo FROM articulo WHERE codigocompletoarticulo= '" + codigo + "'";
     BlDbRecordSet *cur = mainCompany() ->loadQuery ( query );
@@ -998,7 +998,7 @@ void BtTicket::insertarArticuloCodigoNL ( QString codigo )
     
     g_plugins->lanza ( "BtTicket_insertarArticuloCodigoNL_Post", this );
     
-    _depura("END BtTicket::insertarArticuloCodigoNL",0);
+    blDebug("END BtTicket::insertarArticuloCodigoNL",0);
 }
 
 
@@ -1042,7 +1042,7 @@ int BtTicket::cargar ( QString id )
 **/
 int BtTicket::guardar()
 {
-    _depura ( "BtTicket::guardar", 0 );
+    blDebug ( "BtTicket::guardar", 0 );
 
     try {
 
@@ -1074,7 +1074,7 @@ int BtTicket::guardar()
         mainCompany() ->commit();
 
         delete cur;
-        _depura ( "END BtTicket::guardar", 0 );
+        blDebug ( "END BtTicket::guardar", 0 );
         
         return 0;
         
@@ -1119,7 +1119,7 @@ void BtTicket::borrarLinea ( BlDbRecord *linea )
 
 /// Hace la exportacion del campo a XML
 QString BtTicket::exportXML() {
-    _depura ( "BtTicket::exportXML", 0 );
+    blDebug ( "BtTicket::exportXML", 0 );
     QString val;
     int error;
     BlDbField *campo;
@@ -1137,18 +1137,18 @@ QString BtTicket::exportXML() {
     val += "</BTTICKET>\n";
 
     return val;
-    _depura ( "END BtTicket::exportXML", 0 );
+    blDebug ( "END BtTicket::exportXML", 0 );
 }
 
 
 bool BtTicket::syncXML(const QString &text, bool insertarSiempre) {
-    _depura ( "BtTicket::syncXML", 0 );
+    blDebug ( "BtTicket::syncXML", 0 );
 
 
     QDomDocument doc ( "mydocument" );
 
     if ( !doc.setContent ( text ) ) {
-        _depura ( "END BtCompany::syncXML", 0, "XML Invalido" );
+        blDebug ( "END BtCompany::syncXML", 0, "XML Invalido" );
         return 0;
     } // end if
 
@@ -1158,7 +1158,7 @@ bool BtTicket::syncXML(const QString &text, bool insertarSiempre) {
     if (!insertarSiempre) {
 	QDomElement nomticket = docElem.firstChildElement ( "NOMTICKET" );
 	if (nomticket.text() != dbValue("nomticket") ) {
-	    _depura("END BtTicket::syncXML", 0);
+	    blDebug("END BtTicket::syncXML", 0);
 	    return 0;
 	} // end if
     } // end if
@@ -1194,7 +1194,7 @@ bool BtTicket::syncXML(const QString &text, bool insertarSiempre) {
         } // end if
     } // end while
     return 1;
-    _depura ( "BtTicket::syncXML", 0 );
+    blDebug ( "BtTicket::syncXML", 0 );
 }
 
 
@@ -1259,7 +1259,7 @@ void BtTicket::substrVars ( QByteArray &buff, int tipoEscape )
 **/
 int BtTicket::trataTags ( QByteArray &buff, int tipoEscape )
 {
-    _depura ( "BtTicket::trataTags", 0 );
+    blDebug ( "BtTicket::trataTags", 0 );
 
     ///Buscamos interfaces, los preguntamos y los ponemos.
     int pos = 0;
@@ -1941,7 +1941,7 @@ int BtTicket::trataTags ( QByteArray &buff, int tipoEscape )
     buff = cadant + buff;
 
 
-    _depura ( "END BtTicket::trataTags", 0 );
+    blDebug ( "END BtTicket::trataTags", 0 );
     return 1;
 }
 
@@ -1953,7 +1953,7 @@ int BtTicket::trataTags ( QByteArray &buff, int tipoEscape )
 **/
 QByteArray BtTicket::trataIfQuery ( const QString &query, const QByteArray &datos )
 {
-    _depura ( "BtTicket::trataIfQuery", 0 );
+    blDebug ( "BtTicket::trataIfQuery", 0 );
     QByteArray result = "";
     QByteArray query1 = query.toAscii();
 
@@ -1967,7 +1967,7 @@ QByteArray BtTicket::trataIfQuery ( const QString &query, const QByteArray &dato
         result = datos;
     } // end while
     delete cur;
-    _depura ( "END BtTicket::trataIfQuery", 0 );
+    blDebug ( "END BtTicket::trataIfQuery", 0 );
     return result;
 }
 
@@ -1979,7 +1979,7 @@ QByteArray BtTicket::trataIfQuery ( const QString &query, const QByteArray &dato
 **/
 QByteArray BtTicket::trataIf ( const QString &query, const QByteArray &datos, const QByteArray &datos1 )
 {
-    _depura ( "BtTicket::trataIfQuery", 0 );
+    blDebug ( "BtTicket::trataIfQuery", 0 );
     QByteArray result = "";
     QByteArray query1 = query.toAscii();
 
@@ -1998,7 +1998,7 @@ QByteArray BtTicket::trataIf ( const QString &query, const QByteArray &datos, co
         } // end if
     } // end while
     delete cur;
-    _depura ( "END BtTicket::trataIf", 0 );
+    blDebug ( "END BtTicket::trataIf", 0 );
     return result;
 }
 
@@ -2010,7 +2010,7 @@ QByteArray BtTicket::trataIf ( const QString &query, const QByteArray &datos, co
 **/
 QByteArray BtTicket::trataIncludeFile ( const QString &file, int tipoEscape )
 {
-    _depura ( "BtTicket::trataIncludeFile", 0 );
+    blDebug ( "BtTicket::trataIncludeFile", 0 );
     QByteArray read = "";
     QFile arch ( file );
     if ( arch.open ( QIODevice::ReadOnly ) ) {
@@ -2021,7 +2021,7 @@ QByteArray BtTicket::trataIncludeFile ( const QString &file, int tipoEscape )
     substrVars ( read, tipoEscape );
 
 
-    _depura ( "END BtTicket::trataIncludeFile", 0 );
+    blDebug ( "END BtTicket::trataIncludeFile", 0 );
     return read;
 
 }
@@ -2034,11 +2034,11 @@ QByteArray BtTicket::trataIncludeFile ( const QString &file, int tipoEscape )
 **/
 QByteArray BtTicket::trataIncludeImg ( const QString &file, int tipoEscape )
 {
-    _depura ( "BtTicket::trataIncludeImg", 0 );
+    blDebug ( "BtTicket::trataIncludeImg", 0 );
     BtEscPrinter pr;
     pr.clearBuffer();
     pr.printImage(file);
-    _depura ( "END BtTicket::trataIncludeImg", 0 );
+    blDebug ( "END BtTicket::trataIncludeImg", 0 );
     return pr.buffer();
 
 }
@@ -2052,7 +2052,7 @@ QByteArray BtTicket::trataSetCharacterPrintMode ( const QString &param, int tipo
 {
 
     int modo=0;
-    _depura ( "BtTicket::trataSetCharacterPrintMode", 0 );
+    blDebug ( "BtTicket::trataSetCharacterPrintMode", 0 );
     BtEscPrinter pr;
     pr.clearBuffer();
     if (param.contains("CHARACTER_FONTA_SELECTED"))
@@ -2069,7 +2069,7 @@ QByteArray BtTicket::trataSetCharacterPrintMode ( const QString &param, int tipo
         modo |= UNDERLINE_MODE;
 
     pr.setCharacterPrintMode(modo);
-    _depura ( "END BtTicket::trataSetCharacterPrintMode", 0 );
+    blDebug ( "END BtTicket::trataSetCharacterPrintMode", 0 );
     return pr.buffer();
 
 }
@@ -2083,12 +2083,12 @@ QByteArray BtTicket::trataSetCharacterSpacing ( const QString &param, int tipoEs
 {
 
     int modo=0;
-    _depura ( "BtTicket::trataSetCharacterSpacing", 0 );
+    blDebug ( "BtTicket::trataSetCharacterSpacing", 0 );
     BtEscPrinter pr;
     pr.clearBuffer();
 
     pr.setCharacterSpacing(param.toInt());
-    _depura ( "END BtTicket::trataSetCharacterSpacing", 0 );
+    blDebug ( "END BtTicket::trataSetCharacterSpacing", 0 );
     return pr.buffer();
 
 }
@@ -2102,7 +2102,7 @@ QByteArray BtTicket::trataSetCharacterSpacing ( const QString &param, int tipoEs
 **/
 QByteArray BtTicket::trataSetCharacterCodeTable ( const QString &param, int tipoEscape )
 {
-    _depura ( "BtTicket::trataSetCharacterCodeTable", 0 );
+    blDebug ( "BtTicket::trataSetCharacterCodeTable", 0 );
     characterCodeTable codetable=page0;
     BtEscPrinter pr;
     pr.clearBuffer();
@@ -2120,7 +2120,7 @@ QByteArray BtTicket::trataSetCharacterCodeTable ( const QString &param, int tipo
         codetable = page5;
 
     pr.setCharacterCodeTable(codetable);
-    _depura ( "END BtTicket::trataSetCharacterCodeTable", 0 );
+    blDebug ( "END BtTicket::trataSetCharacterCodeTable", 0 );
     return pr.buffer();
 
 }
@@ -2134,7 +2134,7 @@ QByteArray BtTicket::trataSetUnderlineMode ( const QString &param, int tipoEscap
 {
 
     bool modo=FALSE;
-    _depura ( "BtTicket::trataSetUnderlineMode", 0 );
+    blDebug ( "BtTicket::trataSetUnderlineMode", 0 );
     BtEscPrinter pr;
     pr.clearBuffer();
     if (param.contains("TRUE"))
@@ -2145,7 +2145,7 @@ QByteArray BtTicket::trataSetUnderlineMode ( const QString &param, int tipoEscap
         modo = TRUE;
 
     pr.setUnderlineMode(modo);
-    _depura ( "END BtTicket::trataSetUnderlineMode", 0 );
+    blDebug ( "END BtTicket::trataSetUnderlineMode", 0 );
     return pr.buffer();
 
 }
@@ -2159,12 +2159,12 @@ QByteArray BtTicket::trataSetCharacterSize ( const QString &param, int tipoEscap
 {
 
     int modo=0;
-    _depura ( "BtTicket::trataSetCharacterSpacing", 0 );
+    blDebug ( "BtTicket::trataSetCharacterSpacing", 0 );
     BtEscPrinter pr;
     pr.clearBuffer();
 
     pr.setCharacterSize(param.toInt());
-    _depura ( "END BtTicket::trataSetCharacterSpacing", 0 );
+    blDebug ( "END BtTicket::trataSetCharacterSpacing", 0 );
     return pr.buffer();
 
 }
@@ -2178,7 +2178,7 @@ QByteArray BtTicket::trataSetSmoothing ( const QString &param, int tipoEscape )
 {
 
     bool modo=FALSE;
-    _depura ( "BtTicket::trataSetSmoothing", 0 );
+    blDebug ( "BtTicket::trataSetSmoothing", 0 );
     BtEscPrinter pr;
     pr.clearBuffer();
     if (param.contains("TRUE"))
@@ -2189,7 +2189,7 @@ QByteArray BtTicket::trataSetSmoothing ( const QString &param, int tipoEscape )
         modo = TRUE;
 
     pr.setSmoothing(modo);
-    _depura ( "END BtTicket::trataSetSmoothing", 0 );
+    blDebug ( "END BtTicket::trataSetSmoothing", 0 );
     return pr.buffer();
 
 }
@@ -2203,7 +2203,7 @@ QByteArray BtTicket::trataSetDoubleStrike ( const QString &param, int tipoEscape
 {
 
     bool modo=FALSE;
-    _depura ( "BtTicket::trataSetDoubleStrike", 0 );
+    blDebug ( "BtTicket::trataSetDoubleStrike", 0 );
     BtEscPrinter pr;
     pr.clearBuffer();
     if (param.contains("TRUE"))
@@ -2214,7 +2214,7 @@ QByteArray BtTicket::trataSetDoubleStrike ( const QString &param, int tipoEscape
         modo = TRUE;
 
     pr.setDoubleStrike(modo);
-    _depura ( "END BtTicket::trataSetDoubleStrike", 0 );
+    blDebug ( "END BtTicket::trataSetDoubleStrike", 0 );
     return pr.buffer();
 
 }
@@ -2228,7 +2228,7 @@ QByteArray BtTicket::trataTurnUpsideDown ( const QString &param, int tipoEscape 
 {
 
     bool modo=FALSE;
-    _depura ( "BtTicket::trataTurnUpsideDown", 0 );
+    blDebug ( "BtTicket::trataTurnUpsideDown", 0 );
     BtEscPrinter pr;
     pr.clearBuffer();
     if (param.contains("TRUE"))
@@ -2239,7 +2239,7 @@ QByteArray BtTicket::trataTurnUpsideDown ( const QString &param, int tipoEscape 
         modo = TRUE;
 
     pr.turnUpsideDown(modo);
-    _depura ( "END BtTicket::trataTurnUpsideDown", 0 );
+    blDebug ( "END BtTicket::trataTurnUpsideDown", 0 );
     return pr.buffer();
 
 }
@@ -2255,7 +2255,7 @@ QByteArray BtTicket::trataTurn90CWRotation ( const QString &param, const QString
 
     bool modo=FALSE;
     bool extra = FALSE;
-    _depura ( "BtTicket::trataTurn90CWRotation", 0 );
+    blDebug ( "BtTicket::trataTurn90CWRotation", 0 );
     BtEscPrinter pr;
     pr.clearBuffer();
     if (param.contains("TRUE"))
@@ -2269,7 +2269,7 @@ QByteArray BtTicket::trataTurn90CWRotation ( const QString &param, const QString
         extra = TRUE;
 
     pr.turn90CWRotation(modo,extra);
-    _depura ( "END BtTicket::trataTurn90CWRotation", 0 );
+    blDebug ( "END BtTicket::trataTurn90CWRotation", 0 );
     return pr.buffer();
 
 }
@@ -2284,7 +2284,7 @@ QByteArray BtTicket::trataTurnWhiteBlack ( const QString &param, int tipoEscape 
 {
 
     bool modo=FALSE;
-    _depura ( "BtTicket::trataTurnWhiteBlack", 0 );
+    blDebug ( "BtTicket::trataTurnWhiteBlack", 0 );
     BtEscPrinter pr;
     pr.clearBuffer();
     if (param.contains("TRUE"))
@@ -2295,7 +2295,7 @@ QByteArray BtTicket::trataTurnWhiteBlack ( const QString &param, int tipoEscape 
         modo = TRUE;
 
     pr.turnWhiteBlack(modo);
-    _depura ( "END BtTicket::trataTurnWhiteBlack", 0 );
+    blDebug ( "END BtTicket::trataTurnWhiteBlack", 0 );
     return pr.buffer();
 
 }
@@ -2307,7 +2307,7 @@ QByteArray BtTicket::trataTurnWhiteBlack ( const QString &param, int tipoEscape 
 **/
 QByteArray BtTicket::trataSetColor ( const QString &param, int tipoEscape )
 {
-    _depura ( "BtTicket::trataSetColor", 0 );
+    blDebug ( "BtTicket::trataSetColor", 0 );
     printColor color=black;
     BtEscPrinter pr;
     pr.clearBuffer();
@@ -2317,7 +2317,7 @@ QByteArray BtTicket::trataSetColor ( const QString &param, int tipoEscape )
         color = red;
 
     pr.setColor(color);
-    _depura ( "END BtTicket::trataSetColor", 0 );
+    blDebug ( "END BtTicket::trataSetColor", 0 );
     return pr.buffer();
 
 }
@@ -2329,11 +2329,11 @@ QByteArray BtTicket::trataSetColor ( const QString &param, int tipoEscape )
 **/
 QByteArray BtTicket::trataHorizontalTab ( int tipoEscape )
 {
-    _depura ( "BtTicket::trataHorizontalTab", 0 );
+    blDebug ( "BtTicket::trataHorizontalTab", 0 );
     BtEscPrinter pr;
     pr.clearBuffer();
     pr.horizontalTab();
-    _depura ( "END BtTicket::trataHorizontalTab", 0 );
+    blDebug ( "END BtTicket::trataHorizontalTab", 0 );
     return pr.buffer();
 
 }
@@ -2346,12 +2346,12 @@ QByteArray BtTicket::trataHorizontalTab ( int tipoEscape )
 QByteArray BtTicket::trataSetHorizontalTabPos ( const QString &param, const QString &param1, int tipoEscape )
 {
 
-    _depura ( "BtTicket::trataSetHorizontalTabPos", 0 );
+    blDebug ( "BtTicket::trataSetHorizontalTabPos", 0 );
     BtEscPrinter pr;
     pr.clearBuffer();
 
     pr.setHorizontalTabPos(param.toInt(),param1.toLatin1().data());
-    _depura ( "END BtTicket::trataSetHorizontalTabPos", 0 );
+    blDebug ( "END BtTicket::trataSetHorizontalTabPos", 0 );
     return pr.buffer();
 
 }
@@ -2366,12 +2366,12 @@ QByteArray BtTicket::trataSetLeftMargin ( const QString &param, int tipoEscape )
 {
 
     int modo=0;
-    _depura ( "BtTicket::trataSetLeftMargin", 0 );
+    blDebug ( "BtTicket::trataSetLeftMargin", 0 );
     BtEscPrinter pr;
     pr.clearBuffer();
 
     pr.setLeftMargin(param.toInt());
-    _depura ( "END BtTicket::trataSetLeftMargin", 0 );
+    blDebug ( "END BtTicket::trataSetLeftMargin", 0 );
     return pr.buffer();
 
 }
@@ -2385,12 +2385,12 @@ QByteArray BtTicket::trataSetPrintingAreaWidth ( const QString &param, int tipoE
 {
 
     int modo=0;
-    _depura ( "BtTicket::trataSetPrintingAreaWidth", 0 );
+    blDebug ( "BtTicket::trataSetPrintingAreaWidth", 0 );
     BtEscPrinter pr;
     pr.clearBuffer();
 
     pr.setPrintingAreaWidth(param.toInt());
-    _depura ( "END BtTicket::trataSetPrintingAreaWidth", 0 );
+    blDebug ( "END BtTicket::trataSetPrintingAreaWidth", 0 );
     return pr.buffer();
 
 }
@@ -2405,7 +2405,7 @@ QByteArray BtTicket::trataSetJustification ( const QString &param, int tipoEscap
 {
 
     BtEscPrinter::justification modo = BtEscPrinter::left ;
-    _depura ( "BtTicket::trataSetJustification", 0 );
+    blDebug ( "BtTicket::trataSetJustification", 0 );
     BtEscPrinter pr;
     pr.clearBuffer();
     if (param.contains("LEFT"))
@@ -2416,7 +2416,7 @@ QByteArray BtTicket::trataSetJustification ( const QString &param, int tipoEscap
         modo = BtEscPrinter::right;
 
     pr.setJustification(modo);
-    _depura ( "END BtTicket::trataSetJustification", 0 );
+    blDebug ( "END BtTicket::trataSetJustification", 0 );
     return pr.buffer();
 
 }
@@ -2430,12 +2430,12 @@ QByteArray BtTicket::trataSetHAbsolutePos ( const QString &param, int tipoEscape
 {
 
     int modo=0;
-    _depura ( "BtTicket::trataSetHAbsolutePos", 0 );
+    blDebug ( "BtTicket::trataSetHAbsolutePos", 0 );
     BtEscPrinter pr;
     pr.clearBuffer();
 
     pr.setHAbsolutePos(param.toInt());
-    _depura ( "END BtTicket::trataSetHAbsolutePos", 0 );
+    blDebug ( "END BtTicket::trataSetHAbsolutePos", 0 );
     return pr.buffer();
 
 }
@@ -2449,12 +2449,12 @@ QByteArray BtTicket::trataSetHRelativePos ( const QString &param, int tipoEscape
 {
 
     int modo=0;
-    _depura ( "BtTicket::trataSetHRelativePos", 0 );
+    blDebug ( "BtTicket::trataSetHRelativePos", 0 );
     BtEscPrinter pr;
     pr.clearBuffer();
 
     pr.setHRelativePos(param.toInt());
-    _depura ( "END BtTicket::trataSetHRelativePos", 0 );
+    blDebug ( "END BtTicket::trataSetHRelativePos", 0 );
     return pr.buffer();
 
 }
@@ -2470,7 +2470,7 @@ QByteArray BtTicket::trataSetBarcodeFormat ( const QString &param, const QString
 
     barCodeTextPos pos = notPrinted;
     printerFont    font = fontA;
-    _depura ( "BtTicket::trataSetHRelativePos", 0 );
+    blDebug ( "BtTicket::trataSetHRelativePos", 0 );
     BtEscPrinter pr;
     pr.clearBuffer();
 
@@ -2487,7 +2487,7 @@ QByteArray BtTicket::trataSetBarcodeFormat ( const QString &param, const QString
         font = fontB;
 
     pr.setBarcodeFormat(param.toInt(), param1.toInt(), pos, font);
-    _depura ( "END BtTicket::trataSetHRelativePos", 0 );
+    blDebug ( "END BtTicket::trataSetHRelativePos", 0 );
     return pr.buffer();
 
 }
@@ -2503,7 +2503,7 @@ QByteArray BtTicket::trataPrintBarCode ( const QString &param, const QString &pa
 {
 
     barcodeSystem system = upca;
-    _depura ( "BtTicket::trataPrintBarCode", 0 );
+    blDebug ( "BtTicket::trataPrintBarCode", 0 );
     BtEscPrinter pr;
     pr.clearBuffer();
 
@@ -2528,7 +2528,7 @@ QByteArray BtTicket::trataPrintBarCode ( const QString &param, const QString &pa
 
 
     pr.printBarCode(system, param1.toInt(), param2.toAscii().data());
-    _depura ( "END BtTicket::trataPrintBarCode", 0 );
+    blDebug ( "END BtTicket::trataPrintBarCode", 0 );
     return pr.buffer();
 
 }
@@ -2542,7 +2542,7 @@ QByteArray BtTicket::trataPrintBarCode ( const QString &param, const QString &pa
 QByteArray BtTicket::trataRightJustified ( const QString &param, const QString &param1,const QString &param2,const QString &param3,int tipoEscape )
 {
 
-    _depura ( "BtTicket::trataRightJustified", 0 );
+    blDebug ( "BtTicket::trataRightJustified", 0 );
     bool truncate = FALSE;
     if (param3.contains("TRUE"))
         truncate = TRUE;
@@ -2551,7 +2551,7 @@ QByteArray BtTicket::trataRightJustified ( const QString &param, const QString &
     if (param3.contains("1"))
         truncate = TRUE;
 
-    _depura ( "END BtTicket::trataRightJustified", 0 );
+    blDebug ( "END BtTicket::trataRightJustified", 0 );
     return param.rightJustified(param1.toInt(), param2.at(0), truncate).toAscii();
 }
 
@@ -2563,7 +2563,7 @@ QByteArray BtTicket::trataRightJustified ( const QString &param, const QString &
 QByteArray BtTicket::trataLeftJustified ( const QString &param, const QString &param1,const QString &param2,const QString &param3,int tipoEscape )
 {
 
-    _depura ( "BtTicket::trataLeftJustified", 0 );
+    blDebug ( "BtTicket::trataLeftJustified", 0 );
     bool truncate = FALSE;
     if (param3.contains("TRUE"))
         truncate = TRUE;
@@ -2572,7 +2572,7 @@ QByteArray BtTicket::trataLeftJustified ( const QString &param, const QString &p
     if (param3.contains("1"))
         truncate = TRUE;
 
-    _depura ( "END BtTicket::trataLeftJustified", 0 );
+    blDebug ( "END BtTicket::trataLeftJustified", 0 );
     return param.leftJustified(param1.toInt(), param2.at(0), truncate).toAscii();
 }
 
@@ -2586,12 +2586,12 @@ QByteArray BtTicket::trataSetBarCodeWidth ( const QString &param, int tipoEscape
 {
 
     int modo=0;
-    _depura ( "BtTicket::trataSetBarCodeWidth", 0 );
+    blDebug ( "BtTicket::trataSetBarCodeWidth", 0 );
     BtEscPrinter pr;
     pr.clearBuffer();
 
     pr.setBarCodeWidth(param.toInt());
-    _depura ( "END BtTicket::trataSetBarCodeWidth", 0 );
+    blDebug ( "END BtTicket::trataSetBarCodeWidth", 0 );
     return pr.buffer();
 
 }
@@ -2605,12 +2605,12 @@ QByteArray BtTicket::trataSetBarCodeHeight ( const QString &param, int tipoEscap
 {
 
     int modo=0;
-    _depura ( "BtTicket::trataSetBarCodeHeight", 0 );
+    blDebug ( "BtTicket::trataSetBarCodeHeight", 0 );
     BtEscPrinter pr;
     pr.clearBuffer();
 
     pr.setBarCodeHeight(param.toInt());
-    _depura ( "END BtTicket::trataSetBarCodeHeight", 0 );
+    blDebug ( "END BtTicket::trataSetBarCodeHeight", 0 );
     return pr.buffer();
 
 }
@@ -2624,12 +2624,12 @@ QByteArray BtTicket::trataSelectPageMode ( int tipoEscape )
 {
 
     int modo=0;
-    _depura ( "BtTicket::trataSelectPageMode", 0 );
+    blDebug ( "BtTicket::trataSelectPageMode", 0 );
     BtEscPrinter pr;
     pr.clearBuffer();
 
     pr.selectPageMode();
-    _depura ( "END BtTicket::trataSelectPageMode", 0 );
+    blDebug ( "END BtTicket::trataSelectPageMode", 0 );
     return pr.buffer();
 
 }
@@ -2644,7 +2644,7 @@ QByteArray BtTicket::trataSetPrintDirection ( const QString &param, int tipoEsca
 {
 
     printDirection direc = leftToRight;
-    _depura ( "BtTicket::trataSetPrintDirection", 0 );
+    blDebug ( "BtTicket::trataSetPrintDirection", 0 );
     BtEscPrinter pr;
     pr.clearBuffer();
 
@@ -2659,7 +2659,7 @@ QByteArray BtTicket::trataSetPrintDirection ( const QString &param, int tipoEsca
 
 
     pr.setPrintDirection( direc);
-    _depura ( "END BtTicket::trataSetPrintDirection", 0 );
+    blDebug ( "END BtTicket::trataSetPrintDirection", 0 );
     return pr.buffer();
 
 }
@@ -2676,12 +2676,12 @@ QByteArray BtTicket::trataSetPrintArea ( const QString &param,  const QString &p
 {
 
     int modo=0;
-    _depura ( "BtTicket::trataSetPrintArea", 0 );
+    blDebug ( "BtTicket::trataSetPrintArea", 0 );
     BtEscPrinter pr;
     pr.clearBuffer();
 
     pr.setPrintArea(param.toInt(), param1.toInt(), param2.toInt(), param3.toInt());
-    _depura ( "END BtTicket::trataSetPrintArea", 0 );
+    blDebug ( "END BtTicket::trataSetPrintArea", 0 );
     return pr.buffer();
 
 }
@@ -2696,12 +2696,12 @@ QByteArray BtTicket::trataSetVAbsolutePos ( const QString &param, int tipoEscape
 {
 
     int modo=0;
-    _depura ( "BtTicket::trataSetVAbsolutePos", 0 );
+    blDebug ( "BtTicket::trataSetVAbsolutePos", 0 );
     BtEscPrinter pr;
     pr.clearBuffer();
 
     pr.setVAbsolutePos(param.toInt());
-    _depura ( "END BtTicket::trataSetVAbsolutePos", 0 );
+    blDebug ( "END BtTicket::trataSetVAbsolutePos", 0 );
     return pr.buffer();
 
 }
@@ -2715,12 +2715,12 @@ QByteArray BtTicket::trataSetVRelativePos ( const QString &param, int tipoEscape
 {
 
     int modo=0;
-    _depura ( "BtTicket::trataSetVRelativePos", 0 );
+    blDebug ( "BtTicket::trataSetVRelativePos", 0 );
     BtEscPrinter pr;
     pr.clearBuffer();
 
     pr.setVRelativePos(param.toInt());
-    _depura ( "END BtTicket::trataSetVRelativePos", 0 );
+    blDebug ( "END BtTicket::trataSetVRelativePos", 0 );
     return pr.buffer();
 
 }
@@ -2734,7 +2734,7 @@ QByteArray BtTicket::trataCutPaper ( const QString &param, int tipoEscape )
 {
 
     bool modo=FALSE;
-    _depura ( "BtTicket::trataCutPaper", 0 );
+    blDebug ( "BtTicket::trataCutPaper", 0 );
     BtEscPrinter pr;
     pr.clearBuffer();
     if (param.contains("TRUE"))
@@ -2745,7 +2745,7 @@ QByteArray BtTicket::trataCutPaper ( const QString &param, int tipoEscape )
         modo = TRUE;
 
     pr.cutPaper(modo);
-    _depura ( "END BtTicket::trataCutPaper", 0 );
+    blDebug ( "END BtTicket::trataCutPaper", 0 );
     return pr.buffer();
 
 }
@@ -2761,7 +2761,7 @@ QByteArray BtTicket::trataCutPaperAndFeed ( const QString &param, const QString 
 {
 
     bool modo=FALSE;
-    _depura ( "BtTicket::trataCutPaperAndFeed", 0 );
+    blDebug ( "BtTicket::trataCutPaperAndFeed", 0 );
     BtEscPrinter pr;
     pr.clearBuffer();
     if (param.contains("TRUE"))
@@ -2772,7 +2772,7 @@ QByteArray BtTicket::trataCutPaperAndFeed ( const QString &param, const QString 
         modo = TRUE;
 
     pr.cutPaperAndFeed(modo, param1.toInt());
-    _depura ( "END BtTicket::trataCutPaperAndFeed", 0 );
+    blDebug ( "END BtTicket::trataCutPaperAndFeed", 0 );
     return pr.buffer();
 
 }
@@ -2785,7 +2785,7 @@ QByteArray BtTicket::trataCutPaperAndFeed ( const QString &param, const QString 
 **/
 QByteArray BtTicket::trataQuery ( const QString &query, const QByteArray &datos, int tipoEscape )
 {
-    _depura ( "BtTicket::trataQuery", 0 );
+    blDebug ( "BtTicket::trataQuery", 0 );
     QByteArray result = "";
     QByteArray query1 = query.toAscii();
 
@@ -2794,29 +2794,29 @@ QByteArray BtTicket::trataQuery ( const QString &query, const QByteArray &datos,
 
     /// Cargamos el query y lo recorremos
     result = trataCursor ( mainCompany() ->loadQuery ( query1 ), datos, tipoEscape );
-    _depura ( "END BtTicket::trataQuery", 0 );
+    blDebug ( "END BtTicket::trataQuery", 0 );
     return result;
 
 }
 
 QByteArray BtTicket::trataCursor ( BlDbRecordSet *cur, const QByteArray &datos, int tipoEscape )
 {
-    _depura ( "BtTicket::trataCursor", 0 );
+    blDebug ( "BtTicket::trataCursor", 0 );
     QByteArray result = "";
     
     if ( !cur ) {
-        _depura ( "END BtTicket::trataCursor", 0 , "cur==NULL" );
+        blDebug ( "END BtTicket::trataCursor", 0 , "cur==NULL" );
         return "";
     };
     while ( !cur->eof() ) {
         QByteArray salidatemp = datos;
 
         /// Buscamos cadenas perdidas adicionales que puedan quedar por poner.
-        //_depura("salidatemp =",0,salidatemp);
+        //blDebug("salidatemp =",0,salidatemp);
         QRegExp rx ( "\\[(\\w*)\\]" );
         int pos =  0;
         while ( ( pos = rx.indexIn ( salidatemp, pos ) ) != -1 ) {
-            //_depura("substituïm ",0,rx.cap(1));
+            //blDebug("substituïm ",0,rx.cap(1));
             if ( cur->numcampo ( rx.cap ( 1 ) ) != -1 ) {
                 switch ( tipoEscape ) {
                 case 1:
@@ -2839,7 +2839,7 @@ QByteArray BtTicket::trataCursor ( BlDbRecordSet *cur, const QByteArray &datos, 
         cur->nextRecord();
     } // end while
     delete cur;
-    _depura ( "END BtTicket::trataCursor", 0 );
+    blDebug ( "END BtTicket::trataCursor", 0 );
     return result;
 }
 
@@ -2851,7 +2851,7 @@ QByteArray BtTicket::trataCursor ( BlDbRecordSet *cur, const QByteArray &datos, 
 **/
 QByteArray BtTicket::trataExists ( const QString &query, const QByteArray &datos )
 {
-    _depura ( "BtTicket::trataExists", 0 );
+    blDebug ( "BtTicket::trataExists", 0 );
 
     QByteArray result = "";
     QByteArray query1 = query.toAscii();
@@ -2862,7 +2862,7 @@ QByteArray BtTicket::trataExists ( const QString &query, const QByteArray &datos
     QFile file ( query1 );
     if ( file.exists() )
         result = datos;
-    _depura ( "END BtTicket::trataExists", 0 );
+    blDebug ( "END BtTicket::trataExists", 0 );
 
     return result;
 }
@@ -2870,9 +2870,9 @@ QByteArray BtTicket::trataExists ( const QString &query, const QByteArray &datos
 
 int BtTicket::generaRML ( void )
 {
-    _depura ( "BtTicket::generaRML", 0 );
+    blDebug ( "BtTicket::generaRML", 0 );
     int err = BlDbRecord::generaRML();
-    _depura ( "END BtTicket::generaRML", 0 );
+    blDebug ( "END BtTicket::generaRML", 0 );
     return err;
 }
 
@@ -2881,7 +2881,7 @@ int BtTicket::generaRML ( void )
 **/
 int BtTicket::generaRML ( const QString &arch )
 {
-    _depura ( "BtTicket::generaRML", 0, arch );
+    blDebug ( "BtTicket::generaRML", 0, arch );
 
     /// Vaciamos las variables de RML
     m_variables.clear();
@@ -2898,7 +2898,7 @@ int BtTicket::generaRML ( const QString &arch )
 
     res = BlDbRecord::generaRML ( arch );
 
-    _depura ( "END BtTicket::generaRML", 0 );
+    blDebug ( "END BtTicket::generaRML", 0 );
     return res;
 }
 

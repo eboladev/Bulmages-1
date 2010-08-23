@@ -41,7 +41,7 @@
 **/
 int entryPoint ( BfBulmaFact *bges )
 {
-    _depura ( "Estoy dentro del plugin de tallas y colores", 0 );
+    blDebug ( "Estoy dentro del plugin de tallas y colores", 0 );
 
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale ( LC_ALL, "" );
@@ -60,7 +60,7 @@ int entryPoint ( BfBulmaFact *bges )
 **/
 int ArticuloView_ArticuloView ( ArticuloView *art )
 {
-    _depura ( "ArticuloView_ArticuloView", 0 );
+    blDebug ( "ArticuloView_ArticuloView", 0 );
 
     /// Agregamos el subformulario de validaciones.
     BfSubForm *l = new BfSubForm ( art );
@@ -94,7 +94,7 @@ int ArticuloView_ArticuloView ( ArticuloView *art )
 
     art->mui_tab->addTab ( l, "Tallas y colores" );
 
-    _depura ( "END ArticuloView_ArticuloView", 0 );
+    blDebug ( "END ArticuloView_ArticuloView", 0 );
     return 0;
 }
 
@@ -106,13 +106,13 @@ int ArticuloView_ArticuloView ( ArticuloView *art )
 **/
 int ArticuloView_cargar ( ArticuloView *art )
 {
-    _depura ( "ArticuloView_cargar", 0 );
+    blDebug ( "ArticuloView_cargar", 0 );
     BfSubForm *l = art->findChild<BfSubForm *> ( "laliastc" );
     if ( l ) {
         QString query = "SELECT *, tc_articulo_alias.idtc_talla AS idtc_tallaa, tc_articulo_alias.idtc_color AS idtc_colora FROM tc_articulo_alias LEFT JOIN tc_talla AS t1 ON tc_articulo_alias.idtc_talla = t1.idtc_talla LEFT JOIN tc_color AS t2 ON tc_articulo_alias.idtc_color = t2.idtc_color WHERE tc_articulo_alias.idarticulo = " + art->dbValue ( "idarticulo" );
         l->cargar ( query );
     } // end if
-    _depura ( "END ArticuloView_cargar", 0 );
+    blDebug ( "END ArticuloView_cargar", 0 );
     return 0;
 }
 
@@ -125,14 +125,14 @@ int ArticuloView_cargar ( ArticuloView *art )
 **/
 int ArticuloView_guardar_post ( ArticuloView *art )
 {
-    _depura ( "ArticuloView_guardar_post", 0 );
+    blDebug ( "ArticuloView_guardar_post", 0 );
     try {
         BfSubForm *l = art->findChild<BfSubForm *> ( "laliastc" );
         l->setColumnValue ( "idarticulo", art->dbValue ( "idarticulo" ) );
         l->guardar();
         return 0;
     } catch ( ... ) {
-        _depura ( "Hubo un error al guardar los alias", 2 );
+        blDebug ( "Hubo un error al guardar los alias", 2 );
         return 0;
     }
 }
@@ -152,8 +152,8 @@ int ArticuloView_guardar_post ( ArticuloView *art )
 **/
 QSubForm3BfDelegate::QSubForm3BfDelegate ( QObject *parent = 0 ) : BfSubFormDelegate ( parent )
 {
-    _depura ( "QSubForm3BfDelegate::QSubForm3BfDelegate", 0 );
-    _depura ( "END QSubForm3BfDelegate::QSubForm3BfDelegate", 0 );
+    blDebug ( "QSubForm3BfDelegate::QSubForm3BfDelegate", 0 );
+    blDebug ( "END QSubForm3BfDelegate::QSubForm3BfDelegate", 0 );
 }
 
 
@@ -162,8 +162,8 @@ QSubForm3BfDelegate::QSubForm3BfDelegate ( QObject *parent = 0 ) : BfSubFormDele
 **/
 QSubForm3BfDelegate::~QSubForm3BfDelegate()
 {
-    _depura ( "QSubForm3BfDelegate::~QSubForm3BfDelegate", 0 );
-    _depura ( "END QSubForm3BfDelegate::~QSubForm3BfDelegate", 0 );
+    blDebug ( "QSubForm3BfDelegate::~QSubForm3BfDelegate", 0 );
+    blDebug ( "END QSubForm3BfDelegate::~QSubForm3BfDelegate", 0 );
 }
 
 
@@ -176,7 +176,7 @@ QSubForm3BfDelegate::~QSubForm3BfDelegate()
 **/
 QWidget *QSubForm3BfDelegate::createEditor ( QWidget *parent, const QStyleOptionViewItem &option, const QModelIndex &index ) const
 {
-    _depura ( "QSubForm3BfDelegate::createEditor", 0 );
+    blDebug ( "QSubForm3BfDelegate::createEditor", 0 );
     BlSubFormHeader *linea;
     linea = m_subform->cabecera() ->at ( index.column() );
 
@@ -191,7 +191,7 @@ QWidget *QSubForm3BfDelegate::createEditor ( QWidget *parent, const QStyleOption
     } else  {
         return BfSubFormDelegate::createEditor ( parent, option, index );
     } // end if
-    _depura ( "END QSubForm3BfDelegate::createEditor", 0 );
+    blDebug ( "END QSubForm3BfDelegate::createEditor", 0 );
 }
 
 
@@ -204,7 +204,7 @@ QWidget *QSubForm3BfDelegate::createEditor ( QWidget *parent, const QStyleOption
 **/
 void QSubForm3BfDelegate::setModelData ( QWidget *editor, QAbstractItemModel *model, const QModelIndex &index ) const
 {
-    _depura ( "QSubForm3BfDelegate::setModelData", 0 );
+    blDebug ( "QSubForm3BfDelegate::setModelData", 0 );
 
     /// Si la fila o columna pasadas son invalidas salimos.
     if ( index.column() < 0 || index.row() < 0 )
@@ -225,7 +225,7 @@ void QSubForm3BfDelegate::setModelData ( QWidget *editor, QAbstractItemModel *mo
     } else {
         BfSubFormDelegate::setModelData ( editor, model, index );
     } // end if
-    _depura ( "END QSubForm3BfDelegate::setModelData", 0 );
+    blDebug ( "END QSubForm3BfDelegate::setModelData", 0 );
 }
 
 
@@ -236,7 +236,7 @@ void QSubForm3BfDelegate::setModelData ( QWidget *editor, QAbstractItemModel *mo
 **/
 void QSubForm3BfDelegate::setEditorData ( QWidget* editor, const QModelIndex& index ) const
 {
-    _depura ( "QSubForm3BfDelegate::setEditorData", 0 );
+    blDebug ( "QSubForm3BfDelegate::setEditorData", 0 );
     BlSubFormHeader *linea;
     linea = m_subform->cabecera() ->at ( index.column() );
     if ( linea->nomcampo() == "nomtc_color" ) {
@@ -250,7 +250,7 @@ void QSubForm3BfDelegate::setEditorData ( QWidget* editor, const QModelIndex& in
     } else {
         BfSubFormDelegate::setEditorData ( editor, index );
     } // end if
-    _depura ( "END QSubForm3BfDelegate::setEditorData", 0 );
+    blDebug ( "END QSubForm3BfDelegate::setEditorData", 0 );
 }
 
 
@@ -286,7 +286,7 @@ int Busqueda_on_m_inputBusqueda_textChanged ( BlSearchWidget *busc )
 **/
 int BfProveedorAlbaranSubForm_BfProveedorAlbaranSubForm ( BfProveedorAlbaranSubForm *subform )
 {
-    _depura ( "BfProveedorAlbaranSubForm_BfProveedorAlbaranSubForm", 0 );
+    blDebug ( "BfProveedorAlbaranSubForm_BfProveedorAlbaranSubForm", 0 );
 
     subform->addSubFormHeader ( "idtc_color", BlDbField::DbInt, BlDbField::DbPrimaryKey, BlSubFormHeader::DbHideView | BlSubFormHeader::DbNoWrite, _ ( "color" ) );
     subform->addSubFormHeader ( "idtc_talla", BlDbField::DbInt, BlDbField::DbPrimaryKey, BlSubFormHeader::DbHideView | BlSubFormHeader::DbNoWrite, _ ( "Talla" ) );
@@ -297,7 +297,7 @@ int BfProveedorAlbaranSubForm_BfProveedorAlbaranSubForm ( BfProveedorAlbaranSubF
     subform->m_delegate = new QSubForm3BfDelegate ( subform );
     subform->mui_list->setItemDelegate ( subform->m_delegate );
 
-    _depura ( "END BfProveedorAlbaranSubForm_BfProveedorAlbaranSubForm", 0 );
+    blDebug ( "END BfProveedorAlbaranSubForm_BfProveedorAlbaranSubForm", 0 );
     return 0;
 }
 
@@ -309,7 +309,7 @@ int BfProveedorAlbaranSubForm_BfProveedorAlbaranSubForm ( BfProveedorAlbaranSubF
 **/
 int ListLinFacturaProveedorView_ListLinFacturaProveedorView ( ListLinFacturaProveedorView *subform )
 {
-    _depura ( "ListLinFacturaProveedorView_ListLinFacturaProveedorView", 0 );
+    blDebug ( "ListLinFacturaProveedorView_ListLinFacturaProveedorView", 0 );
     subform->addSubFormHeader ( "idtc_color", BlDbField::DbInt, BlDbField::DbPrimaryKey, BlSubFormHeader::DbHideView | BlSubFormHeader::DbNoWrite, _ ( "color" ) );
     subform->addSubFormHeader ( "idtc_talla", BlDbField::DbInt, BlDbField::DbPrimaryKey, BlSubFormHeader::DbHideView | BlSubFormHeader::DbNoWrite, _ ( "Talla" ) );
     subform->addSubFormHeader ( "nomtc_color", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone, _ ( "Nombre color" ) );
@@ -318,7 +318,7 @@ int ListLinFacturaProveedorView_ListLinFacturaProveedorView ( ListLinFacturaProv
     delete subform->m_delegate;
     subform->m_delegate = new QSubForm3BfDelegate ( subform );
     subform->mui_list->setItemDelegate ( subform->m_delegate );
-    _depura ( "END ListLinFacturaProveedorView_ListLinFacturaProveedorView", 0 );
+    blDebug ( "END ListLinFacturaProveedorView_ListLinFacturaProveedorView", 0 );
     return 0;
 }
 
@@ -332,7 +332,7 @@ int ListLinFacturaProveedorView_ListLinFacturaProveedorView ( ListLinFacturaProv
 **/
 int BfClienteAlbaranSubForm_BfClienteAlbaranSubForm ( BfClienteAlbaranSubForm *subform )
 {
-    _depura ( "BfClienteAlbaranSubForm_BfClienteAlbaranSubForm", 0 );
+    blDebug ( "BfClienteAlbaranSubForm_BfClienteAlbaranSubForm", 0 );
     subform->addSubFormHeader ( "idtc_color", BlDbField::DbInt, BlDbField::DbNothing, BlSubFormHeader::DbHideView | BlSubFormHeader::DbNoWrite, _ ( "color" ) );
     subform->addSubFormHeader ( "idtc_talla", BlDbField::DbInt, BlDbField::DbNothing, BlSubFormHeader::DbHideView | BlSubFormHeader::DbNoWrite, _ ( "Talla" ) );
     subform->addSubFormHeader ( "nomtc_color", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone, _ ( "Nombre color" ) );
@@ -341,7 +341,7 @@ int BfClienteAlbaranSubForm_BfClienteAlbaranSubForm ( BfClienteAlbaranSubForm *s
     delete subform->m_delegate;
     subform->m_delegate = new QSubForm3BfDelegate ( subform );
     subform->mui_list->setItemDelegate ( subform->m_delegate );
-    _depura ( "END BfClienteAlbaranSubForm_BfClienteAlbaranSubForm", 0 );
+    blDebug ( "END BfClienteAlbaranSubForm_BfClienteAlbaranSubForm", 0 );
     return 0;
 }
 
@@ -361,7 +361,7 @@ int BfClienteAlbaranSubForm_cargar ( BfClienteAlbaranSubForm *subform )
 **/
 int ListLinFacturaView_ListLinFacturaView ( ListLinFacturaView *subform )
 {
-    _depura ( "ListLinFacturaView_ListLinFacturaView", 0 );
+    blDebug ( "ListLinFacturaView_ListLinFacturaView", 0 );
     subform->addSubFormHeader ( "idtc_color", BlDbField::DbInt, BlDbField::DbNothing, BlSubFormHeader::DbHideView | BlSubFormHeader::DbNoWrite, _ ( "color" ) );
     subform->addSubFormHeader ( "idtc_talla", BlDbField::DbInt, BlDbField::DbNothing, BlSubFormHeader::DbHideView | BlSubFormHeader::DbNoWrite, _ ( "Talla" ) );
     subform->addSubFormHeader ( "nomtc_color", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone, _ ( "Nombre color" ) );
@@ -370,7 +370,7 @@ int ListLinFacturaView_ListLinFacturaView ( ListLinFacturaView *subform )
     delete subform->m_delegate;
     subform->m_delegate = new QSubForm3BfDelegate ( subform );
     subform->mui_list->setItemDelegate ( subform->m_delegate );
-    _depura ( "END ListLinFacturaView_ListLinFacturaView", 0 );
+    blDebug ( "END ListLinFacturaView_ListLinFacturaView", 0 );
     return 0;
 }
 

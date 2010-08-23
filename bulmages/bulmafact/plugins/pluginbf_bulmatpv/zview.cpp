@@ -44,7 +44,7 @@
 ZView::ZView ( BfCompany *comp, QWidget *parent )
         : BfForm ( comp, parent )
 {
-    _depura ( "ZView::ZView", 0 );
+    blDebug ( "ZView::ZView", 0 );
     setAttribute ( Qt::WA_DeleteOnClose );
     try {
         setupUi ( this );
@@ -92,7 +92,7 @@ ZView::ZView ( BfCompany *comp, QWidget *parent )
     } catch ( ... ) {
         mensajeInfo ( _ ( "Error al crear el almacen" ) );
     } // end try
-    _depura ( "END ZView::ZView", 0 );
+    blDebug ( "END ZView::ZView", 0 );
 }
 
 
@@ -102,8 +102,8 @@ ZView::ZView ( BfCompany *comp, QWidget *parent )
 **/
 ZView::~ZView()
 {
-    _depura ( "ZView::~ZView", 0 );
-    _depura ( "END ZView::~ZView", 0 );
+    blDebug ( "ZView::~ZView", 0 );
+    blDebug ( "END ZView::~ZView", 0 );
 }
 
 
@@ -137,7 +137,7 @@ int ZView::cargarPost ( QString idz )
 **/
 void ZView::on_mui_list_cellDoubleClicked ( int row, int )
 {
-    _depura ( "ZView::on_mui_list_doubleClicked", 0 );
+    blDebug ( "ZView::on_mui_list_doubleClicked", 0 );
 
     QString idalbaran = mui_list->dbValue ( QString ( "idalbaran" ), row );
     if ( g_plugins->lanza ( "SNewAlbaranClienteView", mainCompany() ) ) {
@@ -150,7 +150,7 @@ void ZView::on_mui_list_cellDoubleClicked ( int row, int )
         mainCompany() ->m_pWorkspace->addWindow ( prov );
         prov->show();
     } // end if
-    _depura ( "END ZView::on_mui_list_doubleClicked", 0 );
+    blDebug ( "END ZView::on_mui_list_doubleClicked", 0 );
 }
 
 

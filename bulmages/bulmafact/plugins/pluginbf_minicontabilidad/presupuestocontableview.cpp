@@ -45,7 +45,7 @@
 PresupuestoContableView::PresupuestoContableView ( BfCompany *comp, QWidget *parent )
         : BfForm ( comp, parent )
 {
-    _depura ( "Inicializacion de PresupuestoContableView", 0 );
+    blDebug ( "Inicializacion de PresupuestoContableView", 0 );
     setAttribute ( Qt::WA_DeleteOnClose );
     try {
         setupUi ( this );
@@ -89,7 +89,7 @@ PresupuestoContableView::PresupuestoContableView ( BfCompany *comp, QWidget *par
     } catch ( ... ) {
         mensajeInfo ( _ ( "Error al crear el presupuesto" ), this );
     } // end try
-    _depura ( "Fin de la inicializacion de PresupuestoContableView", 0 );
+    blDebug ( "Fin de la inicializacion de PresupuestoContableView", 0 );
 }
 
 
@@ -98,10 +98,10 @@ PresupuestoContableView::PresupuestoContableView ( BfCompany *comp, QWidget *par
 **/
 void PresupuestoContableView::inicializar()
 {
-    _depura ( "PresupuestoContableView::inicializar", 0 );
+    blDebug ( "PresupuestoContableView::inicializar", 0 );
     mui_list->inicializar();
     dialogChanges_cargaInicial();
-    _depura ( "END PresupuestoContableView::inicializar", 0 );
+    blDebug ( "END PresupuestoContableView::inicializar", 0 );
 }
 
 
@@ -110,10 +110,10 @@ void PresupuestoContableView::inicializar()
 **/
 PresupuestoContableView::~PresupuestoContableView()
 {
-    _depura ( "PresupuestoContableView::~PresupuestoContableView", 0 );
+    blDebug ( "PresupuestoContableView::~PresupuestoContableView", 0 );
     /// Disparamos los plugins.
     g_plugins->lanza ( "PresupuestoContableView_DesPresupuestoContableView", this );
-    _depura ( "END PresupuestoContableView::~PresupuestoContableView", 0 );
+    blDebug ( "END PresupuestoContableView::~PresupuestoContableView", 0 );
 }
 
 
@@ -125,11 +125,11 @@ PresupuestoContableView::~PresupuestoContableView()
 **/
 int PresupuestoContableView::borrarPre()
 {
-    _depura ( "PresupuestoContableView::borrar", 0 );
+    blDebug ( "PresupuestoContableView::borrar", 0 );
     /// Disparamos los plugins con presupuesto_imprimirPresupuesto.
     g_plugins->lanza ( "PresupuestoContableView_borrarPre", this );
     mui_list->borrar();
-    _depura ( "END PresupuestoContableView::borrar", 0 );
+    blDebug ( "END PresupuestoContableView::borrar", 0 );
     return 0;
 }
 
@@ -141,12 +141,12 @@ int PresupuestoContableView::borrarPre()
 **/
 int PresupuestoContableView::cargarPost ( QString idbudget )
 {
-    _depura ( "PresupuestoContableView::cargarPost", 0 );
+    blDebug ( "PresupuestoContableView::cargarPost", 0 );
 
     QString query = "SELECT * FROM ( SELECT * FROM partida WHERE idpartida NOT IN (SELECT DISTINCT COALESCE(padre,0) FROM partida) ) AS t1 LEFT JOIN (SELECT idlpresupuestocontable, coalesce(saldolpresupuestocontable, 0) AS saldolpresupuestocontable, idpartida, idpresupuestocontable, conceptolpresupuestocontable FROM lpresupuestocontable) AS t2 ON t2.idpartida = t1.idpartida AND t2.idpresupuestocontable = "+idbudget;
     mui_list->cargar ( query );
 
-    _depura ( "END PresupuestoContableView::cargar", 0 );
+    blDebug ( "END PresupuestoContableView::cargar", 0 );
     return 0;
 }
 
@@ -157,7 +157,7 @@ int PresupuestoContableView::cargarPost ( QString idbudget )
 **/
 int PresupuestoContableView::guardarPost()
 {
-    _depura ( "PresupuestoContableView::guardarPost", 0 );
+    blDebug ( "PresupuestoContableView::guardarPost", 0 );
 
     mui_list->setColumnValue ( "idpresupuestocontable", dbValue ( "idpresupuestocontable" ) );
 
@@ -165,7 +165,7 @@ int PresupuestoContableView::guardarPost()
     /// Disparamos los plugins con presupuesto_imprimirPresupuesto.
     g_plugins->lanza ( "PresupuestoContableView_guardarPost_Post", this );
 
-    _depura ( "END PresupuestoContableView::guardar", 0 );
+    blDebug ( "END PresupuestoContableView::guardar", 0 );
     return 0;
 }
 

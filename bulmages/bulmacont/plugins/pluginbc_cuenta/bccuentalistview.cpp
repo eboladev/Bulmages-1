@@ -51,12 +51,12 @@
 BcCuentaListView::BcCuentaListView ( BcCompany *comp, QWidget *parent, Qt::WFlags flag, edmode editmodo )
         : BlFormList ( comp, parent, flag, editmodo )
 {
-    _depura ( "BcCuentaListView::BcCuentaListView", 0 );
+    blDebug ( "BcCuentaListView::BcCuentaListView", 0 );
     setupUi ( this );
     /// Disparamos los plugins.
     int res = g_plugins->lanza ( "BcCuentaListView_BcCuentaListView", this );
     if ( res != 0 ) {
-        _depura ( "END BcCuentaListView::BcCuentaListView", 0, "Salida por plugin" );
+        blDebug ( "END BcCuentaListView::BcCuentaListView", 0, "Salida por plugin" );
         return;
     } // end if
     mui_list->setMainCompany ( comp );
@@ -80,7 +80,7 @@ BcCuentaListView::BcCuentaListView ( BcCompany *comp, QWidget *parent, Qt::WFlag
     hideBusqueda();
     /// Hacemos el tratamiento de los permisos que desabilita botones en caso de no haber suficientes permisos.
     trataPermisos ( "cuenta" );
-    _depura ( "END BcCuentaListView::BcCuentaListView", 0 );
+    blDebug ( "END BcCuentaListView::BcCuentaListView", 0 );
 }
 
 
@@ -89,9 +89,9 @@ BcCuentaListView::BcCuentaListView ( BcCompany *comp, QWidget *parent, Qt::WFlag
 **/
 void BcCuentaListView::presentar()
 {
-    _depura ( "BcCuentaListView::presentar", 0 );
+    blDebug ( "BcCuentaListView::presentar", 0 );
     mui_list->cargar ( formaQuery() );
-    _depura ( "BcCuentaListView::END presentar", 0 );
+    blDebug ( "BcCuentaListView::END presentar", 0 );
 }
 
 
@@ -109,7 +109,7 @@ void BcCuentaListView::presentar()
 **/
 void BcCuentaListView::editar ( int row )
 {
-    _depura ( "BcCuentaListView::editar", 0 );
+    blDebug ( "BcCuentaListView::editar", 0 );
     mdb_idcuenta = mui_list->dbValue ( "idcuenta", row );
     mdb_nombrecuenta = mui_list->dbValue ( "descripcion", row );
     mdb_codigocuenta = mui_list->dbValue ( "codigo", row );
@@ -120,7 +120,7 @@ void BcCuentaListView::editar ( int row )
                 /// Si la carga no va bien entonces terminamos.
                 if ( art->cargar ( mdb_idarticulo ) ) {
                     delete art;
-                    _depura ( "END BcCuentaListView::editar", 0, "Carga Erronea" );
+                    blDebug ( "END BcCuentaListView::editar", 0, "Carga Erronea" );
                     return;
                 } // end if
                 art->hide();
@@ -130,7 +130,7 @@ void BcCuentaListView::editar ( int row )
         close();
         emit ( selected ( mdb_idcuenta ) );
     } // end if
-    _depura ( "END BcCuentaListView::editar", 0 );
+    blDebug ( "END BcCuentaListView::editar", 0 );
 }
 
 
@@ -139,8 +139,8 @@ void BcCuentaListView::editar ( int row )
 **/
 BcCuentaListView::~BcCuentaListView()
 {
-    _depura ( "BcCuentaListView::~BcCuentaListView", 0 );
-    _depura ( "END BcCuentaListView::~BcCuentaListView", 0 );
+    blDebug ( "BcCuentaListView::~BcCuentaListView", 0 );
+    blDebug ( "END BcCuentaListView::~BcCuentaListView", 0 );
 }
 
 
@@ -155,7 +155,7 @@ BcCuentaListView::~BcCuentaListView()
 void BcCuentaListView::borrar()
 {
     /*
-        _depura ( "BcCuentaListView::on_mui_borrar_clicked", 0 );
+        blDebug ( "BcCuentaListView::on_mui_borrar_clicked", 0 );
         int a = mui_list->currentRow();
         if ( a < 0 ) {
             mensajeInfo ( _( "Tiene que seleccionar un articulo" ), this );
@@ -173,7 +173,7 @@ void BcCuentaListView::borrar()
                     throw - 1;
                 presentar();
             } // end if
-            _depura ( "END BcCuentaListView::on_mui_borrar_clicked", 0 );
+            blDebug ( "END BcCuentaListView::on_mui_borrar_clicked", 0 );
         } catch ( ... ) {
             mensajeInfo ( _( "Error al borrar el articulo" ), this );
         } // end try
@@ -189,7 +189,7 @@ void BcCuentaListView::borrar()
 **/
 QString BcCuentaListView::formaQuery()
 {
-    _depura ( "BcCuentaListView::formaQuery", 0 );
+    blDebug ( "BcCuentaListView::formaQuery", 0 );
     QString query = "";
 
     query = "SELECT * FROM cuenta WHERE 1=1 ";
@@ -226,7 +226,7 @@ QString BcCuentaListView::formaQuery()
 //    } // end if
 //    query += " ORDER BY codigocompletoarticulo";
     return ( query );
-    _depura ( "BcCuentaListView::END_formaQuery()\n", 0 );
+    blDebug ( "BcCuentaListView::END_formaQuery()\n", 0 );
 }
 
 
@@ -235,9 +235,9 @@ QString BcCuentaListView::formaQuery()
 **/
 void BcCuentaListView::imprimir()
 {
-    _depura ( "BcCuentaListView::s_imprimir1", 0 );
+    blDebug ( "BcCuentaListView::s_imprimir1", 0 );
     mui_list->imprimirPDF ( "Listado de cuentas" );
-    _depura ( "END BcCuentaListView::s_imprimir1", 0 );
+    blDebug ( "END BcCuentaListView::s_imprimir1", 0 );
 }
 
 
@@ -247,7 +247,7 @@ void BcCuentaListView::imprimir()
 void BcCuentaListView::on_mui_exportar_clicked()
 {
     /*
-        _depura ( "BcCuentaListView::on_mui_exportar_clicked", 0 );
+        blDebug ( "BcCuentaListView::on_mui_exportar_clicked", 0 );
         QFile filexml ( QFileDialog::getSaveFileName ( this,
                         _( "Elija el archivo" ),
                         g_confpr->valor ( CONF_DIR_USER ),
@@ -257,10 +257,10 @@ void BcCuentaListView::on_mui_exportar_clicked()
             bulmafact2XML ( filexml, IMPORT_ARTICULOS );
             filexml.close();
         } else {
-            _depura ( "ERROR AL ABRIR EL ARCHIVO\n", 2 );
+            blDebug ( "ERROR AL ABRIR EL ARCHIVO\n", 2 );
         } // end if
 
-        _depura ( "END BcCuentaListView::on_mui_exportar_clicked", 0 );
+        blDebug ( "END BcCuentaListView::on_mui_exportar_clicked", 0 );
     */
 }
 
@@ -274,7 +274,7 @@ void BcCuentaListView::on_mui_exportar_clicked()
 void BcCuentaListView::on_mui_importar_clicked()
 {
     /*
-        _depura ( "BcCuentaListView::INIT_s_importar", 0 );
+        blDebug ( "BcCuentaListView::INIT_s_importar", 0 );
         QFile filexml ( QFileDialog::getOpenFileName ( this,
                         _( "Elija el archivo" ),
                         g_confpr->valor ( CONF_DIR_USER ),
@@ -285,9 +285,9 @@ void BcCuentaListView::on_mui_importar_clicked()
             filexml.close();
             presentar();
         } else {
-            _depura ( "ERROR AL ABRIR EL ARCHIVO", 2 );
+            blDebug ( "ERROR AL ABRIR EL ARCHIVO", 2 );
         } // end if
-        _depura ( "BcCuentaListView::END_s_importar", 0 );
+        blDebug ( "BcCuentaListView::END_s_importar", 0 );
     */
 }
 
@@ -301,7 +301,7 @@ void BcCuentaListView::on_mui_importar_clicked()
 void BcCuentaListView::submenu ( const QPoint & )
 {
 
-    _depura ( "BcCuentaListView::on_mui_list_customContextMenuRequested", 0 );
+    blDebug ( "BcCuentaListView::on_mui_list_customContextMenuRequested", 0 );
     int a = mui_list->currentRow();
     if ( a < 0 )
         return;
@@ -323,9 +323,9 @@ void BcCuentaListView::submenu ( const QPoint & )
 void BcCuentaListView::crear()
 {
     /*
-        _depura ( "BcCuentaListView::crear", 0 );
+        blDebug ( "BcCuentaListView::crear", 0 );
         ( ( BcCompany * ) BlMainCompany() ) ->s_newArticulo();
-        _depura ( "END BcCuentaListView::crear", 0 );
+        blDebug ( "END BcCuentaListView::crear", 0 );
     */
 }
 
@@ -336,8 +336,8 @@ void BcCuentaListView::crear()
 **/
 QString BcCuentaListView::idcuenta()
 {
-    _depura ( "BcCuentaListView::idarticulo", 0 );
-    _depura ( "END BcCuentaListView::idarticulo", 0 );
+    blDebug ( "BcCuentaListView::idarticulo", 0 );
+    blDebug ( "END BcCuentaListView::idarticulo", 0 );
     return mdb_idcuenta;
 }
 
@@ -348,8 +348,8 @@ QString BcCuentaListView::idcuenta()
 **/
 QString BcCuentaListView::nombrecuenta()
 {
-    _depura ( "BcCuentaListView::nombrecuenta", 0 );
-    _depura ( "END BcCuentaListView::nombrecuenta", 0 );
+    blDebug ( "BcCuentaListView::nombrecuenta", 0 );
+    blDebug ( "END BcCuentaListView::nombrecuenta", 0 );
     return mdb_nombrecuenta;
 }
 
@@ -360,8 +360,8 @@ QString BcCuentaListView::nombrecuenta()
 **/
 QString BcCuentaListView::codigocuenta()
 {
-    _depura ( "BcCuentaListView::codigocompletoarticulo", 0 );
-    _depura ( "END BcCuentaListView::codigocompletoarticulo", 0 );
+    blDebug ( "BcCuentaListView::codigocompletoarticulo", 0 );
+    blDebug ( "END BcCuentaListView::codigocompletoarticulo", 0 );
     return mdb_codigocuenta;
 }
 
@@ -378,7 +378,7 @@ QString BcCuentaListView::codigocuenta()
 BcCuentaListSubForm::BcCuentaListSubForm ( QWidget *parent, const char * )
         : BcSubForm ( parent )
 {
-    _depura ( "BcCuentaListSubForm::BcCuentaListSubForm", 0 );
+    blDebug ( "BcCuentaListSubForm::BcCuentaListSubForm", 0 );
     setDbTableName ( "cuenta" );
     setDbFieldId ( "idcuenta" );
 
@@ -399,7 +399,7 @@ BcCuentaListSubForm::BcCuentaListSubForm ( QWidget *parent, const char * )
     setSortingEnabled ( TRUE );
     /// Disparamos los plugins.
     g_plugins->lanza ( "BcCuentaListSubForm_BcCuentaListSubForm_Post", this );
-    _depura ( "END BcCuentaListSubForm::BcCuentaListSubForm", 0 );
+    blDebug ( "END BcCuentaListSubForm::BcCuentaListSubForm", 0 );
 }
 
 
@@ -409,8 +409,8 @@ BcCuentaListSubForm::BcCuentaListSubForm ( QWidget *parent, const char * )
 
 BcCuentaListSubForm::~BcCuentaListSubForm()
 {
-    _depura ( "BcCuentaListSubForm::~BcCuentaListSubForm", 0 );
-    _depura ( "END BcCuentaListSubForm::~BcCuentaListSubForm", 0 );
+    blDebug ( "BcCuentaListSubForm::~BcCuentaListSubForm", 0 );
+    blDebug ( "END BcCuentaListSubForm::~BcCuentaListSubForm", 0 );
 
 }
 

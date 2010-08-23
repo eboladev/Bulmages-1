@@ -39,7 +39,7 @@
 TrabajadorView::TrabajadorView ( BfCompany *emp, QWidget *parent )
         : BfForm ( emp, parent )
 {
-    _depura ( "TrabajadorView::TrabajadorView", 0 );
+    blDebug ( "TrabajadorView::TrabajadorView", 0 );
 
     setTitleName ( _ ( "Trabajador" ) );
     setDbTableName ( "trabajador" );
@@ -61,7 +61,7 @@ TrabajadorView::TrabajadorView ( BfCompany *emp, QWidget *parent )
     } // end if
     pintar();
     meteWindow ( windowTitle(), this, FALSE );
-    _depura ( "END TrabajadorView::TrabajadorView", 0 );
+    blDebug ( "END TrabajadorView::TrabajadorView", 0 );
 }
 
 
@@ -70,8 +70,8 @@ TrabajadorView::TrabajadorView ( BfCompany *emp, QWidget *parent )
 **/
 void TrabajadorView::imprimir()
 {
-    _depura ( "TrabajadorView::imprimir", 0 );
-    _depura ( "END TrabajadorView::imprimir", 0 );
+    blDebug ( "TrabajadorView::imprimir", 0 );
+    blDebug ( "END TrabajadorView::imprimir", 0 );
 }
 
 /// Carga el query de la base de datos y carga el qlistview.
@@ -79,7 +79,7 @@ void TrabajadorView::imprimir()
 **/
 void TrabajadorView::pintar()
 {
-    _depura ( "TrabajadorView::pintar", 0 );
+    blDebug ( "TrabajadorView::pintar", 0 );
 
     mui_lista->clear();
 
@@ -94,7 +94,7 @@ void TrabajadorView::pintar()
 
     /// Comprobamos cual es la cadena inicial.
     dialogChanges_cargaInicial();
-    _depura ( "END TrabajadorView::pintar", 0 );
+    blDebug ( "END TrabajadorView::pintar", 0 );
 }
 
 
@@ -103,11 +103,11 @@ void TrabajadorView::pintar()
 **/
 TrabajadorView::~TrabajadorView()
 {
-    _depura ( "TrabajadorView::~TrabajadorView", 0 );
+    blDebug ( "TrabajadorView::~TrabajadorView", 0 );
     if ( m_cursortrabajadores != NULL ) {
         delete m_cursortrabajadores;
     } // end if
-    _depura ( "END TrabajadorView::~TrabajadorView", 0 );
+    blDebug ( "END TrabajadorView::~TrabajadorView", 0 );
 }
 
 
@@ -118,7 +118,7 @@ TrabajadorView::~TrabajadorView()
 **/
 void TrabajadorView::on_mui_lista_currentItemChanged ( QListWidgetItem *cur, QListWidgetItem * )
 {
-    _depura ( "on_mui_lista_currentItemChanged", 0 );
+    blDebug ( "on_mui_lista_currentItemChanged", 0 );
     if ( !cur ) return;
     mui_tab->setEnabled ( TRUE );
 
@@ -142,12 +142,12 @@ void TrabajadorView::on_mui_lista_currentItemChanged ( QListWidgetItem *cur, QLi
     /// Disparamos los plugins.
     int res = g_plugins->lanza ( "TrabajadorView_on_mui_lista_currentItemChanged_Post", this );
     if ( res != 0 ) {
-	_depura ( "END on_mui_lista_currentItemChanged", 0, "Salida por Plugins" );
+	blDebug ( "END on_mui_lista_currentItemChanged", 0, "Salida por Plugins" );
         return;
     } // end if
     dialogChanges_cargaInicial();
     m_imagen->setPixmap ( QPixmap ( g_confpr->valor ( CONF_DIR_IMG_PERSONAL ) + mdb_idtrabajador + ".jpg" ) );
-    _depura ( "END on_mui_lista_currentItemChanged", 0 );
+    blDebug ( "END on_mui_lista_currentItemChanged", 0 );
 }
 
 
@@ -157,7 +157,7 @@ void TrabajadorView::on_mui_lista_currentItemChanged ( QListWidgetItem *cur, QLi
 **/
 void TrabajadorView::on_mui_guardar_clicked()
 {
-    _depura ( "TrabajadorView::on_mui_guardar_clicked", 0 );
+    blDebug ( "TrabajadorView::on_mui_guardar_clicked", 0 );
     try {
         /// Disparamos los plugins.
         int res = g_plugins->lanza ( "TrabajadorView_on_mui_guardar_clicked", this );
@@ -205,7 +205,7 @@ void TrabajadorView::on_mui_guardar_clicked()
         mensajeInfo ( _ ( "Error al guardar el trabajador" ) );
         mainCompany() ->rollback();
     } // end try
-    _depura ( "END TrabajadorView::on_mui_guardar_clicked", 0 );
+    blDebug ( "END TrabajadorView::on_mui_guardar_clicked", 0 );
 }
 
 
@@ -215,7 +215,7 @@ void TrabajadorView::on_mui_guardar_clicked()
 **/
 bool TrabajadorView::trataModificado()
 {
-    _depura ( "TrabajadorView::trataModificado", 0 );
+    blDebug ( "TrabajadorView::trataModificado", 0 );
     /// Si se ha modificado el contenido advertimos y guardamos.
     if ( dialogChanges_hayCambios() ) {
         if ( QMessageBox::warning ( this,
@@ -225,7 +225,7 @@ bool TrabajadorView::trataModificado()
             on_mui_guardar_clicked();
         return ( TRUE );
     } // end if
-    _depura ( "END TrabajadorView::trataModificado", 0 );
+    blDebug ( "END TrabajadorView::trataModificado", 0 );
     return ( FALSE );
 }
 
@@ -237,7 +237,7 @@ bool TrabajadorView::trataModificado()
 **/
 void TrabajadorView::on_mui_nuevo_clicked()
 {
-    _depura ( "TrabajadorView::on_mui_nuevo_clicked", 0 );
+    blDebug ( "TrabajadorView::on_mui_nuevo_clicked", 0 );
     try {
         /// Si se ha modificado el contenido advertimos y guardamos.
         trataModificado();
@@ -249,7 +249,7 @@ void TrabajadorView::on_mui_nuevo_clicked()
         mdb_idtrabajador = cur->valor ( "idtrabajador" );
         delete cur;
         pintar();
-        _depura ( "END TrabajadorView::on_mui_nuevo_clicked", 0 );
+        blDebug ( "END TrabajadorView::on_mui_nuevo_clicked", 0 );
     } catch ( ... ) {
         mensajeInfo ( _ ( "Error al crear un nuevo Trabajador" ) );
         mainCompany() ->rollback();
@@ -264,7 +264,7 @@ void TrabajadorView::on_mui_nuevo_clicked()
 **/
 void TrabajadorView::on_mui_borrar_clicked()
 {
-    _depura ( "TrabajadorView::on_mui_borrar_clicked", 0 );
+    blDebug ( "TrabajadorView::on_mui_borrar_clicked", 0 );
     try {
         mui_tab->setDisabled ( TRUE );
         trataModificado();
@@ -274,7 +274,7 @@ void TrabajadorView::on_mui_borrar_clicked()
         mainCompany() ->commit();
         mdb_idtrabajador = "";
         pintar();
-        _depura ( "END TrabajadorView::on_mui_borrar_clicked", 0 );
+        blDebug ( "END TrabajadorView::on_mui_borrar_clicked", 0 );
     } catch ( ... ) {
         mensajeInfo ( _ ( "Error al borrar el Trabajador" ) );
         mainCompany() ->rollback();
@@ -288,13 +288,13 @@ void TrabajadorView::on_mui_borrar_clicked()
 **/
 void TrabajadorView::on_mui_imagen_clicked()
 {
-    _depura ( "TrabajadorView::on_mui_imagen_clicked", 0 );
+    blDebug ( "TrabajadorView::on_mui_imagen_clicked", 0 );
     m_archivoimagen = QFileDialog::getOpenFileName ( this,
                       _ ( "Seleccione archivo" ),
                       "",
                       _ ( "Imagenes (*.jpg)" ) );
     m_imagen->setPixmap ( QPixmap ( m_archivoimagen ) );
-    _depura ( "END TrabajadorView::on_mui_imagen_clicked", 0 );
+    blDebug ( "END TrabajadorView::on_mui_imagen_clicked", 0 );
 }
 
 
@@ -304,8 +304,8 @@ void TrabajadorView::on_mui_imagen_clicked()
 **/
 QString TrabajadorView::idtrabajador()
 {
-    _depura ( "TrabajadorView::idtrabajador", 0 );
-    _depura ( "END TrabajadorView::idtrabajador", 0 );
+    blDebug ( "TrabajadorView::idtrabajador", 0 );
+    blDebug ( "END TrabajadorView::idtrabajador", 0 );
     return mdb_idtrabajador;
 }
 

@@ -35,8 +35,8 @@ ActividadesList *g_actividadesList = NULL;
 **/
 MyPlugProf::MyPlugProf()
 {
-    _depura ( "MyPlugProf::MyPlugProf", 0 );
-    _depura ( "END MyPlugProf::MyPlugProf", 0 );
+    blDebug ( "MyPlugProf::MyPlugProf", 0 );
+    blDebug ( "END MyPlugProf::MyPlugProf", 0 );
 }
 
 
@@ -45,8 +45,8 @@ MyPlugProf::MyPlugProf()
 **/
 MyPlugProf::~MyPlugProf()
 {
-    _depura ( "MyPlugProf::~MyPlugProf", 0 );
-    _depura ( "END MyPlugProf::~MyPlugProf", 0 );
+    blDebug ( "MyPlugProf::~MyPlugProf", 0 );
+    blDebug ( "END MyPlugProf::~MyPlugProf", 0 );
 }
 
 
@@ -55,12 +55,12 @@ MyPlugProf::~MyPlugProf()
 **/
 void MyPlugProf::elslot()
 {
-    _depura ( "MyPlugProf::elslot", 0 );
+    blDebug ( "MyPlugProf::elslot", 0 );
     if ( g_actividadesList ) {
         g_actividadesList->hide();
         g_actividadesList->show();
     }// end if
-    _depura ( "END MyPlugProf::elslot", 0 );
+    blDebug ( "END MyPlugProf::elslot", 0 );
 }
 
 ///
@@ -68,11 +68,11 @@ void MyPlugProf::elslot()
 **/
 void MyPlugProf::elslot1()
 {
-    _depura ( "MyPlugProf::elslot1", 0 );
+    blDebug ( "MyPlugProf::elslot1", 0 );
     ActividadView * bud = new ActividadView ( ( BfCompany * ) mainCompany(), NULL );
     mainCompany() ->m_pWorkspace->addWindow ( bud );
     bud->show();
-    _depura ( "END MyPlugProf::elslot1", 0 );
+    blDebug ( "END MyPlugProf::elslot1", 0 );
 }
 
 
@@ -81,11 +81,11 @@ void MyPlugProf::elslot1()
 **/
 void MyPlugProf::elslot2()
 {
-    _depura ( "MyPlugProf::elslot2", 0 );
+    blDebug ( "MyPlugProf::elslot2", 0 );
     TipoActividadView * bud = new TipoActividadView ( ( BfCompany * ) mainCompany(), NULL );
     mainCompany() ->m_pWorkspace->addWindow ( bud );
     bud->show();
-    _depura ( "END MyPlugProf::elslot2", 0 );
+    blDebug ( "END MyPlugProf::elslot2", 0 );
 }
 
 
@@ -95,7 +95,7 @@ void MyPlugProf::elslot2()
 **/
 void MyPlugProf::inicializa ( BfBulmaFact *bges )
 {
-    _depura ( "MyPlugProf::inicializa", 0 );
+    blDebug ( "MyPlugProf::inicializa", 0 );
 
     if ( bges->company()->hasTablePrivilege ( "cobro", "SELECT" ) ) {
 
@@ -131,7 +131,7 @@ void MyPlugProf::inicializa ( BfBulmaFact *bges )
         bges->Fichas->addAction ( npago );
         connect ( npago, SIGNAL ( activated() ), this, SLOT ( elslot1() ) );
     }// end if
-    _depura ( "END MyPlugProf::inicializa", 0 );
+    blDebug ( "END MyPlugProf::inicializa", 0 );
 }
 
 
@@ -142,7 +142,7 @@ void MyPlugProf::inicializa ( BfBulmaFact *bges )
 **/
 int entryPoint ( BfBulmaFact *bges )
 {
-    _depura ( "Punto de entrada del plugin de actividades\n", 0 );
+    blDebug ( "Punto de entrada del plugin de actividades\n", 0 );
 
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale ( LC_ALL, "" );
@@ -169,7 +169,7 @@ int BfCompany_createMainWindows_Post ( BfCompany *comp )
 
 int BlSubFormDelegate_createEditor ( BlSubFormDelegate *bl )
 {
-    _depura ( "pluginbf_actividad::BlSubFormDelegate_createEditor", 0 );
+    blDebug ( "pluginbf_actividad::BlSubFormDelegate_createEditor", 0 );
     int ret = 0;
     if ( g_nomcampo == "nombreactividad" ) {
         BlDbCompleterComboBox * editor = new BlDbCompleterComboBox ( g_editor );
@@ -180,13 +180,13 @@ int BlSubFormDelegate_createEditor ( BlSubFormDelegate *bl )
         g_plugParams =  editor;
         ret = -1;
     } // end if
-    _depura ( "END pluginbf_actividad::BlSubFormDelegate_createEditor", 0 );
+    blDebug ( "END pluginbf_actividad::BlSubFormDelegate_createEditor", 0 );
     return ret;
 }
 
 int BlSubFormDelegate_setModelData ( BlSubFormDelegate *bl )
 {
-    _depura ( "pluginbf_actividad::BlSubFormDelegate_setModelData", 0 );
+    blDebug ( "pluginbf_actividad::BlSubFormDelegate_setModelData", 0 );
     int ret = 0;
     if ( g_editor->objectName() == "EditNombreActividad" ) {
         BlDbCompleterComboBox * comboBox = ( BlDbCompleterComboBox * ) g_editor;
@@ -195,14 +195,14 @@ int BlSubFormDelegate_setModelData ( BlSubFormDelegate *bl )
         g_model->setData ( g_index, value );
         ret = -1;
     } // end if
-    _depura ( "END pluginbf_actividad::BlSubFormDelegate_setModelData", 0 );
+    blDebug ( "END pluginbf_actividad::BlSubFormDelegate_setModelData", 0 );
     return ret;
 }
 
 
 int BlSubFormDelegate_setEditorData ( BlSubFormDelegate *bl )
 {
-    _depura ( "pluginbf_actividad::BlSubFormDelegate_setEditorData", 0 );
+    blDebug ( "pluginbf_actividad::BlSubFormDelegate_setEditorData", 0 );
     int ret = 0;
     if ( g_editor->objectName() == "EditNombreActividad" ) {
         QString value = g_index.model() ->data ( g_index, Qt::DisplayRole ).toString();
@@ -210,13 +210,13 @@ int BlSubFormDelegate_setEditorData ( BlSubFormDelegate *bl )
         comboBox->addItem ( value );
         ret = -1;
     } // end if
-    _depura ( "END pluginbf_actividad::BlSubFormDelegate_setEditorData", 0 );
+    blDebug ( "END pluginbf_actividad::BlSubFormDelegate_setEditorData", 0 );
     return ret;
 }
 
 int BlSubForm_editFinished ( BlSubForm *sub )
 {
-    _depura ( "pluginbf_actividad::BlSubForm_editFinished", 0 );
+    blDebug ( "pluginbf_actividad::BlSubForm_editFinished", 0 );
     if ( sub->m_campoactual->nomcampo() == "nombreactividad" ) {
         BlDbRecordSet *cur = sub->mainCompany() ->loadQuery ( "SELECT idactividad FROM actividad WHERE nombreactividad = '" + sub->m_campoactual->text() + "'" );
         if ( !cur->eof() ) {
@@ -225,7 +225,7 @@ int BlSubForm_editFinished ( BlSubForm *sub )
         delete cur;
     } // end if
 
-    _depura ( "END pluginbf_actividad::BlSubForm_editFinished", 0 );
+    blDebug ( "END pluginbf_actividad::BlSubForm_editFinished", 0 );
     return 0;
 }
 
@@ -245,8 +245,8 @@ int BlSubForm_editFinished ( BlSubForm *sub )
 **/
 MyPlugAct1::MyPlugAct1 ( BlSubForm *parent ) : QObject ( parent )
 {
-    _depura ( "MyPlugAct1::MyPlugAct1", 0 );
-    _depura ( "END MyPlugAct1::MyPlugAct1", 0 );
+    blDebug ( "MyPlugAct1::MyPlugAct1", 0 );
+    blDebug ( "END MyPlugAct1::MyPlugAct1", 0 );
 }
 
 ///
@@ -254,8 +254,8 @@ MyPlugAct1::MyPlugAct1 ( BlSubForm *parent ) : QObject ( parent )
 **/
 MyPlugAct1::~MyPlugAct1()
 {
-    _depura ( "MyPlugAct1::~MyPlugAct1", 0 );
-    _depura ( "END MyPlugAct1::~MyPlugAct1", 0 );
+    blDebug ( "MyPlugAct1::~MyPlugAct1", 0 );
+    blDebug ( "END MyPlugAct1::~MyPlugAct1", 0 );
 }
 
 
@@ -265,7 +265,7 @@ MyPlugAct1::~MyPlugAct1()
 **/
 void MyPlugAct1::s_pintaMenu ( QMenu *menu )
 {
-    _depura ( "MyPlugAct1::s_pintaMenu", 0 );
+    blDebug ( "MyPlugAct1::s_pintaMenu", 0 );
     BfSubForm *sub = ( BfSubForm * ) parent();
     BlSubFormHeader *header = sub->header ( "nombreactividad" );
     if ( header ) {
@@ -277,7 +277,7 @@ void MyPlugAct1::s_pintaMenu ( QMenu *menu )
             menu->addAction ( _ ( "Seleccionar actividad" ) );
         } // end if
     } // end if
-    _depura ( "END MyPlugAct1::s_pintaMenu", 0 );
+    blDebug ( "END MyPlugAct1::s_pintaMenu", 0 );
 }
 
 
@@ -287,7 +287,7 @@ void MyPlugAct1::s_pintaMenu ( QMenu *menu )
 **/
 void MyPlugAct1::s_trataMenu ( QAction *action )
 {
-    _depura ( "MyPlugAct1::s_trataMenu", 0 );
+    blDebug ( "MyPlugAct1::s_trataMenu", 0 );
     BfSubForm *sub = ( BfSubForm * ) parent();
     if ( action->text() == _ ( "Editar actividad" ) ) {
         QString idactividad = sub->dbValue ( "idactividad" );
@@ -299,7 +299,7 @@ void MyPlugAct1::s_trataMenu ( QAction *action )
         nuevoActividad();
     } // end if
 
-    _depura ( "END MyPlugAct1::s_trataMenu", 0 );
+    blDebug ( "END MyPlugAct1::s_trataMenu", 0 );
 }
 
 
@@ -308,19 +308,19 @@ void MyPlugAct1::s_trataMenu ( QAction *action )
 **/
 void MyPlugAct1::editarActividad ( QString idactividad )
 {
-    _depura ( "MyPlugAct1::editarActividad", 0 );
+    blDebug ( "MyPlugAct1::editarActividad", 0 );
     BlSubForm * subf = ( BlSubForm * ) parent();
     ActividadView * art = new ActividadView ( ( BfCompany * ) subf->mainCompany(), 0 );
     subf->mainCompany() ->m_pWorkspace->addWindow ( art );
     /// Si la carga no va bien entonces terminamos.
     if ( art->cargar ( idactividad ) ) {
         delete art;
-        _depura ( "END ActividadesList::editar", 0, "Carga Erronea" );
+        blDebug ( "END ActividadesList::editar", 0, "Carga Erronea" );
         return;
     } // end if
     art->hide();
     art->show();
-    _depura ( "END MyPlugAct1::editarActividad", 0 );
+    blDebug ( "END MyPlugAct1::editarActividad", 0 );
 }
 
 
@@ -330,13 +330,13 @@ void MyPlugAct1::editarActividad ( QString idactividad )
 **/
 void MyPlugAct1::nuevoActividad( )
 {
-    _depura ( "MyPlugAct1::editarActividad", 0 );
+    blDebug ( "MyPlugAct1::editarActividad", 0 );
     BlSubForm * subf = ( BlSubForm * ) parent();
     ActividadView * art = new ActividadView ( ( BfCompany * ) subf->mainCompany(), 0 );
     subf->mainCompany() ->m_pWorkspace->addWindow ( art );
     art->hide();
     art->show();
-    _depura ( "END MyPlugAct1::editarActividad", 0 );
+    blDebug ( "END MyPlugAct1::editarActividad", 0 );
 }
 
 
@@ -345,7 +345,7 @@ void MyPlugAct1::nuevoActividad( )
 **/
 void MyPlugAct1::seleccionarActividad ( BfSubForm *sub )
 {
-    _depura ( "MyPlugAct1::editarActividad", 0 );
+    blDebug ( "MyPlugAct1::editarActividad", 0 );
 
     ActividadesList *artlist = new ActividadesList ( ( BfCompany * ) sub->mainCompany(), NULL, 0, BL_SELECT_MODE );
     /// Esto es convertir un QWidget en un sistema modal de dialogo.
@@ -359,7 +359,7 @@ void MyPlugAct1::seleccionarActividad ( BfSubForm *sub )
 
     /// Si no tenemos un idactividad salimos ya que significa que no se ha seleccionado ninguno.
     if ( idActividad == "" ) {
-        _depura ( "END BfSubForm::pressedAsterisk", 0 );
+        blDebug ( "END BfSubForm::pressedAsterisk", 0 );
         return;
     } // end if
 
@@ -371,7 +371,7 @@ void MyPlugAct1::seleccionarActividad ( BfSubForm *sub )
     } // end if
     delete cur;
 
-    _depura ( "END MyPlugAct1::editarActividad", 0 );
+    blDebug ( "END MyPlugAct1::editarActividad", 0 );
 }
 
 
@@ -382,11 +382,11 @@ void MyPlugAct1::seleccionarActividad ( BfSubForm *sub )
 **/
 int BlSubForm_BlSubForm_Post ( BlSubForm *sub )
 {
-    _depura ( "BlSubForm_BlSubForm_Post", 0 );
+    blDebug ( "BlSubForm_BlSubForm_Post", 0 );
     MyPlugAct1 *subformods = new MyPlugAct1 ( sub );
     sub->QObject::connect ( sub, SIGNAL ( pintaMenu ( QMenu * ) ), subformods, SLOT ( s_pintaMenu ( QMenu * ) ) );
     sub->QObject::connect ( sub, SIGNAL ( trataMenu ( QAction * ) ), subformods, SLOT ( s_trataMenu ( QAction * ) ) );
-    _depura ( "END BlSubForm_BlSubForm_Post", 0 );
+    blDebug ( "END BlSubForm_BlSubForm_Post", 0 );
     return 0;
 }
 
@@ -394,7 +394,7 @@ int BlSubForm_BlSubForm_Post ( BlSubForm *sub )
 
 int Busqueda_on_mui_buscar_clicked ( BlSearchWidget *busq )
 {
-    _depura ( "Busqueda_on_mui_buscar_clicked", 0 );
+    blDebug ( "Busqueda_on_mui_buscar_clicked", 0 );
 
     if ( busq->tableName() == "actividad" ) {
 
@@ -427,7 +427,7 @@ int Busqueda_on_mui_buscar_clicked ( BlSearchWidget *busq )
         
     } // end if
     
-    _depura ( "END Busqueda_on_mui_buscar_clicked", 0 );
+    blDebug ( "END Busqueda_on_mui_buscar_clicked", 0 );
     
     return 0;
 

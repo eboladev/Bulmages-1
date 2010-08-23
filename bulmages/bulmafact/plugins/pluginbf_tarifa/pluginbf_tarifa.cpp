@@ -34,8 +34,8 @@
 **/
 myplugin1::myplugin1() : BlMainCompanyPointer()
 {
-    _depura ( "myplugin1::myplugin1", 0 );
-    _depura ( "END myplugin1::myplugin1", 0 );
+    blDebug ( "myplugin1::myplugin1", 0 );
+    blDebug ( "END myplugin1::myplugin1", 0 );
 }
 
 
@@ -44,8 +44,8 @@ myplugin1::myplugin1() : BlMainCompanyPointer()
 **/
 myplugin1::~myplugin1()
 {
-    _depura ( "myplugin1::~myplugin1", 0 );
-    _depura ( "END myplugin1::~myplugin1", 0 );
+    blDebug ( "myplugin1::~myplugin1", 0 );
+    blDebug ( "END myplugin1::~myplugin1", 0 );
 }
 
 
@@ -54,11 +54,11 @@ myplugin1::~myplugin1()
 **/
 void myplugin1::elslot()
 {
-    _depura ( "myplugin1::elslot", 0 );
+    blDebug ( "myplugin1::elslot", 0 );
     TarifaListView *tar = new TarifaListView ( ( ( BfCompany * ) mainCompany() ), NULL );
     mainCompany() ->m_pWorkspace->addWindow ( tar );
     tar->show();
-    _depura ( "END myplugin1::elslot", 0 );
+    blDebug ( "END myplugin1::elslot", 0 );
 }
 
 
@@ -68,7 +68,7 @@ void myplugin1::elslot()
 **/
 void myplugin1::inicializa ( BfBulmaFact *bges )
 {
-    _depura ( "myplugin1::inicializa", 0 );
+    blDebug ( "myplugin1::inicializa", 0 );
     /// El men&uacute; de Tarifas en la secci&oacute;n de art&iacute;culos.
     m_bges = bges;
     setMainCompany ( bges->company() );
@@ -84,7 +84,7 @@ void myplugin1::inicializa ( BfBulmaFact *bges )
 
     pPluginMenu->addAction ( planCuentas );
     connect ( planCuentas, SIGNAL ( activated() ), this, SLOT ( elslot() ) );
-    _depura ( "END myplugin1::inicializa", 0 );
+    blDebug ( "END myplugin1::inicializa", 0 );
 }
 
 
@@ -95,7 +95,7 @@ void myplugin1::inicializa ( BfBulmaFact *bges )
 **/
 int entryPoint ( BfBulmaFact *bges )
 {
-    _depura ( "Punto de Entrada del plugin de tarifas\n", 0 );
+    blDebug ( "Punto de Entrada del plugin de tarifas\n", 0 );
 
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale ( LC_ALL, "" );
@@ -114,7 +114,7 @@ int entryPoint ( BfBulmaFact *bges )
 **/
 int ClienteView_ClienteView ( ClienteView *cli )
 {
-    _depura ( "dentro del plugin", 0 );
+    blDebug ( "dentro del plugin", 0 );
 
     cli->addDbField ( "idtarifa", BlDbField::DbInt, BlDbField::DbNothing, _ ( "plugintarifas" ) );
 
@@ -158,7 +158,7 @@ int ClienteView_ClienteView ( ClienteView *cli )
 **/
 int ArticuloView_ArticuloView ( ArticuloView *art )
 {
-    _depura ( "ArticuloView_ArticuloView", 0 );
+    blDebug ( "ArticuloView_ArticuloView", 0 );
     ListLTarifaView *l1 = new ListLTarifaView ( art );
     l1->setObjectName ( QString::fromUtf8 ( "ltarifas" ) );
     l1->setMainCompany ( art->mainCompany() );
@@ -201,7 +201,7 @@ int ArticuloView_ArticuloView ( ArticuloView *art )
     l->setColumnWidth ( 3, 250 );
     l->setColumnWidth ( 4, 200 );
 
-    _depura ( "END ArticuloView_ArticuloView", 0 );
+    blDebug ( "END ArticuloView_ArticuloView", 0 );
     return 0;
 }
 
@@ -213,7 +213,7 @@ int ArticuloView_ArticuloView ( ArticuloView *art )
 **/
 int ArticuloView_cargar ( ArticuloView *art )
 {
-    _depura ( "ArticuloView_cargar", 0 );
+    blDebug ( "ArticuloView_cargar", 0 );
     ListLTarifaView *l1 = art->findChild<ListLTarifaView *> ( "ltarifas" );
     l1->cargar ( art->dbValue ( "idarticulo" ) );
 
@@ -224,7 +224,7 @@ int ArticuloView_cargar ( ArticuloView *art )
         l->cargar ( SQLQuery );
     } // end if
 
-    _depura ( "END ArticuloView_cargar", 0 );
+    blDebug ( "END ArticuloView_cargar", 0 );
     return 0;
 }
 
@@ -236,7 +236,7 @@ int ArticuloView_cargar ( ArticuloView *art )
 **/
 int ArticuloView_guardar_post ( ArticuloView *art )
 {
-    _depura ( "ArticuloView_guardar_post", 0 );
+    blDebug ( "ArticuloView_guardar_post", 0 );
     try {
         ListLTarifaView *l1 = art->findChild<ListLTarifaView *> ( "ltarifas" );
         l1->setColumnValue ( "idarticulo", art->dbValue ( "idarticulo" ) );
@@ -250,7 +250,7 @@ int ArticuloView_guardar_post ( ArticuloView *art )
 
         return 0;
     } catch ( ... ) {
-        _depura ( "Hubo un error al guardar las tarifas", 2 );
+        blDebug ( "Hubo un error al guardar las tarifas", 2 );
         return 0;
     } // end try
 }
@@ -263,7 +263,7 @@ int ArticuloView_guardar_post ( ArticuloView *art )
 **/
 int ArticuloView_borrar ( ArticuloView *art )
 {
-    _depura ( "ArticuloView_borrar", 0 );
+    blDebug ( "ArticuloView_borrar", 0 );
     try {
         ListLTarifaView *l1 = art->findChild<ListLTarifaView *> ( "ltarifas" );
 
@@ -275,7 +275,7 @@ int ArticuloView_borrar ( ArticuloView *art )
         l->borrar();
         return 0;
     } catch ( ... ) {
-        _depura ( "Hubo un error al borrar las tarifas", 0 );
+        blDebug ( "Hubo un error al borrar las tarifas", 0 );
         throw - 1;
     } // end try
 }
@@ -286,11 +286,11 @@ int ArticuloView_borrar ( ArticuloView *art )
 **/
 int BfSubForm_BfSubForm ( BfSubForm *sub )
 {
-    _depura ( "PluginTarifas BfSubForm_BfSubForm", 0 );
+    blDebug ( "PluginTarifas BfSubForm_BfSubForm", 0 );
     /// Este codigo hace que cuando se cambie el campo cantidad de articulo de una linea salte el
     /// calculo del PVP en funcion del cliente y otros parametros.
     QObject::connect ( sub->m_delegate, SIGNAL ( cant_changed ( BlDbSubFormRecord * ) ), sub, SLOT ( calculaPVP ( BlDbSubFormRecord * ) ) );
-    _depura ( "END PluginTarifas BfSubForm_BfSubForm", 0 );
+    blDebug ( "END PluginTarifas BfSubForm_BfSubForm", 0 );
     return 0;
 }
 
@@ -300,7 +300,7 @@ int BfSubForm_BfSubForm ( BfSubForm *sub )
 **/
 int BfSubForm_calculaPVP ( BfSubForm *sub )
 {
-    _depura ( "PluginTarifas BfSubForm_calculaPVP", 0 );
+    blDebug ( "PluginTarifas BfSubForm_calculaPVP", 0 );
 
     BlDbRecordSet *cur = NULL;
 
@@ -310,7 +310,7 @@ int BfSubForm_calculaPVP ( BfSubForm *sub )
 
     /// Comprueba que se tengan todos los datos para aplicar variacion de tarifas.
     if ( sub->idArticulo().isEmpty() || sub->idTarifa().isEmpty() || sub->idAlmacen().isEmpty() ) {
-        _depura ( "END PluginTarifas BfSubForm_calculaPVP -sin suficientes datos-", 0 );
+        blDebug ( "END PluginTarifas BfSubForm_calculaPVP -sin suficientes datos-", 0 );
         return 0;
     } else {
         cur = sub->mainCompany()->loadQuery ( "SELECT * FROM variaciontarifa WHERE idarticulo = " + sub->idArticulo() + " AND idtarifa = " + sub->idTarifa() + " AND idalmacen = " + sub->idAlmacen() + " AND cantidadmayoroigualque <= " + cantactual + " ORDER BY cantidadmayoroigualque DESC LIMIT 1" );
@@ -325,6 +325,6 @@ int BfSubForm_calculaPVP ( BfSubForm *sub )
         sub->m_registrolinea->setDbValue ( "pvp" + sub->tableName(), res );
     } // end if
 
-    _depura ( "END PluginTarifas BfSubForm_calculaPVP", 0 );
+    blDebug ( "END PluginTarifas BfSubForm_calculaPVP", 0 );
     return 0;
 }

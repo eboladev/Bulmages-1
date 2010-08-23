@@ -34,8 +34,8 @@
 **/
 MyPlugIVA::MyPlugIVA()
 {
-    _depura ( "MyPlugIVA::MyPlugIVA", 0 );
-    _depura ( "END MyPlugIVA::MyPlugIVA", 0 );
+    blDebug ( "MyPlugIVA::MyPlugIVA", 0 );
+    blDebug ( "END MyPlugIVA::MyPlugIVA", 0 );
 }
 
 
@@ -44,8 +44,8 @@ MyPlugIVA::MyPlugIVA()
 **/
 MyPlugIVA::~MyPlugIVA()
 {
-    _depura ( "MyPlugIVA::~MyPlugIVA", 0 );
-    _depura ( "END MyPlugIVA::~MyPlugIVA", 0 );
+    blDebug ( "MyPlugIVA::~MyPlugIVA", 0 );
+    blDebug ( "END MyPlugIVA::~MyPlugIVA", 0 );
 }
 
 
@@ -54,7 +54,7 @@ MyPlugIVA::~MyPlugIVA()
 **/
 void MyPlugIVA::elslot()
 {
-    _depura ( "MyPlugIVA::elslot", 0 );
+    blDebug ( "MyPlugIVA::elslot", 0 );
     ListTasaIVAView *pag = new ListTasaIVAView ( ( BfCompany * ) mainCompany(), NULL );
     mainCompany() ->m_pWorkspace->addWindow ( pag );
     pag->show();
@@ -62,7 +62,7 @@ void MyPlugIVA::elslot()
             mainCompany() ->m_pWorkspace->addWindow ( bud );
             bud->show();
     */
-    _depura ( "END MyPlugIVA::elslot", 0 );
+    blDebug ( "END MyPlugIVA::elslot", 0 );
 }
 
 
@@ -71,7 +71,7 @@ void MyPlugIVA::elslot()
 **/
 void MyPlugIVA::elslot1()
 {
-    _depura ( "MyPlugIVA::elslot1", 0 );
+    blDebug ( "MyPlugIVA::elslot1", 0 );
     ListTipoIVAView *pag = new ListTipoIVAView ( ( BfCompany * ) mainCompany(), NULL );
     mainCompany() ->m_pWorkspace->addWindow ( pag );
     pag->show();
@@ -79,7 +79,7 @@ void MyPlugIVA::elslot1()
             mainCompany() ->m_pWorkspace->addWindow ( bud );
             bud->show();
     */
-    _depura ( "END MyPlugIVA::elslot1", 0 );
+    blDebug ( "END MyPlugIVA::elslot1", 0 );
 }
 
 
@@ -90,7 +90,7 @@ void MyPlugIVA::elslot1()
 **/
 void MyPlugIVA::inicializa ( BfBulmaFact *bges )
 {
-    _depura ( "MyPlugIVA::inicializa", 0 );
+    blDebug ( "MyPlugIVA::inicializa", 0 );
 
     if ( bges->company()->hasTablePrivilege ( "tipo_iva", "SELECT" ) ) {
 
@@ -122,7 +122,7 @@ void MyPlugIVA::inicializa ( BfBulmaFact *bges )
         connect ( planCuentas1, SIGNAL ( activated() ), this, SLOT ( elslot() ) );
 
     }// end if
-    _depura ( "END MyPlugIVA::inicializa", 0 );
+    blDebug ( "END MyPlugIVA::inicializa", 0 );
 }
 
 
@@ -136,7 +136,7 @@ void MyPlugIVA::inicializa ( BfBulmaFact *bges )
 **/
 int entryPoint ( BfBulmaFact *bges )
 {
-    _depura ( "Punto de Entrada del plugin de IVA\n", 0 );
+    blDebug ( "Punto de Entrada del plugin de IVA\n", 0 );
 
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale ( LC_ALL, "" );

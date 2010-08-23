@@ -41,8 +41,8 @@
 **/
 myplugin4::myplugin4()
 {
-    _depura ( "myplugin4::myplugin4", 0 );
-    _depura ( "END myplugin4::myplugin4", 0 );
+    blDebug ( "myplugin4::myplugin4", 0 );
+    blDebug ( "END myplugin4::myplugin4", 0 );
 }
 
 
@@ -51,8 +51,8 @@ myplugin4::myplugin4()
 **/
 myplugin4::~myplugin4()
 {
-    _depura ( "myplugin4::~myplugin4", 0 );
-    _depura ( "END myplugin4::~myplugin4", 0 );
+    blDebug ( "myplugin4::~myplugin4", 0 );
+    blDebug ( "END myplugin4::~myplugin4", 0 );
 }
 
 
@@ -61,11 +61,11 @@ myplugin4::~myplugin4()
 **/
 void myplugin4::elslot()
 {
-    _depura ( "myplugin4::elslot", 0 );
+    blDebug ( "myplugin4::elslot", 0 );
     CuadranteView *cuad = new CuadranteView ( ( BfCompany * ) mainCompany(), 0 );
     mainCompany() ->pWorkspace() ->addWindow ( cuad );
     cuad->show();
-    _depura ( "END myplugin4::elslot", 0 );
+    blDebug ( "END myplugin4::elslot", 0 );
 }
 
 
@@ -74,11 +74,11 @@ void myplugin4::elslot()
 **/
 void myplugin4::elslot1()
 {
-    _depura ( "myplugin4::elslot1", 0 );
+    blDebug ( "myplugin4::elslot1", 0 );
     CuadranteDiarioView *cuad = new CuadranteDiarioView ( ( BfCompany * ) mainCompany(), 0 );
     mainCompany() ->pWorkspace() ->addWindow ( cuad );
     cuad->show();
-    _depura ( "END myplugin4::elslot1", 0 );
+    blDebug ( "END myplugin4::elslot1", 0 );
 }
 
 
@@ -88,7 +88,7 @@ void myplugin4::elslot1()
 **/
 void myplugin4::inicializa ( BfBulmaFact *bges )
 {
-    _depura ( "myplugin4::inicializa", 0 );
+    blDebug ( "myplugin4::inicializa", 0 );
     /// Creamos el men&uacute;.
     setMainCompany ( bges->company() );
     m_bulmafact = bges;
@@ -116,7 +116,7 @@ void myplugin4::inicializa ( BfBulmaFact *bges )
 
     /// A&ntilde;adimos la nueva opci&oacute;n al men&uacute; principal del programa.
     bges->menuBar() ->insertMenu ( bges->menuVentana->menuAction(), pPluginMenu );
-    _depura ( "END myplugin4::inicializa", 0 );
+    blDebug ( "END myplugin4::inicializa", 0 );
 }
 
 
@@ -126,7 +126,7 @@ void myplugin4::inicializa ( BfBulmaFact *bges )
 **/
 int entryPoint ( BfBulmaFact *bges )
 {
-    _depura ( "entryPoint", 0 );
+    blDebug ( "entryPoint", 0 );
 
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale ( LC_ALL, "" );
@@ -135,7 +135,7 @@ int entryPoint ( BfBulmaFact *bges )
     myplugin4 *plug = new myplugin4();
     plug->inicializa ( bges );
 
-    _depura ( "END entryPoint", 0 );
+    blDebug ( "END entryPoint", 0 );
     return 0;
 }
 
@@ -147,7 +147,7 @@ int entryPoint ( BfBulmaFact *bges )
 **/
 int AlmacenView_AlmacenView ( AlmacenView *alm )
 {
-    _depura ( "esxtoy en la clase almacen", 0 );
+    blDebug ( "esxtoy en la clase almacen", 0 );
 
     alm->addDbField ( "aperturaalmacen", BlDbField::DbVarChar, BlDbField::DbNothing,  "Apertura Manyana" );
     alm->addDbField ( "cierrealmacen", BlDbField::DbVarChar, BlDbField::DbNothing, "Cierre Manyana" );
@@ -237,7 +237,7 @@ int AlmacenView_AlmacenView ( AlmacenView *alm )
 **/
 int TrabajadorView_TrabajadorView ( TrabajadorView *trab )
 {
-    _depura ( "TrabajadorView_TrabajadorView", 0 );
+    blDebug ( "TrabajadorView_TrabajadorView", 0 );
     BfSubForm *l = new BfSubForm ( trab );
     l->setObjectName ( QString::fromUtf8 ( "m_ausencias" ) );
     l->setMainCompany ( trab->mainCompany() );
@@ -254,7 +254,7 @@ int TrabajadorView_TrabajadorView ( TrabajadorView *trab )
     trab->mui_tab->addTab ( l, "Ausencias" );
     trab->dialogChanges_setQObjectExcluido ( l->mui_list );
 
-    _depura ( "END TrabajadorView_TrabajadorView", 0 );
+    blDebug ( "END TrabajadorView_TrabajadorView", 0 );
     return 0;
 }
 
@@ -266,13 +266,13 @@ int TrabajadorView_TrabajadorView ( TrabajadorView *trab )
 **/
 int TrabajadorView_on_mui_lista_currentItemChanged_Post ( TrabajadorView *trab )
 {
-    _depura ( "TrabajadorView_on_mui_lista_currentItemChanged_Post", 0 );
+    blDebug ( "TrabajadorView_on_mui_lista_currentItemChanged_Post", 0 );
 
     BfSubForm *l = trab->findChild<BfSubForm *> ( "m_ausencias" );
     if (l) {
       l->cargar ( "SELECT * FROM ausencia WHERE idtrabajador = " + trab->mdb_idtrabajador );
     } // end if
-    _depura ( "END TrabajadorView_on_mui_lista_currentItemChanged_Post", 0 );
+    blDebug ( "END TrabajadorView_on_mui_lista_currentItemChanged_Post", 0 );
     return 0;
 }
 

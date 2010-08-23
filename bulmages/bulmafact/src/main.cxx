@@ -46,7 +46,7 @@
 
 
 /// Inicio de ejecucion del programa.
-/// NOTA: En el main no se puede utilizar _depura ya que puede que no este bien inicializado g_confpr.
+/// NOTA: En el main no se puede utilizar blDebug ya que puede que no este bien inicializado g_confpr.
 int main ( int argc, char **argv )
 {
    bool valorSalida = 0;

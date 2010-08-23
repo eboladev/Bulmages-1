@@ -38,10 +38,10 @@
 **/
 BcSubForm::BcSubForm ( QWidget *parent ) : BlSubForm ( parent )
 {
-    _depura ( "BcSubForm::BcSubForm", 0 );
+    blDebug ( "BcSubForm::BcSubForm", 0 );
     m_delegate = new BcSubFormDelegate ( this );
     mui_list->setItemDelegate ( m_delegate );
-    _depura ( "END BcSubForm::BcSubForm", 0 );
+    blDebug ( "END BcSubForm::BcSubForm", 0 );
 }
 
 
@@ -51,9 +51,9 @@ Libera la memoria que se haya reservado durante el funcionamiento de la clase.
 **/
 BcSubForm::~BcSubForm()
 {
-    _depura ( "BcSubForm::~BcSubForm", 0 );
+    blDebug ( "BcSubForm::~BcSubForm", 0 );
     delete m_delegate;
-    _depura ( "END BcSubForm::~BcSubForm", 0 );
+    blDebug ( "END BcSubForm::~BcSubForm", 0 );
 }
 
 
@@ -63,10 +63,10 @@ BcSubForm::~BcSubForm()
 **/
 void BcSubForm::setMainCompany ( BlMainCompany *c )
 {
-    _depura ( "BcSubForm::setMainCompany", 0 );
+    blDebug ( "BcSubForm::setMainCompany", 0 );
     BlMainCompanyPointer::setMainCompany ( c );
     m_delegate->setMainCompany ( c );
-    _depura ( "END BcSubForm::setMainCompany", 0 );
+    blDebug ( "END BcSubForm::setMainCompany", 0 );
 }
 
 
@@ -76,8 +76,8 @@ void BcSubForm::setMainCompany ( BlMainCompany *c )
 **/
 BcCompany *BcSubForm::mainCompany()
 {
-    _depura ( "BcSubForm::mainCompany", 0 );
-    _depura ( "END BcSubForm::mainCompany", 0 );
+    blDebug ( "BcSubForm::mainCompany", 0 );
+    blDebug ( "END BcSubForm::mainCompany", 0 );
     return ( ( BcCompany * ) BlMainCompanyPointer::mainCompany() );
 }
 
@@ -90,12 +90,12 @@ BcCompany *BcSubForm::mainCompany()
 **/
 void BcSubForm::pressedPlus ( int row, int col, BlDbSubFormRecord *rec, BlDbSubFormField *camp )
 {
-    _depura ( "BcSubForm::pressedPlus", 0 );
+    blDebug ( "BcSubForm::pressedPlus", 0 );
 
     /// Si no es un campo de tipo debe o haber salimos.
     /*
         if ( camp->nomcampo() != "debe" && camp->nomcampo() != "haber" && camp->nomcampo() != "fecha" ) {
-            _depura ( "END BcSubForm::pressedPlus", 0, "Campo incorrecto" );
+            blDebug ( "END BcSubForm::pressedPlus", 0, "Campo incorrecto" );
             return;
         } // end if
     */
@@ -138,7 +138,7 @@ void BcSubForm::pressedPlus ( int row, int col, BlDbSubFormRecord *rec, BlDbSubF
     } // end if
 
 
-    _depura ( "END BcSubForm::pressedPlus", 0 );
+    blDebug ( "END BcSubForm::pressedPlus", 0 );
 }
 
 /// Se ha pulsado la combinacion de teclas Ctrl + *
@@ -149,7 +149,7 @@ void BcSubForm::pressedPlus ( int row, int col, BlDbSubFormRecord *rec, BlDbSubF
 **/
 void BcSubForm::pressedAsterisk ( int row, int col, BlDbSubFormRecord *rec, BlDbSubFormField *camp )
 {
-    _depura ( "BcSubForm::pressedAsterisk", 0 );
+    blDebug ( "BcSubForm::pressedAsterisk", 0 );
 
     /// Si no es un campo de tipo codigo salimos.
     if ( camp->nomcampo() != "codigo" && camp->nomcampo() != "codigoctacliente" )
@@ -203,7 +203,7 @@ void BcSubForm::pressedAsterisk ( int row, int col, BlDbSubFormRecord *rec, BlDb
     } // end if
 
 
-    _depura ( "END BcSubForm::pressedAsterisk", 0 );
+    blDebug ( "END BcSubForm::pressedAsterisk", 0 );
 }
 
 
@@ -215,7 +215,7 @@ void BcSubForm::pressedAsterisk ( int row, int col, BlDbSubFormRecord *rec, BlDb
 **/
 void BcSubForm::pressedSlash ( int row, int col, BlDbSubFormRecord *rec, BlDbSubFormField *camp )
 {
-    _depura ( "BcSubForm::pressedSlash", 0 );
+    blDebug ( "BcSubForm::pressedSlash", 0 );
 
     if ( camp->nomcampo() == "fecha" ) {
         if ( row > 0 ) {
@@ -240,7 +240,7 @@ void BcSubForm::pressedSlash ( int row, int col, BlDbSubFormRecord *rec, BlDbSub
     } // end if
     QString text = editaTexto ( camp->text() );
     camp->set ( text );
-    _depura ( "END BcSubForm::pressedSlash", 0 );
+    blDebug ( "END BcSubForm::pressedSlash", 0 );
 }
 
 
@@ -252,7 +252,7 @@ void BcSubForm::pressedSlash ( int row, int col, BlDbSubFormRecord *rec, BlDbSub
 **/
 void BcSubForm::editFinished ( int row, int col, BlDbSubFormRecord *rec, BlDbSubFormField *camp )
 {
-    _depura ( "BcSubForm::editFinished", 0, "Row: " + QString::number ( row ) + " Col: " + QString::number ( col ) );
+    blDebug ( "BcSubForm::editFinished", 0, "Row: " + QString::number ( row ) + " Col: " + QString::number ( col ) );
 
     /// Disparamos los plugins.
     int res = g_plugins->lanza ( "BcSubForm_on_mui_list_cellChanged", this );
@@ -277,7 +277,7 @@ void BcSubForm::editFinished ( int row, int col, BlDbSubFormRecord *rec, BlDbSub
                 delete curss;
             } // end if
         } else {
-            _depura ( "No existe cuenta", 2 );
+            blDebug ( "No existe cuenta", 2 );
             return;
         } // end if
         delete cur;
@@ -320,7 +320,7 @@ void BcSubForm::editFinished ( int row, int col, BlDbSubFormRecord *rec, BlDbSub
     g_plugins->lanza ( "BcSubForm_on_mui_list_cellChanged_post", this );
 
     BlSubForm::on_mui_list_cellChanged ( row, col );
-    _depura ( "END BcSubForm::on_mui_list_cellChanged", 0 );
+    blDebug ( "END BcSubForm::on_mui_list_cellChanged", 0 );
 }
 
 
@@ -329,7 +329,7 @@ void BcSubForm::editFinished ( int row, int col, BlDbSubFormRecord *rec, BlDbSub
 **/
 void BcSubForm::boton_asiento()
 {
-    _depura ( "BcSubForm::boton_asiento", 0 );
+    blDebug ( "BcSubForm::boton_asiento", 0 );
 /*
     BcCompany *companyact = ( BcCompany * ) mainCompany();
     QString numasiento = dbValue ( "idasiento" );
@@ -338,7 +338,7 @@ void BcSubForm::boton_asiento()
         companyact->muestraapuntes1();
     } // end if
 */
-    _depura ( "END BcSubForm::boton_asiento", 0 );
+    blDebug ( "END BcSubForm::boton_asiento", 0 );
 }
 
 
@@ -351,7 +351,7 @@ void BcSubForm::boton_asiento()
 **/
 void BcSubForm::boton_extracto1 ( int tipo )
 {
-    _depura ( "BcSubForm::boton_extracto1", 0 );
+    blDebug ( "BcSubForm::boton_extracto1", 0 );
 /*
     BcCompany *companyact = ( BcCompany * ) mainCompany();
     QDate fecha1, fecha2, fechaact;
@@ -378,7 +378,7 @@ void BcSubForm::boton_extracto1 ( int tipo )
         companyact->libromayor();
     } // end if
 */
-    _depura ( "END BcSubForm::boton_extracto1", 0 );
+    blDebug ( "END BcSubForm::boton_extracto1", 0 );
 }
 
 
@@ -391,7 +391,7 @@ void BcSubForm::boton_extracto1 ( int tipo )
 **/
 void BcSubForm::boton_diario1 ( int tipo )
 {
-    _depura ( "BcSubForm::boton_diario1", 0 );
+    blDebug ( "BcSubForm::boton_diario1", 0 );
 /*
     BcCompany *companyact = ( BcCompany * ) mainCompany();
     QDate fecha1, fecha2, fechaact, fechaact1;
@@ -417,7 +417,7 @@ void BcSubForm::boton_diario1 ( int tipo )
     companyact->diarioempresa() ->accept();
     companyact->librodiario();
 */
-    _depura ( "BcSubForm::boton_diario1", 0 );
+    blDebug ( "BcSubForm::boton_diario1", 0 );
 }
 
 
@@ -431,7 +431,7 @@ void BcSubForm::boton_diario1 ( int tipo )
 /*
 void BcSubForm::boton_balance1 ( int tipo )
 {
-    _depura ( "BcSubForm::boton_balance1", 0 );
+    blDebug ( "BcSubForm::boton_balance1", 0 );
     BcCompany *companyact = ( BcCompany * ) mainCompany();
     QString fecha = dbValue ( "fecha" ).left ( 10 );
     QString codigo = dbValue ( "codigo" );
@@ -456,7 +456,7 @@ void BcSubForm::boton_balance1 ( int tipo )
         companyact->balanceempresa() ->accept();
         companyact->librobalance();
     } // end if
-    _depura ( "END BcSubForm::boton_balance1", 0 );
+    blDebug ( "END BcSubForm::boton_balance1", 0 );
 }
 */
 
@@ -468,10 +468,10 @@ void BcSubForm::boton_balance1 ( int tipo )
 **/
 void BcSubForm::creaMenu ( QMenu *menu )
 {
-    _depura ( "BcSubForm::pintaMenu", 0 );
+    blDebug ( "BcSubForm::pintaMenu", 0 );
     menu->addAction ( _ ( "Submenu de contabilidad" ) );
     menu->addSeparator();
-    _depura ( "END BcSubForm::pintaMenu", 0 );
+    blDebug ( "END BcSubForm::pintaMenu", 0 );
 }
 
 
@@ -480,8 +480,8 @@ void BcSubForm::creaMenu ( QMenu *menu )
 **/
 void BcSubForm::procesaMenu ( QAction * )
 {
-    _depura ( "BcSubForm::procesaMenu", 0 );
-    _depura ( "END BcSubForm::procesaMenu", 0 );
+    blDebug ( "BcSubForm::procesaMenu", 0 );
+    blDebug ( "END BcSubForm::procesaMenu", 0 );
 }
 
 
@@ -494,10 +494,10 @@ void BcSubForm::procesaMenu ( QAction * )
 **/
 BcSubFormDelegate::BcSubFormDelegate ( QObject *parent = 0 ) : BlSubFormDelegate ( parent )
 {
-    _depura ( "BcSubFormDelegate::BcSubFormDelegate", 0 );
+    blDebug ( "BcSubFormDelegate::BcSubFormDelegate", 0 );
 //    m_subform = ( BlSubForm * ) parent;
 //    installEventFilter ( this );
-    _depura ( "END BcSubFormDelegate::BcSubFormDelegate", 0 );
+    blDebug ( "END BcSubFormDelegate::BcSubFormDelegate", 0 );
 }
 
 
@@ -506,8 +506,8 @@ BcSubFormDelegate::BcSubFormDelegate ( QObject *parent = 0 ) : BlSubFormDelegate
 **/
 BcSubFormDelegate::~BcSubFormDelegate()
 {
-    _depura ( "BcSubFormDelegate::~BcSubFormDelegate", 0 );
-    _depura ( "END BcSubFormDelegate::~BcSubFormDelegate", 0 );
+    blDebug ( "BcSubFormDelegate::~BcSubFormDelegate", 0 );
+    blDebug ( "END BcSubFormDelegate::~BcSubFormDelegate", 0 );
 }
 
 
@@ -518,37 +518,37 @@ BcSubFormDelegate::~BcSubFormDelegate()
 **/
 QWidget *BcSubFormDelegate::createEditor ( QWidget *parent, const QStyleOptionViewItem &opcion, const QModelIndex &index ) const
 {
-    _depura ( "BcSubFormDelegate::createEditor", 0 );
+    blDebug ( "BcSubFormDelegate::createEditor", 0 );
     BlSubFormHeader *linea;
     linea = m_subform->cabecera() ->at ( index.column() );
-    _depura ( "BcSubFormDelegate::createEditor", 0, "CurrentColumn: " + QString::number ( index.column() ) );
-    _depura ( "BcSubFormDelegate::createEditor", 0, "CurrentRow: " + QString::number ( index.row() ) );
+    blDebug ( "BcSubFormDelegate::createEditor", 0, "CurrentColumn: " + QString::number ( index.column() ) );
+    blDebug ( "BcSubFormDelegate::createEditor", 0, "CurrentRow: " + QString::number ( index.row() ) );
 
     if ( linea->nomcampo().startsWith ( "desc" ) ) {
         BlTextEditDelegate * editor = new BlTextEditDelegate ( parent );
         editor->setObjectName ( "BlTextEditDelegate" );
-        _depura ( "END BcSubFormDelegate::createEditor", 0, "BlTextEditDelegate" );
+        blDebug ( "END BcSubFormDelegate::createEditor", 0, "BlTextEditDelegate" );
         return editor;
     } else if ( linea->nomcampo() == "debe" || linea->nomcampo() == "haber" ) {
         BlDoubleSpinBox * editor = new BlDoubleSpinBox ( parent );
         editor->setMinimum ( -1000000 );
         editor->setMaximum ( 1000000 );
         editor->setDecimals(linea->numericPrecision());
-        _depura ( "END BcSubFormDelegate::createEditor", 0, "BlDoubleSpinBox" );
+        blDebug ( "END BcSubFormDelegate::createEditor", 0, "BlDoubleSpinBox" );
         return editor;
     } else if ( linea->nomcampo() == "nomcanal" ) {
         BcBuscarCanalDelegate * editor = new BcBuscarCanalDelegate ( parent );
         editor->setMainCompany ( m_subform->mainCompany() );
-        _depura ( "END BcSubFormDelegate::createEditor", 0, "BcBuscarCanalDelegate" );
+        blDebug ( "END BcSubFormDelegate::createEditor", 0, "BcBuscarCanalDelegate" );
         return editor;
     } else if ( linea->nomcampo() == "nomc_coste" ) {
         BcBuscarCentroCosteDelegate * editor = new BcBuscarCentroCosteDelegate ( parent );
         editor->setMainCompany ( m_subform->mainCompany() );
-        _depura ( "END BcSubFormDelegate::createEditor", 0, "BcBuscarCentroCosteDelegate" );
+        blDebug ( "END BcSubFormDelegate::createEditor", 0, "BcBuscarCentroCosteDelegate" );
         return editor;
     } else if ( linea->nomcampo().startsWith ( "fecha" ) ) {
         BlDateLineEdit * editor = new BlDateLineEdit ( parent );
-        _depura ( "END BcSubFormDelegate::createEditor", 0, "BlDateLineEdit" );
+        blDebug ( "END BcSubFormDelegate::createEditor", 0, "BlDateLineEdit" );
         return editor;
     } else {
         /// DbInt = 1, DbVarChar = 2, DbDate = 3, DbNumeric = 4, DbBoolean
@@ -556,7 +556,7 @@ QWidget *BcSubFormDelegate::createEditor ( QWidget *parent, const QStyleOptionVi
         //QSpinBox *editor = new QSpinBox(parent);
         //return editor;
         /*        QLineEdit *editor = new QLineEdit ( parent );
-                _depura ( "END BcSubFormDelegate::createEditor", 0, "QLineEdit" );
+                blDebug ( "END BcSubFormDelegate::createEditor", 0, "QLineEdit" );
                 return editor;
         */
         //} else {
@@ -575,11 +575,11 @@ QWidget *BcSubFormDelegate::createEditor ( QWidget *parent, const QStyleOptionVi
 **/
 void BcSubFormDelegate::setModelData ( QWidget *editor, QAbstractItemModel *model, const QModelIndex &index ) const
 {
-    _depura ( "BcSubFormDelegate::setModelData", 0 );
+    blDebug ( "BcSubFormDelegate::setModelData", 0 );
 
     /// Si la fila o columna pasadas son invalidas salimos.
     if ( index.column() < 0 || index.row() < 0 ) {
-        _depura ( "END BcSubFormDelegate::setModelData", 0, "Fila o columna invalidas" );
+        blDebug ( "END BcSubFormDelegate::setModelData", 0, "Fila o columna invalidas" );
         return;
     } // end if
 
@@ -633,7 +633,7 @@ void BcSubFormDelegate::setModelData ( QWidget *editor, QAbstractItemModel *mode
     } // end if
 
 
-    _depura ( "END BcSubFormDelegate::setModelData", 0 );
+    blDebug ( "END BcSubFormDelegate::setModelData", 0 );
 }
 
 
@@ -644,7 +644,7 @@ void BcSubFormDelegate::setModelData ( QWidget *editor, QAbstractItemModel *mode
 **/
 void BcSubFormDelegate::setEditorData ( QWidget *editor, const QModelIndex &index ) const
 {
-    _depura ( "BcSubFormDelegate::setEditorData", 0 );
+    blDebug ( "BcSubFormDelegate::setEditorData", 0 );
     BlSubFormHeader *linea;
     linea = m_subform->cabecera() ->at ( index.column() );
     //if (linea->nomcampo() == "desc" + m_subform->tableName()) {
@@ -685,7 +685,7 @@ void BcSubFormDelegate::setEditorData ( QWidget *editor, const QModelIndex &inde
                 lineedit->setText ( value );
         */
     } // end if
-    _depura ( "END BcSubFormDelegate::setEditorData", 0 );
+    blDebug ( "END BcSubFormDelegate::setEditorData", 0 );
 }
 
 

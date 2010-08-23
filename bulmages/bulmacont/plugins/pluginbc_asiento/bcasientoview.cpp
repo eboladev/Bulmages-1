@@ -48,7 +48,7 @@
 BcAsientoView::BcAsientoView ( BcCompany *emp, QWidget *parent, int )
         : BcAsientoList ( emp, parent )
 {
-    _depura ( "BcAsientoView::BcAsientoView", 0 );
+    blDebug ( "BcAsientoView::BcAsientoView", 0 );
     setupUi ( this );
 
     /// Disparamos los plugins.
@@ -81,7 +81,7 @@ BcAsientoView::BcAsientoView ( BcCompany *emp, QWidget *parent, int )
     connect (((BcBulmaCont *)g_main)->actionInicio, SIGNAL(triggered()), this, SLOT(boton_inicio()));
     connect (((BcBulmaCont *)g_main)->actionFin, SIGNAL(triggered()), this, SLOT(boton_fin()));
 
-    _depura ( "END BcAsientoView::BcAsientoView", 0 );
+    blDebug ( "END BcAsientoView::BcAsientoView", 0 );
 }
 
 
@@ -90,8 +90,8 @@ BcAsientoView::BcAsientoView ( BcCompany *emp, QWidget *parent, int )
 **/
 BcAsientoView::~BcAsientoView()
 {
-    _depura ( "BcAsientoView::~BcAsientoView", 0 );
-    _depura ( "END BcAsientoView::~BcAsientoView", 0 );
+    blDebug ( "BcAsientoView::~BcAsientoView", 0 );
+    blDebug ( "END BcAsientoView::~BcAsientoView", 0 );
 }
 
 
@@ -100,7 +100,7 @@ BcAsientoView::~BcAsientoView()
 **/
 void BcAsientoView::calculaypintatotales()
 {
-    _depura ( "BcAsientoView::calculaypintatotales", 0 );
+    blDebug ( "BcAsientoView::calculaypintatotales", 0 );
     BlFixed tdebe = mui_list->sumarCampo ( "debe" );
     BlFixed thaber = mui_list->sumarCampo ( "haber" );
     m_totaldebe->setText ( tdebe.toQString() );
@@ -114,7 +114,7 @@ void BcAsientoView::calculaypintatotales()
     } else if ( !mui_abrirasiento->isEnabled() ) {
         mui_cerrarasiento->setEnabled ( TRUE );
     } // end ir
-    _depura ( "END BcAsientoView::calculaypintatotales", 0 );
+    blDebug ( "END BcAsientoView::calculaypintatotales", 0 );
 }
 
 
@@ -123,13 +123,13 @@ void BcAsientoView::calculaypintatotales()
 **/
 void BcAsientoView::trataestadoBcAsientoForm()
 {
-    _depura ( "BcAsientoView::trataestadoBcAsientoForm", 0 );
+    blDebug ( "BcAsientoView::trataestadoBcAsientoForm", 0 );
     if ( estadoBcAsientoForm() == ASCerrado ) {
         asientocerradop();
     } else {
         asientoabiertop();
     }// end if
-    _depura ( "END BcAsientoView::trataestadoBcAsientoForm", 0 );
+    blDebug ( "END BcAsientoView::trataestadoBcAsientoForm", 0 );
 }
 
 
@@ -139,7 +139,7 @@ void BcAsientoView::trataestadoBcAsientoForm()
 **/
 void BcAsientoView::asientoabiertop()
 {
-    _depura ( "BcAsientoView::asientoabiertop", 0 );
+    blDebug ( "BcAsientoView::asientoabiertop", 0 );
     m_descuadre->setEnabled ( TRUE );
     mui_abrirasiento->setEnabled ( FALSE );
     mui_cerrarasiento->setEnabled ( TRUE );
@@ -155,7 +155,7 @@ void BcAsientoView::asientoabiertop()
         } // end for
     } // end for
 
-    _depura ( "END BcAsientoView::asientoabiertop", 0 );
+    blDebug ( "END BcAsientoView::asientoabiertop", 0 );
 }
 
 
@@ -165,7 +165,7 @@ void BcAsientoView::asientoabiertop()
 **/
 void BcAsientoView::asientocerradop()
 {
-    _depura ( "BcAsientoView::asientocerradop", 0 );
+    blDebug ( "BcAsientoView::asientocerradop", 0 );
     mui_abrirasiento->setEnabled ( TRUE );
     mui_cerrarasiento->setEnabled ( FALSE );
     mui_inteligente->setEnabled ( TRUE );
@@ -180,7 +180,7 @@ void BcAsientoView::asientocerradop()
         } // end for
     } // end for
 
-    _depura ( "END BcAsientoView::asientocerradop", 0 );
+    blDebug ( "END BcAsientoView::asientocerradop", 0 );
 }
 
 
@@ -190,10 +190,10 @@ void BcAsientoView::asientocerradop()
 **/
 void BcAsientoView::on_mui_nuevoasiento_clicked()
 {
-    _depura ( "BcAsientoView::on_mui_nuevoasiento_clicked", 0 );
+    blDebug ( "BcAsientoView::on_mui_nuevoasiento_clicked", 0 );
     mui_fecha->setText ( QDate::currentDate().toString ( "dd/MM/yyyy" ) );
     iniciar_asiento_nuevo();
-    _depura ( "END BcAsientoView::on_mui_nuevoasiento_clicked", 0 );
+    blDebug ( "END BcAsientoView::on_mui_nuevoasiento_clicked", 0 );
 }
 
 
@@ -204,7 +204,7 @@ void BcAsientoView::on_mui_nuevoasiento_clicked()
 **/
 void BcAsientoView::iniciar_asiento_nuevo ( QString nuevoordenasiento )
 {
-    _depura ( "BcAsientoView::iniciar_asiento_nuevo", 0 );
+    blDebug ( "BcAsientoView::iniciar_asiento_nuevo", 0 );
     try {
         /// TRATAMIENTO DE BASE DE DATOS.
         unsigned int idasiento;
@@ -240,7 +240,7 @@ void BcAsientoView::iniciar_asiento_nuevo ( QString nuevoordenasiento )
 
         abrir();
 
-        _depura ( "END BcAsientoView::iniciar_asiento_nuevo", 0 );
+        blDebug ( "END BcAsientoView::iniciar_asiento_nuevo", 0 );
         return;
     } catch ( ... ) {
         mensajeInfo ( "Asiento no pudo crearse" );
@@ -258,7 +258,7 @@ void BcAsientoView::iniciar_asiento_nuevo ( QString nuevoordenasiento )
 **/
 void BcAsientoView::on_mui_fecha_enterPressed()
 {
-    _depura ( "BcAsientoView::on_mui_fecha_enterPressed", 0 );
+    blDebug ( "BcAsientoView::on_mui_fecha_enterPressed", 0 );
     /// Usamos un semaforo para prevenir de entradas concurrentes.
     static bool semaforo = FALSE;
     if ( semaforo ) return;
@@ -271,7 +271,7 @@ void BcAsientoView::on_mui_fecha_enterPressed()
         iniciar_asiento_nuevo();
     } // end if
     semaforo = FALSE;
-    _depura ( "END BcAsientoView::on_mui_fecha_enterPressed", 0 );
+    blDebug ( "END BcAsientoView::on_mui_fecha_enterPressed", 0 );
 }
 
 
@@ -283,9 +283,9 @@ void BcAsientoView::on_mui_fecha_enterPressed()
 **/
 void BcAsientoView::on_mui_duplicar_clicked()
 {
-    _depura ( "BcAsientoView::on_mui_duplicar_clicked", 0 );
+    blDebug ( "BcAsientoView::on_mui_duplicar_clicked", 0 );
 
-    _depura ( "END BcAsientoView::on_mui_duplicar_clicked", 0 );
+    blDebug ( "END BcAsientoView::on_mui_duplicar_clicked", 0 );
 }
 
 
@@ -296,7 +296,7 @@ void BcAsientoView::on_mui_duplicar_clicked()
 **/
 void BcAsientoView::on_mui_inteligente_clicked()
 {
-    _depura ( "BcAsientoView::on_mui_inteligente_clicked", 0 );
+    blDebug ( "BcAsientoView::on_mui_inteligente_clicked", 0 );
     int numasiento;
     if ( estadoBcAsientoForm() != BcAsientoForm::ASCerrado ) {
         /// El asiento esta abierto y por tanto se muestra como abierto.
@@ -308,7 +308,7 @@ void BcAsientoView::on_mui_inteligente_clicked()
     BcAsientoInteligenteView *nueva = new BcAsientoInteligenteView ( mainCompany(), 0 );
     nueva->inicializa ( numasiento );
     nueva->show();
-    _depura ( "END BcAsientoView::on_mui_inteligente_clicked", 0 );
+    blDebug ( "END BcAsientoView::on_mui_inteligente_clicked", 0 );
 }
 
 
@@ -320,7 +320,7 @@ void BcAsientoView::on_mui_inteligente_clicked()
 **/
 void BcAsientoView::boton_cargarasiento()
 {
-    _depura ( "BcAsientoView::boton_cargarasiento", 0 );
+    blDebug ( "BcAsientoView::boton_cargarasiento", 0 );
     QString idas = "";
     QString query = "SELECT idasiento FROM asiento WHERE ordenasiento = " + mui_ordenasiento->text() + " ORDER BY ordenasiento DESC";
     BlDbRecordSet *curs = mainCompany() ->loadQuery ( query );
@@ -338,7 +338,7 @@ void BcAsientoView::boton_cargarasiento()
         pintar();
     } // end if
     delete curs;
-    _depura ( "END BcAsientoView::boton_cargarasiento", 0 );
+    blDebug ( "END BcAsientoView::boton_cargarasiento", 0 );
 }
 
 
@@ -348,10 +348,10 @@ void BcAsientoView::boton_cargarasiento()
 **/
 void BcAsientoView::muestraasiento ( QString v )
 {
-    _depura ( "BcAsientoView::muestraasiento ", 0 );
+    blDebug ( "BcAsientoView::muestraasiento ", 0 );
     situarasiento ( v );
     cargar ( v );
-    _depura ( "END BcAsientoView::muestraasiento ", 0 );
+    blDebug ( "END BcAsientoView::muestraasiento ", 0 );
 }
 
 
@@ -360,12 +360,12 @@ void BcAsientoView::muestraasiento ( QString v )
 **/
 void BcAsientoView::prepguardar()
 {
-    _depura ( "BcAsientoView::prepguardar", 0 );
+    blDebug ( "BcAsientoView::prepguardar", 0 );
     setDbValue ( "fecha", mui_fecha->text() );
     setDbValue ( "ordenasiento", mui_ordenasiento->text() );
     setDbValue ( "comentariosasiento", mui_comentariosAsiento->toPlainText() );
     setDbValue ( "clase", QString::number ( mui_claseAsiento->currentIndex() ) );
-    _depura ( "END BcAsientoView::prepguardar", 0 );
+    blDebug ( "END BcAsientoView::prepguardar", 0 );
 }
 
 
@@ -374,8 +374,8 @@ void BcAsientoView::prepguardar()
 **/
 int BcAsientoView::guardarPost()
 {
-    _depura ( "BcAsientoView::guardarPost", 0 );
-    _depura ( "BcAsientoView::guardarPost", 0 );
+    blDebug ( "BcAsientoView::guardarPost", 0 );
+    blDebug ( "BcAsientoView::guardarPost", 0 );
     return 0;
 }
 
@@ -396,7 +396,7 @@ void BcAsientoView::on_mui_borrar_clicked()
 **/
 void BcAsientoView::on_mui_borrar_clicked ( bool atendido )
 {
-    _depura ( "BcAsientoView::on_mui_borrar_clicked", 0 );
+    blDebug ( "BcAsientoView::on_mui_borrar_clicked", 0 );
     QString idasientosig = idasientosiguiente();
     QString idasientoant = idasientoanterior();
     int resultadoborrar;
@@ -416,7 +416,7 @@ void BcAsientoView::on_mui_borrar_clicked ( bool atendido )
             pintar();
         } // end if
     } // end if
-    _depura ( "END BcAsientoView::on_mui_borrar_clicked", 0 );
+    blDebug ( "END BcAsientoView::on_mui_borrar_clicked", 0 );
 }
 
 
@@ -425,9 +425,9 @@ void BcAsientoView::on_mui_borrar_clicked ( bool atendido )
 **/
 void BcAsientoView::on_mui_list_editFinish ( int, int )
 {
-    _depura ( "BcAsientoView::on_mui_list_editFinish", 0 );
+    blDebug ( "BcAsientoView::on_mui_list_editFinish", 0 );
     calculaypintatotales();
-    _depura ( "END BcAsientoView::on_mui_list_editFinish", 0 );
+    blDebug ( "END BcAsientoView::on_mui_list_editFinish", 0 );
 }
 
 
@@ -443,9 +443,9 @@ void BcAsientoView::on_mui_list_editFinish ( int, int )
 **/
 BcAsientoList::BcAsientoList ( BcCompany *emp, QWidget *parent ) : BcAsientoForm ( emp, parent )
 {
-    _depura ( "BcAsientoList::BcAsientoList", 0 );
+    blDebug ( "BcAsientoList::BcAsientoList", 0 );
     cursorasientos = NULL;
-    _depura ( "END BcAsientoList::BcAsientoList", 0 );
+    blDebug ( "END BcAsientoList::BcAsientoList", 0 );
 
 }
 
@@ -455,11 +455,11 @@ BcAsientoList::BcAsientoList ( BcCompany *emp, QWidget *parent ) : BcAsientoForm
 **/
 BcAsientoList::~BcAsientoList()
 {
-    _depura ( "BcAsientoList::~BcAsientoList", 0 );
+    blDebug ( "BcAsientoList::~BcAsientoList", 0 );
     if ( cursorasientos != NULL ) {
         delete cursorasientos;
     } // end if
-    _depura ( "END BcAsientoList::~BcAsientoList", 0 );
+    blDebug ( "END BcAsientoList::~BcAsientoList", 0 );
 }
 
 
@@ -475,7 +475,7 @@ BcAsientoList::~BcAsientoList()
 **/
 void BcAsientoList::cargaasientos()
 {
-    _depura ( "BcAsientoList::cargaasientos", 0 );
+    blDebug ( "BcAsientoList::cargaasientos", 0 );
     QString cantapunt = "";
     QString saldototal = "";
     QString nombreasiento = "";
@@ -523,9 +523,9 @@ void BcAsientoList::cargaasientos()
     query = "SELECT * FROM asiento " + cadwhere + textsaldototal + textcantapunt + textnombreasiento + textejercicio + " ORDER BY EXTRACT (YEAR FROM fecha), ordenasiento";
     cursorasientos = mainCompany() ->loadQuery ( query );
     if ( cursorasientos->eof() ) {
-        _depura ( "No existe ningun asiento para mostrar.", 0 );
+        blDebug ( "No existe ningun asiento para mostrar.", 0 );
     } // end if
-    _depura ( "END BcAsientoList::cargaasientos", 0 );
+    blDebug ( "END BcAsientoList::cargaasientos", 0 );
 }
 
 
@@ -538,14 +538,14 @@ void BcAsientoList::cargaasientos()
 **/
 void BcAsientoList::boton_inicio()
 {
-    _depura ( "BcAsientoList::boton_inicio", 0 );
+    blDebug ( "BcAsientoList::boton_inicio", 0 );
     if(mainCompany()->pWorkspace()->activeWindow() == this) {
     if ( cursorasientos->numregistros() != 0 ) {
         cursorasientos->firstRecord();
         cargar ( cursorasientos->valor ( "idasiento" ) );
     } // end if
     } // end if
-    _depura ( "END BcAsientoList::boton_inicio", 0 );
+    blDebug ( "END BcAsientoList::boton_inicio", 0 );
 }
 
 
@@ -557,14 +557,14 @@ void BcAsientoList::boton_inicio()
 **/
 void BcAsientoList::boton_fin()
 {
-    _depura ( "BcAsientoList::boton_fin", 0 );
+    blDebug ( "BcAsientoList::boton_fin", 0 );
     if(mainCompany()->pWorkspace()->activeWindow() == this) {
     if ( cursorasientos->numregistros() != 0 ) {
         cursorasientos->lastRecord();
         cargar ( cursorasientos->valor ( "idasiento" ) );
     } // end if
     } // end if
-    _depura ( "END BcAsientoList::boton_fin", 0 );
+    blDebug ( "END BcAsientoList::boton_fin", 0 );
 }
 
 /// Slot que responde a la pulsaci&oacute;n del bot&oacute;n de siguiente registro.
@@ -577,7 +577,7 @@ void BcAsientoList::boton_fin()
 **/
 void BcAsientoList::boton_siguiente()
 {
-    _depura ( "BcAsientoList::boton_siguiente", 0 );
+    blDebug ( "BcAsientoList::boton_siguiente", 0 );
     if(mainCompany()->pWorkspace()->activeWindow() == this) {
     ///  Si no hay nada que mostrar vacia la pantalla para que no queden resto.
     if ( cursorasientos->numregistros() == 0 ) {
@@ -588,7 +588,7 @@ void BcAsientoList::boton_siguiente()
         cargar ( cursorasientos->valor ( "idasiento" ) );
     }// end if
     } // end if
-    _depura ( "END BcAsientoList::boton_siguiente", 0 );
+    blDebug ( "END BcAsientoList::boton_siguiente", 0 );
 }
 
 
@@ -602,7 +602,7 @@ void BcAsientoList::boton_siguiente()
 **/
 void BcAsientoList::boton_anterior()
 {
-    _depura ( "BcAsientoList::boton_anterior", 0 );
+    blDebug ( "BcAsientoList::boton_anterior", 0 );
     if(mainCompany()->pWorkspace()->activeWindow() == this) {
     ///  Si no hay nada que mostrar vacia la pantalla para que no queden resto.
     if ( cursorasientos->numregistros() == 0 ) {
@@ -613,7 +613,7 @@ void BcAsientoList::boton_anterior()
         cargar ( cursorasientos->valor ( "idasiento" ) );
     } // end if
     } // end if
-    _depura ( "END BcAsientoList::boton_anterior", 0 );
+    blDebug ( "END BcAsientoList::boton_anterior", 0 );
 }
 
 
@@ -626,7 +626,7 @@ void BcAsientoList::boton_anterior()
 **/
 void BcAsientoList::situarasiento ( QString idasiento )
 {
-    _depura ( "BcAsientoList::situarasiento ", 0, idasiento );
+    blDebug ( "BcAsientoList::situarasiento ", 0, idasiento );
     try {
         if ( cursorasientos == NULL )
             throw - 1;
@@ -638,7 +638,7 @@ void BcAsientoList::situarasiento ( QString idasiento )
         mensajeError ( "Error al intentar situarse en el asiento.\nEs posible que el asiento ya no exista en la base de datos.\nActualice el listado de asientos." );
         throw - 1;
     } // end try
-    _depura ( "END BcAsientoList::situarasiento", 0, idasiento );
+    blDebug ( "END BcAsientoList::situarasiento", 0, idasiento );
 }
 
 
@@ -648,15 +648,15 @@ void BcAsientoList::situarasiento ( QString idasiento )
 **/
 QString BcAsientoList::idasientoanterior()
 {
-    _depura ( "BcAsientoList::idasientoanterior", 0 );
+    blDebug ( "BcAsientoList::idasientoanterior", 0 );
     if ( !cursorasientos->isFirstRecord() ) {
         cursorasientos->previousRecord();
         QString id = cursorasientos->valor ( "idasiento" );
         cursorasientos->nextRecord();
-        _depura ( "END BcAsientoList::idasientoanterior", 0 );
+        blDebug ( "END BcAsientoList::idasientoanterior", 0 );
         return id;
     } else {
-        _depura ( "END BcAsientoList::idasientoanterior", 0 );
+        blDebug ( "END BcAsientoList::idasientoanterior", 0 );
         return "";
     } // end if
 }
@@ -668,15 +668,15 @@ QString BcAsientoList::idasientoanterior()
 **/
 QString BcAsientoList::idasientosiguiente()
 {
-    _depura ( "BcAsientoList::idasientosiguiente", 0 );
+    blDebug ( "BcAsientoList::idasientosiguiente", 0 );
     if ( !cursorasientos->isLastRecord() ) {
         cursorasientos->nextRecord();
         QString id = cursorasientos->valor ( "idasiento" );
         cursorasientos->previousRecord();
-        _depura ( "END BcAsientoList::idasientosiguiente", 0 );
+        blDebug ( "END BcAsientoList::idasientosiguiente", 0 );
         return id;
     } else {
-        _depura ( "END BcAsientoList::idasientosiguiente", 0 );
+        blDebug ( "END BcAsientoList::idasientosiguiente", 0 );
         return "";
     } // end if
 }
@@ -690,7 +690,7 @@ QString BcAsientoList::idasientosiguiente()
 **/
 bool eventos_mui_ordenasiento::eventFilter ( QObject *obj, QEvent *event )
 {
-    _depura ( "eventos_mui_ordenasiento::eventFilter", 0 );
+    blDebug ( "eventos_mui_ordenasiento::eventFilter", 0 );
 
     if ( event->type() == QEvent::KeyPress ) {
         QKeyEvent * keyEvent = static_cast<QKeyEvent *> ( event );
@@ -699,7 +699,7 @@ bool eventos_mui_ordenasiento::eventFilter ( QObject *obj, QEvent *event )
             return true;
         } // end if
     } // end if
-    _depura ( "END eventos_mui_ordenasiento::eventFilter", 0 );
+    blDebug ( "END eventos_mui_ordenasiento::eventFilter", 0 );
     return QObject::eventFilter ( obj, event );
 }
 
@@ -712,7 +712,7 @@ bool eventos_mui_ordenasiento::eventFilter ( QObject *obj, QEvent *event )
 **/
 void BcAsientoList::boton_filtrar()
 {
-    _depura ( "Funcion no implementada", 2 );
+    blDebug ( "Funcion no implementada", 2 );
 }
 
 
@@ -731,8 +731,8 @@ void BcAsientoList::muestraasiento ( QString )
 **/
 bool BcAsientoList::esprimerasiento()
 {
-    _depura ( "BcAsientoList::esprimerasiento", 0 );
-    _depura ( "END BcAsientoList::esprimerasiento", 0 );
+    blDebug ( "BcAsientoList::esprimerasiento", 0 );
+    blDebug ( "END BcAsientoList::esprimerasiento", 0 );
     return cursorasientos->isFirstRecord();
 }
 
@@ -743,8 +743,8 @@ bool BcAsientoList::esprimerasiento()
 **/
 bool BcAsientoList::esultimoasiento()
 {
-    _depura ( "BcAsientoList::esultimoasiento", 0 );
-    _depura ( "END BcAsientoList::esultimoasiento", 0 );
+    blDebug ( "BcAsientoList::esultimoasiento", 0 );
+    blDebug ( "END BcAsientoList::esultimoasiento", 0 );
     return cursorasientos->isLastRecord();
 }
 
@@ -755,9 +755,9 @@ bool BcAsientoList::esultimoasiento()
 **/
 void BcAsientoView::pintafecha ( QString val )
 {
-    _depura ( "BcAsientoView::pintafecha", 0 );
+    blDebug ( "BcAsientoView::pintafecha", 0 );
     mui_fecha->setText ( val );
-    _depura ( "END BcAsientoView::pintafecha", 0 );
+    blDebug ( "END BcAsientoView::pintafecha", 0 );
 }
 
 
@@ -767,9 +767,9 @@ void BcAsientoView::pintafecha ( QString val )
 **/
 void BcAsientoView::pintaordenasiento ( QString val )
 {
-    _depura ( "BcAsientoView::pintaordenasiento", 0 );
+    blDebug ( "BcAsientoView::pintaordenasiento", 0 );
     mui_ordenasiento->setValue ( val.toInt() );
-    _depura ( "END BcAsientoView::pintaordenasiento", 0 );
+    blDebug ( "END BcAsientoView::pintaordenasiento", 0 );
 }
 
 
@@ -780,9 +780,9 @@ void BcAsientoView::pintaordenasiento ( QString val )
 **/
 void BcAsientoView::pintaclase ( QString val )
 {
-    _depura ( "BcAsientoView::pintaclase", 0 );
+    blDebug ( "BcAsientoView::pintaclase", 0 );
     mui_claseAsiento->setCurrentIndex ( val.toInt() );
-    _depura ( "END BcAsientoView::pintaclase", 0 );
+    blDebug ( "END BcAsientoView::pintaclase", 0 );
 }
 
 
@@ -792,9 +792,9 @@ void BcAsientoView::pintaclase ( QString val )
 **/
 void BcAsientoView::pintacomentariosasiento ( QString text )
 {
-    _depura ( "BcAsientoView::pintacomentariosasiento", 0 );
+    blDebug ( "BcAsientoView::pintacomentariosasiento", 0 );
     mui_comentariosAsiento->setPlainText ( text );
-    _depura ( "END BcAsientoView::pintacomentariosasiento", 0 );
+    blDebug ( "END BcAsientoView::pintacomentariosasiento", 0 );
 }
 
 
@@ -804,9 +804,9 @@ void BcAsientoView::pintacomentariosasiento ( QString text )
 **/
 void BcAsientoView::muestraasiento ( int v )
 {
-    _depura ( "BcAsientoView::muestraasiento", 0 );
+    blDebug ( "BcAsientoView::muestraasiento", 0 );
     muestraasiento ( QString::number ( v ) );
-    _depura ( "END BcAsientoView::muestraasiento", 0 );
+    blDebug ( "END BcAsientoView::muestraasiento", 0 );
 }
 
 
@@ -816,8 +816,8 @@ void BcAsientoView::muestraasiento ( int v )
 **/
 int BcAsientoView::sacaWindow()
 {
-    _depura ( "BcAsientoView::sacaWindow", 0 );
-    _depura ( "END BcAsientoView::sacaWindow", 0 );
+    blDebug ( "BcAsientoView::sacaWindow", 0 );
+    blDebug ( "END BcAsientoView::sacaWindow", 0 );
     return 0;
 }
 
@@ -828,9 +828,9 @@ int BcAsientoView::sacaWindow()
 **/
 void BcAsientoView::setFecha ( QString val )
 {
-    _depura ( "BcAsientoView::setFecha", 0 );
+    blDebug ( "BcAsientoView::setFecha", 0 );
     mui_fecha->setText ( val );
-    _depura ( "END BcAsientoView::setFecha", 0 );
+    blDebug ( "END BcAsientoView::setFecha", 0 );
 }
 
 
@@ -839,9 +839,9 @@ void BcAsientoView::setFecha ( QString val )
 **/
 void BcAsientoView::on_mui_abrirasiento_clicked()
 {
-    _depura ( "BcAsientoView::on_mui_abrirasiento_clicked", 0 );
+    blDebug ( "BcAsientoView::on_mui_abrirasiento_clicked", 0 );
     abrir();
-    _depura ( "END BcAsientoView::on_mui_abrirasiento_clicked", 0 );
+    blDebug ( "END BcAsientoView::on_mui_abrirasiento_clicked", 0 );
 }
 
 
@@ -851,15 +851,15 @@ void BcAsientoView::on_mui_abrirasiento_clicked()
 **/
 void BcAsientoView::on_mui_cerrarasiento_clicked()
 {
-    _depura ( "BcAsientoView::on_mui_cerrarasiento_clicked", 0 );
+    blDebug ( "BcAsientoView::on_mui_cerrarasiento_clicked", 0 );
     if ( BlFixed ( m_descuadre->text() ) != 0 )  {
         mensajeInfo ( "Asiento descuadrado, no se puede cerrar" );
-        _depura ( "END BcAsientoView::on_mui_cerrarasiento_clicked", 0, "Descuadrado" );
+        blDebug ( "END BcAsientoView::on_mui_cerrarasiento_clicked", 0, "Descuadrado" );
         return;
     } // end if
     prepguardar();
     cerrar();
-    _depura ( "END BcAsientoView::on_mui_cerrarasiento_clicked", 0 );
+    blDebug ( "END BcAsientoView::on_mui_cerrarasiento_clicked", 0 );
 }
 
 
@@ -868,10 +868,10 @@ void BcAsientoView::on_mui_cerrarasiento_clicked()
 **/
 void BcAsientoView::on_mui_guardarasiento_clicked()
 {
-    _depura ( "BcAsientoView::on_mui_guardarasiento_clicked", 0 );
+    blDebug ( "BcAsientoView::on_mui_guardarasiento_clicked", 0 );
     prepguardar();
     BcAsientoForm::guardar();
-    _depura ( "END BcAsientoView::on_mui_guardarasiento_clicked", 0 );
+    blDebug ( "END BcAsientoView::on_mui_guardarasiento_clicked", 0 );
 }
 
 
@@ -881,9 +881,9 @@ void BcAsientoView::on_mui_guardarasiento_clicked()
 **/
 void BcAsientoView::mui_ordenasiento_pulsadoIntro()
 {
-    _depura ( "BcAsientoView::mui_ordenasiento_pulsadoIntro", 0 );
+    blDebug ( "BcAsientoView::mui_ordenasiento_pulsadoIntro", 0 );
     boton_cargarasiento();
-    _depura ( "END BcAsientoView::mui_ordenasiento_pulsadoIntro", 0 );
+    blDebug ( "END BcAsientoView::mui_ordenasiento_pulsadoIntro", 0 );
 }
 
 
@@ -893,9 +893,9 @@ void BcAsientoView::mui_ordenasiento_pulsadoIntro()
 **/
 eventos_mui_ordenasiento::eventos_mui_ordenasiento ( BcAsientoView *ob )
 {
-    _depura ( "eventos_mui_ordenasiento::eventos_mui_ordenasiento", 0 );
+    blDebug ( "eventos_mui_ordenasiento::eventos_mui_ordenasiento", 0 );
     objeto = ob;
-    _depura ( "END eventos_mui_ordenasiento::eventos_mui_ordenasiento", 0 );
+    blDebug ( "END eventos_mui_ordenasiento::eventos_mui_ordenasiento", 0 );
 }
 
 ///
@@ -905,7 +905,7 @@ eventos_mui_ordenasiento::eventos_mui_ordenasiento ( BcAsientoView *ob )
 **/
 void BcAsientoView::asiento_regularizacion ( QString finicial, QString ffinal )
 {
-    _depura ( "BcAsientoView::regularizacion", 0, finicial + "--" + ffinal );
+    blDebug ( "BcAsientoView::regularizacion", 0, finicial + "--" + ffinal );
     try {
 
         /// Para poder generar un asiento de regularizacion debemos tener un asiento abierto.
@@ -1026,7 +1026,7 @@ void BcAsientoView::asiento_regularizacion ( QString finicial, QString ffinal )
         mensajeInfo ( "Error en los calculos" );
         mainCompany() ->rollback();
     } // end try
-    _depura ( "END BcAsientoView::regularizacion", 0 );
+    blDebug ( "END BcAsientoView::regularizacion", 0 );
 }
 
 
@@ -1036,7 +1036,7 @@ void BcAsientoView::asiento_regularizacion ( QString finicial, QString ffinal )
 **/
 void BcAsientoView::asiento_cierre ( QString finicial, QString ffinal )
 {
-    _depura ( "BcAsientoView::asiento_cierre", 0 );
+    blDebug ( "BcAsientoView::asiento_cierre", 0 );
     try {
         mainCompany() ->begin();
 
@@ -1191,13 +1191,13 @@ void BcAsientoView::asiento_apertura ( QString ffinal )
 **/
 void BcAsientoView::on_mui_configurar_toggled ( bool checked )
 {
-    _depura ( "BcAsientoView::on_mui_configurar_toggled", 0 );
+    blDebug ( "BcAsientoView::on_mui_configurar_toggled", 0 );
     if ( checked ) {
         mui_list->showConfig();
     } else {
         mui_list->hideConfig();
     } // end if
-    _depura ( "END BcAsientoView::on_mui_configurar_toggled", 0 );
+    blDebug ( "END BcAsientoView::on_mui_configurar_toggled", 0 );
 }
 
 ///
@@ -1206,11 +1206,11 @@ void BcAsientoView::on_mui_configurar_toggled ( bool checked )
 **/
 void BcAsientoView::on_mui_list_toogledConfig ( bool check )
 {
-    _depura ( "BcAsientoView::on_mui_list_toogledConfig", 0 );
+    blDebug ( "BcAsientoView::on_mui_list_toogledConfig", 0 );
 
     QToolButton *botonconfigurar = findChild<QToolButton *> ( "mui_configurar" );
     if ( botonconfigurar )
         botonconfigurar->setChecked ( check );
-    _depura ( "END BcAsientoView::on_mui_list_toogledConfig", 0 );
+    blDebug ( "END BcAsientoView::on_mui_list_toogledConfig", 0 );
 }
 

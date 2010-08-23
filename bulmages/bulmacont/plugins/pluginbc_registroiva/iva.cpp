@@ -27,7 +27,7 @@
 **/
 void Iva::definetabla()
 {
-    _depura ( "Iva::definetabla", 0 );
+    blDebug ( "Iva::definetabla", 0 );
     setDbTableName ( "iva" );
     setDbFieldId ( "idiva" );
     addDbField ( "idiva", BlDbField::DbInt, BlDbField::DbPrimaryKey, "Identificador" );
@@ -38,7 +38,7 @@ void Iva::definetabla()
     addDbField ( "idcuenta", BlDbField::DbInt, BlDbField::DbNoSave, "Id. cuenta" );
     addDbField ( "codigo", BlDbField::DbVarChar, BlDbField::DbNoSave, "Codigo" );
     addDbField ( "nombretipoiva", BlDbField::DbVarChar, BlDbField::DbNoSave, "Nombre tipo IVA" );
-    _depura ( "END Iva::definetabla", 0 );
+    blDebug ( "END Iva::definetabla", 0 );
 }
 
 
@@ -48,10 +48,10 @@ void Iva::definetabla()
 **/
 Iva::Iva ( BcCompany *comp ) : BlDbRecord ( comp )
 {
-    _depura ( "Iva::Iva", 0 );
+    blDebug ( "Iva::Iva", 0 );
     m_companyact = comp;
     definetabla();
-    _depura ( "END Iva::Iva", 0 );
+    blDebug ( "END Iva::Iva", 0 );
 }
 
 
@@ -62,7 +62,7 @@ Iva::Iva ( BcCompany *comp ) : BlDbRecord ( comp )
 **/
 Iva::Iva ( BcCompany *comp, QString idiva ) : BlDbRecord ( comp )
 {
-    _depura ( "Iva::Iva", 0 );
+    blDebug ( "Iva::Iva", 0 );
     m_companyact = comp;
     definetabla();
     QString SQLQuery = "SELECT * FROM iva LEFT JOIN tipoiva ON iva.idtipoiva = tipoiva.idtipoiva LEFT JOIN cuenta ON cuenta.idcuenta = tipoiva.idtipoiva WHERE idiva = " + idiva;
@@ -72,7 +72,7 @@ Iva::Iva ( BcCompany *comp, QString idiva ) : BlDbRecord ( comp )
     } else {
         vaciaIva();
     } // end if
-    _depura ( "END Iva::Iva", 0 );
+    blDebug ( "END Iva::Iva", 0 );
 }
 
 
@@ -83,11 +83,11 @@ Iva::Iva ( BcCompany *comp, QString idiva ) : BlDbRecord ( comp )
 **/
 Iva::Iva ( BcCompany *comp, BlDbRecordSet *cur ) : BlDbRecord ( comp )
 {
-    _depura ( "Iva::Iva", 0 );
+    blDebug ( "Iva::Iva", 0 );
     m_companyact = comp;
     definetabla();
     DBload ( cur );
-    _depura ( "END Iva::Iva", 0 );
+    blDebug ( "END Iva::Iva", 0 );
 }
 
 
@@ -96,8 +96,8 @@ Iva::Iva ( BcCompany *comp, BlDbRecordSet *cur ) : BlDbRecord ( comp )
 **/
 Iva::~Iva()
 {
-    _depura ( "Iva::~Iva", 0 );
-    _depura ( "END Iva::~Iva", 0 );
+    blDebug ( "Iva::~Iva", 0 );
+    blDebug ( "END Iva::~Iva", 0 );
 }
 
 
@@ -106,9 +106,9 @@ Iva::~Iva()
 **/
 void Iva::vaciaIva()
 {
-    _depura ( "Iva::vaciaIva", 0 );
+    blDebug ( "Iva::vaciaIva", 0 );
     DBclear();
-    _depura ( "END Iva::vaciaIva", 0 );
+    blDebug ( "END Iva::vaciaIva", 0 );
 }
 
 
@@ -118,7 +118,7 @@ void Iva::vaciaIva()
 **/
 int Iva::borrar()
 {
-    _depura ( "Iva::borrar", 0 );
+    blDebug ( "Iva::borrar", 0 );
     if ( dbValue ( "idiva" ) != "" ) {
         m_companyact->begin();
         int error = m_companyact->runQuery ( "DELETE FROM iva WHERE idiva = " + dbValue ( "idiva" ) );
@@ -129,7 +129,7 @@ int Iva::borrar()
         m_companyact->commit();
         vaciaIva();
     } // end if
-    _depura ( "END Iva::borrar", 0 );
+    blDebug ( "END Iva::borrar", 0 );
     return 0;
 }
 
@@ -140,7 +140,7 @@ int Iva::borrar()
 **/
 void Iva::guardaIva()
 {
-    _depura ( "Iva::guardaIva", 0 );
+    blDebug ( "Iva::guardaIva", 0 );
     QString id;
     m_companyact->begin();
     int error = DBsave ( id );
@@ -150,7 +150,7 @@ void Iva::guardaIva()
     } // end if
     setDbValue ( "idiva", id );
     m_companyact->commit();
-    _depura ( "END Iva::guardaIva", 0 );
+    blDebug ( "END Iva::guardaIva", 0 );
 }
 
 
@@ -160,11 +160,11 @@ void Iva::guardaIva()
 **/
 void Iva::setidtipoiva ( const QString &val )
 {
-    _depura ( "Iva::setidtipoiva", 0 );
+    blDebug ( "Iva::setidtipoiva", 0 );
     QString SQLQuery = "SELECT * FROM tipoiva LEFT JOIN cuenta ON cuenta.idcuenta = tipoiva.idcuenta WHERE idtipoiva = " + val;
     BlDbRecordSet *cur = m_companyact->loadQuery ( SQLQuery );
     if ( !cur->eof() ) {
-        _depura ( cur->valor ( "codigo" ), 0 );
+        blDebug ( cur->valor ( "codigo" ), 0 );
         setDbValue ( "idcuenta", cur->valor ( "idcuenta" ) );
         setDbValue ( "codigo", cur->valor ( "codigo" ) );
         setDbValue ( "nombretipoiva", cur->valor ( "nombretipoiva" ) );

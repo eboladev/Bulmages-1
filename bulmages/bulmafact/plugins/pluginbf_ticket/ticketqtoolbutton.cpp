@@ -49,13 +49,13 @@
 **/
 TicketQToolButton::TicketQToolButton ( PresupuestoView *pres, PedidoClienteView *ped, AlbaranClienteView *alb, FacturaView *fac , QWidget *parent ) : QToolButton ( parent )
 {
-    _depura ( "TicketQToolButton::TicketQToolButton", 0 );
+    blDebug ( "TicketQToolButton::TicketQToolButton", 0 );
     m_presupuestoView = pres;
     m_pedidoClienteView = ped;
     m_albaranClienteView = alb;
     m_facturaView = fac;
     setBoton();
-    _depura ( "END TicketQToolButton::TicketQToolButton", 0 );
+    blDebug ( "END TicketQToolButton::TicketQToolButton", 0 );
 }
 
 
@@ -64,8 +64,8 @@ TicketQToolButton::TicketQToolButton ( PresupuestoView *pres, PedidoClienteView 
 **/
 TicketQToolButton::~TicketQToolButton()
 {
-    _depura ( "TicketQToolButton::~TicketQToolButton", 0 );
-    _depura ( "END TicketQToolButton::~TicketQToolButton", 0 );
+    blDebug ( "TicketQToolButton::~TicketQToolButton", 0 );
+    blDebug ( "END TicketQToolButton::~TicketQToolButton", 0 );
 }
 
 
@@ -74,7 +74,7 @@ TicketQToolButton::~TicketQToolButton()
 **/
 void TicketQToolButton::setBoton()
 {
-    _depura ( "TicketQToolButton::setBoton", 0 );
+    blDebug ( "TicketQToolButton::setBoton", 0 );
     connect ( this, SIGNAL ( clicked() ), this, SLOT ( click() ) );
     setObjectName ( QString::fromUtf8 ( "exporta" ) );
     setStatusTip ( _ ( "Imprimir Ticket" ) );
@@ -82,7 +82,7 @@ void TicketQToolButton::setBoton()
     setMinimumSize ( QSize ( 32, 32 ) );
     setIcon ( QIcon ( g_confpr->valor ( CONF_PROGDATA ) + "icons/ticket.png"  ) );
     setIconSize ( QSize ( 22, 22 ) );
-    _depura ( "END TicketQToolButton::setBoton", 0 );
+    blDebug ( "END TicketQToolButton::setBoton", 0 );
 }
 
 
@@ -91,7 +91,7 @@ void TicketQToolButton::setBoton()
 **/
 void TicketQToolButton::click()
 {
-    _depura ( "ImpQToolButton::click", 0 );
+    blDebug ( "ImpQToolButton::click", 0 );
 
 
 
@@ -102,7 +102,7 @@ void TicketQToolButton::click()
 
         QFile file ( g_confpr->valor ( CONF_TICKET_PRINTER_FILE ) );
         if ( !file.open ( QIODevice::WriteOnly | QIODevice::Unbuffered ) ) {
-            _depura ( "Error en la Impresion de ticket", 2 );
+            blDebug ( "Error en la Impresion de ticket", 2 );
         } // end if
 
 
@@ -255,7 +255,7 @@ void TicketQToolButton::click()
 
         QFile file ( g_confpr->valor ( CONF_TICKET_PRINTER_FILE ) );
         if ( !file.open ( QIODevice::WriteOnly | QIODevice::Unbuffered ) ) {
-            _depura ( "Error en la Impresion de ticket", 2 );
+            blDebug ( "Error en la Impresion de ticket", 2 );
         } // end if
 
 
@@ -397,7 +397,7 @@ void TicketQToolButton::click()
         file.close();
     } // end if
 
-    _depura ( "END ImpQToolButton::click", 0 );
+    blDebug ( "END ImpQToolButton::click", 0 );
 }
 
 

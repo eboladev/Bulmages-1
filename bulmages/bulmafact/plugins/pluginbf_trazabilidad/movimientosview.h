@@ -40,7 +40,7 @@ public:
 
 public slots:
     virtual void cargar() {
-        _depura ( "MovimientosSubform::cargar\n", 0 );
+        blDebug ( "MovimientosSubform::cargar\n", 0 );
         QString SQLQuery = "SELECT * FROM factura";
         BlSubForm::cargar ( SQLQuery );
     }

@@ -44,7 +44,7 @@
 ClienteView::ClienteView ( BfCompany *comp, QWidget *parent )
         : BfForm ( comp, parent )
 {
-    _depura ( "ClienteView::ClienteView", 0 );
+    blDebug ( "ClienteView::ClienteView", 0 );
     setupUi ( this );
     setAttribute ( Qt::WA_DeleteOnClose );
     try {
@@ -104,7 +104,7 @@ ClienteView::ClienteView ( BfCompany *comp, QWidget *parent )
     } catch ( ... ) {
         mensajeInfo ( _ ( "Error al crear el cliente" ) );
     } // end try
-    _depura ( "END ClienteView::ClienteView", 0 );
+    blDebug ( "END ClienteView::ClienteView", 0 );
 }
 
 
@@ -114,11 +114,11 @@ ClienteView::ClienteView ( BfCompany *comp, QWidget *parent )
 **/
 ClienteView::~ClienteView()
 {
-    _depura ( "ClienteView::~ClienteView", 0 );
+    blDebug ( "ClienteView::~ClienteView", 0 );
     /// Disparamos los plugins.
     g_plugins->lanza ( "ClienteView_Des_ClienteView", this );
     mainCompany() ->sacaWindow ( this );
-    _depura ( "END ClienteView::~ClienteView", 0 );
+    blDebug ( "END ClienteView::~ClienteView", 0 );
 }
 
 
@@ -160,12 +160,12 @@ int ClienteView::guardarPost()
 **/
 int ClienteView::cargarPost ( QString idcliente )
 {
-    _depura ( "ClienteView::cargarPost", 0 );
+    blDebug ( "ClienteView::cargarPost", 0 );
 
     /// Lanzamos los plugins de carga
     g_plugins->lanza ( "ClienteView_cargarPost_Post", this );
 
-    _depura ( "END ClienteView::cargarPost", 0 );
+    blDebug ( "END ClienteView::cargarPost", 0 );
     return 0;
 }
 
@@ -177,7 +177,7 @@ int ClienteView::cargarPost ( QString idcliente )
 **/
 void ClienteView::on_mui_informe_clicked()
 {
-    _depura ( "ClienteView::on_mui_informe_clicked", 0 );
+    blDebug ( "ClienteView::on_mui_informe_clicked", 0 );
 
     if ( dbValue ( "idcliente" ).isEmpty() ) {
         mensajeInfo ( _ ( "Tiene que guardar el documento antes de poder imprimirlo." ) );
@@ -187,7 +187,7 @@ void ClienteView::on_mui_informe_clicked()
         inf.generarInforme();
     } // end if
 
-    _depura ( "END ClienteView::on_mui_informe_clicked", 0 );
+    blDebug ( "END ClienteView::on_mui_informe_clicked", 0 );
 }
 
 
@@ -197,12 +197,12 @@ void ClienteView::on_mui_informe_clicked()
 **/
 void ClienteView::on_mui_cifcliente_lostFocus()
 {
-    _depura ( "ClienteView::on_mui_cifcliente_lostFocus", 0 );
+    blDebug ( "ClienteView::on_mui_cifcliente_lostFocus", 0 );
     QChar digito;
     if ( !validarCIFNIF ( mui_cifcliente->text(), digito ) ) {
         mensajeInfo ( "Error en el CIF del cliente. Control:" + QString ( digito ) );
     } // end if
-    _depura ( "END ClienteView::on_mui_cifcliente_lostFocus", 0 );
+    blDebug ( "END ClienteView::on_mui_cifcliente_lostFocus", 0 );
 }
 
 
@@ -215,13 +215,13 @@ void ClienteView::on_mui_cifcliente_lostFocus()
 **/
 void ClienteView::activaDocumentos()
 {
-    _depura ( "ClienteView::activaDocumentos", 0 );
+    blDebug ( "ClienteView::activaDocumentos", 0 );
     mui_tab->setTabEnabled ( 2, TRUE );
     mui_tab->setTabEnabled ( 3, TRUE );
     mui_tab->setTabEnabled ( 4, TRUE );
     mui_tab->setTabEnabled ( 5, TRUE );
     mui_tab->setTabEnabled ( 6, TRUE );
-    _depura ( "END ClienteView::activaDocumentos", 0 );
+    blDebug ( "END ClienteView::activaDocumentos", 0 );
 }
 
 
@@ -231,12 +231,12 @@ void ClienteView::activaDocumentos()
 **/
 void ClienteView::desactivaDocumentos()
 {
-    _depura ( "ClienteView::desactivaDocumentos", 0 );
+    blDebug ( "ClienteView::desactivaDocumentos", 0 );
     mui_tab->setTabEnabled ( 2, FALSE );
     mui_tab->setTabEnabled ( 3, FALSE );
     mui_tab->setTabEnabled ( 4, FALSE );
     mui_tab->setTabEnabled ( 5, FALSE );
     mui_tab->setTabEnabled ( 6, FALSE );
-    _depura ( "END ClienteView::desactivaDocumentos", 0 );
+    blDebug ( "END ClienteView::desactivaDocumentos", 0 );
 }
 

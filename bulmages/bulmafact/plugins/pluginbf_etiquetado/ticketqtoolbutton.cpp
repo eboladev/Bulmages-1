@@ -39,17 +39,17 @@
 **/
 TicketQToolButton::TicketQToolButton ( AlbaranProveedorView *alb, QWidget *parent ) : QToolButton ( parent )
 {
-    _depura ( "TicketQToolButton::TicketQToolButton", 0 );
+    blDebug ( "TicketQToolButton::TicketQToolButton", 0 );
     m_albaranProveedorView = alb;
     setBoton();
-    _depura ( "END TicketQToolButton::TicketQToolButton", 0 );
+    blDebug ( "END TicketQToolButton::TicketQToolButton", 0 );
 }
 
 ///
 TicketQToolButton::~TicketQToolButton()
 {
-    _depura ( "TicketQToolButton::~TicketQToolButton", 0 );
-    _depura ( "END TicketQToolButton::~TicketQToolButton", 0 );
+    blDebug ( "TicketQToolButton::~TicketQToolButton", 0 );
+    blDebug ( "END TicketQToolButton::~TicketQToolButton", 0 );
 }
 
 
@@ -58,7 +58,7 @@ TicketQToolButton::~TicketQToolButton()
 **/
 void TicketQToolButton::setBoton()
 {
-    _depura ( "TicketQToolButton::setBoton", 0 );
+    blDebug ( "TicketQToolButton::setBoton", 0 );
     connect ( this, SIGNAL ( clicked() ), this, SLOT ( click() ) );
     setObjectName ( QString::fromUtf8 ( "exporta" ) );
     setStatusTip ( _ ( "Imprimir Etiquetas" ) );
@@ -66,7 +66,7 @@ void TicketQToolButton::setBoton()
     setMinimumSize ( QSize ( 32, 32 ) );
     setIcon ( QIcon ( g_confpr->valor ( CONF_PROGDATA ) + "icons/ticket.png" ) );
     setIconSize ( QSize ( 22, 22 ) );
-    _depura ( "END TicketQToolButton::setBoton", 0 );
+    blDebug ( "END TicketQToolButton::setBoton", 0 );
 }
 
 
@@ -75,7 +75,7 @@ void TicketQToolButton::setBoton()
 **/
 void TicketQToolButton::click()
 {
-    _depura ( "ImpQToolButton::click", 2 );
+    blDebug ( "ImpQToolButton::click", 2 );
     QString txt = "";
 
     QString archivo = g_confpr->valor ( CONF_DIR_OPENREPORTS ) + "etiquetas.rml";
@@ -145,7 +145,7 @@ void TicketQToolButton::click()
 
 
 
-    _depura ( "END ImpQToolButton::click", 0 );
+    blDebug ( "END ImpQToolButton::click", 0 );
 }
 
 

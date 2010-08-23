@@ -50,10 +50,10 @@
 **/
 GenAlbQToolButton::GenAlbQToolButton ( QWidget *fac , QWidget *parent ) : QToolButton ( parent )
 {
-    _depura ( "GenAlbQToolButton::GenAlbQToolButton", 0 );
+    blDebug ( "GenAlbQToolButton::GenAlbQToolButton", 0 );
     m_object = fac;
     setBoton();
-    _depura ( "END GenAlbQToolButton::GenAlbQToolButton", 0 );
+    blDebug ( "END GenAlbQToolButton::GenAlbQToolButton", 0 );
 }
 
 
@@ -62,8 +62,8 @@ GenAlbQToolButton::GenAlbQToolButton ( QWidget *fac , QWidget *parent ) : QToolB
 **/
 GenAlbQToolButton::~GenAlbQToolButton()
 {
-    _depura ( "GenAlbQToolButton::~GenAlbQToolButton", 0 );
-    _depura ( "END GenAlbQToolButton::~GenAlbQToolButton", 0 );
+    blDebug ( "GenAlbQToolButton::~GenAlbQToolButton", 0 );
+    blDebug ( "END GenAlbQToolButton::~GenAlbQToolButton", 0 );
 }
 
 
@@ -72,7 +72,7 @@ GenAlbQToolButton::~GenAlbQToolButton()
 **/
 void GenAlbQToolButton::setBoton()
 {
-    _depura ( "GenAlbQToolButton::setBoton", 0 );
+    blDebug ( "GenAlbQToolButton::setBoton", 0 );
     connect ( this, SIGNAL ( clicked() ), this, SLOT ( click() ) );
     setObjectName ( QString::fromUtf8 ( "exporta" ) );
     setStatusTip ( "Generar Albaran" );
@@ -82,7 +82,7 @@ void GenAlbQToolButton::setBoton()
     setIcon ( QIcon ( QString::fromUtf8 ( ":/Images/client-delivery-order-to-note.png" ) ) );
     setIconSize ( QSize ( 32, 32 ) );
     setContentsMargins ( 0, 0, 0, 0 );
-    _depura ( "END GenAlbQToolButton::setBoton", 0 );
+    blDebug ( "END GenAlbQToolButton::setBoton", 0 );
 }
 
 
@@ -91,7 +91,7 @@ void GenAlbQToolButton::setBoton()
 **/
 void GenAlbQToolButton::click()
 {
-    _depura ( "ImpQToolButton::click", 0 );
+    blDebug ( "ImpQToolButton::click", 0 );
 
     if ( m_object->objectName() == "PedidoClienteBase" ) {
         generarFactura1();
@@ -102,7 +102,7 @@ void GenAlbQToolButton::click()
     }// end if
 
 
-    _depura ( "END ImpQToolButton::click", 0 );
+    blDebug ( "END ImpQToolButton::click", 0 );
 }
 
 
@@ -117,7 +117,7 @@ void GenAlbQToolButton::click()
 **/
 void GenAlbQToolButton::generarFactura1()
 {
-    _depura ( "GenAlbQToolButton::generarFacturaProveedor1", 0 );
+    blDebug ( "GenAlbQToolButton::generarFacturaProveedor1", 0 );
 
     PedidoClienteView *fpv = ( PedidoClienteView * ) m_object;
 
@@ -230,7 +230,7 @@ void GenAlbQToolButton::generarFactura1()
     } // end try
 
 
-    _depura ( "END GenAlbQToolButton::generarFactura", 0 );
+    blDebug ( "END GenAlbQToolButton::generarFactura", 0 );
 }
 
 
@@ -249,7 +249,7 @@ void GenAlbQToolButton::generarFactura1()
 **/
 void GenAlbQToolButton::generarFactura2()
 {
-    _depura ( "GenAlbQToolButton::generarFactura2", 0 );
+    blDebug ( "GenAlbQToolButton::generarFactura2", 0 );
 
     PresupuestoView *fpv = ( PresupuestoView * ) m_object;
 
@@ -362,7 +362,7 @@ void GenAlbQToolButton::generarFactura2()
     } // end try
 
 
-    _depura ( "END GenAlbQToolButton::generarFactura", 0 );
+    blDebug ( "END GenAlbQToolButton::generarFactura", 0 );
 }
 
 

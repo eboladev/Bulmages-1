@@ -43,13 +43,13 @@
 ListZonaComercialView::ListZonaComercialView ( BfCompany *comp, QWidget *parent )
         : BfForm ( comp, parent )
 {
-    _depura ( "INIT_ListZonaComercialView::ListZonaComercialView", 0 );
+    blDebug ( "INIT_ListZonaComercialView::ListZonaComercialView", 0 );
     setAttribute ( Qt::WA_DeleteOnClose );
     setupUi ( this );
     mui_listado->setMainCompany ( comp );
     mui_listado->cargar();
     meteWindow ( windowTitle(), this );
-    _depura ( "END_ListZonaComercialView::ListZonaComercialView", 0 );
+    blDebug ( "END_ListZonaComercialView::ListZonaComercialView", 0 );
 }
 
 
@@ -58,9 +58,9 @@ ListZonaComercialView::ListZonaComercialView ( BfCompany *comp, QWidget *parent 
 **/
 ListZonaComercialView::~ListZonaComercialView()
 {
-    _depura ( "ListZonaComercialView::~ListZonaComercialView", 0 );
+    blDebug ( "ListZonaComercialView::~ListZonaComercialView", 0 );
     mainCompany() ->sacaWindow ( this );
-    _depura ( "ListZonaComercialView::~ListZonaComercialView", 0 );
+    blDebug ( "ListZonaComercialView::~ListZonaComercialView", 0 );
 }
 
 
@@ -71,12 +71,12 @@ ListZonaComercialView::~ListZonaComercialView()
 **/
 ListZonaComercialSubForm::ListZonaComercialSubForm ( QWidget *parent ) : BfSubForm ( parent )
 {
-    _depura ( "ListZonaComercialSubForm::ListZonaComercialSubForm", 0 );
+    blDebug ( "ListZonaComercialSubForm::ListZonaComercialSubForm", 0 );
     setDbTableName ( "zonacomercial" );
     setDbFieldId ( "idzonacomercial" );
     addSubFormHeader ( "idzonacomercial", BlDbField::DbInt, BlDbField::DbPrimaryKey, BlSubFormHeader::DbHideView, _ ( "ID zona comercial" ) );
     addSubFormHeader ( "nomzonacomercial", BlDbField::DbVarChar, BlDbField::DbNotNull, BlSubFormHeader::DbNone, _ ( "Nombre de la zona comercial" ) );
     setInsert ( TRUE );
-    _depura ( "END ListZonaComercialSubForm::ListZonaComercialSubForm", 0 );
+    blDebug ( "END ListZonaComercialSubForm::ListZonaComercialSubForm", 0 );
 }
 

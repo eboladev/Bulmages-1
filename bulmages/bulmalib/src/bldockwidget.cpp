@@ -39,9 +39,9 @@
 **/
 void BlDockWidget::setWorkspace ( BlWorkspace *w )
 {
-    _depura ( "BlDockWidget::setWorkspace", 0 );
+    blDebug ( "BlDockWidget::setWorkspace", 0 );
     m_pWorkspace = w;
-    _depura ( "END BlDockWidget::setWorkspace", 0 );
+    blDebug ( "END BlDockWidget::setWorkspace", 0 );
 }
 
 
@@ -51,12 +51,12 @@ void BlDockWidget::setWorkspace ( BlWorkspace *w )
 **/
 BlDockWidget::BlDockWidget ( const QString & title, QWidget * parent, const QString &name , Qt::WindowFlags flags ) : QDockWidget ( title, parent, flags )
 {
-    _depura ( "BlDockWidget::BlDockWidget", 0 );
+    blDebug ( "BlDockWidget::BlDockWidget", 0 );
     setFocusPolicy ( Qt::StrongFocus );
     m_name = name;
     setObjectName ( name );
     connect ( this, SIGNAL ( dockLocationChanged ( Qt::DockWidgetArea ) ), this, SLOT ( mi_dockLocationChanged ( Qt::DockWidgetArea ) ) );
-    _depura ( "END BlDockWidget::BlDockWidget", 0 );
+    blDebug ( "END BlDockWidget::BlDockWidget", 0 );
 }
 
 
@@ -65,9 +65,9 @@ BlDockWidget::BlDockWidget ( const QString & title, QWidget * parent, const QStr
 **/
 BlDockWidget::~BlDockWidget()
 {
-    _depura ( "BlDockWidget::~BlDockWidget", 0 );
+    blDebug ( "BlDockWidget::~BlDockWidget", 0 );
     guardaconf();
-    _depura ( "END BlDockWidget::~BlDockWidget", 0 );
+    blDebug ( "END BlDockWidget::~BlDockWidget", 0 );
 }
 
 
@@ -78,13 +78,13 @@ BlDockWidget::~BlDockWidget()
 **/
 void BlDockWidget::cambiaVisible ( bool visible )
 {
-    _depura ( "BlDockWidget::cambiaVisible", 0 );
+    blDebug ( "BlDockWidget::cambiaVisible", 0 );
     if ( visible == TRUE ) {
         this->show();
     } else {
         this->hide();
     } // end if
-    _depura ( "END BlDockWidget::cambiaVisible", 0 );
+    blDebug ( "END BlDockWidget::cambiaVisible", 0 );
 }
 
 
@@ -93,9 +93,9 @@ void BlDockWidget::cambiaVisible ( bool visible )
 **/
 void BlDockWidget::closeEvent ( QCloseEvent * )
 {
-    _depura ( "BlDockWidget::closeEvent", 0 );
+    blDebug ( "BlDockWidget::closeEvent", 0 );
     emit ( cambiaEstadoVisible ( FALSE ) );
-    _depura ( "END BlDockWidget::closeEvent", 0 );
+    blDebug ( "END BlDockWidget::closeEvent", 0 );
 }
 
 void BlDockWidget::mi_dockLocationChanged ( Qt::DockWidgetArea area )
@@ -136,7 +136,7 @@ void BlDockWidget::cargaconf()
 
 void BlDockWidget::guardaconf()
 {
-    _depura ( "BlDockWidget::guardaconf", 0 );
+    blDebug ( "BlDockWidget::guardaconf", 0 );
     /// Vamos a probar con un docwindow.
     int lwidth = width();
     int lheight = height();
@@ -151,7 +151,7 @@ void BlDockWidget::guardaconf()
         stream << lheight << "\n";
         file.close();
     } // end if
-    _depura ( "END BlDockWidget::guardaconf", 0 );
+    blDebug ( "END BlDockWidget::guardaconf", 0 );
 }
 
 

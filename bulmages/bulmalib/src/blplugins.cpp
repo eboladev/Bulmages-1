@@ -46,8 +46,8 @@ void initPlugins()
 **/
 BlPlugins::BlPlugins()
 {
-    _depura ( "BlPlugins::BlPlugins", 0 );
-    _depura ( "END BlPlugins::BlPlugins", 0 );
+    blDebug ( "BlPlugins::BlPlugins", 0 );
+    blDebug ( "END BlPlugins::BlPlugins", 0 );
 }
 
 
@@ -56,8 +56,8 @@ BlPlugins::BlPlugins()
 **/
 BlPlugins::~BlPlugins()
 {
-    _depura ( "BlPlugins::~BlPlugins", 0 );
-    _depura ( "END BlPlugins::~BlPlugins", 0 );
+    blDebug ( "BlPlugins::~BlPlugins", 0 );
+    blDebug ( "END BlPlugins::~BlPlugins", 0 );
 }
 
 
@@ -67,14 +67,14 @@ BlPlugins::~BlPlugins()
 **/
 void BlPlugins::cargaLibs ( const QString &libs )
 {
-    _depura ( "BlPlugins::cargaLibs", 0, libs );
+    blDebug ( "BlPlugins::cargaLibs", 0, libs );
 
     bool cargado = FALSE;
     /// Hacemos la carga de los plugins.
     QString cad = libs;
 
     if ( cad == "" ) {
-        _depura ( "END BlPlugins::cargaLibs", 0, cad );
+        blDebug ( "END BlPlugins::cargaLibs", 0, cad );
         return;
     } // end if
 
@@ -98,7 +98,7 @@ void BlPlugins::cargaLibs ( const QString &libs )
             mensajeInfo ( _ ("No se ha podido cargar la libreria: " ) + *it + "\n" + libErrorString );
         } // end if
     } // end for
-    _depura ( "END BlPlugins::cargaLibs", 0 );
+    blDebug ( "END BlPlugins::cargaLibs", 0 );
 }
 
 ///
@@ -109,7 +109,7 @@ void BlPlugins::cargaLibs ( const QString &libs )
 **/
 int BlPlugins::lanza ( const char *func, void *clase )
 {
-    _depura ( "BlPlugins::lanza", 0, func );
+    blDebug ( "BlPlugins::lanza", 0, func );
     int a = 0;
     for ( int i = 0; i < m_plugins.size(); ++i ) {
         myFunction = ( MyPrototype ) m_plugins.at ( i ) ->resolve ( func );
@@ -117,7 +117,7 @@ int BlPlugins::lanza ( const char *func, void *clase )
             a = myFunction ( clase );
         } // end if
     } // end for
-    _depura ( "END BlPlugins::lanza", 0 );
+    blDebug ( "END BlPlugins::lanza", 0 );
     return a;
 }
 
@@ -128,18 +128,18 @@ int BlPlugins::lanza ( const char *func, void *clase )
 **/
 int BlPlugins::lanza ( const char *func, void *clase, void **ret )
 {
-    _depura ( "BlPlugins::lanza", 0, func );
+    blDebug ( "BlPlugins::lanza", 0, func );
     int a = 0;
     for ( int i = 0; i < m_plugins.size(); ++i ) {
         myFunction1 = ( MyPrototype1 ) m_plugins.at ( i ) ->resolve ( func );
         if ( myFunction1 && a == 0 ) {
-            _depura ( "Plugins_lanza ", 0, "Encontrada una funcion correspondiente con el prototipo" );
+            blDebug ( "Plugins_lanza ", 0, "Encontrada una funcion correspondiente con el prototipo" );
             a = myFunction1 ( clase, ret );
         } else {
-            _depura ( "Plugins_lanza ", 0, "No hay funcion correspondiente con el prototipo" );
+            blDebug ( "Plugins_lanza ", 0, "No hay funcion correspondiente con el prototipo" );
         } // end if
     } // end for
-    _depura ( "END BlPlugins::lanza", 0 );
+    blDebug ( "END BlPlugins::lanza", 0 );
     return a;
 }
 
@@ -150,8 +150,8 @@ int BlPlugins::lanza ( const char *func, void *clase, void **ret )
 **/
 QList<QLibrary *> BlPlugins::pluginsLoaded()
 {
-    _depura ( "BlPlugins::pluginsLoaded", 0 );
+    blDebug ( "BlPlugins::pluginsLoaded", 0 );
     return m_plugins;
-    _depura ( "BlPlugins::pluginsLoaded", 0 );
+    blDebug ( "BlPlugins::pluginsLoaded", 0 );
 }
 

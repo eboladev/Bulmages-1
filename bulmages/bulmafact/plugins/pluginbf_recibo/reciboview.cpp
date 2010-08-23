@@ -37,7 +37,7 @@
 */
 ReciboView::ReciboView ( BfCompany *comp, QWidget *parent ) : BfForm ( comp, parent )
 {
-    _depura ( "ReciboView::ReciboView", 0 );
+    blDebug ( "ReciboView::ReciboView", 0 );
 
     setAttribute ( Qt::WA_DeleteOnClose );
 
@@ -87,28 +87,28 @@ ReciboView::ReciboView ( BfCompany *comp, QWidget *parent ) : BfForm ( comp, par
         mensajeInfo ( _ ( "Error al crear el recibo" ), this );
     } // end try
 
-    _depura ( "END ReciboView::ReciboView", 0 );
+    blDebug ( "END ReciboView::ReciboView", 0 );
 }
 
 /** No precisa acciones adicionales en el destructor.
 */
 ReciboView::~ReciboView()
 {
-    _depura ( "ReciboView::~ReciboView", 0 );
-    _depura ( "END ReciboView::~ReciboView", 0 );
+    blDebug ( "ReciboView::~ReciboView", 0 );
+    blDebug ( "END ReciboView::~ReciboView", 0 );
 }
 
 QString ReciboView::nombrePlantilla ( void )
 {
-    _depura ( "ReciboView::nombrePlantilla", 0 );
-    _depura ( "END ReciboView::nombrePlantilla", 0 );
+    blDebug ( "ReciboView::nombrePlantilla", 0 );
+    blDebug ( "END ReciboView::nombrePlantilla", 0 );
     
     return QString ( "recibod" );
 }
 
 void ReciboView::imprimir()
 {
-    _depura ( "ReciboView::imprimir", 0 );
+    blDebug ( "ReciboView::imprimir", 0 );
 
     /// Comprobamos que se disponen de los datos minimos para imprimir el recibo.
     QString SQLQuery = "";
@@ -128,34 +128,34 @@ void ReciboView::imprimir()
 
     BfForm::imprimir();
 
-    _depura ( "END ReciboView::imprimir", 0 );
+    blDebug ( "END ReciboView::imprimir", 0 );
 }
 
 int ReciboView::guardarPost()
 {
-    _depura ( "ReciboView::guardarPost", 0 );
+    blDebug ( "ReciboView::guardarPost", 0 );
 
     mui_list->setColumnValue("idrecibo", dbValue("idrecibo"));
     mui_list->guardar();
 
-    _depura ( "END ReciboView::guardarPost", 0 );
+    blDebug ( "END ReciboView::guardarPost", 0 );
     return 0;
 }
 
 int ReciboView::borrarPre()
 {
-    _depura ( "ReciboView::borrarPre", 0 );
+    blDebug ( "ReciboView::borrarPre", 0 );
 
     mainCompany()->runQuery("DELETE FROM lrecibo WHERE idrecibo = " + dbValue("idrecibo") );
 
-    _depura ( "END ReciboView::borrarPre", 0 );
+    blDebug ( "END ReciboView::borrarPre", 0 );
     
     return 0;
 }
 
 int ReciboView::cargarPost ( QString id )
 {
-    _depura ( "ReciboView::cargarPost", 0 );
+    blDebug ( "ReciboView::cargarPost", 0 );
 
     mui_list->cargar ("SELECT * FROM lrecibo WHERE idrecibo = " + id );
     
@@ -163,7 +163,7 @@ int ReciboView::cargarPost ( QString id )
     m_cantrecibo->setText(total);
     setDbValue("cantrecibo", total);
 
-    _depura ( "END ReciboView::cargarPost", 0 );
+    blDebug ( "END ReciboView::cargarPost", 0 );
     
     return 0;
 }
@@ -173,11 +173,11 @@ int ReciboView::cargarPost ( QString id )
 **/
 void ReciboView::on_mui_list_editFinish ( int, int )
 {
-    _depura ( "ReciboView::on_mui_list_editFinish", 0 );
+    blDebug ( "ReciboView::on_mui_list_editFinish", 0 );
     
     m_cantrecibo->setText(mui_list->sumarCampo("cantlrecibo").toQString());
     
-    _depura ( "END ReciboView::on_mui_list_editFinish", 0 );
+    blDebug ( "END ReciboView::on_mui_list_editFinish", 0 );
 }
 
 /// Esta funcion trabaja a muy bajo nivel ya que aprovecha una ficha cargada para hacer otra ficha.
@@ -185,7 +185,7 @@ void ReciboView::on_mui_list_editFinish ( int, int )
 **/
 void ReciboView::on_mui_reemitir_clicked (  )
 {
-    _depura ( "ReciboView::on_mui_reemitir_clicked", 0 );
+    blDebug ( "ReciboView::on_mui_reemitir_clicked", 0 );
     QString id;
 
    try {
@@ -213,13 +213,13 @@ void ReciboView::on_mui_reemitir_clicked (  )
       mensajeError("Error en la creacion del recibo");
    } // end try
 
-    _depura ( "END ReciboView::on_mui_reemitir_clicked", 0 );
+    blDebug ( "END ReciboView::on_mui_reemitir_clicked", 0 );
 }
 
 
 /// Hace la exportacion del campo a XML
 QString ReciboView::exportXML() {
-    _depura ( "ReciboView::exportXML", 0 );
+    blDebug ( "ReciboView::exportXML", 0 );
     QString val;
     int error;
     BlDbField *campo;
@@ -230,6 +230,6 @@ QString ReciboView::exportXML() {
     val += "</RECIBOVIEW>\n";
 
     return val;
-    _depura ( "END ReciboView::exportXML", 0 );
+    blDebug ( "END ReciboView::exportXML", 0 );
 }
 

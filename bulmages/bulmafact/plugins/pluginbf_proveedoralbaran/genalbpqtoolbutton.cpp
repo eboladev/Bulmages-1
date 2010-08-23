@@ -47,10 +47,10 @@
 **/
 GenAlbProQToolButton::GenAlbProQToolButton ( QWidget *fac , QWidget *parent ) : QToolButton ( parent )
 {
-    _depura ( "GenAlbProQToolButton::GenAlbProQToolButton", 0 );
+    blDebug ( "GenAlbProQToolButton::GenAlbProQToolButton", 0 );
     m_object = fac;
     setBoton();
-    _depura ( "END GenAlbProQToolButton::GenAlbProQToolButton", 0 );
+    blDebug ( "END GenAlbProQToolButton::GenAlbProQToolButton", 0 );
 }
 
 
@@ -59,8 +59,8 @@ GenAlbProQToolButton::GenAlbProQToolButton ( QWidget *fac , QWidget *parent ) : 
 **/
 GenAlbProQToolButton::~GenAlbProQToolButton()
 {
-    _depura ( "GenAlbProQToolButton::~GenAlbProQToolButton", 0 );
-    _depura ( "END GenAlbProQToolButton::~GenAlbProQToolButton", 0 );
+    blDebug ( "GenAlbProQToolButton::~GenAlbProQToolButton", 0 );
+    blDebug ( "END GenAlbProQToolButton::~GenAlbProQToolButton", 0 );
 }
 
 
@@ -69,7 +69,7 @@ GenAlbProQToolButton::~GenAlbProQToolButton()
 **/
 void GenAlbProQToolButton::setBoton()
 {
-    _depura ( "GenAlbProQToolButton::setBoton", 0 );
+    blDebug ( "GenAlbProQToolButton::setBoton", 0 );
     connect ( this, SIGNAL ( clicked() ), this, SLOT ( click() ) );
     setObjectName ( QString::fromUtf8 ( "exporta" ) );
     setStatusTip ( _("Generar Albaran Proveedor") );
@@ -79,7 +79,7 @@ void GenAlbProQToolButton::setBoton()
     setIcon ( QIcon ( QString::fromUtf8 ( ":/Images/supplier-delivery-note.png" ) ) );
     setIconSize ( QSize ( 32, 32 ) );
     setContentsMargins ( 0, 0, 0, 0 );
-    _depura ( "END GenAlbProQToolButton::setBoton", 0 );
+    blDebug ( "END GenAlbProQToolButton::setBoton", 0 );
 }
 
 
@@ -88,14 +88,14 @@ void GenAlbProQToolButton::setBoton()
 **/
 void GenAlbProQToolButton::click()
 {
-    _depura ( "ImpQToolButton::click", 0 );
+    blDebug ( "ImpQToolButton::click", 0 );
 
     if ( m_object->objectName() == "PedidoProveedorBase" ) {
 //        PedidoProveedorView *fpv = ( PedidoProveedorView * ) m_object;
         generarAlbaranProveedor();
     }// end if
 
-    _depura ( "END ImpQToolButton::click", 0 );
+    blDebug ( "END ImpQToolButton::click", 0 );
 }
 
 
@@ -110,7 +110,7 @@ void GenAlbProQToolButton::click()
 **/
 void GenAlbProQToolButton::generarAlbaranProveedor()
 {
-    _depura ( "GenAlbProQToolButton::generarAlbaranProveedor", 0 );
+    blDebug ( "GenAlbProQToolButton::generarAlbaranProveedor", 0 );
     PedidoProveedorView *fpv = ( PedidoProveedorView * ) m_object;
 
 
@@ -200,7 +200,7 @@ void GenAlbProQToolButton::generarAlbaranProveedor()
         if ( bud ) delete bud;
     } // end try
 
-    _depura ( "END GenAlbProQToolButton::generarAlbaranProveedor", 0 );
+    blDebug ( "END GenAlbProQToolButton::generarAlbaranProveedor", 0 );
 }
 
 

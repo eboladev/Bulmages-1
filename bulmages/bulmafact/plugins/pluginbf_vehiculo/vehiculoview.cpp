@@ -32,7 +32,7 @@
 VehiculoView::VehiculoView ( BfCompany *emp, QWidget *parent )
         : BfForm ( emp, parent )
 {
-    _depura ( "VehiculoView::VehiculoView", 0 );
+    blDebug ( "VehiculoView::VehiculoView", 0 );
     this->setAttribute ( Qt::WA_DeleteOnClose );
     setupUi ( this );
     mui_listadomantvehiculo->setMainCompany ( emp );
@@ -62,7 +62,7 @@ VehiculoView::VehiculoView ( BfCompany *emp, QWidget *parent )
     /// Fin de nuevas amortizaciones
     mainCompany() ->meteWindow ( windowTitle(), this );
     cargar ( "1" );
-    _depura ( "END VehiculoView::VehiculoView", 0 );
+    blDebug ( "END VehiculoView::VehiculoView", 0 );
 }
 
 
@@ -71,9 +71,9 @@ VehiculoView::VehiculoView ( BfCompany *emp, QWidget *parent )
 **/
 VehiculoView::~VehiculoView()
 {
-    _depura ( "VehiculoView::~VehiculoView", 0 );
+    blDebug ( "VehiculoView::~VehiculoView", 0 );
     mainCompany() ->sacaWindow ( this );
-    _depura ( "END VehiculoView::~VehiculoView", 0 );
+    blDebug ( "END VehiculoView::~VehiculoView", 0 );
 }
 
 
@@ -83,7 +83,7 @@ VehiculoView::~VehiculoView()
 **/
 int VehiculoView::guardar()
 {
-    _depura ( "VehiculoView::guardar", 0 );
+    blDebug ( "VehiculoView::guardar", 0 );
     try {
         setDbValue ( "matriculavehiculo", mui_matriculavehiculo->text() );
         setDbValue ( "marcavehiculo", mui_marcavehiculo->text() );
@@ -101,7 +101,7 @@ int VehiculoView::guardar()
         mensajeInfo ( _ ( "Error al guardar la ficha" ) );
         return -1;
     } // end try
-    _depura ( "END VehiculoView::guardar", 0 );
+    blDebug ( "END VehiculoView::guardar", 0 );
 }
 
 
@@ -112,7 +112,7 @@ int VehiculoView::guardar()
 **/
 int VehiculoView::cargar ( QString idvehiculo )
 {
-    _depura ( "VehiculoView::cargar", 0 );
+    blDebug ( "VehiculoView::cargar", 0 );
     try {
         BlDbRecord::cargar ( idvehiculo );
 
@@ -128,7 +128,7 @@ int VehiculoView::cargar ( QString idvehiculo )
 
         dialogChanges_cargaInicial();
         mainCompany() ->meteWindow ( windowTitle(), this );
-        _depura ( "END VehiculoView::cargar", 0 );
+        blDebug ( "END VehiculoView::cargar", 0 );
         return 0;
     } catch ( ... ) {
         mensajeInfo ( _ ( "Error al cargar los datos en la ficha." ) );

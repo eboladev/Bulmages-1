@@ -48,8 +48,8 @@ BlMainCompany *g_emp = NULL;
 **/
 MyPluginInformes::MyPluginInformes()
 {
-    _depura ( "MyPluginInformes::MyPluginInformes", 0 );
-    _depura ( "END MyPluginInformes::MyPluginInformes", 0 );
+    blDebug ( "MyPluginInformes::MyPluginInformes", 0 );
+    blDebug ( "END MyPluginInformes::MyPluginInformes", 0 );
 }
 
 
@@ -58,8 +58,8 @@ MyPluginInformes::MyPluginInformes()
 **/
 MyPluginInformes::~MyPluginInformes()
 {
-    _depura ( "MyPluginInformes::~MyPluginInformes", 0 );
-    _depura ( "END MyPluginInformes::~MyPluginInformes", 0 );
+    blDebug ( "MyPluginInformes::~MyPluginInformes", 0 );
+    blDebug ( "END MyPluginInformes::~MyPluginInformes", 0 );
 }
 
 
@@ -68,13 +68,13 @@ MyPluginInformes::~MyPluginInformes()
 **/
 void MyPluginInformes::elslot1( )
 {
-    _depura ( "MyPluginInformes::elslot", 0 );
+    blDebug ( "MyPluginInformes::elslot", 0 );
 
     BlForm *ficha = new BlForm ( g_emp, 0 );
     if ( !ficha->generaRML ( sender()->objectName() ) ) return;
     invocaPDF ( sender()->objectName().left ( sender()->objectName().size() - 4 ) );
 
-    _depura ( "END MyPluginInformes::elslot", 0 );
+    blDebug ( "END MyPluginInformes::elslot", 0 );
 }
 
 
@@ -87,7 +87,7 @@ int entryPoint ( QMainWindow *bges )
 
 int init (  )
 {
-    _depura ( "Entrada del plugin ", 0 );
+    blDebug ( "Entrada del plugin ", 0 );
 
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale ( LC_ALL, "" );
@@ -209,7 +209,7 @@ int init (  )
         menu->addAction ( accion );
     } // end for
 
-    _depura ( "Iniciado correctamente el plugin", 10 );
+    blDebug ( "Iniciado correctamente el plugin", 10 );
     return 0;
 }
 

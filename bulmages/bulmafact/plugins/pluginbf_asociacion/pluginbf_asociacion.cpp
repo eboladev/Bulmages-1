@@ -34,8 +34,8 @@
 **/
 MyPlugAsoc::MyPlugAsoc()
 {
-    _depura ( "MyPlugAsoc::MyPlugAsoc", 0 );
-    _depura ( "END MyPlugAsoc::MyPlugAsoc", 0 );
+    blDebug ( "MyPlugAsoc::MyPlugAsoc", 0 );
+    blDebug ( "END MyPlugAsoc::MyPlugAsoc", 0 );
 }
 
 
@@ -44,8 +44,8 @@ MyPlugAsoc::MyPlugAsoc()
 **/
 MyPlugAsoc::~MyPlugAsoc()
 {
-    _depura ( "MyPlugAsoc::~MyPlugAsoc", 0 );
-    _depura ( "END MyPlugAsoc::~MyPlugAsoc", 0 );
+    blDebug ( "MyPlugAsoc::~MyPlugAsoc", 0 );
+    blDebug ( "END MyPlugAsoc::~MyPlugAsoc", 0 );
 }
 
 
@@ -54,8 +54,8 @@ MyPlugAsoc::~MyPlugAsoc()
 **/
 void MyPlugAsoc::elslot()
 {
-    _depura ( "MyPlugAsoc::elslot", 0 );
-    _depura ( "END MyPlugAsoc::elslot", 0 );
+    blDebug ( "MyPlugAsoc::elslot", 0 );
+    blDebug ( "END MyPlugAsoc::elslot", 0 );
 }
 
 ///
@@ -63,11 +63,11 @@ void MyPlugAsoc::elslot()
 **/
 void MyPlugAsoc::elslot1()
 {
-    _depura ( "MyPlugAsoc::elslot1", 0 );
+    blDebug ( "MyPlugAsoc::elslot1", 0 );
     JDirectivaList * bud = new JDirectivaList ( ( BfCompany * ) mainCompany(), NULL );
     mainCompany() ->m_pWorkspace->addWindow ( bud );
     bud->show();
-    _depura ( "END MyPlugAsoc::elslot1", 0 );
+    blDebug ( "END MyPlugAsoc::elslot1", 0 );
 }
 
 
@@ -78,11 +78,11 @@ void MyPlugAsoc::elslot1()
 **/
 void MyPlugAsoc::comision()
 {
-    _depura ( "MyPlugAsoc::comision", 0 );
+    blDebug ( "MyPlugAsoc::comision", 0 );
     ComisionesList * bud = new ComisionesList ( ( BfCompany * ) mainCompany(), NULL );
     mainCompany() ->m_pWorkspace->addWindow ( bud );
     bud->show();
-    _depura ( "END MyPlugAsoc::comision", 0 );
+    blDebug ( "END MyPlugAsoc::comision", 0 );
 }
 
 
@@ -93,13 +93,13 @@ void MyPlugAsoc::comision()
 **/
 void MyPlugAsoc::convjunta()
 {
-    _depura ( "MyPlugAsoc::convjunta", 0 );
+    blDebug ( "MyPlugAsoc::convjunta", 0 );
     JDirectivaView *bud = new JDirectivaView ( ( BfCompany * ) mainCompany(), 0 );
     mainCompany() ->m_pWorkspace->addWindow ( bud );
     bud->show();
     bud->pintar();
 //     bud->junta();
-    _depura ( "END MyPlugAsoc::convjunta", 0 );
+    blDebug ( "END MyPlugAsoc::convjunta", 0 );
 }
 
 ///
@@ -107,12 +107,12 @@ void MyPlugAsoc::convjunta()
 **/
 void MyPlugAsoc::elslot2()
 {
-    _depura ( "MyPlugAsoc::elslot2", 0 );
+    blDebug ( "MyPlugAsoc::elslot2", 0 );
     ConvReunionView *bud = new ConvReunionView ( ( BfCompany * ) mainCompany(), 0 );
     mainCompany() ->m_pWorkspace->addWindow ( bud );
     bud->show();
     bud->pintar();
-    _depura ( "END MyPlugAsoc::elslot2", 0 );
+    blDebug ( "END MyPlugAsoc::elslot2", 0 );
 }
 
 
@@ -121,11 +121,11 @@ void MyPlugAsoc::elslot2()
 **/
 void MyPlugAsoc::elslot3()
 {
-    _depura ( "MyPlugAsoc::elslot2", 0 );
+    blDebug ( "MyPlugAsoc::elslot2", 0 );
     ConvReunionList * bud = new ConvReunionList ( ( BfCompany * ) mainCompany(), NULL );
     mainCompany() ->m_pWorkspace->addWindow ( bud );
     bud->show();
-    _depura ( "END MyPlugAsoc::elslot2", 0 );
+    blDebug ( "END MyPlugAsoc::elslot2", 0 );
 }
 
 ///
@@ -134,7 +134,7 @@ void MyPlugAsoc::elslot3()
 **/
 void MyPlugAsoc::inicializa ( BfBulmaFact *bges )
 {
-    _depura ( "MyPlugAsoc::inicializa", 0 );
+    blDebug ( "MyPlugAsoc::inicializa", 0 );
 
     if ( bges->company()->hasTablePrivilege ( "reunion", "SELECT" ) ) {
 
@@ -206,7 +206,7 @@ void MyPlugAsoc::inicializa ( BfBulmaFact *bges )
 
     } // end if
     
-    _depura ( "END MyPlugAsoc::inicializa", 0 );
+    blDebug ( "END MyPlugAsoc::inicializa", 0 );
 }
 
 
@@ -217,7 +217,7 @@ void MyPlugAsoc::inicializa ( BfBulmaFact *bges )
 **/
 int entryPoint ( BfBulmaFact *bges )
 {
-    _depura ( "Punto de entrada del plugin de asociaciones\n", 0 );
+    blDebug ( "Punto de entrada del plugin de asociaciones\n", 0 );
 
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale ( LC_ALL, "" );

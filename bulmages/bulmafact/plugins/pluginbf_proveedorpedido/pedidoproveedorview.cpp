@@ -43,7 +43,7 @@
 PedidoProveedorView::PedidoProveedorView ( BfCompany *comp, QWidget *parent )
         : BfForm ( comp, parent )
 {
-    _depura ( "PedidoProveedorView::PedidoProveedorView", 0 );
+    blDebug ( "PedidoProveedorView::PedidoProveedorView", 0 );
     setAttribute ( Qt::WA_DeleteOnClose );
     try {
         setupUi ( this );
@@ -99,7 +99,7 @@ PedidoProveedorView::PedidoProveedorView ( BfCompany *comp, QWidget *parent )
     } catch ( ... ) {
         mensajeInfo ( _ ( "Error al crear el pedido a proveedor" ), this );
     } // end try
-    _depura ( "END PedidoProveedorView::PedidoProveedorView", 0 );
+    blDebug ( "END PedidoProveedorView::PedidoProveedorView", 0 );
 }
 
 
@@ -108,8 +108,8 @@ PedidoProveedorView::PedidoProveedorView ( BfCompany *comp, QWidget *parent )
 **/
 PedidoProveedorView::~PedidoProveedorView()
 {
-    _depura ( "PedidoProveedorView::~PedidoProveedorView", 0 );
-    _depura ( "END PedidoProveedorView::~PedidoProveedorView", 0 );
+    blDebug ( "PedidoProveedorView::~PedidoProveedorView", 0 );
+    blDebug ( "END PedidoProveedorView::~PedidoProveedorView", 0 );
 }
 
 
@@ -124,14 +124,14 @@ PedidoProveedorView::~PedidoProveedorView()
 **/
 void PedidoProveedorView::pintatotales ( BlFixed iva, BlFixed base, BlFixed total, BlFixed desc, BlFixed irpf, BlFixed reqeq )
 {
-    _depura ( "PedidoProveedorView::pintatotales", 0 );
+    blDebug ( "PedidoProveedorView::pintatotales", 0 );
     mui_totalBaseImponible->setText ( base.toQString() );
     mui_totalImpuestos->setText ( iva.toQString() );
     mui_totalPedido->setText ( total.toQString() );
     mui_totalDescuentos->setText ( desc.toQString() );
     mui_totalIRPF->setText ( QString ( irpf.toQString() ) );
     mui_totalRecargo->setText ( QString ( reqeq.toQString() ) );
-    _depura ( "END PedidoProveedorView::pintatotales", 0 );
+    blDebug ( "END PedidoProveedorView::pintatotales", 0 );
 }
 
 
@@ -143,10 +143,10 @@ void PedidoProveedorView::pintatotales ( BlFixed iva, BlFixed base, BlFixed tota
 **/
 void PedidoProveedorView::on_mui_proveedor_valueChanged ( QString id )
 {
-    _depura ( "PedidoProveedorView::on_m_proveedor_valueChanged", 0 );
+    blDebug ( "PedidoProveedorView::on_m_proveedor_valueChanged", 0 );
     mui_lineasDetalle->setColumnValue ( "idproveedor", id );
     mui_idforma_pago->setIdProveedor ( id );
-    _depura ( "END PedidoProveedorView::on_m_proveedor_valueChanged", 0 );
+    blDebug ( "END PedidoProveedorView::on_m_proveedor_valueChanged", 0 );
 }
 
 
@@ -174,10 +174,10 @@ void PedidoProveedorView::on_mui_lineasDetalle_editFinish ( int, int )
 **/
 int PedidoProveedorView::borrarPre()
 {
-    _depura ( "PedidoProveedor::borrarPre", 0 );
+    blDebug ( "PedidoProveedor::borrarPre", 0 );
     m_listalineas->borrar();
     m_listadescuentos->borrar();
-    _depura ( "END PedidoProveedor::borrarPre", 0 );
+    blDebug ( "END PedidoProveedor::borrarPre", 0 );
     return 0;
 }
 
@@ -189,7 +189,7 @@ int PedidoProveedorView::borrarPre()
 **/
 int PedidoProveedorView::cargarPost ( QString idbudget )
 {
-    _depura ( "PedidoProveedor::cargarPost", 0 );
+    blDebug ( "PedidoProveedor::cargarPost", 0 );
 
     m_listalineas->cargar ( idbudget );
     m_listadescuentos->cargar ( idbudget );
@@ -199,7 +199,7 @@ int PedidoProveedorView::cargarPost ( QString idbudget )
 
     calculaypintatotales();
 
-    _depura ( "END PedidoProveedor::cargar", 0 );
+    blDebug ( "END PedidoProveedor::cargar", 0 );
     return 0;
 }
 
@@ -210,7 +210,7 @@ int PedidoProveedorView::cargarPost ( QString idbudget )
 **/
 int PedidoProveedorView::guardarPost()
 {
-    _depura ( "PedidoProveedor::guardar", 0 );
+    blDebug ( "PedidoProveedor::guardar", 0 );
 
     m_listalineas->setColumnValue ( "idpedidoproveedor", dbValue ( "idpedidoproveedor" ) );
     m_listadescuentos->setColumnValue ( "idpedidoproveedor", dbValue ( "idpedidoproveedor" ) );
@@ -227,7 +227,7 @@ int PedidoProveedorView::guardarPost()
 **/
 void PedidoProveedorView::imprimir()
 {
-    _depura ( "PedidoProveedor::imprimirPedidoProveedor", 0 );
+    blDebug ( "PedidoProveedor::imprimirPedidoProveedor", 0 );
     BlDbRecordSet *cur = NULL;
 
     try {
@@ -395,7 +395,7 @@ void PedidoProveedorView::imprimir()
         }
 
         invocaPDF ( "pedidoproveedor" );
-        _depura ( "PedidoProveedor::imprimirPedidoProveedor", 0 );
+        blDebug ( "PedidoProveedor::imprimirPedidoProveedor", 0 );
         return;
 
     } catch ( ... ) {

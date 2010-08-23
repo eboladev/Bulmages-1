@@ -37,8 +37,8 @@
 **/
 myplugin::myplugin()
 {
-    _depura ( "myplugin::myplugin", 0 );
-    _depura ( "END myplugin::myplugin", 0 );
+    blDebug ( "myplugin::myplugin", 0 );
+    blDebug ( "END myplugin::myplugin", 0 );
 }
 
 
@@ -47,8 +47,8 @@ myplugin::myplugin()
 **/
 myplugin::~myplugin()
 {
-    _depura ( "myplugin::~myplugin", 0 );
-    _depura ( "END myplugin::~myplugin", 0 );
+    blDebug ( "myplugin::~myplugin", 0 );
+    blDebug ( "END myplugin::~myplugin", 0 );
 }
 
 
@@ -57,11 +57,11 @@ myplugin::~myplugin()
 **/
 void myplugin::elslot()
 {
-    _depura ( "myplugin::elslot", 0 );
+    blDebug ( "myplugin::elslot", 0 );
     MovimientosView *mov = new MovimientosView ( ( BfCompany * ) mainCompany() );
     mainCompany() ->pWorkspace() ->addWindow ( mov );
     mov->show();
-    _depura ( "END myplugin::elslot", 0 );
+    blDebug ( "END myplugin::elslot", 0 );
 }
 
 
@@ -71,7 +71,7 @@ void myplugin::elslot()
 **/
 void myplugin::inicializa ( BfBulmaFact *bges )
 {
-    _depura ( "myplugin::inicializa", 0 );
+    blDebug ( "myplugin::inicializa", 0 );
     /// Creamos el men&uacute;.
     setMainCompany ( bges->company() );
     m_bulmafact = bges;
@@ -84,7 +84,7 @@ void myplugin::inicializa ( BfBulmaFact *bges )
     bges->menuMaestro->addAction ( accion );
 
     connect ( accion, SIGNAL ( activated() ), this, SLOT ( elslot() ) );
-    _depura ( "END myplugin::inicializa", 0 );
+    blDebug ( "END myplugin::inicializa", 0 );
 }
 
 
@@ -95,7 +95,7 @@ void myplugin::inicializa ( BfBulmaFact *bges )
 **/
 int entryPoint ( BfBulmaFact *bges )
 {
-    _depura ( "entryPoint", 0, "Punto de Entrada del plugin PluginTrazabilidad" );
+    blDebug ( "entryPoint", 0, "Punto de Entrada del plugin PluginTrazabilidad" );
 
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale ( LC_ALL, "" );
@@ -103,7 +103,7 @@ int entryPoint ( BfBulmaFact *bges )
 
     myplugin *plug = new myplugin();
     plug->inicializa ( bges );
-    _depura ( "END entryPoint", 0, "Punto de Entrada del plugin PluginTrazabilidad" );
+    blDebug ( "END entryPoint", 0, "Punto de Entrada del plugin PluginTrazabilidad" );
     return 0;
 }
 
@@ -115,9 +115,9 @@ int entryPoint ( BfBulmaFact *bges )
 **/
 int BfProveedorAlbaranSubForm_BfProveedorAlbaranSubForm ( BfProveedorAlbaranSubForm *subform )
 {
-    _depura ( "BfProveedorAlbaranSubForm_BfProveedorAlbaranSubForm", 0 );
+    blDebug ( "BfProveedorAlbaranSubForm_BfProveedorAlbaranSubForm", 0 );
     subform->addSubFormHeader ( "lotelalbaranp", BlDbField::DbVarChar, BlDbField::DbNothing, BlSubFormHeader::DbNone, "Lote" );
-    _depura ( "END BfProveedorAlbaranSubForm_BfProveedorAlbaranSubForm", 0 );
+    blDebug ( "END BfProveedorAlbaranSubForm_BfProveedorAlbaranSubForm", 0 );
     return 0;
 }
 
@@ -128,9 +128,9 @@ int BfProveedorAlbaranSubForm_BfProveedorAlbaranSubForm ( BfProveedorAlbaranSubF
 **/
 int BfClienteAlbaranSubForm_BfClienteAlbaranSubForm ( BfClienteAlbaranSubForm *subform )
 {
-    _depura ( "BfClienteAlbaranSubForm_BfClienteAlbaranSubForm", 0 );
+    blDebug ( "BfClienteAlbaranSubForm_BfClienteAlbaranSubForm", 0 );
     subform->addSubFormHeader ( "lotelalbaran", BlDbField::DbVarChar, BlDbField::DbNothing, BlSubFormHeader::DbNone, "Lote" );
-    _depura ( "END BfClienteAlbaranSubForm_BfClienteAlbaranSubForm", 0 );
+    blDebug ( "END BfClienteAlbaranSubForm_BfClienteAlbaranSubForm", 0 );
     return 0;
 }
 
@@ -142,9 +142,9 @@ int BfClienteAlbaranSubForm_BfClienteAlbaranSubForm ( BfClienteAlbaranSubForm *s
 **/
 int ListLinFacturaView_ListLinFacturaView ( ListLinFacturaView *subform )
 {
-    _depura ( "ListLinFacturaView_ListLinFacturaView", 0 );
+    blDebug ( "ListLinFacturaView_ListLinFacturaView", 0 );
     subform->addSubFormHeader ( "lotelfactura", BlDbField::DbVarChar, BlDbField::DbNothing, BlSubFormHeader::DbNone, "Lote" );
-    _depura ( "END ListLinFacturaView_ListLinFacturaView", 0 );
+    blDebug ( "END ListLinFacturaView_ListLinFacturaView", 0 );
     return 0;
 }
 
@@ -156,9 +156,9 @@ int ListLinFacturaView_ListLinFacturaView ( ListLinFacturaView *subform )
 **/
 int ListLinFacturaProveedorView_ListLinFacturaProveedorView ( ListLinFacturaProveedorView *subform )
 {
-    _depura ( "ListLinFacturaProveedorView_ListLinFacturaProveedorView", 0 );
+    blDebug ( "ListLinFacturaProveedorView_ListLinFacturaProveedorView", 0 );
     subform->addSubFormHeader ( "lotelfacturap", BlDbField::DbVarChar, BlDbField::DbNothing, BlSubFormHeader::DbNone, "Lote" );
-    _depura ( "END ListLinFacturaProveedorView_ListLinFacturaProveedorView", 0 );
+    blDebug ( "END ListLinFacturaProveedorView_ListLinFacturaProveedorView", 0 );
     return 0;
 }
 
@@ -169,7 +169,7 @@ int ListLinFacturaProveedorView_ListLinFacturaProveedorView ( ListLinFacturaProv
 **/
 int BfSubForm_on_mui_list_editFinished ( BfSubForm * )
 {
-    _depura ( "BfSubForm_on_mui_list_editFinished", 0 );
+    blDebug ( "BfSubForm_on_mui_list_editFinished", 0 );
 
     /*
 
@@ -204,5 +204,5 @@ int BfSubForm_on_mui_list_editFinished ( BfSubForm * )
     */
     return 0;
 
-    _depura ( "END BfSubForm_on_mui_list_editFinished", 0 );
+    blDebug ( "END BfSubForm_on_mui_list_editFinished", 0 );
 }

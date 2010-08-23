@@ -37,7 +37,7 @@ typedef QMap<QString, BlFixed> base;
 
 MTicketIVAInc::MTicketIVAInc ( BtCompany *emp, QWidget *parent ) : BlWidget ( emp, parent )
 {
-    _depura ( "MTicketIVAInc::MTicketIVAInc", 0 );
+    blDebug ( "MTicketIVAInc::MTicketIVAInc", 0 );
     setupUi ( this );
     setFocusPolicy ( Qt::NoFocus );
     emp->pWorkspace()->addWindow ( this );
@@ -50,25 +50,25 @@ MTicketIVAInc::MTicketIVAInc ( BtCompany *emp, QWidget *parent ) : BlWidget ( em
 
 
     g_plugins->lanza ( "MTicketIVAInc_MTicketIVAInc_Post", this );
-    _depura ( "END MTicketIVAInc::MTicketIVAInc", 0 );
+    blDebug ( "END MTicketIVAInc::MTicketIVAInc", 0 );
     pintar();
 }
 
 MTicketIVAInc::~MTicketIVAInc()
 {
-    _depura ( "MTicketIVAInc::~MTicketIVAInc", 0 );
-    _depura ( "END MTicketIVAInc::~MTicketIVAInc", 0 );
+    blDebug ( "MTicketIVAInc::~MTicketIVAInc", 0 );
+    blDebug ( "END MTicketIVAInc::~MTicketIVAInc", 0 );
 }
 
 void MTicketIVAInc::pintar()
 {
-    _depura ( "MTicketIVAInc::pintar", 0 );
+    blDebug ( "MTicketIVAInc::pintar", 0 );
 
     QString query;
     BlDbRecord *item;
 
     if ( g_plugins->lanza ( "MTicketIVAInc_pintar", this ) ) {
-        _depura ( "END MTicketIVAInc::pintar", 0 );
+        blDebug ( "END MTicketIVAInc::pintar", 0 );
         return;
     } // end if
 
@@ -145,7 +145,7 @@ void MTicketIVAInc::pintar()
     cursor.clearSelection();
     mui_browser->setTextCursor( cursor );
 
-    _depura ( "END MTicketIVAInc::pintar", 0 );
+    blDebug ( "END MTicketIVAInc::pintar", 0 );
 }
 
 void MTicketIVAInc::on_mui_subir_clicked()

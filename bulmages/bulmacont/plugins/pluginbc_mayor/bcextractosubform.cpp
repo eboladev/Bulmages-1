@@ -28,8 +28,8 @@
 **/
 BcExtractoSubForm::~BcExtractoSubForm()
 {
-    _depura ( "BcExtractoSubForm::~BcExtractoSubForm", 0 );
-    _depura ( "END BcExtractoSubForm::~BcExtractoSubForm", 0 );
+    blDebug ( "BcExtractoSubForm::~BcExtractoSubForm", 0 );
+    blDebug ( "END BcExtractoSubForm::~BcExtractoSubForm", 0 );
 }
 
 
@@ -39,7 +39,7 @@ BcExtractoSubForm::~BcExtractoSubForm()
 **/
 BcExtractoSubForm::BcExtractoSubForm ( QWidget *parent, const char * ) : BcSubForm ( parent )
 {
-    _depura ( "BcExtractoSubForm::BcExtractoSubForm", 0 );
+    blDebug ( "BcExtractoSubForm::BcExtractoSubForm", 0 );
     setDbTableName ( "apunte" );
     setFileConfig ( "BcExtractoSubForm" );
     setDbFieldId ( "idapunte" );
@@ -78,7 +78,7 @@ BcExtractoSubForm::BcExtractoSubForm ( QWidget *parent, const char * ) : BcSubFo
     connect ( this, SIGNAL ( pintaMenu ( QMenu * ) ), this, SLOT ( s_pintaMenu ( QMenu * ) ) );
     connect ( this, SIGNAL ( trataMenu ( QAction * ) ), this, SLOT ( s_trataMenu ( QAction * ) ) );
 
-    _depura ( "END BcExtractoSubForm::BcExtractoSubForm", 0 );
+    blDebug ( "END BcExtractoSubForm::BcExtractoSubForm", 0 );
 }
 
 
@@ -89,14 +89,14 @@ BcExtractoSubForm::BcExtractoSubForm ( QWidget *parent, const char * ) : BcSubFo
 **/
 void BcExtractoSubForm::s_pintaMenu ( QMenu *menu )
 {
-    _depura ( "BcAsientoSubForm::s_pintaMenu", 0 );
+    blDebug ( "BcAsientoSubForm::s_pintaMenu", 0 );
     menu->addSeparator();
     menu->addAction ( _ ( "Mostrar asiento" ) );
     menu->addSeparator();
     menu->addAction ( _ ( "Mostrar diario (dia)" ) );
     menu->addAction ( _ ( "Mostrar diario (mes)" ) );
     menu->addAction ( _ ( "Mostrar diario (ano)" ) );
-    _depura ( "BcAsientoSubForm::s_pintaMenu", 0 );
+    blDebug ( "BcAsientoSubForm::s_pintaMenu", 0 );
 }
 
 /// Slot que trata la activacion de un elemento en el menu contextual.
@@ -106,7 +106,7 @@ void BcExtractoSubForm::s_pintaMenu ( QMenu *menu )
 **/
 void BcExtractoSubForm::s_trataMenu ( QAction *action )
 {
-    _depura ( "BcAsientoSubForm::s_trataMenu", 0 );
+    blDebug ( "BcAsientoSubForm::s_trataMenu", 0 );
     if ( !action ) return;
     if ( action->text() == _ ( "Mostrar asiento" ) )
         boton_asiento();
@@ -116,6 +116,6 @@ void BcExtractoSubForm::s_trataMenu ( QAction *action )
         boton_diario1 ( 1 );
     if ( action->text() == _ ( "Mostrar diario (ano)" ) )
         boton_diario1 ( 2 );
-    _depura ( "END BcAsientoSubForm::s_trataMenu", 0 );
+    blDebug ( "END BcAsientoSubForm::s_trataMenu", 0 );
 }
 

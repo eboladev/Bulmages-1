@@ -43,7 +43,7 @@
 AlmacenView::AlmacenView ( BfCompany *comp, QWidget *parent )
         : BfForm ( comp, parent )
 {
-    _depura ( "AlmacenView::AlmacenView", 0 );
+    blDebug ( "AlmacenView::AlmacenView", 0 );
     setAttribute ( Qt::WA_DeleteOnClose );
     try {
         setupUi ( this );
@@ -75,7 +75,7 @@ AlmacenView::AlmacenView ( BfCompany *comp, QWidget *parent )
     } catch ( ... ) {
         mensajeInfo ( _ ( "Error al crear el almacen" ) );
     } // end try
-    _depura ( "END AlmacenView::AlmacenView", 0 );
+    blDebug ( "END AlmacenView::AlmacenView", 0 );
 }
 
 
@@ -85,8 +85,8 @@ AlmacenView::AlmacenView ( BfCompany *comp, QWidget *parent )
 **/
 AlmacenView::~AlmacenView()
 {
-    _depura ( "AlmacenView::~AlmacenView", 0 );
-    _depura ( "END AlmacenView::~AlmacenView", 0 );
+    blDebug ( "AlmacenView::~AlmacenView", 0 );
+    blDebug ( "END AlmacenView::~AlmacenView", 0 );
 }
 
 

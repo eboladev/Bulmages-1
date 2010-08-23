@@ -34,10 +34,10 @@
 correctorwidget::correctorwidget ( QWidget* parent, Qt::WFlags fl )
         : BlWidget ( parent, fl )
 {
-    _depura ( "correctorwidget::correctorwidget", 0 );
+    blDebug ( "correctorwidget::correctorwidget", 0 );
     setupUi ( this );
     QObject::connect ( mui_browser, SIGNAL ( anchorClicked ( const QUrl ) ), this, SLOT ( alink ( const QUrl ) ) );
-    _depura ( "END correctorwidget::correctorwidget", 0 );
+    blDebug ( "END correctorwidget::correctorwidget", 0 );
 }
 
 
@@ -46,8 +46,8 @@ correctorwidget::correctorwidget ( QWidget* parent, Qt::WFlags fl )
 **/
 correctorwidget::~correctorwidget()
 {
-    _depura ( "correctorwidget::~correctorwidget", 0 );
-    _depura ( "END correctorwidget::~correctorwidget", 0 );
+    blDebug ( "correctorwidget::~correctorwidget", 0 );
+    blDebug ( "END correctorwidget::~correctorwidget", 0 );
 }
 
 
@@ -57,11 +57,11 @@ correctorwidget::~correctorwidget()
 **/
 void correctorwidget::on_mui_configurar_clicked()
 {
-    _depura ( "correctorwidget::on_mui_configurar_clicked", 0 );
+    blDebug ( "correctorwidget::on_mui_configurar_clicked", 0 );
     confreglasview *conf = new confreglasview();
     conf->exec();
     delete conf;
-    _depura ( "END correctorwidget::on_mui_configurar_clicked", 0 );
+    blDebug ( "END correctorwidget::on_mui_configurar_clicked", 0 );
 }
 
 
@@ -72,7 +72,7 @@ void correctorwidget::on_mui_configurar_clicked()
 **/
 void correctorwidget::on_mui_corregir_clicked()
 {
-    _depura ( "correctorwidget::on_mui_corregir_clicked", 0 );
+    blDebug ( "correctorwidget::on_mui_corregir_clicked", 0 );
     textBrowser = "<HTML><BODY BGCOLOR='#FFFFFF'>";
     QString cadena;
 
@@ -131,7 +131,7 @@ void correctorwidget::on_mui_corregir_clicked()
 
     textBrowser += "</BODY></HTML>";
     mui_browser->setHtml ( textBrowser );
-    _depura ( "END correctorwidget::on_mui_corregir_clicked", 0 );
+    blDebug ( "END correctorwidget::on_mui_corregir_clicked", 0 );
 }
 
 
@@ -141,9 +141,9 @@ void correctorwidget::on_mui_corregir_clicked()
 **/
 void correctorwidget::setMensaje ( QString mensaje )
 {
-    _depura ( "correctorwidget::setMensaje", 0 );
+    blDebug ( "correctorwidget::setMensaje", 0 );
     mui_browser->setHtml ( mensaje );
-    _depura ( "END correctorwidget::setMensaje", 0 );
+    blDebug ( "END correctorwidget::setMensaje", 0 );
 }
 
 
@@ -158,7 +158,7 @@ void correctorwidget::setMensaje ( QString mensaje )
 **/
 void correctorwidget::alink ( const QUrl &url )
 {
-    _depura ( "correctorwidget::alinke", 0 );
+    blDebug ( "correctorwidget::alinke", 0 );
     QString linker = url.fragment();
     QStringList list = linker.split ( "=" );
     if ( list[0] == "idcliente" ) {
@@ -204,7 +204,7 @@ void correctorwidget::alink ( const QUrl &url )
         ( ( BfCompany * ) mainCompany() ) ->m_pWorkspace->addWindow ( prov );
         prov->show();
     }// end if
-    _depura ( "END correctorwidget::alinke", 0 );
+    blDebug ( "END correctorwidget::alinke", 0 );
 }
 
 
@@ -218,9 +218,9 @@ void correctorwidget::alink ( const QUrl &url )
 **/
 void correctorwidget::agregarError ( QString texto, QString texto1, QString texto2 )
 {
-    _depura ( "correctorwidget::agregarError", 0 );
+    blDebug ( "correctorwidget::agregarError", 0 );
     textBrowser += "<HR><table><tr><td colspan=2>" + texto + "</td></tr><tr><td><a name='masinfo' href='#" + texto1 + "'>+ info</a></td><td><a name='" + texto1 + "' href='#" + texto2 + "'>ver error</a></td></tr></table>";
-    _depura ( "END correctorwidget::agregarError", 0 );
+    blDebug ( "END correctorwidget::agregarError", 0 );
 }
 
 
@@ -230,7 +230,7 @@ void correctorwidget::agregarError ( QString texto, QString texto1, QString text
 **/
 void correctorwidget::cambia ( bool a )
 {
-    _depura ( "correctorwidget::cambia", 0 );
+    blDebug ( "correctorwidget::cambia", 0 );
     if ( a ) {
         dock->hide();
         dock->show();
@@ -238,6 +238,6 @@ void correctorwidget::cambia ( bool a )
     } else {
         dock->hide();
     } // end if
-    _depura ( "END correctorwidget::cambia", 0 );
+    blDebug ( "END correctorwidget::cambia", 0 );
 }
 

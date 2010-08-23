@@ -11,7 +11,7 @@
 ProveedorCuenta::ProveedorCuenta (QWidget *parent) : QWidget(parent)
 {
 
-    _depura ( "ProveedorCuenta::ProveedorCuenta", 1 );
+    blDebug ( "ProveedorCuenta::ProveedorCuenta", 1 );
 
     m_proveedorview = (ProveedorView *) parent;
 
@@ -43,7 +43,7 @@ ProveedorCuenta::ProveedorCuenta (QWidget *parent) : QWidget(parent)
     frame->setMinimumHeight(70);
     
     
-    _depura ( "END ProveedorCuenta::ProveedorCuenta", 1 );
+    blDebug ( "END ProveedorCuenta::ProveedorCuenta", 1 );
 
 }
 
@@ -53,8 +53,8 @@ ProveedorCuenta::ProveedorCuenta (QWidget *parent) : QWidget(parent)
 **/
 ProveedorCuenta::~ProveedorCuenta()
 {
-    _depura ( "ProveedorCuenta::~ProveedorCuenta", 0 );
-    _depura ( "END ProveedorCuenta::~ProveedorCuenta", 0 );
+    blDebug ( "ProveedorCuenta::~ProveedorCuenta", 0 );
+    blDebug ( "END ProveedorCuenta::~ProveedorCuenta", 0 );
 }
 
 

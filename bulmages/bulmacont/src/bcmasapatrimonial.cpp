@@ -34,7 +34,7 @@
 BcMasaPatrimonialView::BcMasaPatrimonialView ( BcCompany *emp, QWidget *parent, Qt::WFlags fl )
         : QDialog ( parent, fl ), BlMainCompanyPointer ( emp )
 {
-    _depura ( "BcMasaPatrimonialView::BcMasaPatrimonialView", 0 );
+    blDebug ( "BcMasaPatrimonialView::BcMasaPatrimonialView", 0 );
     setupUi ( this );
     idmpatrimonial = "";
 
@@ -45,7 +45,7 @@ BcMasaPatrimonialView::BcMasaPatrimonialView ( BcCompany *emp, QWidget *parent, 
     etiquetas << _ ( "identificador" ) << _ ( "codigo" ) << _ ( "descripcion" ) << _ ( "tipo" );
     componentessuma->setHorizontalHeaderLabels ( etiquetas );
     componentesresta->setHorizontalHeaderLabels ( etiquetas );
-    _depura ( "END BcMasaPatrimonialView::BcMasaPatrimonialView", 0 );
+    blDebug ( "END BcMasaPatrimonialView::BcMasaPatrimonialView", 0 );
 }
 
 
@@ -54,8 +54,8 @@ BcMasaPatrimonialView::BcMasaPatrimonialView ( BcCompany *emp, QWidget *parent, 
 **/
 BcMasaPatrimonialView::~BcMasaPatrimonialView()
 {
-    _depura ( "BcMasaPatrimonialView::~BcMasaPatrimonialView", 0 );
-    _depura ( "END BcMasaPatrimonialView::~BcMasaPatrimonialView", 0 );
+    blDebug ( "BcMasaPatrimonialView::~BcMasaPatrimonialView", 0 );
+    blDebug ( "END BcMasaPatrimonialView::~BcMasaPatrimonialView", 0 );
 }
 
 
@@ -65,8 +65,8 @@ BcMasaPatrimonialView::~BcMasaPatrimonialView()
 **/
 QString BcMasaPatrimonialView::getidmasa()
 {
-    _depura ( "BcMasaPatrimonialView::getidmasa", 0 );
-    _depura ( "END BcMasaPatrimonialView::getidmasa", 0 );
+    blDebug ( "BcMasaPatrimonialView::getidmasa", 0 );
+    blDebug ( "END BcMasaPatrimonialView::getidmasa", 0 );
     return idmpatrimonial;
 }
 
@@ -77,7 +77,7 @@ QString BcMasaPatrimonialView::getidmasa()
 **/
 void BcMasaPatrimonialView::inicializa1 ( QString idmpatrimonial1 )
 {
-    _depura ( "BcMasaPatrimonialView::inicializa1", 0 );
+    blDebug ( "BcMasaPatrimonialView::inicializa1", 0 );
     QTableWidgetItem *it0, *it1, *it2, *it3;
     int i = 0;
     idmpatrimonial = idmpatrimonial1;
@@ -174,7 +174,7 @@ void BcMasaPatrimonialView::inicializa1 ( QString idmpatrimonial1 )
         cursoraux->nextRecord();
     } // end while
     delete cursoraux;
-    _depura ( "BcMasaPatrimonialView::inicializa1", 0 );
+    blDebug ( "BcMasaPatrimonialView::inicializa1", 0 );
 }
 
 
@@ -184,7 +184,7 @@ void BcMasaPatrimonialView::inicializa1 ( QString idmpatrimonial1 )
 **/
 void BcMasaPatrimonialView::on_mui_nuevasuma_clicked()
 {
-    _depura ( "BcMasaPatrimonialView::on_mui_nuevasuma_clicked", 0 );
+    blDebug ( "BcMasaPatrimonialView::on_mui_nuevasuma_clicked", 0 );
     QTableWidgetItem *it0, *it1, *it2, *it3;
     int i;
 
@@ -232,7 +232,7 @@ void BcMasaPatrimonialView::on_mui_nuevasuma_clicked()
         i++;
         cursoraux1->nextRecord();
     } // end while
-    _depura ( "END BcMasaPatrimonialView::on_mui_nuevasuma_clicked", 0 );
+    blDebug ( "END BcMasaPatrimonialView::on_mui_nuevasuma_clicked", 0 );
 }
 
 
@@ -241,9 +241,9 @@ void BcMasaPatrimonialView::on_mui_nuevasuma_clicked()
 **/
 void BcMasaPatrimonialView::on_mui_borrasuma_clicked()
 {
-    _depura ( "BcMasaPatrimonialView::on_mui_nuevasuma_clicked", 0 );
+    blDebug ( "BcMasaPatrimonialView::on_mui_nuevasuma_clicked", 0 );
     componentessuma->removeRow ( componentessuma->currentRow() );
-    _depura ( "END BcMasaPatrimonialView::on_mui_borrasuma_clicked", 0 );
+    blDebug ( "END BcMasaPatrimonialView::on_mui_borrasuma_clicked", 0 );
 }
 
 
@@ -253,7 +253,7 @@ void BcMasaPatrimonialView::on_mui_borrasuma_clicked()
 **/
 void BcMasaPatrimonialView::on_mui_nuevaresta_clicked()
 {
-    _depura ( "BcMasaPatrimonialView::on_mui_nuevaresta_clicked", 0 );
+    blDebug ( "BcMasaPatrimonialView::on_mui_nuevaresta_clicked", 0 );
     QTableWidgetItem *it0, *it1, *it2, *it3;
     int i;
 
@@ -301,7 +301,7 @@ void BcMasaPatrimonialView::on_mui_nuevaresta_clicked()
         i++;
         cursoraux1->nextRecord();
     } // end while
-    _depura ( "END BcMasaPatrimonialView::on_mui_nuevaresta_clicked", 0 );
+    blDebug ( "END BcMasaPatrimonialView::on_mui_nuevaresta_clicked", 0 );
 }
 
 
@@ -310,9 +310,9 @@ void BcMasaPatrimonialView::on_mui_nuevaresta_clicked()
 **/
 void BcMasaPatrimonialView::on_mui_borraresta_clicked()
 {
-    _depura ( "BcMasaPatrimonialView::on_mui_borraresta_clicked", 0 );
+    blDebug ( "BcMasaPatrimonialView::on_mui_borraresta_clicked", 0 );
     componentesresta->removeRow ( componentesresta->currentRow() );
-    _depura ( "END BcMasaPatrimonialView::on_mui_borraresta_clicked", 0 );
+    blDebug ( "END BcMasaPatrimonialView::on_mui_borraresta_clicked", 0 );
 }
 
 
@@ -321,14 +321,14 @@ void BcMasaPatrimonialView::on_mui_borraresta_clicked()
 **/
 void BcMasaPatrimonialView::on_mui_buscampatrimonial_clicked()
 {
-    _depura ( "BcMasaPatrimonialView::on_mui_buscampatrimonial_clicked", 0 );
+    blDebug ( "BcMasaPatrimonialView::on_mui_buscampatrimonial_clicked", 0 );
     BcMasaPatrimonialListView *nuevae = new BcMasaPatrimonialListView ( ( BcCompany * ) mainCompany(), 0 );
     nuevae->inicializa();
     nuevae->setmodoselector();
     nuevae->exec();
     mpatrimonial->setText ( nuevae->getidmasa() );
     delete nuevae;
-    _depura ( "END BcMasaPatrimonialView::on_mui_buscampatrimonial_clicked", 0 );
+    blDebug ( "END BcMasaPatrimonialView::on_mui_buscampatrimonial_clicked", 0 );
 }
 
 
@@ -337,9 +337,9 @@ void BcMasaPatrimonialView::on_mui_buscampatrimonial_clicked()
 **/
 void BcMasaPatrimonialView::on_mui_cancelar_clicked()
 {
-    _depura ( "BcMasaPatrimonialView::on_mui_cancelar_clicked", 0 );
+    blDebug ( "BcMasaPatrimonialView::on_mui_cancelar_clicked", 0 );
     close();
-    _depura ( "END BcMasaPatrimonialView::on_mui_cancelar_clicked", 0 );
+    blDebug ( "END BcMasaPatrimonialView::on_mui_cancelar_clicked", 0 );
 }
 
 
@@ -348,7 +348,7 @@ void BcMasaPatrimonialView::on_mui_cancelar_clicked()
 **/
 void BcMasaPatrimonialView::on_mui_aceptar_clicked()
 {
-    _depura ( "BcMasaPatrimonialView::on_mui_aceptar_clicked", 0 );
+    blDebug ( "BcMasaPatrimonialView::on_mui_aceptar_clicked", 0 );
     int i;
     QString query;
 
@@ -403,7 +403,7 @@ void BcMasaPatrimonialView::on_mui_aceptar_clicked()
         mainCompany() ->runQuery ( query );
     } // end for
     close();
-    _depura ( "END BcMasaPatrimonialView::on_mui_aceptar_clicked", 0 );
+    blDebug ( "END BcMasaPatrimonialView::on_mui_aceptar_clicked", 0 );
 }
 
 
@@ -413,8 +413,8 @@ void BcMasaPatrimonialView::on_mui_aceptar_clicked()
 **/
 QString BcMasaPatrimonialView::getnommasa()
 {
-    _depura ( "BcMasaPatrimonialView::getnommasa", 0 );
-    _depura ( "END BcMasaPatrimonialView::getnommasa", 0 );
+    blDebug ( "BcMasaPatrimonialView::getnommasa", 0 );
+    blDebug ( "END BcMasaPatrimonialView::getnommasa", 0 );
     return descmpatrimonial->text().toAscii();
 }
 

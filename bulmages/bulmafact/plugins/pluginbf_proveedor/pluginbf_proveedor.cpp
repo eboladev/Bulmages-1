@@ -35,8 +35,8 @@ ProveedorList *g_providersList = NULL;
 **/
 MyPlugPro::MyPlugPro()
 {
-    _depura ( "MyPlugPro::MyPlugPro", 0 );
-    _depura ( "END MyPlugPro::MyPlugPro", 0 );
+    blDebug ( "MyPlugPro::MyPlugPro", 0 );
+    blDebug ( "END MyPlugPro::MyPlugPro", 0 );
 }
 
 
@@ -45,8 +45,8 @@ MyPlugPro::MyPlugPro()
 **/
 MyPlugPro::~MyPlugPro()
 {
-    _depura ( "MyPlugPro::~MyPlugPro", 0 );
-    _depura ( "END MyPlugPro::~MyPlugPro", 0 );
+    blDebug ( "MyPlugPro::~MyPlugPro", 0 );
+    blDebug ( "END MyPlugPro::~MyPlugPro", 0 );
 }
 
 
@@ -55,12 +55,12 @@ MyPlugPro::~MyPlugPro()
 **/
 void MyPlugPro::elslot()
 {
-    _depura ( "MyPlugPro::elslot", 0 );
+    blDebug ( "MyPlugPro::elslot", 0 );
     if ( g_providersList ) {
         g_providersList->hide();
         g_providersList->show();
     }// end if
-    _depura ( "END MyPlugPro::elslot", 0 );
+    blDebug ( "END MyPlugPro::elslot", 0 );
 }
 
 ///
@@ -68,11 +68,11 @@ void MyPlugPro::elslot()
 **/
 void MyPlugPro::elslot1()
 {
-    _depura ( "MyPlugPro::elslot1", 0 );
+    blDebug ( "MyPlugPro::elslot1", 0 );
     ProveedorView * bud = new ProveedorView ( ( BfCompany * ) mainCompany(), NULL );
     mainCompany() ->m_pWorkspace->addWindow ( bud );
     bud->show();
-    _depura ( "END MyPlugPro::elslot1", 0 );
+    blDebug ( "END MyPlugPro::elslot1", 0 );
 }
 
 
@@ -83,7 +83,7 @@ void MyPlugPro::elslot1()
 **/
 void MyPlugPro::inicializa ( BfBulmaFact *bges )
 {
-    _depura ( "MyPlugPro::inicializa", 0 );
+    blDebug ( "MyPlugPro::inicializa", 0 );
 
     if ( bges->company()->hasTablePrivilege ( "proveedor", "SELECT" ) ) {
 
@@ -110,7 +110,7 @@ void MyPlugPro::inicializa ( BfBulmaFact *bges )
         connect ( npago, SIGNAL ( activated() ), this, SLOT ( elslot1() ) );
 
     }// end if
-    _depura ( "END MyPlugPro::inicializa", 0 );
+    blDebug ( "END MyPlugPro::inicializa", 0 );
 }
 
 
@@ -122,7 +122,7 @@ void MyPlugPro::inicializa ( BfBulmaFact *bges )
 **/
 int entryPoint ( BfBulmaFact *bges )
 {
-    _depura ( "Punto de Entrada del plugin de proveedores\n", 0 );
+    blDebug ( "Punto de Entrada del plugin de proveedores\n", 0 );
 
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale ( LC_ALL, "" );

@@ -52,7 +52,7 @@
 BcAsientoInteligenteView::BcAsientoInteligenteView ( BcCompany *emp, QWidget *parent )
         : BcForm ( emp, parent )
 {
-    _depura ( "BcAsientoInteligenteView::BcAsientoInteligenteView", 0 );
+    blDebug ( "BcAsientoInteligenteView::BcAsientoInteligenteView", 0 );
     setAttribute ( Qt::WA_DeleteOnClose );
     setupUi ( this );
 
@@ -74,7 +74,7 @@ BcAsientoInteligenteView::BcAsientoInteligenteView ( BcCompany *emp, QWidget *pa
     mainCompany() ->meteWindow ( windowTitle(), this );
     setmodo ( 0 );
     g_asiento->mui_inteligente->setDisabled ( TRUE );
-    _depura ( "END BcAsientoInteligenteView::BcAsientoInteligenteView", 0 );
+    blDebug ( "END BcAsientoInteligenteView::BcAsientoInteligenteView", 0 );
 }
 
 
@@ -83,11 +83,11 @@ BcAsientoInteligenteView::BcAsientoInteligenteView ( BcCompany *emp, QWidget *pa
 **/
 BcAsientoInteligenteView::~BcAsientoInteligenteView()
 {
-    _depura ( "BcAsientoInteligenteView::~BcAsientoInteligenteView", 0 );
+    blDebug ( "BcAsientoInteligenteView::~BcAsientoInteligenteView", 0 );
     borrawidgets();
     mainCompany() ->sacaWindow ( this );
     g_asiento->mui_inteligente->setEnabled ( TRUE );
-    _depura ( "END BcAsientoInteligenteView::~BcAsientoInteligenteView", 0 );
+    blDebug ( "END BcAsientoInteligenteView::~BcAsientoInteligenteView", 0 );
 }
 
 
@@ -97,7 +97,7 @@ BcAsientoInteligenteView::~BcAsientoInteligenteView()
 **/
 void BcAsientoInteligenteView::inicializa ( int idasiento )
 {
-    _depura ( "BcAsientoInteligenteView::inicializa", 0 );
+    blDebug ( "BcAsientoInteligenteView::inicializa", 0 );
     numasiento = idasiento;
     inicializavariables();
 
@@ -131,7 +131,7 @@ void BcAsientoInteligenteView::inicializa ( int idasiento )
 
         on_mui_comboainteligentes_activated ( 0 );
     }
-    _depura ( "END BcAsientoInteligenteView::inicializa", 0 );
+    blDebug ( "END BcAsientoInteligenteView::inicializa", 0 );
 }
 
 
@@ -141,7 +141,7 @@ void BcAsientoInteligenteView::inicializa ( int idasiento )
 **/
 void BcAsientoInteligenteView::inicializavariables()
 {
-    _depura ( "BcAsientoInteligenteView::inicializavariables", 0 );
+    blDebug ( "BcAsientoInteligenteView::inicializavariables", 0 );
     QString subcadena;
     QString buffer;
     QDate fecha;
@@ -163,7 +163,7 @@ void BcAsientoInteligenteView::inicializavariables()
     } // end if
     delete cur;
     indvariablespredefinidas = 2;
-    _depura ( "END BcAsientoInteligenteView::inicializavariables", 0 );
+    blDebug ( "END BcAsientoInteligenteView::inicializavariables", 0 );
 }
 
 
@@ -176,7 +176,7 @@ void BcAsientoInteligenteView::inicializavariables()
 **/
 void BcAsientoInteligenteView::cifcuenta ( int idcuenta )
 {
-    _depura ( "BcAsientoInteligenteView::cifcuenta", 0 );
+    blDebug ( "BcAsientoInteligenteView::cifcuenta", 0 );
     QString query;
     query.sprintf ( "SELECT * FROM cuenta WHERE idcuenta = %d", idcuenta );
     mainCompany() ->begin();
@@ -188,7 +188,7 @@ void BcAsientoInteligenteView::cifcuenta ( int idcuenta )
         variablesapunte[VAR_APUNT_CIFCUENTA][1] = "";
     } // end if
     delete cur;
-    _depura ( "END BcAsientoInteligenteView::cifcuenta", 0 );
+    blDebug ( "END BcAsientoInteligenteView::cifcuenta", 0 );
 }
 
 
@@ -197,11 +197,11 @@ void BcAsientoInteligenteView::cifcuenta ( int idcuenta )
 **/
 void BcAsientoInteligenteView::eturn_cta()
 {
-    _depura ( "BcAsientoInteligenteView::eturn_cta", 0 );
+    blDebug ( "BcAsientoInteligenteView::eturn_cta", 0 );
     BlSearchWidget *numero;
     numero = ( BlSearchWidget * ) sender();
     selectsiguiente ( numero );
-    _depura ( "END BcAsientoInteligenteView::eturn_cta", 0 );
+    blDebug ( "END BcAsientoInteligenteView::eturn_cta", 0 );
 }
 
 ///
@@ -209,11 +209,11 @@ void BcAsientoInteligenteView::eturn_cta()
 **/
 void BcAsientoInteligenteView::eturn_fecha()
 {
-    _depura ( "BcAsientoInteligenteView::eturn_fecha", 0 );
+    blDebug ( "BcAsientoInteligenteView::eturn_fecha", 0 );
     BlDateSearch *numero;
     numero = ( BlDateSearch * ) sender();
     selectsiguiente ( numero );
-    _depura ( "END BcAsientoInteligenteView::eturn_fecha", 0 );
+    blDebug ( "END BcAsientoInteligenteView::eturn_fecha", 0 );
 }
 
 ///
@@ -221,11 +221,11 @@ void BcAsientoInteligenteView::eturn_fecha()
 **/
 void BcAsientoInteligenteView::eturn_numero()
 {
-    _depura ( "BcAsientoInteligenteView::eturn_numero", 0 );
+    blDebug ( "BcAsientoInteligenteView::eturn_numero", 0 );
     QLineEdit *numero;
     numero = ( QLineEdit * ) sender();
     selectsiguiente ( numero );
-    _depura ( "END BcAsientoInteligenteView::eturn_numero", 0 );
+    blDebug ( "END BcAsientoInteligenteView::eturn_numero", 0 );
 }
 
 
@@ -234,11 +234,11 @@ void BcAsientoInteligenteView::eturn_numero()
 **/
 void BcAsientoInteligenteView::eturn_texto()
 {
-    _depura ( "BcAsientoInteligenteView::eturn_texto", 0 );
+    blDebug ( "BcAsientoInteligenteView::eturn_texto", 0 );
     QLineEdit *texto;
     texto = ( QLineEdit * ) sender();
     selectsiguiente ( texto );
-    _depura ( "END BcAsientoInteligenteView::eturn_texto", 0 );
+    blDebug ( "END BcAsientoInteligenteView::eturn_texto", 0 );
 }
 
 
@@ -248,9 +248,9 @@ void BcAsientoInteligenteView::eturn_texto()
 **/
 void BcAsientoInteligenteView::on_mui_comboainteligentes_activated ( int )
 {
-    _depura ( "BcAsientoInteligenteView::on_mui_comboainteligentes_activated", 0 );
+    blDebug ( "BcAsientoInteligenteView::on_mui_comboainteligentes_activated", 0 );
     mostrarplantilla();
-    _depura ( "END BcAsientoInteligenteView::on_mui_comboainteligentes_activated", 0 );
+    blDebug ( "END BcAsientoInteligenteView::on_mui_comboainteligentes_activated", 0 );
 }
 
 
@@ -262,12 +262,12 @@ void BcAsientoInteligenteView::on_mui_comboainteligentes_activated ( int )
 **/
 void BcAsientoInteligenteView::muestraplantilla ( QString plantilla )
 {
-    _depura ( "BcAsientoInteligenteView::muestraplantilla", 0 );
+    blDebug ( "BcAsientoInteligenteView::muestraplantilla", 0 );
     int i = mui_comboainteligentes->findText ( plantilla );
     if ( i >= 0 )
         mui_comboainteligentes->setCurrentIndex ( i );
     mostrarplantilla();
-    _depura ( "BcAsientoInteligenteView::muestraplantilla", 0 );
+    blDebug ( "BcAsientoInteligenteView::muestraplantilla", 0 );
 }
 
 
@@ -276,7 +276,7 @@ void BcAsientoInteligenteView::muestraplantilla ( QString plantilla )
 **/
 void BcAsientoInteligenteView::on_mui_aceptar_clicked()
 {
-    _depura ( "BcAsientoInteligenteView::on_mui_aceptar_clicked", 0 );
+    blDebug ( "BcAsientoInteligenteView::on_mui_aceptar_clicked", 0 );
     try {
 
 
@@ -321,7 +321,7 @@ void BcAsientoInteligenteView::on_mui_aceptar_clicked()
     } catch ( ... ) {
         mensajeInfo ( "Fue imposible crear el asiento" );
     } /// end try
-    _depura ( "END BcAsientoInteligenteView::on_mui_aceptar_clicked", 0 );
+    blDebug ( "END BcAsientoInteligenteView::on_mui_aceptar_clicked", 0 );
 }
 
 
@@ -334,7 +334,7 @@ void BcAsientoInteligenteView::on_mui_aceptar_clicked()
 **/
 void BcAsientoInteligenteView::mostrarplantilla()
 {
-    _depura ( "BcAsientoInteligenteView::mostrarplantilla", 0 );
+    blDebug ( "BcAsientoInteligenteView::mostrarplantilla", 0 );
     QString query;
     int inc = 30;
     QString cadena;
@@ -487,7 +487,7 @@ void BcAsientoInteligenteView::mostrarplantilla()
             inc += 32;
         } // end for
     }
-    _depura ( "END BcAsientoInteligenteView::mostrarplantilla", 0 );
+    blDebug ( "END BcAsientoInteligenteView::mostrarplantilla", 0 );
 }
 
 
@@ -501,7 +501,7 @@ void BcAsientoInteligenteView::mostrarplantilla()
 **/
 void BcAsientoInteligenteView::setvalores ( QString var, QString val )
 {
-    _depura ( "BcAsientoInteligenteView::setvalores", 0 );
+    blDebug ( "BcAsientoInteligenteView::setvalores", 0 );
     for ( int i = 0;i < indvariablescta; i++ ) {
         if ( variablescta[i][0] == var ) {
             varcta[i]->setText ( val );
@@ -522,7 +522,7 @@ void BcAsientoInteligenteView::setvalores ( QString var, QString val )
             vartexto[i]->setText ( val );
         } // end if
     } // end for
-    _depura ( "END BcAsientoInteligenteView::setvalores", 0 );
+    blDebug ( "END BcAsientoInteligenteView::setvalores", 0 );
 }
 
 
@@ -532,7 +532,7 @@ void BcAsientoInteligenteView::setvalores ( QString var, QString val )
 **/
 void BcAsientoInteligenteView::recogevalores()
 {
-    _depura ( "BcAsientoInteligenteView::recogevalores", 0 );
+    blDebug ( "BcAsientoInteligenteView::recogevalores", 0 );
     int i;
     for ( i = 0; i < indvariablestexto; i++ ) {
         variablestexto[i][1] = vartexto[i]->text();
@@ -552,7 +552,7 @@ void BcAsientoInteligenteView::recogevalores()
         if ( variablescta[i][1].isEmpty() )
             throw - 1;
     } // end for
-    _depura ( "END BcAsientoInteligenteView::recogevalores", 0 );
+    blDebug ( "END BcAsientoInteligenteView::recogevalores", 0 );
 }
 
 
@@ -563,7 +563,7 @@ void BcAsientoInteligenteView::recogevalores()
 **/
 void BcAsientoInteligenteView::creaasiento()
 {
-    _depura ( "BcAsientoInteligenteView::creaasiento", 0 );
+    blDebug ( "BcAsientoInteligenteView::creaasiento", 0 );
     QString codcuenta;
     QString contrapartida;
     QString debe;
@@ -622,7 +622,7 @@ void BcAsientoInteligenteView::creaasiento()
         mainCompany() ->rollback();
         return;
     } // end try
-    _depura ( "END BcAsientoInteligenteView::creaasiento", 0 );
+    blDebug ( "END BcAsientoInteligenteView::creaasiento", 0 );
 }
 
 
@@ -635,7 +635,7 @@ void BcAsientoInteligenteView::creaasiento()
 **/
 void BcAsientoInteligenteView::recogevariables ( QString texto, int tipo )
 {
-    _depura ( "BcAsientoInteligenteView::recogevariables", 0 );
+    blDebug ( "BcAsientoInteligenteView::recogevariables", 0 );
     int posinicial, posfinal, posaux, posaux1;
     QString cadena = texto;
     QString subcadena;
@@ -726,7 +726,7 @@ void BcAsientoInteligenteView::recogevariables ( QString texto, int tipo )
             } // end if
         } // end if
     } // end if
-    _depura ( "END BcAsientoInteligenteView::recogevariables", 0 );
+    blDebug ( "END BcAsientoInteligenteView::recogevariables", 0 );
 }
 
 
@@ -736,7 +736,7 @@ void BcAsientoInteligenteView::recogevariables ( QString texto, int tipo )
 **/
 QString BcAsientoInteligenteView::aplicavariable ( QString texto )
 {
-    _depura ( "BcAsientoInteligenteView::aplicavariable", 0 );
+    blDebug ( "BcAsientoInteligenteView::aplicavariable", 0 );
     QString cadena = texto;
     int posinicial, posfinal;
     int i;
@@ -797,7 +797,7 @@ QString BcAsientoInteligenteView::aplicavariable ( QString texto )
         } // end if
     } // end for
     return cadena;
-    _depura ( "END BcAsientoInteligenteView::aplicavariable", 0 );
+    blDebug ( "END BcAsientoInteligenteView::aplicavariable", 0 );
 }
 
 
@@ -806,7 +806,7 @@ QString BcAsientoInteligenteView::aplicavariable ( QString texto )
 **/
 void BcAsientoInteligenteView::borrawidgets()
 {
-    _depura ( "BcAsientoInteligenteView::borrawidgets", 0 );
+    blDebug ( "BcAsientoInteligenteView::borrawidgets", 0 );
     int i;
     /// Vamos a intentar borrar todos los datos antes de empezar.
     for ( i = 0; i < indvariablescta; i++ ) {
@@ -829,7 +829,7 @@ void BcAsientoInteligenteView::borrawidgets()
     indvariablesfecha = 0;
     indvariablesnumero = 0;
     indvariablestexto = 0;
-    _depura ( "END BcAsientoInteligenteView::borrawidgets", 0 );
+    blDebug ( "END BcAsientoInteligenteView::borrawidgets", 0 );
 }
 
 
@@ -838,7 +838,7 @@ void BcAsientoInteligenteView::borrawidgets()
 **/
 void BcAsientoInteligenteView::selectfirst()
 {
-    _depura ( "BcAsientoInteligenteView::selectfirst", 0 );
+    blDebug ( "BcAsientoInteligenteView::selectfirst", 0 );
     if ( indvariablescta > 0 ) {
         varcta[0]->selectAll();
         varcta[0]->setFocus();
@@ -852,7 +852,7 @@ void BcAsientoInteligenteView::selectfirst()
         vartexto[0]->selectAll();
         vartexto[0]->setFocus();
     } // end if
-    _depura ( "END BcAsientoInteligenteView::selectfirst", 0 );
+    blDebug ( "END BcAsientoInteligenteView::selectfirst", 0 );
 }
 
 
@@ -864,7 +864,7 @@ void BcAsientoInteligenteView::selectfirst()
 **/
 void BcAsientoInteligenteView::selectsiguiente ( QObject *edit )
 {
-    _depura ( "BcAsientoInteligenteView::selectsiguiente", 0 );
+    blDebug ( "BcAsientoInteligenteView::selectsiguiente", 0 );
     int encontrado = 0;
     int i = 0;
     for ( i = 0; i < indvariablescta; i++ ) {
@@ -912,7 +912,7 @@ void BcAsientoInteligenteView::selectsiguiente ( QObject *edit )
     if ( encontrado == 1 ) {
         on_mui_aceptar_clicked();
     } // end if
-    _depura ( "END BcAsientoInteligenteView::selectsiguiente", 0 );
+    blDebug ( "END BcAsientoInteligenteView::selectsiguiente", 0 );
 }
 
 
@@ -922,9 +922,9 @@ void BcAsientoInteligenteView::selectsiguiente ( QObject *edit )
 **/
 void BcAsientoInteligenteView::setfechaasiento ( QString fecha )
 {
-    _depura ( "BcAsientoInteligenteView::setfechaasiento", 0 );
+    blDebug ( "BcAsientoInteligenteView::setfechaasiento", 0 );
     fechaasiento->setText ( fecha );
-    _depura ( "END BcAsientoInteligenteView::setfechaasiento", 0 );
+    blDebug ( "END BcAsientoInteligenteView::setfechaasiento", 0 );
 }
 
 
@@ -935,9 +935,9 @@ void BcAsientoInteligenteView::setfechaasiento ( QString fecha )
 **/
 void BcAsientoInteligenteView::setmodo ( int i )
 {
-    _depura ( "BcAsientoInteligenteView::setmodo", 0 );
+    blDebug ( "BcAsientoInteligenteView::setmodo", 0 );
     modo = i;
-    _depura ( "END BcAsientoInteligenteView::setmodo", 0 );
+    blDebug ( "END BcAsientoInteligenteView::setmodo", 0 );
 }
 
 
@@ -946,7 +946,7 @@ void BcAsientoInteligenteView::setmodo ( int i )
 **/
 void BcAsientoInteligenteView::on_mui_guardar_clicked()
 {
-    _depura ( "BcAsientoInteligenteView::on_mui_guardar_clicked", 0 );
+    blDebug ( "BcAsientoInteligenteView::on_mui_guardar_clicked", 0 );
     guardar();
-    _depura ( "END BcAsientoInteligenteView::on_mui_guardar_clicked", 0 );
+    blDebug ( "END BcAsientoInteligenteView::on_mui_guardar_clicked", 0 );
 }

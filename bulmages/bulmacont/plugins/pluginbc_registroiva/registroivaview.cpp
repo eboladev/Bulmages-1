@@ -49,7 +49,7 @@ RegistroIvaView::RegistroIvaView ( BcCompany *comp, QWidget *parent )
 {
     setAttribute ( Qt::WA_DeleteOnClose );
     setupUi ( this );
-    _depura ( "Inicializacion de RegistroIvaView", 0 );
+    blDebug ( "Inicializacion de RegistroIvaView", 0 );
     /// Disparamos los plugins con presupuesto_imprimirPresupuesto
     int res = g_plugins->lanza ( "RegistroIvaView_RegistroIvaView", this );
     if ( res != 0 )
@@ -108,7 +108,7 @@ RegistroIvaView::RegistroIvaView ( BcCompany *comp, QWidget *parent )
     mui_listPrevCobro->setInsert ( TRUE );
     mainCompany() ->meteWindow ( windowTitle(), this );
     g_plugins->lanza ( "RegistroIvaView_RegistroIvaView_Post", this );
-    _depura ( "Fin de la inicializacion de RegistroIvaView", 0 );
+    blDebug ( "Fin de la inicializacion de RegistroIvaView", 0 );
 }
 
 
@@ -117,8 +117,8 @@ RegistroIvaView::RegistroIvaView ( BcCompany *comp, QWidget *parent )
 **/
 RegistroIvaView::~RegistroIvaView()
 {
-    _depura ( "RegistroIvaView::~RegistroIvaView", 0 );
-    _depura ( "END RegistroIvaView::~RegistroIvaView", 0 );
+    blDebug ( "RegistroIvaView::~RegistroIvaView", 0 );
+    blDebug ( "END RegistroIvaView::~RegistroIvaView", 0 );
 }
 
 
@@ -134,7 +134,7 @@ RegistroIvaView::~RegistroIvaView()
 **/
 void RegistroIvaView::cargarComboFPago ( QString idfpago )
 {
-    _depura ( "RegistroIvaView::cargarComboFPago", 0 );
+    blDebug ( "RegistroIvaView::cargarComboFPago", 0 );
     if ( m_cursorFPago != NULL )
         delete m_cursorFPago;
     m_cursorFPago = mainCompany() ->loadQuery ( "SELECT * FROM fpago" );
@@ -151,12 +151,12 @@ void RegistroIvaView::cargarComboFPago ( QString idfpago )
     if ( i1 != 0 ) {
         m_fPago->setCurrentIndex ( i1 - 1 );
     } // end if
-    _depura ( "RegistroIvaView::cargarComboFPago", 0 );
+    blDebug ( "RegistroIvaView::cargarComboFPago", 0 );
 }
 
 /*
 void RegistroIvaView::on_mui_borrar_clicked() {
-    _depura("RegistroIvaView::on_mui_borrar_clicked",0);
+    blDebug("RegistroIvaView::on_mui_borrar_clicked",0);
     if (QMessageBox::warning(this,
                              _("BulmaCont - Registro Factura"),
                              _("Desea borrar este registro"),
@@ -165,7 +165,7 @@ void RegistroIvaView::on_mui_borrar_clicked() {
         mui_listIva->borrar();
         borrar();
     } // end if
-    _depura("END RegistroIvaView::on_mui_borrar_clicked", 0);
+    blDebug("END RegistroIvaView::on_mui_borrar_clicked", 0);
 }
 */
 
@@ -201,7 +201,7 @@ int RegistroIvaView::cargar ( QString id )
 **/
 int RegistroIvaView::guardar()
 {
-    _depura ( "RegistroIvaView::guardar", 0 );
+    blDebug ( "RegistroIvaView::guardar", 0 );
     try {
         mainCompany() ->begin();
         setcontrapartida ( m_contrapartida->id() );
@@ -226,7 +226,7 @@ int RegistroIvaView::guardar()
         mensajeInfo ( "Error al guardar el Registro de IVA" );
         mainCompany() ->rollback();
     } // end try
-    _depura ( "END RegistroIvaView::guardar" );
+    blDebug ( "END RegistroIvaView::guardar" );
     return 0;
 }
 
@@ -241,7 +241,7 @@ int RegistroIvaView::guardar()
 **/
 void RegistroIvaView::on_mui_generarPrevisiones_clicked()
 {
-    _depura ( "RegistroIvaView::on_mui_generarPrevisiones_clicked", 0 );
+    blDebug ( "RegistroIvaView::on_mui_generarPrevisiones_clicked", 0 );
     QString snumpagos = m_cursorFPago->valor ( "nplazosfpago", m_fPago->currentIndex() );
     QString splazoprimerpago = m_cursorFPago->valor ( "plazoprimerpagofpago", m_fPago->currentIndex() );
     QString splazoentrerecibo = m_cursorFPago->valor ( "plazoentrerecibofpago", m_fPago->currentIndex() );
@@ -261,7 +261,7 @@ void RegistroIvaView::on_mui_generarPrevisiones_clicked()
         } else {
             tipocobro = "f";
         } // end if
-        _depura ( "Cogemos el registro", 3 );
+        blDebug ( "Cogemos el registro", 3 );
         BlDbSubFormRecord *rec = mui_listPrevCobro->lineaat ( mui_listPrevCobro->rowCount() - 1 );
         rec->setDbValue ( "fprevistaprevcobro", fpcobro.toString ( "dd/MM/yyyy" ) );
         rec->setDbValue ( "cantidadprevistaprevcobro", totalplazo.toQString() );
@@ -269,10 +269,10 @@ void RegistroIvaView::on_mui_generarPrevisiones_clicked()
         rec->setDbValue ( "codigoctacliente", m_contrapartida->fieldValue("codigo") );
         rec->setDbValue ( "idctacliente", m_contrapartida->id() );
         rec->setDbValue ( "nomctacliente", m_contrapartida->fieldValue("descripcion") );
-        _depura ( "Pintamos", 3 );
+        blDebug ( "Pintamos", 3 );
         fpcobro = fpcobro.addDays ( plazoentrerecibo );
         mui_listPrevCobro->nuevoRegistro();
     } // end for
-    _depura ( "END RegistroIvaView::on_mui_generarPrevisiones_clicked", 0 );
+    blDebug ( "END RegistroIvaView::on_mui_generarPrevisiones_clicked", 0 );
 }
 

@@ -11,7 +11,7 @@
 ClienteCuenta::ClienteCuenta (QWidget *parent) : QWidget(parent)
 {
 
-    _depura ( "ClienteCuenta::ClienteCuenta", 1 );
+    blDebug ( "ClienteCuenta::ClienteCuenta", 1 );
 
     m_clienteview = (ClienteView *) parent;
 
@@ -41,7 +41,7 @@ ClienteCuenta::ClienteCuenta (QWidget *parent) : QWidget(parent)
     frame->setLayout(layout_cliente);
     frame->setMinimumHeight(70);
     
-    _depura ( "END ClienteCuenta::ClienteCuenta", 1 );
+    blDebug ( "END ClienteCuenta::ClienteCuenta", 1 );
 
 }
 
@@ -51,7 +51,7 @@ ClienteCuenta::ClienteCuenta (QWidget *parent) : QWidget(parent)
 **/
 ClienteCuenta::~ClienteCuenta()
 {
-    _depura ( "ClienteCuenta::~ClienteCuenta", 0 );
-    _depura ( "END ClienteCuenta::~ClienteCuenta", 0 );
+    blDebug ( "ClienteCuenta::~ClienteCuenta", 0 );
+    blDebug ( "END ClienteCuenta::~ClienteCuenta", 0 );
 }
 

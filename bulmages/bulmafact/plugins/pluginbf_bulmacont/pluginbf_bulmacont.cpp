@@ -38,7 +38,7 @@ BfBulmaFact *g_bf;
 **/
 int entryPoint ( BfBulmaFact *bf )
 {
-    _depura ( "Estoy dentro del plugin BulmaCont", 0 );
+    blDebug ( "Estoy dentro del plugin BulmaCont", 0 );
 
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale ( LC_ALL, "" );

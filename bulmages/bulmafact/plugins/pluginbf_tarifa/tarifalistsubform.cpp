@@ -30,13 +30,13 @@
 TarifaListSubform::TarifaListSubform ( QWidget *parent )
         : BfSubForm ( parent )
 {
-    _depura ( "TarifaListSubform::TarifaListSubform", 0 );
+    blDebug ( "TarifaListSubform::TarifaListSubform", 0 );
     setDbTableName ( "tarifa" );
     setDbFieldId ( "idtarifa" );
     addSubFormHeader ( "nomtarifa", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _ ( "Nombre de la tarifa" ) );
     addSubFormHeader ( "idtarifa", BlDbField::DbInt, BlDbField::DbNotNull, BlSubFormHeader::DbHideView | BlSubFormHeader::DbNoWrite, _ ( "ID tarifa" ) );
     setInsert ( FALSE );
-    _depura ( "END TarifaListSubform::TarifaListSubform", 0 );
+    blDebug ( "END TarifaListSubform::TarifaListSubform", 0 );
 }
 
 
@@ -45,7 +45,7 @@ TarifaListSubform::TarifaListSubform ( QWidget *parent )
 **/
 void TarifaListSubform::cargar()
 {
-    _depura ( "TarifaListSubform::cargar\n", 0 );
+    blDebug ( "TarifaListSubform::cargar\n", 0 );
     QString SQLQuery = "SELECT * FROM tarifa ORDER BY idtarifa";
     BlSubForm::cargar ( SQLQuery );
 }

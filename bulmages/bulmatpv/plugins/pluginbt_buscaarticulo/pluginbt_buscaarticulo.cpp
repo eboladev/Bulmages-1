@@ -46,7 +46,7 @@ BtCompany * g_emp;
 **/
 int entryPoint ( BtBulmaTPV *tpv )
 {
-    _depura ( "pluginbuscaarticulo::entryPoint", 0 );
+    blDebug ( "pluginbuscaarticulo::entryPoint", 0 );
 
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale ( LC_ALL, "" );
@@ -62,7 +62,7 @@ int entryPoint ( BtBulmaTPV *tpv )
     tpv->addDockWidget ( Qt::TopDockWidgetArea, g_doc1 );
     g_doc1->show();
     g_doc1->cargaconf();
-    _depura ( "END pluginbuscaarticulo::entryPoint", 0 );
+    blDebug ( "END pluginbuscaarticulo::entryPoint", 0 );
     return 0;
 }
 

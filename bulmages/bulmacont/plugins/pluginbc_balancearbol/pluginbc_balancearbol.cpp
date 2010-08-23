@@ -40,8 +40,8 @@
 **/
 myplugin4::myplugin4()
 {
-    _depura ( "myplugin4::myplugin4", 0 );
-    _depura ( "END myplugin4::myplugin4", 0 );
+    blDebug ( "myplugin4::myplugin4", 0 );
+    blDebug ( "END myplugin4::myplugin4", 0 );
 }
 
 
@@ -50,8 +50,8 @@ myplugin4::myplugin4()
 **/
 myplugin4::~myplugin4()
 {
-    _depura ( "myplugin4::~myplugin4", 0 );
-    _depura ( "END myplugin4::~myplugin4", 0 );
+    blDebug ( "myplugin4::~myplugin4", 0 );
+    blDebug ( "END myplugin4::~myplugin4", 0 );
 }
 
 
@@ -60,11 +60,11 @@ myplugin4::~myplugin4()
 **/
 void myplugin4::elslot()
 {
-    _depura ( "myplugin4::elslot", 0 );
+    blDebug ( "myplugin4::elslot", 0 );
     BalanceTreeView *cuad = new BalanceTreeView ( ( BcCompany * ) mainCompany(), 0 );
     mainCompany() ->pWorkspace() ->addWindow ( cuad );
     cuad->show();
-    _depura ( "END myplugin4::elslot", 0 );
+    blDebug ( "END myplugin4::elslot", 0 );
 }
 
 
@@ -74,7 +74,7 @@ void myplugin4::elslot()
 **/
 void myplugin4::inicializa ( BcBulmaCont *bges )
 {
-    _depura ( "myplugin4::inicializa", 0 );
+    blDebug ( "myplugin4::inicializa", 0 );
 
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale ( LC_ALL, "" );
@@ -103,7 +103,7 @@ void myplugin4::inicializa ( BcBulmaCont *bges )
 
     /// A&ntilde;adimos la nueva opci&oacute;n al men&uacute; principal del programa.
     bges->menuBar() ->insertMenu ( bges->menuVentana->menuAction(), pPluginMenu );
-    _depura ( "END myplugin4::inicializa", 0 );
+    blDebug ( "END myplugin4::inicializa", 0 );
 }
 
 
@@ -114,7 +114,7 @@ void myplugin4::inicializa ( BcBulmaCont *bges )
 **/
 int entryPoint ( BcBulmaCont *bcont )
 {
-    _depura ( "entryPoint::entryPoint", 0 );
+    blDebug ( "entryPoint::entryPoint", 0 );
 
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale ( LC_ALL, "" );
@@ -122,7 +122,7 @@ int entryPoint ( BcBulmaCont *bcont )
 
     myplugin4 *plug = new myplugin4();
     plug->inicializa ( bcont );
-    _depura ( "END entryPoint::entryPoint", 0 );
+    blDebug ( "END entryPoint::entryPoint", 0 );
     return 0;
 }
 

@@ -33,8 +33,8 @@
 **/
 MyPlugTrab::MyPlugTrab()
 {
-    _depura ( "MyPlugTrab::MyPlugTrab", 0 );
-    _depura ( "END MyPlugTrab::MyPlugTrab", 0 );
+    blDebug ( "MyPlugTrab::MyPlugTrab", 0 );
+    blDebug ( "END MyPlugTrab::MyPlugTrab", 0 );
 }
 
 
@@ -43,8 +43,8 @@ MyPlugTrab::MyPlugTrab()
 **/
 MyPlugTrab::~MyPlugTrab()
 {
-    _depura ( "MyPlugTrab::~MyPlugTrab", 0 );
-    _depura ( "END MyPlugTrab::~MyPlugTrab", 0 );
+    blDebug ( "MyPlugTrab::~MyPlugTrab", 0 );
+    blDebug ( "END MyPlugTrab::~MyPlugTrab", 0 );
 }
 
 
@@ -53,11 +53,11 @@ MyPlugTrab::~MyPlugTrab()
 **/
 void MyPlugTrab::elslot1()
 {
-    _depura ( "MyPlugTrab::elslot1", 0 );
+    blDebug ( "MyPlugTrab::elslot1", 0 );
     TrabajadorView * bud = new TrabajadorView ( ( BfCompany * ) mainCompany(), NULL );
     mainCompany() ->m_pWorkspace->addWindow ( bud );
     bud->show();
-    _depura ( "END MyPlugTrab::elslot1", 0 );
+    blDebug ( "END MyPlugTrab::elslot1", 0 );
 }
 
 
@@ -68,7 +68,7 @@ void MyPlugTrab::elslot1()
 **/
 void MyPlugTrab::inicializa ( BfBulmaFact *bges )
 {
-    _depura ( "MyPlugTrab::inicializa", 0 );
+    blDebug ( "MyPlugTrab::inicializa", 0 );
 
     if ( bges->company()->hasTablePrivilege ( "trabajador", "SELECT" ) ) {
 
@@ -88,7 +88,7 @@ void MyPlugTrab::inicializa ( BfBulmaFact *bges )
         connect ( planCuentas, SIGNAL ( activated() ), this, SLOT ( elslot1() ) );
 
     }// end if
-    _depura ( "END MyPlugTrab::inicializa", 0 );
+    blDebug ( "END MyPlugTrab::inicializa", 0 );
 }
 
 
@@ -102,7 +102,7 @@ void MyPlugTrab::inicializa ( BfBulmaFact *bges )
 **/
 int entryPoint ( BfBulmaFact *bges )
 {
-    _depura ( "Punto de Entrada del plugin de Trabajadors\n", 0 );
+    blDebug ( "Punto de Entrada del plugin de Trabajadors\n", 0 );
 
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale ( LC_ALL, "" );

@@ -37,8 +37,8 @@
 **/
 myplugin::myplugin()
 {
-    _depura ( "myplugin::myplugin", 0 );
-    _depura ( "END myplugin::myplugin", 0 );
+    blDebug ( "myplugin::myplugin", 0 );
+    blDebug ( "END myplugin::myplugin", 0 );
 }
 
 
@@ -47,8 +47,8 @@ myplugin::myplugin()
 **/
 myplugin::~myplugin()
 {
-    _depura ( "myplugin::~myplugin", 0 );
-    _depura ( "END myplugin::~myplugin", 0 );
+    blDebug ( "myplugin::~myplugin", 0 );
+    blDebug ( "END myplugin::~myplugin", 0 );
 }
 
 
@@ -58,9 +58,9 @@ myplugin::~myplugin()
 **/
 void myplugin::cambia ( bool valor )
 {
-    _depura ( "myplugin::cambia", 0 );
+    blDebug ( "myplugin::cambia", 0 );
     g_confpr->setValor ( CONF_DEBUG, ( valor ? "TRUE" : "FALSE" ) );
-    _depura ( "END myplugin::cambia", 0 );
+    blDebug ( "END myplugin::cambia", 0 );
 }
 
 
@@ -71,7 +71,7 @@ void myplugin::cambia ( bool valor )
 **/
 int entryPoint ( BcBulmaCont *bcont )
 {
-    _depura ( "Entrada del plugin Corrector", 10 );
+    blDebug ( "Entrada del plugin Corrector", 10 );
 
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale ( LC_ALL, "" );
@@ -106,7 +106,7 @@ int entryPoint ( BcBulmaCont *bcont )
     QObject::connect ( viewCorrector, SIGNAL ( toggled ( bool ) ), corr, SLOT ( cambia ( bool ) ) );
     pPluginMenu ->addSeparator();
     pPluginMenu ->addAction ( viewCorrector );
-    _depura ( "Iniciado correctamente el plugin Corrector", 10 );
+    blDebug ( "Iniciado correctamente el plugin Corrector", 10 );
     return 0;
 }
 

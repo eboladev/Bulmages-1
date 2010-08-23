@@ -54,14 +54,14 @@
 **/
 ImpQToolButton::ImpQToolButton ( PresupuestoList *pres, PedidosClienteList *ped, AlbaranClienteList *alb,  FacturasList *fac , QWidget *parent ) : QToolButton ( parent )
 {
-    _depura ( "ImpQToolButton::ImpQToolButton", 0 );
+    blDebug ( "ImpQToolButton::ImpQToolButton", 0 );
     m_presupuestoList = pres;
     m_pedidosClienteList = ped;
     m_albaranClienteList = alb;
     m_facturasList = fac;
 
     setBoton();
-    _depura ( "END ImpQToolButton::ImpQToolButton", 0 );
+    blDebug ( "END ImpQToolButton::ImpQToolButton", 0 );
 }
 
 
@@ -70,8 +70,8 @@ ImpQToolButton::ImpQToolButton ( PresupuestoList *pres, PedidosClienteList *ped,
 **/
 ImpQToolButton::~ImpQToolButton()
 {
-    _depura ( "ImpQToolButton::~ImpQToolButton", 0 );
-    _depura ( "END ImpQToolButton::~ImpQToolButton", 0 );
+    blDebug ( "ImpQToolButton::~ImpQToolButton", 0 );
+    blDebug ( "END ImpQToolButton::~ImpQToolButton", 0 );
 }
 
 
@@ -80,7 +80,7 @@ ImpQToolButton::~ImpQToolButton()
 **/
 void ImpQToolButton::setBoton()
 {
-    _depura ( "ImpQToolButton::setBoton", 0 );
+    blDebug ( "ImpQToolButton::setBoton", 0 );
     connect ( this, SIGNAL ( clicked() ), this, SLOT ( click() ) );
     setObjectName ( QString::fromUtf8 ( "exporta1" ) );
     setStatusTip ( "Facturar elementos seleccionados" );
@@ -88,7 +88,7 @@ void ImpQToolButton::setBoton()
     setMinimumSize ( QSize ( 32, 32 ) );
     setIcon ( QIcon ( QString::fromUtf8 ( ":/BfBulmaFact48x48/images/png/48x48/i_bulmages_ventas_facturas.48x48.png" ) ) );
     setIconSize ( QSize ( 22, 22 ) );
-    _depura ( "END ImpQToolButton::setBoton", 0 );
+    blDebug ( "END ImpQToolButton::setBoton", 0 );
 }
 
 
@@ -97,7 +97,7 @@ void ImpQToolButton::setBoton()
 **/
 void ImpQToolButton::click()
 {
-    _depura ( "ImpQToolButton::click", 0 );
+    blDebug ( "ImpQToolButton::click", 0 );
 
     QString res = "";
 
@@ -189,6 +189,6 @@ void ImpQToolButton::click()
 
     } // end if
 
-    _depura ( "END ImpQToolButton::click", 0 );
+    blDebug ( "END ImpQToolButton::click", 0 );
 }
 

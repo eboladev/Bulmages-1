@@ -40,10 +40,10 @@
 **/
 ModificadoresQToolButton::ModificadoresQToolButton ( BtCompany * emp, QWidget *parent ) : QToolButton ( parent )
 {
-    _depura ( "ModificadoresQToolButton::ModificadoresQToolButton", 0 );
+    blDebug ( "ModificadoresQToolButton::ModificadoresQToolButton", 0 );
     m_companyact = emp;
     setBoton();
-    _depura ( "END ModificadoresQToolButton::ModificadoresQToolButton", 0 );
+    blDebug ( "END ModificadoresQToolButton::ModificadoresQToolButton", 0 );
 }
 
 
@@ -52,8 +52,8 @@ ModificadoresQToolButton::ModificadoresQToolButton ( BtCompany * emp, QWidget *p
 **/
 ModificadoresQToolButton::~ModificadoresQToolButton()
 {
-    _depura ( "ModificadoresQToolButton::~ModificadoresQToolButton", 0 );
-    _depura ( "END ModificadoresQToolButton::~ModificadoresQToolButton", 0 );
+    blDebug ( "ModificadoresQToolButton::~ModificadoresQToolButton", 0 );
+    blDebug ( "END ModificadoresQToolButton::~ModificadoresQToolButton", 0 );
 }
 
 
@@ -62,7 +62,7 @@ ModificadoresQToolButton::~ModificadoresQToolButton()
 **/
 void ModificadoresQToolButton::setBoton()
 {
-    _depura ( "ModificadoresQToolButton::setBoton", 0 );
+    blDebug ( "ModificadoresQToolButton::setBoton", 0 );
     connect ( this, SIGNAL ( clicked() ), this, SLOT ( click() ) );
     setObjectName ( QString::fromUtf8 ( "exporta" ) );
     setStatusTip ( "Generar Q19" );
@@ -70,7 +70,7 @@ void ModificadoresQToolButton::setBoton()
     setMinimumSize ( QSize ( 32, 32 ) );
     setIcon ( QIcon ( g_confpr->valor ( CONF_PROGDATA ) + "icons/q19.png" ) );
     setIconSize ( QSize ( 22, 22 ) );
-    _depura ( "END ModificadoresQToolButton::setBoton", 0 );
+    blDebug ( "END ModificadoresQToolButton::setBoton", 0 );
 }
 
 
@@ -80,10 +80,10 @@ void ModificadoresQToolButton::setBoton()
 **/
 void ModificadoresQToolButton::click()
 {
-    _depura ( "ModificadoresQToolButton::click", 0 );
+    blDebug ( "ModificadoresQToolButton::click", 0 );
     Modificadores * trab = new Modificadores ( m_companyact, 0 );
     trab->exec();
-    _depura ( "END ModificadoresQToolButton::click", 0 );
+    blDebug ( "END ModificadoresQToolButton::click", 0 );
 
 }
 

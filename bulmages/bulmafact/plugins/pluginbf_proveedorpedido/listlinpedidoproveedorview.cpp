@@ -33,7 +33,7 @@
 **/
 ListLinPedidoProveedorView::ListLinPedidoProveedorView ( QWidget *parent ) : BfSubForm ( parent )
 {
-    _depura ( "ListLinPedidoProveedorView::ListLinPedidoProveedorView", 0 );
+    blDebug ( "ListLinPedidoProveedorView::ListLinPedidoProveedorView", 0 );
     setDbTableName ( "lpedidoproveedor" );
     setDbFieldId ( "idlpedidoproveedor" );
     addSubFormHeader ( "puntlpedidoproveedor", BlDbField::DbBoolean, BlDbField::DbNotNull, BlSubFormHeader::DbNone, _ ( "Punteo" ) );
@@ -52,7 +52,7 @@ ListLinPedidoProveedorView::ListLinPedidoProveedorView ( QWidget *parent ) : BfS
     setInsert ( TRUE );
     setOrdenEnabled ( TRUE );
     setOrdenPorQuery ( FALSE );
-    _depura ( "END ListLinPedidoProveedorView::ListLinPedidoProveedorView", 0 );
+    blDebug ( "END ListLinPedidoProveedorView::ListLinPedidoProveedorView", 0 );
 }
 
 
@@ -62,9 +62,9 @@ ListLinPedidoProveedorView::ListLinPedidoProveedorView ( QWidget *parent ) : BfS
 **/
 void ListLinPedidoProveedorView::cargar ( QString idpedidoproveedor )
 {
-    _depura ( "ListLinPedidoProveedorView::cargar", 0 );
+    blDebug ( "ListLinPedidoProveedorView::cargar", 0 );
     mdb_idpedidoproveedor = idpedidoproveedor;
     BlSubForm::cargar ( "SELECT * FROM lpedidoproveedor LEFT JOIN articulo ON lpedidoproveedor.idarticulo = articulo.idarticulo WHERE idpedidoproveedor=" + mdb_idpedidoproveedor + " ORDER BY ordenlpedidoproveedor" );
-    _depura ( "END ListLinPedidoProveedorView::cargar", 0 );
+    blDebug ( "END ListLinPedidoProveedorView::cargar", 0 );
 }
 

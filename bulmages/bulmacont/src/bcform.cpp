@@ -37,9 +37,9 @@ class Fixed;
 BcForm::BcForm ( BcCompany *comp, QWidget *parent, Qt::WFlags f )
         : BlForm ( comp, parent, f )
 {
-    _depura ( "BcForm::BcForm", 0 );
+    blDebug ( "BcForm::BcForm", 0 );
     m_listalineas = NULL;
-    _depura ( "END BcForm::BcForm", 0 );
+    blDebug ( "END BcForm::BcForm", 0 );
 }
 
 
@@ -48,9 +48,9 @@ BcForm::BcForm ( BcCompany *comp, QWidget *parent, Qt::WFlags f )
 **/
 BcForm::~BcForm()
 {
-    _depura ( "BcForm::~BcForm", 0 );
+    blDebug ( "BcForm::~BcForm", 0 );
     mainCompany() ->sacaWindow ( this );
-    _depura ( "END BcForm::~BcForm", 0 );
+    blDebug ( "END BcForm::~BcForm", 0 );
 }
 
 
@@ -60,9 +60,9 @@ BcForm::~BcForm()
 **/
 void BcForm::setListaLineas ( BcSubForm * form )
 {
-    _depura ( "BcForm::setListaLineas", 0 );
+    blDebug ( "BcForm::setListaLineas", 0 );
     m_listalineas = form;
-    _depura ( "END BcForm::setListaLineas", 0 );
+    blDebug ( "END BcForm::setListaLineas", 0 );
 }
 
 
@@ -72,8 +72,8 @@ void BcForm::setListaLineas ( BcSubForm * form )
 **/
 BcSubForm* BcForm::listalineas()
 {
-    _depura ( "BcForm::listalineas", 0 );
-    _depura ( "END BcForm::listalineas", 0 );
+    blDebug ( "BcForm::listalineas", 0 );
+    blDebug ( "END BcForm::listalineas", 0 );
     return m_listalineas;
 }
 
@@ -84,8 +84,8 @@ BcSubForm* BcForm::listalineas()
 **/
 BcCompany * BcForm::mainCompany()
 {
-    _depura ( "BcForm::mainCompany", 0 );
-    _depura ( "END BcForm::mainCompany", 0 );
+    blDebug ( "BcForm::mainCompany", 0 );
+    blDebug ( "END BcForm::mainCompany", 0 );
     return ( BcCompany * ) BlForm::mainCompany();
 }
 

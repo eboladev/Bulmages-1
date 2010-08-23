@@ -35,7 +35,7 @@
 RutaComercial::RutaComercial ( BfCompany *comp, QWidget *parent ) : BfForm ( comp, parent )
 {
 
-    _depura ( "RutaComercial::RutaComercial", 0 );
+    blDebug ( "RutaComercial::RutaComercial", 0 );
     setTitleName ( _ ( "Ruta comercial" ) );
     setDbTableName ( "rutacomercial" );
     setDbFieldId ( "idrutacomercial" );
@@ -45,7 +45,7 @@ RutaComercial::RutaComercial ( BfCompany *comp, QWidget *parent ) : BfForm ( com
     addDbField ( "comentariosrutacomercial", BlDbField::DbVarChar, BlDbField::DbNothing, _ ( "Comentarios" ) );
     addDbField ( "horarutacomercial", BlDbField::DbVarChar, BlDbField::DbNothing, _ ( "Hora" ) );
     addDbField ( "refrutacomercial",  BlDbField::DbVarChar, BlDbField::DbNothing, _ ( "Referencia" ) );
-    _depura ( "END RutaComercial::RutaComercial", 0 );
+    blDebug ( "END RutaComercial::RutaComercial", 0 );
 }
 
 
@@ -54,8 +54,8 @@ RutaComercial::RutaComercial ( BfCompany *comp, QWidget *parent ) : BfForm ( com
 **/
 RutaComercial::~RutaComercial()
 {
-    _depura ( "RutaComercial::~RutaComercial", 0 );
-    _depura ( "END RutaComercial::~RutaComercial", 0 );
+    blDebug ( "RutaComercial::~RutaComercial", 0 );
+    blDebug ( "END RutaComercial::~RutaComercial", 0 );
 }
 
 
@@ -65,13 +65,13 @@ RutaComercial::~RutaComercial()
 **/
 void RutaComercial::pintar()
 {
-    _depura ( "RutaComercial::pintar", 0 );
+    blDebug ( "RutaComercial::pintar", 0 );
     /// Disparamos los plugins con presupuesto_imprimirPresupuesto.
     int res = g_plugins->lanza ( "RutaComercial_pintar", this );
     if ( res != 0 )
         return;
-    _depura ( "funcion no sobrecargada", 2 );
-    _depura ( "END RutaComercial::pintar", 0 );
+    blDebug ( "funcion no sobrecargada", 2 );
+    blDebug ( "END RutaComercial::pintar", 0 );
 }
 
 
@@ -82,14 +82,14 @@ void RutaComercial::pintar()
 **/
 int RutaComercial::cargar ( QString id )
 {
-    _depura ( "RutaComercial::cargar", 0 );
+    blDebug ( "RutaComercial::cargar", 0 );
     QString query = "SELECT * FROM rutacomercial WHERE idrutacomercial = " + id;
     BlDbRecordSet *cur = mainCompany() ->loadQuery ( query );
     if ( !cur->eof() )  {
         DBload ( cur );
     }
     delete cur;
-    _depura ( "END RutaComercial::cargar", 0 );
+    blDebug ( "END RutaComercial::cargar", 0 );
     return 0;
 }
 

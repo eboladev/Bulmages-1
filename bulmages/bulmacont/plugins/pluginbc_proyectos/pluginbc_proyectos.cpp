@@ -33,8 +33,8 @@
 **/
 mytiptrab::mytiptrab()
 {
-    _depura ( "mytiptrab::mytiptrab", 0 );
-    _depura ( "END mytiptrab::mytiptrab", 0 );
+    blDebug ( "mytiptrab::mytiptrab", 0 );
+    blDebug ( "END mytiptrab::mytiptrab", 0 );
 }
 
 
@@ -43,8 +43,8 @@ mytiptrab::mytiptrab()
 **/
 mytiptrab::~mytiptrab()
 {
-    _depura ( "mytiptrab::~mytiptrab", 0 );
-    _depura ( "END mytiptrab::~mytiptrab", 0 );
+    blDebug ( "mytiptrab::~mytiptrab", 0 );
+    blDebug ( "END mytiptrab::~mytiptrab", 0 );
 }
 
 
@@ -53,14 +53,14 @@ mytiptrab::~mytiptrab()
 **/
 void mytiptrab::elslot()
 {
-    _depura ( "mytiptrab::elslot", 0 );
+    blDebug ( "mytiptrab::elslot", 0 );
     /// Agregamos el subformulario de proyectos.
     ListProyectosView *l = new ListProyectosView ( m_bulmacont->empresaactual(), 0, 0, BL_EDIT_MODE );
     l->setObjectName ( QString::fromUtf8 ( "mui_proyectos" ) );
 //    m_bulmacont->empresaactual()->meteWindow(l);
     m_bulmacont->workspace() ->addWindow ( l );
     l->show();
-    _depura ( "END mytiptrab::elslot", 0 );
+    blDebug ( "END mytiptrab::elslot", 0 );
 }
 
 
@@ -88,7 +88,7 @@ void mytiptrab::inicializa ( BcBulmaCont *bges )
 **/
 int entryPoint ( BcBulmaCont *bges )
 {
-    _depura ( "Estoy dentro del plugin de proyectos", 0 );
+    blDebug ( "Estoy dentro del plugin de proyectos", 0 );
 
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale ( LC_ALL, "" );
@@ -106,7 +106,7 @@ int entryPoint ( BcBulmaCont *bges )
 **/
 int BcCentroCosteView_BcCentroCosteView ( BcCentroCosteView *ccoste )
 {
-    _depura ( "BcCentroCosteView_BcCentroCosteView", 0 );
+    blDebug ( "BcCentroCosteView_BcCentroCosteView", 0 );
 
     /// Agregamos el subformulario de proyectos.
     ListProyectosView *l = new ListProyectosView ( ccoste->mainCompany(), ccoste, 0, BL_SELECT_MODE );

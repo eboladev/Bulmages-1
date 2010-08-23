@@ -31,7 +31,7 @@
 BcCentroCosteSeleccionarView::BcCentroCosteSeleccionarView ( BcCompany *emp, QWidget *parent )
         : QDialog ( parent ), BlMainCompanyPointer ( emp )
 {
-    _depura ( "BcCentroCosteSeleccionarView::BcCentroCosteSeleccionarView", 0 );
+    blDebug ( "BcCentroCosteSeleccionarView::BcCentroCosteSeleccionarView", 0 );
     setupUi ( this );
 
     numdigitos = ( ( BcCompany * ) mainCompany() ) ->numdigitosempresa();
@@ -43,7 +43,7 @@ BcCentroCosteSeleccionarView::BcCentroCosteSeleccionarView ( BcCompany *emp, QWi
     etiquetas << _ ( "nom_coste" ) << _ ( "desc_coste" ) << _ ( "Status" ) << _ ( "idc_coste" ) << _ ( "Seleccion" );
     mui_listCostes->setHeaderLabels ( etiquetas );
     cargacostes();
-    _depura ( "END BcCentroCosteSeleccionarView::BcCentroCosteSeleccionarView", 0 );
+    blDebug ( "END BcCentroCosteSeleccionarView::BcCentroCosteSeleccionarView", 0 );
 }
 
 
@@ -52,9 +52,9 @@ BcCentroCosteSeleccionarView::BcCentroCosteSeleccionarView ( BcCompany *emp, QWi
 **/
 BcCentroCosteSeleccionarView::~BcCentroCosteSeleccionarView()
 {
-    _depura ( "BcCentroCosteSeleccionarView::~BcCentroCosteSeleccionarView", 0 );
+    blDebug ( "BcCentroCosteSeleccionarView::~BcCentroCosteSeleccionarView", 0 );
     delete m_iterador;
-    _depura ( "END BcCentroCosteSeleccionarView::~BcCentroCosteSeleccionarView", 0 );
+    blDebug ( "END BcCentroCosteSeleccionarView::~BcCentroCosteSeleccionarView", 0 );
 }
 
 
@@ -63,7 +63,7 @@ BcCentroCosteSeleccionarView::~BcCentroCosteSeleccionarView()
 **/
 void BcCentroCosteSeleccionarView::cargacostes()
 {
-    _depura ( "BcCentroCosteSeleccionarView::cargacostes", 0 );
+    blDebug ( "BcCentroCosteSeleccionarView::cargacostes", 0 );
     /// Rellenamnos la listbox que va a sustituir al combobox correspondiente.
     /// Para que en los listados puedan salir m&aacute;s cosas de las que se dicen.
     fprintf ( stderr, "Ahora nos toca rellenar las listas.\n" );
@@ -110,7 +110,7 @@ void BcCentroCosteSeleccionarView::cargacostes()
         cursoraux2->nextRecord();
     } // end while
     delete cursoraux2;
-    _depura ( "END BcCentroCosteSeleccionarView::cargacostes", 0 );
+    blDebug ( "END BcCentroCosteSeleccionarView::cargacostes", 0 );
 }
 
 
@@ -122,7 +122,7 @@ void BcCentroCosteSeleccionarView::cargacostes()
 **/
 int BcCentroCosteSeleccionarView::firstccoste()
 {
-    _depura ( "BcCentroCosteSeleccionarView::firstccoste", 0 );
+    blDebug ( "BcCentroCosteSeleccionarView::firstccoste", 0 );
     delete m_iterador;
     m_iterador = new QTreeWidgetItemIterator ( mui_listCostes );
     int idccoste = 0;
@@ -135,7 +135,7 @@ int BcCentroCosteSeleccionarView::firstccoste()
         ++ ( *m_iterador );
     } // end while
 
-    _depura ( "END BcCentroCosteSeleccionarView::firstccoste", 0, QString::number ( idccoste ) );
+    blDebug ( "END BcCentroCosteSeleccionarView::firstccoste", 0, QString::number ( idccoste ) );
     return idccoste;
 }
 
@@ -146,7 +146,7 @@ int BcCentroCosteSeleccionarView::firstccoste()
 **/
 int BcCentroCosteSeleccionarView::nextccoste()
 {
-    _depura ( "BcCentroCosteSeleccionarView::nextccoste", 0 );
+    blDebug ( "BcCentroCosteSeleccionarView::nextccoste", 0 );
     int idccoste = 0;
 
     while ( ( **m_iterador ) && idccoste == 0 ) {
@@ -155,7 +155,7 @@ int BcCentroCosteSeleccionarView::nextccoste()
         } // end if
         ++ ( *m_iterador );
     } // end while
-    _depura ( "END BcCentroCosteSeleccionarView::nextccoste", 0 );
+    blDebug ( "END BcCentroCosteSeleccionarView::nextccoste", 0 );
     return idccoste;
 }
 
@@ -167,7 +167,7 @@ int BcCentroCosteSeleccionarView::nextccoste()
 **/
 QString BcCentroCosteSeleccionarView::cadcoste()
 {
-    _depura ( "BcCentroCosteSeleccionarView::cadcoste", 0 );
+    blDebug ( "BcCentroCosteSeleccionarView::cadcoste", 0 );
     int idc_coste;
     QString ccostes = "";
     idc_coste = firstccoste();
@@ -178,7 +178,7 @@ QString BcCentroCosteSeleccionarView::cadcoste()
             ccostes.sprintf ( "%d", idc_coste );
         idc_coste = nextccoste();
     } /// end while
-    _depura ( "END BcCentroCosteSeleccionarView::cadcoste", 0 );
+    blDebug ( "END BcCentroCosteSeleccionarView::cadcoste", 0 );
     return ccostes;
 }
 
@@ -190,7 +190,7 @@ QString BcCentroCosteSeleccionarView::cadcoste()
 **/
 QString BcCentroCosteSeleccionarView::nomcoste()
 {
-    _depura ( "BcCentroCosteSeleccionarView::nomcoste", 0 );
+    blDebug ( "BcCentroCosteSeleccionarView::nomcoste", 0 );
     QTreeWidgetItemIterator m_iterador ( mui_listCostes );
 
     fprintf ( stderr, "nomcoste()\n" );
@@ -203,7 +203,7 @@ QString BcCentroCosteSeleccionarView::nomcoste()
     } // end if
 
     delete *m_iterador;
-    _depura ( "END BcCentroCosteSeleccionarView::nomcoste", 0 );
+    blDebug ( "END BcCentroCosteSeleccionarView::nomcoste", 0 );
     return "";
 }
 
@@ -213,7 +213,7 @@ QString BcCentroCosteSeleccionarView::nomcoste()
 **/
 void BcCentroCosteSeleccionarView::on_mui_todo_clicked()
 {
-    _depura ( "BcCentroCosteSeleccionarView::on_mui_todo_clicked", 0 );
+    blDebug ( "BcCentroCosteSeleccionarView::on_mui_todo_clicked", 0 );
     QTreeWidgetItemIterator m_iterador ( mui_listCostes );
 
     while ( *m_iterador ) {
@@ -222,7 +222,7 @@ void BcCentroCosteSeleccionarView::on_mui_todo_clicked()
     } // end while
 
     delete *m_iterador;
-    _depura ( "END BcCentroCosteSeleccionarView::on_mui_todo_clicked", 0 );
+    blDebug ( "END BcCentroCosteSeleccionarView::on_mui_todo_clicked", 0 );
 }
 
 
@@ -231,7 +231,7 @@ void BcCentroCosteSeleccionarView::on_mui_todo_clicked()
 **/
 void BcCentroCosteSeleccionarView::on_mui_nada_clicked()
 {
-    _depura ( "BcCentroCosteSeleccionarView::on_mui_nada_clicked", 0 );
+    blDebug ( "BcCentroCosteSeleccionarView::on_mui_nada_clicked", 0 );
     QTreeWidgetItemIterator m_iterador ( mui_listCostes );
 
     while ( *m_iterador ) {
@@ -240,7 +240,7 @@ void BcCentroCosteSeleccionarView::on_mui_nada_clicked()
     } // end while
 
     delete *m_iterador;
-    _depura ( "END BcCentroCosteSeleccionarView::on_mui_nada_clicked", 0 );
+    blDebug ( "END BcCentroCosteSeleccionarView::on_mui_nada_clicked", 0 );
 }
 
 
@@ -249,7 +249,7 @@ void BcCentroCosteSeleccionarView::on_mui_nada_clicked()
 **/
 void BcCentroCosteSeleccionarView::on_mui_invertir_clicked()
 {
-    _depura ( "BcCentroCosteSeleccionarView::on_mui_invertir_clicked", 0 );
+    blDebug ( "BcCentroCosteSeleccionarView::on_mui_invertir_clicked", 0 );
     QTreeWidgetItemIterator m_iterador ( mui_listCostes );
 
     while ( *m_iterador ) {
@@ -262,6 +262,6 @@ void BcCentroCosteSeleccionarView::on_mui_invertir_clicked()
     } // end while
 
     delete *m_iterador;
-    _depura ( "END BcCentroCosteSeleccionarView::on_mui_invertir_clicked", 0 );
+    blDebug ( "END BcCentroCosteSeleccionarView::on_mui_invertir_clicked", 0 );
 }
 

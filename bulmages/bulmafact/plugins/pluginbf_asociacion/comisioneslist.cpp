@@ -39,7 +39,7 @@
 ComisionesList::ComisionesList ( QWidget *parent, Qt::WFlags flag, edmode editmodo )
         : BlFormList ( NULL, parent, flag, editmodo )
 {
-    _depura ( "ComisionesList::ComisionesList", 0 );
+    blDebug ( "ComisionesList::ComisionesList", 0 );
     setAttribute ( Qt::WA_DeleteOnClose );
     setupUi ( this );
     /// Disparamos los plugins.
@@ -50,7 +50,7 @@ ComisionesList::ComisionesList ( QWidget *parent, Qt::WFlags flag, edmode editmo
     setSubForm ( mui_list );
     hideBusqueda();
 
-    _depura ( "END ComisionesList::ComisionesList", 0 );
+    blDebug ( "END ComisionesList::ComisionesList", 0 );
 }
 
 
@@ -61,7 +61,7 @@ ComisionesList::ComisionesList ( QWidget *parent, Qt::WFlags flag, edmode editmo
 ComisionesList::ComisionesList ( BfCompany *comp, QWidget *parent, Qt::WFlags flag, edmode editmodo )
         : BlFormList ( comp, parent, flag, editmodo )
 {
-    _depura ( "ComisionesList::ComisionesList", 0 );
+    blDebug ( "ComisionesList::ComisionesList", 0 );
     setAttribute ( Qt::WA_DeleteOnClose );
     setupUi ( this );
     /// Disparamos los plugins.
@@ -80,7 +80,7 @@ ComisionesList::ComisionesList ( BfCompany *comp, QWidget *parent, Qt::WFlags fl
     hideBusqueda();
     /// Hacemos el tratamiento de los permisos que desabilita botones en caso de no haber suficientes permisos.
     trataPermisos ( "cobro" );
-    _depura ( "END ComisionesList::ComisionesList", 0 );
+    blDebug ( "END ComisionesList::ComisionesList", 0 );
 }
 
 
@@ -88,8 +88,8 @@ ComisionesList::ComisionesList ( BfCompany *comp, QWidget *parent, Qt::WFlags fl
 */
 ComisionesList::~ComisionesList()
 {
-    _depura ( "ComisionesList::~ComisionesList", 0 );
-    _depura ( "END ComisionesList::~ComisionesList", 0 );
+    blDebug ( "ComisionesList::~ComisionesList", 0 );
+    blDebug ( "END ComisionesList::~ComisionesList", 0 );
 }
 
 
@@ -99,11 +99,11 @@ ComisionesList::~ComisionesList()
 */
 void ComisionesList::presentar()
 {
-    _depura ( "ComisionesList::presentar", 0 );
+    blDebug ( "ComisionesList::presentar", 0 );
     if ( mainCompany() != NULL ) {
         mui_list->cargar ( "SELECT * FROM comision  WHERE 1 = 1 " + generaFiltro() );
     } // end if
-    _depura ( "END ComisionesList::presentar", 0 );
+    blDebug ( "END ComisionesList::presentar", 0 );
 }
 
 
@@ -111,10 +111,10 @@ void ComisionesList::presentar()
 */
 QString ComisionesList::generaFiltro()
 {
-    _depura ( "ComisionesList::generaFiltro", 0 );
+    blDebug ( "ComisionesList::generaFiltro", 0 );
     QString filtro = "";
 
-    _depura ( "END ComisionesList::generaFiltro", 0 );
+    blDebug ( "END ComisionesList::generaFiltro", 0 );
     return ( filtro );
 }
 
@@ -125,12 +125,12 @@ QString ComisionesList::generaFiltro()
 */
 void ComisionesList::crear()
 {
-    _depura ( "ComisionesList::crear", 0 );
+    blDebug ( "ComisionesList::crear", 0 );
     ComisionView *bud = new ComisionView ( ( BfCompany * ) mainCompany(), 0 );
     mainCompany() ->m_pWorkspace->addWindow ( bud );
     bud->show();
     bud->pintar();
-    _depura ( "ComisionesList::crear", 0 );
+    blDebug ( "ComisionesList::crear", 0 );
 }
 
 
@@ -138,9 +138,9 @@ void ComisionesList::crear()
 */
 void ComisionesList::imprimir()
 {
-    _depura ( "ComisionesList::imprimir", 0 );
+    blDebug ( "ComisionesList::imprimir", 0 );
     mui_list->imprimirPDF ( _ ( "Actividades" ) );
-    _depura ( "END ComisionesList::imprimir", 0 );
+    blDebug ( "END ComisionesList::imprimir", 0 );
 }
 
 
@@ -152,7 +152,7 @@ void ComisionesList::imprimir()
 */
 void ComisionesList::borrar()
 {
-    _depura ( "ComisionesList::borrar", 0 );
+    blDebug ( "ComisionesList::borrar", 0 );
     int a = mui_list->currentRow();
     if ( a < 0 ) {
         mensajeInfo ( _ ( "Debe seleccionar una linea" ) );
@@ -171,7 +171,7 @@ void ComisionesList::borrar()
     } catch ( ... ) {
         mensajeInfo ( _ ( "Error al borrar el cobro a cliente" ) );
     } // end try
-    _depura ( "END:ComisionesList::borrar", 0 );
+    blDebug ( "END:ComisionesList::borrar", 0 );
 }
 
 
@@ -181,7 +181,7 @@ void ComisionesList::borrar()
 /// \TODO: Deberia crearse el metodo editar y este llamar a ese.
 void ComisionesList::editar ( int )
 {
-    _depura ( "ComisionesList::on_mui_list_cellDoubleClicked", 0 );
+    blDebug ( "ComisionesList::on_mui_list_cellDoubleClicked", 0 );
     try {
         mdb_idcomision = mui_list->dbValue ( "idcomision" );
         if ( modoEdicion() ) {
@@ -198,7 +198,7 @@ void ComisionesList::editar ( int )
     } catch ( ... ) {
         mensajeInfo ( _ ( "Debe seleccionar una fila primero" ) );
     } // end try
-    _depura ( "END ComisionesList::on_mui_list_cellDoubleClicked", 0 );
+    blDebug ( "END ComisionesList::on_mui_list_cellDoubleClicked", 0 );
 
 }
 
@@ -207,7 +207,7 @@ void ComisionesList::editar ( int )
 /// \TODO: Revisar si este metodo es util.
 void ComisionesList::submenu ( const QPoint & )
 {
-    _depura ( "ComisionesList::on_mui_list_customContextMenuRequested", 0 );
+    blDebug ( "ComisionesList::on_mui_list_customContextMenuRequested", 0 );
     int a = mui_list->currentRow();
     if ( a < 0 )
         return;
@@ -220,7 +220,7 @@ void ComisionesList::submenu ( const QPoint & )
     if ( opcion == edit )
         on_mui_editar_clicked();
     delete popup;
-    _depura ( "ComisionesList::on_mui_list_customContextMenuRequested", 0 );
+    blDebug ( "ComisionesList::on_mui_list_customContextMenuRequested", 0 );
 }
 
 /** Inicializa la clase con el puntero a la company que se esta utilizando
@@ -235,8 +235,8 @@ void ComisionesList::setMainCompany ( BfCompany *comp )
 **/
 QString ComisionesList::idcomision()
 {
-    _depura ( "ComisionesList::idcomision", 0 );
-    _depura ( "END ComisionesList::idcomision", 0 );
+    blDebug ( "ComisionesList::idcomision", 0 );
+    blDebug ( "END ComisionesList::idcomision", 0 );
     return mdb_idcomision;
 }
 
@@ -250,7 +250,7 @@ QString ComisionesList::idcomision()
 */
 ComisionesListSubForm::ComisionesListSubForm ( QWidget *parent ) : BfSubForm ( parent )
 {
-    _depura ( "ComisionesListSubForm::ComisionesListSubForm", 0 );
+    blDebug ( "ComisionesListSubForm::ComisionesListSubForm", 0 );
     /// Disparamos los plugins.
     int res = g_plugins->lanza ( "ComisionesListSubForm_ComisionesListSubForm", this );
     if ( res != 0 )
@@ -264,13 +264,13 @@ ComisionesListSubForm::ComisionesListSubForm ( QWidget *parent ) : BfSubForm ( p
     setInsert ( FALSE );
     setDelete ( FALSE );
     setSortingEnabled ( TRUE );
-    _depura ( "END ComisionesListSubForm::ComisionesListSubForm", 0 );
+    blDebug ( "END ComisionesListSubForm::ComisionesListSubForm", 0 );
 }
 
 
 ComisionesListSubForm::~ComisionesListSubForm()
 {
-    _depura ( "ComisionesListSubForm::~ComisionesListSubForm", 0 );
-    _depura ( "END ComisionesListSubForm::~ComisionesListSubForm", 0 );
+    blDebug ( "ComisionesListSubForm::~ComisionesListSubForm", 0 );
+    blDebug ( "END ComisionesListSubForm::~ComisionesListSubForm", 0 );
 }
 

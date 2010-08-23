@@ -35,8 +35,8 @@
 **/
 BlListWidget::BlListWidget ( QWidget * parent ) : QListWidget ( parent )
 {
-    _depura ( "BlListWidget::BlListWidget", 0 );
-    _depura ( "END BlListWidget::BlListWidget", 0 );
+    blDebug ( "BlListWidget::BlListWidget", 0 );
+    blDebug ( "END BlListWidget::BlListWidget", 0 );
 }
 
 
@@ -45,8 +45,8 @@ BlListWidget::BlListWidget ( QWidget * parent ) : QListWidget ( parent )
 **/
 BlListWidget::~BlListWidget()
 {
-    _depura ( "BlListWidget::~BlListWidget", 0 );
-    _depura ( "END BlListWidget::~BlListWidget", 0 );
+    blDebug ( "BlListWidget::~BlListWidget", 0 );
+    blDebug ( "END BlListWidget::~BlListWidget", 0 );
 }
 
 
@@ -57,10 +57,10 @@ BlListWidget::~BlListWidget()
 **/
 BlListWidgetItem::BlListWidgetItem ( BlListWidget *l, QPixmap &p ) : QListWidgetItem ( l )
 {
-    _depura ( "BlListWidgetItem::BlListWidgetItem", 0 );
+    blDebug ( "BlListWidgetItem::BlListWidgetItem", 0 );
     setIcon ( QIcon ( p ) );
     m_list = l;
-    _depura ( "END BlListWidgetItem::BlListWidgetItem", 0 );
+    blDebug ( "END BlListWidgetItem::BlListWidgetItem", 0 );
 }
 
 
@@ -69,8 +69,8 @@ BlListWidgetItem::BlListWidgetItem ( BlListWidget *l, QPixmap &p ) : QListWidget
 **/
 BlListWidgetItem::~BlListWidgetItem()
 {
-    _depura ( "BlListWidget::~BlListWidgetItem", 0 );
-    _depura ( "END BlListWidget::~BlListWidgetItem", 0 );
+    blDebug ( "BlListWidget::~BlListWidgetItem", 0 );
+    blDebug ( "END BlListWidget::~BlListWidgetItem", 0 );
 }
 
 
@@ -80,9 +80,9 @@ BlListWidgetItem::~BlListWidgetItem()
 **/
 void BlListWidgetItem::setObject ( QObject *m )
 {
-    _depura ( "BlListWidgetItem::setObject", 0 );
+    blDebug ( "BlListWidgetItem::setObject", 0 );
     m_obj = m;
-    _depura ( "END BlListWidgetItem::setObject", 0 );
+    blDebug ( "END BlListWidgetItem::setObject", 0 );
 }
 
 
@@ -92,10 +92,10 @@ void BlListWidgetItem::setObject ( QObject *m )
 **/
 void BlListWidgetItem::setNombre ( QString m )
 {
-    _depura ( "BlListWidgetItem::setNombre", 0 );
+    blDebug ( "BlListWidgetItem::setNombre", 0 );
     m_nombre = m;
 //    setText ( m );
-    _depura ( "END BlListWidgetItem::setNombre", 0 );
+    blDebug ( "END BlListWidgetItem::setNombre", 0 );
 }
 
 
@@ -105,10 +105,10 @@ void BlListWidgetItem::setNombre ( QString m )
 **/
 void BlListWidgetItem::setTitulo ( QString titulo )
 {
-    _depura ( "BlListWidgetItem::setTitulo", 0 );
+    blDebug ( "BlListWidgetItem::setTitulo", 0 );
     m_titulo = titulo;
     setText ( titulo );
-    _depura ( "END BlListWidgetItem::setTitulo", 0 );
+    blDebug ( "END BlListWidgetItem::setTitulo", 0 );
 }
 
 ///
@@ -117,8 +117,8 @@ void BlListWidgetItem::setTitulo ( QString titulo )
 **/
 QObject *BlListWidgetItem::object()
 {
-    _depura ( "BlListWidgetItem::object", 0 );
-    _depura ( "END BlListWidgetItem::object", 0 );
+    blDebug ( "BlListWidgetItem::object", 0 );
+    blDebug ( "END BlListWidgetItem::object", 0 );
     return m_obj;
 }
 
@@ -129,8 +129,8 @@ QObject *BlListWidgetItem::object()
 **/
 QString BlListWidgetItem::nombre()
 {
-    _depura ( "BlListWidgetItem::nombre", 0 );
-    _depura ( "END BlListWidgetItem::nombre", 0 );
+    blDebug ( "BlListWidgetItem::nombre", 0 );
+    blDebug ( "END BlListWidgetItem::nombre", 0 );
     return m_nombre;
 }
 
@@ -141,9 +141,9 @@ QString BlListWidgetItem::nombre()
 **/
 void BlWindowListDock::setWorkspace ( BlWorkspace *w )
 {
-    _depura ( "BlWindowListDock::setWorkspace", 0 );
+    blDebug ( "BlWindowListDock::setWorkspace", 0 );
     m_pWorkspace = w;
-    _depura ( "END BlWindowListDock::setWorkspace", 0 );
+    blDebug ( "END BlWindowListDock::setWorkspace", 0 );
 }
 
 
@@ -153,7 +153,7 @@ void BlWindowListDock::setWorkspace ( BlWorkspace *w )
 **/
 BlWindowListDock::BlWindowListDock ( QWidget *a ) : QDockWidget ( a )
 {
-    _depura ( "BlWindowListDock::BlWindowListDock", 0 );
+    blDebug ( "BlWindowListDock::BlWindowListDock", 0 );
     m_listBox = new BlListWidget ( this );
     m_listBox->setIconSize ( QSize ( 32, 32 ) );
     m_listBox->setContentsMargins ( 0, 0, 0, 0 );
@@ -165,7 +165,7 @@ BlWindowListDock::BlWindowListDock ( QWidget *a ) : QDockWidget ( a )
     setObjectName ( "Indexador" );
     connect ( m_listBox, SIGNAL ( itemDoubleClicked ( QListWidgetItem * ) ), this, SLOT ( dclicked() ) );
     connect ( m_listBox, SIGNAL ( itemClicked ( QListWidgetItem * ) ), this, SLOT ( clicked() ) );
-    _depura ( "END BlWindowListDock::BlWindowListDock", 0 );
+    blDebug ( "END BlWindowListDock::BlWindowListDock", 0 );
 }
 
 
@@ -174,7 +174,7 @@ BlWindowListDock::BlWindowListDock ( QWidget *a ) : QDockWidget ( a )
 **/
 void BlWindowListDock::dclicked()
 {
-    _depura ( "BlWindowListDock::dclicked", 0 );
+    blDebug ( "BlWindowListDock::dclicked", 0 );
     QWidget *widget = ( QWidget * ) ( ( BlListWidgetItem * ) m_listBox->currentItem() ) ->object();
     if ( widget != NULL ) {
         if ( widget->isMaximized() == TRUE ) {
@@ -183,7 +183,7 @@ void BlWindowListDock::dclicked()
             widget->showMaximized();
         } // end if
     } // end if
-    _depura ( "END BlWindowListDock::dclicked", 0 );
+    blDebug ( "END BlWindowListDock::dclicked", 0 );
 }
 
 
@@ -192,14 +192,14 @@ void BlWindowListDock::dclicked()
 **/
 void BlWindowListDock::clicked()
 {
-    _depura ( "BlWindowListDock::clicked", 0 );
+    blDebug ( "BlWindowListDock::clicked", 0 );
     QWidget *widget = ( QWidget * ) ( ( BlListWidgetItem * ) m_listBox->currentItem() ) ->object();
     if ( widget != NULL ) {
         widget->show();
         widget->parentWidget() ->raise();
         m_pWorkspace->setActiveWindow ( widget );
     } // end if
-    _depura ( "END BlWindowListDock::clicked", 0 );
+    blDebug ( "END BlWindowListDock::clicked", 0 );
 }
 
 
@@ -208,9 +208,9 @@ void BlWindowListDock::clicked()
 **/
 BlWindowListDock::~BlWindowListDock()
 {
-    _depura ( "BlWindowListDock::~BlWindowListDock", 0 );
+    blDebug ( "BlWindowListDock::~BlWindowListDock", 0 );
     delete m_listBox;
-    _depura ( "END BlWindowListDock::~BlWindowListDock", 0 );
+    blDebug ( "END BlWindowListDock::~BlWindowListDock", 0 );
 }
 
 
@@ -219,7 +219,7 @@ BlWindowListDock::~BlWindowListDock()
 **/
 void BlWindowListDock::vaciar()
 {
-    _depura ( "BlWindowListDock::vaciar", 0 );
+    blDebug ( "BlWindowListDock::vaciar", 0 );
     /// Buscamos la ventana correspondiente y la borramos.
     int i = 0;
     while ( i < m_listBox->count() ) {
@@ -230,7 +230,7 @@ void BlWindowListDock::vaciar()
             i++;
         } // end if
     } // end while
-    _depura ( "END BlWindowListDock::vaciar", 0 );
+    blDebug ( "END BlWindowListDock::vaciar", 0 );
 }
 
 
@@ -240,8 +240,8 @@ void BlWindowListDock::vaciar()
 **/
 int BlWindowListDock::numVentanas()
 {
-    _depura ( "BlWindowListDock::numVentanas", 0 );
-    _depura ( "END BlWindowListDock::numVentanas", 0 );
+    blDebug ( "BlWindowListDock::numVentanas", 0 );
+    blDebug ( "END BlWindowListDock::numVentanas", 0 );
     return m_listBox->count();
 }
 
@@ -253,9 +253,9 @@ int BlWindowListDock::numVentanas()
 **/
 QObject *BlWindowListDock::ventana ( int index )
 {
-    _depura ( "BlWindowListDock::ventana", 0 );
+    blDebug ( "BlWindowListDock::ventana", 0 );
     BlListWidgetItem *m = ( BlListWidgetItem * ) m_listBox->item ( index );
-    _depura ( "END BlWindowListDock::ventana", 0 );
+    blDebug ( "END BlWindowListDock::ventana", 0 );
     return m->object();
 }
 
@@ -265,14 +265,14 @@ QObject *BlWindowListDock::ventana ( int index )
 **/
 void BlWindowListDock::vaciarCompleto()
 {
-    _depura ( "BlWindowListDock::vaciarCompleto", 0 );
+    blDebug ( "BlWindowListDock::vaciarCompleto", 0 );
     /// Buscamos la ventana correspondiente y la borramos.
     int i = 0;
     while ( i < m_listBox->count() ) {
         BlListWidgetItem * m = ( BlListWidgetItem * ) m_listBox->item ( i );
         delete m->object();
     } // end while
-    _depura ( "END BlWindowListDock::vaciarCompleto", 0 );
+    blDebug ( "END BlWindowListDock::vaciarCompleto", 0 );
 }
 
 
@@ -287,7 +287,7 @@ void BlWindowListDock::vaciarCompleto()
 **/
 int BlWindowListDock::meteWindow ( QString nombre, QObject *obj, bool compdup, QString titulo )
 {
-    _depura ( "BlWindowListDock::meteWindow", 0, nombre );
+    blDebug ( "BlWindowListDock::meteWindow", 0, nombre );
     try {
 
 
@@ -300,7 +300,7 @@ int BlWindowListDock::meteWindow ( QString nombre, QObject *obj, bool compdup, Q
             BlListWidgetItem * m = ( BlListWidgetItem * ) m_listBox->item ( i );
             /// Si la ventana ya esta en la lista.
             if ( m->object() == obj ) {
-                _depura ( "END BlWindowListDock::meteWindow", 0, "Ya existe" + nombre );
+                blDebug ( "END BlWindowListDock::meteWindow", 0, "Ya existe" + nombre );
                 m->setNombre ( nombre );
 		m->setTitulo ( titulo );
                 return 0;
@@ -324,10 +324,10 @@ int BlWindowListDock::meteWindow ( QString nombre, QObject *obj, bool compdup, Q
 	    m->setTitulo ( titulo );
         } // end if
     } catch ( ... ) {
-        _depura ( "END BlWindowListDock::meteWindow", 0, " ventana duplicada" );
+        blDebug ( "END BlWindowListDock::meteWindow", 0, " ventana duplicada" );
         return - 1;
     } // end try
-    _depura ( "END BlWindowListDock::meteWindow", 0 );
+    blDebug ( "END BlWindowListDock::meteWindow", 0 );
     return 0;
 }
 
@@ -340,14 +340,14 @@ int BlWindowListDock::meteWindow ( QString nombre, QObject *obj, bool compdup, Q
 **/
 int BlWindowListDock::seleccionaWindow ( QString nombre, QObject *obj )
 {
-    _depura ( "BlWindowListDock::seleccionaWindow", 0 );
+    blDebug ( "BlWindowListDock::seleccionaWindow", 0 );
     try {
         int i = 0;
         while ( i < m_listBox->count() ) {
             BlListWidgetItem * m = ( BlListWidgetItem * ) m_listBox->item ( i );
             /// Encuentra la ventana en la lista.
             if ( m->object() == obj ) {
-                _depura ( "END BlWindowListDock::seleccionaWindow", 0, "Se ha encontrado la ventana" + nombre );
+                blDebug ( "END BlWindowListDock::seleccionaWindow", 0, "Se ha encontrado la ventana" + nombre );
                 m_listBox->setCurrentItem ( m );
                 return 0;
             } // end if
@@ -356,7 +356,7 @@ int BlWindowListDock::seleccionaWindow ( QString nombre, QObject *obj )
     } catch ( ... ) {
         throw - 1;
     } // end try
-    _depura ( "END BlWindowListDock::seleccionaWindow", 0 );
+    blDebug ( "END BlWindowListDock::seleccionaWindow", 0 );
     return 0;
 }
 
@@ -367,14 +367,14 @@ int BlWindowListDock::seleccionaWindow ( QString nombre, QObject *obj )
 **/
 int BlWindowListDock::deSeleccionaWindow()
 {
-    _depura ( "BlWindowListDock::deSeleccionaWindow", 0 );
+    blDebug ( "BlWindowListDock::deSeleccionaWindow", 0 );
     try {
         m_listBox->clearSelection();
     } catch ( ... ) {
-        _depura ( "BlWindowListDock::deSeleccionaWindow", 2, "Error en la Seleccion" );
+        blDebug ( "BlWindowListDock::deSeleccionaWindow", 2, "Error en la Seleccion" );
         throw - 1;
     } // end try
-    _depura ( "END BlWindowListDock::deSeleccionaWindow", 0 );
+    blDebug ( "END BlWindowListDock::deSeleccionaWindow", 0 );
     return 0;
 }
 
@@ -385,13 +385,13 @@ int BlWindowListDock::deSeleccionaWindow()
 **/
 void BlWindowListDock::sacaWindow ( QObject *obj )
 {
-    _depura ( "BlWindowListDock::sacaWindow", 0 );
+    blDebug ( "BlWindowListDock::sacaWindow", 0 );
     /// Buscamos la entrada correspondiente dentro del Indexador y la borramos.
     int i = 0;
     while ( i < m_listBox->count() ) {
         BlListWidgetItem * m = ( BlListWidgetItem * ) m_listBox->item ( i );
         if ( m->object() == obj ) {
-            _depura ( "Ventana encontrada y vamos a sacarla", 0, m->nombre() );
+            blDebug ( "Ventana encontrada y vamos a sacarla", 0, m->nombre() );
             m_listBox->takeItem ( i );
             delete m;
             break;
@@ -401,7 +401,7 @@ void BlWindowListDock::sacaWindow ( QObject *obj )
     /// Deseleccionamos cualquier elemento del listado para que no se quede marcado si
     /// ninguna otra ventana recoge el foco.
     deSeleccionaWindow();
-    _depura ( "END BlWindowListDock::sacaWindow", 0 );
+    blDebug ( "END BlWindowListDock::sacaWindow", 0 );
 }
 
 
@@ -411,13 +411,13 @@ void BlWindowListDock::sacaWindow ( QObject *obj )
 **/
 void BlWindowListDock::cambiaVisible ( bool visible )
 {
-    _depura ( "BlWindowListDock::cambiaVisible", 0 );
+    blDebug ( "BlWindowListDock::cambiaVisible", 0 );
     if ( visible == TRUE ) {
         this->show();
     } else {
         this->hide();
     } // end if
-    _depura ( "END BlWindowListDock::cambiaVisible", 0 );
+    blDebug ( "END BlWindowListDock::cambiaVisible", 0 );
 }
 
 
@@ -426,8 +426,8 @@ void BlWindowListDock::cambiaVisible ( bool visible )
 **/
 void BlWindowListDock::closeEvent ( QCloseEvent * )
 {
-    _depura ( "BlWindowListDock::closeEvent", 0 );
+    blDebug ( "BlWindowListDock::closeEvent", 0 );
     emit ( cambiaEstadoVisible ( FALSE ) );
-    _depura ( "END BlWindowListDock::closeEvent", 0 );
+    blDebug ( "END BlWindowListDock::closeEvent", 0 );
 }
 

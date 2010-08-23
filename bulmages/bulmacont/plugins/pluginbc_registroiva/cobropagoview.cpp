@@ -33,7 +33,7 @@
 cobropagoview::cobropagoview ( BcCompany *emp, QWidget *parent )
         : BlForm ( parent )
 {
-    _depura ( "cobropagoview::cobropagoview", 0 );
+    blDebug ( "cobropagoview::cobropagoview", 0 );
     setAttribute ( Qt::WA_DeleteOnClose );
     setupUi ( this );
     m_companyact = emp;
@@ -65,7 +65,7 @@ cobropagoview::cobropagoview ( BcCompany *emp, QWidget *parent )
 
     on_mui_actualizar_clicked();
     m_companyact->meteWindow ( windowTitle(), this );
-    _depura ( "END cobropagoview::cobropagoview", 0 );
+    blDebug ( "END cobropagoview::cobropagoview", 0 );
 }
 
 
@@ -74,9 +74,9 @@ cobropagoview::cobropagoview ( BcCompany *emp, QWidget *parent )
 **/
 cobropagoview::~cobropagoview()
 {
-    _depura ( "cobropagoview::~cobropagoview", 0 );
+    blDebug ( "cobropagoview::~cobropagoview", 0 );
     m_companyact->sacaWindow ( this );
-    _depura ( "END cobropagoview::~cobropagoview", 0 );
+    blDebug ( "END cobropagoview::~cobropagoview", 0 );
 }
 
 
@@ -85,7 +85,7 @@ cobropagoview::~cobropagoview()
 **/
 void cobropagoview::on_mui_actualizar_clicked()
 {
-    _depura ( "cobropagoview::s_actualizar", 0 );
+    blDebug ( "cobropagoview::s_actualizar", 0 );
 
     /// Hacemos la presentacion con la nueva clase
     QString cadwhere = "";
@@ -94,7 +94,7 @@ void cobropagoview::on_mui_actualizar_clicked()
                           " LEFT JOIN (SELECT idcuenta AS idctacliente, codigo AS codigoctacliente, descripcion AS nomctacliente FROM cuenta) AS T1 ON t1.idctacliente = prevcobro.idctacliente "
                           " WHERE 1=1 " + cadwhere );
     s_recalculaSaldo();
-    _depura ( "END cobropagoview::s_actualizar", 0 );
+    blDebug ( "END cobropagoview::s_actualizar", 0 );
 }
 
 
@@ -103,9 +103,9 @@ void cobropagoview::on_mui_actualizar_clicked()
 **/
 void cobropagoview::s_guardar()
 {
-    _depura ( "cobropagoview::s_guardar", 0 );
+    blDebug ( "cobropagoview::s_guardar", 0 );
     mui_listado->guardar();
-    _depura ( "END cobropagoview::s_guardar", 0 );
+    blDebug ( "END cobropagoview::s_guardar", 0 );
 }
 
 
@@ -114,7 +114,7 @@ void cobropagoview::s_guardar()
 **/
 void cobropagoview::s_recalculaSaldo()
 {
-    _depura ( "s_recalculaSaldo()", 0 );
+    blDebug ( "s_recalculaSaldo()", 0 );
     BlFixed totalcobro ( "0" );
     BlFixed totalpago ( "0" );
     for ( int i = 0; i < mui_listado->rowCount(); i++ ) {
@@ -129,6 +129,6 @@ void cobropagoview::s_recalculaSaldo()
     } // end for
     m_totalCobros->setText ( totalcobro.toQString() );
     m_totalPagos->setText ( totalpago.toQString() );
-    _depura ( "END s_recalculaSaldo()", 0 );
+    blDebug ( "END s_recalculaSaldo()", 0 );
 }
 

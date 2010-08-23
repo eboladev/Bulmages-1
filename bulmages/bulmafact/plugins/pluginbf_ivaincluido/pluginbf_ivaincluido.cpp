@@ -30,7 +30,7 @@
 **/
 int entryPoint ( BfBulmaFact * )
 {
-    _depura ( "Estoy dentro del plugin de iva incluido", 0 );
+    blDebug ( "Estoy dentro del plugin de iva incluido", 0 );
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale ( LC_ALL, "" );
     bindtextdomain ( "pluginbf_ivaincluido", g_confpr->valor ( CONF_DIR_TRADUCCION ).toAscii().constData() );
@@ -50,7 +50,7 @@ int entryPoint ( BfBulmaFact * )
 
 int ArticuloView_ArticuloView_Post ( ArticuloView *trab )
 {
-    _depura ( "ArticuloView_ArticuloView_Post", 0 );
+    blDebug ( "ArticuloView_ArticuloView_Post", 0 );
 
     trab->addDbField ( "pvpivaincarticulo", BlDbField::DbNumeric, BlDbField::DbNothing, _ ( "Precio de coste" ) );
 

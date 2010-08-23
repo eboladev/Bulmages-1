@@ -35,12 +35,12 @@
 **/
 int entryPoint ( QApplication * )
 {
-    _depura ( "entryPoint", 0, "Punto de Entrada del plugin de SubformSXC" );
+    blDebug ( "entryPoint", 0, "Punto de Entrada del plugin de SubformSXC" );
 
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale ( LC_ALL, "" );
     bindtextdomain ( "pluginbl_subform2sxc", g_confpr->valor ( CONF_DIR_TRADUCCION ).toAscii().constData() );
-    _depura ( "END entryPoint", 0, "Punto de Entrada del plugin de SubformSXC" );
+    blDebug ( "END entryPoint", 0, "Punto de Entrada del plugin de SubformSXC" );
     return 0;
 }
 
@@ -51,8 +51,8 @@ int entryPoint ( QApplication * )
 **/
 myplugsubformsxc::myplugsubformsxc ( BlSubForm *parent ) : QObject ( parent )
 {
-    _depura ( "myplugsubformsxc::myplugsubformsxc", 0 );
-    _depura ( "END myplugsubformsxc::myplugsubformsxc", 0 );
+    blDebug ( "myplugsubformsxc::myplugsubformsxc", 0 );
+    blDebug ( "END myplugsubformsxc::myplugsubformsxc", 0 );
 }
 
 
@@ -61,8 +61,8 @@ myplugsubformsxc::myplugsubformsxc ( BlSubForm *parent ) : QObject ( parent )
 **/
 myplugsubformsxc::~myplugsubformsxc()
 {
-    _depura ( "myplugsubformsxc::~myplugsubformsxc", 0 );
-    _depura ( "END myplugsubformsxc::~myplugsubformsxc", 0 );
+    blDebug ( "myplugsubformsxc::~myplugsubformsxc", 0 );
+    blDebug ( "END myplugsubformsxc::~myplugsubformsxc", 0 );
 }
 
 
@@ -72,10 +72,10 @@ myplugsubformsxc::~myplugsubformsxc()
 **/
 void myplugsubformsxc::s_pintaMenu ( QMenu *menu )
 {
-    _depura ( "myplugsubformsxc::s_pintaMenu", 0 );
+    blDebug ( "myplugsubformsxc::s_pintaMenu", 0 );
     menu->addSeparator();
     menu->addAction ( _ ( "Exportar a hoja de calculo (SXC)" ) );
-    _depura ( "END myplugsubformsxc::s_pintaMenu", 0 );
+    blDebug ( "END myplugsubformsxc::s_pintaMenu", 0 );
 }
 
 
@@ -85,11 +85,11 @@ void myplugsubformsxc::s_pintaMenu ( QMenu *menu )
 **/
 void myplugsubformsxc::s_trataMenu ( QAction *action )
 {
-    _depura ( "myplugsubformsxc::s_trataMenu", 0 );
+    blDebug ( "myplugsubformsxc::s_trataMenu", 0 );
     if ( action->text() == _ ( "Exportar a hoja de calculo (SXC)" ) ) {
         sacaSXC();
     } // end if
-    _depura ( "END myplugsubformsxc::s_trataMenu", 0 );
+    blDebug ( "END myplugsubformsxc::s_trataMenu", 0 );
 }
 
 
@@ -98,7 +98,7 @@ void myplugsubformsxc::s_trataMenu ( QAction *action )
 **/
 void myplugsubformsxc::sacaSXC()
 {
-    _depura ( "myplugsubformsxc::sacaSXC", 0 );
+    blDebug ( "myplugsubformsxc::sacaSXC", 0 );
 
     QString archivod = g_confpr->valor ( CONF_DIR_USER ) + "listadosxc.perl";
     BlSubForm * subf = ( BlSubForm * ) parent();
@@ -206,7 +206,7 @@ void myplugsubformsxc::sacaSXC()
     cadena = g_confpr->valor(CONF_SXC) + " " + g_confpr->valor ( CONF_DIR_USER ) + "listadosxc.sxc &";
     system ( cadena.toAscii() );
 
-    _depura ( "END myplugsubformsxc::sacaSXC", 0 );
+    blDebug ( "END myplugsubformsxc::sacaSXC", 0 );
 }
 
 
@@ -217,11 +217,11 @@ void myplugsubformsxc::sacaSXC()
 **/
 int BlSubForm_BlSubForm_Post ( BlSubForm *sub )
 {
-    _depura ( "BlSubForm_BlSubForm_Post", 0 );
+    blDebug ( "BlSubForm_BlSubForm_Post", 0 );
     myplugsubformsxc *subformsxc = new myplugsubformsxc ( sub );
     sub->QObject::connect ( sub, SIGNAL ( pintaMenu ( QMenu * ) ), subformsxc, SLOT ( s_pintaMenu ( QMenu * ) ) );
     sub->QObject::connect ( sub, SIGNAL ( trataMenu ( QAction * ) ), subformsxc, SLOT ( s_trataMenu ( QAction * ) ) );
-    _depura ( "END BlSubForm_BlSubForm_Post", 0 );
+    blDebug ( "END BlSubForm_BlSubForm_Post", 0 );
     return 0;
 }
 

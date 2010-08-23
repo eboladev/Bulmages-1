@@ -41,7 +41,7 @@
 AlmacenesListView::AlmacenesListView ( QWidget *parent, Qt::WFlags flag )
         : BlFormList ( NULL, parent, flag )
 {
-    _depura ( "AlmacenesListView::AlmacenesListView(1)", 0 );
+    blDebug ( "AlmacenesListView::AlmacenesListView(1)", 0 );
     setupUi ( this );
     setAttribute ( Qt::WA_DeleteOnClose );
     /// Disparamos los plugins.
@@ -61,7 +61,7 @@ AlmacenesListView::AlmacenesListView ( QWidget *parent, Qt::WFlags flag )
     mui_list->setSortingEnabled ( TRUE );
 
     hideBusqueda();
-    _depura ( "END AlmacenesListView::AlmacenesListView(1)", 0 );
+    blDebug ( "END AlmacenesListView::AlmacenesListView(1)", 0 );
 }
 
 
@@ -75,7 +75,7 @@ AlmacenesListView::AlmacenesListView ( QWidget *parent, Qt::WFlags flag )
 AlmacenesListView::AlmacenesListView ( BfCompany *comp, QWidget *parent, Qt::WFlags flag )
         : BlFormList ( comp, parent, flag )
 {
-    _depura ( "AlmacenesListView::AlmacenesListView(2)", 0 );
+    blDebug ( "AlmacenesListView::AlmacenesListView(2)", 0 );
     setupUi ( this );
     setAttribute ( Qt::WA_DeleteOnClose );
     /// Disparamos los plugins.
@@ -100,7 +100,7 @@ AlmacenesListView::AlmacenesListView ( BfCompany *comp, QWidget *parent, Qt::WFl
     hideBusqueda();
     /// Hacemos el tratamiento de los permisos que desabilita botones en caso de no haber suficientes permisos.
     trataPermisos ( "almacen" );
-    _depura ( "END AlmacenesListView::AlmacenesListView(2)", 0 );
+    blDebug ( "END AlmacenesListView::AlmacenesListView(2)", 0 );
 }
 
 
@@ -109,8 +109,8 @@ AlmacenesListView::AlmacenesListView ( BfCompany *comp, QWidget *parent, Qt::WFl
 **/
 AlmacenesListView::~AlmacenesListView()
 {
-    _depura ( "AlmacenesListView::~AlmacenesListView", 0 );
-    _depura ( "END AlmacenesListView::~AlmacenesListView", 0 );
+    blDebug ( "AlmacenesListView::~AlmacenesListView", 0 );
+    blDebug ( "END AlmacenesListView::~AlmacenesListView", 0 );
 }
 
 
@@ -120,8 +120,8 @@ AlmacenesListView::~AlmacenesListView()
 **/
 QString AlmacenesListView::idalmacen()
 {
-    _depura ( "AlmacenesListView::idalmacenk", 0 );
-    _depura ( "END AlmacenesListView::idalmacenk", 0 );
+    blDebug ( "AlmacenesListView::idalmacenk", 0 );
+    blDebug ( "END AlmacenesListView::idalmacenk", 0 );
     return m_idalmacen;
 }
 
@@ -132,10 +132,10 @@ QString AlmacenesListView::idalmacen()
 **/
 void AlmacenesListView::setMainCompany ( BfCompany *comp )
 {
-    _depura ( "AlmacenesListView::setMainCompany", 0 );
+    blDebug ( "AlmacenesListView::setMainCompany", 0 );
     BlMainCompanyPointer::setMainCompany ( comp );
     mui_list->setMainCompany ( comp );
-    _depura ( "END AlmacenesListView::setMainCompany", 0 );
+    blDebug ( "END AlmacenesListView::setMainCompany", 0 );
 }
 
 
@@ -144,14 +144,14 @@ void AlmacenesListView::setMainCompany ( BfCompany *comp )
 **/
 void AlmacenesListView::crear()
 {
-    _depura ( "AlmacenesListView::crear", 0 );
+    blDebug ( "AlmacenesListView::crear", 0 );
     /*
         ((BfCompany *)mainCompany())->s_newAlmacen();
     */
     AlmacenView *alm = new AlmacenView ( ( BfCompany * ) mainCompany(), 0 );
     mainCompany() ->pWorkspace() ->addWindow ( alm );
     alm->show();
-    _depura ( "END AlmacenesListView::crear", 0 );
+    blDebug ( "END AlmacenesListView::crear", 0 );
 }
 
 
@@ -160,12 +160,12 @@ void AlmacenesListView::crear()
 **/
 void AlmacenesListView::presentar()
 {
-    _depura ( "AlmacenesListView::presentar", 0 );
+    blDebug ( "AlmacenesListView::presentar", 0 );
 
     /// Hacemos el listado y lo presentamos.
     mui_list->cargar ( "SELECT * FROM almacen" );
 
-    _depura ( "END AlmacenesListView::presentar", 0 );
+    blDebug ( "END AlmacenesListView::presentar", 0 );
 }
 
 
@@ -175,12 +175,12 @@ void AlmacenesListView::presentar()
 **/
 QString AlmacenesListView::generaFiltro()
 {
-    _depura ( "AlmacenesListView::generaFiltro", 0 );
+    blDebug ( "AlmacenesListView::generaFiltro", 0 );
     /// Tratamiento de los filtros.
     QString filtro = "";
 
     return ( filtro );
-    _depura ( "END AlmacenesListView::generaFiltro", 0 );
+    blDebug ( "END AlmacenesListView::generaFiltro", 0 );
 }
 
 
@@ -190,7 +190,7 @@ QString AlmacenesListView::generaFiltro()
 **/
 void AlmacenesListView::editar ( int row )
 {
-    _depura ( "AlmacenesListView::editar", 0 );
+    blDebug ( "AlmacenesListView::editar", 0 );
     try {
         m_idalmacen = mui_list->dbValue ( QString ( "idalmacen" ), row );
 
@@ -202,7 +202,7 @@ void AlmacenesListView::editar ( int row )
         } else {
             emit ( selected ( m_idalmacen ) );
         } // end if
-        _depura ( "END AlmacenesListView::editar", 0 );
+        blDebug ( "END AlmacenesListView::editar", 0 );
     } catch ( ... ) {
         mensajeInfo ( _ ( "Error al editar el almacen" ) );
     } // end try
@@ -214,9 +214,9 @@ void AlmacenesListView::editar ( int row )
 **/
 void AlmacenesListView::imprimir()
 {
-    _depura ( "AlmacenesListView::imprimir", 0 );
+    blDebug ( "AlmacenesListView::imprimir", 0 );
     mui_list->imprimirPDF ( _ ( "Almacenes" ) );
-    _depura ( "END AlmacenesListView::imprimir", 0 );
+    blDebug ( "END AlmacenesListView::imprimir", 0 );
 }
 
 
@@ -226,7 +226,7 @@ void AlmacenesListView::imprimir()
 **/
 void AlmacenesListView::borrar()
 {
-    _depura ( "AlmacenesListView::borrar", 0 );
+    blDebug ( "AlmacenesListView::borrar", 0 );
     int a = mui_list->currentRow();
     if ( a < 0 ) {
         mensajeInfo ( _ ( "Debe seleccionar una linea" ) );
@@ -253,7 +253,7 @@ void AlmacenesListView::borrar()
     } catch ( ... ) {
         mensajeInfo ( _ ( "Error al borrar el almacen" ) );
     } // end try
-    _depura ( "END AlmacenesListView::borrar", 0 );
+    blDebug ( "END AlmacenesListView::borrar", 0 );
 }
 
 

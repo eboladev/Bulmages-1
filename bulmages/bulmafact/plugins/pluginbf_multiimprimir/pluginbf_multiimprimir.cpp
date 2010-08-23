@@ -34,7 +34,7 @@
 **/
 int entryPoint ( BfBulmaFact * )
 {
-    _depura ( "Estoy dentro del plugin de impresiones multiples", 0 );
+    blDebug ( "Estoy dentro del plugin de impresiones multiples", 0 );
 
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale ( LC_ALL, "" );
@@ -51,9 +51,9 @@ int entryPoint ( BfBulmaFact * )
 **/
 int PedidosClienteListSubform_PedidosClienteListSubform ( PedidosClienteListSubform *l )
 {
-    _depura ( "PedidosClienteListSubform_PedidosClienteListSubform", 0 );
+    blDebug ( "PedidosClienteListSubform_PedidosClienteListSubform", 0 );
     l->addSubFormHeader ( "selector", BlDbField::DbBoolean, BlDbField::DbNoSave | BlDbField::DbNoLoad, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, "selector" );
-    _depura ( "END PedidosClienteListSubform_PedidosClienteListSubform", 0 );
+    blDebug ( "END PedidosClienteListSubform_PedidosClienteListSubform", 0 );
     return 0;
 }
 
@@ -65,11 +65,11 @@ int PedidosClienteListSubform_PedidosClienteListSubform ( PedidosClienteListSubf
 **/
 int AlbaranClienteListSubform_AlbaranClienteListSubform ( AlbaranClienteListSubform *l )
 {
-    _depura ( "AlbaranClienteListSubform_AlbaranClienteListSubform", 0 );
+    blDebug ( "AlbaranClienteListSubform_AlbaranClienteListSubform", 0 );
     if ( !l->existsHeader ( "selector" ) ) {
         l->addSubFormHeader ( "selector", BlDbField::DbBoolean, BlDbField::DbNoSave | BlDbField::DbNoLoad, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, "selector" );
     } // end if
-    _depura ( "END AlbaranClienteListSubform_AlbaranClienteListSubform", 0 );
+    blDebug ( "END AlbaranClienteListSubform_AlbaranClienteListSubform", 0 );
     return 0;
 }
 
@@ -81,9 +81,9 @@ int AlbaranClienteListSubform_AlbaranClienteListSubform ( AlbaranClienteListSubf
 **/
 int FacturasListSubform_FacturasListSubform ( FacturasListSubform *l )
 {
-    _depura ( "FacturasListSubform_FacturasListSubform", 0 );
+    blDebug ( "FacturasListSubform_FacturasListSubform", 0 );
     l->addSubFormHeader ( "selector", BlDbField::DbBoolean, BlDbField::DbNoSave | BlDbField::DbNoLoad, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, "selector" );
-    _depura ( "END FacturasListSubform_FacturasListSubform", 0 );
+    blDebug ( "END FacturasListSubform_FacturasListSubform", 0 );
     return 0;
 }
 
@@ -95,9 +95,9 @@ int FacturasListSubform_FacturasListSubform ( FacturasListSubform *l )
 **/
 int PresupuestoListSubForm_PresupuestoListSubForm ( PresupuestoListSubForm *l )
 {
-    _depura ( "PresupuestoListSubForm_PresupuestoListSubForm", 0 );
+    blDebug ( "PresupuestoListSubForm_PresupuestoListSubForm", 0 );
     l->addSubFormHeader ( "selector", BlDbField::DbBoolean, BlDbField::DbNoSave | BlDbField::DbNoLoad, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, "selector" );
-    _depura ( "END PresupuestoListSubForm_PresupuestoListSubForm", 0 );
+    blDebug ( "END PresupuestoListSubForm_PresupuestoListSubForm", 0 );
     return 0;
 }
 
@@ -109,9 +109,9 @@ int PresupuestoListSubForm_PresupuestoListSubForm ( PresupuestoListSubForm *l )
 **/
 int CobrosListSubForm_CobrosListSubForm ( CobrosListSubForm *l )
 {
-    _depura ( "CobrosListSubForm_CobrosListSubForm", 0 );
+    blDebug ( "CobrosListSubForm_CobrosListSubForm", 0 );
     l->addSubFormHeader ( "selector", BlDbField::DbBoolean, BlDbField::DbNoSave | BlDbField::DbNoLoad, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, "selector" );
-    _depura ( "CobrosListSubForm_CobrosListSubForm", 0 );
+    blDebug ( "CobrosListSubForm_CobrosListSubForm", 0 );
     return 0;
 }
 
@@ -124,9 +124,9 @@ int CobrosListSubForm_CobrosListSubForm ( CobrosListSubForm *l )
 **/
 int RecibosListSubForm_RecibosListSubForm ( RecibosListSubForm *l )
 {
-    _depura ( "RecibosListSubForm_RecibosListSubForm", 0 );
+    blDebug ( "RecibosListSubForm_RecibosListSubForm", 0 );
     l->addSubFormHeader ( "selector", BlDbField::DbBoolean, BlDbField::DbNoSave | BlDbField::DbNoLoad, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, "selector" );
-    _depura ( "RecibosListSubForm_RecibosListSubForm", 0 );
+    blDebug ( "RecibosListSubForm_RecibosListSubForm", 0 );
     return 0;
 }
 
@@ -137,7 +137,7 @@ int RecibosListSubForm_RecibosListSubForm ( RecibosListSubForm *l )
 **/
 int CobrosList_CobrosList ( CobrosList *l )
 {
-    _depura ( "CobrosList_CobrosList", 0 );
+    blDebug ( "CobrosList_CobrosList", 0 );
 
     SelQToolButton *sel = new SelQToolButton ( NULL, NULL, NULL, NULL, l, l->mui_plugbotones );
     ImpQToolButton *imp = new ImpQToolButton ( NULL, NULL, NULL, NULL, l, l->mui_plugbotones );
@@ -159,7 +159,7 @@ int CobrosList_CobrosList ( CobrosList *l )
     m_hboxLayout1->addWidget ( sumar);
 
 
-    _depura ( "END CobrosList_CobrosList", 0 );
+    blDebug ( "END CobrosList_CobrosList", 0 );
     return 0;
 }
 
@@ -171,7 +171,7 @@ int CobrosList_CobrosList ( CobrosList *l )
 **/
 int PresupuestoList_PresupuestoList ( PresupuestoList *l )
 {
-    _depura ( "PresupuestoList_PresupuestoList", 0 );
+    blDebug ( "PresupuestoList_PresupuestoList", 0 );
 
     SelQToolButton *sel = new SelQToolButton ( l, NULL, NULL, NULL, NULL, l->mui_plugbotones );
     ImpQToolButton *imp = new ImpQToolButton ( l, NULL, NULL, NULL, NULL, l->mui_plugbotones );
@@ -194,7 +194,7 @@ int PresupuestoList_PresupuestoList ( PresupuestoList *l )
     m_hboxLayout1->addWidget ( sumar);
 
 
-    _depura ( "END PresupuestoList_PresupuestoList", 0 );
+    blDebug ( "END PresupuestoList_PresupuestoList", 0 );
     return 0;
 }
 
@@ -206,7 +206,7 @@ int PresupuestoList_PresupuestoList ( PresupuestoList *l )
 **/
 int PedidosClienteList_PedidosClienteList ( PedidosClienteList *l )
 {
-    _depura ( "PedidosClienteList_PedidosClienteList", 0 );
+    blDebug ( "PedidosClienteList_PedidosClienteList", 0 );
 
     SelQToolButton *sel = new SelQToolButton ( NULL, l, NULL, NULL, NULL, l->mui_plugbotones );
     ImpQToolButton *imp = new ImpQToolButton ( NULL, l, NULL, NULL, NULL, l->mui_plugbotones );
@@ -229,7 +229,7 @@ int PedidosClienteList_PedidosClienteList ( PedidosClienteList *l )
     m_hboxLayout1->addWidget ( sumar);
 
 
-    _depura ( "END PedidosClienteList_PedidosClienteList", 0 );
+    blDebug ( "END PedidosClienteList_PedidosClienteList", 0 );
     return 0;
 }
 
@@ -241,7 +241,7 @@ int PedidosClienteList_PedidosClienteList ( PedidosClienteList *l )
 **/
 int AlbaranClienteList_AlbaranClienteList ( AlbaranClienteList *l )
 {
-    _depura ( "PedidosClienteList_PedidosClienteList", 0 );
+    blDebug ( "PedidosClienteList_PedidosClienteList", 0 );
 
     SelQToolButton *sel = new SelQToolButton ( NULL,  NULL, l, NULL, NULL, l->mui_plugbotones );
     ImpQToolButton *imp = new ImpQToolButton ( NULL,  NULL, l, NULL, NULL, l->mui_plugbotones );
@@ -265,7 +265,7 @@ int AlbaranClienteList_AlbaranClienteList ( AlbaranClienteList *l )
 
 
 
-    _depura ( "END PedidosClienteList_PedidosClienteList", 0 );
+    blDebug ( "END PedidosClienteList_PedidosClienteList", 0 );
     return 0;
 }
 
@@ -277,7 +277,7 @@ int AlbaranClienteList_AlbaranClienteList ( AlbaranClienteList *l )
 **/
 int FacturasList_FacturasList ( FacturasList *l )
 {
-    _depura ( "FacturasList_FacturasList", 0 );
+    blDebug ( "FacturasList_FacturasList", 0 );
 
     SelQToolButton *sel = new SelQToolButton ( NULL, NULL, NULL, l, NULL, l->mui_plugbotones );
     ImpQToolButton *imp = new ImpQToolButton ( NULL, NULL, NULL, l, NULL, l->mui_plugbotones );
@@ -298,7 +298,7 @@ int FacturasList_FacturasList ( FacturasList *l )
     m_hboxLayout1->addWidget ( procesar);
     m_hboxLayout1->addWidget ( sumar);
 
-    _depura ( "END FacturasList_FacturasList", 0 );
+    blDebug ( "END FacturasList_FacturasList", 0 );
     return 0;
 }
 
@@ -310,7 +310,7 @@ int FacturasList_FacturasList ( FacturasList *l )
 **/
 int RecibosList_RecibosList ( RecibosList *l )
 {
-    _depura ( "RecibosList_RecibosList", 0 );
+    blDebug ( "RecibosList_RecibosList", 0 );
 
     SelQToolButton *sel = new SelQToolButton ( NULL, NULL, NULL, NULL, NULL, l->mui_plugbotones );
     ImpQToolButton *imp = new ImpQToolButton ( NULL, NULL, NULL, NULL, NULL, l->mui_plugbotones );
@@ -326,7 +326,7 @@ int RecibosList_RecibosList ( RecibosList *l )
     m_hboxLayout1->addWidget ( sel );
     m_hboxLayout1->addWidget ( imp );
 
-    _depura ( "END RecibosList_RecibosList", 0 );
+    blDebug ( "END RecibosList_RecibosList", 0 );
     return 0;
 }
 

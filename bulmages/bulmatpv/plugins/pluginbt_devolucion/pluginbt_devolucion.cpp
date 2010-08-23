@@ -37,10 +37,10 @@ MyDevButton * g_plug;
 **/
 MyDevButton::MyDevButton ( const QString & text, QWidget * parent, BtCompany *emp ) : QPushButton ( text,  parent )
 {
-    _depura ( "MyDevButton::MyDevButton", 0 );
+    blDebug ( "MyDevButton::MyDevButton", 0 );
     m_emp = emp;
     connect ( this, SIGNAL ( released() ), this, SLOT ( on_click() ) );
-    _depura ( "END MyDevButton::MyDevButton", 0 );
+    blDebug ( "END MyDevButton::MyDevButton", 0 );
 }
 
 
@@ -49,8 +49,8 @@ MyDevButton::MyDevButton ( const QString & text, QWidget * parent, BtCompany *em
 **/
 MyDevButton::~MyDevButton()
 {
-    _depura ( "MyDevButton::~MyDevButton", 0 );
-    _depura ( "END MyDevButton::~MyDevButton", 0 );
+    blDebug ( "MyDevButton::~MyDevButton", 0 );
+    blDebug ( "END MyDevButton::~MyDevButton", 0 );
 }
 
 
@@ -60,7 +60,7 @@ MyDevButton::~MyDevButton()
 **/
 void MyDevButton::on_click (  )
 {
-    _depura ( "MyDevButton::cambia", 0 );
+    blDebug ( "MyDevButton::cambia", 0 );
     QDialog *diag = new QDialog;
     Devolucion *camb = new Devolucion ( m_emp, diag );
     diag->setModal ( true );
@@ -78,7 +78,7 @@ void MyDevButton::on_click (  )
 
     delete diag;
 
-    _depura ( "END MyDevButton::cambia", 0 );
+    blDebug ( "END MyDevButton::cambia", 0 );
 }
 
 
@@ -88,13 +88,13 @@ void MyDevButton::on_click (  )
 **/
 int entryPoint ( BtBulmaTPV *tpv )
 {
-    _depura ( "entryPoint", 0 );
+    blDebug ( "entryPoint", 0 );
 
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale ( LC_ALL, "" );
     bindtextdomain ( "pluginbt_devolucion", g_confpr->valor ( CONF_DIR_TRADUCCION ).toAscii().constData() );
 
-    _depura ( "END entryPoint", 0 );
+    blDebug ( "END entryPoint", 0 );
     return 0;
 }
 

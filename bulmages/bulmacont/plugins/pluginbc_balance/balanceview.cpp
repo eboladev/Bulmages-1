@@ -55,7 +55,7 @@
 BalanceView::BalanceView ( BcCompany *emp, QWidget *parent, int )
         : BcForm ( emp, parent )
 {
-    _depura ( "BalanceView::BalanceView", 0 );
+    blDebug ( "BalanceView::BalanceView", 0 );
     setupUi ( this );
 
     setTitleName ( _ ( "Balance" ) );
@@ -110,7 +110,7 @@ BalanceView::BalanceView ( BcCompany *emp, QWidget *parent, int )
 
 
     mainCompany() ->meteWindow ( windowTitle(), this );
-    _depura ( "END BalanceView::BalanceView", 0 );
+    blDebug ( "END BalanceView::BalanceView", 0 );
 }
 
 
@@ -119,8 +119,8 @@ BalanceView::BalanceView ( BcCompany *emp, QWidget *parent, int )
 **/
 BalanceView::~BalanceView()
 {
-    _depura ( "BalanceView::~BalanceView", 0 );
-    _depura ( "END BalanceView::~BalanceView", 0 );
+    blDebug ( "BalanceView::~BalanceView", 0 );
+    blDebug ( "END BalanceView::~BalanceView", 0 );
 }
 
 
@@ -129,9 +129,9 @@ BalanceView::~BalanceView()
 **/
 void BalanceView::on_mui_actualizar_clicked()
 {
-    _depura ( "BalanceView::on_mui_actualizar_clicked", 0 );
+    blDebug ( "BalanceView::on_mui_actualizar_clicked", 0 );
     accept();
-    _depura ( "END BalanceView::on_mui_actualizar_clicked", 0 );
+    blDebug ( "END BalanceView::on_mui_actualizar_clicked", 0 );
 }
 
 
@@ -147,12 +147,12 @@ void BalanceView::on_mui_actualizar_clicked()
 **/
 void BalanceView::inicializa1 ( QString codinicial, QString codfinal, QString fecha1, QString fecha2, QString idc_coste )
 {
-    _depura ( "BalanceView::inicializa1", 0 );
+    blDebug ( "BalanceView::inicializa1", 0 );
     m_codigoinicial->setText ( codinicial );
     m_codigofinal->setText ( codfinal );
     m_fechainicial1->setText ( blNormalizeDate ( fecha1 ).toString ( "dd/MM/yyyy" ) );
     m_fechafinal1->setText ( blNormalizeDate ( fecha2 ).toString ( "dd/MM/yyyy" ) );
-    _depura ( "END BalanceView::inicializa1", 0 );
+    blDebug ( "END BalanceView::inicializa1", 0 );
 }
 
 
@@ -164,7 +164,7 @@ void BalanceView::inicializa1 ( QString codinicial, QString codfinal, QString fe
 **/
 void BalanceView::presentar()
 {
-    _depura ( "BalanceView::presentar", 0 );
+    blDebug ( "BalanceView::presentar", 0 );
     QString finicial = m_fechainicial1->text();
     QString ffinal = m_fechafinal1->text();
     QString cinicial = m_codigoinicial->fieldValue("codigo").left ( 2 );
@@ -182,7 +182,7 @@ void BalanceView::presentar()
     /// Balance de Sumas y Saldos.
     presentarSyS ( finicial, ffinal, cinicial, cfinal, nivel, 0, jerarquico );
     //} // end if
-    _depura ( "END BalanceView::presentar", 0 );
+    blDebug ( "END BalanceView::presentar", 0 );
 }
 
 
@@ -197,7 +197,7 @@ void BalanceView::presentar()
 **/
 void BalanceView::presentarSyS ( QString finicial, QString ffinal, QString cinicial, QString cfinal, int nivel, int, bool jerarquico )
 {
-    _depura ( "BalanceView::presentarSyS", 0 );
+    blDebug ( "BalanceView::presentarSyS", 0 );
     BlFixed tsaldoant ( "0.00" ), tdebe ( "0.00" ), thaber ( "0.00" ), tsaldo ( "0.00" );
     BlDbRecordSet *ramas = NULL;
     BlDbRecordSet *hojas = NULL;
@@ -414,7 +414,7 @@ void BalanceView::presentarSyS ( QString finicial, QString ffinal, QString cinic
         if ( ramas ) delete ramas;
         if ( hojas ) delete hojas;
     } // end try
-    _depura ( "END BalanceView::presentarSyS", 0 );
+    blDebug ( "END BalanceView::presentarSyS", 0 );
 }
 
 
@@ -423,9 +423,9 @@ void BalanceView::presentarSyS ( QString finicial, QString ffinal, QString cinic
 **/
 void BalanceView::accept()
 {
-    _depura ( "BalanceView::accept", 0 );
+    blDebug ( "BalanceView::accept", 0 );
     presentar();
-    _depura ( "END BalanceView::accept", 0 );
+    blDebug ( "END BalanceView::accept", 0 );
 }
 
 
@@ -437,10 +437,10 @@ void BalanceView::accept()
 **/
 void BalanceView::imprimir()
 {
-    _depura ( "BalanceView::on_mui_imprimir_clicked", 0 );
+    blDebug ( "BalanceView::on_mui_imprimir_clicked", 0 );
     BalancePrintView *balan = new BalancePrintView ( mainCompany() );
     balan->inicializa1 ( m_codigoinicial->fieldValue("codigo"), m_codigofinal->fieldValue("codigo"), m_fechainicial1->text(), m_fechafinal1->text(), FALSE );
     balan->exec();
-    _depura ( "END BalanceView::on_mui_imprimir_clicked", 0 );
+    blDebug ( "END BalanceView::on_mui_imprimir_clicked", 0 );
 }
 

@@ -42,8 +42,8 @@ BcPlanContableListView *g_plancontable;
 **/
 MyPluginCuenta::MyPluginCuenta()
 {
-    _depura ( "MyPluginCuenta::MyPluginCuenta", 0 );
-    _depura ( "END MyPluginCuenta::MyPluginCuenta", 0 );
+    blDebug ( "MyPluginCuenta::MyPluginCuenta", 0 );
+    blDebug ( "END MyPluginCuenta::MyPluginCuenta", 0 );
 }
 
 
@@ -52,8 +52,8 @@ MyPluginCuenta::MyPluginCuenta()
 **/
 MyPluginCuenta::~MyPluginCuenta()
 {
-    _depura ( "MyPluginCuenta::~MyPluginCuenta", 0 );
-    _depura ( "END MyPluginCuenta::~MyPluginCuenta", 0 );
+    blDebug ( "MyPluginCuenta::~MyPluginCuenta", 0 );
+    blDebug ( "END MyPluginCuenta::~MyPluginCuenta", 0 );
 }
 
 
@@ -63,7 +63,7 @@ MyPluginCuenta::~MyPluginCuenta()
 **/
 void MyPluginCuenta::elslot()
 {
-    _depura ( "MyPluginCuenta::elslot", 0 );
+    blDebug ( "MyPluginCuenta::elslot", 0 );
     if (g_plancontable == NULL) {
       g_plancontable = new BcPlanContableListView ( ( BcCompany * ) mainCompany(), 0 );
       g_plancontable->inicializa();
@@ -71,7 +71,7 @@ void MyPluginCuenta::elslot()
     } // end if
     g_plancontable->hide();
     g_plancontable->show();
-    _depura ( "END MyPluginCuenta::elslot", 0 );
+    blDebug ( "END MyPluginCuenta::elslot", 0 );
 }
 
 
@@ -82,7 +82,7 @@ void MyPluginCuenta::elslot()
 **/
 void MyPluginCuenta::inicializa ( BcBulmaCont *bges )
 {
-    _depura ( "MyPluginCuenta::inicializa", 0 );
+    blDebug ( "MyPluginCuenta::inicializa", 0 );
 
     /// Creamos el men&uacute;.
     setMainCompany ( (BlMainCompany *)bges->empresaactual() );
@@ -108,7 +108,7 @@ void MyPluginCuenta::inicializa ( BcBulmaCont *bges )
     bges->menuBar() ->insertMenu ( bges->menuMaestro->menuAction(), pPluginMenu );
     bges->toolBar->addAction ( accion );
 
-    _depura ( "END MyPluginCuenta::inicializa", 0 );
+    blDebug ( "END MyPluginCuenta::inicializa", 0 );
 }
 
 
@@ -118,7 +118,7 @@ void MyPluginCuenta::inicializa ( BcBulmaCont *bges )
 **/
 int entryPoint ( BcBulmaCont *bcont )
 {
-    _depura ( "entryPoint::entryPoint", 0 );
+    blDebug ( "entryPoint::entryPoint", 0 );
 
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale ( LC_ALL, "" );
@@ -129,7 +129,7 @@ int entryPoint ( BcBulmaCont *bcont )
     MyPluginCuenta *plug = new MyPluginCuenta();
     plug->inicializa ( bcont );
 
-    _depura ( "END entryPoint::entryPoint", 0 );
+    blDebug ( "END entryPoint::entryPoint", 0 );
     return 0;
 }
 
@@ -145,8 +145,8 @@ int entryPoint ( BcBulmaCont *bcont )
 **/
 MyPluginCuenta1::MyPluginCuenta1 ( BlSubForm *parent ) : QObject ( parent )
 {
-    _depura ( "MyPluginCuenta1::MyPluginCuenta1", 0 );
-    _depura ( "END MyPluginCuenta1::MyPluginCuenta1", 0 );
+    blDebug ( "MyPluginCuenta1::MyPluginCuenta1", 0 );
+    blDebug ( "END MyPluginCuenta1::MyPluginCuenta1", 0 );
 }
 
 ///
@@ -154,8 +154,8 @@ MyPluginCuenta1::MyPluginCuenta1 ( BlSubForm *parent ) : QObject ( parent )
 **/
 MyPluginCuenta1::~MyPluginCuenta1()
 {
-    _depura ( "MyPluginCuenta1::~MyPluginCuenta1", 0 );
-    _depura ( "END MyPluginCuenta1::~MyPluginCuenta1", 0 );
+    blDebug ( "MyPluginCuenta1::~MyPluginCuenta1", 0 );
+    blDebug ( "END MyPluginCuenta1::~MyPluginCuenta1", 0 );
 }
 
 
@@ -165,7 +165,7 @@ MyPluginCuenta1::~MyPluginCuenta1()
 **/
 void MyPluginCuenta1::s_pintaMenu ( QMenu *menu )
 {
-    _depura ( "MyPluginCuenta1::s_pintaMenu", 0 );
+    blDebug ( "MyPluginCuenta1::s_pintaMenu", 0 );
     BlSubForm *sub = ( BlSubForm * ) parent();
     BlSubFormHeader *header = sub->header ( "codigo" );
     if ( header ) {
@@ -177,7 +177,7 @@ void MyPluginCuenta1::s_pintaMenu ( QMenu *menu )
             menu->addAction ( _ ( "Seleccionar cuenta" ) );
         } // end if
     } // end if
-    _depura ( "END MyPluginCuenta1::s_pintaMenu", 0 );
+    blDebug ( "END MyPluginCuenta1::s_pintaMenu", 0 );
 }
 
 
@@ -187,7 +187,7 @@ void MyPluginCuenta1::s_pintaMenu ( QMenu *menu )
 **/
 void MyPluginCuenta1::s_trataMenu ( QAction *action )
 {
-    _depura ( "MyPluginCuenta1::s_trataMenu", 0 );
+    blDebug ( "MyPluginCuenta1::s_trataMenu", 0 );
     BlSubForm *sub = ( BlSubForm * ) parent();
     if ( action->text() == _ ( "Editar cuenta" ) ) {
         QString idcuenta = sub->dbValue ( "idcuenta" );
@@ -199,7 +199,7 @@ void MyPluginCuenta1::s_trataMenu ( QAction *action )
         nuevoCuenta();
     } // end if
 
-    _depura ( "END MyPluginCuenta1::s_trataMenu", 0 );
+    blDebug ( "END MyPluginCuenta1::s_trataMenu", 0 );
 }
 
 
@@ -208,12 +208,12 @@ void MyPluginCuenta1::s_trataMenu ( QAction *action )
 **/
 void MyPluginCuenta1::editarCuenta ( QString idcuenta )
 {
-    _depura ( "MyPluginCuenta1::editarCuenta", 0 );
+    blDebug ( "MyPluginCuenta1::editarCuenta", 0 );
         BcCuentaView * nuevae = new BcCuentaView ( ((BcBulmaCont *)g_main)->empresaactual(), 0 );
         nuevae->cargar ( idcuenta );
         ((BcBulmaCont *)g_main)->empresaactual() ->pWorkspace() ->addWindow ( nuevae );
         nuevae->show();
-    _depura ( "END MyPluginCuenta1::editarCuenta", 0 );
+    blDebug ( "END MyPluginCuenta1::editarCuenta", 0 );
 }
 
 
@@ -222,12 +222,12 @@ void MyPluginCuenta1::editarCuenta ( QString idcuenta )
 **/
 void MyPluginCuenta1::nuevoCuenta( )
 {
-    _depura ( "MyPluginCuenta1::editarCuenta", 0 );
+    blDebug ( "MyPluginCuenta1::editarCuenta", 0 );
         BcCuentaView * nuevae = new BcCuentaView ( ((BcBulmaCont *)g_main)->empresaactual(), 0 );
         ((BcBulmaCont *)g_main)->empresaactual() ->pWorkspace() ->addWindow ( nuevae );
         nuevae->mui_padre->setEnabled(TRUE);
         nuevae->show();
-    _depura ( "END MyPluginCuenta1::editarCuenta", 0 );
+    blDebug ( "END MyPluginCuenta1::editarCuenta", 0 );
 }
 
 
@@ -236,7 +236,7 @@ void MyPluginCuenta1::nuevoCuenta( )
 **/
 void MyPluginCuenta1::seleccionarCuenta ( BlSubForm *sub )
 {
-    _depura ( "MyPluginCuenta1::editarCuenta", 0 );
+    blDebug ( "MyPluginCuenta1::editarCuenta", 0 );
 /*
     CuentaList *artlist = new CuentaList ( ( BcCompany * ) sub->mainCompany(), NULL, 0, BL_SELECT_MODE );
     /// Esto es convertir un QWidget en un sistema modal de dialogo.
@@ -250,7 +250,7 @@ void MyPluginCuenta1::seleccionarCuenta ( BlSubForm *sub )
 
     /// Si no tenemos un idcuenta salimos ya que significa que no se ha seleccionado ninguno.
     if ( idArticle == "" ) {
-        _depura ( "END BlSubForm::pressedAsterisk", 0 );
+        blDebug ( "END BlSubForm::pressedAsterisk", 0 );
         return;
     } // end if
 
@@ -262,7 +262,7 @@ void MyPluginCuenta1::seleccionarCuenta ( BlSubForm *sub )
     } // end if
     delete cur;
 */
-    _depura ( "END MyPluginCuenta1::editarCuenta", 0 );
+    blDebug ( "END MyPluginCuenta1::editarCuenta", 0 );
 }
 
 
@@ -273,18 +273,18 @@ void MyPluginCuenta1::seleccionarCuenta ( BlSubForm *sub )
 **/
 int BlSubForm_BlSubForm_Post ( BlSubForm *sub )
 {
-    _depura ( "BlSubForm_BlSubForm_Post", 0 );
+    blDebug ( "BlSubForm_BlSubForm_Post", 0 );
     MyPluginCuenta1 *subformods = new MyPluginCuenta1 ( sub );
     sub->QObject::connect ( sub, SIGNAL ( pintaMenu ( QMenu * ) ), subformods, SLOT ( s_pintaMenu ( QMenu * ) ) );
     sub->QObject::connect ( sub, SIGNAL ( trataMenu ( QAction * ) ), subformods, SLOT ( s_trataMenu ( QAction * ) ) );
-    _depura ( "END BlSubForm_BlSubForm_Post", 0 );
+    blDebug ( "END BlSubForm_BlSubForm_Post", 0 );
     return 0;
 }
 
 
 int Busqueda_on_mui_buscar_clicked ( BlSearchWidget *busq )
 {
-    _depura("pluginbc_cuenta::Busqueda_on_mui_buscar_clicked");
+    blDebug("pluginbc_cuenta::Busqueda_on_mui_buscar_clicked");
     int val = 0;
     if ( busq->tableName() == "cuenta" ) {
 
@@ -321,7 +321,7 @@ int Busqueda_on_mui_buscar_clicked ( BlSearchWidget *busq )
         val = 1;
     } // end if
 
-    _depura("END pluginbc_cuenta::Busqueda_on_mui_buscar_clicked");
+    blDebug("END pluginbc_cuenta::Busqueda_on_mui_buscar_clicked");
     return val;
 }
 
@@ -330,7 +330,7 @@ int Busqueda_on_mui_buscar_clicked ( BlSearchWidget *busq )
 
 int BlSubFormDelegate_createEditor ( BlSubFormDelegate *bl )
 {
-    _depura ( "pluginbc_cuenta::BlSubFormDelegate_createEditor", 0 );
+    blDebug ( "pluginbc_cuenta::BlSubFormDelegate_createEditor", 0 );
     int ret = 0;
     if ( g_nomcampo == "codigo" || g_nomcampo == "codigo1" ) {
         BlDbCompleterComboBox * editor = new BlDbCompleterComboBox ( g_editor );
@@ -343,7 +343,7 @@ int BlSubFormDelegate_createEditor ( BlSubFormDelegate *bl )
         ret = -1;
     } // end if
 
-    _depura ( "END pluginbc_cuenta::BlSubFormDelegate_createEditor", 0 );
+    blDebug ( "END pluginbc_cuenta::BlSubFormDelegate_createEditor", 0 );
 
     return ret;
 }
@@ -353,7 +353,7 @@ int BlSubFormDelegate_createEditor ( BlSubFormDelegate *bl )
 /// Hay cosas que deberian estar en el plugin de cuenta
 int BlSubFormDelegate_setModelData ( BlSubFormDelegate *bl )
 {
-    _depura ( "pluginbc_cuenta::BlSubFormDelegate_setModelData", 0 );
+    blDebug ( "pluginbc_cuenta::BlSubFormDelegate_setModelData", 0 );
     int ret = 0;
     if ( g_editor->objectName() == "EditCodigoCuenta" || g_editor->objectName() == "EditNombreCliente" ) {
         BlDbCompleterComboBox * comboBox = ( BlDbCompleterComboBox * ) g_editor;
@@ -362,14 +362,14 @@ int BlSubFormDelegate_setModelData ( BlSubFormDelegate *bl )
         g_model->setData ( g_index, value );
         ret = -1;
     } // end if
-    _depura ( "END pluginbc_cuenta::BlSubFormDelegate_setModelData", 0 );
+    blDebug ( "END pluginbc_cuenta::BlSubFormDelegate_setModelData", 0 );
     return ret;
 }
 
 
 int BlSubFormDelegate_setEditorData ( BlSubFormDelegate *bl )
 {
-    _depura ( "pluginbc_cuenta::BlSubFormDelegate_setEditorData", 0 );
+    blDebug ( "pluginbc_cuenta::BlSubFormDelegate_setEditorData", 0 );
     int ret = 0;
     if ( g_editor->objectName() == "EditCodigoCuenta" || g_editor->objectName() == "EditNombreCliente" ) {
         QString value = g_index.model() ->data ( g_index, Qt::DisplayRole ).toString();
@@ -377,13 +377,13 @@ int BlSubFormDelegate_setEditorData ( BlSubFormDelegate *bl )
         comboBox->addItem ( value );
         ret = -1;
     } // end if
-    _depura ( "END pluginbc_cuenta::BlSubFormDelegate_setEditorData", 0 );
+    blDebug ( "END pluginbc_cuenta::BlSubFormDelegate_setEditorData", 0 );
     return ret;
 }
 
 int BlSubForm_editFinished ( BlSubForm *sub )
 {
-    _depura ( "pluginbc_cuenta::BlSubForm_editFinished", 0 );
+    blDebug ( "pluginbc_cuenta::BlSubForm_editFinished", 0 );
     if ( sub->m_campoactual->nomcampo() == "codigo" ) {
    QString query = "SELECT idcuenta FROM cuenta WHERE upper (descripcion ||  ' ' || codigo) LIKE upper('" + sub->m_campoactual->text() + "%')";
 // mensajeInfo(query);
@@ -393,14 +393,14 @@ int BlSubForm_editFinished ( BlSubForm *sub )
         } // end if
         delete cur;
     } // end if
-    _depura ( "END pluginbc_cuenta::BlSubForm_editFinished", 0 );
+    blDebug ( "END pluginbc_cuenta::BlSubForm_editFinished", 0 );
     return 0;
 }
 
 
 int BlDbCompleterComboBox_textChanged (BlDbCompleterComboBox *bl)
 {
-  _depura("BlDbCompleterComboBox_textChanged", 0);
+  blDebug("BlDbCompleterComboBox_textChanged", 0);
 
         if ( bl->m_entrada.size() >= 3 && bl->m_tabla == "cuenta") {
                 QString cadwhere = "";
@@ -434,11 +434,11 @@ int BlDbCompleterComboBox_textChanged (BlDbCompleterComboBox *bl)
                 } // end while
                 delete bl->m_cursorcombo;
 
-  _depura("END BlDbCompleterComboBox_textChanged", 0);
+  blDebug("END BlDbCompleterComboBox_textChanged", 0);
 
      return 1;
         } // end if
-  _depura("END BlDbCompleterComboBox_textChanged", 0);
+  blDebug("END BlDbCompleterComboBox_textChanged", 0);
 
     return 0;
 }
@@ -447,10 +447,10 @@ int BlDbCompleterComboBox_textChanged (BlDbCompleterComboBox *bl)
 
 int BcSubForm_pressedAsterisk ( BcSubForm *sub )
 {
-    _depura ( "BcSubForm_pressedAsterisk" );
+    blDebug ( "BcSubForm_pressedAsterisk" );
 
     if ( sub->m_campoactual->nomcampo() != "codigo" ) {
-        _depura ( "END BfSubForm::pressedAsterisk", 0 );
+        blDebug ( "END BfSubForm::pressedAsterisk", 0 );
         return 0;
     } // end if
 
@@ -471,7 +471,7 @@ int BcSubForm_pressedAsterisk ( BcSubForm *sub )
 
     /// Si no tenemos un idtutor salimos ya que significa que no se ha seleccionado ninguno.
     if ( idCliente == "" ) {
-        _depura ( "END BfSubForm::pressedAsterisk", 0 );
+        blDebug ( "END BfSubForm::pressedAsterisk", 0 );
         return 0;
     } // end if
 
@@ -483,7 +483,7 @@ int BcSubForm_pressedAsterisk ( BcSubForm *sub )
     
     delete cur;
 */    
-    _depura ( "END BfSubForm_pressedAsterisk" );
+    blDebug ( "END BfSubForm_pressedAsterisk" );
     return 0;
 }
 

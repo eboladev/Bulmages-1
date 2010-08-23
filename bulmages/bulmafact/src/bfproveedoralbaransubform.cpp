@@ -35,7 +35,7 @@
 **/
 BfProveedorAlbaranSubForm::BfProveedorAlbaranSubForm ( QWidget *parent ) : BfSubForm ( parent )
 {
-    _depura ( "BfProveedorAlbaranSubForm::BfProveedorAlbaranSubForm", 0 );
+    blDebug ( "BfProveedorAlbaranSubForm::BfProveedorAlbaranSubForm", 0 );
     setDbTableName ( "lalbaranp" );
     setDbFieldId ( "numlalbaranp" );
 
@@ -62,7 +62,7 @@ BfProveedorAlbaranSubForm::BfProveedorAlbaranSubForm ( QWidget *parent ) : BfSub
     setOrdenEnabled ( TRUE );
     /// Disparamos los plugins.
     g_plugins->lanza ( "BfProveedorAlbaranSubForm_BfProveedorAlbaranSubForm_Post", this );
-    _depura ( "END BfProveedorAlbaranSubForm::BfProveedorAlbaranSubForm", 0 );
+    blDebug ( "END BfProveedorAlbaranSubForm::BfProveedorAlbaranSubForm", 0 );
 }
 
 
@@ -72,10 +72,10 @@ BfProveedorAlbaranSubForm::BfProveedorAlbaranSubForm ( QWidget *parent ) : BfSub
 **/
 void BfProveedorAlbaranSubForm::cargar ( QString idalbaranp )
 {
-    _depura ( "ListLinPedidoProveedorView::cargar", 0 );
+    blDebug ( "ListLinPedidoProveedorView::cargar", 0 );
     mdb_idalbaranp = idalbaranp;
     BlSubForm::cargar ( "SELECT *, (cantlalbaranp * pvplalbaranp)::NUMERIC(12,2) AS totallalbaranp FROM lalbaranp LEFT JOIN articulo ON lalbaranp.idarticulo = articulo.idarticulo WHERE idalbaranp = " + mdb_idalbaranp + " ORDER BY ordenlalbaranp" );
-    _depura ( "END ListLinPedidoProveedorView::cargar", 0 );
+    blDebug ( "END ListLinPedidoProveedorView::cargar", 0 );
 }
 
 

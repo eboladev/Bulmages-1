@@ -38,7 +38,7 @@
 TiposocioView::TiposocioView ( BfCompany *emp, QWidget *parent )
         : BfForm ( emp, parent )
 {
-    _depura ( "TiposocioView::TiposocioView", 0 );
+    blDebug ( "TiposocioView::TiposocioView", 0 );
     setTitleName ( _ ( "Tipos de socio" ) );
     /// Indicamos que vamos a operar con la tabla tiposocio para que los permisos se traten adecuadamente.
     setDbTableName ( "tiposocio" );
@@ -50,7 +50,7 @@ TiposocioView::TiposocioView ( BfCompany *emp, QWidget *parent )
     m_item = NULL;
     pintar();
     meteWindow ( windowTitle(), this );
-    _depura ( "END TiposocioView::TiposocioView", 0 );
+    blDebug ( "END TiposocioView::TiposocioView", 0 );
 }
 
 
@@ -59,7 +59,7 @@ TiposocioView::TiposocioView ( BfCompany *emp, QWidget *parent )
 **/
 void TiposocioView::pintar()
 {
-    _depura ( "TiposocioView::pintar", 0 );
+    blDebug ( "TiposocioView::pintar", 0 );
     mui_lista->clear();
     if ( m_cursortiposocio != NULL ) {
         delete m_cursortiposocio;
@@ -72,7 +72,7 @@ void TiposocioView::pintar()
 
     /// Comprobamos cual es la cadena inicial.
     dialogChanges_cargaInicial();
-    _depura ( "END TiposocioView::pintar", 0 );
+    blDebug ( "END TiposocioView::pintar", 0 );
 }
 
 
@@ -81,11 +81,11 @@ void TiposocioView::pintar()
 **/
 TiposocioView::~TiposocioView()
 {
-    _depura ( "TiposocioView::~TiposocioView", 0 );
+    blDebug ( "TiposocioView::~TiposocioView", 0 );
     if ( m_cursortiposocio != NULL ) {
         delete m_cursortiposocio;
     } // end if
-    _depura ( "END TiposocioView::~TiposocioView", 0 );
+    blDebug ( "END TiposocioView::~TiposocioView", 0 );
 }
 
 
@@ -94,7 +94,7 @@ TiposocioView::~TiposocioView()
 **/
 void TiposocioView::on_mui_lista_currentItemChanged ( QListWidgetItem *cur, QListWidgetItem * )
 {
-    _depura ( "on_mui_lista_currentItemChanged", 0 );
+    blDebug ( "on_mui_lista_currentItemChanged", 0 );
     if ( cur )
         groupBox1->setEnabled ( TRUE );
     int row = mui_lista->row ( cur );
@@ -106,7 +106,7 @@ void TiposocioView::on_mui_lista_currentItemChanged ( QListWidgetItem *cur, QLis
     m_item = cur;
     /// Comprobamos cual es la cadena inicial.
     dialogChanges_cargaInicial();
-    _depura ( "END on_mui_lista_currentItemChanged", 0 );
+    blDebug ( "END on_mui_lista_currentItemChanged", 0 );
 }
 
 
@@ -116,7 +116,7 @@ void TiposocioView::on_mui_lista_currentItemChanged ( QListWidgetItem *cur, QLis
 **/
 int TiposocioView::guardar()
 {
-    _depura ( "TiposocioView::on_mui_guardar_clicked", 0 );
+    blDebug ( "TiposocioView::on_mui_guardar_clicked", 0 );
     try {
         QString query = "UPDATE tiposocio SET ";
         query += "nombretiposocio='" + mainCompany() ->sanearCadena ( mui_nombretiposocio->text() ) + "'";
@@ -141,7 +141,7 @@ int TiposocioView::guardar()
         } // end if
         /// Comprobamos cual es la cadena inicial.
         dialogChanges_cargaInicial();
-        _depura ( "END TiposocioView::on_mui_guardar_clicked", 0 );
+        blDebug ( "END TiposocioView::on_mui_guardar_clicked", 0 );
         return 0;
     } catch ( ... ) {
         mensajeInfo ( _ ( "Error al guardar" ) );
@@ -156,7 +156,7 @@ int TiposocioView::guardar()
 **/
 bool TiposocioView::trataModificado()
 {
-    _depura ( "TiposocioView::trataModificado", 0 );
+    blDebug ( "TiposocioView::trataModificado", 0 );
     /// Si se ha modificado el contenido advertimos y guardamos.
     if ( dialogChanges_hayCambios() ) {
         if ( QMessageBox::warning ( this,
@@ -166,7 +166,7 @@ bool TiposocioView::trataModificado()
             on_mui_guardar_clicked();
         return ( TRUE );
     } // end if
-    _depura ( "END TiposocioView::trataModificado", 0 );
+    blDebug ( "END TiposocioView::trataModificado", 0 );
     return ( FALSE );
 }
 
@@ -178,7 +178,7 @@ bool TiposocioView::trataModificado()
 **/
 void TiposocioView::on_mui_nuevo_clicked()
 {
-    _depura ( "TiposocioView::on_mui_nuevo_clicked", 0 );
+    blDebug ( "TiposocioView::on_mui_nuevo_clicked", 0 );
     try {
         /// Si se ha modificado el contenido advertimos y guardamos.
         trataModificado();
@@ -190,7 +190,7 @@ void TiposocioView::on_mui_nuevo_clicked()
         mdb_idtiposocio = cur->valor ( "idtiposocio" );
         delete cur;
         pintar();
-        _depura ( "END TiposocioView::on_mui_nuevo_clicked", 0 );
+        blDebug ( "END TiposocioView::on_mui_nuevo_clicked", 0 );
     } catch ( ... ) {
         mensajeInfo ( _ ( "Error inesperado al crear el Tipo de socio" ) );
         mainCompany() ->rollback();
@@ -204,7 +204,7 @@ void TiposocioView::on_mui_nuevo_clicked()
 **/
 void TiposocioView::on_mui_borrar_clicked()
 {
-    _depura ( "TiposocioView::on_mui_borrar_clicked", 0 );
+    blDebug ( "TiposocioView::on_mui_borrar_clicked", 0 );
     if ( mdb_idtiposocio == "" ) return;
     try {
         trataModificado();
@@ -217,7 +217,7 @@ void TiposocioView::on_mui_borrar_clicked()
         } // end if
         mainCompany() ->commit();
         pintar();
-        _depura ( "END TiposocioView::on_mui_borrar_clicked", 0 );
+        blDebug ( "END TiposocioView::on_mui_borrar_clicked", 0 );
     } catch ( ... ) {
         mensajeInfo ( _ ( "Error inesperado al borrar el Tipo de socio" ) );
         mainCompany() ->rollback();
@@ -230,6 +230,6 @@ void TiposocioView::on_mui_borrar_clicked()
 **/
 void TiposocioView::imprimir()
 {
-    _depura ( "TiposocioView::imprimir", 0 );
-    _depura ( "END TiposocioView::imprimir", 0 );
+    blDebug ( "TiposocioView::imprimir", 0 );
+    blDebug ( "END TiposocioView::imprimir", 0 );
 }

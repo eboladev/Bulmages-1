@@ -35,8 +35,8 @@ AlbaranesProveedor *g_albaranesProveedor = NULL;
 **/
 mypluginalbp::mypluginalbp()
 {
-    _depura ( "mypluginalbp::mypluginalbp", 0 );
-    _depura ( "END mypluginalbp::mypluginalbp", 0 );
+    blDebug ( "mypluginalbp::mypluginalbp", 0 );
+    blDebug ( "END mypluginalbp::mypluginalbp", 0 );
 }
 
 
@@ -45,8 +45,8 @@ mypluginalbp::mypluginalbp()
 **/
 mypluginalbp::~mypluginalbp()
 {
-    _depura ( "mypluginalbp::~mypluginalbp", 0 );
-    _depura ( "END mypluginalbp::~mypluginalbp", 0 );
+    blDebug ( "mypluginalbp::~mypluginalbp", 0 );
+    blDebug ( "END mypluginalbp::~mypluginalbp", 0 );
 }
 
 
@@ -55,12 +55,12 @@ mypluginalbp::~mypluginalbp()
 **/
 void mypluginalbp::elslot()
 {
-    _depura ( "mypluginalbp::elslot", 0 );
+    blDebug ( "mypluginalbp::elslot", 0 );
     if ( g_albaranesProveedor ) {
         g_albaranesProveedor->hide();
         g_albaranesProveedor->show();
     }// end if
-    _depura ( "END mypluginalbp::elslot", 0 );
+    blDebug ( "END mypluginalbp::elslot", 0 );
 }
 
 ///
@@ -68,12 +68,12 @@ void mypluginalbp::elslot()
 **/
 void mypluginalbp::elslot1()
 {
-    _depura ( "mypluginalbp::elslot1", 0 );
+    blDebug ( "mypluginalbp::elslot1", 0 );
     AlbaranProveedorView * bud = new AlbaranProveedorView ( ( BfCompany * ) mainCompany(), NULL );
     mainCompany() ->m_pWorkspace->addWindow ( bud );
     bud->inicializar();
     bud->show();
-    _depura ( "END mypluginalbp::elslot1", 0 );
+    blDebug ( "END mypluginalbp::elslot1", 0 );
 }
 
 
@@ -84,7 +84,7 @@ void mypluginalbp::elslot1()
 **/
 void mypluginalbp::inicializa ( BfBulmaFact *bges )
 {
-    _depura ( "mypluginalbp::inicializa", 0 );
+    blDebug ( "mypluginalbp::inicializa", 0 );
 
     if ( bges->company()->hasTablePrivilege ( "albaranp", "SELECT" ) ) {
         /// Miramos si existe un menu Compras
@@ -112,7 +112,7 @@ void mypluginalbp::inicializa ( BfBulmaFact *bges )
 
 
     }// end if
-    _depura ( "END mypluginalbp::inicializa", 0 );
+    blDebug ( "END mypluginalbp::inicializa", 0 );
 }
 
 
@@ -123,7 +123,7 @@ void mypluginalbp::inicializa ( BfBulmaFact *bges )
 **/
 int entryPoint ( BfBulmaFact *bges )
 {
-    _depura ( "Punto de entrada del plugin de facturas de proveedor\n", 0 );
+    blDebug ( "Punto de entrada del plugin de facturas de proveedor\n", 0 );
 
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale ( LC_ALL, "" );
@@ -193,7 +193,7 @@ int BfBuscarReferencia_on_mui_abrirtodo_clicked_Post ( BfBuscarReferencia *ref )
 **/
 int PedidoProveedorView_PedidoProveedorView ( PedidoProveedorView *l )
 {
-    _depura ( "PluginPagos_PedidoProveedorView_PedidoProveedorView", 0 );
+    blDebug ( "PluginPagos_PedidoProveedorView_PedidoProveedorView", 0 );
 
     GenAlbProQToolButton *mui_exporta_efactura2 = new GenAlbProQToolButton ( l, l->mui_plugbotones );
 
@@ -207,7 +207,7 @@ int PedidoProveedorView_PedidoProveedorView ( PedidoProveedorView *l )
     }// end if
     m_hboxLayout1->addWidget ( mui_exporta_efactura2 );
 
-    _depura ( "END PluginPagos_PedidoProveedorView_PedidoProveedorView", 0 );
+    blDebug ( "END PluginPagos_PedidoProveedorView_PedidoProveedorView", 0 );
     return 0;
 }
 

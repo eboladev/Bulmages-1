@@ -39,7 +39,7 @@
 **/
 MyPluginDuplicarAsiento::MyPluginDuplicarAsiento(BcAsientoView * as, BcCompany *comp, QWidget *parent ) : BlMainCompanyPointer(comp), QToolButton(parent)
 {
-    _depura ( "MyPluginDuplicarAsiento::MyPluginDuplicarAsiento", 0 );
+    blDebug ( "MyPluginDuplicarAsiento::MyPluginDuplicarAsiento", 0 );
     setObjectName ( QString::fromUtf8 ( "MyPluginDuplicarAsiento" ) );
     setStatusTip ( _ ( "Duplicar Asiento" ) );
     setToolTip ( _ ( "Duplicar Asiento" ) );
@@ -49,7 +49,7 @@ MyPluginDuplicarAsiento::MyPluginDuplicarAsiento(BcAsientoView * as, BcCompany *
     setIconSize ( QSize ( 32, 32 ) );
     m_asiento = as;
     connect (this, SIGNAL(released()), this, SLOT(elslot()));
-    _depura ( "END MyPluginDuplicarAsiento::MyPluginDuplicarAsiento", 0 );
+    blDebug ( "END MyPluginDuplicarAsiento::MyPluginDuplicarAsiento", 0 );
 }
 
 
@@ -58,8 +58,8 @@ MyPluginDuplicarAsiento::MyPluginDuplicarAsiento(BcAsientoView * as, BcCompany *
 **/
 MyPluginDuplicarAsiento::~MyPluginDuplicarAsiento()
 {
-    _depura ( "MyPluginDuplicarAsiento::~MyPluginDuplicarAsiento", 0 );
-    _depura ( "END MyPluginDuplicarAsiento::~MyPluginDuplicarAsiento", 0 );
+    blDebug ( "MyPluginDuplicarAsiento::~MyPluginDuplicarAsiento", 0 );
+    blDebug ( "END MyPluginDuplicarAsiento::~MyPluginDuplicarAsiento", 0 );
 }
 
 
@@ -68,7 +68,7 @@ MyPluginDuplicarAsiento::~MyPluginDuplicarAsiento()
 **/
 void MyPluginDuplicarAsiento::elslot()
 {
-    _depura ( "MyPluginDuplicarAsiento::elslot", 0 );
+    blDebug ( "MyPluginDuplicarAsiento::elslot", 0 );
     DuplicarAsientoView *dupli = new DuplicarAsientoView ( (BcCompany *)mainCompany(), 0 );
     /// Establecemos los par&aacute;metros para el nuevo asiento a duplicar.
     dupli->inicializa ( m_asiento->mui_ordenasiento->text(), m_asiento->mui_ordenasiento->text() );
@@ -76,7 +76,7 @@ void MyPluginDuplicarAsiento::elslot()
     m_asiento->cargaasientos();
     m_asiento->boton_fin();
     delete dupli;
-    _depura ( "END MyPluginDuplicarAsiento::elslot", 0 );
+    blDebug ( "END MyPluginDuplicarAsiento::elslot", 0 );
 }
 
 
@@ -86,13 +86,13 @@ void MyPluginDuplicarAsiento::elslot()
 **/
 int entryPoint ( BcBulmaCont *bcont )
 {
-    _depura ( "entryPoint::entryPoint", 0 );
+    blDebug ( "entryPoint::entryPoint", 0 );
 
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale ( LC_ALL, "" );
     bindtextdomain ( "pluginbc_duplicarasiento", g_confpr->valor ( CONF_DIR_TRADUCCION ).toAscii().constData() );
 
-    _depura ( "END entryPoint::entryPoint", 0 );
+    blDebug ( "END entryPoint::entryPoint", 0 );
     return 0;
 }
 
@@ -103,7 +103,7 @@ int entryPoint ( BcBulmaCont *bcont )
 **/
 int BcAsientoView_BcAsientoView ( BcAsientoView *l )
 {
-    _depura ( "BcAsientoView_BcAsientoView", 0 );
+    blDebug ( "BcAsientoView_BcAsientoView", 0 );
 //================================
     MyPluginDuplicarAsiento *mui_exporta_efactura2 = new MyPluginDuplicarAsiento ( l, l->mainCompany(),  l );
 
@@ -116,7 +116,7 @@ int BcAsientoView_BcAsientoView ( BcAsientoView *l )
     } // end if
     m_hboxLayout1->addWidget ( mui_exporta_efactura2 );
 //================================
-    _depura ( "END BcAsientoView_BcAsientoView", 0 );
+    blDebug ( "END BcAsientoView_BcAsientoView", 0 );
     return 0;
 }
 

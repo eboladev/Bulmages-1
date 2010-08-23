@@ -43,8 +43,8 @@ BfCompany *g_bges;
 **/
 mypluginzz::mypluginzz()
 {
-    _depura ( "mypluginzz::mypluginzz", 0 );
-    _depura ( "END mypluginzz::mypluginzz", 0 );
+    blDebug ( "mypluginzz::mypluginzz", 0 );
+    blDebug ( "END mypluginzz::mypluginzz", 0 );
 }
 
 
@@ -53,8 +53,8 @@ mypluginzz::mypluginzz()
 **/
 mypluginzz::~mypluginzz()
 {
-    _depura ( "mypluginzz::~mypluginzz", 0 );
-    _depura ( "END mypluginzz::~mypluginzz", 0 );
+    blDebug ( "mypluginzz::~mypluginzz", 0 );
+    blDebug ( "END mypluginzz::~mypluginzz", 0 );
 }
 
 
@@ -64,11 +64,11 @@ mypluginzz::~mypluginzz()
 **/
 void mypluginzz::elslot (  )
 {
-    _depura ( "mypluginzz::cambia", 0 );
+    blDebug ( "mypluginzz::cambia", 0 );
     Z2ZView * bud = new Z2ZView ( g_bges, NULL );
     g_bges ->m_pWorkspace->addWindow ( bud );
     bud->show();
-    _depura ( "END mypluginzz::cambia", 0 );
+    blDebug ( "END mypluginzz::cambia", 0 );
 }
 
 
@@ -79,7 +79,7 @@ void mypluginzz::elslot (  )
 **/
 int entryPoint ( BfBulmaFact *bges )
 {
-    _depura ( "Entrada del plugin 'Traspaso de Z'", 10 );
+    blDebug ( "Entrada del plugin 'Traspaso de Z'", 10 );
 
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale ( LC_ALL, "" );
@@ -102,7 +102,7 @@ int entryPoint ( BfBulmaFact *bges )
     QObject::connect ( viewCorrector, SIGNAL ( activated (  ) ), corr, SLOT ( elslot ( ) ) );
     pPluginMenu->addSeparator();
     pPluginMenu->addAction ( viewCorrector );
-    _depura ( "Iniciado correctamente el plugin 'Traspaso de Z'", 10 );
+    blDebug ( "Iniciado correctamente el plugin 'Traspaso de Z'", 10 );
     return 0;
 }
 

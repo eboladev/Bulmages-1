@@ -66,7 +66,7 @@ void myplugin1::inicializa(bulmafact *bges) {
 **/
 int entryPoint ( BfBulmaFact * )
 {
-    _depura ( "Punto de Entrada del plugin de Promedios", 0 );
+    blDebug ( "Punto de Entrada del plugin de Promedios", 0 );
 
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale ( LC_ALL, "" );
@@ -85,11 +85,11 @@ int entryPoint ( BfBulmaFact * )
 **/
 int ArticuloView_ArticuloView ( ArticuloView *art )
 {
-    _depura ( "ArticuloView_ArticuloView", 0 );
+    blDebug ( "ArticuloView_ArticuloView", 0 );
     PromedioView *l = new PromedioView ( art->mainCompany(), art );
     l->setObjectName ( QString::fromUtf8 ( "lpromedios" ) );
     art->mui_tab->addTab ( l, "Promedios" );
-    _depura ( "END ArticuloView_ArticuloView", 0 );
+    blDebug ( "END ArticuloView_ArticuloView", 0 );
     return 0;
 }
 
@@ -101,10 +101,10 @@ int ArticuloView_ArticuloView ( ArticuloView *art )
 **/
 int ArticuloView_cargar ( ArticuloView *art )
 {
-    _depura ( "ArticuloView_cargar", 0 );
+    blDebug ( "ArticuloView_cargar", 0 );
     PromedioView *l = art->findChild<PromedioView *> ( "lpromedios" );
     l->cargar ( art->dbValue ( "idarticulo" ) );
-    _depura ( "END ArticuloView_cargar", 0 );
+    blDebug ( "END ArticuloView_cargar", 0 );
     return 0;
 }
 

@@ -41,7 +41,7 @@
 **/
 EQToolButton::EQToolButton ( QWidget *parent ) : QToolButton ( parent )
 {
-    _depura ( "EQToolButton::EQToolButton", 0 );
+    blDebug ( "EQToolButton::EQToolButton", 0 );
     
     /// Buscamos alguna otra instancia y si la hay nos quitamos de enmedio
     EQToolButton *tool = parent->findChild<EQToolButton *>("EQToolButtonN");
@@ -135,7 +135,7 @@ EQToolButton::EQToolButton ( QWidget *parent ) : QToolButton ( parent )
 	hide();
     } // end if
     
-    _depura ( "END EQToolButton::EQToolButton", 0 );
+    blDebug ( "END EQToolButton::EQToolButton", 0 );
 }
 
 
@@ -144,8 +144,8 @@ EQToolButton::EQToolButton ( QWidget *parent ) : QToolButton ( parent )
 **/
 EQToolButton::~EQToolButton()
 {
-    _depura ( "EQToolButton::~EQToolButton", 0 );
-    _depura ( "END EQToolButton::~EQToolButton", 0 );
+    blDebug ( "EQToolButton::~EQToolButton", 0 );
+    blDebug ( "END EQToolButton::~EQToolButton", 0 );
 }
 
 
@@ -155,7 +155,7 @@ EQToolButton::~EQToolButton()
 **/
 void EQToolButton::pintaMenu ( QMenu *menu )
 {
-    _depura ( "EQToolButton::pintaMenu", 0 );
+    blDebug ( "EQToolButton::pintaMenu", 0 );
     QMenu *ajust = menu->addMenu ( QIcon(":/Images/template2ods.png"), _ ( "Informes personales ODS" ) );
 	
     /// Buscamos ficheros que tengan el nombre de la tabla
@@ -200,7 +200,7 @@ void EQToolButton::pintaMenu ( QMenu *menu )
         accion->setObjectName ( fileInfo.fileName() );
 	accion->setIcon(QIcon(icon));
     }
-    _depura ( "END EQToolButton::pintaMenu", 0 );
+    blDebug ( "END EQToolButton::pintaMenu", 0 );
 }
 
 
@@ -210,7 +210,7 @@ void EQToolButton::pintaMenu ( QMenu *menu )
 **/
 void EQToolButton::trataMenu ( QAction *action )
 {
-    _depura ( "EQToolButton::trataMenu", 0 );
+    blDebug ( "EQToolButton::trataMenu", 0 );
     
     if (action == NULL) action = (QAction *) sender();
     
@@ -235,7 +235,7 @@ void EQToolButton::trataMenu ( QAction *action )
 	    } // end if
 	}
     } // end if
-    _depura ( "END EQToolButton::trataMenu", 0 );
+    blDebug ( "END EQToolButton::trataMenu", 0 );
 }
 
 

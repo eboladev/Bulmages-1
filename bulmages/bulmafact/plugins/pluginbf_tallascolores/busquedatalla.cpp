@@ -31,13 +31,13 @@
 BusquedaTalla::BusquedaTalla ( QWidget *parent, const char * )
         : BlComboBox ( parent )
 {
-    _depura ( "BusquedaTalla::BusquedaTalla", 0 );
+    blDebug ( "BusquedaTalla::BusquedaTalla", 0 );
 
     setQuery ( "SELECT idtc_talla, nomtc_talla FROM tc_talla ORDER BY nomtc_talla" );
     setTableName ( "tc_talla" );
     setFieldId ( "idtc_talla" );
     m_valores["nomtc_talla"] = "";
-    _depura ( "END BusquedaTalla::BusquedaTalla", 0 );
+    blDebug ( "END BusquedaTalla::BusquedaTalla", 0 );
 }
 
 
@@ -47,8 +47,8 @@ BusquedaTalla::BusquedaTalla ( QWidget *parent, const char * )
 **/
 BusquedaTalla::~BusquedaTalla()
 {
-    _depura ( "BusquedaTalla::~BusquedaTalla", 0 );
-    _depura ( "END BusquedaTalla::~BusquedaTalla", 0 );
+    blDebug ( "BusquedaTalla::~BusquedaTalla", 0 );
+    blDebug ( "END BusquedaTalla::~BusquedaTalla", 0 );
 }
 
 
@@ -65,14 +65,14 @@ BusquedaTalla::~BusquedaTalla()
 BusquedaTallaDelegate::BusquedaTallaDelegate ( QWidget *parent )
         : BlComboBoxDelegate ( parent )
 {
-    _depura ( "BusquedaTallaDelegate::BusquedaTallaDelegate", 0 );
+    blDebug ( "BusquedaTallaDelegate::BusquedaTallaDelegate", 0 );
     setSizeAdjustPolicy ( QComboBox::AdjustToContents );
     setQuery ( "SELECT idtc_talla, nomtc_talla FROM tc_talla ORDER BY nomtc_talla" );
     setTableName ( "tc_talla" );
     setFieldId ( "idtc_talla" );
     m_valores["nomtc_talla"] = "";
     setAllowNull(FALSE);
-    _depura ( "END BusquedaTallaDelegate::BusquedaTallaDelegate", 0 );
+    blDebug ( "END BusquedaTallaDelegate::BusquedaTallaDelegate", 0 );
 }
 
 
@@ -82,7 +82,7 @@ BusquedaTallaDelegate::BusquedaTallaDelegate ( QWidget *parent )
 **/
 BusquedaTallaDelegate::~BusquedaTallaDelegate()
 {
-    _depura ( "BusquedaTallaDelegate::~BusquedaTallaDelegate", 0 );
-    _depura ( "END BusquedaTallaDelegate::~BusquedaTallaDelegate", 0 );
+    blDebug ( "BusquedaTallaDelegate::~BusquedaTallaDelegate", 0 );
+    blDebug ( "END BusquedaTallaDelegate::~BusquedaTallaDelegate", 0 );
 }
 

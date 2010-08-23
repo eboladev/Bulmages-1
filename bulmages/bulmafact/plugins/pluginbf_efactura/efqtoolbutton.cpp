@@ -42,11 +42,11 @@
 **/
 EFQToolButton::EFQToolButton ( FacturaView *fac, QWidget *parent ) : QToolButton ( parent ), BlMainCompanyPointer()
 {
-    _depura ( "EFQToolButton::EFQToolButton", 0 );
+    blDebug ( "EFQToolButton::EFQToolButton", 0 );
     setMainCompany ( fac->mainCompany() );
     m_factura = fac;
     connect ( this, SIGNAL ( clicked() ), this, SLOT ( click() ) );
-    _depura ( "END EFQToolButton::EFQToolButton", 0 );
+    blDebug ( "END EFQToolButton::EFQToolButton", 0 );
 }
 
 
@@ -55,8 +55,8 @@ EFQToolButton::EFQToolButton ( FacturaView *fac, QWidget *parent ) : QToolButton
 **/
 EFQToolButton::~EFQToolButton()
 {
-    _depura ( "EFQToolButton::~EFQToolButton", 0 );
-    _depura ( "END EFQToolButton::~EFQToolButton", 0 );
+    blDebug ( "EFQToolButton::~EFQToolButton", 0 );
+    blDebug ( "END EFQToolButton::~EFQToolButton", 0 );
 }
 
 
@@ -68,7 +68,7 @@ EFQToolButton::~EFQToolButton()
 **/
 void EFQToolButton::escribe_descuento_factura ( QString &string, BlDbRecordSet *descuentos_factura, BlFixed bimpfactura )
 {
-    _depura ( "EFQToolButton::escribe_descuento_factura", 0 );
+    blDebug ( "EFQToolButton::escribe_descuento_factura", 0 );
 
     BlFixed descuentoFactura = "0.00";
     descuentoFactura = BlFixed ( descuentos_factura->valor ( "proporciondfactura" ) );
@@ -82,7 +82,7 @@ void EFQToolButton::escribe_descuento_factura ( QString &string, BlDbRecordSet *
     string += "\t</cac:AllowanceCharge>\n";
     string += "\n";
 
-    _depura ( "END EFQToolButton::escribe_descuento_factura", 0 );
+    blDebug ( "END EFQToolButton::escribe_descuento_factura", 0 );
 }
 
 
@@ -95,7 +95,7 @@ void EFQToolButton::escribe_descuento_factura ( QString &string, BlDbRecordSet *
 void EFQToolButton::escribe_linea_factura ( QString &string, BlDbRecordSet *lfactura, int numerolinea )
 {
 
-    _depura ( "EFQToolButton::escribe_linea_factura", 0 );
+    blDebug ( "EFQToolButton::escribe_linea_factura", 0 );
 
     QString numero = QString::number ( numerolinea );
 
@@ -162,7 +162,7 @@ void EFQToolButton::escribe_linea_factura ( QString &string, BlDbRecordSet *lfac
 
     delete articulo;
 
-    _depura ( "END EFQToolButton::escribe_linea_factura", 0 );
+    blDebug ( "END EFQToolButton::escribe_linea_factura", 0 );
 }
 
 /// ---------------- Generacion de factura a partir de una plantilla en formato UBL 1.0 ------------------ ///
@@ -174,14 +174,14 @@ void EFQToolButton::escribe_linea_factura ( QString &string, BlDbRecordSet *lfac
 void EFQToolButton::exporta_factura_ubl()
 {
 
-    _depura ( "EFQToolButton::exporta_factura_ubl", 0 );
+    blDebug ( "EFQToolButton::exporta_factura_ubl", 0 );
 
     QString query = "";
 
     QFile *file_in  = new QFile ( _PLANTILLA_ );
 
     if ( !file_in->open ( QIODevice::ReadOnly | QIODevice::Text ) ) {
-        _depura ( "Problemas al abir la plantilla de factura", 2 );
+        blDebug ( "Problemas al abir la plantilla de factura", 2 );
         exit ( -1 );
     }
 
@@ -204,12 +204,12 @@ void EFQToolButton::exporta_factura_ubl()
     bool error_idtrabajador = false;
 
     if ( m_factura->dbValue ( "idfactura" ).isEmpty() ) {
-        _depura ( "ERROR: El campo idfactura del BlDbRecord esta vacio.", 2 );
+        blDebug ( "ERROR: El campo idfactura del BlDbRecord esta vacio.", 2 );
         exit ( -1 );
     }
 
     if ( m_factura->dbValue ( "idcliente" ).isEmpty() ) {
-        _depura ( "ERROR: El campo idcliente del BlDbRecord esta vacio.", 2 );
+        blDebug ( "ERROR: El campo idcliente del BlDbRecord esta vacio.", 2 );
         exit ( -1 );
     }
 
@@ -221,7 +221,7 @@ void EFQToolButton::exporta_factura_ubl()
     }
 
     if ( m_factura->dbValue ( "idforma_pago" ).isEmpty() ) {
-        _depura ( "ERROR: El campo idforma_pago del BlDbRecord esta vacio.", 2 );
+        blDebug ( "ERROR: El campo idforma_pago del BlDbRecord esta vacio.", 2 );
         exit ( -1 );
     }
 
@@ -235,7 +235,7 @@ void EFQToolButton::exporta_factura_ubl()
     QFile *file_out = new QFile ( nombrearchivo );
 
     if ( !file_out->open ( QIODevice::WriteOnly | QIODevice::Text ) ) {
-        _depura ( "Problemas al crear el archivo de salida", 2 );
+        blDebug ( "Problemas al crear el archivo de salida", 2 );
         exit ( -1 );
     }
 
@@ -280,27 +280,27 @@ void EFQToolButton::exporta_factura_ubl()
     BlDbRecordSet *cp_empresa = mainCompany() ->loadQuery ( query );
 
     if ( nombre_empresa->valor ( "valor" ).isEmpty() ) {
-        _depura ( "El campo valor con nombre nombre_empresa de la tabla de configuracion esta vacio", 2 );
+        blDebug ( "El campo valor con nombre nombre_empresa de la tabla de configuracion esta vacio", 2 );
         error_configuracion = true;
     }
 
     if ( cif_empresa->valor ( "valor" ).isEmpty() ) {
-        _depura ( "El campo valor con nombre cif_empresa de la tabla de configuracion esta vacio", 2 );
+        blDebug ( "El campo valor con nombre cif_empresa de la tabla de configuracion esta vacio", 2 );
         error_configuracion = true;
     }
 
     if ( dir_empresa->valor ( "valor" ).isEmpty() ) {
-        _depura ( "El campo valor con nombre dir_empresa de la tabla de configuracion esta vacio", 2 );
+        blDebug ( "El campo valor con nombre dir_empresa de la tabla de configuracion esta vacio", 2 );
         error_configuracion = true;
     }
 
     if ( ciudad_empresa->valor ( "valor" ).isEmpty() ) {
-        _depura ( "El campo valor con nombre ciudad_empresa de la tabla de configuracion esta vacio", 2 );
+        blDebug ( "El campo valor con nombre ciudad_empresa de la tabla de configuracion esta vacio", 2 );
         error_configuracion = true;
     }
 
     if ( cp_empresa->valor ( "valor" ).isEmpty() ) {
-        _depura ( "El campo valor con nombre cp_empresa de la tabla de configuracion esta vacio", 2 );
+        blDebug ( "El campo valor con nombre cp_empresa de la tabla de configuracion esta vacio", 2 );
         error_configuracion = true;
     }
 
@@ -422,7 +422,7 @@ void EFQToolButton::exporta_factura_ubl()
     QFile *file = new QFile ( nombrearchivo );
 
     if ( !file->open ( QIODevice::ReadOnly | QIODevice::Text ) ) {
-        _depura ( "ERROR: no se pudo abrir el archivo " + nombrearchivo + " para su parseo.", 2 );
+        blDebug ( "ERROR: no se pudo abrir el archivo " + nombrearchivo + " para su parseo.", 2 );
         exit ( -1 );
     }
 
@@ -432,7 +432,7 @@ void EFQToolButton::exporta_factura_ubl()
     bool ok = xmlReader->parse ( source );
 
     if ( !ok )
-        _depura ( "Problemas en el parseo del archivo", 2 );
+        blDebug ( "Problemas en el parseo del archivo", 2 );
 
     file->close();
 
@@ -440,9 +440,9 @@ void EFQToolButton::exporta_factura_ubl()
     delete xmlReader;
     delete file;
 
-    _depura ( "Exportacion completada. Su efactura se encuentra en " + nombrearchivo, 2 );
+    blDebug ( "Exportacion completada. Su efactura se encuentra en " + nombrearchivo, 2 );
 
-    _depura ( "END EFQToolButton::exporta_factura_ubl", 0 );
+    blDebug ( "END EFQToolButton::exporta_factura_ubl", 0 );
 }
 
 
@@ -452,14 +452,14 @@ void EFQToolButton::exporta_factura_ubl()
 void EFQToolButton::click()
 {
 
-    _depura ( "EFQToolButton::click", 0 );
+    blDebug ( "EFQToolButton::click", 0 );
 
     if ( ( !m_factura->dialogChanges_hayCambios() ) && ( m_factura->dbValue ( "idfactura" ) != "" ) ) {
         exporta_factura_ubl();
     } else {
-        _depura ( "Es necesario Guardar la factura antes de exportarla a UBL", 2 );
+        blDebug ( "Es necesario Guardar la factura antes de exportarla a UBL", 2 );
     }
 
-    _depura ( "END EFQToolButton::click", 0 );
+    blDebug ( "END EFQToolButton::click", 0 );
 }
 

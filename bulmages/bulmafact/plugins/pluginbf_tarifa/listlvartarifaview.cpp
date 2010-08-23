@@ -45,8 +45,8 @@
 **/
 QSubFormVarTarifaBfDelegate::QSubFormVarTarifaBfDelegate ( QObject *parent = 0 ) : BfSubFormDelegate ( parent )
 {
-    _depura ( "QSubFormVarTarifaBfDelegate::QSubFormVarTarifaBfDelegate", 0 );
-    _depura ( "END QSubFormVarTarifaBfDelegate::QSubFormVarTarifaBfDelegate", 0 );
+    blDebug ( "QSubFormVarTarifaBfDelegate::QSubFormVarTarifaBfDelegate", 0 );
+    blDebug ( "END QSubFormVarTarifaBfDelegate::QSubFormVarTarifaBfDelegate", 0 );
 }
 
 
@@ -55,8 +55,8 @@ QSubFormVarTarifaBfDelegate::QSubFormVarTarifaBfDelegate ( QObject *parent = 0 )
 **/
 QSubFormVarTarifaBfDelegate::~QSubFormVarTarifaBfDelegate()
 {
-    _depura ( "QSubFormVarTarifaBfDelegate::~QSubFormVarTarifaBfDelegate", 0 );
-    _depura ( "END QSubFormVarTarifaBfDelegate::~QSubFormVarTarifaBfDelegate", 0 );
+    blDebug ( "QSubFormVarTarifaBfDelegate::~QSubFormVarTarifaBfDelegate", 0 );
+    blDebug ( "END QSubFormVarTarifaBfDelegate::~QSubFormVarTarifaBfDelegate", 0 );
 }
 
 
@@ -69,7 +69,7 @@ QSubFormVarTarifaBfDelegate::~QSubFormVarTarifaBfDelegate()
 **/
 QWidget *QSubFormVarTarifaBfDelegate::createEditor ( QWidget *parent, const QStyleOptionViewItem &option, const QModelIndex &index ) const
 {
-    _depura ( "QSubFormVarTarifaBfDelegate::createEditor", 0 );
+    blDebug ( "QSubFormVarTarifaBfDelegate::createEditor", 0 );
     BlSubFormHeader *linea;
     linea = m_subform->cabecera() ->at ( index.column() );
 
@@ -88,13 +88,13 @@ QWidget *QSubFormVarTarifaBfDelegate::createEditor ( QWidget *parent, const QSty
         BlDoubleSpinBox * editor = new BlDoubleSpinBox ( parent );
         editor->setMinimum ( -1000000 );
         editor->setMaximum ( 1000000 );
-        _depura ( "END QSubFormVarTarifaBfDelegate::createEditor", 0, "QSPinBox" );
+        blDebug ( "END QSubFormVarTarifaBfDelegate::createEditor", 0, "QSPinBox" );
         return editor;
 
     } else  {
         return BfSubFormDelegate::createEditor ( parent, option, index );
     } // end if
-    _depura ( "END QSubFormVarTarifaBfDelegate::createEditor", 0 );
+    blDebug ( "END QSubFormVarTarifaBfDelegate::createEditor", 0 );
 }
 
 
@@ -107,7 +107,7 @@ QWidget *QSubFormVarTarifaBfDelegate::createEditor ( QWidget *parent, const QSty
 **/
 void QSubFormVarTarifaBfDelegate::setModelData ( QWidget *editor, QAbstractItemModel *model, const QModelIndex &index ) const
 {
-    _depura ( "QSubFormVarTarifaBfDelegate::setModelData", 0 );
+    blDebug ( "QSubFormVarTarifaBfDelegate::setModelData", 0 );
 
     /// Si la fila o columna pasadas son invalidas salimos.
     if ( index.column() < 0 || index.row() < 0 )
@@ -139,7 +139,7 @@ void QSubFormVarTarifaBfDelegate::setModelData ( QWidget *editor, QAbstractItemM
     } else {
         BfSubFormDelegate::setModelData ( editor, model, index );
     } // end if
-    _depura ( "END QSubFormVarTarifaBfDelegate::setModelData", 0 );
+    blDebug ( "END QSubFormVarTarifaBfDelegate::setModelData", 0 );
 }
 
 
@@ -150,7 +150,7 @@ void QSubFormVarTarifaBfDelegate::setModelData ( QWidget *editor, QAbstractItemM
 **/
 void QSubFormVarTarifaBfDelegate::setEditorData ( QWidget* editor, const QModelIndex& index ) const
 {
-    _depura ( "QSubFormVarTarifaBfDelegate::setEditorData", 0 );
+    blDebug ( "QSubFormVarTarifaBfDelegate::setEditorData", 0 );
     BlSubFormHeader *linea;
     linea = m_subform->cabecera() ->at ( index.column() );
     if ( linea->nomcampo() == "nomtarifa" ) {
@@ -173,7 +173,7 @@ void QSubFormVarTarifaBfDelegate::setEditorData ( QWidget* editor, const QModelI
     } else {
         BfSubFormDelegate::setEditorData ( editor, index );
     } // end if
-    _depura ( "END QSubFormVarTarifaBfDelegate::setEditorData", 0 );
+    blDebug ( "END QSubFormVarTarifaBfDelegate::setEditorData", 0 );
 }
 
 

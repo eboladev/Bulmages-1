@@ -34,10 +34,10 @@
 DuplicarAsientoView::DuplicarAsientoView ( BcCompany *emp, QWidget *parent, Qt::WFlags flag )
         : QDialog ( parent, flag ), BlMainCompanyPointer ( emp )
 {
-    _depura ( "DuplicarAsientoView::DuplicarAsientoView", 0 );
+    blDebug ( "DuplicarAsientoView::DuplicarAsientoView", 0 );
     setupUi ( this );
     fdinicial->setText ( QDate::currentDate().toString ( "dd/MM/yyyy" ) );
-    _depura ( "END DuplicarAsientoView::DuplicarAsientoView", 0 );
+    blDebug ( "END DuplicarAsientoView::DuplicarAsientoView", 0 );
 }
 
 
@@ -46,8 +46,8 @@ DuplicarAsientoView::DuplicarAsientoView ( BcCompany *emp, QWidget *parent, Qt::
 **/
 DuplicarAsientoView::~DuplicarAsientoView()
 {
-    _depura ( "DuplicarAsientoView::~DuplicarAsientoView", 0 );
-    _depura ( "END DuplicarAsientoView::~DuplicarAsientoView", 0 );
+    blDebug ( "DuplicarAsientoView::~DuplicarAsientoView", 0 );
+    blDebug ( "END DuplicarAsientoView::~DuplicarAsientoView", 0 );
 }
 
 
@@ -58,7 +58,7 @@ DuplicarAsientoView::~DuplicarAsientoView()
 **/
 void DuplicarAsientoView::inicializa ( QString ainicial, QString afinal )
 {
-    _depura ( "DuplicarAsientoView::inicializa", 0 );
+    blDebug ( "DuplicarAsientoView::inicializa", 0 );
     aoinicial->setText ( ainicial );
     aofinal->setText ( afinal );
     QString query = "SELECT * FROM asiento WHERE ordenasiento = " + ainicial;
@@ -71,7 +71,7 @@ void DuplicarAsientoView::inicializa ( QString ainicial, QString afinal )
     delete cur;
     aoinicial->selectAll();
     aoinicial->setFocus();
-    _depura ( "END DuplicarAsientoView::inicializa", 0 );
+    blDebug ( "END DuplicarAsientoView::inicializa", 0 );
 }
 
 ///
@@ -79,7 +79,7 @@ void DuplicarAsientoView::inicializa ( QString ainicial, QString afinal )
 **/
 void DuplicarAsientoView::lostFocus()
 {
-    _depura ( "DuplicarAsientoView::lostFocus", 0 );
+    blDebug ( "DuplicarAsientoView::lostFocus", 0 );
     QString ainicial = aoinicial->text();
     QString query = "SELECT * FROM asiento WHERE ordenasiento = " + ainicial;
     mainCompany() ->begin();
@@ -89,7 +89,7 @@ void DuplicarAsientoView::lostFocus()
         foinicial->setText ( cur->valor ( "fecha" ).left ( 10 ) );
     } // end if
     delete cur;
-    _depura ( "END DuplicarAsientoView::lostFocus", 0 );
+    blDebug ( "END DuplicarAsientoView::lostFocus", 0 );
 }
 
 
@@ -98,7 +98,7 @@ void DuplicarAsientoView::lostFocus()
 **/
 void DuplicarAsientoView::on_mui_aceptar_clicked()
 {
-    _depura ( "DuplicarAsientoView::on_mui_aceptar_clicked", 0 );
+    blDebug ( "DuplicarAsientoView::on_mui_aceptar_clicked", 0 );
     QString asientoi = aoinicial->text();
     QString asientof = aofinal->text();
     QString query1, query2;
@@ -188,6 +188,6 @@ void DuplicarAsientoView::on_mui_aceptar_clicked()
     delete curasiento;
     mainCompany() ->commit();
     done ( 1 );
-    _depura ( "END DuplicarAsientoView::on_mui_aceptar_clicked", 0 );
+    blDebug ( "END DuplicarAsientoView::on_mui_aceptar_clicked", 0 );
 }
 

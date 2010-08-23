@@ -41,7 +41,7 @@
 PresupuestoList::PresupuestoList ( QWidget *parent, Qt::WFlags flag, edmode editmodo )
         : BlFormList ( NULL, parent, flag, editmodo )
 {
-    _depura ( "PresupuestoList::PresupuestoList(1)", 0 );
+    blDebug ( "PresupuestoList::PresupuestoList(1)", 0 );
     setupUi ( this );
     /// Disparamos los plugins.
     int res = g_plugins->lanza ( "PresupuestoList_PresupuestoList", this );
@@ -57,7 +57,7 @@ PresupuestoList::PresupuestoList ( QWidget *parent, Qt::WFlags flag, edmode edit
 
     hideBusqueda();
     iniciaForm();
-    _depura ( "END PresupuestoList::PresupuestoList(1)", 0 );
+    blDebug ( "END PresupuestoList::PresupuestoList(1)", 0 );
 }
 
 
@@ -71,7 +71,7 @@ PresupuestoList::PresupuestoList ( QWidget *parent, Qt::WFlags flag, edmode edit
 PresupuestoList::PresupuestoList ( BfCompany *comp, QWidget *parent, Qt::WFlags flag, edmode editmodo )
         : BlFormList ( comp, parent, flag, editmodo )
 {
-    _depura ( "PresupuestoList::PresupuestoList(2)", 0 );
+    blDebug ( "PresupuestoList::PresupuestoList(2)", 0 );
     setupUi ( this );
     /// Disparamos los plugins.
     int res = g_plugins->lanza ( "PresupuestoList_PresupuestoList", this );
@@ -95,7 +95,7 @@ PresupuestoList::PresupuestoList ( BfCompany *comp, QWidget *parent, Qt::WFlags 
     hideBusqueda();
     /// Hacemos el tratamiento de los permisos que desabilita botones en caso de no haber suficientes permisos.
     trataPermisos ( "presupuesto" );
-    _depura ( "END PresupuestoList::PresupuestoList(2)", 0 );
+    blDebug ( "END PresupuestoList::PresupuestoList(2)", 0 );
 }
 
 
@@ -105,7 +105,7 @@ PresupuestoList::PresupuestoList ( BfCompany *comp, QWidget *parent, Qt::WFlags 
 **/
 void PresupuestoList::iniciaForm()
 {
-    _depura ( "PresupuestoList::iniciaForm" );
+    blDebug ( "PresupuestoList::iniciaForm" );
     /// Disparamos los plugins.
     int res = g_plugins->lanza ( "PresupuestoList_iniciaForm", this );
     if ( res != 0 )
@@ -114,7 +114,7 @@ void PresupuestoList::iniciaForm()
     mui_procesada->insertItem ( 1, _ ( "Presupuestos procesados" ) );
     mui_procesada->insertItem ( 2, _ ( "Presupuestos no procesados" ) );
     mui_procesada->setCurrentIndex ( 2 );
-    _depura ( "END PresupuestoList::iniciaForm" );
+    blDebug ( "END PresupuestoList::iniciaForm" );
 }
 
 
@@ -123,8 +123,8 @@ void PresupuestoList::iniciaForm()
 **/
 PresupuestoList::~PresupuestoList()
 {
-    _depura ( "PresupuestoList::~PresupuestoList", 0 );
-    _depura ( "END PresupuestoList::~PresupuestoList", 0 );
+    blDebug ( "PresupuestoList::~PresupuestoList", 0 );
+    blDebug ( "END PresupuestoList::~PresupuestoList", 0 );
 }
 
 
@@ -134,8 +134,8 @@ PresupuestoList::~PresupuestoList()
 **/
 QString PresupuestoList::idpresupuesto()
 {
-    _depura ( "PresupuestoList::idpresupuesto", 0 );
-    _depura ( "END PresupuestoList::idpresupuesto", 0 );
+    blDebug ( "PresupuestoList::idpresupuesto", 0 );
+    blDebug ( "END PresupuestoList::idpresupuesto", 0 );
     return m_idpresupuesto;
 }
 
@@ -146,12 +146,12 @@ QString PresupuestoList::idpresupuesto()
 **/
 void PresupuestoList::setMainCompany ( BfCompany *comp )
 {
-    _depura ( "PresupuestoList::setMainCompany", 0 );
+    blDebug ( "PresupuestoList::setMainCompany", 0 );
     BlMainCompanyPointer::setMainCompany ( comp );
     m_cliente->setMainCompany ( comp );
     m_articulo->setMainCompany ( comp );
     mui_list->setMainCompany ( comp );
-    _depura ( "END PresupuestoList::setMainCompany", 0 );
+    blDebug ( "END PresupuestoList::setMainCompany", 0 );
 }
 
 
@@ -161,9 +161,9 @@ void PresupuestoList::setMainCompany ( BfCompany *comp )
 **/
 void PresupuestoList::setidcliente ( QString val )
 {
-    _depura ( "PresupuestoList::setidcliente", 0 );
+    blDebug ( "PresupuestoList::setidcliente", 0 );
     m_cliente->setId ( val );
-    _depura ( "END PresupuestoList::setidcliente", 0 );
+    blDebug ( "END PresupuestoList::setidcliente", 0 );
 }
 
 
@@ -173,9 +173,9 @@ void PresupuestoList::setidcliente ( QString val )
 **/
 void PresupuestoList::setidarticulo ( QString val )
 {
-    _depura ( "PresupuestoList::setidarticulo", 0 );
+    blDebug ( "PresupuestoList::setidarticulo", 0 );
     m_articulo->setidarticulo ( val );
-    _depura ( "END PresupuestoList::setidarticulo", 0 );
+    blDebug ( "END PresupuestoList::setidarticulo", 0 );
 }
 
 
@@ -184,7 +184,7 @@ void PresupuestoList::setidarticulo ( QString val )
 **/
 void PresupuestoList::crear()
 {
-    _depura ( "PresupuestoList::crear", 0 );
+    blDebug ( "PresupuestoList::crear", 0 );
     PresupuestoView *pv = new PresupuestoView ( ( BfCompany * ) mainCompany(), 0 );
     mainCompany()->m_pWorkspace->addWindow ( pv );
     pv->inicializar();
@@ -198,7 +198,7 @@ void PresupuestoList::crear()
     
     pv->show();
     pv->mui_descpresupuesto->setFocus ( Qt::OtherFocusReason );
-    _depura ( "END PresupuestoList::crear", 0 );
+    blDebug ( "END PresupuestoList::crear", 0 );
 }
 
 
@@ -207,7 +207,7 @@ void PresupuestoList::crear()
 **/
 void PresupuestoList::presentar()
 {
-    _depura ( "PresupuestoList::presentar", 0 );
+    blDebug ( "PresupuestoList::presentar", 0 );
 
     /// Hacemos el listado y lo presentamos.
     mui_list->cargar ( "SELECT *, totalpresupuesto AS total, bimppresupuesto AS base, imppresupuesto AS impuestos FROM presupuesto LEFT JOIN  cliente ON presupuesto.idcliente=cliente.idcliente LEFT JOIN almacen ON presupuesto.idalmacen=almacen.idalmacen WHERE 1=1 " + generaFiltro() );
@@ -220,7 +220,7 @@ void PresupuestoList::presentar()
         delete cur;
     } // end if
 
-    _depura ( "END PresupuestoList::presentar", 0 );
+    blDebug ( "END PresupuestoList::presentar", 0 );
 }
 
 
@@ -230,7 +230,7 @@ void PresupuestoList::presentar()
 **/
 QString PresupuestoList::generaFiltro()
 {
-    _depura ( "PresupuestoList::generaFiltro", 0 );
+    blDebug ( "PresupuestoList::generaFiltro", 0 );
     /// Tratamiento de los filtros.
     QString filtro = "";
 
@@ -261,7 +261,7 @@ QString PresupuestoList::generaFiltro()
         filtro += " AND fpresupuesto >= '" + m_fechain->text() + "' ";
     if ( m_fechafin->text() != "" )
         filtro += " AND fpresupuesto <= '" + m_fechafin->text() + "' ";
-    _depura ( "END PresupuestoList::generaFiltro", 0 );
+    blDebug ( "END PresupuestoList::generaFiltro", 0 );
     return ( filtro );
 }
 
@@ -273,7 +273,7 @@ QString PresupuestoList::generaFiltro()
 **/
 void PresupuestoList::editar ( int row )
 {
-    _depura ( "PresupuestoList::editar", 0 );
+    blDebug ( "PresupuestoList::editar", 0 );
     try {
         m_idpresupuesto = mui_list->dbValue ( QString ( "idpresupuesto" ), row );
         if ( modoEdicion() ) {
@@ -287,7 +287,7 @@ void PresupuestoList::editar ( int row )
         } else {
             emit ( selected ( m_idpresupuesto ) );
         } // end if
-        _depura ( "END PresupuestoList::editar", 0 );
+        blDebug ( "END PresupuestoList::editar", 0 );
     } catch ( ... ) {
         mensajeInfo ( _ ( "Error al editar el presupuesto" ), this );
     } // end try
@@ -300,9 +300,9 @@ void PresupuestoList::editar ( int row )
 **/
 void PresupuestoList::imprimir()
 {
-    _depura ( "PresupuestoList::imprimir", 0 );
+    blDebug ( "PresupuestoList::imprimir", 0 );
     mui_list->imprimirPDF ( _ ( "Presupuestos a clientes" ) );
-    _depura ( "END PresupuestoList::imprimir", 0 );
+    blDebug ( "END PresupuestoList::imprimir", 0 );
 }
 
 
@@ -312,7 +312,7 @@ void PresupuestoList::imprimir()
 **/
 void PresupuestoList::borrar()
 {
-    _depura ( "PresupuestoList::borrar", 0 );
+    blDebug ( "PresupuestoList::borrar", 0 );
     int a = mui_list->currentRow();
     if ( a < 0 ) {
         mensajeInfo ( _ ( "Debe seleccionar una linea" ), this );
@@ -331,7 +331,7 @@ void PresupuestoList::borrar()
     } catch ( ... ) {
         mensajeInfo ( _ ( "Error al borrar el presupuesto" ), this );
     } // end try
-    _depura ( "END PresupuestoList::borrar", 0 );
+    blDebug ( "END PresupuestoList::borrar", 0 );
 }
 
 
@@ -345,11 +345,11 @@ void PresupuestoList::borrar()
 **/
 PresupuestoListSubForm::PresupuestoListSubForm ( QWidget *parent, const char * ) : BfSubForm ( parent )
 {
-    _depura ( "PresupuestoListSubForm::PresupuestoListSubForm", 0 );
+    blDebug ( "PresupuestoListSubForm::PresupuestoListSubForm", 0 );
     /// Disparamos los plugins.
     int res = g_plugins->lanza ( "PresupuestoListSubForm_PresupuestoListSubForm", this );
     if ( res != 0 ) {
-        _depura ( "END PresupuestoListSubForm::PresupuestoListSubForm", 0, "Salida por Plugin" );
+        blDebug ( "END PresupuestoListSubForm::PresupuestoListSubForm", 0, "Salida por Plugin" );
         return;
     } // end if
     setDbTableName ( "presupuesto" );
@@ -375,7 +375,7 @@ PresupuestoListSubForm::PresupuestoListSubForm ( QWidget *parent, const char * )
     setSortingEnabled ( TRUE );
     /// Disparamos los plugins.
     g_plugins->lanza ( "PresupuestoListSubForm_PresupuestoListSubForm_Post", this );
-    _depura ( "END PresupuestoListSubForm::PresupuestoListSubForm", 0 );
+    blDebug ( "END PresupuestoListSubForm::PresupuestoListSubForm", 0 );
     return;
 }
 
@@ -385,10 +385,10 @@ PresupuestoListSubForm::PresupuestoListSubForm ( QWidget *parent, const char * )
 **/
 void PresupuestoListSubForm::cargar()
 {
-    _depura ( "PresupuestoListSubForm::cargar", 0 );
+    blDebug ( "PresupuestoListSubForm::cargar", 0 );
     QString SQLQuery = "SELECT * FROM presupuesto";
     BlSubForm::cargar ( SQLQuery );
-    _depura ( "END PresupuestoListSubForm::cargar", 0 );
+    blDebug ( "END PresupuestoListSubForm::cargar", 0 );
 }
 
 
@@ -398,7 +398,7 @@ void PresupuestoListSubForm::cargar()
 **/
 void PresupuestoListSubForm::cargar ( QString query )
 {
-    _depura ( "PresupuestoListSubForm::cargar", 0, query );
+    blDebug ( "PresupuestoListSubForm::cargar", 0, query );
     BlSubForm::cargar ( query );
-    _depura ( "END PresupuestoListSubForm::cargar", 0 );
+    blDebug ( "END PresupuestoListSubForm::cargar", 0 );
 }

@@ -34,7 +34,7 @@
 **/
 IncidenciaComercial::IncidenciaComercial ( BfCompany *comp, QWidget *parent ) : BfForm ( comp, parent )
 {
-    _depura ( "IncidenciaComercial::IncidenciaComercial", 0 );
+    blDebug ( "IncidenciaComercial::IncidenciaComercial", 0 );
     setTitleName ( _ ( "Incidencia comercial" ) );
     setDbTableName ( "incidenciacomercial" );
     setDbFieldId ( "idincidenciacomercial" );
@@ -46,7 +46,7 @@ IncidenciaComercial::IncidenciaComercial ( BfCompany *comp, QWidget *parent ) : 
     addDbField ( "estadoincidenciacomercial", BlDbField::DbInt, BlDbField::DbNotNull, _ ( "Estado" ) );
     addDbField ( "horaincidenciacomercial", BlDbField::DbVarChar, BlDbField::DbNothing, _ ( "Hora" ) );
     addDbField ( "refincidenciacomercial", BlDbField::DbVarChar, BlDbField::DbNothing, _ ( "Referencia" ) );
-    _depura ( "END IncidenciaComercial::IncidenciaComercial", 0 );
+    blDebug ( "END IncidenciaComercial::IncidenciaComercial", 0 );
 
 
 }
@@ -57,8 +57,8 @@ IncidenciaComercial::IncidenciaComercial ( BfCompany *comp, QWidget *parent ) : 
 **/
 IncidenciaComercial::~IncidenciaComercial()
 {
-    _depura ( "IncidenciaComercial::~IncidenciaComercial", 0 );
-    _depura ( "END IncidenciaComercial::~IncidenciaComercial", 0 );
+    blDebug ( "IncidenciaComercial::~IncidenciaComercial", 0 );
+    blDebug ( "END IncidenciaComercial::~IncidenciaComercial", 0 );
 }
 
 
@@ -68,12 +68,12 @@ IncidenciaComercial::~IncidenciaComercial()
 **/
 void IncidenciaComercial::pintar()
 {
-    _depura ( "IncidenciaComercial::pintar", 0 );
+    blDebug ( "IncidenciaComercial::pintar", 0 );
     /// Disparamos los plugins con IncidenciaComercial_pintar
     int res = g_plugins->lanza ( "IncidenciaComercial_pintar", this );
     if ( res != 0 )
         return;
-    _depura ( "END IncidenciaComercial::pintar", 0 );
+    blDebug ( "END IncidenciaComercial::pintar", 0 );
 }
 
 
@@ -84,7 +84,7 @@ void IncidenciaComercial::pintar()
 **/
 int IncidenciaComercial::cargar ( QString id )
 {
-    _depura ( "IncidenciaComercial::cargar", 0 );
+    blDebug ( "IncidenciaComercial::cargar", 0 );
     QString query = "SELECT * FROM incidenciacomercial WHERE idincidenciacomercial = " + id;
     BlDbRecordSet *cur = mainCompany() ->loadQuery ( query );
     if ( !cur->eof() )  {
@@ -93,6 +93,6 @@ int IncidenciaComercial::cargar ( QString id )
     delete cur;
     setWindowTitle ( _ ( "Ruta comercial" ) + " " + dbValue ( "idincidenciacomercial" ) );
     dialogChanges_cargaInicial();
-    _depura ( "END IncidenciaComercial::cargar", 0 );
+    blDebug ( "END IncidenciaComercial::cargar", 0 );
     return 0;
 }

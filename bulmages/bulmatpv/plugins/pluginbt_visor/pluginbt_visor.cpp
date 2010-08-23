@@ -43,7 +43,7 @@ QFile *g_file;
 **/
 int entryPoint ( BtBulmaTPV *tpv )
 {
-    _depura ( "entryPoint", 0 );
+    blDebug ( "entryPoint", 0 );
 
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale ( LC_ALL, "" );
@@ -56,7 +56,7 @@ int entryPoint ( BtBulmaTPV *tpv )
         g_file->flush();
         g_file->close();
     } // end if
-    _depura ( "END entryPoint", 0 );
+    blDebug ( "END entryPoint", 0 );
     return 0;
 }
 
@@ -66,19 +66,19 @@ int entryPoint ( BtBulmaTPV *tpv )
 **/
 int exitPoint ( BtBulmaTPV *tpv )
 {
-    _depura ( "pluginvisor::entryPoint", 0 );
+    blDebug ( "pluginvisor::entryPoint", 0 );
     if ( g_file->open ( QIODevice::WriteOnly | QIODevice::Unbuffered ) ) {
         g_file->write ( "\x0Ch", 1 );
         g_file->close();
     } // end if
     delete g_file;
-    _depura ( "END pluginvisor::entryPoint", 0 );
+    blDebug ( "END pluginvisor::entryPoint", 0 );
     return 0;
 }
 
 int Ticket_insertarArticulo_Post ( BtTicket *tick )
 {
-    _depura ( "pluginvisor::Ticket_insertarArticulo_Post", 0 );
+    blDebug ( "pluginvisor::Ticket_insertarArticulo_Post", 0 );
     if ( g_file->open ( QIODevice::WriteOnly | QIODevice::Unbuffered ) ) {
         g_file->write ( "\x0Ch", 1 );
         QTextStream out ( g_file );
@@ -88,7 +88,7 @@ int Ticket_insertarArticulo_Post ( BtTicket *tick )
         g_file->flush();
         g_file->close();
     } // end if
-    _depura ( "END pluginvisor::Ticket_insertarArticulo_Post", 0 );
+    blDebug ( "END pluginvisor::Ticket_insertarArticulo_Post", 0 );
     return 0;
 }
 

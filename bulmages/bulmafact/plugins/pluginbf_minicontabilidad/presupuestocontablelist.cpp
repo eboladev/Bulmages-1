@@ -41,7 +41,7 @@
 PresupuestoContableList::PresupuestoContableList ( BfCompany *comp, QWidget *parent, Qt::WFlags flag, edmode editmode )
         : BlFormList ( comp, parent, flag, editmode ), BlImportExport ( comp )
 {
-    _depura ( "PresupuestoContableList::PresupuestoContableList", 0 );
+    blDebug ( "PresupuestoContableList::PresupuestoContableList", 0 );
     setupUi ( this );
 
     /// Disparamos los plugins.
@@ -67,7 +67,7 @@ PresupuestoContableList::PresupuestoContableList ( BfCompany *comp, QWidget *par
     presentar();
     /// Hacemos el tratamiento de los permisos que desabilita botones en caso de no haber suficientes permisos.
     trataPermisos ( "presupuestocontable" );
-    _depura ( "END PresupuestoContableList::PresupuestoContableList", 0 );
+    blDebug ( "END PresupuestoContableList::PresupuestoContableList", 0 );
 }
 
 
@@ -75,8 +75,8 @@ PresupuestoContableList::PresupuestoContableList ( BfCompany *comp, QWidget *par
 */
 PresupuestoContableList::~PresupuestoContableList()
 {
-    _depura ( "PresupuestoContableList::~PresupuestoContableList", 0 );
-    _depura ( "END PresupuestoContableList::~PresupuestoContableList", 0 );
+    blDebug ( "PresupuestoContableList::~PresupuestoContableList", 0 );
+    blDebug ( "END PresupuestoContableList::~PresupuestoContableList", 0 );
 }
 
 
@@ -85,9 +85,9 @@ PresupuestoContableList::~PresupuestoContableList()
 /// \TODO: Mejorar el sistema de filtrado incluyendo una funcion de generar Filtro.
 void PresupuestoContableList::presentar()
 {
-    _depura ( "PresupuestoContableList::presenta", 0 );
+    blDebug ( "PresupuestoContableList::presenta", 0 );
     mui_list->cargar ( "SELECT * FROM presupuestocontable  WHERE lower(conceptopresupuestocontable) LIKE lower('%" + m_filtro->text() + "%') ORDER BY conceptopresupuestocontable" );
-    _depura ( "END PresupuestoContableList::presenta", 0 );
+    blDebug ( "END PresupuestoContableList::presenta", 0 );
 }
 
 
@@ -99,7 +99,7 @@ void PresupuestoContableList::presentar()
 */
 void PresupuestoContableList::editar ( int row )
 {
-    _depura ( "PresupuestoContableList::editar", 0 );
+    blDebug ( "PresupuestoContableList::editar", 0 );
     mdb_idpresupuestocontable = mui_list->dbValue ( "idpresupuestocontable", row );
     mdb_conceptopresupuestocontable = mui_list->dbValue ( "conceptopresupuestocontable", row );
     if ( modoEdicion() ) {
@@ -113,7 +113,7 @@ void PresupuestoContableList::editar ( int row )
     } else {
         emit ( selected ( mdb_idpresupuestocontable ) );
     } // end if
-    _depura ( "END PresupuestoContableList::editar", 0 );
+    blDebug ( "END PresupuestoContableList::editar", 0 );
 }
 
 
@@ -122,9 +122,9 @@ void PresupuestoContableList::editar ( int row )
 */
 void PresupuestoContableList::imprimir()
 {
-    _depura ( "PresupuestoContableList::on_mui_imprimir_clicked", 0 );
+    blDebug ( "PresupuestoContableList::on_mui_imprimir_clicked", 0 );
     mui_list->imprimirPDF ( _ ( "Listado de Presupuestos Contables" ) );
-    _depura ( "PresupuestoContableList::on_mui_imprimir_clicked", 0 );
+    blDebug ( "PresupuestoContableList::on_mui_imprimir_clicked", 0 );
 }
 
 
@@ -135,7 +135,7 @@ void PresupuestoContableList::imprimir()
 */
 void PresupuestoContableList::borrar()
 {
-    _depura ( "PresupuestoContableList::on_mui_borrar_clicked", 0 );
+    blDebug ( "PresupuestoContableList::on_mui_borrar_clicked", 0 );
     try {
         QString idpresupuestocontable = mui_list->dbValue ( "idpresupuestocontable" );
         PresupuestoContableView *cli = new PresupuestoContableView ( ( BfCompany * ) mainCompany(), 0 ) ;
@@ -149,7 +149,7 @@ void PresupuestoContableList::borrar()
     } catch ( ... ) {
         mensajeInfo ( _ ( "Error al borrar un presupuestocontable" ) );
     } // end try
-    _depura ( "END:PresupuestoContableList::on_mui_borrar_clicked", 0 );
+    blDebug ( "END:PresupuestoContableList::on_mui_borrar_clicked", 0 );
 }
 
 
@@ -189,7 +189,7 @@ void PresupuestoContableList::crear()
 */
 void PresupuestoContableList::submenu ( const QPoint & )
 {
-    _depura ( "ArticuloList::on_mui_list_customContextMenuRequested", 0 );
+    blDebug ( "ArticuloList::on_mui_list_customContextMenuRequested", 0 );
     int a = mui_list->currentRow();
     if ( a < 0 )
         return;
@@ -212,7 +212,7 @@ void PresupuestoContableList::submenu ( const QPoint & )
 */
 PresupuestoContableListSubform::PresupuestoContableListSubform ( QWidget *parent, const char * ) : BfSubForm ( parent )
 {
-    _depura ( "PresupuestoContableListSubform::PresupuestoContableListSubform", 0 );
+    blDebug ( "PresupuestoContableListSubform::PresupuestoContableListSubform", 0 );
     setDbTableName ( "presupuestocontable" );
     setDbFieldId ( "idpresupuestocontable" );
     addSubFormHeader ( "idpresupuestocontable", BlDbField::DbInt, BlDbField::DbNotNull | BlDbField::DbPrimaryKey, BlSubFormHeader::DbHideView | BlSubFormHeader::DbNoWrite, _ ( "ID presupuestocontable" ) );
@@ -221,11 +221,11 @@ PresupuestoContableListSubform::PresupuestoContableListSubform ( QWidget *parent
     setInsert ( FALSE );
     setDelete ( FALSE );
     setSortingEnabled ( TRUE );
-    _depura ( "END PresupuestoContableListSubform::PresupuestoContableListSubform", 0 );
+    blDebug ( "END PresupuestoContableListSubform::PresupuestoContableListSubform", 0 );
 }
 
 PresupuestoContableListSubform::~PresupuestoContableListSubform()
 {
-    _depura ( "PresupuestoContableListSubform::~PresupuestoContableListSubform", 0 );
-    _depura ( "END PresupuestoContableListSubform::~PresupuestoContableListSubform", 0 );
+    blDebug ( "PresupuestoContableListSubform::~PresupuestoContableListSubform", 0 );
+    blDebug ( "END PresupuestoContableListSubform::~PresupuestoContableListSubform", 0 );
 }

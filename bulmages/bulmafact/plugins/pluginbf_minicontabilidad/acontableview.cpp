@@ -37,7 +37,7 @@
 */
 ApunteContableView::ApunteContableView ( BfCompany *comp, QWidget *parent ) : BfForm ( comp, parent )
 {
-    _depura ( "ApunteContableView::ApunteContableView", 0 );
+    blDebug ( "ApunteContableView::ApunteContableView", 0 );
 
     setAttribute ( Qt::WA_DeleteOnClose );
 
@@ -76,28 +76,28 @@ ApunteContableView::ApunteContableView ( BfCompany *comp, QWidget *parent ) : Bf
         mensajeInfo ( _ ( "Error al crear el recibo" ), this );
     } // end try
 
-    _depura ( "END ApunteContableView::ApunteContableView", 0 );
+    blDebug ( "END ApunteContableView::ApunteContableView", 0 );
 }
 
 /** No precisa acciones adicionales en el destructor.
 */
 ApunteContableView::~ApunteContableView()
 {
-    _depura ( "ApunteContableView::~ApunteContableView", 0 );
-    _depura ( "END ApunteContableView::~ApunteContableView", 0 );
+    blDebug ( "ApunteContableView::~ApunteContableView", 0 );
+    blDebug ( "END ApunteContableView::~ApunteContableView", 0 );
 }
 
 QString ApunteContableView::nombrePlantilla ( void )
 {
-    _depura ( "ApunteContableView::nombrePlantilla", 0 );
-    _depura ( "END ApunteContableView::nombrePlantilla", 0 );
+    blDebug ( "ApunteContableView::nombrePlantilla", 0 );
+    blDebug ( "END ApunteContableView::nombrePlantilla", 0 );
     
     return QString ( "acontable" );
 }
 
 void ApunteContableView::imprimir()
 {
-    _depura ( "ApunteContableView::imprimir", 0 );
+    blDebug ( "ApunteContableView::imprimir", 0 );
 
     /// Comprobamos que se disponen de los datos minimos para imprimir el recibo.
     QString SQLQuery = "";
@@ -112,27 +112,27 @@ void ApunteContableView::imprimir()
 
     BfForm::imprimir();
 
-    _depura ( "END ApunteContableView::imprimir", 0 );
+    blDebug ( "END ApunteContableView::imprimir", 0 );
 }
 
 int ApunteContableView::guardar()
 {
-    _depura ( "ApunteContableView::guardarPost", 0 );
+    blDebug ( "ApunteContableView::guardarPost", 0 );
 
     mui_list->guardar();
 
-    _depura ( "END ApunteContableView::guardarPost", 0 );
+    blDebug ( "END ApunteContableView::guardarPost", 0 );
     return 0;
 }
 
 
 int ApunteContableView::cargar ( QString id )
 {
-    _depura ( "ApunteContableView::cargarPost", 0 );
+    blDebug ( "ApunteContableView::cargarPost", 0 );
 
     mui_list->cargar ("SELECT * FROM acontable NATURAL LEFT JOIN partida" );
     
-    _depura ( "END ApunteContableView::cargarPost", 0 );
+    blDebug ( "END ApunteContableView::cargarPost", 0 );
     
     return 0;
 }

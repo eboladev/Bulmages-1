@@ -47,13 +47,13 @@
 **/
 EmailQToolButton::EmailQToolButton ( PresupuestoView *pres, PedidoClienteView *ped, AlbaranClienteView *alb, FacturaView *fac , QWidget *parent ) : QToolButton ( parent )
 {
-    _depura ( "EmailQToolButton::EmailQToolButton", 0 );
+    blDebug ( "EmailQToolButton::EmailQToolButton", 0 );
     m_presupuestoView = pres;
     m_pedidoClienteView = ped;
     m_albaranClienteView = alb;
     m_facturaView = fac;
     setBoton();
-    _depura ( "END EmailQToolButton::EmailQToolButton", 0 );
+    blDebug ( "END EmailQToolButton::EmailQToolButton", 0 );
 }
 
 
@@ -62,8 +62,8 @@ EmailQToolButton::EmailQToolButton ( PresupuestoView *pres, PedidoClienteView *p
 **/
 EmailQToolButton::~EmailQToolButton()
 {
-    _depura ( "EmailQToolButton::~EmailQToolButton", 0 );
-    _depura ( "END EmailQToolButton::~EmailQToolButton", 0 );
+    blDebug ( "EmailQToolButton::~EmailQToolButton", 0 );
+    blDebug ( "END EmailQToolButton::~EmailQToolButton", 0 );
 }
 
 
@@ -72,7 +72,7 @@ EmailQToolButton::~EmailQToolButton()
 **/
 void EmailQToolButton::setBoton()
 {
-    _depura ( "EmailQToolButton::setBoton", 0 );
+    blDebug ( "EmailQToolButton::setBoton", 0 );
     connect ( this, SIGNAL ( clicked() ), this, SLOT ( click() ) );
     setObjectName ( QString::fromUtf8 ( "exporta" ) );
     setStatusTip ( _ ( "Enviar por e-mail al cliente" ) );
@@ -81,7 +81,7 @@ void EmailQToolButton::setBoton()
     setMaximumSize ( QSize ( 32, 32 ) );
     setIcon ( QIcon ( QString::fromUtf8 ( ":/Images/mail-send.png" ) ) );
     setIconSize ( QSize ( 22, 22 ) );
-    _depura ( "END EmailQToolButton::setBoton", 0 );
+    blDebug ( "END EmailQToolButton::setBoton", 0 );
 }
 
 
@@ -90,7 +90,7 @@ void EmailQToolButton::setBoton()
 **/
 void EmailQToolButton::click()
 {
-    _depura ( "ImpQToolButton::click", 0 );
+    blDebug ( "ImpQToolButton::click", 0 );
 
 
 
@@ -204,7 +204,7 @@ void EmailQToolButton::click()
         } // end if
     } // end if
 
-    _depura ( "END ImpQToolButton::click", 0 );
+    blDebug ( "END ImpQToolButton::click", 0 );
 }
 
 

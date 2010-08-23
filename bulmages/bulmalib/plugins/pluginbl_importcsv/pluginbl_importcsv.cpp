@@ -42,7 +42,7 @@ BlMainCompany *g_emp_importcsv = NULL;
 
 int entryPoint ( QMainWindow *bges )
 {
-    _depura ( "Entrada del plugin ImportCSV", 0 );
+    blDebug ( "Entrada del plugin ImportCSV", 0 );
 
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale ( LC_ALL, "" );
@@ -80,7 +80,7 @@ int entryPoint ( QMainWindow *bges )
     bges->menuBar() ->insertMenu ( 0, pPluginMenu );
 
 
-    _depura ( "Iniciado correctamente el plugin imoprtcsv", 10 );
+    blDebug ( "Iniciado correctamente el plugin imoprtcsv", 10 );
     return 0;
 }
 

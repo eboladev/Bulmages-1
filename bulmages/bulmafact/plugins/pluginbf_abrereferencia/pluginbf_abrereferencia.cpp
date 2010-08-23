@@ -33,7 +33,7 @@
 **/
 int entryPoint ( BfBulmaFact * )
 {
-    _depura ( _ ( "Estoy dentro del plugin de Abertura de Referencia" ), 0 );
+    blDebug ( _ ( "Estoy dentro del plugin de Abertura de Referencia" ), 0 );
 
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale ( LC_ALL, "" );
@@ -50,7 +50,7 @@ int entryPoint ( BfBulmaFact * )
 **/
 int BfBuscarReferencia_on_mui_rferencia_returnPressed ( BfBuscarReferencia *l )
 {
-    _depura ( "BfBuscarReferencia_on_mui_rferencia_returnPressed", 0 );
+    blDebug ( "BfBuscarReferencia_on_mui_rferencia_returnPressed", 0 );
 
     /// Buscamos la ficha que corresponde al widget.
     QList<BfForm *> lista = g_main->findChildren<BfForm *>();
@@ -70,7 +70,7 @@ int BfBuscarReferencia_on_mui_rferencia_returnPressed ( BfBuscarReferencia *l )
         delete cur;
     }// end if
 
-    _depura ( "END BfBuscarReferencia_on_mui_rferencia_returnPressed", 0 );
+    blDebug ( "END BfBuscarReferencia_on_mui_rferencia_returnPressed", 0 );
     return 0;
 }
 

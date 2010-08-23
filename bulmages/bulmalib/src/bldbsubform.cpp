@@ -36,10 +36,10 @@ Mantiene un contador de elementos creados para depurar la liberacion de memoria.
 **/
 BlDbSubFormRecord::BlDbSubFormRecord ( BlMainCompany *con ) : BlDbRecord ( con )
 {
-    _depura ( "BlDbSubFormRecord::BlDbSubFormRecord", 0 );
+    blDebug ( "BlDbSubFormRecord::BlDbSubFormRecord", 0 );
     static int creaciones = 0;
     creaciones++;
-    _depura ( "END BlDbSubFormRecord::BlDbSubFormRecord", 0, "Creaciones" + QString::number ( creaciones ) );
+    blDebug ( "END BlDbSubFormRecord::BlDbSubFormRecord", 0, "Creaciones" + QString::number ( creaciones ) );
 }
 
 
@@ -51,9 +51,9 @@ Mantiene un contador de elementos destruidos para depurar la liberacion de memor
 BlDbSubFormRecord::~BlDbSubFormRecord()
 {
     static int destrucciones = 0;
-    _depura ( "BlDbSubFormRecord::~BlDbSubFormRecord", 0 );
+    blDebug ( "BlDbSubFormRecord::~BlDbSubFormRecord", 0 );
     destrucciones++;
-    _depura ( "END BlDbSubFormRecord::~BlDbSubFormRecord", 0, "Destrucciones " + QString::number ( destrucciones ) );
+    blDebug ( "END BlDbSubFormRecord::~BlDbSubFormRecord", 0, "Destrucciones " + QString::number ( destrucciones ) );
 }
 
 
@@ -64,9 +64,9 @@ BlDbSubFormRecord::~BlDbSubFormRecord()
 **/
 int BlDbSubFormRecord::DBsave ( QString &id )
 {
-    _depura ( "BlDbSubFormRecord::DBsave", 0 );
+    blDebug ( "BlDbSubFormRecord::DBsave", 0 );
     refresh();
-    _depura ( "END BlDbSubFormRecord::DBsave", 0 );
+    blDebug ( "END BlDbSubFormRecord::DBsave", 0 );
     return BlDbRecord::DBsave ( id );
 }
 
@@ -77,13 +77,13 @@ Actualiza los valores del registro acorde a los valores que tiene la tabla que l
 **/
 void BlDbSubFormRecord::refresh()
 {
-    _depura ( "BlDbSubFormRecord::refresh", 0 );
+    blDebug ( "BlDbSubFormRecord::refresh", 0 );
     BlDbSubFormField *camp;
     for ( int i = 0; i < m_lista.size(); ++i ) {
         camp = ( BlDbSubFormField * ) m_lista.at ( i );
         camp->refresh();
     } // end for
-    _depura ( "END BlDbSubFormRecord::refresh", 0 );
+    blDebug ( "END BlDbSubFormRecord::refresh", 0 );
 }
 
 
@@ -97,11 +97,11 @@ void BlDbSubFormRecord::refresh()
 **/
 int BlDbSubFormRecord::addDbField ( QString nom, BlDbField::DbType typ, int res, QString nomp )
 {
-    _depura ( "BlDbSubFormRecord::addDbField", 0 );
+    blDebug ( "BlDbSubFormRecord::addDbField", 0 );
     BlDbSubFormField *camp = new BlDbSubFormField ( this, m_dbConnection, nom, typ, res, nomp );
     camp->set ( "" );
     m_lista.append ( camp );
-    _depura ( "END BlDbSubFormRecord::addDbField", 0 );
+    blDebug ( "END BlDbSubFormRecord::addDbField", 0 );
     return 0;
 }
 
@@ -118,9 +118,9 @@ int BlDbSubFormRecord::addDbField ( QString nom, BlDbField::DbType typ, int res,
 BlDbSubFormField::BlDbSubFormField ( BlDbSubFormRecord *par, BlPostgreSqlClient *com, QString nom, DbType typ, int res, QString nomp )
         : BlTableWidgetItem(), BlDbField ( com, nom, typ, res, nomp )
 {
-    _depura ( "BlDbSubFormField::BlDbSubFormField", 0 );
+    blDebug ( "BlDbSubFormField::BlDbSubFormField", 0 );
     m_pare = par;
-    _depura ( "END BlDbSubFormField::BlDbSubFormField", 0 );
+    blDebug ( "END BlDbSubFormField::BlDbSubFormField", 0 );
 }
 
 
@@ -129,8 +129,8 @@ BlDbSubFormField::BlDbSubFormField ( BlDbSubFormRecord *par, BlPostgreSqlClient 
 **/
 BlDbSubFormField::~BlDbSubFormField()
 {
-    _depura ( "BlDbSubFormField::~BlDbSubFormField()", 0 );
-    _depura ( "END BlDbSubFormField::~BlDbSubFormField()", 0 );
+    blDebug ( "BlDbSubFormField::~BlDbSubFormField()", 0 );
+    blDebug ( "END BlDbSubFormField::~BlDbSubFormField()", 0 );
 }
 
 
@@ -140,7 +140,7 @@ Tiene especial intereses con los campos checkables ya que su tratamiento no es d
 **/
 void BlDbSubFormField::refresh()
 {
-    _depura ( "BlDbSubFormField::refresh", 0 );
+    blDebug ( "BlDbSubFormField::refresh", 0 );
     if ( this->dbFieldType() == BlDbField::DbBoolean ) {
         switch ( checkState() ) {
             case Qt::Checked:
@@ -158,7 +158,7 @@ void BlDbSubFormField::refresh()
      } else {
         BlDbField::set ( text() );
      } // end if
-    _depura ( "END BlDbSubFormField::refresh", 0 );
+    blDebug ( "END BlDbSubFormField::refresh", 0 );
 }
 
 
@@ -171,7 +171,7 @@ para la presentacion de valores corregidos a un estandar.
 **/
 int BlDbSubFormField::set ( QString val )
 {
-    _depura ( "BlDbSubFormField::set", 0, nomcampo() + " = " + val );
+    blDebug ( "BlDbSubFormField::set", 0, nomcampo() + " = " + val );
 
     BlDbField::set ( val );
     QRegExp importe ( "^\\d*\\.\\d{2}$" ); ///< Para emparejar los valores numericos con decimales
@@ -198,7 +198,7 @@ int BlDbSubFormField::set ( QString val )
         setText ( valorcampo() );
     } // end if
 
-    _depura ( "END BlDbSubFormField::set", 0, val );
+    blDebug ( "END BlDbSubFormField::set", 0, val );
     return 0;
 }
 
@@ -210,21 +210,21 @@ int BlDbSubFormField::set ( QString val )
 **/
 bool BlDbSubFormField::operator< ( const QTableWidgetItem &other )
 {
-    _depura ( "BlDbSubFormField::operator <", 0, text() );
+    blDebug ( "BlDbSubFormField::operator <", 0, text() );
     BlDbSubFormField *ot = ( BlDbSubFormField * ) & other;
     DbType tip = ot->dbFieldType();
     if ( tip == this->dbFieldType() ) {
         QString val = ot->valorcampo();
 
         if ( this->dbFieldType() == BlDbField::DbNumeric || this->dbFieldType() == BlDbField::DbInt ) {
-            _depura ( "BlDbSubFormField::operator < es del tipo numerico:", 0, this->nomcampo() + QString::number ( this->dbFieldType() ) );
+            blDebug ( "BlDbSubFormField::operator < es del tipo numerico:", 0, this->nomcampo() + QString::number ( this->dbFieldType() ) );
             double db1 = this->valorcampo().toDouble();
             double db2 = val.toDouble();
             return ( db1 < db2 );
         } // end if
 
         if ( this->dbFieldType() == BlDbField::DbDate ) {
-            _depura ( "BlDbSubFormField::operator < es del tipo fecha:", 0, this->nomcampo() + QString::number ( this->dbFieldType() ) );
+            blDebug ( "BlDbSubFormField::operator < es del tipo fecha:", 0, this->nomcampo() + QString::number ( this->dbFieldType() ) );
             QDate fech = blNormalizeDate ( this->valorcampo() );
             QString db1 = fech.toString ( Qt::ISODate );
             QDate fech1 = blNormalizeDate ( val );
@@ -233,12 +233,12 @@ bool BlDbSubFormField::operator< ( const QTableWidgetItem &other )
         } // end if
 
         if ( this->dbFieldType() == BlDbField::DbVarChar ) {
-            _depura ( "BlDbSubFormField::operator < es del tipo varchar:", 0, this->nomcampo() + QString::number ( this->dbFieldType() ) );
+            blDebug ( "BlDbSubFormField::operator < es del tipo varchar:", 0, this->nomcampo() + QString::number ( this->dbFieldType() ) );
             return ( this->valorcampo() < val );
         } // end if
-        _depura ( "tipo desconocido", 0 );
+        blDebug ( "tipo desconocido", 0 );
     }
-    _depura ( "END BlDbSubFormField::operator <", 0, text() );
+    blDebug ( "END BlDbSubFormField::operator <", 0, text() );
     return FALSE;
 }
 
@@ -251,8 +251,8 @@ pertencecen
 **/
 BlDbSubFormRecord *BlDbSubFormField::pare()
 {
-    _depura ( "BlDbSubFormField::pare", 0 );
-    _depura ( "END BlDbSubFormField::pare", 0 );
+    blDebug ( "BlDbSubFormField::pare", 0 );
+    blDebug ( "END BlDbSubFormField::pare", 0 );
     return m_pare;
 }
 

@@ -41,19 +41,19 @@ typedef QMap<QString, BlFixed> base;
 
 int BtTicket_agregarLinea_Post ( BtTicket *tick)
 {
-    _depura ( "pluginbt_aliastallasycolores::BtTicket_agregarLinea_Post", 0 );
+    blDebug ( "pluginbt_aliastallasycolores::BtTicket_agregarLinea_Post", 0 );
     BlDbRecord *rec = (BlDbRecord * ) g_plugParams;
     rec->addDbField ( "idtc_talla", BlDbField::DbNumeric, BlDbField::DbNothing, _ ( "Talla" ) );
     rec->addDbField ( "idtc_color", BlDbField::DbNumeric, BlDbField::DbNothing, _ ( "Color" ) );
     rec->addDbField ( "nomtc_talla", BlDbField::DbVarChar, BlDbField::DbNoSave, _ ( "Talla" ) );
     rec->addDbField ( "nomtc_color", BlDbField::DbVarChar, BlDbField::DbNoSave, _ ( "Color" ) );
-    _depura ( "END pluginbt_aliastallasycolores::BtTicket_agregarLinea_Post", 0 );
+    blDebug ( "END pluginbt_aliastallasycolores::BtTicket_agregarLinea_Post", 0 );
     return 0;
 }
 
 int BtTicket_insertarArticuloCodigo_Post ( BtTicket *tick )
 {
-    _depura ( "pluginbt_aliastallasycolores::BtTicket_insertarArticuloCodigo_Post", 0 );
+    blDebug ( "pluginbt_aliastallasycolores::BtTicket_insertarArticuloCodigo_Post", 0 );
     int valor = -1;
     static int semaforo = 0;
     if ( semaforo == 0 ) {
@@ -74,13 +74,13 @@ int BtTicket_insertarArticuloCodigo_Post ( BtTicket *tick )
         tick->pintar();
         semaforo = 0;
     } // end if
-    _depura ( "END pluginbt_aliastallasycolores::BtTicket_insertarArticuloCodigo_Post", 0 );
+    blDebug ( "END pluginbt_aliastallasycolores::BtTicket_insertarArticuloCodigo_Post", 0 );
     return valor;
 }
 
 int BtTicket_insertarArticuloCodigoNL_Post ( BtTicket *tick )
 {
-    _depura ( "pluginbt_aliastallasycolores::BtTicket_insertarArticuloCodigo_Post", 0 );
+    blDebug ( "pluginbt_aliastallasycolores::BtTicket_insertarArticuloCodigo_Post", 0 );
     int valor = -1;
     static int semaforo = 0;
     if ( semaforo == 0 ) {
@@ -101,7 +101,7 @@ int BtTicket_insertarArticuloCodigoNL_Post ( BtTicket *tick )
         tick->pintar();
         semaforo = 0;
     } // end if
-    _depura ( "END pluginbt_aliastallasycolores::BtTicket_insertarArticuloCodigo_Post", 0 );
+    blDebug ( "END pluginbt_aliastallasycolores::BtTicket_insertarArticuloCodigo_Post", 0 );
     return valor;
 }
 
@@ -109,7 +109,7 @@ int BtTicket_insertarArticuloCodigoNL_Post ( BtTicket *tick )
 
 int MTicket_pintar ( MTicket *mtick )
 {
-    _depura ( "pluginbt_aliastallasycolores::MTicket_pintar", 0 );
+    blDebug ( "pluginbt_aliastallasycolores::MTicket_pintar", 0 );
     
     QString buscar;
 
@@ -274,7 +274,7 @@ int MTicket_pintar ( MTicket *mtick )
     cursor.clearSelection();
     mtick->mui_browser->setTextCursor( cursor );
     
-    _depura ( "END pluginbt_aliastallasycolores::MTicket::pintar", 0 );
+    blDebug ( "END pluginbt_aliastallasycolores::MTicket::pintar", 0 );
     return -1;
 }
 
@@ -282,7 +282,7 @@ int MTicket_pintar ( MTicket *mtick )
 
 int MTicketIVAInc_pintar ( MTicketIVAInc *mtick )
 {
-  _depura ( "pluginbt_aliastallasycolores::MTicketIVAInc_pintar", 0 );
+  blDebug ( "pluginbt_aliastallasycolores::MTicketIVAInc_pintar", 0 );
   
   QString query;
   QString buscar;
@@ -395,7 +395,7 @@ int MTicketIVAInc_pintar ( MTicketIVAInc *mtick )
   cursor.clearSelection();
   mtick->mui_browser->setTextCursor( cursor );
   
-  _depura ( "END pluginbt_aliastallasycolores::MTicketIVAInc::pintar", 0 );
+  blDebug ( "END pluginbt_aliastallasycolores::MTicketIVAInc::pintar", 0 );
   
   return -1;
   
@@ -542,7 +542,7 @@ int MTicketIVAInc_pintar ( MTicketIVAInc *mtick )
 // 
 //     /// Pintamos el HTML en el textBrowser
 //     mtick->mui_browser->setText ( html );
-//     _depura ( "END pluginbt_aliastallasycolores::MTicketIVAInc::pintar", 0 );
+//     blDebug ( "END pluginbt_aliastallasycolores::MTicketIVAInc::pintar", 0 );
 //     return -1;
 }
 
@@ -551,16 +551,16 @@ int MTicketIVAInc_pintar ( MTicketIVAInc *mtick )
 
 int BtTicket_imprimir(BtTicket *tick)
 {
-    _depura("pluginbt_aliastallasycolores::BtTicket_imprimir",0);
+    blDebug("pluginbt_aliastallasycolores::BtTicket_imprimir",0);
 
     if ( tick->listaLineas()->size() ) {
         if( tick->listaLineas()->at ( 0 )->exists ( "pvpivainclalbaran" ) ) {
 	    BtTicket_imprimirIVAInc(tick);
-	    _depura("END pluginbt_aliastallasycolores::BtTicket_imprimir",0);
+	    blDebug("END pluginbt_aliastallasycolores::BtTicket_imprimir",0);
 	    return -1;
 	} // end if
     } else {
-        _depura("END pluginbt_aliastallasycolores::BtTicket_imprimir",0);
+        blDebug("END pluginbt_aliastallasycolores::BtTicket_imprimir",0);
         return -1;
     } // end if
     
@@ -746,20 +746,20 @@ int BtTicket_imprimir(BtTicket *tick)
         QString comando = "cat " + g_confpr->valor(CONF_DIR_USER) + "bulmatpv_ticket_tc.esc" + "  > " + g_confpr->valor ( CONF_TICKET_PRINTER_FILE );
         system ( comando.toAscii().data() );
     } else if (g_confpr->valor(CONF_CUPS_DEFAULT_PRINTER).isEmpty() || g_confpr->valor(CONF_CUPS_DEFAULT_PRINTER) == "None") {
-        _depura("Debe establecer el parametro CONF_CUPS_DEFAULT_PRINTER o CONF_TICKET_PRINTER_FILE para imprimir el ticket " , 2);
+        blDebug("Debe establecer el parametro CONF_CUPS_DEFAULT_PRINTER o CONF_TICKET_PRINTER_FILE para imprimir el ticket " , 2);
     } else {
         QString comando = "lp -d" + g_confpr->valor(CONF_CUPS_DEFAULT_PRINTER) + " " + g_confpr->valor(CONF_DIR_USER) + "bulmatpv_ticket_tc.esc";
         system ( comando.toAscii().data() );
     } // end if
     
-    _depura("END pluginbt_aliastallasycolores::BtTicket_imprimir",0);
+    blDebug("END pluginbt_aliastallasycolores::BtTicket_imprimir",0);
     return -1;
 }
 
 
 int BtTicket_imprimirIVAInc(BtTicket *tick)
 {
-    _depura ( "pluginbt_aliastallasycolores::BtTicket_imprimirIVAInc", 0 );
+    blDebug ( "pluginbt_aliastallasycolores::BtTicket_imprimirIVAInc", 0 );
     
     struct empresastr {
         QString nombre;
@@ -956,12 +956,12 @@ int BtTicket_imprimirIVAInc(BtTicket *tick)
         QString comando = "cat " + g_confpr->valor(CONF_DIR_USER) + "bulmatpv_ticket_tc_ivainc.esc" + "  > " + g_confpr->valor ( CONF_TICKET_PRINTER_FILE );
         system ( comando.toAscii().data() );
     } else if (g_confpr->valor(CONF_CUPS_DEFAULT_PRINTER).isEmpty() || g_confpr->valor(CONF_CUPS_DEFAULT_PRINTER) == "None") {
-        _depura("Debe establecer el parametro CONF_CUPS_DEFAULT_PRINTER o CONF_TICKET_PRINTER_FILE para imprimir el ticket " , 2);
+        blDebug("Debe establecer el parametro CONF_CUPS_DEFAULT_PRINTER o CONF_TICKET_PRINTER_FILE para imprimir el ticket " , 2);
     } else {
         QString comando = "lp -d" + g_confpr->valor(CONF_CUPS_DEFAULT_PRINTER) + " " + g_confpr->valor(CONF_DIR_USER) + "bulmatpv_ticket_tc_ivainc.esc";
         system ( comando.toAscii().data() );
     } // end if
-    _depura ( "END pluginbt_aliastallasycolores::BtTicket_imprimirIVAInc", 0 );
+    blDebug ( "END pluginbt_aliastallasycolores::BtTicket_imprimirIVAInc", 0 );
     return 1;
 }
 

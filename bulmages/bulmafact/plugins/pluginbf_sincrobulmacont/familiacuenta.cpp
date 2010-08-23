@@ -9,7 +9,7 @@
 **/
 FamiliaCuenta::FamiliaCuenta (QWidget *parent) : QWidget(parent)
 {
-    _depura ( "FamiliaCuenta::FamiliaCuenta", 1 );
+    blDebug ( "FamiliaCuenta::FamiliaCuenta", 1 );
 
     m_familiasview = (FamiliasView *) parent;
     
@@ -49,7 +49,7 @@ FamiliaCuenta::FamiliaCuenta (QWidget *parent) : QWidget(parent)
     frame->setLayout(layout_cuenta);
 
     
-    _depura ( "END FamiliaCuenta::FamiliaCuenta", 1 );
+    blDebug ( "END FamiliaCuenta::FamiliaCuenta", 1 );
 }
 
 
@@ -58,8 +58,8 @@ FamiliaCuenta::FamiliaCuenta (QWidget *parent) : QWidget(parent)
 **/
 FamiliaCuenta::~FamiliaCuenta()
 {
-    _depura ( "FamiliaCuenta::~FamiliaCuenta", 0 );
-    _depura ( "END FamiliaCuenta::~FamiliaCuenta", 0 );
+    blDebug ( "FamiliaCuenta::~FamiliaCuenta", 0 );
+    blDebug ( "END FamiliaCuenta::~FamiliaCuenta", 0 );
 }
 
 

@@ -33,7 +33,7 @@
 **/
 int entryPoint ( BfBulmaFact *bges )
 {
-    _depura ( "Punto de Entrada del plugin de Resumen de Articulos\n", 0 );
+    blDebug ( "Punto de Entrada del plugin de Resumen de Articulos\n", 0 );
 
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale ( LC_ALL, "" );
@@ -50,7 +50,7 @@ int entryPoint ( BfBulmaFact *bges )
 **/
 int ArticuloView_ArticuloView ( ArticuloView *art )
 {
-    _depura ( "ArticuloView_ArticuloView", 0 );
+    blDebug ( "ArticuloView_ArticuloView", 0 );
     ListCompras *lc = new ListCompras ( art );
     lc->setObjectName ( QString::fromUtf8 ( "lcompras" ) );
     lc->setMainCompany ( art->mainCompany() );
@@ -75,7 +75,7 @@ int ArticuloView_ArticuloView ( ArticuloView *art )
     lr->cargar ( "0" );
     art->mui_tab->addTab ( lr, "Recogidas" );
 
-    _depura ( "END ArticuloView_ArticuloView", 0 );
+    blDebug ( "END ArticuloView_ArticuloView", 0 );
     return 0;
 }
 
@@ -87,7 +87,7 @@ int ArticuloView_ArticuloView ( ArticuloView *art )
 **/
 int ArticuloView_cargar ( ArticuloView *art )
 {
-    _depura ( "ArticuloView_cargar", 0 );
+    blDebug ( "ArticuloView_cargar", 0 );
     ListLResArticulo *l = art->findChild<ListLResArticulo *> ( "lresfacturacion" );
     l->cargar ( art->dbValue ( "idarticulo" ) );
 
@@ -100,7 +100,7 @@ int ArticuloView_cargar ( ArticuloView *art )
     ListRecogidas *llr = art->findChild<ListRecogidas *> ( "lrecogidas" );
     llr->cargar ( art->dbValue ( "idarticulo" ) );
 
-    _depura ( "END ArticuloView_cargar", 0 );
+    blDebug ( "END ArticuloView_cargar", 0 );
     return 0;
 }
 

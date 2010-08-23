@@ -32,7 +32,7 @@
 BlCountryView::BlCountryView ( BlMainCompany *emp, QWidget *parent )
         : BlForm ( emp, parent )
 {
-    _depura ( "BlCountryView::BlCountryView", 0 );
+    blDebug ( "BlCountryView::BlCountryView", 0 );
 
     setAttribute ( Qt::WA_DeleteOnClose );
     setupUi ( this );
@@ -77,7 +77,7 @@ BlCountryView::BlCountryView ( BlMainCompany *emp, QWidget *parent )
     meteWindow ( windowTitle(), this );
     pintar();
     dialogChanges_cargaInicial();
-    _depura ( "END BlCountryView::BlCountryView", 0 );
+    blDebug ( "END BlCountryView::BlCountryView", 0 );
 }
 
 
@@ -86,8 +86,8 @@ BlCountryView::BlCountryView ( BlMainCompany *emp, QWidget *parent )
 **/
 BlCountryView::~BlCountryView()
 {
-    _depura ( "BlCountryView::~BlCountryView", 0 );
-    _depura ( "END BlCountryView::~BlCountryView", 0 );
+    blDebug ( "BlCountryView::~BlCountryView", 0 );
+    blDebug ( "END BlCountryView::~BlCountryView", 0 );
 }
 
 
@@ -96,9 +96,9 @@ BlCountryView::~BlCountryView()
 **/
 void BlCountryView::pintar()
 {
-    _depura ( "BlCountryView::pintar", 0 );
+    blDebug ( "BlCountryView::pintar", 0 );
     mui_list->cargar ( "SELECT * FROM pais ORDER BY descpais" );
-    _depura ( "END BlCountryView::pintar", 0 );
+    blDebug ( "END BlCountryView::pintar", 0 );
 }
 
 
@@ -107,7 +107,7 @@ void BlCountryView::pintar()
 **/
 void BlCountryView::on_mui_list_itemClicked ( QTableWidgetItem * )
 {
-    _depura ( "BlCountryView::on_mui_list_itemSelectionChanged", 0 );
+    blDebug ( "BlCountryView::on_mui_list_itemSelectionChanged", 0 );
     /// Busca el item correcto.
     QString previdpais = mui_list->dbValue ( "idpais" );
 
@@ -121,7 +121,7 @@ void BlCountryView::on_mui_list_itemClicked ( QTableWidgetItem * )
     } // end if
     m_countryId = previdpais;
     mostrarplantilla();
-    _depura ( "END BlCountryView::on_mui_list_itemSelectionChanged", 0 );
+    blDebug ( "END BlCountryView::on_mui_list_itemSelectionChanged", 0 );
 }
 
 
@@ -130,7 +130,7 @@ void BlCountryView::on_mui_list_itemClicked ( QTableWidgetItem * )
 **/
 void BlCountryView::mostrarplantilla()
 {
-    _depura ( "BlCountryView::mostrarplantilla", 0 );
+    blDebug ( "BlCountryView::mostrarplantilla", 0 );
 
     if ( m_countryId != "0" ) {
         mui_datospais->setEnabled ( TRUE );
@@ -144,7 +144,7 @@ void BlCountryView::mostrarplantilla()
         dialogChanges_cargaInicial();
     } // end if
 
-    _depura ( "END BlCountryView::mostrarplantilla", 0 );
+    blDebug ( "END BlCountryView::mostrarplantilla", 0 );
 }
 
 
@@ -153,7 +153,7 @@ void BlCountryView::mostrarplantilla()
 **/
 int BlCountryView::guardar()
 {
-    _depura ( "BlCountryView::on_mui_guardar_clicked", 0 );
+    blDebug ( "BlCountryView::on_mui_guardar_clicked", 0 );
     QString id;
 
     if ( dbValue ( "idpais" ).isEmpty() ) {
@@ -170,7 +170,7 @@ int BlCountryView::guardar()
         dialogChanges_cargaInicial();
         pintar();
     }
-    _depura ( "END BlCountryView::on_mui_guardar_clicked", 0 );
+    blDebug ( "END BlCountryView::on_mui_guardar_clicked", 0 );
     return 0;
 }
 
@@ -180,7 +180,7 @@ int BlCountryView::guardar()
 **/
 void BlCountryView::on_mui_crear_clicked()
 {
-    _depura ( "BlCountryView::on_mui_crear_clicked", 0 );
+    blDebug ( "BlCountryView::on_mui_crear_clicked", 0 );
     try {
         /// Si se ha modificado el contenido advertimos y guardamos.
         if ( dialogChanges_hayCambios() ) {
@@ -201,7 +201,7 @@ void BlCountryView::on_mui_crear_clicked()
         pintar();
         mui_list->setCurrentItem ( mui_list->rowCount(), 1 );
         mostrarplantilla();
-        _depura ( "END BlCountryView::on_mui_crear_clicked", 0 );
+        blDebug ( "END BlCountryView::on_mui_crear_clicked", 0 );
     } catch ( ... ) {
         mensajeInfo ( _ ( "Error al crear el banco" ) );
         mainCompany() ->rollback();
@@ -214,7 +214,7 @@ void BlCountryView::on_mui_crear_clicked()
 **/
 void BlCountryView::on_mui_borrar_clicked()
 {
-    _depura ( "BlCountryView::on_mui_borrar_clicked", 0 );
+    blDebug ( "BlCountryView::on_mui_borrar_clicked", 0 );
     if ( (m_countryId == "") | (m_countryId == "0") ) {
         mensajeInfo ( _ ( "Debe seleccionar un elemento de la lista" ) );
         return;
@@ -238,7 +238,7 @@ void BlCountryView::on_mui_borrar_clicked()
             mainCompany() ->rollback();
         } // end try
     } // end switch
-    _depura ( "END BlCountryView::on_mui_borrar_clicked", 0 );
+    blDebug ( "END BlCountryView::on_mui_borrar_clicked", 0 );
 }
 
 

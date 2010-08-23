@@ -37,8 +37,8 @@ ProfesoresList *g_profesoresList = NULL;
 **/
 MyPlugProf::MyPlugProf()
 {
-    _depura ( "MyPlugProf::MyPlugProf", 0 );
-    _depura ( "END MyPlugProf::MyPlugProf", 0 );
+    blDebug ( "MyPlugProf::MyPlugProf", 0 );
+    blDebug ( "END MyPlugProf::MyPlugProf", 0 );
 }
 
 ///
@@ -46,8 +46,8 @@ MyPlugProf::MyPlugProf()
 **/
 MyPlugProf::~MyPlugProf()
 {
-    _depura ( "MyPlugProf::~MyPlugProf", 0 );
-    _depura ( "END MyPlugProf::~MyPlugProf", 0 );
+    blDebug ( "MyPlugProf::~MyPlugProf", 0 );
+    blDebug ( "END MyPlugProf::~MyPlugProf", 0 );
 }
 
 ///
@@ -55,14 +55,14 @@ MyPlugProf::~MyPlugProf()
 **/
 void MyPlugProf::elslot()
 {
-    _depura ( "MyPlugProf::elslot", 0 );
+    blDebug ( "MyPlugProf::elslot", 0 );
     
     if ( g_profesoresList ) {
         g_profesoresList->hide();
         g_profesoresList->show();
     } // end if
     
-    _depura ( "END MyPlugProf::elslot", 0 );
+    blDebug ( "END MyPlugProf::elslot", 0 );
 }
 
 ///
@@ -70,13 +70,13 @@ void MyPlugProf::elslot()
 **/
 void MyPlugProf::elslot1()
 {
-    _depura ( "MyPlugProf::elslot1", 0 );
+    blDebug ( "MyPlugProf::elslot1", 0 );
     
     ProfesorView * bud = new ProfesorView ( ( BfCompany * ) mainCompany(), NULL );
     mainCompany() ->m_pWorkspace->addWindow ( bud );
     bud->show();
     
-    _depura ( "END MyPlugProf::elslot1", 0 );
+    blDebug ( "END MyPlugProf::elslot1", 0 );
 }
 
 ///
@@ -84,12 +84,12 @@ void MyPlugProf::elslot1()
 **/
 void MyPlugProf::elslot2()
 {
-    _depura ( "MyPlugProf::elslot2", 0 );
+    blDebug ( "MyPlugProf::elslot2", 0 );
     
     AboutFapacView *afv = new AboutFapacView();
     afv->show();
     
-    _depura ( "END MyPlugProf::elslot2", 0 );
+    blDebug ( "END MyPlugProf::elslot2", 0 );
 }
 
 ///
@@ -98,7 +98,7 @@ void MyPlugProf::elslot2()
 **/
 void MyPlugProf::inicializa ( BfBulmaFact *bges )
 {
-    _depura ( "MyPlugProf::inicializa", 0 );
+    blDebug ( "MyPlugProf::inicializa", 0 );
 
     if ( bges->company()->hasTablePrivilege ( "profesor", "SELECT" ) ) {
 
@@ -135,7 +135,7 @@ void MyPlugProf::inicializa ( BfBulmaFact *bges )
 
     } // end if
     
-    _depura ( "END MyPlugProf::inicializa", 0 );
+    blDebug ( "END MyPlugProf::inicializa", 0 );
 }
 
 ///
@@ -145,7 +145,7 @@ void MyPlugProf::inicializa ( BfBulmaFact *bges )
 **/
 int entryPoint ( BfBulmaFact *bges )
 {
-    _depura ( "Punto de Entrada del plugin de Monitores", 0 );
+    blDebug ( "Punto de Entrada del plugin de Monitores", 0 );
 
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale ( LC_ALL, "" );
@@ -154,14 +154,14 @@ int entryPoint ( BfBulmaFact *bges )
     MyPlugProf *plug = new MyPlugProf();
     plug->inicializa ( bges );
     
-    _depura ( "END Punto de Entrada del plugin de Monitores", 0 );
+    blDebug ( "END Punto de Entrada del plugin de Monitores", 0 );
     
     return 0;
 }
 
 int BfCompany_createMainWindows_Post ( BfCompany *comp )
 {
-    _depura ( "BfCompany_createMainWindows_Post", 0 );
+    blDebug ( "BfCompany_createMainWindows_Post", 0 );
 
     if ( comp->hasTablePrivilege ( "profesor", "SELECT" ) ) {
         g_profesoresList = new ProfesoresList ( comp, NULL );
@@ -169,14 +169,14 @@ int BfCompany_createMainWindows_Post ( BfCompany *comp )
         g_profesoresList->hide();
     } // end if
     
-    _depura ( "END BfCompany_createMainWindows_Post", 0 );
+    blDebug ( "END BfCompany_createMainWindows_Post", 0 );
     
     return 0;
 }
 
 int Busqueda_on_mui_buscar_clicked ( BlSearchWidget *busq )
 {
-    _depura ( "Busqueda_on_mui_buscar_clicked", 0 );
+    blDebug ( "Busqueda_on_mui_buscar_clicked", 0 );
 
     if ( busq->tableName() == "profesor" ) {
 
@@ -209,7 +209,7 @@ int Busqueda_on_mui_buscar_clicked ( BlSearchWidget *busq )
         
     } // end if
     
-    _depura ( "END Busqueda_on_mui_buscar_clicked", 0 );
+    blDebug ( "END Busqueda_on_mui_buscar_clicked", 0 );
     
     return 0;
 

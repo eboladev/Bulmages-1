@@ -42,7 +42,7 @@ BlDockWidget *g_doc1 = NULL;
 **/
 int entryPoint ( BtBulmaTPV *tpv )
 {
-    _depura ( "plugintotal::entryPoint", 0 );
+    blDebug ( "plugintotal::entryPoint", 0 );
 
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale ( LC_ALL, "" );
@@ -57,17 +57,17 @@ int entryPoint ( BtBulmaTPV *tpv )
     g_doc1->cargaconf();
     g_doc1->show();
 
-    _depura ( "END plugintotal::entryPoint", 0 );
+    blDebug ( "END plugintotal::entryPoint", 0 );
     return 0;
 }
 
 int BtCompany_createMainWindows_Post ( BtCompany *etpv )
 {
-    _depura ( "plugintotal::BtCompany_createMainWindows_Post", 0 );
+    blDebug ( "plugintotal::BtCompany_createMainWindows_Post", 0 );
 
     g_tot = new Total ( etpv, g_doc1 );
     g_doc1->setWidget ( g_tot );
-    _depura ( "END plugintotal::BtCompany_createMainWindows_Post", 0 );
+    blDebug ( "END plugintotal::BtCompany_createMainWindows_Post", 0 );
 
     return 0;
 }
@@ -79,15 +79,15 @@ int BtCompany_createMainWindows_Post ( BtCompany *etpv )
 **/
 int exitPoint ( BtBulmaTPV *tpv )
 {
-    _depura ( "plugintotal::exitPoint", 0 );
+    blDebug ( "plugintotal::exitPoint", 0 );
     delete g_doc1;
-    _depura ( "END plugintotal::exitPoint", 0 );
+    blDebug ( "END plugintotal::exitPoint", 0 );
     return 0;
 }
 
 int BtTicket_pintar ( BtTicket *tick )
 {
-    _depura ( "plugintotal::BtTicket_pintar", 0 );
+    blDebug ( "plugintotal::BtTicket_pintar", 0 );
 
     base basesimp;
     base basesimpreqeq;
@@ -113,7 +113,7 @@ int BtTicket_pintar ( BtTicket *tick )
     /// Pintamos el total
     if ( g_tot )
         g_tot->mui_total->setText ( total.toQString('0', maxprecision) );
-    _depura ( "END plugintotal::Ticket_pintar", 0 );
+    blDebug ( "END plugintotal::Ticket_pintar", 0 );
 
     return 0;
 

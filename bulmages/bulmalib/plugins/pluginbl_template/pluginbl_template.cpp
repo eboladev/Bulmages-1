@@ -30,13 +30,13 @@
 **/
 int entryPoint ( QApplication * )
 {
-    _depura ( "entryPoint", 0, "Punto de Entrada del plugin de PluginImPers" );
+    blDebug ( "entryPoint", 0, "Punto de Entrada del plugin de PluginImPers" );
 
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale ( LC_ALL, "" );
     bindtextdomain ( "pluginbl_template", g_confpr->valor ( CONF_DIR_TRADUCCION ).toAscii().constData() );
 
-    _depura ( "END entryPoint", 0, "Punto de Entrada del plugin de PluginImPers" );
+    blDebug ( "END entryPoint", 0, "Punto de Entrada del plugin de PluginImPers" );
     return 0;
 }
 
@@ -48,8 +48,8 @@ int entryPoint ( QApplication * )
 **/
 int BlForm_cargaSpecs ( BlForm *l )
 {
-    _depura ( "BlForm_BlForm", 0 );
+    blDebug ( "BlForm_BlForm", 0 );
     new EQToolButton ( l );
-    _depura ( "END BlForm_BlForm", 0 );
+    blDebug ( "END BlForm_BlForm", 0 );
     return 0;
 }

@@ -28,7 +28,7 @@ QString BlI18n ( const char *cadena, int )
 {
     /// Depuracion:
     QString salida = QString("BlI18n (") + QString(textdomain(NULL)) + QString(" - ") + QString(gettext(cadena)) + QString(")");
-    _depura(salida, 0);
+    blDebug(salida, 0);
 
 #ifdef WIN32
     return ( cadena );
@@ -42,7 +42,7 @@ QString BlI18n ( const char *domain, const char *cadena )
 {
     /// Depuracion:
     QString salida = QString("BlI18n (") + QString(domain) + QString(" - ") + QString(dgettext(domain, cadena)) + QString(")");
-    _depura(salida, 0);
+    blDebug(salida, 0);
 
 #ifdef WIN32
     return ( cadena );

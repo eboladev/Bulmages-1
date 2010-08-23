@@ -47,7 +47,7 @@ QAction *viewCorrector;
 **/
 int entryPoint ( BcBulmaCont *bcont )
 {
-    _depura ( "Entrada del plugin ResumCta", 10 );
+    blDebug ( "Entrada del plugin ResumCta", 10 );
 
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale ( LC_ALL, "" );
@@ -103,7 +103,7 @@ int entryPoint ( BcBulmaCont *bcont )
         viewCorrector->setChecked ( FALSE );
     } // end if
 
-    _depura ( "Iniciado correctamente el plugin ResumCta", 10 );
+    blDebug ( "Iniciado correctamente el plugin ResumCta", 10 );
     return 0;
 }
 
@@ -126,7 +126,7 @@ int Busqueda_on_m_inputBusqueda_textChanged ( BlSearchWidget * )
 
 int Busqueda_on_m_inputBusqueda_editingFinished_Post ( BlSearchWidget *bcta )
 {
-    _depura ( "BcBuscarCuenta_s_lostFocus_post", 0 );
+    blDebug ( "BcBuscarCuenta_s_lostFocus_post", 0 );
     QString cod = bcta->fieldValue("codigo");
     QString nom = bcta->fieldValue("descripcion");
     QString id  = bcta->id();
@@ -145,7 +145,7 @@ int Busqueda_on_m_inputBusqueda_editingFinished_Post ( BlSearchWidget *bcta )
         g_res->setMensaje ( mensaje );
     } // end if
     delete cur;
-    _depura ( "END BcBuscarCuenta_s_lostFocus_post", 0 );
+    blDebug ( "END BcBuscarCuenta_s_lostFocus_post", 0 );
     return 0;
 }
 
@@ -157,7 +157,7 @@ int Busqueda_on_m_inputBusqueda_editingFinished_Post ( BlSearchWidget *bcta )
 **/
 int BcSubForm_on_mui_list_cellChanged_post ( BcSubForm *subform )
 {
-    _depura ( "BcSubForm_on_mui_list_cellChanged_post", 0 );
+    blDebug ( "BcSubForm_on_mui_list_cellChanged_post", 0 );
     if ( subform->currentRow() < 0 )
         return 0;
     if ( subform->existsHeader ( "codigo" ) ) {
@@ -189,7 +189,7 @@ int BcSubForm_on_mui_list_cellChanged_post ( BcSubForm *subform )
 \param bcont
 **/
 int BcBulmaCont_closeEvent ( BcBulmaCont *bcont )  {
-    _depura("BcBulmaCont_closeEvent");
+    blDebug("BcBulmaCont_closeEvent");
 //    BcCompany * emp = bcont->empresaactual();
     QFile file ( g_confpr->valor ( CONF_DIR_USER ) + "pluginresumcta_.cfn" );
     if ( !viewCorrector->isChecked() ) {
@@ -198,6 +198,6 @@ int BcBulmaCont_closeEvent ( BcBulmaCont *bcont )  {
         file.open ( QIODevice::WriteOnly );
         file.close();
     } // end if
-    _depura("END BcBulmaCont_closeEvent");
+    blDebug("END BcBulmaCont_closeEvent");
     return 0;
 }

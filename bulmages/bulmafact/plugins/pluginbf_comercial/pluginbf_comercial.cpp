@@ -41,7 +41,7 @@
 **/
 int entryPoint ( BfBulmaFact *bges )
 {
-    _depura ( "entryPoint", 0, "Punto de Entrada del plugin ComercialBF" );
+    blDebug ( "entryPoint", 0, "Punto de Entrada del plugin ComercialBF" );
 
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale ( LC_ALL, "" );
@@ -49,7 +49,7 @@ int entryPoint ( BfBulmaFact *bges )
 
     mypluginbf *plug = new mypluginbf();
     plug->inicializa ( bges );
-    _depura ( "END entryPoint", 0, "Punto de Entrada del plugin ComercialBF" );
+    blDebug ( "END entryPoint", 0, "Punto de Entrada del plugin ComercialBF" );
     return 0;
 }
 
@@ -61,7 +61,7 @@ int entryPoint ( BfBulmaFact *bges )
 **/
 int ClienteView_ClienteView_Post ( ClienteView *cli )
 {
-    _depura ( "ClienteView_ClienteView_Post", 0 );
+    blDebug ( "ClienteView_ClienteView_Post", 0 );
     /// Agregamos los campos de registro que hacen falta.
     cli->addDbField ( "idzonacomercial", BlDbField::DbInt, BlDbField::DbNothing, _ ( "Zona comercial" ) );
     cli->addDbField ( "fechabasecomercialcliente", BlDbField::DbDate, BlDbField::DbNothing, _ ( "Fecha base" ) );
@@ -72,7 +72,7 @@ int ClienteView_ClienteView_Post ( ClienteView *cli )
     l->setMainCompany ( cli->mainCompany() );
     l->setObjectName ( QString::fromUtf8 ( "lcomercial" ) );
     cli->mui_tab->addTab ( l, _ ( "&Comercial" ) );
-    _depura ( "END ClienteView_ClienteView_Post", 0 );
+    blDebug ( "END ClienteView_ClienteView_Post", 0 );
     return 0;
 }
 
@@ -84,37 +84,37 @@ int ClienteView_ClienteView_Post ( ClienteView *cli )
 **/
 int ClienteView_Des_ClienteView_Post ( ClienteView *cli )
 {
-    _depura ( "ClienteView_Des_ClienteView", 0 );
+    blDebug ( "ClienteView_Des_ClienteView", 0 );
     /// Creamos la pesta&ntilde;a de comercial y la tratamos.
     ComercialClienteView *bus = cli->findChild<ComercialClienteView *> ( "lcomercial" );
     delete bus;
-    _depura ( "END ClienteView_Des_ClienteView", 0 );
+    blDebug ( "END ClienteView_Des_ClienteView", 0 );
     return 0;
 }
 
 /*
 int ClienteView_saveClient(ClienteView *cli) {
-    _depura("ClienteView_saveClient", 0);
+    blDebug("ClienteView_saveClient", 0);
     ComercialClienteView *bus = cli->findChild<ComercialClienteView *>("lcomercial");
     cli->setDbValue("idzonacomercial", bus->mui_zonacomercial->idzonacomercial());
     cli->setDbValue("fechabasecomercialcliente", bus->mui_fechabasecomercialcliente->fecha());
     cli->setDbValue("periodocomercialcliente", bus->mui_periodocomercialcliente->periodo());
     cli->setDbValue("comentcomercialcliente", bus->mui_comentcomercialcliente->toPlainText());
 
-    _depura("END ClienteView_saveClient", 0);
+    blDebug("END ClienteView_saveClient", 0);
     return 0;
 }
 
 
 int Cliente_pintaCliente(Cliente *cli) {
-    _depura("Cliente_pintaCliente", 0);
+    blDebug("Cliente_pintaCliente", 0);
     ClienteView *clo = (ClienteView *) cli;
     ComercialClienteView *bus = clo->findChild<ComercialClienteView *>("lcomercial");
     bus->mui_zonacomercial->setidzonacomercial(clo->dbValue("idzonacomercial"));
     bus->mui_fechabasecomercialcliente->setfecha(clo->dbValue("fechabasecomercialcliente"));
     bus->mui_periodocomercialcliente->setperiodo(clo->dbValue("periodocomercialcliente"));
     bus->mui_comentcomercialcliente->setPlainText(clo->dbValue("comentcomercialcliente"));
-    _depura("END Cliente_pintaCliente", 0);
+    blDebug("END Cliente_pintaCliente", 0);
     return 0;
 }
 */

@@ -39,7 +39,7 @@
 AlumnosList::AlumnosList ( QWidget *parent, Qt::WFlags flag, edmode editmodo )
         : BlFormList ( NULL, parent, flag, editmodo )
 {
-    _depura ( "AlumnosList::AlumnosList", 0 );
+    blDebug ( "AlumnosList::AlumnosList", 0 );
     setupUi ( this );
     /// Disparamos los plugins.
     int res = g_plugins->lanza ( "AlumnosList_AlumnosList", this );
@@ -50,7 +50,7 @@ AlumnosList::AlumnosList ( QWidget *parent, Qt::WFlags flag, edmode editmodo )
     setSubForm ( mui_list );
     hideBusqueda();
 
-    _depura ( "END AlumnosList::AlumnosList", 0 );
+    blDebug ( "END AlumnosList::AlumnosList", 0 );
 }
 
 
@@ -61,7 +61,7 @@ AlumnosList::AlumnosList ( QWidget *parent, Qt::WFlags flag, edmode editmodo )
 AlumnosList::AlumnosList ( BfCompany *comp, QWidget *parent, Qt::WFlags flag, edmode editmodo )
         : BlFormList ( comp, parent, flag, editmodo )
 {
-    _depura ( "AlumnosList::AlumnosList", 0 );
+    blDebug ( "AlumnosList::AlumnosList", 0 );
     setupUi ( this );
     /// Disparamos los plugins.
     int res = g_plugins->lanza ( "AlumnosList_AlumnosList", this );
@@ -97,7 +97,7 @@ AlumnosList::AlumnosList ( BfCompany *comp, QWidget *parent, Qt::WFlags flag, ed
     hideBusqueda();
     /// Hacemos el tratamiento de los permisos que desabilita botones en caso de no haber suficientes permisos.
     trataPermisos ( "alumno" );
-    _depura ( "END AlumnosList::AlumnosList", 0 );
+    blDebug ( "END AlumnosList::AlumnosList", 0 );
 }
 
 
@@ -105,8 +105,8 @@ AlumnosList::AlumnosList ( BfCompany *comp, QWidget *parent, Qt::WFlags flag, ed
 */
 AlumnosList::~AlumnosList()
 {
-    _depura ( "AlumnosList::~AlumnosList", 0 );
-    _depura ( "END AlumnosList::~AlumnosList", 0 );
+    blDebug ( "AlumnosList::~AlumnosList", 0 );
+    blDebug ( "END AlumnosList::~AlumnosList", 0 );
 }
 
 
@@ -116,11 +116,11 @@ AlumnosList::~AlumnosList()
 */
 void AlumnosList::presentar()
 {
-    _depura ( "AlumnosList::presentar", 0 );
+    blDebug ( "AlumnosList::presentar", 0 );
     if ( mainCompany() != NULL ) {
         mui_list->cargar ( "SELECT * FROM alumno WHERE 1 = 1 " + generaFiltro() );
     } // end if
-    _depura ( "END AlumnosList::presentar", 0 );
+    blDebug ( "END AlumnosList::presentar", 0 );
 }
 
 
@@ -128,7 +128,7 @@ void AlumnosList::presentar()
 */
 QString AlumnosList::generaFiltro()
 {
-    _depura ( "AlumnosList::generaFiltro", 0 );
+    blDebug ( "AlumnosList::generaFiltro", 0 );
     QString filtro = "";
     if ( m_filtro->text() != "" ) {
         filtro = " AND ( lower(nombrealumno) LIKE lower('%" + m_filtro->text() + "%') ";
@@ -139,7 +139,7 @@ QString AlumnosList::generaFiltro()
       filtro += " AND idclase = " + mui_idclase->id();
     } // end if
     
-    _depura ( "END AlumnosList::generaFiltro", 0 );
+    blDebug ( "END AlumnosList::generaFiltro", 0 );
     return ( filtro );
 }
 
@@ -150,7 +150,7 @@ QString AlumnosList::generaFiltro()
 */
 void AlumnosList::crear()
 {
-    _depura ( "AlumnosList::crear", 0 );
+    blDebug ( "AlumnosList::crear", 0 );
     
     if (modoConsulta()) {
 	/// El modo consulta funciona algo diferente
@@ -199,7 +199,7 @@ void AlumnosList::crear()
       bud->show();
       bud->pintar();
     } // end if
-    _depura ( "AlumnosList::crear", 0 );
+    blDebug ( "AlumnosList::crear", 0 );
 }
 
 
@@ -207,9 +207,9 @@ void AlumnosList::crear()
 */
 void AlumnosList::imprimir()
 {
-    _depura ( "AlumnosList::imprimir", 0 );
+    blDebug ( "AlumnosList::imprimir", 0 );
     mui_list->imprimirPDF ( _ ( "Alumnos" ) );
-    _depura ( "END AlumnosList::imprimir", 0 );
+    blDebug ( "END AlumnosList::imprimir", 0 );
 }
 
 
@@ -221,7 +221,7 @@ void AlumnosList::imprimir()
 */
 void AlumnosList::borrar()
 {
-    _depura ( "AlumnosList::borrar", 0 );
+    blDebug ( "AlumnosList::borrar", 0 );
     int a = mui_list->currentRow();
     if ( a < 0 ) {
         mensajeInfo ( _ ( "Debe seleccionar una linea" ) );
@@ -240,7 +240,7 @@ void AlumnosList::borrar()
     } catch ( ... ) {
         mensajeInfo ( _ ( "Error al borrar el cobro a cliente" ) );
     } // end try
-    _depura ( "END:AlumnosList::borrar", 0 );
+    blDebug ( "END:AlumnosList::borrar", 0 );
 }
 
 
@@ -250,7 +250,7 @@ void AlumnosList::borrar()
 /// \TODO: Deberia crearse el metodo editar y este llamar a ese.
 void AlumnosList::editar ( int )
 {
-    _depura ( "AlumnosList::on_mui_list_cellDoubleClicked", 0 );
+    blDebug ( "AlumnosList::on_mui_list_cellDoubleClicked", 0 );
     try {
         mdb_idalumno = mui_list->dbValue ( "idalumno" );
         if ( modoEdicion() ) {
@@ -268,7 +268,7 @@ void AlumnosList::editar ( int )
     } catch ( ... ) {
         mensajeInfo ( _ ( "Debe seleccionar una fila primero" ) );
     } // end try
-    _depura ( "END AlumnosList::on_mui_list_cellDoubleClicked", 0 );
+    blDebug ( "END AlumnosList::on_mui_list_cellDoubleClicked", 0 );
 
 }
 
@@ -277,7 +277,7 @@ void AlumnosList::editar ( int )
 /// \TODO: Revisar si este metodo es util.
 void AlumnosList::submenu ( const QPoint & )
 {
-    _depura ( "AlumnosList::on_mui_list_customContextMenuRequested", 0 );
+    blDebug ( "AlumnosList::on_mui_list_customContextMenuRequested", 0 );
     int a = mui_list->currentRow();
     if ( a < 0 )
         return;
@@ -290,14 +290,14 @@ void AlumnosList::submenu ( const QPoint & )
     if ( opcion == edit )
         on_mui_editar_clicked();
     delete popup;
-    _depura ( "AlumnosList::on_mui_list_customContextMenuRequested", 0 );
+    blDebug ( "AlumnosList::on_mui_list_customContextMenuRequested", 0 );
 }
 
 /** Inicializa la clase con el puntero a la company que se esta utilizando
 **/
 void AlumnosList::setMainCompany ( BfCompany *comp )
 {
-    _depura ( "AlumnosList::setMainCompany", 0 );
+    blDebug ( "AlumnosList::setMainCompany", 0 );
     BlMainCompanyPointer::setMainCompany ( comp );
     mui_list->setMainCompany ( comp );
     
@@ -308,7 +308,7 @@ void AlumnosList::setMainCompany ( BfCompany *comp )
     mui_idclase->m_valores["nomclase"] = "";
     mui_idclase->setAllowNull ( TRUE );
     mui_idclase->setId ( "" );
-    _depura ( "END AlumnosList::setMainCompany", 0 );
+    blDebug ( "END AlumnosList::setMainCompany", 0 );
 
 }
 
@@ -316,8 +316,8 @@ void AlumnosList::setMainCompany ( BfCompany *comp )
 **/
 QString AlumnosList::idalumno()
 {
-    _depura ( "AlumnosList::idalumno", 0 );
-    _depura ( "END AlumnosList::idalumno", 0 );
+    blDebug ( "AlumnosList::idalumno", 0 );
+    blDebug ( "END AlumnosList::idalumno", 0 );
     return mdb_idalumno;
 }
 
@@ -331,7 +331,7 @@ QString AlumnosList::idalumno()
 */
 AlumnosListSubForm::AlumnosListSubForm ( QWidget *parent ) : BfSubForm ( parent )
 {
-    _depura ( "AlumnosListSubForm::AlumnosListSubForm", 0 );
+    blDebug ( "AlumnosListSubForm::AlumnosListSubForm", 0 );
     /// Disparamos los plugins.
     int res = g_plugins->lanza ( "AlumnosListSubForm_AlumnosListSubForm", this );
     if ( res != 0 )
@@ -347,13 +347,13 @@ AlumnosListSubForm::AlumnosListSubForm ( QWidget *parent ) : BfSubForm ( parent 
     setInsert ( FALSE );
     setDelete ( FALSE );
     setSortingEnabled ( TRUE );
-    _depura ( "END AlumnosListSubForm::AlumnosListSubForm", 0 );
+    blDebug ( "END AlumnosListSubForm::AlumnosListSubForm", 0 );
 }
 
 
 AlumnosListSubForm::~AlumnosListSubForm()
 {
-    _depura ( "AlumnosListSubForm::~AlumnosListSubForm", 0 );
-    _depura ( "END AlumnosListSubForm::~AlumnosListSubForm", 0 );
+    blDebug ( "AlumnosListSubForm::~AlumnosListSubForm", 0 );
+    blDebug ( "END AlumnosListSubForm::~AlumnosListSubForm", 0 );
 }
 

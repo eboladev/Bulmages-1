@@ -27,9 +27,9 @@
 **/
 BlMainCompanyPointer::BlMainCompanyPointer ( BlMainCompany *emp )
 {
-    _depura ( "BlMainCompanyPointer::BlMainCompanyPointer", 0 );
+    blDebug ( "BlMainCompanyPointer::BlMainCompanyPointer", 0 );
     m_mainCompany = emp;
-    _depura ( "END BlMainCompanyPointer::BlMainCompanyPointer", 0 );
+    blDebug ( "END BlMainCompanyPointer::BlMainCompanyPointer", 0 );
 }
 
 
@@ -38,9 +38,9 @@ BlMainCompanyPointer::BlMainCompanyPointer ( BlMainCompany *emp )
 **/
 BlMainCompanyPointer::BlMainCompanyPointer()
 {
-    _depura ( "BlMainCompanyPointer::BlMainCompanyPointers", 0 );
+    blDebug ( "BlMainCompanyPointer::BlMainCompanyPointers", 0 );
     m_mainCompany = NULL;
-    _depura ( "END BlMainCompanyPointer::BlMainCompanyPointers", 0 );
+    blDebug ( "END BlMainCompanyPointer::BlMainCompanyPointers", 0 );
 }
 
 
@@ -49,8 +49,8 @@ BlMainCompanyPointer::BlMainCompanyPointer()
 **/
 BlMainCompanyPointer::~BlMainCompanyPointer()
 {
-    _depura ( "BlMainCompanyPointer::~BlMainCompanyPointer", 0 );
-    _depura ( "END BlMainCompanyPointer::~BlMainCompanyPointer", 0 );
+    blDebug ( "BlMainCompanyPointer::~BlMainCompanyPointer", 0 );
+    blDebug ( "END BlMainCompanyPointer::~BlMainCompanyPointer", 0 );
 }
 
 
@@ -60,9 +60,9 @@ BlMainCompanyPointer::~BlMainCompanyPointer()
 **/
 void BlMainCompanyPointer::setMainCompany ( BlMainCompany *emp )
 {
-    _depura ( "BlMainCompanyPointer::setMainCompany", 0 );
+    blDebug ( "BlMainCompanyPointer::setMainCompany", 0 );
     m_mainCompany = emp;
-    _depura ( "END BlMainCompanyPointer::setMainCompany", 0 );
+    blDebug ( "END BlMainCompanyPointer::setMainCompany", 0 );
 }
 
 
@@ -72,8 +72,8 @@ void BlMainCompanyPointer::setMainCompany ( BlMainCompany *emp )
 **/
 BlMainCompany *BlMainCompanyPointer::mainCompany()
 {
-    _depura ( "BlMainCompanyPointer::mainCompany", 0 );
-    _depura ( "END BlMainCompanyPointer::mainCompany", 0 );
+    blDebug ( "BlMainCompanyPointer::mainCompany", 0 );
+    blDebug ( "END BlMainCompanyPointer::mainCompany", 0 );
     return m_mainCompany;
 }
 
@@ -84,7 +84,7 @@ BlMainCompany *BlMainCompanyPointer::mainCompany()
 **/
 QString BlMainCompanyPointer::fieldValue()
 {
-    _depura ( "BlMainCompanyPointer::fieldValue", 2, "debe ser derivado" );
+    blDebug ( "BlMainCompanyPointer::fieldValue", 2, "debe ser derivado" );
     return "";
 }
 
@@ -94,6 +94,6 @@ QString BlMainCompanyPointer::fieldValue()
 **/
 void BlMainCompanyPointer::setFieldValue ( QString )
 {
-    _depura ( "BlMainCompanyPointer::setFieldValue", 2, "debe ser derivado" );
+    blDebug ( "BlMainCompanyPointer::setFieldValue", 2, "debe ser derivado" );
 }
 

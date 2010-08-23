@@ -47,7 +47,7 @@
 VencimientoPView::VencimientoPView ( BfCompany *comp, QWidget *parent )
         :  BfForm ( comp, parent )
 {
-    _depura ( "VencimientoPView::VencimientoPView", 0 );
+    blDebug ( "VencimientoPView::VencimientoPView", 0 );
     try {
         setAttribute ( Qt::WA_DeleteOnClose );
         setupUi ( this );
@@ -80,7 +80,7 @@ VencimientoPView::VencimientoPView ( BfCompany *comp, QWidget *parent )
     } catch ( ... ) {
         mensajeInfo ( tr ( "Error al crear el pago" ), this );
     } // end try
-    _depura ( "END VencimientoPView::VencimientoPView", 0 );
+    blDebug ( "END VencimientoPView::VencimientoPView", 0 );
 }
 
 
@@ -89,8 +89,8 @@ VencimientoPView::VencimientoPView ( BfCompany *comp, QWidget *parent )
 **/
 VencimientoPView::~VencimientoPView()
 {
-    _depura ( "VencimientoPView::~VencimientoPView", 0 );
-    _depura ( "END VencimientoPView::~VencimientoPView", 0 );
+    blDebug ( "VencimientoPView::~VencimientoPView", 0 );
+    blDebug ( "END VencimientoPView::~VencimientoPView", 0 );
 }
 
 

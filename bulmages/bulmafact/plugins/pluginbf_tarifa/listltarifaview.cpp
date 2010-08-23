@@ -28,7 +28,7 @@
 **/
 ListLTarifaView::ListLTarifaView ( QWidget *parent ) : BfSubForm ( parent )
 {
-    _depura ( "ListLTarifaView::ListLTarifaView", 0 );
+    blDebug ( "ListLTarifaView::ListLTarifaView", 0 );
     setDbTableName ( "ltarifa" );
     setDbFieldId ( "idltarifa" );
     addSubFormHeader ( "nomtarifa", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite, _ ( "Nombre tarifa" ) );
@@ -41,7 +41,7 @@ ListLTarifaView::ListLTarifaView ( QWidget *parent ) : BfSubForm ( parent )
     addSubFormHeader ( "codigocompletoarticulo", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbHideView, _ ( "Codigo completo del articulo" ) );
     addSubFormHeader ( "nomarticulo", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbHideView, _ ( "Nombre del articulo" ) );
     setInsert ( FALSE );
-    _depura ( "END ListLTarifaView::ListLTarifaView", 0 );
+    blDebug ( "END ListLTarifaView::ListLTarifaView", 0 );
 }
 
 
@@ -51,7 +51,7 @@ ListLTarifaView::ListLTarifaView ( QWidget *parent ) : BfSubForm ( parent )
 **/
 ListLTarifaView1::ListLTarifaView1 ( QWidget *parent ) : BfSubForm ( parent )
 {
-    _depura ( "ListLTarifaView1::ListLTarifaView1", 0 );
+    blDebug ( "ListLTarifaView1::ListLTarifaView1", 0 );
     setDbTableName ( "ltarifa" );
     setDbFieldId ( "idltarifa" );
     addSubFormHeader ( "nomalmacen", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbNoWrite , _ ( "Nombre almacen" ) );
@@ -64,6 +64,6 @@ ListLTarifaView1::ListLTarifaView1 ( QWidget *parent ) : BfSubForm ( parent )
     addSubFormHeader ( "idltarifa", BlDbField::DbInt, BlDbField::DbPrimaryKey, BlSubFormHeader::DbHideView, _ ( "Num de linea" ) );
     addSubFormHeader ( "nomtarifa", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone | BlSubFormHeader::DbHideView, _ ( "Nombre de la tarifa" ) );
     setInsert ( FALSE );
-    _depura ( "ListLTarifaView1::ListLTarifaView1", 0 );
+    blDebug ( "ListLTarifaView1::ListLTarifaView1", 0 );
 }
 

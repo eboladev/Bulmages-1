@@ -37,7 +37,7 @@
 BcCentroCosteView::BcCentroCosteView ( BcCompany  *emp, QWidget *parent )
         : BcForm ( emp, parent )
 {
-    _depura ( "BcCentroCosteView::BcCentroCosteView", 0 );
+    blDebug ( "BcCentroCosteView::BcCentroCosteView", 0 );
     setAttribute ( Qt::WA_DeleteOnClose );
     setupUi ( this );
 
@@ -81,7 +81,7 @@ BcCentroCosteView::BcCentroCosteView ( BcCompany  *emp, QWidget *parent )
     dialogChanges_cargaInicial();
     meteWindow ( windowTitle(), this );
     repintar();
-    _depura ( "END BcCentroCosteView::BcCentroCosteView", 0 );
+    blDebug ( "END BcCentroCosteView::BcCentroCosteView", 0 );
 }
 
 
@@ -90,9 +90,9 @@ BcCentroCosteView::BcCentroCosteView ( BcCompany  *emp, QWidget *parent )
 **/
 BcCentroCosteView::~BcCentroCosteView()
 {
-    _depura ( "BcCentroCosteView::~BcCentroCosteView", 0 );
+    blDebug ( "BcCentroCosteView::~BcCentroCosteView", 0 );
     mainCompany() ->sacaWindow ( this );
-    _depura ( "END BcCentroCosteView::~BcCentroCosteView", 0 );
+    blDebug ( "END BcCentroCosteView::~BcCentroCosteView", 0 );
 }
 
 
@@ -101,7 +101,7 @@ BcCentroCosteView::~BcCentroCosteView()
 **/
 void BcCentroCosteView::repintar()
 {
-    _depura ( "BcCentroCosteView::pintar", 0 );
+    blDebug ( "BcCentroCosteView::pintar", 0 );
     QTreeWidgetItem *it;
     QMap <int, QTreeWidgetItem *> Lista;
     int padre;
@@ -139,7 +139,7 @@ void BcCentroCosteView::repintar()
             it->setText ( COL_NOM_COSTE, cursoraux2->valor ( "nombre" ) );
             mui_list->expandItem ( it );
         } else {
-            _depura ( _ ( "Error en la carga de centros de coste" ), 2 );
+            blDebug ( _ ( "Error en la carga de centros de coste" ), 2 );
         } // end if
         cursoraux2->nextRecord();
     } // end while
@@ -149,7 +149,7 @@ void BcCentroCosteView::repintar()
     /// Se inicializa el selector de centros de coste.
     BcCentroCosteSeleccionarView *scoste = mainCompany() ->getselccostes();
     scoste->cargacostes();
-    _depura ( "END BcCentroCosteView::pintar", 0 );
+    blDebug ( "END BcCentroCosteView::pintar", 0 );
 }
 
 
@@ -159,7 +159,7 @@ void BcCentroCosteView::repintar()
 **/
 void BcCentroCosteView::on_mui_list_itemClicked ( QTreeWidgetItem *it, int )
 {
-    _depura ( "BcCentroCosteView::on_mui_list_itemClicked", 0 );
+    blDebug ( "BcCentroCosteView::on_mui_list_itemClicked", 0 );
     int previdccoste = it->text ( COL_IDC_COSTE ).toInt();
     if ( dialogChanges_hayCambios() ) {
         if ( QMessageBox::warning ( this,
@@ -171,7 +171,7 @@ void BcCentroCosteView::on_mui_list_itemClicked ( QTreeWidgetItem *it, int )
     } // end if
     idc_coste = previdccoste;
     mostrarplantilla();
-    _depura ( "END BcCentroCosteView::on_mui_list_itemClicked", 0 );
+    blDebug ( "END BcCentroCosteView::on_mui_list_itemClicked", 0 );
 }
 
 
@@ -180,11 +180,11 @@ void BcCentroCosteView::on_mui_list_itemClicked ( QTreeWidgetItem *it, int )
 **/
 void BcCentroCosteView::mostrarplantilla()
 {
-    _depura ( "BcCentroCosteView::mostrarplantilla", 0 );
+    blDebug ( "BcCentroCosteView::mostrarplantilla", 0 );
 
     QString query;
 
-    _depura ( "mostrarplantilla", 2, QString::number ( idc_coste ) );
+    blDebug ( "mostrarplantilla", 2, QString::number ( idc_coste ) );
     BcForm::cargar ( QString::number ( idc_coste ) );
 
     query = "SELECT * FROM c_costedist LEFT JOIN (SELECT idc_coste AS idcc, nombre AS nomc_coste FROM c_coste) AS t1 ON c_costedist.idc_Coste = t1.idcc WHERE iddestc_coste=" + QString::number ( idc_coste );
@@ -192,7 +192,7 @@ void BcCentroCosteView::mostrarplantilla()
 
 
     dialogChanges_cargaInicial();
-    _depura ( "END BcCentroCosteView::mostrarplantilla", 0 );
+    blDebug ( "END BcCentroCosteView::mostrarplantilla", 0 );
 }
 
 
@@ -201,7 +201,7 @@ void BcCentroCosteView::mostrarplantilla()
 **/
 int BcCentroCosteView::guardar()
 {
-    _depura ( "BcCentroCosteView::guardar", 0 );
+    blDebug ( "BcCentroCosteView::guardar", 0 );
     BcForm::guardar();
 
     mui_cdistribuidos->setColumnValue ( "iddestc_coste", QString::number ( idc_coste ) );
@@ -209,7 +209,7 @@ int BcCentroCosteView::guardar()
 
     dialogChanges_cargaInicial();
     repintar();
-    _depura ( "END BcCentroCosteView::guardar", 0 );
+    blDebug ( "END BcCentroCosteView::guardar", 0 );
     return 0;
 }
 
@@ -219,7 +219,7 @@ int BcCentroCosteView::guardar()
 **/
 void BcCentroCosteView::on_mui_crear_clicked()
 {
-    _depura ( "BcCentroCosteView::on_mui_crear_clicked", 0 );
+    blDebug ( "BcCentroCosteView::on_mui_crear_clicked", 0 );
     /// Si se ha modificado el contenido advertimos y guardamos.
     if ( dialogChanges_hayCambios() ) {
         if ( QMessageBox::warning ( this,
@@ -250,7 +250,7 @@ void BcCentroCosteView::on_mui_crear_clicked()
     delete cur;
     mainCompany() ->commit();
     repintar();
-    _depura ( "END BcCentroCosteView::on_mui_crear_clicked", 0 );
+    blDebug ( "END BcCentroCosteView::on_mui_crear_clicked", 0 );
 }
 
 
@@ -259,7 +259,7 @@ void BcCentroCosteView::on_mui_crear_clicked()
 **/
 void BcCentroCosteView::on_mui_borrar_clicked()
 {
-    _depura ( "BcCentroCosteView::on_mui_borrar_clicked", 0 );
+    blDebug ( "BcCentroCosteView::on_mui_borrar_clicked", 0 );
     try {
         switch ( QMessageBox::warning ( this,
                                         _ ( "Borrar centro de coste" ),
@@ -279,7 +279,7 @@ void BcCentroCosteView::on_mui_borrar_clicked()
         mainCompany() ->rollback();
         return;
     } // end try
-    _depura ( "END BcCentroCosteView::on_mui_borrar_clicked", 0 );
+    blDebug ( "END BcCentroCosteView::on_mui_borrar_clicked", 0 );
 }
 
 

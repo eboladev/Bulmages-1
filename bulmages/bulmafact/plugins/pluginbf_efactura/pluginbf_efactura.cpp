@@ -45,8 +45,8 @@
 **/
 efacturabf::efacturabf()
 {
-    _depura ( "efacturabf::efacturabf", 0 );
-    _depura ( "END efacturabf::efacturabf", 0 );
+    blDebug ( "efacturabf::efacturabf", 0 );
+    blDebug ( "END efacturabf::efacturabf", 0 );
 }
 
 
@@ -55,8 +55,8 @@ efacturabf::efacturabf()
 **/
 efacturabf::~efacturabf()
 {
-    _depura ( "efacturabf::~efacturabf", 0 );
-    _depura ( "efacturabf::~efacturabf", 0 );
+    blDebug ( "efacturabf::~efacturabf", 0 );
+    blDebug ( "efacturabf::~efacturabf", 0 );
 }
 
 
@@ -65,7 +65,7 @@ efacturabf::~efacturabf()
 **/
 void efacturabf::elslot()
 {
-    _depura ( "efacturabf::elslot", 0 );
+    blDebug ( "efacturabf::elslot", 0 );
     EFactura *ef = new EFactura ( ( BfCompany * ) mainCompany() );
     ef->show();
 
@@ -81,7 +81,7 @@ void efacturabf::elslot()
 //                          "Mensaje.",
 //                          QMessageBox::Ok,
 //                          QMessageBox::Cancel);
-    _depura ( "END efacturabf::elslot", 0 );
+    blDebug ( "END efacturabf::elslot", 0 );
 }
 
 
@@ -90,10 +90,10 @@ void efacturabf::elslot()
 **/
 void efacturabf::elslot1()
 {
-    _depura ( "efacturabf::elslot1", 0 );
+    blDebug ( "efacturabf::elslot1", 0 );
     EFacturaRecepcion *efr = new EFacturaRecepcion ( ( BfCompany * ) mainCompany() );
     efr->show();
-    _depura ( "END efacturabf::elslot1", 0 );
+    blDebug ( "END efacturabf::elslot1", 0 );
 }
 
 
@@ -103,7 +103,7 @@ void efacturabf::elslot1()
 **/
 void efacturabf::inicializa ( BfBulmaFact *bges )
 {
-    _depura ( "efacturabf::inicializa", 0 );
+    blDebug ( "efacturabf::inicializa", 0 );
     /// Creamos la conexion de la base de datos
     setMainCompany ( bges->company() );
 
@@ -127,7 +127,7 @@ void efacturabf::inicializa ( BfBulmaFact *bges )
 //
 //  /// Anyadimos la nueva opcion al menu principal del programa.
 //  bges->menuBar()->addMenu(pPluginMenu);
-    _depura ( "END efacturabf::inicializa", 0 );
+    blDebug ( "END efacturabf::inicializa", 0 );
 }
 
 
@@ -137,7 +137,7 @@ void efacturabf::inicializa ( BfBulmaFact *bges )
 **/
 int entryPoint ( BfBulmaFact *bges )
 {
-    _depura ( "Estoy dentro del plugin de e-factura", 0 );
+    blDebug ( "Estoy dentro del plugin de e-factura", 0 );
 
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale ( LC_ALL, "" );
@@ -149,7 +149,7 @@ int entryPoint ( BfBulmaFact *bges )
     /// del programa para indicar que el plugin se ha cargado.
     bges->setWindowTitle ( "Prueba de plugin e-factura." );
 
-    _depura ( "Acaba el entry point de e-factura", 0 );
+    blDebug ( "Acaba el entry point de e-factura", 0 );
     return 0;
 }
 
@@ -161,7 +161,7 @@ int entryPoint ( BfBulmaFact *bges )
 **/
 int FacturaView_FacturaView ( FacturaView *fac )
 {
-    _depura ( "FacturaView_FacturaView", 0 );
+    blDebug ( "FacturaView_FacturaView", 0 );
 
     EFQToolButton *mui_exporta_efactura = new EFQToolButton ( fac, fac->mui_plugbotones );
     mui_exporta_efactura->setObjectName ( QString::fromUtf8 ( "exporta" ) );
@@ -181,7 +181,7 @@ int FacturaView_FacturaView ( FacturaView *fac )
 
     m_hboxLayout1->addWidget ( mui_exporta_efactura );
 
-    _depura ( "END FacturaView_FacturaView", 0 );
+    blDebug ( "END FacturaView_FacturaView", 0 );
 
     return 0;
 }
@@ -194,7 +194,7 @@ int FacturaView_FacturaView ( FacturaView *fac )
 **/
 int FacturasProveedorList_FacturasProveedorList_Post ( FacturasProveedorList *listfac )
 {
-    _depura ( "FacturasProveedorList_FacturasProveedorList_Post", 0 );
+    blDebug ( "FacturasProveedorList_FacturasProveedorList_Post", 0 );
 
     EFQToolButtonImportar *mui_importa_efactura = new EFQToolButtonImportar ( listfac, listfac->mui_plugbotones );
     mui_importa_efactura->setObjectName ( QString::fromUtf8 ( "importa" ) );
@@ -213,7 +213,7 @@ int FacturasProveedorList_FacturasProveedorList_Post ( FacturasProveedorList *li
     } // end if
     m_hboxLayout1->addWidget ( mui_importa_efactura );
 
-    _depura ( "END FacturasProveedorList_FacturasProveedorList_Post", 0 );
+    blDebug ( "END FacturasProveedorList_FacturasProveedorList_Post", 0 );
 
     return 0;
 }

@@ -36,7 +36,7 @@
 **/
 int entryPoint ( BfBulmaFact * )
 {
-    _depura ( "Estoy dentro del plugin de Q19", 0 );
+    blDebug ( "Estoy dentro del plugin de Q19", 0 );
     new Q19TextCodec(); // no us espanteu, els codecs els arxiva i destrueix QT (espero)
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale ( LC_ALL, "" );
@@ -53,7 +53,7 @@ int entryPoint ( BfBulmaFact * )
 **/
 int CobrosList_CobrosList ( CobrosList *l )
 {
-    _depura ( "CobrosList_CobrosList", 0 );
+    blDebug ( "CobrosList_CobrosList", 0 );
 
     Q19QToolButton *sel = new Q19QToolButton ( l, l->mui_plugbotones );
     QHBoxLayout *m_hboxLayout1 = l->mui_plugbotones->findChild<QHBoxLayout *> ( "hboxLayout1" );
@@ -65,7 +65,7 @@ int CobrosList_CobrosList ( CobrosList *l )
     } // end if
     m_hboxLayout1->addWidget ( sel );
 
-    _depura ( "END CobrosList_CobrosList", 0 );
+    blDebug ( "END CobrosList_CobrosList", 0 );
     return 0;
 }
 
@@ -77,7 +77,7 @@ int CobrosList_CobrosList ( CobrosList *l )
 **/
 int FacturasList_FacturasList ( FacturasList *l )
 {
-    _depura ( "FacturasList_FacturasList", 0 );
+    blDebug ( "FacturasList_FacturasList", 0 );
 
     Q19QToolButton1 *sel = new Q19QToolButton1 ( l, l->mui_plugbotones );
     QHBoxLayout *m_hboxLayout1 = l->mui_plugbotones->findChild<QHBoxLayout *> ( "hboxLayout1" );
@@ -89,7 +89,7 @@ int FacturasList_FacturasList ( FacturasList *l )
     } // end if
     m_hboxLayout1->addWidget ( sel );
 
-    _depura ( "END FacturasList_FacturasList", 0 );
+    blDebug ( "END FacturasList_FacturasList", 0 );
     return 0;
 }
 
@@ -101,7 +101,7 @@ int FacturasList_FacturasList ( FacturasList *l )
 **/
 int RecibosList_RecibosList ( RecibosList *l )
 {
-    _depura ( "RecibosList_RecibosList", 0 );
+    blDebug ( "RecibosList_RecibosList", 0 );
 
     Q19QToolButton *sel = new Q19QToolButton ( l, l->mui_plugbotones );
 
@@ -114,7 +114,7 @@ int RecibosList_RecibosList ( RecibosList *l )
     } // end if
     m_hboxLayout1->addWidget ( sel );
 
-    _depura ( "END RecibosList_RecibosList", 0 );
+    blDebug ( "END RecibosList_RecibosList", 0 );
     return 0;
 }
 

@@ -48,10 +48,10 @@
 **/
 GenCobroQToolButton::GenCobroQToolButton ( QWidget *fac , QWidget *parent ) : QToolButton ( parent )
 {
-    _depura ( "GenCobroQToolButton::GenCobroQToolButton", 0 );
+    blDebug ( "GenCobroQToolButton::GenCobroQToolButton", 0 );
     m_object = fac;
     setBoton();
-    _depura ( "END GenCobroQToolButton::GenCobroQToolButton", 0 );
+    blDebug ( "END GenCobroQToolButton::GenCobroQToolButton", 0 );
 }
 
 
@@ -60,8 +60,8 @@ GenCobroQToolButton::GenCobroQToolButton ( QWidget *fac , QWidget *parent ) : QT
 **/
 GenCobroQToolButton::~GenCobroQToolButton()
 {
-    _depura ( "GenCobroQToolButton::~GenCobroQToolButton", 0 );
-    _depura ( "END GenCobroQToolButton::~GenCobroQToolButton", 0 );
+    blDebug ( "GenCobroQToolButton::~GenCobroQToolButton", 0 );
+    blDebug ( "END GenCobroQToolButton::~GenCobroQToolButton", 0 );
 }
 
 
@@ -70,7 +70,7 @@ GenCobroQToolButton::~GenCobroQToolButton()
 **/
 void GenCobroQToolButton::setBoton()
 {
-    _depura ( "GenCobroQToolButton::setBoton", 0 );
+    blDebug ( "GenCobroQToolButton::setBoton", 0 );
     connect ( this, SIGNAL ( clicked() ), this, SLOT ( click() ) );
     setObjectName ( QString::fromUtf8 ( "exporta" ) );
     setStatusTip ( "Generar Cobro" );
@@ -80,7 +80,7 @@ void GenCobroQToolButton::setBoton()
     setIcon ( QIcon ( QString::fromUtf8 ( ":/Images/receive.png" ) ) );
     setIconSize ( QSize ( 32, 32 ) );
     setContentsMargins ( 0, 0, 0, 0 );
-    _depura ( "END GenCobroQToolButton::setBoton", 0 );
+    blDebug ( "END GenCobroQToolButton::setBoton", 0 );
 }
 
 
@@ -89,7 +89,7 @@ void GenCobroQToolButton::setBoton()
 **/
 void GenCobroQToolButton::click()
 {
-    _depura ( "ImpQToolButton::click", 0 );
+    blDebug ( "ImpQToolButton::click", 0 );
 
     if ( m_object->objectName() == "FacturaBase" ) {
         FacturaView *fpv = ( FacturaView * ) m_object;
@@ -244,7 +244,7 @@ void GenCobroQToolButton::click()
         } // end if
     }// end if
 
-    _depura ( "END ImpQToolButton::click", 0 );
+    blDebug ( "END ImpQToolButton::click", 0 );
 }
 
 

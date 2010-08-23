@@ -40,10 +40,10 @@ extern BcModelo300Imprimir2PS *modelo;
 BcRegistroIVAImprimirView::BcRegistroIVAImprimirView ( BcCompany *emp, QWidget *parent )
         : QDialog ( parent ), BlMainCompanyPointer ( emp )
 {
-    _depura ( "BcRegistroIVAImprimirView::BcRegistroIVAImprimirView", 0 );
+    blDebug ( "BcRegistroIVAImprimirView::BcRegistroIVAImprimirView", 0 );
     setupUi ( this );
     fichero = NULL;
-    _depura ( "END BcRegistroIVAImprimirView::BcRegistroIVAImprimirView", 0 );
+    blDebug ( "END BcRegistroIVAImprimirView::BcRegistroIVAImprimirView", 0 );
 }
 
 
@@ -52,8 +52,8 @@ BcRegistroIVAImprimirView::BcRegistroIVAImprimirView ( BcCompany *emp, QWidget *
 **/
 BcRegistroIVAImprimirView::~BcRegistroIVAImprimirView()
 {
-    _depura ( "BcRegistroIVAImprimirView::~BcRegistroIVAImprimirView", 0 );
-    _depura ( "END BcRegistroIVAImprimirView::~BcRegistroIVAImprimirView", 0 );
+    blDebug ( "BcRegistroIVAImprimirView::~BcRegistroIVAImprimirView", 0 );
+    blDebug ( "END BcRegistroIVAImprimirView::~BcRegistroIVAImprimirView", 0 );
 }
 
 
@@ -62,7 +62,7 @@ BcRegistroIVAImprimirView::~BcRegistroIVAImprimirView()
 **/
 void BcRegistroIVAImprimirView::accept()
 {
-    _depura ( "BcRegistroIVAImprimirView::accept", 0 );
+    blDebug ( "BcRegistroIVAImprimirView::accept", 0 );
     if ( radiotexto->isChecked() )
         presentar ( "txt" );
     if ( radiohtml->isChecked() )
@@ -73,7 +73,7 @@ void BcRegistroIVAImprimirView::accept()
         /// (listivaview--->modelo, en vez de BcRegistroIVAImprimirView--->modelo)
         /// modelo->exec();
     } // end if
-    _depura ( "END BcRegistroIVAImprimirView::accept", 0 );
+    blDebug ( "END BcRegistroIVAImprimirView::accept", 0 );
 }
 
 
@@ -84,10 +84,10 @@ void BcRegistroIVAImprimirView::accept()
 **/
 void BcRegistroIVAImprimirView::inicializa1 ( QString finicial1, QString ffinal1 )
 {
-    _depura ( "BcRegistroIVAImprimirView::inicializa1", 0 );
+    blDebug ( "BcRegistroIVAImprimirView::inicializa1", 0 );
     fechainicial1->setText ( finicial1 );
     fechafinal1->setText ( ffinal1 );
-    _depura ( "END BcRegistroIVAImprimirView::inicializa1", 0 );
+    blDebug ( "END BcRegistroIVAImprimirView::inicializa1", 0 );
 }
 
 
@@ -97,7 +97,7 @@ void BcRegistroIVAImprimirView::inicializa1 ( QString finicial1, QString ffinal1
 **/
 void BcRegistroIVAImprimirView::presentar ( const char *tipus )
 {
-    _depura ( "BcRegistroIVAImprimirView::presentar", 0 );
+    blDebug ( "BcRegistroIVAImprimirView::presentar", 0 );
 #ifndef WIN32
     int txt, html, txtapren, htmlapren;
     QString data;
@@ -329,6 +329,6 @@ void BcRegistroIVAImprimirView::presentar ( const char *tipus )
     }
 
 #endif
-    _depura ( "END BcRegistroIVAImprimirView::presentar", 0 );
+    blDebug ( "END BcRegistroIVAImprimirView::presentar", 0 );
 }
 

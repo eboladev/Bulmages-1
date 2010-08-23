@@ -27,7 +27,7 @@
 \param argv
 **/
 BlArgParser::BlArgParser( int argc, char **argv ) {
-   _depura ( "BlArgParser::BlArgParser", 0 );
+   blDebug ( "BlArgParser::BlArgParser", 0 );
   
    m_executable = argv[0];
    m_dbName = "";
@@ -92,7 +92,7 @@ BlArgParser::BlArgParser( int argc, char **argv ) {
       } // end if
    } // end for
 
-   _depura ( "END BlArgParser::BlArgParser", 0 );
+   blDebug ( "END BlArgParser::BlArgParser", 0 );
 }
 
 

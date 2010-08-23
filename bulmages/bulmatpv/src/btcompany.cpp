@@ -41,11 +41,11 @@
 **/
 BtCompany::BtCompany ( BtBulmaTPV* bges ) : BlMainCompany(), BtInput ( this )
 {
-    _depura ( "BtCompany::BtCompany", 0 );
+    blDebug ( "BtCompany::BtCompany", 0 );
     m_bulmaTPV = bges;
 
 
-    _depura ( "END BtCompany::BtCompany", 0 );
+    blDebug ( "END BtCompany::BtCompany", 0 );
 }
 
 /// El destructor de la clase BtCompany borra toda la memoria almacenada.
@@ -53,7 +53,7 @@ BtCompany::BtCompany ( BtBulmaTPV* bges ) : BlMainCompany(), BtInput ( this )
 **/
 BtCompany::~BtCompany()
 {
-    _depura ( "BtCompany::~BtCompany", 0 );
+    blDebug ( "BtCompany::~BtCompany", 0 );
 
 /// Pruebas de exportacion a XML
 /// ======================================
@@ -75,7 +75,7 @@ BtCompany::~BtCompany()
     /// Guardamos la configuracion.
     guardaConf();
 
-    _depura ( "END BtCompany::~BtCompany", 0 );
+    blDebug ( "END BtCompany::~BtCompany", 0 );
 }
 
 /** Crea todas las ventanas que aparecen creadas al inicio del programa.
@@ -88,7 +88,7 @@ BtCompany::~BtCompany()
 **/
 void BtCompany::createMainWindows ( BlSplashScreen *splash )
 {
-    _depura ( "BtCompany::createMainWindows", 0 );
+    blDebug ( "BtCompany::createMainWindows", 0 );
     
     /// Establecemos el porcentaje del carga de informaci&oacute;n en las diferentes ventanas.
     /// pb = 0%
@@ -101,7 +101,7 @@ void BtCompany::createMainWindows ( BlSplashScreen *splash )
     //m_ticketActual->setDbValue("nomticket", "");
     
     if ( !m_ticketActual )
-        _depura ( "error en el sistema, reservando memoria.", 0 );
+        blDebug ( "error en el sistema, reservando memoria.", 0 );
         
     //m_listaTickets.append ( m_ticketActual );
 
@@ -111,7 +111,7 @@ void BtCompany::createMainWindows ( BlSplashScreen *splash )
 
     if (file.exists()) {
         if ( !file.open ( QIODevice::ReadOnly ) ) {
-            _depura ( "END BtCompany::syncXML", 0, "Fichero no se puede abrir" );
+            blDebug ( "END BtCompany::syncXML", 0, "Fichero no se puede abrir" );
             return;
         } // end if
         QString result (file.readAll());
@@ -138,12 +138,12 @@ void BtCompany::createMainWindows ( BlSplashScreen *splash )
     compruebaUltimaZ();
 
 
-    _depura ( "END BtCompany::createMainWindows", 0 );
+    blDebug ( "END BtCompany::createMainWindows", 0 );
 }
 
 void BtCompany::z()
 {
-    _depura( "BtCompany::z", 0 );
+    blDebug( "BtCompany::z", 0 );
 
     QString queryfechas;
     
@@ -199,7 +199,7 @@ void BtCompany::z()
 	    QString comando = "cat " + g_confpr->valor(CONF_DIR_USER) + "informe_Z.txt" + "  > " + g_confpr->valor ( CONF_CASHBOX_FILE );
 	    system ( comando.toAscii().data() );
 	} else if (g_confpr->valor(CONF_CUPS_DEFAULT_PRINTER).isEmpty() || g_confpr->valor(CONF_CUPS_DEFAULT_PRINTER) == "None") {
-	    _depura("Debe establecer el parametro CONF_CUPS_DEFAULT_PRINTER o CONF_CASHBOX_FILE para abrir el cajon " , 2);
+	    blDebug("Debe establecer el parametro CONF_CUPS_DEFAULT_PRINTER o CONF_CASHBOX_FILE para abrir el cajon " , 2);
 	} else {
 	    QString comando = "lp -d" + g_confpr->valor(CONF_CUPS_DEFAULT_PRINTER) + " " + g_confpr->valor(CONF_DIR_USER) + "informe_Z.txt";
 	    system ( comando.toAscii().data() );
@@ -232,7 +232,7 @@ void BtCompany::z()
         QFile file ( g_confpr->valor ( CONF_TICKET_PRINTER_FILE ) );
         
         if ( !file.open ( QIODevice::WriteOnly | QIODevice::Unbuffered ) ) {
-            _depura ( "Error en la Impresion de ticket", 2 );
+            blDebug ( "Error en la Impresion de ticket", 2 );
             return;
         } // end if
         
@@ -424,13 +424,13 @@ void BtCompany::z()
 
 // ========================================
 
-    _depura( "END BtCompany::z", 0 );
+    blDebug( "END BtCompany::z", 0 );
 }
 
 void BtCompany::x()
 {
 
-    _depura( "BtCompany::x", 0 );
+    blDebug( "BtCompany::x", 0 );
 
     if ( g_plugins->lanza ( "BtCompany_x", this ) )
         return;
@@ -441,7 +441,7 @@ void BtCompany::x()
         QString comando = "cat " + g_confpr->valor(CONF_DIR_USER) + "informe_X.txt" + "  > " + g_confpr->valor ( CONF_CASHBOX_FILE );
         system ( comando.toAscii().data() );
     } else if (g_confpr->valor(CONF_CUPS_DEFAULT_PRINTER).isEmpty() || g_confpr->valor(CONF_CUPS_DEFAULT_PRINTER) == "None") {
-        _depura("Debe establecer el parametro CONF_CUPS_DEFAULT_PRINTER o CONF_CASHBOX_FILE para abrir el cajon " , 2);
+        blDebug("Debe establecer el parametro CONF_CUPS_DEFAULT_PRINTER o CONF_CASHBOX_FILE para abrir el cajon " , 2);
     } else {
         QString comando = "lp -d" + g_confpr->valor(CONF_CUPS_DEFAULT_PRINTER) + " " + g_confpr->valor(CONF_DIR_USER) + "informe_X.txt";
         system ( comando.toAscii().data() );
@@ -484,7 +484,7 @@ void BtCompany::x()
     QFile file ( g_confpr->valor ( CONF_TICKET_PRINTER_FILE ) );
     
     if ( !file.open ( QIODevice::WriteOnly | QIODevice::Unbuffered ) ) {
-        _depura ( "Error en la Impresion de ticket", 2 );
+        blDebug ( "Error en la Impresion de ticket", 2 );
         return;
     } // end if
     
@@ -603,12 +603,12 @@ void BtCompany::x()
     file.write ( "\x1D\x56\x01", 3 );
     file.close();
 */
-    _depura( "END BtCompany::x", 0 );
+    blDebug( "END BtCompany::x", 0 );
 }
 
 BtTicket *BtCompany::newBtTicket()
 {
-    _depura ( "BtCompany::newBtTicket", 0 );
+    blDebug ( "BtCompany::newBtTicket", 0 );
     
     /// Lanzamos los plugins necesarios.
     BtTicket *bud;
@@ -619,14 +619,14 @@ BtTicket *BtCompany::newBtTicket()
     bud = new BtTicket ( this, NULL );
     bud->setDbValue("nomticket", bud->nomTicketDefecto());
 
-    _depura ( "END BtCompany::newBtTicket", 0 );
+    blDebug ( "END BtCompany::newBtTicket", 0 );
     
     return bud;
 }
 
 void BtCompany::cobrar(bool imprimir)
 {
-    _depura ( "BtCompany::cobrar", 0 );
+    blDebug ( "BtCompany::cobrar", 0 );
 
     QString idtrabajador = m_ticketActual->dbValue ( "idtrabajador" );
 
@@ -638,7 +638,7 @@ void BtCompany::cobrar(bool imprimir)
     if ( m_ticketActual->dbValue ( "idalbaran" ) != "" ) {
 
         if ( m_ticketActual->guardar() == -1) {
-            _depura ( "Error en la llamada a guardar()", 0 );
+            blDebug ( "Error en la llamada a guardar()", 0 );
             return;
         }// end if
         
@@ -646,7 +646,7 @@ void BtCompany::cobrar(bool imprimir)
     } else {
     
         if ( m_ticketActual->guardar() == -1) {
-            _depura ( "Error en la llamada a guardar()", 0 );
+            blDebug ( "Error en la llamada a guardar()", 0 );
             return;
         }// end if
     
@@ -691,28 +691,28 @@ void BtCompany::cobrar(bool imprimir)
 
     g_plugins->lanza ( "BtCompany_cobrar_Post", this );
     
-    _depura ( "END BtCompany::cobrar", 0 );
+    blDebug ( "END BtCompany::cobrar", 0 );
 }
 
 BtTicket *BtCompany::ticketActual()
 {
-    _depura ( "BtCompany::ticketActual", 0 );
-    _depura ( "END BtCompany::ticketActual", 0 );
+    blDebug ( "BtCompany::ticketActual", 0 );
+    blDebug ( "END BtCompany::ticketActual", 0 );
     return m_ticketActual;
 }
 
 QList<BtTicket *> *BtCompany::listaTickets()
 {
-    _depura ( "BtCompany::listaTickets", 0 );
-    _depura ( "END BtCompany::listaTickets", 0 );
+    blDebug ( "BtCompany::listaTickets", 0 );
+    blDebug ( "END BtCompany::listaTickets", 0 );
     return & m_listaTickets;
 }
 
 void BtCompany::setTicketActual ( BtTicket *tick )
 {
-    _depura ( "BtCompany::setTicketActual", 0 );
+    blDebug ( "BtCompany::setTicketActual", 0 );
 
-    _depura ( "END BtCompany::setTicketActual", 0 );
+    blDebug ( "END BtCompany::setTicketActual", 0 );
     m_ticketActual = tick;
 }
 
@@ -721,7 +721,7 @@ void BtCompany::setTicketActual ( BtTicket *tick )
 **/
 void BtCompany::guardaConf()
 {
-    _depura ( "Company::guardaConf", 0 );
+    blDebug ( "Company::guardaConf", 0 );
     QFile file ( g_confpr->valor ( CONF_DIR_USER ) + "bulmatpv_" + dbName() + ".cfn" );
     /// Guardado del orden y de configuraciones varias.
     if ( file.open ( QIODevice::WriteOnly ) ) {
@@ -737,7 +737,7 @@ void BtCompany::guardaConf()
         stream << "</CONFIG>\n";
         file.close();
     } // end if
-    _depura ( "END BfCompany::guardaConf", 0 );
+    blDebug ( "END BfCompany::guardaConf", 0 );
 }
 
 /// Guarda la configuracion de programa para poder recuperar algunas cosas de presentacion.
@@ -746,7 +746,7 @@ void BtCompany::guardaConf()
 **/
 void BtCompany::cargaConf()
 {
-    _depura ( "BtCompany::cargaConf", 0 );
+    blDebug ( "BtCompany::cargaConf", 0 );
     
     QFile file ( g_confpr->valor ( CONF_DIR_USER ) + "bulmatpv_" + dbName() + ".cfn" );
     QDomDocument doc ( "mydocument" );
@@ -782,12 +782,12 @@ void BtCompany::cargaConf()
     /// Cogemos el ancho del indexador
     m_bulmaTPV->restoreState ( QByteArray::fromBase64 ( QByteArray ( principal.firstChildElement ( "TOOLBARSDOCKWIDGETS" ).toElement().text().toAscii() ) ) );
 
-    _depura ( "END BtCompany::cargaConf", 0 );
+    blDebug ( "END BtCompany::cargaConf", 0 );
 }
 
 void BtCompany::compruebaUltimaZ()
 {
-    _depura ( "BtCompany::compruebaUltimaZ", 0 );
+    blDebug ( "BtCompany::compruebaUltimaZ", 0 );
         
     // Obtenemos numero de Zs hasta el momento (para saber si es superior a 0. Si no, estamos en
     // el caso de que es la primera Z)
@@ -851,12 +851,12 @@ void BtCompany::compruebaUltimaZ()
     
     delete curNumzetas;
     
-    _depura ( "END BtCompany::compruebaUltimaZ", 0 );
+    blDebug ( "END BtCompany::compruebaUltimaZ", 0 );
 }
 
 /// Hace la exportacion del campo a XML
 QString BtCompany::exportXML() {
-    _depura ( "BtCompany::exportXML", 0 );
+    blDebug ( "BtCompany::exportXML", 0 );
     QString val;
     int error;
     BlDbField *campo;
@@ -872,19 +872,19 @@ QString BtCompany::exportXML() {
     val += "</BTCOMPANY>\n";
 
     return val;
-    _depura ( "END BtCompany::exportXML", 0 );
+    blDebug ( "END BtCompany::exportXML", 0 );
 }
 
 
 /// Sincroniza la lista de tickets con los guardados en el xml pasado.
 /// Creando los que no estan y modificando los que estan.
 void BtCompany::syncXML(const QString &textxml) {
-    _depura ( "BtCompany::syncXML", 0 );
+    blDebug ( "BtCompany::syncXML", 0 );
 
 
     QDomDocument doc ( "mydocument" );
     if ( !doc.setContent ( textxml ) ) {
-        _depura ( "END BtCompany::syncXML", 0, "XML Invalido" );
+        blDebug ( "END BtCompany::syncXML", 0, "XML Invalido" );
         return;
     } // end if
 
@@ -953,7 +953,7 @@ void BtCompany::syncXML(const QString &textxml) {
 	} // end if
     } // end while
 
-    _depura ( "BtCompany::syncXML", 0 );
+    blDebug ( "BtCompany::syncXML", 0 );
 }
 
 

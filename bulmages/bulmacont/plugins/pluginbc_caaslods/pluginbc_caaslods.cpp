@@ -43,8 +43,8 @@ BcCompany *g_comp = NULL;
 
 pluginBC_caaslODS::pluginBC_caaslODS()
 {
-    _depura ( "pluginBC_caaslODS::pluginBC_caaslODS", 0 );
-    _depura ( "END pluginBC_caaslODS::pluginBC_caaslODS", 0 );
+    blDebug ( "pluginBC_caaslODS::pluginBC_caaslODS", 0 );
+    blDebug ( "END pluginBC_caaslODS::pluginBC_caaslODS", 0 );
 }
 
 
@@ -54,8 +54,8 @@ pluginBC_caaslODS::pluginBC_caaslODS()
 
 pluginBC_caaslODS::~pluginBC_caaslODS()
 {
-    _depura ( "pluginBC_caaslODS::~pluginBC_caaslODS", 0 );
-    _depura ( "END pluginBC_caaslODS::~pluginBC_caaslODS", 0 );
+    blDebug ( "pluginBC_caaslODS::~pluginBC_caaslODS", 0 );
+    blDebug ( "END pluginBC_caaslODS::~pluginBC_caaslODS", 0 );
 }
 
 
@@ -76,7 +76,7 @@ pluginBC_caaslODS::~pluginBC_caaslODS()
 
 void pluginBC_caaslODS::inicializa ( BcBulmaCont *bcont )
 {
-    _depura ( "pluginBC_caaslODS::inicializa", 0 );
+    blDebug ( "pluginBC_caaslODS::inicializa", 0 );
 
 /*
     /// Creamos el men&uacute;.
@@ -136,13 +136,13 @@ void pluginBC_caaslODS::inicializa ( BcBulmaCont *bcont )
     empresaact = bcont->empresaactual();
     dbConnection = empresaact->bdempresa();
 */
-    _depura ( "END pluginBC_caaslODS::inicializa", 0 );
+    blDebug ( "END pluginBC_caaslODS::inicializa", 0 );
 }
 
 
 void pluginBC_caaslODS::formDatosBalance ( )
 {
-      _depura ( "pluginBC_caaslODS::formDatosBalance", 0 );
+      blDebug ( "pluginBC_caaslODS::formDatosBalance", 0 );
 
       QDialog *diag = new QDialog ( 0 );
       diag->setModal ( true );
@@ -172,7 +172,7 @@ void pluginBC_caaslODS::formDatosBalance ( )
       
       delete diag;
 
-      _depura ( "END pluginBC_caaslODS::formDatosBalance", 0 );
+      blDebug ( "END pluginBC_caaslODS::formDatosBalance", 0 );
 }
 
 
@@ -183,7 +183,7 @@ void pluginBC_caaslODS::formDatosBalance ( )
 **/
 int entryPoint ( BcBulmaCont *bcont )
 {
-    _depura ( "Estoy dentro del plugin\n", 0 );
+    blDebug ( "Estoy dentro del plugin\n", 0 );
 
     g_comp = bcont->empresaactual();
 

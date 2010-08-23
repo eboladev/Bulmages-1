@@ -45,7 +45,7 @@
 ListAlmacenView::ListAlmacenView ( BfCompany *comp, QWidget *parent )
         : BfForm ( comp, parent )
 {
-    _depura ( "ListAlmacenView::ListAlmacenView", 1 );
+    blDebug ( "ListAlmacenView::ListAlmacenView", 1 );
     setTitleName ( _ ( "Almacen" ) );
     setDbTableName ( "almacen" );
     setAttribute ( Qt::WA_DeleteOnClose );
@@ -53,7 +53,7 @@ ListAlmacenView::ListAlmacenView ( BfCompany *comp, QWidget *parent )
     mui_listado->setMainCompany ( comp );
     mui_listado->cargar();
     meteWindow ( windowTitle(), this, FALSE );
-    _depura ( "END ListAlmacenView::ListAlmacenView", 1 );
+    blDebug ( "END ListAlmacenView::ListAlmacenView", 1 );
 }
 
 
@@ -62,14 +62,14 @@ ListAlmacenView::ListAlmacenView ( BfCompany *comp, QWidget *parent )
 **/
 void ListAlmacenView::on_mui_aceptar_clicked()
 {
-    _depura ( "ListAlmacenView::on_mui_aceptar_clicked", 0 );
+    blDebug ( "ListAlmacenView::on_mui_aceptar_clicked", 0 );
     try {
         mui_listado->guardar();
         close();
     } catch ( ... ) {
         mensajeInfo ( _ ( "Error al guardar los almacenes" ) );
     } // end try
-    _depura ( "END ListAlmacenView::on_mui_aceptar_clicked", 0 );
+    blDebug ( "END ListAlmacenView::on_mui_aceptar_clicked", 0 );
 }
 
 
@@ -78,8 +78,8 @@ void ListAlmacenView::on_mui_aceptar_clicked()
 **/
 ListAlmacenView::~ListAlmacenView()
 {
-    _depura ( "ListAlmacenView::~ListAlmacenView", 0 );
-    _depura ( "END ListAlmacenView::~ListAlmacenView", 0 );
+    blDebug ( "ListAlmacenView::~ListAlmacenView", 0 );
+    blDebug ( "END ListAlmacenView::~ListAlmacenView", 0 );
 }
 
 
@@ -90,14 +90,14 @@ ListAlmacenView::~ListAlmacenView()
 **/
 ListAlmacenSubForm::ListAlmacenSubForm ( QWidget *parent ) : BfSubForm ( parent )
 {
-    _depura ( "ListAlmacenSubForm::ListAlmacenSubForm", 0 );
+    blDebug ( "ListAlmacenSubForm::ListAlmacenSubForm", 0 );
     setDbTableName ( "almacen" );
     setDbFieldId ( "idalmacen" );
     addSubFormHeader ( "idalmacen", BlDbField::DbInt, BlDbField::DbPrimaryKey, BlSubFormHeader::DbHideView, _ ( "Id almacen" ) );
     addSubFormHeader ( "codigoalmacen", BlDbField::DbVarChar, BlDbField::DbNotNull, BlSubFormHeader::DbNone, _ ( "Codigo almacen" ) );
     addSubFormHeader ( "nomalmacen", BlDbField::DbVarChar, BlDbField::DbNotNull, BlSubFormHeader::DbNone, _ ( "Nombre almacen" ) );
     setInsert ( TRUE );
-    _depura ( "END ListAlmacenSubForm::ListAlmacenSubForm", 0 );
+    blDebug ( "END ListAlmacenSubForm::ListAlmacenSubForm", 0 );
 }
 
 
@@ -106,8 +106,8 @@ ListAlmacenSubForm::ListAlmacenSubForm ( QWidget *parent ) : BfSubForm ( parent 
 **/
 void ListAlmacenSubForm::cargar()
 {
-    _depura ( "ListAlmacenSubForm::cargar", 0 );
+    blDebug ( "ListAlmacenSubForm::cargar", 0 );
     BlSubForm::cargar ( "SELECT * FROM almacen" );
-    _depura ( "END ListAlmacenSubForm::cargar", 0 );
+    blDebug ( "END ListAlmacenSubForm::cargar", 0 );
 }
 

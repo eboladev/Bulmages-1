@@ -41,8 +41,8 @@
 **/
 BcPsGenerateModel::BcPsGenerateModel()
 {
-    _depura ( "BcPsGenerateModel::BcPsGenerateModel", 0 );
-    _depura ( "END BcPsGenerateModel::BcPsGenerateModel", 0 );
+    blDebug ( "BcPsGenerateModel::BcPsGenerateModel", 0 );
+    blDebug ( "END BcPsGenerateModel::BcPsGenerateModel", 0 );
 }
 
 
@@ -51,8 +51,8 @@ BcPsGenerateModel::BcPsGenerateModel()
 **/
 BcPsGenerateModel::~BcPsGenerateModel()
 {
-    _depura ( "BcPsGenerateModel::~BcPsGenerateModel", 0 );
-    _depura ( "BcPsGenerateModel::~BcPsGenerateModel", 0 );
+    blDebug ( "BcPsGenerateModel::~BcPsGenerateModel", 0 );
+    blDebug ( "BcPsGenerateModel::~BcPsGenerateModel", 0 );
 }
 
 
@@ -64,7 +64,7 @@ BcPsGenerateModel::~BcPsGenerateModel()
 **/
 void BcPsGenerateModel::formatdigits ( QString *cad1, QString *cad2, float x )
 {
-    _depura ( "BcPsGenerateModel::formatdigits", 0 );
+    blDebug ( "BcPsGenerateModel::formatdigits", 0 );
     QString tempstr;
     /// Formatea n&uacute;mero x con 2 cifras decimales (centimos de euro).
     tempstr.sprintf ( "%.2f", x );
@@ -72,7 +72,7 @@ void BcPsGenerateModel::formatdigits ( QString *cad1, QString *cad2, float x )
     *cad1 = tempstr.section ( '.', 0, 0 );
     /// Se le a&ntilde;de a la parte entera la coma (a&uacute;n no s&eacute; si dejarlo o no)
     cad1->append ( ',' );
-    _depura ( "END BcPsGenerateModel::formatdigits", 0 );
+    blDebug ( "END BcPsGenerateModel::formatdigits", 0 );
 }
 
 
@@ -84,11 +84,11 @@ void BcPsGenerateModel::formatdigits ( QString *cad1, QString *cad2, float x )
 **/
 void BcPsGenerateModel::escrizq ( QString cad, int x, int y )
 {
-    _depura ( "BcPsGenerateModel::escrizq", 0 );
+    blDebug ( "BcPsGenerateModel::escrizq", 0 );
     /// Genera c&oacute;digo postscript para escribir 'cad' alineado a la derecha,
     /// suponiendo fuente Courier-Bold 12.
     m_output << "(" << cad << ") " << x << " " << y << " " << cad.length() << " escrizq\n";
-    _depura ( "END BcPsGenerateModel::escrizq", 0 );
+    blDebug ( "END BcPsGenerateModel::escrizq", 0 );
 }
 
 
@@ -100,11 +100,11 @@ void BcPsGenerateModel::escrizq ( QString cad, int x, int y )
 **/
 void BcPsGenerateModel::escrizq ( float valor, int x, int y )
 {
-    _depura ( "BcPsGenerateModel::escrizq", 0 );
+    blDebug ( "BcPsGenerateModel::escrizq", 0 );
     QString tempstr;
     tempstr.sprintf ( "%g", valor );
     escrizq ( tempstr, x, y );
-    _depura ( "END BcPsGenerateModel::escrizq", 0 );
+    blDebug ( "END BcPsGenerateModel::escrizq", 0 );
 }
 
 
@@ -115,11 +115,11 @@ void BcPsGenerateModel::escrizq ( float valor, int x, int y )
     @param y y coordinate of the right point. */
 void BcPsGenerateModel::escrder ( QString cad, int x, int y )
 {
-    _depura ( "BcPsGenerateModel::escrder", 0 );
+    blDebug ( "BcPsGenerateModel::escrder", 0 );
     /// Genera c&oacute;digo postscript para escribir 'cad' alineado a la izquierda,
     /// suponiendo fuente Courier-Bold 12.
     m_output << "(" << cad << ") " << x << " " << y << " " << cad.length() << " escrder\n";
-    _depura ( "END BcPsGenerateModel::escrder", 0 );
+    blDebug ( "END BcPsGenerateModel::escrder", 0 );
 }
 
 
@@ -131,11 +131,11 @@ void BcPsGenerateModel::escrder ( QString cad, int x, int y )
 **/
 void BcPsGenerateModel::escrder ( float valor, int x, int y )
 {
-    _depura ( "BcPsGenerateModel::escrder", 0 );
+    blDebug ( "BcPsGenerateModel::escrder", 0 );
     QString tempstr;
     tempstr.sprintf ( "%g", valor );
     escrder ( tempstr, x, y );
-    _depura ( "END BcPsGenerateModel::escrder", 0 );
+    blDebug ( "END BcPsGenerateModel::escrder", 0 );
 }
 
 
@@ -146,10 +146,10 @@ void BcPsGenerateModel::escrder ( float valor, int x, int y )
     @param y y coordinate of center. */
 void BcPsGenerateModel::escrizqder ( QString cad1, QString cad2, int x, int y )
 {
-    _depura ( "BcPsGenerateModel::escrizqder", 0 );
+    blDebug ( "BcPsGenerateModel::escrizqder", 0 );
     escrizq ( cad1, x, y );
     escrder ( cad2, x, y );
-    _depura ( "END BcPsGenerateModel::escrizqder", 0 );
+    blDebug ( "END BcPsGenerateModel::escrizqder", 0 );
 }
 
 
@@ -160,14 +160,14 @@ void BcPsGenerateModel::escrizqder ( QString cad1, QString cad2, int x, int y )
     @param y y coordinate of center. */
 void BcPsGenerateModel::escrizqder ( float valor, int x, int y )
 {
-    _depura ( "BcPsGenerateModel::escrizqder", 0 );
+    blDebug ( "BcPsGenerateModel::escrizqder", 0 );
     QString cad1, cad2;
     formatdigits ( &cad1, &cad2, valor );
 //    cout << "Si le digo" << valor << " me sale:\n";
 //    cout << "OJO!!!:"<< cad1.toAscii().constData() << " ," << cad2.toAscii().constData() <<"\n";
     escrizq ( cad1, x, y );
     escrder ( cad2, x, y );
-    _depura ( "END BcPsGenerateModel::escrizqder", 0 );
+    blDebug ( "END BcPsGenerateModel::escrizqder", 0 );
 }
 
 
@@ -179,9 +179,9 @@ void BcPsGenerateModel::escrizqder ( float valor, int x, int y )
 **/
 void BcPsGenerateModel::marca_casilla ( QString marca, int x, int y )
 {
-    _depura ( "BcPsGenerateModel::marca_casilla", 0 );
+    blDebug ( "BcPsGenerateModel::marca_casilla", 0 );
     escrder ( marca, x - 2, y );
-    _depura ( "END BcPsGenerateModel::marca_casilla", 0 );
+    blDebug ( "END BcPsGenerateModel::marca_casilla", 0 );
 }
 
 
@@ -190,7 +190,7 @@ void BcPsGenerateModel::marca_casilla ( QString marca, int x, int y )
 **/
 void BcPsGenerateModel::marcadeagua_borrador()
 {
-    _depura ( "BcPsGenerateModel::marcadeagua_borrador", 0 );
+    blDebug ( "BcPsGenerateModel::marcadeagua_borrador", 0 );
     m_output << "gsave\n";
     m_output << "1 setgray\n";
     m_output << "newpath\n";
@@ -209,7 +209,7 @@ void BcPsGenerateModel::marcadeagua_borrador()
     m_output << "(BORRADOR) true charpath\n";
     m_output << "stroke\n";
     m_output << "grestore\n";
-    _depura ( "END BcPsGenerateModel::marcadeagua_borrador", 0 );
+    blDebug ( "END BcPsGenerateModel::marcadeagua_borrador", 0 );
 }
 
 
@@ -221,11 +221,11 @@ void BcPsGenerateModel::marcadeagua_borrador()
 **/
 BcPsThread::BcPsThread ( QString pdfnamepar, QString tempnamepar, QProgressDialog *dialpar )
 {
-    _depura ( "BcPsThread::BcPsThread", 0 );
+    blDebug ( "BcPsThread::BcPsThread", 0 );
     m_pdfname = pdfnamepar;
     m_tempname = tempnamepar;
     m_progressdia = dialpar;
-    _depura ( "END BcPsThread::BcPsThread", 0 );
+    blDebug ( "END BcPsThread::BcPsThread", 0 );
 }
 
 
@@ -234,7 +234,7 @@ BcPsThread::BcPsThread ( QString pdfnamepar, QString tempnamepar, QProgressDialo
 **/
 void BcPsThread::run()
 {
-    _depura ( "BcPsThread::run", 0 );
+    blDebug ( "BcPsThread::run", 0 );
     QTextStream m_output;
     QString command;
     /// Lo borro para asegurarme de que Acrobat no me pregunte "overwrite?".
@@ -311,7 +311,7 @@ void BcPsThread::run()
     command = "kill $(ps aux|grep 'Xvfb :5.0'|grep -v grep|awk '{print $2}')";
     system ( command.toAscii().constData() );
 //    cout << "Se acabo!!\n";
-    _depura ( "END BcPsThread::run", 0 );
+    blDebug ( "END BcPsThread::run", 0 );
 }
 
 
@@ -327,8 +327,8 @@ void BcPsThread::run()
 BcPsProgressDialog::BcPsProgressDialog ( QString etiqueta, QString btcancelar, int minimo, int maximo, QWidget *widget, Qt::WFlags bandera )
         : QProgressDialog ( etiqueta, btcancelar, minimo, maximo, widget, bandera )
 {
-    _depura ( "BcPsProgressDialog::BcPsProgressDialog", 0 );
-    _depura ( "END BcPsProgressDialog::BcPsProgressDialog", 0 );
+    blDebug ( "BcPsProgressDialog::BcPsProgressDialog", 0 );
+    blDebug ( "END BcPsProgressDialog::BcPsProgressDialog", 0 );
 }
 
 /*

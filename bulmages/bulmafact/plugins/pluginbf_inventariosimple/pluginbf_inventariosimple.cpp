@@ -34,8 +34,8 @@
 **/
 myplugininvsimple::myplugininvsimple()
 {
-    _depura ( "myplugininvsimple::myplugininvsimple", 0 );
-    _depura ( "END myplugininvsimple::myplugininvsimple", 0 );
+    blDebug ( "myplugininvsimple::myplugininvsimple", 0 );
+    blDebug ( "END myplugininvsimple::myplugininvsimple", 0 );
 }
 
 
@@ -44,8 +44,8 @@ myplugininvsimple::myplugininvsimple()
 **/
 myplugininvsimple::~myplugininvsimple()
 {
-    _depura ( "myplugininvsimple::~myplugininvsimple", 0 );
-    _depura ( "END myplugininvsimple::~myplugininvsimple", 0 );
+    blDebug ( "myplugininvsimple::~myplugininvsimple", 0 );
+    blDebug ( "END myplugininvsimple::~myplugininvsimple", 0 );
 }
 
 
@@ -54,13 +54,13 @@ myplugininvsimple::~myplugininvsimple()
 **/
 void myplugininvsimple::elslot()
 {
-    _depura ( "myplugininvsimple::elslot", 0 );
+    blDebug ( "myplugininvsimple::elslot", 0 );
 
     ListInventarioSimpleView *tar = new ListInventarioSimpleView ( ( BfCompany * ) mainCompany(), NULL );
     mainCompany() ->m_pWorkspace->addWindow ( tar );
     tar->show();
 
-    _depura ( "END myplugininvsimple::elslot", 0 );
+    blDebug ( "END myplugininvsimple::elslot", 0 );
 }
 
 
@@ -70,7 +70,7 @@ void myplugininvsimple::elslot()
 **/
 void myplugininvsimple::inicializa ( BfBulmaFact *bges )
 {
-    _depura ( "myplugininvsimple::inicializa", 0 );
+    blDebug ( "myplugininvsimple::inicializa", 0 );
     /// El men&uacute; de Tarifas en la secci&oacute;n de art&iacute;culos.
     m_bges = bges;
     setMainCompany ( bges->company() );
@@ -86,7 +86,7 @@ void myplugininvsimple::inicializa ( BfBulmaFact *bges )
 
     pPluginMenu->addAction ( planCuentas );
     connect ( planCuentas, SIGNAL ( activated() ), this, SLOT ( elslot() ) );
-    _depura ( "END myplugininvsimple::inicializa", 0 );
+    blDebug ( "END myplugininvsimple::inicializa", 0 );
 }
 
 
@@ -97,7 +97,7 @@ void myplugininvsimple::inicializa ( BfBulmaFact *bges )
 **/
 int entryPoint ( BfBulmaFact *bges )
 {
-    _depura ( "Punto de Entrada del plugin de Inventario Simple\n", 0 );
+    blDebug ( "Punto de Entrada del plugin de Inventario Simple\n", 0 );
 
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale ( LC_ALL, "" );
@@ -109,7 +109,7 @@ int entryPoint ( BfBulmaFact *bges )
 }
 
 int ActividadView_ActividadView(ActividadView *act) {
-  _depura("pluginbf_inventariosimple::ActividadView_ActividadView", 0);
+  blDebug("pluginbf_inventariosimple::ActividadView_ActividadView", 0);
 
     /// Agregamos el subformulario de validaciones.
     BfSubForm *l = new BfSubForm ( act );
@@ -130,7 +130,7 @@ int ActividadView_ActividadView(ActividadView *act) {
 
     act->mui_tab->addTab ( l, "Material" );
     l->cargar("SELECT * FROM prestamo NATURAL LEFT JOIN inventariosimple WHERE idprestamo IS NULL");
-    _depura("END pluginbf_inventariosimple::ActividadView_ActividadView", 0);
+    blDebug("END pluginbf_inventariosimple::ActividadView_ActividadView", 0);
     return 0;
 }
 
@@ -145,7 +145,7 @@ int ActividadView_ActividadView(ActividadView *act) {
 **/
 int BlForm_guardar_Post ( BlForm *art )
 {
-    _depura ( "pluginbf_inventariosimple::BlForm_guardar_Post", 0 );
+    blDebug ( "pluginbf_inventariosimple::BlForm_guardar_Post", 0 );
     try {
 
         BfSubForm *l = art->findChild<BfSubForm *> ( "prestamo" );
@@ -154,10 +154,10 @@ int BlForm_guardar_Post ( BlForm *art )
           l->guardar();
         } // end if
 
-       _depura ( "END pluginbf_inventariosimple::BlForm_guardar_Post", 0 );
+       blDebug ( "END pluginbf_inventariosimple::BlForm_guardar_Post", 0 );
         return 0;
     } catch ( ... ) {
-        _depura ( "Hubo un error al guardar los vencimientos", 2 );
+        blDebug ( "Hubo un error al guardar los vencimientos", 2 );
         return 0;
     } // end try
 }
@@ -171,7 +171,7 @@ int BlForm_guardar_Post ( BlForm *art )
 **/
 int BlForm_cargar ( BlForm *art )
 {
-    _depura ( "pluginbf_inventariosimple::BlForm_cargar", 0 );
+    blDebug ( "pluginbf_inventariosimple::BlForm_cargar", 0 );
     try {
 
         BfSubForm *l = art->findChild<BfSubForm *> ( "prestamo" );
@@ -179,10 +179,10 @@ int BlForm_cargar ( BlForm *art )
           l->cargar("SELECT * FROM prestamo LEFT JOIN inventariosimple ON prestamo.idinventariosimple = inventariosimple.idinventariosimple WHERE idactividad = " + art->dbValue("idactividad"));
         } // end if
 
-       _depura ( "END pluginbf_inventariosimple::BlForm_cargar", 0 );
+       blDebug ( "END pluginbf_inventariosimple::BlForm_cargar", 0 );
         return 0;
     } catch ( ... ) {
-        _depura ( "Hubo un error al guardar los vencimientos", 2 );
+        blDebug ( "Hubo un error al guardar los vencimientos", 2 );
         return 0;
     } // end try
 }
@@ -193,10 +193,10 @@ int BlForm_cargar ( BlForm *art )
 
 int BfSubForm_pressedAsterisk ( BfSubForm *sub )
 {
-    _depura ( "BfSubForm_pressedAsterisk" );
+    blDebug ( "BfSubForm_pressedAsterisk" );
 
     if ( sub->m_campoactual->nomcampo() != "nominventariosimple" ) {
-        _depura ( "END BfSubForm::pressedAsterisk", 0 );
+        blDebug ( "END BfSubForm::pressedAsterisk", 0 );
         return 0;
     } // end if
 
@@ -228,7 +228,7 @@ int BfSubForm_pressedAsterisk ( BfSubForm *sub )
     delete list;
 
     if ( idinv == "" ) {
-        _depura ( "END BfSubForm_pressedAsterisk" );
+        blDebug ( "END BfSubForm_pressedAsterisk" );
         return 0;
     } // end if
 
@@ -260,7 +260,7 @@ int BfSubForm_pressedAsterisk ( BfSubForm *sub )
 
     /// Si no tenemos un idarticulo salimos ya que significa que no se ha seleccionado ninguno.
     if ( idAlumno == "" ) {
-        _depura ( "END BfSubForm::pressedAsterisk", 0 );
+        blDebug ( "END BfSubForm::pressedAsterisk", 0 );
         return 0;
     } // end if
 
@@ -272,7 +272,7 @@ int BfSubForm_pressedAsterisk ( BfSubForm *sub )
     
     delete cur;
 */    
-    _depura ( "END BfSubForm_pressedAsterisk" );
+    blDebug ( "END BfSubForm_pressedAsterisk" );
 
     return 0;
 }

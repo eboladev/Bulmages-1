@@ -33,11 +33,11 @@
 **/
 BcBalanceImportarXML::BcBalanceImportarXML ( BcCompany *emp ) : QXmlDefaultHandler(), BlMainCompanyPointer ( emp )
 {
-    _depura ( "BcBalanceImportarXML::BcBalanceImportarXML", 0 );
+    blDebug ( "BcBalanceImportarXML::BcBalanceImportarXML", 0 );
     m_tag = "";
     m_data = "";
     m_paso = 0;
-    _depura ( "END BcBalanceImportarXML::BcBalanceImportarXML", 0 );
+    blDebug ( "END BcBalanceImportarXML::BcBalanceImportarXML", 0 );
 }
 
 
@@ -57,13 +57,13 @@ void BcBalanceImportarXML::cambiapaso()
 **/
 bool BcBalanceImportarXML::startElement ( const QString &a, const QString &b, const QString &c, const QXmlAttributes &d )
 {
-    _depura ( "BcBalanceImportarXML::startElement", 0 );
+    blDebug ( "BcBalanceImportarXML::startElement", 0 );
     if ( m_paso == 0 ) {
         return startElement1 ( a, b, c, d );
     } else {
         return startElement2 ( a, b, c, d );
     } // end if
-    _depura ( "END BcBalanceImportarXML::startElement", 0 );
+    blDebug ( "END BcBalanceImportarXML::startElement", 0 );
 }
 
 /// Dependiendo del paso en que nos encontremos hace la llamada a una funcion u a otra.
@@ -75,13 +75,13 @@ bool BcBalanceImportarXML::startElement ( const QString &a, const QString &b, co
 **/
 bool BcBalanceImportarXML::endElement ( const QString &a, const QString &b, const QString &c )
 {
-    _depura ( "BcBalanceImportarXML::endlement", 0 );
+    blDebug ( "BcBalanceImportarXML::endlement", 0 );
     if ( m_paso == 0 ) {
         return endElement1 ( a, b, c );
     } else {
         return endElement2 ( a, b, c );
     } // end if
-    _depura ( "END BcBalanceImportarXML::startElement", 0 );
+    blDebug ( "END BcBalanceImportarXML::startElement", 0 );
 }
 
 
@@ -95,7 +95,7 @@ bool BcBalanceImportarXML::endElement ( const QString &a, const QString &b, cons
     \return TRUE para no detener la ejecucion del parser en caso de error. */
 bool BcBalanceImportarXML::startElement1 ( const QString&, const QString&, const QString& qName, const QXmlAttributes& )
 {
-    _depura ( "BcBalanceImportarXML::startElement1", 0 );
+    blDebug ( "BcBalanceImportarXML::startElement1", 0 );
     m_tag = qName;
     QString SQLQuery;
     if ( m_tag == "balance" ) {
@@ -122,7 +122,7 @@ bool BcBalanceImportarXML::startElement1 ( const QString&, const QString&, const
         } // end if
         delete cur;
     } // end if
-    _depura ( "END BcBalanceImportarXML::startElement1", 0 );
+    blDebug ( "END BcBalanceImportarXML::startElement1", 0 );
     return TRUE;
 }
 
@@ -140,7 +140,7 @@ bool BcBalanceImportarXML::startElement1 ( const QString&, const QString&, const
     \return TRUE para no detener la ejecucion del parser SAX. */
 bool BcBalanceImportarXML::endElement1 ( const QString&, const QString&, const QString& qName )
 {
-    _depura ( "BcBalanceImportarXML::endElement1", 0 );
+    blDebug ( "BcBalanceImportarXML::endElement1", 0 );
     m_tag = qName;
     QString SQLQuery;
     if ( qName == "balance" ) {
@@ -190,7 +190,7 @@ bool BcBalanceImportarXML::endElement1 ( const QString&, const QString&, const Q
     } // end if
     m_tag = "";
     m_data = "";
-    _depura ( "END BcBalanceImportarXML::endElement1", 0 );
+    blDebug ( "END BcBalanceImportarXML::endElement1", 0 );
     return TRUE;
 }
 
@@ -202,9 +202,9 @@ bool BcBalanceImportarXML::endElement1 ( const QString&, const QString&, const Q
     \return TRUE para no detener la ejecuci&oacute;n del algoritmo. */
 bool BcBalanceImportarXML::startElement2 ( const QString&, const QString&, const QString &qName, const QXmlAttributes& )
 {
-    _depura ( "BcBalanceImportarXML::startElement2", 0 );
+    blDebug ( "BcBalanceImportarXML::startElement2", 0 );
     m_tag = qName;
-    _depura ( "END BcBalanceImportarXML::startElement2", 0 );
+    blDebug ( "END BcBalanceImportarXML::startElement2", 0 );
     return TRUE;
 }
 
@@ -217,7 +217,7 @@ bool BcBalanceImportarXML::startElement2 ( const QString&, const QString&, const
     \return TRUE para no detener nunca la ejecucion del algoritmo.  */
 bool BcBalanceImportarXML::endElement2 ( const QString&, const QString&, const QString &qName )
 {
-    _depura ( "BcBalanceImportarXML::endElement2", 0 );
+    blDebug ( "BcBalanceImportarXML::endElement2", 0 );
     m_tag = qName;
     QString SQLQuery;
     /// En el segundo paso se hacen las inserciones por el flanco de final en lugar de por
@@ -313,7 +313,7 @@ bool BcBalanceImportarXML::endElement2 ( const QString&, const QString&, const Q
     } // end if
     m_tag = "";
     m_data = "";
-    _depura ( "END BcBalanceImportarXML::endElement2", 0 );
+    blDebug ( "END BcBalanceImportarXML::endElement2", 0 );
     return TRUE;
 }
 
@@ -325,12 +325,12 @@ bool BcBalanceImportarXML::endElement2 ( const QString&, const QString&, const Q
     \return TRUE porque no nos interesa abortar la ejecucion del algoritmo. */
 bool BcBalanceImportarXML::characters ( const QString& ch )
 {
-    _depura ( "BcBalanceImportarXML::characters", 0 );
+    blDebug ( "BcBalanceImportarXML::characters", 0 );
     if ( m_tag != "" ) {
         m_data = ch;
         m_tvalores[m_tag] = m_data;
     } // end if
-    _depura ( "END BcBalanceImportarXML::characters", 0 );
+    blDebug ( "END BcBalanceImportarXML::characters", 0 );
     return TRUE;
 }
 

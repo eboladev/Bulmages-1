@@ -39,7 +39,7 @@
 **/
 EmailThunderbirdQToolButton::EmailThunderbirdQToolButton ( PresupuestoView *pres, PedidoClienteView *ped, AlbaranClienteView *alb, FacturaView *fac , QWidget *parent ) : QToolButton ( parent )
 {
-    _depura ( "EmailThunderbirdQToolButton::EmailThunderbirdQToolButton", 0 );
+    blDebug ( "EmailThunderbirdQToolButton::EmailThunderbirdQToolButton", 0 );
 
     m_presupuestoView = pres;
     m_pedidoClienteView = ped;
@@ -48,7 +48,7 @@ EmailThunderbirdQToolButton::EmailThunderbirdQToolButton ( PresupuestoView *pres
 
     setBoton();
 
-    _depura ( "END EmailThunderbirdQToolButton::EmailThunderbirdQToolButton", 0 );
+    blDebug ( "END EmailThunderbirdQToolButton::EmailThunderbirdQToolButton", 0 );
 }
 
 ///
@@ -56,8 +56,8 @@ EmailThunderbirdQToolButton::EmailThunderbirdQToolButton ( PresupuestoView *pres
 **/
 EmailThunderbirdQToolButton::~EmailThunderbirdQToolButton()
 {
-    _depura ( "EmailThunderbirdQToolButton::~EmailThunderbirdQToolButton", 0 );
-    _depura ( "END EmailThunderbirdQToolButton::~EmailThunderbirdQToolButton", 0 );
+    blDebug ( "EmailThunderbirdQToolButton::~EmailThunderbirdQToolButton", 0 );
+    blDebug ( "END EmailThunderbirdQToolButton::~EmailThunderbirdQToolButton", 0 );
 }
 
 ///
@@ -65,7 +65,7 @@ EmailThunderbirdQToolButton::~EmailThunderbirdQToolButton()
 **/
 void EmailThunderbirdQToolButton::setBoton()
 {
-    _depura ( "EmailThunderbirdQToolButton::setBoton", 0 );
+    blDebug ( "EmailThunderbirdQToolButton::setBoton", 0 );
 
     connect ( this, SIGNAL ( clicked() ), this, SLOT ( click() ) );
 
@@ -77,7 +77,7 @@ void EmailThunderbirdQToolButton::setBoton()
     setIcon ( QIcon ( g_confpr->valor ( CONF_PROGDATA ) + "icons/icon_mozilla-thunderbird.xpm"  ) );
     setIconSize ( QSize ( 22, 22 ) );
 
-    _depura ( "END EmailThunderbirdQToolButton::setBoton", 0 );
+    blDebug ( "END EmailThunderbirdQToolButton::setBoton", 0 );
 }
 
 ///
@@ -85,7 +85,7 @@ void EmailThunderbirdQToolButton::setBoton()
 **/
 void EmailThunderbirdQToolButton::click()
 {
-    _depura ( "EmailThunderbirdQToolButton::click", 0 );
+    blDebug ( "EmailThunderbirdQToolButton::click", 0 );
 
     if ( m_presupuestoView != NULL ) {
     
@@ -232,5 +232,5 @@ void EmailThunderbirdQToolButton::click()
         } // end if
     } // end if
 
-    _depura ( "END EmailThunderbirdQToolButton::click", 0 );
+    blDebug ( "END EmailThunderbirdQToolButton::click", 0 );
 }

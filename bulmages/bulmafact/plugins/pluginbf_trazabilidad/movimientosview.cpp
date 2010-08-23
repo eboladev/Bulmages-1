@@ -50,7 +50,7 @@
 MovimientosView::MovimientosView ( BfCompany *comp, QWidget *parent, edmode editmodo )
         : BfForm ( comp, parent, 0 )
 {
-    _depura ( "MovimientosView::MovimientosView", 0 );
+    blDebug ( "MovimientosView::MovimientosView", 0 );
     setAttribute ( Qt::WA_DeleteOnClose );
     setupUi ( this );
     iniciaForm();
@@ -70,7 +70,7 @@ MovimientosView::MovimientosView ( BfCompany *comp, QWidget *parent, edmode edit
         meteWindow ( windowTitle(), this );
     } // end if
     hideBusqueda();
-    _depura ( "END MovimientosView::MovimientosView", 0 );
+    blDebug ( "END MovimientosView::MovimientosView", 0 );
 }
 
 
@@ -80,7 +80,7 @@ MovimientosView::MovimientosView ( BfCompany *comp, QWidget *parent, edmode edit
 **/
 void MovimientosView::iniciaForm()
 {
-    _depura ( "MovimientosView::iniciaForm" );
+    blDebug ( "MovimientosView::iniciaForm" );
     /// Disparamos los plugins.
     int res = g_plugins->lanza ( "MovimientosView_MovimientosView", this );
     if ( res != 0 )
@@ -88,7 +88,7 @@ void MovimientosView::iniciaForm()
     mui_procesada->insertItem ( 0, _ ( "Todas las facturas" ) );
     mui_procesada->insertItem ( 1, _ ( "Facturas procesadas" ) );
     mui_procesada->insertItem ( 2, _ ( "Facturas no procesadas" ) );
-    _depura ( "END MovimientosView::iniciaForm" );
+    blDebug ( "END MovimientosView::iniciaForm" );
 }
 
 
@@ -99,9 +99,9 @@ void MovimientosView::iniciaForm()
 **/
 MovimientosView::~MovimientosView()
 {
-    _depura ( "MovimientosView::~MovimientosView", 0 );
+    blDebug ( "MovimientosView::~MovimientosView", 0 );
     mainCompany() ->sacaWindow ( this );
-    _depura ( "END MovimientosView::~MovimientosView", 0 );
+    blDebug ( "END MovimientosView::~MovimientosView", 0 );
 }
 
 
@@ -111,11 +111,11 @@ MovimientosView::~MovimientosView()
 **/
 void MovimientosView::presenta()
 {
-    _depura ( "MovimientosView::presenta", 0 );
+    blDebug ( "MovimientosView::presenta", 0 );
 
     mui_list->cargar ( "SELECT * FROM movimiento LEFT JOIN articulo ON movimiento.idarticulo=articulo.idarticulo LEFT JOIN almacen ON movimiento.idalmacen = almacen.idalmacen ORDER BY idmovimiento" );
 
-    _depura ( "END MovimientosView::presenta", 0 );
+    blDebug ( "END MovimientosView::presenta", 0 );
 }
 
 
@@ -126,11 +126,11 @@ void MovimientosView::presenta()
 **/
 QString MovimientosView::generaFiltro()
 {
-    _depura ( "MovimientosView::generaFiltro", 0 );
+    blDebug ( "MovimientosView::generaFiltro", 0 );
     /// Tratamiento de los filtros.
     QString filtro = "";
 
-    _depura ( "END MovimientosView::generaFiltro", 0 );
+    blDebug ( "END MovimientosView::generaFiltro", 0 );
     return ( filtro );
 }
 
@@ -145,9 +145,9 @@ QString MovimientosView::generaFiltro()
 **/
 void MovimientosView::on_mui_imprimir_clicked()
 {
-    _depura ( "MovimientosView::on_mui_imprimir_clicked", 0 );
+    blDebug ( "MovimientosView::on_mui_imprimir_clicked", 0 );
     mui_list->imprimirPDF ( _ ( "Facturas a clientes" ) );
-    _depura ( "MovimientosView::on_mui_imprimir_clicked", 0 );
+    blDebug ( "MovimientosView::on_mui_imprimir_clicked", 0 );
 }
 
 
@@ -165,7 +165,7 @@ void MovimientosView::on_mui_imprimir_clicked()
 **/
 MovimientosSubform::MovimientosSubform ( QWidget *parent, const char * ) : BfSubForm ( parent )
 {
-    _depura ( "MovimientosSubform::MovimientosSubform", 0 );
+    blDebug ( "MovimientosSubform::MovimientosSubform", 0 );
     /// Disparamos los plugins.
     int res = g_plugins->lanza ( "MovimientosSubform_MovimientosSubform", this );
     if ( res != 0 )
@@ -188,6 +188,6 @@ MovimientosSubform::MovimientosSubform ( QWidget *parent, const char * ) : BfSub
     setInsert ( FALSE );
     setDelete ( FALSE );
     setSortingEnabled ( FALSE );
-    _depura ( "END MovimientosSubform::MovimientosSubform", 0 );
+    blDebug ( "END MovimientosSubform::MovimientosSubform", 0 );
 }
 

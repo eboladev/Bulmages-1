@@ -34,7 +34,7 @@
 **/
 int entryPoint ( BfBulmaFact * )
 {
-    _depura ( "Estoy dentro del plugin tickets", 0 );
+    blDebug ( "Estoy dentro del plugin tickets", 0 );
 
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale ( LC_ALL, "" );
@@ -48,26 +48,26 @@ int entryPoint ( BfBulmaFact * )
 
 /*
 int PresupuestoView_PresupuestoView(PresupuestoView *l) {
-       _depura("PresupuestoView_PresupuestoView", 0);
+       blDebug("PresupuestoView_PresupuestoView", 0);
        TicketQToolButton *mui_exporta_efactura2 = new TicketQToolButton(l, NULL, NULL,  NULL, l->mui_plugbotones);
        QHBoxLayout *m_hboxLayout1 = new QHBoxLayout(l->mui_plugbotones);
        m_hboxLayout1->setSpacing(5);
        m_hboxLayout1->setMargin(5);
        m_hboxLayout1->setObjectName(QString::fromUtf8("hboxLayout1"));
        m_hboxLayout1->addWidget(mui_exporta_efactura2);
-       _depura("END PresupuestoView_PresupuestoView", 0);
+       blDebug("END PresupuestoView_PresupuestoView", 0);
        return 0;
 }
 
 int PedidoClienteView_PedidoClienteView(PedidoClienteView *l) {
-       _depura("PedidoClienteView_PedidoClienteView", 0);
+       blDebug("PedidoClienteView_PedidoClienteView", 0);
        TicketQToolButton *mui_exporta_efactura2 = new TicketQToolButton(NULL, l, NULL, NULL, l->mui_plugbotones);
        QHBoxLayout *m_hboxLayout1 = new QHBoxLayout(l->mui_plugbotones);
        m_hboxLayout1->setSpacing(5);
        m_hboxLayout1->setMargin(5);
        m_hboxLayout1->setObjectName(QString::fromUtf8("hboxLayout1"));
        m_hboxLayout1->addWidget(mui_exporta_efactura2);
-       _depura("END PedidoClienteView_PedidoClienteView", 0);
+       blDebug("END PedidoClienteView_PedidoClienteView", 0);
        return 0;
 }
 */
@@ -80,7 +80,7 @@ int PedidoClienteView_PedidoClienteView(PedidoClienteView *l) {
 **/
 int AlbaranClienteView_AlbaranClienteView ( AlbaranClienteView *l )
 {
-    _depura ( "AlbaranClienteView_AlbaranClienteView", 0 );
+    blDebug ( "AlbaranClienteView_AlbaranClienteView", 0 );
 //================================
     TicketQToolButton *mui_exporta_efactura2 = new TicketQToolButton ( NULL, NULL, l, NULL, l->mui_plugbotones );
 
@@ -93,7 +93,7 @@ int AlbaranClienteView_AlbaranClienteView ( AlbaranClienteView *l )
     } // end if
     m_hboxLayout1->addWidget ( mui_exporta_efactura2 );
 //================================
-    _depura ( "END AlbaranClienteView_AlbaranClienteView", 0 );
+    blDebug ( "END AlbaranClienteView_AlbaranClienteView", 0 );
     return 0;
 }
 
@@ -105,7 +105,7 @@ int AlbaranClienteView_AlbaranClienteView ( AlbaranClienteView *l )
 **/
 int FacturaView_FacturaView ( FacturaView *l )
 {
-    _depura ( "FacturaView_FacturaView", 0 );
+    blDebug ( "FacturaView_FacturaView", 0 );
 //================================
     TicketQToolButton *mui_exporta_efactura2 = new TicketQToolButton ( NULL, NULL, NULL, l, l->mui_plugbotones );
 
@@ -118,6 +118,6 @@ int FacturaView_FacturaView ( FacturaView *l )
     } // end if
     m_hboxLayout1->addWidget ( mui_exporta_efactura2 );
 //================================
-    _depura ( "END FacturaView_FacturaView", 0 );
+    blDebug ( "END FacturaView_FacturaView", 0 );
     return 0;
 }

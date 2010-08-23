@@ -37,7 +37,7 @@
 
 ClientSync::ClientSync ( BtCompany *emp, QWidget *parent ) : BlWidget ( emp, parent )
 {
-    _depura ( "ClientSync::ClientSync", 0 );
+    blDebug ( "ClientSync::ClientSync", 0 );
     setupUi ( this );
     setFocusPolicy ( Qt::NoFocus );
     emp->pWorkspace()->addWindow ( this );
@@ -55,19 +55,19 @@ ClientSync::ClientSync ( BtCompany *emp, QWidget *parent ) : BlWidget ( emp, par
     connect (m_socket, SIGNAL(readChannelFinished()), this, SLOT(readChannelFinished()));
 
     g_plugins->lanza ( "ClientSync_ClientSync_Post", this );
-    _depura ( "END ClientSync::ClientSync", 0 );
+    blDebug ( "END ClientSync::ClientSync", 0 );
 }
 
 ClientSync::~ClientSync()
 {
-    _depura ( "ClientSync::~ClientSync", 0 );
-    _depura ( "END ClientSync::~ClientSync", 0 );
+    blDebug ( "ClientSync::~ClientSync", 0 );
+    blDebug ( "END ClientSync::~ClientSync", 0 );
 }
 
 
 
 void ClientSync::readyRead() {
-    _depura ( "ClientSync::readyRead", 0 );
+    blDebug ( "ClientSync::readyRead", 0 );
 
     QTcpSocket *socket = (QTcpSocket *) sender();
     static QByteArray array="";
@@ -83,21 +83,21 @@ void ClientSync::readyRead() {
 	array = "";
     }// end while
     mui_plainText->appendPlainText(mensaje);    
-    _depura ( "END ClientSync::readyRead", 0 );
+    blDebug ( "END ClientSync::readyRead", 0 );
 }
 
 void ClientSync::readChannelFinished() {
-    _depura ( "ClientSync::readyRead", 0 );
+    blDebug ( "ClientSync::readyRead", 0 );
     QTcpSocket *socket = (QTcpSocket *) sender();
     QString mensaje = "Fin de la comunicacion: "+ socket->peerAddress().toString() + "\n";
     mui_plainText->appendPlainText(mensaje);
     mensajeInfo("Error de comunicacion con el servidor");
-    _depura ( "END ClientSync::readyRead", 0 );
+    blDebug ( "END ClientSync::readyRead", 0 );
 }
 
 void ClientSync::send(const QString & texto) {
-    _depura ( "ClientSync::send", 0 );
+    blDebug ( "ClientSync::send", 0 );
     m_socket->write(texto.toLatin1());
     mui_plainText->appendPlainText("Enviando mensaje a:" + m_socket->peerAddress().toString() + "\n" );  
-    _depura ( "END ClientSync::send", 0 );
+    blDebug ( "END ClientSync::send", 0 );
 }

@@ -29,8 +29,8 @@
 **/
 mypluginbf::mypluginbf() : QObject()
 {
-    _depura ( "mypluginbf::mypluginbf", 0 );
-    _depura ( "END mypluginbf::mypluginbf", 0 );
+    blDebug ( "mypluginbf::mypluginbf", 0 );
+    blDebug ( "END mypluginbf::mypluginbf", 0 );
 }
 
 
@@ -39,8 +39,8 @@ mypluginbf::mypluginbf() : QObject()
 **/
 mypluginbf::~mypluginbf()
 {
-    _depura ( "mypluginbf::~mypluginbf", 0 );
-    _depura ( "END mypluginbf::~mypluginbf", 0 );
+    blDebug ( "mypluginbf::~mypluginbf", 0 );
+    blDebug ( "END mypluginbf::~mypluginbf", 0 );
 }
 
 
@@ -49,11 +49,11 @@ mypluginbf::~mypluginbf()
 **/
 void mypluginbf::elslot()
 {
-    _depura ( "mypluginbf::elslot", 0 );
+    blDebug ( "mypluginbf::elslot", 0 );
     RutaComercialList *list  = new RutaComercialList ( ( BfCompany * ) mainCompany(), NULL );
     mainCompany() ->m_pWorkspace->addWindow ( list );
     list->show();
-    _depura ( "END mypluginbf::elslot", 0 );
+    blDebug ( "END mypluginbf::elslot", 0 );
 }
 
 
@@ -62,11 +62,11 @@ void mypluginbf::elslot()
 **/
 void mypluginbf::elslot1()
 {
-    _depura ( "mypluginbf::elslot1", 0 );
+    blDebug ( "mypluginbf::elslot1", 0 );
     ListZonaComercialView *list = new ListZonaComercialView ( ( BfCompany * ) mainCompany(), NULL );
     mainCompany() ->m_pWorkspace->addWindow ( list );
     list->show();
-    _depura ( "END mypluginbf::elslot1", 0 );
+    blDebug ( "END mypluginbf::elslot1", 0 );
 }
 
 
@@ -76,7 +76,7 @@ void mypluginbf::elslot1()
 **/
 void mypluginbf::inicializa ( BfBulmaFact *bges )
 {
-    _depura ( "mypluginbf::inicializa", 0 );
+    blDebug ( "mypluginbf::inicializa", 0 );
     /// El men&uacute; de empresa.
     m_bges = bges;
     /// Cogemos la 'company' para tener acceso a todo y sobretodo a BD.
@@ -95,6 +95,6 @@ void mypluginbf::inicializa ( BfBulmaFact *bges )
     planCuentas->setWhatsThis ( _ ( "Rutas comerciales" ) );
     bges->menuMaestro->addAction ( planCuentas );
     connect ( planCuentas, SIGNAL ( activated() ), this, SLOT ( elslot() ) );
-    _depura ( "END mypluginbf::inicializa", 0 );
+    blDebug ( "END mypluginbf::inicializa", 0 );
 }
 

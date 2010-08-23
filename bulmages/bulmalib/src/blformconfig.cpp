@@ -31,7 +31,7 @@
 **/
 BlFormConfig::BlFormConfig ( BlMainCompany *emp, BlForm *parent, Qt::WFlags f ) : BlWidget ( emp, parent, f )
 {
-    _depura ( "BlFormConfig::BlFormConfig", 0 );
+    blDebug ( "BlFormConfig::BlFormConfig", 0 );
     setupUi ( this );
     setAttribute ( Qt::WA_DeleteOnClose );
     m_BlForm = parent;
@@ -103,7 +103,7 @@ BlFormConfig::BlFormConfig ( BlMainCompany *emp, BlForm *parent, Qt::WFlags f ) 
 
     mui_currentuser->setText ( cur->valor ( "current_user" ) );
     delete cur;
-    _depura ( "END BlFormConfig::BlFormConfig", 0 );
+    blDebug ( "END BlFormConfig::BlFormConfig", 0 );
 }
 
 
@@ -112,7 +112,7 @@ BlFormConfig::BlFormConfig ( BlMainCompany *emp, BlForm *parent, Qt::WFlags f ) 
 **/
 BlFormConfig::~BlFormConfig()
 {
-    _depura ( "BlFormConfig::~BlFormConfig", 0 );
-    _depura ( "END BlFormConfig::~BlFormConfig", 0 );
+    blDebug ( "BlFormConfig::~BlFormConfig", 0 );
+    blDebug ( "END BlFormConfig::~BlFormConfig", 0 );
 }
 

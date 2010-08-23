@@ -55,8 +55,8 @@ BlMainCompany *g_emp = NULL;
 /*
 MyPluginEmbedODS::MyPluginEmbedODS()
 {
-    _depura ( "MyPluginEmbedODS::MyPluginEmbedODS", 0 );
-    _depura ( "END MyPluginEmbedODS::MyPluginEmbedODS", 0 );
+    blDebug ( "MyPluginEmbedODS::MyPluginEmbedODS", 0 );
+    blDebug ( "END MyPluginEmbedODS::MyPluginEmbedODS", 0 );
 }
 */
 
@@ -68,8 +68,8 @@ MyPluginEmbedODS::MyPluginEmbedODS()
 /*
 MyPluginEmbedODS::~MyPluginEmbedODS()
 {
-    _depura ( "MyPluginEmbedODS::~MyPluginEmbedODS", 0 );
-    _depura ( "END MyPluginEmbedODS::~MyPluginEmbedODS", 0 );
+    blDebug ( "MyPluginEmbedODS::~MyPluginEmbedODS", 0 );
+    blDebug ( "END MyPluginEmbedODS::~MyPluginEmbedODS", 0 );
 }
 */
 
@@ -81,7 +81,7 @@ MyPluginEmbedODS::~MyPluginEmbedODS()
 
 void myplugincont::embedPYS( )
 {
-    _depura ( "MyPluginEmbedODS::elslot", 0 );
+    blDebug ( "MyPluginEmbedODS::elslot", 0 );
 
     BlForm *ficha = new BlForm ( g_emp, 0 );
 
@@ -146,7 +146,7 @@ void myplugincont::embedPYS( )
         container->show();
     } // end if
     
-    _depura ( "END MyPluginEmbedODS::elslot", 0 );
+    blDebug ( "END MyPluginEmbedODS::elslot", 0 );
 }
 
 
@@ -155,8 +155,8 @@ void myplugincont::embedPYS( )
 **/
 myplugincont::myplugincont()
 {
-    _depura ( "myplugincont::myplugincont", 0 );
-    _depura ( "END myplugincont::myplugincont", 0 );
+    blDebug ( "myplugincont::myplugincont", 0 );
+    blDebug ( "END myplugincont::myplugincont", 0 );
 }
 
 ///
@@ -164,8 +164,8 @@ myplugincont::myplugincont()
 **/
 myplugincont::~myplugincont()
 {
-    _depura ( "myplugincont::~myplugincont", 0 );
-    _depura ( "END myplugincont::~myplugincont", 0 );
+    blDebug ( "myplugincont::~myplugincont", 0 );
+    blDebug ( "END myplugincont::~myplugincont", 0 );
 }
 
 
@@ -174,7 +174,7 @@ myplugincont::~myplugincont()
 **/
 void myplugincont::elslot()
 {
-    _depura ( "myplugincont::elslot", 0 );
+    blDebug ( "myplugincont::elslot", 0 );
 
     /// Vamos a probar con un docwindow.
     BlDockWidget *doc1 = new BlDockWidget ( "Aplicacion Externa", g_main );
@@ -194,7 +194,7 @@ void myplugincont::elslot()
     container->embedClient ( winId.toInt() );
     doc1->setWidget ( container );
 
-    _depura ( "END myplugincont::elslot", 0 );
+    blDebug ( "END myplugincont::elslot", 0 );
 }
 
 ///
@@ -202,7 +202,7 @@ void myplugincont::elslot()
 **/
 void myplugincont::elslot1()
 {
-    _depura ( "myplugincont::elslot", 0 );
+    blDebug ( "myplugincont::elslot", 0 );
     QString winId = "";
     while ( winId == "" ) winId = windowID ( "" );
     BlWorkspace *work = g_bges ->findChild<BlWorkspace *> (  );
@@ -217,14 +217,14 @@ void myplugincont::elslot1()
         container->show();
     } // end if
 
-    _depura ( "END myplugincont::elslot", 0 );
+    blDebug ( "END myplugincont::elslot", 0 );
 }
 
 
 
 int entryPoint ( BlMainWindow *bges )
 {
-    _depura ( "Entrada del plugin Docket", 0 );
+    blDebug ( "Entrada del plugin Docket", 0 );
 
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale ( LC_ALL, "" );
@@ -254,7 +254,7 @@ int entryPoint ( BlMainWindow *bges )
     pPluginMenu->addAction ( accion );
     pPluginMenu->addAction ( accion1 );
 
-    _depura ( "Iniciado correctamente el plugin dock", 10 );
+    blDebug ( "Iniciado correctamente el plugin dock", 10 );
     return 0;
 }
 
@@ -381,7 +381,7 @@ int init67 (  )
         menu->addAction ( accion );
     } // end for
 
-    _depura ( "Iniciado correctamente el plugin", 10 );
+    blDebug ( "Iniciado correctamente el plugin", 10 );
     
 
     return 0;

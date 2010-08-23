@@ -31,13 +31,13 @@ ServerLight *g_sl = NULL;
 **/
 int entryPoint ( BtBulmaTPV *tpv )
 {
-    _depura ( "pluginbt_ServerLight::entryPoint", 0 );
+    blDebug ( "pluginbt_ServerLight::entryPoint", 0 );
 
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale(LC_ALL, "");
     bindtextdomain ("pluginbt_ServerLight", g_confpr->valor(CONF_DIR_TRADUCCION).toAscii().constData());
 
-    _depura ( "END pluginbt_ServerLight::entryPoint", 0 );
+    blDebug ( "END pluginbt_ServerLight::entryPoint", 0 );
     
     return 0;
 }
@@ -45,11 +45,11 @@ int entryPoint ( BtBulmaTPV *tpv )
 
 int BtCompany_createMainWindows_Post ( BtCompany *etpv )
 {
-    _depura ( "pluginbt_ServerLight::BtCompany_createMainWindows_Post", 0 );
+    blDebug ( "pluginbt_ServerLight::BtCompany_createMainWindows_Post", 0 );
 
     g_sl = new ServerLight ( etpv );
 
-    _depura ( "END pluginbt_ServerLight::BtCompany_createMainWindows_Post", 0 );
+    blDebug ( "END pluginbt_ServerLight::BtCompany_createMainWindows_Post", 0 );
 
     return 0;
 }

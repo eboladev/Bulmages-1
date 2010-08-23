@@ -38,8 +38,8 @@ RecibosList *g_recibosList = NULL;
 **/
 MyPlugProf::MyPlugProf()
 {
-    _depura ( "MyPlugProf::MyPlugProf", 0 );
-    _depura ( "END MyPlugProf::MyPlugProf", 0 );
+    blDebug ( "MyPlugProf::MyPlugProf", 0 );
+    blDebug ( "END MyPlugProf::MyPlugProf", 0 );
 }
 
 ///
@@ -47,8 +47,8 @@ MyPlugProf::MyPlugProf()
 **/
 MyPlugProf::~MyPlugProf()
 {
-    _depura ( "MyPlugProf::~MyPlugProf", 0 );
-    _depura ( "END MyPlugProf::~MyPlugProf", 0 );
+    blDebug ( "MyPlugProf::~MyPlugProf", 0 );
+    blDebug ( "END MyPlugProf::~MyPlugProf", 0 );
 }
 
 ///
@@ -56,14 +56,14 @@ MyPlugProf::~MyPlugProf()
 **/
 void MyPlugProf::elslot()
 {
-    _depura ( "MyPlugProf::elslot", 0 );
+    blDebug ( "MyPlugProf::elslot", 0 );
     
     if ( g_recibosList ) {
         g_recibosList->hide();
         g_recibosList->show();
     } // end if
     
-    _depura ( "END MyPlugProf::elslot", 0 );
+    blDebug ( "END MyPlugProf::elslot", 0 );
 }
 
 ///
@@ -71,13 +71,13 @@ void MyPlugProf::elslot()
 **/
 void MyPlugProf::elslot1()
 {
-    _depura ( "MyPlugProf::elslot1", 0 );
+    blDebug ( "MyPlugProf::elslot1", 0 );
     
     ReciboView * bud = new ReciboView ( ( BfCompany * ) mainCompany(), NULL );
     mainCompany() ->m_pWorkspace->addWindow ( bud );
     bud->show();
     
-    _depura ( "END MyPlugProf::elslot1", 0 );
+    blDebug ( "END MyPlugProf::elslot1", 0 );
 }
 
 
@@ -86,13 +86,13 @@ void MyPlugProf::elslot1()
 **/
 void MyPlugProf::elslot2()
 {
-    _depura ( "MyPlugProf::elslot2", 0 );
+    blDebug ( "MyPlugProf::elslot2", 0 );
     
     EmitirRecibosView * bud = new EmitirRecibosView ( ( BfCompany * ) mainCompany(), NULL );
     mainCompany() ->m_pWorkspace->addWindow ( bud );
     bud->show();
     
-    _depura ( "END MyPlugProf::elslot2", 0 );
+    blDebug ( "END MyPlugProf::elslot2", 0 );
 }
 
 ///
@@ -101,7 +101,7 @@ void MyPlugProf::elslot2()
 **/
 void MyPlugProf::inicializa ( BfBulmaFact *bges )
 {
-    _depura ( "MyPlugProf::inicializa", 0 );
+    blDebug ( "MyPlugProf::inicializa", 0 );
 
     if ( bges->company()->hasTablePrivilege ( "cobro", "SELECT" ) ) {
 
@@ -139,7 +139,7 @@ void MyPlugProf::inicializa ( BfBulmaFact *bges )
 
     } // end if
     
-    _depura ( "END MyPlugProf::inicializa", 0 );
+    blDebug ( "END MyPlugProf::inicializa", 0 );
 }
 
 ///
@@ -149,7 +149,7 @@ void MyPlugProf::inicializa ( BfBulmaFact *bges )
 **/
 int entryPoint ( BfBulmaFact *bges )
 {
-    _depura ( "Punto de entrada del plugin de recibos\n", 0 );
+    blDebug ( "Punto de entrada del plugin de recibos\n", 0 );
 
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale ( LC_ALL, "" );
@@ -181,7 +181,7 @@ int BfCompany_createMainWindows_Post ( BfCompany *comp )
 int ActividadView_ActividadView ( ActividadView *l )
 {
 
-    _depura ( "PluginRecibo_ActividadView_ActividadView", 0 );
+    blDebug ( "PluginRecibo_ActividadView_ActividadView", 0 );
 
     QToolButton *mui_generar_recibos = new QToolButton ( l->mui_plugbotones );
     mui_generar_recibos->setObjectName ( QString::fromUtf8 ( "genrecibo" ) );
@@ -208,7 +208,7 @@ int ActividadView_ActividadView ( ActividadView *l )
     p->m_actividad = l;
     m_hboxLayout1->addWidget ( mui_generar_recibos );
     p->connect(mui_generar_recibos, SIGNAL(released()), p, SLOT(elslot()));
-    _depura ( "END PluginRecibo_ActividadView_ActividadView", 0 );
+    blDebug ( "END PluginRecibo_ActividadView_ActividadView", 0 );
 
     return 0;
 }
@@ -223,8 +223,8 @@ int ActividadView_ActividadView ( ActividadView *l )
 **/
 MyPlugRecibo1::MyPlugRecibo1(BlMainCompany *comp) : BlMainCompanyPointer(comp)
 {
-    _depura ( "MyPlugRecibo1::MyPlugRecibo1", 0 );
-    _depura ( "END MyPlugRecibo1::MyPlugRecibo1", 0 );
+    blDebug ( "MyPlugRecibo1::MyPlugRecibo1", 0 );
+    blDebug ( "END MyPlugRecibo1::MyPlugRecibo1", 0 );
 }
 
 ///
@@ -232,8 +232,8 @@ MyPlugRecibo1::MyPlugRecibo1(BlMainCompany *comp) : BlMainCompanyPointer(comp)
 **/
 MyPlugRecibo1::~MyPlugRecibo1()
 {
-    _depura ( "MyPlugRecibo1::~MyPlugRecibo1", 0 );
-    _depura ( "END MyPlugRecibo1::~MyPlugRecibo1", 0 );
+    blDebug ( "MyPlugRecibo1::~MyPlugRecibo1", 0 );
+    blDebug ( "END MyPlugRecibo1::~MyPlugRecibo1", 0 );
 }
 
 ///
@@ -241,7 +241,7 @@ MyPlugRecibo1::~MyPlugRecibo1()
 **/
 void MyPlugRecibo1::elslot()
 {
-    _depura ( "MyPlugRecibo1::elslot", 0 );
+    blDebug ( "MyPlugRecibo1::elslot", 0 );
     
     EmitirRecibosView * bud = new EmitirRecibosView ( ( BfCompany * ) mainCompany(), NULL );
     mainCompany() ->m_pWorkspace->addWindow ( bud );
@@ -249,7 +249,7 @@ void MyPlugRecibo1::elslot()
     bud->mui_idactividad->setId(m_actividad->dbValue("idactividad"));
     bud->show();
     
-    _depura ( "END MyPlugRecibo1::elslot", 0 );
+    blDebug ( "END MyPlugRecibo1::elslot", 0 );
 }
 
 // ==========================

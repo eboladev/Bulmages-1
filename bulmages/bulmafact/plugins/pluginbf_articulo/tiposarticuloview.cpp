@@ -39,7 +39,7 @@
 TipoArticuloList::TipoArticuloList ( BfCompany *comp, QWidget *parent, bool modoConsulta )
         : BfForm ( comp, parent )
 {
-    _depura ( "TipoArticuloList::TipoArticuloList", 0 );
+    blDebug ( "TipoArticuloList::TipoArticuloList", 0 );
     setupUi ( this );
     m_listTipos->setColumnCount ( 3 );
     QStringList headers;
@@ -65,7 +65,7 @@ TipoArticuloList::TipoArticuloList ( BfCompany *comp, QWidget *parent, bool modo
         mainCompany()->meteWindow ( windowTitle(), this, FALSE );
     } // end if
     pintar();
-    _depura ( "END TipoArticuloList::TipoArticuloList", 0 );
+    blDebug ( "END TipoArticuloList::TipoArticuloList", 0 );
 }
 
 
@@ -74,8 +74,8 @@ TipoArticuloList::TipoArticuloList ( BfCompany *comp, QWidget *parent, bool modo
 **/
 TipoArticuloList::~TipoArticuloList()
 {
-    _depura ( "TipoArticuloList::~TipoArticuloList", 0 );
-    _depura ( "END TipoArticuloList::~TipoArticuloList", 0 );
+    blDebug ( "TipoArticuloList::~TipoArticuloList", 0 );
+    blDebug ( "END TipoArticuloList::~TipoArticuloList", 0 );
 }
 
 
@@ -84,9 +84,9 @@ TipoArticuloList::~TipoArticuloList()
 **/
 void TipoArticuloList::setModoConsulta()
 {
-    _depura ( "TipoArticuloList::setModoConsulta", 0 );
+    blDebug ( "TipoArticuloList::setModoConsulta", 0 );
     m_modoConsulta = TRUE;
-    _depura ( "TipoArticuloList::setModoConsulta", 0 );
+    blDebug ( "TipoArticuloList::setModoConsulta", 0 );
 }
 
 
@@ -95,9 +95,9 @@ void TipoArticuloList::setModoConsulta()
 **/
 void TipoArticuloList::setModoEdicion()
 {
-    _depura ( "TipoArticuloList::setModoEdicion", 0 );
+    blDebug ( "TipoArticuloList::setModoEdicion", 0 );
     m_modoConsulta = FALSE;
-    _depura ( "END TipoArticuloList::setModoEdicion", 0 );
+    blDebug ( "END TipoArticuloList::setModoEdicion", 0 );
 }
 
 
@@ -107,7 +107,7 @@ void TipoArticuloList::setModoEdicion()
 **/
 void TipoArticuloList::pintar()
 {
-    _depura ( "TipoArticuloList::pintar", 0 );
+    blDebug ( "TipoArticuloList::pintar", 0 );
     m_semaforoPintar = TRUE;
     BlDbRecordSet *cursoraux1 = NULL;
     try {
@@ -134,7 +134,7 @@ void TipoArticuloList::pintar()
         /// Comprobamos cual es la cadena inicial.
         dialogChanges_cargaInicial();
         m_semaforoPintar = FALSE;
-        _depura ( "END TipoArticuloList::pintar", 0 );
+        blDebug ( "END TipoArticuloList::pintar", 0 );
     } catch ( ... ) {
         mensajeInfo ( _ ( "Error en la carga" ) );
         if ( cursoraux1 ) delete cursoraux1;
@@ -148,14 +148,14 @@ void TipoArticuloList::pintar()
 **/
 QString TipoArticuloList::codtipo_articulo()
 {
-    _depura ( "TipoArticuloList::codtipo_articulo", 0 );
+    blDebug ( "TipoArticuloList::codtipo_articulo", 0 );
     QTreeWidgetItem *it = m_listTipos->currentItem();
     if ( it ) {
         return it->text ( COL_CODTIPOARTICULO );
     } else {
         return "";
     } // end if
-    _depura ( "END TipoArticuloList::codtipo_articulo", 0 );
+    blDebug ( "END TipoArticuloList::codtipo_articulo", 0 );
 }
 
 
@@ -165,14 +165,14 @@ QString TipoArticuloList::codtipo_articulo()
 **/
 QString TipoArticuloList::idtipo_articulo()
 {
-    _depura ( "TipoArticuloList::idtipo_articulo", 0 );
+    blDebug ( "TipoArticuloList::idtipo_articulo", 0 );
     QTreeWidgetItem *it = m_listTipos->currentItem();
     if ( it ) {
         return it->text ( COL_IDTIPOARTICULO );
     } else {
         return "";
     } // end if
-    _depura ( "TipoArticuloList::idtipo_articulo", 0 );
+    blDebug ( "TipoArticuloList::idtipo_articulo", 0 );
 }
 
 
@@ -182,14 +182,14 @@ QString TipoArticuloList::idtipo_articulo()
 **/
 QString TipoArticuloList::desctipo_articulo()
 {
-    _depura ( "TipoArticuloList::desctipo_articulo", 0 );
+    blDebug ( "TipoArticuloList::desctipo_articulo", 0 );
     QTreeWidgetItem *it = m_listTipos->currentItem();
     if ( it ) {
         return it->text ( COL_DESCTIPOARTICULO );
     } else {
         return "";
     } // end if
-    _depura ( "END TipoArticuloList::desctipo_articulo", 0 );
+    blDebug ( "END TipoArticuloList::desctipo_articulo", 0 );
 }
 
 
@@ -202,11 +202,11 @@ QString TipoArticuloList::desctipo_articulo()
 void TipoArticuloList::on_m_listTipos_itemDoubleClicked ( QTreeWidgetItem *item, int )
 {
     if ( m_modoConsulta ) {
-        _depura ( "TipoArticuloList::on_m_listTipos_itemDoubleClicked", 0 );
+        blDebug ( "TipoArticuloList::on_m_listTipos_itemDoubleClicked", 0 );
         m_idtipo = item->text ( COL_IDTIPOARTICULO );
         emit selected ( m_idtipo );
     } // end if
-    _depura ( "END TipoArticuloList::on_m_listTipos_itemDoubleClicked", 0 );
+    blDebug ( "END TipoArticuloList::on_m_listTipos_itemDoubleClicked", 0 );
 }
 
 
@@ -221,7 +221,7 @@ void TipoArticuloList::on_m_listTipos_currentItemChanged ( QTreeWidgetItem *curr
     if ( m_semaforoPintar ) return;
     m_semaforoPintar = TRUE;
 
-    _depura ( "TipoArticuloList::on_m_listTipos_currentItemChanged", 0 );
+    blDebug ( "TipoArticuloList::on_m_listTipos_currentItemChanged", 0 );
     /// Si estamos dentro del proceso de pintado salimos sin hacer nada ya que puede haber problemas.
     QString idtipoold = "";
     if ( previous ) {
@@ -240,7 +240,7 @@ void TipoArticuloList::on_m_listTipos_currentItemChanged ( QTreeWidgetItem *curr
         m_idtipo = "";
     } // end if
     mostrarplantilla();
-    _depura ( "END TipoArticuloList::on_m_listTipos_currentItemChanged", 0 );
+    blDebug ( "END TipoArticuloList::on_m_listTipos_currentItemChanged", 0 );
     m_semaforoPintar = FALSE;
 }
 
@@ -250,7 +250,7 @@ void TipoArticuloList::on_m_listTipos_currentItemChanged ( QTreeWidgetItem *curr
 **/
 void TipoArticuloList::mostrarplantilla()
 {
-    _depura ( "TipoArticuloList::mostrarplantilla", 0 );
+    blDebug ( "TipoArticuloList::mostrarplantilla", 0 );
     if ( !m_idtipo.isEmpty() ) {
         mui_codigotipo_articulo->setEnabled ( TRUE );
         mui_desctipo_articulo->setEnabled ( TRUE );
@@ -272,7 +272,7 @@ void TipoArticuloList::mostrarplantilla()
     } // end if
     /// Comprobamos cual es la cadena inicial.
     dialogChanges_cargaInicial();
-    _depura ( "END TipoArticuloList::mostrarplantilla", 0 );
+    blDebug ( "END TipoArticuloList::mostrarplantilla", 0 );
 }
 
 
@@ -283,7 +283,7 @@ void TipoArticuloList::mostrarplantilla()
 **/
 bool TipoArticuloList::trataModificado()
 {
-    _depura ( "TipoArticuloList::trataModificado", 0 );
+    blDebug ( "TipoArticuloList::trataModificado", 0 );
     /// Si se ha modificado el contenido advertimos y guardamos.
     if ( dialogChanges_hayCambios() ) {
         if ( QMessageBox::warning ( this,
@@ -292,7 +292,7 @@ bool TipoArticuloList::trataModificado()
                                     QMessageBox::Ok,
                                     QMessageBox::Cancel ) == QMessageBox::Ok )
             on_mui_guardar_clicked();
-        _depura ( "END TipoArticuloList::trataModificado", 0 );
+        blDebug ( "END TipoArticuloList::trataModificado", 0 );
         return TRUE;
     } // end if
     return FALSE;
@@ -347,7 +347,7 @@ int TipoArticuloList::guardar()
 **/
 void TipoArticuloList::on_mui_crear_clicked()
 {
-    _depura ( "TipoArticuloList::on_mui_crear_clicked", 0 );
+    blDebug ( "TipoArticuloList::on_mui_crear_clicked", 0 );
     BlDbRecordSet *cur = NULL;
     /// Si se ha modificado el contenido advertimos y guardamos.
     trataModificado();
@@ -361,7 +361,7 @@ void TipoArticuloList::on_mui_crear_clicked()
         m_idtipo = cur->valor ( "idtipo" );
         delete cur;
         pintar();
-        _depura ( "END TipoArticuloList::on_mui_crear_clicked", 0 );
+        blDebug ( "END TipoArticuloList::on_mui_crear_clicked", 0 );
     } catch ( ... ) {
         mensajeInfo ( _ ( "Error en la creacion" ) );
         mainCompany()->rollback();
@@ -377,7 +377,7 @@ void TipoArticuloList::on_mui_crear_clicked()
 **/
 void TipoArticuloList::on_mui_borrar_clicked()
 {
-    _depura ( "TipoArticuloList::on_mui_borrar_clicked", 0 );
+    blDebug ( "TipoArticuloList::on_mui_borrar_clicked", 0 );
 
 
     int val = QMessageBox::question ( this,
@@ -389,13 +389,13 @@ void TipoArticuloList::on_mui_borrar_clicked()
     if ( val == QMessageBox::Yes ) {
         if ( !borrar() ) {
             dialogChanges_cargaInicial();
-            _depura ( windowTitle() + " " + "borrado satisfactoriamente.", 10 );
+            blDebug ( windowTitle() + " " + "borrado satisfactoriamente.", 10 );
         } else {
             mensajeInfo ( windowTitle() + " " + _ ( "no se ha podido borrar" ) );
         } // end if
     } // end if
 
-    _depura ( "END TipoArticuloList::on_mui_borrar_clicked", 0 );
+    blDebug ( "END TipoArticuloList::on_mui_borrar_clicked", 0 );
 }
 
 
@@ -406,7 +406,7 @@ void TipoArticuloList::on_mui_borrar_clicked()
 **/
 int TipoArticuloList::borrar()
 {
-    _depura ( "TipoArticuloList::borrar", 0 );
+    blDebug ( "TipoArticuloList::borrar", 0 );
     if ( m_idtipo == "" ) {
         mensajeInfo ( _ ( "Debe seleccionar un tipo" ) );
         return -1;
@@ -420,7 +420,7 @@ int TipoArticuloList::borrar()
         m_idtipo = "";
         dialogChanges_cargaInicial();
         pintar();
-        _depura ( "END TipoArticuloList::borrar", 0 );
+        blDebug ( "END TipoArticuloList::borrar", 0 );
     } catch ( ... ) {
         mensajeInfo ( _ ( "Error al borrar la familia" ) );
         return -1;

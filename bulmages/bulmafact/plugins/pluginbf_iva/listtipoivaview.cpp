@@ -45,7 +45,7 @@
 ListTipoIVAView::ListTipoIVAView ( BfCompany *comp, QWidget *parent )
         : BfForm ( comp, parent )
 {
-    _depura ( "ListTipoIVAView::ListTipoIVAView", 1 );
+    blDebug ( "ListTipoIVAView::ListTipoIVAView", 1 );
     setTitleName ( _ ( "Tipo IVA" ) );
     setDbTableName ( "tipo_iva" );
     setAttribute ( Qt::WA_DeleteOnClose );
@@ -53,7 +53,7 @@ ListTipoIVAView::ListTipoIVAView ( BfCompany *comp, QWidget *parent )
     mui_listado->setMainCompany ( comp );
     mui_listado->cargar();
     meteWindow ( windowTitle(), this );
-    _depura ( "END ListTipoIVAView::ListTipoIVAView", 1 );
+    blDebug ( "END ListTipoIVAView::ListTipoIVAView", 1 );
 }
 
 
@@ -62,14 +62,14 @@ ListTipoIVAView::ListTipoIVAView ( BfCompany *comp, QWidget *parent )
 **/
 void ListTipoIVAView::on_mui_aceptar_clicked()
 {
-    _depura ( "ListTipoIVAView::on_mui_aceptar_clicked", 0 );
+    blDebug ( "ListTipoIVAView::on_mui_aceptar_clicked", 0 );
     try {
         mui_listado->guardar();
         close();
     } catch ( ... ) {
         mensajeInfo ( _ ( "Error al guardar los tipos de IVA" ) );
     } // end try
-    _depura ( "END ListTipoIVAView::on_mui_aceptar_clicked", 0 );
+    blDebug ( "END ListTipoIVAView::on_mui_aceptar_clicked", 0 );
 }
 
 
@@ -78,15 +78,15 @@ void ListTipoIVAView::on_mui_aceptar_clicked()
 **/
 ListTipoIVAView::~ListTipoIVAView()
 {
-    _depura ( "ListTipoIVAView::~ListTipoIVAView", 0 );
-    _depura ( "END ListTipoIVAView::~ListTipoIVAView", 0 );
+    blDebug ( "ListTipoIVAView::~ListTipoIVAView", 0 );
+    blDebug ( "END ListTipoIVAView::~ListTipoIVAView", 0 );
 }
 
 /*
 int ListTipoIVAView::sacaWindow() {
-    _depura("ListTipoIVAView::sacaWindow", 0);
+    blDebug("ListTipoIVAView::sacaWindow", 0);
     companyact->sacaWindow(this);
-    _depura("END ListTipoIVAView::sacaWindow", 0);
+    blDebug("END ListTipoIVAView::sacaWindow", 0);
     return 0;
 }
 */
@@ -99,13 +99,13 @@ int ListTipoIVAView::sacaWindow() {
 **/
 ListTipoIVASubForm::ListTipoIVASubForm ( QWidget *parent ) : BfSubForm ( parent )
 {
-    _depura ( "ListTipoIVASubForm::ListTipoIVASubForm", 0 );
+    blDebug ( "ListTipoIVASubForm::ListTipoIVASubForm", 0 );
     setDbTableName ( "tipo_iva" );
     setDbFieldId ( "idtipo_iva" );
     addSubFormHeader ( "idtipo_iva", BlDbField::DbInt, BlDbField::DbPrimaryKey, BlSubFormHeader::DbHideView, _ ( "Id Tipo IVA" ) );
     addSubFormHeader ( "desctipo_iva", BlDbField::DbVarChar, BlDbField::DbNotNull, BlSubFormHeader::DbNone, _ ( "Tipo IVA" ) );
     setInsert ( TRUE );
-    _depura ( "END ListTipoIVASubForm::ListTipoIVASubForm", 0 );
+    blDebug ( "END ListTipoIVASubForm::ListTipoIVASubForm", 0 );
 }
 
 
@@ -114,8 +114,8 @@ ListTipoIVASubForm::ListTipoIVASubForm ( QWidget *parent ) : BfSubForm ( parent 
 **/
 void ListTipoIVASubForm::cargar()
 {
-    _depura ( "ListTipoIVASubForm::cargar", 0 );
+    blDebug ( "ListTipoIVASubForm::cargar", 0 );
     BlSubForm::cargar ( "SELECT * FROM tipo_iva" );
-    _depura ( "END ListTipoIVASubForm::cargar", 0 );
+    blDebug ( "END ListTipoIVASubForm::cargar", 0 );
 }
 

@@ -29,8 +29,8 @@
 BlWidget::BlWidget ( QWidget *parent, Qt::WFlags f )
         : QWidget ( parent, f ), BlMainCompanyPointer()
 {
-    _depura ( "BlWidget::BlWidget", 0 );
-    _depura ( "END BlWidget::BlWidget", 0 );
+    blDebug ( "BlWidget::BlWidget", 0 );
+    blDebug ( "END BlWidget::BlWidget", 0 );
 }
 
 
@@ -43,8 +43,8 @@ BlWidget::BlWidget ( QWidget *parent, Qt::WFlags f )
 BlWidget::BlWidget ( BlMainCompany *emp, QWidget *parent, Qt::WFlags f )
         : QWidget ( parent, f ), BlMainCompanyPointer ( emp )
 {
-    _depura ( "BlWidget::BlWidget", 0 );
-    _depura ( "END BlWidget::BlWidget", 0 );
+    blDebug ( "BlWidget::BlWidget", 0 );
+    blDebug ( "END BlWidget::BlWidget", 0 );
 }
 
 
@@ -53,8 +53,8 @@ BlWidget::BlWidget ( BlMainCompany *emp, QWidget *parent, Qt::WFlags f )
 **/
 BlWidget::~BlWidget()
 {
-    _depura ( "BlWidget::~BlWidget", 0 );
-    _depura ( "END BlWidget::~BlWidget", 0 );
+    blDebug ( "BlWidget::~BlWidget", 0 );
+    blDebug ( "END BlWidget::~BlWidget", 0 );
 }
 
 

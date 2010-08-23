@@ -44,7 +44,7 @@ public:
 
 public slots:
     void s_activated ( int index ) {
-        _depura ( "Activado el combo box", 0 );
+        blDebug ( "Activado el combo box", 0 );
         if ( index > 0 ) {
             emit ( valueChanged ( m_valores[currentIndex() ] ) );
         } else {

@@ -32,7 +32,7 @@
 **/
 int entryPoint ( BfBulmaFact * )
 {
-    _depura ( "Estoy dentro del plugin de etiquetado", 0 );
+    blDebug ( "Estoy dentro del plugin de etiquetado", 0 );
 
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale ( LC_ALL, "" );
@@ -49,7 +49,7 @@ int entryPoint ( BfBulmaFact * )
 **/
 int AlbaranProveedorView_AlbaranProveedorView ( AlbaranProveedorView *l )
 {
-    _depura ( "AlbaranProveedorView_AlbaranProveedorView", 0 );
+    blDebug ( "AlbaranProveedorView_AlbaranProveedorView", 0 );
 //================================
     TicketQToolButton *mui_exporta_efactura2 = new TicketQToolButton ( l, l->mui_plugbotones );
 
@@ -62,6 +62,6 @@ int AlbaranProveedorView_AlbaranProveedorView ( AlbaranProveedorView *l )
     } // end if
     m_hboxLayout1->addWidget ( mui_exporta_efactura2 );
 //================================
-    _depura ( "END AlbaranProveedorView_AlbaranProveedorView", 0 );
+    blDebug ( "END AlbaranProveedorView_AlbaranProveedorView", 0 );
     return 0;
 }

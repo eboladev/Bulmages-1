@@ -39,7 +39,7 @@
 ComisionView::ComisionView ( BfCompany *comp, QWidget *parent )
         : BfForm ( comp, parent )
 {
-    _depura ( "ComisionView::ComisionView", 0 );
+    blDebug ( "ComisionView::ComisionView", 0 );
     setAttribute ( Qt::WA_DeleteOnClose );
     try {
         setupUi ( this );
@@ -77,7 +77,7 @@ ComisionView::ComisionView ( BfCompany *comp, QWidget *parent )
     } catch ( ... ) {
         mensajeInfo ( _ ( "Error al crear el comision" ), this );
     } // end try
-    _depura ( "END ComisionView::ComisionView", 0 );
+    blDebug ( "END ComisionView::ComisionView", 0 );
 }
 
 
@@ -85,8 +85,8 @@ ComisionView::ComisionView ( BfCompany *comp, QWidget *parent )
 */
 ComisionView::~ComisionView()
 {
-    _depura ( "ComisionView::~ComisionView", 0 );
-    _depura ( "END ComisionView::~ComisionView", 0 );
+    blDebug ( "ComisionView::~ComisionView", 0 );
+    blDebug ( "END ComisionView::~ComisionView", 0 );
 }
 
 
@@ -97,7 +97,7 @@ QString ComisionView::nombrePlantilla ( void )
 
 void ComisionView::imprimir()
 {
-    _depura ( "ComisionView::imprimir", 0 );
+    blDebug ( "ComisionView::imprimir", 0 );
     /// Comprobamos que se disponen de los datos minimos para imprimir el comision.
     QString SQLQuery = "";
 
@@ -113,16 +113,16 @@ void ComisionView::imprimir()
     } // end if
     BfForm::imprimir();
 
-    _depura ( "END ComisionView::imprimir", 0 );
+    blDebug ( "END ComisionView::imprimir", 0 );
 }
 
 
 int ComisionView::guardarPost()
 {
-    _depura ( " ComisionView::guardarPost", 0 );
+    blDebug ( " ComisionView::guardarPost", 0 );
     mui_list->setColumnValue("idcomision", dbValue("idcomision") );
     mui_list->guardar();
-    _depura ( "END ComisionView::guardarPost", 0 );
+    blDebug ( "END ComisionView::guardarPost", 0 );
     return 0;
 }
 
@@ -137,9 +137,9 @@ int ComisionView::borrarPre()
 
 int ComisionView::cargarPost ( QString id )
 {
-    _depura ( " ComisionView::cargarPost", 0 );
+    blDebug ( " ComisionView::cargarPost", 0 );
     mui_list->cargar("SELECT * FROM miembrocomision NATURAL LEFT JOIN cliente WHERE idcomision = " + id);
-    _depura ( "END ComisionView::cargarPost", 0 );
+    blDebug ( "END ComisionView::cargarPost", 0 );
     return 0;
 }
 

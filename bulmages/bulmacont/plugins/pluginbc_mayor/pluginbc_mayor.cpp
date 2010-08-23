@@ -44,8 +44,8 @@ BcExtractoView *g_mayor;
 **/
 MyPluginMayor::MyPluginMayor()
 {
-    _depura ( "MyPluginMayor::MyPluginMayor", 0 );
-    _depura ( "END MyPluginMayor::MyPluginMayor", 0 );
+    blDebug ( "MyPluginMayor::MyPluginMayor", 0 );
+    blDebug ( "END MyPluginMayor::MyPluginMayor", 0 );
 }
 
 
@@ -54,8 +54,8 @@ MyPluginMayor::MyPluginMayor()
 **/
 MyPluginMayor::~MyPluginMayor()
 {
-    _depura ( "MyPluginMayor::~MyPluginMayor", 0 );
-    _depura ( "END MyPluginMayor::~MyPluginMayor", 0 );
+    blDebug ( "MyPluginMayor::~MyPluginMayor", 0 );
+    blDebug ( "END MyPluginMayor::~MyPluginMayor", 0 );
 }
 
 
@@ -65,14 +65,14 @@ MyPluginMayor::~MyPluginMayor()
 **/
 void MyPluginMayor::elslot()
 {
-    _depura ( "MyPluginMayor::elslot", 0 );
+    blDebug ( "MyPluginMayor::elslot", 0 );
     if (g_mayor == NULL) {
       g_mayor = new BcExtractoView ( ( BcCompany * ) mainCompany(), 0 );
       mainCompany() ->pWorkspace() ->addWindow ( g_mayor );
     } // end if
     g_mayor->hide();
     g_mayor->show();
-    _depura ( "END MyPluginMayor::elslot", 0 );
+    blDebug ( "END MyPluginMayor::elslot", 0 );
 }
 
 
@@ -83,7 +83,7 @@ void MyPluginMayor::elslot()
 **/
 void MyPluginMayor::inicializa ( BcBulmaCont *bges )
 {
-    _depura ( "MyPluginMayor::inicializa", 0 );
+    blDebug ( "MyPluginMayor::inicializa", 0 );
 
     /// Creamos el men&uacute;.
     setMainCompany ( (BlMainCompany *)bges->empresaactual() );
@@ -109,7 +109,7 @@ void MyPluginMayor::inicializa ( BcBulmaCont *bges )
     bges->menuBar() ->insertMenu ( bges->menuMaestro->menuAction(), pPluginMenu );
     bges->toolBar->addAction ( accion );
 
-    _depura ( "END MyPluginMayor::inicializa", 0 );
+    blDebug ( "END MyPluginMayor::inicializa", 0 );
 }
 
 
@@ -121,7 +121,7 @@ void MyPluginMayor::inicializa ( BcBulmaCont *bges )
 **/
 int entryPoint ( BcBulmaCont *bcont )
 {
-    _depura ( "entryPoint::entryPoint", 0 );
+    blDebug ( "entryPoint::entryPoint", 0 );
 
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale ( LC_ALL, "" );
@@ -132,7 +132,7 @@ int entryPoint ( BcBulmaCont *bcont )
     MyPluginMayor *plug = new MyPluginMayor();
     plug->inicializa ( bcont );
 
-    _depura ( "END entryPoint::entryPoint", 0 );
+    blDebug ( "END entryPoint::entryPoint", 0 );
     return 0;
 }
 

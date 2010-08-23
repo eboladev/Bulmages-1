@@ -45,10 +45,10 @@
 **/
 InformeQToolButton::InformeQToolButton ( ClientsList *art , QWidget *parent ) : QToolButton ( parent ), BlMainCompanyPointer()
 {
-    _depura ( "InformeQToolButton::InformeQToolButton", 0 );
+    blDebug ( "InformeQToolButton::InformeQToolButton", 0 );
     m_clientsList = art;
     setBoton();
-    _depura ( "END InformeQToolButton::InformeQToolButton", 0 );
+    blDebug ( "END InformeQToolButton::InformeQToolButton", 0 );
 }
 
 
@@ -57,8 +57,8 @@ InformeQToolButton::InformeQToolButton ( ClientsList *art , QWidget *parent ) : 
 **/
 InformeQToolButton::~InformeQToolButton()
 {
-    _depura ( "InformeQToolButton::~InformeQToolButton", 0 );
-    _depura ( "END InformeQToolButton::~InformeQToolButton", 0 );
+    blDebug ( "InformeQToolButton::~InformeQToolButton", 0 );
+    blDebug ( "END InformeQToolButton::~InformeQToolButton", 0 );
 }
 
 
@@ -67,7 +67,7 @@ InformeQToolButton::~InformeQToolButton()
 **/
 void InformeQToolButton::setBoton()
 {
-    _depura ( "InformeQToolButton::setBoton", 0 );
+    blDebug ( "InformeQToolButton::setBoton", 0 );
     connect ( this, SIGNAL ( clicked() ), this, SLOT ( click() ) );
     setObjectName ( QString::fromUtf8 ( "exporta" ) );
     setStatusTip ( "Imprimir Catalogo" );
@@ -75,7 +75,7 @@ void InformeQToolButton::setBoton()
     setMinimumSize ( QSize ( 32, 32 ) );
     setIcon ( QIcon (  g_confpr->valor ( CONF_PROGDATA ) + "icons/catalogo.png" ) );
     setIconSize ( QSize ( 22, 22 ) );
-    _depura ( "END InformeQToolButton::setBoton", 0 );
+    blDebug ( "END InformeQToolButton::setBoton", 0 );
 }
 
 
@@ -84,7 +84,7 @@ void InformeQToolButton::setBoton()
 **/
 void InformeQToolButton::click()
 {
-    _depura ( "InformeQToolButton::click", 0 );
+    blDebug ( "InformeQToolButton::click", 0 );
     // Puede que no se haya actualizado bien el company
     setMainCompany ( m_clientsList->mainCompany() );
 
@@ -154,7 +154,7 @@ void InformeQToolButton::click()
     } // end if
     invocaPDF ( "informeclientes" );
 
-    _depura ( "END InformeQToolButton::click", 0 );
+    blDebug ( "END InformeQToolButton::click", 0 );
 }
 
 
@@ -165,7 +165,7 @@ void InformeQToolButton::click()
 **/
 QString InformeQToolButton::generarCliente ( QString idcliente )
 {
-    _depura ( "InformeQToolButton::generarCliente", 0 );
+    blDebug ( "InformeQToolButton::generarCliente", 0 );
     QString fitxersortidatxt;
     /// Sacamos todas las referencias de este cliente y las guardamos en el string referencias
     QString referencias = "(";
@@ -342,7 +342,7 @@ QString InformeQToolButton::generarCliente ( QString idcliente )
 
     fitxersortidatxt += "</tr>\n";
     fitxersortidatxt += "</blockTable>\n";
-    _depura ( "END InformeQToolButton::generarCliente", 0 );
+    blDebug ( "END InformeQToolButton::generarCliente", 0 );
     return fitxersortidatxt;
 }
 
@@ -357,10 +357,10 @@ QString InformeQToolButton::generarCliente ( QString idcliente )
 **/
 InformeArtQToolButton::InformeArtQToolButton ( ArticuloList *art , QWidget *parent ) : QToolButton ( parent ), BlMainCompanyPointer()
 {
-    _depura ( "InformeArtQToolButton::InformeQToolButton", 0 );
+    blDebug ( "InformeArtQToolButton::InformeQToolButton", 0 );
     m_articuloList = art;
     setBoton();
-    _depura ( "END InformeArtQToolButton::InformeQToolButton", 0 );
+    blDebug ( "END InformeArtQToolButton::InformeQToolButton", 0 );
 }
 
 
@@ -369,8 +369,8 @@ InformeArtQToolButton::InformeArtQToolButton ( ArticuloList *art , QWidget *pare
 **/
 InformeArtQToolButton::~InformeArtQToolButton()
 {
-    _depura ( "InformeArtQToolButton::~InformeArtQToolButton", 0 );
-    _depura ( "END InformeQToolButton::~InformeQToolButton", 0 );
+    blDebug ( "InformeArtQToolButton::~InformeArtQToolButton", 0 );
+    blDebug ( "END InformeQToolButton::~InformeQToolButton", 0 );
 }
 
 
@@ -379,7 +379,7 @@ InformeArtQToolButton::~InformeArtQToolButton()
 **/
 void InformeArtQToolButton::setBoton()
 {
-    _depura ( "InformeArtQToolButton::setBoton", 0 );
+    blDebug ( "InformeArtQToolButton::setBoton", 0 );
     connect ( this, SIGNAL ( clicked() ), this, SLOT ( click() ) );
     setObjectName ( QString::fromUtf8 ( "exporta" ) );
     setStatusTip ( "Imprimir Informe Resumen" );
@@ -387,7 +387,7 @@ void InformeArtQToolButton::setBoton()
     setMinimumSize ( QSize ( 32, 32 ) );
     setIcon ( QIcon ( g_confpr->valor ( CONF_PROGDATA ) + "icons/catalogo.png" ) );
     setIconSize ( QSize ( 22, 22 ) );
-    _depura ( "END InformeArtQToolButton::setBoton", 0 );
+    blDebug ( "END InformeArtQToolButton::setBoton", 0 );
 }
 
 
@@ -396,7 +396,7 @@ void InformeArtQToolButton::setBoton()
 **/
 void InformeArtQToolButton::click()
 {
-    _depura ( "InformeArtQToolButton::click", 0 );
+    blDebug ( "InformeArtQToolButton::click", 0 );
     // Puede que no se haya actualizado bien el company
     setMainCompany ( m_articuloList->mainCompany() );
 
@@ -442,7 +442,7 @@ void InformeArtQToolButton::click()
     } // end if
     invocaPDF ( "informearticulos" );
 
-    _depura ( "END InformeQToolButton::click", 0 );
+    blDebug ( "END InformeQToolButton::click", 0 );
 }
 
 
@@ -453,7 +453,7 @@ void InformeArtQToolButton::click()
 **/
 QString InformeArtQToolButton::generarArticulos()
 {
-    _depura ( "InformeQToolButton::generarCliente", 0 );
+    blDebug ( "InformeQToolButton::generarCliente", 0 );
     QString fitxersortidatxt;
 
 
@@ -505,7 +505,7 @@ QString InformeArtQToolButton::generarArticulos()
 
     fitxersortidatxt += "</blockTable>\n";
 
-    _depura ( "END InformeQToolButton::generarArticulos", 0 );
+    blDebug ( "END InformeQToolButton::generarArticulos", 0 );
     return fitxersortidatxt;
 }
 

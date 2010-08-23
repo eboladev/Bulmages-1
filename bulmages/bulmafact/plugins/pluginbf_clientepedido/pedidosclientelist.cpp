@@ -39,7 +39,7 @@
 PedidosClienteList::PedidosClienteList ( QWidget *parent, Qt::WFlags flag, edmode editmodo )
         : BlFormList ( NULL, parent, flag, editmodo )
 {
-    _depura ( "PedidosClienteList::PedidosClienteList", 0 );
+    blDebug ( "PedidosClienteList::PedidosClienteList", 0 );
     setupUi ( this );
     /// Disparamos los plugins.
     int res = g_plugins->lanza ( "PedidosClienteList_PedidosClienteList", this );
@@ -54,7 +54,7 @@ PedidosClienteList::PedidosClienteList ( QWidget *parent, Qt::WFlags flag, edmod
     m_cliente->m_valores["cifcliente"] = "";
     m_cliente->m_valores["nomcliente"] = "";
     iniciaForm();
-    _depura ( "END PedidosClienteList::PedidosClienteList", 0 );
+    blDebug ( "END PedidosClienteList::PedidosClienteList", 0 );
 }
 
 
@@ -67,7 +67,7 @@ PedidosClienteList::PedidosClienteList ( QWidget *parent, Qt::WFlags flag, edmod
 **/
 PedidosClienteList::PedidosClienteList ( BfCompany *comp, QWidget *parent, Qt::WFlags flag, edmode editmodo ) : BlFormList ( comp, parent, flag, editmodo )
 {
-    _depura ( "PedidosClienteList::PedidosClienteList", 0 );
+    blDebug ( "PedidosClienteList::PedidosClienteList", 0 );
     setupUi ( this );
     /// Disparamos los plugins.
     int res = g_plugins->lanza ( "PedidosClienteList_PedidosClienteList", this );
@@ -92,7 +92,7 @@ PedidosClienteList::PedidosClienteList ( BfCompany *comp, QWidget *parent, Qt::W
     hideBusqueda();
     /// Hacemos el tratamiento de los permisos que desabilita botones en caso de no haber suficientes permisos.
     trataPermisos ( "pedidocliente" );
-    _depura ( "END PedidosClienteList::PedidosClienteList", 0 );
+    blDebug ( "END PedidosClienteList::PedidosClienteList", 0 );
 }
 
 
@@ -102,7 +102,7 @@ PedidosClienteList::PedidosClienteList ( BfCompany *comp, QWidget *parent, Qt::W
 **/
 void PedidosClienteList::iniciaForm()
 {
-    _depura ( "PedidosClienteList::iniciaForm" );
+    blDebug ( "PedidosClienteList::iniciaForm" );
     /// Disparamos los plugins.
     int res = g_plugins->lanza ( "PedidosClienteList_iniciaForm", this );
     if ( res != 0 )
@@ -111,7 +111,7 @@ void PedidosClienteList::iniciaForm()
     mui_procesada->insertItem ( 1, _ ( "Pedidos procesados" ) );
     mui_procesada->insertItem ( 2, _ ( "Pedidos no procesados" ) );
     mui_procesada->setCurrentIndex ( 2 );
-    _depura ( "END PedidosClienteList::iniciaForm" );
+    blDebug ( "END PedidosClienteList::iniciaForm" );
 }
 
 
@@ -120,8 +120,8 @@ void PedidosClienteList::iniciaForm()
 **/
 PedidosClienteList::~PedidosClienteList()
 {
-    _depura ( "PedidosClienteList::~PedidosClienteList", 0 );
-    _depura ( "END PedidosClienteList::~PedidosClienteList", 0 );
+    blDebug ( "PedidosClienteList::~PedidosClienteList", 0 );
+    blDebug ( "END PedidosClienteList::~PedidosClienteList", 0 );
 }
 
 
@@ -130,7 +130,7 @@ PedidosClienteList::~PedidosClienteList()
 **/
 void PedidosClienteList::presentar()
 {
-    _depura ( "PedidosClienteList::presenta", 0 );
+    blDebug ( "PedidosClienteList::presenta", 0 );
     /// Hacemos el listado y lo presentamos.
     mui_list->cargar ( "SELECT *, totalpedidocliente AS total, bimppedidocliente AS base, imppedidocliente AS impuestos FROM pedidocliente LEFT JOIN  cliente ON pedidocliente.idcliente = cliente.idcliente LEFT JOIN almacen ON pedidocliente.idalmacen=almacen.idalmacen WHERE 1 = 1 " + generarFiltro() );
 
@@ -141,7 +141,7 @@ void PedidosClienteList::presentar()
         m_total->setText ( cur->valor ( "total" ) );
         delete cur;
     } // end if
-    _depura ( "END PedidosClienteList::presenta", 0 );
+    blDebug ( "END PedidosClienteList::presenta", 0 );
 }
 
 
@@ -152,7 +152,7 @@ void PedidosClienteList::presentar()
 QString PedidosClienteList::generarFiltro()
 {
     /// Tratamiento de los filtros.
-    _depura ( "PedidosClienteList::generarFiltro", 0 );
+    blDebug ( "PedidosClienteList::generarFiltro", 0 );
     QString filtro = "";
     if ( m_filtro->text() != "" ) {
         filtro = " AND ( lower(descpedidocliente) LIKE lower('%" + m_filtro->text() + "%') ";
@@ -185,7 +185,7 @@ QString PedidosClienteList::generarFiltro()
     if ( m_fechafin->text() != "" ) {
         filtro += " AND fechapedidocliente <= '" + m_fechafin->text() + "' ";
     } // end if
-    _depura ( "END PedidosClienteList::generarFiltro", 0 );
+    blDebug ( "END PedidosClienteList::generarFiltro", 0 );
     return ( filtro );
 }
 
@@ -195,7 +195,7 @@ QString PedidosClienteList::generarFiltro()
 **/
 void PedidosClienteList::crear()
 {
-    _depura ( "PedidosClienteList:crear", 0 );
+    blDebug ( "PedidosClienteList:crear", 0 );
     PedidoClienteView *pcv = new PedidoClienteView ( ( BfCompany * ) mainCompany(), 0 );
     mainCompany() ->m_pWorkspace->addWindow ( pcv );
     pcv->inicializar();
@@ -208,7 +208,7 @@ void PedidosClienteList::crear()
     } // end if
     
     pcv->show();
-    _depura ( "END PedidosClienteList:crear", 0 );
+    blDebug ( "END PedidosClienteList:crear", 0 );
 }
 
 
@@ -219,7 +219,7 @@ void PedidosClienteList::crear()
 **/
 void PedidosClienteList::editar ( int row )
 {
-    _depura ( "ProveedorList::editar", 0 );
+    blDebug ( "ProveedorList::editar", 0 );
     try {
         m_idpedidocliente = mui_list->dbValue ( QString ( "idpedidocliente" ), row );
         if ( modoEdicion() ) {
@@ -236,7 +236,7 @@ void PedidosClienteList::editar ( int row )
     } catch ( ... ) {
         mensajeInfo ( _ ( "Error al cargar el pedido cliente" ), this );
     } // end try
-    _depura ( "END ProveedorList::editar", 0 );
+    blDebug ( "END ProveedorList::editar", 0 );
 }
 
 
@@ -245,9 +245,9 @@ void PedidosClienteList::editar ( int row )
 **/
 void PedidosClienteList::imprimir()
 {
-    _depura ( "PedidosClienteList::imprimir", 0 );
+    blDebug ( "PedidosClienteList::imprimir", 0 );
     mui_list->imprimirPDF ( _ ( "Pedidos de clientes" ) );
-    _depura ( "END PedidosClienteList::imprimir", 0 );
+    blDebug ( "END PedidosClienteList::imprimir", 0 );
 }
 
 
@@ -257,7 +257,7 @@ void PedidosClienteList::imprimir()
 **/
 void PedidosClienteList::borrar()
 {
-    _depura ( "PedidosClienteList::borrar", 0 );
+    blDebug ( "PedidosClienteList::borrar", 0 );
     int a = mui_list->currentRow();
     if ( a < 0 ) {
         mensajeInfo ( _ ( "Debe seleccionar una linea" ), this );
@@ -277,7 +277,7 @@ void PedidosClienteList::borrar()
     } catch ( ... ) {
         mensajeInfo ( _ ( "Error al borrar el pedido de cliente" ), this );
     } // end try
-    _depura ( "END PedidosClienteList::borrar", 0 );
+    blDebug ( "END PedidosClienteList::borrar", 0 );
 }
 
 
@@ -287,11 +287,11 @@ void PedidosClienteList::borrar()
 **/
 void PedidosClienteList::setMainCompany ( BfCompany *comp )
 {
-    _depura ( "PedidosClienteList::setMainCompany", 0 );
+    blDebug ( "PedidosClienteList::setMainCompany", 0 );
     BlMainCompanyPointer::setMainCompany ( comp );
     m_cliente->setMainCompany ( comp );
     mui_list->setMainCompany ( comp );
-    _depura ( "END PedidosClienteList::setMainCompany", 0 );
+    blDebug ( "END PedidosClienteList::setMainCompany", 0 );
 }
 
 
@@ -300,8 +300,8 @@ void PedidosClienteList::setMainCompany ( BfCompany *comp )
 **/
 QString PedidosClienteList::idpedidocliente()
 {
-    _depura ( "PedidosClienteList::idpedidocliente", 0 );
-    _depura ( "END PedidosClienteList::idpedidocliente", 0 );
+    blDebug ( "PedidosClienteList::idpedidocliente", 0 );
+    blDebug ( "END PedidosClienteList::idpedidocliente", 0 );
     return m_idpedidocliente;
 }
 
@@ -312,9 +312,9 @@ QString PedidosClienteList::idpedidocliente()
 **/
 void PedidosClienteList::setidcliente ( QString val )
 {
-    _depura ( "PedidosClienteList::setidcliente", 0 );
+    blDebug ( "PedidosClienteList::setidcliente", 0 );
     m_cliente->setId ( val );
-    _depura ( "END PedidosClienteList::setidcliente", 0 );
+    blDebug ( "END PedidosClienteList::setidcliente", 0 );
 }
 
 /// =============================================================================
@@ -326,7 +326,7 @@ void PedidosClienteList::setidcliente ( QString val )
 **/
 PedidosClienteListSubform::PedidosClienteListSubform ( QWidget *parent, const char * ) : BfSubForm ( parent )
 {
-    _depura ( "PedidosClienteListSubform::PedidosClienteListSubform", 0 );
+    blDebug ( "PedidosClienteListSubform::PedidosClienteListSubform", 0 );
     /// Disparamos los plugins.
     int res = g_plugins->lanza ( "PedidosClienteListSubform_PedidosClienteListSubform", this );
     if ( res != 0 )
@@ -352,7 +352,7 @@ PedidosClienteListSubform::PedidosClienteListSubform ( QWidget *parent, const ch
     setInsert ( FALSE );
     setDelete ( FALSE );
     setSortingEnabled ( TRUE );
-    _depura ( "END PedidosClienteListSubform::PedidosClienteListSubform", 0 );
+    blDebug ( "END PedidosClienteListSubform::PedidosClienteListSubform", 0 );
 }
 
 
@@ -361,10 +361,10 @@ PedidosClienteListSubform::PedidosClienteListSubform ( QWidget *parent, const ch
 **/
 void PedidosClienteListSubform::cargar()
 {
-    _depura ( "PedidosClienteListSubform::cargar", 0 );
+    blDebug ( "PedidosClienteListSubform::cargar", 0 );
     QString SQLQuery = "SELECT * FROM pedidocliente";
     BlSubForm::cargar ( SQLQuery );
-    _depura ( "END PedidosClienteListSubform::cargar", 0 );
+    blDebug ( "END PedidosClienteListSubform::cargar", 0 );
 }
 
 
@@ -374,9 +374,9 @@ void PedidosClienteListSubform::cargar()
 **/
 void PedidosClienteListSubform::cargar ( QString query )
 {
-    _depura ( "PedidosClienteListSubform::cargar", 0 );
+    blDebug ( "PedidosClienteListSubform::cargar", 0 );
     BlSubForm::cargar ( query );
-    _depura ( "END PedidosClienteListSubform::cargar", 0 );
+    blDebug ( "END PedidosClienteListSubform::cargar", 0 );
 }
 
 

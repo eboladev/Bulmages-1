@@ -28,7 +28,7 @@
 **/
 void ListLinPrevCobro::inicializaVariables()
 {
-    _depura ( "ListLinPrevCobro::inicializaVariables", 0 );
+    blDebug ( "ListLinPrevCobro::inicializaVariables", 0 );
     m_companyact = NULL;
     mdb_idregistroiva = "";
     mfilt_idregistroiva = "";
@@ -36,7 +36,7 @@ void ListLinPrevCobro::inicializaVariables()
     mfilt_codigocuentaprevcobro = "";
     mfilt_finprevcobro = "";
     mfilt_ffiprevcobro = "";
-    _depura ( "END ListLinPrevCobro::inicializaVariables", 0 );
+    blDebug ( "END ListLinPrevCobro::inicializaVariables", 0 );
 }
 
 
@@ -46,10 +46,10 @@ void ListLinPrevCobro::inicializaVariables()
 **/
 ListLinPrevCobro::ListLinPrevCobro ( BcCompany *comp )
 {
-    _depura ( "ListLinPrevCobro::ListLinPrevCobro", 0 );
+    blDebug ( "ListLinPrevCobro::ListLinPrevCobro", 0 );
     inicializaVariables();
     m_companyact = comp;
-    _depura ( "END ListLinPrevCobro::ListLinPrevCobro", 0 );
+    blDebug ( "END ListLinPrevCobro::ListLinPrevCobro", 0 );
 }
 
 ///
@@ -57,9 +57,9 @@ ListLinPrevCobro::ListLinPrevCobro ( BcCompany *comp )
 **/
 ListLinPrevCobro::ListLinPrevCobro()
 {
-    _depura ( "ListLinPrevCobro::ListLinPrevCobro", 0 );
+    blDebug ( "ListLinPrevCobro::ListLinPrevCobro", 0 );
     inicializaVariables();
-    _depura ( "END ListLinPrevCobro::ListLinPrevCobro", 0 );
+    blDebug ( "END ListLinPrevCobro::ListLinPrevCobro", 0 );
 }
 
 
@@ -68,8 +68,8 @@ ListLinPrevCobro::ListLinPrevCobro()
 **/
 ListLinPrevCobro::~ListLinPrevCobro()
 {
-    _depura ( "ListLinPrevCobro::~ListLinPrevCobro", 0 );
-    _depura ( "END ListLinPrevCobro::~ListLinPrevCobro", 0 );
+    blDebug ( "ListLinPrevCobro::~ListLinPrevCobro", 0 );
+    blDebug ( "END ListLinPrevCobro::~ListLinPrevCobro", 0 );
 }
 
 
@@ -107,8 +107,8 @@ void ListLinPrevCobro::nuevalinea ( QString desc, QString cantl, QString pvpl, Q
 **/
 linprevcobro *ListLinPrevCobro::linpos ( int pos )
 {
-    _depura ( "ListLinPrevCobro::linpos", 0 );
-    _depura ( "END ListLinPrevCobro::linpos", 0 );
+    blDebug ( "ListLinPrevCobro::linpos", 0 );
+    blDebug ( "END ListLinPrevCobro::linpos", 0 );
     return m_lista.at ( pos );
 }
 
@@ -166,7 +166,7 @@ int ListLinPrevCobro::chargeBudgetLines()
         cur->nextRecord();
     } // end while
     delete cur;
-    _depura ( "END de ListLinPrevCobro::chargeBudgetLines\n" );
+    blDebug ( "END de ListLinPrevCobro::chargeBudgetLines\n" );
     return 0;
 }
 
@@ -176,7 +176,7 @@ int ListLinPrevCobro::chargeBudgetLines()
 **/
 void ListLinPrevCobro::guardaListLinPrevCobro()
 {
-    _depura ( "guardaListLinPrevCobro()" );
+    blDebug ( "guardaListLinPrevCobro()" );
     linprevcobro *linea;
 
     QMutableListIterator<linprevcobro*> m_ilista ( m_lista );
@@ -196,9 +196,9 @@ void ListLinPrevCobro::guardaListLinPrevCobro()
 **/
 void ListLinPrevCobro::vaciar()
 {
-    _depura ( "ListLinPrevCobro::vaciar", 0 );
+    blDebug ( "ListLinPrevCobro::vaciar", 0 );
     m_lista.clear();
-    _depura ( "END ListLinPrevCobro::vaciar", 0 );
+    blDebug ( "END ListLinPrevCobro::vaciar", 0 );
 }
 
 
@@ -207,13 +207,13 @@ void ListLinPrevCobro::vaciar()
 **/
 void ListLinPrevCobro::borrar()
 {
-    _depura ( "ListLinPrevCobro::borrar", 0 );
+    blDebug ( "ListLinPrevCobro::borrar", 0 );
     if ( mdb_idregistroiva != "" )  {
         m_companyact->begin();
         m_companyact->runQuery ( "DELETE FROM prevcobro WHERE idregistroiva = " + mdb_idregistroiva );
         m_companyact->commit();
     } // end if
-    _depura ( "END ListLinPrevCobro::borrar", 0 );
+    blDebug ( "END ListLinPrevCobro::borrar", 0 );
 }
 
 ///
@@ -221,13 +221,13 @@ void ListLinPrevCobro::borrar()
 **/
 void ListLinPrevCobro::borralinprevcobro ( int pos )
 {
-    _depura ( "ListLinPrevCobro::borralinprevcobro", 0 );
+    blDebug ( "ListLinPrevCobro::borralinprevcobro", 0 );
     linprevcobro *linea;
     linea = m_lista.at ( pos );
     linea->borrar();
     m_lista.removeAt ( pos );
     pintaListLinPrevCobro();
-    _depura ( "END ListLinPrevCobro::borralinprevcobro", 0 );
+    blDebug ( "END ListLinPrevCobro::borralinprevcobro", 0 );
 }
 
 
@@ -237,7 +237,7 @@ void ListLinPrevCobro::borralinprevcobro ( int pos )
 **/
 BlFixed ListLinPrevCobro::totalCobro()
 {
-    _depura ( "ListLinPrevCobro::totalCobro", 0 );
+    blDebug ( "ListLinPrevCobro::totalCobro", 0 );
     linprevcobro *linea;
     BlFixed tcobro ( "0" );
 
@@ -252,7 +252,7 @@ BlFixed ListLinPrevCobro::totalCobro()
             tcobro = tcobro + BlFixed ( linea->cantidadprevcobro() );
         } // end if
     } // end while
-    _depura ( "END ListLinPrevCobro::totalCobro", 0 );
+    blDebug ( "END ListLinPrevCobro::totalCobro", 0 );
     return tcobro;
 }
 
@@ -263,7 +263,7 @@ BlFixed ListLinPrevCobro::totalCobro()
 **/
 BlFixed ListLinPrevCobro::totalPago()
 {
-    _depura ( "ListLinPrevCobro::totalPago", 0 );
+    blDebug ( "ListLinPrevCobro::totalPago", 0 );
     linprevcobro *linea;
     BlFixed tpago ( "0" );
 
@@ -278,7 +278,7 @@ BlFixed ListLinPrevCobro::totalPago()
             tpago = tpago + BlFixed ( linea->cantidadprevcobro() );
         } // end if
     } // end while
-    _depura ( "END ListLinPrevCobro::totalPago", 0 );
+    blDebug ( "END ListLinPrevCobro::totalPago", 0 );
     return tpago;
 }
 

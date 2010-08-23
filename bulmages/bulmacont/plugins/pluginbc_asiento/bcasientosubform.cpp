@@ -32,7 +32,7 @@
 BcAsientoSubForm::BcAsientoSubForm ( QWidget *parent, const char * )
         : BcSubForm ( parent )
 {
-    _depura ( "BcAsientoSubForm::BcAsientoSubForm", 0 );
+    blDebug ( "BcAsientoSubForm::BcAsientoSubForm", 0 );
     setDbTableName ( "borrador" );
     setFileConfig ( "asientotabla" );
     setDbFieldId ( "idborrador" );
@@ -64,7 +64,7 @@ BcAsientoSubForm::BcAsientoSubForm ( QWidget *parent, const char * )
     setOrdenEnabled ( FALSE );
     connect ( this, SIGNAL ( pintaMenu ( QMenu * ) ), this, SLOT ( s_pintaMenu ( QMenu * ) ) );
     connect ( this, SIGNAL ( trataMenu ( QAction * ) ), this, SLOT ( s_trataMenu ( QAction * ) ) );
-    _depura ( "END BcAsientoSubForm::BcAsientoSubForm", 0 );
+    blDebug ( "END BcAsientoSubForm::BcAsientoSubForm", 0 );
 }
 
 
@@ -73,8 +73,8 @@ BcAsientoSubForm::BcAsientoSubForm ( QWidget *parent, const char * )
 **/
 BcAsientoSubForm::~BcAsientoSubForm()
 {
-    _depura ( "BcAsientoSubForm::~BcAsientoSubForm", 0 );
-    _depura ( "END BcAsientoSubForm::~BcAsientoSubForm", 0 );
+    blDebug ( "BcAsientoSubForm::~BcAsientoSubForm", 0 );
+    blDebug ( "END BcAsientoSubForm::~BcAsientoSubForm", 0 );
 }
 
 
@@ -84,14 +84,14 @@ BcAsientoSubForm::~BcAsientoSubForm()
 **/
 void BcAsientoSubForm::s_pintaMenu ( QMenu *menu )
 {
-    _depura ( "BcAsientoSubForm::s_pintaMenu", 0 );
+    blDebug ( "BcAsientoSubForm::s_pintaMenu", 0 );
     menu->addSeparator();
     menu->addAction ( _ ( "Mostrar asiento" ) );
     menu->addSeparator();
     menu->addAction ( _ ( "Mostrar extracto (dia)" ) );
     menu->addAction ( _ ( "Mostrar extracto (mes)" ) );
     menu->addAction ( _ ( "Mostrar extracto (ano)" ) );
-    _depura ( "BcAsientoSubForm::s_pintaMenu", 0 );
+    blDebug ( "BcAsientoSubForm::s_pintaMenu", 0 );
 }
 
 /// Slot que trata la activacion de un elemento en el menu contextual.
@@ -101,7 +101,7 @@ void BcAsientoSubForm::s_pintaMenu ( QMenu *menu )
 **/
 void BcAsientoSubForm::s_trataMenu ( QAction *action )
 {
-    _depura ( "BcAsientoSubForm::s_trataMenu", 0 );
+    blDebug ( "BcAsientoSubForm::s_trataMenu", 0 );
     if ( !action ) return;
     if ( action->text() == _ ( "Mostrar asiento" ) )
         boton_asiento();
@@ -112,7 +112,7 @@ void BcAsientoSubForm::s_trataMenu ( QAction *action )
     if ( action->text() == _ ( "Mostrar extracto (ano)" ) )
         boton_extracto1 ( 2 );
 
-    _depura ( "END BcAsientoSubForm::s_trataMenu", 0 );
+    blDebug ( "END BcAsientoSubForm::s_trataMenu", 0 );
 }
 
 /// Carga lineas de asiento (apuntes).
@@ -121,7 +121,7 @@ void BcAsientoSubForm::s_trataMenu ( QAction *action )
 **/
 void BcAsientoSubForm::cargar ( QString idasiento )
 {
-    _depura ( "AsientoSubForm::cargar", 0 );
+    blDebug ( "AsientoSubForm::cargar", 0 );
     QString SQLQuery = "SELECT * FROM borrador ";
     SQLQuery += " LEFT JOIN (SELECT codigo, descripcion AS descripcioncuenta, idcuenta, tipocuenta FROM cuenta) AS t1 ON t1.idcuenta = borrador.idcuenta ";
     SQLQuery += " LEFT JOIN (SELECT idcanal, nombre AS nomcanal, descripcion AS descanal FROM canal) AS t2 ON borrador.idcanal = t2.idcanal ";
@@ -129,7 +129,7 @@ void BcAsientoSubForm::cargar ( QString idasiento )
     SQLQuery += " LEFT JOIN (SELECT idregistroiva, factura, ffactura, idborrador AS idborriva FROM registroiva) AS t4 ON borrador.idborrador = t4.idborriva ";
     SQLQuery += "WHERE idasiento = " + idasiento + " ORDER BY orden";
     BcSubForm::cargar ( SQLQuery );
-    _depura ( "END AsientoSubForm::cargar", 0 );
+    blDebug ( "END AsientoSubForm::cargar", 0 );
 }
 
 
@@ -141,14 +141,14 @@ void BcAsientoSubForm::cargar ( QString idasiento )
 **/
 BlFixed BcAsientoSubForm::totaldebe ( QString idasiento )
 {
-    _depura ( "BcAsientoSubForm::totaldebe", 0, idasiento );
+    blDebug ( "BcAsientoSubForm::totaldebe", 0, idasiento );
     if ( idasiento == "" ) return BlFixed ( "0" );
     QString SQLQuery = "SELECT sum(debe) FROM borrador LEFT JOIN (SELECT codigo, descripcion AS descripcioncuenta, idcuenta, tipocuenta FROM cuenta) AS t1 ON t1.idcuenta = borrador.idcuenta LEFT JOIN (SELECT idcanal, nombre AS nombrecanal, descripcion AS descripcioncanal FROM canal) AS t2 ON borrador.idcanal = t2.idcanal LEFT JOIN (SELECT idc_coste, nombre AS nombrec_coste, descripcion AS descripcionc_coste FROM c_coste) AS t3 ON borrador.idc_coste = t3.idc_coste LEFT JOIN (SELECT idregistroiva, factura, ffactura, idborrador FROM registroiva) AS t4 ON borrador.idborrador = t4.idborrador WHERE idasiento = " + idasiento;
     BlDbRecordSet *cur = mainCompany() ->loadQuery ( SQLQuery );
     if ( !cur ) return BlFixed ( "0" );
     QString resultado = cur->valor ( 0 );
     delete cur;
-    _depura ( "END BcAsientoSubForm::totaldebe", 0 );
+    blDebug ( "END BcAsientoSubForm::totaldebe", 0 );
     return BlFixed ( resultado );
 }
 
@@ -160,14 +160,14 @@ BlFixed BcAsientoSubForm::totaldebe ( QString idasiento )
 **/
 BlFixed BcAsientoSubForm::totalhaber ( QString idasiento )
 {
-    _depura ( "BcAsientoSubForm::totalhaber", 0, idasiento );
+    blDebug ( "BcAsientoSubForm::totalhaber", 0, idasiento );
     if ( idasiento == "" ) return BlFixed ( "0" );
     QString SQLQuery = "SELECT sum(haber) FROM borrador LEFT JOIN (SELECT codigo, descripcion AS descripcioncuenta, idcuenta, tipocuenta FROM cuenta) AS t1 ON t1.idcuenta=borrador.idcuenta LEFT JOIN (SELECT idcanal, nombre AS nombrecanal, descripcion AS descripcioncanal FROM canal) AS t2 ON borrador.idcanal = t2.idcanal LEFT JOIN (SELECT idc_coste, nombre AS nombrec_coste, descripcion AS descripcionc_coste FROM c_coste) AS t3 ON borrador.idc_coste = t3.idc_coste LEFT JOIN (SELECT idregistroiva, factura, ffactura, idborrador FROM registroiva) AS t4 ON borrador.idborrador = t4.idborrador WHERE idasiento = " + idasiento;
     BlDbRecordSet *cur = mainCompany() ->loadQuery ( SQLQuery );
     if ( !cur ) return BlFixed ( "0" );
     QString resultado = cur->valor ( 0 );
     delete cur;
-    _depura ( "END BcAsientoSubForm::totalhaber", 0 );
+    blDebug ( "END BcAsientoSubForm::totalhaber", 0 );
     return BlFixed ( resultado );
 }
 

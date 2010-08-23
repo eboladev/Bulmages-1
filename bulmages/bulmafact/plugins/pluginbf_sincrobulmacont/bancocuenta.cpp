@@ -11,7 +11,7 @@
 BancoCuenta::BancoCuenta (QWidget *parent) : QWidget(parent)
 {
 
-    _depura ( "BancoCuenta::BancoCuenta", 1 );
+    blDebug ( "BancoCuenta::BancoCuenta", 1 );
 
     m_bancoview = (BancoView *) parent;
 
@@ -36,7 +36,7 @@ BancoCuenta::BancoCuenta (QWidget *parent) : QWidget(parent)
     
     m_bancoview->resize ( m_bancoview->width(), m_bancoview->height () + 70);
     
-    _depura ( "END BancoCuenta::BancoCuenta", 1 );
+    blDebug ( "END BancoCuenta::BancoCuenta", 1 );
 
 }
 
@@ -46,8 +46,8 @@ BancoCuenta::BancoCuenta (QWidget *parent) : QWidget(parent)
 **/
 BancoCuenta::~BancoCuenta()
 {
-    _depura ( "BancoCuenta::~BancoCuenta", 0 );
-    _depura ( "END BancoCuenta::~BancoCuenta", 0 );
+    blDebug ( "BancoCuenta::~BancoCuenta", 0 );
+    blDebug ( "END BancoCuenta::~BancoCuenta", 0 );
 }
 
 

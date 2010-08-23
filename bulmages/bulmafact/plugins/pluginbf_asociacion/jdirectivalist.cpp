@@ -41,7 +41,7 @@
 JDirectivaList::JDirectivaList ( QWidget *parent, Qt::WFlags flag, edmode editmodo )
         : BlFormList ( NULL, parent, flag, editmodo )
 {
-    _depura ( "JDirectivaList::JDirectivaList", 0 );
+    blDebug ( "JDirectivaList::JDirectivaList", 0 );
     
     setAttribute ( Qt::WA_DeleteOnClose );
     setupUi ( this );
@@ -55,7 +55,7 @@ JDirectivaList::JDirectivaList ( QWidget *parent, Qt::WFlags flag, edmode editmo
     setSubForm ( mui_list );
     hideBusqueda();
 
-    _depura ( "END JDirectivaList::JDirectivaList", 0 );
+    blDebug ( "END JDirectivaList::JDirectivaList", 0 );
 }
 
 /** Inicializa todos los componentes.
@@ -65,7 +65,7 @@ JDirectivaList::JDirectivaList ( QWidget *parent, Qt::WFlags flag, edmode editmo
 JDirectivaList::JDirectivaList ( BfCompany *comp, QWidget *parent, Qt::WFlags flag, edmode editmodo )
         : BlFormList ( comp, parent, flag, editmodo )
 {
-    _depura ( "JDirectivaList::JDirectivaList", 0 );
+    blDebug ( "JDirectivaList::JDirectivaList", 0 );
     
     setAttribute ( Qt::WA_DeleteOnClose );
     setupUi ( this );
@@ -89,15 +89,15 @@ JDirectivaList::JDirectivaList ( BfCompany *comp, QWidget *parent, Qt::WFlags fl
     /// Hacemos el tratamiento de los permisos que desabilita botones en caso de no haber suficientes permisos.
     trataPermisos ( "jdirectiva" );
     
-    _depura ( "END JDirectivaList::JDirectivaList", 0 );
+    blDebug ( "END JDirectivaList::JDirectivaList", 0 );
 }
 
 /** No requiere acciones especiales en el destructor.
 */
 JDirectivaList::~JDirectivaList()
 {
-    _depura ( "JDirectivaList::~JDirectivaList", 0 );
-    _depura ( "END JDirectivaList::~JDirectivaList", 0 );
+    blDebug ( "JDirectivaList::~JDirectivaList", 0 );
+    blDebug ( "END JDirectivaList::~JDirectivaList", 0 );
 }
 
 /** Hace la carag del listado.
@@ -106,24 +106,24 @@ JDirectivaList::~JDirectivaList()
 */
 void JDirectivaList::presentar()
 {
-    _depura ( "JDirectivaList::presentar", 0 );
+    blDebug ( "JDirectivaList::presentar", 0 );
     
     if ( mainCompany() != NULL ) {
         mui_list->cargar ( "SELECT * FROM jdirectiva  WHERE 1 = 1 " + generaFiltro() );
     } // end if
     
-    _depura ( "END JDirectivaList::presentar", 0 );
+    blDebug ( "END JDirectivaList::presentar", 0 );
 }
 
 /** Metodo auxiliar que genera la clausula WHERE del listado con las opciones de filtrado especificadas.
 */
 QString JDirectivaList::generaFiltro()
 {
-    _depura ( "JDirectivaList::generaFiltro", 0 );
+    blDebug ( "JDirectivaList::generaFiltro", 0 );
     
     QString filtro = "";
 
-    _depura ( "END JDirectivaList::generaFiltro", 0 );
+    blDebug ( "END JDirectivaList::generaFiltro", 0 );
     
     return ( filtro );
 }
@@ -133,25 +133,25 @@ QString JDirectivaList::generaFiltro()
 */
 void JDirectivaList::crear()
 {
-    _depura ( "JDirectivaList::crear", 0 );
+    blDebug ( "JDirectivaList::crear", 0 );
     
     JDirectivaView *bud = new JDirectivaView ( ( BfCompany * ) mainCompany(), 0 );
     mainCompany() ->m_pWorkspace->addWindow ( bud );
     bud->show();
     bud->pintar();
     
-    _depura ( "JDirectivaList::crear", 0 );
+    blDebug ( "JDirectivaList::crear", 0 );
 }
 
 /** La impresion de listados esta completamente delegada a la clase SubForm3
 */
 void JDirectivaList::imprimir()
 {
-    _depura ( "JDirectivaList::imprimir", 0 );
+    blDebug ( "JDirectivaList::imprimir", 0 );
     
     mui_list->imprimirPDF ( _ ( "Actividades" ) );
     
-    _depura ( "END JDirectivaList::imprimir", 0 );
+    blDebug ( "END JDirectivaList::imprimir", 0 );
 }
 
 /** SLOT que responde a la pulsacion del boton borrar.
@@ -162,7 +162,7 @@ void JDirectivaList::imprimir()
 */
 void JDirectivaList::borrar()
 {
-    _depura ( "JDirectivaList::borrar", 0 );
+    blDebug ( "JDirectivaList::borrar", 0 );
     
     int a = mui_list->currentRow();
     
@@ -185,12 +185,12 @@ void JDirectivaList::borrar()
         mensajeInfo ( _ ( "Error al borrar el cobro a cliente" ) );
     } // end try
     
-    _depura ( "END:JDirectivaList::borrar", 0 );
+    blDebug ( "END:JDirectivaList::borrar", 0 );
 }
 
 void JDirectivaList::editar ( int )
 {
-    _depura ( "JDirectivaList::editar", 0 );
+    blDebug ( "JDirectivaList::editar", 0 );
     
     try {
         mdb_idjdirectiva = mui_list->dbValue ( "idjdirectiva" );
@@ -209,7 +209,7 @@ void JDirectivaList::editar ( int )
         mensajeInfo ( _ ( "Debe seleccionar una fila primero" ) );
     } // end try
     
-    _depura ( "END JDirectivaList::editar", 0 );
+    blDebug ( "END JDirectivaList::editar", 0 );
 }
 
 /** SLOT que responde a la peticion de menu contextual en el subformulario.
@@ -217,7 +217,7 @@ void JDirectivaList::editar ( int )
 /// \TODO: Revisar si este metodo es util.
 void JDirectivaList::submenu ( const QPoint & )
 {
-    _depura ( "JDirectivaList::submenu", 0 );
+    blDebug ( "JDirectivaList::submenu", 0 );
     
     int a = mui_list->currentRow();
     
@@ -237,7 +237,7 @@ void JDirectivaList::submenu ( const QPoint & )
         
     delete popup;
     
-    _depura ( "JDirectivaList::submenu", 0 );
+    blDebug ( "JDirectivaList::submenu", 0 );
 }
 
 /** Inicializa la clase con el puntero a la company que se esta utilizando
@@ -252,8 +252,8 @@ void JDirectivaList::setMainCompany ( BfCompany *comp )
 **/
 QString JDirectivaList::idjdirectiva()
 {
-    _depura ( "JDirectivaList::idjdirectiva", 0 );
-    _depura ( "END JDirectivaList::idjdirectiva", 0 );
+    blDebug ( "JDirectivaList::idjdirectiva", 0 );
+    blDebug ( "END JDirectivaList::idjdirectiva", 0 );
     
     return mdb_idjdirectiva;
 }
@@ -266,7 +266,7 @@ QString JDirectivaList::idjdirectiva()
 */
 JDirectivaListSubForm::JDirectivaListSubForm ( QWidget *parent ) : BfSubForm ( parent )
 {
-    _depura ( "JDirectivaListSubForm::JDirectivaListSubForm", 0 );
+    blDebug ( "JDirectivaListSubForm::JDirectivaListSubForm", 0 );
     
     /// Disparamos los plugins.
     int res = g_plugins->lanza ( "JDirectivaListSubForm_JDirectivaListSubForm", this );
@@ -283,11 +283,11 @@ JDirectivaListSubForm::JDirectivaListSubForm ( QWidget *parent ) : BfSubForm ( p
     setDelete ( FALSE );
     setSortingEnabled ( TRUE );
     
-    _depura ( "END JDirectivaListSubForm::JDirectivaListSubForm", 0 );
+    blDebug ( "END JDirectivaListSubForm::JDirectivaListSubForm", 0 );
 }
 
 JDirectivaListSubForm::~JDirectivaListSubForm()
 {
-    _depura ( "JDirectivaListSubForm::~JDirectivaListSubForm", 0 );
-    _depura ( "END JDirectivaListSubForm::~JDirectivaListSubForm", 0 );
+    blDebug ( "JDirectivaListSubForm::~JDirectivaListSubForm", 0 );
+    blDebug ( "END JDirectivaListSubForm::~JDirectivaListSubForm", 0 );
 }
