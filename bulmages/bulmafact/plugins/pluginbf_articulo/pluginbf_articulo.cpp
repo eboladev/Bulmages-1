@@ -197,7 +197,7 @@ int Busqueda_on_mui_buscar_clicked ( BlSearchWidget *busq )
         QDialog *diag = new QDialog ( 0 );
         diag->setModal ( true );
         diag->setGeometry ( QRect ( 0, 0, 750, 550 ) );
-        centrarEnPantalla ( diag );
+        blCenterOnScreen ( diag );
 
         ArticuloList *arts = new ArticuloList ( ( BfCompany * ) busq->mainCompany(), diag, 0, BL_SELECT_MODE );
         busq->connect ( arts, SIGNAL ( selected ( QString ) ), diag, SLOT ( accept() ) );
@@ -227,7 +227,7 @@ int Busqueda_on_mui_buscar_clicked ( BlSearchWidget *busq )
         QDialog *diag = new QDialog ( 0 );
         diag->setModal ( true );
         diag->setGeometry ( QRect ( 0, 0, 750, 550 ) );
-        centrarEnPantalla ( diag );
+        blCenterOnScreen ( diag );
 
         TipoArticuloList *arts = new TipoArticuloList ( ( BfCompany * ) busq->mainCompany(), 0, TRUE );
 
@@ -257,7 +257,7 @@ int Busqueda_on_mui_buscar_clicked ( BlSearchWidget *busq )
         QDialog *diag = new QDialog ( 0 );
         diag->setModal ( true );
         diag->setGeometry ( QRect ( 0, 0, 750, 550 ) );
-        centrarEnPantalla ( diag );
+        blCenterOnScreen ( diag );
 
         FamiliasView *arts = new FamiliasView ( ( BfCompany * ) busq->mainCompany(), 0, TRUE );
 
@@ -297,7 +297,7 @@ int BfSubForm_pressedAsterisk ( BfSubForm *sub )
     ArticuloList *artlist = new ArticuloList ( ( BfCompany * ) sub->mainCompany(), NULL, 0, BL_SELECT_MODE );
     /// Esto es convertir un QWidget en un sistema modal de dialogo.
     sub->setEnabled ( false );
-    centrarEnPantalla(artlist);
+    blCenterOnScreen(artlist);
     artlist->show();
     artlist->m_filtro->setFocus(Qt::PopupFocusReason);
     while ( !artlist->isHidden() )

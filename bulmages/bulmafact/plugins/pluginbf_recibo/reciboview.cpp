@@ -43,7 +43,7 @@ ReciboView::ReciboView ( BfCompany *comp, QWidget *parent ) : BfForm ( comp, par
 
     try {
         setupUi ( this );
-        centrarEnPantalla ( this );
+        blCenterOnScreen ( this );
 
         setTitleName ( _ ( "Recibo" ) );
         setDbTableName ( "recibo" );

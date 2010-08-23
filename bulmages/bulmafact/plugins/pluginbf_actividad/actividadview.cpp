@@ -47,7 +47,7 @@ ActividadView::ActividadView ( BfCompany *comp, QWidget *parent )
     
     try {
         setupUi ( this );
-        centrarEnPantalla ( this );
+        blCenterOnScreen ( this );
 
         setTitleName ( _ ( "Actividad" ) );
         setDbTableName ( "actividad" );

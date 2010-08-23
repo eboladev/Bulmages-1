@@ -48,7 +48,7 @@ AlumnoView::AlumnoView ( BfCompany *comp, QWidget *parent ) : BfForm ( comp, par
     try {
     
         setupUi ( this );
-        centrarEnPantalla ( this );
+        blCenterOnScreen ( this );
 
         setTitleName ( _ ( "Alumno" ) );
         setDbTableName ( "alumno" );

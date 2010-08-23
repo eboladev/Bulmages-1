@@ -49,7 +49,7 @@ PagoView::PagoView ( BfCompany *comp, QWidget *parent )
     try {
         setAttribute ( Qt::WA_DeleteOnClose );
         setupUi ( this );
-        centrarEnPantalla ( this );
+        blCenterOnScreen ( this );
         /// Usurpamos la identidad de mlist y ponemos nuestro propio widget con sus cosillas.
         mui_idproveedor->setMainCompany ( comp );
         mui_refpago->setMainCompany ( comp );

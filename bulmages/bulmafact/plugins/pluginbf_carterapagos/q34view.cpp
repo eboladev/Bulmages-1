@@ -137,7 +137,7 @@ QByteArray Q34View::cabeceraPresentador ( QTextStream &out, QString idvencimient
     delete cur;
     QString sufijo = "000";
     QString codpresent = nif + sufijo;
-    codpresent = ascii127 ( codpresent ).rightJustified ( 10, '0' );
+    codpresent = blStringToUsAscii ( codpresent ).rightJustified ( 10, '0' );
     if ( codpresent.size() > 10 )  blDebug ( "El CIF del ordenante supera la longitud maxima", 2 );
     cab_present.append ( codpresent.toLatin1() );
 
@@ -165,17 +165,17 @@ QByteArray Q34View::cabeceraPresentador ( QTextStream &out, QString idvencimient
     cab_present.append ( fechaemfich.toLatin1() );
 
     /// Entidad Receptora del fichero Longitud: 4
-    QString ent_recept = ascii127 ( curbanco->valor ( "codentidadbanco" ) ).leftJustified ( 4, '0' );
+    QString ent_recept = blStringToUsAscii ( curbanco->valor ( "codentidadbanco" ) ).leftJustified ( 4, '0' );
     if ( ent_recept.size() > 4 ) blDebug ( "Entidad bancaria supera longitud maxima", 2 );
     cab_present.append ( ent_recept.toLatin1() );
 
     /// Oficina Receptora del fichero Longitud: 4
-    QString ofi_recept = ascii127 ( curbanco->valor ( "codagenciabanco" ) ).leftJustified ( 4, '0' );
+    QString ofi_recept = blStringToUsAscii ( curbanco->valor ( "codagenciabanco" ) ).leftJustified ( 4, '0' );
     if ( ofi_recept.size() > 4 ) blDebug ( "Oficina bancaria supera longitud maxima", 2 );
     cab_present.append ( ofi_recept.toLatin1() );
 
     /// Cuenta Receptora del fichero Longitud: 10
-    QString cta_recept = ascii127 ( curbanco->valor ( "numcuentabanco" ) ).leftJustified ( 10, '0' );
+    QString cta_recept = blStringToUsAscii ( curbanco->valor ( "numcuentabanco" ) ).leftJustified ( 10, '0' );
     if ( cta_recept.size() > 10 ) blDebug ( "Cuenta bancaria supera longitud maxima", 2 );
     cab_present.append ( cta_recept.toLatin1() );
 
@@ -189,7 +189,7 @@ QByteArray Q34View::cabeceraPresentador ( QTextStream &out, QString idvencimient
     cab_present.append ( QString ( 2, ' ' ).toLatin1() );
 
     /// DC Receptora del fichero Longitud: 2
-    QString dc_recept = ascii127 ( curbanco->valor ( "dcbanco" ) ).leftJustified ( 2, '0' );
+    QString dc_recept = blStringToUsAscii ( curbanco->valor ( "dcbanco" ) ).leftJustified ( 2, '0' );
     if ( dc_recept.size() > 2 ) blDebug ( "Cuenta bancaria supera longitud maxima", 2 );
     cab_present.append ( dc_recept.toLatin1() );
 
@@ -208,7 +208,7 @@ QByteArray Q34View::cabeceraPresentador ( QTextStream &out, QString idvencimient
     codpresent = cur->valor ( "valor" );
     delete cur;
 
-    codpresent = ascii127 ( codpresent ).rightJustified ( 36, '0' );
+    codpresent = blStringToUsAscii ( codpresent ).rightJustified ( 36, '0' );
     if ( codpresent.size() > 36 )  blDebug ( "El CIF del ordenante supera la longitud maxima", 2 );
     cab_present1.append ( codpresent.toLatin1() );
 
@@ -226,7 +226,7 @@ QByteArray Q34View::cabeceraPresentador ( QTextStream &out, QString idvencimient
     codpresent = cur->valor ( "valor" );
     delete cur;
 
-    codpresent = ascii127 ( codpresent ).rightJustified ( 36, '0' );
+    codpresent = blStringToUsAscii ( codpresent ).rightJustified ( 36, '0' );
     if ( codpresent.size() > 36 )  blDebug ( "El CIF del ordenante supera la longitud maxima", 2 );
     cab_present2.append ( codpresent.toLatin1() );
 
@@ -244,7 +244,7 @@ QByteArray Q34View::cabeceraPresentador ( QTextStream &out, QString idvencimient
     codpresent = cur->valor ( "valor" );
     delete cur;
 
-    codpresent = ascii127 ( codpresent ).rightJustified ( 36, '0' );
+    codpresent = blStringToUsAscii ( codpresent ).rightJustified ( 36, '0' );
     if ( codpresent.size() > 36 )  blDebug ( "El CIF del ordenante supera la longitud maxima", 2 );
     cab_present3.append ( codpresent.toLatin1() );
 
@@ -303,7 +303,7 @@ QByteArray Q34View::cobroQ34 ( QTextStream &out, QString idvencimientop )
     delete cur;
     QString sufijo = "000";
     QString codpresent = nif + sufijo;
-    codpresent = ascii127 ( codpresent ).rightJustified ( 10, '0' );
+    codpresent = blStringToUsAscii ( codpresent ).rightJustified ( 10, '0' );
     if ( codpresent.size() > 10 )  blDebug ( "El CIF del ordenante supera la longitud maxima", 2 );
     cab_indob.append ( codpresent.toLatin1() );
 
@@ -379,7 +379,7 @@ QByteArray Q34View::cobroQ34 ( QTextStream &out, QString idvencimientop )
     cab_indob.append ("011");
 
 // el nombre del proveedor
-    QString nomdomiciliacion = ascii127(curproveedor->valor ( "nomproveedor" ));
+    QString nomdomiciliacion = blStringToUsAscii(curproveedor->valor ( "nomproveedor" ));
 
     nomdomiciliacion = nomdomiciliacion.leftJustified ( 36, ' ' );
     nomdomiciliacion = nomdomiciliacion.left(36);
@@ -437,7 +437,7 @@ QByteArray Q34View::totalGeneral ( QTextStream &out, QString importes, QString d
     delete cur;
     QString sufijo = "000";
     QString codpresent = nif + sufijo;
-    codpresent = ascii127 ( codpresent ).rightJustified ( 10, '0' );
+    codpresent = blStringToUsAscii ( codpresent ).rightJustified ( 10, '0' );
     if ( codpresent.size() > 10 )  blDebug ( "El CIF del ordenante supera la longitud maxima", 2 );
     cab_indob.append ( codpresent.toLatin1() );
 

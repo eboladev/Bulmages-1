@@ -47,7 +47,7 @@ ProfesorView::ProfesorView ( BfCompany *comp, QWidget *parent )
     
     try {
         setupUi ( this );
-        centrarEnPantalla ( this );
+        blCenterOnScreen ( this );
 
         setTitleName ( _ ( "Monitor" ) );
         setDbTableName ( "profesor" );

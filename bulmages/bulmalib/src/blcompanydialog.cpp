@@ -195,7 +195,7 @@ BlCompanyDialog::BlCompanyDialog ( QWidget *parent, QString tipo, const char *na
     setModal ( modal );
     this->setWindowTitle ( name );
     setupUi ( this );
-    centrarEnPantalla ( this );
+    blCenterOnScreen ( this );
 
     mui_empresas->installEventFilter ( this );
     QObject::connect ( botonCancelar, SIGNAL ( clicked ( bool ) ), this, SLOT ( s_botonCancelar() ) );

@@ -44,7 +44,7 @@ BcModelo347ListView::BcModelo347ListView ( BcCompany *emp, QString ejerActual, Q
     ffinal->setText ( blNormalizeDate ( "31/12/" + ejerActual ).toString ( "dd/MM/yyyy" ) );
     /// Carga las tablas en pantalla.
     on_m_boton_recalcular_clicked();
-    centrarEnPantalla ( this );
+    blCenterOnScreen ( this );
     blDebug ( "END BcModelo347ListView::BcModelo347ListView", 0 );
 }
 
@@ -55,7 +55,7 @@ BcModelo347ListView::BcModelo347ListView ( BcCompany *emp, QString ejerActual, Q
 BcModelo347ListView::~BcModelo347ListView()
 {
     blDebug ( "BcModelo347ListView::~BcModelo347ListView", 0 );
-    centrarEnPantalla ( this );
+    blCenterOnScreen ( this );
     blDebug ( "END BcModelo347ListView::~BcModelo347ListView", 0 );
 }
 

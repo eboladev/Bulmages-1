@@ -47,7 +47,7 @@ JDirectivaView::JDirectivaView ( BfCompany *comp, QWidget *parent )
     
     try {
         setupUi ( this );
-        centrarEnPantalla ( this );
+        blCenterOnScreen ( this );
 
         setTitleName ( _ ( "Junta Directiva" ) );
         setDbTableName ( "jdirectiva" );

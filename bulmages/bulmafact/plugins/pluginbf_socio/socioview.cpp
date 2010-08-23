@@ -48,7 +48,7 @@ SocioView::SocioView ( BfCompany *comp, QWidget *parent ) : BfForm ( comp, paren
     try {
     
         setupUi ( this );
-        centrarEnPantalla ( this );
+        blCenterOnScreen ( this );
 
         setTitleName ( _ ( "Socio" ) );
         setDbTableName ( "cliente" );

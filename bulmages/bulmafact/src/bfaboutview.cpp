@@ -39,7 +39,7 @@ BfAboutView::BfAboutView ( QDialog *parent ) : QDialog ( parent )
     QString str_sistema;
     
     setupUi ( this );
-    centrarEnPantalla ( this );
+    blCenterOnScreen ( this );
 
     mui_lbversion->setText ( mui_lbversion->text() + " " +   _ ( "Compilado usando la version de QT:" ) + " " + QT_VERSION_STR );
 

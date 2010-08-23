@@ -291,7 +291,7 @@ int Busqueda_on_mui_buscar_clicked ( BlSearchWidget *busq )
         QDialog *diag = new QDialog ( 0 );
         diag->setModal ( true );
         diag->setGeometry ( QRect ( 0, 0, 750, 550 ) );
-        centrarEnPantalla ( diag );
+        blCenterOnScreen ( diag );
 
 //        ClientsList *listcuentas = new ClientsList ( ( BcCompany * ) busq->mainCompany(), diag, 0, BL_SELECT_MODE );
         /// Creamos una instancia del selector de cuentas.

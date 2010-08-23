@@ -47,7 +47,7 @@ ConvReunionView::ConvReunionView ( BfCompany *comp, QWidget *parent ) : BfForm (
     try {
     
         setupUi ( this );
-        centrarEnPantalla ( this );
+        blCenterOnScreen ( this );
 
         setTitleName ( _ ( "Convocatoria de reunion" ) );
         setDbTableName ( "reunion" );

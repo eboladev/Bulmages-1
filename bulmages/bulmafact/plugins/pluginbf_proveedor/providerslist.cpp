@@ -144,7 +144,7 @@ void ProveedorList::crear()
         QDialog *diag = new QDialog ( 0 );
         diag->setModal ( true );
         diag->setGeometry ( QRect ( 0, 0, 750, 550 ) );
-        centrarEnPantalla ( diag );
+        blCenterOnScreen ( diag );
 
 	ProveedorView *bud = new ProveedorView ( ( BfCompany * ) mainCompany(), 0 );
         /// Creamos un layout donde estara el contenido de la ventana y la ajustamos al QDialog

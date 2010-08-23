@@ -48,7 +48,7 @@ EmitirRecibosView::EmitirRecibosView ( BfCompany *comp, QWidget *parent )
     try {
     
         setupUi ( this );
-        centrarEnPantalla ( this );
+        blCenterOnScreen ( this );
 
         setTitleName ( _ ( "EmitirRecibos" ) );
         setDbTableName ( "recibo" );

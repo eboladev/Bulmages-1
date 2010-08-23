@@ -829,7 +829,7 @@ QString num2texto ( QString numero, QString moneda, QString singular )
 }
 
 
-void centrarEnPantalla ( QWidget *ventana )
+void blCenterOnScreen ( QWidget *ventana )
 {
     QRect rect;
     QDesktopWidget *escritorio = new QDesktopWidget();
@@ -838,7 +838,7 @@ void centrarEnPantalla ( QWidget *ventana )
 }
 
 
-QString ascii127 ( const QString &orig )
+QString blStringToUsAscii ( const QString &orig )
 {
     /// Recorre todo el QString y sustituye los caracteres NO ASCII y
     /// los caracteres que no van muy bien en un XML.
@@ -911,8 +911,8 @@ char codigoNIF[] = {'T', 'R', 'W', 'A', 'G', 'M', 'Y', 'F', 'P', 'D', 'X', 'B', 
 
 
 /// Suma los digitos de un numero  y devuelve el resultado.
-/// por ejemplo sumaDigitos(56) devolveria 5 + 6 = 11
-int sumaDigitos ( int val )
+/// por ejemplo blSumAllDigits(56) devolveria 5 + 6 = 11
+int blSumAllDigits ( int val )
 {
     QString cad = QString::number ( val );
     int res = 0;
@@ -990,7 +990,7 @@ bool validarCIF ( QString cif1, QChar &digit )
         return TRUE;
     } // end if
     int valpar = cif[2].digitValue() + cif[4].digitValue() + cif[6].digitValue();
-    int valimpar = sumaDigitos ( cif[1].digitValue() * 2 ) + sumaDigitos ( cif[3].digitValue() * 2 ) + sumaDigitos ( cif[5].digitValue() * 2 ) + sumaDigitos ( cif[7].digitValue() * 2 );
+    int valimpar = blSumAllDigits ( cif[1].digitValue() * 2 ) + blSumAllDigits ( cif[3].digitValue() * 2 ) + blSumAllDigits ( cif[5].digitValue() * 2 ) + blSumAllDigits ( cif[7].digitValue() * 2 );
     int sumapar = valpar + valimpar;
     QString textsumapar = QString::number ( sumapar );
     int c = textsumapar.right ( 1 ).toInt();

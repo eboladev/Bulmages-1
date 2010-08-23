@@ -43,7 +43,7 @@ CobroView::CobroView ( BfCompany *comp, QWidget *parent )
     setAttribute ( Qt::WA_DeleteOnClose );
     try {
         setupUi ( this );
-        centrarEnPantalla ( this );
+        blCenterOnScreen ( this );
         /// Usurpamos la identidad de mlist y ponemos nuestro propio widget con sus cosillas.
         mui_idcliente->setMainCompany ( comp );
         mui_refcobro->setMainCompany ( comp );

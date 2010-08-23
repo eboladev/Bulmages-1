@@ -43,7 +43,7 @@ ComisionView::ComisionView ( BfCompany *comp, QWidget *parent )
     setAttribute ( Qt::WA_DeleteOnClose );
     try {
         setupUi ( this );
-        centrarEnPantalla ( this );
+        blCenterOnScreen ( this );
 
         setTitleName ( _ ( "Comision" ) );
         setDbTableName ( "comision" );

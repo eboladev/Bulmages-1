@@ -401,7 +401,7 @@ int Busqueda_on_mui_buscar_clicked ( BlSearchWidget *busq )
         QDialog *diag = new QDialog ( 0 );
         diag->setModal ( true );
         diag->setGeometry ( QRect ( 0, 0, 750, 550 ) );
-        centrarEnPantalla ( diag );
+        blCenterOnScreen ( diag );
 
         ActividadesList *actividades = new ActividadesList ( ( BfCompany * ) busq->mainCompany(), diag, 0, BL_SELECT_MODE );
         busq->connect ( actividades, SIGNAL ( selected ( QString ) ), diag, SLOT ( accept() ) );

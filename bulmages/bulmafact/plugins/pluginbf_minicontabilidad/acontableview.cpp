@@ -43,7 +43,7 @@ ApunteContableView::ApunteContableView ( BfCompany *comp, QWidget *parent ) : Bf
 
     try {
         setupUi ( this );
-        centrarEnPantalla ( this );
+        blCenterOnScreen ( this );
 
         setTitleName ( _ ( "Diario Contable" ) );
         setDbTableName ( "acontable" );

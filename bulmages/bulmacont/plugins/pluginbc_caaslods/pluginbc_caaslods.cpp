@@ -147,7 +147,7 @@ void pluginBC_caaslODS::formDatosBalance ( )
       QDialog *diag = new QDialog ( 0 );
       diag->setModal ( true );
       diag->setGeometry ( QRect ( 0, 0, 450, 350 ) );
-      centrarEnPantalla ( diag );
+      blCenterOnScreen ( diag );
 
       DatosView *pidefechas = new DatosView ( g_comp, diag, 0, BL_SELECT_MODE );
 

@@ -99,15 +99,15 @@ void BL_EXPORT invocaPYS ( const QString arch );
 void BL_EXPORT generaPYS ( const QString arch );
 
 QString BL_EXPORT num2texto ( QString numero, QString moneda = "euros", QString singular = "euro" );
-void BL_EXPORT centrarEnPantalla ( QWidget *ventana );
+void BL_EXPORT blCenterOnScreen ( QWidget *ventana );
 QString BL_EXPORT windowID ( const QString & );
 /// Convierte un string en un string valido para ser escrito desde un script.
 QString BL_EXPORT parsearCode ( const QString &cad );
-QString BL_EXPORT ascii127 ( const QString &orig );
+QString BL_EXPORT blStringToUsAscii ( const QString &orig );
 QString BL_EXPORT data2python(QString string);
 bool BL_EXPORT validarCIF(QString cif1, QChar &digit);
 bool BL_EXPORT validarNIF(QString nif1, QChar &digit);
-int BL_EXPORT sumaDigitos(int val);
+int BL_EXPORT blSumAllDigits(int val);
 bool BL_EXPORT validarCIFNIF(QString nifcif, QChar &digit);
 
 #endif
