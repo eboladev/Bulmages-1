@@ -69,8 +69,8 @@ QString BL_EXPORT pythonEscape ( const QString &text);
 QString BL_EXPORT genEscape (const QString &text, int tipoEscape = 0);
 
 /// Proteje cadenas de texto pasandoles una sustitucion de codigos especiales de XML.
-QString BL_EXPORT XMLProtect ( const QString& );
-QString BL_EXPORT XMLDesProtect ( const QString& );
+QString BL_EXPORT blXMLEncode ( const QString& );
+QString BL_EXPORT blXMLDecode ( const QString& );
 /// Ajusta un codigo de cuenta a una longitud determinada pasada como parametro.
 QString BL_EXPORT ajustacodigo ( QString, unsigned int );
 void BL_EXPORT reemplazaarchivo ( QString, QString, QString, QString );

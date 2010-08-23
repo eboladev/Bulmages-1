@@ -177,7 +177,7 @@ void myplugsubformsxc::sacaSXC()
                 fitxersortidatxt += "\n";
 
             } // end if
-        } // end forXMLProtect(subf->mui_list->item(i, j)->text())
+        } // end for blXMLEncode(subf->mui_list->item(i, j)->text())
         y++;
         barra.setValue ( i );
     } // end for

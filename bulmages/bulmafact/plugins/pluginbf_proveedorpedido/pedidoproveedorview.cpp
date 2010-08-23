@@ -311,7 +311,7 @@ void PedidoProveedorView::imprimir()
             basesimp[linea->dbValue ( "ivalpedidoproveedor" ) ] = basesimp[linea->dbValue ( "ivalpedidoproveedor" ) ] + base - base * BlFixed ( linea->dbValue ( "descuentolpedidoproveedor" ).toAscii().constData() ) / 100;
             fitxersortidatxt += "<tr>\n";
             fitxersortidatxt += "   <td>" + linea->dbValue ( "codigocompletoarticulo" ) + "</td>\n";
-            fitxersortidatxt += "   <td><para>" + XMLProtect ( linea->dbValue ( "desclpedidoproveedor" ) ) + "</para></td>\n";
+            fitxersortidatxt += "   <td><para>" + blXMLEncode ( linea->dbValue ( "desclpedidoproveedor" ) ) + "</para></td>\n";
             fitxersortidatxt += "   <td>" + l.sprintf ( "%s", linea->dbValue ( "cantlpedidoproveedor" ).toAscii().constData() ) + "</td>\n";
             fitxersortidatxt += "   <td>" + l.sprintf ( "%s", linea->dbValue ( "pvplpedidoproveedor" ).toAscii().constData() ) + "</td>\n";
             fitxersortidatxt += "   <td>" + l.sprintf ( "%s", linea->dbValue ( "descuentolpedidoproveedor" ).toAscii().constData() ) + " %</td>\n";

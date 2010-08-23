@@ -121,7 +121,7 @@ QString genEscape ( const QString &param, int tipoEscape )
 /// esta funcion, y creo que con escapeXml pasamos (para
 /// listados rml al menos). Podemos tener el buffer en
 /// memoria en unicode hasta escribirlo a fichero en ficha::generaRML
-QString XMLProtect ( const QString &string )
+QString blXMLEncode ( const QString &string )
 {
     /// Recorre todo el QString y sustituye los caracteres NO ASCII y
     /// los caracteres que no van muy bien en un XML.
@@ -168,7 +168,7 @@ QString XMLProtect ( const QString &string )
 
 
 /// Proteje cadenas de texto pasandoles una sustitucion de codigos especiales de XML.
-QString XMLDesProtect ( const QString &string )
+QString blXMLDecode ( const QString &string )
 {
     /// Recorre todo el QString y sustituye los caracteres NO ASCII y
     /// los caracteres que no van muy bien en un XML.

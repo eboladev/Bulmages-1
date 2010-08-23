@@ -691,10 +691,10 @@ int BlImportExport::bulmafact2XML ( QFile &xmlfile, unsigned long long int tipo 
         BlDbRecordSet *curc = dbConnection->loadQuery ( query );
         while ( !curc->eof() ) {
             stream << "<FORMA_PAGO>\n";
-            stream << "\t<IDFORMA_PAGO>" << XMLProtect ( curc->valor ( "idforma_pago" ) ) << "</IDFORMA_PAGO>\n";
-            stream << "\t<DESCFORMA_PAGO>" << XMLProtect ( curc->valor ( "descforma_pago" ) ) << "</DESCFORMA_PAGO>\n";
-            stream << "\t<DIAS1TFORMA_PAGO>" << XMLProtect ( curc->valor ( "dias1tforma_pago" ) ) << "</DIAS1TFORMA_PAGO>\n";
-            stream << "\t<DESCUENTOFORMA_PAGO>" << XMLProtect ( curc->valor ( "descuentoforma_pago" ) ) << "</DESCUENTOFORMA_PAGO>\n";
+            stream << "\t<IDFORMA_PAGO>" << blXMLEncode ( curc->valor ( "idforma_pago" ) ) << "</IDFORMA_PAGO>\n";
+            stream << "\t<DESCFORMA_PAGO>" << blXMLEncode ( curc->valor ( "descforma_pago" ) ) << "</DESCFORMA_PAGO>\n";
+            stream << "\t<DIAS1TFORMA_PAGO>" << blXMLEncode ( curc->valor ( "dias1tforma_pago" ) ) << "</DIAS1TFORMA_PAGO>\n";
+            stream << "\t<DESCUENTOFORMA_PAGO>" << blXMLEncode ( curc->valor ( "descuentoforma_pago" ) ) << "</DESCUENTOFORMA_PAGO>\n";
             stream << "</FORMA_PAGO>\n";
             mensajeria ( "<LI>" + _("Exportando nueva forma de pago") + "</LI>\n" );
             curc->nextRecord();
@@ -707,16 +707,16 @@ int BlImportExport::bulmafact2XML ( QFile &xmlfile, unsigned long long int tipo 
         BlDbRecordSet *curc = dbConnection->loadQuery ( query );
         while ( !curc->eof() ) {
             stream << "<ALMACEN>\n";
-            stream << "\t<IDALMACEN>" << XMLProtect ( curc->valor ( "idalmacen" ) ) << "</IDALMACEN>\n";
-            stream << "\t<CODIGOALMACEN>" << XMLProtect ( curc->valor ( "codigoalmacen" ) ) << "</CODIGOALMACEN>\n";
-            stream << "\t<NOMALMACEN>" << XMLProtect ( curc->valor ( "nomalmacen" ) ) << "</NOMALMACEN>\n";
-            stream << "\t<DIRALMACEN>" << XMLProtect ( curc->valor ( "diralmacen" ) ) << "</DIRALMACEN>\n";
-            stream << "\t<POBLALMACEN>" << XMLProtect ( curc->valor ( "poblalmacen" ) ) << "</POBLALMACEN>\n";
-            stream << "\t<CPALMACEN>" << XMLProtect ( curc->valor ( "cpalmacen" ) ) << "</CPALMACEN>\n";
-            stream << "\t<TELALMACEN>" << XMLProtect ( curc->valor ( "telalmacen" ) ) << "</TELALMACEN>\n";
-            stream << "\t<FAXALMACEN>" << XMLProtect ( curc->valor ( "faxalmacen" ) ) << "</FAXALMACEN>\n";
-            stream << "\t<EMAILALMACEN>" << XMLProtect ( curc->valor ( "emailalmacen" ) ) << "</EMAILALMACEN>\n";
-            stream << "\t<INACTIVOALMACEN>" << XMLProtect ( curc->valor ( "inactivoalmacen" ) ) << "</INACTIVOALMACEN>\n";
+            stream << "\t<IDALMACEN>" << blXMLEncode ( curc->valor ( "idalmacen" ) ) << "</IDALMACEN>\n";
+            stream << "\t<CODIGOALMACEN>" << blXMLEncode ( curc->valor ( "codigoalmacen" ) ) << "</CODIGOALMACEN>\n";
+            stream << "\t<NOMALMACEN>" << blXMLEncode ( curc->valor ( "nomalmacen" ) ) << "</NOMALMACEN>\n";
+            stream << "\t<DIRALMACEN>" << blXMLEncode ( curc->valor ( "diralmacen" ) ) << "</DIRALMACEN>\n";
+            stream << "\t<POBLALMACEN>" << blXMLEncode ( curc->valor ( "poblalmacen" ) ) << "</POBLALMACEN>\n";
+            stream << "\t<CPALMACEN>" << blXMLEncode ( curc->valor ( "cpalmacen" ) ) << "</CPALMACEN>\n";
+            stream << "\t<TELALMACEN>" << blXMLEncode ( curc->valor ( "telalmacen" ) ) << "</TELALMACEN>\n";
+            stream << "\t<FAXALMACEN>" << blXMLEncode ( curc->valor ( "faxalmacen" ) ) << "</FAXALMACEN>\n";
+            stream << "\t<EMAILALMACEN>" << blXMLEncode ( curc->valor ( "emailalmacen" ) ) << "</EMAILALMACEN>\n";
+            stream << "\t<INACTIVOALMACEN>" << blXMLEncode ( curc->valor ( "inactivoalmacen" ) ) << "</INACTIVOALMACEN>\n";
             stream << "</ALMACEN>\n";
             curc->nextRecord();
         } // end while
@@ -728,16 +728,16 @@ int BlImportExport::bulmafact2XML ( QFile &xmlfile, unsigned long long int tipo 
         BlDbRecordSet *curc = dbConnection->loadQuery ( query );
         while ( !curc->eof() ) {
             stream << "<TRABAJADOR>\n";
-            stream << "\t<IDTRABAJADOR>" << XMLProtect ( curc->valor ( "idtrabajador" ) ) << "</IDTRABAJADOR>\n";
-            stream << "\t<NOMTRABAJADOR>" << XMLProtect ( curc->valor ( "nomtrabajador" ) ) << "</NOMTRABAJADOR>\n";
-            stream << "\t<APELLIDOSTRABAJADOR>" << XMLProtect ( curc->valor ( "apellidostrabajador" ) ) << "</APELLIDOSTRABAJADOR>\n";
-            stream << "\t<DIRTRABAJADOR>" << XMLProtect ( curc->valor ( "dirtrabajador" ) ) << "</DIRTRABAJADOR>\n";
-            stream << "\t<NSSTRABAJADOR>" << XMLProtect ( curc->valor ( "nsstrabajador" ) ) << "</NSSTRABAJADOR>\n";
-            stream << "\t<TELTRABAJADOR>" << XMLProtect ( curc->valor ( "teltrabajador" ) ) << "</TELTRABAJADOR>\n";
-            stream << "\t<MOVILTRABAJADOR>" << XMLProtect ( curc->valor ( "moviltrabajador" ) ) << "</MOVILTRABAJADOR>\n";
-            stream << "\t<EMAILTRABAJADOR>" << XMLProtect ( curc->valor ( "emailtrabajador" ) ) << "</EMAILTRABAJADOR>\n";
-            stream << "\t<FOTOTRABAJADOR>" << XMLProtect ( curc->valor ( "fototrabajador" ) ) << "</FOTOTRABAJADOR>\n";
-            stream << "\t<ACTIVOTRABAJADOR>" << XMLProtect ( curc->valor ( "activotrabajador" ) ) << "</ACTIVOTRABAJADOR>\n";
+            stream << "\t<IDTRABAJADOR>" << blXMLEncode ( curc->valor ( "idtrabajador" ) ) << "</IDTRABAJADOR>\n";
+            stream << "\t<NOMTRABAJADOR>" << blXMLEncode ( curc->valor ( "nomtrabajador" ) ) << "</NOMTRABAJADOR>\n";
+            stream << "\t<APELLIDOSTRABAJADOR>" << blXMLEncode ( curc->valor ( "apellidostrabajador" ) ) << "</APELLIDOSTRABAJADOR>\n";
+            stream << "\t<DIRTRABAJADOR>" << blXMLEncode ( curc->valor ( "dirtrabajador" ) ) << "</DIRTRABAJADOR>\n";
+            stream << "\t<NSSTRABAJADOR>" << blXMLEncode ( curc->valor ( "nsstrabajador" ) ) << "</NSSTRABAJADOR>\n";
+            stream << "\t<TELTRABAJADOR>" << blXMLEncode ( curc->valor ( "teltrabajador" ) ) << "</TELTRABAJADOR>\n";
+            stream << "\t<MOVILTRABAJADOR>" << blXMLEncode ( curc->valor ( "moviltrabajador" ) ) << "</MOVILTRABAJADOR>\n";
+            stream << "\t<EMAILTRABAJADOR>" << blXMLEncode ( curc->valor ( "emailtrabajador" ) ) << "</EMAILTRABAJADOR>\n";
+            stream << "\t<FOTOTRABAJADOR>" << blXMLEncode ( curc->valor ( "fototrabajador" ) ) << "</FOTOTRABAJADOR>\n";
+            stream << "\t<ACTIVOTRABAJADOR>" << blXMLEncode ( curc->valor ( "activotrabajador" ) ) << "</ACTIVOTRABAJADOR>\n";
             stream << "</TRABAJADOR>\n";
             curc->nextRecord();
         } // end while
@@ -749,30 +749,30 @@ int BlImportExport::bulmafact2XML ( QFile &xmlfile, unsigned long long int tipo 
         BlDbRecordSet *curc = dbConnection->loadQuery ( query );
         while ( !curc->eof() ) {
             stream << "<CLIENTE>\n";
-            stream << "\t<NOMCLIENTE>" << XMLProtect ( curc->valor ( "nomcliente" ) ) << "</NOMCLIENTE>\n";
-            stream << "\t<NOMALTCLIENTE>" << XMLProtect ( curc->valor ( "nomaltcliente" ) ) << "</NOMALTCLIENTE>\n";
-            stream << "\t<CIFCLIENTE>" << XMLProtect ( curc->valor ( "cifcliente" ) ) << "</CIFCLIENTE>\n";
-            stream << "\t<CODCLIENTE>" << XMLProtect ( curc->valor ( "codcliente" ) ) << "</CODCLIENTE>\n";
-            stream << "\t<BANCOCLIENTE>" << XMLProtect ( curc->valor ( "bancocliente" ) ) << "</BANCOCLIENTE>\n";
-            stream << "\t<DIRCLIENTE>" << XMLProtect ( curc->valor ( "dircliente" ) ) << "</DIRCLIENTE>\n";
-            stream << "\t<POBLCLIENTE>" << XMLProtect ( curc->valor ( "poblcliente" ) ) << "</POBLCLIENTE>\n";
-            stream << "\t<CPCLIENTE>" << XMLProtect ( curc->valor ( "cpcliente" ) ) << "</CPCLIENTE>\n";
-            stream << "\t<TELCLIENTE>" << XMLProtect ( curc->valor ( "telcliente" ) ) << "</TELCLIENTE>\n";
-            stream << "\t<TELTRABCLIENTE>" << XMLProtect ( curc->valor ( "teltrabcliente" ) ) << "</TELTRABCLIENTE>\n";
-            stream << "\t<MOVILCLIENTE>" << XMLProtect ( curc->valor ( "movilcliente" ) ) << "</MOVILCLIENTE>\n";
-            stream << "\t<FAXCLIENTE>" << XMLProtect ( curc->valor ( "faxcliente" ) ) << "</FAXCLIENTE>\n";
-            stream << "\t<MAILCLIENTE>" << XMLProtect ( curc->valor ( "mailcliente" ) ) << "</MAILCLIENTE>\n";
-            stream << "\t<URLCLIENTE>" << XMLProtect ( curc->valor ( "urlcliente" ) ) << "</URLCLIENTE>\n";
-            stream << "\t<CORPCLIENTE>" << XMLProtect ( curc->valor ( "corpcliente" ) ) << "</CORPCLIENTE>\n";
-            stream << "\t<FALTACLIENTE>" << XMLProtect ( curc->valor ( "faltacliente" ) ) << "</FALTACLIENTE>\n";
-            stream << "\t<FBAJACLIENTE>" << XMLProtect ( curc->valor ( "fbajacliente" ) ) << "</FBAJACLIENTE>\n";
-            stream << "\t<REGIMENFISCALCLIENTE>" << XMLProtect ( curc->valor ( "regimenfiscalcliente" ) ) << "</REGIMENFISCALCLIENTE>\n";
-            stream << "\t<COMENTCLIENTE>" << XMLProtect ( curc->valor ( "comentcliente" ) ) << "</COMENTCLIENTE>\n";
-            stream << "\t<ECOMMERCEDATACLIENTE>" << XMLProtect ( curc->valor ( "ecommercedatacliente" ) ) << "</ECOMMERCEDATACLIENTE>\n";
-            stream << "\t<INACTIVOCLIENTE>" << XMLProtect ( curc->valor ( "inactivocliente" ) ) << "</INACTIVOCLIENTE>\n";
-            stream << "\t<RECARGOEQCLIENTE>" << XMLProtect ( curc->valor ( "recargoeqcliente" ) ) << "</RECARGOEQCLIENTE>\n";
-            stream << "\t<IDFORMA_PAGO>" << XMLProtect ( curc->valor ( "idforma_pago" ) ) << "</IDFORMA_PAGO>\n";
-            stream << "\t<IDPROVINCIA>" << XMLProtect ( curc->valor ( "idprovincia" ) ) << "</IDPROVINCIA>\n";
+            stream << "\t<NOMCLIENTE>" << blXMLEncode ( curc->valor ( "nomcliente" ) ) << "</NOMCLIENTE>\n";
+            stream << "\t<NOMALTCLIENTE>" << blXMLEncode ( curc->valor ( "nomaltcliente" ) ) << "</NOMALTCLIENTE>\n";
+            stream << "\t<CIFCLIENTE>" << blXMLEncode ( curc->valor ( "cifcliente" ) ) << "</CIFCLIENTE>\n";
+            stream << "\t<CODCLIENTE>" << blXMLEncode ( curc->valor ( "codcliente" ) ) << "</CODCLIENTE>\n";
+            stream << "\t<BANCOCLIENTE>" << blXMLEncode ( curc->valor ( "bancocliente" ) ) << "</BANCOCLIENTE>\n";
+            stream << "\t<DIRCLIENTE>" << blXMLEncode ( curc->valor ( "dircliente" ) ) << "</DIRCLIENTE>\n";
+            stream << "\t<POBLCLIENTE>" << blXMLEncode ( curc->valor ( "poblcliente" ) ) << "</POBLCLIENTE>\n";
+            stream << "\t<CPCLIENTE>" << blXMLEncode ( curc->valor ( "cpcliente" ) ) << "</CPCLIENTE>\n";
+            stream << "\t<TELCLIENTE>" << blXMLEncode ( curc->valor ( "telcliente" ) ) << "</TELCLIENTE>\n";
+            stream << "\t<TELTRABCLIENTE>" << blXMLEncode ( curc->valor ( "teltrabcliente" ) ) << "</TELTRABCLIENTE>\n";
+            stream << "\t<MOVILCLIENTE>" << blXMLEncode ( curc->valor ( "movilcliente" ) ) << "</MOVILCLIENTE>\n";
+            stream << "\t<FAXCLIENTE>" << blXMLEncode ( curc->valor ( "faxcliente" ) ) << "</FAXCLIENTE>\n";
+            stream << "\t<MAILCLIENTE>" << blXMLEncode ( curc->valor ( "mailcliente" ) ) << "</MAILCLIENTE>\n";
+            stream << "\t<URLCLIENTE>" << blXMLEncode ( curc->valor ( "urlcliente" ) ) << "</URLCLIENTE>\n";
+            stream << "\t<CORPCLIENTE>" << blXMLEncode ( curc->valor ( "corpcliente" ) ) << "</CORPCLIENTE>\n";
+            stream << "\t<FALTACLIENTE>" << blXMLEncode ( curc->valor ( "faltacliente" ) ) << "</FALTACLIENTE>\n";
+            stream << "\t<FBAJACLIENTE>" << blXMLEncode ( curc->valor ( "fbajacliente" ) ) << "</FBAJACLIENTE>\n";
+            stream << "\t<REGIMENFISCALCLIENTE>" << blXMLEncode ( curc->valor ( "regimenfiscalcliente" ) ) << "</REGIMENFISCALCLIENTE>\n";
+            stream << "\t<COMENTCLIENTE>" << blXMLEncode ( curc->valor ( "comentcliente" ) ) << "</COMENTCLIENTE>\n";
+            stream << "\t<ECOMMERCEDATACLIENTE>" << blXMLEncode ( curc->valor ( "ecommercedatacliente" ) ) << "</ECOMMERCEDATACLIENTE>\n";
+            stream << "\t<INACTIVOCLIENTE>" << blXMLEncode ( curc->valor ( "inactivocliente" ) ) << "</INACTIVOCLIENTE>\n";
+            stream << "\t<RECARGOEQCLIENTE>" << blXMLEncode ( curc->valor ( "recargoeqcliente" ) ) << "</RECARGOEQCLIENTE>\n";
+            stream << "\t<IDFORMA_PAGO>" << blXMLEncode ( curc->valor ( "idforma_pago" ) ) << "</IDFORMA_PAGO>\n";
+            stream << "\t<IDPROVINCIA>" << blXMLEncode ( curc->valor ( "idprovincia" ) ) << "</IDPROVINCIA>\n";
             stream << "</CLIENTE>\n";
             curc->nextRecord();
         } // end while
@@ -784,23 +784,23 @@ int BlImportExport::bulmafact2XML ( QFile &xmlfile, unsigned long long int tipo 
         BlDbRecordSet *curc = dbConnection->loadQuery ( query );
         while ( !curc->eof() ) {
             stream << "<PROVEEDOR>\n";
-            stream << "\t<IDPROVEEDOR>" << XMLProtect ( curc->valor ( "idproveedor" ) ) << "</IDPROVEEDOR>\n";
-            stream << "\t<NOMPROVEEDOR>" << XMLProtect ( curc->valor ( "nomproveedor" ) ) << "</NOMPROVEEDOR>\n";
-            stream << "\t<NOMALTPROVEEDOR>" << XMLProtect ( curc->valor ( "nomaltproveedor" ) ) << "</NOMALTPROVEEDOR>\n";
-            stream << "\t<CIFPROVEEDOR>" << XMLProtect ( curc->valor ( "cifproveedor" ) ) << "</CIFPROVEEDOR>\n";
-            stream << "\t<CODICLIPROVEEDOR>" << XMLProtect ( curc->valor ( "codicliproveedor" ) ) << "</CODICLIPROVEEDOR>\n";
-            stream << "\t<CBANCPROVEEDOR>" << XMLProtect ( curc->valor ( "cbancproveedor" ) ) << "</CBANCPROVEEDOR>\n";
-            stream << "\t<COMENTPROVEEDOR>" << XMLProtect ( curc->valor ( "comentproveedor" ) ) << "</COMENTPROVEEDOR>\n";
-            stream << "\t<DIRPROVEEDOR>" << XMLProtect ( curc->valor ( "dirproveedor" ) ) << "</DIRPROVEEDOR>\n";
-            stream << "\t<POBLPROVEEDOR>" << XMLProtect ( curc->valor ( "poblproveedor" ) ) << "</POBLPROVEEDOR>\n";
-            stream << "\t<CPPROVEEDOR>" << XMLProtect ( curc->valor ( "cpproveedor" ) ) << "</CPPROVEEDOR>\n";
-            stream << "\t<TELPROVEEDOR>" << XMLProtect ( curc->valor ( "telproveedor" ) ) << "</TELPROVEEDOR>\n";
-            stream << "\t<FAXPROVEEDOR>" << XMLProtect ( curc->valor ( "faxproveedor" ) ) << "</FAXPROVEEDOR>\n";
-            stream << "\t<EMAILPROVEEDOR>" << XMLProtect ( curc->valor ( "emailproveedor" ) ) << "</EMAILPROVEEDOR>\n";
-            stream << "\t<URLPROVEEDOR>" << XMLProtect ( curc->valor ( "urlproveedor" ) ) << "</URLPROVEEDOR>\n";
-            stream << "\t<CLAVEPROVEEDOR>" << XMLProtect ( curc->valor ( "clavewebproveedor" ) ) << "</CLAVEPROVEEDOR>\n";
-            stream << "\t<INACTIVOPROVEEDOR>" << XMLProtect ( curc->valor ( "inactivoproveedor" ) ) << "</INACTIVOPROVEEDOR>\n";
-            stream << "\t<PROVPROVEEDOR>" << XMLProtect ( curc->valor ( "idprovincia" ) ) << "</PROVPROVEEDOR>\n";
+            stream << "\t<IDPROVEEDOR>" << blXMLEncode ( curc->valor ( "idproveedor" ) ) << "</IDPROVEEDOR>\n";
+            stream << "\t<NOMPROVEEDOR>" << blXMLEncode ( curc->valor ( "nomproveedor" ) ) << "</NOMPROVEEDOR>\n";
+            stream << "\t<NOMALTPROVEEDOR>" << blXMLEncode ( curc->valor ( "nomaltproveedor" ) ) << "</NOMALTPROVEEDOR>\n";
+            stream << "\t<CIFPROVEEDOR>" << blXMLEncode ( curc->valor ( "cifproveedor" ) ) << "</CIFPROVEEDOR>\n";
+            stream << "\t<CODICLIPROVEEDOR>" << blXMLEncode ( curc->valor ( "codicliproveedor" ) ) << "</CODICLIPROVEEDOR>\n";
+            stream << "\t<CBANCPROVEEDOR>" << blXMLEncode ( curc->valor ( "cbancproveedor" ) ) << "</CBANCPROVEEDOR>\n";
+            stream << "\t<COMENTPROVEEDOR>" << blXMLEncode ( curc->valor ( "comentproveedor" ) ) << "</COMENTPROVEEDOR>\n";
+            stream << "\t<DIRPROVEEDOR>" << blXMLEncode ( curc->valor ( "dirproveedor" ) ) << "</DIRPROVEEDOR>\n";
+            stream << "\t<POBLPROVEEDOR>" << blXMLEncode ( curc->valor ( "poblproveedor" ) ) << "</POBLPROVEEDOR>\n";
+            stream << "\t<CPPROVEEDOR>" << blXMLEncode ( curc->valor ( "cpproveedor" ) ) << "</CPPROVEEDOR>\n";
+            stream << "\t<TELPROVEEDOR>" << blXMLEncode ( curc->valor ( "telproveedor" ) ) << "</TELPROVEEDOR>\n";
+            stream << "\t<FAXPROVEEDOR>" << blXMLEncode ( curc->valor ( "faxproveedor" ) ) << "</FAXPROVEEDOR>\n";
+            stream << "\t<EMAILPROVEEDOR>" << blXMLEncode ( curc->valor ( "emailproveedor" ) ) << "</EMAILPROVEEDOR>\n";
+            stream << "\t<URLPROVEEDOR>" << blXMLEncode ( curc->valor ( "urlproveedor" ) ) << "</URLPROVEEDOR>\n";
+            stream << "\t<CLAVEPROVEEDOR>" << blXMLEncode ( curc->valor ( "clavewebproveedor" ) ) << "</CLAVEPROVEEDOR>\n";
+            stream << "\t<INACTIVOPROVEEDOR>" << blXMLEncode ( curc->valor ( "inactivoproveedor" ) ) << "</INACTIVOPROVEEDOR>\n";
+            stream << "\t<PROVPROVEEDOR>" << blXMLEncode ( curc->valor ( "idprovincia" ) ) << "</PROVPROVEEDOR>\n";
             stream << "</PROVEEDOR>\n";
             curc->nextRecord();
         } // end while
@@ -812,12 +812,12 @@ int BlImportExport::bulmafact2XML ( QFile &xmlfile, unsigned long long int tipo 
         BlDbRecordSet *curc = dbConnection->loadQuery ( query );
         while ( !curc->eof() ) {
             stream << "<FAMILIA>\n";
-            stream << "\t<IDFAMILIA>" << XMLProtect ( curc->valor ( "idfamilia" ) ) << "</IDFAMILIA>\n";
-            stream << "\t<CODIGOFAMILIA>" << XMLProtect ( curc->valor ( "codigofamilia" ) ) << "</CODIGOFAMILIA>\n";
-            stream << "\t<NOMBREFAMILIA>" << XMLProtect ( curc->valor ( "nombrefamilia" ) ) << "</NOMBREFAMILIA>\n";
-            stream << "\t<DESCFAMILIA>" << XMLProtect ( curc->valor ( "descfamilia" ) ) << "</DESCFAMILIA>\n";
-            stream << "\t<PADREFAMILIA>" << XMLProtect ( curc->valor ( "padrefamilia" ) ) << "</PADREFAMILIA>\n";
-            stream << "\t<CODIGOCOMPLETOFAMILIA>" << XMLProtect ( curc->valor ( "codigocompletofamilia" ) ) << "</CODIGOCOMPLETOFAMILIA>\n";
+            stream << "\t<IDFAMILIA>" << blXMLEncode ( curc->valor ( "idfamilia" ) ) << "</IDFAMILIA>\n";
+            stream << "\t<CODIGOFAMILIA>" << blXMLEncode ( curc->valor ( "codigofamilia" ) ) << "</CODIGOFAMILIA>\n";
+            stream << "\t<NOMBREFAMILIA>" << blXMLEncode ( curc->valor ( "nombrefamilia" ) ) << "</NOMBREFAMILIA>\n";
+            stream << "\t<DESCFAMILIA>" << blXMLEncode ( curc->valor ( "descfamilia" ) ) << "</DESCFAMILIA>\n";
+            stream << "\t<PADREFAMILIA>" << blXMLEncode ( curc->valor ( "padrefamilia" ) ) << "</PADREFAMILIA>\n";
+            stream << "\t<CODIGOCOMPLETOFAMILIA>" << blXMLEncode ( curc->valor ( "codigocompletofamilia" ) ) << "</CODIGOCOMPLETOFAMILIA>\n";
             stream << "</FAMILIA>\n";
             curc->nextRecord();
         }// end while
@@ -832,26 +832,26 @@ int BlImportExport::bulmafact2XML ( QFile &xmlfile, unsigned long long int tipo 
         BlDbRecordSet *curc = dbConnection->loadQuery ( query );
         while ( !curc->eof() ) {
             stream << "<ARTICULO>\n";
-            stream << "\t<IDARTICULO>" << XMLProtect ( curc->valor ( "idarticulo" ) ) << "</IDARTICULO>\n";
-            stream << "\t<CODARTICULO>" << XMLProtect ( curc->valor ( "codarticulo" ) ) << "</CODARTICULO>\n";
-            stream << "\t<NOMARTICULO>" << XMLProtect ( curc->valor ( "nomarticulo" ) ) << "</NOMARTICULO>\n";
-            stream << "\t<ABREVARTICULO>" << XMLProtect ( curc->valor ( "abrevarticulo" ) ) << "</ABREVARTICULO>\n";
-            stream << "\t<OBSERARTICULO>" << XMLProtect ( curc->valor ( "obserarticulo" ) ) << "</OBSERARTICULO>\n";
-            stream << "\t<PRESENTABLEARTICULO>" << XMLProtect ( curc->valor ( "presentablearticulo" ) ) << "</PRESENTABLEARTICULO>\n";
-            stream << "\t<CONTROLSTOCKARTICULO>" << XMLProtect ( curc->valor ( "controlstockarticulo" ) ) << "</CONTROLSTOCKARTICULO>\n";
-            stream << "\t<IDTIPO_ARTICULO>" << XMLProtect ( curc->valor ( "idtipo_articulo" ) ) << "</IDTIPO_ARTICULO>\n";
-            stream << "\t<IDTIPO_IVA>" << XMLProtect ( curc->valor ( "idtipo_iva" ) ) << "</IDTIPO_IVA>\n";
-            stream << "\t<CODIGOCOMPLETOARTICULO>" << XMLProtect ( curc->valor ( "codigocompletoarticulo" ) ) << "</CODIGOCOMPLETOARTICULO>\n";
-            stream << "\t<IDFAMILIA>" << XMLProtect ( curc->valor ( "idfamilia" ) ) << "</IDFAMILIA>\n";
-            stream << "\t<STOCKARTICULO>" << XMLProtect ( curc->valor ( "stockarticulo" ) ) << "</STOCKARTICULO>\n";
-            stream << "\t<INACTIVOARTICULO>" << XMLProtect ( curc->valor ( "inactivoarticulo" ) ) << "</INACTIVOARTICULO>\n";
-            stream << "\t<PVPARTICULO>" << XMLProtect ( curc->valor ( "pvparticulo" ) ) << "</PVPARTICULO>\n";
+            stream << "\t<IDARTICULO>" << blXMLEncode ( curc->valor ( "idarticulo" ) ) << "</IDARTICULO>\n";
+            stream << "\t<CODARTICULO>" << blXMLEncode ( curc->valor ( "codarticulo" ) ) << "</CODARTICULO>\n";
+            stream << "\t<NOMARTICULO>" << blXMLEncode ( curc->valor ( "nomarticulo" ) ) << "</NOMARTICULO>\n";
+            stream << "\t<ABREVARTICULO>" << blXMLEncode ( curc->valor ( "abrevarticulo" ) ) << "</ABREVARTICULO>\n";
+            stream << "\t<OBSERARTICULO>" << blXMLEncode ( curc->valor ( "obserarticulo" ) ) << "</OBSERARTICULO>\n";
+            stream << "\t<PRESENTABLEARTICULO>" << blXMLEncode ( curc->valor ( "presentablearticulo" ) ) << "</PRESENTABLEARTICULO>\n";
+            stream << "\t<CONTROLSTOCKARTICULO>" << blXMLEncode ( curc->valor ( "controlstockarticulo" ) ) << "</CONTROLSTOCKARTICULO>\n";
+            stream << "\t<IDTIPO_ARTICULO>" << blXMLEncode ( curc->valor ( "idtipo_articulo" ) ) << "</IDTIPO_ARTICULO>\n";
+            stream << "\t<IDTIPO_IVA>" << blXMLEncode ( curc->valor ( "idtipo_iva" ) ) << "</IDTIPO_IVA>\n";
+            stream << "\t<CODIGOCOMPLETOARTICULO>" << blXMLEncode ( curc->valor ( "codigocompletoarticulo" ) ) << "</CODIGOCOMPLETOARTICULO>\n";
+            stream << "\t<IDFAMILIA>" << blXMLEncode ( curc->valor ( "idfamilia" ) ) << "</IDFAMILIA>\n";
+            stream << "\t<STOCKARTICULO>" << blXMLEncode ( curc->valor ( "stockarticulo" ) ) << "</STOCKARTICULO>\n";
+            stream << "\t<INACTIVOARTICULO>" << blXMLEncode ( curc->valor ( "inactivoarticulo" ) ) << "</INACTIVOARTICULO>\n";
+            stream << "\t<PVPARTICULO>" << blXMLEncode ( curc->valor ( "pvparticulo" ) ) << "</PVPARTICULO>\n";
             /// Campos adicionales a los articulos.
-            stream << "\t<CODIGOCOMPLETOFAMILIA>" << XMLProtect ( curc->valor ( "codigocompletofamilia" ) )   << "</CODIGOCOMPLETOFAMILIA>\n";
-            stream << "\t<NOMBREFAMILIA>" << XMLProtect ( curc->valor ( "nombrefamilia" ) ) << "</NOMBREFAMILIA>\n";
-            stream << "\t<CODTIPO_ARTICULO>" << XMLProtect ( curc->valor ( "codtipo_articulo" ) ) << "</CODTIPO_ARTICULO>\n";
-            stream << "\t<DESCTIPO_ARTICULO>" << XMLProtect ( curc->valor ( "desctipo_articulo" ) ) << "</DESCTIPO_ARTICULO>\n";
-            stream << "\t<DESCTIPO_IVA>" << XMLProtect ( curc->valor ( "desctipo_iva" ) ) << "</DESCTIPO_IVA>\n";
+            stream << "\t<CODIGOCOMPLETOFAMILIA>" << blXMLEncode ( curc->valor ( "codigocompletofamilia" ) )   << "</CODIGOCOMPLETOFAMILIA>\n";
+            stream << "\t<NOMBREFAMILIA>" << blXMLEncode ( curc->valor ( "nombrefamilia" ) ) << "</NOMBREFAMILIA>\n";
+            stream << "\t<CODTIPO_ARTICULO>" << blXMLEncode ( curc->valor ( "codtipo_articulo" ) ) << "</CODTIPO_ARTICULO>\n";
+            stream << "\t<DESCTIPO_ARTICULO>" << blXMLEncode ( curc->valor ( "desctipo_articulo" ) ) << "</DESCTIPO_ARTICULO>\n";
+            stream << "\t<DESCTIPO_IVA>" << blXMLEncode ( curc->valor ( "desctipo_iva" ) ) << "</DESCTIPO_IVA>\n";
             stream << "</ARTICULO>\n";
             curc->nextRecord();
         } // end while
@@ -868,71 +868,71 @@ int BlImportExport::bulmafact2XML ( QFile &xmlfile, unsigned long long int tipo 
         BlDbRecordSet *curc = dbConnection->loadQuery ( query );
         while ( !curc->eof() ) {
             stream << "<FACTURA>\n";
-            stream << "\t<IDFACTURA>" << XMLProtect ( curc->valor ( "idfactura" ) ) << "</IDFACTURA>\n";
-            stream << "\t<CODIGOSERIE_FACTURA>" << XMLProtect ( curc->valor ( "codigoserie_factura" ) ) << "</CODIGOSERIE_FACTURA>\n";
-            stream << "\t<NUMFACTURA>" << XMLProtect ( curc->valor ( "numfactura" ) ) << "</NUMFACTURA>\n";
-            stream << "\t<REFFACTURA>" << XMLProtect ( curc->valor ( "reffactura" ) ) << "</REFFACTURA>\n";
-            stream << "\t<FFACTURA>" << XMLProtect ( curc->valor ( "ffactura" ) ) << "</FFACTURA>\n";
-            stream << "\t<DESCFACTURA>" << XMLProtect ( curc->valor ( "descfactura" ) ) << "</DESCFACTURA>\n";
-            stream << "\t<IDALMACEN>" << XMLProtect ( curc->valor ( "idalmacen" ) ) << "</IDALMACEN>\n";
-            stream << "\t<CONTACTFACTURA>" << XMLProtect ( curc->valor ( "contactfactura" ) ) << "</CONTACTFACTURA>\n";
-            stream << "\t<TELFACTURA>" << XMLProtect ( curc->valor ( "telfactura" ) ) << "</TELFACTURA>\n";
-            stream << "\t<COMENTFACTURA>" << XMLProtect ( curc->valor ( "comentfactura" ) ) << "</COMENTFACTURA>\n";
-            stream << "\t<PROCESADAFACTURA>" << XMLProtect ( curc->valor ( "procesadafactura" ) ) << "</PROCESADAFACTURA>\n";
-            stream << "\t<IDUSUARI>" << XMLProtect ( curc->valor ( "idusuari" ) ) << "</IDUSUARI>\n";
-            stream << "\t<IDCLIENTE>" << XMLProtect ( curc->valor ( "idcliente" ) ) << "</IDCLIENTE>\n";
-            stream << "\t<IDFORMA_PAGO>" << XMLProtect ( curc->valor ( "idforma_pago" ) ) << "</IDFORMA_PAGO>\n";
-            stream << "\t<IDTRABAJADOR>" << XMLProtect ( curc->valor ( "idtrabajador" ) ) << "</IDTRABAJADOR>\n";
+            stream << "\t<IDFACTURA>" << blXMLEncode ( curc->valor ( "idfactura" ) ) << "</IDFACTURA>\n";
+            stream << "\t<CODIGOSERIE_FACTURA>" << blXMLEncode ( curc->valor ( "codigoserie_factura" ) ) << "</CODIGOSERIE_FACTURA>\n";
+            stream << "\t<NUMFACTURA>" << blXMLEncode ( curc->valor ( "numfactura" ) ) << "</NUMFACTURA>\n";
+            stream << "\t<REFFACTURA>" << blXMLEncode ( curc->valor ( "reffactura" ) ) << "</REFFACTURA>\n";
+            stream << "\t<FFACTURA>" << blXMLEncode ( curc->valor ( "ffactura" ) ) << "</FFACTURA>\n";
+            stream << "\t<DESCFACTURA>" << blXMLEncode ( curc->valor ( "descfactura" ) ) << "</DESCFACTURA>\n";
+            stream << "\t<IDALMACEN>" << blXMLEncode ( curc->valor ( "idalmacen" ) ) << "</IDALMACEN>\n";
+            stream << "\t<CONTACTFACTURA>" << blXMLEncode ( curc->valor ( "contactfactura" ) ) << "</CONTACTFACTURA>\n";
+            stream << "\t<TELFACTURA>" << blXMLEncode ( curc->valor ( "telfactura" ) ) << "</TELFACTURA>\n";
+            stream << "\t<COMENTFACTURA>" << blXMLEncode ( curc->valor ( "comentfactura" ) ) << "</COMENTFACTURA>\n";
+            stream << "\t<PROCESADAFACTURA>" << blXMLEncode ( curc->valor ( "procesadafactura" ) ) << "</PROCESADAFACTURA>\n";
+            stream << "\t<IDUSUARI>" << blXMLEncode ( curc->valor ( "idusuari" ) ) << "</IDUSUARI>\n";
+            stream << "\t<IDCLIENTE>" << blXMLEncode ( curc->valor ( "idcliente" ) ) << "</IDCLIENTE>\n";
+            stream << "\t<IDFORMA_PAGO>" << blXMLEncode ( curc->valor ( "idforma_pago" ) ) << "</IDFORMA_PAGO>\n";
+            stream << "\t<IDTRABAJADOR>" << blXMLEncode ( curc->valor ( "idtrabajador" ) ) << "</IDTRABAJADOR>\n";
             /// Datos iniciales para la factura que pueden ser de utilidad.
-            stream << "\t<CODIGOALMACEN>" << XMLProtect ( curc->valor ( "codigoalmacen" ) ) << "</CODIGOALMACEN>\n";
-            stream << "\t<NOMALMACEN>" << XMLProtect ( curc->valor ( "nomalmacen" ) ) << "</NOMALMACEN>\n";
-            stream << "\t<DIRALMACEN>" << XMLProtect ( curc->valor ( "diralmacen" ) ) << "</DIRALMACEN>\n";
-            stream << "\t<POBLALMACEN>" << XMLProtect ( curc->valor ( "poblalmacen" ) ) << "</POBLALMACEN>\n";
-            stream << "\t<CPALMACEN>" << XMLProtect ( curc->valor ( "cpalmacen" ) ) << "</CPALMACEN>\n";
-            stream << "\t<TELALMACEN>" << XMLProtect ( curc->valor ( "telalmacen" ) ) << "</TELALMACEN>\n";
+            stream << "\t<CODIGOALMACEN>" << blXMLEncode ( curc->valor ( "codigoalmacen" ) ) << "</CODIGOALMACEN>\n";
+            stream << "\t<NOMALMACEN>" << blXMLEncode ( curc->valor ( "nomalmacen" ) ) << "</NOMALMACEN>\n";
+            stream << "\t<DIRALMACEN>" << blXMLEncode ( curc->valor ( "diralmacen" ) ) << "</DIRALMACEN>\n";
+            stream << "\t<POBLALMACEN>" << blXMLEncode ( curc->valor ( "poblalmacen" ) ) << "</POBLALMACEN>\n";
+            stream << "\t<CPALMACEN>" << blXMLEncode ( curc->valor ( "cpalmacen" ) ) << "</CPALMACEN>\n";
+            stream << "\t<TELALMACEN>" << blXMLEncode ( curc->valor ( "telalmacen" ) ) << "</TELALMACEN>\n";
             /// Datos referentes al cliente.
-            stream << "\t<NOMCLIENTE>" << XMLProtect ( curc->valor ( "nomcliente" ) ) << "</NOMCLIENTE>\n";
-            stream << "\t<NOMALTCLIENTE>" << XMLProtect ( curc->valor ( "nomaltcliente" ) ) << "</NOMALTCLIENTE>\n";
-            stream << "\t<CIFCLIENTE>" << XMLProtect ( curc->valor ( "cifcliente" ) ) << "</CIFCLIENTE>\n";
-            stream << "\t<BANCOCLIENTE>" << XMLProtect ( curc->valor ( "bancocliente" ) ) << "</BANCOCLIENTE>\n";
-            stream << "\t<DIRCLIENTE>" << XMLProtect ( curc->valor ( "dircliente" ) ) << "</DIRCLIENTE>\n";
-            stream << "\t<POBLCLIENTE>" << XMLProtect ( curc->valor ( "poblcliente" ) ) << "</POBLCLIENTE>\n";
-            stream << "\t<CPCLIENTE>" << XMLProtect ( curc->valor ( "cpcliente" ) ) << "</CPCLIENTE>\n";
-            stream << "\t<TELCLIENTE>" << XMLProtect ( curc->valor ( "telcliente" ) ) << "</TELCLIENTE>\n";
-            stream << "\t<FAXCLIENTE>" << XMLProtect ( curc->valor ( "faxcliente" ) ) << "</FAXCLIENTE>\n";
-            stream << "\t<MAILCLIENTE>" << XMLProtect ( curc->valor ( "mailcliente" ) ) << "</MAILCLIENTE>\n";
-            stream << "\t<URLCLIENTE>" << XMLProtect ( curc->valor ( "urlcliente" ) ) << "</URLCLIENTE>\n";
-            stream << "\t<PROVCLIENTE>" << XMLProtect ( curc->valor ( "provcliente" ) ) << "</PROVCLIENTE>\n";
+            stream << "\t<NOMCLIENTE>" << blXMLEncode ( curc->valor ( "nomcliente" ) ) << "</NOMCLIENTE>\n";
+            stream << "\t<NOMALTCLIENTE>" << blXMLEncode ( curc->valor ( "nomaltcliente" ) ) << "</NOMALTCLIENTE>\n";
+            stream << "\t<CIFCLIENTE>" << blXMLEncode ( curc->valor ( "cifcliente" ) ) << "</CIFCLIENTE>\n";
+            stream << "\t<BANCOCLIENTE>" << blXMLEncode ( curc->valor ( "bancocliente" ) ) << "</BANCOCLIENTE>\n";
+            stream << "\t<DIRCLIENTE>" << blXMLEncode ( curc->valor ( "dircliente" ) ) << "</DIRCLIENTE>\n";
+            stream << "\t<POBLCLIENTE>" << blXMLEncode ( curc->valor ( "poblcliente" ) ) << "</POBLCLIENTE>\n";
+            stream << "\t<CPCLIENTE>" << blXMLEncode ( curc->valor ( "cpcliente" ) ) << "</CPCLIENTE>\n";
+            stream << "\t<TELCLIENTE>" << blXMLEncode ( curc->valor ( "telcliente" ) ) << "</TELCLIENTE>\n";
+            stream << "\t<FAXCLIENTE>" << blXMLEncode ( curc->valor ( "faxcliente" ) ) << "</FAXCLIENTE>\n";
+            stream << "\t<MAILCLIENTE>" << blXMLEncode ( curc->valor ( "mailcliente" ) ) << "</MAILCLIENTE>\n";
+            stream << "\t<URLCLIENTE>" << blXMLEncode ( curc->valor ( "urlcliente" ) ) << "</URLCLIENTE>\n";
+            stream << "\t<PROVCLIENTE>" << blXMLEncode ( curc->valor ( "provcliente" ) ) << "</PROVCLIENTE>\n";
             /// Datos sobre el trabajador
-            stream << "\t<NOMTRABAJADOR>" << XMLProtect ( curc->valor ( "nomtrabajador" ) ) << "</NOMTRABAJADOR>\n";
-            stream << "\t<APELLIDOSTRABAJADOR>" << XMLProtect ( curc->valor ( "apellidostrabajador" ) ) << "</APELLIDOSTRABAJADOR>\n";
-            stream << "\t<DIRTRABAJADOR>" << XMLProtect ( curc->valor ( "dirtrabajador" ) ) << "</DIRTRABAJADOR>\n";
-            stream << "\t<NSSTRABAJADOR>" << XMLProtect ( curc->valor ( "nsstrabajador" ) ) << "</NSSTRABAJADOR>\n";
-            stream << "\t<TELTRABAJADOR>" << XMLProtect ( curc->valor ( "teltrabajador" ) ) << "</TELTRABAJADOR>\n";
-            stream << "\t<MOVILTRABAJADOR>" << XMLProtect ( curc->valor ( "moviltrabajador" ) ) << "</MOVILTRABAJADOR>\n";
-            stream << "\t<EMAILTRABAJADOR>" << XMLProtect ( curc->valor ( "emailtrabajador" ) ) << "</EMAILTRABAJADOR>\n";
+            stream << "\t<NOMTRABAJADOR>" << blXMLEncode ( curc->valor ( "nomtrabajador" ) ) << "</NOMTRABAJADOR>\n";
+            stream << "\t<APELLIDOSTRABAJADOR>" << blXMLEncode ( curc->valor ( "apellidostrabajador" ) ) << "</APELLIDOSTRABAJADOR>\n";
+            stream << "\t<DIRTRABAJADOR>" << blXMLEncode ( curc->valor ( "dirtrabajador" ) ) << "</DIRTRABAJADOR>\n";
+            stream << "\t<NSSTRABAJADOR>" << blXMLEncode ( curc->valor ( "nsstrabajador" ) ) << "</NSSTRABAJADOR>\n";
+            stream << "\t<TELTRABAJADOR>" << blXMLEncode ( curc->valor ( "teltrabajador" ) ) << "</TELTRABAJADOR>\n";
+            stream << "\t<MOVILTRABAJADOR>" << blXMLEncode ( curc->valor ( "moviltrabajador" ) ) << "</MOVILTRABAJADOR>\n";
+            stream << "\t<EMAILTRABAJADOR>" << blXMLEncode ( curc->valor ( "emailtrabajador" ) ) << "</EMAILTRABAJADOR>\n";
             /// Datos sobre la forma de pago
-            stream << "\t<DESCFORMA_PAGO>" << XMLProtect ( curc->valor ( "descforma_pago" ) ) << "</DESCFORMA_PAGO>\n";
-            stream << "\t<DIAS1TFORMA_PAGO>" << XMLProtect ( curc->valor ( "dias1tforma_pago" ) ) << "</DIAS1TFORMA_PAGO>\n";
-            stream << "\t<DESCUENTOFORMA_PAGO>" << XMLProtect ( curc->valor ( "descuentoforma_pago" ) ) << "</DESCUENTOFORMA_PAGO>\n";
+            stream << "\t<DESCFORMA_PAGO>" << blXMLEncode ( curc->valor ( "descforma_pago" ) ) << "</DESCFORMA_PAGO>\n";
+            stream << "\t<DIAS1TFORMA_PAGO>" << blXMLEncode ( curc->valor ( "dias1tforma_pago" ) ) << "</DIAS1TFORMA_PAGO>\n";
+            stream << "\t<DESCUENTOFORMA_PAGO>" << blXMLEncode ( curc->valor ( "descuentoforma_pago" ) ) << "</DESCUENTOFORMA_PAGO>\n";
 
             /// Incorporamos las lineas de detalles de la factura.
             BlDbRecordSet *curlc = dbConnection->loadQuery ( "SELECT * FROM lfactura LEFT JOIN articulo ON lfactura.idarticulo = articulo.idarticulo WHERE idfactura = " + curc->valor ( "idfactura" ) );
             while ( !curlc->eof() ) {
                 stream << "\t\t<LFACTURA>\n";
-                stream << "\t\t\t<IDLFACTURA>" << XMLProtect ( curlc->valor ( "idlfactura" ) ) << "</IDLFACTURA>\n";
-                stream << "\t\t\t<DESCLFACTURA>" << XMLProtect ( curlc->valor ( "desclfactura" ) ) << "</DESCLFACTURA>\n";
-                stream << "\t\t\t<CANTLFACTURA>" << XMLProtect ( curlc->valor ( "cantlfactura" ) ) << "</CANTLFACTURA>\n";
-                stream << "\t\t\t<PVPLFACTURA>" << XMLProtect ( curlc->valor ( "pvplfactura" ) ) << "</PVPLFACTURA>\n";
-                stream << "\t\t\t<IVALFACTURA>" << XMLProtect ( curlc->valor ( "ivalfactura" ) ) << "</IVALFACTURA>\n";
-                stream << "\t\t\t<DESCUENTOLFACTURA>" << XMLProtect ( curlc->valor ( "descuentolfactura" ) ) << "</DESCUENTOLFACTURA>\n";
-                stream << "\t\t\t<IDFACTURA>" << XMLProtect ( curlc->valor ( "idfactura" ) ) << "</IDFACTURA>\n";
-                stream << "\t\t\t<IDARTICULO>" << XMLProtect ( curlc->valor ( "idarticulo" ) ) << "</IDARTICULO>\n";
+                stream << "\t\t\t<IDLFACTURA>" << blXMLEncode ( curlc->valor ( "idlfactura" ) ) << "</IDLFACTURA>\n";
+                stream << "\t\t\t<DESCLFACTURA>" << blXMLEncode ( curlc->valor ( "desclfactura" ) ) << "</DESCLFACTURA>\n";
+                stream << "\t\t\t<CANTLFACTURA>" << blXMLEncode ( curlc->valor ( "cantlfactura" ) ) << "</CANTLFACTURA>\n";
+                stream << "\t\t\t<PVPLFACTURA>" << blXMLEncode ( curlc->valor ( "pvplfactura" ) ) << "</PVPLFACTURA>\n";
+                stream << "\t\t\t<IVALFACTURA>" << blXMLEncode ( curlc->valor ( "ivalfactura" ) ) << "</IVALFACTURA>\n";
+                stream << "\t\t\t<DESCUENTOLFACTURA>" << blXMLEncode ( curlc->valor ( "descuentolfactura" ) ) << "</DESCUENTOLFACTURA>\n";
+                stream << "\t\t\t<IDFACTURA>" << blXMLEncode ( curlc->valor ( "idfactura" ) ) << "</IDFACTURA>\n";
+                stream << "\t\t\t<IDARTICULO>" << blXMLEncode ( curlc->valor ( "idarticulo" ) ) << "</IDARTICULO>\n";
                 /// Los datos relacionados con el articulo
-                stream << "\t\t\t<CODARTICULO>" << XMLProtect ( curlc->valor ( "codarticulo" ) ) << "</CODARTICULO>\n";
-                stream << "\t\t\t<NOMARTICULO>" << XMLProtect ( curlc->valor ( "nomarticulo" ) ) << "</NOMARTICULO>\n";
-                stream << "\t\t\t<ABREVARTICULO>" << XMLProtect ( curlc->valor ( "abrevarticulo" ) ) << "</ABREVARTICULO>\n";
-                stream << "\t<CODIGOCOMPLETOARTICULO>" << XMLProtect ( curlc->valor ( "codigocompletoarticulo" ) ) << "</CODIGOCOMPLETOARTICULO>\n";
+                stream << "\t\t\t<CODARTICULO>" << blXMLEncode ( curlc->valor ( "codarticulo" ) ) << "</CODARTICULO>\n";
+                stream << "\t\t\t<NOMARTICULO>" << blXMLEncode ( curlc->valor ( "nomarticulo" ) ) << "</NOMARTICULO>\n";
+                stream << "\t\t\t<ABREVARTICULO>" << blXMLEncode ( curlc->valor ( "abrevarticulo" ) ) << "</ABREVARTICULO>\n";
+                stream << "\t<CODIGOCOMPLETOARTICULO>" << blXMLEncode ( curlc->valor ( "codigocompletoarticulo" ) ) << "</CODIGOCOMPLETOARTICULO>\n";
                 stream << "\t\t</LFACTURA>\n";
                 curlc->nextRecord();
             } // end while
@@ -941,10 +941,10 @@ int BlImportExport::bulmafact2XML ( QFile &xmlfile, unsigned long long int tipo 
             curlc = dbConnection->loadQuery ( "SELECT * FROM dfactura WHERE idfactura = " + curc->valor ( "idfactura" ) );
             while ( !curlc->eof() ) {
                 stream << "\t\t<DFACTURA>\n";
-                stream << "\t\t\t<IDDFACTURA>" << XMLProtect ( curlc->valor ( "iddfactura" ) ) << "</IDDFACTURA>\n";
-                stream << "\t\t\t<CONCEPTDFACTURA>" << XMLProtect ( curlc->valor ( "conceptdfactura" ) ) << "</CONCEPTDFACTURA>\n";
-                stream << "\t\t\t<PROPORCIONDFACTURA>" << XMLProtect ( curlc->valor ( "proporciondfactura" ) ) << "</PROPORCIONDFACTURA>\n";
-                stream << "\t\t\t<IDFACTURA>" << XMLProtect ( curlc->valor ( "idfactura" ) ) << "</IDFACTURA>\n";
+                stream << "\t\t\t<IDDFACTURA>" << blXMLEncode ( curlc->valor ( "iddfactura" ) ) << "</IDDFACTURA>\n";
+                stream << "\t\t\t<CONCEPTDFACTURA>" << blXMLEncode ( curlc->valor ( "conceptdfactura" ) ) << "</CONCEPTDFACTURA>\n";
+                stream << "\t\t\t<PROPORCIONDFACTURA>" << blXMLEncode ( curlc->valor ( "proporciondfactura" ) ) << "</PROPORCIONDFACTURA>\n";
+                stream << "\t\t\t<IDFACTURA>" << blXMLEncode ( curlc->valor ( "idfactura" ) ) << "</IDFACTURA>\n";
                 stream << "\t\t</DFACTURA>\n";
                 curlc->nextRecord();
             } // end while
@@ -965,70 +965,70 @@ int BlImportExport::bulmafact2XML ( QFile &xmlfile, unsigned long long int tipo 
         BlDbRecordSet *curc = dbConnection->loadQuery ( query );
         while ( !curc->eof() ) {
             stream << "<PRESUPUESTO>\n";
-            stream << "\t<IDPRESUPUESTO>" << XMLProtect ( curc->valor ( "idpresupuesto" ) ) << "</IDPRESUPUESTO>\n";
-            stream << "\t<NUMPRESUPUESTO>" << XMLProtect ( curc->valor ( "numpresupuesto" ) ) << "</NUMPRESUPUESTO>\n";
-            stream << "\t<REFPRESUPUESTO>" << XMLProtect ( curc->valor ( "refpresupuesto" ) ) << "</REFPRESUPUESTO>\n";
-            stream << "\t<FPRESUPUESTO>" << XMLProtect ( curc->valor ( "fpresupuesto" ) ) << "</FPRESUPUESTO>\n";
-            stream << "\t<DESCPRESUPUESTO>" << XMLProtect ( curc->valor ( "descpresupuesto" ) ) << "</DESCPRESUPUESTO>\n";
-            stream << "\t<CONTACTPRESUPUESTO>" << XMLProtect ( curc->valor ( "contactpresupuesto" ) ) << "</CONTACTPRESUPUESTO>\n";
-            stream << "\t<TELPRESUPUESTO>" << XMLProtect ( curc->valor ( "telpresupuesto" ) ) << "</TELPRESUPUESTO>\n";
-            stream << "\t<VENCPRESUPUESTO>" << XMLProtect ( curc->valor ( "vencpresupuesto" ) ) << "</VENCPRESUPUESTO>\n";
-            stream << "\t<COMENTPRESUPUESTO>" << XMLProtect ( curc->valor ( "comentpresupuesto" ) ) << "</COMENTPRESUPUESTO>\n";
-            stream << "\t<IDUSUARI>" << XMLProtect ( curc->valor ( "idusuari" ) ) << "</IDUSUARI>\n";
-            stream << "\t<PROCESADOPRESUPUESTO>" << XMLProtect ( curc->valor ( "procesadopresupuesto" ) ) << "</PROCESADOPRESUPUESTO>\n";
-            stream << "\t<IDCLIENTE>" << XMLProtect ( curc->valor ( "idcliente" ) ) << "</IDCLIENTE>\n";
-            stream << "\t<IDALMACEN>" << XMLProtect ( curc->valor ( "idalmacen" ) ) << "</IDALMACEN>\n";
-            stream << "\t<IDFORMA_PAGO>" << XMLProtect ( curc->valor ( "idforma_pago" ) ) << "</IDFORMA_PAGO>\n";
-            stream << "\t<IDTRABAJADOR>" << XMLProtect ( curc->valor ( "idtrabajador" ) ) << "</IDTRABAJADOR>\n";
+            stream << "\t<IDPRESUPUESTO>" << blXMLEncode ( curc->valor ( "idpresupuesto" ) ) << "</IDPRESUPUESTO>\n";
+            stream << "\t<NUMPRESUPUESTO>" << blXMLEncode ( curc->valor ( "numpresupuesto" ) ) << "</NUMPRESUPUESTO>\n";
+            stream << "\t<REFPRESUPUESTO>" << blXMLEncode ( curc->valor ( "refpresupuesto" ) ) << "</REFPRESUPUESTO>\n";
+            stream << "\t<FPRESUPUESTO>" << blXMLEncode ( curc->valor ( "fpresupuesto" ) ) << "</FPRESUPUESTO>\n";
+            stream << "\t<DESCPRESUPUESTO>" << blXMLEncode ( curc->valor ( "descpresupuesto" ) ) << "</DESCPRESUPUESTO>\n";
+            stream << "\t<CONTACTPRESUPUESTO>" << blXMLEncode ( curc->valor ( "contactpresupuesto" ) ) << "</CONTACTPRESUPUESTO>\n";
+            stream << "\t<TELPRESUPUESTO>" << blXMLEncode ( curc->valor ( "telpresupuesto" ) ) << "</TELPRESUPUESTO>\n";
+            stream << "\t<VENCPRESUPUESTO>" << blXMLEncode ( curc->valor ( "vencpresupuesto" ) ) << "</VENCPRESUPUESTO>\n";
+            stream << "\t<COMENTPRESUPUESTO>" << blXMLEncode ( curc->valor ( "comentpresupuesto" ) ) << "</COMENTPRESUPUESTO>\n";
+            stream << "\t<IDUSUARI>" << blXMLEncode ( curc->valor ( "idusuari" ) ) << "</IDUSUARI>\n";
+            stream << "\t<PROCESADOPRESUPUESTO>" << blXMLEncode ( curc->valor ( "procesadopresupuesto" ) ) << "</PROCESADOPRESUPUESTO>\n";
+            stream << "\t<IDCLIENTE>" << blXMLEncode ( curc->valor ( "idcliente" ) ) << "</IDCLIENTE>\n";
+            stream << "\t<IDALMACEN>" << blXMLEncode ( curc->valor ( "idalmacen" ) ) << "</IDALMACEN>\n";
+            stream << "\t<IDFORMA_PAGO>" << blXMLEncode ( curc->valor ( "idforma_pago" ) ) << "</IDFORMA_PAGO>\n";
+            stream << "\t<IDTRABAJADOR>" << blXMLEncode ( curc->valor ( "idtrabajador" ) ) << "</IDTRABAJADOR>\n";
             /// Datos iniciales para el presupuesto  que pueden ser de utilidad.
-            stream << "\t<CODIGOALMACEN>" << XMLProtect ( curc->valor ( "codigoalmacen" ) ) << "</CODIGOALMACEN>\n";
-            stream << "\t<NOMALMACEN>" << XMLProtect ( curc->valor ( "nomalmacen" ) ) << "</NOMALMACEN>\n";
-            stream << "\t<DIRALMACEN>" << XMLProtect ( curc->valor ( "diralmacen" ) ) << "</DIRALMACEN>\n";
-            stream << "\t<POBLALMACEN>" << XMLProtect ( curc->valor ( "poblalmacen" ) ) << "</POBLALMACEN>\n";
-            stream << "\t<CPALMACEN>" << XMLProtect ( curc->valor ( "cpalmacen" ) ) << "</CPALMACEN>\n";
-            stream << "\t<TELALMACEN>" << XMLProtect ( curc->valor ( "telalmacen" ) ) << "</TELALMACEN>\n";
+            stream << "\t<CODIGOALMACEN>" << blXMLEncode ( curc->valor ( "codigoalmacen" ) ) << "</CODIGOALMACEN>\n";
+            stream << "\t<NOMALMACEN>" << blXMLEncode ( curc->valor ( "nomalmacen" ) ) << "</NOMALMACEN>\n";
+            stream << "\t<DIRALMACEN>" << blXMLEncode ( curc->valor ( "diralmacen" ) ) << "</DIRALMACEN>\n";
+            stream << "\t<POBLALMACEN>" << blXMLEncode ( curc->valor ( "poblalmacen" ) ) << "</POBLALMACEN>\n";
+            stream << "\t<CPALMACEN>" << blXMLEncode ( curc->valor ( "cpalmacen" ) ) << "</CPALMACEN>\n";
+            stream << "\t<TELALMACEN>" << blXMLEncode ( curc->valor ( "telalmacen" ) ) << "</TELALMACEN>\n";
             /// Datos referentes al cliente.
-            stream << "\t<NOMCLIENTE>" << XMLProtect ( curc->valor ( "nomcliente" ) ) << "</NOMCLIENTE>\n";
-            stream << "\t<NOMALTCLIENTE>" << XMLProtect ( curc->valor ( "nomaltcliente" ) ) << "</NOMALTCLIENTE>\n";
-            stream << "\t<CIFCLIENTE>" << XMLProtect ( curc->valor ( "cifcliente" ) ) << "</CIFCLIENTE>\n";
-            stream << "\t<BANCOCLIENTE>" << XMLProtect ( curc->valor ( "bancocliente" ) ) << "</BANCOCLIENTE>\n";
-            stream << "\t<DIRCLIENTE>" << XMLProtect ( curc->valor ( "dircliente" ) ) << "</DIRCLIENTE>\n";
-            stream << "\t<POBLCLIENTE>" << XMLProtect ( curc->valor ( "poblcliente" ) ) << "</POBLCLIENTE>\n";
-            stream << "\t<CPCLIENTE>" << XMLProtect ( curc->valor ( "cpcliente" ) ) << "</CPCLIENTE>\n";
-            stream << "\t<TELCLIENTE>" << XMLProtect ( curc->valor ( "telcliente" ) ) << "</TELCLIENTE>\n";
-            stream << "\t<FAXCLIENTE>" << XMLProtect ( curc->valor ( "faxcliente" ) ) << "</FAXCLIENTE>\n";
-            stream << "\t<MAILCLIENTE>" << XMLProtect ( curc->valor ( "mailcliente" ) ) << "</MAILCLIENTE>\n";
-            stream << "\t<URLCLIENTE>" << XMLProtect ( curc->valor ( "urlcliente" ) ) << "</URLCLIENTE>\n";
-            stream << "\t<PROVCLIENTE>" << XMLProtect ( curc->valor ( "provcliente" ) ) << "</PROVCLIENTE>\n";
+            stream << "\t<NOMCLIENTE>" << blXMLEncode ( curc->valor ( "nomcliente" ) ) << "</NOMCLIENTE>\n";
+            stream << "\t<NOMALTCLIENTE>" << blXMLEncode ( curc->valor ( "nomaltcliente" ) ) << "</NOMALTCLIENTE>\n";
+            stream << "\t<CIFCLIENTE>" << blXMLEncode ( curc->valor ( "cifcliente" ) ) << "</CIFCLIENTE>\n";
+            stream << "\t<BANCOCLIENTE>" << blXMLEncode ( curc->valor ( "bancocliente" ) ) << "</BANCOCLIENTE>\n";
+            stream << "\t<DIRCLIENTE>" << blXMLEncode ( curc->valor ( "dircliente" ) ) << "</DIRCLIENTE>\n";
+            stream << "\t<POBLCLIENTE>" << blXMLEncode ( curc->valor ( "poblcliente" ) ) << "</POBLCLIENTE>\n";
+            stream << "\t<CPCLIENTE>" << blXMLEncode ( curc->valor ( "cpcliente" ) ) << "</CPCLIENTE>\n";
+            stream << "\t<TELCLIENTE>" << blXMLEncode ( curc->valor ( "telcliente" ) ) << "</TELCLIENTE>\n";
+            stream << "\t<FAXCLIENTE>" << blXMLEncode ( curc->valor ( "faxcliente" ) ) << "</FAXCLIENTE>\n";
+            stream << "\t<MAILCLIENTE>" << blXMLEncode ( curc->valor ( "mailcliente" ) ) << "</MAILCLIENTE>\n";
+            stream << "\t<URLCLIENTE>" << blXMLEncode ( curc->valor ( "urlcliente" ) ) << "</URLCLIENTE>\n";
+            stream << "\t<PROVCLIENTE>" << blXMLEncode ( curc->valor ( "provcliente" ) ) << "</PROVCLIENTE>\n";
             /// Datos sobre el trabajador.
-            stream << "\t<NOMTRABAJADOR>" << XMLProtect ( curc->valor ( "nomtrabajador" ) ) << "</NOMTRABAJADOR>\n";
-            stream << "\t<APELLIDOSTRABAJADOR>" << XMLProtect ( curc->valor ( "apellidostrabajador" ) ) << "</APELLIDOSTRABAJADOR>\n";
-            stream << "\t<DIRTRABAJADOR>" << XMLProtect ( curc->valor ( "dirtrabajador" ) ) << "</DIRTRABAJADOR>\n";
-            stream << "\t<NSSTRABAJADOR>" << XMLProtect ( curc->valor ( "nsstrabajador" ) ) << "</NSSTRABAJADOR>\n";
-            stream << "\t<TELTRABAJADOR>" << XMLProtect ( curc->valor ( "teltrabajador" ) ) << "</TELTRABAJADOR>\n";
-            stream << "\t<MOVILTRABAJADOR>" << XMLProtect ( curc->valor ( "moviltrabajador" ) ) << "</MOVILTRABAJADOR>\n";
-            stream << "\t<EMAILTRABAJADOR>" << XMLProtect ( curc->valor ( "emailtrabajador" ) ) << "</EMAILTRABAJADOR>\n";
+            stream << "\t<NOMTRABAJADOR>" << blXMLEncode ( curc->valor ( "nomtrabajador" ) ) << "</NOMTRABAJADOR>\n";
+            stream << "\t<APELLIDOSTRABAJADOR>" << blXMLEncode ( curc->valor ( "apellidostrabajador" ) ) << "</APELLIDOSTRABAJADOR>\n";
+            stream << "\t<DIRTRABAJADOR>" << blXMLEncode ( curc->valor ( "dirtrabajador" ) ) << "</DIRTRABAJADOR>\n";
+            stream << "\t<NSSTRABAJADOR>" << blXMLEncode ( curc->valor ( "nsstrabajador" ) ) << "</NSSTRABAJADOR>\n";
+            stream << "\t<TELTRABAJADOR>" << blXMLEncode ( curc->valor ( "teltrabajador" ) ) << "</TELTRABAJADOR>\n";
+            stream << "\t<MOVILTRABAJADOR>" << blXMLEncode ( curc->valor ( "moviltrabajador" ) ) << "</MOVILTRABAJADOR>\n";
+            stream << "\t<EMAILTRABAJADOR>" << blXMLEncode ( curc->valor ( "emailtrabajador" ) ) << "</EMAILTRABAJADOR>\n";
             /// Datos sobre la forma de pago.
-            stream << "\t<DESCFORMA_PAGO>" << XMLProtect ( curc->valor ( "descforma_pago" ) ) << "</DESCFORMA_PAGO>\n";
-            stream << "\t<DIAS1TFORMA_PAGO>" << XMLProtect ( curc->valor ( "dias1tforma_pago" ) ) << "</DIAS1TFORMA_PAGO>\n";
-            stream << "\t<DESCUENTOFORMA_PAGO>" << XMLProtect ( curc->valor ( "descuentoforma_pago" ) ) << "</DESCUENTOFORMA_PAGO>\n";
+            stream << "\t<DESCFORMA_PAGO>" << blXMLEncode ( curc->valor ( "descforma_pago" ) ) << "</DESCFORMA_PAGO>\n";
+            stream << "\t<DIAS1TFORMA_PAGO>" << blXMLEncode ( curc->valor ( "dias1tforma_pago" ) ) << "</DIAS1TFORMA_PAGO>\n";
+            stream << "\t<DESCUENTOFORMA_PAGO>" << blXMLEncode ( curc->valor ( "descuentoforma_pago" ) ) << "</DESCUENTOFORMA_PAGO>\n";
             /// Incorporamos las lineas de detalles del presupuesto.
             BlDbRecordSet *curlc = dbConnection->loadQuery ( "SELECT * FROM lpresupuesto LEFT JOIN articulo ON lpresupuesto.idarticulo = articulo.idarticulo WHERE idpresupuesto = " + curc->valor ( "idpresupuesto" ) );
             while ( !curlc->eof() ) {
                 stream << "\t<LPRESUPUESTO>\n";
-                stream << "\t\t<IDLPRESUPUESTO>" << XMLProtect ( curlc->valor ( "idlpresupuesto" ) ) << "</IDLPRESUPUESTO>\n";
-                stream << "\t\t\t<DESCLPRESUPUESTO>" << XMLProtect ( curlc->valor ( "desclpresupuesto" ) ) << "</DESCLPRESUPUESTO>\n";
-                stream << "\t\t<CANTLPRESUPUESTO>" << XMLProtect ( curlc->valor ( "cantlpresupuesto" ) ) << "</CANTLPRESUPUESTO>\n";
-                stream << "\t\t<PVPLPRESUPUESTO>" << XMLProtect ( curlc->valor ( "pvplpresupuesto" ) ) << "</PVPLPRESUPUESTO>\n";
-                stream << "\t\t<IVALPRESUPUESTO>" << XMLProtect ( curlc->valor ( "ivalpresupuesto" ) ) << "</IVALPRESUPUESTO>\n";
-                stream << "\t\t<DESCUENTOLPRESUPUESTO>" << XMLProtect ( curlc->valor ( "descuentolpresupuesto" ) ) << "</DESCUENTOLPRESUPUESTO>\n";
-                stream << "\t\t<IDPRESUPUESTO>" << XMLProtect ( curlc->valor ( "idpresupuesto" ) ) << "</IDPRESUPUESTO>\n";
-                stream << "\t\t<IDARTICULO>" << XMLProtect ( curlc->valor ( "idarticulo" ) ) << "</IDARTICULO>\n";
+                stream << "\t\t<IDLPRESUPUESTO>" << blXMLEncode ( curlc->valor ( "idlpresupuesto" ) ) << "</IDLPRESUPUESTO>\n";
+                stream << "\t\t\t<DESCLPRESUPUESTO>" << blXMLEncode ( curlc->valor ( "desclpresupuesto" ) ) << "</DESCLPRESUPUESTO>\n";
+                stream << "\t\t<CANTLPRESUPUESTO>" << blXMLEncode ( curlc->valor ( "cantlpresupuesto" ) ) << "</CANTLPRESUPUESTO>\n";
+                stream << "\t\t<PVPLPRESUPUESTO>" << blXMLEncode ( curlc->valor ( "pvplpresupuesto" ) ) << "</PVPLPRESUPUESTO>\n";
+                stream << "\t\t<IVALPRESUPUESTO>" << blXMLEncode ( curlc->valor ( "ivalpresupuesto" ) ) << "</IVALPRESUPUESTO>\n";
+                stream << "\t\t<DESCUENTOLPRESUPUESTO>" << blXMLEncode ( curlc->valor ( "descuentolpresupuesto" ) ) << "</DESCUENTOLPRESUPUESTO>\n";
+                stream << "\t\t<IDPRESUPUESTO>" << blXMLEncode ( curlc->valor ( "idpresupuesto" ) ) << "</IDPRESUPUESTO>\n";
+                stream << "\t\t<IDARTICULO>" << blXMLEncode ( curlc->valor ( "idarticulo" ) ) << "</IDARTICULO>\n";
                 /// Los datos relacionados con el articulo
-                stream << "\t\t<CODARTICULO>" << XMLProtect ( curlc->valor ( "codarticulo" ) ) << "</CODARTICULO>\n";
-                stream << "\t\t<NOMARTICULO>" << XMLProtect ( curlc->valor ( "nomarticulo" ) ) << "</NOMARTICULO>\n";
-                stream << "\t\t<ABREVARTICULO>" << XMLProtect ( curlc->valor ( "abrevarticulo" ) ) << "</ABREVARTICULO>\n";
-                stream << "\t\t<CODIGOCOMPLETOARTICULO>" << XMLProtect ( curlc->valor ( "codigocompletoarticulo" ) ) << "</CODIGOCOMPLETOARTICULO>\n";
+                stream << "\t\t<CODARTICULO>" << blXMLEncode ( curlc->valor ( "codarticulo" ) ) << "</CODARTICULO>\n";
+                stream << "\t\t<NOMARTICULO>" << blXMLEncode ( curlc->valor ( "nomarticulo" ) ) << "</NOMARTICULO>\n";
+                stream << "\t\t<ABREVARTICULO>" << blXMLEncode ( curlc->valor ( "abrevarticulo" ) ) << "</ABREVARTICULO>\n";
+                stream << "\t\t<CODIGOCOMPLETOARTICULO>" << blXMLEncode ( curlc->valor ( "codigocompletoarticulo" ) ) << "</CODIGOCOMPLETOARTICULO>\n";
                 stream << "\t</LPRESUPUESTO>\n";
                 curlc->nextRecord();
             } // end while
@@ -1037,10 +1037,10 @@ int BlImportExport::bulmafact2XML ( QFile &xmlfile, unsigned long long int tipo 
             curlc = dbConnection->loadQuery ( "SELECT * FROM dpresupuesto WHERE idpresupuesto = " + curc->valor ( "idpresupuesto" ) );
             while ( !curlc->eof() ) {
                 stream << "\t<DPRESUPUESTO>\n";
-                stream << "\t\t<IDDPRESUPUESTO>" << XMLProtect ( curlc->valor ( "iddpresupuesto" ) ) << "</IDDPRESUPUESTO>\n";
-                stream << "\t\t<CONCEPTDPRESUPUESTO>" << XMLProtect ( curlc->valor ( "conceptdpresupuesto" ) ) << "</CONCEPTDPRESUPUESTO>\n";
-                stream << "\t\t<PROPORCIONDPRESUPUESTO>" << XMLProtect ( curlc->valor ( "proporciondpresupuesto" ) ) << "</PROPORCIONDPRESUPUESTO>\n";
-                stream << "\t\t<IDPRESUPUESTO>" << XMLProtect ( curlc->valor ( "idpresupuesto" ) ) << "</IDPRESUPUESTO>\n";
+                stream << "\t\t<IDDPRESUPUESTO>" << blXMLEncode ( curlc->valor ( "iddpresupuesto" ) ) << "</IDDPRESUPUESTO>\n";
+                stream << "\t\t<CONCEPTDPRESUPUESTO>" << blXMLEncode ( curlc->valor ( "conceptdpresupuesto" ) ) << "</CONCEPTDPRESUPUESTO>\n";
+                stream << "\t\t<PROPORCIONDPRESUPUESTO>" << blXMLEncode ( curlc->valor ( "proporciondpresupuesto" ) ) << "</PROPORCIONDPRESUPUESTO>\n";
+                stream << "\t\t<IDPRESUPUESTO>" << blXMLEncode ( curlc->valor ( "idpresupuesto" ) ) << "</IDPRESUPUESTO>\n";
                 stream << "\t</DPRESUPUESTO>\n";
                 curlc->nextRecord();
             } // end while
@@ -1061,70 +1061,70 @@ int BlImportExport::bulmafact2XML ( QFile &xmlfile, unsigned long long int tipo 
         BlDbRecordSet *curc = dbConnection->loadQuery ( query );
         while ( !curc->eof() ) {
             stream << "<PEDIDOCLIENTE>\n";
-            stream << "\t<IDPEDIDOCLIENTE>" << XMLProtect ( curc->valor ( "idpedidocliente" ) ) << "</IDPEDIDOCLIENTE>\n";
-            stream << "\t<NUMPEDIDOCLIENTE>" << XMLProtect ( curc->valor ( "numpedidocliente" ) ) << "</NUMPEDIDOCLIENTE>\n";
-            stream << "\t<FECHAPEDIDOCLIENTE>" << XMLProtect ( curc->valor ( "fechapedidocliente" ) ) << "</FECHAPEDIDOCLIENTE>\n";
-            stream << "\t<REFPEDIDOCLIENTE>" << XMLProtect ( curc->valor ( "refpedidocliente" ) ) << "</REFPEDIDOCLIENTE>\n";
-            stream << "\t<DESCPEDIDOCLIENTE>" << XMLProtect ( curc->valor ( "descpedidocliente" ) ) << "</DESCPEDIDOCLIENTE>\n";
-            stream << "\t<CONTACTPEDIDOCLIENTE>" << XMLProtect ( curc->valor ( "contactpedidocliente" ) ) << "</CONTACTPEDIDOCLIENTE>\n";
-            stream << "\t<TELPEDIDOCLIENTE>" << XMLProtect ( curc->valor ( "telpedidocliente" ) ) << "</TELPEDIDOCLIENTE>\n";
-            stream << "\t<IDPRESUPUESTO>" << XMLProtect ( curc->valor ( "idpresupuesto" ) ) << "</IDPRESUPUESTO>\n";
-            stream << "\t<COMENTPEDIDOCLIENTE>" << XMLProtect ( curc->valor ( "comentpedidocliente" ) ) << "</COMENTPEDIDOCLIENTE>\n";
-            stream << "\t<IDUSUARI>" << XMLProtect ( curc->valor ( "idusuari" ) ) << "</IDUSUARI>\n";
-            stream << "\t<PROCESADOPEDIDOCLIENTE>" << XMLProtect ( curc->valor ( "procesadopedidocliente" ) ) << "</PROCESADOPEDIDOCLIENTE>\n";
-            stream << "\t<IDCLIENTE>" << XMLProtect ( curc->valor ( "idcliente" ) ) << "</IDCLIENTE>\n";
-            stream << "\t<IDALMACEN>" << XMLProtect ( curc->valor ( "idalmacen" ) ) << "</IDALMACEN>\n";
-            stream << "\t<IDFORMA_PAGO>" << XMLProtect ( curc->valor ( "idforma_pago" ) ) << "</IDFORMA_PAGO>\n";
-            stream << "\t<IDTRABAJADOR>" << XMLProtect ( curc->valor ( "idtrabajador" ) ) << "</IDTRABAJADOR>\n";
+            stream << "\t<IDPEDIDOCLIENTE>" << blXMLEncode ( curc->valor ( "idpedidocliente" ) ) << "</IDPEDIDOCLIENTE>\n";
+            stream << "\t<NUMPEDIDOCLIENTE>" << blXMLEncode ( curc->valor ( "numpedidocliente" ) ) << "</NUMPEDIDOCLIENTE>\n";
+            stream << "\t<FECHAPEDIDOCLIENTE>" << blXMLEncode ( curc->valor ( "fechapedidocliente" ) ) << "</FECHAPEDIDOCLIENTE>\n";
+            stream << "\t<REFPEDIDOCLIENTE>" << blXMLEncode ( curc->valor ( "refpedidocliente" ) ) << "</REFPEDIDOCLIENTE>\n";
+            stream << "\t<DESCPEDIDOCLIENTE>" << blXMLEncode ( curc->valor ( "descpedidocliente" ) ) << "</DESCPEDIDOCLIENTE>\n";
+            stream << "\t<CONTACTPEDIDOCLIENTE>" << blXMLEncode ( curc->valor ( "contactpedidocliente" ) ) << "</CONTACTPEDIDOCLIENTE>\n";
+            stream << "\t<TELPEDIDOCLIENTE>" << blXMLEncode ( curc->valor ( "telpedidocliente" ) ) << "</TELPEDIDOCLIENTE>\n";
+            stream << "\t<IDPRESUPUESTO>" << blXMLEncode ( curc->valor ( "idpresupuesto" ) ) << "</IDPRESUPUESTO>\n";
+            stream << "\t<COMENTPEDIDOCLIENTE>" << blXMLEncode ( curc->valor ( "comentpedidocliente" ) ) << "</COMENTPEDIDOCLIENTE>\n";
+            stream << "\t<IDUSUARI>" << blXMLEncode ( curc->valor ( "idusuari" ) ) << "</IDUSUARI>\n";
+            stream << "\t<PROCESADOPEDIDOCLIENTE>" << blXMLEncode ( curc->valor ( "procesadopedidocliente" ) ) << "</PROCESADOPEDIDOCLIENTE>\n";
+            stream << "\t<IDCLIENTE>" << blXMLEncode ( curc->valor ( "idcliente" ) ) << "</IDCLIENTE>\n";
+            stream << "\t<IDALMACEN>" << blXMLEncode ( curc->valor ( "idalmacen" ) ) << "</IDALMACEN>\n";
+            stream << "\t<IDFORMA_PAGO>" << blXMLEncode ( curc->valor ( "idforma_pago" ) ) << "</IDFORMA_PAGO>\n";
+            stream << "\t<IDTRABAJADOR>" << blXMLEncode ( curc->valor ( "idtrabajador" ) ) << "</IDTRABAJADOR>\n";
             /// Datos iniciales para el presupuesto  que pueden ser de utilidad.
-            stream << "\t<CODIGOALMACEN>" << XMLProtect ( curc->valor ( "codigoalmacen" ) ) << "</CODIGOALMACEN>\n";
-            stream << "\t<NOMALMACEN>" << XMLProtect ( curc->valor ( "nomalmacen" ) ) << "</NOMALMACEN>\n";
-            stream << "\t<DIRALMACEN>" << XMLProtect ( curc->valor ( "diralmacen" ) ) << "</DIRALMACEN>\n";
-            stream << "\t<POBLALMACEN>" << XMLProtect ( curc->valor ( "poblalmacen" ) ) << "</POBLALMACEN>\n";
-            stream << "\t<CPALMACEN>" << XMLProtect ( curc->valor ( "cpalmacen" ) ) << "</CPALMACEN>\n";
-            stream << "\t<TELALMACEN>" << XMLProtect ( curc->valor ( "telalmacen" ) ) << "</TELALMACEN>\n";
+            stream << "\t<CODIGOALMACEN>" << blXMLEncode ( curc->valor ( "codigoalmacen" ) ) << "</CODIGOALMACEN>\n";
+            stream << "\t<NOMALMACEN>" << blXMLEncode ( curc->valor ( "nomalmacen" ) ) << "</NOMALMACEN>\n";
+            stream << "\t<DIRALMACEN>" << blXMLEncode ( curc->valor ( "diralmacen" ) ) << "</DIRALMACEN>\n";
+            stream << "\t<POBLALMACEN>" << blXMLEncode ( curc->valor ( "poblalmacen" ) ) << "</POBLALMACEN>\n";
+            stream << "\t<CPALMACEN>" << blXMLEncode ( curc->valor ( "cpalmacen" ) ) << "</CPALMACEN>\n";
+            stream << "\t<TELALMACEN>" << blXMLEncode ( curc->valor ( "telalmacen" ) ) << "</TELALMACEN>\n";
             /// Datos referentes al cliente.
-            stream << "\t<NOMCLIENTE>" << XMLProtect ( curc->valor ( "nomcliente" ) ) << "</NOMCLIENTE>\n";
-            stream << "\t<NOMALTCLIENTE>" << XMLProtect ( curc->valor ( "nomaltcliente" ) ) << "</NOMALTCLIENTE>\n";
-            stream << "\t<CIFCLIENTE>" << XMLProtect ( curc->valor ( "cifcliente" ) ) << "</CIFCLIENTE>\n";
-            stream << "\t<BANCOCLIENTE>" << XMLProtect ( curc->valor ( "bancocliente" ) ) << "</BANCOCLIENTE>\n";
-            stream << "\t<DIRCLIENTE>" << XMLProtect ( curc->valor ( "dircliente" ) ) << "</DIRCLIENTE>\n";
-            stream << "\t<POBLCLIENTE>" << XMLProtect ( curc->valor ( "poblcliente" ) ) << "</POBLCLIENTE>\n";
-            stream << "\t<CPCLIENTE>" << XMLProtect ( curc->valor ( "cpcliente" ) ) << "</CPCLIENTE>\n";
-            stream << "\t<TELCLIENTE>" << XMLProtect ( curc->valor ( "telcliente" ) ) << "</TELCLIENTE>\n";
-            stream << "\t<FAXCLIENTE>" << XMLProtect ( curc->valor ( "faxcliente" ) ) << "</FAXCLIENTE>\n";
-            stream << "\t<MAILCLIENTE>" << XMLProtect ( curc->valor ( "mailcliente" ) ) << "</MAILCLIENTE>\n";
-            stream << "\t<URLCLIENTE>" << XMLProtect ( curc->valor ( "urlcliente" ) ) << "</URLCLIENTE>\n";
-            stream << "\t<PROVCLIENTE>" << XMLProtect ( curc->valor ( "provcliente" ) ) << "</PROVCLIENTE>\n";
+            stream << "\t<NOMCLIENTE>" << blXMLEncode ( curc->valor ( "nomcliente" ) ) << "</NOMCLIENTE>\n";
+            stream << "\t<NOMALTCLIENTE>" << blXMLEncode ( curc->valor ( "nomaltcliente" ) ) << "</NOMALTCLIENTE>\n";
+            stream << "\t<CIFCLIENTE>" << blXMLEncode ( curc->valor ( "cifcliente" ) ) << "</CIFCLIENTE>\n";
+            stream << "\t<BANCOCLIENTE>" << blXMLEncode ( curc->valor ( "bancocliente" ) ) << "</BANCOCLIENTE>\n";
+            stream << "\t<DIRCLIENTE>" << blXMLEncode ( curc->valor ( "dircliente" ) ) << "</DIRCLIENTE>\n";
+            stream << "\t<POBLCLIENTE>" << blXMLEncode ( curc->valor ( "poblcliente" ) ) << "</POBLCLIENTE>\n";
+            stream << "\t<CPCLIENTE>" << blXMLEncode ( curc->valor ( "cpcliente" ) ) << "</CPCLIENTE>\n";
+            stream << "\t<TELCLIENTE>" << blXMLEncode ( curc->valor ( "telcliente" ) ) << "</TELCLIENTE>\n";
+            stream << "\t<FAXCLIENTE>" << blXMLEncode ( curc->valor ( "faxcliente" ) ) << "</FAXCLIENTE>\n";
+            stream << "\t<MAILCLIENTE>" << blXMLEncode ( curc->valor ( "mailcliente" ) ) << "</MAILCLIENTE>\n";
+            stream << "\t<URLCLIENTE>" << blXMLEncode ( curc->valor ( "urlcliente" ) ) << "</URLCLIENTE>\n";
+            stream << "\t<PROVCLIENTE>" << blXMLEncode ( curc->valor ( "provcliente" ) ) << "</PROVCLIENTE>\n";
             /// Datos sobre el trabajador
-            stream << "\t<NOMTRABAJADOR>" << XMLProtect ( curc->valor ( "nomtrabajador" ) ) << "</NOMTRABAJADOR>\n";
-            stream << "\t<APELLIDOSTRABAJADOR>" << XMLProtect ( curc->valor ( "apellidostrabajador" ) ) << "</APELLIDOSTRABAJADOR>\n";
-            stream << "\t<DIRTRABAJADOR>" << XMLProtect ( curc->valor ( "dirtrabajador" ) ) << "</DIRTRABAJADOR>\n";
-            stream << "\t<NSSTRABAJADOR>" << XMLProtect ( curc->valor ( "nsstrabajador" ) ) << "</NSSTRABAJADOR>\n";
-            stream << "\t<TELTRABAJADOR>" << XMLProtect ( curc->valor ( "teltrabajador" ) ) << "</TELTRABAJADOR>\n";
-            stream << "\t<MOVILTRABAJADOR>" << XMLProtect ( curc->valor ( "moviltrabajador" ) ) << "</MOVILTRABAJADOR>\n";
-            stream << "\t<EMAILTRABAJADOR>" << XMLProtect ( curc->valor ( "emailtrabajador" ) ) << "</EMAILTRABAJADOR>\n";
+            stream << "\t<NOMTRABAJADOR>" << blXMLEncode ( curc->valor ( "nomtrabajador" ) ) << "</NOMTRABAJADOR>\n";
+            stream << "\t<APELLIDOSTRABAJADOR>" << blXMLEncode ( curc->valor ( "apellidostrabajador" ) ) << "</APELLIDOSTRABAJADOR>\n";
+            stream << "\t<DIRTRABAJADOR>" << blXMLEncode ( curc->valor ( "dirtrabajador" ) ) << "</DIRTRABAJADOR>\n";
+            stream << "\t<NSSTRABAJADOR>" << blXMLEncode ( curc->valor ( "nsstrabajador" ) ) << "</NSSTRABAJADOR>\n";
+            stream << "\t<TELTRABAJADOR>" << blXMLEncode ( curc->valor ( "teltrabajador" ) ) << "</TELTRABAJADOR>\n";
+            stream << "\t<MOVILTRABAJADOR>" << blXMLEncode ( curc->valor ( "moviltrabajador" ) ) << "</MOVILTRABAJADOR>\n";
+            stream << "\t<EMAILTRABAJADOR>" << blXMLEncode ( curc->valor ( "emailtrabajador" ) ) << "</EMAILTRABAJADOR>\n";
             /// Datos sobre la forma de pago
-            stream << "\t<DESCFORMA_PAGO>" << XMLProtect ( curc->valor ( "descforma_pago" ) ) << "</DESCFORMA_PAGO>\n";
-            stream << "\t<DIAS1TFORMA_PAGO>" << XMLProtect ( curc->valor ( "dias1tforma_pago" ) ) << "</DIAS1TFORMA_PAGO>\n";
-            stream << "\t<DESCUENTOFORMA_PAGO>" << XMLProtect ( curc->valor ( "descuentoforma_pago" ) ) << "</DESCUENTOFORMA_PAGO>\n";
+            stream << "\t<DESCFORMA_PAGO>" << blXMLEncode ( curc->valor ( "descforma_pago" ) ) << "</DESCFORMA_PAGO>\n";
+            stream << "\t<DIAS1TFORMA_PAGO>" << blXMLEncode ( curc->valor ( "dias1tforma_pago" ) ) << "</DIAS1TFORMA_PAGO>\n";
+            stream << "\t<DESCUENTOFORMA_PAGO>" << blXMLEncode ( curc->valor ( "descuentoforma_pago" ) ) << "</DESCUENTOFORMA_PAGO>\n";
             /// Incorporamos las lineas de detalles del presupuesto.
             BlDbRecordSet *curlc = dbConnection->loadQuery ( "SELECT * FROM lpedidocliente LEFT JOIN articulo ON lpedidocliente.idarticulo = articulo.idarticulo WHERE idpedidocliente = " + curc->valor ( "idpedidocliente" ) );
             while ( !curlc->eof() ) {
                 stream << "\t\t<LPEDIDOCLIENTE>\n";
-                stream << "\t\t\t<IDLPEDIDOCLIENTE>" << XMLProtect ( curlc->valor ( "idlpedidocliente" ) ) << "</IDLPEDIDOCLIENTE>\n";
-                stream << "\t\t\t<DESCLPEDIDOCLIENTE>" << XMLProtect ( curlc->valor ( "desclpedidocliente" ) ) << "</DESCLPEDIDOCLIENTE>\n";
-                stream << "\t\t\t<CANTLPEDIDOCLIENTE>" << XMLProtect ( curlc->valor ( "cantlpedidocliente" ) ) << "</CANTLPEDIDOCLIENTE>\n";
-                stream << "\t\t\t<PVPLPEDIDOCLIENTE>" << XMLProtect ( curlc->valor ( "pvplpedidocliente" ) ) << "</PVPLPEDIDOCLIENTE>\n";
-                stream << "\t\t\t<IVALPEDIDOCLIENTE>" << XMLProtect ( curlc->valor ( "ivalpedidocliente" ) ) << "</IVALPEDIDOCLIENTE>\n";
-                stream << "\t\t\t<DESCUENTOLPEDIDOCLIENTEO>" << XMLProtect ( curlc->valor ( "descuentolpedidocliente" ) ) << "</DESCUENTOLPEDIDOCLIENTEO>\n";
-                stream << "\t\t\t<IDPEDIDOCLIENTE>" << XMLProtect ( curlc->valor ( "idpresupuesto" ) ) << "</IDPEDIDOCLIENTE>\n";
-                stream << "\t\t\t<IDARTICULO>" << XMLProtect ( curlc->valor ( "idarticulo" ) ) << "</IDARTICULO>\n";
+                stream << "\t\t\t<IDLPEDIDOCLIENTE>" << blXMLEncode ( curlc->valor ( "idlpedidocliente" ) ) << "</IDLPEDIDOCLIENTE>\n";
+                stream << "\t\t\t<DESCLPEDIDOCLIENTE>" << blXMLEncode ( curlc->valor ( "desclpedidocliente" ) ) << "</DESCLPEDIDOCLIENTE>\n";
+                stream << "\t\t\t<CANTLPEDIDOCLIENTE>" << blXMLEncode ( curlc->valor ( "cantlpedidocliente" ) ) << "</CANTLPEDIDOCLIENTE>\n";
+                stream << "\t\t\t<PVPLPEDIDOCLIENTE>" << blXMLEncode ( curlc->valor ( "pvplpedidocliente" ) ) << "</PVPLPEDIDOCLIENTE>\n";
+                stream << "\t\t\t<IVALPEDIDOCLIENTE>" << blXMLEncode ( curlc->valor ( "ivalpedidocliente" ) ) << "</IVALPEDIDOCLIENTE>\n";
+                stream << "\t\t\t<DESCUENTOLPEDIDOCLIENTEO>" << blXMLEncode ( curlc->valor ( "descuentolpedidocliente" ) ) << "</DESCUENTOLPEDIDOCLIENTEO>\n";
+                stream << "\t\t\t<IDPEDIDOCLIENTE>" << blXMLEncode ( curlc->valor ( "idpresupuesto" ) ) << "</IDPEDIDOCLIENTE>\n";
+                stream << "\t\t\t<IDARTICULO>" << blXMLEncode ( curlc->valor ( "idarticulo" ) ) << "</IDARTICULO>\n";
                 /// Los datos relacionados con el articulo.
-                stream << "\t\t\t<CODARTICULO>" << XMLProtect ( curlc->valor ( "codarticulo" ) ) << "</CODARTICULO>\n";
-                stream << "\t\t\t<NOMARTICULO>" << XMLProtect ( curlc->valor ( "nomarticulo" ) ) << "</NOMARTICULO>\n";
-                stream << "\t\t\t<ABREVARTICULO>" << XMLProtect ( curlc->valor ( "abrevarticulo" ) ) << "</ABREVARTICULO>\n";
-                stream << "\t<CODIGOCOMPLETOARTICULO>" << XMLProtect ( curlc->valor ( "codigocompletoarticulo" ) ) << "</CODIGOCOMPLETOARTICULO>\n";
+                stream << "\t\t\t<CODARTICULO>" << blXMLEncode ( curlc->valor ( "codarticulo" ) ) << "</CODARTICULO>\n";
+                stream << "\t\t\t<NOMARTICULO>" << blXMLEncode ( curlc->valor ( "nomarticulo" ) ) << "</NOMARTICULO>\n";
+                stream << "\t\t\t<ABREVARTICULO>" << blXMLEncode ( curlc->valor ( "abrevarticulo" ) ) << "</ABREVARTICULO>\n";
+                stream << "\t<CODIGOCOMPLETOARTICULO>" << blXMLEncode ( curlc->valor ( "codigocompletoarticulo" ) ) << "</CODIGOCOMPLETOARTICULO>\n";
                 stream << "\t\t</LPRESUPUESTO>\n";
                 curlc->nextRecord();
             } // end while
@@ -1133,10 +1133,10 @@ int BlImportExport::bulmafact2XML ( QFile &xmlfile, unsigned long long int tipo 
             curlc = dbConnection->loadQuery ( "SELECT * FROM dpedidocliente WHERE idpedidocliente = " + curc->valor ( "idpedidocliente" ) );
             while ( !curlc->eof() ) {
                 stream << "\t\t<DPEDIDOCLIENTE>\n";
-                stream << "\t\t\t<IDDPEDIDOCLIENTE>" << XMLProtect ( curlc->valor ( "iddpedidocliente" ) ) << "</IDDPEDIDOCLIENTE>\n";
-                stream << "\t\t\t<CONCEPTDPEDIDOCLIENTE>" << XMLProtect ( curlc->valor ( "conceptdpedidocliente" ) ) << "</CONCEPTDPEDIDOCLIENTE>\n";
-                stream << "\t\t\t<PROPORCIONDPEDIDOCLIENTE>" << XMLProtect ( curlc->valor ( "proporciondpedidocliente" ) ) << "</PROPORCIONDPEDIDOCLIENTE>\n";
-                stream << "\t\t\t<IDPEDIDOCLIENTE>" << XMLProtect ( curlc->valor ( "idpedidocliente" ) ) << "</IDPEDIDOCLIENTE>\n";
+                stream << "\t\t\t<IDDPEDIDOCLIENTE>" << blXMLEncode ( curlc->valor ( "iddpedidocliente" ) ) << "</IDDPEDIDOCLIENTE>\n";
+                stream << "\t\t\t<CONCEPTDPEDIDOCLIENTE>" << blXMLEncode ( curlc->valor ( "conceptdpedidocliente" ) ) << "</CONCEPTDPEDIDOCLIENTE>\n";
+                stream << "\t\t\t<PROPORCIONDPEDIDOCLIENTE>" << blXMLEncode ( curlc->valor ( "proporciondpedidocliente" ) ) << "</PROPORCIONDPEDIDOCLIENTE>\n";
+                stream << "\t\t\t<IDPEDIDOCLIENTE>" << blXMLEncode ( curlc->valor ( "idpedidocliente" ) ) << "</IDPEDIDOCLIENTE>\n";
                 stream << "\t\t</DPEDIDOCLIENTE>\n";
                 curlc->nextRecord();
             } // end while
@@ -1157,69 +1157,69 @@ int BlImportExport::bulmafact2XML ( QFile &xmlfile, unsigned long long int tipo 
         BlDbRecordSet *curc = dbConnection->loadQuery ( query );
         while ( !curc->eof() ) {
             stream << "<ALBARAN>\n";
-            stream << "\t<IDALBARAN>" << XMLProtect ( curc->valor ( "idalbaran" ) ) << "</IDALBARAN>\n";
-            stream << "\t<NUMALBARAN>" << XMLProtect ( curc->valor ( "numalbaran" ) ) << "</NUMALBARAN>\n";
-            stream << "\t<DESCALBARAN>" << XMLProtect ( curc->valor ( "descalbaran" ) ) << "</DESCALBARAN>\n";
-            stream << "\t<REFALBARAN>" << XMLProtect ( curc->valor ( "refalbaran" ) ) << "</REFALBARAN>\n";
-            stream << "\t<FECHAALBARAN>" << XMLProtect ( curc->valor ( "fechaalbaran" ) ) << "</FECHAALBARAN>\n";
-            stream << "\t<COMENTALBARAN>" << XMLProtect ( curc->valor ( "comentalbaran" ) ) << "</COMENTALBARAN>\n";
-            stream << "\t<PROCESADOALBARAN>" << XMLProtect ( curc->valor ( "procesadoalbaran" ) ) << "</PROCESADOALBARAN>\n";
-            stream << "\t<CONTACTALBARAN>" << XMLProtect ( curc->valor ( "contactalbaran" ) ) << "</CONTACTALBARAN>\n";
-            stream << "\t<TELALBARAN>" << XMLProtect ( curc->valor ( "telalbaran" ) ) << "</TELALBARAN>\n";
-            stream << "\t<IDUSUARI>" << XMLProtect ( curc->valor ( "idusuari" ) ) << "</IDUSUARI>\n";
-            stream << "\t<IDCLIENTE>" << XMLProtect ( curc->valor ( "idcliente" ) ) << "</IDCLIENTE>\n";
-            stream << "\t<IDALMACEN>" << XMLProtect ( curc->valor ( "idalmacen" ) ) << "</IDALMACEN>\n";
-            stream << "\t<IDFORMA_PAGO>" << XMLProtect ( curc->valor ( "idforma_pago" ) ) << "</IDFORMA_PAGO>\n";
-            stream << "\t<IDTRABAJADOR>" << XMLProtect ( curc->valor ( "idtrabajador" ) ) << "</IDTRABAJADOR>\n";
+            stream << "\t<IDALBARAN>" << blXMLEncode ( curc->valor ( "idalbaran" ) ) << "</IDALBARAN>\n";
+            stream << "\t<NUMALBARAN>" << blXMLEncode ( curc->valor ( "numalbaran" ) ) << "</NUMALBARAN>\n";
+            stream << "\t<DESCALBARAN>" << blXMLEncode ( curc->valor ( "descalbaran" ) ) << "</DESCALBARAN>\n";
+            stream << "\t<REFALBARAN>" << blXMLEncode ( curc->valor ( "refalbaran" ) ) << "</REFALBARAN>\n";
+            stream << "\t<FECHAALBARAN>" << blXMLEncode ( curc->valor ( "fechaalbaran" ) ) << "</FECHAALBARAN>\n";
+            stream << "\t<COMENTALBARAN>" << blXMLEncode ( curc->valor ( "comentalbaran" ) ) << "</COMENTALBARAN>\n";
+            stream << "\t<PROCESADOALBARAN>" << blXMLEncode ( curc->valor ( "procesadoalbaran" ) ) << "</PROCESADOALBARAN>\n";
+            stream << "\t<CONTACTALBARAN>" << blXMLEncode ( curc->valor ( "contactalbaran" ) ) << "</CONTACTALBARAN>\n";
+            stream << "\t<TELALBARAN>" << blXMLEncode ( curc->valor ( "telalbaran" ) ) << "</TELALBARAN>\n";
+            stream << "\t<IDUSUARI>" << blXMLEncode ( curc->valor ( "idusuari" ) ) << "</IDUSUARI>\n";
+            stream << "\t<IDCLIENTE>" << blXMLEncode ( curc->valor ( "idcliente" ) ) << "</IDCLIENTE>\n";
+            stream << "\t<IDALMACEN>" << blXMLEncode ( curc->valor ( "idalmacen" ) ) << "</IDALMACEN>\n";
+            stream << "\t<IDFORMA_PAGO>" << blXMLEncode ( curc->valor ( "idforma_pago" ) ) << "</IDFORMA_PAGO>\n";
+            stream << "\t<IDTRABAJADOR>" << blXMLEncode ( curc->valor ( "idtrabajador" ) ) << "</IDTRABAJADOR>\n";
             /// Datos iniciales para el albaran  que pueden ser de utilidad.
-            stream << "\t<CODIGOALMACEN>" << XMLProtect ( curc->valor ( "codigoalmacen" ) ) << "</CODIGOALMACEN>\n";
-            stream << "\t<NOMALMACEN>" << XMLProtect ( curc->valor ( "nomalmacen" ) ) << "</NOMALMACEN>\n";
-            stream << "\t<DIRALMACEN>" << XMLProtect ( curc->valor ( "diralmacen" ) ) << "</DIRALMACEN>\n";
-            stream << "\t<POBLALMACEN>" << XMLProtect ( curc->valor ( "poblalmacen" ) ) << "</POBLALMACEN>\n";
-            stream << "\t<CPALMACEN>" << XMLProtect ( curc->valor ( "cpalmacen" ) ) << "</CPALMACEN>\n";
-            stream << "\t<TELALMACEN>" << XMLProtect ( curc->valor ( "telalmacen" ) ) << "</TELALMACEN>\n";
+            stream << "\t<CODIGOALMACEN>" << blXMLEncode ( curc->valor ( "codigoalmacen" ) ) << "</CODIGOALMACEN>\n";
+            stream << "\t<NOMALMACEN>" << blXMLEncode ( curc->valor ( "nomalmacen" ) ) << "</NOMALMACEN>\n";
+            stream << "\t<DIRALMACEN>" << blXMLEncode ( curc->valor ( "diralmacen" ) ) << "</DIRALMACEN>\n";
+            stream << "\t<POBLALMACEN>" << blXMLEncode ( curc->valor ( "poblalmacen" ) ) << "</POBLALMACEN>\n";
+            stream << "\t<CPALMACEN>" << blXMLEncode ( curc->valor ( "cpalmacen" ) ) << "</CPALMACEN>\n";
+            stream << "\t<TELALMACEN>" << blXMLEncode ( curc->valor ( "telalmacen" ) ) << "</TELALMACEN>\n";
             /// Datos referentes al cliente.
-            stream << "\t<NOMCLIENTE>" << XMLProtect ( curc->valor ( "nomcliente" ) ) << "</NOMCLIENTE>\n";
-            stream << "\t<NOMALTCLIENTE>" << XMLProtect ( curc->valor ( "nomaltcliente" ) ) << "</NOMALTCLIENTE>\n";
-            stream << "\t<CIFCLIENTE>" << XMLProtect ( curc->valor ( "cifcliente" ) ) << "</CIFCLIENTE>\n";
-            stream << "\t<BANCOCLIENTE>" << XMLProtect ( curc->valor ( "bancocliente" ) ) << "</BANCOCLIENTE>\n";
-            stream << "\t<DIRCLIENTE>" << XMLProtect ( curc->valor ( "dircliente" ) ) << "</DIRCLIENTE>\n";
-            stream << "\t<POBLCLIENTE>" << XMLProtect ( curc->valor ( "poblcliente" ) ) << "</POBLCLIENTE>\n";
-            stream << "\t<CPCLIENTE>" << XMLProtect ( curc->valor ( "cpcliente" ) ) << "</CPCLIENTE>\n";
-            stream << "\t<TELCLIENTE>" << XMLProtect ( curc->valor ( "telcliente" ) ) << "</TELCLIENTE>\n";
-            stream << "\t<FAXCLIENTE>" << XMLProtect ( curc->valor ( "faxcliente" ) ) << "</FAXCLIENTE>\n";
-            stream << "\t<MAILCLIENTE>" << XMLProtect ( curc->valor ( "mailcliente" ) ) << "</MAILCLIENTE>\n";
-            stream << "\t<URLCLIENTE>" << XMLProtect ( curc->valor ( "urlcliente" ) ) << "</URLCLIENTE>\n";
-            stream << "\t<PROVCLIENTE>" << XMLProtect ( curc->valor ( "provcliente" ) ) << "</PROVCLIENTE>\n";
+            stream << "\t<NOMCLIENTE>" << blXMLEncode ( curc->valor ( "nomcliente" ) ) << "</NOMCLIENTE>\n";
+            stream << "\t<NOMALTCLIENTE>" << blXMLEncode ( curc->valor ( "nomaltcliente" ) ) << "</NOMALTCLIENTE>\n";
+            stream << "\t<CIFCLIENTE>" << blXMLEncode ( curc->valor ( "cifcliente" ) ) << "</CIFCLIENTE>\n";
+            stream << "\t<BANCOCLIENTE>" << blXMLEncode ( curc->valor ( "bancocliente" ) ) << "</BANCOCLIENTE>\n";
+            stream << "\t<DIRCLIENTE>" << blXMLEncode ( curc->valor ( "dircliente" ) ) << "</DIRCLIENTE>\n";
+            stream << "\t<POBLCLIENTE>" << blXMLEncode ( curc->valor ( "poblcliente" ) ) << "</POBLCLIENTE>\n";
+            stream << "\t<CPCLIENTE>" << blXMLEncode ( curc->valor ( "cpcliente" ) ) << "</CPCLIENTE>\n";
+            stream << "\t<TELCLIENTE>" << blXMLEncode ( curc->valor ( "telcliente" ) ) << "</TELCLIENTE>\n";
+            stream << "\t<FAXCLIENTE>" << blXMLEncode ( curc->valor ( "faxcliente" ) ) << "</FAXCLIENTE>\n";
+            stream << "\t<MAILCLIENTE>" << blXMLEncode ( curc->valor ( "mailcliente" ) ) << "</MAILCLIENTE>\n";
+            stream << "\t<URLCLIENTE>" << blXMLEncode ( curc->valor ( "urlcliente" ) ) << "</URLCLIENTE>\n";
+            stream << "\t<PROVCLIENTE>" << blXMLEncode ( curc->valor ( "provcliente" ) ) << "</PROVCLIENTE>\n";
             /// Datos sobre el trabajador.
-            stream << "\t<NOMTRABAJADOR>" << XMLProtect ( curc->valor ( "nomtrabajador" ) ) << "</NOMTRABAJADOR>\n";
-            stream << "\t<APELLIDOSTRABAJADOR>" << XMLProtect ( curc->valor ( "apellidostrabajador" ) ) << "</APELLIDOSTRABAJADOR>\n";
-            stream << "\t<DIRTRABAJADOR>" << XMLProtect ( curc->valor ( "dirtrabajador" ) ) << "</DIRTRABAJADOR>\n";
-            stream << "\t<NSSTRABAJADOR>" << XMLProtect ( curc->valor ( "nsstrabajador" ) ) << "</NSSTRABAJADOR>\n";
-            stream << "\t<TELTRABAJADOR>" << XMLProtect ( curc->valor ( "teltrabajador" ) ) << "</TELTRABAJADOR>\n";
-            stream << "\t<MOVILTRABAJADOR>" << XMLProtect ( curc->valor ( "moviltrabajador" ) ) << "</MOVILTRABAJADOR>\n";
-            stream << "\t<EMAILTRABAJADOR>" << XMLProtect ( curc->valor ( "emailtrabajador" ) ) << "</EMAILTRABAJADOR>\n";
+            stream << "\t<NOMTRABAJADOR>" << blXMLEncode ( curc->valor ( "nomtrabajador" ) ) << "</NOMTRABAJADOR>\n";
+            stream << "\t<APELLIDOSTRABAJADOR>" << blXMLEncode ( curc->valor ( "apellidostrabajador" ) ) << "</APELLIDOSTRABAJADOR>\n";
+            stream << "\t<DIRTRABAJADOR>" << blXMLEncode ( curc->valor ( "dirtrabajador" ) ) << "</DIRTRABAJADOR>\n";
+            stream << "\t<NSSTRABAJADOR>" << blXMLEncode ( curc->valor ( "nsstrabajador" ) ) << "</NSSTRABAJADOR>\n";
+            stream << "\t<TELTRABAJADOR>" << blXMLEncode ( curc->valor ( "teltrabajador" ) ) << "</TELTRABAJADOR>\n";
+            stream << "\t<MOVILTRABAJADOR>" << blXMLEncode ( curc->valor ( "moviltrabajador" ) ) << "</MOVILTRABAJADOR>\n";
+            stream << "\t<EMAILTRABAJADOR>" << blXMLEncode ( curc->valor ( "emailtrabajador" ) ) << "</EMAILTRABAJADOR>\n";
             /// Datos sobre la forma de pago.
-            stream << "\t<DESCFORMA_PAGO>" << XMLProtect ( curc->valor ( "descforma_pago" ) ) << "</DESCFORMA_PAGO>\n";
-            stream << "\t<DIAS1TFORMA_PAGO>" << XMLProtect ( curc->valor ( "dias1tforma_pago" ) ) << "</DIAS1TFORMA_PAGO>\n";
-            stream << "\t<DESCUENTOFORMA_PAGO>" << XMLProtect ( curc->valor ( "descuentoforma_pago" ) ) << "</DESCUENTOFORMA_PAGO>\n";
+            stream << "\t<DESCFORMA_PAGO>" << blXMLEncode ( curc->valor ( "descforma_pago" ) ) << "</DESCFORMA_PAGO>\n";
+            stream << "\t<DIAS1TFORMA_PAGO>" << blXMLEncode ( curc->valor ( "dias1tforma_pago" ) ) << "</DIAS1TFORMA_PAGO>\n";
+            stream << "\t<DESCUENTOFORMA_PAGO>" << blXMLEncode ( curc->valor ( "descuentoforma_pago" ) ) << "</DESCUENTOFORMA_PAGO>\n";
             /// Incorporamos las lineas de detalles del presupuesto.
             BlDbRecordSet *curlc = dbConnection->loadQuery ( "SELECT * FROM lalbaran LEFT JOIN articulo ON lalbaran.idarticulo = articulo.idarticulo WHERE idalbaran = " + curc->valor ( "idalbaran" ) );
             while ( !curlc->eof() ) {
                 stream << "\t\t<LALBARAN>\n";
-                stream << "\t\t\t<IDLALBARAN>" << XMLProtect ( curlc->valor ( "idlalbaran" ) ) << "</IDLALBARAN>\n";
-                stream << "\t\t\t<DESCLALBARAN>" << XMLProtect ( curlc->valor ( "desclalbaran" ) ) << "</DESCLPRESUPUESTO>\n";
-                stream << "\t\t\t<CANTLALBARANE>" << XMLProtect ( curlc->valor ( "cantlalbaran" ) ) << "</CANTLALBARANE>\n";
-                stream << "\t\t\t<PVPLALBARAN>" << XMLProtect ( curlc->valor ( "pvplalbaran" ) ) << "</PVPLALBARAN>\n";
-                stream << "\t\t\t<IVALALBARAN>" << XMLProtect ( curlc->valor ( "ivalalbaran" ) ) << "</IVALALBARAN>\n";
-                stream << "\t\t\t<DESCUENTOLALBARAN>" << XMLProtect ( curlc->valor ( "descuentolalbaran" ) ) << "</DESCUENTOLALBARAN>\n";
-                stream << "\t\t\t<IDALBARAN>" << XMLProtect ( curlc->valor ( "idalbaran" ) ) << "</IDALBARAN>\n";
-                stream << "\t\t\t<IDARTICULO>" << XMLProtect ( curlc->valor ( "idarticulo" ) ) << "</IDARTICULO>\n";
+                stream << "\t\t\t<IDLALBARAN>" << blXMLEncode ( curlc->valor ( "idlalbaran" ) ) << "</IDLALBARAN>\n";
+                stream << "\t\t\t<DESCLALBARAN>" << blXMLEncode ( curlc->valor ( "desclalbaran" ) ) << "</DESCLPRESUPUESTO>\n";
+                stream << "\t\t\t<CANTLALBARANE>" << blXMLEncode ( curlc->valor ( "cantlalbaran" ) ) << "</CANTLALBARANE>\n";
+                stream << "\t\t\t<PVPLALBARAN>" << blXMLEncode ( curlc->valor ( "pvplalbaran" ) ) << "</PVPLALBARAN>\n";
+                stream << "\t\t\t<IVALALBARAN>" << blXMLEncode ( curlc->valor ( "ivalalbaran" ) ) << "</IVALALBARAN>\n";
+                stream << "\t\t\t<DESCUENTOLALBARAN>" << blXMLEncode ( curlc->valor ( "descuentolalbaran" ) ) << "</DESCUENTOLALBARAN>\n";
+                stream << "\t\t\t<IDALBARAN>" << blXMLEncode ( curlc->valor ( "idalbaran" ) ) << "</IDALBARAN>\n";
+                stream << "\t\t\t<IDARTICULO>" << blXMLEncode ( curlc->valor ( "idarticulo" ) ) << "</IDARTICULO>\n";
                 /// Los datos relacionados con el articulo.
-                stream << "\t\t\t<CODARTICULO>" << XMLProtect ( curlc->valor ( "codarticulo" ) ) << "</CODARTICULO>\n";
-                stream << "\t\t\t<NOMARTICULO>" << XMLProtect ( curlc->valor ( "nomarticulo" ) ) << "</NOMARTICULO>\n";
-                stream << "\t\t\t<ABREVARTICULO>" << XMLProtect ( curlc->valor ( "abrevarticulo" ) ) << "</ABREVARTICULO>\n";
-                stream << "\t<CODIGOCOMPLETOARTICULO>" << XMLProtect ( curlc->valor ( "codigocompletoarticulo" ) ) << "</CODIGOCOMPLETOARTICULO>\n";
+                stream << "\t\t\t<CODARTICULO>" << blXMLEncode ( curlc->valor ( "codarticulo" ) ) << "</CODARTICULO>\n";
+                stream << "\t\t\t<NOMARTICULO>" << blXMLEncode ( curlc->valor ( "nomarticulo" ) ) << "</NOMARTICULO>\n";
+                stream << "\t\t\t<ABREVARTICULO>" << blXMLEncode ( curlc->valor ( "abrevarticulo" ) ) << "</ABREVARTICULO>\n";
+                stream << "\t<CODIGOCOMPLETOARTICULO>" << blXMLEncode ( curlc->valor ( "codigocompletoarticulo" ) ) << "</CODIGOCOMPLETOARTICULO>\n";
                 stream << "\t\t</LALBARAN>\n";
                 curlc->nextRecord();
             } // end while
@@ -1228,10 +1228,10 @@ int BlImportExport::bulmafact2XML ( QFile &xmlfile, unsigned long long int tipo 
             curlc = dbConnection->loadQuery ( "SELECT * FROM dalbaran WHERE idalbaran = " + curc->valor ( "idalbaran" ) );
             while ( !curlc->eof() ) {
                 stream << "\t\t<DALBARAN>\n";
-                stream << "\t\t\t<IDDALBARAN>" << XMLProtect ( curlc->valor ( "iddalbaran" ) ) << "</IDDALBARAN>\n";
-                stream << "\t\t\t<CONCEPTDALBARAN>" << XMLProtect ( curlc->valor ( "conceptdalbaran" ) ) << "</CONCEPTDALBARAN>\n";
-                stream << "\t\t\t<PROPORCIONDALBARAN>" << XMLProtect ( curlc->valor ( "proporciondalbaran" ) ) << "</PROPORCIONDALBARAN>\n";
-                stream << "\t\t\t<IDALBARAN>" << XMLProtect ( curlc->valor ( "idalbaran" ) ) << "</IDALBARAN>\n";
+                stream << "\t\t\t<IDDALBARAN>" << blXMLEncode ( curlc->valor ( "iddalbaran" ) ) << "</IDDALBARAN>\n";
+                stream << "\t\t\t<CONCEPTDALBARAN>" << blXMLEncode ( curlc->valor ( "conceptdalbaran" ) ) << "</CONCEPTDALBARAN>\n";
+                stream << "\t\t\t<PROPORCIONDALBARAN>" << blXMLEncode ( curlc->valor ( "proporciondalbaran" ) ) << "</PROPORCIONDALBARAN>\n";
+                stream << "\t\t\t<IDALBARAN>" << blXMLEncode ( curlc->valor ( "idalbaran" ) ) << "</IDALBARAN>\n";
                 stream << "\t\t</DALBARAN>\n";
                 curlc->nextRecord();
             } // end while
@@ -1275,24 +1275,24 @@ int BlImportExport::bulmages2XML ( QFile &xmlfile, unsigned long long int tipo )
         BlDbRecordSet *curcta = dbConnection->loadQuery ( query );
         while ( !curcta->eof() ) {
             stream << "<CUENTA>\n";
-            stream << "\t<IDCUENTA>" << XMLProtect ( curcta->valor ( "idcuenta" ) ) << "</IDCUENTA>\n";
-            stream << "\t<CODIGO>" << XMLProtect ( curcta->valor ( "codigo" ) ) << "</CODIGO>\n";
-            stream << "\t<DESCRIPCION>" << XMLProtect ( curcta->valor ( "descripcion" ) ) << "</DESCRIPCION>\n";
-            stream << "\t<CIFENT_CUENTA>" << XMLProtect ( curcta->valor ( "cifent_cuenta" ) ) << "</CIFENT_CUENTA>\n";
-            stream << "\t<DIRENT_CUENTA>" << XMLProtect ( curcta->valor ( "dirent_cuenta" ) ) << "</DIRENT_CUENTA>\n";
-            stream << "\t<BLOQUEADA>" << XMLProtect ( curcta->valor ( "bloqueada" ) ) << "</BLOQUEADA>\n";
-            stream << "\t<NODEBE>" << XMLProtect ( curcta->valor ( "nodebe" ) ) << "</NODEBE>\n";
-            stream << "\t<NOHABER>" << XMLProtect ( curcta->valor ( "nohaber" ) ) << "</NOHABER>\n";
-            stream << "\t<NOMBREENT_CUENTA>" << XMLProtect ( curcta->valor ( "nombreent_cuenta" ) ) << "</NOMBREENT_CUENTA>\n";
-            stream << "\t<TIPOCUENTA>" << XMLProtect ( curcta->valor ( "tipocuenta" ) ) << "</TIPOCUENTA>\n";
-            stream << "\t<WEBENT_CUENTA>" << XMLProtect ( curcta->valor ( "webent_cuenta" ) ) << "</WEBENT_CUENTA>\n";
-            stream << "\t<EMAILENT_CUENTA>" << XMLProtect ( curcta->valor ( "emailent_cuenta" ) ) << "</EMAILENT_CUENTA>\n";
-            stream << "\t<BANCOENT_CUENTA>" << XMLProtect ( curcta->valor ( "bancoent_cuenta" ) ) << "</BANCOENT_CUENTA>\n";
-            stream << "\t<COMENT_CUENTA>" << XMLProtect ( curcta->valor ( "coment_cuenta" ) ) << "</COMENT_CUENTA>\n";
-            stream << "\t<TELENT_CUENTA>" << XMLProtect ( curcta->valor ( "telent_cuenta" ) ) << "</TELENT_CUENTA>\n";
-            stream << "\t<CPENT_CUENTA>" << XMLProtect ( curcta->valor ( "cpent_cuenta" ) ) << "</CPENT_CUENTA>\n";
-            stream << "\t<REGULARIZACION>" << XMLProtect ( curcta->valor ( "regularizacion" ) ) << "</REGULARIZACION>\n";
-            stream << "\t<IMPUTACION>" << XMLProtect ( curcta->valor ( "imputacion" ) ) << "</IMPUTACION>\n";
+            stream << "\t<IDCUENTA>" << blXMLEncode ( curcta->valor ( "idcuenta" ) ) << "</IDCUENTA>\n";
+            stream << "\t<CODIGO>" << blXMLEncode ( curcta->valor ( "codigo" ) ) << "</CODIGO>\n";
+            stream << "\t<DESCRIPCION>" << blXMLEncode ( curcta->valor ( "descripcion" ) ) << "</DESCRIPCION>\n";
+            stream << "\t<CIFENT_CUENTA>" << blXMLEncode ( curcta->valor ( "cifent_cuenta" ) ) << "</CIFENT_CUENTA>\n";
+            stream << "\t<DIRENT_CUENTA>" << blXMLEncode ( curcta->valor ( "dirent_cuenta" ) ) << "</DIRENT_CUENTA>\n";
+            stream << "\t<BLOQUEADA>" << blXMLEncode ( curcta->valor ( "bloqueada" ) ) << "</BLOQUEADA>\n";
+            stream << "\t<NODEBE>" << blXMLEncode ( curcta->valor ( "nodebe" ) ) << "</NODEBE>\n";
+            stream << "\t<NOHABER>" << blXMLEncode ( curcta->valor ( "nohaber" ) ) << "</NOHABER>\n";
+            stream << "\t<NOMBREENT_CUENTA>" << blXMLEncode ( curcta->valor ( "nombreent_cuenta" ) ) << "</NOMBREENT_CUENTA>\n";
+            stream << "\t<TIPOCUENTA>" << blXMLEncode ( curcta->valor ( "tipocuenta" ) ) << "</TIPOCUENTA>\n";
+            stream << "\t<WEBENT_CUENTA>" << blXMLEncode ( curcta->valor ( "webent_cuenta" ) ) << "</WEBENT_CUENTA>\n";
+            stream << "\t<EMAILENT_CUENTA>" << blXMLEncode ( curcta->valor ( "emailent_cuenta" ) ) << "</EMAILENT_CUENTA>\n";
+            stream << "\t<BANCOENT_CUENTA>" << blXMLEncode ( curcta->valor ( "bancoent_cuenta" ) ) << "</BANCOENT_CUENTA>\n";
+            stream << "\t<COMENT_CUENTA>" << blXMLEncode ( curcta->valor ( "coment_cuenta" ) ) << "</COMENT_CUENTA>\n";
+            stream << "\t<TELENT_CUENTA>" << blXMLEncode ( curcta->valor ( "telent_cuenta" ) ) << "</TELENT_CUENTA>\n";
+            stream << "\t<CPENT_CUENTA>" << blXMLEncode ( curcta->valor ( "cpent_cuenta" ) ) << "</CPENT_CUENTA>\n";
+            stream << "\t<REGULARIZACION>" << blXMLEncode ( curcta->valor ( "regularizacion" ) ) << "</REGULARIZACION>\n";
+            stream << "\t<IMPUTACION>" << blXMLEncode ( curcta->valor ( "imputacion" ) ) << "</IMPUTACION>\n";
             stream << "</CUENTA>\n";
             curcta->nextRecord();
         } // end while
@@ -1301,25 +1301,25 @@ int BlImportExport::bulmages2XML ( QFile &xmlfile, unsigned long long int tipo )
         curcta = dbConnection->loadQuery ( query );
         while ( !curcta->eof() ) {
             stream << "<CUENTA>\n";
-            stream << "\t<IDCUENTA>" << XMLProtect ( curcta->valor ( "idcuenta" ) ) << "</IDCUENTA>\n";
-            stream << "\t<CODIGO>" << XMLProtect ( curcta->valor ( "codigo" ) ) << "</CODIGO>\n";
-            stream << "\t<DESCRIPCION>" << XMLProtect ( curcta->valor ( "descripcion" ) ) << "</DESCRIPCION>\n";
-            stream << "\t<CIFENT_CUENTA>" << XMLProtect ( curcta->valor ( "cifent_cuenta" ) ) << "</CIFENT_CUENTA>\n";
-            stream << "\t<DIRENT_CUENTA>" << XMLProtect ( curcta->valor ( "dirent_cuenta" ) ) << "</DIRENT_CUENTA>\n";
-            stream << "\t<CODPADRE>" << XMLProtect ( curcta->valor ( "codpadre" ) ) << "</CODPADRE>\n";
-            stream << "\t<BLOQUEADA>" << XMLProtect ( curcta->valor ( "bloqueada" ) ) << "</BLOQUEADA>\n";
-            stream << "\t<NODEBE>" << XMLProtect ( curcta->valor ( "nodebe" ) ) << "</NODEBE>\n";
-            stream << "\t<NOHABER>" << XMLProtect ( curcta->valor ( "nohaber" ) ) << "</NOHABER>\n";
-            stream << "\t<NOMBREENT_CUENTA>" << XMLProtect ( curcta->valor ( "nombreent_cuenta" ) ) << "</NOMBREENT_CUENTA>\n";
-            stream << "\t<TIPOCUENTA>" << XMLProtect ( curcta->valor ( "tipocuenta" ) ) << "</TIPOCUENTA>\n";
-            stream << "\t<WEBENT_CUENTA>" << XMLProtect ( curcta->valor ( "webent_cuenta" ) ) << "</WEBENT_CUENTA>\n";
-            stream << "\t<EMAILENT_CUENTA>" << XMLProtect ( curcta->valor ( "emailent_cuenta" ) ) << "</EMAILENT_CUENTA>\n";
-            stream << "\t<BANCOENT_CUENTA>" << XMLProtect ( curcta->valor ( "bancoent_cuenta" ) ) << "</BANCOENT_CUENTA>\n";
-            stream << "\t<COMENT_CUENTA>" << XMLProtect ( curcta->valor ( "coment_cuenta" ) ) << "</COMENT_CUENTA>\n";
-            stream << "\t<TELENT_CUENTA>" << XMLProtect ( curcta->valor ( "telent_cuenta" ) ) << "</TELENT_CUENTA>\n";
-            stream << "\t<CPENT_CUENTA>" << XMLProtect ( curcta->valor ( "cpent_cuenta" ) ) << "</CPENT_CUENTA>\n";
-            stream << "\t<REGULARIZACION>" << XMLProtect ( curcta->valor ( "regularizacion" ) ) << "</REGULARIZACION>\n";
-            stream << "\t<IMPUTACION>" << XMLProtect ( curcta->valor ( "imputacion" ) ) << "</IMPUTACION>\n";
+            stream << "\t<IDCUENTA>" << blXMLEncode ( curcta->valor ( "idcuenta" ) ) << "</IDCUENTA>\n";
+            stream << "\t<CODIGO>" << blXMLEncode ( curcta->valor ( "codigo" ) ) << "</CODIGO>\n";
+            stream << "\t<DESCRIPCION>" << blXMLEncode ( curcta->valor ( "descripcion" ) ) << "</DESCRIPCION>\n";
+            stream << "\t<CIFENT_CUENTA>" << blXMLEncode ( curcta->valor ( "cifent_cuenta" ) ) << "</CIFENT_CUENTA>\n";
+            stream << "\t<DIRENT_CUENTA>" << blXMLEncode ( curcta->valor ( "dirent_cuenta" ) ) << "</DIRENT_CUENTA>\n";
+            stream << "\t<CODPADRE>" << blXMLEncode ( curcta->valor ( "codpadre" ) ) << "</CODPADRE>\n";
+            stream << "\t<BLOQUEADA>" << blXMLEncode ( curcta->valor ( "bloqueada" ) ) << "</BLOQUEADA>\n";
+            stream << "\t<NODEBE>" << blXMLEncode ( curcta->valor ( "nodebe" ) ) << "</NODEBE>\n";
+            stream << "\t<NOHABER>" << blXMLEncode ( curcta->valor ( "nohaber" ) ) << "</NOHABER>\n";
+            stream << "\t<NOMBREENT_CUENTA>" << blXMLEncode ( curcta->valor ( "nombreent_cuenta" ) ) << "</NOMBREENT_CUENTA>\n";
+            stream << "\t<TIPOCUENTA>" << blXMLEncode ( curcta->valor ( "tipocuenta" ) ) << "</TIPOCUENTA>\n";
+            stream << "\t<WEBENT_CUENTA>" << blXMLEncode ( curcta->valor ( "webent_cuenta" ) ) << "</WEBENT_CUENTA>\n";
+            stream << "\t<EMAILENT_CUENTA>" << blXMLEncode ( curcta->valor ( "emailent_cuenta" ) ) << "</EMAILENT_CUENTA>\n";
+            stream << "\t<BANCOENT_CUENTA>" << blXMLEncode ( curcta->valor ( "bancoent_cuenta" ) ) << "</BANCOENT_CUENTA>\n";
+            stream << "\t<COMENT_CUENTA>" << blXMLEncode ( curcta->valor ( "coment_cuenta" ) ) << "</COMENT_CUENTA>\n";
+            stream << "\t<TELENT_CUENTA>" << blXMLEncode ( curcta->valor ( "telent_cuenta" ) ) << "</TELENT_CUENTA>\n";
+            stream << "\t<CPENT_CUENTA>" << blXMLEncode ( curcta->valor ( "cpent_cuenta" ) ) << "</CPENT_CUENTA>\n";
+            stream << "\t<REGULARIZACION>" << blXMLEncode ( curcta->valor ( "regularizacion" ) ) << "</REGULARIZACION>\n";
+            stream << "\t<IMPUTACION>" << blXMLEncode ( curcta->valor ( "imputacion" ) ) << "</IMPUTACION>\n";
             stream << "</CUENTA>\n";
             curcta->nextRecord();
         } // end while
@@ -1333,10 +1333,10 @@ int BlImportExport::bulmages2XML ( QFile &xmlfile, unsigned long long int tipo )
         BlDbRecordSet *curtiva = dbConnection->loadQuery ( query );
         while ( !curtiva->eof() ) {
             stream << "<TIPOIVA>\n";
-            stream << "\t<IDTIPOIVA>" << XMLProtect ( curtiva->valor ( "idtipoiva" ) ) << "</IDTIPOIVA>\n";
-            stream << "\t<NOMBRETIPOIVA>" << XMLProtect ( curtiva->valor ( "nombretipoiva" ) ) << "</NOMBRETIPOIVA>\n";
-            stream << "\t<PORCENTAJETIPOIVA>" << XMLProtect ( curtiva->valor ( "porcentajetipoiva" ) ) << "</PORCENTAJETIPOIVA>\n";
-            stream << "\t<CUENTATIPOIVA>" << XMLProtect ( curtiva->valor ( "codigo" ) ) << "</CUENTATIPOIVA>\n";
+            stream << "\t<IDTIPOIVA>" << blXMLEncode ( curtiva->valor ( "idtipoiva" ) ) << "</IDTIPOIVA>\n";
+            stream << "\t<NOMBRETIPOIVA>" << blXMLEncode ( curtiva->valor ( "nombretipoiva" ) ) << "</NOMBRETIPOIVA>\n";
+            stream << "\t<PORCENTAJETIPOIVA>" << blXMLEncode ( curtiva->valor ( "porcentajetipoiva" ) ) << "</PORCENTAJETIPOIVA>\n";
+            stream << "\t<CUENTATIPOIVA>" << blXMLEncode ( curtiva->valor ( "codigo" ) ) << "</CUENTATIPOIVA>\n";
             stream << "</TIPOIVA>\n";
             curtiva->nextRecord();
         } // end while
@@ -1373,18 +1373,18 @@ int BlImportExport::bulmages2XML ( QFile &xmlfile, unsigned long long int tipo )
                 stream << "\t<APUNTE>\n";
                 QString fecha = curap->valor ( "fecha" );
                 fecha = fecha.mid ( 6, 4 ) + fecha.mid ( 3, 2 ) + fecha.mid ( 0, 2 );
-                stream << "\t\t<FECHA>" << XMLProtect ( fecha ) << "</FECHA>\n";
-                stream << "\t\t<CODIGO>" << XMLProtect ( curap->valor ( "codigo" ) ) << "</CODIGO>\n";
-                stream << "\t\t<DEBE>" << XMLProtect ( curap->valor ( "debe" ) ) << "</DEBE>\n";
-                stream << "\t\t<HABER>" << XMLProtect ( curap->valor ( "haber" ) ) << "</HABER>\n";
-                stream << "\t\t<CONCEPTOCONTABLE>" << XMLProtect ( curap->valor ( "conceptocontable" ) ) << "</CONCEPTOCONTABLE>\n";
-                stream << "\t\t<IDCANAL>" << XMLProtect ( curap->valor ( "idcanal" ) ) << "</IDCANAL>\n";
-                stream << "\t\t<CANAL>" << XMLProtect ( curap->valor ( "nomcanal" ) ) << "</CANAL>\n";
-                stream << "\t\t<IDC_COSTE>" << XMLProtect ( curap->valor ( "idc_coste" ) ) << "</IDC_COSTE>\n";
-                stream << "\t\t<C_COSTE>" << XMLProtect ( curap->valor ( "nc_coste" ) ) << "</C_COSTE>\n";
-                stream << "\t\t<PUNTEO>" << XMLProtect ( curap->valor ( "punteo" ) ) << "</PUNTEO>\n";
-                stream << "\t\t<ORDEN>" << XMLProtect ( curap->valor ( "orden" ) ) << "</ORDEN>\n";
-                stream << "\t\t<CONTRAPARTIDA>" << XMLProtect ( curap->valor ( "codcontrapartida" ) ) << "</CONTRAPARTIDA>\n";
+                stream << "\t\t<FECHA>" << blXMLEncode ( fecha ) << "</FECHA>\n";
+                stream << "\t\t<CODIGO>" << blXMLEncode ( curap->valor ( "codigo" ) ) << "</CODIGO>\n";
+                stream << "\t\t<DEBE>" << blXMLEncode ( curap->valor ( "debe" ) ) << "</DEBE>\n";
+                stream << "\t\t<HABER>" << blXMLEncode ( curap->valor ( "haber" ) ) << "</HABER>\n";
+                stream << "\t\t<CONCEPTOCONTABLE>" << blXMLEncode ( curap->valor ( "conceptocontable" ) ) << "</CONCEPTOCONTABLE>\n";
+                stream << "\t\t<IDCANAL>" << blXMLEncode ( curap->valor ( "idcanal" ) ) << "</IDCANAL>\n";
+                stream << "\t\t<CANAL>" << blXMLEncode ( curap->valor ( "nomcanal" ) ) << "</CANAL>\n";
+                stream << "\t\t<IDC_COSTE>" << blXMLEncode ( curap->valor ( "idc_coste" ) ) << "</IDC_COSTE>\n";
+                stream << "\t\t<C_COSTE>" << blXMLEncode ( curap->valor ( "nc_coste" ) ) << "</C_COSTE>\n";
+                stream << "\t\t<PUNTEO>" << blXMLEncode ( curap->valor ( "punteo" ) ) << "</PUNTEO>\n";
+                stream << "\t\t<ORDEN>" << blXMLEncode ( curap->valor ( "orden" ) ) << "</ORDEN>\n";
+                stream << "\t\t<CONTRAPARTIDA>" << blXMLEncode ( curap->valor ( "codcontrapartida" ) ) << "</CONTRAPARTIDA>\n";
                 /// Hacemos la exportacion de registros de IVA.
                 query  = "SELECT * FROM registroiva";
                 query += " LEFT JOIN (SELECT codigo, idcuenta FROM cuenta) AS t1 ON registroiva.contrapartida = t1.idcuenta ";
@@ -1392,15 +1392,15 @@ int BlImportExport::bulmages2XML ( QFile &xmlfile, unsigned long long int tipo )
                 BlDbRecordSet *curreg = dbConnection->loadQuery ( query, "queryregiva" );
                 while ( !curreg->eof() ) {
                     stream << "\t\t<REGISTROIVA>\n";
-                    stream << "\t\t\t<CONTRAPARTIDA>" << XMLProtect ( curreg->valor ( "codigo" ) ) << "</CONTRAPARTIDA>\n";
-                    stream << "\t\t\t<BASEIMP>" << XMLProtect ( curreg->valor ( "baseimp" ) ) << "</BASEIMP>\n";
-                    stream << "\t\t\t<IVA>" << XMLProtect ( curreg->valor ( "iva" ) ) << "</IVA>\n";
-                    stream << "\t\t\t<FFACTURA>" << XMLProtect ( curreg->valor ( "ffactura" ) ) << "</FFACTURA>\n";
-                    stream << "\t\t\t<FACTURA>" << XMLProtect ( curreg->valor ( "factura" ) ) << "</FACTURA>\n";
-                    stream << "\t\t\t<NUMORDEN>" << XMLProtect ( curreg->valor ( "numorden" ) ) << "</NUMORDEN>\n";
-                    stream << "\t\t\t<CIF>" << XMLProtect ( curreg->valor ( "cif" ) ) << "</CIF>\n";
-                    stream << "\t\t\t<IDFPAGO>" << XMLProtect ( curreg->valor ( "idfpago" ) ) << "</IDFPAGO>\n";
-                    stream << "\t\t\t<RECTIFICAAREGISTROIVA>" << XMLProtect ( curreg->valor ( "rectificaaregistroiva" ) ) << "</RECTIFICAAREGISTROIVA>\n";
+                    stream << "\t\t\t<CONTRAPARTIDA>" << blXMLEncode ( curreg->valor ( "codigo" ) ) << "</CONTRAPARTIDA>\n";
+                    stream << "\t\t\t<BASEIMP>" << blXMLEncode ( curreg->valor ( "baseimp" ) ) << "</BASEIMP>\n";
+                    stream << "\t\t\t<IVA>" << blXMLEncode ( curreg->valor ( "iva" ) ) << "</IVA>\n";
+                    stream << "\t\t\t<FFACTURA>" << blXMLEncode ( curreg->valor ( "ffactura" ) ) << "</FFACTURA>\n";
+                    stream << "\t\t\t<FACTURA>" << blXMLEncode ( curreg->valor ( "factura" ) ) << "</FACTURA>\n";
+                    stream << "\t\t\t<NUMORDEN>" << blXMLEncode ( curreg->valor ( "numorden" ) ) << "</NUMORDEN>\n";
+                    stream << "\t\t\t<CIF>" << blXMLEncode ( curreg->valor ( "cif" ) ) << "</CIF>\n";
+                    stream << "\t\t\t<IDFPAGO>" << blXMLEncode ( curreg->valor ( "idfpago" ) ) << "</IDFPAGO>\n";
+                    stream << "\t\t\t<RECTIFICAAREGISTROIVA>" << blXMLEncode ( curreg->valor ( "rectificaaregistroiva" ) ) << "</RECTIFICAAREGISTROIVA>\n";
                     /// Hacemos la exportacion de IVAs.
                     query  = "SELECT * FROM iva ";
                     query += " LEFT JOIN tipoiva ON iva.idtipoiva = tipoiva.idtipoiva ";
@@ -1408,9 +1408,9 @@ int BlImportExport::bulmages2XML ( QFile &xmlfile, unsigned long long int tipo )
                     BlDbRecordSet *curiva = dbConnection->loadQuery ( query, "queryiva" );
                     while ( !curiva->eof() ) {
                         stream << "\t\t\t<RIVA>\n";
-                        stream << "\t\t\t\t<IDTIPOIVA>" << XMLProtect ( curiva->valor ( "idtipoiva" ) ) << "</IDTIPOIVA>\n";
-                        stream << "\t\t\t\t<NOMBRETIPOIVA>" << XMLProtect ( curiva->valor ( "nombretipoiva" ) ) << "</NOMBRETIPOIVA>\n";
-                        stream << "\t\t\t\t<BASEIVA>" << XMLProtect ( curiva->valor ( "baseiva" ) ) << "</BASEIVA>\n";
+                        stream << "\t\t\t\t<IDTIPOIVA>" << blXMLEncode ( curiva->valor ( "idtipoiva" ) ) << "</IDTIPOIVA>\n";
+                        stream << "\t\t\t\t<NOMBRETIPOIVA>" << blXMLEncode ( curiva->valor ( "nombretipoiva" ) ) << "</NOMBRETIPOIVA>\n";
+                        stream << "\t\t\t\t<BASEIVA>" << blXMLEncode ( curiva->valor ( "baseiva" ) ) << "</BASEIVA>\n";
                         stream << "\t\t\t</RIVA>\n";
                         curiva->nextRecord();
                     } // end while
@@ -1612,8 +1612,8 @@ bool StructureParser::endElement ( const QString&, const QString&, const QString
     /// Ha terminado un asiento, por tanto hacemos el update de los campos.
     if ( qName == "ASIENTO" && m_tipo & IMPORT_ASIENTOS ) {
         QString query = "UPDATE asiento set fecha = '" +
-                        dbConnection->sanearCadena ( XMLDesProtect ( fechaasiento ) ) + "' WHERE idasiento = " +
-                        dbConnection->sanearCadena ( XMLDesProtect ( idasiento ) );
+                        dbConnection->sanearCadena ( blXMLDecode ( fechaasiento ) ) + "' WHERE idasiento = " +
+                        dbConnection->sanearCadena ( blXMLDecode ( idasiento ) );
         dbConnection->begin();
         dbConnection->runQuery ( query );
         BlDbRecordSet *cur = dbConnection->loadQuery ( "SELECT cierraasiento(" + idasiento + ")" );
@@ -1627,7 +1627,7 @@ bool StructureParser::endElement ( const QString&, const QString&, const QString
                         dbConnection->sanearCadena ( haberapunte ) + ", idcuenta = id_cuenta('" +
                         dbConnection->sanearCadena ( codigocuentaapunte ) + "'), fecha = '" +
                         dbConnection->sanearCadena ( fechaapunte ) + "', conceptocontable = '" +
-                        dbConnection->sanearCadena ( XMLDesProtect ( conceptocontableapunte ) ) + "' WHERE idborrador = " + idborrador;
+                        dbConnection->sanearCadena ( blXMLDecode ( conceptocontableapunte ) ) + "' WHERE idborrador = " + idborrador;
         dbConnection->runQuery ( query );
     } // end if
     if ( qName == "FECHA" && tagpadre == "ASIENTO" )
@@ -1650,7 +1650,7 @@ bool StructureParser::endElement ( const QString&, const QString&, const QString
         /// Primero debemos determinar si existe o no dicha cuenta para hacer la insercion o la modificacion.
         QString vidcuenta;
         if ( codigopadre != "" )  {
-            vidcuenta = "id_cuenta('" + dbConnection->sanearCadena ( XMLDesProtect ( codigopadre ) ) + "')";
+            vidcuenta = "id_cuenta('" + dbConnection->sanearCadena ( blXMLDecode ( codigopadre ) ) + "')";
         } else {
             vidcuenta = "NULL";
         } // end if
@@ -1664,7 +1664,7 @@ bool StructureParser::endElement ( const QString&, const QString&, const QString
             QString query = "INSERT INTO cuenta (tipocuenta, codigo, descripcion, padre, bloqueada, nodebe, nohaber) VALUES (" +
                             dbConnection->sanearCadena ( m_tipoCuenta ) + ",'" +
                             dbConnection->sanearCadena ( codigocuenta ) + "','" +
-                            dbConnection->sanearCadena ( XMLDesProtect ( descripcioncuenta ) ) + "', " +
+                            dbConnection->sanearCadena ( blXMLDecode ( descripcioncuenta ) ) + "', " +
                             vidcuenta + ", '" +
                             dbConnection->sanearCadena ( m_bloqueadaCuenta ) + "','" +
                             dbConnection->sanearCadena ( m_nodebeCuenta ) + "','" +
@@ -1672,7 +1672,7 @@ bool StructureParser::endElement ( const QString&, const QString&, const QString
             dbConnection->runQuery ( query );
         } else {
             QString query = "UPDATE cuenta SET ";
-            query += "descripcion = '" + dbConnection->sanearCadena ( XMLDesProtect ( descripcioncuenta ) ) + "'";
+            query += "descripcion = '" + dbConnection->sanearCadena ( blXMLDecode ( descripcioncuenta ) ) + "'";
             query += ", tipocuenta = " + dbConnection->sanearCadena ( m_tipoCuenta );
             query += ", bloqueada = '" + dbConnection->sanearCadena ( m_bloqueadaCuenta ) + "'";
             query += ", nodebe = '" + dbConnection->sanearCadena ( m_nodebeCuenta ) + "'";

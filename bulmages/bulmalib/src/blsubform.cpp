@@ -159,11 +159,11 @@ QString BlSubFormHeader::exportXML() {
     int error;
 
     val = "<BLSUBFORMHEADER>\n";
-    val += "\t<NOMCAMPO>" + XMLProtect(m_nomcampo) + "</NOMCAMPO>\n";
-    val += "\t<NOMPRESENTACION>"+ XMLProtect(m_nompresentacion)+"</NOMPRESENTACION>\n";
-    val += "\t<RESTRICCIONES>"+ XMLProtect(QString::number(m_restricciones))+"</RESTRICCIONES>\n";
-    val += "\t<TIPO>"+ XMLProtect(QString::number(m_tipo))+"</TIPO>\n";
-    val += "\t<OPCIONES>"+ XMLProtect(QString::number(m_options))+"</OPCIONES>\n";
+    val += "\t<NOMCAMPO>" + blXMLEncode(m_nomcampo) + "</NOMCAMPO>\n";
+    val += "\t<NOMPRESENTACION>"+ blXMLEncode(m_nompresentacion)+"</NOMPRESENTACION>\n";
+    val += "\t<RESTRICCIONES>"+ blXMLEncode(QString::number(m_restricciones))+"</RESTRICCIONES>\n";
+    val += "\t<TIPO>"+ blXMLEncode(QString::number(m_tipo))+"</TIPO>\n";
+    val += "\t<OPCIONES>"+ blXMLEncode(QString::number(m_options))+"</OPCIONES>\n";
     val += "</BLSUBFORMHEADER>\n";
     return val;
     _depura ( "END BlSubFormHeader::exportXML", 0 );
@@ -2583,7 +2583,7 @@ QString BlSubForm::imprimir()
     QString fitxersortidarml = "<tr>\n";
     for ( int h = 0; h < mui_listcolumnas->rowCount(); ++h ) {
         if ( mui_listcolumnas->item ( h, 0 ) ->checkState() == Qt::Checked ) {
-            fitxersortidarml += "    <td>" +  XMLProtect( mui_listcolumnas->item ( h, 0 ) ->text() ) + "</td>\n";
+            fitxersortidarml += "    <td>" +  blXMLEncode( mui_listcolumnas->item ( h, 0 ) ->text() ) + "</td>\n";
         } // end if
         barra.setValue ( barra.value() + 1 );
     } // end for
@@ -2632,7 +2632,7 @@ QString BlSubForm::formatFieldTableStory(BlDbSubFormField *value, QLocale spanis
             field += spanish.toString ( value->text().toDouble(), 'f', prec );
         }
         else
-            field += XMLProtect ( value->text() );
+            field += blXMLEncode ( value->text() );
     }
 
     /// Valor booleano
@@ -2642,7 +2642,7 @@ QString BlSubForm::formatFieldTableStory(BlDbSubFormField *value, QLocale spanis
         if ( value->checkState() == Qt::Checked )
         {
            field += "<td><para style=\"checked\" vAlign=\"middle\">";
-           field += XMLProtect ( "&#9679;" );
+           field += blXMLEncode ( "&#9679;" );
         }
         else
            field += "<td><para>";
@@ -2652,7 +2652,7 @@ QString BlSubForm::formatFieldTableStory(BlDbSubFormField *value, QLocale spanis
     else
     {
         field += "<td><para style=\"text\">";
-        field += XMLProtect ( value->text() );
+        field += blXMLEncode ( value->text() );
     } // end if
 
     /// Cerrar p&aacute;rrafo y campo de la tabla para todos los casos
@@ -3273,20 +3273,20 @@ QString BlSubForm::exportXML() {
     int error;
 
     val = "<BLSUBFORM>\n";
-    val += "\t<QUERY>" + XMLProtect(m_query) + "</QUERY>\n";
-    val += "\t<TABLENAME>" + XMLProtect(m_tablename) + "</TABLENAME>\n";
-    val += "\t<MODO>"+ XMLProtect(QString::number(m_modo))+"</MODO>\n";
-    val += "\t<FILECONFIG>"+ XMLProtect(m_fileconfig)+"</FILECONFIG>\n";
-    val += "\t<CAMPOID>"+ XMLProtect(m_campoid)+"</CAMPOID>\n";
-    val += "\t<INSERCION>" + XMLProtect(QString(m_insercion ? "TRUE" : "FALSE")) + "</INSERCION>\n";
-    val += "\t<PRIMERO>" + XMLProtect(QString(m_primero ? "TRUE" : "FALSE")) + "</PRIMERO>\n";
-    val += "\t<DELETE>" + XMLProtect(QString(m_delete ? "TRUE" : "FALSE")) + "</DELETE>\n";
-    val += "\t<SORTING>" + XMLProtect(QString(m_sorting ? "TRUE" : "FALSE")) + "</SORTING>\n";
-    val += "\t<ORDEN>" + XMLProtect(QString(m_orden ? "TRUE" : "FALSE")) + "</ORDEN>\n";
-    val += "\t<ORDENPORQUERY>" + XMLProtect(QString(m_ordenporquery ? "TRUE" : "FALSE")) + "</ORDENPORQUERY>\n";
-    val += "\t<PROCESACAMBIOS>" + XMLProtect(QString(m_procesacambios ? "TRUE" : "FALSE")) + "</PROCESACAMBIOS>\n";
-    val += "\t<TEXTOCELDAPARAROWSPAN>" + XMLProtect(m_textoceldaParaRowSpan) + "</TEXTOCELDAPARAROWSPAN>\n";
-    val += "\t<COLUMNAPARAROWSPAN>" + XMLProtect(m_columnaParaRowSpan) + "</COLUMNAPARAROWSPAN>\n";
+    val += "\t<QUERY>" + blXMLEncode(m_query) + "</QUERY>\n";
+    val += "\t<TABLENAME>" + blXMLEncode(m_tablename) + "</TABLENAME>\n";
+    val += "\t<MODO>"+ blXMLEncode(QString::number(m_modo))+"</MODO>\n";
+    val += "\t<FILECONFIG>"+ blXMLEncode(m_fileconfig)+"</FILECONFIG>\n";
+    val += "\t<CAMPOID>"+ blXMLEncode(m_campoid)+"</CAMPOID>\n";
+    val += "\t<INSERCION>" + blXMLEncode(QString(m_insercion ? "TRUE" : "FALSE")) + "</INSERCION>\n";
+    val += "\t<PRIMERO>" + blXMLEncode(QString(m_primero ? "TRUE" : "FALSE")) + "</PRIMERO>\n";
+    val += "\t<DELETE>" + blXMLEncode(QString(m_delete ? "TRUE" : "FALSE")) + "</DELETE>\n";
+    val += "\t<SORTING>" + blXMLEncode(QString(m_sorting ? "TRUE" : "FALSE")) + "</SORTING>\n";
+    val += "\t<ORDEN>" + blXMLEncode(QString(m_orden ? "TRUE" : "FALSE")) + "</ORDEN>\n";
+    val += "\t<ORDENPORQUERY>" + blXMLEncode(QString(m_ordenporquery ? "TRUE" : "FALSE")) + "</ORDENPORQUERY>\n";
+    val += "\t<PROCESACAMBIOS>" + blXMLEncode(QString(m_procesacambios ? "TRUE" : "FALSE")) + "</PROCESACAMBIOS>\n";
+    val += "\t<TEXTOCELDAPARAROWSPAN>" + blXMLEncode(m_textoceldaParaRowSpan) + "</TEXTOCELDAPARAROWSPAN>\n";
+    val += "\t<COLUMNAPARAROWSPAN>" + blXMLEncode(m_columnaParaRowSpan) + "</COLUMNAPARAROWSPAN>\n";
     val += "\t<FILAINICIALROWSPAN>" + QString::number(m_filaInicialRowSpan) + "</FILAINICIALROWSPAN>\n";
     val += "\t<CABECERA>\n";
     BlSubFormHeader *linea;

@@ -152,14 +152,14 @@ QString CatalogoQToolButton::detalleArticulos()
     while ( !cur->eof() ) {
         texto += "<blockTable style=\"tabla1\">\n";
         texto += "<tr>\n";
-        texto += "<td><para><H1>" + XMLProtect ( cur->valor ( "nomarticulo" ) ) + "</H1></para>";
-        texto += "<para>" + XMLProtect ( cur->valor ( "obserarticulo" ) ) + "</para></td></tr><tr>\n";
-        QString file = g_confpr->valor ( CONF_DIR_IMG_ARTICLES ) + XMLProtect ( cur->valor ( "codigocompletoarticulo" ) ) + ".jpg";
+        texto += "<td><para><H1>" + blXMLEncode ( cur->valor ( "nomarticulo" ) ) + "</H1></para>";
+        texto += "<para>" + blXMLEncode ( cur->valor ( "obserarticulo" ) ) + "</para></td></tr><tr>\n";
+        QString file = g_confpr->valor ( CONF_DIR_IMG_ARTICLES ) + blXMLEncode ( cur->valor ( "codigocompletoarticulo" ) ) + ".jpg";
         QFile f ( file );
         if ( f.exists() ) {
             texto += "<td><!-- illustration x=\"0\" y=\"0\" height=\"5cm\" -->\n"
                      "<image file=\"" + g_confpr->valor ( CONF_DIR_IMG_ARTICLES ) +
-                     XMLProtect ( cur->valor ( "codigocompletoarticulo" ) ) +
+                     blXMLEncode ( cur->valor ( "codigocompletoarticulo" ) ) +
                      ".jpg\" x=\"0\" y=\"0\" height=\"5cm\"/>\n"
                      "<!-- /illustration --></td>\n";
         } else {

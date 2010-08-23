@@ -267,15 +267,15 @@ QString BlDbField::exportXML() {
     int error;
 
     val = "<BLDBFIELD>\n";
-    val += "\t<NOMCAMPO>" + XMLProtect(m_nomcampo) + "</NOMCAMPO>\n";
-    val += "\t<VALORCAMPO>"+ XMLProtect(m_valorcampo)+"</VALORCAMPO>\n";
-    val += "\t<VALORCAMPOORIG>"+ XMLProtect(m_valorcampoorig)+"</VALORCAMPOORIG>\n";
+    val += "\t<NOMCAMPO>" + blXMLEncode(m_nomcampo) + "</NOMCAMPO>\n";
+    val += "\t<VALORCAMPO>"+ blXMLEncode(m_valorcampo)+"</VALORCAMPO>\n";
+    val += "\t<VALORCAMPOORIG>"+ blXMLEncode(m_valorcampoorig)+"</VALORCAMPOORIG>\n";
     if (m_valorcampo != "") {
-        val += "\t<VALORCAMPOPREP>"+ XMLProtect(valorcampoprep(error))+"</VALORCAMPOPREP>\n";
+        val += "\t<VALORCAMPOPREP>"+ blXMLEncode(valorcampoprep(error))+"</VALORCAMPOPREP>\n";
     } // end if
-    val += "\t<NOMPRESENTACION>"+ XMLProtect(m_nompresentacion)+"</NOMPRESENTACION>\n";
-    val += "\t<RESTRICCIONES>"+ XMLProtect(QString::number(m_restrict))+"</RESTRICCIONES>\n";
-    val += "\t<TIPO>"+ XMLProtect(QString::number(m_tipo))+"</TIPO>\n";
+    val += "\t<NOMPRESENTACION>"+ blXMLEncode(m_nompresentacion)+"</NOMPRESENTACION>\n";
+    val += "\t<RESTRICCIONES>"+ blXMLEncode(QString::number(m_restrict))+"</RESTRICCIONES>\n";
+    val += "\t<TIPO>"+ blXMLEncode(QString::number(m_tipo))+"</TIPO>\n";
     val += "</BLDBFIELD>\n";
     return val;
     _depura ( "END BlDbField::exportXML", 0 );
@@ -1133,9 +1133,9 @@ QString BlDbRecord::exportXML() {
     BlDbField *campo;
 
     val = "<BLDBRECORD>\n";
-    val += "\t<TABLENAME>" + XMLProtect(m_tablename) + "</TABLENAME>\n";
-    val += "\t<CAMPOID>" + XMLProtect(m_campoid) + "</CAMPOID>\n";
-    val += "\t<NUEVOCAMPO>" + XMLProtect(QString(m_nuevoCampo ? "TRUE" : "FALSE")) + "</NUEVOCAMPO>\n";
+    val += "\t<TABLENAME>" + blXMLEncode(m_tablename) + "</TABLENAME>\n";
+    val += "\t<CAMPOID>" + blXMLEncode(m_campoid) + "</CAMPOID>\n";
+    val += "\t<NUEVOCAMPO>" + blXMLEncode(QString(m_nuevoCampo ? "TRUE" : "FALSE")) + "</NUEVOCAMPO>\n";
 
     int i = 0;
     campo = m_lista.value ( i );
