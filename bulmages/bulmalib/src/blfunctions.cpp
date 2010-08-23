@@ -187,9 +187,9 @@ QString XMLDesProtect ( const QString &string )
 /// cad = Cadena inicial
 /// num1 = Numero de digitos totales de la cuenta.
 /// Devuelve un QString con la cuenta extendida al nmero de digitos indicado.
-QString extiendecodigo ( QString cad, unsigned int num1 )
+QString blExtendStringWithZeros ( QString cad, unsigned int num1 )
 {
-    _depura ( "BlFunctions::extiendecodigo", 0, cad + "--" + QString::number ( num1 ) );
+    _depura ( "BlFunctions::blExtendStringWithZeros", 0, cad + "--" + QString::number ( num1 ) );
     QString cod = cad;
     int num = num1;
     if ( cod.length() < num ) {
@@ -199,7 +199,7 @@ QString extiendecodigo ( QString cad, unsigned int num1 )
             cod.replace ( pos, 1, str7 );
         } // end if
     } // end if
-    _depura ( "END BlFunctions::extiendecodigo", 0 );
+    _depura ( "END BlFunctions::blExtendStringWithZeros", 0 );
     return ( cod );
 }
 

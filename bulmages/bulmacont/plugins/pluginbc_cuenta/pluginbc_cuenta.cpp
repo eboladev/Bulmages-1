@@ -412,7 +412,7 @@ int BlDbCompleterComboBox_textChanged (BlDbCompleterComboBox *bl)
                     cadwhere = cadwhere + cador + " upper(" + i.key() + ")";
                     cador = " || ' ' ||";
                 } // end while
-                QString cadwhere1 = " codigo = '" + extiendecodigo(bl->m_entrada, ((BcCompany *)bl->mainCompany())->numdigitosempresa()) + "'";
+                QString cadwhere1 = " codigo = '" + blExtendStringWithZeros(bl->m_entrada, ((BcCompany *)bl->mainCompany())->numdigitosempresa()) + "'";
                 QString SQLQuery = "SELECT * FROM " + bl->m_tabla + " WHERE " +cadwhere1+ " OR " + cadwhere + "LIKE  upper('%" + bl->m_entrada + "%')";
                 bl->m_cursorcombo = bl->mainCompany() ->loadQuery ( SQLQuery );
                 bl->clear();
@@ -491,7 +491,7 @@ int BcSubForm_pressedAsterisk ( BcSubForm *sub )
 int Busqueda_on_m_inputBusqueda_textChanged (BlSearchWidget *wid) {
     if (wid->tableName() != "cuenta") return 0;
     QString texto = wid->text();
-    QString codigo = extiendecodigo(wid->text(), ((BcCompany *)wid->mainCompany())->numdigitosempresa() );
+    QString codigo = blExtendStringWithZeros(wid->text(), ((BcCompany *)wid->mainCompany())->numdigitosempresa() );
     QString SQLQuery = "SELECT * FROM cuenta WHERE codigo = '" + codigo + "'";
     BlDbRecordSet *cur = wid->mainCompany() ->loadQuery ( SQLQuery );
     if ( cur->numregistros() == 1 ) {

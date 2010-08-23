@@ -261,7 +261,7 @@ void BcSubForm::editFinished ( int row, int col, BlDbSubFormRecord *rec, BlDbSub
     } // end if
 
     if ( camp->nomcampo() == "codigo" && camp->text() != "*" ) {
-        QString codigoext = extiendecodigo ( camp->text(), ( ( BcCompany * ) mainCompany() ) ->numdigitosempresa() );
+        QString codigoext = blExtendStringWithZeros ( camp->text(), ( ( BcCompany * ) mainCompany() ) ->numdigitosempresa() );
         QString query = "SELECT idcuenta, codigo, tipocuenta, descripcion, idc_coste FROM cuenta WHERE codigo = '" + codigoext + "'";
         BlDbRecordSet *cur = mainCompany() ->loadQuery ( query );
         if ( !cur->eof() ) {

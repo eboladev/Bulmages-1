@@ -48,9 +48,7 @@
 
 
 /// Extiende un string a un numero de cuenta sustituyendo los '.' por ceros.
-QString BL_EXPORT extiendecodigo ( QString, unsigned int );
-/// Extiende un string a un numero de cuenta sustituyendo los '.' por ceros.
-QString BL_EXPORT extiendecodigo ( QString, unsigned int );
+QString BL_EXPORT blExtendStringWithZeros ( QString, unsigned int );
 /// Redondeo de numeros en punto flotante.
 float BL_EXPORT fround ( float, unsigned );
 /// Esta funcion convierte un numero con decimales a un entero.

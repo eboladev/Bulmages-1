@@ -276,7 +276,7 @@ void BcPlanContableListView::on_mui_busqueda_textChanged ( const QString &string
 {
     _depura ( "BcPlanContableListView::on_mui_busqueda_textChanged", 0 );
     QList<QTreeWidgetItem *> it;
-    QString cod = extiendecodigo ( string1, ( int ) numdigitos );
+    QString cod = blExtendStringWithZeros ( string1, ( int ) numdigitos );
     it = mui_arbolcuentas->findItems ( cod, Qt::MatchStartsWith, ccuenta );
     if ( it.count() > 0 ) {
         mui_arbolcuentas->setCurrentItem ( it.first() );
