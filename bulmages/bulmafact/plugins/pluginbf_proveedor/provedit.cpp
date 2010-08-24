@@ -145,7 +145,7 @@ void ProveedorView::on_mui_cifproveedor_lostFocus()
 {
     blDebug ( "ProveedorView::on_mui_cifproveedor_lostFocus", 0 );
     QChar digito;
-    if ( !validarCIFNIF ( mui_cifproveedor->text(), digito ) ) {
+    if ( !blValidateSpainCIFNIFCode ( mui_cifproveedor->text(), digito ) ) {
         blMsgInfo ( _("El CIF del proveedor no parece ser valido. Digito:") + " " + QString ( digito ) );
     } // end if
     blDebug ( "END ProveedorView::on_mui_cifproveedor_lostFocus", 0 );

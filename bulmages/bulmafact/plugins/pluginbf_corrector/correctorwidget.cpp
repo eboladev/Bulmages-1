@@ -108,7 +108,7 @@ void correctorwidget::on_mui_corregir_clicked()
     cur = mainCompany()->loadQuery ( query );
     while ( ! cur->eof() ) {
         QChar digito;
-        if ( ! validarCIFNIF ( cur->valor ( "cifcliente" ), digito ) ) {
+        if ( ! blValidateSpainCIFNIFCode ( cur->valor ( "cifcliente" ), digito ) ) {
             cadena = "<img src='" + g_confpr->valor ( CONF_PROGDATA ) + "icons/messagebox_warning.png'>&nbsp;&nbsp;<B><I>Warning:</I></B><BR>El cliente ," + cur->valor ( "cifcliente" ) + " <B>" + cur->valor ( "nomcliente" ) + "</B> tiene CIF invalido. Digito de Control:" + QString ( digito );
             agregarError ( cadena, "cliente", "idcliente=" + cur->valor ( "idcliente" ) );
         } // end if
@@ -120,7 +120,7 @@ void correctorwidget::on_mui_corregir_clicked()
     cur = mainCompany()->loadQuery ( query );
     while ( ! cur->eof() ) {
         QChar digito;
-        if ( ! validarCIFNIF ( cur->valor ( "cifproveedor" ), digito ) ) {
+        if ( ! blValidateSpainCIFNIFCode ( cur->valor ( "cifproveedor" ), digito ) ) {
             cadena = "<img src='" + g_confpr->valor ( CONF_PROGDATA ) + "icons/messagebox_warning.png'>&nbsp;&nbsp;<B><I>Warning:</I></B><BR>El proveedor <B>" + cur->valor ( "nomproveedor" ) + "," + cur->valor ( "cifproveedor" ) + "</B> tiene CIF invalido. Digito de Control: " + QString ( digito );
             agregarError ( cadena, "proveedor", "idproveedor=" + cur->valor ( "idproveedor" ) );
         } // end if

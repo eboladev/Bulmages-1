@@ -630,7 +630,7 @@ void blMsgError ( QString cad, QWidget *parent )
 }
 
 
-QString num2texto ( QString numero, QString moneda, QString singular )
+QString blNumberToText ( QString numero, QString moneda, QString singular )
 {
     /// Si es 0 el n&uacute;mero, no tiene caso procesar toda la informaci&oacute;n.
     if ( numero == "0" || numero == "00" ) {
@@ -823,7 +823,7 @@ QString num2texto ( QString numero, QString moneda, QString singular )
     } // end while
 //    return  num_string+" "+moneda+" "+decimal+"/100 M.N.";
     if ( decimal != "0" && decimal != "00" ) {
-        return num_string + " " + moneda + " con " + num2texto ( decimal + ".00", " centimos", " centimo" );
+        return num_string + " " + moneda + " con " + blNumberToText ( decimal + ".00", " centimos", " centimo" );
     } else {
         return num_string + " " + moneda;
     } // end if
@@ -891,7 +891,7 @@ QString blStringToUsAscii ( const QString &orig )
 
 /// Trata una cadena para ser escrita dentro de un fichero en Python sin que esta
 /// rompa la sintaxis relacionada con el indentado del lenguaje
-QString data2python ( QString string )
+QString blStringToPython ( QString string )
 {
 
     string = string.replace ( "\n", " " );
@@ -903,12 +903,12 @@ QString data2python ( QString string )
 
 
 /// La tabla de conversion de codigos para el CIF
-QChar codigosCIF[] = {QChar ( 'A' ), QChar ( 'B' ), QChar ( 'C' ), QChar ( 'D' ), QChar ( 'E' ), QChar ( 'F' ), QChar ( 'G' ), QChar ( 'H' ), QChar ( 'J' ), QChar ( 'P' ), QChar ( 'Q' ), QChar ( 'R' ), QChar ( 'S' ), QChar ( 'U' ), QChar ( 'V' ), QChar ( 'N' ), QChar ( 'W' ) };
+QChar g_spainCIFCode[] = {QChar ( 'A' ), QChar ( 'B' ), QChar ( 'C' ), QChar ( 'D' ), QChar ( 'E' ), QChar ( 'F' ), QChar ( 'G' ), QChar ( 'H' ), QChar ( 'J' ), QChar ( 'P' ), QChar ( 'Q' ), QChar ( 'R' ), QChar ( 'S' ), QChar ( 'U' ), QChar ( 'V' ), QChar ( 'N' ), QChar ( 'W' ) };
 
-char validacionesCIF[] = {'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J'};
+char g_validateSpainCIFCode[] = {'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J'};
 
 /// La tabla de conversion de codigos para el NIF
-char codigoNIF[] = {'T', 'R', 'W', 'A', 'G', 'M', 'Y', 'F', 'P', 'D', 'X', 'B', 'N', 'J', 'Z', 'S', 'Q', 'V', 'H', 'L', 'C', 'K', 'E', 'T'};
+char g_spainNIFCode[] = {'T', 'R', 'W', 'A', 'G', 'M', 'Y', 'F', 'P', 'D', 'X', 'B', 'N', 'J', 'Z', 'S', 'Q', 'V', 'H', 'L', 'C', 'K', 'E', 'T'};
 
 
 /// Suma los digitos de un numero  y devuelve el resultado.
@@ -925,16 +925,16 @@ int blSumAllDigits ( int val )
 
 
 /// Dependiendo de lo que se haya introducido distingue si es un CIF o un NIF y valida
-bool validarCIFNIF ( QString nifcif, QChar &digit )
+bool blValidateSpainCIFNIFCode ( QString nifcif, QChar &digit )
 {
     if ( nifcif[0].isDigit() )
-        return validarNIF ( nifcif, digit );
-    return validarCIF ( nifcif, digit );
+        return blValidateSpainNIFCode ( nifcif, digit );
+    return blValidateSpainCIFCode ( nifcif, digit );
 }
 
 
 /// Valida un nif de 9 digitos. Si el nif pasado es menor de 5 digitos
-bool validarNIF ( QString nif1, QChar &digit )
+bool blValidateSpainNIFCode ( QString nif1, QChar &digit )
 {
 
     /// Quitamos los caracteres raros.
@@ -949,15 +949,15 @@ bool validarNIF ( QString nif1, QChar &digit )
     } // end if
 
     int modulo = nif.toInt() % 23;
-    digit = QChar ( codigoNIF[modulo] );
-    if ( nif1[8] == QChar ( codigoNIF[modulo] ) )
+    digit = QChar ( g_spainNIFCode[modulo] );
+    if ( nif1[8] == QChar ( g_spainNIFCode[modulo] ) )
         return TRUE;
     return FALSE;
 
 }
 
 //
-bool validarCIF ( QString cif1, QChar &digit )
+bool blValidateSpainCIFCode ( QString cif1, QChar &digit )
 {
 
     // ESPANYA EFECTIVIDAD A PARTIR DEL 1 JULIO 2008:
@@ -997,8 +997,8 @@ bool validarCIF ( QString cif1, QChar &digit )
     int c = textsumapar.right ( 1 ).toInt();
     int d = 10 - c;
     if ( cif[0] == 'N' || cif[0] == 'R' || cif[0] == 'K' || cif[0] == 'P' || cif[0] == 'Q' || cif[0] == 'S' || cif[0] == 'W' ) {
-        digit = codigosCIF[d-1];
-        if ( cif[8] == codigosCIF[d-1] ) {
+        digit = g_spainCIFCode[d-1];
+        if ( cif[8] == g_spainCIFCode[d-1] ) {
             return TRUE;
         } else {
             return FALSE;
@@ -1012,7 +1012,7 @@ bool validarCIF ( QString cif1, QChar &digit )
             return FALSE;
         } // end if
     } //end if
-    if ( cif[8] == QChar ( validacionesCIF[d-1] ) || cif[8].digitValue() == d % d ) {
+    if ( cif[8] == QChar ( g_validateSpainCIFCode[d-1] ) || cif[8].digitValue() == d % d ) {
         return TRUE;
     } //end if
     return FALSE;

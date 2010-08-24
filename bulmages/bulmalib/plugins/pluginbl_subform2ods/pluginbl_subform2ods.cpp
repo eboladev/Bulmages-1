@@ -207,7 +207,7 @@ void myplugsubformods::sacaods()
             if ( subf->mui_listcolumnas->item ( j, 0 ) ->checkState() == Qt::Checked ) {
                 fitxersortidatxt += "# Fila " + QString::number ( y ) + "\n";
 
-                QString textocontenido = data2python( subf->mui_list->item ( i, j ) ->text() );
+                QString textocontenido = blStringToPython( subf->mui_list->item ( i, j ) ->text() );
 
 
                 //TODO: Mirar de mejorar el mecanismo de deteccion de tipo de dato.
@@ -339,7 +339,7 @@ void myplugsubformods::sacaods1()
 //            if ( subf->mui_listcolumnas->item ( j, 0 ) ->checkState() == Qt::Checked ) {
                 fitxersortidatxt += "# Fila " + QString::number ( y ) + "\n";
 
-                QString textocontenido = data2python( (*it)->text ( j ) );
+                QString textocontenido = blStringToPython( (*it)->text ( j ) );
 
 		bool ok;
 		textocontenido.replace(".","").replace(",",".").toFloat(&ok);

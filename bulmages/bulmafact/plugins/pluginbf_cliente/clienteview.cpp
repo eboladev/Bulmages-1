@@ -199,7 +199,7 @@ void ClienteView::on_mui_cifcliente_lostFocus()
 {
     blDebug ( "ClienteView::on_mui_cifcliente_lostFocus", 0 );
     QChar digito;
-    if ( !validarCIFNIF ( mui_cifcliente->text(), digito ) ) {
+    if ( !blValidateSpainCIFNIFCode ( mui_cifcliente->text(), digito ) ) {
         blMsgInfo ( "Error en el CIF del cliente. Control:" + QString ( digito ) );
     } // end if
     blDebug ( "END ClienteView::on_mui_cifcliente_lostFocus", 0 );

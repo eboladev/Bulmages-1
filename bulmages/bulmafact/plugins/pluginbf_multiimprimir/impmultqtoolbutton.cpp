@@ -366,7 +366,7 @@ void ImpQToolButton::click()
                     } // end if
 
                     txt += " <drawString x=\"4.8cm\" y=\"" + QString::number ( col + 5.6 ) + "cm\">a</drawString>\n";
-                    txt += " <drawString x=\"4.8cm\" y=\"" + QString::number ( col + 5.2 ) + "cm\">" + num2texto ( pres->dbValue ( "cantcobro" ) ) + "</drawString>\n";
+                    txt += " <drawString x=\"4.8cm\" y=\"" + QString::number ( col + 5.2 ) + "cm\">" + blNumberToText ( pres->dbValue ( "cantcobro" ) ) + "</drawString>\n";
 
                     txt += " </storyPlace>\n";
 
