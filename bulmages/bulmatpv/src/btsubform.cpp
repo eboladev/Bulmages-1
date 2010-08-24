@@ -91,7 +91,7 @@ void BtSubForm::on_mui_list_pressedSlash ( int row, int col )
 {
     blDebug ( "BtSubForm::pressedSlash", 0 );
     BlDbSubFormField *camp = ( BlDbSubFormField * ) item ( row, col );
-    QString text = editaTexto ( camp->text() );
+    QString text = blTextEditor ( camp->text() );
     camp->set ( text );
     blDebug ( "END BtSubForm::pressedSlash", 0 );
 }

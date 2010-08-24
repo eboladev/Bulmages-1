@@ -188,7 +188,7 @@ void myplugincont::elslot()
     doc1->show();
 
     QString winId = "";
-    while ( winId == "" ) winId = windowID ( "" );
+    while ( winId == "" ) winId = blWindowId ( "" );
 
     QX11EmbedContainer *container = new QX11EmbedContainer ( doc1 );
     container->embedClient ( winId.toInt() );
@@ -204,7 +204,7 @@ void myplugincont::elslot1()
 {
     blDebug ( "myplugincont::elslot", 0 );
     QString winId = "";
-    while ( winId == "" ) winId = windowID ( "" );
+    while ( winId == "" ) winId = blWindowId ( "" );
     BlWorkspace *work = g_bges ->findChild<BlWorkspace *> (  );
     if ( work ) {
         BX11EmbedContainer * container = new BX11EmbedContainer ( g_emp, work );

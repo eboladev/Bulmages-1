@@ -38,9 +38,9 @@
 
 
 /// Esta funcion permite editar un texto en un QTextEdit y devuelve el texto editado.
-QString editaTexto ( QString texto )
+QString blTextEditor ( QString texto )
 {
-    QTextEdit * ed = new QTextEdit ( 0 );
+    QTextEdit *ed = new QTextEdit ();
     ed->setFixedSize ( 450, 250 );
     ed->setPlainText ( texto );
     g_main->setEnabled ( FALSE );
@@ -50,6 +50,7 @@ QString editaTexto ( QString texto )
     } // end while
     g_main->setEnabled ( TRUE );
     QString vuelta = ed->toPlainText();
+    delete ed;
     return vuelta;
 }
 
@@ -58,7 +59,7 @@ QString editaTexto ( QString texto )
 /// La conversion es a strings de C
 /// cambia los slash por slash + slash
 /// cambia las comillas por slash + comillas
-/// cambia los tabuladores por slah + t
+/// cambia los tabuladores por slash + t
 QString parsearCode ( const QString &cad )
 {
     QString result = cad;
@@ -290,7 +291,7 @@ QDate blNormalizeDate ( QString fechaintro )
 
 
 /// Esta funcion ajusta el codigo pasado al numero de digitos especificado.
-/// Para ello bsca los ceros intermedios y los amplia hasta que el numero de caracteres sea el deseado.
+/// Para ello busca los ceros intermedios y los amplia hasta que el numero de caracteres sea el deseado.
 /// Lo hace a partir del quinto digito por defecto. Aunque este parametro deberia ser configurable.
 /// cod = string con el codigo actual.
 /// num1 = numero de digitos que debe tener el codigo final.
@@ -405,9 +406,9 @@ void invocaPYS ( const QString arch )
 
 }
 
-/// Genera un PDF a partir de un RML usando trml2pdf y adem&aacute;s lo muestra con el visor
-/// de PDF pasado en la configuraci&oacute;n.
-/// arch = Archivo RML.
+/// Genera un 'PDF' a partir de un 'RML' usando 'bgtrml2pdf' y adem&aacute;s lo muestra con el visor
+/// de 'PDF' establecido en la configuraci&oacute;n.
+/// arch = Nombre del archivo 'RML'.
 void invocaPDF ( const QString arch )
 {
     generaPDF ( arch );
@@ -434,7 +435,7 @@ void mailsendPDF ( const QString arch, const QString to, const QString subject, 
 }
 
 
-QString windowID ( const QString &app )
+QString blWindowId ( const QString &app )
 {
 
     QString cad = "";
@@ -447,7 +448,7 @@ QString windowID ( const QString &app )
 
     int result = system ( cad.toAscii() );
     if (result == -1) {
-	blMsgError(_("Error al ejecutar xwininfo [ blfunctions->windowID() ]"));
+	blMsgError(_("Error al ejecutar xwininfo [ blfunctions->blWindowId() ]"));
     } // end if
     
 

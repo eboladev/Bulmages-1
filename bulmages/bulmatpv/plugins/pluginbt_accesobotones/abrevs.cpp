@@ -35,7 +35,7 @@ Abrevs::Abrevs ( BlMainCompany *emp, QWidget *parent ) : BlWidget ( emp, parent 
         if (!m_proc->waitForStarted())
             return;
         QString winId = "";
-        while (winId == "") winId = windowID("kvkbd");
+        while (winId == "") winId = blWindowId("kvkbd");
 */
 
 
@@ -44,7 +44,7 @@ Abrevs::Abrevs ( BlMainCompany *emp, QWidget *parent ) : BlWidget ( emp, parent 
             if (!m_proc->waitForStarted())
                 return;
             QString winId = "";
-            while (winId == "") winId = windowID("klavier");
+            while (winId == "") winId = blWindowId("klavier");
     */
 
 

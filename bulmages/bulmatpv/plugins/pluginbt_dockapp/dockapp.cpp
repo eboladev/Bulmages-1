@@ -42,7 +42,7 @@ void DockApp::on_mui_dockapp_clicked()
 #ifndef WIN32
 
     QX11EmbedContainer *container = new QX11EmbedContainer ( g_doc2 );
-    container->embedClient ( windowID("").toInt() );
+    container->embedClient ( blWindowId("").toInt() );
     g_doc2->setWidget ( container );
 
 #endif

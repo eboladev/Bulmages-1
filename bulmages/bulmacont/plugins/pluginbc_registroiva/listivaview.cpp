@@ -234,7 +234,7 @@ bool ListIvaView::eventFilter ( QObject *obj, QEvent *ev )
             switch (k->key()) {
             case Qt::Key_Plus:
                 if (col == COL_DESCLPRESUPUESTO) {
-                    setText(row,col,editaTexto(text(row,col)));
+                    setText(row,col,blTextEditor(text(row,col)));
                     valueBudgetLineChanged(row,col);
                     return TRUE;
                 }// end if

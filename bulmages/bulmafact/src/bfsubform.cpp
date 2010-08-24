@@ -115,7 +115,7 @@ void BfSubForm::pressedAsterisk ( int row, int col, BlDbSubFormRecord *rec, BlDb
 void BfSubForm::pressedSlash ( int row, int col, BlDbSubFormRecord *rec, BlDbSubFormField *camp )
 {
     blDebug ( "BfSubForm::pressedSlash", 0 );
-    QString text = editaTexto ( camp->text() );
+    QString text = blTextEditor ( camp->text() );
     camp->set ( text );
     blDebug ( "END BfSubForm::pressedSlash", 0 );
 }

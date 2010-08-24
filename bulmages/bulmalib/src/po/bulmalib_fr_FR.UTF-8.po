@@ -424,7 +424,7 @@ msgid "Error al ejecutar oocalc [ blfunctions->invocaPYS() ]"
 msgstr ""
 
 #: blfunctions.cpp:442
-msgid "Error al ejecutar xwininfo [ blfunctions->windowID() ]"
+msgid "Error al ejecutar xwininfo [ blfunctions->blWindowId() ]"
 msgstr ""
 
 #: blpostgresqlclient.cpp:143

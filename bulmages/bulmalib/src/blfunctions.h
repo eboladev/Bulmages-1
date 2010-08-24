@@ -75,7 +75,7 @@ QString BL_EXPORT blXMLDecode ( const QString& );
 QString BL_EXPORT ajustacodigo ( QString, unsigned int );
 void BL_EXPORT reemplazaarchivo ( QString, QString, QString, QString );
 /// Esta funcion permite editar un texto en un QTextEdit y devuelve el texto editado.
-QString BL_EXPORT editaTexto ( QString texto );
+QString BL_EXPORT blTextEditor ( QString texto );
 
 #if CONFIG_DEBUG == TRUE
 void BL_EXPORT blDebug ( const QString &cad, int nivel = 0, const QString & param = "" );
@@ -89,8 +89,9 @@ void BL_EXPORT blDebugOff();
 void BL_EXPORT blMsgInfo ( QString cad, QWidget *parent = 0 );
 void BL_EXPORT blMsgWarning ( QString cad, QWidget *parent = 0 );
 void BL_EXPORT blMsgError ( QString cad, QWidget *parent = 0 );
-/// En la impresion de documentos con trml2pdf esta funcion hace casi todo el trabajo.
-/// de la invocacion de trml2pdf.
+
+/// En la impresion de documentos 'RML' esta funcion hace casi todo el trabajo.
+/// de la invocacion de 'bgtrml2pdf'.
 /// Para evitar trabajo duplicado. El archivo debe estar ubicado ya en el directorio.
 /// especificado por CONF_DIR_USER.
 void BL_EXPORT invocaPDF ( const QString arch );
@@ -100,7 +101,7 @@ void BL_EXPORT generaPYS ( const QString arch );
 
 QString BL_EXPORT num2texto ( QString numero, QString moneda = "euros", QString singular = "euro" );
 void BL_EXPORT blCenterOnScreen ( QWidget *ventana );
-QString BL_EXPORT windowID ( const QString & );
+QString BL_EXPORT blWindowId ( const QString & );
 /// Convierte un string en un string valido para ser escrito desde un script.
 QString BL_EXPORT parsearCode ( const QString &cad );
 QString BL_EXPORT blStringToUsAscii ( const QString &orig );

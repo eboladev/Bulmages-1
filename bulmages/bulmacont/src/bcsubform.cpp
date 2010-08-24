@@ -238,7 +238,7 @@ void BcSubForm::pressedSlash ( int row, int col, BlDbSubFormRecord *rec, BlDbSub
         } // end if
         return;
     } // end if
-    QString text = editaTexto ( camp->text() );
+    QString text = blTextEditor ( camp->text() );
     camp->set ( text );
     blDebug ( "END BcSubForm::pressedSlash", 0 );
 }
