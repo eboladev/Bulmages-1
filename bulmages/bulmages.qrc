@@ -82,7 +82,7 @@
 	<file alias="iconbulmatpv.svg">images/oxygen/applications/iconbulmatpv.svg</file>
 	<file alias="iconbulmages.svg">images/oxygen/applications/iconbulmages.svg</file>
 	<file alias="iconbulmacont.svg">images/oxygen/applications/iconbulmacont.svg</file>
-        <file alias="delete-line.png">images/oxygen/actions/48x48/delete-one-line.png</file>
+        <file alias="delete-one-line.png">images/oxygen/actions/48x48/delete-one-line.png</file>
         <file alias="adjust-one-row.png">images/oxygen/actions/48x48/adjust-one-row.png</file>
         <file alias="adjust-all-rows.png">images/oxygen/actions/48x48/adjust-all-rows.png</file>
         <file alias="adjust-one-line.png">images/oxygen/actions/48x48/adjust-one-line.png</file>
