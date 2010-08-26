@@ -531,8 +531,8 @@ QWidget *BcSubFormDelegate::createEditor ( QWidget *parent, const QStyleOptionVi
         return editor;
     } else if ( linea->nomcampo() == "debe" || linea->nomcampo() == "haber" ) {
         BlDoubleSpinBox * editor = new BlDoubleSpinBox ( parent );
-        editor->setMinimum ( -1000000 );
-        editor->setMaximum ( 1000000 );
+        editor->setMinimum ( -100000000 );
+        editor->setMaximum ( 100000000 );
         editor->setDecimals(linea->numericPrecision());
         blDebug ( "END BcSubFormDelegate::createEditor", 0, "BlDoubleSpinBox" );
         return editor;

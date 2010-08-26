@@ -921,7 +921,7 @@ void BcAsientoView::asiento_regularizacion ( QString finicial, QString ffinal )
 
         mainCompany() ->begin();
 
-        QString querycomp = "SELECT * FROM asiento where clase = 1 and fecha <= '" + ffinal + "' AND fecha >= '" + ffinal + "'";                                                      
+/*        QString querycomp = "SELECT * FROM asiento where clase = 1 and fecha <= '" + ffinal + "' AND fecha >= '" + ffinal + "'";                                                      
         BlDbRecordSet *curcomp = mainCompany() -> loadQuery(querycomp);                        
         while (!curcomp -> eof() ) {                                                       
                 blMsgInfo("Vamos a borrar el asiento " + curcomp->valor("ordenasiento"));
@@ -929,7 +929,7 @@ void BcAsientoView::asiento_regularizacion ( QString finicial, QString ffinal )
                 BcAsientoForm::borrar ( FALSE );                                                
                 curcomp->nextRecord();                                              
         } // end if                                                                        
-        delete curcomp; 
+        delete curcomp;*/ 
 
 
         /// Creamos un asiento nuevo con la fecha final indicada.
