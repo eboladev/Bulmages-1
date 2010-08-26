@@ -57,8 +57,8 @@ DECLARE
 	rec RECORD;
 
 BEGIN
-	DROP TABLE vencimientop;
-	DROP TABLE vencimientoproveedor;
+--	DROP TABLE vencimientop;
+--	DROP TABLE vencimientoproveedor;
 	
 	SELECT INTO rec * FROM pg_attribute WHERE attname = ''idvencimientop'';
 	IF NOT FOUND THEN

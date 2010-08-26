@@ -110,7 +110,7 @@ int entryPoint ( BfBulmaFact *bges )
 **/
 int ClienteView_ClienteView_Post ( ClienteView *art )
 {
-    blDebug ( "ArticuloView_ArticuloView", 0 );
+    blDebug ( "ClienteView_ClienteView_Post", 0 );
 
     /// Agregamos el subformulario de validaciones.
     BfSubForm *l = new BfSubForm ( art );
@@ -131,7 +131,7 @@ int ClienteView_ClienteView_Post ( ClienteView *art )
 
     art->mui_tab->addTab ( l, "Vencimientos" );
     l->cargar("SELECT * FROM vencimientocliente WHERE idcliente IS NULL");
-    blDebug ( "END ArticuloView_ArticuloView", 0 );
+    blDebug ( "END ClienteView_ClienteView_Post", 0 );
     return 0;
 }
 
@@ -182,9 +182,9 @@ void generarVencimientos (FacturaView *art) {
 \param art
 \return
 **/
-int BlForm_guardar_Post_Post ( BlForm *art )
+int BlForm_guardar_Post ( BlForm *art )
 {
-    blDebug ( "ArticuloView_guardar_post", 0 );
+    blDebug ( "BlForm_guardar_Post", 0 );
     try {
 
         BfSubForm *l = art->findChild<BfSubForm *> ( "vencimientocliente" );
@@ -218,6 +218,7 @@ int BlForm_guardar_Post_Post ( BlForm *art )
 			generarVencimientos((FacturaView *)art);
 		} // end if
         } // end if
+            blDebug ( "END BlForm_guardar_Post", 0 );
         return 0;
     } catch ( ... ) {
         blDebug ( "Hubo un error al guardar los vencimientos", 2 );
@@ -229,7 +230,7 @@ int BlForm_guardar_Post_Post ( BlForm *art )
 
 
 int FacturaView_FacturaView (FacturaView *factp) {
-    blDebug ( "ArticuloView_ArticuloView", 0 );
+    blDebug ( "FacturaView_FacturaView", 0 );
     /// Agregamos el subformulario de validaciones.
     BfSubForm *l = new BfSubForm ( factp );
     l->setObjectName ( QString::fromUtf8 ( "vencimientoc" ) );
@@ -251,7 +252,7 @@ int FacturaView_FacturaView (FacturaView *factp) {
 
     factp->m_desdfgs->addTab ( l, "Vencimientos" );
     l->cargar("SELECT * FROM vencimientoc WHERE idfactura IS NULL");
-    blDebug ( "END ArticuloView_ArticuloView", 0 );
+    blDebug ( "END FacturaView_FacturaView", 0 );
     return 0;
 }
 

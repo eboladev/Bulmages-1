@@ -184,7 +184,7 @@ void generarVencimientos (FacturaProveedorView *art) {
 \param art
 \return
 **/
-int BlForm_guardar_Post_Post ( BlForm *art )
+int BlForm_guardar_Post ( BlForm *art )
 {
     blDebug ( "ArticuloView_guardar_post", 0 );
     try {

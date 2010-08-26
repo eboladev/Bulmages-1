@@ -26,12 +26,16 @@
 #include "blwidget.h"
 #include "bfbuscarreferencia.h"
 #include "blsearchwidget.h"
+#include "bfsubform.h"
 #include "pdefs_pluginbf_formasdepago.h"
 
 
 extern "C" PLUGINBF_FORMASDEPAGO_EXPORT int entryPoint ( BfBulmaFact * );
 extern "C" PLUGINBF_FORMASDEPAGO_EXPORT int SNewFPagoView (BfCompany *);
-
+extern "C" PLUGINBF_FORMASDEPAGO_EXPORT int BlSubFormDelegate_createEditor(BlSubFormDelegate *);
+extern "C" PLUGINBF_FORMASDEPAGO_EXPORT int BlSubFormDelegate_setModelData(BlSubFormDelegate *);
+extern "C" PLUGINBF_FORMASDEPAGO_EXPORT int BlSubFormDelegate_setEditorData(BlSubFormDelegate *);
+extern "C" PLUGINBF_FORMASDEPAGO_EXPORT int BlSubForm_editFinished(BlSubForm *);
 
 class MyPlugFPago : public QObject, BlMainCompanyPointer
 {

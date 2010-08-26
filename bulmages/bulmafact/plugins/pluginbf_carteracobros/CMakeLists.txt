@@ -105,7 +105,3 @@ install(DIRECTORY dbmodels/
 		DESTINATION share/bulmages/dbmodels/plugins
 		PATTERN ".svn" EXCLUDE)
 
-set(files dbmodels/revf-pluginbf_carteracobros.sql)
-
-install(FILES ${files} DESTINATION share/bulmages/dbmodels/plugins)
-
