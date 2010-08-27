@@ -78,6 +78,7 @@ void MyPluginCarteraPagos::inicializa ( BfBulmaFact *bges )
     QAction *accion = new QAction ( "&Cartera de Pagos", 0 );
     accion->setStatusTip ( "Cartera de Pagos" );
     accion->setWhatsThis ( "Cartera de Pagos" );
+    accion->setIcon ( QIcon ( QString::fromUtf8 ( ":/Images/pay-list.png" ) ) );
     connect ( accion, SIGNAL ( activated() ), this, SLOT ( elslot() ) );
     /// A&ntilde;adimos la nueva opci&oacute;n al men&uacute; principal del programa.
     pPluginMenu->addSeparator();

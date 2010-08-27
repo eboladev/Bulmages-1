@@ -11,11 +11,11 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Generacion Q34</string>
+   <string>Generacion Q19</string>
   </property>
   <property name="windowIcon">
    <iconset>
-    <normaloff>q34.png</normaloff>q34.png</iconset>
+    <normaloff>../pluginbf_q19/q19.png</normaloff>../pluginbf_q19/q19.png</iconset>
   </property>
   <layout class="QGridLayout" name="gridLayout">
    <item row="0" column="0" colspan="5">
@@ -41,7 +41,7 @@
         </size>
        </property>
        <property name="pixmap">
-        <pixmap>q34.png</pixmap>
+        <pixmap>../pluginbf_q19/q19.png</pixmap>
        </property>
        <property name="scaledContents">
         <bool>true</bool>

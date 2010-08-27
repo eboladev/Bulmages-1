@@ -18,10 +18,13 @@
    <string>Cartera de cobros</string>
   </property>
   <property name="windowIcon">
-   <iconset>
-    <normaloff>:/Images/receive.svg</normaloff>:/Images/receive.svg</iconset>
+   <iconset resource="../../../bulmages.qrc">
+    <normaloff>:/Images/receive-list.png</normaloff>:/Images/receive-list.png</iconset>
   </property>
   <layout class="QVBoxLayout" name="verticalLayout">
+   <property name="margin">
+    <number>0</number>
+   </property>
    <item>
     <layout class="QHBoxLayout">
      <property name="spacing">
@@ -42,7 +45,7 @@
         <string/>
        </property>
        <property name="pixmap">
-        <pixmap>:/Images/receive.svg</pixmap>
+        <pixmap resource="../../../bulmages.qrc">:/Images/receive-list.png</pixmap>
        </property>
        <property name="scaledContents">
         <bool>true</bool>
@@ -300,17 +303,17 @@
            </size>
           </property>
           <property name="toolTip">
-           <string>Generar Q34</string>
+           <string>Generar Q19</string>
           </property>
           <property name="whatsThis">
-           <string>Generar Q34 de los archivos seleccionados.</string>
+           <string>Generar el modelo bancario Q19 de los archivos seleccionados.</string>
           </property>
           <property name="text">
            <string/>
           </property>
           <property name="icon">
            <iconset resource="../../../bulmages.qrc">
-            <normaloff>:/Genericos32x32/images/png/q34.png</normaloff>:/Genericos32x32/images/png/q34.png</iconset>
+            <normaloff>:/Genericos32x32/images/png/q19.png</normaloff>:/Genericos32x32/images/png/q19.png</iconset>
           </property>
           <property name="iconSize">
            <size>

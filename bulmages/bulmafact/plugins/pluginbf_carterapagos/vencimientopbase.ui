@@ -22,7 +22,7 @@
   </property>
   <property name="windowIcon">
    <iconset>
-    <normaloff>:/Images/pay.svg</normaloff>:/Images/pay.svg</iconset>
+    <normaloff>:/Images/pay.png</normaloff>:/Images/pay.png</iconset>
   </property>
   <layout class="QVBoxLayout" name="verticalLayout">
    <item>
@@ -45,7 +45,7 @@
         <string/>
        </property>
        <property name="pixmap">
-        <pixmap>:/Images/pay.svg</pixmap>
+        <pixmap>:/Images/pay.png</pixmap>
        </property>
        <property name="scaledContents">
         <bool>true</bool>

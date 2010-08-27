@@ -18,13 +18,16 @@
    </size>
   </property>
   <property name="windowTitle">
-   <string>Nuevo cobro de cliente</string>
+   <string>Nuevo Vencimiento</string>
   </property>
   <property name="windowIcon">
-   <iconset>
-    <normaloff>:/Images/receive.svg</normaloff>:/Images/receive.svg</iconset>
+   <iconset resource="../../../bulmages.qrc">
+    <normaloff>:/Images/receive.png</normaloff>:/Images/receive.png</iconset>
   </property>
   <layout class="QVBoxLayout" name="verticalLayout">
+   <property name="margin">
+    <number>2</number>
+   </property>
    <item>
     <layout class="QHBoxLayout">
      <property name="spacing">
@@ -45,7 +48,7 @@
         <string/>
        </property>
        <property name="pixmap">
-        <pixmap>:/Images/receive.svg</pixmap>
+        <pixmap resource="../../../bulmages.qrc">:/Images/receive.png</pixmap>
        </property>
        <property name="scaledContents">
         <bool>true</bool>

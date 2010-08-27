@@ -52,9 +52,9 @@ MyPluginCarteraCobros::~MyPluginCarteraCobros()
 void MyPluginCarteraCobros::elslot()
 {
     blDebug ( "MyPluginCarteraCobros::elslot", 0 );
-    CarteraCobrosList *vehiculoview = new CarteraCobrosList ( ( BfCompany * ) m_conexionbase );
-    m_bulmafact->workspace() ->addWindow ( vehiculoview );
-    vehiculoview->show();
+    CarteraCobrosList *carteracobrosview = new CarteraCobrosList ( ( BfCompany * ) m_conexionbase );
+    m_bulmafact->workspace() ->addWindow ( carteracobrosview );
+    carteracobrosview->show();
     blDebug ( "END MyPluginCarteraCobros::elslot", 0 );
 }
 
@@ -76,6 +76,7 @@ void MyPluginCarteraCobros::inicializa ( BfBulmaFact *bges )
     QAction *accion = new QAction ( "&Cartera de cobros", 0 );
     accion->setStatusTip ( "Cartera de cobros" );
     accion->setWhatsThis ( "Cartera de cobros" );
+    accion->setIcon ( QIcon ( QString::fromUtf8 ( ":/Images/receive-list.png" ) ) );
     connect ( accion, SIGNAL ( activated() ), this, SLOT ( elslot() ) );
     /// A&ntilde;adimos la nueva opci&oacute;n al men&uacute; principal del programa.
     pPluginMenu->addSeparator();
