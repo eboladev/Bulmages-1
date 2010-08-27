@@ -60,7 +60,7 @@ BlDateSearch::~BlDateSearch()
 void BlDateSearch::setfecha ( QString val )
 {
     blDebug ( "BlDateSearch::setfecha", 0 );
-    m_textoFecha->setText ( val );
+    m_textoFecha->setText ( val.left(10) );
     blDebug ( "END BlDateSearch::setfecha", 0 );
 }
 
@@ -72,7 +72,7 @@ void BlDateSearch::setText ( QString val )
 {
     blDebug ( "BlDateSearch::setText", 0 );
     s_fechalostFocus();
-    m_textoFecha->setText ( val );
+    m_textoFecha->setText ( val.left(10) );
     blDebug ( "END BlDateSearch::setText", 0 );
 }
 
