@@ -141,7 +141,7 @@ void TicketQToolButton::click()
         stream << buff;
         file.close();
     } // end if
-    invocaPDF ( "etiquetas" );
+    blCreateAndLoadPDF ( "etiquetas" );
 
 
 

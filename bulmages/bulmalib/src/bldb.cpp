@@ -910,12 +910,12 @@ QString BlDbRecord::story ( void )
     for ( int i = 0; i < m_lista.size(); ++i ) {
         campo = m_lista.at ( i );
         fitxersortidatxt += "<tr>\n";
-        fitxersortidatxt += "   <td>" + xmlEscape ( campo->nomcampo() ) + "</td>\n";
-        fitxersortidatxt += "   <td>" + xmlEscape ( campo->nompresentacion() ) + "</td>\n";
+        fitxersortidatxt += "   <td>" + blXMLEscape ( campo->nomcampo() ) + "</td>\n";
+        fitxersortidatxt += "   <td>" + blXMLEscape ( campo->nompresentacion() ) + "</td>\n";
         if ( campo->dbFieldType() & BlDbField::DbNumeric )
-            fitxersortidatxt += "   <td>" + xmlEscape ( spanish.toString ( campo->valorcampo().toDouble(), 'f', 2 ) ) + "</td>\n";
+            fitxersortidatxt += "   <td>" + blXMLEscape ( spanish.toString ( campo->valorcampo().toDouble(), 'f', 2 ) ) + "</td>\n";
         else
-            fitxersortidatxt += "   <td>" + xmlEscape ( campo->valorcampo() ) + "</td>\n";
+            fitxersortidatxt += "   <td>" + blXMLEscape ( campo->valorcampo() ) + "</td>\n";
         fitxersortidatxt += "</tr>";
         qDebug() << spanish.toString ( campo->valorcampo().toDouble(), 'f', 2 );
     } // end for
@@ -1116,7 +1116,7 @@ void BlDbRecord::imprimir()
     blDebug ( "BlDbRecord::imprimir", 0, nombrePlantilla() );
 
     if ( generaRML() ) {
-        invocaPDF ( nombrePlantilla() );
+        blCreateAndLoadPDF ( nombrePlantilla() );
     } // end if
 
     blDebug ( "END BlDbRecord::imprimir", 0 );

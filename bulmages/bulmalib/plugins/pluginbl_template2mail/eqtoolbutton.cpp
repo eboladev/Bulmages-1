@@ -146,7 +146,7 @@ void EQToolButtonMail::trataMenu ( QAction *action )
                 } // end if
 
                 QString doc = fileInfo.fileName().left ( fileInfo.fileName().size() - 4 );
-                generaPDF ( doc );
+                blCreatePDF ( doc );
 
                 QString cad = "mv " + g_confpr->valor ( CONF_DIR_USER ) + doc + ".pdf " + g_confpr->valor ( CONF_DIR_USER ) +   doc  + num + ".pdf";
                 system ( cad.toAscii().data() );

@@ -99,10 +99,10 @@ int CobroView::trataTags ( QString &buff )
 
     // mantenemos compatibilidad con RML preexistentes
     // que usen estos nombres de variable
-    buff.replace ( "[referencia]" , xmlEscape ( dbValue ( "refcobro" ) ) );
-    buff.replace ( "[cantidad]" , xmlEscape ( dbValue ( "cantcobro" ) ) );
-    buff.replace ( "[comentario]" , xmlEscape ( dbValue ( "comentcobro" ) ) );
-    buff.replace ( "[fecha]" , xmlEscape ( dbValue ( "fechacobro" ) ) );
+    buff.replace ( "[referencia]" , blXMLEscape ( dbValue ( "refcobro" ) ) );
+    buff.replace ( "[cantidad]" , blXMLEscape ( dbValue ( "cantcobro" ) ) );
+    buff.replace ( "[comentario]" , blXMLEscape ( dbValue ( "comentcobro" ) ) );
+    buff.replace ( "[fecha]" , blXMLEscape ( dbValue ( "fechacobro" ) ) );
 
     // admitimos sustituciones , QUERY, IFACE, SETVAR... y los
     // nombres de campos de BD para cobros

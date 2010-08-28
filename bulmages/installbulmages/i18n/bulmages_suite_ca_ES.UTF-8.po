@@ -4513,7 +4513,7 @@ msgid "Error al borrar albaran de proveedor"
 msgstr "Error al esborrar l'albarà de proveïdor"
 
 #: blfunctions.cpp:376
-msgid "Error al borrar archivo .ods [ blfunctions->generaPYS() ]"
+msgid "Error al borrar archivo .ods [ blfunctions->blCreateODS() ]"
 msgstr ""
 
 #: claseview.cpp:254
@@ -4767,24 +4767,24 @@ msgid "Error al editar el presupuesto"
 msgstr "Tractant el pressupost"
 
 #: blfunctions.cpp:382
-msgid "Error al ejecutar PYTHON [ blfunctions->generaPYS() ]"
+msgid "Error al ejecutar PYTHON [ blfunctions->blCreateODS() ]"
 msgstr ""
 
 #: blfunctions.cpp:321
 msgid ""
-"Error al ejecutar el comando 'sed' [ blfunctions.cpp->reemplazaarchivo() ]."
+"Error al ejecutar el comando 'sed' [ blfunctions.cpp->blReplaceStringInFile() ]."
 msgstr ""
 
 #: blfunctions.cpp:409
-msgid "Error al ejecutar el visor de PDF [ blfunctions->invocaPDF() ]"
+msgid "Error al ejecutar el visor de PDF [ blfunctions->blCreateAndLoadPDF() ]"
 msgstr ""
 
 #: blfunctions.cpp:423
-msgid "Error al ejecutar mailsend [ blfunctions->mailsendPDF() ]"
+msgid "Error al ejecutar mailsend [ blfunctions->blSendPDFMail() ]"
 msgstr ""
 
 #: blfunctions.cpp:395
-msgid "Error al ejecutar oocalc [ blfunctions->invocaPYS() ]"
+msgid "Error al ejecutar oocalc [ blfunctions->blCreateAndLoadODS() ]"
 msgstr ""
 
 #: blfunctions.cpp:442
@@ -4876,15 +4876,15 @@ msgid "Error del programa"
 msgstr "Error del programa"
 
 #: blfunctions.cpp:347
-msgid "Error en FLIP [ blfunctions->generaPDF() ]"
+msgid "Error en FLIP [ blfunctions->blCreatePDF() ]"
 msgstr ""
 
 #: blfunctions.cpp:340
-msgid "Error en PYTHON [ blfunctions->generaPDF() ]"
+msgid "Error en PYTHON [ blfunctions->blCreatePDF() ]"
 msgstr ""
 
 #: blfunctions.cpp:357
-msgid "Error en bgtrml2pdf [ blfunctions->generaPDF() ]"
+msgid "Error en bgtrml2pdf [ blfunctions->blCreatePDF() ]"
 msgstr ""
 
 #: blimportexport.cpp:1471

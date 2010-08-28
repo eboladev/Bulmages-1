@@ -124,7 +124,7 @@ void CatalogoQToolButton::click()
         stream << buff;
         file.close();
     } // end if
-    invocaPDF ( "articulos" );
+    blCreateAndLoadPDF ( "articulos" );
 
     blDebug ( "END CatalogoQToolButton::click", 0 );
 }

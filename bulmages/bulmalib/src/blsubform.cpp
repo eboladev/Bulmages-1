@@ -2870,7 +2870,7 @@ void BlSubForm::imprimirPDF ( const QString &titular )
         file.close();
     } // end if
 
-    invocaPDF ( "listado" );
+    blCreateAndLoadPDF ( "listado" );
     blDebug ( "END BlSubForm::imprimir", 0 );
 }
 

@@ -60,7 +60,7 @@ QString blTextEditor ( QString texto )
 /// cambia los slash por slash + slash
 /// cambia las comillas por slash + comillas
 /// cambia los tabuladores por slash + t
-QString parsearCode ( const QString &cad )
+QString blScriptEscape ( const QString &cad )
 {
     QString result = cad;
     result.replace ( "\\", "\\\\" );
@@ -73,7 +73,7 @@ QString parsearCode ( const QString &cad )
 /// Escapa los minimos caracteres necesarios para
 /// escribir a cadena a XML, sin usar CDATA, para ahorrar bytes y porque (me suena que) puede no
 /// estar permitido en todos los lugares de un fichero xml segun esquemas o dtds especificos
-QString xmlEscape ( const QString& param )
+QString blXMLEscape ( const QString& param )
 {
     QString text = param;
     text.replace ( "&", "&amp;" );
@@ -88,7 +88,7 @@ QString xmlEscape ( const QString& param )
 
 /// Escapa los caracteres necesarios para que la cadena pueda ser embebida dentro de un
 /// script en python
-QString pythonEscape ( const QString& param )
+QString blPythonEscape ( const QString& param )
 {
     QString text = param;
     text.replace ( "'", "\\'" );
@@ -97,15 +97,15 @@ QString pythonEscape ( const QString& param )
 }
 
 
-QString genEscape ( const QString &param, int tipoEscape )
+QString blStringEscape ( const QString &param, int tipoEscape )
 {
     QString param1;
     switch ( tipoEscape ) {
     case 1:
-        param1 =  xmlEscape ( param );
+        param1 = blXMLEscape ( param );
         break;
     case 2:
-        param1 = pythonEscape ( param );
+        param1 = blPythonEscape ( param );
         break;
     default:
         param1 = param;
@@ -299,7 +299,7 @@ QDate blNormalizeDate ( QString fechaintro )
 
 /// BUG: --- Esta funcion tiene un uso especifico de bulmacont y por eso no
 /// deberia estar en bulmalib.
-QString ajustacodigo ( QString cad, unsigned int num1 )
+QString blExtendCodeLength ( QString cad, unsigned int num1 )
 {
     QString cod = cad;
     unsigned int longcad = cad.length();
@@ -320,21 +320,21 @@ QString ajustacodigo ( QString cad, unsigned int num1 )
 
 
 /// Sustituye cadenas en un archivo.
-void reemplazaarchivo ( QString archivo, QString texto1, QString texto2, QString archivo2 )
+void blReplaceStringInFile ( QString archivo, QString texto1, QString texto2, QString archivo2 )
 {
     QString cadena = " sed -e \"s&" + texto1 + "&" + texto2 + "&g\"  " + archivo + " > " + archivo2 + "";
     int result = system ( cadena.toAscii().data() );
     if (result == -1) {
-	blMsgError(_("Error al ejecutar el comando 'sed' [ blfunctions.cpp->reemplazaarchivo() ]."));
+	blMsgError(_("Error al ejecutar el comando 'sed' [ blfunctions.cpp->blReplaceStringInFile() ]."));
     } // end if
 }
 
 
 /// En la impresi&oacute;n de documentos con bgtrml2pdf esta funci&oacute;n hace casi todo
 /// el trabajo de la invocaci&oacute;n de bgtrml2pdf para evitar trabajo duplicado.
-void generaPDF ( const QString arch )
+void blCreatePDF ( const QString arch )
 {
-    blDebug ( "generaPDF " + arch, 0 );
+    blDebug ( "blCreatePDF " + arch, 0 );
 
     QDir::setCurrent ( g_confpr->valor ( CONF_DIR_USER ) );
     QString cadsys;
@@ -344,14 +344,14 @@ void generaPDF ( const QString arch )
 
     int result1 = system ( cadsys.toAscii() );
     if (result1 == -1) {
-	blMsgError(_("Error en PYTHON [ blfunctions->generaPDF() ]"));
+	blMsgError(_("Error en PYTHON [ blfunctions->blCreatePDF() ]"));
     } // end if
     
     blDebug ( cadsys, 0 );
     cadsys = g_confpr->valor ( CONF_FLIP ) + " -u " + g_confpr->valor ( CONF_DIR_USER ) + arch + ".pdf";
     int result2 = system ( cadsys.toAscii().data() );
     if (result2 == -1) {
-	blMsgError(_("Error en FLIP [ blfunctions->generaPDF() ]"));
+	blMsgError(_("Error en FLIP [ blfunctions->blCreatePDF() ]"));
     } // end if
 
     blDebug ( cadsys, 0 );
@@ -361,46 +361,46 @@ void generaPDF ( const QString arch )
     cadsys = "bgtrml2pdf " + arch + ".rml > " + arch + ".pdf";
     int result3 = system ( cadsys.toAscii().data() );
     if (result3 == -1) {
-	blMsgError(_("Error en bgtrml2pdf [ blfunctions->generaPDF() ]"));
+	blMsgError(_("Error en bgtrml2pdf [ blfunctions->blCreatePDF() ]"));
     } // end if
 
 #endif
 
-    blDebug ( "END generaPDF " + arch, 0 );
+    blDebug ( "END blCreatePDF " + arch, 0 );
 }
 
 
 /// Genera un ODS a partir de un pys sin abrirlo.
-void generaPYS ( const QString arch )
+void blCreateODS ( const QString arch )
 {
-    blDebug ( "generaPYS " + arch, 0 );
+    blDebug ( "blCreateODS " + arch, 0 );
     QDir::setCurrent ( g_confpr->valor ( CONF_DIR_USER ) );
     QString cadsys;
 
     QString cadena = "rm " + g_confpr->valor ( CONF_DIR_USER ) + arch + ".ods";
     int result1 = system ( cadena.toAscii() );
     if (result1 == -1) {
-	blMsgError(_("Error al borrar archivo .ods [ blfunctions->generaPYS() ]"));
+	blMsgError(_("Error al borrar archivo .ods [ blfunctions->blCreateODS() ]"));
     } // end if
 
     cadena = " cd " + g_confpr->valor ( CONF_DIR_USER ) + "; python " + arch + ".pys";
     int result2 = system ( cadena.toAscii() );
     if (result2 == -1) {
-	blMsgError(_("Error al ejecutar PYTHON [ blfunctions->generaPYS() ]"));
+	blMsgError(_("Error al ejecutar PYTHON [ blfunctions->blCreateODS() ]"));
     } // end if
 
 }
 
 
 /// Genera un ODS a partir de un pys usand python. y ademas lo muestra.
-void invocaPYS ( const QString arch )
+void blCreateAndLoadODS ( const QString arch )
 {
-    generaPYS ( arch );
+    blCreateODS ( arch );
     if (QFile::exists(g_confpr->valor ( CONF_DIR_USER ) + arch + ".ods")) {
       QString cadena = g_confpr->valor ( CONF_ODS ) + " " + g_confpr->valor ( CONF_DIR_USER ) + arch + ".ods &";
       int result = system ( cadena.toAscii() );
       if (result == -1) {
-	  blMsgError(_("Error al ejecutar oocalc [ blfunctions->invocaPYS() ]"));
+	  blMsgError(_("Error al ejecutar oocalc [ blfunctions->blCreateAndLoadODS() ]"));
       } // end if
     } // end if
 
@@ -409,27 +409,27 @@ void invocaPYS ( const QString arch )
 /// Genera un 'PDF' a partir de un 'RML' usando 'bgtrml2pdf' y adem&aacute;s lo muestra con el visor
 /// de 'PDF' establecido en la configuraci&oacute;n.
 /// arch = Nombre del archivo 'RML'.
-void invocaPDF ( const QString arch )
+void blCreateAndLoadPDF ( const QString arch )
 {
-    generaPDF ( arch );
+    blCreatePDF ( arch );
     QString cadsys = g_confpr->valor ( CONF_PDF ) + " " + g_confpr->valor ( CONF_DIR_USER ) + arch + ".pdf &";
     int result = system ( cadsys.toAscii().data() );
     if (result == -1) {
-	blMsgError(_("Error al ejecutar el visor de PDF [ blfunctions->invocaPDF() ]"));
+	blMsgError(_("Error al ejecutar el visor de PDF [ blfunctions->blCreateAndLoadPDF() ]"));
     } // end if
     
 }
 
 
 /// De momento no se usa, pero sirve para enviar documentos por e-mail a un destinatario.
-void mailsendPDF ( const QString arch, const QString to, const QString subject, const QString message )
+void blSendPDFMail ( const QString arch, const QString to, const QString subject, const QString message )
 {
     //FIXME: REVISAR PARAMETROS de mailsend o la posibilidad de anyadir otros programas
     //para enviar correo desde la ventana de configuracion del programa.
     QString cadsys = "mailsend -h " + arch + " -d " + to + " -f bulmages@iglues.org -t test@iglues.org -sub " + subject + " -m " + message;
     int result = system ( cadsys.toAscii().data() );
     if (result == -1) {
-	blMsgError(_("Error al ejecutar mailsend [ blfunctions->mailsendPDF() ]"));
+	blMsgError(_("Error al ejecutar mailsend [ blfunctions->blSendPDFMail() ]"));
     } // end if
     
 }

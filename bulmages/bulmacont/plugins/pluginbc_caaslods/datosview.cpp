@@ -110,7 +110,7 @@ void DatosView::on_mui_aceptar_clicked() {
 
          QString archivod = m_informe;
          QString archivo =  m_informe.left ( m_informe.size() - 4 );
-         invocaPYS ( archivo );
+         blCreateAndLoadODS ( archivo );
       }
       else{
          blMsgError ( _("ERROR: Ha habido un error generando el informe"));

@@ -77,7 +77,7 @@ void MyPluginInformesODS::elslot1( )
 
     QString archivod = sender()->objectName();
     QString archivo =  sender()->objectName().left ( sender()->objectName().size() - 4 );
-    invocaPYS ( archivo );
+    blCreateAndLoadODS ( archivo );
 
     delete ficha;
     blDebug ( "END MyPluginInformesODS::elslot", 0 );

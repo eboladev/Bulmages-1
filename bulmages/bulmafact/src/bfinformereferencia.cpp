@@ -302,7 +302,7 @@ void BfInformeCliente::generarInforme()
         stream << buff;
         file.close();
     } // end if
-    invocaPDF ( "informecliente" );
+    blCreateAndLoadPDF ( "informecliente" );
     blDebug ( "END BfInformeCliente::generarInforme", 0 );
 }
 

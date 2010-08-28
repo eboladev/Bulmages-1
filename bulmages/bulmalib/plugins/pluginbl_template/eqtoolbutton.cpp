@@ -229,7 +229,7 @@ void EQToolButton::trataMenu ( QAction *action )
 	    QFileInfo fileInfo = list.at ( i );
 	    if ( action->objectName() == fileInfo.fileName() ) {
 		if ( m_BlForm->generaRML ( fileInfo.fileName() ) ) {
-		    invocaPDF ( fileInfo.fileName().left ( fileInfo.fileName().size() - 4 ) );
+		    blCreateAndLoadPDF ( fileInfo.fileName().left ( fileInfo.fileName().size() - 4 ) );
 		} // end if
 	    } // end if
 	} // end for

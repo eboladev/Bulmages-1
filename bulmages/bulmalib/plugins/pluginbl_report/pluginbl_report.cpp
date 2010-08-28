@@ -72,7 +72,7 @@ void MyPluginInformes::elslot1( )
 
     BlForm *ficha = new BlForm ( g_emp, 0 );
     if ( !ficha->generaRML ( sender()->objectName() ) ) return;
-    invocaPDF ( sender()->objectName().left ( sender()->objectName().size() - 4 ) );
+    blCreateAndLoadPDF ( sender()->objectName().left ( sender()->objectName().size() - 4 ) );
 
     blDebug ( "END MyPluginInformes::elslot", 0 );
 }

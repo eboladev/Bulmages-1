@@ -513,7 +513,7 @@ void BcCuentasAnualesImprimirView::imprimir ( QString periodo1finicial, QString 
         file.close();
     } // end if
 
-    invocaPDF ( "canuales" );
+    blCreateAndLoadPDF ( "canuales" );
     blDebug ( "END BcCuentasAnualesImprimirView::imprimir", 0 );
 }
 

@@ -584,7 +584,7 @@ void FamiliasView::on_mui_imprimir_clicked()
         stream << buff;
         file.close();
     } // end if
-    invocaPDF ( "familias" );
+    blCreateAndLoadPDF ( "familias" );
     blDebug ( "END FamiliasView::on_mui_imprimir_clicked", 0 );
 }
 

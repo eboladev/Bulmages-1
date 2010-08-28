@@ -247,7 +247,7 @@ void InventariosView::on_mui_imprimir_clicked()
         file.close();
     } // end if
 
-    invocaPDF ( "listado" );
+    blCreateAndLoadPDF ( "listado" );
     blDebug ( "END InventariosView::on_mui_imprimir_clicked", 0 );
 }
 

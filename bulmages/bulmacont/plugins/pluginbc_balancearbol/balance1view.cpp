@@ -618,7 +618,7 @@ void BalanceTreeView::imprimir()
 //      QString queryalance();
 //
     generaRML ( "balance.rml" );
-    invocaPDF ( "balance" );
+    blCreateAndLoadPDF ( "balance" );
 
     blDebug ( "END BalanceTreeView::on_mui_imprimir_clicked", 0 );
 }
@@ -692,7 +692,7 @@ void BalanceTreeView::on_mui_hojacalculo_clicked()
 //         fitxersortidatxt += "# Fila " + QString::number ( y ) + "\n";
 //         fitxersortidatxt += "$doc->oooSet(\"bold\", \"on\");\n";
 //         fitxersortidatxt += "$doc->oooSet(\"cell-loc\", " + QString::number ( x++ ) + ", " + QString::number ( y ) + ");\n";
-//         fitxersortidatxt += "$doc->oooData(\"cell-text\", \"" + parsearCode ( cursorapt1->nomcampo ( h ) ) + "\");\n";
+//         fitxersortidatxt += "$doc->oooData(\"cell-text\", \"" + blScriptEscape ( cursorapt1->nomcampo ( h ) ) + "\");\n";
 //         fitxersortidatxt += "$doc->oooSet(\"bold\", \"off\");\n";
 //         fitxersortidatxt += "\n";
 //
@@ -711,7 +711,7 @@ void BalanceTreeView::on_mui_hojacalculo_clicked()
 //             fitxersortidatxt += "# Fila " + QString::number ( y ) + "\n";
 //             fitxersortidatxt += "$doc->oooSet(\"bold\", \"on\");\n";
 //             fitxersortidatxt += "$doc->oooSet(\"cell-loc\", " + QString::number ( x++ ) + ", " + QString::number ( y ) + ");\n";
-//             fitxersortidatxt += "$doc->oooData(\"cell-text\", \"" + parsearCode ( cursorapt1->valor ( j ) ) + "\");\n";
+//             fitxersortidatxt += "$doc->oooData(\"cell-text\", \"" + blScriptEscape ( cursorapt1->valor ( j ) ) + "\");\n";
 //             fitxersortidatxt += "$doc->oooSet(\"bold\", \"off\");\n";
 //             fitxersortidatxt += "\n";
 //

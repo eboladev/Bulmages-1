@@ -184,9 +184,9 @@ void InformeQToolButton1::click()
             fitxersortidatxt += "# Fila " + QString::number ( y ) + "\n";
             fitxersortidatxt += "$doc->oooSet(\"bold\", \"on\");\n";
             fitxersortidatxt += "$doc->oooSet(\"cell-loc\", 1, " + QString::number ( y ) + ");\n";
-            fitxersortidatxt += "$doc->oooData(\"cell-text\", \"" + parsearCode ( cur->valor ( "cifcliente" ) ) + "\");\n";
+            fitxersortidatxt += "$doc->oooData(\"cell-text\", \"" + blScriptEscape ( cur->valor ( "cifcliente" ) ) + "\");\n";
 //   fitxersortidatxt += "$doc->oooSet(\"cell-loc\", 2, "+ QString::number ( y ) +");\n";
-            fitxersortidatxt += "$doc->oooData(\"cell-text\", \"" + parsearCode ( cur->valor ( "nomcliente" ) ) + "\");\n";
+            fitxersortidatxt += "$doc->oooData(\"cell-text\", \"" + blScriptEscape ( cur->valor ( "nomcliente" ) ) + "\");\n";
             fitxersortidatxt += "$doc->oooSet(\"bold\", \"off\");\n";
             fitxersortidatxt += gen;
             fitxersortidatxt += "\n";
@@ -439,8 +439,8 @@ void InformeProveedorQToolButton1::click()
             fitxersortidatxt += "# Fila " + QString::number ( y ) + "\n";
             fitxersortidatxt += "$doc->oooSet(\"bold\", \"on\");\n";
             fitxersortidatxt += "$doc->oooSet(\"cell-loc\", 1, " + QString::number ( y ) + ");\n";
-            fitxersortidatxt += "$doc->oooData(\"cell-text\", \"" + parsearCode ( cur->valor ( "cifproveedor" ) ) + "\");\n";
-            fitxersortidatxt += "$doc->oooData(\"cell-text\", \"" + parsearCode ( cur->valor ( "nomproveedor" ) ) + "\");\n";
+            fitxersortidatxt += "$doc->oooData(\"cell-text\", \"" + blScriptEscape ( cur->valor ( "cifproveedor" ) ) + "\");\n";
+            fitxersortidatxt += "$doc->oooData(\"cell-text\", \"" + blScriptEscape ( cur->valor ( "nomproveedor" ) ) + "\");\n";
             fitxersortidatxt += "$doc->oooSet(\"bold\", \"off\");\n";
             fitxersortidatxt += gen;
             fitxersortidatxt += "\n";

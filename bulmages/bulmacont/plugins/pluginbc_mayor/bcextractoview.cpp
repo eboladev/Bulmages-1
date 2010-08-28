@@ -971,7 +971,7 @@ void BcExtractoView::imprimir()
         file.close();
     } // end if
     /// Crea el pdf y lo muestra.
-    invocaPDF ( "extracto" );
+    blCreateAndLoadPDF ( "extracto" );
     blDebug ( "END BcExtractoView::on_mui_imprimir_clicked", 0 );
     return;
 }

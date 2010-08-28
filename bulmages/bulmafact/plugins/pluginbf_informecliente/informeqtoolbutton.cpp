@@ -152,7 +152,7 @@ void InformeQToolButton::click()
         stream << buff;
         file.close();
     } // end if
-    invocaPDF ( "informeclientes" );
+    blCreateAndLoadPDF ( "informeclientes" );
 
     blDebug ( "END InformeQToolButton::click", 0 );
 }
@@ -440,7 +440,7 @@ void InformeArtQToolButton::click()
         stream << buff;
         file.close();
     } // end if
-    invocaPDF ( "informearticulos" );
+    blCreateAndLoadPDF ( "informearticulos" );
 
     blDebug ( "END InformeQToolButton::click", 0 );
 }

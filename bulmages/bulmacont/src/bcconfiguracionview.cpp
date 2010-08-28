@@ -142,7 +142,7 @@ void BcConfiguracionView::on_mui_modificarplan_clicked()
     BlDbRecordSet *cur = mainCompany() ->loadQuery ( query );
     while ( !cur->eof() ) {
         codigo = cur->valor ( "codigo" );
-        codigo = ajustacodigo ( codigo, nlong );
+        codigo = blExtendCodeLength ( codigo, nlong );
         mainCompany() ->begin();
         query = "UPDATE cuenta SET codigo = '" + codigo + "' WHERE idcuenta = " + cur->valor ( "idcuenta" );
         mainCompany() ->runQuery ( query );

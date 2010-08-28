@@ -961,10 +961,10 @@ void BlForm::substrVars ( QString &buff, int tipoEscape )
                         
             switch ( tipoEscape ) {
             case 1:
-                buff.replace ( pos, rx.matchedLength(), xmlEscape ( dbValue ( rx.cap ( 1 ) ) ) );
+                buff.replace ( pos, rx.matchedLength(), blXMLEscape ( dbValue ( rx.cap ( 1 ) ) ) );
                 break;
             case 2:
-                buff.replace ( pos, rx.matchedLength(), pythonEscape ( dbValue ( rx.cap ( 1 ) ) ) );
+                buff.replace ( pos, rx.matchedLength(), blPythonEscape ( dbValue ( rx.cap ( 1 ) ) ) );
                 break;
             default:
                 buff.replace ( pos, rx.matchedLength(), dbValue ( rx.cap ( 1 ) ) );
@@ -1327,10 +1327,10 @@ QString BlForm::trataCursor ( BlDbRecordSet *cur, const QString &datos, int tipo
             if ( cur->numcampo ( rx.cap ( 1 ) ) != -1 ) {
                 switch ( tipoEscape ) {
                 case 1:
-                    salidatemp.replace ( pos, rx.matchedLength(), xmlEscape ( cur->valor ( rx.cap ( 1 ), -1, TRUE ) )  );
+                    salidatemp.replace ( pos, rx.matchedLength(), blXMLEscape ( cur->valor ( rx.cap ( 1 ), -1, TRUE ) )  );
                     break;
                 case 2:
-                    salidatemp.replace ( pos, rx.matchedLength(), pythonEscape ( cur->valor ( rx.cap ( 1 ), -1, TRUE ) )  );
+                    salidatemp.replace ( pos, rx.matchedLength(), blPythonEscape ( cur->valor ( rx.cap ( 1 ), -1, TRUE ) )  );
                     break;
                 default:
                     salidatemp.replace ( pos, rx.matchedLength(), cur->valor ( rx.cap ( 1 ), -1, TRUE ) );

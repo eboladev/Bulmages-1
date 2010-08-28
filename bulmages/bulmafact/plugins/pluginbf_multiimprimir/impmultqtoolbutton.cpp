@@ -143,7 +143,7 @@ void ImpQToolButton::click()
                     if ( pres->generaRML() ) {
 
 
-                        generaPDF ( "presupuesto" );
+                        blCreatePDF ( "presupuesto" );
 
                         QString cad = "mv " + g_confpr->valor ( CONF_DIR_USER ) + "presupuesto.pdf " + g_confpr->valor ( CONF_DIR_USER ) + "presupuesto" + id + ".pdf";
                         system ( cad.toAscii().data() );
@@ -181,7 +181,7 @@ void ImpQToolButton::click()
                     if ( pres->generaRML() ) {
 
 
-                        generaPDF ( "factura" );
+                        blCreatePDF ( "factura" );
 
                         QString cad = "mv " + g_confpr->valor ( CONF_DIR_USER ) + "factura.pdf " + g_confpr->valor ( CONF_DIR_USER ) + "factura" + id + ".pdf";
                         system ( cad.toAscii().data() );
@@ -216,7 +216,7 @@ void ImpQToolButton::click()
                     if ( pres->generaRML() ) {
 
 
-                        generaPDF ( "pedidocliente" );
+                        blCreatePDF ( "pedidocliente" );
 
                         QString cad = "mv " + g_confpr->valor ( CONF_DIR_USER ) + "pedidocliente.pdf " + g_confpr->valor ( CONF_DIR_USER ) + "pedidocliente" + id + ".pdf";
                         system ( cad.toAscii().data() );
@@ -253,7 +253,7 @@ void ImpQToolButton::click()
                     if ( pres->generaRML() ) {
 
 
-                        generaPDF ( "albaran" );
+                        blCreatePDF ( "albaran" );
 
                         QString cad = "mv " + g_confpr->valor ( CONF_DIR_USER ) + "albaran.pdf " + g_confpr->valor ( CONF_DIR_USER ) + "albaran" + id + ".pdf";
                         system ( cad.toAscii().data() );
@@ -398,7 +398,7 @@ void ImpQToolButton::click()
             } // end if
 
 
-            invocaPDF ( "recibos" );
+            blCreateAndLoadPDF ( "recibos" );
 
             return;
         } // end if
@@ -428,7 +428,7 @@ void ImpQToolButton::click()
                     if ( pres->generaRML() ) {
 
 
-                        generaPDF ( "recibo" );
+                        blCreatePDF ( "recibo" );
 
                         QString cad = "mv " + g_confpr->valor ( CONF_DIR_USER ) + "recibo.pdf " + g_confpr->valor ( CONF_DIR_USER ) + "recibo" + id + ".pdf";
                         system ( cad.toAscii().data() );
@@ -635,7 +635,7 @@ void EmailQToolButton::click()
                 if ( pres->generaRML() ) {
 
 
-                    generaPDF ( "presupuesto" );
+                    blCreatePDF ( "presupuesto" );
 
                     QString cad = "mv " + g_confpr->valor ( CONF_DIR_USER ) + "presupuesto.pdf " + g_confpr->valor ( CONF_DIR_USER ) + "presupuesto" + id + ".pdf";
                     system ( cad.toAscii().data() );
@@ -679,7 +679,7 @@ void EmailQToolButton::click()
                 if ( pres->generaRML() ) {
 
 
-                    generaPDF ( "pedidocliente" );
+                    blCreatePDF ( "pedidocliente" );
 
                     QString cad = "mv " + g_confpr->valor ( CONF_DIR_USER ) + "pedidocliente.pdf " + g_confpr->valor ( CONF_DIR_USER ) + "pedidocliente" + id + ".pdf";
                     system ( cad.toAscii().data() );
@@ -723,7 +723,7 @@ void EmailQToolButton::click()
                 if ( pres->generaRML() ) {
 
 
-                    generaPDF ( "albaran" );
+                    blCreatePDF ( "albaran" );
 
                     QString cad = "mv " + g_confpr->valor ( CONF_DIR_USER ) + "albaran.pdf " + g_confpr->valor ( CONF_DIR_USER ) + "albaran" + id + ".pdf";
                     system ( cad.toAscii().data() );
@@ -773,7 +773,7 @@ void EmailQToolButton::click()
                 if ( pres->generaRML() ) {
 
 
-                    generaPDF ( "factura" );
+                    blCreatePDF ( "factura" );
 
                     QString cad = "mv " + g_confpr->valor ( CONF_DIR_USER ) + "factura.pdf " + g_confpr->valor ( CONF_DIR_USER ) + "factura" + serie + num + ".pdf";
                     system ( cad.toAscii().data() );
@@ -815,7 +815,7 @@ void EmailQToolButton::click()
                 CobroView *pres = new CobroView ( m_companyact, 0 );
                 pres->cargar ( id );
 
-                generaPDF ( "recibo" );
+                blCreatePDF ( "recibo" );
 
                 QString cad = "mv " + g_confpr->valor ( CONF_DIR_USER ) + "recibo.pdf " + g_confpr->valor ( CONF_DIR_USER ) + "recibo" + fecha + ref + ".pdf";
                 system ( cad.toAscii().data() );

@@ -454,7 +454,7 @@ void FacturaProveedorView::imprimirFacturaProveedor()
         stream << buff;
         file.close();
     } // end if
-    invocaPDF ( "facturap" );
+    blCreateAndLoadPDF ( "facturap" );
 }
 
 

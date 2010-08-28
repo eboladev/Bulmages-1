@@ -221,7 +221,7 @@ void RutaComercialList::imprimir()
         file.close();
     } // end if
     /// Crea el pdf y lo muestra.
-    invocaPDF ( "rutascomerciales" );
+    blCreateAndLoadPDF ( "rutascomerciales" );
     blDebug ( "END RutaComercialList::imprimir", 0 );
 }
 

@@ -533,7 +533,7 @@ void BcPlanContableListView::imprimir()
         file.close();
     } // end if
 
-    invocaPDF ( "listado" );
+    blCreateAndLoadPDF ( "listado" );
     blDebug ( "END BcPlanContableListView::imprimir", 0 );
 }
 

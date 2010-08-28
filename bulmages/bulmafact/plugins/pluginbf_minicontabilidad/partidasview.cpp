@@ -545,7 +545,7 @@ void PartidasView::on_mui_imprimir_clicked()
         stream << buff;
         file.close();
     } // end if
-    invocaPDF ( "partidas" );
+    blCreateAndLoadPDF ( "partidas" );
     blDebug ( "END PartidasView::on_mui_imprimir_clicked", 0 );
 }
 

@@ -436,7 +436,7 @@ void CuadranteView::on_mui_imprimir_clicked()
         stream << buff;
         file.close();
     } // end if
-    invocaPDF ( "cuadrante" );
+    blCreateAndLoadPDF ( "cuadrante" );
     blDebug ( "END CuadranteView::on_mui_imprimir_clicked", 0 );
 
 }

@@ -171,7 +171,7 @@ void myplugsubformsxc::sacaSXC()
                 fitxersortidatxt += "# Fila " + QString::number ( y ) + "\n";
                 fitxersortidatxt += "$doc->oooSet(\"bold\", \"on\");\n";
                 fitxersortidatxt += "$doc->oooSet(\"cell-loc\", " + QString::number ( x++ ) + ", " + QString::number ( y ) + ");\n";
-                fitxersortidatxt += "$doc->oooData(\"cell-text\", \"" + parsearCode ( subf->mui_list->item ( i, j ) ->text() ) + "\");\n";
+                fitxersortidatxt += "$doc->oooData(\"cell-text\", \"" + blScriptEscape ( subf->mui_list->item ( i, j ) ->text() ) + "\");\n";
 
                 fitxersortidatxt += "$doc->oooSet(\"bold\", \"off\");\n";
                 fitxersortidatxt += "\n";

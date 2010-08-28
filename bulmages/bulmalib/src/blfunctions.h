@@ -60,20 +60,20 @@ QDate BL_EXPORT blNormalizeDate ( QString );
 /// Escapa los mínimos caracteres necesarios para 
 /// escribir a cadena a XML, sin usar CDATA porque puede no 
 /// estar permitido en todos los lugares de un fichero xml 
-QString BL_EXPORT xmlEscape ( const QString& text );
+QString BL_EXPORT blXMLEscape ( const QString& text );
 
 /// Escapa una cadena para que pueda ser embebida en un script python.
-QString BL_EXPORT pythonEscape ( const QString &text);
+QString BL_EXPORT blPythonEscape ( const QString &text);
 
 /// Sistema general de escape
-QString BL_EXPORT genEscape (const QString &text, int tipoEscape = 0);
+QString BL_EXPORT blStringEscape (const QString &text, int tipoEscape = 0);
 
 /// Proteje cadenas de texto pasandoles una sustitucion de codigos especiales de XML.
 QString BL_EXPORT blXMLEncode ( const QString& );
 QString BL_EXPORT blXMLDecode ( const QString& );
 /// Ajusta un codigo de cuenta a una longitud determinada pasada como parametro.
-QString BL_EXPORT ajustacodigo ( QString, unsigned int );
-void BL_EXPORT reemplazaarchivo ( QString, QString, QString, QString );
+QString BL_EXPORT blExtendCodeLength ( QString, unsigned int );
+void BL_EXPORT blReplaceStringInFile ( QString, QString, QString, QString );
 /// Esta funcion permite editar un texto en un QTextEdit y devuelve el texto editado.
 QString BL_EXPORT blTextEditor ( QString texto );
 
@@ -94,16 +94,16 @@ void BL_EXPORT blMsgError ( QString cad, QWidget *parent = 0 );
 /// de la invocacion de 'bgtrml2pdf'.
 /// Para evitar trabajo duplicado. El archivo debe estar ubicado ya en el directorio.
 /// especificado por CONF_DIR_USER.
-void BL_EXPORT invocaPDF ( const QString arch );
-void BL_EXPORT generaPDF ( const QString arch );
-void BL_EXPORT invocaPYS ( const QString arch );
-void BL_EXPORT generaPYS ( const QString arch );
+void BL_EXPORT blCreateAndLoadPDF ( const QString arch );
+void BL_EXPORT blCreatePDF ( const QString arch );
+void BL_EXPORT blCreateAndLoadODS ( const QString arch );
+void BL_EXPORT blCreateODS ( const QString arch );
 
 QString BL_EXPORT blNumberToText ( QString numero, QString moneda = "euros", QString singular = "euro" );
 void BL_EXPORT blCenterOnScreen ( QWidget *ventana );
 QString BL_EXPORT blWindowId ( const QString & );
 /// Convierte un string en un string valido para ser escrito desde un script.
-QString BL_EXPORT parsearCode ( const QString &cad );
+QString BL_EXPORT blScriptEscape ( const QString &cad );
 QString BL_EXPORT blStringToUsAscii ( const QString &orig );
 QString BL_EXPORT blStringToPython(QString string);
 bool BL_EXPORT blValidateSpainCIFCode(QString cif1, QChar &digit);

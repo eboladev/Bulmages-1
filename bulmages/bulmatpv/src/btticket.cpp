@@ -1231,10 +1231,10 @@ void BtTicket::substrVars ( QByteArray &buff, int tipoEscape )
                         
             switch ( tipoEscape ) {
             case 1:
-                buff.replace ( pos, rx.matchedLength(), xmlEscape ( dbValue ( rx.cap ( 1 ) ) ).toAscii() );
+                buff.replace ( pos, rx.matchedLength(), blXMLEscape ( dbValue ( rx.cap ( 1 ) ) ).toAscii() );
                 break;
             case 2:
-                buff.replace ( pos, rx.matchedLength(), pythonEscape ( dbValue ( rx.cap ( 1 ) ) ).toAscii() );
+                buff.replace ( pos, rx.matchedLength(), blPythonEscape ( dbValue ( rx.cap ( 1 ) ) ).toAscii() );
                 break;
             default:
                 buff.replace ( pos, rx.matchedLength(), dbValue ( rx.cap ( 1 ) ).toAscii() );
@@ -2820,10 +2820,10 @@ QByteArray BtTicket::trataCursor ( BlDbRecordSet *cur, const QByteArray &datos, 
             if ( cur->numcampo ( rx.cap ( 1 ) ) != -1 ) {
                 switch ( tipoEscape ) {
                 case 1:
-                    salidatemp.replace ( pos, rx.matchedLength(), xmlEscape ( cur->valor ( rx.cap ( 1 ), -1, TRUE ) ).toAscii()  );
+                    salidatemp.replace ( pos, rx.matchedLength(), blXMLEscape ( cur->valor ( rx.cap ( 1 ), -1, TRUE ) ).toAscii()  );
                     break;
                 case 2:
-                    salidatemp.replace ( pos, rx.matchedLength(), pythonEscape ( cur->valor ( rx.cap ( 1 ), -1, TRUE ) ).toAscii()  );
+                    salidatemp.replace ( pos, rx.matchedLength(), blPythonEscape ( cur->valor ( rx.cap ( 1 ), -1, TRUE ) ).toAscii()  );
                     break;
                 default:
                     salidatemp.replace ( pos, rx.matchedLength(), cur->valor ( rx.cap ( 1 ), -1, TRUE ).toAscii() );

@@ -304,27 +304,27 @@ void BfForm::trataTagsBf ( QString &buff, int tipoEscape )
         } // end if
 
         if ( exists ( "id" + m_tablename ) )
-            buff.replace ( "[id" + m_tablename + "]", genEscape ( dbValue ( "id" + m_tablename ), tipoEscape ) );
+            buff.replace ( "[id" + m_tablename + "]", blStringEscape ( dbValue ( "id" + m_tablename ), tipoEscape ) );
         if ( exists ( "num" + m_tablename ) )
-            buff.replace ( "[num" + m_tablename + "]", genEscape ( dbValue ( "num" + m_tablename ), tipoEscape ) );
+            buff.replace ( "[num" + m_tablename + "]", blStringEscape ( dbValue ( "num" + m_tablename ), tipoEscape ) );
         if ( exists ( "f" + m_tablename ) )
-            buff.replace ( "[f" + m_tablename + "]", genEscape ( dbValue ( "f" + m_tablename ), tipoEscape ) );
+            buff.replace ( "[f" + m_tablename + "]", blStringEscape ( dbValue ( "f" + m_tablename ), tipoEscape ) );
         if ( exists ( "venc" + m_tablename ) )
-            buff.replace ( "[venc" + m_tablename + "]", genEscape ( dbValue ( "venc" + m_tablename ), tipoEscape ) );
+            buff.replace ( "[venc" + m_tablename + "]", blStringEscape ( dbValue ( "venc" + m_tablename ), tipoEscape ) );
         if ( exists ( "contact" + m_tablename ) )
-            buff.replace ( "[contact" + m_tablename + "]", genEscape ( dbValue ( "contact" + m_tablename ), tipoEscape ) );
+            buff.replace ( "[contact" + m_tablename + "]", blStringEscape ( dbValue ( "contact" + m_tablename ), tipoEscape ) );
         if ( exists ( "tel" + m_tablename ) )
-            buff.replace ( "[tel" + m_tablename + "]", genEscape ( dbValue ( "tel" + m_tablename ), tipoEscape ) );
+            buff.replace ( "[tel" + m_tablename + "]", blStringEscape ( dbValue ( "tel" + m_tablename ), tipoEscape ) );
         if ( exists ( "coment" + m_tablename ) )
-            buff.replace ( "[coment" + m_tablename + "]", genEscape ( dbValue ( "coment" + m_tablename ), tipoEscape ) );
+            buff.replace ( "[coment" + m_tablename + "]", blStringEscape ( dbValue ( "coment" + m_tablename ), tipoEscape ) );
         if ( exists ( "desc" + m_tablename ) )
-            buff.replace ( "[desc" + m_tablename + "]", genEscape ( dbValue ( "desc" + m_tablename ), tipoEscape ) );
+            buff.replace ( "[desc" + m_tablename + "]", blStringEscape ( dbValue ( "desc" + m_tablename ), tipoEscape ) );
         if ( exists ( "ref" + m_tablename ) )
-            buff.replace ( "[ref" + m_tablename + "]", genEscape ( dbValue ( "ref" + m_tablename ), tipoEscape ) );
+            buff.replace ( "[ref" + m_tablename + "]", blStringEscape ( dbValue ( "ref" + m_tablename ), tipoEscape ) );
         if ( exists ( "codigoserie_" + m_tablename ) )
-            buff.replace ( "[codigoserie_" + m_tablename + "]", genEscape ( dbValue ( "codigoserie_" + m_tablename ), tipoEscape ) );
+            buff.replace ( "[codigoserie_" + m_tablename + "]", blStringEscape ( dbValue ( "codigoserie_" + m_tablename ), tipoEscape ) );
         if ( exists ( "fecha" + m_tablename ) )
-            buff.replace ( "[fecha" + m_tablename + "]", genEscape ( dbValue ( "fecha" + m_tablename ), tipoEscape ) );
+            buff.replace ( "[fecha" + m_tablename + "]", blStringEscape ( dbValue ( "fecha" + m_tablename ), tipoEscape ) );
 
         /// Impresion de la tabla de contenidos.
         QString l;
@@ -369,12 +369,12 @@ void BfForm::trataTagsBf ( QString &buff, int tipoEscape )
             
                         if ( parametros_story[j].trimmed() == "codigocompletoarticulo" ){
                             ///Impresion del codigo de los articulos
-                            fitxersortidatxt += "    <td>" + genEscape ( linea->dbValue ( "codigocompletoarticulo" ), tipoEscape ) + "</td>\n";
+                            fitxersortidatxt += "    <td>" + blStringEscape ( linea->dbValue ( "codigocompletoarticulo" ), tipoEscape ) + "</td>\n";
                         } // end if
             
                         if ( parametros_story[j].trimmed() == "desc" + m_tablename ){
                             ///Impresion del descripcion de los articulos
-                            fitxersortidatxt += "    <td><para style=\"paragrafo\">" + genEscape ( linea->dbValue ( "desc" + m_listalineas->tableName() ), tipoEscape ).replace ( QChar ( '\n' ), "<br/>" ) + "</para></td>\n";
+                            fitxersortidatxt += "    <td><para style=\"paragrafo\">" + blStringEscape ( linea->dbValue ( "desc" + m_listalineas->tableName() ), tipoEscape ).replace ( QChar ( '\n' ), "<br/>" ) + "</para></td>\n";
                         } // end if
             
                         if ( parametros_story[j].trimmed() == "cant" + m_tablename ){
@@ -384,12 +384,12 @@ void BfForm::trataTagsBf ( QString &buff, int tipoEscape )
             
                         if ( parametros_story[j].trimmed() == "pvp" + m_tablename ){
                             ///Impresion del precio de los articulos
-                            fitxersortidatxt += "    <td>" + l.sprintf ( "%s", genEscape ( linea->dbValue ( "pvp" + m_listalineas->tableName() ), tipoEscape ).toAscii().constData() ) + "</td>\n";
+                            fitxersortidatxt += "    <td>" + l.sprintf ( "%s", blStringEscape ( linea->dbValue ( "pvp" + m_listalineas->tableName() ), tipoEscape ).toAscii().constData() ) + "</td>\n";
                         } // end if
             
                         if ( parametros_story[j].trimmed() == "descuento" + m_tablename ){
                             ///Impresion del subtotal de los articulos
-                            fitxersortidatxt += "    <td>" + l.sprintf ( "%s", genEscape ( linea->dbValue ( "descuento" + m_listalineas->tableName() ), tipoEscape ).toAscii().constData() ) + " %</td>\n";
+                            fitxersortidatxt += "    <td>" + l.sprintf ( "%s", blStringEscape ( linea->dbValue ( "descuento" + m_listalineas->tableName() ), tipoEscape ).toAscii().constData() ) + " %</td>\n";
                         } // end if
 
                         if ( parametros_story[j].trimmed() == "subtotal" + m_tablename ){
@@ -414,11 +414,11 @@ void BfForm::trataTagsBf ( QString &buff, int tipoEscape )
                     BlFixed base = BlFixed ( linea->dbValue ( "cant" + m_listalineas->tableName() ).toAscii().constData() ) * BlFixed ( linea->dbValue ( "pvp" + m_listalineas->tableName() ).toAscii().constData() );
                     ///Impresion de los contenidos
                     fitxersortidatxt += "<tr>";
-                    fitxersortidatxt += "    <td>" + genEscape ( linea->dbValue ( "codigocompletoarticulo" ), tipoEscape ) + "</td>\n";
-                    fitxersortidatxt += "    <td><para style=\"paragrafo\">" + genEscape ( linea->dbValue ( "desc" + m_listalineas->tableName() ), tipoEscape ).replace ( QChar ( '\n' ), "<br/>" ) + "</para></td>\n";
+                    fitxersortidatxt += "    <td>" + blStringEscape ( linea->dbValue ( "codigocompletoarticulo" ), tipoEscape ) + "</td>\n";
+                    fitxersortidatxt += "    <td><para style=\"paragrafo\">" + blStringEscape ( linea->dbValue ( "desc" + m_listalineas->tableName() ), tipoEscape ).replace ( QChar ( '\n' ), "<br/>" ) + "</para></td>\n";
                     fitxersortidatxt += "    <td>" + linea->dbValue ( "cant" + m_listalineas->tableName() ) + "</td>\n";
-                    fitxersortidatxt += "    <td>" + l.sprintf ( "%s", genEscape ( linea->dbValue ( "pvp" + m_listalineas->tableName() ), tipoEscape ).toAscii().constData() ) + "</td>\n";
-                    fitxersortidatxt += "    <td>" + l.sprintf ( "%s", genEscape ( linea->dbValue ( "descuento" + m_listalineas->tableName() ), tipoEscape ).toAscii().constData() ) + " %</td>\n";
+                    fitxersortidatxt += "    <td>" + l.sprintf ( "%s", blStringEscape ( linea->dbValue ( "pvp" + m_listalineas->tableName() ), tipoEscape ).toAscii().constData() ) + "</td>\n";
+                    fitxersortidatxt += "    <td>" + l.sprintf ( "%s", blStringEscape ( linea->dbValue ( "descuento" + m_listalineas->tableName() ), tipoEscape ).toAscii().constData() ) + " %</td>\n";
                     fitxersortidatxt += "    <td>" + l.sprintf ( "%s", ( base - base * BlFixed ( linea->dbValue ( "descuento" + m_listalineas->tableName() ) ) / 100 ).toQString().toAscii().constData() ) + "</td>\n";
                     fitxersortidatxt += "</tr>";
                 } // end for
@@ -455,18 +455,18 @@ void BfForm::trataTagsBf ( QString &buff, int tipoEscape )
             
                 fitxersortidatxt += "<blockTable style=\"tabladescuento\">\n";
                 fitxersortidatxt += "<tr>\n";
-                fitxersortidatxt += "    <td>" + genEscape ( _ ( "Descuento" ), tipoEscape ) + "</td>\n";
-                fitxersortidatxt += "    <td>" + genEscape ( _ ( "Porcentaje" ), tipoEscape ) + "</td>\n";
-                fitxersortidatxt += "    <td>" + genEscape ( _ ( "Total Desc." ), tipoEscape ) + "</td>\n";
+                fitxersortidatxt += "    <td>" + blStringEscape ( _ ( "Descuento" ), tipoEscape ) + "</td>\n";
+                fitxersortidatxt += "    <td>" + blStringEscape ( _ ( "Porcentaje" ), tipoEscape ) + "</td>\n";
+                fitxersortidatxt += "    <td>" + blStringEscape ( _ ( "Total Desc." ), tipoEscape ) + "</td>\n";
                 fitxersortidatxt += "</tr>\n";
                 
                 for ( int i = 0; i < ( m_listadescuentos->rowCount() - 1 ); ++i ) {
                     linea1 = m_listadescuentos->lineaat ( i );
                     porcentt = porcentt + BlFixed ( linea1->dbValue ( "proporcion" + m_listadescuentos->tableName() ).toAscii().constData() );
                     fitxersortidatxt += "<tr>\n";
-                    fitxersortidatxt += "    <td>" +  genEscape ( linea1->dbValue ( "concept" + m_listadescuentos->tableName() ), tipoEscape ) + "</td>\n";
-                    fitxersortidatxt += "    <td>" + genEscape ( l.sprintf ( "%s", linea1->dbValue ( "proporcion" + m_listadescuentos->tableName() ).toAscii().constData() ), tipoEscape ) + " %</td>\n";
-                    fitxersortidatxt += "    <td>" + genEscape ( l.sprintf ( "-%s", ( BlFixed ( linea1->dbValue ( "proporcion" + m_listadescuentos->tableName() ) ) * basei / 100 ).toQString().toAscii().constData() ), tipoEscape ) + "</td>\n";
+                    fitxersortidatxt += "    <td>" +  blStringEscape ( linea1->dbValue ( "concept" + m_listadescuentos->tableName() ), tipoEscape ) + "</td>\n";
+                    fitxersortidatxt += "    <td>" + blStringEscape ( l.sprintf ( "%s", linea1->dbValue ( "proporcion" + m_listadescuentos->tableName() ).toAscii().constData() ), tipoEscape ) + " %</td>\n";
+                    fitxersortidatxt += "    <td>" + blStringEscape ( l.sprintf ( "-%s", ( BlFixed ( linea1->dbValue ( "proporcion" + m_listadescuentos->tableName() ) ) * basei / 100 ).toQString().toAscii().constData() ), tipoEscape ) + "</td>\n";
                     fitxersortidatxt += "</tr>";
                 } // end for
                 
@@ -497,7 +497,7 @@ void BfForm::trataTagsBf ( QString &buff, int tipoEscape )
             } // end if
             
             totbaseimp = totbaseimp + parbaseimp;
-            tr1 += "    <td>" + genEscape ( _ ( "Base Imponible" ) + " " + genEscape ( it.key() ), tipoEscape ) + " %</td>\n";
+            tr1 += "    <td>" + blStringEscape ( _ ( "Base Imponible" ) + " " + blStringEscape ( it.key() ), tipoEscape ) + " %</td>\n";
             tr2 += "    <td>" + l.sprintf ( " %s ", parbaseimp.toQString().toAscii().constData() ) + "</td>\n";
             
         } // end for
@@ -515,8 +515,8 @@ void BfForm::trataTagsBf ( QString &buff, int tipoEscape )
             } // end if
             
             totiva = totiva + pariva;
-            tr1 += "    <td>" + genEscape ( _ ( "I.V.A." ), tipoEscape ) + " " + genEscape ( it.key(), tipoEscape ) + " %</td>\n";
-            tr2 += "    <td>" + l.sprintf ( " %s ", genEscape ( pariva.toQString(), tipoEscape ).toAscii().constData() ) + "</td>\n";
+            tr1 += "    <td>" + blStringEscape ( _ ( "I.V.A." ), tipoEscape ) + " " + blStringEscape ( it.key(), tipoEscape ) + " %</td>\n";
+            tr2 += "    <td>" + l.sprintf ( " %s ", blStringEscape ( pariva.toQString(), tipoEscape ).toAscii().constData() ) + "</td>\n";
             
         } // end for
 
@@ -535,7 +535,7 @@ void BfForm::trataTagsBf ( QString &buff, int tipoEscape )
             totreqeq = totreqeq + parreqeq;
             
             if ( parreqeq > 0 ) {
-                tr1 += "    <td>" + _ ( "R.E." ) + " " + genEscape ( it.key(), tipoEscape ) + " %</td>\n";
+                tr1 += "    <td>" + _ ( "R.E." ) + " " + blStringEscape ( it.key(), tipoEscape ) + " %</td>\n";
                 tr2 += "    <td>" + l.sprintf ( " %s ", parreqeq.toQString().toAscii().constData() ) + "</td>\n";
             } // end if
             
@@ -544,12 +544,12 @@ void BfForm::trataTagsBf ( QString &buff, int tipoEscape )
         BlFixed totirpf = totbaseimp * irpf / 100;
         
         if ( totirpf > 0 ) {
-            tr1 += "    <td>" + genEscape ( _ ( "I.R.P.F (-" ) + " " +  irpf.toQString() + ") %", tipoEscape ) + "</td>\n";
-            tr2 += "    <td>" + genEscape ( l.sprintf ( " %s ", totirpf.toQString().toAscii().constData() ), tipoEscape ) + "</td>\n";
+            tr1 += "    <td>" + blStringEscape ( _ ( "I.R.P.F (-" ) + " " +  irpf.toQString() + ") %", tipoEscape ) + "</td>\n";
+            tr2 += "    <td>" + blStringEscape ( l.sprintf ( " %s ", totirpf.toQString().toAscii().constData() ), tipoEscape ) + "</td>\n";
         } // end if
 
-        tr1 += "    <td>" + genEscape ( _ ( "Total" ), tipoEscape ) + "</td>\n";
-        tr2 += "    <td>" + genEscape ( l.sprintf ( " %s ", ( totiva + totbaseimp + totreqeq - totirpf ).toQString().toAscii().constData() ), tipoEscape ) + "</td>\n";
+        tr1 += "    <td>" + blStringEscape ( _ ( "Total" ), tipoEscape ) + "</td>\n";
+        tr2 += "    <td>" + blStringEscape ( l.sprintf ( " %s ", ( totiva + totbaseimp + totreqeq - totirpf ).toQString().toAscii().constData() ), tipoEscape ) + "</td>\n";
         fitxersortidatxt += "<tr>" + tr1 + "</tr><tr>" + tr2 + "</tr></blockTable>\n";
         buff.replace ( "[totales]", fitxersortidatxt );
         buff.replace ( "[irpf]", totirpf.toQString() );
@@ -613,9 +613,9 @@ QString BfForm::trataLineasDetalle ( const QString &det, int tipoEscape )
         for ( int i = 0; i < descp.size(); ++i ) {
             if ( descp[i] != "" ) {
                 if ( descp[i].startsWith ( " " ) ) {
-                    desc1 += "<pre>" + genEscape ( descp[i], tipoEscape ) + "</pre>\n";
+                    desc1 += "<pre>" + blStringEscape ( descp[i], tipoEscape ) + "</pre>\n";
                 } else {
-                    desc1 += "<para>" + genEscape ( descp[i], tipoEscape ) + "</para>\n";
+                    desc1 += "<para>" + blStringEscape ( descp[i], tipoEscape ) + "</para>\n";
                 } // end if
             } else {
                 desc1 += "<spacer length=\"0.1cm\"/>\n";
@@ -625,12 +625,12 @@ QString BfForm::trataLineasDetalle ( const QString &det, int tipoEscape )
         salidatemp.replace ( "[desc" + m_listalineas->tableName() + "]", desc1 );
         salidatemp.replace ( "[cant" + m_listalineas->tableName() + "]",  linea->dbValue ( "cant" + m_listalineas->tableName() ) );
 
-        salidatemp.replace ( "[pvp" + m_listalineas->tableName() + "]",  genEscape ( linea->dbValue ( "pvp" + m_listalineas->tableName() ), tipoEscape ).toAscii().constData() );
-        salidatemp.replace ( "[descuento" + m_listalineas->tableName() + "]" ,  genEscape ( linea->dbValue ( "descuento" + m_listalineas->tableName() ), tipoEscape ).toAscii().constData() );
+        salidatemp.replace ( "[pvp" + m_listalineas->tableName() + "]",  blStringEscape ( linea->dbValue ( "pvp" + m_listalineas->tableName() ), tipoEscape ).toAscii().constData() );
+        salidatemp.replace ( "[descuento" + m_listalineas->tableName() + "]" ,  blStringEscape ( linea->dbValue ( "descuento" + m_listalineas->tableName() ), tipoEscape ).toAscii().constData() );
 
         BlFixed ftotal = BlFixed ( linea->dbValue ( "descuento" + m_listalineas->tableName() ) );
         BlFixed fftotal = base - base * ftotal / 100;
-        salidatemp.replace ( "[total" + m_listalineas->tableName() + "]" ,  genEscape ( fftotal.toQString(), tipoEscape ) );
+        salidatemp.replace ( "[total" + m_listalineas->tableName() + "]" ,  blStringEscape ( fftotal.toQString(), tipoEscape ) );
 
         /// Buscamos cadenas perdidas adicionales que puedan quedar por poner.
         QRegExp rx ( "\\[(\\w*)\\]" );
@@ -638,7 +638,7 @@ QString BfForm::trataLineasDetalle ( const QString &det, int tipoEscape )
         
         while ( ( pos = rx.indexIn ( salidatemp, pos ) ) != -1 ) {
             if ( linea->exists ( rx.cap ( 1 ) ) ) {
-                salidatemp.replace ( pos, rx.matchedLength(), genEscape ( linea->dbValue ( rx.cap ( 1 ) ), tipoEscape ) );
+                salidatemp.replace ( pos, rx.matchedLength(), blStringEscape ( linea->dbValue ( rx.cap ( 1 ) ), tipoEscape ) );
                 pos = 0;
             } else {
                 pos += rx.matchedLength();
@@ -696,8 +696,8 @@ QString BfForm::trataLineasDescuento ( const QString &det, int tipoEscape )
         QString salidatemp = det;
         linea1 = m_listadescuentos->lineaat ( i );
         QString l;
-        salidatemp.replace ( "[concept" + m_listadescuentos->tableName() + "]", genEscape ( linea1->dbValue ( "concept" + m_listadescuentos->tableName() ), tipoEscape ) );
-        salidatemp.replace ( "[proporciondesc" + m_listadescuentos->tableName() + "]", genEscape ( l.sprintf ( "%s", linea1->dbValue ( "proporcion" + m_listadescuentos->tableName() ).toAscii().constData() ), tipoEscape ) );
+        salidatemp.replace ( "[concept" + m_listadescuentos->tableName() + "]", blStringEscape ( linea1->dbValue ( "concept" + m_listadescuentos->tableName() ), tipoEscape ) );
+        salidatemp.replace ( "[proporciondesc" + m_listadescuentos->tableName() + "]", blStringEscape ( l.sprintf ( "%s", linea1->dbValue ( "proporcion" + m_listadescuentos->tableName() ).toAscii().constData() ), tipoEscape ) );
         salidatemp.replace ( "[totaldesc" + m_listadescuentos->tableName() + "]", l.sprintf ( "-%s", ( BlFixed ( linea1->dbValue ( "proporcion" + m_listadescuentos->tableName() ) ) * basei / 100 ).toQString().toAscii().constData() ) );
 
         /// Buscamos cadenas perdidas adicionales que puedan quedar por poner.
@@ -706,7 +706,7 @@ QString BfForm::trataLineasDescuento ( const QString &det, int tipoEscape )
         
         while ( ( pos = rx.indexIn ( salidatemp, pos ) ) != -1 ) {
             if ( linea1->exists ( rx.cap ( 1 ) ) ) {
-                salidatemp.replace ( pos, rx.matchedLength(), genEscape ( linea1->dbValue ( rx.cap ( 1 ) ), tipoEscape ) );
+                salidatemp.replace ( pos, rx.matchedLength(), blStringEscape ( linea1->dbValue ( rx.cap ( 1 ) ), tipoEscape ) );
                 pos = 0;
             } else {
                 pos += rx.matchedLength();

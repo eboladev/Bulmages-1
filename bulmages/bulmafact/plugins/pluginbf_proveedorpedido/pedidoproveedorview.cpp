@@ -394,7 +394,7 @@ void PedidoProveedorView::imprimir()
             file.close();
         }
 
-        invocaPDF ( "pedidoproveedor" );
+        blCreateAndLoadPDF ( "pedidoproveedor" );
         blDebug ( "PedidoProveedor::imprimirPedidoProveedor", 0 );
         return;
 
