@@ -2,8 +2,8 @@
 
 # Form implementation generated from reading ui file 'listempresasbase.ui'
 #
-# Created: Wed Jul 22 10:51:27 2009
-#      by: PyQt4 UI code generator 4.4.4
+# Created: Sat Aug 28 15:26:03 2010
+#      by: PyQt4 UI code generator 4.7.2
 #
 # WARNING! All changes made in this file will be lost!
 
@@ -12,7 +12,7 @@ from PyQt4 import QtCore, QtGui
 class Ui_ListEmpresasBase(object):
     def setupUi(self, ListEmpresasBase):
         ListEmpresasBase.setObjectName("ListEmpresasBase")
-        ListEmpresasBase.resize(800, 608)
+        ListEmpresasBase.resize(762, 496)
         sizePolicy = QtGui.QSizePolicy(QtGui.QSizePolicy.Fixed, QtGui.QSizePolicy.Fixed)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
@@ -22,8 +22,8 @@ class Ui_ListEmpresasBase(object):
         icon = QtGui.QIcon()
         icon.addPixmap(QtGui.QPixmap(":/images/bulmasetup_empresabase.xpm"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         ListEmpresasBase.setWindowIcon(icon)
-        self.verticalLayout = QtGui.QVBoxLayout(ListEmpresasBase)
-        self.verticalLayout.setObjectName("verticalLayout")
+        self.gridLayout_3 = QtGui.QGridLayout(ListEmpresasBase)
+        self.gridLayout_3.setObjectName("gridLayout_3")
         self.tabWidget = QtGui.QTabWidget(ListEmpresasBase)
         self.tabWidget.setObjectName("tabWidget")
         self.tab = QtGui.QWidget()
@@ -36,7 +36,7 @@ class Ui_ListEmpresasBase(object):
         self.mui_listado.setAutoScroll(True)
         self.mui_listado.setEditTriggers(QtGui.QAbstractItemView.NoEditTriggers)
         self.mui_listado.setTabKeyNavigation(False)
-        self.mui_listado.setProperty("showDropIndicator", QtCore.QVariant(False))
+        self.mui_listado.setProperty("showDropIndicator", False)
         self.mui_listado.setDragDropOverwriteMode(False)
         self.mui_listado.setAlternatingRowColors(True)
         self.mui_listado.setSelectionMode(QtGui.QAbstractItemView.SingleSelection)
@@ -72,13 +72,24 @@ class Ui_ListEmpresasBase(object):
         icon1 = QtGui.QIcon()
         icon1.addPixmap(QtGui.QPixmap(":/images/terminal.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         self.tabWidget.addTab(self.tab_2, icon1, "")
-        self.verticalLayout.addWidget(self.tabWidget)
-        self.mui_cancelar = QtGui.QPushButton(ListEmpresasBase)
+        self.gridLayout_3.addWidget(self.tabWidget, 0, 0, 1, 1)
+        self.horizontalLayout = QtGui.QHBoxLayout()
+        self.horizontalLayout.setObjectName("horizontalLayout")
+        self.mui_actualizar = QtGui.QPushButton(ListEmpresasBase)
         icon2 = QtGui.QIcon()
-        icon2.addPixmap(QtGui.QPixmap(":/images/bulmasetup_exit.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
-        self.mui_cancelar.setIcon(icon2)
+        icon2.addPixmap(QtGui.QPixmap(":/images/bulmasetup_aceptar.xpm"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        self.mui_actualizar.setIcon(icon2)
+        self.mui_actualizar.setObjectName("mui_actualizar")
+        self.horizontalLayout.addWidget(self.mui_actualizar)
+        spacerItem = QtGui.QSpacerItem(40, 20, QtGui.QSizePolicy.Expanding, QtGui.QSizePolicy.Minimum)
+        self.horizontalLayout.addItem(spacerItem)
+        self.mui_cancelar = QtGui.QPushButton(ListEmpresasBase)
+        icon3 = QtGui.QIcon()
+        icon3.addPixmap(QtGui.QPixmap(":/images/bulmasetup_exit.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        self.mui_cancelar.setIcon(icon3)
         self.mui_cancelar.setObjectName("mui_cancelar")
-        self.verticalLayout.addWidget(self.mui_cancelar)
+        self.horizontalLayout.addWidget(self.mui_cancelar)
+        self.gridLayout_3.addLayout(self.horizontalLayout, 1, 0, 1, 1)
 
         self.retranslateUi(ListEmpresasBase)
         self.tabWidget.setCurrentIndex(0)
@@ -94,6 +105,7 @@ class Ui_ListEmpresasBase(object):
         self.mui_listado.horizontalHeaderItem(3).setText(QtGui.QApplication.translate("ListEmpresasBase", "Version", None, QtGui.QApplication.UnicodeUTF8))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab), QtGui.QApplication.translate("ListEmpresasBase", "Listado Empresas", None, QtGui.QApplication.UnicodeUTF8))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab_2), QtGui.QApplication.translate("ListEmpresasBase", "Consola", None, QtGui.QApplication.UnicodeUTF8))
+        self.mui_actualizar.setText(QtGui.QApplication.translate("ListEmpresasBase", "Actualizar Todo", None, QtGui.QApplication.UnicodeUTF8))
         self.mui_cancelar.setText(QtGui.QApplication.translate("ListEmpresasBase", "Cerrar", None, QtGui.QApplication.UnicodeUTF8))
 
 import resources_rc
