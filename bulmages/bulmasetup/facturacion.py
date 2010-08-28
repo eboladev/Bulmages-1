@@ -112,12 +112,17 @@ class Facturacion(Ui_ModificarFacturacionBase, Empresa):
       self.process.start(self.string)
       self.process.waitForFinished(-1)
 
-
+      i = 1
+      while (os.path.exists('/opt/bulmages/openreports_' + self.database + '_old' + str(i))):
+	i = i + 1
 
       # Hacemos un backup de openreports
-      self.string = "cp -R /opt/bulmages/openreports_" + self.database + " /opt/bulmages/openreports_" + self.database + "_old"
+      self.string = "cp -R /opt/bulmages/openreports_" + self.database + " /opt/bulmages/openreports_" + self.database + "_old" + str(i)
       self.process.start(self.string)
       self.process.waitForFinished(-1)
+
+      self.writecommand('Generamos backup de las plantillas de impresion en ' + '/opt/bulmages/openreports_' + self.database + '_old' + str(i))
+
 
       # Copiamos los archivos genericos
       # Copiamos las plantillas
@@ -428,6 +433,7 @@ class Facturacion(Ui_ModificarFacturacionBase, Empresa):
       self.trataOpenReports()
 
    def marcar(self, plug, rec, first = 0):
+      print "marcar " + plug
       i = 0
       while (i < self.mui_plugins1.rowCount()):
          if (self.mui_plugins1.item(i,10).text() == plug):
@@ -464,30 +470,46 @@ class Facturacion(Ui_ModificarFacturacionBase, Empresa):
          i = i + 1
 
    def desmarcar(self, plug, rec, first = 0):
+      print "desmarcar " + plug
       i = 0
+      # Iteramos para la lista de plugins de bulmafact
       while (i < self.mui_plugins1.rowCount()):
+	 print self.mui_plugins1.item(i,10).text() + " --> " + self.mui_plugins1.item(i,5).text()
 	 if (self.mui_plugins1.item(i, 0).checkState() == Qt.Checked or first == 1):
+	   # Si encontramos al plugin que hay que desmarcar lo desmarcamos.
+	   if (plug == self.mui_plugins1.item(i,10).text()) :
+	     self.mui_plugins1.item(i,0).setCheckState(Qt.Unchecked)
+   	   # Si esta marcado el sistema recursivo entonces desmarcamos tambien las dependencias.
 	   if (rec == 1):
 	     # Marcamos las dependencias
 	     self.arr = self.mui_plugins1.item(i,5).text().replace(' ;',';').replace('; ',';').split(QString(";"))
 	     if self.arr != ['']:
 		for self.dep in self.arr:
 		      if (self.dep == plug):
+			  print "ENCONTRADO " + self.dep
 			  self.desmarcar(self.mui_plugins1.item(i,10).text(),1)
 			  self.mui_plugins1.item(i,0).setCheckState(Qt.Unchecked)
          i = i + 1
       i = 0
+      # Iteramos para la lista de plugins de bulmaTPV
       while (i < self.mui_plugins.rowCount()):
+	 print self.mui_plugins.item(i,10).text() + " --> " + self.mui_plugins.item(i,5).text()
          if (self.mui_plugins.item(i, 0).checkState() == Qt.Checked or first == 1):
+	   # Si encontramos al plugin que hay que desmarcar lo desmarcamos.
+	   if (plug == self.mui_plugins.item(i,10).text()) :
+	     self.mui_plugins.item(i,0).setCheckState(Qt.Unchecked)
+	   # Si esta marcado el sistema recursivo entonces desmarcamos tambien las dependencias.
 	   if (rec == 1):
 	      # Marcamos las dependencias
 	      self.arr = self.mui_plugins.item(i,5).text().replace(' ;',';').replace('; ',';').split(QString(";"))
 	      if self.arr != ['']:
 	         for self.dep in self.arr:
 		    if (self.dep == plug):
+		       print "ENCONTRADO " + self.dep
 		       self.desmarcar(self.mui_plugins.item(i,10).text(),1)
 		       self.mui_plugins.item(i,0).setCheckState(Qt.Unchecked)
          i = i + 1
+      print "fin desmarcar " + plug
 
 
    def on_mui_plugins_cellPressed(self, row, col):
@@ -840,7 +862,7 @@ class Facturacion(Ui_ModificarFacturacionBase, Empresa):
    def on_mui_vertodos_stateChanged(self, status):
       self.presentar()
   
-   def presentar(self):
+   def mostrarTodo(self):
       status = self.mui_vertodos.checkState()
       
       # Hacemos todas las lineas visibles para luego ocultarlas.
@@ -853,6 +875,11 @@ class Facturacion(Ui_ModificarFacturacionBase, Empresa):
       while (self.i < self.mui_plugins.rowCount()):
         self.mui_plugins.showRow(self.i)
         self.i = self.i + 1
+  
+   def presentar(self):
+      status = self.mui_vertodos.checkState()
+      
+      self.mostrarTodo();
       
       if (status == 2):
         # Establezco la tabla de bulmafact

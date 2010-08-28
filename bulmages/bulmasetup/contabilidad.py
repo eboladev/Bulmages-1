@@ -233,6 +233,10 @@ class Contabilidad(Ui_ModificarContabilidadBase, Empresa):
       i = 0
       while (i < self.mui_plugins.rowCount()):
          if (self.mui_plugins.item(i, 0).checkState() == Qt.Checked or first == 1):
+	   # Si encontramos al plugin que hay que desmarcar lo desmarcamos.
+	   if (plug == self.mui_plugins.item(i,10).text()) :
+	     self.mui_plugins.item(i,0).setCheckState(Qt.Unchecked)
+	   # Si estamos en modo recursivo desmarcamos y revisamos las dependencias.
            if (rec == 1):
               # Marcamos las dependencias
               self.arr = self.mui_plugins.item(i,5).text().replace(' ;',';').replace('; ',';').split(QString(";"))
@@ -302,10 +306,16 @@ class Contabilidad(Ui_ModificarContabilidadBase, Empresa):
       self.process.start(self.string)
       self.process.waitForFinished(-1)
 
+      i = 1
+      while (os.path.exists('/opt/bulmages/openreports_' + self.database + '_old' + str(i))):
+	i = i + 1
+
       # Hacemos un backup de openreports
-      self.string = "cp -R /opt/bulmages/openreports_" + self.database + " /opt/bulmages/openreports_" + self.database + "_old"
+      self.string = "cp -R /opt/bulmages/openreports_" + self.database + " /opt/bulmages/openreports_" + self.database + "_old" + str(i)
       self.process.start(self.string)
       self.process.waitForFinished(-1)
+
+      self.writecommand('Generamos backup de las plantillas de impresion en ' + '/opt/bulmages/openreports_' + self.database + '_old' + str(i))
 
       # Copiamos los archivos genericos
       # Copiamos las plantillas

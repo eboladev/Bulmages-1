@@ -11,14 +11,14 @@ Biblioteca: libpluginbf_carteracobros.so
 Descripción: <H1>Cartera de Cobros</H1>
 <PARA>Permite gestion avanzada de cobros a clientes, con faccionado de facturas y control de vencimientos.</PARA>
 <HR>
-<PARA>En el listado de clientes se eligen las fracciones (porcentajes) de cobro para cada cliente.</PARA>
+<PARA>Una vez instalado el plugin, en la ficha de cada cliente clientes aparecerá la pestaña de vencimientos que permite indicar las fracciones (porcentajes) de cobro para cada factura que se emita a dicho cliente asi como los dias que deben transcurrir hasta que sea efectivo el vencimiento.</PARA>
 <BR>
-<PARA>Al crear una factura directamente creará las entras de cobro de la misma de forma automática, aunque dichas previsiones
+<PARA>Al crear una factura directamente creará los vencimientos de la misma de forma automática utilizando los vencimientos que hayamos indicando para el cliente de la factura. Dichas previsiones
 podran cambiarse manualmente.</B></PARA>
-<PARA>Incorpora una gestion de todos los cobros a realizar, permitiendo el remesado bancario y control de estado de cada uno de los
+<PARA>También incorpora una gestion de todos los cobros a realizar, permitiendo el remesado bancario y control de estado de cada uno de los
 cobros</PARA>
 <PARA>Es un buen sustituto, algo más elaborado que la gestion de cobros de factura. Útil para aquellas empresas que pretenden
-llevar una gestión de cobros avanzada.</PARA>
+llevar una gestión de cobros y ofrezcan facilidades de pago a sus clientes.</PARA>
 <B>Author:</B>Tomeu Borrás (tborras@conetxia.com)<BR>
 <HR>
 
@@ -30,11 +30,11 @@ ArchivoSQLdeins:
 
 Dependencias:
 
-Incompatibles: pluginbf_clientecobro
+Incompatibles: libpluginbf_clientecobro.so
 
 Orden: 450
 
-Reports: 
+Reports: impers_vencimientoc.rml
 
 Categorias: Facturacion avanzada;Experimentales;
 
