@@ -279,7 +279,9 @@ BEGIN
 	    domingoactividad BOOLEAN DEFAULT FALSE,
 	    periodoactividad INTERVAL,
        hinicialactividad VARCHAR,
-       duracionactividad VARCHAR
+       duracionactividad VARCHAR,
+       lugaractividad VARCHAR,
+       diractividad VARCHAR
 
         );
     END IF;
@@ -304,6 +306,12 @@ BEGIN
         ALTER TABLE actividad ADD COLUMN idtipoactividad INTEGER REFERENCES tipoactividad(idtipoactividad);
     END IF;
     
+    SELECT INTO as attname, relname FROM pg_attribute LEFT JOIN pg_class ON pg_attribute.attrelid=pg_class.oid WHERE attname=''lugaractividad'' AND relname=''actividad'';
+    IF NOT FOUND THEN
+        ALTER TABLE actividad ADD COLUMN lugaractividad VARCHAR;
+        ALTER TABLE actividad ADD COLUMN diractividad VARCHAR;
+    END IF;
+
 
     SELECT INTO as attname, relname FROM pg_attribute LEFT JOIN pg_class ON pg_attribute.attrelid=pg_class.oid WHERE attname=''hinicialactividad'' AND relname=''actividad'';
     IF NOT FOUND THEN

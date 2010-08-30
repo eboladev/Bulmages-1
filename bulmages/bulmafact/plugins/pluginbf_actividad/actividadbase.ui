@@ -330,12 +330,12 @@
           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
          </property>
          <property name="buddy">
-          <cstring>mui_corpcliente</cstring>
+          <cstring>mui_lugaractividad</cstring>
          </property>
         </widget>
        </item>
        <item row="2" column="1" colspan="3">
-        <widget class="QLineEdit" name="mui_corpcliente">
+        <widget class="QLineEdit" name="mui_lugaractividad">
          <property name="maxLength">
           <number>200</number>
          </property>
@@ -350,12 +350,12 @@
           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
          </property>
          <property name="buddy">
-          <cstring>mui_dircliente</cstring>
+          <cstring>mui_diractividad</cstring>
          </property>
         </widget>
        </item>
        <item row="3" column="1" colspan="3">
-        <widget class="QLineEdit" name="mui_dircliente">
+        <widget class="QLineEdit" name="mui_diractividad">
          <property name="maxLength">
           <number>100</number>
          </property>
@@ -696,8 +696,8 @@
   <tabstop>mui_tab</tabstop>
   <tabstop>mui_codigoactividad</tabstop>
   <tabstop>mui_nombreactividad</tabstop>
-  <tabstop>mui_corpcliente</tabstop>
-  <tabstop>mui_dircliente</tabstop>
+  <tabstop>mui_lugaractividad</tabstop>
+  <tabstop>mui_diractividad</tabstop>
   <tabstop>mui_vigenteactividad</tabstop>
   <tabstop>mui_idtipoactividad</tabstop>
   <tabstop>mui_precioactividad</tabstop>

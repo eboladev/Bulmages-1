@@ -72,7 +72,9 @@ ActividadView::ActividadView ( BfCompany *comp, QWidget *parent )
         addDbField ( "periodoactividad", BlDbField::DbVarChar, BlDbField::DbNothing, _ ( "Periodo" ) );
         addDbField ( "hinicialactividad", BlDbField::DbVarChar, BlDbField::DbNothing, _ ( "Hora Inicio" ) );
         addDbField ( "duracionactividad", BlDbField::DbVarChar, BlDbField::DbNothing, _ ( "Duracion" ) );
-
+        addDbField ( "lugaractividad", BlDbField::DbVarChar, BlDbField::DbNothing, _ ( "Lugar" ) );
+        addDbField ( "diractividad", BlDbField::DbVarChar, BlDbField::DbNothing, _ ( "Direccion" ) );
+	
         /// Disparamos los plugins.
         int res = g_plugins->lanza ( "ActividadView_ActividadView", this );
         if ( res != 0 ) {
