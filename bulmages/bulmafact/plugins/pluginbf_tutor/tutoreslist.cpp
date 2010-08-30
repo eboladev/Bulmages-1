@@ -113,6 +113,8 @@ QString TutoresList::generaFiltro()
     QString filtro = "";
     if ( m_filtro->text() != "" ) {
         filtro = " AND ( lower(nomcliente) LIKE lower('%" + m_filtro->text() + "%') ";
+        filtro += " OR  lower(apellido1cliente) LIKE lower('%" + m_filtro->text() + "%') ";
+        filtro += " OR  lower(apellido2cliente) LIKE lower('%" + m_filtro->text() + "%') ";
         filtro += " ) ";
     } // end if
 
