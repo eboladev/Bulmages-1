@@ -195,7 +195,13 @@ int BlDbSubFormField::set ( QString val )
     } else if ( dbFieldType() == BlDbField::DbDate ) {
         setText ( val.left ( 10 ) );
     } else {
-        setText ( valorcampo() );
+	  setText ( valorcampo() );
+
+	  if ( g_confpr->valor ( CONF_CENTRAR_CAMPOS_DE_TEXTO ) == "TRUE"
+	  && dbFieldType() == BlDbField::DbVarChar )
+	  {
+		setTextAlignment(Qt::AlignCenter);
+	  }
     } // end if
 
     blDebug ( "END BlDbSubFormField::set", 0, val );
@@ -225,9 +231,9 @@ bool BlDbSubFormField::operator< ( const QTableWidgetItem &other )
 
         if ( this->dbFieldType() == BlDbField::DbDate ) {
             blDebug ( "BlDbSubFormField::operator < es del tipo fecha:", 0, this->nomcampo() + QString::number ( this->dbFieldType() ) );
-            QDate fech = blNormalizeDate ( this->valorcampo() );
+		QDate fech = blNormalizeDate ( this->valorcampo() );
             QString db1 = fech.toString ( Qt::ISODate );
-            QDate fech1 = blNormalizeDate ( val );
+		QDate fech1 = blNormalizeDate ( val );
             QString db2 = fech1.toString ( Qt::ISODate );
             return ( db1 < db2 );
         } // end if

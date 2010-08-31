@@ -249,6 +249,8 @@
 #define CONF_GLOBAL_CONFIG_USER      561
 #define CONF_GLOBAL_CONFIG_COMPANY   562
 
+#define CONF_CENTRAR_CAMPOS_DE_TEXTO 563
+
 typedef QMap<int, QString> mapa;
 
 

@@ -86,6 +86,9 @@ CONF_DEBUG			FALSE
 # Indica si deben mostrarse las alertas de base de datos.
 CONF_ALERTAS_DBF		Yes
 
+# Indica si deben centrarse los campos de texto
+CONF_CENTRAR_CAMPOS_DE_TEXTO     FALSE
+
 
 # NOTA PARA DESARROLLADORES:
 # --------------------------
