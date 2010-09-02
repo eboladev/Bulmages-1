@@ -631,6 +631,7 @@ void BcBulmaCont::closeEvent ( QCloseEvent *event )
 **/
 void BcBulmaCont::on_actionAyuda_triggered()
 {
+  /*
     blDebug ( "BcBulmaCont::on_actionAyuda_triggered", 0 );
     QAssistantClient *asistenteAyuda = new QAssistantClient ( QLibraryInfo::location ( QLibraryInfo::BinariesPath ), 0 );
     connect ( asistenteAyuda, SIGNAL ( error ( const QString ) ), this, SLOT ( documentacionError ( const QString ) ) );
@@ -639,6 +640,7 @@ void BcBulmaCont::on_actionAyuda_triggered()
     asistenteAyuda->setArguments ( parametros );
     asistenteAyuda->openAssistant();
     blDebug ( "END BcBulmaCont::on_actionAyuda_triggered", 0 );
+    */
 }
 
 

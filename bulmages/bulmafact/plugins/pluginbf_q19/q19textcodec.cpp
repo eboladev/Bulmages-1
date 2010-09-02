@@ -42,7 +42,7 @@ QString Q19TextCodec::convertToUnicode ( const char * chars, int len, ConverterS
      {
          state->invalidChars += resultat.count(invalid);
          if ( state->flags.testFlag(ConvertInvalidToNull) && state->invalidChars>0) {
-           resultat = (QString)NULL;
+           resultat = (QString)"";
          }
      }
     return resultat;
@@ -72,4 +72,3 @@ QByteArray Q19TextCodec::convertFromUnicode ( const QChar * input,
    }
    return resultat;
 }
-

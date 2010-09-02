@@ -27,8 +27,8 @@
 #include "blfunctions.h"
 
 
-QString g_minAlias = ( QString ) NULL;
-QString g_maxAlias = ( QString ) NULL;
+QString g_minAlias = ( QString ) "";
+QString g_maxAlias = ( QString ) "";
 
 QTime g_ultimRefrescAlias;
 int g_maxLenAlias = 0;
@@ -54,8 +54,8 @@ int entryPoint ( BfBulmaFact *bges )
 
 void invalidaEstadAlias ( void )
 {
-    g_minAlias = ( QString ) NULL;
-    g_maxAlias = ( QString ) NULL;
+    g_minAlias = ( QString ) "";
+    g_maxAlias = ( QString ) "";
     g_minLenAlias = 0;
     g_maxLenAlias = 0;
 }
@@ -67,7 +67,7 @@ bool posibleAlias ( QString alias, BlMainCompany *eb )
             ( g_ultimRefrescAlias.elapsed() > MILISEG_REFRESCO_ESTAD_ALIAS ) ) {
         invalidaEstadAlias();
     }
-    if ( ( g_minAlias == ( QString ) NULL ) && ( g_maxAlias == ( QString ) NULL ) ) {
+    if ( ( g_minAlias == ( QString ) "" ) && ( g_maxAlias == ( QString ) "" ) ) {
         BlDbRecordSet *cur = eb ->loadQuery (
                                  "SELECT \
    (SELECT cadalias FROM alias ORDER by cadalias  USING ~<~ LIMIT 1) as minalias,\
@@ -81,13 +81,13 @@ bool posibleAlias ( QString alias, BlMainCompany *eb )
 
         // si la taula alias es buida posem un max impossible per evitar tornar
         // a buscar fins que en donin un d'alta (en l'alta posen NULL a g_maxAlias)
-        if ( g_maxAlias == ( QString ) NULL ) {
+        if ( g_maxAlias == ( QString ) "" ) {
             g_maxAlias = "";
         }
         g_ultimRefrescAlias.restart();
     }
-    return ( ( g_minAlias != ( QString ) NULL ) && ( g_minAlias != ( QString ) NULL )
-             && ( alias != ( QString ) NULL )
+    return ( ( g_minAlias != ( QString ) "" ) && ( g_minAlias != ( QString ) "" )
+             && ( alias != ( QString ) "" )
              && ( g_minAlias <= alias ) && ( g_maxAlias >= alias )
              && ( g_minLenAlias <= alias.length() )
              && ( g_maxLenAlias >= alias.length() )

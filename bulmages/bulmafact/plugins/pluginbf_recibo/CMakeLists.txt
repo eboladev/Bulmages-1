@@ -16,7 +16,7 @@ file(GLOB plugin_NO_MOCS pdefs_pluginbf_recibo.h)
 list(REMOVE_ITEM plugin_MOCS ${plugin_NO_MOCS})
 
 
-set(QT_USE_QTASSISTANT true)
+set(QT_USE_QTASSISTANT false)
 set(QT_USE_QTXML true)
 #set(pluginactividad_RCCS gestionaula.qrc)
 
@@ -26,7 +26,7 @@ include_directories(
     ${QT_INCLUDE_DIR}
 	${PGSQL_INCLUDE_DIR}
 	${QT_QTXML_INCLUDE_DIR}
-	${QT_QTASSISTANT_INCLUDE_DIR}
+
 	${CMAKE_CURRENT_BINARY_DIR}
 	${CMAKE_CURRENT_SOURCE_DIR}
 	${CMAKE_BINARY_DIR}/bulmalib/src/

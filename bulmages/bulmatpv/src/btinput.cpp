@@ -21,6 +21,8 @@ void BtInput::pulsaTecla ( int tecla, const QString &texto )
 
 void BtInput::keyPressEvent ( QKeyEvent *e )
 {
+    fprintf(stderr, "\n");
+    fprintf(stderr, text().toAscii() );
     switch ( e->key() ) {
         case Qt::Key_F3:
             setText ( "MESA " );

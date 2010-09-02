@@ -246,6 +246,7 @@ void BfBulmaFact::informaindexador ( QWidget *w )
 **/
 void BfBulmaFact::on_actionDocumentacion_triggered()
 {
+  /*
     blDebug ( "BfBulmaFact::on_actionDocumentacion_triggered", 0 );
     QAssistantClient *asistenteAyuda = new QAssistantClient ( QLibraryInfo::location ( QLibraryInfo::BinariesPath ), 0 );
     connect ( asistenteAyuda, SIGNAL ( error ( const QString ) ), this, SLOT ( documentacionError ( const QString ) ) );
@@ -254,6 +255,7 @@ void BfBulmaFact::on_actionDocumentacion_triggered()
     asistenteAyuda->setArguments ( parametros );
     asistenteAyuda->openAssistant();
     blDebug ( "END BfBulmaFact::on_actionDocumentacion_triggered", 0 );
+    */
 }
 
 

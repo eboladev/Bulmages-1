@@ -28,7 +28,7 @@
 
 #include <QLabel>
 #include <QTableWidget>
-
+ #include <QTcpServer>
 
 #include "btticket.h"
 #include "btcompany.h"

@@ -22,14 +22,13 @@ project(bulmalib)
 
 include(MacrosBlI18n)
 
-set(QT_USE_QTASSISTANT true)
+set(QT_USE_QTASSISTANT false)
 set(QT_USE_QTUITOOLS true)
 set(QT_USE_QTXML true)
 include(${QT_USE_FILE})
 
 include_directories(
       ${QT_INCLUDE_DIR}
-      ${QT_QTASSISTANT_INCLUDE_DIR}
       ${QT_QTUITOOLS_INCLUDE_DIR}
       ${QT_QTXML_INCLUDE_DIR})
 

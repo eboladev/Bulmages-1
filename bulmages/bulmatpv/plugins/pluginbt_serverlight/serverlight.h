@@ -31,7 +31,8 @@
 #define SERVERLIGHT_H
 
 #include <QObject>
-
+ #include <QTcpServer>
+ 
 #include "btticket.h"
 #include "btcompany.h"
 

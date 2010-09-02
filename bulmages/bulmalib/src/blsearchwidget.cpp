@@ -125,10 +125,10 @@ void BlSearchWidget::setId ( QString val, bool cargarvalores )
             m_valores.insert ( i.key(), "" );
         } // end while
     } else {
-        QString SQLQuery = "SELECT * FROM " + m_tabla + " WHERE " + m_campoid + "= $1";
+        QString SQLQuery("");
+	SQLQuery = "SELECT * FROM " + m_tabla + " WHERE " + m_campoid + "= $1";
         BlDbRecordSet *cur = mainCompany() ->load( SQLQuery, mdb_id );
         if ( !cur->eof() ) {
-
             /// Inicializamos los valores de vuelta a ""
             QMapIterator<QString, QString> i ( m_valores );
             while ( i.hasNext() ) {
@@ -178,7 +178,8 @@ void BlSearchWidget::setFieldValue ( QString campo, QString val )
 {
     blDebug ( "BlSearchWidget::setcifprofesor", 0, val );
 
-    QString SQLQuery = "SELECT * FROM " + m_tabla + " WHERE " + campo + " = $1";
+    QString SQLQuery("");
+    SQLQuery = "SELECT * FROM " + m_tabla + " WHERE " + campo + " = $1";
     BlDbRecordSet *cur = mainCompany() ->load ( SQLQuery, val );
 
     if ( !cur->eof() ) {

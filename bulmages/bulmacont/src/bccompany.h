@@ -28,7 +28,6 @@
 #include <QWidget>
 #include <QSizePolicy>
 #include <QDir>
-#include <QAssistantClient>
 #include <QLibraryInfo>
 
 #include "blpostgresqlclient.h"

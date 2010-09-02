@@ -13,7 +13,7 @@ set(bulmatpv_MOCS btbulmatpv.h
 	   btsubform.h
 	   btinput.h)
 
-set(QT_USE_QTASSISTANT true)
+set(QT_USE_QTASSISTANT false)
 set(QT_USE_QTXML true)
 set(QT_USE_QTUITOOLS true)
 
@@ -25,7 +25,7 @@ include_directories(
     ${QT_INCLUDE_DIR}
 	${PGSQL_INCLUDE_DIR}
 	${QT_QTXML_INCLUDE_DIR}
-	${QT_QTASSISTANT_INCLUDE_DIR}
+
 	${CMAKE_CURRENT_BINARY_DIR}
 	${CMAKE_CURRENT_SOURCE_DIR}
 	${CMAKE_BINARY_DIR}/bulmalib/src/

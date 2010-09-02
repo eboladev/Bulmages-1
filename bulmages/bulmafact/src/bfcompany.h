@@ -23,7 +23,6 @@
 #define BFCOMPANY_H
 
 #include <QObject>
-#include <QAssistantClient>
 #include <QLibraryInfo>
 
 #include "blpostgresqlclient.h"

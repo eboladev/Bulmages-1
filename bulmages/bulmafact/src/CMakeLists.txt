@@ -34,7 +34,7 @@ file(GLOB bulmafact_UIS *.ui)
 
 set(bulmafactEx main.cxx)
 
-set(QT_USE_QTASSISTANT true)
+set(QT_USE_QTASSISTANT false)
 set(QT_USE_QTXML true)
 
 IF(WIN32)
@@ -50,7 +50,7 @@ include_directories(
     ${QT_INCLUDE_DIR}
 	${PGSQL_INCLUDE_DIR}
 	${QT_QTXML_INCLUDE_DIR}
-	${QT_QTASSISTANT_INCLUDE_DIR}
+
 	${CMAKE_CURRENT_BINARY_DIR}
 	${CMAKE_CURRENT_SOURCE_DIR}
 	${CMAKE_BINARY_DIR}/bulmalib/src/

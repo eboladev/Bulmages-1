@@ -27,7 +27,6 @@
 #define BTCOMPANY_H
 
 #include <QObject>
-#include <QAssistantClient>
 #include <QLibraryInfo>
 
 
