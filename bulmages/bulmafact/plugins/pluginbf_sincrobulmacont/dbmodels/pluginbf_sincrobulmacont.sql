@@ -629,7 +629,7 @@ DECLARE
 	concepto TEXT;
 	concepto1 TEXT;
 	asientonuevo BOOLEAN;
-
+	redondeo INTEGER := 2;
 BEGIN
 	-- conectamos con contabilidad, etc
 	PERFORM conectabulmacont();
@@ -733,11 +733,11 @@ BEGIN
 		      idcta := ctaiva.idcuenta;
 
 		      -- Hacemos la insercion del borrador del apunte.
-		      query := 'INSERT INTO borrador (fecha, idcuenta, haber, idasiento, descripcion, conceptocontable) VALUES (''' || NEW.ffactura || ''', ' || idcta || ', ' || bs.base * totaldesc * bs.iva / 100 || ', '|| NEW.idasientofactura ||', ''' || concepto1 || ''' ,  ''Factura Cliente'')';
+		      query := 'INSERT INTO borrador (fecha, idcuenta, haber, idasiento, descripcion, conceptocontable) VALUES (''' || NEW.ffactura || ''', ' || idcta || ', ' || round(bs.base * totaldesc * bs.iva / 100, redondeo) || ', '|| NEW.idasientofactura ||', ''' || concepto1 || ''' ,  ''Factura Cliente'')';
 		      PERFORM dblink_exec('bulmafact2cont', query);
 
 		      -- Vamos calculando el total de IVA
-		      totaliva := totaliva + bs.base * totaldesc * bs.iva / 100;
+		      totaliva := totaliva + round(bs.base * totaldesc * bs.iva / 100, redondeo);
 	      END IF;
 
 	END LOOP;
@@ -758,11 +758,11 @@ BEGIN
 		      idcta := ctareq.idcuenta;
 
 		      -- Hacemos la insercion del borrador del apunte.
-		      query := 'INSERT INTO borrador (fecha, idcuenta, haber, idasiento, descripcion, conceptocontable) VALUES (''' || NEW.ffactura || ''', ' || idcta || ', ' || bs.base * totaldesc * bs.reqeqlfactura / 100 || ', '|| NEW.idasientofactura ||', ''' || concepto1 || ''' ,  ''Factura Cliente'')';
+		      query := 'INSERT INTO borrador (fecha, idcuenta, haber, idasiento, descripcion, conceptocontable) VALUES (''' || NEW.ffactura || ''', ' || idcta || ', ' || round(bs.base * totaldesc * bs.reqeqlfactura / 100, redondeo) || ', '|| NEW.idasientofactura ||', ''' || concepto1 || ''' ,  ''Factura Cliente'')';
 		      PERFORM dblink_exec('bulmafact2cont', query);
 
 		      -- Vamos calculando el total de IVA
-		      totaliva := totaliva + bs.base * totaldesc * bs.reqeqlfactura / 100;
+		      totaliva := totaliva + round(bs.base * totaldesc * bs.reqeqlfactura / 100, redondeo);
 	      END IF;
 
 	END LOOP;
@@ -771,20 +771,20 @@ BEGIN
 	-- Creamos el apunte de cliente.
 	SELECT INTO bs SUM (cantlfactura * pvplfactura * (100 - descuentolfactura) / 100) AS base FROM lfactura WHERE idfactura = NEW.idfactura;
 	-- Hacemos la insercion del borrador del apunte.
-	query := 'INSERT INTO borrador (fecha, idcuenta, debe, idasiento, descripcion, conceptocontable) VALUES (''' || NEW.ffactura || ''', ' || idctacliente || ', ' || bs.base * totaldesc * (1-porirpf) + totaliva || ', '|| NEW.idasientofactura ||', ''' || concepto1 || ''' ,  ''Factura Cliente'')';
+	query := 'INSERT INTO borrador (fecha, idcuenta, debe, idasiento, descripcion, conceptocontable) VALUES (''' || NEW.ffactura || ''', ' || idctacliente || ', ' || round(bs.base * totaldesc * (1-porirpf) + totaliva, redondeo) || ', '|| NEW.idasientofactura ||', ''' || concepto1 || ''' ,  ''Factura Cliente'')';
 	PERFORM dblink_exec('bulmafact2cont', query);
 
 	-- Creamos el apunte de IRPF
 	IF porirpf <> 0 THEN
 		-- Hacemos la insercion del borrador del apunte.
-		query := 'INSERT INTO borrador (fecha, idcuenta, debe, idasiento, descripcion, conceptocontable) VALUES (''' || NEW.ffactura || ''', ' || idctairpf || ', ' || bs.base * totaldesc * porirpf || ', '|| NEW.idasientofactura ||', ''' || concepto1 || ''' ,  ''Factura Cliente'')';
+		query := 'INSERT INTO borrador (fecha, idcuenta, debe, idasiento, descripcion, conceptocontable) VALUES (''' || NEW.ffactura || ''', ' || idctairpf || ', ' || round(bs.base * totaldesc * porirpf, redondeo) || ', '|| NEW.idasientofactura ||', ''' || concepto1 || ''' ,  ''Factura Cliente'')';
 		PERFORM dblink_exec('bulmafact2cont', query);
 	END IF;
 
 	-- Hacemos la insercion del borrador del apunte segun familia.
 	FOR cs IN SELECT familia.idcuentaventafamilia, SUM (cantlfactura * pvplfactura * (100 - descuentolfactura) / 100) AS base FROM familia LEFT JOIN articulo ON familia.idfamilia = articulo.idfamilia LEFT JOIN lfactura ON lfactura.idarticulo = articulo.idarticulo WHERE lfactura.idfactura = NEW.idfactura GROUP BY familia.idcuentaventafamilia LOOP
 
-	    query := 'INSERT INTO borrador (fecha, idcuenta, haber, idasiento, descripcion, conceptocontable) VALUES (''' || NEW.ffactura || ''', ' || cs.idcuentaventafamilia || ', ' || cs.base * totaldesc || ', '|| NEW.idasientofactura ||', ''' || concepto1 || ''' ,  ''Factura Cliente'')';
+	    query := 'INSERT INTO borrador (fecha, idcuenta, haber, idasiento, descripcion, conceptocontable) VALUES (''' || NEW.ffactura || ''', ' || cs.idcuentaventafamilia || ', ' || round(cs.base * totaldesc, redondeo) || ', '|| NEW.idasientofactura ||', ''' || concepto1 || ''' ,  ''Factura Cliente'')';
 	    PERFORM dblink_exec('bulmafact2cont', query);
 
 	END LOOP;
@@ -864,6 +864,7 @@ DECLARE
 	concepto TEXT;
 	concepto1 TEXT;
 	asientonuevo BOOLEAN;
+	redondeo INTEGER := 2;
 BEGIN
 	-- conectamos con contabilidad, etc
 	PERFORM conectabulmacont();
@@ -937,7 +938,7 @@ BEGIN
 	END IF;
 
 	-- Creamos los apuntes de IVA.
-	FOR  bs IN SELECT SUM (cantlfacturap*pvplfacturap*(100-descuentolfacturap)/100) AS base, round(ivalfacturap) AS iva, ivalfacturap, reqeqlfacturap FROM lfacturap  WHERE idfacturap = NEW.idfacturap GROUP BY ivalfacturap, reqeqlfacturap LOOP
+	FOR bs IN SELECT SUM (cantlfacturap*pvplfacturap*(100-descuentolfacturap)/100) AS base, round(ivalfacturap) AS iva, ivalfacturap, reqeqlfacturap FROM lfacturap  WHERE idfacturap = NEW.idfacturap GROUP BY ivalfacturap, reqeqlfacturap LOOP
 		IF bs.iva <> 0 THEN
 			varaux := '4720%' || bs.iva;
 			-- Hacemos la busqueda de la cuenta de IVA correspondiente.
@@ -949,11 +950,11 @@ BEGIN
 			idcta := ctaiva.idcuenta;
 
 			-- Hacemos la insercion del borrador del apunte.
-			query := 'INSERT INTO borrador (fecha, idcuenta, debe, idasiento, descripcion, conceptocontable) VALUES (''' || NEW.ffacturap || ''', ' || idcta || ', ' || bs.base * totaldesc * bs.iva / 100 || ', '|| NEW.idasientofacturap ||', ''' || concepto1 || ''' ,  ''Factura Proveedor'')';
+			query := 'INSERT INTO borrador (fecha, idcuenta, debe, idasiento, descripcion, conceptocontable) VALUES (''' || NEW.ffacturap || ''', ' || idcta || ', ' || round(bs.base * totaldesc * bs.iva / 100, redondeo) || ', '|| NEW.idasientofacturap ||', ''' || concepto1 || ''' ,  ''Factura Proveedor'')';
 			PERFORM dblink_exec('bulmafact2cont', query);
 
 			-- Vamos calculando el total de IVA
-			totaliva := totaliva + bs.base * totaldesc * bs.iva / 100;
+			totaliva := totaliva + round(bs.base * totaldesc * bs.iva / 100, redondeo);
 		END IF;
 		IF bs.reqeqlfacturap <> 0 THEN
 			varaux := '47201%' || bs.iva;
@@ -966,11 +967,11 @@ BEGIN
 			idcta := ctaiva.idcuenta;
 
 			-- Hacemos la insercion del borrador del apunte.
-			query := 'INSERT INTO borrador (fecha, idcuenta, debe, idasiento, descripcion, conceptocontable) VALUES (''' || NEW.ffacturap || ''', ' || idcta || ', ' || bs.base * totaldesc * bs.reqeqlfacturap / 100 || ', '|| NEW.idasientofacturap ||', ''' || concepto1 || ''', ''Factura Proveedor'')';
+			query := 'INSERT INTO borrador (fecha, idcuenta, debe, idasiento, descripcion, conceptocontable) VALUES (''' || NEW.ffacturap || ''', ' || idcta || ', ' || round(bs.base * totaldesc * bs.reqeqlfacturap / 100, redondeo) || ', '|| NEW.idasientofacturap ||', ''' || concepto1 || ''', ''Factura Proveedor'')';
 			PERFORM dblink_exec('bulmafact2cont', query);
 
 			-- Vamos calculando el total de IVA
-			totaliva := totaliva + bs.base * totaldesc * bs.reqeqlfacturap / 100;
+			totaliva := totaliva + round(bs.base * totaldesc * bs.reqeqlfacturap / 100, redondeo);
 		END IF;
 	END LOOP;
 
@@ -986,7 +987,7 @@ BEGIN
 	-- Creamos el apunte de IRPF
 	IF porirpf <> 0 THEN
 		-- Hacemos la insercion del borrador del apunte.
-		query := 'INSERT INTO borrador (fecha, idcuenta, haber, idasiento, descripcion, conceptocontable) VALUES (''' || NEW.ffacturap || ''', ' || idctairpf || ', ' || bs.base * totaldesc * porirpf || ', '|| NEW.idasientofacturap ||', ''' || concepto1 || ''' , ''Factura Proveedor'')';
+		query := 'INSERT INTO borrador (fecha, idcuenta, haber, idasiento, descripcion, conceptocontable) VALUES (''' || NEW.ffacturap || ''', ' || idctairpf || ', ' || round(bs.base * totaldesc * porirpf, redondeo) || ', '|| NEW.idasientofacturap ||', ''' || concepto1 || ''' , ''Factura Proveedor'')';
 		PERFORM dblink_exec('bulmafact2cont', query);
 	END IF;
 
@@ -994,7 +995,7 @@ BEGIN
 	-- Hacemos la insercion del borrador del apunte segun familia.
 	FOR cs IN SELECT familia.idcuentacomprafamilia, SUM (cantlfacturap * pvplfacturap * (100 - descuentolfacturap) / 100) AS base FROM familia LEFT JOIN articulo ON familia.idfamilia = articulo.idfamilia LEFT JOIN lfacturap ON lfacturap.idarticulo = articulo.idarticulo WHERE lfacturap.idfacturap = NEW.idfacturap GROUP BY familia.idcuentacomprafamilia LOOP
 
-	    query := 'INSERT INTO borrador (fecha, idcuenta, debe, idasiento, descripcion, conceptocontable) VALUES (''' || NEW.ffacturap || ''', ' || cs.idcuentacomprafamilia || ', ' || cs.base * totaldesc || ', '|| NEW.idasientofacturap ||', ''' || concepto1 || ''' , ''Factura Proveedor'')';
+	    query := 'INSERT INTO borrador (fecha, idcuenta, debe, idasiento, descripcion, conceptocontable) VALUES (''' || NEW.ffacturap || ''', ' || cs.idcuentacomprafamilia || ', ' || round(cs.base * totaldesc, redondeo) || ', '|| NEW.idasientofacturap ||', ''' || concepto1 || ''' , ''Factura Proveedor'')';
 	    PERFORM dblink_exec('bulmafact2cont', query);
 
 	END LOOP;
@@ -2114,9 +2115,9 @@ DECLARE
 BEGIN
 	SELECT INTO as * FROM configuracion WHERE nombre=''PluginBf_SincroBulmaCont'';
 	IF FOUND THEN
-		UPDATE CONFIGURACION SET valor=''0.9.1-001'' WHERE nombre=''PluginBf-SincroBulmaCont'';
+		UPDATE CONFIGURACION SET valor=''0.9.1-002'' WHERE nombre=''PluginBf-SincroBulmaCont'';
 	ELSE
-		INSERT INTO configuracion (nombre, valor) VALUES (''PluginBf_SincroBulmaCont'', ''0.9.1-001'');
+		INSERT INTO configuracion (nombre, valor) VALUES (''PluginBf_SincroBulmaCont'', ''0.9.1-002'');
 	END IF;
 	RETURN 0;
 END;

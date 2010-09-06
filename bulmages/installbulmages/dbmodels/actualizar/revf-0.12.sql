@@ -276,6 +276,377 @@ END;
 ' LANGUAGE plpgsql;
 
 
+
+\echo -n ':: Funcion que calcula el total de una factura de proveedor ... '
+CREATE OR REPLACE FUNCTION calctotalfacpro(integer) RETURNS numeric(12, 2)
+AS '
+DECLARE
+    idp ALIAS FOR $1;
+    totalBImponibleLineas numeric(12, 2);
+    totalIRPF numeric(12, 2);
+    totalIVA numeric(12, 2);
+    totalRE numeric(12, 2);
+    totalTotal numeric(12, 2);
+    res RECORD;
+    res2 RECORD;
+
+BEGIN
+    totalBImponibleLineas := 0;
+    totalIRPF := 0;
+    totalIVA := 0;
+    totalRE := 0;
+    totalTotal := 0;
+
+    FOR res IN SELECT cantlfacturap * pvplfacturap * (1 - descuentolfacturap / 100) AS subtotal1 FROM lfacturap WHERE idfacturap = idp LOOP
+	totalBImponibleLineas := totalBImponibleLineas + res.subtotal1;
+    END LOOP;
+
+    SELECT INTO res2 idproveedor FROM facturap WHERE idfacturap = idp;
+
+    SELECT INTO res irpfproveedor FROM proveedor WHERE idproveedor = res2.idproveedor;
+    IF FOUND THEN
+        totalIRPF := totalBImponibleLineas * (res.irpfproveedor / 100);
+    END IF;
+
+    FOR res IN SELECT cantlfacturap * pvplfacturap * (1 - descuentolfacturap / 100) * (ivalfacturap / 100) AS subtotal1 FROM lfacturap WHERE idfacturap = idp LOOP
+	totalIVA := totalIVA + res.subtotal1;
+    END LOOP;
+
+    FOR res IN SELECT cantlfacturap * pvplfacturap * (1 - descuentolfacturap / 100) * (reqeqlfacturap / 100) AS subtotal1 FROM lfacturap WHERE idfacturap = idp LOOP
+	totalRE := totalRE + res.subtotal1;
+    END LOOP;
+
+    FOR res IN SELECT proporciondfacturap FROM dfacturap WHERE idfacturap = idp LOOP
+	totalBImponibleLineas := totalBImponibleLineas * (1 - res.proporciondfacturap / 100);
+	totalIRPF := totalIRPF * (1 - res.proporciondfacturap / 100);
+	totalIVA := totalIVA * (1 - res.proporciondfacturap / 100);
+	totalRE := totalRE * (1 - res.proporciondfacturap / 100);
+    END LOOP;
+
+    totalTotal = totalBImponibleLineas - totalIRPF + totalIVA + totalRE;
+
+    RETURN totalTotal;
+END;
+' LANGUAGE plpgsql;
+
+
+
+
+\echo -n ':: Funcion que calcula el total de una factura ... '
+CREATE OR REPLACE FUNCTION calctotalfactura(integer) RETURNS numeric(12, 2)
+AS '
+DECLARE
+    idp ALIAS FOR $1;
+    totalBImponibleLineas numeric(12, 2);
+    totalIRPF numeric(12, 2);
+    totalIVA numeric(12, 2);
+    totalRE numeric(12, 2);
+    totalTotal numeric(12, 2);
+    res RECORD;
+
+BEGIN
+    totalBImponibleLineas := 0;
+    totalIRPF := 0;
+    totalIVA := 0;
+    totalRE := 0;
+    totalTotal := 0;
+
+    FOR res IN SELECT cantlfactura * pvplfactura * (1 - descuentolfactura / 100) AS subtotal1 FROM lfactura WHERE idfactura = idp LOOP
+	totalBImponibleLineas := totalBImponibleLineas + res.subtotal1;
+    END LOOP;
+
+    SELECT INTO res valor::numeric FROM configuracion WHERE LOWER(nombre) = ''irpf'';
+    IF FOUND THEN
+        totalIRPF := totalBImponibleLineas * (res.valor / 100);
+    END IF;
+
+    FOR res IN SELECT cantlfactura * pvplfactura * (1 - descuentolfactura / 100) * (ivalfactura / 100) AS subtotal1 FROM lfactura WHERE idfactura = idp LOOP
+	totalIVA := totalIVA + res.subtotal1;
+    END LOOP;
+
+    FOR res IN SELECT cantlfactura * pvplfactura * (1 - descuentolfactura / 100) * (reqeqlfactura / 100) AS subtotal1 FROM lfactura WHERE idfactura = idp LOOP
+	totalRE := totalRE + res.subtotal1;
+    END LOOP;
+
+    FOR res IN SELECT proporciondfactura FROM dfactura WHERE idfactura = idp LOOP
+	totalBImponibleLineas := totalBImponibleLineas * (1 - res.proporciondfactura / 100);
+	totalIRPF := totalIRPF * (1 - res.proporciondfactura / 100);
+	totalIVA := totalIVA * (1 - res.proporciondfactura / 100);
+	totalRE := totalRE * (1 - res.proporciondfactura / 100);
+    END LOOP;
+
+    totalTotal = totalBImponibleLineas - totalIRPF + totalIVA + totalRE;
+
+    RETURN totalTotal;
+END;
+' LANGUAGE plpgsql;
+
+
+
+\echo -n ':: Funcion que calcula el total del albaran de proveedor ... '
+CREATE OR REPLACE FUNCTION calctotalalbpro(integer) RETURNS numeric(12, 2)
+AS '
+DECLARE
+    idp ALIAS FOR $1;
+    totalBImponibleLineas numeric(12, 2);
+    totalIRPF numeric(12, 2);
+    totalIVA numeric(12, 2);
+    totalRE numeric(12, 2);
+    totalTotal numeric(12, 2);
+    res RECORD;
+    res2 RECORD;
+
+BEGIN
+    totalBImponibleLineas := 0;
+    totalIRPF := 0;
+    totalIVA := 0;
+    totalRE := 0;
+    totalTotal := 0;
+
+    FOR res IN SELECT cantlalbaranp * pvplalbaranp * (1 - descuentolalbaranp / 100) AS subtotal1 FROM lalbaranp WHERE idalbaranp = idp LOOP
+	totalBImponibleLineas := totalBImponibleLineas + res.subtotal1;
+    END LOOP;
+
+    SELECT INTO res2 idproveedor FROM albaranp WHERE idalbaranp = idp;
+
+    SELECT INTO res irpfproveedor FROM proveedor WHERE idproveedor = res2.idproveedor;
+    IF FOUND THEN
+        totalIRPF := totalBImponibleLineas * (res.irpfproveedor / 100);
+    END IF;
+
+    FOR res IN SELECT cantlalbaranp * pvplalbaranp * (1 - descuentolalbaranp / 100) * (ivalalbaranp / 100) AS subtotal1 FROM lalbaranp WHERE idalbaranp = idp LOOP
+	totalIVA := totalIVA + res.subtotal1;
+    END LOOP;
+
+    FOR res IN SELECT cantlalbaranp * pvplalbaranp * (1 - descuentolalbaranp / 100) * (reqeqlalbaranp / 100) AS subtotal1 FROM lalbaranp WHERE idalbaranp = idp LOOP
+	totalRE := totalRE + res.subtotal1;
+    END LOOP;
+
+    FOR res IN SELECT proporciondalbaranp FROM dalbaranp WHERE idalbaranp = idp LOOP
+	totalBImponibleLineas := totalBImponibleLineas * (1 - res.proporciondalbaranp / 100);
+	totalIRPF := totalIRPF * (1 - res.proporciondalbaranp / 100);
+	totalIVA := totalIVA * (1 - res.proporciondalbaranp / 100);
+	totalRE := totalRE * (1 - res.proporciondalbaranp / 100);
+    END LOOP;
+
+    totalTotal = totalBImponibleLineas - totalIRPF + totalIVA + totalRE;
+
+    RETURN totalTotal;
+END;
+' LANGUAGE plpgsql;
+
+
+\echo -n ':: Funcion que calcula el total del pedido a proveedor ... '
+CREATE OR REPLACE FUNCTION calctotalpedpro(integer) RETURNS numeric(12, 2)
+AS '
+DECLARE
+    idp ALIAS FOR $1;
+    totalBImponibleLineas numeric(12, 2);
+    totalIRPF numeric(12, 2);
+    totalIVA numeric(12, 2);
+    totalRE numeric(12, 2);
+    totalTotal numeric(12, 2);
+    res RECORD;
+    res2 RECORD;
+
+BEGIN
+    totalBImponibleLineas := 0;
+    totalIRPF := 0;
+    totalIVA := 0;
+    totalRE := 0;
+    totalTotal := 0;
+
+    FOR res IN SELECT cantlpedidoproveedor * pvplpedidoproveedor * (1 - descuentolpedidoproveedor / 100) AS subtotal1 FROM lpedidoproveedor WHERE idpedidoproveedor = idp LOOP
+	totalBImponibleLineas := totalBImponibleLineas + res.subtotal1;
+    END LOOP;
+
+    SELECT INTO res2 idproveedor FROM pedidoproveedor WHERE idpedidoproveedor = idp;
+
+    SELECT INTO res irpfproveedor FROM proveedor WHERE idproveedor = res2.idproveedor;
+    IF FOUND THEN
+        totalIRPF := totalBImponibleLineas * (res.irpfproveedor / 100);
+    END IF;
+
+    FOR res IN SELECT cantlpedidoproveedor * pvplpedidoproveedor * (1 - descuentolpedidoproveedor / 100) * (ivalpedidoproveedor / 100) AS subtotal1 FROM lpedidoproveedor WHERE idpedidoproveedor = idp LOOP
+	totalIVA := totalIVA + res.subtotal1;
+    END LOOP;
+
+    FOR res IN SELECT cantlpedidoproveedor * pvplpedidoproveedor * (1 - descuentolpedidoproveedor / 100) * (reqeqlpedidoproveedor / 100) AS subtotal1 FROM lpedidoproveedor WHERE idpedidoproveedor = idp LOOP
+	totalRE := totalRE + res.subtotal1;
+    END LOOP;
+
+    FOR res IN SELECT proporciondpedidoproveedor FROM dpedidoproveedor WHERE idpedidoproveedor = idp LOOP
+	totalBImponibleLineas := totalBImponibleLineas * (1 - res.proporciondpedidoproveedor / 100);
+	totalIRPF := totalIRPF * (1 - res.proporciondpedidoproveedor / 100);
+	totalIVA := totalIVA * (1 - res.proporciondpedidoproveedor / 100);
+	totalRE := totalRE * (1 - res.proporciondpedidoproveedor / 100);
+    END LOOP;
+
+    totalTotal = totalBImponibleLineas - totalIRPF + totalIVA + totalRE;
+
+    RETURN totalTotal;
+END;
+' LANGUAGE plpgsql;
+
+
+
+\echo -n ':: Funcion que calcula el total de un presupuesto a cliente ... '
+CREATE OR REPLACE FUNCTION calctotalpres(integer) RETURNS numeric(12, 2)
+AS '
+DECLARE
+    idp ALIAS FOR $1;
+    totalBImponibleLineas numeric(12, 2);
+    totalIRPF numeric(12, 2);
+    totalIVA numeric(12, 2);
+    totalRE numeric(12, 2);
+    totalTotal numeric(12, 2);
+    res RECORD;
+    res2 RECORD;
+
+BEGIN
+    totalBImponibleLineas := 0;
+    totalIRPF := 0;
+    totalIVA := 0;
+    totalRE := 0;
+    totalTotal := 0;
+
+    FOR res IN SELECT cantlpresupuesto * pvplpresupuesto * (1 - descuentolpresupuesto / 100) AS subtotal1 FROM lpresupuesto WHERE idpresupuesto = idp LOOP
+	totalBImponibleLineas := totalBImponibleLineas + res.subtotal1;
+    END LOOP;
+
+    SELECT INTO res valor::numeric FROM configuracion WHERE LOWER(nombre) = ''irpf'';
+    IF FOUND THEN
+        totalIRPF := totalBImponibleLineas * (res.valor / 100);
+    END IF;
+
+    FOR res IN SELECT cantlpresupuesto * pvplpresupuesto * (1 - descuentolpresupuesto / 100) * (ivalpresupuesto / 100) AS subtotal1 FROM lpresupuesto WHERE idpresupuesto = idp LOOP
+	totalIVA := totalIVA + res.subtotal1;
+    END LOOP;
+
+    FOR res IN SELECT cantlpresupuesto * pvplpresupuesto * (1 - descuentolpresupuesto / 100) * (reqeqlpresupuesto / 100) AS subtotal1 FROM lpresupuesto WHERE idpresupuesto = idp LOOP
+	totalRE := totalRE + res.subtotal1;
+    END LOOP;
+
+    FOR res IN SELECT proporciondpresupuesto FROM dpresupuesto WHERE idpresupuesto = idp LOOP
+	totalBImponibleLineas := totalBImponibleLineas * (1 - res.proporciondpresupuesto / 100);
+	totalIRPF := totalIRPF * (1 - res.proporciondpresupuesto / 100);
+	totalIVA := totalIVA * (1 - res.proporciondpresupuesto / 100);
+	totalRE := totalRE * (1 - res.proporciondpresupuesto / 100);
+    END LOOP;
+
+    totalTotal = totalBImponibleLineas - totalIRPF + totalIVA + totalRE;
+
+    RETURN totalTotal;
+END;
+' LANGUAGE plpgsql;
+
+
+
+\echo -n ':: Funcion que calcula el total de un pedido de cliente ... '
+CREATE OR REPLACE FUNCTION calctotalpedcli(integer) RETURNS numeric(12, 2)
+AS '
+DECLARE
+    idp ALIAS FOR $1;
+    totalBImponibleLineas numeric(12, 2);
+    totalIRPF numeric(12, 2);
+    totalIVA numeric(12, 2);
+    totalRE numeric(12, 2);
+    totalTotal numeric(12, 2);
+    res RECORD;
+    res2 RECORD;
+
+BEGIN
+    totalBImponibleLineas := 0;
+    totalIRPF := 0;
+    totalIVA := 0;
+    totalRE := 0;
+    totalTotal := 0;
+
+    FOR res IN SELECT cantlpedidocliente * pvplpedidocliente * (1 - descuentolpedidocliente / 100) AS subtotal1 FROM lpedidocliente WHERE idpedidocliente = idp LOOP
+	totalBImponibleLineas := totalBImponibleLineas + res.subtotal1;
+    END LOOP;
+
+    SELECT INTO res valor::numeric FROM configuracion WHERE LOWER(nombre) = ''irpf'';
+    IF FOUND THEN
+        totalIRPF := totalBImponibleLineas * (res.valor / 100);
+    END IF;
+
+    FOR res IN SELECT cantlpedidocliente * pvplpedidocliente * (1 - descuentolpedidocliente / 100) * (ivalpedidocliente / 100) AS subtotal1 FROM lpedidocliente WHERE idpedidocliente = idp LOOP
+	totalIVA := totalIVA + res.subtotal1;
+    END LOOP;
+
+    FOR res IN SELECT cantlpedidocliente * pvplpedidocliente * (1 - descuentolpedidocliente / 100) * (reqeqlpedidocliente / 100) AS subtotal1 FROM lpedidocliente WHERE idpedidocliente = idp LOOP
+	totalRE := totalRE + res.subtotal1;
+    END LOOP;
+
+    FOR res IN SELECT proporciondpedidocliente FROM dpedidocliente WHERE idpedidocliente = idp LOOP
+	totalBImponibleLineas := totalBImponibleLineas * (1 - res.proporciondpedidocliente / 100);
+	totalIRPF := totalIRPF * (1 - res.proporciondpedidocliente / 100);
+	totalIVA := totalIVA * (1 - res.proporciondpedidocliente / 100);
+	totalRE := totalRE * (1 - res.proporciondpedidocliente / 100);
+    END LOOP;
+
+    totalTotal = totalBImponibleLineas - totalIRPF + totalIVA + totalRE;
+
+    RETURN totalTotal;
+END;
+' LANGUAGE plpgsql;
+
+
+\echo -n ':: Funcion que calcula el total de un albaran a cliente ... '
+CREATE OR REPLACE FUNCTION calctotalalbaran(integer) RETURNS numeric(12, 2)
+AS '
+DECLARE
+    idp ALIAS FOR $1;
+    totalBImponibleLineas numeric(12, 2);
+    totalIRPF numeric(12, 2);
+    totalIVA numeric(12, 2);
+    totalRE numeric(12, 2);
+    totalTotal numeric(12, 2);
+    res RECORD;
+    res2 RECORD;
+
+BEGIN
+    totalBImponibleLineas := 0;
+    totalIRPF := 0;
+    totalIVA := 0;
+    totalRE := 0;
+    totalTotal := 0;
+
+    FOR res IN SELECT cantlalbaran * pvplalbaran * (1 - descuentolalbaran / 100) AS subtotal1 FROM lalbaran WHERE idalbaran = idp LOOP
+	totalBImponibleLineas := totalBImponibleLineas + res.subtotal1;
+    END LOOP;
+
+    SELECT INTO res valor::numeric FROM configuracion WHERE LOWER(nombre) = ''irpf'';
+    IF FOUND THEN
+        totalIRPF := totalBImponibleLineas * (res.valor / 100);
+    END IF;
+
+    FOR res IN SELECT cantlalbaran * pvplalbaran * (1 - descuentolalbaran / 100) * (ivalalbaran / 100) AS subtotal1 FROM lalbaran WHERE idalbaran = idp LOOP
+	totalIVA := totalIVA + res.subtotal1;
+    END LOOP;
+
+    FOR res IN SELECT cantlalbaran * pvplalbaran * (1 - descuentolalbaran / 100) * (reqeqlalbaran / 100) AS subtotal1 FROM lalbaran WHERE idalbaran = idp LOOP
+	totalRE := totalRE + res.subtotal1;
+    END LOOP;
+
+    FOR res IN SELECT proporciondalbaran FROM dalbaran WHERE idalbaran = idp LOOP
+	totalBImponibleLineas := totalBImponibleLineas * (1 - res.proporciondalbaran / 100);
+	totalIRPF := totalIRPF * (1 - res.proporciondalbaran / 100);
+	totalIVA := totalIVA * (1 - res.proporciondalbaran / 100);
+	totalRE := totalRE * (1 - res.proporciondalbaran / 100);
+    END LOOP;
+
+    totalTotal = totalBImponibleLineas - totalIRPF + totalIVA + totalRE;
+
+    RETURN totalTotal;
+END;
+' LANGUAGE plpgsql;
+
+
+
+
+
 -- =====================================================================================
 
 -- Agregamos nuevos parametros de configuracion
@@ -286,16 +657,16 @@ DECLARE
 BEGIN
 	SELECT INTO as * FROM configuracion WHERE nombre = ''DatabaseRevision'';
 	IF FOUND THEN
-		UPDATE CONFIGURACION SET valor = ''0.12.1-0005'' WHERE nombre = ''DatabaseRevision'';
+		UPDATE CONFIGURACION SET valor = ''0.12.1-0006'' WHERE nombre = ''DatabaseRevision'';
 	ELSE
-		INSERT INTO configuracion (nombre, valor) VALUES (''DatabaseRevision'', ''0.12.1-0005'');
+		INSERT INTO configuracion (nombre, valor) VALUES (''DatabaseRevision'', ''0.12.1-0006'');
 	END IF;
 	RETURN 0;
 END;
 '   LANGUAGE plpgsql;
 SELECT actualizarevision();
 DROP FUNCTION actualizarevision() CASCADE;
-\echo "Actualizada la revision de la base de datos a la version 0.12-1.0005"
+\echo "Actualizada la revision de la base de datos a la version 0.12-1.0006"
 
 DROP FUNCTION drop_if_exists_table(text) CASCADE;
 DROP FUNCTION drop_if_exists_proc(text, text) CASCADE;

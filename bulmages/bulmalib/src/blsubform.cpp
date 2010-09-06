@@ -1396,14 +1396,14 @@ void BlSubForm::cargar ( BlDbRecordSet *cur )
     int numpag = cur->numregistros() / filpag + 1;
     mui_numpaginas->setText ( QString::number ( numpag ) );
 
-    /// Si el numero de elementos es igual al numero de filas por pagina abilitamos la pagina siguiente
+    /// Si el numero de elementos es igual al numero de filas por pagina habilitamos la pagina siguiente
     if ( filpag == cur->numregistros() ) {
         mui_pagsiguiente->setEnabled ( TRUE );
     } else {
         mui_pagsiguiente->setDisabled ( TRUE );
     } // end if
 
-    /// Si la pagina actual es 1 desabilitamos la pagina anterior
+    /// Si la pagina actual es 1 deshabilitamos la pagina anterior
     if ( pagact ==  1 ) {
         mui_paganterior->setDisabled ( TRUE );
     } else {
@@ -1429,7 +1429,7 @@ void BlSubForm::cargar ( BlDbRecordSet *cur )
         QFont bold;
         bold.setBold ( true );
         for ( int j = 0; j < reg->lista() ->size(); ++j ) {
-           /// Poner en negrita el texto de la cabecera de las columnas editables
+           /// Pone en negrita el texto de la cabecera de las columnas editables
            if ( i == 0 && ! ( m_lcabecera [ j ] -> options() & BlSubFormHeader::DbNoWrite ) ) {
               mui_list->horizontalHeaderItem ( j ) -> setFont( bold );
            } // end if

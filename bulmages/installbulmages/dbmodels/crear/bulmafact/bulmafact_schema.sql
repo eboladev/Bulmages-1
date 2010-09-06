@@ -1382,10 +1382,10 @@ CREATE OR REPLACE FUNCTION calctotalfactura(integer) RETURNS numeric(12, 2)
 AS '
 DECLARE
     idp ALIAS FOR $1;
-    totalBImponibleLineas numeric(12, 4);
-    totalIRPF numeric(12, 4);
-    totalIVA numeric(12, 4);
-    totalRE numeric(12, 4);
+    totalBImponibleLineas numeric(12, 2);
+    totalIRPF numeric(12, 2);
+    totalIVA numeric(12, 2);
+    totalRE numeric(12, 2);
     totalTotal numeric(12, 2);
     res RECORD;
 
@@ -1645,10 +1645,10 @@ CREATE OR REPLACE FUNCTION calctotalfacpro(integer) RETURNS numeric(12, 2)
 AS '
 DECLARE
     idp ALIAS FOR $1;
-    totalBImponibleLineas numeric(12, 4);
-    totalIRPF numeric(12, 4);
-    totalIVA numeric(12, 4);
-    totalRE numeric(12, 4);
+    totalBImponibleLineas numeric(12, 2);
+    totalIRPF numeric(12, 2);
+    totalIVA numeric(12, 2);
+    totalRE numeric(12, 2);
     totalTotal numeric(12, 2);
     res RECORD;
     res2 RECORD;
@@ -1915,10 +1915,10 @@ CREATE OR REPLACE FUNCTION calctotalalbpro(integer) RETURNS numeric(12, 2)
 AS '
 DECLARE
     idp ALIAS FOR $1;
-    totalBImponibleLineas numeric(12, 4);
-    totalIRPF numeric(12, 4);
-    totalIVA numeric(12, 4);
-    totalRE numeric(12, 4);
+    totalBImponibleLineas numeric(12, 2);
+    totalIRPF numeric(12, 2);
+    totalIVA numeric(12, 2);
+    totalRE numeric(12, 2);
     totalTotal numeric(12, 2);
     res RECORD;
     res2 RECORD;
@@ -2549,10 +2549,10 @@ CREATE OR REPLACE FUNCTION calctotalpedpro(integer) RETURNS numeric(12, 2)
 AS '
 DECLARE
     idp ALIAS FOR $1;
-    totalBImponibleLineas numeric(12, 4);
-    totalIRPF numeric(12, 4);
-    totalIVA numeric(12, 4);
-    totalRE numeric(12, 4);
+    totalBImponibleLineas numeric(12, 2);
+    totalIRPF numeric(12, 2);
+    totalIVA numeric(12, 2);
+    totalRE numeric(12, 2);
     totalTotal numeric(12, 2);
     res RECORD;
     res2 RECORD;
@@ -2708,10 +2708,10 @@ CREATE OR REPLACE FUNCTION calctotalpres(integer) RETURNS numeric(12, 2)
 AS '
 DECLARE
     idp ALIAS FOR $1;
-    totalBImponibleLineas numeric(12, 4);
-    totalIRPF numeric(12, 4);
-    totalIVA numeric(12, 4);
-    totalRE numeric(12, 4);
+    totalBImponibleLineas numeric(12, 2);
+    totalIRPF numeric(12, 2);
+    totalIVA numeric(12, 2);
+    totalRE numeric(12, 2);
     totalTotal numeric(12, 2);
     res RECORD;
     res2 RECORD;
@@ -2801,10 +2801,10 @@ CREATE OR REPLACE FUNCTION calctotalpedcli(integer) RETURNS numeric(12, 2)
 AS '
 DECLARE
     idp ALIAS FOR $1;
-    totalBImponibleLineas numeric(12, 4);
-    totalIRPF numeric(12, 4);
-    totalIVA numeric(12, 4);
-    totalRE numeric(12, 4);
+    totalBImponibleLineas numeric(12, 2);
+    totalIRPF numeric(12, 2);
+    totalIVA numeric(12, 2);
+    totalRE numeric(12, 2);
     totalTotal numeric(12, 2);
     res RECORD;
     res2 RECORD;
@@ -2894,10 +2894,10 @@ CREATE OR REPLACE FUNCTION calctotalalbaran(integer) RETURNS numeric(12, 2)
 AS '
 DECLARE
     idp ALIAS FOR $1;
-    totalBImponibleLineas numeric(12, 4);
-    totalIRPF numeric(12, 4);
-    totalIVA numeric(12, 4);
-    totalRE numeric(12, 4);
+    totalBImponibleLineas numeric(12, 2);
+    totalIRPF numeric(12, 2);
+    totalIVA numeric(12, 2);
+    totalRE numeric(12, 2);
     totalTotal numeric(12, 2);
     res RECORD;
     res2 RECORD;
@@ -3078,9 +3078,9 @@ DECLARE
 BEGIN
 	SELECT INTO as * FROM configuracion WHERE nombre = ''DatabaseRevision'';
 	IF FOUND THEN
-		UPDATE CONFIGURACION SET valor = ''0.12.1-0005'' WHERE nombre = ''DatabaseRevision'';
+		UPDATE CONFIGURACION SET valor = ''0.12.1-0006'' WHERE nombre = ''DatabaseRevision'';
 	ELSE
-		INSERT INTO configuracion (nombre, valor) VALUES (''DatabaseRevision'', ''0.12.1-0005'');
+		INSERT INTO configuracion (nombre, valor) VALUES (''DatabaseRevision'', ''0.12.1-0006'');
 	END IF;
 	RETURN 0;
 END;
