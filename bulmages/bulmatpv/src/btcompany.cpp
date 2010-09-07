@@ -711,9 +711,10 @@ QList<BtTicket *> *BtCompany::listaTickets()
 void BtCompany::setTicketActual ( BtTicket *tick )
 {
     blDebug ( "BtCompany::setTicketActual", 0 );
-
-    blDebug ( "END BtCompany::setTicketActual", 0 );
+    g_plugins->lanza ( "BtCompany_setTicketActual", this );
     m_ticketActual = tick;
+    g_plugins->lanza ( "BtCompany_setTicketActual_Post", this );
+    blDebug ( "END BtCompany::setTicketActual", 0 );
 }
 
 /// Guarda la configuracion de programa para poder recuperar algunas cosas de presentacion.

@@ -52,9 +52,28 @@ DECLARE
 	as RECORD;
 BEGIN
 
+
+
+    SELECT INTO as attname, relname FROM pg_attribute LEFT JOIN pg_class ON pg_attribute.attrelid=pg_class.oid WHERE attname=''textolibremodificador'' AND relname=''lalbaran'';
+    IF NOT FOUND THEN
+        ALTER TABLE lalbaran DROP COLUMN textolibremodificador;
+        ALTER TABLE lalbaran DROP COLUMN imgmodificador; 
+	ALTER TABLE lalbaran DROP COLUMN idmodificador1 CASCADE;
+	ALTER TABLE lalbaran DROP COLUMN idmodificador2 CASCADE;
+	ALTER TABLE lalbaran DROP COLUMN idmodificador3 CASCADE;
+	ALTER TABLE lalbaran DROP COLUMN idmodificador4 CASCADE;
+	ALTER TABLE lalbaran DROP COLUMN idmodificador5 CASCADE;
+	ALTER TABLE lalbaran DROP COLUMN idmodificador6 CASCADE;
+	ALTER TABLE lalbaran DROP COLUMN idmodificador7 CASCADE;
+	ALTER TABLE lalbaran DROP COLUMN idmodificador8 CASCADE;
+	ALTER TABLE lalbaran DROP COLUMN idmodificador9 CASCADE;
+    END IF;
+
+
+
         SELECT INTO as * FROM pg_tables  WHERE tablename=''modificador'';
         IF FOUND THEN
-            DROP TABLE modificador;
+            DROP TABLE modificador CASCADE;
         END IF;
 
 	RETURN 0;

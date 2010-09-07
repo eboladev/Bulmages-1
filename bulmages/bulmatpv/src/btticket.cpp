@@ -1134,6 +1134,9 @@ QString BtTicket::exportXML() {
         val += "\t\t" + linea1->exportXML().replace("\t<","\t\t\t<").replace("\n<","\n\t\t<");
     } // end for
     val += "\t</LISTALINEAS>\n";
+    
+    g_plugins->lanza ( "BtTicket_exportXML_Post", this );    
+    
     val += "</BTTICKET>\n";
 
     return val;

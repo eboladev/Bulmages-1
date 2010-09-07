@@ -55,9 +55,26 @@ BEGIN
                 CREATE TABLE modificador (
                 idmodificador SERIAL PRIMARY KEY,
 		varpreciomodificador numeric(12,2) DEFAULT 0,
-		nombremodificador VARCHAR NOT NULL
+		nombremodificador VARCHAR NOT NULL,
+		idarticulo INTEGER NOT NULL REFERENCES articulo (idarticulo)
                 );
         END IF;
+
+    SELECT INTO as attname, relname FROM pg_attribute LEFT JOIN pg_class ON pg_attribute.attrelid=pg_class.oid WHERE attname=''textolibremodificador'' AND relname=''lalbaran'';
+    IF NOT FOUND THEN
+        ALTER TABLE lalbaran ADD COLUMN textolibremodificador VARCHAR;
+        ALTER TABLE lalbaran ADD COLUMN imgmodificador VARCHAR;
+	ALTER TABLE lalbaran ADD COLUMN idmodificador1 INTEGER DEFAULT NULL REFERENCES modificador(idmodificador);
+	ALTER TABLE lalbaran ADD COLUMN idmodificador2 INTEGER DEFAULT NULL REFERENCES modificador(idmodificador);
+	ALTER TABLE lalbaran ADD COLUMN idmodificador3 INTEGER DEFAULT NULL REFERENCES modificador(idmodificador);
+	ALTER TABLE lalbaran ADD COLUMN idmodificador4 INTEGER DEFAULT NULL REFERENCES modificador(idmodificador);
+	ALTER TABLE lalbaran ADD COLUMN idmodificador5 INTEGER DEFAULT NULL REFERENCES modificador(idmodificador);
+	ALTER TABLE lalbaran ADD COLUMN idmodificador6 INTEGER DEFAULT NULL REFERENCES modificador(idmodificador);
+	ALTER TABLE lalbaran ADD COLUMN idmodificador7 INTEGER DEFAULT NULL REFERENCES modificador(idmodificador);
+	ALTER TABLE lalbaran ADD COLUMN idmodificador8 INTEGER DEFAULT NULL REFERENCES modificador(idmodificador);
+	ALTER TABLE lalbaran ADD COLUMN idmodificador9 INTEGER DEFAULT NULL REFERENCES modificador(idmodificador);
+    END IF;
+
 	RETURN 0;
 END;
 '   LANGUAGE plpgsql;
@@ -76,9 +93,9 @@ DECLARE
 BEGIN
 	SELECT INTO as * FROM configuracion WHERE nombre=''PluginBf_Modificadores'';
 	IF FOUND THEN
-		UPDATE CONFIGURACION SET valor=''0.12.1-0001'' WHERE nombre=''PluginBf_Modificadores'';
+		UPDATE CONFIGURACION SET valor=''0.12.1-0002'' WHERE nombre=''PluginBf_Modificadores'';
 	ELSE
-		INSERT INTO configuracion (nombre, valor) VALUES (''PluginBf_Modificadores'', ''0.12.1-0001'');
+		INSERT INTO configuracion (nombre, valor) VALUES (''PluginBf_Modificadores'', ''0.12.1-0002'');
 	END IF;
 	RETURN 0;
 END;

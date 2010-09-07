@@ -61,7 +61,7 @@ int entryPoint ( BtBulmaTPV *tpv )
     g_doc1->cargaconf();
     g_doc1->show();    
     
-
+    g_tablet = new TabletCanvas();
     
     blDebug ( "END entryPoint", 0 );
     return 0;
@@ -70,7 +70,7 @@ int entryPoint ( BtBulmaTPV *tpv )
 
 int BtCompany_createMainWindows_Post ( BtCompany *etpv )
 {
-    g_tablet = new TabletCanvas();
+
     g_doc1->setWidget ( g_tablet );
 
     return 0;
@@ -127,3 +127,52 @@ int MTicket_MTicket_Post (MTicket *tick) {
 }
 
 
+/*
+int BtTicket_imprimir_Post(BtTicket *tick)
+{
+    blDebug ( "PluginBt_PrinterCocina::BtTicket_imprimir", 0 );
+    impresionCocina(tick);
+    blDebug ( "END PluginBt_PrinterCocina::BtTicket_imprimir", 0 );
+    return 1;
+}
+*/
+
+int BtTicket_exportXML_Post( BtTicket *tick)
+{
+    blDebug ( "PluginBt_Modificadores::BtTicket_exportXML_Post", 0 );
+    QString filename ("/tmp/guardado_"+tick->dbValue("nomticket")+".jpg");
+    filename.remove(' ');
+//    g_tablet->saveImage(filename);
+    blDebug ( "END PluginBt_Modificadores::BtTicket_exportXML_Post", 0 );
+    return 0;
+}
+
+
+int BtCompany_setTicketActual(BtCompany *comp) {
+    if (comp->ticketActual()) {
+      QString filename ("/tmp/guardado_"+comp->ticketActual()->dbValue("nomticket")+".jpg");
+      filename.remove(' ');
+      g_tablet->saveImage(filename);
+    } // end if
+        return 0;
+}
+
+int BtCompany_setTicketActual_Post(BtCompany *comp) {
+    if (comp->ticketActual()) {
+      QString filename ("/tmp/guardado_"+comp->ticketActual()->dbValue("nomticket")+".jpg");
+      filename.remove(' ');
+      if (QFile::exists(filename)) {
+	g_tablet->loadImage(filename);
+      } // end if
+    } // end if
+        return 0;
+}
+
+/*
+int BtCompany_cobrar_1(BtCompany *comp) {
+    blDebug ( "PluginBt_PrinterCocina::BtCompany_cobrar_1", 0 );
+    impresionCocina(comp->ticketActual());
+    blDebug ( "END PluginBt_PrinterCocina::BtCompany_cobrar_1", 0 );
+    return 0;
+}
+*/
