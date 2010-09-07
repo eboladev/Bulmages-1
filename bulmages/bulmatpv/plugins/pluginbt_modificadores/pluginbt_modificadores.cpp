@@ -31,11 +31,14 @@
 #include "blapplication.h"
 #include "modificadoresqtoolbutton.h"
 
+#include "tabletcanvas.h"
 
 /*
 Admin *g_admin;
 BlDockWidget *g_admin1;
 */
+TabletCanvas *g_tablet;
+BlDockWidget *g_doc1 = NULL;
 
 ///
 /**
@@ -49,6 +52,17 @@ int entryPoint ( BtBulmaTPV *tpv )
     setlocale ( LC_ALL, "" );
     bindtextdomain ( "pluginbt_modificadores", g_confpr->valor ( CONF_DIR_TRADUCCION ).toAscii().constData() );
 
+    /// Vamos a probar con un docwindow.
+    g_doc1 = new BlDockWidget ( _ ( "Tablet" ), tpv, "pluginmodificadoresdock" );
+    g_doc1->setFeatures ( QDockWidget::AllDockWidgetFeatures );
+    g_doc1->setGeometry ( 100, 100, 100, 500 );
+    g_doc1->resize ( 330, 400 );
+    tpv->addDockWidget ( Qt::LeftDockWidgetArea, g_doc1 );
+    g_doc1->cargaconf();
+    g_doc1->show();    
+    
+
+    
     blDebug ( "END entryPoint", 0 );
     return 0;
 }
@@ -56,22 +70,9 @@ int entryPoint ( BtBulmaTPV *tpv )
 
 int BtCompany_createMainWindows_Post ( BtCompany *etpv )
 {
-//    g_admin = new Admin ( etpv, g_admin1 );
-//    g_admin1->setWidget ( g_admin );
-    // ============ Pruebas con abrevs
-/*
-    QFrame *fr = g_main->findChild<QFrame *> ( "mui_frameabrevs" );
-    if ( fr ) {
-        QHBoxLayout *m_hboxLayout1 = fr->findChild<QHBoxLayout *> ( "hboxLayout1" );
-        if ( !m_hboxLayout1 ) {
-            m_hboxLayout1 = new QHBoxLayout ( fr );
-            m_hboxLayout1->setSpacing ( 5 );
-            m_hboxLayout1->setMargin ( 5 );
-            m_hboxLayout1->setObjectName ( QString::fromUtf8 ( "hboxLayout1" ) );
-        } // end if
-        m_hboxLayout1->addWidget ( g_admin );
-    } // end if
-*/
+    g_tablet = new TabletCanvas();
+    g_doc1->setWidget ( g_tablet );
+
     return 0;
 }
 
