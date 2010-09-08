@@ -159,6 +159,7 @@ int BtCompany_setTicketActual(BtCompany *comp) {
 
 int BtCompany_setTicketActual_Post(BtCompany *comp) {
     if (comp->ticketActual()) {
+      g_tablet->erasePixmap();
       QString filename ("/tmp/guardado_"+comp->ticketActual()->dbValue("nomticket")+".jpg");
       filename.remove(' ');
       if (QFile::exists(filename)) {
@@ -166,6 +167,16 @@ int BtCompany_setTicketActual_Post(BtCompany *comp) {
       } // end if
     } // end if
         return 0;
+}
+
+
+int BtCompany_cobrar_1(BtCompany *comp) {
+      QString filename ("/tmp/guardado_"+comp->ticketActual()->dbValue("nomticket")+".jpg");
+      filename.remove(' ');
+      QString cadena = "rm " + filename;
+      system (cadena.toAscii());
+      g_tablet->erasePixmap();
+      return 0;
 }
 
 /*

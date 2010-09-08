@@ -91,6 +91,7 @@ BtTicket::BtTicket ( BlMainCompany *emp, QWidget *parent ) : BlWidget ( emp, par
 BtTicket::~BtTicket()
 {
     blDebug ( "BtTicket::~BtTicket", 0 );
+    g_plugins->lanza ( "Des_BtTicket_BtTicket_Post", this );
     blDebug ( "END BtTicket::~BtTicket", 0 );
 }
 

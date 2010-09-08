@@ -60,6 +60,17 @@ TabletCanvas::TabletCanvas()
     lineWidthType = LineWidthPressure;
 }
 
+void TabletCanvas::erasePixmap()
+{
+    pixmap.fill(Qt::white);
+    QPainter painter(&pixmap);
+    if (!pixmap.isNull())
+        painter.drawPixmap(0, 0, pixmap);
+    painter.end();
+    update();
+}
+
+
 void TabletCanvas::initPixmap()
 {
     QPixmap newPixmap = QPixmap(width(), height());
@@ -134,7 +145,10 @@ void TabletCanvas::mousePressEvent(QMouseEvent *event)
             }
 }
 
-
+void TabletCanvas::mouseDoubleClickEvent(QMouseEvent *event)
+{
+            erasePixmap();
+}
 	    
 void TabletCanvas::mouseReleaseEvent(QMouseEvent *event) {
             if (deviceDown)

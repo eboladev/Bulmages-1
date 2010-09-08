@@ -36,5 +36,6 @@ extern "C" PLUGINBT_MODIFICADORES_EXPORT int MTicket_MTicket_Post (MTicket *);
 extern "C" PLUGINBT_MODIFICADORES_EXPORT int BtTicket_exportXML_Post( BtTicket *);
 extern "C" PLUGINBT_MODIFICADORES_EXPORT int BtCompany_setTicketActual(BtCompany *);
 extern "C" PLUGINBT_MODIFICADORES_EXPORT int BtCompany_setTicketActual_Post(BtCompany *);
+extern "C" PLUGINBT_MODIFICADORES_EXPORT int BtCompany_cobrar_1(BtCompany *);
 #endif
 

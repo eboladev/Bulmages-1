@@ -71,6 +71,7 @@ public:
 
     bool saveImage(const QString &file);
     bool loadImage(const QString &file);
+    void erasePixmap();
     void setAlphaChannelType(AlphaChannelType type)
         { alphaChannelType = type; }
     void setColorSaturationType(ColorSaturationType type)
@@ -90,6 +91,7 @@ protected:
     void tabletEvent(QTabletEvent *event);
     void mousePressEvent(QMouseEvent *event);
     void mouseReleaseEvent(QMouseEvent *event);
+    void mouseDoubleClickEvent(QMouseEvent *event);
     void mouseMoveEvent(QMouseEvent *event);
     void paintEvent(QPaintEvent *event);
     void resizeEvent(QResizeEvent *event);
