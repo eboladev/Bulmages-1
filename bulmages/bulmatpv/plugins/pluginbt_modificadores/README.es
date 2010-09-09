@@ -18,10 +18,12 @@ ArchivoSQLpatch:
 
 ArchivoSQLdeins: 
 
-Dependencias: libpluginbt_accesobotones.so
+Dependencias: libpluginbt_accesobotones.so;libpluginbf_modificadores.so
 
 Incompatibles:
 
-Orden: 90
+Orden: 900
+
+Categorias: Experimentales; Restauracion;
 
 Comentarios: 
