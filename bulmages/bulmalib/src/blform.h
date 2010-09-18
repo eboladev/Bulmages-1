@@ -43,6 +43,7 @@ private:
     edmode m_modo;
     QString m_title;
     QMap<QString,QString> m_variables;   /// Son elementos que han sido incrustados e inicializados por programas externos, generalmente el RML
+    QMap<QString,QString> m_globalvars;   /// Son elementos que han sido incrustados e inicializados por programas externos, generalmente el RML
 
 protected:
     void setModoConsulta();
@@ -79,6 +80,8 @@ public:
     virtual QString trataIfQuery ( const QString &query, const QString &datos );
     virtual QString trataIf ( const QString &query, const QString &datos, const QString &datos1 );
     virtual QString trataExists ( const QString &query, const QString &datos );
+    void setVar(const QString &varname, const QString &varvalue);
+    void clearVars();
     virtual void cargaSpecs();
     virtual void generaCampo ( const QString &objname, const QString &textname, const QString &type );
     virtual void activaDocumentos();

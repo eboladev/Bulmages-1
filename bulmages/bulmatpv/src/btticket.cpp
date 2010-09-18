@@ -2115,7 +2115,7 @@ QByteArray BtTicket::trataPngRaw64 ( const QByteArray &data, int tipoEscape )
     QByteArray dataq = QByteArray::fromBase64(data);
     pr.printImageRaw(dataq);
     blDebug ( "END BtTicket::trataPngRaw64", 0 );
-    blMsgInfo(pr.buffer());
+//    blMsgInfo(pr.buffer());
     return pr.buffer();
 
 }

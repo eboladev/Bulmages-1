@@ -932,6 +932,21 @@ void BlForm::pintarPost()
 }
 
 
+
+/// Permite que el programa introduzca variables de impresion propias sin tener 
+/// Que introducir datos en el registro de base de datos de ficha.
+void BlForm::setVar(const QString &varname, const QString &varvalue) {
+          m_globalvars[varname ] = varvalue;
+}
+
+/// Permite que el programa introduzca variables de impresion propias sin tener 
+/// Que introducir datos en el registro de base de datos de ficha.
+void BlForm::clearVars() {
+          m_globalvars.clear();
+}
+
+
+
 /// Sustituye valores en el texto pasado como variables por su valor.
 /// tipoEscape puede ser 0 --> Sin parseo
 ///    1 --> ParseoXML
@@ -948,6 +963,12 @@ void BlForm::substrVars ( QString &buff, int tipoEscape )
         buff.replace ( "[" + i.key() + "]", i.value() );
     } // end while
 
+    /// Tratamos la sustitucion de variables de m_variables
+    QMapIterator<QString, QString> j ( m_globalvars );
+    while ( j.hasNext() ) {
+        j.next();
+        buff.replace ( "[" + j.key() + "]", j.value() );
+    } // end while
 
     substrConf ( buff );
 
