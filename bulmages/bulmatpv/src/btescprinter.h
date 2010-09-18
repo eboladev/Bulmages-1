@@ -155,6 +155,7 @@ public:
     void initializePrinter();
 
     void printImage ( QString path );
+    void printImageRaw ( QByteArray &arr );
     void printText ( QString text );
 
     //Character ops

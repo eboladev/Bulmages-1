@@ -45,6 +45,7 @@ private:
     BlDbRecord *m_lineaActual;
     QString m_nomTicketDefecto;
     QMap<QString,QString> m_variables;   /// Son elementos que han sido incrustados e inicializados por programas externos, generalmente el RML
+    QMap<QString,QString> m_globalvars;   /// Son elementos que han sido incrustados e inicializados por programas externos, generalmente el RML
 
 public:
     virtual void pintar();
@@ -81,6 +82,7 @@ public:
     virtual int trataTags ( QByteArray &buff, int tipoEscape = 0 );
     virtual QByteArray trataIncludeFile ( const QString &file, int tipoEscape = 0 );
     virtual QByteArray trataIncludeImg ( const QString &file, int tipoEscape = 0 );
+    virtual QByteArray trataPngRaw64 ( const QByteArray &data, int tipoEscape = 0 );
     virtual QByteArray trataSetCharacterPrintMode( const QString &param, int tipoEscape = 0 );
     virtual QByteArray trataSetCharacterSpacing( const QString &param, int tipoEscape = 0 );
     virtual QByteArray trataSetCharacterCodeTable( const QString &param, int tipoEscape = 0 );
@@ -113,14 +115,16 @@ public:
     virtual QByteArray trataCutPaperAndFeed( const QString &param,  const QString &param1, int tipoEscape = 0 );
     virtual QByteArray trataRightJustified( const QString &param, const QString &param1, const QString &param2, const QString &param3, int tipoEscape = 0 );
     virtual QByteArray trataLeftJustified( const QString &param, const QString &param1, const QString &param2, const QString &param3, int tipoEscape = 0 );
-
+    virtual QByteArray trataLineasDetalle( const QByteArray &datos, int tipoEscape=0 );
+    
     QByteArray trataCursor ( BlDbRecordSet *cur, const QByteArray &datos, int tipoEscape = 0 );
     virtual QByteArray trataIfQuery ( const QString &query, const QByteArray &datos );
     virtual QByteArray trataIf ( const QString &query, const QByteArray &datos, const QByteArray &datos1 );
     virtual QByteArray trataExists ( const QString &query, const QByteArray &datos );
     void substrVars(QByteArray &buff, int tipoEscape = 0);
-
-
+    void setVar(const QString &varname, const QString &varvalue);
+    void clearVars();
+    
 public slots:
     virtual void subir();
     virtual void bajar();

@@ -1207,6 +1207,18 @@ bool BtTicket::syncXML(const QString &text, bool insertarSiempre) {
 
 /// ================================ VAMOS A TRATAR DE HACER LA IMPRESION SENCILLA CON PLANTILLAS ============================
 
+/// Permite que el programa introduzca variables de impresion propias sin tener 
+/// Que introducir datos en el registro de base de datos de ficha.
+void BtTicket::setVar(const QString &varname, const QString &varvalue) {
+          m_globalvars[varname ] = varvalue;
+}
+
+/// Permite que el programa introduzca variables de impresion propias sin tener 
+/// Que introducir datos en el registro de base de datos de ficha.
+void BtTicket::clearVars() {
+          m_globalvars.clear();
+}
+
 /// Sustituye valores en el texto pasado como variables por su valor.
 /// tipoEscape puede ser 0 --> Sin parseo
 ///    1 --> ParseoXML
@@ -1216,6 +1228,14 @@ void BtTicket::substrVars ( QByteArray &buff, int tipoEscape )
 
     int pos = 0;
 
+    /// Tratamos la sustitucion de variables de m_variables
+    QMapIterator<QString, QString> j ( m_globalvars );
+    while ( j.hasNext() ) {
+        j.next();
+        buff.replace ( ("[" + j.key() + "]").toAscii(), j.value().toAscii() );
+    } // end while
+    
+    
     /// Tratamos la sustitucion de variables de m_variables
     QMapIterator<QString, QString> i ( m_variables );
     while ( i.hasNext() ) {
@@ -1405,6 +1425,24 @@ int BtTicket::trataTags ( QByteArray &buff, int tipoEscape )
     substrVars ( buff, tipoEscape );
 
 
+    
+    
+    /// Buscamos algo de lineas de detalle
+    /// Inclusion de ficheros de codigo
+    pos = buff.indexOf("<!-- LINEAS DETALLE");
+    cadant = buff.left(pos);
+    buff = buff.right(buff.length()-pos);
+    QRegExp rx ( "<!--\\s*LINEAS\\s*DETALLE\\s*-->(.*)<!--\\s*END\\s*LINEAS\\s*DETALLE\\s*-->" );
+    rx.setMinimal ( TRUE );
+    
+    while ( ( pos = rx.indexIn ( buff, pos ) ) != -1 ) {
+        QByteArray ldetalle = trataLineasDetalle ( rx.cap ( 1 ).toAscii(), tipoEscape );
+        buff.replace ( pos, rx.matchedLength(), ldetalle );
+        pos = buff.indexOf("<!--");
+    } // end while    
+    buff = cadant + buff;
+    
+    
     /// Inclusion de ficheros de codigo
     pos = buff.indexOf("<!-- INCLUDE");
     cadant = buff.left(pos);
@@ -1944,7 +1982,22 @@ int BtTicket::trataTags ( QByteArray &buff, int tipoEscape )
     } // end while
     buff = cadant + buff;
 
-
+    /// Inclusion de imagenes
+    pos = buff.indexOf("<!-- PNGRAW64");
+    cadant = buff.left(pos);
+    buff = buff.right(buff.length()-pos);
+    QRegExp rx791 ( "<!--\\s*PNGRAW64\\s*DATA\\s*=\\s*\"([^\"]*)\"\\s*-->" );
+    rx791.setMinimal ( TRUE );
+    while ( ( pos = rx791.indexIn ( buff, 0 ) ) != -1 ) {
+        QByteArray ldetalle = trataPngRaw64 ( rx791.cap ( 1 ).toAscii(), tipoEscape );
+        buff.replace ( pos, rx791.matchedLength(), ldetalle );
+	buff = cadant + buff;
+        pos = buff.indexOf("<!-- PNGRAW64");
+	cadant = buff.left(pos);
+	buff = buff.right(buff.length()-pos);
+    } // end while
+    buff = cadant + buff;
+    
     blDebug ( "END BtTicket::trataTags", 0 );
     return 1;
 }
@@ -2043,6 +2096,26 @@ QByteArray BtTicket::trataIncludeImg ( const QString &file, int tipoEscape )
     pr.clearBuffer();
     pr.printImage(file);
     blDebug ( "END BtTicket::trataIncludeImg", 0 );
+    return pr.buffer();
+
+}
+
+
+/// Trata las inclusiones de imagenes
+/**
+\param det Texto de entrada para ser tratado por iteracion.
+\return
+**/
+QByteArray BtTicket::trataPngRaw64 ( const QByteArray &data, int tipoEscape )
+{
+    blDebug ( "BtTicket::trataPngRaw64", 0 );
+//    blMsgInfo("pngRawData");
+    BtEscPrinter pr;
+    pr.clearBuffer();
+    QByteArray dataq = QByteArray::fromBase64(data);
+    pr.printImageRaw(dataq);
+    blDebug ( "END BtTicket::trataPngRaw64", 0 );
+    blMsgInfo(pr.buffer());
     return pr.buffer();
 
 }
@@ -2802,6 +2875,51 @@ QByteArray BtTicket::trataQuery ( const QString &query, const QByteArray &datos,
     return result;
 
 }
+
+
+QByteArray BtTicket::trataLineasDetalle( const QByteArray &datos, int tipoEscape )
+{
+    blDebug ( "BtTicket::trataLineasDetalle", 0 );
+//    blMsgInfo("lineas de detalle");
+    QByteArray result = "";
+    
+
+    BlDbRecord *linea1;
+    for ( int i = 0; i < m_listaLineas->size(); ++i ) {
+        linea1 = m_listaLineas->at ( i );
+        QByteArray salidatemp = datos;
+
+        /// Buscamos cadenas perdidas adicionales que puedan quedar por poner.
+        //blDebug("salidatemp =",0,salidatemp);
+        QRegExp rx ( "\\[(\\w*)\\]" );
+        int pos =  0;
+        while ( ( pos = rx.indexIn ( salidatemp, pos ) ) != -1 ) {
+            //blDebug("substituïm ",0,rx.cap(1));
+            if ( linea1->exists ( rx.cap ( 1 ) ) ) {
+                switch ( tipoEscape ) {
+                case 1:
+                    salidatemp.replace ( pos, rx.matchedLength(), blXMLEscape ( linea1->dbValue ( rx.cap ( 1 ) )).toAscii()  );
+                    break;
+                case 2:
+                    salidatemp.replace ( pos, rx.matchedLength(), blPythonEscape ( linea1->dbValue ( rx.cap ( 1 ) )).toAscii()  );
+                    break;
+                default:
+                    salidatemp.replace ( pos, rx.matchedLength(), linea1->dbValue ( rx.cap ( 1 )).toAscii() );
+                    break;
+                } // emd switch
+                pos = 0;
+            } else {
+                pos += rx.matchedLength();
+            }
+        } // end while
+
+        result += salidatemp;
+    } // end for
+
+    blDebug ( "END BtTicket::trataLineasDetalle", 0 );
+    return result;
+}
+
 
 QByteArray BtTicket::trataCursor ( BlDbRecordSet *cur, const QByteArray &datos, int tipoEscape )
 {

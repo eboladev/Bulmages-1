@@ -112,6 +112,44 @@ void BtEscPrinter::printImage ( QString path )
 }
 
 
+void BtEscPrinter::printImageRaw ( QByteArray &arr )
+{
+    QImage img = QImage ( );
+    img.loadFromData(arr, "PNG");
+
+    if ( !img.isNull() ) {
+        if ( img.depth() != 1 ) {
+            img = img.convertToFormat ( QImage::Format_Mono, Qt::MonoOnly );
+        }
+        if ( !img.isNull() ) {
+            unsigned  short bytesX = img.bytesPerLine();
+            unsigned  short dotsY = img.height();
+            if ( img.width() / 8 > 65535 || img.height() > 2303 ) {
+                //ERROR IMAGE too large
+            } else {
+                int numBytes = img.numBytes();
+                char* data = ( char* ) img.bits();
+
+                char XL = ( char ) ( bytesX );
+                char XH = ( char ) ( bytesX >> 8 );
+                char YL = ( char ) ( dotsY );
+                char YH = ( char ) ( dotsY >> 8 );
+
+                const char header[8] = {0x1D, 0x76, 0x30, 0x00, XL, XH, YL, YH};
+
+                m_buffer.append ( QByteArray::fromRawData ( header, 8 ) );
+                m_buffer.append ( QByteArray::fromRawData ( data, numBytes ) );
+            }
+        } else {
+            //ERROR CONVERT IMAGE
+        }
+    } else {
+        //ERROR LOADING LOGO
+    }
+}
+
+
+
 //CHARACTER ESC CODES
 void BtEscPrinter::setCharacterSpacing ( unsigned char n )
 {

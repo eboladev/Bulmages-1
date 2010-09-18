@@ -63,8 +63,14 @@ int BtTicket_agregarLinea_Post ( BtTicket *tick )
 }
 
 
+
+/// Vamos a hacer que la impresion de cocina tambien utilize una plantilla.
+
+
 int impresionCocina(BtTicket *tick) {
     blDebug ("PluginBt_PrinterCocina::impresionCocina", 0);
+    
+
     struct empresastr {
         QString nombre;
         QString direccionCompleta;
@@ -220,7 +226,7 @@ int impresionCocina(BtTicket *tick) {
 
        /// Terminamos la impresion
       pr.setCharacterSize ( CHAR_WIDTH_1 | CHAR_HEIGHT_1 );
-
+/*
       QByteArray qba = tick->dbValue ( "refalbaran" ).toAscii();
       char* barcode = qba.data();
       pr.setJustification ( BtEscPrinter::center );
@@ -228,10 +234,19 @@ int impresionCocina(BtTicket *tick) {
       pr.printBarCode ( code39, qba.size(), barcode );
       pr.cutPaperAndFeed ( TRUE, 10 );
       pr.print();
+*/
 
+      /// Establecemos la variable de idprintercocina para que el sistema pueda identificarla.
+      tick->clearVars();
+      tick->setVar("idprintercocina", curimpresoras->valor("idprintercocina"));
+//      tick->clearVars();
+/// ============================      
+      tick->generaRML("ticket_cocina.txt");
+/// ============================
+      
        /// Si realmente hay algo que imprimir entonces lo sacamos.
        if (hayalgoqueimprimir) {
-              QString comando = "lp -d " + curimpresoras->valor("colaprintercocina") +" " +g_confpr->valor(CONF_DIR_USER) + "bulmatpv_cocina.txt";
+              QString comando = "lp -d " + curimpresoras->valor("colaprintercocina") +" " +g_confpr->valor(CONF_DIR_USER) + "ticket_cocina.txt";
               system ( comando.toAscii().data() );
        } // end if
 

@@ -1,0 +1,35 @@
+<!-- LINEAS DETALLE --> [idarticulo] [cantlalbaran] [pvpivainclalbaran]
+<!-- PNGRAW64 DATA="ASDFASDFASDFASDFASDFASDFASDFASDFASDFASDFASDF[idalbaran]"-->
+<!-- END LINEAS DETALLE -->
+
+
+<!-- QUERY="SELECT * FROM configuracion WHERE nombre='NombreEmpresa'" -->[valor]<!-- END QUERY --> <!-- QUERY="SELECT * FROM configuracion WHERE nombre='CIF'" -->[valor]<!-- END QUERY -->
+<!-- QUERY="SELECT * FROM configuracion WHERE nombre='DireccionCompleta'" -->[valor]<!-- END QUERY -->
+<!-- QUERY="SELECT * FROM configuracion WHERE nombre='CodPostal'" -->[valor]<!-- END QUERY -->     <!-- QUERY="SELECT * FROM configuracion WHERE nombre='Ciudad'" -->[valor]<!-- END QUERY -->
+<!-- QUERY="SELECT * FROM configuracion WHERE nombre='Provincia'" -->[valor]<!-- END QUERY -->
+<!-- QUERY="SELECT * FROM configuracion WHERE nombre='Telefono'" -->[valor]<!-- END QUERY -->
+<!-- QUERY="SELECT now()::DATE AS fecha" -->[fecha]<!-- END QUERY -->   <!-- QUERY="SELECT now()::TIME AS hora" -->[hora]<!-- END QUERY -->
+<!-- QUERY="SELECT * FROM trabajador WHERE idtrabajador=[idtrabajador]" -->[nomtrabajador]<!-- END QUERY -->
+<!-- QUERY="SELECT * FROM cliente WHERE idcliente=[idcliente]" -->[cifcliente] [nomcliente]<!-- END QUERY -->
+<!-- QUERY="SELECT * FROM almacen WHERE idalmacen=[idalmacen]" -->[nomalmacen]<!-- END QUERY -->
+<!-- TURNWHITEBLACK "1"-->
+ Uds. PRODUCTO               P.U. IMPORTE
+<!-- TURNWHITEBLACK "0"-->
+<!-- TURNWHITEBLACK "1"-->
+ Uds. PRODUCTO               P.U. IMPORTE
+<!-- TURNWHITEBLACK "0"-->
+
+<!-- SETJUSTIFICATION "RIGHT" --><!-- SETUNDERLINEMODE "0" --><!-- SETCHARACTERSIZE "119" --><!-- SETCHARACTERPRINTMODE " DOUBLE_WIDTH DOUBLE_HEIGHT CHARACTER_FONTA_SELECTED" -->
+
+
+<!-- SETCHARACTERSIZE "0" --><!-- SETJUSTIFICATION "CENTER" -->
+   GRACIAS POR SU VISITA
+   
+<!-- SETBARCODEFORMAT "2" "50" "BOTH" "FONTB" --><!-- PRINTBARCODE "CODE39" "6" "[refalbaran]" -->
+
+
+[idprintercocina]
+
+<!-- CUTPAPERANDFEED "TRUE" "5"-->
+
+
