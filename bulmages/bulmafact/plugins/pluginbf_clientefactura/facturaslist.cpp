@@ -85,13 +85,13 @@ FacturasList::FacturasList ( BfCompany *comp, QWidget *parent, Qt::WFlags flag, 
     m_articulo->setMainCompany ( mainCompany() );
     mui_list->setMainCompany ( mainCompany() );
     setSubForm ( mui_list );
-    /// Establecemos los parametros de busqueda del Cliente
+    /// Establecemos los parametros de busqueda del cliente
     m_cliente->setLabel ( _ ( "Cliente:" ) );
     m_cliente->setTableName ( "cliente" );
     m_cliente->m_valores["cifcliente"] = "";
     m_cliente->m_valores["nomcliente"] = "";
     
-        /// Iniciamos el buscador de trabajadores.
+    /// Iniciamos el buscador de series.
     mui_seriefactura->setMainCompany ( mainCompany() );
     mui_seriefactura->setQuery ( "SELECT * FROM serie_factura ORDER BY descserie_factura" );
     mui_seriefactura->setTableName ( "serie_factura" );
@@ -100,6 +100,16 @@ FacturasList::FacturasList ( BfCompany *comp, QWidget *parent, Qt::WFlags flag, 
     mui_seriefactura->m_valores["descserie_factura"] = "";
     mui_seriefactura->setAllowNull ( TRUE );
     mui_seriefactura->setId("");
+
+    /// Iniciamos el buscador de almacenes.
+    mui_almacen->setMainCompany ( mainCompany() );
+    mui_almacen->setQuery ( "SELECT * FROM almacen ORDER BY idalmacen" );
+    mui_almacen->setTableName ( "almacen" );
+    mui_almacen->setFieldId ( "codigoalmacen" );
+    mui_almacen->m_valores["codigoalmacen"] = "";
+    mui_almacen->m_valores["nomalmacen"] = "";
+    mui_almacen->setAllowNull ( TRUE );
+    mui_almacen->setId("");
     
     presentar();
     mdb_idfactura = "";
@@ -209,7 +219,11 @@ QString FacturasList::generaFiltro()
     } // end if
     
     if (mui_seriefactura->id() != "") {
-	filtro += " AND codigoserie_factura = '"+mui_seriefactura->id()+"'";
+	filtro += " AND codigoserie_factura = '" + mui_seriefactura->id() + "'";
+    } // end if
+
+    if (mui_almacen->id() != "") {
+	filtro += " AND codigoalmacen = '" + mui_almacen->id() + "'";
     } // end if
     
     
@@ -305,7 +319,7 @@ void FacturasList::setMainCompany ( BfCompany *comp )
     m_articulo->setMainCompany ( comp );
     mui_list->setMainCompany ( comp );
     
-        /// Iniciamos el buscador de trabajadores.
+    /// Iniciamos el buscador de series.
     mui_seriefactura->setMainCompany ( mainCompany() );
     mui_seriefactura->setQuery ( "SELECT * FROM serie_factura ORDER BY descserie_factura" );
     mui_seriefactura->setTableName ( "serie_factura" );
@@ -313,8 +327,18 @@ void FacturasList::setMainCompany ( BfCompany *comp )
     mui_seriefactura->m_valores["codigoserie_factura"] = "";
     mui_seriefactura->m_valores["descserie_factura"] = "";
     mui_seriefactura->setAllowNull ( TRUE );
-    mui_seriefactura->setId("");    
-    
+    mui_seriefactura->setId("");
+
+    /// Iniciamos el buscador de almacenes.
+    mui_almacen->setMainCompany ( mainCompany() );
+    mui_almacen->setQuery ( "SELECT * FROM almacen ORDER BY idalmacen" );
+    mui_almacen->setTableName ( "almacen" );
+    mui_almacen->setFieldId ( "codigoalmacen" );
+    mui_almacen->m_valores["codigoalmacen"] = "";
+    mui_almacen->m_valores["nomalmacen"] = "";
+    mui_almacen->setAllowNull ( TRUE );
+    mui_almacen->setId("");
+
     
     blDebug ( "END FacturasList::setMainCompany", 0 );
 }
