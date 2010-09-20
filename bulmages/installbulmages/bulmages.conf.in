@@ -87,7 +87,10 @@ CONF_DEBUG			FALSE
 CONF_ALERTAS_DBF		Yes
 
 # Indica si deben centrarse los campos de texto
-CONF_CENTRAR_CAMPOS_DE_TEXTO     FALSE
+CONF_CENTER_TEXT_FIELDS			FALSE
+
+# Preguntar al usuario antes de salir
+CONF_ASK_BEFORE_EXIT			TRUE
 
 
 # NOTA PARA DESARROLLADORES:

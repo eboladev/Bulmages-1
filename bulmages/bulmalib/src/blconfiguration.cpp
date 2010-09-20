@@ -423,8 +423,10 @@ QString BlConfiguration::nombre ( int i )
 	return "CONF_GLOBAL_CONFIG_COMPANY";
     if ( i == CONF_TPV_SERVER_SYNC_IP )
 	return "CONF_TPV_SERVER_SYNC_IP";
-    if ( i == CONF_CENTRAR_CAMPOS_DE_TEXTO )
-	return "CONF_CENTRAR_CAMPOS_DE_TEXTO";
+    if ( i == CONF_CENTER_TEXT_FIELDS )
+	return "CONF_CENTER_TEXT_FIELDS";
+    if ( i == CONF_ASK_BEFORE_EXIT )
+	return "CONF_ASK_BEFORE_EXIT";
     return "";
 }
 

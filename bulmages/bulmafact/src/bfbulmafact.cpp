@@ -181,20 +181,21 @@ void BfBulmaFact::closeEvent ( QCloseEvent *event )
     blDebug ( "BfBulmaFact::closeEvent", 0 );
 
 
-
     /// Antes de salir hacemos un mensaje de advertencia.
-    QMessageBox msgBox;
-    msgBox.setText(_("Seguro que desea abandonar el programa "));
-    msgBox.setInformativeText(_("Se perderan los cambios no guardados"));
-    msgBox.setStandardButtons( QMessageBox::Close | QMessageBox::Cancel);
-    msgBox.setDefaultButton(QMessageBox::Cancel);
-    int ret = msgBox.exec();
+    if ( g_confpr->valor ( CONF_ASK_BEFORE_EXIT ) == "TRUE" ) {
+	 QMessageBox msgBox;
+	 msgBox.setText(_("Seguro que desea abandonar el programa "));
+	 msgBox.setInformativeText(_("Se perderan los cambios no guardados"));
+	 msgBox.setStandardButtons( QMessageBox::Close | QMessageBox::Cancel);
+	 msgBox.setDefaultButton(QMessageBox::Cancel);
+	 int ret = msgBox.exec();
 
-    if (ret == QMessageBox::Cancel) {
-      event->ignore();
-      blDebug ( "END BfBulmaFact::closeEvent", 0 );
-      return;
-    }
+	 if (ret == QMessageBox::Cancel) {
+	   event->ignore();
+	   blDebug ( "END BfBulmaFact::closeEvent", 0 );
+	   return;
+	 }
+    } // END IF
 
     g_plugins->lanza ( "BfBulmaFact_closeEvent", this );
 
