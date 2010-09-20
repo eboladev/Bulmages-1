@@ -75,6 +75,13 @@ BEGIN
 	ALTER TABLE lalbaran ADD COLUMN idmodificador9 INTEGER DEFAULT NULL REFERENCES modificador(idmodificador);
     END IF;
 
+
+    SELECT INTO as attname, relname FROM pg_attribute LEFT JOIN pg_class ON pg_attribute.attrelid=pg_class.oid WHERE attname=''imglalbaran'' AND relname=''lalbaran'';
+    IF NOT FOUND THEN
+        ALTER TABLE lalbaran ADD COLUMN imglalbaran VARCHAR;
+    END IF;
+
+
 	RETURN 0;
 END;
 '   LANGUAGE plpgsql;

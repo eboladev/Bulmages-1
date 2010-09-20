@@ -25,6 +25,8 @@
 
 #include <QLabel>
 #include <QTextBrowser>
+#include <QBitmap>
+
 
 #include "mticketivainc.h"
 #include "bldb.h"
@@ -129,6 +131,34 @@ void MTicketIVAInc::pintar()
         htmlContent += "<td bgcolor=\"" + bgColor + "\" align=\"right\" width=\"50\">" + totalLinea.toQString('0', precision) + "</td>";
         htmlContent += "</tr>";
 
+	
+	/// SI HAY MODIFICADORES LOS PONEMOS.
+		
+	if (item->dbValue("imglalbaran") != "") {
+	        htmlContent += "<tr>";
+		htmlContent += "<td colspan=\"3\" bgcolor=\"" + bgColor + "\" >";
+		QString text1 = item->dbValue("imglalbaran");
+		QByteArray text = QByteArray::fromBase64(text1.toAscii());
+
+			      
+		QFile file("/tmp/imagen"+QString::number(i)+".png");
+		  if (!file.open(QIODevice::WriteOnly | QIODevice::Text))
+		      return;
+
+		  file.write(text);
+		  file.close();
+		
+		/*
+		QBitmap mapa = QBitmap::fromData(QSize(100,48),(const uchar *)text.data());
+		mapa.save("/tmp/imagen"+QString::number(i)+".png", "PNG");
+		*/
+		
+//		htmlContent += item->dbValue("imglalbaran");
+//		htmlContent += "<img src=\"/usr/local/share/bulmages/icons/catalogo.png\"></td>";
+		htmlContent += "<img src=\"/tmp/imagen"+QString::number(i)+".png\" width=\"215\" height=\"170\"></td>";
+		htmlContent += "</tr>";
+	} // end if
+	/// SIENDO PURISTAS ESTA PARTE DEBERIA ESTAR EN EL pluginbt_modificadores pero aqui tampoco va a molestar mucho.
     } // end for
 
     plainTextContent += "----------------------------------------\n";

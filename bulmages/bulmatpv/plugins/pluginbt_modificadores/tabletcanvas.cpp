@@ -47,7 +47,8 @@
 //! [0]
 TabletCanvas::TabletCanvas()
 {
-    resize(500, 500);
+    resize(215, 170);
+    setMaximumSize(215,170);
     myBrush = QBrush();
     myPen = QPen();
     initPixmap();
@@ -58,6 +59,7 @@ TabletCanvas::TabletCanvas()
     alphaChannelType = NoAlpha;
     colorSaturationType = NoSaturation;
     lineWidthType = LineWidthPressure;
+    m_vacio = TRUE;
 }
 
 void TabletCanvas::erasePixmap()
@@ -68,6 +70,7 @@ void TabletCanvas::erasePixmap()
         painter.drawPixmap(0, 0, pixmap);
     painter.end();
     update();
+    m_vacio = TRUE;
 }
 
 
@@ -127,6 +130,7 @@ void TabletCanvas::tabletEvent(QTabletEvent *event)
                 updateBrush(event);
                 QPainter painter(&pixmap);
                 paintPixmap(painter, event);
+		m_vacio = FALSE;
             }
             break;
         default:
@@ -165,6 +169,7 @@ void TabletCanvas::mouseMoveEvent(QMouseEvent *event) {
 //                updateBrush(event);
                 QPainter painter(&pixmap);
                 painter.drawLine(polyLine[1], event->pos());
+		m_vacio = FALSE;
             }
     update();
 }

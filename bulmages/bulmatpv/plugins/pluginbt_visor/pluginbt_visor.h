@@ -30,8 +30,8 @@
 extern "C" PLUGINBT_VISOR_EXPORT int entryPoint ( BtBulmaTPV * );
 extern "C" PLUGINBT_VISOR_EXPORT int exitPoint ( QMainWindow * );
 extern "C" PLUGINBT_VISOR_EXPORT int BtCompany_createMainWindows_Post ( BtCompany * );
-extern "C" PLUGINBT_VISOR_EXPORT int Ticket_insertarArticulo_Post ( BtTicket * );
-extern "C" PLUGINBT_VISOR_EXPORT int Ticket_total ( BtTicket * );
+extern "C" PLUGINBT_VISOR_EXPORT int BtTicket_insertarArticulo_Post ( BtTicket * );
+extern "C" PLUGINBT_VISOR_EXPORT int BtTicket_imprimir ( BtTicket * );
 
 
 #endif

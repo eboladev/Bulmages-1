@@ -108,12 +108,14 @@ private:
     QTabletEvent::PointerType pointerType;
     QTabletEvent::TabletDevice myTabletDevice;
     QColor myColor;
-
+    
+public:
     QPixmap pixmap;
     QBrush myBrush;
     QPen myPen;
     bool deviceDown;
     QPoint polyLine[3];
+    bool m_vacio;
 };
 //! [0]
 

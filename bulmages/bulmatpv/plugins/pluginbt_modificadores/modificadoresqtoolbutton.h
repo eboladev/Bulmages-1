@@ -49,4 +49,24 @@ public slots:
 };
 
 
+
+
+class MTabletQToolButton : public QToolButton
+{
+    Q_OBJECT
+
+private:
+    BtCompany *m_companyact;
+
+public:
+    MTabletQToolButton ( BtCompany *, QWidget *parent = NULL );
+    ~MTabletQToolButton();
+    void setBoton();
+
+public slots:
+    virtual void click();
+
+};
+
+
 #endif

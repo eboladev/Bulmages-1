@@ -32,6 +32,7 @@
 #include <QTcpServer>
 #include <QTcpSocket>
 #include <QDomDocument>
+#include <QBuffer>
 
 #include "serverlight.h"
 #include "bldb.h"
@@ -89,6 +90,12 @@ void ServerLight::readyRead() {
     
     QString texto(array);
 
+    fprintf(stderr, "\nPaquete recibido:\n");
+    fprintf(stderr, array);
+    fprintf(stderr, "\nPaquete finalizado :\n");
+    fprintf(stderr, QString::number(array.size()).toAscii());
+    fprintf(stderr, "\nFin Paquete recibido :\n");
+    
     /// Si se detecta el final de la transmision se procesa la informacion.
     if (texto.contains("</DOCUMENT>", Qt::CaseInsensitive)) {
     
@@ -141,6 +148,10 @@ void ServerLight::processTicketDataXML(QString data)
     BtTicket *ticket;
     BtTicket *ticketActual;
     
+    fprintf(stdout, "\n==========MENSAJE COMPLETO ===============\n");
+    fprintf(stdout, data.toAscii());
+    fprintf(stdout, "\n=========================\n");
+    
     ticketActual = emp->ticketActual();
   
   
@@ -184,11 +195,34 @@ void ServerLight::processTicketDataXML(QString data)
 
 	    QString idarticulo = e1.firstChildElement("IDARTICULO").text();
 	    QString cantarticulo = e1.firstChildElement("CANTARTICULO").text();
-
+	    QString imagen = "";
+	    QDomElement modificadores = e1.firstChildElement("MODIFICADORES");
+	    if (!modificadores.isNull()) 
+	      imagen = modificadores.firstChildElement("IMAGEN").text();
+	    
+	    
 	    /// Inserta lineas.
 	    BlDbRecord *linea = ticket->agregarLinea();
 	    linea->setDbValue("idarticulo", idarticulo);
-	    linea->setDbValue("cantlalbaran", cantarticulo);
+	    linea->setDbValue("cantlalbaran", cantarticulo);	    
+	    
+	    if (imagen != "") {
+	      QByteArray bytes1 = QByteArray::fromBase64(imagen.toAscii());
+	      QByteArray bytes;
+	      QBuffer buffer(&bytes);
+	      QImage img;
+	      buffer.open(QIODevice::WriteOnly);
+	      img.loadFromData(bytes1, "BMP");
+	      img.save("/tmp/imagen.bmp","BMP");
+	      img.save(&buffer, "PNG");
+	      QString text = bytes.toBase64();
+	      linea->setDbValue ( "imglalbaran", text );
+	    } else {
+	      linea->setDbValue ( "imglalbaran", "" );
+	    } // end if
+	    
+
+
 	    
 	    /// El plugin de IVA incluido tiene que estar instalado.
 	    
@@ -214,6 +248,11 @@ void ServerLight::processTicketDataXML(QString data)
 
     /// Aparca el ticket.
     emp->listaTickets()->prepend(ticket);
+    
+    /// Hacemos una llamada a plugins para indicar que hay un ticket nuevo y que deben recoger los otros plugins.
+    /// En este caso es una llamada extraña pq no se pasa la clase llamante sino que se pasa el ticket generado.
+    g_plugins->lanza("ticket_aparcado_remotamente", ticket);
+    
 }
 
 

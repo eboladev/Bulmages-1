@@ -38,7 +38,7 @@ extern "C" PLUGINBT_PRINTERCOCINA_EXPORT int BtTicket_borrarLinea ( BtTicket * )
 extern "C" PLUGINBT_PRINTERCOCINA_EXPORT int BtTicket_agregarLinea_Post ( BtTicket *);
 extern "C" PLUGINBT_PRINTERCOCINA_EXPORT int Abrevs_on_mui_aparcar_clicked( Abrevs *);
 extern "C" PLUGINBT_PRINTERCOCINA_EXPORT int BtCompany_cobrar_1(BtCompany *);
-
+extern "C" PLUGINBT_PRINTERCOCINA_EXPORT int ticket_aparcado_remotamente(BtTicket *tick);
 
 #endif
 

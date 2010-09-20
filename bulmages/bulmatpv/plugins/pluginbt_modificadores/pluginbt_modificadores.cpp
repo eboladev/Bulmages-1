@@ -21,6 +21,7 @@
  ***************************************************************************/
 
 #include <QToolButton>
+#include <QBuffer>
 
 #include "pluginbt_modificadores.h"
 #include "blconfiguration.h"
@@ -40,6 +41,21 @@ BlDockWidget *g_admin1;
 TabletCanvas *g_tablet;
 BlDockWidget *g_doc1 = NULL;
 
+
+int BtTicket_agregarLinea_Post ( BtTicket *tick )
+{
+    blDebug ( "PluginBt_Modificadores::BtTicket_agregarLinea_Post", 0 );
+    
+    BlDbRecord *item = (BlDbRecord *) g_plugParams;
+
+    item->addDbField ( "imglalbaran", BlDbField::DbVarChar, BlDbField::DbNothing, _( "Imagen." ) );
+    
+    blDebug ( "END PluginBt_Modificadores::BtTicket_agregarLinea_Post", 0 );
+    
+    return 0;
+}
+
+
 ///
 /**
 \return
@@ -56,7 +72,7 @@ int entryPoint ( BtBulmaTPV *tpv )
     g_doc1 = new BlDockWidget ( _ ( "Tablet" ), tpv, "pluginmodificadoresdock" );
     g_doc1->setFeatures ( QDockWidget::AllDockWidgetFeatures );
     g_doc1->setGeometry ( 100, 100, 100, 500 );
-    g_doc1->resize ( 330, 400 );
+    g_doc1->resize ( 250, 200 );
     tpv->addDockWidget ( Qt::LeftDockWidgetArea, g_doc1 );
     g_doc1->cargaconf();
     g_doc1->show();    
@@ -86,7 +102,17 @@ int MTicketIVAInc_MTicketIVAInc_Post (MTicketIVAInc *tick) {
     sel->setMinimumSize ( QSize ( 32, 32 ) );
     sel->setIcon ( QIcon ( g_confpr->valor ( CONF_PROGDATA ) + "icons/q19.png"  ) );
     sel->setIconSize ( QSize ( 32, 32 ) );    
+
     
+    MTabletQToolButton *sel1 = new MTabletQToolButton (  (BtCompany *)tick->mainCompany(), tick );
+    sel1->setFixedSize (48, 48);
+    sel1->setObjectName ( QString::fromUtf8 ( "Captura Tablet" ) );
+    sel1->setStatusTip ( "Captura Tablet" );
+    sel1->setToolTip ( "Captura Tablet" );
+    sel1->setMinimumSize ( QSize ( 32, 32 ) );
+    sel1->setIcon ( QIcon ( g_confpr->valor ( CONF_PROGDATA ) + "icons/q19.png"  ) );
+    sel1->setIconSize ( QSize ( 32, 32 ) );    
+        
     QHBoxLayout *m_hboxLayout1 = tick->mui_plugbotones->findChild<QHBoxLayout *> ( "hboxLayout1" );
     if ( !m_hboxLayout1 ) {
         m_hboxLayout1 = new QHBoxLayout ( tick->mui_plugbotones );
@@ -95,6 +121,7 @@ int MTicketIVAInc_MTicketIVAInc_Post (MTicketIVAInc *tick) {
         m_hboxLayout1->setObjectName ( QString::fromUtf8 ( "hboxLayout1" ) );
     } // end if
     m_hboxLayout1->addWidget ( sel );
+    m_hboxLayout1->addWidget ( sel1 );
 }
 
 
@@ -178,6 +205,36 @@ int BtCompany_cobrar_1(BtCompany *comp) {
       g_tablet->erasePixmap();
       return 0;
 }
+
+
+int BtTicket_insertarArticulo_Post ( BtTicket *tick )
+{
+
+    blDebug ( "PluginBt_Modificadores::BtTicket_insertarArticulo_Post", 0 );
+    
+    int valor = 0;
+    static int semaforo = 0;
+    
+    if ( semaforo == 0 ) {
+        semaforo = 1;
+	  if (g_tablet->m_vacio == TRUE) {
+	      tick->lineaActBtTicket()->setDbValue ( "imglalbaran", "" );
+	  } else {
+	      QByteArray bytes;
+	      QBuffer buffer(&bytes);
+	      buffer.open(QIODevice::WriteOnly);
+	      g_tablet->pixmap.save(&buffer, "PNG");
+	      QString text = bytes.toBase64();
+	      tick->lineaActBtTicket()->setDbValue ( "imglalbaran", text );
+	  } // end if 
+        semaforo = 0;
+    } // end if
+    
+    blDebug ( "END PluginBt_Modificadores::BtTicket_insertarArticulo_Post", 0 );
+
+    return valor;
+}
+
 
 /*
 int BtCompany_cobrar_1(BtCompany *comp) {

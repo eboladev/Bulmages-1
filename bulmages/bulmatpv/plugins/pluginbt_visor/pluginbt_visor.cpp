@@ -76,15 +76,16 @@ int exitPoint ( BtBulmaTPV *tpv )
     return 0;
 }
 
-int Ticket_insertarArticulo_Post ( BtTicket *tick )
+int BtTicket_insertarArticulo_Post ( BtTicket *tick )
 {
     blDebug ( "pluginvisor::Ticket_insertarArticulo_Post", 0 );
     if ( g_file->open ( QIODevice::WriteOnly | QIODevice::Unbuffered ) ) {
         g_file->write ( "\x0Ch", 1 );
-        QTextStream out ( g_file );
-        out <<   tick->lineaActBtTicket()->dbValue ( "codigocompletoarticulo" ).left ( 5 );
-        out << " " << tick->lineaActBtTicket()->dbValue ( "nomarticulo" ).left ( 10 );
-        out << "\n      P.V.P. : " << tick->lineaActBtTicket()->dbValue ( "pvplalbaran" );
+        g_file->write ( tick->lineaActBtTicket()->dbValue ( "codigocompletoarticulo" ).leftJustified ( 4, ' ', TRUE ).toAscii());
+        g_file->write ( " " );	
+        g_file->write ( tick->lineaActBtTicket()->dbValue ( "nomarticulo" ).leftJustified ( 15, ' ', TRUE ).toAscii());
+        g_file->write ( "P.V.P. : ");
+	g_file->write ( tick->lineaActBtTicket()->dbValue ( "pvpivainclalbaran" ).toAscii());
         g_file->flush();
         g_file->close();
     } // end if
@@ -92,15 +93,54 @@ int Ticket_insertarArticulo_Post ( BtTicket *tick )
     return 0;
 }
 
-int Ticket_total ( QString *total )
+
+
+/// Version para iva incluido.
+
+int BtTicket_imprimir ( BtTicket *tick )
 {
     if ( g_file->open ( QIODevice::WriteOnly | QIODevice::Unbuffered ) ) {
-        g_file->write ( "\x0Ch", 1 );
+
+      
+      
+        base basesimp;
+    base basesimpreqeq;
+    BlDbRecord *linea;
+    int precision=0;
+    int maxprecision=0;
+    
+    /// Impresion de los contenidos.
+    QString l;
+    BlFixed total ( "0.00" );
+    BlFixed descuentolinea ( "0.00" );
+    for ( int i = 0; i < tick->listaLineas() ->size(); ++i ) {
+        if (linea = tick->listaLineas() ->at ( i ) ) {
+            BlFixed cant ( linea->dbValue ( "cantlalbaran" ) );
+            BlFixed pvpund ( linea->dbValue ( "pvpivainclalbaran" ) );
+            BlFixed cantpvp = cant * pvpund;
+            precision = cant.precision() > pvpund.precision() ? cant.precision() : pvpund.precision();
+            maxprecision = precision > maxprecision ? precision : maxprecision;
+            total = total + cantpvp;
+        } // end if
+    } // end for
+
+      
+      
+      
+      
+      g_file->write ( "\x0Ch", 1 );
         QTextStream out ( g_file );
-        out << "Total : " << total;
+        out << "Total : " << total.toQString('0', maxprecision);
         g_file->flush();
         g_file->close();
     } // end if
+    
+    
+    
+    // ========================
+
+    
+    
     return 0;
 }
 

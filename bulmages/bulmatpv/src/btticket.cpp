@@ -1285,6 +1285,9 @@ int BtTicket::trataTags ( QByteArray &buff, int tipoEscape )
 {
     blDebug ( "BtTicket::trataTags", 0 );
 
+    static int profundidad = 0;
+    profundidad ++;
+    
     ///Buscamos interfaces, los preguntamos y los ponemos.
     int pos = 0;
     QByteArray cadant;
@@ -1435,7 +1438,7 @@ int BtTicket::trataTags ( QByteArray &buff, int tipoEscape )
     QRegExp rx ( "<!--\\s*LINEAS\\s*DETALLE\\s*-->(.*)<!--\\s*END\\s*LINEAS\\s*DETALLE\\s*-->" );
     rx.setMinimal ( TRUE );
     
-    while ( ( pos = rx.indexIn ( buff, pos ) ) != -1 ) {
+    while ( ( pos = rx.indexIn ( buff, 0 ) ) != -1 ) {
         QByteArray ldetalle = trataLineasDetalle ( rx.cap ( 1 ).toAscii(), tipoEscape );
         buff.replace ( pos, rx.matchedLength(), ldetalle );
         pos = buff.indexOf("<!--");
@@ -1747,23 +1750,6 @@ int BtTicket::trataTags ( QByteArray &buff, int tipoEscape )
     } // end while
     buff = cadant + buff;
     
-    
-    /// Cambio del setJustification
-    pos = buff.indexOf("<!-- SETJUSTIFICATION");
-    cadant = buff.left(pos);
-    buff = buff.right(buff.length()-pos);
-    QRegExp rx82 ( "<!--\\s*SETJUSTIFICATION\\s*\"([^\"]*)\"\\s*-->" );
-    rx82.setMinimal ( TRUE );
-    while ( ( pos = rx82.indexIn ( buff, 0 ) ) != -1 ) {
-        QByteArray ldetalle = trataSetJustification( rx82.cap ( 1 ), tipoEscape );
-        buff.replace ( pos, rx82.matchedLength(), ldetalle );
-	buff = cadant + buff;
-        pos = buff.indexOf("<!-- SETJUSTIFICATION");
-	cadant = buff.left(pos);
-	buff = buff.right(buff.length()-pos);
-    } // end while
-    buff = cadant + buff;
-    
     /// Cambio del setJustification
     pos = buff.indexOf("<!-- SETHABSOLUTEPOS");
     cadant = buff.left(pos);
@@ -1937,6 +1923,161 @@ int BtTicket::trataTags ( QByteArray &buff, int tipoEscape )
     } // end while
     buff = cadant + buff;
     
+    /*
+    
+    /// Cambio del RIGHTJUSTIFIED
+    pos = buff.indexOf("<!-- LEFTJUSTIFIED");
+    cadant = buff.left(pos);
+    buff = buff.right(buff.length()-pos);
+    QRegExp rx47 ( "<!--\\s*LEFTJUSTIFIED\\s*\"([^\"]*)\"\\s*\"([^\"]*)\"\\s*\"([^\"]*)\"\\s*\"([^\"]*)\"\\s*-->" );
+    rx47.setMinimal ( TRUE );
+    while ( ( pos = rx47.indexIn ( buff, 0 ) ) != -1 ) {
+        QByteArray ldetalle = trataLeftJustified( rx47.cap ( 1 ),  rx47.cap ( 2 ), rx47.cap ( 3 ),  rx47.cap ( 4 ),tipoEscape );
+        buff.replace ( pos, rx47.matchedLength(), ldetalle );
+	buff = cadant + buff;
+        pos = buff.indexOf("<!-- LEFTJUSTIFIED");
+	cadant = buff.left(pos);
+	buff = buff.right(buff.length()-pos);
+    } // end while
+    buff = cadant + buff;
+    
+    */
+    
+    /// Cambio del cutPaperAndFeed
+    pos = buff.indexOf("<!-- CUTPAPERANDFEED");
+    cadant = buff.left(pos);
+    buff = buff.right(buff.length()-pos);
+    QRegExp rx44 ( "<!--\\s*CUTPAPERANDFEED\\s*\"([^\"]*)\"\\s*\"([^\"]*)\"\\s*-->" );
+    rx44.setMinimal ( TRUE );
+    while ( ( pos = rx44.indexIn ( buff, 0 ) ) != -1 ) {
+        QByteArray ldetalle = trataCutPaperAndFeed( rx44.cap ( 1 ),  rx44.cap ( 2 ),tipoEscape );
+        buff.replace ( pos, rx44.matchedLength(), ldetalle );
+        pos = buff.indexOf("<!--");
+    } // end while
+    buff = cadant + buff;
+
+    /*
+    /// Inclusion de imagenes
+    pos = buff.indexOf("<!-- IMG");
+    cadant = buff.left(pos);
+    buff = buff.right(buff.length()-pos);
+    QRegExp rx29 ( "<!--\\s*IMG\\s*SRC\\s*=\\s*\"([^\"]*)\"\\s*-->" );
+    rx29.setMinimal ( TRUE );
+    while ( ( pos = rx29.indexIn ( buff, 0 ) ) != -1 ) {
+        QByteArray ldetalle = trataIncludeImg ( rx29.cap ( 1 ), tipoEscape );
+        buff.replace ( pos, rx29.matchedLength(), ldetalle );
+	buff = cadant + buff;
+        pos = buff.indexOf("<!-- IMG");
+	cadant = buff.left(pos);
+	buff = buff.right(buff.length()-pos);
+    } // end while
+    buff = cadant + buff;
+    */
+    /*
+    /// Inclusion de imagenes
+    pos = buff.indexOf("<!-- PNGRAW64");
+    cadant = buff.left(pos);
+    buff = buff.right(buff.length()-pos);
+    QRegExp rx791 ( "<!--\\s*PNGRAW64\\s*DATA\\s*=\\s*\"([^\"]*)\"\\s*-->" );
+    rx791.setMinimal ( TRUE );
+    while ( ( pos = rx791.indexIn ( buff, 0 ) ) != -1 ) {
+        QByteArray ldetalle = trataPngRaw64 ( rx791.cap ( 1 ).toAscii(), tipoEscape );
+        buff.replace ( pos, rx791.matchedLength(), ldetalle );
+	buff = cadant + buff;
+        pos = buff.indexOf("<!-- PNGRAW64");
+	cadant = buff.left(pos);
+	buff = buff.right(buff.length()-pos);
+    } // end while
+    buff = cadant + buff;
+*/
+    
+    profundidad --;
+    if (profundidad == 0) {
+      trataTagsPost(buff, tipoEscape);
+    } // end if
+    
+    
+    blDebug ( "END BtTicket::trataTags", 0 );
+    return 1;
+}
+
+
+
+/// Busca strings del tipo [xxxx] entro del texto pasado y los sustituye
+/// Por valores existentes en la base de datos.
+/// Tambien busca los parametros PARAM e IFACE para tambien tratarlos.
+/// Devuelve 1 Si todo esta OK o 0 Si hay algun error
+/**
+\param buff El texto entero sobre el que se hace el reemplazo de sentencias.
+**/
+int BtTicket::trataTagsPost ( QByteArray &buff, int tipoEscape )
+{
+    blDebug ( "BtTicket::trataTagsPost", 0 );
+
+    ///Buscamos interfaces, los preguntamos y los ponemos.
+    int pos = 0;
+    QByteArray cadant;
+
+    /// Cambio del setJustification
+    pos = buff.indexOf("<!-- SETJUSTIFICATION");
+    cadant = buff.left(pos);
+    buff = buff.right(buff.length()-pos);
+    QRegExp rx82 ( "<!--\\s*SETJUSTIFICATION\\s*\"([^\"]*)\"\\s*-->" );
+    rx82.setMinimal ( TRUE );
+    while ( ( pos = rx82.indexIn ( buff, 0 ) ) != -1 ) {
+        QByteArray ldetalle = trataSetJustification( rx82.cap ( 1 ), tipoEscape );
+        buff.replace ( pos, rx82.matchedLength(), ldetalle );
+	buff = cadant + buff;
+	pos = buff.indexOf("<!-- SETJUSTIFICATION");
+	cadant = buff.left(pos);
+	buff = buff.right(buff.length() - pos );
+    } // end while
+    buff = cadant + buff;
+    
+    
+    /// Cambio del PRINTBARCODE
+    pos = buff.indexOf("<!-- PRINTBARCODE");
+    cadant = buff.left(pos);
+    buff = buff.right(buff.length()-pos);
+    QRegExp rx23 ( "<!--\\s*PRINTBARCODE\\s*\"([^\"]*)\"\\s*\"([^\"]*)\"\\s*\"([^\"]*)\"\\s*-->" );
+    rx23.setMinimal ( TRUE );
+    while ( ( pos = rx23.indexIn ( buff, 0 ) ) != -1 ) {
+        QByteArray ldetalle = trataPrintBarCode( rx23.cap ( 1 ), rx23.cap ( 2 ),rx23.cap ( 3 ),tipoEscape );
+        buff.replace ( pos, rx23.matchedLength(), ldetalle );
+        pos = buff.indexOf("<!--");
+    } // end while
+    buff = cadant + buff;
+    
+    /// Cambio del SETBARCODEHEIGHT
+    pos = buff.indexOf("<!-- SETBARCODEHEIGHT");
+    cadant = buff.left(pos);
+    buff = buff.right(buff.length()-pos);
+    QRegExp rx33 ( "<!--\\s*SETBARCODEHEIGHT\\s*\"([^\"]*)\"\\s*-->" );
+    rx33.setMinimal ( TRUE );
+    while ( ( pos = rx33.indexIn ( buff, 0 ) ) != -1 ) {
+        QByteArray ldetalle = trataSetBarCodeHeight( rx33.cap ( 1 ), tipoEscape );
+        buff.replace ( pos, rx33.matchedLength(), ldetalle );
+        pos = buff.indexOf("<!--");
+    } // end while
+    buff = cadant + buff;
+    
+
+    /// Cambio del RIGHTJUSTIFIED
+    pos = buff.indexOf("<!-- RIGHTJUSTIFIED");
+    cadant = buff.left(pos);
+    buff = buff.right(buff.length()-pos);
+    QRegExp rx46 ( "<!--\\s*RIGHTJUSTIFIED\\s*\"([^\"]*)\"\\s*\"([^\"]*)\"\\s*\"([^\"]*)\"\\s*\"([^\"]*)\"\\s*-->" );
+    rx46.setMinimal ( TRUE );
+    while ( ( pos = rx46.indexIn ( buff, 0 ) ) != -1 ) {
+        QByteArray ldetalle = trataRightJustified( rx46.cap ( 1 ),  rx46.cap ( 2 ), rx46.cap ( 3 ),  rx46.cap ( 4 ),tipoEscape );
+        buff.replace ( pos, rx46.matchedLength(), ldetalle );
+	buff = cadant + buff;
+        pos = buff.indexOf("<!-- RIGHTJUSTIFIED");
+	cadant = buff.left(pos);
+	buff = buff.right(buff.length()-pos);
+    } // end while
+    buff = cadant + buff;
+    
     /// Cambio del RIGHTJUSTIFIED
     pos = buff.indexOf("<!-- LEFTJUSTIFIED");
     cadant = buff.left(pos);
@@ -1998,9 +2139,10 @@ int BtTicket::trataTags ( QByteArray &buff, int tipoEscape )
     } // end while
     buff = cadant + buff;
     
-    blDebug ( "END BtTicket::trataTags", 0 );
+    blDebug ( "END BtTicket::trataTagsPost", 0 );
     return 1;
 }
+
 
 
 /// Trata las lineas de detalle encontradas dentro de los tags <!--LINEAS DETALLE-->

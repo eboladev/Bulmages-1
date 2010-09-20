@@ -1,9 +1,9 @@
-<!-- IMG SRC="[CONF_DIR_OPENREPORTS]logo.jpg"--><!-- SETJUSTIFICATION "CENTER" -->
+<!-- SETJUSTIFICATION "CENTER" --><!-- IMG SRC="[CONF_DIR_OPENREPORTS]logo.jpg"-->
 <!-- QUERY="SELECT * FROM configuracion WHERE nombre='NombreEmpresa'" -->[valor]<!-- END QUERY --> <!-- QUERY="SELECT * FROM configuracion WHERE nombre='CIF'" -->[valor]<!-- END QUERY -->
 <!-- QUERY="SELECT * FROM configuracion WHERE nombre='DireccionCompleta'" -->[valor]<!-- END QUERY -->
 <!-- QUERY="SELECT * FROM configuracion WHERE nombre='CodPostal'" -->[valor]<!-- END QUERY -->     <!-- QUERY="SELECT * FROM configuracion WHERE nombre='Ciudad'" -->[valor]<!-- END QUERY -->
 <!-- QUERY="SELECT * FROM configuracion WHERE nombre='Provincia'" -->[valor]<!-- END QUERY -->
-<!-- QUERY="SELECT * FROM configuracion WHERE nombre='Telefono'" -->Tel. [valor]<!-- END QUERY -->
+<!-- QUERY="SELECT * FROM configuracion WHERE nombre='Telefono'" -->Tel. [valor]<!-- END QUERY --><!-- SETJUSTIFICATION "LEFT" -->
 <!-- QUERY="SELECT now()::DATE AS fecha" -->Fecha: [fecha]<!-- END QUERY -->   <!-- QUERY="SELECT now()::TIME AS hora" -->[hora]<!-- END QUERY -->
 <!-- QUERY="SELECT * FROM trabajador WHERE idtrabajador=[idtrabajador]" -->Le atendio: [nomtrabajador]<!-- END QUERY -->
 <!-- QUERY="SELECT * FROM cliente WHERE idcliente=[idcliente]" -->Cliente: [cifcliente] [nomcliente]<!-- END QUERY -->
@@ -23,9 +23,7 @@
 
 <!-- SETCHARACTERSIZE "0" --><!-- SETJUSTIFICATION "CENTER" -->
    GRACIAS POR SU VISITA
-   
 <!-- SETBARCODEFORMAT "2" "50" "BOTH" "FONTB" --><!-- PRINTBARCODE "CODE39" "6" "[refalbaran]" -->
-
 
 <!-- CUTPAPERANDFEED "TRUE" "5"-->
 

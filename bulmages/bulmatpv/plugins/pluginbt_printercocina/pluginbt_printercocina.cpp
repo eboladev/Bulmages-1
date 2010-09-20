@@ -276,6 +276,13 @@ int Abrevs_on_mui_aparcar_clicked( Abrevs *av)
     return 0;
 }
 
+int ticket_aparcado_remotamente(BtTicket *tick) {
+  impresionCocina(tick);
+  return 0;
+}
+
+
+
 int BtCompany_cobrar_1(BtCompany *comp) {
     blDebug ( "PluginBt_PrinterCocina::BtCompany_cobrar_1", 0 );
     impresionCocina(comp->ticketActual());

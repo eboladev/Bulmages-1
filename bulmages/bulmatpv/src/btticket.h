@@ -80,6 +80,7 @@ public:
     virtual int generaRML ( const QString & );
     virtual int generaRML ( void );
     virtual int trataTags ( QByteArray &buff, int tipoEscape = 0 );
+    virtual int trataTagsPost ( QByteArray &buff, int tipoEscape = 0 );
     virtual QByteArray trataIncludeFile ( const QString &file, int tipoEscape = 0 );
     virtual QByteArray trataIncludeImg ( const QString &file, int tipoEscape = 0 );
     virtual QByteArray trataPngRaw64 ( const QByteArray &data, int tipoEscape = 0 );
