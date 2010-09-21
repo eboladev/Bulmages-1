@@ -34,11 +34,7 @@
 
 #include "tabletcanvas.h"
 
-/*
-Admin *g_admin;
-BlDockWidget *g_admin1;
-*/
-TabletCanvas *g_tablet;
+TabletCanvas *g_tablet = NULL;
 BlDockWidget *g_doc1 = NULL;
 
 
@@ -171,31 +167,40 @@ int BtTicket_exportXML_Post( BtTicket *tick)
     blDebug ( "PluginBt_Modificadores::BtTicket_exportXML_Post", 0 );
     QString filename ("/tmp/guardado_"+tick->dbValue("nomticket")+".jpg");
     filename.remove(' ');
-//    g_tablet->saveImage(filename);
     blDebug ( "END PluginBt_Modificadores::BtTicket_exportXML_Post", 0 );
     return 0;
 }
 
 
 int BtCompany_setTicketActual(BtCompany *comp) {
+    blDebug ( "PluginBt_Modificadores::BtCompany_setTicketActual", 0 );
     if (comp->ticketActual()) {
+    if (comp->ticketActual()->exists("nomticket")) {
       QString filename ("/tmp/guardado_"+comp->ticketActual()->dbValue("nomticket")+".jpg");
       filename.remove(' ');
-      g_tablet->saveImage(filename);
+      if (g_tablet) {
+	g_tablet->saveImage(filename);
+      } // end if
     } // end if
-        return 0;
+    } // end if
+    blDebug ( "END PluginBt_Modificadores::BtCompany_setTicketActual", 0 );
+    return 0;
 }
 
 int BtCompany_setTicketActual_Post(BtCompany *comp) {
+    blDebug ( "PluginBt_Modificadores::BtCompany_setTicketActual_Post", 0 );
     if (comp->ticketActual()) {
       g_tablet->erasePixmap();
       QString filename ("/tmp/guardado_"+comp->ticketActual()->dbValue("nomticket")+".jpg");
       filename.remove(' ');
       if (QFile::exists(filename)) {
-	g_tablet->loadImage(filename);
+	if (g_tablet) {
+	  g_tablet->loadImage(filename);
+	} // end if
       } // end if
     } // end if
-        return 0;
+    blDebug ( "END PluginBt_Modificadores::BtCompany_setTicketActual_Post", 0 );
+    return 0;
 }
 
 
@@ -238,11 +243,3 @@ int BtTicket_insertarArticulo_Post ( BtTicket *tick )
 }
 
 
-/*
-int BtCompany_cobrar_1(BtCompany *comp) {
-    blDebug ( "PluginBt_PrinterCocina::BtCompany_cobrar_1", 0 );
-    impresionCocina(comp->ticketActual());
-    blDebug ( "END PluginBt_PrinterCocina::BtCompany_cobrar_1", 0 );
-    return 0;
-}
-*/
