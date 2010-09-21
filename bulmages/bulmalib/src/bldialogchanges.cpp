@@ -25,8 +25,8 @@
 #include <QComboBox>
 #include <QCheckBox>
 
+#include "bldatesearch.h"
 #include "bldialogchanges.h"
-
 
 ///
 /**
@@ -87,6 +87,7 @@ void BlDialogChanges::dialogChanges_cargaInicial()
         m_maxQTable = 0;
         m_maxQComboBox = 0;
         m_maxQCheckBox = 0;
+	  m_maxBlDateSearch = 0;
 
         QListIterator<QObject *> it_excluidos ( m_listaExcluidos );
 
@@ -144,6 +145,15 @@ void BlDialogChanges::dialogChanges_cargaInicial()
             } // end if
         } // end while
 
+	  QList<BlDateSearch *> l7 = m_obje->findChildren<BlDateSearch *>();
+	  QListIterator<BlDateSearch *> it7 ( l7 );
+	  while ( it7.hasNext() ) {
+		BlDateSearch * item = it7.next();
+		if ( item->objectName().startsWith ( "mui_" ) && !objExcluido ( item ) ) {
+		    m_listaBlDateSearch[m_maxBlDateSearch++] = item;
+		} // end if
+	  } // end while
+
         m_valorinicial = calculateValues();
         blDebug ( "END BlDialogChanges::dialogChanges_cargaInicial", 0, m_valorinicial.toAscii() );
     } catch ( ... ) {
@@ -179,6 +189,8 @@ QString BlDialogChanges::calculateValues()
     values += retrieveValues ( "QTextEdit" );
     values += retrieveValues ( "QComboBox" );
     values += retrieveValues ( "QCheckBox" );
+    values += retrieveValues ( "BlDateSearch" );
+
     blDebug ( "END BlDialogChanges::calculateValues", 0 );
     return values;
 }
@@ -289,6 +301,19 @@ QString BlDialogChanges::retrieveValues ( QString qsWidget )
                 } // end if
             } // end for
         } // end if
+
+	  if ( qsWidget == "BlDateSearch" ) {
+		for ( int i = 0; i < m_maxBlDateSearch; i++ ) {
+		    if ( m_listaBlDateSearch[i] != NULL ) {
+			 if ( ( ( BlDateSearch* ) m_listaBlDateSearch[i] ) ->objectName().startsWith ( "mui_" ) ) {
+				values += ( ( BlDateSearch* ) m_listaBlDateSearch[i] ) ->objectName();
+
+			  /// Tener en cuenta el caso de los checkbox triestado
+			    values += ( ( BlDateSearch* ) m_listaBlDateSearch[i] ) ->text();
+			  } // end if
+		    } // end if
+		} // end for
+	  } // end if
 
         blDebug ( "END BlDialogChanges::retrieveValues", 0, values );
         return values;

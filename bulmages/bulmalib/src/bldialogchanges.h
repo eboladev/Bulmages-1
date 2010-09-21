@@ -33,21 +33,27 @@
 /// Luego para saber si hay cambios en el formulario vuelve a comparar.
 class BL_EXPORT BlDialogChanges
 {
+
 private:
+    // M&aacute;xima cantidad de objetos a los que se les pueden detectar cambios
+    static const int max_quantity = 999;
+
     int m_maxQLine;
     int m_maxQPlainText;
     int m_maxQText;
     int m_maxQTable;
     int m_maxQComboBox;
     int m_maxQCheckBox;
+    int m_maxBlDateSearch;
     QString m_valorinicial;
     QObject *m_obje;
-    QObject *m_listaQLine[999];
-    QObject *m_listaQPlainText[999];
-    QObject *m_listaQText[999];
-    QObject *m_listaQTable[999];
-    QObject *m_listaQComboBox[999];
-    QObject *m_listaQCheckBox[999];
+    QObject *m_listaQLine[max_quantity];
+    QObject *m_listaQPlainText[max_quantity];
+    QObject *m_listaQText[max_quantity];
+    QObject *m_listaQTable[max_quantity];
+    QObject *m_listaQComboBox[max_quantity];
+    QObject *m_listaQCheckBox[max_quantity];
+    QObject *m_listaBlDateSearch[max_quantity];
     QList<QObject*> m_listaExcluidos;
 
 public:
