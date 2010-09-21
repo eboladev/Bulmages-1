@@ -93,6 +93,9 @@
         <file alias="template2ods.png">images/oxygen/actions/48x48/application-vnd.oasis.opendocument.spreadsheet.png</file>
         <file alias="template2rml.png">images/oxygen/actions/48x48/application-pdf.png</file>
         <file alias="externalapp.png">images/oxygen/actions/48x48/xorg.png</file>
+        <file alias="modificadoresg.png">images/oxygen/actions/48x48/modificadoresg.png</file>
+        <file alias="modificadores.png">images/oxygen/actions/48x48/modificadores.png</file>
+
     </qresource>
     <qresource prefix="/BulmaCont32x32" >
         <file>images/png/decrypted.png</file>

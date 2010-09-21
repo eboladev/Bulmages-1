@@ -96,4 +96,8 @@ endforeach(dfile in ${docs})
 
 add_dependencies(${plugin} bulmatpv bulmalib pluginbt_ticketivaincluido pluginbt_ticket) 
 
+install(DIRECTORY icons/ 
+      DESTINATION share/bulmages/icons
+      PATTERN ".svn" EXCLUDE)
+
 install_targets(/lib/bulmatpv/plugins ${plugin})
