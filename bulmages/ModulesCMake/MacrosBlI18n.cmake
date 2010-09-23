@@ -20,6 +20,7 @@
 #   ADD_LOCAL_BLI18N_HEADER
 
 MACRO(ADD_LOCAL_BLI18N_HEADER _input) 
+    if (NOT EXISTS ${CMAKE_CURRENT_BINARY_DIR}/local_BlI18n.h)
     FILE( WRITE ${CMAKE_CURRENT_BINARY_DIR}/local_BlI18n.h
           "/* Generated file. Please do not edit! */\n"
           "/* created by MacrosBlI18n.cmake */\n"
@@ -33,4 +34,5 @@ MACRO(ADD_LOCAL_BLI18N_HEADER _input)
           " #define N_(String,Int) BlI18n(\"${_input}\",String)\n"
           "#endif\n\n"
           "#endif /*LOCAL_BLI18N*/\n" )
+    endif (NOT EXISTS ${CMAKE_CURRENT_BINARY_DIR}/local_BlI18n.h)
 ENDMACRO(ADD_LOCAL_BLI18N_HEADER)
