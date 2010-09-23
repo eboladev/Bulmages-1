@@ -8,145 +8,13 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-10-30 16:10+0100\n"
+"POT-Creation-Date: 2010-09-23 18:50+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-
-#: tutoreslist.cpp:144 ui_tutoreslistbase.h:243
-msgid "Padres"
-msgstr ""
-
-#: tutoreslist.cpp:160
-msgid "Debe seleccionar una linea"
-msgstr ""
-
-#: tutoreslist.cpp:174
-msgid "Error al borrar el cobro a cliente"
-msgstr ""
-
-#: tutoreslist.cpp:202
-msgid "Debe seleccionar una fila primero"
-msgstr ""
-
-#: tutoreslist.cpp:218 ui_tutoreslistbase.h:254 ui_tutoreslistbase.h:257
-msgid "Editar Tutor"
-msgstr ""
-
-#: tutoreslist.cpp:219 ui_tutoreslistbase.h:262 ui_tutoreslistbase.h:265
-msgid "Borrar Tutor"
-msgstr ""
-
-#: tutoreslist.cpp:264
-msgid "ID padre"
-msgstr ""
-
-#: tutoreslist.cpp:266
-msgid "Numero Socio"
-msgstr ""
-
-#: tutoreslist.cpp:267
-msgid "Nombre"
-msgstr ""
-
-#: tutoreslist.cpp:268
-msgid "1er Apellido"
-msgstr ""
-
-#: tutoreslist.cpp:269
-msgid "2o Apellido"
-msgstr ""
-
-#: tutoreslist.cpp:270
-msgid "Codigo"
-msgstr ""
-
-#: tutoreslist.cpp:271
-msgid "C.I.F."
-msgstr ""
-
-#: tutoreslist.cpp:272
-msgid "Nombre alternativo del cliente"
-msgstr ""
-
-#: tutoreslist.cpp:273
-msgid "Numero cuenta corriente"
-msgstr ""
-
-#: tutoreslist.cpp:274
-msgid "Direccion"
-msgstr ""
-
-#: tutoreslist.cpp:275
-msgid "Poblacion"
-msgstr ""
-
-#: tutoreslist.cpp:276
-msgid "Codigo postal"
-msgstr ""
-
-#: tutoreslist.cpp:277
-msgid "Numero de telefono"
-msgstr ""
-
-#: tutoreslist.cpp:278
-msgid "Numero de fax"
-msgstr ""
-
-#: tutoreslist.cpp:279
-msgid "Direccion de correo electronica"
-msgstr ""
-
-#: tutoreslist.cpp:280
-msgid "Direccion URL"
-msgstr ""
-
-#: tutoreslist.cpp:281
-msgid "Empresa"
-msgstr ""
-
-#: tutoreslist.cpp:282
-msgid "Fecha de alta del cliente"
-msgstr ""
-
-#: tutoreslist.cpp:283
-msgid "Fecha de baja del cliente"
-msgstr ""
-
-#: tutoreslist.cpp:284
-msgid "Comentarios"
-msgstr ""
-
-#: pluginbf_tutor.cpp:99
-msgid "&Padres/Socios"
-msgstr ""
-
-#: pluginbf_tutor.cpp:101 pluginbf_tutor.cpp:102
-msgid "Padres/Socios"
-msgstr ""
-
-#: pluginbf_tutor.cpp:107
-msgid "&Nuevo padre/socio"
-msgstr ""
-
-#: pluginbf_tutor.cpp:109 pluginbf_tutor.cpp:110
-msgid "Nuevo padre/socio"
-msgstr ""
-
-#: pluginbf_tutor.cpp:371 pluginbf_tutor.cpp:396
-msgid "Nuevo tutor"
-msgstr ""
-
-#: pluginbf_tutor.cpp:373 pluginbf_tutor.cpp:390
-msgid "Editar tutor"
-msgstr ""
-
-#: pluginbf_tutor.cpp:375 pluginbf_tutor.cpp:394
-msgid "Seleccionar tutor"
-msgstr ""
 
 #: tutorview.cpp:53
 msgid "Padre"
@@ -234,6 +102,250 @@ msgstr ""
 msgid "Id tutor"
 msgstr ""
 
+#: pluginbf_tutor.cpp:98
+msgid "&Padres/Socios"
+msgstr ""
+
+#: pluginbf_tutor.cpp:100 pluginbf_tutor.cpp:101
+msgid "Padres/Socios"
+msgstr ""
+
+#: pluginbf_tutor.cpp:106
+msgid "&Nuevo padre/socio"
+msgstr ""
+
+#: pluginbf_tutor.cpp:108 pluginbf_tutor.cpp:109
+msgid "Nuevo padre/socio"
+msgstr ""
+
+#: pluginbf_tutor.cpp:370 pluginbf_tutor.cpp:395
+msgid "Nuevo tutor"
+msgstr ""
+
+#: pluginbf_tutor.cpp:372 pluginbf_tutor.cpp:389
+msgid "Editar tutor"
+msgstr ""
+
+#: pluginbf_tutor.cpp:374 pluginbf_tutor.cpp:393
+msgid "Seleccionar tutor"
+msgstr ""
+
+#: tutoreslist.cpp:146 ui_tutoreslistbase.h:243
+msgid "Padres"
+msgstr ""
+
+#: tutoreslist.cpp:162
+msgid "Debe seleccionar una linea"
+msgstr ""
+
+#: tutoreslist.cpp:176
+msgid "Error al borrar el cobro a cliente"
+msgstr ""
+
+#: tutoreslist.cpp:204
+msgid "Debe seleccionar una fila primero"
+msgstr ""
+
+#: tutoreslist.cpp:220 ui_tutoreslistbase.h:254 ui_tutoreslistbase.h:257
+msgid "Editar Tutor"
+msgstr ""
+
+#: tutoreslist.cpp:221 ui_tutoreslistbase.h:262 ui_tutoreslistbase.h:265
+msgid "Borrar Tutor"
+msgstr ""
+
+#: tutoreslist.cpp:266
+msgid "ID padre"
+msgstr ""
+
+#: tutoreslist.cpp:268
+msgid "Numero Socio"
+msgstr ""
+
+#: tutoreslist.cpp:269
+msgid "Nombre"
+msgstr ""
+
+#: tutoreslist.cpp:270
+msgid "1er Apellido"
+msgstr ""
+
+#: tutoreslist.cpp:271
+msgid "2o Apellido"
+msgstr ""
+
+#: tutoreslist.cpp:272
+msgid "Codigo"
+msgstr ""
+
+#: tutoreslist.cpp:273
+msgid "C.I.F."
+msgstr ""
+
+#: tutoreslist.cpp:274
+msgid "Nombre alternativo del cliente"
+msgstr ""
+
+#: tutoreslist.cpp:275
+msgid "Numero cuenta corriente"
+msgstr ""
+
+#: tutoreslist.cpp:276
+msgid "Direccion"
+msgstr ""
+
+#: tutoreslist.cpp:277
+msgid "Poblacion"
+msgstr ""
+
+#: tutoreslist.cpp:278
+msgid "Codigo postal"
+msgstr ""
+
+#: tutoreslist.cpp:279
+msgid "Numero de telefono"
+msgstr ""
+
+#: tutoreslist.cpp:280
+msgid "Numero de fax"
+msgstr ""
+
+#: tutoreslist.cpp:281
+msgid "Direccion de correo electronica"
+msgstr ""
+
+#: tutoreslist.cpp:282
+msgid "Direccion URL"
+msgstr ""
+
+#: tutoreslist.cpp:283
+msgid "Empresa"
+msgstr ""
+
+#: tutoreslist.cpp:284
+msgid "Fecha de alta del cliente"
+msgstr ""
+
+#: tutoreslist.cpp:285
+msgid "Fecha de baja del cliente"
+msgstr ""
+
+#: tutoreslist.cpp:286
+msgid "Comentarios"
+msgstr ""
+
+#: ui_tutorbase.h:496
+msgid "Nuevo Padre/Socio"
+msgstr ""
+
+#: ui_tutorbase.h:499 ui_tutorbase.h:502
+msgid "Guardar cobro"
+msgstr ""
+
+#: ui_tutorbase.h:505
+msgid "Ctrl+S"
+msgstr ""
+
+#: ui_tutorbase.h:507 ui_tutorbase.h:510 ui_tutorbase.h:515 ui_tutorbase.h:518
+msgid "Borrar cobro"
+msgstr ""
+
+#: ui_tutorbase.h:513 ui_tutoreslistbase.h:268
+msgid "Ctrl+D"
+msgstr ""
+
+#: ui_tutorbase.h:521
+msgid "Ctrl+I"
+msgstr ""
+
+#: ui_tutorbase.h:522
+msgid "&Aceptar"
+msgstr ""
+
+#: ui_tutorbase.h:523
+msgid "&Cancelar"
+msgstr ""
+
+#: ui_tutorbase.h:524
+msgid "NIF:"
+msgstr ""
+
+#: ui_tutorbase.h:525
+msgid "Socio"
+msgstr ""
+
+#: ui_tutorbase.h:526
+msgid "Nº Socio:"
+msgstr ""
+
+#: ui_tutorbase.h:527
+msgid "Nombre:"
+msgstr ""
+
+#: ui_tutorbase.h:528
+msgid "Direccion:"
+msgstr ""
+
+#: ui_tutorbase.h:529
+msgid "Provincia:"
+msgstr ""
+
+#: ui_tutorbase.h:530
+msgid "Poblacion:"
+msgstr ""
+
+#: ui_tutorbase.h:531
+msgid "Telefono fijo:"
+msgstr ""
+
+#: ui_tutorbase.h:532
+msgid "Telefono movil:"
+msgstr ""
+
+#: ui_tutorbase.h:533
+msgid "E-Mail:"
+msgstr ""
+
+#: ui_tutorbase.h:534
+msgid "Banco:"
+msgstr ""
+
+#: ui_tutorbase.h:535
+msgid "1er apellido:"
+msgstr ""
+
+#: ui_tutorbase.h:536
+msgid "2o apellido:"
+msgstr ""
+
+#: ui_tutorbase.h:537
+msgid "Forma Pago:"
+msgstr ""
+
+#: ui_tutorbase.h:538
+msgid "Codigo postal:"
+msgstr ""
+
+#: ui_tutorbase.h:539
+msgid "&Datos generales"
+msgstr ""
+
+#: ui_tutorbase.h:540
+msgid "Comentarios:"
+msgstr ""
+
+#: ui_tutorbase.h:541
+msgid "Otros datos"
+msgstr ""
+
+#: ui_tutorbase.h:542
+msgid "Hijos"
+msgstr ""
+
+#: ui_tutorbase.h:543
+msgid "Recibos"
+msgstr ""
+
 #: ui_tutoreslistbase.h:246 ui_tutoreslistbase.h:249
 msgid "Nuevo Tutor"
 msgstr ""
@@ -244,10 +356,6 @@ msgstr ""
 
 #: ui_tutoreslistbase.h:260
 msgid "Ctrl+E"
-msgstr ""
-
-#: ui_tutoreslistbase.h:268 ui_tutorbase.h:502
-msgid "Ctrl+D"
 msgstr ""
 
 #: ui_tutoreslistbase.h:270 ui_tutoreslistbase.h:273
@@ -284,112 +392,4 @@ msgstr ""
 
 #: ui_tutoreslistbase.h:301
 msgid "Buscar:"
-msgstr ""
-
-#: ui_tutorbase.h:485
-msgid "Nuevo Padre/Socio"
-msgstr ""
-
-#: ui_tutorbase.h:488 ui_tutorbase.h:491
-msgid "Guardar cobro"
-msgstr ""
-
-#: ui_tutorbase.h:494
-msgid "Ctrl+S"
-msgstr ""
-
-#: ui_tutorbase.h:496 ui_tutorbase.h:499 ui_tutorbase.h:504 ui_tutorbase.h:507
-msgid "Borrar cobro"
-msgstr ""
-
-#: ui_tutorbase.h:510
-msgid "Ctrl+I"
-msgstr ""
-
-#: ui_tutorbase.h:511
-msgid "&Aceptar"
-msgstr ""
-
-#: ui_tutorbase.h:512
-msgid "&Cancelar"
-msgstr ""
-
-#: ui_tutorbase.h:513
-msgid "NIF:"
-msgstr ""
-
-#: ui_tutorbase.h:514
-msgid "Socio"
-msgstr ""
-
-#: ui_tutorbase.h:515
-msgid "Nº Socio"
-msgstr ""
-
-#: ui_tutorbase.h:516
-msgid "Nombre:"
-msgstr ""
-
-#: ui_tutorbase.h:517
-msgid "Direccion:"
-msgstr ""
-
-#: ui_tutorbase.h:518
-msgid "Provincia:"
-msgstr ""
-
-#: ui_tutorbase.h:519
-msgid "Poblacion:"
-msgstr ""
-
-#: ui_tutorbase.h:520
-msgid "Codigo postal:"
-msgstr ""
-
-#: ui_tutorbase.h:521
-msgid "Telefono fijo:"
-msgstr ""
-
-#: ui_tutorbase.h:522
-msgid "Telefono movil:"
-msgstr ""
-
-#: ui_tutorbase.h:523
-msgid "E-Mail:"
-msgstr ""
-
-#: ui_tutorbase.h:524
-msgid "Forma Pago"
-msgstr ""
-
-#: ui_tutorbase.h:525
-msgid "Banco:"
-msgstr ""
-
-#: ui_tutorbase.h:526
-msgid "1er apellido"
-msgstr ""
-
-#: ui_tutorbase.h:527
-msgid "2o apellido"
-msgstr ""
-
-#: ui_tutorbase.h:528
-msgid "&Datos generales"
-msgstr ""
-
-#: ui_tutorbase.h:529
-msgid "Comentarios:"
-msgstr ""
-
-#: ui_tutorbase.h:530
-msgid "Otros datos"
-msgstr ""
-
-#: ui_tutorbase.h:531
-msgid "Hijos"
-msgstr ""
-
-#: ui_tutorbase.h:532
-msgid "Recibos"
 msgstr ""

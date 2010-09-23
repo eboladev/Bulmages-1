@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-10-21 10:23+0200\n"
+"POT-Creation-Date: 2010-09-23 18:23+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -12,42 +12,42 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Translate Toolkit 1.1.1\n"
 
-#: ui_proveditbase.h:839
+#: ui_proveditbase.h:846
 msgid "&Aceptar"
 msgstr "&Accepta"
 
-#: ui_proveditbase.h:859
+#: ui_proveditbase.h:866
 msgid "&Aplicar Recargo de Equivalencia."
 msgstr "&Aplicar Recareg d'Equivalència."
 
-#: ui_proveditbase.h:840
+#: ui_proveditbase.h:847
 msgid "&Cancelar"
 msgstr "&Cancel·la"
 
-#: ui_proveditbase.h:841
+#: ui_proveditbase.h:848
 msgid "&Codigo:"
 msgstr "&Codi:"
 
-#: ui_proveditbase.h:860
+#: ui_proveditbase.h:867
 #, fuzzy
 msgid "&Comentarios:"
 msgstr "Comentaris:"
 
-#: ui_proveditbase.h:887
+#: ui_proveditbase.h:894
 #, fuzzy
 msgid "&Contratos"
 msgstr "Contrapartida"
 
-#: ui_proveditbase.h:862
+#: ui_proveditbase.h:869
 #, fuzzy
 msgid "&Datos generales"
 msgstr "&Dades comptables"
 
-#: ui_proveditbase.h:855
+#: ui_proveditbase.h:862
 msgid "&IRPF que aplica:"
 msgstr "&IRPF que aplica:"
 
-#: ui_proveditbase.h:843
+#: ui_proveditbase.h:850
 #, fuzzy
 msgid "&Nombre empresa:"
 msgstr "Nom del compte"
@@ -60,7 +60,7 @@ msgstr "&Nou proveïdor"
 msgid "&Proveedores"
 msgstr "&Proveïdors"
 
-#: ui_proveditbase.h:851
+#: ui_proveditbase.h:858
 msgid "&Telefono:"
 msgstr "&Telèfon:"
 
@@ -77,7 +77,7 @@ msgstr "Telèfon del proveïdor"
 msgid "Borrar"
 msgstr "Esborra"
 
-#: ui_proveditbase.h:898 ui_proveditbase.h:901
+#: ui_proveditbase.h:905 ui_proveditbase.h:908
 #, fuzzy
 msgid "Borrar proveedor"
 msgstr "Nom del proveïdor"
@@ -86,11 +86,11 @@ msgstr "Nom del proveïdor"
 msgid "Buscar:"
 msgstr "Cerca:"
 
-#: ui_proveditbase.h:844
+#: ui_proveditbase.h:851
 msgid "C.I.&F. / N.I.F."
 msgstr "C.I.&F. / N.I.F."
 
-#: providerslist.cpp:285
+#: providerslist.cpp:334
 #, fuzzy
 msgid "C.I.F."
 msgstr "C.I.F.:"
@@ -100,15 +100,15 @@ msgstr "C.I.F.:"
 msgid "C.I.F. del proveedor"
 msgstr "NIF del proveïdor"
 
-#: providerslist.cpp:298
+#: providerslist.cpp:347
 msgid "Clave de acceso a la web del proveedor"
 msgstr "Clau d'accés a la web del proveïdor"
 
-#: provedit.cpp:61 providerslist.cpp:284 providerslist.cpp:288
+#: providerslist.cpp:333 providerslist.cpp:337 provedit.cpp:61
 msgid "Codigo"
 msgstr "Codi"
 
-#: ui_proveditbase.h:848
+#: ui_proveditbase.h:855
 #, fuzzy
 msgid "Codigo &postal:"
 msgstr "Codi compte"
@@ -118,12 +118,12 @@ msgstr "Codi compte"
 msgid "Codigo cliente"
 msgstr "Codi compte"
 
-#: provedit.cpp:54 providerslist.cpp:293
+#: providerslist.cpp:342 provedit.cpp:54
 #, fuzzy
 msgid "Codigo postal"
 msgstr "Codi compte"
 
-#: provedit.cpp:59 providerslist.cpp:290
+#: providerslist.cpp:339 provedit.cpp:59
 #, fuzzy
 msgid "Comentarios"
 msgstr ""
@@ -136,15 +136,15 @@ msgstr ""
 msgid "Configurar listado"
 msgstr "Configura llistat"
 
-#: ui_proveditbase.h:896
+#: ui_proveditbase.h:903
 msgid "Ctrl+S"
 msgstr "Ctrl+S"
 
-#: ui_proveditbase.h:857
+#: ui_proveditbase.h:864
 msgid "Datos &bancarios:"
 msgstr "Dades &bancaris:"
 
-#: ui_proveditbase.h:861
+#: ui_proveditbase.h:868
 #, fuzzy
 msgid "Datos de comercio &electronico:"
 msgstr "Correo electrònic:"
@@ -154,31 +154,31 @@ msgstr "Correo electrònic:"
 msgid "Datos de comercio electronico"
 msgstr "Correo electrònic:"
 
-#: ui_proveditbase.h:846
+#: ui_proveditbase.h:853
 #, fuzzy
 msgid "Di&vision:"
 msgstr "Adreça:"
 
-#: ui_proveditbase.h:868
+#: ui_proveditbase.h:875
 msgid "Di&visiones"
 msgstr "Di&visions"
 
-#: ui_proveditbase.h:847
+#: ui_proveditbase.h:854
 #, fuzzy
 msgid "Direccio&n:"
 msgstr "Adreça:"
 
-#: provedit.cpp:51 providerslist.cpp:291
+#: providerslist.cpp:340 provedit.cpp:51
 #, fuzzy
 msgid "Direccion"
 msgstr "Adreça:"
 
-#: providerslist.cpp:297
+#: providerslist.cpp:346
 #, fuzzy
 msgid "Direccion de URL"
 msgstr "Adreça:"
 
-#: providerslist.cpp:296
+#: providerslist.cpp:345
 #, fuzzy
 msgid "Direccion de correo electronico"
 msgstr "Correo electrònic:"
@@ -188,7 +188,7 @@ msgstr "Correo electrònic:"
 msgid "Direccion electronica"
 msgstr "Correo electrònic:"
 
-#: ui_proveditbase.h:854
+#: ui_proveditbase.h:861
 msgid "E-&mail:"
 msgstr "E-&mail:"
 
@@ -196,15 +196,15 @@ msgstr "E-&mail:"
 msgid "Editar"
 msgstr "Edita"
 
-#: provedit.cpp:130
+#: provedit.cpp:149
 msgid "El CIF del proveedor no parece ser valido. Digito:"
 msgstr ""
 
-#: providerslist.cpp:233
+#: providerslist.cpp:282
 msgid "Elija el archivo"
 msgstr "Trii el arxiu"
 
-#: providerslist.cpp:192
+#: providerslist.cpp:241
 #, fuzzy
 msgid "Error al borrar el proveedor"
 msgstr "Nom del proveïdor"
@@ -225,7 +225,7 @@ msgstr "Exportar assentament"
 msgid "Filtrar listado"
 msgstr "Configura llistat"
 
-#: ui_proveditbase.h:856
+#: ui_proveditbase.h:863
 msgid "Forma de pago:"
 msgstr "Forma de pagament:"
 
@@ -234,12 +234,12 @@ msgstr "Forma de pagament:"
 msgid "Forma_Pago"
 msgstr "&Format:"
 
-#: ui_proveditbase.h:890 ui_proveditbase.h:893
+#: ui_proveditbase.h:897 ui_proveditbase.h:900
 #, fuzzy
 msgid "Guardar proveedor"
 msgstr "Nom del proveïdor"
 
-#: provedit.cpp:45 providerslist.cpp:283
+#: providerslist.cpp:332 provedit.cpp:45
 #, fuzzy
 msgid "ID proveedor"
 msgstr "NIF del proveïdor"
@@ -257,16 +257,16 @@ msgstr "Importa"
 msgid "Imprimir listado"
 msgstr "Imprimeix la comanda"
 
-#: providerslist.cpp:204
+#: providerslist.cpp:253
 #, fuzzy
 msgid "Listado de Proveedores"
 msgstr "Llistat de proveïdors"
 
-#: providerslist.cpp:286
+#: providerslist.cpp:335
 msgid "Nombre"
 msgstr "Nom"
 
-#: providerslist.cpp:287
+#: providerslist.cpp:336
 #, fuzzy
 msgid "Nombre alternativo"
 msgstr "Nom del compte"
@@ -276,7 +276,7 @@ msgstr "Nom del compte"
 msgid "Nombre alternativo del proveedor"
 msgstr "Nom del proveïdor"
 
-#: ui_proveditbase.h:845
+#: ui_proveditbase.h:852
 #, fuzzy
 msgid "Nombre comercia&l:"
 msgstr "Nom del compte"
@@ -285,7 +285,7 @@ msgstr "Nom del compte"
 msgid "Nombre del proveedor"
 msgstr "Nom del proveïdor"
 
-#: ui_proveditbase.h:842
+#: ui_proveditbase.h:849
 #, fuzzy
 msgid "Nuestro codigo de c&liente:"
 msgstr "Model del codi del compte:"
@@ -294,42 +294,42 @@ msgstr "Model del codi del compte:"
 msgid "Nuevo"
 msgstr "Nou"
 
-#: pluginbf_proveedor.cpp:106 pluginbf_proveedor.cpp:107
+#: providerslist.cpp:188 pluginbf_proveedor.cpp:106 pluginbf_proveedor.cpp:107
 #, fuzzy
 msgid "Nuevo proveedor"
 msgstr "NIF del proveïdor"
 
-#: ui_proveditbase.h:853
+#: ui_proveditbase.h:860
 #, fuzzy
 msgid "Numero de &fax:"
 msgstr "Nombre de quotes"
 
-#: providerslist.cpp:289
+#: providerslist.cpp:338
 #, fuzzy
 msgid "Numero de cuenta corriente"
 msgstr "Codi de compte corrent.:"
 
-#: provedit.cpp:56 providerslist.cpp:295
+#: providerslist.cpp:344 provedit.cpp:56
 #, fuzzy
 msgid "Numero de fax"
 msgstr "Nombre de quotes"
 
-#: provedit.cpp:55 providerslist.cpp:294
+#: providerslist.cpp:343 provedit.cpp:55
 #, fuzzy
 msgid "Numero de telefono"
 msgstr "Nombre de quotes"
 
-#: ui_proveditbase.h:852
+#: ui_proveditbase.h:859
 #, fuzzy
 msgid "Pagina &web:"
 msgstr "URL de la pàgina web:"
 
-#: ui_proveditbase.h:849
+#: ui_proveditbase.h:856
 #, fuzzy
 msgid "Poblacio&n:"
 msgstr "Pagi&nació:"
 
-#: provedit.cpp:52 providerslist.cpp:292
+#: providerslist.cpp:341 provedit.cpp:52
 #, fuzzy
 msgid "Poblacion"
 msgstr "Paginació"
@@ -338,11 +338,11 @@ msgstr "Paginació"
 msgid "Procesa&dos"
 msgstr "Processa&ts"
 
-#: ui_proveditbase.h:873
+#: ui_proveditbase.h:880
 msgid "Productos &suministrados"
 msgstr "Productes &subministrats"
 
-#: provedit.cpp:42 ui_proveditbase.h:838
+#: provedit.cpp:42 ui_proveditbase.h:845
 #, fuzzy
 msgid "Proveedor"
 msgstr "NIF del proveïdor"
@@ -352,7 +352,7 @@ msgstr "NIF del proveïdor"
 msgid "Proveedores"
 msgstr "Proveïdors"
 
-#: providerslist.cpp:217 providerslist.cpp:235
+#: providerslist.cpp:266 providerslist.cpp:284
 msgid "Proveedores (*.xml)"
 msgstr "Proveïdors (*.xml)"
 
@@ -360,7 +360,7 @@ msgstr "Proveïdors (*.xml)"
 msgid "Provincia"
 msgstr "Provincia"
 
-#: ui_proveditbase.h:850
+#: ui_proveditbase.h:857
 #, fuzzy
 msgid "Provincia:"
 msgstr "Periodicitat:"
@@ -369,7 +369,7 @@ msgstr "Periodicitat:"
 msgid "Recargo de Equivalencia"
 msgstr "Recàrrec d'Equivalència"
 
-#: ui_proveditbase.h:858
+#: ui_proveditbase.h:865
 #, fuzzy
 msgid "Regimen &fiscal:"
 msgstr "Assentament final:"
@@ -378,11 +378,11 @@ msgstr "Assentament final:"
 msgid "Regimen Fiscal"
 msgstr "Règim Fiscal"
 
-#: ui_proveditbase.h:886
+#: ui_proveditbase.h:893
 msgid "Resumen por articulos"
 msgstr "Resum per articles"
 
-#: providerslist.cpp:215
+#: providerslist.cpp:264
 #, fuzzy
 msgid "Seleccione el archivo"
 msgstr "Seleccioni una empresa"
@@ -392,7 +392,7 @@ msgstr "Seleccioni una empresa"
 msgid "Selector de proveedores"
 msgstr "Telèfon del proveïdor"
 
-#: ui_proveditbase.h:884
+#: ui_proveditbase.h:891
 msgid "Todos"
 msgstr "Tots"
 
@@ -400,17 +400,17 @@ msgstr "Tots"
 msgid "URL"
 msgstr "URL"
 
-#: ui_proveditbase.h:883
+#: ui_proveditbase.h:890
 #, fuzzy
 msgid "Vencidos"
 msgstr "Atenció "
 
-#: ui_proveditbase.h:879
+#: ui_proveditbase.h:886
 #, fuzzy
 msgid "Ver"
 msgstr "&Veure"
 
-#: ui_proveditbase.h:882
+#: ui_proveditbase.h:889
 #, fuzzy
 msgid "Vigentes"
 msgstr "Següent"

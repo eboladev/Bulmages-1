@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-10-30 16:11+0100\n"
+"POT-Creation-Date: 2010-09-23 18:50+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -16,28 +16,8 @@ msgstr ""
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: listinventariosimpleview.cpp:49
-msgid "InventarioSimple"
-msgstr ""
-
-#: listinventariosimpleview.cpp:72
-msgid "Error al guardar el inventario"
-msgstr ""
-
-#: listinventariosimpleview.cpp:98 pluginbf_inventariosimple.cpp:208
-msgid "Id Inventario"
-msgstr ""
-
-#: listinventariosimpleview.cpp:99 pluginbf_inventariosimple.cpp:209
-msgid "Nombre"
-msgstr ""
-
-#: listinventariosimpleview.cpp:100 pluginbf_inventariosimple.cpp:210
-msgid "Stock"
-msgstr ""
-
 #: pluginbf_inventariosimple.cpp:79
-msgid "&Articulos"
+msgid "&Inventari"
 msgstr ""
 
 #: pluginbf_inventariosimple.cpp:83
@@ -70,6 +50,26 @@ msgstr ""
 
 #: pluginbf_inventariosimple.cpp:125
 msgid "Cantidad"
+msgstr ""
+
+#: pluginbf_inventariosimple.cpp:208 listinventariosimpleview.cpp:98
+msgid "Id Inventario"
+msgstr ""
+
+#: pluginbf_inventariosimple.cpp:209 listinventariosimpleview.cpp:99
+msgid "Nombre"
+msgstr ""
+
+#: pluginbf_inventariosimple.cpp:210 listinventariosimpleview.cpp:100
+msgid "Stock"
+msgstr ""
+
+#: listinventariosimpleview.cpp:49
+msgid "InventarioSimple"
+msgstr ""
+
+#: listinventariosimpleview.cpp:72
+msgid "Error al guardar el inventario"
 msgstr ""
 
 #: ui_listinventariosimplebase.h:118

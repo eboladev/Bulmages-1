@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-10-21 10:24+0200\n"
+"POT-Creation-Date: 2010-09-23 18:53+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -58,7 +58,7 @@ msgstr "&Sí"
 msgid "0.00"
 msgstr "0.00"
 
-#: ui_albaranclientelistbase.h:490 ui_albaranclientelistbase.h:493
+#: ui_albaranclientelistbase.h:504 ui_albaranclientelistbase.h:507
 msgid "Actualizar listado"
 msgstr "Actual·litza llistat"
 
@@ -70,17 +70,17 @@ msgstr "Albarà"
 msgid "Albaran ya existe"
 msgstr "Albarà ja existent"
 
-#: pluginbf_clientealbaran.cpp:101 pluginbf_clientealbaran.cpp:102
-#: albaranclientelist.cpp:311 ui_albaranclientelistbase.h:435
+#: albaranclientelist.cpp:340 pluginbf_clientealbaran.cpp:101
+#: pluginbf_clientealbaran.cpp:102 ui_albaranclientelistbase.h:448
 msgid "Albaranes a clientes"
 msgstr "Albarans a clients"
 
-#: albaranclientelist.cpp:185
+#: albaranclientelist.cpp:202
 #, fuzzy
 msgid "Albaranes no procesados"
 msgstr "Apunts &no puntejats"
 
-#: albaranclientelist.cpp:184
+#: albaranclientelist.cpp:201
 msgid "Albaranes procesados"
 msgstr "Albarans processats"
 
@@ -94,7 +94,7 @@ msgstr "<LI> Magatzem <B>"
 msgid "Almacen:"
 msgstr "<LI> Magatzem <B>"
 
-#: albaranclientelist.cpp:395
+#: albaranclientelist.cpp:428
 #, fuzzy
 msgid "Base imponible"
 msgstr "Empreses disponibles:"
@@ -105,11 +105,11 @@ msgid "Base imponible:"
 msgstr "Empreses disponibles:"
 
 #: ui_albaranclientebase.h:707 ui_albaranclientebase.h:710
-#: ui_albaranclientelistbase.h:458 ui_albaranclientelistbase.h:461
+#: ui_albaranclientelistbase.h:472 ui_albaranclientelistbase.h:475
 msgid "Borrar albaran"
 msgstr "Esborra albarà"
 
-#: ui_albaranclientelistbase.h:497
+#: ui_albaranclientelistbase.h:511
 msgid "Buscar:"
 msgstr "Cerca:"
 
@@ -118,12 +118,12 @@ msgstr "Cerca:"
 msgid "Cliente"
 msgstr "Següent"
 
-#: albaranclienteview.cpp:105 albaranclientelist.cpp:156
+#: albaranclienteview.cpp:105 albaranclientelist.cpp:163
 #, fuzzy
 msgid "Cliente:"
 msgstr "Pendent:"
 
-#: albaranclientelist.cpp:383
+#: albaranclientelist.cpp:416
 #, fuzzy
 msgid "Codigo de almacen"
 msgstr "Tipus de balanç"
@@ -146,7 +146,7 @@ msgstr ""
 "#-#-#-#-#  bulmacont_ca.po (PACKAGE VERSION)  #-#-#-#-#\n"
 "Comentaris"
 
-#: albaranclientelist.cpp:393
+#: albaranclientelist.cpp:426
 #, fuzzy
 msgid "Comentarios del albaran"
 msgstr "Comentaris de l'assentament"
@@ -161,44 +161,44 @@ msgstr "Comentaris:"
 msgid "Comentarios publicos:"
 msgstr "Comentaris:"
 
-#: ui_albaranclientelistbase.h:482 ui_albaranclientelistbase.h:485
+#: ui_albaranclientelistbase.h:496 ui_albaranclientelistbase.h:499
 msgid "Configurar listado"
 msgstr "Configura llistat"
 
-#: ui_albaranclientelistbase.h:488
+#: ui_albaranclientelistbase.h:502
 msgid "Ctrl+B"
 msgstr "Ctrl+B"
 
-#: ui_albaranclientelistbase.h:464
+#: ui_albaranclientelistbase.h:478
 msgid "Ctrl+D"
 msgstr "Ctrl+D"
 
-#: ui_albaranclientelistbase.h:456
+#: ui_albaranclientelistbase.h:470
 msgid "Ctrl+E"
 msgstr "Ctrl+E"
 
-#: ui_albaranclientelistbase.h:480
+#: ui_albaranclientelistbase.h:494
 msgid "Ctrl+F"
 msgstr "Ctrl+F"
 
-#: ui_albaranclientelistbase.h:448
+#: ui_albaranclientelistbase.h:462
 msgid "Ctrl+N"
 msgstr "Ctrl+N"
 
-#: ui_albaranclientelistbase.h:472
+#: ui_albaranclientelistbase.h:486
 msgid "Ctrl+P"
 msgstr "Ctrl+P"
 
-#: albaranclientelist.cpp:286
+#: albaranclientelist.cpp:315
 #, fuzzy
 msgid "Debe seleccionar una linea"
 msgstr "Cal triar un compte"
 
-#: albaranclienteview.cpp:84 albaranclientelist.cpp:385
+#: albaranclienteview.cpp:84 albaranclientelist.cpp:418
 msgid "Descripcion"
 msgstr "Descripció"
 
-#: albaranclientelist.cpp:389
+#: albaranclientelist.cpp:422
 #, fuzzy
 msgid "Descripcion de forma de pago"
 msgstr "Descripció del compte"
@@ -218,12 +218,12 @@ msgstr "Document:"
 msgid "Descuentos:"
 msgstr "Document:"
 
-#: ui_albaranclientelistbase.h:450 ui_albaranclientelistbase.h:453
+#: ui_albaranclientelistbase.h:464 ui_albaranclientelistbase.h:467
 #, fuzzy
 msgid "Editar albaran"
 msgstr "Esborra albarà"
 
-#: albaranclientelist.cpp:300
+#: albaranclientelist.cpp:329
 msgid "Error al borrar el albaran a cliente"
 msgstr "Error al esborrar l'albarà a client"
 
@@ -231,8 +231,8 @@ msgstr "Error al esborrar l'albarà a client"
 msgid "Error al crear el albaran a cliente"
 msgstr "Error al crear l'albarà a client"
 
-#: genalbqtoolbutton.cpp:227 genalbqtoolbutton.cpp:359
-#: albaranclienteview.cpp:238
+#: albaranclienteview.cpp:238 genalbqtoolbutton.cpp:227
+#: genalbqtoolbutton.cpp:359
 #, fuzzy
 msgid "Error inesperado"
 msgstr "inserit"
@@ -251,7 +251,7 @@ msgid ""
 "Desea abrirlo para verificar?"
 msgstr ""
 
-#: ui_albaranclientelistbase.h:496
+#: ui_albaranclientelistbase.h:510
 msgid "F5"
 msgstr "F5"
 
@@ -260,7 +260,7 @@ msgstr "F5"
 msgid "Factura ya existe"
 msgstr "Factura"
 
-#: albaranclientelist.cpp:386
+#: albaranclientelist.cpp:419
 #, fuzzy
 msgid "Fecha de albaran"
 msgstr "Data de la compra"
@@ -275,15 +275,15 @@ msgstr "Data de compra:"
 msgid "Fecha de creacion:"
 msgstr "Data de compra:"
 
-#: ui_albaranclientelistbase.h:438
+#: ui_albaranclientelistbase.h:451
 msgid "Fecha final:"
 msgstr "Data final:"
 
-#: ui_albaranclientelistbase.h:437
+#: ui_albaranclientelistbase.h:450
 msgid "Fecha inicial:"
 msgstr "Data inicial:"
 
-#: ui_albaranclientelistbase.h:474 ui_albaranclientelistbase.h:477
+#: ui_albaranclientelistbase.h:488 ui_albaranclientelistbase.h:491
 #, fuzzy
 msgid "Filtrar albaranes"
 msgstr "Filtrar balanç"
@@ -307,27 +307,27 @@ msgstr "Desa balanç"
 msgid "I.R.P.F.:"
 msgstr "C.I.F.:"
 
-#: albaranclientelist.cpp:392
+#: albaranclientelist.cpp:425
 #, fuzzy
 msgid "ID albaran"
 msgstr "Imprimeix albarà"
 
-#: albaranclientelist.cpp:394
+#: albaranclientelist.cpp:427
 #, fuzzy
 msgid "ID almacen"
 msgstr "<LI> Magatzem <B>"
 
-#: albaranclientelist.cpp:391
+#: albaranclientelist.cpp:424
 #, fuzzy
 msgid "ID cliente"
 msgstr "ID compte"
 
-#: albaranclientelist.cpp:388
+#: albaranclientelist.cpp:421
 #, fuzzy
 msgid "ID forma de pago"
 msgstr "<LI> Forma de pagament <B>"
 
-#: albaranclientelist.cpp:390
+#: albaranclientelist.cpp:423
 msgid "ID trabajador"
 msgstr "ID treballador"
 
@@ -340,12 +340,12 @@ msgstr "Imprimeix albarà"
 msgid "Imprimir albaran"
 msgstr "Imprimeix albarà"
 
-#: ui_albaranclientelistbase.h:466 ui_albaranclientelistbase.h:469
+#: ui_albaranclientelistbase.h:480 ui_albaranclientelistbase.h:483
 #, fuzzy
 msgid "Imprimir listado"
 msgstr "Imprimeix la comanda"
 
-#: albaranclientelist.cpp:396
+#: albaranclientelist.cpp:429
 #, fuzzy
 msgid "Impuestos"
 msgstr "Imputació"
@@ -359,7 +359,7 @@ msgstr "Imputació"
 msgid "Mostrar/ocultar cabecera"
 msgstr "Mostrar/ocultar capçalera"
 
-#: ui_albaranclientelistbase.h:436
+#: ui_albaranclientelistbase.h:449
 #, fuzzy
 msgid "Mostrar:"
 msgstr "Mostrar assentament"
@@ -369,12 +369,12 @@ msgstr "Mostrar assentament"
 msgid "No hay pedidos con la misma referencia."
 msgstr "&No."
 
-#: albaranclientelist.cpp:387
+#: albaranclientelist.cpp:420
 #, fuzzy
 msgid "Nombre de cliente"
 msgstr "Nom del compte"
 
-#: ui_albaranclientelistbase.h:442 ui_albaranclientelistbase.h:445
+#: ui_albaranclientelistbase.h:456 ui_albaranclientelistbase.h:459
 #, fuzzy
 msgid "Nuevo albaran"
 msgstr "Esborra albarà"
@@ -385,7 +385,7 @@ msgstr "Esborra albarà"
 msgid "Nuevo albaran a cliente"
 msgstr "Nou assentament"
 
-#: albaranclienteview.cpp:75 albaranclientelist.cpp:384
+#: albaranclienteview.cpp:75 albaranclientelist.cpp:417
 #, fuzzy
 msgid "Numero de albaran"
 msgstr "Nombre de quotes"
@@ -419,7 +419,7 @@ msgstr "C.P.:"
 msgid "Referencia"
 msgstr "Referència"
 
-#: albaranclientelist.cpp:382
+#: albaranclientelist.cpp:415
 msgid "Referencia de albaran"
 msgstr "Referència d'albarà"
 
@@ -437,18 +437,18 @@ msgstr "Telèfon del proveïdor"
 msgid "Telefono de contacto:"
 msgstr "Telèfon del proveïdor"
 
-#: genalbqtoolbutton.cpp:141 genalbqtoolbutton.cpp:273
-#: albaranclienteview.cpp:204
+#: albaranclienteview.cpp:204 genalbqtoolbutton.cpp:141
+#: genalbqtoolbutton.cpp:273
 #, fuzzy
 msgid "Tiene que seleccionar un cliente"
 msgstr "Ha de seleccionar un element"
 
-#: albaranclientelist.cpp:183
+#: albaranclientelist.cpp:200
 #, fuzzy
 msgid "Todos los albaranes"
 msgstr "<HR><B>Tractant l'albarà"
 
-#: albaranclientelist.cpp:397
+#: albaranclientelist.cpp:430
 #, fuzzy
 msgid "Total"
 msgstr "Totals:"
@@ -458,12 +458,12 @@ msgstr "Totals:"
 msgid "Total:"
 msgstr "Totals:"
 
-#: ui_albaranclientelistbase.h:439
+#: ui_albaranclientelistbase.h:453
 #, fuzzy
 msgid "Total: "
 msgstr "Totals:"
 
-#: albaranclienteview.cpp:82
+#: albaranclienteview.cpp:82 ui_albaranclientelistbase.h:452
 msgid "Trabajador"
 msgstr "Treballador"
 

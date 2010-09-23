@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-10-21 10:27+0200\n"
+"POT-Creation-Date: 2010-09-23 18:57+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -324,7 +324,7 @@ msgstr "Remesa mal generada"
 msgid "Remesa parcialmente generada"
 msgstr "Remesa generada parcialment"
 
-#: q19qtoolbutton.cpp:122 q19view.cpp:116
+#: q19view.cpp:116 q19qtoolbutton.cpp:122
 msgid "Remesa vacia"
 msgstr "Remesa buida"
 

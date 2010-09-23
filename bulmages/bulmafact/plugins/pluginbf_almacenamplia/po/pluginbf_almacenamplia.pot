@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-10-30 16:10+0100\n"
+"POT-Creation-Date: 2010-09-23 18:23+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -16,36 +16,20 @@ msgstr ""
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: almaceneslistview.cpp:56 almaceneslistview.cpp:90 almacenview.cpp:57
+#: almacenview.cpp:54 ui_almacenbase.h:337
+msgid "Almacen"
+msgstr ""
+
+#: almacenview.cpp:57 almaceneslistview.cpp:56 almaceneslistview.cpp:90
 msgid "ID almacen"
 msgstr ""
 
-#: almaceneslistview.cpp:57 almaceneslistview.cpp:91 almacenview.cpp:58
+#: almacenview.cpp:58 almaceneslistview.cpp:57 almaceneslistview.cpp:91
 msgid "Codigo almacen"
 msgstr ""
 
-#: almaceneslistview.cpp:58 almaceneslistview.cpp:92 almacenview.cpp:59
+#: almacenview.cpp:59 almaceneslistview.cpp:58 almaceneslistview.cpp:92
 msgid "Nombre almacen"
-msgstr ""
-
-#: almaceneslistview.cpp:207
-msgid "Error al editar el almacen"
-msgstr ""
-
-#: almaceneslistview.cpp:218 ui_almaceneslistbase.h:330
-msgid "Almacenes"
-msgstr ""
-
-#: almaceneslistview.cpp:232
-msgid "Debe seleccionar una linea"
-msgstr ""
-
-#: almaceneslistview.cpp:254
-msgid "Error al borrar el almacen"
-msgstr ""
-
-#: almacenview.cpp:54 ui_almacenbase.h:337
-msgid "Almacen"
 msgstr ""
 
 #: almacenview.cpp:60
@@ -82,6 +66,22 @@ msgstr ""
 
 #: almacenview.cpp:76
 msgid "Error al crear el almacen"
+msgstr ""
+
+#: almaceneslistview.cpp:207
+msgid "Error al editar el almacen"
+msgstr ""
+
+#: almaceneslistview.cpp:218 ui_almaceneslistbase.h:330
+msgid "Almacenes"
+msgstr ""
+
+#: almaceneslistview.cpp:232
+msgid "Debe seleccionar una linea"
+msgstr ""
+
+#: almaceneslistview.cpp:254
+msgid "Error al borrar el almacen"
 msgstr ""
 
 #: ui_almacenbase.h:317 ui_almaceneslistbase.h:333 ui_almaceneslistbase.h:336

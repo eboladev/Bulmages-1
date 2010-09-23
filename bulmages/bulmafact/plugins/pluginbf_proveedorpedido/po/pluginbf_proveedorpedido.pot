@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-10-30 16:10+0100\n"
+"POT-Creation-Date: 2010-09-23 18:18+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -24,11 +24,11 @@ msgstr ""
 msgid "Id pedido proveedor"
 msgstr ""
 
-#: pedidoproveedorview.cpp:55 pedidosproveedorlist.cpp:327
+#: pedidoproveedorview.cpp:55 pedidosproveedorlist.cpp:335
 msgid "Id proveedor"
 msgstr ""
 
-#: pedidoproveedorview.cpp:56 pedidosproveedorlist.cpp:328
+#: pedidoproveedorview.cpp:56 pedidosproveedorlist.cpp:336
 msgid "Id almacen"
 msgstr ""
 
@@ -36,7 +36,7 @@ msgstr ""
 msgid "Numero pedido proveedor"
 msgstr ""
 
-#: pedidoproveedorview.cpp:58 pedidosproveedorlist.cpp:315
+#: pedidoproveedorview.cpp:58 pedidosproveedorlist.cpp:323
 msgid "Fecha pedido proveedor"
 msgstr ""
 
@@ -52,7 +52,7 @@ msgstr ""
 msgid "Descripcion pedido"
 msgstr ""
 
-#: pedidoproveedorview.cpp:62 pedidosproveedorlist.cpp:316
+#: pedidoproveedorview.cpp:62 pedidosproveedorlist.cpp:324
 msgid "Referencia pedido"
 msgstr ""
 
@@ -60,15 +60,15 @@ msgstr ""
 msgid "Id forma de pago"
 msgstr ""
 
-#: pedidoproveedorview.cpp:64 pedidosproveedorlist.cpp:326
+#: pedidoproveedorview.cpp:64 pedidosproveedorlist.cpp:334
 msgid "Id trabajador"
 msgstr ""
 
-#: pedidoproveedorview.cpp:65 pedidosproveedorlist.cpp:322
+#: pedidoproveedorview.cpp:65 pedidosproveedorlist.cpp:330
 msgid "Persona de contacto proveedor"
 msgstr ""
 
-#: pedidoproveedorview.cpp:66 pedidosproveedorlist.cpp:323
+#: pedidoproveedorview.cpp:66 pedidosproveedorlist.cpp:331
 msgid "Telefono proveedor"
 msgstr ""
 
@@ -107,6 +107,84 @@ msgstr ""
 
 #: pedidoproveedorview.cpp:386
 msgid "Total "
+msgstr ""
+
+#: pedidosproveedorlist.cpp:112
+msgid "Todos los pedidos"
+msgstr ""
+
+#: pedidosproveedorlist.cpp:113
+msgid "Pedidos procesados"
+msgstr ""
+
+#: pedidosproveedorlist.cpp:114
+msgid "Pedidos no procesados"
+msgstr ""
+
+#: pedidosproveedorlist.cpp:188 pluginbf_proveedorpedido.cpp:99
+#: pluginbf_proveedorpedido.cpp:100 ui_pedidosproveedorlistbase.h:356
+msgid "Pedidos a proveedores"
+msgstr ""
+
+#: pedidosproveedorlist.cpp:202
+msgid "Debe seleccionar una linea"
+msgstr ""
+
+#: pedidosproveedorlist.cpp:217
+msgid "Error al borrar el pedido a proveedor"
+msgstr ""
+
+#: pedidosproveedorlist.cpp:244
+msgid "Error al cargar el pedido proveedor"
+msgstr ""
+
+#: pedidosproveedorlist.cpp:321
+msgid "Numero de pedido"
+msgstr ""
+
+#: pedidosproveedorlist.cpp:322
+msgid "Nombre de proveedor"
+msgstr ""
+
+#: pedidosproveedorlist.cpp:325
+msgid "Base Imponible"
+msgstr ""
+
+#: pedidosproveedorlist.cpp:326
+msgid "Impuestos"
+msgstr ""
+
+#: pedidosproveedorlist.cpp:327
+msgid "Total pedido"
+msgstr ""
+
+#: pedidosproveedorlist.cpp:328
+msgid "Descripcion pedido proveedor"
+msgstr ""
+
+#: pedidosproveedorlist.cpp:329
+msgid "Codigo de almacen"
+msgstr ""
+
+#: pedidosproveedorlist.cpp:332
+msgid "Comentario pedido proveedor"
+msgstr ""
+
+#: pedidosproveedorlist.cpp:333 listdescpedidoproveedorview.cpp:42
+#: listlinpedidoproveedorview.cpp:50
+msgid "Id pedido"
+msgstr ""
+
+#: listdescpedidoproveedorview.cpp:39
+msgid "Id descuento"
+msgstr ""
+
+#: listdescpedidoproveedorview.cpp:40
+msgid "Concepto descuento"
+msgstr ""
+
+#: listdescpedidoproveedorview.cpp:41 listlinpedidoproveedorview.cpp:49
+msgid "% Descuento"
 msgstr ""
 
 #: listlinpedidoproveedorview.cpp:39
@@ -149,86 +227,8 @@ msgstr ""
 msgid "% R.E."
 msgstr ""
 
-#: listlinpedidoproveedorview.cpp:49 listdescpedidoproveedorview.cpp:41
-msgid "% Descuento"
-msgstr ""
-
-#: listlinpedidoproveedorview.cpp:50 listdescpedidoproveedorview.cpp:42
-#: pedidosproveedorlist.cpp:325
-msgid "Id pedido"
-msgstr ""
-
 #: listlinpedidoproveedorview.cpp:51
 msgid "Orden"
-msgstr ""
-
-#: listdescpedidoproveedorview.cpp:39
-msgid "Id descuento"
-msgstr ""
-
-#: listdescpedidoproveedorview.cpp:40
-msgid "Concepto descuento"
-msgstr ""
-
-#: pedidosproveedorlist.cpp:112
-msgid "Todos los pedidos"
-msgstr ""
-
-#: pedidosproveedorlist.cpp:113
-msgid "Pedidos procesados"
-msgstr ""
-
-#: pedidosproveedorlist.cpp:114
-msgid "Pedidos no procesados"
-msgstr ""
-
-#: pedidosproveedorlist.cpp:188 pluginbf_proveedorpedido.cpp:99
-#: pluginbf_proveedorpedido.cpp:100 ui_pedidosproveedorlistbase.h:356
-msgid "Pedidos a proveedores"
-msgstr ""
-
-#: pedidosproveedorlist.cpp:202
-msgid "Debe seleccionar una linea"
-msgstr ""
-
-#: pedidosproveedorlist.cpp:217
-msgid "Error al borrar el pedido a proveedor"
-msgstr ""
-
-#: pedidosproveedorlist.cpp:244
-msgid "Error al cargar el pedido proveedor"
-msgstr ""
-
-#: pedidosproveedorlist.cpp:313
-msgid "Numero de pedido"
-msgstr ""
-
-#: pedidosproveedorlist.cpp:314
-msgid "Nombre de proveedor"
-msgstr ""
-
-#: pedidosproveedorlist.cpp:317
-msgid "Base Imponible"
-msgstr ""
-
-#: pedidosproveedorlist.cpp:318
-msgid "Impuestos"
-msgstr ""
-
-#: pedidosproveedorlist.cpp:319
-msgid "Total pedido"
-msgstr ""
-
-#: pedidosproveedorlist.cpp:320
-msgid "Descripcion pedido proveedor"
-msgstr ""
-
-#: pedidosproveedorlist.cpp:321
-msgid "Codigo de almacen"
-msgstr ""
-
-#: pedidosproveedorlist.cpp:324
-msgid "Comentario pedido proveedor"
 msgstr ""
 
 #: pluginbf_proveedorpedido.cpp:97
@@ -240,88 +240,9 @@ msgid "&Nuevo pedido a proveedor"
 msgstr ""
 
 #: pluginbf_proveedorpedido.cpp:107 pluginbf_proveedorpedido.cpp:108
-#: ui_pedidosproveedorlistbase.h:364 ui_pedidosproveedorlistbase.h:367
-#: ui_pedidoproveedorbase.h:656
+#: ui_pedidoproveedorbase.h:656 ui_pedidosproveedorlistbase.h:364
+#: ui_pedidosproveedorlistbase.h:367
 msgid "Nuevo pedido a proveedor"
-msgstr ""
-
-#: ui_pedidosproveedorlistbase.h:357
-msgid "Fecha final:"
-msgstr ""
-
-#: ui_pedidosproveedorlistbase.h:358
-msgid "Fecha inicial:"
-msgstr ""
-
-#: ui_pedidosproveedorlistbase.h:359
-msgid "Mostrar:"
-msgstr ""
-
-#: ui_pedidosproveedorlistbase.h:360 ui_pedidoproveedorbase.h:708
-msgid "Total:"
-msgstr ""
-
-#: ui_pedidosproveedorlistbase.h:361 ui_pedidoproveedorbase.h:709
-#: ui_pedidoproveedorbase.h:710 ui_pedidoproveedorbase.h:711
-#: ui_pedidoproveedorbase.h:712 ui_pedidoproveedorbase.h:713
-#: ui_pedidoproveedorbase.h:714
-msgid "0.00"
-msgstr ""
-
-#: ui_pedidosproveedorlistbase.h:370
-msgid "Ctrl+N"
-msgstr ""
-
-#: ui_pedidosproveedorlistbase.h:372 ui_pedidosproveedorlistbase.h:375
-msgid "Editar pedido a proveedor"
-msgstr ""
-
-#: ui_pedidosproveedorlistbase.h:378
-msgid "Ctrl+E"
-msgstr ""
-
-#: ui_pedidosproveedorlistbase.h:380 ui_pedidosproveedorlistbase.h:383
-msgid "Borrar pedido a proveedor"
-msgstr ""
-
-#: ui_pedidosproveedorlistbase.h:386 ui_pedidoproveedorbase.h:673
-msgid "Ctrl+D"
-msgstr ""
-
-#: ui_pedidosproveedorlistbase.h:388 ui_pedidosproveedorlistbase.h:391
-msgid "Imprimir listado"
-msgstr ""
-
-#: ui_pedidosproveedorlistbase.h:394 ui_pedidoproveedorbase.h:681
-msgid "Ctrl+P"
-msgstr ""
-
-#: ui_pedidosproveedorlistbase.h:396 ui_pedidosproveedorlistbase.h:399
-msgid "Filtrar pedidos"
-msgstr ""
-
-#: ui_pedidosproveedorlistbase.h:402
-msgid "Ctrl+F"
-msgstr ""
-
-#: ui_pedidosproveedorlistbase.h:404 ui_pedidosproveedorlistbase.h:407
-msgid "Configurar listado"
-msgstr ""
-
-#: ui_pedidosproveedorlistbase.h:410
-msgid "Ctrl+B"
-msgstr ""
-
-#: ui_pedidosproveedorlistbase.h:412 ui_pedidosproveedorlistbase.h:415
-msgid "Actualizar listado"
-msgstr ""
-
-#: ui_pedidosproveedorlistbase.h:418
-msgid "F5"
-msgstr ""
-
-#: ui_pedidosproveedorlistbase.h:419
-msgid "Buscar:"
 msgstr ""
 
 #: ui_pedidoproveedorbase.h:659 ui_pedidoproveedorbase.h:662
@@ -336,8 +257,16 @@ msgstr ""
 msgid "Borrar pedido"
 msgstr ""
 
+#: ui_pedidoproveedorbase.h:673 ui_pedidosproveedorlistbase.h:386
+msgid "Ctrl+D"
+msgstr ""
+
 #: ui_pedidoproveedorbase.h:675 ui_pedidoproveedorbase.h:678
 msgid "Imprimir pedido"
+msgstr ""
+
+#: ui_pedidoproveedorbase.h:681 ui_pedidosproveedorlistbase.h:394
+msgid "Ctrl+P"
 msgstr ""
 
 #: ui_pedidoproveedorbase.h:682
@@ -420,10 +349,81 @@ msgstr ""
 msgid "R.E.:"
 msgstr ""
 
+#: ui_pedidoproveedorbase.h:708 ui_pedidosproveedorlistbase.h:360
+msgid "Total:"
+msgstr ""
+
+#: ui_pedidoproveedorbase.h:709 ui_pedidoproveedorbase.h:710
+#: ui_pedidoproveedorbase.h:711 ui_pedidoproveedorbase.h:712
+#: ui_pedidoproveedorbase.h:713 ui_pedidoproveedorbase.h:714
+#: ui_pedidosproveedorlistbase.h:361
+msgid "0.00"
+msgstr ""
+
 #: ui_pedidoproveedorbase.h:715
 msgid "&Aceptar"
 msgstr ""
 
 #: ui_pedidoproveedorbase.h:716
 msgid "&Cancelar"
+msgstr ""
+
+#: ui_pedidosproveedorlistbase.h:357
+msgid "Fecha final:"
+msgstr ""
+
+#: ui_pedidosproveedorlistbase.h:358
+msgid "Fecha inicial:"
+msgstr ""
+
+#: ui_pedidosproveedorlistbase.h:359
+msgid "Mostrar:"
+msgstr ""
+
+#: ui_pedidosproveedorlistbase.h:370
+msgid "Ctrl+N"
+msgstr ""
+
+#: ui_pedidosproveedorlistbase.h:372 ui_pedidosproveedorlistbase.h:375
+msgid "Editar pedido a proveedor"
+msgstr ""
+
+#: ui_pedidosproveedorlistbase.h:378
+msgid "Ctrl+E"
+msgstr ""
+
+#: ui_pedidosproveedorlistbase.h:380 ui_pedidosproveedorlistbase.h:383
+msgid "Borrar pedido a proveedor"
+msgstr ""
+
+#: ui_pedidosproveedorlistbase.h:388 ui_pedidosproveedorlistbase.h:391
+msgid "Imprimir listado"
+msgstr ""
+
+#: ui_pedidosproveedorlistbase.h:396 ui_pedidosproveedorlistbase.h:399
+msgid "Filtrar pedidos"
+msgstr ""
+
+#: ui_pedidosproveedorlistbase.h:402
+msgid "Ctrl+F"
+msgstr ""
+
+#: ui_pedidosproveedorlistbase.h:404 ui_pedidosproveedorlistbase.h:407
+msgid "Configurar listado"
+msgstr ""
+
+#: ui_pedidosproveedorlistbase.h:410
+msgid "Ctrl+B"
+msgstr ""
+
+#: ui_pedidosproveedorlistbase.h:412 ui_pedidosproveedorlistbase.h:415
+msgid "Actualizar listado"
+msgstr ""
+
+#: ui_pedidosproveedorlistbase.h:418
+msgid "F5"
+msgstr ""
+
+#: ui_pedidosproveedorlistbase.h:419
+msgid "Buscar:"
 msgstr ""

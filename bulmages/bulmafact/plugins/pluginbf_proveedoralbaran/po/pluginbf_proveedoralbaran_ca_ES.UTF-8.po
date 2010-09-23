@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-10-21 10:24+0200\n"
+"POT-Creation-Date: 2010-09-23 18:49+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -111,7 +111,7 @@ msgstr "Nom del proveïdor"
 msgid "Albaran de proveedor existente"
 msgstr "El magatzem del pressupost no existeix<BR>"
 
-#: albaranesproveedor.cpp:313 ui_albaranesproveedorlistbase.h:421
+#: albaranesproveedor.cpp:319 ui_albaranesproveedorlistbase.h:421
 #, fuzzy
 msgid "Albaranes de proveedor"
 msgstr "Nom del proveïdor"
@@ -121,12 +121,12 @@ msgstr "Nom del proveïdor"
 msgid "Albaranes de proveedores"
 msgstr "Nom del proveïdor"
 
-#: albaranesproveedor.cpp:185
+#: albaranesproveedor.cpp:191
 #, fuzzy
 msgid "Albaranes no procesados"
 msgstr "Apunts &no puntejats"
 
-#: albaranesproveedor.cpp:184
+#: albaranesproveedor.cpp:190
 msgid "Albaranes procesados"
 msgstr "Albarans processats"
 
@@ -135,7 +135,7 @@ msgstr "Albarans processats"
 msgid "Almacen:"
 msgstr "<LI> Magatzem <B>"
 
-#: albaranesproveedor.cpp:393
+#: albaranesproveedor.cpp:399
 #, fuzzy
 msgid "Base imponible"
 msgstr "Empreses disponibles:"
@@ -145,8 +145,8 @@ msgstr "Empreses disponibles:"
 msgid "Base imponible:"
 msgstr "Empreses disponibles:"
 
-#: ui_albaranesproveedorlistbase.h:444 ui_albaranesproveedorlistbase.h:447
 #: ui_albaranproveedorbase.h:580 ui_albaranproveedorbase.h:583
+#: ui_albaranesproveedorlistbase.h:444 ui_albaranesproveedorlistbase.h:447
 msgid "Borrar albaran"
 msgstr "Esborra albarà"
 
@@ -154,7 +154,7 @@ msgstr "Esborra albarà"
 msgid "Buscar:"
 msgstr "Cerca:"
 
-#: albaranesproveedor.cpp:385
+#: albaranesproveedor.cpp:391
 msgid "Comentario"
 msgstr "Comentari"
 
@@ -176,7 +176,7 @@ msgstr "Configura llistat"
 msgid "Ctrl+B"
 msgstr "Ctrl+B"
 
-#: ui_albaranesproveedorlistbase.h:450 ui_albaranproveedorbase.h:586
+#: ui_albaranproveedorbase.h:586 ui_albaranesproveedorlistbase.h:450
 msgid "Ctrl+D"
 msgstr "Ctrl+D"
 
@@ -205,7 +205,7 @@ msgstr "Ctrl+P"
 msgid "Ctrl+S"
 msgstr "Ctrl+S"
 
-#: albaranesproveedor.cpp:332
+#: albaranesproveedor.cpp:338
 #, fuzzy
 msgid "Debe seleccionar una linea"
 msgstr "Cal triar un compte"
@@ -215,7 +215,7 @@ msgstr "Cal triar un compte"
 msgid "Desc&uentos"
 msgstr "Document:"
 
-#: albaranesproveedor.cpp:382
+#: albaranesproveedor.cpp:388
 msgid "Descripcion"
 msgstr "Descripció"
 
@@ -224,7 +224,7 @@ msgstr "Descripció"
 msgid "Descripcion albaran proveedor"
 msgstr "Direcció del proveïdor"
 
-#: albaranesproveedor.cpp:392
+#: albaranesproveedor.cpp:398
 #, fuzzy
 msgid "Descripcion de la forma de pago"
 msgstr "Descripció del compte"
@@ -244,7 +244,7 @@ msgstr "Document:"
 msgid "Editar albaran"
 msgstr "Esborra albarà"
 
-#: albaranesproveedor.cpp:347
+#: albaranesproveedor.cpp:353
 msgid "Error al borrar albaran de proveedor"
 msgstr "Error al esborrar l'albarà de proveïdor"
 
@@ -267,7 +267,7 @@ msgstr ""
 msgid "F5"
 msgstr "F5"
 
-#: albaranesproveedor.cpp:384
+#: albaranesproveedor.cpp:390
 msgid "Fecha"
 msgstr "Data"
 
@@ -311,22 +311,22 @@ msgstr "Desa balanç"
 msgid "I.R.P.F."
 msgstr "I.R.P.F."
 
-#: albaranesproveedor.cpp:380
+#: albaranesproveedor.cpp:386
 #, fuzzy
 msgid "ID albaran"
 msgstr "Imprimeix albarà"
 
-#: albaranesproveedor.cpp:389
+#: albaranesproveedor.cpp:395
 #, fuzzy
 msgid "ID almacen"
 msgstr "<LI> Magatzem <B>"
 
-#: albaranesproveedor.cpp:388
+#: albaranesproveedor.cpp:394
 #, fuzzy
 msgid "ID forma de pago"
 msgstr "<LI> Forma de pagament <B>"
 
-#: albaranesproveedor.cpp:387
+#: albaranesproveedor.cpp:393
 #, fuzzy
 msgid "ID proveedor"
 msgstr "NIF del proveïdor"
@@ -366,7 +366,7 @@ msgstr "NIF del proveïdor"
 msgid "Imprimir listado"
 msgstr "Imprimeix la comanda"
 
-#: albaranesproveedor.cpp:394
+#: albaranesproveedor.cpp:400
 #, fuzzy
 msgid "Impuestos"
 msgstr "Imputació"
@@ -385,12 +385,12 @@ msgstr "Mostrar/ocultar capçalera"
 msgid "Mostrar:"
 msgstr "Mostrar assentament"
 
-#: albaranesproveedor.cpp:391
+#: albaranesproveedor.cpp:397
 #, fuzzy
 msgid "Nombre del almacen"
 msgstr "Nom del compte"
 
-#: albaranesproveedor.cpp:390
+#: albaranesproveedor.cpp:396
 msgid "Nombre del proveedor"
 msgstr "Nom del proveïdor"
 
@@ -410,7 +410,7 @@ msgstr "Nom del proveïdor"
 msgid "Numero albaran proveedor"
 msgstr "Nom del proveïdor"
 
-#: albaranesproveedor.cpp:381
+#: albaranesproveedor.cpp:387
 #, fuzzy
 msgid "Numero de albaran"
 msgstr "Nombre de quotes"
@@ -420,7 +420,7 @@ msgstr "Nombre de quotes"
 msgid "Numero de albaran:"
 msgstr "Nombre de quotes"
 
-#: albaranesproveedor.cpp:386
+#: albaranesproveedor.cpp:392
 #, fuzzy
 msgid "Procesado"
 msgstr "Propietari"
@@ -435,7 +435,7 @@ msgstr "Proveïdor:"
 msgid "R.E.:"
 msgstr "C.P.:"
 
-#: albaranesproveedor.cpp:383
+#: albaranesproveedor.cpp:389
 msgid "Referencia"
 msgstr "Referència"
 
@@ -453,12 +453,12 @@ msgstr "Referència:"
 msgid "Tiene que seleccionar un proveedor"
 msgstr "Ha de seleccionar un element"
 
-#: albaranesproveedor.cpp:183
+#: albaranesproveedor.cpp:189
 #, fuzzy
 msgid "Todos los albaranes"
 msgstr "<HR><B>Tractant l'albarà"
 
-#: albaranesproveedor.cpp:395
+#: albaranesproveedor.cpp:401
 #, fuzzy
 msgid "Total albaran"
 msgstr "<HR><B>Tractant l'albarà"

@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-10-21 10:25+0200\n"
+"POT-Creation-Date: 2010-09-23 18:54+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -54,16 +54,16 @@ msgstr ""
 "#-#-#-#-#  bulmalib_ca_ES.UTF-8.po (PACKAGE VERSION)  #-#-#-#-#\n"
 "&Cancel·lar"
 
-#: ui_zbase.h:302 ui_zbase.h:305 ui_zlistbase.h:265 ui_zlistbase.h:268
+#: ui_zlistbase.h:265 ui_zlistbase.h:268 ui_zbase.h:302 ui_zbase.h:305
 msgid "Actualizar listado"
 msgstr "Actual·litza llistat"
 
-#: zlist.cpp:59 zview.cpp:64 ui_zbase.h:308
+#: zview.cpp:64 zlist.cpp:60 ui_zbase.h:308
 #, fuzzy
 msgid "Almacen"
 msgstr "<LI> Magatzem <B>"
 
-#: zlist.cpp:190
+#: zlist.cpp:191
 #, fuzzy
 msgid "Almacenes"
 msgstr "<LI> Magatzem <B>"
@@ -133,12 +133,12 @@ msgstr "Editar compte"
 msgid "Error al crear el almacen"
 msgstr "Error en la càrrega de l'amortizació"
 
-#: zlist.cpp:178
+#: zlist.cpp:179
 #, fuzzy
 msgid "Error al editar el almacen"
 msgstr "Error en la càrrega de l'amortizació"
 
-#: zlist.cpp:57 zview.cpp:59 zview.cpp:76 ui_zbase.h:309
+#: zview.cpp:59 zview.cpp:76 zlist.cpp:58 ui_zbase.h:309
 msgid "Fecha"
 msgstr "Data"
 
@@ -161,12 +161,12 @@ msgstr "General"
 msgid "Guardar almacen"
 msgstr "Desa balanç"
 
-#: zlist.cpp:58 zview.cpp:60 zview.cpp:81 ui_zbase.h:310
+#: zview.cpp:60 zview.cpp:81 zlist.cpp:59 ui_zbase.h:310
 #, fuzzy
 msgid "Hora"
 msgstr "Normal"
 
-#: zlist.cpp:56
+#: zlist.cpp:57
 msgid "ID Z"
 msgstr ""
 
@@ -184,7 +184,7 @@ msgstr "Imprimeix albarà"
 msgid "Id forma de pago"
 msgstr "<LI> Forma de pagament <B>"
 
-#: zlist.cpp:62 zview.cpp:63
+#: zview.cpp:63 zlist.cpp:63
 #, fuzzy
 msgid "Id. almacen"
 msgstr "<LI> Magatzem <B>"
@@ -226,11 +226,11 @@ msgstr "Propietari"
 msgid "Referencia"
 msgstr "Referència"
 
-#: zlist.cpp:61
+#: zlist.cpp:62
 msgid "Tickets"
 msgstr ""
 
-#: zlist.cpp:60 zview.cpp:61 zview.cpp:82 ui_zbase.h:312
+#: zview.cpp:61 zview.cpp:82 zlist.cpp:61 ui_zbase.h:312
 #, fuzzy
 msgid "Total"
 msgstr "Totals:"

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-10-30 16:11+0100\n"
+"POT-Creation-Date: 2010-09-23 18:50+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -16,18 +16,18 @@ msgstr ""
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: tarifaview.cpp:47 tarifaview.cpp:101 tarifaview.cpp:160
-#: pluginbf_tarifa.cpp:185 ui_tarifabase.h:234
-msgid "Tarifa"
+#: tarifalistsubform.cpp:36 tarifaview.cpp:51 listltarifaview.cpp:65
+msgid "Nombre de la tarifa"
 msgstr ""
 
-#: tarifaview.cpp:50 listltarifaview.cpp:39 listltarifaview.cpp:63
-#: pluginbf_tarifa.cpp:184 tarifalistsubform.cpp:37
+#: tarifalistsubform.cpp:37 tarifaview.cpp:50 pluginbf_tarifa.cpp:184
+#: listltarifaview.cpp:39 listltarifaview.cpp:63
 msgid "ID tarifa"
 msgstr ""
 
-#: tarifaview.cpp:51 listltarifaview.cpp:65 tarifalistsubform.cpp:36
-msgid "Nombre de la tarifa"
+#: tarifaview.cpp:47 tarifaview.cpp:101 tarifaview.cpp:160
+#: pluginbf_tarifa.cpp:185 ui_tarifabase.h:234
+msgid "Tarifa"
 msgstr ""
 
 #: tarifaview.cpp:67
@@ -50,42 +50,6 @@ msgstr ""
 msgid "&No"
 msgstr ""
 
-#: listltarifaview.cpp:34
-msgid "Nombre tarifa"
-msgstr ""
-
-#: listltarifaview.cpp:35 listltarifaview.cpp:57
-msgid "Nombre almacen"
-msgstr ""
-
-#: listltarifaview.cpp:36 listltarifaview.cpp:60
-msgid "Precio de venta"
-msgstr ""
-
-#: listltarifaview.cpp:37 listltarifaview.cpp:61 pluginbf_tarifa.cpp:183
-msgid "ID articulo"
-msgstr ""
-
-#: listltarifaview.cpp:38 listltarifaview.cpp:62 pluginbf_tarifa.cpp:186
-msgid "ID almacen"
-msgstr ""
-
-#: listltarifaview.cpp:40 listltarifaview.cpp:64
-msgid "Num de linea"
-msgstr ""
-
-#: listltarifaview.cpp:41 listltarifaview.cpp:58
-msgid "Codigo completo del articulo"
-msgstr ""
-
-#: listltarifaview.cpp:42
-msgid "Nombre del articulo"
-msgstr ""
-
-#: listltarifaview.cpp:59
-msgid "Nombre articulo"
-msgstr ""
-
 #: pluginbf_tarifa.cpp:81
 msgid "&Tarifas"
 msgstr ""
@@ -103,6 +67,14 @@ msgstr ""
 msgid "ID variacion tarifa"
 msgstr ""
 
+#: pluginbf_tarifa.cpp:183 listltarifaview.cpp:37 listltarifaview.cpp:61
+msgid "ID articulo"
+msgstr ""
+
+#: pluginbf_tarifa.cpp:186 listltarifaview.cpp:38 listltarifaview.cpp:62
+msgid "ID almacen"
+msgstr ""
+
 #: pluginbf_tarifa.cpp:187
 msgid "Almacen"
 msgstr ""
@@ -113,6 +85,34 @@ msgstr ""
 
 #: pluginbf_tarifa.cpp:189
 msgid "Porcentaje variacion"
+msgstr ""
+
+#: listltarifaview.cpp:34
+msgid "Nombre tarifa"
+msgstr ""
+
+#: listltarifaview.cpp:35 listltarifaview.cpp:57
+msgid "Nombre almacen"
+msgstr ""
+
+#: listltarifaview.cpp:36 listltarifaview.cpp:60
+msgid "Precio de venta"
+msgstr ""
+
+#: listltarifaview.cpp:40 listltarifaview.cpp:64
+msgid "Num de linea"
+msgstr ""
+
+#: listltarifaview.cpp:41 listltarifaview.cpp:58
+msgid "Codigo completo del articulo"
+msgstr ""
+
+#: listltarifaview.cpp:42
+msgid "Nombre del articulo"
+msgstr ""
+
+#: listltarifaview.cpp:59
+msgid "Nombre articulo"
 msgstr ""
 
 #: ui_tarifabase.h:237 ui_tarifabase.h:240

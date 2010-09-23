@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-10-21 10:25+0200\n"
+"POT-Creation-Date: 2010-09-23 18:24+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -71,9 +71,9 @@ msgstr ""
 "#-#-#-#-#  bulmacont_ca.po (PACKAGE VERSION)  #-#-#-#-#\n"
 "Actualitza"
 
-#: cuadrante1view.cpp:58 cuadranteview.cpp:58 cuadrantediarioview.cpp:60
-#: cuadrantediarioview.cpp:73 cuadrantediarioview.cpp:74
-#: cuadrantediarioview.cpp:75 ui_cuadrante1base.h:308
+#: cuadranteview.cpp:58 cuadrantediarioview.cpp:60 cuadrantediarioview.cpp:73
+#: cuadrantediarioview.cpp:74 cuadrantediarioview.cpp:75 cuadrante1view.cpp:58
+#: ui_cuadrante1base.h:308
 #, fuzzy
 msgid "Almacen"
 msgstr "<LI> Magatzem <B>"
@@ -134,10 +134,10 @@ msgstr ""
 
 #: ui_cuadrantebase.h:258 ui_cuadrantebase.h:266 ui_cuadrantebase.h:274
 #: ui_cuadrantebase.h:282 ui_cuadrantebase.h:290 ui_cuadrantebase.h:298
-#: ui_cuadrante1base.h:327 ui_cuadrantediariobase.h:294
-#: ui_cuadrantediariobase.h:302 ui_cuadrantediariobase.h:310
-#: ui_cuadrantediariobase.h:318 ui_cuadrantediariobase.h:326
-#: ui_cuadrantediariobase.h:334
+#: ui_cuadrantediariobase.h:294 ui_cuadrantediariobase.h:302
+#: ui_cuadrantediariobase.h:310 ui_cuadrantediariobase.h:318
+#: ui_cuadrantediariobase.h:326 ui_cuadrantediariobase.h:334
+#: ui_cuadrante1base.h:327
 msgid "Ctrl+D"
 msgstr "Ctrl+D"
 
@@ -170,7 +170,7 @@ msgstr ""
 "#-#-#-#-#  bulmalib_ca_ES.UTF-8.po (PACKAGE VERSION)  #-#-#-#-#\n"
 "Editar"
 
-#: cuadrante1view.cpp:85 cuadranteview.cpp:70
+#: cuadranteview.cpp:70 cuadrante1view.cpp:85
 #, fuzzy
 msgid "Error al crear el almacen"
 msgstr "Error en la càrrega de l'amortizació"
@@ -179,7 +179,7 @@ msgstr "Error en la càrrega de l'amortizació"
 msgid "Error al iniciar el cuadrante"
 msgstr ""
 
-#: cuadrante1view.cpp:59 cuadrantediarioview.cpp:71 ui_cuadrante1base.h:332
+#: cuadrantediarioview.cpp:71 cuadrante1view.cpp:59 ui_cuadrante1base.h:332
 msgid "Fecha"
 msgstr "Data"
 

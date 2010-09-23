@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-10-21 10:25+0200\n"
+"POT-Creation-Date: 2010-09-23 18:24+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -71,12 +71,12 @@ msgstr "&Talles i colors"
 msgid "Alias"
 msgstr "Aplicar"
 
-#: plugarticulos.cpp:84 plugarticulos.cpp:85 listcoloresview.cpp:49
+#: listcoloresview.cpp:49 plugarticulos.cpp:84 plugarticulos.cpp:85
 #: ui_listcoloresbase.h:117
 msgid "Colores"
 msgstr "Colors"
 
-#: listtallasview.cpp:71 listcoloresview.cpp:71
+#: listcoloresview.cpp:71 listtallasview.cpp:71
 #, fuzzy
 msgid "Error al guardar los colores"
 msgstr "Desitja desar els canvis?"
@@ -126,7 +126,7 @@ msgstr "Color"
 msgid "Talla"
 msgstr ""
 
-#: listtallasview.cpp:49 plugarticulos.cpp:78 plugarticulos.cpp:79
+#: plugarticulos.cpp:78 plugarticulos.cpp:79 listtallasview.cpp:49
 #: ui_listtallasbase.h:117
 #, fuzzy
 msgid "Tallas"

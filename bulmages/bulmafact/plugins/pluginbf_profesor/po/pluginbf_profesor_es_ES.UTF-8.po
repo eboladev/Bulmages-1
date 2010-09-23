@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-10-21 10:24+0200\n"
+"POT-Creation-Date: 2010-09-23 18:50+0200\n"
 "PO-Revision-Date: 2009-10-19 01:16+0200\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -91,7 +91,7 @@ msgstr ""
 msgid "Borrar cobro"
 msgstr "Borrar cobro"
 
-#: profesoreslist.cpp:238
+#: profesoreslist.cpp:280
 msgid "Borrar profesor"
 msgstr "Borrar profesor"
 
@@ -171,7 +171,7 @@ msgstr "Ctrl+S"
 msgid "D.N.I."
 msgstr "D.N.I."
 
-#: profesoreslist.cpp:293
+#: profesoreslist.cpp:335
 msgid "DNI"
 msgstr "DNI"
 
@@ -179,11 +179,11 @@ msgstr "DNI"
 msgid "DNI del profesor"
 msgstr "DNI del profesor"
 
-#: profesoreslist.cpp:218
+#: profesoreslist.cpp:260
 msgid "Debe seleccionar una fila primero"
 msgstr "Debe seleccionar una fila primero"
 
-#: profesoreslist.cpp:175
+#: profesoreslist.cpp:217
 msgid "Debe seleccionar una linea"
 msgstr "Debe seleccionar una línea"
 
@@ -199,11 +199,11 @@ msgstr "Dirección:"
 msgid "Editar Monitor"
 msgstr ""
 
-#: profesoreslist.cpp:237
+#: profesoreslist.cpp:279
 msgid "Editar profesor"
 msgstr "Editar profesor"
 
-#: profesoreslist.cpp:190
+#: profesoreslist.cpp:232
 msgid "Error al borrar el cobro a cliente"
 msgstr "Error al borrar el cobro al cliente"
 
@@ -267,7 +267,7 @@ msgstr "ID actividad"
 msgid "ID profesor"
 msgstr "ID profesor"
 
-#: profesoreslist.cpp:291
+#: profesoreslist.cpp:333
 msgid "Id profesor"
 msgstr "ID profesor"
 
@@ -283,7 +283,7 @@ msgstr "Lleida"
 msgid "Monitor"
 msgstr ""
 
-#: pluginbf_profesor.cpp:116 pluginbf_profesor.cpp:117 profesoreslist.cpp:157
+#: pluginbf_profesor.cpp:116 pluginbf_profesor.cpp:117 profesoreslist.cpp:199
 #: ui_profesoreslistbase.h:309
 msgid "Monitores"
 msgstr ""
@@ -292,7 +292,7 @@ msgstr ""
 msgid "Movil del profesor"
 msgstr "Móvil del profesor"
 
-#: profesorview.cpp:83 profesoreslist.cpp:292
+#: profesorview.cpp:83 profesoreslist.cpp:334
 msgid "Nombre"
 msgstr "Nombre"
 
@@ -325,7 +325,7 @@ msgstr "Otros datos"
 msgid "Pagina web:"
 msgstr "Página web:"
 
-#: profesoreslist.cpp:295
+#: profesoreslist.cpp:337
 msgid "Poblacion"
 msgstr "Población"
 
@@ -349,7 +349,7 @@ msgstr "Provincia:"
 msgid "Tarragona"
 msgstr "Tarragona"
 
-#: profesoreslist.cpp:294
+#: profesoreslist.cpp:336
 msgid "Telefono"
 msgstr "Teléfono"
 

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-10-21 10:50+0200\n"
+"POT-Creation-Date: 2010-09-23 18:50+0200\n"
 "PO-Revision-Date: 2009-10-20 14:02+0200\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -21,24 +21,48 @@ msgstr ""
 msgid "&Aceptar"
 msgstr "&Aceptar"
 
-#: pluginbf_inventariosimple.cpp:77
-msgid "&Articulos"
-msgstr "&Artículos"
-
 #: ui_listinventariosimplebase.h:120
 msgid "&Cancelar"
 msgstr "&Cancelar"
 
-#: pluginbf_inventariosimple.cpp:81
+#: pluginbf_inventariosimple.cpp:79
+msgid "&Inventari"
+msgstr ""
+
+#: pluginbf_inventariosimple.cpp:83
 msgid "&Inventarios"
 msgstr "&Inventarios"
 
-#: listinventariosimpleview.cpp:71
-msgid "Error al guardar las cuotas"
-msgstr "Error al guardar las cuotas"
+#: pluginbf_inventariosimple.cpp:123
+msgid "Articulo"
+msgstr "Artículo"
 
-#: listinventariosimpleview.cpp:97
+#: pluginbf_inventariosimple.cpp:125
+msgid "Cantidad"
+msgstr "Cantidad"
+
+#: listinventariosimpleview.cpp:72
+msgid "Error al guardar el inventario"
+msgstr ""
+
+#: pluginbf_inventariosimple.cpp:124
+msgid "Fecha Prestamo"
+msgstr ""
+
+#: pluginbf_inventariosimple.cpp:121
+msgid "Id Actividad"
+msgstr "ID actividad"
+
+#: pluginbf_inventariosimple.cpp:208 listinventariosimpleview.cpp:98
 msgid "Id Inventario"
+msgstr ""
+
+#: pluginbf_inventariosimple.cpp:120
+msgid "Id prestamo"
+msgstr ""
+
+#: pluginbf_inventariosimple.cpp:122
+msgid "Id producto"
 msgstr ""
 
 #: ui_listinventariosimplebase.h:118
@@ -49,14 +73,20 @@ msgstr ""
 msgid "InventarioSimple"
 msgstr ""
 
-#: pluginbf_inventariosimple.cpp:82 pluginbf_inventariosimple.cpp:83
+#: pluginbf_inventariosimple.cpp:84 pluginbf_inventariosimple.cpp:85
 msgid "Inventarios"
 msgstr "Inventarios"
 
-#: listinventariosimpleview.cpp:98
+#: pluginbf_inventariosimple.cpp:209 listinventariosimpleview.cpp:99
 msgid "Nombre"
 msgstr "Nombre"
 
-#: listinventariosimpleview.cpp:99
+#: pluginbf_inventariosimple.cpp:210 listinventariosimpleview.cpp:100
 msgid "Stock"
 msgstr "Stock"
+
+#~ msgid "&Articulos"
+#~ msgstr "&Artículos"
+
+#~ msgid "Error al guardar las cuotas"
+#~ msgstr "Error al guardar las cuotas"

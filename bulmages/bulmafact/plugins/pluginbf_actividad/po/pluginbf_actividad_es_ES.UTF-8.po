@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-10-21 10:21+0200\n"
+"POT-Creation-Date: 2010-09-23 18:19+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -114,7 +114,7 @@ msgstr ""
 "#-#-#-#-#  pluginabrevs.pot (PACKAGE VERSION)  #-#-#-#-#\n"
 "#-#-#-#-#  bulmages_suite.pot (PACKAGE VERSION)  #-#-#-#-#\n"
 
-#: ui_convocatoriabase.h:450 ui_actividadbase.h:601
+#: ui_actividadbase.h:575 ui_convocatoriabase.h:450
 msgid "&Aceptar"
 msgstr "&Aceptar"
 
@@ -122,11 +122,11 @@ msgstr "&Aceptar"
 msgid "&Actividades"
 msgstr "&Actividades"
 
-#: ui_convocatoriabase.h:451 ui_actividadbase.h:602
+#: ui_actividadbase.h:576 ui_convocatoriabase.h:451
 msgid "&Cancelar"
 msgstr "&Cancelar"
 
-#: ui_convocatoriabase.h:439 ui_actividadbase.h:594
+#: ui_actividadbase.h:570 ui_convocatoriabase.h:439
 msgid "&Datos generales"
 msgstr "&Datos generales"
 
@@ -150,8 +150,8 @@ msgstr "&Tipos de actividad"
 msgid "Actividad"
 msgstr "Actividad"
 
-#: actividadeslist.cpp:153 pluginbf_actividad.cpp:120
-#: pluginbf_actividad.cpp:121 ui_convocatoriaslistbase.h:309
+#: pluginbf_actividad.cpp:120 pluginbf_actividad.cpp:121
+#: actividadeslist.cpp:153 ui_convocatoriaslistbase.h:309
 #: ui_actividadeslistbase.h:260
 msgid "Actividades"
 msgstr "Actividades"
@@ -165,15 +165,15 @@ msgstr "Actualizar listado"
 msgid "Alumno"
 msgstr "Alumno"
 
-#: ui_convocatoriabase.h:446 ui_actividadbase.h:597
+#: ui_actividadbase.h:573 ui_convocatoriabase.h:446
 msgid "Alumnos"
 msgstr "Alumnos"
 
-#: ui_convocatoriabase.h:447 ui_actividadbase.h:598
+#: ui_actividadbase.h:574 ui_convocatoriabase.h:447
 msgid "Asistencias"
 msgstr "Asistencias"
 
-#: ui_convocatoriabase.h:449 ui_actividadbase.h:600
+#: ui_convocatoriabase.h:449
 msgid "BLMonthCalendar"
 msgstr "BLMonthCalendar"
 
@@ -195,7 +195,7 @@ msgstr "Borrar convocatoria"
 msgid "Borrar Tipo de Actividad"
 msgstr "Borrar tipo de actividad"
 
-#: ui_actividadbase.h:559 ui_actividadbase.h:562
+#: ui_actividadbase.h:535 ui_actividadbase.h:538
 msgid "Borrar actividad"
 msgstr "Borrar actividad"
 
@@ -208,7 +208,7 @@ msgstr "Borrar cobro"
 msgid "Buscar:"
 msgstr "Buscar:"
 
-#: ui_convocatoriabase.h:448 ui_actividadbase.h:599
+#: ui_convocatoriabase.h:448
 msgid "Calendario"
 msgstr "Calendario"
 
@@ -224,15 +224,19 @@ msgstr "Cobros previstos"
 msgid "Codigo"
 msgstr "Código"
 
-#: ui_convocatoriabase.h:432 ui_actividadbase.h:574
+#: ui_convocatoriabase.h:432
 msgid "Codigo Actividad"
 msgstr "Codigo Actividad"
+
+#: ui_actividadbase.h:550
+msgid "Codigo Actividad:"
+msgstr ""
 
 #: actividadview.cpp:64
 msgid "Comentarios"
 msgstr "Comentarios"
 
-#: ui_convocatoriabase.h:440 ui_actividadbase.h:595
+#: ui_actividadbase.h:571 ui_convocatoriabase.h:440
 msgid "Comentarios:"
 msgstr "Comentarios:"
 
@@ -253,8 +257,8 @@ msgstr "Convocatorias"
 msgid "Ctrl+B"
 msgstr "Ctrl+B"
 
-#: ui_convocatoriabase.h:423 ui_convocatoriaslistbase.h:339
-#: ui_actividadbase.h:565 ui_actividadeslistbase.h:287
+#: ui_convocatoriaslistbase.h:339 ui_actividadbase.h:541
+#: ui_convocatoriabase.h:423 ui_actividadeslistbase.h:287
 msgid "Ctrl+D"
 msgstr "Ctrl+D"
 
@@ -266,7 +270,7 @@ msgstr "Ctrl+E"
 msgid "Ctrl+F"
 msgstr "Ctrl+F"
 
-#: ui_convocatoriabase.h:431 ui_actividadbase.h:573
+#: ui_actividadbase.h:549 ui_convocatoriabase.h:431
 msgid "Ctrl+I"
 msgstr "Ctrl+I"
 
@@ -278,7 +282,7 @@ msgstr "Ctrl+N"
 msgid "Ctrl+P"
 msgstr "Ctrl+P"
 
-#: ui_convocatoriabase.h:415 ui_actividadbase.h:557
+#: ui_actividadbase.h:533 ui_convocatoriabase.h:415
 msgid "Ctrl+S"
 msgstr "Ctrl+S"
 
@@ -294,11 +298,15 @@ msgstr "Debe seleccionar una linea"
 msgid "Desea guardar los cambios?"
 msgstr "Desea guardar los cambios?"
 
-#: ui_convocatoriabase.h:436 ui_actividadbase.h:577
+#: actividadview.cpp:76
+msgid "Direccion"
+msgstr "Dirección"
+
+#: ui_actividadbase.h:553 ui_convocatoriabase.h:436
 msgid "Direccion:"
 msgstr "Direccion:"
 
-#: actividadview.cpp:71 ui_actividadbase.h:588
+#: actividadview.cpp:71 ui_actividadbase.h:564
 msgid "Domingo"
 msgstr "Domingo"
 
@@ -306,8 +314,8 @@ msgstr "Domingo"
 msgid "Duracion"
 msgstr ""
 
-#: ui_actividadbase.h:593
-msgid "Duración"
+#: ui_actividadbase.h:569
+msgid "Duración:"
 msgstr ""
 
 #: actividadeslist.cpp:235 ui_convocatoriaslistbase.h:325
@@ -332,7 +340,7 @@ msgstr "Error al borrar el tipo actividad"
 msgid "Error al borrar el cobro a cliente"
 msgstr "Error al borrar el cobro a cliente"
 
-#: convocatoriaview.cpp:67 actividadview.cpp:111
+#: convocatoriaview.cpp:67 actividadview.cpp:110
 msgid "Error al crear el actividad"
 msgstr "Error al crear el actividad"
 
@@ -348,15 +356,23 @@ msgstr "Error al guardar el tipo de actividad"
 msgid "F5"
 msgstr "F5"
 
-#: actividadeslist.cpp:295 actividadview.cpp:62 ui_actividadbase.h:582
+#: actividadeslist.cpp:295 actividadview.cpp:62
 msgid "Fecha Final"
 msgstr "Fecha final"
 
-#: actividadeslist.cpp:294 actividadview.cpp:61 ui_actividadbase.h:581
+#: ui_actividadbase.h:558
+msgid "Fecha Final:"
+msgstr ""
+
+#: actividadeslist.cpp:294 actividadview.cpp:61
 msgid "Fecha Inicial"
 msgstr "Fecha inicial"
 
-#: actividadview.cpp:247
+#: ui_actividadbase.h:557
+msgid "Fecha Inicial:"
+msgstr ""
+
+#: actividadview.cpp:246
 msgid "Fecha de la falta"
 msgstr ""
 
@@ -385,7 +401,7 @@ msgstr "General"
 msgid "Guardar Tipo de Actividad"
 msgstr "Guardar tipo de actividad"
 
-#: ui_actividadbase.h:551 ui_actividadbase.h:554
+#: ui_actividadbase.h:527 ui_actividadbase.h:530
 msgid "Guardar actividad"
 msgstr "Guardar actividad"
 
@@ -401,9 +417,13 @@ msgstr "Guardar datos del tipo de actividad"
 msgid "Hora Inicial"
 msgstr ""
 
-#: actividadview.cpp:73 ui_actividadbase.h:592
+#: actividadview.cpp:73
 msgid "Hora Inicio"
 msgstr "Hora inicio"
+
+#: ui_actividadbase.h:568
+msgid "Hora Inicio:"
+msgstr ""
 
 #: actividadeslist.cpp:289
 msgid "ID Actividad"
@@ -421,11 +441,11 @@ msgstr "ID actividad"
 msgid "ID tipo actividad"
 msgstr "ID tipo actividad"
 
-#: actividadview.cpp:212 actividadview.cpp:245
+#: actividadview.cpp:211 actividadview.cpp:244
 msgid "Id Actividad"
 msgstr "ID actividad"
 
-#: actividadview.cpp:210 actividadview.cpp:244
+#: actividadview.cpp:209 actividadview.cpp:243
 msgid "Id alumno"
 msgstr "ID alumno"
 
@@ -433,11 +453,11 @@ msgstr "ID alumno"
 msgid "Id profesor"
 msgstr "Id profesor"
 
-#: actividadview.cpp:209 actividadview.cpp:243
+#: actividadview.cpp:208 actividadview.cpp:242
 msgid "Identificador"
 msgstr "Identificador"
 
-#: ui_actividadbase.h:567 ui_actividadbase.h:570
+#: ui_actividadbase.h:543 ui_actividadbase.h:546
 msgid "Imprimir actividad"
 msgstr "Imprimir actividad"
 
@@ -446,7 +466,7 @@ msgstr "Imprimir actividad"
 msgid "Imprimir listado"
 msgstr "Imprimir listado"
 
-#: actividadview.cpp:68 ui_actividadbase.h:590
+#: actividadview.cpp:68 ui_actividadbase.h:566
 msgid "Jueves"
 msgstr "Jueves"
 
@@ -454,19 +474,23 @@ msgstr "Jueves"
 msgid "Lista de Tipos:"
 msgstr "Lista de tipos:"
 
-#: ui_convocatoriabase.h:434 ui_actividadbase.h:576
+#: actividadview.cpp:75 ui_convocatoriabase.h:434
 msgid "Lugar"
 msgstr "Lugar"
 
-#: actividadview.cpp:65 ui_actividadbase.h:584
+#: ui_actividadbase.h:552
+msgid "Lugar:"
+msgstr ""
+
+#: actividadview.cpp:65 ui_actividadbase.h:560
 msgid "Lunes"
 msgstr "Lunes"
 
-#: actividadview.cpp:66 ui_actividadbase.h:585
+#: actividadview.cpp:66 ui_actividadbase.h:561
 msgid "Martes"
 msgstr "Martes"
 
-#: actividadview.cpp:67 ui_actividadbase.h:586
+#: actividadview.cpp:67 ui_actividadbase.h:562
 msgid "Miercoles"
 msgstr "Miércoles"
 
@@ -474,11 +498,11 @@ msgstr "Miércoles"
 msgid "Nombre"
 msgstr "Nombre"
 
-#: actividadview.cpp:211 actividadview.cpp:246
+#: actividadview.cpp:210 actividadview.cpp:245
 msgid "Nombre alumno"
 msgstr "Nombre alumno"
 
-#: ui_convocatoriabase.h:433 ui_actividadbase.h:575
+#: ui_actividadbase.h:551 ui_convocatoriabase.h:433
 msgid "Nombre completo:"
 msgstr "Nombre completo:"
 
@@ -490,7 +514,7 @@ msgstr "Nombre del actividad"
 msgid "Nombre:"
 msgstr "Nombre:"
 
-#: ui_convocatoriabase.h:406 ui_actividadbase.h:548
+#: ui_actividadbase.h:524 ui_convocatoriabase.h:406
 msgid "Nueva Actividad"
 msgstr "Nueva Actividad"
 
@@ -511,12 +535,12 @@ msgstr "Nuevo tipo de actividad"
 msgid "Nuevo actividad"
 msgstr ""
 
-#: ui_convocatoriabase.h:441 ui_actividadbase.h:596
+#: ui_actividadbase.h:572 ui_convocatoriabase.h:441
 msgid "Otros datos"
 msgstr "Otros datos"
 
-#: ui_actividadbase.h:591
-msgid "Periodicidad Cuota"
+#: ui_actividadbase.h:567
+msgid "Periodicidad Cuota:"
 msgstr ""
 
 #: actividadview.cpp:72
@@ -527,9 +551,9 @@ msgstr "Período"
 msgid "Precio"
 msgstr "Precio"
 
-#: ui_actividadbase.h:580
-msgid "Precio Cuota"
-msgstr "Precio cuota"
+#: ui_actividadbase.h:556
+msgid "Precio Cuota:"
+msgstr ""
 
 #: actividadeslist.cpp:291
 msgid "Profesor"
@@ -539,11 +563,11 @@ msgstr "Profesor"
 msgid "Profesor Encargado"
 msgstr "Profesor Encargado"
 
-#: convocatoriaview.cpp:59 actividadview.cpp:90
+#: convocatoriaview.cpp:59 actividadview.cpp:92
 msgid "Profesor:"
 msgstr "Profesor:"
 
-#: actividadview.cpp:70 ui_actividadbase.h:587
+#: actividadview.cpp:70 ui_actividadbase.h:563
 msgid "Sabado"
 msgstr "Sábado"
 
@@ -551,11 +575,11 @@ msgstr "Sábado"
 msgid "Seleccionar actividad"
 msgstr ""
 
-#: ui_actividadbase.h:583
+#: ui_actividadbase.h:559
 msgid "Sesiones Semanales"
 msgstr ""
 
-#: convocatoriaview.cpp:95 actividadview.cpp:142
+#: convocatoriaview.cpp:95 actividadview.cpp:141
 msgid "Tiene que guardar el documento antes de poder imprimirlo."
 msgstr "Tiene que guardar el documento antes de poder imprimirlo."
 
@@ -563,9 +587,13 @@ msgstr "Tiene que guardar el documento antes de poder imprimirlo."
 msgid "Tipo"
 msgstr "Tipo"
 
-#: ui_convocatoriabase.h:438 ui_actividadbase.h:579
+#: ui_convocatoriabase.h:438
 msgid "Tipo de Actividad"
 msgstr "Tipo de actividad"
+
+#: ui_actividadbase.h:555
+msgid "Tipo de Actividad:"
+msgstr ""
 
 #: tipoactividadview.cpp:44
 msgid "TipoActividad"
@@ -576,11 +604,11 @@ msgstr "Tipo actividad"
 msgid "Tipos de Actividad"
 msgstr "Tipos de actividad"
 
-#: actividadview.cpp:69 ui_actividadbase.h:589
+#: actividadview.cpp:69 ui_actividadbase.h:565
 msgid "Viernes"
 msgstr "Viernes"
 
-#: actividadview.cpp:63 ui_convocatoriabase.h:437 ui_actividadbase.h:578
+#: actividadview.cpp:63 ui_actividadbase.h:554 ui_convocatoriabase.h:437
 msgid "Vigente"
 msgstr "Vigente"
 
@@ -622,6 +650,9 @@ msgstr "Vigente"
 
 #~ msgid "Precio Actividad"
 #~ msgstr "Precio actividad"
+
+#~ msgid "Precio Cuota"
+#~ msgstr "Precio cuota"
 
 #~ msgid "Seleccione archivo"
 #~ msgstr "Seleccione archivo"

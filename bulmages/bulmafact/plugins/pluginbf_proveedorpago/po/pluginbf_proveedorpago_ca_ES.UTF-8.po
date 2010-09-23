@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-10-21 10:26+0200\n"
+"POT-Creation-Date: 2010-09-23 18:56+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -68,11 +68,11 @@ msgstr "<HR><B>Trotant el proveïdor"
 msgid "Actualizar listado"
 msgstr "Actual·litza llistat"
 
-#: pagoslist.cpp:260
+#: pagoslist.cpp:266
 msgid "Apellidos trabajador"
 msgstr "Cognoms del treballador"
 
-#: pagoslist.cpp:254 pagoview.cpp:68
+#: pagoview.cpp:68 pagoslist.cpp:260
 #, fuzzy
 msgid "Banco"
 msgstr "Balanç"
@@ -92,12 +92,12 @@ msgstr "Esborrar"
 msgid "Buscar:"
 msgstr "Cerca:"
 
-#: pagoslist.cpp:249
+#: pagoslist.cpp:255
 #, fuzzy
 msgid "C.I.F. proveedor"
 msgstr "NIF del proveïdor"
 
-#: pagoslist.cpp:253 pagoview.cpp:66
+#: pagoview.cpp:66 pagoslist.cpp:259
 msgid "Cantidad"
 msgstr "Quantitat"
 
@@ -106,7 +106,7 @@ msgstr "Quantitat"
 msgid "Comentario del pago"
 msgstr "Comentaris de l'assentament"
 
-#: pagoslist.cpp:257
+#: pagoslist.cpp:263
 #, fuzzy
 msgid "Comentario pago"
 msgstr "Comentari"
@@ -115,7 +115,7 @@ msgstr "Comentari"
 msgid "Configurar listado"
 msgstr "Configura llistat"
 
-#: pagoslist.cpp:197
+#: pagoslist.cpp:203
 #, fuzzy
 msgid "Debe seleccionar una linea"
 msgstr "Cal triar un compte"
@@ -134,12 +134,12 @@ msgstr ""
 "#-#-#-#-#  bulmalib_ca_ES.UTF-8.po (PACKAGE VERSION)  #-#-#-#-#\n"
 "Editar"
 
-#: pagoslist.cpp:251
+#: pagoslist.cpp:257
 #, fuzzy
 msgid "Email proveedor"
 msgstr "NIF del proveïdor"
 
-#: pagoslist.cpp:209
+#: pagoslist.cpp:215
 #, fuzzy
 msgid "Error al borrar el pago"
 msgstr "Esborra forma de pagament"
@@ -149,7 +149,7 @@ msgstr "Esborra forma de pagament"
 msgid "Error al crear el pago"
 msgstr "Esborra forma de pagament"
 
-#: pagoslist.cpp:252 pagoview.cpp:64
+#: pagoview.cpp:64 pagoslist.cpp:258
 #, fuzzy
 msgid "Fecha de pago"
 msgstr "<LI> Forma de pagament <B>"
@@ -177,17 +177,17 @@ msgstr "Filtrar"
 msgid "Guardar pago"
 msgstr "Desar"
 
-#: pagoslist.cpp:246 pagoview.cpp:61
+#: pagoview.cpp:61 pagoslist.cpp:252
 #, fuzzy
 msgid "Id pago"
 msgstr "<LI> Forma de pagament <B>"
 
-#: pagoslist.cpp:247 pagoview.cpp:62
+#: pagoview.cpp:62 pagoslist.cpp:253
 #, fuzzy
 msgid "Id proveedor"
 msgstr "NIF del proveïdor"
 
-#: pagoslist.cpp:258
+#: pagoslist.cpp:264
 #, fuzzy
 msgid "Id trabajador"
 msgstr "Id esborrany"
@@ -197,12 +197,12 @@ msgstr "Id esborrany"
 msgid "Imprimir listado"
 msgstr "Imprimeix la comanda"
 
-#: pagoslist.cpp:259
+#: pagoslist.cpp:265
 #, fuzzy
 msgid "Nombre de trabajador"
 msgstr "Nom del proveïdor"
 
-#: pagoslist.cpp:248
+#: pagoslist.cpp:254
 #, fuzzy
 msgid "Nombre proveedor"
 msgstr "Nom del proveïdor"
@@ -223,8 +223,8 @@ msgstr "Telèfon del proveïdor"
 msgid "Pago"
 msgstr "Pàgina"
 
-#: pagoslist.cpp:187 pluginbf_proveedorpago.cpp:98
-#: pluginbf_proveedorpago.cpp:99 ui_pagoslistbase.h:370
+#: pluginbf_proveedorpago.cpp:98 pluginbf_proveedorpago.cpp:99
+#: pagoslist.cpp:193 ui_pagoslistbase.h:370
 #, fuzzy
 msgid "Pagos a proveedores"
 msgstr "<HR><B>Trotant el proveïdor"
@@ -238,7 +238,7 @@ msgstr ""
 msgid "Previcion de pago"
 msgstr "Nova forma de pagament"
 
-#: pagoslist.cpp:256
+#: pagoslist.cpp:262
 msgid "Prevision pago"
 msgstr "Previsió de pagament"
 
@@ -246,7 +246,7 @@ msgstr "Previsió de pagament"
 msgid "Previsiones de Pago"
 msgstr "Previsions de Pagament"
 
-#: pagoslist.cpp:49 pagoslist.cpp:74 pagoview.cpp:71
+#: pagoview.cpp:71 pagoslist.cpp:49 pagoslist.cpp:74
 msgid "Proveedor:"
 msgstr "Proveïdor:"
 
@@ -254,7 +254,7 @@ msgstr "Proveïdor:"
 msgid "Provision de fondos"
 msgstr "Provisió de fons"
 
-#: pagoslist.cpp:255 pagoview.cpp:65
+#: pagoview.cpp:65 pagoslist.cpp:261
 #, fuzzy
 msgid "Referencia de pago"
 msgstr "Nova forma de pagament"
@@ -263,7 +263,7 @@ msgstr "Nova forma de pagament"
 msgid "Referencia:"
 msgstr "Referència:"
 
-#: pagoslist.cpp:250
+#: pagoslist.cpp:256
 #, fuzzy
 msgid "Telefono proveedor"
 msgstr "Telèfon del proveïdor"

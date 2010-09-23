@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-10-21 10:23+0200\n"
+"POT-Creation-Date: 2010-09-23 18:23+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -83,7 +83,7 @@ msgstr "Cerca:"
 msgid "Codigo Almacen"
 msgstr "Codi compte"
 
-#: almaceneslistview.cpp:57 almaceneslistview.cpp:91 almacenview.cpp:58
+#: almacenview.cpp:58 almaceneslistview.cpp:57 almaceneslistview.cpp:91
 #, fuzzy
 msgid "Codigo almacen"
 msgstr "Codi compte"
@@ -198,7 +198,7 @@ msgstr "General"
 msgid "Guardar almacen"
 msgstr "Desa balanç"
 
-#: almaceneslistview.cpp:56 almaceneslistview.cpp:90 almacenview.cpp:57
+#: almacenview.cpp:57 almaceneslistview.cpp:56 almaceneslistview.cpp:90
 #, fuzzy
 msgid "ID almacen"
 msgstr "<LI> Magatzem <B>"
@@ -218,7 +218,7 @@ msgstr "Mostrar assentament"
 msgid "Nombre Almacen"
 msgstr "Nom del compte"
 
-#: almaceneslistview.cpp:58 almaceneslistview.cpp:92 almacenview.cpp:59
+#: almacenview.cpp:59 almaceneslistview.cpp:58 almaceneslistview.cpp:92
 #, fuzzy
 msgid "Nombre almacen"
 msgstr "Nom del compte"

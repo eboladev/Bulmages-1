@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-11-06 00:12+0100\n"
+"POT-Creation-Date: 2010-09-23 18:23+0200\n"
 "PO-Revision-Date: 2009-11-06 00:12+0100\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -17,11 +17,11 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: ui_fpagobase.h:347
+#: ui_fpagobase.h:354
 msgid "&Aceptar"
 msgstr "&Acceptar"
 
-#: ui_fpagobase.h:348
+#: ui_fpagobase.h:355
 msgid "&Cancelar"
 msgstr "&Cancel·lar"
 
@@ -29,24 +29,24 @@ msgstr "&Cancel·lar"
 msgid "&Formas de pago"
 msgstr "&Formes de pagament"
 
-#: ui_fpagobase.h:323
+#: ui_fpagobase.h:330
 #, fuzzy
 msgid "Banco:"
 msgstr "Banc"
 
-#: ui_fpagobase.h:334 ui_fpagobase.h:337
+#: ui_fpagobase.h:341 ui_fpagobase.h:344
 msgid "Borrar forma de pago"
 msgstr "Esborra forma de pagament"
 
-#: ui_fpagobase.h:319
+#: ui_fpagobase.h:326
 msgid "Descuento:"
 msgstr "Descompte"
 
-#: fpagoview.cpp:163
+#: fpagoview.cpp:197
 msgid "Desea guardar los cambios."
 msgstr "Desitja desar els canvis."
 
-#: fpagoview.cpp:220
+#: fpagoview.cpp:254
 #, fuzzy
 msgid "Error al intentar borrar la forma de pago"
 msgstr "<LI>Dades insuficients per a tractar la forma de pagament."
@@ -55,47 +55,47 @@ msgstr "<LI>Dades insuficients per a tractar la forma de pagament."
 msgid "Forma de Pago"
 msgstr "Forma de pagament"
 
-#: ui_fpagobase.h:324
+#: ui_fpagobase.h:331
 msgid "Forma de pago:"
 msgstr "Forma de pagament"
 
 #: pluginbf_formasdepago.cpp:83 pluginbf_formasdepago.cpp:84
-#: ui_fpagobase.h:314
+#: ui_fpagobase.h:321
 msgid "Formas de pago"
 msgstr "Formes de pagament"
 
-#: fpagoview.cpp:162 ui_fpagobase.h:341 ui_fpagobase.h:344
+#: fpagoview.cpp:196 ui_fpagobase.h:348 ui_fpagobase.h:351
 msgid "Guardar forma de pago"
 msgstr "Desar forma de pagament"
 
-#: ui_fpagobase.h:315
+#: ui_fpagobase.h:322
 msgid "Informacion de la forma de pago:"
 msgstr "Informació de la forma de pagament"
 
-#: ui_fpagobase.h:316
+#: ui_fpagobase.h:323
 msgid "Nombre de la forma de pago:"
 msgstr "Nom de la forma de pagament"
 
-#: ui_fpagobase.h:327 ui_fpagobase.h:330
+#: ui_fpagobase.h:334 ui_fpagobase.h:337
 msgid "Nueva forma de pago"
 msgstr "Nova forma de pagament"
 
-#: ui_fpagobase.h:318
+#: ui_fpagobase.h:325
 msgid "Numero de plazos:"
 msgstr "Nombre de terminis"
 
-#: ui_fpagobase.h:317
+#: ui_fpagobase.h:324
 msgid "Plazo entre recibos (dias):"
 msgstr "Termini entre rebuts (dies)"
 
-#: ui_fpagobase.h:320
+#: ui_fpagobase.h:327
 msgid "Plazo primer recibo (dias):"
 msgstr "Termini primer rebut (dies)"
 
-#: ui_fpagobase.h:321
+#: ui_fpagobase.h:328
 msgid "Tipo plazo entre recibos:"
 msgstr "Tipus de termini entre rebuts"
 
-#: ui_fpagobase.h:322
+#: ui_fpagobase.h:329
 msgid "Tipo plazo primer pago:"
 msgstr "Tipus de termini primer rebut"

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-10-30 16:11+0100\n"
+"POT-Creation-Date: 2010-09-23 18:53+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -16,59 +16,11 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: listcuotasporalumnoview.cpp:49
-msgid "CuotasPorAlumno"
-msgstr ""
-
-#: listcuotasporalumnoview.cpp:71
-msgid "Error al guardar las cuotas"
-msgstr ""
-
-#: listcuotasporalumnoview.cpp:97
-msgid "Número de alumnos"
-msgstr ""
-
-#: listcuotasporalumnoview.cpp:98
-msgid "Cuota"
-msgstr ""
-
-#: claseview.cpp:44 alumnoview.cpp:67
-msgid "Clase"
-msgstr ""
-
-#: claseview.cpp:178
-msgid "Error al guardar el clase"
-msgstr ""
-
-#: claseview.cpp:197
-msgid "Guardar datos del clase"
-msgstr ""
-
-#: claseview.cpp:198
-msgid "Desea guardar los cambios?"
-msgstr ""
-
-#: claseview.cpp:199
-msgid "&Si"
-msgstr ""
-
-#: claseview.cpp:199
-msgid "&No"
-msgstr ""
-
-#: claseview.cpp:229
-msgid "Error al crear un nuevo Clase"
-msgstr ""
-
-#: claseview.cpp:254
-msgid "Error al borrar el Clase"
-msgstr ""
-
 #: alumnoview.cpp:53
 msgid "Alumno"
 msgstr ""
 
-#: alumnoview.cpp:56 alumnoview.cpp:321 alumnoview.cpp:354 alumnoslist.cpp:273
+#: alumnoview.cpp:56 alumnoview.cpp:321 alumnoview.cpp:354 alumnoslist.cpp:341
 msgid "Id alumno"
 msgstr ""
 
@@ -76,11 +28,11 @@ msgstr ""
 msgid "Nombre del alumno"
 msgstr ""
 
-#: alumnoview.cpp:59 alumnoslist.cpp:275
+#: alumnoview.cpp:59 alumnoslist.cpp:343
 msgid "1er apellido"
 msgstr ""
 
-#: alumnoview.cpp:60 alumnoslist.cpp:276
+#: alumnoview.cpp:60 alumnoslist.cpp:344
 msgid "2o apellido"
 msgstr ""
 
@@ -104,8 +56,12 @@ msgstr ""
 msgid "Fecha Nacimiento"
 msgstr ""
 
-#: alumnoview.cpp:66 ui_alumnobase.h:513
+#: alumnoview.cpp:66 ui_alumnobase.h:522
 msgid "Activo"
+msgstr ""
+
+#: alumnoview.cpp:67 claseview.cpp:44
+msgid "Clase"
 msgstr ""
 
 #: alumnoview.cpp:90
@@ -183,45 +139,13 @@ msgstr ""
 msgid "Id actividad"
 msgstr ""
 
-#: alumnoslist.cpp:80
-msgid "Selector de alumnos"
-msgstr ""
-
-#: alumnoslist.cpp:154 pluginbf_alumno.cpp:131 pluginbf_alumno.cpp:132
-#: ui_alumnoslistbase.h:309
-msgid "Alumnos"
-msgstr ""
-
-#: alumnoslist.cpp:170
-msgid "Debe seleccionar una linea"
-msgstr ""
-
-#: alumnoslist.cpp:184
-msgid "Error al borrar el cobro a cliente"
-msgstr ""
-
-#: alumnoslist.cpp:212
-msgid "Debe seleccionar una fila primero"
-msgstr ""
-
-#: alumnoslist.cpp:228 ui_alumnoslistbase.h:325 ui_alumnoslistbase.h:328
-msgid "Editar Alumno"
-msgstr ""
-
-#: alumnoslist.cpp:229 ui_alumnoslistbase.h:333 ui_alumnoslistbase.h:336
-msgid "Borrar Alumno"
-msgstr ""
-
-#: alumnoslist.cpp:274
-msgid "Nombre"
-msgstr ""
-
-#: alumnoslist.cpp:277
-msgid "F. Nacimiento"
-msgstr ""
-
 #: pluginbf_alumno.cpp:129
 msgid "&Alumnos"
+msgstr ""
+
+#: pluginbf_alumno.cpp:131 pluginbf_alumno.cpp:132 alumnoslist.cpp:211
+#: ui_alumnoslistbase.h:309
+msgid "Alumnos"
 msgstr ""
 
 #: pluginbf_alumno.cpp:137
@@ -257,48 +181,84 @@ msgstr ""
 msgid "Seleccionar alumno"
 msgstr ""
 
-#: ui_clasebase.h:221
-msgid "Tipos de Actividad"
+#: alumnoslist.cpp:81
+msgid "Selector de alumnos"
 msgstr ""
 
-#: ui_clasebase.h:222
-msgid "Lista de Tipos:"
+#: alumnoslist.cpp:227
+msgid "Debe seleccionar una linea"
 msgstr ""
 
-#: ui_clasebase.h:224 ui_clasebase.h:227
-msgid "Borrar Tipo de Actividad"
+#: alumnoslist.cpp:241
+msgid "Error al borrar el cobro a cliente"
 msgstr ""
 
-#: ui_clasebase.h:231 ui_clasebase.h:234
-msgid "Guardar Tipo de Actividad"
+#: alumnoslist.cpp:269
+msgid "Debe seleccionar una fila primero"
 msgstr ""
 
-#: ui_clasebase.h:238 ui_clasebase.h:241
-msgid "Nuevo Tipo de Actividad"
+#: alumnoslist.cpp:285 ui_alumnoslistbase.h:325 ui_alumnoslistbase.h:328
+msgid "Editar Alumno"
 msgstr ""
 
-#: ui_clasebase.h:244 ui_alumnobase.h:507
-msgid "Nombre:"
+#: alumnoslist.cpp:286 ui_alumnoslistbase.h:333 ui_alumnoslistbase.h:336
+msgid "Borrar Alumno"
 msgstr ""
 
-#: ui_clasebase.h:245
-msgid "General"
+#: alumnoslist.cpp:342
+msgid "Nombre"
 msgstr ""
 
-#: ui_listcuotasporalumnobase.h:118
-msgid "Cuotas Socio"
+#: alumnoslist.cpp:345
+msgid "F. Nacimiento"
 msgstr ""
 
-#: ui_listcuotasporalumnobase.h:119 ui_alumnobase.h:526
-msgid "&Aceptar"
+#: listcuotasporalumnoview.cpp:49
+msgid "CuotasPorAlumno"
 msgstr ""
 
-#: ui_listcuotasporalumnobase.h:120 ui_alumnobase.h:527
-msgid "&Cancelar"
+#: listcuotasporalumnoview.cpp:71
+msgid "Error al guardar las cuotas"
 msgstr ""
 
-#: ui_alumnoslistbase.h:310
-msgid "Banco:"
+#: listcuotasporalumnoview.cpp:97
+msgid "Número de alumnos"
+msgstr ""
+
+#: listcuotasporalumnoview.cpp:98
+msgid "Cuota"
+msgstr ""
+
+#: claseview.cpp:178
+msgid "Error al guardar el clase"
+msgstr ""
+
+#: claseview.cpp:197
+msgid "Guardar datos del clase"
+msgstr ""
+
+#: claseview.cpp:198
+msgid "Desea guardar los cambios?"
+msgstr ""
+
+#: claseview.cpp:199
+msgid "&Si"
+msgstr ""
+
+#: claseview.cpp:199
+msgid "&No"
+msgstr ""
+
+#: claseview.cpp:229
+msgid "Error al crear un nuevo Clase"
+msgstr ""
+
+#: claseview.cpp:254
+msgid "Error al borrar el Clase"
+msgstr ""
+
+#: ui_alumnoslistbase.h:310 ui_alumnobase.h:523
+msgid "Curso:"
 msgstr ""
 
 #: ui_alumnoslistbase.h:311
@@ -317,7 +277,7 @@ msgstr ""
 msgid "Cobros efectivos"
 msgstr ""
 
-#: ui_alumnoslistbase.h:317 ui_alumnoslistbase.h:320 ui_alumnobase.h:458
+#: ui_alumnoslistbase.h:317 ui_alumnoslistbase.h:320 ui_alumnobase.h:467
 msgid "Nuevo Alumno"
 msgstr ""
 
@@ -329,7 +289,7 @@ msgstr ""
 msgid "Ctrl+E"
 msgstr ""
 
-#: ui_alumnoslistbase.h:339 ui_alumnobase.h:475
+#: ui_alumnoslistbase.h:339 ui_alumnobase.h:484
 msgid "Ctrl+D"
 msgstr ""
 
@@ -369,83 +329,119 @@ msgstr ""
 msgid "Buscar:"
 msgstr ""
 
-#: ui_alumnobase.h:461 ui_alumnobase.h:464
+#: ui_clasebase.h:221
+msgid "Aulas"
+msgstr ""
+
+#: ui_clasebase.h:222
+msgid "Aulas:"
+msgstr ""
+
+#: ui_clasebase.h:224 ui_clasebase.h:227
+msgid "Borrar Tipo de Actividad"
+msgstr ""
+
+#: ui_clasebase.h:231 ui_clasebase.h:234
+msgid "Guardar Tipo de Actividad"
+msgstr ""
+
+#: ui_clasebase.h:238 ui_clasebase.h:241
+msgid "Nuevo Tipo de Actividad"
+msgstr ""
+
+#: ui_clasebase.h:244 ui_alumnobase.h:516
+msgid "Nombre:"
+msgstr ""
+
+#: ui_clasebase.h:245
+msgid "General"
+msgstr ""
+
+#: ui_listcuotasporalumnobase.h:118
+msgid "Cuotas Socio"
+msgstr ""
+
+#: ui_listcuotasporalumnobase.h:119 ui_alumnobase.h:535
+msgid "&Aceptar"
+msgstr ""
+
+#: ui_listcuotasporalumnobase.h:120 ui_alumnobase.h:536
+msgid "&Cancelar"
+msgstr ""
+
+#: ui_alumnobase.h:470 ui_alumnobase.h:473
 msgid "Guardar cobro"
 msgstr ""
 
-#: ui_alumnobase.h:467
+#: ui_alumnobase.h:476
 msgid "Ctrl+S"
 msgstr ""
 
-#: ui_alumnobase.h:469 ui_alumnobase.h:472 ui_alumnobase.h:477
-#: ui_alumnobase.h:480
+#: ui_alumnobase.h:478 ui_alumnobase.h:481 ui_alumnobase.h:486
+#: ui_alumnobase.h:489
 msgid "Borrar cobro"
 msgstr ""
 
-#: ui_alumnobase.h:483
+#: ui_alumnobase.h:492
 msgid "Ctrl+I"
 msgstr ""
 
-#: ui_alumnobase.h:499
+#: ui_alumnobase.h:508
 msgid "DNI"
 msgstr ""
 
-#: ui_alumnobase.h:500
+#: ui_alumnobase.h:509
 msgid "Fecha nacimiento:"
 msgstr ""
 
-#: ui_alumnobase.h:508
+#: ui_alumnobase.h:517
 msgid "1er. apellido:"
 msgstr ""
 
-#: ui_alumnobase.h:509
+#: ui_alumnobase.h:518
 msgid "2º apellido"
 msgstr ""
 
-#: ui_alumnobase.h:510
+#: ui_alumnobase.h:519
 msgid "Telefono movil:"
 msgstr ""
 
-#: ui_alumnobase.h:511
+#: ui_alumnobase.h:520
 msgid "Telefono fijo:"
 msgstr ""
 
-#: ui_alumnobase.h:512
+#: ui_alumnobase.h:521
 msgid "Correo electronico:"
 msgstr ""
 
-#: ui_alumnobase.h:514
-msgid "Clase:"
-msgstr ""
-
-#: ui_alumnobase.h:515
+#: ui_alumnobase.h:524
 msgid "&Datos generales"
 msgstr ""
 
-#: ui_alumnobase.h:516
+#: ui_alumnobase.h:525
 msgid "Fotografia"
 msgstr ""
 
-#: ui_alumnobase.h:517
+#: ui_alumnobase.h:526
 msgid "Cam&biar imagen"
 msgstr ""
 
-#: ui_alumnobase.h:519
+#: ui_alumnobase.h:528
 msgid "Borrar imagen"
 msgstr ""
 
-#: ui_alumnobase.h:522
+#: ui_alumnobase.h:531
 msgid "Comentarios:"
 msgstr ""
 
-#: ui_alumnobase.h:523
+#: ui_alumnobase.h:532
 msgid "Otros datos"
 msgstr ""
 
-#: ui_alumnobase.h:524
+#: ui_alumnobase.h:533
 msgid "Padres/Tutores"
 msgstr ""
 
-#: ui_alumnobase.h:525
+#: ui_alumnobase.h:534
 msgid "Actividades"
 msgstr ""

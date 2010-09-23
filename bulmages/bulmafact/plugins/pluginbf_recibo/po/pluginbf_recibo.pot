@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-10-30 16:45+0100\n"
+"POT-Creation-Date: 2010-09-23 18:50+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -69,19 +69,23 @@ msgstr ""
 msgid "Pagado"
 msgstr ""
 
-#: reciboslist.cpp:344 ui_recibobase.h:384
+#: reciboslist.cpp:344 reciboview.cpp:58 ui_recibobase.h:382
+msgid "Devuelto"
+msgstr ""
+
+#: reciboslist.cpp:345 ui_recibobase.h:384
 msgid "Fecha"
 msgstr ""
 
-#: reciboslist.cpp:345
+#: reciboslist.cpp:346
 msgid "ID Tutor"
 msgstr ""
 
-#: reciboslist.cpp:346 ui_recibobase.h:383
+#: reciboslist.cpp:347 ui_recibobase.h:383
 msgid "Forma de Pago"
 msgstr ""
 
-#: reciboslist.cpp:347
+#: reciboslist.cpp:348
 msgid "Tutor"
 msgstr ""
 
@@ -109,7 +113,7 @@ msgstr ""
 msgid "EmitirRecibos"
 msgstr ""
 
-#: emitirrecibosview.cpp:56 reciboview.cpp:51 reciboview.cpp:74
+#: emitirrecibosview.cpp:56 reciboview.cpp:51 reciboview.cpp:75
 msgid "ID recibo"
 msgstr ""
 
@@ -121,7 +125,7 @@ msgstr ""
 msgid "Id Forma PAgo"
 msgstr ""
 
-#: emitirrecibosview.cpp:73 reciboview.cpp:88
+#: emitirrecibosview.cpp:73 reciboview.cpp:87
 msgid "Error al crear el recibo"
 msgstr ""
 
@@ -149,27 +153,27 @@ msgstr ""
 msgid "Fecha de creacion"
 msgstr ""
 
-#: reciboview.cpp:65
+#: reciboview.cpp:66
 msgid "Tutor/Socio:"
 msgstr ""
 
-#: reciboview.cpp:73
+#: reciboview.cpp:74
 msgid "Identificador"
 msgstr ""
 
-#: reciboview.cpp:75
+#: reciboview.cpp:76
 msgid "Cantidad Linea Recibo"
 msgstr ""
 
-#: reciboview.cpp:76
+#: reciboview.cpp:77
 msgid "Concepto"
 msgstr ""
 
-#: reciboview.cpp:119
+#: reciboview.cpp:118
 msgid "Tiene que guardar el documento antes de poder imprimirlo."
 msgstr ""
 
-#: reciboview.cpp:208
+#: reciboview.cpp:211
 msgid "Recibo reemitido"
 msgstr ""
 
@@ -200,10 +204,6 @@ msgstr ""
 
 #: ui_recibobase.h:374 ui_recibobase.h:377
 msgid "Reemitir Recibo"
-msgstr ""
-
-#: ui_recibobase.h:382
-msgid "Devuelto"
 msgstr ""
 
 #: ui_recibobase.h:385

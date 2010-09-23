@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-10-21 10:24+0200\n"
+"POT-Creation-Date: 2010-09-23 18:49+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -114,20 +114,20 @@ msgstr ""
 "#-#-#-#-#  pluginabrevs.pot (PACKAGE VERSION)  #-#-#-#-#\n"
 "#-#-#-#-#  bulmages_suite.pot (PACKAGE VERSION)  #-#-#-#-#\n"
 
-#: informeqtoolbutton1.cpp:97 informeqtoolbutton1.cpp:350
 #: informeqtoolbutton.cpp:96 informeqtoolbutton.cpp:350
+#: informeqtoolbutton1.cpp:97 informeqtoolbutton1.cpp:350
 msgid "Anyo:"
 msgstr "Anyo:"
 
-#: informeqtoolbutton1.cpp:96 informeqtoolbutton1.cpp:349
 #: informeqtoolbutton.cpp:95 informeqtoolbutton.cpp:349
+#: informeqtoolbutton1.cpp:96 informeqtoolbutton1.cpp:349
 msgid "Ejercicio del Informe"
 msgstr "Ejercicio del Informe"
 
-#: informeqtoolbutton1.cpp:179 informeqtoolbutton.cpp:179
+#: informeqtoolbutton.cpp:179 informeqtoolbutton1.cpp:179
 msgid "Generando Informe"
 msgstr "Generando Informe"
 
-#: informeqtoolbutton1.cpp:434 informeqtoolbutton.cpp:432
+#: informeqtoolbutton.cpp:432 informeqtoolbutton1.cpp:434
 msgid "Generando informe"
 msgstr "Generando informe"

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-10-30 16:11+0100\n"
+"POT-Creation-Date: 2010-09-23 18:57+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -16,56 +16,56 @@ msgstr ""
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: carteracobroslist.cpp:64 vencimientocview.cpp:61
-msgid "Cliente:"
-msgstr ""
-
-#: pluginbf_carteracobros.cpp:121 pluginbf_carteracobros.cpp:239
-msgid "ID Vencimiento"
-msgstr ""
-
-#: pluginbf_carteracobros.cpp:122
-msgid "Dias tras Factura"
+#: pluginbf_carteracobros.cpp:122 pluginbf_carteracobros.cpp:241
+msgid "Id vencimiento"
 msgstr ""
 
 #: pluginbf_carteracobros.cpp:123
+msgid "Dias tras factura"
+msgstr ""
+
+#: pluginbf_carteracobros.cpp:124
 msgid "Porcentaje"
 msgstr ""
 
-#: pluginbf_carteracobros.cpp:124 pluginbf_carteracobros.cpp:242
-msgid "Forma de Pago"
-msgstr ""
-
 #: pluginbf_carteracobros.cpp:125 pluginbf_carteracobros.cpp:244
-msgid "Id Articulo"
+msgid "Forma de pago"
 msgstr ""
 
-#: pluginbf_carteracobros.cpp:126 pluginbf_carteracobros.cpp:245
-msgid "ID Forma de Pago"
+#: pluginbf_carteracobros.cpp:126 pluginbf_carteracobros.cpp:248
+msgid "Id cliente"
 msgstr ""
 
-#: pluginbf_carteracobros.cpp:240
+#: pluginbf_carteracobros.cpp:127 pluginbf_carteracobros.cpp:247
+msgid "Id forma de pago"
+msgstr ""
+
+#: pluginbf_carteracobros.cpp:242
 msgid "Fecha"
 msgstr ""
 
-#: pluginbf_carteracobros.cpp:241
+#: pluginbf_carteracobros.cpp:243
 msgid "Cantidad"
 msgstr ""
 
-#: pluginbf_carteracobros.cpp:243
+#: pluginbf_carteracobros.cpp:245
 msgid "Procesado"
 msgstr ""
 
 #: pluginbf_carteracobros.cpp:246
-msgid "Id Cliente"
+msgid "Id factura"
+msgstr ""
+
+#: vencimientocview.cpp:61 carteracobroslist.cpp:64
+msgid "Cliente:"
 msgstr ""
 
 #: vencimientocview.cpp:69
-msgid "Id pago"
+msgid "Id cobro"
 msgstr ""
 
 #: vencimientocview.cpp:70
-msgid "Referencia de Vencimiento"
+msgid "Referencia de vencimiento"
 msgstr ""
 
 #: vencimientocview.cpp:71
@@ -77,19 +77,19 @@ msgid "Comentarios"
 msgstr ""
 
 #: vencimientocview.cpp:73
-msgid "Fecha de Vencimiento"
+msgid "Fecha de vencimiento"
 msgstr ""
 
 #: vencimientocview.cpp:74
-msgid "Fecha Efectiva"
+msgid "Fecha efectiva"
 msgstr ""
 
 #: vencimientocview.cpp:75
-msgid "estado de Vencimiento"
+msgid "Estado de vencimiento"
 msgstr ""
 
 #: vencimientocview.cpp:76
-msgid "cantidad de Vencimiento"
+msgid "Cantidad de vencimiento"
 msgstr ""
 
 #: vencimientocview.cpp:77

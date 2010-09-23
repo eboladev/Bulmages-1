@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-10-21 10:24+0200\n"
+"POT-Creation-Date: 2010-09-23 18:50+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -114,8 +114,8 @@ msgstr ""
 "#-#-#-#-#  pluginabrevs.pot (PACKAGE VERSION)  #-#-#-#-#\n"
 "#-#-#-#-#  bulmages_suite.pot (PACKAGE VERSION)  #-#-#-#-#\n"
 
-#: ui_acontablebase.h:192 ui_partidasbase.h:366
-#: ui_presupuestocontablebase.h:364
+#: ui_partidasbase.h:366 ui_presupuestocontablebase.h:364
+#: ui_acontablebase.h:192
 msgid "&Aceptar"
 msgstr "&Aceptar"
 
@@ -123,8 +123,8 @@ msgstr "&Aceptar"
 msgid "&Anotaciones contables"
 msgstr ""
 
-#: ui_acontablebase.h:193 ui_partidasbase.h:367
-#: ui_presupuestocontablebase.h:365
+#: ui_partidasbase.h:367 ui_presupuestocontablebase.h:365
+#: ui_acontablebase.h:193
 msgid "&Cancelar"
 msgstr "&Cancelar"
 
@@ -186,7 +186,7 @@ msgstr "Buscar:"
 msgid "C.I.F."
 msgstr "C.I.F."
 
-#: presupuestocontablelist.cpp:219 partidasview.cpp:50 partidasview.cpp:526
+#: partidasview.cpp:50 partidasview.cpp:526 presupuestocontablelist.cpp:219
 #: presupuestocontableview.cpp:66
 msgid "Codigo"
 msgstr "Codigo"
@@ -207,8 +207,8 @@ msgstr "Codigo completo:"
 msgid "Codigo reducido:"
 msgstr "Codigo reducido:"
 
-#: presupuestocontableview.cpp:58 presupuestocontableview.cpp:67
-#: acontableview.cpp:63
+#: acontableview.cpp:63 presupuestocontableview.cpp:58
+#: presupuestocontableview.cpp:67
 msgid "Concepto"
 msgstr "Concepto"
 
@@ -220,7 +220,7 @@ msgstr "Configurar listado"
 msgid "Contenido de la partida"
 msgstr ""
 
-#: ui_acontablebase.h:183 ui_presupuestocontablebase.h:343
+#: ui_presupuestocontablebase.h:343 ui_acontablebase.h:183
 msgid "Ctrl+D"
 msgstr "Ctrl+D"
 
@@ -236,7 +236,7 @@ msgstr "Ctrl+I"
 msgid "Ctrl+P"
 msgstr "Ctrl+P"
 
-#: ui_acontablebase.h:175 ui_presupuestocontablebase.h:335
+#: ui_presupuestocontablebase.h:335 ui_acontablebase.h:175
 msgid "Ctrl+S"
 msgstr "Ctrl+S"
 
@@ -266,6 +266,10 @@ msgstr "Desea guardar los cambios?"
 
 #: acontableview.cpp:48
 msgid "Diario Contable"
+msgstr ""
+
+#: pluginbf_minicontabilidad.cpp:105
+msgid "Economia"
 msgstr ""
 
 #: ui_presupuestocontablelistbase.h:248 ui_presupuestocontablelistbase.h:251
@@ -300,7 +304,7 @@ msgstr ""
 msgid "Error al guardar la partida"
 msgstr ""
 
-#: presupuestocontableview.cpp:57 acontableview.cpp:60
+#: acontableview.cpp:60 presupuestocontableview.cpp:57
 msgid "Fecha"
 msgstr "Fecha"
 
@@ -314,10 +318,6 @@ msgstr "Filtrar listado"
 
 #: acontableview.cpp:65
 msgid "Gasto"
-msgstr ""
-
-#: pluginbf_minicontabilidad.cpp:105
-msgid "Gestion"
 msgstr ""
 
 #: pluginbf_minicontabilidad.cpp:432 pluginbf_minicontabilidad.cpp:447

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-10-21 10:24+0200\n"
+"POT-Creation-Date: 2010-09-23 18:50+0200\n"
 "PO-Revision-Date: 2009-10-19 01:16+0200\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -17,15 +17,15 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: ui_recibobase.h:356
+#: ui_recibobase.h:389
 msgid "&Aceptar"
 msgstr "&Aceptar"
 
-#: ui_recibobase.h:357
+#: ui_recibobase.h:390
 msgid "&Cancelar"
 msgstr "&Cancelar"
 
-#: ui_recibobase.h:353
+#: ui_recibobase.h:386
 msgid "&Datos generales"
 msgstr "&Datos generales"
 
@@ -53,8 +53,8 @@ msgstr "Banco:"
 msgid "Borrar Actividad"
 msgstr "Borrar actividad"
 
-#: ui_recibobase.h:334 ui_recibobase.h:337 ui_recibobase.h:342
-#: ui_recibobase.h:345
+#: ui_recibobase.h:358 ui_recibobase.h:361 ui_recibobase.h:366
+#: ui_recibobase.h:369
 msgid "Borrar cobro"
 msgstr "Borrar cobro"
 
@@ -70,15 +70,15 @@ msgstr "Buscar:"
 msgid "Cantidad"
 msgstr "Cantidad"
 
-#: reciboview.cpp:75
+#: reciboview.cpp:76
 msgid "Cantidad Linea Recibo"
 msgstr ""
 
-#: ui_recibobase.h:354
+#: ui_recibobase.h:387
 msgid "Comentarios:"
 msgstr "Comentarios:"
 
-#: reciboview.cpp:76
+#: reciboview.cpp:77
 msgid "Concepto"
 msgstr "Concepto"
 
@@ -90,7 +90,7 @@ msgstr "Configurar listado"
 msgid "Ctrl+B"
 msgstr "Ctrl+B"
 
-#: ui_recibobase.h:340 ui_reciboslistbase.h:334
+#: ui_recibobase.h:364 ui_reciboslistbase.h:334
 msgid "Ctrl+D"
 msgstr "Ctrl+D"
 
@@ -102,7 +102,7 @@ msgstr "Ctrl+E"
 msgid "Ctrl+F"
 msgstr "Ctrl+F"
 
-#: ui_recibobase.h:348
+#: ui_recibobase.h:372 ui_recibobase.h:380
 msgid "Ctrl+I"
 msgstr "Ctrl+I"
 
@@ -114,7 +114,7 @@ msgstr "Ctrl+N"
 msgid "Ctrl+P"
 msgstr "Ctrl+P"
 
-#: ui_recibobase.h:332
+#: ui_recibobase.h:356
 msgid "Ctrl+S"
 msgstr "Ctrl+S"
 
@@ -129,6 +129,10 @@ msgstr "Debe seleccionar una línea"
 #: reciboview.cpp:55
 msgid "Descripcion"
 msgstr "Descripción"
+
+#: reciboslist.cpp:344 reciboview.cpp:58 ui_recibobase.h:382
+msgid "Devuelto"
+msgstr ""
 
 #: ui_reciboslistbase.h:320 ui_reciboslistbase.h:323
 msgid "Editar Actividad"
@@ -170,7 +174,7 @@ msgstr ""
 msgid "Error al borrar el cobro a cliente"
 msgstr "Error al borrar el cobro al cliente"
 
-#: emitirrecibosview.cpp:73 reciboview.cpp:88
+#: emitirrecibosview.cpp:73 reciboview.cpp:87
 msgid "Error al crear el recibo"
 msgstr ""
 
@@ -178,7 +182,7 @@ msgstr ""
 msgid "F5"
 msgstr "F5"
 
-#: reciboslist.cpp:344 ui_recibobase.h:350
+#: reciboslist.cpp:345 ui_recibobase.h:384
 msgid "Fecha"
 msgstr "Fecha"
 
@@ -198,11 +202,11 @@ msgstr "Fecha inicial:"
 msgid "Filtrar Actividades"
 msgstr "Filtrar actividades"
 
-#: reciboslist.cpp:346 ui_recibobase.h:351
+#: reciboslist.cpp:347 ui_recibobase.h:383
 msgid "Forma de Pago"
 msgstr "Forma de pago"
 
-#: ui_recibobase.h:326 ui_recibobase.h:329
+#: ui_recibobase.h:350 ui_recibobase.h:353
 msgid "Guardar cobro"
 msgstr "Guardar cobro"
 
@@ -214,7 +218,7 @@ msgstr ""
 msgid "ID Recibo"
 msgstr ""
 
-#: reciboslist.cpp:345
+#: reciboslist.cpp:346
 msgid "ID Tutor"
 msgstr ""
 
@@ -222,7 +226,7 @@ msgstr ""
 msgid "ID cliente"
 msgstr "ID cliente"
 
-#: emitirrecibosview.cpp:56 reciboview.cpp:51 reciboview.cpp:74
+#: emitirrecibosview.cpp:56 reciboview.cpp:51 reciboview.cpp:75
 msgid "ID recibo"
 msgstr ""
 
@@ -234,7 +238,7 @@ msgstr ""
 msgid "Id cliente"
 msgstr "ID cliente"
 
-#: reciboview.cpp:73
+#: reciboview.cpp:74
 msgid "Identificador"
 msgstr "Identificador"
 
@@ -254,7 +258,7 @@ msgstr ""
 msgid "Nuevo Actividad"
 msgstr "Nueva actividad"
 
-#: ui_recibobase.h:323
+#: ui_recibobase.h:347
 msgid "Nuevo Recibo"
 msgstr ""
 
@@ -262,16 +266,20 @@ msgstr ""
 msgid "Nuevo recibo"
 msgstr ""
 
-#: ui_recibobase.h:355
+#: ui_recibobase.h:388
 msgid "Otros datos"
 msgstr "Otros datos"
 
-#: reciboslist.cpp:343 reciboview.cpp:57 ui_recibobase.h:349
+#: reciboslist.cpp:343 reciboview.cpp:57 ui_recibobase.h:381
 msgid "Pagado"
 msgstr "Pagado"
 
 #: reciboview.cpp:48
 msgid "Recibo"
+msgstr ""
+
+#: reciboview.cpp:211
+msgid "Recibo reemitido"
 msgstr ""
 
 #: reciboslist.cpp:209 pluginbf_recibo.cpp:117 pluginbf_recibo.cpp:118
@@ -295,11 +303,15 @@ msgstr ""
 msgid "Recibos pagados"
 msgstr ""
 
+#: ui_recibobase.h:374 ui_recibobase.h:377
+msgid "Reemitir Recibo"
+msgstr ""
+
 #: emitirrecibosview.cpp:161
 msgid "Terminado"
 msgstr "Terminado"
 
-#: reciboview.cpp:119
+#: reciboview.cpp:118
 msgid "Tiene que guardar el documento antes de poder imprimirlo."
 msgstr "Tiene que guardar el documento antes de poder imprimirlo."
 
@@ -307,14 +319,14 @@ msgstr "Tiene que guardar el documento antes de poder imprimirlo."
 msgid "Todos los recibos"
 msgstr ""
 
-#: ui_recibobase.h:352
+#: ui_recibobase.h:385
 msgid "Total"
 msgstr "Total"
 
-#: reciboslist.cpp:347
+#: reciboslist.cpp:348
 msgid "Tutor"
 msgstr "Tutor"
 
-#: reciboview.cpp:65
+#: reciboview.cpp:66
 msgid "Tutor/Socio:"
 msgstr ""

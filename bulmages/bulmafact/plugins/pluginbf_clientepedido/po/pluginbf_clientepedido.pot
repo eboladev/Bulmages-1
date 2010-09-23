@@ -8,13 +8,69 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-10-30 16:10+0100\n"
+"POT-Creation-Date: 2010-09-23 18:18+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
+
+#: listlinpedidoclienteview.cpp:45
+msgid "Punteo"
+msgstr ""
+
+#: listlinpedidoclienteview.cpp:46
+msgid "Id articulo"
+msgstr ""
+
+#: listlinpedidoclienteview.cpp:47
+msgid "Codigo completo articulo"
+msgstr ""
+
+#: listlinpedidoclienteview.cpp:48
+msgid "Nombre articulo"
+msgstr ""
+
+#: listlinpedidoclienteview.cpp:49
+msgid "No de linea"
+msgstr ""
+
+#: listlinpedidoclienteview.cpp:50 pedidosclientelist.cpp:344
+msgid "Descripcion"
+msgstr ""
+
+#: listlinpedidoclienteview.cpp:51
+msgid "Cantidad"
+msgstr ""
+
+#: listlinpedidoclienteview.cpp:52
+msgid "Precio de venta s/IVA"
+msgstr ""
+
+#: listlinpedidoclienteview.cpp:53
+msgid "Total Linea"
+msgstr ""
+
+#: listlinpedidoclienteview.cpp:54
+msgid "% I.V.A."
+msgstr ""
+
+#: listlinpedidoclienteview.cpp:55
+msgid "% Recargo E.Q."
+msgstr ""
+
+#: listlinpedidoclienteview.cpp:56 listdescpedidoclienteview.cpp:42
+msgid "% Descuento"
+msgstr ""
+
+#: listlinpedidoclienteview.cpp:57
+msgid "Id pedido cliente"
+msgstr ""
+
+#: listlinpedidoclienteview.cpp:58
+msgid "Orden"
+msgstr ""
 
 #: genpedqtoolbutton.cpp:134
 msgid "Tiene que seleccionar un cliente"
@@ -59,85 +115,93 @@ msgstr ""
 msgid "Pedidos no procesados"
 msgstr ""
 
-#: pedidosclientelist.cpp:229
+#: pedidosclientelist.cpp:237
 msgid "Error al cargar el pedido cliente"
 msgstr ""
 
-#: pedidosclientelist.cpp:241 pluginbf_clientepedido.cpp:101
+#: pedidosclientelist.cpp:249 pluginbf_clientepedido.cpp:101
 #: pluginbf_clientepedido.cpp:102 ui_pedidosclientelistbase.h:377
 msgid "Pedidos de clientes"
 msgstr ""
 
-#: pedidosclientelist.cpp:255
+#: pedidosclientelist.cpp:263
 msgid "Debe seleccionar una linea"
 msgstr ""
 
-#: pedidosclientelist.cpp:270
+#: pedidosclientelist.cpp:278
 msgid "Error al borrar el pedido de cliente"
 msgstr ""
 
-#: pedidosclientelist.cpp:328
+#: pedidosclientelist.cpp:336
 msgid "ID pedido"
 msgstr ""
 
-#: pedidosclientelist.cpp:329
+#: pedidosclientelist.cpp:337
 msgid "Pedido"
 msgstr ""
 
-#: pedidosclientelist.cpp:330 pedidoclienteview.cpp:64
+#: pedidosclientelist.cpp:338 pedidoclienteview.cpp:64
 msgid "Fecha"
 msgstr ""
 
-#: pedidosclientelist.cpp:331 pedidoclienteview.cpp:60
+#: pedidosclientelist.cpp:339 pedidoclienteview.cpp:60
 msgid "Cliente"
 msgstr ""
 
-#: pedidosclientelist.cpp:332 pedidoclienteview.cpp:71
+#: pedidosclientelist.cpp:340 pedidoclienteview.cpp:71
 msgid "Referencia"
 msgstr ""
 
-#: pedidosclientelist.cpp:333
+#: pedidosclientelist.cpp:341
 msgid "Base Imponible"
 msgstr ""
 
-#: pedidosclientelist.cpp:334
+#: pedidosclientelist.cpp:342
 msgid "Impuestos"
 msgstr ""
 
-#: pedidosclientelist.cpp:335
+#: pedidosclientelist.cpp:343
 msgid "Total"
 msgstr ""
 
-#: pedidosclientelist.cpp:336 listlinpedidoclienteview.cpp:50
-msgid "Descripcion"
-msgstr ""
-
-#: pedidosclientelist.cpp:337
+#: pedidosclientelist.cpp:345
 msgid "Persona de contacto"
 msgstr ""
 
-#: pedidosclientelist.cpp:338 pedidoclienteview.cpp:68
+#: pedidosclientelist.cpp:346 pedidoclienteview.cpp:68
 msgid "Telefono"
 msgstr ""
 
-#: pedidosclientelist.cpp:339
+#: pedidosclientelist.cpp:347
 msgid "Comentario"
 msgstr ""
 
-#: pedidosclientelist.cpp:340 pedidoclienteview.cpp:61
+#: pedidosclientelist.cpp:348 pedidoclienteview.cpp:61
 msgid "Almacen"
 msgstr ""
 
-#: pedidosclientelist.cpp:341
+#: pedidosclientelist.cpp:349
 msgid "ID trabajador"
 msgstr ""
 
-#: pedidosclientelist.cpp:342
+#: pedidosclientelist.cpp:350
 msgid "ID cliente"
 msgstr ""
 
-#: pedidosclientelist.cpp:343
+#: pedidosclientelist.cpp:351
 msgid "ID almacen"
+msgstr ""
+
+#: listdescpedidoclienteview.cpp:40
+msgid "Id descuento"
+msgstr ""
+
+#: listdescpedidoclienteview.cpp:41
+msgid "Concepto descuento"
+msgstr ""
+
+#: listdescpedidoclienteview.cpp:43
+msgid "Id pedido"
 msgstr ""
 
 #: pedidoclienteview.cpp:56
@@ -180,66 +244,6 @@ msgstr ""
 msgid "Error al crear el pedido cliente"
 msgstr ""
 
-#: listlinpedidoclienteview.cpp:45
-msgid "Punteo"
-msgstr ""
-
-#: listlinpedidoclienteview.cpp:46
-msgid "Id articulo"
-msgstr ""
-
-#: listlinpedidoclienteview.cpp:47
-msgid "Codigo completo articulo"
-msgstr ""
-
-#: listlinpedidoclienteview.cpp:48
-msgid "Nombre articulo"
-msgstr ""
-
-#: listlinpedidoclienteview.cpp:49
-msgid "No de linea"
-msgstr ""
-
-#: listlinpedidoclienteview.cpp:51
-msgid "Cantidad"
-msgstr ""
-
-#: listlinpedidoclienteview.cpp:52
-msgid "Precio de venta s/IVA"
-msgstr ""
-
-#: listlinpedidoclienteview.cpp:53
-msgid "% I.V.A."
-msgstr ""
-
-#: listlinpedidoclienteview.cpp:54
-msgid "% Recargo E.Q."
-msgstr ""
-
-#: listlinpedidoclienteview.cpp:55 listdescpedidoclienteview.cpp:42
-msgid "% Descuento"
-msgstr ""
-
-#: listlinpedidoclienteview.cpp:56
-msgid "Id pedido cliente"
-msgstr ""
-
-#: listlinpedidoclienteview.cpp:57
-msgid "Orden"
-msgstr ""
-
-#: listdescpedidoclienteview.cpp:40
-msgid "Id descuento"
-msgstr ""
-
-#: listdescpedidoclienteview.cpp:41
-msgid "Concepto descuento"
-msgstr ""
-
-#: listdescpedidoclienteview.cpp:43
-msgid "Id pedido"
-msgstr ""
-
 #: pluginbf_clientepedido.cpp:99
 msgid "&Pedidos de clientes"
 msgstr ""
@@ -253,92 +257,13 @@ msgstr ""
 msgid "Nuevo pedido de cliente"
 msgstr ""
 
-#: ui_pedidosclientelistbase.h:378 ui_presupuestoslistbase.h:419
-msgid "Fecha inicial:"
-msgstr ""
-
-#: ui_pedidosclientelistbase.h:379 ui_presupuestoslistbase.h:420
-msgid "Fecha final:"
-msgstr ""
-
-#: ui_pedidosclientelistbase.h:380 ui_presupuestoslistbase.h:421
-msgid "Mostrar:"
-msgstr ""
-
-#: ui_pedidosclientelistbase.h:383 ui_pedidosclientelistbase.h:386
-msgid "Nuevo pedido"
-msgstr ""
-
-#: ui_pedidosclientelistbase.h:389 ui_presupuestoslistbase.h:371
-msgid "Ctrl+N"
-msgstr ""
-
-#: ui_pedidosclientelistbase.h:391 ui_pedidosclientelistbase.h:394
-msgid "Editar pedido"
-msgstr ""
-
-#: ui_pedidosclientelistbase.h:397 ui_presupuestoslistbase.h:379
-msgid "Ctrl+E"
-msgstr ""
-
-#: ui_pedidosclientelistbase.h:399 ui_pedidosclientelistbase.h:402
-#: ui_pedidoclientebase.h:646 ui_pedidoclientebase.h:649
-msgid "Borrar pedido"
-msgstr ""
-
-#: ui_pedidosclientelistbase.h:405 ui_presupuestoslistbase.h:387
-#: ui_presupuestoclientebase.h:736
-msgid "Ctrl+D"
-msgstr ""
-
-#: ui_pedidosclientelistbase.h:407 ui_pedidosclientelistbase.h:410
-#: ui_presupuestoslistbase.h:389 ui_presupuestoslistbase.h:392
-msgid "Imprimir listado"
-msgstr ""
-
-#: ui_pedidosclientelistbase.h:413 ui_presupuestoslistbase.h:395
-#: ui_presupuestoclientebase.h:744
-msgid "Ctrl+P"
-msgstr ""
-
-#: ui_pedidosclientelistbase.h:415 ui_pedidosclientelistbase.h:418
-#: ui_presupuestoslistbase.h:397 ui_presupuestoslistbase.h:400
-msgid "Filtrar pedidos"
-msgstr ""
-
-#: ui_pedidosclientelistbase.h:421
-msgid "Ctrl+F"
-msgstr ""
-
-#: ui_pedidosclientelistbase.h:423 ui_pedidosclientelistbase.h:426
-#: ui_presupuestoslistbase.h:404 ui_presupuestoslistbase.h:407
-msgid "Configurar listado"
-msgstr ""
-
-#: ui_pedidosclientelistbase.h:429
-msgid "Ctrl+B"
-msgstr ""
-
-#: ui_pedidosclientelistbase.h:431 ui_pedidosclientelistbase.h:434
-#: ui_presupuestoslistbase.h:411 ui_presupuestoslistbase.h:414
-msgid "Actualizar listado"
-msgstr ""
-
-#: ui_pedidosclientelistbase.h:437 ui_presupuestoslistbase.h:417
-msgid "F5"
-msgstr ""
-
-#: ui_pedidosclientelistbase.h:438 ui_presupuestoslistbase.h:418
-msgid "Buscar:"
-msgstr ""
-
-#: ui_pedidosclientelistbase.h:439 ui_pedidoclientebase.h:684
-#: ui_presupuestoslistbase.h:422 ui_presupuestoclientebase.h:772
-msgid "Total:"
-msgstr ""
-
 #: ui_pedidoclientebase.h:639 ui_pedidoclientebase.h:642
 msgid "Guardar pedido"
+msgstr ""
+
+#: ui_pedidoclientebase.h:646 ui_pedidoclientebase.h:649
+#: ui_pedidosclientelistbase.h:399 ui_pedidosclientelistbase.h:402
+msgid "Borrar pedido"
 msgstr ""
 
 #: ui_pedidoclientebase.h:653 ui_pedidoclientebase.h:656
@@ -417,6 +342,11 @@ msgstr ""
 msgid "R.E.:"
 msgstr ""
 
+#: ui_pedidoclientebase.h:684 ui_pedidosclientelistbase.h:439
+#: ui_presupuestoslistbase.h:422 ui_presupuestoclientebase.h:772
+msgid "Total:"
+msgstr ""
+
 #: ui_pedidoclientebase.h:685 ui_pedidoclientebase.h:686
 #: ui_pedidoclientebase.h:687 ui_pedidoclientebase.h:688
 #: ui_pedidoclientebase.h:689 ui_pedidoclientebase.h:690
@@ -432,6 +362,80 @@ msgstr ""
 
 #: ui_pedidoclientebase.h:692 ui_presupuestoclientebase.h:780
 msgid "&Cancelar"
+msgstr ""
+
+#: ui_pedidosclientelistbase.h:378 ui_presupuestoslistbase.h:419
+msgid "Fecha inicial:"
+msgstr ""
+
+#: ui_pedidosclientelistbase.h:379 ui_presupuestoslistbase.h:420
+msgid "Fecha final:"
+msgstr ""
+
+#: ui_pedidosclientelistbase.h:380 ui_presupuestoslistbase.h:421
+msgid "Mostrar:"
+msgstr ""
+
+#: ui_pedidosclientelistbase.h:383 ui_pedidosclientelistbase.h:386
+msgid "Nuevo pedido"
+msgstr ""
+
+#: ui_pedidosclientelistbase.h:389 ui_presupuestoslistbase.h:371
+msgid "Ctrl+N"
+msgstr ""
+
+#: ui_pedidosclientelistbase.h:391 ui_pedidosclientelistbase.h:394
+msgid "Editar pedido"
+msgstr ""
+
+#: ui_pedidosclientelistbase.h:397 ui_presupuestoslistbase.h:379
+msgid "Ctrl+E"
+msgstr ""
+
+#: ui_pedidosclientelistbase.h:405 ui_presupuestoslistbase.h:387
+#: ui_presupuestoclientebase.h:736
+msgid "Ctrl+D"
+msgstr ""
+
+#: ui_pedidosclientelistbase.h:407 ui_pedidosclientelistbase.h:410
+#: ui_presupuestoslistbase.h:389 ui_presupuestoslistbase.h:392
+msgid "Imprimir listado"
+msgstr ""
+
+#: ui_pedidosclientelistbase.h:413 ui_presupuestoslistbase.h:395
+#: ui_presupuestoclientebase.h:744
+msgid "Ctrl+P"
+msgstr ""
+
+#: ui_pedidosclientelistbase.h:415 ui_pedidosclientelistbase.h:418
+#: ui_presupuestoslistbase.h:397 ui_presupuestoslistbase.h:400
+msgid "Filtrar pedidos"
+msgstr ""
+
+#: ui_pedidosclientelistbase.h:421
+msgid "Ctrl+F"
+msgstr ""
+
+#: ui_pedidosclientelistbase.h:423 ui_pedidosclientelistbase.h:426
+#: ui_presupuestoslistbase.h:404 ui_presupuestoslistbase.h:407
+msgid "Configurar listado"
+msgstr ""
+
+#: ui_pedidosclientelistbase.h:429
+msgid "Ctrl+B"
+msgstr ""
+
+#: ui_pedidosclientelistbase.h:431 ui_pedidosclientelistbase.h:434
+#: ui_presupuestoslistbase.h:411 ui_presupuestoslistbase.h:414
+msgid "Actualizar listado"
+msgstr ""
+
+#: ui_pedidosclientelistbase.h:437 ui_presupuestoslistbase.h:417
+msgid "F5"
+msgstr ""
+
+#: ui_pedidosclientelistbase.h:438 ui_presupuestoslistbase.h:418
+msgid "Buscar:"
 msgstr ""
 
 #: ui_presupuestoslistbase.h:362

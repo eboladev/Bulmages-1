@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-10-30 16:45+0100\n"
+"POT-Creation-Date: 2010-09-23 18:50+0200\n"
 "PO-Revision-Date: 2010-07-28 15:58+0200\n"
 "Last-Translator: Walter Garcia-Fontes\n"
 "Language-Team: CATALAN\n"
@@ -70,7 +70,7 @@ msgstr "Cerca:"
 msgid "Cantidad"
 msgstr "Quantitat"
 
-#: reciboview.cpp:75
+#: reciboview.cpp:76
 msgid "Cantidad Linea Recibo"
 msgstr "Quantitat linia rebut"
 
@@ -78,7 +78,7 @@ msgstr "Quantitat linia rebut"
 msgid "Comentarios:"
 msgstr "Comentaris:"
 
-#: reciboview.cpp:76
+#: reciboview.cpp:77
 msgid "Concepto"
 msgstr "Concepte"
 
@@ -130,7 +130,7 @@ msgstr "Heu de seleccionar una línia"
 msgid "Descripcion"
 msgstr "Descripció"
 
-#: ui_recibobase.h:382
+#: reciboslist.cpp:344 reciboview.cpp:58 ui_recibobase.h:382
 msgid "Devuelto"
 msgstr "Retornat"
 
@@ -174,7 +174,7 @@ msgstr "Emet rebuts"
 msgid "Error al borrar el cobro a cliente"
 msgstr "Error en esborrar el cobrament a client"
 
-#: emitirrecibosview.cpp:73 reciboview.cpp:88
+#: emitirrecibosview.cpp:73 reciboview.cpp:87
 msgid "Error al crear el recibo"
 msgstr "Error en crear el rebut"
 
@@ -182,7 +182,7 @@ msgstr "Error en crear el rebut"
 msgid "F5"
 msgstr "F5"
 
-#: reciboslist.cpp:344 ui_recibobase.h:384
+#: reciboslist.cpp:345 ui_recibobase.h:384
 msgid "Fecha"
 msgstr "Data"
 
@@ -202,7 +202,7 @@ msgstr "Data inicial"
 msgid "Filtrar Actividades"
 msgstr "Filtra activitats"
 
-#: reciboslist.cpp:346 ui_recibobase.h:383
+#: reciboslist.cpp:347 ui_recibobase.h:383
 msgid "Forma de Pago"
 msgstr "Forma de pagament"
 
@@ -218,7 +218,7 @@ msgstr "Id. forma pagament"
 msgid "ID Recibo"
 msgstr "Id. rebut"
 
-#: reciboslist.cpp:345
+#: reciboslist.cpp:346
 msgid "ID Tutor"
 msgstr "Id. tutor"
 
@@ -226,7 +226,7 @@ msgstr "Id. tutor"
 msgid "ID cliente"
 msgstr "Id. client"
 
-#: emitirrecibosview.cpp:56 reciboview.cpp:51 reciboview.cpp:74
+#: emitirrecibosview.cpp:56 reciboview.cpp:51 reciboview.cpp:75
 msgid "ID recibo"
 msgstr "Id. rebut"
 
@@ -238,7 +238,7 @@ msgstr "Id. forma pagament"
 msgid "Id cliente"
 msgstr "Id client"
 
-#: reciboview.cpp:73
+#: reciboview.cpp:74
 msgid "Identificador"
 msgstr "Identificador"
 
@@ -278,7 +278,7 @@ msgstr "Pagat"
 msgid "Recibo"
 msgstr "Rebut"
 
-#: reciboview.cpp:208
+#: reciboview.cpp:211
 msgid "Recibo reemitido"
 msgstr "Rebut reemès"
 
@@ -311,7 +311,7 @@ msgstr "Reemet rebut"
 msgid "Terminado"
 msgstr "Finalitzat"
 
-#: reciboview.cpp:119
+#: reciboview.cpp:118
 msgid "Tiene que guardar el documento antes de poder imprimirlo."
 msgstr "Heu de desar el document abans de poder imprimir-lo"
 
@@ -323,10 +323,10 @@ msgstr "Tots els rebuts"
 msgid "Total"
 msgstr "Total"
 
-#: reciboslist.cpp:347
+#: reciboslist.cpp:348
 msgid "Tutor"
 msgstr "Tutor"
 
-#: reciboview.cpp:65
+#: reciboview.cpp:66
 msgid "Tutor/Socio:"
 msgstr "Tutor / Soci"

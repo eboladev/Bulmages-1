@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-10-30 16:11+0100\n"
+"POT-Creation-Date: 2010-09-23 18:56+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -16,85 +16,57 @@ msgstr ""
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: pagoslist.cpp:49 pagoslist.cpp:74 pagoview.cpp:71
-msgid "Proveedor:"
+#: pagoview.cpp:58
+msgid "Pago"
 msgstr ""
 
-#: pagoslist.cpp:187 pluginbf_proveedorpago.cpp:98
-#: pluginbf_proveedorpago.cpp:99 ui_pagoslistbase.h:370
-msgid "Pagos a proveedores"
-msgstr ""
-
-#: pagoslist.cpp:197
-msgid "Debe seleccionar una linea"
-msgstr ""
-
-#: pagoslist.cpp:209
-msgid "Error al borrar el pago"
-msgstr ""
-
-#: pagoslist.cpp:246 pagoview.cpp:61
+#: pagoview.cpp:61 pagoslist.cpp:252
 msgid "Id pago"
 msgstr ""
 
-#: pagoslist.cpp:247 pagoview.cpp:62
+#: pagoview.cpp:62 pagoslist.cpp:253
 msgid "Id proveedor"
 msgstr ""
 
-#: pagoslist.cpp:248
-msgid "Nombre proveedor"
+#: pagoview.cpp:63
+msgid "Previcion de pago"
 msgstr ""
 
-#: pagoslist.cpp:249
-msgid "C.I.F. proveedor"
-msgstr ""
-
-#: pagoslist.cpp:250
-msgid "Telefono proveedor"
-msgstr ""
-
-#: pagoslist.cpp:251
-msgid "Email proveedor"
-msgstr ""
-
-#: pagoslist.cpp:252 pagoview.cpp:64
+#: pagoview.cpp:64 pagoslist.cpp:258
 msgid "Fecha de pago"
 msgstr ""
 
-#: pagoslist.cpp:253 pagoview.cpp:66
-msgid "Cantidad"
-msgstr ""
-
-#: pagoslist.cpp:254 pagoview.cpp:68
-msgid "Banco"
-msgstr ""
-
-#: pagoslist.cpp:255 pagoview.cpp:65
+#: pagoview.cpp:65 pagoslist.cpp:261
 msgid "Referencia de pago"
 msgstr ""
 
-#: pagoslist.cpp:256
-msgid "Prevision pago"
+#: pagoview.cpp:66 pagoslist.cpp:259
+msgid "Cantidad"
 msgstr ""
 
-#: pagoslist.cpp:257
-msgid "Comentario pago"
+#: pagoview.cpp:67
+msgid "Comentario del pago"
 msgstr ""
 
-#: pagoslist.cpp:258
-msgid "Id trabajador"
+#: pagoview.cpp:68 pagoslist.cpp:260
+msgid "Banco"
 msgstr ""
 
-#: pagoslist.cpp:259
-msgid "Nombre de trabajador"
+#: pagoview.cpp:71 pagoslist.cpp:49 pagoslist.cpp:74
+msgid "Proveedor:"
 msgstr ""
 
-#: pagoslist.cpp:260
-msgid "Apellidos trabajador"
+#: pagoview.cpp:80
+msgid "Error al crear el pago"
 msgstr ""
 
 #: pluginbf_proveedorpago.cpp:96
 msgid "&Pagos a proveedores"
+msgstr ""
+
+#: pluginbf_proveedorpago.cpp:98 pluginbf_proveedorpago.cpp:99
+#: pagoslist.cpp:193 ui_pagoslistbase.h:370
+msgid "Pagos a proveedores"
 msgstr ""
 
 #: pluginbf_proveedorpago.cpp:104
@@ -106,20 +78,48 @@ msgstr ""
 msgid "Nuevo pago a proveedor"
 msgstr ""
 
-#: pagoview.cpp:58
-msgid "Pago"
+#: pagoslist.cpp:203
+msgid "Debe seleccionar una linea"
 msgstr ""
 
-#: pagoview.cpp:63
-msgid "Previcion de pago"
+#: pagoslist.cpp:215
+msgid "Error al borrar el pago"
 msgstr ""
 
-#: pagoview.cpp:67
-msgid "Comentario del pago"
+#: pagoslist.cpp:254
+msgid "Nombre proveedor"
 msgstr ""
 
-#: pagoview.cpp:80
-msgid "Error al crear el pago"
+#: pagoslist.cpp:255
+msgid "C.I.F. proveedor"
+msgstr ""
+
+#: pagoslist.cpp:256
+msgid "Telefono proveedor"
+msgstr ""
+
+#: pagoslist.cpp:257
+msgid "Email proveedor"
+msgstr ""
+
+#: pagoslist.cpp:262
+msgid "Prevision pago"
+msgstr ""
+
+#: pagoslist.cpp:263
+msgid "Comentario pago"
+msgstr ""
+
+#: pagoslist.cpp:264
+msgid "Id trabajador"
+msgstr ""
+
+#: pagoslist.cpp:265
+msgid "Nombre de trabajador"
+msgstr ""
+
+#: pagoslist.cpp:266
+msgid "Apellidos trabajador"
 msgstr ""
 
 #: ui_pagobase.h:312 ui_pagobase.h:315

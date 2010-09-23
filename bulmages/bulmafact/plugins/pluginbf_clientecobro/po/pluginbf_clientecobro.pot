@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-10-30 16:11+0100\n"
+"POT-Creation-Date: 2010-09-23 18:56+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -16,112 +16,108 @@ msgstr ""
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: pluginbf_clientecobro.cpp:97
-msgid "&Cobros de clientes"
-msgstr ""
-
-#: pluginbf_clientecobro.cpp:99 pluginbf_clientecobro.cpp:100
-msgid "Cobros de clientes"
-msgstr ""
-
-#: pluginbf_clientecobro.cpp:105
-msgid "&Nuevo cobro de cliente"
-msgstr ""
-
-#: pluginbf_clientecobro.cpp:107 pluginbf_clientecobro.cpp:108
-msgid "Nuevo cobro de cliente"
-msgstr ""
-
-#: cobroslist.cpp:51 cobroslist.cpp:79 cobroview.cpp:54
+#: cobroslist.cpp:51 cobroslist.cpp:84 cobroview.cpp:54
 msgid "Cliente:"
 msgstr ""
 
-#: cobroslist.cpp:182 ui_cobroslistbase.h:374
+#: cobroslist.cpp:56
+msgid "Todos los cobros"
+msgstr ""
+
+#: cobroslist.cpp:57
+msgid "Solo previsiones"
+msgstr ""
+
+#: cobroslist.cpp:58
+msgid "Cobro real"
+msgstr ""
+
+#: cobroslist.cpp:192 ui_cobroslistbase.h:382
 msgid "Cobros a clientes"
 msgstr ""
 
-#: cobroslist.cpp:198
+#: cobroslist.cpp:208
 msgid "Debe seleccionar una linea"
 msgstr ""
 
-#: cobroslist.cpp:212
+#: cobroslist.cpp:222
 msgid "Error al borrar el cobro a cliente"
 msgstr ""
 
-#: cobroslist.cpp:239
+#: cobroslist.cpp:249
 msgid "Debe seleccionar una fila primero"
 msgstr ""
 
-#: cobroslist.cpp:255 ui_cobroslistbase.h:391 ui_cobroslistbase.h:394
+#: cobroslist.cpp:265 ui_cobroslistbase.h:394 ui_cobroslistbase.h:397
 msgid "Editar cobro"
 msgstr ""
 
-#: cobroslist.cpp:256 ui_cobrobase.h:406 ui_cobrobase.h:409 ui_cobrobase.h:414
-#: ui_cobrobase.h:417 ui_cobroslistbase.h:399 ui_cobroslistbase.h:402
+#: cobroslist.cpp:266 ui_cobrobase.h:393 ui_cobrobase.h:396 ui_cobrobase.h:401
+#: ui_cobrobase.h:404 ui_cobroslistbase.h:402 ui_cobroslistbase.h:405
 msgid "Borrar cobro"
 msgstr ""
 
-#: cobroslist.cpp:311
+#: cobroslist.cpp:321
 msgid "ID cobro"
 msgstr ""
 
-#: cobroslist.cpp:312
+#: cobroslist.cpp:322
 msgid "ID cliente"
 msgstr ""
 
-#: cobroslist.cpp:313
+#: cobroslist.cpp:323
 msgid "Nombre"
 msgstr ""
 
-#: cobroslist.cpp:314
+#: cobroslist.cpp:324
 msgid "C.I.F."
 msgstr ""
 
-#: cobroslist.cpp:315
+#: cobroslist.cpp:325
 msgid "Numero de telefono"
 msgstr ""
 
-#: cobroslist.cpp:316
+#: cobroslist.cpp:326
 msgid "Direccion de correo electronico"
 msgstr ""
 
-#: cobroslist.cpp:317
+#: cobroslist.cpp:327
 msgid "Fecha de cobro"
 msgstr ""
 
-#: cobroslist.cpp:318 cobroview.cpp:67
+#: cobroslist.cpp:328 cobroview.cpp:67
 msgid "Fecha de vencimiento"
 msgstr ""
 
-#: cobroslist.cpp:319
+#: cobroslist.cpp:329
 msgid "Cantidad"
 msgstr ""
 
-#: cobroslist.cpp:320 cobroview.cpp:71
-msgid "Banco"
+#: cobroslist.cpp:330 cobroview.cpp:71
+msgid "Forma de Pago"
 msgstr ""
 
-#: cobroslist.cpp:321
+#: cobroslist.cpp:331
 msgid "Referencia del cobro"
 msgstr ""
 
-#: cobroslist.cpp:322
+#: cobroslist.cpp:332
 msgid "Prevision de cobro"
 msgstr ""
 
-#: cobroslist.cpp:323
+#: cobroslist.cpp:333
 msgid "Comentarios"
 msgstr ""
 
-#: cobroslist.cpp:324
+#: cobroslist.cpp:334
 msgid "ID trabajador"
 msgstr ""
 
-#: cobroslist.cpp:325
+#: cobroslist.cpp:335
 msgid "Nombre del trabajador"
 msgstr ""
 
-#: cobroslist.cpp:326
+#: cobroslist.cpp:336
 msgid "Apellidos del trabajador"
 msgstr ""
 
@@ -175,134 +171,146 @@ msgid ""
 "referencia"
 msgstr ""
 
-#: ui_cobrobase.h:395
+#: pluginbf_clientecobro.cpp:100
+msgid "&Cobros de clientes"
+msgstr ""
+
+#: pluginbf_clientecobro.cpp:102 pluginbf_clientecobro.cpp:103
+msgid "Cobros de clientes"
+msgstr ""
+
+#: pluginbf_clientecobro.cpp:108
+msgid "&Nuevo cobro de cliente"
+msgstr ""
+
+#: pluginbf_clientecobro.cpp:110 pluginbf_clientecobro.cpp:111
+msgid "Nuevo cobro de cliente"
+msgstr ""
+
+#: ui_cobrobase.h:382
 msgid "Nuevo cobro a cliente"
 msgstr ""
 
-#: ui_cobrobase.h:398 ui_cobrobase.h:401
+#: ui_cobrobase.h:385 ui_cobrobase.h:388
 msgid "Guardar cobro"
 msgstr ""
 
-#: ui_cobrobase.h:404
+#: ui_cobrobase.h:391
 msgid "Ctrl+S"
 msgstr ""
 
-#: ui_cobrobase.h:412 ui_cobroslistbase.h:405
+#: ui_cobrobase.h:399 ui_cobroslistbase.h:408
 msgid "Ctrl+D"
 msgstr ""
 
-#: ui_cobrobase.h:420
+#: ui_cobrobase.h:407
 msgid "Ctrl+I"
 msgstr ""
 
-#: ui_cobrobase.h:421
+#: ui_cobrobase.h:408
 msgid "Referencia:"
 msgstr ""
 
-#: ui_cobrobase.h:422
+#: ui_cobrobase.h:409
 msgid "Fecha del cobro:"
 msgstr ""
 
-#: ui_cobrobase.h:423
+#: ui_cobrobase.h:410
 msgid "Prevision de fondos"
 msgstr ""
 
-#: ui_cobrobase.h:424
+#: ui_cobrobase.h:411
 msgid "Fecha de vencimiento:"
 msgstr ""
 
-#: ui_cobrobase.h:425
+#: ui_cobrobase.h:412
 msgid "#mui_idcliente{min-height: 3em; } #mui_idcliente * {min-height: 0px; }"
 msgstr ""
 
-#: ui_cobrobase.h:426
+#: ui_cobrobase.h:413
 msgid "Descripcion del cobro:"
 msgstr ""
 
-#: ui_cobrobase.h:427
+#: ui_cobrobase.h:414
 msgid "Total cobro:"
 msgstr ""
 
-#: ui_cobrobase.h:428 ui_cobroslistbase.h:375
-msgid "Banco:"
+#: ui_cobrobase.h:415 ui_cobroslistbase.h:445
+msgid "Forma de pago:"
 msgstr ""
 
-#: ui_cobrobase.h:429
+#: ui_cobrobase.h:416
 msgid "Trabajador:"
 msgstr ""
 
-#: ui_cobrobase.h:430
+#: ui_cobrobase.h:417
 msgid "&Aceptar"
 msgstr ""
 
-#: ui_cobrobase.h:431
+#: ui_cobrobase.h:418
 msgid "&Cancelar"
 msgstr ""
 
-#: ui_cobroslistbase.h:376
-msgid "Fecha final:"
-msgstr ""
-
-#: ui_cobroslistbase.h:377
-msgid "Fecha inicial:"
-msgstr ""
-
-#: ui_cobroslistbase.h:378
-msgid "Cobros previstos"
-msgstr ""
-
-#: ui_cobroslistbase.h:379
-msgid "Cobros efectivos"
-msgstr ""
-
-#: ui_cobroslistbase.h:380
+#: ui_cobroslistbase.h:383
 msgid "Total:"
 msgstr ""
 
-#: ui_cobroslistbase.h:383 ui_cobroslistbase.h:386
+#: ui_cobroslistbase.h:386 ui_cobroslistbase.h:389
 msgid "Nuevo cobro"
 msgstr ""
 
-#: ui_cobroslistbase.h:389
+#: ui_cobroslistbase.h:392
 msgid "Ctrl+N"
 msgstr ""
 
-#: ui_cobroslistbase.h:397
+#: ui_cobroslistbase.h:400
 msgid "Ctrl+E"
 msgstr ""
 
-#: ui_cobroslistbase.h:407 ui_cobroslistbase.h:410
+#: ui_cobroslistbase.h:410 ui_cobroslistbase.h:413
 msgid "Imprimir listado"
 msgstr ""
 
-#: ui_cobroslistbase.h:413
+#: ui_cobroslistbase.h:416
 msgid "Ctrl+P"
 msgstr ""
 
-#: ui_cobroslistbase.h:415 ui_cobroslistbase.h:418
+#: ui_cobroslistbase.h:418 ui_cobroslistbase.h:421
 msgid "Filtrar cobros"
 msgstr ""
 
-#: ui_cobroslistbase.h:421
+#: ui_cobroslistbase.h:424
 msgid "Ctrl+F"
 msgstr ""
 
-#: ui_cobroslistbase.h:423 ui_cobroslistbase.h:426
+#: ui_cobroslistbase.h:426 ui_cobroslistbase.h:429
 msgid "Configurar listado"
 msgstr ""
 
-#: ui_cobroslistbase.h:429
+#: ui_cobroslistbase.h:432
 msgid "Ctrl+B"
 msgstr ""
 
-#: ui_cobroslistbase.h:431 ui_cobroslistbase.h:434
+#: ui_cobroslistbase.h:434 ui_cobroslistbase.h:437
 msgid "Actualizar listado"
 msgstr ""
 
-#: ui_cobroslistbase.h:437
+#: ui_cobroslistbase.h:440
 msgid "F5"
 msgstr ""
 
-#: ui_cobroslistbase.h:438
+#: ui_cobroslistbase.h:441
 msgid "Buscar:"
+msgstr ""
+
+#: ui_cobroslistbase.h:442
+msgid "Tipo de cobro:"
+msgstr ""
+
+#: ui_cobroslistbase.h:443
+msgid "Fecha inicial:"
+msgstr ""
+
+#: ui_cobroslistbase.h:444
+msgid "Fecha final:"
 msgstr ""
