@@ -118,7 +118,7 @@ TrabajadorView::~TrabajadorView()
 **/
 void TrabajadorView::on_mui_lista_currentItemChanged ( QListWidgetItem *cur, QListWidgetItem * )
 {
-    blDebug ( "on_mui_lista_currentItemChanged", 0 );
+    blDebug ( "TrabajadorView::on_mui_lista_currentItemChanged", 0 );
     if ( !cur ) return;
     mui_tab->setEnabled ( TRUE );
 
@@ -147,7 +147,7 @@ void TrabajadorView::on_mui_lista_currentItemChanged ( QListWidgetItem *cur, QLi
     } // end if
     dialogChanges_cargaInicial();
     m_imagen->setPixmap ( QPixmap ( g_confpr->valor ( CONF_DIR_IMG_PERSONAL ) + mdb_idtrabajador + ".jpg" ) );
-    blDebug ( "END on_mui_lista_currentItemChanged", 0 );
+    blDebug ( "END TrabajadorView::on_mui_lista_currentItemChanged", 0 );
 }
 
 

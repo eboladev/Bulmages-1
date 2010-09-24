@@ -21,6 +21,7 @@
  ***************************************************************************/
 #include <QToolButton>
 #include <QLineEdit>
+#include <QCheckBox>
 
 #include "pluginbf_camarero.h"
 
@@ -60,11 +61,21 @@ int TrabajadorView_TrabajadorView_Post ( TrabajadorView *trab )
     textLabel2_9_26->setText ( "Contraseña" );
 
     QLineEdit *tipotraba = new QLineEdit ( trab->m_frameplugin );
-    tipotraba->setMainCompany ( trab->mainCompany() );
-    tipotraba->setidtipotrabajo ( "" );
     tipotraba->setObjectName ( QString::fromUtf8 ( "mui_passwordtrabajador" ) );
+    tipotraba->setMaximumSize(200,25);
     hboxLayout160->addWidget ( tipotraba );
+    
+    QCheckBox *check1 = new QCheckBox (trab->m_frameplugin );
+    check1->setText("Administrador");
+    check1->setObjectName ( QString::fromUtf8 ( "mui_admintrabajador"));
+    hboxLayout160->addWidget ( check1 );
+    
+    QCheckBox *check2 = new QCheckBox (trab->m_frameplugin );
+    check2->setText("Gerente");
+    check2->setObjectName ( QString::fromUtf8 ( "mui_gerentetrabajador"));
+    hboxLayout160->addWidget ( check2 );
 
+    
 
     /// Comprobamos que exista el layout.
     QVBoxLayout *m_hboxLayout1 = trab->m_frameplugin->findChild<QVBoxLayout *> ( "hboxLayout1" );
@@ -77,7 +88,74 @@ int TrabajadorView_TrabajadorView_Post ( TrabajadorView *trab )
 
     m_hboxLayout1->addLayout ( hboxLayout160 );
     
-    blDebug ( "END PluginBfCamarero::TrabajadorView_TrabajadorView_Post", 0 );
+    blDebug ( _("END PluginBfCamarero::TrabajadorView_TrabajadorView_Post"), 0 );
+    return 0;
+}
+
+
+
+
+///
+/**
+\param trab
+\return
+**/
+int TrabajadorView_on_mui_guardar_clicked ( TrabajadorView *trab )
+{
+
+    QLineEdit * l = trab->findChild<QLineEdit *> ( "mui_passwordtrabajador" );
+    QString query = "UPDATE trabajador SET ";
+    query += " passwordtrabajador = '" + l->text() + "'";
+    query += " WHERE idtrabajador=" + trab->mainCompany() ->sanearCadena ( trab->mdb_idtrabajador );
+    trab->mainCompany() ->begin();
+    trab->mainCompany() ->runQuery ( query );
+    trab->mainCompany() ->commit();
+    
+    
+    QCheckBox * l1 = trab->findChild<QCheckBox *> ( "mui_admintrabajador" );
+    query = "UPDATE trabajador SET ";
+    query += " admintrabajador = " + QString(l1->isChecked()?"TRUE":"FALSE");
+    query += " WHERE idtrabajador=" + trab->mainCompany() ->sanearCadena ( trab->mdb_idtrabajador );
+    trab->mainCompany() ->begin();
+    trab->mainCompany() ->runQuery ( query );
+    trab->mainCompany() ->commit();
+
+    QCheckBox * l2 = trab->findChild<QCheckBox *> ( "mui_gerentetrabajador" );
+    query = "UPDATE trabajador SET ";
+    query += " admintrabajador = " + QString(l2->isChecked()?"TRUE":"FALSE");
+    query += " WHERE idtrabajador=" + trab->mainCompany() ->sanearCadena ( trab->mdb_idtrabajador );
+    trab->mainCompany() ->begin();
+    trab->mainCompany() ->runQuery ( query );
+    trab->mainCompany() ->commit();
+    
+    
+    return 0;
+}
+
+
+///
+/**
+\param trab
+\return
+**/
+int TrabajadorView_on_mui_lista_currentItemChanged_Post ( TrabajadorView *trab )
+{
+    blDebug("pluginbf_camarero::TrabajadorView_on_mui_lista_currentItemChanged_Post");
+    if (trab) {
+	QLineEdit * l = trab->findChild<QLineEdit *> ( "mui_passwordtrabajador" );
+	QCheckBox * l1 = trab->findChild<QCheckBox *> ( "mui_admintrabajador" );
+	QCheckBox * l2 = trab->findChild<QCheckBox *> ( "mui_gerentetrabajador" );
+	if (l) {
+	    BlDbRecordSet *cur = trab->mainCompany() ->loadQuery ( "SELECT * FROM trabajador WHERE idtrabajador = " + trab->mdb_idtrabajador );
+	    if ( !cur->eof() ) {
+		l->setText ( cur->valor ( "passwordtrabajador" ) );
+		l1->setChecked(cur -> valor("admintrabajador") == "t");
+		l2->setChecked(cur -> valor("gerentetrabajador") == "t");
+	    } // end if
+	    delete cur;
+	} // end if
+    } // end if
+    blDebug("END pluginbf_camarero::TrabajadorView_on_mui_lista_currentItemChanged_Post");
     return 0;
 }
 

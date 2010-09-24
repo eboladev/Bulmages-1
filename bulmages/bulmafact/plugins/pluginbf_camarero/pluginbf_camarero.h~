@@ -25,13 +25,14 @@
 #include "bfbulmafact.h"
 #include "blform.h"
 #include "bfsubform.h"
-#include "articuloview.h"
-#include "articulolist.h"
 #include "pdefs_pluginbf_camarero.h"
 #include "trabajadorview.h"
 
 
 extern "C" PLUGINBF_CAMARERO_EXPORT int entryPoint ( BfBulmaFact * );
 extern "C" PLUGINBF_CAMARERO_EXPORT int TrabajadorView_TrabajadorView_Post ( TrabajadorView *trab );
+extern "C" PLUGINBF_CAMARERO_EXPORT int TrabajadorView_on_mui_lista_currentItemChanged_Post ( TrabajadorView *trab )
+extern "C" PLUGINBF_CAMARERO_EXPORT int TrabajadorView_on_mui_guardar_clicked ( TrabajadorView *trab )
+
 #endif
 
