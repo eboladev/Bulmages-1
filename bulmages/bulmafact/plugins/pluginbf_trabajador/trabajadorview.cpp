@@ -86,9 +86,13 @@ void TrabajadorView::pintar()
     if ( m_cursortrabajadores != NULL ) {
         delete m_cursortrabajadores;
     } // end if
-    m_cursortrabajadores = mainCompany() ->loadQuery ( "SELECT * FROM trabajador ORDER BY apellidostrabajador" );
+    m_cursortrabajadores = mainCompany() ->loadQuery ( "SELECT * FROM trabajador ORDER BY apellidostrabajador, idtrabajador" );
     while ( !m_cursortrabajadores->eof() ) {
-        new QListWidgetItem ( m_cursortrabajadores->valor ( "apellidostrabajador" ) + " " + m_cursortrabajadores->valor ( "nomtrabajador" ), mui_lista );
+        QString apellidos = m_cursortrabajadores->valor ( "apellidostrabajador");
+        if ( apellidos != "") {
+	  apellidos += " ";
+	} // end if
+        new QListWidgetItem ( apellidos + m_cursortrabajadores->valor ( "nomtrabajador" ), mui_lista );
         m_cursortrabajadores->nextRecord();
     } // end while
 
@@ -186,7 +190,7 @@ void TrabajadorView::on_mui_guardar_clicked()
             delete m_cursortrabajadores;
         } // end if
 
-        m_cursortrabajadores = mainCompany() ->loadQuery ( "SELECT * FROM trabajador ORDER BY apellidostrabajador" );
+        m_cursortrabajadores = mainCompany() ->loadQuery ( "SELECT * FROM trabajador ORDER BY apellidostrabajador, idtrabajador" );
 
         if ( m_item ) {
             m_item->setText ( m_apellidostrabajador->text() + m_nomtrabajador->text() );
