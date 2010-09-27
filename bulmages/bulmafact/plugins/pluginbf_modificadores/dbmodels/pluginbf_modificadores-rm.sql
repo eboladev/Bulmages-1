@@ -55,7 +55,7 @@ BEGIN
 
 
     SELECT INTO as attname, relname FROM pg_attribute LEFT JOIN pg_class ON pg_attribute.attrelid=pg_class.oid WHERE attname=''textolibremodificador'' AND relname=''lalbaran'';
-    IF NOT FOUND THEN
+    IF FOUND THEN
         ALTER TABLE lalbaran DROP COLUMN textolibremodificador;
         ALTER TABLE lalbaran DROP COLUMN imgmodificador; 
 	ALTER TABLE lalbaran DROP COLUMN idmodificador1 CASCADE;
