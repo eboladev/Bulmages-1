@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-10-21 10:25+0200\n"
+"POT-Creation-Date: 2010-09-23 18:20+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -114,10 +114,38 @@ msgstr ""
 "#-#-#-#-#  pluginabrevs.pot (PACKAGE VERSION)  #-#-#-#-#\n"
 "#-#-#-#-#  bulmages_suite.pot (PACKAGE VERSION)  #-#-#-#-#\n"
 
-#: pluginbt_aliastallasycolores.cpp:40 pluginbt_aliastallasycolores.cpp:42
+#: pluginbt_aliastallasycolores.cpp:139 pluginbt_aliastallasycolores.cpp:143
+#: pluginbt_aliastallasycolores.cpp:311 pluginbt_aliastallasycolores.cpp:314
+msgid "ARTI:"
+msgstr ""
+
+#: pluginbt_aliastallasycolores.cpp:139 pluginbt_aliastallasycolores.cpp:143
+#: pluginbt_aliastallasycolores.cpp:311 pluginbt_aliastallasycolores.cpp:314
+msgid "CANT:"
+msgstr ""
+
+#: pluginbt_aliastallasycolores.cpp:139 pluginbt_aliastallasycolores.cpp:143
+#: pluginbt_aliastallasycolores.cpp:311 pluginbt_aliastallasycolores.cpp:314
+msgid "COLOR:"
+msgstr ""
+
+#: pluginbt_aliastallasycolores.cpp:47 pluginbt_aliastallasycolores.cpp:49
 msgid "Color"
 msgstr "Color"
 
-#: pluginbt_aliastallasycolores.cpp:39 pluginbt_aliastallasycolores.cpp:41
+#: pluginbt_aliastallasycolores.cpp:139 pluginbt_aliastallasycolores.cpp:311
+msgid "PREC:"
+msgstr ""
+
+#: pluginbt_aliastallasycolores.cpp:143 pluginbt_aliastallasycolores.cpp:314
+msgid "PRECIO:"
+msgstr ""
+
+#: pluginbt_aliastallasycolores.cpp:139 pluginbt_aliastallasycolores.cpp:143
+#: pluginbt_aliastallasycolores.cpp:311 pluginbt_aliastallasycolores.cpp:314
+msgid "TALLA:"
+msgstr ""
+
+#: pluginbt_aliastallasycolores.cpp:46 pluginbt_aliastallasycolores.cpp:48
 msgid "Talla"
 msgstr "Talla"

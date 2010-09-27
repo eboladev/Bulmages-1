@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-10-21 10:24+0200\n"
+"POT-Creation-Date: 2010-09-23 18:20+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,16 +18,16 @@ msgstr ""
 "#-#-#-#-#  bulmalib_ca_ES.UTF-8.po (PACKAGE VERSION)  #-#-#-#-#\n"
 "X-Generator: Translate Toolkit 1.1.1\n"
 
-#: ui_articulosubformbase.h:240 ui_articulosubformbase.h:243
+#: ui_articulosubformbase.h:262 ui_articulosubformbase.h:265
 msgid "Actualizar listado"
 msgstr "Actual·litza llistat"
 
-#: ui_articulosubformbase.h:223
+#: ui_articulosubformbase.h:245
 #, fuzzy
 msgid "Alt+O"
 msgstr "Alt+I"
 
-#: ui_articulosubformbase.h:219
+#: ui_articulosubformbase.h:241
 #, fuzzy
 msgid "Articulos"
 msgstr "<P> Article <B>"
@@ -37,34 +37,34 @@ msgstr "<P> Article <B>"
 msgid "Borrar articulo"
 msgstr "Esborra amortització"
 
-#: ui_articulosubformbase.h:246
+#: ui_articulosubformbase.h:269
 msgid "Buscar:"
 msgstr "Cerca:"
 
-#: articulolisttpv.cpp:242
+#: articulolisttpv.cpp:257
 msgid "Codigo completo del articulo"
 msgstr "Codi complet de l'article"
 
-#: ui_articulosubformbase.h:233 ui_articulosubformbase.h:236
+#: ui_articulosubformbase.h:255 ui_articulosubformbase.h:258
 msgid "Configurar listado"
 msgstr "Configura llistat"
 
-#: articulolisttpv.cpp:244
+#: articulolisttpv.cpp:259
 #, fuzzy
 msgid "Descripcion abreviada del articulo"
 msgstr "Descripció de l'amortització"
 
-#: articulolisttpv.cpp:246
+#: articulolisttpv.cpp:261
 #, fuzzy
 msgid "Descripcion del tipo de articulo"
 msgstr "Descripció de l'assentament"
 
-#: articulolisttpv.cpp:247
+#: articulolisttpv.cpp:262
 #, fuzzy
 msgid "Descripcion tipo de I.V.A."
 msgstr "Descripció del compte"
 
-#: articulolisttpv.cpp:249
+#: articulolisttpv.cpp:264
 msgid "Disponible en stock"
 msgstr "Disposable en estoc"
 
@@ -73,35 +73,35 @@ msgstr "Disposable en estoc"
 msgid "Editar articulo"
 msgstr "<HR><B>Tractant Article"
 
-#: ui_articulosubformbase.h:226 ui_articulosubformbase.h:229
+#: ui_articulosubformbase.h:248 ui_articulosubformbase.h:251
 #, fuzzy
 msgid "Filtrar listado"
 msgstr "Configura llistat"
 
-#: articulolisttpv.cpp:241
+#: articulolisttpv.cpp:256
 #, fuzzy
 msgid "ID articulo"
 msgstr "<P> Article <B>"
 
-#: articulolisttpv.cpp:243
+#: articulolisttpv.cpp:258
 #, fuzzy
 msgid "Nombre del articulo"
 msgstr "Nom de l'amortització"
 
-#: articulolisttpv.cpp:245
+#: articulolisttpv.cpp:260
 msgid "Observaciones sobre el articulo"
 msgstr "Observacions sobre l'article"
 
-#: articulolisttpv.cpp:248
+#: articulolisttpv.cpp:263
 #, fuzzy
 msgid "P.V.P. articulo"
 msgstr "<P> Article <B>"
 
-#: ui_articulosubformbase.h:222
+#: ui_articulosubformbase.h:244
 msgid "S&olo presentables"
 msgstr "S&olament presentables"
 
-#: ui_articulosubformbase.h:220
+#: ui_articulosubformbase.h:242
 #, fuzzy
 msgid "Solo usados"
 msgstr "Bloquejat"

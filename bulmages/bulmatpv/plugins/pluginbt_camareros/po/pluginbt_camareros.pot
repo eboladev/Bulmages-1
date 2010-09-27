@@ -16,26 +16,16 @@ msgstr ""
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: admin.cpp:20 admin.cpp:37 ui_adminbase.h:91
-msgid "Salir"
-msgstr ""
-
-#: admin.cpp:21
-msgid "Realmente desea Realizar la Z?"
-msgstr ""
-
-#: admin.cpp:38
-msgid "Realmente desea abandonar el programa?"
-msgstr ""
-
-#: ui_adminbase.h:88
+#: ui_distromesasbase.h:163 ui_mesasbase.h:60
 msgid "Form"
 msgstr ""
 
-#: ui_adminbase.h:89
-msgid "X"
+#: ui_distromesasbase.h:164 ui_distromesasbase.h:165 ui_distromesasbase.h:166
+#: ui_distromesasbase.h:167 ui_distromesasbase.h:168 ui_distromesasbase.h:169
+#: ui_distromesasbase.h:170
+msgid "..."
 msgstr ""
 
-#: ui_adminbase.h:90
-msgid "Z"
+#: ui_mesasbase.h:61
+msgid "Mesas"
 msgstr ""

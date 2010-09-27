@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-10-21 10:22+0200\n"
+"POT-Creation-Date: 2010-09-23 18:11+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,86 +18,89 @@ msgstr ""
 "#-#-#-#-#  bulmalib_ca_ES.UTF-8.po (PACKAGE VERSION)  #-#-#-#-#\n"
 "X-Generator: Translate Toolkit 1.1.1\n"
 
-#: ui_cambiobase.h:519
+#: ui_cambiobase.h:358
+msgid "."
+msgstr "."
+
+#: ui_cambiobase.h:357
 msgid "0"
 msgstr "0"
 
-#: ui_cambiobase.h:520
-msgid "00"
-msgstr "00"
-
-#: ui_cambiobase.h:516
+#: ui_cambiobase.h:354
 msgid "1"
 msgstr "1"
 
-#: ui_cambiobase.h:517
+#: ui_cambiobase.h:355
 #, fuzzy
 msgid "2"
 msgstr "F2"
 
-#: ui_cambiobase.h:518
+#: ui_cambiobase.h:356
 msgid "3"
 msgstr "3"
 
-#: ui_cambiobase.h:513
+#: ui_cambiobase.h:351
 msgid "4"
 msgstr "4"
 
-#: ui_cambiobase.h:514
+#: ui_cambiobase.h:352
 #, fuzzy
 msgid "5"
 msgstr "F5"
 
-#: ui_cambiobase.h:515
+#: ui_cambiobase.h:353
 msgid "6"
 msgstr "6"
 
-#: ui_cambiobase.h:510
+#: ui_cambiobase.h:348
 msgid "7"
 msgstr "7"
 
-#: ui_cambiobase.h:511
+#: ui_cambiobase.h:349
 msgid "8"
 msgstr "8"
 
-#: ui_cambiobase.h:512
+#: ui_cambiobase.h:350
 msgid "9"
 msgstr "9"
 
-#: ui_cambiobase.h:509
+#: ui_cambiobase.h:347
 msgid "A devolver:"
 msgstr "A retornar:"
 
-#: ui_cambiobase.h:521
+#: ui_cambiobase.h:359
 msgid "C"
 msgstr "C"
 
-#: ui_cambiobase.h:524
+#: ui_cambiobase.h:362
 msgid "CANCELAR"
 msgstr "CANCELA"
 
-#: plugincambioivainc.cpp:72
+#: pluginbt_cambioivaincluido.cpp:72
 msgid "Cobro"
 msgstr "Cobrament"
 
-#: ui_cambiobase.h:506
+#: ui_cambiobase.h:344
 #, fuzzy
 msgid "Dialog"
 msgstr "Diari"
 
-#: ui_cambiobase.h:522
+#: ui_cambiobase.h:360
 msgid "EFECTIVO"
 msgstr ""
 
-#: ui_cambiobase.h:508
+#: ui_cambiobase.h:346
 #, fuzzy
 msgid "Entregado:"
 msgstr "Estat"
 
-#: ui_cambiobase.h:507
+#: ui_cambiobase.h:345
 msgid "Total a cobrar:"
 msgstr "Total a cobrar:"
 
-#: ui_cambiobase.h:523
+#: ui_cambiobase.h:361
 msgid "VISA"
 msgstr ""
+
+#~ msgid "00"
+#~ msgstr "00"

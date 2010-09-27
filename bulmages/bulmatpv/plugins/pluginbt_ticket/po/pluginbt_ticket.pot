@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-10-30 16:10+0100\n"
+"POT-Creation-Date: 2010-09-23 18:11+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -16,46 +16,50 @@ msgstr ""
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: mticket.cpp:86
+#: mticket.cpp:102 mticket.cpp:107
 msgid "CANT:"
 msgstr ""
 
-#: mticket.cpp:86
+#: mticket.cpp:102 mticket.cpp:107
 msgid "ARTICULO:"
 msgstr ""
 
-#: mticket.cpp:86
+#: mticket.cpp:102 mticket.cpp:107
 msgid "PRECIO:"
 msgstr ""
 
-#: mticket.cpp:283
+#: mticket.cpp:210
 msgid "No existe ningun ticket anterior para imprimir."
 msgstr ""
 
-#: pluginticketbasico.cpp:54
+#: pluginbt_ticket.cpp:54
 msgid "Ticket"
 msgstr ""
 
-#: ui_mticketbase.h:153
+#: ui_mticketbase.h:213
 msgid "Form"
 msgstr ""
 
-#: ui_mticketbase.h:155 ui_mticketbase.h:158
+#: ui_mticketbase.h:215 ui_mticketbase.h:218
 msgid "Imprimir ticket"
 msgstr ""
 
-#: ui_mticketbase.h:162 ui_mticketbase.h:165
+#: ui_mticketbase.h:222 ui_mticketbase.h:225
 msgid "Subir"
 msgstr ""
 
-#: ui_mticketbase.h:169 ui_mticketbase.h:172
+#: ui_mticketbase.h:229 ui_mticketbase.h:232
 msgid "Bajar"
 msgstr ""
 
-#: ui_mticketbase.h:176 ui_mticketbase.h:179
+#: ui_mticketbase.h:236 ui_mticketbase.h:239
 msgid "Borrar articulo"
 msgstr ""
 
-#: ui_mticketbase.h:182
+#: ui_mticketbase.h:242 ui_mticketbase.h:243
 msgid "..."
+msgstr ""
+
+#: ui_mticketbase.h:244
+msgid "Formatear"
 msgstr ""

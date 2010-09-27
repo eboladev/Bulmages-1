@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-10-21 10:22+0200\n"
+"POT-Creation-Date: 2010-09-23 18:11+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -114,38 +114,63 @@ msgstr ""
 "#-#-#-#-#  pluginabrevs.pot (PACKAGE VERSION)  #-#-#-#-#\n"
 "#-#-#-#-#  bulmages_suite.pot (PACKAGE VERSION)  #-#-#-#-#\n"
 
-#: ui_abrevsbase.h:98
-msgid "APARCAR"
-msgstr "APARCAR"
+#: ui_abrevsbase.h:123
+msgid "Aparcar"
+msgstr ""
 
-#: abrevs.cpp:108
+#: abrevs.cpp:112
 msgid "Asigne un nombre al ticket antes de aparcarlo."
 msgstr "Asigne un nombre al ticket antes de aparcarlo."
 
-#: ui_abrevsbase.h:97
-msgid "CLIENTE"
-msgstr "CLIENTE"
+#: ui_abrevsbase.h:122
+msgid "Cliente"
+msgstr "Cliente"
 
-#: abrevs.cpp:114
+#: abrevs.cpp:121
 msgid "El ticket esta vacio. No se puede aparcar."
 msgstr "El ticket esta vacio. No se puede aparcar."
 
-#: ui_trabajadoresbase.h:71 ui_abrevsbase.h:94 ui_ticketsbase.h:58
+#: tickets.cpp:66
+msgid ""
+"Este ticket esta bloqueado por otro terminal.\n"
+"Desa abrirlo de todos modos?"
+msgstr ""
+
+#: ui_trabajadoresbase.h:71 ui_abrevsbase.h:119 ui_ticketsbase.h:58
 msgid "Form"
 msgstr "Form"
 
-#: ui_abrevsbase.h:99
-msgid "RECUPERAR"
-msgstr "RECUPERAR"
+#: ui_abrevsbase.h:124
+msgid "Recuperar"
+msgstr ""
 
-#: ui_abrevsbase.h:95
-msgid "TECLADO"
-msgstr "TECLADO"
+#: ui_abrevsbase.h:120
+msgid "Teclado"
+msgstr "Teclado"
 
-#: ui_abrevsbase.h:96
-msgid "USUARIO"
-msgstr "USUARIO"
+#: tickets.cpp:65
+msgid "Ticket Bloqueado"
+msgstr ""
 
-#: abrevs.cpp:124
+#: ui_abrevsbase.h:121
+msgid "Usuario"
+msgstr ""
+
+#: abrevs.cpp:131
 msgid "Ya existe un ticket aparcado con el mismo nombre."
 msgstr "Ya existe un ticket aparcado con el mismo nombre."
+
+#~ msgid "APARCAR"
+#~ msgstr "APARCAR"
+
+#~ msgid "CLIENTE"
+#~ msgstr "CLIENTE"
+
+#~ msgid "RECUPERAR"
+#~ msgstr "RECUPERAR"
+
+#~ msgid "TECLADO"
+#~ msgstr "TECLADO"
+
+#~ msgid "USUARIO"
+#~ msgstr "USUARIO"

@@ -26,6 +26,7 @@ add_subdirectory(pluginbt_modificadores)
 add_subdirectory(pluginbt_serversync)
 add_subdirectory(pluginbt_clientsync)
 add_subdirectory(pluginbt_mesas)
+add_subdirectory(pluginbt_camareros)
 add_subdirectory(pluginbt_dockapp)
 add_subdirectory(pluginbt_serverlight)
 

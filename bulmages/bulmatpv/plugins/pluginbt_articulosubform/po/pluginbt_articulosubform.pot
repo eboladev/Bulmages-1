@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-10-30 16:10+0100\n"
+"POT-Creation-Date: 2010-09-23 18:20+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -24,70 +24,70 @@ msgstr ""
 msgid "Borrar articulo"
 msgstr ""
 
-#: articulolisttpv.cpp:241
+#: articulolisttpv.cpp:256
 msgid "ID articulo"
 msgstr ""
 
-#: articulolisttpv.cpp:242
+#: articulolisttpv.cpp:257
 msgid "Codigo completo del articulo"
 msgstr ""
 
-#: articulolisttpv.cpp:243
+#: articulolisttpv.cpp:258
 msgid "Nombre del articulo"
 msgstr ""
 
-#: articulolisttpv.cpp:244
+#: articulolisttpv.cpp:259
 msgid "Descripcion abreviada del articulo"
 msgstr ""
 
-#: articulolisttpv.cpp:245
+#: articulolisttpv.cpp:260
 msgid "Observaciones sobre el articulo"
 msgstr ""
 
-#: articulolisttpv.cpp:246
+#: articulolisttpv.cpp:261
 msgid "Descripcion del tipo de articulo"
 msgstr ""
 
-#: articulolisttpv.cpp:247
+#: articulolisttpv.cpp:262
 msgid "Descripcion tipo de I.V.A."
 msgstr ""
 
-#: articulolisttpv.cpp:248
+#: articulolisttpv.cpp:263
 msgid "P.V.P. articulo"
 msgstr ""
 
-#: articulolisttpv.cpp:249
+#: articulolisttpv.cpp:264
 msgid "Disponible en stock"
 msgstr ""
 
-#: ui_articulosubformbase.h:219
+#: ui_articulosubformbase.h:241
 msgid "Articulos"
 msgstr ""
 
-#: ui_articulosubformbase.h:220
+#: ui_articulosubformbase.h:242
 msgid "Solo usados"
 msgstr ""
 
-#: ui_articulosubformbase.h:222
+#: ui_articulosubformbase.h:244
 msgid "S&olo presentables"
 msgstr ""
 
-#: ui_articulosubformbase.h:223
+#: ui_articulosubformbase.h:245
 msgid "Alt+O"
 msgstr ""
 
-#: ui_articulosubformbase.h:226 ui_articulosubformbase.h:229
+#: ui_articulosubformbase.h:248 ui_articulosubformbase.h:251
 msgid "Filtrar listado"
 msgstr ""
 
-#: ui_articulosubformbase.h:233 ui_articulosubformbase.h:236
+#: ui_articulosubformbase.h:255 ui_articulosubformbase.h:258
 msgid "Configurar listado"
 msgstr ""
 
-#: ui_articulosubformbase.h:240 ui_articulosubformbase.h:243
+#: ui_articulosubformbase.h:262 ui_articulosubformbase.h:265
 msgid "Actualizar listado"
 msgstr ""
 
-#: ui_articulosubformbase.h:246
+#: ui_articulosubformbase.h:269
 msgid "Buscar:"
 msgstr ""

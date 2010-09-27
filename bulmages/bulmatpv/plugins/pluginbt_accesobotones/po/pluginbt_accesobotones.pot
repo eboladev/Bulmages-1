@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-10-30 16:10+0100\n"
+"POT-Creation-Date: 2010-09-23 18:11+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -16,38 +16,48 @@ msgstr ""
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: abrevs.cpp:108
+#: tickets.cpp:65
+msgid "Ticket Bloqueado"
+msgstr ""
+
+#: tickets.cpp:66
+msgid ""
+"Este ticket esta bloqueado por otro terminal.\n"
+"Desa abrirlo de todos modos?"
+msgstr ""
+
+#: abrevs.cpp:112
 msgid "Asigne un nombre al ticket antes de aparcarlo."
 msgstr ""
 
-#: abrevs.cpp:114
+#: abrevs.cpp:121
 msgid "El ticket esta vacio. No se puede aparcar."
 msgstr ""
 
-#: abrevs.cpp:124
+#: abrevs.cpp:131
 msgid "Ya existe un ticket aparcado con el mismo nombre."
 msgstr ""
 
-#: ui_trabajadoresbase.h:71 ui_abrevsbase.h:94 ui_ticketsbase.h:58
+#: ui_trabajadoresbase.h:71 ui_abrevsbase.h:119 ui_ticketsbase.h:58
 msgid "Form"
 msgstr ""
 
-#: ui_abrevsbase.h:95
-msgid "TECLADO"
+#: ui_abrevsbase.h:120
+msgid "Teclado"
 msgstr ""
 
-#: ui_abrevsbase.h:96
-msgid "USUARIO"
+#: ui_abrevsbase.h:121
+msgid "Usuario"
 msgstr ""
 
-#: ui_abrevsbase.h:97
-msgid "CLIENTE"
+#: ui_abrevsbase.h:122
+msgid "Cliente"
 msgstr ""
 
-#: ui_abrevsbase.h:98
-msgid "APARCAR"
+#: ui_abrevsbase.h:123
+msgid "Aparcar"
 msgstr ""
 
-#: ui_abrevsbase.h:99
-msgid "RECUPERAR"
+#: ui_abrevsbase.h:124
+msgid "Recuperar"
 msgstr ""

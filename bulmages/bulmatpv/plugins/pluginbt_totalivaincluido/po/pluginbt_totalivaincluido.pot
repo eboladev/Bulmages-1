@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-10-30 16:10+0100\n"
+"POT-Creation-Date: 2010-09-23 18:11+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -16,30 +16,30 @@ msgstr ""
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: plugintotalivainc.cpp:52
+#: pluginbt_totalivaincluido.cpp:52
 msgid "Total"
 msgstr ""
 
-#: ui_totalbase.h:129
+#: ui_totalbase.h:135
 msgid "Form"
 msgstr ""
 
-#: ui_totalbase.h:130
+#: ui_totalbase.h:136
 msgid "0.00"
 msgstr ""
 
-#: ui_totalbase.h:131
-msgid "ABRIR CAJON"
+#: ui_totalbase.h:137
+msgid "Abrir cajon"
 msgstr ""
 
-#: ui_totalbase.h:132
-msgid "IMPRIMIR TICKET"
+#: ui_totalbase.h:138
+msgid "Imprimir ticket"
 msgstr ""
 
-#: ui_totalbase.h:133
-msgid "COBRAR"
+#: ui_totalbase.h:139
+msgid "Cobrar"
 msgstr ""
 
-#: ui_totalbase.h:134
+#: ui_totalbase.h:140
 msgid "Imprimir ticket al cobrar"
 msgstr ""

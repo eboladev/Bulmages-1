@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-10-21 10:24+0200\n"
+"POT-Creation-Date: 2010-09-23 18:20+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -114,15 +114,15 @@ msgstr ""
 "#-#-#-#-#  pluginabrevs.pot (PACKAGE VERSION)  #-#-#-#-#\n"
 "#-#-#-#-#  bulmages_suite.pot (PACKAGE VERSION)  #-#-#-#-#\n"
 
-#: ui_articulosubformbase.h:240 ui_articulosubformbase.h:243
+#: ui_articulosubformbase.h:262 ui_articulosubformbase.h:265
 msgid "Actualizar listado"
 msgstr "Actualizar listado"
 
-#: ui_articulosubformbase.h:223
+#: ui_articulosubformbase.h:245
 msgid "Alt+O"
 msgstr "Alt+O"
 
-#: ui_articulosubformbase.h:219
+#: ui_articulosubformbase.h:241
 msgid "Articulos"
 msgstr "Articulos"
 
@@ -130,31 +130,31 @@ msgstr "Articulos"
 msgid "Borrar articulo"
 msgstr "Borrar articulo"
 
-#: ui_articulosubformbase.h:246
+#: ui_articulosubformbase.h:269
 msgid "Buscar:"
 msgstr "Buscar:"
 
-#: articulolisttpv.cpp:242
+#: articulolisttpv.cpp:257
 msgid "Codigo completo del articulo"
 msgstr "Codigo completo del articulo"
 
-#: ui_articulosubformbase.h:233 ui_articulosubformbase.h:236
+#: ui_articulosubformbase.h:255 ui_articulosubformbase.h:258
 msgid "Configurar listado"
 msgstr "Configurar listado"
 
-#: articulolisttpv.cpp:244
+#: articulolisttpv.cpp:259
 msgid "Descripcion abreviada del articulo"
 msgstr "Descripcion abreviada del articulo"
 
-#: articulolisttpv.cpp:246
+#: articulolisttpv.cpp:261
 msgid "Descripcion del tipo de articulo"
 msgstr "Descripcion del tipo de articulo"
 
-#: articulolisttpv.cpp:247
+#: articulolisttpv.cpp:262
 msgid "Descripcion tipo de I.V.A."
 msgstr "Descripcion tipo de I.V.A."
 
-#: articulolisttpv.cpp:249
+#: articulolisttpv.cpp:264
 msgid "Disponible en stock"
 msgstr "Disponible en stock"
 
@@ -162,30 +162,30 @@ msgstr "Disponible en stock"
 msgid "Editar articulo"
 msgstr "Editar articulo"
 
-#: ui_articulosubformbase.h:226 ui_articulosubformbase.h:229
+#: ui_articulosubformbase.h:248 ui_articulosubformbase.h:251
 msgid "Filtrar listado"
 msgstr "Filtrar listado"
 
-#: articulolisttpv.cpp:241
+#: articulolisttpv.cpp:256
 msgid "ID articulo"
 msgstr "ID articulo"
 
-#: articulolisttpv.cpp:243
+#: articulolisttpv.cpp:258
 msgid "Nombre del articulo"
 msgstr "Nombre del articulo"
 
-#: articulolisttpv.cpp:245
+#: articulolisttpv.cpp:260
 msgid "Observaciones sobre el articulo"
 msgstr "Observaciones sobre el articulo"
 
-#: articulolisttpv.cpp:248
+#: articulolisttpv.cpp:263
 msgid "P.V.P. articulo"
 msgstr "P.V.P. articulo"
 
-#: ui_articulosubformbase.h:222
+#: ui_articulosubformbase.h:244
 msgid "S&olo presentables"
 msgstr "S&olo presentables"
 
-#: ui_articulosubformbase.h:220
+#: ui_articulosubformbase.h:242
 msgid "Solo usados"
 msgstr "Solo usados"
