@@ -26,7 +26,7 @@
 #include "blapplication.h"
 
 #include <QHBoxLayout>
-
+#include <QToolButton>
 
 
 ///
@@ -51,7 +51,8 @@ int BtCompany_createMainWindows_Post ( BtCompany *etpv )
 {
 //    g_admin = new Mesas ( etpv, g_admin1 );
 //    g_admin1->setWidget ( g_admin );
-
+    QToolButton *camareros = new QToolButton(etpv);
+    camareros->setIcon ( QIcon ( g_confpr->valor ( CONF_PROGDATA ) + "icons/table.svg" ) );
 
 
     // ============ Pruebas con abrevs
@@ -64,7 +65,7 @@ int BtCompany_createMainWindows_Post ( BtCompany *etpv )
             m_hboxLayout1->setMargin ( 5 );
             m_hboxLayout1->setObjectName ( QString::fromUtf8 ( "hboxLayout1" ) );
         } // end if
-//        m_hboxLayout1->addWidget ( g_admin );
+        m_hboxLayout1->addWidget ( camareros );
     } // end if
 
     return 0;
