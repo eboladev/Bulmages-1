@@ -46,36 +46,40 @@ void Trabajadores::trabajadorClicked()
 
     /// Buscamos cual ha sido el trabajador pulsado.
     BlDbRecordSet *cur = mainCompany() ->loadQuery ( "SELECT * FROM trabajador" );
-    while ( !encontrado ) {
-        if ( ( ( QPushButton * ) sender() ) ->text() == cur->valor ( "nomtrabajador" ) + " " + cur->valor ( "apellidostrabajador" ) ) {
+    while ( !encontrado && !cur->eof() ) {
+        if ( ( ( QPushButton * ) sender() ) ->text() == cur->valor ( "nomtrabajador" ) + " " + cur->valor ( "apellidostrabajador" )  
+	&& ((cur->valor("passwordtrabajador") == mui_password->text() || cur->valor("passwordtrabajador") == "")) ) {
             encontrado = TRUE;
+
         } else {
             cur->nextRecord();
         } // end if
     } // end while
 
-    /// Buscamos el ticket vacio de este trabajador y lo pintamos
-    for ( int i = 0; i < emp1->listaTickets() ->size(); ++i ) {
-        ticket = emp1->listaTickets() ->at ( i );
+    if (encontrado) {
+      /// Buscamos el ticket vacio de este trabajador y lo pintamos
+      for ( int i = 0; i < emp1->listaTickets() ->size(); ++i ) {
+	  ticket = emp1->listaTickets() ->at ( i );
 
-        if ( ticket->nomTicketDefecto() == ticket->dbValue ( "nomticket" ) && cur->valor ( "idtrabajador" ) == ticket->dbValue ( "idtrabajador" ) ) {
-            ( ( BtCompany * ) mainCompany() ) ->setTicketActual ( ticket );
-            ticket->pintar();
-            ticketv = ticket;
-        }// end if
+	  if ( ticket->nomTicketDefecto() == ticket->dbValue ( "nomticket" ) && cur->valor ( "idtrabajador" ) == ticket->dbValue ( "idtrabajador" ) ) {
+	      ( ( BtCompany * ) mainCompany() ) ->setTicketActual ( ticket );
+	      ticket->pintar();
+	      ticketv = ticket;
+	  }// end if
 
-    }// end for
+      }// end for
 
-    /// Si el trabajador no tiene ticket vacio lo creamos y le ponemos el idtrabajador.
-    if ( !ticketv ) {
-        BtTicket * tick = emp1->newBtTicket();
-        tick->setDbValue ( "idtrabajador", cur->valor ( "idtrabajador" ) );
-        emp1->setTicketActual ( tick );
-        emp1->listaTickets() ->append ( tick );
-        tick->pintar();
+      /// Si el trabajador no tiene ticket vacio lo creamos y le ponemos el idtrabajador.
+      if ( !ticketv ) {
+	  BtTicket * tick = emp1->newBtTicket();
+	  tick->setDbValue ( "idtrabajador", cur->valor ( "idtrabajador" ) );
+	  emp1->setTicketActual ( tick );
+	  emp1->listaTickets() ->append ( tick );
+	  tick->pintar();
+      }// end if
+      delete cur;
+
+      done ( 0 );
     }// end if
-    delete cur;
-
-    done ( 0 );
 }
 
