@@ -5,13 +5,12 @@
 #include "blfunctions.h"
 #include "btticket.h"
 #include "btcompany.h"
-
+#include "trabajadores.h"
 
 
 Camareros * g_camareros;
 //Mesa  * g_camareroAct;
 bool  g_bloqueo;
-
 
 Camareros::Camareros ( BtCompany *emp, QWidget *parent ) : BlWidget ( emp, parent )
 {
@@ -32,20 +31,10 @@ Camareros::~Camareros()
 
 void Camareros::on_mui_camareros_clicked()
 {
-/*
-    if (m_centralWidget == NULL) {
-        /// Creamos y presentamos el plugin de camareros.
-         if (m_distro == NULL)
-            m_distro= new DistroCamareros((BtCompany *) mainCompany(), this);
-        m_centralWidget = ((BtBulmaTPV *)g_main)->centralBtWidget();
-        ((BtBulmaTPV *)g_main) -> setCentralBtWidget (m_distro);
-    } else {
-        ((BtBulmaTPV *)g_main) -> setCentralBtWidget (m_centralWidget);
-        m_centralWidget = NULL;
-        m_distro->exportXML();
-    } // end if
-*/
-blMsgInfo("pulsado sobre el boton");
+  
+    Trabajadores * trab = new Trabajadores ( mainCompany(), 0 );
+    trab->exec();
+  
 }
 
 //  ========================0

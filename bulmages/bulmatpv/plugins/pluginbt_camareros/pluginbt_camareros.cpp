@@ -29,6 +29,8 @@
 #include <QToolButton>
 
 #include "camareros.h"
+#include "trabajadores.h"
+
 
 ///
 /**
@@ -68,6 +70,10 @@ int BtCompany_createMainWindows_Post ( BtCompany *etpv )
         } // end if
         m_hboxLayout1->addWidget ( camareros );
     } // end if
+
+    Trabajadores *trab = new Trabajadores ( etpv, 0 );
+    trab->exec();
+
 
     return 0;
 }

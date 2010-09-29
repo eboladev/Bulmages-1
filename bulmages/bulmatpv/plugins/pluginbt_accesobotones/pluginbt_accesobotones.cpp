@@ -31,7 +31,6 @@
 #include "abrevs.h"
 #include "blplugins.h"
 #include "blapplication.h"
-#include "trabajadores.h"
 #include "bldockwidget.h"
 
 
@@ -81,9 +80,6 @@ int BtCompany_createMainWindows_Post ( BtCompany *etpv )
     g_tot = new Abrevs ( etpv, g_doc1 );
     g_tot->setObjectName ( "abrevs" );
     g_doc1->setWidget ( g_tot );
-
-    Trabajadores *trab = new Trabajadores ( etpv, 0 );
-    trab->exec();
     return 0;
 }
 

@@ -9,7 +9,6 @@
 
 #include "abrevs.h"
 #include "blfunctions.h"
-#include "trabajadores.h"
 #include "btcompany.h"
 #include "tickets.h"
 #include "blmainwindow.h"
@@ -84,13 +83,6 @@ void Abrevs::on_mui_teclado_clicked()
     } else {
         m_doc2->show();
     }// end if
-}
-
-void Abrevs::on_mui_usuario_clicked()
-{
-
-    Trabajadores * trab = new Trabajadores ( mainCompany(), 0 );
-    trab->exec();
 }
 
 

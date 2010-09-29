@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>400</width>
+    <width>314</width>
     <height>72</height>
    </rect>
   </property>
@@ -37,38 +37,6 @@
      <property name="icon">
       <iconset resource="../../../bulmages.qrc">
        <normaloff>:/Images/company.png</normaloff>:/Images/company.png</iconset>
-     </property>
-     <property name="iconSize">
-      <size>
-       <width>32</width>
-       <height>32</height>
-      </size>
-     </property>
-     <property name="toolButtonStyle">
-      <enum>Qt::ToolButtonTextUnderIcon</enum>
-     </property>
-    </widget>
-   </item>
-   <item>
-    <widget class="QToolButton" name="mui_usuario">
-     <property name="minimumSize">
-      <size>
-       <width>72</width>
-       <height>72</height>
-      </size>
-     </property>
-     <property name="maximumSize">
-      <size>
-       <width>200</width>
-       <height>72</height>
-      </size>
-     </property>
-     <property name="text">
-      <string>Usuario</string>
-     </property>
-     <property name="icon">
-      <iconset resource="../../../bulmages.qrc">
-       <normaloff>:/Images/employee-list.png</normaloff>:/Images/employee-list.png</iconset>
      </property>
      <property name="iconSize">
       <size>
