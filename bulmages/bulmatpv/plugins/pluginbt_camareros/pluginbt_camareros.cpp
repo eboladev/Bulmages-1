@@ -28,6 +28,7 @@
 #include <QHBoxLayout>
 #include <QToolButton>
 
+#include "camareros.h"
 
 ///
 /**
@@ -51,8 +52,8 @@ int BtCompany_createMainWindows_Post ( BtCompany *etpv )
 {
 //    g_admin = new Mesas ( etpv, g_admin1 );
 //    g_admin1->setWidget ( g_admin );
-    QToolButton *camareros = new QToolButton(etpv);
-    camareros->setIcon ( QIcon ( g_confpr->valor ( CONF_PROGDATA ) + "icons/table.svg" ) );
+    Camareros *camareros = new Camareros(etpv, etpv);
+//    camareros->setIcon ( QIcon ( g_confpr->valor ( CONF_PROGDATA ) + "icons/table.svg" ) );
 
 
     // ============ Pruebas con abrevs
