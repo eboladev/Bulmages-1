@@ -24,12 +24,13 @@
 #include "blfunctions.h"
 #include "btbulmatpv.h"
 #include "btcompany.h"
+#include "bltoolbutton.h"
 #include "pdefs_pluginbt_camareros.h"
 
 
 extern "C" PLUGINBT_CAMAREROS_EXPORT int entryPoint ( BtBulmaTPV * );
 extern "C" PLUGINBT_CAMAREROS_EXPORT int BtCompany_createMainWindows_Post ( BtCompany * );
-
+extern "C" PLUGINBT_CAMAREROS_EXPORT int BlToolButton_released(BlToolButton *);
 
 #endif
 

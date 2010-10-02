@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-10-21 10:25+0200\n"
+"POT-Creation-Date: 2010-09-23 18:53+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -114,11 +114,15 @@ msgstr ""
 "#-#-#-#-#  pluginabrevs.pot (PACKAGE VERSION)  #-#-#-#-#\n"
 "#-#-#-#-#  bulmages_suite.pot (PACKAGE VERSION)  #-#-#-#-#\n"
 
-#: pluginbc_cuentaresumen.cpp:76
+#: pluginbc_cuentaresumen.cpp:86
 msgid "&Resumen Cta"
 msgstr "&Resumen Cta"
 
-#: pluginbc_cuentaresumen.cpp:80
+#: pluginbc_cuentaresumen.cpp:79
+msgid "&Ver"
+msgstr "&Ver"
+
+#: pluginbc_cuentaresumen.cpp:90
 msgid ""
 "Corrector.\n"
 "\n"
@@ -128,7 +132,7 @@ msgstr ""
 "\n"
 "Muestra/oculta el corrector"
 
-#: pluginbc_cuentaresumen.cpp:79
+#: pluginbc_cuentaresumen.cpp:89
 msgid "Muestra/oculta el resumen de cuenta"
 msgstr "Muestra/oculta el resumen de cuenta"
 
@@ -139,3 +143,7 @@ msgstr "Resumen cuenta"
 #: ui_correctorbase.h:52
 msgid "Resumen de Cuenta"
 msgstr "Resumen de Cuenta"
+
+#: pluginbc_cuentaresumen.cpp:75
+msgid "menuVer"
+msgstr ""

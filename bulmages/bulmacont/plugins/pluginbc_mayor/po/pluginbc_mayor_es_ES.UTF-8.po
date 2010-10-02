@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-10-21 10:25+0200\n"
+"POT-Creation-Date: 2010-09-23 18:53+0200\n"
 "PO-Revision-Date: 2009-10-17 21:59+0200\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -25,11 +25,11 @@ msgstr "&Cancelar"
 msgid "&Imprimir"
 msgstr "&Imprimir"
 
-#: ui_bcextractobase.h:637
+#: ui_bcextractobase.h:722
 msgid "&Incluir asientos abiertos"
 msgstr "&Incluir asientos abiertos"
 
-#: pluginbc_mayor.cpp:96
+#: pluginbc_mayor.cpp:101
 msgid "&Libro Mayor"
 msgstr ""
 
@@ -37,35 +37,35 @@ msgstr ""
 msgid "&Texto Plano"
 msgstr "&Texto plano"
 
-#: ui_bcextractobase.h:646
+#: ui_bcextractobase.h:731
 msgid "&Todos"
 msgstr "&Todos"
 
-#: pluginbc_mayor.cpp:92
+#: pluginbc_mayor.cpp:97
 msgid "&Ver"
 msgstr "&Ver"
 
-#: ui_bcextractobase.h:670 ui_bcextractobase.h:673
+#: ui_bcextractobase.h:755 ui_bcextractobase.h:758
 msgid "Actualizar"
 msgstr "Actualizar"
 
-#: ui_bcextractobase.h:645
+#: ui_bcextractobase.h:730
 msgid "Ap&untes punteados"
 msgstr "Ap&untes punteados"
 
-#: ui_bcextractobase.h:644
+#: ui_bcextractobase.h:729
 msgid "Apuntes &no punteados"
 msgstr "Apuntes &no punteados"
 
-#: ui_bcextractobase.h:638
+#: ui_bcextractobase.h:723
 msgid "Apuntes con contrapartida:"
 msgstr "Apuntes con contrapartida:"
 
-#: ui_bcextractobase.h:636
+#: ui_bcextractobase.h:721
 msgid "Apuntes con saldo inferior a:"
 msgstr "Apuntes con saldo inferior a:"
 
-#: ui_bcextractobase.h:635
+#: ui_bcextractobase.h:720
 msgid "Apuntes con saldo superior a:"
 msgstr "Apuntes con saldo superior a:"
 
@@ -73,7 +73,7 @@ msgstr "Apuntes con saldo superior a:"
 msgid "Asiento"
 msgstr "Asiento"
 
-#: bcextractoview.cpp:562 ui_bcextractobase.h:698 ui_bcextractobase.h:701
+#: bcextractoview.cpp:621 ui_bcextractobase.h:783 ui_bcextractobase.h:786
 msgid "Borrar punteo"
 msgstr "Borrar punteo"
 
@@ -81,15 +81,15 @@ msgstr "Borrar punteo"
 msgid "Canal"
 msgstr "Canal"
 
-#: bcextractoview.cpp:486
+#: bcextractoview.cpp:545
 msgid "Cargando Extracto de Cuentas"
 msgstr "Cargando Extracto de cuentas"
 
-#: bcextractoview.cpp:594 ui_bcextractobase.h:691 ui_bcextractobase.h:694
+#: bcextractoview.cpp:653 ui_bcextractobase.h:776 ui_bcextractobase.h:779
 msgid "Cargar punteo"
 msgstr "Cargar punteo"
 
-#: ui_bcextractobase.h:677 ui_bcextractobase.h:680
+#: ui_bcextractobase.h:762 ui_bcextractobase.h:765
 msgid "Casacion"
 msgstr "Casación"
 
@@ -105,7 +105,7 @@ msgstr "Comentario"
 msgid "Concepto"
 msgstr "Concepto"
 
-#: ui_bcextractobase.h:663 ui_bcextractobase.h:666
+#: ui_bcextractobase.h:748 ui_bcextractobase.h:751
 msgid "Configurar"
 msgstr "Configurar"
 
@@ -113,15 +113,27 @@ msgstr "Configurar"
 msgid "Cuenta"
 msgstr "Cuenta"
 
-#: ui_bcextractobase.h:642
+#: bcextractoview.cpp:73
+msgid "Cuenta Contrapartida:"
+msgstr ""
+
+#: bcextractoview.cpp:66
+msgid "Cuenta Final:"
+msgstr ""
+
+#: bcextractoview.cpp:59
+msgid "Cuenta Inicial:"
+msgstr ""
+
+#: ui_bcextractobase.h:727
 msgid "Cuenta final:"
 msgstr "Cuenta final:"
 
-#: ui_bcextractobase.h:641
+#: ui_bcextractobase.h:726
 msgid "Cuenta inicial:"
 msgstr "Cuenta inicial:"
 
-#: ui_bcextractobase.h:631
+#: ui_bcextractobase.h:716
 msgid "Cuenta:"
 msgstr "Cuenta:"
 
@@ -129,13 +141,17 @@ msgstr "Cuenta:"
 msgid "Debe"
 msgstr "Debe"
 
-#: ui_bcextractobase.h:633
+#: ui_bcextractobase.h:793
+msgid "Debe final:"
+msgstr ""
+
+#: ui_bcextractobase.h:718
 msgid "Debe inicial:"
 msgstr "Debe inicial:"
 
-#: ui_bcextractobase.h:705
-msgid "Debe:"
-msgstr "Debe:"
+#: ui_bcextractobase.h:790
+msgid "Debe parcial:"
+msgstr ""
 
 #: bcextractosubform.cpp:50
 msgid "Descripcion"
@@ -149,11 +165,7 @@ msgstr "Descripción apunte"
 msgid "Descripcion Asiento"
 msgstr "Descripción asiento"
 
-#: bcextractoview.cpp:248
-msgid "Diarios (*.txt)"
-msgstr "Diarios (*.txt)"
-
-#: bcextractoview.cpp:54 ui_bcextractobase.h:629
+#: bcextractoview.cpp:52 ui_bcextractobase.h:714
 msgid "Extracto de Cuentas"
 msgstr "Extracto de cuentas"
 
@@ -161,11 +173,11 @@ msgstr "Extracto de cuentas"
 msgid "Fecha"
 msgstr "Fecha"
 
-#: ui_bcextractobase.h:640
+#: ui_bcextractobase.h:725
 msgid "Fecha final:"
 msgstr "Fecha final:"
 
-#: ui_bcextractobase.h:639
+#: ui_bcextractobase.h:724
 msgid "Fecha inicial:"
 msgstr "Fecha inicial:"
 
@@ -173,15 +185,11 @@ msgstr "Fecha inicial:"
 msgid "Formato:"
 msgstr "Formato:"
 
-#: bcextractoview.cpp:862
+#: bcextractoview.cpp:922
 msgid "Generando Extracto "
 msgstr "Generando extracto "
 
-#: bcextractoview.cpp:246
-msgid "Guardar libro diario"
-msgstr "Guardar Libro Diario"
-
-#: bcextractoview.cpp:524 ui_bcextractobase.h:684 ui_bcextractobase.h:687
+#: bcextractoview.cpp:583 ui_bcextractobase.h:769 ui_bcextractobase.h:772
 msgid "Guardar punteo"
 msgstr "Guardar punteo"
 
@@ -193,13 +201,17 @@ msgstr "HT&ML"
 msgid "Haber"
 msgstr "Haber"
 
-#: ui_bcextractobase.h:632
+#: ui_bcextractobase.h:794
+msgid "Haber final:"
+msgstr ""
+
+#: ui_bcextractobase.h:717
 msgid "Haber inicial:"
 msgstr "Haber inicial:"
 
-#: ui_bcextractobase.h:706
-msgid "Haber:"
-msgstr "Haber:"
+#: ui_bcextractobase.h:791
+msgid "Haber parcial:"
+msgstr ""
 
 #: bcextractosubform.cpp:64
 msgid "Id contrapartida"
@@ -209,7 +221,7 @@ msgstr "ID contrapartida"
 msgid "Impresion del Extracto"
 msgstr "Impresión del extracto"
 
-#: ui_bcextractobase.h:649 ui_bcextractobase.h:652
+#: ui_bcextractobase.h:734 ui_bcextractobase.h:737
 msgid "Imprimir"
 msgstr "Imprimir"
 
@@ -229,15 +241,15 @@ msgstr "Mostrar diario (día)"
 msgid "Mostrar diario (mes)"
 msgstr "Mostrar diario (mes)"
 
-#: ui_bcextractobase.h:656 ui_bcextractobase.h:659
+#: ui_bcextractobase.h:741 ui_bcextractobase.h:744
 msgid "Mostrar/Oculatar filtro"
 msgstr "Mostrar/ocultar filtro"
 
-#: ui_bcextractobase.h:634
+#: ui_bcextractobase.h:719
 msgid "Nombre de la cuenta:"
 msgstr "Nombre de la cuenta:"
 
-#: ui_bcextractobase.h:647
+#: ui_bcextractobase.h:732
 msgid "Ocultar aperturas y cierres"
 msgstr "Ocultar aperturas y cierres"
 
@@ -245,11 +257,11 @@ msgstr "Ocultar aperturas y cierres"
 msgid "Orden"
 msgstr "Orden"
 
-#: pluginbc_mayor.cpp:97
+#: pluginbc_mayor.cpp:102
 msgid "Permite ver el mayor"
 msgstr ""
 
-#: pluginbc_mayor.cpp:98
+#: pluginbc_mayor.cpp:103
 msgid "Podra disponer de la informacion del mayor"
 msgstr ""
 
@@ -261,15 +273,15 @@ msgstr "Propietario"
 msgid "Punteo"
 msgstr "Punteo"
 
-#: bcextractoview.cpp:596
+#: bcextractoview.cpp:655
 msgid "Punteo (*.pto);;Todos los archivos (*)"
 msgstr "Punteo (*.pto);;Todos los archivos (*)"
 
-#: ui_bcextractobase.h:643
+#: ui_bcextractobase.h:728
 msgid "Punteo:"
 msgstr "Punteo:"
 
-#: bcextractoview.cpp:526
+#: bcextractoview.cpp:585
 msgid "Punteos (*.pto)"
 msgstr "Punteos (*.pto)"
 
@@ -277,15 +289,19 @@ msgstr "Punteos (*.pto)"
 msgid "Saldo"
 msgstr "Saldo"
 
-#: ui_bcextractobase.h:630
+#: ui_bcextractobase.h:795
+msgid "Saldo final:"
+msgstr ""
+
+#: ui_bcextractobase.h:715
 msgid "Saldo inicial:"
 msgstr "Saldo inicial:"
 
-#: ui_bcextractobase.h:707
-msgid "Saldo:"
-msgstr "Saldo:"
+#: ui_bcextractobase.h:792
+msgid "Saldo parcial:"
+msgstr ""
 
-#: bcextractoview.cpp:563
+#: bcextractoview.cpp:622
 msgid ""
 "Se dispone a borrar el punteo. Este "
 "cambio                                                 es irrecuperable si "
@@ -297,11 +313,11 @@ msgstr ""
 "no ha guardado su punteo.                                                 "
 "¿Desea continuar?"
 
-#: bcextractoview.cpp:578
+#: bcextractoview.cpp:637
 msgid "Se ha producido un error"
 msgstr "Se ha producido un error"
 
-#: ui_bcextractobase.h:704
+#: ui_bcextractobase.h:789
 msgid "Totales:"
 msgstr "Totales:"
 
@@ -345,10 +361,28 @@ msgstr "idtipoiva"
 msgid "marcaconciliacion"
 msgstr "marcaconciliacion"
 
-#: pluginbc_mayor.cpp:88
-msgid "menuVentana"
-msgstr "menuVentana"
+#: pluginbc_mayor.cpp:93
+msgid "menuVer"
+msgstr ""
 
 #: bcextractosubform.cpp:63
 msgid "tipocuenta"
 msgstr "tipocuenta"
+
+#~ msgid "Debe:"
+#~ msgstr "Debe:"
+
+#~ msgid "Diarios (*.txt)"
+#~ msgstr "Diarios (*.txt)"
+
+#~ msgid "Guardar libro diario"
+#~ msgstr "Guardar Libro Diario"
+
+#~ msgid "Haber:"
+#~ msgstr "Haber:"
+
+#~ msgid "Saldo:"
+#~ msgstr "Saldo:"
+
+#~ msgid "menuVentana"
+#~ msgstr "menuVentana"

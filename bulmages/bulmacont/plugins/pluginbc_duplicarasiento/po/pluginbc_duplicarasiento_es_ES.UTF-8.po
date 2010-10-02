@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-11-27 11:30+0100\n"
+"POT-Creation-Date: 2010-09-23 18:53+0200\n"
 "PO-Revision-Date: 2009-11-27 11:30+0100\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -36,6 +36,10 @@ msgstr "Asiento inicial:"
 #: ui_bcasientoduplicarbase.h:234
 msgid "Destino:"
 msgstr "Destino:"
+
+#: pluginbc_duplicarasiento.cpp:44 pluginbc_duplicarasiento.cpp:45
+msgid "Duplicar Asiento"
+msgstr "Duplicar asiento"
 
 #: ui_bcasientoduplicarbase.h:229
 msgid "Duplicar Asientos"

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-10-21 10:19+0200\n"
+"POT-Creation-Date: 2010-09-23 18:09+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -114,11 +114,18 @@ msgstr ""
 "#-#-#-#-#  pluginabrevs.pot (PACKAGE VERSION)  #-#-#-#-#\n"
 "#-#-#-#-#  bulmages_suite.pot (PACKAGE VERSION)  #-#-#-#-#\n"
 
-#: pluginbl_clipboard.cpp:114
-msgid "Pegar desde Hoja de Calculo"
-msgstr "Pegar desde Hoja de Calculo"
+#: pluginbl_clipboard.cpp:238
+msgid "Actualizacion completada con exito."
+msgstr ""
 
-#: pluginbl_clipboard.cpp:102
+#: pluginbl_clipboard.cpp:109 pluginbl_clipboard.cpp:130
+msgid "Actualizar desde hoja de calculo"
+msgstr ""
+
+#: pluginbl_clipboard.cpp:107 pluginbl_clipboard.cpp:124
 #, fuzzy
 msgid "Pegar desde hoja de calculo"
 msgstr "Pegar desde Hoja de Calculo"
+
+#~ msgid "Pegar desde Hoja de Calculo"
+#~ msgstr "Pegar desde Hoja de Calculo"

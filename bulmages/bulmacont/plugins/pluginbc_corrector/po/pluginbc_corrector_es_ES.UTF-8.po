@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-10-21 10:25+0200\n"
+"POT-Creation-Date: 2010-09-23 18:53+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -114,9 +114,13 @@ msgstr ""
 "#-#-#-#-#  pluginabrevs.pot (PACKAGE VERSION)  #-#-#-#-#\n"
 "#-#-#-#-#  bulmages_suite.pot (PACKAGE VERSION)  #-#-#-#-#\n"
 
-#: pluginbc_corrector.cpp:71
+#: pluginbc_corrector.cpp:81
 msgid "&Corrector"
 msgstr "&Corrector"
+
+#: pluginbc_corrector.cpp:75
+msgid "&Ver"
+msgstr "&Ver"
 
 #: ui_confreglasbase.h:284
 msgid "Apunte con Cuenta"
@@ -150,7 +154,7 @@ msgstr "Configurar"
 msgid "Corrector"
 msgstr "Corrector"
 
-#: pluginbc_corrector.cpp:75
+#: pluginbc_corrector.cpp:85
 msgid ""
 "Corrector.\n"
 "\n"
@@ -168,15 +172,15 @@ msgstr "Corregir"
 msgid "Deben existir registros que cumplan esta condicion en el periodo"
 msgstr "Deben existir registros que cumplan esta condicion en el periodo"
 
-#: pluginbc_corrector.cpp:74
+#: pluginbc_corrector.cpp:84
 msgid "Muestra/oculta el corrector"
 msgstr "Muestra/oculta el corrector"
 
-#: correctorwidget.cpp:210
+#: correctorwidget.cpp:211
 msgid "No se puede acceder al error"
 msgstr "No se puede acceder al error"
 
-#: correctorwidget.cpp:210
+#: correctorwidget.cpp:211
 msgid "Opcion no implementada"
 msgstr "Opcion no implementada"
 
@@ -207,3 +211,7 @@ msgstr "mayor"
 #: ui_confreglasbase.h:289
 msgid "menor"
 msgstr "menor"
+
+#: pluginbc_corrector.cpp:71
+msgid "menuVer"
+msgstr ""

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-12-28 00:56+0100\n"
+"POT-Creation-Date: 2010-09-23 18:53+0200\n"
 "PO-Revision-Date: 2009-12-28 00:56+0100\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -16,10 +16,6 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-
-#: pluginbc_cuentasanuales.cpp:99
-msgid "&Asiento"
-msgstr ""
 
 #: ui_bccuentasanualesimprimirbase.h:203
 msgid "&Cancelar"
@@ -29,11 +25,15 @@ msgstr "&Cancel·la"
 msgid "&Cuentas Anuales"
 msgstr "&Comptes anuals"
 
+#: pluginbc_cuentasanuales.cpp:99
+msgid "&Listados"
+msgstr "&Llistats"
+
 #: ui_bccuentasanualesimprimirbase.h:202
 msgid "Acep&tar"
 msgstr "Accep&ta"
 
-#: bccuentasanualesview.cpp:122
+#: bccuentasanualesview.cpp:123
 msgid "Archivo"
 msgstr "Fitxer"
 
@@ -75,5 +75,5 @@ msgid "Segundo Periodo"
 msgstr "Primer període"
 
 #: pluginbc_cuentasanuales.cpp:95
-msgid "menuAsiento"
+msgid "menuListados"
 msgstr ""

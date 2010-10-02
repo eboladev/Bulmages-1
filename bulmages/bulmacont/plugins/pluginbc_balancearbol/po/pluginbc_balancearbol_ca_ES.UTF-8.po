@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-10-21 10:25+0200\n"
+"POT-Creation-Date: 2010-09-23 18:54+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -27,98 +27,97 @@ msgstr "Balanç jeràrquic"
 msgid "&Ver"
 msgstr "&Veure"
 
-#: ui_balancetreebase.h:406 ui_balancetreebase.h:409
+#: ui_balancetreebase.h:398 ui_balancetreebase.h:401
 msgid "Actualizar"
 msgstr "Actualitza"
 
-#: balance1view.cpp:65
+#: balance1view.cpp:64
 #, fuzzy
-msgid "Balance Jerarquico"
+msgid "Balance jerarquico"
 msgstr "Balanç jeràrquic"
 
-#: ui_balancetreebase.h:390
-#, fuzzy
-msgid "Balance jerarquico de Cuentas"
-msgstr "Balanç jeràrquic"
+#: ui_balancetreebase.h:382
+msgid "Balance jerarquico de cuentas"
+msgstr ""
 
-#: balance1view.cpp:84
+#: balance1view.cpp:98
 msgid "Cuenta"
 msgstr "Compte"
 
-#: ui_balancetreebase.h:419
+#: balance1view.cpp:80 ui_balancetreebase.h:411
 #, fuzzy
 msgid "Cuenta final:"
 msgstr "Data final:"
 
-#: ui_balancetreebase.h:422
+#: balance1view.cpp:72 ui_balancetreebase.h:414
 #, fuzzy
 msgid "Cuenta inicial:"
 msgstr "Data inicial:"
 
-#: balance1view.cpp:87
+#: balance1view.cpp:101
 msgid "Debe"
 msgstr "Deure"
 
-#: balance1view.cpp:90
+#: balance1view.cpp:104
 #, fuzzy
 msgid "Debe ejercicio"
 msgstr "Exercici"
 
-#: balance1view.cpp:279 balance1view.cpp:332
+#: balance1view.cpp:292 balance1view.cpp:346
 #, fuzzy
 msgid "Error con la base de datos"
 msgstr "Error al fer una consulta a la base de dades."
 
-#: ui_balancetreebase.h:413 ui_balancetreebase.h:416
+#: ui_balancetreebase.h:405 ui_balancetreebase.h:408
 #, fuzzy
 msgid "Exportar a Hoja de Calculo"
 msgstr "Exporta dades"
 
-#: ui_balancetreebase.h:420
+#: ui_balancetreebase.h:412
 msgid "Fecha final:"
 msgstr "Data final:"
 
-#: ui_balancetreebase.h:421
+#: ui_balancetreebase.h:413
 msgid "Fecha inicial:"
 msgstr "Data inicial:"
 
-#: ui_balancetreebase.h:399 ui_balancetreebase.h:402
+#: ui_balancetreebase.h:391 ui_balancetreebase.h:394
 msgid "Filtrar"
 msgstr "Filtrar"
 
-#: balance1view.cpp:88
+#: balance1view.cpp:102
 msgid "Haber"
 msgstr "Haver"
 
-#: balance1view.cpp:91
+#: balance1view.cpp:105
 #, fuzzy
 msgid "Haber ejercicio"
 msgstr "Exercici"
 
-#: ui_balancetreebase.h:392 ui_balancetreebase.h:395
+#: ui_balancetreebase.h:384 ui_balancetreebase.h:387
 msgid "Imprimir"
 msgstr "Imprimeix"
 
-#: balance1view.cpp:321
+#: balance1view.cpp:334
 #, fuzzy
 msgid "Introduzca la Fecha Final"
 msgstr "Data"
 
-#: balance1view.cpp:316
+#: balance1view.cpp:329
 #, fuzzy
 msgid "Introduzca la Fecha Inicial"
 msgstr "Data inicial"
 
-#: ui_balancetreebase.h:424
+#: ui_balancetreebase.h:416
 #, fuzzy
 msgid "Jerarquico"
 msgstr "Balanç jeràrquic"
 
-#: ui_balancetreebase.h:423
+#: ui_balancetreebase.h:415
 msgid "Nivel:"
 msgstr ""
 
-#: balance1view.cpp:85
+#: balance1view.cpp:99
 msgid "Nombre de la cuenta"
 msgstr "Nom del compte"
 
@@ -131,60 +130,60 @@ msgstr "Actualitza balanç"
 msgid "Podra disponer de la informacion del balance"
 msgstr ""
 
-#: balance1view.cpp:89
+#: balance1view.cpp:103
 msgid "Saldo"
 msgstr "Saldo"
 
-#: balance1view.cpp:86
+#: balance1view.cpp:100
 msgid "Saldo anterior"
 msgstr "Saldo anterior"
 
-#: ui_balancetreebase.h:425
+#: ui_balancetreebase.h:417
 #, fuzzy
 msgid "Saldo anterior:"
 msgstr "Saldo anterior"
 
-#: balance1view.cpp:92
+#: balance1view.cpp:106
 #, fuzzy
 msgid "Saldo ejercicio"
 msgstr "Saldo anterior"
 
-#: ui_balancetreebase.h:428
+#: ui_balancetreebase.h:420
 #, fuzzy
 msgid "Saldo:"
 msgstr "Saldo"
 
-#: ui_balancetreebase.h:426
+#: ui_balancetreebase.h:418
 #, fuzzy
 msgid "Total Debe:"
 msgstr "Totals:"
 
-#: ui_balancetreebase.h:427
+#: ui_balancetreebase.h:419
 #, fuzzy
 msgid "Total Haber:"
 msgstr "Total Haver:"
 
-#: balance1view.cpp:562
+#: balance1view.cpp:579
 msgid "Ver Diario (este anyo)"
 msgstr "Veure diari (aquest any)"
 
-#: balance1view.cpp:560
+#: balance1view.cpp:577
 msgid "Ver Diario (este dia)"
 msgstr "Veure diari (aquest dia)"
 
-#: balance1view.cpp:561
+#: balance1view.cpp:578
 msgid "Ver Diario (este mes)"
 msgstr "Veure diari (aquest mes)"
 
-#: balance1view.cpp:566
+#: balance1view.cpp:583
 msgid "Ver extracto (este anyo)"
 msgstr "Ver extracte (est any)"
 
-#: balance1view.cpp:564
+#: balance1view.cpp:581
 msgid "Ver extracto (este dia)"
 msgstr "Veure extracte (aquest dia)"
 
-#: balance1view.cpp:565
+#: balance1view.cpp:582
 msgid "Ver extracto (este mes)"
 msgstr "Veure extracte (aquest mes)"
 
@@ -195,3 +194,11 @@ msgstr "Finestre"
 
 #~ msgid "1"
 #~ msgstr "1"
+
+#, fuzzy
+#~ msgid "Balance Jerarquico"
+#~ msgstr "Balanç jeràrquic"
+
+#, fuzzy
+#~ msgid "Balance jerarquico de Cuentas"
+#~ msgstr "Balanç jeràrquic"

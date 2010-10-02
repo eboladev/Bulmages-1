@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-12-30 00:06+0100\n"
+"POT-Creation-Date: 2010-09-23 18:53+0200\n"
 "PO-Revision-Date: 2009-12-30 00:06+0100\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: ui_bcamortizacionbase.h:680
+#: ui_bcamortizacionbase.h:675
 msgid "&Aceptar"
 msgstr "&Accepta"
 
@@ -25,19 +25,19 @@ msgstr "&Accepta"
 msgid "&Amortizaciones"
 msgstr "&Amortitzacions"
 
-#: ui_bcamortizacionbase.h:674
+#: ui_bcamortizacionbase.h:669
 msgid "&Calcular"
 msgstr "&Calcula"
 
-#: ui_bcamortizacionbase.h:681
+#: ui_bcamortizacionbase.h:676
 msgid "&Cancelar"
 msgstr "&Cancel·la"
 
-#: ui_bcamortizacionbase.h:670
+#: ui_bcamortizacionbase.h:665
 msgid "&Decremental"
 msgstr "&Decremental"
 
-#: ui_bcamortizacionbase.h:671
+#: ui_bcamortizacionbase.h:666
 msgid "&Incremental"
 msgstr "&incremental"
 
@@ -45,65 +45,65 @@ msgstr "&incremental"
 msgid "&Ver"
 msgstr "&Veure"
 
-#: bcamortizacionview.cpp:70
+#: bcamortizacionview.cpp:86
 msgid "Agrupacion"
 msgstr "Agrupació"
 
-#: ui_bcamortizacionbase.h:653
+#: ui_bcamortizacionbase.h:648
 #, fuzzy
 msgid "Agrupacion:"
 msgstr "Agrupació"
 
-#: ui_bcamortizacionbase.h:675
+#: ui_bcamortizacionbase.h:670
 #, fuzzy
 msgid "Alt+C"
 msgstr "Alt+I"
 
-#: ui_bcamortizacionbase.h:672
+#: ui_bcamortizacionbase.h:667
 #, fuzzy
 msgid "Alt+I"
 msgstr "Alt+I"
 
-#: ui_bcamortizacionbase.h:679
+#: ui_bcamortizacionbase.h:674
 #, fuzzy
 msgid "Amor&tizacion"
 msgstr "Amortització"
 
-#: bcamortizacionview.cpp:55 ui_bcamortizacionbase.h:635
+#: bcamortizacionview.cpp:71 ui_bcamortizacionbase.h:630
 msgid "Amortizacion"
 msgstr "Amortització"
 
-#: ui_bcamortizacionbase.h:677
+#: ui_bcamortizacionbase.h:672
 #, fuzzy
 msgid "Amortizado:"
 msgstr "Amortització"
 
-#: bcamortizacionview.cpp:246 bcamortizacionview.cpp:273
-#: bcamortizacionview.cpp:301 bcamortizacionview.cpp:332
-#: ui_bcamortizacionbase.h:658
+#: bcamortizacionview.cpp:262 bcamortizacionview.cpp:289
+#: bcamortizacionview.cpp:317 bcamortizacionview.cpp:348
+#: ui_bcamortizacionbase.h:653
 msgid "Anual"
 msgstr "Anual"
 
-#: ui_bcamortizacionbase.h:645 ui_bcamortizacionbase.h:648
+#: ui_bcamortizacionbase.h:640 ui_bcamortizacionbase.h:643
 #: ui_bcamortizacionlistbase.h:143 ui_bcamortizacionlistbase.h:146
 #: ui_bcamortizacionlistbase.h:151 ui_bcamortizacionlistbase.h:154
 msgid "Borrar amortizacion"
 msgstr "Esborra amortizació"
 
-#: bcamortizacionview.cpp:386 bcamortizacionview.cpp:427
-#: bcamortizacionview.cpp:436 bcamortizacionview.cpp:443
+#: bcamortizacionview.cpp:402 bcamortizacionview.cpp:443
+#: bcamortizacionview.cpp:452 bcamortizacionview.cpp:459
 msgid "Borrar asiento"
 msgstr "Esborra assentament"
 
-#: bcamortizacionview.cpp:417
+#: bcamortizacionview.cpp:433
 msgid "Borrar cuota"
 msgstr "Esborra quota"
 
-#: bcamortizacionview.cpp:80
+#: bcamortizacionview.cpp:96
 msgid "Cantidad"
 msgstr "Quantitat"
 
-#: ui_bcamortizacionbase.h:651 ui_bcamortizacionlistbase.h:149
+#: ui_bcamortizacionbase.h:646 ui_bcamortizacionlistbase.h:149
 msgid "Ctrl+D"
 msgstr "Ctrl+D"
 
@@ -111,38 +111,46 @@ msgstr "Ctrl+D"
 msgid "Ctrl+N"
 msgstr "Ctrl+N"
 
-#: ui_bcamortizacionbase.h:643
+#: ui_bcamortizacionbase.h:638
 msgid "Ctrl+S"
 msgstr "Ctrl+S"
 
-#: ui_bcamortizacionbase.h:664
+#: bcamortizacionview.cpp:53
+msgid "Cuenta Activo:"
+msgstr ""
+
+#: bcamortizacionview.cpp:63
+msgid "Cuenta de Amortizacion:"
+msgstr ""
+
+#: ui_bcamortizacionbase.h:659
 #, fuzzy
 msgid "Cuenta de activo:"
 msgstr "Compte d'actiu:"
 
-#: ui_bcamortizacionbase.h:667
+#: ui_bcamortizacionbase.h:662
 #, fuzzy
 msgid "Cuenta de amortizacion:"
 msgstr "Id compte d'amortizació"
 
-#: ui_bcamortizacionbase.h:676
+#: ui_bcamortizacionbase.h:671
 #, fuzzy
 msgid "Cuotas:"
 msgstr "Paraula de pas:"
 
-#: bcamortizacionview.cpp:59
+#: bcamortizacionview.cpp:75
 msgid "Descripcion de la amortizacion"
 msgstr "Descripció de l'amortització"
 
-#: bcamortizacionview.cpp:385 bcamortizacionview.cpp:436
+#: bcamortizacionview.cpp:401 bcamortizacionview.cpp:452
 msgid "Desvincular asiento"
 msgstr "Desvincula assentament"
 
-#: bcamortizacionview.cpp:68
+#: bcamortizacionview.cpp:84
 msgid "Direccion del proveedor"
 msgstr "Direcció del proveïdor"
 
-#: bcamortizacionview.cpp:78
+#: bcamortizacionview.cpp:94
 msgid "Ejercicio"
 msgstr "Exercici"
 
@@ -150,7 +158,7 @@ msgstr "Exercici"
 msgid "Error al borrar la amortizacion"
 msgstr "Error al esborrar amortització"
 
-#: bcamortizacionview.cpp:211
+#: bcamortizacionview.cpp:227
 msgid "Error en la carga de la amortizacion"
 msgstr "Error en la càrrega de l'amortizació"
 
@@ -162,11 +170,11 @@ msgstr "F5"
 msgid "Fecha 1 cuota"
 msgstr "Data de la 1a quota"
 
-#: bcamortizacionview.cpp:61
+#: bcamortizacionview.cpp:77
 msgid "Fecha 1a cuota"
 msgstr "Data de la 1a quota"
 
-#: ui_bcamortizacionbase.h:663
+#: ui_bcamortizacionbase.h:658
 #, fuzzy
 msgid "Fecha 1ª cuota:"
 msgstr "Data de la 1a quota"
@@ -175,50 +183,50 @@ msgstr "Data de la 1a quota"
 msgid "Fecha compra"
 msgstr "Data de compra"
 
-#: ui_bcamortizacionbase.h:655
+#: ui_bcamortizacionbase.h:650
 #, fuzzy
 msgid "Fecha de compra:"
 msgstr "Data de la compra"
 
-#: bcamortizacionview.cpp:60
+#: bcamortizacionview.cpp:76
 msgid "Fecha de la compra"
 msgstr "Data de la compra"
 
-#: bcamortizacionview.cpp:79
+#: bcamortizacionview.cpp:95
 msgid "Fecha prevista"
 msgstr "Data prevista"
 
-#: bcamortizacionview.cpp:381 bcamortizacionview.cpp:455
+#: bcamortizacionview.cpp:397 bcamortizacionview.cpp:471
 msgid "Generar asiento"
 msgstr "Genera assentament"
 
-#: ui_bcamortizacionbase.h:637 ui_bcamortizacionbase.h:640
+#: ui_bcamortizacionbase.h:632 ui_bcamortizacionbase.h:635
 #, fuzzy
 msgid "Guardar amortizacion"
 msgstr "Id amortizació"
 
-#: bcamortizacionlistview.cpp:47 bcamortizacionview.cpp:71
-#: bcamortizacionview.cpp:83
+#: bcamortizacionview.cpp:87 bcamortizacionview.cpp:99
+#: bcamortizacionlistview.cpp:47
 msgid "Id amortizacion"
 msgstr "Id amortizació"
 
-#: bcamortizacionview.cpp:81
+#: bcamortizacionview.cpp:97
 msgid "Id asiento"
 msgstr "Id assentament"
 
-#: bcamortizacionview.cpp:73
+#: bcamortizacionview.cpp:89
 msgid "Id cuenta amortizacion"
 msgstr "Id compte d'amortizació"
 
-#: bcamortizacionview.cpp:82
+#: bcamortizacionview.cpp:98
 msgid "Id lineas de amortizacion"
 msgstr "Id línies d'amortització"
 
-#: bcamortizacionview.cpp:72
+#: bcamortizacionview.cpp:88
 msgid "Identificador"
 msgstr "Identificador"
 
-#: ui_bcamortizacionbase.h:673
+#: ui_bcamortizacionbase.h:668
 #, fuzzy
 msgid "Li&neal"
 msgstr "Línia"
@@ -228,22 +236,22 @@ msgstr "Línia"
 msgid "Listado de amortizaciones"
 msgstr "Id línies d'amortització"
 
-#: bcamortizacionview.cpp:248 bcamortizacionview.cpp:275
-#: bcamortizacionview.cpp:303 bcamortizacionview.cpp:334
-#: ui_bcamortizacionbase.h:661
+#: bcamortizacionview.cpp:264 bcamortizacionview.cpp:291
+#: bcamortizacionview.cpp:319 bcamortizacionview.cpp:350
+#: ui_bcamortizacionbase.h:656
 msgid "Mensual"
 msgstr "Mensual"
 
-#: bcamortizacionview.cpp:65
+#: bcamortizacionview.cpp:81
 msgid "Metodo"
 msgstr "Mètode"
 
-#: ui_bcamortizacionbase.h:668
+#: ui_bcamortizacionbase.h:663
 #, fuzzy
 msgid "Metodo:"
 msgstr "Mètode"
 
-#: bcamortizacionview.cpp:66
+#: bcamortizacionview.cpp:82
 msgid "NIF del proveedor"
 msgstr "NIF del proveïdor"
 
@@ -251,15 +259,15 @@ msgstr "NIF del proveïdor"
 msgid "Nombre"
 msgstr "Nom"
 
-#: bcamortizacionview.cpp:58
+#: bcamortizacionview.cpp:74
 msgid "Nombre de la amortizacion"
 msgstr "Nom de l'amortització"
 
-#: bcamortizacionview.cpp:67
+#: bcamortizacionview.cpp:83
 msgid "Nombre del proveedor"
 msgstr "Nom del proveïdor"
 
-#: ui_bcamortizacionbase.h:652
+#: ui_bcamortizacionbase.h:647
 msgid "Nombre:"
 msgstr "Nom:"
 
@@ -272,25 +280,25 @@ msgstr "Id compte d'amortizació"
 msgid "Num cuotas"
 msgstr "Nombre de quotes"
 
-#: bcamortizacionview.cpp:64
+#: bcamortizacionview.cpp:80
 msgid "Numero de cuotas"
 msgstr "Nombre de quotes"
 
-#: ui_bcamortizacionbase.h:654
+#: ui_bcamortizacionbase.h:649
 #, fuzzy
 msgid "Nº de cuotas:"
 msgstr "Nombre de quotes"
 
-#: ui_bcamortizacionbase.h:678
+#: ui_bcamortizacionbase.h:673
 #, fuzzy
 msgid "Pendiente:"
 msgstr "Pendent:"
 
-#: bcamortizacionview.cpp:63
+#: bcamortizacionview.cpp:79
 msgid "Periodicidad"
 msgstr "Periodicitat"
 
-#: ui_bcamortizacionbase.h:665
+#: ui_bcamortizacionbase.h:660
 #, fuzzy
 msgid "Periodicidad:"
 msgstr "Periodicitat"
@@ -303,36 +311,36 @@ msgstr ""
 msgid "Podra disponer de la informacion de las amortizaciones"
 msgstr ""
 
-#: ui_bcamortizacionbase.h:669
+#: ui_bcamortizacionbase.h:664
 #, fuzzy
 msgid "Porcent&ual"
 msgstr "Percentual"
 
-#: bcamortizacionview.cpp:250 bcamortizacionview.cpp:277
-#: bcamortizacionview.cpp:305 bcamortizacionview.cpp:336
-#: ui_bcamortizacionbase.h:659
+#: bcamortizacionview.cpp:266 bcamortizacionview.cpp:293
+#: bcamortizacionview.cpp:321 bcamortizacionview.cpp:352
+#: ui_bcamortizacionbase.h:654
 msgid "Semestral"
 msgstr "Semestral"
 
-#: bcamortizacionview.cpp:69
+#: bcamortizacionview.cpp:85
 msgid "Telefono del proveedor"
 msgstr "Telèfon del proveïdor"
 
-#: bcamortizacionview.cpp:252 bcamortizacionview.cpp:279
-#: bcamortizacionview.cpp:307 bcamortizacionview.cpp:338
-#: ui_bcamortizacionbase.h:660
+#: bcamortizacionview.cpp:268 bcamortizacionview.cpp:295
+#: bcamortizacionview.cpp:323 bcamortizacionview.cpp:354
+#: ui_bcamortizacionbase.h:655
 msgid "Trimestral"
 msgstr "Trimestral"
 
-#: ui_bcamortizacionbase.h:666
+#: ui_bcamortizacionbase.h:661
 msgid "Valor de compra:"
 msgstr "Valor de compra:"
 
-#: bcamortizacionview.cpp:62
+#: bcamortizacionview.cpp:78
 msgid "Valor de la compra"
 msgstr "Valor de la compra"
 
-#: bcamortizacionview.cpp:383 bcamortizacionview.cpp:427
+#: bcamortizacionview.cpp:399 bcamortizacionview.cpp:443
 msgid "Ver asiento"
 msgstr "Veure assentament"
 

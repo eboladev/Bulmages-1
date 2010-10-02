@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-10-21 10:25+0200\n"
+"POT-Creation-Date: 2010-09-23 18:53+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,9 +18,13 @@ msgstr ""
 "#-#-#-#-#  bulmalib_ca_ES.UTF-8.po (PACKAGE VERSION)  #-#-#-#-#\n"
 "X-Generator: Translate Toolkit 1.1.1\n"
 
-#: pluginbc_corrector.cpp:71
+#: pluginbc_corrector.cpp:81
 msgid "&Corrector"
 msgstr "&Corrector"
+
+#: pluginbc_corrector.cpp:75
+msgid "&Ver"
+msgstr "&Veure"
 
 #: ui_confreglasbase.h:284
 #, fuzzy
@@ -59,7 +63,7 @@ msgstr "Arranjament"
 msgid "Corrector"
 msgstr "Corrector"
 
-#: pluginbc_corrector.cpp:75
+#: pluginbc_corrector.cpp:85
 msgid ""
 "Corrector.\n"
 "\n"
@@ -78,16 +82,16 @@ msgid "Deben existir registros que cumplan esta condicion en el periodo"
 msgstr ""
 "Cal que existeixin registres que compleixin aquesta condició en el període"
 
-#: pluginbc_corrector.cpp:74
+#: pluginbc_corrector.cpp:84
 msgid "Muestra/oculta el corrector"
 msgstr ""
 
-#: correctorwidget.cpp:210
+#: correctorwidget.cpp:211
 #, fuzzy
 msgid "No se puede acceder al error"
 msgstr "No es pot tancar la finestra a causa d'un error"
 
-#: correctorwidget.cpp:210
+#: correctorwidget.cpp:211
 msgid "Opcion no implementada"
 msgstr ""
 
@@ -120,4 +124,8 @@ msgstr "Maig"
 
 #: ui_confreglasbase.h:289
 msgid "menor"
+msgstr ""
+
+#: pluginbc_corrector.cpp:71
+msgid "menuVer"
 msgstr ""

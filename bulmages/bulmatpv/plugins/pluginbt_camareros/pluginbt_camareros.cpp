@@ -19,6 +19,9 @@
  ***************************************************************************/
 
 #include "pluginbt_camareros.h"
+
+#include "bltoolbutton.h"
+
 #include "btcompany.h"
 #include "blplugins.h"
 #include "btticket.h"
@@ -30,6 +33,7 @@
 
 #include "camareros.h"
 #include "trabajadores.h"
+
 
 
 ///
@@ -57,6 +61,8 @@ int BtCompany_createMainWindows_Post ( BtCompany *etpv )
     Camareros *camareros = new Camareros(etpv, etpv);
 //    camareros->setIcon ( QIcon ( g_confpr->valor ( CONF_PROGDATA ) + "icons/table.svg" ) );
 
+    BlToolButton *boton = new BlToolButton(etpv, etpv);
+
 
     // ============ Pruebas con abrevs
     QFrame *fr = g_main->findChild<QFrame *> ( "mui_frameabrevs" );
@@ -69,6 +75,7 @@ int BtCompany_createMainWindows_Post ( BtCompany *etpv )
             m_hboxLayout1->setObjectName ( QString::fromUtf8 ( "hboxLayout1" ) );
         } // end if
         m_hboxLayout1->addWidget ( camareros );
+	m_hboxLayout1->addWidget (boton);
     } // end if
 
     Trabajadores *trab = new Trabajadores ( etpv, 0 );
@@ -76,4 +83,8 @@ int BtCompany_createMainWindows_Post ( BtCompany *etpv )
 
 
     return 0;
+}
+
+int BlToolButton_released(BlToolButton *bot) {
+  blMsgInfo("funciona");
 }

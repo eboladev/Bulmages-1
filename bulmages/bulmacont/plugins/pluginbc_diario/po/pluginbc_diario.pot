@@ -8,45 +8,13 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-10-30 16:10+0100\n"
+"POT-Creation-Date: 2010-09-23 18:22+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
-
-#: bcdiarioview.cpp:53 ui_bcdiariobase.h:337
-msgid "Diario"
-msgstr ""
-
-#: bcdiarioview.cpp:158
-msgid "Guardar Libro Diario"
-msgstr ""
-
-#: bcdiarioview.cpp:160
-msgid "Diarios (*.txt)"
-msgstr ""
-
-#: pluginbc_diario.cpp:88
-msgid "menuVentana"
-msgstr ""
-
-#: pluginbc_diario.cpp:92
-msgid "&Ver"
-msgstr ""
-
-#: pluginbc_diario.cpp:96
-msgid "&Libro Diario"
-msgstr ""
-
-#: pluginbc_diario.cpp:97
-msgid "Permite ver el diario"
-msgstr ""
-
-#: pluginbc_diario.cpp:98
-msgid "Podra disponer de la informacion del diario"
-msgstr ""
 
 #: bcdiariosubform.cpp:35
 msgid "idasiento"
@@ -162,6 +130,42 @@ msgstr ""
 
 #: bcdiariosubform.cpp:100 bcdiariosubform.cpp:119
 msgid "Mostrar extracto (ano)"
+msgstr ""
+
+#: bcdiarioview.cpp:52 ui_bcdiariobase.h:337
+msgid "Diario"
+msgstr ""
+
+#: bcdiarioview.cpp:59
+msgid "Contrapartida:"
+msgstr ""
+
+#: bcdiarioview.cpp:165
+msgid "Guardar Libro Diario"
+msgstr ""
+
+#: bcdiarioview.cpp:167
+msgid "Diarios (*.txt)"
+msgstr ""
+
+#: pluginbc_diario.cpp:89
+msgid "menuVer"
+msgstr ""
+
+#: pluginbc_diario.cpp:93
+msgid "&Ver"
+msgstr ""
+
+#: pluginbc_diario.cpp:97
+msgid "&Libro Diario"
+msgstr ""
+
+#: pluginbc_diario.cpp:98
+msgid "Permite ver el diario"
+msgstr ""
+
+#: pluginbc_diario.cpp:99
+msgid "Podra disponer de la informacion del diario"
 msgstr ""
 
 #: ui_bcdiarioprintbase.h:149

@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-10-21 10:18+0200\n"
+"POT-Creation-Date: 2010-09-23 18:08+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -12,7 +12,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Translate Toolkit 1.1.1\n"
 
-#: ui_blsubformbase.h:615
+#: ui_blsubformbase.h:661
 #, fuzzy
 msgid "!Opcion reservada a expertos!"
 msgstr "¡Option résérvée aux experts!"
@@ -22,12 +22,12 @@ msgstr "¡Option résérvée aux experts!"
 msgid "&Borrar"
 msgstr "Éraser"
 
-#: ui_blcompanydialogbase.h:203 blform.cpp:374 blcountryview.cpp:118
+#: ui_blcompanydialogbase.h:203 blform.cpp:391 blcountryview.cpp:118
 #: blcountryview.cpp:225
 msgid "&Cancelar"
 msgstr "&Cancéler"
 
-#: ui_blerrordialogbase.h:114 ui_blsubformbase.h:619
+#: ui_blerrordialogbase.h:114 ui_blsubformbase.h:665
 msgid "&Cerrar"
 msgstr "&Fermer"
 
@@ -39,8 +39,8 @@ msgstr "&Fermer le programme"
 msgid "&Cierra el programa"
 msgstr "&Fermer le programme"
 
-#: blfunctions.cpp:570 blfunctions.cpp:599 blfunctions.cpp:609
-#: blfunctions.cpp:619
+#: blfunctions.cpp:579 blfunctions.cpp:608 blfunctions.cpp:618
+#: blfunctions.cpp:628
 msgid "&Continuar"
 msgstr "&Continuer"
 
@@ -57,15 +57,15 @@ msgstr "&Entrer"
 msgid "&Guardar"
 msgstr "Garder"
 
-#: blform.cpp:374
+#: blform.cpp:391
 msgid "&No"
 msgstr "&Non"
 
-#: blfunctions.cpp:571
+#: blfunctions.cpp:580
 msgid "&Omitir"
 msgstr "&Omettre"
 
-#: blform.cpp:374
+#: blform.cpp:391
 msgid "&Si"
 msgstr "&Oui"
 
@@ -73,23 +73,23 @@ msgstr "&Oui"
 msgid "&Validar"
 msgstr "&Valider"
 
-#: ui_blformlistfilterbase.h:133
+#: ui_blformlistfilterbase.h:154
 msgid "<"
 msgstr ""
 
-#: ui_blformlistfilterbase.h:135
+#: ui_blformlistfilterbase.h:156
 msgid "<="
 msgstr ""
 
-#: blimportexport.cpp:1902
+#: blimportexport.cpp:1910
 msgid "<HR><B>Tratando el cliente "
 msgstr "<HR><B>Traîtant le cliente "
 
-#: blimportexport.cpp:1915
+#: blimportexport.cpp:1952
 msgid "<LI> El cliente no existe, se debe hacer una insercion de este</LI>\n"
 msgstr "<LI>Le client n'éxiste pas, ons doit faire une inserction de ce</LI>\n"
 
-#: blimportexport.cpp:1910
+#: blimportexport.cpp:1918
 msgid "<LI> El cliente ya existe se pueden hacer modificaciones</LI>\n"
 msgstr "<LI>Le client existe déjà, on peut faire des modifications</LI>\n"
 
@@ -117,15 +117,15 @@ msgstr "<LI>Términé</LI>\n"
 msgid "<LI>Ya hay una cuenta con el codigo "
 msgstr "<LI>Il y a déjà une compte contre le code"
 
-#: ui_blformlistfilterbase.h:131
+#: ui_blformlistfilterbase.h:152
 msgid "="
 msgstr ""
 
-#: ui_blformlistfilterbase.h:132
+#: ui_blformlistfilterbase.h:153
 msgid ">"
 msgstr ""
 
-#: ui_blformlistfilterbase.h:134
+#: ui_blformlistfilterbase.h:155
 msgid ">="
 msgstr ""
 
@@ -137,23 +137,23 @@ msgstr "Actualiser liste"
 msgid "Actualizar Listado de Empresas"
 msgstr "Actualiser liste d'entreprises"
 
-#: blsubform.cpp:2585
+#: blsubform.cpp:2984
 msgid "Ajustar altura"
 msgstr "Ajuster hauteur"
 
-#: blsubform.cpp:2588
+#: blsubform.cpp:2989
 msgid "Ajustar alturas"
 msgstr "Ajuster hauteur"
 
-#: blsubform.cpp:2584 bltreewidget.cpp:71
+#: blsubform.cpp:2982 bltreewidget.cpp:71
 msgid "Ajustar columa"
 msgstr "Ajuster colonne"
 
-#: blsubform.cpp:2587 bltreewidget.cpp:74
+#: blsubform.cpp:2987 bltreewidget.cpp:74
 msgid "Ajustar columnas"
 msgstr "Ajuster colonne"
 
-#: blimportexport.cpp:2045
+#: blimportexport.cpp:2119
 #, fuzzy
 msgid "Almacen"
 msgstr "<LI>Magasin<B>"
@@ -166,11 +166,15 @@ msgstr "Annuel"
 msgid "Anyo"
 msgstr "Année"
 
-#: ui_blsubformbase.h:618
+#: ui_blsubformbase.h:664
 msgid "Aplicar"
 msgstr "Apliquer"
 
-#: blimportexport.cpp:1471
+#: ui_blformlistfilterbase.h:172 ui_blformlistfilterbase.h:175
+msgid "Aplicar el filtro"
+msgstr ""
+
+#: blimportexport.cpp:1479
 msgid "Application name"
 msgstr "Nom d'application"
 
@@ -178,12 +182,12 @@ msgstr "Nom d'application"
 msgid "Archivo"
 msgstr "Archive"
 
-#: blimportexport.cpp:2208
+#: blimportexport.cpp:2282
 #, fuzzy
 msgid "Articulo"
 msgstr "<P>Article<B>"
 
-#: blfunctions.cpp:608
+#: blfunctions.cpp:617
 msgid "Aviso del programa"
 msgstr "Avis du programme"
 
@@ -191,7 +195,7 @@ msgstr "Avis du programme"
 msgid "Bienal"
 msgstr "Biannuel"
 
-#: ui_blsearchwidgetbase.h:103
+#: ui_blsearchwidgetbase.h:106
 msgid "BlSearchWidget"
 msgstr ""
 
@@ -199,7 +203,7 @@ msgstr ""
 msgid "BlTextEditDelegate::eventFilter Se ha pulsado return"
 msgstr ""
 
-#: blform.cpp:342 blformlist.cpp:388
+#: blform.cpp:355 blformlist.cpp:390
 msgid "Borrar"
 msgstr "Éraser"
 
@@ -208,7 +212,7 @@ msgstr "Éraser"
 msgid "Borrar pais"
 msgstr "Éraser"
 
-#: blsubform.cpp:2580
+#: blsubform.cpp:2977
 msgid "Borrar registro"
 msgstr "Éraser registre"
 
@@ -221,7 +225,7 @@ msgstr ""
 msgid "Cancelar"
 msgstr "&Cancéler"
 
-#: blsubform.cpp:1237
+#: blsubform.cpp:1344
 #, fuzzy
 msgid "Cargando SubFormulario "
 msgstr "Configuration Subformulaires"
@@ -247,15 +251,15 @@ msgstr ""
 msgid "Codigo 3 letras:"
 msgstr ""
 
-#: ui_blsubformbase.h:603
+#: ui_blsubformbase.h:649
 msgid "Columnas visibles"
 msgstr "Colonnes visibles"
 
-#: ui_blformlistfilterbase.h:140
+#: ui_blformlistfilterbase.h:161
 msgid "Comienzo del campo"
 msgstr ""
 
-#: ui_blsubformbase.h:599
+#: ui_blsubformbase.h:645
 msgid "Configuracion Subformularios"
 msgstr "Configuration Subformulaires"
 
@@ -263,7 +267,7 @@ msgstr "Configuration Subformulaires"
 msgid "Contrasenya:"
 msgstr "Mot de passe:"
 
-#: blsearchwidget.cpp:575
+#: blsearchwidget.cpp:627
 msgid "Copiar "
 msgstr ""
 
@@ -272,7 +276,7 @@ msgstr ""
 msgid "Ctrl+D"
 msgstr "Ctrl+N"
 
-#: ui_bldatesearchbase.h:85 ui_blsearchwidgetbase.h:105
+#: ui_bldatesearchbase.h:85 ui_blsearchwidgetbase.h:108
 #, fuzzy
 msgid "Ctrl+F"
 msgstr "Ctrl+N"
@@ -286,7 +290,7 @@ msgstr "Ctrl+N"
 msgid "Ctrl+S"
 msgstr "Ctrl+N"
 
-#: ui_blformlistfilterbase.h:139
+#: ui_blformlistfilterbase.h:160
 msgid "Cualquier parte del campo"
 msgstr ""
 
@@ -302,22 +306,22 @@ msgstr ""
 msgid "Datos del pais:"
 msgstr ""
 
-#: blimportexport.cpp:2028
+#: blimportexport.cpp:2102
 #, fuzzy
 msgid "Datos insuficientes para tratar el almacen."
 msgstr "<LI>Données insufitients pour traiter le magasin."
 
-#: blimportexport.cpp:2177
+#: blimportexport.cpp:2251
 #, fuzzy
 msgid "Datos insuficientes para tratar el articulo."
 msgstr "<P>Données insuficients pour traiter l'article.</P>"
 
-#: blimportexport.cpp:2089
+#: blimportexport.cpp:2163
 #, fuzzy
 msgid "Datos insuficientes para tratar la familia."
 msgstr "<P>Données insuficientes pour traiter la famille</P>"
 
-#: blimportexport.cpp:1979
+#: blimportexport.cpp:2053
 #, fuzzy
 msgid "Datos insuficientes para tratar la forma de pago."
 msgstr "<LI>Données insuficientes pour traiter la forme de payement."
@@ -327,53 +331,53 @@ msgstr "<LI>Données insuficientes pour traiter la forme de payement."
 msgid "Debe seleccionar un elemento de la lista"
 msgstr "Vous devez sélectionner un élément"
 
-#: blform.cpp:343
+#: blform.cpp:356
 msgid "Desea eliminar '"
 msgstr "Voulez vouséliminer '"
 
-#: blform.cpp:373 blcountryview.cpp:117 blcountryview.cpp:189
+#: blform.cpp:390 blcountryview.cpp:117 blcountryview.cpp:189
 msgid "Desea guardar los cambios?"
 msgstr "Désirés vous garder les changes?"
 
-#: blformlist.cpp:387
+#: blformlist.cpp:389
 msgid "Editar"
 msgstr "Éditer"
 
-#: ui_blsubformbase.h:616
+#: ui_blsubformbase.h:662
 msgid "Ejecutar consulta"
 msgstr "Éxécuter consulte"
 
-#: blimportexport.cpp:2322 blimportexport.cpp:2551 blimportexport.cpp:2776
-#: blimportexport.cpp:3014
+#: blimportexport.cpp:2396 blimportexport.cpp:2625 blimportexport.cpp:2850
+#: blimportexport.cpp:3088
 #, fuzzy
 msgid "El almacen del presupuesto no existe"
 msgstr "La magasin du bulletin n'éxiste pas<BR>"
 
-#: blimportexport.cpp:2403 blimportexport.cpp:2629 blimportexport.cpp:2867
-#: blimportexport.cpp:3096
+#: blimportexport.cpp:2477 blimportexport.cpp:2703 blimportexport.cpp:2941
+#: blimportexport.cpp:3170
 #, fuzzy
 msgid "El articulo de la linea de presupuesto no existe"
 msgstr "L'article de la ligne du bulletin n'éxiste pas<BR>"
 
-#: blimportexport.cpp:2332 blimportexport.cpp:2561 blimportexport.cpp:2785
-#: blimportexport.cpp:3024
+#: blimportexport.cpp:2406 blimportexport.cpp:2635 blimportexport.cpp:2859
+#: blimportexport.cpp:3098
 #, fuzzy
 msgid "El cliente del presupuesto no existe"
 msgstr "Le client du bulletin n'éxiste pas<BR>"
 
-#: blimportexport.cpp:2352 blimportexport.cpp:2579 blimportexport.cpp:2804
-#: blimportexport.cpp:3044
+#: blimportexport.cpp:2426 blimportexport.cpp:2653 blimportexport.cpp:2878
+#: blimportexport.cpp:3118
 #, fuzzy
 msgid "El empleado del presupuesto no existe"
 msgstr "L'ouvrier du bulletin n'éxiste pas<BR>"
 
-#: blimportexport.cpp:1950
+#: blimportexport.cpp:2024
 #, fuzzy
 msgid "El proveedor no existe, se debe hacer una insercion de este"
 msgstr ""
 "<LI>Le fournisseur n'éxiste pas, ons doit faire une insertion de ce</LI>"
 
-#: blimportexport.cpp:1945
+#: blimportexport.cpp:2019
 #, fuzzy
 msgid "El proveedor ya existe, se pueden hacer modificaciones"
 msgstr "<LI>Le fournisseur éxiste déjà, on peut faire des modifications</LI>"
@@ -382,19 +386,19 @@ msgstr "<LI>Le fournisseur éxiste déjà, on peut faire des modifications</LI>"
 msgid "Empresas disponibles:"
 msgstr "Entreprise disponibles:"
 
-#: blfunctions.cpp:376
+#: blfunctions.cpp:383
 msgid "Error al borrar archivo .ods [ blfunctions->blCreateODS() ]"
 msgstr ""
 
-#: blsubform.cpp:1932
+#: blsubform.cpp:2187
 msgid "Error al borrar. [BlSubForm::borrar]"
 msgstr ""
 
-#: bldb.cpp:872
+#: bldb.cpp:959
 msgid "Error al copiar el archivo RML [ bldb->generaRML() ]"
 msgstr ""
 
-#: bldb.cpp:886
+#: bldb.cpp:973
 msgid "Error al copiar el archivo de logo [ bldb->generaRML() ]"
 msgstr ""
 
@@ -402,28 +406,29 @@ msgstr ""
 msgid "Error al crear el banco"
 msgstr ""
 
-#: blfunctions.cpp:382
+#: blfunctions.cpp:389
 msgid "Error al ejecutar PYTHON [ blfunctions->blCreateODS() ]"
 msgstr ""
 
-#: blfunctions.cpp:321
+#: blfunctions.cpp:328
 msgid ""
-"Error al ejecutar el comando 'sed' [ blfunctions.cpp->blReplaceStringInFile() ]."
+"Error al ejecutar el comando 'sed' [ blfunctions.cpp->blReplaceStringInFile"
+"() ]."
 msgstr ""
 
-#: blfunctions.cpp:409
+#: blfunctions.cpp:418
 msgid "Error al ejecutar el visor de PDF [ blfunctions->blCreateAndLoadPDF() ]"
 msgstr ""
 
-#: blfunctions.cpp:423
+#: blfunctions.cpp:432
 msgid "Error al ejecutar mailsend [ blfunctions->blSendPDFMail() ]"
 msgstr ""
 
-#: blfunctions.cpp:395
+#: blfunctions.cpp:403
 msgid "Error al ejecutar oocalc [ blfunctions->blCreateAndLoadODS() ]"
 msgstr ""
 
-#: blfunctions.cpp:442
+#: blfunctions.cpp:451
 msgid "Error al ejecutar xwininfo [ blfunctions->blWindowId() ]"
 msgstr ""
 
@@ -431,7 +436,7 @@ msgstr ""
 msgid "Error al hacer la consulta con la base de datos."
 msgstr "Erreur faisant la référence avec la base de données."
 
-#: blsubform.cpp:1990
+#: blsubform.cpp:2245
 msgid "Error al intentar borrar"
 msgstr ""
 
@@ -439,23 +444,23 @@ msgstr ""
 msgid "Error al intentar borrar el pais"
 msgstr ""
 
-#: blfunctions.cpp:618
+#: blfunctions.cpp:627
 msgid "Error del programa"
 msgstr "Erreur du progamme"
 
-#: blfunctions.cpp:347
+#: blfunctions.cpp:354
 msgid "Error en FLIP [ blfunctions->blCreatePDF() ]"
 msgstr ""
 
-#: blfunctions.cpp:340
+#: blfunctions.cpp:347
 msgid "Error en PYTHON [ blfunctions->blCreatePDF() ]"
 msgstr ""
 
-#: blfunctions.cpp:357
+#: blfunctions.cpp:364
 msgid "Error en bgtrml2pdf [ blfunctions->blCreatePDF() ]"
 msgstr ""
 
-#: blimportexport.cpp:1471
+#: blimportexport.cpp:1479
 msgid ""
 "Error en el XML.\n"
 "Documento mal formado."
@@ -463,7 +468,7 @@ msgstr ""
 "Érreur dans la XML\n"
 "Document mal formé."
 
-#: blsubform.cpp:1895
+#: blsubform.cpp:2144
 msgid "Error inesperado en el guardado. [BlSubForm::guardar]"
 msgstr ""
 
@@ -471,7 +476,7 @@ msgstr ""
 msgid "Error: usuario y/o contrasenya incorrectos"
 msgstr "Erreur: usuaire et/ou mot de passe incorrects"
 
-#: blsubform.cpp:2502 blsubform.cpp:2516
+#: blsubform.cpp:2829 blsubform.cpp:2843
 msgid "Errr al copiar listado.rml [ BlSubForm->imprimirPDF() ]"
 msgstr ""
 
@@ -479,11 +484,11 @@ msgstr ""
 msgid "Esc"
 msgstr "Esc"
 
-#: ui_blsubformbase.h:612
+#: ui_blsubformbase.h:658
 msgid "Escriba aqui la consulta SQL"
 msgstr "Écriver ici la consulte SQL"
 
-#: blimportexport.cpp:401 blimportexport.cpp:1414
+#: blimportexport.cpp:401 blimportexport.cpp:1422
 msgid "Exportando :"
 msgstr "Éxportant:"
 
@@ -491,20 +496,24 @@ msgstr "Éxportant:"
 msgid "Exportando nueva forma de pago"
 msgstr ""
 
-#: blimportexport.cpp:2106
+#: blgenericcomboboxdelegate.cpp:130
+msgid "Falta definir algún parámetro necesario para BlGenericComboBoxDelegate."
+msgstr ""
+
+#: blimportexport.cpp:2180
 #, fuzzy
 msgid "Familia"
 msgstr "<P>Famille<B>"
 
-#: blsubform.cpp:1798 blsubform.cpp:1824
+#: blsubform.cpp:2047 blsubform.cpp:2073
 msgid "Fila inexistente"
 msgstr ""
 
-#: ui_blsubformbase.h:605
+#: ui_blsubformbase.h:651
 msgid "Filas por pagina:"
 msgstr "Files par pages:"
 
-#: ui_blformlistfilterbase.h:126
+#: ui_blformlistfilterbase.h:147
 msgid "Filtrar por"
 msgstr ""
 
@@ -517,16 +526,16 @@ msgstr "Form 1"
 msgid "Form Elements"
 msgstr ""
 
-#: ui_bldatesearchbase.h:82 ui_blsearchwidgetbase.h:102
+#: ui_bldatesearchbase.h:82 ui_blsearchwidgetbase.h:105
 msgid "Form1"
 msgstr "Form 1"
 
-#: blimportexport.cpp:1998
+#: blimportexport.cpp:2072
 #, fuzzy
 msgid "Forma de pago"
 msgstr "<LI>Forme de payement<B>"
 
-#: blform.cpp:372
+#: blform.cpp:389
 msgid "Guardar"
 msgstr "Garder"
 
@@ -536,7 +545,7 @@ msgstr "Garder"
 msgid "Guardar pais"
 msgstr "Garder"
 
-#: ui_blformlistfilterbase.h:141
+#: ui_blformlistfilterbase.h:162
 msgid "Hacer coincidir todo el campo"
 msgstr ""
 
@@ -548,11 +557,11 @@ msgstr ""
 msgid "Id provincia"
 msgstr ""
 
-#: blsubform.cpp:2306
+#: blsubform.cpp:2578
 msgid "Imprimiendo "
 msgstr ""
 
-#: blform.cpp:447
+#: blform.cpp:464
 msgid "Imprimir ficha"
 msgstr ""
 
@@ -560,30 +569,30 @@ msgstr ""
 msgid "Indexador"
 msgstr "Indéxateur"
 
-#: blfunctions.cpp:568
+#: blfunctions.cpp:577
 msgid "Informacion de depuracion"
 msgstr "Information de dépuration"
 
-#: blfunctions.cpp:598
+#: blfunctions.cpp:607
 msgid "Informacion del programa"
 msgstr "Information du programme"
 
-#: blimportexport.cpp:1998
+#: blimportexport.cpp:2072
 #, fuzzy
 msgid "Insertada"
 msgstr "</B>Insertée"
 
-#: blimportexport.cpp:2814
+#: blimportexport.cpp:2888
 msgid "La factura ya existe y no se va a insertar."
 msgstr "La facture éxiste déjà et on ne vas pas l'inserré."
 
-#: blimportexport.cpp:2152
+#: blimportexport.cpp:2226
 #, fuzzy
 msgid "La familia del articulo no existe"
 msgstr "La famille de l'article n'éxiste pas<BR>"
 
-#: blimportexport.cpp:2342 blimportexport.cpp:2570 blimportexport.cpp:2794
-#: blimportexport.cpp:3034
+#: blimportexport.cpp:2416 blimportexport.cpp:2644 blimportexport.cpp:2868
+#: blimportexport.cpp:3108
 #, fuzzy
 msgid "La forma de pago del presupuesto no existe"
 msgstr "La forme de payement du bulletin n'éxiste pas<BR>"
@@ -592,8 +601,12 @@ msgstr "La forme de payement du bulletin n'éxiste pas<BR>"
 msgid "Lanzador Bulmages"
 msgstr "Lanceur Bulmages"
 
-#: ui_blsearchwidgetbase.h:107
+#: ui_blsearchwidgetbase.h:110
 msgid "Limpiar campo"
+msgstr ""
+
+#: ui_blformlistfilterbase.h:165 ui_blformlistfilterbase.h:168
+msgid "Limpiar el filtro"
 msgstr ""
 
 #: ui_blerrordialogbase.h:111
@@ -612,28 +625,34 @@ msgstr "Mensuel"
 msgid "Mostrar/ocultar detalle"
 msgstr ""
 
-#: blimportexport.cpp:2084
+#: blgenericcomboboxdelegate.cpp:201
+#, qt-format
+msgid ""
+"No existen elementos en el listado \"%1\", y el campo \"%2\" requiere alguno."
+msgstr ""
+
+#: blimportexport.cpp:2158
 #, fuzzy
 msgid "No se ha encontrado el padre de esta familia."
 msgstr "<P>On n'a pas trouvé le père de cette famille</P>"
 
-#: blform.cpp:353
+#: blform.cpp:366
 msgid "No se ha podido borrar"
 msgstr "Il n'a pas pus être érasé"
 
-#: blplugins.cpp:96
+#: blplugins.cpp:98
 msgid "No se ha podido cargar la libreria: "
 msgstr ""
 
-#: blform.cpp:387
+#: blform.cpp:404
 msgid "No se pudo cerrar la ventana debido a un error"
 msgstr "On n'a pas pus fermer la fenêtre dût à une erreur"
 
-#: blcompanydialog.cpp:498 blsubform.cpp:215
+#: blcompanydialog.cpp:498 blsubform.cpp:238
 msgid "Nombre"
 msgstr "Nom"
 
-#: blsubform.cpp:215
+#: blsubform.cpp:238
 msgid "Nombre de campo"
 msgstr "Nom de  champ"
 
@@ -659,31 +678,31 @@ msgstr ""
 msgid "Nuevo pais"
 msgstr ""
 
-#: blfunctions.cpp:572
+#: blfunctions.cpp:581
 msgid "Omitir &clase"
 msgstr "Omettre &classe"
 
-#: blform.cpp:446
+#: blform.cpp:463
 msgid "Opciones avanzadas de ficha"
 msgstr ""
 
-#: blsubform.cpp:215
+#: blsubform.cpp:238
 msgid "Orden"
 msgstr "Ordre"
 
-#: ui_blsubformbase.h:606
+#: ui_blsubformbase.h:652
 msgid "Pagina actual:"
 msgstr "Page actuelle:"
 
-#: ui_blsubformbase.h:608
+#: ui_blsubformbase.h:654
 msgid "Pagina anterior"
 msgstr "Page antérieure"
 
-#: ui_blsubformbase.h:609
+#: ui_blsubformbase.h:655
 msgid "Pagina siguiente"
 msgstr "Page suivante"
 
-#: ui_blsubformbase.h:610
+#: ui_blsubformbase.h:656
 msgid "Paginacion"
 msgstr "Paginaison"
 
@@ -699,7 +718,7 @@ msgstr ""
 msgid "Para entrar, antes tiene que seleccionar una empresa."
 msgstr "Pour entrer, avant vous devez sélectionner une entreprise."
 
-#: blsearchwidget.cpp:576
+#: blsearchwidget.cpp:628
 msgid "Pegar"
 msgstr ""
 
@@ -716,7 +735,7 @@ msgid "Qt Scripting"
 msgstr ""
 
 # Consulta SQL
-#: ui_blsubformbase.h:614
+#: ui_blsubformbase.h:660
 msgid "Query"
 msgstr "Query"
 
@@ -728,7 +747,7 @@ msgstr "Bimensuel"
 msgid "Registro de entrada:"
 msgstr "Régistre d'entrée:"
 
-#: ui_blsubformbase.h:617
+#: ui_blsubformbase.h:663
 msgid "SQL"
 msgstr "SQL"
 
@@ -738,7 +757,7 @@ msgid ""
 "Esta operacion puede ocasionar perdida de datos."
 msgstr ""
 
-#: bldatesearch.cpp:190
+#: bldatesearch.cpp:193
 msgid "Seleccione fecha"
 msgstr "Sélectionner date"
 
@@ -763,7 +782,7 @@ msgstr "Semestriel"
 msgid "TextLabel"
 msgstr ""
 
-#: blformlist.cpp:336
+#: blformlist.cpp:338
 msgid "Tiene que seleccionar un elemento"
 msgstr "Vous devez sélectionner un élément"
 
@@ -771,11 +790,11 @@ msgstr "Vous devez sélectionner un élément"
 msgid "Tipo"
 msgstr "Tipe"
 
-#: ui_blsubformbase.h:604
+#: ui_blsubformbase.h:650
 msgid "Total filas:"
 msgstr "Total files:"
 
-#: ui_blsubformbase.h:607
+#: ui_blsubformbase.h:653
 msgid "Total paginas:"
 msgstr "Total pages:"
 
@@ -783,87 +802,87 @@ msgstr "Total pages:"
 msgid "Trabajando"
 msgstr ""
 
-#: blimportexport.cpp:2478
+#: blimportexport.cpp:2552
 #, fuzzy
 msgid "Tratando DAlbaran"
 msgstr "<HR><B>Traitant DBulletin"
 
-#: blimportexport.cpp:2704
+#: blimportexport.cpp:2778
 #, fuzzy
 msgid "Tratando DFactura"
 msgstr "<HR><B>Traitant DFacture"
 
-#: blimportexport.cpp:2251
+#: blimportexport.cpp:2325
 #, fuzzy
 msgid "Tratando DPedidoCliente"
 msgstr "<HR><B>Traitant DPétitionClient"
 
-#: blimportexport.cpp:2942
+#: blimportexport.cpp:3016
 #, fuzzy
 msgid "Tratando DPresupuesto"
 msgstr "<HR><B>Traitant DBulletin"
 
-#: blimportexport.cpp:2450
+#: blimportexport.cpp:2524
 #, fuzzy
 msgid "Tratando LAlbaran"
 msgstr "<HR><B>Traitant LBulletin"
 
-#: blimportexport.cpp:2676
+#: blimportexport.cpp:2750
 #, fuzzy
 msgid "Tratando LFactura"
 msgstr "<HR><B>Traitant LFacture"
 
-#: blimportexport.cpp:2223
+#: blimportexport.cpp:2297
 #, fuzzy
 msgid "Tratando LPedidoCliente"
 msgstr "<HR><B>Traitant LPétition Client"
 
-#: blimportexport.cpp:2914
+#: blimportexport.cpp:2988
 #, fuzzy
 msgid "Tratando LPresupuesto"
 msgstr "<HR><B>Traitant LBulletin"
 
-#: blimportexport.cpp:2499
+#: blimportexport.cpp:2573
 #, fuzzy
 msgid "Tratando albaran"
 msgstr "<HR><B>Traitant bulletin"
 
-#: blimportexport.cpp:2014
+#: blimportexport.cpp:2088
 #, fuzzy
 msgid "Tratando almacen"
 msgstr "<HR><B>Traitant magasin"
 
-#: blimportexport.cpp:2125
+#: blimportexport.cpp:2199
 #, fuzzy
 msgid "Tratando articulo"
 msgstr "<HR><B>Traitant article"
 
-#: blimportexport.cpp:1937
+#: blimportexport.cpp:2011
 #, fuzzy
 msgid "Tratando el proveedor"
 msgstr "<HR><B>Traitant le fournisseur"
 
-#: blimportexport.cpp:2725
+#: blimportexport.cpp:2799
 #, fuzzy
 msgid "Tratando factura"
 msgstr "<HR><B>Traitant facture"
 
-#: blimportexport.cpp:2064
+#: blimportexport.cpp:2138
 #, fuzzy
 msgid "Tratando familia"
 msgstr "<HR><B>Traitant famille"
 
-#: blimportexport.cpp:1971
+#: blimportexport.cpp:2045
 #, fuzzy
 msgid "Tratando la forma de pago"
 msgstr "<HR><B>Traitant la forme de payement"
 
-#: blimportexport.cpp:2272
+#: blimportexport.cpp:2346
 #, fuzzy
 msgid "Tratando pedido cliente"
 msgstr "<HR><B>Traitant Pétition Client"
 
-#: blimportexport.cpp:2963
+#: blimportexport.cpp:3037
 #, fuzzy
 msgid "Tratando presupuesto"
 msgstr "<HR><B>Traitant Bulletin"
@@ -880,45 +899,49 @@ msgstr ""
 msgid "Usuario Actual"
 msgstr ""
 
-#: blsubform.cpp:2591
+#: blsubform.cpp:2995
 msgid "Ver/Ocultar configurador de subformulario"
 msgstr "Voir/Oculter configurateur de subformulaire"
 
-#: blsubform.cpp:215
+#: blsubform.cpp:2993
+msgid "Ver/Ocultar menu de subformulario"
+msgstr ""
+
+#: blsubform.cpp:238
 msgid "Visible"
 msgstr "Visible"
 
-#: blimportexport.cpp:2097
+#: blimportexport.cpp:2171
 #, fuzzy
 msgid "Ya existe esta familia."
 msgstr "<P>Il éxiste déjà cette famille.</P>"
 
-#: blimportexport.cpp:1988
+#: blimportexport.cpp:2062
 #, fuzzy
 msgid "Ya existe esta forma de pago."
 msgstr "<LI>Il éxiste déjà cette forme de payement."
 
-#: blimportexport.cpp:2036
+#: blimportexport.cpp:2110
 #, fuzzy
 msgid "Ya existe este almacen."
 msgstr "<LI>Il éxiste déjà ce magasin."
 
-#: blimportexport.cpp:2186
+#: blimportexport.cpp:2260
 #, fuzzy
 msgid "Ya existe este articulo."
 msgstr "<P><P>Il éxiste déjà cet article.</P>"
 
-#: blimportexport.cpp:2106
+#: blimportexport.cpp:2180
 #, fuzzy
 msgid "insertada"
 msgstr "</B>Insertée"
 
-#: blimportexport.cpp:2045 blimportexport.cpp:2208
+#: blimportexport.cpp:2119 blimportexport.cpp:2282
 #, fuzzy
 msgid "insertado"
 msgstr "</B>Inserré"
 
-#: blsubform.cpp:2347 blsubform.cpp:2365
+#: blsubform.cpp:2674 blsubform.cpp:2692
 msgid "no se ha inicializado bien la clase"
 msgstr ""
 

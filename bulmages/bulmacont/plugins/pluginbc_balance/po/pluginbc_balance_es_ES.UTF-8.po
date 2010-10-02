@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-10-21 10:25+0200\n"
+"POT-Creation-Date: 2010-09-23 18:57+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -170,7 +170,7 @@ msgstr "Ajustar columnas"
 msgid "Alt+T"
 msgstr "Alt+T"
 
-#: balanceview.cpp:62 ui_balancesprintdlg.h:198
+#: balanceview.cpp:61 ui_balancesprintdlg.h:198
 msgid "Balance"
 msgstr "Balance"
 
@@ -198,7 +198,7 @@ msgstr "Borrar registro"
 msgid "Centro de coste:"
 msgstr "Centro de coste:"
 
-#: balanceview.cpp:259
+#: balanceview.cpp:274
 msgid "Codigo"
 msgstr "Codigo"
 
@@ -226,6 +226,14 @@ msgstr "Ctrl+F"
 msgid "Ctrl+P"
 msgstr "Ctrl+P"
 
+#: balanceview.cpp:77 balanceprintview.cpp:64
+msgid "Cuenta Final:"
+msgstr ""
+
+#: balanceview.cpp:68 balanceprintview.cpp:56
+msgid "Cuenta Inicial:"
+msgstr ""
+
 #: ui_balancebase.h:441 ui_balancetreebase.h:404
 msgid "Cuenta final:"
 msgstr "Cuenta final:"
@@ -238,11 +246,11 @@ msgstr "Cuenta inicial:"
 msgid "Datos del listado:"
 msgstr "Datos del listado:"
 
-#: balanceview.cpp:259
+#: balanceview.cpp:274
 msgid "Debe"
 msgstr "Debe"
 
-#: balanceview.cpp:259
+#: balanceview.cpp:274
 msgid "Debe "
 msgstr "Debe "
 
@@ -250,7 +258,7 @@ msgstr "Debe "
 msgid "Debe:"
 msgstr "Debe:"
 
-#: balanceview.cpp:259
+#: balanceview.cpp:274
 msgid "Denominacion"
 msgstr "Denominacion"
 
@@ -258,11 +266,11 @@ msgstr "Denominacion"
 msgid "F5"
 msgstr "F5"
 
-#: ui_balancesprintdlg.h:200 ui_balanceprintbase.h:321
+#: ui_balanceprintbase.h:321 ui_balancesprintdlg.h:200
 msgid "Fecha Final"
 msgstr "Fecha Final"
 
-#: ui_balancesprintdlg.h:199 ui_balanceprintbase.h:319
+#: ui_balanceprintbase.h:319 ui_balancesprintdlg.h:199
 msgid "Fecha Inicial"
 msgstr "Fecha Inicial"
 
@@ -298,11 +306,11 @@ msgstr "HT&ML"
 msgid "HTML"
 msgstr "HTML"
 
-#: balanceview.cpp:259
+#: balanceview.cpp:274
 msgid "Haber"
 msgstr "Haber"
 
-#: balanceview.cpp:259
+#: balanceview.cpp:274
 msgid "Haber "
 msgstr "Haber "
 
@@ -355,15 +363,15 @@ msgstr "Podra disponer de la informacion del balance"
 msgid "Propietario"
 msgstr "Propietario"
 
-#: balanceview.cpp:259
+#: balanceview.cpp:274
 msgid "Saldo"
 msgstr "Saldo"
 
-#: balanceview.cpp:259
+#: balanceview.cpp:274
 msgid "Saldo "
 msgstr "Saldo "
 
-#: balanceview.cpp:259
+#: balanceview.cpp:274
 msgid "Saldo anterior"
 msgstr "Saldo anterior"
 

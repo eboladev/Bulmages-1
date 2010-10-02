@@ -72,7 +72,8 @@ set(bulmalib_SRCS	blpostgresqlclient.cpp
 			bli18n.cpp
 			bltreewidget.cpp
          blmaincompanypointer.cpp
-         blargparser.cpp)
+         blargparser.cpp
+	  bltoolbutton.cpp)
 
 set(bulmalib_MOCS	bldblogindialog.h
 			blcompanydialog.h
@@ -104,6 +105,7 @@ set(bulmalib_MOCS	bldblogindialog.h
 			blform.h			
 			blsubform.h
 			bltreewidget.h
+bltoolbutton.h
          blbankedit.h)
 
 set (bulmalib_HDRS	blmaincompanypointer.h

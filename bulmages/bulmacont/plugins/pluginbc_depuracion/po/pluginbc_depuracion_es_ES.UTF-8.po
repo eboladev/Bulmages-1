@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-10-21 10:25+0200\n"
+"POT-Creation-Date: 2010-09-23 18:21+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -114,15 +114,19 @@ msgstr ""
 "#-#-#-#-#  pluginabrevs.pot (PACKAGE VERSION)  #-#-#-#-#\n"
 "#-#-#-#-#  bulmages_suite.pot (PACKAGE VERSION)  #-#-#-#-#\n"
 
-#: pluginbc_depuracion.cpp:84
+#: pluginbc_depuracion.cpp:95
 msgid "&Modo debug"
 msgstr "&Modo debug"
 
-#: pluginbc_depuracion.cpp:93
+#: pluginbc_depuracion.cpp:88
+msgid "&Ver"
+msgstr "&Ver"
+
+#: pluginbc_depuracion.cpp:104
 msgid "Activa/Desactiva el modo debug"
 msgstr "Activa/Desactiva el modo debug"
 
-#: pluginbc_depuracion.cpp:94
+#: pluginbc_depuracion.cpp:105
 msgid ""
 "Debug.\n"
 "\n"
@@ -131,3 +135,7 @@ msgstr ""
 "Debug.\n"
 "\n"
 "Activa/Desactiva el modo debug"
+
+#: pluginbc_depuracion.cpp:84
+msgid "menuVer"
+msgstr ""

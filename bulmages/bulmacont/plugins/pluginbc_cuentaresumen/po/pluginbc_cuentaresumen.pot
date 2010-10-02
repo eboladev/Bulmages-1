@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2009-10-30 16:11+0100\n"
+"POT-Creation-Date: 2010-09-23 18:53+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -20,15 +20,23 @@ msgstr ""
 msgid "Resumen cuenta"
 msgstr ""
 
-#: pluginbc_cuentaresumen.cpp:76
-msgid "&Resumen Cta"
+#: pluginbc_cuentaresumen.cpp:75
+msgid "menuVer"
 msgstr ""
 
 #: pluginbc_cuentaresumen.cpp:79
+msgid "&Ver"
+msgstr ""
+
+#: pluginbc_cuentaresumen.cpp:86
+msgid "&Resumen Cta"
+msgstr ""
+
+#: pluginbc_cuentaresumen.cpp:89
 msgid "Muestra/oculta el resumen de cuenta"
 msgstr ""
 
-#: pluginbc_cuentaresumen.cpp:80
+#: pluginbc_cuentaresumen.cpp:90
 msgid ""
 "Corrector.\n"
 "\n"
