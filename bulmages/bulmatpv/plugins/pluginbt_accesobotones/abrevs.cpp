@@ -1,6 +1,4 @@
 #include <QWidget>
-#include <QProcess>
-#include <QDockWidget>
 #include <QMainWindow>
 
 #ifndef WIN32
@@ -19,71 +17,14 @@ Abrevs::Abrevs ( BlMainCompany *emp, QWidget *parent ) : BlWidget ( emp, parent 
 {
     setupUi ( this );
 
-    /// Creamos un docwindow.
-    m_doc2 = new QDockWidget ( "Teclado", g_main );
-    m_doc2->setFeatures ( QDockWidget::AllDockWidgetFeatures );
-    g_main->addDockWidget ( Qt::TopDockWidgetArea, m_doc2 );
-    m_doc2->hide();
-
-    m_proc = new QProcess();
-
-    /// Hay varios teclados embebidos que se pueden utilizar. Pero el que mejor funciona
-    /// Es el matchbox-keyboard
-/*
-        m_proc->start("kvkbd");
-        if (!m_proc->waitForStarted())
-            return;
-        QString winId = "";
-        while (winId == "") winId = blWindowId("kvkbd");
-*/
-
-
-    /*
-            m_proc->start("klavier");
-            if (!m_proc->waitForStarted())
-                return;
-            QString winId = "";
-            while (winId == "") winId = blWindowId("klavier");
-    */
-
-
-    m_proc->start ( "matchbox-keyboard -xid es" );
-    if ( !m_proc->waitForStarted() ) {
-	mui_teclado->hide();
-        return;
-    } // end if
-    m_proc->waitForReadyRead();
-    QString winId = "";
-    winId = m_proc->readAllStandardOutput();
-
-
-#ifndef WIN32
-
-    QX11EmbedContainer *container = new QX11EmbedContainer ( m_doc2 );
-    container->embedClient ( winId.toInt() );
-    m_doc2->setWidget ( container );
-
-#endif
-
 }
 
 
 Abrevs::~Abrevs()
 {
-    m_proc->kill();
-    delete m_proc;
-    delete m_doc2;
+
 }
 
-void Abrevs::on_mui_teclado_clicked()
-{
-
-    if ( m_doc2->isVisible() ) {
-        m_doc2->hide();
-    } else {
-        m_doc2->show();
-    }// end if
-}
 
 
 

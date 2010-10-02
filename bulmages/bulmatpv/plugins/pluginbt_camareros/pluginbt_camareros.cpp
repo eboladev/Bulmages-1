@@ -31,7 +31,6 @@
 #include <QHBoxLayout>
 #include <QToolButton>
 
-#include "camareros.h"
 #include "trabajadores.h"
 
 
@@ -56,14 +55,19 @@ int entryPoint ( BtBulmaTPV *tpv )
 
 int BtCompany_createMainWindows_Post ( BtCompany *etpv )
 {
-//    g_admin = new Mesas ( etpv, g_admin1 );
-//    g_admin1->setWidget ( g_admin );
-    Camareros *camareros = new Camareros(etpv, etpv);
-//    camareros->setIcon ( QIcon ( g_confpr->valor ( CONF_PROGDATA ) + "icons/table.svg" ) );
 
     BlToolButton *boton = new BlToolButton(etpv, etpv);
-
-
+        boton->setObjectName(QString::fromUtf8("mui_camareros1"));
+        boton->setMinimumSize(QSize(72, 72));
+        boton->setMaximumSize(QSize(200, 72));
+        boton->setFocusPolicy(Qt::NoFocus);
+        QIcon icon;
+        icon.addFile(QString::fromUtf8(":/Images/employee-list.png"), QSize(), QIcon::Normal, QIcon::Off);
+        boton->setIcon(icon);
+        boton->setIconSize(QSize(32, 32));
+        boton->setToolButtonStyle(Qt::ToolButtonTextUnderIcon);
+        boton->setText(N_("Camareros", 0));
+	
     // ============ Pruebas con abrevs
     QFrame *fr = g_main->findChild<QFrame *> ( "mui_frameabrevs" );
     if ( fr ) {
@@ -74,7 +78,6 @@ int BtCompany_createMainWindows_Post ( BtCompany *etpv )
             m_hboxLayout1->setMargin ( 5 );
             m_hboxLayout1->setObjectName ( QString::fromUtf8 ( "hboxLayout1" ) );
         } // end if
-        m_hboxLayout1->addWidget ( camareros );
 	m_hboxLayout1->addWidget (boton);
     } // end if
 
@@ -86,5 +89,8 @@ int BtCompany_createMainWindows_Post ( BtCompany *etpv )
 }
 
 int BlToolButton_released(BlToolButton *bot) {
-  blMsgInfo("funciona");
+  if (bot->objectName() == "mui_camareros1") {
+    Trabajadores * trab = new Trabajadores ( bot->mainCompany(), 0 );
+    trab->exec();
+  } //end if
 }
