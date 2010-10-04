@@ -18,38 +18,6 @@
     <number>0</number>
    </property>
    <item>
-    <widget class="QToolButton" name="mui_cliente">
-     <property name="minimumSize">
-      <size>
-       <width>72</width>
-       <height>72</height>
-      </size>
-     </property>
-     <property name="maximumSize">
-      <size>
-       <width>200</width>
-       <height>72</height>
-      </size>
-     </property>
-     <property name="text">
-      <string>Cliente</string>
-     </property>
-     <property name="icon">
-      <iconset resource="../../../bulmages.qrc">
-       <normaloff>:/Images/client.png</normaloff>:/Images/client.png</iconset>
-     </property>
-     <property name="iconSize">
-      <size>
-       <width>32</width>
-       <height>32</height>
-      </size>
-     </property>
-     <property name="toolButtonStyle">
-      <enum>Qt::ToolButtonTextUnderIcon</enum>
-     </property>
-    </widget>
-   </item>
-   <item>
     <widget class="QToolButton" name="mui_aparcar">
      <property name="minimumSize">
       <size>

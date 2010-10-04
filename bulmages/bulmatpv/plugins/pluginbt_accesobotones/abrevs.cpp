@@ -1,10 +1,6 @@
 #include <QWidget>
 #include <QMainWindow>
 
-#ifndef WIN32
-#include <QX11EmbedContainer>
-#endif
-
 #include "abrevs.h"
 #include "blfunctions.h"
 #include "btcompany.h"
@@ -107,24 +103,5 @@ void Abrevs::on_mui_recuperar_clicked()
     trab->exec();
     /// Llamamos a plugins para poder hacer lo pertinente
     g_plugins->lanza("Abrevs_on_mui_recuperar_clicked_Post", this);
-}
-
-
-void Abrevs::on_mui_cliente_clicked()
-{
-    BtCompany * emp = ( BtCompany * ) mainCompany();
-
-    if ( emp->valorBtInput() == "" ) return;
-    QString query = "SELECT * FROM cliente WHERE codcliente = '" + emp->valorBtInput() + "'";
-    BlDbRecordSet *cur = emp->loadQuery ( query );
-    if ( !cur->eof() ) {
-        emp->ticketActual() ->setDbValue ( "idcliente", cur->valor ( "idcliente" ) );
-    } else {
-        emp->ticketActual() ->setDbValue ( "idcliente", g_confpr->valor ( CONF_IDCLIENTE_DEFECTO ) );
-    } // end if
-    delete cur;
-    emp->ticketActual() ->pintar();
-    emp->setValorBtInput ( "" );
-    emp->pulsaTecla ( 0, "" );
 }
 

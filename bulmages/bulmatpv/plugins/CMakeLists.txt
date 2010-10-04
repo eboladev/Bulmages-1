@@ -30,6 +30,7 @@ add_subdirectory(pluginbt_camareros)
 add_subdirectory(pluginbt_dockapp)
 add_subdirectory(pluginbt_serverlight)
 add_subdirectory(pluginbt_teclado)
+add_subdirectory(pluginbt_cliente)
 
 if(NOT APPLE)
 add_subdirectory(pluginbt_accesobotones)
