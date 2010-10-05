@@ -98,6 +98,14 @@ compilar el aplicativo se necesita libpq, que es la biblioteca para poder
 acceder a una base de datos PostgreSql. Y PostgreSql para poder ejecutar la
 aplicación. http://www.postgresql.org/download/
 
+Para ejecutar todos los programas y plugins además existen componentes adicionales.
+
+- python-psycopg2 para ejecutar correctamente bulmasetup.
+
+- python-reportlab para generar algunos informes.
+
+- python-ooolib y ooolib-perl para los plugins que generan documentos en formato openoffice
+
 
 Estructura de directorios
 =========================
