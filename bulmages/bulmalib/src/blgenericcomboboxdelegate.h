@@ -46,7 +46,7 @@ class BlGenericComboBoxDelegate: public BlSubFormDelegate
 	BlGenericComboBoxDelegate ( BlMainCompany *comp, QObject *parent );
 	void set_foreign_table ( const QString &table, const QString &id_field, const QString &text_field );
 	void set_foreign_field ( unsigned int fk_column, QString fk_field_name );
-	void set_filter_id ( const QString &fi_field_name, const QString &fi_fk_field_name );
+	void set_filter_id ( const QString &fi_field_name, const QString &fi_fk_field_name, bool nada_si_fi_fk_nulo );
 	void set_where_condition ( const QString &cond );
 	void setAllowNull ( bool v );
 	void initialize ( const QString &combo_field_name );
@@ -68,6 +68,7 @@ class BlGenericComboBoxDelegate: public BlSubFormDelegate
 	QString m_id_field;
 	QString m_text_field;
 	bool m_allowNull;
+	bool m_empty_if_no_filter;
 	QString m_cond;
 
    private slots:

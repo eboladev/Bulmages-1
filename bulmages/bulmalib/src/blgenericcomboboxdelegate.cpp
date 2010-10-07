@@ -31,6 +31,7 @@ BlGenericComboBoxDelegate::BlGenericComboBoxDelegate ( BlMainCompany *comp, QObj
    , m_company ( comp )
    , m_allowNull ( true )
    , m_fk_column ( -1 )
+   , m_empty_if_no_filter ( false )
 {
    blDebug ( "BlGenericComboBoxDelegate::BlGenericComboBoxDelegate", 0 );
 
@@ -83,10 +84,11 @@ void BlGenericComboBoxDelegate::set_foreign_field ( unsigned int fk_column, QStr
   \param fi_field_name Campo identificador en la tabla del desplegable
   \param fi_fk_field_name Campo identificador en la tabla del listado
 **/
-void BlGenericComboBoxDelegate::set_filter_id ( const QString &fi_field_name, const QString &fi_fk_field_name )
+void BlGenericComboBoxDelegate::set_filter_id ( const QString &fi_field_name, const QString &fi_fk_field_name, bool nada_si_fi_fk_nulo )
 {
    m_fi_field_name = fi_field_name;
    m_fi_fk_field_name = fi_fk_field_name;
+   m_empty_if_no_filter = nada_si_fi_fk_nulo;
 }
 
 
@@ -278,9 +280,7 @@ QString BlGenericComboBoxDelegate::query ( int row ) const
 
 	/// Filtrar por otra columna si dicha columna contiene un valor identificador
 	/// En caso de que no, se muestra el listado completo como si no hubiera filtro
-	if ( !fi_fk_field_value.isEmpty() )
-	{
-
+	if ( !fi_fk_field_value.isEmpty() ) {
 	   if ( m_cond.isEmpty() ) {
 		q += QString ( " WHERE " );
 	   } else {
@@ -290,6 +290,10 @@ QString BlGenericComboBoxDelegate::query ( int row ) const
 	   q += QString ( "%1 = %2")
 			   .arg ( m_fi_field_name )
 			   .arg ( fi_fk_field_value );
+	} // end if
+	else if ( m_empty_if_no_filter ) {
+	   // Generar una consulta con resultado vac&iacute;o
+	   q += QString(" WHERE false");
 	} // end if
    } // end if
 
