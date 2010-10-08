@@ -171,15 +171,14 @@ int Busqueda_on_m_inputBusqueda_textChanged ( BlSearchWidget *busc )
         QString val = busc->m_inputBusqueda->text();
 
         if ( posibleAlias ( val, busc->mainCompany() ) ) {
-            // busco amb l'operador que compara sense locale ~=~ per aprofitar
+            // busco amb l'operador que compara sense locale ~~* o ILIKE per aprofitar
             // els indexos insensibles a locale (si fossin sensibles a
             // locale i no hi hagues el mateix locale al servidor PostgreSQL
             // que al client no funcionaria posibleAlias perquè calcularia
             // els minims i màxims de cadalias amb un ordre de col·lacio
             // i compararia el valor entrat amb un altre.
-            QString valors[1] = {val};
-            QString SQLQuery = "SELECT * FROM alias LEFT JOIN articulo ON alias.idarticulo = articulo.idarticulo WHERE cadalias ~=~ $1";
-            BlDbRecordSet *cur = busc->mainCompany() ->loadQuery ( SQLQuery, 1, valors );
+            QString SQLQuery = "SELECT * FROM alias LEFT JOIN articulo ON alias.idarticulo = articulo.idarticulo WHERE cadalias ILIKE '" + busc->mainCompany() ->sanearCadena(val) + "'";
+            BlDbRecordSet *cur = busc->mainCompany() ->loadQuery ( SQLQuery );
             if ( !cur->eof() ) {
                 busc->setId ( cur->valor ( "idarticulo" ) );
                 encontrado = TRUE;
