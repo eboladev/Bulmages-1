@@ -40,7 +40,7 @@ BlComboBox::BlComboBox ( QWidget *parent )
     blDebug ( "BlComboBox::BlComboBox", 0 );
     m_comboRecordSet = NULL;
     connect ( this, SIGNAL ( activated ( int ) ), this, SLOT ( m_activated ( int ) ) );
-    connect ( g_theApp, SIGNAL ( tablaCambiada ( const QString & ) ), this, SLOT ( onTablaCambiada ( const QString & ) ) );
+    connect ( g_theApp, SIGNAL ( dbTableChanged ( const QString & ) ), this, SLOT ( onDbTableChanged ( const QString & ) ) );
     m_null = TRUE;
 
     blDebug ( "END BlComboBox::BlComboBox", 0 );
@@ -62,13 +62,13 @@ BlComboBox::~BlComboBox()
 ///
 /**
 **/
-void BlComboBox::onTablaCambiada ( const QString &t )
+void BlComboBox::onDbTableChanged ( const QString &t )
 {
-    blDebug ( "BlComboBox::onTablaCambiada", 0 );
+    blDebug ( "BlComboBox::onDbTableChanged", 0 );
     if ( m_table == t ) {
         setId ( id() );
     } // end if
-    blDebug ( "END BlComboBox::onTablaCambiada", 0 );
+    blDebug ( "END BlComboBox::onDbTableChanged", 0 );
 }
 
 

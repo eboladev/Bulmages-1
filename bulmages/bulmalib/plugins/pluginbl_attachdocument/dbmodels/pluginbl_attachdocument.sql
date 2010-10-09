@@ -85,7 +85,7 @@ DROP FUNCTION aux() CASCADE;
 -- ==============================================================================
 
 
--- Agregamos nuevos parametros de configuraci�.
+-- Agregamos nuevos parametros de configuracion.
 --
 CREATE OR REPLACE FUNCTION actualizarevision() RETURNS INTEGER AS '
 DECLARE

@@ -171,8 +171,8 @@ int FPagoView::guardar()
         
         dialogChanges_cargaInicial();
 
-        /// Emitimos la senyal apropiada en el qapplication2
-        g_theApp->tablaCambiada1 ( "forma_pago" );
+        /// Emitimos la se&ntilde;al apropiada en el BlApplication.
+        g_theApp->emitDbTableChanged ( "forma_pago" );
 
         blDebug ( "END FPagoView::on_mui_guardar_clicked", 0 );
         return 0;

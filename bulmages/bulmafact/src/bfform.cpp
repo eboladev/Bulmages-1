@@ -160,7 +160,7 @@ void BfForm::calculaypintatotales()
     /// Calculamos el total de IVA.
     BlFixed totiva ( "0.00" );
     BlFixed pariva ( "0.00" );
-    
+fprintf(stderr, "IVA\n");
     for ( it = basesimp.begin(); it != basesimp.end(); ++it ) {
     
         BlFixed piva ( it.key().toAscii().constData() );
@@ -172,7 +172,7 @@ void BfForm::calculaypintatotales()
 //            pariva = ( it.value() - it.value() * porcentt / 100 ) * piva / 100;
         } else {
             QString evpariva = it.value().toQString() + " * " + piva.toQString() + " / 100";
-            QString tot = mainCompany()->PGEval ( evpariva );
+	    QString tot = mainCompany()->PGEval ( evpariva );
             pariva = BlFixed ( tot );
         } // end if
         

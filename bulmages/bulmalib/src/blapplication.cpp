@@ -70,8 +70,11 @@ bool BlApplication::notify ( QObject *o, QEvent *e )
     } // end try
 }
 
-void BlApplication::tablaCambiada1 ( const QString &t )
+
+void BlApplication::emitDbTableChanged ( const QString &t )
 {
-    emit tablaCambiada ( t );
+    blDebug ( "BlApplication::emitDbTableChanged", 0 );
+    emit dbTableChanged ( t );
+    blDebug ( "END BlApplication::emitDbTableChanged", 0 );
 }
 

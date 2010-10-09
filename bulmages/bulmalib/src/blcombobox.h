@@ -40,8 +40,6 @@ private:
     /// Indica cual es el identificador para la tabla.
     QString m_fieldId;
     QString m_query;
-    /// Impide que se produzca un dead-lock entre pintar y on_mui_text_changed.
-    bool m_semaforo;
 
 protected:
     QString m_table;
@@ -64,7 +62,7 @@ public:
 
 public slots:
     virtual void m_activated(int);
-    virtual void onTablaCambiada(const QString &);
+    virtual void onDbTableChanged(const QString &);
 
 signals:
     void valueChanged(QString);

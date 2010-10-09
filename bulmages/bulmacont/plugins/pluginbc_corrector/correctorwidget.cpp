@@ -131,7 +131,7 @@ void correctorwidget::on_mui_corregir_clicked()
     cur = dbConnection->loadQuery ( query, "hola1" );
     while ( !cur->eof() ) {
         QString cadena;
-        cadena = "<img src='" + g_confpr->valor ( CONF_PROGDATA ) + "icons/messagebox_warning.png'>&nbsp;&nbsp;<B><I>Warning:</I></B><BR>El asiento num. <B>" + cur->valor ( "ordenasiento" ) + "</B> tiene una inserci� en el debe de la cuenta <B>" + cur->valor ( "codigo" ) + "</B> que no permite inserciones en el debe de dicha cuenta.";
+        cadena = "<img src='" + g_confpr->valor ( CONF_PROGDATA ) + "icons/messagebox_warning.png'>&nbsp;&nbsp;<B><I>Warning:</I></B><BR>El asiento num. <B>" + cur->valor ( "ordenasiento" ) + "</B> tiene una insercion en el debe de la cuenta <B>" + cur->valor ( "codigo" ) + "</B> que no permite inserciones en el debe de dicha cuenta.";
         agregarError ( cadena, "asiento", "idasiento=" + cur->valor ( "idasiento" ) );
         cur->nextRecord();
     } // end while
@@ -163,7 +163,7 @@ void correctorwidget::on_mui_corregir_clicked()
 
     /// Calculo de asientos con IVA y sin facturas asociadas.
     /// -----------------------------------------------------
-    query = "SELECT * FROM borrador, cuenta WHERE cuenta.idcuenta = borrador.idcuenta AND codigo LIKE '%47%' AND idasiento NOT IN (SELECT idasiento FROM registroiva)";
+    query = "SELECT * FROM borrador, cuenta WHERE cuenta.idcuenta = borrador.idcuenta AND codigo LIKE '%47%' AND idasiento NOT IN (SELECT idborrador FROM registroiva)";
     cur = dbConnection->loadQuery ( query );
     while ( !cur->eof() ) {
         QString cadena;

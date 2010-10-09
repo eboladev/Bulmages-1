@@ -38,7 +38,7 @@ class BfBulmaFact;
 /// Clase company (empresa).
 /** Clase principal del programa donde se almacenan y gestionan
     todos los datos de la empresa con la que se est&aacute; trabajando.
-    Deriva de postgresiface ya que tiene el tratamiento de la base de datos. */
+    Deriva de BlPostgreSqlClient ya que tiene el tratamiento de la base de datos. */
 class BF_EXPORT BfCompany : public BlMainCompany
 {
 private:

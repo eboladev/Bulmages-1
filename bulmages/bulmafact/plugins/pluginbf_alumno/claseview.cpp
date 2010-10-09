@@ -169,8 +169,8 @@ void ClaseView::on_mui_guardar_clicked()
         pintar();
 
 
-        /// Emitimos la senyal apropiada en el qapplication2
-        g_theApp->tablaCambiada1 ( "clase" );
+        /// Emitimos la se&ntilde;al apropiada en el BlApplication.
+        g_theApp->emitDbTableChanged ( "clase" );
 
         /// Comprobamos cual es la cadena inicial.
         dialogChanges_cargaInicial();

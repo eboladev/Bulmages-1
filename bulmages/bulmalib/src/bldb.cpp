@@ -593,8 +593,8 @@ int BlDbRecord::DBsave ( QString &id )
         } // end if
         m_nuevoCampo = FALSE;
 
-        /// Emitimos la senyal apropiada en el qapplication2
-        g_theApp->tablaCambiada1 ( m_tablename );
+        /// Emitimos la se&ntilde;al apropiada en el BlApplication.
+        g_theApp->emitDbTableChanged ( m_tablename );
 
     } catch ( int error ) {
         blDebug ( "END BlDbRecord::DBsave", 0, "Error de guardado" );

@@ -200,8 +200,8 @@ void TrabajadorView::on_mui_guardar_clicked()
             system ( cadena.toAscii().constData() );
         } // end if
 
-        /// Emitimos la senyal apropiada en el qapplication2
-        g_theApp->tablaCambiada1 ( "trabajador" );
+        /// Emitimos la se&ntilde;al apropiada en el BlApplication.
+        g_theApp->emitDbTableChanged ( "trabajador" );
 
         /// Comprobamos cual es la cadena inicial.
         dialogChanges_cargaInicial();

@@ -41,10 +41,10 @@ public:
     BlApplication ( int &argc, char **argv );
     ~BlApplication();
     bool notify ( QObject *o, QEvent *e );
-    void tablaCambiada1(const QString &);
+    void emitDbTableChanged(const QString &);
 
 signals:
-	void tablaCambiada(const QString &);
+    void dbTableChanged(const QString &);
 };
 
 

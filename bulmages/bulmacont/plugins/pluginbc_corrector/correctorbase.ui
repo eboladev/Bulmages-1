@@ -1,7 +1,8 @@
-<ui version="4.0" >
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
  <class>correctorbase</class>
- <widget class="QWidget" name="correctorbase" >
-  <property name="geometry" >
+ <widget class="QWidget" name="correctorbase">
+  <property name="geometry">
    <rect>
     <x>0</x>
     <y>0</y>
@@ -9,51 +10,52 @@
     <height>342</height>
    </rect>
   </property>
-  <property name="windowTitle" >
+  <property name="windowTitle">
    <string>Corrector</string>
   </property>
-  <layout class="QVBoxLayout" >
-   <property name="margin" >
-    <number>0</number>
-   </property>
-   <property name="spacing" >
+  <layout class="QVBoxLayout">
+   <property name="spacing">
     <number>5</number>
    </property>
+   <property name="margin">
+    <number>0</number>
+   </property>
    <item>
-    <layout class="QHBoxLayout" >
-     <property name="margin" >
-      <number>0</number>
-     </property>
-     <property name="spacing" >
+    <layout class="QHBoxLayout">
+     <property name="spacing">
       <number>5</number>
      </property>
+     <property name="margin">
+      <number>0</number>
+     </property>
      <item>
-      <widget class="QToolButton" name="mui_corregir" >
-       <property name="minimumSize" >
+      <widget class="QToolButton" name="mui_corregir">
+       <property name="minimumSize">
         <size>
          <width>32</width>
          <height>32</height>
         </size>
        </property>
-       <property name="maximumSize" >
+       <property name="maximumSize">
         <size>
          <width>32</width>
          <height>32</height>
         </size>
        </property>
-       <property name="toolTip" >
+       <property name="toolTip">
         <string>Corregir</string>
        </property>
-       <property name="whatsThis" >
+       <property name="whatsThis">
         <string>Corregir</string>
        </property>
-       <property name="text" >
+       <property name="text">
         <string/>
        </property>
-       <property name="icon" >
-        <iconset resource="../../../bulmages.qrc" >:/BulmaCont32x32/images/png/i_ok.png</iconset>
+       <property name="icon">
+        <iconset resource="../../../bulmages.qrc">
+         <normaloff>:/BulmaCont32x32/images/png/i_ok.png</normaloff>:/BulmaCont32x32/images/png/i_ok.png</iconset>
        </property>
-       <property name="iconSize" >
+       <property name="iconSize">
         <size>
          <width>22</width>
          <height>22</height>
@@ -62,32 +64,33 @@
       </widget>
      </item>
      <item>
-      <widget class="QToolButton" name="mui_configurar" >
-       <property name="minimumSize" >
+      <widget class="QToolButton" name="mui_configurar">
+       <property name="minimumSize">
         <size>
          <width>32</width>
          <height>32</height>
         </size>
        </property>
-       <property name="maximumSize" >
+       <property name="maximumSize">
         <size>
          <width>32</width>
          <height>32</height>
         </size>
        </property>
-       <property name="toolTip" >
+       <property name="toolTip">
         <string>Configurar</string>
        </property>
-       <property name="whatsThis" >
+       <property name="whatsThis">
         <string>Configurar</string>
        </property>
-       <property name="text" >
+       <property name="text">
         <string/>
        </property>
-       <property name="icon" >
-        <iconset resource="../../../bulmages.qrc" >:/Images/document-properties.png</iconset>
+       <property name="icon">
+        <iconset resource="../../../bulmages.qrc">
+         <normaloff>:/Images/document-properties.png</normaloff>:/Images/document-properties.png</iconset>
        </property>
-       <property name="iconSize" >
+       <property name="iconSize">
         <size>
          <width>22</width>
          <height>22</height>
@@ -97,13 +100,13 @@
      </item>
      <item>
       <spacer>
-       <property name="orientation" >
+       <property name="orientation">
         <enum>Qt::Horizontal</enum>
        </property>
-       <property name="sizeType" >
+       <property name="sizeType">
         <enum>QSizePolicy::Expanding</enum>
        </property>
-       <property name="sizeHint" >
+       <property name="sizeHint" stdset="0">
         <size>
          <width>61</width>
          <height>21</height>
@@ -114,29 +117,16 @@
     </layout>
    </item>
    <item>
-    <widget class="QTextBrowser" name="mui_browser" />
+    <widget class="QTextBrowser" name="mui_browser">
+     <property name="openLinks">
+      <bool>false</bool>
+     </property>
+    </widget>
    </item>
   </layout>
  </widget>
  <resources>
-  <include location="../../../bulmages.qrc" />
+  <include location="../../../bulmages.qrc"/>
  </resources>
- <connections>
-  <connection>
-   <sender>mui_configurar</sender>
-   <signal>clicked()</signal>
-   <receiver>correctorbase</receiver>
-   <slot></slot>
-   <hints>
-    <hint type="sourcelabel" >
-     <x>45</x>
-     <y>13</y>
-    </hint>
-    <hint type="destinationlabel" >
-     <x>138</x>
-     <y>176</y>
-    </hint>
-   </hints>
-  </connection>
- </connections>
+ <connections/>
 </ui>
