@@ -45,6 +45,16 @@ int BtTicket_agregarLinea_Post ( BtTicket *tick )
     BlDbRecord *item = (BlDbRecord *) g_plugParams;
 
     item->addDbField ( "imglalbaran", BlDbField::DbVarChar, BlDbField::DbNothing, _( "Imagen." ) );
+
+    item->addDbField ( "idmodificador3", BlDbField::DbInt, BlDbField::DbNothing, _( "Imagen." ) );
+    item->addDbField ( "idmodificador4", BlDbField::DbInt, BlDbField::DbNothing, _( "Imagen." ) );
+    item->addDbField ( "idmodificador5", BlDbField::DbInt, BlDbField::DbNothing, _( "Imagen." ) );
+    item->addDbField ( "idmodificador6", BlDbField::DbInt, BlDbField::DbNothing, _( "Imagen." ) );
+    item->addDbField ( "idmodificador7", BlDbField::DbInt, BlDbField::DbNothing, _( "Imagen." ) );
+    item->addDbField ( "idmodificador8", BlDbField::DbInt, BlDbField::DbNothing, _( "Imagen." ) );
+    item->addDbField ( "idmodificador9", BlDbField::DbInt, BlDbField::DbNothing, _( "Imagen." ) );
+
+    
     
     blDebug ( "END PluginBt_Modificadores::BtTicket_agregarLinea_Post", 0 );
     

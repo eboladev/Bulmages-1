@@ -158,6 +158,18 @@ void MTicketIVAInc::pintar()
 		htmlContent += "<img src=\"/tmp/imagen"+QString::number(i)+".png\" width=\"215\" height=\"170\"></td>";
 		htmlContent += "</tr>";
 	} // end if
+	
+	for (int i = 3; i <10; i++) {
+	    if (item-> dbValue("idmodificador" + QString::number(i)) != "") {
+		htmlContent += "<tr>";
+		query = "SELECT nombremodificador FROM modificador WHERE idmodificador = " + item-> dbValue("idmodificador" + QString::number(i));
+		BlDbRecordSet *rsModificador = mainCompany()->loadQuery ( query );
+		htmlContent += "<td colspan=\"3\" bgcolor=\"" + bgColor + "\" >" + rsModificador->valor("nombremodificador") + "</TD>";
+		delete rsModificador;
+		htmlContent += "</tr>";
+	    } // end if
+	} // end for
+	
 	/// SIENDO PURISTAS ESTA PARTE DEBERIA ESTAR EN EL pluginbt_modificadores pero aqui tampoco va a molestar mucho.
     } // end for
 
