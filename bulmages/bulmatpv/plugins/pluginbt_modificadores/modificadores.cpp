@@ -13,6 +13,10 @@ Modificadores::Modificadores ( BlMainCompany *emp, QWidget *parent ) : QDialog (
     setupUi ( this );
     bool hayModificadores = FALSE;
     
+    if (! ((BtCompany *) emp)->ticketActual()->lineaActBtTicket() ) {
+	blDebug("END Modificadores::Modificadores");
+	return;
+    } // end if
     QString idarticulo = ((BtCompany *) emp)->ticketActual()->lineaActBtTicket()->dbValue ( "idarticulo");
     
     BlDbRecordSet *cur = mainCompany() ->loadQuery ( "SELECT * FROM modificador WHERE idarticulo = " + idarticulo );
