@@ -107,10 +107,85 @@ int entryPoint ( BfBulmaFact *bges )
     setlocale ( LC_ALL, "" );
     bindtextdomain ( "pluginbf_modificadores", g_confpr->valor ( CONF_DIR_TRADUCCION ).toAscii().constData() );
 
-    MyPlugModificadores *plug = new MyPlugModificadores();
-    plug->inicializa ( bges );
+//    MyPlugModificadores *plug = new MyPlugModificadores();
+//    plug->inicializa ( bges );
+    return 0;
+}
+
+///
+/**
+\param art
+\return
+**/
+int ArticuloView_ArticuloView ( ArticuloView *art )
+{
+    blDebug ( "ArticuloView_ArticuloView", 0 );
+
+    /// Agregamos el subformulario de validaciones.
+    BfSubForm *l = new BfSubForm ( art );
+    l->setObjectName ( QString::fromUtf8 ( "lmodificadores" ) );
+    l->setMainCompany ( art->mainCompany() );
+    l->setDbTableName ( "modificador" );
+    l->setDbFieldId ( "idmodificador" );
+    
+    /*
+    l->addSubFormHeader ( "cadalias", BlDbField::DbVarChar, BlDbField::DbNotNull, BlSubFormHeader::DbNone , _ ( "Alias" ) );
+    l->addSubFormHeader ( "idarticulo", BlDbField::DbInt, BlDbField::DbNotNull, BlSubFormHeader::DbHideView | BlSubFormHeader::DbNoWrite , _ ( "Id articulo" ) );
+    l->addSubFormHeader ( "idalias", BlDbField::DbInt, BlDbField::DbPrimaryKey, BlSubFormHeader::DbHideView | BlSubFormHeader::DbNoWrite, _ ( "Id validacion" ) );
+    */
+    
+    l->addSubFormHeader ( "idmodificador", BlDbField::DbInt, BlDbField::DbPrimaryKey, BlSubFormHeader::DbHideView | BlSubFormHeader::DbDisableView, "Id" );
+    l->addSubFormHeader ( "idarticulo", BlDbField::DbInt, BlDbField::DbNotNull, BlSubFormHeader::DbHideView | BlSubFormHeader::DbDisableView, "Id" );
+    l->addSubFormHeader ( "nombremodificador", BlDbField::DbVarChar, BlDbField::DbNotNull, BlSubFormHeader::DbNone, _ ( "Nombre Modificador" ) );
+    l->addSubFormHeader ( "varpreciomodificador", BlDbField::DbNumeric, BlDbField::DbNotNull, BlSubFormHeader::DbNone, _ ( "Alt. Precio" ) );
+    
+    l->setInsert ( TRUE );
+    l->setDelete ( TRUE );
+    l->setSortingEnabled ( FALSE );
+    art->dialogChanges_setQObjectExcluido ( l->mui_list );
+
+    art->mui_tab->addTab ( l, "Modificadores" );
+
+    blDebug ( "END ArticuloView_ArticuloView", 0 );
     return 0;
 }
 
 
+///
+/**
+\param art
+\return
+**/
+int ArticuloView_cargar ( ArticuloView *art )
+{
+    blDebug ( "ArticuloView_cargar", 0 );
+    BfSubForm *l = art->findChild<BfSubForm *> ( "lmodificadores" );
+    if ( l ) {
+        l->cargar ( "SELECT * FROM modificador WHERE idarticulo = " + art->dbValue ( "idarticulo" ) );
+    } // end if
+    blDebug ( "END ArticuloView_cargar", 0 );
+    return 0;
+}
+
+
+
+///
+/**
+\param art
+\return
+**/
+int ArticuloView_guardar_post ( ArticuloView *art )
+{
+    blDebug ( "ArticuloView_guardar_post", 0 );
+    try {
+        BfSubForm *l = art->findChild<BfSubForm *> ( "lmodificadores" );
+        l->setColumnValue ( "idarticulo", art->dbValue ( "idarticulo" ) );
+        l->guardar();
+//        invalidaEstadAlias();
+        return 0;
+    } catch ( ... ) {
+        blDebug ( "Hubo un error al guardar los alias", 2 );
+        return 0;
+    }
+}
 

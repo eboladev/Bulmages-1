@@ -43,8 +43,8 @@ ListModificadoresView::ListModificadoresView ( BfCompany *comp, QWidget *parent 
         : BfForm ( comp, parent )
 {
     blDebug ( "INIT_ListModificadoresView::ListModificadoresView", 1 );
-    setTitleName ( _ ( "Serie de Factura" ) );
-    setDbTableName ( "serie_factura" );
+    setTitleName ( _ ( "Modificadores" ) );
+    setDbTableName ( "modificador" );
     setAttribute ( Qt::WA_DeleteOnClose );
     setupUi ( this );
     mui_listado->setMainCompany ( comp );
@@ -75,8 +75,9 @@ ListModificadoresSubForm::ListModificadoresSubForm ( QWidget *parent ) : BfSubFo
     setDbTableName ( "modificador" );
     setDbFieldId ( "idmodificador" );
     addSubFormHeader ( "idmodificador", BlDbField::DbInt, BlDbField::DbPrimaryKey, BlSubFormHeader::DbHideView | BlSubFormHeader::DbDisableView, "Id" );
-    addSubFormHeader ( "varpreciomodificador", BlDbField::DbNumeric, BlDbField::DbNotNull, BlSubFormHeader::DbNone, _ ( "Alt. Precio" ) );
+    addSubFormHeader ( "idarticulo", BlDbField::DbInt, BlDbField::DbNotNull, BlSubFormHeader::DbHideView | BlSubFormHeader::DbDisableView, "Id" );
     addSubFormHeader ( "nombremodificador", BlDbField::DbVarChar, BlDbField::DbNotNull, BlSubFormHeader::DbNone, _ ( "Nombre Modificador" ) );
+    addSubFormHeader ( "varpreciomodificador", BlDbField::DbNumeric, BlDbField::DbNotNull, BlSubFormHeader::DbNone, _ ( "Alt. Precio" ) );
     setInsert ( TRUE );
     blDebug ( "END ListModificadoresSubForm::ListModificadoresSubForm", 0 );
 }

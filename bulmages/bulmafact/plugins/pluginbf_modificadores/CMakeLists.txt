@@ -30,6 +30,8 @@ include_directories(
 	${CMAKE_CURRENT_SOURCE_DIR}
 	${CMAKE_BINARY_DIR}/bulmafact/plugins/pluginbf_modificadores/
 	${CMAKE_SOURCE_DIR}/bulmafact/plugins/pluginbf_modificadores/
+	${CMAKE_BINARY_DIR}/bulmafact/plugins/pluginbf_articulo/
+	${CMAKE_SOURCE_DIR}/bulmafact/plugins/pluginbf_articulo/
 	${CMAKE_BINARY_DIR}/bulmalib/src/
 	${CMAKE_SOURCE_DIR}/bulmalib/src/
 	${CMAKE_BINARY_DIR}/bulmafact/src/

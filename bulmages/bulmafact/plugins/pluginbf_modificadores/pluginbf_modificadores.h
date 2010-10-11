@@ -26,9 +26,12 @@
 #include "blwidget.h"
 #include "blsearchwidget.h"
 #include "pdefs_pluginbf_modificadores.h"
-
+#include "articuloview.h"
 
 extern "C" PLUGINBF_MODIFICADORES_EXPORT int entryPoint ( BfBulmaFact * );
+extern "C" PLUGINBF_MODIFICADORES_EXPORT int ArticuloView_ArticuloView ( ArticuloView * );
+extern "C" PLUGINBF_MODIFICADORES_EXPORT int ArticuloView_cargar ( ArticuloView * );
+extern "C" PLUGINBF_MODIFICADORES_EXPORT int ArticuloView_guardar_post ( ArticuloView * );
 
 
 class MyPlugModificadores : public QObject, BlMainCompanyPointer
