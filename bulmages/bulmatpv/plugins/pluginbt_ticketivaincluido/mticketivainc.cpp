@@ -132,11 +132,12 @@ void MTicketIVAInc::pintar()
         htmlContent += "</tr>";
 
 	
-	/// SI HAY MODIFICADORES LOS PONEMOS.
+	/// SI HAY MODIFICADORES LOS PONEMOS. TENER EN CUENTA QUE ESTE CAMBIO SOLO SE TIENE EN CUENTA SI ESTA ACTIVADO
+	/// EL PLUGIN DE MODIFICADORES. PERO PUESTO AQUI ES BASTANTE MAS EFICIENTE.
 		
 	if (item->dbValue("imglalbaran") != "") {
 	        htmlContent += "<tr>";
-		htmlContent += "<td colspan=\"3\" bgcolor=\"" + bgColor + "\" >";
+		htmlContent += "<td colspan=\"3\" align=\"center\" bgcolor=\"" + bgColor + "\" >";
 		QString text1 = item->dbValue("imglalbaran");
 		QByteArray text = QByteArray::fromBase64(text1.toAscii());
 
@@ -147,14 +148,6 @@ void MTicketIVAInc::pintar()
 
 		  file.write(text);
 		  file.close();
-		
-		/*
-		QBitmap mapa = QBitmap::fromData(QSize(100,48),(const uchar *)text.data());
-		mapa.save("/tmp/imagen"+QString::number(i)+".png", "PNG");
-		*/
-		
-//		htmlContent += item->dbValue("imglalbaran");
-//		htmlContent += "<img src=\"/usr/local/share/bulmages/icons/catalogo.png\"></td>";
 		htmlContent += "<img src=\"/tmp/imagen"+QString::number(i)+".png\" width=\"215\" height=\"170\"></td>";
 		htmlContent += "</tr>";
 	} // end if
@@ -164,7 +157,7 @@ void MTicketIVAInc::pintar()
 		htmlContent += "<tr>";
 		query = "SELECT nombremodificador FROM modificador WHERE idmodificador = " + item-> dbValue("idmodificador" + QString::number(i));
 		BlDbRecordSet *rsModificador = mainCompany()->loadQuery ( query );
-		htmlContent += "<td colspan=\"3\" bgcolor=\"" + bgColor + "\" >" + rsModificador->valor("nombremodificador") + "</TD>";
+		htmlContent += "<td colspan=\"3\" align=\"center\"  bgcolor=\"" + bgColor + "\" >" + rsModificador->valor("nombremodificador") + "</TD>";
 		delete rsModificador;
 		htmlContent += "</tr>";
 	    } // end if

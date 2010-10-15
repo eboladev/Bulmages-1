@@ -87,8 +87,10 @@ void ModificadoresQToolButton::setBoton()
 void ModificadoresQToolButton::click()
 {
     blDebug ( "ModificadoresQToolButton::click", 0 );
+    BtTicket *ticket = ( ( BtCompany * ) m_companyact )->ticketActual();
     Modificadores * trab = new Modificadores ( m_companyact, 0 );
     trab->exec();
+    ticket->pintar();
     blDebug ( "END ModificadoresQToolButton::click", 0 );
 
 }
