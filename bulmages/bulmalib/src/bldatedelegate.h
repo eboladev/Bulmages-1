@@ -23,7 +23,7 @@
 #define BLDATEDELEGATE_H
 
 #include "bldatesearch.h"
-#include <QItemDelegate>
+#include <QStyledItemDelegate>
 
 
 /** Calendario flotante para seleccionar fechas en un campo de listado.
@@ -32,7 +32,7 @@ Agregar esta l&iacute;nea en el m&eacute;todo "cargar" del listado que hereda de
 justo despu&eucte;s de BfSubForm::cargar ( consulta ):
 mui_list->setItemDelegateForColumn ( <columna>, new BlDateDelegate ( mainCompany(), this ) );
 */
-class BlDateDelegate: public QItemDelegate
+class BlDateDelegate: public QStyledItemDelegate
 {
    public:
 	BlDateDelegate ( BlMainCompany *comp, QObject *parent, bool allowNull = true ) ;

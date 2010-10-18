@@ -37,7 +37,7 @@ class BtSubForm;
 
 /// Clase BtSubFormDelegate
 /** Se encarga del control de los 'Widgets' de edici&oacute;n del sistema.*/
-class BT_EXPORT BtSubFormDelegate : public QItemDelegate, public BlMainCompanyPointer
+class BT_EXPORT BtSubFormDelegate : public QStyledItemDelegate, public BlMainCompanyPointer
 {
 protected:
     BtSubForm *m_subform;

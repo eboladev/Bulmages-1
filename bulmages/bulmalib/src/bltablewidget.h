@@ -24,7 +24,7 @@
 
 #include <QEvent>
 #include <QTableWidget>
-#include <QItemDelegate>
+#include <QStyledItemDelegate>
 
 #include "blfunctions.h"
 

@@ -28,7 +28,7 @@
    \param allowNull
 **/
 BlDateDelegate::BlDateDelegate ( BlMainCompany *comp, QObject *parent, bool allowNull )
-   : QItemDelegate ( parent )
+   : QStyledItemDelegate ( parent )
    , m_company ( comp )
    , m_allowNull ( allowNull )
 {

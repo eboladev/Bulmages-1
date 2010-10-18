@@ -3321,7 +3321,7 @@ QString BlSubForm::exportXML() {
 /**
 \param parent
 **/
-BlSubFormDelegate::BlSubFormDelegate ( QObject *parent = 0 ) : QItemDelegate ( parent ), BlMainCompanyPointer()
+BlSubFormDelegate::BlSubFormDelegate ( QObject *parent = 0 ) : QStyledItemDelegate ( parent ), BlMainCompanyPointer()
 {
     blDebug ( "BlSubFormDelegate::BlSubFormDelegate", 0 );
     m_subform = ( BlSubForm * ) parent;
@@ -3383,7 +3383,7 @@ QWidget *BlSubFormDelegate::createEditor ( QWidget *parent, const QStyleOptionVi
 
 
     blDebug ( "END BlSubFormDelegate::createEditor", 0, "Default Editor" );
-    return QItemDelegate::createEditor ( parent, option, index );
+    return QStyledItemDelegate::createEditor ( parent, option, index );
 }
 
 
@@ -3430,7 +3430,7 @@ void BlSubFormDelegate::setModelData ( QWidget *editor, QAbstractItemModel *mode
         QString value = QString::number(spinBox->value());
         model->setData ( index, value );
     } else {
-        QItemDelegate::setModelData ( editor, model, index );
+        QStyledItemDelegate::setModelData ( editor, model, index );
     } // end if
 
     blDebug ( "END BlSubFormDelegate::setModelData", 0 );
@@ -3473,7 +3473,7 @@ void BlSubFormDelegate::setEditorData ( QWidget* editor, const QModelIndex& inde
         spinBox->setValue ( value.toInt() );
         spinBox->selectAll();
     } else {
-        QItemDelegate::setEditorData ( editor, index );
+        QStyledItemDelegate::setEditorData ( editor, index );
     }// end if
 
 
@@ -3547,7 +3547,7 @@ bool BlSubFormDelegate::eventFilter ( QObject *obj, QEvent *event )
         } // end switch
     } // end if
 
-    return QItemDelegate::eventFilter ( obj, event );
+    return QStyledItemDelegate::eventFilter ( obj, event );
 }
 
 

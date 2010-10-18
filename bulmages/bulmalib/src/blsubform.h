@@ -93,7 +93,7 @@ extern  BL_EXPORT QString g_nomcampo;
 
 /// Clase BfSubFormDelegate
 /** Se encarga del control de los 'Widgets' de edici&oacute;n del sistema.*/
-class BL_EXPORT BlSubFormDelegate : public QItemDelegate, public BlMainCompanyPointer
+class BL_EXPORT BlSubFormDelegate : public QStyledItemDelegate, public BlMainCompanyPointer
 {
     Q_OBJECT
 

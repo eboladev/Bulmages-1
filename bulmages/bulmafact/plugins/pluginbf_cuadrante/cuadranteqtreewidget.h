@@ -24,7 +24,7 @@
 
 #include <QEvent>
 #include <QTreeWidget>
-#include <QItemDelegate>
+#include <QStyledItemDelegate>
 #include "blfunctions.h"
 
 

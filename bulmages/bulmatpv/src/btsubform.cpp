@@ -269,7 +269,7 @@ int BtSubForm::cerrarEditor()
 /**
 \param parent
 **/
-BtSubFormDelegate::BtSubFormDelegate ( QObject *parent = 0 ) : QItemDelegate ( parent ), BlMainCompanyPointer()
+BtSubFormDelegate::BtSubFormDelegate ( QObject *parent = 0 ) : QStyledItemDelegate ( parent ), BlMainCompanyPointer()
 {
     blDebug ( "BtSubFormDelegate::BtSubFormDelegate", 0 );
     m_subform = ( BtSubForm * ) parent;
@@ -319,7 +319,7 @@ QWidget *BtSubFormDelegate::createEditor ( QWidget *parent, const QStyleOptionVi
         editor->setDecimals(linea->numericPrecision());
         return editor;
     } // end if
-    return QItemDelegate::createEditor ( parent, option, index );
+    return QStyledItemDelegate::createEditor ( parent, option, index );
     blDebug ( "END BtSubFormDelegate::createEditor", 0 );
    return 0;
 }
@@ -379,7 +379,7 @@ void BtSubFormDelegate::setModelData ( QWidget *editor, QAbstractItemModel *mode
                 model->setData(index, value);
         */
     } else {
-        QItemDelegate::setModelData ( editor, model, index );
+        QStyledItemDelegate::setModelData ( editor, model, index );
     } // end if
     blDebug ( "END BtSubFormDelegate::setModelData", 0 );
 }
@@ -432,7 +432,7 @@ void BtSubFormDelegate::setEditorData ( QWidget* editor, const QModelIndex& inde
                 comboBox->set(value);
         */
     } else {
-        QItemDelegate::setEditorData ( editor, index );
+        QStyledItemDelegate::setEditorData ( editor, index );
     } // end if
     blDebug ( "END BtSubFormDelegate::setEditorData", 0 );
 }
@@ -464,7 +464,7 @@ bool BtSubFormDelegate::eventFilter ( QObject *obj, QEvent *event )
         case Qt::Key_Tab:
             return TRUE;
         } // end switch
-        return QItemDelegate::eventFilter ( obj, event );
+        return QStyledItemDelegate::eventFilter ( obj, event );
     } // end if
 
     if ( event->type() == QEvent::KeyRelease ) {
@@ -485,10 +485,10 @@ bool BtSubFormDelegate::eventFilter ( QObject *obj, QEvent *event )
             QApplication::sendEvent ( m_subform->mui_list, event );
             return TRUE;
         } // end switch
-        return QItemDelegate::eventFilter ( obj, event );
+        return QStyledItemDelegate::eventFilter ( obj, event );
     } // end if
 
-    return QItemDelegate::eventFilter ( obj, event );
+    return QStyledItemDelegate::eventFilter ( obj, event );
 }
 
 
