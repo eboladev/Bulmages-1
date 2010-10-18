@@ -10,6 +10,10 @@ Biblioteca: libpluginbf_formasdepago.so
 
 Descripción: <H1>Formas de Pago</H1>
 <P>Gestionar las formas de pago.</P>
+<P>Con este plugin podemos agregar, modificar y eliminar las distintas formas de pago que utilizan nuestros clientes y proveedores con nosotros.
+Es imprescindible para utilizar presupuestos, pedidos, albaranes y facturas donde se solicita la forma de pago.
+También aparece en los clientes y proveedores la forma de pago preferida (o por defecto).
+En las gestiones bancarias y en el TPV se utilizan los identificadores de forma de pago para determinar si es un pago bancario o es un pago con VISA.</P>
 <B>Author:</B>Tomeu Borrás (tborras@conetxia.com)<BR>
 <HR>
 

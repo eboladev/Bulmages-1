@@ -8,7 +8,7 @@ Nombre: Alta de proveedor conjunta con alta de cliente
 
 Biblioteca: libpluginbf_clienteproveedor.so
 
-Descripción: <H1>Alta conjunta de cliente y proveedor</H1>
+Descripción: <H1>Crea un proveedor cada vez que se crea un cliente, asignandole el mismo CIF y utiliza los datos de este en el proveedor. Es frecuente tener clientes y proveedores juntos principalmente en operaciones de compra-venta.</H1>
 <P>Crea un proveedor cada vez que se crea un cliente. Y utiliza los datos de este.</P>
 <B>Author:</B>Tomeu Borrás (tborras@conetxia.com)<BR>
 <HR>
