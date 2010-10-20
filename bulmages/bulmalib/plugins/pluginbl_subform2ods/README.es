@@ -14,6 +14,7 @@ de cálculo. </P>
 <P>Una vez instalado el plugin al pulsar con el boton derecho sobre cualquier subformulario aparecera
 la opcion de menu contextual <B>Exportar a hoja de calculo ODS</B> que hara la exportacion del 
 subformulario a formato <B>ODS</B></P>
+<P>Puede seleccionarse el programa que se desea utilizar por defecto para abrir este tipo de documentos mediante el parametro de configuración <B>CONF_ODS</B>   que por defecto usa   <B>xdg-open</B> que viene a ser el programa por defecto de Linux.</P>
 <HR>
 
 ParmBD: -

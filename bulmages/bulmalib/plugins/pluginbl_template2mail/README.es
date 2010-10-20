@@ -10,6 +10,7 @@ Biblioteca: libpluginbl_template2mail.so
 
 Descripción: <H1>Informes personalizados por e-mail</H1>
 <P>Permite el envio por correo electronico de los informes personalizados utilizados con el plugin de Informes Personalizados.</P>
+<P>El programa de correo electronico soportado es <B>kmail</B></P>
 <HR>
 
 ParmBD:

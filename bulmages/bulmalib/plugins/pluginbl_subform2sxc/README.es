@@ -14,6 +14,8 @@ de cálculo. </P>
 <P>Una vez instalado el plugin al pulsar con el boton derecho sobre cualquier subformulario aparecera
 la opcion <B>Exportar a hoja de calculo SXC</B> que hará la exportacion a hoja de calculo y la abrira
 para que pueda ser manejada</P>
+<P>Puede seleccionarse el programa que se desea utilizar por defecto para abrir este tipo de documentos mediante el parametro de configuración
+<B>CONF_SXC</B>   que por defecto usa   <B>xdg-open</B> que viene a ser el programa por defecto de Linux.</P>
 <HR>
 
 ParmBD: -
