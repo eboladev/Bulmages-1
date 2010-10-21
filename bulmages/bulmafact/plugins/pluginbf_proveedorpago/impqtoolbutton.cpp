@@ -92,41 +92,154 @@ void GenPagoQToolButton::click()
 {
     blDebug ( "ImpQToolButton::click", 0 );
 
-    if ( m_object->objectName() == "FacturaProveedorBase" ) {
-        FacturaProveedorView *fpv = ( FacturaProveedorView * ) m_object;
-        PagoView *bud = new PagoView ( ( BfCompany * ) fpv->mainCompany(), NULL );
-        fpv->mainCompany() ->m_pWorkspace->addWindow ( bud );
-        bud->setDbValue ( "idproveedor", fpv->dbValue ( "idproveedor" ) );
-        bud->setDbValue ( "cantpago", fpv->m_totalfacturap->text() );
-        bud->setDbValue ( "refpago", fpv->dbValue ( "reffacturap" ) );
-        bud->setDbValue ( "comentpago", fpv->dbValue ( "descfacturap" ) );
-        bud->pintar();
-        bud->show();
-    }// end if
+    if ( m_object->objectName() == "FacturaProveedorBase" ) {      
+
+	FacturaProveedorView *fpv = ( FacturaProveedorView * ) m_object;
+        int nuevo = 1;
+        /// Comprobamos que no haya ya un pago con la misma referencia y lo ponemos
+        QString query = "SELECT * FROM pago WHERE refpago ='" + fpv->dbValue ( "reffacturap" ) + "'";
+        BlDbRecordSet *cur = fpv->mainCompany()->loadQuery ( query );
+        if ( cur->numregistros() > 0 ) {
+            QMessageBox msgBox;
+            msgBox.setText ( tr ( "Ya existe un pago con esta referencia\n" ) );
+            msgBox.setInformativeText ( tr ( "Desea abrir el pago existente, registrar un nuevo pago o salir?" ) );
+            msgBox.addButton ( tr ( "Crear" ), QMessageBox::ActionRole );
+            QPushButton *openButton = msgBox.addButton ( QMessageBox::Open );
+            QPushButton *abortButton = msgBox.addButton ( QMessageBox::Cancel );
+            msgBox.setDefaultButton ( QMessageBox::Cancel );
+            msgBox.exec();
+            /// Se ha pulsado sobre la opcion abrir
+            if ( msgBox.clickedButton() == openButton ) {
+                while ( !cur->eof() ) {
+		    PagoView *bud = new PagoView ( ( BfCompany * ) fpv->mainCompany(), 0 );
+		    fpv->mainCompany() ->m_pWorkspace->addWindow ( bud );
+                    bud->cargar ( cur->valor ( "idpago" ) );
+                    bud->pintar();
+                    bud->show();
+                    cur->nextRecord();
+                } // end while
+                nuevo = 0;
+            } // end if
+
+            /// Se ha pulsado sobre la opcion cancelar
+            if ( msgBox.clickedButton() == abortButton )
+                nuevo = 0;
+        } // end if
+        delete cur;
+
+        /// Creacion de un pago nuevo a partir de la factura.
+        if ( nuevo ) {
+	    PagoView *bud = new PagoView ( fpv->mainCompany(), 0 );
+	    fpv->mainCompany() ->m_pWorkspace->addWindow ( bud );
+	    bud->setDbValue ( "idproveedor", fpv->dbValue ( "idproveedor" ) );
+	    bud->setDbValue ( "cantpago", fpv->m_totalfacturap->text() );
+	    bud->setDbValue ( "refpago", fpv->dbValue ( "reffacturap" ) );
+	    bud->setDbValue ( "comentpago", fpv->dbValue ( "descfacturap" ) );
+	    bud->pintar();
+	    bud->show();
+        } // end if
+
+	/// Marcamnos la factura como procesada ya que el cobro es inicialmente por el importe total
+	fpv->mui_procesadafacturap->setChecked(TRUE);
+    } // end if
 
     if ( m_object->objectName() == "AlbaranProveedorBase" ) {
-        AlbaranProveedorView *fpv = ( AlbaranProveedorView * ) m_object;
-        PagoView *bud = new PagoView ( ( BfCompany * ) fpv->mainCompany(), NULL );
-        fpv->mainCompany() ->m_pWorkspace->addWindow ( bud );
-        bud->setDbValue ( "idproveedor", fpv->dbValue ( "idproveedor" ) );
-        bud->setDbValue ( "cantpago", fpv->m_totalalbaranp->text() );
-        bud->setDbValue ( "refpago", fpv->dbValue ( "refalbaranp" ) );
-        bud->setDbValue ( "comentpago", fpv->dbValue ( "descalbaranp" ) );
-        bud->pintar();
-        bud->show();
-    }// end if
+      
+	AlbaranProveedorView *fpv = ( AlbaranProveedorView * ) m_object;
+        int nuevo = 1;
+        /// Comprobamos que no haya ya un pago con la misma referencia y lo ponemos
+        QString query = "SELECT * FROM pago WHERE refpago ='" + fpv->dbValue ( "refalbaranp" ) + "'";
+        BlDbRecordSet *cur = fpv->mainCompany()->loadQuery ( query );
+        if ( cur->numregistros() > 0 ) {
+            QMessageBox msgBox;
+            msgBox.setText ( tr ( "Ya existe un pago con esta referencia\n" ) );
+            msgBox.setInformativeText ( tr ( "Desea abrir el pago existente, registrar un nuevo pago o salir?" ) );
+            msgBox.addButton ( tr ( "Crear" ), QMessageBox::ActionRole );
+            QPushButton *openButton = msgBox.addButton ( QMessageBox::Open );
+            QPushButton *abortButton = msgBox.addButton ( QMessageBox::Cancel );
+            msgBox.setDefaultButton ( QMessageBox::Cancel );
+            msgBox.exec();
+            /// Se ha pulsado sobre la opcion abrir
+            if ( msgBox.clickedButton() == openButton ) {
+                while ( !cur->eof() ) {
+		    PagoView *bud = new PagoView ( ( BfCompany * ) fpv->mainCompany(), 0 );
+		    fpv->mainCompany() ->m_pWorkspace->addWindow ( bud );
+                    bud->cargar ( cur->valor ( "idpago" ) );
+                    bud->pintar();
+                    bud->show();
+                    cur->nextRecord();
+                } // end while
+                nuevo = 0;
+            } // end if
+
+            /// Se ha pulsado sobre la opcion cancelar
+            if ( msgBox.clickedButton() == abortButton )
+                nuevo = 0;
+        } // end if
+        delete cur;
+
+        /// Creacion de un pago nuevo a partir del albaran.
+        if ( nuevo ) {
+	    PagoView *bud = new PagoView ( ( BfCompany * ) fpv->mainCompany(), NULL );
+	    fpv->mainCompany() ->m_pWorkspace->addWindow ( bud );
+	    bud->setDbValue ( "idproveedor", fpv->dbValue ( "idproveedor" ) );
+	    bud->setDbValue ( "cantpago", fpv->m_totalalbaranp->text() );
+	    bud->setDbValue ( "refpago", fpv->dbValue ( "refalbaranp" ) );
+	    bud->setDbValue ( "comentpago", fpv->dbValue ( "descalbaranp" ) );
+	    bud->pintar();
+	    bud->show();
+        } // end if
+
+    } // end if
 
     if ( m_object->objectName() == "PedidoProveedorBase" ) {
-        PedidoProveedorView *fpv = ( PedidoProveedorView * ) m_object;
-        PagoView *bud = new PagoView ( ( BfCompany * ) fpv->mainCompany(), NULL );
-        fpv->mainCompany() ->m_pWorkspace->addWindow ( bud );
-        bud->setDbValue ( "idproveedor", fpv->dbValue ( "idproveedor" ) );
-        bud->setDbValue ( "cantpago", fpv->mui_totalPedido->text() );
-        bud->setDbValue ( "refpago", fpv->dbValue ( "refpedidoproveedor" ) );
-        bud->setDbValue ( "comentpago", fpv->dbValue ( "descpedidoproveedor" ) );
-        bud->pintar();
-        bud->show();
-    }// end if
+      
+	PedidoProveedorView *fpv = ( PedidoProveedorView * ) m_object;
+        int nuevo = 1;
+        /// Comprobamos que no haya ya un pago con la misma referencia y lo ponemos
+        QString query = "SELECT * FROM pago WHERE refpago ='" + fpv->dbValue ( "refpedidoproveedor" ) + "'";
+        BlDbRecordSet *cur = fpv->mainCompany()->loadQuery ( query );
+        if ( cur->numregistros() > 0 ) {
+            QMessageBox msgBox;
+            msgBox.setText ( tr ( "Ya existe un pago con esta referencia\n" ) );
+            msgBox.setInformativeText ( tr ( "Desea abrir el pago existente, registrar un nuevo pago o salir?" ) );
+            msgBox.addButton ( tr ( "Crear" ), QMessageBox::ActionRole );
+            QPushButton *openButton = msgBox.addButton ( QMessageBox::Open );
+            QPushButton *abortButton = msgBox.addButton ( QMessageBox::Cancel );
+            msgBox.setDefaultButton ( QMessageBox::Cancel );
+            msgBox.exec();
+            /// Se ha pulsado sobre la opcion abrir
+            if ( msgBox.clickedButton() == openButton ) {
+                while ( !cur->eof() ) {
+		    PagoView *bud = new PagoView ( ( BfCompany * ) fpv->mainCompany(), 0 );
+		    fpv->mainCompany() ->m_pWorkspace->addWindow ( bud );
+                    bud->cargar ( cur->valor ( "idpago" ) );
+                    bud->pintar();
+                    bud->show();
+                    cur->nextRecord();
+                } // end while
+                nuevo = 0;
+            } // end if
+
+            /// Se ha pulsado sobre la opcion cancelar
+            if ( msgBox.clickedButton() == abortButton )
+                nuevo = 0;
+        } // end if
+        delete cur;
+
+        /// Creacion de un pago nuevo a partir de la factura.
+        if ( nuevo ) {
+	    PagoView *bud = new PagoView ( ( BfCompany * ) fpv->mainCompany(), NULL );
+	    fpv->mainCompany() ->m_pWorkspace->addWindow ( bud );
+	    bud->setDbValue ( "idproveedor", fpv->dbValue ( "idproveedor" ) );
+	    bud->setDbValue ( "cantpago", fpv->mui_totalPedido->text() );
+	    bud->setDbValue ( "refpago", fpv->dbValue ( "refpedidoproveedor" ) );
+	    bud->setDbValue ( "comentpago", fpv->dbValue ( "descpedidoproveedor" ) );
+	    bud->pintar();
+	    bud->show();
+        } // end if
+
+    } // end if
 
     blDebug ( "END ImpQToolButton::click", 0 );
 }
