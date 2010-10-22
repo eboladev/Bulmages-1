@@ -10,7 +10,7 @@ global pathdbparches
 global pathdbplugins
 global configfiles
 global confsharebulmages
-
+global confopenreports
 
 class PluginsBulmaSetup:
   def __init__(self):

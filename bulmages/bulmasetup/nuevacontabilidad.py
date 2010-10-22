@@ -25,7 +25,7 @@ class NuevaContabilidad(Contabilidad):
   
 
     # Ponemos la pestanya de consola como la visible
-    self.tabWidget.setCurrentIndex(1)
+    self.tabWidget.setCurrentIndex(2)
 
     self.mui_textBrowser.clear()
 

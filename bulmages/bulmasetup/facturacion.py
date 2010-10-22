@@ -64,7 +64,13 @@ class Facturacion(Ui_ModificarFacturacionBase, Empresa):
       # Habilitamos el Sortin pq los campos ya estan rellenos.
       self.mui_plugins.setSortingEnabled(False)
       self.mui_plugins1.setSortingEnabled(False)
-
+      
+      #Comprobamos que exista la imagen y si es asi la presentamos.
+      if (self.database != None):
+         if (os.path.exists('/opt/bulmages/openreports_' + self.database + '/logo.jpg' )):
+            self.pixmap = QtGui.QPixmap('/opt/bulmages/openreports_' + self.database + '/logo.jpg')
+            self.mui_img.setPixmap(self.pixmap)
+         
    def inicializar(self):
       # Ponemos la pestanya de consola como la visible
       self.tabWidget.setCurrentIndex(2)
@@ -146,14 +152,23 @@ class Facturacion(Ui_ModificarFacturacionBase, Empresa):
       self.writecommand(self.string)
       self.process.start(self.string)
       self.process.waitForFinished(-1)
-      self.string = "cp " + plugins.confopenreports + "logo.jpg" +  " /opt/bulmages/openreports_" + self.database
-      self.writecommand(self.string)
-      self.process.start(self.string)
-      self.process.waitForFinished(-1)
+      if (os.path.exists(plugins.confopenreports + "logo.jpg")):
+         self.string = "cp " + plugins.confopenreports + "logo.jpg" +  " /opt/bulmages/openreports_" + self.database
+         self.writecommand(self.string)
+         self.process.start(self.string)
+         self.process.waitForFinished(-1)
       self.string = "cp " + plugins.confopenreports + "ficha.rml" +  " /opt/bulmages/openreports_" + self.database
       self.writecommand(self.string)
       self.process.start(self.string)
       self.process.waitForFinished(-1)
+
+      # Pasamos el logotipo
+      if (self.mui_textfile.text() != ""):
+         self.string = "cp "+ self.mui_textfile.text() + " /opt/bulmages/openreports_" + self.database + "/logo.jpg"
+         self.process.start(self.string)
+         self.process.waitForFinished(-1)
+
+
 
       # Iteramos sobre la lista de plugins disponibles en bulmafact para copiar sus plantillas
       self.i = 0
@@ -511,6 +526,14 @@ class Facturacion(Ui_ModificarFacturacionBase, Empresa):
          i = i + 1
       print "fin desmarcar " + plug
 
+
+   def on_mui_chosefile_pressed(self):
+      self.fileName = QtGui.QFileDialog.getOpenFileName(self, "Open File", "~", "Images (*.jpg)")
+      self.mui_textfile.setText(self.fileName)
+      #Comprobamos que exista la imagen y si es asi la presentamos.
+      if (self.fileName):
+         self.pixmap = QtGui.QPixmap(self.fileName)
+         self.mui_img.setPixmap(self.pixmap)
 
    def on_mui_plugins_cellPressed(self, row, col):
       self.estado = self.mui_plugins.item(row,0).checkState()

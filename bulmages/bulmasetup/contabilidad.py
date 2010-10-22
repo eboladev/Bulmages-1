@@ -42,6 +42,12 @@ class Contabilidad(Ui_ModificarContabilidadBase, Empresa):
       self.inicializar()
       self.mui_plugins.setSortingEnabled(True)
       
+      #Comprobamos que exista la imagen y si es asi la presentamos.
+      if (self.database != None):
+         if (os.path.exists('/opt/bulmages/openreports_' + self.database + '/logo.jpg' )):
+            self.pixmap = QtGui.QPixmap('/opt/bulmages/openreports_' + self.database + '/logo.jpg')
+            self.mui_img.setPixmap(self.pixmap)
+            
    def inicializar(self):
       # Inicializamos el combo de categoria.
       self.mui_categoria.clear()
@@ -347,15 +353,22 @@ class Contabilidad(Ui_ModificarContabilidadBase, Empresa):
       self.writecommand(self.string)
       self.process.start(self.string)
       self.process.waitForFinished(-1)
-      self.string = "cp " + plugins.confopenreports + "logo.jpg" + " /opt/bulmages/openreports_" + self.database
-      self.writecommand(self.string)
-      self.process.start(self.string)
-      self.process.waitForFinished(-1)
+      if (os.path.exists(plugins.confopenreports + "logo.jpg")):
+         self.string = "cp " + plugins.confopenreports + "logo.jpg" + " /opt/bulmages/openreports_" + self.database
+         self.writecommand(self.string)
+         self.process.start(self.string)
+         self.process.waitForFinished(-1)
       self.string = "cp " + plugins.confopenreports + "ficha.rml" + " /opt/bulmages/openreports_" + self.database
       self.writecommand(self.string)
       self.process.start(self.string)
       self.process.waitForFinished(-1)
 
+      # Pasamos el logotipo
+      if (self.mui_textfile.text() != ""):
+         self.string = "cp "+ self.mui_textfile.text() + " /opt/bulmages/openreports_" + self.database + "/logo.jpg"
+         self.process.start(self.string)
+         self.process.waitForFinished(-1)
+         
       # Iteramos sobre la lista de plugins disponibles en bulmafact para copiar sus plantillas
       self.i = 0
       while (self.i < self.mui_plugins.rowCount()):
@@ -499,6 +512,15 @@ class Contabilidad(Ui_ModificarContabilidadBase, Empresa):
       self.file1.close()
 
       self.trataOpenReports()
+
+   def on_mui_chosefile_pressed(self):
+      self.fileName = QtGui.QFileDialog.getOpenFileName(self, "Open File", "~", "Images (*.jpg)")
+      self.mui_textfile.setText(self.fileName)
+      #Comprobamos que exista la imagen y si es asi la presentamos.
+      if (self.fileName):
+         self.pixmap = QtGui.QPixmap(self.fileName)
+         self.mui_img.setPixmap(self.pixmap)
+
 
    def on_mui_categoria_currentIndexChanged(self, index):
       self.presentar()

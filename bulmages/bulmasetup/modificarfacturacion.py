@@ -83,7 +83,7 @@ class ModificarFacturacion( Facturacion):
 	
     def on_mui_aceptar_released(self):
         # Ponemos la pestanya de consola como la visible
-        self.tabWidget.setCurrentIndex(2)
+        self.tabWidget.setCurrentIndex(3)
     
         if (self.mui_actualizarDB.checkState() == Qt.Checked ):
             self.actualizarDatabase()
