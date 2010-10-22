@@ -10,7 +10,6 @@ file(GLOB plugin_SRC *.c *.cpp *.cxx)
 file(GLOB plugin_MOCS *.hpp *.h)
 file(GLOB plugin_UIS *.ui)
 
-
 # Exclude files with no QObject macro.
 file(GLOB plugin_NO_MOCS pluginbf_camarero.h pdefs_pluginbf_camarero.h)
 list(REMOVE_ITEM plugin_MOCS ${plugin_NO_MOCS})
@@ -33,9 +32,7 @@ include_directories(
 	${CMAKE_BINARY_DIR}/bulmafact/src/
 	${CMAKE_SOURCE_DIR}/bulmafact/src/
 	${CMAKE_BINARY_DIR}/bulmafact/plugins/pluginbf_trabajador/
-	${CMAKE_SOURCE_DIR}/bulmafact/plugins/pluginbf_trabajador/
-	${CMAKE_BINARY_DIR}/bulmafact/plugins/pluginbf_articulo/
-	${CMAKE_SOURCE_DIR}/bulmafact/plugins/pluginbf_articulo/)
+	${CMAKE_SOURCE_DIR}/bulmafact/plugins/pluginbf_trabajador/)
 
 # generate rules for building source files from the resources
 #QT4_WRAP_CPP(plugin_MOC_SRCS ${plugin_MOCS})

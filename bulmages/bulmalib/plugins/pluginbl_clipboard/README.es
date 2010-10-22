@@ -19,6 +19,8 @@ facturas. Pega contenidos de forma rápida en la facturación.</P>
 <P>Una vez hecho el copiado en la hoja de calculo para realizar el pegado existe la opción de menú contextual Pegar desde hoja de calculo.</P>
 
 <P>Las hojas de calculo soportadas son OpenOffice y KOffice</P>
+<BR>
+<IMG SRC="@CMAKE_INSTALL_PREFIX@/share/bulmages/images/logopeq.png"/>
 <HR>
 
 ParmBD: -

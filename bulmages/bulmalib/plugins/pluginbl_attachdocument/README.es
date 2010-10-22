@@ -13,6 +13,8 @@ Descripción: <H1>Adjuntar documentos</H1>
 <P>Una vez instalado el plugin en todas las fichas del programar aparecera una opción en el menú contextual
 de la ficha que nos permitira agregar referencias a la ficha, ver los archivos existentes y borrar las
 referencias</P>
+<BR>
+<IMG SRC="@CMAKE_INSTALL_PREFIX@/share/bulmages/images/logopeq.png"/>
 <HR>
 
 ParmBD: PluginBl_AttachDocument

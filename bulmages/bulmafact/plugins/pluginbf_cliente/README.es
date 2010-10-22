@@ -8,7 +8,7 @@ Nombre: Clientes
 
 Biblioteca: libpluginbf_cliente.so
 
-Descripción: <H1>Gestion de clientes</H1>
+Descripción: <H1><IMG SRC="@CMAKE_INSTALL_PREFIX@/share/bulmages/imagesrc/images/oxygen/actions/client.svg" WIDTH="100"/><BR>Gestion de clientes</H1>
 <P> Permite realizar la gestion de clientes de la empresa. Mostrando el listado de clientes y permitiendo
 hacer altas, bajas y modificaciones</P>
 <P> Este plugin es imprescindible para todos aquellos modelos de negocio donde se trabaje con clientes</P>

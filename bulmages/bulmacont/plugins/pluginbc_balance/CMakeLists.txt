@@ -4,7 +4,6 @@
 #pluginbc_balance
 
 set (plugin pluginbc_balance)
-set (docs README.es)
 
 file(GLOB plugin_SRC *.c *.cpp *.cxx)
 file(GLOB plugin_MOCS *.hpp *.h)
@@ -95,10 +94,9 @@ endif(WIN32)
 add_dependencies(${plugin} bulmacont bulmalib pluginbc_balancearbol)
 
 install_targets(/lib/bulmacont/plugins ${plugin})
-foreach(dfile ${docs})
- install (FILES ${dfile}
-DESTINATION share/bulmages/bulmacont-plugins/ RENAME ${dfile}.${plugin})
-endforeach(dfile in ${docs})
+
+configure_file( ${CMAKE_CURRENT_SOURCE_DIR}/README.es ${CMAKE_CURRENT_BINARY_DIR}/README.es @ONLY)
+install (FILES ${CMAKE_CURRENT_BINARY_DIR}/README.es DESTINATION share/bulmages/bulmacont-plugins/ RENAME README.es.${plugin})
 
 set(plugin_STR ${plugin_SRC} ${plugin_MOC_SRCS}
    ${plugin_UIS_H} ${plugin_SRCS} ${plugin_MOCS})

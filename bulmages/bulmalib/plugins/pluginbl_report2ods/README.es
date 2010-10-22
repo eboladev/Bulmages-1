@@ -14,6 +14,8 @@ de que se disponga. Dichos informes son scripts Python con ooolib.</P>
 <P>Los informes deben estar en formato PYS y deben llamarse inf_XXXX.pys para que aparezcan en el menu
 <B>Informes personales SXC</B></P>
 <P>Existen varios ejemplos del formato pys en la seccion de informes de la instalación del programa.</P>
+<BR>
+<IMG SRC="@CMAKE_INSTALL_PREFIX@/share/bulmages/images/logopeq.png"/>
 <HR>
 
 ParmBD: 

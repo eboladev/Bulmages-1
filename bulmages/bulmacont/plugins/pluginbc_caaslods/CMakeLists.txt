@@ -25,7 +25,6 @@
 # pluginbc_caaslods
 
 set (plugin pluginbc_caaslods)
-set (docs README.es) #add the README.nn files
 
 file(GLOB plugin_SRC *.c *.cpp *.cxx)
 file(GLOB plugin_MOCS *.hpp *.h)
@@ -109,10 +108,10 @@ target_link_libraries(${plugin} libbulmacont bulmalib ${QT_LIBRARIES} ${PGSQL_LI
 add_dependencies(${plugin} bulmacont bulmalib)
 
 install_targets(/lib/bulmacont/plugins ${plugin})
-foreach(dfile ${docs})
- install (FILES ${dfile}
-DESTINATION share/bulmages/bulmacont-plugins/ RENAME ${dfile}.${plugin})
-endforeach(dfile in ${docs})
+
+# Instalamos el archivo README para las descripciones de BulmaSetup
+configure_file( ${CMAKE_CURRENT_SOURCE_DIR}/README.es ${CMAKE_CURRENT_BINARY_DIR}/README.es @ONLY)
+install (FILES ${CMAKE_CURRENT_BINARY_DIR}/README.es DESTINATION share/bulmages/bulmacont-plugins/ RENAME README.es.${plugin})
 
 file(GLOB report_files openreports/*.pys openreports/*.rml)
 

@@ -14,6 +14,8 @@ una cruz con la que podemos seleccionar una aplicación corriendo en el sistema,
 a ser una ventana más de BulmaFact. La opcion Docked Aplication tiene un funcionamiento similar pero hace que la aplicación se
 presente como una ToolBar. Util para trabajos en ventana completa donde queremos tener algunas aplicaciones
 Visibles sin perder la capacidad de controlar el correo o el jabber.</P>
+<BR>
+<IMG SRC="@CMAKE_INSTALL_PREFIX@/share/bulmages/images/logopeq.png"/>
 <HR>
 
 ParmBD: 

@@ -4,7 +4,6 @@
 #pluginbc_diario
 
 set (plugin pluginbc_cuenta)
-set (docs README.es)
 
 file(GLOB plugin_SRC *.c *.cpp *.cxx)
 file(GLOB plugin_MOCS *.hpp *.h)
@@ -95,10 +94,10 @@ endif(WIN32)
 add_dependencies(${plugin} bulmacont bulmalib pluginbc_asiento)
 
 install_targets(/lib/bulmacont/plugins ${plugin})
-foreach(dfile ${docs})
- install (FILES ${dfile}
-DESTINATION share/bulmages/bulmacont-plugins/ RENAME ${dfile}.${plugin})
-endforeach(dfile in ${docs})
+
+# Instalamos el archivo README para las descripciones de BulmaSetup
+configure_file( ${CMAKE_CURRENT_SOURCE_DIR}/README.es ${CMAKE_CURRENT_BINARY_DIR}/README.es @ONLY)
+install (FILES ${CMAKE_CURRENT_BINARY_DIR}/README.es DESTINATION share/bulmages/bulmacont-plugins/ RENAME README.es.${plugin})
 
 set(plugin_STR ${plugin_SRC} ${plugin_MOC_SRCS}
    ${plugin_UIS_H} ${plugin_SRCS} ${plugin_MOCS})

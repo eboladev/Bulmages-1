@@ -95,6 +95,9 @@ else(WIN32)
 target_link_libraries(${plugin} bulmalib libbulmafact ${QT_LIBRARIES} ${PGSQL_LIBRARIES})
 endif(WIN32)
 
+configure_file( ${CMAKE_CURRENT_SOURCE_DIR}/README.es ${CMAKE_CURRENT_BINARY_DIR}/README.es @ONLY)
+install (FILES ${CMAKE_CURRENT_BINARY_DIR}/README.es DESTINATION share/bulmages/bulmafact-plugins/ RENAME README.es.${plugin})
+
 install_targets(/lib/bulmafact/plugins ${plugin})
 
 add_dependencies(${plugin} bulmafact bulmalib pluginbf_clientealbaran pluginbf_clientefactura pluginbf_proveedorfactura)

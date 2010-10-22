@@ -13,6 +13,8 @@ Descripción: <H1>Impresion de subformularios</H1>
 <P>Una vez instalado el plugin al pulsar con el boton derecho sobre cualquier subformulario
 aparecera la opcion <B>Imprimir Subformulario</B> en el menu contextual que generara un
 documento PDF con los contenidos del mismo</P>
+<BR>
+<IMG SRC="@CMAKE_INSTALL_PREFIX@/share/bulmages/images/logopeq.png"/>
 <HR>
 
 ParmBD: -

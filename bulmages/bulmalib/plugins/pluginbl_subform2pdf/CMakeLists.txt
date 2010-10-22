@@ -24,7 +24,6 @@
 #pluginbl_subform2pdf
 
 set (plugin pluginbl_subform2pdf)
-set (docs README.es)
 
 file(GLOB plugin_SRC *.c *.cpp *.cxx)
 file(GLOB plugin_MOCS *.hpp *.h)
@@ -85,9 +84,8 @@ add_dependencies(${plugin} bulmalib)
 
 install_targets(/lib/bulmalib/plugins ${plugin})
 
-foreach(dfile ${docs})
- install (FILES ${dfile}
-DESTINATION share/bulmages/bulmalib-plugins/ RENAME ${dfile}.${plugin})
-endforeach(dfile in ${docs})
+configure_file( ${CMAKE_CURRENT_SOURCE_DIR}/README.es ${CMAKE_CURRENT_BINARY_DIR}/README.es @ONLY)
+install (FILES ${CMAKE_CURRENT_BINARY_DIR}/README.es DESTINATION share/bulmages/bulmalib-plugins/ RENAME README.es.${plugin})
+
 
 ADD_LOCAL_BLI18N_HEADER( ${plugin} )

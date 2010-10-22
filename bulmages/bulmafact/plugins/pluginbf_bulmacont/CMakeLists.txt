@@ -4,7 +4,6 @@
 #pluginbf_bulmacont
 
 set (plugin pluginbf_bulmacont)
-set (docs README.es)
 
 file(GLOB plugin_SRC *.c *.cpp *.cxx)
 file(GLOB plugin_MOCS *.hpp *.h)
@@ -62,16 +61,6 @@ ADD_DEFINITIONS("-D'_(String)=BlI18n(\"${plugin}\",String)'" )
 ADD_DEFINITIONS("-D'N_(String,Int)=BlI18n(\"${plugin}\",String)'" )
 endif(NOT WIN32)
 
-
-#if(USE_GETTEXT)
-#   set(plugin_i18n ${plugin_SRC} ${plugin_MOC_SRCS} ${plugin_UIS_H}
-#                        ${plugin_SRCS} ${plugin_MOCS})
-#   GETTEXT_CREATE_TEMPLATE(${plugin} ${CMAKE_CURRENT_BINARY_DIR}
-#                                ${CMAKE_CURRENT_SOURCE_DIR} plugin_i18n)
-#   GETTEXT_CREATE_TRANSLATIONS(${CMAKE_CURRENT_BINARY_DIR}/${plugin}.pot
-#                                ALL LANGUAGES es_ES.UTF-8 ca_ES.UTF-8)
-#endif(USE_GETTEXT)
-
 # build sources, moc'd sources, and rcc'd sources
 
 add_library(${plugin} SHARED ${plugin_SRC} ${plugin_MOC_SRCS}
@@ -85,8 +74,7 @@ set_target_properties( ${plugin} PROPERTIES
 target_link_libraries(${plugin} libbulmafact bulmalib libbulmacont ${QT_LIBRARIES} ${PGSQL_LIBRARIES})
 install_targets(/lib/bulmafact/plugins ${plugin})
 
-foreach(dfile ${docs})
-   install (FILES ${dfile} DESTINATION share/bulmages/bulmafact-plugins/ RENAME ${dfile}.${plugin})
-endforeach(dfile in ${docs})
+configure_file( ${CMAKE_CURRENT_SOURCE_DIR}/README.es ${CMAKE_CURRENT_BINARY_DIR}/README.es @ONLY)
+install (FILES ${CMAKE_CURRENT_BINARY_DIR}/README.es DESTINATION share/bulmages/bulmafact-plugins/ RENAME README.es.${plugin})
 
 add_dependencies(${plugin} bulmafact bulmalib bulmacont)

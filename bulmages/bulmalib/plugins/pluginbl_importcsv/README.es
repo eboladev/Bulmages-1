@@ -13,6 +13,8 @@ Descripción: <H1>Importar CSV</H1>
 separated values). </P>
 <P>Una vez instalado el plugin tendremos una opcion en el menu contextual de la ficha que nos permite seleccionar el
 archivo CSV que queremos importar</P>
+<BR>
+<IMG SRC="@CMAKE_INSTALL_PREFIX@/share/bulmages/images/logopeq.png"/>
 <HR>
 
 ParmBD: -

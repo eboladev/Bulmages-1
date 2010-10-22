@@ -4,7 +4,6 @@
 #pluginbc_registroiva
 
 set (plugin pluginbc_registroiva)
-set (docs README.es) #add the README.nn files
 
 file(GLOB plugin_SRC *.c *.cpp *.cxx)
 file(GLOB plugin_MOCS *.hpp *.h)
@@ -90,10 +89,9 @@ target_link_libraries(${plugin} libbulmacont bulmalib pluginbc_asiento ${QT_LIBR
 add_dependencies(${plugin} bulmacont bulmalib pluginbc_asiento)
 
 install_targets(/lib/bulmacont/plugins ${plugin})
-foreach(dfile ${docs})
- install (FILES ${dfile}
-DESTINATION share/bulmages/bulmacont-plugins/ RENAME ${dfile}.${plugin})
-endforeach(dfile in ${docs})
+
+configure_file( ${CMAKE_CURRENT_SOURCE_DIR}/README.es ${CMAKE_CURRENT_BINARY_DIR}/README.es @ONLY)
+install (FILES ${CMAKE_CURRENT_BINARY_DIR}/README.es DESTINATION share/bulmages/bulmacont-plugins/ RENAME README.es.${plugin})
 
 set(plugin_STR ${plugin_SRC} ${plugin_MOC_SRCS}
    ${plugin_UIS_H} ${plugin_SRCS} ${plugin_MOCS})

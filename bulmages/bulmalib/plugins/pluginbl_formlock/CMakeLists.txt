@@ -4,7 +4,6 @@
 #pluginbl_formlock
 
 set (plugin pluginbl_formlock)
-set (docs README.es)
 
 file(GLOB plugin_SRC *.c *.cpp *.cxx)
 file(GLOB plugin_MOCS *.hpp *.h)
@@ -66,9 +65,9 @@ target_link_libraries(${plugin} bulmalib ${QT_LIBRARIES} ${PGSQL_LIBRARIES})
 install_targets(/lib/bulmalib/plugins ${plugin})
 
 
-foreach(dfile ${docs})
-   install (FILES ${dfile} DESTINATION share/bulmages/bulmalib-plugins/ RENAME ${dfile}.${plugin})
-endforeach(dfile in ${docs})
+configure_file( ${CMAKE_CURRENT_SOURCE_DIR}/README.es ${CMAKE_CURRENT_BINARY_DIR}/README.es @ONLY)
+install (FILES ${CMAKE_CURRENT_BINARY_DIR}/README.es DESTINATION share/bulmages/bulmalib-plugins/ RENAME README.es.${plugin})
+
 
 add_dependencies(${plugin} bulmalib bulmacont bulmafact)
 install(DIRECTORY dbmodels/ 

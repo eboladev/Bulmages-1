@@ -4,7 +4,6 @@
 #plugin_tc_articulos
 
 set (plugin pluginbf_tallascolores)
-set (docs README.es)
 
 file(GLOB plugin_SRC *.c *.cpp *.cxx)
 file(GLOB plugin_MOCS *.hpp *.h)
@@ -103,28 +102,16 @@ set_target_properties( ${plugin} PROPERTIES
 
 target_link_libraries(${plugin} libbulmafact bulmalib ${QT_LIBRARIES} ${PGSQL_LIBRARIES})
 
-
-# i18n
-#GETTEXT_CREATE_TEMPLATE(${plugin} ${CMAKE_BINARY_DIR}/bulmafact/plugins/${plugin} ${CMAKE_SOURCE_DIR}/bulmafact/plugins/${plugin} ${CMAKE_BINARY_DIR}/bulmafact/plugins/${plugin}/${plugin}_pot_list)
-#GETTEXT_CREATE_TRANSLATIONS (${CMAKE_BINARY_DIR}/bulmafact/plugins/${plugin}/${plugin}.pot ALL LANGUAGES es_ES.UTF-8 ca_ES.UTF-8)
-
-# i18n commands executed after build.
-#ADD_CUSTOM_COMMAND(TARGET ${plugin} POST_BUILD COMMAND make ${plugin}.pot WORKING_DIRECTORY ${CMAKE_BINARY_DIR})
-#ADD_CUSTOM_COMMAND(TARGET ${plugin} POST_BUILD COMMAND make ${plugin}_pos WORKING_DIRECTORY ${CMAKE_BINARY_DIR})
-
-
 install_targets(/lib/bulmafact/plugins ${plugin})
 
-foreach(dfile ${docs})
-   install (FILES ${dfile} DESTINATION share/bulmages/bulmafact-plugins/ RENAME ${dfile}.${plugin})
-endforeach(dfile in ${docs})
+configure_file( ${CMAKE_CURRENT_SOURCE_DIR}/README.es ${CMAKE_CURRENT_BINARY_DIR}/README.es @ONLY)
+install (FILES ${CMAKE_CURRENT_BINARY_DIR}/README.es DESTINATION share/bulmages/bulmafact-plugins/ RENAME README.es.${plugin})
+
 
 add_dependencies(${plugin} bulmafact bulmalib pluginbf_articulo)
 install(DIRECTORY dbmodels/ 
 		DESTINATION share/bulmages/dbmodels/plugins
 		PATTERN ".svn" EXCLUDE)
-
-
 
 file(GLOB report_files openreports/*.ui openreports/*.pys openreports/*.rml)
 

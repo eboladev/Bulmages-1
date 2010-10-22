@@ -6,8 +6,6 @@
 set (plugin pluginbf_proveedorfactura)
 ADD_DEFINITIONS(-D${plugin})
 
-set (docs README.es)
-
 configure_file( ${CMAKE_CURRENT_SOURCE_DIR}/css/${plugin}_es_ES.css.in ${CMAKE_BINARY_DIR}/bulmafact/plugins/${plugin}/${plugin}_es_ES.css @ONLY)
 configure_file( ${CMAKE_CURRENT_SOURCE_DIR}/css/${plugin}_ca_ES.css.in ${CMAKE_BINARY_DIR}/bulmafact/plugins/${plugin}/${plugin}_ca_ES.css @ONLY)
 
@@ -104,9 +102,8 @@ endif(WIN32)
 
 install_targets(/lib/bulmafact/plugins ${plugin})
 
-foreach(dfile ${docs})
-   install (FILES ${dfile} DESTINATION share/bulmages/bulmafact-plugins/ RENAME ${dfile}.${plugin})
-endforeach(dfile in ${docs})
+configure_file( ${CMAKE_CURRENT_SOURCE_DIR}/README.es ${CMAKE_CURRENT_BINARY_DIR}/README.es @ONLY)
+install (FILES ${CMAKE_CURRENT_BINARY_DIR}/README.es DESTINATION share/bulmages/bulmafact-plugins/ RENAME README.es.${plugin})
 
 add_dependencies(${plugin} bulmafact bulmalib pluginbf_proveedor pluginbf_proveedoralbaran pluginbf_proveedorpedido)
 

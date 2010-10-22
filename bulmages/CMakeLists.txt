@@ -190,6 +190,8 @@ add_subdirectory(doc)
 set (r_files README.es README.plugins.es)
 install(FILES ${r_files} DESTINATION share/bulmages/)
 
+install(DIRECTORY images DESTINATION share/bulmages/imagesrc PATTERN ".svn" EXCLUDE)
+
 
 ## We include cpack for others platforms differents than unix
 SET(CPACK_PACKAGE_DESCRIPTION_SUMMARY "The BulmaGes Suite")
