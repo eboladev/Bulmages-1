@@ -126,8 +126,12 @@ int BcCuentaView::nuevacuenta ( QString codpadre )
         valor ++;
         cpadreaux.setNum ( valor );
         mui_codigo->setText ( cpadreaux );
+
         /// Vamos a hacer la carga del tipocuenta.
-        int tipocuenta = cur->valor ( "tipocuenta" ).toInt();
+        QString query2 = "SELECT * FROM cuenta WHERE codigo = '" + codpadre + "'";
+	BlDbRecordSet *cur2 = mainCompany() ->loadQuery ( query2 );
+
+        int tipocuenta = cur2->valor ( "tipocuenta" ).toInt();
         switch ( tipocuenta ) {
         case 0:
             mui_tipocuenta_0->setChecked ( TRUE );

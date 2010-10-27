@@ -16,7 +16,7 @@
    <string>Plan de cuentas</string>
   </property>
   <property name="windowIcon">
-   <iconset resource="../../bulmages.qrc">
+   <iconset resource="../../../bulmages.qrc">
     <normaloff>:/Images/account_plan.png</normaloff>:/Images/account_plan.png</iconset>
   </property>
   <property name="toolTip">
@@ -52,7 +52,7 @@
         </size>
        </property>
        <property name="pixmap">
-        <pixmap resource="../../bulmages.qrc">:/Images/account_plan.png</pixmap>
+        <pixmap resource="../../../bulmages.qrc">:/Images/account_plan.png</pixmap>
        </property>
        <property name="scaledContents">
         <bool>true</bool>
@@ -122,7 +122,7 @@
            <string/>
           </property>
           <property name="icon">
-           <iconset resource="../../bulmages.qrc">
+           <iconset resource="../../../bulmages.qrc">
             <normaloff>:/Images/document-new.png</normaloff>:/Images/document-new.png</iconset>
           </property>
           <property name="iconSize">
@@ -166,7 +166,7 @@
            <string/>
           </property>
           <property name="icon">
-           <iconset resource="../../bulmages.qrc">
+           <iconset resource="../../../bulmages.qrc">
             <normaloff>:/Images/document-open.png</normaloff>:/Images/document-open.png</iconset>
           </property>
           <property name="iconSize">
@@ -248,7 +248,7 @@
            <string/>
           </property>
           <property name="icon">
-           <iconset resource="../../bulmages.qrc">
+           <iconset resource="../../../bulmages.qrc">
             <normaloff>:/Images/document-print.png</normaloff>:/Images/document-print.png</iconset>
           </property>
           <property name="iconSize">
@@ -292,7 +292,7 @@
            <string/>
           </property>
           <property name="icon">
-           <iconset resource="../../bulmages.qrc">
+           <iconset resource="../../../bulmages.qrc">
             <normaloff>:/Images/document-import.png</normaloff>:/Images/document-import.png</iconset>
           </property>
           <property name="iconSize">
@@ -333,7 +333,7 @@
            <string/>
           </property>
           <property name="icon">
-           <iconset resource="../../bulmages.qrc">
+           <iconset resource="../../../bulmages.qrc">
             <normaloff>:/Images/document-export.png</normaloff>:/Images/document-export.png</iconset>
           </property>
           <property name="iconSize">
@@ -374,7 +374,7 @@
            <string/>
           </property>
           <property name="icon">
-           <iconset resource="../../bulmages.qrc">
+           <iconset resource="../../../bulmages.qrc">
             <normaloff>:/Images/view-refresh.png</normaloff>:/Images/view-refresh.png</iconset>
           </property>
           <property name="iconSize">
@@ -497,7 +497,7 @@
   <tabstop>mui_tablacuentas</tabstop>
  </tabstops>
  <resources>
-  <include location="../../bulmages.qrc"/>
+  <include location="../../../bulmages.qrc"/>
  </resources>
  <connections/>
 </ui>
