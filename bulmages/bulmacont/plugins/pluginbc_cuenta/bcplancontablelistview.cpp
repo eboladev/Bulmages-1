@@ -88,6 +88,11 @@ BcPlanContableListView::BcPlanContableListView ( BcCompany *emp, QWidget *parent
     installEventFilter ( this );
     if ( m_modo == BL_EDIT_MODE )
         mainCompany() ->meteWindow ( windowTitle(), this );
+
+    /// De forma predeterminada los botones de busqueda 'anterior' y 'siguiente' estan deshabilitados.
+    mui_anterior->setDisabled(true);
+    mui_siguiente->setDisabled(true);
+
     blDebug ( "END BcPlanContableListView::BcPlanContableListView", 0 );
 }
 
@@ -277,21 +282,33 @@ void BcPlanContableListView::on_mui_busqueda_textChanged ( const QString &string
     blDebug ( "BcPlanContableListView::on_mui_busqueda_textChanged", 0 );
     QString cod = string1;
     
-    m_itemList = mui_arbolcuentas->findItems ( cod, Qt::MatchStartsWith | Qt::MatchWrap | Qt::MatchRecursive, ccuenta );
-    m_itemListPosition = 0;
-    
-    if ( m_itemList.count() > 0 ) {
-        mui_arbolcuentas->setCurrentItem ( m_itemList.first() );
+    if (cod.trimmed().isEmpty()) {
+
+        /// Si la cadena de texto esta vacia entonces elimina el resultado de la busqueda.
+	m_itemList.clear();
+
     } else {
-	// Si no se encuentra coincidencia en la primera columna 'ccuenta' entonces se busca en la columna de descripcion 'cdesccuenta'.
-        m_itemList = mui_arbolcuentas->findItems ( cod, Qt::MatchContains | Qt::MatchWrap | Qt::MatchRecursive, cdesccuenta );
-	m_itemListPosition = 0;
+    
+        m_itemList = mui_arbolcuentas->findItems ( cod, Qt::MatchStartsWith | Qt::MatchWrap | Qt::MatchRecursive, ccuenta );
+        m_itemListPosition = 0;
     
         if ( m_itemList.count() > 0 ) {
 	    mui_arbolcuentas->setCurrentItem ( m_itemList.first() );
+        } else {
+	    // Si no se encuentra coincidencia en la primera columna 'ccuenta' entonces se busca en la columna de descripcion 'cdesccuenta'.
+	    m_itemList = mui_arbolcuentas->findItems ( cod, Qt::MatchContains | Qt::MatchWrap | Qt::MatchRecursive, cdesccuenta );
+	    m_itemListPosition = 0;
+    
+	    if ( m_itemList.count() > 0 ) {
+	        mui_arbolcuentas->setCurrentItem ( m_itemList.first() );
+	    } // end if
+
 	} // end if
 
     } // end if
+
+    setSearchButtonsState();
+
     blDebug ( "END BcPlanContableListView::on_mui_busqueda_textChanged", 0 );
 }
 
@@ -355,6 +372,40 @@ void BcPlanContableListView::on_mui_crear_clicked()
 }
 
 
+void BcPlanContableListView::setSearchButtonsState()
+{
+    // Cuantos elementos de la lista hay?
+    int pos = m_itemListPosition;
+    int tamLista = m_itemList.size();
+    
+    if (tamLista <= 1) {
+	/// No hay elementos en la lista o solo hay 1.
+        mui_anterior->setDisabled(true);
+	mui_siguiente->setDisabled(true);
+    } else {
+    
+	if (pos == 0) {
+	    /// Estamos al principio de la lista.
+            mui_anterior->setDisabled(true);
+	    mui_siguiente->setDisabled(false);
+	    
+	} else if (pos == tamLista - 1) {
+	    /// Estamos al final de la lista.
+            mui_anterior->setDisabled(false);
+	    mui_siguiente->setDisabled(true);
+	    
+	} else {
+	    /// Estamos en medio de la lista.
+            mui_anterior->setDisabled(false);
+	    mui_siguiente->setDisabled(false);
+	    
+	} // end if
+
+    } // end if
+    
+}
+
+
 void BcPlanContableListView::on_mui_anterior_clicked()
 {
     if (m_itemListPosition > 0) {
@@ -362,6 +413,7 @@ void BcPlanContableListView::on_mui_anterior_clicked()
         mui_arbolcuentas->setCurrentItem ( m_itemList[m_itemListPosition] );
     } // end if
 
+    setSearchButtonsState();
 }
 
 
@@ -373,6 +425,7 @@ void BcPlanContableListView::on_mui_siguiente_clicked()
         mui_arbolcuentas->setCurrentItem ( m_itemList[m_itemListPosition] );
     } // end if
 
+    setSearchButtonsState();
 }
 
 

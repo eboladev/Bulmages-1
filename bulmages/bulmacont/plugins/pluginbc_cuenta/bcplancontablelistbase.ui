@@ -432,12 +432,18 @@
        <property name="text">
         <string>&amp;Anterior</string>
        </property>
+       <property name="shortcut">
+        <string>Shift+F3</string>
+       </property>
       </widget>
      </item>
      <item>
       <widget class="QPushButton" name="mui_siguiente">
        <property name="text">
         <string>&amp;Siguiente</string>
+       </property>
+       <property name="shortcut">
+        <string>F3</string>
        </property>
       </widget>
      </item>

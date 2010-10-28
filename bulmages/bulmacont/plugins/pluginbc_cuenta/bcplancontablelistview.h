@@ -77,6 +77,7 @@ public:
 
 private:
     void inicializatabla();
+    void setSearchButtonsState();
 
 private slots:
     virtual void on_mui_arbolcuentas_itemClicked ( QTreeWidgetItem *, int );
