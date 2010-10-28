@@ -275,20 +275,22 @@ void BcPlanContableListView::on_mui_arbolcuentas_itemClicked ( QTreeWidgetItem *
 void BcPlanContableListView::on_mui_busqueda_textChanged ( const QString &string1 )
 {
     blDebug ( "BcPlanContableListView::on_mui_busqueda_textChanged", 0 );
-    QList<QTreeWidgetItem *> it;
-    QString cod = blExtendStringWithZeros ( string1, ( int ) numdigitos );
-    it = mui_arbolcuentas->findItems ( cod, Qt::MatchStartsWith, ccuenta );
-    if ( it.count() > 0 ) {
-        mui_arbolcuentas->setCurrentItem ( it.first() );
+    QString cod = string1;
+    
+    m_itemList = mui_arbolcuentas->findItems ( cod, Qt::MatchStartsWith | Qt::MatchWrap | Qt::MatchRecursive, ccuenta );
+    m_itemListPosition = 0;
+    
+    if ( m_itemList.count() > 0 ) {
+        mui_arbolcuentas->setCurrentItem ( m_itemList.first() );
     } else {
-        QTreeWidgetItemIterator it ( mui_arbolcuentas );
-        QRegExp patron ( "^.*" + string1 + ".*$" );
-        patron.setCaseSensitivity ( Qt::CaseInsensitive );
-        while ( *it ) {
-            if ( patron.exactMatch ( ( *it ) ->text ( cdesccuenta ) ) )
-                mui_arbolcuentas->setCurrentItem ( *it );
-            ++it;
-        } // end while
+	// Si no se encuentra coincidencia en la primera columna 'ccuenta' entonces se busca en la columna de descripcion 'cdesccuenta'.
+        m_itemList = mui_arbolcuentas->findItems ( cod, Qt::MatchContains | Qt::MatchWrap | Qt::MatchRecursive, cdesccuenta );
+	m_itemListPosition = 0;
+    
+        if ( m_itemList.count() > 0 ) {
+	    mui_arbolcuentas->setCurrentItem ( m_itemList.first() );
+	} // end if
+
     } // end if
     blDebug ( "END BcPlanContableListView::on_mui_busqueda_textChanged", 0 );
 }
@@ -350,6 +352,27 @@ void BcPlanContableListView::on_mui_crear_clicked()
     mainCompany() ->pWorkspace() ->addWindow ( nuevae );
     nuevae->show();
     blDebug ( "END BcPlanContableListView::on_mui_crear_clicked", 0 );
+}
+
+
+void BcPlanContableListView::on_mui_anterior_clicked()
+{
+    if (m_itemListPosition > 0) {
+        m_itemListPosition--;
+        mui_arbolcuentas->setCurrentItem ( m_itemList[m_itemListPosition] );
+    } // end if
+
+}
+
+
+void BcPlanContableListView::on_mui_siguiente_clicked()
+{
+
+    if (m_itemListPosition < m_itemList.size() - 1) {
+        m_itemListPosition++;
+        mui_arbolcuentas->setCurrentItem ( m_itemList[m_itemListPosition] );
+    } // end if
+
 }
 
 

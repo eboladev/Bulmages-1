@@ -427,6 +427,20 @@
      <item>
       <widget class="QLineEdit" name="mui_busqueda"/>
      </item>
+     <item>
+      <widget class="QPushButton" name="mui_anterior">
+       <property name="text">
+        <string>&amp;Anterior</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="mui_siguiente">
+       <property name="text">
+        <string>&amp;Siguiente</string>
+       </property>
+      </widget>
+     </item>
     </layout>
    </item>
    <item>

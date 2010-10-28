@@ -58,6 +58,8 @@ private:
     /// El identificador de la cuenta que se devuelve
     QString mdb_idcuenta;
     QString mdb_desccuenta;
+    QList<QTreeWidgetItem *> m_itemList;
+    int m_itemListPosition;
 
 public:
     void selectMode();
@@ -90,6 +92,8 @@ public slots:
     virtual void on_mui_exportar_clicked();
     virtual void on_mui_importar_clicked();
     virtual void on_mui_actualizar_clicked();
+    virtual void on_mui_anterior_clicked();
+    virtual void on_mui_siguiente_clicked();
 
 signals:
     void selected ( QString );
