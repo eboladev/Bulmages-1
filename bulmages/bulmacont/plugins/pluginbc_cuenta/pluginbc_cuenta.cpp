@@ -444,46 +444,28 @@ int BlDbCompleterComboBox_textChanged (BlDbCompleterComboBox *bl)
 }
 
 
-
-int BcSubForm_pressedAsterisk ( BcSubForm *sub )
+int BcSubForm_pressedAsterisk ( BcSubForm *sub, void **ppCodigo )
 {
-    blDebug ( "BcSubForm_pressedAsterisk" );
+    blDebug ( "BcSubForm_pressedAsterisk", 0 );
 
-    if ( sub->m_campoactual->nomcampo() != "codigo" ) {
-        blDebug ( "END BfSubForm::pressedAsterisk", 0 );
-        return 0;
-    } // end if
+    QDialog *diag = new QDialog ( 0 );
+    diag->setModal ( true );
 
-/*
-    TutoresList *tutoreslist = new TutoresList ( ( BcCompany * ) sub->mainCompany(), NULL, 0, BL_SELECT_MODE );
-    
-    /// Esto es convertir un QWidget en un sistema modal de dialogo.
-    sub->setEnabled ( false );
-    tutoreslist->show();
-    
-    while ( !tutoreslist->isHidden() )
-        g_theApp->processEvents();
+    ///TODO: De esta manera se recarga de la base de datos toda la info de las cuentas cada
+    /// vez que se necesita la lista de cuentas. Hay que buscar la manera de que este siempre
+    /// disponible para no cargar el trabajo a la red ni al gestor de base de datos.
+    BcCuentaListView *listcuentas = new BcCuentaListView ( ( BcCompany * ) sub->mainCompany(), diag, 0, BL_SELECT_MODE );
+    QObject::connect ( listcuentas, SIGNAL ( selected ( QString ) ), diag, SLOT ( accept() ) );
+
+    diag->exec();
         
-    sub->setEnabled ( true );
-    QString idCliente = tutoreslist->idcliente();
-    
-    delete tutoreslist;
+    QString** cadena;
+    cadena = (QString**) ppCodigo;
+    (**cadena) = listcuentas->codigocuenta();
 
-    /// Si no tenemos un idtutor salimos ya que significa que no se ha seleccionado ninguno.
-    if ( idCliente == "" ) {
-        blDebug ( "END BfSubForm::pressedAsterisk", 0 );
-        return 0;
-    } // end if
+    delete diag;
 
-    BlDbRecordSet *cur = sub->mainCompany() ->loadQuery ( "SELECT * FROM cliente WHERE idcliente = " + idCliente );
-    if ( !cur->eof() ) {
-        sub->m_registrolinea->setDbValue ( "idcliente", idCliente );
-        sub->m_registrolinea->setDbValue ( "nomcliente", cur->valor ( "nomcliente" ));
-    } // end if
-    
-    delete cur;
-*/    
-    blDebug ( "END BfSubForm_pressedAsterisk" );
+    blDebug ( "END BfSubForm_pressedAsterisk", 0 );
     return 0;
 }
 

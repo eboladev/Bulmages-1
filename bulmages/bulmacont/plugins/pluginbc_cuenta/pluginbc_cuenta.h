@@ -38,8 +38,9 @@ extern "C" PLUGINBC_CUENTA_EXPORT int BlSubFormDelegate_setModelData ( BlSubForm
 extern "C" PLUGINBC_CUENTA_EXPORT int BlSubFormDelegate_setEditorData ( BlSubFormDelegate * );
 extern "C" PLUGINBC_CUENTA_EXPORT int BlSubForm_editFinished ( BlSubForm * );
 extern "C" PLUGINBC_CUENTA_EXPORT int BlDbCompleterComboBox_textChanged (BlDbCompleterComboBox *);
-extern "C" PLUGINBC_CUENTA_EXPORT int BcSubForm_pressedAsterisk ( BcSubForm * );
+extern "C" PLUGINBC_CUENTA_EXPORT int BcSubForm_pressedAsterisk ( BcSubForm *, void **);
 extern "C" PLUGINBC_CUENTA_EXPORT int Busqueda_on_m_inputBusqueda_textChanged (BlSearchWidget *);
+
 
 
 class MyPluginCuenta : public QObject, BlMainCompanyPointer

@@ -111,12 +111,43 @@ int BlPlugins::lanza ( const char *func, void *clase )
 {
     blDebug ( "BlPlugins::lanza", 0, func );
     int a = 0;
+    QList<MyPrototype> funcAddressList;
+    
+    /// Recorre todos los plugins buscando la funcion 'func'.
     for ( int i = 0; i < m_plugins.size(); ++i ) {
         myFunction = ( MyPrototype ) m_plugins.at ( i ) ->resolve ( func );
-        if ( myFunction && a == 0 ) {
+	
+	/// Anyade direccion a la lista si no esta en la lista.
+	/// Esto evita que se pueda ejecutar varias veces la misma funcion
+	/// desde 2 plugins diferentes. Como se utilizan para plugins librerias
+	/// que pueden depender de otras librerias si no hacemos esto entonces
+	/// la funcion 'func' puede aparecer en una dependencia del plugin lo
+	/// que la haria ejecutar varias veces.
+	bool encontrado = false;
+
+	for (int j = 0; j < funcAddressList.size(); ++j) {
+	    if (funcAddressList.at(j) == myFunction) {
+		encontrado = true;
+		break;
+	    } // end if
+	} // end for
+	
+	if (!encontrado) {
+	  funcAddressList.push_back(myFunction);
+	} // end if
+	
+    } // end for
+	
+    /// Ejecuta todas las funciones 'func' encontradas en los plugins.
+    for (int i = 0; i < funcAddressList.size(); ++i) {
+	myFunction = funcAddressList.at(i);
+
+	if ( myFunction && a == 0 ) {
             a = myFunction ( clase );
         } // end if
+    
     } // end for
+
     blDebug ( "END BlPlugins::lanza", 0 );
     return a;
 }
@@ -130,15 +161,43 @@ int BlPlugins::lanza ( const char *func, void *clase, void **ret )
 {
     blDebug ( "BlPlugins::lanza", 0, func );
     int a = 0;
+    QList<MyPrototype1> funcAddressList;
+    
+    /// Recorre todos los plugins buscando la funcion 'func'.
     for ( int i = 0; i < m_plugins.size(); ++i ) {
         myFunction1 = ( MyPrototype1 ) m_plugins.at ( i ) ->resolve ( func );
-        if ( myFunction1 && a == 0 ) {
-            blDebug ( "Plugins_lanza ", 0, "Encontrada una funcion correspondiente con el prototipo" );
-            a = myFunction1 ( clase, ret );
-        } else {
-            blDebug ( "Plugins_lanza ", 0, "No hay funcion correspondiente con el prototipo" );
-        } // end if
+	
+	/// Anyade direccion a la lista si no esta en la lista.
+	/// Esto evita que se pueda ejecutar varias veces la misma funcion
+	/// desde 2 plugins diferentes. Como se utilizan para plugins librerias
+	/// que pueden depender de otras librerias si no hacemos esto entonces
+	/// la funcion 'func' puede aparecer en una dependencia del plugin lo
+	/// que la haria ejecutar varias veces.
+	bool encontrado = false;
+
+	for (int j = 0; j < funcAddressList.size(); ++j) {
+	    if (funcAddressList.at(j) == myFunction1) {
+		encontrado = true;
+		break;
+	    } // end if
+	} // end for
+	
+	if (!encontrado) {
+	  funcAddressList.push_back(myFunction1);
+	} // end if
+	
     } // end for
+	
+    /// Ejecuta todas las funciones 'func' encontradas en los plugins.
+    for (int i = 0; i < funcAddressList.size(); ++i) {
+	myFunction1 = funcAddressList.at(i);
+
+	if ( myFunction1 && a == 0 ) {
+            a = myFunction1 ( clase, ret );
+        } // end if
+    
+    } // end for
+
     blDebug ( "END BlPlugins::lanza", 0 );
     return a;
 }

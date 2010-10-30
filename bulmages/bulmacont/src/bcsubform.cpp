@@ -156,23 +156,19 @@ void BcSubForm::pressedAsterisk ( int row, int col, BlDbSubFormRecord *rec, BlDb
         return;
 
     /// Nos llevamos el foco para que no haya un EditorDelegado que no se actualice bien.
-
     mui_list->setCurrentCell ( row, col + 1 );
-    QDialog *diag = new QDialog ( 0 );
-    diag->setModal ( true );
-    ///TODO: De esta manera se recarga de la base de datos toda la info de las cuentas cada
-    /// vez que se necesita la lista de cuentas. Hay que buscar la manera de que este siempre
-    /// disponible para no cargar el trabajo a la red ni al gestor de base de datos.
-/* TBR
-    BcCuentaListView *listcuentas = new BcCuentaListView ( ( BcCompany * ) mainCompany(), diag, 0, BL_SELECT_MODE );
-    connect ( listcuentas, SIGNAL ( selected ( QString ) ), diag, SLOT ( accept() ) );
-*/
-    diag->exec();
-// TBR
-//    QString codigo = listcuentas->codigocuenta();
-    QString codigo = "";
-    delete diag;
 
+    QString codigo = "";
+    QString *pCodigo = &codigo;
+
+    /// Disparamos los plugins.
+    
+    int res = g_plugins->lanza ( "BcSubForm_pressedAsterisk", this, ( void** ) &pCodigo );
+
+    if ( res != 0 ) {
+        return;
+    } // end if
+    
     if ( codigo != "" ) {
         QString query = "SELECT * FROM cuenta WHERE codigo = '" + codigo + "'";
         BlDbRecordSet *cur = mainCompany() ->loadQuery ( query );
@@ -201,7 +197,6 @@ void BcSubForm::pressedAsterisk ( int row, int col, BlDbSubFormRecord *rec, BlDb
         } // end if
         delete cur;
     } // end if
-
 
     blDebug ( "END BcSubForm::pressedAsterisk", 0 );
 }
