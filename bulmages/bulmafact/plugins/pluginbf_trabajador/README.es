@@ -8,7 +8,7 @@ Nombre: Trabajadores
 
 Biblioteca: libpluginbf_trabajador.so
 
-Descripción: <H1>Gestion de trabajadores</H1>
+Descripción: <H1><IMG SRC="@CMAKE_INSTALL_PREFIX@/share/bulmages/imagesrc/images/oxygen/actions/employee_list.svg" WIDTH="100"/><BR>Gestion de trabajadores</H1>
 <P>Este plugin permite realizar la gestion de trabjadores de la empresa</P>
 <BR>
 <P>Una vez instalado aparecera en el <B>Menu Maestro</B> la opcion de <B>Trabajadores</B>. Accionando dicha opcion
