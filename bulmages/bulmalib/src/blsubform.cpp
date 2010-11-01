@@ -2815,12 +2815,11 @@ void BlSubForm::imprimirPDF ( const QString &titular )
     QString archivod = g_confpr->valor ( CONF_DIR_USER ) + "listado.rml";
 //    QString archivod = g_confpr->valor ( CONF_DIR_USER ) + titular + ".rml";
     QString archivologo = g_confpr->valor ( CONF_DIR_OPENREPORTS ) + "logo.jpg";
+
     /// Copiamos el archivo.
 #ifdef WIN32
-
-    archivo = "copy " + archivo + " " + archivod;
+    archivo = "copy \"" + archivo + "\" \"" + archivod + "\"";
 #else
-
     archivo = "cp " + archivo + " " + archivod;
 #endif
 
@@ -2831,10 +2830,8 @@ void BlSubForm::imprimirPDF ( const QString &titular )
     
     /// Copiamos el logo.
 #ifdef WIN32
-
-    archivologo = "copy " + archivologo + " " + g_confpr->valor ( CONF_DIR_USER ) + "logo.jpg";
+    archivologo = "copy \"" + archivologo + "\" \"" + g_confpr->valor ( CONF_DIR_USER ) + "logo.jpg\"";
 #else
-
     archivologo = "cp " + archivologo + " " + g_confpr->valor ( CONF_DIR_USER ) + "logo.jpg";
 #endif
 

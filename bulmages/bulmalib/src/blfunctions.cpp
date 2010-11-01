@@ -340,7 +340,7 @@ void blCreatePDF ( const QString arch )
     QString cadsys;
 
 #ifdef WIN32
-    cadsys = g_confpr->valor ( CONF_PYTHON ) + " " + g_confpr->valor ( CONF_PROGDATA ) + "bgtrml2pdf\\bgtrml2pdf " + arch + ".rml > " + g_confpr->valor ( CONF_DIR_USER ) + arch + ".pdf";
+    cadsys = g_confpr->valor ( CONF_PYTHON ) + " \"" + g_confpr->valor ( CONF_PROGDATA ) + "bgtrml2pdf\\bgtrml2pdf\" " + arch + ".rml > \"" + g_confpr->valor ( CONF_DIR_USER ) + arch + ".pdf\"";
 
     int result1 = system ( cadsys.toAscii() );
     if (result1 == -1) {
@@ -348,7 +348,8 @@ void blCreatePDF ( const QString arch )
     } // end if
     
     blDebug ( cadsys, 0 );
-    cadsys = g_confpr->valor ( CONF_FLIP ) + " -u " + g_confpr->valor ( CONF_DIR_USER ) + arch + ".pdf";
+    cadsys = g_confpr->valor ( CONF_FLIP ) + " -u \"" + g_confpr->valor ( CONF_DIR_USER ) + arch + ".pdf\"";
+    
     int result2 = system ( cadsys.toAscii().data() );
     if (result2 == -1) {
 	blMsgError(_("Error en FLIP [ blfunctions->blCreatePDF() ]"));
@@ -412,7 +413,13 @@ void blCreateAndLoadODS ( const QString arch )
 void blCreateAndLoadPDF ( const QString arch )
 {
     blCreatePDF ( arch );
+
+#ifdef Q_OS_WIN32
+    QString cadsys = g_confpr->valor ( CONF_PDF ) + " \"" + g_confpr->valor ( CONF_DIR_USER ) + arch + ".pdf\" &";
+#else
     QString cadsys = g_confpr->valor ( CONF_PDF ) + " " + g_confpr->valor ( CONF_DIR_USER ) + arch + ".pdf &";
+#endif
+    
     int result = system ( cadsys.toAscii().data() );
     if (result == -1) {
 	blMsgError(_("Error al ejecutar el visor de PDF [ blfunctions->blCreateAndLoadPDF() ]"));

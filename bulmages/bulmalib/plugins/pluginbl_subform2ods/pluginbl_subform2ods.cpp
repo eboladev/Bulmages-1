@@ -27,6 +27,7 @@
 #include <QTextStream>
 #include <QTextCodec>
 #include <QLocale>
+#include <QProcess>
 
 #include "pluginbl_subform2ods.h"
 
@@ -232,10 +233,16 @@ void myplugsubformods::sacaods()
 
     fitxersortidatxt += "doc.save(\"listadoods.ods\")\n";
 
-    QString cadena = "rm " + g_confpr->valor ( CONF_DIR_USER ) + "listadoods.ods";
-    system ( cadena.toAscii() );
-    cadena = "rm " + archivod;
-    system ( cadena.toAscii() );
+#ifdef Q_OS_WIN32
+    QString cadena1 = "del \"" + g_confpr->valor ( CONF_DIR_USER ) + "listadoods.ods\"";
+    QString cadena2 = "del \"" + archivod + "\"";
+#else
+    QString cadena1 = "rm " + g_confpr->valor ( CONF_DIR_USER ) + "listadoods.ods";
+    QString cadena2 = "rm " + archivod;
+#endif
+
+    system ( cadena1.toAscii() );
+    system ( cadena2.toAscii() );
 
     QFile file ( archivod );
     if ( file.open ( QIODevice::WriteOnly ) )  {
@@ -245,9 +252,27 @@ void myplugsubformods::sacaods()
         file.close();
     } // end if
 
+    QString cadena;
+
+#ifdef Q_OS_WIN32
+    cadena = "cd \"" + g_confpr->valor ( CONF_DIR_USER ) + "\"";
+   // & " + "python \"" + archivod + "\"";
+
+    fprintf(stderr, cadena.toAscii() );
+
+    QProcess::execute ( cadena );
+#else
     cadena = " cd " + g_confpr->valor ( CONF_DIR_USER ) + "; python " + archivod;
     system ( cadena.toAscii() );
+#endif
+
+
+#ifdef Q_OS_WIN32
+    cadena = g_confpr->valor(CONF_ODS)  + " \"" + g_confpr->valor ( CONF_DIR_USER ) + "listadoods.ods\" &";
+#else
     cadena = g_confpr->valor(CONF_ODS)  + " " + g_confpr->valor ( CONF_DIR_USER ) + "listadoods.ods &";
+#endif
+
     system ( cadena.toAscii() );
 
     blDebug ( "END myplugsubformods::sacaods", 0 );

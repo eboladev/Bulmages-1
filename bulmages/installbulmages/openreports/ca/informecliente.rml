@@ -4,8 +4,6 @@
 <template pageSize="(21cm, 29.7cm)" leftMargin="0cm" rightMargin="0cm" topMargin="1.0cm" bottomMargin="2.0cm" title="Informe de clinte/a" author="Tomeu Borras" allowSplitting="20">
 	<pageTemplate id="main">
 		<pageGraphics>
-		<!-- EL LOGO DE CABECERA -->
-		<image x="3cm" y="26cm" width="17cm" file="logo.jpg"/>
 
 		<!-- EL PIE DE PAGINA -->
 <!--		<setFont name="Helvetica" size="8"/>		

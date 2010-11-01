@@ -75,20 +75,17 @@ void BfInformeCliente::generarInforme()
     QString archivologo = g_confpr->valor ( CONF_DIR_OPENREPORTS ) + "logo.jpg";
     /// Copiamos el archivo.
 #ifdef Q_OS_WIN32
-
-    archivo = "copy " + archivo + " " + archivod;
+    archivo = "copy \"" + archivo + "\" \"" + archivod + "\"";
 #else
-
     archivo = "cp " + archivo + " " + archivod;
 #endif
 
     system ( archivo.toAscii().constData() );
+
     /// Copiamos el logo.
 #ifdef Q_OS_WIN32
-
-    archivologo = "copy " + archivologo + " " + g_confpr->valor ( CONF_DIR_USER ) + "logo.jpg";
+    archivologo = "copy \"" + archivologo + "\" \"" + g_confpr->valor ( CONF_DIR_USER ) + "logo.jpg\"";
 #else
-
     archivologo = "cp " + archivologo + " " + g_confpr->valor ( CONF_DIR_USER ) + "logo.jpg";
 #endif
 
@@ -123,179 +120,178 @@ void BfInformeCliente::generarInforme()
     cur = companyact->loadQuery ( SQLQuery );
     if ( cur->eof() ) {
         delete cur;
-        return;
+    } else {
+      while ( !cur->eof() ) {
+	  referencias += coma + "'" + cur->valor ( "referencia" ) + "' ";
+	  coma = ",";
+	  cur->nextRecord();
+      }
+      delete cur;
+      referencias += ")";
+
+      /// Generacion del informe de ventas.
+      fitxersortidatxt = "<spacer length=\"15\"/>";
+      fitxersortidatxt += "<para>Resumen de ventas por articulo</para>\n";
+      fitxersortidatxt += "<blockTable style=\"tablaresumen\" colWidths=\"9cm, 2.5cm, 2.5cm, 2.5cm, 2.5cm\" repeatRows=\"1\">\n";
+      fitxersortidatxt += "<tr>\n";
+      fitxersortidatxt += " <td>" + _ ( "Articulo" ) + "</td>\n";
+      fitxersortidatxt += " <td>" + _ ( "Pres." ) + "</td>\n";
+      fitxersortidatxt += " <td>" + _ ( "Pedido" ) + "</td>\n";
+      fitxersortidatxt += " <td>" + _ ( "Entregado" ) + "</td>\n";
+      fitxersortidatxt += " <td>" + _ ( "Facturado" ) + "</td>\n";
+      fitxersortidatxt += "</tr>\n";
+
+      SQLQuery = " SELECT * FROM articulo ";
+      SQLQuery += " LEFT JOIN (SELECT idarticulo, SUM(cantlpresupuesto) AS cantlpresupuestot FROM lpresupuesto WHERE idpresupuesto IN (SELECT idpresupuesto FROM presupuesto WHERE refpresupuesto IN " + referencias + ") GROUP BY idarticulo) AS t1 ON t1.idarticulo = articulo.idarticulo ";
+      SQLQuery += " LEFT JOIN (SELECT idarticulo, SUM(cantlpedidocliente) AS cantlpedidoclientet FROM lpedidocliente WHERE idpedidocliente IN (SELECT idpedidocliente FROM pedidocliente WHERE refpedidocliente IN " + referencias + ") GROUP BY idarticulo) AS t2 ON t2.idarticulo = articulo.idarticulo ";
+      SQLQuery += " LEFT JOIN (SELECT idarticulo, SUM(cantlalbaran) AS cantlalbarant FROM lalbaran WHERE idalbaran IN (SELECT idalbaran FROM albaran WHERE refalbaran IN " + referencias + ") GROUP BY idarticulo) AS t3 ON t3.idarticulo = articulo.idarticulo ";
+      SQLQuery += " LEFT JOIN (SELECT idarticulo, SUM(cantlfactura) AS cantlfacturat FROM lfactura WHERE idfactura IN (SELECT idfactura FROM factura WHERE reffactura IN " + referencias + ") GROUP BY idarticulo) AS t4 ON t4.idarticulo = articulo.idarticulo ";
+      SQLQuery += " WHERE (cantlpresupuestot <> 0 OR cantlpedidoclientet <> 0 OR cantlalbarant <> 0 OR cantlfacturat <> 0) ";
+      cur = companyact->loadQuery ( SQLQuery );
+      while ( !cur->eof() ) {
+	  fitxersortidatxt += "<tr>\n";
+	  fitxersortidatxt += "<td>" + cur->valor ( "nomarticulo" ) + "</td>\n";
+	  fitxersortidatxt += "<td>" + cur->valor ( "cantlpresupuestot" ) + "</td>\n";
+	  fitxersortidatxt += "<td>" + cur->valor ( "cantlpedidoclientet" ) + "</td>\n";
+	  fitxersortidatxt += "<td>" + cur->valor ( "cantlalbarant" ) + "</td>\n";
+	  fitxersortidatxt += "<td>" + cur->valor ( "cantlfacturat" ) + "</td>\n";
+	  fitxersortidatxt += "</tr>\n";
+	  cur->nextRecord();
+      } // end while
+      delete cur;
+
+      fitxersortidatxt += "</blockTable>\n";
+
+      /// Generacion del informe de compras.
+      fitxersortidatxt += "<spacer length=\"15\"/>";
+      fitxersortidatxt += "<para>Resumen de compras por articulo</para>\n";
+      fitxersortidatxt += "<blockTable style=\"tablaresumen\" colWidths=\"10cm, 3cm, 3cm, 3cm\" repeatRows=\"1\">\n";
+      fitxersortidatxt += "<tr>\n";
+      fitxersortidatxt += "    <td>" + _ ( "Articulo" ) + "</td>\n";
+      fitxersortidatxt += "    <td>" + _ ( "Pedido" ) + "</td>\n";
+      fitxersortidatxt += "    <td>" + _ ( "Entregado" ) + "</td>\n";
+      fitxersortidatxt += "    <td>" + _ ( "Facturado" ) + "</td>\n";
+      fitxersortidatxt += "</tr>\n";
+
+      SQLQuery = " SELECT * FROM articulo ";
+      SQLQuery += " LEFT JOIN (SELECT idarticulo, SUM(cantlpedidoproveedor) AS cantlpedidoproveedort  FROM lpedidoproveedor WHERE idpedidoproveedor IN (SELECT idpedidoproveedor FROM pedidoproveedor WHERE refpedidoproveedor IN " + referencias + ") GROUP BY idarticulo) AS t2 ON t2.idarticulo = articulo.idarticulo ";
+
+      SQLQuery += " LEFT JOIN (SELECT idarticulo, SUM(cantlalbaranp) AS cantlalbaranpt  FROM lalbaranp WHERE idalbaranp IN (SELECT idalbaranp FROM albaranp WHERE refalbaranp IN " + referencias + ") GROUP BY idarticulo) AS t3 ON t3.idarticulo = articulo.idarticulo ";
+
+      SQLQuery += " LEFT JOIN (SELECT idarticulo, SUM(cantlfacturap) AS cantlfacturapt  FROM lfacturap WHERE idfacturap IN (SELECT idfacturap FROM facturap WHERE reffacturap IN " + referencias + ") GROUP BY idarticulo) AS t4 ON t4.idarticulo = articulo.idarticulo ";
+      SQLQuery += " WHERE  ( cantlpedidoproveedort <> 0 OR cantlalbaranpt <> 0 OR cantlfacturapt <> 0) ";
+
+      fprintf ( stdout, "%s\n", SQLQuery.toAscii().constData() );
+
+      cur = companyact->loadQuery ( SQLQuery );
+      while ( !cur->eof() ) {
+	  fitxersortidatxt += "<tr>\n";
+	  fitxersortidatxt += "    <td>" + cur->valor ( "nomarticulo" ) + "</td>\n";
+	  fitxersortidatxt += "    <td>" + cur->valor ( "cantlpedidoproveedort" ) + "</td>\n";
+	  fitxersortidatxt += "    <td>" + cur->valor ( "cantlalbaranpt" ) + "</td>\n";
+	  fitxersortidatxt += "    <td>" + cur->valor ( "cantlfacturapt" ) + "</td>\n";
+	  fitxersortidatxt += "</tr>\n";
+	  cur->nextRecord();
+      } // end while
+      delete cur;
+
+      fitxersortidatxt += "</blockTable>\n";
+
+
+      buff.replace ( "[story]", fitxersortidatxt );
+
+      fitxersortidatxt = "<spacer length=\"15\"/>";
+      /// Generacion del informe de totales de ventas.
+      fitxersortidatxt += "<para>Totales ventas</para>\n";
+      fitxersortidatxt += "<blockTable style=\"tablatotales\" colWidths=\"3cm, 3cm, 3cm, 3cm, 3cm\" repeatRows=\"1\">\n";
+      fitxersortidatxt += "<tr>\n";
+      fitxersortidatxt += "    <td>" + _ ( "Pres." ) + "</td>\n";
+      fitxersortidatxt += "    <td>" + _ ( "Pedido" ) + "</td>\n";
+      fitxersortidatxt += "    <td>" + _ ( "Entregado" ) + "</td>\n";
+      fitxersortidatxt += "    <td>" + _ ( "Facturado" ) + "</td>\n";
+      fitxersortidatxt += "    <td>" + _ ( "Cobrado" ) + "</td>\n";
+      fitxersortidatxt += "</tr>\n";
+
+      /// Calculo de las cantidades totales en moneda.
+      fitxersortidatxt += "<tr>\n";
+
+      /// Total presupuestado.
+      SQLQuery = "SELECT SUM(totalpresupuesto) AS tpres FROM presupuesto WHERE refpresupuesto IN " + referencias;
+      cur = companyact->loadQuery ( SQLQuery );
+      fitxersortidatxt += "    <td>" + cur->valor ( "tpres" ) + "</td>\n";
+      delete cur;
+
+      /// Total pedido.
+      SQLQuery = "SELECT SUM(totalpedidocliente) AS tpedcli FROM pedidocliente WHERE refpedidocliente IN " + referencias;
+      cur = companyact->loadQuery ( SQLQuery );
+      fitxersortidatxt += "    <td>" + cur->valor ( "tpedcli" ) + "</td>\n";
+      delete cur;
+
+      /// Total trabajado.
+      SQLQuery = "SELECT SUM(totalalbaran) AS talb FROM albaran WHERE refalbaran IN " + referencias;
+      cur = companyact->loadQuery ( SQLQuery );
+      fitxersortidatxt += "    <td>" + cur->valor ( "talb" ) + "</td>\n";
+      delete cur;
+
+      /// Total facturado.
+      SQLQuery = "SELECT SUM(totalfactura) AS tfact FROM factura WHERE reffactura IN " + referencias;
+      cur = companyact->loadQuery ( SQLQuery );
+      fitxersortidatxt += "    <td>" + cur->valor ( "tfact" ) + "</td>\n";
+      delete cur;
+
+      /// Total cobrado.
+      SQLQuery = "SELECT SUM(cantcobro) AS tcobro FROM cobro WHERE refcobro IN " + referencias;
+      cur = companyact->loadQuery ( SQLQuery );
+      fitxersortidatxt += "     <td>" + cur->valor ( "tcobro" ) + "</td>\n";
+      delete cur;
+
+      fitxersortidatxt += "</tr>\n";
+      fitxersortidatxt += "</blockTable>\n";
+
+      fitxersortidatxt += "<spacer length=\"15\"/>";
+      /// Generacion del informe de totales de compras.
+      fitxersortidatxt += "<para>Totales compras</para>\n";
+      fitxersortidatxt += "<blockTable style=\"tablatotales\" colWidths=\" 4cm, 4cm, 4cm, 3cm\" repeatRows=\"1\">\n";
+      fitxersortidatxt += "<tr>\n";
+      fitxersortidatxt += "    <td>" + _ ( "Pedido" ) + "</td>\n";
+      fitxersortidatxt += "    <td>" + _ ( "Entregado" ) + "</td>\n";
+      fitxersortidatxt += "    <td>" + _ ( "Facturado" ) + "</td>\n";
+      fitxersortidatxt += "    <td>" + _ ( "Pagado" ) + "</td>\n";
+      fitxersortidatxt += "</tr>\n";
+
+      /// Calculo de las cantidades totales en moneda.
+      fitxersortidatxt += "<tr>\n";
+
+      /// Total pedido.
+      SQLQuery = "SELECT SUM(totalpedidoproveedor) AS tpedpro FROM pedidoproveedor WHERE refpedidoproveedor IN " + referencias;
+      cur = companyact->loadQuery ( SQLQuery );
+      fitxersortidatxt += "    <td>" + cur->valor ( "tpedpro" ) + "</td>\n";
+      delete cur;
+
+      /// Total trabajado.
+      SQLQuery = "SELECT SUM(totalalbaranp) AS talbp FROM albaranp WHERE refalbaranp IN " + referencias;
+      cur = companyact->loadQuery ( SQLQuery );
+      fitxersortidatxt += "    <td>" + cur->valor ( "talbp" ) + "</td>\n";
+      delete cur;
+
+      /// Total facturado.
+      SQLQuery = "SELECT SUM(totalfacturap) AS tfactp FROM facturap WHERE reffacturap IN " + referencias;
+      cur = companyact->loadQuery ( SQLQuery );
+      fitxersortidatxt += "    <td>" + cur->valor ( "tfactp" ) + "</td>\n";
+      delete cur;
+
+      /// Total cobrado.
+      SQLQuery = "SELECT SUM(cantpago) AS tpago FROM pago WHERE refpago IN " + referencias;
+      cur = companyact->loadQuery ( SQLQuery );
+      fitxersortidatxt += "     <td>" + cur->valor ( "tpago" ) + "</td>\n";
+      delete cur;
+
+      fitxersortidatxt += "</tr>\n";
+      fitxersortidatxt += "</blockTable>\n";
+
+
+      buff.replace ( "[totales]", fitxersortidatxt );
     } // end if
-    while ( !cur->eof() ) {
-        referencias += coma + "'" + cur->valor ( "referencia" ) + "' ";
-        coma = ",";
-        cur->nextRecord();
-    }
-    delete cur;
-    referencias += ")";
-
-    /// Generacion del informe de ventas.
-    fitxersortidatxt = "<spacer length=\"15\"/>";
-    fitxersortidatxt += "<para>Resumen de ventas por articulo</para>\n";
-    fitxersortidatxt += "<blockTable style=\"tablaresumen\" colWidths=\"9cm, 2.5cm, 2.5cm, 2.5cm, 2.5cm\" repeatRows=\"1\">\n";
-    fitxersortidatxt += "<tr>\n";
-    fitxersortidatxt += " <td>" + _ ( "Articulo" ) + "</td>\n";
-    fitxersortidatxt += " <td>" + _ ( "Pres." ) + "</td>\n";
-    fitxersortidatxt += " <td>" + _ ( "Pedido" ) + "</td>\n";
-    fitxersortidatxt += " <td>" + _ ( "Entregado" ) + "</td>\n";
-    fitxersortidatxt += " <td>" + _ ( "Facturado" ) + "</td>\n";
-    fitxersortidatxt += "</tr>\n";
-
-    SQLQuery = " SELECT * FROM articulo ";
-    SQLQuery += " LEFT JOIN (SELECT idarticulo, SUM(cantlpresupuesto) AS cantlpresupuestot FROM lpresupuesto WHERE idpresupuesto IN (SELECT idpresupuesto FROM presupuesto WHERE refpresupuesto IN " + referencias + ") GROUP BY idarticulo) AS t1 ON t1.idarticulo = articulo.idarticulo ";
-    SQLQuery += " LEFT JOIN (SELECT idarticulo, SUM(cantlpedidocliente) AS cantlpedidoclientet FROM lpedidocliente WHERE idpedidocliente IN (SELECT idpedidocliente FROM pedidocliente WHERE refpedidocliente IN " + referencias + ") GROUP BY idarticulo) AS t2 ON t2.idarticulo = articulo.idarticulo ";
-    SQLQuery += " LEFT JOIN (SELECT idarticulo, SUM(cantlalbaran) AS cantlalbarant FROM lalbaran WHERE idalbaran IN (SELECT idalbaran FROM albaran WHERE refalbaran IN " + referencias + ") GROUP BY idarticulo) AS t3 ON t3.idarticulo = articulo.idarticulo ";
-    SQLQuery += " LEFT JOIN (SELECT idarticulo, SUM(cantlfactura) AS cantlfacturat FROM lfactura WHERE idfactura IN (SELECT idfactura FROM factura WHERE reffactura IN " + referencias + ") GROUP BY idarticulo) AS t4 ON t4.idarticulo = articulo.idarticulo ";
-    SQLQuery += " WHERE (cantlpresupuestot <> 0 OR cantlpedidoclientet <> 0 OR cantlalbarant <> 0 OR cantlfacturat <> 0) ";
-    cur = companyact->loadQuery ( SQLQuery );
-    while ( !cur->eof() ) {
-        fitxersortidatxt += "<tr>\n";
-        fitxersortidatxt += "<td>" + cur->valor ( "nomarticulo" ) + "</td>\n";
-        fitxersortidatxt += "<td>" + cur->valor ( "cantlpresupuestot" ) + "</td>\n";
-        fitxersortidatxt += "<td>" + cur->valor ( "cantlpedidoclientet" ) + "</td>\n";
-        fitxersortidatxt += "<td>" + cur->valor ( "cantlalbarant" ) + "</td>\n";
-        fitxersortidatxt += "<td>" + cur->valor ( "cantlfacturat" ) + "</td>\n";
-        fitxersortidatxt += "</tr>\n";
-        cur->nextRecord();
-    } // end while
-    delete cur;
-
-    fitxersortidatxt += "</blockTable>\n";
-
-    /// Generacion del informe de compras.
-    fitxersortidatxt += "<spacer length=\"15\"/>";
-    fitxersortidatxt += "<para>Resumen de compras por articulo</para>\n";
-    fitxersortidatxt += "<blockTable style=\"tablaresumen\" colWidths=\"10cm, 3cm, 3cm, 3cm\" repeatRows=\"1\">\n";
-    fitxersortidatxt += "<tr>\n";
-    fitxersortidatxt += "    <td>" + _ ( "Articulo" ) + "</td>\n";
-    fitxersortidatxt += "    <td>" + _ ( "Pedido" ) + "</td>\n";
-    fitxersortidatxt += "    <td>" + _ ( "Entregado" ) + "</td>\n";
-    fitxersortidatxt += "    <td>" + _ ( "Facturado" ) + "</td>\n";
-    fitxersortidatxt += "</tr>\n";
-
-    SQLQuery = " SELECT * FROM articulo ";
-    SQLQuery += " LEFT JOIN (SELECT idarticulo, SUM(cantlpedidoproveedor) AS cantlpedidoproveedort  FROM lpedidoproveedor WHERE idpedidoproveedor IN (SELECT idpedidoproveedor FROM pedidoproveedor WHERE refpedidoproveedor IN " + referencias + ") GROUP BY idarticulo) AS t2 ON t2.idarticulo = articulo.idarticulo ";
-
-    SQLQuery += " LEFT JOIN (SELECT idarticulo, SUM(cantlalbaranp) AS cantlalbaranpt  FROM lalbaranp WHERE idalbaranp IN (SELECT idalbaranp FROM albaranp WHERE refalbaranp IN " + referencias + ") GROUP BY idarticulo) AS t3 ON t3.idarticulo = articulo.idarticulo ";
-
-    SQLQuery += " LEFT JOIN (SELECT idarticulo, SUM(cantlfacturap) AS cantlfacturapt  FROM lfacturap WHERE idfacturap IN (SELECT idfacturap FROM facturap WHERE reffacturap IN " + referencias + ") GROUP BY idarticulo) AS t4 ON t4.idarticulo = articulo.idarticulo ";
-    SQLQuery += " WHERE  ( cantlpedidoproveedort <> 0 OR cantlalbaranpt <> 0 OR cantlfacturapt <> 0) ";
-
-    fprintf ( stdout, "%s\n", SQLQuery.toAscii().constData() );
-
-    cur = companyact->loadQuery ( SQLQuery );
-    while ( !cur->eof() ) {
-        fitxersortidatxt += "<tr>\n";
-        fitxersortidatxt += "    <td>" + cur->valor ( "nomarticulo" ) + "</td>\n";
-        fitxersortidatxt += "    <td>" + cur->valor ( "cantlpedidoproveedort" ) + "</td>\n";
-        fitxersortidatxt += "    <td>" + cur->valor ( "cantlalbaranpt" ) + "</td>\n";
-        fitxersortidatxt += "    <td>" + cur->valor ( "cantlfacturapt" ) + "</td>\n";
-        fitxersortidatxt += "</tr>\n";
-        cur->nextRecord();
-    } // end while
-    delete cur;
-
-    fitxersortidatxt += "</blockTable>\n";
-
-
-    buff.replace ( "[story]", fitxersortidatxt );
-
-    fitxersortidatxt = "<spacer length=\"15\"/>";
-    /// Generacion del informe de totales de ventas.
-    fitxersortidatxt += "<para>Totales ventas</para>\n";
-    fitxersortidatxt += "<blockTable style=\"tablatotales\" colWidths=\"3cm, 3cm, 3cm, 3cm, 3cm\" repeatRows=\"1\">\n";
-    fitxersortidatxt += "<tr>\n";
-    fitxersortidatxt += "    <td>" + _ ( "Pres." ) + "</td>\n";
-    fitxersortidatxt += "    <td>" + _ ( "Pedido" ) + "</td>\n";
-    fitxersortidatxt += "    <td>" + _ ( "Entregado" ) + "</td>\n";
-    fitxersortidatxt += "    <td>" + _ ( "Facturado" ) + "</td>\n";
-    fitxersortidatxt += "    <td>" + _ ( "Cobrado" ) + "</td>\n";
-    fitxersortidatxt += "</tr>\n";
-
-    /// Calculo de las cantidades totales en moneda.
-    fitxersortidatxt += "<tr>\n";
-
-    /// Total presupuestado.
-    SQLQuery = "SELECT SUM(totalpresupuesto) AS tpres FROM presupuesto WHERE refpresupuesto IN " + referencias;
-    cur = companyact->loadQuery ( SQLQuery );
-    fitxersortidatxt += "    <td>" + cur->valor ( "tpres" ) + "</td>\n";
-    delete cur;
-
-    /// Total pedido.
-    SQLQuery = "SELECT SUM(totalpedidocliente) AS tpedcli FROM pedidocliente WHERE refpedidocliente IN " + referencias;
-    cur = companyact->loadQuery ( SQLQuery );
-    fitxersortidatxt += "    <td>" + cur->valor ( "tpedcli" ) + "</td>\n";
-    delete cur;
-
-    /// Total trabajado.
-    SQLQuery = "SELECT SUM(totalalbaran) AS talb FROM albaran WHERE refalbaran IN " + referencias;
-    cur = companyact->loadQuery ( SQLQuery );
-    fitxersortidatxt += "    <td>" + cur->valor ( "talb" ) + "</td>\n";
-    delete cur;
-
-    /// Total facturado.
-    SQLQuery = "SELECT SUM(totalfactura) AS tfact FROM factura WHERE reffactura IN " + referencias;
-    cur = companyact->loadQuery ( SQLQuery );
-    fitxersortidatxt += "    <td>" + cur->valor ( "tfact" ) + "</td>\n";
-    delete cur;
-
-    /// Total cobrado.
-    SQLQuery = "SELECT SUM(cantcobro) AS tcobro FROM cobro WHERE refcobro IN " + referencias;
-    cur = companyact->loadQuery ( SQLQuery );
-    fitxersortidatxt += "     <td>" + cur->valor ( "tcobro" ) + "</td>\n";
-    delete cur;
-
-    fitxersortidatxt += "</tr>\n";
-    fitxersortidatxt += "</blockTable>\n";
-
-    fitxersortidatxt += "<spacer length=\"15\"/>";
-    /// Generacion del informe de totales de compras.
-    fitxersortidatxt += "<para>Totales compras</para>\n";
-    fitxersortidatxt += "<blockTable style=\"tablatotales\" colWidths=\" 4cm, 4cm, 4cm, 3cm\" repeatRows=\"1\">\n";
-    fitxersortidatxt += "<tr>\n";
-    fitxersortidatxt += "    <td>" + _ ( "Pedido" ) + "</td>\n";
-    fitxersortidatxt += "    <td>" + _ ( "Entregado" ) + "</td>\n";
-    fitxersortidatxt += "    <td>" + _ ( "Facturado" ) + "</td>\n";
-    fitxersortidatxt += "    <td>" + _ ( "Pagado" ) + "</td>\n";
-    fitxersortidatxt += "</tr>\n";
-
-    /// Calculo de las cantidades totales en moneda.
-    fitxersortidatxt += "<tr>\n";
-
-    /// Total pedido.
-    SQLQuery = "SELECT SUM(totalpedidoproveedor) AS tpedpro FROM pedidoproveedor WHERE refpedidoproveedor IN " + referencias;
-    cur = companyact->loadQuery ( SQLQuery );
-    fitxersortidatxt += "    <td>" + cur->valor ( "tpedpro" ) + "</td>\n";
-    delete cur;
-
-    /// Total trabajado.
-    SQLQuery = "SELECT SUM(totalalbaranp) AS talbp FROM albaranp WHERE refalbaranp IN " + referencias;
-    cur = companyact->loadQuery ( SQLQuery );
-    fitxersortidatxt += "    <td>" + cur->valor ( "talbp" ) + "</td>\n";
-    delete cur;
-
-    /// Total facturado.
-    SQLQuery = "SELECT SUM(totalfacturap) AS tfactp FROM facturap WHERE reffacturap IN " + referencias;
-    cur = companyact->loadQuery ( SQLQuery );
-    fitxersortidatxt += "    <td>" + cur->valor ( "tfactp" ) + "</td>\n";
-    delete cur;
-
-    /// Total cobrado.
-    SQLQuery = "SELECT SUM(cantpago) AS tpago FROM pago WHERE refpago IN " + referencias;
-    cur = companyact->loadQuery ( SQLQuery );
-    fitxersortidatxt += "     <td>" + cur->valor ( "tpago" ) + "</td>\n";
-    delete cur;
-
-    fitxersortidatxt += "</tr>\n";
-    fitxersortidatxt += "</blockTable>\n";
-
-
-    buff.replace ( "[totales]", fitxersortidatxt );
-
 
     if ( file.open ( QIODevice::WriteOnly ) ) {
         QTextStream stream ( &file );

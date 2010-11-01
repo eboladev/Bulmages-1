@@ -5,7 +5,7 @@
 	<pageTemplate id="main">
 		<pageGraphics>
 		<!-- EL LOGO DE CABECERA -->
-		<image x="0.5cm" y="18.2cm" width="7cm" file="logo.jpg"/>
+		<!--<image x="0.5cm" y="18.2cm" width="7cm" file="logo.jpg"/>-->
 
 		<!-- EL DRAFT -->
 			<setFont name="Helvetica" size="100"/>
