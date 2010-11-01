@@ -271,7 +271,7 @@ void BcAsientoListView::presentar()
         } // end if
     } // end if
 
-    query = "SELECT asiento.ordenasiento, asiento.idasiento, asiento.fecha, totaldebe, totalhaber, numap, numborr, comentariosasiento, clase FROM asiento LEFT JOIN (SELECT count(idborrador) AS numborr, idasiento FROM borrador GROUP BY idasiento) AS foo1 ON foo1.idasiento = asiento.idasiento LEFT JOIN (SELECT SUM(debe) AS totaldebe, SUM(haber) AS totalhaber, count(idapunte) AS numap, idasiento FROM apunte GROUP BY idasiento) AS fula ON asiento.idasiento = fula.idasiento " + cadwhere + textsaldototal + textapuntemayoroigual + textapuntemenoroigual + textoparentesis + textnombreasiento + textejercicio + muestra + " ORDER BY EXTRACT (YEAR FROM asiento.fecha), asiento.ordenasiento";
+    query = "SELECT asiento.ordenasiento, asiento.idasiento, asiento.fecha, totaldebe, totalhaber, totaldebeborrador, totalhaberborrador, numap, numborr, comentariosasiento, clase FROM asiento LEFT JOIN (SELECT count(idborrador) AS numborr, idasiento, sum(debe) as totaldebeborrador, sum(haber) as totalhaberborrador FROM borrador GROUP BY idasiento) AS foo1 ON foo1.idasiento = asiento.idasiento LEFT JOIN (SELECT SUM(debe) AS totaldebe, SUM(haber) AS totalhaber, count(idapunte) AS numap, idasiento FROM apunte GROUP BY idasiento) AS fula ON asiento.idasiento = fula.idasiento " + cadwhere + textsaldototal + textapuntemayoroigual + textapuntemenoroigual + textoparentesis + textnombreasiento + textejercicio + muestra + " ORDER BY EXTRACT (YEAR FROM asiento.fecha), asiento.ordenasiento";
     mui_list->cargar ( query );
 
     /// Actualiza el contenido del combobox.
@@ -285,8 +285,14 @@ void BcAsientoListView::presentar()
     /// Calculamos el total en el subformulario y lo presentamos.
     BlFixed td = mui_list->sumarCampo ( "totaldebe" );
     BlFixed th = mui_list->sumarCampo ( "totalhaber" );
+    BlFixed tdb = mui_list->sumarCampo ( "totaldebeborrador" );
+    BlFixed thb = mui_list->sumarCampo ( "totalhaberborrador" );
+
     mui_totalDebe->setText ( td.toQString() );
     mui_totalHaber->setText ( th.toQString() );
+    mui_totalDebeBorrador->setText ( tdb.toQString() );
+    mui_totalHaberBorrador->setText ( thb.toQString() );
+
 
     blDebug ( "END BcAsientoListView::presentar", 0 );
 }

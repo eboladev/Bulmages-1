@@ -102,7 +102,7 @@ BcBulmaCont::~BcBulmaCont()
     delete m_pWorkspace;
     /// En MS-Windows no termina bien la ejecucion del programa y por eso
     /// agregamos esta salida rapida.
-#ifdef WINDOWS
+#ifdef Q_OS_WIN32
     exit ( 0 );
 #endif
     blDebug ( "END BcBulmaCont::~BcBulmaCont", 0 );
@@ -618,7 +618,7 @@ void BcBulmaCont::closeEvent ( QCloseEvent *event )
     delete m_list;
     m_list = NULL;
 
-#ifdef WINDOWS
+#ifdef Q_OS_WIN32
     exit ( 0 );
 #endif
 

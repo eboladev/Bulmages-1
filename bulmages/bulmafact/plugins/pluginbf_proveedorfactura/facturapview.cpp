@@ -298,7 +298,7 @@ void FacturaProveedorView::imprimirFacturaProveedor()
     QString archivologo = g_confpr->valor ( CONF_DIR_OPENREPORTS ) + "logo.jpg";
 
     /// Copiamos el archivo.
-#ifdef WINDOWS
+#ifdef Q_OS_WIN32
 
     archivo = "copy " + archivo + " " + archivod;
 #else
@@ -309,7 +309,7 @@ void FacturaProveedorView::imprimirFacturaProveedor()
     system ( archivo.toAscii().constData() );
 
     /// Copiamos el logo.
-#ifdef WINDOWS
+#ifdef Q_OS_WIN32
 
     archivologo = "copy " + archivologo + " " + g_confpr->valor ( CONF_DIR_USER ) + "logo.jpg";
 #else

@@ -121,7 +121,7 @@ BfBulmaFact::~BfBulmaFact()
     delete pWorkspace;
     /// En MS-Windows no termina bien la ejecucion del programa y por eso
     /// agregamos esta salida rapida.
-#ifdef WINDOWS
+#ifdef Q_OS_WIN32
 
     exit ( 0 );
 #endif
@@ -203,7 +203,7 @@ void BfBulmaFact::closeEvent ( QCloseEvent *event )
     m_company = NULL;
     delete m_list;
     m_list = NULL;
-#ifdef WINDOWS
+#ifdef Q_OS_WIN32
 
     exit ( 0 );
 #endif

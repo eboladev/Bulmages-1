@@ -171,3 +171,4 @@ BlFixed BcAsientoSubForm::totalhaber ( QString idasiento )
     return BlFixed ( resultado );
 }
 
+

@@ -102,7 +102,7 @@ void InformeQToolButton1::click()
 
 
     /// Copiamos el logo.
-#ifdef WINDOWS
+#ifdef Q_OS_WIN32
     archivologo = "copy " + archivologo + " " + g_confpr->valor ( CONF_DIR_USER ) + "logo.jpg";
 #else
     archivologo = "cp " + archivologo + " " + g_confpr->valor ( CONF_DIR_USER ) + "logo.jpg";
@@ -355,7 +355,7 @@ void InformeProveedorQToolButton1::click()
 
 
     /// Copiamos el logo.
-#ifdef WINDOWS
+#ifdef Q_OS_WIN32
     archivologo = "copy " + archivologo + " " + g_confpr->valor ( CONF_DIR_USER ) + "logo.jpg";
 #else
     archivologo = "cp " + archivologo + " " + g_confpr->valor ( CONF_DIR_USER ) + "logo.jpg";
