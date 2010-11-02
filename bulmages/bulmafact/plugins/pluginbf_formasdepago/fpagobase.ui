@@ -29,7 +29,7 @@
      <property name="title">
       <string>Informacion de la forma de pago:</string>
      </property>
-     <layout class="QGridLayout" name="gridLayout">
+     <layout class="QGridLayout" name="_2">
       <item row="0" column="0">
        <widget class="QLabel" name="label_1">
         <property name="text">

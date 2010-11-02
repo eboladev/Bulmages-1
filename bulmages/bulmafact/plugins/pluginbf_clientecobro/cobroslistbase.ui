@@ -525,7 +525,7 @@
      <property name="frameShadow">
       <enum>QFrame::Raised</enum>
      </property>
-     <layout class="QGridLayout" name="gridLayout">
+     <layout class="QGridLayout" name="_2">
       <item row="0" column="0" colspan="3">
        <layout class="QHBoxLayout">
         <property name="spacing">

@@ -1039,7 +1039,7 @@
      <property name="title">
       <string>Totales:</string>
      </property>
-     <layout class="QGridLayout" name="gridLayout">
+     <layout class="QGridLayout" name="_2">
       <item row="0" column="0">
        <spacer name="spacer">
         <property name="orientation">

@@ -337,15 +337,15 @@ bool BcPlanContableArbol::deshoja ( unsigned int nivel, bool superiores )
     int i;
     bool deshojada = false;
     if ( nivel > 2 ) {
-        /// Primero averiguamos en que raíz deshojamos la última
-        /// vez para continuar por ahí
+        /// Primero averiguamos en que ra&iacute;z deshojamos la &uacute;ltima
+        /// vez para continuar por ah&iacute;
         if ( hojaactiva == NULL )
             i = 0;
         else
             for ( i = 0; ( i < raiz.size() && raiz.at ( i )->codigo != hojaactiva->codigo.left ( 2 ) ); ++i );
         /// Miramos si hay hoja candidata que deshojar.
         while ( !deshojada && i < raiz.size() ) {
-            /// Si hay que sacar los niveles superiores tenemos que deshojar también
+            /// Si hay que sacar los niveles superiores tenemos que deshojar tambi&eacute;n
             /// en el nivel 2.
             if ( superiores && ( !hojaactiva || ( raiz.at ( i )->codigo > hojaactiva->codigo && raiz.at ( i )->numapuntes > 0 ) ) ) {
                 hoja = raiz.at ( i );
@@ -370,7 +370,7 @@ bool BcPlanContableArbol::deshoja ( unsigned int nivel, bool superiores )
             i = raiz.indexOf ( hojaactiva ) + 1;
             while ( i < raiz.size() && !deshojada ) {
                 hoja = raiz.at ( i );
-                /// Sólo deshojamos si ha habido movimientos en la cuenta
+                /// S&oacute;lo deshojamos si ha habido movimientos en la cuenta
                 /// durante el ejercicio.
                 if ( hoja->numapuntes > 0 )
                     deshojada = true;
@@ -453,7 +453,7 @@ void BcPlanContableArbol::Deshojar ( tiporama *rama, unsigned int nivel, bool su
         if ( rama->sgte && ! ( *deshojada ) )
             Deshojar ( rama->sgte, nivel, superiores, & ( *deshojada ) );
     } else {
-        /// No deshojemos por aquí, busquemos por otra rama.
+        /// No deshojemos por aqu&iacute;, busquemos por otra rama.
         if ( rama->hoja->numapuntes == 0 ) {
             if ( rama->sgte )
                 Deshojar ( rama->sgte, nivel, superiores, & ( *deshojada ) );
@@ -465,10 +465,10 @@ void BcPlanContableArbol::Deshojar ( tiporama *rama, unsigned int nivel, bool su
                     *deshojada = true;
                 } else {
                     if ( rama->sgte )
-                        /// Puede ser que hojas del mismo nivel en el árbol no sean del
+                        /// Puede ser que hojas del mismo nivel en el &aacute;rbol no sean del
                         /// mismo nivel de cuentas.
                         /// Ej: 4750001, 4751 y 4752 podrian ser hojas hermanas porque no
-                        /// exista un 4750 (aunque semánticamente debiera existir)
+                        /// exista un 4750 (aunque sem&aacute;nticamente debiera existir)
                         /// En este caso, recorreremos tambien sus hojas hermanas por si
                         /// acaso.
                         Deshojar ( rama->sgte, nivel, superiores, & ( *deshojada ) );

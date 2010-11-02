@@ -66,7 +66,7 @@ private:
 //     int m_cidcuenta;
 //     int m_cnivel;
 //     int m_cpadre;
-    BcPlanContableArbol *arbol; /// el arbol de cuentas
+    BcPlanContableArbol *m_arbol; /// el arbol de cuentas
 
 public:
     BalanceTreeView ( BcCompany *, QWidget *parent = 0, int flags = 0 );

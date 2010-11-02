@@ -54,7 +54,7 @@ set(bulmalib_SRCS	blpostgresqlclient.cpp
 			bldoublespinbox.cpp
 			blwidget.cpp
 			blformlist.cpp
-         blformlistfilter.cpp
+			blformlistfilter.cpp
 			bldatelineedit.cpp
 			blsplashscreen.cpp
 			blformconfig.cpp
@@ -71,9 +71,9 @@ set(bulmalib_SRCS	blpostgresqlclient.cpp
 			blsearchwidget.cpp
 			bli18n.cpp
 			bltreewidget.cpp
-         blmaincompanypointer.cpp
-         blargparser.cpp
-	  bltoolbutton.cpp)
+			blmaincompanypointer.cpp
+			blargparser.cpp
+			bltoolbutton.cpp)
 
 set(bulmalib_MOCS	bldblogindialog.h
 			blcompanydialog.h
@@ -90,7 +90,7 @@ set(bulmalib_MOCS	bldblogindialog.h
 			blwidget.h
 			blmainwindow.h
 			blformlist.h
-         blformlistfilter.h
+			blformlistfilter.h
 			bldatelineedit.h
 			blsplashscreen.h
 			blformconfig.h
@@ -98,15 +98,14 @@ set(bulmalib_MOCS	bldblogindialog.h
 			blradiobutton.h
 			blcombobox.h
 			blcomboboxdelegate.h
-			bldatedelegate.h
 			blgenericcomboboxdelegate.h
 			blmonthcalendar.h
 			blsearchwidget.h
-			blform.h			
+			blform.h
 			blsubform.h
 			bltreewidget.h
-bltoolbutton.h
-         blbankedit.h)
+			bltoolbutton.h
+			blbankedit.h)
 
 set (bulmalib_HDRS	blmaincompanypointer.h
 			bldialogchanges.h
@@ -122,8 +121,7 @@ set (bulmalib_HDRS	blmaincompanypointer.h
 			blimportexport.h
 			blplugins.h
 			blpostgresqlclient.h
-			blargparser.h
-			)
+			blargparser.h)
 			
 			
 #headers that are not moc'ed
@@ -143,12 +141,12 @@ set (bulmalib_HDRS	blmaincompanypointer.h
 
 
 set(bulmalib_RCCS ../../bulmages.qrc)
-set(bulmalib_UIS	bldblogindialogbase.ui 
-			blcompanydialogbase.ui 
-			blerrordialogbase.ui 
-			bldatesearchbase.ui 
-			blsubformbase.ui 
-			blformconfigbase.ui 
+set(bulmalib_UIS	bldblogindialogbase.ui
+			blcompanydialogbase.ui
+			blerrordialogbase.ui
+			bldatesearchbase.ui
+			blsubformbase.ui
+			blformconfigbase.ui
 			blcountrybase.ui
 			blprogressbarbase.ui
 			blsearchwidgetbase.ui

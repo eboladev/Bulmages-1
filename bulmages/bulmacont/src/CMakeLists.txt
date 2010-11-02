@@ -40,7 +40,6 @@ set(bulmacont_MOCS bcbulmacont.h
            bcmodelo347listview.h
            bccentrocosteseleccionarview.h
            bccanalseleccionarview.h
-           bcmodelo300imprimir2ps.h
            bctipoivaview.h
            bcformapagoview.h
            bcsubform.h

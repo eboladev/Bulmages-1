@@ -1376,7 +1376,7 @@
        <property name="frameShadow">
         <enum>QFrame::Raised</enum>
        </property>
-       <layout class="QHBoxLayout" name="horizontalLayout">
+       <layout class="QHBoxLayout" name="_2">
         <item>
          <widget class="QToolButton" name="mui_guardar">
           <property name="enabled">
@@ -1457,7 +1457,7 @@
          </widget>
         </item>
         <item>
-         <layout class="QHBoxLayout" name="hboxLayout1"/>
+         <layout class="QHBoxLayout" name="_3"/>
         </item>
         <item>
          <spacer>

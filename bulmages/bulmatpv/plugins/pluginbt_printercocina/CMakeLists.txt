@@ -12,7 +12,7 @@ file(GLOB plugin_UIS *.ui)
 
 
 # Exclude files with no QObject macro.
-file(GLOB plugin_NO_MOCS pluginbt_printercocina.h)
+file(GLOB plugin_NO_MOCS pdefs_pluginbt_printercocina.h pluginbt_printercocina.h)
 list(REMOVE_ITEM plugin_MOCS ${plugin_NO_MOCS})
 
 

@@ -293,16 +293,16 @@ bool BalanceTreeView::generaBalance()
         return 0;
     }
 
-    arbol = new BcPlanContableArbol;
+    m_arbol = new BcPlanContableArbol;
     while ( !ramas->eof() ) {
         if ( ramas->valor ( "nivel" ).toInt() == 2 )
-            arbol->nuevaRama ( ramas );
+            m_arbol->nuevaRama ( ramas );
         ramas->nextRecord();
     } // end while
 
     /// Inicializamos el arbol desde sus raices (desde sus cuentas de nivel 2)
     /// con el resto de cuentas (las hojas del arbol)
-    arbol->inicializa ( ramas );
+    m_arbol->inicializa ( ramas );
 
     /// Seguidamente, recopilamos todos los apuntes agrupados por cuenta para poder
     /// establecer asi los valores de cada cuenta.
@@ -349,7 +349,7 @@ bool BalanceTreeView::generaBalance()
 
     /// Para cada cuenta con sus saldos ya calculados hay que actualizar las hojas del arbol.
     while ( !hojas->eof() ) {
-        arbol->actualizaHojas ( hojas );
+        m_arbol->actualizaHojas ( hojas );
         hojas->nextRecord();
     } // end while
     delete hojas;
@@ -380,25 +380,25 @@ void BalanceTreeView::presentar()
         QString cfinal = m_codigofinal->fieldValue("codigo");
         unsigned int nivelAnt, nivelCta, nivel = combonivel->currentText().toInt();
         if ( cfinal == "" )
-            cfinal = arbol->codigoCuentaMayor ( nivel );
+            cfinal = m_arbol->codigoCuentaMayor ( nivel );
         else
-            cfinal = arbol->hijoMayor ( cfinal, nivel );
+            cfinal = m_arbol->hijoMayor ( cfinal, nivel );
         bool jerarquico = mui_jerarquico->isChecked();
         QStringList datos;
         QLocale spain ( "es_ES" );
 
         listado->clear();
-        arbol->inicia();
-        while ( arbol->deshoja ( nivel, jerarquico ) ) {
-            QString cuenta = arbol->hojaActual ( "codigo" );
-            QString denominacion = arbol->hojaActual ( "descripcion" );
-            QString saldoant = arbol->hojaActual ( "saldoant" );
-            QString debe = arbol->hojaActual ( "debe" );
-            QString haber = arbol->hojaActual ( "haber" );
-            QString saldo = arbol->hojaActual ( "saldo" );
-            QString debeej = arbol->hojaActual ( "debeej" );
-            QString haberej = arbol->hojaActual ( "haberej" );
-            QString saldoej = arbol->hojaActual ( "saldoej" );
+        m_arbol->inicia();
+        while ( m_arbol->deshoja ( nivel, jerarquico ) ) {
+            QString cuenta = m_arbol->hojaActual ( "codigo" );
+            QString denominacion = m_arbol->hojaActual ( "descripcion" );
+            QString saldoant = m_arbol->hojaActual ( "saldoant" );
+            QString debe = m_arbol->hojaActual ( "debe" );
+            QString haber = m_arbol->hojaActual ( "haber" );
+            QString saldo = m_arbol->hojaActual ( "saldo" );
+            QString debeej = m_arbol->hojaActual ( "debeej" );
+            QString haberej = m_arbol->hojaActual ( "haberej" );
+            QString saldoej = m_arbol->hojaActual ( "saldoej" );
 
             if ( cuenta >= cinicial and cuenta <= cfinal ) {
                 /// Acumulamos los totales para al final poder escribirlos.
