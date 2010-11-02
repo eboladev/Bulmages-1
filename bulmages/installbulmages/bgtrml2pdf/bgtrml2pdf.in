@@ -37,6 +37,15 @@ import reportlab
 from reportlab.pdfgen import canvas
 from reportlab import platypus
 
+from reportlab.graphics.shapes import Group, Drawing, Ellipse, Wedge, String, STATE_DEFAULTS, ArcPath, Polygon, Rect, PolyLine, Line
+from reportlab.graphics.shapes import Drawing, _DrawingEditorMixin, colors  
+from reportlab.graphics import renderPDF
+from reportlab.lib.pagesizes import cm, inch  
+from reportlab.graphics.charts.piecharts import Pie  
+from reportlab.graphics.charts.legends import Legend  
+from reportlab.lib.colors import Color, PCMYKColor  
+
+
 sys.path.append('@CMAKE_INSTALL_PREFIX@/share/bulmages/bgtrml2pdf')
 
 from bgutils import strSafe, encoding
@@ -226,6 +235,13 @@ class _rml_canvas(object):
 
 	def _drawString(self, node):
 		self.canvas.drawString(text=self._textual(node), **bgutils.attr_get(node, ['x','y']))
+	def _pieChart(self, node):
+		# Pruebas de Tomeu Borras intentando ampliar el protocolo
+		self.d = MyDrawing(400, 200)
+		#self.d = Drawing(400,200)
+		#self.d.add(Rect(50, 50, 300, 100, fillColor=colors.yellow))
+		renderPDF.draw(self.d, self.canvas, **bgutils.attr_get(node, ['x','y']))
+		# Fin de las pruebas
 	def _drawCenteredString(self, node):
 		self.canvas.drawCentredString(text=self._textual(node), **bgutils.attr_get(node, ['x','y']))
 	def _drawRightString(self, node):
@@ -397,7 +413,8 @@ class _rml_canvas(object):
 			'rotate': lambda node: self.canvas.rotate(float(node.getAttribute('degrees'))),
 			'translate': self._translate,
 			'image': self._image,
-                        'svgimage': self._svgimage
+                        'svgimage': self._svgimage,
+			'pieChart': self._pieChart
 		}
 		for nd in node.childNodes:
 			if nd.nodeType==nd.ELEMENT_NODE:
@@ -702,6 +719,33 @@ def parseDoc(r,fout=None):
 		r.render(fp)
 		return fp.getvalue()
 
+
+class MyDrawing(_DrawingEditorMixin,Drawing):  
+    def __init__(self,width=400,height=200,*args,**kw):  
+        apply(Drawing.__init__,(self,width,height)+args,kw)  
+        self._add(self,Pie(),name='chart',validate=None,desc=None)  
+        self.chart.x                    = 20  
+        self.chart.y                    = (self.height-self.chart.height)/2  
+        self.chart.slices.strokeWidth   = 1  
+        self.chart.slices.popout        = 1  
+        self.chart.direction            = 'clockwise'  
+        self.chart.width                = self.chart.height  
+        self.chart.startAngle           = 90  
+        self.chart.slices[0].popout     = 10  
+        self._add(self,Legend(),name='legend',validate=None,desc=None)  
+        self.legend.x                   = width - 20  
+        self.legend.y                   = 0  
+        self.legend.boxAnchor           = 'se'  
+        self.legend.subCols[1].align    = 'right'  
+        # these data can be read from external sources  
+        data                = (9, 7, 6, 4, 2.5, 1.0)  
+        categories          = ('A','B','C','D','E','F',)  
+        colors              = [PCMYKColor(0,0,0,x) for x in (100,80,60,40,20,5)]  
+        self.chart.data     = data  
+        self.chart.labels   = map(str, self.chart.data)  
+        self.legend.colorNamePairs = zip(colors, categories)  
+        for i, color in enumerate(colors): self.chart.slices[i].fillColor  = color  
+  
 
 def parseString(data, fout=None):
 	r = _rml_doc(data)
