@@ -237,7 +237,7 @@ class _rml_canvas(object):
 		self.canvas.drawString(text=self._textual(node), **bgutils.attr_get(node, ['x','y']))
 	def _pieChart(self, node):
 		# Pruebas de Tomeu Borras intentando ampliar el protocolo
-		self.d = MyDrawing(400, 200)
+		self.d = MyDrawing(node, 400, 200)
 		#self.d = Drawing(400,200)
 		#self.d.add(Rect(50, 50, 300, 100, fillColor=colors.yellow))
 		renderPDF.draw(self.d, self.canvas, **bgutils.attr_get(node, ['x','y']))
@@ -721,7 +721,7 @@ def parseDoc(r,fout=None):
 
 
 class MyDrawing(_DrawingEditorMixin,Drawing):  
-    def __init__(self,width=400,height=200,*args,**kw):  
+    def __init__(self,node,width=400,height=200,*args,**kw):  
         apply(Drawing.__init__,(self,width,height)+args,kw)  
         self._add(self,Pie(),name='chart',validate=None,desc=None)  
         self.chart.x                    = 20  
@@ -738,14 +738,45 @@ class MyDrawing(_DrawingEditorMixin,Drawing):
         self.legend.boxAnchor           = 'se'  
         self.legend.subCols[1].align    = 'right'  
         # these data can be read from external sources  
-        data                = (9, 7, 6, 4, 2.5, 1.0)  
-        categories          = ('A','B','C','D','E','F',)  
+
+        data = []
+        categories = []
+        #childs = _child_get(node,'data')
+        #if not childs:
+        #        return None
+        #for tr in childs:
+        #        data2 = []
+        
+        for td in _child_get(node, 'data'):
+                #if td.nodeType == node.ELEMENT_NODE:
+                #        data.append(td.data)
+                for n in td.childNodes:
+                        if n.nodeType==node.ELEMENT_NODE:
+                                data.append( n.nodeValue )
+                        elif (n.nodeType == node.CDATA_SECTION_NODE):
+                                 data.append( float(n.data) )
+                        elif (n.nodeType == node.TEXT_NODE):
+                                 data.append ( float(n.data) )
+
+        for td in _child_get(node, 'categorie'):
+                #if td.nodeType == node.ELEMENT_NODE:
+                #        categories.append(td.getAttribute('value'))
+                for n in td.childNodes:
+                        if n.nodeType==node.ELEMENT_NODE:
+                                categories.append( n.nodeValue )
+                        elif (n.nodeType == node.CDATA_SECTION_NODE):
+                                 categories.append( n.data )
+                        elif (n.nodeType == node.TEXT_NODE):
+                                 categories.append ( n.data )
+
+        #data                = [9, 7, 6, 4, 2.5, 1.0]  
+        #categories          = ('A','B','C','D','E','F',)  
         colors              = [PCMYKColor(0,0,0,x) for x in (100,80,60,40,20,5)]  
         self.chart.data     = data  
         self.chart.labels   = map(str, self.chart.data)  
         self.legend.colorNamePairs = zip(colors, categories)  
         for i, color in enumerate(colors): self.chart.slices[i].fillColor  = color  
-  
+
 
 def parseString(data, fout=None):
 	r = _rml_doc(data)
