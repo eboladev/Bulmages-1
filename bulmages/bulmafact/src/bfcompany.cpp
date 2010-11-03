@@ -250,15 +250,10 @@ void BfCompany::guardaConf()
     /// Guardado del orden y de configuraciones varias.
     if ( file.open ( QIODevice::WriteOnly ) ) {
 
-	 /// Saber si una ventana est&aacuta; maximizada en
-	 /// una sesi&oacute;n NX no es tan sencillo
+	 /// Saber si una ventana est&aacuta; maximizada
 	 bool isMaximized = false;
 	 if ( m_bulmafact->windowState() == Qt::WindowMaximized
-	   || m_bulmafact->windowState() == Qt::WindowFullScreen
-	   || ( m_bulmafact->geometry().x() == 0
-		  && m_bulmafact->geometry().y() < g_theApp->desktop()->height() * 0.1
-		  && m_bulmafact->width() == g_theApp->desktop()->width()
-		  && m_bulmafact->height() > ( g_theApp->desktop()->height() * 0.8 ) ) )
+	   || m_bulmafact->windowState() == Qt::WindowFullScreen )
 	     isMaximized = true;
 
         QTextStream stream ( &file );
