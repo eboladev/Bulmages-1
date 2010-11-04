@@ -41,11 +41,6 @@
 #include "blworkspace.h"
 #include "blform.h"
 
-QMainWindow *g_bges = NULL;
-BlMainCompany *g_emp = NULL;
-
-
-
 
 int entryPoint ( BlMainWindow *bges )
 {
@@ -54,9 +49,6 @@ int entryPoint ( BlMainWindow *bges )
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale ( LC_ALL, "" );
     bindtextdomain ( "pluginbl_logo", g_confpr->valor ( CONF_DIR_TRADUCCION ).toAscii().constData() );
-
-    g_bges = bges;
-
 
     blDebug ( "myplugincont::elslot", 0 );
 
