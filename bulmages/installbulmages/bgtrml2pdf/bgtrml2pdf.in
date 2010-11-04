@@ -42,11 +42,12 @@ from reportlab.graphics.shapes import Drawing, _DrawingEditorMixin, colors
 from reportlab.graphics import renderPDF
 from reportlab.lib.pagesizes import cm, inch  
 from reportlab.graphics.charts.piecharts import Pie  
-from reportlab.graphics.charts.legends import Legend, TotalAnnotator  
+from reportlab.graphics.charts.legends import Legend, TotalAnnotator, LineLegend
 from reportlab.lib.colors import Color, PCMYKColor, blue, red 
 from reportlab.graphics.charts.barcharts import VerticalBarChart  
-#from standard_colors import pdf_chart_colors, setItems  
 from reportlab.lib.validators import Auto  
+from reportlab.graphics.charts.lineplots import GridLinePlot  
+
 
 sys.path.append('@CMAKE_INSTALL_PREFIX@/share/bulmages/bgtrml2pdf')
 
@@ -243,6 +244,9 @@ class _rml_canvas(object):
         def _barChart(self, node):
                 self.d = BarChart(node, 400, 200)
                 renderPDF.draw(self.d, self.canvas, **bgutils.attr_get(node, ['x','y']))
+        def _linePlot(self, node):
+                self.d = LinePlot(node, 400, 200)
+                renderPDF.draw(self.d, self.canvas, **bgutils.attr_get(node, ['x','y']))
 	def _drawCenteredString(self, node):
 		self.canvas.drawCentredString(text=self._textual(node), **bgutils.attr_get(node, ['x','y']))
 	def _drawRightString(self, node):
@@ -416,7 +420,8 @@ class _rml_canvas(object):
 			'image': self._image,
                         'svgimage': self._svgimage,
 			'pieChart': self._pieChart,
-                        'barChart': self._barChart
+                        'barChart': self._barChart,
+			'linePlot': self._linePlot
 		}
 		for nd in node.childNodes:
 			if nd.nodeType==nd.ELEMENT_NODE:
@@ -858,6 +863,113 @@ class BarChart(_DrawingEditorMixin,Drawing):
         self.legend.colEndCallout   = TotalAnnotator(rText='%.2f'%sum([x[0] for x in self.bar.data]), fontName='Helvetica-Bold', fontSize=self.legend.fontSize*1.1)  
         self.legend.colorNamePairs  = [(self.bar.bars[i].fillColor, (self.bar.categoryAxis.categoryNames[i][0:20], '%0.2f' % self.bar.data[i][0])) for i in range(len(self.bar.data))]  
   
+class LinePlot(_DrawingEditorMixin,Drawing):
+    def __init__(self,node,width=400,height=200,*args,**kw):
+        apply(Drawing.__init__,(self,width,height)+args,kw)
+
+        # sample data
+        self._colors    = Color(0,0,.901961), Color(.501961,.501961,.501961), Color(.780392,.780392,.780392)
+	self._catNames = []
+	print "Tu padre"
+        for tj in _child_get(node, 'serie'):
+		for td in _child_get(tj, 'name'):
+			for n in td.childNodes:
+				if (n.nodeType == node.CDATA_SECTION_NODE):
+					self._catNames.append( n.data )
+				elif (n.nodeType == node.TEXT_NODE):
+					self._catNames.append( n.data )
+
+        #self._catNames  = 'Fund', 'Benchmark', 'Sector'
+
+        # adding the actual chart here.
+        self._add(self,GridLinePlot(),name='plot',validate=None,desc=None)
+        self.plot.y                             = 40
+        self.plot.x                             = 30 
+        self.plot.width                         = self.width-2*self.plot.x
+        self.plot.height                        = self.height-2*self.plot.y
+        self.plot.xValueAxis.xLabelFormat       = '{mmm} {yy}'
+        self.plot.lineLabels.fontSize           = 6
+        self.plot.lineLabels.boxStrokeWidth     = 0.5
+        self.plot.lineLabels.visible            = 1
+        self.plot.lineLabels.boxAnchor          = 'c'
+        self.plot.lineLabels.angle              = 0
+        self.plot.lineLabelNudge                = 10
+        self.plot.joinedLines                   = 1
+        self.plot.lines.strokeWidth             = 1.5
+        self.plot.lines[0].strokeColor          = self._colors[0]
+        self.plot.lines[1].strokeColor          = self._colors[1]
+        self.plot.lines[2].strokeColor          = self._colors[2]
+        #sample data
+
+	self.plot.data = []
+        for td in _child_get(node, 'serie'):
+		serie = []
+		for x in _child_get(td, 'plot'):
+			for j in _child_get(x, 'label'):
+				for n in j.childNodes:
+					if (n.nodeType == node.CDATA_SECTION_NODE):
+						label =  int(n.data.replace(",","."))
+					elif (n.nodeType == node.TEXT_NODE):
+						label = int(n.data.replace(",","."))
+			for j in _child_get(x, 'data'):
+				for n in j.childNodes:
+					if (n.nodeType == node.CDATA_SECTION_NODE):
+						dato =  float(n.data.replace(",","."))
+					elif (n.nodeType == node.TEXT_NODE):
+						dato =  float(n.data.replace(",","."))
+			serie.append( (label, dato))
+		self.plot.data.append(serie)
+        # y axis
+
+        self.plot.yValueAxis.tickRight              = 0
+        self.plot.yValueAxis.maximumTicks           = 7
+        self.plot.yValueAxis.leftAxisPercent        = 0
+        self.plot.yValueAxis.tickLeft               = 5
+        self.plot.yValueAxis.valueMax               = None
+        self.plot.yValueAxis.valueMin               = None
+        self.plot.yValueAxis.rangeRound             = 'both'
+        self.plot.yValueAxis.requiredRange          = 30
+        self.plot.yValueAxis.valueSteps             = None
+        self.plot.yValueAxis.valueStep              = None
+        self.plot.yValueAxis.forceZero              = 0
+        self.plot.yValueAxis.labels.fontSize        = 7
+        self.plot.yValueAxis.labels.dy              = 0
+        self.plot.yValueAxis.avoidBoundFrac         = 0.1
+        # x axis
+        self.plot.xValueAxis.labels.fontName        = 'Helvetica'
+        self.plot.xValueAxis.labels.fontSize        = 7
+        self.plot.xValueAxis.valueSteps             = None
+        self.plot.xValueAxis.dailyFreq              = 0
+        self.plot.xValueAxis.gridStrokeWidth        = 0.25
+        self.plot.xValueAxis.labels.angle           = 90
+        self.plot.xValueAxis.maximumTicks           = 20
+        self.plot.xValueAxis.tickDown               = 3
+        self.plot.xValueAxis.dailyFreq              = 0
+        self.plot.xValueAxis.bottomAxisLabelSlack   = 0
+        self.plot.xValueAxis.minimumTickSpacing     = 10
+        self.plot.xValueAxis.visibleGrid            = 0
+        self.plot.xValueAxis.gridEnd                =   0
+        self.plot.xValueAxis.gridStart              = 0
+        self.plot.xValueAxis.labels.angle           = 45
+        self.plot.xValueAxis.labels.boxAnchor       = 'e'
+        self.plot.xValueAxis.labels.dx              = 0
+        self.plot.xValueAxis.labels.dy              = -5
+
+        # adding legend
+        self._add(self,LineLegend(),name='legend',validate=None,desc=None)
+        self.legend.boxAnchor       = 'sw'
+        self.legend.x               = 20
+        self.legend.y               = -1
+        self.legend.columnMaximum   = 1
+        self.legend.yGap            = 0
+        self.legend.deltax          = 50
+        self.legend.deltay          = 0
+        self.legend.dx              = 10
+        self.legend.dy              = 1.5
+        self.legend.fontSize        = 7
+        self.legend.alignment       = 'right'
+        self.legend.dxTextSpace     = 5
+        self.legend.colorNamePairs  = [(self._colors[i], self._catNames[i]) for i in xrange(len(self.plot.data))]
 
 def parseString(data, fout=None):
 	r = _rml_doc(data)

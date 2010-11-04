@@ -31,7 +31,56 @@
 		<fill color="(0,0,0)"/>	
 		<stroke color="(0,0,0)"/>
 		<setFont name="Helvetica" size="22"/>
-		<drawString x="18cm" y="19.5cm">Articulos</drawString>
+		<drawString x="18cm" y="19.5cm">Informe Graficas</drawString>
+
+		<linePlot x="10cm" y="5cm">
+
+		    <serie>
+			<name>blanco</name>
+			<plot>
+			    <label>20050101</label>
+			    <data>100</data>
+			</plot>
+			<plot>
+			    <label>20060101</label>
+			    <data>150</data>
+			</plot>
+			<plot>
+			    <label>20070101</label>
+			    <data>300</data>
+			</plot>
+		    </serie>
+		    <serie>
+			<name>negro</name>
+			<plot>
+			    <label>20050101</label>
+			    <data>300</data>
+			</plot>
+			<plot>
+			    <label>20060101</label>
+			    <data>300</data>
+			</plot>
+			<plot>
+			    <label>20070101</label>
+			    <data>225</data>
+			</plot>
+		    </serie>
+		    <serie>
+			<name>mix</name>
+			<plot>
+			    <label>20050101</label>
+			    <data>200</data>
+			</plot>
+			<plot>
+			    <label>20060101</label>
+			    <data>220</data>
+			</plot>
+			<plot>
+			    <label>20070101</label>
+			    <data>200</data>
+			</plot>
+		    </serie>
+		</linePlot>
                 
 <pieChart x="3cm" y="3cm" >               
 <categorie>Enero</categorie>
