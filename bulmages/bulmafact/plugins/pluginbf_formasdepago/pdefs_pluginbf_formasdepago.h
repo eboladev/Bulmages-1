@@ -2,7 +2,7 @@
 #define PDEFS_PLUGINBF_FORMASDEPAGO_H
 
 
-#ifdef WIN32
+#ifdef Q_OS_WIN32
 
 #ifdef PLUGINBF_FORMASDEPAGO
 #define PLUGINBF_FORMASDEPAGO_EXPORT __declspec(dllexport)

@@ -2,7 +2,7 @@
 #define PDEFS_PLUGINBF_CATALOGO_H
 
 
-#ifdef WIN32
+#ifdef Q_OS_WIN32
 
 #ifdef PLUGINBF_CATALOGO
 #define PLUGINBF_CATALOGO_EXPORT __declspec(dllexport)

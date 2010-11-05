@@ -356,7 +356,7 @@ void BlCompanyDialog::guardaArchivo()
 {
     blDebug ( "BlCompanyDialog::guardaArchivo", 0 );
 
-#ifndef WIN32
+#ifndef Q_OS_WIN32
     QString dirusuario = getenv ( "HOME" );
 #else
     QString dirusuario = getenv ( "UserProfile" );

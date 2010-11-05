@@ -2,7 +2,7 @@
 #define PDEFS_PLUGINBT_MODIFICADORES_H
 
 
-#ifdef WIN32
+#ifdef Q_OS_WIN32
 
 #ifdef PLUGINBT_MODIFICADORES
 #define PLUGINBT_MODIFICADORES_EXPORT __declspec(dllexport)

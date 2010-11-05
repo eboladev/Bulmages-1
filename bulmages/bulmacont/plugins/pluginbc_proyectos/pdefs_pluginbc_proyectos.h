@@ -2,7 +2,7 @@
 #define PDEFS_PLUGINBC_PROYECTOS_H
 
 
-#ifdef WIN32
+#ifdef Q_OS_WIN32
 
 #ifdef PLUGINBC_PROYECTOS
 #define PLUGINBC_PROYECTOS_EXPORT __declspec(dllexport)

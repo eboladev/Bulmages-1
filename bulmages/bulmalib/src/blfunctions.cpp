@@ -339,7 +339,7 @@ void blCreatePDF ( const QString arch )
     QDir::setCurrent ( g_confpr->valor ( CONF_DIR_USER ) );
     QString cadsys;
 
-#ifdef WIN32
+#ifdef Q_OS_WIN32
     cadsys = g_confpr->valor ( CONF_PYTHON ) + " \"" + g_confpr->valor ( CONF_PROGDATA ) + "bgtrml2pdf\\bgtrml2pdf\" " + arch + ".rml > \"" + g_confpr->valor ( CONF_DIR_USER ) + arch + ".pdf\"";
 
     int result1 = system ( cadsys.toAscii() );

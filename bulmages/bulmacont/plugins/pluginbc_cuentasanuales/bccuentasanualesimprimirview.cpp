@@ -30,7 +30,7 @@
 #include "blpostgresqlclient.h"
 #include "bcplancontablearbol.h"
 
-#ifndef WIN32
+#ifndef Q_OS_WIN32
 #include <unistd.h>
 #include <sys/types.h>
 #include <sys/wait.h>

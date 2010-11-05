@@ -2,7 +2,7 @@
 #define PDEFS_PLUGINBF_ALIAS_H
 
 
-#ifdef WIN32
+#ifdef Q_OS_WIN32
 
 #ifdef PLUGINBF_ALIAS
 #define PLUGINBF_ALIAS_EXPORT __declspec(dllexport)

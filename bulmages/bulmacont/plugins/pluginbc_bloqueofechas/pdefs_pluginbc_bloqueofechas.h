@@ -2,7 +2,7 @@
 #define PDEFS_PLUGINBC_BLOQUEOFECHAS_H
 
 
-#ifdef WIN32
+#ifdef Q_OS_WIN32
 
 #ifdef PLUGINBC_BLOQUEOFECHAS
 #define PLUGINBC_BLOQUEOFECHAS_EXPORT __declspec(dllexport)

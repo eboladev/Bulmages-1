@@ -2,7 +2,7 @@
 #define PDEFS_PLUGINBF_CARTERAPAGOS_H
 
 
-#ifdef WIN32
+#ifdef Q_OS_WIN32
 
 #ifdef PLUGINBF_CARTERAPAGOS
 #define PLUGINBF_CARTERAPAGOS_EXPORT __declspec(dllexport)

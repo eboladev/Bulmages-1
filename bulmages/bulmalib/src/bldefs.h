@@ -31,7 +31,7 @@
 
 /// NOTA: Tal vez estas definiciones deberian ir en cada uno
 /// de los programas pero de momento es mas facil juntarlos aqui.
-#ifdef WIN32
+#ifdef Q_OS_WIN32
 
 #ifdef BL_BULMALIB
 #define BL_EXPORT __declspec(dllexport)

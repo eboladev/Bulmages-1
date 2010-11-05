@@ -2,7 +2,7 @@
 #define PDEFS_PLUGINBF_GESTASSOCIACIO_H
 
 
-#ifdef WIN32
+#ifdef Q_OS_WIN32
 
 #ifdef PLUGINBF_GESTASSOCIACIO
 #define PLUGINBF_GESTASSOCIACIO_EXPORT __declspec(dllexport)

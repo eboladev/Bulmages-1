@@ -2,7 +2,7 @@
 #define PDEFS_PLUGINBC_CAASLODS_H
 
 
-#ifdef WIN32
+#ifdef Q_OS_WIN32
 
 #ifdef PLUGINBC_CAASLODS
 #define PLUGINBC_CAASLODS_EXPORT __declspec(dllexport)

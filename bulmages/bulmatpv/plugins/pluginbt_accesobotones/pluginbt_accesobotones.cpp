@@ -22,7 +22,7 @@
 
 #include <QProcess>
 
-#ifndef WIN32
+#ifndef Q_OS_WIN32
 #include <QX11EmbedContainer>
 #endif
 

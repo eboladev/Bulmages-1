@@ -2,7 +2,7 @@
 #define PDEFS_PLUGINBC_EXAMPLE_H
 
 
-#ifdef WIN32
+#ifdef Q_OS_WIN32
 
 #ifdef PLUGINBC_EXAMPLE
 #define PLUGINBC_EXAMPLE_EXPORT __declspec(dllexport)

@@ -2,7 +2,7 @@
 #define PDEFS_PLUGINBC_CUENTA_H
 
 
-#ifdef WIN32
+#ifdef Q_OS_WIN32
 
 #ifdef PLUGINBC_CUENTA
 #define PLUGINBC_CUENTA_EXPORT __declspec(dllexport)

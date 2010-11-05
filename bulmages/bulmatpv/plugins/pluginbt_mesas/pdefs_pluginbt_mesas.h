@@ -2,7 +2,7 @@
 #define PDEFS_PLUGINBT_MESAS_H
 
 
-#ifdef WIN32
+#ifdef Q_OS_WIN32
 
 #ifdef PLUGINBT_MESAS
 #define PLUGINBT_MESAS_EXPORT __declspec(dllexport)

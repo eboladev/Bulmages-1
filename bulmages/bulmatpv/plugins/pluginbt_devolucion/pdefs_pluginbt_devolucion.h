@@ -2,7 +2,7 @@
 #define PDEFS_PLUGINBT_DEVOLUCION_H
 
 
-#ifdef WIN32
+#ifdef Q_OS_WIN32
 
 #ifdef PLUGINBT_DEVOLUCION
 #define PLUGINBT_DEVOLUCION_EXPORT __declspec(dllexport)

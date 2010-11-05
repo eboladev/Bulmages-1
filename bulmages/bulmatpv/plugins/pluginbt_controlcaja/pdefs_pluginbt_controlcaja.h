@@ -2,7 +2,7 @@
 #define PDEFS_PLUGINBT_CONTROLCAJA_H
 
 
-#ifdef WIN32
+#ifdef Q_OS_WIN32
 
 #ifdef PLUGINBT_CONTROLCAJA
 #define PLUGINBT_CONTROLCAJA_EXPORT __declspec(dllexport)

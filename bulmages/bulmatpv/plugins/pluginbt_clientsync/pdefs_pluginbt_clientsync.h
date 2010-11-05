@@ -2,7 +2,7 @@
 #define PDEFS_PLUGINBT_CLIENTSYNC_H
 
 
-#ifdef WIN32
+#ifdef Q_OS_WIN32
 
 #ifdef PLUGINBT_CLIENTSYNC
 #define PLUGINBT_CLIENTSYNC_EXPORT __declspec(dllexport)

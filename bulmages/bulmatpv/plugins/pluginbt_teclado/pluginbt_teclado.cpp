@@ -35,7 +35,7 @@
 #include <QToolButton>
 #include <QProcess>
 #include <QDockWidget>
-#ifndef WIN32
+#ifndef Q_OS_WIN32
 #include <QX11EmbedContainer>
 #endif
 
@@ -102,7 +102,7 @@ int BtCompany_createMainWindows_Post ( BtCompany *etpv )
     winId = g_proc->readAllStandardOutput();
 
 
-#ifndef WIN32
+#ifndef Q_OS_WIN32
 
     QX11EmbedContainer *container = new QX11EmbedContainer ( g_docteclado );
     container->embedClient ( winId.toInt() );

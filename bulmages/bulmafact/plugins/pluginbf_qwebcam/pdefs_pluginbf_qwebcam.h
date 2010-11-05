@@ -2,7 +2,7 @@
 #define PDEFS_PLUGINBF_QWEBCAM_H
 
 
-#ifdef WIN32
+#ifdef Q_OS_WIN32
 
 #ifdef PLUGINBF_QWEBCAM
 #define PLUGINBF_QWEBCAM_EXPORT __declspec(dllexport)

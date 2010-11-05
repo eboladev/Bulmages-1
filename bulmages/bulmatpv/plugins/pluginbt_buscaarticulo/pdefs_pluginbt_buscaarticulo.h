@@ -2,7 +2,7 @@
 #define PDEFS_PLUGINBT_BUSCAARTICULO_H
 
 
-#ifdef WIN32
+#ifdef Q_OS_WIN32
 
 #ifdef PLUGINBT_BUSCAARTICULO
 #define PLUGINBT_BUSCAARTICULO_EXPORT __declspec(dllexport)

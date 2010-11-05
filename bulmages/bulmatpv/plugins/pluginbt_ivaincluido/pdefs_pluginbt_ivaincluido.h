@@ -2,7 +2,7 @@
 #define PDEFS_PLUGINBT_IVAINCLUIDO_H
 
 
-#ifdef WIN32
+#ifdef Q_OS_WIN32
 
 #ifdef PLUGINBT_IVAINCLUIDO
 #define PLUGINBT_IVAINCLUIDO_EXPORT __declspec(dllexport)

@@ -2,7 +2,7 @@
 #define PDEFS_PLUGINBT_ACCESOBOTONES_H
 
 
-#ifdef WIN32
+#ifdef Q_OS_WIN32
 
 #ifdef PLUGINBT_ACCESOBOTONES
 #define PLUGINBT_ACCESOBOTONES_EXPORT __declspec(dllexport)

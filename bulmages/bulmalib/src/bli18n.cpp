@@ -30,7 +30,7 @@ QString BlI18n ( const char *cadena, int )
     QString salida = QString("BlI18n (") + QString(textdomain(NULL)) + QString(" - ") + QString(gettext(cadena)) + QString(")");
     blDebug(salida, 0);
 
-#ifdef WIN32
+#ifdef Q_OS_WIN32
     return ( cadena );
 #else
     return QString ( gettext ( cadena ) );
@@ -44,7 +44,7 @@ QString BlI18n ( const char *domain, const char *cadena )
     QString salida = QString("BlI18n (") + QString(domain) + QString(" - ") + QString(dgettext(domain, cadena)) + QString(")");
     blDebug(salida, 0);
 
-#ifdef WIN32
+#ifdef Q_OS_WIN32
     return ( cadena );
 #else
     return QString ( dgettext ( domain, cadena ) );
@@ -54,7 +54,7 @@ QString BlI18n ( const char *domain, const char *cadena )
 
 
 /// En windows de momento no vamos a usar GETTEXT. Aunque la macro deberia ser #ifdef USE_GETTEXT
-#ifdef WIN32
+#ifdef Q_OS_WIN32
 void bindtextdomain ( const char *, const char * ) {};
 void textdomain ( const char * ) {};
 #endif

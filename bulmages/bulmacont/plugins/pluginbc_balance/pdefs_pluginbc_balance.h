@@ -2,7 +2,7 @@
 #define PDEFS_PLUGINBC_BALANCE_H
 
 
-#ifdef WIN32
+#ifdef Q_OS_WIN32
 
 #ifdef PLUGINBC_BALANCE
 #define PLUGINBC_BALANCE_EXPORT __declspec(dllexport)

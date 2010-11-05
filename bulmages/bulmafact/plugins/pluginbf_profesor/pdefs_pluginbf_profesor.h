@@ -2,7 +2,7 @@
 #define PDEFS_PLUGINBF_PROFESOR_H
 
 
-#ifdef WIN32
+#ifdef Q_OS_WIN32
 
 #ifdef PLUGINBF_PROFESOR
 #define PLUGINBF_PROFESOR_EXPORT __declspec(dllexport)

@@ -2,7 +2,7 @@
 #define PDEFS_PLUGINBF_DEBUG_H
 
 
-#ifdef WIN32
+#ifdef Q_OS_WIN32
 
 #ifdef PLUGINBF_DEBUG
 #define PLUGINBF_DEBUG_EXPORT __declspec(dllexport)

@@ -2,7 +2,7 @@
 #define PDEFS_PLUGINBF_ABREREFERENCIA_H
 
 
-#ifdef WIN32
+#ifdef Q_OS_WIN32
 
 #ifdef PLUGINBF_ABREREFERENCIA
 #define PLUGINBF_ABREREFERENCIA_EXPORT __declspec(dllexport)

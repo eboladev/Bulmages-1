@@ -2,7 +2,7 @@
 #define PDEFS_PLUGINBC_ASIENTO_H
 
 
-#ifdef WIN32
+#ifdef Q_OS_WIN32
 
 #ifdef PLUGINBC_ASIENTO
 #define PLUGINBC_ASIENTO_EXPORT __declspec(dllexport)

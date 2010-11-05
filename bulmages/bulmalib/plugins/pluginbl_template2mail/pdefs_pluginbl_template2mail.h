@@ -2,7 +2,7 @@
 #define PDEFS_PLUGINBL_TEMPLATE2MAIL_H
 
 
-#ifdef WIN32
+#ifdef Q_OS_WIN32
 
 #ifdef PLUGINBL_TEMPLATE2MAIL
 #define PLUGINBL_TEMPLATE2MAIL_EXPORT __declspec(dllexport)

@@ -2,7 +2,7 @@
 #define PDEFS_PLUGINBC_ESTADISTICAS_H
 
 
-#ifdef WIN32
+#ifdef Q_OS_WIN32
 
 #ifdef PLUGINBC_ESTADISTICAS
 #define PLUGINBC_ESTADISTICAS_EXPORT __declspec(dllexport)

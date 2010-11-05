@@ -2,7 +2,7 @@
 #define PDEFS_PLUGINBT_TICKETDEVUELTO_H
 
 
-#ifdef WIN32
+#ifdef Q_OS_WIN32
 
 #ifdef PLUGINBT_TICKETDEVUELTO
 #define PLUGINBT_TICKETDEVUELTO_EXPORT __declspec(dllexport)

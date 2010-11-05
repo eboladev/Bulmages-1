@@ -2,7 +2,7 @@
 #define PDEFS_PLUGINBT_CAMAREROS_H
 
 
-#ifdef WIN32
+#ifdef Q_OS_WIN32
 
 #ifdef PLUGINBT_CAMAREROS
 #define PLUGINBT_CAMAREROS_EXPORT __declspec(dllexport)

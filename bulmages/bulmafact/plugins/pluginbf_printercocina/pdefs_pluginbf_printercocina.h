@@ -2,7 +2,7 @@
 #define PDEFS_PLUGINBF_PRINTERCOCINA_H
 
 
-#ifdef WIN32
+#ifdef Q_OS_WIN32
 
 #ifdef PLUGINBF_PRINTERCOCINA
 #define PLUGINBF_PRINTERCOCINA_EXPORT __declspec(dllexport)

@@ -2,7 +2,7 @@
 #define PDEFS_PLUGINBF_COMPRAVENTA_H
 
 
-#ifdef WIN32
+#ifdef Q_OS_WIN32
 
 #ifdef PLUGINBF_COMPRAVENTA
 #define PLUGINBF_COMPRAVENTA_EXPORT __declspec(dllexport)

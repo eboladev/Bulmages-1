@@ -2,7 +2,7 @@
 #define PDEFS_PLUGINBT_TOTAL_H
 
 
-#ifdef WIN32
+#ifdef Q_OS_WIN32
 
 #ifdef PLUGINBT_TOTAL
 #define PLUGINBT_TOTAL_EXPORT __declspec(dllexport)

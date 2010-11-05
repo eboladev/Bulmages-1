@@ -2,7 +2,7 @@
 #define PDEFS_PLUGINBF_INFORMECLIENTE_H
 
 
-#ifdef WIN32
+#ifdef Q_OS_WIN32
 
 #ifdef PLUGINBF_INFORMECLIENTE
 #define PLUGINBF_INFORMECLIENTE_EXPORT __declspec(dllexport)

@@ -38,7 +38,7 @@
 #include "bccanalseleccionarview.h"
 #include "bccentrocosteseleccionarview.h"
 
-#ifndef WIN32
+#ifndef Q_OS_WIN32
 #include <unistd.h>
 #endif
 
@@ -141,7 +141,7 @@ void BalancePrintView::on_mui_imprimir_clicked()
 void BalancePrintView::presentar ( const char* tipus )
 {
     blDebug ( "BalancePrintView::presentar", 0 );
-#ifndef WIN32
+#ifndef Q_OS_WIN32
     int kugar, txt, html, txtapren, htmlapren;
     double tsaldoant, tdebe, thaber, tsaldo, debeej, haberej, saldoej;
     QString query;

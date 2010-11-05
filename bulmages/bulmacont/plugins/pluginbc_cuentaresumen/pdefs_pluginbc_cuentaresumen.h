@@ -2,7 +2,7 @@
 #define PDEFS_PLUGINBC_CUENTARESUMEN_H
 
 
-#ifdef WIN32
+#ifdef Q_OS_WIN32
 
 #ifdef PLUGINBC_CUENTARESUMEN
 #define PLUGINBC_CUENTARESUMEN_EXPORT __declspec(dllexport)

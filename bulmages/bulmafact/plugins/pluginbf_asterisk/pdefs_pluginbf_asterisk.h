@@ -2,7 +2,7 @@
 #define PDEFS_PLUGINBF_ASTERISK_H
 
 
-#ifdef WIN32
+#ifdef Q_OS_WIN32
 
 #ifdef PLUGINBF_ASTERISK
 #define PLUGINBF_ASTERISK_EXPORT __declspec(dllexport)

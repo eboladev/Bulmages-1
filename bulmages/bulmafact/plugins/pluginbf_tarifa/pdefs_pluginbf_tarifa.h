@@ -2,7 +2,7 @@
 #define PDEFS_PLUGINBF_TARIFA_H
 
 
-#ifdef WIN32
+#ifdef Q_OS_WIN32
 
 #ifdef PLUGINBF_TARIFA
 #define PLUGINBF_TARIFA_EXPORT __declspec(dllexport)

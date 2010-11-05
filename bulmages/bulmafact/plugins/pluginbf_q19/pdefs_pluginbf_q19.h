@@ -2,7 +2,7 @@
 #define PDEFS_PLUGINBF_Q19_H
 
 
-#ifdef WIN32
+#ifdef Q_OS_WIN32
 
 #ifdef PLUGINBF_Q19
 #define PLUGINBF_Q19_EXPORT __declspec(dllexport)

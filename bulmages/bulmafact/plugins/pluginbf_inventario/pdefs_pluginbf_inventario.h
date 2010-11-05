@@ -2,7 +2,7 @@
 #define PDEFS_PLUGINBF_INVENTARIO_H
 
 
-#ifdef WIN32
+#ifdef Q_OS_WIN32
 
 #ifdef PLUGINBF_INVENTARIO
 #define PLUGINBF_INVENTARIO_EXPORT __declspec(dllexport)

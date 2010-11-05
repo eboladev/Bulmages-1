@@ -2,7 +2,7 @@
 #define PDEFS_PLUGINBC_REGISTROIVA_H
 
 
-#ifdef WIN32
+#ifdef Q_OS_WIN32
 
 #ifdef PLUGINBC_REGISTROIVA
 #define PLUGINBC_REGISTROIVA_EXPORT __declspec(dllexport)

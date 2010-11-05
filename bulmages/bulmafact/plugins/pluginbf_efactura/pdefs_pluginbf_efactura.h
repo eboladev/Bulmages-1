@@ -2,7 +2,7 @@
 #define PDEFS_PLUGINBF_EFACTURA_H
 
 
-#ifdef WIN32
+#ifdef Q_OS_WIN32
 
 #ifdef PLUGINBF_EFACTURA
 #define PLUGINBF_EFACTURA_EXPORT __declspec(dllexport)

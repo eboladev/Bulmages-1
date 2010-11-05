@@ -2,7 +2,7 @@
 #define PDEFS_PLUGINBF_ALMACENAMPLIA_H
 
 
-#ifdef WIN32
+#ifdef Q_OS_WIN32
 
 #ifdef PLUGINBF_ALMACENAMPLIA
 #define PLUGINBF_ALMACENAMPLIA_EXPORT __declspec(dllexport)

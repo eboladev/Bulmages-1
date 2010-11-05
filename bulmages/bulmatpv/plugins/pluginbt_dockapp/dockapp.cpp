@@ -12,7 +12,7 @@
 #include "blmainwindow.h"
 #include "blplugins.h"
 
-#ifndef WIN32
+#ifndef Q_OS_WIN32
 #include <QX11EmbedContainer>
 #endif
 
@@ -39,7 +39,7 @@ DockApp::~DockApp()
 void DockApp::on_mui_dockapp_clicked()
 {
 
-#ifndef WIN32
+#ifndef Q_OS_WIN32
 
     QX11EmbedContainer *container = new QX11EmbedContainer ( g_doc2 );
     container->embedClient ( blWindowId("").toInt() );

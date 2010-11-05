@@ -2,7 +2,7 @@
 #define PDEFS_PLUGINBF_MULTIIMPRIMIR_H
 
 
-#ifdef WIN32
+#ifdef Q_OS_WIN32
 
 #ifdef PLUGINBF_MULTIIMPRIMIR
 #define PLUGINBF_MULTIIMPRIMIR_EXPORT __declspec(dllexport)

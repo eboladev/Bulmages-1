@@ -19,7 +19,7 @@ void myplugin::elslot()
     char * args[] = {"http://www.iglues.org/documentacion.php", "http://www.iglues.org/documentacion.php", NULL};
     int pid;
     int error;
-#ifndef WIN32
+#ifndef Q_OS_WIN32
     if ( ( pid = fork() ) < 0 ) {
         perror ( "Fork failed" );
         exit ( errno );
@@ -35,7 +35,7 @@ void myplugin::soporte()
     char * args[] = {"http://www.iglues.org/soporte.php", "http://www.iglues.org/soporte.php", NULL};
     int pid;
     int error;
-#ifndef WIN32
+#ifndef Q_OS_WIN32
     if ( ( pid = fork() ) < 0 ) {
         perror ( "Fork failed" );
         exit ( errno );

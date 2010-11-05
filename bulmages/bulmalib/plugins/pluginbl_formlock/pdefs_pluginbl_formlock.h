@@ -2,7 +2,7 @@
 #define PDEFS_PLUGINBL_FORMLOCK_H
 
 
-#ifdef WIN32
+#ifdef Q_OS_WIN32
 
 #ifdef PLUGINBL_FORMLOCK
 #define PLUGINBL_FORMLOCK_EXPORT __declspec(dllexport)

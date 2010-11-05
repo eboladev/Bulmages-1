@@ -2,7 +2,7 @@
 #define PDEFS_PLUGINBL_REPORT_H
 
 
-#ifdef WIN32
+#ifdef Q_OS_WIN32
 
 #ifdef PLUGINBL_REPORT
 #define PLUGINBL_REPORT_EXPORT __declspec(dllexport)

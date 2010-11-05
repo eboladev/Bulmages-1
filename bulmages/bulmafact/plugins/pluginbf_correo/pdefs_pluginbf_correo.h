@@ -2,7 +2,7 @@
 #define PDEFS_PLUGINBF_CORREO_H
 
 
-#ifdef WIN32
+#ifdef Q_OS_WIN32
 
 #ifdef PLUGINBF_CORREO
 #define PLUGINBF_CORREO_EXPORT __declspec(dllexport)

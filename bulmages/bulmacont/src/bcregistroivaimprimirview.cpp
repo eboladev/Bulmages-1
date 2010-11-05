@@ -22,7 +22,7 @@
 #include "bccompany.h"
 
 #include "bcmodelo300imprimir2ps.h"
-#ifndef WIN32
+#ifndef Q_OS_WIN32
 #include <unistd.h>
 #endif
 
@@ -98,7 +98,7 @@ void BcRegistroIVAImprimirView::inicializa1 ( QString finicial1, QString ffinal1
 void BcRegistroIVAImprimirView::presentar ( const char *tipus )
 {
     blDebug ( "BcRegistroIVAImprimirView::presentar", 0 );
-#ifndef WIN32
+#ifndef Q_OS_WIN32
     int txt, html, txtapren, htmlapren;
     QString data;
     QString datahora;

@@ -32,7 +32,7 @@
 #include <QDomNode>
 #include <QDomDocument>
 
-#ifndef WIN32
+#ifndef Q_OS_WIN32
 #include <unistd.h>
 #include <sys/wait.h>
 #endif

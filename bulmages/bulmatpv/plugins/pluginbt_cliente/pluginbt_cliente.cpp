@@ -35,7 +35,7 @@
 #include <QToolButton>
 #include <QProcess>
 #include <QDockWidget>
-#ifndef WIN32
+#ifndef Q_OS_WIN32
 #include <QX11EmbedContainer>
 #endif
 

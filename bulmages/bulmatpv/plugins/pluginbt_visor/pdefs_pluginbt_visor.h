@@ -2,7 +2,7 @@
 #define PDEFS_PLUGINBT_VISOR_H
 
 
-#ifdef WIN32
+#ifdef Q_OS_WIN32
 
 #ifdef PLUGINBT_VISOR
 #define PLUGINBT_VISOR_EXPORT __declspec(dllexport)

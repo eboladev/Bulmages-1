@@ -2,7 +2,7 @@
 #define PDEFS_PLUGINBC_CORRECTOR_H
 
 
-#ifdef WIN32
+#ifdef Q_OS_WIN32
 
 #ifdef PLUGINBC_CORRECTOR
 #define PLUGINBC_CORRECTOR_EXPORT __declspec(dllexport)

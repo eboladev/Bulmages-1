@@ -2,7 +2,7 @@
 #define PDEFS_PLUGINBC_DIARIO_H
 
 
-#ifdef WIN32
+#ifdef Q_OS_WIN32
 
 #ifdef PLUGINBC_DIARIO
 #define PLUGINBC_DIARIO_EXPORT __declspec(dllexport)

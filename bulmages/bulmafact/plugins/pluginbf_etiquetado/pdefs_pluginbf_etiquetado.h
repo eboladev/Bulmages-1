@@ -2,7 +2,7 @@
 #define PDEFS_PLUGINBF_ETIQUETADO_H
 
 
-#ifdef WIN32
+#ifdef Q_OS_WIN32
 
 #ifdef PLUGINBF_ETIQUETADO
 #define PLUGINBF_ETIQUETADO_EXPORT __declspec(dllexport)

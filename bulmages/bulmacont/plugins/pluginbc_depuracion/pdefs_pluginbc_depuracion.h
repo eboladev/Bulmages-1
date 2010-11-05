@@ -2,7 +2,7 @@
 #define PDEFS_PLUGINBC_DEPURACION_H
 
 
-#ifdef WIN32
+#ifdef Q_OS_WIN32
 
 #ifdef PLUGINBC_DEPURACION
 #define PLUGINBC_DEPURACION_EXPORT __declspec(dllexport)

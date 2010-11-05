@@ -2,7 +2,7 @@
 #define PDEFS_PLUGINBF_ASOCIACION_H
 
 
-#ifdef WIN32
+#ifdef Q_OS_WIN32
 
 #ifdef PLUGINBF_ASOCIACION
 #define PLUGINBF_ASOCIACION_EXPORT __declspec(dllexport)

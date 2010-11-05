@@ -2,7 +2,7 @@
 #define PDEFS_PLUGINBT_COBRAR_H
 
 
-#ifdef WIN32
+#ifdef Q_OS_WIN32
 
 #ifdef PLUGINBT_COBRAR
 #define PLUGINBT_COBRAR_EXPORT __declspec(dllexport)

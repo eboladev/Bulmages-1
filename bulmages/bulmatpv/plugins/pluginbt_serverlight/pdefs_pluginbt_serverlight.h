@@ -2,7 +2,7 @@
 #define PDEFS_PLUGINBT_SERVERLIGHT_H
 
 
-#ifdef WIN32
+#ifdef Q_OS_WIN32
 
 #ifdef PLUGINBT_SERVERLIGHT
 #define PLUGINBT_SERVERLIGHT_EXPORT __declspec(dllexport)

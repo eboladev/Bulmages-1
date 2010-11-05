@@ -2,7 +2,7 @@
 #define PDEFS_PLUGINBC_CUENTASANUALES_H
 
 
-#ifdef WIN32
+#ifdef Q_OS_WIN32
 
 #ifdef PLUGINBC_CUENTASANUALES
 #define PLUGINBC_CUENTASANUALES_EXPORT __declspec(dllexport)

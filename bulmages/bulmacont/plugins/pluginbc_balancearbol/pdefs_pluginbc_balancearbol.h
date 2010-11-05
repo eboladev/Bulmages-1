@@ -2,7 +2,7 @@
 #define PDEFS_PLUGINBC_BALANCEARBOL_H
 
 
-#ifdef WIN32
+#ifdef Q_OS_WIN32
 
 #ifdef PLUGINBC_BALANCEARBOL
 #define PLUGINBC_BALANCEARBOL_EXPORT __declspec(dllexport)

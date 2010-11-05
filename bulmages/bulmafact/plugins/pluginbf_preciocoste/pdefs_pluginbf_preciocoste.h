@@ -2,7 +2,7 @@
 #define PDEFS_PLUGINBF_PRECIOCOSTE_H
 
 
-#ifdef WIN32
+#ifdef Q_OS_WIN32
 
 #ifdef PLUGINBF_PRECIOCOSTE
 #define PLUGINBF_PRECIOCOSTE_EXPORT __declspec(dllexport)

@@ -1,7 +1,7 @@
 #ifndef MYPLUGINDOCK_H
 #define MYPLUGINDOCK_H
 
-#ifndef WIN32
+#ifndef Q_OS_WIN32
 
 #include <QObject>
 

@@ -2,7 +2,7 @@
 #define PDEFS_PLUGINBC_MAYOR_H
 
 
-#ifdef WIN32
+#ifdef Q_OS_WIN32
 
 #ifdef PLUGINBC_MAYOR
 #define PLUGINBC_MAYOR_EXPORT __declspec(dllexport)

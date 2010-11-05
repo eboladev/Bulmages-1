@@ -2,7 +2,7 @@
 #define PDEFS_PLUGINBL_IMPORTCSV_H
 
 
-#ifdef WIN32
+#ifdef Q_OS_WIN32
 
 #ifdef PLUGINBL_IMPORTCSV
 #define PLUGINBL_IMPORTCSV_EXPORT __declspec(dllexport)

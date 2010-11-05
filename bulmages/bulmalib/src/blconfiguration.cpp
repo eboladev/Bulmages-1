@@ -30,7 +30,7 @@
 #include <sys/types.h>
 #include <sys/stat.h>
 #include <fcntl.h>
-#ifndef WIN32
+#ifndef Q_OS_WIN32
 #include <unistd.h>
 #endif
 
@@ -98,12 +98,12 @@ BlConfiguration::BlConfiguration ( QString nombreprograma )
     QFile programLocalConfFile;
     QDir dirGlobalConf ( m_dirGlobalConf );
 
-    #ifndef WIN32
-    QString dirusuario = getenv ( "HOME" );    
-    #else
+#ifndef Q_OS_WIN32
+    QString dirusuario = getenv ( "HOME" );
+#else
     QString dirusuario = getenv ( "UserProfile" );
     dirusuario.replace('\\', '/'); // Para no tener barras de los dos tipos mezclados en la misma ruta, usaremos las normales siempre
-    #endif
+#endif
 
     m_dirLocalConf = dirusuario + "/.bulmages/";
     m_genericGlobalConfFile = "bulmages.conf";

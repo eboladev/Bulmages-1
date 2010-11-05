@@ -19,7 +19,7 @@
 const int MAX_FIXED_PRECISION = 15;
 const int MAX_FIXED_LENGTH = 28;
 
-typedef long long int BL_EXPORT BlFixed_numerator;
+typedef long long int BlFixed_numerator;
 
 inline long long int integer ( BlFixed_numerator x )
 {

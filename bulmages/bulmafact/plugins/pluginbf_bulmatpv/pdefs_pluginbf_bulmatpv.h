@@ -2,7 +2,7 @@
 #define PDEFS_PLUGINBF_BULMATPV_H
 
 
-#ifdef WIN32
+#ifdef Q_OS_WIN32
 
 #ifdef PLUGINBF_BULMATPV
 #define PLUGINBF_BULMATPV_EXPORT __declspec(dllexport)

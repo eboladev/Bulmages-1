@@ -2,7 +2,7 @@
 #define PDEFS_PLUGINBF_PROVEEDORPAGO_H
 
 
-#ifdef WIN32
+#ifdef Q_OS_WIN32
 
 #ifdef PLUGINBF_PROVEEDORPAGO
 #define PLUGINBF_PROVEEDORPAGO_EXPORT __declspec(dllexport)

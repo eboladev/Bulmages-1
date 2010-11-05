@@ -2,7 +2,7 @@
 #define PDEFS_PLUGINBL_SUBFORM2SXC_H
 
 
-#ifdef WIN32
+#ifdef Q_OS_WIN32
 
 #ifdef PLUGINBL_SUBFORM2SXC
 #define PLUGINBL_SUBFORM2SXC_EXPORT __declspec(dllexport)

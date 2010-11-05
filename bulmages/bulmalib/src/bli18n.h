@@ -26,7 +26,7 @@
 
 /// En Windows no se puede usar GETTEXT de momento
 
-#ifndef WIN32
+#ifndef Q_OS_WIN32
 #include <libintl.h>
 #endif
 
@@ -39,7 +39,7 @@ QString BL_EXPORT BlI18n(const char *, int = 0);
 QString BL_EXPORT BlI18n(const char *, const char *);
 
 
-#ifdef WIN32
+#ifdef Q_OS_WIN32
 void BL_EXPORT bindtextdomain(const char *, const char *);
 void BL_EXPORT textdomain(const char *);
 #endif
