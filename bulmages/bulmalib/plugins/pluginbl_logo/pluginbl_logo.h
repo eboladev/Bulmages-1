@@ -25,9 +25,10 @@
 #include "bccompany.h"
 #include "bfcompany.h"
 #include "blmainwindow.h"
+#include "pdefs_pluginbl_logo.h"
 
 
-extern "C" int entryPoint ( BlMainWindow * );
+extern "C" PLUGINBL_LOGO_EXPORT int entryPoint ( BlMainWindow * );
 
 
 #endif
