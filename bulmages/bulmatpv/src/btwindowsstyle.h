@@ -26,8 +26,10 @@
 
 
 #include <QWindowsStyle>
+#include "blfunctions.h"
 
-class BtWindowsStyle : public QWindowsStyle
+
+class BT_EXPORT BtWindowsStyle : public QWindowsStyle
 {
 
 public:

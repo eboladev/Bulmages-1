@@ -26,6 +26,7 @@
 #include "ui_fpagobase.h"
 #include "bfform.h"
 #include "blpostgresqlclient.h"
+#include "pdefs_pluginbf_formasdepago.h"
 
 
 class BfCompany;
@@ -33,7 +34,7 @@ class BfCompany;
 
 /// Muestra y administra la ventana de formas de pago.
 /** */
-class FPagoView : public BfForm, private Ui_FPagoBase
+class PLUGINBF_FORMASDEPAGO_EXPORT FPagoView : public BfForm, private Ui_FPagoBase
 {
     Q_OBJECT
 

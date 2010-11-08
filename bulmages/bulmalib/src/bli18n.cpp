@@ -26,13 +26,14 @@
 
 QString BlI18n ( const char *cadena, int )
 {
-    /// Depuracion:
-    QString salida = QString("BlI18n (") + QString(textdomain(NULL)) + QString(" - ") + QString(gettext(cadena)) + QString(")");
-    blDebug(salida, 0);
 
 #ifdef Q_OS_WIN32
     return ( cadena );
 #else
+    /// Depuracion:
+    QString salida = QString("BlI18n (") + QString(textdomain(NULL)) + QString(" - ") + QString(gettext(cadena)) + QString(")");
+    blDebug(salida, 0);
+
     return QString ( gettext ( cadena ) );
 #endif
 }
@@ -40,13 +41,14 @@ QString BlI18n ( const char *cadena, int )
 
 QString BlI18n ( const char *domain, const char *cadena )
 {
-    /// Depuracion:
-    QString salida = QString("BlI18n (") + QString(domain) + QString(" - ") + QString(dgettext(domain, cadena)) + QString(")");
-    blDebug(salida, 0);
 
 #ifdef Q_OS_WIN32
     return ( cadena );
 #else
+    /// Depuracion:
+    QString salida = QString("BlI18n (") + QString(domain) + QString(" - ") + QString(dgettext(domain, cadena)) + QString(")");
+    blDebug(salida, 0);
+
     return QString ( dgettext ( domain, cadena ) );
 #endif
 }

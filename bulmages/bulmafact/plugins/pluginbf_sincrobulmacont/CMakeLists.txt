@@ -53,6 +53,7 @@ QT4_WRAP_CPP(plugin_MOC_SRCS ${plugin_MOCS})
 #QT4_ADD_RESOURCES(plugin_RCC_SRCS ${plugin_RCCS})
 
 IF(WIN32)
+SET(CMAKE_SHARED_LINKER_FLAGS "${CMAKE_SHARED_LINKER_FLAGS} -Wl,-enable-auto-import")
 ADD_DEFINITIONS(-DQWT_DLL -DQT_DLL -DQWT_MAKEDLL -DPLUGINBF_SINCROBULMACONT)
 ENDIF(WIN32)
 
@@ -91,8 +92,11 @@ set_target_properties( ${plugin} PROPERTIES
   SOVERSION "${BULMAGES_VERSION_MAJOR}.${BULMAGES_VERSION_MINOR}"
   VERSION "${BULMAGES_VERSION}")
 
-#target_link_libraries(${plugin} libbulmafact bulmalib libbulmacont pluginbf_articulo pluginbf_formasdepago pluginbf_banco ${QT_LIBRARIES} ${PGSQL_LIBRARIES})
+if(WIN32)
+target_link_libraries(${plugin} libbulmafact bulmalib libbulmacont pluginbf_articulo pluginbf_formasdepago pluginbf_banco ${QT_LIBRARIES} ${PGSQL_LIBRARIES})
+else(WIN32)
 target_link_libraries(${plugin} libbulmafact bulmalib libbulmacont ${QT_LIBRARIES} ${PGSQL_LIBRARIES})
+endif(WIN32)
 
 install_targets(/lib/bulmafact/plugins ${plugin})
 
