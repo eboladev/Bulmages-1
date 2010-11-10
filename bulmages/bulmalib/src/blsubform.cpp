@@ -202,6 +202,7 @@ BlSubForm::BlSubForm ( QWidget *parent ) : BlWidget ( parent )
     } // end if
 
     mui_list->setSelectionMode ( QAbstractItemView::SingleSelection );
+    //mui_list->setSelectionMode ( QAbstractItemView::NoSelection );
     mui_list->setSelectionBehavior ( QAbstractItemView::SelectRows );
 //    mui_list->setHorizontalScrollMode ( QAbstractItemView::ScrollPerPixel );
 //    mui_list->setVerticalScrollMode ( QAbstractItemView::ScrollPerPixel );
@@ -1941,9 +1942,6 @@ int BlSubForm::addSubFormHeader ( QString nom, BlDbField::DbType typ, int res, i
         it->setFlags ( Qt::ItemIsEnabled | Qt::ItemIsSelectable | Qt::ItemIsEditable );
     } // end if
 
-
-
-
     /// Comprobamos la precision del campo (si este es del tipo numerico) y la guardamos.
     /// Lo hacemos aqui y no en el constructor de BlDbField porque precisamos del nombre de la tabla para
     /// poder hacer la consulta sobre la precisión del campo y ese dato solo esta en BlDbRecord.
@@ -1963,10 +1961,6 @@ int BlSubForm::addSubFormHeader ( QString nom, BlDbField::DbType typ, int res, i
               camp->setNumericPrecision(2);
       } // end if
     } // end if
-
-
-
-
 
     mui_listcolumnas->setItem ( mui_listcolumnas->rowCount() - 1, 0, it );
     it = new BlTableWidgetItem ( nom );

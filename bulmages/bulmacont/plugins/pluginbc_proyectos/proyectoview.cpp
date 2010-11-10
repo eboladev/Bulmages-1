@@ -61,7 +61,7 @@ ProyectoView::ProyectoView ( BcCompany *comp, QWidget *parent )
 
         /// Inicializamos componentes.
         mui_idc_coste->setMainCompany ( comp );
-        mui_idc_coste->setidc_coste ( "" );
+        mui_idc_coste->setId ( "" );
         mui_ingresos->setMainCompany ( comp );
         mui_gastos->setMainCompany ( comp );
 

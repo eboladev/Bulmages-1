@@ -55,7 +55,7 @@ public:
     void setFieldValue(QString);
     virtual QString id();
     virtual QString id(QString);
-    virtual void setId(QString);
+    virtual void setId(QString, QString fieldSearch = "");
     void setQuery(QString);
     virtual void setTableName(QString tableName);
     virtual void setFieldId(QString fieldId);

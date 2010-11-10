@@ -30,8 +30,10 @@ BcBuscarCanal::BcBuscarCanal ( QWidget *parent )
         : BlComboBox ( parent )
 {
     blDebug ( "BcBuscarCanal::BcBuscarCanal", 0 );
-    m_cursorcombo = NULL;
-    connect ( this, SIGNAL ( activated ( int ) ), this, SLOT ( m_activated ( int ) ) );
+    setQuery ( "SELECT idcanal, nombre FROM canal ORDER BY nombre" );
+    setTableName ( "canal" );
+    setFieldId ( "idcanal" );
+    m_valores["nombre"] = "";
     blDebug ( "END BcBuscarCanal::BcBuscarCanal", 0 );
 }
 
@@ -46,102 +48,22 @@ BcBuscarCanal::~BcBuscarCanal()
 }
 
 
-///
-/**
-\param idcanal
-**/
-void BcBuscarCanal::setidcanal ( QString idcanal )
-{
-    blDebug ( "BcBuscarCanal::setidcanal", 0, idcanal );
-    if ( m_cursorcombo != NULL ) {
-        delete m_cursorcombo;
-    } // end if
-    m_cursorcombo = mainCompany() ->loadQuery ( "SELECT * FROM canal" );
-    int i = 0;
-    int i1 = 0;
-    clear();
-    addItem ( "--" );
-    while ( !m_cursorcombo->eof() ) {
-        i ++;
-        if ( m_cursorcombo->valor ( "idcanal" ) == idcanal ) {
-            i1 = i;
-        } // end if
-        addItem ( m_cursorcombo->valor ( "nombre" ) );
-        m_cursorcombo->nextRecord();
-    } //end while
-    setCurrentIndex ( i1 );
-    blDebug ( "END BcBuscarCanal::setidcanal", 0, idcanal );
-}
-
-
-///
-/**
-\param idcanal
-**/
-void BcBuscarCanal::setFieldValue ( QString idcanal )
-{
-    blDebug ( "BcBuscarCanal::setFieldValue", 0 );
-    setidcanal ( idcanal );
-    blDebug ( "END BcBuscarCanal::setFieldValue", 0 );
-}
-
-
-///
-/**
-\param index
-**/
-void BcBuscarCanal::m_activated ( int index )
-{
-    blDebug ( "BcBuscarCanal::m_activated", 0 );
-    if ( index > 0 ) {
-        emit ( valueChanged ( m_cursorcombo->valor ( "idcanal", index - 1 ) ) );
-    } else {
-        emit ( valueChanged ( "" ) );
-    } // end if
-    blDebug ( "END BcBuscarCanal::m_activated", 0 );
-}
-
-
-///
-/**
-\return
-**/
-QString BcBuscarCanal::idcanal()
-{
-    blDebug ( "BcBuscarCanal::idcanal", 0 );
-    int index = currentIndex();
-    if ( index > 0 ) {
-        return ( m_cursorcombo->valor ( "idcanal", index - 1 ) );
-    } else {
-        return "";
-    } // end if
-    blDebug ( "END BcBuscarCanal::idcanal", 0 );
-}
-
-
-///
-/**
-\return
-**/
-QString BcBuscarCanal::fieldValue()
-{
-    return idcanal();
-}
-
 /// ===================================================================
 /// Busqueda Cuenta Delegate para usar con los subforms
 /// ===================================================================
 /** Inicializa todos los componentes del Widget a NULL para que no haya posibles confusiones
     sobre si un elemento ha sido creado o no.
-    Conecta el SIGNAL activated() con m_activated() para tratarlo. */
 /**
 \param parent
 **/
 BcBuscarCanalDelegate::BcBuscarCanalDelegate ( QWidget *parent )
-        : BlComboBox ( parent )
+        : BlComboBoxDelegate ( parent )
 {
     blDebug ( "BcBuscarCanalDelegate::BcBuscarCanalDelegate", 10 );
-    setEditable ( false );
+    setQuery ( "SELECT idcanal, nombre FROM canal ORDER BY nombre" );
+    setTableName ( "canal" );
+    setFieldId ( "idcanal" );
+    m_valores["nombre"] = "";
     blDebug ( "END BcBuscarCanalDelegate::BcBuscarCanalDelegate", 0 );
 }
 
@@ -157,35 +79,4 @@ BcBuscarCanalDelegate::~BcBuscarCanalDelegate()
 }
 
 
-/** Permite indicar al Widget cual es la serie de factura seleccionada por defecto.
-    Recarga cursor de serie_factura y cuando encuentra un registro cuyo codigoserie_factura coincide con el pasado
-    como parametro lo establece como el registro activo por el comboBox.
-*/
-/**
-\param cod
-\return
-**/
-void BcBuscarCanalDelegate::set ( const QString &codigo )
-{
-    blDebug ( "BcBuscarCanalDelegate::set", 0 );
-    int index = 0;
-
-    m_cursorcombo = mainCompany() ->loadQuery ( "SELECT nombre FROM canal ORDER BY nombre" );
-    clear();
-
-    addItem ( "--" );
-    ///TODO: La idea es que salga en el desplegable del combobox el listado de cuentas que
-    /// coincidan con el texto escrito para poder elegirlo.
-    while ( !m_cursorcombo->eof() ) {
-        addItem ( m_cursorcombo->valor ( "nombre" ) );
-        if ( m_cursorcombo->valor ( "nombre" ) == codigo )
-            index = m_cursorcombo->currentRecord() + 1;
-        m_cursorcombo->nextRecord();
-    }
-    delete m_cursorcombo;
-    setEditText ( codigo );
-    setCurrentIndex ( index );
-
-    blDebug ( "END BcBuscarCanalDelegate::set", 0 );
-}
 

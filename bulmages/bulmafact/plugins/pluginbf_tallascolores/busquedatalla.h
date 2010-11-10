@@ -36,6 +36,7 @@
 class BusquedaTallaDelegate : public BlComboBoxDelegate
 {
     Q_OBJECT
+
 public:
     BusquedaTallaDelegate ( QWidget *parent = 0 );
     ~BusquedaTallaDelegate();
@@ -48,7 +49,6 @@ public:
 class BusquedaTalla : public BlComboBox
 {
     Q_OBJECT
-
 
 public:
     BusquedaTalla ( QWidget *parent = 0, const char *name = 0 );

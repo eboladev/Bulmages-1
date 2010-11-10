@@ -602,10 +602,12 @@ void BcSubFormDelegate::setModelData ( QWidget *editor, QAbstractItemModel *mode
         BcBuscarCanalDelegate * comboBox = static_cast<BcBuscarCanalDelegate*> ( editor );
         QString value = comboBox->currentText();
         model->setData ( index, value );
+        m_subform->lineaat ( index.row() ) ->setDbValue ( "idcanal", comboBox->id(value) );
     } else if ( linea->nomcampo() == "nomc_coste" ) {
         BcBuscarCentroCosteDelegate * comboBox = static_cast<BcBuscarCentroCosteDelegate*> ( editor );
         QString value = comboBox->currentText();
         model->setData ( index, value );
+        m_subform->lineaat ( index.row() ) ->setDbValue ( "idc_coste", comboBox->id(value) );
     } else if ( linea->nomcampo().startsWith ( "fecha" ) ) {
         BlDateLineEdit * comboBox = static_cast<BlDateLineEdit*> ( editor );
         QString value = ( ( QLineEdit * ) comboBox ) ->text();
@@ -656,11 +658,11 @@ void BcSubFormDelegate::setEditorData ( QWidget *editor, const QModelIndex &inde
     } else if ( linea->nomcampo() == "nomcanal" ) {
         QString value = index.model() ->data ( index, Qt::DisplayRole ).toString();
         BcBuscarCanalDelegate *comboBox = static_cast<BcBuscarCanalDelegate*> ( editor );
-        comboBox->set ( value );
+        comboBox->setId ( value, "nombre" );
     } else if ( linea->nomcampo() == "nomc_coste" ) {
         QString value = index.model() ->data ( index, Qt::DisplayRole ).toString();
         BcBuscarCentroCosteDelegate *comboBox = static_cast<BcBuscarCentroCosteDelegate*> ( editor );
-        comboBox->set ( value );
+        comboBox->setId ( value, "nombre" );
     } else if ( linea->nomcampo().startsWith ( "fecha" ) ) {
         QString value = index.model() ->data ( index, Qt::DisplayRole ).toString();
         BlDateLineEdit *bf = static_cast<BlDateLineEdit*> ( editor );

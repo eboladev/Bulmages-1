@@ -40,7 +40,7 @@ BcCanalView::BcCanalView ( BcCompany  *emp, QWidget *parent )
     this->setAttribute ( Qt::WA_DeleteOnClose );
     setupUi ( this );
     mui_idcanal->setMainCompany ( emp );
-    mui_idcanal->setidcanal ( "0" );
+    mui_idcanal->setId ( "0" );
 
     m_nomcanal = new QLineEdit();
     m_nomcanal->setText ( "" );
@@ -80,7 +80,7 @@ void BcCanalView::pintar()
         mui_desccanal->setEnabled ( TRUE );
         mostrarplantilla();
     } else {
-        idcanal = mui_idcanal->idcanal().toInt();
+        idcanal = mui_idcanal->id().toInt();
         mostrarplantilla();
     } // end if
 
@@ -144,7 +144,7 @@ void BcCanalView::mostrarplantilla()
         mui_nomcanal->setText ( cursorcanal->valor ( "nombre" ) );
         mui_desccanal->setPlainText ( cursorcanal->valor ( "descripcion" ) );
     } // end if
-    mui_idcanal->setidcanal ( QString::number ( idcanal ) );
+    mui_idcanal->setId ( QString::number ( idcanal ) );
     dialogChanges_cargaInicial();
     blDebug ( "END BcCanalView::mostrarplantilla", 0 );
 

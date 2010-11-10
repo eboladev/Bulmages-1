@@ -22,25 +22,20 @@
 #ifndef BCBUSCARCANAL_H
 #define BCBUSCARCANAL_H
 
+#include "blcomboboxdelegate.h"
 #include "blcombobox.h"
 #include "blwidget.h"
 #include "bccompany.h"
 #include "blpostgresqlclient.h"
 
 
-class BC_EXPORT BcBuscarCanalDelegate : public BlComboBox
+class BC_EXPORT BcBuscarCanalDelegate : public BlComboBoxDelegate
 {
     Q_OBJECT
-
-private:
-    /// Este cursor almacena el listado de series de factura para poder trabajar con ellas.
-    BlDbRecordSet *m_cursorcombo;
-    QCompleter *completar;
 
 public:
     BcBuscarCanalDelegate ( QWidget *parent = 0 );
     ~BcBuscarCanalDelegate();
-    virtual void set ( const QString & );
 };
 
 
@@ -49,22 +44,9 @@ class BC_EXPORT BcBuscarCanal : public BlComboBox
 {
     Q_OBJECT
 
-private:
-    BlDbRecordSet *m_cursorcombo;
-
 public:
     BcBuscarCanal ( QWidget *parent = 0 );
     ~BcBuscarCanal();
-    virtual void setidcanal ( QString idcanal );
-    virtual void setFieldValue ( QString idcanal );
-    QString idcanal();
-    virtual QString fieldValue();
-
-public slots:
-    void m_activated ( int index );
-
-signals:
-    void valueChanged ( QString );
 };
 
 #endif

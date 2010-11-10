@@ -22,13 +22,8 @@
 #include "blcomboboxdelegate.h"
 
 
-/// Existe una instancia del objeto global g_theApp.
-
-
-
 /** Inicializa todos los componenetes a NULL para que no se produzcan confusiones
     sobre si un elemento ha sido creado o no.
-    Conecta el activar un tipo con m_activated.
 */
 /**
 \param parent
@@ -64,7 +59,7 @@ BlComboBoxDelegate::~BlComboBoxDelegate()
 /**
 \param id
 **/
-void BlComboBoxDelegate::setId ( QString id )
+void BlComboBoxDelegate::setId ( QString id, QString fieldSearch )
 {
     blDebug ( "BlComboBoxDelegate::setId", 0, id );
     if ( m_comboRecordSet != NULL ) {
@@ -85,9 +80,17 @@ void BlComboBoxDelegate::setId ( QString id )
 
     while ( !m_comboRecordSet->eof() ) {
 
-        if ( m_comboRecordSet->valor ( m_fieldId ) == id ) {
-            i1 = i;
-        } // end if
+	if (fieldSearch.isEmpty()) {
+	    /// Busca en el campo ID establecido la coincidencia.
+            if ( m_comboRecordSet->valor ( m_fieldId ) == id ) {
+	        i1 = i;
+	    } // end if
+	} else {
+	    /// Busca en un campo diferente al campo ID establecido la coincidencia.
+            if ( m_comboRecordSet->valor ( fieldSearch ) == id ) {
+	        i1 = i;
+	    } // end if
+	} // end if
 
         /// Inicializamos los valores de vuelta a ""
         QMapIterator<QString, QString> it ( m_valores );
@@ -106,7 +109,7 @@ void BlComboBoxDelegate::setId ( QString id )
     } // end while
 
     setCurrentIndex ( i1 );
-    blDebug ( "END BlComboBoxDelegate::setIdProvincia", 0 );
+    blDebug ( "END BlComboBoxDelegate::setId", 0 );
 }
 
 
@@ -120,9 +123,6 @@ void BlComboBoxDelegate::setFieldValue ( QString id )
     setId ( id );
     blDebug ( "END BlComboBoxDelegate::setFieldValue", 0 );
 }
-
-
-
 
 
 ///
@@ -233,5 +233,4 @@ void BlComboBoxDelegate::setAllowNull ( bool v )
 {
     m_null = v;
 }
-
 

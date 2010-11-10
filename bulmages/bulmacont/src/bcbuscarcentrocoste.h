@@ -22,6 +22,7 @@
 #ifndef BCBUSCARCENTROCOSTE_H
 #define BCBUSCARCENTROCOSTE_H
 
+#include "blcomboboxdelegate.h"
 #include "blcombobox.h"
 #include "blpostgresqlclient.h"
 #include "blwidget.h"
@@ -30,19 +31,13 @@
 class BcCompany;
 
 
-class BC_EXPORT BcBuscarCentroCosteDelegate : public BlComboBox
+class BC_EXPORT BcBuscarCentroCosteDelegate : public BlComboBoxDelegate
 {
     Q_OBJECT
-
-private:
-    /// Este cursor almacena el listado de series de factura para poder trabajar con ellas.
-    BlDbRecordSet *m_cursorcombo;
-    QCompleter *completar;
 
 public:
     BcBuscarCentroCosteDelegate ( QWidget *parent = 0 );
     ~BcBuscarCentroCosteDelegate();
-    virtual void set ( const QString & );
 };
 
 
@@ -50,22 +45,9 @@ class BC_EXPORT BcBuscarCentroCoste : public BlComboBox
 {
     Q_OBJECT
 
-private:
-    BlDbRecordSet *m_cursorcombo;
-
 public:
     BcBuscarCentroCoste ( QWidget *parent = 0, const char *name = 0 );
     ~BcBuscarCentroCoste();
-    virtual void setidc_coste ( QString idc_coste );
-    virtual void setFieldValue ( QString idc_coste );
-    QString idc_coste();
-    virtual QString fieldValue();
-
-public slots:
-    void m_activated ( int index );
-
-signals:
-    void valueChanged ( QString );
 };
 
 #endif
