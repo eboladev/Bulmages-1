@@ -52,7 +52,7 @@ int entryPoint ( BtBulmaTPV *tpv )
     g_file = new QFile ( g_confpr->valor ( CONF_TPV_VISOR_FILE ) );
     if ( g_file->open ( QIODevice::WriteOnly | QIODevice::Unbuffered ) ) {
         g_file->write ( "\x0Ch", 1 );
-        g_file->write ( "Ready.", 6 );
+        g_file->write ( "Gracias por visitarnos.", 6 );
         g_file->flush();
         g_file->close();
     } // end if

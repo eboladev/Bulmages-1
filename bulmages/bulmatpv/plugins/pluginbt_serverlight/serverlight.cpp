@@ -40,6 +40,8 @@
 #include "btsubform.h"
 #include "btcompany.h"
 
+QMap <QTcpSocket *, QByteArray> g_buffers;
+
 
 ServerLight::ServerLight ( BtCompany *emp ) : BlWidget (emp, 0)
 {
@@ -75,6 +77,7 @@ void ServerLight::conection()
     
     //QString texto = QString("Nueva Conexion: ") + conectadofrom.toString() + "\n";
     //fprintf(stderr, texto.toAscii());
+    g_buffers[socket] = "";
 
     connect (socket, SIGNAL(readyRead()), this, SLOT(readyRead()));
     blDebug ( "END ServerLight::conection", 0 );
@@ -84,11 +87,14 @@ void ServerLight::conection()
 void ServerLight::readyRead() {
     blDebug ( "ServerLight::readyRead", 0 );
     static QByteArray array = "";
+    QByteArray lectura = "";
     QTcpSocket *socket = (QTcpSocket *) sender();
-    array += socket->readAll();
+    lectura = socket->readAll();
+    g_buffers[socket]  += lectura;
+    array += lectura;
     QString mensaje = "Mensaje desde: "+ socket->peerAddress().toString() + "\n";
     
-    QString texto(array);
+    QString texto(g_buffers[socket]);
 
     fprintf(stderr, "\nPaquete recibido:\n");
     fprintf(stderr, array);
@@ -103,11 +109,15 @@ void ServerLight::readyRead() {
 	    fprintf(stderr, categoryArticleXML().toAscii() );
 	    socket->write(categoryArticleXML().toAscii());
 	    /// Hay que cerrar el socket despues del envio.
+	    g_buffers[socket] = "";
+	    g_buffers.remove(socket);
 	    socket->close();
 	
         } else if (texto.contains("<PUTCOMMAND>ticket_data</PUTCOMMAND>", Qt::CaseInsensitive)) {
 	    /// Nos han mandado la informacion de un ticket.
 	    processTicketDataXML(texto);
+	    g_buffers[socket] = "";
+	    g_buffers.remove(socket);
 	    socket->close();
         } else {
 	    //fprintf(stderr, "--NO ENTIENDO--");

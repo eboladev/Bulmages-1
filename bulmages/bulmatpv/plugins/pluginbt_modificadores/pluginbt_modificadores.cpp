@@ -172,6 +172,8 @@ int BtTicket_imprimir_Post(BtTicket *tick)
 }
 */
 
+
+/*
 int BtTicket_exportXML_Post( BtTicket *tick)
 {
     blDebug ( "PluginBt_Modificadores::BtTicket_exportXML_Post", 0 );
@@ -223,7 +225,7 @@ int BtCompany_cobrar_1(BtCompany *comp) {
       return 0;
 }
 
-
+*/
 int BtTicket_insertarArticulo_Post ( BtTicket *tick )
 {
 

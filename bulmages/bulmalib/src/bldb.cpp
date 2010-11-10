@@ -668,6 +668,8 @@ QString BlDbRecord::dbValue ( QString nomb )
 /**
 \param nomb Campo del que queremos saber si existe o no
 \return TRUE si existe o FALSE si no existe
+
+NOTA: ESTA FUNCION TIENE ALGUN ERROR CON m_lista mal inicializado.
 **/
 bool BlDbRecord::exists ( QString nomb )
 {
@@ -675,14 +677,25 @@ bool BlDbRecord::exists ( QString nomb )
     BlDbField *campo;
     bool existe = FALSE;
     int i = 0;
-    campo = m_lista.value ( i );
-    while ( campo && campo->nomcampo() != nomb )
-        campo = m_lista.value ( ++i );
-    if ( campo ) {
-        if ( campo->nomcampo() == nomb ) {
-            existe = TRUE;
-        } // end if
+    blDebug ( "BlDbRecord::exists_0", 0, nomb );
+    if (!m_lista.isEmpty()) {
+      blDebug ( "BlDbRecord::exists_1", 0, nomb );
+      campo = m_lista.value ( i );
+      blDebug ( "BlDbRecord::exists_2", 0, campo->nomcampo() );
+      if (campo) {
+	while (i < m_lista.size() && campo && campo->nomcampo() != nomb ) {
+	    campo = m_lista.value ( ++i );
+	    blDebug ( "BlDbRecord::exists_3", 0, nomb );
+	} // end while
+	if ( campo ) {
+	    if ( campo->nomcampo() == nomb ) {
+		existe = TRUE;
+	    } // end if
+	    blDebug ( "BlDbRecord::exists_4", 0, nomb );
+	} // end if
+      } // end if
     } // end if
+ 
     blDebug ( "END BlDbRecord::exists", 0, nomb );
     return existe;
 }
