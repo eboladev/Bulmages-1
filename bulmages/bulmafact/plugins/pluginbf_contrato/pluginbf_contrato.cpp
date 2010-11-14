@@ -81,6 +81,7 @@ void myplugincont::inicializa ( BfBulmaFact *bges )
     QAction *accion = new QAction ( "&Contratos", 0 );
     accion->setStatusTip ( "Listado de Contratos" );
     accion->setWhatsThis ( "Listado de Contratos" );
+    accion->setIcon ( QIcon ( QString::fromUtf8 ( ":/Images/contract-list.png" ) ) );
     connect ( accion, SIGNAL ( activated() ), this, SLOT ( elslot() ) );
     /// A&ntilde;adimos la nueva opci&oacute;n al men&uacute; principal del programa.
     pPluginMenu->addSeparator();
