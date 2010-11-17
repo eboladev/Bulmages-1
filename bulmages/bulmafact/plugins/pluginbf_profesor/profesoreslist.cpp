@@ -183,7 +183,7 @@ void ProfesoresList::crear()
 	
     } else {
       ProfesorView *bud = new ProfesorView ( ( BfCompany * ) mainCompany(), 0 );
-      mainCompany() ->m_pWorkspace->addWindow ( bud );
+      mainCompany() ->m_pWorkspace->addSubWindow ( bud );
       bud->show();
       bud->pintar();
     }
@@ -251,7 +251,7 @@ void ProfesoresList::editar ( int )
                 delete bud;
                 return;
             } // end if
-            mainCompany() ->m_pWorkspace->addWindow ( bud );
+            mainCompany() ->m_pWorkspace->addSubWindow ( bud );
             bud->show();
         } else {
             emit ( selected ( mdb_idprofesor ) );

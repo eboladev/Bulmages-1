@@ -69,7 +69,7 @@ void MyPluginAsiento::elslot()
     blDebug ( "MyPluginAsiento::elslot", 0 );
     if (g_asiento == NULL) {
       g_asiento = new BcAsientoView ( ( BcCompany * ) mainCompany(), 0 );
-      mainCompany() ->pWorkspace() -> addWindow ( g_asiento );
+      mainCompany() ->pWorkspace() -> addSubWindow ( g_asiento );
     } // end if
     g_asiento->hide();
     g_asiento->show();
@@ -86,7 +86,7 @@ void MyPluginAsiento::elslot1()
     if (g_listasientos == NULL) {
       g_listasientos = new BcAsientoListView ( ( BcCompany * ) mainCompany() );
       g_listasientos->presentar();
-      mainCompany()-> pWorkspace() -> addWindow ( g_listasientos );
+      mainCompany()-> pWorkspace() -> addSubWindow ( g_listasientos );
     } // end if
     g_listasientos->hide();
     g_listasientos->show();
@@ -242,7 +242,7 @@ void MyPluginAsiento::inicializa ( BcBulmaCont *bges )
 
     /// Creamos la ventana de asientos que va a ser fija.
     g_asiento = new BcAsientoView ( ( BcCompany * ) mainCompany(), 0 );
-    mainCompany() ->pWorkspace() ->addWindow ( g_asiento );
+    mainCompany() ->pWorkspace() ->addSubWindow ( g_asiento );
 
     m_bulmacont = bges;
     QMenu *pPluginMenu;

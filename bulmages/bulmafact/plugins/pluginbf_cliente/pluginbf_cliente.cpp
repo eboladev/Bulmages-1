@@ -70,7 +70,7 @@ void MyPlugCli::elslot1()
 {
     blDebug ( "MyPlugCli::elslot1", 0 );
     ClienteView * bud = new ClienteView ( ( BfCompany * ) mainCompany(), NULL );
-    mainCompany() ->m_pWorkspace->addWindow ( bud );
+    mainCompany() ->m_pWorkspace->addSubWindow ( bud );
     bud->show();
     blDebug ( "END MyPlugCli::elslot1", 0 );
 }
@@ -140,7 +140,7 @@ int BfCompany_createMainWindows_Post ( BfCompany *comp )
 {
     if ( comp->hasTablePrivilege ( "cliente", "SELECT" ) ) {
         g_clientesList = new ClientsList ( comp, NULL );
-        comp->m_pWorkspace->addWindow ( g_clientesList );
+        comp->m_pWorkspace->addSubWindow ( g_clientesList );
         g_clientesList->hide();
     }// end if
     return 0;

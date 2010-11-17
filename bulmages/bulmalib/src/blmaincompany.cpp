@@ -1,6 +1,8 @@
 /***************************************************************************
  *   Copyright (C) 2006 by Tomeu Borras Riera                              *
  *   tborras@conetxia.com                                                  *
+ *   Copyright (C) 2010 by Fco. Javier M. C.                               *
+ *   fcojavmc@todo-redes.com                                               *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
  *   it under the terms of the GNU General Public License as published by  *
@@ -69,6 +71,7 @@ void BlMainCompany::setWorkspace ( BlWorkspace *qw )
 {
     blDebug ( "BlMainCompany::setWorkspace", 0 );
     m_pWorkspace = qw;
+    connect( qw, SIGNAL( deselectDockAll() ), this, SLOT( deSeleccionaWindow() ) );
     blDebug ( "END BlMainCompany::setWorkspace", 0 );
 }
 
@@ -106,7 +109,7 @@ int BlMainCompany::meteWindow ( QString nom, QObject *obj, bool compdup, QString
 \param obj
 \return
 **/
-int BlMainCompany::seleccionaWindow ( QString nom, QObject *obj )
+int BlMainCompany::seleccionaWindow ( QString nom, QMdiSubWindow *obj )
 {
     blDebug ( "BlMainCompany::seleccionaWindow", 0 );
     blDebug ( "END BlMainCompany::seleccionaWindow", 0 );
@@ -227,7 +230,7 @@ void BlMainCompany::muestraPaises()
 {
     blDebug ( "BlMainCompany::muestrapaises", 0 );
     BlCountryView *pais = new BlCountryView ( this, 0 );
-    m_pWorkspace->addWindow ( pais );
+    m_pWorkspace->addSubWindow ( pais );
     pais->show();
     blDebug ( "END BlMainCompany::muestrapaises", 0 );
 }

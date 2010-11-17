@@ -88,7 +88,7 @@ void Q19QToolButton1::click()
 
     Q19View *q19 = new Q19View ( m_facturasList, ( BfCompany * ) m_facturasList->mainCompany(), 0 );
 // m_facturasList->mainCompany()->meteWindow("Domiciliaciones Bancarias", q19);
-    m_facturasList->mainCompany() ->pWorkspace() ->addWindow ( q19 );
+    m_facturasList->mainCompany() ->pWorkspace() ->addSubWindow ( q19 );
     q19->show();
 
     /*

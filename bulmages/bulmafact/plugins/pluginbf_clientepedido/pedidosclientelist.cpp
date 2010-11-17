@@ -197,7 +197,7 @@ void PedidosClienteList::crear()
 {
     blDebug ( "PedidosClienteList:crear", 0 );
     PedidoClienteView *pcv = new PedidoClienteView ( ( BfCompany * ) mainCompany(), 0 );
-    mainCompany() ->m_pWorkspace->addWindow ( pcv );
+    mainCompany() ->m_pWorkspace->addSubWindow ( pcv );
     pcv->inicializar();
     pcv->pintar();
     
@@ -228,7 +228,7 @@ void PedidosClienteList::editar ( int row )
                 delete prov;
                 return;
             } // end if
-            mainCompany() ->m_pWorkspace->addWindow ( prov );
+            mainCompany() ->m_pWorkspace->addSubWindow ( prov );
             prov->show();
         } else {
             emit ( selected ( m_idpedidocliente ) );

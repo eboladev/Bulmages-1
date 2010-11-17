@@ -24,6 +24,7 @@
 #include "blworkspace.h"
 #include "local_BlI18n.h"
 
+
 ///
 /**
 **/
@@ -48,9 +49,9 @@ BlWorkspace::~BlWorkspace()
 /**
 \param w
 **/
-void BlWorkspace::addWindow ( QWidget * w )
+void BlWorkspace::addSubWindow ( QWidget * w )
 {
-    blDebug ( "BlWorkspace::addWindow", 0 );
+    blDebug ( "BlWorkspace::addSubWindow", 0 );
     int tamdispW;
     int tamdispH;
     int tamventanadecoW;
@@ -59,7 +60,16 @@ void BlWorkspace::addWindow ( QWidget * w )
     int tamventanaH;
     int margen = 10;
 
-    QWorkspace::addWindow ( w );
+    QMdiSubWindow *sw = new QMdiSubWindow;
+    sw->setWidget(w);
+    connect ( w, SIGNAL(destroyed(QObject *)), sw, SLOT(close()));
+    connect ( w, SIGNAL(hided(QObject *)), sw, SLOT(hide()));
+    connect ( w, SIGNAL(hided(QObject *)), this, SIGNAL(deselectDockAll()));
+    connect ( w, SIGNAL(showed(QObject *)), sw, SLOT(show()));
+
+    QMdiArea::addSubWindow (sw);
+
+
 
     /// Se comprueba el tama&ntilde;o de la ventana que esta dise&ntilde;ada con Designer:
     /// S&oacute;lo si la ventana es m&aacute;s grande que el espacio de representaci&oacute;n
@@ -90,6 +100,14 @@ void BlWorkspace::addWindow ( QWidget * w )
     accionEsc->setShortcut ( _ ( "Esc" ) );
     connect ( accionEsc, SIGNAL ( triggered() ), w, SLOT ( close() ) );
     w->addAction ( accionEsc );
-    blDebug ( "END BlWorkspace::addWindow", 0 );
+    blDebug ( "END BlWorkspace::addSubWindow", 0 );
+}
+
+
+
+
+QWidget *BlWorkspace::activeWindow () const
+{
+    return QApplication::activeWindow ();
 }
 

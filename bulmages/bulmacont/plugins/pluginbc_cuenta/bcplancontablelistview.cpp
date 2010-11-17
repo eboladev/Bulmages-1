@@ -332,7 +332,7 @@ void BcPlanContableListView::on_mui_arbolcuentas_itemDoubleClicked ( QTreeWidget
         BcCuentaView * nuevae = new BcCuentaView ( mainCompany(), 0 );
         nuevae->cargar ( idcuenta() );
         inicializa();
-        mainCompany() ->pWorkspace() ->addWindow ( nuevae );
+        mainCompany() ->pWorkspace() ->addSubWindow ( nuevae );
         nuevae->show();
     } else {
         emit ( selected ( mdb_idcuenta ) );
@@ -366,7 +366,7 @@ void BcPlanContableListView::on_mui_crear_clicked()
         } // end if
     } // end if
 
-    mainCompany() ->pWorkspace() ->addWindow ( nuevae );
+    mainCompany() ->pWorkspace() ->addSubWindow ( nuevae );
     nuevae->show();
     blDebug ( "END BcPlanContableListView::on_mui_crear_clicked", 0 );
 }
@@ -454,7 +454,7 @@ void BcPlanContableListView::on_mui_editar_clicked()
     mdb_desccuenta = it->text ( cdesccuenta );
     BcCuentaView *nuevae = new BcCuentaView ( mainCompany(), 0 );
     nuevae->cargar ( idcuenta() );
-    mainCompany() ->pWorkspace() ->addWindow ( nuevae );
+    mainCompany() ->pWorkspace() ->addSubWindow ( nuevae );
     nuevae->show();
     blDebug ( "END BcPlanContableListView::on_mui_editar_clicked", 0 );
 }

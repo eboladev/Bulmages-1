@@ -56,10 +56,10 @@ void MyPlugIVA::elslot()
 {
     blDebug ( "MyPlugIVA::elslot", 0 );
     ListTasaIVAView *pag = new ListTasaIVAView ( ( BfCompany * ) mainCompany(), NULL );
-    mainCompany() ->m_pWorkspace->addWindow ( pag );
+    mainCompany() ->m_pWorkspace->addSubWindow ( pag );
     pag->show();
     /*        TrabajadorView * bud = new TrabajadorView((BfCompany *)mainCompany(), NULL);
-            mainCompany() ->m_pWorkspace->addWindow ( bud );
+            mainCompany() ->m_pWorkspace->addSubWindow ( bud );
             bud->show();
     */
     blDebug ( "END MyPlugIVA::elslot", 0 );
@@ -73,10 +73,10 @@ void MyPlugIVA::elslot1()
 {
     blDebug ( "MyPlugIVA::elslot1", 0 );
     ListTipoIVAView *pag = new ListTipoIVAView ( ( BfCompany * ) mainCompany(), NULL );
-    mainCompany() ->m_pWorkspace->addWindow ( pag );
+    mainCompany() ->m_pWorkspace->addSubWindow ( pag );
     pag->show();
     /*        TrabajadorView * bud = new TrabajadorView((BfCompany *)mainCompany(), NULL);
-            mainCompany() ->m_pWorkspace->addWindow ( bud );
+            mainCompany() ->m_pWorkspace->addSubWindow ( bud );
             bud->show();
     */
     blDebug ( "END MyPlugIVA::elslot1", 0 );

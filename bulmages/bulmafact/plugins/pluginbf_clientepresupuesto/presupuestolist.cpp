@@ -186,7 +186,7 @@ void PresupuestoList::crear()
 {
     blDebug ( "PresupuestoList::crear", 0 );
     PresupuestoView *pv = new PresupuestoView ( ( BfCompany * ) mainCompany(), 0 );
-    mainCompany()->m_pWorkspace->addWindow ( pv );
+    mainCompany()->m_pWorkspace->addSubWindow ( pv );
     pv->inicializar();
     pv->pintar();
     
@@ -282,7 +282,7 @@ void PresupuestoList::editar ( int row )
                 delete prov;
                 return;
             }
-            mainCompany() ->m_pWorkspace->addWindow ( prov );
+            mainCompany() ->m_pWorkspace->addSubWindow ( prov );
             prov->show();
         } else {
             emit ( selected ( m_idpresupuesto ) );

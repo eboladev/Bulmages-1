@@ -159,7 +159,7 @@ void GenAlbQToolButton::generarFactura1()
                 return;
             } // end if
             bud = new AlbaranClienteView ( fpv->mainCompany(), NULL );
-            fpv->mainCompany() ->m_pWorkspace->addWindow ( bud );
+            fpv->mainCompany() ->m_pWorkspace->addSubWindow ( bud );
             bud->cargar ( cur->valor ( "idalbaran" ) );
             bud->show();
             return;
@@ -168,7 +168,7 @@ void GenAlbQToolButton::generarFactura1()
 
         /// Creamos el albaran.
         bud = new AlbaranClienteView ( ( BfCompany * ) fpv->mainCompany(), 0 );
-        fpv->mainCompany() ->m_pWorkspace->addWindow ( bud );
+        fpv->mainCompany() ->m_pWorkspace->addSubWindow ( bud );
         bud->cargar ( "0" );
 
         /// Traspasamos los datos al albaran.
@@ -291,7 +291,7 @@ void GenAlbQToolButton::generarFactura2()
                 return;
             } // end if
             bud = new AlbaranClienteView ( fpv->mainCompany(), NULL );
-            fpv->mainCompany() ->m_pWorkspace->addWindow ( bud );
+            fpv->mainCompany() ->m_pWorkspace->addSubWindow ( bud );
             bud->cargar ( cur->valor ( "idalbaran" ) );
             bud->show();
             return;
@@ -300,7 +300,7 @@ void GenAlbQToolButton::generarFactura2()
 
         /// Creamos el albaran.
         bud = new AlbaranClienteView ( ( BfCompany * ) fpv->mainCompany(), 0 );
-        fpv->mainCompany() ->m_pWorkspace->addWindow ( bud );
+        fpv->mainCompany() ->m_pWorkspace->addSubWindow ( bud );
         bud->cargar ( "0" );
 
         /// Traspasamos los datos al albaran.

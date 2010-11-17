@@ -61,7 +61,7 @@ void myBloqFechas::elslot()
 {
     blDebug ( "myBloqFechas::elslot", 0 );
     BcBloqueaFechaView *tip = new BcBloqueaFechaView ( (BcCompany *)m_bulmacont->empresaactual(), 0 );
-    m_bulmacont->workspace()->addWindow ( tip );
+    m_bulmacont->workspace()->addSubWindow ( tip );
     tip->show();
     blDebug ( "END myBloqFechas::elslot", 0 );
 }

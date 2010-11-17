@@ -139,7 +139,7 @@ void ActividadesList::crear()
     blDebug ( "ActividadesList::crear", 0 );
     
     ActividadView *bud = new ActividadView ( ( BfCompany * ) mainCompany(), 0 );
-    mainCompany() ->m_pWorkspace->addWindow ( bud );
+    mainCompany() ->m_pWorkspace->addSubWindow ( bud );
     bud->show();
     blDebug ( "ActividadesList::crear", 0 );
 }
@@ -205,7 +205,7 @@ void ActividadesList::editar ( int )
                 delete bud;
                 return;
             } // end if
-            mainCompany() ->m_pWorkspace->addWindow ( bud );
+            mainCompany() ->m_pWorkspace->addSubWindow ( bud );
             bud->show();
         } else {
 	    close();

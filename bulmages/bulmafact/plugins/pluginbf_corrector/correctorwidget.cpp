@@ -173,7 +173,7 @@ void correctorwidget::alink ( const QUrl &url )
             delete prov;
             return;
         } // end if
-        ( ( BfCompany * ) mainCompany() ) ->m_pWorkspace->addWindow ( prov );
+        ( ( BfCompany * ) mainCompany() ) ->m_pWorkspace->addSubWindow ( prov );
         prov->show();
     } else if ( list[0] == "idfactura" ) {
         /// Como estamos en un plugin buscamos nuevas formas de creacion de objetos.
@@ -187,7 +187,7 @@ void correctorwidget::alink ( const QUrl &url )
             delete prov;
             return;
         } // end if
-        ( ( BfCompany * ) mainCompany() ) ->m_pWorkspace->addWindow ( prov );
+        ( ( BfCompany * ) mainCompany() ) ->m_pWorkspace->addSubWindow ( prov );
         prov->show();
     } else if ( list[0] == "idproveedor" ) {
         /// Como estamos en un plugin buscamos nuevas formas de creacion de objetos.
@@ -201,7 +201,7 @@ void correctorwidget::alink ( const QUrl &url )
             delete prov;
             return;
         } // end if
-        ( ( BfCompany * ) mainCompany() ) ->m_pWorkspace->addWindow ( prov );
+        ( ( BfCompany * ) mainCompany() ) ->m_pWorkspace->addSubWindow ( prov );
         prov->show();
     }// end if
     blDebug ( "END correctorwidget::alinke", 0 );

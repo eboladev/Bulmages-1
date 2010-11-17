@@ -247,7 +247,7 @@ void PresupuestoView::generarPedidoCliente()
                 } // end if
 
                 bud = mainCompany() ->newPedidoClienteView();
-                mainCompany() ->m_pWorkspace->addWindow ( bud );
+                mainCompany() ->m_pWorkspace->addSubWindow ( bud );
                 bud->cargar ( cur->valor ( "idpedidocliente" ) );
                 bud->show();
                 delete cur;
@@ -259,7 +259,7 @@ void PresupuestoView::generarPedidoCliente()
             /// Creamos el pedido.
             bud = mainCompany() ->newPedidoClienteView();
             bud->cargar ( "0" );
-            mainCompany() ->m_pWorkspace->addWindow ( bud );
+            mainCompany() ->m_pWorkspace->addSubWindow ( bud );
 
             /// Traspasamos toda la informacion del presupuesto al pedido.
             recogeValores();

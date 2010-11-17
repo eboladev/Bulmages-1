@@ -86,7 +86,7 @@ void ListProyectosView::crear()
 {
     blDebug ( "ListProyectosView::on_mui_crear_clicked", 0 );
     ProyectoView *proj = new ProyectoView ( ( BcCompany * ) mainCompany(), 0 );
-    mainCompany() ->pWorkspace() ->addWindow ( proj );
+    mainCompany() ->pWorkspace() ->addSubWindow ( proj );
     proj->show();
     blDebug ( "END ListProyectosView::on_mui_crear_clicked", 0 );
 }
@@ -137,7 +137,7 @@ void ListProyectosView::editar ( int row )
         /// Creamos el objeto BcMasaPatrimonialView, y lo lanzamos.
         ProyectoView * amor = new ProyectoView ( ( BcCompany * ) mainCompany(), 0 );
         amor->cargar ( mdb_idpresupuestoc );
-        mainCompany() ->pWorkspace() ->addWindow ( amor );
+        mainCompany() ->pWorkspace() ->addSubWindow ( amor );
         amor->show();
     } else {
         close();

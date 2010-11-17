@@ -112,7 +112,7 @@ void GenPagoQToolButton::click()
             if ( msgBox.clickedButton() == openButton ) {
                 while ( !cur->eof() ) {
 		    PagoView *bud = new PagoView ( ( BfCompany * ) fpv->mainCompany(), 0 );
-		    fpv->mainCompany() ->m_pWorkspace->addWindow ( bud );
+		    fpv->mainCompany() ->m_pWorkspace->addSubWindow ( bud );
                     bud->cargar ( cur->valor ( "idpago" ) );
                     bud->pintar();
                     bud->show();
@@ -130,7 +130,7 @@ void GenPagoQToolButton::click()
         /// Creacion de un pago nuevo a partir de la factura.
         if ( nuevo ) {
 	    PagoView *bud = new PagoView ( fpv->mainCompany(), 0 );
-	    fpv->mainCompany() ->m_pWorkspace->addWindow ( bud );
+	    fpv->mainCompany() ->m_pWorkspace->addSubWindow ( bud );
 	    bud->setDbValue ( "idproveedor", fpv->dbValue ( "idproveedor" ) );
 	    bud->setDbValue ( "cantpago", fpv->m_totalfacturap->text() );
 	    bud->setDbValue ( "refpago", fpv->dbValue ( "reffacturap" ) );
@@ -163,7 +163,7 @@ void GenPagoQToolButton::click()
             if ( msgBox.clickedButton() == openButton ) {
                 while ( !cur->eof() ) {
 		    PagoView *bud = new PagoView ( ( BfCompany * ) fpv->mainCompany(), 0 );
-		    fpv->mainCompany() ->m_pWorkspace->addWindow ( bud );
+		    fpv->mainCompany() ->m_pWorkspace->addSubWindow ( bud );
                     bud->cargar ( cur->valor ( "idpago" ) );
                     bud->pintar();
                     bud->show();
@@ -181,7 +181,7 @@ void GenPagoQToolButton::click()
         /// Creacion de un pago nuevo a partir del albaran.
         if ( nuevo ) {
 	    PagoView *bud = new PagoView ( ( BfCompany * ) fpv->mainCompany(), NULL );
-	    fpv->mainCompany() ->m_pWorkspace->addWindow ( bud );
+	    fpv->mainCompany() ->m_pWorkspace->addSubWindow ( bud );
 	    bud->setDbValue ( "idproveedor", fpv->dbValue ( "idproveedor" ) );
 	    bud->setDbValue ( "cantpago", fpv->m_totalalbaranp->text() );
 	    bud->setDbValue ( "refpago", fpv->dbValue ( "refalbaranp" ) );
@@ -212,7 +212,7 @@ void GenPagoQToolButton::click()
             if ( msgBox.clickedButton() == openButton ) {
                 while ( !cur->eof() ) {
 		    PagoView *bud = new PagoView ( ( BfCompany * ) fpv->mainCompany(), 0 );
-		    fpv->mainCompany() ->m_pWorkspace->addWindow ( bud );
+		    fpv->mainCompany() ->m_pWorkspace->addSubWindow ( bud );
                     bud->cargar ( cur->valor ( "idpago" ) );
                     bud->pintar();
                     bud->show();
@@ -230,7 +230,7 @@ void GenPagoQToolButton::click()
         /// Creacion de un pago nuevo a partir de la factura.
         if ( nuevo ) {
 	    PagoView *bud = new PagoView ( ( BfCompany * ) fpv->mainCompany(), NULL );
-	    fpv->mainCompany() ->m_pWorkspace->addWindow ( bud );
+	    fpv->mainCompany() ->m_pWorkspace->addSubWindow ( bud );
 	    bud->setDbValue ( "idproveedor", fpv->dbValue ( "idproveedor" ) );
 	    bud->setDbValue ( "cantpago", fpv->mui_totalPedido->text() );
 	    bud->setDbValue ( "refpago", fpv->dbValue ( "refpedidoproveedor" ) );

@@ -55,7 +55,7 @@ void MyPlugModificadores::elslot1()
 {
     blDebug ( "MyPlugModificadores::elslot1", 0 );
     ListModificadoresView * bud = new ListModificadoresView ( ( BfCompany * ) mainCompany(), NULL );
-    mainCompany() ->m_pWorkspace->addWindow ( bud );
+    mainCompany() ->m_pWorkspace->addSubWindow ( bud );
     bud->show();
     blDebug ( "END MyPlugModificadores::elslot1", 0 );
 }

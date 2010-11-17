@@ -145,7 +145,7 @@ void CarteraCobrosList::editar ( int )
             delete bud;
             return;
         } // end if
-        mainCompany() ->m_pWorkspace->addWindow ( bud );
+        mainCompany() ->m_pWorkspace->addSubWindow ( bud );
         bud->show();
     } else {
         close();
@@ -307,7 +307,7 @@ void CarteraCobrosList::crear()
     blDebug ( "CarteraCobrosList::on_mui_crear_clicked", 0 );
     if ( modoEdicion()  ) {
         VencimientoCView *bud = new VencimientoCView( ( BfCompany * ) mainCompany(), 0 );
-        mainCompany() ->m_pWorkspace->addWindow ( bud );
+        mainCompany() ->m_pWorkspace->addSubWindow ( bud );
         bud->show();
     } // end if
     blDebug ( "END CarteraCobrosList::on_mui_crear_clicked", 0 );
@@ -334,7 +334,7 @@ void CarteraCobrosList::on_mui_configurar_toggled ( bool checked )
 
 void CarteraCobrosList::on_mui_q34_clicked() {
     Q19View *q34 = new Q19View ( this, ( BfCompany * ) mainCompany(), 0 );
-    mainCompany() ->pWorkspace() ->addWindow ( q34 );
+    mainCompany() ->pWorkspace() ->addSubWindow ( q34 );
     q34->show();
 }
 

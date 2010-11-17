@@ -170,7 +170,7 @@ void CobrosList::crear()
 {
     blDebug ( "CobrosList::crear", 0 );
     CobroView *cv = new CobroView ( ( BfCompany * ) mainCompany(), 0 );
-    mainCompany() ->m_pWorkspace->addWindow ( cv );
+    mainCompany() ->m_pWorkspace->addSubWindow ( cv );
     cv->pintar();
     
     /// Si se crea el nuevo cobro desde la lista de cobros de un cliente,
@@ -240,7 +240,7 @@ void CobrosList::editar ( int )
                 delete bud;
                 return;
             } // end if
-            mainCompany() ->m_pWorkspace->addWindow ( bud );
+            mainCompany() ->m_pWorkspace->addSubWindow ( bud );
             bud->show();
         } else {
             emit ( selected ( mdb_idcobro ) );

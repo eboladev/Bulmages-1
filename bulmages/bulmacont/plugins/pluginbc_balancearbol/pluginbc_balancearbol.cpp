@@ -62,7 +62,7 @@ void myplugin4::elslot()
 {
     blDebug ( "myplugin4::elslot", 0 );
     BalanceTreeView *cuad = new BalanceTreeView ( ( BcCompany * ) mainCompany(), 0 );
-    mainCompany() ->pWorkspace() ->addWindow ( cuad );
+    mainCompany() ->pWorkspace() ->addSubWindow ( cuad );
     cuad->show();
     blDebug ( "END myplugin4::elslot", 0 );
 }

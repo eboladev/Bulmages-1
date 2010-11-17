@@ -68,7 +68,7 @@ void myRegIVA::elslot()
     blDebug ( "myRegIVA::elslot", 0 );
     ListRegistroIvaView *perd = new ListRegistroIvaView ( m_bulmacont->empresaactual(), "0" );
     perd->inicializa();
-    m_bulmacont->empresaactual() ->pWorkspace() ->addWindow ( perd );
+    m_bulmacont->empresaactual() ->pWorkspace() ->addSubWindow ( perd );
     perd->show();
     blDebug ( "END empresa_registroiva", 0 );
     blDebug ( "END myRegIVA::elslot", 0 );
@@ -82,7 +82,7 @@ void myRegIVA::elslot1()
 {
     blDebug ( "myRegIVA::elslot1", 0 );
     cobropagoview *adoc = new cobropagoview ( m_bulmacont->empresaactual(), 0 );
-    m_bulmacont->empresaactual() ->pWorkspace() ->addWindow ( adoc );
+    m_bulmacont->empresaactual() ->pWorkspace() ->addSubWindow ( adoc );
     adoc->show();
     blDebug ( "END myRegIVA::elslot1", 0 );
 }
@@ -201,7 +201,7 @@ int BcAsientoForm_guardaAsiento1_post ( BcAsientoForm *as )
         int idborrador = cursborr->valor ( "contra" ).toInt();
         RegistroIvaView *reg = new RegistroIvaView ( companyact, 0 );
         reg->inicializa1 ( idborrador );
-        companyact->pWorkspace() ->addWindow ( reg );
+        companyact->pWorkspace() ->addSubWindow ( reg );
         reg->show();
         cursborr->nextRecord();
     } // end while
@@ -225,7 +225,7 @@ int BcAsientoSubForm_boton_iva ( BcAsientoSubForm *as )
         int idborrador = as->dbValue ( "idborrador" ).toInt();
         RegistroIvaView *nuevae = new RegistroIvaView ( ( BcCompany * ) as->mainCompany(), 0 );
         nuevae->inicializa1 ( idborrador );
-        ( ( BcCompany * ) as->mainCompany() ) ->pWorkspace() ->addWindow ( nuevae );
+        ( ( BcCompany * ) as->mainCompany() ) ->pWorkspace() ->addSubWindow ( nuevae );
         nuevae->show();
     } catch ( ... ) {
         blMsgInfo ( _ ( "Debe seleccionar un apunte" ) );

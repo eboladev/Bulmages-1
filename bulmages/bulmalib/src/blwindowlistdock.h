@@ -1,6 +1,8 @@
 /***************************************************************************
  *   Copyright (C) 2005 by Tomeu Borras Riera                              *
  *   tborras@conetxia.com                                                  *
+ *   Copyright (C) 2010 by Fco. Javier M. C.                               *
+ *   fcojavmc@todo-redes.com                                               *
  *   http://www.iglues.org                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -27,6 +29,9 @@
 
 #include "blfunctions.h"
 #include "blworkspace.h"
+
+
+class BlWorkspace;
 
 
 class BL_EXPORT BlListWidget : public QListWidget
@@ -68,6 +73,7 @@ class BL_EXPORT BlWindowListDock : public QDockWidget
 private:
     BlListWidget *m_listBox;
     BlWorkspace *m_pWorkspace;
+
 public:
     void setWorkspace ( BlWorkspace *w );
     BlWindowListDock ( QWidget *a = 0 );
@@ -75,7 +81,7 @@ public:
 
 public:
     int meteWindow ( QString, QObject *, bool compdup = TRUE, QString titulo="" );
-    int seleccionaWindow ( QString, QObject * );
+    int seleccionaWindow ( QString, QMdiSubWindow * );
     int deSeleccionaWindow();
     void sacaWindow ( QObject * );
     void cambiaVisible ( bool );

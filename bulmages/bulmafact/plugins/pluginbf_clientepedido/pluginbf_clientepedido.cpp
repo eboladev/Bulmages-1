@@ -72,7 +72,7 @@ void mypluginped::elslot1()
 {
     blDebug ( "mypluginped::elslot1", 0 );
     PedidoClienteView * bud = new PedidoClienteView ( ( BfCompany * ) mainCompany(), NULL );
-    mainCompany() ->m_pWorkspace->addWindow ( bud );
+    mainCompany() ->m_pWorkspace->addSubWindow ( bud );
     bud->inicializar();
     bud->show();
     blDebug ( "END mypluginped::elslot1", 0 );
@@ -141,7 +141,7 @@ int BfCompany_createMainWindows_Post ( BfCompany *comp )
 {
     if ( comp->hasTablePrivilege ( "pedidocliente", "SELECT" ) ) {
         g_pedidosClienteList = new PedidosClienteList ( comp, NULL );
-        comp->m_pWorkspace->addWindow ( g_pedidosClienteList );
+        comp->m_pWorkspace->addSubWindow ( g_pedidosClienteList );
         g_pedidosClienteList->hide();
     }// end if
     return 0;
@@ -178,7 +178,7 @@ int BfBuscarReferencia_on_mui_abrirtodo_clicked_Post ( BfBuscarReferencia *ref )
     BlDbRecordSet *cur = ref->mainCompany() ->loadQuery ( SQLQuery );
     while ( !cur->eof() ) {
         PedidoClienteView * bud = new PedidoClienteView ( ( BfCompany * ) ref->mainCompany(), NULL );
-        ref->mainCompany() ->m_pWorkspace->addWindow ( bud );
+        ref->mainCompany() ->m_pWorkspace->addSubWindow ( bud );
         bud->cargar ( cur->valor ( "idpedidocliente" ) );
         bud->show();
         cur->nextRecord();

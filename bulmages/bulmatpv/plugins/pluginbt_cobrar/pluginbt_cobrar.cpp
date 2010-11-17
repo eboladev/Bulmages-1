@@ -66,7 +66,7 @@ int entryPoint ( BtBulmaTPV *tpv )
 int BtCompany_createMainWindows_Post ( BtCompany *etpv )
 {
     g_cobrar = new Cobrar ( etpv, g_doc1 );
-// etpv->pWorkspace()->addWindow(g_cobrar);
+// etpv->pWorkspace()->addSubWindow(g_cobrar);
     g_doc1->setWidget ( g_cobrar );
 
 //        ((BulmaTPV *)etpv->parent())->addDockWidget(Qt::LeftDockWidgetArea, g_cobrar);

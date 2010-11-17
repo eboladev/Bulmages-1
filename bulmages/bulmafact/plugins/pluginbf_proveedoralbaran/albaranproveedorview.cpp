@@ -191,7 +191,7 @@ void AlbaranProveedorView::on_mui_verpedidosproveedor_clicked()
     while ( !cur->eof() ) {
         PedidoProveedorView * pedpro = new PedidoProveedorView ( ( BfCompany * ) mainCompany(), 0 );
         pedpro->cargar ( cur->valor ( "idpedidoproveedor" ) );
-        mainCompany() ->m_pWorkspace->addWindow ( pedpro );
+        mainCompany() ->m_pWorkspace->addSubWindow ( pedpro );
         pedpro->show();
         cur->nextRecord();
     } // end while

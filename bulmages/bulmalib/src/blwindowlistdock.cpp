@@ -1,6 +1,8 @@
 /***************************************************************************
  *   Copyright (C) 2005 by Tomeu Borras Riera                              *
  *   tborras@conetxia.com                                                  *
+ *   Copyright (C) 2010 by Fco. Javier M. C.                               *
+ *   fcojavmc@todo-redes.com                                               *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
  *   it under the terms of the GNU General Public License as published by  *
@@ -182,6 +184,7 @@ void BlWindowListDock::dclicked()
         } else {
             widget->showMaximized();
         } // end if
+        widget->parentWidget()->activateWindow();
     } // end if
     blDebug ( "END BlWindowListDock::dclicked", 0 );
 }
@@ -197,7 +200,8 @@ void BlWindowListDock::clicked()
     if ( widget != NULL ) {
         widget->show();
         widget->parentWidget() ->raise();
-        m_pWorkspace->setActiveWindow ( widget );
+        //m_pWorkspace->setActiveWindow ( widget );
+        widget->parentWidget()->activateWindow();
     } // end if
     blDebug ( "END BlWindowListDock::clicked", 0 );
 }
@@ -338,7 +342,7 @@ int BlWindowListDock::meteWindow ( QString nombre, QObject *obj, bool compdup, Q
 \param obj
 \return
 **/
-int BlWindowListDock::seleccionaWindow ( QString nombre, QObject *obj )
+int BlWindowListDock::seleccionaWindow ( QString nombre, QMdiSubWindow *obj )
 {
     blDebug ( "BlWindowListDock::seleccionaWindow", 0 );
     try {
@@ -346,7 +350,7 @@ int BlWindowListDock::seleccionaWindow ( QString nombre, QObject *obj )
         while ( i < m_listBox->count() ) {
             BlListWidgetItem * m = ( BlListWidgetItem * ) m_listBox->item ( i );
             /// Encuentra la ventana en la lista.
-            if ( m->object() == obj ) {
+            if ( m->object() == obj->widget() ) {
                 blDebug ( "END BlWindowListDock::seleccionaWindow", 0, "Se ha encontrado la ventana" + nombre );
                 m_listBox->setCurrentItem ( m );
                 return 0;

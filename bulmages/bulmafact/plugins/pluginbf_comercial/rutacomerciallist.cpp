@@ -151,7 +151,7 @@ void RutaComercialList::editar ( int row )
     RutaComercialIncView *rut = new RutaComercialIncView ( ( BfCompany * ) mainCompany(), NULL );
     if ( rut->cargar ( idrutacomercial, idincidenciacomercial ) )
         return;
-    mainCompany() ->m_pWorkspace->addWindow ( rut );
+    mainCompany() ->m_pWorkspace->addSubWindow ( rut );
     mainCompany() ->meteWindow ( _ ( "Nueva incidencia comercial" ), rut );
     rut->show();
     blDebug ( "END RutaComercialList::editar", 0 );
@@ -165,7 +165,7 @@ void RutaComercialList::crear()
 {
     blDebug ( "RutaComercialList::crear", 0 );
     RutaComercialIncView *rut = new RutaComercialIncView ( ( BfCompany * ) mainCompany(), NULL );
-    mainCompany() ->m_pWorkspace->addWindow ( rut );
+    mainCompany() ->m_pWorkspace->addSubWindow ( rut );
     mainCompany() ->meteWindow ( _ ( "Nueva incidencia comercial" ), rut );
     rut->show();
     blDebug ( "END RutaComercialList::crear", 0 );

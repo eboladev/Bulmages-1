@@ -85,7 +85,7 @@ void myplugin::elslot()
                 delete prov;
                 return;
             } // end if
-            mainCompany() ->m_pWorkspace->addWindow ( prov );
+            mainCompany() ->m_pWorkspace->addSubWindow ( prov );
             prov->show();
         } else if ( listaelem.at ( 0 ) == QString ( "PRE" ) ) {
             /// Como estamos en un plugin buscamos nuevas formas de creacion de objetos.
@@ -99,7 +99,7 @@ void myplugin::elslot()
                 delete prov;
                 return;
             } // end if
-            mainCompany() ->m_pWorkspace->addWindow ( prov );
+            mainCompany() ->m_pWorkspace->addSubWindow ( prov );
             prov->show();
         } else if ( listaelem.at ( 0 ) == QString ( "PED" ) ) {
             /// Como estamos en un plugin buscamos nuevas formas de creacion de objetos.
@@ -113,7 +113,7 @@ void myplugin::elslot()
                 delete prov;
                 return;
             } // end if
-            mainCompany() ->m_pWorkspace->addWindow ( prov );
+            mainCompany() ->m_pWorkspace->addSubWindow ( prov );
             prov->show();
         } else if ( listaelem.at ( 0 ) == QString ( "ALB" ) ) {
 
@@ -128,7 +128,7 @@ void myplugin::elslot()
                 delete prov;
                 return;
             } // end if
-            mainCompany() ->m_pWorkspace->addWindow ( prov );
+            mainCompany() ->m_pWorkspace->addSubWindow ( prov );
             prov->show();
         } else if ( listaelem.at ( 0 ) == QString ( "PEDP" ) ) {
 
@@ -137,7 +137,7 @@ void myplugin::elslot()
                 delete prov;
                 return;
             } // end if
-            mainCompany() ->m_pWorkspace->addWindow ( prov );
+            mainCompany() ->m_pWorkspace->addSubWindow ( prov );
             prov->show();
         } // end if
     } // end if

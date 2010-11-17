@@ -70,7 +70,7 @@ void mypluginpag::elslot1()
 {
     blDebug ( "mypluginpag::elslot1", 0 );
     PagoView * bud = new PagoView ( ( BfCompany * ) mainCompany(), NULL );
-    mainCompany() ->m_pWorkspace->addWindow ( bud );
+    mainCompany() ->m_pWorkspace->addSubWindow ( bud );
     bud->show();
     blDebug ( "END mypluginpag::elslot1", 0 );
 }
@@ -138,7 +138,7 @@ int BfCompany_createMainWindows_Post ( BfCompany *comp )
 {
     if ( comp->hasTablePrivilege ( "pago", "SELECT" ) ) {
         g_pagosList = new PagosList ( comp, NULL );
-        comp->m_pWorkspace->addWindow ( g_pagosList );
+        comp->m_pWorkspace->addSubWindow ( g_pagosList );
         g_pagosList->hide();
     }// end if
     return 0;
@@ -174,7 +174,7 @@ int BfBuscarReferencia_on_mui_abrirtodo_clicked_Post ( BfBuscarReferencia *ref )
     BlDbRecordSet *cur = ref->mainCompany() ->loadQuery ( SQLQuery );
     while ( !cur->eof() ) {
         PagoView * bud = new PagoView ( ( BfCompany * ) ref->mainCompany(), NULL );
-        ref->mainCompany() ->m_pWorkspace->addWindow ( bud );
+        ref->mainCompany() ->m_pWorkspace->addSubWindow ( bud );
         bud->cargar ( cur->valor ( "idpago" ) );
         bud->show();
         cur->nextRecord();

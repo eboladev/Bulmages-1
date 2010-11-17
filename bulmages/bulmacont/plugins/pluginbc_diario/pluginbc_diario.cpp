@@ -65,7 +65,7 @@ void MyPluginDiario::elslot()
     blDebug ( "MyPluginDiario::elslot", 0 );
     if (g_diario == NULL) {
       g_diario = new BcDiarioView ( ( BcCompany * ) mainCompany(), 0 );
-      mainCompany() ->pWorkspace() ->addWindow ( g_diario );
+      mainCompany() ->pWorkspace() ->addSubWindow ( g_diario );
     } // end if
     g_diario->hide();
     g_diario->show();

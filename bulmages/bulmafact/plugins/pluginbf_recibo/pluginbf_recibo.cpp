@@ -74,7 +74,7 @@ void MyPlugProf::elslot1()
     blDebug ( "MyPlugProf::elslot1", 0 );
     
     ReciboView * bud = new ReciboView ( ( BfCompany * ) mainCompany(), NULL );
-    mainCompany() ->m_pWorkspace->addWindow ( bud );
+    mainCompany() ->m_pWorkspace->addSubWindow ( bud );
     bud->show();
     
     blDebug ( "END MyPlugProf::elslot1", 0 );
@@ -89,7 +89,7 @@ void MyPlugProf::elslot2()
     blDebug ( "MyPlugProf::elslot2", 0 );
     
     EmitirRecibosView * bud = new EmitirRecibosView ( ( BfCompany * ) mainCompany(), NULL );
-    mainCompany() ->m_pWorkspace->addWindow ( bud );
+    mainCompany() ->m_pWorkspace->addSubWindow ( bud );
     bud->show();
     
     blDebug ( "END MyPlugProf::elslot2", 0 );
@@ -165,7 +165,7 @@ int BfCompany_createMainWindows_Post ( BfCompany *comp )
 {
     if ( comp->hasTablePrivilege ( "recibo", "SELECT" ) ) {
         g_recibosList = new RecibosList ( comp, NULL );
-        comp->m_pWorkspace->addWindow ( g_recibosList );
+        comp->m_pWorkspace->addSubWindow ( g_recibosList );
         g_recibosList->hide();
     }// end if
     
@@ -244,7 +244,7 @@ void MyPlugRecibo1::elslot()
     blDebug ( "MyPlugRecibo1::elslot", 0 );
     
     EmitirRecibosView * bud = new EmitirRecibosView ( ( BfCompany * ) mainCompany(), NULL );
-    mainCompany() ->m_pWorkspace->addWindow ( bud );
+    mainCompany() ->m_pWorkspace->addSubWindow ( bud );
     bud->mui_actividad->setChecked(TRUE);
     bud->mui_idactividad->setId(m_actividad->dbValue("idactividad"));
     bud->show();

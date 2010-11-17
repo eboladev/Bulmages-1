@@ -119,7 +119,7 @@ void ZList::crear()
     blDebug ( "ZList::crear", 0 );
     /*
         ZView *alm = new ZView((BfCompany *)mainCompany(), 0);
-        mainCompany()->pWorkspace()->addWindow(alm);
+        mainCompany()->pWorkspace()->addSubWindow(alm);
         alm->show();
     */
     blDebug ( "END ZList::crear", 0 );
@@ -168,7 +168,7 @@ void ZList::editar ( int row )
 
         if ( modoEdicion() ) {
             ZView * alm = new ZView ( ( BfCompany * ) mainCompany(), 0 );
-            mainCompany() ->pWorkspace() ->addWindow ( alm );
+            mainCompany() ->pWorkspace() ->addSubWindow ( alm );
             alm->show();
             alm->cargar ( m_idz );
         } else {
@@ -210,7 +210,7 @@ void ZList::borrar()
             m_idz = mui_list->dbValue(QString("idalmacen"));
             if (modoEdicion()) {
                 ZView *alm = new ZView((BfCompany *)mainCompany(), 0);
-                mainCompany()->pWorkspace()->addWindow(alm);
+                mainCompany()->pWorkspace()->addSubWindow(alm);
     //            alm->show();
                 alm->cargar(m_idz);
          alm->on_mui_borrar_clicked();

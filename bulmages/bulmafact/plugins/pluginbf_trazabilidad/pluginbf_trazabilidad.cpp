@@ -59,7 +59,7 @@ void myplugin::elslot()
 {
     blDebug ( "myplugin::elslot", 0 );
     MovimientosView *mov = new MovimientosView ( ( BfCompany * ) mainCompany() );
-    mainCompany() ->pWorkspace() ->addWindow ( mov );
+    mainCompany() ->pWorkspace() ->addSubWindow ( mov );
     mov->show();
     blDebug ( "END myplugin::elslot", 0 );
 }

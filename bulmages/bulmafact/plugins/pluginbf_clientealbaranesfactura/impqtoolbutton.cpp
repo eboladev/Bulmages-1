@@ -113,7 +113,7 @@ void ImpQToolButton::click()
             return;
         } // end if
         FacturaView *fac = ( FacturaView * ) g_plugParams;
-        m_companyact->m_pWorkspace->addWindow ( fac );
+        m_companyact->m_pWorkspace->addSubWindow ( fac );
 
         /// Cargamos un elemento que no existe para inicializar bien la clase.
         fac->cargar ( "0" );
@@ -138,7 +138,7 @@ void ImpQToolButton::click()
                     pres->close();
                     return;
                 } // end if
-                m_companyact->pWorkspace() ->addWindow ( pres );
+                m_companyact->pWorkspace() ->addSubWindow ( pres );
                 m_companyact->meteWindow ( pres->windowTitle(), pres, FALSE );
                 pres->show();
 

@@ -63,7 +63,7 @@ void myplugin4::elslot()
 {
     blDebug ( "myplugin4::elslot", 0 );
     CuadranteView *cuad = new CuadranteView ( ( BfCompany * ) mainCompany(), 0 );
-    mainCompany() ->pWorkspace() ->addWindow ( cuad );
+    mainCompany() ->pWorkspace() ->addSubWindow ( cuad );
     cuad->show();
     blDebug ( "END myplugin4::elslot", 0 );
 }
@@ -76,7 +76,7 @@ void myplugin4::elslot1()
 {
     blDebug ( "myplugin4::elslot1", 0 );
     CuadranteDiarioView *cuad = new CuadranteDiarioView ( ( BfCompany * ) mainCompany(), 0 );
-    mainCompany() ->pWorkspace() ->addWindow ( cuad );
+    mainCompany() ->pWorkspace() ->addSubWindow ( cuad );
     cuad->show();
     blDebug ( "END myplugin4::elslot1", 0 );
 }

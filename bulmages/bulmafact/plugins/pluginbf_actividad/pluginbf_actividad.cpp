@@ -70,7 +70,7 @@ void MyPlugProf::elslot1()
 {
     blDebug ( "MyPlugProf::elslot1", 0 );
     ActividadView * bud = new ActividadView ( ( BfCompany * ) mainCompany(), NULL );
-    mainCompany() ->m_pWorkspace->addWindow ( bud );
+    mainCompany() ->m_pWorkspace->addSubWindow ( bud );
     bud->show();
     blDebug ( "END MyPlugProf::elslot1", 0 );
 }
@@ -83,7 +83,7 @@ void MyPlugProf::elslot2()
 {
     blDebug ( "MyPlugProf::elslot2", 0 );
     TipoActividadView * bud = new TipoActividadView ( ( BfCompany * ) mainCompany(), NULL );
-    mainCompany() ->m_pWorkspace->addWindow ( bud );
+    mainCompany() ->m_pWorkspace->addSubWindow ( bud );
     bud->show();
     blDebug ( "END MyPlugProf::elslot2", 0 );
 }
@@ -158,7 +158,7 @@ int BfCompany_createMainWindows_Post ( BfCompany *comp )
 {
     if ( comp->hasTablePrivilege ( "actividad", "SELECT" ) ) {
         g_actividadesList = new ActividadesList ( comp, NULL );
-        comp->m_pWorkspace->addWindow ( g_actividadesList );
+        comp->m_pWorkspace->addSubWindow ( g_actividadesList );
         g_actividadesList->hide();
     }// end if
     return 0;
@@ -311,7 +311,7 @@ void MyPlugAct1::editarActividad ( QString idactividad )
     blDebug ( "MyPlugAct1::editarActividad", 0 );
     BlSubForm * subf = ( BlSubForm * ) parent();
     ActividadView * art = new ActividadView ( ( BfCompany * ) subf->mainCompany(), 0 );
-    subf->mainCompany() ->m_pWorkspace->addWindow ( art );
+    subf->mainCompany() ->m_pWorkspace->addSubWindow ( art );
     /// Si la carga no va bien entonces terminamos.
     if ( art->cargar ( idactividad ) ) {
         delete art;
@@ -333,7 +333,7 @@ void MyPlugAct1::nuevoActividad( )
     blDebug ( "MyPlugAct1::editarActividad", 0 );
     BlSubForm * subf = ( BlSubForm * ) parent();
     ActividadView * art = new ActividadView ( ( BfCompany * ) subf->mainCompany(), 0 );
-    subf->mainCompany() ->m_pWorkspace->addWindow ( art );
+    subf->mainCompany() ->m_pWorkspace->addSubWindow ( art );
     art->hide();
     art->show();
     blDebug ( "END MyPlugAct1::editarActividad", 0 );

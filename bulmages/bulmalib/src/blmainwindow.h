@@ -25,6 +25,7 @@
 #include <QMainWindow>
 #include "bldefs.h"
 
+
 class BL_EXPORT BlMainWindow : public QMainWindow
 {
     Q_OBJECT

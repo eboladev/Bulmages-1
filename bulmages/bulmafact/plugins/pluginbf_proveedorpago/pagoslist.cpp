@@ -162,7 +162,7 @@ void PagosList::editar ( int )
             delete bud;
             return;
         } // end if
-        mainCompany() ->m_pWorkspace->addWindow ( bud );
+        mainCompany() ->m_pWorkspace->addSubWindow ( bud );
         bud->show();
     } else {
         close();
@@ -174,7 +174,7 @@ void PagosList::crear()
 {
     blDebug ( "PagosList::crear", 0 );
     PagoView *pv = new PagoView ( ( BfCompany * ) mainCompany(), 0 );
-    mainCompany() ->m_pWorkspace->addWindow ( pv );
+    mainCompany() ->m_pWorkspace->addSubWindow ( pv );
     pv->pintar();
 
     /// Si se crea el nuevo pago desde la lista de pagos a un proveedor,

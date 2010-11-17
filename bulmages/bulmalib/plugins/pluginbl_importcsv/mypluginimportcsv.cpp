@@ -54,7 +54,7 @@ void mypluginimportcsv::elslot()
     blDebug ( "mypluginimportcsv::elslot", 0 );
 
     ImportCSV *imp = new ImportCSV ( g_emp_importcsv, 0 );
-    g_emp_importcsv->pWorkspace() ->addWindow ( imp );
+    g_emp_importcsv->pWorkspace() ->addSubWindow ( imp );
     imp->show();
 
     blDebug ( "END mypluginimportcsv::elslot", 0 );

@@ -66,7 +66,7 @@ void mypluginzz::elslot (  )
 {
     blDebug ( "mypluginzz::cambia", 0 );
     Z2ZView * bud = new Z2ZView ( g_bges, NULL );
-    g_bges ->m_pWorkspace->addWindow ( bud );
+    g_bges ->m_pWorkspace->addSubWindow ( bud );
     bud->show();
     blDebug ( "END mypluginzz::cambia", 0 );
 }

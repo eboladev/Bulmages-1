@@ -55,7 +55,7 @@ void MyPlugTrab::elslot1()
 {
     blDebug ( "MyPlugTrab::elslot1", 0 );
     TrabajadorView * bud = new TrabajadorView ( ( BfCompany * ) mainCompany(), NULL );
-    mainCompany() ->m_pWorkspace->addWindow ( bud );
+    mainCompany() ->m_pWorkspace->addSubWindow ( bud );
     bud->show();
     blDebug ( "END MyPlugTrab::elslot1", 0 );
 }

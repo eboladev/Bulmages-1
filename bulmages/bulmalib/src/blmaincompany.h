@@ -1,6 +1,8 @@
 /***************************************************************************
  *   Copyright (C) 2006 by Tomeu Borras Riera                              *
  *   tborras@conetxia.com                                                  *
+ *   Copyright (C) 2010 by Fco. Javier M. C.                               *
+ *   fcojavmc@todo-redes.com                                               *
  *   http://www.iglues.org                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -22,6 +24,7 @@
 #ifndef BLMAINCOMPANY_H
 #define BLMAINCOMPANY_H
 
+#include <QObject>
 #include <QWorkspace>
 #include <QProgressBar>
 
@@ -31,8 +34,10 @@
 #include "blworkspace.h"
 
 
-class BL_EXPORT BlMainCompany : public BlPostgreSqlClient
+class BL_EXPORT BlMainCompany : public QObject, public BlPostgreSqlClient
 {
+    Q_OBJECT
+
 protected:
     /// Puntero al dock que lista las ventansa. Puesto que esta clase hace el paso de
     /// mensajes tiene el control de la lista de ventanas.
@@ -57,11 +62,14 @@ public:
     void setWorkspace ( BlWorkspace *qw );
     void setProgressBar ( QProgressBar *pb );
     int meteWindow ( QString nom, QObject *obj, bool compdup = TRUE, QString titulo = "" );
-    int seleccionaWindow ( QString nom, QObject *obj );
-    int deSeleccionaWindow();
+    int seleccionaWindow ( QString nom, QMdiSubWindow *obj );
     void sacaWindow ( QObject *nom );
     void s_indexadorCambiaEstado ( bool );
     void muestraPaises();
+
+public slots:
+    int deSeleccionaWindow();
+
 };
 
 #endif

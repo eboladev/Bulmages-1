@@ -250,7 +250,7 @@ void FacturasList::editar ( int row )
             delete prov;
             return;
         } // end if
-        mainCompany() ->m_pWorkspace->addWindow ( prov );
+        mainCompany() ->m_pWorkspace->addSubWindow ( prov );
         prov->show();
     } else {
         emit ( selected ( mdb_idfactura ) );
@@ -387,7 +387,7 @@ void FacturasList::crear()
 {
     blDebug ( "FacturasList::crear", 0 );
     FacturaView *fv = new FacturaView ( ( BfCompany * ) mainCompany(), 0 );
-    mainCompany()->m_pWorkspace->addWindow ( fv );
+    mainCompany()->m_pWorkspace->addSubWindow ( fv );
     fv->inicializar();
     fv->pintar();
     

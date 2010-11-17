@@ -67,7 +67,7 @@ void MyPluginCuentasAnuales::elslot()
     blDebug ( "MyPluginCuentasAnuales::elslot", 0 );
     if (g_cuentasAnuales == NULL) {
       g_cuentasAnuales = new BcCuentasAnualesView ( ( BcCompany * ) mainCompany(), 0 );
-      mainCompany() ->pWorkspace() -> addWindow ( g_cuentasAnuales );
+      mainCompany() ->pWorkspace() -> addSubWindow ( g_cuentasAnuales );
     } // end if
     g_cuentasAnuales->hide();
     g_cuentasAnuales->show();

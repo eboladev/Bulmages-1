@@ -70,7 +70,7 @@ void MyPlugPro::elslot1()
 {
     blDebug ( "MyPlugPro::elslot1", 0 );
     ProveedorView * bud = new ProveedorView ( ( BfCompany * ) mainCompany(), NULL );
-    mainCompany() ->m_pWorkspace->addWindow ( bud );
+    mainCompany() ->m_pWorkspace->addSubWindow ( bud );
     bud->show();
     blDebug ( "END MyPlugPro::elslot1", 0 );
 }
@@ -138,7 +138,7 @@ int BfCompany_createMainWindows_Post ( BfCompany *comp )
 {
     if ( comp->hasTablePrivilege ( "proveedor", "SELECT" ) ) {
         g_providersList = new ProveedorList ( comp, NULL );
-        comp->m_pWorkspace->addWindow ( g_providersList );
+        comp->m_pWorkspace->addSubWindow ( g_providersList );
         g_providersList->hide();
     }// end if
     return 0;

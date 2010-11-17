@@ -69,7 +69,7 @@ void TarifaListView::editar ( int row )
     blDebug ( "TarifaListView::editar", 0 );
     TarifaView *tar = new TarifaView ( ( BfCompany * ) mainCompany(), 0 );
     QObject::connect ( tar, SIGNAL ( guardartarifa() ), this, SLOT ( actualizar() ) );
-    mainCompany() ->m_pWorkspace->addWindow ( tar );
+    mainCompany() ->m_pWorkspace->addSubWindow ( tar );
     tar->cargar ( mui_list->dbValue ( QString ( "idtarifa" ), row ) );
     tar->show();
     blDebug ( "END TarifaListView::editar", 0 );
@@ -84,7 +84,7 @@ void TarifaListView::crear()
     blDebug ( "TarifaListView::crear", 0 );
     TarifaView *tar = new TarifaView ( ( BfCompany * ) mainCompany(), parentWidget() );
     QObject::connect ( tar, SIGNAL ( guardartarifa() ), this, SLOT ( actualizar() ) );
-    mainCompany() ->m_pWorkspace->addWindow ( tar );
+    mainCompany() ->m_pWorkspace->addSubWindow ( tar );
     tar->setWindowTitle ( tr ( "Nueva tarifa" ) );
     tar->show();
     blDebug ( "END  TarifaListView::crear", 0 );

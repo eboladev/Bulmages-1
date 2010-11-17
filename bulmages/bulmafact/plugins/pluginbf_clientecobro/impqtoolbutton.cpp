@@ -111,7 +111,7 @@ void GenCobroQToolButton::click()
 
                 while ( !cur->eof() ) {
                     CobroView *bud = new CobroView ( ( BfCompany * ) fpv->mainCompany(), 0 );
-                    fpv->mainCompany() ->m_pWorkspace->addWindow ( bud );
+                    fpv->mainCompany() ->m_pWorkspace->addSubWindow ( bud );
                     bud->cargar ( cur->valor ( "idcobro" ) );
                     bud->pintar();
                     bud->show();
@@ -129,7 +129,7 @@ void GenCobroQToolButton::click()
         /// Creacion de un cobro nuevo a partir de la factura.
         if ( nuevo ) {
             CobroView *bud = new CobroView ( fpv->mainCompany(), 0 );
-            fpv->mainCompany() ->m_pWorkspace->addWindow ( bud );
+            fpv->mainCompany() ->m_pWorkspace->addSubWindow ( bud );
             bud->setDbValue ( "idcliente", fpv->dbValue ( "idcliente" ) );
             bud->setDbValue ( "cantcobro", fpv->m_totalfactura->text() );
             bud->setDbValue ( "refcobro", fpv->dbValue ( "reffactura" ) );
@@ -165,7 +165,7 @@ void GenCobroQToolButton::click()
 
                 while ( !cur->eof() ) {
                     CobroView *bud = new CobroView ( ( BfCompany * ) fpv->mainCompany(), 0 );
-                    fpv->mainCompany() ->m_pWorkspace->addWindow ( bud );
+                    fpv->mainCompany() ->m_pWorkspace->addSubWindow ( bud );
                     bud->cargar ( cur->valor ( "idcobro" ) );
                     bud->pintar();
                     bud->show();
@@ -183,7 +183,7 @@ void GenCobroQToolButton::click()
         /// Creacion de un cobro nuevo a partir del albaran
         if ( nuevo ) {
             CobroView *bud = new CobroView ( ( BfCompany * ) fpv->mainCompany(), 0 );
-            fpv->mainCompany() ->m_pWorkspace->addWindow ( bud );
+            fpv->mainCompany() ->m_pWorkspace->addSubWindow ( bud );
             bud->setDbValue ( "idcliente", fpv->dbValue ( "idcliente" ) );
             bud->setDbValue ( "idforma_pago", fpv->dbValue ( "idforma_pago" ) );
             bud->setDbValue ( "cantcobro", fpv->m_totalalbaran->text() );
@@ -215,7 +215,7 @@ void GenCobroQToolButton::click()
 
                 while ( !cur->eof() ) {
                     CobroView *bud = new CobroView ( ( BfCompany * ) fpv->mainCompany(), 0 );
-                    fpv->mainCompany() ->m_pWorkspace->addWindow ( bud );
+                    fpv->mainCompany() ->m_pWorkspace->addSubWindow ( bud );
                     bud->cargar ( cur->valor ( "idcobro" ) );
                     bud->pintar();
                     bud->show();
@@ -233,7 +233,7 @@ void GenCobroQToolButton::click()
         /// Creacion de un cobro nuevo a partir de la factura.
         if ( nuevo ) {
             CobroView *bud = new CobroView ( ( BfCompany * ) fpv->mainCompany(), 0 );
-            fpv->mainCompany() ->m_pWorkspace->addWindow ( bud );
+            fpv->mainCompany() ->m_pWorkspace->addSubWindow ( bud );
             bud->setDbValue ( "idcliente", fpv->dbValue ( "idcliente" ) );
             bud->setDbValue ( "idforma_pago", fpv->dbValue ( "idforma_pago" ) );
             bud->setDbValue ( "cantcobro", fpv->m_totalpedidocliente->text() );

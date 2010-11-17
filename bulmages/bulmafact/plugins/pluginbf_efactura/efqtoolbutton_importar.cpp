@@ -288,7 +288,7 @@ void EFQToolButtonImportar::importa_factura_ubl()
 /// Mostramos la ficha con la informacion de la factura importada --------------------------------------
 
     FacturaProveedorView *fp = ( ( BfCompany * ) mainCompany() ) ->newFacturaProveedorView();
-    mainCompany() ->m_pWorkspace->addWindow ( fp );
+    mainCompany() ->m_pWorkspace->addSubWindow ( fp );
     fp->inicializar();
     fp->pintar();
     fp->show();

@@ -36,7 +36,7 @@ ListLinPedidoProveedorView::ListLinPedidoProveedorView ( QWidget *parent ) : BfS
     blDebug ( "ListLinPedidoProveedorView::ListLinPedidoProveedorView", 0 );
     setDbTableName ( "lpedidoproveedor" );
     setDbFieldId ( "idlpedidoproveedor" );
-    addSubFormHeader ( "puntlpedidoproveedor", BlDbField::DbBoolean, BlDbField::DbNotNull, BlSubFormHeader::DbNone, _ ( "Punteo" ) );
+    addSubFormHeader ( "puntlpedidoproveedor", BlDbField::DbBoolean, BlDbField::DbNothing, BlSubFormHeader::DbNone, _ ( "Punteo" ) );
     addSubFormHeader ( "idarticulo", BlDbField::DbInt, BlDbField::DbNotNull, BlSubFormHeader::DbHideView, _ ( "Id articulo" ) );
     addSubFormHeader ( "codigocompletoarticulo", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone, _ ( "Codigo completo articulo" ) );
     addSubFormHeader ( "nomarticulo", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNoWrite, _ ( "Nombre articulo" ) );

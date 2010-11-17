@@ -138,7 +138,7 @@ void ClientsList::editar ( int row )
             delete prov;
             return;
         } // end if
-        mainCompany() ->m_pWorkspace->addWindow ( prov );
+        mainCompany() ->m_pWorkspace->addSubWindow ( prov );
         prov->show();
     } else {
         emit ( selected ( mdb_idcliente ) );
@@ -300,7 +300,7 @@ void ClientsList::crear()
 	
     } else {
 	ClienteView *bud = new ClienteView ( ( BfCompany * ) mainCompany() , 0 );
-	mainCompany()->m_pWorkspace->addWindow ( bud );
+	mainCompany()->m_pWorkspace->addSubWindow ( bud );
 	bud->pintar();
 	bud->show();
 	bud->setWindowTitle ( _ ( "Nuevo cliente" ) );

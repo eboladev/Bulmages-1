@@ -146,7 +146,7 @@ void SociosList::crear()
 {
     blDebug ( "SociosList::crear", 0 );
     SocioView *bud = new SocioView ( ( BfCompany * ) mainCompany(), 0 );
-    mainCompany() ->m_pWorkspace->addWindow ( bud );
+    mainCompany() ->m_pWorkspace->addSubWindow ( bud );
     bud->show();
     bud->pintar();
     blDebug ( "SociosList::crear", 0 );
@@ -209,7 +209,7 @@ void SociosList::editar ( int )
                 delete bud;
                 return;
             } // end if
-            mainCompany() ->m_pWorkspace->addWindow ( bud );
+            mainCompany() ->m_pWorkspace->addSubWindow ( bud );
             bud->show();
         } else {
 	    close();

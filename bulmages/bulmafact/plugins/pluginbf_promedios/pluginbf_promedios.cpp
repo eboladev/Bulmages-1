@@ -40,7 +40,7 @@ myplugin1::~myplugin1() {}
 void myplugin1::elslot() {
 
 //    TarifaListView *tar = new TarifaListView(m_companyact, NULL);
-//    m_companyact->m_pWorkspace->addWindow(tar);
+//    m_companyact->m_pWorkspace->addSubWindow(tar);
 //    tar->show();
 }
 

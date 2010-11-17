@@ -51,7 +51,7 @@ int BfCompany_s_almacenes ( BfCompany *bges )
 {
     blDebug ( "BfCompany_s_almacenes", 0 );
     AlmacenesListView *lser = new AlmacenesListView ( bges, 0 );
-    bges->pWorkspace() ->addWindow ( lser );
+    bges->pWorkspace() ->addSubWindow ( lser );
     lser->show();
     blDebug ( "END BfCompany_s_almacenes", 0 );
     /// Este plugin reemplaza completamente la funcion llamante y por eso devuelve un valor distinto de 0

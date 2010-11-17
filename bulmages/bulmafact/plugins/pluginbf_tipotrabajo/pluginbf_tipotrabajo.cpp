@@ -56,7 +56,7 @@ void mytiptrab::elslot()
 {
     blDebug ( "mytiptrab::elslot", 0 );
     ListTiposTrabajoView *l = new ListTiposTrabajoView ( ( BfCompany * ) m_bulmafact->company(), 0 );
-    m_bulmafact->workspace() ->addWindow ( l );
+    m_bulmafact->workspace() ->addSubWindow ( l );
     l->show();
     blDebug ( "END mytiptrab::elslot", 0 );
 }

@@ -204,7 +204,7 @@ void CompraVentaView::on_mui_cobrar_clicked()
     blDebug ( "CompraVentaView::on_mui_cobrar_clicked", 0 );
     recogeValores();
     CobroView *bud = new CobroView ( mainCompany(), 0 );
-    mainCompany()->pWorkspace()->addWindow ( bud );
+    mainCompany()->pWorkspace()->addSubWindow ( bud );
     bud->setDbValue ( "idcliente", dbValue ( "idcliente" ) );
     bud->setDbValue ( "cantcobro", m_totalalbaran->text() );
     bud->setDbValue ( "refcobro", dbValue ( "refalbaran" ) );
@@ -481,7 +481,7 @@ void CompraVentaView::generarFacturaProveedor()
 
         /// Creamos la factura de proveedor.
         FacturaProveedorView *bud = new FacturaProveedorView ( ( BfCompany * ) mainCompany(), 0 );
-        mainCompany() ->m_pWorkspace->addWindow ( bud );
+        mainCompany() ->m_pWorkspace->addSubWindow ( bud );
 
         /// Cargamos un elemento que no existe para inicializar bien la clase.
         bud->inicializar();
@@ -596,7 +596,7 @@ void CompraVentaView::generarFactura()
                 return;
             } // end if
             bud = ( FacturaView * ) g_plugParams;
-            mainCompany() ->m_pWorkspace->addWindow ( bud );
+            mainCompany() ->m_pWorkspace->addSubWindow ( bud );
             bud->cargar ( cur->valor ( "idfactura" ) );
             bud->show();
             return;
@@ -614,7 +614,7 @@ void CompraVentaView::generarFactura()
             return;
         } // end if
         bud = ( FacturaView * ) g_plugParams;
-        mainCompany() ->m_pWorkspace->addWindow ( bud );
+        mainCompany() ->m_pWorkspace->addSubWindow ( bud );
 
         /// Cargamos un elemento que no existe para inicializar bien la clase.
         bud->cargar ( "0" );

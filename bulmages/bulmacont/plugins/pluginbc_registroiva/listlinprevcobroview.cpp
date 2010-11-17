@@ -339,7 +339,7 @@ void ListLinPrevCobroView::contextMenu ( int row, int col, const QPoint & pos )
         if ( linea->idregistroiva() != "" ) {
             RegistroIvaView * iva = new RegistroIvaView ( m_companyact, 0 );
             iva->inicializa1 ( cur->valor ( "idborrador" ).toInt() );
-            m_companyact->pWorkspace() ->addWindow ( iva );
+            m_companyact->pWorkspace() ->addSubWindow ( iva );
             iva->show();
         } // end if
         delete cur;

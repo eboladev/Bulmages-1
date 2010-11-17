@@ -147,7 +147,7 @@ void ZView::on_mui_list_cellDoubleClicked ( int row, int )
             delete prov;
             return;
         } // end if
-        mainCompany() ->m_pWorkspace->addWindow ( prov );
+        mainCompany() ->m_pWorkspace->addSubWindow ( prov );
         prov->show();
     } // end if
     blDebug ( "END ZView::on_mui_list_doubleClicked", 0 );

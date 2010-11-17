@@ -49,7 +49,7 @@ void InventariosView::on_mui_crear_clicked()
     InventarioView *bud = new InventarioView ( ( BfCompany * ) mainCompany(), 0 );
     if ( bud->cargar ( "0" ) )
         return;
-    mainCompany() ->m_pWorkspace->addWindow ( bud );
+    mainCompany() ->m_pWorkspace->addSubWindow ( bud );
     bud->show();
     bud->mui_nominventario->setFocus();
     blDebug ( "END InventariosView::on_mui_crear_clicked", 0 );
@@ -127,7 +127,7 @@ void InventariosView::on_mui_editar_clicked()
             InventarioView * bud = new InventarioView ( ( BfCompany * ) mainCompany(), 0 );
             if ( bud->cargar ( idinventario ) )
                 return;
-            mainCompany() ->m_pWorkspace->addWindow ( bud );
+            mainCompany() ->m_pWorkspace->addSubWindow ( bud );
             bud->show();
             bud->mui_nominventario->setFocus();
             presentar();
@@ -152,7 +152,7 @@ void InventariosView::on_mui_borrar2_clicked()
         QString idinventario = mui_listado->dbValue ( "idinventario" );
         if ( idinventario != "" ) {
             InventarioView * inv = new InventarioView ( ( BfCompany * ) mainCompany(), 0 );
-            mainCompany() ->m_pWorkspace->addWindow ( inv );
+            mainCompany() ->m_pWorkspace->addSubWindow ( inv );
             inv->cargar ( idinventario );
             /// Hacemos el borrado sin mostrar pantalla ni nada.
             inv->on_mui_borrar2_clicked();

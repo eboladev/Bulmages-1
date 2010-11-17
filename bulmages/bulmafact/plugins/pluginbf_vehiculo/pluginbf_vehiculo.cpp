@@ -59,7 +59,7 @@ void myplugin::elslot()
 {
     blDebug ( "myplugin::elslot", 0 );
     VehiculoView *vehiculoview = new VehiculoView ( ( BfCompany * ) m_dbConnection );
-    m_bulmafact->workspace() ->addWindow ( vehiculoview );
+    m_bulmafact->workspace() ->addSubWindow ( vehiculoview );
     vehiculoview->show();
     blDebug ( "END myplugin::elslot", 0 );
 }

@@ -119,7 +119,7 @@ void ArticuloList::editar ( int row )
     mdb_codigocompletoarticulo = mui_list->dbValue ( "codigocompletoarticulo", row );
     if ( modoEdicion() ) {
         ArticuloView * art = new ArticuloView ( ( BfCompany * ) mainCompany(), 0 );
-        mainCompany() ->m_pWorkspace->addWindow ( art );
+        mainCompany() ->m_pWorkspace->addSubWindow ( art );
         /// Si la carga no va bien entonces terminamos.
         if ( art->cargar ( mdb_idarticulo ) ) {
             delete art;
@@ -370,7 +370,7 @@ void ArticuloList::crear()
 	
     } else {    
       ArticuloView * art = new ArticuloView ( ( BfCompany * ) mainCompany() );
-      mainCompany()->m_pWorkspace->addWindow ( art );
+      mainCompany()->m_pWorkspace->addSubWindow ( art );
       art->pintar();
       art->show();
       art->setWindowTitle ( _ ( "Nuevo Articulo" ) );

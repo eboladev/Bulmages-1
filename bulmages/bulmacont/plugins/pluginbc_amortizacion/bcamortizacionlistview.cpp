@@ -79,7 +79,7 @@ void BcAmortizacionListView::crear()
 {
     blDebug ( "BcAmortizacionListView::on_mui_crear_clicked", 0 );
     BcAmortizacionView *amor = new BcAmortizacionView ( ( BcCompany * ) mainCompany(), 0 );
-    mainCompany() ->pWorkspace() ->addWindow ( amor );
+    mainCompany() ->pWorkspace() ->addSubWindow ( amor );
     amor->show();
     blDebug ( "END BcAmortizacionListView::on_mui_crear_clicked", 0 );
 }
@@ -130,7 +130,7 @@ void BcAmortizacionListView::editar ( int row )
         /// Creamos el objeto BcMasaPatrimonialView, y lo lanzamos.
         BcAmortizacionView * amor = new BcAmortizacionView ( ( BcCompany * ) mainCompany(), 0 );
         amor->cargar ( mdb_idamortizacion );
-        mainCompany() ->pWorkspace() ->addWindow ( amor );
+        mainCompany() ->pWorkspace() ->addSubWindow ( amor );
         amor->show();
     } else {
         close();

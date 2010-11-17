@@ -216,7 +216,7 @@ void CuadranteQTextDocument::contextMenuEvent ( QContextMenuEvent *  )
 void CuadranteQTextDocument::mouseDoubleClickEvent ( QMouseEvent *  )
 {
     Cuadrante1View * cuad = new Cuadrante1View ( ( BfCompany * ) mainCompany(), 0 );
-    mainCompany() ->pWorkspace() ->addWindow ( cuad );
+    mainCompany() ->pWorkspace() ->addSubWindow ( cuad );
     cuad->show();
 //    CuadranteQTextDocument *newItem = (CuadranteQTextDocument *) mui_cuadrante->cellWidget(mui_cuadrante->currentRow(), mui_cuadrante->currentColumn());
     connect ( cuad, SIGNAL ( save() ), this, SLOT ( refresh() ) );

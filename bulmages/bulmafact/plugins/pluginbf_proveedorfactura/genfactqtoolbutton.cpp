@@ -155,7 +155,7 @@ void GenFacProQToolButton::generarFacturaProveedor()
                 return;
             } // end if
             FacturaProveedorView *bud = new FacturaProveedorView ( ( BfCompany * ) fpv->mainCompany(), 0 );
-            fpv->mainCompany() ->m_pWorkspace->addWindow ( bud );
+            fpv->mainCompany() ->m_pWorkspace->addSubWindow ( bud );
             bud->cargar ( cur->valor ( "idfacturap" ) );
             bud->show();
             return;
@@ -164,7 +164,7 @@ void GenFacProQToolButton::generarFacturaProveedor()
 
         /// Creamos la factura.
         FacturaProveedorView *bud = new FacturaProveedorView ( ( BfCompany * ) fpv->mainCompany(), 0 );
-        fpv->mainCompany() ->m_pWorkspace->addWindow ( bud );
+        fpv->mainCompany() ->m_pWorkspace->addSubWindow ( bud );
 
         /// Cargamos un elemento que no existe para inicializar bien la clase.
         bud->inicializar();
@@ -261,7 +261,7 @@ void GenFacProQToolButton::generarFacturaProveedor1()
                 return;
             } // end if
             FacturaProveedorView *bud = new FacturaProveedorView ( ( BfCompany * ) fpv->mainCompany(), 0 );
-            fpv->mainCompany() ->m_pWorkspace->addWindow ( bud );
+            fpv->mainCompany() ->m_pWorkspace->addSubWindow ( bud );
             bud->cargar ( cur->valor ( "idfacturap" ) );
             bud->show();
             return;
@@ -270,7 +270,7 @@ void GenFacProQToolButton::generarFacturaProveedor1()
 
         /// Creamos la factura.
         FacturaProveedorView *bud = new FacturaProveedorView ( ( BfCompany * ) fpv->mainCompany(), 0 );
-        fpv->mainCompany() ->m_pWorkspace->addWindow ( bud );
+        fpv->mainCompany() ->m_pWorkspace->addSubWindow ( bud );
 
         /// Cargamos un elemento que no existe para inicializar bien la clase.
         bud->inicializar();

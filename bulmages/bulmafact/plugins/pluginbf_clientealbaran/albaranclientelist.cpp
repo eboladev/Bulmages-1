@@ -85,7 +85,7 @@ void AlbaranClienteList::crear()
 {
     blDebug ( "AlbaranClienteList::crear", 0 );
     AlbaranClienteView *acv = new AlbaranClienteView ( ( BfCompany * ) mainCompany(), 0 );
-    mainCompany()->m_pWorkspace->addWindow ( acv );
+    mainCompany()->m_pWorkspace->addSubWindow ( acv );
     acv->inicializar();
     acv->pintar();
     
@@ -289,7 +289,7 @@ void AlbaranClienteList::editar ( int row )
             delete prov;
             return;
         } // end if
-        mainCompany() ->m_pWorkspace->addWindow ( prov );
+        mainCompany() ->m_pWorkspace->addSubWindow ( prov );
         prov->show();
     } else {
         emit ( selected ( mdb_idalbaran ) );

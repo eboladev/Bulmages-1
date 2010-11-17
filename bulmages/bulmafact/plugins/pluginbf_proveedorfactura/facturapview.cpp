@@ -190,7 +190,7 @@ void FacturaProveedorView::on_mui_veralbaranes_clicked()
     while ( !cur->eof() ) {
         AlbaranProveedorView * albpro = new AlbaranProveedorView ( ( BfCompany * ) mainCompany(), 0 );
         albpro->cargar ( cur->valor ( "idalbaranp" ) );
-        mainCompany() ->m_pWorkspace->addWindow ( albpro );
+        mainCompany() ->m_pWorkspace->addSubWindow ( albpro );
         albpro->show();
         cur->nextRecord();
     } // end while

@@ -256,7 +256,7 @@ void FacturaView::on_mui_veralbaranes_clicked()
         if ( !cur->eof() ) {
             while ( !cur->eof() ) {
                 bud = new AlbaranClienteView ( mainCompany(), NULL );
-                mainCompany() ->m_pWorkspace->addWindow ( bud );
+                mainCompany() ->m_pWorkspace->addSubWindow ( bud );
                 bud->cargar ( cur->valor ( "idalbaran" ) );
                 bud->show();
                 cur->nextRecord();

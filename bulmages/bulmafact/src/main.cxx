@@ -145,8 +145,9 @@ int main ( int argc, char **argv )
       } // end if
 
       // Pone la imagen de fondo del workspace si esta definido y es una imagen valida.
-      if ( !QImage(g_confpr->valor ( CONF_BACKGROUND_IMAGE )).isNull() ) {
-         bges->workspace()->setBackground(QBrush( QImage(g_confpr->valor ( CONF_BACKGROUND_IMAGE )) ));
+      
+      if ( !QPixmap(g_confpr->valor ( CONF_BACKGROUND_IMAGE )).isNull() ) {
+         bges->workspace()->setBackground(QBrush( QPixmap(g_confpr->valor ( CONF_BACKGROUND_IMAGE )) ));
       } // end if
 
       /// Hacemos la carga de las hojas de estilo.

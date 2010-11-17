@@ -212,7 +212,7 @@ int BcCompany::createMainWindows ( BlSplashScreen *splash )
         m_progressbar->setValue ( 90 );
         m_listcuentas = new BcPlanContableListView ( this, 0 );
         m_listcuentas->inicializa();
-        m_pWorkspace->addWindow ( m_listcuentas );
+        m_pWorkspace->addSubWindow ( m_listcuentas );
 */
         /// pb = 100%
         splash->mensaje ( _ ( "Terminado" ) );
@@ -275,7 +275,7 @@ int BcCompany::ccostes()
 {
     blDebug ( "BcCompany::ccostes", 0 );
     BcCentroCosteView *ccoste = new BcCentroCosteView ( this, 0 );
-    m_pWorkspace->addWindow ( ccoste );
+    m_pWorkspace->addSubWindow ( ccoste );
     ccoste->show();
     blDebug ( "END BcCompany::ccostes", 0 );
     return 0;
@@ -291,7 +291,7 @@ int BcCompany::canales()
 {
     blDebug ( "BcCompany::canales", 0 );
     BcCanalView *canal = new BcCanalView ( this, 0 );
-    m_pWorkspace->addWindow ( canal );
+    m_pWorkspace->addSubWindow ( canal );
     canal->show();
     blDebug ( "END BcCompany::canales", 0 );
     return 0;
@@ -310,7 +310,7 @@ int BcCompany::tiposIVA()
 {
     blDebug ( "BcCompany::tiposIVA", 0 );
     BcTipoIVAView *tip = new BcTipoIVAView ( this, 0 );
-    m_pWorkspace->addWindow ( tip );
+    m_pWorkspace->addSubWindow ( tip );
     tip->show();
     blDebug ( "END BcCompany::tiposIVA", 0 );
     return 0;
@@ -326,7 +326,7 @@ int BcCompany::fPago()
 {
     blDebug ( "BcCompany::fPago", 0 );
     BcFormaPagoView *fp = new BcFormaPagoView ( this, 0 );
-    m_pWorkspace->addWindow ( fp );
+    m_pWorkspace->addSubWindow ( fp );
     fp->show();
     blDebug ( "END BcCompany::fPago", 0 );
     return 0;
@@ -364,7 +364,7 @@ int BcCompany::propiedadempresa()
 {
     blDebug ( "BcCompany::propiedadempresa", 0 );
     BcConfiguracionView *nuevae = new BcConfiguracionView ( this, 0 );
-    m_pWorkspace->addWindow ( nuevae );
+    m_pWorkspace->addSubWindow ( nuevae );
     nuevae->show();
     blDebug ( "END BcCompany::propiedadempresa", 0 );
     return 0;
@@ -380,7 +380,7 @@ int BcCompany::amortizaciones()
     blDebug ( "BcCompany::amortizaciones", 0 );
 /*
     BcAmortizacionListView *amors = new BcAmortizacionListView ( this, 0 );
-    m_pWorkspace->addWindow ( amors );
+    m_pWorkspace->addSubWindow ( amors );
     amors->show();
 */
     blDebug ( "END BcCompany::amortizaciones", 0 );
@@ -415,7 +415,7 @@ int BcCompany::compbalance()
     blDebug ( "BcCompany::compbalance", 0 );
 /*
     BcCuentasAnualesView *nueva = new BcCuentasAnualesView ( this, 0 );
-    m_pWorkspace->addWindow ( nueva );
+    m_pWorkspace->addSubWindow ( nueva );
     nueva->show();
 */
     blDebug ( "END BcCompany::compbalance", 0 );
@@ -674,7 +674,8 @@ void BcCompany::cargaConf()
     } // end for
     /// Si hay una ventana activa se pone como activa.
     if ( activewindow )
-        m_bulmacont->workspace() ->setActiveWindow ( activewindow );
+//        m_bulmacont->workspace() ->setActiveWindow ( activewindow );
+	    activewindow->activateWindow();
     blDebug ( "END BcCompany::cargaConf", 0 );
 }
 

@@ -55,7 +55,8 @@ BfBulmaFact::BfBulmaFact ( QString bd ) : BlMainWindow()
     setupUi ( this );
     setUpdatesEnabled ( TRUE );
     pWorkspace = new BlWorkspace ( this );
-    pWorkspace->setScrollBarsEnabled ( TRUE );
+    pWorkspace->setVerticalScrollBarPolicy(Qt::ScrollBarAsNeeded);
+    pWorkspace->setHorizontalScrollBarPolicy(Qt::ScrollBarAsNeeded);
 
     QFrame *m_frame1 = new QFrame();
     m_pb = new QProgressBar();
@@ -77,7 +78,7 @@ BfBulmaFact::BfBulmaFact ( QString bd ) : BlMainWindow()
     m_company->init ( bd, "BulmaFact" );
     m_company->setWorkspace ( pWorkspace );
 
-    connect ( pWorkspace, SIGNAL ( windowActivated ( QWidget * ) ), this, SLOT ( informaindexador ( QWidget * ) ) );
+    connect ( pWorkspace, SIGNAL ( subWindowActivated ( QMdiSubWindow * ) ), this, SLOT ( informaindexador ( QMdiSubWindow * ) ) );
 
     /// Aqui creamos la ventana dock para meter las distintas ventanas.
     m_list = new BlWindowListDock ( 0 );
@@ -219,7 +220,7 @@ void BfBulmaFact::closeEvent ( QCloseEvent *event )
 \param w
 \return
 **/
-void BfBulmaFact::informaindexador ( QWidget *w )
+void BfBulmaFact::informaindexador ( QMdiSubWindow *w )
 {
     blDebug ( "BfBulmaFact::informaindexador", 0 );
 
@@ -453,7 +454,7 @@ void BfBulmaFact::on_actionFormas_de_Pago_triggered()
 void BfBulmaFact::on_actionOrdenar_Ventanas_triggered()
 {
     blDebug ( "BfBulmaFact::on_actionOrdenar_Ventanas_triggered", 0 );
-    pWorkspace->tile();
+    pWorkspace->tileSubWindows();
     blDebug ( "END BfBulmaFact::on_actionOrdenar_Ventanas_triggered", 0 );
 }
 
@@ -464,7 +465,7 @@ void BfBulmaFact::on_actionOrdenar_Ventanas_triggered()
 void BfBulmaFact::on_actionOrganizaci_n_en_Cascada_triggered()
 {
     blDebug ( "BfBulmaFact::on_actionOrganizacion_en_Cascada_triggered", 0 );
-    pWorkspace->cascade();
+    pWorkspace->cascadeSubWindows();
     blDebug ( "END BfBulmaFact::on_actionOrganizacion_en_Cascada_triggered", 0 );
 }
 

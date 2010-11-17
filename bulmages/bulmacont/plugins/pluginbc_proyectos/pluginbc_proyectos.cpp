@@ -58,7 +58,7 @@ void mytiptrab::elslot()
     ListProyectosView *l = new ListProyectosView ( m_bulmacont->empresaactual(), 0, 0, BL_EDIT_MODE );
     l->setObjectName ( QString::fromUtf8 ( "mui_proyectos" ) );
 //    m_bulmacont->empresaactual()->meteWindow(l);
-    m_bulmacont->workspace() ->addWindow ( l );
+    m_bulmacont->workspace() ->addSubWindow ( l );
     l->show();
     blDebug ( "END mytiptrab::elslot", 0 );
 }

@@ -33,7 +33,7 @@ void plugin_tc_articulos::tallas()
 {
     blDebug ( "plugin_tc_articulos::tallas", 0 );
     ListTallasView *tallas = new ListTallasView ( m_bulmafact->company(), 0 );
-    m_bulmafact->company()->pWorkspace()->addWindow ( tallas );
+    m_bulmafact->company()->pWorkspace()->addSubWindow ( tallas );
     tallas->show();
     blDebug ( "END plugin_tc_articulos::tallas", 0 );
 }
@@ -47,7 +47,7 @@ void plugin_tc_articulos::colores()
 {
     blDebug ( "plugin_tc_articulos::colores", 0 );
     ListColoresView *colores = new ListColoresView ( m_bulmafact->company(), 0 );
-    m_bulmafact->company()->pWorkspace()->addWindow ( colores );
+    m_bulmafact->company()->pWorkspace()->addSubWindow ( colores );
     colores->show();
     blDebug ( "END plugin_tc_articulos::colores", 0 );
 }

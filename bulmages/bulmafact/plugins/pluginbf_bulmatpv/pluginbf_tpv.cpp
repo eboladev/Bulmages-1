@@ -58,7 +58,7 @@ void myplugincont::elslot()
 {
     blDebug ( "myplugincont::elslot", 0 );
     ZList *vehiculoview = new ZList ( ( BfCompany * ) m_dbConnection );
-    m_bulmafact->workspace() ->addWindow ( vehiculoview );
+    m_bulmafact->workspace() ->addSubWindow ( vehiculoview );
     vehiculoview->show();
     blDebug ( "END myplugincont::elslot", 0 );
 }

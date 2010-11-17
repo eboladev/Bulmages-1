@@ -57,7 +57,7 @@ void myplugininvsimple::elslot()
     blDebug ( "myplugininvsimple::elslot", 0 );
 
     ListInventarioSimpleView *tar = new ListInventarioSimpleView ( ( BfCompany * ) mainCompany(), NULL );
-    mainCompany() ->m_pWorkspace->addWindow ( tar );
+    mainCompany() ->m_pWorkspace->addSubWindow ( tar );
     tar->show();
 
     blDebug ( "END myplugininvsimple::elslot", 0 );

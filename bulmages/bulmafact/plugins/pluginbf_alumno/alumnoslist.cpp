@@ -195,7 +195,7 @@ void AlumnosList::crear()
 	
     } else {
       AlumnoView *bud = new AlumnoView ( ( BfCompany * ) mainCompany(), 0 );
-      mainCompany() ->m_pWorkspace->addWindow ( bud );
+      mainCompany() ->m_pWorkspace->addSubWindow ( bud );
       bud->show();
       bud->pintar();
     } // end if
@@ -259,7 +259,7 @@ void AlumnosList::editar ( int )
                 delete bud;
                 return;
             } // end if
-            mainCompany() ->m_pWorkspace->addWindow ( bud );
+            mainCompany() ->m_pWorkspace->addSubWindow ( bud );
             bud->show();
         } else {
 	    close();

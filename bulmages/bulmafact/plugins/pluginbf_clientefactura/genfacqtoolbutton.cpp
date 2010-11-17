@@ -165,7 +165,7 @@ void GenFacQToolButton::generarFactura()
                 return;
             }
             bud = new FacturaView ( ( BfCompany * ) fpv->mainCompany(), 0 );
-            fpv->mainCompany() ->m_pWorkspace->addWindow ( bud );
+            fpv->mainCompany() ->m_pWorkspace->addSubWindow ( bud );
             bud->cargar ( cur->valor ( "idfactura" ) );
             bud->show();
             return;
@@ -174,7 +174,7 @@ void GenFacQToolButton::generarFactura()
 
         /// Creamos la factura.
         bud = new FacturaView ( ( BfCompany * ) fpv->mainCompany(), 0 );
-        fpv->mainCompany() ->m_pWorkspace->addWindow ( bud );
+        fpv->mainCompany() ->m_pWorkspace->addSubWindow ( bud );
 
         /// Cargamos un elemento que no existe para inicializar bien la clase.
         bud->cargar ( "0" );
@@ -297,7 +297,7 @@ void GenFacQToolButton::generarFactura1()
                 return;
             } // end if
             bud = new FacturaView ( fpv->mainCompany(), NULL );
-            fpv->mainCompany() ->m_pWorkspace->addWindow ( bud );
+            fpv->mainCompany() ->m_pWorkspace->addSubWindow ( bud );
             bud->cargar ( cur->valor ( "idfactura" ) );
             bud->show();
             return;
@@ -306,7 +306,7 @@ void GenFacQToolButton::generarFactura1()
 
         /// Creamos el albaran.
         bud = new FacturaView ( ( BfCompany * ) fpv->mainCompany(), 0 );
-        fpv->mainCompany() ->m_pWorkspace->addWindow ( bud );
+        fpv->mainCompany() ->m_pWorkspace->addSubWindow ( bud );
         bud->cargar ( "0" );
 
         /// Traspasamos los datos al albaran.
@@ -429,7 +429,7 @@ void GenFacQToolButton::generarFactura2()
                 return;
             } // end if
             bud = new FacturaView ( fpv->mainCompany(), NULL );
-            fpv->mainCompany() ->m_pWorkspace->addWindow ( bud );
+            fpv->mainCompany() ->m_pWorkspace->addSubWindow ( bud );
             bud->cargar ( cur->valor ( "idfactura" ) );
             bud->show();
             return;
@@ -438,7 +438,7 @@ void GenFacQToolButton::generarFactura2()
 
         /// Creamos el albaran.
         bud = new FacturaView ( ( BfCompany * ) fpv->mainCompany(), 0 );
-        fpv->mainCompany() ->m_pWorkspace->addWindow ( bud );
+        fpv->mainCompany() ->m_pWorkspace->addSubWindow ( bud );
         bud->cargar ( "0" );
 
         /// Traspasamos los datos al albaran.
@@ -613,7 +613,7 @@ void AgFacQToolButton::generarFactura()
     /// Agregamos en los comentarios que se ha a&ntilde;adido este albar&aacute;n.
     bud->setDbValue ( "comentfactura", bud->dbValue ( "comentfactura" ) + _ ( "Num. albaran" ) + fpv->dbValue ( "numalbaran" ) + "\n" );
 
-    fpv->mainCompany() ->m_pWorkspace->addWindow ( bud );
+    fpv->mainCompany() ->m_pWorkspace->addSubWindow ( bud );
     /// \TODO EN TEORIA SE DEBERIA COMPROBAR QUE LA FACTURA ES DEL MISMO CLIENTE,
     /// PERO POR AHORA PASAMOS DE HACERLO.
     QString l;

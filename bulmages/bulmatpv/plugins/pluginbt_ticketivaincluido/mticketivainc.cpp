@@ -42,7 +42,7 @@ MTicketIVAInc::MTicketIVAInc ( BtCompany *emp, QWidget *parent ) : BlWidget ( em
     blDebug ( "MTicketIVAInc::MTicketIVAInc", 0 );
     setupUi ( this );
     setFocusPolicy ( Qt::NoFocus );
-    emp->pWorkspace()->addWindow ( this );
+    emp->pWorkspace()->addSubWindow ( this );
     setWindowTitle ( "Ticket" );
     m_parent = parent;
 

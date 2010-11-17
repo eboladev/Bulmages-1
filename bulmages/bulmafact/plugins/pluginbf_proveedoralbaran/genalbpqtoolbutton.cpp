@@ -151,7 +151,7 @@ void GenAlbProQToolButton::generarAlbaranProveedor()
                 return;
             } // end if
             AlbaranProveedorView *bud = new AlbaranProveedorView ( ( BfCompany * ) fpv->mainCompany(), 0 );
-            fpv->mainCompany() ->m_pWorkspace->addWindow ( bud );
+            fpv->mainCompany() ->m_pWorkspace->addSubWindow ( bud );
             bud->cargar ( cur->valor ( "idalbaranp" ) );
             bud->show();
             return;
@@ -160,7 +160,7 @@ void GenAlbProQToolButton::generarAlbaranProveedor()
 
         /// Creamos la factura.
         AlbaranProveedorView *bud = new AlbaranProveedorView ( ( BfCompany * ) fpv->mainCompany(), 0 );
-        fpv->mainCompany() ->m_pWorkspace->addWindow ( bud );
+        fpv->mainCompany() ->m_pWorkspace->addSubWindow ( bud );
 
         /// Cargamos un elemento que no existe para inicializar bien la clase.
         bud->inicializar();

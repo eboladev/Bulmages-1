@@ -1,6 +1,8 @@
 /***************************************************************************
  *   Copyright (C) 2006 by Tomeu Borras Riera                              *
  *   tborras@conetxia.com                                                  *
+ *   Copyright (C) 2010 by Fco. Javier M. C.                               *
+ *   fcojavmc@todo-redes.com                                               *
  *   http://www.iglues.org                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -25,6 +27,8 @@
 #include <QWidget>
 #include <QCloseEvent>
 #include <QPainter>
+#include <QHideEvent>
+#include <QShowEvent>
 
 #include "blmaincompanypointer.h"
 #include "bldialogchanges.h"
@@ -38,11 +42,17 @@ class BL_EXPORT BlWidget : public QWidget, public BlMainCompanyPointer
 
 protected:
     virtual void paintEvent(QPaintEvent *);
+    bool event ( QEvent * event );
 
 public:
     BlWidget ( QWidget *parent = 0, Qt::WFlags f = 0 );
     BlWidget ( BlMainCompany *, QWidget *parent = 0, Qt::WFlags f = 0 );
     virtual ~BlWidget();
+
+signals:
+    void showed(QObject * obj = 0);
+    void hided(QObject * obj = 0);
+
 };
 
 

@@ -90,6 +90,7 @@ set(bulmalib_MOCS	bldblogindialog.h
 			bldoublespinbox.h
 			blwidget.h
 			blmainwindow.h
+			blmaincompany.h
 			blformlist.h
 			blformlistfilter.h
 			bldatelineedit.h

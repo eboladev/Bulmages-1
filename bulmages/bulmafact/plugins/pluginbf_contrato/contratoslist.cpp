@@ -167,7 +167,7 @@ void ContratosList::editar ( int row )
             delete prov;
             return;
         } // end if
-        mainCompany() ->m_pWorkspace->addWindow ( prov );
+        mainCompany() ->m_pWorkspace->addSubWindow ( prov );
         prov->show();
     } else {
         emit ( selected ( mdb_idcontrato ) );
@@ -238,7 +238,7 @@ void ContratosList::on_mui_crear_clicked()
     blDebug ( "ContratosList::on_mui_crear_clicked", 0 );
     ContratoView *prov = new ContratoView ( ( BfCompany * ) mainCompany() );
     prov->cargar ( "0" );
-    mainCompany() ->m_pWorkspace->addWindow ( prov );
+    mainCompany() ->m_pWorkspace->addSubWindow ( prov );
     prov->show();
     blDebug ( "END ContratosList::on_mui_crear_clicked", 0 );
 }
@@ -290,7 +290,7 @@ void ContratosList::on_mui_facturar_clicked()
             if ( prov->cargar ( cur->valor ( "idcontrato" ) ) ) {
                 delete prov;
             } // end if
-//        mainCompany() ->m_pWorkspace->addWindow ( prov );
+//        mainCompany() ->m_pWorkspace->addSubWindow ( prov );
             prov->on_mui_facturar_clicked();
             delete prov;
 

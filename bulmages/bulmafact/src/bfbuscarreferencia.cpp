@@ -124,7 +124,7 @@ void BfBuscarReferencia::on_mui_abrirtodo_clicked()
         BlDbRecordSet *cur = mainCompany() ->loadQuery ( SQLQuery );
         while ( !cur->eof() ) {
             PresupuestoView * bud = ( ( BfCompany * ) mainCompany() ) ->nuevoPresupuestoView();
-            mainCompany() ->m_pWorkspace->addWindow ( bud );
+            mainCompany() ->m_pWorkspace->addSubWindow ( bud );
             bud->cargar ( cur->valor ( "idpresupuesto" ) );
             bud->show();
             cur->nextRecord();
@@ -136,7 +136,7 @@ void BfBuscarReferencia::on_mui_abrirtodo_clicked()
         cur = mainCompany() ->loadQuery ( SQLQuery );
         while ( !cur->eof() ) {
             PedidoClienteView * bud = ( ( BfCompany * ) mainCompany() ) ->newPedidoClienteView();
-            mainCompany() ->m_pWorkspace->addWindow ( bud );
+            mainCompany() ->m_pWorkspace->addSubWindow ( bud );
             bud->cargar ( cur->valor ( "idpedidocliente" ) );
             bud->show();
             cur->nextRecord();
@@ -148,7 +148,7 @@ void BfBuscarReferencia::on_mui_abrirtodo_clicked()
         cur = mainCompany() ->loadQuery ( SQLQuery );
         while ( !cur->eof() ) {
             AlbaranClienteView * bud = ( ( BfCompany * ) mainCompany() ) ->newAlbaranClienteView();
-            mainCompany() ->m_pWorkspace->addWindow ( bud );
+            mainCompany() ->m_pWorkspace->addSubWindow ( bud );
             bud->cargar ( cur->valor ( "idalbaran" ) );
             bud->show();
             cur->nextRecord();
@@ -161,7 +161,7 @@ void BfBuscarReferencia::on_mui_abrirtodo_clicked()
         cur = mainCompany() ->loadQuery ( SQLQuery );
         while ( !cur->eof() ) {
             FacturaView * bud = ( ( BfCompany * ) mainCompany() ) ->newFacturaView();
-            mainCompany() ->m_pWorkspace->addWindow ( bud );
+            mainCompany() ->m_pWorkspace->addSubWindow ( bud );
             bud->cargar ( cur->valor ( "idfactura" ) );
             bud->show();
             cur->nextRecord();
@@ -174,7 +174,7 @@ void BfBuscarReferencia::on_mui_abrirtodo_clicked()
         cur = mainCompany() ->loadQuery ( SQLQuery );
         while ( !cur->eof() ) {
             CobroView * bud = ( ( BfCompany * ) mainCompany() ) ->newCobroView();
-            mainCompany() ->m_pWorkspace->addWindow ( bud );
+            mainCompany() ->m_pWorkspace->addSubWindow ( bud );
             bud->cargar ( cur->valor ( "idcobro" ) );
             bud->show();
             cur->nextRecord();
@@ -187,7 +187,7 @@ void BfBuscarReferencia::on_mui_abrirtodo_clicked()
         cur = mainCompany() ->loadQuery ( SQLQuery );
         while ( !cur->eof() ) {
             PedidoProveedorView * bud = ( ( BfCompany * ) mainCompany() ) ->nuevoPedidoProveedorView();
-            mainCompany() ->m_pWorkspace->addWindow ( bud );
+            mainCompany() ->m_pWorkspace->addSubWindow ( bud );
             bud->cargar ( cur->valor ( "idpedidoproveedor" ) );
             bud->show();
             cur->nextRecord();
@@ -200,7 +200,7 @@ void BfBuscarReferencia::on_mui_abrirtodo_clicked()
         cur = mainCompany() ->loadQuery ( SQLQuery );
         while ( !cur->eof() ) {
             AlbaranProveedorView * bud = ( ( BfCompany * ) mainCompany() ) ->newAlbaranProveedorView();
-            mainCompany() ->m_pWorkspace->addWindow ( bud );
+            mainCompany() ->m_pWorkspace->addSubWindow ( bud );
             bud->cargar ( cur->valor ( "idalbaranp" ) );
             bud->show();
             cur->nextRecord();
@@ -213,7 +213,7 @@ void BfBuscarReferencia::on_mui_abrirtodo_clicked()
         cur = mainCompany() ->loadQuery ( SQLQuery );
         while ( !cur->eof() ) {
             FacturaProveedorView * bud = ( ( BfCompany * ) mainCompany() ) ->newFacturaProveedorView();
-            mainCompany() ->m_pWorkspace->addWindow ( bud );
+            mainCompany() ->m_pWorkspace->addSubWindow ( bud );
             bud->cargar ( cur->valor ( "idfacturap" ) );
             bud->show();
             cur->nextRecord();

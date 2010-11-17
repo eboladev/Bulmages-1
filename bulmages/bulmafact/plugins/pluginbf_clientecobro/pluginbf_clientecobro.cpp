@@ -73,7 +73,7 @@ void myplugincob::elslot1()
 {
     blDebug ( "myplugincob::elslot1", 0 );
     CobroView * bud = new CobroView ( ( BfCompany * ) mainCompany(), NULL );
-    mainCompany() ->m_pWorkspace->addWindow ( bud );
+    mainCompany() ->m_pWorkspace->addSubWindow ( bud );
     bud->show();
     blDebug ( "END myplugincob::elslot1", 0 );
 }
@@ -140,7 +140,7 @@ int BfCompany_createMainWindows_Post ( BfCompany *comp )
 {
     if ( comp->hasTablePrivilege ( "cobro", "SELECT" ) ) {
         g_cobrosList = new CobrosList ( comp, NULL );
-        comp->m_pWorkspace->addWindow ( g_cobrosList );
+        comp->m_pWorkspace->addSubWindow ( g_cobrosList );
         g_cobrosList->hide();
     }// end if
     return 0;
@@ -177,7 +177,7 @@ int BfBuscarReferencia_on_mui_abrirtodo_clicked_Post ( BfBuscarReferencia *ref )
     BlDbRecordSet *cur = ref->mainCompany() ->loadQuery ( SQLQuery );
     while ( !cur->eof() ) {
         CobroView * bud = new CobroView ( ( BfCompany * ) ref->mainCompany(), NULL );
-        ref->mainCompany() ->m_pWorkspace->addWindow ( bud );
+        ref->mainCompany() ->m_pWorkspace->addSubWindow ( bud );
         bud->cargar ( cur->valor ( "idcobro" ) );
         bud->show();
         cur->nextRecord();

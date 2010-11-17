@@ -281,7 +281,7 @@ void ContratoView::on_subform2_itemDoubleClicked ( QTableWidgetItem * )
         delete prov;
         return;
     } // end if
-    mainCompany() ->m_pWorkspace->addWindow ( prov );
+    mainCompany() ->m_pWorkspace->addSubWindow ( prov );
     prov->show();
     blDebug ( "END ContratoView::on_subform2_itemDoubleClicked", 0 );
 }
@@ -321,7 +321,7 @@ void ContratoView::on_mui_facturar_clicked()
             } // end if
             FacturaView *fac = ( FacturaView * ) g_plugParams;	    
 	    
-            mainCompany() ->m_pWorkspace->addWindow ( fac );
+            mainCompany() ->m_pWorkspace->addSubWindow ( fac );
             fac->cargar ( "0" );
             fac->show();
             fac->setDbValue ( "reffactura", dbValue ( "refcontrato" ) );

@@ -108,7 +108,7 @@ void PresupuestoContableList::editar ( int row )
             delete prov;
             return;
         } // end if
-        mainCompany() ->m_pWorkspace->addWindow ( prov );
+        mainCompany() ->m_pWorkspace->addSubWindow ( prov );
         prov->show();
     } else {
         emit ( selected ( mdb_idpresupuestocontable ) );
@@ -174,7 +174,7 @@ QString PresupuestoContableList::conceptopresupuestocontable()
 void PresupuestoContableList::crear()
 {
     PresupuestoContableView *bud = new PresupuestoContableView ( ( BfCompany * ) mainCompany() , 0 );
-    mainCompany()->m_pWorkspace->addWindow ( bud );
+    mainCompany()->m_pWorkspace->addSubWindow ( bud );
     bud->inicializar();
     bud->pintar();
     bud->show();

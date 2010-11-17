@@ -18,7 +18,7 @@ typedef QMap<QString, BlFixed> base;
 MTicketDesglose::MTicketDesglose ( BtCompany *emp, QWidget *parent ) : QTextBrowser ( parent ) , BlMainCompanyPointer ( emp )
 {
     blDebug ( "MTicketDesglose::MTicketDesglose", 0 );
-//    emp->pWorkspace() ->addWindow ( this );
+//    emp->pWorkspace() ->addSubWindow ( this );
 //    setWindowTitle ( "Ticket" );
     blDebug ( "END MTicketDesglose::MTicketDesglose", 0 );
 }

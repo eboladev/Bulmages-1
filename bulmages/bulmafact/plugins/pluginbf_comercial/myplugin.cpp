@@ -51,7 +51,7 @@ void mypluginbf::elslot()
 {
     blDebug ( "mypluginbf::elslot", 0 );
     RutaComercialList *list  = new RutaComercialList ( ( BfCompany * ) mainCompany(), NULL );
-    mainCompany() ->m_pWorkspace->addWindow ( list );
+    mainCompany() ->m_pWorkspace->addSubWindow ( list );
     list->show();
     blDebug ( "END mypluginbf::elslot", 0 );
 }
@@ -64,7 +64,7 @@ void mypluginbf::elslot1()
 {
     blDebug ( "mypluginbf::elslot1", 0 );
     ListZonaComercialView *list = new ListZonaComercialView ( ( BfCompany * ) mainCompany(), NULL );
-    mainCompany() ->m_pWorkspace->addWindow ( list );
+    mainCompany() ->m_pWorkspace->addSubWindow ( list );
     list->show();
     blDebug ( "END mypluginbf::elslot1", 0 );
 }

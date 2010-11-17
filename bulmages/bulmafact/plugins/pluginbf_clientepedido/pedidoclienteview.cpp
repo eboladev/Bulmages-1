@@ -205,7 +205,7 @@ void PedidoClienteView::generarAlbaran()
                     return;
                 } // end if
                 bud = new AlbaranClienteView ( mainCompany(), NULL );
-                mainCompany() ->m_pWorkspace->addWindow ( bud );
+                mainCompany() ->m_pWorkspace->addSubWindow ( bud );
                 bud->cargar ( cur->valor ( "idalbaran" ) );
                 bud->show();
                 return;
@@ -214,7 +214,7 @@ void PedidoClienteView::generarAlbaran()
 
             /// Creamos el albaran.
             bud = mainCompany() ->newAlbaranClienteView();
-            mainCompany() ->m_pWorkspace->addWindow ( bud );
+            mainCompany() ->m_pWorkspace->addSubWindow ( bud );
             bud->cargar ( "0" );
 
             /// Traspasamos los datos al albaran.

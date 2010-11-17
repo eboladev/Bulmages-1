@@ -53,7 +53,7 @@ void MyPluginCarteraCobros::elslot()
 {
     blDebug ( "MyPluginCarteraCobros::elslot", 0 );
     CarteraCobrosList *carteracobrosview = new CarteraCobrosList ( ( BfCompany * ) m_conexionbase );
-    m_bulmafact->workspace() ->addWindow ( carteracobrosview );
+    m_bulmafact->workspace() ->addSubWindow ( carteracobrosview );
     carteracobrosview->show();
     blDebug ( "END MyPluginCarteraCobros::elslot", 0 );
 }

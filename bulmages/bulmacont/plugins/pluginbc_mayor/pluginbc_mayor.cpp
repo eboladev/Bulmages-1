@@ -68,7 +68,7 @@ void MyPluginMayor::elslot()
     blDebug ( "MyPluginMayor::elslot", 0 );
     if (g_mayor == NULL) {
       g_mayor = new BcExtractoView ( ( BcCompany * ) mainCompany(), 0 );
-      mainCompany() ->pWorkspace() ->addWindow ( g_mayor );
+      mainCompany() ->pWorkspace() ->addSubWindow ( g_mayor );
     } // end if
     g_mayor->hide();
     g_mayor->show();

@@ -113,7 +113,7 @@ void BfCompany::s_FPago()
     blDebug ( "BfCompany::s_FPago", 0 );
     /*
        FPagoView *f = new FPagoView ( this, NULL );
-       m_pWorkspace->addWindow ( f );
+       m_pWorkspace->addSubWindow ( f );
        f->show();
     */
     blDebug ( "END BfCompany::s_FPago", 0 );
@@ -129,7 +129,7 @@ void BfCompany::s_trabajadores()
 {
     blDebug ( "BfCompany::s_trabajadores", 0 );
 //    TrabajadorView *t = new TrabajadorView ( this, NULL );
-//    m_pWorkspace->addWindow ( t );
+//    m_pWorkspace->addSubWindow ( t );
 //    t->show();
     blDebug ( "END BfCompany::s_trabajadores", 0 );
 }
@@ -145,7 +145,7 @@ void BfCompany::s_bancos()
     blDebug ( "BfCompany::s_bancos", 0 );
     /*
         BancoView *t = new BancoView ( this, NULL );
-        m_pWorkspace->addWindow ( t );
+        m_pWorkspace->addSubWindow ( t );
         t->show();
     */
     blDebug ( "END BfCompany::s_bancos", 0 );
@@ -162,7 +162,7 @@ void BfCompany::s_seriesFactura()
     blDebug ( "BfCompany::s_seriesFactura", 0 );
     /*
        BfSerieFacturaView *lser = new BfSerieFacturaView ( this, 0 );
-       m_pWorkspace->addWindow ( lser );
+       m_pWorkspace->addSubWindow ( lser );
        lser->show();
     */
     blDebug ( "END BfCompany::s_seriesFactura", 0 );
@@ -187,7 +187,7 @@ void BfCompany::s_almacenes()
             return;
         } // end if
         ListAlmacenView *lser = new ListAlmacenView ( this, 0 );
-        m_pWorkspace->addWindow ( lser );
+        m_pWorkspace->addSubWindow ( lser );
         lser->show();
     */
     blDebug ( "END BfCompany::s_almacenes", 0 );
@@ -202,7 +202,7 @@ void BfCompany::s_newBfConfiguracionView()
 {
     blDebug ( "BfCompany::s_newBfConfiguracionView", 0 );
     BfConfiguracionView *lser = new BfConfiguracionView ( this, 0 );
-    m_pWorkspace->addWindow ( lser );
+    m_pWorkspace->addSubWindow ( lser );
     lser->show();
     blDebug ( "END BfCompany::s_newBfConfiguracionView", 0 );
 }
@@ -217,7 +217,7 @@ void BfCompany::s_TipoIVAView()
     blDebug ( "BfCompany::s_TipoIVAView", 0 );
     /*
         ListTipoIVAView *pag = new ListTipoIVAView ( this, 0 );
-        m_pWorkspace->addWindow ( pag );
+        m_pWorkspace->addSubWindow ( pag );
         pag->show();
     */
     blDebug ( "END BfCompany::s_TipoIVAView", 0 );
@@ -233,7 +233,7 @@ void BfCompany::s_TasaIVAView()
     blDebug ( "BfCompany::s_TasaIVAView", 0 );
     /*
         ListTasaIVAView *pag = new ListTasaIVAView ( this, 0 );
-        m_pWorkspace->addWindow ( pag );
+        m_pWorkspace->addSubWindow ( pag );
         pag->show();
     */
     blDebug ( "END BfCompany::s_TasaIVAView", 0 );
@@ -379,6 +379,7 @@ void BfCompany::cargaConf()
     } // end for
     /// Si hay una ventana activa se pone como activa.
     if ( activewindow )
-        m_bulmafact->workspace() ->setActiveWindow ( activewindow );
+//        m_bulmafact->workspace() ->setActiveWindow ( activewindow );
+	activewindow->activateWindow();
     blDebug ( "END BfCompany::cargaConf", 0 );
 }

@@ -55,7 +55,7 @@ void MyPlugFPago::elslot1()
 {
     blDebug ( "MyPlugFPago::elslot1", 0 );
     FPagoView * bud = new FPagoView ( ( BfCompany * ) mainCompany(), NULL );
-    mainCompany() ->m_pWorkspace->addWindow ( bud );
+    mainCompany() ->m_pWorkspace->addSubWindow ( bud );
     bud->show();
     blDebug ( "END MyPlugFPago::elslot1", 0 );
 }

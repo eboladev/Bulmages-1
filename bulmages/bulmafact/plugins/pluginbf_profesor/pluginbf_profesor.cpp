@@ -73,7 +73,7 @@ void MyPlugProf::elslot1()
     blDebug ( "MyPlugProf::elslot1", 0 );
     
     ProfesorView * bud = new ProfesorView ( ( BfCompany * ) mainCompany(), NULL );
-    mainCompany() ->m_pWorkspace->addWindow ( bud );
+    mainCompany() ->m_pWorkspace->addSubWindow ( bud );
     bud->show();
     
     blDebug ( "END MyPlugProf::elslot1", 0 );
@@ -165,7 +165,7 @@ int BfCompany_createMainWindows_Post ( BfCompany *comp )
 
     if ( comp->hasTablePrivilege ( "profesor", "SELECT" ) ) {
         g_profesoresList = new ProfesoresList ( comp, NULL );
-        comp->m_pWorkspace->addWindow ( g_profesoresList );
+        comp->m_pWorkspace->addSubWindow ( g_profesoresList );
         g_profesoresList->hide();
     } // end if
     

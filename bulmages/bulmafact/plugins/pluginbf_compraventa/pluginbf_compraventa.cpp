@@ -54,7 +54,7 @@ void myplugincv::elslot()
     blDebug ( "myplugincv::elslot", 0 );
 
     CompraVentaView *tar = new CompraVentaView ( ( BfCompany * ) mainCompany(), NULL );
-    mainCompany() ->m_pWorkspace->addWindow ( tar );
+    mainCompany() ->m_pWorkspace->addSubWindow ( tar );
     tar->show();
 
     blDebug ( "END myplugincv::elslot", 0 );

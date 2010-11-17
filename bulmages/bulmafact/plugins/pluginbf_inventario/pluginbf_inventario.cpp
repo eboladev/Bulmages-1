@@ -53,7 +53,7 @@ void myplugininv::elslot()
 {
     blDebug ( "myplugininv::elslot", 0 );
     InventariosView *tar = new InventariosView ( ( BfCompany * ) mainCompany(), NULL );
-    mainCompany() ->m_pWorkspace->addWindow ( tar );
+    mainCompany() ->m_pWorkspace->addSubWindow ( tar );
     tar->show();
     blDebug ( "END myplugininv::elslot", 0 );
 }

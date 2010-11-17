@@ -40,7 +40,7 @@ ClientSync::ClientSync ( BtCompany *emp, QWidget *parent ) : BlWidget ( emp, par
     blDebug ( "ClientSync::ClientSync", 0 );
     setupUi ( this );
     setFocusPolicy ( Qt::NoFocus );
-    emp->pWorkspace()->addWindow ( this );
+    emp->pWorkspace()->addSubWindow ( this );
     setWindowTitle ( "Cliente" );
     
     m_socket = new QTcpSocket(this);

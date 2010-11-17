@@ -89,7 +89,7 @@ void AlbaranesProveedor::crear()
     blDebug ( "AlbaranesProveedor::crear", 0 );
     if ( mainCompany() != NULL ) {
         AlbaranProveedorView *apv = new AlbaranProveedorView ( ( BfCompany * ) mainCompany(), 0 );
-        mainCompany()->pWorkspace()->addWindow ( apv );
+        mainCompany()->pWorkspace()->addSubWindow ( apv );
         apv->inicializar();
 	apv->pintar();
 	
@@ -299,7 +299,7 @@ void AlbaranesProveedor::editar ( int row )
             delete prov;
             return;
         } // end if
-        mainCompany() ->m_pWorkspace->addWindow ( prov );
+        mainCompany() ->m_pWorkspace->addSubWindow ( prov );
         prov->show();
     } else {
         emit ( selected ( mdb_idalbaranp ) );

@@ -222,7 +222,7 @@ void AlbaranClienteView::on_mui_verpedidocliente_clicked()
                     return;
                 } // end if
                 bud = ( PedidoClienteView * ) g_plugParams;
-                mainCompany() ->m_pWorkspace->addWindow ( bud );
+                mainCompany() ->m_pWorkspace->addSubWindow ( bud );
                 bud->cargar ( cur->valor ( "idpedidocliente" ) );
                 bud->show();
                 cur->nextRecord();
@@ -299,7 +299,7 @@ void AlbaranClienteView::generarFactura()
                     return;
                 }
                 bud = mainCompany() ->newFacturaView();
-                mainCompany() ->m_pWorkspace->addWindow ( bud );
+                mainCompany() ->m_pWorkspace->addSubWindow ( bud );
                 bud->cargar ( cur->valor ( "idfactura" ) );
                 bud->show();
                 return;
@@ -308,7 +308,7 @@ void AlbaranClienteView::generarFactura()
 
             /// Creamos la factura.
             bud = mainCompany() ->newFacturaView();
-            mainCompany() ->m_pWorkspace->addWindow ( bud );
+            mainCompany() ->m_pWorkspace->addSubWindow ( bud );
 
             /// Cargamos un elemento que no existe para inicializar bien la clase.
             bud->cargar ( "0" );
@@ -410,7 +410,7 @@ void AlbaranClienteView::agregarFactura()
         /// Agregamos en los comentarios que se ha a&ntilde;adido este albar&aacute;n.
         bud->setDbValue ( "comentfactura", bud->dbValue ( "comentfactura" ) + _( "Num. albaran" ) + dbValue ( "numalbaran" ) + "\n" );
 
-        mainCompany() ->m_pWorkspace->addWindow ( bud );
+        mainCompany() ->m_pWorkspace->addSubWindow ( bud );
         /// \TODO EN TEORIA SE DEBERIA COMPROBAR QUE LA FACTURA ES DEL MISMO CLIENTE,
         /// PERO POR AHORA PASAMOS DE HACERLO.
         QString l;

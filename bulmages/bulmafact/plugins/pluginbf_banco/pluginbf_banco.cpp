@@ -55,7 +55,7 @@ void MyPlugBanc::elslot1()
 {
     blDebug ( "MyPlugBanc::elslot1", 0 );
     BancoView * bud = new BancoView ( ( BfCompany * ) mainCompany(), NULL );
-    mainCompany() ->m_pWorkspace->addWindow ( bud );
+    mainCompany() ->m_pWorkspace->addSubWindow ( bud );
     bud->show();
     blDebug ( "END MyPlugBanc::elslot1", 0 );
 }

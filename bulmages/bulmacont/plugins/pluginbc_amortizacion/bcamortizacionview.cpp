@@ -509,7 +509,7 @@ void BcAmortizacionSubForm::procesaMenu ( QAction *opcion )
         /// Ponemos los asientos plantilla en modo exclusivo, para poder recuperar
         /// el control en cuanto se haya hecho la inserci&oacute;n del asiento.
         nueva->setmodo ( 1 );
-        mainCompany() ->pWorkspace() ->addWindow ( nueva );
+        mainCompany() ->pWorkspace() ->addSubWindow ( nueva );
         nueva->show();
         nueva->on_mui_aceptar_clicked();
 

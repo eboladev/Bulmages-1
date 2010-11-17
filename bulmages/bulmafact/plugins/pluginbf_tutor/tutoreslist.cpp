@@ -131,7 +131,7 @@ void TutoresList::crear()
 {
     blDebug ( "TutoresList::crear", 0 );
     TutorView *bud = new TutorView ( ( BfCompany * ) mainCompany(), 0 );
-    mainCompany() ->m_pWorkspace->addWindow ( bud );
+    mainCompany() ->m_pWorkspace->addSubWindow ( bud );
     bud->show();
     bud->pintar();
     blDebug ( "TutoresList::crear", 0 );
@@ -194,7 +194,7 @@ void TutoresList::editar ( int )
                 delete bud;
                 return;
             } // end if
-            mainCompany() ->m_pWorkspace->addWindow ( bud );
+            mainCompany() ->m_pWorkspace->addSubWindow ( bud );
             bud->show();
         } else {
 	    close();

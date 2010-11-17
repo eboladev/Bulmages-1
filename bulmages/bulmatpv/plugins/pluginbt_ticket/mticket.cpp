@@ -40,7 +40,7 @@ MTicket::MTicket ( BtCompany *emp, QWidget *parent ) : BlWidget ( emp, parent )
     blDebug ( "MTicket::MTicket", 0 );
     setupUi ( this );
     setFocusPolicy ( Qt::NoFocus );
-    emp->pWorkspace() ->addWindow ( this );
+    emp->pWorkspace() ->addSubWindow ( this );
     setWindowTitle ( "Ticket" );
     g_plugins->lanza ( "MTicket_MTicket_Post", this );
     

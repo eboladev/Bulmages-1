@@ -55,7 +55,7 @@ void MyPlugAlm::elslot1()
 {
     blDebug ( "MyPlugAlm::elslot1", 0 );
     ListAlmacenView * bud = new ListAlmacenView ( ( BfCompany * ) mainCompany(), NULL );
-    mainCompany() ->m_pWorkspace->addWindow ( bud );
+    mainCompany() ->m_pWorkspace->addSubWindow ( bud );
     bud->show();
     blDebug ( "END MyPlugAlm::elslot1", 0 );
 }

@@ -56,7 +56,7 @@ void myplugin1::elslot()
 {
     blDebug ( "myplugin1::elslot", 0 );
     TarifaListView *tar = new TarifaListView ( ( ( BfCompany * ) mainCompany() ), NULL );
-    mainCompany() ->m_pWorkspace->addWindow ( tar );
+    mainCompany() ->m_pWorkspace->addSubWindow ( tar );
     tar->show();
     blDebug ( "END myplugin1::elslot", 0 );
 }

@@ -149,7 +149,7 @@ void AlmacenesListView::crear()
         ((BfCompany *)mainCompany())->s_newAlmacen();
     */
     AlmacenView *alm = new AlmacenView ( ( BfCompany * ) mainCompany(), 0 );
-    mainCompany() ->pWorkspace() ->addWindow ( alm );
+    mainCompany() ->pWorkspace() ->addSubWindow ( alm );
     alm->show();
     blDebug ( "END AlmacenesListView::crear", 0 );
 }
@@ -196,7 +196,7 @@ void AlmacenesListView::editar ( int row )
 
         if ( modoEdicion() ) {
             AlmacenView * alm = new AlmacenView ( ( BfCompany * ) mainCompany(), 0 );
-            mainCompany() ->pWorkspace() ->addWindow ( alm );
+            mainCompany() ->pWorkspace() ->addSubWindow ( alm );
             alm->show();
             alm->cargar ( m_idalmacen );
         } else {
@@ -236,7 +236,7 @@ void AlmacenesListView::borrar()
         m_idalmacen = mui_list->dbValue ( QString ( "idalmacen" ) );
         if ( modoEdicion() ) {
             AlmacenView * alm = new AlmacenView ( ( BfCompany * ) mainCompany(), 0 );
-            mainCompany() ->pWorkspace() ->addWindow ( alm );
+            mainCompany() ->pWorkspace() ->addSubWindow ( alm );
 //            alm->show();
             alm->cargar ( m_idalmacen );
             alm->on_mui_borrar_clicked();

@@ -139,7 +139,7 @@ void myplugincont::embedPYS( )
         BX11EmbedContainer * container = new BX11EmbedContainer ( g_emp, work );
         container->setAttribute ( Qt::WA_DeleteOnClose );
         container->setWindowIcon ( QIcon ( icon ) );
-        work->addWindow ( container );
+        work->addSubWindow ( container );
         if ( g_emp )
             g_emp->meteWindow ( titulo, container, FALSE );
         container->embedClient ( winId.toInt() );
@@ -210,7 +210,7 @@ void myplugincont::elslot1()
         BX11EmbedContainer * container = new BX11EmbedContainer ( g_emp, work );
         container->setAttribute ( Qt::WA_DeleteOnClose );
         container->setWindowIcon ( QIcon ( QString::fromUtf8 ( ":/BulmaCont32x32/images/png/i_lo32-app-bulmages.png" ) ) );
-        work->addWindow ( container );
+        work->addSubWindow ( container );
         if ( g_emp )
             g_emp->meteWindow ( "Aplicacion Externa", container, FALSE );
         container->embedClient ( winId.toInt() );

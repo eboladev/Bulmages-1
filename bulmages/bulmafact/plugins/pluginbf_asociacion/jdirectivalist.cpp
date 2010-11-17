@@ -136,7 +136,7 @@ void JDirectivaList::crear()
     blDebug ( "JDirectivaList::crear", 0 );
     
     JDirectivaView *bud = new JDirectivaView ( ( BfCompany * ) mainCompany(), 0 );
-    mainCompany() ->m_pWorkspace->addWindow ( bud );
+    mainCompany() ->m_pWorkspace->addSubWindow ( bud );
     bud->show();
     bud->pintar();
     
@@ -200,7 +200,7 @@ void JDirectivaList::editar ( int )
                 delete bud;
                 return;
             } // end if
-            mainCompany() ->m_pWorkspace->addWindow ( bud );
+            mainCompany() ->m_pWorkspace->addSubWindow ( bud );
             bud->show();
         } else {
             emit ( selected ( mdb_idjdirectiva ) );

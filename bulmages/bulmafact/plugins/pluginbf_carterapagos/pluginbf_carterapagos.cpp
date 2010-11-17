@@ -55,7 +55,7 @@ void MyPluginCarteraPagos::elslot()
 {
     blDebug ( "MyPluginCarteraPagos::elslot", 0 );
     CarteraPagosList *vehiculoview = new CarteraPagosList ( ( BfCompany * ) m_conexionbase );
-    m_bulmafact->workspace() ->addWindow ( vehiculoview );
+    m_bulmafact->workspace() ->addSubWindow ( vehiculoview );
     vehiculoview->show();
     blDebug ( "END MyPluginCarteraPagos::elslot", 0 );
 }

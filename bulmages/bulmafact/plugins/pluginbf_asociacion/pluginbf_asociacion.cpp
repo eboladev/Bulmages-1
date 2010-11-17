@@ -65,7 +65,7 @@ void MyPlugAsoc::elslot1()
 {
     blDebug ( "MyPlugAsoc::elslot1", 0 );
     JDirectivaList * bud = new JDirectivaList ( ( BfCompany * ) mainCompany(), NULL );
-    mainCompany() ->m_pWorkspace->addWindow ( bud );
+    mainCompany() ->m_pWorkspace->addSubWindow ( bud );
     bud->show();
     blDebug ( "END MyPlugAsoc::elslot1", 0 );
 }
@@ -80,7 +80,7 @@ void MyPlugAsoc::comision()
 {
     blDebug ( "MyPlugAsoc::comision", 0 );
     ComisionesList * bud = new ComisionesList ( ( BfCompany * ) mainCompany(), NULL );
-    mainCompany() ->m_pWorkspace->addWindow ( bud );
+    mainCompany() ->m_pWorkspace->addSubWindow ( bud );
     bud->show();
     blDebug ( "END MyPlugAsoc::comision", 0 );
 }
@@ -95,7 +95,7 @@ void MyPlugAsoc::convjunta()
 {
     blDebug ( "MyPlugAsoc::convjunta", 0 );
     JDirectivaView *bud = new JDirectivaView ( ( BfCompany * ) mainCompany(), 0 );
-    mainCompany() ->m_pWorkspace->addWindow ( bud );
+    mainCompany() ->m_pWorkspace->addSubWindow ( bud );
     bud->show();
     bud->pintar();
 //     bud->junta();
@@ -109,7 +109,7 @@ void MyPlugAsoc::elslot2()
 {
     blDebug ( "MyPlugAsoc::elslot2", 0 );
     ConvReunionView *bud = new ConvReunionView ( ( BfCompany * ) mainCompany(), 0 );
-    mainCompany() ->m_pWorkspace->addWindow ( bud );
+    mainCompany() ->m_pWorkspace->addSubWindow ( bud );
     bud->show();
     bud->pintar();
     blDebug ( "END MyPlugAsoc::elslot2", 0 );
@@ -123,7 +123,7 @@ void MyPlugAsoc::elslot3()
 {
     blDebug ( "MyPlugAsoc::elslot2", 0 );
     ConvReunionList * bud = new ConvReunionList ( ( BfCompany * ) mainCompany(), NULL );
-    mainCompany() ->m_pWorkspace->addWindow ( bud );
+    mainCompany() ->m_pWorkspace->addSubWindow ( bud );
     bud->show();
     blDebug ( "END MyPlugAsoc::elslot2", 0 );
 }

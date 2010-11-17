@@ -1,6 +1,8 @@
 /***************************************************************************
  *   Copyright (C) 2006 by Tomeu Borras Riera                              *
  *   tborras@conetxia.com                                                  *
+ *   Copyright (C) 2010 by Fco. Javier M. C.                               *
+ *   fcojavmc@todo-redes.com                                               *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
  *   it under the terms of the GNU General Public License as published by  *
@@ -67,4 +69,17 @@ void BlWidget::paintEvent ( QPaintEvent * )
     QPainter p ( this );
     style()->drawPrimitive ( QStyle::PE_Widget, &opt, &p, this );
 }
+
+
+
+bool BlWidget::event ( QEvent * event )
+{
+    if (event->type() == QEvent::HideToParent) {
+        emit hided(this);
+    } else if (event->type() == QEvent::ShowToParent) {
+        emit showed(this);
+    } // end if
+    return QWidget::event(event);
+}
+
 

@@ -72,7 +72,7 @@ void mypluginalb::elslot1()
 {
     blDebug ( "mypluginalb::elslot1", 0 );
     AlbaranClienteView * bud = new AlbaranClienteView ( ( BfCompany * ) mainCompany(), NULL );
-    mainCompany() ->m_pWorkspace->addWindow ( bud );
+    mainCompany() ->m_pWorkspace->addSubWindow ( bud );
     bud->inicializar();
     bud->show();
     blDebug ( "END mypluginalb::elslot1", 0 );
@@ -141,7 +141,7 @@ int BfCompany_createMainWindows_Post ( BfCompany *comp )
 {
     if ( comp->hasTablePrivilege ( "albaran", "SELECT" ) ) {
         g_albaranClienteList = new AlbaranClienteList ( comp, NULL );
-        comp->m_pWorkspace->addWindow ( g_albaranClienteList );
+        comp->m_pWorkspace->addSubWindow ( g_albaranClienteList );
         g_albaranClienteList->hide();
     }// end if
     return 0;
@@ -178,7 +178,7 @@ int BfBuscarReferencia_on_mui_abrirtodo_clicked_Post ( BfBuscarReferencia *ref )
     BlDbRecordSet *cur = ref->mainCompany() ->loadQuery ( SQLQuery );
     while ( !cur->eof() ) {
         AlbaranClienteView * bud = new AlbaranClienteView ( ( BfCompany * ) ref->mainCompany(), NULL );
-        ref->mainCompany() ->m_pWorkspace->addWindow ( bud );
+        ref->mainCompany() ->m_pWorkspace->addSubWindow ( bud );
         bud->cargar ( cur->valor ( "idfactura" ) );
         bud->show();
         cur->nextRecord();

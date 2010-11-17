@@ -58,7 +58,7 @@ void MyPlugArt::elslot1()
 {
     blDebug ( "MyPlugArt::elslot1", 0 );
     PresupuestoContableList *pag = new PresupuestoContableList ( ( BfCompany * ) mainCompany(), 0 );
-    mainCompany() ->m_pWorkspace->addWindow ( pag );
+    mainCompany() ->m_pWorkspace->addSubWindow ( pag );
     pag->show();
     blDebug ( "END MyPlugArt::elslot1", 0 );
 }
@@ -84,7 +84,7 @@ void MyPlugArt::elslot3()
 {
     blDebug ( "MyPlugArt::elslot3", 0 );
     PartidasView *pag = new PartidasView ( ( BfCompany * ) mainCompany(), 0, FALSE );
-    mainCompany() ->m_pWorkspace->addWindow ( pag );
+    mainCompany() ->m_pWorkspace->addSubWindow ( pag );
     pag->show();
     blDebug ( "END MyPlugArt::elslot3", 0 );
 }
@@ -155,7 +155,7 @@ int entryPoint ( BfBulmaFact *bges )
     plug->inicializa ( );
 
     g_ap = new ApunteContableView ( ( BfCompany * ) bges->company(), 0 );
-    bges->company() ->m_pWorkspace->addWindow ( g_ap );
+    bges->company() ->m_pWorkspace->addSubWindow ( g_ap );
     
     
     return 0;
@@ -461,7 +461,7 @@ void MyPlugArt1::gestionarPartidas (  BfSubForm *sub )
 {
     blDebug ( "MyPlugArt1::editarArticulo", 0 );
     PartidasView *pag = new PartidasView ( ( BfCompany * ) sub->mainCompany(), 0, FALSE );
-    sub->mainCompany() ->m_pWorkspace->addWindow ( pag );
+    sub->mainCompany() ->m_pWorkspace->addSubWindow ( pag );
     pag->show();
     blDebug ( "END MyPlugArt1::editarArticulo", 0 );
 }

@@ -68,7 +68,7 @@ void MyPluginAmortizacion::elslot()
     blDebug ( "MyPluginAmortizacion::elslot", 0 );
     if (g_amortizacionlist == NULL) {
       g_amortizacionlist = new BcAmortizacionListView ( ( BcCompany * ) mainCompany(), 0 );
-      mainCompany() ->pWorkspace() ->addWindow ( g_amortizacionlist );
+      mainCompany() ->pWorkspace() ->addSubWindow ( g_amortizacionlist );
     } // end if
     g_amortizacionlist->hide();
     g_amortizacionlist->show();

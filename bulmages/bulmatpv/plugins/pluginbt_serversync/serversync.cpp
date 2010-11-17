@@ -39,7 +39,7 @@ ServerSync::ServerSync ( BtCompany *emp, QWidget *parent ) : BlWidget ( emp, par
     blDebug ( "ServerSync::ServerSync", 0 );
     setupUi ( this );
     setFocusPolicy ( Qt::NoFocus );
-    emp->pWorkspace()->addWindow ( this );
+    emp->pWorkspace()->addSubWindow ( this );
     setWindowTitle ( "Servidor" );
 
     m_tcpServer = new QTcpServer(this);

@@ -70,7 +70,7 @@ void mypluginfactp::elslot1()
 {
     blDebug ( "mypluginfactp::elslot1", 0 );
     FacturaProveedorView * bud = new FacturaProveedorView ( ( BfCompany * ) mainCompany(), NULL );
-    mainCompany() ->m_pWorkspace->addWindow ( bud );
+    mainCompany() ->m_pWorkspace->addSubWindow ( bud );
     bud->inicializar();
     bud->show();
     blDebug ( "END mypluginfactp::elslot1", 0 );
@@ -139,7 +139,7 @@ int BfCompany_createMainWindows_Post ( BfCompany *comp )
 {
     if ( comp->hasTablePrivilege ( "facturap", "SELECT" ) ) {
         g_facturasProveedorList = new FacturasProveedorList ( comp, NULL );
-        comp->m_pWorkspace->addWindow ( g_facturasProveedorList );
+        comp->m_pWorkspace->addSubWindow ( g_facturasProveedorList );
         g_facturasProveedorList->hide();
     }// end if
     return 0;
@@ -175,7 +175,7 @@ int BfBuscarReferencia_on_mui_abrirtodo_clicked_Post ( BfBuscarReferencia *ref )
     BlDbRecordSet *cur = ref->mainCompany() ->loadQuery ( SQLQuery );
     while ( !cur->eof() ) {
         FacturaProveedorView * bud = new FacturaProveedorView ( ( BfCompany * ) ref->mainCompany(), NULL );
-        ref->mainCompany() ->m_pWorkspace->addWindow ( bud );
+        ref->mainCompany() ->m_pWorkspace->addSubWindow ( bud );
         bud->cargar ( cur->valor ( "idfacturap" ) );
         bud->show();
         cur->nextRecord();

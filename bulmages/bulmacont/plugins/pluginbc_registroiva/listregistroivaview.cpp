@@ -276,7 +276,7 @@ void ListRegistroIvaView::on_mui_tablasoportado_trataMenu ( QAction *ac )
         QString idborrador = mui_tablasoportado->dbValue ( "idborrador" );
         RegistroIvaView *nuevae = new RegistroIvaView ( m_companyact, 0 );
         nuevae->inicializa1 ( idborrador.toInt() );
-        m_companyact->pWorkspace() ->addWindow ( nuevae );
+        m_companyact->pWorkspace() ->addSubWindow ( nuevae );
         nuevae->show();
     } // end if
     if ( m_verasiento == ac ) {
@@ -307,7 +307,7 @@ void ListRegistroIvaView::on_mui_tablarepercutido_trataMenu ( QAction *ac )
         QString idborrador = mui_tablarepercutido->dbValue ( "idborrador" );
         RegistroIvaView *nuevae = new RegistroIvaView ( m_companyact, 0 );
         nuevae->inicializa1 ( idborrador.toInt() );
-        m_companyact->pWorkspace() ->addWindow ( nuevae );
+        m_companyact->pWorkspace() ->addSubWindow ( nuevae );
         nuevae->show();
     } // end if
     if ( m_verasiento == ac ) {

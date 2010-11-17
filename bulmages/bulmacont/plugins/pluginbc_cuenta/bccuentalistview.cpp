@@ -116,7 +116,7 @@ void BcCuentaListView::editar ( int row )
     if ( modoEdicion() ) {
         /*
                 ArticuloView * art = ( ( BcCompany * ) BlMainCompany() ) ->newArticuloView();
-                BlMainCompany() ->m_pWorkspace->addWindow ( art );
+                BlMainCompany() ->m_pWorkspace->addSubWindow ( art );
                 /// Si la carga no va bien entonces terminamos.
                 if ( art->cargar ( mdb_idarticulo ) ) {
                     delete art;

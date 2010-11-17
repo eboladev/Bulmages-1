@@ -74,7 +74,7 @@ void MyPlugProf::elslot1()
     blDebug ( "MyPlugProf::elslot1", 0 );
     
     AlumnoView * bud = new AlumnoView ( ( BfCompany * ) mainCompany(), NULL );
-    mainCompany()->m_pWorkspace->addWindow ( bud );
+    mainCompany()->m_pWorkspace->addSubWindow ( bud );
     bud->show();
     
     blDebug ( "END MyPlugProf::elslot1", 0 );
@@ -88,7 +88,7 @@ void MyPlugProf::elslot2()
     blDebug ( "MyPlugProf::elslot2", 0 );
     
     ListCuotasPorAlumnoView * bud = new ListCuotasPorAlumnoView ( ( BfCompany * ) mainCompany(), NULL );
-    mainCompany()->m_pWorkspace->addWindow ( bud );
+    mainCompany()->m_pWorkspace->addSubWindow ( bud );
     bud->show();
     
     blDebug ( "END MyPlugProf::elslot2", 0 );
@@ -101,7 +101,7 @@ void MyPlugProf::elslot3()
 {
     blDebug ( "MyPlugProf::elslot3", 0 );
     ClaseView * bud = new ClaseView ( ( BfCompany * ) mainCompany(), NULL );
-    mainCompany() ->m_pWorkspace->addWindow ( bud );
+    mainCompany() ->m_pWorkspace->addSubWindow ( bud );
     bud->show();
     blDebug ( "END MyPlugProf::elslot3", 0 );
 }
@@ -199,7 +199,7 @@ int BfCompany_createMainWindows_Post ( BfCompany *comp )
 
     if ( comp->hasTablePrivilege ( "alumno", "SELECT" ) ) {
         g_alumnosList = new AlumnosList ( comp, NULL );
-        comp->m_pWorkspace->addWindow ( g_alumnosList );
+        comp->m_pWorkspace->addSubWindow ( g_alumnosList );
         g_alumnosList->hide();
     } // end if
     
@@ -335,7 +335,7 @@ void MyPlugAl1::editarAlumno ( QString idalumno )
     blDebug ( "MyPlugAl1::editarAlumno", 0 );
     BlSubForm * subf = ( BlSubForm * ) parent();
     AlumnoView * art = new AlumnoView ( ( BfCompany * ) subf->mainCompany(), 0 );
-    subf->mainCompany() ->m_pWorkspace->addWindow ( art );
+    subf->mainCompany() ->m_pWorkspace->addSubWindow ( art );
     /// Si la carga no va bien entonces terminamos.
     if ( art->cargar ( idalumno ) ) {
         delete art;
@@ -357,7 +357,7 @@ void MyPlugAl1::nuevoAlumno( )
     blDebug ( "MyPlugAl1::editarAlumno", 0 );
     BlSubForm * subf = ( BlSubForm * ) parent();
     AlumnoView * art = new AlumnoView ( ( BfCompany * ) subf->mainCompany(), 0 );
-    subf->mainCompany() ->m_pWorkspace->addWindow ( art );
+    subf->mainCompany() ->m_pWorkspace->addSubWindow ( art );
     subf->setEnabled(false);
     art->hide();
     art->show();

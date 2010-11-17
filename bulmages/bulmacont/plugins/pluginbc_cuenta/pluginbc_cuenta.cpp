@@ -67,7 +67,7 @@ void MyPluginCuenta::elslot()
     if (g_plancontable == NULL) {
       g_plancontable = new BcPlanContableListView ( ( BcCompany * ) mainCompany(), 0 );
       g_plancontable->inicializa();
-      mainCompany() ->pWorkspace() ->addWindow ( g_plancontable );
+      mainCompany() ->pWorkspace() ->addSubWindow ( g_plancontable );
     } // end if
     g_plancontable->hide();
     g_plancontable->show();
@@ -211,7 +211,7 @@ void MyPluginCuenta1::editarCuenta ( QString idcuenta )
     blDebug ( "MyPluginCuenta1::editarCuenta", 0 );
         BcCuentaView * nuevae = new BcCuentaView ( ((BcBulmaCont *)g_main)->empresaactual(), 0 );
         nuevae->cargar ( idcuenta );
-        ((BcBulmaCont *)g_main)->empresaactual() ->pWorkspace() ->addWindow ( nuevae );
+        ((BcBulmaCont *)g_main)->empresaactual() ->pWorkspace() ->addSubWindow ( nuevae );
         nuevae->show();
     blDebug ( "END MyPluginCuenta1::editarCuenta", 0 );
 }
@@ -224,7 +224,7 @@ void MyPluginCuenta1::nuevoCuenta( )
 {
     blDebug ( "MyPluginCuenta1::editarCuenta", 0 );
         BcCuentaView * nuevae = new BcCuentaView ( ((BcBulmaCont *)g_main)->empresaactual(), 0 );
-        ((BcBulmaCont *)g_main)->empresaactual() ->pWorkspace() ->addWindow ( nuevae );
+        ((BcBulmaCont *)g_main)->empresaactual() ->pWorkspace() ->addSubWindow ( nuevae );
         nuevae->mui_padre->setEnabled(TRUE);
         nuevae->show();
     blDebug ( "END MyPluginCuenta1::editarCuenta", 0 );

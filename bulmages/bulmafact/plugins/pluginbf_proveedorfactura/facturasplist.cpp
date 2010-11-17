@@ -215,7 +215,7 @@ void FacturasProveedorList::editar ( int row )
                 delete prov;
                 return;
             } // end if
-            mainCompany() ->m_pWorkspace->addWindow ( prov );
+            mainCompany() ->m_pWorkspace->addSubWindow ( prov );
             prov->show();
         } else {
             emit ( selected ( mdb_idfacturap ) );
@@ -328,7 +328,7 @@ void FacturasProveedorList::crear()
 {
     blDebug ( "FacturasProveedorList::crear", 0 );
     FacturaProveedorView *fpv = new FacturaProveedorView ( ( BfCompany * ) mainCompany(), 0 );
-    mainCompany()->pWorkspace()->addWindow ( fpv );
+    mainCompany()->pWorkspace()->addSubWindow ( fpv );
     fpv->inicializar();
     fpv->pintar();
 

@@ -72,7 +72,7 @@ void MyPlugArt::elslot1()
 {
     blDebug ( "MyPlugArt::elslot1", 0 );
     ArticuloView * bud = new ArticuloView ( ( BfCompany * ) mainCompany(), NULL );
-    mainCompany() ->m_pWorkspace->addWindow ( bud );
+    mainCompany() ->m_pWorkspace->addSubWindow ( bud );
     bud->show();
     blDebug ( "END MyPlugArt::elslot1", 0 );
 }
@@ -85,7 +85,7 @@ void MyPlugArt::elslot2()
 {
     blDebug ( "MyPlugArt::elslot2", 0 );
     TipoArticuloList *pag = new TipoArticuloList ( ( BfCompany * ) mainCompany(), 0, FALSE );
-    mainCompany() ->m_pWorkspace->addWindow ( pag );
+    mainCompany() ->m_pWorkspace->addSubWindow ( pag );
     pag->show();
     blDebug ( "END MyPlugArt::elslot2", 0 );
 }
@@ -98,7 +98,7 @@ void MyPlugArt::elslot3()
 {
     blDebug ( "MyPlugArt::elslot3", 0 );
     FamiliasView *pag = new FamiliasView ( ( BfCompany * ) mainCompany(), 0, FALSE );
-    mainCompany() ->m_pWorkspace->addWindow ( pag );
+    mainCompany() ->m_pWorkspace->addSubWindow ( pag );
     pag->show();
     blDebug ( "END MyPlugArt::elslot3", 0 );
 }
@@ -183,7 +183,7 @@ int BfCompany_createMainWindows_Post ( BfCompany *comp )
 {
     if ( comp->hasTablePrivilege ( "articulo", "SELECT" ) ) {
         g_articulosList = new ArticuloList ( comp, NULL );
-        comp->m_pWorkspace->addWindow ( g_articulosList );
+        comp->m_pWorkspace->addSubWindow ( g_articulosList );
         g_articulosList->hide();
     }// end if
     return 0;
@@ -412,7 +412,7 @@ void MyPlugArt1::editarArticulo ( QString idarticulo )
     blDebug ( "MyPlugArt1::editarArticulo", 0 );
     BlSubForm * subf = ( BlSubForm * ) parent();
     ArticuloView * art = new ArticuloView ( ( BfCompany * ) subf->mainCompany(), 0 );
-    subf->mainCompany() ->m_pWorkspace->addWindow ( art );
+    subf->mainCompany() ->m_pWorkspace->addSubWindow ( art );
     /// Si la carga no va bien entonces terminamos.
     if ( art->cargar ( idarticulo ) ) {
         delete art;

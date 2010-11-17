@@ -127,7 +127,7 @@ void ComisionesList::crear()
 {
     blDebug ( "ComisionesList::crear", 0 );
     ComisionView *bud = new ComisionView ( ( BfCompany * ) mainCompany(), 0 );
-    mainCompany() ->m_pWorkspace->addWindow ( bud );
+    mainCompany() ->m_pWorkspace->addSubWindow ( bud );
     bud->show();
     bud->pintar();
     blDebug ( "ComisionesList::crear", 0 );
@@ -190,7 +190,7 @@ void ComisionesList::editar ( int )
                 delete bud;
                 return;
             } // end if
-            mainCompany() ->m_pWorkspace->addWindow ( bud );
+            mainCompany() ->m_pWorkspace->addSubWindow ( bud );
             bud->show();
         } else {
             emit ( selected ( mdb_idcomision ) );

@@ -235,7 +235,7 @@ void PedidosProveedorList::editar ( int row )
                 delete prov;
                 return;
             } // end if
-            mainCompany() ->m_pWorkspace->addWindow ( prov );
+            mainCompany() ->m_pWorkspace->addSubWindow ( prov );
             prov->show();
         } else {
             emit ( selected ( mdb_idpedidoproveedor ) );
@@ -254,7 +254,7 @@ void PedidosProveedorList::crear()
 {
     blDebug ( "PedidosProveedorList::crear", 0 );
     PedidoProveedorView *ppv = new PedidoProveedorView ( ( BfCompany * ) mainCompany(), 0 );
-    mainCompany() ->m_pWorkspace->addWindow ( ppv );
+    mainCompany() ->m_pWorkspace->addSubWindow ( ppv );
     ppv->pintar();
     
     /// Si se crea el nuevo pedido desde la lista de pedidos a un proveedor,

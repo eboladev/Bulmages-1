@@ -92,7 +92,7 @@ void RegIVAQToolButton::click()
         int idborrador = las->dbValue ( "idborrador" ).toInt();
         RegistroIvaView *nuevae = new RegistroIvaView ( ( BcCompany * ) las->mainCompany(), 0 );
         nuevae->inicializa1 ( idborrador );
-        ( ( BcCompany * ) las->mainCompany() ) ->pWorkspace() ->addWindow ( nuevae );
+        ( ( BcCompany * ) las->mainCompany() ) ->pWorkspace() ->addSubWindow ( nuevae );
         nuevae->show();
     } catch ( ... ) {
         blMsgInfo ( "Debe seleccionar un apunte" );

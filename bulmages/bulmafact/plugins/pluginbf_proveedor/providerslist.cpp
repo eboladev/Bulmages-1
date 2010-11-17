@@ -183,7 +183,7 @@ void ProveedorList::crear()
     } else {    
     
 	ProveedorView *prov = new ProveedorView ( ( BfCompany * ) mainCompany() );
-	mainCompany() ->m_pWorkspace->addWindow ( prov );
+	mainCompany() ->m_pWorkspace->addSubWindow ( prov );
 	prov->show();
 	prov->setWindowTitle ( _ ( "Nuevo proveedor" ) );
 	/// Deshabilitamos las pestanyas que no se utilizan al crear un nuevo cliente.
@@ -211,7 +211,7 @@ void ProveedorList::editar ( int row )
             delete prov;
             return;
         } // end if
-        mainCompany() ->m_pWorkspace->addWindow ( prov );
+        mainCompany() ->m_pWorkspace->addSubWindow ( prov );
         prov->show();
     } else {
         emit ( selected ( m_idprovider ) );

@@ -71,7 +71,7 @@ void MyPlugProf::elslot1()
 {
     blDebug ( "MyPlugProf::elslot1", 0 );
     SocioView * bud = new SocioView ( ( BfCompany * ) mainCompany(), NULL );
-    mainCompany() ->m_pWorkspace->addWindow ( bud );
+    mainCompany() ->m_pWorkspace->addSubWindow ( bud );
     bud->show();
     blDebug ( "END MyPlugProf::elslot1", 0 );
 }
@@ -83,7 +83,7 @@ void MyPlugProf::elslot2()
 {
     blDebug ( "MyPlugProf::elslot2", 0 );
     TiposocioView * bud = new TiposocioView ( ( BfCompany * ) mainCompany(), NULL );
-    mainCompany() ->m_pWorkspace->addWindow ( bud );
+    mainCompany() ->m_pWorkspace->addSubWindow ( bud );
     bud->show();
     blDebug ( "END MyPlugProf::elslot2", 0 );
 }
@@ -160,7 +160,7 @@ int BfCompany_createMainWindows_Post ( BfCompany *comp )
     blDebug ( "pluginbf_socio::BfCompany_createMainWindows_Post", 0 );
     if ( comp->hasTablePrivilege ( "cliente", "SELECT" ) ) {
         g_sociosList = new SociosList ( comp, NULL );
-        comp->m_pWorkspace->addWindow ( g_sociosList );
+        comp->m_pWorkspace->addSubWindow ( g_sociosList );
         g_sociosList->hide();
     }// end if
     blDebug ( "END pluginbf_socio::BfCompany_createMainWindows_Post", 0 );
@@ -429,7 +429,7 @@ void MyPlugTutor1::editarTutor ( QString idtutor )
     blDebug ( "MyPlugTutor1::editarTutor", 0 );
     BlSubForm * subf = ( BlSubForm * ) parent();
     SocioView * art = new SocioView ( ( BfCompany * ) subf->mainCompany(), 0 );
-    subf->mainCompany() ->m_pWorkspace->addWindow ( art );
+    subf->mainCompany() ->m_pWorkspace->addSubWindow ( art );
     /// Si la carga no va bien entonces terminamos.
     if ( art->cargar ( idtutor ) ) {
         delete art;
@@ -451,7 +451,7 @@ void MyPlugTutor1::nuevoTutor( )
     blDebug ( "MyPlugTutor1::editarTutor", 0 );
     BlSubForm * subf = ( BlSubForm * ) parent();
     SocioView * art = new SocioView ( ( BfCompany * ) subf->mainCompany(), 0 );
-    subf->mainCompany() ->m_pWorkspace->addWindow ( art );
+    subf->mainCompany() ->m_pWorkspace->addSubWindow ( art );
     art->hide();
     art->show();
     blDebug ( "END MyPlugTutor1::editarTutor", 0 );

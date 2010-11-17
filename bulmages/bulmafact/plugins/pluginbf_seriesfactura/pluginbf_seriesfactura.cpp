@@ -55,7 +55,7 @@ void MyPlugSeriesFactura::elslot1()
 {
     blDebug ( "MyPlugSeriesFactura::elslot1", 0 );
     BfSerieFacturaView * bud = new BfSerieFacturaView ( ( BfCompany * ) mainCompany(), NULL );
-    mainCompany() ->m_pWorkspace->addWindow ( bud );
+    mainCompany() ->m_pWorkspace->addSubWindow ( bud );
     bud->show();
     blDebug ( "END MyPlugSeriesFactura::elslot1", 0 );
 }
