@@ -145,6 +145,18 @@ class _rml_doc(object):
         self.path = path
         self.title = title
 
+	#Permitimos includes
+	inc = self.etree.findall('include')
+	for nodo in inc:
+		filename = nodo.get('src').encode('ascii')
+		doc =  etree.XML(file(filename, 'r').read())
+		#nodo.getparent().replace(nodo, doc.getchildren())
+		#chnod = dom1.documentElement.childNodes
+		for nnode in doc:
+			nnnode = nnode
+			nodo.getparent().insert(nodo.getparent().index(nodo), nnnode)
+		nodo.getparent().remove(nodo)
+
     def docinit(self, els):
         from reportlab.lib.fonts import addMapping
         from reportlab.pdfbase import pdfmetrics
@@ -192,17 +204,19 @@ class _rml_doc(object):
         else:
             self.canvas = canvas.Canvas(out)
             pd = self.etree.find('pageDrawing')[0]
-            pd_obj = _rml_canvas(self.canvas, self.localcontext, None, self, self.images, path=self.path, title=self.title)
+            pd_obj = _rml_canvas(self.canvas, self.localcontext, self, self, self.styles, self.images, path=self.path, title=self.title)
             pd_obj.render(pd)
 
             self.canvas.showPage()
             self.canvas.save()
 
+
+
 class _rml_canvas(object):
-    def __init__(self, canvas, localcontext, doc_tmpl=None, doc=None, images={}, path='.', title=None):
+    def __init__(self, canvas, localcontext, doc_tmpl=None, doc=None, styles=None, images={}, path='.', title=None):
         self.localcontext = localcontext
         self.canvas = canvas
-        self.styles = doc.styles
+        self.styles = styles
         self.doc_tmpl = doc_tmpl
         self.doc = doc
         self.images = images
@@ -441,7 +455,7 @@ class _rml_draw(object):
 
     def render(self, canvas, doc):
         canvas.saveState()
-        cnv = _rml_canvas(canvas, self.localcontext, doc, self.styles, images=self.images, path=self.path, title=self.canvas_title)
+        cnv = _rml_canvas(canvas, self.localcontext, None, doc, self.styles, images=self.images, path=self.path, title=self.canvas_title)
         cnv.render(self.node)
         canvas.restoreState()
 
@@ -542,6 +556,28 @@ class _rml_flowable(object):
             table.setStyle(s)
         return table
 
+
+    def _storyPlace(self, node):
+	    class StoryPlace(platypus.flowables.Flowable):
+		    def __init__(self, node, localcontext, styles, self2):
+			    self.localcontext = localcontext
+			    self.node = node
+			    self.styles = styles
+			    self.self2 = self2
+			    self.width = bgutils.unit_get(node.get('width'))
+			    self.height = bgutils.unit_get(node.get('height'))
+			    self.x = bgutils.unit_get(node.get('x'))
+			    self.y = bgutils.unit_get(node.get('y'))
+		    def wrap(self, *args):
+			    return (self.width, self.height)
+		    def draw(self):
+			    canvas = self.canv
+			    canvas.restoreState()
+			    drw = _rml_draw(self.localcontext ,self.node, self.styles)
+			    drw.render(self.canv, self.self2.doc)
+			    canvas.saveState()
+	    return StoryPlace(node, self.localcontext,  self.styles, self)
+
     def _illustration(self, node):
         class Illustration(platypus.flowables.Flowable):
             def __init__(self, node, localcontext, styles, self2):
@@ -608,6 +644,8 @@ class _rml_flowable(object):
         elif node.tag=='pre':
             style = self.styles.para_style_get(node)
             return platypus.Preformatted(self._textual(node), style, **(bgutils.attr_get(node, [], {'bulletText':'str','dedent':'int'})))
+        elif node.tag=='storyPlace':
+            return  self._storyPlace(node)
         elif node.tag=='illustration':
             return  self._illustration(node)
         elif node.tag=='blockTable':
@@ -1010,4 +1048,5 @@ if __name__=="__main__":
     else:
         print 'Usage: trml2pdf input.rml >output.pdf'
         print 'Try \'trml2pdf --help\' for more information.'
+
 
