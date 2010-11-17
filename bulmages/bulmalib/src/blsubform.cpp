@@ -3521,7 +3521,9 @@ bool BlSubFormDelegate::eventFilter ( QObject *obj, QEvent *event )
         case Qt::Key_Enter:
             if ( obj->objectName() == "BlTextEditDelegate" ) {
                if (mod & Qt::ShiftModifier) {
-                   obj->event ( event );
+		   /// Esta propagacion esta deshabilitata porque en caso contrario siempre se produce
+		   /// Un cambio de foco en la tabla y el Shift + Return no funciona como toca.
+                   //obj->event ( event );
                } else {
 		   ((QWidget*)obj)->clearFocus();
                    QApplication::sendEvent ( m_subform->mui_list, event );

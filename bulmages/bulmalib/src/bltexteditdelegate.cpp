@@ -60,18 +60,15 @@ bool BlTextEditDelegate::eventFilter ( QObject *obj, QEvent *event )
         QKeyEvent * keyEvent = static_cast<QKeyEvent *> ( event );
         int key = keyEvent->key();
         Qt::KeyboardModifiers mod = keyEvent->modifiers();
-
-              /// Quitamos la pulsacion del Enter ya que lo que debe funcionar es el Shift + Enter
-              switch ( key ) {
-                case Qt::Key_Return:
-                case Qt::Key_Enter:
-                      blMsgInfo( _ ("BlTextEditDelegate::eventFilter Se ha pulsado return"));
-                      event->ignore();
-                      return TRUE;
-                    break;
-                } // end switch
-
-
+	/// Quitamos la pulsacion del Enter ya que lo que debe funcionar es el Shift + Enter
+	switch ( key ) {
+	  case Qt::Key_Return:
+	  case Qt::Key_Enter:
+		event->ignore();
+		blDebug ( "END BlTextEditDelegate::eventFilter()", 0 );
+		return TRUE;
+	      break;
+	  } // end switch
     } // end if
     blDebug ( "END BlTextEditDelegate::eventFilter()", 0 );
     return QTextEdit::eventFilter ( obj, event );
