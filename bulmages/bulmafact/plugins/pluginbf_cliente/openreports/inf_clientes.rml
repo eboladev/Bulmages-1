@@ -31,7 +31,7 @@
 		<fill color="(0,0,0)"/>	
 		<stroke color="(0,0,0)"/>
 		<setFont name="Helvetica" size="22"/>
-		<drawString x="18cm" y="19.5cm">Articulos</drawString>
+		<drawString x="18cm" y="19.5cm">Informe de Ventas</drawString>
 		</pageGraphics>
 	<frame id="column" x1="1cm" y1="1cm" width="27cm" height="17.5cm"/>
 	</pageTemplate>
@@ -73,5 +73,18 @@
 </blockTable>
 <!--END IF SUBQUERY-->
 <!--END QUERY-->
+
+
+<para> Top 10 Clientes</para>
+<illustration width="10cm" height="9cm">
+<barChart x="0cm" y="0cm" >               
+<!--QUERY="select COALESCE(sum(totalfactura),0) AS tot, nomcliente FROM factura LEFT JOIN cliente ON factura.idcliente = cliente.idcliente  group by factura.idcliente, cliente.nomcliente ORDER BY tot DESC LIMIT 10"-->
+<categorie color="(1,0.4,0.6)">[nomcliente]</categorie>
+<data>[tot]</data>
+<!--END QUERY-->
+</barChart>  
+</illustration>
+
+
 </story>
 </document>
