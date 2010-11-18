@@ -83,10 +83,14 @@ def ustr(value):
 
 
 def str2xml(s):
-    return s.replace('&', '&amp;').replace('<', '&lt;').replace('>', '&gt;')
-
+    if (s <> None):
+	return s.replace('&', '&amp;').replace('<', '&lt;').replace('>', '&gt;')
+    return ''
+    
 def xml2str(s):
-    return s.replace('&amp;','&').replace('&lt;','<').replace('&gt;','>')
+    if (s <> None):
+	return s.replace('&amp;','&').replace('&lt;','<').replace('&gt;','>')
+    return ''
 
 def _child_get(node, self=None, tagname=None):
     for n in node:
