@@ -146,16 +146,15 @@ class _rml_doc(object):
         self.title = title
 
 	#Permitimos includes
-	inc = self.etree.findall('include')
-	for nodo in inc:
-		filename = nodo.get('src').encode('ascii')
-		doc =  etree.XML(file(filename, 'r').read())
-		#nodo.getparent().replace(nodo, doc.getchildren())
-		#chnod = dom1.documentElement.childNodes
-		for nnode in doc:
-			nnnode = nnode
-			nodo.getparent().insert(nodo.getparent().index(nodo), nnnode)
-		nodo.getparent().remove(nodo)
+	for nodo in self.etree.iterfind('.//include'):
+	    filename = nodo.get('src').encode('ascii')
+	    doc =  etree.XML(file(filename, 'r').read())
+	    print file(filename, 'r').read()
+	    for nnode in doc:
+		    nnnode = nnode
+		    nodo.getparent().insert(nodo.getparent().index(nodo), nnnode)
+	    nodo.getparent().remove(nodo)
+
 
     def docinit(self, els):
         from reportlab.lib.fonts import addMapping
@@ -847,7 +846,6 @@ class PieChart(_DrawingEditorMixin,Drawing):
         for td in node.findall('categorie'):
 		categories.append(td.text)
 
-
         #data                = [9, 7, 6, 4, 2.5, 1.0]  
         #categories          = ('A','B','C','D','E','F',)  
         colors              = [PCMYKColor(0,0,0,x) for x in (100,80,60,40,20,5)]  
@@ -862,9 +860,6 @@ class BarChart(_DrawingEditorMixin,Drawing):
 
         data = []
         categories = []
-        colors = []
-
-	self._colors    = [PCMYKColor(0,0,0,x) for x in (100,80,60,40,20,5)]
 
         for td in node.findall('data'):
                 data.append ( [float(td.text.replace(",","."))] )
@@ -872,6 +867,7 @@ class BarChart(_DrawingEditorMixin,Drawing):
 
         for td in node.findall('categorie'):
 		categories.append(td.text)
+
 
 
         self._add(self,VerticalBarChart(),name='bar',validate=None,desc=None)  
@@ -903,10 +899,7 @@ class BarChart(_DrawingEditorMixin,Drawing):
         self._add(self,Legend(),name='legend',validate=None,desc=None)  
         #_ = ['Vodafone Group', 'UBS', 'British Petroleum', 'Royal bk of Scotland', 'HSBC Holdings', 'Total Elf Fina', 'Repsol', 'Novartis', 'BNP Paribas', 'Schneider Electric' ]  
         _ = categories
-        #self.legend.colorNamePairs  = [(Auto(chart=self.bar),(t,'%.2f'% d[0])) for t,d in zip(_,self.bar.data)]  
-#        self.legend.colorNamePairs  = zip(colors,categories)
-        self.legend.colorNamePairs  = [(self._colors[i], categories[i]) for i in xrange(len(self.bar.data))]
-
+        self.legend.colorNamePairs  = [(Auto(chart=self.bar),(t,'%.2f'% d[0])) for t,d in zip(_,self.bar.data)]  
         self.legend.columnMaximum   = 10  
         self.legend.fontName        = 'Helvetica'  
         self.legend.fontSize        = 5.5  
@@ -924,11 +917,8 @@ class BarChart(_DrawingEditorMixin,Drawing):
         self.legend.strokeWidth     = 0  
         self.legend.dividerOffsY    = 6  
         self.legend.colEndCallout   = TotalAnnotator(rText='%.2f'%sum([x[0] for x in self.bar.data]), fontName='Helvetica-Bold', fontSize=self.legend.fontSize*1.1)  
-        #self.legend.colorNamePairs  = [(self.bar.bars[i].fillColor, (self.bar.categoryAxis.categoryNames[i][0:20], '%0.2f' % self.bar.data[i][0])) for i in range(len(self.bar.data))]  
-        #setItems(n,self.bar.bars,'fillColor',pdf_chart_colors)
-        for i, color in enumerate(self._colors): self.bar.bars[i].fillColor  = color  
-
-
+        self.legend.colorNamePairs  = [(self.bar.bars[i].fillColor, (self.bar.categoryAxis.categoryNames[i][0:20], '%0.2f' % self.bar.data[i][0])) for i in range(len(self.bar.data))]  
+  
 class LinePlot(_DrawingEditorMixin,Drawing):
     def __init__(self,node,width=400,height=200,*args,**kw):
         apply(Drawing.__init__,(self,width,height)+args,kw)
