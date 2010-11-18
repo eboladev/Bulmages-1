@@ -340,7 +340,9 @@ void blCreatePDF ( const QString arch )
     QString cadsys;
 
 #ifdef Q_OS_WIN32
-    cadsys = g_confpr->valor ( CONF_PYTHON ) + " \"" + g_confpr->valor ( CONF_PROGDATA ) + "bgtrml2pdf\\bgtrml2pdf\" " + arch + ".rml > \"" + g_confpr->valor ( CONF_DIR_USER ) + arch + ".pdf\"";
+
+    cadsys = "\"" + g_confpr->valor ( CONF_PYTHON ) + "\" \"" + g_confpr->valor ( CONF_PROGDATA ) + "bgtrml2pdf\\bgtrml2pdf\" " + arch + ".rml > \"" + g_confpr->valor ( CONF_DIR_USER ) + arch + ".pdf\"";
+    cadsys = "\"" + cadsys + "\"";
 
     int result1 = system ( cadsys.toAscii() );
     if (result1 == -1) {
@@ -348,7 +350,8 @@ void blCreatePDF ( const QString arch )
     } // end if
     
     blDebug ( cadsys, 0 );
-    cadsys = g_confpr->valor ( CONF_FLIP ) + " -u \"" + g_confpr->valor ( CONF_DIR_USER ) + arch + ".pdf\"";
+    cadsys = "\"" + g_confpr->valor ( CONF_FLIP ) + "\" -u \"" + g_confpr->valor ( CONF_DIR_USER ) + arch + ".pdf\"";
+    cadsys = "\"" + cadsys + "\"";
     
     int result2 = system ( cadsys.toAscii().data() );
     if (result2 == -1) {
