@@ -175,6 +175,68 @@ int TutorView::guardarPost()
     mui_alumnosList->setColumnValue ( "idcliente", dbValue ( "idcliente" ) );
     mui_alumnosList->guardar();
 
+    if (mu_nombrealumno_1->text() != "") {
+	QString sqlquery = "INSERT INTO alumno (nombrealumno, apellido1alumno, apellido2alumno) VALUES ('"+mu_nombrealumno_1->text()+"','"+mu_apellido1alumno_1->text()+"','"+mu_apellido2alumno_1->text()+"')";
+	mainCompany()->runQuery(sqlquery);
+	sqlquery = "SELECT MAX(idalumno) AS idalumno FROM alumno";
+        BlDbRecordSet *cur = mainCompany()->loadQuery(sqlquery);
+        if (!cur->eof()) {
+	    sqlquery = "INSERT INTO alumnocliente (idalumno, idcliente) VALUES ("+cur->valor("idalumno")+","+dbValue("idcliente")+")";
+	    mainCompany()->runQuery(sqlquery);
+	} // end if
+	delete cur;
+    } // end if
+    
+    if (mu_nombrealumno_2->text() != "") {
+	QString sqlquery = "INSERT INTO alumno (nombrealumno, apellido1alumno, apellido2alumno) VALUES ('"+mu_nombrealumno_2->text()+"','"+mu_apellido1alumno_2->text()+"','"+mu_apellido2alumno_2->text()+"')";
+	mainCompany()->runQuery(sqlquery);
+	sqlquery = "SELECT MAX(idalumno) AS idalumno FROM alumno";
+        BlDbRecordSet *cur = mainCompany()->loadQuery(sqlquery);
+        if (!cur->eof()) {
+	    sqlquery = "INSERT INTO alumnocliente (idalumno, idcliente) VALUES ("+cur->valor("idalumno")+","+dbValue("idcliente")+")";
+	    mainCompany()->runQuery(sqlquery);
+	} // end if
+	delete cur;
+    } // end if
+
+    if (mu_nombrealumno_3->text() != "") {
+	QString sqlquery = "INSERT INTO alumno (nombrealumno, apellido1alumno, apellido2alumno) VALUES ('"+mu_nombrealumno_3->text()+"','"+mu_apellido1alumno_3->text()+"','"+mu_apellido2alumno_3->text()+"')";
+	mainCompany()->runQuery(sqlquery);
+	sqlquery = "SELECT MAX(idalumno) AS idalumno FROM alumno";
+        BlDbRecordSet *cur = mainCompany()->loadQuery(sqlquery);
+        if (!cur->eof()) {
+	    sqlquery = "INSERT INTO alumnocliente (idalumno, idcliente) VALUES ("+cur->valor("idalumno")+","+dbValue("idcliente")+")";
+	    mainCompany()->runQuery(sqlquery);
+	} // end if
+	delete cur;
+    } // end if
+
+    if (mu_nombrealumno_4->text() != "") {
+	QString sqlquery = "INSERT INTO alumno (nombrealumno, apellido1alumno, apellido2alumno) VALUES ('"+mu_nombrealumno_4->text()+"','"+mu_apellido1alumno_4->text()+"','"+mu_apellido2alumno_4->text()+"')";
+	mainCompany()->runQuery(sqlquery);
+	sqlquery = "SELECT MAX(idalumno) AS idalumno FROM alumno";
+        BlDbRecordSet *cur = mainCompany()->loadQuery(sqlquery);
+        if (!cur->eof()) {
+	    sqlquery = "INSERT INTO alumnocliente (idalumno, idcliente) VALUES ("+cur->valor("idalumno")+","+dbValue("idcliente")+")";
+	    mainCompany()->runQuery(sqlquery);
+	} // end if
+	delete cur;
+    } // end if
+
+    mu_nombrealumno_1->setText("");
+    mu_nombrealumno_2->setText("");
+    mu_nombrealumno_3->setText("");
+    mu_nombrealumno_4->setText("");
+
+    mu_apellido1alumno_1->setText("");
+    mu_apellido1alumno_2->setText("");
+    mu_apellido1alumno_3->setText("");
+    mu_apellido1alumno_4->setText("");
+    
+    mu_apellido2alumno_1->setText("");
+    mu_apellido2alumno_2->setText("");
+    mu_apellido2alumno_3->setText("");
+    mu_apellido2alumno_4->setText("");
     /*
 
       if (mui_numsocio->text() != "") {
