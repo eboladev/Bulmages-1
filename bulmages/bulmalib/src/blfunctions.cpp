@@ -418,7 +418,7 @@ void blCreateAndLoadPDF ( const QString arch )
     blCreatePDF ( arch );
 
 #ifdef Q_OS_WIN32
-    QString cadsys = g_confpr->valor ( CONF_PDF ) + " \"" + g_confpr->valor ( CONF_DIR_USER ) + arch + ".pdf\" &";
+    QString cadsys = "\"start \"\" \"" + g_confpr->valor ( CONF_PDF ) + "\" \"" + g_confpr->valor ( CONF_DIR_USER ) + arch + ".pdf\"\"";
 #else
     QString cadsys = g_confpr->valor ( CONF_PDF ) + " " + g_confpr->valor ( CONF_DIR_USER ) + arch + ".pdf &";
 #endif
