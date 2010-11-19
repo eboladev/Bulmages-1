@@ -33,7 +33,8 @@ extern "C" PLUGINBF_INVENTARIOSIMPLE_EXPORT int ActividadView_ActividadView(Acti
 extern "C" PLUGINBF_INVENTARIOSIMPLE_EXPORT int BlForm_guardar_Post(BlForm *);
 extern "C" PLUGINBF_INVENTARIOSIMPLE_EXPORT int BlForm_cargar(BlForm *);
 extern "C" PLUGINBF_INVENTARIOSIMPLE_EXPORT int BfSubForm_pressedAsterisk ( BfSubForm * );
-
+extern "C" PLUGINBF_INVENTARIOSIMPLE_EXPORT int BlSubForm_BlSubForm_Post ( BlSubForm * );
+extern "C" PLUGINBF_INVENTARIOSIMPLE_EXPORT int BlSubForm_preparaMenu ( BlSubForm * );
 
 class myplugininvsimple : public QObject, BlMainCompanyPointer
 {
@@ -50,6 +51,26 @@ public:
 public slots:
     void elslot();
 };
+
+
+
+
+class MyPlugInv1 : public QObject
+{
+    Q_OBJECT
+
+public:
+    MyPlugInv1 ( BlSubForm * );
+    ~MyPlugInv1();
+
+
+public slots:
+    void seleccionarMaterial(BfSubForm *sub = NULL);
+    virtual void s_pintaMenu ( QMenu * );
+    virtual void s_trataMenu ( QAction * );
+};
+
+
 
 
 #endif

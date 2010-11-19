@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+<!DOCTYPE document SYSTEM "rml_1_0.dtd">
+
+<document filename="test.pdf">
+  <template pageSize="(29.7cm, 21cm)" title="Prestamo de Material" author="Tomeu Borras" allowSplitting="20">
+    <pageTemplate id="first">
+      <frame id="first" x1="0.5cm" y1="0.5cm" width="28.7cm" height="20cm"/>
+    </pageTemplate>
+  </template>
+  <stylesheet>
+    <blockTableStyle id="Standard_Outline">
+      <blockAlignment value="LEFT"/>
+      <blockValign value="TOP"/>
+    </blockTableStyle>
+    <blockTableStyle id="Tabla1">
+
+      <blockLeftPadding value="0" start="0,0" stop="-1,-1"/>
+      <blockRightPadding value="0" start="0,0" stop="-1,-1"/>
+      <blockBottomPadding value="0" start="0,0" stop="-1,-1"/>
+      <blockTopPadding value="0" start="0,0" stop="-1,-1"/>
+      <blockAlignment value="LEFT" start="0,0" stop="-1,-1"/>
+      <blockValign value="TOP" start="0,0" stop="-1,-1"/>
+      <lineStyle kind="LINEBEFORE" colorName="#000000" start="0,0" stop="-1,-1"/>
+      <lineStyle kind="LINEAFTER" colorName="#000000" start="0,0" stop="-1,-1"/>
+      <lineStyle kind="LINEABOVE" colorName="#000000" start="0,0" stop="-1,-1"/>
+      <lineStyle kind="LINEBELOW" colorName="#000000" start="0,0" stop="-1,-1"/>
+    </blockTableStyle>
+    <initialize>
+      <paraStyle name="all" alignment="justify"/>
+    </initialize>
+    <paraStyle name="Standard" fontName="Times-Roman"/>
+    <paraStyle name="Heading" fontName="Helvetica" fontSize="14.0" leading="17" spaceBefore="12.0" spaceAfter="6.0"/>
+    <paraStyle name="Text body" fontName="Times-Roman" spaceBefore="0.0" spaceAfter="6.0"/>
+    <paraStyle name="List" fontName="Times-Roman" spaceBefore="0.0" spaceAfter="6.0"/>
+    <paraStyle name="Caption" fontName="Times-Roman" fontSize="12.0" leading="15" spaceBefore="6.0" spaceAfter="6.0"/>
+    <paraStyle name="Index" fontName="Times-Roman"/>
+    <paraStyle name="Table Contents" fontName="Times-Roman"/>
+    <paraStyle name="Table Heading" fontName="Times-Roman" alignment="CENTER"/>
+  </stylesheet>
+  <images/>
+  <story>
+    <para style="Standard">Prestamo de Material para la actividad: [nombreactividad]</para>
+<!-- QUERY="SELECT * FROM profesor WHERE idprofesor=[idprofesor]"-->
+    <para style="Standard">Profesor: [nombreprofesor]</para>
+<!-- END QUERY -->
+    <para style="Standard">
+      <font color="black"> </font>
+    </para>
+    <blockTable colWidths="7cm,4cm,4cm" style="Tabla1">
+
+<!-- QUERY="SELECT row_number() over (order by nominventariosimple) AS orden,* FROM  prestamo LEFT JOIN inventariosimple ON prestamo.idinventariosimple = inventariosimple.idinventariosimple WHERE idactividad = [idactividad] ORDER BY nominventariosimple"-->
+
+      <tr>
+        <td><para style="Table Contents"><font color="black" size="8"> [orden].-[nominventariosimple] </font></para></td>
+        <td><para style="Table Contents"><font color="black" size="8">[cantprestamo]</font></para></td>
+        <td><para style="Table Contents"><font color="black" size="8">[fechaprestamo]</font></para></td>
+
+      </tr>
+
+
+<!-- END QUERY -->
+
+    </blockTable>
+    <para style="Standard">
+      <font color="black"> </font>
+    </para>
+    <para style="Standard">
+      <font color="black"> </font>
+    </para>
+    <para style="Standard">
+      <font color="black"> </font>
+    </para>
+    <para style="Standard">
+      <font color="black"> </font>
+    </para>
+    <para style="Standard">
+      <font color="black"> </font>
+    </para>
+    <para style="Standard">
+      <font color="black"> </font>
+    </para>
+    <para style="Standard">
+      <font color="black"> </font>
+    </para>
+    <para style="Standard">
+      <font color="black"> </font>
+    </para>
+    <para style="Standard">
+      <font color="black"> </font>
+    </para>
+    <para style="Standard">
+      <font color="black"> </font>
+    </para>
+    <para style="Standard">
+      <font color="black"> </font>
+    </para>
+    <para style="Standard">
+      <font color="black"> </font>
+    </para>
+    <para style="Standard">Firma</para>
+  </story>
+</document>
+

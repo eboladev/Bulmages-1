@@ -27,8 +27,6 @@
 
 #include "actividadview.h"
 
-
-
 ///
 /**
 **/
@@ -240,40 +238,201 @@ int BfSubForm_pressedAsterisk ( BfSubForm *sub )
     
     delete cur;
 
-
-
-
-/*
-    AlumnosList *alumnoslist = new AlumnosList ( ( BfCompany * ) sub->mainCompany(), NULL, 0, BL_SELECT_MODE );
     
-    /// Esto es convertir un QWidget en un sistema modal de dialogo.
-    sub->setEnabled ( false );
-    alumnoslist->show();
     
-    while ( !alumnoslist->isHidden() )
-        g_theApp->processEvents();
-        
-    sub->setEnabled ( true );
-    QString idAlumno = alumnoslist->idalumno();
-    
-    delete alumnoslist;
-
-    /// Si no tenemos un idarticulo salimos ya que significa que no se ha seleccionado ninguno.
-    if ( idAlumno == "" ) {
-        blDebug ( "END BfSubForm::pressedAsterisk", 0 );
-        return 0;
-    } // end if
-
-    BlDbRecordSet *cur = sub->mainCompany() ->loadQuery ( "SELECT * FROM alumno WHERE idalumno = " + idAlumno );
-    if ( !cur->eof() ) {
-        sub->m_registrolinea->setDbValue ( "idalumno", idAlumno );
-        sub->m_registrolinea->setDbValue ( "nombrealumno1", cur->valor( "apellido1alumno") + " " + cur->valor("apellido2alumno") + ", " + cur->valor ( "nombrealumno" ));
-    } // end if
-    
-    delete cur;
-*/    
     blDebug ( "END BfSubForm_pressedAsterisk" );
 
     return 0;
 }
+
+
+
+
+
+
+
+
+
+/// --------------------------------------------------------------
+/// --------- Implemento la edicion de alumnos -----------------
+/// Con esta funcionalidad creamos menus contextuales en todos los subformularios donde
+/// Aparezca el identificador de alumno como elemento y permite de forma sencilla
+/// La creacion, la edicion, y la seleccion.
+///
+
+
+/**
+\param parent
+**/
+MyPlugInv1::MyPlugInv1 ( BlSubForm *parent ) : QObject ( parent )
+{
+    blDebug ( "MyPlugInv1::MyPlugInv1", 0 );
+    blDebug ( "END MyPlugInv1::MyPlugInv1", 0 );
+}
+
+///
+/**
+**/
+MyPlugInv1::~MyPlugInv1()
+{
+    blDebug ( "MyPlugInv1::~MyPlugInv1", 0 );
+    blDebug ( "END MyPlugInv1::~MyPlugInv1", 0 );
+}
+
+
+///
+/**
+\param menu
+**/
+void MyPlugInv1::s_pintaMenu ( QMenu *menu )
+{
+    blDebug ( "MyPlugInv1::s_pintaMenu", 0 );
+    BfSubForm *sub = ( BfSubForm * ) parent();
+    BlSubFormHeader *header = sub->header ( "nominventariosimple" );
+    if ( header ) {
+        menu->addSeparator();
+        if ( ! ( header->options() & BlSubFormHeader::DbNoWrite ) )  {
+            menu->addAction ( QIcon ( ":/Images/product-family.png" ), _ ( "Seleccionar Material" ) );
+        } // end if
+    } // end if
+    blDebug ( "END MyPlugInv1::s_pintaMenu", 0 );
+}
+
+
+///
+/**
+\param action
+**/
+void MyPlugInv1::s_trataMenu ( QAction *action )
+{
+    blDebug ( "MyPlugInv1::s_trataMenu", 0 );
+    BfSubForm *sub = ( BfSubForm * ) parent();
+    if ( action->text() == _ ( "Seleccionar Material" ) ) {
+        seleccionarMaterial ();
+    } // end if
+    
+    blDebug ( "END MyPlugInv1::s_trataMenu", 0 );
+}
+
+
+///
+/**
+**/
+void MyPlugInv1::seleccionarMaterial ( BfSubForm *sub )
+{
+    blDebug ( metaObject()->className()+ QString("::seleccionarMaterial"), 0 );
+    
+    if (!sub) sub= (BfSubForm *) parent();
+    
+    
+    
+    BlSubForm *list = new BlSubForm ( NULL);
+    list->setMainCompany(( BfCompany * ) sub->mainCompany());
+
+    list->setDbTableName ( "inventariosimple" );
+    list->setDbFieldId ( "idinventariosimple" );
+    list->addSubFormHeader ( "idinventariosimple", BlDbField::DbInt, BlDbField::DbPrimaryKey, BlSubFormHeader::DbNoWrite, _ ( "Id Inventario" ) );
+    list->addSubFormHeader ( "nominventariosimple", BlDbField::DbVarChar, BlDbField::DbNotNull, BlSubFormHeader::DbNoWrite, _ ( "Nombre" ) );
+    list->addSubFormHeader ( "stockinventariosimple", BlDbField::DbNumeric, BlDbField::DbNotNull, BlSubFormHeader::DbNoWrite, _ ( "Stock" ) );
+    list->setInsert ( FALSE );
+    list->setOrdenEnabled ( TRUE );
+    list->cargar("SELECT * FROM inventariosimple");
+    list->setModoConsulta();
+    sub->connect(list, SIGNAL(itemDoubleClicked(QTableWidgetItem *)), list, SLOT(hide()));
+    sub->connect(list, SIGNAL(editFinish(int, int)), list, SLOT(hide()));
+
+    sub->setEnabled ( false );
+    list->show();
+
+    while ( !list->isHidden() )
+        g_theApp->processEvents();
+        
+    sub->setEnabled ( true );
+
+    QString idinv= list->dbValue("idinventariosimple");
+    
+    delete list;
+    
+    if ( idinv == "" ) {
+        blDebug ( "END MyPlugInv1::editarMaterial" );
+        return ;
+    } // end if
+
+    QString query = "SELECT * FROM inventariosimple WHERE idinventariosimple = " + idinv;
+    BlDbRecordSet *cur = sub->mainCompany() ->loadQuery ( query );
+    if ( !cur->eof() ) {
+        sub->lineaact()->setDbValue ( "idinventariosimple", idinv );
+        sub->lineaact()->setDbValue ( "nominventariosimple", cur->valor( "nominventariosimple") );
+    } // end if
+    
+    delete cur;
+
+
+    blDebug ( "END MyPlugInv1::seleccionarMaterial", 0 );
+}
+
+
+///
+/**
+\param sub
+\return
+**/
+int BlSubForm_BlSubForm_Post ( BlSubForm *sub )
+{
+    blDebug ( "BlSubForm_BlSubForm_Post", 0 );
+    MyPlugInv1 *subformods = new MyPlugInv1 ( (BfSubForm *) sub );
+    sub->QObject::connect ( sub, SIGNAL ( pintaMenu ( QMenu * ) ), subformods, SLOT ( s_pintaMenu ( QMenu * ) ) );
+    sub->QObject::connect ( sub, SIGNAL ( trataMenu ( QAction * ) ), subformods, SLOT ( s_trataMenu ( QAction * ) ) );
+    blDebug ( "END BlSubForm_BlSubForm_Post", 0 );
+    return 0;
+}
+
+
+
+/// Miramos de poner los iconos del menu de subformularios
+///
+/**
+\param sub
+\return
+**/
+int BlSubForm_preparaMenu ( BlSubForm *sub ) {
+    blDebug ( "BlSubForm_preparaMenu", 0 );
+
+    BlSubFormHeader *header = sub->header ( "nominventariosimple" );
+    if (!header) 
+        header = sub->header ( "nominventariosimple" );
+    if ( header ) {
+        MyPlugInv1 *subformods = new MyPlugInv1 ( sub );
+        
+        QHBoxLayout *m_hboxLayout1 = sub->mui_menusubform->findChild<QHBoxLayout *> ( "hboxLayout1" );
+        if ( !m_hboxLayout1 ) {
+            m_hboxLayout1 = new QHBoxLayout ( sub->mui_menusubform );
+            m_hboxLayout1->setSpacing (0 );
+            m_hboxLayout1->setMargin ( 0 );
+            m_hboxLayout1->setObjectName ( QString::fromUtf8 ( "hboxLayout1" ) );
+        } // end if
+        
+        if ( ! ( header->options() & BlSubFormHeader::DbNoWrite ) )  {
+          QToolButton *sel1 = new QToolButton ( sub->mui_menusubform );
+          sel1->setStatusTip ( "Seleccionar Material" );
+          sel1->setToolTip ( "Seleccionar Material" );
+          sel1->setMinimumSize ( QSize ( 18, 18 ) );
+          sel1->setIcon ( QIcon ( ":/Images/product-family.png" ) );
+          sel1->setIconSize ( QSize ( 18, 18 ) );    
+          m_hboxLayout1->addWidget ( sel1 );
+          sel1->connect (sel1, SIGNAL(released()), subformods, SLOT(seleccionarMaterial()));
+        } // end if
+    } // end if
+    
+
+    blDebug ( "END BlSubForm_preparaMenu", 0 );
+    return 0;
+}
+
+
+
+
+
+
+
 
