@@ -95,7 +95,7 @@ ListInventarioSimpleSubForm::ListInventarioSimpleSubForm ( QWidget *parent ) : B
     
     setDbTableName ( "inventariosimple" );
     setDbFieldId ( "idinventariosimple" );
-    addSubFormHeader ( "idinventariosimple", BlDbField::DbInt, BlDbField::DbPrimaryKey, BlSubFormHeader::DbNone, _ ( "Id Inventario" ) );
+    addSubFormHeader ( "idinventariosimple", BlDbField::DbInt, BlDbField::DbPrimaryKey, BlSubFormHeader::DbHideView | BlSubFormHeader::DbNoWrite, _ ( "Id Inventario" ) );
     addSubFormHeader ( "nominventariosimple", BlDbField::DbVarChar, BlDbField::DbNotNull, BlSubFormHeader::DbNone, _ ( "Nombre" ) );
     addSubFormHeader ( "stockinventariosimple", BlDbField::DbInt, BlDbField::DbNotNull, BlSubFormHeader::DbNone, _ ( "Stock" ) );
     setInsert ( TRUE );
