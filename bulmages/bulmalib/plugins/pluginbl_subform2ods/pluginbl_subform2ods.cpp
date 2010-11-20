@@ -233,16 +233,24 @@ void myplugsubformods::sacaods()
 
     fitxersortidatxt += "doc.save(\"listadoods.ods\")\n";
 
+    QString cadena1;
+    QString cadena2;
+
 #ifdef Q_OS_WIN32
-    QString cadena1 = "del \"" + g_confpr->valor ( CONF_DIR_USER ) + "listadoods.ods\"";
-    QString cadena2 = "del \"" + archivod + "\"";
+    cadena1 = g_confpr->valor ( CONF_DIR_USER );
+    cadena1.replace("/", "\\");
+    cadena1 = "\"del \"" + cadena1 + "listadoods.ods\"\"";
+
+    cadena2 = archivod;
+    cadena2.replace("/", "\\");
+    cadena2 = "\"del \"" + cadena2 + "\"\"";
 #else
-    QString cadena1 = "rm " + g_confpr->valor ( CONF_DIR_USER ) + "listadoods.ods";
-    QString cadena2 = "rm " + archivod;
+    cadena1 = "rm " + g_confpr->valor ( CONF_DIR_USER ) + "listadoods.ods";
+    cadena2 = "rm " + archivod;
 #endif
 
-    system ( cadena1.toAscii() );
-    system ( cadena2.toAscii() );
+    system ( cadena1.toAscii().data() );
+    system ( cadena2.toAscii().data() );
 
     QFile file ( archivod );
     if ( file.open ( QIODevice::WriteOnly ) )  {
@@ -255,25 +263,36 @@ void myplugsubformods::sacaods()
     QString cadena;
 
 #ifdef Q_OS_WIN32
-    cadena = "cd \"" + g_confpr->valor ( CONF_DIR_USER ) + "\"";
-   // & " + "python \"" + archivod + "\"";
 
-    fprintf(stderr, cadena.toAscii() );
+    cadena = g_confpr->valor ( CONF_DIR_USER );
+    cadena.replace("/", "\\");
 
-    QProcess::execute ( cadena );
+    cadena = "\"cd \"" + cadena + "\" & ";
+    cadena = cadena + "\"" + g_confpr->valor ( CONF_PYTHON ) + "\" \"" + archivod + "\"\"";
+
 #else
     cadena = " cd " + g_confpr->valor ( CONF_DIR_USER ) + "; python " + archivod;
-    system ( cadena.toAscii() );
 #endif
+
+    system ( cadena.toAscii().data() );
 
 
 #ifdef Q_OS_WIN32
-    cadena = g_confpr->valor(CONF_ODS)  + " \"" + g_confpr->valor ( CONF_DIR_USER ) + "listadoods.ods\" &";
+    if (g_confpr->valor ( CONF_ODS ).isEmpty()) {
+	    /// Abre con el programa por defecto del sistema.
+	    cadena = "\"start \"\" \"" + g_confpr->valor ( CONF_DIR_USER ) + "listadoods.ods" + "\"\"";
+    } else {
+	    /// Abre con la configuracion forzada.
+	    cadena = "\"start \"\" \"" + g_confpr->valor ( CONF_ODS ) + "\" \"" + g_confpr->valor ( CONF_DIR_USER ) + "listadoods.ods" + "\"\"";
+    } // end if
 #else
     cadena = g_confpr->valor(CONF_ODS)  + " " + g_confpr->valor ( CONF_DIR_USER ) + "listadoods.ods &";
 #endif
 
-    system ( cadena.toAscii() );
+    int result = system ( cadena.toAscii().data() );
+    if (result == -1) {
+	blMsgError(_("Error al ejecutar el editor de ODS."));
+    } // end if
 
     blDebug ( "END myplugsubformods::sacaods", 0 );
 }
