@@ -160,9 +160,9 @@ void MyPlugProf::inicializa ( BfBulmaFact *bges )
         pGesMenu->addSeparator();
 
         QAction *clases = new QAction ( _ ( "&Clases" ), 0 );
-//        cuotaspalumno->setIcon ( QIcon ( QString::fromUtf8 ( ":/ImgGestionAula/icons/mix_money_32.png" ) ) );
         clases->setStatusTip ( _ ( "Clases" ) );
         clases->setWhatsThis ( _ ( "Clases" ) );
+        clases->setIcon ( QIcon ( QString::fromUtf8 ( ":/ImgGestionAula/icons/warehouse.png" ) ) );
         pGesMenu->addAction ( clases );
         bges->Fichas->addAction ( clases );
         connect ( clases, SIGNAL ( activated() ), this, SLOT ( elslot3() ) );

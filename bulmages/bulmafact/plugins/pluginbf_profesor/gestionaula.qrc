@@ -24,5 +24,6 @@
     <file>icons/reunion-list.png</file>
     <file>icons/asamblea-list.png</file>
     <file>icons/comision-list.png</file>
+    <file>icons/warehouse.png</file>
   </qresource>
 </RCC>
