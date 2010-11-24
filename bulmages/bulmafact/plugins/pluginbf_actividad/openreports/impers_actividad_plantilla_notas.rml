@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+<!DOCTYPE document SYSTEM "rml_1_0.dtd">
+
+<document filename="test.pdf">
+  <template pageSize="(21cm, 29.7cm)" title="Plantilla de notas" author="Tomeu Borras" allowSplitting="20">
+    <pageTemplate id="first">
+      <frame id="first" x1="0.5cm" y1="0.5cm" width="20cm" height="28.7cm"/>
+    </pageTemplate>
+  </template>
+  <stylesheet>
+    <blockTableStyle id="Standard_Outline">
+      <blockAlignment value="LEFT"/>
+      <blockValign value="TOP"/>
+    </blockTableStyle>
+    <blockTableStyle id="Tabla1">
+
+      <blockLeftPadding value="0" start="0,0" stop="-1,-1"/>
+      <blockRightPadding value="0" start="0,0" stop="-1,-1"/>
+      <blockBottomPadding value="0" start="0,0" stop="-1,-1"/>
+      <blockTopPadding value="0" start="0,0" stop="-1,-1"/>
+
+      <blockBackground colorName="lightblue" start="0,0" stop="0,-1"/>
+      <blockBackground colorName="lightblue" start="0,0" stop="-1,0"/>
+
+      <blockAlignment value="LEFT" start="0,0" stop="-1,-1"/>
+      <blockAlignment value="CENTER" start="0,0" stop="-1,0"/>
+      <blockValign value="TOP" start="0,0" stop="-1,-1"/>
+      <lineStyle kind="LINEBEFORE" colorName="#000000" start="0,0" stop="-1,-1"/>
+      <lineStyle kind="LINEAFTER" colorName="#000000" start="0,0" stop="-1,-1"/>
+      <lineStyle kind="LINEABOVE" colorName="#000000" start="0,0" stop="-1,-1"/>
+      <lineStyle kind="LINEBELOW" colorName="#000000" start="0,0" stop="-1,-1"/>
+    </blockTableStyle>
+    <initialize>
+      <paraStyle name="all" alignment="justify"/>
+    </initialize>
+    <paraStyle name="Standard" fontName="Times-Roman"/>
+    <paraStyle name="Heading" fontName="Helvetica" fontSize="14.0" leading="17" spaceBefore="12.0" spaceAfter="6.0"/>
+    <paraStyle name="Text body" fontName="Times-Roman" spaceBefore="0.0" spaceAfter="6.0"/>
+    <paraStyle name="List" fontName="Times-Roman" spaceBefore="0.0" spaceAfter="6.0"/>
+    <paraStyle name="Caption" fontName="Times-Roman" fontSize="12.0" leading="15" spaceBefore="6.0" spaceAfter="6.0"/>
+    <paraStyle name="Index" fontName="Times-Roman"/>
+    <paraStyle name="Table Contents" fontName="Times-Roman"/>
+    <paraStyle name="Table Heading" fontName="Times-Roman" alignment="CENTER"/>
+  </stylesheet>
+  <images/>
+  <story>
+    <para style="Standard">Notas: [nombreactividad]</para>
+<!-- QUERY="SELECT * FROM profesor WHERE idprofesor=[idprofesor]"-->
+    <para style="Standard">Profesor: [nombreprofesor]</para>
+<!-- END QUERY -->
+    <para style="Standard">
+      <font color="black"> </font>
+    </para>
+    <blockTable colWidths="7cm,16.0,16.0,16.0,16.0,16.0,16.0,6cm" style="Tabla1">
+      <tr>
+        <td>
+          <para style="Table Heading">
+            <font color="black">Alumne</font>
+          </para>
+        </td>
+        <td>
+          <para style="Table Heading">
+            <font color="black">Ex</font>
+          </para>
+        </td>
+        <td>
+          <para style="Table Heading">
+            <font color="black">N</font>
+          </para>
+        </td>
+        <td>
+          <para style="Table Heading">
+            <font color="black">B</font>
+          </para>
+        </td>
+        <td>
+          <para style="Table Heading">
+            <font color="black">S</font>
+          </para>
+        </td>
+        <td>
+          <para style="Table Heading">
+            <font color="black">I</font>
+          </para>
+        </td>
+        <td>
+          <para style="Table Heading">
+            <font color="black">MD</font>
+          </para>
+        </td>
+        <td>
+          <para style="Table Heading">
+            <font color="black">Notas</font>
+          </para>
+        </td>
+      </tr>
+
+<!-- QUERY="SELECT row_number() over (order by apellido1alumno, nombrealumno) AS orden,* FROM alumnoactividad LEFT JOIN alumno ON alumnoactividad.idalumno = alumno.idalumno WHERE idactividad=[idactividad] ORDER BY apellido1alumno, nombrealumno"-->
+
+      <tr>
+        <td><para style="Table Contents"><font color="black" size="8"> [orden].-[apellido1alumno] [apellido2alumno] , [nombrealumno] </font></para></td>
+        <td><para style="Table Contents"><font color="black" size="8"></font></para></td>
+        <td><para style="Table Contents"><font color="black" size="8"></font></para></td>
+        <td><para style="Table Contents"><font color="black" size="8"></font></para></td>
+        <td><para style="Table Contents"><font color="black" size="8"></font></para></td>
+        <td><para style="Table Contents"><font color="black" size="8"></font></para></td>
+        <td><para style="Table Contents"><font color="black" size="8"></font></para></td>
+        <td><para style="Table Contents"><font color="black" size="8"></font></para></td>
+      </tr>
+
+
+<!-- END QUERY -->
+
+    </blockTable>
+    <para style="Standard">
+      <font color="black"> </font>
+    </para>
+    <para style="Standard">
+      <font color="black"> </font>
+    </para>
+    <para style="Standard">
+      <font color="black"> </font>
+    </para>
+    <para style="Standard">
+      <font color="black"> </font>
+    </para>
+    <para style="Standard">
+      <font color="black"> </font>
+    </para>
+    <para style="Standard">
+      <font color="black"> </font>
+    </para>
+    <para style="Standard">
+      <font color="black"> </font>
+    </para>
+    <para style="Standard">
+      <font color="black"> </font>
+    </para>
+    <para style="Standard">
+      <font color="black"> </font>
+    </para>
+    <para style="Standard">
+      <font color="black"> </font>
+    </para>
+    <para style="Standard">
+      <font color="black"> </font>
+    </para>
+    <para style="Standard">
+      <font color="black"> </font>
+    </para>
+    <para style="Standard">Firma</para>
+  </story>
+</document>
+

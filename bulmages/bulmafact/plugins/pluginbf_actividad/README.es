@@ -25,7 +25,8 @@ Dependencias: libpluginbf_profesor.so; libpluginbf_alumno.so;libpluginbl_templat
 
 Incompatibles:
 
-Reports: actividad.rml; impers_actividad_cartel.rml; impers_actividad_faltas_de_asistencia.rml; impers_actividad_inscripcion.rml; impers_actividad_faltas.rml; impers_actividad_prestamo.rml
+Reports: actividad.rml; impers_actividad_inscripcion.rml; inf_material_mas_prestado.rml; impers_actividad_cartel.rml; impers_actividad_materialpendiente.rml; inf_prestamos_no_devueltos.rml; impers_actividad_faltas_de_asistencia.rml; impers_actividad_plantilla_notas.rml; impers_actividad_faltas.rml; impers_actividad_prestamo.rml
+
 
 Categorias: Asociaciones de padres de alumnos; Experimentales;
 
