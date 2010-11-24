@@ -49,15 +49,19 @@ int entryPoint ( BlMainWindow *bges )
 
     blDebug ( "myplugincont::elslot", 0 );
 
+   
+    
     /// Vamos a probar con un docwindow.
-    LogoDockWidget *doc1 = new LogoDockWidget ( _("Logotipo"), g_main );
+    BlDockWidget *doc1 = new BlDockWidget ( _("Logotipo"), g_main );
     doc1->setWindowIcon ( QIcon ( QString::fromUtf8 ( ":/BulmaCont32x32/images/png/i_lo32-app-bulmages.png" ) ) );
     doc1->setFeatures ( QDockWidget::AllDockWidgetFeatures );
 
     doc1->setGeometry ( 100, 100, 100, 100 );
     doc1->resize ( 330, 400 );
     g_main->addDockWidget ( Qt::LeftDockWidgetArea, doc1 );
-/*
+
+
+
     QLabel *label = new QLabel();
     label->setFrameStyle(QFrame::Panel | QFrame::Sunken);
     label->setAlignment(Qt::AlignBottom | Qt::AlignRight);
@@ -66,10 +70,9 @@ int entryPoint ( BlMainWindow *bges )
     label->setMinimumSize(100, 100);
 
     doc1->setWidget ( label );
-    */
 
 
-    doc1->setPixmap(QPixmap(g_confpr->valor(CONF_DIR_OPENREPORTS) + "logo.jpg"));
+//    doc1->setPixmap(QPixmap(g_confpr->valor(CONF_DIR_OPENREPORTS) + "logo.jpg"));
 
 
     doc1->show();

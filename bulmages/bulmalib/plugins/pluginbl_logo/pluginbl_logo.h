@@ -27,7 +27,6 @@
 #include "bfcompany.h"
 #include "blmainwindow.h"
 #include "pdefs_pluginbl_logo.h"
-#include "logodockwidget.h"
 
 
 extern "C" PLUGINBL_LOGO_EXPORT int entryPoint ( BlMainWindow * );
