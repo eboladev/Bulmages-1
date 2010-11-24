@@ -20,6 +20,7 @@
 
 #include <QWidget>
 #include <QAction>
+#include <QList>
 
 #include "blworkspace.h"
 #include "local_BlI18n.h"
@@ -66,9 +67,8 @@ void BlWorkspace::addSubWindow ( QWidget * w )
     connect ( w, SIGNAL(hided(QObject *)), sw, SLOT(hide()));
     connect ( w, SIGNAL(hided(QObject *)), this, SIGNAL(deselectDockAll()));
     connect ( w, SIGNAL(showed(QObject *)), sw, SLOT(show()));
-
+    
     QMdiArea::addSubWindow (sw);
-
 
 
     /// Se comprueba el tama&ntilde;o de la ventana que esta dise&ntilde;ada con Designer:
@@ -110,4 +110,5 @@ QWidget *BlWorkspace::activeWindow () const
 {
     return QApplication::activeWindow ();
 }
+
 

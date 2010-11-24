@@ -157,6 +157,7 @@ BlWindowListDock::BlWindowListDock ( QWidget *a ) : QDockWidget ( a )
 {
     blDebug ( "BlWindowListDock::BlWindowListDock", 0 );
     m_listBox = new BlListWidget ( this );
+    m_listBox->setObjectName("indexador");
     m_listBox->setIconSize ( QSize ( 32, 32 ) );
     m_listBox->setContentsMargins ( 0, 0, 0, 0 );
     m_listBox->setSpacing ( 0 );

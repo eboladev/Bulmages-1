@@ -52,7 +52,6 @@ public:
 signals:
     void showed(QObject * obj = 0);
     void hided(QObject * obj = 0);
-
 };
 
 

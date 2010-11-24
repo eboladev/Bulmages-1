@@ -52,6 +52,7 @@ int entryPoint ( QMainWindow *bcont )
     return ( 0 );
 }
 
+
 int BlForm_cargar ( BlForm *ficha )
 {
     blDebug ( "PluginBl_AttachDocument::BlForm_cargar", 0 );
@@ -65,6 +66,7 @@ int BlForm_DesFicha ( BlForm *ficha )
     return 0;
 }
 
+
 ///
 /**
 \param l
@@ -77,3 +79,4 @@ int BlForm_BlForm ( BlForm *l )
     blDebug ( "END PluginBl_AttachDocument::BlForm_BlForm", 0 );
     return 0;
 }
+

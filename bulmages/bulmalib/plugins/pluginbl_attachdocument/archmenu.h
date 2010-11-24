@@ -18,8 +18,8 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#ifndef _ARCHMENU_
-#define _ARCHMENU_
+#ifndef ARCHMENU_H
+#define ARCHMENU_H
 
 #include <QWidget>
 #include <QString>

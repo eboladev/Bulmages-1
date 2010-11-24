@@ -79,6 +79,7 @@ bool BlWidget::event ( QEvent * event )
     } else if (event->type() == QEvent::ShowToParent) {
         emit showed(this);
     } // end if
+    
     return QWidget::event(event);
 }
 

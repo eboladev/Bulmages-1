@@ -18,7 +18,8 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#ifndef Q_OS_WIN32
+#ifndef PLUGINBL_LOGO_H
+#define PLUGINBL_LOGO_H
 
 #include "blfunctions.h"
 #include "blpostgresqlclient.h"
@@ -26,6 +27,7 @@
 #include "bfcompany.h"
 #include "blmainwindow.h"
 #include "pdefs_pluginbl_logo.h"
+#include "logodockwidget.h"
 
 
 extern "C" PLUGINBL_LOGO_EXPORT int entryPoint ( BlMainWindow * );

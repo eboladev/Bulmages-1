@@ -203,6 +203,7 @@ void GenFacQToolButton::generarFactura()
                 linea1->setDbValue ( "cantlfactura", linea->dbValue ( "cantlalbaran" ) );
                 linea1->setDbValue ( "pvplfactura", linea->dbValue ( "pvplalbaran" ) );
                 linea1->setDbValue ( "ivalfactura", linea->dbValue ( "ivalalbaran" ) );
+                linea1->setDbValue ( "reqeqlfactura", linea->dbValue ( "reqeqlalbaran" ) );
                 linea1->setDbValue ( "descuentolfactura", linea->dbValue ( "descuentolalbaran" ) );
                 linea1->setDbValue ( "idarticulo", linea->dbValue ( "idarticulo" ) );
                 linea1->setDbValue ( "nomarticulo", linea->dbValue ( "nomarticulo" ) );

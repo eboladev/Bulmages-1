@@ -18,6 +18,9 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
+#ifndef PLUGINBL_ATTACHDOCUMENT_H
+#define PLUGINBL_ATTACHDOCUMENT_H
+
 #include "blfunctions.h"
 #include "blpostgresqlclient.h"
 #include "blmaincompany.h"
@@ -31,4 +34,6 @@ extern "C" PLUGINBL_ATTACHDOCUMENT_EXPORT int entryPoint ( QMainWindow * );
 extern "C" PLUGINBL_ATTACHDOCUMENT_EXPORT int BlForm_cargar ( BlForm * );
 extern "C" PLUGINBL_ATTACHDOCUMENT_EXPORT int BlForm_DesBlForm ( BlForm * );
 extern "C" PLUGINBL_ATTACHDOCUMENT_EXPORT int BlForm_BlForm ( BlForm * );
+
+#endif
 
