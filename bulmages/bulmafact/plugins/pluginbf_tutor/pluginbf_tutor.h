@@ -39,7 +39,7 @@ extern "C" PLUGINBF_TUTOR_EXPORT int BlSubForm_editFinished(BlSubForm *);
 extern "C" PLUGINBF_TUTOR_EXPORT int BlDbCompleterComboBox_textChanged (BlDbCompleterComboBox *);
 extern "C" PLUGINBF_TUTOR_EXPORT int BfSubForm_pressedAsterisk(BfSubForm *);
 extern "C" PLUGINBF_TUTOR_EXPORT int BlSubForm_BlSubForm_Post ( BlSubForm * );
-
+extern "C" PLUGINBF_TUTOR_EXPORT int Busqueda_on_mui_buscar_clicked(BlSearchWidget *);
 
 class MyPlugProf : public QObject, BlMainCompanyPointer
 {

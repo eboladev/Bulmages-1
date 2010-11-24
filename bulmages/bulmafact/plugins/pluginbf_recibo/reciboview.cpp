@@ -65,6 +65,7 @@ ReciboView::ReciboView ( BfCompany *comp, QWidget *parent ) : BfForm ( comp, par
         mui_idcliente->setMainCompany ( comp );
         mui_idcliente->setLabel ( _ ( "Tutor/Socio:" ) );
         mui_idcliente->setTableName ( "cliente" );
+	mui_idcliente->setFieldId( "idcliente" );
         mui_idcliente->m_valores["nomcliente"] = "";
 
         /// Activamos el listado de lineas de recibo
@@ -201,7 +202,7 @@ void ReciboView::on_mui_reemitir_clicked (  )
    mui_list->setColumnValue("idrecibo", dbValue("idrecibo"));
    mui_list->guardar();
 
-   BlDbRecordSet *curcuota = mainCompany() ->loadQuery ( "SELECT * FOM configuracion WHERE nombre='CuotaDevolucionRecibo'" );
+   BlDbRecordSet *curcuota = mainCompany() ->loadQuery ( "SELECT * FROM configuracion WHERE nombre='CuotaReemisionRecibo'" );
    if (!curcuota->eof()) {
       QString query = "INSERT INTO lrecibo (idrecibo, cantlrecibo, conceptolrecibo) VALUES ("+dbValue("idrecibo")+", "+curcuota->valor("valor")+", \'Cuota por devolucion recibo\')";
       mainCompany()->runQuery(query);

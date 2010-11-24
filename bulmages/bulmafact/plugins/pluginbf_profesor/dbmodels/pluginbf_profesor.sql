@@ -189,8 +189,14 @@ BEGIN
             idlrecibo SERIAL PRIMARY KEY,
             idrecibo INTEGER NOT NULL REFERENCES recibo(idrecibo),
             cantlrecibo NUMERIC(12,2),
+	    ordenlrecibo integer,
             conceptolrecibo VARCHAR
         );
+    END IF;
+
+    SELECT INTO as * FROM pg_attribute WHERE attname = ''ordenlrecibo'';
+    IF NOT FOUND THEN
+            ALTER TABLE lrecibo ADD COLUMN ordenlrecibo integer;
     END IF;
 
     SELECT INTO as * FROM pg_attribute WHERE attname = ''sociocliente'';
@@ -578,9 +584,9 @@ DECLARE
 BEGIN
 	SELECT INTO as * FROM configuracion WHERE nombre=''PluginBf_Profesor'';
 	IF FOUND THEN
-		UPDATE CONFIGURACION SET valor=''0.12.1-0001'' WHERE nombre=''PluginBf_Profesor'';
+		UPDATE CONFIGURACION SET valor=''0.12.1-0002'' WHERE nombre=''PluginBf_Profesor'';
 	ELSE
-		INSERT INTO configuracion (nombre, valor) VALUES (''PluginBf_Profesor'', ''0.12.1-0001'');
+		INSERT INTO configuracion (nombre, valor) VALUES (''PluginBf_Profesor'', ''0.12.1-0002'');
 	END IF;
 	RETURN 0;
 END;
