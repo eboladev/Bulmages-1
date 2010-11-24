@@ -96,15 +96,14 @@ void BtCompany::createMainWindows ( BlSplashScreen *splash )
     splash->setBarraProgreso ( 30 );
     m_progressbar->setValue ( 30 );
 
-    /// Creamos los nuevos tickets.
+    /// Creamos un nuevo ticket vacio.
     m_ticketActual = newBtTicket();
-    //m_ticketActual->setDbValue("nomticket", "");
     
     if ( !m_ticketActual )
         blDebug ( "error en el sistema, reservando memoria.", 0 );
-        
-    //m_listaTickets.append ( m_ticketActual );
 
+    setTicketActual(m_ticketActual);
+    listaTickets()->append(m_ticketActual);
 
     /// Hacemos la sincronizacioin del XML por si hubo tickets sin guardar
     QFile file ( g_confpr->valor ( CONF_DIR_USER ) + "tickets_bulmatpv.xml" );
@@ -118,8 +117,6 @@ void BtCompany::createMainWindows ( BlSplashScreen *splash )
         file.close();
         syncXML(result);    
     } // end if
-
-
     
     /// Disparamos los plugins.
     int res = g_plugins->lanza ( "BtCompany_createMainWindows_Post", this );
@@ -618,7 +615,7 @@ BtTicket *BtCompany::newBtTicket()
         
     bud = new BtTicket ( this, NULL );
     bud->setDbValue("nomticket", bud->nomTicketDefecto());
-
+    
     blDebug ( "END BtCompany::newBtTicket", 0 );
     
     return bud;
