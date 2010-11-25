@@ -99,9 +99,36 @@ TutorView::TutorView ( BfCompany *comp, QWidget *parent ) : BfForm ( comp, paren
 	mui_listrecibos->setInsert ( FALSE );
 	mui_listrecibos->setSortingEnabled ( TRUE );
 
-// =========================================
+        /// Establecemos los parametros de busqueda de Profesor
+        m_idalumno1->setMainCompany ( comp );
+        m_idalumno1->setLabel ( _ ( "Alumno 1:" ) );
+        m_idalumno1->setTableName ( "alumno" );
+        m_idalumno1->setFieldId("idalumno");
+        m_idalumno1->m_valores["nombrealumno"] = "";
 
-
+        /// Establecemos los parametros de busqueda de Profesor
+        m_idalumno2->setMainCompany ( comp );
+        m_idalumno2->setLabel ( _ ( "Alumno 2:" ) );
+        m_idalumno2->setTableName ( "alumno" );
+        m_idalumno2->setFieldId("idalumno");
+        m_idalumno2->m_valores["nombrealumno"] = "";
+	
+        /// Establecemos los parametros de busqueda de Profesor
+        m_idalumno3->setMainCompany ( comp );
+        m_idalumno3->setLabel ( _ ( "Alumno 3:" ) );
+        m_idalumno3->setTableName ( "alumno" );
+        m_idalumno3->setFieldId("idalumno");
+        m_idalumno3->m_valores["nombrealumno"] = "";
+	
+        /// Establecemos los parametros de busqueda de Profesor
+        m_idalumno4->setMainCompany ( comp );
+        m_idalumno4->setLabel ( _ ( "Alumno 4:" ) );
+        m_idalumno4->setTableName ( "alumno" );
+        m_idalumno4->setFieldId("idalumno");
+        m_idalumno4->m_valores["nombrealumno"] = "";
+	
+	
+	
         meteWindow ( windowTitle(), this, FALSE );
         pintar();
         dialogChanges_cargaInicial();
@@ -175,6 +202,34 @@ int TutorView::guardarPost()
     mui_alumnosList->setColumnValue ( "idcliente", dbValue ( "idcliente" ) );
     mui_alumnosList->guardar();
 
+    if (m_idalumno1->id() != "") {
+	    QString sqlquery = "INSERT INTO alumnocliente (idalumno, idcliente) VALUES ("+m_idalumno1->id()+","+dbValue("idcliente")+")";
+	    mainCompany()->runQuery(sqlquery);
+    } // end if
+    
+    
+    if (m_idalumno2->id() != "") {
+	    QString sqlquery = "INSERT INTO alumnocliente (idalumno, idcliente) VALUES ("+m_idalumno2->id()+","+dbValue("idcliente")+")";
+	    mainCompany()->runQuery(sqlquery);
+    } // end if
+    
+    if (m_idalumno3->id() != "") {
+	    QString sqlquery = "INSERT INTO alumnocliente (idalumno, idcliente) VALUES ("+m_idalumno3->id()+","+dbValue("idcliente")+")";
+	    mainCompany()->runQuery(sqlquery);
+    } // end if
+    
+    if (m_idalumno4->id() != "") {
+	    QString sqlquery = "INSERT INTO alumnocliente (idalumno, idcliente) VALUES ("+m_idalumno4->id()+","+dbValue("idcliente")+")";
+	    mainCompany()->runQuery(sqlquery);
+    } // end if
+    
+    
+    m_idalumno1->setId("");
+    m_idalumno2->setId("");
+    m_idalumno3->setId("");
+    m_idalumno4->setId("");
+    
+    /*
     if (mu_nombrealumno_1->text() != "") {
 	QString sqlquery = "INSERT INTO alumno (nombrealumno, apellido1alumno, apellido2alumno) VALUES ('"+mu_nombrealumno_1->text()+"','"+mu_apellido1alumno_1->text()+"','"+mu_apellido2alumno_1->text()+"')";
 	mainCompany()->runQuery(sqlquery);
@@ -237,6 +292,7 @@ int TutorView::guardarPost()
     mu_apellido2alumno_2->setText("");
     mu_apellido2alumno_3->setText("");
     mu_apellido2alumno_4->setText("");
+    */
     /*
 
       if (mui_numsocio->text() != "") {

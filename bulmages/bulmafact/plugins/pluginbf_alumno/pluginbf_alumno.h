@@ -25,6 +25,7 @@
 #include "bfbulmafact.h"
 #include "blwidget.h"
 #include "bfbuscarreferencia.h"
+#include "blsearchwidget.h"
 #include "bfsubform.h"
 #include "pdefs_pluginbf_alumno.h"
 
@@ -32,9 +33,10 @@
 extern "C" PLUGINBF_ALUMNO_EXPORT int entryPoint ( BfBulmaFact * );
 extern "C" PLUGINBF_ALUMNO_EXPORT int BfCompany_createMainWindows_Post(BfCompany *);
 extern "C" PLUGINBF_ALUMNO_EXPORT int BfSubForm_pressedAsterisk(BfSubForm *);
-// extern "C" PLUGINBF_ALUMNO_EXPORT int BlSubForm_BlSubForm_Post ( BlSubForm * );
 extern "C" PLUGINBF_ALUMNO_EXPORT int BlSubForm_BlSubForm_Post ( BlSubForm * );
 extern "C" PLUGINBF_ALUMNO_EXPORT int BlSubForm_preparaMenu ( BlSubForm * );
+extern "C" PLUGINBF_ALUMNO_EXPORT int Busqueda_on_mui_buscar_clicked ( BlSearchWidget * );
+
 
 class MyPlugProf : public QObject, BlMainCompanyPointer
 {
