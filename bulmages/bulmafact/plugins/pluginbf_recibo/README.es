@@ -20,7 +20,7 @@ ArchivoSQLpatch:
 
 ArchivoSQLdeins: 
 
-Dependencias: libpluginbf_asociacion.so;libpluginbf_profesor.so;libpluginbf_formasdepago.so;
+Dependencias: libpluginbf_asociacion.so;libpluginbf_profesor.so;libpluginbf_formasdepago.so
 
 Incompatibles:
 
