@@ -32,7 +32,7 @@ Agregar esta l&iacute;nea en el m&eacute;todo "cargar" del listado que hereda de
 justo despu&eucte;s de BfSubForm::cargar ( consulta ):
 mui_list->setItemDelegateForColumn ( <columna>, new BlDateDelegate ( mainCompany(), this ) );
 */
-class BlDateDelegate: public QStyledItemDelegate
+class BL_EXPORT BlDateDelegate: public QStyledItemDelegate
 {
    public:
 	BlDateDelegate ( BlMainCompany *comp, QObject *parent, bool allowNull = true ) ;
