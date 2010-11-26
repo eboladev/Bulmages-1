@@ -391,7 +391,7 @@ void ListAlumnosTutorView::cargar ( QString idcliente )
 {
     blDebug ( "ListAlumnosTutorView::cargar", 0 );
     
-    BlSubForm::cargar ( "SELECT *, (apellido1alumno || ' ' || apellido2alumno || ', ' || nombrealumno) AS nombrealumno1 FROM alumnocliente LEFT JOIN alumno ON alumnocliente.idalumno = alumno.idalumno  WHERE alumnocliente.idcliente=" + idcliente  );
+    BlSubForm::cargar ( "SELECT *, (COALESCE(apellido1alumno,'-') || ' ' || COALESCE(apellido2alumno,'-') || ', ' || COALESCE(nombrealumno,'-') ) AS nombrealumno1 FROM alumnocliente LEFT JOIN alumno ON alumnocliente.idalumno = alumno.idalumno  WHERE alumnocliente.idcliente=" + idcliente  );
     
     blDebug ( "END ListAlumnosTutorView::cargar", 0 );
 }
