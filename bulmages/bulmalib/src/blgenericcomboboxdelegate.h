@@ -38,7 +38,7 @@ cbd->set_foreign_field ( <nº de la columna que referencia a un elemento de la t
 cbd->initialize ( <nombre del campo virtual para el desplegable> );
 mui_list->setItemDelegateForColumn ( <columna>, cbd );
 */
-class BlGenericComboBoxDelegate: public BlSubFormDelegate
+class BL_EXPORT BlGenericComboBoxDelegate: public BlSubFormDelegate
 {
    Q_OBJECT
 
