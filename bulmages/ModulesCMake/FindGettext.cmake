@@ -133,11 +133,7 @@ add_custom_target( update_lang_po )
 # the macro erase the file previously
 macro(CREATE_FILE_LIST lsource file_list)
 
-if(WIN32)
-   string(ASCII 10 13 line_r)
-else(WIN32)
-   string(ASCII 10 line_r)
-endif(WIN32)
+string(ASCII 10 line_r)
 
 file(REMOVE ${file_list})
 
