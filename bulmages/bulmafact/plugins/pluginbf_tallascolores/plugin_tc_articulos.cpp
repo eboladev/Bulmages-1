@@ -45,7 +45,7 @@ int entryPoint ( BfBulmaFact *bges )
 
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale ( LC_ALL, "" );
-    bindtextdomain ( "plugin_tc_articulos", g_confpr->valor ( CONF_DIR_TRADUCCION ).toAscii().constData() );
+    blBindTextDomain ( "plugin_tc_articulos", g_confpr->valor ( CONF_DIR_TRADUCCION ).toAscii().constData() );
 
     plugin_tc_articulos *plug = new plugin_tc_articulos();
     plug->inicializa ( bges );

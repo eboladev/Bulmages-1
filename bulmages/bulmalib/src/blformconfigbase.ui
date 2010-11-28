@@ -323,7 +323,7 @@
   </layout>
  </widget>
  <includes>
-  <include location="local">local_BlI18n.h</include>
+  <include location="local">local_blI18n.h</include>
  </includes>
  <layoutdefault spacing="0" margin="0" />
  <resources/>

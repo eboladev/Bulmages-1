@@ -2512,7 +2512,7 @@
   </customwidget>
  </customwidgets>
  <includes>
-  <include location="local">local_BlI18n.h</include>
+  <include location="local">local_blI18n.h</include>
  </includes>
  <resources>
   <include location="../../bulmages.qrc"/>

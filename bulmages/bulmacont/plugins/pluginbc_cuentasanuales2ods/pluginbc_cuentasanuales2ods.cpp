@@ -476,7 +476,7 @@ int entryPoint ( BcBulmaCont *bcont )
 
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale ( LC_ALL, "" );
-    bindtextdomain ( "plugincanualesods", g_confpr->valor ( CONF_DIR_TRADUCCION ).toAscii().constData() );
+    blBindTextDomain ( "plugincanualesods", g_confpr->valor ( CONF_DIR_TRADUCCION ).toAscii().constData() );
 
     PluginBc_CuentasAnuales2ODS *plug = new PluginBc_CuentasAnuales2ODS();
     plug->inicializa ( bcont );

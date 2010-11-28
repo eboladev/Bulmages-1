@@ -92,7 +92,7 @@ int entryPoint ( BcBulmaCont *bges )
 
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale ( LC_ALL, "" );
-    bindtextdomain ( "pluginbc_proyectos", g_confpr->valor ( CONF_DIR_TRADUCCION ).toAscii().constData() );
+    blBindTextDomain ( "pluginbc_proyectos", g_confpr->valor ( CONF_DIR_TRADUCCION ).toAscii().constData() );
 
     mytiptrab *plug = new mytiptrab();
     plug->inicializa ( bges );

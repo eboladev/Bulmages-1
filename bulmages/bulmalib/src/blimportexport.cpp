@@ -25,7 +25,7 @@
 
 #include "blapplication.h"
 #include "blimportexport.h"
-#include "local_BlI18n.h"
+#include "local_blI18n.h"
 
 #define EURO                166.386
 #define S_EURO             "166.386"

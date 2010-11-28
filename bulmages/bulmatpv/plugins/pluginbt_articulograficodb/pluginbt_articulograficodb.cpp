@@ -44,7 +44,7 @@ int entryPoint ( BtBulmaTPV *tpv )
 
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale ( LC_ALL, "" );
-    bindtextdomain ( "pluginbt_articulograficodb", g_confpr->valor ( CONF_DIR_TRADUCCION ).toAscii().constData() );
+    blBindTextDomain ( "pluginbt_articulograficodb", g_confpr->valor ( CONF_DIR_TRADUCCION ).toAscii().constData() );
 
     /// Ponemos el widget de pantallas.
     g_pantallas = new BlDockWidget ( "Pantallas", tpv, "pantallasdock" );

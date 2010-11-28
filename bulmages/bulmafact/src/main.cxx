@@ -65,8 +65,8 @@ int main ( int argc, char **argv )
 
       /// Inicializa el sistema de traducciones 'gettext'.
       setlocale(LC_ALL, "");
-      bindtextdomain ("bulmafact", g_confpr->valor(CONF_DIR_TRADUCCION).toAscii().constData());
-      textdomain ("bulmafact");
+      blBindTextDomain ("bulmafact", g_confpr->valor(CONF_DIR_TRADUCCION).toAscii().constData());
+      blTextDomain ("bulmafact");
 
       /// Iniciamos la clase QApplication para el uso de las Qt.
       g_theApp = new BlApplication ( argc, argv );

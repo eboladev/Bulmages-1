@@ -70,13 +70,13 @@ add_executable(bulmatpv   ${bulmatpvEx} ${bulmatpv_RCC_SRCS})
 
 # i18n
 if(WIN32)
-ADD_DEFINITIONS("-D_(String)=BlI18n(\\\"bulmatpv\\\",String)" )
-ADD_DEFINITIONS("-DN_(String,Int)=BlI18n(\\\"bulmatpv\\\",String)" )
+ADD_DEFINITIONS("-D_(String)=blI18n(\\\"bulmatpv\\\",String)" )
+ADD_DEFINITIONS("-DN_(String,Int)=blI18n(\\\"bulmatpv\\\",String)" )
 endif(WIN32)
 
 if(NOT WIN32)
-ADD_DEFINITIONS("-D'_(String)=BlI18n(\"bulmatpv\",String)'" )
-ADD_DEFINITIONS("-D'N_(String,Int)=BlI18n(\"bulmatpv\",String)'" )
+ADD_DEFINITIONS("-D'_(String)=blI18n(\"bulmatpv\",String)'" )
+ADD_DEFINITIONS("-D'N_(String,Int)=blI18n(\"bulmatpv\",String)'" )
 endif(NOT WIN32)
 
 

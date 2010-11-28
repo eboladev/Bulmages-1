@@ -3,7 +3,7 @@
 #include "blfunctions.h"
 #include "bltreewidget.h"
 #include "blplugins.h"
-#include "local_BlI18n.h"
+#include "local_blI18n.h"
 
 BlTreeWidget::BlTreeWidget ( QWidget * parent ) : QTreeWidget(parent) {
 

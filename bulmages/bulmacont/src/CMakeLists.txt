@@ -86,13 +86,13 @@ ENDIF(WIN32)
 
 # i18n
 if(WIN32)
-ADD_DEFINITIONS("-D_(String)=BlI18n(\\\"bulmacont\\\",String)" )
-ADD_DEFINITIONS("-DN_(String,Int)=BlI18n(\\\"bulmacont\\\",String)" )
+ADD_DEFINITIONS("-D_(String)=blI18n(\\\"bulmacont\\\",String)" )
+ADD_DEFINITIONS("-DN_(String,Int)=blI18n(\\\"bulmacont\\\",String)" )
 endif(WIN32)
 
 if(NOT WIN32)
-ADD_DEFINITIONS("-D'_(String)=BlI18n(\"bulmacont\",String)'" )
-ADD_DEFINITIONS("-D'N_(String,Int)=BlI18n(\"bulmacont\",String)'" )
+ADD_DEFINITIONS("-D'_(String)=blI18n(\"bulmacont\",String)'" )
+ADD_DEFINITIONS("-D'N_(String,Int)=blI18n(\"bulmacont\",String)'" )
 endif(NOT WIN32)
 
 if(USE_GETTEXT)

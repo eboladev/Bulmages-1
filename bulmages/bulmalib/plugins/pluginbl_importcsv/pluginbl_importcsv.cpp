@@ -28,7 +28,7 @@
 #include <QObject>
 #include <QProcess>
 
-#include "local_BlI18n.h"
+#include "local_blI18n.h"
 #include "pluginbl_importcsv.h"
 #include "mypluginimportcsv.h"
 
@@ -46,7 +46,7 @@ int entryPoint ( QMainWindow *bges )
 
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale ( LC_ALL, "" );
-    bindtextdomain ( "pluginbl_importcsv", g_confpr->valor ( CONF_DIR_TRADUCCION ).toAscii().constData() );
+    blBindTextDomain ( "pluginbl_importcsv", g_confpr->valor ( CONF_DIR_TRADUCCION ).toAscii().constData() );
 
     g_bges_importcsv = bges;
 

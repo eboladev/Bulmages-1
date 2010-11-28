@@ -141,7 +141,7 @@ int entryPoint ( BfBulmaFact *bges )
 
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale ( LC_ALL, "" );
-    bindtextdomain ( "pluginbf_efactura", confpr->valor ( CONF_DIR_TRADUCCION ).toAscii().constData() );
+    blBindTextDomain ( "pluginbf_efactura", confpr->valor ( CONF_DIR_TRADUCCION ).toAscii().constData() );
 
     efacturabf *efact = new efacturabf();
     efact->inicializa ( bges );

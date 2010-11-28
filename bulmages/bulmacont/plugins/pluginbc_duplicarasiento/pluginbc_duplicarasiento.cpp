@@ -90,7 +90,7 @@ int entryPoint ( BcBulmaCont *bcont )
 
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale ( LC_ALL, "" );
-    bindtextdomain ( "pluginbc_duplicarasiento", g_confpr->valor ( CONF_DIR_TRADUCCION ).toAscii().constData() );
+    blBindTextDomain ( "pluginbc_duplicarasiento", g_confpr->valor ( CONF_DIR_TRADUCCION ).toAscii().constData() );
 
     blDebug ( "END entryPoint::entryPoint", 0 );
     return 0;

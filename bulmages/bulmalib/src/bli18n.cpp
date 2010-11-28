@@ -18,46 +18,44 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
+#include <libintl.h>
+
 #include <QLocale>
 
 #include "bli18n.h"
 #include "blfunctions.h"
 
 
-QString BlI18n ( const char *cadena, int )
-{
 
-#ifdef Q_OS_WIN32
-    return ( cadena );
-#else
+QString blI18n ( const char *cadena, int )
+{
     /// Depuracion:
-    QString salida = QString("BlI18n (") + QString(textdomain(NULL)) + QString(" - ") + QString(gettext(cadena)) + QString(")");
+    QString salida = QString("blI18n (") + QString(blTextDomain(NULL)) + QString(" - ") + QString(gettext(cadena)) + QString(")");
     blDebug(salida, 0);
 
     return QString ( gettext ( cadena ) );
-#endif
 }
 
 
-QString BlI18n ( const char *domain, const char *cadena )
+QString blI18n ( const char *domain, const char *cadena )
 {
-
-#ifdef Q_OS_WIN32
-    return ( cadena );
-#else
     /// Depuracion:
-    QString salida = QString("BlI18n (") + QString(domain) + QString(" - ") + QString(dgettext(domain, cadena)) + QString(")");
+    QString salida = QString("blI18n (") + QString(domain) + QString(" - ") + QString(dgettext(domain, cadena)) + QString(")");
     blDebug(salida, 0);
 
     return QString ( dgettext ( domain, cadena ) );
-#endif
 }
 
 
 
-/// En windows de momento no vamos a usar GETTEXT. Aunque la macro deberia ser #ifdef USE_GETTEXT
-#ifdef Q_OS_WIN32
-void bindtextdomain ( const char *, const char * ) {};
-void textdomain ( const char * ) {};
-#endif
+char* blBindTextDomain ( const char *t1, const char *t2 )
+{
+    return bindtextdomain (t1, t2);
+}
+
+
+char* blTextDomain ( const char *t1 )
+{
+    return textdomain(t1);
+}
 

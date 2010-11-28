@@ -34,7 +34,7 @@
 #include "blfunctions.h"
 #include "blconfiguration.h"
 #include "blmainwindow.h"
-#include "local_BlI18n.h"
+#include "local_blI18n.h"
 
 
 /// Esta funcion permite editar un texto en un QTextEdit y devuelve el texto editado.

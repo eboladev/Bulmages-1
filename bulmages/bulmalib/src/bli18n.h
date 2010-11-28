@@ -22,27 +22,21 @@
 #ifndef BLI18N_H
 #define BLI18N_H
 
+#include <locale.h>
+
 #include <QString>
 
-/// En Windows no se puede usar GETTEXT de momento
-
-#ifndef Q_OS_WIN32
-#include <libintl.h>
-#endif
-
-#include <locale.h>
 #include "bldefs.h"
 
-QString BL_EXPORT BlI18n(const char *, int = 0);
+
+QString BL_EXPORT blI18n(const char *, int = 0);
 
 /// Gettext con dominio
-QString BL_EXPORT BlI18n(const char *, const char *);
+QString BL_EXPORT blI18n(const char *, const char *);
 
 
-#ifdef Q_OS_WIN32
-void BL_EXPORT bindtextdomain(const char *, const char *);
-void BL_EXPORT textdomain(const char *);
-#endif
+char* BL_EXPORT blBindTextDomain(const char *, const char *);
+char* BL_EXPORT blTextDomain(const char *);
 
 
 #endif

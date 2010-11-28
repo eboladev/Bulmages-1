@@ -30,7 +30,7 @@
 #include <QProcess>
 #include <QTextStream>
 
-#include "local_BlI18n.h"
+#include "local_blI18n.h"
 #include "pluginbl_logo.h"
 #include "bfbulmafact.h"
 #include "bcbulmacont.h"
@@ -45,7 +45,7 @@ int entryPoint ( BlMainWindow *bges )
 
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale ( LC_ALL, "" );
-    bindtextdomain ( "pluginbl_logo", g_confpr->valor ( CONF_DIR_TRADUCCION ).toAscii().constData() );
+    blBindTextDomain ( "pluginbl_logo", g_confpr->valor ( CONF_DIR_TRADUCCION ).toAscii().constData() );
 
     blDebug ( "myplugincont::elslot", 0 );
 

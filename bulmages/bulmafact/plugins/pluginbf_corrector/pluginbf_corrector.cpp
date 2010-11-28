@@ -49,7 +49,7 @@ int entryPoint ( BfBulmaFact *bcont )
 
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale ( LC_ALL, "" );
-    bindtextdomain ( "pluginbf_corrector", g_confpr->valor ( CONF_DIR_TRADUCCION ).toAscii().constData() );
+    blBindTextDomain ( "pluginbf_corrector", g_confpr->valor ( CONF_DIR_TRADUCCION ).toAscii().constData() );
 
     BlMainCompany *emp = bcont->company();
     /// Vamos a probar con un docwindow.

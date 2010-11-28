@@ -51,8 +51,8 @@ void initConfiguration ( QString config )
 
 	/// Inicializa el sistema de traducciones 'gettext'.
 	setlocale(LC_ALL, "");
-	bindtextdomain ("bulmalib", g_confpr->valor(CONF_DIR_TRADUCCION).toAscii().constData());
-	textdomain ("bulmalib");
+	blBindTextDomain ("bulmalib", g_confpr->valor(CONF_DIR_TRADUCCION).toAscii().constData());
+	blTextDomain ("bulmalib");
 }
 
 /// Constructor de la clase que hace directamente la lectura de los posibles

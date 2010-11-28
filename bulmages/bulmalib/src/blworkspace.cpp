@@ -23,7 +23,7 @@
 #include <QList>
 
 #include "blworkspace.h"
-#include "local_BlI18n.h"
+#include "local_blI18n.h"
 
 
 ///

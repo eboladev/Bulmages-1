@@ -33,7 +33,7 @@
 #include <QToolButton>
 #include <QPushButton>
 
-#include "local_BlI18n.h"
+#include "local_blI18n.h"
 #include "pluginbl_attachdocument.h"
 #include "blform.h"
 #include "blmaincompany.h"
@@ -47,7 +47,7 @@ int entryPoint ( QMainWindow *bcont )
 
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale ( LC_ALL, "" );
-    bindtextdomain ( "pluginbl_attachdocument", g_confpr->valor ( CONF_DIR_TRADUCCION ).toAscii().constData() );
+    blBindTextDomain ( "pluginbl_attachdocument", g_confpr->valor ( CONF_DIR_TRADUCCION ).toAscii().constData() );
 
     return ( 0 );
 }

@@ -189,7 +189,7 @@ int entryPoint ( BcBulmaCont *bcont )
 
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale ( LC_ALL, "" );
-    bindtextdomain ( "pluginbc_caaslods", g_confpr->valor ( CONF_DIR_TRADUCCION ).toAscii().constData() );
+    blBindTextDomain ( "pluginbc_caaslods", g_confpr->valor ( CONF_DIR_TRADUCCION ).toAscii().constData() );
 
     pluginBC_caaslODS *plug = new pluginBC_caaslODS();
     plug->inicializa ( bcont );
