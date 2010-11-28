@@ -50,12 +50,14 @@ QString blI18n ( const char *domain, const char *cadena )
 
 char* blBindTextDomain ( const char *t1, const char *t2 )
 {
+    bind_textdomain_codeset(t1, "UTF-8");
     return bindtextdomain (t1, t2);
 }
 
 
 char* blTextDomain ( const char *t1 )
 {
+    bind_textdomain_codeset(t1, "UTF-8");
     return textdomain(t1);
 }
 
