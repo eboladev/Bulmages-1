@@ -48,6 +48,7 @@ BlSearchWidget::BlSearchWidget ( QWidget *parent )
     } // end while
 
     m_semaforo = FALSE;
+    m_mask = "";
     
     /// Establecemos la delegacion del foco en el texto
     setFocusProxy(m_textBusqueda);
@@ -75,18 +76,33 @@ void BlSearchWidget::pinta()
 {
     blDebug ( "BlSearchWidget::pinta", 0 );
     m_semaforo = TRUE;
+    QString cad = "";
 
-    /// Inicializamos los valores de vuelta a ""
-    QMapIterator<QString, QString> i ( m_valores );
-    if ( i.hasNext() ) {
-        i.next();
-        m_inputBusqueda->setText ( m_valores[i.key() ] );
+    if (m_mask == "") {
+      
+	/// Iteramos y concatenamos"
+	QMapIterator<QString, QString> i ( m_valores );
+	if ( i.hasNext() ) {
+	    i.next();
+	    m_inputBusqueda->setText ( m_valores[i.key() ] );
+	} // end if
+	while ( i.hasNext() ) {
+	    i.next();
+	    cad = cad + " " + m_valores.value ( i.key() );
+	}
+
+    } else {
+      
+	cad = m_mask;
+	/// Iteramos y reemplazamos
+	QMapIterator<QString, QString> i ( m_valores );
+	while ( i.hasNext() ) {
+	    i.next();
+	    cad.replace("["+i.key()+"]", m_valores.value(i.key()));
+	}
+      
+      
     } // end if
-    QString cad;
-    while ( i.hasNext() ) {
-        i.next();
-        cad = cad + " " + m_valores.value ( i.key() );
-    }
 
     m_textBusqueda->setText ( cad );
 
@@ -454,6 +470,17 @@ QString BlSearchWidget::fieldId(){
   return m_campoid;
 }
 
+QString BlSearchWidget::mask(){
+  return m_mask;
+}
+
+
+void BlSearchWidget::setMask(const QString & val){
+  m_mask = val;
+}
+
+
+
 /// ===================================================================
 /// Busqueda Delegate para usar con los subforms
 /// ===================================================================
@@ -639,5 +666,4 @@ void BlDbCompleterComboBox::on_customContextMenuRequested ( const QPoint & )
     delete popup;
     blDebug ( "END BlDbCompleterComboBox::on_customContextMenuRequested", 0 );
 }
-
 

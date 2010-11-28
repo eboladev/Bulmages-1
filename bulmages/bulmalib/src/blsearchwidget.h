@@ -50,6 +50,10 @@ private:
     QString mdb_id;
     /// Impide que se produzca un dead-lock entre pintar y on_mui_text_changed.
     bool m_semaforo;
+    /// Es la mascara de presentacion, indica en que forma se presentan los
+    /// Campos en el cuadro de texto inferior. Si no esta establecido entonces no se
+    /// utiliza
+    QString m_mask;
 
 public:
     BlSearchWidget ( QWidget *parent = 0 );
@@ -65,6 +69,8 @@ public:
     virtual void setLabel(QString label);
     virtual void setTableName(QString tableName);
     virtual void setText(const QString &);
+    void setMask(const QString &);
+    QString mask();
     QString text();
     void setFieldId ( const QString & );
     QString fieldId();

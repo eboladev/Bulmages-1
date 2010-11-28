@@ -66,7 +66,11 @@ ReciboView::ReciboView ( BfCompany *comp, QWidget *parent ) : BfForm ( comp, par
         mui_idcliente->setLabel ( _ ( "Tutor/Socio:" ) );
         mui_idcliente->setTableName ( "cliente" );
 	mui_idcliente->setFieldId( "idcliente" );
+	mui_idcliente->m_valores["cifcliente"] = "";
         mui_idcliente->m_valores["nomcliente"] = "";
+	mui_idcliente->m_valores["apellido1cliente"] = "";
+	mui_idcliente->m_valores["apellido2cliente"] = "";
+	mui_idcliente->setMask("[cifcliente] .- [apellido1cliente] [apellido2cliente], [nomcliente]");
 
         /// Activamos el listado de lineas de recibo
         mui_list->setMainCompany( comp );
