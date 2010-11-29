@@ -156,18 +156,29 @@ set(bulmalib_UIS	bldblogindialogbase.ui
 			blformlistfilterbase.ui
 			blbankeditbase.ui)
 
-include_directories(
+if (USE_GETTEXT)
+    include_directories(
       ${QT_INCLUDE_DIR}
       ${PGSQL_INCLUDE_DIR}
-      if (USE_GETTEXT)
       ${GETTEXT_INCLUDE_DIR}
-      endif(USE_GETTEXT)
       ${QT_QTXML_INCLUDE_DIR}
       ${CMAKE_CURRENT_BINARY_DIR}
       ${CMAKE_CURRENT_SOURCE_DIR}
       ${CMAKE_SOURCE_DIR}/bulmalib/src/
       ${CMAKE_BINARY_DIR}/bulmalib/src/
       ${CMAKE_SOURCE_DIR}/bulmacont/src/)
+else (USE_GETTEXT)
+    include_directories(
+      ${QT_INCLUDE_DIR}
+      ${PGSQL_INCLUDE_DIR}
+      ${QT_QTXML_INCLUDE_DIR}
+      ${CMAKE_CURRENT_BINARY_DIR}
+      ${CMAKE_CURRENT_SOURCE_DIR}
+      ${CMAKE_SOURCE_DIR}/bulmalib/src/
+      ${CMAKE_BINARY_DIR}/bulmalib/src/
+      ${CMAKE_SOURCE_DIR}/bulmacont/src/)
+endif(USE_GETTEXT)
+
 
 
 # generate rules for building source files from the resources
