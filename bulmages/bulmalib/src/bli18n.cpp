@@ -18,7 +18,9 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#include <libintl.h>
+#ifdef USE_GETTEXT
+	#include <libintl.h>
+#endif
 
 #include <QLocale>
 
@@ -29,35 +31,51 @@
 
 QString blI18n ( const char *cadena, int )
 {
+#ifdef USE_GETTEXT
     /// Depuracion:
     QString salida = QString("blI18n (") + QString(blTextDomain(NULL)) + QString(" - ") + QString(gettext(cadena)) + QString(")");
     blDebug(salida, 0);
 
     return QString ( gettext ( cadena ) );
+#else
+    return QString ( cadena );
+#endif
 }
 
 
 QString blI18n ( const char *domain, const char *cadena )
 {
+#ifdef USE_GETTEXT
     /// Depuracion:
     QString salida = QString("blI18n (") + QString(domain) + QString(" - ") + QString(dgettext(domain, cadena)) + QString(")");
     blDebug(salida, 0);
 
     return QString ( dgettext ( domain, cadena ) );
+#else
+    return QString ( cadena );
+#endif
 }
 
 
 
 char* blBindTextDomain ( const char *t1, const char *t2 )
 {
+#ifdef USE_GETTEXT
     bind_textdomain_codeset(t1, "UTF-8");
     return bindtextdomain (t1, t2);
+#else
+    return (char*) "";
+#endif
 }
 
 
 char* blTextDomain ( const char *t1 )
 {
+#ifdef USE_GETTEXT
     bind_textdomain_codeset(t1, "UTF-8");
     return textdomain(t1);
+#else
+    return (char*) "";
+#endif
 }
 

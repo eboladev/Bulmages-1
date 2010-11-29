@@ -159,6 +159,9 @@ set(bulmalib_UIS	bldblogindialogbase.ui
 include_directories(
       ${QT_INCLUDE_DIR}
       ${PGSQL_INCLUDE_DIR}
+      if (USE_GETTEXT)
+      ${GETTEXT_INCLUDE_DIR}
+      endif(USE_GETTEXT)
       ${QT_QTXML_INCLUDE_DIR}
       ${CMAKE_CURRENT_BINARY_DIR}
       ${CMAKE_CURRENT_SOURCE_DIR}
@@ -182,6 +185,11 @@ IF(WIN32)
 ADD_DEFINITIONS(-DQWT_DLL -DQT_DLL -DQWT_MAKEDLL -DBL_BULMALIB)
 ENDIF(WIN32)
 
+IF(USE_GETTEXT)
+ADD_DEFINITIONS(-DUSE_GETTEXT)
+ENDIF(USE_GETTEXT)
+
+
 # Defines if we want our own debugging code
 #ADD_DEFINITIONS(-DDEPURA_DEBUG)
 
@@ -196,7 +204,12 @@ set_target_properties( bulmalib PROPERTIES
   SOVERSION "${BULMAGES_VERSION_MAJOR}.${BULMAGES_VERSION_MINOR}"
   VERSION "${BULMAGES_VERSION}")
 
-target_link_libraries( bulmalib ${QT_LIBRARIES} ${PGSQL_LIBRARIES} )
+IF(USE_GETTEXT)
+	target_link_libraries( bulmalib ${QT_LIBRARIES} ${PGSQL_LIBRARIES} ${GETTEXT_LIBRARIES} )
+ELSE(USE_GETTEXT)
+	target_link_libraries( bulmalib ${QT_LIBRARIES} ${PGSQL_LIBRARIES} )
+ENDIF(USE_GETTEXT)
+
 
 
 # i18n
