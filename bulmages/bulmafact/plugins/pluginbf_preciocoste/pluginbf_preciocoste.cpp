@@ -124,7 +124,7 @@ int BfSubForm_on_mui_list_editFinished ( BfSubForm *subform )
     BlDbSubFormField *camp = ( BlDbSubFormField * ) subform->item ( subform->m_prevRow, subform->m_prevCol );
     camp->refresh();
 
-    if ( camp->nomcampo() == "pvplalbaranp"  || camp->nomcampo() == "pvplfacturap" ) {
+    if ( camp->nomcampo() == "pvplpedidoproveedor" ||  camp->nomcampo() == "pvplalbaranp"  || camp->nomcampo() == "pvplfacturap" ) {
         BlDbSubFormRecord * rec = subform->lineaat ( subform->currentRow() );
 
         if ( rec->dbValue ( "idarticulo" ) == "" ) return 0;
@@ -154,6 +154,7 @@ int BfSubForm_on_mui_list_editFinished ( BfSubForm *subform )
     } // end if
 
     if ( camp->nomcampo() == "codigocompletoarticulo" ) {
+
         cur = subform->mainCompany() ->loadQuery ( "SELECT * FROM articulo WHERE codigocompletoarticulo = '" + camp->text() + "'" );
         if ( !cur->eof() ) {
             rec->setDbValue ( "idarticulo", cur->valor ( "idarticulo" ) );
@@ -168,7 +169,7 @@ int BfSubForm_on_mui_list_editFinished ( BfSubForm *subform )
                 rec->setDbValue ( "pvp" + subform->tableName(), cur->valor ( "preciocostearticulo" ) );
             } // end if
         } else {
-            blMsgWarning ( subform->tr ( "Articulo inexistente" ) );
+	    /// No hace falta avisar que el articulo es inexistente porque ya se hace en BlSubForm::editFinished.
             delete cur;
             return -1;
         } // end if

@@ -172,13 +172,6 @@ void BfSubForm::editFinished ( int row, int col, BlDbSubFormRecord *rec, BlDbSub
     /// Lanzamos el manejador de la SuperClase para que se atiendan las opciones mas genericas.
     BlSubForm::editFinished ( row, col, rec, camp );
 
-    /// Disparamos los plugins.
-    int res = g_plugins->lanza ( "BfSubForm_on_mui_list_editFinished", this );
-    if ( res != 0 ) {
-        blDebug ( "END BfSubForm::editFinished", 0, "Salida por plugins" );
-        return;
-    } // end if
-
     if ( camp->nomcampo() == "desctipo_iva" ) {
         cur = mainCompany() ->load ( "SELECT * FROM tipo_iva WHERE desctipo_iva = $1",  camp->text());
         if ( !cur->eof() ) {
@@ -265,12 +258,20 @@ void BfSubForm::editFinished ( int row, int col, BlDbSubFormRecord *rec, BlDbSub
             delete cur;
     } // end if
 
+
+    /// Disparamos los plugins.
+    int res = g_plugins->lanza ( "BfSubForm_on_mui_list_editFinished", this );
+    if ( res != 0 ) {
+        blDebug ( "END BfSubForm::editFinished", 0, "Salida por plugins" );
+        return;
+    } // end if
+
     /// Hago la actualizacion del campo total
     if ( (camp->nomcampo() == "codigocompletoarticulo") || (camp->nomcampo() == "cant" + m_tablename) || (camp->nomcampo() == "pvp" + m_tablename)) {
       if (existsHeader("cant" + m_tablename) && existsHeader("pvp" + m_tablename) && existsHeader("total" + m_tablename) ) {
 	/// El campo total es calculado, asi que tratamos su actualización aqui aunque bien podri
 	BlFixed total = BlFixed(rec->dbValue("cant" + m_tablename)) * BlFixed(rec->dbValue("pvp" + m_tablename));
-	rec->setDbValue ( "total"+m_tablename, total.toQString('0',2) );
+	rec->setDbValue ( "total" + m_tablename, total.toQString('0',2) );
       } // end if
     } // end if
     
