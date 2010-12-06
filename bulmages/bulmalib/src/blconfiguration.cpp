@@ -427,6 +427,8 @@ QString BlConfiguration::nombre ( int i )
 	return "CONF_CENTER_TEXT_FIELDS";
     if ( i == CONF_ASK_BEFORE_EXIT )
 	return "CONF_ASK_BEFORE_EXIT";
+    if ( i == CONF_TPV_BASCULA_FILE )
+	return "CONF_TPV_BASCULA_FILE";
     return "";
 }
 
