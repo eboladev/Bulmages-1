@@ -39,7 +39,7 @@ ApunteContableView::ApunteContableView ( BfCompany *comp, QWidget *parent ) : Bf
 {
     blDebug ( "ApunteContableView::ApunteContableView", 0 );
 
-    setAttribute ( Qt::WA_DeleteOnClose );
+//    setAttribute ( Qt::WA_DeleteOnClose );
 
     try {
         setupUi ( this );
@@ -60,7 +60,7 @@ ApunteContableView::ApunteContableView ( BfCompany *comp, QWidget *parent ) : Bf
         mui_list->addSubFormHeader ( "fechaacontable", BlDbField::DbDate, BlDbField::DbNotNull, BlSubFormHeader::DbNone, _ ( "Fecha" ) );
         mui_list->addSubFormHeader ( "codigocompletopartida", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone, _ ( "Codigo Partida" ) );
         mui_list->addSubFormHeader ( "nombrepartida", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone, _ ( "Nombre Partida" ) );
-        mui_list->addSubFormHeader ( "conceptoacontable", BlDbField::DbVarChar, BlDbField::DbNothing , BlSubFormHeader::DbHideView, _ ( "Concepto" ) );
+        mui_list->addSubFormHeader ( "conceptoacontable", BlDbField::DbVarChar, BlDbField::DbNotNull , BlSubFormHeader::DbNone, _ ( "Concepto" ) );
         mui_list->addSubFormHeader ( "debeacontable", BlDbField::DbNumeric, BlDbField::DbNotNull, BlSubFormHeader::DbNone, _ ( "Ingreso" ) );
         mui_list->addSubFormHeader ( "haberacontable", BlDbField::DbNumeric, BlDbField::DbNotNull, BlSubFormHeader::DbNone, _ ( "Gasto" ) );
 
