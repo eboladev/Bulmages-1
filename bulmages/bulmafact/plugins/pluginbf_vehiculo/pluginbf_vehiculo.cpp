@@ -96,6 +96,9 @@ int entryPoint ( BfBulmaFact *bges )
 {
     blDebug ( "entryPoint", 0, "Punto de Entrada del plugin PluginVehiculosBF" );
 
+    /// El plugin necesita un parche en la base de datos para funcionar.
+    bges->company()->dbPatchVersionCheck("PluginBf_Vehiculos", "0.5.9");
+
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale ( LC_ALL, "" );
     blBindTextDomain ( "pluginbf_vehiculo", g_confpr->valor ( CONF_DIR_TRADUCCION ).toAscii().constData() );

@@ -94,6 +94,9 @@ int entryPoint ( BfBulmaFact *bges )
 {
     blDebug ( "Punto de Entrada del plugin de Tarifas\n", 0 );
 
+    /// El plugin necesita un parche en la base de datos para funcionar.
+    bges->company()->dbPatchVersionCheck("PluginBf_Inventario", "0.10.1-0001");
+
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale ( LC_ALL, "" );
     blBindTextDomain ( "pluginbf_inventario", g_confpr->valor ( CONF_DIR_TRADUCCION ).toAscii().constData() );

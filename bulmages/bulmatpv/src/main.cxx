@@ -127,6 +127,9 @@ int main ( int argc, char **argv )
         /// No se va a usar m&aacute;s el gestor de argumentos.
         delete argParser;
 
+        /// Verifica la version de la base de datos para funcionar adecuadamente.
+        bges->empresaTPV()->dbVersionCheck("DBRev-BulmaTPV", "0.10.2-0002");
+
         splashScr->show();
         splashScr->mensaje ( _( "Leyendo configuracion" ) );
         splashScr->setBarraProgreso ( 2 );

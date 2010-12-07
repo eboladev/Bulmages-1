@@ -66,6 +66,8 @@ public:
     void sacaWindow ( QObject *nom );
     void s_indexadorCambiaEstado ( bool );
     void muestraPaises();
+    void dbPatchVersionCheck(QString, QString);
+    void dbVersionCheck(QString, QString);
 
 public slots:
     int deSeleccionaWindow();

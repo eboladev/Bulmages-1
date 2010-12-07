@@ -90,6 +90,9 @@ int entryPoint ( BcBulmaCont *bges )
 {
     blDebug ( "Estoy dentro del plugin de proyectos", 0 );
 
+    /// El plugin necesita un parche en la base de datos para funcionar.
+    bges->empresaactual()->dbPatchVersionCheck("PluginBc_Proyectos", "0.10.1-0001");
+
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale ( LC_ALL, "" );
     blBindTextDomain ( "pluginbc_proyectos", g_confpr->valor ( CONF_DIR_TRADUCCION ).toAscii().constData() );

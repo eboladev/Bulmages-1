@@ -29,9 +29,12 @@
 /**
 \return
 **/
-int entryPoint ( BfBulmaFact * )
+int entryPoint ( BfBulmaFact *bges )
 {
     blDebug ( "Estoy dentro del plugin de precio de Coste", 0 );
+
+    /// El plugin necesita un parche en la base de datos para funcionar.
+    bges->company()->dbPatchVersionCheck("PluginBf_PrecioCoste", "0.10.1-0002");
 
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale ( LC_ALL, "" );

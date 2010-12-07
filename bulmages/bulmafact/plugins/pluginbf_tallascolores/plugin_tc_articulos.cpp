@@ -43,6 +43,9 @@ int entryPoint ( BfBulmaFact *bges )
 {
     blDebug ( "Estoy dentro del plugin de tallas y colores", 0 );
 
+    /// El plugin necesita un parche en la base de datos para funcionar.
+    bges->company()->dbPatchVersionCheck("PluginBf_Tallas-y-Colores", "0.11.1-0001");
+
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale ( LC_ALL, "" );
     blBindTextDomain ( "plugin_tc_articulos", g_confpr->valor ( CONF_DIR_TRADUCCION ).toAscii().constData() );

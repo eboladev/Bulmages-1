@@ -97,6 +97,9 @@ int entryPoint ( BfBulmaFact *bges )
 {
     blDebug ( "entryPoint", 0, "Punto de Entrada del plugin PluginTrazabilidad" );
 
+    /// El plugin necesita un parche en la base de datos para funcionar.
+    bges->company()->dbPatchVersionCheck("PluginBf_Trazabilidad", "0.9.1");
+    
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale ( LC_ALL, "" );
     blBindTextDomain ( "plugintrazabilidad", g_confpr->valor ( CONF_DIR_TRADUCCION ).toAscii().constData() );

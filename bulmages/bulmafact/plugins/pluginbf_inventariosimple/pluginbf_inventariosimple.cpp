@@ -97,6 +97,9 @@ int entryPoint ( BfBulmaFact *bges )
 {
     blDebug ( "Punto de Entrada del plugin de Inventario Simple\n", 0 );
 
+    /// El plugin necesita un parche en la base de datos para funcionar.
+    bges->company()->dbPatchVersionCheck("PluginBf_InventarioSimple", "0.11.1-0001");
+
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale ( LC_ALL, "" );
     blBindTextDomain ( "pluginbf_inventariosimple", g_confpr->valor ( CONF_DIR_TRADUCCION ).toAscii().constData() );
@@ -105,6 +108,7 @@ int entryPoint ( BfBulmaFact *bges )
     plug->inicializa ( bges );
     return 0;
 }
+
 
 int ActividadView_ActividadView(ActividadView *act) {
   blDebug("pluginbf_inventariosimple::ActividadView_ActividadView", 0);

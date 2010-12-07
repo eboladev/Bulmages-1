@@ -235,3 +235,44 @@ void BlMainCompany::muestraPaises()
     blDebug ( "END BlMainCompany::muestrapaises", 0 );
 }
 
+
+///
+/**
+**/
+void BlMainCompany::dbPatchVersionCheck(QString plugin, QString version)
+{
+    QString query = "SELECT * FROM configuracion WHERE nombre = '" + sanearCadena(plugin) + "'";
+    BlDbRecordSet *rs;
+    rs = loadQuery ( query );
+
+    if ( rs != NULL ) {
+      if (rs->valor("valor") != version) {
+        /// La version del plugin no coincide con la version del parche instalado en la base de datos.
+        blMsgError(_("La base de datos no esta preparada para el plugin:") + " " + plugin + ".\n" + _("El programa no funcionara adecuadamente.") );
+      } // end if
+    } // end if
+
+    delete rs;
+}
+
+
+///
+/**
+**/
+void BlMainCompany::dbVersionCheck(QString program, QString version)
+{
+    QString query = "SELECT * FROM configuracion WHERE nombre = '" + sanearCadena(program) + "'";
+    BlDbRecordSet *rs;
+    rs = loadQuery ( query );
+
+    if ( rs != NULL ) {
+      if (rs->valor("valor") != version) {
+        /// La version del programa no coincide con la version de la base de datos instalada.
+        blMsgError(_("La version de la base de datos no coincide con el programa.\nEl programa no funcionara adecuadamente.") );
+      } // end if
+    } // end if
+
+    delete rs;
+}
+
+

@@ -151,7 +151,7 @@ BEGIN
 	IF FOUND THEN
 		UPDATE CONFIGURACION SET valor = ''0.5.9'' WHERE nombre = ''PluginBf_Comercial'';
 	ELSE
-		INSERT INTO configuracion (nombre, valor) VALUES (''PluginBf_Comercial'', ''0.5.9''); 		 
+		INSERT INTO configuracion (nombre, valor) VALUES (''PluginBf_Comercial'', ''0.5.9'');
 	END IF;
 	RETURN 0;
 END;

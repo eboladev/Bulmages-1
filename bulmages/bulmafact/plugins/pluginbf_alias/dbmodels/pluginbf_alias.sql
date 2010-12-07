@@ -1,5 +1,5 @@
 --
--- Modificación de campos y funciones de la BD para la adaptacion para el plugin de Trazabilidad
+-- Modificacion de campos y funciones de la BD para la adaptacion para el plugin de Alias.
 --
 \echo "********* INICIADO FICHERO DE ESTRUCTURA DEL PLUGIN DE ALIAS *********"
 
@@ -11,18 +11,18 @@ SET log_min_messages TO WARNING;
 BEGIN;
 
 --
--- Estas primeras funciones cambiar� los tipos de columnas que est� como flotantes a NUMERIC.
+-- Estas primeras funciones cambiaran los tipos de columnas que estan como flotantes a NUMERIC.
 -- Se trata de un parche que se desea aplicar para almacenar los tipos monetarios
 -- ya que actualmente se encuantran almacenados como 'doubles' y es preferible
 -- que se almacenen como tipo 'numeric'.
--- Todas devuelven como valor num�ico el nmero de filas influenciadas por el cambio
--- NOTA: Si alguien sabe como pasar por par�etro un nombre de tabla y campo a modificar se
--- har� mucho m� sencillito porque s�o habr� que implementar un funci� ya que siempre
+-- Todas devuelven como valor numerico el nmero de filas influenciadas por el cambio
+-- NOTA: Si alguien sabe como pasar por parametro un nombre de tabla y campo a modificar se
+-- hara mucho mas sencillito porque solo habra que implementar una funcion ya que siempre
 -- hay que hacer lo mismo.
 --
 
 --
--- Función auxiliar para borrar funciones limpiamente
+-- Funcion auxiliar para borrar funciones limpiamente
 --
 create or replace function drop_if_exists_table (text) returns INTEGER AS '
 DECLARE
@@ -97,7 +97,7 @@ create index ix_alias_len_cadalias on alias (length(cadalias));
 -- ==============================================================================
 
 
--- Agregamos nuevos parametros de configuraci�.
+-- Agregamos nuevos parametros de configuracion.
 --
 CREATE OR REPLACE FUNCTION actualizarevision() RETURNS INTEGER AS '
 DECLARE

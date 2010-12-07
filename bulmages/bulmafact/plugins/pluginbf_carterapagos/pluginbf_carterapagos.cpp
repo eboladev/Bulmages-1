@@ -100,6 +100,10 @@ void MyPluginCarteraPagos::inicializa ( BfBulmaFact *bges )
 int entryPoint ( BfBulmaFact *bges )
 {
     blDebug ( "Punto de Entrada del plugin de Cartera de Pagos\n", 0 );
+
+    /// El plugin necesita un parche en la base de datos para funcionar.
+    bges->company()->dbPatchVersionCheck("DBRev-CarteraPagos", "0.11.1-0001");
+    
     MyPluginCarteraPagos *plug = new MyPluginCarteraPagos();
     plug->inicializa ( bges );
     return 0;

@@ -42,6 +42,9 @@ int entryPoint ( BfBulmaFact *bges )
 {
 
     blDebug ( "Punto de entrada del plugin de alias\n", 0 );
+    
+    /// El plugin necesita un parche en la base de datos para funcionar.
+    bges->company()->dbPatchVersionCheck("PluginBf_Alias", "0.11.2");
 
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale ( LC_ALL, "" );
@@ -345,9 +348,4 @@ int BlDbCompleterComboBox_textChanged (BlDbCompleterComboBox *bl) {
 
     return 0;
 }
-
-
-
-
-
 

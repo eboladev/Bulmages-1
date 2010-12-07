@@ -43,6 +43,9 @@ int entryPoint ( BfBulmaFact *bges )
 {
     blDebug ( "entryPoint", 0, "Punto de Entrada del plugin ComercialBF" );
 
+    /// El plugin necesita un parche en la base de datos para funcionar.
+    bges->company()->dbPatchVersionCheck("PluginBf_Comercial", "0.5.9");
+
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale ( LC_ALL, "" );
     blBindTextDomain ( "pluginbf_comercial", g_confpr->valor ( CONF_DIR_TRADUCCION ).toAscii().constData() );

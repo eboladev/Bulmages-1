@@ -54,8 +54,6 @@ private:
     QList<BtTicket *> m_listaTickets;
     BtTicket *m_ticketActual;
 
-
-
 public:
     BtCompany ( BtBulmaTPV *bges );
     virtual ~BtCompany();
@@ -72,8 +70,6 @@ public:
     void compruebaUltimaZ();
     virtual QString exportXML();
     virtual void syncXML(const QString &);
-
-
 };
 
 #endif

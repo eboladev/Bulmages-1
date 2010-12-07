@@ -40,6 +40,9 @@ int entryPoint ( BfBulmaFact *bf )
 {
     blDebug ( "Estoy dentro del plugin SincroBulmacont", 0 );
 
+    /// El plugin necesita un parche en la base de datos para funcionar.
+    bf->company()->dbPatchVersionCheck("PluginBf_SincroBulmacont", "0.9.1-002");
+    
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale ( LC_ALL, "" );
     blBindTextDomain ( "pluginbf_sincrobulmacont", g_confpr->valor ( CONF_DIR_TRADUCCION ).toAscii().constData() );

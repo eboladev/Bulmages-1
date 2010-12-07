@@ -42,8 +42,7 @@
 
 int entryPoint ( QMainWindow *bcont )
 {
-    blDebug ( "Entrada del plugin Bloqueos", 0 );
-    blDebug ( "Iniciado correctamente el plugin Bloqueos", 10 );
+    blDebug ( "Entrada del plugin AttachDocument", 0 );
 
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale ( LC_ALL, "" );
@@ -75,6 +74,11 @@ int BlForm_DesFicha ( BlForm *ficha )
 int BlForm_BlForm ( BlForm *l )
 {
     blDebug ( "PluginBl_AttacgDocument::BlForm_BlForm", 0 );
+
+    /// El plugin necesita un parche en la base de datos para funcionar.
+    /// No se puede comprobar en entryPoint porque no se tiene acceso a MainCompany
+    l->mainCompany()->dbPatchVersionCheck("PluginBl_AttachDocument", "0.11.1-0001");
+
     new ArchMenu ( l );
     blDebug ( "END PluginBl_AttachDocument::BlForm_BlForm", 0 );
     return 0;
