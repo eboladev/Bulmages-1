@@ -40,6 +40,8 @@ extern "C" PLUGINBF_TUTOR_EXPORT int BlDbCompleterComboBox_textChanged (BlDbComp
 extern "C" PLUGINBF_TUTOR_EXPORT int BfSubForm_pressedAsterisk(BfSubForm *);
 extern "C" PLUGINBF_TUTOR_EXPORT int BlSubForm_BlSubForm_Post ( BlSubForm * );
 extern "C" PLUGINBF_TUTOR_EXPORT int Busqueda_on_mui_buscar_clicked(BlSearchWidget *);
+extern "C" PLUGINBF_TUTOR_EXPORT int BlSubForm_preparaMenu ( BlSubForm * );
+
 
 class MyPlugProf : public QObject, BlMainCompanyPointer
 {

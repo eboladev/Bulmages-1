@@ -57,6 +57,22 @@ public slots:
 };
 
 
+/// Muestra y administra los alumnos de una actividad.
+/** */
+class PLUGINBF_ACTIVIDAD_EXPORT ListTutoresActividadView : public BfSubForm
+{
+    Q_OBJECT
+
+public:
+    ListTutoresActividadView ( QWidget *parent = 0 );
+    ~ListTutoresActividadView() {};
+    
+public slots:
+    virtual void cargar ( QString idactividad );
+};
+
+
+
 /// Muestra y administra las faltas de asistencia de una actividad.
 /** */
 class PLUGINBF_ACTIVIDAD_EXPORT ListFaltasAsistenciaActividadView : public BfSubForm

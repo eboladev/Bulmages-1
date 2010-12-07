@@ -357,6 +357,17 @@ BEGIN
             idactividad INTEGER NOT NULL REFERENCES actividad(idactividad)
         );
     END IF;
+
+    SELECT INTO as * FROM pg_tables  WHERE tablename=''clienteactividad'';
+    IF NOT FOUND THEN
+        CREATE TABLE clienteactividad (
+            idclienteactividad SERIAL PRIMARY KEY,
+            idcliente INTEGER NOT NULL REFERENCES cliente(idcliente),
+            idactividad INTEGER NOT NULL REFERENCES actividad(idactividad)
+        );
+    END IF;
+
+
     
     SELECT INTO as * FROM pg_tables  WHERE tablename=''sesionactividad'';
     IF NOT FOUND THEN

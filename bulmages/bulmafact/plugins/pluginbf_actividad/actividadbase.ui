@@ -605,6 +605,16 @@
        </item>
       </layout>
      </widget>
+     <widget class="QWidget" name="tab">
+      <attribute name="title">
+       <string>Tutores</string>
+      </attribute>
+      <layout class="QGridLayout" name="gridLayout">
+       <item row="0" column="0">
+        <widget class="ListTutoresActividadView" name="mui_tutoresList"/>
+       </item>
+      </layout>
+     </widget>
      <widget class="QWidget" name="tab_4">
       <attribute name="title">
        <string>Asistencias</string>
@@ -690,6 +700,11 @@
    <class>BlPeriodicityComboBox</class>
    <extends>QComboBox</extends>
    <header>blperiodicitycombobox.h</header>
+  </customwidget>
+  <customwidget>
+   <class>ListTutoresActividadView</class>
+   <extends>QTableWidget</extends>
+   <header>actividadview.h</header>
   </customwidget>
  </customwidgets>
  <tabstops>

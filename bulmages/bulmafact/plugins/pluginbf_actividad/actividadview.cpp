@@ -86,6 +86,7 @@ ActividadView::ActividadView ( BfCompany *comp, QWidget *parent )
         /// Inicializamos el subformulario de alumnos
         mui_alumnosList->setMainCompany ( comp );
         mui_faltasAsistenciaList->setMainCompany ( comp );
+	mui_tutoresList->setMainCompany( comp );
 
         /// Establecemos los parametros de busqueda de Profesor
         mui_idprofesor->setMainCompany ( comp );
@@ -163,6 +164,9 @@ int ActividadView::guardarPost()
     mui_faltasAsistenciaList->setColumnValue ( "idactividad", dbValue ( "idactividad" ) );
     mui_faltasAsistenciaList->guardar();
     
+    mui_tutoresList->setColumnValue ( "idactividad", dbValue ( "idactividad" ) );
+    mui_tutoresList->guardar();
+    
     blDebug ( "END ActividadView::guardarPost", 0 );
     return 0;
 }
@@ -172,6 +176,9 @@ int ActividadView::borrarPre()
     blDebug ( "ActividadView::borrarPre", 0 );
     
     QString query = "DELETE FROM alumnoactividad WHERE idactividad=" + dbValue ( "idactividad" );
+    mainCompany()->runQuery ( query );
+    
+    query = "DELETE FROM clienteactividad WHERE idactividad=" + dbValue ( "idactividad" );
     mainCompany()->runQuery ( query );
     
     blDebug ( "END ActividadView::borrarPre", 0 );
@@ -185,6 +192,7 @@ int ActividadView::cargarPost ( QString id )
 
     mui_alumnosList->cargar ( id );
     mui_faltasAsistenciaList->cargar ( id );
+    mui_tutoresList->cargar ( id );
 
     blDebug ( "END ActividadView::cargarPost", 0 );
     
@@ -228,6 +236,48 @@ void ListAlumnosActividadView::cargar ( QString idactividad )
     
     blDebug ( "END ListAlumnosActividadView::cargar", 0 );
 }
+
+
+///
+/**
+\param parent
+**/
+ListTutoresActividadView::ListTutoresActividadView ( QWidget *parent ) : BfSubForm ( parent )
+{
+    blDebug ( "ListTutoresActividadView::ListTutoresActividadView", 0 );
+    
+    setDbTableName ( "clienteactividad" );
+    setDbFieldId ( "idclienteactividad" );
+    addSubFormHeader ( "idclienteactividad", BlDbField::DbInt, BlDbField::DbPrimaryKey , BlSubFormHeader::DbHideView, _ ( "Identificador" ) );
+    addSubFormHeader ( "idcliente", BlDbField::DbInt, BlDbField::DbNotNull | BlDbField::DbRequired , BlSubFormHeader::DbHideView, _ ( "Id tutor" ) );
+    addSubFormHeader ( "nombretutor1", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone, _ ( "Nombre tutor" ) );
+    addSubFormHeader ( "cifcliente", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone, _ ( "CIF" ) );
+//    addSubFormHeader ( "nomcliente", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone, _ ( "Nombre" ) );
+    addSubFormHeader ( "idactividad", BlDbField::DbInt, BlDbField::DbNothing, BlSubFormHeader::DbHideView, _ ( "Id Actividad" ) );
+
+    setInsert ( TRUE );
+    setSortingEnabled ( TRUE );
+    
+    blDebug ( "END ListTutoresActividadView::ListTutoresActividadView", 0 );
+}
+
+///
+/**
+\param idactividad
+**/
+void ListTutoresActividadView::cargar ( QString idactividad )
+{
+    blDebug ( "ListTutoresActividadView::cargar", 0 );
+    
+    BlSubForm::cargar ( "SELECT *, ( COALESCE(apellido1cliente,'') || ' ' || COALESCE(apellido2cliente,'') || ', ' || COALESCE(nomcliente,'')) AS nombretutor1 FROM clienteactividad LEFT JOIN cliente ON clienteactividad.idcliente = cliente.idcliente WHERE clienteactividad.idactividad=" + idactividad  );
+    
+    blDebug ( "END ListTutoresActividadView::cargar", 0 );
+}
+
+
+
+
+
 
 ///
 /**

@@ -396,7 +396,9 @@ void MyPlugTutor1::s_pintaMenu ( QMenu *menu )
 {
     blDebug ( "MyPlugTutor1::s_pintaMenu", 0 );
     BfSubForm *sub = ( BfSubForm * ) parent();
-    BlSubFormHeader *header = sub->header ( "nomcliente" );
+    BlSubFormHeader *header = sub->header ( "cifcliente" );
+    if (!header)
+      header = sub->header ( "nomcliente" );
     if ( header ) {
         menu->addSeparator();
         menu->addAction (QIcon ( QString::fromUtf8 ( ":/ImgGestionAula/icons/tutor.png" ) ),  _ ( "Nuevo tutor" ) );
@@ -546,6 +548,8 @@ int BlSubForm_preparaMenu ( BlSubForm *sub ) {
     blDebug ( "BlSubForm_preparaMenu", 0 );
 
     BlSubFormHeader *header = sub->header ( "cifcliente" );
+    if (!header)
+      header = sub->header ( "nomcliente" );
     if ( header ) {
         MyPlugTutor1 *subformods = new MyPlugTutor1 ( sub );
         
