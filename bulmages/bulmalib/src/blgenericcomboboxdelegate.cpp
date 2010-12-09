@@ -119,7 +119,7 @@ void BlGenericComboBoxDelegate::setAllowNull ( bool v )
 **/
 void BlGenericComboBoxDelegate::initialize ( const QString &combo_field_name )
 {
-   blDebug ( "BlGenericComboBoxDelegate::initialize", 0 );
+   blDebug ( "BlGenericComboBoxDelegate::initialize", 0, combo_field_name );
 
    m_combo_field_name = combo_field_name;
 
@@ -130,7 +130,12 @@ void BlGenericComboBoxDelegate::initialize ( const QString &combo_field_name )
    || m_text_field.isEmpty()
    || m_combo_field_name.isEmpty() ) {
 	blMsgError ( _( "Falta definir algún parámetro necesario para BlGenericComboBoxDelegate." ) , (QWidget *) parent() );
-   }
+   } // end if
+
+   // Mientras rellenamos los campos de la columna basada en una lista desplegable,
+   // desactivamos la ordenaci&oacute;n, ya que si estuviese activada la tabla se reordenar&iacute;a tras
+   // agregar cada valor y a mitad del proceso los campos empezar&iacute;an a quedarse en blanco
+   m_subform->setSortingEnabled ( false );
 
    /// En vez de dibujar los valores en paint, los establecemos como datos de la tabla
    /// para evitar pegas con ordenación, filtros e impresión
@@ -138,14 +143,18 @@ void BlGenericComboBoxDelegate::initialize ( const QString &combo_field_name )
    {
 	QString fk_id = m_subform->dbValue ( m_fk_field_name, i );
 
-	if ( fk_id.isEmpty() ) continue;
+	if ( fk_id.isEmpty() )
+		continue;
 
 	QString valor = m_company->loadQuery ( query_only_one ( fk_id ) )->valor ( m_text_field );
 
 	m_subform->setDbValue(combo_field_name, i, valor);
    } // end for
 
-   blDebug ( "END BlGenericComboBoxDelegate::initialize", 0 );
+   // Reactivamos la ordenaci&oacute;n
+   m_subform->setSortingEnabled(true);
+
+   blDebug ( "END BlGenericComboBoxDelegate::initialize", 0, combo_field_name );
 }
 
 
