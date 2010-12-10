@@ -2636,7 +2636,7 @@ QString BlSubForm::formatFieldTableStory(BlDbSubFormField *value, QLocale spanis
         if ( value->checkState() == Qt::Checked )
         {
            field += "<td><para style=\"checked\" vAlign=\"middle\">";
-           field += blXMLEncode ( "&#9679;" );
+           field +=  "&#9679;" ;
         }
         else
            field += "<td><para>";
