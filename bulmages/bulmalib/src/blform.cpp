@@ -1001,7 +1001,7 @@ void BlForm::substrVars ( QString &buff, int tipoEscape )
 }
 
 
-/// Busca strings del tipo [xxxx] entro del texto pasado y los sustituye
+/// Busca strings del tipo [xxxx] dentro del texto pasado y los sustituye
 /// Por valores existentes en la base de datos.
 /// Tambien busca los parametros PARAM e IFACE para tambien tratarlos.
 /// Devuelve 1 Si todo esta OK o 0 Si hay algun error

@@ -98,6 +98,7 @@ void DatosView::on_mui_aceptar_clicked() {
     }
    } // end if
 
+
    // Se pulso el boton 'cancelar'
    if ( resultado ) {
       if ( generaRML ( m_informe ) )
@@ -123,3 +124,23 @@ void DatosView::on_mui_cancelar_clicked()
 {
    resultado = true;
 }
+
+
+int DatosView::trataTags(QString &buff, int)
+{
+
+    buff.replace ( "[CONF_DBNAME]", blPythonEscape ( mainCompany()->dbName() ) );
+    buff.replace ( "[CONF_DBUSER]", blPythonEscape ( mainCompany()->currentUser() ) );
+
+    substrConf ( buff );
+    
+    buff.replace ( "[fechaactual]", blPythonEscape ( QDate::currentDate().toString ( "dd/MM/yyyy" ) ) );
+    buff.replace ( "[fechainicialactual]", blPythonEscape ( dbValue("fechainicialactual") ) );
+    buff.replace ( "[fechafinalactual]", blPythonEscape ( dbValue("fechafinalactual") ) );
+    buff.replace ( "[fechainicialanterior]", blPythonEscape ( dbValue("fechainicialanterior") ) );
+    buff.replace ( "[fechafinalanterior]", blPythonEscape ( dbValue("fechafinalanterior") ) );
+    
+    return 1;
+}
+
+

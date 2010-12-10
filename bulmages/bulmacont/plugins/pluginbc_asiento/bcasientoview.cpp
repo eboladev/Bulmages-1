@@ -224,6 +224,9 @@ void BcAsientoView::iniciar_asiento_nuevo ( QString nuevoordenasiento )
         query = "INSERT INTO asiento ( fecha, ordenasiento) VALUES ('" + mainCompany() ->sanearCadena ( fecha ) + "', " + ordenasiento + ")";
         mainCompany() ->runQuery ( query );
 
+
+	/// TODO: el codigo que sigue no es correcto porque puede haber otras inserciones antes de capturar el Id.
+	/// Hay que hacerlo usando 'currval'. Leer documentacion postgresql.
         query = "SELECT MAX(idasiento) AS id FROM asiento";
         cur = mainCompany() ->loadQuery ( query );
         if ( !cur->eof() )
