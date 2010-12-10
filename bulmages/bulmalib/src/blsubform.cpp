@@ -1423,12 +1423,19 @@ void BlSubForm::cargar ( BlDbRecordSet *cur )
 
     /// Inicializamos la tabla con las filas necesarias.
     mui_list->setRowCount ( m_lista.count() );
-    barra->setRange ( 0, m_lista.size() );
-    for ( int i = 0; i < m_lista.size(); ++i ) {
+
+    /// Rendimiento: a partir de aqu&iacute; m_lista ya no cambia, así que ya podemos usar una constante
+    /// para guardar la cantidad de elementos y no volver a invocar al m&eacute;todo size()
+    const int m_lista_size = m_lista.size();
+
+    /// Rendimiento: estas variables s&oacute;lo se usan en el bucle, pero no es necesario crearlas en cada iteración
+    QRegExp patronFecha ( "^.*00:00:00.*$" ); /// Para emparejar los valores fechas.
+    QFont bold;
+    bold.setBold ( true );
+
+    barra->setRange ( 0, m_lista_size );
+    for ( int i = 0; i < m_lista_size; ++i ) {
         reg = m_lista.at ( i );
-        QRegExp patronFecha ( "^.*00:00:00.*$" ); /// Para emparejar los valores fechas.
-        QFont bold;
-        bold.setBold ( true );
         for ( int j = 0; j < reg->lista() ->size(); ++j ) {
            /// Pone en negrita el texto de la cabecera de las columnas editables
            if ( i == 0 && ! ( m_lcabecera [ j ] -> options() & BlSubFormHeader::DbNoWrite ) ) {
@@ -1454,7 +1461,7 @@ void BlSubForm::cargar ( BlDbRecordSet *cur )
     m_filaInicialRowSpan = -1;
 
     /// Pone el 'rowSpan' a las filas que son iguales.
-    for ( int i = 0; i < m_lista.size(); ++i ) {
+    for ( int i = 0; i < m_lista_size; ++i ) {
         reg = m_lista.at ( i );
         for ( int j = 0; j < reg->lista() ->size(); ++j ) {
             BlSubFormHeader *head = m_lcabecera.at ( j );
@@ -1472,7 +1479,7 @@ void BlSubForm::cargar ( BlDbRecordSet *cur )
                             m_filaInicialRowSpan = i - 1;
                         } // end if
                         /// hay un registro despu&eacute;s. No, dibuja 'rowSpan'.
-                        if ( i == ( m_lista.size() - 1 ) ) {
+                        if ( i == ( m_lista_size - 1 ) ) {
                             ponItemColorFondo ( mui_list, m_filaInicialRowSpan, i - m_filaInicialRowSpan + 1, colorfondo );
                             mui_list->setSpan ( m_filaInicialRowSpan, j, i - m_filaInicialRowSpan + 1, 1 );
 
