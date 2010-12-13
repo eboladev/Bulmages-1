@@ -19,7 +19,7 @@
 <!-- TURNWHITEBLACK "0"-->
 
 <!-- SETJUSTIFICATION "RIGHT" --><!-- SETUNDERLINEMODE "0" --><!-- SETCHARACTERSIZE "119" --><!-- SETCHARACTERPRINTMODE " DOUBLE_WIDTH DOUBLE_HEIGHT CHARACTER_FONTA_SELECTED" -->
-<!-- QUERY="SELECT sum(cantlalbaran*pvpivainclalbaran)::NUMERIC(12,2) AS subtotal FROM lalbaran  WHERE idalbaran=[idalbaran]" -->Total: <!-- RIGHTJUSTIFIED "[subtotal]" "6" " " "TRUE" --><!-- END QUERY -->
+<!-- QUERY="SELECT sum(cantlalbaran::NUMERIC(12,2) * pvpivainclalbaran::NUMERIC(12,2))::NUMERIC(12,2) AS subtotal FROM lalbaran  WHERE idalbaran=[idalbaran]" -->Total: <!-- RIGHTJUSTIFIED "[subtotal]" "6" " " "TRUE" --><!-- END QUERY -->
 
 <!-- SETCHARACTERSIZE "0" --><!-- SETJUSTIFICATION "CENTER" -->
    GRACIAS POR SU VISITA
