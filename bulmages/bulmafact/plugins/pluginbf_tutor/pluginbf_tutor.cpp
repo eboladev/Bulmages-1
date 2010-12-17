@@ -167,6 +167,8 @@ int BlSubFormDelegate_createEditor ( BlSubFormDelegate *bl )
         BlDbCompleterComboBox * editor = new BlDbCompleterComboBox ( g_editor );
         editor->setObjectName ( "EditNombreCliente" );
         editor->setMainCompany ( ( BfCompany * ) bl->m_subform->mainCompany() );
+	editor->m_valores["apellido1cliente"] = "";
+	editor->m_valores["apellido2cliente"] = "";
         editor->m_valores["nomcliente"] = "";
         editor->m_tabla = "cliente";
         g_plugParams =  editor;
@@ -223,9 +225,14 @@ int BlSubForm_editFinished ( BlSubForm *sub )
         delete cur;
     } // end if
     if ( sub->m_campoactual->nomcampo() == "nomcliente" ) {
-        BlDbRecordSet *cur = sub->mainCompany() ->loadQuery ( "SELECT idcliente FROM cliente WHERE upper(nomcliente) = upper('" + sub->m_campoactual->text() + "')" );
+        BlDbRecordSet *cur = sub->mainCompany() ->loadQuery ( "SELECT idcliente, apellido1cliente, apellido2cliente, nomcliente FROM cliente WHERE upper(apellido1cliente || ' ' || apellido2cliente || ' ' || nomcliente) LIKE upper('" + sub->m_campoactual->text() + "%')");
         if ( !cur->eof() ) {
             sub->m_registrolinea->setDbValue ( "idcliente", cur->valor ( "idcliente" ) );
+	    if (sub->existsHeader("apellido1cliente"))
+	      sub->m_registrolinea->setDbValue ( "apellido1cliente", cur->valor ( "apellido1cliente" ) );
+	    if (sub->existsHeader("apellido2cliente"))
+            sub->m_registrolinea->setDbValue ( "apellido2cliente", cur->valor ( "apellido2cliente" ) );
+            sub->m_registrolinea->setDbValue ( "nomcliente", cur->valor ( "nomcliente" ) );
         } // end if
         delete cur;
     } // end if
@@ -237,7 +244,7 @@ int BlSubForm_editFinished ( BlSubForm *sub )
 int BlDbCompleterComboBox_textChanged (BlDbCompleterComboBox *bl) {
   blDebug("BlDbCompleterComboBox_textChanged", 0);
 
-        if ( bl->m_entrada.size() >= 3 && bl->m_tabla == "alumno") {
+        if ( bl->m_entrada.size() >= 3 && (bl->m_tabla == "alumno" || bl->m_tabla=="cliente")) {
                 QString cadwhere = "";
                 /// Inicializamos los valores de vuelta a ""
                 QMapIterator<QString, QString> i ( bl->m_valores );
