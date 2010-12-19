@@ -36,6 +36,8 @@ set(bulmafactEx main.cxx)
 
 set(QT_USE_QTASSISTANT false)
 set(QT_USE_QTXML true)
+#by R. Cabezas
+set(QT_USE_QTSCRIPT true)
 
 IF(WIN32)
     # En MS-Windows no hay soporte directo de QtDBus.
@@ -50,7 +52,7 @@ include_directories(
     ${QT_INCLUDE_DIR}
 	${PGSQL_INCLUDE_DIR}
 	${QT_QTXML_INCLUDE_DIR}
-
+        ${QT_QTSCRIPT_INCLUDE_DIR}
 	${CMAKE_CURRENT_BINARY_DIR}
 	${CMAKE_CURRENT_SOURCE_DIR}
 	${CMAKE_BINARY_DIR}/bulmalib/src/

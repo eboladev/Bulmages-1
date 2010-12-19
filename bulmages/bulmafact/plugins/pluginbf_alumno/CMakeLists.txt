@@ -16,6 +16,9 @@ list(REMOVE_ITEM plugin_MOCS ${plugin_NO_MOCS})
 
 set(QT_USE_QTASSISTANT false)
 set(QT_USE_QTXML true)
+#by R. Cabezas
+set(QT_USE_QTSCRIPT true)
+
 #set(pluginalumno_RCCS gestionaula.qrc)
 
 INCLUDE( ${QT_USE_FILE} )
@@ -24,6 +27,7 @@ include_directories(
     ${QT_INCLUDE_DIR}
 	${PGSQL_INCLUDE_DIR}
 	${QT_QTXML_INCLUDE_DIR}
+        ${QT_QTSCRIPT_INCLUDE_DIR}
 	${CMAKE_CURRENT_BINARY_DIR}
 	${CMAKE_CURRENT_SOURCE_DIR}
 	${CMAKE_BINARY_DIR}/bulmalib/src/

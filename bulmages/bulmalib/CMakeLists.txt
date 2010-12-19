@@ -25,11 +25,16 @@ include(MacrosBlI18n)
 set(QT_USE_QTASSISTANT false)
 set(QT_USE_QTUITOOLS true)
 set(QT_USE_QTXML true)
+
+#by R. Cabezas
+set(QT_USE_QTSCRIPT true)
+
 include(${QT_USE_FILE})
 
 include_directories(
       ${QT_INCLUDE_DIR}
       ${QT_QTUITOOLS_INCLUDE_DIR}
+      ${QT_QTSCRIPT_INCLUDE_DIR}
       ${QT_QTXML_INCLUDE_DIR})
 
 ADD_DEFINITIONS(-DQT_SHARED -DQT_PLUGIN)

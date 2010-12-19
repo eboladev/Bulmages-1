@@ -3,6 +3,7 @@ PROJECT(bulmatpv)
 add_subdirectory(src)
 add_subdirectory(plugins)
 
+
 # if you want to add some private code
 # simple put your add_directory in a
 # CMakeLists.txt.private

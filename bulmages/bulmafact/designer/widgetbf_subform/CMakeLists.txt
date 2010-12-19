@@ -15,6 +15,8 @@ set(QT_USE_QTSCRIPT true)
 set(QT_USE_QTASSISTANT false)
 set(QT_USE_QTDESIGNER true)
 set(QT_USE_QTXML true)
+#by R. Cabezas
+set(QT_USE_QTSCRIPT true)
 
 INCLUDE( ${QT_USE_FILE} )
 

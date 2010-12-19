@@ -30,6 +30,7 @@
 #include <QInputDialog>
 #include <QUiLoader>
 
+
 #include "blform.h"
 #include "blformlist.h"
 #include "blformconfig.h"
@@ -62,6 +63,25 @@ BlForm::BlForm ( QWidget *parent, Qt::WFlags f, edmode modo ) : BlWidget ( paren
     connect ( this, SIGNAL ( customContextMenuRequested ( const QPoint & ) ), this, SLOT ( on_customContextMenuRequested ( const QPoint & ) ) );
     m_modo = modo;
     dialogChanges_cargaInicial();
+
+    /// By R. Cabezas
+    QString fileName = g_confpr->valor ( CONF_DIR_OPENREPORTS ) + "blform.qs";
+    QFile scriptFile(fileName);
+    if (scriptFile.open(QIODevice::ReadOnly)) {
+	  // handle error
+	  QTextStream stream(&scriptFile);
+	  QString contents = stream.readAll();
+	  QScriptValue objectValue = m_myEngine.newQObject(this);
+	  m_myEngine.globalObject().setProperty("BlForm", objectValue);
+	  m_myEngine.importExtension("qt.core");
+	  m_myEngine.importExtension("qt.gui"); 
+	  m_myEngine.evaluate(contents);
+	  scriptFile.close();
+	  if (m_myEngine.hasUncaughtException()) {
+	    blMsgInfo(m_myEngine.uncaughtException().toString());
+	  } // end if
+    } // end if
+    
     blDebug ( "END BlForm::BlForm", 0 );
 }
 
@@ -87,6 +107,25 @@ BlForm::BlForm ( BlMainCompany *emp, QWidget *parent, Qt::WFlags f, edmode modo 
     connect ( this, SIGNAL ( customContextMenuRequested ( const QPoint & ) ), this, SLOT ( on_customContextMenuRequested ( const QPoint & ) ) );
     m_modo = modo;
     dialogChanges_cargaInicial();
+    
+    /// By R. Cabezas
+    QString fileName = g_confpr->valor ( CONF_DIR_OPENREPORTS ) + "blform.qs";
+    QFile scriptFile(fileName);
+    if (scriptFile.open(QIODevice::ReadOnly)) {
+	  // handle error
+	  QTextStream stream(&scriptFile);
+	  QString contents = stream.readAll();
+	  QScriptValue objectValue = m_myEngine.newQObject(this);
+	  m_myEngine.globalObject().setProperty("BlForm", objectValue);
+	  m_myEngine.importExtension("qt.core");
+	  m_myEngine.importExtension("qt.gui"); 
+	  m_myEngine.evaluate(contents);
+	  scriptFile.close();
+	  if (m_myEngine.hasUncaughtException()) {
+	    blMsgInfo(m_myEngine.uncaughtException().toString());
+	  } // end if
+    } // end if
+    
     blDebug ( "END BlForm::BlForm", 0 );
 }
 

@@ -12,6 +12,8 @@ add_subdirectory(designer)
 
 SET(QT_USE_QTUITOOLS TRUE)
 SET(QT_USE_QTXML TRUE) # uitools depends on xml
+set(QT_USE_QTSCRIPT true) #by R. Cabezas
+
 
 
 if(EXISTS "${CMAKE_SOURCE_DIR}/bulmafact/CMakeLists.txt.private")

@@ -146,8 +146,8 @@ void BlMainCompany::sacaWindow ( QObject *nom )
 **/
 BlMainCompany::BlMainCompany()
 {
-    blDebug ( "BlMainCompany::BlMainCompany", 0 );
-    blDebug ( "END BlMainCompany::BlMainCompany", 0 );
+  blDebug ( "BlMainCompany::BlMainCompany", 0 );  
+  blDebug ( "END BlMainCompany::BlMainCompany", 0 );
 }
 
 

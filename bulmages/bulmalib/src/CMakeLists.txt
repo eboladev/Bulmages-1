@@ -24,6 +24,8 @@
 configure_file( ${CMAKE_SOURCE_DIR}/bulmalib/src/blconfig.h.in  ${CMAKE_BINARY_DIR}/bulmalib/src/blconfig.h @ONLY)
 
 #set(QT_USE_QTXML true)
+set(QT_USE_QTSCRIPT true) #by R. Cabezas
+
 #set(QT_USE_QTUITOOLS true)
 #INCLUDE(${QT_USE_FILE})
 
@@ -162,6 +164,7 @@ if (USE_GETTEXT)
       ${PGSQL_INCLUDE_DIR}
       ${GETTEXT_INCLUDE_DIR}
       ${QT_QTXML_INCLUDE_DIR}
+      ${QT_QTSCRIPT_INCLUDE_DIR}
       ${CMAKE_CURRENT_BINARY_DIR}
       ${CMAKE_CURRENT_SOURCE_DIR}
       ${CMAKE_SOURCE_DIR}/bulmalib/src/
@@ -172,6 +175,7 @@ else (USE_GETTEXT)
       ${QT_INCLUDE_DIR}
       ${PGSQL_INCLUDE_DIR}
       ${QT_QTXML_INCLUDE_DIR}
+      ${QT_QTSCRIPT_INCLUDE_DIR}
       ${CMAKE_CURRENT_BINARY_DIR}
       ${CMAKE_CURRENT_SOURCE_DIR}
       ${CMAKE_SOURCE_DIR}/bulmalib/src/
