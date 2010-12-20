@@ -144,10 +144,10 @@
            </size>
           </property>
           <property name="toolTip">
-           <string>Borrar Tipo de Actividad</string>
+           <string>Borrar Aula</string>
           </property>
           <property name="whatsThis">
-           <string>Borrar Tipo de Actividad</string>
+           <string>Borrar Aula</string>
           </property>
           <property name="text">
            <string/>
@@ -179,10 +179,10 @@
            </size>
           </property>
           <property name="toolTip">
-           <string>Guardar Tipo de Actividad</string>
+           <string>Guardar</string>
           </property>
           <property name="whatsThis">
-           <string>Guardar Tipo de Actividad</string>
+           <string>Guardar</string>
           </property>
           <property name="text">
            <string/>
@@ -214,10 +214,10 @@
            </size>
           </property>
           <property name="toolTip">
-           <string>Nuevo Tipo de Actividad</string>
+           <string>Nueva Aula</string>
           </property>
           <property name="whatsThis">
-           <string>Nuevo Tipo de Actividad</string>
+           <string>Nueva Aula</string>
           </property>
           <property name="text">
            <string/>
