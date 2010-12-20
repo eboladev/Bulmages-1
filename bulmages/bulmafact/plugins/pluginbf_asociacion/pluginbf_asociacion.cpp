@@ -142,6 +142,7 @@ void MyPlugAsoc::inicializa ( BfBulmaFact *bges )
         QMenu *pPluginMenu = bges->newMenu ( _("&Asociacion"), "menuAsociacion", "menuMaestro" );
         pPluginMenu->addSeparator();
 
+/*
         /// El men&uacute; de Tarifas en la secci&oacute;n de art&iacute;culos.
         m_bges = bges;
         setMainCompany ( bges->company() );
@@ -152,6 +153,7 @@ void MyPlugAsoc::inicializa ( BfBulmaFact *bges )
         pPluginMenu->addAction ( asociacion );
         bges->Listados->addAction ( asociacion );
         connect ( asociacion, SIGNAL ( activated() ), this, SLOT ( elslot() ) );
+*/
 
         QAction *jdirectiva = new QAction ( _ ( "&Juntas Directivas" ), 0 );
         jdirectiva->setIcon ( QIcon ( QString::fromUtf8 ( ":/ImgGestionAula/icons/jdirectiva-list.png" ) ) );
