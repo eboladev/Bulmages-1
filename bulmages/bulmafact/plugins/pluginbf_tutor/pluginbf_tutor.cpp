@@ -573,7 +573,7 @@ int BlSubForm_preparaMenu ( BlSubForm *sub ) {
           sel->setStatusTip ( "Nuevo Tutor" );
           sel->setToolTip ( "Nuevo Tutor" );
           sel->setMinimumSize ( QSize ( 18, 18 ) );
-          sel->setIcon ( QIcon ( QString::fromUtf8 ( ":/ImgGestionAula/icons/tutor.png" ) ));
+          sel->setIcon ( QIcon ( QString::fromUtf8 ( ":/ImgGestionAula/icons/tutor-new.png" ) ));
           sel->setIconSize ( QSize ( 18, 18 ) );    
           m_hboxLayout1->addWidget ( sel );
           sel->connect (sel, SIGNAL(released()), subformods, SLOT(nuevoTutor()));

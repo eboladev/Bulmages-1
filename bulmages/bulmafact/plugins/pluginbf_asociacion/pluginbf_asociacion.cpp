@@ -142,10 +142,12 @@ void MyPlugAsoc::inicializa ( BfBulmaFact *bges )
         QMenu *pPluginMenu = bges->newMenu ( _("&Asociacion"), "menuAsociacion", "menuMaestro" );
         pPluginMenu->addSeparator();
 
-/*
+
         /// El men&uacute; de Tarifas en la secci&oacute;n de art&iacute;culos.
         m_bges = bges;
         setMainCompany ( bges->company() );
+	
+/*
         QAction *asociacion = new QAction ( _ ( "&Asociacion" ), 0 );
         asociacion->setIcon ( QIcon ( QString::fromUtf8 ( ":/Images/employee-list.png" ) ) );
         asociacion->setStatusTip ( _ ( "Asociacion" ) );
