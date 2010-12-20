@@ -276,6 +276,13 @@ void myplugsubformods::sacaods()
 
     system ( cadena.toAscii().data() );
 
+    /// Si no existe el archivo avisamos
+    if (!QFile::exists(g_confpr->valor ( CONF_DIR_USER ) + "listadoods.ods") ) {
+	  blMsgInfo ("Ha ocurrido un error. Verifique que la libreria python-ooolib esta correctamente instalada");
+          blDebug ( "END myplugsubformods::sacaods", 0 );
+	  return;
+    } // end if
+    
 
 #ifdef Q_OS_WIN32
     if (g_confpr->valor ( CONF_ODS ).isEmpty()) {
