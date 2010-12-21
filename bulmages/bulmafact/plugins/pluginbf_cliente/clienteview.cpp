@@ -122,9 +122,8 @@ ClienteView::~ClienteView()
 }
 
 
-int ClienteView::guardarPost()
+int ClienteView::guardarPre()
 {
- 
 	int res1;
 
         /// Disparamos los plugins.
@@ -132,6 +131,14 @@ int ClienteView::guardarPost()
 	if ( res1 != 0 ) {
 	    throw -1;
 	} // end if
+
+}
+
+
+int ClienteView::guardarPost()
+{
+
+	int res1;
 
         /// Disparamos los plugins.
         res1 = g_plugins->lanza ( "ClienteView_Guardar_Post", this );

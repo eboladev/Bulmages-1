@@ -67,6 +67,7 @@ FamiliaCuenta::~FamiliaCuenta()
 void FamiliaCuenta::on_m_listFamilias_currentItemChanged ( QTreeWidgetItem *current, QTreeWidgetItem *previous )
 {
     BlDbRecordSet *rec;
+    BlDbRecordSet *rec2;
 
     if ( m_familiasview->idFamilia().isEmpty() ) {
       m_familiasview->findChild<QWidget *>("mui_cuenta_venta")->setEnabled(FALSE);
@@ -74,7 +75,7 @@ void FamiliaCuenta::on_m_listFamilias_currentItemChanged ( QTreeWidgetItem *curr
     } else {
       m_familiasview->findChild<QWidget *>("mui_cuenta_venta")->setEnabled(TRUE);
       m_familiasview->findChild<QWidget *>("mui_cuenta_compra")->setEnabled(TRUE);
-      
+/*      
       QString query = "SELECT prefcuentaventafamilia, prefcuentacomprafamilia FROM familia WHERE idfamilia = '" + m_familiasview->idFamilia() + "' LIMIT 1";
 
       m_familiasview->mainCompany()->begin();
@@ -85,7 +86,40 @@ void FamiliaCuenta::on_m_listFamilias_currentItemChanged ( QTreeWidgetItem *curr
       m_familiasview->findChild<QLineEdit *>("mui_cuenta_compra")->setText( rec->valor("prefcuentacomprafamilia") );
       
       m_familiasview->mainCompany()->commit();
+*/
+
+        m_familiasview->mainCompany()->begin();
+
       
+	// 1) coge iidcuentaventafamilia, idcuentacomprafamilia de familia.
+	// 2) se conecta a contabilidad.
+	// 3) busca el codigo cuenta usando el idcuenta de la familia.
+	// 4) rellena qlineedit con codigo cuenta.
+	QString query;
+
+	query = "SELECT idcuentaventafamilia, idcuentacomprafamilia FROM familia WHERE idfamilia = '" + m_familiasview->idFamilia() + "' LIMIT 1";
+	rec = m_familiasview->mainCompany()->loadQuery(query);
+	
+	// Si no hay datos en idcuenta no se hace nada.
+	if ( rec != NULL ) {
+
+	    m_familiasview->mainCompany()->run("SELECT conectabulmacont()");
+	    
+	    query = "SELECT codigo FROM bc_cuenta WHERE idcuenta = '" + rec->valor("idcuentaventafamilia") + "' LIMIT 1";
+	    rec2 = m_familiasview->mainCompany()->loadQuery(query);
+	    
+	    m_familiasview->findChild<QLineEdit *>("mui_cuenta_venta")->setText( rec2->valor("codigo") );
+
+	    query = "SELECT codigo FROM bc_cuenta WHERE idcuenta = '" + rec->valor("idcuentacomprafamilia") + "' LIMIT 1";
+	    rec2 = m_familiasview->mainCompany()->loadQuery(query);
+
+	    m_familiasview->findChild<QLineEdit *>("mui_cuenta_compra")->setText( rec2->valor("codigo") );
+	    
+	} // end if
+    
+      
+	m_familiasview->mainCompany()->commit();
+
     } // end if
     m_familiasview->dialogChanges_cargaInicial();
     

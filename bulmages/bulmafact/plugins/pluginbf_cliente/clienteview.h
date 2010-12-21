@@ -43,6 +43,7 @@ public:
     int cargarPost ( QString client );
     void activaDocumentos();
     void desactivaDocumentos();
+    virtual int guardarPre();
     virtual int guardarPost();
 
 public slots:

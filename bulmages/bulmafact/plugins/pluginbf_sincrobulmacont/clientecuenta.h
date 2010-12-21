@@ -12,6 +12,5 @@ class ClienteCuenta : public QWidget
 public:
     ClienteCuenta(QWidget *parent);
     ~ClienteCuenta();
-
 };
 

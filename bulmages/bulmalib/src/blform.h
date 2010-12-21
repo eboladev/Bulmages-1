@@ -62,6 +62,7 @@ public:
     void substrVars(QString &buff, int tipoEscape = 0);
     virtual ~BlForm();
     virtual int guardar();
+    virtual int guardarPre();
     virtual int guardarPost();
     virtual int borrarPre();
     virtual int borrar();

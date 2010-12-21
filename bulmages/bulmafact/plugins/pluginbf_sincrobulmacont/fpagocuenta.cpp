@@ -71,6 +71,7 @@ void FPagoCuenta::mui_lista_currentItemChanged ( QListWidgetItem *current, QList
     if ( m_fpagoview->idFormaPago().isEmpty() ) {
       m_fpagoview->findChild<QLineEdit *>("mui_cuenta_forma_pago")->setEnabled(FALSE);
     } else {
+      /*
       m_fpagoview->findChild<QLineEdit *>("mui_cuenta_forma_pago")->setEnabled(TRUE);
       
       QString query = "SELECT prefcuentaforma_pago FROM forma_pago WHERE idforma_pago = '" + m_fpagoview->idFormaPago() + "' LIMIT 1";
@@ -82,7 +83,33 @@ void FPagoCuenta::mui_lista_currentItemChanged ( QListWidgetItem *current, QList
       m_fpagoview->findChild<QLineEdit *>("mui_cuenta_forma_pago")->setText( rec->valor("prefcuentaforma_pago") );
       
       m_fpagoview->mainCompany()->commit();
+      */
+        m_fpagoview->mainCompany()->begin();
+
       
+	// 1) coge idcuentaforma_pago de forma_pago.
+	// 2) se conecta a contabilidad.
+	// 3) busca el codigo cuenta usando el idcuenta de forma_pago.
+	// 4) rellena qlineedit con codigo cuenta.
+	
+	QString query = "SELECT idcuentaforma_pago FROM forma_pago WHERE idforma_pago = '" + m_fpagoview->idFormaPago() + "' LIMIT 1";
+	rec = m_fpagoview->mainCompany()->loadQuery(query);
+	
+	// Si no hay datos en idcuenta no se hace nada.
+	if ( rec != NULL ) {
+
+	    m_fpagoview->mainCompany()->run("SELECT conectabulmacont()");
+	    
+	    QString query = "SELECT codigo FROM bc_cuenta WHERE idcuenta = '" + rec->valor("idcuentaforma_pago") + "' LIMIT 1";
+	    rec = m_fpagoview->mainCompany()->loadQuery(query);
+	    
+	    m_fpagoview->findChild<QLineEdit *>("mui_cuenta_forma_pago")->setText( rec->valor("codigo") );
+	   
+	} // end if
+    
+      
+	m_fpagoview->mainCompany()->commit();
+
     } // end if
     m_fpagoview->dialogChanges_cargaInicial();
 

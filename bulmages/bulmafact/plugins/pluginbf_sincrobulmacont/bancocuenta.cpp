@@ -12,10 +12,9 @@ BancoCuenta::BancoCuenta (QWidget *parent) : QWidget(parent)
 {
 
     blDebug ( "BancoCuenta::BancoCuenta", 1 );
+    BlDbRecordSet *rec;
 
     m_bancoview = (BancoView *) parent;
-
-    connect ( parent->findChild<QWidget *>("mui_lista"), SIGNAL(currentItemChanged ( QListWidgetItem *, QListWidgetItem * )), this, SLOT( mui_lista_currentItemChanged ( QListWidgetItem *, QListWidgetItem * ) ) );
 
     QWidget *frame = parent->findChild<QWidget *>("mui_plugin_frame");
 
@@ -35,6 +34,8 @@ BancoCuenta::BancoCuenta (QWidget *parent) : QWidget(parent)
     frame->setMinimumHeight(70);
     
     m_bancoview->resize ( m_bancoview->width(), m_bancoview->height () + 70);
+    
+    connect ( parent->findChild<QWidget *>("mui_lista"), SIGNAL(currentItemChanged ( QListWidgetItem *, QListWidgetItem * )), this, SLOT( mui_lista_currentItemChanged ( QListWidgetItem *, QListWidgetItem * ) ) );
     
     blDebug ( "END BancoCuenta::BancoCuenta", 1 );
 
@@ -61,7 +62,8 @@ void BancoCuenta::mui_lista_currentItemChanged ( QListWidgetItem *current, QList
       m_bancoview->findChild<QWidget *>("mui_cuenta_banco")->setEnabled(FALSE);
     } else {
       m_bancoview->findChild<QWidget *>("mui_cuenta_banco")->setEnabled(TRUE);
-      
+
+      /*
       QString query = "SELECT prefcuentabanco FROM banco WHERE idbanco = '" + m_bancoview->idBanco() + "' LIMIT 1";
 
       m_bancoview->mainCompany()->begin();
@@ -71,6 +73,33 @@ void BancoCuenta::mui_lista_currentItemChanged ( QListWidgetItem *current, QList
       m_bancoview->findChild<QLineEdit *>("mui_cuenta_banco")->setText( rec->valor("prefcuentabanco") );
       
       m_bancoview->mainCompany()->commit();
+      */
+
+        m_bancoview->mainCompany()->begin();
+
+      
+	// 1) coge idcuentabanco de banco.
+	// 2) se conecta a contabilidad.
+	// 3) busca el codigo cuenta usando el idcuenta de banco.
+	// 4) rellena qlineedit con codigo cuenta.
+	
+	QString query = "SELECT idcuentabanco FROM banco WHERE idbanco = '" + m_bancoview->idBanco() + "' LIMIT 1";
+	rec = m_bancoview->mainCompany()->loadQuery(query);
+	
+	// Si no hay datos en idcuenta no se hace nada.
+	if ( rec != NULL ) {
+
+	    m_bancoview->mainCompany()->run("SELECT conectabulmacont()");
+	    
+	    QString query = "SELECT codigo FROM bc_cuenta WHERE idcuenta = '" + rec->valor("idcuentabanco") + "' LIMIT 1";
+	    rec = m_bancoview->mainCompany()->loadQuery(query);
+	    
+	    m_bancoview->findChild<QLineEdit *>("mui_cuenta_banco")->setText( rec->valor("codigo") );
+	   
+	} // end if
+    
+      
+	m_bancoview->mainCompany()->commit();
       
     } // end if
     m_bancoview->dialogChanges_cargaInicial();

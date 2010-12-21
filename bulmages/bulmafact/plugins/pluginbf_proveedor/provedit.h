@@ -37,6 +37,7 @@ class PLUGINBF_PROVEEDOR_EXPORT ProveedorView : public BfForm, public Ui_Proveed
 public:
     ProveedorView ( BfCompany *comp, QWidget *parent = 0 );
     ~ProveedorView();
+    virtual int guardarPre();
     virtual int guardarPost();
 
 public slots:

@@ -848,14 +848,18 @@ int BlForm::guardar()
         QString id;
         recogeValores();
         mainCompany() ->begin();
+
+        guardarPre();
+
         DBsave ( id );
         setDbValue ( m_campoid, id );
-        mainCompany() ->commit();
 
         /// Lanzamos los plugins.
         if ( g_plugins->lanza ( "BlForm_guardar_Post", this ) ) return 0;
 
         guardarPost();
+
+	mainCompany() ->commit();
 
         /// Hacemos una carga para que se actualizen datos como la referencia.
         cargar ( id );
@@ -934,6 +938,18 @@ int BlForm::borrar()
         blDebug ( "END BlForm::borrar", 0, "Error en el guardado" );
         return -1;
     } // end try
+}
+
+
+///
+/**
+\return
+**/
+int BlForm::guardarPre()
+{
+    blDebug ( "BlForm::guardarPre", 0 );
+    blDebug ( "END BlForm::guardarPre", 0 );
+    return 0;
 }
 
 
