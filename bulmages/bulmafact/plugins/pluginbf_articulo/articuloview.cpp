@@ -113,6 +113,9 @@ ArticuloView::ArticuloView ( BfCompany *comp, QWidget *parent )
 
         meteWindow ( windowTitle(), this, FALSE );
         dialogChanges_cargaInicial();
+	
+	blScript(this);  /// La clase se hace scriptable.
+	
     } catch ( ... ) {
         blMsgInfo ( _ ( "Error al crear el articulo" ) );
     } // end try

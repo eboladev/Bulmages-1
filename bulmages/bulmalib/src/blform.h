@@ -92,7 +92,7 @@ public:
     virtual void generaCampo ( const QString &objname, const QString &textname, const QString &type );
     virtual void activaDocumentos();
     virtual void desactivaDocumentos();
-
+    void blScript(QObject * obj);
 protected:
     virtual void closeEvent ( QCloseEvent * );
 

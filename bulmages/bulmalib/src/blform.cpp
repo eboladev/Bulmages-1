@@ -64,27 +64,36 @@ BlForm::BlForm ( QWidget *parent, Qt::WFlags f, edmode modo ) : BlWidget ( paren
     m_modo = modo;
     dialogChanges_cargaInicial();
 
-    /// By R. Cabezas
-    QString fileName = g_confpr->valor ( CONF_DIR_OPENREPORTS ) + "blform.qs";
-    QFile scriptFile(fileName);
-    if (scriptFile.open(QIODevice::ReadOnly)) {
-	  // handle error
-	  QTextStream stream(&scriptFile);
-	  QString contents = stream.readAll();
-	  QScriptValue objectValue = m_myEngine.newQObject(this);
-	  m_myEngine.globalObject().setProperty("BlForm", objectValue);
-	  m_myEngine.importExtension("qt.core");
-	  m_myEngine.importExtension("qt.gui"); 
-	  m_myEngine.evaluate(contents);
-	  scriptFile.close();
-	  if (m_myEngine.hasUncaughtException()) {
-	    blMsgInfo(m_myEngine.uncaughtException().toString());
-	  } // end if
-    } // end if
+
     
     blDebug ( "END BlForm::BlForm", 0 );
 }
 
+/// By R. Cabezas
+/**  procedimiento de QtScript
+Importa el objeto que se pasa como referencia al engine de script
+Busca el archivo en el directorio de openreports que tenga el mismo nombre que la clase
+Importa el script y lo lanza.
+
+*/
+void BlForm::blScript(QObject * obj) {
+    
+    QString fileName = g_confpr->valor ( CONF_DIR_OPENREPORTS ) + "blform_"+metaObject()->className()+".qs";
+    QFile scriptFile1(fileName);
+    if (scriptFile1.open(QIODevice::ReadOnly)) {
+	  QTextStream stream(&scriptFile1);
+	  QString contents = stream.readAll();
+	  QScriptValue objectValue = m_myEngine.newQObject(this);
+	  m_myEngine.globalObject().setProperty(metaObject()->className(), objectValue);
+	  m_myEngine.importExtension("qt.core");
+	  m_myEngine.importExtension("qt.gui"); 
+	  m_myEngine.evaluate(contents);
+	  scriptFile1.close();
+	  if (m_myEngine.hasUncaughtException()) {
+	    blMsgInfo(m_myEngine.uncaughtException().toString());
+	  } // end if
+    } // end if
+}
 
 ///
 /**
