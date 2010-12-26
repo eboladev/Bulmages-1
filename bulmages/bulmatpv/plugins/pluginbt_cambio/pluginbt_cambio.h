@@ -29,7 +29,7 @@
 extern "C" PLUGINBT_CAMBIO_EXPORT int entryPoint ( BtBulmaTPV * );
 extern "C" PLUGINBT_CAMBIO_EXPORT int BtCompany_createMainWindows_Post ( BtCompany * );
 extern "C" PLUGINBT_CAMBIO_EXPORT int BtCompany_cobrar ( BtCompany * );
-
+extern "C" PLUGINBT_CAMBIO_EXPORT int BtTicket_BtTicket_Post(BtTicket *);
 
 #endif
 

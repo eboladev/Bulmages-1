@@ -79,3 +79,10 @@ int BtCompany_cobrar ( BtCompany *etpv )
 
     return valor;
 }
+
+int BtTicket_BtTicket_Post(BtTicket *tick) {
+    tick->addDbField ( "pagado", BlDbField::DbNumeric, BlDbField::DbNoSave, _( "pagado" ) );
+    tick->addDbField ( "cambio", BlDbField::DbNumeric, BlDbField::DbNoSave, _( "cambio" ) );
+
+    return 0;
+}

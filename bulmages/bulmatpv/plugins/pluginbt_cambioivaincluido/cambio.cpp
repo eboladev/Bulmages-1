@@ -37,9 +37,12 @@ Cambio::Cambio ( BtCompany *emp, QWidget *parent ) : BlWidget ( emp, parent )
     for ( int i = 0; i < tick->listaLineas() ->size(); ++i ) {
         linea = tick->listaLineas() ->at ( i );
         BlFixed cant ( linea->dbValue ( "cantlalbaran" ) );
+	cant.setPrecision(emp->decimalesCantidad());
         BlFixed pvpund ( linea->dbValue ( "pvpivainclalbaran" ) );
+	pvpund.setPrecision(emp->decimalesCantidad());
         BlFixed desc1 ( linea->dbValue ( "descuentolalbaran" ) );
         BlFixed cantpvp = cant * pvpund;
+	cantpvp.setPrecision(emp->decimalesCantidad());
         BlFixed base = cantpvp - cantpvp * desc1 / 100;
         descuentolinea = descuentolinea + ( cantpvp * desc1 / 100 );
         basesimp[linea->dbValue ( "ivalalbaran" ) ] = basesimp[linea->dbValue ( "ivalalbaran" ) ] + base;
@@ -124,6 +127,8 @@ void Cambio::on_mui_cancelar_clicked()
 
 void Cambio::on_mui_cobrar_clicked()
 {
+    ( ( BtCompany * ) mainCompany() )->ticketActual()->setDbValue ( "pagado", mui_pago->text() );
+    ( ( BtCompany * ) mainCompany() )->ticketActual()->setDbValue ( "cambio", mui_cambio->text() );
     ( ( QDialog * ) parent() )->accept();
 }
 

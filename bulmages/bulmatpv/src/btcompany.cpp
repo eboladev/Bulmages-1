@@ -44,6 +44,8 @@ BtCompany::BtCompany ( BtBulmaTPV* bges ) : BlMainCompany(), BtInput ( this )
     blDebug ( "BtCompany::BtCompany", 0 );
     m_bulmaTPV = bges;
 
+    m_decimalesCantidad = 2;
+    m_decimalesPrecio = 2;
 
     blDebug ( "END BtCompany::BtCompany", 0 );
 }
@@ -78,6 +80,22 @@ BtCompany::~BtCompany()
     blDebug ( "END BtCompany::~BtCompany", 0 );
 }
 
+int BtCompany::decimalesCantidad() {
+   return m_decimalesCantidad;
+}
+
+void BtCompany::setDecimalesCantidad( int numd) {
+   m_decimalesCantidad = numd;
+}
+
+int BtCompany::decimalesPrecio() {
+   return m_decimalesPrecio;
+}
+
+void BtCompany::setDecimalesPrecio(int numd) {
+   m_decimalesPrecio = numd;
+}
+
 /** Crea todas las ventanas que aparecen creadas al inicio del programa.
     Todas estas ventanas son principalmente los listados mas utilizados a partir de los
     cuales se pueden crear nuevas fichas y manejar todo.
@@ -89,7 +107,17 @@ BtCompany::~BtCompany()
 void BtCompany::createMainWindows ( BlSplashScreen *splash )
 {
     blDebug ( "BtCompany::createMainWindows", 0 );
-    
+
+    /// Vamos a cargar los datos de precision y decimales.
+    QString query = "SELECT  pg_attribute.atttypmod / 65536 AS decimal, pg_attribute.atttypmod - pg_attribute.atttypmod / 65536 * 65536 - 4 AS precision  FROM pg_attribute WHERE attname='cantlalbaran'";
+    BlDbRecordSet *cur = loadQuery ( query );
+    if ( !cur->eof() ) {
+       m_decimalesCantidad = cur->valor("precision").toInt();
+    } // end if
+    delete cur;
+
+
+
     /// Establecemos el porcentaje del carga de informaci&oacute;n en las diferentes ventanas.
     /// pb = 0%
     splash->mensaje ( _ ( "Inicializando listado de articulos" ) );

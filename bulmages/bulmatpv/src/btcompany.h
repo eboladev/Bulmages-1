@@ -53,6 +53,8 @@ private:
     BtBulmaTPV *m_bulmaTPV;
     QList<BtTicket *> m_listaTickets;
     BtTicket *m_ticketActual;
+    int m_decimalesCantidad; // Indica cual es la precision a aplicar en las cantidades.
+    int m_decimalesPrecio; // Indica cual es la precision a aplicar en los precios.
 
 public:
     BtCompany ( BtBulmaTPV *bges );
@@ -70,6 +72,10 @@ public:
     void compruebaUltimaZ();
     virtual QString exportXML();
     virtual void syncXML(const QString &);
+    int decimalesCantidad();
+    void setDecimalesCantidad(int numd);
+    int decimalesPrecio();
+    void setDecimalesPrecio(int numd);
 };
 
 #endif

@@ -112,9 +112,12 @@ int BtTicket_pintar ( BtTicket *tick )
     for ( int i = 0; i < tick->listaLineas() ->size(); ++i ) {
         linea = tick->listaLineas() ->at ( i );
         BlFixed cant ( linea->dbValue ( "cantlalbaran" ) );
+	cant.setPrecision(emp->decimalesCantidad());
         BlFixed pvpund ( linea->dbValue ( "pvplalbaran" ) );
+	cant.setPrecision(emp->decimalesPrecio());
         BlFixed desc1 ( linea->dbValue ( "descuentolalbaran" ) );
         BlFixed cantpvp = cant * pvpund;
+	cantpvp.setPrecision(emp->decimalesCantidad());
         BlFixed base = cantpvp - cantpvp * desc1 / 100;
         descuentolinea = descuentolinea + ( cantpvp * desc1 / 100 );
         basesimp[linea->dbValue ( "ivalalbaran" ) ] = basesimp[linea->dbValue ( "ivalalbaran" ) ] + base;
