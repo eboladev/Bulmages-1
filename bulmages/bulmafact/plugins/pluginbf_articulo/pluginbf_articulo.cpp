@@ -648,8 +648,8 @@ int BlDbCompleterComboBox_textChanged (BlDbCompleterComboBox *bl) {
            if ( bl->entrada().indexOf ( ".-" ) < 0 )  {
                 QString cadwhere = "";
                 /// Inicializamos los valores de vuelta a ""
-                QString SQLQuery = "SELECT * FROM " + bl->m_tabla + " WHERE upper(codigocompletoarticulo) LIKE  upper($1||'%')";
-                bl->m_cursorcombo = bl->mainCompany() ->load ( SQLQuery, bl->m_entrada);
+                QString SQLQuery = "SELECT * FROM " + bl->m_tabla + " WHERE upper(codigocompletoarticulo) LIKE  upper('"+bl->m_entrada+"'||'%') OR upper(nomarticulo) LIKE upper('"+bl->m_entrada+"'||'%') ORDER BY nomarticulo";
+                bl->m_cursorcombo = bl->mainCompany() ->load ( SQLQuery);
                 bl->clear();
                 while ( !bl->m_cursorcombo->eof() ) {
                     QMapIterator<QString, QString> i ( bl->m_valores );
@@ -669,6 +669,8 @@ int BlDbCompleterComboBox_textChanged (BlDbCompleterComboBox *bl) {
                 } // end while
                 delete bl->m_cursorcombo;
            }
+	   blDebug("END BlDbCompleterComboBox_textChanged", 0, "plugin_articulo");
+	   return 1;
    } // end if
    blDebug("END BlDbCompleterComboBox_textChanged", 0, "plugin_articulo");
 

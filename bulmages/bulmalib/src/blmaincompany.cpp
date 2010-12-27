@@ -268,7 +268,7 @@ void BlMainCompany::dbVersionCheck(QString program, QString version)
     if ( rs != NULL ) {
       if (rs->valor("valor") != version) {
         /// La version del programa no coincide con la version de la base de datos instalada.
-        blMsgError(_("La version de la base de datos no coincide con el programa.\nEl programa no funcionara adecuadamente.") );
+        blMsgError(_("La version de la base de datos no coincide con el programa.\n\nEl programa no funcionara adecuadamente.\n")+program+"\n"+version+"\n" );
       } // end if
     } // end if
 
