@@ -15,10 +15,14 @@ public:
 private:
     QextSerialPort *port;
     BtCompany *m_empresaTPV;
-
+    
+public:
+    void comm();
+    
 private slots:
     void onReadyRead();
     void onDsrChanged(bool status);
+
 
 };
 

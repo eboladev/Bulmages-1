@@ -25,12 +25,13 @@
 #include "btcompany.h"
 #include "btticket.h"
 #include "pdefs_pluginbt_bascula.h"
+#include "bltoolbutton.h"
 
 
 extern "C" PLUGINBT_BASCULA_EXPORT int entryPoint ( BtBulmaTPV * );
 extern "C" PLUGINBT_BASCULA_EXPORT int exitPoint ( QMainWindow * );
 extern "C" PLUGINBT_BASCULA_EXPORT int BtCompany_createMainWindows_Post ( BtCompany * );
-
+extern "C" PLUGINBT_BASCULA_EXPORT int BlToolButton_released(BlToolButton *);
 
 
 #endif
