@@ -73,6 +73,7 @@ void correctorwidget::on_mui_corregir_clicked()
     blDebug ( "correctorwidget::on_mui_corregir_clicked", 0 );
     textBrowser = "<HTML><BODY BGCOLOR='#FFFFFF'>";
     BlDbRecordSet *cur;
+    BlDbRecordSet *cur2;
 
     /// Calculo de asientos abiertos.
     QString query;
@@ -173,6 +174,47 @@ void correctorwidget::on_mui_corregir_clicked()
     } // end while
     delete cur;
 
+
+    /// Verifica la longitud de las cuentas.
+    /// -----------------------------------------------------
+    /// La longitud del codigo es valida si es mayor que 'x' e igual a 'x' + 'y'.
+    query = "SELECT valor FROM configuracion WHERE nombre = 'CodCuenta'";
+    cur = dbConnection->loadQuery ( query );
+
+    /// Longitud de x.
+    int longitudx = cur->valor ( "valor" ).replace(QString("y"), QString("")).trimmed().length();
+    int totallongitud = cur->valor ( "valor" ).trimmed().length();
+
+    /// Busca errores.
+    query = "SELECT * FROM cuenta WHERE char_length(codigo) > '" + QString::number(longitudx) + "' AND char_length(codigo) != '" + QString::number(totallongitud) + "'";
+    cur2 = dbConnection->loadQuery ( query );
+
+    while ( !cur2->eof() ) {
+	QString cadena;
+	cadena = "<img src='" + g_confpr->valor ( CONF_PROGDATA ) + "icons/messagebox_warning.png'>&nbsp;&nbsp;<B><I>Warning:</I></B><BR>El codigo de la cuenta <B>" + cur2->valor ( "codigo" ) + "</B> no tiene la longitud adecuada.";
+	agregarError ( cadena, "", "" );
+	cur2->nextRecord();
+    } // end while
+
+    delete cur2;
+    delete cur;
+
+    
+    /// Busca codigos de cuentas repetidos.
+    /// -----------------------------------------------------
+    query = "SELECT codigo, COUNT(codigo) AS repeticiones FROM cuenta GROUP BY codigo HAVING ( COUNT(codigo) > 1 )";
+    cur = dbConnection->loadQuery ( query );
+
+    while ( !cur->eof() ) {
+	QString cadena;
+	cadena = "<img src='" + g_confpr->valor ( CONF_PROGDATA ) + "icons/messagebox_warning.png'>&nbsp;&nbsp;<B><I>Warning:</I></B><BR>El codigo de la cuenta <B>" + cur->valor ( "codigo" ) + "</B> esta repedido <B>" + cur->valor ( "repeticiones" ) + "</B> veces.";
+	agregarError ( cadena, "", "" );
+	cur->nextRecord();
+    } // end while
+    
+    delete cur;
+    
+    
     textBrowser += "</BODY></HTML>";
     mui_browser->setHtml ( textBrowser );
     blDebug ( "END correctorwidget::on_mui_corregir_clicked", 0 );
