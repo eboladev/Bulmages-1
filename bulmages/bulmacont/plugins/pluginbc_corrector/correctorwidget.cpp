@@ -207,8 +207,23 @@ void correctorwidget::on_mui_corregir_clicked()
 
     while ( !cur->eof() ) {
 	QString cadena;
-	cadena = "<img src='" + g_confpr->valor ( CONF_PROGDATA ) + "icons/messagebox_warning.png'>&nbsp;&nbsp;<B><I>Warning:</I></B><BR>El codigo de la cuenta <B>" + cur->valor ( "codigo" ) + "</B> esta repedido <B>" + cur->valor ( "repeticiones" ) + "</B> veces.";
-	agregarError ( cadena, "", "" );
+	QString cadena2;
+	
+	cadena = "<img src='" + g_confpr->valor ( CONF_PROGDATA ) + "icons/messagebox_warning.png'>&nbsp;&nbsp;<B><I>Warning:</I></B><BR>El codigo de la cuenta <B>" + cur->valor ( "codigo" ) + "</B> esta repedido <B>" + cur->valor ( "repeticiones" ) + "</B> veces:<BR>";
+	
+	
+	query = "SELECT idcuenta, codigo, descripcion FROM cuenta WHERE codigo = '" + cur->valor ( "codigo" ) + "'";
+	cur2 = dbConnection->loadQuery ( query );
+	while ( !cur2->eof() ) {
+	    /// Muestra las 3 primeras letras de la descripcion de la cuenta.
+	    cadena2 += "<tr><td>Cuenta: <B>'" + cur2->valor("descripcion").left(7) + "...</B>' <a name='idcuenta' href='#idcuenta=" + cur2->valor ( "idcuenta" ) + "'>corregir</a></td></tr>";
+	    cur2->nextRecord();
+	} // end while
+	delete cur2;
+		
+	//agregarError ( cadena, "idcuenta", "idcuenta=" + cur->valor ( "idcuenta" ) );
+	textBrowser += "<HR><table><tr><td>" + cadena + "</td></tr>" + cadena2 + "</table>";
+
 	cur->nextRecord();
     } // end while
     
@@ -235,6 +250,14 @@ void correctorwidget::alink ( const QUrl &url )
     QString linker = url.fragment();
     QStringList list = linker.split ( "=" );
 
+    QString query;
+    QString codigoOld;
+    QString codigoNew;
+    QString codigoX;
+    BlDbRecordSet *cur;
+    BlDbRecordSet *cur2;
+    
+    
     ///TODO: REVISAR ESTA FUNCION QUE NO HACE BIEN SU TRABAJO.
     if ( list[0] == "ver" ) {
         empresaactual->muestracuentas();
@@ -245,6 +268,59 @@ void correctorwidget::alink ( const QUrl &url )
         view->muestraasiento ( list[1].toInt ( &ok ) );
         view->hide();
         view->show();
+    } else if ( list[0] == "idcuenta" ) {
+      /// Recalcula un codigo de cuenta no duplicado.
+      /// 0) Busca el codigo de la cuenta.
+      query = "SELECT codigo FROM cuenta WHERE idcuenta = '" + list[1] + "';";
+      cur = dbConnection->loadQuery ( query );
+      
+      codigoOld = cur->valor ( "codigo" );
+      delete cur;
+
+      /// 1) Coge el codigo padre 'las x'.      
+      query = "SELECT valor FROM configuracion WHERE nombre = 'CodCuenta'";
+      cur = dbConnection->loadQuery ( query );
+
+      /// Longitud de x.
+      int longitudx = cur->valor ( "valor" ).replace(QString("y"), QString("")).trimmed().length();
+      int totallongitud = cur->valor ( "valor" ).trimmed().length();
+      
+      codigoX = codigoOld.left(longitudx);
+      delete cur;
+
+      
+      /// 2) Va provando de forma secuencial hasta encontrar un codigo libre con la longitud adecuada segun configuracion.
+      
+      int i = 1;
+      
+      while(1) {
+	codigoNew = codigoX + QString::number(i).rightJustified(totallongitud - longitudx, '0');
+	
+	/// Comprueba que el nuevo codigo no este en uso.
+	query = "SELECT idcuenta, codigo FROM cuenta WHERE codigo = '" + codigoNew + "'";
+	cur = dbConnection->loadQuery ( query );
+
+	if (cur->numregistros() == 0) {
+	    break;
+	} // end if
+
+	i++;
+	delete cur;
+      } // end while
+
+
+      /// 3) Muestra informacion de codigo anterior y codigo nuevo para que el usuario acepte o cancele la accion.
+      int res = QMessageBox::question ( this, _("Cambiar codigo de cuenta?"), _("El codigo de la cuenta: ") + list[1] + "\n" + _("se cambiara de ") + codigoOld + _(" a ") + codigoNew + ".", QMessageBox::Apply | QMessageBox::Cancel, QMessageBox::NoButton );
+
+      
+      /// 4) Renombra el codigo de la cuenta.
+      if ( QMessageBox::Apply == res) {
+	  query = "UPDATE cuenta SET codigo = '" + codigoNew + "' WHERE idcuenta = '" + list[1] + "'";
+	  cur = dbConnection->loadQuery ( query );
+	  blMsgInfo(_("Cambiado con exito."));
+      } // end if
+      
+      
     } else {
         /*        BcAsientoView *view = empresaactual->intapuntsempresa();
                 bool ok;
