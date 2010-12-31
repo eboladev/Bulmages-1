@@ -101,6 +101,7 @@ ClienteView::ClienteView ( BfCompany *comp, QWidget *parent )
         dialogChanges_cargaInicial();
         /// Disparamos los plugins.
         res = g_plugins->lanza ( "ClienteView_ClienteView_Post", this );
+	blScript(this);
     } catch ( ... ) {
         blMsgInfo ( _ ( "Error al crear el cliente" ) );
     } // end try

@@ -19,6 +19,7 @@
  ***************************************************************************/
 
 #include <QWidget>
+//#include <QTextDocument>
 
 #include "blformconfig.h"
 
@@ -103,9 +104,39 @@ BlFormConfig::BlFormConfig ( BlMainCompany *emp, BlForm *parent, Qt::WFlags f ) 
 
     mui_currentuser->setText ( cur->valor ( "current_user" ) );
     delete cur;
+    
+    archivoScript->setText(g_confpr->valor ( CONF_DIR_OPENREPORTS ) + "blform_"+parent->metaObject()->className()+".qs");
+    
+    if (!QFile::exists(g_confpr->valor ( CONF_DIR_OPENREPORTS ) + "blform_"+parent->metaObject()->className()+".qs")) {
+      editarScript->setText(_("Crear"));
+    } // end if
+  
+// by Ruben Cabezas
+/// Rellenamos los campos de DatabaseScript y QtScript con los algoritmos que encontramos.
+//    QString queryTriggers = "select tgname, prosrc from pg_trigger,pg_proc where  pg_proc.oid=pg_trigger.tgfoid  and pg_trigger.tgname LIKE '%"+m_BlForm->tableName()+"%'";
+    
+    QString queryTriggers = "select proname, prosrc from pg_proc where proname LIKE '%"+m_BlForm->tableName()+"%'";
+    
+    cur = mainCompany() ->loadQuery ( queryTriggers );
+    QString texto = "";
+    while ( !cur->eof() ) {
+	texto += cur->valor("proname") + " \n==================================\n";
+	texto += cur->valor("prosrc") + "\n\n==================================\n\n";
+        cur->nextRecord();
+    } // end while
+    delete cur;
+    //QTextDocument *doc = new QTextDocument(texto, databaseScript);
+    //doc->sedtPlainText(texto);
+    //databaseScript->setDocument(doc);
+    databaseScript->setPlainText(texto);
+    
     blDebug ( "END BlFormConfig::BlFormConfig", 0 );
 }
 
+void BlFormConfig::on_editarScript_released() {
+  QString cadena = g_confpr->valor (CONF_EDITOR) +" "+ g_confpr->valor ( CONF_DIR_OPENREPORTS ) + "blform_"+parent()->metaObject()->className()+".qs &";
+  int result = system ( cadena.toAscii().data() );
+}
 
 /// No requiere de acciones especiales en el destructor.
 /**

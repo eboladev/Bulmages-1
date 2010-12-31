@@ -100,6 +100,7 @@ ProveedorView::ProveedorView ( BfCompany *comp, QWidget *parent )
 
         /// Disparamos los plugins.
         g_plugins->lanza ( "ProveedorView_ProveedorView_Post", this );
+	blScript(this);
     } catch ( ... ) {
         blMsgInfo ( _( "Error al crear el proveedor" ) );
     } // end try
