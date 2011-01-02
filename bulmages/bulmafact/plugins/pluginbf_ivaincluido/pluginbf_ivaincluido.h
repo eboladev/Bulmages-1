@@ -27,14 +27,12 @@
 #include "bfsubform.h"
 #include "articuloview.h"
 #include "articulolist.h"
-#include "bfclientealbaransubform.h"
 #include "pdefs_pluginbf_ivaincluido.h"
 
 
 extern "C" PLUGINBF_IVAINCLUIDO_EXPORT int entryPoint ( BfBulmaFact * );
 extern "C" PLUGINBF_IVAINCLUIDO_EXPORT int ArticuloView_ArticuloView_Post ( ArticuloView * );
 extern "C" PLUGINBF_IVAINCLUIDO_EXPORT int ArticuloListSubForm_ArticuloListSubForm_Post ( ArticuloListSubForm * );
-extern "C" PLUGINBF_IVAINCLUIDO_EXPORT int BfClienteAlbaranSubForm_BfClienteAlbaranSubForm_Post (BfClienteAlbaranSubForm *);
 
 
 #endif

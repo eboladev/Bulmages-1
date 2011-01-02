@@ -92,7 +92,6 @@ set(bulmalib_MOCS	bldblogindialog.h
 			bldoublespinbox.h
 			blwidget.h
 			blmainwindow.h
-			blmaincompany.h
 			blformlist.h
 			blformlistfilter.h
 			bldatelineedit.h
@@ -106,6 +105,7 @@ set(bulmalib_MOCS	bldblogindialog.h
 			blmonthcalendar.h
 			blsearchwidget.h
 			blform.h
+			blmaincompany.h
 			blsubform.h
 			bltreewidget.h
 			bltoolbutton.h
@@ -118,7 +118,6 @@ set (bulmalib_HDRS	blmaincompanypointer.h
 			blspainbankaccountnumber.h
 			bldbsubform.h
 			bltreewidget.h
-			blmaincompany.h
 			blprogressbar.h
 			bldb.h
 			blfixed.h

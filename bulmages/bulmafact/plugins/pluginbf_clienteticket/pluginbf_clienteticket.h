@@ -18,20 +18,46 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#ifndef PLUGINBF_PRINTERCOCINA_H
-#define PLUGINBF_PRINTERCOCINA_H
+#ifndef PLUGINBF_CLIENTETICKET_H
+#define PLUGINBF_CLIENTETICKET_H
 
-#include <QObject>
+#include "blpostgresqlclient.h"
 #include "bfbulmafact.h"
-#include "blform.h"
-#include "bfsubform.h"
-#include "articuloview.h"
-#include "articulolist.h"
-#include "pdefs_pluginbf_printercocina.h"
+#include "blwidget.h"
+#include "bfbuscarreferencia.h"
+#include "clienteview.h"
+#include "facturaview.h"
+#include "albaranclienteview.h"
+#include "bfcompany.h"
+#include "pdefs_pluginbf_clienteticket.h"
 
 
-extern "C" PLUGINBF_PRINTERCOCINA_EXPORT int entryPoint ( BfBulmaFact * );
-extern "C" PLUGINBF_PRINTERCOCINA_EXPORT int ArticuloView_ArticuloView_Post ( ArticuloView * );
+extern "C" PLUGINBF_CLIENTETICKET_EXPORT int SNewTicketClienteView (BfCompany *);
+extern "C" PLUGINBF_CLIENTETICKET_EXPORT int entryPoint ( BfBulmaFact * );
+extern "C" PLUGINBF_CLIENTETICKET_EXPORT int BfCompany_createMainWindows_Post(BfCompany *);
+extern "C" PLUGINBF_CLIENTETICKET_EXPORT int ClienteView_ClienteView_Post (ClienteView *);
+extern "C" PLUGINBF_CLIENTETICKET_EXPORT int ClienteView_cargarPost_Post (ClienteView *);
+extern "C" PLUGINBF_CLIENTETICKET_EXPORT int BfBuscarReferencia_on_mui_abrirtodo_clicked_Post (BfBuscarReferencia *);
+
+
+// 
+class mypluginalb : public QObject, BlMainCompanyPointer
+{
+    Q_OBJECT
+
+public:
+    BfBulmaFact *m_bges;
+
+public:
+    mypluginalb();
+    ~mypluginalb();
+    void inicializa ( BfBulmaFact * );
+
+public slots:
+    void elslot();
+    void elslot1();
+};
+
 
 #endif
 

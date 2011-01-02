@@ -134,7 +134,9 @@ BlFormConfig::BlFormConfig ( BlMainCompany *emp, BlForm *parent, Qt::WFlags f ) 
 }
 
 void BlFormConfig::on_editarScript_released() {
-  QString cadena = g_confpr->valor (CONF_EDITOR) +" "+ g_confpr->valor ( CONF_DIR_OPENREPORTS ) + "blform_"+parent()->metaObject()->className()+".qs &";
+  QString cadena = "touch " +g_confpr->valor ( CONF_DIR_OPENREPORTS ) + "blform_"+parent()->metaObject()->className()+".qs";
+  system ( cadena.toAscii().data() );
+  cadena = g_confpr->valor (CONF_EDITOR) +" "+ g_confpr->valor ( CONF_DIR_OPENREPORTS ) + "blform_"+parent()->metaObject()->className()+".qs &";
   int result = system ( cadena.toAscii().data() );
 }
 

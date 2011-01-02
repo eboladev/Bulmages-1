@@ -37,6 +37,8 @@ include_directories(
 	${CMAKE_SOURCE_DIR}/bulmafact/plugins/pluginbf_proveedorfactura/
 	${CMAKE_BINARY_DIR}/bulmafact/plugins/pluginbf_proveedoralbaran/
 	${CMAKE_SOURCE_DIR}/bulmafact/plugins/pluginbf_proveedoralbaran/
+	${CMAKE_BINARY_DIR}/bulmafact/plugins/pluginbf_clientealbaran/
+	${CMAKE_SOURCE_DIR}/bulmafact/plugins/pluginbf_clientealbaran/
 	${CMAKE_BINARY_DIR}/bulmafact/plugins/pluginbf_clientefactura/
 	${CMAKE_SOURCE_DIR}/bulmafact/plugins/pluginbf_clientefactura/)
 
@@ -98,7 +100,7 @@ install_targets(/lib/bulmafact/plugins ${plugin})
 configure_file( ${CMAKE_CURRENT_SOURCE_DIR}/README.es ${CMAKE_CURRENT_BINARY_DIR}/README.es @ONLY)
 install (FILES ${CMAKE_CURRENT_BINARY_DIR}/README.es DESTINATION share/bulmages/bulmafact-plugins/ RENAME README.es.${plugin})
 
-add_dependencies(${plugin} bulmafact bulmalib)
+add_dependencies(${plugin} bulmafact bulmalib pluginbf_clientealbaran pluginbf_clientefactura pluginbf_proveedoralbaran pluginbf_proveedorfactura)
 install(DIRECTORY dbmodels/ 
 		DESTINATION share/bulmages/dbmodels/plugins
 		PATTERN ".svn" EXCLUDE)

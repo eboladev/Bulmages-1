@@ -1,26 +1,28 @@
 ###########################################
 # Plugin for bulmafact                    #
 ###########################################
-#plugin_tc_articulos
+#pluginbf_clienteticket
 
-set (plugin pluginbf_tallascolores)
+set (plugin pluginbf_clienteticket)
+ADD_DEFINITIONS(-D${plugin})
 
 file(GLOB plugin_SRC *.c *.cpp *.cxx)
 file(GLOB plugin_MOCS *.hpp *.h)
 file(GLOB plugin_UIS *.ui)
 
-
 # Exclude files with no QObject macro.
-file(GLOB plugin_NO_MOCS pdefs_pluginbf_tallascolores.h plugin_tc_articulos.h)
+file(GLOB plugin_NO_MOCS pdefs_pluginbf_clienteticket.h)
 list(REMOVE_ITEM plugin_MOCS ${plugin_NO_MOCS})
-
 
 set(QT_USE_QTASSISTANT false)
 set(QT_USE_QTXML true)
 #by R. Cabezas
 set(QT_USE_QTSCRIPT true)
 
-INCLUDE( ${QT_USE_FILE} )
+configure_file( ${CMAKE_CURRENT_SOURCE_DIR}/css/${plugin}_es_ES.css.in ${CMAKE_BINARY_DIR}/bulmafact/plugins/${plugin}/${plugin}_es_ES.css @ONLY)
+configure_file( ${CMAKE_CURRENT_SOURCE_DIR}/css/${plugin}_ca_ES.css.in ${CMAKE_BINARY_DIR}/bulmafact/plugins/${plugin}/${plugin}_ca_ES.css @ONLY)
+
+INCLUDE(${QT_USE_FILE})
 
 include_directories(
     ${QT_INCLUDE_DIR}
@@ -33,16 +35,16 @@ include_directories(
 	${CMAKE_SOURCE_DIR}/bulmalib/src/
 	${CMAKE_BINARY_DIR}/bulmafact/src/
 	${CMAKE_SOURCE_DIR}/bulmafact/src/
-	${CMAKE_BINARY_DIR}/bulmafact/plugins/pluginbf_clientealbaran/
-	${CMAKE_SOURCE_DIR}/bulmafact/plugins/pluginbf_clientealbaran/
+	${CMAKE_BINARY_DIR}/bulmafact/plugins/pluginbf_cliente/
+	${CMAKE_SOURCE_DIR}/bulmafact/plugins/pluginbf_cliente/
+	${CMAKE_BINARY_DIR}/bulmafact/plugins/pluginbf_clientepresupuesto/
+	${CMAKE_SOURCE_DIR}/bulmafact/plugins/pluginbf_clientepresupuesto/
+	${CMAKE_BINARY_DIR}/bulmafact/plugins/pluginbf_clientepedido/
+	${CMAKE_SOURCE_DIR}/bulmafact/plugins/pluginbf_clientepedido/
+	${CMAKE_BINARY_DIR}/bulmafact/plugins/pluginbf_clienteticket/
+	${CMAKE_SOURCE_DIR}/bulmafact/plugins/pluginbf_clienteticket/
 	${CMAKE_BINARY_DIR}/bulmafact/plugins/pluginbf_clientefactura/
-	${CMAKE_SOURCE_DIR}/bulmafact/plugins/pluginbf_clientefactura/
-	${CMAKE_BINARY_DIR}/bulmafact/plugins/pluginbf_proveedorfactura/
-	${CMAKE_SOURCE_DIR}/bulmafact/plugins/pluginbf_proveedorfactura/
-	${CMAKE_BINARY_DIR}/bulmafact/plugins/pluginbf_proveedoralbaran/
-	${CMAKE_SOURCE_DIR}/bulmafact/plugins/pluginbf_proveedoralbaran/
-	${CMAKE_BINARY_DIR}/bulmafact/plugins/pluginbf_articulo/
-	${CMAKE_SOURCE_DIR}/bulmafact/plugins/pluginbf_articulo/)
+	${CMAKE_SOURCE_DIR}/bulmafact/plugins/pluginbf_clientefactura/)
 
 # generate rules for building source files from the resources
 #QT4_WRAP_CPP(plugin_MOC_SRCS ${plugin_MOCS})
@@ -52,21 +54,10 @@ QT4_WRAP_UI(plugin_UIS_H ${plugin_UIS} OPTIONS -tr N_)
 QT4_WRAP_CPP(plugin_MOC_SRCS ${plugin_MOCS})
 #QT4_ADD_RESOURCES(plugin_RCC_SRCS ${plugin_RCCS})
 
-
 IF(WIN32)
 SET(CMAKE_SHARED_LINKER_FLAGS "${CMAKE_SHARED_LINKER_FLAGS} -Wl,-enable-auto-import")
-ADD_DEFINITIONS(-DQWT_DLL -DQT_DLL -DQWT_MAKEDLL -DPLUGINBF_TALLASCOLORES)
+ADD_DEFINITIONS(-DQWT_DLL -DQT_DLL -DQWT_MAKEDLL -DPLUGINBF_CLIENTEALBARAN)
 ENDIF(WIN32)
-
-
-# delete previous list of files to process (i18n)
-#FILE(REMOVE ${CMAKE_BINARY_DIR}/bulmafact/plugins/${plugin}/${plugin}_pot_list)
-
-#FOREACH(loop ${plugin_UIS_H} ${plugin_SRC})
-#    FILE(APPEND ${CMAKE_BINARY_DIR}/bulmafact/plugins/${plugin}/${plugin}_pot_list ${loop} "\n")
-#ENDFOREACH(loop)
-
-
 
 #ADD_DEFINITIONS(${QT_DEFINITIONS})
 ADD_DEFINITIONS(-DQT_SHARED)
@@ -95,6 +86,10 @@ endif(USE_GETTEXT)
 
 # build sources, moc'd sources, and rcc'd sources
 
+if(APPLE)
+  set(CMAKE_SHARED_LINKER_FLAGS "${CMAKE_SHARED_LINKER_FLAGS} -undefined dynamic_lookup")
+endif(APPLE)
+
 add_library(${plugin} SHARED ${plugin_SRC} ${plugin_MOC_SRCS}
 	${plugin_UIS_H} ${plugin_SRCS} ${plugin_MOCS})
 
@@ -103,9 +98,11 @@ set_target_properties( ${plugin} PROPERTIES
   SOVERSION "${BULMAGES_VERSION_MAJOR}.${BULMAGES_VERSION_MINOR}"
   VERSION "${BULMAGES_VERSION}")
 
-
-
+if(WIN32)
+target_link_libraries(${plugin} libbulmafact bulmalib pluginbf_cliente pluginbf_clientepresupuesto pluginbf_clientepedido ${QT_LIBRARIES} ${PGSQL_LIBRARIES})
+else(WIN32)
 target_link_libraries(${plugin} libbulmafact bulmalib ${QT_LIBRARIES} ${PGSQL_LIBRARIES})
+endif(WIN32)
 
 install_targets(/lib/bulmafact/plugins ${plugin})
 
@@ -113,14 +110,17 @@ configure_file( ${CMAKE_CURRENT_SOURCE_DIR}/README.es ${CMAKE_CURRENT_BINARY_DIR
 install (FILES ${CMAKE_CURRENT_BINARY_DIR}/README.es DESTINATION share/bulmages/bulmafact-plugins/ RENAME README.es.${plugin})
 
 
-add_dependencies(${plugin} bulmafact bulmalib pluginbf_articulo pluginbf_clientealbaran pluginbf_clientefactura pluginbf_proveedoralbaran)
-install(DIRECTORY dbmodels/ 
-		DESTINATION share/bulmages/dbmodels/plugins
-		PATTERN ".svn" EXCLUDE)
+add_dependencies(${plugin} bulmafact bulmalib pluginbf_cliente pluginbf_clientepresupuesto pluginbf_clientepedido)
+
+FILE(READ ${CMAKE_BINARY_DIR}/bulmafact/plugins/${plugin}/${plugin}_es_ES.css VAR_CSS_es_ES)
+FILE(APPEND ${CMAKE_BINARY_DIR}/css/bulmafact_es_ES.css "${VAR_CSS_es_ES}" )
+
+FILE(READ ${CMAKE_BINARY_DIR}/bulmafact/plugins/${plugin}/${plugin}_ca_ES.css VAR_CSS_ca_ES)
+FILE(APPEND ${CMAKE_BINARY_DIR}/css/bulmafact_ca_ES.css "${VAR_CSS_ca_ES}" )
+
+
+install(DIRECTORY images DESTINATION share/bulmages PATTERN ".svn" EXCLUDE)
 
 file(GLOB report_files openreports/*.ui openreports/*.pys openreports/*.rml)
 
 install (FILES ${report_files} DESTINATION share/bulmages/openreports)
-
-
-

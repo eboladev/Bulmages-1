@@ -98,9 +98,4 @@ int ArticuloListSubForm_ArticuloListSubForm_Post ( ArticuloListSubForm *artl )
 }
 
 
-int BfClienteAlbaranSubForm_BfClienteAlbaranSubForm_Post ( BfClienteAlbaranSubForm *l )
-{
-    l->addSubFormHeader ( "pvpivainclalbaran", BlDbField::DbNumeric, BlDbField::DbNotNull, BlSubFormHeader::DbHideView, "PVP IVA Inc" );
-    return 0;
-}
 

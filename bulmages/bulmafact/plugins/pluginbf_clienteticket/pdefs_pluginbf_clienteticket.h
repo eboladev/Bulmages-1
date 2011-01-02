@@ -1,0 +1,21 @@
+#ifndef PDEFS_PLUGINBF_CLIENTETICKET_H
+#define PDEFS_PLUGINBF_CLIENTETICKET_H
+
+
+#ifdef Q_OS_WIN32
+
+#ifdef PLUGINBF_CLIENTEALBARAN
+#define PLUGINBF_CLIENTETICKET_EXPORT __declspec(dllexport)
+#else
+#define PLUGINBF_CLIENTETICKET_EXPORT __declspec(dllimport)
+#endif
+
+#else
+
+#define PLUGINBF_CLIENTETICKET_EXPORT
+
+#endif
+
+
+#endif
+

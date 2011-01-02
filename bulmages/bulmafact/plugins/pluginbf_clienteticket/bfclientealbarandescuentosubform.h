@@ -1,6 +1,7 @@
 /***************************************************************************
  *   Copyright (C) 2005 by Tomeu Borras Riera                              *
  *   tborras@conetxia.com                                                  *
+ *   http://www.iglues.org                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
  *   it under the terms of the GNU General Public License as published by  *
@@ -18,20 +19,28 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#ifndef PLUGINBF_PRINTERCOCINA_H
-#define PLUGINBF_PRINTERCOCINA_H
+#ifndef BFCLIENTEALBARANDESCUENTOSUBFORM_H
+#define BFCLIENTEALBARANDESCUENTOSUBFORM_H
 
-#include <QObject>
-#include "bfbulmafact.h"
-#include "blform.h"
 #include "bfsubform.h"
-#include "articuloview.h"
-#include "articulolist.h"
-#include "pdefs_pluginbf_printercocina.h"
+#include "bfcompany.h"
 
 
-extern "C" PLUGINBF_PRINTERCOCINA_EXPORT int entryPoint ( BfBulmaFact * );
-extern "C" PLUGINBF_PRINTERCOCINA_EXPORT int ArticuloView_ArticuloView_Post ( ArticuloView * );
+/// Muestra y administra la ventana de lista de descuentos por albar&aacute;n a cliente.
+/** */
+class BF_EXPORT BfClienteTicketDescuentoSubForm : public BfSubForm
+{
+    Q_OBJECT
+
+public:
+    QString mdb_idalbaran;
+    BfClienteTicketDescuentoSubForm ( QWidget *parent = 0 );
+    ~BfClienteTicketDescuentoSubForm() {}
+    ;
+
+public slots:
+    virtual void cargar ( QString idalbaran );
+};
 
 #endif
 

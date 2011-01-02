@@ -18,20 +18,42 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#ifndef PLUGINBF_PRINTERCOCINA_H
-#define PLUGINBF_PRINTERCOCINA_H
+#include <QMessageBox>
+#include <QMenu>
+#include <QKeyEvent>
+#include <QEvent>
 
-#include <QObject>
-#include "bfbulmafact.h"
-#include "blform.h"
-#include "bfsubform.h"
-#include "articuloview.h"
-#include "articulolist.h"
-#include "pdefs_pluginbf_printercocina.h"
+#include "bfclientealbarandescuentosubform.h"
+#include "blfunctions.h"
 
 
-extern "C" PLUGINBF_PRINTERCOCINA_EXPORT int entryPoint ( BfBulmaFact * );
-extern "C" PLUGINBF_PRINTERCOCINA_EXPORT int ArticuloView_ArticuloView_Post ( ArticuloView * );
+///
+/**
+\param parent
+**/
+BfClienteTicketDescuentoSubForm::BfClienteTicketDescuentoSubForm ( QWidget *parent )
+        : BfSubForm ( parent )
+{
+    blDebug ( "BfClienteTicketDescuentoSubForm::BfClienteTicketDescuentoSubForm", 0 );
 
-#endif
+    setDbTableName ( "dalbaran" );
+    setDbFieldId ( "iddalbaran" );
+    addSubFormHeader ( "iddalbaran", BlDbField::DbInt, BlDbField::DbPrimaryKey, BlSubFormHeader::DbHideView | BlSubFormHeader::DbNoWrite, _ ( "Id descuento" ) );
+    addSubFormHeader ( "conceptdalbaran", BlDbField::DbVarChar, BlDbField::DbNotNull, BlSubFormHeader::DbNone, _ ( "Concepto descuento" ) );
+    addSubFormHeader ( "proporciondalbaran", BlDbField::DbNumeric, BlDbField::DbNotNull, BlSubFormHeader::DbNone, _ ( "% Descuento" ) );
+    addSubFormHeader ( "idalbaran", BlDbField::DbInt, BlDbField::DbNotNull, BlSubFormHeader::DbHideView | BlSubFormHeader::DbNoWrite, _ ( "Id albaran" ) );
+    setInsert ( TRUE );
+    blDebug ( "END BfClienteTicketDescuentoSubForm::BfClienteTicketDescuentoSubForm", 0 );
+}
 
+
+///
+/**
+\param idalbaran
+**/
+void BfClienteTicketDescuentoSubForm::cargar ( QString idalbaran )
+{
+    blDebug ( "BfClienteTicketDescuentoSubForm::cargar", 0 );
+    mdb_idalbaran = idalbaran;
+    BlSubForm::cargar ( "SELECT * FROM dalbaran WHERE idalbaran=" + mdb_idalbaran );
+}

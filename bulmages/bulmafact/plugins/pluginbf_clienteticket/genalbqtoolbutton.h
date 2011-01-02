@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2005 by Tomeu Borras Riera                              *
+ *   Copyright (C) 2007 by Tomeu Borras Riera                              *
  *   tborras@conetxia.com                                                  *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -18,20 +18,36 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#ifndef PLUGINBF_PRINTERCOCINA_H
-#define PLUGINBF_PRINTERCOCINA_H
+#include <QtXml/QDomDocument>
+#include <QMap>
+#include <QString>
+#include <QWidget>
+#include <QToolButton>
+#include <QString>
 
-#include <QObject>
-#include "bfbulmafact.h"
-#include "blform.h"
-#include "bfsubform.h"
-#include "articuloview.h"
-#include "articulolist.h"
-#include "pdefs_pluginbf_printercocina.h"
+#include "bfcompany.h"
+#include "blfunctions.h"
+#include "pdefs_pluginbf_clienteticket.h"
 
 
-extern "C" PLUGINBF_PRINTERCOCINA_EXPORT int entryPoint ( BfBulmaFact * );
-extern "C" PLUGINBF_PRINTERCOCINA_EXPORT int ArticuloView_ArticuloView_Post ( ArticuloView * );
+class PLUGINBF_CLIENTETICKET_EXPORT GenAlbQToolButton : public QToolButton
+{
+    Q_OBJECT
 
-#endif
+private:
+    BfCompany *m_companyact;
+    QWidget *m_object;
+
+public:
+    GenAlbQToolButton ( QWidget *fac,   QWidget *parent = NULL );
+    ~GenAlbQToolButton();
+    void setBoton();
+    void generarFactura1();
+    void generarFactura2();
+
+public slots:
+    virtual void click();
+
+};
+
 

@@ -32,14 +32,14 @@
 /**
 \param parent
 **/
-BfClienteAlbaranSubForm::BfClienteAlbaranSubForm ( QWidget *parent )
+BfClienteTicketSubForm::BfClienteTicketSubForm ( QWidget *parent )
         : BfSubForm ( parent )
 {
-    blDebug ( "BfClienteAlbaranSubForm::BfClienteAlbaranSubForm", 0 );
+    blDebug ( "BfClienteTicketSubForm::BfClienteTicketSubForm", 0 );
     setDbTableName ( "lalbaran" );
     setDbFieldId ( "numlalbaran" );
     /// Disparamos los plugins.
-    int res = g_plugins->lanza ( "BfClienteAlbaranSubForm_BfClienteAlbaranSubForm", this );
+    int res = g_plugins->lanza ( "BfClienteTicketSubForm_BfClienteTicketSubForm", this );
     if ( res != 0 )
         return;
     addSubFormHeader ( "idarticulo", BlDbField::DbInt, BlDbField::DbNotNull, BlSubFormHeader::DbHideView, _ ( "Id articulo" ) );
@@ -48,7 +48,8 @@ BfClienteAlbaranSubForm::BfClienteAlbaranSubForm ( QWidget *parent )
     addSubFormHeader ( "numlalbaran", BlDbField::DbInt, BlDbField::DbPrimaryKey, BlSubFormHeader::DbHideView, _ ( "Nº linea" ) );
     addSubFormHeader ( "desclalbaran", BlDbField::DbVarChar, BlDbField::DbNotNull, BlSubFormHeader::DbNone, _ ( "Descripcion" ) );
     addSubFormHeader ( "cantlalbaran", BlDbField::DbNumeric, BlDbField::DbNotNull, BlSubFormHeader::DbNone, _ ( "Cantidad" ) );
-    addSubFormHeader ( "pvplalbaran", BlDbField::DbNumeric, BlDbField::DbNotNull, BlSubFormHeader::DbNone, _ ( "P.V.P." ) );
+//    addSubFormHeader ( "pvplalbaran", BlDbField::DbNumeric, BlDbField::DbNotNull, BlSubFormHeader::DbNone, _ ( "P.V.P." ) );
+    addSubFormHeader ( "pvpivainclalbaran", BlDbField::DbNumeric, BlDbField::DbNotNull, BlSubFormHeader::DbNone, _ ( "P.V.P." ) );
     addSubFormHeader ( "totallalbaran", BlDbField::DbNumeric, BlDbField::DbNoSave, BlSubFormHeader::DbNoWrite, _ ( "Total Linea" ) );
     addSubFormHeader ( "ivalalbaran", BlDbField::DbNumeric, BlDbField::DbNotNull, BlSubFormHeader::DbNone, _ ( "I.V.A." ) );
     addSubFormHeader ( "reqeqlalbaran", BlDbField::DbNumeric, BlDbField::DbNothing, BlSubFormHeader::DbNone, _ ( "% Recargo E.Q." ) );
@@ -58,8 +59,8 @@ BfClienteAlbaranSubForm::BfClienteAlbaranSubForm ( QWidget *parent )
     setInsert ( TRUE );
     setOrdenEnabled ( TRUE );
     /// Disparamos los plugins.
-    g_plugins->lanza ( "BfClienteAlbaranSubForm_BfClienteAlbaranSubForm_Post", this );
-    blDebug ( "END BfClienteAlbaranSubForm::BfClienteAlbaranSubForm", 0 );
+    g_plugins->lanza ( "BfClienteTicketSubForm_BfClienteTicketSubForm_Post", this );
+    blDebug ( "END BfClienteTicketSubForm::BfClienteTicketSubForm", 0 );
 
 }
 
@@ -68,17 +69,17 @@ BfClienteAlbaranSubForm::BfClienteAlbaranSubForm ( QWidget *parent )
 /**
 \param idalbaran
 **/
-void BfClienteAlbaranSubForm::cargar ( QString idalbaran )
+void BfClienteTicketSubForm::cargar ( QString idalbaran )
 {
-    blDebug ( "BfClienteAlbaranSubForm::cargar", 0 );
+    blDebug ( "BfClienteTicketSubForm::cargar", 0 );
     mdb_idalbaran = idalbaran;
     /// Disparamos los plugins.
-    int res = g_plugins->lanza ( "BfClienteAlbaranSubForm_cargar", this );
+    int res = g_plugins->lanza ( "BfClienteTicketSubForm_cargar", this );
     if ( res != 0 )
         return;
 
-    BlSubForm::cargar ( "SELECT *, (cantlalbaran * pvplalbaran)::NUMERIC(12,2) AS totallalbaran FROM lalbaran LEFT JOIN articulo ON lalbaran.idarticulo = articulo.idarticulo WHERE idalbaran=" + mdb_idalbaran + "   ORDER BY ordenlalbaran" );
-    blDebug ( "END BfClienteAlbaranSubForm::cargar", 0 );
+    BlSubForm::cargar ( "SELECT *, (cantlalbaran * pvpivainclalbaran)::NUMERIC(12,2) AS totallalbaran FROM lalbaran LEFT JOIN articulo ON lalbaran.idarticulo = articulo.idarticulo WHERE idalbaran=" + mdb_idalbaran + "   ORDER BY ordenlalbaran" );
+    blDebug ( "END BfClienteTicketSubForm::cargar", 0 );
 }
 
 

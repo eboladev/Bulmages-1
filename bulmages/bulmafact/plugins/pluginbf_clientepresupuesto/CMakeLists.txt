@@ -41,9 +41,7 @@ include_directories(
 	${CMAKE_BINARY_DIR}/bulmafact/plugins/pluginbf_clientepedido/
 	${CMAKE_SOURCE_DIR}/bulmafact/plugins/pluginbf_clientepedido/
 	${CMAKE_BINARY_DIR}/bulmafact/plugins/pluginbf_clientefactura/
-	${CMAKE_SOURCE_DIR}/bulmafact/plugins/pluginbf_clientefactura/
-	${CMAKE_BINARY_DIR}/bulmafact/plugins/pluginbf_clientealbaran/
-	${CMAKE_SOURCE_DIR}/bulmafact/plugins/pluginbf_clientealbaran/)
+	${CMAKE_SOURCE_DIR}/bulmafact/plugins/pluginbf_clientefactura/)
 
 # generate rules for building source files that moc generates
 QT4_WRAP_UI(plugin_UIS_H ${plugin_UIS} OPTIONS -tr N_)

@@ -85,6 +85,8 @@ void BlForm::blScript(QObject * obj) {
 	  QString contents = stream.readAll();
 	  QScriptValue objectValue = m_myEngine.newQObject(this);
 	  m_myEngine.globalObject().setProperty(metaObject()->className(), objectValue);
+	  QScriptValue objectValue1 = m_myEngine.newQObject(mainCompany());
+	  m_myEngine.globalObject().setProperty("MainCompany", objectValue1);
 	  m_myEngine.importExtension("qt.core");
 	  m_myEngine.importExtension("qt.gui"); 
 	  m_myEngine.evaluate(contents);
