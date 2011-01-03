@@ -508,9 +508,11 @@ void BlForm::on_customContextMenuRequested ( const QPoint & )
 
     /// Lanzamos la propagacion del menu a traves de las clases derivadas.
     creaMenu ( popup );
+    QAction *avconfig = NULL;
+    if (g_confpr->valor(CONF_MODO_EXPERTO) == "TRUE") {
+      avconfig = popup->addAction ( _ ( "Opciones avanzadas de ficha" ) );
+    } // end if
 
-
-    QAction *avconfig = popup->addAction ( _ ( "Opciones avanzadas de ficha" ) );
     QAction *avprint = popup->addAction ( _ ( "Imprimir ficha" ) );
     QAction *opcion = popup->exec ( QCursor::pos() );
 

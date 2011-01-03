@@ -429,6 +429,8 @@ QString BlConfiguration::nombre ( int i )
 	return "CONF_ASK_BEFORE_EXIT";
     if ( i == CONF_TPV_BASCULA_FILE )
 	return "CONF_TPV_BASCULA_FILE";
+    if ( i == CONF_MODO_EXPERTO )
+	return "CONF_MODO_EXPERTO";
     return "";
 }
 

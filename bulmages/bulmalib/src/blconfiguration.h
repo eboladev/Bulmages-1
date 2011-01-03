@@ -52,59 +52,59 @@
 #define CONF_CONT_ALT                 51
 
 
-///Indica el color de fondo del libro diario.
+///Indica el color de fondo del libro diario. (obsoleto)
 #define CONF_BG_DIARIO               106
-/// Indica el color de la letra del diario en el pijama opcion 1.
+/// Indica el color de la letra del diario en el pijama opcion 1.(obsoleto)
 #define CONF_FG_DIARIO1              107
-/// Indica el color de la letra del diario en el pijama opcion 2.
+/// Indica el color de la letra del diario en el pijama opcion 2.(obsoleto)
 #define CONF_FG_DIARIO2              108
-/// Indica el tipo de letra del libro diario.
+/// Indica el tipo de letra del libro diario.(obsoleto)
 #define CONF_FONTFAMILY_DIARIO       109
-/// Indica el tamanyo de letra del libro diario.
+/// Indica el tamanyo de letra del libro diario.(obsoleto)
 #define CONF_FONTSIZE_DIARIO         110
-/// Indica si en el diario debe aparecer la contrapartida o no.
+/// Indica si en el diario debe aparecer la contrapartida o no.(obsoleto)
 #define CONF_CONTRAPARTIDA_DIARIO    111
-/// Indica si en el diario debe aparecer el canal o no.
+/// Indica si en el diario debe aparecer el canal o no.(obsoleto)
 #define CONF_CANAL_DIARIO            112
-/// Indica si en el diario debe aparecer el centro de coste o no.
+/// Indica si en el diario debe aparecer el centro de coste o no.(obsoleto)
 #define CONF_CCOSTE_DIARIO           113
-/// Indica cual es el color de fondo del extracto.
+/// Indica cual es el color de fondo del extracto.(obsoleto)
 #define CONF_BG_EXTRACTO             120
-/// Indica cual es el color de fondo del balance.
+/// Indica cual es el color de fondo del balance.(obsoleto)
 #define CONF_BG_BALANCE              121
-/// Indica cual es el color de fondo del balance desplegable.
+/// Indica cual es el color de fondo del balance desplegable.(obsoleto)
 #define CONF_BG_BALANCETREE          122
-/// Indica si en el extracto de cuentas debe aparecer la contrapartida o no.
+/// Indica si en el extracto de cuentas debe aparecer la contrapartida o no.(obsoleto)
 #define CONF_CONTRAPARTIDA_EXTRACTO  123
-/// Indica si en el extracto de cuentas debe aparecer el canal o no.
+/// Indica si en el extracto de cuentas debe aparecer el canal o no.(obsoleto)
 #define CONF_CANAL_EXTRACTO          124
-/// Indica si en el extracto de cuentas debe aparecer o no el centro de coste.
+/// Indica si en el extracto de cuentas debe aparecer o no el centro de coste.(obsoleto)
 #define CONF_CCOSTE_EXTRACTO         125
-/// Indica si en la introduccion de apuntes debe aparecer el campo de contrapartida.
+/// Indica si en la introduccion de apuntes debe aparecer el campo de contrapartida.(obsoleto)
 #define CONF_CONTRAPARTIDA_APUNTES   130
-/// Indica si en la introduccion de apuntes debe aparecer la columna de canales.
+/// Indica si en la introduccion de apuntes debe aparecer la columna de canales.(obsoleto)
 #define CONF_CANAL_APUNTES           131
-/// Indica si en la introduccion de apuntes deben aparecer los centros de coste.
+/// Indica si en la introduccion de apuntes deben aparecer los centros de coste.(obsoleto)
 #define CONF_CCOSTE_APUNTES          132
 
-/// Colores para BulmaFact.
+/// Colores para BulmaFact. (OBSOLETO)
 #define CONF_BG_LISTPRESUPUESTOS     140
 #define CONF_BG_LINPRESUPUESTOS      141
 #define CONF_BG_DESCPRESUPUESTOS     142
-
 #define CONF_BG_LISTPEDIDOSCLIENTE   143
 #define CONF_BG_LINPEDIDOSCLIENTE    144
 #define CONF_BG_DESCPEDIDOSCLIENTE   145
-
 #define CONF_BG_LISTALBARANESCLIENTE 146
 #define CONF_BG_LINALBARANESCLIENTE  147
 #define CONF_BG_DESCALBARANESCLIENTE 148
-
 #define CONF_BG_LISTFACTURASCLIENTE  149
 #define CONF_BG_LINFACTURASCLIENTE   150
 #define CONF_BG_DESCFACTURASCLIENTE  151
-
 #define CONF_BG_LISTARTICULOS        152
+
+
+
+
 #define CONF_SPLASH_BULMACONT        170
 #define CONF_SPLASH_BULMATPV         171
 /// Indica que base de datos es la META (OBSOLETO=
@@ -173,6 +173,9 @@
 
 /// Determina el directorio de los asientos inteligentes
 #define CONF_DIR_AINTELIGENTES       331
+
+/// Determina si se va a usar el modo experto o no
+#define CONF_MODO_EXPERTO            332
 
 /// Dictamina cuales son los privilegios del usuario.
 #define CONF_PRIVILEGIOS_USUARIO     420

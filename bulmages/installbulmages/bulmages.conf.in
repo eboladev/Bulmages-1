@@ -21,6 +21,8 @@ CONF_DIR_TMP			/tmp/
 CONF_ODS			xdg-open
 CONF_SXC			xdg-open
 
+# Definimos si estamos en modo experto (mostrando opciones de experto o no)
+CONF_MODO_EXPERTO		FALSE
 
 
 # Hoja de estilo a utilizar

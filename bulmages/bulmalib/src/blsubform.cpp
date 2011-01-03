@@ -269,7 +269,12 @@ BlSubForm::BlSubForm ( QWidget *parent ) : BlWidget ( parent )
     /// Disparamos los plugins.
     g_plugins->lanza ( "BlSubForm_BlSubForm_Post", this );
     m_procesacambios = TRUE;
-    blDebug ( "END BlSubForm::BlSubForm", 0 );
+    
+   if (g_confpr->valor(CONF_MODO_EXPERTO) != "TRUE") {
+     mui_selectorblsubform->removeTab(mui_selectorblsubform->indexOf(tab3));
+   } // end if
+   
+   blDebug ( "END BlSubForm::BlSubForm", 0 );
 }
 
 
