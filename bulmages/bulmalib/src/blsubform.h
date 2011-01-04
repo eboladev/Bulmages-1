@@ -204,9 +204,11 @@ public:
     /// Guarda la configuraci&oacute;n de presentaci&oacute;n del subformulario
     /// en el directorio .bulmages situado dentro del directorio 'home' del usuario.
     void guardaconfig();
+    void guardaconfigXML();
     /// Carga la configuraci&oacute;n que ten&iacute;a el formulario la &uacute;ltima
     /// vez que fue utilizado por el usuario.
     void cargaconfig();
+    void cargaconfigXML();
     /// Devuelve la lista de registros de la base de datos que
     /// se presentan en el subformulario.
     QList<BlDbSubFormRecord *> *lista();

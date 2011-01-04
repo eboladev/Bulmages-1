@@ -2292,6 +2292,17 @@ const QString BlSubForm::nameFileConfig()
 void BlSubForm::guardaconfig()
 {
     blDebug ( "BlSubForm::guardaconfig", 0 );
+    guardaconfigXML();
+    blDebug ( "END BlSubForm::guardaconfig", 0 );
+}
+
+
+/// Guardamos el archivo de configuracion.
+/**
+**/
+void BlSubForm::guardaconfigXML()
+{
+    blDebug ( "BlSubForm::guardaconfigXML", 0 );
 
     /// Si el subformulario no esta inicializado no hacemos el guardado.
     if ( ! mainCompany() )
@@ -2302,25 +2313,30 @@ void BlSubForm::guardaconfig()
     /// Guardado del orden y de configuraciones varias.
     if ( file.open ( QIODevice::WriteOnly ) ) {
         QTextStream stream ( &file );
-        stream << mui_list->colorden() << "\n";
-        stream << mui_list->tipoorden() << "\n";
-        stream << mui_filaspagina->text() << "\n";
+	stream << "<DOCUMENT>" << "\n";
+        stream << "<COLORDEN>" << mui_list->colorden() << "</COLORDEN>\n";
+        stream << "<TIPOORDEN>" << mui_list->tipoorden() << "</TIPOORDEN>\n";
+        stream << "<FILASPAGINA>" << mui_filaspagina->text() << "</FILASPAGINA>\n";
 
         /// Guarda la visibilidad de los elementos consultando la tabla de configuracion.
+	stream << "<VISIBILIDAD>\n";
         for ( int i = 0; i < mui_listcolumnas->rowCount(); ++i ) {
             for ( int j = 0; j < mui_listcolumnas->rowCount(); ++j ) {
                 if ( mui_listcolumnas->item ( j, 3 )->text().toInt() == i ) {
+		    stream << "\t<VISIBLECOLUMNA name=\"" << mui_listcolumnas->item(j,1) -> text() << "\" >";
                     if ( mui_listcolumnas->item ( j, 0 ) ->checkState() == Qt::Checked ) {
-                        stream << "1" << "\n";
+                        stream << "1";
                     } else {
-                        stream << "0" << "\n";
+                        stream << "0";
                     } // end if
+                    stream << "</VISIBLECOLUMNA>\n";
                 } // end if
             } // end for
         } // end for
+	stream << "</VISIBILIDAD>\n";
 
         /// Guarda la configuracion de mui_list.
-        stream << QString ( mui_list->horizontalHeader()->saveState().toBase64() ) << "\n";
+        stream << "<HORIZONTALHEADER>" << QString ( mui_list->horizontalHeader()->saveState().toBase64() ) << "</HORIZONTALHEADER>\n";
         
 	/// 12/Junio/2009:
         /// TODO: Se comentan las lineas que guardan el estado vertical porque da fallos en
@@ -2330,24 +2346,29 @@ void BlSubForm::guardaconfig()
         //stream << QString ( mui_list->verticalHeader()->saveState().toBase64() ) << "\n";
 
         /// Guarda la configuracion de mui_listcolumnas.
-        stream << QString ( mui_listcolumnas->horizontalHeader()->saveState().toBase64() ) << "\n";
+        stream << "<COLUMNASHORIZONTALHEADER>"<< QString ( mui_listcolumnas->horizontalHeader()->saveState().toBase64() ) << "</COLUMNASHORIZONTALHEADER>\n";
         //stream << QString ( mui_listcolumnas->verticalHeader()->saveState().toBase64() ) << "\n";
-
+	stream << "<ORDENCOLUMNAS>\n";
         /// Guarda el orden de la lista de elementos en mui_listcolumnas.
         for ( int i = 0; i < mui_listcolumnas->rowCount(); ++i ) {
-            stream << mui_listcolumnas->item ( i, 3 )->text() << "\n";
+	    stream << "\t<ORDENCOLUMNA name=\"" << mui_listcolumnas->item(i,1) -> text() << "\" >";
+            stream << mui_listcolumnas->item ( i, 3 )->text();
+	    stream << "</ORDENCOLUMNA>\n";
         } // end for
-
+	stream << "</ORDENCOLUMNAS>\n";
+	stream << "<VISIBILIDADMENU>";
 	/// Guardamos el estado del menu de subformulario.
 	if (mui_menusubform->isHidden()) {
 	  stream << "0";
 	} else {
 	  stream << "1";
 	} // end if
-
+	stream << "</VISIBILIDADMENU>\n";
+	stream << "</DOCUMENT>\n";
 
         file.close();
     } // end if
+    
     blDebug ( "END BlSubForm::guardaconfig", 0 );
 }
 
@@ -2358,51 +2379,112 @@ void BlSubForm::guardaconfig()
 void BlSubForm::cargaconfig()
 {
     blDebug ( "BlSubForm::cargaconfig", 0 );
-    QFile file ( nameFileConfig() );
-    QString line;
-    int error = 1;
-    if ( file.open ( QIODevice::ReadOnly ) ) {
 
-        error = 0;
-        QTextStream stream ( &file );
-        /// Establecemos la columna de ordenaci&oacute;n
-        QString linea = stream.readLine();
-        mui_list->setcolorden ( linea.toInt() );
+    cargaconfigXML();
+
+    m_primero = FALSE;
+
+    blDebug ( "END BlSubForm::cargaconfig", 0 );
+}
+
+
+
+///
+/**
+**/
+void BlSubForm::cargaconfigXML()
+{
+    blDebug ( "BlSubForm::cargaconfigXML", 0 );
+    QFile file ( nameFileConfig() );
+    
+    
+    
+    QDomDocument doc ( "mydocument" );
+    if ( !file.open ( QIODevice::ReadOnly ) ) {
+        blDebug ( "END BlSubForm::cargaconfigXML", 0, "No se pudo abrir archivo" );
+        return;
+    }
+    if ( !doc.setContent ( &file ) ) {
+        file.close();
+        blDebug ( "END BlSubForm::cargaconfigXML", 0, "XML no valido" );
+        return;
+    }
+    file.close();
+
+    QDomElement docElem = doc.documentElement();
+    
+    
+	/// Establecemos el orden de columna
+	QString columorden = docElem.firstChildElement ( "COLORDEN" ).toElement().text();
+	if (columorden != "")
+	  mui_list->setcolorden ( columorden.toInt() );
 
         /// Establecemos el tipo de ordenaci&oacute;n
-        linea = stream.readLine();
-        mui_list->settipoorden ( linea.toInt() );
+	QString tipoorden = docElem.firstChildElement ( "TIPOORDEN" ).toElement().text();
+	if (tipoorden != "")
+	  mui_list->settipoorden ( tipoorden.toInt() );
 
         /// Establecemos el n&uacute;mero de filas por p&aacute;gina
-        linea = stream.readLine();
-        if ( linea.toInt() > 0 ) {
-            mui_filaspagina->setValue ( linea.toInt() );
+	QString filaspagina = docElem.firstChildElement ( "FILASPAGINA" ).toElement().text();
+	if (filaspagina.toInt() > 0) {
+            mui_filaspagina->setValue ( filaspagina.toInt() );
         } // end if
 
-        /// Leemos la visibilidad de las columnas. Se hace antes de ordenarlas.
-        for ( int i = 0; i < mui_listcolumnas->rowCount(); ++i ) {
-            linea = stream.readLine();
-            if ( linea == "1" ) {
-                mui_listcolumnas->item ( i, 0 ) ->setCheckState ( Qt::Checked );
-            } else if ( linea == "0" ) {
-                mui_listcolumnas->item ( i, 0 ) ->setCheckState ( Qt::Unchecked );
-            } else {
-                error = 1;
-            } // end if
-        } // end for
+    /// Leemos la visibilidad de las columnas. Se hace antes de ordenarlas.
+    QDomNodeList nodos = docElem.elementsByTagName ( "VISIBLECOLUMNA" );
+    for ( int i = 0; i < nodos.count(); i++ ) {
+        QDomNode visible = nodos.item ( i );
+        QDomElement e1 = visible.toElement(); /// try to convert the node to an element.
+        if ( !e1.isNull() ) { /// the node was really an element.
+	    QString nombre = e1.attribute("name");
+	    QString linea = e1.text();
+	    for ( int j = 0; j < mui_listcolumnas->rowCount(); ++j ) {
+		if ( mui_listcolumnas->item(j,1) -> text() == nombre) {
+		    if ( linea == "1" ) {
+			mui_listcolumnas->item ( j, 0 ) ->setCheckState ( Qt::Checked );
+		    } else {
+			mui_listcolumnas->item ( j, 0 ) ->setCheckState ( Qt::Unchecked );
+		    } // end if
+		} // end if
+	    } // end for	    
+	} // end if
+    } // end form
+    
+
 
         /// Restaura el estado de mui_list.
-        linea = stream.readLine();
-        mui_list->horizontalHeader()->restoreState ( QByteArray::fromBase64 ( linea.toAscii() ) );
+	QString horizontalheader = docElem.firstChildElement ( "HORIZONTALHEADER" ).toElement().text();
+	if (horizontalheader != "")
+	    mui_list->horizontalHeader()->restoreState ( QByteArray::fromBase64 ( horizontalheader.toAscii() ) );
         //linea = stream.readLine();
         //mui_list->verticalHeader()->restoreState ( QByteArray::fromBase64 ( linea.toAscii() ) );
 
         /// Restaura el estado de mui_listcolumnas.
-        linea = stream.readLine();
-        mui_listcolumnas->horizontalHeader()->restoreState ( QByteArray::fromBase64 ( linea.toAscii() ) );
+        /// Restaura el estado de mui_list.
+	QString columnashorizontalheader = docElem.firstChildElement ( "COLUMNASHORIZONTALHEADER" ).toElement().text();
+	if (columnashorizontalheader != "")
+	    mui_listcolumnas->horizontalHeader()->restoreState ( QByteArray::fromBase64 ( columnashorizontalheader.toAscii() ) );
         //linea = stream.readLine();
         //mui_listcolumnas->verticalHeader()->restoreState ( QByteArray::fromBase64 ( linea.toAscii() ) );
 
+	    
+    /// Leemos la visibilidad de las columnas. Se hace antes de ordenarlas.
+    nodos = docElem.elementsByTagName ( "ORDENCOLUMNA" );
+    for ( int i = 0; i < nodos.count(); i++ ) {
+        QDomNode visible = nodos.item ( i );
+        QDomElement e1 = visible.toElement(); /// try to convert the node to an element.
+        if ( !e1.isNull() ) { /// the node was really an element.
+	    QString nombre = e1.attribute("name");
+	    QString linea = e1.text();
+	    for ( int j = 0; j < mui_listcolumnas->rowCount(); ++j ) {
+		if ( mui_listcolumnas->item(j,3) -> text().toInt() == linea.toInt()) {
+                    mui_listcolumnas->moveRow ( j, i );
+		} // end if
+	    } // end for	    
+	} // end if
+    } // end for
+
+/*
         /// Restaura el orden de mui_listcolumnas.
         for ( int i = 0; i < mui_listcolumnas->rowCount(); ++i ) {
             linea = stream.readLine();
@@ -2414,27 +2496,24 @@ void BlSubForm::cargaconfig()
                 } // end if
             } // end for
         } // end for
-
+*/
 
 	/// Guardamos el estado del menu de subformulario.
-	linea = stream.readLine();
-	if (linea == "1") {
+        /// Restaura el estado de mui_listcolumnas.
+        /// Restaura el estado de mui_list.
+	QString visibilidadmenu = docElem.firstChildElement ( "VISIBILIDADMENU" ).toElement().text();
+	if (visibilidadmenu == "1") {
 	  mui_menusubform->setVisible(TRUE);
 	} else {
 	  mui_menusubform->setVisible(FALSE);
 	} // end if
 
-        file.close();
         on_mui_confcol_clicked();
-    } // end if
-
-    /// Si se ha producido alg&uacute;n error en la carga hacemos un maquetado autom&aacute;tico.
-    if ( error )
-        mui_list->resizeColumnsToContents();
 
     m_primero = FALSE;
-    blDebug ( "END BlSubForm::cargaconfig", 0 );
+    blDebug ( "END BlSubForm::cargaconfigXML", 0 );
 }
+
 
 
 ///
@@ -2893,7 +2972,7 @@ void BlSubForm::preparaMenu() {
     
     if ( m_delete ) {
       QToolButton *sel = new QToolButton ( mui_menusubform );
-      sel->setStatusTip ( "Generar Q19" );
+      sel->setStatusTip ( "Borrar Linea" );
       sel->setToolTip ( "Borrar Linea" );
       sel->setMinimumSize ( QSize ( 18, 18 ) );
       sel->setIcon ( QIcon ( ":/Images/delete-one-line.png" ) );
