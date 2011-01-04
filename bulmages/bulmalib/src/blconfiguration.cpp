@@ -431,8 +431,12 @@ QString BlConfiguration::nombre ( int i )
 	return "CONF_TPV_BASCULA_FILE";
     if ( i == CONF_MODO_EXPERTO )
 	return "CONF_MODO_EXPERTO";
+    if ( i == CONF_DIR_DEFAULT_CONFS )
+	return "CONF_DIR_DEFAULT_CONFS";
     return "";
 }
+
+
 
 
 /// This method writes the configuration of the system to the home bulmages.conf file

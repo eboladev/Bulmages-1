@@ -136,6 +136,7 @@ public:
 private:
     virtual void cargar ( BlDbRecordSet *cur );
     const QString nameFileConfig(); 
+    const QString nameFileDefaultConfig(); 
 
 
 private:

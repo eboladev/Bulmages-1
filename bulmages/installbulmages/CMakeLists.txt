@@ -37,7 +37,7 @@ configure_file( ${CMAKE_SOURCE_DIR}/installbulmages/i18n/update_message_catalog_
 
 
 install(DIRECTORY ainteligentes canuales planescontables rev-conf
-				openreports icons images dbmodels ayuda
+				openreports icons images dbmodels ayuda confs
 				DESTINATION share/bulmages
  				PATTERN ".svn" EXCLUDE)
 

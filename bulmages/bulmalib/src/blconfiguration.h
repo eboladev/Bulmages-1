@@ -149,7 +149,7 @@
 #define CONF_DIR_TRADUCCION          306
 /// Indica cual va a ser el archivo de log del programa
 #define CONF_ARCHIVO_LOG             307
-/// Indica donde se hayan ubicados los archivos de formato de REPORTS
+/// Indica donde se hayan ubicados los archivos de formato de REPORTS (obsoleto)
 #define CONF_DIR_REPORTS             308
 /// Indica la ruta donde se encuentran los archivos de formato de KUGAR
 #define CONF_DIR_KUGAR               309
@@ -176,6 +176,9 @@
 
 /// Determina si se va a usar el modo experto o no
 #define CONF_MODO_EXPERTO            332
+
+/// Determina el directorio donde estan las configuraciones de tablas por defecto. Usado en caso de que no existan.
+#define CONF_DIR_DEFAULT_CONFS	     333
 
 /// Dictamina cuales son los privilegios del usuario.
 #define CONF_PRIVILEGIOS_USUARIO     420

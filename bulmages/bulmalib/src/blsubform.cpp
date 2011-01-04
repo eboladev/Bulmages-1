@@ -2283,7 +2283,15 @@ const QString BlSubForm::nameFileConfig()
   return nombre;
 }
 
+/// Sacamos cual es el archivo de configuraciones por defecto en caso de que no exista un archivo de configuraciones.
+/// Lo usamos para mejorar la presentacion en la primera ejecucion ya que la primera impresion es la que queda.
+const QString BlSubForm::nameFileDefaultConfig() 
+{
+   QString directorio = g_confpr->valor(CONF_DIR_DEFAULT_CONFS);
 
+  QString nombre = directorio + m_fileconfig + "_" + QString::number ( m_modo ) + "_tablecfn.cfn" ;
+  return nombre;
+}
 
 
 /// Guardamos el archivo de configuracion.
@@ -2396,7 +2404,8 @@ void BlSubForm::cargaconfigXML()
 {
     blDebug ( "BlSubForm::cargaconfigXML", 0 );
     QFile file ( nameFileConfig() );
-    
+    if(!file.exists())
+      file.setFileName(nameFileDefaultConfig());
     
     
     QDomDocument doc ( "mydocument" );

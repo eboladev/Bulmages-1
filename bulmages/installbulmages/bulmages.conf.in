@@ -58,6 +58,10 @@ CONF_PROGDATA			@CMAKE_INSTALL_PREFIX@/share/bulmages/
 # Este parametro indica en que directorio se encuentran los archivos de OPENREPORTS.
 CONF_DIR_OPENREPORTS		@CMAKE_INSTALL_PREFIX@/share/bulmages/openreports/
 
+# Este parametro indica en que directorio se encuentran las configuraciones por defecto en el primer uso.
+CONF_DIR_DEFAULT_CONFS		@CMAKE_INSTALL_PREFIX@/share/bulmages/confs/
+
+
 # Este parametro indica familias genericas para Bulmages.
 CONF_FONTFAMILY_BULMAGES	Sans
 CONF_FONTSIZE_BULMAGES		10
