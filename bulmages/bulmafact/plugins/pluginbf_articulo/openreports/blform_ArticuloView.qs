@@ -150,6 +150,18 @@ chart.data = {
 } // end if
 
 
+var lay = ArticuloView.findChild("mui_tab");
+//if(lay)
+//    lay.setTabPosition(ArticuloView.East);
+//    print lay.tabPosition();
+if (lay != null) {
+//      print (lay.tabPosition);
+      lay.tabPosition = QTabWidget.East;
+//      lay.tabsClosable = true;
+//      lay.setTabPosition(ArticuloView.West);
+//      print (lay.tabPosition);
+}
+
 
 //function hola () {
 //variable = new QWidget();

@@ -168,6 +168,11 @@
           <verstretch>0</verstretch>
          </sizepolicy>
         </property>
+        <property name="font">
+         <font>
+          <pointsize>7</pointsize>
+         </font>
+        </property>
         <property name="toolTip">
          <string/>
         </property>
@@ -196,6 +201,24 @@
           </property>
           <item>
            <widget class="BlTableWidget" name="mui_listcolumnas">
+            <property name="font">
+             <font>
+              <pointsize>7</pointsize>
+              <kerning>false</kerning>
+             </font>
+            </property>
+            <property name="frameShape">
+             <enum>QFrame::NoFrame</enum>
+            </property>
+            <property name="lineWidth">
+             <number>0</number>
+            </property>
+            <property name="autoScrollMargin">
+             <number>8</number>
+            </property>
+            <property name="showDropIndicator" stdset="0">
+             <bool>true</bool>
+            </property>
             <property name="selectionMode">
              <enum>QAbstractItemView::SingleSelection</enum>
             </property>

@@ -30,7 +30,7 @@ Incompatibles:
 
 Orden: 29
 
-Reports: articulos.rml; articuloetiqueta.rml; familias.rml
+Reports: articulos.rml; articuloetiqueta.rml; familias.rml; blform_ArticuloView.qs
 
 Categorias: Facturacion generica;
 
