@@ -65,6 +65,7 @@ TipoArticuloList::TipoArticuloList ( BfCompany *comp, QWidget *parent, bool modo
         mainCompany()->meteWindow ( windowTitle(), this, FALSE );
     } // end if
     pintar();
+    blScript(this);
     blDebug ( "END TipoArticuloList::TipoArticuloList", 0 );
 }
 

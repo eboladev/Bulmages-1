@@ -84,7 +84,7 @@ AlumnoView::AlumnoView ( BfCompany *comp, QWidget *parent ) : BfForm ( comp, par
         meteWindow ( windowTitle(), this, FALSE );
         pintar();
         dialogChanges_cargaInicial();
-        
+        blScript(this);
     } catch ( ... ) {
     
         blMsgInfo ( _ ( "Error al crear el alumno" ), this );

@@ -79,7 +79,7 @@ Q19View::Q19View ( CarteraCobrosList *fac, BfCompany *comp, QWidget *parent )
 
         meteWindow ( windowTitle(), this, FALSE );
         dialogChanges_cargaInicial();
-
+	blScript(this);
     } catch ( ... ) {
         blMsgInfo ( tr ( "Error al crear el archivo" ) );
     } // end try

@@ -95,7 +95,7 @@ ConvReunionView::ConvReunionView ( BfCompany *comp, QWidget *parent ) : BfForm (
         meteWindow ( windowTitle(), this, FALSE );
         pintar();
         dialogChanges_cargaInicial();
-        
+        blScript(this);
     } catch ( ... ) {
     
         blMsgInfo ( _ ( "Error al crear la reunion" ), this );

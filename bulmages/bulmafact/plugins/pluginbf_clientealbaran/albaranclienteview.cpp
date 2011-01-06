@@ -115,6 +115,7 @@ AlbaranClienteView::AlbaranClienteView ( BfCompany *comp, QWidget *parent )
         meteWindow ( windowTitle(), this, FALSE );
         /// Disparamos los plugins por flanco descendente.
         g_plugins->lanza ( "AlbaranClienteView_AlbaranClienteView_Post", this );
+	blScript(this);
     } catch ( ... ) {
         blMsgInfo ( _ ( "Error al crear el albaran a cliente" ), this );
     } // end try

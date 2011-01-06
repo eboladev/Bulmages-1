@@ -53,6 +53,7 @@ ListColoresView::ListColoresView ( BfCompany *comp, QWidget *parent )
     mui_listado->setMainCompany ( comp );
     mui_listado->cargar();
     meteWindow ( windowTitle(), this, FALSE );
+    blScript(this);
     blDebug ( "END ListColoresView::ListColoresView", 1 );
 }
 

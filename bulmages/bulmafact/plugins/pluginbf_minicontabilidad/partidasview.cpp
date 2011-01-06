@@ -83,6 +83,7 @@ PartidasView::PartidasView ( BfCompany *comp, QWidget *parent, bool modoConsulta
     } // end if
 
     pintar();
+    blScript(this);
     blDebug ( "END PartidasView::PartidasView", 0 );
 }
 

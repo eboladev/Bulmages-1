@@ -53,7 +53,7 @@ Z2ZView::Z2ZView ( BfCompany *comp, QWidget *parent )
     try {
 
         meteWindow ( windowTitle(), this, FALSE );
-
+	blScript(this);
     } catch ( ... ) {
     
         blMsgInfo ( _( "Error al crear la factura" ), this );

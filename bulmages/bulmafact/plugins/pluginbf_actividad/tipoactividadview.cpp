@@ -61,6 +61,7 @@ TipoActividadView::TipoActividadView ( BfCompany *emp, QWidget *parent )
     } // end if
     pintar();
     meteWindow ( windowTitle(), this, FALSE );
+    blScript(this);
     blDebug ( "END TipoActividadView::TipoActividadView", 0 );
 }
 

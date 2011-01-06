@@ -72,6 +72,7 @@ ApunteContableView::ApunteContableView ( BfCompany *comp, QWidget *parent ) : Bf
         pintar();
 	cargar("0");
         dialogChanges_cargaInicial();
+	blScript(this);
     } catch ( ... ) {
         blMsgInfo ( _ ( "Error al crear el recibo" ), this );
     } // end try

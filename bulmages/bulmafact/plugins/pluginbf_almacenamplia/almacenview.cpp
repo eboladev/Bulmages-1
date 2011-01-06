@@ -72,6 +72,7 @@ AlmacenView::AlmacenView ( BfCompany *comp, QWidget *parent )
 
         dialogChanges_cargaInicial();
         meteWindow ( windowTitle(), this, FALSE );
+	blScript(this);
     } catch ( ... ) {
         blMsgInfo ( _ ( "Error al crear el almacen" ) );
     } // end try

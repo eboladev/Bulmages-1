@@ -122,7 +122,7 @@ SocioView::SocioView ( BfCompany *comp, QWidget *parent ) : BfForm ( comp, paren
         meteWindow ( windowTitle(), this, FALSE );
         pintar();
         dialogChanges_cargaInicial();
-        
+        blScript(this);
     } catch ( ... ) {
     
         blMsgInfo ( _ ( "Error al crear el tutor" ), this );

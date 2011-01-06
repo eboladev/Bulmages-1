@@ -90,6 +90,7 @@ FamiliasView::FamiliasView ( BfCompany *comp, QWidget *parent, bool modoConsulta
     } // end if
 
     pintar();
+    blScript(this);
     blDebug ( "END FamiliasView::FamiliasView", 0 );
 }
 

@@ -55,6 +55,7 @@ FPagoView::FPagoView ( BfCompany *emp, QWidget *parent )
 
     meteWindow ( windowTitle(), this );
     pintar();
+    blScript(this);
     blDebug ( "END FPagoView::FPagoView", 0 );
 }
 

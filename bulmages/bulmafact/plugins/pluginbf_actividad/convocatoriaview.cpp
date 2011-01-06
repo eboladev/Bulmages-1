@@ -63,6 +63,7 @@ ConvocatoriaView::ConvocatoriaView ( BfCompany *comp, QWidget *parent )
 
         pintar();
         dialogChanges_cargaInicial();
+	blScript(this);
     } catch ( ... ) {
         blMsgInfo ( _ ( "Error al crear el actividad" ), this );
     } // end try

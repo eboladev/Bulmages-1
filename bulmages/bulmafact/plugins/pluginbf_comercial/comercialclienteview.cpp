@@ -33,6 +33,7 @@ ComercialClienteView::ComercialClienteView ( QWidget *parent )
 {
     blDebug ( "ComercialClienteView::ComercialClienteView", 0 );
     setupUi ( this );
+    blScript(this);
     blDebug ( "ENd ComercialClienteView::ComercialClienteView", 0 );
 }
 

@@ -56,6 +56,7 @@ EFactura::EFactura ( BfCompany *emp, QWidget *parent ) : BfForm ( emp, parent )
 //  mui_URLServidorValidaCert->setText(cur3->valor("valor"));
 //  delete cur3;
 
+    blScript(this);
     blDebug ( "END EFactura::EFactura", 2 );
 }
 

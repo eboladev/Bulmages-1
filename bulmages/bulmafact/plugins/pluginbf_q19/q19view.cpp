@@ -61,7 +61,7 @@ Q19View::Q19View ( FacturasList *fac, BfCompany *comp, QWidget *parent )
 
         meteWindow ( windowTitle(), this, FALSE );
         dialogChanges_cargaInicial();
-
+	blScript(this);
     } catch ( ... ) {
         blMsgInfo ( _ ( "Error al crear el archivo" ) );
     } // end try

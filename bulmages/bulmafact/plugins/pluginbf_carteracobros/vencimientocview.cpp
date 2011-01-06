@@ -78,6 +78,7 @@ VencimientoCView::VencimientoCView ( BfCompany *comp, QWidget *parent )
         meteWindow ( windowTitle(), this, FALSE );
         pintar();
         dialogChanges_cargaInicial();
+	blScript(this);
     } catch ( ... ) {
         blMsgInfo ( tr ( "Error al crear el pago" ), this );
     } // end try

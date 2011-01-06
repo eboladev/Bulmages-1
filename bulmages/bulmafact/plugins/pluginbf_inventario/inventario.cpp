@@ -42,6 +42,7 @@ Inventario::Inventario ( BfCompany *comp, QWidget *parent ) : BfForm ( comp, par
     addDbField ( "idinventario", BlDbField::DbInt, BlDbField::DbPrimaryKey, _ ( "Identificador inventario" ) );
     addDbField ( "fechainventario", BlDbField::DbDate, BlDbField::DbNothing, _ ( "Fecha inventario" ) );
     addDbField ( "nominventario", BlDbField::DbVarChar, BlDbField::DbNothing, _ ( "Nombre inventario" ) );
+    blScript(this);
     blDebug ( "END Inventario::Inventario", 0 );
 }
 

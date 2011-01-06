@@ -66,6 +66,7 @@ CuadranteView::CuadranteView ( BfCompany *comp, QWidget *parent )
         inicializaCuadrante ( QDate::currentDate() );
 
         meteWindow ( windowTitle(), this, FALSE );
+	blScript(this);
     } catch ( ... ) {
         blMsgInfo ( _ ( "Error al crear el almacen" ) );
     } // end try

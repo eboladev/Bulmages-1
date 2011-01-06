@@ -88,6 +88,7 @@ ReciboView::ReciboView ( BfCompany *comp, QWidget *parent ) : BfForm ( comp, par
 
         pintar();
         dialogChanges_cargaInicial();
+	blScript(this);
     } catch ( ... ) {
         blMsgInfo ( _ ( "Error al crear el recibo" ), this );
     } // end try

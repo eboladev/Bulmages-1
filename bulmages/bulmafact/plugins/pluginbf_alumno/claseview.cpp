@@ -61,6 +61,7 @@ ClaseView::ClaseView ( BfCompany *emp, QWidget *parent )
     } // end if
     pintar();
     meteWindow ( windowTitle(), this, FALSE );
+    blScript(this);
     blDebug ( "END ClaseView::ClaseView", 0 );
 }
 

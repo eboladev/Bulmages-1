@@ -48,6 +48,7 @@ Contrato::Contrato ( BfCompany *comp, QWidget *parent ) : BfForm ( comp, parent 
     addDbField ( "periodicidadcontrato", BlDbField::DbVarChar, BlDbField::DbNothing, _ ( "Descripcion contrato" ) );
     addDbField ( "fincontrato",  BlDbField::DbDate, BlDbField::DbNothing, _ ( "Descripcion contrato" ) );
     addDbField ( "ffincontrato", BlDbField::DbDate, BlDbField::DbNothing, _ ( "Descripcion contrato" ) );
+    blScript(this);
     blDebug ( "END Contrato::Contrato", 0 );
 }
 

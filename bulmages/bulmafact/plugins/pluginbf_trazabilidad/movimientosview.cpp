@@ -70,6 +70,7 @@ MovimientosView::MovimientosView ( BfCompany *comp, QWidget *parent, edmode edit
         meteWindow ( windowTitle(), this );
     } // end if
     hideBusqueda();
+    blScript(this);
     blDebug ( "END MovimientosView::MovimientosView", 0 );
 }
 

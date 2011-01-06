@@ -93,6 +93,7 @@ PedidoClienteView::PedidoClienteView ( BfCompany *comp, QWidget *parent )
         mui_idcliente->m_valores["cifcliente"] = "";
         mui_idcliente->m_valores["nomcliente"] = "";
         meteWindow ( windowTitle(), this, FALSE );
+	blScript(this);
     } catch ( ... ) {
         blMsgInfo ( _ ( "Error al crear el pedido cliente" ), this );
     } // end try

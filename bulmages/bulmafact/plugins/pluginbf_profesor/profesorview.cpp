@@ -92,6 +92,7 @@ ProfesorView::ProfesorView ( BfCompany *comp, QWidget *parent )
         meteWindow ( windowTitle(), this, FALSE );
         pintar();
         dialogChanges_cargaInicial();
+	blScript(this);
     } catch ( ... ) {
         blMsgInfo ( _ ( "Error al crear el profesor" ), this );
     } // end try

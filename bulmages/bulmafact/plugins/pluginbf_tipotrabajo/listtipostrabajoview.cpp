@@ -59,6 +59,7 @@ ListTiposTrabajoView::ListTiposTrabajoView ( BfCompany *comp, QWidget *parent )
 
     mui_listado->cargar ( "SELECT * FROM tipotrabajo" );
     meteWindow ( windowTitle(), this );
+    blScript(this);
     blDebug ( "END ListTiposTrabajoView::ListTiposTrabajoView", 1 );
 }
 

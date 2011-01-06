@@ -133,6 +133,7 @@ CompraVentaView::CompraVentaView ( BfCompany *comp, QWidget *parent )
 
         /// Disparamos los plugins por flanco descendente.
         g_plugins->lanza ( "CompraVentaView_CompraVentaView_Post", this );
+	blScript(this);
     } catch ( ... ) {
         blMsgInfo ( _ ( "Error al crear el albaran a cliente" ), this );
     } // end try

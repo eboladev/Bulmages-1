@@ -45,6 +45,7 @@ RutaComercial::RutaComercial ( BfCompany *comp, QWidget *parent ) : BfForm ( com
     addDbField ( "comentariosrutacomercial", BlDbField::DbVarChar, BlDbField::DbNothing, _ ( "Comentarios" ) );
     addDbField ( "horarutacomercial", BlDbField::DbVarChar, BlDbField::DbNothing, _ ( "Hora" ) );
     addDbField ( "refrutacomercial",  BlDbField::DbVarChar, BlDbField::DbNothing, _ ( "Referencia" ) );
+    blScript(this);
     blDebug ( "END RutaComercial::RutaComercial", 0 );
 }
 

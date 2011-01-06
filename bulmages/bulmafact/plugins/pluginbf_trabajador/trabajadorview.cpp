@@ -61,6 +61,7 @@ TrabajadorView::TrabajadorView ( BfCompany *emp, QWidget *parent )
     } // end if
     pintar();
     meteWindow ( windowTitle(), this, FALSE );
+    blScript(this);
     blDebug ( "END TrabajadorView::TrabajadorView", 0 );
 }
 

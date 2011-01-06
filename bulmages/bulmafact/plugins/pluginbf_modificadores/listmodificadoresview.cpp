@@ -50,6 +50,7 @@ ListModificadoresView::ListModificadoresView ( BfCompany *comp, QWidget *parent 
     mui_listado->setMainCompany ( comp );
     mui_listado->cargar();
     meteWindow ( windowTitle(), this );
+    blScript(this);
     blDebug ( "END_ListModificadoresView::ListModificadoresView", 1 );
 }
 

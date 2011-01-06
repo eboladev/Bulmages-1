@@ -107,6 +107,7 @@ ActividadView::ActividadView ( BfCompany *comp, QWidget *parent )
         dialogChanges_cargaInicial();
 
         mui_idtipoactividad->setId ( "" );
+	blScript(this);
     } catch ( ... ) {
         blMsgInfo ( _ ( "Error al crear el actividad" ), this );
     } // end try

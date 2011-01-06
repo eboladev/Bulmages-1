@@ -50,6 +50,7 @@ TiposocioView::TiposocioView ( BfCompany *emp, QWidget *parent )
     m_item = NULL;
     pintar();
     meteWindow ( windowTitle(), this );
+    blScript(this);
     blDebug ( "END TiposocioView::TiposocioView", 0 );
 }
 

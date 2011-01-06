@@ -53,6 +53,7 @@ RutaComercialIncView::RutaComercialIncView ( BfCompany *comp, QWidget *parent )
     mui_rutacomercial->setMainCompany ( comp );
     mui_incidenciacomercial->setMainCompany ( comp );
     meteWindow ( windowTitle(), this );
+    blScript(this);
     blDebug ( "END RutaComercialIncView::RutaComercialIncView", 0 );
 }
 

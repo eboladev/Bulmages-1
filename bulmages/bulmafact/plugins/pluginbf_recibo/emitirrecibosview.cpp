@@ -67,7 +67,7 @@ EmitirRecibosView::EmitirRecibosView ( BfCompany *comp, QWidget *parent )
 
 
         meteWindow ( windowTitle(), this, FALSE );
-
+	blScript(this);
     } catch ( ... ) {
     
         blMsgInfo ( _ ( "Error al crear el recibo" ), this );

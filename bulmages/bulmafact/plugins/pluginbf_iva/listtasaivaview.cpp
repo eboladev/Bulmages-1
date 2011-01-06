@@ -53,6 +53,7 @@ ListTasaIVAView::ListTasaIVAView ( BfCompany *comp, QWidget *parent )
     mui_listado->setMainCompany ( comp );
     mui_listado->cargar();
     meteWindow ( windowTitle(), this );
+    blScript(this);
     blDebug ( "END ListTasaIVAView::ListTasaIVAView", 1 );
 }
 

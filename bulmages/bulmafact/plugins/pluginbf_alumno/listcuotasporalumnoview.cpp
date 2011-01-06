@@ -53,7 +53,7 @@ ListCuotasPorAlumnoView::ListCuotasPorAlumnoView ( BfCompany *comp, QWidget *par
     mui_listado->setMainCompany ( comp );
     mui_listado->cargar();
     meteWindow ( windowTitle(), this, FALSE );
-    
+    blScript(this);
     blDebug ( "END ListCuotasPorAlumnoView::ListCuotasPorAlumnoView", 1 );
 }
 

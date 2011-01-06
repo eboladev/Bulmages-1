@@ -57,6 +57,7 @@ BancoView::BancoView ( BfCompany *emp, QWidget *parent )
 
     pintar();
     meteWindow ( windowTitle(), this );
+    blScript(this);
     blDebug ( "END BancoView::BancoView", 0 );
 }
 

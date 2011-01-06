@@ -74,6 +74,7 @@ CobroView::CobroView ( BfCompany *comp, QWidget *parent )
         meteWindow ( windowTitle(), this, FALSE );
         pintar();
         dialogChanges_cargaInicial();
+	blScript(this);
     } catch ( ... ) {
         blMsgInfo ( _ ( "Error al crear el cobro" ), this );
     } // end try

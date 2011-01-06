@@ -62,6 +62,7 @@ VehiculoView::VehiculoView ( BfCompany *emp, QWidget *parent )
     /// Fin de nuevas amortizaciones
     mainCompany() ->meteWindow ( windowTitle(), this );
     cargar ( "1" );
+    blScript(this);
     blDebug ( "END VehiculoView::VehiculoView", 0 );
 }
 

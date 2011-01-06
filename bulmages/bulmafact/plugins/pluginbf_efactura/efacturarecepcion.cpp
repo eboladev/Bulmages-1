@@ -41,6 +41,7 @@ EFacturaRecepcion::EFacturaRecepcion ( BfCompany *emp, QWidget *parent ) : BfFor
     QString query;
 
     setupUi ( this );  // Para que el form se inicialice bien
+    blScript(this);
     blDebug ( "END EFacturaRecepcion::EFacturaRecepcion", 0 );
 }
 

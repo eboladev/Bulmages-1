@@ -46,9 +46,8 @@ IncidenciaComercial::IncidenciaComercial ( BfCompany *comp, QWidget *parent ) : 
     addDbField ( "estadoincidenciacomercial", BlDbField::DbInt, BlDbField::DbNotNull, _ ( "Estado" ) );
     addDbField ( "horaincidenciacomercial", BlDbField::DbVarChar, BlDbField::DbNothing, _ ( "Hora" ) );
     addDbField ( "refincidenciacomercial", BlDbField::DbVarChar, BlDbField::DbNothing, _ ( "Referencia" ) );
+    blScript(this);
     blDebug ( "END IncidenciaComercial::IncidenciaComercial", 0 );
-
-
 }
 
 

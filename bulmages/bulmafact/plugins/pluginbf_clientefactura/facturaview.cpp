@@ -113,6 +113,7 @@ FacturaView::FacturaView ( BfCompany *comp, QWidget *parent )
         m_totalfactura->setReadOnly ( TRUE );
         m_totalfactura->setAlignment ( Qt::AlignRight );
         meteWindow ( windowTitle(), this, FALSE );
+	blScript(this);
     } catch ( ... ) {
         blMsgInfo ( _ ( "Error al crear la factura" ), this );
     }

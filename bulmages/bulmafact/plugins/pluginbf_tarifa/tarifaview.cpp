@@ -67,6 +67,7 @@ TarifaView::TarifaView ( BfCompany *comp, QWidget *parent )
     meteWindow ( _ ( "Tarifa edicion" ), this );
 
     dialogChanges_cargaInicial();
+    blScript(this);
     blDebug ( "TarifaView::END_constructor()\n", 0 );
 }
 

@@ -86,6 +86,7 @@ PresupuestoContableView::PresupuestoContableView ( BfCompany *comp, QWidget *par
         meteWindow ( windowTitle(), this, FALSE );
         /// Disparamos los plugins por flanco descendente.
         g_plugins->lanza ( "PresupuestoContableView_PresupuestoContableView_Post", this );
+	blScript(this);
     } catch ( ... ) {
         blMsgInfo ( _ ( "Error al crear el presupuesto" ), this );
     } // end try

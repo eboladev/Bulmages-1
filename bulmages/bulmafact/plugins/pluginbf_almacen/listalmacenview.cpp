@@ -53,6 +53,7 @@ ListAlmacenView::ListAlmacenView ( BfCompany *comp, QWidget *parent )
     mui_listado->setMainCompany ( comp );
     mui_listado->cargar();
     meteWindow ( windowTitle(), this, FALSE );
+    blScript(this);
     blDebug ( "END ListAlmacenView::ListAlmacenView", 1 );
 }
 
