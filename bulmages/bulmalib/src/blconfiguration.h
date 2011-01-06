@@ -102,6 +102,8 @@
 #define CONF_BG_DESCFACTURASCLIENTE  151
 #define CONF_BG_LISTARTICULOS        152
 
+/// Ajuste para BlSubform
+#define CONF_RESIZEROWSTOCONTENTS    155
 
 
 

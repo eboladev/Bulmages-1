@@ -40,7 +40,7 @@ Incompatibles:
 
 Orden: 300
 
-Reports: inf_clientes.rml; informecliente.rml; informeclientes.rml; pedidocliente.rml
+Reports: inf_clientes.rml; informecliente.rml; informeclientes.rml; pedidocliente.rml; blform_ClienteView.qs;
 
 Categorias: Facturacion generica;
 

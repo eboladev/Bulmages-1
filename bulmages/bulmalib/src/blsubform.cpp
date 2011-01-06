@@ -1563,6 +1563,12 @@ void BlSubForm::cargar ( BlDbRecordSet *cur )
 
     m_procesacambios = TRUE;
 
+    /// Ajustamos las columnas al contenido.
+    if (g_confpr->valor(CONF_RESIZEROWSTOCONTENTS) == "TRUE") {
+      mui_listcolumnas->resizeRowsToContents();
+      resizeRowsToContents();
+    } // end if
+    
     blDebug ( "END BlSubForm::cargar", 0 );
 }
 

@@ -433,9 +433,10 @@ QString BlConfiguration::nombre ( int i )
 	return "CONF_MODO_EXPERTO";
     if ( i == CONF_DIR_DEFAULT_CONFS )
 	return "CONF_DIR_DEFAULT_CONFS";
+    if ( i == CONF_RESIZEROWSTOCONTENTS )
+	return "CONF_RESIZEROWSTOCONTENTS";
     return "";
 }
-
 
 
 
