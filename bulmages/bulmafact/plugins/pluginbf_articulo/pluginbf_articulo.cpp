@@ -571,6 +571,7 @@ int BlSubFormDelegate_createEditor ( BlSubFormDelegate *bl )
     blDebug ( "pluginbf_articulo::BlSubFormDelegate_createEditor", 0 );
     int ret = 0;
     if ( g_nomcampo == "codigocompletoarticulo" ) {
+        g_main->statusBar()->showMessage(_("<F2> Abre selector de articulos."), 2000);
         BlDbCompleterComboBox * editor = new BlDbCompleterComboBox ( g_editor );
         editor->setObjectName ( "EditCodigoCompletoArticulo" );
         editor->setMainCompany ( ( BfCompany * ) bl->m_subform->mainCompany() );

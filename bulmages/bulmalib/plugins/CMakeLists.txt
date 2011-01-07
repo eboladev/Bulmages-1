@@ -21,6 +21,10 @@ endif(NOT APPLE)
 endif(NOT WIN32)
 
 
+# if you want to add some private code
+# simple put your add_directory in a
+# CMakeLists.txt.private
+
 
 if(EXISTS "${CMAKE_SOURCE_DIR}/bulmalib/plugins/CMakeLists.txt.private")
    message(STATUS "Private code inserted in bulmalib plugins")

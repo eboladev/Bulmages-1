@@ -24,9 +24,9 @@
 #   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             #
 ###########################################################################
 
-# pathtitle="Comptes Anuals\Normals\Plan General Contable 2008"
+# pathtitle="Cuentas anuales\PGC 2007\Plan General Contable 2007"
 
-# title="Cuentas Anuales Plan General Contable 2008"
+# title="Cuentas anuales Plan General Contable 2007"
 # CAPGC08
 import psycopg2
 import psycopg2.extras
@@ -1258,7 +1258,7 @@ doc.set_cell_property('bold', False)
 
 # Guardamos el documento
 #doc.save("/tmp/inf_cuentacliente.ods")
-doc.save("inf_capgc08.ods")
+doc.save("inf_ccaa-pgc2007.ods")
 #os.system('oocalc /tmp/inf_cuentacliente.ods')
 
 conn.close()

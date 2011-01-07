@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: pluginbc_caaslods.cpp:271
+#: pluginbc_ccaa2ods.cpp:271
 msgid "Cuentas Anuales &ODS"
 msgstr ""
 

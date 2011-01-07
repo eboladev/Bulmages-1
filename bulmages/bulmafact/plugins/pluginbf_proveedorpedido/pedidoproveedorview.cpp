@@ -251,10 +251,8 @@ void PedidoProveedorView::imprimir()
 
         /// Copiamos el archivo.
 #ifdef Q_OS_WIN32
-
-        archivo = "copy " + archivo + " " + archivod;
+	archivo = "copy \"" + archivo + "\" \"" + archivod + "\"";
 #else
-
         archivo = "cp " + archivo + " " + archivod;
 #endif
 
@@ -262,10 +260,8 @@ void PedidoProveedorView::imprimir()
 
         /// Copiamos el logo.
 #ifdef Q_OS_WIN32
-
-        archivologo = "copy " + archivologo + " " + g_confpr->valor ( CONF_DIR_USER ) + "logo.jpg";
+	archivologo = "copy \"" + archivologo + "\" \"" + g_confpr->valor ( CONF_DIR_USER ) + "logo.jpg\"";
 #else
-
         archivologo = "cp " + archivologo + " " + g_confpr->valor ( CONF_DIR_USER ) + "logo.jpg";
 #endif
 

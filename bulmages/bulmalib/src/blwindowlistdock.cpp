@@ -162,6 +162,7 @@ BlWindowListDock::BlWindowListDock ( QWidget *a ) : QDockWidget ( a )
     m_listBox->setContentsMargins ( 0, 0, 0, 0 );
     m_listBox->setSpacing ( 0 );
     m_listBox->setWindowTitle ( _ ( "Indexador" ) );
+    m_listBox->setMinimumSize(260, 220);
     setWindowTitle ( _ ( "Indexador" ) );
     setFocusPolicy ( Qt::StrongFocus );
     setWidget ( m_listBox );

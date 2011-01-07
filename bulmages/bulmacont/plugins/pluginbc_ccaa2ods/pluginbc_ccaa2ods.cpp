@@ -28,7 +28,7 @@
 
 #include <cstdio>
 
-#include "pluginbc_caaslods.h"
+#include "pluginbc_ccaa2ods.h"
 #include "bccompany.h"
 #include "blfunctions.h"
 #include "datosview.h"
@@ -41,10 +41,10 @@ BcCompany *g_comp = NULL;
 /**
 **/
 
-pluginBC_caaslODS::pluginBC_caaslODS()
+PluginBc_ccaa2ods::PluginBc_ccaa2ods()
 {
-    blDebug ( "pluginBC_caaslODS::pluginBC_caaslODS", 0 );
-    blDebug ( "END pluginBC_caaslODS::pluginBC_caaslODS", 0 );
+    blDebug ( "PluginBc_ccaa2ods::PluginBc_ccaa2ods", 0 );
+    blDebug ( "END PluginBc_ccaa2ods::PluginBc_ccaa2ods", 0 );
 }
 
 
@@ -52,10 +52,10 @@ pluginBC_caaslODS::pluginBC_caaslODS()
 /**
 **/
 
-pluginBC_caaslODS::~pluginBC_caaslODS()
+PluginBc_ccaa2ods::~PluginBc_ccaa2ods()
 {
-    blDebug ( "pluginBC_caaslODS::~pluginBC_caaslODS", 0 );
-    blDebug ( "END pluginBC_caaslODS::~pluginBC_caaslODS", 0 );
+    blDebug ( "PluginBc_ccaa2ods::~PluginBc_ccaa2ods", 0 );
+    blDebug ( "END PluginBc_ccaa2ods::~PluginBc_ccaa2ods", 0 );
 }
 
 
@@ -74,75 +74,9 @@ pluginBC_caaslODS::~pluginBC_caaslODS()
 **/
 
 
-void pluginBC_caaslODS::inicializa ( BcBulmaCont *bcont )
+void PluginBc_ccaa2ods::formDatosBalance ( )
 {
-    blDebug ( "pluginBC_caaslODS::inicializa", 0 );
-
-/*
-    /// Creamos el men&uacute;.
-    QMenu *pPluginMenu = new QMenu ( _ ( "&Cuentas Anuales" ) );
-
-    QMenu *pgc08 = new QMenu ( _ ( "&PGC 2008" ) );
-    QMenu *pgc07 = new QMenu ( _ ( "PGC &Anterior 2008" ) );
-
-    QAction *accion4 = new QAction ( _ ( "&Cuentas Anuales PGC" ), 0 );
-    accion4->setStatusTip ( _ ( "Cuentas Anuales Plan General Contable 2008" ) );
-    accion4->setWhatsThis ( _ ( "Cuentas Anuales Plan General Contable 2008" ) );
-    connect ( accion4, SIGNAL ( activated() ), this, SLOT ( balsitCAPGC08() ) );
-
-    QAction *accion5 = new QAction ( _ ( "Cuentas Anuales &Abreviadas PGC" ), 0 );
-    accion4->setStatusTip ( _ ( "Cuentas Anuales Abreviadas Plan General Contable 2008" ) );
-    accion4->setWhatsThis ( _ ( "Cuentas Anuales Abreviadas Plan General Contable 2008" ) );
-    connect ( accion5, SIGNAL ( activated() ), this, SLOT ( balsitCAAPGC08() ) );
-
-    QAction *accion3 = new QAction ( _ ( "Cuentas Anuales &PYMES" ), 0 );
-    accion3->setStatusTip ( _ ( "Cuentas Anuales PYMES 2008" ) );
-    accion3->setWhatsThis ( _ ( "Cuentas Anuales PYMES 2008" ) );
-    connect ( accion3, SIGNAL ( activated() ), this, SLOT ( balsitCAPYMES08() ) );
-
-    QAction *accion6 = new QAction ( _ ( "CA simplicat Fund. &Ass Cat" ), 0 );
-    accion6->setStatusTip ( _ ( "Comptes anuals simplificat fundacions i associacions catalanes 2008" ) );
-    accion6->setWhatsThis ( _ ( "Comptes anuals simplificat fundacions i associacions catalanes 2008") );
-    connect ( accion6, SIGNAL ( activated() ), this, SLOT ( balsitCASFAC08() ) );
-
-
-
-    QAction *accion2 = new QAction ( _ ( "&Cuentas Anuales PGC" ), 0 );
-    accion2->setStatusTip ( _ ( "Cuentas Anuales Plan General Contable hasta 2007" ) );
-    accion2->setWhatsThis ( _ ( "Cuentas Anuales Plan General Contable hasta 2007" ) );
-    connect ( accion2, SIGNAL ( activated() ), this, SLOT ( balsitCAPGC07() ) );
-
-    QAction *accion1 = new QAction ( _ ( "Cuentas A. Abreviadas &Sin lucro (Nuevo)" ), 0 );
-    accion1->setStatusTip ( _ ( "Cuentas Anuales Abreviadas Asociacion Sin animo de lucro" ) );
-    accion1->setWhatsThis ( _ ( "Cuentas Anuales Abreviadas Asociacion Sin animo de lucro" ) );
-    connect ( accion1, SIGNAL ( activated() ), this, SLOT ( balsitCAAASL() ) );
-
-
-    pPluginMenu->addMenu ( pgc08 );
-    pPluginMenu->addSeparator();
-    pPluginMenu->addMenu ( pgc07 );
-
-    pgc08->addAction ( accion4 ); //PGC
-    pgc08->addAction ( accion5 );
-    pgc08->addAction ( accion3 );
-    pgc08->addAction ( accion6 );
-    pgc07->addAction ( accion2 );
-    pgc07->addAction ( accion1 );
-
-
-    /// A&ntilde;adimos la nueva opci&oacute;n al men&uacute; principal del programa.
-    bcont->menuBar() ->addMenu ( pPluginMenu );
-
-    empresaact = bcont->empresaactual();
-    dbConnection = empresaact->bdempresa();
-*/
-    blDebug ( "END pluginBC_caaslODS::inicializa", 0 );
-}
-
-
-void pluginBC_caaslODS::formDatosBalance ( )
-{
-      blDebug ( "pluginBC_caaslODS::formDatosBalance", 0 );
+      blDebug ( "PluginBc_ccaa2ods::formDatosBalance", 0 );
 
       QDialog *diag = new QDialog ( 0 );
       diag->setModal ( true );
@@ -172,7 +106,7 @@ void pluginBC_caaslODS::formDatosBalance ( )
       
       delete diag;
 
-      blDebug ( "END pluginBC_caaslODS::formDatosBalance", 0 );
+      blDebug ( "END PluginBc_ccaa2ods::formDatosBalance", 0 );
 }
 
 
@@ -189,10 +123,9 @@ int entryPoint ( BcBulmaCont *bcont )
 
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale ( LC_ALL, "" );
-    blBindTextDomain ( "pluginbc_caaslods", g_confpr->valor ( CONF_DIR_TRADUCCION ).toAscii().constData() );
+    blBindTextDomain ( "PluginBc_ccaa2ods", g_confpr->valor ( CONF_DIR_TRADUCCION ).toAscii().constData() );
 
-    pluginBC_caaslODS *plug = new pluginBC_caaslODS();
-    plug->inicializa ( bcont );
+    PluginBc_ccaa2ods *plug = new PluginBc_ccaa2ods();
 
     /// S&Oacute;LO A MODO DE EJEMPLO: se modifica el t&iacute;tulo de la ventana principal
     /// del programa para indicar que el plugin se ha cargado.
@@ -212,7 +145,7 @@ int entryPoint ( BcBulmaCont *bcont )
     dir.setSorting ( QDir::Size | QDir::Reversed );
     /// Hacemos un filtrado de busqueda
     QStringList filters;
-    filters << "inf_ca*.pys";
+    filters << "inf_ccaa*.pys";
     dir.setNameFilters ( filters );
 
     QFileInfoList list = dir.entryInfoList();
@@ -289,7 +222,7 @@ int entryPoint ( BcBulmaCont *bcont )
 
 	    if (!encontrado) {
 		QMenu *pPluginMenu1 = new QMenu ( path[i] , menu );
-		menu->addMenu (  pPluginMenu1 );
+		menu->addMenu ( pPluginMenu1 );
 		menu = pPluginMenu1;
 	    } // end if
 
@@ -303,11 +236,6 @@ int entryPoint ( BcBulmaCont *bcont )
         bcont->connect ( accion, SIGNAL ( activated() ), plug, SLOT ( formDatosBalance() ) );
         menu->addAction ( accion );
     } // end for
-
-
-
-
-
 
 
 // ==========================================================

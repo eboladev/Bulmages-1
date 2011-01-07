@@ -4,12 +4,12 @@ Plugins
 #README
 20090419
 
-Nombre: Cuentas Anuales 
+Nombre: Cuentas anuales 
 
-Biblioteca: libpluginbc_caaslods.so
+Biblioteca: libpluginbc_ccaa2ods.so
 
-Descripción: <H1>Cuentas Anuales</H1>
-<P>Permite obtener un balance de cuentas anuales para los planes contables españoles del 2008: Cuentas Anuales, Abreviadas y de PYMES. Y para los planes contables anteriores al 2008: Cuentas Anuales y Abreviadas de Asociaciones sin lucro. </P>
+Descripción: <H1>Cuentas anuales</H1>
+<P>Permite obtener un balance de cuentas anuales para los planes contables españoles del 2007: Cuentas anuales, abreviadas y de pymes. Y para los planes contables anteriores al 2008: Cuentas anuales y abreviadas de asociaciones sin animo de lucro. </P>
 <HR>
 
 ParmBD: -
@@ -22,7 +22,8 @@ Dependencias:
 
 Incompatibles:
 
-Reports: inf_caaasl.pys; inf_caapgc08.pys; inf_capgc07.pys; inf_capgc08.pys; inf_capymes08.pys; inf_casfac08.pys
+Reports: inf_ccaa-pgc1990.pys; inf_ccaa-pgc2007_asl.pys; inf_ccaa-pgc2007_pymes.pys; inf_ccaa-pgc2007_abrev.pys; inf_ccaa-pgc2007_fac.pys; inf_ccaa-pgc2007.pys
+
 
 Categorias: Contabilidad general
 

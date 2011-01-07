@@ -26,8 +26,8 @@
 #   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             #
 ###########################################################################
 
-# pathtitle="Comptes Anuals\Abans 2008\Plan General Contable anterior al 2008"                                                
-# title="Cuentas Anuales Plan General Contable anterior al 2008"
+# pathtitle="Cuentas anuales\PGC 1990\Plan General Contable 1990"
+# title="Cuentas anuales Plan General Contable 1990"
 # CAPGC07
 
 import psycopg2
@@ -1136,7 +1136,7 @@ doc.set_cell_property('bold', False)\n\
                                      \
                                      \
 # Guardamos el documento\n\
-doc.save(\"canualesods.ods\")\n" );
+doc.save(\"inf_ccaa-pgc1990.ods\")\n" );
 
                                                            return codigoPython;
                                                        }

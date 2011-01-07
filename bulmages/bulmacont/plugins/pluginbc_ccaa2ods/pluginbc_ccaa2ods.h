@@ -21,8 +21,8 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#ifndef PLUGINBC_CAASLODS_H
-#define PLUGINBC_CAASLODS_H
+#ifndef PLUGINBC_CCAA2ODS_H
+#define PLUGINBC_CCAA2ODS_H
 
 #include <QStringList>
 #include <QWidget>
@@ -33,10 +33,10 @@
 
 #include "bcbulmacont.h"
 #include "datosview.h"
-#include "pdefs_pluginbc_caaslods.h"
+#include "pdefs_pluginbc_ccaa2ods.h"
 
 
-extern "C" PLUGINBC_CAASLODS_EXPORT int entryPoint ( BcBulmaCont * );
+extern "C" PLUGINBC_CCAA2ODS_EXPORT int entryPoint ( BcBulmaCont * );
 
 
 //Cuentas Anuales Abreviadas Asociación Sin Lucro CAAASL
@@ -50,14 +50,13 @@ extern "C" PLUGINBC_CAASLODS_EXPORT int entryPoint ( BcBulmaCont * );
 enum CAnuales {CAAASL, CAPGC07, CAPYMES08, CAPGC08, CAAPGC08, CASFAC08};
 
 */
-class pluginBC_caaslODS : public QObject
+class PluginBc_ccaa2ods : public QObject
 {
     Q_OBJECT
 
 public:
-    pluginBC_caaslODS();
-    ~pluginBC_caaslODS();
-    void inicializa ( BcBulmaCont * );
+    PluginBc_ccaa2ods();
+    ~PluginBc_ccaa2ods();
 
 public slots:
     void formDatosBalance ();

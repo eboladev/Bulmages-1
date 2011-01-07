@@ -22,9 +22,9 @@
 ###########################################
 # Plugin for bulmacont                    #
 ###########################################
-# pluginbc_caaslods
+# pluginbc_ccaa2ods
 
-set (plugin pluginbc_caaslods)
+set (plugin pluginbc_ccaa2ods)
 
 file(GLOB plugin_SRC *.c *.cpp *.cxx)
 file(GLOB plugin_MOCS *.hpp *.h)
@@ -32,7 +32,7 @@ file(GLOB plugin_UIS *.ui)
 
 
 # Exclude files with no QObject macro.
-file(GLOB plugin_NO_MOCS pdefs_pluginbc_caaslods.h)
+file(GLOB plugin_NO_MOCS pdefs_pluginbc_ccaa2ods.h)
 list(REMOVE_ITEM plugin_MOCS ${plugin_NO_MOCS})
 
 
@@ -66,7 +66,7 @@ QT4_WRAP_CPP(plugin_MOC_SRCS ${plugin_MOCS})
 
 IF(WIN32)
 SET(CMAKE_SHARED_LINKER_FLAGS "${CMAKE_SHARED_LINKER_FLAGS} -Wl,-enable-auto-import")
-ADD_DEFINITIONS(-DQWT_DLL -DQT_DLL -DQWT_MAKEDLL -DPLUGINBC_CAASLODS)
+ADD_DEFINITIONS(-DQWT_DLL -DQT_DLL -DQWT_MAKEDLL -DPLUGINBC_CCAA2ODS)
 ENDIF(WIN32)
 
 

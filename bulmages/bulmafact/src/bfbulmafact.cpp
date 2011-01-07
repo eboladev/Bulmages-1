@@ -53,6 +53,7 @@ BfBulmaFact::BfBulmaFact ( QString bd ) : BlMainWindow()
 {
     blDebug ( "BfBulmaFact::BfBulmaFact", 0 );
     setupUi ( this );
+    setAnimated ( FALSE );
     setUpdatesEnabled ( TRUE );
     pWorkspace = new BlWorkspace ( this );
     pWorkspace->setVerticalScrollBarPolicy(Qt::ScrollBarAsNeeded);

@@ -106,7 +106,12 @@ ArticuloView::ArticuloView ( BfCompany *comp, QWidget *parent )
         dialogChanges_setQObjectExcluido ( m_componentes );
         dialogChanges_setQObjectExcluido ( m_componentes->mui_list );
         m_archivoimagen = "";
-        mui_imagen->setPixmap ( QPixmap ( g_confpr->valor ( CONF_PROGDATA ) + "images/logopeq.png" ) );
+
+#ifdef Q_OS_WIN32
+	mui_imagen->setPixmap ( QPixmap ( g_confpr->valor ( CONF_PROGDATA ) + "\\" + "images/logopeq.png" ) );
+#else
+	mui_imagen->setPixmap ( QPixmap ( g_confpr->valor ( CONF_PROGDATA ) + "/" + "images/logopeq.png" ) );
+#endif
 
         /// Disparamos los plugins.
         g_plugins->lanza ( "ArticuloView_ArticuloView_Post", this );
@@ -146,7 +151,12 @@ void ArticuloView::pintarPost()
     /// que el articulo no tiene imagen asociada.
 
     QString archivoimagen;
-    archivoimagen = g_confpr->valor ( CONF_DIR_IMG_ARTICLES ) + mui_codigocompletoarticulo->text() + ".jpg";
+
+#ifdef Q_OS_WIN32
+    archivoimagen = g_confpr->valor ( CONF_DIR_IMG_ARTICLES ) + "\\" + mui_codigocompletoarticulo->text() + ".png";
+#else
+    archivoimagen = g_confpr->valor ( CONF_DIR_IMG_ARTICLES ) + "/" + mui_codigocompletoarticulo->text() + ".png";
+#endif
 
     QFile archivo;
     archivo.setFileName ( archivoimagen );
@@ -156,7 +166,13 @@ void ArticuloView::pintarPost()
         mui_imagen->setPixmap ( QPixmap ( archivoimagen ) );
     } else  {
         /// Muestra la imagen por defecto.
-        mui_imagen->setPixmap ( QPixmap ( g_confpr->valor ( CONF_PROGDATA ) + "images/logopeq.png" ) );
+
+#ifdef Q_OS_WIN32
+        mui_imagen->setPixmap ( QPixmap ( g_confpr->valor ( CONF_PROGDATA ) + "\\" + "images/logopeq.png" ) );
+#else
+        mui_imagen->setPixmap ( QPixmap ( g_confpr->valor ( CONF_PROGDATA ) + "/" + "images/logopeq.png" ) );
+#endif
+
     } // end if
 
     blDebug ( "END ArticuloView::pintar", 0 );
@@ -232,7 +248,17 @@ int ArticuloView::guardarPost()
         m_archivoimagen = m_archivoimagen.replace ( " ", "\\ " );
 
         /// Coge la imagen del recuadro y la guarda en un archivo con el nombre correcto.
-        if ( mui_imagen->pixmap()->save ( g_confpr->valor ( CONF_DIR_IMG_ARTICLES ) + cur1->valor ( "codigocompletoarticulo" ) + ".jpg" ) == false ) {
+	bool result;
+
+#ifdef Q_OS_WIN32
+	QString g = g_confpr->valor ( CONF_DIR_IMG_ARTICLES ) + "\\" + cur1->valor ( "codigocompletoarticulo" ) + ".png";
+	result = mui_imagen->pixmap()->save ( g, "PNG" );
+#else
+	QString g = g_confpr->valor ( CONF_DIR_IMG_ARTICLES ) + "/" + cur1->valor ( "codigocompletoarticulo" ) + ".png";
+	result = mui_imagen->pixmap()->save ( g, "PNG" );
+#endif
+
+        if ( result == false ) {
             blMsgError ( _ ( "No se ha podido guardar la imagen.\nRevise los permisos de escritura y que disponga\nde espacio libre suficiente en el disco duro." ) );
         } // end if
 
@@ -312,7 +338,12 @@ void ArticuloView::on_mui_cambiarimagen_clicked()
 void ArticuloView::on_mui_borrarimagen_clicked()
 {
     QString archivoimagen;
-    archivoimagen = g_confpr->valor ( CONF_DIR_IMG_ARTICLES ) + mui_codigocompletoarticulo->text() + ".jpg";
+
+#ifdef Q_OS_WIN32
+    archivoimagen = g_confpr->valor ( CONF_DIR_IMG_ARTICLES ) + "\\" + mui_codigocompletoarticulo->text() + ".png";
+#else
+    archivoimagen = g_confpr->valor ( CONF_DIR_IMG_ARTICLES ) + "/" + mui_codigocompletoarticulo->text() + ".png";
+#endif
 
     QFile archivo;
     archivo.setFileName ( archivoimagen );

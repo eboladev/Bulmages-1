@@ -25,7 +25,7 @@
 #   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             #
 ###########################################################################
 
-# pathtitle="Comptes Anuals\Normals\Sin Lucro\Asociancion Sin Lucro"
+# pathtitle="Cuentas anuales\Normals\Sin Lucro\Asociancion Sin Lucro"
 
 # title="Cuentas Anuales Asociancion Sin Lucro"
 # CAPGC08
@@ -514,7 +514,7 @@ doc.set_cell_value(4, 44, 'formula', '=if((D41+Debe.D48+Debe.D49)>0;D41+Debe.D48
 \
 \
 # Guardamos el documento
-doc.save(\"canualesods.ods\")\n" );
+doc.save(\"inf_ccaa-pgc2007_asl.ods\")\n" );
                           }
 
 

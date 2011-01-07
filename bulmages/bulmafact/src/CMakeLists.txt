@@ -36,8 +36,8 @@ set(bulmafactEx main.cxx)
 
 set(QT_USE_QTASSISTANT false)
 set(QT_USE_QTXML true)
-#by R. Cabezas
 set(QT_USE_QTSCRIPT true)
+set(QT_USE_QTWEBKIT true)
 
 IF(WIN32)
     # En MS-Windows no hay soporte directo de QtDBus.

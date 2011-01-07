@@ -33,7 +33,7 @@ msgstr "Calculant balanç i resultats"
 msgid "Cuenta"
 msgstr "Compte"
 
-#: pluginbc_caaslods.cpp:271
+#: pluginbc_ccaa2ods.cpp:271
 msgid "Cuentas Anuales &ODS"
 msgstr ""
 
