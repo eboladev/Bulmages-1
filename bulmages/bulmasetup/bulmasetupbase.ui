@@ -86,6 +86,11 @@ p, li { white-space: pre-wrap; }
            <property name="enabled">
             <bool>false</bool>
            </property>
+           <property name="font">
+            <font>
+             <pointsize>8</pointsize>
+            </font>
+           </property>
            <property name="focusPolicy">
             <enum>Qt::NoFocus</enum>
            </property>
@@ -111,6 +116,11 @@ p, li { white-space: pre-wrap; }
           <widget class="QPushButton" name="editar_usuario">
            <property name="enabled">
             <bool>false</bool>
+           </property>
+           <property name="font">
+            <font>
+             <pointsize>8</pointsize>
+            </font>
            </property>
            <property name="focusPolicy">
             <enum>Qt::NoFocus</enum>
@@ -138,6 +148,11 @@ p, li { white-space: pre-wrap; }
            <property name="enabled">
             <bool>false</bool>
            </property>
+           <property name="font">
+            <font>
+             <pointsize>8</pointsize>
+            </font>
+           </property>
            <property name="focusPolicy">
             <enum>Qt::NoFocus</enum>
            </property>
@@ -163,6 +178,11 @@ p, li { white-space: pre-wrap; }
           <widget class="QPushButton" name="eliminar_usuario">
            <property name="enabled">
             <bool>false</bool>
+           </property>
+           <property name="font">
+            <font>
+             <pointsize>8</pointsize>
+            </font>
            </property>
            <property name="focusPolicy">
             <enum>Qt::NoFocus</enum>
@@ -199,6 +219,11 @@ p, li { white-space: pre-wrap; }
            <property name="enabled">
             <bool>false</bool>
            </property>
+           <property name="font">
+            <font>
+             <pointsize>8</pointsize>
+            </font>
+           </property>
            <property name="focusPolicy">
             <enum>Qt::NoFocus</enum>
            </property>
@@ -224,6 +249,11 @@ p, li { white-space: pre-wrap; }
           <widget class="QPushButton" name="mui_crearbulmafact">
            <property name="enabled">
             <bool>false</bool>
+           </property>
+           <property name="font">
+            <font>
+             <pointsize>8</pointsize>
+            </font>
            </property>
            <property name="focusPolicy">
             <enum>Qt::NoFocus</enum>
@@ -251,6 +281,11 @@ p, li { white-space: pre-wrap; }
            <property name="enabled">
             <bool>false</bool>
            </property>
+           <property name="font">
+            <font>
+             <pointsize>8</pointsize>
+            </font>
+           </property>
            <property name="focusPolicy">
             <enum>Qt::NoFocus</enum>
            </property>
@@ -276,6 +311,11 @@ p, li { white-space: pre-wrap; }
           <widget class="QPushButton" name="eliminar_empresa">
            <property name="enabled">
             <bool>false</bool>
+           </property>
+           <property name="font">
+            <font>
+             <pointsize>8</pointsize>
+            </font>
            </property>
            <property name="focusPolicy">
             <enum>Qt::NoFocus</enum>
@@ -303,6 +343,11 @@ p, li { white-space: pre-wrap; }
            <property name="enabled">
             <bool>false</bool>
            </property>
+           <property name="font">
+            <font>
+             <pointsize>8</pointsize>
+            </font>
+           </property>
            <property name="focusPolicy">
             <enum>Qt::NoFocus</enum>
            </property>
@@ -328,6 +373,11 @@ p, li { white-space: pre-wrap; }
           <widget class="QPushButton" name="mui_creabackup">
            <property name="enabled">
             <bool>false</bool>
+           </property>
+           <property name="font">
+            <font>
+             <pointsize>8</pointsize>
+            </font>
            </property>
            <property name="focusPolicy">
             <enum>Qt::NoFocus</enum>
@@ -370,6 +420,11 @@ p, li { white-space: pre-wrap; }
        <layout class="QHBoxLayout" name="horizontalLayout">
         <item>
          <widget class="QPushButton" name="mui_acerca">
+          <property name="font">
+           <font>
+            <pointsize>8</pointsize>
+           </font>
+          </property>
           <property name="text">
            <string>Acerca de BulmaSetup</string>
           </property>
@@ -394,6 +449,11 @@ p, li { white-space: pre-wrap; }
         </item>
         <item>
          <widget class="QPushButton" name="mui_salir">
+          <property name="font">
+           <font>
+            <pointsize>8</pointsize>
+           </font>
+          </property>
           <property name="text">
            <string>Salir</string>
           </property>

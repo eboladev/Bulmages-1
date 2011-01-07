@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'listempresasbase.ui'
 #
-# Created: Sat Aug 28 15:26:03 2010
+# Created: Fri Jan  7 21:28:10 2011
 #      by: PyQt4 UI code generator 4.7.2
 #
 # WARNING! All changes made in this file will be lost!
@@ -25,12 +25,18 @@ class Ui_ListEmpresasBase(object):
         self.gridLayout_3 = QtGui.QGridLayout(ListEmpresasBase)
         self.gridLayout_3.setObjectName("gridLayout_3")
         self.tabWidget = QtGui.QTabWidget(ListEmpresasBase)
+        font = QtGui.QFont()
+        font.setPointSize(10)
+        self.tabWidget.setFont(font)
         self.tabWidget.setObjectName("tabWidget")
         self.tab = QtGui.QWidget()
         self.tab.setObjectName("tab")
         self.gridLayout_2 = QtGui.QGridLayout(self.tab)
         self.gridLayout_2.setObjectName("gridLayout_2")
         self.mui_listado = QtGui.QTableWidget(self.tab)
+        font = QtGui.QFont()
+        font.setPointSize(10)
+        self.mui_listado.setFont(font)
         self.mui_listado.setFocusPolicy(QtCore.Qt.ClickFocus)
         self.mui_listado.setHorizontalScrollBarPolicy(QtCore.Qt.ScrollBarAsNeeded)
         self.mui_listado.setAutoScroll(True)
@@ -76,6 +82,9 @@ class Ui_ListEmpresasBase(object):
         self.horizontalLayout = QtGui.QHBoxLayout()
         self.horizontalLayout.setObjectName("horizontalLayout")
         self.mui_actualizar = QtGui.QPushButton(ListEmpresasBase)
+        font = QtGui.QFont()
+        font.setPointSize(10)
+        self.mui_actualizar.setFont(font)
         icon2 = QtGui.QIcon()
         icon2.addPixmap(QtGui.QPixmap(":/images/bulmasetup_aceptar.xpm"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         self.mui_actualizar.setIcon(icon2)
@@ -84,6 +93,9 @@ class Ui_ListEmpresasBase(object):
         spacerItem = QtGui.QSpacerItem(40, 20, QtGui.QSizePolicy.Expanding, QtGui.QSizePolicy.Minimum)
         self.horizontalLayout.addItem(spacerItem)
         self.mui_cancelar = QtGui.QPushButton(ListEmpresasBase)
+        font = QtGui.QFont()
+        font.setPointSize(10)
+        self.mui_cancelar.setFont(font)
         icon3 = QtGui.QIcon()
         icon3.addPixmap(QtGui.QPixmap(":/images/bulmasetup_exit.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         self.mui_cancelar.setIcon(icon3)

@@ -117,6 +117,6 @@ install_targets(/lib/bulmacont/plugins ${plugin})
 configure_file( ${CMAKE_CURRENT_SOURCE_DIR}/README.es ${CMAKE_CURRENT_BINARY_DIR}/README.es @ONLY)
 install (FILES ${CMAKE_CURRENT_BINARY_DIR}/README.es DESTINATION share/bulmages/bulmacont-plugins/ RENAME README.es.${plugin})
 
-file(GLOB report_files openreports/*.pys openreports/*.rml)
+file(GLOB report_files openreports/*.pys openreports/*.rml openreports/*.qs)
 
 install (FILES ${report_files} DESTINATION share/bulmages/openreports)

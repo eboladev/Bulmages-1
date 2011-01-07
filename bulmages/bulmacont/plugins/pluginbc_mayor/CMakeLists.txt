@@ -106,6 +106,6 @@ install (FILES ${CMAKE_CURRENT_BINARY_DIR}/README.es DESTINATION share/bulmages/
 set(plugin_STR ${plugin_SRC} ${plugin_MOC_SRCS}
    ${plugin_UIS_H} ${plugin_SRCS} ${plugin_MOCS})
 
-file(GLOB report_files openreports/*.ui openreports/*.pys openreports/*.rml)
+file(GLOB report_files openreports/*.ui openreports/*.pys openreports/*.rml openreports/*.qs)
 
 install (FILES ${report_files} DESTINATION share/bulmages/openreports)

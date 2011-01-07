@@ -101,8 +101,16 @@ BEGIN
 -- y agregamos unas menos restrictivas
    SELECT INTO as * FROM pg_constraint WHERE conname =''cliente_codcliente_key'';
    IF NOT FOUND THEN
-      ALTER TABLE cliente ADD constraint cliente_nomcliente_key UNIQUE (nomcliente);
       ALTER TABLE cliente ADD CONSTRAINT cliente_codcliente_key UNIQUE (codcliente);
+    END IF;
+
+   SELECT INTO as * FROM pg_constraint WHERE conname =''cliente_nomcliente_key'';
+   IF NOT FOUND THEN
+      ALTER TABLE cliente ADD constraint cliente_nomcliente_key UNIQUE (nomcliente);
+    END IF;
+
+   SELECT INTO as * FROM pg_constraint WHERE conname =''cliente_cifcliente_key'';
+   IF NOT FOUND THEN
       ALTER TABLE cliente ADD CONSTRAINT cliente_cifcliente_key UNIQUE (cifcliente);
     END IF;
 

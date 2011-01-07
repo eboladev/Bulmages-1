@@ -91,8 +91,9 @@ install (FILES ${CMAKE_CURRENT_BINARY_DIR}/README.es DESTINATION share/bulmages/
 set(files ticket.png)
 install(FILES ${files} DESTINATION share/bulmages/icons)
 
-set(files1 etiquetas.rml)
-install(FILES ${files1} DESTINATION share/bulmages/openreports)
+file(GLOB report_files openreports/*.ui openreports/*.pys openreports/*.rml openreports/*.qs)
+
+install (FILES ${report_files} DESTINATION share/bulmages/openreports)
 
 add_dependencies(${plugin} bulmafact bulmalib pluginbf_proveedoralbaran)
 

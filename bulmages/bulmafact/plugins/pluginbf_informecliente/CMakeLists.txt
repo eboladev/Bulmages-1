@@ -98,8 +98,8 @@ install (FILES ${CMAKE_CURRENT_BINARY_DIR}/README.es DESTINATION share/bulmages/
 add_dependencies(${plugin} bulmafact bulmalib pluginbf_cliente)
 
 set(files informeclientes.png)
-set(files1 informeclientes.rml informearticulos.rml)
-
 install(FILES ${files} DESTINATION share/bulmages/icons)
-install (FILES ${files1} DESTINATION share/bulmages/openreports)
+
+file(GLOB report_files openreports/*.ui openreports/*.pys openreports/*.rml openreports/*.qs)
+install (FILES ${report_files} DESTINATION share/bulmages/openreports)
 
