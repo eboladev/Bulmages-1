@@ -57,6 +57,8 @@ PresupuestoList::PresupuestoList ( QWidget *parent, Qt::WFlags flag, edmode edit
 
     hideBusqueda();
     iniciaForm();
+    /// Llamamos a los scripts
+    blScript(this);
     blDebug ( "END PresupuestoList::PresupuestoList(1)", 0 );
 }
 
@@ -95,6 +97,8 @@ PresupuestoList::PresupuestoList ( BfCompany *comp, QWidget *parent, Qt::WFlags 
     hideBusqueda();
     /// Hacemos el tratamiento de los permisos que desabilita botones en caso de no haber suficientes permisos.
     trataPermisos ( "presupuesto" );
+    /// Llamamos a los scripts
+    blScript(this);
     blDebug ( "END PresupuestoList::PresupuestoList(2)", 0 );
 }
 

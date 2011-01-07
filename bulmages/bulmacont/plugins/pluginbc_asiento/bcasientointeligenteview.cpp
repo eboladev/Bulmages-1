@@ -74,6 +74,8 @@ BcAsientoInteligenteView::BcAsientoInteligenteView ( BcCompany *emp, QWidget *pa
     mainCompany() ->meteWindow ( windowTitle(), this );
     setmodo ( 0 );
     g_asiento->mui_inteligente->setDisabled ( TRUE );
+    /// Llamamos a los scripts
+    blScript(this);
     blDebug ( "END BcAsientoInteligenteView::BcAsientoInteligenteView", 0 );
 }
 

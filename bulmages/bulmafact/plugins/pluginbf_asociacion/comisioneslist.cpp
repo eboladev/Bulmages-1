@@ -49,7 +49,8 @@ ComisionesList::ComisionesList ( QWidget *parent, Qt::WFlags flag, edmode editmo
     mdb_idcomision = "";
     setSubForm ( mui_list );
     hideBusqueda();
-
+    /// Llamamos a los scripts
+    blScript(this);
     blDebug ( "END ComisionesList::ComisionesList", 0 );
 }
 
@@ -80,6 +81,8 @@ ComisionesList::ComisionesList ( BfCompany *comp, QWidget *parent, Qt::WFlags fl
     hideBusqueda();
     /// Hacemos el tratamiento de los permisos que desabilita botones en caso de no haber suficientes permisos.
     trataPermisos ( "cobro" );
+    /// Llamamos a los scripts
+    blScript(this);
     blDebug ( "END ComisionesList::ComisionesList", 0 );
 }
 

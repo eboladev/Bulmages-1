@@ -60,6 +60,9 @@ RegistroIva::RegistroIva ( BcCompany *comp, QWidget *parent ) : BcForm ( comp, p
     addDbField ( "factura", BlDbField::DbVarChar, BlDbField::DbNothing, _ ( "Factura" ) );
     addDbField ( "femisionregistroiva", BlDbField::DbDate, BlDbField::DbNotNull, _ ( "Fecha emision" ) );
     addDbField ( "serieregistroiva", BlDbField::DbVarChar, BlDbField::DbNothing, _ ( "Serie" ) );
+    /// Llamamos a los scripts
+    blScript(this);
+
     blDebug ( "END RegistroIva::RegistroIva", 0 );
 }
 

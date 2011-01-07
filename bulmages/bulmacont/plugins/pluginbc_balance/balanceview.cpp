@@ -110,6 +110,9 @@ BalanceView::BalanceView ( BcCompany *emp, QWidget *parent, int )
 
 
     mainCompany() ->meteWindow ( windowTitle(), this );
+    /// Llamamos a los scripts
+    blScript(this);
+
     blDebug ( "END BalanceView::BalanceView", 0 );
 }
 

@@ -60,6 +60,9 @@ ListProyectosView::ListProyectosView ( BcCompany *emp, QWidget *parent,  Qt::WFl
         mui_borrar->setHidden ( TRUE );
     } // end if
 
+    /// Lanzamos los posibles scripts
+    blScript(this);
+
     blDebug ( "END ListProyectosView::ListProyectosView", 0 );
 }
 

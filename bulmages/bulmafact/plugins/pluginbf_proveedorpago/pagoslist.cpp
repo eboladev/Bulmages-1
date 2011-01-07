@@ -51,6 +51,8 @@ PagosList::PagosList ( QWidget *parent, Qt::WFlags flag, edmode editmodo )
     m_proveedor->m_valores["cifproveedor"] = "";
     m_proveedor->m_valores["nomproveedor"] = "";
     hideBusqueda();
+    /// Llamamos a los scripts
+    blScript(this);
     blDebug ( "END PagosList::PagosList", 0 );
 }
 
@@ -85,6 +87,8 @@ PagosList::PagosList ( BfCompany *comp, QWidget *parent, Qt::WFlags flag, edmode
     hideBusqueda();
     /// Hacemos el tratamiento de los permisos que desabilita botones en caso de no haber suficientes permisos.
     trataPermisos ( "pago" );
+    /// Llamamos a los scripts
+    blScript(this);
     blDebug ( "END PagosList::PagosList", 0 );
 }
 

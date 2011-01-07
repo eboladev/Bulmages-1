@@ -54,6 +54,8 @@ ActividadesList::ActividadesList ( QWidget *parent, Qt::WFlags flag, edmode edit
     setSubForm ( mui_list );
     hideBusqueda();
 
+    /// Llamamos a los scripts
+    blScript(this);
     blDebug ( "END ActividadesList::ActividadesList", 0 );
 }
 
@@ -86,7 +88,8 @@ ActividadesList::ActividadesList ( BfCompany *comp, QWidget *parent, Qt::WFlags 
     
     /// Hacemos el tratamiento de los permisos que desabilita botones en caso de no haber suficientes permisos.
     trataPermisos ( "actividad" );
-    
+    /// Llamamos a los scripts
+    blScript(this);
     blDebug ( "END ActividadesList::ActividadesList", 0 );
 }
 

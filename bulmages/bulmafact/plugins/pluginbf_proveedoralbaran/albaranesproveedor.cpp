@@ -56,6 +56,8 @@ AlbaranesProveedor::AlbaranesProveedor ( QWidget *parent, Qt::WFlags flag, edmod
     m_proveedor->m_valores["nomproveedor"] = "";
     hideBusqueda();
     iniciaForm();
+    /// Llamamos a los scripts
+    blScript(this);
     blDebug ( "END AlbaranesProveedor::AlbaranesProveedor", 0 );
 }
 
@@ -169,6 +171,8 @@ AlbaranesProveedor::AlbaranesProveedor ( BfCompany *comp, QWidget *parent, Qt::W
     iniciaForm();
     /// Hacemos el tratamiento de los permisos que desabilita botones en caso de no haber suficientes permisos.
     trataPermisos ( "albaranp" );
+    /// Llamamos a los scripts
+    blScript(this);
     blDebug ( "END AlbaranesProveedor::AlbaranesProveedor", 0 );
 }
 

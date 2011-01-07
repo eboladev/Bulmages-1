@@ -54,7 +54,8 @@ RecibosList::RecibosList ( QWidget *parent, Qt::WFlags flag, edmode editmodo )
     setSubForm ( mui_list );
     hideBusqueda();
     iniciaForm();
-    
+    /// Llamamos a los scripts
+    blScript(this);
     blDebug ( "END RecibosList::RecibosList", 0 );
 }
 
@@ -100,7 +101,8 @@ RecibosList::RecibosList ( BfCompany *comp, QWidget *parent, Qt::WFlags flag, ed
     trataPermisos ( "recibo" );
     
     presentar();
-
+    /// Llamamos a los scripts
+    blScript(this);
     blDebug ( "END RecibosList::RecibosList", 0 );
 }
 

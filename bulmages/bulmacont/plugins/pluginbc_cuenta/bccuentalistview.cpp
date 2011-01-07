@@ -80,6 +80,8 @@ BcCuentaListView::BcCuentaListView ( BcCompany *comp, QWidget *parent, Qt::WFlag
     hideBusqueda();
     /// Hacemos el tratamiento de los permisos que desabilita botones en caso de no haber suficientes permisos.
     trataPermisos ( "cuenta" );
+    /// Lanzamos los posibles scripts
+    blScript(this);
     blDebug ( "END BcCuentaListView::BcCuentaListView", 0 );
 }
 

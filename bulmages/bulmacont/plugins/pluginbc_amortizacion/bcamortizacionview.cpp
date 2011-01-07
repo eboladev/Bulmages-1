@@ -102,6 +102,9 @@ BcAmortizacionView::BcAmortizacionView ( BcCompany *emp, QWidget *parent )
 
     /// Fin de nuevas amortizaciones
     meteWindow ( windowTitle(), this );
+
+    /// Llamamos a los scripts
+    blScript(this);
     blDebug ( "END BcAmortizacionView::BcAmortizacionView", 0 );
 }
 

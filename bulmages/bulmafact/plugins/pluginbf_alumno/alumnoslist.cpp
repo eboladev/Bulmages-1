@@ -49,7 +49,8 @@ AlumnosList::AlumnosList ( QWidget *parent, Qt::WFlags flag, edmode editmodo )
     
     setSubForm ( mui_list );
     hideBusqueda();
-
+    /// Llamamos a los scripts
+    blScript(this);
     blDebug ( "END AlumnosList::AlumnosList", 0 );
 }
 
@@ -97,6 +98,8 @@ AlumnosList::AlumnosList ( BfCompany *comp, QWidget *parent, Qt::WFlags flag, ed
     hideBusqueda();
     /// Hacemos el tratamiento de los permisos que desabilita botones en caso de no haber suficientes permisos.
     trataPermisos ( "alumno" );
+    /// Llamamos a los scripts
+    blScript(this);
     blDebug ( "END AlumnosList::AlumnosList", 0 );
 }
 

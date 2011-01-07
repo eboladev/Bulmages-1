@@ -91,6 +91,9 @@ BcCuentaView::BcCuentaView ( BcCompany  *emp, QWidget *parent, Qt::WFlags fl )
 
     dialogChanges_cargaInicial();
     mainCompany() ->meteWindow ( windowTitle(), this );
+    /// Llamamos a los scripts
+    blScript(this);
+
     blDebug ( "END BcCuentaView::BcCuentaView", 0 );
 }
 

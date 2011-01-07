@@ -92,6 +92,8 @@ BcPlanContableListView::BcPlanContableListView ( BcCompany *emp, QWidget *parent
     /// De forma predeterminada los botones de busqueda 'anterior' y 'siguiente' estan deshabilitados.
     mui_anterior->setDisabled(true);
     mui_siguiente->setDisabled(true);
+    /// Llamamos a los scripts
+    blScript(this);
 
     blDebug ( "END BcPlanContableListView::BcPlanContableListView", 0 );
 }

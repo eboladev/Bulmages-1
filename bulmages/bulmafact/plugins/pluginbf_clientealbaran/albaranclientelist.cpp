@@ -127,6 +127,8 @@ AlbaranClienteList::AlbaranClienteList ( QWidget *parent, Qt::WFlags flag, edmod
     setSubForm ( mui_list );
     hideBusqueda();
     iniciaForm();
+    /// Llamamos a los scripts
+    blScript(this);
     blDebug ( "END AlbaranClienteList::AlbaranClienteList", 0 );
 }
 
@@ -182,6 +184,8 @@ AlbaranClienteList::AlbaranClienteList ( BfCompany *comp, QWidget *parent, Qt::W
     hideBusqueda();
     /// Hacemos el tratamiento de los permisos que desabilita botones en caso de no haber suficientes permisos.
     trataPermisos ( "albaran" );
+    /// Llamamos a los scripts
+    blScript(this);
     blDebug ( "END AlbaranClienteList::AlbaranClienteList", 0 );
 }
 

@@ -24,6 +24,9 @@
 
 #include <QWidget>
 #include <QCloseEvent>
+/// by R. Cabezas
+#include <QtScript>
+#include <QScriptEngine>
 
 #include "bldialogchanges.h"
 #include "blfunctions.h"
@@ -42,7 +45,8 @@ private:
     /// Indica si es modo consulta o modo edicion. (altera el comportamiento del
     /// doble click sobre la lista)
     edmode m_modo;
-
+    QScriptEngine m_myEngine;
+    
 protected:
     void setSubForm ( BlSubForm * );
 
@@ -68,6 +72,7 @@ public:
     bool modoConsulta();
     void trataPermisos ( QString nomtabla );
     BlSubForm *subForm();
+    void blScript(QObject * obj);
 
 public slots:
     virtual void on_mui_list_customContextMenuRequested ( const QPoint & );

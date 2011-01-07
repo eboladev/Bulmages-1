@@ -78,6 +78,8 @@ ContratosList::ContratosList ( BfCompany *comp, QWidget *parent, Qt::WFlags flag
     presenta();
     setSubForm(mui_list);
     trataPermisos ( "contrato" );
+    /// Llamamos a los scripts
+    blScript(this);
     blDebug ( "END ContratosList::ContratosList", 0 );
 }
 

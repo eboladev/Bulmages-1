@@ -49,7 +49,8 @@ ConvReunionList::ConvReunionList ( QWidget *parent, Qt::WFlags flag, edmode edit
     mdb_idreunion = "";
     setSubForm ( mui_list );
     hideBusqueda();
-
+    /// Llamamos a los scripts
+    blScript(this);
     blDebug ( "END ConvReunionList::ConvReunionList", 0 );
 }
 
@@ -80,6 +81,8 @@ ConvReunionList::ConvReunionList ( BfCompany *comp, QWidget *parent, Qt::WFlags 
     hideBusqueda();
     /// Hacemos el tratamiento de los permisos que desabilita botones en caso de no haber suficientes permisos.
     trataPermisos ( "reunion" );
+    /// Llamamos a los scripts
+    blScript(this);
     blDebug ( "END ConvReunionList::ConvReunionList", 0 );
 }
 

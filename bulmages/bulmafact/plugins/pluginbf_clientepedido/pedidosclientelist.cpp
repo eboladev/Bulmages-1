@@ -54,6 +54,8 @@ PedidosClienteList::PedidosClienteList ( QWidget *parent, Qt::WFlags flag, edmod
     m_cliente->m_valores["cifcliente"] = "";
     m_cliente->m_valores["nomcliente"] = "";
     iniciaForm();
+    /// Llamamos a los scripts
+    blScript(this);
     blDebug ( "END PedidosClienteList::PedidosClienteList", 0 );
 }
 
@@ -92,6 +94,8 @@ PedidosClienteList::PedidosClienteList ( BfCompany *comp, QWidget *parent, Qt::W
     hideBusqueda();
     /// Hacemos el tratamiento de los permisos que desabilita botones en caso de no haber suficientes permisos.
     trataPermisos ( "pedidocliente" );
+    /// Llamamos a los scripts
+    blScript(this);
     blDebug ( "END PedidosClienteList::PedidosClienteList", 0 );
 }
 

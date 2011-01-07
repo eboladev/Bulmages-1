@@ -57,7 +57,8 @@ CobrosList::CobrosList ( QWidget *parent, Qt::WFlags flag, edmode editmodo )
     mui_tipocobro->insertItem ( 1, _ ( "Solo previsiones" ) );
     mui_tipocobro->insertItem ( 2, _ ( "Cobro real" ) );
     mui_tipocobro->setCurrentIndex ( 1 );
-
+    /// Llamamos a los scripts
+    blScript(this);
     blDebug ( "END CobrosList::CobrosList", 0 );
 }
 
@@ -92,7 +93,8 @@ CobrosList::CobrosList ( BfCompany *comp, QWidget *parent, Qt::WFlags flag, edmo
     hideBusqueda();
     /// Hacemos el tratamiento de los permisos que desabilita botones en caso de no haber suficientes permisos.
     trataPermisos ( "cobro" );
-
+    /// Llamamos a los scripts
+    blScript(this);
     blDebug ( "END CobrosList::CobrosList", 0 );
 }
 

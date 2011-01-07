@@ -127,6 +127,8 @@ TicketClienteList::TicketClienteList ( QWidget *parent, Qt::WFlags flag, edmode 
     setSubForm ( mui_list );
     hideBusqueda();
     iniciaForm();
+    /// Llamamos a los scripts
+    blScript(this);
     blDebug ( "END TicketClienteList::TicketClienteList", 0 );
 }
 
@@ -182,6 +184,8 @@ TicketClienteList::TicketClienteList ( BfCompany *comp, QWidget *parent, Qt::WFl
     hideBusqueda();
     /// Hacemos el tratamiento de los permisos que desabilita botones en caso de no haber suficientes permisos.
     trataPermisos ( "albaran" );
+    /// Llamamos a los scripts
+    blScript(this);
     blDebug ( "END TicketClienteList::TicketClienteList", 0 );
 }
 

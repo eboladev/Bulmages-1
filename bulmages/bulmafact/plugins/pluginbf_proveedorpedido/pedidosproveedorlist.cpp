@@ -50,6 +50,8 @@ PedidosProveedorList::PedidosProveedorList ( QWidget *parent, Qt::WFlags flag, e
     setSubForm ( mui_list );
     hideBusqueda();
     iniciaForm();
+    /// Llamamos a los scripts
+    blScript(this);
     blDebug ( "END PedidosProveedorList::PedidosProveedorList", 0 );
 }
 
@@ -84,6 +86,8 @@ PedidosProveedorList::PedidosProveedorList ( BfCompany *comp, QWidget *parent, Q
     iniciaForm();
     /// Hacemos el tratamiento de los permisos que desabilita botones en caso de no haber suficientes permisos.
     trataPermisos ( "pedidoproveedor" );
+    /// Llamamos a los scripts
+    blScript(this);
     blDebug ( "END PedidosProveedorList::PedidosProveedorList", 0 );
 }
 

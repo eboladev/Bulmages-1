@@ -59,6 +59,8 @@ FacturasList::FacturasList ( QWidget *parent, Qt::WFlags flag, edmode editmodo )
     m_cliente->m_valores["nomcliente"] = "";
     setSubForm ( mui_list );
     hideBusqueda();
+    /// Llamamos a los scripts
+    blScript(this);
     blDebug ( "END FacturasList::FacturasList", 0 );
 }
 
@@ -119,6 +121,8 @@ FacturasList::FacturasList ( BfCompany *comp, QWidget *parent, Qt::WFlags flag, 
     hideBusqueda();
     /// Hacemos el tratamiento de los permisos que desabilita botones en caso de no haber suficientes permisos.
     trataPermisos ( "factura" );
+    /// Llamamos a los scripts
+    blScript(this);
     blDebug ( "END FacturasList::FacturasList", 0 );
 }
 

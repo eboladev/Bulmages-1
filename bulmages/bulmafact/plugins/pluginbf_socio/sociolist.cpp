@@ -49,7 +49,8 @@ SociosList::SociosList ( QWidget *parent, Qt::WFlags flag, edmode editmodo )
     mdb_idcliente = "";
     setSubForm ( mui_list );
     hideBusqueda();
-
+    /// Llamamos a los scripts
+    blScript(this);
     blDebug ( "END SociosList::SociosList", 0 );
 }
 
@@ -79,6 +80,8 @@ SociosList::SociosList ( BfCompany *comp, QWidget *parent, Qt::WFlags flag, edmo
     hideBusqueda();
     /// Hacemos el tratamiento de los permisos que desabilita botones en caso de no haber suficientes permisos.
     trataPermisos ( "cliente" );
+    /// Llamamos a los scripts
+    blScript(this);
     blDebug ( "END SociosList::SociosList", 0 );
 }
 

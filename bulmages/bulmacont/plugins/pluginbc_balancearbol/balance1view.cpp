@@ -139,6 +139,8 @@ BalanceTreeView::BalanceTreeView ( BcCompany *emp, QWidget *parent, int )
     cadena.sprintf ( "%2.2d/%2.2d/%4.4d", 31, 12, QDate::currentDate().year() );
     m_fechafinal1->setText ( cadena );
     meteWindow ( windowTitle(), this, FALSE );
+    /// Llamamos a los scripts
+    blScript(this);
 
     blDebug ( "END BalanceTreeView::BalanceTreeView", 0 );
 }

@@ -83,6 +83,8 @@ CarteraPagosList::CarteraPagosList ( BfCompany *comp, QWidget *parent, Qt::WFlag
     } // end if
     presenta();
     trataPermisos ( "vencimientop" );
+    /// Llamamos a los scripts
+    blScript(this);
     blDebug ( "END CarteraPagosList::CarteraPagosList", 0 );
 }
 

@@ -85,6 +85,9 @@ BcBloqueaFechaView::BcBloqueaFechaView ( BcCompany *emp, QWidget *parent )
     QString query;
     inicializa();
     mainCompany() ->meteWindow ( windowTitle(), this );
+    /// Llamamos a los scripts
+    blScript(this);
+
     blDebug ( "ENd BcBloqueaFechaView::BcBloqueaFechaView", 0 );
 }
 

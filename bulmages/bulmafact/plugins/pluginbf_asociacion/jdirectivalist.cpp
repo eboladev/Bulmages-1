@@ -54,7 +54,8 @@ JDirectivaList::JDirectivaList ( QWidget *parent, Qt::WFlags flag, edmode editmo
     mdb_idjdirectiva = "";
     setSubForm ( mui_list );
     hideBusqueda();
-
+    /// Llamamos a los scripts
+    blScript(this);
     blDebug ( "END JDirectivaList::JDirectivaList", 0 );
 }
 
@@ -88,7 +89,9 @@ JDirectivaList::JDirectivaList ( BfCompany *comp, QWidget *parent, Qt::WFlags fl
     
     /// Hacemos el tratamiento de los permisos que desabilita botones en caso de no haber suficientes permisos.
     trataPermisos ( "jdirectiva" );
-    
+
+    /// Llamamos a los scripts
+    blScript(this);
     blDebug ( "END JDirectivaList::JDirectivaList", 0 );
 }
 

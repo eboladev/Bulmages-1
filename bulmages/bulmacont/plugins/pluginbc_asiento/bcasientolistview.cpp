@@ -51,6 +51,8 @@ BcAsientoListView::BcAsientoListView ( BcCompany *comp, QWidget *parent, Qt::WFl
     mui_list->setMainCompany ( comp );
     setSubForm ( mui_list );
     mainCompany() ->meteWindow ( windowTitle(), this );
+    /// Lanzamos los posibles scripts
+    blScript(this);
     blDebug ( "END BcAsientoListView::BcAsientoListView", 0 );
 }
 

@@ -100,6 +100,8 @@ BcExtractoView::BcExtractoView ( BcCompany *emp, QWidget *parent, int ) : BcForm
     connect (((BcBulmaCont *)g_main)->actionInicio, SIGNAL(triggered()), this, SLOT(boton_inicio()));
     connect (((BcBulmaCont *)g_main)->actionFin, SIGNAL(triggered()), this, SLOT(boton_fin()));
 
+    /// Llamamos a los scripts
+    blScript(this);
 
     blDebug ( "END BcExtractoView::BcExtractoView", 0 );
 }

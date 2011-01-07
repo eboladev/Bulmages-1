@@ -53,6 +53,10 @@ BcAmortizacionListView::BcAmortizacionListView ( BcCompany *emp, QWidget *parent
     presentar();
 
     meteWindow ( windowTitle() );
+   
+    /// Lanzamos los posibles scripts
+    blScript(this);
+
     blDebug ( "END BcAmortizacionListView::BcAmortizacionListView", 0 );
 }
 

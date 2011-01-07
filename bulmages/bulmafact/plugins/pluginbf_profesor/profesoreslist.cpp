@@ -53,7 +53,8 @@ ProfesoresList::ProfesoresList ( QWidget *parent, Qt::WFlags flag, edmode editmo
     mdb_idprofesor = "";
     setSubForm ( mui_list );
     hideBusqueda();
-
+    /// Llamamos a los scripts
+    blScript(this);
     blDebug ( "END ProfesoresList::ProfesoresList", 0 );
 }
 
@@ -87,7 +88,8 @@ ProfesoresList::ProfesoresList ( BfCompany *comp, QWidget *parent, Qt::WFlags fl
     
     /// Hacemos el tratamiento de los permisos que desabilita botones en caso de no haber suficientes permisos.
     trataPermisos ( "profesor" );
-    
+    /// Llamamos a los scripts
+    blScript(this);
     blDebug ( "END ProfesoresList::ProfesoresList", 0 );
 }
 

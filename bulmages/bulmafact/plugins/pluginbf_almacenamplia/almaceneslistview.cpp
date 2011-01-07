@@ -61,6 +61,8 @@ AlmacenesListView::AlmacenesListView ( QWidget *parent, Qt::WFlags flag )
     mui_list->setSortingEnabled ( TRUE );
 
     hideBusqueda();
+    /// Llamamos a los scripts
+    blScript(this);
     blDebug ( "END AlmacenesListView::AlmacenesListView(1)", 0 );
 }
 
@@ -100,6 +102,8 @@ AlmacenesListView::AlmacenesListView ( BfCompany *comp, QWidget *parent, Qt::WFl
     hideBusqueda();
     /// Hacemos el tratamiento de los permisos que desabilita botones en caso de no haber suficientes permisos.
     trataPermisos ( "almacen" );
+    /// Llamamos a los scripts
+    blScript(this);
     blDebug ( "END AlmacenesListView::AlmacenesListView(2)", 0 );
 }
 

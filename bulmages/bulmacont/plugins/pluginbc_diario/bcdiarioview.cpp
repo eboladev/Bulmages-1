@@ -68,6 +68,9 @@ BcDiarioView::BcDiarioView ( BcCompany  *emp, QWidget *parent, int )
     mui_fechainicial->setText ( "01/01/" + QString::number(QDate::currentDate().year()) );
     mui_fechafinal->setText ( "31/12/" + QString::number(QDate::currentDate().year()) );
     meteWindow ( windowTitle(), this );
+    /// Llamamos a los scripts
+    blScript(this);
+
     blDebug ( "END BcDiarioView::BcDiarioView", 0 );
 }
 

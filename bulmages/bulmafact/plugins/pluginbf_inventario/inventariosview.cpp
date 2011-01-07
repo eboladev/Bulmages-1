@@ -96,6 +96,8 @@ InventariosView::InventariosView ( BfCompany *comp, QWidget *parent, Qt::WFlags 
     } else {
         setWindowTitle ( _ ( "Selector de Inventarios" ) );
     } // end if
+    /// Llamamos a los scripts
+    blScript(this);
     blDebug ( "END InventariosView::InventariosView", 0 );
 }
 

@@ -86,6 +86,8 @@ CarteraCobrosList::CarteraCobrosList ( BfCompany *comp, QWidget *parent, Qt::WFl
     } // end if
     presenta();
     trataPermisos ( "vencimientoc" );
+    /// Llamamos a los scripts
+    blScript(this);
     blDebug ( "END CarteraCobrosList::CarteraCobrosList", 0 );
 }
 

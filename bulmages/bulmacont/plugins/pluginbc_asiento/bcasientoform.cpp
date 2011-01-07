@@ -49,6 +49,9 @@ BcAsientoForm::BcAsientoForm ( BcCompany *comp, QWidget *parent ) : BcForm ( com
     addDbField ( "ordenasiento", BlDbField::DbInt, BlDbField::DbNothing, _ ( "Orden de asiento" ) );
     addDbField ( "clase", BlDbField::DbInt, BlDbField::DbNothing, _ ( "Tipo de asiento" ) );
     listalineas = NULL;
+    /// Llamamos a los scripts
+    blScript(this);
+
     blDebug ( "END BcAsientoForm::BcAsientoForm", 0 );
 }
 

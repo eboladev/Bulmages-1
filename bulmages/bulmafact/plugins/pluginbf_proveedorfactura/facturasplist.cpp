@@ -60,6 +60,8 @@ FacturasProveedorList::FacturasProveedorList ( QWidget *parent, Qt::WFlags flag,
     hideBusqueda();
     iniciaForm();
     g_plugins->lanza ( "FacturasProveedorList_FacturasProveedorList_Post", this );
+    /// Llamamos a los scripts
+    blScript(this);
     blDebug ( "FacturasProveedorList::FacturasProveedorList", 0 );
 }
 
@@ -102,7 +104,8 @@ FacturasProveedorList::FacturasProveedorList ( BfCompany *comp, QWidget *parent,
 
     /// Disparamos los plugins.
     g_plugins->lanza ( "FacturasProveedorList_FacturasProveedorList_Post", this );
-
+    /// Llamamos a los scripts
+    blScript(this);
     blDebug ( "END FacturasProveedorList::FacturasProveedorList", 0 );
 }
 

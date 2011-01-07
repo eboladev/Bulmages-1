@@ -105,6 +105,10 @@ ProyectoView::ProyectoView ( BcCompany *comp, QWidget *parent )
 
         dialogChanges_cargaInicial();
         meteWindow ( windowTitle(), this, FALSE );
+	/// Llamamos a los scripts
+        blScript(this);
+
+
     } catch ( ... ) {
         blMsgInfo ( _ ( "Error al crear el almacen" ) );
     } // end try

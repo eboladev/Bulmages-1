@@ -48,6 +48,9 @@ BcCuentasAnualesView::BcCuentasAnualesView ( BcCompany  *emp, QWidget *parent )
     m_modo = 0;
     inicializatabla();
     mainCompany() ->meteWindow ( windowTitle(), this );
+    /// Llamamos a los scripts
+    blScript(this);
+
     blDebug ( "END BcCuentasAnualesView::BcCuentasAnualesView", 0 );
 }
 

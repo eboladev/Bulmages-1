@@ -44,7 +44,8 @@ TarifaListView::TarifaListView ( BfCompany *comp, QWidget *parent, Qt::WFlags fl
     setSubForm ( mui_list );
     /// Hacemos el tratamiento de los permisos que desabilita botones en caso de no haber suficientes permisos.
     //trataPermisos ( "tarifas" );
-
+    /// Llamamos a los scripts
+    blScript(this);
     blDebug ( "TarifaListView::END_TarifaListView()\n", 0 );
 }
 

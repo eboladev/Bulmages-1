@@ -84,6 +84,8 @@ ArticuloList::ArticuloList ( BfCompany *comp, QWidget *parent, Qt::WFlags flag, 
     hideBusqueda();
     /// Hacemos el tratamiento de los permisos que desabilita botones en caso de no haber suficientes permisos.
     trataPermisos ( "articulo" );
+    /// Llamamos a los scripts
+    blScript(this);
     blDebug ( "END ArticuloList::ArticuloList", 0 );
 }
 

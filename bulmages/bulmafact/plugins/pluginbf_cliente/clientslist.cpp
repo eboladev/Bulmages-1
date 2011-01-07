@@ -70,6 +70,8 @@ ClientsList::ClientsList ( BfCompany *comp, QWidget *parent, Qt::WFlags flag, ed
     presentar();
     /// Hacemos el tratamiento de los permisos que desabilita botones en caso de no haber suficientes permisos.
     trataPermisos ( "cliente" );
+    /// Llamamos a los scripts
+    blScript(this);
     blDebug ( "END ClientsList::ClientsList", 0 );
 }
 

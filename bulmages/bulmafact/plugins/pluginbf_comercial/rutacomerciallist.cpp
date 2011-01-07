@@ -48,7 +48,8 @@ RutaComercialList::RutaComercialList ( QWidget *parent )
     m_idcliente->setTableName ( "cliente" );
     m_idcliente->m_valores["cifcliente"] = "";
     m_idcliente->m_valores["nomcliente"] = "";
-
+    /// Llamamos a los scripts
+    blScript(this);
     blDebug ( "END RutaComercialList::RutaComercialList", 0 );
 }
 
@@ -79,6 +80,8 @@ RutaComercialList::RutaComercialList ( BfCompany *comp, QWidget *parent )
     m_idcliente->setTableName ( "cliente" );
     m_idcliente->m_valores["cifcliente"] = "";
     m_idcliente->m_valores["nomcliente"] = "";
+    /// Llamamos a los scripts
+    blScript(this);
 }
 
 

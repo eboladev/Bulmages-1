@@ -23,6 +23,56 @@
 #include "blformlist.h"
 #include "blmaincompany.h"
 
+#include <QFile>
+#include <QTextStream>
+
+
+/// By R. Cabezas
+/**  procedimiento de QtScript
+Importa el objeto que se pasa como referencia al engine de script
+Busca el archivo en el directorio de openreports que tenga el mismo nombre que la clase
+Importa el script y lo lanza.
+
+*/
+void BlFormList::blScript(QObject * obj) {
+    
+    QString fileName = g_confpr->valor ( CONF_DIR_OPENREPORTS ) + "blformlist_"+metaObject()->className()+".qs";
+    QFile scriptFile1(fileName);
+    if (scriptFile1.open(QIODevice::ReadOnly)) {
+	  QTextStream stream(&scriptFile1);
+	  QString contents = stream.readAll();
+	  QScriptValue objectValue = m_myEngine.newQObject(this);
+	  m_myEngine.globalObject().setProperty(metaObject()->className(), objectValue);
+	  QScriptValue objectValue1 = m_myEngine.newQObject(mainCompany());
+	  m_myEngine.globalObject().setProperty("MainCompany", objectValue1);
+	  m_myEngine.importExtension("qt.core");
+	  m_myEngine.importExtension("qt.gui"); 
+	  m_myEngine.evaluate(contents);
+	  scriptFile1.close();
+	  if (m_myEngine.hasUncaughtException()) {
+	    blMsgInfo(m_myEngine.uncaughtException().toString());
+	  } // end if
+    } // end if
+    
+    
+    fileName = g_confpr->valor ( CONF_DIR_OPENREPORTS ) + "blformlist"+".qs";
+    scriptFile1.setFileName(fileName);
+    if (scriptFile1.open(QIODevice::ReadOnly)) {
+	  QTextStream stream(&scriptFile1);
+	  QString contents = stream.readAll();
+	  QScriptValue objectValue = m_myEngine.newQObject(this);
+	  m_myEngine.globalObject().setProperty("BlForm", objectValue);
+	  QScriptValue objectValue1 = m_myEngine.newQObject(mainCompany());
+	  m_myEngine.globalObject().setProperty("MainCompany", objectValue1);
+	  m_myEngine.importExtension("qt.core");
+	  m_myEngine.importExtension("qt.gui"); 
+	  m_myEngine.evaluate(contents);
+	  scriptFile1.close();
+	  if (m_myEngine.hasUncaughtException()) {
+	    blMsgInfo(m_myEngine.uncaughtException().toString());
+	  } // end if
+    } // end if
+}
 
 ///
 /**

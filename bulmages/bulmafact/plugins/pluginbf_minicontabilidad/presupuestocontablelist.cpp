@@ -67,6 +67,8 @@ PresupuestoContableList::PresupuestoContableList ( BfCompany *comp, QWidget *par
     presentar();
     /// Hacemos el tratamiento de los permisos que desabilita botones en caso de no haber suficientes permisos.
     trataPermisos ( "presupuestocontable" );
+    /// Llamamos a los scripts
+    blScript(this);
     blDebug ( "END PresupuestoContableList::PresupuestoContableList", 0 );
 }
 
