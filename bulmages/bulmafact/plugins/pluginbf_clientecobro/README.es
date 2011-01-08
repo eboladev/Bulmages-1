@@ -38,7 +38,7 @@ Dependencias: libpluginbf_cliente.so
 
 Incompatibles: libpluginbf_carteracobros.so
 
-Reports: recibo.rml
+Reports: recibo.rml; blform_CobroView.qs;
 
 Categorias: Facturacion generica;
 

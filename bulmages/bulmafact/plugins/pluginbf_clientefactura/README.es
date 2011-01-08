@@ -36,7 +36,7 @@ Dependencias: libpluginbf_cliente.so
 
 Incompatibles:
 
-Reports: factura_alternativa1.rml; factura.rml
+Reports: factura_alternativa1.rml; factura.rml; blform_FacuraView.qs;
 
 Categorias: Facturacion generica;
 
