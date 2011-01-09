@@ -78,7 +78,7 @@ void BfClienteAlbaranSubForm::cargar ( QString idalbaran )
     if ( res != 0 )
         return;
 
-    BlSubForm::cargar ( "SELECT *, (cantlalbaran * pvpivainclalbaran)::NUMERIC(12,2) AS totallalbaran FROM lalbaran LEFT JOIN articulo ON lalbaran.idarticulo = articulo.idarticulo WHERE idalbaran=" + mdb_idalbaran + "   ORDER BY ordenlalbaran" );
+    BlSubForm::cargar ( "SELECT *, (cantlalbaran * pvplalbaran)::NUMERIC(12,2) AS totallalbaran FROM lalbaran LEFT JOIN articulo ON lalbaran.idarticulo = articulo.idarticulo WHERE idalbaran=" + mdb_idalbaran + "   ORDER BY ordenlalbaran" );
     blDebug ( "END BfClienteAlbaranSubForm::cargar", 0 );
 }
 

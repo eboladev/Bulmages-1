@@ -63,6 +63,7 @@ BEGIN
 	IF FOUND THEN
 		RETURN 0;
 	ELSE
+		RAISE EXCEPTION '' Version de la base de datos invalida, aplique parches anteriores'';
 		RETURN -1;		 
 	END IF;
 END;
