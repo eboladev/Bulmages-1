@@ -40,7 +40,7 @@ Incompatibles:
 
 Categorias: Facturacion generica;
 
-Reports: blform_PedidoClienteView.qs;
+Reports: blform_PedidoClienteView.qs
 
 Orden: 621
 

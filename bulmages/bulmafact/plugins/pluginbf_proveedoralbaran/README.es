@@ -38,7 +38,7 @@ Incompatibles:
 
 Categorias: Facturacion generica;
 
-Reports: blform_AlbaranProveedorView.qs;
+Reports: blform_AlbaranProveedorView.qs
 
 Orden: 631
 

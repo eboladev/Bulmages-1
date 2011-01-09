@@ -36,7 +36,7 @@ Dependencias: libpluginbf_proveedor.so
 
 Incompatibles:
 
-Reports: pedidoproveedor.rml; blform_PedidoProveedorView.qs;
+Reports: pedidoproveedor.rml; blform_PedidoProveedorView.qs
 
 Categorias: Facturacion generica;
 

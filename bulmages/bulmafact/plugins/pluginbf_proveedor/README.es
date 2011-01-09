@@ -40,7 +40,7 @@ Incompatibles:
 
 Orden: 301
 
-Reports: blform_ProveedorView.qs;
+Reports: blform_ProveedorView.qs
 
 
 Categorias: Facturacion generica;

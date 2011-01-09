@@ -38,6 +38,8 @@ Incompatibles:
 
 Categorias: Facturacion generica;
 
+Reports: blform_FacturaProveedorView.qs
+
 Orden: 632
 
 Comentarios:
