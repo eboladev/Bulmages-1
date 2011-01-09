@@ -23,9 +23,5 @@
 
 
 
-var lay = AlbaranProveedorView.findChild("discounts");
-if (lay != null) {
-      lay.tabPosition = QTabWidget.East;
-}
 
 

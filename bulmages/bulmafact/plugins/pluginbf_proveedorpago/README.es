@@ -32,6 +32,8 @@ Incompatibles:
 
 Categorias: Facturacion generica;
 
+Reports: blform_PagoView.qs
+
 Orden: 633
 
 Comentarios:

@@ -1,9 +1,9 @@
 QTableView {
-    font-size: 8px;
+    font-size: 10px;
 }
 
 QTabWidget {
-    font-size: 8px;
+    font-size: 9px;
 }
 
 QWidget {
@@ -19,12 +19,11 @@ QTableWidgetItem {
 */
 }
 
-
 QHeaderView {
 border: 1px solid #6c6c6c;
 padding-left: 0px;
 margin-left : 0px;
-font-size: 8px;
+font-size: 9px;
 }
 
 #BlTableWidgetItem {

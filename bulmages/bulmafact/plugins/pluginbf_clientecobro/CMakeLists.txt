@@ -115,5 +115,4 @@ install(DIRECTORY images DESTINATION share/bulmages PATTERN ".svn" EXCLUDE)
 
 
 file(GLOB report_files openreports/*.ui openreports/*.pys openreports/*.rml openreports/*.qs)
-
 install (FILES ${report_files} DESTINATION share/bulmages/openreports)
