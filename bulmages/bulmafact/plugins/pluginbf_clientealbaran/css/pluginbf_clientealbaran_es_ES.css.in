@@ -1,4 +1,4 @@
-#AlbaranClienteBase #mui_list {
+#AlbaranClienteBase #subform2 #mui_list {
 	background-image: url(@CMAKE_INSTALL_PREFIX@/share/bulmages/images/es_ES/pluginbf_clientealbaran-new.png);
 }
 

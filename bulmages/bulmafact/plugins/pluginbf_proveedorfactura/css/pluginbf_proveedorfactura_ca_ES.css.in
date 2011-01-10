@@ -2,3 +2,6 @@
 	background-image: url(@CMAKE_INSTALL_PREFIX@/share/bulmages/images/ca_ES/pluginbf_proveedorfactura-list.png);
 }
 
+#FacturaProveedorBase #subform2 #mui_list {
+	background-image: url(@CMAKE_INSTALL_PREFIX@/share/bulmages/images/ca_ES/pluginbf_proveedorfactura-new.png);
+}
