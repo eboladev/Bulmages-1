@@ -44,8 +44,13 @@ BcBulmaCont::BcBulmaCont ( QWidget *parent, Qt::WFlags f, QString DB )
     setupUi ( this );
 
     m_pWorkspace = new BlWorkspace ( this );
+    
+#ifdef AREA_QMDI
     m_pWorkspace->setVerticalScrollBarPolicy(Qt::ScrollBarAsNeeded);
     m_pWorkspace->setHorizontalScrollBarPolicy(Qt::ScrollBarAsNeeded);
+#else
+    m_pWorkspace->setScrollBarsEnabled ( TRUE );
+#endif
 
     QFrame *m_frame1 = new QFrame();
     QProgressBar *m_pb = new QProgressBar();
@@ -69,8 +74,12 @@ BcBulmaCont::BcBulmaCont ( QWidget *parent, Qt::WFlags f, QString DB )
     m_empresaactual->init ( DB, "BulmaCont" );
     m_empresaactual->setWorkspace ( m_pWorkspace );
 
+#ifdef AREA_QMDI
     connect ( m_pWorkspace, SIGNAL ( subWindowActivated ( QMdiSubWindow * ) ), this, SLOT ( informaindexador ( QMdiSubWindow * ) ) );
-
+#else
+    connect ( m_pWorkspace, SIGNAL ( windowActivated ( QWidget * ) ), this, SLOT ( informaindexador ( QWidget * ) ) );
+#endif
+    
     /// Aqu&iacute; creamos la ventana dock para meter las distintas ventanas.
     m_list = new BlWindowListDock ( 0 );
     m_list->setVisible ( FALSE );
@@ -285,7 +294,13 @@ void BcBulmaCont::on_actionCentro_de_Coste_por_Defecto_triggered()
 void BcBulmaCont::on_actionOrdenar_Ventanas_triggered()
 {
     blDebug ( "BcBulmaCont::on_actionOrdenar_Ventanas_triggered", 0 );
+    
+#ifdef AREA_QMDI
     m_pWorkspace->tileSubWindows();
+#else
+    m_pWorkspace->tile();
+#endif
+    
     blDebug ( "END BcBulmaCont::on_actionOrdenar_Ventanas_triggered", 0 );
 }
 
@@ -296,7 +311,13 @@ void BcBulmaCont::on_actionOrdenar_Ventanas_triggered()
 void BcBulmaCont::on_actionOrganizaci_n_en_Cascada_triggered()
 {
     blDebug ( "BcBulmaCont::on_actionOrganizaci_n_en_Cascada_triggered", 0 );
+    
+#ifdef AREA_QMDI
     m_pWorkspace->cascadeSubWindows ();
+#else
+    m_pWorkspace->cascade();
+#endif
+    
     blDebug ( "END BcBulmaCont::on_actionOrganizaci_n_en_Cascada_triggered", 0 );
 }
 
@@ -678,7 +699,11 @@ void BcBulmaCont::on_actionPaises_triggered()
 \param w
 \return
 **/
-void BcBulmaCont::informaindexador ( QMdiSubWindow *w )
+#ifdef AREA_QMDI
+  void BcBulmaCont::informaindexador ( QMdiSubWindow *w )
+#else
+  void BcBulmaCont::informaindexador ( QWidget *w )
+#endif
 {
     blDebug ( "BcBulmaCont::informaindexador", 0 );
     /// No existe una ventana que activar.

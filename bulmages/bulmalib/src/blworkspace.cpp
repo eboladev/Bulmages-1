@@ -46,6 +46,8 @@ BlWorkspace::~BlWorkspace()
 }
 
 
+
+#ifdef AREA_QMDI    
 ///
 /**
 \param w
@@ -111,4 +113,46 @@ QWidget *BlWorkspace::activeWindow () const
     return QApplication::activeWindow ();
 }
 
+#else
 
+///
+/**
+\param w
+**/
+void BlWorkspace::addWindow ( QWidget * w )
+{
+    blDebug ( "BlWorkspace::addWindow", 0 );
+    int tamdispW;
+    int tamdispH;
+    int tamventanadecoW;
+    int tamventanadecoH;
+    int tamventanaW;
+    int tamventanaH;
+    int margen = 10;
+
+    QWorkspace::addWindow ( w );
+
+    /// Se comprueba el tama&ntilde;o de la ventana que esta dise&ntilde;ada con Designer:
+    /// S&oacute;lo si la ventana es m&aacute;s grande que el espacio de representaci&oacute;n
+    /// se ajusta para caber dentro.
+    /// Crea un QAction para manejar la tecla rapida ESC para cerrar la ventana.
+    QAction *accionEsc = new QAction ( w );
+    accionEsc->setShortcut ( _ ( "Esc" ) );
+    connect ( accionEsc, SIGNAL ( triggered() ), w, SLOT ( close() ) );
+    w->addAction ( accionEsc );
+    blDebug ( "END BlWorkspace::addWindow", 0 );
+}
+
+
+///
+/**
+\param w
+**/
+void BlWorkspace::addSubWindow ( QWidget * w )
+{
+    blDebug ( "BlWorkspace::addWindow", 0 );
+    BlWorkspace::addWindow ( w );
+    blDebug ( "END BlWorkspace::addWindow", 0 );
+}
+
+#endif

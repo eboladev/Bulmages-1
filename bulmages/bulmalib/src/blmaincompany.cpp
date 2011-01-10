@@ -109,7 +109,11 @@ int BlMainCompany::meteWindow ( QString nom, QObject *obj, bool compdup, QString
 \param obj
 \return
 **/
-int BlMainCompany::seleccionaWindow ( QString nom, QMdiSubWindow *obj )
+#ifdef AREA_QMDI
+  int BlMainCompany::seleccionaWindow ( QString nom, QMdiSubWindow *obj )
+#else
+  int BlMainCompany::seleccionaWindow ( QString nom, QObject *obj )
+#endif
 {
     blDebug ( "BlMainCompany::seleccionaWindow", 0 );
     blDebug ( "END BlMainCompany::seleccionaWindow", 0 );

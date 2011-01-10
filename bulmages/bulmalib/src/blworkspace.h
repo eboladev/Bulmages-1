@@ -24,25 +24,48 @@
 
 #include <QObject>
 #include <QWidget>
-#include <QMdiArea>
-#include <QMdiSubWindow>
+
+
+//#define AREA_QMDI
+
+#ifdef AREA_QMDI
+  #include <QMdiArea>
+  #include <QMdiSubWindow>
+#else
+  #include <QWorkspace>
+#endif
+
+
 
 #include "blfunctions.h"
 #include "blwindowlistdock.h"
 
 
-class BL_EXPORT BlWorkspace : public QMdiArea
+#ifdef AREA_QMDI
+  class BL_EXPORT BlWorkspace : public QMdiArea
+#else
+  class BL_EXPORT BlWorkspace : public QWorkspace
+#endif
 {
     Q_OBJECT
 
 public:
     BlWorkspace ( QWidget * );
     ~BlWorkspace();
+    
+#ifdef AREA_QMDI    
     void addSubWindow ( QWidget * );
     QWidget *activeWindow () const;
+#else
+    void addWindow ( QWidget * );
+    void addSubWindow ( QWidget * );
+#endif
 
-signals:
+#ifdef AREA_QMDI    
+  signals:
     void deselectDockAll();
+#endif
+  
 };
 
 #endif

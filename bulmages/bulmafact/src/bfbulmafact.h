@@ -23,7 +23,10 @@
 #define BFBULMAFACT_H
 
 #include <QWorkspace>
-#include <QMdiSubWindow>
+
+#ifdef AREA_QMDI
+  #include <QMdiSubWindow>
+#endif
 
 #include "blfunctions.h"
 #include "blmainwindow.h"
@@ -83,7 +86,13 @@ public slots:
 
 private slots:
     /// Este SLOT sirve para actualizar el Indexador cuando se activa una ventana
+    
+#ifdef AREA_QMDI
     void informaindexador ( QMdiSubWindow *w );
+#else
+    void informaindexador ( QWidget *w );
+#endif
+    
     void setActionIndexador ( bool );
     void documentacionError ( const QString );
 };

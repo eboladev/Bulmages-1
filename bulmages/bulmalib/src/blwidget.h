@@ -27,8 +27,11 @@
 #include <QWidget>
 #include <QCloseEvent>
 #include <QPainter>
-#include <QHideEvent>
-#include <QShowEvent>
+
+#ifdef AREA_QMDI
+  #include <QHideEvent>
+  #include <QShowEvent>
+#endif
 
 #include "blmaincompanypointer.h"
 #include "bldialogchanges.h"
@@ -42,16 +45,21 @@ class BL_EXPORT BlWidget : public QWidget, public BlMainCompanyPointer
 
 protected:
     virtual void paintEvent(QPaintEvent *);
-    bool event ( QEvent * event );
 
+#ifdef AREA_QMDI
+    bool event ( QEvent * event );
+#endif
+    
 public:
     BlWidget ( QWidget *parent = 0, Qt::WFlags f = 0 );
     BlWidget ( BlMainCompany *, QWidget *parent = 0, Qt::WFlags f = 0 );
     virtual ~BlWidget();
 
-signals:
+#ifdef AREA_QMDI
+ signals:
     void showed(QObject * obj = 0);
     void hided(QObject * obj = 0);
+#endif
 };
 
 

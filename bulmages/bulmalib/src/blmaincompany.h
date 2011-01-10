@@ -62,7 +62,13 @@ public:
     void setWorkspace ( BlWorkspace *qw );
     void setProgressBar ( QProgressBar *pb );
     int meteWindow ( QString nom, QObject *obj, bool compdup = TRUE, QString titulo = "" );
+
+#ifdef AREA_QMDI
     int seleccionaWindow ( QString nom, QMdiSubWindow *obj );
+#else
+    int seleccionaWindow ( QString nom, QObject *obj );
+#endif
+    
     void sacaWindow ( QObject *nom );
     void s_indexadorCambiaEstado ( bool );
     void muestraPaises();

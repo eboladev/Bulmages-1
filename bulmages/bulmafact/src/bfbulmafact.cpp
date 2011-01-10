@@ -56,9 +56,14 @@ BfBulmaFact::BfBulmaFact ( QString bd ) : BlMainWindow()
     setAnimated ( FALSE );
     setUpdatesEnabled ( TRUE );
     pWorkspace = new BlWorkspace ( this );
+    
+#ifdef AREA_QMDI    
     pWorkspace->setVerticalScrollBarPolicy(Qt::ScrollBarAsNeeded);
     pWorkspace->setHorizontalScrollBarPolicy(Qt::ScrollBarAsNeeded);
-
+#else
+    pWorkspace->setScrollBarsEnabled ( TRUE );
+#endif
+    
     QFrame *m_frame1 = new QFrame();
     m_pb = new QProgressBar();
     m_pb->setMaximum ( 100 );
@@ -79,8 +84,12 @@ BfBulmaFact::BfBulmaFact ( QString bd ) : BlMainWindow()
     m_company->init ( bd, "BulmaFact" );
     m_company->setWorkspace ( pWorkspace );
 
+#ifdef AREA_QMDI
     connect ( pWorkspace, SIGNAL ( subWindowActivated ( QMdiSubWindow * ) ), this, SLOT ( informaindexador ( QMdiSubWindow * ) ) );
-
+#else
+    connect ( pWorkspace, SIGNAL ( windowActivated ( QWidget * ) ), this, SLOT ( informaindexador ( QWidget * ) ) );
+#endif
+    
     /// Aqui creamos la ventana dock para meter las distintas ventanas.
     m_list = new BlWindowListDock ( 0 );
     m_list->setVisible ( FALSE );
@@ -221,7 +230,12 @@ void BfBulmaFact::closeEvent ( QCloseEvent *event )
 \param w
 \return
 **/
-void BfBulmaFact::informaindexador ( QMdiSubWindow *w )
+#ifdef AREA_QMDI
+    void BfBulmaFact::informaindexador ( QMdiSubWindow *w )
+#else
+    void BfBulmaFact::informaindexador ( QWidget *w )
+#endif
+
 {
     blDebug ( "BfBulmaFact::informaindexador", 0 );
 
@@ -455,7 +469,13 @@ void BfBulmaFact::on_actionFormas_de_Pago_triggered()
 void BfBulmaFact::on_actionOrdenar_Ventanas_triggered()
 {
     blDebug ( "BfBulmaFact::on_actionOrdenar_Ventanas_triggered", 0 );
+
+#ifdef AREA_QMDI
     pWorkspace->tileSubWindows();
+#else
+    pWorkspace->tile();
+#endif
+    
     blDebug ( "END BfBulmaFact::on_actionOrdenar_Ventanas_triggered", 0 );
 }
 
@@ -466,7 +486,13 @@ void BfBulmaFact::on_actionOrdenar_Ventanas_triggered()
 void BfBulmaFact::on_actionOrganizaci_n_en_Cascada_triggered()
 {
     blDebug ( "BfBulmaFact::on_actionOrganizacion_en_Cascada_triggered", 0 );
+    
+#ifdef AREA_QMDI
     pWorkspace->cascadeSubWindows();
+#else
+    pWorkspace->cascade();
+#endif
+  
     blDebug ( "END BfBulmaFact::on_actionOrganizacion_en_Cascada_triggered", 0 );
 }
 

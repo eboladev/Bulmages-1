@@ -71,7 +71,7 @@ void BlWidget::paintEvent ( QPaintEvent * )
 }
 
 
-
+#ifdef AREA_QMDI
 bool BlWidget::event ( QEvent * event )
 {
     if (event->type() == QEvent::HideToParent) {
@@ -82,5 +82,5 @@ bool BlWidget::event ( QEvent * event )
     
     return QWidget::event(event);
 }
-
+#endif
 

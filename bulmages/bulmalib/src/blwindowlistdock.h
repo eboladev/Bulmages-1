@@ -81,7 +81,13 @@ public:
 
 public:
     int meteWindow ( QString, QObject *, bool compdup = TRUE, QString titulo="" );
-    int seleccionaWindow ( QString, QMdiSubWindow * );
+    
+#ifdef AREA_QMDI
+    int seleccionaWindow ( QString nombre, QMdiSubWindow *obj );
+#else
+    int seleccionaWindow ( QString nombre, QObject *obj );
+#endif
+    
     int deSeleccionaWindow();
     void sacaWindow ( QObject * );
     void cambiaVisible ( bool );
