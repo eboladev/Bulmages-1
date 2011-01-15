@@ -31,7 +31,7 @@
 
 /// Muestra y administra las l&iacute;neas de detalle de albaranes a un cliente.
 /** */
-class BF_EXPORT BfClienteAlbaranSubForm : public BfSubForm
+class PLUGINBF_CLIENTEALBARAN_EXPORT BfClienteAlbaranSubForm : public BfSubForm
 {
     Q_OBJECT
 
