@@ -4,7 +4,7 @@
 
 #ifdef Q_OS_WIN32
 
-#ifdef PLUGINBF_CLIENTEALBARAN
+#ifdef PLUGINBF_CLIENTETICKET
 #define PLUGINBF_CLIENTETICKET_EXPORT __declspec(dllexport)
 #else
 #define PLUGINBF_CLIENTETICKET_EXPORT __declspec(dllimport)

@@ -24,11 +24,11 @@
 
 #include "bfsubform.h"
 #include "bfcompany.h"
-
+#include "pdefs_pluginbf_clientealbaran.h"
 
 /// Muestra y administra la ventana de lista de descuentos por albar&aacute;n a cliente.
 /** */
-class BF_EXPORT BfClienteAlbaranDescuentoSubForm : public BfSubForm
+class PLUGINBF_CLIENTEALBARAN_EXPORT BfClienteAlbaranDescuentoSubForm : public BfSubForm
 {
     Q_OBJECT
 

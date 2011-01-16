@@ -3,6 +3,7 @@
 #define _QEXTSERIALPORT_H_
 
 #include "qextserialport_global.h"
+#include "pdefs_pluginbt_bascula.h"
 
 /*if all warning messages are turned off, flag portability warnings to be turned off as well*/
 #ifdef _TTY_NOWARN_
@@ -179,7 +180,7 @@ No guarantees are made as to the quality of POSIX support under NT/2000 however.
 
 \author Stefan Sander, Michal Policht, Brandon Fosdick, Liam Staskawicz
 */
-class QEXTSERIALPORT_EXPORT QextSerialPort: public QIODevice
+class PLUGINBT_BASCULA_EXPORT QextSerialPort: public QIODevice
 {
     Q_OBJECT
     public:

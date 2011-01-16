@@ -3,9 +3,9 @@
 #include <QtDebug>
 #include <time.h>
 #include "blfunctions.h"
-
-
-
+#ifdef Q_OS_WIN32
+#include <windows.h> // Para el uso de Sleep
+#endif
 
 PortListener::PortListener(const QString & portName, BtCompany *tpv)
 {
@@ -58,7 +58,12 @@ void PortListener::comm() {
     int duerme=0;
     while (!port->readData(buffer, 1)) {
       duerme ++;
+#ifndef Q_OS_WIN32
       usleep(5000);
+#else
+	  Sleep(5000);
+#endif
+
       if (duerme > 3)
 	return;
     } // end while
@@ -79,7 +84,11 @@ void PortListener::comm() {
     duerme=0;
     while (!port->readData(buffer, 1)) {
       duerme ++;
+#ifndef Q_OS_WIN32
       usleep(5000);
+#else
+	  Sleep(5000);
+#endif
       if (duerme > 3)
 	return;
     } // end while
@@ -95,7 +104,11 @@ void PortListener::comm() {
     duerme=0;
     while (!port->readData(buffer, 1)) {
       duerme ++;
+#ifndef Q_OS_WIN32
       usleep(5000);
+#else
+	  Sleep(5000);
+#endif
       if (duerme > 3)
 	return;
     } // end while
@@ -112,7 +125,11 @@ void PortListener::comm() {
 	fprintf(stderr,"\nbuffer:[%s]\n", buffer);
       } else {
 	duerme ++;
-	usleep(5000);
+#ifndef Q_OS_WIN32
+      usleep(5000);
+#else
+	  Sleep(5000);
+#endif
 	if (duerme > 3)
 	    return;
       } // end if

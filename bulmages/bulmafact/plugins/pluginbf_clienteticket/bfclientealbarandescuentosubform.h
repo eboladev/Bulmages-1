@@ -24,11 +24,12 @@
 
 #include "bfsubform.h"
 #include "bfcompany.h"
+#include "pdefs_pluginbf_clienteticket.h"
 
 
 /// Muestra y administra la ventana de lista de descuentos por albar&aacute;n a cliente.
 /** */
-class BF_EXPORT BfClienteTicketDescuentoSubForm : public BfSubForm
+class PLUGINBF_CLIENTETICKET_EXPORT BfClienteTicketDescuentoSubForm : public BfSubForm
 {
     Q_OBJECT
 

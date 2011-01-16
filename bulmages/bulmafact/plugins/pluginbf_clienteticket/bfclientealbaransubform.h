@@ -27,11 +27,12 @@
 #include "bfcompany.h"
 #include "bfsubform.h"
 #include "blfixed.h"
+#include "pdefs_pluginbf_clienteticket.h"
 
 
 /// Muestra y administra las l&iacute;neas de detalle de albaranes a un cliente.
 /** */
-class BF_EXPORT BfClienteTicketSubForm : public BfSubForm
+class PLUGINBF_CLIENTETICKET_EXPORT BfClienteTicketSubForm : public BfSubForm
 {
     Q_OBJECT
 

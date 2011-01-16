@@ -31,7 +31,10 @@ add_subdirectory(pluginbt_dockapp)
 add_subdirectory(pluginbt_serverlight)
 add_subdirectory(pluginbt_teclado)
 add_subdirectory(pluginbt_cliente)
+
+if(NOT WIN32)
 add_subdirectory(pluginbt_bascula)
+endif(NOT WIN32)
 
 if(NOT APPLE)
 add_subdirectory(pluginbt_accesobotones)
