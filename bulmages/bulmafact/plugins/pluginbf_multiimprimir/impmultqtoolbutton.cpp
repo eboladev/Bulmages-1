@@ -1086,8 +1086,8 @@ void SumarQToolButton::setBoton()
     blDebug ( "SumarQToolButton::setBoton", 0 );
     connect ( this, SIGNAL ( clicked() ), this, SLOT ( click() ) );
     setObjectName ( QString::fromUtf8 ( "procesa" ) );
-    setStatusTip ( _ ( "Procesar elementos seleccionados" ) );
-    setToolTip ( _ ( "Procesar elementos seleccionados" ) );
+    setStatusTip ( _ ( "Totalizar elementos seleccionados" ) );
+    setToolTip ( _ ( "Totalizar elementos seleccionados" ) );
     setMinimumSize ( QSize ( 32, 32 ) );
     setIcon ( QIcon (  g_confpr->valor ( CONF_PROGDATA ) + "icons/suma.png" ) );
     setIconSize ( QSize ( 22, 22 ) );
