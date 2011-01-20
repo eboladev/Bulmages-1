@@ -817,7 +817,6 @@ class _rml_template(object):
             fis.append(PageCount())
         self.doc_tmpl.build(fis)
 
-
 class PieChart(_DrawingEditorMixin,Drawing):  
     def __init__(self,node,width=400,height=200,*args,**kw):  
         apply(Drawing.__init__,(self,width,height)+args,kw)  
@@ -848,7 +847,7 @@ class PieChart(_DrawingEditorMixin,Drawing):
 
         #data                = [9, 7, 6, 4, 2.5, 1.0]  
         #categories          = ('A','B','C','D','E','F',)  
-        colors              = [PCMYKColor(0,0,0,x) for x in (100,80,60,40,20,5)]  
+        colors              = [PCMYKColor(0,x,0,x) for x in (100,80,60,40,20,5)]  
         self.chart.data     = data  
         self.chart.labels   = map(str, self.chart.data)  
         self.legend.colorNamePairs = zip(colors, categories)  
@@ -899,7 +898,7 @@ class BarChart(_DrawingEditorMixin,Drawing):
         self._add(self,Legend(),name='legend',validate=None,desc=None)  
         #_ = ['Vodafone Group', 'UBS', 'British Petroleum', 'Royal bk of Scotland', 'HSBC Holdings', 'Total Elf Fina', 'Repsol', 'Novartis', 'BNP Paribas', 'Schneider Electric' ]  
         _ = categories
-        self.legend.colorNamePairs  = [(Auto(chart=self.bar),(t,'%.2f'% d[0])) for t,d in zip(_,self.bar.data)]  
+        #self.legend.colorNamePairs  = [(Auto(chart=self.bar),(t,'%.2f'% d[0])) for t,d in zip(_,self.bar.data)]  
         self.legend.columnMaximum   = bgutils.unit_get(node.get('columnMaximum')) or 10
         self.legend.fontName        = 'Helvetica'  
         self.legend.fontSize        = bgutils.unit_get(node.get('fontSize')) or 5.5
@@ -917,8 +916,16 @@ class BarChart(_DrawingEditorMixin,Drawing):
         self.legend.strokeWidth     = 0  
         self.legend.dividerOffsY    = bgutils.unit_get(node.get('fontSize')) or 6
         self.legend.colEndCallout   = TotalAnnotator(rText='%.2f'%sum([x[0] for x in self.bar.data]), fontName='Helvetica-Bold', fontSize=self.legend.fontSize*1.1)  
-        self.legend.colorNamePairs  = [(self.bar.bars[i].fillColor, (self.bar.categoryAxis.categoryNames[i][0:20], '%0.2f' % self.bar.data[i][0])) for i in range(len(self.bar.data))]  
-  
+        #self.legend.colorNamePairs  = [(self.bar.bars[i].fillColor, (self.bar.categoryAxis.categoryNames[i][0:20], '%0.2f' % self.bar.data[i][0])) for i in range(len(self.bar.data))]  
+        colors              = [PCMYKColor(x,0,0,x) for x in (100,95,90,80,85,70,75,60,65,50,55,40,45,30,35,20,25,10,5)]  
+        self.legend.colorNamePairs = zip(colors, categories)  
+        for i, color in enumerate(colors): self.bar.bars[i].fillColor  = color 
+        #i = 0
+        #for x in self.bar.bars:
+	#self.bar.bars[1].fillColor = PCMYKColor(0,0,0,56)
+	  #i = i + 1
+
+
 class LinePlot(_DrawingEditorMixin,Drawing):
     def __init__(self,node,width=400,height=200,*args,**kw):
         apply(Drawing.__init__,(self,width,height)+args,kw)
