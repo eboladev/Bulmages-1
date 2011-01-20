@@ -78,8 +78,11 @@ configure_file( ${CMAKE_CURRENT_SOURCE_DIR}/README.es ${CMAKE_CURRENT_BINARY_DIR
 install (FILES ${CMAKE_CURRENT_BINARY_DIR}/README.es DESTINATION share/bulmages/bulmalib-plugins/ RENAME README.es.${plugin})
 
 
-file(GLOB report_files openreports/*.ui openreports/*.pys openreports/*.rml)
+file(GLOB report_files openreports/es/*.ui openreports/es/*.pys openreports/es/*.rml openreports/es/*.qs)
+install (FILES ${report_files} DESTINATION share/bulmages/openreports/es)
 
-install (FILES ${report_files} DESTINATION share/bulmages/openreports)
+file(GLOB report_files openreports/ca/*.ui openreports/ca/*.pys openreports/ca/*.rml openreports/ca/*.qs)
+install (FILES ${report_files} DESTINATION share/bulmages/openreports/ca)
+
 
 ADD_LOCAL_BLI18N_HEADER( ${plugin} )

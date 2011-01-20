@@ -1,0 +1,13 @@
+<!-- SETCHARACTERSIZE "119" --><!-- SETCHARACTERPRINTMODE " DOUBLE_WIDTH DOUBLE_HEIGHT CHARACTER_FONTA_SELECTED" -->
+[nomticket]
+<!-- SETUNDERLINEMODE "0" --><!-- SETCHARACTERSIZE "32" --><!-- SETCHARACTERPRINTMODE " CHARACTER_FONTA_SELECTED" -->
+<!-- SETJUSTIFICATION "LEFT" -->
+<!-- LINEAS DETALLE --><!-- QUERY="SELECT * FROM articulo WHERE idarticulo=[idarticulo] AND idprintercocina = [idprintercocina]"--> [cantlalbaran] [desclalbaran] 
+<!-- PNGRAW64 DATA="[imglalbaran]"-->
+<!-- SUBQUERY="SELECT * FROM modificador WHERE idmodificador=[idmodificador3]">[nombremodificador]<!-- END SUBQUERY --><!-- SUBQUERY="SELECT * FROM modificador WHERE idmodificador=[idmodificador4]">[nombremodificador]<!-- END SUBQUERY --><!-- SUBQUERY="SELECT * FROM modificador WHERE idmodificador=[idmodificador5]">[nombremodificador]<!-- END SUBQUERY --><!-- SUBQUERY="SELECT * FROM modificador WHERE idmodificador=[idmodificador6]">[nombremodificador]<!-- END SUBQUERY --><!-- SUBQUERY="SELECT * FROM modificador WHERE idmodificador=[idmodificador7]">[nombremodificador]<!-- END SUBQUERY --><!-- SUBQUERY="SELECT * FROM modificador WHERE idmodificador=[idmodificador8]">[nombremodificador]<!-- END SUBQUERY --><!-- SUBQUERY="SELECT * FROM modificador WHERE idmodificador=[idmodificador9]">[nombremodificador]<!-- END SUBQUERY --><!-- END QUERY --><!-- END LINEAS DETALLE -->
+<!-- SETUNDERLINEMODE "0" --><!-- SETCHARACTERSIZE "32" --><!-- SETCHARACTERPRINTMODE " CHARACTER_FONTA_SELECTED" -->
+<!-- QUERY="SELECT now()::DATE AS fecha" -->[fecha]<!-- END QUERY -->   <!-- QUERY="SELECT now()::TIME AS hora" -->[hora]<!-- END QUERY -->
+<!-- QUERY="SELECT * FROM trabajador WHERE idtrabajador=[idtrabajador]" -->[nomtrabajador]<!-- END QUERY -->
+<!-- QUERY="SELECT * FROM cliente WHERE idcliente=[idcliente]" -->[cifcliente] [nomcliente]<!-- END QUERY -->
+<!-- SETBARCODEFORMAT "2" "50" "BOTH" "FONTB" --><!-- PRINTBARCODE "CODE39" "6" "[refalbaran]" -->
+<!-- CUTPAPERANDFEED "TRUE" "5"-->

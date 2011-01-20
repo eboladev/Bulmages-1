@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+<!DOCTYPE document SYSTEM "rml_1_0.dtd">
+<!--
+    Esquema de documento RML:
+    template/stylesheet/story
+-->
+<document>
+
+<!--
+    Aquí van los elementos gráficos de la página (headers, footers, frames, etc...).
+    No puede estar vacío.
+-->
+
+<!--QUERY="SELECT * FROM alumno WHERE idalumno = [idalumno]"-->
+
+<template pageSize="(21cm, 29.7cm)" leftMargin="0cm" rightMargin="0cm" topMargin="1.0cm" bottomMargin="2.0cm" title="Ficha de alumno" author="Arturo Martin Llado" allowSplitting="20">
+    <pageTemplate id="main">
+    
+        <!-- FRAME DE CONTENIDOS -->
+        <frame id="column" x1="1.3cm" y1="5cm" width="18.7cm" height="16cm"/>
+        
+        <pageGraphics>
+            
+            <!-- EL LOGO DE CABECERA -->
+            <image x="1cm" y="25.9cm" width="11cm" file="logo.jpg"/>
+    
+            <!-- EL PIE DE PAGINA -->
+            <setFont name="Helvetica" size="8"/>
+            <drawString x="7.3cm" y="1.2cm">www.iglues.org :: info@iglues.org</drawString>             
+            <drawString x="0.3cm" y="0.2cm">Estas plantillas son de demostracion.</drawString>
+            
+            <!-- Color del relleno de las figuras -->
+            <!--<fill color="red" />-->
+            <!-- Color del borde de las figuras -->
+            <!--<stroke color="black" />-->
+            <!--<circle x="127.5" y="672.75" radius="1in" fill="yes" stroke="no" />-->
+            
+            <setFont name="Helvetica" size="22"/>
+            <drawString x="1.5cm" y="24cm">FICHA DE ALUMNO: [apellido1alumno] [apellido2alumno], [nombrealumno]</drawString>
+            <setFont name="Helvetica" size="16"/>
+            <drawString x="1.5cm" y="23cm">Fecha de nacimiento: [fechanacimientoalumno]</drawString>
+            <drawString x="1.5cm" y="22.3cm">DNI: [dnialumno]</drawString>
+            
+<!--END QUERY-->
+            
+        </pageGraphics>
+        
+    </pageTemplate>
+</template>
+
+<!--
+    Aquí los estilos. Es obligatorio que estén, aunque no haya contenido en ellos.
+-->
+<stylesheet>
+    
+    <paraStyle name="titulo"
+        fontName="Helvetica"
+        fontSize="18"
+    />
+    
+    <blockTableStyle id="tablaTutores">
+        <blockFont name="Helvetica" />
+        <blockBackground colorName="gray" start="0,0" stop="1,0" />
+        <lineStyle colorName="black" kind="GRID" />
+    </blockTableStyle>
+    
+    <blockTableStyle id="tablaActividades">
+        <blockFont name="Helvetica" />
+        <blockBackground colorName="gray" start="0,0" stop="1,0" />
+        <lineStyle colorName="black" kind="GRID" />
+    </blockTableStyle>
+        
+</stylesheet>
+
+<!--
+    Aquí va el contenido del documento.
+    No puede estar vacío.
+-->
+<story>
+
+    <para style="titulo"><b>Tutores del alumno</b></para>
+    
+    <spacer length="0.5cm" />
+    
+    <blockTable style="tablaTutores" colWidths="14.5cm,3.7cm" repeatRows="0">
+        
+        <tr>
+            <td>Tutor</td>
+            <td>Porcentaje %</td>
+        </tr>
+            
+<!--QUERY="SELECT * FROM alumnocliente, cliente WHERE cliente.idcliente = alumnocliente.idcliente AND alumnocliente.idalumno = [idalumno]"-->
+
+        <tr>
+            <td>[nomcliente]</td>
+            <td>[porcentalumnocliente]%</td>
+        </tr>
+        
+<!--END QUERY-->
+        
+    </blockTable>
+    
+    <spacer length="0.5cm" />
+    
+    <para style="titulo"><b>Actividades a las que está suscrito el alumno</b></para>
+    
+    <spacer length="0.5cm" />
+    
+    <blockTable style="tablaTutores" colWidths="9.1cm,9.1cm" repeatRows="0">
+        
+        <tr>
+            <td>Nombre de la actividad</td>
+            <td>Profesor que la imparte</td>
+        </tr>
+            
+<!--QUERY="SELECT * FROM actividad, alumnoactividad, profesor WHERE actividad.idprofesor = profesor.idprofesor AND actividad.idactividad = alumnoactividad.idactividad AND alumnoactividad.idalumno = [idalumno]"-->
+
+        <tr>
+            <td>[nombreactividad]</td>
+            <td>[nombreprofesor]</td>
+        </tr>
+        
+<!--END QUERY-->
+        
+    </blockTable>
+    
+</story>
+
+</document>

@@ -44,8 +44,8 @@ class Contabilidad(Ui_ModificarContabilidadBase, Empresa):
       
       #Comprobamos que exista la imagen y si es asi la presentamos.
       if (self.database != None):
-         if (os.path.exists('/opt/bulmages/openreports_' + self.database + '/logo.jpg' )):
-            self.pixmap = QtGui.QPixmap('/opt/bulmages/openreports_' + self.database + '/logo.jpg')
+         if (os.path.exists('/opt/bulmages/openreports_' + self.database + '/es/logo.jpg' )):
+            self.pixmap = QtGui.QPixmap('/opt/bulmages/openreports_' + self.database + '/es/logo.jpg')
             self.mui_img.setPixmap(self.pixmap)
             
    def inicializar(self):
@@ -311,7 +311,14 @@ class Contabilidad(Ui_ModificarContabilidadBase, Empresa):
       self.string = "mkdir -p /opt/bulmages/openreports_" + self.database 
       self.process.start(self.string)
       self.process.waitForFinished(-1)
-
+      # Creamos el directorio especifico para guardar las plantillas
+      self.string = "mkdir -p /opt/bulmages/openreports_" + self.database + "/es"
+      self.process.start(self.string)
+      self.process.waitForFinished(-1)
+      # Creamos el directorio especifico para guardar las plantillas
+      self.string = "mkdir -p /opt/bulmages/openreports_" + self.database + "/ca"
+      self.process.start(self.string)
+      self.process.waitForFinished(-1)
       i = 1
       while (os.path.exists('/opt/bulmages/openreports_' + self.database + '_old' + str(i))):
 	i = i + 1
@@ -324,48 +331,48 @@ class Contabilidad(Ui_ModificarContabilidadBase, Empresa):
       self.writecommand('Generamos backup de las plantillas de impresion en ' + '/opt/bulmages/openreports_' + self.database + '_old' + str(i))
 
       # Copiamos los archivos genericos
-      # Copiamos las plantillas
-      self.string = "cp " + plugins.confopenreports + "canuales.rml" + " /opt/bulmages/openreports_" + self.database
+      # Copiamos las plantillas es
+      self.string = "cp " + plugins.confopenreports + "es/canuales.rml" + " /opt/bulmages/openreports_" + self.database + "/es"
       self.writecommand(self.string)
       self.process.start(self.string)
       self.process.waitForFinished(-1)
-      self.string = "cp " + plugins.confopenreports + "diario.rml" + " /opt/bulmages/openreports_" + self.database
+      self.string = "cp " + plugins.confopenreports + "es/diario.rml" + " /opt/bulmages/openreports_" + self.database +"/es"
       self.writecommand(self.string)
       self.process.start(self.string)
       self.process.waitForFinished(-1)
-      self.string = "cp " + plugins.confopenreports + "extracto.rml" + " /opt/bulmages/openreports_" + self.database
+      self.string = "cp " + plugins.confopenreports + "es/extracto.rml" + " /opt/bulmages/openreports_" + self.database + "/es"
       self.writecommand(self.string)
       self.process.start(self.string)
       self.process.waitForFinished(-1)
-      self.string = "cp " + plugins.confopenreports + "plantilla.rml" + " /opt/bulmages/openreports_" + self.database
+      self.string = "cp " + plugins.confopenreports + "es/plantilla.rml" + " /opt/bulmages/openreports_" + self.database + "/es"
       self.writecommand(self.string)
       self.process.start(self.string)
       self.process.waitForFinished(-1)
-      self.string = "cp " + plugins.confopenreports + "plantilla1.rml" + " /opt/bulmages/openreports_" + self.database
+      self.string = "cp " + plugins.confopenreports + "es/plantilla1.rml" + " /opt/bulmages/openreports_" + self.database + "/es"
       self.writecommand(self.string)
       self.process.start(self.string)
       self.process.waitForFinished(-1)
-      self.string = "cp " + plugins.confopenreports + "estilos.rml" + " /opt/bulmages/openreports_" + self.database
+      self.string = "cp " + plugins.confopenreports + "es/estilos.rml" + " /opt/bulmages/openreports_" + self.database + "/es"
       self.writecommand(self.string)
       self.process.start(self.string)
       self.process.waitForFinished(-1)
-      self.string = "cp " + plugins.confopenreports + "listado.rml" + " /opt/bulmages/openreports_" + self.database
+      self.string = "cp " + plugins.confopenreports + "es/listado.rml" + " /opt/bulmages/openreports_" + self.database + "/es"
       self.writecommand(self.string)
       self.process.start(self.string)
       self.process.waitForFinished(-1)
-      if (os.path.exists(plugins.confopenreports + "logo.jpg")):
-         self.string = "cp " + plugins.confopenreports + "logo.jpg" + " /opt/bulmages/openreports_" + self.database
+      if (os.path.exists(plugins.confopenreports + "es/logo.jpg")):
+         self.string = "cp " + plugins.confopenreports + "es/logo.jpg" + " /opt/bulmages/openreports_" + self.database + "/es"
          self.writecommand(self.string)
          self.process.start(self.string)
          self.process.waitForFinished(-1)
-      self.string = "cp " + plugins.confopenreports + "ficha.rml" + " /opt/bulmages/openreports_" + self.database
+      self.string = "cp " + plugins.confopenreports + "es/ficha.rml" + " /opt/bulmages/openreports_" + self.database + "/es"
       self.writecommand(self.string)
       self.process.start(self.string)
       self.process.waitForFinished(-1)
 
       # Pasamos el logotipo
       if (self.mui_textfile.text() != ""):
-         self.string = "cp "+ self.mui_textfile.text() + " /opt/bulmages/openreports_" + self.database + "/logo.jpg"
+         self.string = "cp "+ self.mui_textfile.text() + " /opt/bulmages/openreports_" + self.database + "/es/logo.jpg"
          self.process.start(self.string)
          self.process.waitForFinished(-1)
          
@@ -386,7 +393,7 @@ class Contabilidad(Ui_ModificarContabilidadBase, Empresa):
 	    self.j = 0
 	    while (self.j < len ( self.arra)):
 	      # Copiamos las plantillas
-	      self.string = "cp " + plugins.confopenreports + self.arra[self.j] + " /opt/bulmages/openreports_" + self.database
+	      self.string = "cp " + plugins.confopenreports + "es/" + self.arra[self.j] + " /opt/bulmages/openreports_" + self.database + "/es"
 	      self.writecommand(self.string)
 	      self.process.start(self.string)
 	      self.process.waitForFinished(-1)
@@ -419,7 +426,7 @@ class Contabilidad(Ui_ModificarContabilidadBase, Empresa):
         self.text = self.vin.readLine()
 
       # Escribimos el parametro como lo deseamos
-      self.out << "\n\nCONF_DIR_OPENREPORTS /opt/bulmages/openreports_" + self.database +"/\n\n"
+      self.out << "\n\nCONF_DIR_OPENREPORTS /opt/bulmages/openreports_" + self.database +"/es/\n\n"
 
 
       # Terminamos de poner el resto de las linea.

@@ -1,0 +1,29 @@
+<!-- SETUNDERLINEMODE "0" --><!-- SETCHARACTERSIZE "119" --><!-- SETCHARACTERPRINTMODE "DOUBLE_WIDTH DOUBLE_HEIGHT CHARACTER_FONTA_SELECTED" --><!-- SETJUSTIFICATION "CENTER" -->INFORME X
+<!-- SETCHARACTERPRINTMODE "DOUBLE_HEIGHT CHARACTER_FONTB_SELECTED" -->
+<!-- QUERY="SELECT count(idalbaran) AS numtickets, sum(totalalbaran) as total FROM albaran WHERE idz IS NULL AND ticketalbaran = TRUE" -->
+Total Tickets: [numtickets]
+Total Recaudacion: [total]
+<!-- END QUERY -->
+
+<!-- QUERY="SELECT count(idalbaran) AS numtickets, sum(totalalbaran) as total FROM albaran WHERE idz IS NULL AND ticketalbaran = TRUE AND idforma_pago = [CONF_IDFORMA_PAGO_CONTADO]" -->
+Total Tickets Contado: [numtickets]
+Total Recaudacion Contado: [total]
+<!-- END QUERY --> 
+
+<!-- QUERY="SELECT count(idalbaran) AS numtickets, sum(totalalbaran) as total FROM albaran WHERE idz IS NULL AND ticketalbaran = TRUE AND idforma_pago = [CONF_IDFORMA_PAGO_VISA]" -->
+Total Tickets Visa: [numtickets]
+Total Recaudacion Visa: [total]
+<!-- END QUERY --> 
+
+<!-- SETCHARACTERPRINTMODE "CHARACTER_FONTA_SELECTED" -->
+<!-- QUERY="SELECT * FROM configuracion WHERE nombre='NombreEmpresa'" -->[valor]<!-- END QUERY --> <!-- QUERY="SELECT * FROM configuracion WHERE nombre='CIF'" -->[valor]<!-- END QUERY -->
+<!-- QUERY="SELECT * FROM configuracion WHERE nombre='DireccionCompleta'" -->[valor]<!-- END QUERY -->
+<!-- QUERY="SELECT * FROM configuracion WHERE nombre='CodPostal'" -->[valor]<!-- END QUERY -->     <!-- QUERY="SELECT * FROM configuracion WHERE nombre='Ciudad'" -->[valor]<!-- END QUERY -->
+<!-- QUERY="SELECT * FROM configuracion WHERE nombre='Provincia'" -->[valor]<!-- END QUERY -->
+<!-- QUERY="SELECT * FROM configuracion WHERE nombre='Telefono'" -->[valor]<!-- END QUERY -->
+<!-- QUERY="SELECT now()::DATE AS fecha" -->Fecha: [fecha]<!-- END QUERY -->   <!-- QUERY="SELECT now()::TIME AS hora" -->[hora]<!-- END QUERY -->
+<!-- QUERY="SELECT * FROM almacen WHERE idalmacen=[idalmacen]" -->[nomalmacen]<!-- END QUERY -->
+
+<!-- CUTPAPERANDFEED "TRUE" "5"-->
+
+

@@ -102,7 +102,10 @@ install (FILES ${CMAKE_CURRENT_BINARY_DIR}/README.es DESTINATION share/bulmages/
 
 add_dependencies(${plugin} bulmafact bulmalib pluginbf_actividad)
 
-file(GLOB report_files openreports/*.ui openreports/*.pys openreports/*.rml openreports/*.qs)
+file(GLOB report_files openreports/es/*.ui openreports/es/*.pys openreports/es/*.rml openreports/es/*.qs)
+install (FILES ${report_files} DESTINATION share/bulmages/openreports/es)
 
-install (FILES ${report_files} DESTINATION share/bulmages/openreports)
+file(GLOB report_files openreports/ca/*.ui openreports/ca/*.pys openreports/ca/*.rml openreports/ca/*.qs)
+install (FILES ${report_files} DESTINATION share/bulmages/openreports/ca)
+
 
