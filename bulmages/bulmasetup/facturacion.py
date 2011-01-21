@@ -310,7 +310,7 @@ class Facturacion(Ui_ModificarFacturacionBase, Empresa):
 
       if (self.encontradoopenreports == 0):
 	  # Escribimos el parametro como lo deseamos
-	  self.out << "\n\nCONF_DIR_OPENREPORTS /opt/bulmages/openreports_" + self.database +"/es/\n\n"
+	  self.out << "\n\nCONF_DIR_OPENREPORTS /opt/bulmages/openreports_" + self.database +"/"+self.mui_idioma.currentText()+"/\n\n"
 	
       if (self.encontradoarticles == 0):
 	  # Escribimos el parametro como lo deseamos
