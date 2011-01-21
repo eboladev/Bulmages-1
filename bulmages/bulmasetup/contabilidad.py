@@ -426,7 +426,7 @@ class Contabilidad(Ui_ModificarContabilidadBase, Empresa):
         self.text = self.vin.readLine()
 
       # Escribimos el parametro como lo deseamos
-      self.out << "\n\nCONF_DIR_OPENREPORTS /opt/bulmages/openreports_" + self.database +"/es/\n\n"
+      self.out << "\n\nCONF_DIR_OPENREPORTS /opt/bulmages/openreports_" + self.database +"/"+self.mui_idioma.currentText()+"/\n\n"
 
 
       # Terminamos de poner el resto de las linea.
