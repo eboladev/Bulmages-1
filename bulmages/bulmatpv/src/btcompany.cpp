@@ -847,13 +847,16 @@ void BtCompany::compruebaUltimaZ()
                 QAbstractButton *no = (QAbstractButton *) msgBox.addButton("No", QMessageBox::ActionRole);
                 msgBox.setEscapeButton(no);
                 msgBox.setWindowTitle("Inconsistencia en Zetas");
-                msgBox.setText("La fecha de la ultima Zeta es " + curFechaUltimaZ->valor("fechaz") + " y la fecha actual es " + curFechaActual->valor("fecha") + ". Hay tickets entre este periodo que tienen pendiente asociarse a una Zeta. ¿Desea hacer las Zetas necesarias para los tickets pendientes? (el programa no se podra seguir usando hasta no resolver este problema)");
+                msgBox.setText("La fecha de la ultima Zeta es " + curFechaUltimaZ->valor("fechaz") + " y la fecha actual es " + curFechaActual->valor("fecha") + ". Hay tickets entre este periodo que tienen pendiente asociarse a una Zeta. ¿Desea hacer las Zetas necesarias para los tickets pendientes?");
                 msgBox.exec();
                 
                 if (msgBox.clickedButton() == si) {
                     z();
-                } else {
-                    exit(0);
+
+/// Es demasiado duro salir del programa sin dar la opcion de continuar. Ademas la comprobacion esta mal ya que deberia tener en cuenta si el proximo ticket
+/// Que se va a generar esta dentro del rango de fechas o no.
+//		} else {
+//                    exit(0);
                 } // end if
             } // end if
                     
@@ -864,7 +867,6 @@ void BtCompany::compruebaUltimaZ()
         if ( (curDiferencia->valor("diferencia")).toInt() < 0 ) {
         
             blMsgInfo("La fecha de la ultima Zeta es " + curFechaUltimaZ->valor("fechaz") + " y la fecha actual es " + curFechaActual->valor("fecha") + ". Parece que hay un problema con la fecha del sistema ya que no es coherente con la fecha de la ultima Zeta (el programa no se podra seguir usando hasta no resolver este problema)");
-            
             exit(0);
                     
         } // end if

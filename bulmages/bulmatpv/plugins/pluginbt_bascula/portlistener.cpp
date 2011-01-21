@@ -14,7 +14,7 @@ PortListener::PortListener(const QString & portName, BtCompany *tpv)
     m_empresaTPV = tpv;
     
     port = new QextSerialPort(portName, QextSerialPort::EventDriven);
-    port->setBaudRate(BAUD2400);
+    port->setBaudRate(BAUD9600);
     port->setFlowControl(FLOW_OFF);
     port->setParity(PAR_NONE);
     port->setDataBits(DATA_8);
@@ -56,7 +56,7 @@ void PortListener::comm() {
     fprintf(stderr,"Enviamos STX\n");
     port->writeData(buffer,1);	/// Enviamos el STX
     int duerme=0;
-    while (!port->readData(buffer, 1)) {
+    while (!port->readData(buffer, 1) && buffer[0] != 6) {
       duerme ++;
 #ifndef Q_OS_WIN32
       usleep(5000);
@@ -82,7 +82,8 @@ void PortListener::comm() {
     fprintf(stderr,"Enviamos Pframe\n");
     port->writeData(buffer,10);	/// Enviamos el Pframe
     duerme=0;
-    while (!port->readData(buffer, 1)) {
+    buffer[0] = 9; // Un valor distinto de 6 para comprobar
+    while (!port->readData(buffer, 1) && buffer[0] != 6) {
       duerme ++;
 #ifndef Q_OS_WIN32
       usleep(5000);
@@ -102,7 +103,8 @@ void PortListener::comm() {
     fprintf(stderr,"Enviamos Rframe\n");    
     port->writeData(buffer,5);	/// Enviamos el Rframe
     duerme=0;
-    while (!port->readData(buffer, 1)) {
+    buffer[0] = 9; // Un valor distinto de 6 para comprobar
+    while (!port->readData(buffer, 1) && buffer[0] != 2) {
       duerme ++;
 #ifndef Q_OS_WIN32
       usleep(5000);
@@ -113,10 +115,11 @@ void PortListener::comm() {
 	return;
     } // end while
       /// Esperamos el ACK
-    fprintf(stderr,"Recibimos ACK %d\n", buffer[0]);
+    fprintf(stderr,"Recibimos STX %d\n", buffer[0]);
     buffer[0] = 6;
-    fprintf(stderr,"Enviamos ACK\n");
     port->writeData(buffer,1);	/// Enviamos el ACK
+    fprintf(stderr,"Enviamos ACK\n");
+    port->flush();
     int recibidos = 0;
     duerme = 0;
     while (recibidos < 19) { /// Esperamos el STX

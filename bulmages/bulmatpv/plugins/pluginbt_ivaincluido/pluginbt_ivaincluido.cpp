@@ -122,9 +122,12 @@ int BtCompany_z(BtCompany * emp)
         query = "UPDATE albaran SET idz = " + idz + " WHERE idz IS NULL AND ticketalbaran = TRUE AND fechaalbaran = '" + curfechas->valor("fechaalbaran") + "'";
         emp->runQuery ( query );
         
+	
+	
         query = "SELECT count(idz) AS numtickets, sum(totalalbaran) AS total FROM albaran WHERE idz = " + idz;
         cur = emp->loadQuery ( query );
         
+	
         QString numtickets = cur->valor ( "numtickets" );
         QString total = cur->valor ( "total" );
 

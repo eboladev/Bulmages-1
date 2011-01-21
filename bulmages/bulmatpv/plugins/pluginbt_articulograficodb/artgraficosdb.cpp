@@ -275,8 +275,22 @@ void ArtGraficosDb::renderPantallas ()
                         QPixmap p = QPixmap ( g_confpr->valor ( CONF_DIR_THUMB_ARTICLES ) + codigo + ".jpg" ).scaled ( cellwidth.toInt() - 1, cellwidth.toInt() - 20 );
                         painter.drawPixmap ( cellwidth.toInt() *column, cellwidth.toInt() *row, p );
                         painter.drawText ( cellwidth.toInt() *column + 5, cellwidth.toInt() *row + ( g_confpr->valor ( CONF_TPV_CELL_WIDTH ).toInt() - 5 ), nombre );
+                        
                     } else {
+
+                        QFile f1 ( g_confpr->valor ( CONF_DIR_THUMB_ARTICLES ) + codigo + ".png" );
+
+	                // Si existe la imagen del articulo, esta se superpondra a la de blanco.jpg, dejando 20px por debajo
+    	            // para que se vea el texto negro sobre blanco
+      	              if ( f1.exists() ) {
+                        /// Es importante pasar el pixmap ya escalado porque sino en cada renderizado se reescala de nuevo el pixmap.
+                        QPixmap p = QPixmap ( g_confpr->valor ( CONF_DIR_THUMB_ARTICLES ) + codigo + ".png" ).scaled ( cellwidth.toInt() - 1, cellwidth.toInt() - 20 );
+                        painter.drawPixmap ( cellwidth.toInt() *column, cellwidth.toInt() *row, p );
+                        painter.drawText ( cellwidth.toInt() *column + 5, cellwidth.toInt() *row + ( g_confpr->valor ( CONF_TPV_CELL_WIDTH ).toInt() - 5 ), nombre );
+                        
+                      } else {
                         painter.drawText ( cellwidth.toInt() *column + 5, cellwidth.toInt() *row + ( g_confpr->valor ( CONF_TPV_CELL_WIDTH ).toInt() - 25 ), nombre );
+                    } // end if
                     } // end if
 
                     nitem++;

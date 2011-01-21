@@ -129,6 +129,7 @@ void Cambio::on_mui_cobrar_clicked()
 {
     ( ( BtCompany * ) mainCompany() )->ticketActual()->setDbValue ( "pagado", mui_pago->text() );
     ( ( BtCompany * ) mainCompany() )->ticketActual()->setDbValue ( "cambio", mui_cambio->text() );
+    ( ( BtCompany * ) mainCompany() )->ticketActual()->setDbValue ( "total", mui_total->text() );
     ( ( QDialog * ) parent() )->accept();
 }
 
