@@ -21,7 +21,7 @@
     <message>
         <location filename="editarusuariobase.py" line="86"/>
         <source>Aplicar</source>
-        <translation>Aplicar</translation>
+        <translation>Appliquer</translation>
     </message>
     <message>
         <location filename="editarusuariobase.py" line="87"/>
@@ -97,7 +97,7 @@
     <message>
         <location filename="listempresasbase.py" line="88"/>
         <source>Listado de Empresas</source>
-        <translation>Liste de Société</translation>
+        <translation>Liste de Sociétés</translation>
     </message>
     <message>
         <location filename="listempresasbase.py" line="89"/>
@@ -122,7 +122,7 @@
     <message>
         <location filename="listempresasbase.py" line="93"/>
         <source>Listado Empresas</source>
-        <translation>Liste de Société</translation>
+        <translation>Liste de Sociétés</translation>
     </message>
     <message>
         <location filename="listempresasbase.py" line="94"/>
@@ -187,12 +187,12 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="bulmasetupbase.py" line="165"/>
         <source>Nueva Empresa de Contabilidad</source>
-        <translation>Nouvel Société de comptabilité</translation>
+        <translation>Nouvelle Société de comptabilité</translation>
     </message>
     <message utf8="true">
         <location filename="bulmasetupbase.py" line="166"/>
         <source>Nueva Empresa de Facturación / TPV</source>
-        <translation>Nouvel Société de facturation / TPV</translation>
+        <translation>Nouvelle Société de facturation / TPV</translation>
     </message>
     <message>
         <location filename="bulmasetupbase.py" line="167"/>
@@ -286,7 +286,7 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="modificarcontabilidadbase.py" line="187"/>
         <source>Plugins BulmaCont</source>
-        <translation>Plugins BulmaCont</translation>
+        <translation>Greffons BulmaCont</translation>
     </message>
     <message>
         <location filename="modificarcontabilidadbase.py" line="188"/>
@@ -350,17 +350,17 @@ p, li { white-space: pre-wrap; }
         <location filename="modificarfacturacionbase.py" line="209"/>
         <source>Instalar Soporte para TPV en esta empresa</source>
         <translatorcomment>Installer le support pour cette société TPV</translatorcomment>
-        <translation></translation>
+        <translation>Installer le support pour cette société TPV</translation>
     </message>
     <message>
         <location filename="modificarfacturacionbase.py" line="210"/>
         <source>Opciones de Filtrado de Plugins</source>
-        <translation>Options pour filtrer les plugins</translation>
+        <translation>Options pour filtrer les greffons</translation>
     </message>
     <message>
         <location filename="modificarfacturacionbase.py" line="212"/>
         <source>Mostrar todos los plugins o solo los instalados</source>
-        <translation>Montrer tous les plugins ou seulement ceux installés</translation>
+        <translation>Montrer tous les greffons ou seulement ceux installés</translation>
     </message>
     <message>
         <location filename="modificarfacturacionbase.py" line="211"/>
@@ -370,7 +370,7 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="modificarfacturacionbase.py" line="217"/>
         <source>Plugin</source>
-        <translation>Plugins</translation>
+        <translation>Greffons</translation>
     </message>
     <message>
         <location filename="modificarfacturacionbase.py" line="218"/>
@@ -385,12 +385,12 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="modificarfacturacionbase.py" line="216"/>
         <source>Plugins BulmaFact</source>
-        <translation>Plugins BulmaFact</translation>
+        <translation>Greffons BulmaFact</translation>
     </message>
     <message>
         <location filename="modificarfacturacionbase.py" line="220"/>
         <source>Plugins BulmaTPV</source>
-        <translation>Plugins BulmaTPV</translation>
+        <translation>Greffons BulmaTPV</translation>
     </message>
     <message>
         <location filename="modificarfacturacionbase.py" line="221"/>
