@@ -939,7 +939,7 @@ msgid ""
 "Esto puede ocasionar perdida de datos.\n"
 msgstr ""
 "Le type de paiement va être effacé.\n"
-"Cela peut occasionner des pertes de données."
+"Cela peut occasionner des pertes de données.\n"
 
 #: ui_bccuentasanualesimprimirbase.h:199
 msgid "Segundo Periodo"
