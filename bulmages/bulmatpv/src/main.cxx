@@ -185,6 +185,15 @@ int main ( int argc, char **argv )
         
         delete splashScr;
         
+        
+        // Ponemos el TPV en modo a pantalla completa si asi se nos pide
+        if (g_confpr->valor(CONF_TPV_FULLSCREEN) == "TRUE") {
+            bges->showFullScreen();
+        } else {
+            bges->showMaximized();
+        } // end if
+
+
         // Bloqueamos el esquema de ventanas si asi se nos pide
         if (g_confpr->valor(CONF_BLOCK_WINDOWS) == "TRUE") {
         
@@ -196,17 +205,14 @@ int main ( int argc, char **argv )
             for (int i = 0; i < listItems; i++) {
             
                 dock = dockedList.value(i);
+
+                dock->widget()->setMaximumSize(dock->widget()->width(), dock->widget()->height());
+                dock->widget()->setMinimumSize(dock->widget()->width(), dock->widget()->height());
+                
                 dock->setFeatures(QDockWidget::NoDockWidgetFeatures);
-            
+
             } // end for
         
-        } // end if
-        
-        // Ponemos el TPV en modo a pantalla completa si asi se nos pide
-        if (g_confpr->valor(CONF_TPV_FULLSCREEN) == "TRUE") {
-            bges->showFullScreen();
-        } else {
-            bges->showMaximized();
         } // end if
         
         // Mostramos la aplicacion
