@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
 "POT-Creation-Date: 2011-01-21 17:02+0100\n"
-"PO-Revision-Date: 2011-01-22 11:22+0100\n"
+"PO-Revision-Date: 2011-01-23 19:46+0100\n"
 "Last-Translator: Conta\n"
 "Language-Team: French <kde l10n>\n"
 "Language: \n"
@@ -194,7 +194,7 @@ msgstr "Code"
 
 #: bcasientosubform.cpp:48
 msgid "Comentario"
-msgstr "Comentaire"
+msgstr "Commentaire"
 
 #: bcasientolistsubform.cpp:41
 msgid "Comentarios"
@@ -210,7 +210,7 @@ msgstr "Concept comptable"
 
 #: bcasientosubform.cpp:51
 msgid "Conciliacion"
-msgstr "Concilliation"
+msgstr "Conciliation"
 
 #: ui_bcasientobase.h:524 ui_bcasientobase.h:527 ui_bcasientolistbase.h:491
 #: ui_bcasientolistbase.h:494
@@ -424,7 +424,7 @@ msgstr "Imprimer"
 
 #: bcasientolistview.cpp:236
 msgid "La fecha inicial es posterior a la fecha final."
-msgstr "Date initiale est postérieur à la date finale."
+msgstr "Date initiale postérieure à la date finale."
 
 #: ui_bcasientolistbase.h:462
 msgid "Listado de asientos"

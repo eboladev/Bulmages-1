@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
 "POT-Creation-Date: 2010-09-23 18:12+0200\n"
-"PO-Revision-Date: 2011-01-22 15:52+0100\n"
+"PO-Revision-Date: 2011-01-23 19:35+0100\n"
 "Last-Translator: Conta\n"
 "Language-Team: French <kde l10n>\n"
 "MIME-Version: 1.0\n"
@@ -127,7 +127,7 @@ msgstr "&Oui"
 
 #: ui_bcbulmacontbase.h:276
 msgid "&Sustituir cuentas"
-msgstr "&Remplacer comptes"
+msgstr "&Remplacer les comptes"
 
 #: ui_bcbulmacontbase.h:298
 msgid "''"
@@ -263,15 +263,15 @@ msgstr "Assiette initiale:"
 
 #: ui_bcbulmacontbase.h:270
 msgid "Asientos Inteligentes"
-msgstr "Assiettes Intélligentes"
+msgstr "Assistant d'assiettes "
 
 #: bcmodelo300imprimir2ps.cpp:116
 msgid ""
 "Aviso: El numero de cuenta bancario introducido\n"
 "no se corresponde con un CCC correcto."
 msgstr ""
-"Avis: Le numéro de compte bancaire introduit\n"
-"ne correspond pas avec un CCC correct."
+"Attention : Le numéro de compte bancaire introduit\n"
+"ne correspond pas à un CCC correct."
 
 #: ui_bcmasapatrimoniallistbase.h:128 ui_bccuentasanualesimprimirbase.h:195
 msgid "Balance"
@@ -279,19 +279,19 @@ msgstr "Balance"
 
 #: ui_bcmasapatrimoniallistbase.h:126
 msgid "Borrar"
-msgstr "Éraser"
+msgstr "Effacer"
 
 #: bccanalview.cpp:211
 msgid "Borrar canal"
-msgstr "Éraser channel"
+msgstr "Effacer le canal"
 
 #: bccentrocosteview.cpp:265
 msgid "Borrar centro de coste"
-msgstr "Éraser centre de finances"
+msgstr "Effacer le centre de finance"
 
 #: ui_bcformapagobase.h:289 bcformapagoview.cpp:242
 msgid "Borrar forma de pago"
-msgstr "Éraser forme de payement"
+msgstr "Effacer la forme de paiement"
 
 #: bcmasapatrimoniallistview.cpp:133
 msgid "CODIGO"
@@ -299,15 +299,15 @@ msgstr "Code"
 
 #: bcbulmacont.cpp:491
 msgid "Cambiando a modo de pantalla completa..."
-msgstr "Changeant à mode de d'écran complet..."
+msgstr "Afficher en mode plein écran..."
 
 #: ui_bccambiacuentabase.h:214
 msgid "Cambiar Cuenta"
-msgstr "Changer compte"
+msgstr "Changer de compte"
 
 #: bcbulmacont.cpp:473
 msgid "Cambinado barra de estado..."
-msgstr "Changeant barre d'état..."
+msgstr "Modifier la barre d'état..."
 
 #: bccanalview.cpp:36
 msgid "Canal"
@@ -315,7 +315,7 @@ msgstr "Canal"
 
 #: ui_bccanalbase.h:242
 msgid "Canal:"
-msgstr "Canal:"
+msgstr "Canal :"
 
 #: ui_bccanalbase.h:237
 msgid "Canales"
@@ -328,7 +328,7 @@ msgstr "Annuler"
 
 #: main.cxx:161
 msgid "Cargando plugins"
-msgstr "Charger les plugins"
+msgstr "Charger les greffons"
 
 #: bccentrocosteview.cpp:44
 msgid "Centro de Coste"
@@ -348,7 +348,7 @@ msgstr "Centre de finance"
 
 #: ui_bcbulmacontbase.h:268
 msgid "Centros de cos&te"
-msgstr "Cen&tre de finnace"
+msgstr "Cen&tre de finance"
 
 #: ui_bccambiacuentabase.h:220 ui_bccentrocostebase.h:287
 #: ui_bccanalseleccionarbase.h:98 ui_bccentrocosteseleccionarbase.h:99
@@ -357,15 +357,15 @@ msgstr "Fermer"
 
 #: ui_bcbulmacontbase.h:300
 msgid "Cerrar Asientos"
-msgstr "Fermer l' assiette"
+msgstr "Fermer l'assiette"
 
 #: ui_bcmasapatrimonialbase.h:363
 msgid "Comentarios"
-msgstr "Comentaires"
+msgstr "Commentaires"
 
 #: bcaboutview.cpp:42
 msgid "Compilado usando la version de QT:"
-msgstr "Compilé usant la version de QT:"
+msgstr "Compilé avec la version QT :"
 
 #: ui_bcmodelo347listbase.h:265
 msgid "Compras"
@@ -381,15 +381,15 @@ msgstr "Comptabilité GPL"
 
 #: bcbulmacont.cpp:448
 msgid "Copiando la seleccion al portapapeles..."
-msgstr "Copiant  la sélection au bloc-notes..."
+msgstr "Copier la sélection dans le bloc-notes..."
 
 #: bcbulmacont.cpp:436
 msgid "Cortando seleccion..."
-msgstr "Coupant sélection..."
+msgstr "Couper la sélection..."
 
 #: bcmodelo300imprimir2ps.cpp:169
 msgid "Creando formulario"
-msgstr "Faisant formulaire"
+msgstr "Créer un formulaire"
 
 #: ui_bccentrocostebase.h:271
 msgid "Ctrl+D"
@@ -397,7 +397,7 @@ msgstr "Ctrl+D"
 
 #: ui_bcbulmacontbase.h:293
 msgid "Ctrl+End"
-msgstr "Ctrl+End"
+msgstr "Ctrl+Fin"
 
 #: ui_bcmodelo347listbase.h:260
 msgid "Ctrl+F"
@@ -405,7 +405,7 @@ msgstr "Ctrl+F"
 
 #: ui_bcbulmacontbase.h:291
 msgid "Ctrl+Home"
-msgstr "Ctrl+Home"
+msgstr "Ctrl+Début"
 
 #: ui_bcbulmacontbase.h:295
 msgid "Ctrl+I"
@@ -421,11 +421,11 @@ msgstr "Ctrl+P"
 
 #: ui_bcbulmacontbase.h:287
 msgid "Ctrl+PgDown"
-msgstr "Ctrl+PgDown"
+msgstr "Ctrl+bas"
 
 #: ui_bcbulmacontbase.h:289
 msgid "Ctrl+PgUp"
-msgstr "Ctrl+PgUp"
+msgstr "Ctrl+haut"
 
 #: ui_bcbulmacontbase.h:264
 msgid "Ctrl+Q"
@@ -445,23 +445,23 @@ msgstr "Compte de destination :"
 
 #: bccambiacuentaview.cpp:41
 msgid "Cuenta Origen:"
-msgstr "Compte Origine :"
+msgstr "Compte d'Origine :"
 
 #: ui_bcmodelo300base.h:198
 msgid "Cuenta a devolver:"
-msgstr "Compte à rembourser:"
+msgstr "Compte à rembourser :"
 
 #: ui_bctipoivabase.h:269 bctipoivaview.cpp:48
 msgid "Cuenta:"
-msgstr "Compte:"
+msgstr "Compte :"
 
 #: ui_bcregistroivaimprimirbase.h:215
 msgid "Datos del listado:"
-msgstr "Données de la liste:"
+msgstr "Données de la liste :"
 
 #: ui_bcformapagobase.h:297
 msgid "Datos:"
-msgstr "Données:"
+msgstr "Données :"
 
 #: bccentrocosteview.cpp:50 bccentrocosteview.cpp:76
 msgid "Descripcion"
@@ -469,7 +469,7 @@ msgstr "description"
 
 #: ui_bccentrocostebase.h:284 ui_bccanalbase.h:245
 msgid "Descripcion:"
-msgstr "Description:"
+msgstr "Description :"
 
 #: bccanalview.cpp:107 bccanalview.cpp:185
 msgid "Desea guardar los cambios."
@@ -507,11 +507,11 @@ msgstr "Doubler l'assiette"
 
 #: ui_bcmasapatrimoniallistbase.h:127
 msgid "Editar"
-msgstr "Éditer"
+msgstr "Editer"
 
 #: ui_bcmodelo300base.h:204
 msgid "En el banco"
-msgstr "A là banque"
+msgstr "A la banque"
 
 #: bccentrocosteview.cpp:142
 msgid "Error en la carga de centros de coste"
@@ -569,19 +569,19 @@ msgstr "Forme de paiement"
 
 #: ui_bcformapagobase.h:296
 msgid "Forma de pago:"
-msgstr "Forme de payement:"
+msgstr "Forme de paiement :"
 
 #: ui_bcbulmacontbase.h:266
 msgid "Formas de &pago"
-msgstr "Forme de &payement"
+msgstr "Forme de &paiement"
 
 #: ui_bcformapagobase.h:282
 msgid "Formas de pago"
-msgstr "Forme de payement"
+msgstr "Forme de paiement"
 
 #: ui_bcregistroivaimprimirbase.h:221
 msgid "Formato:"
-msgstr "Format:"
+msgstr "Format :"
 
 #: bcmodelo300imprimir2ps.cpp:115 bcmodelo300imprimir2ps.cpp:154
 msgid "Formulario 300"
@@ -593,7 +593,7 @@ msgstr "Général"
 
 #: ui_bcmodelo300base.h:205
 msgid "Generar borrador"
-msgstr "Génerer brouillon"
+msgstr "Générer le brouillon"
 
 #: bcmodelo300imprimir2ps.cpp:118
 msgid "Generar de todas formas"
@@ -605,23 +605,23 @@ msgstr "Garder"
 
 #: bcconfiguracionview.cpp:116
 msgid "Guardar cambios"
-msgstr "Garder changes"
+msgstr "Garder les changements"
 
 #: bccanalview.cpp:106 bccanalview.cpp:184 bccanalview.cpp:236
 msgid "Guardar canal"
-msgstr "Garder channel"
+msgstr "Sauver le canal"
 
 #: bccentrocosteview.cpp:166 bccentrocosteview.cpp:226
 msgid "Guardar centro de coste"
-msgstr "Garder centre de finnances"
+msgstr "Sauver le centre de finances"
 
 #: ui_bcformapagobase.h:293 bcformapagoview.cpp:146 bcformapagoview.cpp:208
 msgid "Guardar forma de pago"
-msgstr "Garder forme de payement"
+msgstr "Garder la forme de paiement"
 
 #: bctipoivaview.cpp:114 bctipoivaview.cpp:157
 msgid "Guardar tipo de IVA"
-msgstr "Garder type de TVA"
+msgstr "Sauver le type de TVA"
 
 #: ui_bcregistroivaimprimirbase.h:223
 msgid "HTML"
@@ -637,15 +637,11 @@ msgstr "Id"
 
 #: bccentrocosteview.cpp:76
 msgid "Id centro de coste"
-msgstr ""
-"#-#-#-#-#  bulmacont2_fr.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"Id centre de finance\n"
-"#-#-#-#-#  bulmacont2_fr.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"Id centre de données"
+msgstr "Id du centre de finance "
 
 #: bccentrocosteview.cpp:48
 msgid "Id. Centro Coste"
-msgstr "Centre de finance"
+msgstr "id du Centre de finance"
 
 #: ui_bcbulmacontbase.h:257
 msgid "Iglues/BulmaCont - Contabilidad GPL"
@@ -669,11 +665,11 @@ msgstr "Imprimer"
 
 #: ui_bcregistroivaimprimirbase.h:220
 msgid "Incluir resultados parciales"
-msgstr "Inclure résultats partiaux"
+msgstr "Inclure les résultats partiaux"
 
 #: ui_bcbulmacontbase.h:294
 msgid "Indexador"
-msgstr "Indexateur"
+msgstr "Index"
 
 #: ui_bccanalbase.h:243
 msgid "Informacion del canal:"
@@ -689,7 +685,7 @@ msgstr "Initier les composants"
 
 #: main.cxx:105
 msgid "Iniciando clases"
-msgstr "Initiant classes"
+msgstr "Initier les classes"
 
 #: ui_bcbulmacontbase.h:290
 msgid "Inicio"
@@ -697,15 +693,15 @@ msgstr "Début"
 
 #: bcbulmacont.cpp:460
 msgid "Insertando el contenido del portapapeles..."
-msgstr "Inserrant le contenu du bloc-notes..."
+msgstr "Insérer le contenu du bloc-notes..."
 
 #: ui_bccanalseleccionarbase.h:96 ui_bccentrocosteseleccionarbase.h:96
 msgid "Invertir"
-msgstr "Inverter"
+msgstr "Inverser"
 
 #: main.cxx:167
 msgid "Lanzando plugins"
-msgstr "Lancer les plugins"
+msgstr "Lancer les greffons"
 
 #: main.cxx:131
 msgid "Leyendo configuracion"
@@ -737,13 +733,13 @@ msgid ""
 "~/.bulmages/formularios/."
 msgstr ""
 "Désolé, je ne trouve pas le formulaire original en pdf.\n"
-"Éssayer de le charger de www.impots.gouv.fr et garder-le dans\n"
-"/usr/shate/bulmages/formularios/ oú dans\n"
+"Essayer de le charger de www.impots.gouv.fr et garder-le dans\n"
+"/usr/share/bulmages/formularios/ oú dans\n"
 "~/.bulmages/formularios/."
 
 #: ui_bcasientoduplicarbase.h:238
 msgid "Mantener distacia entre fechas"
-msgstr "Maintenir distance entre dates"
+msgstr "Maintenir la distance entre les dates"
 
 #: ui_bcmasapatrimonialbase.h:348 ui_bcmasapatrimonialbase.h:354
 msgid "Masa Patrimonial"
@@ -771,11 +767,11 @@ msgstr "Modèle de code du compte :"
 
 #: ui_bcconfiguracionbase.h:252
 msgid "Modi&ficar plan contable"
-msgstr "Modi&fier plan comptable"
+msgstr "Modi&fier le plan comptable"
 
 #: ui_bccentrocostebase.h:277 ui_bccentrocostebase.h:280
 msgid "Mostrar / Ocultar Detalle"
-msgstr "Montrer/oculter détail"
+msgstr "Montrer/Occulter les détails"
 
 #: bccentrocosteview.cpp:278
 msgid "No se pudo borrar el Centro de Coste"
@@ -796,15 +792,15 @@ msgstr "Type"
 
 #: ui_bcformapagobase.h:298
 msgid "Nombre de la forma de pago:"
-msgstr "Nom de la forme de payement:"
+msgstr "Nom de la forme de paiement :"
 
 #: ui_bccentrocostebase.h:283 ui_bccanalbase.h:244 ui_bctipoivabase.h:267
 msgid "Nombre:"
-msgstr "Nom:"
+msgstr "Nom :"
 
 #: ui_bcformapagobase.h:285 bcformapagoview.cpp:214
 msgid "Nueva forma de pago"
-msgstr "Nouvelle forme de payement"
+msgstr "Nouvelle forme de paiement"
 
 #: ui_bcmasapatrimoniallistbase.h:125
 msgid "Nuevo"
@@ -812,15 +808,11 @@ msgstr "Nouveau"
 
 #: bccanalview.cpp:190
 msgid "Nuevo canal"
-msgstr ""
-"#-#-#-#-#  bulmacont2_fr.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"Nouveau compte\n"
-"#-#-#-#-#  bulmacont2_fr.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"Nouveau compte"
+msgstr "Nouveau canal"
 
 #: ui_bcformapagobase.h:300
 msgid "Numero de plazos:"
-msgstr "Numéro de délai:"
+msgstr "Numéro de délai :"
 
 #: ui_bcbulmacontbase.h:281
 msgid "Ordenar &ventanas"
@@ -849,9 +841,9 @@ msgid ""
 "\n"
 "Salir ahora?"
 msgstr ""
-"Pour que les changements aient  un éffet\n"
-"nous devez sortir du programme et reentrer\n"
-"Sortir maintenant?"
+"Pour que les changements aient  un effet\n"
+"vous devez sortir du programme et rentrer.\n"
+"Quitter maintenant ?"
 
 #: ui_bcmodelo300base.h:187
 msgid "Periodo a declarar"
@@ -859,15 +851,15 @@ msgstr "Période à déclarer"
 
 #: ui_bcmodelo300base.h:203
 msgid "Personalizada"
-msgstr "Personalisée"
+msgstr "Personaliser"
 
 #: ui_bcformapagobase.h:299
 msgid "Plazo del primer recibo (dias):"
-msgstr "Délai du premier reçu (jours):"
+msgstr "Délai du premier reçu (jours) :"
 
 #: ui_bcformapagobase.h:302
 msgid "Plazo entre recibos (dias):"
-msgstr "Délai entre reçus (jours):"
+msgstr "Délai entre reçus (jours) :"
 
 #: bctipoivaview.cpp:43 bccentrocosteview.cpp:58
 msgid "Porcentaje"
@@ -883,15 +875,15 @@ msgstr "Postscript"
 
 #: ui_bccuentasanualesimprimirbase.h:196
 msgid "Primer Periodo"
-msgstr "Premier Période"
+msgstr "Première Période"
 
 #: ui_bcconfiguracionbase.h:238
 msgid "Propiedades de la empresa"
-msgstr "Propriétées de l'entreprise"
+msgstr "Propriétés de l'entreprise"
 
 #: ui_bcconfiguracionbase.h:254
 msgid "Propiedades generales"
-msgstr "Propriétées générales"
+msgstr "Propriétés générales"
 
 #: ui_bcmasapatrimonialbase.h:357 ui_bcmasapatrimonialbase.h:360
 msgid "Quitar"
@@ -907,11 +899,7 @@ msgstr "Soldes"
 
 #: ui_bccanalseleccionarbase.h:95 ui_bccentrocosteseleccionarbase.h:97
 msgid "S. Nada"
-msgstr ""
-"#-#-#-#-#  bulmacont2_fr.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"S.Rien\n"
-"#-#-#-#-#  bulmacont2_fr.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"S. Rien"
+msgstr "S. Rien"
 
 #: ui_bccanalseleccionarbase.h:97 ui_bccentrocosteseleccionarbase.h:98
 msgid "S. Todo"
@@ -934,8 +922,8 @@ msgid ""
 "Se va a borrar el centro de coste.\n"
 "Esta operacion puede ocasionar perdida de datos."
 msgstr ""
-"Votre centre de finnances s'érasera,cette opération peut vous causer une "
-"pèrte de données."
+"Votre centre de finances s'effacera,cette opération peut causer une "
+"perte de données."
 
 #: bccanalview.cpp:212
 msgid ""
@@ -983,19 +971,19 @@ msgstr "Suivant"
 
 #: ui_bcaboutbase.h:302
 msgid "Sopor&te"
-msgstr "Supor&t"
+msgstr "Suppor&t"
 
 #: bccentrocosteseleccionarview.cpp:43 bccanalseleccionarview.cpp:45
 msgid "Status"
-msgstr "Status"
+msgstr "Etat"
 
 #: bcsubform.cpp:472
 msgid "Submenu de contabilidad"
-msgstr "Submenu de comptabilitée"
+msgstr "Sous menu de comptabilité"
 
 #: ui_bcmasapatrimonialbase.h:358
 msgid "Suman"
-msgstr "Additionent"
+msgstr "Additionner"
 
 #: main.cxx:179 bccompany.cpp:218
 msgid "Terminado"
@@ -1003,11 +991,11 @@ msgstr "Fini"
 
 #: ui_bcregistroivaimprimirbase.h:222
 msgid "Texto Plano"
-msgstr "Texte plat"
+msgstr "Texte plein"
 
 #: bcformapagoview.cpp:238
 msgid "Tiene que seleccionar una forma de pago antes de borrarla"
-msgstr "Vous devez sélectionner une forme de payement avant de l'éraser"
+msgstr "Vous devez sélectionner une forme de paiement avant de l'effacer"
 
 #: bctipoivaview.cpp:37
 msgid "Tipo IVA"
@@ -1015,15 +1003,15 @@ msgstr "Type de TVA"
 
 #: ui_bctipoivabase.h:265
 msgid "Tipo de IVA:"
-msgstr "Type de TVA:"
+msgstr "Type de TVA :"
 
 #: ui_bcformapagobase.h:303
 msgid "Tipo plazo entre recibos:"
-msgstr "Type délai entre reçus:"
+msgstr "Type de délai entre les reçus :"
 
 #: ui_bcformapagobase.h:301
 msgid "Tipo plazo primer pago:"
-msgstr "Tipe délai premier payement:"
+msgstr "Type de délai du premier paiement :"
 
 #: ui_bcbulmacontbase.h:267
 msgid "Tipos de &IVA"
@@ -1039,7 +1027,7 @@ msgstr "Tous avec la même date"
 
 #: ui_bcasientoduplicarbase.h:236
 msgid "Tratamiento de la fecha:"
-msgstr "Traitement de la date:"
+msgstr "Traitement de la date :"
 
 #: bcconfiguracionview.cpp:192
 msgid "Valor"
@@ -1055,7 +1043,7 @@ msgstr "Ventes"
 
 #: ui_bcmodelo347listbase.h:257
 msgid "Ver filtro"
-msgstr "Voir filtre"
+msgstr "Voir le filtre"
 
 #: ui_bcmodelo300base.h:206
 msgid "Vista Previa"
@@ -1071,11 +1059,11 @@ msgstr "Code"
 
 #: bccanalseleccionarview.cpp:45
 msgid "desc_canal"
-msgstr "dec_canal"
+msgstr "desc_canal"
 
 #: bccentrocosteseleccionarview.cpp:43
 msgid "desc_coste"
-msgstr "dec_finnance"
+msgstr "desc_finance"
 
 #: bcmasapatrimonial.cpp:45
 msgid "descripcion"
@@ -1083,7 +1071,7 @@ msgstr "description"
 
 #: bccentrocosteseleccionarview.cpp:43
 msgid "idc_coste"
-msgstr "idc_finnance"
+msgstr "idc_finance"
 
 #: bccanalseleccionarview.cpp:45
 msgid "idcanal"
@@ -1095,11 +1083,11 @@ msgstr "Identifieur"
 
 #: bccanalseleccionarview.cpp:45
 msgid "nom_canal"
-msgstr "nom_channel"
+msgstr "nom_canal"
 
 #: bccentrocosteseleccionarview.cpp:43
 msgid "nom_coste"
-msgstr "nom_finnance"
+msgstr "nom_finance"
 
 #: bcmasapatrimonial.cpp:45
 msgid "tipo"
@@ -1111,7 +1099,7 @@ msgid ""
 "yyyy --> Digitos de cuenta."
 msgstr ""
 "xxxx --> Numéro du plan comptable.\n"
-"yyyy--> Numéro du compte.\n"
+"yyyy--> Numéro du compte."
 
 #~ msgid "&Acerca de BulmaCont"
 #~ msgstr "&Au sujet de Bulmacont"
