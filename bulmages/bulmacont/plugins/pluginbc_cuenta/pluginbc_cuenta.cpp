@@ -412,8 +412,8 @@ int BlDbCompleterComboBox_textChanged (BlDbCompleterComboBox *bl)
                     cadwhere = cadwhere + cador + " upper(" + i.key() + ")";
                     cador = " || ' ' ||";
                 } // end while
-                QString cadwhere1 = " codigo = '" + blExtendStringWithZeros(bl->m_entrada, ((BcCompany *)bl->mainCompany())->numdigitosempresa()) + "'";
-                QString SQLQuery = "SELECT * FROM " + bl->m_tabla + " WHERE " +cadwhere1+ " OR " + cadwhere + "LIKE  upper('%" + bl->m_entrada + "%')";
+                QString cadwhere1 = " codigo = '" + blExtendStringWithZeros(bl->m_entrada, ((BcCompany *)bl->mainCompany())->numdigitosempresa()).replace("'","''") + "'";
+                QString SQLQuery = "SELECT * FROM " + bl->m_tabla + " WHERE " +cadwhere1+ " OR " + cadwhere + "LIKE  upper('%" + bl->m_entrada.replace("'","''") + "%')";
                 bl->m_cursorcombo = bl->mainCompany() ->loadQuery ( SQLQuery );
                 bl->clear();
                 while ( !bl->m_cursorcombo->eof() ) {
