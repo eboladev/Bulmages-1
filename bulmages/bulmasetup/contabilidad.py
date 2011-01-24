@@ -319,6 +319,10 @@ class Contabilidad(Ui_ModificarContabilidadBase, Empresa):
       self.string = "mkdir -p /opt/bulmages/openreports_" + self.database + "/ca"
       self.process.start(self.string)
       self.process.waitForFinished(-1)
+      # Creamos el directorio especifico para guardar las plantillas
+      self.string = "mkdir -p /opt/bulmages/openreports_" + self.database + "/fr"
+      self.process.start(self.string)
+      self.process.waitForFinished(-1)
       i = 1
       while (os.path.exists('/opt/bulmages/openreports_' + self.database + '_old' + str(i))):
 	i = i + 1
@@ -370,11 +374,99 @@ class Contabilidad(Ui_ModificarContabilidadBase, Empresa):
       self.process.start(self.string)
       self.process.waitForFinished(-1)
 
+
+      # Copiamos las plantillas ca
+      self.string = "cp " + plugins.confopenreports + "ca/canuales.rml" + " /opt/bulmages/openreports_" + self.database + "/ca"
+      self.writecommand(self.string)
+      self.process.start(self.string)
+      self.process.waitForFinished(-1)
+      self.string = "cp " + plugins.confopenreports + "ca/diario.rml" + " /opt/bulmages/openreports_" + self.database +"/ca"
+      self.writecommand(self.string)
+      self.process.start(self.string)
+      self.process.waitForFinished(-1)
+      self.string = "cp " + plugins.confopenreports + "ca/extracto.rml" + " /opt/bulmages/openreports_" + self.database + "/ca"
+      self.writecommand(self.string)
+      self.process.start(self.string)
+      self.process.waitForFinished(-1)
+      self.string = "cp " + plugins.confopenreports + "ca/plantilla.rml" + " /opt/bulmages/openreports_" + self.database + "/ca"
+      self.writecommand(self.string)
+      self.process.start(self.string)
+      self.process.waitForFinished(-1)
+      self.string = "cp " + plugins.confopenreports + "ca/plantilla1.rml" + " /opt/bulmages/openreports_" + self.database + "/ca"
+      self.writecommand(self.string)
+      self.process.start(self.string)
+      self.process.waitForFinished(-1)
+      self.string = "cp " + plugins.confopenreports + "ca/estilos.rml" + " /opt/bulmages/openreports_" + self.database + "/ca"
+      self.writecommand(self.string)
+      self.process.start(self.string)
+      self.process.waitForFinished(-1)
+      self.string = "cp " + plugins.confopenreports + "ca/listado.rml" + " /opt/bulmages/openreports_" + self.database + "/ca"
+      self.writecommand(self.string)
+      self.process.start(self.string)
+      self.process.waitForFinished(-1)
+      if (os.path.exists(plugins.confopenreports + "ca/logo.jpg")):
+         self.string = "cp " + plugins.confopenreports + "ca/logo.jpg" + " /opt/bulmages/openreports_" + self.database + "/ca"
+         self.writecommand(self.string)
+         self.process.start(self.string)
+         self.process.waitForFinished(-1)
+      self.string = "cp " + plugins.confopenreports + "ca/ficha.rml" + " /opt/bulmages/openreports_" + self.database + "/ca"
+      self.writecommand(self.string)
+      self.process.start(self.string)
+      self.process.waitForFinished(-1)
+
+      # Copiamos las plantillas fr
+      self.string = "cp " + plugins.confopenreports + "fr/canuales.rml" + " /opt/bulmages/openreports_" + self.database + "/fr"
+      self.writecommand(self.string)
+      self.process.start(self.string)
+      self.process.waitForFinished(-1)
+      self.string = "cp " + plugins.confopenreports + "fr/diario.rml" + " /opt/bulmages/openreports_" + self.database +"/fr"
+      self.writecommand(self.string)
+      self.process.start(self.string)
+      self.process.waitForFinished(-1)
+      self.string = "cp " + plugins.confopenreports + "fr/extracto.rml" + " /opt/bulmages/openreports_" + self.database + "/fr"
+      self.writecommand(self.string)
+      self.process.start(self.string)
+      self.process.waitForFinished(-1)
+      self.string = "cp " + plugins.confopenreports + "fr/plantilla.rml" + " /opt/bulmages/openreports_" + self.database + "/fr"
+      self.writecommand(self.string)
+      self.process.start(self.string)
+      self.process.waitForFinished(-1)
+      self.string = "cp " + plugins.confopenreports + "fr/plantilla1.rml" + " /opt/bulmages/openreports_" + self.database + "/fr"
+      self.writecommand(self.string)
+      self.process.start(self.string)
+      self.process.waitForFinished(-1)
+      self.string = "cp " + plugins.confopenreports + "fr/estilos.rml" + " /opt/bulmages/openreports_" + self.database + "/fr"
+      self.writecommand(self.string)
+      self.process.start(self.string)
+      self.process.waitForFinished(-1)
+      self.string = "cp " + plugins.confopenreports + "fr/listado.rml" + " /opt/bulmages/openreports_" + self.database + "/fr"
+      self.writecommand(self.string)
+      self.process.start(self.string)
+      self.process.waitForFinished(-1)
+      if (os.path.exists(plugins.confopenreports + "fr/logo.jpg")):
+         self.string = "cp " + plugins.confopenreports + "fr/logo.jpg" + " /opt/bulmages/openreports_" + self.database + "/fr"
+         self.writecommand(self.string)
+         self.process.start(self.string)
+         self.process.waitForFinished(-1)
+      self.string = "cp " + plugins.confopenreports + "fr/ficha.rml" + " /opt/bulmages/openreports_" + self.database + "/fr"
+      self.writecommand(self.string)
+      self.process.start(self.string)
+      self.process.waitForFinished(-1)
+
+
+
       # Pasamos el logotipo
       if (self.mui_textfile.text() != ""):
          self.string = "cp "+ self.mui_textfile.text() + " /opt/bulmages/openreports_" + self.database + "/es/logo.jpg"
          self.process.start(self.string)
          self.process.waitForFinished(-1)
+         self.string = "cp "+ self.mui_textfile.text() + " /opt/bulmages/openreports_" + self.database + "/ca/logo.jpg"
+         self.process.start(self.string)
+         self.process.waitForFinished(-1)
+         self.string = "cp "+ self.mui_textfile.text() + " /opt/bulmages/openreports_" + self.database + "/fr/logo.jpg"
+         self.process.start(self.string)
+         self.process.waitForFinished(-1)
+         
          
       # Iteramos sobre la lista de plugins disponibles en bulmafact para copiar sus plantillas
       self.i = 0
@@ -394,6 +486,14 @@ class Contabilidad(Ui_ModificarContabilidadBase, Empresa):
 	    while (self.j < len ( self.arra)):
 	      # Copiamos las plantillas
 	      self.string = "cp " + plugins.confopenreports + "es/" + self.arra[self.j] + " /opt/bulmages/openreports_" + self.database + "/es"
+	      self.writecommand(self.string)
+	      self.process.start(self.string)
+	      self.process.waitForFinished(-1)
+	      self.string = "cp " + plugins.confopenreports + "ca/" + self.arra[self.j] + " /opt/bulmages/openreports_" + self.database + "/ca"
+	      self.writecommand(self.string)
+	      self.process.start(self.string)
+	      self.process.waitForFinished(-1)
+	      self.string = "cp " + plugins.confopenreports + "fr/" + self.arra[self.j] + " /opt/bulmages/openreports_" + self.database + "/fr"
 	      self.writecommand(self.string)
 	      self.process.start(self.string)
 	      self.process.waitForFinished(-1)

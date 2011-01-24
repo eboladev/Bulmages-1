@@ -174,12 +174,17 @@
             <widget class="QComboBox" name="mui_idioma">
              <item>
               <property name="text">
+               <string>ca</string>
+              </property>
+             </item>
+             <item>
+              <property name="text">
                <string>es</string>
               </property>
              </item>
              <item>
               <property name="text">
-               <string>ca</string>
+               <string>fr</string>
               </property>
              </item>
             </widget>

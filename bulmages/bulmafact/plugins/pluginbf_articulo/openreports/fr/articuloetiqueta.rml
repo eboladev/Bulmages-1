@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+<!DOCTYPE document SYSTEM "rml_1_0.dtd">
+<document>
+<template pageSize="(2.9cm, 9cm)" leftMargin="0cm" rightMargin="0cm" topMargin="0.9cm" bottomMargin="0cm" title="Etiqueta" author="Tomeu Borras" allowSplitting="20">
+	<pageTemplate id="main">
+		<pageGraphics>
+			<!-- translate dx="1cm" dy="1.5cm"/>
+			<rotate degrees="90"/>
+			<setFont name="Helvetica" size="12"/>
+			<fill color="(0,0,0)"/>
+			<stroke color="(0,0,0)"/>
+			<drawString x="0cm" y="0.2cm">[nomarticulo]</drawString>
+<place x="0cm" y="-2cm" width="8cm" height="2cm">
+<barCode code="code128" height="0.75cm">[codigocompletoarticulo]</barCode>
+<para>[codigocompletoarticulo]</para>
+
+</place>
+
+			<rotate degrees="-90"/>
+			<translate dx="-1cm" dy="-1.5cm"/ -->
+		</pageGraphics>
+		<frame id="column" x1="0cm" y1="0cm" width="2.9cm" height="9cm"/>
+	</pageTemplate>
+</template>
+
+<story>
+
+<spacer length="0.5cm"/>
+
+<barCode code="code128" height="0.5cm">[codigocompletoarticulo]</barCode>
+<para alignment="CENTER" spaceAfter="0.01cm" spaceBefore="0.01cm" bulletIndent="0.01cm" leading="5"><font size="4"><b>[codigocompletoarticulo]</b></font><font size="4">[nomarticulo]</font></para>
+<spacer length="0.3cm"/>
+
+
+<barCode code="code128" height="0.5cm">[codigocompletoarticulo]</barCode>
+<para alignment="CENTER" spaceAfter="0.01cm" spaceBefore="0.01cm" bulletIndent="0.01cm" leading="5"><font size="4"><b>[codigocompletoarticulo]</b></font><font size="4">[nomarticulo]</font></para>
+<spacer length="0.3cm"/>
+
+
+<barCode code="code128" height="0.5cm">[codigocompletoarticulo]</barCode>
+<para alignment="CENTER" spaceAfter="0.01cm" spaceBefore="0.01cm" bulletIndent="0.01cm" leading="5"><font size="4"><b>[codigocompletoarticulo]</b></font><font size="4">[nomarticulo]</font></para>
+<spacer length="0.3cm"/>
+
+
+<barCode code="code128" height="0.5cm">[codigocompletoarticulo]</barCode>
+<para alignment="CENTER" spaceAfter="0.01cm" spaceBefore="0.01cm" bulletIndent="0.01cm" leading="5"><font size="4"><b>[codigocompletoarticulo]</b></font><font size="4">[nomarticulo]</font></para>
+<spacer length="0.3cm"/>
+
+
+<barCode code="code128" height="0.5cm">[codigocompletoarticulo]</barCode>
+<para alignment="CENTER" spaceAfter="0.01cm" spaceBefore="0.01cm" bulletIndent="0.01cm" leading="5"><font size="4"><b>[codigocompletoarticulo]</b></font><font size="4">[nomarticulo]</font></para>
+<spacer length="0.3cm"/>
+
+<barCode code="code128" height="0.5cm">[codigocompletoarticulo]</barCode>
+<para alignment="CENTER" spaceAfter="0.01cm" spaceBefore="0.01cm" bulletIndent="0.01cm" leading="5"><font size="4"><b>[codigocompletoarticulo]</b></font><font size="4">[nomarticulo]</font></para>
+<spacer length="0.3cm"/>
+
+<barCode code="code128" height="0.5cm">[codigocompletoarticulo]</barCode>
+<para alignment="CENTER" spaceAfter="0.01cm" spaceBefore="0.01cm" bulletIndent="0.01cm" leading="5"><font size="4"><b>[codigocompletoarticulo]</b></font><font size="4">[nomarticulo]</font></para>
+<spacer length="0.3cm"/>
+
+<barCode code="code128" height="0.5cm">[codigocompletoarticulo]</barCode>
+<para alignment="CENTER" spaceAfter="0.01cm" spaceBefore="0.01cm" bulletIndent="0.01cm" leading="5"><font size="4"><b>[codigocompletoarticulo]</b></font><font size="4">[nomarticulo]</font></para>
+<spacer length="0.3cm"/>
+
+
+
+</story>
+</document>

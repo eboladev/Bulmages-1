@@ -76,9 +76,4 @@ install (FILES ${CMAKE_CURRENT_BINARY_DIR}/README.es DESTINATION share/bulmages/
 
 add_dependencies(${plugin} bulmafact bulmalib bulmacont)
 
-file(GLOB report_files openreports/*.ui openreports/*.pys openreports/*.rml)
-
-install (FILES ${report_files} DESTINATION share/bulmages/openreports)
-
-
 ADD_LOCAL_BLI18N_HEADER( ${plugin} )

@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'modificarcontabilidadbase.ui'
 #
-# Created: Fri Jan 21 07:21:30 2011
+# Created: Mon Jan 24 12:08:34 2011
 #      by: PyQt4 UI code generator 4.7.2
 #
 # WARNING! All changes made in this file will be lost!
@@ -90,6 +90,7 @@ class Ui_ModificarContabilidadBase(object):
         self.gridLayout_3.addWidget(self.label_6, 3, 0, 1, 1)
         self.mui_idioma = QtGui.QComboBox(self.tab_2)
         self.mui_idioma.setObjectName("mui_idioma")
+        self.mui_idioma.addItem("")
         self.mui_idioma.addItem("")
         self.mui_idioma.addItem("")
         self.gridLayout_3.addWidget(self.mui_idioma, 3, 1, 1, 2)
@@ -359,8 +360,9 @@ class Ui_ModificarContabilidadBase(object):
         self.label_2.setText(QtGui.QApplication.translate("ModificarContabilidadBase", "Nombre Base de Datos", None, QtGui.QApplication.UnicodeUTF8))
         self.label_3.setText(QtGui.QApplication.translate("ModificarContabilidadBase", "Version de la Base de Datos", None, QtGui.QApplication.UnicodeUTF8))
         self.label_6.setText(QtGui.QApplication.translate("ModificarContabilidadBase", "Idioma Informes", None, QtGui.QApplication.UnicodeUTF8))
-        self.mui_idioma.setItemText(0, QtGui.QApplication.translate("ModificarContabilidadBase", "es", None, QtGui.QApplication.UnicodeUTF8))
-        self.mui_idioma.setItemText(1, QtGui.QApplication.translate("ModificarContabilidadBase", "ca", None, QtGui.QApplication.UnicodeUTF8))
+        self.mui_idioma.setItemText(0, QtGui.QApplication.translate("ModificarContabilidadBase", "ca", None, QtGui.QApplication.UnicodeUTF8))
+        self.mui_idioma.setItemText(1, QtGui.QApplication.translate("ModificarContabilidadBase", "es", None, QtGui.QApplication.UnicodeUTF8))
+        self.mui_idioma.setItemText(2, QtGui.QApplication.translate("ModificarContabilidadBase", "fr", None, QtGui.QApplication.UnicodeUTF8))
         self.mui_actualizarDB.setText(QtGui.QApplication.translate("ModificarContabilidadBase", "Actualizar Base de Datos", None, QtGui.QApplication.UnicodeUTF8))
         self.mui_chosefile.setText(QtGui.QApplication.translate("ModificarContabilidadBase", "...", None, QtGui.QApplication.UnicodeUTF8))
         self.label_4.setText(QtGui.QApplication.translate("ModificarContabilidadBase", "Logotipo de la empresa", None, QtGui.QApplication.UnicodeUTF8))

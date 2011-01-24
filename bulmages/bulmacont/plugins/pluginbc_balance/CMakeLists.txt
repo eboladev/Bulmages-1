@@ -106,10 +106,7 @@ set(plugin_STR ${plugin_SRC} ${plugin_MOC_SRCS}
    ${plugin_UIS_H} ${plugin_SRCS} ${plugin_MOCS})
 
 #GETTEXT_CREATE_TEMPLATE(${plugin} ${CMAKE_CURRENT_SOURCE_DIR} plugin_STR)
-
-file(GLOB report_files openreports/es/*.ui openreports/es/*.pys openreports/es/*.rml openreports/es/*.qs)
-install (FILES ${report_files} DESTINATION share/bulmages/openreports/es)
-
-file(GLOB report_files openreports/ca/*.ui openreports/ca/*.pys openreports/ca/*.rml openreports/ca/*.qs)
-install (FILES ${report_files} DESTINATION share/bulmages/openreports/ca)
+install(DIRECTORY openreports/ 
+      DESTINATION share/bulmages/openreports
+      PATTERN ".svn" EXCLUDE)
 

@@ -100,6 +100,4 @@ add_dependencies(${plugin} bulmafact bulmalib pluginbf_cliente)
 set(files informeclientes.png)
 install(FILES ${files} DESTINATION share/bulmages/icons)
 
-file(GLOB report_files openreports/*.ui openreports/*.pys openreports/*.rml openreports/*.qs)
-install (FILES ${report_files} DESTINATION share/bulmages/openreports)
 

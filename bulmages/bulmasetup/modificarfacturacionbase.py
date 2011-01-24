@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'modificarfacturacionbase.ui'
 #
-# Created: Fri Jan 21 07:10:12 2011
+# Created: Mon Jan 24 12:08:22 2011
 #      by: PyQt4 UI code generator 4.7.2
 #
 # WARNING! All changes made in this file will be lost!
@@ -91,6 +91,7 @@ class Ui_ModificarFacturacionBase(object):
         self.gridLayout_3.addWidget(self.label_6, 3, 0, 1, 1)
         self.mui_idioma = QtGui.QComboBox(self.tab_4)
         self.mui_idioma.setObjectName("mui_idioma")
+        self.mui_idioma.addItem("")
         self.mui_idioma.addItem("")
         self.mui_idioma.addItem("")
         self.gridLayout_3.addWidget(self.mui_idioma, 3, 1, 1, 2)
@@ -384,8 +385,9 @@ class Ui_ModificarFacturacionBase(object):
         self.label_3.setText(QtGui.QApplication.translate("ModificarFacturacionBase", "Version de la Base de Datos", None, QtGui.QApplication.UnicodeUTF8))
         self.mui_soporteTPV.setText(QtGui.QApplication.translate("ModificarFacturacionBase", "Instalar Soporte para TPV", None, QtGui.QApplication.UnicodeUTF8))
         self.label_6.setText(QtGui.QApplication.translate("ModificarFacturacionBase", "Idioma informes", None, QtGui.QApplication.UnicodeUTF8))
-        self.mui_idioma.setItemText(0, QtGui.QApplication.translate("ModificarFacturacionBase", "es", None, QtGui.QApplication.UnicodeUTF8))
-        self.mui_idioma.setItemText(1, QtGui.QApplication.translate("ModificarFacturacionBase", "ca", None, QtGui.QApplication.UnicodeUTF8))
+        self.mui_idioma.setItemText(0, QtGui.QApplication.translate("ModificarFacturacionBase", "ca", None, QtGui.QApplication.UnicodeUTF8))
+        self.mui_idioma.setItemText(1, QtGui.QApplication.translate("ModificarFacturacionBase", "es", None, QtGui.QApplication.UnicodeUTF8))
+        self.mui_idioma.setItemText(2, QtGui.QApplication.translate("ModificarFacturacionBase", "fr", None, QtGui.QApplication.UnicodeUTF8))
         self.mui_chosefile.setText(QtGui.QApplication.translate("ModificarFacturacionBase", "...", None, QtGui.QApplication.UnicodeUTF8))
         self.label_4.setText(QtGui.QApplication.translate("ModificarFacturacionBase", "Logotipo de la empresa", None, QtGui.QApplication.UnicodeUTF8))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab_4), QtGui.QApplication.translate("ModificarFacturacionBase", "Datos Generales", None, QtGui.QApplication.UnicodeUTF8))

@@ -125,7 +125,11 @@ class Facturacion(Ui_ModificarFacturacionBase, Empresa):
       self.string = "mkdir -p /opt/bulmages/openreports_" + self.database + "/ca"
       self.process.start(self.string)
       self.process.waitForFinished(-1)
-
+      #Creamos el directorio fr
+      self.string = "mkdir -p /opt/bulmages/openreports_" + self.database + "/fr"
+      self.process.start(self.string)
+      self.process.waitForFinished(-1)
+      
       i = 1
       while (os.path.exists('/opt/bulmages/openreports_' + self.database + '_old' + str(i))):
 	i = i + 1
@@ -199,7 +203,7 @@ class Facturacion(Ui_ModificarFacturacionBase, Empresa):
       self.process.start(self.string)
       self.process.waitForFinished(-1)
       if (os.path.exists(plugins.confopenreports + "ca/logo.jpg")):
-         self.string = "cp " + plugins.confopenreports + "es/logo.jpg" +  " /opt/bulmages/openreports_" + self.database + "/ca"
+         self.string = "cp " + plugins.confopenreports + "ca/logo.jpg" +  " /opt/bulmages/openreports_" + self.database + "/ca"
          self.writecommand(self.string)
          self.process.start(self.string)
          self.process.waitForFinished(-1)
@@ -213,6 +217,46 @@ class Facturacion(Ui_ModificarFacturacionBase, Empresa):
          self.string = "cp "+ self.mui_textfile.text() + " /opt/bulmages/openreports_" + self.database + "ca/logo.jpg"
          self.process.start(self.string)
          self.process.waitForFinished(-1)
+
+# ==========
+      # Copiamos las plantillas en fr
+      self.string = "cp " + plugins.confopenreports + "fr/informereferencia.rml" +  " /opt/bulmages/openreports_" + self.database +"/fr"
+      self.writecommand(self.string)
+      self.process.start(self.string)
+      self.process.waitForFinished(-1)
+      self.string = "cp " + plugins.confopenreports + "fr/plantilla.rml" +  " /opt/bulmages/openreports_" + self.database + "/fr"
+      self.writecommand(self.string)
+      self.process.start(self.string)
+      self.process.waitForFinished(-1)
+      self.string = "cp " + plugins.confopenreports + "fr/plantilla1.rml" +  " /opt/bulmages/openreports_" + self.database +"/fr"
+      self.writecommand(self.string)
+      self.process.start(self.string)
+      self.process.waitForFinished(-1)
+      self.string = "cp " + plugins.confopenreports + "fr/estilos.rml" +  " /opt/bulmages/openreports_" + self.database + "/fr"
+      self.writecommand(self.string)
+      self.process.start(self.string)
+      self.process.waitForFinished(-1)
+      self.string = "cp " + plugins.confopenreports + "fr/listado.rml" +  " /opt/bulmages/openreports_" + self.database + "/fr"
+      self.writecommand(self.string)
+      self.process.start(self.string)
+      self.process.waitForFinished(-1)
+      if (os.path.exists(plugins.confopenreports + "fr/logo.jpg")):
+         self.string = "cp " + plugins.confopenreports + "fr/logo.jpg" +  " /opt/bulmages/openreports_" + self.database + "/fr"
+         self.writecommand(self.string)
+         self.process.start(self.string)
+         self.process.waitForFinished(-1)
+      self.string = "cp " + plugins.confopenreports + "fr/ficha.rml" +  " /opt/bulmages/openreports_" + self.database + "/fr"
+      self.writecommand(self.string)
+      self.process.start(self.string)
+      self.process.waitForFinished(-1)
+
+      # Pasamos el logotipo
+      if (self.mui_textfile.text() != ""):
+         self.string = "cp "+ self.mui_textfile.text() + " /opt/bulmages/openreports_" + self.database + "fr/logo.jpg"
+         self.process.start(self.string)
+         self.process.waitForFinished(-1)
+
+
 
 
       # Iteramos sobre la lista de plugins disponibles en bulmafact para copiar sus plantillas
@@ -237,6 +281,10 @@ class Facturacion(Ui_ModificarFacturacionBase, Empresa):
 	      self.process.start(self.string)
 	      self.process.waitForFinished(-1)
 	      self.string = "cp " + plugins.confopenreports + "ca/" + self.arra[self.j] + " /opt/bulmages/openreports_" + self.database +"/ca"
+	      self.writecommand(self.string)
+	      self.process.start(self.string)
+	      self.process.waitForFinished(-1)
+	      self.string = "cp " + plugins.confopenreports + "fr/" + self.arra[self.j] + " /opt/bulmages/openreports_" + self.database +"/fr"
 	      self.writecommand(self.string)
 	      self.process.start(self.string)
 	      self.process.waitForFinished(-1)
@@ -265,6 +313,10 @@ class Facturacion(Ui_ModificarFacturacionBase, Empresa):
 	      self.process.start(self.string)
 	      self.process.waitForFinished(-1)
 	      self.string = "cp " + plugins.confopenreports + "ca/" + self.arra[self.j] + " /opt/bulmages/openreports_" + self.database + "/ca"
+	      self.writecommand(self.string)
+	      self.process.start(self.string)
+	      self.process.waitForFinished(-1)
+	      self.string = "cp " + plugins.confopenreports + "fr/" + self.arra[self.j] + " /opt/bulmages/openreports_" + self.database + "/fr"
 	      self.writecommand(self.string)
 	      self.process.start(self.string)
 	      self.process.waitForFinished(-1)

@@ -99,7 +99,5 @@ install(DIRECTORY dbmodels/
 		DESTINATION share/bulmages/dbmodels/plugins
 		PATTERN ".svn" EXCLUDE)
 
-set(files dbmodels/pluginbf_alias.sql)
 
-install(FILES ${files} DESTINATION share/bulmages/dbmodels/plugins)
 

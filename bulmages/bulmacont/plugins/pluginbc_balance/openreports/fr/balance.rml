@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+<!DOCTYPE document SYSTEM "rml_1_0.dtd">
+<document>
+<template pageSize="(29.7cm, 21cm)" leftMargin="0cm" rightMargin="0cm" topMargin="2.0cm" bottomMargin="2.0cm" title="Listado" author="Tomeu Borras" allowSplitting="20">
+	<pageTemplate id="main">
+		<pageGraphics>
+		<!-- EL LOGO DE CABECERA -->
+		<image x="0.5cm" y="18.2cm" width="7cm" file="logo.jpg"/>
+
+		<!-- EL DRAFT -->
+			<setFont name="Helvetica" size="100"/>
+			<fill color="(1,0.9,0.9)"/>
+			<stroke color="(1,0.9,0.9)"/>
+			<translate dx="13cm" dy="-10.5cm"/>
+			<rotate degrees="30"/>
+			<drawString x="23mm" y="15.7cm">BORRADOR</drawString>
+			<lineMode width="4mm"/>
+			<rect round="1cm" x="18mm" y="15cm" width="21cm" height="4cm" fill="no" stroke="yes"/>	
+		<rotate degrees="-30"/>
+		<translate dx="-13cm" dy="10.5cm"/>
+
+		<!-- EL PIE DE PAGINA -->
+		<setFont name="Helvetica" size="8"/>		
+		<fill color="(0,0,0)"/>	
+		<stroke color="(0,0,0)"/>
+		<drawString x="13.3cm" y="0.5cm">www.iglues.org -- info@iglues.org --</drawString>
+		<drawString x="0.3cm" y="0.2cm">Estas plantillas son de demostracion. Puede personalizar sus formatos de impresion modificando las plantillas ubicadas en [CONF_DIR_OPENREPORTS]</drawString>	
+
+
+		<fill color="(0,0,0)"/>	
+		<stroke color="(0,0,0)"/>
+		<setFont name="Helvetica" size="22"/>
+		<drawString x="18cm" y="19.5cm">Balance de Situación</drawString>
+		</pageGraphics>
+	<frame id="column" x1="1cm" y1="1cm" width="27cm" height="17.5cm"/>
+	</pageTemplate>
+</template>
+<stylesheet>
+	<blockTableStyle id="tabla">
+		<blockTopPadding length="0"/>
+		<blockBottomPadding length="0"/>
+		<blockAlignment value="LEFT" start="0,1" stop="1,-1"/>
+		<blockAlignment value="RIGHT" start="2,1" stop="-1,-1"/>
+		<blockAlignment value="CENTER" start="0,0" stop="-1,0"/>
+		<blockBackground colorName="(0.7,0.7,0.7)" start="0,0" stop="-1,0"/>
+		<blockTextColor colorName="(0,0,0)" start="0,0" stop="-1,0"/>
+		<blockTextColor colorName="(0,1,0)" start="5,1" stop="5,-1"/>
+		<blockTextColor colorName="(0,1,0)" start="8,1" stop="8,-1"/>
+		<lineStyle kind="LINEBELOW" colorName="(0,0,0)"  start="0,0" stop="-1,0"/>
+		<lineStyle kind="OUTLINE" colorName="black"  start="0,0" stop="-1,-1"/>
+		<blockFont name="Helvetica-Bold" size="6" start="0,0" stop="-1,0"/>
+		<blockFont name="Helvetica" size="6" start="0,1" stop="-1,-1"/>
+		<blockFont name="Helvetica" size="6" start="1,1" stop="1,-1"/>
+	</blockTableStyle>
+	<paraStyle name="rojo" alignment="right" textColor="red" fontSize="6"/>
+</stylesheet>
+
+<story>
+
+<blockTable style="tabla" repeatRows="1">
+<tr>
+<td>Codigo</td>
+<td>Descripcion</td>
+<td>Saldo Anterior</td>
+<td>Debe</td>
+<td>Haber</td>
+<td>Saldo</td>
+<td>Debe Ej</td>
+<td>Haber Ej</td>
+<td>Saldo Ej</td>
+</tr>
+<!--QUERY="SELECT * FROM balancetemp ORDER BY codigo, nivel"-->
+<tr>
+<td>[codigo]</td>
+<td>[descripcion]</td>
+<td>[asaldo]</td>
+<td>[tdebe]</td>
+<td>[thaber]</td>
+<!-- IF ="[tsaldo] < 0" -->
+<td><para style="rojo">[tsaldo]</para></td>
+<!-- ELSE -->
+<td  >[tsaldo]</td>
+<!-- END IF -->
+
+<td>[ejdebe]</td>
+<td>[ejhaber]</td>
+<!-- IF ="[tsaldo] < 0" -->
+<td><para style="rojo">[ejsaldo]</para></td>
+<!-- ELSE -->
+<td  >[ejsaldo]</td>
+<!-- END IF -->
+</tr>
+<!--END QUERY-->
+</blockTable>		
+</story>
+</document>
