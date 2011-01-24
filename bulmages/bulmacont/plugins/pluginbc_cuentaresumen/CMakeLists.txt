@@ -89,7 +89,7 @@ set_target_properties( ${plugin} PROPERTIES
 if(WIN32)
 target_link_libraries(${plugin} libbulmacont bulmalib pluginbc_asiento ${QT_LIBRARIES} ${PGSQL_LIBRARIES} )
 else(WIN32)
-target_link_libraries(${plugin} libbulmacont bulmalib ${QT_LIBRARIES} ${PGSQL_LIBRARIES} )
+target_link_libraries(${plugin} libbulmacont bulmalib pluginbc_asiento ${QT_LIBRARIES} ${PGSQL_LIBRARIES} )
 endif(WIN32)
 
 #think to put here which modules must be compiled "before" this

@@ -30,7 +30,6 @@
 #include "blpostgresqlclient.h"
 #include "bccompany.h"
 
-
 /** Busca errores y incoherencias en la contabilidad y las reporta al usuario en forma de
     listado.
     Esta clase realiza una serie de consultas determinadas en busca de determinados errores
