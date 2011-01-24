@@ -24,12 +24,12 @@
 #include "facturaview.h"
 #include "presupuestoview.h"
 #include "pedidoclienteview.h"
-#include "albaranclienteview.h"
+#include "ticketclienteview.h"
 #include "bfbulmafact.h"
 #include "pdefs_pluginbf_ticket.h"
 
 
-extern "C" PLUGINBF_TICKET_EXPORT int AlbaranClienteView_AlbaranClienteView ( AlbaranClienteView * );
+extern "C" PLUGINBF_TICKET_EXPORT int TicketClienteView_TicketClienteView ( TicketClienteView * );
 /*
 extern "C" PLUGINBF_TICKET_EXPORT int PedidoClienteView_PedidoClienteView(PedidoClienteView *);
 extern "C" PLUGINBF_TICKET_EXPORT int PresupuestoView_PresupuestoView(PresupuestoView *);

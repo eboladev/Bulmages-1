@@ -34,7 +34,7 @@
 #include "facturaview.h"
 #include "presupuestoview.h"
 #include "pedidoclienteview.h"
-#include "albaranclienteview.h"
+#include "ticketclienteview.h"
 
 
 class TicketQToolButton : public QToolButton
@@ -45,11 +45,11 @@ private:
     BfCompany *m_companyact;
     PresupuestoView *m_presupuestoView;
     PedidoClienteView *m_pedidoClienteView;
-    AlbaranClienteView *m_albaranClienteView;
+    TicketClienteView *m_albaranClienteView;
     FacturaView    *m_facturaView;
 
 public:
-    TicketQToolButton ( PresupuestoView *, PedidoClienteView *, AlbaranClienteView *,  FacturaView * , QWidget *parent = NULL );
+    TicketQToolButton ( PresupuestoView *, PedidoClienteView *, TicketClienteView *,  FacturaView * , QWidget *parent = NULL );
     ~TicketQToolButton();
     void setBoton();
 public slots:

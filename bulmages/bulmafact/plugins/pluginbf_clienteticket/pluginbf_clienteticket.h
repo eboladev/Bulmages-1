@@ -27,7 +27,7 @@
 #include "bfbuscarreferencia.h"
 #include "clienteview.h"
 #include "facturaview.h"
-#include "albaranclienteview.h"
+#include "ticketclienteview.h"
 #include "bfcompany.h"
 #include "pdefs_pluginbf_clienteticket.h"
 

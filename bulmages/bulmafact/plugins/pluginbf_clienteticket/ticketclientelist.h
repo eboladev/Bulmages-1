@@ -53,7 +53,7 @@ public slots:
 };
 
 
-#include "ui_albaranclientelistbase.h"
+#include "ui_ticketclientelistbase.h"
 
 
 /** Ticketes a Clientes.

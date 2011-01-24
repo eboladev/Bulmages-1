@@ -28,7 +28,7 @@
 #include <QString>
 
 #include "bfform.h"
-#include "ui_albaranclientebase.h"
+#include "ui_ticketclientebase.h"
 #include "pdefs_pluginbf_clienteticket.h"
 
 

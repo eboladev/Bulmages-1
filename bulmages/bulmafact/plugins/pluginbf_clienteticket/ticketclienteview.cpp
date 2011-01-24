@@ -33,7 +33,7 @@
 #include "bfbuscarformapago.h"
 #include "bfbuscaralmacen.h"
 #include "bfbuscartrabajador.h"
-#include "albaranclienteview.h"
+#include "ticketclienteview.h"
 #include "clientslist.h"
 #include "bfcompany.h"
 #include "blconfiguration.h"

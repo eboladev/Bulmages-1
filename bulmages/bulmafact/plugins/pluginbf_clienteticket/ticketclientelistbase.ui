@@ -1127,7 +1127,7 @@
   <customwidget>
    <class>TicketClienteListSubform</class>
    <extends>QTableWidget</extends>
-   <header>albaranclientelist.h</header>
+   <header>ticketclientelist.h</header>
   </customwidget>
   <customwidget>
    <class>BlSearchWidget</class>

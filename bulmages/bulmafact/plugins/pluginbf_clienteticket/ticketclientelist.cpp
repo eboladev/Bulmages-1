@@ -23,8 +23,8 @@
 #include <QMessageBox>
 #include <QTextStream>
 
-#include "albaranclientelist.h"
-#include "albaranclienteview.h"
+#include "ticketclientelist.h"
+#include "ticketclienteview.h"
 #include "blplugins.h"
 #include "bfcompany.h"
 #include "blfunctions.h"

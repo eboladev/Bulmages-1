@@ -31,7 +31,7 @@
 #include <QMap>
 #include <QList>
 #include "facturaview.h"
-#include "albaranclienteview.h"
+#include "ticketclienteview.h"
 #include "pedidoclienteview.h"
 #include "presupuestoview.h"
 #include "facturaslist.h"

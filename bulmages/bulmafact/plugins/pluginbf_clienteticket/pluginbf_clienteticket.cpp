@@ -24,8 +24,8 @@
 #include "blplugins.h"
 #include "bfcompany.h"
 #include "blfunctions.h"
-#include "albaranclienteview.h"
-#include "albaranclientelist.h"
+#include "ticketclienteview.h"
+#include "ticketclientelist.h"
 
 #include "genalbqtoolbutton.h"
 

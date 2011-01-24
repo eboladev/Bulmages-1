@@ -39,8 +39,8 @@ include_directories(
 	${CMAKE_SOURCE_DIR}/bulmafact/plugins/pluginbf_clientepedido/
 	${CMAKE_BINARY_DIR}/bulmafact/plugins/pluginbf_clientefactura/
 	${CMAKE_SOURCE_DIR}/bulmafact/plugins/pluginbf_clientefactura/
-	${CMAKE_BINARY_DIR}/bulmafact/plugins/pluginbf_clientealbaran/
-	${CMAKE_SOURCE_DIR}/bulmafact/plugins/pluginbf_clientealbaran/)
+	${CMAKE_BINARY_DIR}/bulmafact/plugins/pluginbf_clienteticket/
+	${CMAKE_SOURCE_DIR}/bulmafact/plugins/pluginbf_clienteticket/)
 
 # generate rules for building source files from the resources
 #QT4_WRAP_CPP(plugin_MOC_SRCS ${plugin_MOCS})
@@ -101,4 +101,4 @@ install_targets(/lib/bulmafact/plugins ${plugin})
 configure_file( ${CMAKE_CURRENT_SOURCE_DIR}/README.es ${CMAKE_CURRENT_BINARY_DIR}/README.es @ONLY)
 install (FILES ${CMAKE_CURRENT_BINARY_DIR}/README.es DESTINATION share/bulmages/bulmafact-plugins/ RENAME README.es.${plugin})
 
-add_dependencies(${plugin} bulmafact bulmalib pluginbf_clientealbaran pluginbf_clientefactura)
+add_dependencies(${plugin} bulmafact bulmalib pluginbf_clientefactura pluginbf_clienteticket)

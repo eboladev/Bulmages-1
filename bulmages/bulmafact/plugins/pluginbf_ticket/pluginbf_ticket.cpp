@@ -78,7 +78,7 @@ int PedidoClienteView_PedidoClienteView(PedidoClienteView *l) {
 \param l
 \return
 **/
-int AlbaranClienteView_AlbaranClienteView ( AlbaranClienteView *l )
+int TicketClienteView_TicketClienteView ( TicketClienteView *l )
 {
     blDebug ( "AlbaranClienteView_AlbaranClienteView", 0 );
 //================================
