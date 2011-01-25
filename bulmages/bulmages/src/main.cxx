@@ -40,6 +40,8 @@
 #include <QtGui>
 
 #include "bgbulmages.h"
+#include "blfunctions.h"
+#include "blconfiguration.h"
 
 
 int main ( int argc, char **argv )
@@ -47,11 +49,23 @@ int main ( int argc, char **argv )
 
     Q_INIT_RESOURCE(bgbulmages);
 
+    /// Leemos la configuracion que luego podremos usar siempre.
+    initConfiguration ("bulmages");
+
+    /// Inicializa el sistema de traducciones 'gettext'.
+    setlocale(LC_ALL, "");
+    blBindTextDomain ("bulmages", g_confpr->valor(CONF_DIR_TRADUCCION).toAscii().constData());
+    blTextDomain ("bulmages");
+
     QApplication app(argc, argv);
 
+    /// Definimos la codificaci&oacute;n a Unicode.
+    QTextCodec::setCodecForCStrings ( QTextCodec::codecForName ( "UTF-8" ) );
+    QTextCodec::setCodecForLocale ( QTextCodec::codecForName ( "UTF-8" ) );
+
     if (!QSystemTrayIcon::isSystemTrayAvailable()) {
-        QMessageBox::critical(0, QObject::tr("Bandeja"),
-                              QObject::tr("No se detecta ninguna bandeja en el sistema"));
+        QMessageBox::critical(0, _("Bandeja"),
+                                 _("No se detecta ninguna bandeja en el sistema"));
         return 1;
     }
     QApplication::setQuitOnLastWindowClosed(false);

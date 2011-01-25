@@ -46,6 +46,7 @@
 #include <QMenu>
 #include <QString>
 
+#include "blfunctions.h"
 #include "ui_bgbulmagesbase.h"
 
 

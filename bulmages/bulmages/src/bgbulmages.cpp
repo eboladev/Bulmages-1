@@ -30,7 +30,7 @@
 BgBulmaGes::BgBulmaGes()
 {
     setupUi ( this );
-    setWindowTitle ( "Lanzador BulmaGes" );
+    setWindowTitle ( _("Lanzador BulmaGes") );
 
     createTrayIcon();
     trayIcon->setIcon ( QIcon ( ":/images/iconbulmages.png" ) );
@@ -92,15 +92,15 @@ void BgBulmaGes::createTrayIcon()
     QAction *bulmaSetupAction;
     QAction *salirAction;
 
-    bulmaContAction = new QAction ( tr ( "BulmaCont" ), this );
+    bulmaContAction = new QAction ( _( "BulmaCont" ), this );
     bulmaContAction->setIcon ( QIcon ( ":/images/iconbulmacont.png" ) );
-    bulmaFactAction = new QAction ( tr ( "BulmaFact" ), this );
+    bulmaFactAction = new QAction ( _( "BulmaFact" ), this );
     bulmaFactAction->setIcon ( QIcon ( ":/images/iconbulmafact.png" ) );
-    bulmaTPVAction = new QAction ( tr ( "BulmaTPV" ), this );
+    bulmaTPVAction = new QAction ( _( "BulmaTPV" ), this );
     bulmaTPVAction->setIcon ( QIcon ( ":/images/iconbulmatpv.png" ) );
-    bulmaSetupAction = new QAction ( tr ( "BulmaSetup" ), this );
+    bulmaSetupAction = new QAction ( _( "BulmaSetup" ), this );
     bulmaSetupAction->setIcon ( QIcon ( ":/images/iconiglues.png" ) );
-    salirAction = new QAction ( tr ( "&Salir" ), this );
+    salirAction = new QAction ( _( "&Salir" ), this );
     salirAction->setIcon ( QIcon ( ":images/iconexit.png" ) );
     
     connect ( bulmaContAction, SIGNAL ( triggered() ), this , SLOT ( launchBulmaCont() ) );
@@ -160,7 +160,7 @@ void BgBulmaGes::launchBulmaSetup()
     } else {
       QMessageBox msgBox;
       msgBox.setText("No se encuentra kdesudo");
-      msgBox.exec();    
+      msgBox.exec();
     } // end if
 }
 
