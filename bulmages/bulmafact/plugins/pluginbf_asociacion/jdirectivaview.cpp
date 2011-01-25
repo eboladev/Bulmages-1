@@ -73,7 +73,8 @@ JDirectivaView::JDirectivaView ( BfCompany *comp, QWidget *parent )
         mui_list->setDelete ( TRUE );
         mui_list->setSortingEnabled ( FALSE );
         
-        mui_list->cargar("SELECT * from miembrojdirectiva NATURAL LEFT JOIN cliente WHERE 1 = 1");
+	// Cargar una contradiccion para que el subformulario deje insertar elementos.
+        mui_list->cargar("SELECT * from miembrojdirectiva NATURAL LEFT JOIN cliente WHERE 1 = 2");
         
         meteWindow ( windowTitle(), this, FALSE );
         pintar();
