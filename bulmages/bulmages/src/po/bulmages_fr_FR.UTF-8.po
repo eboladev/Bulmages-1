@@ -2,19 +2,23 @@
 # Header entry was created by KBabel!
 #
 # Fco. Javier M. C. <fcojavmc@gmail.com>, 2009.
+# Girard Henri <aisen@free.fr>, 2011.
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: info@iglues.org\n"
 "POT-Creation-Date: 2011-01-25 00:21+0100\n"
-"PO-Revision-Date: 2009-01-26 09:35+0100\n"
-"Language-Team: <es@li.org>\n"
+"PO-Revision-Date: 2011-01-25 17:28+0100\n"
+"Language-Team: French <kde l10n>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: KBabel 1.11.4\n"
+"X-Generator: Lokalize 1.2\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 "X-Language: fr_FR\n"
 "X-Source-Language: C\n"
+"Last-Translator: Girard Henri <aisen@free.fr>\n"
+"Project-Id-Version: \n"
+"Language: fr"
 
 #: ui_bgbulmagesbase.h:413
 msgid "&Cancelar"
@@ -22,7 +26,7 @@ msgstr "&Annuler"
 
 #: bgbulmages.cpp:103
 msgid "&Salir"
-msgstr "&Sortir"
+msgstr "&Quitter"
 
 #: ui_bgbulmagesbase.h:382
 msgid ""
@@ -143,28 +147,27 @@ msgstr ""
 
 #: main.cxx:68
 msgid "Bandeja"
-msgstr ""
+msgstr "Plateforme"
 
 #: ui_bgbulmagesbase.h:380 bgbulmages.cpp:95
 msgid "BulmaCont"
-msgstr ""
+msgstr "BulmaCont"
 
 #: ui_bgbulmagesbase.h:388 bgbulmages.cpp:97
 msgid "BulmaFact"
-msgstr ""
+msgstr "BulmatFact"
 
 #: ui_bgbulmagesbase.h:404 bgbulmages.cpp:101
 msgid "BulmaSetup"
-msgstr ""
+msgstr "BulmaSetup"
 
 #: ui_bgbulmagesbase.h:396 bgbulmages.cpp:99
 msgid "BulmaTPV"
-msgstr ""
+msgstr "BulmaTPV "
 
 #: ui_bgbulmagesbase.h:379
-#, fuzzy
 msgid "Dialog"
-msgstr "Journal"
+msgstr "Dialogue"
 
 #: ui_bgbulmagesbase.h:412
 msgid "Lanzador"
@@ -192,4 +195,5 @@ msgstr "Lancer BulmaC&ont"
 
 #: main.cxx:69
 msgid "No se detecta ninguna bandeja en el sistema"
-msgstr ""
+msgstr "Impossible de détecter la plateforme système"
+
