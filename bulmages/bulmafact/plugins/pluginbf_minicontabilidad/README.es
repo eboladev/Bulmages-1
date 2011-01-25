@@ -29,7 +29,7 @@ Incompatibles:
 
 Orden: 210
 
-Reports: presupuestocontable.pys; presupuestocontable.rml
+Reports: presupuestocontable.pys; presupuestocontable.rml; blform_PresupuestoContableView.qs
 
 Categorias: Asociaciones de padres de alumnos; Experimentales; Facturacion generica;
 
