@@ -6,7 +6,7 @@
 
 Nombre: Ejemplo de desarrollo
 
-Biblioteca: libplugin.so
+Biblioteca: libpluginbc:example.so
 
 Descripción: <H1>Plugin de Ejemplo</H1>
 <P>Plugin ejemplo para poder desarrollar otros plugins.</P>
