@@ -1,31 +1,44 @@
 /* CSS Examples */
 QTableView {
-    font-size: 10px;
+/* Table Font Size */
+/*    font-size: 10px; */
 }
 
 QTabWidget {
+/* Tamanyo del texto en las pestanyas */
     font-size: 9px;
 }
 
 QWidget {
-    font-size: 10px;
+/* Tamanyo del texto en general en cualquier widget */
+/*    font-size: 10px; */
+/* Margenes de todos los widgets*/
+/*
     margin:0px;
     padding:0px;
+*/
 }
 
 QTableWidgetItem {
-    margin-top: 0px;
-    padding-top: 0px;
+/* Margenes en los items de una tabla */
+    margin-top: 1px;
+    padding-top: 1px;
+
 }
 
 QHeaderView {
+/* Bordes en los encabezados de las tablas */
 border: 1px solid #6c6c6c;
-padding-left: 0px;
+/* Margenes en los encabezados de las tablas */
+/* padding-left: 0px;
 margin-left : 0px;
+*/
+/* Tamanyo de las fuentes en los encabezados de las tablas */
 font-size: 9px;
 }
 
 #BlTableWidgetItem {
+/* Consideraciones para los Items de BlTableWidget */ /* NO FUNCIONAN POR AHORA */
     color: #FF0000;
     margin-top: 0px;
     padding-top: 0px;
