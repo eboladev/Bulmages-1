@@ -47,12 +47,18 @@ font-size: 9px;
     border: 0px solid #00FF00;
 }
 
-/* Configuraciones para la mayoria de subformularios */
-*#mui_list {color: blue;
-background-color: #DDDDDD;
-selection-color: #AAAAAA;
-selection-background-color: blue;}
 
-/* Configuraciones para los campos de filtrado */
+*#mui_list {
+/* Color del tipo de letra en los subformularios */
+color: blue;
+/* Color del fondo en los subformularios */
+background-color: #DDDDDD;
+/* Color de la seleccion en los subformularios */
+selection-color: #AAAAAA;
+/* Color de fondo para la seleccion en los subformularios */
+selection-background-color: blue;
+}
+
+/* Color de fondo en los campos de filtrado */
 *#m_filtro {background-color: #FFFF88;}
 
