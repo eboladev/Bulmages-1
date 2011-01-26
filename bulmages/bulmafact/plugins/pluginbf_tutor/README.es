@@ -24,7 +24,7 @@ Dependencias: libpluginbf_profesor.so; libpluginbf_alumno.so
 
 Incompatibles:
 
-Reports: tutor.rml
+Reports: tutor.rml; blform_TutorView.qs
 
 Categorias: Asociaciones de padres de alumnos; Experimentales;
 

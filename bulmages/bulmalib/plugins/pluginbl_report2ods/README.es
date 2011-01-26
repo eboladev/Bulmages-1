@@ -28,7 +28,7 @@ Dependencias:
 
 Incompatibles:
 
-Reports: inf_clientes.pys; inf_detalleventascliente.pys; inf_resumcompras.pys; inf_detalleventasarticulo.pys; inf_familiacliente.pys
+Reports:
 
 Categorias: Utilidades genericas;
 

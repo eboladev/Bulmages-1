@@ -23,7 +23,7 @@ Dependencias: libpluginbf_profesor.so; libpluginbf_tutor.so
 
 Incompatibles:
 
-Reports: alumno.rml; impers_alumno_faltas_de_asistencia.rml
+Reports: alumno.rml; impers_alumno_faltas_de_asistencia.rml; blform_ActividadView.qs; blform_ClaseView.qs
 
 Categorias: Asociaciones de padres de alumnos; Experimentales;
 
