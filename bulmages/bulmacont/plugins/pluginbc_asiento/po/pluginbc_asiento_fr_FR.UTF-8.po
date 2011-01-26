@@ -5,13 +5,14 @@
 #
 # Automatically generated, 2009.
 # Conta, 2011.
+# Girard Henri <aishen@free.fr>, 2011.
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
 "POT-Creation-Date: 2011-01-21 17:02+0100\n"
-"PO-Revision-Date: 2011-01-23 19:46+0100\n"
-"Last-Translator: Conta\n"
+"PO-Revision-Date: 2011-01-26 09:36+0100\n"
+"Last-Translator: Girard Henri <aishen@free.fr>\n"
 "Language-Team: French <kde l10n>\n"
 "Language: \n"
 "MIME-Version: 1.0\n"
@@ -26,11 +27,11 @@ msgstr "&Accepter"
 
 #: pluginbc_asiento.cpp:254
 msgid "&Asiento"
-msgstr "&Assiette"
+msgstr "&Ecriture"
 
 #: pluginbc_asiento.cpp:258
 msgid "&Asiento Contable"
-msgstr "&Assiette comptable"
+msgstr "&Ecriture comptable"
 
 #: ui_bcasientointeligentebase.h:217
 msgid "&Cancelar"
@@ -46,15 +47,15 @@ msgstr "&Exercice :"
 
 #: pluginbc_asiento.cpp:277
 msgid "&Espaciar Asientos Contables"
-msgstr "&Assiettes espacées"
+msgstr "&Ecritures espacées"
 
 #: ui_bcasientointeligentebase.h:212
 msgid "&Fecha del asiento:"
-msgstr "&Date de l'assiette :"
+msgstr "&Date de l'écriture :"
 
 #: pluginbc_asiento.cpp:267
 msgid "&Lista de Asientos Contables"
-msgstr "&Liste des assiettes"
+msgstr "&Liste des écritures"
 
 #: ui_bcasientolistbase.h:463
 msgid "&Mostrar:"
@@ -74,7 +75,7 @@ msgstr "&Personnel :"
 
 #: pluginbc_asiento.cpp:284
 msgid "&Reordenar Asientos Contables"
-msgstr "&Réordonner les assiettes"
+msgstr "&Réordonner les écritures"
 
 #: bcasientoview.cpp:338
 msgid "&Si"
@@ -90,7 +91,7 @@ msgstr ")"
 
 #: ui_bcasientobase.h:478 ui_bcasientobase.h:481
 msgid "Abrir asiento"
-msgstr "Ouvrir l'assiette"
+msgstr "Ouvrir l'écriture"
 
 #: ui_bcasientolistbase.h:498 ui_bcasientolistbase.h:501
 msgid "Actualizar"
@@ -102,7 +103,7 @@ msgstr "Ouverture"
 
 #: ui_bcasientointeligentebase.h:210
 msgid "Aplicar Asiento Inteligente"
-msgstr "Appliquer l'assistant d'assiette"
+msgstr "Appliquer l'assistant d'écriture"
 
 #: bcasientolistsubform.cpp:39
 msgid "Apuntes"
@@ -110,55 +111,55 @@ msgstr "Notes"
 
 #: bcasientointeligenteview.cpp:59 ui_bcasientobase.h:476
 msgid "Asiento"
-msgstr "Assiette"
+msgstr "Ecriture"
 
 #: bcasientoform.cpp:42
 msgid "Asiento Contable"
-msgstr "Assiette comptable"
+msgstr "Ecriture comptable"
 
 #: pluginbc_asiento.cpp:298
 msgid "Asiento de &cierre"
-msgstr "Assiette de fermeture"
+msgstr "Ecriture de fermeture"
 
 #: pluginbc_asiento.cpp:304
 msgid "Asiento de &regularizacion"
-msgstr "Assiette de &régulation"
+msgstr "Ecriture de &régulation"
 
 #: pluginbc_asiento.cpp:292
 msgid "Asiento de a&pertura"
-msgstr "Asiento d'&ouverture"
+msgstr "Ecriture d'&ouverture"
 
 #: pluginbc_asiento.cpp:293 pluginbc_asiento.cpp:294
 msgid "Asiento de apertura"
-msgstr "Asiento d'ouverture"
+msgstr "Ecriture d'ouverture"
 
 #: pluginbc_asiento.cpp:299 pluginbc_asiento.cpp:300
 msgid "Asiento de cierre"
-msgstr "Assiette de fermeture"
+msgstr "Ecriture de fermeture"
 
 #: pluginbc_asiento.cpp:305 pluginbc_asiento.cpp:306
 msgid "Asiento de regularizacion"
-msgstr "Assiette de régulation"
+msgstr "Ecriture de régulation"
 
 #: bcasientoview.cpp:336
 msgid "Asiento inexistente."
-msgstr "Assiette inexistante."
+msgstr "Ecriture inexistante."
 
 #: bcasientolistview.cpp:309
 msgid "Asientos"
-msgstr "Assiettes"
+msgstr "Ecritures"
 
 #: ui_bcasientobase.h:553 ui_bcasientobase.h:556
 msgid "Asientos Inteligentes"
-msgstr "Assiettes assistées"
+msgstr "Assistants de saisie"
 
 #: bcasientolistview.cpp:46
 msgid "Asientos abiertos"
-msgstr "Assiettes ouvertes"
+msgstr "Ecritures ouvertes"
 
 #: bcasientolistview.cpp:45
 msgid "Asientos cerrados"
-msgstr "Assiettes fermées"
+msgstr "Ecritures fermées"
 
 #: bcasientolistsubform.cpp:40
 msgid "Borrador"
@@ -166,7 +167,7 @@ msgstr "Brouillon"
 
 #: bcasientoform.cpp:162 ui_bcasientobase.h:531 ui_bcasientobase.h:534
 msgid "Borrar asiento"
-msgstr "Fermer l'assiette"
+msgstr "Fermer l'écriture"
 
 #: bcasientosubform.cpp:50
 msgid "Canal"
@@ -178,7 +179,7 @@ msgstr "Centre de finance"
 
 #: ui_bcasientobase.h:486 ui_bcasientobase.h:489
 msgid "Cerrar asiento"
-msgstr "Fermer l'assiette"
+msgstr "Fermer l'écriture"
 
 #: ui_bcasientobase.h:567
 msgid "Cierre"
@@ -202,7 +203,7 @@ msgstr "Commentaires"
 
 #: bcasientoform.cpp:48
 msgid "Comentarios del asiento"
-msgstr "Commentaires de l'assiette"
+msgstr "Commentaires de l'écriture"
 
 #: bcasientosubform.cpp:44
 msgid "Concepto contable"
@@ -251,7 +252,7 @@ msgstr "Ctrl+S"
 
 #: bcasientoview.cpp:952
 msgid "Cuenta de Regularizacion incorrecta. Revise la configuracion"
-msgstr "Assiette de régulation incorrecte. Revoir la configuration"
+msgstr "Ecriture de régulation incorrecte. Revoir la configuration"
 
 #: bcasientointeligenteview.cpp:442
 msgid "Cuenta:"
@@ -259,7 +260,7 @@ msgstr "Compte :"
 
 #: ui_bcasientointeligentebase.h:214
 msgid "Datos del asiento:"
-msgstr "Date de l'assiette :"
+msgstr "Date de l'écriture :"
 
 #: bcasientolistsubform.cpp:42 bcasientosubform.cpp:45
 msgid "Debe"
@@ -283,7 +284,7 @@ msgstr "Description des notes"
 
 #: bcasientoform.cpp:46
 msgid "Descripcion del asiento"
-msgstr "Description de l'assiette"
+msgstr "Description de l'écriture"
 
 #: ui_bcasientobase.h:562
 msgid "Descuadre:"
@@ -291,23 +292,23 @@ msgstr "Précision :"
 
 #: bcasientoview.cpp:337
 msgid "Desea crear un nuevo asiento en esa posicion?"
-msgstr "Voulez vous créer une nouvelle assiette ici ?"
+msgstr "Voulez vous créer une nouvelle écriture ici ?"
 
 #: bcasientoform.cpp:415
 msgid "El asiento se ha guardado correctamente."
-msgstr "Assiette sauvegardée correctement."
+msgstr "Ecriture sauvegardée correctement."
 
 #: bcasientointeligenteview.cpp:623
 msgid "Error al crear el asiento"
-msgstr "Erreur de création d'assiette"
+msgstr "Erreur de création d'écriture"
 
 #: ui_bcasientobase.h:539 ui_bcasientobase.h:542
 msgid "Exportar asiento"
-msgstr "Exporter l'assiette"
+msgstr "Exporter l'écriture"
 
 #: ui_bcasientobase.h:516 ui_bcasientobase.h:519
 msgid "Extender asiento"
-msgstr "Arborer l'assiette"
+msgstr "Arborer l'écriture"
 
 #: pluginbc_asiento.cpp:148 bcasientolistsubform.cpp:38
 #: bcasientosubform.cpp:40
@@ -328,7 +329,7 @@ msgstr "Date de facture "
 
 #: bcasientoform.cpp:47
 msgid "Fecha del asiento"
-msgstr "Date de l'assiette "
+msgstr "Date de l'écriture "
 
 #: pluginbc_asiento.cpp:181 pluginbc_asiento.cpp:216
 msgid "Fecha final"
@@ -364,7 +365,7 @@ msgstr "Filtrer"
 
 #: ui_bcasientobase.h:494 ui_bcasientobase.h:497
 msgid "Guardar asiento"
-msgstr "Sauvegarder l'assiette "
+msgstr "Sauvegarder l'écriture "
 
 #: bcasientolistsubform.cpp:43 bcasientosubform.cpp:46
 msgid "Haber"
@@ -392,7 +393,7 @@ msgstr "ID NOTE"
 
 #: bcasientolistsubform.cpp:46 bcasientoform.cpp:45 bcasientosubform.cpp:57
 msgid "Id asiento"
-msgstr "ID Assiette"
+msgstr "ID de l'écriture"
 
 #: bcasientosubform.cpp:56
 msgid "Id borrador"
@@ -416,7 +417,7 @@ msgstr "ID registre de TVA"
 
 #: ui_bcasientobase.h:546 ui_bcasientobase.h:549
 msgid "Importar asiento"
-msgstr "Importer l'assiette"
+msgstr "Importer l'écriture"
 
 #: ui_bcasientolistbase.h:477 ui_bcasientolistbase.h:480
 msgid "Imprimir"
@@ -428,12 +429,12 @@ msgstr "Date initiale postérieure à la date finale."
 
 #: ui_bcasientolistbase.h:462
 msgid "Listado de asientos"
-msgstr "Liste des assiettes"
+msgstr "Liste des écritures"
 
 #: bcasientolistsubform.cpp:79 bcasientolistsubform.cpp:96
 #: bcasientosubform.cpp:89 bcasientosubform.cpp:106
 msgid "Mostrar asiento"
-msgstr "Afficher l'assiette"
+msgstr "Afficher l'écriture"
 
 #: bcasientolistsubform.cpp:83 bcasientolistsubform.cpp:104
 #: bcasientosubform.cpp:93 bcasientosubform.cpp:112
@@ -461,7 +462,7 @@ msgstr "Normal"
 #: ui_bcasientobase.h:502 ui_bcasientobase.h:505 ui_bcasientobase.h:508
 #: ui_bcasientobase.h:511
 msgid "Nuevo asiento"
-msgstr "Nouvelle assiette "
+msgstr "Nouvelle écriture "
 
 #: bcasientosubform.cpp:62
 msgid "Num. Factura"
@@ -473,31 +474,31 @@ msgstr "Ordre"
 
 #: bcasientoform.cpp:49
 msgid "Orden de asiento"
-msgstr "Ordre de l'assiette"
+msgstr "Ordre de l'écriture"
 
 #: ui_bcasientobase.h:561
 msgid "Orden del asiento:"
-msgstr "Ordre de l'assiette :"
+msgstr "Ordre de l'écriture :"
 
 #: pluginbc_asiento.cpp:285 pluginbc_asiento.cpp:286
 msgid "Ordena los asientos"
-msgstr "Trier les assiettes"
+msgstr "Trier les écritures"
 
 #: pluginbc_asiento.cpp:278 pluginbc_asiento.cpp:279
 msgid "Ordena los asientos dejando espacios entre ellos"
-msgstr "Trier les assiettes en laissant des espaces entre elles"
+msgstr "Trier les écritures en laissant des espaces entre elles"
 
 #: pluginbc_asiento.cpp:268 pluginbc_asiento.cpp:269
 msgid "Permite ver el listado de asientos"
-msgstr "Permettre de voir la liste des assiettes"
+msgstr "Permettre de voir la liste des écritures"
 
 #: pluginbc_asiento.cpp:259
 msgid "Permite ver y modificar asientos"
-msgstr "Permettre de voir et modifier les assiettes"
+msgstr "Permettre de voir et modifier les écritures"
 
 #: pluginbc_asiento.cpp:260
 msgid "Podra disponer de la informacion del asiento"
-msgstr "Disponibilité de l'information de l'assiette"
+msgstr "Disponibilité de l'information de l'écriture"
 
 #: ui_bcasientobase.h:566
 msgid "Regularizacion"
@@ -513,19 +514,19 @@ msgstr "Solde :"
 
 #: pluginbc_asiento.cpp:105
 msgid "Se han espaciado los asientos"
-msgstr "Assiettes espacées"
+msgstr "Ecritures espacées"
 
 #: pluginbc_asiento.cpp:126
 msgid "Se han ordenado los asientos"
-msgstr "Assiettes triées"
+msgstr "Ecritures triées"
 
 #: bcasientoform.cpp:163
 msgid "Se va a borrar el asiento. Esta seguro?"
-msgstr "L'assiette va être fermée. Confirmer ?"
+msgstr "L'écriture va être fermée. Confirmer ?"
 
 #: bcasientoform.cpp:50
 msgid "Tipo de asiento"
-msgstr "Type d'assiette"
+msgstr "Type d'écriture"
 
 #: bcasientosubform.cpp:59
 msgid "Tipo de cuenta"
@@ -533,7 +534,7 @@ msgstr "Type de compte"
 
 #: bcasientolistview.cpp:44
 msgid "Todos los asientos"
-msgstr "Toutes les Assiettes"
+msgstr "Toutes les écritures"
 
 #: ui_bcasientobase.h:571
 msgid "Total Debe:"
@@ -545,7 +546,7 @@ msgstr "Crédit total :"
 
 #: pluginbc_asiento.cpp:250
 msgid "menuAsiento"
-msgstr "Menu des assiettes"
+msgstr "Menu des écritures"
 
 #: ui_bcasientolistbase.h:469
 msgid "y   ( >="
