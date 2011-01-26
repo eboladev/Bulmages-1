@@ -3562,7 +3562,8 @@ void BlSubFormDelegate::setEditorData ( QWidget* editor, const QModelIndex& inde
    } else if ( linea->dbFieldType() == BlDbField::DbNumeric ) {
         QString value = index.model() ->data ( index, Qt::DisplayRole ).toString();
         BlDoubleSpinBox *spinBox = static_cast<BlDoubleSpinBox*> ( editor );
-        spinBox->setValue ( value.toDouble() );
+        QLocale locale; //ARON
+        spinBox->setValue ( value.remove(locale.groupSeparator()).toDouble() ); //ARON
         spinBox->selectAll();
     } else if ( linea->dbFieldType() == BlDbField::DbInt ) {
         QString value = index.model() ->data ( index, Qt::DisplayRole ).toString();
@@ -3572,8 +3573,6 @@ void BlSubFormDelegate::setEditorData ( QWidget* editor, const QModelIndex& inde
     } else {
         QStyledItemDelegate::setEditorData ( editor, index );
     }// end if
-
-
 
     blDebug ( "END BlSubFormDelegate::setEditorData", 0 );
 }

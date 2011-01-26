@@ -159,11 +159,10 @@ QString BlDbField::valorcampo()
     QString valor = m_valorcampo;
     if ( m_tipo == DbNumeric ) {
         QLocale locale;
-        if ( locale.decimalPoint() == '.' ) {
-            valor.replace ( ",", locale.decimalPoint () );
-        } else {
-            valor.replace ( ".", locale.decimalPoint () );
-        } // end if
+//ARON
+        /// Agregar separador de millares y de decimales seg&uacute;n la configuraci&oacute;n local
+        valor = locale.toString(valor.toDouble());
+
     } // end if
     blDebug ( "END BlDbField::valorcampo", 0 );
     return valor;

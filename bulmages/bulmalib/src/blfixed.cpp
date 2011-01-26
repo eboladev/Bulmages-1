@@ -140,10 +140,12 @@ BlFixed operator / ( int x, BlFixed y )
 
 ///
 /**
-\param separadorDecimal
+\param separadorDecimal: '0' usa el decimalPoint de las locales
+\param precision
+\param separadorMillares: '0' usa el groupSeparator de las locales
 \return
 **/
-QString BlFixed::toQString ( QChar separadorDecimal, int precision )
+QString BlFixed::toQString ( QChar separadorDecimal, int precision, QChar separadorMillares )
 {
     blDebug ( "BlFixed::toQString", 0, QString::number(precision) );
 
@@ -153,12 +155,17 @@ QString BlFixed::toQString ( QChar separadorDecimal, int precision )
         blDebug("la precision ha cambiado a " + QString::number(m_precision));
     } // end if
 
+    QLocale locale;
+
 	/// Si no se pasa separador decimal cogemos el de las locales
 	if  ( separadorDecimal == '0' ) {
-		QLocale locale;
 		separadorDecimal = locale.decimalPoint ();
 	} // end if
 
+	/// Si no se pasa separador de millares cogemos el de las locales
+	if  ( separadorMillares == '0' ) { //ARON
+		separadorMillares = locale.groupSeparator (); //ARON
+	} // end if
 
     setPrecision ( precision );
     int options = COMMAS;
@@ -177,6 +184,8 @@ QString BlFixed::toQString ( QChar separadorDecimal, int precision )
     QString buffer = "";
 
     do {
+        if ( n % 3 == 0 && n > precision ) //ARON
+          buffer = separadorMillares + buffer; //ARON
         if ( n == precision ) {
             if ( n > 0 || options & DECIMAL )
               n ++;
@@ -199,6 +208,7 @@ QString BlFixed::toQString ( QChar separadorDecimal, int precision )
 	      n++;
         } // end while
     } // end if
+
     blDebug ( "END BlFixed::toQString", 0, buffer );
     return buffer;
 }
