@@ -35,107 +35,73 @@ Caractéristique
 
 Bien que toutes les applications soient pensées pour fonctionner ensemble, leur modularité leurs permettent de fonctionner indépendement l'une de l'autre, facilitant ainsi la migration progressive des autres applications ou d'adopter seulement les outils qui intérêssent l'entreprise. BulmaGés est un logiciel libre selon la license GPL, qu'on peut obtenir, soit en programmes sources, ou bien gratuitement par Internet avec les différentes distributions (CD) mise à disposition par l'association IGLUES. 
 
-BulmaGés ofrece la máxima calidad de una completa herramienta de gestión
-integrada configurable para adaptarse a las necesidades de la empresa mediante
-un sistema de módulos y plugins en función del sector en el que se opere y el
-tamaño de la organización.
-
-BulmaGés puede funcionar en múltiples plataformas. Los desarrolladores trabajan
-principalmente con GNU/Linux. También se puede utilizar en MacOSX y en
-MSWindows. Las limitaciones están en los requerimientos, más que en la
-suite. El aplicativo puede ser ejecutado en local y en remoto, sin límites de
-licencias, empresas o usuarios. 
-
-BulmaGés es una suite de software que incluye varios binarios, una biblioteca, 
-un programa de configuración, enlaze con base de datos, múltiples scripts, 
-múltiples plugins (pequeñas bibliotecas) y cierta documentación. Todo ello hace
-que sea un software complejo. 
-
-BulmaGés está desarrollado por diferentes personas que han colaborado en
-el proyecto, algunas activas actualmente y otras no. En general son personas en
-torno a la Asociación Iglues (www.iglues.org). 
-
-El ámbito de aplicación del programa es el de empresas, asociaciones o entidades
-que deseen llevar un sistema de gestión ya sea a nivel de contabilidad, o de 
-factuaración o de venta. El sistema de contabilidad es el hispano, teniendo
-incorporados los planes contables españoles. Ahora bien, el sistema de
-contabilidad (facturación) se puede adaptar a otros sistemas contables,
-únicamente cambiando el plan contable.
 
 
-Requerimientos
+Requièrements
 ==============
 
-Para poder utilizar BulmaGés hay que compilar el código fuente y realizar una 
-instalación. Se pueden realizar pruebas sin instalar el software, pero es
-recomendable sólo a nivel de desarrollo. Toda la suite necesita utilizar
-una base de datos, en concreto PostgreSql.
 
-Para compilar el código fuente se necesita:
+Afin de pouvoir utiliser BulmGés, il suffit de le compiler et réaliser une installation (Notes du traducteur : en ce moment même j'essaie de régler les problèmes de configuration). On peut l'essayer sans installer le logiciel mais c'est seulement bon pour les développeurs. Toute la suite à besoin d'une base de données, concrètement c'est PostgreSQL.
 
-- biblioteca Qt, como mínimo 4.3 http://www.qtsoftware.com/downloads.
-Esta es la biblioteca de los widgets, de la interfaz gráfica. 
+Pour compiler les sources on a besoin de :
 
-- python y pyqt4. python 2.4 y el "binding" pyqt4 acorde a la versión de Qt
-instalada. 
+- bibliothèque Qt4, minimum version 4.3 http://www.qtsoftware.com/downloads.
+C'est la biliothèque des widgets et de l'interface graphique. 
 
-- cmake, como mínimo versión 2.4.8 http://www.cmake.org/HTML/index.html. Es la
-herramienta de construcción del software.
+- python et pyqt4. python 2.4  et le port pyqt4 en accord avec la version de Qt
+installée. 
 
-- libpq y postgresql. Se necesita como mínimo PostgreSql 8.1. Para poder
-compilar el aplicativo se necesita libpq, que es la biblioteca para poder
-acceder a una base de datos PostgreSql. Y PostgreSql para poder ejecutar la
-aplicación. http://www.postgresql.org/download/
+- cmake, mínimum version 2.4.8 http://www.cmake.org/HTML/index.html. C'est l'outils de compilation du logiciel.
 
-Para ejecutar todos los programas y plugins además existen componentes adicionales.
+- libpq et postgresql. On a besoin au minimum de PostgreSql 8.1. Pour compiler l'application on a besoin de libpq, bibliothèque d'accès à une base de données PostgreSql. Et bien entendu de PostgreSql pour exécuter l'application. http://www.postgresql.org/download/
 
-- python-psycopg2 para ejecutar correctamente bulmasetup.
+Pour la partie greffons on a besoin d'autres composants aditionnels.
 
-- python-reportlab para generar algunos informes.
+- python-psycopg2 pour exécuter correctement bulmasetup.
 
-- python-ooolib y ooolib-perl para los plugins que generan documentos en formato openoffice
+- python-reportlab pour générer quelques informations.
+
+- python-ooolib et ooolib-perl pour les greffons qui générent les documents au format openoffice.
 
 
-Estructura de directorios
+Structure des répertoires
 =========================
 
-Estos son los directorios principales del svn y sus respectivas explicaciones.
+Ce sont les répertoires principaux du svn et leurs explications respectives.
 
 - bulmalib
-Hay algunas librerias que son comunes a varios de los proyectos. Acceso a PostgreSql,
-configuración y algunos widgets raros. Son las librerías principales de la suite.
+Il ya quelques librairies qui sont communes à plusieurs projets. L'accès à PostgreSql et à la configuration de quelques widgets spécifiques. Elles sont les librairies principales de la suite.
 
 - bulmages
-Contiene el lanzador del programa.
+Contient le lanceur du programme.
 
 - bulmacont
-Directorio del programa bulmacont.
+Répertoire du programme de comptabilité bulmacont.
  
 - bulmasetup
-Directorio del programa bulmasetup, para realizar la configuración del programa.
+Répertoire du programme de configuration bulmasetup, afin de configurer celui-ci.
 
 - bulmafact
-Directorio del programa bulmafact.
+Répertoire du programme de facturation bulmafact.                  
 
 - installbulmages
-En este directorio está la parte de la suite que falta para hacer una
-instalación. Archivos de configuración, etc.
+Dans ce répertoire, on trouve ce qui manque pour installer la suite. Fichiers de configuration, etc...
 
 - scripts
-Contiene scripts utiles para el desarrollo.
+Contient les scripts utiles au programmeur.
 
 - images
-Contiene imágenes (recursos) que son usadas junto con el archivo bulmages.qrc
-como iconos de los programas.
+Contient les images (curseurs) qui sont utilisés dans le fichier bulmages.qrc
+comme les icônes de programmes.
 
 - ModulesCMake 
-Código CMake para poder construir la suite.
+Compilateur CMake pour construire la suite.
 
 - doc
-Documentación sobre la suite.
+Documentacion de la suite.
 
 
-Construir la suite
+Construire la suite
 ==================
 
 Se puede obtener de varias manera el directorio con el código fuente de la
