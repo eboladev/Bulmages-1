@@ -55,7 +55,7 @@ public:
     BlFixed operator [] ( int ) const;
     BlFixed operator = ( BlFixed );
     BlFixed operator = ( int );
-    QString toQString ( QChar separadorDecimal = '0', int precision = -1 );
+    QString toQString ( QChar separadorDecimal = '0', int precision = -1, QChar separadorMillares = '0' );
     friend BlFixed operator + ( BlFixed, BlFixed );
     friend BlFixed operator - ( BlFixed, BlFixed );
     friend BlFixed operator * ( BlFixed, BlFixed );
