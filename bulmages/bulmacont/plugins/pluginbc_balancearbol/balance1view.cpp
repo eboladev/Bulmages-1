@@ -457,6 +457,8 @@ void BalanceTreeView::presentar()
                     if ( nivelCta == 2 ) {
                         it->setTextColor ( col, Qt::black );
                         it->setFont ( col, QFont ( "SansSerif", 10, QFont::Bold, false ) );
+                        
+                    // TODO: El color deberia estar en funcion de si es una subcuenta o no y de la configuracion de las cuentas xxxxyyyyy.
                     } else if ( nivelCta < 5 ) {
                         it->setTextColor ( col, Qt::blue );
                     } else  {

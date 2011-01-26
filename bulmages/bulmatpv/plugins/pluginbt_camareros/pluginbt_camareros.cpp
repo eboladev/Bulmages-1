@@ -81,10 +81,10 @@ int BtCompany_createMainWindows_Post ( BtCompany *etpv )
 	m_hboxLayout1->addWidget (boton);
     } // end if
 
-    Trabajadores *trab = new Trabajadores ( etpv, 0 );
+    Trabajadores *trab = new Trabajadores ( etpv, 0, true );
     trab->exec();
-
-
+    
+    delete trab;
     return 0;
 }
 

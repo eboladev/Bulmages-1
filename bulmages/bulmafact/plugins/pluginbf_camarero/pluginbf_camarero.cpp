@@ -62,7 +62,7 @@ int TrabajadorView_TrabajadorView_Post ( TrabajadorView *trab )
     QLabel *textLabel2_9_26 = new QLabel ( trab->m_frameplugin );
     textLabel2_9_26->setObjectName ( QString::fromUtf8 ( "textLabel2_9_2" ) );
     hboxLayout160->addWidget ( textLabel2_9_26 );
-    textLabel2_9_26->setText ( "Contraseña" );
+    textLabel2_9_26->setText ( _("Clave numerica") );
 
     QLineEdit *tipotraba = new QLineEdit ( trab->m_frameplugin );
     tipotraba->setObjectName ( QString::fromUtf8 ( "mui_passwordtrabajador" ) );
@@ -70,12 +70,12 @@ int TrabajadorView_TrabajadorView_Post ( TrabajadorView *trab )
     hboxLayout160->addWidget ( tipotraba );
     
     QCheckBox *check1 = new QCheckBox (trab->m_frameplugin );
-    check1->setText("Administrador");
+    check1->setText(_("Administrador"));
     check1->setObjectName ( QString::fromUtf8 ( "mui_admintrabajador"));
     hboxLayout160->addWidget ( check1 );
     
     QCheckBox *check2 = new QCheckBox (trab->m_frameplugin );
-    check2->setText("Gerente");
+    check2->setText(_("Gerente"));
     check2->setObjectName ( QString::fromUtf8 ( "mui_gerentetrabajador"));
     hboxLayout160->addWidget ( check2 );
 

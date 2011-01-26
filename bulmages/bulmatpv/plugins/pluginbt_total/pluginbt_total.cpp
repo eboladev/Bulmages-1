@@ -178,10 +178,13 @@ int BtTicket_pintar ( BtTicket *tick )
 
     BlFixed total = totiva + totbaseimp + totreqeq - totirpf;
 
+    int maxprecision = 0;
 
     /// Pintamos el total
-    if ( g_tot )
-        g_tot->mui_total->setText ( total.toQString() );
+    if ( g_tot ) {
+	maxprecision = 2;
+        g_tot->mui_total->setText ( total.toQString('0', maxprecision) );
+    } // end if
 
     blDebug ( "END plugintotal::Ticket_pintar", 0 );
 

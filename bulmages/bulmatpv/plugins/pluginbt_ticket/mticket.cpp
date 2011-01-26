@@ -275,3 +275,4 @@ void MTicket::on_mui_formatear_clicked()
     
     blDebug ( "END MTicket::on_mui_formatear_clicked", 0 );
 }
+

@@ -92,8 +92,8 @@ int BtTicket_pintar ( BtTicket *tick )
     base basesimp;
     base basesimpreqeq;
     BlDbRecord *linea;
-    int precision=0;
-    int maxprecision=0;
+    int precision = 0;
+    int maxprecision = 0;
     
     /// Impresion de los contenidos.
     QString l;
@@ -113,8 +113,11 @@ int BtTicket_pintar ( BtTicket *tick )
     } // end for
 
     /// Pintamos el total
-    if ( g_tot )
+    if ( g_tot ) {
+        maxprecision = 2;
         g_tot->mui_total->setText ( total.toQString('0', maxprecision) );
+    } // end if
+    
     blDebug ( "END plugintotal::Ticket_pintar", 0 );
 
     return 0;

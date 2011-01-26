@@ -7,10 +7,18 @@
 #include "btcompany.h"
 
 
-Trabajadores::Trabajadores ( BlMainCompany *emp, QWidget *parent ) : QDialog ( parent ), BlMainCompanyPointer ( emp )
+Trabajadores::Trabajadores ( BlMainCompany *emp, QWidget *parent, bool deleteOnClose ) : QDialog ( parent ), BlMainCompanyPointer ( emp )
 {
     setupUi ( this );
 
+    connect (this, SIGNAL(rejected()), this, SLOT(closeDialog()) );
+    
+    mui_password->setFocus(Qt::OtherFocusReason);
+    installEventFilter(this);
+    
+    m_validUser = false;
+    m_deleteOnClose = deleteOnClose;
+    
     BlDbRecordSet *cur = mainCompany() ->loadQuery ( "SELECT * FROM trabajador" );
     while ( !cur->eof() ) {
         QPushButton * toolbutton = new QPushButton ( mui_frame );
@@ -25,21 +33,41 @@ Trabajadores::Trabajadores ( BlMainCompany *emp, QWidget *parent ) : QDialog ( p
             m_hboxLayout1->setObjectName ( QString::fromUtf8 ( "hboxLayout1" ) );
         } // end if
         m_hboxLayout1->addWidget ( toolbutton );
-        connect ( toolbutton, SIGNAL ( pressed() ), this, SLOT ( trabajadorClicked() ) );
+        connect ( toolbutton, SIGNAL ( clicked() ), this, SLOT ( trabajadorClicked() ) );
         cur->nextRecord();
     } // end while
+    
     delete cur;
 }
 
 
 Trabajadores::~Trabajadores()
-{}
+{
+}
 
+void Trabajadores::on_mui_cerrar_clicked()
+{
+    closeDialog();
+}
+
+
+void Trabajadores::closeDialog()
+{
+    if (!m_validUser && m_deleteOnClose) {
+	exit(0);
+    } // end if
+}
+
+
+void Trabajadores::closeEvent(QCloseEvent *event)
+{
+    closeDialog();
+}
 
 
 void Trabajadores::trabajadorClicked()
 {
-    BtCompany * emp1 = ( BtCompany * ) mainCompany();
+    BtCompany *emp1 = ( BtCompany * ) mainCompany();
     BtTicket *ticket = NULL;
     BtTicket *ticketv = NULL;
     bool encontrado = FALSE;
@@ -79,7 +107,8 @@ void Trabajadores::trabajadorClicked()
       }// end if
       delete cur;
 
+      m_validUser = true;
       done ( 0 );
-    }// end if
+    } // end if
 }
 

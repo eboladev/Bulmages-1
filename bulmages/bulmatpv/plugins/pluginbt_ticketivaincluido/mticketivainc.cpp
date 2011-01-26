@@ -250,3 +250,4 @@ void MTicketIVAInc::on_mui_borrarticket_clicked()
     
     ticket->pintar();
 }
+
