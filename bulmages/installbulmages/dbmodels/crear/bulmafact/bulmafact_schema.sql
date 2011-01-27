@@ -59,7 +59,26 @@ CREATE TRUSTED PROCEDURAL LANGUAGE plpgsql HANDLER plpgsql_call_handler;
 \echo -n ':: '
 BEGIN;
 
-
+\echo -n '::Funciones auxiliares ...'
+-- Esta Funcion devuelve una fecha si la fecha es correcta o NULL si esta no es correcta.
+-- Pensada para usar en conjuncion con COALESCE y no generar un error de SQL
+CREATE OR REPLACE FUNCTION BgValidDate(CHAR) RETURNS date AS $$
+ DECLARE
+     result DATE;
+      res BOOL;
+     validFormat TEXT := 'DD/MM/YYYY';
+ BEGIN
+    result := NULL;
+     SELECT TO_CHAR(TO_DATE($1,validFormat),validFormat) = $1
+     INTO res;
+     if (res = TRUE) THEN
+	RETURN $1::DATE;
+     END IF;
+     RETURN result;
+ END;
+ $$ LANGUAGE plpgsql;
+ 
+ 
 -- ** configuracion **
 -- En esta tabla se guardan parametros que el programa va a utilizar.
 -- Como por ejemplo el numero de digitos por defecto de las cuentas o el asiento inteligente
@@ -3078,9 +3097,9 @@ DECLARE
 BEGIN
 	SELECT INTO as * FROM configuracion WHERE nombre = ''DatabaseRevision'';
 	IF FOUND THEN
-		UPDATE CONFIGURACION SET valor = ''0.12.1-0006'' WHERE nombre = ''DatabaseRevision'';
+		UPDATE CONFIGURACION SET valor = ''0.12.1-0007'' WHERE nombre = ''DatabaseRevision'';
 	ELSE
-		INSERT INTO configuracion (nombre, valor) VALUES (''DatabaseRevision'', ''0.12.1-0006'');
+		INSERT INTO configuracion (nombre, valor) VALUES (''DatabaseRevision'', ''0.12.1-0007'');
 	END IF;
 	RETURN 0;
 END;

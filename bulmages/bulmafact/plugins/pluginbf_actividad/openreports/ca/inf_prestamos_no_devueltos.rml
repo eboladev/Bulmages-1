@@ -2,8 +2,8 @@
 <!DOCTYPE document SYSTEM "rml_1_0.dtd">
 
 <document>
-<!-- # pathtitle="&Activitats\Informes\Material no devuelto" -->
-  <template pageSize="(29.7cm, 21cm)" title="Material no devuelto" author="Tomeu Borras" allowSplitting="20">
+<!-- # pathtitle="&Activitats\Informes\Material no tornat" -->
+  <template pageSize="(29.7cm, 21cm)" title="Material no tornat" author="Tomeu Borras" allowSplitting="20">
     <pageTemplate id="first">
       <frame id="first" x1="0.5cm" y1="0.5cm" width="28.7cm" height="20cm"/>
     </pageTemplate>
@@ -40,7 +40,7 @@
   </stylesheet>
   <images/>
   <story>
-    <para style="Standard">Prestamo de Material no devuelto</para>
+    <para style="Standard">Prestec de Material no tornat</para>
     <para style="Standard">
       <font color="black"> </font>
     </para>

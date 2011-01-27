@@ -77,6 +77,26 @@ DROP FUNCTION compruebarevision() CASCADE;
 
 -- ================================== ACTUALIZACION  ===================================
 
+\echo "::Funciones auxiliares ... BgValidDate"
+-- Esta Funcion devuelve una fecha si la fecha es correcta o NULL si esta no es correcta.
+-- Pensada para usar en conjuncion con COALESCE y no generar un error de SQL
+CREATE OR REPLACE FUNCTION BgValidDate(CHAR) RETURNS date AS $$
+ DECLARE
+     result DATE;
+      res BOOL;
+     validFormat TEXT := 'DD/MM/YYYY';
+ BEGIN
+    result := NULL;
+     SELECT TO_CHAR(TO_DATE($1,validFormat),validFormat) = $1
+     INTO res;
+     if (res = TRUE) THEN
+	RETURN $1::DATE;
+     END IF;
+     RETURN result;
+ END;
+ $$ LANGUAGE plpgsql;
+
+
 SELECT drop_if_exists_proc('disminuyestockp', '');
 SELECT drop_if_exists_proc('aumentastockp', '');
 
@@ -657,16 +677,16 @@ DECLARE
 BEGIN
 	SELECT INTO as * FROM configuracion WHERE nombre = ''DatabaseRevision'';
 	IF FOUND THEN
-		UPDATE CONFIGURACION SET valor = ''0.12.1-0006'' WHERE nombre = ''DatabaseRevision'';
+		UPDATE CONFIGURACION SET valor = ''0.12.1-0007'' WHERE nombre = ''DatabaseRevision'';
 	ELSE
-		INSERT INTO configuracion (nombre, valor) VALUES (''DatabaseRevision'', ''0.12.1-0006'');
+		INSERT INTO configuracion (nombre, valor) VALUES (''DatabaseRevision'', ''0.12.1-0007'');
 	END IF;
 	RETURN 0;
 END;
 '   LANGUAGE plpgsql;
 SELECT actualizarevision();
 DROP FUNCTION actualizarevision() CASCADE;
-\echo "Actualizada la revision de la base de datos a la version 0.12-1.0006"
+\echo "Actualizada la revision de la base de datos a la version 0.12-1.0007"
 
 DROP FUNCTION drop_if_exists_table(text) CASCADE;
 DROP FUNCTION drop_if_exists_proc(text, text) CASCADE;

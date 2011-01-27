@@ -23,7 +23,7 @@ Dependencias:
 
 Incompatibles:
 
-Reports: profesor.rml; impers_profesor_alumnos.rml; impers_profesor_numalumnos.rml
+Reports: profesor.rml; impers_profesor_alumnos.rml; impers_profesor_numalumnos.rml; blform_ProfesorView.qs
 
 Categorias: Asociaciones de padres de alumnos; Experimentales;
 

@@ -2,8 +2,8 @@
 <!DOCTYPE document SYSTEM "rml_1_0.dtd">
 
 <document>
-<!-- # pathtitle="&Activitats\Informes\Material mas prestado" -->
-  <template pageSize="(29.7cm, 21cm)" title="Material mas prestado" author="Tomeu Borras" allowSplitting="20">
+<!-- # pathtitle="&Activitats\Informes\Material mes sol·licitat" -->
+  <template pageSize="(29.7cm, 21cm)" title="Material mes sol·licitat" author="Tomeu Borras" allowSplitting="20">
     <pageTemplate id="first">
       <frame id="first" x1="0.5cm" y1="0.5cm" width="28.7cm" height="20cm"/>
     </pageTemplate>
@@ -40,7 +40,7 @@
   </stylesheet>
   <images/>
   <story>
-    <para style="Standard">Material más utilizado</para>
+    <para style="Standard">Material mes emprat</para>
     <para style="Standard">
       <font color="black"> </font>
     </para>

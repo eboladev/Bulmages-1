@@ -24,7 +24,7 @@ Dependencias: libpluginbf_asociacion.so;libpluginbf_profesor.so;libpluginbf_form
 
 Incompatibles:
 
-Reports: recibod.rml
+Reports: recibod.rml; blform_ReciboView.qs
 
 Categorias: Asociaciones de padres de alumnos; Experimentales;
 
