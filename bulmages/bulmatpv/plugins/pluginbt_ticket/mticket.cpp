@@ -44,6 +44,8 @@ MTicket::MTicket ( BtCompany *emp, QWidget *parent ) : BlWidget ( emp, parent )
     setWindowTitle ( "Ticket" );
     g_plugins->lanza ( "MTicket_MTicket_Post", this );
     
+    m_parent = parent;
+    
     mui_plainText->setVisible(FALSE);
     mui_frame->setVisible(FALSE);
 

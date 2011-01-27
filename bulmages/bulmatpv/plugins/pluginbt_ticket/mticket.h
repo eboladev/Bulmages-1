@@ -35,6 +35,9 @@ class MTicket : public BlWidget, public Ui_MTicketBase
 {
     Q_OBJECT
 
+private:
+    QWidget* m_parent;
+
 public:
     MTicket ( BtCompany *emp, QWidget *parent );
     virtual ~MTicket();
