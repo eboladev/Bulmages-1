@@ -43,7 +43,7 @@ MTicketIVAInc::MTicketIVAInc ( BtCompany *emp, QWidget *parent ) : BlWidget ( em
     setupUi ( this );
     setFocusPolicy ( Qt::NoFocus );
     emp->pWorkspace()->addSubWindow ( this );
-    setWindowTitle ( "Ticket" );
+    //setWindowTitle ( "Ticket" );
     m_parent = parent;
 
     /// Por defecto hacemos el browser invisible porque es leeeento
@@ -82,8 +82,9 @@ void MTicketIVAInc::pintar()
     QString plainTextContent = "";
     QString htmlContent = "<p style=\"font-family:monospace; font-size: 12pt;\">";
 
-    plainTextContent += "Ticket: " + ticket->dbValue ( "nomticket" ) + "\n";
-    htmlContent += "Ticket: " + ticket->dbValue ( "nomticket" ) + "<br>";
+    QString tituloTicket = "Ticket: " + ticket->dbValue ( "nomticket" ) + " " + _("(I.V.A. inc.)");
+    
+    m_parent->setWindowTitle(tituloTicket);
 
     query = "SELECT idtrabajador, nomtrabajador FROM trabajador WHERE idtrabajador = " + ticket->dbValue ( "idtrabajador" );
     BlDbRecordSet *rsTrabajador = mainCompany()->loadQuery ( query );
@@ -103,7 +104,7 @@ void MTicketIVAInc::pintar()
     plainTextContent += "----------------------------------------\n";
 
     htmlContent += "<tr><td width=\"10%\">" + QString(_("CANT:")) + "</td><td width=\"80%\">" + QString(_("ARTICULO:")) + "</td><td width=\"10%\">" + QString(_("PRECIO:")) + "</td></tr>";
-    htmlContent += "<tr><td colspan=\"3\"><hr></td></tr>";
+    htmlContent += "<tr><td colspan=\"3\" style=\"font-size:1px;\"><hr></td></tr>";
 
     for ( int i = 0; i < ticket->listaLineas()->size(); ++i ) {
         item = ticket->listaLineas()->at ( i );
@@ -168,8 +169,9 @@ void MTicketIVAInc::pintar()
 
     plainTextContent += "----------------------------------------\n";
 
+
+    htmlContent += "<tr><td colspan=\"3\" style=\"font-size:1px;\"><hr></td></tr>";
     htmlContent += "</table>";
-    htmlContent += "<br><hr><br>";
     htmlContent += "</p>";
 
     mui_browser->setText ( htmlContent );

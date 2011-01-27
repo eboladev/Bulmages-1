@@ -67,15 +67,16 @@ void MTicket::pintar()
         return;
     } // end if
 
-QString buscar;
+    QString buscar;
 
     BtTicket *tick = ( ( BtCompany * ) mainCompany() ) ->ticketActual();
     QString htmlContent = "<p style=\"font-family:monospace; font-size: 12pt;\">";
     QString plainTextContent = "";
     QString query;
 
-    htmlContent += "Ticket: "+ tick->dbValue ( "nomticket" ) + "<BR>";
-    plainTextContent += "Ticket: " + tick->dbValue ( "nomticket" ) + "\n";
+    QString tituloTicket = "Ticket: " + tick->dbValue ( "nomticket" ) + " " + _("(sin I.V.A.)");
+    
+    m_parent->setWindowTitle(tituloTicket);
 
     query = "SELECT * FROM trabajador WHERE idtrabajador = " + tick->dbValue ( "idtrabajador" );
     BlDbRecordSet *rsTrabajador = mainCompany() ->loadQuery ( query );
