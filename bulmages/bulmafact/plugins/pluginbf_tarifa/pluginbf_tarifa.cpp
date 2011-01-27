@@ -98,7 +98,7 @@ int entryPoint ( BfBulmaFact *bges )
     blDebug ( "Punto de Entrada del plugin de tarifas\n", 0 );
 
     /// El plugin necesita un parche en la base de datos para funcionar.
-    bges->company()->dbPatchVersionCheck("PluginBF_VariacionTarifa", "0.11.1-0001");
+    bges->company()->dbPatchVersionCheck("PluginBf_VariacionTarifa", "0.11.1-0001");
 
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale ( LC_ALL, "" );

@@ -33,7 +33,7 @@ int entryPoint ( BfBulmaFact *bges )
     blDebug ( "Estoy dentro del plugin de iva incluido", 0 );
 
     /// El plugin necesita un parche en la base de datos para funcionar.
-    bges->company()->dbPatchVersionCheck("PluginBf_IVAIncluido", "0.11.1-0000");
+    bges->company()->dbPatchVersionCheck("PluginBf_IVAIncluido", "0.12.1-0000");
     
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale ( LC_ALL, "" );
