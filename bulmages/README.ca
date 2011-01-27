@@ -1,0 +1,290 @@
+========================================
+Software de Gestió Empresarial BulmaGés
+
+(C) 2003 - 2010 Associació IGLUES
+http://www.iglues.org
+
+========================================
+#README.ca
+
+BulmaGés 0.12.0 (Setembre 2009)
+
+Contingut
+---------
+
+- Introducció
+- Característiques
+- Requeriments
+- Estructura de directoris
+- Construir la suite
+- Posada en marxa
+- Bugs, comentaris, problemes, etc
+- Codi específic o no alliberat
+
+Introducció
+============
+
+BulmaGés és una aplicació modular que pretén cobrir les necessitats de
+gestió empresarial de qualsevol petita i mitjana empresa dins de
+l'entorn del programari lliure. S'identifiquen clarament quatre àrees
+en les qual el programari pot actuar:
+a) Comptabilitat - Bulmacont
+b) Facturació - BulmaFact
+c) Terminal Punt de Venda - BulmaTPV
+
+En l'actualitat (Maig 2009), l'aplicació de comptabilitat (Bulmacont),
+facturació (Bulmafact) i el terminal de Punt de Venda (BulmaTPV) ja
+són operatius.
+
+
+Característiques 
+===============
+
+Tot i que totes aquestes aplicació estan pensades per funcionar com
+una sola, la seva modularitat permet que funcioni cada una de forma
+independent, facilitant així la migració progressiva des d'altres
+aplicacions o l'adopció sols d'aquelles eines que siguin necessàries
+per a l'empresa. BulmaGés és programari lliure i està alliberat sota
+llicència GPL, es pot obtenir, tant el programari com el codi font, de
+forma gratuïta a través d'Internet o de les diferents distribucions
+(CD) que facilita l'associació IGLUES.
+
+BulmaGés ofereix la màxima qualitat d'una completa eina de gestió
+integrada configurable per adaptar-se a les necessitats de l'empresa
+mitjançant un sistema de mòduls i plugins en funció del sector en el
+qual s'operi i la dimensió de l'organització. 
+
+BulmaGés pot funcionar en múltiples plataformes. Els desenvolupadors
+treballen principalment en GNU/Linus. També es pot utilitzar en MacOSC
+i MSWIndows. Les limitacions estan en els requeriments, més que en la
+suite. L'aplicatiu pot ser executat en local o en remot, sense límits
+de llicències, empreses o usuaris. 
+
+BulmaGés és una suite de programari que inclou diversos binaris, una
+biblioteca, un programa de configuració, enllaç amb base de dades,
+múltiples scripts, múltiples plugins (petites biblioteques) i certa
+documentació. Tot això fa que sigui un programari complet. 
+
+BulmGés està desenvolupat per diferents persones que han col·laborat
+en el projecte, algunes actives actualment i d'altres no. En general
+són persones en torn a l'Associació Iglues (www.iglues.org).
+
+L'àmbit d'aplicació del program és el d'empreses, associacions o
+entitats que desitguin portar un sistema de gestió ja sigui a nivell
+de comptabilitat, o de facturació o de venda. El sistema de
+comptabilitat és el d'Espanya, tenint incoporat els plans comptables
+espanyols. Ara bé, el sistema de comptabilitat (facturació) es pot
+adaptar a d'altres sistemes comptables, únicament canviant el pla
+comptable. 
+
+Requeriments
+==============
+
+Per poder utilitzar BulmaGés cal compilar el codi font i realitzar una
+instal·lació. Es poden realitzar proves sense instal·lar el software,
+però és recomanable sols a nivell de desenvolupament. Tota la suite
+necessita utilitzar una base de dades, en concret PostgreSql.
+
+Per compilar el codi font es necessita:
+
+- biblioteca Qt, com a mínim 4.3 http://www.qtsoftware.com/downloads.
+Aquesta és la biblioteca dels widgets, de la interfície gràfica.
+
+- python i pyqt4, python 2.4 i el "binding" pyqt4 en acord amb la
+versió de Qt instal·lada.
+
+- cmake, como a mínim versió 2.4.8 http://www.cmake.org/HTML/index.html. 
+És l'eina de construcció del programari.
+
+- libpq i postgresql. Es necessita com a mínim PostgreSQL 8.1. Per
+poder compilar l'aplicatiu es necessita libpq, que és la biblioteca
+per poder accedir a una base de dades PostgreSql. I PostgreSql per
+poder executar l'aplicació. http://www.postgresql.org/download/
+
+Per executar tots els programes i plugins a més hi ha components
+addicionals. 
+
+- python-psycopg2 per executar correctament bulmasetup.
+
+- python-reportlab per generar alguns informes.
+
+- python-ooolib i ooolib-perl per als plugins que generen documents en
+format openoffice
+
+
+Estructura de directoris
+=========================
+
+Aquests són els directoris principals del svn i les seves respectives
+explicacions. 
+
+- bulmalib
+Hi ha algunes llibreries que són comunes a diversos projectes. Accés a
+PostgreSql i alguns widgets rars. Són les llibreries principals de la
+suite. 
+
+- bulmages
+Conté el llençador del programa.
+
+- bulmacont
+Directori del programa bulmacont.
+ 
+- bulmasetup
+Directori del programa bulmasetup, per realitzar la configuració del
+programa. 
+
+- bulmafact
+Directori del programa bulmafact.
+
+- installbulmages
+En aquest directori està la part de la suite que falta per fer una
+instal·lació. Fitxers de configuració, etc.
+
+- scripts
+Conté scripts útils per al desenvolupament.
+
+- images
+Conté imatges (recursos) són usades junt amb el fitxer bulmages.qrc
+com a icones dels programes. 
+
+- ModulesCMake 
+Codi CMake per poder contruir la suite.
+
+- doc
+Documentació sobre la suite.
+
+
+Construir la suite
+==================
+
+Es pot obtenir de diverses maneres el directori amb el codi fon de la
+suite. Sigui descarregant-se el comprimit (tar.bz2, tar.gz, tgz, zip,
+etc) o fent un checkout del dipòsit subversion:
+
+svn checkout http://svn.berlios.de/svnroot/repos/bulmages/trunk/bulmages 
+
+Dins del directori cal fer:
+
+1) mkdir build
+2) cd build
+3) cmake ../
+4) make
+
+Fins aquí, si tots el requeriments s'han completat, la suite hauria de
+compilar-se sense problemes. Si sols desitgeu compilar una part del
+programa podeu entrar dins del directori corresponent i compilar
+executant make. Però tingueu en compte que hi ha una part mínima que
+necessiteu compilar.
+
+5) make install
+Instal·la el programari a /usr/local (plataforma Unix), en 
+%PROGRAMFILES%\bulmages\ a MSWindows.
+
+Notes per a la instal·lació:
+
+El programa depèn de certs fitxers a /etc/bulmages per executar-se
+correctament. 
+
+Quan s'està desenvolupant és fastigós reinstal·lar per comprovar el
+correcte funcionament del programa. 
+
+En aquest cas, és útil canviar en la instal·lació els següents fitxers
+per soft links als executable i llibreries resultants en el nostre
+directori de compilació.
+
+ATENCIÓ:
+Aquest és un procés delicat. Si no es comprèn bé, es millor deixar-lo
+anar. 
+
+Abans de fer això, cal realitzar una primera instal·lació perquè es
+generin, entre d'altres coses, els plubings i el directori de
+configuració. 
+
+Aquests són els fitxers que s'han d'enllaçar amb els binaris es vagin
+compilant: 
+
+/usr/local/lib/libbulmacont.so.X.Y.Z
+/usr/local/lib/libbulmafact.so.X.Y.Z
+/usr/local/lib/libbulmalib.so.X.Y.Z
+/usr/local/lib/libbulmages.so.X.Y.Z
+/usr/local/lib/libbulmatpv.so.X.Y.Z
+/usr/local/bin/bulmacont
+/usr/local/bin/bulmafact
+/usr/local/bin/bulmages
+/usr/local/bin/bulmatpv
+
+A més, cal reemplaçar les libpluginb...so.X.Y.Z per enllaços simbòlics
+als plugins sobre els quals anem a treballar. Enllaçar-los tots seria
+massa treballós. 
+
+D'aquesta forma, sempre es pot tenir en execució una versió en
+desenvolupament. Però tenint cura amb els plugins sobre els quals es
+treballa en cada moment. 
+
+
+Posada en marxa
+================
+
+Un cop instal·lada la suite s'ha de posar en marxa les bases de dades,
+els usuaris i les empreses. Aquest procés es pot realitzar
+principalment de dues formes: utilitzant bulmasetup o de forma manual.
+
+1) bulmasetup
+
+BulmaSetup és un aplicatiu que ajuda a realitzar la posada en marxa de
+la suite,
+- donant d'alta usuaris a la base de dades
+- creant empreses per a la comptabilitat, facturació/tpv
+- realitzant còpies de seguretat 
+
+Calen privilegis de superusuari de PostgresSql per poder executar
+aquesta aplicació. A una instal·lació típica de GNU/Linux, s'executa
+amb permisos de root, sigui amb sudo o des d'una terminal root. 
+
+
+2) de forma manual
+
+Al directori share/bulmages/examples hi ha una sèrie de scripts que
+poden servir d'exemple de com donar d'alta un usuari, crear una
+empresa i realitzar les tasques típiques de gestió del programa. 
+
+
+Bugs, comentaris, problemes, etc
+=================================
+
+Si teniu algun comentari, suggeriment, error trobat, el millor que
+podeu fer és informar als desenvolupadors. Per fer-lo podeu:
+
+- subscriure-us a la llista de correu de BulmaGés:
+http://llistes.bulma.net/mailman/listinfo/bulmages
+
+llista de tràfic mitjà que els desenvolupadors i la gent del projecte
+utilitzen per intercanviar notícies, dubtes, etc. sobre BulmGés. 
+
+- posar un bug al sistema de gestió de bugs de Berlios.
+
+http://developer.berlios.de/bugs/?func=browse&group_id=4472
+
+* heu d'estar donat d'alta com a usuari de Berlios.
+
+Codi específic o no alliberat
+===============================
+
+Podeu crear els vostres propis plugins de projecte. Recordeu que
+BulmaGés està alliberat sota llicència GPL i per tant els seus plugins
+també ho seran. Ara bé, vosté no està obligat a fer públics els seus
+plugins, per molt que a nosaltres ens agradaria.
+
+El projecte BulmaGés té com a fi promocionar el programari lliure a
+nivell de gestió empresarial i poder fomentar la petita indústria
+"local" en aquest àmbit. Creeu un plugins de personalitzacions per a
+cada un dels vostres clients i oferiu un servei de manteniment
+compilant les últimes versions de la suite amb els seus plugins
+específics. 
+
+Si teniu codi "privat", afegiu-lo creant un fitxer
+CMakeLists.txt.private, apuntant als directori que
+necessiteu. D'aquesta forma els seus plugins es compilaran junt amb
+tot el programa, fins i tot podreu actualitzar el dipòsit del programa
+i mantenir els seus desenvolupament particulars actualitzats en tot
+moment sense tenir que realitzar complicades gestions. 
