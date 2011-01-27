@@ -10,14 +10,14 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
 "POT-Creation-Date: 2010-09-23 18:22+0200\n"
-"PO-Revision-Date: 2011-01-26 19:54+0100\n"
+"PO-Revision-Date: 2011-01-27 17:21+0100\n"
 "Last-Translator: Girard Henri <aishen@free.fr>\n"
 "Language-Team: French <kde l10n>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"Language: fr"
+"Language: frX-Generator: Lokalize 1.2\n"
 "X-Generator: Lokalize 1.2\n"
 
 #: ui_bcdiarioprintbase.h:159
@@ -262,7 +262,7 @@ msgstr "idtypetva"
 
 #: pluginbc_diario.cpp:89
 msgid "menuVer"
-msgstr "menuVoir"
+msgstr "Afficher"
 
 #: bcdiariosubform.cpp:48
 msgid "tipocuenta"
