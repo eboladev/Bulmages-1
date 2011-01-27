@@ -79,6 +79,12 @@ BEGIN
 	    ALTER TABLE albaran ADD CONSTRAINT idzfk FOREIGN KEY (idz) REFERENCES z(idz);
 	END IF;
 
+	SELECT INTO rec attname, relname FROM pg_attribute LEFT JOIN pg_class ON pg_attribute.attrelid=pg_class.oid WHERE attname=''cambiosalbaran'' AND relname=''albaran'';
+	IF NOT FOUND THEN
+	    ALTER TABLE albaran ADD COLUMN cambiosalbaran VARCHAR;
+	    ALTER TABLE albaran ADD COLUMN cambiospostalbaran VARCHAR;
+	END IF;
+
 	RETURN 0;
 END;
 ' LANGUAGE plpgsql;
@@ -99,9 +105,9 @@ DECLARE
 BEGIN
 	SELECT INTO as * FROM configuracion WHERE nombre=''DBRev-BulmaTPV'';
 	IF FOUND THEN
-		UPDATE CONFIGURACION SET valor=''0.10.2-0002'' WHERE nombre=''DBRev-BulmaTPV'';
+		UPDATE CONFIGURACION SET valor=''0.12.1-0007'' WHERE nombre=''DBRev-BulmaTPV'';
 	ELSE
-		INSERT INTO configuracion (nombre, valor) VALUES (''DBRev-BulmaTPV'', ''0.10.2-0002'');
+		INSERT INTO configuracion (nombre, valor) VALUES (''DBRev-BulmaTPV'', ''0.12.1-0007'');
 	END IF;
 	RETURN 0;
 END;

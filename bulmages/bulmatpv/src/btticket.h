@@ -126,6 +126,7 @@ public:
     void substrVars(QByteArray &buff, int tipoEscape = 0);
     void setVar(const QString &varname, const QString &varvalue);
     void clearVars();
+    void agregarLog(const QString &log);
     
 public slots:
     virtual void subir();
