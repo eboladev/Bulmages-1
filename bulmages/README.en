@@ -1,0 +1,286 @@
+========================================
+Business Management Software BulmaGés
+
+(C) 2003 - 2010 IGLUES Association
+http://www.iglues.org
+
+========================================
+#README.en
+
+BulmaGés 0.12.0 (September 2009)
+
+Contents
+---------
+
+- Introduction
+- Characteristics
+- Requirements
+- Directory structure
+- Constructing the suite
+- Starting the program
+- Bugs, comments, problems ...
+- Specific or non freed code
+
+Introduction
+============
+
+BulmaGés is a modular application that intends to cover the needs of
+business management for any small or medium firm in the free software
+environment. Four areas are clearly identified where the software can
+operate: 
+a) Accounting - BulmaCont
+b) Billing and invoicing - BulmaFact
+c) Point of Sale Terminal - BulmaTPV
+
+Currently (May 2009), the accounting application (BulmaCont), billing
+and invoicing (BulmaFact) and the Point of Sale Terminal (BulmaTPV)
+are operative. 
+
+Characteristics
+===============
+
+Despite the fact that these applications are thought so as to operate
+as a single one, their modularity allows them to operate
+independently, helping therefore in a progressive migration from other
+applications or in the adoption of only those tools that a specific
+firm needs. BulmaGés is free software and is released under the GPL
+license. Both the software and the code can be obtained freely
+through the Internet or through the different distributions (CD)
+provided by the IGLUES association.
+
+BulmaGés offers maximum quality in a complete integral management
+tool, which can be configured to adapt to the needs of any firm by
+means of a system of modules and plug-ins depending on the industry and
+the size of the firm. 
+
+Bulmagés can work in multiple platforms. The developers work mainly
+with GNU/Linux. It can be also used in MacOSX and MSWindows. The
+limitations are related to the requirements, but not to the suite. The
+application can be run locally or remotely, without any limit in the
+number of licenses, firms or users. 
+
+BulmaGés is a software suite including various binaries, a library, a
+configuration program, links to database, multiple scripts, multiple
+plug-ins (small libraries) and some documentation. This makes it a
+complex software.
+
+BulmaGés is developed by different people that have collaborate with
+the project, some of them are active currently and some are not. In
+general these are people related to the Iglues Association
+(www.iglues.org). 
+
+The application scope of the program is firms, associations and
+organizations willing to maintain a management system either for
+accounting, or billing and invoicing or sales. The accounting system
+is the Spanish one, and the accounting plans included are the Spanish
+accounting plans. Nevertheless, the accounting system (and invoicing)
+can be adapted to other accounting systems, simply by changing the
+accounting plan. 
+
+Requirements
+==============
+
+To be able to use BulmaGés the code has to be compiled and an
+installation has to be performed. The software can be run and tried
+without installation, but it is only advisable at the development
+level. The complete suite needs to use a database, specifically
+PostgrSql. 
+
+To compile the code the following is needed:
+
+- biblioteca Qt, at least  4.3 http://www.qtsoftware.com/downloads. 
+This is the widgets library, corresponding to the graphical interface.
+
+- python and pyqt4. python 2.4 and the pyqt4 binding according to the
+Qt version installed.
+
+- cmake, at least version 2.4.8 http://www.cmake.org/HTML/index.html. This 
+is the tool to construct the software.
+
+- libpq and postgresql. At least PostgrSql 8.1 is needed. To compile
+the application libpq is needed, which is the library to be able to
+access the PostgrSql database. And PostgrSql in order to execute the
+application.  http://www.postgresql.org/download/
+
+In order to run all the programs and plug-ins additional components
+are needed.
+
+- python-psycopg2 to run bulmasetup correctly
+
+- python-reportlab to generate some reports. 
+
+- python-ooolib and ooolib-perl for the plug-ins that generate
+documents in openoffice format
+
+
+Directory structure
+===================
+
+These are the main directories of svn and their corresponding explanations.
+
+- bulmalib
+There are some common libraries for the various projects. PostgreSql,
+configuration and some rare widgets. These are the main libraries of
+the suite.
+
+- bulmages
+It contains the program launcher.
+
+- bulmacont
+Bulmacont program directory.
+
+- bulmasetup
+Bulmasetup program directory, used to configure the program.
+
+- bulmafact
+Bulmafact program directory.
+
+- installbulmages
+The components needed to perform an installation can be found in this
+directory. Configuration files, etc.
+
+- scripts
+It contains useful scripts for development. 
+
+- images
+It contains images (resources) used jointly with the bulmages.qrc file
+as program icons. 
+
+- ModulesCMake 
+CMake code needed to construct the suite.
+
+- doc
+Suite documentation.
+
+Constructing the suite
+=====================
+
+The directory with the program code can be obtained in different
+ways. The compressed directory structure (tar.bz2, tar.gz, tgz, zip,
+etc) or running a checkout of the subversion repository:
+
+svn checkout http://svn.berlios.de/svnroot/repos/bulmages/trunk/bulmages 
+
+Within the directory the following commands have to be run:
+
+1) mkdir build
+2) cd build
+3) cmake ../
+4) make
+
+If all requirements have been met, the suite should compile at this
+point without any problem. If you only want to compile a part of the
+program you can enter into the corresponding directory and run make
+there. But take into account that there is a set of minimum components
+that you have to compile.
+
+5) make install
+It install the software in /usr/local (Unix platform), or
+%PROGRAMFILES%\bulmages\ in MSWindows.
+
+Notes for the installation:
+
+The program depends on some files in /etc/bulmages to run correctly.
+
+When the program is being developed, it is cumbersome to reinstall to
+verify if the program is working properly. 
+
+In this case, it is useful to change the following files in the
+installation for soft links to the resulting executables and libraries
+in our compilation directory.
+
+WARNING:
+This is a delicate process. If it is not well understood, it is better
+to let it go.
+
+Before doing this, a first installation is needed to generate, among
+other things, the plug-ins and the configuration directory.
+
+These are the files that need to be linked with the binaries that are
+being compiled:
+
+/usr/local/lib/libbulmacont.so.X.Y.Z
+/usr/local/lib/libbulmafact.so.X.Y.Z
+/usr/local/lib/libbulmalib.so.X.Y.Z
+/usr/local/lib/libbulmages.so.X.Y.Z
+/usr/local/lib/libbulmatpv.so.X.Y.Z
+/usr/local/bin/bulmacont
+/usr/local/bin/bulmafact
+/usr/local/bin/bulmages
+/usr/local/bin/bulmatpv
+
+Furthermore, the libpluginb...so.X.Y. have to substituted by symbolic
+links to the plug-ins that we are working out. Linking everything would
+be too much work.
+
+In this way, a development version can be always ready for
+execution. But taking care of the specific plug-ins being developed in
+each moment.
+
+Starting the program
+===================
+
+Once the suite has been installed, the database has to be started, and
+the users and firms added. This process can be done mainly in two
+ways: using bulmasetup or manually.
+
+
+1) bulmasetup
+
+BulmaSetup is a program that helps in getting the suite started,
+
+- creating users in the database
+- creating firms for accounting, invoicing/Point of Sale
+- doing backups
+
+Postgres superuser privileges are needed in order to run this
+program. In a typical GNU/Linux installation, it has to be run with
+root permissions, either with sudo or from a root shell. 
+
+
+2) manually
+
+In the share/bulmages/examples there are a series of scripts that can
+be used as an example of how to create a user, how to create a firm
+and how to perform the typical management tasks of the program.
+
+
+Bugs, comments, problems ...
+============================
+
+If you have any comment, suggestion, bug, the best thing is to inform
+the developers. In order to do this you can:
+
+
+- subscribe to mailing list of BulmaGés:
+http://llistes.bulma.net/mailman/listinfo/bulmages
+
+a medium traffic list where the developers and other people of the
+project exchange news, doubts, and so on about BulmaGés.
+
+- enter a but in the bug management system of Berlios.
+
+http://developer.berlios.de/bugs/?func=browse&group_id=4472
+
+*you need to have a user account in Berlios.
+
+Specific or non-freed code
+==========================
+
+You can create your own plug-ins within the project. Just remind that
+BulmGés is freed under the GPL license, and therefore the plugins will
+also have this license. Now, you do not need to make your plug-ins
+public, despite the fact that we would love that you do it. 
+
+The Bulmagés project has the goal of promoting free software at the
+firm management level and to be able to promote the small "local"
+industry in this ambit. Just create a personalized plug-in for each
+one of your costumers and provide a maintenance service consisting of
+compiling the last versions of the suite with its specific plug-ins. 
+
+If you have "private" code, add it by creating a
+CMakeLists.txt.private file, pointing to the directories that you
+need. In this way your plug-ins will be compiled together with the
+rest of the program, you can even update the program repository and
+maintain your personalized developments updated in every moment
+without needing to perform complicate tasks.
