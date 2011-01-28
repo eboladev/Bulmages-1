@@ -53,8 +53,12 @@ QString const BlDoubleSpinBox::text()
 {
     blDebug ( "BlDoubleSpinBox::text", 0 );
     QString a = QDoubleSpinBox::text();
-    //a = a.replace(",", ".");
-    blDebug ( "END BlDoubleSpinBox::text", 0 );
+
+    /// Conversi&oacute;n al formato del locale "C": un punto separa la parte decimal
+    QLocale locale;
+    a = locale.toString((locale.toDouble(a))); //ARON
+
+    blDebug ( "END BlDoubleSpinBox::text", 2, a );
     return a;
 }
 

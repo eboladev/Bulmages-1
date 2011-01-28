@@ -283,7 +283,7 @@ QString BlDbRecordSet::valor ( int posicion, int registro, bool localeformat )
     if ( localeformat ) {
         if ( dbFieldType ( posicion ) == 1700 ) {
             /// La base de datos solo devuelve valores numericos con tipoDecimal el . y por eso solo tratamos este caso.
-            val = locale.toString(val.toDouble()); //ARON
+            val = locale.toString((locale.toDouble(val))); //ARON
         } // end if
     } // end if
     blDebug ( "END BlDbRecordSet::valor", 0 );

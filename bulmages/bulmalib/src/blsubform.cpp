@@ -3562,7 +3562,7 @@ void BlSubFormDelegate::setEditorData ( QWidget* editor, const QModelIndex& inde
    } else if ( linea->dbFieldType() == BlDbField::DbNumeric ) {
         QString value = index.model() ->data ( index, Qt::DisplayRole ).toString();
         BlDoubleSpinBox *spinBox = static_cast<BlDoubleSpinBox*> ( editor );
-        QLocale locale; //ARON
+        QLocale locale;
         spinBox->setValue ( value.remove(locale.groupSeparator()).toDouble() ); //ARON
         spinBox->selectAll();
     } else if ( linea->dbFieldType() == BlDbField::DbInt ) {
