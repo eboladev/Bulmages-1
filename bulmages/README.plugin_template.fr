@@ -1,0 +1,22 @@
+#######
+#Greffons
+#######
+#README.fr
+#28022011 Mettre la date de la dernière révision
+
+Nom : Greffon papiroflexia
+
+Bibliotèque : libpluginpapiroflexia.so
+
+Description : Pouvoir faire des conceptions de papiroflexia avec les factures et les reçus. Utilisant des élements de logique diffuse de forme que le nom du client garde toujours dans la partie visible de la facture.
+
+ParmBD: DBRev-papiroflexia
+
+ArchivoSQLpatch: revf-pluginpapiroflexia
+
+ArchivoSQLdeins: revf-rmpluginpapiroflexia
+
+Commentaires : Texte avec toute l'information que l'on désire ajouter. La limite est la marge finale du fichier. 
+
+On peut avoir des paraphes et le texte créé à sa convenance.
+
