@@ -435,6 +435,8 @@ QString BlConfiguration::nombre ( int i )
 	return "CONF_DIR_DEFAULT_CONFS";
     if ( i == CONF_RESIZEROWSTOCONTENTS )
 	return "CONF_RESIZEROWSTOCONTENTS";
+    if ( i == CONF_TPV_REIMPRIMIR )
+	return "CONF_TPV_REIMPRIMIR";
     return "";
 }
 

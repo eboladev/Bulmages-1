@@ -36,7 +36,6 @@ Total::~Total()
 
 void Total::on_mui_cobrar_clicked()
 {
-    //( ( BtCompany * ) mainCompany() ) ->pulsaTecla ( Qt::Key_F5 );
     ( ( BtCompany * ) mainCompany() )->cobrar(mui_imprimiralcobrar->isChecked());
 }
 

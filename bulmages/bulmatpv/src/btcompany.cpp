@@ -666,7 +666,12 @@ void BtCompany::cobrar(bool imprimir)
             blDebug ( "Error en la llamada a guardar()", 0 );
             return;
         }// end if
-        
+
+        if (imprimir && g_confpr->valor(CONF_TPV_REIMPRIMIR) == "TRUE") {
+            m_ticketActual->imprimir();
+        }// end if
+
+
     // Si no, guardamos e imprimimos tambien si se nos indica
     } else {
     

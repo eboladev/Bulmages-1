@@ -224,6 +224,8 @@
 #define CONF_TPV_SERVER_SYNC_IP      459
 /// Puerto serie de una posible bascula
 #define CONF_TPV_BASCULA_FILE        460
+/// Impresion al cobrar de tickets ya impresos antes 
+#define CONF_TPV_REIMPRIMIR          461
 
 /// CONF_NUM_AUT_* determina si se utilizaran numeradores automaticos para presupuestos,
 /// albaranes y facturas inicialmente vale "".
