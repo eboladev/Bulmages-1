@@ -104,48 +104,35 @@ Documentacion de la suite.
 Construire la suite
 ==================
 
-Se puede obtener de varias manera el directorio con el código fuente de la
-suite. Sea descargandose el comprimido (tar.bz2, tar.gz, tgz, zip, etc) o
-haciendo un checkout del repositorio subversion: 
+On peut obtenir de différente façon le code de la suite. Soit télécharger le fichier compressé (tar.bz2, tar.gz, tgz, zip, etc) ou utiliser le dépôt subversion : 
 
 svn checkout http://svn.berlios.de/svnroot/repos/bulmages/trunk/bulmages 
 
-Dentro del directorio hay que hacer:
+Ensuite dans le répertoire ainsi créer, faire dans un shell :
 
 1) mkdir build
 2) cd build
 3) cmake ../
 4) make
 
-Hasta aquí, si todos los requerimientos han sido completados, la suite debería
-compilarse sin problemas. Si sólo desea compilar una parte del programa puede
-entrar dentro del directorio correspondiente y compilar ejecutando make. Pero
-tenga en cuenta que hay una parte mínima que necesita compilar.
+Jusque là, si tous les requièrements sont installés, la suite devrait se compiler sans problèmes.Si on veut compiler seulement une partie du programme, on peut entrer dans le répertoire correspondant et compiler en exécutant make. Mais on doit tenir compte d'un minimum nécessaire pour compiler.
 
 
 5) make install
-Instala el software en /usr/local (plataformas Unix),
-en %PROGRAMFILES%\bulmages\ en MSWindows.
+Installer le logiciel dans /usr/local (plateformes Unix),
+dans %PROGRAMFILES%\bulmages\ sur MSWindows.
 
-Notas para la instalación:
+Notes pour l'installation :
 
-El programa depende de ciertos archivos en /etc/bulmages para ejecutarse
-correctamente.
+Le programme dépend de certain fichiers dans /etc/bulmages pour s'exécuter correctement.
 
-Cuando se está desarrollando es engorroso reinstalar para comprobar el
-correcto funcionamiento del programa.
+Il es utile de réinstaller le programme une fois compilé.
+Compilation :
+C'est un procédé délicat, qu'il vaut mieux laisser comme tel, s'il n'est pas bien.
+Avant de commencer il faut faire une première installation pour que soit généré entre autre chose, les grefoons du répertoire de configuration
 
-En dicho caso, es útil cambiar en la instalación los siguientes archivos
-por soft links a los ejecutables y librerías resultantes en nuestro directorio
-de compilación.
+Voici les fichiers qui doivent être installés avec les binaires qui ont été compilés :
 
-OJO:
-Este es un proceso delicado. Si no se comprende bien, es mejor dejarlo estar.
-
-Antes de hacer esto, hay que realizar una primera instalación para que se generen,
-entre otras cosas, los plugins y el directorio de configuración.
-
-Estos son los archivos que se deben enlazar con los binarios que se vayan compilando:
 /usr/local/lib/libbulmacont.so.X.Y.Z
 /usr/local/lib/libbulmafact.so.X.Y.Z
 /usr/local/lib/libbulmalib.so.X.Y.Z
@@ -156,73 +143,56 @@ Estos son los archivos que se deben enlazar con los binarios que se vayan compil
 /usr/local/bin/bulmages
 /usr/local/bin/bulmatpv
 
-Además, hay que reemplazar los libpluginb...so.X.Y.Z por enlaces simbólicos a los
-plugins sobre los que vayamos a trabajar. Enlazarlos todos sería demasiado laborioso.
+En outre il n'y a qu'à remplacer libpluginb...so.X.Y.Z par la symbolique des greffons avec lesquels nous voulons travailler. Les refaire tous serait trop laborieux.
 
-De esta forma, siempre se puede tener en ejecución una versión en desarrollo.
-Pero teniendo cuidado con los plugins sobre los que se trabaja en cada momento.
+De cette façn on peut toujours exécuter une version en dévelopement.
+o. Mais on doit faire attention que les greffons soient les plus adéquat avec lequels on travaille tout le temps
 
 
-Puesta en marcha
+
+Mettre en route
 ================
 
-Una vez instalada la suite se tiene que poner en marcha las bases de datos, los
-usuarios y las empresas. Este proceso se puede realizar principalmente de dos
-formas: utilizando bulmasetup o de forma manual.
+Une fois installée la suite doit être mise en route avec les bases de données, les utilisateurs et les entreprises. Ce procédé peut être réalisé de deux façons : En utilisant bulmasetup ou manuellement.
+
 
 1) bulmasetup
 
-BulmaSetup es un aplicativo que ayuda a realizar la puesta en marcha de la
-suite,
-- dando de alta usuarios a la base de datos
-- creando empresas para la contabilidad, facturación/tpv
-- realizando copias de seguridad.
+BulmaSetup est une application qui sert à effectuer la mise en route de la suite,
 
-Se necesitan privilegios de superusuario de postgres para poder ejecutar este
-aplicación. En una instalación típica de GNU/Linux, se ejecuta com permisos de
-root, sea con sudo o desde un terminal root.
+- Configurer les utilisateurs de le base de données
+- Créer des sociétés pour la comptabilité, facturation/tpv
+- Réaliser des copies de sécurité.
 
-2) de forma manual
+On a besoin des privilèges du superutilisateur postgres pour pouvoir exécuter cette application. Une installation typique GNU/Linux, est éxécuté avec les droits de root, voir sudo ou dans un terminal root.
 
-En el directorio share/bulmages/examples hay una serie de scripts que pueden
-servir de ejemplo de cómo dar de alta a un usuario, crear una empresa y
-realizar las tareas típicas de gestión del programa.
+2) Forme manuelle
+
+Dans le répertoire share/bulmages/examples il y a une série de scripts qui peuvent servir d'exemples pour donner des droits à un utilisateur créer une entreprise et effectuer tous les types de gestion du programme.
 
 
-Bugs, comentarios, problemas, etc
+Pous (bugs), commentaires, problèmes, etc
 =================================
 
-Si tiene algún comentario, sugerencia, error encontrado, lo mejor que puede
-hacer es informar a los desarrolladores. Para hacerlo puede:
+Si vous avez des commentaires, suggestion, des erreurs rencontrées, le mieux à faire est de les rapporter aux développeurs. Pour le faire, vous pouvez :
 
-- subscribirse a la llista de correo de BulmaGés:
-http://llistes.bulma.net/mailman/listinfo/bulmages
+- Souscrire à la liste de couriel de BulmaGés:
+  http://llistes.bulma.net/mailman/listinfo/bulmages
 
-lista de tráfico medio donde los desarrolladores y la gente del proyecto
-utilizan para intercambiar noticias, dudas, etc sobre BulmaGés.
+Liste de trafic moyenne, où les développeurs et les gens du projet s'échangent des notes, des questions, etc... sur BulmaGes.
 
-- poner un bug en el sistema de gestión de bugs de Berlios.
+- Envoyer un pou (bug) sur le système de gestion de poux (bugs) de Berlios.
 
 http://developer.berlios.de/bugs/?func=browse&group_id=4472
 
-*ha de estar dado de alta como usuario de Berlios.
+*On doit se faire connaitre comme utilisateur de Berlios.
 
-Código específico o no liberado
-===============================
+Code spécifique et non libre
+============================
 
-Puede crear sus propios plugins de proyecto. Recuerde que BulmaGés está
-liberado bajo licencia GPL y por tanto sus plugins también lo serán. Ahora
-bien, usted no está obligado a hacer públicos sus plugins, por mucho que a
-nosotros nos gustaría.
+On peut créer ses propres greffons de projet. Souvenez vous que BulmaGés est libe sous license GPL et ainsi le seront ses greffons. Cependant, personne n'est obligé de publier ses greffons, d'autant qu'ils ne nous plaisent pas.
 
-El proyecto BulmaGés tiene como fin promocionar el software libre al nivel de
-gestión empresarial y poder fomentar la pequeña industria "local" en este
-ámbito. Cree un plugins de personalizaciones para cada uno de sus clientes
-y ofrezca un servicio de mantenimiento compilando las últimas versiones de
-la suite con sus plugins especificos.
+Le projet BulmaGés se veut comme finalité de promouvoir le logiciel libre au niveau de la gestion des entreprises et avec l'ambition de pouvoir fomenter une petite industrie "locale". Créer des greffons personnalisés pour chacun de ses clients et offrir un service de maintenance de compilation des versions les plus récentes de la suite avec ses greffons spécifiques.
 
-Si tiene código "privado", añadalo creando un fichero CMakeLists.txt.private,
-apuntando a los directorios que necesite. De esta forma sus plugins se
-compilaran junto con todo el programa, incluso podrá actualizar el repositorio
-del programa y mantener sus desarrollos particulares actualizados en todo
-momento sin tener que realizar complicadas gestiones.
+Celui qui possède du code privé peut créer un fichier CMakelists.txt.private,
+lier aux répertoires nécessaires. De cette façon ses propres greffons se compileront ensemble avec tout le programme, actualiser le répertoire du programme et maintenir ses propres dévelopements particuliers actualisés tout le temps sans être obligé de réaliser des gestions compliquées.
