@@ -160,6 +160,8 @@ void ArtGraficosDb::muestraPantalla ( int numPantalla )
 {
     blDebug ( "ArtGraficosDb::muestraPantalla", 0 );
 
+    /// Si no hay pantallas que mostrar, sale.
+    if (m_numPantallas == 0) return;
 
     /// Hace un bucle sinfin de pantallas.
     if ( numPantalla < 0 ) {
@@ -169,7 +171,6 @@ void ArtGraficosDb::muestraPantalla ( int numPantalla )
         /// Muestra la primera pantalla.
         numPantalla = 0;
     } // end if
-
 
     m_pantallaActual = numPantalla;
     QWidget *pantalla = m_pantallas.at ( numPantalla );
