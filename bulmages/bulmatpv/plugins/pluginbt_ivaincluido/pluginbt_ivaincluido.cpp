@@ -61,7 +61,8 @@ int BtTicket_insertarArticulo_Post ( BtTicket *tick )
         /// Buscamos los parametros en la base de datos.
         QString query = "SELECT pvpivaincarticulo FROM articulo WHERE idarticulo = " + tick->lineaActBtTicket()->dbValue("idarticulo");
         BlDbRecordSet *cur = tick->mainCompany() ->loadQuery ( query );
-        if ( !cur->eof() ) {
+
+        if (cur != NULL) {
             tick->lineaActBtTicket()->setDbValue ( "pvpivainclalbaran", cur->valor ( "pvpivaincarticulo" ) );
         } // end if
         delete cur;
