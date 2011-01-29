@@ -79,6 +79,8 @@ TicketClienteView::TicketClienteView ( BfCompany *comp, QWidget *parent )
         addDbField ( "procesadoalbaran", BlDbField::DbBoolean, BlDbField::DbNothing, _ ( "Procesado" ) );
         addDbField ( "descalbaran", BlDbField::DbVarChar, BlDbField::DbNothing, _ ( "Descripcion" ) );
         addDbField ( "refalbaran", BlDbField::DbVarChar, BlDbField::DbNothing, _ ( "Referencia" ) );
+        addDbField ( "cambiosalbaran", BlDbField::DbVarChar, BlDbField::DbNothing, _ ( "Sucesos antes de imprimir" ) );
+        addDbField ( "cambiospostalbaran", BlDbField::DbVarChar, BlDbField::DbNothing, _ ( "Sucesos tras imprimir" ) );
 
         /// Disparamos los plugins.
         int res = g_plugins->lanza ( "TicketClienteView_TicketClienteView", this );
