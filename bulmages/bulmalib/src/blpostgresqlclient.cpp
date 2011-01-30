@@ -415,6 +415,9 @@ int BlDbRecordSet::lastRecord()
 bool BlDbRecordSet::eof()
 {
     blDebug ( "BlDbRecordSet::eof", 0 );
+    
+    if (this == NULL) return true;
+    
     bool result = FALSE;
     if ( nregistros == 0 ) {
         result = TRUE;
