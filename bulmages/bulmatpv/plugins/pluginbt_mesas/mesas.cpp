@@ -77,7 +77,7 @@ DistroMesas::DistroMesas ( BtCompany *emp, QWidget *parent ) : BlWidget ( emp, p
   
   QTimer *timer = new QTimer(this);
   connect(timer, SIGNAL(timeout()), this, SLOT(repaint()));
-  timer->start(5000);
+  timer->start(4000);
   
 }
 
@@ -252,7 +252,7 @@ Mesa::Mesa ( BtCompany *emp, QWidget *parent ) : BlWidget ( emp, parent )
   setFixedSize(g_escala + 20,g_escala + 20);
   setContextMenuPolicy(Qt::CustomContextMenu);
   connect(this, SIGNAL(customContextMenuRequested(const QPoint &)), this, SLOT(ctxMenu(const QPoint &)));
-  m_nombreMesa = "Sin Definir";
+  m_nombreMesa = _("Sin definir");
   m_XScale = 100;
   m_YScale = 100;
   m_escalando = 0;
@@ -275,7 +275,7 @@ void Mesa::paintEvent ( QPaintEvent * event ) {
     BtCompany * emp = ( BtCompany * ) mainCompany();
 
     /// Miramos que no haya ningun ticket abierto con el nombre usado
-    BtTicket *ticket = NULL;;
+    BtTicket *ticket = NULL;
     for ( int i = 0; i < emp->listaTickets() ->size(); ++i ) {
         ticket = emp->listaTickets() ->at ( i );
         if ( m_nombreMesa == ticket->dbValue ( "nomticket" )) {
@@ -290,7 +290,10 @@ void Mesa::paintEvent ( QPaintEvent * event ) {
 	  
 	    int min = ticket->elapsed() / 60000;
 	    int sec = (ticket->elapsed() % 60000) / 1000;
-	    QString tiempo = QString::number(min) + ":" + QString::number(sec);
+	    QString tiempo;
+	    tiempo.sprintf( "%02i:%02i",  min, sec );
+
+	    
 	    painter.setFont(sansFont);
 	    painter.drawText(0,20, tiempo);
 	    painter.setFont(normal);
@@ -528,7 +531,7 @@ void Mesa::cambiarImagen() {
    m_filename = QFileDialog::getOpenFileName(
                     this,
                     "Choose a file",
-                    "",
+                    g_confpr->valor ( CONF_PROGDATA ) + "images/clipart/",
                     "Images (*.svg)");
     repaint();
 }
@@ -585,12 +588,12 @@ void Mesa::abrirMesa() {
 
     BtTicket *tick;
 
+
     tick = emp->newBtTicket();
     tick->setDbValue ( "idtrabajador", emp->ticketActual() ->dbValue ( "idtrabajador" ) );
-     emp->setValorBtInput(m_nombreMesa);
+    emp->setValorBtInput(m_nombreMesa);
 
-
-    emp->listaTickets() ->append ( tick );
+    emp->listaTickets() ->insert ( 0, tick );
 
     /// El nombre del ticket a aparcar lo coge del BtInput.
     tick ->setDbValue ( "nomticket", m_nombreMesa );

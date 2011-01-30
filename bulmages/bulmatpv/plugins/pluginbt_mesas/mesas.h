@@ -44,9 +44,11 @@ public slots:
 class Mesas : public BlWidget, public Ui_MesasBase
 {
     Q_OBJECT
+
 public:
     QWidget *m_centralWidget;
     DistroMesas *m_distro;
+
 public:
     Mesas ( BtCompany *emp, QWidget *parent );
     virtual ~Mesas();
@@ -60,7 +62,8 @@ public slots:
 
 class Mesa : public BlWidget
 {
-Q_OBJECT
+    Q_OBJECT
+
 public:
   QPoint offset;
   QString m_filename;
@@ -79,6 +82,7 @@ public:
   void mouseDoubleClickEvent ( QMouseEvent * event );
   void importXML(const QString val);
   QString exportXML();
+
 public slots:
   virtual void ctxMenu(const QPoint &pos);
   virtual void cambiarImagen();
