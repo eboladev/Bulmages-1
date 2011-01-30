@@ -1,21 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE TS><TS version="1.1" language="fr_FR">
+<!DOCTYPE TS>
+<TS version="2.0" language="fr_FR">
 <context>
     <name>About</name>
     <message>
         <location filename="aboutbase.py" line="290"/>
         <source>Acerca de Iglues/BulmaSetup</source>
-        <translation type="unfinished"></translation>
+        <translation>A propos de Iglues/BulmaSetup</translation>
     </message>
     <message>
         <location filename="aboutbase.py" line="291"/>
         <source>BulmaSetup GPL - Version 0.12.0</source>
-        <translation type="unfinished"></translation>
+        <translation>BulmaSetup GPL - Version 0.12.0</translation>
     </message>
     <message>
         <location filename="aboutbase.py" line="292"/>
         <source>&amp;Acerca de</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;A propos de </translation>
     </message>
     <message>
         <location filename="aboutbase.py" line="293"/>
@@ -24,27 +25,27 @@
 p, li { white-space: pre-wrap; }
 &lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;Sans Serif&apos;; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;
 &lt;p style=&quot;-qt-paragraph-type:empty; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="aboutbase.py" line="298"/>
         <source>A&amp;utores</source>
-        <translation type="unfinished"></translation>
+        <translation>A&amp;uteurs</translation>
     </message>
     <message>
         <location filename="aboutbase.py" line="299"/>
         <source>Sopor&amp;te</source>
-        <translation type="unfinished"></translation>
+        <translation>Supor&amp;t</translation>
     </message>
     <message>
         <location filename="aboutbase.py" line="300"/>
         <source>Acuerdo de &amp;licencia</source>
-        <translation type="unfinished"></translation>
+        <translation>Accord de &amp;license</translation>
     </message>
     <message>
         <location filename="aboutbase.py" line="301"/>
         <source>&amp;Cerrar</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Clore</translation>
     </message>
 </context>
 <context>
@@ -110,7 +111,7 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="eliminarempresabase.py" line="83"/>
         <source>Eliminar</source>
-        <translation type="unfinished">Effacer</translation>
+        <translation>Effacer</translation>
     </message>
 </context>
 <context>
@@ -133,7 +134,7 @@ p, li { white-space: pre-wrap; }
 </context>
 <context>
     <name>Empresa</name>
-    <message encoding="UTF-8">
+    <message utf8="true">
         <location filename="empresa.py" line="33"/>
         <source>Desea agregar el usuario &lt;b&gt;root&lt;/b&gt; a PostgreSQL? 
  
@@ -145,12 +146,14 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="empresa.py" line="163"/>
         <source>Desea agregar el usuario &lt;b&gt;root&lt;/b&gt; a PostgreSQL?&lt;br&gt;Este usuario es necesario para poder administrar PostgreSQL.&lt;br&gt;La contrase&amp;ntilde;a de este usuario sera &apos;password&apos;.&lt;br&gt;&lt;u&gt;&lt;b&gt;Borre este usuario al terminar la configuracion de BulmaGes, ya que genera un grave agujero de seguridad.&lt;/b&gt;&lt;/u&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>Voulez vous assigner l&apos;utilisateur &lt;b&gt;root&lt;/b&gt; à PostgreSQL ? 
+ 
+ Cet utilisateur est nécessaire pour administrer PostgreSQL. Le mot de passe de cet utilisateur sera &apos;mot de passe&apos;. Effacez cet utilisateur à la fin de la configuration.</translation>
     </message>
     <message>
         <location filename="listempresas.py" line="74"/>
         <source>Desea actualizar todas las empresas. Esta operacion puede tardar un ratito largo</source>
-        <translation type="unfinished"></translation>
+        <translation>Actualiser toutes les entreprises demande un peu de temps</translation>
     </message>
 </context>
 <context>
@@ -158,32 +161,32 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="guardarbackupbase.py" line="82"/>
         <source>Crear Backup de Empresa</source>
-        <translation type="unfinished"></translation>
+        <translation>Créer une sauvegarde de l&apos;entreprise</translation>
     </message>
     <message>
         <location filename="guardarbackupbase.py" line="83"/>
         <source>Backup</source>
-        <translation type="unfinished"></translation>
+        <translation>Sauvegarde</translation>
     </message>
     <message>
         <location filename="guardarbackupbase.py" line="84"/>
         <source>Salir</source>
-        <translation type="unfinished">Quitter</translation>
+        <translation>Quitter</translation>
     </message>
     <message>
         <location filename="guardarbackupbase.py" line="85"/>
         <source>Empresa</source>
-        <translation type="unfinished"></translation>
+        <translation>Société</translation>
     </message>
     <message>
         <location filename="guardarbackupbase.py" line="86"/>
         <source>Base de Datos</source>
-        <translation type="unfinished">Base de données</translation>
+        <translation>Base de données</translation>
     </message>
     <message>
         <location filename="guardarbackupbase.py" line="87"/>
         <source>Tipo</source>
-        <translation type="unfinished">Type</translation>
+        <translation>Type</translation>
     </message>
 </context>
 <context>
@@ -231,7 +234,7 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="listempresasbase.py" line="120"/>
         <source>Actualizar Todo</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
 </context>
 <context>
@@ -241,7 +244,7 @@ p, li { white-space: pre-wrap; }
         <source>BulmaSetup</source>
         <translation>Configuration Bulma</translation>
     </message>
-    <message encoding="UTF-8">
+    <message utf8="true">
         <location filename="bulmasetupbase.py" line="219"/>
         <source>Gestión de Usuarios</source>
         <translation>Gestion des utilisateurs</translation>
@@ -278,7 +281,7 @@ p, li { white-space: pre-wrap; }
 &lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Administration des Bases &lt;/p&gt;
 &lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;de Données pour BulmaGes&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
-    <message encoding="UTF-8">
+    <message utf8="true">
         <location filename="bulmasetupbase.py" line="224"/>
         <source>Gestión de Empresas</source>
         <translation>Gestion des Sociétés</translation>
@@ -288,7 +291,7 @@ p, li { white-space: pre-wrap; }
         <source>Nueva Empresa de Contabilidad</source>
         <translation>Nouvelle Société de comptabilité</translation>
     </message>
-    <message encoding="UTF-8">
+    <message utf8="true">
         <location filename="bulmasetupbase.py" line="226"/>
         <source>Nueva Empresa de Facturación / TPV</source>
         <translation>Nouvelle Société de facturation / TPV</translation>
@@ -327,17 +330,23 @@ p, li { white-space: pre-wrap; }
 &lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;/p&gt;
 &lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Administracion de Bases&lt;/p&gt;
 &lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;de Datos para BulmaGes&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+p, li { white-space: pre-wrap; }
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;Sans Serif&apos;; font-size:9pt; font-weight:400; font-style:normal; text-decoration:none;&quot;&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;BulmaSetup v 0.12&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Administration de Bases&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;de Données pour BulmaGes&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <location filename="bulmasetupbase.py" line="230"/>
         <source>Crear Copia de Seguridad</source>
-        <translation type="unfinished"></translation>
+        <translation>Faire une copie de sécurité</translation>
     </message>
     <message>
         <location filename="bulmasetupbase.py" line="231"/>
         <source>Acerca de BulmaSetup</source>
-        <translation type="unfinished"></translation>
+        <translation>A propos de BulmaSetup</translation>
     </message>
 </context>
 <context>
@@ -435,37 +444,37 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="modificarcontabilidadbase.py" line="362"/>
         <source>Idioma Informes</source>
-        <translation type="unfinished"></translation>
+        <translation>Infos idiomatiques</translation>
     </message>
     <message>
         <location filename="modificarcontabilidadbase.py" line="363"/>
         <source>ca</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="modificarcontabilidadbase.py" line="364"/>
         <source>es</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="modificarcontabilidadbase.py" line="365"/>
         <source>fr</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="modificarcontabilidadbase.py" line="367"/>
         <source>...</source>
-        <translation type="unfinished">...</translation>
+        <translation>...</translation>
     </message>
     <message>
         <location filename="modificarcontabilidadbase.py" line="368"/>
         <source>Logotipo de la empresa</source>
-        <translation type="unfinished"></translation>
+        <translation>Logo de l&apos;entreprise</translation>
     </message>
     <message>
         <location filename="modificarcontabilidadbase.py" line="369"/>
         <source>Propiedades Empresa</source>
-        <translation type="unfinished"></translation>
+        <translation>Propriétés de l&apos;entreprise</translation>
     </message>
 </context>
 <context>
@@ -573,42 +582,42 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="modificarfacturacionbase.py" line="386"/>
         <source>Instalar Soporte para TPV</source>
-        <translation type="unfinished"></translation>
+        <translation>Installer le support de TPV</translation>
     </message>
     <message>
         <location filename="modificarfacturacionbase.py" line="387"/>
         <source>Idioma informes</source>
-        <translation type="unfinished"></translation>
+        <translation>Infos idiomatiques</translation>
     </message>
     <message>
         <location filename="modificarfacturacionbase.py" line="388"/>
         <source>ca</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="modificarfacturacionbase.py" line="389"/>
         <source>es</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="modificarfacturacionbase.py" line="390"/>
         <source>fr</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="modificarfacturacionbase.py" line="391"/>
         <source>...</source>
-        <translation type="unfinished">...</translation>
+        <translation>...</translation>
     </message>
     <message>
         <location filename="modificarfacturacionbase.py" line="392"/>
         <source>Logotipo de la empresa</source>
-        <translation type="unfinished"></translation>
+        <translation>Logo de l&apos;entreprise</translation>
     </message>
     <message>
         <location filename="modificarfacturacionbase.py" line="393"/>
         <source>Datos Generales</source>
-        <translation type="unfinished"></translation>
+        <translation>Données générales</translation>
     </message>
 </context>
 <context>
@@ -771,7 +780,7 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="modificarusuariobase.py" line="346"/>
         <source>Selecciona un Rol</source>
-        <translation type="unfinished"></translation>
+        <translation>Sélectionner un Rôle</translation>
     </message>
 </context>
 <context>
@@ -779,7 +788,7 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="nuevafacturacion.py" line="37"/>
         <source>Debe proporcionar un nombre a la base de datos que va a crearse</source>
-        <translation type="unfinished"></translation>
+        <translation>Vous devez donner un nom à la base de données que vous allez créer</translation>
     </message>
 </context>
 <context>
