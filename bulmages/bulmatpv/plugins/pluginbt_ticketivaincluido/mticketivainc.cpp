@@ -214,8 +214,17 @@ void MTicketIVAInc::on_mui_imprimir_clicked()
 void MTicketIVAInc::on_mui_borrarticket_clicked()
 {
 
+  
+  
     BtCompany *emp = ( ( BtCompany * ) mainCompany() );
     BtTicket *ticket;
+    
+    /// No permitimos bajo ningún concepto borrar un ticket que ya ha sido impreso.
+    if (emp->ticketActual()->dbValue("numalbaran") != "") {
+	blMsgInfo(_("Operacion no permitida. Debe Cobrar el Ticket puesto que este ya ha sido impreso."));
+	return;
+    } // end if    
+    
     QString nomticketactual = emp->ticketActual()->dbValue ( "nomticket" );
     QString idtrabajador = emp->ticketActual()->dbValue ( "idtrabajador" );
     QString nomticketdefecto = emp->ticketActual()->nomTicketDefecto();

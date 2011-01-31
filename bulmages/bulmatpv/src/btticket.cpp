@@ -234,7 +234,7 @@ void  BtTicket::borrarArticulo ( BlDbRecord *linea, BlFixed cantidad )
     } // end if
 
     /// Registramos el cambio en el control de logs.
-    agregarLog("BORRAR ARTICULO cant"+cantidad.toQString('.'));
+    agregarLog("BORRAR ARTICULO "+m_lineaActual->dbValue("nomarticulo")+"  Cantidad:"+cantidad.toQString('.'));
 
 
     m_lineaActual->borrar();
@@ -388,14 +388,14 @@ void BtTicket::agregarCantidad ( QString cantidad )
 {
     BlFixed cant ( cantidad );
 
-    /// Registramos el cambio en el control de logs.
-    agregarLog("AGREGAR CANTIDAD -- cant"+cantidad);
-
     /// Comprueba la existencia de la linea de ticket.
     if ( m_lineaActual == NULL ) {
         blMsgWarning ( "No existe linea" );
         return;
     } // end if
+    
+    /// Registramos el cambio en el control de logs.
+    agregarLog("AGREGAR CANTIDAD "+m_lineaActual->dbValue("nomarticulo")+" Cantidad:" + cantidad);
     
     BlFixed cantorig ( m_lineaActual->dbValue ( "cantlalbaran" ) );
     BlFixed suma = cant + cantorig;
@@ -405,16 +405,16 @@ void BtTicket::agregarCantidad ( QString cantidad )
     } else {
         m_lineaActual->setDbValue ( "cantlalbaran", suma.toQString() );
     } // end if
-    
+
+
+
+
     pintar();
 }
 
 void BtTicket::ponerCantidad ( QString cantidad )
 {
     BlFixed cant ( cantidad );
-
-    /// Registramos el cambio en el control de logs.
-    agregarLog("PONER CANTIDAD -- cant"+cantidad);
 
     /// En el TPV si no se ponen decimales por defecto se extiende a 2. Aunque deberia ser un parametro o la longitud de los campos de la
     /// Base de Datos.
@@ -431,15 +431,17 @@ void BtTicket::ponerCantidad ( QString cantidad )
     if (cantidad.isEmpty()) {
 	return;
     } // end if
+    
+    /// Registramos el cambio en el control de logs.
+    agregarLog("PONER CANTIDAD "+m_lineaActual->dbValue("nomarticulo")+ " Cantidad:"+cantidad);
 
     if ( cant == 0 ) {
         borrarLinea ( m_lineaActual );
-        //listaLineas() ->removeAt ( listaLineas() ->indexOf ( m_lineaActual ));
-        //m_lineaActual = listaLineas() ->at ( 0 );
     } else {
         m_lineaActual->setDbValue ( "cantlalbaran", cant.toQString('0', cant.precision()) );
     } // end if
-    
+
+
     pintar();
 }
 
@@ -447,10 +449,7 @@ void BtTicket::ponerPrecio ( QString precio )
 {
     BlFixed valor ( precio );
     
-    /// Registramos el cambio en el control de logs.
-    agregarLog("PONER PRECIO -- precio"+precio);
-
-    
+   
     /// Comprueba la existencia de la linea de ticket.
     if ( m_lineaActual == NULL ) {
         blMsgWarning ( "No existe linea" );
@@ -465,6 +464,9 @@ void BtTicket::ponerPrecio ( QString precio )
     m_lineaActual->setDbValue ( "pvplalbaran", valor.toQString('0', valor.precision()) );
 
     g_plugins->lanza ( "BtTicket_ponerPrecio_Post", this );
+    
+    /// Registramos el cambio en el control de logs.
+    agregarLog("PONER PRECIO "+m_lineaActual->dbValue("nomarticulo")+" Precio:" + precio);
 
     pintar();
 }
@@ -604,13 +606,14 @@ void BtTicket::borrarLinea ( BlDbRecord *linea )
        
     int numlinea = listaLineas()->indexOf ( linea );
 
+    /*
     if (dbValue("numalbaran") != "") {
 	blMsgInfo("Operacion no permitida. Debe Cobrar el Ticket");
 	return;
     } // end if
-
+*/
     /// Registramos el cambio en el control de logs.
-    agregarLog("BORRAR LINEA ");
+    agregarLog("BORRAR LINEA "+ linea->dbValue("nomarticulo"));
 
     if ( linea == m_lineaActual ) {
         listaLineas() ->removeAt ( listaLineas() ->indexOf ( linea ) );
