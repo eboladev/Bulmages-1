@@ -24,10 +24,10 @@ Contents
 Introduction
 ============
 
-BulmaGés is a modular application that intends to cover the needs of
-business management for any small or medium firm in the free software
-environment. Four areas are clearly identified where the software can
-operate: 
+BulmaGés is a modular application that has the goal to cover the needs
+of business management for any small or medium firm in the free
+software environment. Four areas are clearly identified where the
+software can operate: 
 a) Accounting - BulmaCont
 b) Billing and invoicing - BulmaFact
 c) Point of Sale Terminal - BulmaTPV
@@ -50,8 +50,8 @@ provided by the IGLUES association.
 
 BulmaGés offers maximum quality in a complete integral management
 tool, which can be configured to adapt to the needs of any firm by
-means of a system of modules and plug-ins depending on the industry and
-the size of the firm. 
+means of a system of modules and plug-ins depending on the industry
+and the size of the firm. 
 
 Bulmagés can work in multiple platforms. The developers work mainly
 with GNU/Linux. It can be also used in MacOSX and MSWindows. The
@@ -60,11 +60,11 @@ application can be run locally or remotely, without any limit in the
 number of licenses, firms or users. 
 
 BulmaGés is a software suite including various binaries, a library, a
-configuration program, links to database, multiple scripts, multiple
-plug-ins (small libraries) and some documentation. This makes it a
-complex software.
+configuration program, links to the database, multiple scripts,
+multiple plug-ins (small libraries) and some documentation. This makes
+it a complex software.
 
-BulmaGés is developed by different people that have collaborate with
+BulmaGés is developed by different people that have collaborated with
 the project, some of them are active currently and some are not. In
 general these are people related to the Iglues Association
 (www.iglues.org). 
@@ -88,7 +88,7 @@ PostgrSql.
 
 To compile the code the following is needed:
 
-- biblioteca Qt, at least  4.3 http://www.qtsoftware.com/downloads. 
+- Qt library, at least  4.3 http://www.qtsoftware.com/downloads. 
 This is the widgets library, corresponding to the graphical interface.
 
 - python and pyqt4. python 2.4 and the pyqt4 binding according to the
