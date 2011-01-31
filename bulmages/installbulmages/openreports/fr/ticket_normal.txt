@@ -27,7 +27,10 @@ Cambio: [cambio]
 <!-- SETCHARACTERSIZE "0" --><!-- SETJUSTIFICATION "CENTER" -->
    GRACIAS POR SU VISITA
 <!-- SETBARCODEFORMAT "2" "50" "BOTH" "FONTB" --><!-- PRINTBARCODE "CODE39" "6" "[refalbaran]" -->
-
 <!-- CUTPAPERANDFEED "TRUE" "5"-->
+<!-- IF = "'[cambiospostalbaran]'<>''" -->
+Modificacion Ticket [numalbaran]
+[cambiospostalbaran]
 
-
+Justificacion, y firma:
+<!-- CUTPAPERANDFEED "TRUE" "5"--><!-- ELSE --><!-- END IF -->

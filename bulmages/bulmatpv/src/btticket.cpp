@@ -175,9 +175,7 @@ QList<BlDbRecord *> *BtTicket::listaLineas()
 BlDbRecord *BtTicket::insertarArticulo ( QString idArticulo, BlFixed cantidad, bool nuevaLinea )
 {
     blDebug ( "BtTicket::insertarArticulo", 0 );
-    /// Registramos el cambio en el control de logs.
-    agregarLog("INSERCION ARTICULO " + idArticulo +"-- cant"+cantidad.toQString('.'));
-    
+
     /// Buscamos si ya hay una linea con el articulo que buscamos
     m_lineaActual = NULL;
     BlDbRecord *item;
@@ -214,6 +212,10 @@ BlDbRecord *BtTicket::insertarArticulo ( QString idArticulo, BlFixed cantidad, b
         } // end if
         delete cur;
     } // end if
+
+    /// Registramos el cambio en el control de logs.
+    agregarLog("INSERCION ARTICULO " + m_lineaActual->dbValue("nomarticulo") + " Cantidad:" + cantidad.toQString('.'));
+    
 
     /// Disparamos los plugins.
     g_plugins->lanza ( "BtTicket_insertarArticulo_Post", this );
