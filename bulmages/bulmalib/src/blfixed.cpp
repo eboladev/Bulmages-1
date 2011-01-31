@@ -209,7 +209,7 @@ QString BlFixed::toQString ( QChar separadorDecimal, int precision, QChar separa
         } // end while
     } // end if
 
-    blDebug ( "END BlFixed::toQString", 0, buffer );
+    blDebug ( "END BlFixed::toQString", 2, buffer );
     return buffer;
 }
 
@@ -284,6 +284,7 @@ void BlFixed::setPrecision ( int prec )
 void BlFixed::fromBlFixed ( const char *s )
 {
     blDebug ( "BlFixed::fromBlFixed", 0 );
+    QLocale locale;
     value = 0;
     m_precision = 0;
     int c;
@@ -302,12 +303,12 @@ void BlFixed::fromBlFixed ( const char *s )
             value = value * 10 + ( c - '0' );
             if ( decimal )
                 m_precision++;
-        } else if ( c == '.' || c == ',' ) {
+        } else if ( c ==  locale.decimalPoint() ) { //ARON
             if ( decimal )
                 break;
             decimal = true;
-        } else if ( c != ',' )
-            break;
+        } else if ( c != locale.decimalPoint() && c != locale.groupSeparator() )
+            break; /// Cancelar la conversi&oacute;n cifra a cifra si hay un caracter no v&aacute;lido
         c = *s++;
     } // end while
     if ( negative )
