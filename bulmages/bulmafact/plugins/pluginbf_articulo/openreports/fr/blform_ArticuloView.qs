@@ -119,13 +119,10 @@ BarChart.prototype.mousePressEvent = function(event) {
     }
 }
 
-/*
-chart.show();
-
-QCoreApplication.exec();
-*/
 
 
+
+/* Ejemplo de insercion de un TAB
 
 var tab = ArticuloView.findChild("mui_tab");
 
@@ -145,89 +142,13 @@ chart.data = {
 };
     tab.insertTab(3, chart, "Demo de QtScript");
 
-//    var hgf= new QWidget();
-//    tab.insertTab(3,hgf,"Pruebas de SCRIPT");
 } // end if
-
+*/
 
 var lay = ArticuloView.findChild("mui_tab");
-//if(lay)
-//    lay.setTabPosition(ArticuloView.East);
-//    print lay.tabPosition();
+
 if (lay != null) {
-//      print (lay.tabPosition);
       lay.tabPosition = QTabWidget.East;
-//      lay.tabsClosable = true;
-//      lay.setTabPosition(ArticuloView.West);
-//      print (lay.tabPosition);
+
 }
 
-
-//function hola () {
-//variable = new QWidget();
-//variable.show();
-//ActividadView.mui_guardar.setEnabled(false);
-//var a = ActividadView.mui_codigoactividad;
-//a.hide();
-//ActividadView.mui_codigoactividad.hide();
-//ActividadView.mui_guardar.hide();
-//}
-
-
-//ActividadView.pintaMenu.connect(hola);
-
-//ActividadView.mui_codigoactividad.setEnabled(false);
-
-//ActividadView.clicked.connect(mui_guardar,hola);
-
-//var saveButton = ActividadView.findChild("mui_guardar");
-//if (saveButton != null) {
-//    saveButton.setEnabled(false);
-//    saveButton.clicked.connect(hola);
-//    saveButton.hide();
-//} // end if
-
-//BlForm.valueChanged.connect(hola);
-
-//print "hola";
-
-
-//var a = variable.objectName;
-
-//variable.setObjectName("hola");
-
-//print variable.objectName;
-
-//print a;
-
-
-// BlForm.showMaximized();
-
-//BlForm.setEnabled(false);
-
-//var hola = BlForm.objectName();
-
-
-// BlForm.setModoConsulta();
-
-//var a =  BlForm.tableName();
-
-
-
-// variable = QObject();
-
-//variable.setParent(0);
-
-//variable.showMaximized();
-
-
-//print BlForm.enabled();
-
-//a = new QDialog();
-
-//BlForm.pintaMenu.connect(hola);
-
-
-
-
-//a.exec();
