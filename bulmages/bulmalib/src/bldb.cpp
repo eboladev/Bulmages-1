@@ -164,7 +164,7 @@ QString BlDbField::valorcampo()
         valor = locale.toString(m_valorcampo.toDouble()); //ARON
 
     } // end if
-    blDebug ( "END BlDbField::valorcampo", 2, m_valorcampo + "-->" + valor );
+    blDebug ( "END BlDbField::valorcampo", 0, m_valorcampo + "-->" + valor );
     return valor;
 }
 

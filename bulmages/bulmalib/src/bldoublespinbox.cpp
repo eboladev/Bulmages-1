@@ -58,7 +58,7 @@ QString const BlDoubleSpinBox::text()
     QLocale locale;
     a = locale.toString((locale.toDouble(a))); //ARON
 
-    blDebug ( "END BlDoubleSpinBox::text", 2, a );
+    blDebug ( "END BlDoubleSpinBox::text", 0, a );
     return a;
 }
 
