@@ -121,10 +121,10 @@ int ActividadView_ActividadView(ActividadView *act) {
     l->setDbFieldId ( "idprestamo" );
     l->addSubFormHeader ( "idprestamo", BlDbField::DbInt, BlDbField::DbPrimaryKey, BlSubFormHeader::DbHideView , _( "Id prestamo"));
     l->addSubFormHeader ( "idactividad", BlDbField::DbInt, BlDbField::DbNotNull, BlSubFormHeader::DbHideView | BlSubFormHeader::DbNoWrite, _( "Id Actividad" ) );
-    l->addSubFormHeader ( "idinventariosimple", BlDbField::DbInt, BlDbField::DbNotNull, BlSubFormHeader::DbHideView | BlSubFormHeader::DbNoWrite , _( "Id producto" ) );
+    l->addSubFormHeader ( "idinventariosimple", BlDbField::DbInt, BlDbField::DbNotNull | BlDbField::DbRequired, BlSubFormHeader::DbHideView | BlSubFormHeader::DbNoWrite , _( "Id producto" ) );
     l->addSubFormHeader ( "nominventariosimple", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone, _( "Articulo" ) );
-    l->addSubFormHeader ( "fechaprestamo", BlDbField::DbDate, BlDbField::DbNothing, BlSubFormHeader::DbNone, _( "Fecha Prestamo" ) );
-    l->addSubFormHeader ( "cantprestamo", BlDbField::DbNumeric, BlDbField::DbNotNull, BlSubFormHeader::DbNone , _( "Cantidad" ) );
+    l->addSubFormHeader ( "fechaprestamo", BlDbField::DbDate, BlDbField::DbNothing | BlDbField::DbRequired, BlSubFormHeader::DbNone, _( "Fecha Prestamo" ) );
+    l->addSubFormHeader ( "cantprestamo", BlDbField::DbNumeric, BlDbField::DbNotNull | BlDbField::DbRequired, BlSubFormHeader::DbNone , _( "Cantidad" ) );
     l->setInsert ( TRUE );
     l->setDelete ( TRUE );
     l->setSortingEnabled ( FALSE );
