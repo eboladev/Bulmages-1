@@ -1,0 +1,650 @@
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+#
+# aishen <aishen@free.fr>, 2011.
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: info@iglues.org\n"
+"POT-Creation-Date: 2010-09-23 18:53+0200\n"
+"PO-Revision-Date: 2011-01-31 17:16+0100\n"
+"Last-Translator: aishen <aishen@free.fr>\n"
+"Language-Team: French <kde-i18n-doc@kde.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"#-#-#-#-#  bulmalib.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginsubformsxc.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginsubformods.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginclipboardbf.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginimpers.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginimpersods.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginimpersmail.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginimportcsv.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  plugininformes.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  plugininformesods.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginbloqueos.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginsubformprint.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginarchivos.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  plugindocked.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  bulmacont.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginregistroiva.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  plugincorrector.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginbc_example.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  plugindebugbc.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginbalancetree.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  plugincanualesods.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginbalance.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginresumcta.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginproyectos.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginbalanceold.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  bulmafact.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginbf_example.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  plugintarifas.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginbf_comercial.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginbf_cliente.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginbf_proveedor.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  plugintrazabilidad.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginbarcodeopen.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  plugincatalogo.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  plugininformeclientes.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  plugininventario.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  plugincontratos.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginticket.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  plugin_tc_articulos.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginpromedios.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginimpresionesmultiples.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginq19.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginmail.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginmailthunderbird.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginalmacen.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  plugintipostrabajo.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  plugincuadrante.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginasterisk.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  plugintpv.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  plugindebugbf.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginpreciocoste.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginresarticulos.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginalias.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginivainc.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  plugininformeclientessxc.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginetiquetado.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginetiquetas.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  plugincompraventa.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginclientprov.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginopenref.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  plugincorrectorbf.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginfacturar.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginpagos.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  plugincobros.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginpresupuesto.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginpedido.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginalbaran.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginfactura.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginfacturaprov.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginalbaranprov.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginpedidoprov.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginz2z.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginprofesor.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginalumno.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  plugintutor.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginactividad.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  bulmages.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  bulmatpv.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginticketbasico.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  plugintecladonumerico.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  plugintotal.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  plugintotalivainc.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginadmin.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  plugincobrar.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginartsubform.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  plugintpvivainc.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginaliastpv.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  plugintcaliastpv.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginticketdesglose.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginbuscaarticulo.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginbuscacliente.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  plugincambio.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  plugincambioivainc.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  plugindevolucion.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  plugindevolucion2.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginticketsdevueltos.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginabrevs.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  bulmages_suite.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"Language: fr\n"
+"X-Generator: Lokalize 1.2\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
+#: ui_registroivabase.h:627
+msgid "&Aceptar"
+msgstr "&Accepter"
+
+#: ui_registroivabase.h:629
+msgid "&Cancelar"
+msgstr "&Annuler"
+
+#: ui_registroivabase.h:625
+msgid "&Cobros / Pagos"
+msgstr "&Encaissements / Paiements"
+
+#: pluginbc_registroiva.cpp:114
+msgid "&Cobros y pagos"
+msgstr "&Encaissements et Paiements"
+
+#: ui_registroivabase.h:619
+msgid "&Datos Factura"
+msgstr "&Dates de facture"
+
+#: pluginbc_registroiva.cpp:110
+msgid "&Registro de IVA"
+msgstr "&Registre de TVA"
+
+#: ui_listregistroivabase.h:355
+msgid "&Repercutido"
+msgstr "&Répercuté"
+
+#: ui_listregistroivabase.h:354
+msgid "&Sopotado"
+msgstr "&Collectée"
+
+#: ui_registroivabase.h:605
+msgid "&Tener en cuenta para el registro de IVA"
+msgstr "&Tenir compte pour le registre de TVA"
+
+#: pluginbc_registroiva.cpp:104
+msgid "&Ver"
+msgstr "&Afficher"
+
+#: ui_cobropagobase.h:375 ui_cobropagobase.h:379 ui_cobropagobase.h:383
+#: ui_cobropagobase.h:387
+msgid "Actualizar"
+msgstr "Actualiser"
+
+#: ui_registroivabase.h:618
+msgid "Alt+B"
+msgstr "Alt+B"
+
+#: ui_registroivabase.h:616
+msgid "Alt+I"
+msgstr "Alt+I"
+
+#: ui_registroivabase.h:630
+msgid "Alt+N"
+msgstr "Alt+N"
+
+#: ui_registroivabase.h:606
+msgid "Alt+T"
+msgstr "Alt+T"
+
+#: ui_registroivabase.h:607
+msgid "Asiento:"
+msgstr "Ecriture:"
+
+#: registroiva.cpp:48
+msgid "Base Imponible"
+msgstr "Base Imposable"
+
+#: registroiva.cpp:51
+msgid "Borrador"
+msgstr "Brouillon"
+
+#: listivaview.cpp:171 listlinprevcobroview.cpp:266
+msgid "Borrar linea"
+msgstr "Effacer la ligne"
+
+#: registroiva.cpp:53
+msgid "CIF"
+msgstr "CIF"
+
+#: ui_registroivabase.h:603
+msgid "CIF / NIF:"
+msgstr "CIF / NIF :"
+
+#: ui_cobropagobase.h:402
+msgid "COBROS"
+msgstr "ENCAISSEMENTS"
+
+#: listivaview.cpp:91
+msgid "COL_BASEIVA"
+msgstr "COL_BASETVA"
+
+#: listivaview.cpp:91
+msgid "COL_CODIGO"
+msgstr "COL_CODE"
+
+#: listivaview.cpp:91
+msgid "COL_IDCUENTA"
+msgstr "COL_IDCOMPTE"
+
+#: listivaview.cpp:91
+msgid "COL_IDIVA"
+msgstr "COL_IDTVA"
+
+#: listivaview.cpp:91
+msgid "COL_IDREGISTROIVA"
+msgstr "COL_IDREGISTRETVA"
+
+#: listivaview.cpp:91
+msgid "COL_IDTIPOIVA"
+msgstr "COL_IDTYPETVA"
+
+#: listivaview.cpp:91
+msgid "COL_IVAIVA"
+msgstr "COL_TVATVA"
+
+#: listivaview.cpp:91
+msgid "COL_NOMBRETIPOIVA"
+msgstr "COL_NOMTYPETVA"
+
+#: listlinprevcobroview.cpp:186 listlinprevcobroview.cpp:271
+#: listlinprevcobroview.cpp:465
+msgid "Cobro"
+msgstr "Encaissement"
+
+#: pluginbc_registroiva.cpp:115 pluginbc_registroiva.cpp:116
+msgid "Cobros y pagos"
+msgstr "Encaissements et Paiements"
+
+#: listregistroivaview.cpp:60 listregistroivaview.cpp:84
+msgid "Comentario"
+msgstr "Commentaire"
+
+#: listregistroivaview.cpp:75
+msgid "Concepto Contable"
+msgstr "Concept comptable"
+
+#: listregistroivaview.cpp:51
+msgid "Concepto contable"
+msgstr "Concept comptable"
+
+#: listregistroivaview.cpp:62 listregistroivaview.cpp:86
+msgid "Conciliacion"
+msgstr "Conciliation"
+
+#: registroiva.cpp:47 listregistroivaview.cpp:59 listregistroivaview.cpp:83
+msgid "Contrapartida"
+msgstr "Contrepartie"
+
+#: ui_cobropagobase.h:390
+msgid "Cuenta"
+msgstr "Compte"
+
+#: registroivaview.cpp:60
+msgid "Cuenta Cliente/Proveedor:"
+msgstr "Compte client/fournisseur"
+
+#: cobropagoview.cpp:59
+msgid "Cuenta:"
+msgstr "Compte :"
+
+#: ui_registroivabase.h:602
+msgid "Datos de la empresa:"
+msgstr "Propriétés de l'entreprise :"
+
+#: ui_registroivabase.h:604
+msgid "Datos de la factura:"
+msgstr "Datos de la factura :"
+
+#: listregistroivaview.cpp:57 listregistroivaview.cpp:81
+msgid "Debe"
+msgstr "Débit"
+
+#: pluginbc_registroiva.cpp:231
+msgid "Debe seleccionar un apunte"
+msgstr "Vous devez sélectionner un libellé"
+
+#: ui_registroivabase.h:623
+msgid "DesgloseIVA"
+msgstr "DétailTVA"
+
+#: listlinprevcobroview.cpp:268
+msgid "Desvincular asiento"
+msgstr "Délier l'écriture"
+
+#: ui_registroivabase.h:615
+msgid "Em&itida"
+msgstr "Em&ission"
+
+#: registroiva.cpp:60
+msgid "Factura"
+msgstr "Facture"
+
+#: registroiva.cpp:58
+msgid "Factura emitida"
+msgstr "Factura émise"
+
+#: ui_registroivabase.h:610
+msgid "Fecha Factura"
+msgstr "Date de facture"
+
+#: ui_cobropagobase.h:406
+msgid "Fecha Final"
+msgstr "Date finale"
+
+#: ui_cobropagobase.h:405
+msgid "Fecha Inicial"
+msgstr "Date initiale"
+
+#: listregistroivaview.cpp:54
+msgid "Fecha de factura"
+msgstr "Date de facture"
+
+#: registroiva.cpp:61
+msgid "Fecha emision"
+msgstr "Date d'émission"
+
+#: registroiva.cpp:50
+msgid "Fecha factura"
+msgstr "Date de facture"
+
+#: ui_listregistroivabase.h:353
+msgid "Fecha final:"
+msgstr "Date finale :"
+
+#: ui_listregistroivabase.h:352
+msgid "Fecha inicial:"
+msgstr "Date initiale :"
+
+#: ui_registroivabase.h:611
+msgid "Fecha recepcion:"
+msgstr "Date de réception :"
+
+#: registroiva.cpp:54
+msgid "Forma de pago"
+msgstr "Forme de paiement "
+
+#: ui_cobropagobase.h:368 ui_cobropagobase.h:371
+msgid "Generar Asiento"
+msgstr "Générer l'écriture"
+
+#: listlinprevcobroview.cpp:267
+msgid "Generar asiento de cobro/pago"
+msgstr "Générer l'écriture d'encaissement/paiement "
+
+#: ui_cobropagobase.h:365
+msgid "Gestion de Cobros y Pagos"
+msgstr "Gestion d'encaissements et Paiements"
+
+#: listregistroivaview.cpp:58 listregistroivaview.cpp:82
+msgid "Haber"
+msgstr "Crédit"
+
+#: listregistroivaview.cpp:61 listregistroivaview.cpp:85
+msgid "ID Canal"
+msgstr "ID Canal"
+
+#: registroiva.cpp:49 listregistroivaview.cpp:53
+msgid "IVA"
+msgstr "TVA"
+
+#: ui_listregistroivabase.h:359
+msgid "IVA repercutido:"
+msgstr "TVA répercutée :"
+
+#: ui_listregistroivabase.h:356
+msgid "IVA soportado:"
+msgstr "TVA supportée :"
+
+#: ui_registroivabase.h:620 ui_listregistroivabase.h:357
+#: ui_listregistroivabase.h:360
+msgid "IVA:"
+msgstr "TVA :"
+
+#: listregistroivaview.cpp:50 listregistroivaview.cpp:74
+msgid "Id"
+msgstr "Id"
+
+#: registroiva.cpp:46
+msgid "Identificador"
+msgstr "Identificateur"
+
+#: registroiva.cpp:55
+msgid "Inc registro"
+msgstr "Registre Inc"
+
+#: ui_listregistroivabase.h:347
+msgid "Listados de IVA"
+msgstr "Listes de TVA "
+
+#: ui_cobropagobase.h:396
+msgid "NO PROCESADO"
+msgstr "NON ACCUSE"
+
+#: ui_registroivabase.h:609
+msgid "Num. Factura"
+msgstr "N° de Facture"
+
+#: registroiva.cpp:52 ui_registroivabase.h:613
+msgid "Orden"
+msgstr "Ordre"
+
+#: ui_cobropagobase.h:403
+msgid "PAGOS"
+msgstr "PAIEMENTS"
+
+#: ui_cobropagobase.h:395
+msgid "PROCESADO"
+msgstr "ACCUSE"
+
+#: listlinprevcobroview.cpp:188 listlinprevcobroview.cpp:272
+#: listlinprevcobroview.cpp:468
+msgid "Pago"
+msgstr "Paiment"
+
+#: ui_cobropagobase.h:391
+msgid "Procesado"
+msgstr "Accusé"
+
+#: ui_registroivabase.h:617
+msgid "Reci&bida"
+msgstr "&Reçue"
+
+#: registroiva.cpp:59
+msgid "Rectifica a"
+msgstr "Rectifiée a"
+
+#: registroiva.cpp:43
+msgid "Registro IVA"
+msgstr "Registre de TVA"
+
+#: ui_registroivabase.h:598
+msgid "Registro de Facturas"
+msgstr "Registre de factures"
+
+#: regivaqtoolbutton.cpp:74 regivaqtoolbutton.cpp:75
+#: pluginbc_registroiva.cpp:111 pluginbc_registroiva.cpp:112
+msgid "Registro de IVA"
+msgstr "Registre de TVA"
+
+#: registroivaview.cpp:192
+msgid "Registro factura"
+msgstr "Registre de facture"
+
+#: registroiva.cpp:56
+msgid "Regularizacion"
+msgstr "Régularisation"
+
+#: ui_listregistroivabase.h:362
+msgid "Res&umen"
+msgstr "Rés&umer"
+
+#: registroiva.cpp:62 ui_registroivabase.h:612
+msgid "Serie"
+msgstr "Série"
+
+#: ui_cobropagobase.h:394 ui_cobropagobase.h:401
+msgid "TODO"
+msgstr "TOUT"
+
+#: ui_cobropagobase.h:398
+msgid "Tipo (Cobro / Pago)"
+msgstr "Type (d'encaissement/paiement )"
+
+#: ui_registroivabase.h:614
+msgid "Tipo de factura:"
+msgstr "Type de facture :"
+
+#: ui_registroivabase.h:621
+msgid "Total Base Imponible:"
+msgstr "Base Imposable totale :"
+
+#: ui_cobropagobase.h:407
+msgid "Total Cobros"
+msgstr "Encaissements total"
+
+#: ui_registroivabase.h:622
+msgid "Total IVA:"
+msgstr "TVA totale :"
+
+#: ui_cobropagobase.h:408
+msgid "Total Pagos"
+msgstr "Paiement total"
+
+#: ui_registroivabase.h:626
+msgid "Total factura:"
+msgstr "Facture totale :"
+
+#: ui_listregistroivabase.h:358 ui_listregistroivabase.h:361
+msgid "Total:"
+msgstr "Total :"
+
+#: listlinprevcobroview.cpp:269
+msgid "Ver asiento"
+msgstr "Afficher l'écriture"
+
+#: listlinprevcobroview.cpp:270
+msgid "Ver factura"
+msgstr "Afficher la Facture"
+
+#: registroivaview.cpp:82
+msgid "baseiva"
+msgstr "TVA de base"
+
+#: cobropagoview.cpp:52 registroivaview.cpp:95
+msgid "cantidadprevcobro"
+msgstr "Quantiteprevpaiement"
+
+#: cobropagoview.cpp:51 registroivaview.cpp:94
+msgid "cantidadprevistaprevcobro"
+msgstr "quantiteprevuepaiement"
+
+#: registroivaview.cpp:78 registroivaview.cpp:99 listregistroivaview.cpp:77
+msgid "codigo"
+msgstr "Code"
+
+#: registroivaview.cpp:103
+msgid "codigoctacliente"
+msgstr "codectaclient"
+
+#: registroivaview.cpp:101 listregistroivaview.cpp:56
+#: listregistroivaview.cpp:80
+msgid "descripcion"
+msgstr "Description "
+
+#: listregistroivaview.cpp:55 listregistroivaview.cpp:79
+msgid "descripcioncuenta"
+msgstr "descriptioncompte"
+
+#: cobropagoview.cpp:55 registroivaview.cpp:98
+msgid "docprevcobro"
+msgstr "docprevpaiement"
+
+#: cobropagoview.cpp:46 registroivaview.cpp:90
+msgid "fcobroprevcobro"
+msgstr "fpaiementprevpaiement"
+
+#: cobropagoview.cpp:45 registroivaview.cpp:89
+msgid "fprevistaprevcobro"
+msgstr "fprevistaprevpaiement"
+
+#: listregistroivaview.cpp:64 listregistroivaview.cpp:88
+msgid "idapunte"
+msgstr "idrubrique"
+
+#: cobropagoview.cpp:50 registroivaview.cpp:93 listregistroivaview.cpp:67
+#: listregistroivaview.cpp:91
+msgid "idasiento"
+msgstr "idécriture"
+
+#: listregistroivaview.cpp:63 listregistroivaview.cpp:87
+msgid "idc_coste"
+msgstr "idc_finance"
+
+#: cobropagoview.cpp:47 registroivaview.cpp:102
+msgid "idctacliente"
+msgstr "idctaclient"
+
+#: cobropagoview.cpp:49 registroivaview.cpp:77 registroivaview.cpp:92
+#: listregistroivaview.cpp:52 listregistroivaview.cpp:76
+msgid "idcuenta"
+msgstr "idcompte"
+
+#: cobropagoview.cpp:48 registroivaview.cpp:91
+msgid "idfpago"
+msgstr "idfpaiement"
+
+#: registroivaview.cpp:75
+msgid "idiva"
+msgstr "idtva"
+
+#: cobropagoview.cpp:44 registroivaview.cpp:88
+msgid "idprevcobro"
+msgstr "idprevpaiement"
+
+#: cobropagoview.cpp:53 registroivaview.cpp:81 registroivaview.cpp:96
+msgid "idregistroiva"
+msgstr "idregistretva"
+
+#: registroivaview.cpp:76 listregistroivaview.cpp:65
+#: listregistroivaview.cpp:89
+msgid "idtipoiva"
+msgstr "idtypetva"
+
+#: registroivaview.cpp:83
+msgid "ivaiva"
+msgstr "tvatva"
+
+#: pluginbc_registroiva.cpp:100
+msgid "menuVer"
+msgstr "afficher"
+
+#: registroivaview.cpp:80 listregistroivaview.cpp:98
+#: listregistroivaview.cpp:107
+msgid "nombretipoiva"
+msgstr "nomtypetva"
+
+#: registroivaview.cpp:104
+msgid "nomctacliente"
+msgstr "nomctaclient"
+
+#: listregistroivaview.cpp:66 listregistroivaview.cpp:90
+msgid "orden"
+msgstr "Ordre"
+
+#: registroiva.cpp:57
+msgid "plan 349"
+msgstr "plan 349"
+
+#: listregistroivaview.cpp:100 listregistroivaview.cpp:109
+msgid "tbaseiva"
+msgstr "tbasetva"
+
+#: registroivaview.cpp:105
+msgid "tipoctacliente"
+msgstr "typectaclient"
+
+#: registroivaview.cpp:79 registroivaview.cpp:100 registroivaview.cpp:106
+#: listregistroivaview.cpp:78
+msgid "tipocuenta"
+msgstr "typecompte"
+
+#: cobropagoview.cpp:54 registroivaview.cpp:97
+msgid "tipoprevcobro"
+msgstr "typeprevpaiement"
+
+#: listregistroivaview.cpp:99 listregistroivaview.cpp:108
+msgid "tivaiva"
+msgstr "ttvatva"
+
+#~ msgid "Cuenta cliente / Proveedor:"
+#~ msgstr "Cuenta cliente / Proveedor:"
