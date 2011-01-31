@@ -1,16 +1,15 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 #
-# Girard Henri <aishen@free.fr>, 2011.
 # aishen <aishen@free.fr>, 2011.
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
 "POT-Creation-Date: 2010-09-23 18:53+0200\n"
-"PO-Revision-Date: 2011-01-31 15:12+0100\n"
+"PO-Revision-Date: 2011-01-31 15:16+0100\n"
 "Last-Translator: aishen <aishen@free.fr>\n"
-"Language-Team: French <kde l10n>\n"
+"Language-Team: French <kde-i18n-doc@kde.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -112,51 +111,19 @@ msgstr ""
 "#-#-#-#-#  pluginticketsdevueltos.pot (PACKAGE VERSION)  #-#-#-#-#\n"
 "#-#-#-#-#  pluginabrevs.pot (PACKAGE VERSION)  #-#-#-#-#\n"
 "#-#-#-#-#  bulmages_suite.pot (PACKAGE VERSION)  #-#-#-#-#\n"
-"Language: frX-Generator: Lokalize 1.2\n"
-"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"Language: fr\n"
 "X-Generator: Lokalize 1.2\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
-#: pluginbc_corrector.cpp:81
-msgid "&Corrector"
-msgstr "&Correcteur"
+#: pluginbc_cuentaresumen.cpp:86
+msgid "&Resumen Cta"
+msgstr "&Résumer Cta"
 
-#: pluginbc_corrector.cpp:75
+#: pluginbc_cuentaresumen.cpp:79
 msgid "&Ver"
 msgstr "&Afficher"
 
-#: ui_confreglasbase.h:284
-msgid "Apunte con Cuenta"
-msgstr "Note avec Compte"
-
-#: ui_confreglasbase.h:292
-msgid "Apunte con Descripcion"
-msgstr "Note avec description "
-
-#: ui_confreglasbase.h:285
-msgid "Apunte con Saldo"
-msgstr "Note avec solde"
-
-#: ui_confreglasbase.h:295
-msgid "Cerrar"
-msgstr "Fermer"
-
-#: ui_confreglasbase.h:281
-msgid "Comprobacion por asientos"
-msgstr "Vérification des écritures"
-
-#: ui_confreglasbase.h:282
-msgid "Condicion:"
-msgstr "Condition :"
-
-#: ui_correctorbase.h:102 ui_correctorbase.h:105
-msgid "Configurar"
-msgstr "Configurer"
-
-#: pluginbc_corrector.cpp:55 ui_correctorbase.h:93
-msgid "Corrector"
-msgstr "Correcteur"
-
-#: pluginbc_corrector.cpp:85
+#: pluginbc_cuentaresumen.cpp:90
 msgid ""
 "Corrector.\n"
 "\n"
@@ -166,58 +133,19 @@ msgstr ""
 "\n"
 "Montrer/Occulter  le correcteur"
 
-#: ui_correctorbase.h:95 ui_correctorbase.h:98
-msgid "Corregir"
-msgstr "Corriger"
+#: pluginbc_cuentaresumen.cpp:89
+msgid "Muestra/oculta el resumen de cuenta"
+msgstr "Montrer/Occulter  le résumé de compte "
 
-#: ui_confreglasbase.h:283
-msgid "Deben existir registros que cumplan esta condicion en el periodo"
-msgstr ""
-"Il doit exister des registres qui remplissent cette condition dans cette "
-"période"
+#: pluginbc_cuentaresumen.cpp:58
+msgid "Resumen cuenta"
+msgstr "Résumé de compte "
 
-#: pluginbc_corrector.cpp:84
-msgid "Muestra/oculta el corrector"
-msgstr "Montrer/Occulter  le correcteur"
+#: ui_correctorbase.h:52
+msgid "Resumen de Cuenta"
+msgstr "Résumé de compte "
 
-#: correctorwidget.cpp:211
-msgid "No se puede acceder al error"
-msgstr "On ne peut pas accéder à l'erreur"
-
-#: correctorwidget.cpp:211
-msgid "Opcion no implementada"
-msgstr "Option non implémentée"
-
-#: ui_confreglasbase.h:294
-msgid "Periodicidad"
-msgstr "Périodicité"
-
-#: ui_confreglasbase.h:280
-msgid "Regla:"
-msgstr "Règle :"
-
-#: ui_confreglasbase.h:276
-msgid "Reglas de Corrector"
-msgstr "Règle du correcteur"
-
-#: ui_confreglasbase.h:293
-msgid "Reglas sobre Apuntes"
-msgstr "Règle sur les notes"
-
-#: ui_confreglasbase.h:288
-msgid "igual"
-msgstr "Egal"
-
-#: ui_confreglasbase.h:290
-msgid "mayor"
-msgstr "plus grand"
-
-#: ui_confreglasbase.h:289
-msgid "menor"
-msgstr "plus petit"
-
-#: pluginbc_corrector.cpp:71
+#: pluginbc_cuentaresumen.cpp:75
 msgid "menuVer"
-msgstr "afficher"
-
+msgstr ""
 
