@@ -18,9 +18,11 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
 "Language: frX-Generator: Lokalize 1.2\n"
 "X-Generator: Lokalize 1.2\n"
+"X-Language: fr_FR\n"
+"X-Source-Language: C\n"
 
 #: ui_bccuentabase.h:851
 msgid "&Aceptar"
@@ -210,7 +212,7 @@ msgstr "Libellé du compte"
 
 #: ui_bccuentabase.h:849
 msgid "Comentarios:"
-msgstr "Commentaires :"
+msgstr "Libellés :"
 
 #: ui_bccuentalistbase.h:227 ui_bccuentalistbase.h:230
 msgid "Configurar listado"

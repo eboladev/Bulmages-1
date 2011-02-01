@@ -18,8 +18,10 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
 "X-Generator: Lokalize 1.2\n"
+"X-Language: fr_FR\n"
+"X-Source-Language: C\n"
 
 #: ui_bcasientointeligentebase.h:215
 msgid "&Aceptar"
@@ -310,8 +312,7 @@ msgstr "Exporter l'écriture"
 msgid "Extender asiento"
 msgstr "Arborer l'écriture"
 
-#: pluginbc_asiento.cpp:148 bcasientolistsubform.cpp:38
-#: bcasientosubform.cpp:40
+#: pluginbc_asiento.cpp:148 bcasientolistsubform.cpp:38 bcasientosubform.cpp:40
 msgid "Fecha"
 msgstr "Date"
 

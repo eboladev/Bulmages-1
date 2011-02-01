@@ -16,9 +16,11 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
 "Language: frX-Generator: Lokalize 1.2\n"
 "X-Generator: Lokalize 1.2\n"
+"X-Language: fr_FR\n"
+"X-Source-Language: C\n"
 
 #: ui_bcdiarioprintbase.h:159
 msgid "&Cancelar"
@@ -262,7 +264,7 @@ msgstr "idtypetva"
 
 #: pluginbc_diario.cpp:89
 msgid "menuVer"
-msgstr "Afficher"
+msgstr "menuVer"
 
 #: bcdiariosubform.cpp:48
 msgid "tipocuenta"

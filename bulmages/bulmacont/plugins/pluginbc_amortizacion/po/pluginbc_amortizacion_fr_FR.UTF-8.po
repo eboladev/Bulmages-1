@@ -51,12 +51,10 @@ msgid "&Ver"
 msgstr "&Afficher"
 
 #: bcamortizacionview.cpp:86
-#, fuzzy
 msgid "Agrupacion"
 msgstr "Groupement"
 
 #: ui_bcamortizacionbase.h:648
-#, fuzzy
 msgid "Agrupacion:"
 msgstr "Groupement :"
 
@@ -69,7 +67,6 @@ msgid "Alt+I"
 msgstr "Alt+I"
 
 #: ui_bcamortizacionbase.h:674
-#, fuzzy
 msgid "Amor&tizacion"
 msgstr "Amor&tissement"
 
@@ -78,7 +75,6 @@ msgid "Amortizacion"
 msgstr "Amortissement"
 
 #: ui_bcamortizacionbase.h:672
-#, fuzzy
 msgid "Amortizado:"
 msgstr "Amorti :"
 
@@ -338,5 +334,3 @@ msgstr "Afficher l'écriture"
 #: pluginbc_amortizacion.cpp:93
 msgid "menuVer"
 msgstr "menuVer"
-
-
