@@ -283,7 +283,21 @@ QString BlDbRecordSet::valor ( int posicion, int registro, bool localeformat )
     if ( localeformat ) {
         if ( dbFieldType ( posicion ) == 1700 ) {
             /// La base de datos solo devuelve valores numericos con tipoDecimal el . y por eso solo tratamos este caso.
-            val = locale.toString((locale.toDouble(val))); //ARON
+	    // Perdona que te haga estos cambios Aron. Pero estan probando el programa y da muchos fallos.
+	    // Lo dejo medio apanyado y disculpa la intromision
+	    // No podemos usar el tipo de datos double ya que es punto flotante y en nuestro
+	    // caso debemos usar punto fijo (no implementado en C++. De ahi la clase BlFixed) para evitar errores de redondeo 
+	    // y de precision.
+            //val = locale.toString((locale.toDouble(val))); //ARON
+	    // Esto mas o menos funciona
+	    val.replace('.',locale.decimalPoint());
+	    QString parteentera = val.left(val.indexOf(locale.decimalPoint()));
+	    QString decimales = val.right(val.length()- val.indexOf(locale.decimalPoint()));
+	    // Si lo podemos usar formateo de locales con numeros enteros.
+	    QString val1 = locale.toString(locale.toInt(parteentera));
+	    val = val1 + decimales;
+	    // Hasta aqui
+	    
         } // end if
     } // end if
     blDebug ( "END BlDbRecordSet::valor", 0 );

@@ -71,8 +71,24 @@ BEGIN
 		codigocompletopartida varchar NOT NULL,
 		nombrepartida varchar NOT NULL,
 		descpartida varchar,
+		ingresopartida BOOLEAN DEFAULT TRUE NOT NULL,
 		padre integer DEFAULT 0
 		);
+		
+		INSERT INTO partida (codigocompletopartida,codigopartida, nombrepartida,ingresopartida, padre) VALUES (''0'',''0'',''Ingresos'',TRUE, NULL);
+		INSERT INTO partida (codigocompletopartida,codigopartida, nombrepartida,ingresopartida, padre) VALUES (''1'',''1'',''Despeses'',TRUE, NULL);
+		INSERT INTO partida (codigocompletopartida,codigopartida, nombrepartida,ingresopartida,padre) VALUES (''001'',''01'',''Quotes cobrades'',TRUE,1);
+		INSERT INTO partida (codigocompletopartida,codigopartida, nombrepartida,ingresopartida,padre) VALUES (''002'',''02'',''Altres ingressos dels associats'',TRUE,1);
+		INSERT INTO partida (codigocompletopartida,codigopartida, nombrepartida,ingresopartida,padre) VALUES (''003'',''03'',''Subvencions'',TRUE,1);
+		INSERT INTO partida (codigocompletopartida,codigopartida, nombrepartida,ingresopartida,padre) VALUES (''101'',''01'',''Activitats pròpies del fi social'',FALSE,2);
+		INSERT INTO partida (codigocompletopartida,codigopartida, nombrepartida,ingresopartida,padre) VALUES (''102'',''02'',''Donacions'',FALSE,2);
+		INSERT INTO partida (codigocompletopartida,codigopartida, nombrepartida,ingresopartida,padre) VALUES (''103'',''03'',''Material oficina i trameses'',FALSE,2);
+		INSERT INTO partida (codigocompletopartida,codigopartida, nombrepartida,ingresopartida,padre) VALUES (''104'',''04'',''Despeses banc'',FALSE,2);
+		INSERT INTO partida (codigocompletopartida,codigopartida, nombrepartida,ingresopartida,padre) VALUES (''105'',''05'',''Serveis públics'',FALSE,2);
+		INSERT INTO partida (codigocompletopartida,codigopartida, nombrepartida,ingresopartida,padre) VALUES (''106'',''06'',''Quota FaPaC'',FALSE,2);
+
+
+
 	END IF;
 
 	SELECT INTO as * FROM pg_tables  WHERE tablename=''acontable'';
@@ -180,16 +196,16 @@ DECLARE
 BEGIN
 	SELECT INTO as * FROM configuracion WHERE nombre=''PluginBf_MiniContabilidad'';
 	IF FOUND THEN
-		UPDATE CONFIGURACION SET valor=''0.11.1-0002'' WHERE nombre=''PluginBf_MiniContabilidad'';
+		UPDATE CONFIGURACION SET valor=''0.12.1-0002'' WHERE nombre=''PluginBf_MiniContabilidad'';
 	ELSE
-		INSERT INTO configuracion (nombre, valor) VALUES (''PluginBf_MiniContabilidad'', ''0.11.1-0002'');
+		INSERT INTO configuracion (nombre, valor) VALUES (''PluginBf_MiniContabilidad'', ''0.12.1-0002'');
 	END IF;
 	RETURN 0;
 END;
 '   LANGUAGE plpgsql;
 SELECT actualizarevision();
 DROP FUNCTION actualizarevision() CASCADE;
-\echo "Actualizada la revision de la base de datos a la version 0.11.1"
+\echo "Actualizada la revision de la base de datos a la version 0.12.1"
 
 
 DROP FUNCTION drop_if_exists_table(text) CASCADE;

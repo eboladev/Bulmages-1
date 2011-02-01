@@ -1427,11 +1427,9 @@ QString BlForm::trataCursor ( BlDbRecordSet *cur, const QString &datos, int tipo
         QString salidatemp = datos;
 
         /// Buscamos cadenas perdidas adicionales que puedan quedar por poner.
-        //blDebug("salidatemp =",0,salidatemp);
         QRegExp rx ( "\\[(\\w*)\\]" );
         int pos =  0;
         while ( ( pos = rx.indexIn ( salidatemp, pos ) ) != -1 ) {
-            //blDebug("substituïm ",0,rx.cap(1));
             if ( cur->numcampo ( rx.cap ( 1 ) ) != -1 ) {
                 switch ( tipoEscape ) {
                 case 1:

@@ -148,7 +148,7 @@ int entryPoint ( BfBulmaFact *bges )
     blDebug ( "Punto de Entrada del plugin de MiniContabilidad\n", 0 );
 
     /// El plugin necesita un parche en la base de datos para funcionar.
-    bges->company()->dbPatchVersionCheck("PluginBf_MiniContabilidad", "0.11.1-0002");
+    bges->company()->dbPatchVersionCheck("PluginBf_MiniContabilidad", "0.12.1-0002");
 
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale ( LC_ALL, "" );

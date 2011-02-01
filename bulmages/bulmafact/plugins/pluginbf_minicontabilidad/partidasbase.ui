@@ -408,35 +408,6 @@
         </property>
        </widget>
       </item>
-      <item row="0" column="4" rowspan="2">
-       <widget class="QGroupBox" name="groupBox">
-        <property name="title">
-         <string>Imputacion Contable</string>
-        </property>
-        <layout class="QVBoxLayout">
-         <property name="spacing">
-          <number>5</number>
-         </property>
-         <property name="margin">
-          <number>5</number>
-         </property>
-         <item>
-          <widget class="QRadioButton" name="mui_serviciopartida">
-           <property name="text">
-            <string>Servicio.</string>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QRadioButton" name="mui_productopartida">
-           <property name="text">
-            <string>Producto.</string>
-           </property>
-          </widget>
-         </item>
-        </layout>
-       </widget>
-      </item>
      </layout>
     </widget>
    </item>
@@ -489,8 +460,6 @@
   <tabstop>mui_codigoCompletoPartida</tabstop>
   <tabstop>mui_codigoPartida</tabstop>
   <tabstop>mui_nombrePartida</tabstop>
-  <tabstop>mui_serviciopartida</tabstop>
-  <tabstop>mui_productopartida</tabstop>
   <tabstop>mui_descPartida</tabstop>
   <tabstop>m_listPartidas</tabstop>
   <tabstop>mui_aceptar</tabstop>
