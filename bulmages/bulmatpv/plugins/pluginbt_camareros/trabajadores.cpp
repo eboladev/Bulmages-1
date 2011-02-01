@@ -55,6 +55,8 @@ void Trabajadores::closeDialog()
 {
     if (!m_validUser && m_deleteOnClose) {
 	exit(0);
+    } else {
+	close();
     } // end if
 }
 
