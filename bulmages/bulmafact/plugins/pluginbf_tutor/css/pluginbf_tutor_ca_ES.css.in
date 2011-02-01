@@ -1,0 +1,4 @@
+#TutoresListBase #mui_list {
+	background-image: url(@CMAKE_INSTALL_PREFIX@/share/bulmages/images/ca_ES/pluginbf_tutor-list.png);
+}
+
