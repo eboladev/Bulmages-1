@@ -53,6 +53,13 @@ int BtCompany_createMainWindows_Post ( BtCompany *etpv )
 
 int BtCompany_cobrar ( BtCompany *etpv )
 {
+
+    /// Comprueba que el ticket no este vacio.
+    if (etpv->ticketActual()->listaLineas()->count() == 0) {
+        blMsgWarning ( _( "El ticket esta vacio." ) );
+        return -1;
+    } // end if
+
     QDialog *diag = new QDialog;
     Cambio *camb = new Cambio ( etpv, diag );
 
