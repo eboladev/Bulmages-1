@@ -184,7 +184,7 @@ QString BlFixed::toQString ( QChar separadorDecimal, int precision, QChar separa
     QString buffer = "";
 
     do {
-        if ( n % 3 == 0 && n > precision ) //ARON
+        if ( ( n - precision  - 1 ) % 3 == 0 && n - 1 > precision ) //ARON
           buffer = separadorMillares + buffer; //ARON
         if ( n == precision ) {
             if ( n > 0 || options & DECIMAL )
@@ -205,11 +205,11 @@ QString BlFixed::toQString ( QChar separadorDecimal, int precision, QChar separa
     if ( options & ALIGN ) {
         while ( n - units < MAX_FIXED_LENGTH - 2 ) {
 	      buffer = " " + buffer;
-	      n++;
+		  n++;
         } // end while
     } // end if
 
-    blDebug ( "END BlFixed::toQString", 2, buffer );
+    blDebug ( "END BlFixed::toQString", 0, buffer );
     return buffer;
 }
 
@@ -303,12 +303,12 @@ void BlFixed::fromBlFixed ( const char *s )
             value = value * 10 + ( c - '0' );
             if ( decimal )
                 m_precision++;
-        } else if ( c ==  locale.decimalPoint() ) { //ARON
+        } else if ( c == '.' || c == locale.decimalPoint() ) {
             if ( decimal )
-                break;
+                break; /// Si este no es el primer separador decimal que encontramos, ignorar el resto de la cadena
             decimal = true;
-        } else if ( c != locale.decimalPoint() && c != locale.groupSeparator() )
-            break; /// Cancelar la conversi&oacute;n cifra a cifra si hay un caracter no v&aacute;lido
+        } else if ( c != '.' && c != locale.decimalPoint() || c == locale.groupSeparator() )
+            break; /// Cancelar la conversi&oacute;n cifra a cifra si hay un car&aacute;cter no v&aacute;lido
         c = *s++;
     } // end while
     if ( negative )
