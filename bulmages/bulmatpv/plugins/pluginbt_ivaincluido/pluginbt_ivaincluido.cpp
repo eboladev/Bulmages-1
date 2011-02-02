@@ -30,7 +30,7 @@
 #include "pluginbt_ivaincluido.h"
 #include "blfunctions.h"
 #include "btcompany.h"
-#include "btescprinter.h"
+#include "blescprinter.h"
 
 typedef QMap<QString, BlFixed> base;
 

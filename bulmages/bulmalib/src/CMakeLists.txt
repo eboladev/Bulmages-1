@@ -76,6 +76,8 @@ set(bulmalib_SRCS	blpostgresqlclient.cpp
 			blmaincompanypointer.cpp
 			blargparser.cpp
 			bltoolbutton.cpp
+			blescprinter.cpp
+			blcp850eurotextcodec.cpp
 			blaction.cpp)
 
 set(bulmalib_MOCS	bldblogindialog.h
@@ -120,6 +122,8 @@ set (bulmalib_HDRS	blmaincompanypointer.h
 			bltreewidget.h
 			blprogressbar.h
 			bldb.h
+			blescprinter.h
+			blcp850eurotextcodec.h
 			blfixed.h
 			blfunctions.h
 			blimportexport.h

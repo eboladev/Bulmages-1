@@ -18,27 +18,27 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#include "btescprinter.h"
+#include "blescprinter.h"
 #include <QImage>
 #include <QFile>
 #include <QString>
-#include "btcp850eurotextcodec.h"
+#include "blcp850eurotextcodec.h"
 #include <QChar>
 #include <math.h>
 
 #define TWOPI 6.283185307179586476925287
 
-BtEscPrinter::BtEscPrinter()
+BlEscPrinter::BlEscPrinter()
 {
     m_device = QString ( "/dev/lp0" );
 }
 
-BtEscPrinter::BtEscPrinter ( QString device )
+BlEscPrinter::BlEscPrinter ( QString device )
 {
     this->m_device = device;
 }
 
-void BtEscPrinter::print()
+void BlEscPrinter::print()
 {
     QFile file ( m_device );
     if ( !file.open ( QIODevice::WriteOnly | QIODevice::Unbuffered ) ) {
@@ -49,26 +49,26 @@ void BtEscPrinter::print()
     file.close();
 }
 
-void BtEscPrinter::printAndClearBuffer()
+void BlEscPrinter::printAndClearBuffer()
 {
     print();
     clearBuffer();
 }
 
-void BtEscPrinter::clearBuffer()
+void BlEscPrinter::clearBuffer()
 {
     m_buffer.clear();
 }
 
-void BtEscPrinter::initializePrinter()
+void BlEscPrinter::initializePrinter()
 {
     const char header[2] = {0x1B, 0x40};
     m_buffer.append ( QByteArray::fromRawData ( header, 2 ) );
 }
 
-void BtEscPrinter::printText ( QString text )
+void BlEscPrinter::printText ( QString text )
 {
-    QTextCodec *codec = new BtCP850EuroTextCodec ( 0 );
+    QTextCodec *codec = new BlCP850EuroTextCodec ( 0 );
     if ( codec == NULL ) {
         //ERROR
         return;
@@ -76,7 +76,7 @@ void BtEscPrinter::printText ( QString text )
     m_buffer.append ( codec->fromUnicode ( text ) );
 }
 
-void BtEscPrinter::printImage ( QString path )
+void BlEscPrinter::printImage ( QString path )
 {
     QImage img = QImage ( path );
 
@@ -112,7 +112,7 @@ void BtEscPrinter::printImage ( QString path )
 }
 
 
-void BtEscPrinter::printImageRaw ( QByteArray &arr )
+void BlEscPrinter::printImageRaw ( QByteArray &arr )
 {
     QImage img = QImage ( );
     img.loadFromData(arr, "PNG");
@@ -151,59 +151,59 @@ void BtEscPrinter::printImageRaw ( QByteArray &arr )
 
 
 //CHARACTER ESC CODES
-void BtEscPrinter::setCharacterSpacing ( unsigned char n )
+void BlEscPrinter::setCharacterSpacing ( unsigned char n )
 {
     const char header[3] = {0x1b, 0x20, ( char ) n};
     m_buffer.append ( QByteArray::fromRawData ( header, 3 ) );
 }
 
-void BtEscPrinter::setCharacterCodeTable ( characterCodeTable n )
+void BlEscPrinter::setCharacterCodeTable ( characterCodeTable n )
 {
     const char header[3] = {0x1B, 0x74, ( char ) n};
     m_buffer.append ( QByteArray::fromRawData ( header, 3 ) );
 }
 
-void BtEscPrinter::setCharacterPrintMode ( char mask )
+void BlEscPrinter::setCharacterPrintMode ( char mask )
 {
     const char header[3] = {0x1B, 0x21, mask};
     m_buffer.append ( QByteArray::fromRawData ( header, 3 ) );
 }
 
-void BtEscPrinter::setUnderlineMode ( bool mode )
+void BlEscPrinter::setUnderlineMode ( bool mode )
 {
     char n = mode ? 1 : 0;
     const char header[3] = {0x1B, 0x2D, n};
     m_buffer.append ( QByteArray::fromRawData ( header, 3 ) );
 }
 
-void BtEscPrinter::setCharacterSize ( char mask )
+void BlEscPrinter::setCharacterSize ( char mask )
 {
     const char header[3] = {0x1D, 0x21, mask};
     m_buffer.append ( QByteArray::fromRawData ( header, 3 ) );
 }
 
-void BtEscPrinter::setSmoothing ( bool mode )
+void BlEscPrinter::setSmoothing ( bool mode )
 {
     char n = mode ? 1 : 0;
     const char header[3] = {0x1D, 0x62, n};
     m_buffer.append ( QByteArray::fromRawData ( header, 3 ) );
 }
 
-void BtEscPrinter::setDoubleStrike ( bool mode )
+void BlEscPrinter::setDoubleStrike ( bool mode )
 {
     char n = mode ? 1 : 0;
     const char header[3] = {0x1B, 0x47, n};
     m_buffer.append ( QByteArray::fromRawData ( header, 3 ) );
 }
 
-void BtEscPrinter::turnUpsideDown ( bool mode )
+void BlEscPrinter::turnUpsideDown ( bool mode )
 {
     char n = mode ? 1 : 0;
     const char header[3] = {0x1B, 0x7B, n};
     m_buffer.append ( QByteArray::fromRawData ( header, 3 ) );
 }
 
-void BtEscPrinter::turn90CWRotation ( bool onoff, bool extraSpacing )
+void BlEscPrinter::turn90CWRotation ( bool onoff, bool extraSpacing )
 {
     char n;
     onoff == 1 ? n = 1 + ( char ) extraSpacing : n = 0;
@@ -211,26 +211,26 @@ void BtEscPrinter::turn90CWRotation ( bool onoff, bool extraSpacing )
     m_buffer.append ( QByteArray::fromRawData ( header, 3 ) );
 }
 
-void BtEscPrinter::turnWhiteBlack ( bool mode )
+void BlEscPrinter::turnWhiteBlack ( bool mode )
 {
     char n = mode ? 1 : 0;
     const char header[3] = {0x1D, 0x42, n};
     m_buffer.append ( QByteArray::fromRawData ( header, 3 ) );
 }
 
-void BtEscPrinter::setColor ( printColor color )
+void BlEscPrinter::setColor ( printColor color )
 {
     const char header[7] = {0x1D, 0x28, 0x4E, 0x02, 0x00, 48, ( char ) color};
     m_buffer.append ( QByteArray::fromRawData ( header, 7 ) );
 }
 
 //PRINT POSITION COMMANDS
-void BtEscPrinter::horizontalTab()
+void BlEscPrinter::horizontalTab()
 {
     m_buffer.append ( 0x09 );
 }
 
-void BtEscPrinter::setHorizontalTabPos ( int numtabs, char* tabspos )
+void BlEscPrinter::setHorizontalTabPos ( int numtabs, char* tabspos )
 {
     if ( 0 >= numtabs && numtabs > 32 )
         return;
@@ -240,7 +240,7 @@ void BtEscPrinter::setHorizontalTabPos ( int numtabs, char* tabspos )
     m_buffer.append ( ( char ) 0x00 );
 }
 
-void BtEscPrinter::setLeftMargin ( unsigned short margin )
+void BlEscPrinter::setLeftMargin ( unsigned short margin )
 {
     char nL = ( char ) ( margin );
     char nH = ( char ) ( margin >> 8 );
@@ -248,7 +248,7 @@ void BtEscPrinter::setLeftMargin ( unsigned short margin )
     m_buffer.append ( QByteArray::fromRawData ( header, 4 ) );
 }
 
-void BtEscPrinter::setPrintingAreaWidth ( unsigned short width ) //width default = 512
+void BlEscPrinter::setPrintingAreaWidth ( unsigned short width ) //width default = 512
 {
     char nL = ( char ) ( width );
     char nH = ( char ) ( width >> 8 );
@@ -256,13 +256,13 @@ void BtEscPrinter::setPrintingAreaWidth ( unsigned short width ) //width default
     m_buffer.append ( QByteArray::fromRawData ( header, 4 ) );
 }
 
-void BtEscPrinter::setJustification ( BtEscPrinter::justification j )
+void BlEscPrinter::setJustification ( BlEscPrinter::justification j )
 {
     const char header[3] = {0x1B, 0x61, ( char ) j};
     m_buffer.append ( QByteArray::fromRawData ( header, 3 ) );
 }
 
-void BtEscPrinter::setHAbsolutePos ( unsigned short pos )
+void BlEscPrinter::setHAbsolutePos ( unsigned short pos )
 {
     char nL = ( char ) pos;
     char nH = ( char ) ( pos >> 8 );
@@ -271,7 +271,7 @@ void BtEscPrinter::setHAbsolutePos ( unsigned short pos )
     m_buffer.append ( QByteArray::fromRawData ( header, 4 ) );
 }
 
-void BtEscPrinter::setHRelativePos ( unsigned short pos )
+void BlEscPrinter::setHRelativePos ( unsigned short pos )
 {
     char nL = ( char ) pos;
     char nH = ( char ) ( pos >> 8 );
@@ -281,7 +281,7 @@ void BtEscPrinter::setHRelativePos ( unsigned short pos )
 }
 
 //Barcode commands
-void BtEscPrinter::printBarCode ( barcodeSystem m, int n, char* codeData )
+void BlEscPrinter::printBarCode ( barcodeSystem m, int n, char* codeData )
 {
     int error = 0;
     switch ( m ) {
@@ -404,13 +404,13 @@ void BtEscPrinter::printBarCode ( barcodeSystem m, int n, char* codeData )
     }
 }
 
-void BtEscPrinter::setBarCodeHeight ( int n )
+void BlEscPrinter::setBarCodeHeight ( int n )
 {
     const char header[3] = {0x1D, 0x68, ( char ) n};
     m_buffer.append ( QByteArray::fromRawData ( header, 3 ) );
 }
 
-void BtEscPrinter::setBarCodeWidth ( int n ) // 1<=n<=6 on tm-t88IV
+void BlEscPrinter::setBarCodeWidth ( int n ) // 1<=n<=6 on tm-t88IV
 {
     if ( ! ( 2 <= n && n <= 6 ) )
         return; //ERROR
@@ -419,7 +419,7 @@ void BtEscPrinter::setBarCodeWidth ( int n ) // 1<=n<=6 on tm-t88IV
     m_buffer.append ( QByteArray::fromRawData ( header, 3 ) );
 }
 
-void BtEscPrinter::setBarcodeFormat ( int width, int height, barCodeTextPos pos, printerFont font ) // 1<=width<=6 on tm-t88IV
+void BlEscPrinter::setBarcodeFormat ( int width, int height, barCodeTextPos pos, printerFont font ) // 1<=width<=6 on tm-t88IV
 {
     setBarCodeHeight ( height );
     setBarCodeWidth ( width );
@@ -432,13 +432,13 @@ void BtEscPrinter::setBarcodeFormat ( int width, int height, barCodeTextPos pos,
 
 
 //Page mode
-void BtEscPrinter::selectPageMode()
+void BlEscPrinter::selectPageMode()
 {
     const char header[2] = {0x1B, 0x4C};
     m_buffer.append ( QByteArray::fromRawData ( header, 2 ) );
 }
 
-void BtEscPrinter::setPrintArea ( unsigned short x, unsigned short y, unsigned short dx, unsigned short dy )
+void BlEscPrinter::setPrintArea ( unsigned short x, unsigned short y, unsigned short dx, unsigned short dy )
 {
     char xL = ( char ) x;
     char xH = ( char ) ( x >> 8 );
@@ -453,13 +453,13 @@ void BtEscPrinter::setPrintArea ( unsigned short x, unsigned short y, unsigned s
     m_buffer.append ( QByteArray::fromRawData ( header, 10 ) );
 }
 
-void BtEscPrinter::setPrintDirection ( printDirection dir )
+void BlEscPrinter::setPrintDirection ( printDirection dir )
 {
     const char header[3] = {0x1B, 0x54, ( char ) dir};
     m_buffer.append ( QByteArray::fromRawData ( header, 3 ) );
 }
 
-void BtEscPrinter::setVAbsolutePos ( unsigned short pos )
+void BlEscPrinter::setVAbsolutePos ( unsigned short pos )
 {
     char nL = ( char ) pos;
     char nH = ( char ) ( pos >> 8 );
@@ -468,7 +468,7 @@ void BtEscPrinter::setVAbsolutePos ( unsigned short pos )
     m_buffer.append ( QByteArray::fromRawData ( header, 4 ) );
 }
 
-void BtEscPrinter::setVRelativePos ( unsigned short pos )
+void BlEscPrinter::setVRelativePos ( unsigned short pos )
 {
     char nL = ( char ) pos;
     char nH = ( char ) ( pos >> 8 );
@@ -477,44 +477,44 @@ void BtEscPrinter::setVRelativePos ( unsigned short pos )
     m_buffer.append ( QByteArray::fromRawData ( header, 4 ) );
 }
 
-void BtEscPrinter::cancelPrintData()
+void BlEscPrinter::cancelPrintData()
 {
     m_buffer.append ( 0x18 );
 }
 
 //MACRO FUNCTION COMMANDS
-void BtEscPrinter::startEndMacro()
+void BlEscPrinter::startEndMacro()
 {
     const char header[2] = {0x1D, 0x3A};
     m_buffer.append ( QByteArray::fromRawData ( header, 2 ) );
 }
 
-void BtEscPrinter::executeMacro ( int rep, int timePeriod, bool mode )
+void BlEscPrinter::executeMacro ( int rep, int timePeriod, bool mode )
 {
     const char header[5] = {0x1D, 0x5E, ( char ) rep, ( char ) timePeriod, ( char ) mode };
     m_buffer.append ( QByteArray::fromRawData ( header, 5 ) );
 }
 
 //MECHANISM CONTROL COMMANDS
-void BtEscPrinter::turnUnidirPrintMode ( bool onoff ) //No on TM-t88II TM-L60II
+void BlEscPrinter::turnUnidirPrintMode ( bool onoff ) //No on TM-t88II TM-L60II
 {
     const char header[3] = {0x1B, 0x55, ( char ) onoff};
     m_buffer.append ( QByteArray::fromRawData ( header, 3 ) );
 }
 
-void BtEscPrinter::returnHome() //No on TM-t88II TM-L60II
+void BlEscPrinter::returnHome() //No on TM-t88II TM-L60II
 {
     const char header[2] = {0x1B, 0x3C};
     m_buffer.append ( QByteArray::fromRawData ( header, 2 ) );
 }
 
-void BtEscPrinter::cutPaper ( bool partialcut ) //ONLY partial cut on tm-t88II
+void BlEscPrinter::cutPaper ( bool partialcut ) //ONLY partial cut on tm-t88II
 {
     const char header[3] = {0x1D, 0x56, ( char ) partialcut};
     m_buffer.append ( QByteArray::fromRawData ( header, 3 ) );
 }
 
-void BtEscPrinter::cutPaperAndFeed ( bool partialcut, int feed ) //ONLY partial cut on tm-t88II
+void BlEscPrinter::cutPaperAndFeed ( bool partialcut, int feed ) //ONLY partial cut on tm-t88II
 {
     char m = partialcut ? 66 : 65;
     const char header[4] = {0x1D, 0x56, m, ( char ) feed};
@@ -522,60 +522,60 @@ void BtEscPrinter::cutPaperAndFeed ( bool partialcut, int feed ) //ONLY partial 
 }
 
 //Print commands
-void BtEscPrinter::printAndLineFeed()
+void BlEscPrinter::printAndLineFeed()
 {
     m_buffer.append ( 0x0A );
 }
 
-void BtEscPrinter::printAndReturnStandardMode()
+void BlEscPrinter::printAndReturnStandardMode()
 {
     m_buffer.append ( 0x0C );
 }
 
-void BtEscPrinter::printAndCarriageReturn()
+void BlEscPrinter::printAndCarriageReturn()
 {
     m_buffer.append ( 0x0D );
 }
 
-void BtEscPrinter::printDataPageMode()
+void BlEscPrinter::printDataPageMode()
 {
     const char header[2] = {0x1B, 0x0C};
     m_buffer.append ( QByteArray::fromRawData ( header, 2 ) );
 }
 
-void BtEscPrinter::printAndFeedPaper ( int feed )
+void BlEscPrinter::printAndFeedPaper ( int feed )
 {
     const char header[3] = {0x1B, 0x4A, ( char ) feed};
     m_buffer.append ( QByteArray::fromRawData ( header, 3 ) );
 }
 
-void BtEscPrinter::printAndFeedLines ( int lines )
+void BlEscPrinter::printAndFeedLines ( int lines )
 {
     const char header[3] = {0x1B, 0x64, ( char ) lines};
     m_buffer.append ( QByteArray::fromRawData ( header, 3 ) );
 }
 
-void BtEscPrinter::printAndReverseFeed ( int feed ) //Not compatible TM-t88II III
+void BlEscPrinter::printAndReverseFeed ( int feed ) //Not compatible TM-t88II III
 {
     const char header[3] = {0x1B, 0x4B, ( char ) feed};
     m_buffer.append ( QByteArray::fromRawData ( header, 3 ) );
 }
 
 //Line spacing commands
-void BtEscPrinter::selectDefaultLineSpacing()
+void BlEscPrinter::selectDefaultLineSpacing()
 {
     const char header[2] = {0x1B, 0x32};
     m_buffer.append ( QByteArray::fromRawData ( header, 2 ) );
 }
 
-void BtEscPrinter::setLineSpacing ( int lspacing )
+void BlEscPrinter::setLineSpacing ( int lspacing )
 {
     const char header[3] = {0x1B, 0x33, ( char ) lspacing};
     m_buffer.append ( QByteArray::fromRawData ( header, 3 ) );
 }
 
 //2D CODES
-void BtEscPrinter::printQRCode ( qrModel model, int dotSize, qrErrorCorrection error, unsigned short numData, char* data ) //1<=dotSize<=16
+void BlEscPrinter::printQRCode ( qrModel model, int dotSize, qrErrorCorrection error, unsigned short numData, char* data ) //1<=dotSize<=16
 {
     numData += 3;
     char pl = ( char ) numData;
@@ -598,7 +598,7 @@ void BtEscPrinter::printQRCode ( qrModel model, int dotSize, qrErrorCorrection e
     m_buffer.append ( QByteArray::fromRawData ( print, 8 ) );
 }
 
-void BtEscPrinter::test()
+void BlEscPrinter::test()
 {
     initializePrinter();
     setCharacterCodeTable ( page19 );
@@ -748,6 +748,6 @@ void BtEscPrinter::test()
     print();
 }
 
-QByteArray BtEscPrinter::buffer() {
+QByteArray BlEscPrinter::buffer() {
   return m_buffer;
 }

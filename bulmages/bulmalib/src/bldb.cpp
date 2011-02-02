@@ -26,10 +26,17 @@
 #include <QXmlStreamReader>
 #include <QDomDocument>
 #include <QDomNode>
+#include <QHBoxLayout>
+#include <QObject>
+#include <QCheckBox>
+#include <QInputDialog>
+#include <QUiLoader>
+#include <QPushButton>
 
 #include "bldb.h"
 #include "blplugins.h"
 #include "local_blI18n.h"
+#include "blescprinter.h"
 
 ///
 /**
@@ -237,8 +244,11 @@ QString BlDbField::valorcampoprep ( int &error )
         if ( m_valorcampo == "" ) {
             valor = "NULL";
         } else {
-            QLocale locale;
+           /* QLocale locale;
             valor =  "'" + m_dbConnection->sanearCadena ( QString("%1").arg(locale.toDouble(m_valorcampo)) ) + "'";
+	   */
+	   m_valorcampo.replace(",",".");
+	   valor = "'"  + m_dbConnection->sanearCadena( m_valorcampo) + "'";
         } // end if
         break;
     case DbBoolean:
@@ -898,6 +908,7 @@ int BlDbRecord::trataTags ( QString &buff, int tipoEscape )
     return 1;
 }
 
+/*
 int BlDbRecord::trataTags ( QByteArray &buff, int tipoEscape )
 {
     QString fitxersortidatxt = "";
@@ -908,7 +919,7 @@ int BlDbRecord::trataTags ( QByteArray &buff, int tipoEscape )
 
     return 1;
 }
-
+*/
 
 
 /// Este metodo es usado en las impresiones con RML para generar una cuadricula con el registro.
@@ -1207,4 +1218,1882 @@ void BlDbRecord::syncXML(const QString &text) {
     blDebug ( "BlDbRecord::syncXML", 0 );
 }
 
+// =================== GENERAR RML PARA TICKETS y TXT
 
+
+/// Busca strings del tipo [xxxx] entro del texto pasado y los sustituye
+/// Por valores existentes en la base de datos.
+/// Tambien busca los parametros PARAM e IFACE para tambien tratarlos.
+/// Devuelve 1 Si todo esta OK o 0 Si hay algun error
+/**
+\param buff El texto entero sobre el que se hace el reemplazo de sentencias.
+**/
+int BlDbRecord::trataTags ( QByteArray &buff, int tipoEscape )
+{
+    blDebug ( "BlDbRecord::trataTags", 0 );
+
+
+    substrConf ( buff );
+    buff.replace ( "[ficha]", m_tablename.toAscii() );
+    buff.replace ( "[story]", story().toAscii() );
+
+    
+    static int profundidad = 0;
+    profundidad ++;
+    
+    ///Buscamos interfaces, los preguntamos y los ponemos.
+    int pos = 0;
+    QByteArray cadant;
+
+    QRegExp rx70 ( "<!--\\s*IFACE\\s*SRC\\s*=\\s*\"([^\"]*)\"\\s*-->" );
+    rx70.setMinimal ( TRUE );
+    while ( ( pos = rx70.indexIn ( buff, pos ) ) != -1 ) {
+        QString cadarchivo = rx70.cap ( 1 );
+
+        substrConf ( cadarchivo );
+
+        QFile fichero ( cadarchivo );
+        if ( fichero.exists() ) {
+            QUiLoader loader;
+            fichero.open ( QFile::ReadOnly );
+            QWidget *iface = loader.load ( &fichero );
+            fichero.close();
+            QDialog *diag = new QDialog ( 0 );
+            diag->setModal ( true );
+
+            /// Creamos un layout donde estara el contenido de la ventana y la ajustamos al QDialog
+            /// para que sea redimensionable y aparezca el titulo de la ventana.
+            QHBoxLayout *layout = new QHBoxLayout;
+            layout->addWidget ( iface );
+            layout->setMargin ( 5 );
+            layout->setSpacing ( 5 );
+            diag->setLayout ( layout );
+            diag->setWindowTitle ( iface->windowTitle() );
+            diag->setGeometry ( 0, 0, iface->width(), iface->height() );
+            QPushButton *button = iface->findChild<QPushButton *> ( "mui_aceptar" );
+            button->connect ( button, SIGNAL ( released ( ) ), diag, SLOT ( accept() ) );
+            QPushButton *button1 = iface->findChild<QPushButton *> ( "mui_cancelar" );
+            button->connect ( button1, SIGNAL ( released ( ) ), diag, SLOT ( reject() ) );
+            int ret = diag->exec();
+            if ( ret ) {
+
+         /// Recorre los QLineEdit.
+                QList<QLineEdit *> l2 = iface->findChildren<QLineEdit *>();
+                QListIterator<QLineEdit *> it2 ( l2 );
+                while ( it2.hasNext() ) {
+                    QLineEdit * item = it2.next();
+                    QString nombre = item->objectName().right ( item->objectName().size() - 4 );
+                    QString valor = item->text();
+                    addDbField ( nombre, BlDbField::DbVarChar, BlDbField::DbNoSave, nombre  );
+                    setDbValue ( nombre, valor );
+                } // end while
+                
+                /// Recorre los QCheckBox.
+                QList<QCheckBox *> qcb = iface->findChildren<QCheckBox *>();
+                QListIterator<QCheckBox *> itqcb ( qcb );
+
+                while ( itqcb.hasNext() ) {
+                    QCheckBox *item = itqcb.next();
+                    QString nombre = item->objectName().right ( item->objectName().size() - 4 );
+                    QString valor = "false";
+                    if ( item->isChecked() ) {
+                        valor = "true";
+                    } else {
+                  valor = "false";
+          } // end if
+                    addDbField ( nombre, BlDbField::DbBoolean, BlDbField::DbNoSave, nombre  );
+                    setDbValue ( nombre, valor );
+                } // end while
+                
+      QVariant exportaRML = iface->property("exportaRML");
+      if (exportaRML.isValid() ) {
+         QStringList props = exportaRML.toStringList();
+      
+         QListIterator<QString> iProps(props);
+         while (iProps.hasNext()) {
+            QString camp = iProps.next();
+            QStringList cami = camp.split(".");
+            QObject *actual=iface;
+            QListIterator<QString> iCami(cami);
+            
+            while(iCami.hasNext() && actual) {
+
+                QString nom = iCami.next();
+                QObject *fill = actual->findChild<QObject *>("mui_"+nom);
+
+                if (!fill) {
+               fill = actual->findChild<QObject *>(nom);
+                } // end if
+
+                if (fill) {
+               actual = fill;
+                } else {
+                
+               QVariant valor = actual->property(nom.toUtf8().data());
+               m_variables[camp] =valor.toString();
+               
+               if (valor.canConvert<QObject*>()) {
+                   actual = valor.value<QObject*>();
+               } else {
+                   actual = NULL;
+               } // end if
+            
+                } // end if
+                
+            } // end while
+            
+         } // end while
+         
+      } // end if
+
+            } // end if
+            
+            delete diag;
+            
+            // Si se ha pulsado cancelar entonce se sale del informe.
+            if ( !ret ) return 0;
+            
+        } else {
+            blMsgInfo ( "Archivo de Interficie no existe" );
+        } // end if
+
+        buff.replace ( pos, rx70.matchedLength(), "" );
+        pos = 0;
+    } // end while
+
+
+    /// Buscamos establecimiento de variables y los ponemos en m_variables
+    pos = buff.indexOf("<!-- SETVAR");
+    cadant = buff.left(pos);
+    buff = buff.right(buff.length()-pos);
+    QRegExp rx54 ( "<!--\\s*SETVAR\\s*NAME\\s*=\\s*\"([^\"]*)\"\\s*VALUE\\s*=\\s*\"([^\"]*)\"\\s*-->" );
+    rx54.setMinimal ( TRUE );
+    while ( ( pos = rx54.indexIn ( buff, 0 ) ) != -1 ) {
+        QByteArray valor = rx54.cap ( 2 ).toAscii();
+        substrVars ( valor, tipoEscape );
+        m_variables[rx54.cap ( 1 ) ] = valor;
+        buff.replace ( pos, rx54.matchedLength(), "" );
+        pos = buff.indexOf("<!--");
+    } // end while
+    buff = cadant + buff;
+    
+    /// Tratamos las variables establecidas.
+    substrVars ( buff, tipoEscape );
+
+
+    
+/*    
+    /// Buscamos algo de lineas de detalle
+    /// Inclusion de ficheros de codigo
+    pos = buff.indexOf("<!-- LINEAS DETALLE");
+    cadant = buff.left(pos);
+    buff = buff.right(buff.length()-pos);
+    QRegExp rx ( "<!--\\s*LINEAS\\s*DETALLE\\s*-->(.*)<!--\\s*END\\s*LINEAS\\s*DETALLE\\s*-->" );
+    rx.setMinimal ( TRUE );
+    
+    while ( ( pos = rx.indexIn ( buff, 0 ) ) != -1 ) {
+        QByteArray ldetalle = trataLineasDetalle ( rx.cap ( 1 ).toAscii(), tipoEscape );
+        buff.replace ( pos, rx.matchedLength(), ldetalle );
+        pos = buff.indexOf("<!--");
+    } // end while    
+    buff = cadant + buff;
+*/    
+    
+    /// Inclusion de ficheros de codigo
+    pos = buff.indexOf("<!-- INCLUDE");
+    cadant = buff.left(pos);
+    buff = buff.right(buff.length()-pos);
+    QRegExp rx19 ( "<!--\\s*INCLUDE\\s*FILE\\s*=\\s*\"([^\"]*)\"\\s*-->" );
+    rx19.setMinimal ( TRUE );
+    while ( ( pos = rx19.indexIn ( buff, 0 ) ) != -1 ) {
+        QString ldetalle = trataIncludeFileTXT ( rx19.cap ( 1 ), tipoEscape );
+        buff.replace ( pos, rx19.matchedLength(), ldetalle.toAscii() );
+        pos = buff.indexOf("<!--");
+    } // end while
+    buff = cadant + buff;
+
+    /// Buscamos Existencia de Ficheros
+    pos = buff.indexOf("<!-- EXISTS FILE");
+    cadant = buff.left(pos);
+    buff = buff.right(buff.length()-pos);
+    QRegExp rx9 ( "<!--\\s*EXISTS\\s*FILE\\s*=\\s*\"([^\"]*)\"\\s*-->(.*)<!--\\s*END\\s*EXISTS\\s*-->" );
+    rx9.setMinimal ( TRUE );
+    while ( ( pos = rx9.indexIn ( buff, 0 ) ) != -1 ) {
+        QString ldetalle = trataExists ( rx9.cap ( 1 ), rx9.cap ( 2 ).toAscii() );
+        buff.replace ( pos, rx9.matchedLength(), ldetalle.toAscii() );
+        pos = buff.indexOf("<!--");
+    } // end while
+    buff = cadant + buff;
+    
+    /// Buscamos Query's en condicional
+    pos = buff.indexOf("<!-- IF QUERY");
+    cadant = buff.left(pos);
+    buff = buff.right(buff.length()-pos);
+    QRegExp rx4 ( "<!--\\s*IF\\s*QUERY\\s*=\\s*\"([^\"]*)\"\\s*-->(.*)<!--\\s*END\\s*IF\\s*QUERY\\s*-->" );
+    rx4.setMinimal ( TRUE );
+    while ( ( pos = rx4.indexIn ( buff, 0 ) ) != -1 ) {
+        QString ldetalle = trataIfQuery ( rx4.cap ( 1 ), rx4.cap ( 2 ).toAscii() );
+        buff.replace ( pos, rx4.matchedLength(), ldetalle.toAscii() );
+        pos = buff.indexOf("<!--");
+    } // end while
+    buff = cadant + buff;
+    
+    
+    /// Buscamos Query's por tratar
+    pos = buff.indexOf("<!-- QUERY");
+    cadant = buff.left(pos);
+    buff = buff.right(buff.length()-pos);
+    QRegExp rx1 ( "<!--\\s*QUERY\\s*=\\s*\"([^\"]*)\"\\s*-->(.*)<!--\\s*END\\s*QUERY\\s*-->" );
+    rx1.setMinimal ( TRUE );
+    while ( ( pos = rx1.indexIn ( buff, 0 ) ) != -1 ) {
+        QByteArray ldetalle = trataQuery ( rx1.cap ( 1 ), rx1.cap ( 2 ).toAscii(), tipoEscape );
+        buff.replace ( pos, rx1.matchedLength(), ldetalle );
+        pos = buff.indexOf("<!--");
+    } // end while
+    buff = cadant + buff;
+    
+    /// Buscamos SubQuery's en condicional
+    pos = buff.indexOf("<!-- IF SUBQUERY");
+    cadant = buff.left(pos);
+    buff = buff.right(buff.length()-pos);
+    QRegExp rx14 ( "<!--\\s*IF\\s*SUBQUERY\\s*=\\s*\"([^\"]*)\"\\s*-->(.*)<!--\\s*END\\s*IF\\s*SUBQUERY\\s*-->" );
+    rx14.setMinimal ( TRUE );
+    while ( ( pos = rx14.indexIn ( buff, 0 ) ) != -1 ) {
+        QString ldetalle = trataIfQuery ( rx14.cap ( 1 ), rx14.cap ( 2 ).toAscii() );
+        buff.replace ( pos, rx14.matchedLength(), ldetalle.toAscii() );
+        pos = buff.indexOf("<!--");
+    } // end while
+    buff = cadant + buff;
+    
+    /// Buscamos SubQuery's por tratar
+    pos = buff.indexOf("<!-- SUBQUERY");
+    cadant = buff.left(pos);
+    buff = buff.right(buff.length()-pos);
+    QRegExp rx7 ( "<!--\\s*SUBQUERY\\s*=\\s*\"([^\"]*)\"\\s*-->(.*)<!--\\s*END\\s*SUBQUERY\\s*-->" );
+    rx7.setMinimal ( TRUE );
+    while ( ( pos = rx7.indexIn ( buff, 0 ) ) != -1 ) {
+        QString ldetalle = trataQuery ( rx7.cap ( 1 ), rx7.cap ( 2 ).toAscii(), tipoEscape );
+        buff.replace ( pos, rx7.matchedLength(), ldetalle.toAscii() );
+        pos = buff.indexOf("<!--");
+    } // end while
+    buff = cadant + buff;
+    
+    /// Buscamos Query's en condicional
+    pos = buff.indexOf("<!-- IF");
+    cadant = buff.left(pos);
+    buff = buff.right(buff.length()-pos);
+    QRegExp rx11 ( "<!--\\s*IF\\s*=\\s*\"([^\"]*)\"\\s*-->(.*)<!--\\s*ELSE\\s*-->(.*)<!--\\s*END\\s*IF\\s*-->" );
+    rx11.setMinimal ( TRUE );
+    while ( ( pos = rx11.indexIn ( buff, 0 ) ) != -1 ) {
+        QString ldetalle = trataIf ( rx11.cap ( 1 ), rx11.cap ( 2 ).toAscii(), rx11.cap ( 3 ).toAscii() );
+        buff.replace ( pos, rx11.matchedLength(), ldetalle.toAscii() );
+        pos = buff.indexOf("<!--");
+    } // end while
+    buff = cadant + buff;
+    
+    /// Cambio del CharacterPrinterMode
+    pos = buff.indexOf("<!-- SETCHARACTERPRINTMODE");
+    cadant = buff.left(pos);
+    buff = buff.right(buff.length()-pos);
+    QRegExp rx39 ( "<!--\\s*SETCHARACTERPRINTMODE\\s*\"([^\"]*)\"\\s*-->" );
+    rx39.setMinimal ( TRUE );
+    while ( ( pos = rx39.indexIn ( buff, 0 ) ) != -1 ) {
+        QByteArray ldetalle = trataSetCharacterPrintMode ( rx39.cap ( 1 ), tipoEscape );
+        buff.replace ( pos, rx39.matchedLength(), ldetalle );
+	buff = cadant + buff;
+        pos = buff.indexOf("<!-- SETCHARACTERPRINTMODE");
+	cadant = buff.left(pos);
+	buff = buff.right(buff.length()-pos);
+    } // end while
+    buff = cadant + buff;
+
+    /// Cambio del CharacterPrinterMode
+    pos = buff.indexOf("<!-- SETCHARACTERSPACING");
+    cadant = buff.left(pos);
+    buff = buff.right(buff.length()-pos);
+    QRegExp rx49 ( "<!--\\s*SETCHARACTERSPACING\\s*\"([^\"]*)\"\\s*-->" );
+    rx49.setMinimal ( TRUE );
+    while ( ( pos = rx49.indexIn ( buff, 0 ) ) != -1 ) {
+        QByteArray ldetalle = trataSetCharacterSpacing ( rx49.cap ( 1 ), tipoEscape );
+        buff.replace ( pos, rx49.matchedLength(), ldetalle );
+        pos = buff.indexOf("<!--");
+    } // end while
+    buff = cadant + buff;
+    
+    /// Cambio del CharacterCodeTable
+    pos = buff.indexOf("<!-- SETCHARACTERCODETABLE");
+    cadant = buff.left(pos);
+    buff = buff.right(buff.length()-pos);
+    QRegExp rx59 ( "<!--\\s*SETCHARACTERCODETABLE\\s*\"([^\"]*)\"\\s*-->" );
+    rx59.setMinimal ( TRUE );
+    while ( ( pos = rx59.indexIn ( buff, 0 ) ) != -1 ) {
+        QByteArray ldetalle = trataSetCharacterCodeTable ( rx59.cap ( 1 ), tipoEscape );
+        buff.replace ( pos, rx59.matchedLength(), ldetalle );
+        pos = buff.indexOf("<!--");
+    } // end while
+    buff = cadant + buff;
+    
+    /// Cambio del CharacterCodeTable
+    pos = buff.indexOf("<!-- SETUNDERLINEMODE");
+    cadant = buff.left(pos);
+    buff = buff.right(buff.length()-pos);
+    QRegExp rx69 ( "<!--\\s*SETUNDERLINEMODE\\s*\"([^\"]*)\"\\s*-->" );
+    rx69.setMinimal ( TRUE );
+    while ( ( pos = rx69.indexIn ( buff, 0 ) ) != -1 ) {
+        QByteArray ldetalle = trataSetUnderlineMode ( rx69.cap ( 1 ), tipoEscape );
+        buff.replace ( pos, rx69.matchedLength(), ldetalle );
+	buff = cadant + buff;
+        pos = buff.indexOf("<!-- SETUNDERLINEMODE");
+	cadant = buff.left(pos);
+	buff = buff.right(buff.length()-pos);
+    } // end while
+    buff = cadant + buff;
+    
+    
+    /// Cambio del CharacterSize
+    pos = buff.indexOf("<!-- SETCHARACTERSIZE");
+    cadant = buff.left(pos);
+    buff = buff.right(buff.length()-pos);
+    QRegExp rx79 ( "<!--\\s*SETCHARACTERSIZE\\s*\"([^\"]*)\"\\s*-->" );
+    rx79.setMinimal ( TRUE );
+    while ( ( pos = rx79.indexIn ( buff, 0 ) ) != -1 ) {
+        QByteArray ldetalle = trataSetCharacterSize ( rx79.cap ( 1 ), tipoEscape );
+        buff.replace ( pos, rx79.matchedLength(), ldetalle );
+	buff = cadant + buff;
+        pos = buff.indexOf("<!-- SETCHARACTERSIZE");
+	cadant = buff.left(pos);
+	buff = buff.right(buff.length()-pos);
+    } // end while
+    buff = cadant + buff;
+    
+    /// Cambio del Smoothing
+    pos = buff.indexOf("<!-- SETSMOOTHING");
+    cadant = buff.left(pos);
+    buff = buff.right(buff.length()-pos);
+    QRegExp rx89 ( "<!--\\s*SETSMOOTHING\\s*\"([^\"]*)\"\\s*-->" );
+    rx89.setMinimal ( TRUE );
+    while ( ( pos = rx89.indexIn ( buff, 0 ) ) != -1 ) {
+        QByteArray ldetalle = trataSetCharacterSize ( rx89.cap ( 1 ), tipoEscape );
+        buff.replace ( pos, rx89.matchedLength(), ldetalle );
+        pos = buff.indexOf("<!--");
+    } // end while
+    buff = cadant + buff;
+
+    /// Cambio del DoubleStrike
+    pos = buff.indexOf("<!-- SETDOUBLESTRIKE");
+    cadant = buff.left(pos);
+    buff = buff.right(buff.length()-pos);
+    QRegExp rx99 ( "<!--\\s*SETDOUBLESTRIKE\\s*\"([^\"]*)\"\\s*-->" );
+    rx99.setMinimal ( TRUE );
+    while ( ( pos = rx99.indexIn ( buff, 0 ) ) != -1 ) {
+        QByteArray ldetalle = trataSetDoubleStrike ( rx99.cap ( 1 ), tipoEscape );
+        buff.replace ( pos, rx99.matchedLength(), ldetalle );
+        pos = buff.indexOf("<!--");
+    } // end while
+    buff = cadant + buff;
+    
+    /// Cambio del turnUpsideDown
+    pos = buff.indexOf("<!-- TURNUPSIDEDOWN");
+    cadant = buff.left(pos);
+    buff = buff.right(buff.length()-pos);
+    QRegExp rx02 ( "<!--\\s*TURNUPSIDEDOWN\\s*\"([^\"]*)\"\\s*-->" );
+    rx02.setMinimal ( TRUE );
+    while ( ( pos = rx02.indexIn ( buff, 0 ) ) != -1 ) {
+        QByteArray ldetalle = trataTurnUpsideDown ( rx02.cap ( 1 ), tipoEscape );
+        buff.replace ( pos, rx02.matchedLength(), ldetalle );
+        pos = buff.indexOf("<!--");
+    } // end while
+    buff = cadant + buff;
+    
+    /// Cambio del turn90CWRotation
+    pos = buff.indexOf("<!-- TURN90CWROTATION");
+    cadant = buff.left(pos);
+    buff = buff.right(buff.length()-pos);
+    QRegExp rx12 ( "<!--\\s*TURN90CWROTATION\\s*\"([^\"]*)\"\\s*\"([^\"]*)\"\\s*-->" );
+    rx12.setMinimal ( TRUE );
+    while ( ( pos = rx12.indexIn ( buff, 0 ) ) != -1 ) {
+        QByteArray ldetalle = trataTurn90CWRotation (rx12.cap(1), rx12.cap(2), tipoEscape );
+        buff.replace ( pos, rx12.matchedLength(), ldetalle );
+	buff = cadant + buff;
+        pos = buff.indexOf("<!-- TURN90CWROTATION");
+	cadant = buff.left(pos);
+	buff = buff.right(buff.length()-pos);
+    } // end while
+    buff = cadant + buff;
+    
+    /// Cambio del turnWhiteBlack
+    pos = buff.indexOf("<!-- TURNWHITEBLACK");
+    cadant = buff.left(pos);
+    buff = buff.right(buff.length()-pos);
+    QRegExp rx22 ( "<!--\\s*TURNWHITEBLACK\\s*\"([^\"]*)\"\\s*-->" );
+    rx22.setMinimal ( TRUE );
+    while ( ( pos = rx22.indexIn ( buff, 0 ) ) != -1 ) {
+        QByteArray ldetalle = trataTurnWhiteBlack( rx22.cap ( 1 ), tipoEscape );
+        buff.replace ( pos, rx22.matchedLength(), ldetalle );
+	buff = cadant + buff;
+        pos = buff.indexOf("<!-- TURNWHITEBLACK");
+	cadant = buff.left(pos);
+	buff = buff.right(buff.length()-pos);
+    } // end while
+    buff = cadant + buff;
+    
+    /// Cambio del setColor
+    pos = buff.indexOf("<!-- SETCOLOR");
+    cadant = buff.left(pos);
+    buff = buff.right(buff.length()-pos);
+    QRegExp rx32 ( "<!--\\s*SETCOLOR\\s*\"([^\"]*)\"\\s*-->" );
+    rx32.setMinimal ( TRUE );
+    while ( ( pos = rx32.indexIn ( buff, 0 ) ) != -1 ) {
+        QByteArray ldetalle = trataSetColor( rx32.cap ( 1 ), tipoEscape );
+        buff.replace ( pos, rx32.matchedLength(), ldetalle );
+        pos = buff.indexOf("<!--");
+    } // end while
+    buff = cadant + buff;
+    
+    /// Cambio del HorizontalTab
+    pos = buff.indexOf("<!-- HORIZONTALTAB");
+    cadant = buff.left(pos);
+    buff = buff.right(buff.length()-pos);
+    QRegExp rx42 ( "<!--\\s*HORIZONTALTAB\\s*-->" );
+    rx42.setMinimal ( TRUE );
+    while ( ( pos = rx42.indexIn ( buff, 0 ) ) != -1 ) {
+        QByteArray ldetalle = trataHorizontalTab( tipoEscape );
+        buff.replace ( pos, rx42.matchedLength(), ldetalle );
+        pos = buff.indexOf("<!--");
+    } // end while
+    buff = cadant + buff;
+    
+    /// Cambio del setHorizontalTabPos
+    pos = buff.indexOf("<!-- SETHORIZONTALTABPOS");
+    cadant = buff.left(pos);
+    buff = buff.right(buff.length()-pos);
+    QRegExp rx52 ( "<!--\\s*SETHORIZONTALTABPOS\\s*\"([^\"]*)\"\\s*\"([^\"]*)\"\\s*-->" );
+    rx52.setMinimal ( TRUE );
+    while ( ( pos = rx52.indexIn ( buff, 0 ) ) != -1 ) {
+        QByteArray ldetalle = trataSetHorizontalTabPos (rx52.cap(1), rx52.cap(2), tipoEscape );
+        buff.replace ( pos, rx52.matchedLength(), ldetalle );
+        pos = buff.indexOf("<!--");
+    } // end while
+    buff = cadant + buff;
+    
+    
+    /// Cambio del setLeftMargin
+    pos = buff.indexOf("<!-- SETLEFTMARGIN");
+    cadant = buff.left(pos);
+    buff = buff.right(buff.length()-pos);
+    QRegExp rx62 ( "<!--\\s*SETLEFTMARGIN\\s*\"([^\"]*)\"\\s*-->" );
+    rx62.setMinimal ( TRUE );
+    while ( ( pos = rx62.indexIn ( buff, 0 ) ) != -1 ) {
+        QByteArray ldetalle = trataSetLeftMargin( rx62.cap ( 1 ), tipoEscape );
+        buff.replace ( pos, rx62.matchedLength(), ldetalle );
+        pos = buff.indexOf("<!--");
+    } // end while
+    buff = cadant + buff;
+    
+    /// Cambio del setPrintingAreaWidth
+    pos = buff.indexOf("<!-- SETPRINTINGAREAWIDTH");
+    cadant = buff.left(pos);
+    buff = buff.right(buff.length()-pos);
+    QRegExp rx72 ( "<!--\\s*SETPRINTINGAREAWIDTH\\s*\"([^\"]*)\"\\s*-->" );
+    rx72.setMinimal ( TRUE );
+    while ( ( pos = rx72.indexIn ( buff, 0 ) ) != -1 ) {
+        QByteArray ldetalle = trataSetPrintingAreaWidth( rx72.cap ( 1 ), tipoEscape );
+        buff.replace ( pos, rx72.matchedLength(), ldetalle );
+        pos = buff.indexOf("<!--");
+    } // end while
+    buff = cadant + buff;
+    
+    /// Cambio del setJustification
+    pos = buff.indexOf("<!-- SETHABSOLUTEPOS");
+    cadant = buff.left(pos);
+    buff = buff.right(buff.length()-pos);
+    QRegExp rx92 ( "<!--\\s*SETHABSOLUTEPOS\\s*\"([^\"]*)\"\\s*-->" );
+    rx92.setMinimal ( TRUE );
+    while ( ( pos = rx92.indexIn ( buff, 0 ) ) != -1 ) {
+        QByteArray ldetalle = trataSetHAbsolutePos( rx92.cap ( 1 ), tipoEscape );
+        buff.replace ( pos, rx92.matchedLength(), ldetalle );
+        pos = buff.indexOf("<!--");
+    } // end while
+    buff = cadant + buff;
+    
+    
+    /// Cambio del setJustification
+    pos = buff.indexOf("<!-- SETHRELATIVEPOS");
+    cadant = buff.left(pos);
+    buff = buff.right(buff.length()-pos);
+    QRegExp rx03 ( "<!--\\s*SETHRELATIVEPOS\\s*\"([^\"]*)\"\\s*-->" );
+    rx03.setMinimal ( TRUE );
+    while ( ( pos = rx03.indexIn ( buff, 0 ) ) != -1 ) {
+        QByteArray ldetalle = trataSetHRelativePos( rx03.cap ( 1 ), tipoEscape );
+        buff.replace ( pos, rx03.matchedLength(), ldetalle );
+        pos = buff.indexOf("<!--");
+    } // end while
+    buff = cadant + buff;
+    
+    /// Cambio del setBARCODEFORMAT
+    pos = buff.indexOf("<!-- SETBARCODEFORMAT");
+    cadant = buff.left(pos);
+    buff = buff.right(buff.length()-pos);
+    QRegExp rx13 ( "<!--\\s*SETBARCODEFORMAT\\s*\"([^\"]*)\"\\s*\"([^\"]*)\"\\s*\"([^\"]*)\"\\s*\"([^\"]*)\"\\s*-->" );
+    rx13.setMinimal ( TRUE );
+    while ( ( pos = rx13.indexIn ( buff, 0 ) ) != -1 ) {
+        QByteArray ldetalle = trataSetBarcodeFormat( rx13.cap ( 1 ), rx13.cap ( 2 ),rx13.cap ( 3 ),rx13.cap ( 4 ),tipoEscape );
+        buff.replace ( pos, rx13.matchedLength(), ldetalle );
+        pos = buff.indexOf("<!--");
+    } // end while
+    buff = cadant + buff;
+    
+    /// Cambio del PRINTBARCODE
+    pos = buff.indexOf("<!-- PRINTBARCODE");
+    cadant = buff.left(pos);
+    buff = buff.right(buff.length()-pos);
+    QRegExp rx23 ( "<!--\\s*PRINTBARCODE\\s*\"([^\"]*)\"\\s*\"([^\"]*)\"\\s*\"([^\"]*)\"\\s*-->" );
+    rx23.setMinimal ( TRUE );
+    while ( ( pos = rx23.indexIn ( buff, 0 ) ) != -1 ) {
+        QByteArray ldetalle = trataPrintBarCode( rx23.cap ( 1 ), rx23.cap ( 2 ),rx23.cap ( 3 ),tipoEscape );
+        buff.replace ( pos, rx23.matchedLength(), ldetalle );
+        pos = buff.indexOf("<!--");
+    } // end while
+    buff = cadant + buff;
+    
+    /// Cambio del SETBARCODEHEIGHT
+    pos = buff.indexOf("<!-- SETBARCODEHEIGHT");
+    cadant = buff.left(pos);
+    buff = buff.right(buff.length()-pos);
+    QRegExp rx33 ( "<!--\\s*SETBARCODEHEIGHT\\s*\"([^\"]*)\"\\s*-->" );
+    rx33.setMinimal ( TRUE );
+    while ( ( pos = rx33.indexIn ( buff, 0 ) ) != -1 ) {
+        QByteArray ldetalle = trataSetBarCodeHeight( rx33.cap ( 1 ), tipoEscape );
+        buff.replace ( pos, rx33.matchedLength(), ldetalle );
+        pos = buff.indexOf("<!--");
+    } // end while
+    buff = cadant + buff;
+    
+    /// Cambio del SETBARCODEWIDTH
+    pos = buff.indexOf("<!-- SETBARCODEWIDTH");
+    cadant = buff.left(pos);
+    buff = buff.right(buff.length()-pos);
+    QRegExp rx34 ( "<!--\\s*SETBARCODEWIDTH\\s*\"([^\"]*)\"\\s*-->" );
+    rx34.setMinimal ( TRUE );
+    while ( ( pos = rx34.indexIn ( buff, 0 ) ) != -1 ) {
+        QByteArray ldetalle = trataSetBarCodeWidth( rx34.cap ( 1 ), tipoEscape );
+        buff.replace ( pos, rx34.matchedLength(), ldetalle );
+        pos = buff.indexOf("<!--");
+    } // end while
+    buff = cadant + buff;
+    
+    /// Cambio del SELECTPAGEMODE
+    pos = buff.indexOf("<!-- SELECTPAGEMODE");
+    cadant = buff.left(pos);
+    buff = buff.right(buff.length()-pos);
+    QRegExp rx35 ( "<!--\\s*SELECTPAGEMODE\\s*-->" );
+    rx35.setMinimal ( TRUE );
+    while ( ( pos = rx35.indexIn ( buff, 0 ) ) != -1 ) {
+        QByteArray ldetalle = trataSelectPageMode( tipoEscape );
+        buff.replace ( pos, rx35.matchedLength(), ldetalle );
+        pos = buff.indexOf("<!--");
+    } // end while
+    buff = cadant + buff;
+    
+    /// Cambio del SETBARCODEWIDTH
+    pos = buff.indexOf("<!-- SETPRINTAREA");
+    cadant = buff.left(pos);
+    buff = buff.right(buff.length()-pos);
+    QRegExp rx36 ( "<!--\\s*SETPRINTAREA\\s*\"([^\"]*)\"\\s*\"([^\"]*)\"\\s*\"([^\"]*)\"\\s*\"([^\"]*)\"\\s*-->" );
+    rx36.setMinimal ( TRUE );
+    while ( ( pos = rx36.indexIn ( buff, 0 ) ) != -1 ) {
+        QByteArray ldetalle = trataSetPrintArea( rx36.cap ( 1 ), rx36.cap ( 2 ), rx36.cap ( 3 ), rx36.cap ( 4 ), tipoEscape );
+        buff.replace ( pos, rx36.matchedLength(), ldetalle );
+        pos = buff.indexOf("<!--");
+    } // end while
+    buff = cadant + buff;
+    
+    /// Cambio del SETPRINTDIRECTION
+    pos = buff.indexOf("<!-- SETPRINTDIRECTION");
+    cadant = buff.left(pos);
+    buff = buff.right(buff.length()-pos);
+    QRegExp rx37 ( "<!--\\s*SETPRINTDIRECTION\\s*\"([^\"]*)\"\\s*-->" );
+    rx37.setMinimal ( TRUE );
+    while ( ( pos = rx37.indexIn ( buff, 0 ) ) != -1 ) {
+        QByteArray ldetalle = trataSetPrintDirection( rx37.cap ( 1 ), tipoEscape );
+        buff.replace ( pos, rx37.matchedLength(), ldetalle );
+        pos = buff.indexOf("<!--");
+    } // end while
+    buff = cadant + buff;
+    
+    /// Cambio del setJustification
+    pos = buff.indexOf("<!-- SETVABSOLUTEPOS");
+    cadant = buff.left(pos);
+    buff = buff.right(buff.length()-pos);
+    QRegExp rx38 ( "<!--\\s*SETVABSOLUTEPOS\\s*\"([^\"]*)\"\\s*-->" );
+    rx38.setMinimal ( TRUE );
+    while ( ( pos = rx38.indexIn ( buff, 0 ) ) != -1 ) {
+        QByteArray ldetalle = trataSetVAbsolutePos( rx38.cap ( 1 ), tipoEscape );
+        buff.replace ( pos, rx38.matchedLength(), ldetalle );
+        pos = buff.indexOf("<!--");
+    } // end while
+    buff = cadant + buff;
+    
+    /// Cambio del setJustification
+    pos = buff.indexOf("<!-- SETVRELATIVEPOS");
+    cadant = buff.left(pos);
+    buff = buff.right(buff.length()-pos);
+    QRegExp rx41 ( "<!--\\s*SETVRELATIVEPOS\\s*\"([^\"]*)\"\\s*-->" );
+    rx41.setMinimal ( TRUE );
+    while ( ( pos = rx41.indexIn ( buff, pos ) ) != -1 ) {
+        QByteArray ldetalle = trataSetVRelativePos( rx41.cap ( 1 ), tipoEscape );
+        buff.replace ( pos, rx41.matchedLength(), ldetalle );
+        pos = buff.indexOf("<!--");
+    } // end while
+    buff = cadant + buff;
+    
+    /// Cambio del cutPaper
+    pos = buff.indexOf("<!-- CUTPAPER");
+    cadant = buff.left(pos);
+    buff = buff.right(buff.length()-pos);
+    QRegExp rx45 ( "<!--\\s*CUTPAPER\\s*\"([^\"]*)\"\\s*-->" );
+    rx45.setMinimal ( TRUE );
+    while ( ( pos = rx45.indexIn ( buff, 0 ) ) != -1 ) {
+        QByteArray ldetalle = trataCutPaper( rx45.cap ( 1 ), tipoEscape );
+        buff.replace ( pos, rx45.matchedLength(), ldetalle );
+        pos = 0;
+    } // end while
+    buff = cadant + buff;
+
+    /// Cambio del RIGHTJUSTIFIED
+    pos = buff.indexOf("<!-- RIGHTJUSTIFIED");
+    cadant = buff.left(pos);
+    buff = buff.right(buff.length()-pos);
+    QRegExp rx46 ( "<!--\\s*RIGHTJUSTIFIED\\s*\"([^\"]*)\"\\s*\"([^\"]*)\"\\s*\"([^\"]*)\"\\s*\"([^\"]*)\"\\s*-->" );
+    rx46.setMinimal ( TRUE );
+    while ( ( pos = rx46.indexIn ( buff, 0 ) ) != -1 ) {
+        QByteArray ldetalle = trataRightJustified( rx46.cap ( 1 ),  rx46.cap ( 2 ), rx46.cap ( 3 ),  rx46.cap ( 4 ),tipoEscape );
+        buff.replace ( pos, rx46.matchedLength(), ldetalle );
+	buff = cadant + buff;
+        pos = buff.indexOf("<!-- RIGHTJUSTIFIED");
+	cadant = buff.left(pos);
+	buff = buff.right(buff.length()-pos);
+    } // end while
+    buff = cadant + buff;
+    
+    
+    /// Cambio del cutPaperAndFeed
+    pos = buff.indexOf("<!-- CUTPAPERANDFEED");
+    cadant = buff.left(pos);
+    buff = buff.right(buff.length()-pos);
+    QRegExp rx44 ( "<!--\\s*CUTPAPERANDFEED\\s*\"([^\"]*)\"\\s*\"([^\"]*)\"\\s*-->" );
+    rx44.setMinimal ( TRUE );
+    while ( ( pos = rx44.indexIn ( buff, 0 ) ) != -1 ) {
+        QByteArray ldetalle = trataCutPaperAndFeed( rx44.cap ( 1 ),  rx44.cap ( 2 ),tipoEscape );
+        buff.replace ( pos, rx44.matchedLength(), ldetalle );
+        pos = buff.indexOf("<!--");
+    } // end while
+    buff = cadant + buff;
+    
+    profundidad --;
+    if (profundidad == 0) {
+      trataTagsPost(buff, tipoEscape);
+    } // end if
+    
+    
+    blDebug ( "END BlDbRecord::trataTags", 0 );
+    return 1;
+}
+
+
+
+/// Busca strings del tipo [xxxx] entro del texto pasado y los sustituye
+/// Por valores existentes en la base de datos.
+/// Tambien busca los parametros PARAM e IFACE para tambien tratarlos.
+/// Devuelve 1 Si todo esta OK o 0 Si hay algun error
+/**
+\param buff El texto entero sobre el que se hace el reemplazo de sentencias.
+**/
+int BlDbRecord::trataTagsPost ( QByteArray &buff, int tipoEscape )
+{
+    blDebug ( "BlDbRecord::trataTagsPost", 0 );
+
+    ///Buscamos interfaces, los preguntamos y los ponemos.
+    int pos = 0;
+    QByteArray cadant;
+
+    /// Cambio del setJustification
+    pos = buff.indexOf("<!-- SETJUSTIFICATION");
+    cadant = buff.left(pos);
+    buff = buff.right(buff.length()-pos);
+    QRegExp rx82 ( "<!--\\s*SETJUSTIFICATION\\s*\"([^\"]*)\"\\s*-->" );
+    rx82.setMinimal ( TRUE );
+    while ( ( pos = rx82.indexIn ( buff, 0 ) ) != -1 ) {
+        QByteArray ldetalle = trataSetJustification( rx82.cap ( 1 ), tipoEscape );
+        buff.replace ( pos, rx82.matchedLength(), ldetalle );
+	buff = cadant + buff;
+	pos = buff.indexOf("<!-- SETJUSTIFICATION");
+	cadant = buff.left(pos);
+	buff = buff.right(buff.length() - pos );
+    } // end while
+    buff = cadant + buff;
+    
+    
+    /// Cambio del PRINTBARCODE
+    pos = buff.indexOf("<!-- PRINTBARCODE");
+    cadant = buff.left(pos);
+    buff = buff.right(buff.length()-pos);
+    QRegExp rx23 ( "<!--\\s*PRINTBARCODE\\s*\"([^\"]*)\"\\s*\"([^\"]*)\"\\s*\"([^\"]*)\"\\s*-->" );
+    rx23.setMinimal ( TRUE );
+    while ( ( pos = rx23.indexIn ( buff, 0 ) ) != -1 ) {
+        QByteArray ldetalle = trataPrintBarCode( rx23.cap ( 1 ), rx23.cap ( 2 ),rx23.cap ( 3 ),tipoEscape );
+        buff.replace ( pos, rx23.matchedLength(), ldetalle );
+        pos = buff.indexOf("<!--");
+    } // end while
+    buff = cadant + buff;
+    
+    /// Cambio del SETBARCODEHEIGHT
+    pos = buff.indexOf("<!-- SETBARCODEHEIGHT");
+    cadant = buff.left(pos);
+    buff = buff.right(buff.length()-pos);
+    QRegExp rx33 ( "<!--\\s*SETBARCODEHEIGHT\\s*\"([^\"]*)\"\\s*-->" );
+    rx33.setMinimal ( TRUE );
+    while ( ( pos = rx33.indexIn ( buff, 0 ) ) != -1 ) {
+        QByteArray ldetalle = trataSetBarCodeHeight( rx33.cap ( 1 ), tipoEscape );
+        buff.replace ( pos, rx33.matchedLength(), ldetalle );
+        pos = buff.indexOf("<!--");
+    } // end while
+    buff = cadant + buff;
+    
+
+    /// Cambio del RIGHTJUSTIFIED
+    pos = buff.indexOf("<!-- RIGHTJUSTIFIED");
+    cadant = buff.left(pos);
+    buff = buff.right(buff.length()-pos);
+    QRegExp rx46 ( "<!--\\s*RIGHTJUSTIFIED\\s*\"([^\"]*)\"\\s*\"([^\"]*)\"\\s*\"([^\"]*)\"\\s*\"([^\"]*)\"\\s*-->" );
+    rx46.setMinimal ( TRUE );
+    while ( ( pos = rx46.indexIn ( buff, 0 ) ) != -1 ) {
+        QByteArray ldetalle = trataRightJustified( rx46.cap ( 1 ),  rx46.cap ( 2 ), rx46.cap ( 3 ),  rx46.cap ( 4 ),tipoEscape );
+        buff.replace ( pos, rx46.matchedLength(), ldetalle );
+	buff = cadant + buff;
+        pos = buff.indexOf("<!-- RIGHTJUSTIFIED");
+	cadant = buff.left(pos);
+	buff = buff.right(buff.length()-pos);
+    } // end while
+    buff = cadant + buff;
+    
+    /// Cambio del RIGHTJUSTIFIED
+    pos = buff.indexOf("<!-- LEFTJUSTIFIED");
+    cadant = buff.left(pos);
+    buff = buff.right(buff.length()-pos);
+    QRegExp rx47 ( "<!--\\s*LEFTJUSTIFIED\\s*\"([^\"]*)\"\\s*\"([^\"]*)\"\\s*\"([^\"]*)\"\\s*\"([^\"]*)\"\\s*-->" );
+    rx47.setMinimal ( TRUE );
+    while ( ( pos = rx47.indexIn ( buff, 0 ) ) != -1 ) {
+        QByteArray ldetalle = trataLeftJustified( rx47.cap ( 1 ),  rx47.cap ( 2 ), rx47.cap ( 3 ),  rx47.cap ( 4 ),tipoEscape );
+        buff.replace ( pos, rx47.matchedLength(), ldetalle );
+	buff = cadant + buff;
+        pos = buff.indexOf("<!-- LEFTJUSTIFIED");
+	cadant = buff.left(pos);
+	buff = buff.right(buff.length()-pos);
+    } // end while
+    buff = cadant + buff;
+    
+    /// Cambio del cutPaperAndFeed
+    pos = buff.indexOf("<!-- CUTPAPERANDFEED");
+    cadant = buff.left(pos);
+    buff = buff.right(buff.length()-pos);
+    QRegExp rx44 ( "<!--\\s*CUTPAPERANDFEED\\s*\"([^\"]*)\"\\s*\"([^\"]*)\"\\s*-->" );
+    rx44.setMinimal ( TRUE );
+    while ( ( pos = rx44.indexIn ( buff, 0 ) ) != -1 ) {
+        QByteArray ldetalle = trataCutPaperAndFeed( rx44.cap ( 1 ),  rx44.cap ( 2 ),tipoEscape );
+        buff.replace ( pos, rx44.matchedLength(), ldetalle );
+        pos = buff.indexOf("<!--");
+    } // end while
+    buff = cadant + buff;
+
+    /// Inclusion de imagenes
+    pos = buff.indexOf("<!-- IMG");
+    cadant = buff.left(pos);
+    buff = buff.right(buff.length()-pos);
+    QRegExp rx29 ( "<!--\\s*IMG\\s*SRC\\s*=\\s*\"([^\"]*)\"\\s*-->" );
+    rx29.setMinimal ( TRUE );
+    while ( ( pos = rx29.indexIn ( buff, 0 ) ) != -1 ) {
+        QByteArray ldetalle = trataIncludeImg ( rx29.cap ( 1 ), tipoEscape );
+        buff.replace ( pos, rx29.matchedLength(), ldetalle );
+	buff = cadant + buff;
+        pos = buff.indexOf("<!-- IMG");
+	cadant = buff.left(pos);
+	buff = buff.right(buff.length()-pos);
+    } // end while
+    buff = cadant + buff;
+
+    /// Inclusion de imagenes
+    pos = buff.indexOf("<!-- PNGRAW64");
+    cadant = buff.left(pos);
+    buff = buff.right(buff.length()-pos);
+    QRegExp rx791 ( "<!--\\s*PNGRAW64\\s*DATA\\s*=\\s*\"([^\"]*)\"\\s*-->" );
+    rx791.setMinimal ( TRUE );
+    while ( ( pos = rx791.indexIn ( buff, 0 ) ) != -1 ) {
+        QByteArray ldetalle = trataPngRaw64 ( rx791.cap ( 1 ).toAscii(), tipoEscape );
+        buff.replace ( pos, rx791.matchedLength(), ldetalle );
+	buff = cadant + buff;
+        pos = buff.indexOf("<!-- PNGRAW64");
+	cadant = buff.left(pos);
+	buff = buff.right(buff.length()-pos);
+    } // end while
+    buff = cadant + buff;
+    
+    blDebug ( "END BlDbRecord::trataTagsPost", 0 );
+    return 1;
+}
+
+
+
+/// Trata las lineas de detalle encontradas dentro de los tags <!--LINEAS DETALLE-->
+/**
+\param det Texto de entrada para ser tratado por iteracion.
+\return Si el query tiene elementos lo devuelve el parametro. En caso contrario no devuelve nada.
+**/
+QByteArray BlDbRecord::trataIfQuery ( const QString &query, const QByteArray &datos )
+{
+    blDebug ( "BlDbRecord::trataIfQuery", 0 );
+    QByteArray result = "";
+    QByteArray query1 = query.toAscii();
+
+    /// Buscamos parametros en el query y los ponemos.
+    substrVars ( query1 );
+
+    /// Cargamos el query y lo recorremos
+    BlDbRecordSet *cur = m_dbConnection->loadQuery ( QString(query1) );
+    if ( !cur ) return "";
+    if ( !cur->eof() ) {
+        result = datos;
+    } // end while
+    delete cur;
+    blDebug ( "END BlDbRecord::trataIfQuery", 0 );
+    return result;
+}
+
+
+/// Trata las lineas de detalle encontradas dentro de los tags <!--LINEAS DETALLE-->
+/**
+\param det Texto de entrada para ser tratado por iteracion.
+\return Si el query tiene elementos lo devuelve el parametro. En caso contrario no devuelve nada.
+**/
+QByteArray BlDbRecord::trataIf ( const QString &query, const QByteArray &datos, const QByteArray &datos1 )
+{
+    blDebug ( "BlDbRecord::trataIfQuery", 0 );
+    QByteArray result = "";
+    QByteArray query1 = query.toAscii();
+
+    /// Buscamos parametros en el query y los ponemos.
+    substrVars ( query1 );
+
+    QString query2 = "SELECT (" + QString(query1) + ") AS res";
+    /// Cargamos el query y lo recorremos
+    BlDbRecordSet *cur = m_dbConnection ->loadQuery ( query2 );
+    if ( !cur ) return "";
+    if ( !cur->eof() ) {
+        if ( cur->valor ( "res" ) == "t" ) {
+            result = datos;
+        } else {
+            result = datos1;
+        } // end if
+    } // end while
+    delete cur;
+    blDebug ( "END BlDbRecord::trataIf", 0 );
+    return result;
+}
+
+
+/// Trata las lineas de detalle encontradas dentro de los tags <!--LINEAS DETALLE-->
+/**
+\param det Texto de entrada para ser tratado por iteracion.
+\return
+**/
+QByteArray BlDbRecord::trataIncludeFileTXT ( const QString &file, int tipoEscape )
+{
+    blDebug ( "BlDbRecord::trataIncludeFileTXT", 0 );
+    QByteArray read = "";
+    QFile arch ( file );
+    if ( arch.open ( QIODevice::ReadOnly ) ) {
+       read = arch.readAll();
+        arch.close();
+    } // end if
+    /// Buscamos parametros en el query y los ponemos.
+    substrVars ( read, tipoEscape );
+
+
+    blDebug ( "END BlDbRecord::trataIncludeFileTXT", 0 );
+    return read;
+
+}
+
+
+/// Trata las inclusiones de imagenes
+/**
+\param det Texto de entrada para ser tratado por iteracion.
+\return
+**/
+QByteArray BlDbRecord::trataIncludeImg ( const QString &file, int tipoEscape )
+{
+    blDebug ( "BlDbRecord::trataIncludeImg", 0 );
+    BlEscPrinter pr;
+    pr.clearBuffer();
+    pr.printImage(file);
+    blDebug ( "END BlDbRecord::trataIncludeImg", 0 );
+    return pr.buffer();
+
+}
+
+
+/// Trata las inclusiones de imagenes
+/**
+\param det Texto de entrada para ser tratado por iteracion.
+\return
+**/
+QByteArray BlDbRecord::trataPngRaw64 ( const QByteArray &data, int tipoEscape )
+{
+    blDebug ( "BlDbRecord::trataPngRaw64", 0 );
+//    blMsgInfo("pngRawData");
+    BlEscPrinter pr;
+    pr.clearBuffer();
+    QByteArray dataq = QByteArray::fromBase64(data);
+    pr.printImageRaw(dataq);
+    blDebug ( "END BlDbRecord::trataPngRaw64", 0 );
+//    blMsgInfo(pr.buffer());
+    return pr.buffer();
+
+}
+
+/// Trata el setcharacterprintermode
+/**
+\param det Texto de entrada para ser tratado por iteracion.
+\return
+**/
+QByteArray BlDbRecord::trataSetCharacterPrintMode ( const QString &param, int tipoEscape )
+{
+
+    int modo=0;
+    blDebug ( "BlDbRecord::trataSetCharacterPrintMode", 0 );
+    BlEscPrinter pr;
+    pr.clearBuffer();
+    if (param.contains("CHARACTER_FONTA_SELECTED"))
+        modo |= CHARACTER_FONTA_SELECTED;
+    if (param.contains("CHARACTER_FONTB_SELECTED"))
+        modo |= CHARACTER_FONTB_SELECTED;
+    if (param.contains("EMPHASIZED_MODE"))
+        modo |= EMPHASIZED_MODE;
+    if (param.contains("DOUBLE_HEIGHT"))
+        modo |= DOUBLE_HEIGHT;
+    if (param.contains("DOUBLE_WIDTH"))
+        modo |= DOUBLE_WIDTH;
+    if (param.contains("UNDERLINE_MODE"))
+        modo |= UNDERLINE_MODE;
+
+    pr.setCharacterPrintMode(modo);
+    blDebug ( "END BlDbRecord::trataSetCharacterPrintMode", 0 );
+    return pr.buffer();
+
+}
+
+/// Trata el setcharacterprintermode
+/**
+\param det Texto de entrada para ser tratado por iteracion.
+\return
+**/
+QByteArray BlDbRecord::trataSetCharacterSpacing ( const QString &param, int tipoEscape )
+{
+
+    int modo=0;
+    blDebug ( "BlDbRecord::trataSetCharacterSpacing", 0 );
+    BlEscPrinter pr;
+    pr.clearBuffer();
+
+    pr.setCharacterSpacing(param.toInt());
+    blDebug ( "END BlDbRecord::trataSetCharacterSpacing", 0 );
+    return pr.buffer();
+
+}
+
+
+
+/// Trata el setcharacterprintermode
+/**
+\param det Texto de entrada para ser tratado por iteracion.
+\return
+**/
+QByteArray BlDbRecord::trataSetCharacterCodeTable ( const QString &param, int tipoEscape )
+{
+    blDebug ( "BlDbRecord::trataSetCharacterCodeTable", 0 );
+    characterCodeTable codetable=page0;
+    BlEscPrinter pr;
+    pr.clearBuffer();
+    if (param.contains("page0"))
+        codetable = page0;
+    if (param.contains("page1"))
+        codetable = page1;
+    if (param.contains("page2"))
+        codetable = page2;
+    if (param.contains("page3"))
+        codetable = page3;
+    if (param.contains("page4"))
+        codetable = page4;
+    if (param.contains("page5"))
+        codetable = page5;
+
+    pr.setCharacterCodeTable(codetable);
+    blDebug ( "END BlDbRecord::trataSetCharacterCodeTable", 0 );
+    return pr.buffer();
+
+}
+
+/// Trata el setcharacterprintermode
+/**
+\param det Texto de entrada para ser tratado por iteracion.
+\return
+**/
+QByteArray BlDbRecord::trataSetUnderlineMode ( const QString &param, int tipoEscape )
+{
+
+    bool modo=FALSE;
+    blDebug ( "BlDbRecord::trataSetUnderlineMode", 0 );
+    BlEscPrinter pr;
+    pr.clearBuffer();
+    if (param.contains("TRUE"))
+        modo = TRUE;
+    if (param.contains("true"))
+        modo = TRUE;
+    if (param.contains("1"))
+        modo = TRUE;
+
+    pr.setUnderlineMode(modo);
+    blDebug ( "END BlDbRecord::trataSetUnderlineMode", 0 );
+    return pr.buffer();
+
+}
+
+/// Trata el SetCharacterSize
+/**
+\param det Texto de entrada para ser tratado por iteracion.
+\return
+**/
+QByteArray BlDbRecord::trataSetCharacterSize ( const QString &param, int tipoEscape )
+{
+
+    int modo=0;
+    blDebug ( "BlDbRecord::trataSetCharacterSpacing", 0 );
+    BlEscPrinter pr;
+    pr.clearBuffer();
+
+    pr.setCharacterSize(param.toInt());
+    blDebug ( "END BlDbRecord::trataSetCharacterSpacing", 0 );
+    return pr.buffer();
+
+}
+
+/// Trata el setsmoothing
+/**
+\param det Texto de entrada para ser tratado por iteracion.
+\return
+**/
+QByteArray BlDbRecord::trataSetSmoothing ( const QString &param, int tipoEscape )
+{
+
+    bool modo=FALSE;
+    blDebug ( "BlDbRecord::trataSetSmoothing", 0 );
+    BlEscPrinter pr;
+    pr.clearBuffer();
+    if (param.contains("TRUE"))
+        modo = TRUE;
+    if (param.contains("true"))
+        modo = TRUE;
+    if (param.contains("1"))
+        modo = TRUE;
+
+    pr.setSmoothing(modo);
+    blDebug ( "END BlDbRecord::trataSetSmoothing", 0 );
+    return pr.buffer();
+
+}
+
+/// Trata el trataSetDoubleStrike
+/**
+\param det Texto de entrada para ser tratado por iteracion.
+\return
+**/
+QByteArray BlDbRecord::trataSetDoubleStrike ( const QString &param, int tipoEscape )
+{
+
+    bool modo=FALSE;
+    blDebug ( "BlDbRecord::trataSetDoubleStrike", 0 );
+    BlEscPrinter pr;
+    pr.clearBuffer();
+    if (param.contains("TRUE"))
+        modo = TRUE;
+    if (param.contains("true"))
+        modo = TRUE;
+    if (param.contains("1"))
+        modo = TRUE;
+
+    pr.setDoubleStrike(modo);
+    blDebug ( "END BlDbRecord::trataSetDoubleStrike", 0 );
+    return pr.buffer();
+
+}
+
+/// Trata el trataTurnUpsideDown
+/**
+\param det Texto de entrada para ser tratado por iteracion.
+\return
+**/
+QByteArray BlDbRecord::trataTurnUpsideDown ( const QString &param, int tipoEscape )
+{
+
+    bool modo=FALSE;
+    blDebug ( "BlDbRecord::trataTurnUpsideDown", 0 );
+    BlEscPrinter pr;
+    pr.clearBuffer();
+    if (param.contains("TRUE"))
+        modo = TRUE;
+    if (param.contains("true"))
+        modo = TRUE;
+    if (param.contains("1"))
+        modo = TRUE;
+
+    pr.turnUpsideDown(modo);
+    blDebug ( "END BlDbRecord::trataTurnUpsideDown", 0 );
+    return pr.buffer();
+
+}
+
+
+/// Trata el trataTurn90CWRotation
+/**
+\param det Texto de entrada para ser tratado por iteracion.
+\return
+**/
+QByteArray BlDbRecord::trataTurn90CWRotation ( const QString &param, const QString &param1, int tipoEscape )
+{
+
+    bool modo=FALSE;
+    bool extra = FALSE;
+    blDebug ( "BlDbRecord::trataTurn90CWRotation", 0 );
+    BlEscPrinter pr;
+    pr.clearBuffer();
+    if (param.contains("TRUE"))
+        modo = TRUE;
+    if (param.contains("true"))
+        modo = TRUE;
+    if (param.contains("1"))
+        modo = TRUE;
+
+    if (param1.contains("TRUE") || param1.contains("t") || param1.contains("1"))
+        extra = TRUE;
+
+    pr.turn90CWRotation(modo,extra);
+    blDebug ( "END BlDbRecord::trataTurn90CWRotation", 0 );
+    return pr.buffer();
+
+}
+
+
+/// Trata el trataTurnWhiteBlack
+/**
+\param det Texto de entrada para ser tratado por iteracion.
+\return
+**/
+QByteArray BlDbRecord::trataTurnWhiteBlack ( const QString &param, int tipoEscape )
+{
+
+    bool modo=FALSE;
+    blDebug ( "BlDbRecord::trataTurnWhiteBlack", 0 );
+    BlEscPrinter pr;
+    pr.clearBuffer();
+    if (param.contains("TRUE"))
+        modo = TRUE;
+    if (param.contains("true"))
+        modo = TRUE;
+    if (param.contains("1"))
+        modo = TRUE;
+
+    pr.turnWhiteBlack(modo);
+    blDebug ( "END BlDbRecord::trataTurnWhiteBlack", 0 );
+    return pr.buffer();
+
+}
+
+/// Trata el trataSetColor
+/**
+\param det Texto de entrada para ser tratado por iteracion.
+\return
+**/
+QByteArray BlDbRecord::trataSetColor ( const QString &param, int tipoEscape )
+{
+    blDebug ( "BlDbRecord::trataSetColor", 0 );
+    printColor color=black;
+    BlEscPrinter pr;
+    pr.clearBuffer();
+    if (param.contains("BLACK"))
+        color = black;
+    if (param.contains("RED"))
+        color = red;
+
+    pr.setColor(color);
+    blDebug ( "END BlDbRecord::trataSetColor", 0 );
+    return pr.buffer();
+
+}
+
+/// Trata el trataSetColor
+/**
+\param det Texto de entrada para ser tratado por iteracion.
+\return
+**/
+QByteArray BlDbRecord::trataHorizontalTab ( int tipoEscape )
+{
+    blDebug ( "BlDbRecord::trataHorizontalTab", 0 );
+    BlEscPrinter pr;
+    pr.clearBuffer();
+    pr.horizontalTab();
+    blDebug ( "END BlDbRecord::trataHorizontalTab", 0 );
+    return pr.buffer();
+
+}
+
+/// Trata el trataTurn90CWRotation
+/**
+\param det Texto de entrada para ser tratado por iteracion.
+\return
+**/
+QByteArray BlDbRecord::trataSetHorizontalTabPos ( const QString &param, const QString &param1, int tipoEscape )
+{
+
+    blDebug ( "BlDbRecord::trataSetHorizontalTabPos", 0 );
+    BlEscPrinter pr;
+    pr.clearBuffer();
+
+    pr.setHorizontalTabPos(param.toInt(),param1.toLatin1().data());
+    blDebug ( "END BlDbRecord::trataSetHorizontalTabPos", 0 );
+    return pr.buffer();
+
+}
+
+
+/// Trata el trataSetLeftMargin
+/**
+\param det Texto de entrada para ser tratado por iteracion.
+\return
+**/
+QByteArray BlDbRecord::trataSetLeftMargin ( const QString &param, int tipoEscape )
+{
+
+    int modo=0;
+    blDebug ( "BlDbRecord::trataSetLeftMargin", 0 );
+    BlEscPrinter pr;
+    pr.clearBuffer();
+
+    pr.setLeftMargin(param.toInt());
+    blDebug ( "END BlDbRecord::trataSetLeftMargin", 0 );
+    return pr.buffer();
+
+}
+
+/// Trata el trataSetPrintingAreaWidth
+/**
+\param det Texto de entrada para ser tratado por iteracion.
+\return
+**/
+QByteArray BlDbRecord::trataSetPrintingAreaWidth ( const QString &param, int tipoEscape )
+{
+
+    int modo=0;
+    blDebug ( "BlDbRecord::trataSetPrintingAreaWidth", 0 );
+    BlEscPrinter pr;
+    pr.clearBuffer();
+
+    pr.setPrintingAreaWidth(param.toInt());
+    blDebug ( "END BlDbRecord::trataSetPrintingAreaWidth", 0 );
+    return pr.buffer();
+
+}
+
+
+/// Trata el trataSetJustification
+/**
+\param det Texto de entrada para ser tratado por iteracion.
+\return
+**/
+QByteArray BlDbRecord::trataSetJustification ( const QString &param, int tipoEscape )
+{
+
+    BlEscPrinter::justification modo = BlEscPrinter::left ;
+    blDebug ( "BlDbRecord::trataSetJustification", 0 );
+    BlEscPrinter pr;
+    pr.clearBuffer();
+    if (param.contains("LEFT"))
+        modo = BlEscPrinter::left;
+    if (param.contains("CENTER"))
+        modo = BlEscPrinter::center;
+    if (param.contains("RIGHT"))
+        modo = BlEscPrinter::right;
+
+    pr.setJustification(modo);
+    blDebug ( "END BlDbRecord::trataSetJustification", 0 );
+    return pr.buffer();
+
+}
+
+/// Trata el trataSetHAbsolutePos
+/**
+\param det Texto de entrada para ser tratado por iteracion.
+\return
+**/
+QByteArray BlDbRecord::trataSetHAbsolutePos ( const QString &param, int tipoEscape )
+{
+
+    int modo=0;
+    blDebug ( "BlDbRecord::trataSetHAbsolutePos", 0 );
+    BlEscPrinter pr;
+    pr.clearBuffer();
+
+    pr.setHAbsolutePos(param.toInt());
+    blDebug ( "END BlDbRecord::trataSetHAbsolutePos", 0 );
+    return pr.buffer();
+
+}
+
+/// Trata el trataSetHRelativePos
+/**
+\param det Texto de entrada para ser tratado por iteracion.
+\return
+**/
+QByteArray BlDbRecord::trataSetHRelativePos ( const QString &param, int tipoEscape )
+{
+
+    int modo=0;
+    blDebug ( "BlDbRecord::trataSetHRelativePos", 0 );
+    BlEscPrinter pr;
+    pr.clearBuffer();
+
+    pr.setHRelativePos(param.toInt());
+    blDebug ( "END BlDbRecord::trataSetHRelativePos", 0 );
+    return pr.buffer();
+
+}
+
+
+/// Trata el trataSetBarcodeFormat
+/**
+\param det Texto de entrada para ser tratado por iteracion.
+\return
+**/
+QByteArray BlDbRecord::trataSetBarcodeFormat ( const QString &param, const QString &param1,const QString &param2,const QString &param3,int tipoEscape )
+{
+
+    barCodeTextPos pos = notPrinted;
+    printerFont    font = fontA;
+    blDebug ( "BlDbRecord::trataSetHRelativePos", 0 );
+    BlEscPrinter pr;
+    pr.clearBuffer();
+
+    if (param2.contains("NOTPRINTED"))
+        pos = notPrinted;
+    if (param2.contains("ABOVE"))
+        pos = above;
+    if (param2.contains("BELOW"))
+        pos = below;
+    if (param2.contains("BOTH"))
+        pos = both;
+
+    if (param3.contains("FONTB"))
+        font = fontB;
+
+    pr.setBarcodeFormat(param.toInt(), param1.toInt(), pos, font);
+    blDebug ( "END BlDbRecord::trataSetHRelativePos", 0 );
+    return pr.buffer();
+
+}
+
+
+
+/// Trata el trataPrintBarCode
+/**
+\param det Texto de entrada para ser tratado por iteracion.
+\return
+**/
+QByteArray BlDbRecord::trataPrintBarCode ( const QString &param, const QString &param1,const QString &param2,int tipoEscape )
+{
+
+    barcodeSystem system = upca;
+    blDebug ( "BlDbRecord::trataPrintBarCode", 0 );
+    BlEscPrinter pr;
+    pr.clearBuffer();
+
+    if (param.contains("UPCA"))
+        system = upca;
+    if (param.contains("UPCE"))
+        system = upce;
+    if (param.contains("JAN13"))
+        system = jan13;
+    if (param.contains("JAN8"))
+        system = jan8;
+    if (param.contains("CODE39"))
+        system = code39;
+    if (param.contains("ITF"))
+        system = itf;
+    if (param.contains("CODABAR"))
+        system = codabar;
+    if (param.contains("CODE93"))
+        system = code93;
+    if (param.contains("CODE128"))
+        system = code128;
+
+
+    pr.printBarCode(system, param1.toInt(), param2.toAscii().data());
+    blDebug ( "END BlDbRecord::trataPrintBarCode", 0 );
+    return pr.buffer();
+
+}
+
+
+/// Trata el trataPrintBarCode
+/**
+\param det Texto de entrada para ser tratado por iteracion.
+\return
+**/
+QByteArray BlDbRecord::trataRightJustified ( const QString &param, const QString &param1,const QString &param2,const QString &param3,int tipoEscape )
+{
+
+    blDebug ( "BlDbRecord::trataRightJustified", 0 );
+    bool truncate = FALSE;
+    if (param3.contains("TRUE"))
+        truncate = TRUE;
+    if (param3.contains("true"))
+        truncate = TRUE;
+    if (param3.contains("1"))
+        truncate = TRUE;
+
+    blDebug ( "END BlDbRecord::trataRightJustified", 0 );
+    return param.rightJustified(param1.toInt(), param2.at(0), truncate).toAscii();
+}
+
+/// Trata el trataLeftJustified
+/**
+\param det Texto de entrada para ser tratado por iteracion.
+\return
+**/
+QByteArray BlDbRecord::trataLeftJustified ( const QString &param, const QString &param1,const QString &param2,const QString &param3,int tipoEscape )
+{
+
+    blDebug ( "BlDbRecord::trataLeftJustified", 0 );
+    bool truncate = FALSE;
+    if (param3.contains("TRUE"))
+        truncate = TRUE;
+    if (param3.contains("true"))
+        truncate = TRUE;
+    if (param3.contains("1"))
+        truncate = TRUE;
+
+    blDebug ( "END BlDbRecord::trataLeftJustified", 0 );
+    return param.leftJustified(param1.toInt(), param2.at(0), truncate).toAscii();
+}
+
+
+/// Trata el setBarCodeWidth
+/**
+\param det Texto de entrada para ser tratado por iteracion.
+\return
+**/
+QByteArray BlDbRecord::trataSetBarCodeWidth ( const QString &param, int tipoEscape )
+{
+
+    int modo=0;
+    blDebug ( "BlDbRecord::trataSetBarCodeWidth", 0 );
+    BlEscPrinter pr;
+    pr.clearBuffer();
+
+    pr.setBarCodeWidth(param.toInt());
+    blDebug ( "END BlDbRecord::trataSetBarCodeWidth", 0 );
+    return pr.buffer();
+
+}
+
+/// Trata el setBarCodeHeight
+/**
+\param det Texto de entrada para ser tratado por iteracion.
+\return
+**/
+QByteArray BlDbRecord::trataSetBarCodeHeight ( const QString &param, int tipoEscape )
+{
+
+    int modo=0;
+    blDebug ( "BlDbRecord::trataSetBarCodeHeight", 0 );
+    BlEscPrinter pr;
+    pr.clearBuffer();
+
+    pr.setBarCodeHeight(param.toInt());
+    blDebug ( "END BlDbRecord::trataSetBarCodeHeight", 0 );
+    return pr.buffer();
+
+}
+
+/// Trata el trataSelectPageMode
+/**
+\param det Texto de entrada para ser tratado por iteracion.
+\return
+**/
+QByteArray BlDbRecord::trataSelectPageMode ( int tipoEscape )
+{
+
+    int modo=0;
+    blDebug ( "BlDbRecord::trataSelectPageMode", 0 );
+    BlEscPrinter pr;
+    pr.clearBuffer();
+
+    pr.selectPageMode();
+    blDebug ( "END BlDbRecord::trataSelectPageMode", 0 );
+    return pr.buffer();
+
+}
+
+
+/// Trata el trataSetPrintDirection
+/**
+\param det Texto de entrada para ser tratado por iteracion.
+\return
+**/
+QByteArray BlDbRecord::trataSetPrintDirection ( const QString &param, int tipoEscape )
+{
+
+    printDirection direc = leftToRight;
+    blDebug ( "BlDbRecord::trataSetPrintDirection", 0 );
+    BlEscPrinter pr;
+    pr.clearBuffer();
+
+    if (param.contains("LEFTTORIGHT"))
+        direc = leftToRight;
+    if (param.contains("BOTTOMTOTOP"))
+        direc = bottomTotop;
+    if (param.contains("RIGHTTOLEFT"))
+        direc = rightToLeft;
+    if (param.contains("TOPTOBOTTOM"))
+        direc = topToBottom;
+
+
+    pr.setPrintDirection( direc);
+    blDebug ( "END BlDbRecord::trataSetPrintDirection", 0 );
+    return pr.buffer();
+
+}
+
+
+
+
+/// Trata el trataSetPrintArea
+/**
+\param det Texto de entrada para ser tratado por iteracion.
+\return
+**/
+QByteArray BlDbRecord::trataSetPrintArea ( const QString &param,  const QString &param1,  const QString &param2,  const QString &param3, int tipoEscape )
+{
+
+    int modo=0;
+    blDebug ( "BlDbRecord::trataSetPrintArea", 0 );
+    BlEscPrinter pr;
+    pr.clearBuffer();
+
+    pr.setPrintArea(param.toInt(), param1.toInt(), param2.toInt(), param3.toInt());
+    blDebug ( "END BlDbRecord::trataSetPrintArea", 0 );
+    return pr.buffer();
+
+}
+
+
+/// Trata el trataSetVAbsolutePos
+/**
+\param det Texto de entrada para ser tratado por iteracion.
+\return
+**/
+QByteArray BlDbRecord::trataSetVAbsolutePos ( const QString &param, int tipoEscape )
+{
+
+    int modo=0;
+    blDebug ( "BlDbRecord::trataSetVAbsolutePos", 0 );
+    BlEscPrinter pr;
+    pr.clearBuffer();
+
+    pr.setVAbsolutePos(param.toInt());
+    blDebug ( "END BlDbRecord::trataSetVAbsolutePos", 0 );
+    return pr.buffer();
+
+}
+
+/// Trata el trataSetVRelativePos
+/**
+\param det Texto de entrada para ser tratado por iteracion.
+\return
+**/
+QByteArray BlDbRecord::trataSetVRelativePos ( const QString &param, int tipoEscape )
+{
+
+    int modo=0;
+    blDebug ( "BlDbRecord::trataSetVRelativePos", 0 );
+    BlEscPrinter pr;
+    pr.clearBuffer();
+
+    pr.setVRelativePos(param.toInt());
+    blDebug ( "END BlDbRecord::trataSetVRelativePos", 0 );
+    return pr.buffer();
+
+}
+
+/// Trata el trataCutPaper
+/**
+\param det Texto de entrada para ser tratado por iteracion.
+\return
+**/
+QByteArray BlDbRecord::trataCutPaper ( const QString &param, int tipoEscape )
+{
+
+    bool modo=FALSE;
+    blDebug ( "BlDbRecord::trataCutPaper", 0 );
+    BlEscPrinter pr;
+    pr.clearBuffer();
+    if (param.contains("TRUE"))
+        modo = TRUE;
+    if (param.contains("true"))
+        modo = TRUE;
+    if (param.contains("1"))
+        modo = TRUE;
+
+    pr.cutPaper(modo);
+    blDebug ( "END BlDbRecord::trataCutPaper", 0 );
+    return pr.buffer();
+
+}
+
+
+
+/// Trata el trataCutPaperAndFeed
+/**
+\param det Texto de entrada para ser tratado por iteracion.
+\return
+**/
+QByteArray BlDbRecord::trataCutPaperAndFeed ( const QString &param, const QString &param1, int tipoEscape )
+{
+
+    bool modo=FALSE;
+    blDebug ( "BlDbRecord::trataCutPaperAndFeed", 0 );
+    BlEscPrinter pr;
+    pr.clearBuffer();
+    if (param.contains("TRUE"))
+        modo = TRUE;
+    if (param.contains("true"))
+        modo = TRUE;
+    if (param.contains("1"))
+        modo = TRUE;
+
+    pr.cutPaperAndFeed(modo, param1.toInt());
+    blDebug ( "END BlDbRecord::trataCutPaperAndFeed", 0 );
+    return pr.buffer();
+
+}
+
+/// Sustituye valores en el texto pasado como variables por su valor.
+/// tipoEscape puede ser 0 --> Sin parseo
+///    1 --> ParseoXML
+///    2 --> ParseoPython
+void BlDbRecord::substrVars ( QByteArray &buff, int tipoEscape )
+{
+
+    int pos = 0;
+
+    /// Tratamos la sustitucion de variables de m_variables
+    QMapIterator<QString, QString> j ( m_globalvars );
+    while ( j.hasNext() ) {
+        j.next();
+        buff.replace ( ("[" + j.key() + "]").toAscii(), j.value().toAscii() );
+    } // end while
+    
+    
+    /// Tratamos la sustitucion de variables de m_variables
+    QMapIterator<QString, QString> i ( m_variables );
+    while ( i.hasNext() ) {
+        i.next();
+        buff.replace ( ("[" + i.key() + "]").toAscii(), i.value().toAscii() );
+    } // end while
+
+
+    substrConf ( buff );
+
+    pos =  0;
+
+    /// Buscamos parametros en el query y los ponemos.
+    QRegExp rx ( "\\[(\\w*)\\]" );
+    while ( ( pos = rx.indexIn ( buff, pos ) ) != -1 ) {
+        if ( exists ( rx.cap ( 1 ) ) ) {
+                        
+            switch ( tipoEscape ) {
+            case 1:
+                buff.replace ( pos, rx.matchedLength(), blXMLEscape ( dbValue ( rx.cap ( 1 ) ) ).toAscii() );
+                break;
+            case 2:
+                buff.replace ( pos, rx.matchedLength(), blPythonEscape ( dbValue ( rx.cap ( 1 ) ) ).toAscii() );
+                break;
+            default:
+                buff.replace ( pos, rx.matchedLength(), dbValue ( rx.cap ( 1 ) ).toAscii() );
+
+            } // end switch
+
+            pos = 0;
+        } else {
+            pos += rx.matchedLength();
+        }
+    } // end while
+
+}
+
+
+
+/// Trata las lineas de detalle encontradas dentro de los tags <!--LINEAS DETALLE-->
+/**
+\param det Texto de entrada para ser tratado por iteracion.
+\return
+**/
+QByteArray BlDbRecord::trataQuery ( const QString &query, const QByteArray &datos, int tipoEscape )
+{
+    blDebug ( "BlDbRecord::trataQuery", 0 );
+    QByteArray result = "";
+    QByteArray query1 = query.toAscii();
+
+    /// Buscamos parametros en el query y los ponemos.
+    substrVars ( query1, tipoEscape );
+
+    /// Cargamos el query y lo recorremos
+    result = trataCursor ( m_dbConnection->loadQuery ( query1 ), datos, tipoEscape );
+    blDebug ( "END BlDbRecord::trataQuery", 0 );
+    return result;
+
+}
+
+/*
+QByteArray BlDbRecord::trataLineasDetalle( const QByteArray &datos, int tipoEscape )
+{
+    blDebug ( "BlDbRecord::trataLineasDetalle", 0 );
+//    blMsgInfo("lineas de detalle");
+    QByteArray result = "";
+    
+
+    BlDbRecord *linea1;
+    for ( int i = 0; i < m_listaLineas->size(); ++i ) {
+        linea1 = m_listaLineas->at ( i );
+        QByteArray salidatemp = datos;
+
+        /// Buscamos cadenas perdidas adicionales que puedan quedar por poner.
+        //blDebug("salidatemp =",0,salidatemp);
+        QRegExp rx ( "\\[(\\w*)\\]" );
+        int pos =  0;
+        while ( ( pos = rx.indexIn ( salidatemp, pos ) ) != -1 ) {
+            //blDebug("substituïm ",0,rx.cap(1));
+            if ( linea1->exists ( rx.cap ( 1 ) ) ) {
+                switch ( tipoEscape ) {
+                case 1:
+                    salidatemp.replace ( pos, rx.matchedLength(), blXMLEscape ( linea1->dbValue ( rx.cap ( 1 ) )).toAscii()  );
+                    break;
+                case 2:
+                    salidatemp.replace ( pos, rx.matchedLength(), blPythonEscape ( linea1->dbValue ( rx.cap ( 1 ) )).toAscii()  );
+                    break;
+                default:
+                    salidatemp.replace ( pos, rx.matchedLength(), linea1->dbValue ( rx.cap ( 1 )).toAscii() );
+                    break;
+                } // emd switch
+                pos = 0;
+            } else {
+                pos += rx.matchedLength();
+            }
+        } // end while
+
+        result += salidatemp;
+    } // end for
+
+    blDebug ( "END BlDbRecord::trataLineasDetalle", 0 );
+    return result;
+}
+*/
+
+QByteArray BlDbRecord::trataCursor ( BlDbRecordSet *cur, const QByteArray &datos, int tipoEscape )
+{
+    blDebug ( "BlDbRecord::trataCursor", 0 );
+    QByteArray result = "";
+    
+    if ( !cur ) {
+        blDebug ( "END BlDbRecord::trataCursor", 0 , "cur==NULL" );
+        return "";
+    };
+    while ( !cur->eof() ) {
+        QByteArray salidatemp = datos;
+
+        /// Buscamos cadenas perdidas adicionales que puedan quedar por poner.
+        //blDebug("salidatemp =",0,salidatemp);
+        QRegExp rx ( "\\[(\\w*)\\]" );
+        int pos =  0;
+        while ( ( pos = rx.indexIn ( salidatemp, pos ) ) != -1 ) {
+            //blDebug("substituïm ",0,rx.cap(1));
+            if ( cur->numcampo ( rx.cap ( 1 ) ) != -1 ) {
+                switch ( tipoEscape ) {
+                case 1:
+                    salidatemp.replace ( pos, rx.matchedLength(), blXMLEscape ( cur->valor ( rx.cap ( 1 ), -1, TRUE ) ).toAscii()  );
+                    break;
+                case 2:
+                    salidatemp.replace ( pos, rx.matchedLength(), blPythonEscape ( cur->valor ( rx.cap ( 1 ), -1, TRUE ) ).toAscii()  );
+                    break;
+                default:
+                    salidatemp.replace ( pos, rx.matchedLength(), cur->valor ( rx.cap ( 1 ), -1, TRUE ).toAscii() );
+                    break;
+                } // emd switch
+                pos = 0;
+            } else {
+                pos += rx.matchedLength();
+            }
+        } // end while
+
+        result += salidatemp;
+        cur->nextRecord();
+    } // end while
+    delete cur;
+    blDebug ( "END BlDbRecord::trataCursor", 0 );
+    return result;
+}
+
+
+/// Trata las lineas de detalle encontradas dentro de los tags <!--LINEAS DETALLE-->
+/**
+\param det Texto de entrada para ser tratado por iteracion.
+\return Si el query tiene elementos lo devuelve el parametro. En caso contrario no devuelve nada.
+**/
+QByteArray BlDbRecord::trataExists ( const QString &query, const QByteArray &datos )
+{
+    blDebug ( "BlDbRecord::trataExists", 0 );
+
+    QByteArray result = "";
+    QByteArray query1 = query.toAscii();
+
+    /// Buscamos parametros en el query y los ponemos.
+    substrVars ( query1 );
+
+    QFile file ( query1 );
+    if ( file.exists() )
+        result = datos;
+    blDebug ( "END BlDbRecord::trataExists", 0 );
+
+    return result;
+}
+
+
+/// Permite que el programa introduzca variables de impresion propias sin tener 
+/// Que introducir datos en el registro de base de datos de ficha.
+void BlDbRecord::setVar(const QString &varname, const QString &varvalue) {
+          m_globalvars[varname ] = varvalue;
+}
+
+/// Permite que el programa introduzca variables de impresion propias sin tener 
+/// Que introducir datos en el registro de base de datos de ficha.
+void BlDbRecord::clearVars() {
+          m_globalvars.clear();
+}

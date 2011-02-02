@@ -41,7 +41,7 @@
 **
 ****************************************************************************/
 
-#include "btcp850eurotextcodec.h"
+#include "blcp850eurotextcodec.h"
 #include <qlist.h>
 
 #ifndef QT_NO_TEXTCODEC
@@ -55,7 +55,7 @@ static const struct {
     const char *aliases[7];
     int mib;
     quint16 values[128];
-} unicodevalues[BtCP850EuroTextCodec::numSimpleCodecs] = {
+} unicodevalues[BlCP850EuroTextCodec::numSimpleCodecs] = {
     // from RFC 1489, ftp://ftp.isi.edu/in-notes/rfc1489.txt
 
 
@@ -83,12 +83,12 @@ static const struct {
     // if you add more chacater sets at the end, change LAST_MIB above
 };
 
-BtCP850EuroTextCodec::BtCP850EuroTextCodec ( int i ) : forwardIndex ( i ), reverseMap ( 0 )
+BlCP850EuroTextCodec::BlCP850EuroTextCodec ( int i ) : forwardIndex ( i ), reverseMap ( 0 )
 {
 }
 
 
-BtCP850EuroTextCodec::~BtCP850EuroTextCodec()
+BlCP850EuroTextCodec::~BlCP850EuroTextCodec()
 {
     delete reverseMap;
 }
@@ -118,7 +118,7 @@ static QByteArray *buildReverseMap ( int forwardIndex )
     return map;
 }
 
-QString BtCP850EuroTextCodec::convertToUnicode ( const char* chars, int len, ConverterState * ) const
+QString BlCP850EuroTextCodec::convertToUnicode ( const char* chars, int len, ConverterState * ) const
 {
     if ( len <= 0 || chars == 0 )
         return QString();
@@ -138,7 +138,7 @@ QString BtCP850EuroTextCodec::convertToUnicode ( const char* chars, int len, Con
     return r;
 }
 
-QByteArray BtCP850EuroTextCodec::convertFromUnicode ( const QChar *in, int length, ConverterState *state ) const
+QByteArray BlCP850EuroTextCodec::convertFromUnicode ( const QChar *in, int length, ConverterState *state ) const
 {
     const char replacement = ( state && state->flags & ConvertInvalidToNull ) ? 0 : '?';
     int invalid = 0;
@@ -181,12 +181,12 @@ QByteArray BtCP850EuroTextCodec::convertFromUnicode ( const QChar *in, int lengt
     return r;
 }
 
-QByteArray BtCP850EuroTextCodec::name() const
+QByteArray BlCP850EuroTextCodec::name() const
 {
     return unicodevalues[forwardIndex].mime;
 }
 
-QList<QByteArray> BtCP850EuroTextCodec::aliases() const
+QList<QByteArray> BlCP850EuroTextCodec::aliases() const
 {
     QList<QByteArray> list;
     const char * const*a = unicodevalues[forwardIndex].aliases;
@@ -197,7 +197,7 @@ QList<QByteArray> BtCP850EuroTextCodec::aliases() const
     return list;
 }
 
-int BtCP850EuroTextCodec::mibEnum() const
+int BlCP850EuroTextCodec::mibEnum() const
 {
     return unicodevalues[forwardIndex].mib;
 }

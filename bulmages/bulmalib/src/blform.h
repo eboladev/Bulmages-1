@@ -24,7 +24,6 @@
 
 #include <QWidget>
 #include <QCloseEvent>
-/// by R. Cabezas
 #include <QtScript>
 #include <QScriptEngine>
 
@@ -46,8 +45,6 @@ private:
     /// doble click sobre la lista)
     edmode m_modo;
     QString m_title;
-    QMap<QString,QString> m_variables;   /// Son elementos que han sido incrustados e inicializados por programas externos, generalmente el RML
-    QMap<QString,QString> m_globalvars;   /// Son elementos que han sido incrustados e inicializados por programas externos, generalmente el RML
     QScriptEngine m_myEngine;
     
 protected:

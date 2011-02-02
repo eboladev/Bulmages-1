@@ -131,7 +131,7 @@ enum qrErrorCorrection {
 
 };
 
-class BT_EXPORT BtEscPrinter
+class BT_EXPORT BlEscPrinter
 {
 
 public:
@@ -142,9 +142,9 @@ enum justification {
 };
 
 public:
-    BtEscPrinter();
-    BtEscPrinter ( QString device );
-    ~BtEscPrinter() {}
+    BlEscPrinter();
+    BlEscPrinter ( QString device );
+    ~BlEscPrinter() {}
 
     void test();
 
@@ -176,7 +176,7 @@ public:
     void setHorizontalTabPos ( int numtabs, char* tabspos );
     void setLeftMargin ( unsigned short margin );
     void setPrintingAreaWidth ( unsigned short width ); //width default = 512
-    void setJustification ( BtEscPrinter::justification j );
+    void setJustification ( BlEscPrinter::justification j );
     void setHAbsolutePos ( unsigned short pos );
     void setHRelativePos ( unsigned short pos );
 

@@ -65,12 +65,12 @@ QT_BEGIN_NAMESPACE
 
 template <typename T> class QAtomicPointer;
 
-class BT_EXPORT BtCP850EuroTextCodec: public QTextCodec
+class BT_EXPORT BlCP850EuroTextCodec: public QTextCodec
 {
 public:
     enum { numSimpleCodecs = 1 };
-    explicit BtCP850EuroTextCodec ( int );
-    ~BtCP850EuroTextCodec();
+    explicit BlCP850EuroTextCodec ( int );
+    ~BlCP850EuroTextCodec();
 
     QString convertToUnicode ( const char *, int, ConverterState * ) const;
     QByteArray convertFromUnicode ( const QChar *, int, ConverterState * ) const;

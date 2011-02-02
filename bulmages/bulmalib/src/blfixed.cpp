@@ -162,10 +162,12 @@ QString BlFixed::toQString ( QChar separadorDecimal, int precision, QChar separa
 		separadorDecimal = locale.decimalPoint ();
 	} // end if
 
+/*
 	/// Si no se pasa separador de millares cogemos el de las locales
 	if  ( separadorMillares == '0' ) { //ARON
 		separadorMillares = locale.groupSeparator (); //ARON
 	} // end if
+*/
 
     setPrecision ( precision );
     int options = COMMAS;
@@ -184,8 +186,10 @@ QString BlFixed::toQString ( QChar separadorDecimal, int precision, QChar separa
     QString buffer = "";
 
     do {
+/*
         if ( ( n - precision  - 1 ) % 3 == 0 && n - 1 > precision ) //ARON
           buffer = separadorMillares + buffer; //ARON
+*/
         if ( n == precision ) {
             if ( n > 0 || options & DECIMAL )
               n ++;
@@ -303,12 +307,12 @@ void BlFixed::fromBlFixed ( const char *s )
             value = value * 10 + ( c - '0' );
             if ( decimal )
                 m_precision++;
-        } else if ( c == '.' || c == locale.decimalPoint() ) {
+        } else if ( c == '.' || c == ',' ) {
             if ( decimal )
-                break; /// Si este no es el primer separador decimal que encontramos, ignorar el resto de la cadena
+                break; 
             decimal = true;
-        } else if ( c != '.' && c != locale.decimalPoint() || c == locale.groupSeparator() )
-            break; /// Cancelar la conversi&oacute;n cifra a cifra si hay un car&aacute;cter no v&aacute;lido
+        } else if ( c != ','  )
+            break; 
         c = *s++;
     } // end while
     if ( negative )
