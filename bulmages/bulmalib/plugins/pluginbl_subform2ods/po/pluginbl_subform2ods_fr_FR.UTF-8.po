@@ -1,3 +1,12 @@
+msgid ""
+msgstr ""
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"X-Language: fr_FR\n"
+"X-Source-Language: C\n"
+
 #: pluginsubformods.cpp:91 pluginsubformods.cpp:103
 msgid "Exportar a hoja de calculo (ODS)"
-msgstr "Exportar a hoja de calculo (ODS)"
+msgstr "Exporter en feuille de calcul (ODS)"

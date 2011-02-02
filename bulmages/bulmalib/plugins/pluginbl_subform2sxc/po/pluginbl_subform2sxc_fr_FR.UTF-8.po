@@ -1,7 +1,16 @@
+msgid ""
+msgstr ""
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"X-Language: fr_FR\n"
+"X-Source-Language: C\n"
+
 #: pluginsubformsxc.cpp:163 pluginsubformsxc.cpp:165
 msgid "Exportando datos a SXC"
-msgstr "Exportando datos a SXC"
+msgstr "Exportation de données en SXC"
 
 #: pluginsubformsxc.cpp:82 pluginsubformsxc.cpp:94
 msgid "Exportar a hoja de calculo (SXC)"
-msgstr ""
+msgstr "Exporter en feuille de calcul (SXC)"

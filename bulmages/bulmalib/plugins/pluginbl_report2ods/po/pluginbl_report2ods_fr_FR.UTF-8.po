@@ -1,7 +1,26 @@
+# Header entry was created by Lokalize.
+#
+#: plugininformesods.cpp:150 plugininformesods.cpp:151
+# aishen <aishen@free.fr>, 2011.
+msgid ""
+msgstr ""
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Mime-Version: 1.0"
+"Last-Translator: aishen <aishen@free.fr>\n"
+"PO-Revision-Date: 2011-02-02 16:05+0100\n"
+"Project-Id-Version: \n"
+"Language-Team: French <kde-i18n-doc@kde.org>\n"
+"Language: fr\n"
+"X-Generator: Lokalize 1.2\n"
+"MIME-Version: 1.0\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
 #: plugininformesods.cpp:150 plugininformesods.cpp:151
 msgid "Informe"
-msgstr "Informe"
+msgstr "Rapport"
 
 #: plugininformesods.cpp:112
 msgid "Informes &ODS"
-msgstr ""
+msgstr "Rapports &ODS"
+

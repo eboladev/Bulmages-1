@@ -1,6 +1,24 @@
+# Header entry was created by Lokalize.
+#
+#: pluginimportcsv.cpp:59
+# aishen <aishen@free.fr>, 2011.
+msgid ""
+msgstr ""
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Mime-Version: 1.0"
+"Last-Translator: aishen <aishen@free.fr>\n"
+"PO-Revision-Date: 2011-02-02 16:01+0100\n"
+"Project-Id-Version: \n"
+"Language-Team: French <kde-i18n-doc@kde.org>\n"
+"Language: fr\n"
+"X-Generator: Lokalize 1.2\n"
+"MIME-Version: 1.0\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
 #: pluginimportcsv.cpp:59
 msgid "&Importacion CSV"
-msgstr ""
+msgstr "&Importer le CSV"
 
 #: ui_importcsvbase.h:198
 msgid "..."
@@ -8,56 +26,57 @@ msgstr ""
 
 #: ui_importcsvbase.h:205
 msgid "Aceptar"
-msgstr "Aceptar"
+msgstr "Accepter"
 
 #: importcsv.cpp:70
 msgid "All files (*)"
-msgstr ""
+msgstr "Tous les fichiers (*)"
 
 #: ui_importcsvbase.h:197
 msgid "Archivo"
-msgstr ""
+msgstr "Fichier"
 
 #: ui_importcsvbase.h:206
 msgid "Cancelar"
-msgstr ""
+msgstr "Annuler"
 
 #: ui_importcsvbase.h:201
 msgid "Caracter separador"
-msgstr ""
+msgstr "Caractère de séparation"
 
 #: ui_importcsvbase.h:204
 msgid "Composicion de Campos"
-msgstr ""
+msgstr "Composition des champs"
 
 #: importcsv.cpp:52
 msgid "Error al crear la ventana de importacion"
-msgstr ""
+msgstr "Erreur en création de la fenêtre d'importation"
 
 #: pluginimportcsv.cpp:60 pluginimportcsv.cpp:61
 msgid "Importacion CSV"
-msgstr ""
+msgstr "Importer le CSV"
 
 #: ui_importcsvbase.h:196
 msgid "Importar CSV"
-msgstr ""
+msgstr "Importer le CSV"
 
 #: importcsv.cpp:70
 msgid "Open file"
-msgstr ""
+msgstr "Ouvrir le fichier"
 
 #: ui_importcsvbase.h:202
 msgid "Primera fila son cabeceras"
-msgstr ""
+msgstr "La première ligne contient les entêtes"
 
 #: ui_importcsvbase.h:200
 msgid "Separado por tabulador"
-msgstr ""
+msgstr "Séparer par tabulation"
 
 #: ui_importcsvbase.h:199
 msgid "Separador de campos"
-msgstr ""
+msgstr "Séparateur de champs"
 
 #: ui_importcsvbase.h:203
 msgid "Tabla Destino"
-msgstr ""
+msgstr "Table de destination"
+
