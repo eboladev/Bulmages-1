@@ -35,7 +35,7 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="aboutbase.py" line="299"/>
         <source>Sopor&amp;te</source>
-        <translation>Supor&amp;t</translation>
+        <translation>Suppor&amp;t</translation>
     </message>
     <message>
         <location filename="aboutbase.py" line="300"/>
@@ -45,7 +45,7 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="aboutbase.py" line="301"/>
         <source>&amp;Cerrar</source>
-        <translation>&amp;Clore</translation>
+        <translation>&amp;Fermer</translation>
     </message>
 </context>
 <context>
@@ -194,7 +194,7 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="listempresasbase.py" line="112"/>
         <source>Listado de Empresas</source>
-        <translation>Liste de Sociétés</translation>
+        <translation>Liste des Sociétés</translation>
     </message>
     <message>
         <location filename="listempresasbase.py" line="114"/>
@@ -219,7 +219,7 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="listempresasbase.py" line="118"/>
         <source>Listado Empresas</source>
-        <translation>Liste de Sociétés</translation>
+        <translation>Liste des Sociétés</translation>
     </message>
     <message>
         <location filename="listempresasbase.py" line="119"/>
@@ -234,7 +234,7 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="listempresasbase.py" line="120"/>
         <source>Actualizar Todo</source>
-        <translation></translation>
+        <translation>Tout actualiser</translation>
     </message>
 </context>
 <context>
@@ -242,7 +242,7 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="bulmasetupbase.py" line="211"/>
         <source>BulmaSetup</source>
-        <translation>Configuration Bulma</translation>
+        <translation>Configuration deBulmages</translation>
     </message>
     <message utf8="true">
         <location filename="bulmasetupbase.py" line="219"/>
@@ -299,7 +299,7 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="bulmasetupbase.py" line="227"/>
         <source>Administrar Empresas Existentes</source>
-        <translation></translation>
+        <translation>Administrer les sociétés existantes</translation>
     </message>
     <message>
         <location filename="bulmasetupbase.py" line="232"/>
@@ -449,17 +449,17 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="modificarcontabilidadbase.py" line="363"/>
         <source>ca</source>
-        <translation></translation>
+        <translation>ca</translation>
     </message>
     <message>
         <location filename="modificarcontabilidadbase.py" line="364"/>
         <source>es</source>
-        <translation></translation>
+        <translation>es</translation>
     </message>
     <message>
         <location filename="modificarcontabilidadbase.py" line="365"/>
         <source>fr</source>
-        <translation></translation>
+        <translation>fr</translation>
     </message>
     <message>
         <location filename="modificarcontabilidadbase.py" line="367"/>
