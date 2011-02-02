@@ -1,31 +1,50 @@
+# Header entry was created by Lokalize.
+#
+#: ui_archivobase.h:101
+# aishen <aishen@free.fr>, 2011.
+msgid ""
+msgstr ""
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Mime-Version: 1.0"
+"Last-Translator: aishen <aishen@free.fr>\n"
+"PO-Revision-Date: 2011-02-02 11:41+0100\n"
+"Project-Id-Version: \n"
+"Language-Team: French <kde-i18n-doc@kde.org>\n"
+"Language: fr\n"
+"X-Generator: Lokalize 1.2\n"
+"MIME-Version: 1.0\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
 #: ui_archivobase.h:101
 msgid "..."
 msgstr ""
 
 #: ui_archivobase.h:102
 msgid "Aceptar"
-msgstr ""
+msgstr "Accepter"
 
 #: archivo.cpp:68
 msgid "All files (*)"
-msgstr ""
+msgstr "Tous les fichiers (*)"
 
 #: ui_archivobase.h:100
 msgid "Archivo"
-msgstr ""
+msgstr "Fichier"
 
 #: ui_archivobase.h:103
 msgid "Cancelar"
-msgstr ""
+msgstr "Annuler"
 
 #: archivo.cpp:50
 msgid "Error al crear la ventana de importacion"
-msgstr ""
+msgstr "Erreur à la création de la fenêtre d'importation"
 
 #: ui_archivobase.h:99
 msgid "Importar CSV"
-msgstr ""
+msgstr "Importer le CSV"
 
 #: archivo.cpp:68
 msgid "Open file"
-msgstr ""
+msgstr "Ouvrir le fichier"
+
