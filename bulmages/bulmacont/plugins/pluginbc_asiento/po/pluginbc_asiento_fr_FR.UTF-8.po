@@ -6,13 +6,14 @@
 # Automatically generated, 2009.
 # Conta, 2011.
 # Girard Henri <aishen@free.fr>, 2011.
+# aishen <aishen@free.fr>, 2011.
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
 "POT-Creation-Date: 2011-01-21 17:02+0100\n"
-"PO-Revision-Date: 2011-01-31 09:11+0100\n"
-"Last-Translator: \n"
+"PO-Revision-Date: 2011-02-02 08:44+0100\n"
+"Last-Translator: aishen <aishen@free.fr>\n"
 "Language-Team: French <kde l10n>\n"
 "Language: \n"
 "MIME-Version: 1.0\n"
@@ -454,7 +455,7 @@ msgstr "Afficher l'extrait (mois)"
 
 #: bcasientosubform.cpp:42
 msgid "Nombre de la cuenta"
-msgstr "Nom de Compte "
+msgstr "Nom du Compte "
 
 #: ui_bcasientobase.h:565
 msgid "Normal"
@@ -547,7 +548,7 @@ msgstr "Crédit total :"
 
 #: pluginbc_asiento.cpp:250
 msgid "menuAsiento"
-msgstr "Menu des écritures"
+msgstr "menuAsiento"
 
 #: ui_bcasientolistbase.h:469
 msgid "y   ( >="

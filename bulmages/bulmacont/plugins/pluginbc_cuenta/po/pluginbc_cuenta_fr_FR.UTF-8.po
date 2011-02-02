@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
 "POT-Creation-Date: 2010-09-23 18:22+0200\n"
-"PO-Revision-Date: 2011-01-31 15:12+0100\n"
+"PO-Revision-Date: 2011-02-02 08:36+0100\n"
 "Last-Translator: aishen <aishen@free.fr>\n"
 "Language-Team: French <kde l10n>\n"
 "MIME-Version: 1.0\n"
@@ -34,7 +34,7 @@ msgstr "&Annuler"
 
 #: pluginbc_cuenta.cpp:96
 msgid "&Cuentas Contables"
-msgstr "&Comptes comptables"
+msgstr "&Comptes"
 
 #: ui_bccuentabase.h:838
 msgid "&Datos contables"
@@ -498,7 +498,7 @@ msgstr "Web du compte"
 
 #: pluginbc_cuenta.cpp:92
 msgid "menuCuentas"
-msgstr "Compte"
+msgstr "menuCuentas"
 
 #~ msgid "&Ver"
 #~ msgstr "&Ver"
