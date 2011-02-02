@@ -102,8 +102,8 @@ void TicketQToolButton::click()
     m_albaranClienteView->generaRML("ticket_normal.txt");
 
 
-    if (!g_confpr->valor ( CONF_CASHBOX_FILE).isEmpty() && g_confpr->valor ( CONF_CASHBOX_FILE) != "/dev/null") {
-        QString comando = "cat " + g_confpr->valor(CONF_DIR_USER) + "ticket_normal.txt" + "  > " + g_confpr->valor ( CONF_CASHBOX_FILE );
+    if (!g_confpr->valor ( CONF_TICKET_PRINTER_FILE).isEmpty() && g_confpr->valor ( CONF_TICKET_PRINTER_FILE) != "/dev/null") {
+        QString comando = "cat " + g_confpr->valor(CONF_DIR_USER) + "ticket_normal.txt" + "  > " + g_confpr->valor ( CONF_TICKET_PRINTER_FILE );
         system ( comando.toAscii().data() );
     } else if (g_confpr->valor(CONF_CUPS_DEFAULT_PRINTER).isEmpty() || g_confpr->valor(CONF_CUPS_DEFAULT_PRINTER) == "None") {
         blDebug("Debe establecer el parametro CONF_CUPS_DEFAULT_PRINTER o CONF_CASHBOX_FILE para abrir el cajon " , 2);
