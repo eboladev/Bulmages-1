@@ -2,14 +2,14 @@
 Plugins
 =======
 #README
-20090419
+20110203
 
-Nombre: Cuentas anuales 
+Nom : Comptes annuels
 
-Biblioteca: libpluginbc_ccaa2ods.so
+Bibliothèques : libpluginbc_ccaa2ods.so
 
-Descripción: <H1>Cuentas anuales</H1>
-<P>Permite obtener un balance de cuentas anuales para los planes contables españoles del 2007: Cuentas anuales, abreviadas y de pymes. Y para los planes contables anteriores al 2008: Cuentas anuales y abreviadas de asociaciones sin animo de lucro. </P>
+Description : <H1>Comptes annuels</H1>
+<P>Permet d'obtenir une balance de comptes annuels pour les plans comptables espagnols de 2007 : Comptes annuels, abréviés et des PMIs. Y para los planes contables anteriores al 2008: Cuentas anuales y abreviadas de asociaciones sin animo de lucro. </P>
 <HR>
 
 ParmBD: -

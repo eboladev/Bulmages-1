@@ -4,31 +4,31 @@ Plugins
 #README
 20110203
 
-Nom : Amortissements
+Nom: Amortissements
 
-Bibliothèque : libpluginbc_amortizacion.so
+Bibliothèque: libpluginbc_amortizacion.so
 
-Description : <H1>Amortissement</H1>
+Description: <H1>Amortissement</H1>
 <P>Permet de gérer les amortissements dans l'entreprise...</P>
 <HR>
 
-ParmBD : -
+ParmBD: -
 
-ArchivoSQLpatch : -
+ArchivoSQLpatch: -
 
-ArchivoSQLdeins : -
+ArchivoSQLdeins: -
 
-Dependances : libpluginbc_asiento.so;
+Dependances: libpluginbc_asiento.so;
 
-Incompatibilité :
+Incompatibilité:
 
-Rapports : 
+Rapports: 
 
-Catégories : Comptabilité générale ; Expérimental;
+Catégories: Comptabilité générale ; Expérimental;
 
-Ordre : 100
+Ordre: 100
 
-Commentaires : -
+Commentaires: -
 
 
     
