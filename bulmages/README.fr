@@ -25,7 +25,7 @@ Introduction
 
 BulmaGés est une application modulaire prétendant couvrir tous les besoins nécessaires de gestion d'entreprise petite et moyenne, en logiciel libre. On peut identifier clairement quatre domaines dans lequels le logiciel peut être utiliser : 
 a) Comptabilité - BulmaCont
-b) Facturacion  - BulmaFact
+b) Facturation  - BulmaFact
 c) Terminal Point de Vente - BulmaTPV
 
 Depuis cette période (Mai 2009), l'applicación de comptabilité (BulmaCont), facturacion (BulmaFact) yet le terminal Pont de Vente (BulmaTPV) sont déja opérationnels.
@@ -82,7 +82,7 @@ Répertoire du programme de comptabilité bulmacont.
 Répertoire du programme de configuration bulmasetup, afin de configurer celui-ci.
 
 - bulmafact
-Répertoire du programme de facturation bulmafact.                  
+Répertoire du programme de facturation bulmafact.
 
 - installbulmages
 Dans ce répertoire, on trouve ce qui manque pour installer la suite. Fichiers de configuration, etc...
