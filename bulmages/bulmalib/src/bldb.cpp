@@ -165,13 +165,14 @@ QString BlDbField::valorcampo()
     blDebug ( "BlDbField::valorcampo", 0 );
     QString valor = m_valorcampo;
     if ( m_tipo == DbNumeric ) {
-
-        /// Conversi&oacute;n al formato del locale "C": un punto separa la parte decimal
         QLocale locale;
-        valor = locale.toString(m_valorcampo.toDouble()); //ARON
-
+        if ( locale.decimalPoint() == '.' ) {
+            valor.replace ( ",", locale.decimalPoint () );
+        } else {
+            valor.replace ( ".", locale.decimalPoint () );
+        } // end if
     } // end if
-    blDebug ( "END BlDbField::valorcampo", 0, m_valorcampo + "-->" + valor );
+    blDebug ( "END BlDbField::valorcampo", 0 );
     return valor;
 }
 
@@ -244,11 +245,8 @@ QString BlDbField::valorcampoprep ( int &error )
         if ( m_valorcampo == "" ) {
             valor = "NULL";
         } else {
-           /* QLocale locale;
-            valor =  "'" + m_dbConnection->sanearCadena ( QString("%1").arg(locale.toDouble(m_valorcampo)) ) + "'";
-	   */
-	   m_valorcampo.replace(",",".");
-	   valor = "'"  + m_dbConnection->sanearCadena( m_valorcampo) + "'";
+            m_valorcampo.replace ( ",", "." );
+            valor =  "'" + m_dbConnection->sanearCadena ( m_valorcampo ) + "'";
         } // end if
         break;
     case DbBoolean:
