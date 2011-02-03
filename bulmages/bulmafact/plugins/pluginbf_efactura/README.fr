@@ -1,0 +1,29 @@
+#######
+#Plugins
+#######
+#README.es
+#20080501
+
+Nombre: Factura Electronica de Bulmafact
+
+Biblioteca: libpluginbf_efactura.so
+
+Descripción: <H1>Codigos de Barras</H1>
+<P>Permite la exportacion e importacion de facturas en formato UBL 1.0 desde BulmaFact.</P>
+<HR>
+
+ParmBD: 
+
+ArchivoSQLpatch: 
+
+ArchivoSQLdeins: 
+
+Dependencias:
+
+Incompatibles:
+
+Categorias: Experimentales;
+
+Orden: 600
+
+Comentarios:
