@@ -4,7 +4,6 @@
 # pluginbt_printercocina
 
 set (plugin pluginbt_printercocina)
-set (docs README.es)
 
 file(GLOB plugin_SRC *.c *.cpp *.cxx)
 file(GLOB plugin_MOCS *.hpp *.h)
@@ -99,10 +98,14 @@ else(WIN32)
 target_link_libraries(${plugin} libbulmatpv bulmalib ${QT_LIBRARIES} ${PGSQL_LIBRARIES})
 endif(WIN32)
 
+configure_file( ${CMAKE_CURRENT_SOURCE_DIR}/README.es ${CMAKE_CURRENT_BINARY_DIR}/README.es @ONLY)
+install (FILES ${CMAKE_CURRENT_BINARY_DIR}/README.es DESTINATION share/bulmages/bulmatpv-plugins/ RENAME README.es.${plugin})
 
-foreach(dfile ${docs})
-   install (FILES ${dfile} DESTINATION share/bulmages/bulmatpv-plugins/ RENAME ${dfile}.${plugin})
-endforeach(dfile in ${docs})
+configure_file( ${CMAKE_CURRENT_SOURCE_DIR}/README.ca ${CMAKE_CURRENT_BINARY_DIR}/README.ca @ONLY)
+install (FILES ${CMAKE_CURRENT_BINARY_DIR}/README.ca DESTINATION share/bulmages/bulmatpv-plugins/ RENAME README.ca.${plugin})
+
+configure_file( ${CMAKE_CURRENT_SOURCE_DIR}/README.fr ${CMAKE_CURRENT_BINARY_DIR}/README.fr @ONLY)
+install (FILES ${CMAKE_CURRENT_BINARY_DIR}/README.fr DESTINATION share/bulmages/bulmatpv-plugins/ RENAME README.fr.${plugin})
 
 add_dependencies(${plugin} bulmatpv bulmalib bulmafact pluginbt_articulosubform pluginbf_articulo pluginbt_accesobotones)
 

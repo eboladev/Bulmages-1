@@ -1,0 +1,30 @@
+#######
+#Plugins
+#######
+#README.es
+#20100514 
+
+Nombre: Servidor ligero
+
+Biblioteca: libpluginbt_serverlight.so
+
+Descripción: <H1>Servidor ligero</H1>
+<P>Permite comunicarse con dispositivos ligeros como PDAs o el cliente NDS para las funciones de gestión de tickets. Necesita que en los dispositivos móviles se instale una aplicación cliente.</P>
+
+<HR>
+
+ParmBD: 
+
+ArchivoSQLpatch: 
+
+ArchivoSQLdeins: 
+
+Dependencias:
+
+Incompatibles:
+
+Categorias: Utilidades avanzadas;
+
+Orden: 4
+
+Comentarios: Ideal para un restaurante donde los camareros pueden enviar comandas al TPV directamente a través de la red.

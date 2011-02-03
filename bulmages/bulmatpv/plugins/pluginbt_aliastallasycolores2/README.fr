@@ -1,0 +1,30 @@
+#######
+#Plugins
+#######
+#README.es
+#20080501 
+
+Nombre: Alias Tallas y Colores 2 TPV
+
+Biblioteca: libpluginbt_aliastallasycolores2.so
+
+Descripción: <H1>Alias TPV</H1>
+<P>Permite la introduccion de articulos con alias. Requiere la instalacion de libpluginalias de 
+bulmafact en la empresa.</P>
+<HR>
+
+ParmBD: 
+
+ArchivoSQLpatch: 
+
+ArchivoSQLdeins: 
+
+Dependencias: libpluginbf_alias.so
+
+Incompatibles:
+
+Orden: 701
+
+Categorias: Facturacion avanzada;Experimentales;Tallas y Colores;
+
+Comentarios: Ideal para meter los codigos de barras como alias y poder tickarlos.

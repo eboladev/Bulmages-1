@@ -1,0 +1,37 @@
+#######
+#Plugins
+#######
+#README.es
+#20100501 
+
+Nombre: Embeber Aplicacion
+
+Biblioteca: libpluginbt_dockapp.so
+
+Descripción: <H1>Embebido de Aplicaciones</H1>
+<P>Permite incorporar al TPV una aplicación en forma de dockwindow.</P>
+<P>Por ejemplo la incorporacion de un cliente de chat, una calculadora o un teclado virtual sin tener que cambiar el contexto
+de la aplicacion de TPV</P>
+<P>Al instalar este componente aparecera un boton en la barra de accesos con el titulo DockApp. Para embeber una aplicacion externa es 
+importante tener dicha aplicacion visualizada en pantalla. Al pulsar sobre el boton DockApp el cursor del raton cambiara a una mirilla con la que
+hay que pulsar sobre la aplicacion que deseemos embeber. Tras pulsar sobre la ventana ésta del explorador de ventanas y pasara a ubicarse
+en un dockWidget de BulmaTPV. Para hacer aparecer o desaparecer ese dockWidget podemos pulsar con el boton derecho del raton
+en las areas de movimiento de las DockAreas y seleccionando ver el DockWidget apropiado.</P>
+<P>Al cerrar BulmaTPV los programas embebidos volverán a aparecer en el escritorio</P>
+<HR>
+
+ParmBD: 
+
+ArchivoSQLpatch: 
+
+ArchivoSQLdeins: 
+
+Dependencias: libpluginbt_accesobotones.so
+
+Incompatibles:
+
+Categorias: Utilidades avanzadas; Experimentales;
+
+Orden: 90
+
+Comentarios: 
