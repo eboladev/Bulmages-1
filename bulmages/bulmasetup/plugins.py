@@ -3,6 +3,7 @@
 import sys
 import os,fnmatch
 import re
+import locale
 
 global pathdbbulmafact
 global pathdbbulmacont
@@ -29,7 +30,7 @@ class PluginsBulmaSetup:
   def readfiles(self, folder, plugins):
     if os.path.exists(confsharebulmages+folder):
       for fileName in os.listdir ( confsharebulmages+folder ):
-        if fnmatch.fnmatch ( fileName, 'README*' ):
+        if fnmatch.fnmatch ( fileName, 'README.'+locale.getdefaultlocale()[0][:2]+'*' ):
             f = open(confsharebulmages+folder+"/"+fileName)
             cont = ""
             for char in f.read():
