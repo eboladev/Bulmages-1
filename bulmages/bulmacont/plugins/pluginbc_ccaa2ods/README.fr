@@ -9,7 +9,7 @@ Nombre: Comptes annuels
 Biblioteca: libpluginbc_ccaa2ods.so
 
 Descripción: <H1>Comptes annuels</H1>
-<P>Permet d'obtenir une balance de comptes annuels pour les plans comptables espagnols de 2007 : Comptes annuels, abréviés et des PMIs. Y para los planes contables anteriores al 2008: Cuentas anuales y abreviadas de asociaciones sin animo de lucro. </P>
+<P>Permet d'obtenir une balance de comptes annuels pour les plans comptables espagnols de 2007 : Comptes annuels, abrégés et des PMIs. Et pour les plans comptables avant 2008: Comptes annuels et abrégés des associations à but non lucratif. </P>
 <HR>
 
 ParmBD: -
@@ -25,21 +25,16 @@ Incompatibles:
 Reports: inf_ccaa-pgc1990.pys; inf_ccaa-pgc2007_asl.pys; inf_ccaa-pgc2007_pymes.pys; inf_ccaa-pgc2007_abrev.pys; inf_ccaa-pgc2007_fac.pys; inf_ccaa-pgc2007.pys
 
 
-Categorias: Contabilidad general
+Categorias: Comptabilité générale
 
 Orden: 70
 
-Comentarios: El formato de salida es ods. Esta basado en el plugincanualesods,
-creado por Fco. Javier a partir de un código de Tomeu Borràs. A partir de esto,
-Adeladia Clavaguera y Leopold Palomo crearon el caaslods, que era las cuentas
-anuales para las asociaciones sin lucro. Luego crearon reportods donde se
-integró, canuales y caaslods y se añadió el resto de cuentas anuales que existen
-publicadas en el BOE. 
+Comentarios: Le format de sortie est ODS. Il est basé sur le plugincanualesods,
+crée par Fco. Javier à partir d'un code de Tomeu Borràs. Ensuite,
+Adeladia Clavaguera et Leopold Palomo ont crée le caaslods, qui sont les comptes annuels des associations à but non lucratif. Ils ont crée ensuite reportods dans lequel est intégré, canuales et caaslods et y sont ajoutés le restant des comptes annuels existant publiésdans le BOE. 
 
-Entonces, viendo que reportods hacia lo mismo que los otros dos, se decide
-substituir canuales por reportods integrando en un nuevo canuales todas las
-cuentas anuales.
+Cependant on a remarqué que reportods était le même que les deux autres, il fut décidé de substituer canuales par reportods intégrant dans un nouveau canuales tous les comptes annuels.
 
-(c) 2008 Adelaida Clavaguera y Leopold Palomo.
+(c) 2008 Adelaida Clavaguera et Leopold Palomo.
 (c) 2006 Fco. Javier M. C.   
 (c) 2005 Tomeu Borras.

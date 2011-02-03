@@ -2,15 +2,15 @@
 Plugins
 =======
 #README
-#20080502
+#20110203
 
-Nombre: Bloqueo de Fechas
+Nombre: Bloquer les dates
 
 Biblioteca: libpluginbc_bloqueofechas.so
 
-Descripción: <H1>Bloqueo de Fechas</H1>
-<P>Permite bloquear y desbloquear fechas a modo de que no se pueda modificar la contabilidad en las fechas bloqueadas. </P>
-<P>El bloqueo funciona por meses y por años</P>
+Descripción: <H1>Bloquer les dates</H1>
+<P>Permet de bloquer et débloquer les dates de façon à ce qu'on ne puisse pas modifier la comptabilité selon les dates bloquées. </P>
+<P>Le blocage fonctionne pour les mois et les ans</P>
 <HR>
 
 ParmBD:
@@ -23,8 +23,8 @@ Dependencias:
 
 Incompatibles:
 
-Categorias: Contabilidad general;Experimentales;
+Categorias: Comptabilité générale ; Expérimental;
 
 Orden:
 
-Comentarios: Imprescindible en una empresa normal.
+Comentarios: Indispensable dans une entreprise normale.
