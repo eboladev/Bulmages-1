@@ -2,16 +2,21 @@
 # Header entry was created by KBabel!
 #
 # Fco. Javier M. C. <fcojavmc@gmail.com>, 2009.
+# aishen <aishen@free.fr>, 2011.
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: info@iglues.org\n"
 "POT-Creation-Date: 2010-09-23 18:13+0200\n"
-"PO-Revision-Date: 2009-01-26 09:35+0100\n"
-"Language-Team:  <es@li.org>\n"
+"PO-Revision-Date: 2011-02-03 13:20+0100\n"
+"Language-Team: French <kde-i18n-doc@kde.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: KBabel 1.11.4\n"
+"X-Generator: Lokalize 1.2\n"
+"Last-Translator: aishen <aishen@free.fr>\n"
+"Project-Id-Version: \n"
+"Language: fr\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
 #: bfclientealbarandescuentosubform.cpp:43 bfclientealbaransubform.cpp:55
 #: bfproveedoralbaransubform.cpp:57
@@ -28,7 +33,7 @@ msgstr ""
 
 #: bfclientealbaransubform.cpp:54
 msgid "% Recargo E.Q."
-msgstr "% Recharge E.Q."
+msgstr "% Recharger E.Q."
 
 #: ui_bfconfiguracionbase.h:119 ui_bfseriefacturabase.h:85
 msgid "&Aceptar"
@@ -40,7 +45,7 @@ msgstr "&A propos de"
 
 #: ui_bfbulmafactbase.h:174
 msgid "&Acerca de Iglues/BulmaFact"
-msgstr ""
+msgstr "&A propos de Iglues/BulmaFact"
 
 #: ui_bfconfiguracionbase.h:120 ui_bfseriefacturabase.h:84
 msgid "&Cancelar"
@@ -56,15 +61,15 @@ msgstr "&Documentation"
 
 #: ui_bfbulmafactbase.h:177
 msgid "&Indexador"
-msgstr "&Indexeur"
+msgstr "&Index"
 
 #: ui_bfbulmafactbase.h:168
 msgid "&Propiedades de la empresa..."
-msgstr "&Propriétées de l'entreprise..."
+msgstr "&Propriétés de l'entreprise..."
 
 #: ui_bfbulmafactbase.h:166
 msgid "&Salir del programa"
-msgstr "&Sortir du programme"
+msgstr "&Quitter le programme"
 
 #: ui_bfaboutbase.h:309
 msgid ""
@@ -93,6 +98,16 @@ msgid ""
 "right:0px; -qt-block-indent:0; text-indent:0px;\">Facturacion GPL - Version "
 "0.12.0 -</p></body></html>"
 msgstr ""
+"<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/"
+"REC-html40/strict.dtd\">\n"
+"<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css"
+"\">\n"
+"p, li { white-space: pre-wrap; }\n"
+"</style></head><body style=\" font-family:'Sans Serif'; font-size:9pt; font-"
+"weight:600; font-style:normal;\">\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-"
+"right:0px; -qt-block-indent:0; text-indent:0px;\">Facturation GPL - Version "
+"0.12.0 -</p></body></html>"
 
 #: ui_bfaboutbase.h:314
 msgid "A&utores"
@@ -104,11 +119,11 @@ msgstr "A&ide"
 
 #: ui_bfbuscarreferenciabase.h:95
 msgid "Abre todos los documentos con esta referencia"
-msgstr ""
+msgstr "Ouvrir tous les documents avec cette référence"
 
 #: ui_bfaboutbase.h:301
 msgid "Acerca de Iglues/BulmaFact"
-msgstr ""
+msgstr "A propos de Iglues/BulmaFact"
 
 #: ui_bfaboutbase.h:316
 msgid "Acuerdo de &licencia"
@@ -120,11 +135,11 @@ msgstr "Article"
 
 #: bfbuscararticulo.cpp:37
 msgid "Articulo:"
-msgstr "Article:"
+msgstr "Article :"
 
 #: ui_bfbulmafactbase.h:226
 msgid "Avanzados"
-msgstr ""
+msgstr "Avancer"
 
 #: bfform.cpp:500
 msgid "Base Imponible"
@@ -132,31 +147,31 @@ msgstr "Assiette imposable"
 
 #: bfclientealbaransubform.cpp:50 bfproveedoralbaransubform.cpp:52
 msgid "Cantidad"
-msgstr "Cantitée"
+msgstr "Quantité"
 
 #: main.cxx:159
 msgid "Cargando plugins"
-msgstr ""
+msgstr "Charger le greffon"
 
 #: bfinformereferencia.cpp:216
 msgid "Cobrado"
-msgstr "Encaissé"
+msgstr "Encaisser"
 
 #: bfclientealbaransubform.cpp:46 bfproveedoralbaransubform.cpp:48
 msgid "Codigo completo articulo"
-msgstr "Code complet article"
+msgstr "Code complet de l'article"
 
 #: bfseriefacturaview.cpp:80
 msgid "Codigo serie factura"
-msgstr "Code série facture"
+msgstr "Code série de la facture"
 
 #: bfaboutview.cpp:44
 msgid "Compilado usando la version de QT:"
-msgstr "Compilé usant la version de QT:"
+msgstr "Compiler avec la version QT :"
 
 #: bfclientealbarandescuentosubform.cpp:42
 msgid "Concepto descuento"
-msgstr ""
+msgstr "Concept de remise"
 
 #: bfconfiguracionview.cpp:51
 msgid "Configuracion"
@@ -176,7 +191,7 @@ msgstr "Description"
 
 #: bfseriefacturaview.cpp:81
 msgid "Descripcion serie factura"
-msgstr "Déscription série facture"
+msgstr "Description série de la facture"
 
 #: bfform.cpp:458
 msgid "Descuento"
@@ -191,15 +206,17 @@ msgid ""
 "El codigo del articulo no existe.\n"
 "ATENCION: No se guadara bien el documento hasta que sea valido."
 msgstr ""
+"Le code de l'article n'existe pas.\n"
+"ATTENTION : Le document ne sera pas bien sauvé tant qu'il ne sera pas validé."
 
 #: bfinformereferencia.cpp:144 bfinformereferencia.cpp:176
 #: bfinformereferencia.cpp:214 bfinformereferencia.cpp:261
 msgid "Entregado"
-msgstr "Remis"
+msgstr "Livrer"
 
 #: main.cxx:188
 msgid "Error inesperado en BulmaFact. El programa se cerrara."
-msgstr "Erreur inéspéré dans BulmaFact. Le programme fermera."
+msgstr "Erreur inattendu dans BulmaFact. Le programme se fermera."
 
 #: bfform.cpp:1044
 msgid "Error inesperado en la impresion"
@@ -215,16 +232,16 @@ msgstr "F11"
 
 #: bfcompany.cpp:99
 msgid "Facturacion GPL"
-msgstr ""
+msgstr "Facturation GPL"
 
 #: bfinformereferencia.cpp:145 bfinformereferencia.cpp:177
 #: bfinformereferencia.cpp:215 bfinformereferencia.cpp:262
 msgid "Facturado"
-msgstr "Facturé"
+msgstr "Facturer"
 
 #: bfbuscarfamilia.cpp:36
 msgid "Familia:"
-msgstr "Famille:"
+msgstr "Famille :"
 
 #: ui_bfbulmafactbase.h:210 ui_bfbulmafactbase.h:212 ui_bfbulmafactbase.h:215
 #: ui_bfbulmafactbase.h:218 ui_bfbulmafactbase.h:221 ui_bfbulmafactbase.h:224
@@ -254,60 +271,60 @@ msgstr "Id article"
 
 #: bfclientealbarandescuentosubform.cpp:41
 msgid "Id descuento"
-msgstr ""
+msgstr "Id remise"
 
 #: bfaboutview.cpp:420
 msgid "Idioma:"
-msgstr ""
+msgstr "Idiome :"
 
 #: bfaboutview.cpp:418
 msgid "Idiomas y traducciones:"
-msgstr ""
+msgstr "Idiomes et traductions :"
 
 #: ui_bfbulmafactbase.h:165
 msgid "Iglues/BulmaFact - Facturacion GPL"
-msgstr ""
+msgstr "Iglues/BulmaFact - Facturation GPL"
 
 #: ui_bfbulmafactbase.h:178 ui_bfbulmafactbase.h:180
 msgid "Indexador"
-msgstr "Indexeur"
+msgstr "Index"
 
 #: ui_bfaboutbase.h:317
 msgid "Informacion del &sistema"
-msgstr ""
+msgstr "Information du &système"
 
 #: bfbuscarreferencia.cpp:69
 msgid "Informe"
-msgstr ""
+msgstr "Rapport"
 
 #: ui_bfbuscarreferenciabase.h:92
 msgid "Informe por referencia"
-msgstr ""
+msgstr "Rapport par référence"
 
 #: main.cxx:171
 msgid "Inicializando componentes"
-msgstr ""
+msgstr "Initier les composants"
 
 #: main.cxx:103
 msgid "Iniciando clases"
-msgstr "Initiant classes"
+msgstr "Initier les classes"
 
 #: main.cxx:165
 msgid "Lanzando plugins"
-msgstr ""
+msgstr "Lancer les greffons"
 
 #: main.cxx:129
 msgid "Leyendo configuracion"
-msgstr "Lisant configuration"
+msgstr "Lire la configuration"
 
 #: ui_bfbulmafactbase.h:194 ui_bfbulmafactbase.h:196 ui_bfbulmafactbase.h:199
 #: ui_bfbulmafactbase.h:202 ui_bfbulmafactbase.h:205 ui_bfbulmafactbase.h:208
 msgid "Listados"
-msgstr "Relevées"
+msgstr "Listes"
 
 #: ui_bfbulmafactbase.h:192
 msgid "Maest&ro"
-msgstr "Maît&re"
+msgstr "P&rincipal"
 
 #: bfconfiguracionview.cpp:89
 msgid "Nombre"
@@ -315,15 +332,15 @@ msgstr "Nom"
 
 #: bfclientealbaransubform.cpp:47 bfproveedoralbaransubform.cpp:49
 msgid "Nombre articulo"
-msgstr "Nom article"
+msgstr "Nom de l'article"
 
 #: bfproveedoralbaransubform.cpp:50
 msgid "Numero de linea"
-msgstr ""
+msgstr "Numéro de ligne"
 
 #: bfclientealbaransubform.cpp:48
 msgid "Nº linea"
-msgstr ""
+msgstr "Nº de ligne"
 
 #: bfclientealbaransubform.cpp:57 bfproveedoralbaransubform.cpp:59
 msgid "Orden"
@@ -331,11 +348,11 @@ msgstr "Ordre"
 
 #: ui_bfbulmafactbase.h:184
 msgid "Ordenar &ventanas"
-msgstr "Ranger &Fenêtres"
+msgstr "Ranger les &Fenêtres"
 
 #: ui_bfbulmafactbase.h:183
 msgid "Organizacio&n en cascada"
-msgstr ""
+msgstr "Fe&nêtre en cascade"
 
 #: bfclientealbaransubform.cpp:51
 msgid "P.V.P."
@@ -343,28 +360,28 @@ msgstr "P.V.P."
 
 #: bfinformereferencia.cpp:263
 msgid "Pagado"
-msgstr "Payé"
+msgstr "Payer"
 
 #: ui_bfbulmafactbase.h:185 ui_bfbulmafactbase.h:186
 msgid "Paises / Provincias"
-msgstr "Pays / Provinces"
+msgstr "Pays/Provinces"
 
 #: ui_bfbulmafactbase.h:188
 msgid "Paises y provincias"
-msgstr ""
+msgstr "Pays et Provinces"
 
 #: bfinformereferencia.cpp:143 bfinformereferencia.cpp:175
 #: bfinformereferencia.cpp:213 bfinformereferencia.cpp:260
 msgid "Pedido"
-msgstr "Demandé"
+msgstr "Commande"
 
 #: bfaboutview.cpp:422
 msgid "Plugins:"
-msgstr ""
+msgstr "Greffons :"
 
 #: bfform.cpp:459
 msgid "Porcentaje"
-msgstr "Pourcentaje"
+msgstr "Pourcentage"
 
 #: bfproveedoralbaransubform.cpp:53
 msgid "Precio"
@@ -376,7 +393,7 @@ msgstr "Pres."
 
 #: ui_bfconfiguracionbase.h:118 ui_bfbulmafactbase.h:170
 msgid "Propiedades de la empresa"
-msgstr "Propriétées de l'entreprise"
+msgstr "Propriétés de l'entreprise"
 
 #: bfform.cpp:538
 msgid "R.E."
@@ -388,11 +405,11 @@ msgstr "Référence"
 
 #: bfbulmafact.cpp:188
 msgid "Se perderan los cambios no guardados"
-msgstr ""
+msgstr "Les changements non sauvegardés seront perdus"
 
 #: bfbulmafact.cpp:187
 msgid "Seguro que desea abandonar el programa "
-msgstr ""
+msgstr "Etes vous sûr de vouloir quitter le programme"
 
 #: bfseriefacturaview.cpp:48
 msgid "Serie de Factura"
@@ -408,16 +425,15 @@ msgstr "Suppor&t"
 
 #: main.cxx:177
 msgid "Terminado"
-msgstr "Fini"
+msgstr "Finir"
 
 #: bfform.cpp:1041
 msgid "Tiene que guardar el documento antes de poder procesarlo."
-msgstr ""
+msgstr "Vous devez sauvegarder le document avant de pouvoir le traiter."
 
 #: bfbuscartipoarticulo.cpp:37
-#, fuzzy
 msgid "Tipo Articulo:"
-msgstr "Genre Articles"
+msgstr "Type d'articles :"
 
 #: bfform.cpp:551
 msgid "Total"
@@ -425,11 +441,11 @@ msgstr "Total"
 
 #: bfform.cpp:460
 msgid "Total Desc."
-msgstr "Total Rem."
+msgstr "Total Remise"
 
 #: bfclientealbaransubform.cpp:52 bfproveedoralbaransubform.cpp:54
 msgid "Total Linea"
-msgstr ""
+msgstr "Total de la ligne"
 
 #: bfconfiguracionview.cpp:90
 msgid "Valor"
@@ -441,7 +457,7 @@ msgstr "Fenêt&re"
 
 #: ui_bfbulmafactbase.h:172
 msgid "Ventana &completa"
-msgstr "Fenêtre &complète"
+msgstr "Plein é&cran"
 
 #~ msgid "&Acerca de BulmaFact"
 #~ msgstr "&A propos de BulmaFact"
