@@ -1,0 +1,32 @@
+#######
+#Plugins
+#######
+#README.es
+#20080501
+
+Nombre: Mostrar el logotipo
+
+Biblioteca: libpluginbl_logo.so
+
+Descripción: <H1>Mostrar el logotipo</H1>
+<P>Presenta el logotipo de la empresa en un DockWidget.</P>
+<P>La utilidad de este plugin es meramente estética y como recordatorio de la empresa con la que estamos trabajando</P>
+<B>Author:</B>Tomeu Borrás (tborras@conetxia.com)<BR>
+<IMG SRC="@CMAKE_INSTALL_PREFIX@/share/bulmages/images/logopeq.png"/>
+<HR>
+
+ParmBD: 
+
+ArchivoSQLpatch: 
+
+ArchivoSQLdeins: 
+
+Dependencias:
+
+Incompatibles:
+
+Categorias: Utilidades genericas;Experimentales;
+
+Orden: 90
+
+Comentarios: 
