@@ -6,8 +6,7 @@ msgid ""
 msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Mime-Version: 1.0"
-"Last-Translator: aishen <aishen@free.fr>\n"
+"Mime-Version: 1.0\n"
 "PO-Revision-Date: 2011-02-02 11:41+0100\n"
 "Project-Id-Version: \n"
 "Language-Team: French <kde-i18n-doc@kde.org>\n"
@@ -15,6 +14,8 @@ msgstr ""
 "X-Generator: Lokalize 1.2\n"
 "MIME-Version: 1.0\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"X-Language: fr_FR\n"
+"X-Source-Language: C\n"
 
 #: ui_archivobase.h:101
 msgid "..."
@@ -47,4 +48,3 @@ msgstr "Importer le CSV"
 #: archivo.cpp:68
 msgid "Open file"
 msgstr "Ouvrir le fichier"
-

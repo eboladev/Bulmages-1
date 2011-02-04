@@ -2,9 +2,9 @@
 #Plugins
 #######
 #README
-#20080801
+#20110204
 
-Nombre: Adjuntar documentos
+Nombre: Ajouter des documents
 
 Biblioteca: libpluginbl_attachdocument.so
 
