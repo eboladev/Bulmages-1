@@ -1,0 +1,36 @@
+========================================
+Software de Gestión Empresarial BulmaGés
+
+(C) 2003 - 2008 Asociación IGLUES
+http://www.iglues.org
+========================================
+#README.Bulmasetup
+20110204
+
+BulmaSetup
+==========
+
+Ce répertoire contient tout le code source nécessaire au programme de BulmaSetup.
+BulmaSetup est un programme écrit en PyQt4 et sert à configurer la suite
+BulmaGés.
+
+Avec BulmaSetup on peut:
+========================
+
+- Créer un utilisateur PostgreSQL
+- Modifier toutes les permissions des utilisateur de celui-ci
+- Eliminer les utilisateurs PostgreSQL
+
+- Créer une nouvelle entreprise dans BulmaCont
+- Créer une nouvelle entreprise dans BulmaFact
+
+- Administrer les entreprises déjà existantes
+
+- Restaurer les copies de sécurité des base de données PostgreSQL
+
+
+
+Structure
+==========
+
+Dans le répertoire il ya tous les fichiers. Mais aucun greffons.
