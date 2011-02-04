@@ -120,7 +120,7 @@ msgstr "&Sortir"
 
 #: ui_bcbulmacontbase.h:263
 msgid "&Salir del programa"
-msgstr "&Sortir du programme"
+msgstr "&Quitter le programme"
 
 #: bccanalview.cpp:238
 msgid "&Si"
@@ -236,7 +236,7 @@ msgstr "A propos de Bulmacont"
 
 #: ui_bcaboutbase.h:303
 msgid "Acuerdo de &licencia"
-msgstr "Accord de &licence"
+msgstr "Accord de &license"
 
 #: ui_bcmasapatrimonialbase.h:356 ui_bcmasapatrimonialbase.h:359
 msgid "Agregar"

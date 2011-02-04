@@ -126,7 +126,7 @@ msgstr "Ecriture de fermeture"
 
 #: pluginbc_asiento.cpp:304
 msgid "Asiento de &regularizacion"
-msgstr "Ecriture de &régulation"
+msgstr "Ecriture de &régularisation"
 
 #: pluginbc_asiento.cpp:292
 msgid "Asiento de a&pertura"
