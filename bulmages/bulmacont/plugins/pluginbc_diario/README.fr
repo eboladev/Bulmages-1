@@ -24,7 +24,7 @@ Incompatibles:
 
 Reports: balance.rml
 
-Categorias: Comptabilité générale ; Experimentale;
+Categorias: Comptabilité générale ; Experimental;
 
 Orden: 20
 
