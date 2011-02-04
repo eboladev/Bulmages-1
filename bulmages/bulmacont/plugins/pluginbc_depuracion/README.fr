@@ -2,15 +2,15 @@
 #Plugins
 #######
 #README.es
-#20080501 poner la fecha de última revisión
+#200110204 Mettre la date de la dernière révision
 
-Nombre: Modo Debug
+Nombre: Mode Débogage
 
 Biblioteca: libpluginbc_depuracion.so
 
-Descripción: <H1>Modo Debug</H1>
-<P>Agrega en el menu ver la opcion Modo Debug que comienza a hacer las trazas del programa para poder ser depurado, tambián habilita la aparicion de warnings (si se producen) en ventanas emergentes.</P>
-<P>Este plugin es util solo para desarrolladores, ya que permite generar de forma sencilla trazas de la ejecucion del programa</P>
+Descripción: <H1>Mode Débogage</H1>
+<P>On a ajouté au menu Afficher l'option du Mode débogage, qui commence à faire le traçage du programme pour être nettoyé, ainsi que la capacité de mettre des alarmes(s'is se produisent)dans des fenêtres surgissantes.</P>
+<P>Ce greffon est utile seulement aux développeurs , qui leur permet de générer simplement des traces de l'exécution du programme</P>
 <HR>
 
 ParmBD: 
@@ -23,8 +23,8 @@ Dependencias:
 
 Incompatibles:
 
-Categorias: Utilidades avanzadas;
+Categorias: Utilitaires avancés;
 
 Orden: 90
 
-Comentarios: Sólo tiene interés para los desarrolladores.
+Comentarios: Intérêt restreint aux développeurs.

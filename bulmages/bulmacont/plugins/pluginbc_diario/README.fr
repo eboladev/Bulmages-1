@@ -4,12 +4,12 @@ Plugins
 #README
 20080501
 
-Nombre: Diario
+Nombre: Journal
 
 Biblioteca: libpluginbc_diario.so
 
-Descripción: <H1>Libro Diario</H1>
-<P>Permite Listar el libro diario.</P>
+Descripción: <H1>Livre du journal</H1>
+<P>Permet de lister le livre du journal.</P>
 <HR>
 
 ParmBD: -
@@ -24,7 +24,7 @@ Incompatibles:
 
 Reports: balance.rml
 
-Categorias: Contabilidad general;Experimentales;
+Categorias: Comptabilité générale ; Experimentale;
 
 Orden: 20
 
