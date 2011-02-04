@@ -32,7 +32,7 @@ msgstr "&Amortizaciones"
 
 #: ui_bcamortizacionbase.h:669
 msgid "&Calcular"
-msgstr "&Calcular"
+msgstr "&Calculer"
 
 #: ui_bcamortizacionbase.h:676
 msgid "&Cancelar"
@@ -122,7 +122,7 @@ msgstr "Compte activé"
 
 #: bcamortizacionview.cpp:63
 msgid "Cuenta de Amortizacion:"
-msgstr "Compte amortissement:"
+msgstr "Compte d'amortissement :"
 
 #: ui_bcamortizacionbase.h:659
 msgid "Cuenta de activo:"
@@ -154,7 +154,7 @@ msgstr "Exercice"
 
 #: bcamortizacionlistview.cpp:107
 msgid "Error al borrar la amortizacion"
-msgstr "Erreur en effacement de l'amortissement"
+msgstr "Erreur d'effacement de l'amortissement"
 
 #: bcamortizacionview.cpp:227
 msgid "Error en la carga de la amortizacion"
@@ -245,7 +245,7 @@ msgstr "Méthode :"
 
 #: bcamortizacionview.cpp:82
 msgid "NIF del proveedor"
-msgstr "NIF Direction du fournisseur"
+msgstr "NIF du fournisseur"
 
 #: bcamortizacionlistview.cpp:48
 msgid "Nombre"
@@ -277,7 +277,7 @@ msgstr "Numéro de quotas"
 
 #: ui_bcamortizacionbase.h:649
 msgid "Nº de cuotas:"
-msgstr "Numéro de quotas :"
+msgstr " Nº de quotas :"
 
 #: ui_bcamortizacionbase.h:673
 msgid "Pendiente:"
