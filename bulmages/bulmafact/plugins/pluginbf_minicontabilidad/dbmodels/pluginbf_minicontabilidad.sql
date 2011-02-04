@@ -75,7 +75,7 @@ BEGIN
 		padre integer DEFAULT 0
 		);
 		
-		INSERT INTO partida (codigocompletopartida,codigopartida, nombrepartida,ingresopartida, padre) VALUES (''0'',''0'',''Ingresos'',TRUE, NULL);
+		INSERT INTO partida (codigocompletopartida,codigopartida, nombrepartida,ingresopartida, padre) VALUES (''0'',''0'',''Ingressos'',TRUE, NULL);
 		INSERT INTO partida (codigocompletopartida,codigopartida, nombrepartida,ingresopartida, padre) VALUES (''1'',''1'',''Despeses'',TRUE, NULL);
 		INSERT INTO partida (codigocompletopartida,codigopartida, nombrepartida,ingresopartida,padre) VALUES (''001'',''01'',''Quotes cobrades'',TRUE,1);
 		INSERT INTO partida (codigocompletopartida,codigopartida, nombrepartida,ingresopartida,padre) VALUES (''002'',''02'',''Altres ingressos dels associats'',TRUE,1);
