@@ -2,14 +2,14 @@
 Plugins
 =======
 #README
-20090706
+20110204
 
-Nombre: Balance Jerárquico.
+Nombre: Balance Hiérarchique.
 
 Biblioteca: libpluginbc_balancearbol.so
 
-Descripción: <H1>Balance Jerarquico</H1>
-<P>Permite hacer un balance jerárquico.</P>
+Descripción: <H1>Balance Hiérarchique</H1>
+<P>Permet de faire une balance hiérarchique.</P>
 <HR>
 
 ParmBD: -
@@ -22,7 +22,7 @@ Dependencias:
 
 Incompatibles:
 
-Categorias: Contabilidad general;Experimentales;
+Categorias: Comptabilité générale ; Experimental;
 
 Orden: 20
 
