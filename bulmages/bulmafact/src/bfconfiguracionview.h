@@ -42,7 +42,6 @@ class BF_EXPORT BfConfiguracionSubForm : public BfSubForm
 public:
     BfConfiguracionSubForm ( QWidget *parent = 0 );
     ~BfConfiguracionSubForm() {}
-
 public slots:
     virtual void cargar() {
         blDebug ( "BfConfiguracionSubForm::cargar\n", 0 );
@@ -65,10 +64,7 @@ public:
     ~BfConfiguracionView();
 
 public slots:
-    virtual void on_mui_aceptar_clicked() {
-        mui_listado->guardar();
-        close();
-    };
+    virtual void on_mui_aceptar_clicked();
 };
 
 #endif

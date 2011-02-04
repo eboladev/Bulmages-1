@@ -48,6 +48,7 @@ BfConfiguracionView::BfConfiguracionView ( BfCompany *comp, QWidget *parent ) : 
     blDebug ( "BfConfiguracionView::BfConfiguracionView", 1 );
     setupUi ( this );
 
+    
     setTitleName ( _ ( "Configuracion" ) );
     setDbTableName ( "configuracion" );
     setDbFieldId ( "nombre" );
@@ -55,7 +56,95 @@ BfConfiguracionView::BfConfiguracionView ( BfCompany *comp, QWidget *parent ) : 
     this->setAttribute ( Qt::WA_DeleteOnClose );
     mui_listado->setMainCompany ( mainCompany() );
     mui_listado->cargar();
+    if (g_confpr->valor(CONF_MODO_EXPERTO) != "TRUE") {
+     tabWidget->removeTab(tabWidget->indexOf(tab_2));
+    } // end if
 
+
+    m_telefono->setText("--");
+    m_fax->setText("--");
+    m_mail->setText("--");
+    m_web->setText("--");
+
+
+    QString query = "SELECT * FROM configuracion WHERE nombre = 'NombreEmpresa'";
+    BlDbRecordSet *cur = mainCompany() ->loadQuery ( query );
+    if (!cur->eof()) {
+      m_nombre->setText(cur->valor("valor"));
+    } // end if
+    delete cur;
+
+    query = "SELECT * FROM configuracion WHERE nombre = 'CIF'";
+    cur = mainCompany() ->loadQuery ( query );
+    if (!cur->eof()) {
+      m_cif->setText(cur->valor("valor"));
+    } // end if
+    delete cur;
+    
+    query = "SELECT * FROM configuracion WHERE nombre = 'DireccionCompleta'";
+    cur = mainCompany() ->loadQuery ( query );
+    if (!cur->eof()) {
+      m_direccion->setText(cur->valor("valor"));
+    } // end if
+    delete cur;
+
+    query = "SELECT * FROM configuracion WHERE nombre = 'Municipio'";
+    cur = mainCompany() ->loadQuery ( query );
+    if (!cur->eof()) {
+      m_municipio->setText(cur->valor("valor"));
+    } // end if
+    delete cur;
+
+    query = "SELECT * FROM configuracion WHERE nombre = 'CodPostal'";
+    cur = mainCompany() ->loadQuery ( query );
+    if (!cur->eof()) {
+      m_cp->setText(cur->valor("valor"));
+    } // end if
+    delete cur;
+
+    query = "SELECT * FROM configuracion WHERE nombre = 'Provincia'";
+    cur = mainCompany() ->loadQuery ( query );
+    if (!cur->eof()) {
+      m_provincia->setText(cur->valor("valor"));
+    } // end if
+    delete cur;
+
+    query = "SELECT * FROM configuracion WHERE nombre = 'Pais'";
+    cur = mainCompany() ->loadQuery ( query );
+    if (!cur->eof()) {
+      m_pais->setText(cur->valor("valor"));
+    } // end if
+    delete cur;
+
+
+    query = "SELECT * FROM configuracion WHERE nombre = 'Telefono'";
+    cur = mainCompany() ->loadQuery ( query );
+    if (!cur->eof()) {
+      m_telefono->setText(cur->valor("valor"));
+    } // end if
+    delete cur;
+
+    query = "SELECT * FROM configuracion WHERE nombre = 'Fax'";
+    cur = mainCompany() ->loadQuery ( query );
+    if (!cur->eof()) {
+      m_fax->setText(cur->valor("valor"));
+    } // end if
+    delete cur;
+    
+    query = "SELECT * FROM configuracion WHERE nombre = 'Email'";
+    cur = mainCompany() ->loadQuery ( query );
+    if (!cur->eof()) {
+      m_mail->setText(cur->valor("valor"));
+    } // end if
+    delete cur;
+    
+    query = "SELECT * FROM configuracion WHERE nombre = 'Web'";
+    cur = mainCompany() ->loadQuery ( query );
+    if (!cur->eof()) {
+      m_web->setText(cur->valor("valor"));
+    } // end if
+    delete cur;
+    
     meteWindow ( windowTitle(), this, FALSE );
     blDebug ( "END BfConfiguracionView::BfConfiguracionView", 1 );
 }
@@ -71,7 +160,42 @@ BfConfiguracionView::~BfConfiguracionView()
     blDebug ( "END BfConfiguracionView::~BfConfiguracionView", 0 );
 }
 
+void BfConfiguracionView::on_mui_aceptar_clicked() {
+        mui_listado->guardar();
+	
+	mainCompany()->runQuery("DELETE FROM configuracion WHERE nombre='NombreEmpresa'");
+	mainCompany()->runQuery("INSERT INTO configuracion (nombre,valor) VALUES ('NombreEmpresa','"+m_nombre->text()+"')");
+	
+	mainCompany()->runQuery("DELETE FROM configuracion WHERE nombre='CIF'");
+	mainCompany()->runQuery("INSERT INTO configuracion (nombre,valor) VALUES ('CIF','"+m_cif->text()+"')");
+	
+	mainCompany()->runQuery("DELETE FROM configuracion WHERE nombre='DireccionCompleta'");
+	mainCompany()->runQuery("INSERT INTO configuracion (nombre,valor) VALUES ('DireccionCompleta','"+m_direccion->text()+"')");
+	
+	mainCompany()->runQuery("DELETE FROM configuracion WHERE nombre='Municipio'");
+	mainCompany()->runQuery("INSERT INTO configuracion (nombre,valor) VALUES ('Municipio','"+m_municipio->text()+"')");
 
+	mainCompany()->runQuery("DELETE FROM configuracion WHERE nombre='Provincia'");
+	mainCompany()->runQuery("INSERT INTO configuracion (nombre,valor) VALUES ('Provincia','"+m_provincia->text()+"')");
+	
+	mainCompany()->runQuery("DELETE FROM configuracion WHERE nombre='Pais'");
+	mainCompany()->runQuery("INSERT INTO configuracion (nombre,valor) VALUES ('Pais','"+m_pais->text()+"')");
+	
+	mainCompany()->runQuery("DELETE FROM configuracion WHERE nombre='Telefono'");
+	mainCompany()->runQuery("INSERT INTO configuracion (nombre,valor) VALUES ('Telefono','"+m_telefono->text()+"')");
+	
+	mainCompany()->runQuery("DELETE FROM configuracion WHERE nombre='Fax'");
+	mainCompany()->runQuery("INSERT INTO configuracion (nombre,valor) VALUES ('Fax','"+m_fax->text()+"')");
+	
+	mainCompany()->runQuery("DELETE FROM configuracion WHERE nombre='Email'");
+	mainCompany()->runQuery("INSERT INTO configuracion (nombre,valor) VALUES ('Email','"+m_mail->text()+"')");
+
+	mainCompany()->runQuery("DELETE FROM configuracion WHERE nombre='Web'");
+	mainCompany()->runQuery("INSERT INTO configuracion (nombre,valor) VALUES ('Web','"+m_web->text()+"')");
+	
+        close();
+	
+}
 
 /// ===================================== SUBFORMULARIO ===============================================
 /** Inicializacion del subformulario donde se indican todos los campos que deben aparecer
