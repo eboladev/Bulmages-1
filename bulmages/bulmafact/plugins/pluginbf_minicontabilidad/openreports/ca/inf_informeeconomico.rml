@@ -6,8 +6,8 @@
 <!DOCTYPE document SYSTEM "rml_1_0.dtd">
 
 <document>
-<!-- # pathtitle="Economia\Informes\Resum contable entre dues dades" -->
-  <template pageSize="(29.7cm, 21cm)" title="Resum contable entre dues dades" author="Tomeu Borras" allowSplitting="20">
+<!-- # pathtitle="Economia\Informes\Resum comptable entre dues dates" -->
+  <template pageSize="(29.7cm, 21cm)" title="Resum comptable entre dues dates" author="Tomeu Borras" allowSplitting="20">
     <pageTemplate id="first">
       <frame id="first" x1="0.5cm" y1="0.5cm" width="28.7cm" height="20cm"/>
     </pageTemplate>
@@ -44,7 +44,7 @@
   </stylesheet>
   <images/>
   <story>
-    <para style="Standard">Resum contable entre dues dades</para>
+    <para style="Standard">Resum comptable entre dues dates ([fecha_inicial]-[fecha_final])</para>
     <para style="Standard">
       <font color="black"> </font>
     </para>
@@ -94,9 +94,9 @@ ORDER BY codigocompletopartida"-->
 
         <td><para style="Table Contents"><font color="black" size="8">Debe Ant.</font></para></td>
         <td><para style="Table Contents"><font color="black" size="8">Haber Ant.</font></para></td>
-        <td><para style="Table Contents"><font color="black" size="8">Debe Periodo</font></para></td>
-        <td><para style="Table Contents"><font color="black" size="8">Haber Periodo</font></para></td>
-        <td><para style="Table Contents"><font color="black" size="8">Saldo Fin Periodo</font></para></td>
+        <td><para style="Table Contents"><font color="black" size="8">Debe Periode</font></para></td>
+        <td><para style="Table Contents"><font color="black" size="8">Haber Periode</font></para></td>
+        <td><para style="Table Contents"><font color="black" size="8">Saldo Fi Periode</font></para></td>
       </tr>
 <!-- QU ER Y="SELECT row_number() over (order by codigocompletopartida) AS orden , * FROM partida"-->
 <!-- QUERY="SELECT * FROM  (
@@ -127,7 +127,7 @@ ORDER BY codigocompletopartida"-->
 
 
                                                                                                                                  
-<title> Distribucion Saldos Deudores / Acreedores</title>                                                                                       
+<title> Distribucio Saldos Deudors / Acreedors</title>                                                                                       
                                                                                                                                   
 <!-- illustration width="20cm" height="12cm" -->                                                                                  
 <storyPlace x="0cm" y="10cm" width="10cm" height="10cm">                                                                          

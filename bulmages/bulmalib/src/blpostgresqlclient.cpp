@@ -290,12 +290,15 @@ QString BlDbRecordSet::valor ( int posicion, int registro, bool localeformat )
 	    // y de precision.
             //val = locale.toString((locale.toDouble(val))); //ARON
 	    // Esto mas o menos funciona
+	    
+	    /*
 	    val.replace('.',locale.decimalPoint());
 	    QString parteentera = val.left(val.indexOf(locale.decimalPoint()));
 	    QString decimales = val.right(val.length()- val.indexOf(locale.decimalPoint()));
 	    // Si lo podemos usar formateo de locales con numeros enteros.
 	    QString val1 = locale.toString(locale.toInt(parteentera));
 	    val = val1 + decimales;
+	    */
 	    // Hasta aqui
 	    
         } // end if

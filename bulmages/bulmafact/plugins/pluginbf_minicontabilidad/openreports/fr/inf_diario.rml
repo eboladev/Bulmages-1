@@ -6,8 +6,8 @@
 <!DOCTYPE document SYSTEM "rml_1_0.dtd">
 
 <document>
-<!-- # pathtitle="Economia\Informes\Estat Comptable" -->
-  <template pageSize="(29.7cm, 21cm)" title="Estat Comptable" author="Tomeu Borras" allowSplitting="20">
+<!-- # pathtitle="Economia\Informes\Diari Comptable" -->
+  <template pageSize="(29.7cm, 21cm)" title="Diari Comptable" author="Tomeu Borras" allowSplitting="20">
     <pageTemplate id="first">
       <frame id="first" x1="0.5cm" y1="0.5cm" width="28.7cm" height="20cm"/>
     </pageTemplate>
@@ -44,39 +44,33 @@
   </stylesheet>
   <images/>
   <story>
-    <para style="Standard">Estat comptable entre dues dates ([fecha_inicial]- [fecha_final])</para>
+    <para style="Standard">Diari comptable entre dues dates ([fecha_inicial]- [fecha_final])</para>
     <para style="Standard">
       <font color="black"> </font>
     </para>
-    <blockTable colWidths="3cm,8cm,2cm" style="Tabla1">
+    <blockTable colWidths="3cm,3cm,6cm,6cm,2cm,2cm" style="Tabla1">
       <tr>
+        <td><para style="Table Contents"><font color="black" size="8">Data</font></para></td>
         <td><para style="Table Contents"><font color="black" size="8">Codi</font></para></td>
         <td><para style="Table Contents"><font color="black" size="8">Partida</font></para></td>
-        <td><para style="Table Contents"><font color="black" size="8">Saldo</font></para></td>
+        <td><para style="Table Contents"><font color="black" size="8">Concepte</font></para></td>
+        <td><para style="Table Contents"><font color="black" size="8">Entrades</font></para></td>
+        <td><para style="Table Contents"><font color="black" size="8">Sortides</font></para></td>
       </tr>
-<!-- QU E RY="SELECT * FROM partida 
-LEFT JOIN (
-  SELECT idpartida, COALESCE(SUM(debeacontable),0) - COALESCE(SUM(haberacontable),0) AS tsaldo
-  FROM acontable WHERE fechaacontable >= COALESCE(BgValidDate('[fecha_inicial]'),'01/01/2000'::DATE) AND fechaacontable <= COALESCE(BgValidDate('[fecha_final]'),'01/01/2100'::DATE) GROUP BY idpartida
-) AS t3 ON t3.idpartida = partida.idpartida
-ORDER BY codigocompletopartida"-->
-      
-<!-- QUERY="SELECT * FROM partida 
-LEFT JOIN (
-  SELECT idpartida, COALESCE(SUM(debeacontable),0) - COALESCE(SUM(haberacontable),0) AS tsaldo
-  FROM acontable WHERE fechaacontable >= COALESCE(BgValidDate('[fecha_inicial]'),'01/01/2000'::DATE) AND fechaacontable <= COALESCE(BgValidDate('[fecha_final]'),'01/01/2100'::DATE) GROUP BY idpartida
-) AS t3 ON t3.idpartida = partida.idpartida
-ORDER BY codigocompletopartida"-->
+
+<!-- QUERY="SELECT * FROM acontable 
+LEFT JOIN partida ON acontable.idpartida = partida.idpartida WHERE fechaacontable >= COALESCE(BgValidDate('[fecha_inicial]'),'01/01/2000'::DATE) AND fechaacontable <= COALESCE(BgValidDate('[fecha_final]'),'01/01/2100'::DATE) ORDER BY fechaacontable"-->
       <tr>
+        <td><para style="Table Contents"><font color="black" size="8"> [fechaacontable]</font></para></td>
         <td><para style="Table Contents"><font color="black" size="8"> [codigocompletopartida]</font></para></td>
         <td><para style="Table Contents"><font color="black" size="8"> [nombrepartida] </font></para></td>
-        <td>[tsaldo]</td>
+        <td><para style="Table Contents"><font color="black" size="8"> [conceptoacontable] </font></para></td>
+        <td>[debeacontable]</td>
+        <td>[haberacontable]</td>
       </tr>
 <!-- END QUERY -->
 
     </blockTable>
-    
-
   </story>
 </document>
 
