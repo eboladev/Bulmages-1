@@ -2,15 +2,15 @@
 Plugins
 =======
 #README
-20080501
+20110204
 
-Nombre: Cuentas Anuales
+Nombre: Comptes annuels
 
 Biblioteca: libpluginbc_cuentasanuales.so
 
-Descripción: <H1>Cuentas Anuales</H1>
-<P>Ver cuentas anual.</P>es
-<P>Permite ver las cuentas anuales.</P>
+Descripción: <H1>Comptes annuels</H1>
+<P>Afficher les comptes annuels.</P>es
+<P>Permet de voir les comptes annuels.</P>
 <HR>
 
 ParmBD: -
@@ -25,7 +25,7 @@ Incompatibles:
 
 Reports: 
 
-Categorias: Contabilidad general;Experimentales;
+Categorias: Comptabilité générale ; Experimental;
 
 Orden: 500
 
