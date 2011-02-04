@@ -9,7 +9,7 @@ Nombre: Comptes annuels
 Biblioteca: libpluginbc_cuentasanuales.so
 
 Descripción: <H1>Comptes annuels</H1>
-<P>Afficher les comptes annuels.</P>es
+<P>Afficher les comptes annuels.</P>
 <P>Permet de voir les comptes annuels.</P>
 <HR>
 
