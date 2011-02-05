@@ -916,28 +916,4 @@ msgstr "Insérer"
 msgid "no se ha inicializado bien la clase"
 msgstr "La classe ne s'est pas bien initialisée "
 
-#~ msgid "</B> Insertado</P>"
-#~ msgstr "</B>Inserré</P>"
 
-#~ msgid "<LI>Exportando Nueva Forma de Pago</LI>\n"
-#~ msgstr "<LI>Exportant nouvelle forme de payement</LI>\n"
-
-#~ msgid "El almaceÅ del presupuesto no existe<BR>\n"
-#~ msgstr "Le magasin du bulletin n'éxiste pas<BR>"
-
-#~ msgid "El clienteÅ del presupuesto no existe<BR>\n"
-#~ msgstr "Le client  du bulletin n'éxiste<BR>"
-
-#~ msgid "La forma de pagoÅ del presupuesto no existe<BR>\n"
-#~ msgstr "La forme de payement du bulletin n'éxiste pas<BR>"
-
-#, fuzzy
-#~ msgid "Mostrar listado de profesors"
-#~ msgstr "Actualiser liste d'entreprises"
-
-#, fuzzy
-#~ msgid "Nombre Pais"
-#~ msgstr "Nom"
-
-#~ msgid "Porcentaje de carga..."
-#~ msgstr "Pourcentaje de charge..."

@@ -2,14 +2,14 @@
 Plugins
 =======
 #README
-20080501
+20110205
 
-Nombre: Duplicar Asientos Contables
+Nombre: Dupliquer les écritures comptables
 
 Biblioteca: libpluginbc_duplicarasiento.so
 
-Descripción: <H1>Duplicación de Asientos Contables</H1>
-<P>En la ventana de introducción de asientos permite duplicar el asiento que estamos visualizando dandole a un botón</P>
+Descripción: <H1>Duplication des écritures comptables</H1>
+<P>Dans la fenêtre d'introduction des écritures il y a un bouton qui permet de dupliquer les écritures courantes</P>
 <HR>
 
 ParmBD: -
@@ -24,7 +24,7 @@ Incompatibles:
 
 Reports: 
 
-Categorias: Contabilidad general;Experimentales;
+Categorias: Comptabilite generale ; Experimental ;
 
 Orden: 20
 

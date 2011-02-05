@@ -41,7 +41,7 @@ Requièrements
 ==============
 
 
-Afin de pouvoir utiliser BulmGés, il suffit de le compiler et réaliser une installation (Notes du traducteur : en ce moment même j'essaie de régler les problèmes de configuration). On peut l'essayer sans installer le logiciel mais c'est seulement bon pour les développeurs. Toute la suite à besoin d'une base de données, concrètement c'est PostgreSQL.
+Afin de pouvoir utiliser BulmaGés, il suffit de le compiler et réaliser une installation (Notes du traducteur : en ce moment même j'essaie de régler les problèmes de configuration). On peut l'essayer sans installer le logiciel mais c'est seulement bon pour les développeurs. Toute la suite à besoin d'une base de données, concrètement c'est PostgreSQL.
 
 Pour compiler les sources on a besoin de :
 

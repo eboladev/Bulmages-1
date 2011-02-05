@@ -2,14 +2,14 @@
 #Plugins
 #######
 #README.es
-#20080512
+#20110205
 
-Nombre: Proyectos Contables
+Nombre: Projets comptables
 
 Biblioteca: libpluginbc_proyectos.so
 
-Descripción: <H1>Proyectos Contables</H1>
-<P>Permite el control de proyectos a nivel presupuestario en la contabilidad.</P>
+Descripción: <H1>Projets comptables</H1>
+<P>Permet le contrôl de projets au niveau budgétaire dans la comptabilité.</P>
 <HR>
 
 ParmBD: PluginBc_Proyectos
@@ -22,13 +22,12 @@ Dependencias:
 
 Incompatibles:
 
-Categorias: Contabilidad general;Experimentales;
+Categorias: Comptabilite generale ; Experimental;
 
 Orden: 90
 
-Comentarios: Para instalar debe aplicar el parche ubicado en dbmodels a las bases de datos elegidas para funcionar con este plugin.
+Comentarios: Pour l'installer il faut appliquer le patch, placé dans dbmodels, aux bases de données choisies pour fonctionner avec ce greffon.
 
-Configure la directiva CONF_PLUGINS_BULMACONT para que contenga la llamada a este plugin. Dicha directiva
-puede ser a modo global en el archivo /etc/bulmages.conf o personalizada con los archivos /etc/bulmacont_<<database>>.conf
+Configure la directive CONF_PLUGINS_BULMACONT pour qu'il contienne l'appel à ce greffon. Cette directive peut être un mode global dans le fichier /etc/bulmages.conf ou personnalisé avec les fichiers /etc/bulmacont_<<database>>.conf
 
 

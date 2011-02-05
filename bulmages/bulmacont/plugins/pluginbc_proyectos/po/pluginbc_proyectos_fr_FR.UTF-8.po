@@ -212,7 +212,7 @@ msgstr "Sauvegarder le projet"
 
 #: proyectoview.cpp:56
 msgid "ID almacen"
-msgstr "ID du magasin"
+msgstr "Id. du magasin"
 
 #: proyectoview.cpp:57
 msgid "Id CCoste"
@@ -228,7 +228,7 @@ msgstr "Id. Compte "
 
 #: proyectoview.cpp:80 proyectoview.cpp:99
 msgid "Id. Proyecto"
-msgstr "ID du projet"
+msgstr "Id. du projet"
 
 #: listproyectosview.cpp:46
 msgid "Identificador"

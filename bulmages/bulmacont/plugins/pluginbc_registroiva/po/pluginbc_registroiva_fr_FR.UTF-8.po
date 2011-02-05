@@ -647,4 +647,4 @@ msgid "tivaiva"
 msgstr "ttvatva"
 
 #~ msgid "Cuenta cliente / Proveedor:"
-#~ msgstr "Cuenta cliente / Proveedor:"
+#~ msgstr "Compte client / Fournisseur :"

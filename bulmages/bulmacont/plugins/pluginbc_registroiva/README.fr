@@ -2,14 +2,14 @@
 Plugins
 =======
 #README
-#20080502
+#20110205
 
-Nombre: Registro de IVA
+Nombre: Registre de TVA
 
 Biblioteca: libpluginbc_registroiva.so
 
-Descripción: <H1>Registro de IVA</H1>
-<P>Permite registras las facturas para hacer el listado modelo 347. </P>
+Descripción: <H1>Registre de TVA</H1>
+<P>Permet d'enregistrer les factures pour faire la liste modèle 347. </P>
 <HR>
 
 ParmBD:
@@ -22,8 +22,8 @@ Dependencias:
 
 Incompatibles:
 
-Categorias: Contabilidad general;Experimentales;
+Categorias: Comptabilite generale ; Experimental;
 
 Orden:
 
-Comentarios: Imprescindible en una empresa normal.
+Comentarios: Indispensable dans toute entreprise.

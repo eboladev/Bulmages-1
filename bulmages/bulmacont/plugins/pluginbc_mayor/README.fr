@@ -4,12 +4,12 @@ Plugins
 #README
 20080501
 
-Nombre: Mayor
+Nombre: Grand livre
 
 Biblioteca: libpluginbc_mayor.so
 
-Descripción: <H1>Libro Mayor</H1>
-<P>Permite Listar el libro mayor.</P>
+Descripción: <H1>Grand livre</H1>
+<P>Permet de consulter le Grand Livre.</P>
 <HR>
 
 ParmBD: -
@@ -24,7 +24,7 @@ Incompatibles:
 
 Reports: 
 
-Categorias: Contabilidad general;Experimentales;
+Categorias: Comptabilite ; Experimental;
 
 Orden: 20
 

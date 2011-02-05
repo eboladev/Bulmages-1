@@ -2,14 +2,14 @@
 #Plugins
 #######
 #README.es
-20080502
+20110205
 
-Nombre: Ejemplo de desarrollo
+Nombre: Exemple de développement
 
 Biblioteca: libpluginbc_example.so
 
-Descripción: <H1>Plugin de Ejemplo</H1>
-<P>Plugin ejemplo para poder desarrollar otros plugins.</P>
+Descripción: <H1>Greffon d'exemple</H1>
+<P>Greffon d'exemple pour les développeurs afin qu'ils puissent développer d'autres greffons.</P>
 <HR>
 
 ParmBD: -
@@ -22,7 +22,7 @@ Dependencias:
 
 Incompatibles:
 
-Categorias: Utilidades avanzadas;
+Categorias: Utilites avancees;
 
 Orden: 90
 
