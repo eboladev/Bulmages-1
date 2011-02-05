@@ -1,19 +1,18 @@
 #######
 #Plugins
 #######
-#README.es
-#20080501
+#README.fr
+#20110205
 
-Nombre: Informes personalizados en ODS
+Nombre: Rapports personnalisés ODS
 
 Biblioteca: libpluginbl_report2ods.so
 
 Descripción: <H1>Informes personalizados en hoja de calculo</H1>
-<P>Presenta un nuevo menu Informes que permite lanzar los informes personalizados
-de que se disponga. Dichos informes son scripts Python con ooolib.</P>
-<P>Los informes deben estar en formato PYS y deben llamarse inf_XXXX.pys para que aparezcan en el menu
-<B>Informes personales SXC</B></P>
-<P>Existen varios ejemplos del formato pys en la seccion de informes de la instalación del programa.</P>
+<P>Présente un nouveau menu des Rapports qui permet de lancer les rapports personnalisés dont on dispose. Ces rapports sont des scripts Python avec ooolib.</P>
+<P>Les rapports doivent être au format PYS et on doit les appeler pour qu'ils apparaissent dans le menu.
+<B>Rapports personnels SXC</B></P>
+<P>Il existe plusieurs exemples au format pys dans la section des rapports de l'installation du programme.</P>
 <BR>
 <IMG SRC="@CMAKE_INSTALL_PREFIX@/share/bulmages/images/logopeq.png"/>
 <HR>
@@ -30,8 +29,8 @@ Incompatibles:
 
 Reports:
 
-Categorias: Utilidades genericas;
+Categorias: Utilites generiques;
 
 Orden: 950
 
-Comentarios: Util para realizar informes de forma rápida sin tener que modificar el codigo fuente ni hacer un plugin específico para cada uno de ellos.
+Comentarios: Utile pour effectuer des rapports de façon rapide sans avoir à modifier le code source ni faire un plugin spécifique pour chacun d'eux.

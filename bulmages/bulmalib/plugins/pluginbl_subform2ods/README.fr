@@ -2,19 +2,17 @@
 Plugins
 =======
 #README
-20080502
+20110205
 
-Nombre: Exportar subformularios a ODS.
+Nombre: Exporter des sous formulaires en ODS.
 
 Biblioteca: libpluginbl_subform2ods.so
 
-Descripción: <H1>Exportar a ODS</H1>
-<P>Permite la exportación de cualquier subformulario a formato de hoja
-de cálculo. </P>
-<P>Una vez instalado el plugin al pulsar con el boton derecho sobre cualquier subformulario aparecera
-la opcion de menu contextual <B>Exportar a hoja de calculo ODS</B> que hara la exportacion del 
-subformulario a formato <B>ODS</B></P>
-<P>Puede seleccionarse el programa que se desea utilizar por defecto para abrir este tipo de documentos mediante el parametro de configuración <B>CONF_ODS</B>   que por defecto usa   <B>xdg-open</B> que viene a ser el programa por defecto de Linux.</P>
+Descripción: <H1>Exporter en ODS</H1>
+<P>Il permet l'exportation de tout sous formulaire au format de feuille de calcul.</P>
+<P>Une fois installé le greffon, si on presse le bouton droit sur tout sous formulaire, on verra l'option de menu contextuel "Exporter à feuille de calcul ODS" qui l'exportera du sous formulaire au format<B>Exporter en feuille de calcul ODS</B> et fera l'exportation du
+sous formulaire au format <B>ODS</B></P>
+<P>On peut choisir le programme qu'on souhaite utiliser par défaut pour ouvrir ce type de documents par le paramètre de configuration<B>CONF_ODS</B>qui utilise par défaut<B>xdg-open</B>et qui deviendra par défaut le programme de Linux.</P>
 <BR>
 <IMG SRC="@CMAKE_INSTALL_PREFIX@/share/bulmages/images/logopeq.png"/>
 <HR>
@@ -29,11 +27,10 @@ Dependencias:
 
 Incompatibles:
 
-Categorias: Utilidades genericas;
+Categorias: Utilites generiques;
 
 Orden: 50
 
-Comentarios: Agrega la opción de menu desplegable exportar a hoja de cálculo en
-todos los subformularios. ODS es la hoja de calculo de formato Open Document.
+Comentarios: Le greffon ajoute l'option de menu dépliant, exporter à feuille de calcul dans tous les subformulaires. ODS est la feuille de calcul au format Open Document. 
 
 

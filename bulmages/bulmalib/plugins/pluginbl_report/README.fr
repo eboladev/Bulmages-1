@@ -1,18 +1,17 @@
 #######
 #Plugins
 #######
-#README.es
-#20080501
+#README.fr
+#20110205
 
-Nombre: Informes personalizados
+Nombre: Rapports personnalisés
 
 Biblioteca: libpluginbl_report.so
 
-Descripción: <H1>Informes personalizados</H1>
-<P>Presenta un nuevo menu Informes que permite lanzar los informes personalizados
-de que se disponga. Dichos informes son plantillas RML ubicadas en el directorio openreports.</P>
-<P>Los archivos deben empezar por inf_ y tener la extension .rml para aparecer en el menu</P>
-<P>Consulte la página http://www.iglues.org/wiki_users/doku.php?id=bulmages:rml para mas informacion sobre el formato RML</P>
+Descripción: <H1>Rapports personnalisés</H1>
+<P>Présente un nouveau menu des Rapports qui permet de lancer les rapports personnalisés dont on dispose. Ces rapports sont personnalisés RML, situés dans le répertoire openreports .</P>
+<P>Les archives doivent commencer par inf_ et avoir l'extension .rml pour apparaître dans le menu</P>
+<P>Consulter la page http://www.iglues.org/wiki_users/doku.php?id=bulmages:rml pour avoir plus d'infos sur le format RML</P>
 <BR>
 <IMG SRC="@CMAKE_INSTALL_PREFIX@/share/bulmages/images/logopeq.png"/>
 <HR>
@@ -27,8 +26,8 @@ Dependencias:
 
 Incompatibles:
 
-Categorias: Utilidades genericas;
+Categorias: Utilites generiques;
 
 Orden: 940
 
-Comentarios: Util para realizar informes de forma rápida sin tener que modificar el codigo fuente ni hacer un plugin específico para cada uno de ellos.
+Comentarios: Utile pour effectuer des rapports de façon rapide sans avoir à modifier le code source ni faire un plugin spécifique pour chacun d'eux.
