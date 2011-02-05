@@ -1,6 +1,15 @@
+msgid ""
+msgstr ""
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"X-Language: fr_FR\n"
+"X-Source-Language: C\n"
+
 #: pluginbarcodeopen.cpp:74
 msgid "Introduzca codigo"
-msgstr ""
+msgstr "Introduction du code"
 
 #: pluginbarcodeopen.cpp:73
 msgid "QInputDialog::getText()"

@@ -1,3 +1,12 @@
+msgid ""
+msgstr ""
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"X-Language: fr_FR\n"
+"X-Source-Language: C\n"
+
 #: pluginopenref.cpp:36
 msgid "Estoy dentro del plugin de Abertura de Referencia"
-msgstr ""
+msgstr "Je suis dans le greffon d'Ouverture de Référence"
