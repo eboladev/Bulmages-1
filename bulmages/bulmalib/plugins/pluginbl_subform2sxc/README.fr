@@ -2,20 +2,17 @@
 Plugins
 =======
 #README
-20080502
+20110205
 
-Nombre: Exportar listados a SXC.
+Nombre: Exporter les listes en SXC.
 
 Biblioteca: libpluginbl_subform2sxc.so
 
-Descripción: <H1>Exportar listados a SXC</H1>
-<P>Permite la exportación de cualquier subformulario a formato de hoja
-de cálculo. </P>
-<P>Una vez instalado el plugin al pulsar con el boton derecho sobre cualquier subformulario aparecera
-la opcion <B>Exportar a hoja de calculo SXC</B> que hará la exportacion a hoja de calculo y la abrira
-para que pueda ser manejada</P>
-<P>Puede seleccionarse el programa que se desea utilizar por defecto para abrir este tipo de documentos mediante el parametro de configuración
-<B>CONF_SXC</B>   que por defecto usa   <B>xdg-open</B> que viene a ser el programa por defecto de Linux.</P>
+Descripción: <H1>Exporter les listes en SXC</H1>
+<P>Permet l'exportation de tout sous formulaire au format de feuille de calcul.</P>
+<P>Une fois installé le plugin on presse le bouton droit sur tout sous formulaire où apparaît l'option <B>Exporter vers une feuille de calcul SXC</B> qui fera l'exportation sur une feuille de calcul et l'ouvrira pour qu'elle puisse être gérée</P>
+<P>On peut choisir le programme qu'on souhaite utiliser par défaut pour ouvrir ce type de documents par le paramètre de configuration 
+<B>CONF_SXC</B>utilisé par défaut <B>xdg-open</B>et deviendra le programme par défaut de Linux.</P>
 <BR>
 <IMG SRC="@CMAKE_INSTALL_PREFIX@/share/bulmages/images/logopeq.png"/>
 <HR>
@@ -30,10 +27,9 @@ Dependencias:
 
 Incompatibles:
 
-Categorias: Utilidades genericas;
+Categorias: Utilites generiques;
 
 Orden: 70
 
-Comentarios: Agrega la opción de menu desplegable exportar a hoja de cálculo en
-todos los subformularios. SXC es la hoja de calculo de formato Open Office.
+Comentarios: Il ajoute l'option de menu dépliant : exporter vers une feuille de calcul dans tous les sous formulaires. SXC est la feuille de calcul de format Open Office.
 (c) 2007 Conetxia Soluciones Informaticas.

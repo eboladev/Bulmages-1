@@ -2,24 +2,18 @@
 Plugins
 =======
 #README
-20080502
+20110205
 
-Nombre: Informes personalizados de ficha en ODS
+Nombre: Rapports personnalisés de fiche ODS
 
 Biblioteca: libpluginbl_template2ods.so
 
-Descripción: <H1>Informes personalizados ODS</H1>
-<P>Permite la generacion de informes personalizados relacionados con
-una ficha generica. Los informes realizados mediante plantillas PYS (Python) generan
-documentos en hoja de calculo.</P>
-<P>Una vez instalado el plugin al pulsar con el botón derecho sobre cualquier zona en blanco de la pantalla
-aparecera una nueva opcion de menu <B>Informes Personales ODS</P> que desplegara los posibles informes personales
-que haya para dicha ficha</P>
-<P>Las plantillas PYS son, básicamente, archivos en python que antes de su ejecucion son interpretados por
-BulmaGes sustituyendo los tags especiales por sus correspondientes valores</P>
-<P>Para ligar una plantilla con una ficha el programa buscara todos aquellos archivos cuyo nombre empiece por impers_ y contenga el
-nombre de la tabla asociada a dicha ficha</P>
-<P>Visite <A HREF="http://www.iglues.org/wiki1/doku.php?id=bulmages:rml" TARGET="_blank">http://www.iglues.org/wiki1/doku.php?id=bulmages:rml</A> para encontrar informacion mas detallada</P>
+Descripción: <H1>Rapports personnalisés de fiche ODS</H1>
+<P>Permet la génération de rapports personnalisés en rapport avec une fiche générique. Les rapports effectués au moyen de personnels PYS (Python) produisent des documents sur feuille de calcul.</P>
+<P>Une fois installé le plugin en cliquant avec le bouton droit sur toute zone en blanc de l'écran on verra une nouvelle option de menu Rapports Personnels ODS qui affichera les possibles rapports personnels qu'il y a pour cette fiche</P>
+<P>Les documents PYS sont, principalement, des archives dans python qui avant son exécution sont interprété par BulmaGes en remplaçant les tags spéciaux par ses valeurs correspondantes</P>
+<P>Pour lier un document avec une fiche le programme cherchera toutes ces archives dont le nom commence par impers_ et contient le nom du tableau associé à cette fiche</P>
+<P>Visiter <A HREF="http://www.iglues.org/wiki1/doku.php?id=bulmages:rml" TARGET="_blank">http://www.iglues.org/wiki1/doku.php?id=bulmages:rml</A> pour plus d'nfos détaillées</P>
 <BR>
 <IMG SRC="@CMAKE_INSTALL_PREFIX@/share/bulmages/images/logopeq.png"/>
 <HR>
@@ -36,13 +30,10 @@ Incompatibles:
 
 Orden: 60
 
-Categorias: Utilidades genericas;
+Categorias: Utilites generiques;
 
 
-Comentarios: Su funcionamiento se basa en que haya un documento RML cuyo nombre
-contenga el nombre de la tabla a la que representa la ficha. De este modo el
-informe aparecerá como opcion al pulsar sobre la opcion informes personalizados
-en el menu contextual de la ficha.
+Comentarios: Son fonctionnement sur un document RML dont le nom contient le nom de la  table duquel il représente la fiche. De cette manière le rapport apparaîtra comme une option en cliquant sur l'option des rapports personnalisés dans le menu contextuel de la fiche.
 
 (c) 2007 Asociación IGLUES. Software Bajo Licencia G.P.L.
 
