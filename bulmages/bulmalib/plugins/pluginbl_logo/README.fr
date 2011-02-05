@@ -4,11 +4,11 @@
 #README.es
 #20080501
 
-Nombre: Mostrar el logotipo
+Nombre: Afficher le logo
 
 Biblioteca: libpluginbl_logo.so
 
-Descripción: <H1>Mostrar el logotipo</H1>
+Descripción: <H1>Afficher le logo</H1>
 <P>Presenta el logotipo de la empresa en un DockWidget.</P>
 <P>La utilidad de este plugin es meramente estética y como recordatorio de la empresa con la que estamos trabajando</P>
 <B>Author:</B>Tomeu Borrás (tborras@conetxia.com)<BR>

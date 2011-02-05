@@ -2,16 +2,15 @@
 #Plugins
 #######
 #README
-#20080501
+#20110205
 
-Nombre: Bloqueo de fichas
+Nombre: Bloquage de fiches
 
 Biblioteca: libpluginbl_formlock.so
 
-Descripción: <H1>Bloqueos</H1>
-<P>Detecta la apertura duplicada de fichas y avisa al usuario de que la
-ficha que esta intentando abrir ya esta siendo utilizada. El plugin permite ver la ficha aunque desabilita los botones de guardado, eliminación y de aceptar.</P>
-<P>Este plugin es importante en entornos multi-usuario ya que sin el se puede cometer facilmente un cambio que sea borrado por otro usuario.</P>
+Descripción: <H1>Bloquage</H1>
+<P>Il détecte l'ouverture dupliquée de fiches et informe l'utilisateur que la fiche qu'il est train d'ouvrir est déjà utilisée. Le greffon permet de voir la fiche malgré que les boutons : sauvegarder, effacer et accepter soient désactivés.</P>
+<P>Ce greffon est important dans un environnement multi-utilisateur, puisque sans lui on peut facilement faire un changement, modifier ou effacer par un autre utilisateur.</P>
 <BR>
 <IMG SRC="@CMAKE_INSTALL_PREFIX@/share/bulmages/images/logopeq.png"/>
 <HR>
@@ -26,7 +25,7 @@ Dependencias:
 
 Incompatibles:
 
-Categorias: Utilidades genericas;Experimentales;
+Categorias: Utilites generiques;Experimental;
 
 Orden: 800
 
