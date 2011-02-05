@@ -2,23 +2,22 @@
 Plugins
 =======
 #README
-20080501
+20110205
 
-Nombre: Pegar desde el portapapeles
+Nombre: Coller depuis le presse-papier
 
 Biblioteca: libpluginbl_clipboard.so
 
-Descripción: <H1>Pegar desde el portapapeles</H1>
-<P>Permite pegar desde una hoja de calculo en las
-facturas. Pega contenidos de forma rápida en la facturación.</P>
+Descripción: <H1>Coller depuis le presse-papier</H1>
+<P>Permet de coller une feuille de calcul dans les factures. Colle des contenus rapidement dans la facturation.</P>
 
-<P>Es importante que la primera fila de la hoja de cálculo contenga los nombres de campo exactos en los que va a ser insertada la columna de datos. </P>
+<P>C'est important que la première ligne de la feuille de calcul contienne précisement les noms de champs où seront insérés les données </P>
 
-<P>El plugin no hace verificación de datos, es posible que si los datos insertados no son correctos se produzca un error al guardar.</P>
+<P>Le greffon ne fait pas la vérification des champs donc il est possible que les données insérées ne soient pas correctes ce qui produit une erreur de sauvegarde.</P>
 
-<P>Una vez hecho el copiado en la hoja de calculo para realizar el pegado existe la opción de menú contextual Pegar desde hoja de calculo.</P>
+<P>Une fois collé dans la feuille de calcul pour réaliser le collage il existe une option dans le menu contextuel pour coller cette feuille.</P>
 
-<P>Las hojas de calculo soportadas son OpenOffice y KOffice</P>
+<P>Les feuilles de calcul supportées sont de format OpenOffice et KOffice</P>
 <BR>
 <IMG SRC="@CMAKE_INSTALL_PREFIX@/share/bulmages/images/logopeq.png"/>
 <HR>
@@ -33,7 +32,7 @@ Dependencias:
 
 Incompatibles:
 
-Categorias: Utilidades genericas;Experimentales;
+Categorias: Utilites generales;Experimental;
 
 Orden: 70
 

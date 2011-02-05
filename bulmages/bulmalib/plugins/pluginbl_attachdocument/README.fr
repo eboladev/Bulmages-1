@@ -8,11 +8,9 @@ Nombre: Ajouter des documents
 
 Biblioteca: libpluginbl_attachdocument.so
 
-Descripción: <H1>Adjuntar documentos</H1>
-<P>Permite asociar archivos a fichas para abrirlas posteriormente. Guarda un vínculo a la aplicación.</P>
-<P>Una vez instalado el plugin en todas las fichas del programa aparecerá una opción en el menú contextual
-de la ficha que nos permitirá agregar referéncias a la ficha, ver los archivos existentes y borrar las
-referéncias</P>
+Descripción: <H1>Ajouter des documents</H1>
+<P>Permet d'associer des fichiers à des fiches pour les ouvrir postérieurement. Garde un lien vers l'application.</P>
+<P>Une fois installé le greffon fait apparaitre une option dans toutes les fiches du programme dans le menu contextuel de celle-ci qui permet d'ajouter des références aux fiches, afficher les fichiers existants et effacer les références</P>
 <BR>
 <IMG SRC="@CMAKE_INSTALL_PREFIX@/share/bulmages/images/logopeq.png"/>
 <HR>
@@ -27,7 +25,7 @@ Dependencias:
 
 Incompatibles:
 
-Categorias: Utilidades genericas;Experimentales;
+Categorias: Utilites generales ; Experimental ;
 
 Orden: 90
 
