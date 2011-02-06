@@ -9,9 +9,7 @@ Nombre: Alias
 Biblioteca: libpluginbf_alias.so
 
 Descripción: <H1>Alias</H1>
-<P>Permite la intruduccion de aliases de articulo que sirven como codigos adicionales de articulo.
-Esta capacidad es muy util cuando tenemos varios articulos que tienen codigos de barras distintos pero
-que se tratan como el mismo articulo.</P>
+<P>Permet l'introduction d'alias d'article qui servent comme codes additionnels d'article. Cette possibilité est très utile quand on a plusieurs articles qui ont des codes bar différents mais qui sont traités comme le même article.</P>
 <B>Author:</B>Tomeu Borrás (tborras@conetxia.com)<BR>
 <HR>
 
@@ -25,7 +23,7 @@ Dependencias: libpluginbf_articulo.so
 
 Incompatibles: 
 
-Categorias: Utilidades genericas;
+Categorias: Utilites generiques;
 
 Orden: 900
 
