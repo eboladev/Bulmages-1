@@ -1,152 +1,170 @@
+# Header entry was created by Lokalize.
+#
+#: ui_alumnobase.h:521
+# aishen <aishen@free.fr>, 2011.
+msgid ""
+msgstr ""
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Mime-Version: 1.0"
+"Last-Translator: aishen <aishen@free.fr>\n"
+"PO-Revision-Date: 2011-02-06 20:01+0100\n"
+"Project-Id-Version: \n"
+"Language-Team: French <kde-i18n-doc@kde.org>\n"
+"Language: fr\n"
+"X-Generator: Lokalize 1.2\n"
+"MIME-Version: 1.0\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
 #: ui_alumnobase.h:521
 msgid "&Aceptar"
-msgstr ""
+msgstr "&Accepter"
 
 #: pluginalumno.cpp:96
 msgid "&Alumnos"
-msgstr ""
+msgstr "&Elèves"
 
 #: ui_alumnobase.h:522
 msgid "&Cancelar"
-msgstr ""
+msgstr "&Annuler"
 
 #: ui_alumnobase.h:511
 msgid "&Datos generales"
-msgstr ""
+msgstr "&Données générales"
 
 #: pluginalumno.cpp:104
 msgid "&Nuevo alumno"
-msgstr ""
+msgstr "&Nouvel élève"
 
 #: ui_alumnoslistbase.h:389 ui_alumnoslistbase.h:394
 msgid "Actualizar listado"
-msgstr ""
+msgstr "Actualiser la liste"
 
 #: alumnoview.cpp:49
 msgid "Alumno"
-msgstr ""
+msgstr "Nouvel élève"
 
 #: alumnoslist.cpp:144 pluginalumno.cpp:98 pluginalumno.cpp:99
 #: ui_alumnoslistbase.h:308
 msgid "Alumnos"
-msgstr ""
+msgstr "Elèves"
 
 #: ui_alumnoslistbase.h:309
 msgid "Banco:"
-msgstr ""
+msgstr "Banque :"
 
 #: alumnoslist.cpp:218 ui_alumnoslistbase.h:341 ui_alumnoslistbase.h:346
 msgid "Borrar Alumno"
-msgstr ""
+msgstr "Effacer l'élève"
 
 #: ui_alumnobase.h:472 ui_alumnobase.h:477 ui_alumnobase.h:484
 #: ui_alumnobase.h:489
 msgid "Borrar cobro"
-msgstr ""
+msgstr "Effacer l'encaissement"
 
 #: ui_alumnobase.h:499
 msgid "Borrar imagen"
-msgstr ""
+msgstr "Effacer l'image"
 
 #: ui_alumnoslistbase.h:399
 msgid "Buscar:"
-msgstr ""
+msgstr "Chercher :"
 
 #: ui_alumnobase.h:494
 msgid "C.I.F./N.I.F./N.I.E.:"
-msgstr ""
+msgstr "C.I.F./N.I.F./N.I.E.:"
 
 #: ui_alumnobase.h:496
 msgid "Cam&biar imagen"
-msgstr ""
+msgstr "Chan&ger l'image"
 
 #: ui_alumnoslistbase.h:313
 msgid "Cobros efectivos"
-msgstr ""
+msgstr "Encaissements effectifs"
 
 #: ui_alumnoslistbase.h:312
 msgid "Cobros previstos"
-msgstr ""
+msgstr "Encaissements prévus"
 
 #: ui_alumnobase.h:508
 msgid "Codigo postal:"
-msgstr ""
+msgstr "Code postal :"
 
 #: ui_alumnobase.h:512
 msgid "Comentarios:"
-msgstr ""
+msgstr "Libellés :"
 
 #: ui_alumnoslistbase.h:377 ui_alumnoslistbase.h:382
 msgid "Configurar listado"
-msgstr ""
+msgstr "Configurer la liste"
 
 #: ui_alumnobase.h:509
 msgid "Correo electronico:"
-msgstr ""
+msgstr "Courrier électronique :"
 
 #: ui_alumnoslistbase.h:386
 msgid "Ctrl+B"
-msgstr ""
+msgstr "Ctrl+B"
 
 #: ui_alumnoslistbase.h:350 ui_alumnobase.h:481
 msgid "Ctrl+D"
-msgstr ""
+msgstr "Ctrl+D"
 
 #: ui_alumnoslistbase.h:338
 msgid "Ctrl+E"
-msgstr ""
+msgstr "Ctrl+E"
 
 #: ui_alumnoslistbase.h:374
 msgid "Ctrl+F"
-msgstr ""
+msgstr "Ctrl+F"
 
 #: ui_alumnobase.h:493
 msgid "Ctrl+I"
-msgstr ""
+msgstr "Ctrl+I"
 
 #: ui_alumnoslistbase.h:326
 msgid "Ctrl+N"
-msgstr ""
+msgstr "Ctrl+N"
 
 #: ui_alumnoslistbase.h:362
 msgid "Ctrl+P"
-msgstr ""
+msgstr "Ctrl+P"
 
 #: ui_alumnobase.h:469
 msgid "Ctrl+S"
-msgstr ""
+msgstr "Ctrl+S"
 
 #: ui_alumnobase.h:515
 msgid "DNI / NIf"
-msgstr ""
+msgstr "CIF / NIF"
 
 #: ui_alumnobase.h:513
 msgid "Datos bancarios:"
-msgstr ""
+msgstr "Dates bancaires :"
 
 #: alumnoslist.cpp:201
 msgid "Debe seleccionar una fila primero"
-msgstr ""
+msgstr "Vous devez sélectionner d'abord une fiche"
 
 #: alumnoslist.cpp:160
 msgid "Debe seleccionar una linea"
-msgstr ""
+msgstr "Vous devez sélectionner une ligne"
 
 #: ui_alumnobase.h:504
 msgid "Direccion:"
-msgstr ""
+msgstr "Direction :"
 
 #: alumnoslist.cpp:217 ui_alumnoslistbase.h:329 ui_alumnoslistbase.h:334
 msgid "Editar Alumno"
-msgstr ""
+msgstr "Editer l'élève"
 
 #: alumnoslist.cpp:174
 msgid "Error al borrar el cobro a cliente"
-msgstr ""
+msgstr "Erreur à l'effacement de l'encaissement d'un client"
 
 #: alumnoview.cpp:69
 msgid "Error al crear el alumno"
-msgstr ""
+msgstr "Erreur en création de l'élève"
 
 #: ui_alumnoslistbase.h:398
 msgid "F5"
@@ -154,88 +172,89 @@ msgstr ""
 
 #: ui_alumnoslistbase.h:310
 msgid "Fecha final:"
-msgstr ""
+msgstr "Date finale :"
 
 #: ui_alumnoslistbase.h:311
 msgid "Fecha inicial:"
-msgstr ""
+msgstr "Date initiale :"
 
 #: ui_alumnoslistbase.h:365 ui_alumnoslistbase.h:370
 msgid "Filtrar Alumnos"
-msgstr ""
+msgstr "Filtrer l'élève"
 
 #: ui_alumnobase.h:495
 msgid "Fotografia"
-msgstr ""
+msgstr "Photographie"
 
 #: ui_alumnobase.h:460 ui_alumnobase.h:465
 msgid "Guardar cobro"
-msgstr ""
+msgstr "Sauvegarder l'encaissement"
 
 #: ui_alumnobase.h:520
 msgid "Hermanos"
-msgstr ""
+msgstr "Outils"
 
 #: alumnoview.cpp:52 alumnoslist.cpp:262
 msgid "Id alumno"
-msgstr ""
+msgstr "Id élève"
 
 #: ui_alumnoslistbase.h:353 ui_alumnoslistbase.h:358
 msgid "Imprimir listado"
-msgstr ""
+msgstr "Imprimer la liste"
 
 #: alumnoslist.cpp:263 ui_alumnobase.h:516
 msgid "Nombre"
-msgstr ""
+msgstr "Nom"
 
 #: ui_alumnobase.h:503
 msgid "Nombre completo:"
-msgstr ""
+msgstr "Nom complet :"
 
 #: alumnoview.cpp:53
 msgid "Nombre del alumno"
-msgstr ""
+msgstr "Nom de l'élève"
 
 #: ui_alumnoslistbase.h:317 ui_alumnoslistbase.h:322 ui_alumnobase.h:456
 msgid "Nuevo Alumno"
-msgstr ""
+msgstr "Nouvel élève"
 
 #: pluginalumno.cpp:106 pluginalumno.cpp:107
 msgid "Nuevo alumno"
-msgstr ""
+msgstr "Nouvel élève"
 
 #: ui_alumnobase.h:514
 msgid "Otros datos"
-msgstr ""
+msgstr "Autres données"
 
 #: ui_alumnobase.h:519
 msgid "Padres/Tutores"
-msgstr ""
+msgstr "Père/Tuteurs"
 
 #: ui_alumnobase.h:505
 msgid "Poblacion:"
-msgstr ""
+msgstr "Population :"
 
 #: ui_alumnobase.h:518
 msgid "Porcentaje de facturacion"
-msgstr ""
+msgstr "Pourcentage de facturation"
 
 #: ui_alumnobase.h:510
 msgid "Provincia:"
-msgstr ""
+msgstr "Province :"
 
 #: ui_alumnobase.h:517
 msgid "Relacion"
-msgstr ""
+msgstr "Relation"
 
 #: ui_alumnobase.h:506
 msgid "Telefono fijo:"
-msgstr ""
+msgstr "Téléphone fixe :"
 
 #: ui_alumnobase.h:507
 msgid "Telefono movil:"
-msgstr ""
+msgstr "Téléphone portable :"
 
 #: alumnoview.cpp:97
 msgid "Tiene que guardar el documento antes de poder imprimirlo."
-msgstr ""
+msgstr "Vous devez sauvegarder le document avant de pouvoir l'imprimer."
+
