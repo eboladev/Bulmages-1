@@ -1,16 +1,16 @@
 #######
 #Plugins
 #######
-#README.es
-#20080501
+#README.fr
+#20110206
 
-Nombre: Actividades
+Nombre: Activités
 
 Biblioteca: libpluginbf_actividad.so
 
-Descripción: <H1>Actividades</H1>
-<P>Gestionar las actividades llevadas a cabo por la asociacion.</P>
-<P>Este plugin se enmarca dentro del control de asociaciones de padres y alumnos y sirve para gestionar las distintas actividades que lleva a cabo la asociación. Por ejemplo excursiones o actividades extraescolares. Las actividades tienen una serie de datos importantes (profesores, fechas, horarios, precios) y tienen asociados una lista de alumnos asistentes a la misma.</P>
+Descripción: <H1>Activités</H1>
+<P>Gérer les activités menées à bien par l'association.</P>
+<P>Ce greffon est indiqué dans le contrôle d'associations pères et élèves et sert à gérer les différentes activités que mène à bien l'association. Par exemple des excursions ou des activités parascolaires. Les activités sont sériées selon des d'importantes données (professeurs, dates, horaires, prix) et ont associés une liste d'élèves assistants à ces dernière.</P>
 <B>Author:</B>Tomeu Borrás (tborras@conetxia.com)<BR>
 <HR>
 
@@ -28,7 +28,7 @@ Incompatibles:
 Reports: actividad.rml; impers_actividad_inscripcion.rml; inf_material_mas_prestado.rml; impers_actividad_cartel.rml; impers_actividad_materialpendiente.rml; inf_prestamos_no_devueltos.rml; impers_actividad_faltas_de_asistencia.rml; impers_actividad_plantilla_notas.rml; impers_actividad_faltas.rml; impers_actividad_prestamo.rml; blform_ActividadView.qs; blform_ConvocatoriaView.qs; blform_TipoActividadView.qs
 
 
-Categorias: Asociaciones de padres de alumnos; Experimentales;
+Categorias: Asso de père et d'élèves; Experimental;
 
 Orden: 220
 

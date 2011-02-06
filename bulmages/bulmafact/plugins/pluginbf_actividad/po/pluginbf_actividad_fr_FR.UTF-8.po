@@ -1,235 +1,254 @@
+# Header entry was created by Lokalize.
+#
+#: ui_actividadbase.h:439
+# aishen <aishen@free.fr>, 2011.
+msgid ""
+msgstr ""
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Mime-Version: 1.0"
+"Last-Translator: aishen <aishen@free.fr>\n"
+"PO-Revision-Date: 2011-02-06 09:21+0100\n"
+"Project-Id-Version: \n"
+"Language-Team: French <kde-i18n-doc@kde.org>\n"
+"Language: fr\n"
+"X-Generator: Lokalize 1.2\n"
+"MIME-Version: 1.0\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
 #: ui_actividadbase.h:439
 msgid "&Aceptar"
-msgstr ""
+msgstr "&Accepter"
 
 #: pluginactividad.cpp:96
 msgid "&Actividades"
-msgstr ""
+msgstr "&Activités"
 
 #: ui_actividadbase.h:440
 msgid "&Cancelar"
-msgstr ""
+msgstr "&Annuler"
 
 #: ui_actividadbase.h:430
 msgid "&Datos generales"
-msgstr ""
+msgstr "&Données générales"
 
 #: pluginactividad.cpp:104
 msgid "&Nueva actividad"
-msgstr ""
+msgstr "&Nouvelle activité"
 
 #: actividadview.cpp:49
 msgid "Actividad"
-msgstr ""
+msgstr "Activité"
 
 #: pluginactividad.cpp:98 pluginactividad.cpp:99 actividadeslist.cpp:144
 #: ui_actividadeslistbase.h:308
 msgid "Actividades"
-msgstr ""
+msgstr "Activités"
 
 #: ui_actividadeslistbase.h:389 ui_actividadeslistbase.h:394
 msgid "Actualizar listado"
-msgstr ""
+msgstr "Actualiser la liste"
 
 #: ui_actividadbase.h:433
 msgid "Alumno"
-msgstr ""
+msgstr "Elève"
 
 #: ui_actividadbase.h:435
 msgid "Alumnos"
-msgstr ""
+msgstr "Elèves"
 
 #: ui_actividadbase.h:436
 msgid "Asistencias"
-msgstr ""
+msgstr "Assistances"
 
 #: ui_actividadbase.h:438
 msgid "BLMonthCalendar"
-msgstr ""
+msgstr "BLMonthCalendar"
 
 #: ui_actividadeslistbase.h:309
 msgid "Banco:"
-msgstr ""
+msgstr "Banque :"
 
 #: actividadeslist.cpp:218 ui_actividadeslistbase.h:341
 #: ui_actividadeslistbase.h:346
 msgid "Borrar Actividad"
-msgstr ""
+msgstr "Effacer l'activité"
 
 #: ui_actividadbase.h:402 ui_actividadbase.h:407 ui_actividadbase.h:414
 #: ui_actividadbase.h:419
 msgid "Borrar cobro"
-msgstr ""
+msgstr "Effacer l'encaissement"
 
 #: ui_actividadeslistbase.h:399
 msgid "Buscar:"
-msgstr ""
+msgstr "Chercher :"
 
 #: ui_actividadbase.h:437
 msgid "Calendario"
-msgstr ""
+msgstr "Calendrier"
 
 #: ui_actividadeslistbase.h:313
 msgid "Cobros efectivos"
-msgstr ""
+msgstr "Encaissements effectifs"
 
 #: ui_actividadeslistbase.h:312
 msgid "Cobros previstos"
-msgstr ""
+msgstr "Encaissements prévus"
 
 #: ui_actividadbase.h:424
 msgid "Codigo Actividad"
-msgstr ""
+msgstr "Code activité"
 
 #: ui_actividadbase.h:431
 msgid "Comentarios:"
-msgstr ""
+msgstr "Libellés :"
 
 #: ui_actividadeslistbase.h:377 ui_actividadeslistbase.h:382
 msgid "Configurar listado"
-msgstr ""
+msgstr "Configurer la liste"
 
 #: ui_actividadeslistbase.h:386
 msgid "Ctrl+B"
-msgstr ""
+msgstr "Ctrl+B"
 
 #: ui_actividadbase.h:411 ui_actividadeslistbase.h:350
 msgid "Ctrl+D"
-msgstr ""
+msgstr "Ctrl+D"
 
 #: ui_actividadeslistbase.h:338
 msgid "Ctrl+E"
-msgstr ""
+msgstr "Ctrl+E"
 
 #: ui_actividadeslistbase.h:374
 msgid "Ctrl+F"
-msgstr ""
+msgstr "Ctrl+F"
 
 #: ui_actividadbase.h:423
 msgid "Ctrl+I"
-msgstr ""
+msgstr "Ctrl+I"
 
 #: ui_actividadeslistbase.h:326
 msgid "Ctrl+N"
-msgstr ""
+msgstr "Ctrl+N"
 
 #: ui_actividadeslistbase.h:362
 msgid "Ctrl+P"
-msgstr ""
+msgstr "Ctrl+P"
 
 #: ui_actividadbase.h:399
 msgid "Ctrl+S"
-msgstr ""
+msgstr "Ctrl+S"
 
 #: actividadeslist.cpp:201
 msgid "Debe seleccionar una fila primero"
-msgstr ""
+msgstr "Vous devez sélectionner d'abord une fiche"
 
 #: actividadeslist.cpp:160
 msgid "Debe seleccionar una linea"
-msgstr ""
+msgstr "Vous devez sélectionner une ligne"
 
 #: ui_actividadbase.h:428
 msgid "Direccion:"
-msgstr ""
+msgstr "Direction :"
 
 #: actividadeslist.cpp:217 ui_actividadeslistbase.h:329
 #: ui_actividadeslistbase.h:334
 msgid "Editar Actividad"
-msgstr ""
+msgstr "Editer l'activité"
 
 #: actividadeslist.cpp:174
 msgid "Error al borrar el cobro a cliente"
-msgstr ""
+msgstr "Erreur à l'effacement de l'encaissement d'un client"
 
 #: actividadview.cpp:68
 msgid "Error al crear el actividad"
-msgstr ""
+msgstr "Erreur de création d'activité"
 
 #: ui_actividadeslistbase.h:398
 msgid "F5"
-msgstr ""
+msgstr "F5"
 
 #: ui_actividadeslistbase.h:310
 msgid "Fecha final:"
-msgstr ""
+msgstr "Date finale :"
 
 #: ui_actividadeslistbase.h:311
 msgid "Fecha inicial:"
-msgstr ""
+msgstr "Date initiale :"
 
 #: ui_actividadbase.h:434
 msgid "Fecha inscripcion"
-msgstr ""
+msgstr "Date d'inscription"
 
 #: ui_actividadeslistbase.h:365 ui_actividadeslistbase.h:370
 msgid "Filtrar Actividades"
-msgstr ""
+msgstr "Filtrer les activités"
 
 #: ui_actividadbase.h:390 ui_actividadbase.h:395
 msgid "Guardar cobro"
-msgstr ""
+msgstr "Sauvegarder l'encaissement"
 
 #: actividadeslist.cpp:262
 msgid "ID Actividad"
-msgstr ""
+msgstr "ID Activité"
 
 #: actividadview.cpp:52
 msgid "ID actividad"
-msgstr ""
+msgstr "ID Activité"
 
 #: actividadview.cpp:54
 msgid "Id profesor"
-msgstr ""
+msgstr "Id professeur"
 
 #: ui_actividadeslistbase.h:353 ui_actividadeslistbase.h:358
 msgid "Imprimir listado"
-msgstr ""
+msgstr "Imprimer la liste"
 
 #: ui_actividadbase.h:426
 msgid "Lugar"
-msgstr ""
+msgstr "Lieu"
 
 #: actividadeslist.cpp:263
 msgid "Nombre"
-msgstr ""
+msgstr "Nom"
 
 #: ui_actividadbase.h:425
 msgid "Nombre completo:"
-msgstr ""
+msgstr "Nom complet :"
 
 #: actividadview.cpp:53
 msgid "Nombre del actividad"
-msgstr ""
+msgstr "Nom de l'activité"
 
 #: ui_actividadbase.h:386
 msgid "Nueva Actividad"
-msgstr ""
+msgstr "Nouvelle activité"
 
 #: pluginactividad.cpp:106 pluginactividad.cpp:107
 msgid "Nueva actividad"
-msgstr ""
+msgstr "Nouvelle activité"
 
 #: ui_actividadeslistbase.h:317 ui_actividadeslistbase.h:322
 msgid "Nuevo Actividad"
-msgstr ""
+msgstr "Nouvelle activité"
 
 #: ui_actividadbase.h:432
 msgid "Otros datos"
-msgstr ""
+msgstr "Autres données"
 
 #: ui_actividadbase.h:427
 msgid "Profesor Encargado"
-msgstr ""
+msgstr "Professeur représenté"
 
 #: actividadview.cpp:60
 msgid "Profesor:"
-msgstr ""
+msgstr "Professeur :"
 
 #: actividadview.cpp:96
 msgid "Tiene que guardar el documento antes de poder imprimirlo."
-msgstr ""
+msgstr "Vous devez sauvegarder le document avant de pouvoir l'imprimer."
 
 #: ui_actividadbase.h:429
 msgid "Vigente"
-msgstr ""
+msgstr "En vigueur"
+
