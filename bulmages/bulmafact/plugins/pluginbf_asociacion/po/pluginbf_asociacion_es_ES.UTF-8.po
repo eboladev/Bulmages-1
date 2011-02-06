@@ -2,195 +2,198 @@
 # Traducciones al español para el paquete PACKAGE.
 # Copyright (C) 2009 THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# Automatically generated, 2009.
 #
+# Automatically generated, 2009.
+# aishen <aishen@free.fr>, 2011.
 msgid ""
 msgstr ""
-"Project-Id-Version: PACKAGE VERSION\n"
+"Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
 "POT-Creation-Date: 2010-09-23 18:50+0200\n"
-"PO-Revision-Date: 2009-10-18 22:35+0200\n"
-"Last-Translator: Automatically generated\n"
-"Language-Team: none\n"
+"PO-Revision-Date: 2011-02-06 19:43+0100\n"
+"Last-Translator: aishen <aishen@free.fr>\n"
+"Language-Team: French <kde-i18n-doc@kde.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Language: fr\n"
+"X-Generator: Lokalize 1.2\n"
 
 #: ui_jdirectivabase.h:274 ui_comisionbase.h:305 ui_convreunionbase.h:396
 msgid "&Aceptar"
-msgstr "&Aceptar"
+msgstr "&Accepter"
 
 #: pluginbf_asociacion.cpp:142 pluginbf_asociacion.cpp:148
 msgid "&Asociacion"
-msgstr ""
+msgstr "&Association"
 
 #: ui_jdirectivabase.h:275 ui_comisionbase.h:306 ui_convreunionbase.h:397
 msgid "&Cancelar"
-msgstr "&Cancelar"
+msgstr "&Annuler"
 
 #: pluginbf_asociacion.cpp:189
 msgid "&Comisiones"
-msgstr ""
+msgstr "&Commission"
 
 #: pluginbf_asociacion.cpp:197
 msgid "&Convocar Asamblea"
-msgstr ""
+msgstr "&Convoquer l'assemblée"
 
 #: pluginbf_asociacion.cpp:164
 msgid "&Convocar Junta Directiva"
-msgstr ""
+msgstr "&Convoquer l'assemblée directive"
 
 #: pluginbf_asociacion.cpp:181
 msgid "&Convocar Reunion"
-msgstr ""
+msgstr "&Convoquer la réunion"
 
 #: pluginbf_asociacion.cpp:156
 msgid "&Juntas Directivas"
-msgstr ""
+msgstr "&Assemblée directive"
 
 #: ui_jdirectivabase.h:269 ui_comisionbase.h:302
 msgid "&Miembros"
-msgstr ""
+msgstr "&Membres"
 
 #: ui_convreunionbase.h:395
 msgid "&Orden del dia"
-msgstr ""
+msgstr "&Ordre du jour"
 
 #: pluginbf_asociacion.cpp:173
 msgid "&Reuniones"
-msgstr ""
+msgstr "&Réunions"
 
 #: ui_convreunionbase.h:368
 msgid "1ª Convocatoria"
-msgstr ""
+msgstr "1ª Convocation"
 
 #: ui_convreunionbase.h:370
 msgid "2ª Convocatoria"
-msgstr ""
+msgstr "2ª Convocation"
 
 #: jdirectivalist.cpp:152 comisioneslist.cpp:142
 msgid "Actividades"
-msgstr "Actividades"
+msgstr "Activités"
 
 #: ui_comisioneslistbase.h:294 ui_comisioneslistbase.h:297
 #: ui_convreunionlistbase.h:294 ui_convreunionlistbase.h:297
 #: ui_jdirectivalistbase.h:322 ui_jdirectivalistbase.h:325
 msgid "Actualizar listado"
-msgstr "Actualizar listado"
+msgstr "Actualiser la liste"
 
 #: ui_convreunionbase.h:393
 msgid "Agregar"
-msgstr "Agregar"
+msgstr "Ajouter"
 
 #: ui_convreunionbase.h:375
 msgid "Asamblea"
-msgstr ""
+msgstr "Assemblée"
 
 #: pluginbf_asociacion.cpp:150 pluginbf_asociacion.cpp:151
 msgid "Asociacion"
-msgstr ""
+msgstr "Association"
 
 #: ui_comisioneslistbase.h:262 ui_comisioneslistbase.h:265
 #: ui_convreunionlistbase.h:262 ui_convreunionlistbase.h:265
 #: ui_jdirectivalistbase.h:290 ui_jdirectivalistbase.h:293
 msgid "Borrar Actividad"
-msgstr "Borrar actividad"
+msgstr "Effacer l'activité"
 
 #: jdirectivalist.cpp:229 comisioneslist.cpp:216 convreunionlist.cpp:216
 msgid "Borrar Junta"
-msgstr ""
+msgstr "Effacer l'assemblée"
 
 #: ui_jdirectivabase.h:251 ui_jdirectivabase.h:254 ui_jdirectivabase.h:259
 #: ui_jdirectivabase.h:262 ui_comisionbase.h:283 ui_comisionbase.h:286
 #: ui_comisionbase.h:291 ui_comisionbase.h:294 ui_convreunionbase.h:345
 #: ui_convreunionbase.h:348
 msgid "Borrar cobro"
-msgstr "Borrar cobro"
+msgstr "Effacer l'encaissement"
 
 #: ui_comisioneslistbase.h:301 ui_convreunionlistbase.h:301
 #: ui_jdirectivalistbase.h:329
 msgid "Buscar:"
-msgstr "Buscar:"
+msgstr "Chercher :"
 
 #: comisionview.cpp:66 jdirectivaview.cpp:68
 msgid "Cargo"
-msgstr ""
+msgstr "Charge"
 
 #: comisionview.cpp:55
 msgid "Comentarios"
-msgstr "Comentarios"
+msgstr "Commentaires"
 
 #: ui_jdirectivabase.h:270 ui_comisionbase.h:303
 msgid "Comentarios:"
-msgstr "Comentarios:"
+msgstr "Commentaires :"
 
 #: comisionview.cpp:48
 msgid "Comision"
-msgstr ""
+msgstr "Commission "
 
 #: ui_convreunionbase.h:378
 msgid "Comisional"
-msgstr ""
+msgstr "Commissionaire "
 
 #: pluginbf_asociacion.cpp:191 pluginbf_asociacion.cpp:192
 #: ui_comisioneslistbase.h:243
 msgid "Comisiones"
-msgstr ""
+msgstr "Commission"
 
 #: ui_comisionbase.h:272
 msgid "Comisión"
-msgstr ""
+msgstr "Commission"
 
 #: ui_convreunionbase.h:379
 msgid "Comunicado"
-msgstr ""
+msgstr "Communiqué"
 
 #: ui_jdirectivabase.h:273
 msgid "Comunicados"
-msgstr ""
+msgstr "Communiqués"
 
 #: convreunionview.cpp:61 convreunionview.cpp:84
 msgid "Concepto"
-msgstr "Concepto"
+msgstr "Concept"
 
 #: ui_convreunionbase.h:382
 msgid "Concepto de la reunion"
-msgstr ""
+msgstr "Concept de la réunion"
 
 #: ui_comisioneslistbase.h:286 ui_comisioneslistbase.h:289
 #: ui_convreunionlistbase.h:286 ui_convreunionlistbase.h:289
 #: ui_jdirectivalistbase.h:314 ui_jdirectivalistbase.h:317
 msgid "Configurar listado"
-msgstr "Configurar listado"
+msgstr "Configurer la liste"
 
 #: comisioneslist.cpp:261 comisioneslist.cpp:262
 msgid "Constitucion"
-msgstr ""
+msgstr "Constitution"
 
 #: ui_convreunionbase.h:394
 msgid "Convocados"
-msgstr ""
+msgstr "Convocation"
 
 #: pluginbf_asociacion.cpp:199 pluginbf_asociacion.cpp:200
 msgid "Convocar Asamblea"
-msgstr ""
+msgstr "Convoquer l'assemblée"
 
 #: pluginbf_asociacion.cpp:166 pluginbf_asociacion.cpp:167
 msgid "Convocar Junta Directiva"
-msgstr ""
+msgstr "Convoquer l'assemblée directoire"
 
 #: pluginbf_asociacion.cpp:183 pluginbf_asociacion.cpp:184
 msgid "Convocar Reunion"
-msgstr ""
+msgstr "Convoquer la réunion"
 
 #: ui_convreunionbase.h:361 ui_convreunionbase.h:364
 msgid "Convocar por E-mail"
-msgstr ""
+msgstr "Convoquer par courriel"
 
 #: convreunionview.cpp:52
 msgid "Convocatoria de reunion"
-msgstr ""
+msgstr "Convocation de la réunion"
 
 #: ui_comisioneslistbase.h:292 ui_convreunionlistbase.h:292
 #: ui_jdirectivalistbase.h:320
@@ -233,37 +236,37 @@ msgstr "Ctrl+S"
 
 #: jdirectivalist.cpp:209 comisioneslist.cpp:199 convreunionlist.cpp:199
 msgid "Debe seleccionar una fila primero"
-msgstr "Debe seleccionar una fila primero"
+msgstr "Vous devez sélectionner d'abord une fiche"
 
 #: jdirectivalist.cpp:170 comisioneslist.cpp:158 convreunionlist.cpp:158
 msgid "Debe seleccionar una linea"
-msgstr "Debe seleccionar una línea"
+msgstr "Vous devez sélectionner une ligne"
 
 #: ui_comisioneslistbase.h:254 ui_comisioneslistbase.h:257
 #: ui_convreunionlistbase.h:254 ui_convreunionlistbase.h:257
 #: ui_jdirectivalistbase.h:282 ui_jdirectivalistbase.h:285
 msgid "Editar Actividad"
-msgstr "Editar actividad"
+msgstr "Editer l'activité"
 
 #: jdirectivalist.cpp:228 comisioneslist.cpp:215 convreunionlist.cpp:215
 msgid "Editar Junta"
-msgstr ""
+msgstr "Editer le groupe"
 
 #: jdirectivalist.cpp:185 comisioneslist.cpp:172 convreunionlist.cpp:172
 msgid "Error al borrar el cobro a cliente"
-msgstr "Error al borrar el cobro al cliente"
+msgstr "Erreur à l'effacement de l'encaissement d'un client"
 
 #: comisionview.cpp:78
 msgid "Error al crear el comision"
-msgstr ""
+msgstr "Erreur en création de la commission "
 
 #: jdirectivaview.cpp:80
 msgid "Error al crear el jdirectiva"
-msgstr ""
+msgstr "Erreur en création de la direction"
 
 #: convreunionview.cpp:101
 msgid "Error al crear la reunion"
-msgstr ""
+msgstr "Erreur en création de la réunion"
 
 #: ui_comisioneslistbase.h:300 ui_convreunionlistbase.h:300
 #: ui_jdirectivalistbase.h:328
@@ -272,177 +275,177 @@ msgstr "F5"
 
 #: convreunionview.cpp:56
 msgid "Fecha 1ª Convocatoria"
-msgstr ""
+msgstr "Date 1ª de convocation"
 
 #: convreunionview.cpp:57
 msgid "Fecha 2ª Convocatoria"
-msgstr ""
+msgstr "Date 2ª de convocation"
 
 #: comisionview.cpp:53 comisionview.cpp:63 jdirectivaview.cpp:57
 #: jdirectivaview.cpp:65
 msgid "Fecha Cese"
-msgstr ""
+msgstr "Date de cessation"
 
 #: ui_jdirectivabase.h:267 ui_comisionbase.h:300
 msgid "Fecha Cesion"
-msgstr ""
+msgstr "Date de cession"
 
 #: comisionview.cpp:52 jdirectivaview.cpp:56 ui_jdirectivabase.h:266
 #: ui_comisionbase.h:299
 msgid "Fecha Constitucion"
-msgstr ""
+msgstr "Date de constitution"
 
 #: jdirectivalist.cpp:279
 msgid "Fecha de constitucion"
-msgstr ""
+msgstr "Date de constitution"
 
 #: jdirectivalist.cpp:280
 msgid "Fecha de disolucion"
-msgstr ""
+msgstr "Date de dissolution"
 
 #: ui_jdirectivalistbase.h:271
 msgid "Fecha final:"
-msgstr "Fecha final:"
+msgstr "Date finale :"
 
 #: ui_jdirectivalistbase.h:270
 msgid "Fecha inicial:"
-msgstr "Fecha inicial:"
+msgstr "Date initiale :"
 
 #: comisionview.cpp:62 jdirectivaview.cpp:64
 msgid "Fecha posesion"
-msgstr ""
+msgstr "Date de possession"
 
 #: ui_comisioneslistbase.h:278 ui_comisioneslistbase.h:281
 #: ui_convreunionlistbase.h:278 ui_convreunionlistbase.h:281
 #: ui_jdirectivalistbase.h:306 ui_jdirectivalistbase.h:309
 msgid "Filtrar Actividades"
-msgstr "Filtrar actividades"
+msgstr "Filtrer les activités"
 
 #: ui_jdirectivabase.h:268 ui_comisionbase.h:301 ui_convreunionbase.h:383
 msgid "General"
-msgstr "General"
+msgstr "Général"
 
 #: ui_jdirectivabase.h:243 ui_jdirectivabase.h:246 ui_comisionbase.h:275
 #: ui_comisionbase.h:278 ui_convreunionbase.h:337 ui_convreunionbase.h:340
 msgid "Guardar cobro"
-msgstr "Guardar cobro"
+msgstr "Sauvegarder l'encaissement"
 
 #: ui_convreunionbase.h:369 ui_convreunionbase.h:371
 msgid "Hora"
-msgstr "Hora"
+msgstr "Feuille"
 
 #: convreunionview.cpp:58
 msgid "Hora 1ª Convocatoria"
-msgstr ""
+msgstr "Feuille 1ª de convocation"
 
 #: convreunionview.cpp:59
 msgid "Hora 2ª Convocatoria"
-msgstr ""
+msgstr "Feuille 2ª de convocation"
 
 #: jdirectivalist.cpp:278 comisioneslist.cpp:260 comisionview.cpp:61
 #: jdirectivaview.cpp:63
 msgid "ID Junta Directiva"
-msgstr ""
+msgstr "ID groupe de direction"
 
 #: comisionview.cpp:60 jdirectivaview.cpp:62
 msgid "ID Miembro"
-msgstr ""
+msgstr "ID Membre"
 
 #: convreunionview.cpp:82
 msgid "ID Orden del dia"
-msgstr ""
+msgstr "ID Ordre du jour"
 
 #: convreunionview.cpp:68 convreunionview.cpp:83
 msgid "ID Reunion"
-msgstr ""
+msgstr "ID Réunion"
 
 #: convreunionview.cpp:69 comisionview.cpp:64 jdirectivaview.cpp:66
 msgid "ID Socio"
-msgstr ""
+msgstr "ID Socio"
 
 #: convreunionview.cpp:67
 msgid "ID asistentereunion"
-msgstr ""
+msgstr "ID assistant de réunion"
 
 #: comisionview.cpp:51
 msgid "ID comision"
-msgstr ""
+msgstr "ID commission"
 
 #: jdirectivaview.cpp:55
 msgid "ID jdirectiva"
-msgstr ""
+msgstr "ID direction"
 
 #: convreunionview.cpp:55 convreunionlist.cpp:260
 msgid "ID reunion"
-msgstr ""
+msgstr "ID réunion"
 
 #: ui_convreunionbase.h:353 ui_convreunionbase.h:356
 msgid "Imprimir"
-msgstr "Imprimir"
+msgstr "Imprimer"
 
 #: ui_comisioneslistbase.h:270 ui_comisioneslistbase.h:273
 #: ui_convreunionlistbase.h:270 ui_convreunionlistbase.h:273
 #: ui_jdirectivalistbase.h:298 ui_jdirectivalistbase.h:301
 msgid "Imprimir listado"
-msgstr "Imprimir listado"
+msgstr "Imprimer la liste"
 
 #: jdirectivaview.cpp:52 ui_jdirectivabase.h:240 ui_convreunionbase.h:376
 msgid "Junta Directiva"
-msgstr ""
+msgstr "Groupe de direction"
 
 #: pluginbf_asociacion.cpp:158 pluginbf_asociacion.cpp:159
 #: ui_jdirectivalistbase.h:269
 msgid "Juntas Directivas"
-msgstr ""
+msgstr "Assemblée directive"
 
 #: ui_convreunionbase.h:388
 msgid "Miembros Junta"
-msgstr ""
+msgstr "Membres de l'assemblée"
 
 #: comisionview.cpp:54
 msgid "Nombre"
-msgstr "Nombre"
+msgstr "Nom"
 
 #: ui_comisionbase.h:298
 msgid "Nombre Comision"
-msgstr ""
+msgstr "Nom de la commission"
 
 #: convreunionview.cpp:70
 msgid "Nombre Socio"
-msgstr ""
+msgstr "Nom socio"
 
 #: ui_comisioneslistbase.h:246 ui_comisioneslistbase.h:249
 #: ui_convreunionlistbase.h:246 ui_convreunionlistbase.h:249
 #: ui_jdirectivalistbase.h:274 ui_jdirectivalistbase.h:277
 msgid "Nuevo Actividad"
-msgstr "Nueva actividad"
+msgstr "Nouvelle activité"
 
 #: ui_convreunionbase.h:377
 msgid "Oridnaria"
-msgstr ""
+msgstr "Ordinaire"
 
 #: ui_convreunionbase.h:380
 msgid "Otros"
-msgstr "Otros"
+msgstr "Autres"
 
 #: ui_jdirectivabase.h:271 ui_comisionbase.h:304
 msgid "Otros datos"
-msgstr "Otros datos"
+msgstr "Autres données"
 
 #: convreunionview.cpp:62 convreunionview.cpp:86 ui_convreunionbase.h:384
 #: ui_convreunionbase.h:385
 msgid "Resolucion"
-msgstr ""
+msgstr "Résolution"
 
 #: ui_convreunionbase.h:334
 msgid "Reunion"
-msgstr ""
+msgstr "Réunion"
 
 #: convreunionlist.cpp:142 pluginbf_asociacion.cpp:175
 #: pluginbf_asociacion.cpp:176 ui_jdirectivabase.h:272
 #: ui_convreunionlistbase.h:243
 msgid "Reuniones"
-msgstr ""
+msgstr "Réunions"
 
 #: comisionview.cpp:65 jdirectivaview.cpp:67
 msgid "Socio"
@@ -450,36 +453,37 @@ msgstr "Socio"
 
 #: ui_convreunionbase.h:389
 msgid "Socios"
-msgstr ""
+msgstr "Socios"
 
 #: convreunionview.cpp:85
 msgid "Texto"
-msgstr ""
+msgstr "Texte"
 
 #: convreunionview.cpp:133 comisionview.cpp:106 jdirectivaview.cpp:113
 msgid "Tiene que guardar el documento antes de poder imprimirlo."
-msgstr "Tiene que guardar el documento antes de poder imprimirlo."
+msgstr "Vous devez sauvegarder le document avant de pouvoir l'imprimer."
 
 #: convreunionview.cpp:60 convreunionlist.cpp:263
 msgid "Tipo"
-msgstr "Tipo"
+msgstr "Type"
 
 #: ui_convreunionbase.h:372
 msgid "Tipo Reunion"
-msgstr ""
+msgstr "Type de réunion"
 
 #: ui_convreunionbase.h:391
 msgid "Todos"
-msgstr "Todos"
+msgstr "Tous"
 
 #: ui_convreunionbase.h:390
 msgid "Tutores"
-msgstr "Tutores"
+msgstr "Tuteurs"
 
 #: convreunionlist.cpp:261
 msgid "fecha1convocatoriareunion"
-msgstr ""
+msgstr "Date 1 de convocation de réunion"
 
 #: convreunionlist.cpp:262
 msgid "fecha2convocatoriareunion"
-msgstr ""
+msgstr "Date 2 de convocation de réunion"
+
