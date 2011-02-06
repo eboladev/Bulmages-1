@@ -1,16 +1,16 @@
 #######
 #Plugins
 #######
-#README.es
-#20080501
+#README.fr
+#20110206
 
-Nombre: Apertura por referencia.
+Nombre: Ouverture par réference.
 
 Biblioteca: libpluginbf_abrereferencia.so
 
-Descripción: <H1>Apertura por referencia</H1>
-<P>Con este plugin aparece una opción en el menu Herramientas llamada Apertura por referencia. Al pulsar sobre dicha opcion nos aparecerá un cuadro de texto en el que podemos escribir una referenca o pasar un código de barras por el lector en caso de que dispongamos de uno.</P>
-<P>Al pulsar el Enter o terminar la lectura con el lector de código de barras sobre el campo de referencia se intenta abrir la ficha que tiene dicha referencia.</P>
+Descripción: <H1>Ouverture par réference</H1>
+<P>Avec ce plugin il y a une option dans le menu Outils appelée Ouverture par référence. En cliquant sur cette option un tableau de texte apparaîtra dans lequel nous pouvons écrire une réference ou passer un code bar par le lecteur au cas ou nous en disposons.</P>
+<P>En pressant Entrée ou terminer la lecture avec le lecteur de code bar dans le répertoire de référence on peut ouvrir la fiche qui a cette référence.</P>
 
 <B>Author:</B>Tomeu Borrás (tborras@conetxia.com)<BR>
 <HR>
@@ -25,7 +25,7 @@ Dependencias:
 
 Incompatibles:
 
-Categorias: Utilidades genericas;
+Categorias: Utilites generiques;
 
 Orden: 900
 

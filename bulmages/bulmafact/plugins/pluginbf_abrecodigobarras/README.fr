@@ -1,17 +1,15 @@
 #######
 #Plugins
 #######
-#README.es
-#20080501
+#README.fr
+#20110206
 
-Nombre: Apertura Rapida Desde Códigos de Barras
+Nombre: Ouverture rapide depuis des codes bar
 
 Biblioteca: libpluginbf_abrecodigobarras.so
 
-Descripción: <H1>Codigos de Barras</H1>
-<P>Presenta una opción de menu que permite acceder de forma rápida a la ficha
-de un documento impreso pasandolo por el lector de códigos de barras. Las plantillas de 
-impresión deben tener activada la identificación en código de barras.</P>
+Descripción: <H1>Code bar</H1>
+<P>Présente une option de menu qui permet d'accéder de manière rapide, à la fiche d'un document imprimé, en le passant par le lecteur de codes bar. Les services d'impression doivent être activés pour l'identification à code bar.</P>
 <B>Author:</B>Tomeu Borrás (tborras@conetxia.com)<BR>
 <HR>
 
@@ -25,8 +23,8 @@ Dependencias:
 
 Incompatibles:
 
-Categorias: Utilidades genericas;
+Categorias: Utilites generiques;
 
 Orden: 600
 
-Comentarios: Requiere de la extensión rlbarcode instalada en reportlab.
+Comentarios: Requiert l'extension rlbarcode installée dans reportlab.
