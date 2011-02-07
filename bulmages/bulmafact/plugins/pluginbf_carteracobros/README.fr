@@ -1,24 +1,21 @@
 #######
 #Plugins
 #######
-#README.es
-#20080501
+#README.fr
+#20110207
 
-Nombre: Cartera de Cobros
+Nombre: Carte de paiement
 
 Biblioteca: libpluginbf_carteracobros.so
 
-Descripción: <H1>Cartera de Cobros</H1>
-<PARA>Permite gestion avanzada de cobros a clientes, con faccionado de facturas y control de vencimientos.</PARA>
+Descripción: <H1>Carte de paiement</H1>
+<PARA>Permet la gestion avancée d'encaissements de clients, avec factures échelonnées et contrôle d'échéances.</PARA>
 <HR>
-<PARA>Una vez instalado el plugin, en la ficha de cada cliente clientes aparecerá la pestaña de vencimientos que permite indicar las fracciones (porcentajes) de cobro para cada factura que se emita a dicho cliente asi como los dias que deben transcurrir hasta que sea efectivo el vencimiento.</PARA>
+<PARA>Une fois installé le greffon, dans la fiche de chaque client apparaîtra le cil d'échéances qui permet d'indiquer les fractions (pourcentages) d'encaissement pour chaque facture qui est émise à ce client ainsi que les jours qui doivent passer jusqu'à ce que soit effective l'échéance.</PARA>
 <BR>
-<PARA>Al crear una factura directamente creará los vencimientos de la misma de forma automática utilizando los vencimientos que hayamos indicando para el cliente de la factura. Dichas previsiones
-podran cambiarse manualmente.</B></PARA>
-<PARA>También incorpora una gestion de todos los cobros a realizar, permitiendo el remesado bancario y control de estado de cada uno de los
-cobros</PARA>
-<PARA>Es un buen sustituto, algo más elaborado que la gestion de cobros de factura. Útil para aquellas empresas que pretenden
-llevar una gestión de cobros y ofrezcan facilidades de pago a sus clientes.</PARA>
+<PARA>En créant une facture il créera directement les échéances de cette dernière de manière automatique en utilisant les échéances présentes, en l'indiquant au client de la facture. Ces prévisions pourront être manuellement changées.</B></PARA>
+<PARA>Il incorpore aussi une gestion de tous les encaissements à effectuer, ainsi que ceux expédiés par la banque et contrôle l'état de chacun des encaissements </PARA>
+<PARA>C'est un bon substitut, plus élaboré que la gestion d'encaissements de facture. Utile pour les entreprises qui prétendent porter une gestion d'encaissements et offrent des facilités de paiement à leurs clients.</PARA>
 <B>Author:</B>Tomeu Borrás (tborras@conetxia.com)<BR>
 <HR>
 
@@ -36,7 +33,7 @@ Orden: 450
 
 Reports: impers_vencimientoc.rml
 
-Categorias: Facturacion avanzada;Experimentales;
+Categorias: Facturation avancee;Experimental;
 
 Comentarios:
 

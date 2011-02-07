@@ -1,15 +1,15 @@
 #######
 #Plugins
 #######
-#README.es
-#20080501
+#README.fr
+#20110207
 
-Nombre: Camareros
+Nombre: Serveurs
 
 Biblioteca: libpluginbf_camarero.so
 
-Descripción: <H1>Camarero</H1>
-<P>Permite definir y manejar los campos de trabajo con camareros. Asignar permisos que luego son usados en el TPV y funcionalidades.</P>
+Descripción: <H1>Serveur</H1>
+<P>Permet de définir et de manier les domaines de travail avec des serveurs. Assigner des autorisations qui sont ensuite utilisé dans le TPV et avec les fonctionalités.</P>
 <B>Author:</B>Tomeu Borrás (tborras@conetxia.com)<BR>
 <HR>
 
@@ -23,7 +23,7 @@ Dependencias:
 
 Incompatibles:
 
-Categorias: Experimentales;Restauracion;
+Categorias: Experimental;Restauration;
 
 Orden: 690
 
