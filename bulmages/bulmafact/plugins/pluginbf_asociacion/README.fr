@@ -1,15 +1,15 @@
 #######
 #Plugins
 #######
-#README.es
-#20080501
+#README.fr
+#20110207
 
-Nombre: Asociacion
+Nombre: Association
 
 Biblioteca: libpluginbf_asociacion.so
 
-Descripción: <H1>Asociacion</H1>
-<P>Gestionar las cuestiones asociativas de una asociacion.</P>
+Descripción: <H1>Association</H1>
+<P>Gestionnaire de questions associatives d'une association.</P>
 <P>Con este plugin se pueden emitir comunicados a socios, convocar juntas, asambleas o reuniones y registrar las actas.</P>
 <B>Author:</B>Tomeu Borrás (tborras@conetxia.com)<BR>
 <HR>
