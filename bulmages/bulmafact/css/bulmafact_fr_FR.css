@@ -1,0 +1,58 @@
+/* CSS Examples */
+QTableView {
+/* Table Font Size */
+/*    font-size: 10px; */
+}
+
+QTabWidget {
+/* Tamanyo del texto en las pestanyas */
+    font-size: 9px;
+}
+
+QWidget {
+/* Tamanyo del texto en general en cualquier widget */
+/*    font-size: 10px; */
+/* Margenes de todos los widgets*/
+/*
+    margin:0px;
+    padding:0px;
+*/
+}
+
+QTableWidgetItem {
+/* Margenes en los items de una tabla */
+    margin-top: 1px;
+    padding-top: 1px;
+
+}
+
+QHeaderView {
+/* Bordes en los encabezados de las tablas */
+border: 1px solid #6c6c6c;
+/* Margenes en los encabezados de las tablas */
+/* padding-left: 0px;
+margin-left : 0px;
+*/
+/* Tamanyo de las fuentes en los encabezados de las tablas */
+font-size: 9px;
+}
+
+#BlTableWidgetItem {
+/* Consideraciones para los Items de BlTableWidget */ /* NO FUNCIONAN POR AHORA */
+    color: #FF0000;
+    margin-top: 0px;
+    padding-top: 0px;
+    margin-bottom: 0px;
+    margin-bottom: 0px;
+    border: 0px solid #00FF00;
+}
+
+/* Configuraciones para la mayoria de subformularios */
+*#mui_list {color: blue;
+background-color: #DDDDDD;
+selection-color: #AAAAAA;
+selection-background-color: blue;}
+
+/* Configuraciones para los campos de filtrado */
+*#m_filtro {background-color: #FFFF88;}
+

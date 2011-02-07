@@ -1,0 +1,63 @@
+/* CSS Examples */
+QTableView {
+/* Table Font Size */
+/*    font-size: 10px; */
+}
+
+QTabWidget {
+/* Tamanyo del texto en las pestanyas */
+    font-size: 9px;
+}
+
+QWidget {
+/* Tamanyo del texto en general en cualquier widget */
+/*    font-size: 10px; */
+/* Margenes de todos los widgets*/
+/*
+    margin:0px;
+    padding:0px;
+*/
+}
+
+QTableWidgetItem {
+/* Margenes en los items de una tabla */
+    margin-top: 1px;
+    padding-top: 1px;
+
+}
+
+QHeaderView {
+/* Bordes en los encabezados de las tablas */
+border: 1px solid #6c6c6c;
+/* Margenes en los encabezados de las tablas */
+/* padding-left: 0px;
+margin-left : 0px;
+*/
+/* Tamanyo de las fuentes en los encabezados de las tablas */
+font-size: 9px;
+}
+
+#BlTableWidgetItem {
+/* Consideraciones para los Items de BlTableWidget */ /* NO FUNCIONAN POR AHORA */
+    color: #FF0000;
+    margin-top: 0px;
+    padding-top: 0px;
+    margin-bottom: 0px;
+    margin-bottom: 0px;
+    border: 0px solid #00FF00;
+}
+
+*#mui_list {
+/* Color del tipo de letra en los subformularios */
+color: blue;
+/* Color del fondo en los subformularios */
+background-color: #DDDDDD;
+/* Color de la seleccion en los subformularios */
+selection-color: #AAAAAA;
+/* Color de fondo para la seleccion en los subformularios */
+selection-background-color: blue;
+}
+
+/* Color de fondo en los campos de filtrado */
+*#m_filtro {background-color: #FFFF88;}
+
