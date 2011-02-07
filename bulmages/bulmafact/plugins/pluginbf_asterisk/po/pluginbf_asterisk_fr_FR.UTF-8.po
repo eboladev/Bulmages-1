@@ -1,63 +1,82 @@
+# Header entry was created by Lokalize.
+#
+#: pluginasterisk.cpp:101
+# aishen <aishen@free.fr>, 2011.
+msgid ""
+msgstr ""
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Mime-Version: 1.0"
+"Last-Translator: aishen <aishen@free.fr>\n"
+"PO-Revision-Date: 2011-02-07 08:26+0100\n"
+"Project-Id-Version: \n"
+"Language-Team: French <kde-i18n-doc@kde.org>\n"
+"Language: fr\n"
+"X-Generator: Lokalize 1.2\n"
+"MIME-Version: 1.0\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
 #: pluginasterisk.cpp:101
 msgid "Almacen"
-msgstr ""
+msgstr "Magasin"
 
 #: pluginasterisk.cpp:165
 msgid "Apellidos"
-msgstr ""
+msgstr "Noms"
 
 #: pluginasterisk.cpp:102
 msgid "Apertura manyanas"
-msgstr ""
+msgstr "Ouverture de matinée"
 
 #: pluginasterisk.cpp:104
 msgid "Apertura tardes"
-msgstr ""
+msgstr "Ouverture de soirée"
 
 #: pluginasterisk.cpp:106 pluginasterisk.cpp:166
 msgid "Audicion"
-msgstr ""
+msgstr "Audition"
 
 #: pluginasterisk.cpp:103
 msgid "Cierre manyanas"
-msgstr ""
+msgstr "Fermeture de matinée"
 
 #: pluginasterisk.cpp:105
 msgid "Cierre tardes"
-msgstr ""
+msgstr "Fermeture de soirée"
 
 #: pluginasterisk.cpp:128
 msgid "Extension."
-msgstr ""
+msgstr "Extension."
 
 #: pluginasterisk.cpp:99 pluginasterisk.cpp:162
 msgid "Fecha"
-msgstr ""
+msgstr "Date"
 
 #: pluginasterisk.cpp:100 pluginasterisk.cpp:163
 msgid "Hora"
-msgstr ""
+msgstr "Feuille"
 
 #: pluginasterisk.cpp:107 pluginasterisk.cpp:167
 msgid "Id almacen"
-msgstr ""
+msgstr "Id magasin"
 
 #: pluginasterisk.cpp:109 pluginasterisk.cpp:169
 msgid "Id trabajador"
-msgstr ""
+msgstr "Id Ouvrier"
 
 #: pluginasterisk.cpp:108 pluginasterisk.cpp:168
 msgid "Id validacion"
-msgstr ""
+msgstr "Id validation"
 
 #: pluginasterisk.cpp:53
 msgid "Password."
-msgstr ""
+msgstr "Mot de passe."
 
 #: pluginasterisk.cpp:164
 msgid "Trabajador"
-msgstr ""
+msgstr "Salarié"
 
 #: pluginasterisk.cpp:54
 msgid "Valida siempre."
-msgstr ""
+msgstr "Toujours valide "
+

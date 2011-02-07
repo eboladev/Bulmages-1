@@ -10,7 +10,7 @@ Biblioteca: libpluginbf_asociacion.so
 
 Descripción: <H1>Association</H1>
 <P>Gestionnaire de questions associatives d'une association.</P>
-<P>Con este plugin se pueden emitir comunicados a socios, convocar juntas, asambleas o reuniones y registrar las actas.</P>
+<P>Avec ce plugin on peut émettre des communiqués aux partenaires, convoquer l'assemblée, ou des réunions et enregistrer les actes.</P>
 <B>Author:</B>Tomeu Borrás (tborras@conetxia.com)<BR>
 <HR>
 
@@ -27,7 +27,7 @@ Incompatibles:
 
 Reports: impers_reunion.rml; jdirectiva.rml; reunion.rml; inf_familias_hijos.rml; blform_JDirectivaView.qs; blform_ComisionView.qs; blform_ConvReunionView.qs
 
-Categorias: Asociaciones de padres de alumnos; Experimentales;
+Categorias: Association des parents d'élèves; Experimental;
 
 Orden: 240
 
