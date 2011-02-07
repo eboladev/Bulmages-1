@@ -1,50 +1,68 @@
+# Header entry was created by Lokalize.
+#
+#: ui_zbase.h:327
+# aishen <aishen@free.fr>, 2011.
+msgid ""
+msgstr ""
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Mime-Version: 1.0"
+"Last-Translator: aishen <aishen@free.fr>\n"
+"PO-Revision-Date: 2011-02-07 16:15+0100\n"
+"Project-Id-Version: \n"
+"Language-Team: French <kde-i18n-doc@kde.org>\n"
+"Language: fr\n"
+"X-Generator: Lokalize 1.2\n"
+"MIME-Version: 1.0\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
 #: ui_zbase.h:327
 msgid "&Aceptar"
-msgstr ""
+msgstr "&Accepter"
 
 #: ui_zbase.h:328
 msgid "&Cancelar"
-msgstr ""
+msgstr "&Annuler"
 
 #: ui_zbase.h:312 ui_zbase.h:317 ui_zlistbase.h:289 ui_zlistbase.h:294
 msgid "Actualizar listado"
-msgstr ""
+msgstr "Actualiser la liste"
 
 #: zview.cpp:64 zlist.cpp:61 ui_zbase.h:321
 msgid "Almacen"
-msgstr ""
+msgstr "Magasin"
 
 #: zlist.cpp:192
 msgid "Almacenes"
-msgstr ""
+msgstr "Magasins"
 
 #: zview.cpp:80
 msgid "Anulado"
-msgstr ""
+msgstr "Annuler"
 
 #: zview.cpp:83
 msgid "Base Imponible"
-msgstr ""
+msgstr "Base Imposable"
 
 #: ui_zbase.h:300 ui_zbase.h:305
 msgid "Borrar almacen"
-msgstr ""
+msgstr "Effacer le Magasin"
 
 #: ui_zlistbase.h:245 ui_zlistbase.h:250
 msgid "Borrar contrato"
-msgstr ""
+msgstr "Effacer le contrat"
 
 #: ui_zlistbase.h:298
 msgid "Buscar:"
-msgstr ""
+msgstr "Chercher :"
 
 #: ui_zlistbase.h:299
 msgid "Caducados"
-msgstr ""
+msgstr "Caduques"
 
 #: ui_zlistbase.h:278 ui_zlistbase.h:283
 msgid "Configurar listado"
-msgstr ""
+msgstr "Configurer la liste"
 
 #: ui_zbase.h:309
 msgid "Ctrl+D"
@@ -56,55 +74,55 @@ msgstr ""
 
 #: ui_zbase.h:284
 msgid "Cuadre de Caja"
-msgstr ""
+msgstr "Caisse juste"
 
 #: zview.cpp:55
 msgid "Cuadre de caja"
-msgstr ""
+msgstr "Caisse juste"
 
 #: ui_zlistbase.h:219
 msgid "Cuadres de Caja"
-msgstr ""
+msgstr "Caisses justes"
 
 #: zview.cpp:74
 msgid "Descripcion"
-msgstr ""
+msgstr "Description "
 
 #: ui_zlistbase.h:234 ui_zlistbase.h:239
 msgid "Editar contrato"
-msgstr ""
+msgstr "Editer le contrat "
 
 #: zview.cpp:93
 msgid "Error al crear el almacen"
-msgstr ""
+msgstr "Erreur en création du magasin"
 
 #: zlist.cpp:180
 msgid "Error al editar el almacen"
-msgstr ""
+msgstr "Erreur à l'édition du magasin"
 
 #: zview.cpp:59 zview.cpp:76 zlist.cpp:59 ui_zbase.h:322
 msgid "Fecha"
-msgstr ""
+msgstr "Date"
 
 #: ui_zlistbase.h:267 ui_zlistbase.h:272
 msgid "Filtrar contratos"
-msgstr ""
+msgstr "Filtrer les contrats"
 
 #: zview.cpp:79
 msgid "Forma de pago"
-msgstr ""
+msgstr "Forme de paiement"
 
 #: ui_zbase.h:326
 msgid "General"
-msgstr ""
+msgstr "Général"
 
 #: ui_zbase.h:288 ui_zbase.h:293
 msgid "Guardar almacen"
-msgstr ""
+msgstr "Sauvegarder le magasin"
 
 #: zview.cpp:60 zview.cpp:81 zlist.cpp:60 ui_zbase.h:323
 msgid "Hora"
-msgstr ""
+msgstr "Feuille"
 
 #: zlist.cpp:58
 msgid "ID Z"
@@ -116,52 +134,53 @@ msgstr ""
 
 #: zview.cpp:72
 msgid "Id albaran"
-msgstr ""
+msgstr "Id bulletin"
 
 #: zview.cpp:78
 msgid "Id forma de pago"
-msgstr ""
+msgstr "Id Forme de paiement"
 
 #: zview.cpp:63 zlist.cpp:64
 msgid "Id. almacen"
-msgstr ""
+msgstr "Id magasin"
 
 #: ui_zlistbase.h:256 ui_zlistbase.h:261
 msgid "Imprimir listado"
-msgstr ""
+msgstr "Imprimer la liste"
 
 #: zview.cpp:84
 msgid "Impuestos"
-msgstr ""
+msgstr "Impôts"
 
 #: ui_zlistbase.h:223 ui_zlistbase.h:228
 msgid "Nuevo contrato"
-msgstr ""
+msgstr "Nouveau contrat"
 
 #: ui_zbase.h:324
 msgid "Num. Tickets"
-msgstr ""
+msgstr "N° de tickets"
 
 #: zview.cpp:62
 msgid "Num. tickets"
-msgstr ""
+msgstr "N° de tickets"
 
 #: zview.cpp:73
 msgid "Numero"
-msgstr ""
+msgstr "Numéro"
 
 #: zview.cpp:77
 msgid "Procesado"
-msgstr ""
+msgstr "Accusé"
 
 #: zview.cpp:75
 msgid "Referencia"
-msgstr ""
+msgstr "Référence"
 
 #: zlist.cpp:63
 msgid "Tickets"
-msgstr ""
+msgstr "Tickets"
 
 #: zview.cpp:61 zview.cpp:82 zlist.cpp:62 ui_zbase.h:325
 msgid "Total"
-msgstr ""
+msgstr "Total"
+

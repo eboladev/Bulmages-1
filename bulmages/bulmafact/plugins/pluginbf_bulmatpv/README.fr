@@ -4,14 +4,13 @@
 #README.es
 #20080501
 
-Nombre: Manejo de TPV
+Nombre: Maniement de TPV
 
 Biblioteca: libpluginbf_bulmatpv.so
 
 Descripción: <H1>TPV</H1>
-<P>Maneja los tickets emitidos por uno o varios TPV y los muestra. Permite el control de las cajas y las Z
-producidas por un TPV.</P>
-<P>Es imprescindible tener la funcionalidad de TPV instalada o sino este plugin no funcionará</P>
+<P>Manipule les tickets émis par un ou plusieurs TPV et leurs échantillons. Il permet le contrôle des caisses et les Z produites par un TPV.</P>
+<P>On doit avoir la fonctionalité de TPV installée sinon ce plugin ne fonctionnera pas</P>
 <B>Author:</B>Tomeu Borrás (tborras@conetxia.com)<BR>
 <HR>
 
@@ -25,8 +24,8 @@ Dependencias:
 
 Incompatibles:
 
-Categorias: Facturacion avanzada;
+Categorias: Facturation avancees;
 
 Orden: 900
 
-Comentarios: Es imprescindible tener la funcionalidad de TPV instalada o sino este plugin no funcionará.
+Comentarios: On doit avoir la fonctionalité de TPV installée sinon ce plugin ne fonctionnera pas
