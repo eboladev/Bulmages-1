@@ -22,6 +22,7 @@
 #include <QToolButton>
 
 #include "pluginbf_ivaincluido.h"
+#include "ivaincluido.h"
 
 
 ///
@@ -51,40 +52,12 @@ int entryPoint ( BfBulmaFact *bges )
 \param trab
 \return
 **/
-
 int ArticuloView_ArticuloView_Post ( ArticuloView *trab )
 {
     blDebug ( "ArticuloView_ArticuloView_Post", 0 );
 
-    trab->addDbField ( "pvpivaincarticulo", BlDbField::DbNumeric, BlDbField::DbNothing, _ ( "Precio de coste" ) );
+    IVAincluido *i = new IVAincluido(trab);
 
-
-    QHBoxLayout *hboxLayout160 = new QHBoxLayout();
-    hboxLayout160->setSpacing ( 2 );
-    hboxLayout160->setMargin ( 0 );
-    hboxLayout160->setObjectName ( QString::fromUtf8 ( "hboxLayout19" ) );
-
-    QLabel *textLabel2_9_26 = new QLabel ( trab->m_frameplugin );
-    textLabel2_9_26->setObjectName ( QString::fromUtf8 ( "textLabel2_9_9" ) );
-    hboxLayout160->addWidget ( textLabel2_9_26 );
-    textLabel2_9_26->setText ( "PVP Iva Inc." );
-
-    BlDoubleSpinBox *passtrab = new BlDoubleSpinBox ( trab->m_frameplugin );
-    passtrab->setValue ( 0.0 );
-    passtrab->setMinimum( -10000000 );
-    passtrab->setMaximum(  10000000 );
-    passtrab->setObjectName ( QString::fromUtf8 ( "mui_pvpivaincarticulo" ) );
-    hboxLayout160->addWidget ( passtrab );
-
-    /// Comprobamos que exista el layout.
-    QVBoxLayout *m_hboxLayout1 = trab->m_frameplugin->findChild<QVBoxLayout *> ( "hboxLayout1" );
-    if ( !m_hboxLayout1 ) {
-        m_hboxLayout1 = new QVBoxLayout ( trab->m_frameplugin );
-        m_hboxLayout1->setSpacing ( 0 );
-        m_hboxLayout1->setMargin ( 0 );
-        m_hboxLayout1->setObjectName ( QString::fromUtf8 ( "hboxLayout1" ) );
-    } // end if
-    m_hboxLayout1->addLayout ( hboxLayout160 );
     return 0;
 }
 

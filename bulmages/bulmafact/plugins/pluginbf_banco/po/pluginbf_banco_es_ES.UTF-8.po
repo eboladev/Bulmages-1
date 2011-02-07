@@ -1,36 +1,30 @@
-# Catalan translations for PACKAGE package
-# Traduccions al català del paquet «PACKAGE».
 # Copyright (C) 2009 THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
 # Automatically generated, 2009.
-# aishen <aishen@free.fr>, 2011.
+#
 msgid ""
 msgstr ""
-"Project-Id-Version: \n"
+"Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
 "POT-Creation-Date: 2010-09-23 18:23+0200\n"
-"PO-Revision-Date: 2011-02-07 09:38+0100\n"
-"Last-Translator: aishen <aishen@free.fr>\n"
-"Language-Team: French <kde-i18n-doc@kde.org>\n"
+"PO-Revision-Date: 2009-02-17 10:24+0100\n"
+"Last-Translator: Automatically generated\n"
+"Language-Team: none\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: fr\n"
-"X-Generator: Lokalize 1.2\n"
-"Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
 #: pluginbf_banco.cpp:82
 msgid "&Bancos"
-msgstr "&Banques"
+msgstr "&Bancos"
 
 #: bancoview.cpp:233
 msgid "&No"
-msgstr "&Non"
+msgstr "&No"
 
 #: bancoview.cpp:233
 msgid "&Si"
-msgstr "&Oui"
+msgstr "&Si"
 
 #: ui_bancobase.h:463
 msgid ""
@@ -45,28 +39,18 @@ msgid ""
 "margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"></"
 "p></body></html>"
 msgstr ""
-"<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/"
-"REC-html40/strict.dtd\">\n"
-"<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css"
-"\">\n"
-"p, li { white-space: pre-wrap; }\n"
-"</style></head><body style=\" font-family:'Sans Serif'; font-size:9pt; font-"
-"weight:400; font-style:normal;\">\n"
-"<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; "
-"margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"></"
-"p></body></html>"
 
 #: bancoview.cpp:42
 msgid "Banco"
-msgstr "Banque"
+msgstr "Banco"
 
 #: pluginbf_banco.cpp:84 pluginbf_banco.cpp:85 ui_bancobase.h:436
 msgid "Bancos"
-msgstr "Banques"
+msgstr "Bancos"
 
 #: ui_bancobase.h:438 ui_bancobase.h:441
 msgid "Borrar banco"
-msgstr "Effacer la banque"
+msgstr "Borrar banco"
 
 #: ui_bancobase.h:478
 msgid "C.P.:"
@@ -74,11 +58,11 @@ msgstr "C.P.:"
 
 #: ui_bancobase.h:475
 msgid "Comentarios:"
-msgstr "Libellés :"
+msgstr "Comentarios:"
 
 #: ui_bancobase.h:469
 msgid "Contacto:"
-msgstr "Contact :"
+msgstr "Contacto:"
 
 #: ui_bancobase.h:460
 msgid "D.C.:"
@@ -86,145 +70,86 @@ msgstr "D.C.:"
 
 #: bancoview.cpp:153
 msgid "Debe seleccionar un banco"
-msgstr "Vous devez sélectionner une banque"
+msgstr ""
 
 #: bancoview.cpp:232
 msgid "Desea guardar los cambios?"
-msgstr "Sauvegarder les changements ?"
+msgstr "Desea guardar los cambios?"
 
 #: ui_bancobase.h:474
 msgid "Direccion"
-msgstr "Direction"
+msgstr "Direccion"
 
 #: ui_bancobase.h:471
 msgid "E-mail:"
-msgstr "Courriel :"
+msgstr "E-mail:"
 
 #: ui_bancobase.h:476
 msgid "Entidad:"
-msgstr "Entité :"
+msgstr "Entidad:"
 
 #: bancoview.cpp:214
 msgid "Error al guardar"
-msgstr "Erreur en sauvegarde des changements"
+msgstr "Error al guardar"
 
 #: bancoview.cpp:291
 msgid "Error inesperado al borrar el banco"
-msgstr "Erreur en effacement de la banque"
+msgstr "Error inesperado al borrar el banco"
 
 #: bancoview.cpp:263
 msgid "Error inesperado el crear el Banco"
-msgstr "Erreur inattendue en création de banque"
+msgstr "Error inesperado el crear el Banco"
 
 #: ui_bancobase.h:462
 msgid "Fax:"
-msgstr "Fax :"
+msgstr "Fax:"
 
 #: ui_bancobase.h:445 ui_bancobase.h:448
 msgid "Guardar banco"
-msgstr "Sauvegarder la banque"
+msgstr "Guardar banco"
 
 #: bancoview.cpp:231
 msgid "Guardar datos del trabajador"
-msgstr "Sauver les données de l'ouvrier"
+msgstr "Guardar datos del trabajador"
 
 #: ui_bancobase.h:459
 msgid "Informacion del banco:"
-msgstr "Information de la banque :"
+msgstr "Informacion del banco:"
 
 #: ui_bancobase.h:458
 msgid "Lista de bancos:"
-msgstr "Liste des banques :"
+msgstr "Lista de bancos:"
 
 #: ui_bancobase.h:452 ui_bancobase.h:455
 msgid "Nuevo banco"
-msgstr "Nouvelle Banque "
+msgstr "Nuevo banco"
 
 #: ui_bancobase.h:461
 msgid "Numero de cuenta:"
-msgstr "Numéro compte :"
+msgstr "Numero de cuenta:"
 
 #: ui_bancobase.h:473
 msgid "Poblacion:"
-msgstr "Population :"
+msgstr "Poblacion:"
 
 #: ui_bancobase.h:468
 msgid "Razon Social:"
-msgstr "Raison sociale :"
+msgstr "Razon Social:"
 
 #: ui_bancobase.h:477
 msgid "Sucursal:"
-msgstr "Succursale :"
+msgstr "Sucursal:"
 
 #: ui_bancobase.h:479
 msgid "Sufijo:"
-msgstr "Suffixe :"
+msgstr ""
 
 #: ui_bancobase.h:472
 msgid "Telefono:"
-msgstr "Téléphone :"
+msgstr "Telefono:"
 
 #: ui_bancobase.h:470
 msgid "URL:"
-msgstr "URL :"
+msgstr "URL:"
 
-#~ msgid "&Trabajadores"
-#~ msgstr "&Trabajadores"
-
-#~ msgid ""
-#~ "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/"
-#~ "REC-html40/strict.dtd\">\n"
-#~ "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/"
-#~ "css\">\n"
-#~ "p, li { white-space: pre-wrap; }\n"
-#~ "</style></head><body style=\" font-family:'Sans Serif'; font-size:10pt; "
-#~ "font-weight:400; font-style:normal;\">\n"
-#~ "<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; "
-#~ "margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; "
-#~ "font-size:9pt;\"></p></body></html>"
-#~ msgstr ""
-#~ "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/"
-#~ "REC-html40/strict.dtd\">\n"
-#~ "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/"
-#~ "css\">\n"
-#~ "p, li { white-space: pre-wrap; }\n"
-#~ "</style></head><body style=\" font-family:'Sans Serif'; font-size:10pt; "
-#~ "font-weight:400; font-style:normal;\">\n"
-#~ "<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; "
-#~ "margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; "
-#~ "font-size:9pt;\"></p></body></html>"
-
-#~ msgid ""
-#~ "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/"
-#~ "REC-html40/strict.dtd\">\n"
-#~ "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/"
-#~ "css\">\n"
-#~ "p, li { white-space: pre-wrap; }\n"
-#~ "</style></head><body style=\" font-family:'Sans'; font-size:10pt; font-"
-#~ "weight:400; font-style:normal;\">\n"
-#~ "<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; "
-#~ "margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; "
-#~ "font-family:'Sans Serif'; font-size:9pt;\"></p></body></html>"
-#~ msgstr ""
-#~ "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/"
-#~ "REC-html40/strict.dtd\">\n"
-#~ "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/"
-#~ "css\">\n"
-#~ "p, li { white-space: pre-wrap; }\n"
-#~ "</style></head><body style=\" font-family:'Sans Serif'; font-size:10pt; "
-#~ "font-weight:400; font-style:normal;\">\n"
-#~ "<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; "
-#~ "margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; "
-#~ "font-size:9pt;\"></p></body></html>"
-
-#~ msgid "Borrar trabajador"
-#~ msgstr "Borrar trabajador"
-
-#~ msgid "Guardar trabajador"
-#~ msgstr "Guardar trabajador"
-
-#~ msgid "Nuevo trabajador"
-#~ msgstr "Nuevo trabajador"
-
-#~ msgid "Trabajadores"
-#~ msgstr "Trabajadores"
+  

@@ -17,7 +17,7 @@ Admin::~Admin()
 void Admin::on_mui_z_clicked()
 {
     if ( QMessageBox::warning ( this,
-                                _ ( "Salir" ),
+                                _ ( "Realizar Z" ),
                                 _ ( "Realmente desea Realizar la Z?" ),
                                 QMessageBox::Ok,
                                 QMessageBox::Cancel ) == QMessageBox::Ok ) {
