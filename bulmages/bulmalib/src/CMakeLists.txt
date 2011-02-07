@@ -115,6 +115,7 @@ set(bulmalib_MOCS	bldblogindialog.h
 			blaction.h)
 
 set (bulmalib_HDRS	blmaincompanypointer.h
+			blmaincompany.h
 			bldialogchanges.h
 			blconfiguration.h
 			blspainbankaccountnumber.h
