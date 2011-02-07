@@ -1,20 +1,19 @@
 #######
 #Plugins
 #######
-#README.es
-#20080501
+#README.fr
+#20110207
 
-Nombre: Bancos
+Nombre: Banques
 
 Biblioteca: libpluginbf_banco.so
 
-Descripción: <H1><IMG SRC="@CMAKE_INSTALL_PREFIX@/share/bulmages/imagesrc/images/oxygen/actions/bank_list.svg" WIDTH="100"/><BR>Gestion de bancos</H1>
-<P> Permite realizar la gestion de entidades bancarias relacionadas con la empresa. Mostrando el listado de cuentas bancarias y permitiendo hacer altas, bajas y modificaciones</P>
-<P> Este plugin es imprescindible para todos aquellos modelos de negocio donde se trabaje con bancos, principalmente con formas de pago y modelos Q34 y Q19</P>
-<P> Una vez instalado el plugin tendremos dos nuevas opciones en el menú <B>Bancos</B></P>
-<H2> <IMG SRC="@CMAKE_INSTALL_PREFIX@/share/bulmages/imagesrc/images/oxygen/actions/bank_list.svg" WIDTH="22"/>Bancos</H2>
-<P> Esta pantalla nos muestra las cuentas bancarias dadas de alta en la empresa. Desde aqui podremos crear, modificar o borrar los clientes mediante los botones
-situados en la parte superior de la ventana. </P>
+Descripción: <H1><IMG SRC="@CMAKE_INSTALL_PREFIX@/share/bulmages/imagesrc/images/oxygen/actions/bank_list.svg" WIDTH="100"/><BR>Gestion de banques</H1>
+<P>Permet d'effectuer la gestion d'organismes bancaires en rapport avec l'entreprise. En montrant la liste des comptes bancaires et en permettant de faire modifications</P>
+<P>Ce greffon est indispensable pour tous les modèles d'affaire où on travaille avec des banques, principalement avec des formulaires de paiement et modèles Q34 y Q19</P>
+<P>Une fois installé ce greffon nous avons deux nouvelles options dans le menu <B>Banques</B></P>
+<H2>Cet écran nous montre les comptes bancaires inscrits dans l'entreprise. A partir d'ici nous pouvons créer, modifier ou effacer les clients au moyen des boutons situés dans la partie supérieure de la fenêtre. <IMG SRC="@CMAKE_INSTALL_PREFIX@/share/bulmages/imagesrc/images/oxygen/actions/bank_list.svg" WIDTH="22"/>Banques</H2>
+<P> </P>
 <B>Author:</B>Tomeu Borrás (tborras@conetxia.com)<BR>
 <HR>
 
@@ -28,7 +27,7 @@ Dependencias:
 
 Incompatibles:
 
-Categorias: Facturacion generica;
+Categorias: Facturation generique;
 
 Orden: 880
 
