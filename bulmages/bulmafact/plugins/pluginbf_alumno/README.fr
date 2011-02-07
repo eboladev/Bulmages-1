@@ -1,15 +1,15 @@
 #######
 #Plugins
 #######
-#README.es
-#20080501
+#README.fr
+#20110207
 
-Nombre: Alumnos
+Nombre: Elèves
 
 Biblioteca: libpluginbf_alumno.so
 
-Descripción: <H1> Alumnos</H1>
-<P>Gestionar los alumnos de una APA.</P>
+Descripción: <H1> Elèves</H1>
+<P>Gestionnaire d'élèves d'une APA.</P>
 <B>Author:</B>Tomeu Borrás (tborras@conetxia.com)<BR>
 <HR>
 
@@ -25,7 +25,7 @@ Incompatibles:
 
 Reports: alumno.rml; impers_alumno_faltas_de_asistencia.rml; blform_ActividadView.qs; blform_ClaseView.qs
 
-Categorias: Asociaciones de padres de alumnos; Experimentales;
+Categorias: Association des parents d'élèves; Experimental;
 
 Orden: 203
 
