@@ -128,6 +128,7 @@ set (bulmalib_HDRS	blmaincompanypointer.h
 			blfixed.h
 			blfunctions.h
 			blimportexport.h
+			blmaincompany.h
 			blplugins.h
 			blpostgresqlclient.h
 			blargparser.h)

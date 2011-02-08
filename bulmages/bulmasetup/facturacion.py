@@ -344,6 +344,8 @@ class Facturacion(Ui_ModificarFacturacionBase, Empresa):
       # Leemos las lineas iniciales (hasta el parametro deseado) y las ponemos de nuevo.
       self.encontradoopenreports  = 0;
       self.encontradoarticles = 0;
+      self.encontradostylesheet = 0;
+      locale = QtCore.QLocale()
       self.text = self.vin.readLine()
       while (not (self.text.isNull())):
 	# and not(self.text.contains("CONF_DIR_OPENREPORTS")) ):
@@ -357,17 +359,26 @@ class Facturacion(Ui_ModificarFacturacionBase, Empresa):
 	  #self.out << "\n\nCONF_DIR_IMG_ARTICLES /opt/bulmages/imgarticles_" + self.database +"/\n\n"
 	  self.encontradoarticles = 1;
 
+	if (self.text.contains("CONF_STYLESHEET")):
+	  # Escribimos el parametro como lo deseamos
+	  #self.out << "\n\nCONF_DIR_IMG_ARTICLES /opt/bulmages/imgarticles_" + self.database +"/\n\n"
+	  self.encontradostylesheet = 1;
+
         self.out << self.text << "\n"
         self.text = self.vin.readLine()
 
       if (self.encontradoopenreports == 0):
 	  # Escribimos el parametro como lo deseamos
-	  self.out << "\n\nCONF_DIR_OPENREPORTS /opt/bulmages/openreports_" + self.database +"/"+self.mui_idioma.currentText()+"/\n\n"
+	  self.out << "\n\nCONF_DIR_OPENREPORTS /opt/bulmages/openreports_" + self.database +"/"+str(locale.name().left(2))+"/\n\n"
 	
       if (self.encontradoarticles == 0):
 	  # Escribimos el parametro como lo deseamos
 	  self.out << "\n\nCONF_DIR_IMG_ARTICLES /opt/bulmages/imgarticles_" + self.database +"/\n\n"
-	      
+
+      if (self.encontradostylesheet == 0):
+	  # Escribimos el parametro como lo deseamos
+	  self.out << "\n\nCONF_STYLESHEET " + plugins.cmakeinstallprefix +"css/bulmafact_" +str(locale.name().left(5))+".css\n\n"
+
       # Cerramos los ficheros.
       self.file.close()
       self.file1.close()
