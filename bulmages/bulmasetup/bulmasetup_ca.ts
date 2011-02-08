@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE TS><TS version="1.1" language="ca_ES">
+<!DOCTYPE TS>
+<TS version="2.0" language="ca_ES">
 <context>
     <name>About</name>
     <message>
@@ -10,12 +11,12 @@
     <message>
         <location filename="aboutbase.py" line="291"/>
         <source>BulmaSetup GPL - Version 0.12.0</source>
-        <translation>BulmaSetupa GPL - Versi&oacute; 0.12.0</translation>
+        <translation>BulmaSetupa GPL - Versi 0.12.0</translation>
     </message>
     <message>
         <location filename="aboutbase.py" line="292"/>
         <source>&amp;Acerca de</source>
-        <translation>Quant a</translation>
+        <translation>Qu&amp;ant a</translation>
     </message>
     <message>
         <location filename="aboutbase.py" line="293"/>
@@ -28,7 +29,7 @@ p, li { white-space: pre-wrap; }
 &lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
 p, li { white-space: pre-wrap; }
 &lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;Sans Serif&apos;; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;
-&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt</translation>
+&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <location filename="aboutbase.py" line="298"/>
@@ -38,12 +39,12 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="aboutbase.py" line="299"/>
         <source>Sopor&amp;te</source>
-        <translation>Suport</translation>
+        <translation>Supor&amp;t</translation>
     </message>
     <message>
         <location filename="aboutbase.py" line="300"/>
         <source>Acuerdo de &amp;licencia</source>
-        <translation>Acord de &amp;llic&egrave;ncia</translation>
+        <translation>Acord de &amp;llicncia</translation>
     </message>
     <message>
         <location filename="aboutbase.py" line="301"/>
@@ -89,7 +90,7 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="eliminarempresabase.py" line="77"/>
         <source>Doble clic en la Empresa que deseas eliminar</source>
-        <translation>Doble clic a l&apos;empresa que voleu eliminar</translation>
+        <translation type="obsolete">Doble clic a l&apos;empresa que voleu eliminar</translation>
     </message>
     <message>
         <location filename="eliminarempresabase.py" line="80"/>
@@ -114,7 +115,7 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="eliminarempresabase.py" line="83"/>
         <source>Eliminar</source>
-        <translation type="unfinished">Elimina</translation>
+        <translation>Elimina</translation>
     </message>
 </context>
 <context>
@@ -137,24 +138,24 @@ p, li { white-space: pre-wrap; }
 </context>
 <context>
     <name>Empresa</name>
-    <message encoding="UTF-8">
+    <message utf8="true">
         <location filename="empresa.py" line="33"/>
         <source>Desea agregar el usuario &lt;b&gt;root&lt;/b&gt; a PostgreSQL? 
  
  Este usuario es necesario para poder administrar PostgreSQL. La contraseï¿½ de este usuario sera &apos;password&apos;. Borre este usuario al terminar la configuracion.</source>
         <translation type="obsolete">Desitgeu agregar l&apos;usuari &lt;b&gt;root&lt;/b&gt; a PostgreSQL 
 
-Aquest usuari &eacute;s necessari per poder administrar PostgreSQL. La contrassenya d&apos;aquest usuari ser&agrave; &apos;password&apos;. Esborreu aquest usuari en acabar la configuraci&oacute.</translation>
+Aquest usuari s necessari per poder administrar PostgreSQL. La contrassenya d&apos;aquest usuari ser &apos;password&apos;. Esborreu aquest usuari en acabar la configuraci.</translation>
     </message>
     <message>
         <location filename="empresa.py" line="163"/>
         <source>Desea agregar el usuario &lt;b&gt;root&lt;/b&gt; a PostgreSQL?&lt;br&gt;Este usuario es necesario para poder administrar PostgreSQL.&lt;br&gt;La contrase&amp;ntilde;a de este usuario sera &apos;password&apos;.&lt;br&gt;&lt;u&gt;&lt;b&gt;Borre este usuario al terminar la configuracion de BulmaGes, ya que genera un grave agujero de seguridad.&lt;/b&gt;&lt;/u&gt;</source>
-        <translation>Desitgeu agregar l&apos;usuari &lt;b&gt;root&lt;/b&gt; a PostgreSQL?&lt;br&gt;Aquest usuari &eacute;s necessari per poder administrar PostgreSQL.&lt;br&gt;&lt;;u&gt;&lt;b&gt;Esborreu aquest usuari en acabar la configuraci&oacute; de BulmaGes, ja que genera un greu forat de seguretat.&lt;/b&gt;&lt;/u&gt;</translation>
+        <translation>Desitgeu agregar l&apos;usuari &lt;b&gt;root&lt;/b&gt; a PostgreSQL?&lt;br&gt;Aquest usuari s necessari per poder administrar PostgreSQL.&lt;br&gt;&lt;;u&gt;&lt;b&gt;Esborreu aquest usuari en acabar la configuraci de BulmaGes, ja que genera un greu forat de seguretat.&lt;/b&gt;&lt;/u&gt;</translation>
     </message>
     <message>
         <location filename="listempresas.py" line="74"/>
         <source>Desea actualizar todas las empresas. Esta operacion puede tardar un ratito largo</source>
-        <translation>Desitgeu actualitzar totes les empreses? Aquesta operaci&oacute; pot tardar una estoneta llarga</translation>
+        <translation>Desitgeu actualitzar totes les empreses? Aquesta operaci pot tardar una estoneta llarga</translation>
     </message>
 </context>
 <context>
@@ -215,7 +216,7 @@ Aquest usuari &eacute;s necessari per poder administrar PostgreSQL. La contrasse
     <message>
         <location filename="listempresasbase.py" line="117"/>
         <source>Version</source>
-        <translation>Versi&oacute;</translation>
+        <translation>Versi</translation>
     </message>
     <message>
         <location filename="listempresasbase.py" line="118"/>
@@ -245,10 +246,10 @@ Aquest usuari &eacute;s necessari per poder administrar PostgreSQL. La contrasse
         <source>BulmaSetup</source>
         <translation>BulmaSetup</translation>
     </message>
-    <message encoding="UTF-8">
-        <location filename="bulmasetupbase.py" line="159"/>
-        <source>Gesti&oacute;n de Usuarios</source>
-        <translation>Gesti&oacute; d&apos;usuaris</translation>
+    <message>
+        <location filename="bulmasetupbase.py" line="219"/>
+        <source>Gestin de Usuarios</source>
+        <translation type="obsolete">Gesti d&apos;usuaris</translation>
     </message>
     <message>
         <location filename="bulmasetupbase.py" line="220"/>
@@ -279,28 +280,28 @@ p, li { white-space: pre-wrap; }
 &lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;/p&gt;
 &lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Administracion de Bases&lt;/p&gt;
 &lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;de Datos para BulmaGes&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation>&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+        <translation type="obsolete">&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
 p, li { white-space: pre-wrap; }
 &lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;Sans Serif&apos;; font-size:9pt; font-weight:400; font-style:normal; text-decoration:none;&quot;&gt;
 &lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;BulmaSetup v 0.11&lt;/span&gt;&lt;/p&gt;
 &lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Administraci&oacute; de Bases&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Administraci de Bases&lt;/p&gt;
 &lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;de Dades per a BulmaGes&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
-    <message encoding="UTF-8">
-        <location filename="bulmasetupbase.py" line="164"/>
-        <source>Gesti&oacute;n de Empresas</source>
-        <translation type="obsolete">Gesti&oacute; d&apos;empreses</translation>
+    <message>
+        <location filename="bulmasetupbase.py" line="224"/>
+        <source>Gestin de Empresas</source>
+        <translation type="obsolete">Gesti d&apos;Empreses</translation>
     </message>
     <message>
         <location filename="bulmasetupbase.py" line="225"/>
         <source>Nueva Empresa de Contabilidad</source>
         <translation>Nova empresa de comptabilitat</translation>
     </message>
-    <message encoding="UTF-8">
-        <location filename="bulmasetupbase.py" line="166"/>
-        <source>Nueva Empresa de Facturaci&oacute;n / TPV</source>
-        <translation>Nova empresa de facturaci&oacute;</translation>
+    <message>
+        <location filename="bulmasetupbase.py" line="226"/>
+        <source>Nueva Empresa de Facturacin / TPV</source>
+        <translation type="obsolete">Nova Empresa de Facturaci</translation>
     </message>
     <message>
         <location filename="bulmasetupbase.py" line="227"/>
@@ -310,7 +311,7 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="bulmasetupbase.ui" line="263"/>
         <source>Restaurar una Copia de Seguridad</source>
-        <translatio>Restaura una c&oagrave;pia de seguretat</translation>
+        <translation type="obsolete">Restaura una cpia de seguretat</translation>
     </message>
     <message>
         <location filename="bulmasetupbase.py" line="232"/>
@@ -330,7 +331,7 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="bulmasetupbase.py" line="229"/>
         <source>Restaurar copia de seguridad</source>
-        <translation>Restaura c&ograve;pia de seguretat</translation>
+        <translation>Restaura cpia de seguretat</translation>
     </message>
     <message>
         <location filename="bulmasetupbase.py" line="212"/>
@@ -346,32 +347,32 @@ p, li { white-space: pre-wrap; }
 &lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;Sans Serif&apos;; font-size:9pt; font-weight:400; font-style:normal; text-decoration:none;&quot;&gt;
 &lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;BulmaSetup v 0.12&lt;/span&gt;&lt;/p&gt;
 &lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Administraci&oacute;n de Bases&lt;/p&gt; &lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;de Dades per a BulmaGes&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
-    </message>
-    <message encoding="UTF-8">
-        <location filename="bulmasetupbase.py" line="219"/>
-        <source>Gesti&oacute;n de Usuarios</source>
-        <translation>Gesti&oacute; d&apos;usuaris</translation>
-    </message>
-    <message encoding="UTF-8">
-        <location filename="bulmasetupbase.py" line="224"/>
-        <source>Gesti&oacute;n de Empresas</source>
-        <translation>Gesti&acute; d&apos;Empreses</translation>
-    </message>
-    <message encoding="UTF-8">
-        <location filename="bulmasetupbase.py" line="226"/>
-        <source>Nueva Empresa de Facturaci&oacute;n / TPV</source>
-        <translation>Nova Empresa de Facturaci&oacute;</translation>
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Administracin de Bases&lt;/p&gt; &lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;de Dades per a BulmaGes&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <location filename="bulmasetupbase.py" line="230"/>
         <source>Crear Copia de Seguridad</source>
-        <translation>Crea C&oagrave;pia de Seguretat</translation>
+        <translation>Crea Cpia de Seguretat</translation>
     </message>
     <message>
         <location filename="bulmasetupbase.py" line="231"/>
         <source>Acerca de BulmaSetup</source>
         <translation>Quant a BulmaSetup</translation>
+    </message>
+    <message utf8="true">
+        <location filename="bulmasetupbase.py" line="219"/>
+        <source>Gestión de Usuarios</source>
+        <translation>Gestió d&apos;Usuaris</translation>
+    </message>
+    <message utf8="true">
+        <location filename="bulmasetupbase.py" line="224"/>
+        <source>Gestión de Empresas</source>
+        <translation>Gestió d&apos;Empreses</translation>
+    </message>
+    <message utf8="true">
+        <location filename="bulmasetupbase.py" line="226"/>
+        <source>Nueva Empresa de Facturación / TPV</source>
+        <translation>Nova Empresa de Facturació / TPV</translation>
     </message>
 </context>
 <context>
@@ -404,7 +405,7 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="modificarcontabilidadbase.py" line="361"/>
         <source>Version de la Base de Datos</source>
-        <translation>Versi&oacute; de la base de dades</translation>
+        <translation>Versi de la base de dades</translation>
     </message>
     <message>
         <location filename="modificarcontabilidadbase.py" line="356"/>
@@ -414,7 +415,7 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="modificarcontabilidadbase.py" line="358"/>
         <source>Mostrar todos los plugins o solo los instalados</source>
-        <translation>Mostra tots els plugins o nom&eacute;s els plugins insta&#320;lats</translation>
+        <translation>Mostra tots els plugins o noms els plugins instaŀlats</translation>
     </message>
     <message>
         <location filename="modificarcontabilidadbase.py" line="357"/>
@@ -429,12 +430,12 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="modificarcontabilidadbase.py" line="372"/>
         <source>Descripcion</source>
-        <translation>Descripci&oacute;</translation>
+        <translation>Descripci</translation>
     </message>
     <message>
         <location filename="modificarcontabilidadbase.py" line="373"/>
         <source>Version Instalada</source>
-        <translation>Versi&oacute; insta&#320;lada</translation>
+        <translation>Versi instaŀlada</translation>
     </message>
     <message>
         <location filename="modificarcontabilidadbase.py" line="374"/>
@@ -454,7 +455,7 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="modificarcontabilidadbase.py" line="379"/>
         <source>Hacer copia de seguridad</source>
-        <translation>Fes c&oacute;pia de seguretat</translation>
+        <translation>Fes cpia de seguretat</translation>
     </message>
     <message>
         <location filename="modificarcontabilidadbase.py" line="380"/>
@@ -489,7 +490,7 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="modificarcontabilidadbase.py" line="367"/>
         <source>...</source>
-        <translation type="unfinished">...</translation>
+        <translation>...</translation>
     </message>
     <message>
         <location filename="modificarcontabilidadbase.py" line="368"/>
@@ -507,7 +508,7 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="modificarfacturacionbase.py" line="378"/>
         <source>Nueva Facturacion</source>
-        <translation>Nova facturaci&oacute;</translation>
+        <translation>Nova facturaci</translation>
     </message>
     <message>
         <location filename="modificarfacturacionbase.py" line="382"/>
@@ -532,12 +533,12 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="modificarfacturacionbase.py" line="385"/>
         <source>Version de la Base de Datos</source>
-        <translation>Versi&oacute; de la base de dades</translation>
+        <translation>Versi de la base de dades</translation>
     </message>
     <message>
         <location filename="modificarfacturacionbase.py" line="209"/>
         <source>Instalar Soporte para TPV en esta empresa</source>
-        <translation type="obsolete">Insta&#320;la suport per a TPV</translation>
+        <translation type="obsolete">Instaŀla suport per a TPV</translation>
     </message>
     <message>
         <location filename="modificarfacturacionbase.py" line="379"/>
@@ -547,7 +548,7 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="modificarfacturacionbase.py" line="381"/>
         <source>Mostrar todos los plugins o solo los instalados</source>
-        <translation>Mostra tots els plugins o nom&eacute;s els plugins insta&#320;lats</translation>
+        <translation>Mostra tots els plugins o noms els plugins instaŀlats</translation>
     </message>
     <message>
         <location filename="modificarfacturacionbase.py" line="380"/>
@@ -562,12 +563,12 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="modificarfacturacionbase.py" line="401"/>
         <source>Descripcion</source>
-        <translation>Descripci&oacute;</translation>
+        <translation>Descripci</translation>
     </message>
     <message>
         <location filename="modificarfacturacionbase.py" line="402"/>
         <source>Version Instalada</source>
-        <translation>Versi&oacute; insta&#320;lada</translation>
+        <translation>Versi instaŀlada</translation>
     </message>
     <message>
         <location filename="modificarfacturacionbase.py" line="398"/>
@@ -602,7 +603,7 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="modificarfacturacionbase.py" line="408"/>
         <source>Hacer copia de seguridad</source>
-        <translation>Fes c&ograve;pia de seguretat</translation>
+        <translation>Fes cpia de seguretat</translation>
     </message>
     <message>
         <location filename="modificarfacturacionbase.py" line="386"/>
@@ -660,7 +661,7 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="modificarusuariobase.py" line="348"/>
         <source>Selecciona un Usuario</source>
-        <translation>Selecciona un usuari</translation>
+        <translation type="obsolete">Selecciona un usuari</translation>
     </message>
     <message>
         <location filename="modificarusuariobase.py" line="347"/>
@@ -680,7 +681,7 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="modificarusuariobase.ui" line="115"/>
         <source>Selecciona permisos para la Base de Datos</source>
-        <translation>Seleccioneu permisos per a la base de dades</translation>
+        <translation type="obsolete">Seleccioneu permisos per a la base de dades</translation>
     </message>
     <message>
         <location filename="modificarusuariobase.py" line="374"/>
@@ -705,7 +706,7 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="modificarusuariobase.ui" line="169"/>
         <source>Permisos para la tabla / tablas</source>
-        <translation>Permisos per a la taula / taules</translation>
+        <translation type="obsolete">Permisos per a la taula / taules</translation>
     </message>
     <message>
         <location filename="modificarusuariobase.py" line="370"/>
@@ -785,7 +786,7 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="modificarusuariobase.py" line="368"/>
         <source>Selecciona  la(s) Secuencia(s) donde deseas asignar los permisos</source>
-        <translation>Seleccioneu les seq&uuml;&egrave;ncies on desitgeu assignar els permisos</translation>
+        <translation>Seleccioneu les seqncies on desitgeu assignar els permisos</translation>
     </message>
     <message>
         <location filename="modificarusuariobase.py" line="375"/>
@@ -810,7 +811,7 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="modificarusuariobase.py" line="379"/>
         <source>Permisos de Secuencias</source>
-        <translation>Permisos de Seq&uuml;&egrave;ncies</translation>
+        <translation>Permisos de Seqncies</translation>
     </message>
     <message>
         <location filename="modificarusuariobase.py" line="346"/>
@@ -823,7 +824,7 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="nuevafacturacion.py" line="37"/>
         <source>Debe proporcionar un nombre a la base de datos que va a crearse</source>
-        <translation>Ha de proporcionar un nom a la base de dades que es crear&agrave;</translation>
+        <translation>Ha de proporcionar un nom a la base de dades que es crear</translation>
     </message>
 </context>
 <context>
@@ -854,7 +855,7 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="restbackupbase.py" line="55"/>
         <source>Restaurar Backup</source>
-        <translation>Restaura c&ograve;pia de seguretat</translation>
+        <translation>Restaura cpia de seguretat</translation>
     </message>
     <message>
         <location filename="restbackupbase.py" line="56"/>
@@ -879,7 +880,7 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="restbackupbase.py" line="60"/>
         <source>Cancelar</source>
-        <translation>Cance&#320;la</translation>
+        <translation>Canceŀla</translation>
     </message>
 </context>
 </TS>

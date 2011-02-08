@@ -26,6 +26,11 @@ class About(QtGui.QDialog, Ui_About):
 		      "Dise&ntilde;o Gr&aacute;fico:<br/> " \
 		      "<b>Ra&uacute;l Mart&iacute;nez.</b>&nbsp;<a href=\"mailto:elferrer@gmail.com\">elferrer@gmail.com</a><br/>" \
 		      "<p>" \
+		      "<p>" \
+		      "Traducciones:<br/> " \
+		      "<b>Henri Girard.</b>&nbsp;<a href=\"mailto:henrigirard@free.fr\">henrigirard@free.fr</a><br/>" \
+		      "<b>Walter Garcia-Fontes.</b>&nbsp;<a href=\"mailto:walter.garcia@upf.edu\">walter.garcia@upf.edu</a><br/>" \
+		      "<p>" \
 		      "Depuraci&oacute;n y Pruebas:<br/> " \
 		      "<b>Qu Zhioxiong.</b>&nbsp;<a href=\"mailto:santlong@gmail.com\">santlong@gmail.com</a><br/>" \
 		      "</p></center>";
