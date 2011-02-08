@@ -1,16 +1,15 @@
 #######
 #Plugins
 #######
-#README.es
-#20080501
+#README.fr
+#20110208
 
-Nombre: Catálogo de artículos
+Nombre: Catalogue d'article
 
 Biblioteca: libpluginbf_catalogo.so
 
-Descripción: <H1>Catálogo de Artículos</H1>
-<P>Permite la creación de un catálogo de artículos a través de la plantilla RML de catálogo de
-artículos.</P>
+Descripción: <H1>Catalogue d'article</H1>
+<P>Il permet la création d'un catalogue d'articles par le biais du RML de catalogue d'articles.</P>
 <B>Author:</B>Tomeu Borrás (tborras@conetxia.com)<BR>
 <HR>
 
