@@ -4,12 +4,12 @@
 #README.es
 #20080501
 
-Nombre: Pasar de albaranes a facturas de cliente
+Nombre: Passer de bulletins de livraison à des factures de client
 
 Biblioteca: libpluginbf_clientealbaranesfactura.so
 
-Descripción: <H1>Albaranes a clientes y facturas</H1>
-<P> Soporte para albaranes a clientes y facturas.</P>
+Descripción: <H1>Bulletins de livraison à factures de client</H1>
+<P>Support pour bulletins de livraison de clients et de factures. </P>
 <B>Author:</B>Tomeu Borrás (tborras@conetxia.com)<BR>
 <HR>
 
@@ -23,7 +23,7 @@ Dependencias: libpluginbf_cliente.so; libpluginbf_clientealbaran.so
 
 Incompatibles:
 
-Categorias: Facturacion generica;
+Categorias: Facturation generique;
 
 Orden: 622
 
