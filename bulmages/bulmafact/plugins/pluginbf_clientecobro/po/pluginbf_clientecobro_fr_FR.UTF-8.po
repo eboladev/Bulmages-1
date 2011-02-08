@@ -1,272 +1,291 @@
+# Header entry was created by Lokalize.
+#
+#: ui_cobrobase.h:410
+# aishen <aishen@free.fr>, 2011.
+msgid ""
+msgstr ""
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Mime-Version: 1.0"
+"Last-Translator: aishen <aishen@free.fr>\n"
+"PO-Revision-Date: 2011-02-08 20:17+0100\n"
+"Project-Id-Version: \n"
+"Language-Team: French <kde-i18n-doc@kde.org>\n"
+"Language: fr\n"
+"X-Generator: Lokalize 1.2\n"
+"MIME-Version: 1.0\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
 #: ui_cobrobase.h:410
 msgid "&Aceptar"
-msgstr ""
+msgstr "&Accepter"
 
 #: ui_cobrobase.h:411
 msgid "&Cancelar"
-msgstr ""
+msgstr "&Annuler"
 
 #: plugincobros.cpp:97
 msgid "&Cobros a clientes"
-msgstr ""
+msgstr "Encaissement de &Clients"
 
 #: plugincobros.cpp:105
 msgid "&Nuevo cobro a cliente"
-msgstr ""
+msgstr "&Nouvel encaissement"
 
 #: ui_cobroslistbase.h:455 ui_cobroslistbase.h:460
 msgid "Actualizar listado"
-msgstr ""
+msgstr "Actualiser la liste"
 
 #: cobroslist.cpp:324
 msgid "Apellidos del trabajador"
-msgstr ""
+msgstr "Nom du Salarié"
 
 #: cobroview.cpp:69 cobroslist.cpp:318
 msgid "Banco"
-msgstr ""
+msgstr "Banque"
 
 #: ui_cobroslistbase.h:374 ui_cobrobase.h:409
 msgid "Banco:"
-msgstr ""
+msgstr "Banque :"
 
 #: cobroslist.cpp:255 ui_cobroslistbase.h:407 ui_cobroslistbase.h:412
 #: ui_cobrobase.h:381 ui_cobrobase.h:386 ui_cobrobase.h:393 ui_cobrobase.h:398
 msgid "Borrar cobro"
-msgstr ""
+msgstr "Effacer l'encaissement"
 
 #: ui_cobroslistbase.h:465
 msgid "Buscar:"
-msgstr ""
+msgstr "Chercher :"
 
 #: cobroslist.cpp:312
 msgid "C.I.F."
-msgstr ""
+msgstr "C.I.F."
 
 #: cobroslist.cpp:317
 msgid "Cantidad"
-msgstr ""
+msgstr "Quantité"
 
 #: cobroview.cpp:62
 msgid "Cliente"
-msgstr ""
+msgstr "Client"
 
 #: cobroview.cpp:53 cobroslist.cpp:51 cobroslist.cpp:79
 msgid "Cliente:"
-msgstr ""
+msgstr "Client :"
 
 #: cobroview.cpp:58
 msgid "Cobro"
-msgstr ""
+msgstr "Encaissement"
 
 #: cobroslist.cpp:181 plugincobros.cpp:99 plugincobros.cpp:100
 msgid "Cobros a clientes"
-msgstr ""
+msgstr "Encaissement de Clients"
 
 #: ui_cobroslistbase.h:373
 msgid "Cobros de clientes"
-msgstr ""
+msgstr "Encaissement de Clients"
 
 #: ui_cobroslistbase.h:378
 msgid "Cobros efectivos"
-msgstr ""
+msgstr "Encaissements effectifs"
 
 #: ui_cobroslistbase.h:377
 msgid "Cobros previstos"
-msgstr ""
+msgstr "Encaissements prévus"
 
 #: cobroslist.cpp:321
 msgid "Comentarios"
-msgstr ""
+msgstr "Libellés"
 
 #: ui_cobroslistbase.h:443 ui_cobroslistbase.h:448
 msgid "Configurar listado"
-msgstr ""
+msgstr "Configurer la liste"
 
 #: ui_cobroslistbase.h:452
 msgid "Ctrl+B"
-msgstr ""
+msgstr "Ctrl+B"
 
 #: ui_cobroslistbase.h:416 ui_cobrobase.h:390
 msgid "Ctrl+D"
-msgstr ""
+msgstr "Ctrl+D"
 
 #: ui_cobroslistbase.h:404
 msgid "Ctrl+E"
-msgstr ""
+msgstr "Ctrl+E"
 
 #: ui_cobroslistbase.h:440
 msgid "Ctrl+F"
-msgstr ""
+msgstr "Ctrl+F"
 
 #: ui_cobrobase.h:402
 msgid "Ctrl+I"
-msgstr ""
+msgstr "Ctrl+I"
 
 #: ui_cobroslistbase.h:392
 msgid "Ctrl+N"
-msgstr ""
+msgstr "Ctrl+N"
 
 #: ui_cobroslistbase.h:428
 msgid "Ctrl+P"
-msgstr ""
+msgstr "Ctrl+P"
 
 #: ui_cobrobase.h:378
 msgid "Ctrl+S"
-msgstr ""
+msgstr "Ctrl+S"
 
 #: cobroslist.cpp:238
 msgid "Debe seleccionar una fila primero"
-msgstr ""
+msgstr "Vous devez sélectionner d'abord une fiche"
 
 #: cobroslist.cpp:197
 msgid "Debe seleccionar una linea"
-msgstr ""
+msgstr "Vous devez sélectionner une ligne"
 
 #: cobroview.cpp:68
 msgid "Descripcion del cobro"
-msgstr ""
+msgstr "Description de l'encaissement"
 
 #: ui_cobrobase.h:407
 msgid "Descripcion del cobro:"
-msgstr ""
+msgstr "Description de l'encaissement :"
 
 #: cobroslist.cpp:314
 msgid "Direccion de correo electronico"
-msgstr ""
+msgstr "Direction du courrier électronique"
 
 #: cobroslist.cpp:254 ui_cobroslistbase.h:395 ui_cobroslistbase.h:400
 msgid "Editar cobro"
-msgstr ""
+msgstr "Editer l'encaissement"
 
 #: cobroslist.cpp:211
 msgid "Error al borrar el cobro a cliente"
-msgstr ""
+msgstr "Erreur à l'effacement de l'encaissement d'un client"
 
 #: cobroview.cpp:75
 msgid "Error al crear el cobro"
-msgstr ""
+msgstr "Erreur en création de l'encaissement"
 
 #: ui_cobroslistbase.h:464
 msgid "F5"
-msgstr ""
+msgstr "F5"
 
 #: cobroslist.cpp:315
 msgid "Fecha de cobro"
-msgstr ""
+msgstr "Date d'encaissement "
 
 #: cobroview.cpp:65 cobroslist.cpp:316
 msgid "Fecha de vencimiento"
-msgstr ""
+msgstr "Date d'échéance"
 
 #: ui_cobrobase.h:406
 msgid "Fecha de vencimiento:"
-msgstr ""
+msgstr "Date d'échéance :"
 
 #: cobroview.cpp:64
 msgid "Fecha del cobro"
-msgstr ""
+msgstr "Date d'encaissement "
 
 #: ui_cobrobase.h:404
 msgid "Fecha del cobro:"
-msgstr ""
+msgstr "Date d'encaissement :"
 
 #: ui_cobroslistbase.h:375
 msgid "Fecha final:"
-msgstr ""
+msgstr "Date finale :"
 
 #: ui_cobroslistbase.h:376
 msgid "Fecha inicial:"
-msgstr ""
+msgstr "Date initiale :"
 
 #: ui_cobroslistbase.h:431 ui_cobroslistbase.h:436
 msgid "Filtrar cobros"
-msgstr ""
+msgstr "Filtrer l'encaissement"
 
 #: ui_cobrobase.h:369 ui_cobrobase.h:374
 msgid "Guardar cobro"
-msgstr ""
+msgstr "Sauvegarder l'encaissement"
 
 #: cobroslist.cpp:310
 msgid "ID cliente"
-msgstr ""
+msgstr "Id client"
 
 #: cobroslist.cpp:309
 msgid "ID cobro"
-msgstr ""
+msgstr "Id Encaissement"
 
 #: cobroslist.cpp:322
 msgid "ID trabajador"
-msgstr ""
+msgstr "Id Ouvrier"
 
 #: cobroview.cpp:61
 msgid "Id cobro"
-msgstr ""
+msgstr "Id Encaissement"
 
 #: ui_cobroslistbase.h:419 ui_cobroslistbase.h:424
 msgid "Imprimir listado"
-msgstr ""
+msgstr "Imprimer la liste"
 
 #: cobroslist.cpp:311
 msgid "Nombre"
-msgstr ""
+msgstr "Nom"
 
 #: cobroslist.cpp:323
 msgid "Nombre del trabajador"
-msgstr ""
+msgstr "Nom du Salarié"
 
 #: ui_cobroslistbase.h:383 ui_cobroslistbase.h:388
 msgid "Nuevo cobro"
-msgstr ""
+msgstr "Nouvel encaissement"
 
 #: plugincobros.cpp:107 plugincobros.cpp:108
 msgid "Nuevo cobro a cliente"
-msgstr ""
+msgstr "Nouvel encaissement"
 
 #: ui_cobrobase.h:365
 msgid "Nuevo cobro de cliente"
-msgstr ""
+msgstr "Nouvel encaissement"
 
 #: cobroslist.cpp:313
 msgid "Numero de telefono"
-msgstr ""
+msgstr "Numéro de téléphone"
 
 #: cobroview.cpp:63
 msgid "Prevision"
-msgstr ""
+msgstr "Prévision"
 
 #: cobroslist.cpp:320
 msgid "Prevision de cobro"
-msgstr ""
+msgstr "Prévision d'encaissement "
 
 #: ui_cobrobase.h:405
 msgid "Provision de fondos"
-msgstr ""
+msgstr "Provision de fonds"
 
 #: cobroview.cpp:66
 msgid "Referencia"
-msgstr ""
+msgstr "Référence"
 
 #: cobroslist.cpp:319
 msgid "Referencia del cobro"
-msgstr ""
+msgstr "Référence de l'encaissement"
 
 #: ui_cobrobase.h:403
 msgid "Referencia:"
-msgstr ""
+msgstr "Référence :"
 
 #: cobroview.cpp:121
 msgid "Tiene que guardar el documento antes de poder imprimirlo."
-msgstr ""
+msgstr "Vous devez sauvegarder le document avant de pouvoir l'imprimer."
 
 #: cobroview.cpp:67
 msgid "Total cobro"
-msgstr ""
+msgstr "Encaissement total"
 
 #: ui_cobrobase.h:408
 msgid "Total cobro:"
-msgstr ""
+msgstr "Encaissement total :"
 
 #: ui_cobroslistbase.h:379
 msgid "Total:"
-msgstr ""
+msgstr "Total :"
+
