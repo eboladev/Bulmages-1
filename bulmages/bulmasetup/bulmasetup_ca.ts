@@ -44,7 +44,7 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="aboutbase.py" line="300"/>
         <source>Acuerdo de &amp;licencia</source>
-        <translation>Acord de &amp;llicncia</translation>
+        <translation>Acord de &amp;llicència</translation>
     </message>
     <message>
         <location filename="aboutbase.py" line="301"/>
