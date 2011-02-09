@@ -9,7 +9,7 @@ Nombre: Alumnes
 Biblioteca: libpluginbf_alumno.so
 
 Descripción: <H1> Alumnes</H1>
-<P>Gestionar els alumnes d'una APA.</P>
+<P>Gestionar els alumnes d'una AMPA.</P>
 <B>Autor:</B>Tomeu Borrás (tborras@conetxia.com)<BR>
 <HR>
 
@@ -25,7 +25,7 @@ Incompatibles:
 
 Reports: alumno.rml; impers_alumno_faltas_de_asistencia.rml; blform_ActividadView.qs; blform_ClaseView.qs
 
-Categorias: Asociacions de pares de alumnes; Experimentals;
+Categorias: Associacions de pares de alumnes; Experimentals;
 
 Orden: 203
 
