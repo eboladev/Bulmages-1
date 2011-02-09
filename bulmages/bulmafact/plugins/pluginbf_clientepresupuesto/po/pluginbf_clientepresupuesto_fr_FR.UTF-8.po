@@ -1,7 +1,26 @@
+# Header entry was created by Lokalize.
+#
+#: listdescpresupuestoview.cpp:44 listlinpresupuestoview.cpp:56
+#: presupuestoview.cpp:71
+# aishen <aishen@free.fr>, 2011.
+msgid ""
+msgstr ""
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Mime-Version: 1.0"
+"Last-Translator: aishen <aishen@free.fr>\n"
+"PO-Revision-Date: 2011-02-09 12:41+0100\n"
+"Project-Id-Version: \n"
+"Language-Team: French <kde-i18n-doc@kde.org>\n"
+"Language: fr\n"
+"X-Generator: Lokalize 1.2\n"
+"MIME-Version: 1.0\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
 #: listdescpresupuestoview.cpp:44 listlinpresupuestoview.cpp:56
 #: presupuestoview.cpp:71
 msgid "% Descuento"
-msgstr ""
+msgstr "% Remise"
 
 #: listlinpresupuestoview.cpp:54
 msgid "% I.V.A."
@@ -650,3 +669,4 @@ msgstr ""
 #: ui_albaranclientebase.h:741 ui_albaranclientebase.h:746
 msgid "Ver pedidos con la misma referencia"
 msgstr ""
+
