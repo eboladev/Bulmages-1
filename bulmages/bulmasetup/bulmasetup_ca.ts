@@ -311,7 +311,7 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="bulmasetupbase.ui" line="263"/>
         <source>Restaurar una Copia de Seguridad</source>
-        <translation type="obsolete">Restaura una cpia de seguretat</translation>
+        <translation type="obsolete">Restaura una còpia de seguretat</translation>
     </message>
     <message>
         <location filename="bulmasetupbase.py" line="232"/>
@@ -331,7 +331,7 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="bulmasetupbase.py" line="229"/>
         <source>Restaurar copia de seguridad</source>
-        <translation>Restaura cpia de seguretat</translation>
+        <translation>Restaura còpia de seguretat</translation>
     </message>
     <message>
         <location filename="bulmasetupbase.py" line="212"/>
@@ -352,7 +352,7 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="bulmasetupbase.py" line="230"/>
         <source>Crear Copia de Seguridad</source>
-        <translation>Crea Cpia de Seguretat</translation>
+        <translation>Crea Còpia de Seguretat</translation>
     </message>
     <message>
         <location filename="bulmasetupbase.py" line="231"/>
@@ -455,7 +455,7 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="modificarcontabilidadbase.py" line="379"/>
         <source>Hacer copia de seguridad</source>
-        <translation>Fes cpia de seguretat</translation>
+        <translation>Fes còpia de seguretat</translation>
     </message>
     <message>
         <location filename="modificarcontabilidadbase.py" line="380"/>
@@ -603,7 +603,7 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="modificarfacturacionbase.py" line="408"/>
         <source>Hacer copia de seguridad</source>
-        <translation>Fes cpia de seguretat</translation>
+        <translation>Fes còpia de seguretat</translation>
     </message>
     <message>
         <location filename="modificarfacturacionbase.py" line="386"/>
@@ -855,7 +855,7 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="restbackupbase.py" line="55"/>
         <source>Restaurar Backup</source>
-        <translation>Restaura cpia de seguretat</translation>
+        <translation>Restaura còpia de seguretat</translation>
     </message>
     <message>
         <location filename="restbackupbase.py" line="56"/>
