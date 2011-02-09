@@ -1107,10 +1107,10 @@ BEGIN
 		-- Buscamos el codigo de cuenta que vaya a corresponderle
 		-- El codigo esta formado por una parte fija y otra que se calcula automaticamente.
 		-- Se evita de esta manera la limitacion a 100 cuentas.
-		SELECT INTO bs substring(max(codigo::BIGINT)::text from 6) as cod FROM bc_cuenta WHERE codigo LIKE '43000%';
+		SELECT INTO bs MAX(codigo::BIGINT) as cod FROM bc_cuenta WHERE codigo LIKE '43000%' ;
 
 		IF bs.cod IS NOT NULL THEN
-			codcta := '430000' || (bs.cod::integer + 1)::text;
+			codcta := bs.cod + 1;
 		ELSE
 			codcta := '4300001';
 		END IF;
@@ -1254,7 +1254,7 @@ BEGIN
 
 	IF (NEW.idcuentaproveedor IS NULL) OR (cs.p_idcuenta = 0) THEN
 		-- Buscamos el codigo de cuenta que vaya a corresponderle
-		SELECT INTO bs MAX(codigo::INTEGER) as cod FROM bc_cuenta WHERE codigo LIKE '40000%' ;
+		SELECT INTO bs MAX(codigo::BIGINT) as cod FROM bc_cuenta WHERE codigo LIKE '40000%' ;
 
 		IF bs.cod IS NOT NULL THEN
 			codcta := bs.cod + 1;
@@ -2115,9 +2115,9 @@ DECLARE
 BEGIN
 	SELECT INTO as * FROM configuracion WHERE nombre=''PluginBf_SincroBulmaCont'';
 	IF FOUND THEN
-		UPDATE CONFIGURACION SET valor=''0.9.1-002'' WHERE nombre=''PluginBf-SincroBulmaCont'';
+		UPDATE CONFIGURACION SET valor=''0.9.1-003'' WHERE nombre=''PluginBf-SincroBulmaCont'';
 	ELSE
-		INSERT INTO configuracion (nombre, valor) VALUES (''PluginBf_SincroBulmaCont'', ''0.9.1-002'');
+		INSERT INTO configuracion (nombre, valor) VALUES (''PluginBf_SincroBulmaCont'', ''0.9.1-003'');
 	END IF;
 	RETURN 0;
 END;
