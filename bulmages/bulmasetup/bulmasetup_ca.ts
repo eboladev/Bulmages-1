@@ -11,7 +11,7 @@
     <message>
         <location filename="aboutbase.py" line="291"/>
         <source>BulmaSetup GPL - Version 0.12.0</source>
-        <translation>BulmaSetupa GPL - Versi 0.12.0</translation>
+        <translation>BulmaSetup GPL - Versió 0.12.0</translation>
     </message>
     <message>
         <location filename="aboutbase.py" line="292"/>
@@ -405,7 +405,7 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="modificarcontabilidadbase.py" line="361"/>
         <source>Version de la Base de Datos</source>
-        <translation>Versi de la base de dades</translation>
+        <translation>Versió de la base de dades</translation>
     </message>
     <message>
         <location filename="modificarcontabilidadbase.py" line="356"/>
@@ -533,7 +533,7 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="modificarfacturacionbase.py" line="385"/>
         <source>Version de la Base de Datos</source>
-        <translation>Versi de la base de dades</translation>
+        <translation>Versió de la base de dades</translation>
     </message>
     <message>
         <location filename="modificarfacturacionbase.py" line="209"/>
@@ -568,7 +568,7 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="modificarfacturacionbase.py" line="402"/>
         <source>Version Instalada</source>
-        <translation>Versi instaŀlada</translation>
+        <translation>Versió instaŀlada</translation>
     </message>
     <message>
         <location filename="modificarfacturacionbase.py" line="398"/>
