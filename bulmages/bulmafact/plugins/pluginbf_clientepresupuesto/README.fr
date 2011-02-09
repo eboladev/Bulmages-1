@@ -1,14 +1,14 @@
 bu#######
 #Plugins
 #######
-#README.es
-#20080501
+#README.fr
+#20110209
 
-Nombre: Presupuestos a clientes
+Nombre: Budgets clients
 
 Biblioteca: libpluginbf_clientepresupuesto.so
 
-Descripción:  <H1><IMG SRC="@CMAKE_INSTALL_PREFIX@/share/bulmages/imagesrc/images/oxygen/actions/client_quote.svg" WIDTH="100"/><BR>Presupuestos a clientes</H1>
+Descripción:  <H1><IMG SRC="@CMAKE_INSTALL_PREFIX@/share/bulmages/imagesrc/images/oxygen/actions/client_quote.svg" WIDTH="100"/><BR>Budgets clients</H1>
 <P>Soporte para emisión de presupuestos a clientes.</P>
 <P>Al cargar el plugin tendremos dos nuevas entradas de meńu <B>Listado de Presupuestos <IMG SRC="@CMAKE_INSTALL_PREFIX@/share/bulmages/imagesrc/images/oxygen/actions/client_quote_list.svg" WIDTH="22"/></B> desde la que accederemos al listado de presupuestos emitidos y <B>Nuevo Presupuesto <IMG SRC="@CMAKE_INSTALL_PREFIX@/share/bulmages/imagesrc/images/oxygen/actions/client_quote.svg" WIDTH="22"/></B> desde el que podremos emitir un nuevo presupuesto.</P>
 <P> Mediante el listado de presupuestos podremos controlar todos los presupuestos emitidos, editarlos y borrarlos. Para ello podemos utilizar la barra de botones superior del listado.</P>

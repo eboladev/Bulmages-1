@@ -8,7 +8,7 @@ Nombre: Commandes clients
 
 Biblioteca: libpluginbf_clientepedido.so
 
-Descripción:  <H1><IMG SRC="@CMAKE_INSTALL_PREFIX@/share/bulmages/imagesrc/images/oxygen/actions/client_delivery_order.svg" WIDTH="100"/><BR>Pedidos de clientes</H1>
+Descripción:  <H1><IMG SRC="@CMAKE_INSTALL_PREFIX@/share/bulmages/imagesrc/images/oxygen/actions/client_delivery_order.svg" WIDTH="100"/><BR>Commandes clients</H1>
 <P>Support pour la création de commandes clients.</P>
 <P>En chargeant le plugin nous aurons deux nouvelles entrées de menu <B>Liste de Commandes <IMG SRC="@CMAKE_INSTALL_PREFIX@/share/bulmages/imagesrc/images/oxygen/actions/client_delivery_order_list.svg" WIDTH="22"/></B>à partir de laquelle nous accéderons au listing de commandes émises et<B>Nouvelle commande<IMG SRC="@CMAKE_INSTALL_PREFIX@/share/bulmages/imagesrc/images/oxygen/actions/client_delivery_order.svg" WIDTH="22"/></B> de là nous pourrons émettre une nouvelle facture.</P>
 <H2><IMG SRC="@CMAKE_INSTALL_PREFIX@/share/bulmages/imagesrc/images/oxygen/actions/client_delivery_order.svg" WIDTH="22"/>Liste de commandes</H2>
