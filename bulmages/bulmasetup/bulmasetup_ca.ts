@@ -58,7 +58,7 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="about.py" line="39"/>
         <source>&lt;center&gt;&lt;p&gt;&lt;p&gt;&lt;h2&gt;Entidades que dan soporte al programa:&lt;/h2&gt;&lt;/p&gt;&lt;b&gt;Conetxia:&lt;/b&gt; &lt;a href=&quot;http://www.conetxia.com&quot;&gt;http://www.conetxia.com&lt;/a&gt;&lt;br /&gt;&lt;b&gt;Todo-Redes:&lt;/b&gt; &lt;a href=&quot;http://www.todo-redes.com&quot;&gt;http://www.todo-redes.com&lt;/a&gt;&lt;/p&gt;&lt;/center&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;center&gt;&lt;p&gt;&lt;p&gt;&lt;h2&gt;Entitats que donen soport al programa:&lt;/h2&gt;&lt;/p&gt;&lt;b&gt;Conetxia:&lt;/b&gt; &lt;a href=&quot;http://www.conetxia.com&quot;&gt;http://www.conetxia.com&lt;/a&gt;&lt;br /&gt;&lt;b&gt;Todo-Redes:&lt;/b&gt; &lt;a href=&quot;http://www.todo-redes.com&quot;&gt;http://www.todo-redes.com&lt;/a&gt;&lt;/p&gt;&lt;/center&gt;</translation>
     </message>
 </context>
 <context>
@@ -152,19 +152,19 @@ p, li { white-space: pre-wrap; }
         <source>Desea agregar el usuario &lt;b&gt;root&lt;/b&gt; a PostgreSQL? 
  
  Este usuario es necesario para poder administrar PostgreSQL. La contraseï¿½ de este usuario sera &apos;password&apos;. Borre este usuario al terminar la configuracion.</source>
-        <translation type="obsolete">Desitgeu agregar l&apos;usuari &lt;b&gt;root&lt;/b&gt; a PostgreSQL 
+        <translation type="obsolete">Desitgeu afegir l&apos;usuari &lt;b&gt;root&lt;/b&gt; a PostgreSQL 
 
 Aquest usuari s necessari per poder administrar PostgreSQL. La contrassenya d&apos;aquest usuari ser &apos;password&apos;. Esborreu aquest usuari en acabar la configuraci.</translation>
     </message>
     <message>
         <location filename="empresa.py" line="163"/>
         <source>Desea agregar el usuario &lt;b&gt;root&lt;/b&gt; a PostgreSQL?&lt;br&gt;Este usuario es necesario para poder administrar PostgreSQL.&lt;br&gt;La contrase&amp;ntilde;a de este usuario sera &apos;password&apos;.&lt;br&gt;&lt;u&gt;&lt;b&gt;Borre este usuario al terminar la configuracion de BulmaGes, ya que genera un grave agujero de seguridad.&lt;/b&gt;&lt;/u&gt;</source>
-        <translation>Desitgeu agregar l&apos;usuari &lt;b&gt;root&lt;/b&gt; a PostgreSQL?&lt;br&gt;Aquest usuari s necessari per poder administrar PostgreSQL.&lt;br&gt;&lt;;u&gt;&lt;b&gt;Esborreu aquest usuari en acabar la configuraci de BulmaGes, ja que genera un greu forat de seguretat.&lt;/b&gt;&lt;/u&gt;</translation>
+        <translation>Desitgeu afegir l&apos;usuari &lt;b&gt;root&lt;/b&gt; a PostgreSQL?&lt;br&gt;Aquest usuari s necessari per poder administrar PostgreSQL.&lt;br&gt;&lt;;u&gt;&lt;b&gt;Esborreu aquest usuari en acabar la configuració de BulmaGes, ja que genera un greu forat de seguretat.&lt;/b&gt;&lt;/u&gt;</translation>
     </message>
     <message>
         <location filename="listempresas.py" line="74"/>
         <source>Desea actualizar todas las empresas. Esta operacion puede tardar un ratito largo</source>
-        <translation>Desitgeu actualitzar totes les empreses? Aquesta operaci pot tardar una estoneta llarga</translation>
+        <translation>Desitgeu actualitzar totes les empreses? Aquesta operació pot tardar una estoneta llarga</translation>
     </message>
 </context>
 <context>
@@ -202,17 +202,17 @@ Aquest usuari s necessari per poder administrar PostgreSQL. La contrassenya d&ap
     <message>
         <location filename="guardarbackup.py" line="56"/>
         <source>Selecciona la carpeta de destino del Backup</source>
-        <translation type="unfinished"></translation>
+        <translation>Seleccioneu la carpeta de destí del Backup</translation>
     </message>
     <message>
         <location filename="guardarbackup.py" line="86"/>
         <source>No existe el archivo de configuracion: &lt;b&gt;/etc/bulmages/</source>
-        <translation type="unfinished"></translation>
+        <translation>No existeix el fitxer de configuració &lt;b&gt;/etc/bulmages/</translation>
     </message>
     <message>
         <location filename="guardarbackup.py" line="111"/>
         <source>&lt;b&gt;Backup guardado satisfactoriamente en : </source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;b&gt;Backup desat satisfactòriament a :</translation>
     </message>
 </context>
 <context>
@@ -240,7 +240,7 @@ Aquest usuari s necessari per poder administrar PostgreSQL. La contrassenya d&ap
     <message>
         <location filename="listempresasbase.py" line="117"/>
         <source>Version</source>
-        <translation>Versi</translation>
+        <translation>Versió</translation>
     </message>
     <message>
         <location filename="listempresasbase.py" line="118"/>
@@ -273,7 +273,7 @@ Aquest usuari s necessari per poder administrar PostgreSQL. La contrassenya d&ap
     <message>
         <location filename="bulmasetupbase.py" line="219"/>
         <source>Gestin de Usuarios</source>
-        <translation type="obsolete">Gesti d&apos;usuaris</translation>
+        <translation>Gestió d&apos;usuaris</translation>
     </message>
     <message>
         <location filename="bulmasetupbase.py" line="220"/>
@@ -315,7 +315,7 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="bulmasetupbase.py" line="224"/>
         <source>Gestin de Empresas</source>
-        <translation type="obsolete">Gesti d&apos;Empreses</translation>
+        <translation type="obsolete">Gestió d&apos;Empreses</translation>
     </message>
     <message>
         <location filename="bulmasetupbase.py" line="225"/>
@@ -325,7 +325,7 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="bulmasetupbase.py" line="226"/>
         <source>Nueva Empresa de Facturacin / TPV</source>
-        <translation type="obsolete">Nova Empresa de Facturaci</translation>
+        <translation type="obsolete">Nova Empresa de Facturació</translation>
     </message>
     <message>
         <location filename="bulmasetupbase.py" line="227"/>
@@ -454,7 +454,7 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="modificarcontabilidadbase.py" line="364"/>
         <source>Descripcion</source>
-        <translation>Descripci</translation>
+        <translation>Descripció</translation>
     </message>
     <message>
         <location filename="modificarcontabilidadbase.py" line="365"/>
@@ -532,7 +532,7 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="modificarfacturacionbase.py" line="374"/>
         <source>Nueva Facturacion</source>
-        <translation>Nova facturaci</translation>
+        <translation>Nova facturació</translation>
     </message>
     <message>
         <location filename="modificarfacturacionbase.py" line="378"/>
@@ -587,7 +587,7 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="modificarfacturacionbase.py" line="393"/>
         <source>Descripcion</source>
-        <translation>Descripci</translation>
+        <translation>Descripció</translation>
     </message>
     <message>
         <location filename="modificarfacturacionbase.py" line="394"/>
@@ -810,7 +810,7 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="modificarusuariobase.py" line="368"/>
         <source>Selecciona  la(s) Secuencia(s) donde deseas asignar los permisos</source>
-        <translation>Seleccioneu les seqncies on desitgeu assignar els permisos</translation>
+        <translation>Seleccioneu les seqüències on desitgeu assignar els permisos</translation>
     </message>
     <message>
         <location filename="modificarusuariobase.py" line="375"/>
@@ -835,7 +835,7 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="modificarusuariobase.py" line="379"/>
         <source>Permisos de Secuencias</source>
-        <translation>Permisos de Seqncies</translation>
+        <translation>Permisos de Seqüències</translation>
     </message>
     <message>
         <location filename="modificarusuariobase.py" line="346"/>
@@ -848,7 +848,7 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="nuevafacturacion.py" line="37"/>
         <source>Debe proporcionar un nombre a la base de datos que va a crearse</source>
-        <translation>Ha de proporcionar un nom a la base de dades que es crear</translation>
+        <translation>Heu de proporcionar un nom a la base de dades que es crearà</translation>
     </message>
 </context>
 <context>
