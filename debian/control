@@ -59,7 +59,7 @@ Description: Spanish invoicing program
 
 Package: bulmages-servers-admin
 Architecture: all
-Depends: ${shlibs:Depends}, postgresql-client (>= 8.2.0),python-psycopg2, postgresql (>= 8.2.0)
+Depends: ${shlibs:Depends}, postgresql-client (>= 8.2.0),python-psycopg2, postgresql (>= 8.2.0), bulmages
 Conflicts: bulmacont-server (<= 0.10), bulmafact-server (<= 0.10), bulmages-server (<= 0.11), bulmages-admin (<= 0.11)
 Replaces: bulmages-admin, bulmages-servers
 Description: Spanish accounting program server
