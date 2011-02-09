@@ -1,4 +1,4 @@
 #CobrosListBase #mui_list {
-	background-image: url(@CMAKE_INSTALL_PREFIX@/share/bulmages/images/es_ES/pluginbf_clientecobro-list.png);
+	background-image: url(@CMAKE_INSTALL_PREFIX@/share/bulmages/images/fr_FR/pluginbf_clientecobro-list.png);
 }
 
