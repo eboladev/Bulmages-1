@@ -16,7 +16,7 @@ class About(QtGui.QDialog, Ui_About):
 
 	str_sobre = "<br /><br /><br /><br /><center><h2>BulmaSetup GPL</h2></center>";
 	
-	str_autores = "<center><h2>Autores de BulmaSetup</h2>" \
+	str_autores = QtGui.QApplication.translate("About","<center><h2>Autores de BulmaSetup</h2>" \
 		      "<p><p>" \
 		      "Programaci&oacute;n:<br/> " \
 		      "<b>Tomeu Borr&aacute;s.</b>&nbsp;<a href=\"mailto:tborras@conetxia.com\">tborras@conetxia.com</a><br/>" \
@@ -33,16 +33,16 @@ class About(QtGui.QDialog, Ui_About):
 		      "<p>" \
 		      "Depuraci&oacute;n y Pruebas:<br/> " \
 		      "<b>Qu Zhioxiong.</b>&nbsp;<a href=\"mailto:santlong@gmail.com\">santlong@gmail.com</a><br/>" \
-		      "</p></center>";
+		      "</p></center>", None, QtGui.QApplication.UnicodeUTF8);
 
 
-	str_soporte = "<center><p>" \
+	str_soporte = QtGui.QApplication.translate("About","<center><p>" \
 		      "<p><h2>Entidades que dan soporte al programa:</h2></p>" \
 		      "<b>Conetxia:</b> <a href=\"http://www.conetxia.com\">" \
 		      "http://www.conetxia.com</a><br />" \
 		      "<b>Todo-Redes:</b> <a href=\"http://www.todo-redes.com\">" \
 		      "http://www.todo-redes.com</a>" \
-		      "</p></center>";
+		      "</p></center>", None, QtGui.QApplication.UnicodeUTF8);
 
 	str_licencia = "<P> " \
 		      "<H2>GNU GENERAL PUBLIC LICENSE</H2>  " \

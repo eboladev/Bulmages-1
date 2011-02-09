@@ -53,7 +53,7 @@ class GuardarBackup(Ui_GuardarBackup, Empresa):
 	      break
 	    i = i + 1 
 	    
-	self.directorio = QFileDialog.getExistingDirectory(self, "Selecciona la carpeta de destino del Backup","/home")
+	self.directorio = QFileDialog.getExistingDirectory(self, QtGui.QApplication.translate("GuardarBackup","Selecciona la carpeta de destino del Backup", None, QtGui.QApplication.UnicodeUTF8),"/home")
 	self.command = 'pg_dump -f ' + '/etc/bulmages/' + self.database + '.sql ' + self.database
         self.proceso.start(self.command)
         self.proceso.waitForFinished(-1)
@@ -74,7 +74,7 @@ class GuardarBackup(Ui_GuardarBackup, Empresa):
 	  if os.path.exists('/etc/bulmages/' + self.conffact):
 	    self.quehehecho = 1
 	  else:
-	    error.setText('No existe el archivo de configuracion: <b>/etc/bulmages/' + self.conffact + '</b>')
+	    error.setText(QtGui.QApplication.translate("GuardarBackup",'No existe el archivo de configuracion: <b>/etc/bulmages/', None, QtGui.QApplication.UnicodeUTF8) + self.conffact + '</b>')
 	    error.exec_()
 	  if os.path.exists('/etc/bulmages/' + self.conftpv):
 	    self.quehehecho = 2
@@ -83,7 +83,7 @@ class GuardarBackup(Ui_GuardarBackup, Empresa):
 	  if os.path.exists('/etc/bulmages/' + self.confcont):
 	    self.quehehecho = 3
 	  else:
-	    error.setText('No existe el archivo de configuracion: <b>/etc/bulmages/' + self.confcont + '</b>')
+	    error.setText(QtGui.QApplication.translate("GuardarBackup",'No existe el archivo de configuracion: <b>/etc/bulmages/', None, QtGui.QApplication.UnicodeUTF8) + self.confcont + '</b>')
             error.exec_()
 
 	if self.quehehecho == 1:
@@ -108,7 +108,7 @@ class GuardarBackup(Ui_GuardarBackup, Empresa):
 	yasta.setWindowTitle('Guardar Backup')
 	yasta.setIcon(QtGui.QMessageBox.Information)
 	yasta.addButton(Yes, QtGui.QMessageBox.AcceptRole)
-	yasta.setText('<b>Backup guardado satisfactoriamente en : ' + self.directorio + '</b>')
+	yasta.setText(QtGui.QApplication.translate("GuardarBackup",'<b>Backup guardado satisfactoriamente en : ', None, QtGui.QApplication.UnicodeUTF8) + self.directorio + '</b>')
 	yasta.exec_()
 
 	self.accept()

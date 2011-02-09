@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE TS>
-<TS version="2.0" language="ca_ES">
+<!DOCTYPE TS><TS version="1.1" language="ca_ES">
 <context>
     <name>About</name>
     <message>
@@ -50,6 +49,16 @@ p, li { white-space: pre-wrap; }
         <location filename="aboutbase.py" line="301"/>
         <source>&amp;Cerrar</source>
         <translation>&amp;Tancar</translation>
+    </message>
+    <message>
+        <location filename="about.py" line="19"/>
+        <source>&lt;center&gt;&lt;h2&gt;Autores de BulmaSetup&lt;/h2&gt;&lt;p&gt;&lt;p&gt;Programaci&amp;oacute;n:&lt;br/&gt; &lt;b&gt;Tomeu Borr&amp;aacute;s.&lt;/b&gt;&amp;nbsp;&lt;a href=&quot;mailto:tborras@conetxia.com&quot;&gt;tborras@conetxia.com&lt;/a&gt;&lt;br/&gt;&lt;b&gt;Toni &amp;Aacute;lvarez. &lt;/b&gt;&amp;nbsp;&lt;a href=&quot;mailto:t.alvarezpascual@gmail.com&quot;&gt;t.alvarezpascual@gmail.com&lt;/a&gt;&lt;br/&gt;&lt;b&gt;Arturo Mart&amp;iacute;n. &lt;/b&gt;&amp;nbsp;&lt;a href=&quot;mailto:amartin@conetxia.com&quot;&gt;amartin@conetxia.com&lt;/a&gt;&lt;br/&gt;&lt;p&gt;Dise&amp;ntilde;o Gr&amp;aacute;fico:&lt;br/&gt; &lt;b&gt;Ra&amp;uacute;l Mart&amp;iacute;nez.&lt;/b&gt;&amp;nbsp;&lt;a href=&quot;mailto:elferrer@gmail.com&quot;&gt;elferrer@gmail.com&lt;/a&gt;&lt;br/&gt;&lt;p&gt;&lt;p&gt;Traducciones:&lt;br/&gt; &lt;b&gt;Henri Girard.&lt;/b&gt;&amp;nbsp;&lt;a href=&quot;mailto:henrigirard@free.fr&quot;&gt;henrigirard@free.fr&lt;/a&gt;&lt;br/&gt;&lt;b&gt;Walter Garcia-Fontes.&lt;/b&gt;&amp;nbsp;&lt;a href=&quot;mailto:walter.garcia@upf.edu&quot;&gt;walter.garcia@upf.edu&lt;/a&gt;&lt;br/&gt;&lt;p&gt;Depuraci&amp;oacute;n y Pruebas:&lt;br/&gt; &lt;b&gt;Qu Zhioxiong.&lt;/b&gt;&amp;nbsp;&lt;a href=&quot;mailto:santlong@gmail.com&quot;&gt;santlong@gmail.com&lt;/a&gt;&lt;br/&gt;&lt;/p&gt;&lt;/center&gt;</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="about.py" line="39"/>
+        <source>&lt;center&gt;&lt;p&gt;&lt;p&gt;&lt;h2&gt;Entidades que dan soporte al programa:&lt;/h2&gt;&lt;/p&gt;&lt;b&gt;Conetxia:&lt;/b&gt; &lt;a href=&quot;http://www.conetxia.com&quot;&gt;http://www.conetxia.com&lt;/a&gt;&lt;br /&gt;&lt;b&gt;Todo-Redes:&lt;/b&gt; &lt;a href=&quot;http://www.todo-redes.com&quot;&gt;http://www.todo-redes.com&lt;/a&gt;&lt;/p&gt;&lt;/center&gt;</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -138,7 +147,7 @@ p, li { white-space: pre-wrap; }
 </context>
 <context>
     <name>Empresa</name>
-    <message utf8="true">
+    <message encoding="UTF-8">
         <location filename="empresa.py" line="33"/>
         <source>Desea agregar el usuario &lt;b&gt;root&lt;/b&gt; a PostgreSQL? 
  
@@ -189,6 +198,21 @@ Aquest usuari s necessari per poder administrar PostgreSQL. La contrassenya d&ap
         <location filename="guardarbackupbase.py" line="87"/>
         <source>Tipo</source>
         <translation>Tipus</translation>
+    </message>
+    <message>
+        <location filename="guardarbackup.py" line="56"/>
+        <source>Selecciona la carpeta de destino del Backup</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="guardarbackup.py" line="86"/>
+        <source>No existe el archivo de configuracion: &lt;b&gt;/etc/bulmages/</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="guardarbackup.py" line="111"/>
+        <source>&lt;b&gt;Backup guardado satisfactoriamente en : </source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -359,17 +383,17 @@ p, li { white-space: pre-wrap; }
         <source>Acerca de BulmaSetup</source>
         <translation>Quant a BulmaSetup</translation>
     </message>
-    <message utf8="true">
+    <message encoding="UTF-8">
         <location filename="bulmasetupbase.py" line="219"/>
         <source>Gestión de Usuarios</source>
         <translation>Gestió d&apos;Usuaris</translation>
     </message>
-    <message utf8="true">
+    <message encoding="UTF-8">
         <location filename="bulmasetupbase.py" line="224"/>
         <source>Gestión de Empresas</source>
         <translation>Gestió d&apos;Empreses</translation>
     </message>
-    <message utf8="true">
+    <message encoding="UTF-8">
         <location filename="bulmasetupbase.py" line="226"/>
         <source>Nueva Empresa de Facturación / TPV</source>
         <translation>Nova Empresa de Facturació / TPV</translation>
@@ -378,127 +402,127 @@ p, li { white-space: pre-wrap; }
 <context>
     <name>ModificarContabilidadBase</name>
     <message>
-        <location filename="modificarcontabilidadbase.py" line="355"/>
+        <location filename="modificarcontabilidadbase.py" line="351"/>
         <source>Contabilidad</source>
         <translation>Comptabilitat</translation>
     </message>
     <message>
-        <location filename="modificarcontabilidadbase.py" line="359"/>
+        <location filename="modificarcontabilidadbase.py" line="355"/>
         <source>Nombre Empresa</source>
         <translation>Nom empresa</translation>
     </message>
     <message>
-        <location filename="modificarcontabilidadbase.py" line="376"/>
+        <location filename="modificarcontabilidadbase.py" line="368"/>
         <source>..</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="modificarcontabilidadbase.py" line="360"/>
+        <location filename="modificarcontabilidadbase.py" line="356"/>
         <source>Nombre Base de Datos</source>
         <translation>Nom base de dades</translation>
     </message>
     <message>
-        <location filename="modificarcontabilidadbase.py" line="366"/>
+        <location filename="modificarcontabilidadbase.py" line="358"/>
         <source>Actualizar Base de Datos</source>
         <translation>Actualitza base de dades</translation>
     </message>
     <message>
-        <location filename="modificarcontabilidadbase.py" line="361"/>
+        <location filename="modificarcontabilidadbase.py" line="357"/>
         <source>Version de la Base de Datos</source>
         <translation>Versió de la base de dades</translation>
     </message>
     <message>
-        <location filename="modificarcontabilidadbase.py" line="356"/>
+        <location filename="modificarcontabilidadbase.py" line="352"/>
         <source>Opciones de Filtrado de Plugins</source>
         <translation>Opcions de filtratge de plugins</translation>
     </message>
     <message>
-        <location filename="modificarcontabilidadbase.py" line="358"/>
+        <location filename="modificarcontabilidadbase.py" line="354"/>
         <source>Mostrar todos los plugins o solo los instalados</source>
         <translation>Mostra tots els plugins o noms els plugins instaŀlats</translation>
     </message>
     <message>
-        <location filename="modificarcontabilidadbase.py" line="357"/>
+        <location filename="modificarcontabilidadbase.py" line="353"/>
         <source>Categoria </source>
         <translation>Categoria</translation>
     </message>
     <message>
-        <location filename="modificarcontabilidadbase.py" line="371"/>
+        <location filename="modificarcontabilidadbase.py" line="363"/>
         <source>Plugin</source>
         <translation>Plugin</translation>
     </message>
     <message>
-        <location filename="modificarcontabilidadbase.py" line="372"/>
+        <location filename="modificarcontabilidadbase.py" line="364"/>
         <source>Descripcion</source>
         <translation>Descripci</translation>
     </message>
     <message>
-        <location filename="modificarcontabilidadbase.py" line="373"/>
+        <location filename="modificarcontabilidadbase.py" line="365"/>
         <source>Version Instalada</source>
         <translation>Versió instaŀlada</translation>
     </message>
     <message>
-        <location filename="modificarcontabilidadbase.py" line="374"/>
+        <location filename="modificarcontabilidadbase.py" line="366"/>
         <source>Plugins BulmaCont</source>
         <translation>Plugins BulmaCont</translation>
     </message>
     <message>
-        <location filename="modificarcontabilidadbase.py" line="375"/>
+        <location filename="modificarcontabilidadbase.py" line="367"/>
         <source>Consola</source>
         <translation>Terminal</translation>
     </message>
     <message>
-        <location filename="modificarcontabilidadbase.py" line="377"/>
+        <location filename="modificarcontabilidadbase.py" line="369"/>
         <source>Aplicar cambios</source>
         <translation>Aplica canvis</translation>
     </message>
     <message>
-        <location filename="modificarcontabilidadbase.py" line="379"/>
+        <location filename="modificarcontabilidadbase.py" line="371"/>
         <source>Hacer copia de seguridad</source>
         <translation>Fes còpia de seguretat</translation>
     </message>
     <message>
-        <location filename="modificarcontabilidadbase.py" line="380"/>
+        <location filename="modificarcontabilidadbase.py" line="372"/>
         <source>Cerrar</source>
         <translation>Tanca</translation>
     </message>
     <message>
-        <location filename="modificarcontabilidadbase.py" line="378"/>
+        <location filename="modificarcontabilidadbase.py" line="370"/>
         <source>Administrar Permisos</source>
         <translation>Administra permisos</translation>
     </message>
     <message>
         <location filename="modificarcontabilidadbase.py" line="362"/>
         <source>Idioma Informes</source>
-        <translation>Llengua Informes</translation>
+        <translation type="obsolete">Llengua Informes</translation>
     </message>
     <message>
         <location filename="modificarcontabilidadbase.py" line="363"/>
         <source>ca</source>
-        <translation>ca</translation>
+        <translation type="obsolete">ca</translation>
     </message>
     <message>
         <location filename="modificarcontabilidadbase.py" line="364"/>
         <source>es</source>
-        <translation>es</translation>
+        <translation type="obsolete">es</translation>
     </message>
     <message>
         <location filename="modificarcontabilidadbase.py" line="365"/>
         <source>fr</source>
-        <translation>fr</translation>
+        <translation type="obsolete">fr</translation>
     </message>
     <message>
-        <location filename="modificarcontabilidadbase.py" line="367"/>
+        <location filename="modificarcontabilidadbase.py" line="359"/>
         <source>...</source>
         <translation>...</translation>
     </message>
     <message>
-        <location filename="modificarcontabilidadbase.py" line="368"/>
+        <location filename="modificarcontabilidadbase.py" line="360"/>
         <source>Logotipo de la empresa</source>
         <translation>Logotip de l&apos;empresa</translation>
     </message>
     <message>
-        <location filename="modificarcontabilidadbase.py" line="369"/>
+        <location filename="modificarcontabilidadbase.py" line="361"/>
         <source>Propiedades Empresa</source>
         <translation>Propietats de l&apos;empresa</translation>
     </message>
@@ -506,32 +530,32 @@ p, li { white-space: pre-wrap; }
 <context>
     <name>ModificarFacturacionBase</name>
     <message>
-        <location filename="modificarfacturacionbase.py" line="378"/>
+        <location filename="modificarfacturacionbase.py" line="374"/>
         <source>Nueva Facturacion</source>
         <translation>Nova facturaci</translation>
     </message>
     <message>
-        <location filename="modificarfacturacionbase.py" line="382"/>
+        <location filename="modificarfacturacionbase.py" line="378"/>
         <source>Nombre Empresa</source>
         <translation>Nom empresa</translation>
     </message>
     <message>
-        <location filename="modificarfacturacionbase.py" line="405"/>
+        <location filename="modificarfacturacionbase.py" line="397"/>
         <source>..</source>
         <translation>..</translation>
     </message>
     <message>
-        <location filename="modificarfacturacionbase.py" line="383"/>
+        <location filename="modificarfacturacionbase.py" line="379"/>
         <source>Nombre Base de Datos</source>
         <translation>Nom base de dades</translation>
     </message>
     <message>
-        <location filename="modificarfacturacionbase.py" line="384"/>
+        <location filename="modificarfacturacionbase.py" line="380"/>
         <source>Actualizar Base de Datos</source>
         <translation>Actualitza base de dades</translation>
     </message>
     <message>
-        <location filename="modificarfacturacionbase.py" line="385"/>
+        <location filename="modificarfacturacionbase.py" line="381"/>
         <source>Version de la Base de Datos</source>
         <translation>Versió de la base de dades</translation>
     </message>
@@ -541,107 +565,107 @@ p, li { white-space: pre-wrap; }
         <translation type="obsolete">Instaŀla suport per a TPV</translation>
     </message>
     <message>
-        <location filename="modificarfacturacionbase.py" line="379"/>
+        <location filename="modificarfacturacionbase.py" line="375"/>
         <source>Opciones de Filtrado de Plugins</source>
         <translation>Opcions de filtratge de plugins</translation>
     </message>
     <message>
-        <location filename="modificarfacturacionbase.py" line="381"/>
+        <location filename="modificarfacturacionbase.py" line="377"/>
         <source>Mostrar todos los plugins o solo los instalados</source>
         <translation>Mostra tots els plugins o noms els plugins instaŀlats</translation>
     </message>
     <message>
-        <location filename="modificarfacturacionbase.py" line="380"/>
+        <location filename="modificarfacturacionbase.py" line="376"/>
         <source>Categoria </source>
         <translation>Categoria</translation>
     </message>
     <message>
-        <location filename="modificarfacturacionbase.py" line="400"/>
+        <location filename="modificarfacturacionbase.py" line="392"/>
         <source>Plugin</source>
         <translation>Plugin</translation>
     </message>
     <message>
-        <location filename="modificarfacturacionbase.py" line="401"/>
+        <location filename="modificarfacturacionbase.py" line="393"/>
         <source>Descripcion</source>
         <translation>Descripci</translation>
     </message>
     <message>
-        <location filename="modificarfacturacionbase.py" line="402"/>
+        <location filename="modificarfacturacionbase.py" line="394"/>
         <source>Version Instalada</source>
         <translation>Versió instaŀlada</translation>
     </message>
     <message>
-        <location filename="modificarfacturacionbase.py" line="398"/>
+        <location filename="modificarfacturacionbase.py" line="390"/>
         <source>Plugins BulmaFact</source>
         <translation>Plugins BulmaFact</translation>
     </message>
     <message>
-        <location filename="modificarfacturacionbase.py" line="403"/>
+        <location filename="modificarfacturacionbase.py" line="395"/>
         <source>Plugins BulmaTPV</source>
         <translation>Plugins BulmaTPV</translation>
     </message>
     <message>
-        <location filename="modificarfacturacionbase.py" line="404"/>
+        <location filename="modificarfacturacionbase.py" line="396"/>
         <source>Consola</source>
         <translation>Terminal</translation>
     </message>
     <message>
-        <location filename="modificarfacturacionbase.py" line="406"/>
+        <location filename="modificarfacturacionbase.py" line="398"/>
         <source>Aplicar cambios</source>
         <translation>Aplica canvis</translation>
     </message>
     <message>
-        <location filename="modificarfacturacionbase.py" line="409"/>
+        <location filename="modificarfacturacionbase.py" line="401"/>
         <source>Cerrar</source>
         <translation>Tanca</translation>
     </message>
     <message>
-        <location filename="modificarfacturacionbase.py" line="407"/>
+        <location filename="modificarfacturacionbase.py" line="399"/>
         <source>Administrar Permisos</source>
         <translation>Administra permisos</translation>
     </message>
     <message>
-        <location filename="modificarfacturacionbase.py" line="408"/>
+        <location filename="modificarfacturacionbase.py" line="400"/>
         <source>Hacer copia de seguridad</source>
         <translation>Fes còpia de seguretat</translation>
     </message>
     <message>
-        <location filename="modificarfacturacionbase.py" line="386"/>
+        <location filename="modificarfacturacionbase.py" line="382"/>
         <source>Instalar Soporte para TPV</source>
         <translation>Suport per a TPV</translation>
     </message>
     <message>
         <location filename="modificarfacturacionbase.py" line="387"/>
         <source>Idioma informes</source>
-        <translation>Llengua informes</translation>
+        <translation type="obsolete">Llengua informes</translation>
     </message>
     <message>
         <location filename="modificarfacturacionbase.py" line="388"/>
         <source>ca</source>
-        <translation>ca</translation>
+        <translation type="obsolete">ca</translation>
     </message>
     <message>
         <location filename="modificarfacturacionbase.py" line="389"/>
         <source>es</source>
-        <translation>es</translation>
+        <translation type="obsolete">es</translation>
     </message>
     <message>
         <location filename="modificarfacturacionbase.py" line="390"/>
         <source>fr</source>
-        <translation>fr</translation>
+        <translation type="obsolete">fr</translation>
     </message>
     <message>
-        <location filename="modificarfacturacionbase.py" line="391"/>
+        <location filename="modificarfacturacionbase.py" line="383"/>
         <source>...</source>
         <translation>...</translation>
     </message>
     <message>
-        <location filename="modificarfacturacionbase.py" line="392"/>
+        <location filename="modificarfacturacionbase.py" line="384"/>
         <source>Logotipo de la empresa</source>
         <translation>Logotip de l&apos;empresa</translation>
     </message>
     <message>
-        <location filename="modificarfacturacionbase.py" line="393"/>
+        <location filename="modificarfacturacionbase.py" line="385"/>
         <source>Datos Generales</source>
         <translation>Dades Generals</translation>
     </message>
