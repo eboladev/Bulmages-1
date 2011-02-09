@@ -42,6 +42,7 @@ class BndsListUi
     int m_totalItemsCurrentPage;
     int m_maxItemsPerPage;
     int m_currentLine;
+    bool m_modifierActive;
   
   public:
     BndsListUi();
@@ -65,6 +66,7 @@ class BndsListUi
     virtual int currentLine();
     virtual int currentPage();
     virtual int currentItem();
+    virtual void modifierChangeState();
 };
 
 

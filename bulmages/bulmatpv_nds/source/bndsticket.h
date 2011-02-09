@@ -34,6 +34,7 @@ using namespace std;
 
 #include "bndsticketline.h"
 
+class BndsDb;
 
 class BndsTicket
 {
@@ -46,14 +47,15 @@ public:
     BndsTicket();
     ~BndsTicket();
     string defaultTicketName();
-    void addArticle(BndsArticle* article);
+    void addArticle(BndsArticle* article, BndsModifier* modifier = 0);
     void setNomTicket(string nombre);
     string nomTicket();
     float total();
     void recalculeTotal();
     list<BndsTicketLine*> ticketLines();
     void removeTicketLine(BndsTicketLine *ticketLine);
-    void cleanTicket();
+    void clearTicket();
+    string ticket2xml(bool envia = false);
 };
 
 

@@ -22,54 +22,37 @@
  *                                                                         *
  ***************************************************************************/
 
-#ifndef BNDSCONFIG_H
-#define BNDSCONFIG_H
+#ifndef BNDSREADFILECONTENT_H
+#define BNDSREADFILECONTENT_H
 
-#include <nds.h>
 #include <stdio.h>
+#include <stdlib.h>
 #include <string>
-#include <dswifi9.h>
 
 using namespace std;
 
 
-class BndsConfig
+class BndsReadFileContent
 {
 private:
-	string m_ipserver;
-	string m_posuser;
-	string m_accesspointssid;
-	string m_accesspointwep128key;
-  
+    unsigned int m_fileSize;
+    unsigned int m_origin;
+    FILE* m_tmpFile;
+    unsigned int m_buffer;
+    string m_salida;
+    bool m_eof;
+
+private:
+    void calculateFileLenght();
+
 public:
-	Wifi_AccessPoint* m_ap;
-
-	BndsConfig();
-	~BndsConfig();
-	
-	void editConfig();
-	
-	void saveConfigurationToFile();
-	void loadConfigurationFromFile();
-
-	void processConfigData(string configdata);
-	
-	void setIpServer(string ip);
-	string ipServer();
-
-	void setPosUser(string posuser);
-	string posUser();
-	
-	void setAccessPointSsid(string ssid);
-	string accessPointSsid();
-	
-	void setAccessPointWep128Key(string wep128key);
-	string accessPointWep128Key();
-	
-	Wifi_AccessPoint* findAP(string ssidName = "");
-
+    BndsReadFileContent();
+    ~BndsReadFileContent();
+    bool openFileForRead(string fileName);
+    string readContent();
+    unsigned int getFileSize();
+    bool isEof();
 };
-
 
 #endif
 

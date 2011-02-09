@@ -26,8 +26,9 @@
 #include "bndsfunctions.h"
 
 
-BndsConfigView::BndsConfigView()
+BndsConfigView::BndsConfigView(BndsConfig* config)
 {
+    m_config = config;
 }
 
 
@@ -40,12 +41,12 @@ int BndsConfigView::showMenu()
 {
     static int option = 0;
     int noptions = 4;
-
-    PrintConsole conSub = g_video->consoleSub();
-    consoleSelect( &conSub );
     
     while (1) {
-      	  consoleClear();
+	  PrintConsole conSub = g_video->consoleSub();
+	  consoleSelect( &conSub );
+	  
+	  consoleClear();
 
 	  iprintf("\x1b[0;2HMenu de configuracion:");
 	  iprintf("\x1b[1;2H----------------------");
@@ -76,7 +77,14 @@ int BndsConfigView::showMenu()
 	      if (option > noptions - 1) option = 0;
 
 	  } else if (keysDown() & KEY_L) {
-	    
+	      /// Guarda la configuracion antes de volver al programa.
+	      m_config->saveConfigurationToFile();
+	      PrintConsole conSub = g_video->consoleSub();
+	      consoleSelect( &conSub );
+
+	      consoleClear();
+	      iprintf("Configuracion guardada.");
+	      
 	      return -1;
 	    
 	  } else if (keysDown() & KEY_A) {
@@ -127,7 +135,7 @@ void BndsConfigView::showApWep128Key()
       iprintf("\x1b[1;0HClave WEP del access point:\n");
 
       keyboardShow();
-      cadena = accessPointWep128Key();
+      cadena = m_config->accessPointWep128Key();
 
       while(1) {
           key = keyboardUpdate();
@@ -165,7 +173,13 @@ void BndsConfigView::showApWep128Key()
 
         if (keysDown() & KEY_L) {
             /// Aceptar.
-	    setAccessPointWep128Key(cadena);
+	    /// Comprueba que tenga la longitud adecuada.
+	    if (cadena.size() != 26) {
+		iprintf("La longitud de la clave no es correcta.\n");
+		break;
+	    } // end if
+
+	    m_config->setAccessPointWep128Key(cadena);
             return;
         } else if (keysDown() & KEY_R) {
             /// Cancelar.
@@ -193,18 +207,16 @@ void BndsConfigView::showApSSID()
 {
     /// 1) Muestra el AP SSID guardado.
     /// 2) Muestra opción para buscar y seleccionar otro AP SSID.
-  PrintConsole conSub = g_video->consoleSub();
-  consoleSelect( &conSub );
   
-  string cadena;
-  int key;
-
+    string cadena = m_config->accessPointSsid();
+    
     while (1) {
+      PrintConsole conSub = g_video->consoleSub();
+      consoleSelect( &conSub );
 
       consoleClear();
       iprintf("\x1b[1;0HAP SSID actual:\n");
 
-      cadena = accessPointSsid();
       
       /// Muestra el AP SSID actual.
       if (cadena == "") {
@@ -218,10 +230,8 @@ void BndsConfigView::showApSSID()
 
 
       iprintf("\n\n");
-      iprintf("(A) Buscar Access Point.\n");
-      
-
-      
+      iprintf("(Y) Buscar Access Point.\n");
+           
 
       iprintf("\n\n");
       iprintf("(L) Aceptar.\n");
@@ -234,13 +244,17 @@ void BndsConfigView::showApSSID()
 
         if (keysDown() & KEY_L) {
             /// Aceptar.
-            setAccessPointSsid(cadena);
+            m_config->setAccessPointSsid(cadena);
             return;
         } else if (keysDown() & KEY_R) {
             /// Cancelar.
             return;
         } else if (keysDown() & KEY_A) {
             /// Repetir.
+            break;
+        } else if (keysDown() & KEY_Y) {
+            /// Buscar AP.
+	    cadena = m_config->findAP()->ssid;
             break;
         } // end if
 
@@ -275,7 +289,7 @@ void BndsConfigView::showServerIp()
       iprintf("\x1b[1;0HIP del servidor BulmaTPV:\n");
 
       keyboardShow();
-      cadena = ipServer();
+      cadena = m_config->ipServer();
 
       while(1) {
           key = keyboardUpdate();
@@ -315,7 +329,7 @@ void BndsConfigView::showServerIp()
 
         if (keysDown() & KEY_L) {
             /// Aceptar.
-            setIpServer(cadena);
+            m_config->setIpServer(cadena);
             return;
         } else if (keysDown() & KEY_R) {
             /// Cancelar.

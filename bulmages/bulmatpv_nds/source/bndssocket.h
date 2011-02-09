@@ -28,7 +28,6 @@
 #include <nds.h>
 #include <stdio.h>
 #include <string>
-#include <dswifi9.h>
 #include <sys/socket.h>
 #include <netinet/in.h>
 #include <netdb.h>
@@ -44,7 +43,6 @@ class BndsSocket : public BndsConfig
 {
 private:
     int m_status;
-    Wifi_AccessPoint* m_ap;
     int m_socket;
   
 public:
@@ -56,8 +54,6 @@ public:
 	void closeServerSocket();
 	int sendDataToServer(string data);
 	string readDataFromServer();
-	Wifi_AccessPoint* findAP(void);
-
 };
 
 

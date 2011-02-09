@@ -22,6 +22,10 @@
  *                                                                         *
  ***************************************************************************/
 
+#include <math.h>
+#include <ios>
+#include <sstream>
+
 #include "bndsfunctions.h"
 #include "bndsdb.h"
 #include "bndscategoryarticle.h"
@@ -75,11 +79,10 @@ unsigned long ipToLong(string ip)
 
 
 int callback_processConfigFile(int event, const char* txt, int len, void* tuser) {
-  
+
 	/*
 	    Para poner el tratamiento de una nueva etiqueta hay que crear codigo en cada apartado (A,B,C,...)
 	*/
-
 	/// A
 	static bool tag_ipserver = false;
 	static bool tag_posuser = false;
@@ -99,7 +102,7 @@ int callback_processConfigFile(int event, const char* txt, int len, void* tuser)
 	if (tinyxml_event_str(event) == (const char*) "start tag") {
 
 	    if (strTxt == "CONFIG") {
-
+	      
 		/// Estamos al inicio de una nueva configuracion. Inicializamos todas las variables de configuracion.
 		ipserver = "";
 		posuser = "";
@@ -125,7 +128,7 @@ int callback_processConfigFile(int event, const char* txt, int len, void* tuser)
 		tag_accesspointssid = true;
 
 	    } else if (strTxt == "ACCESSPOINTWEP128KEY") {
-	    
+
 		tag_accesspointwep128key = true;
 
 	    } // end if
@@ -134,13 +137,11 @@ int callback_processConfigFile(int event, const char* txt, int len, void* tuser)
 
 	/// TAGS de texto
 	if (tinyxml_event_str(event) == (const char*) "text") {
-
 	    /// D
 	    if (tag_ipserver) g_db->linkSocket()->setIpServer(txt);
 	    if (tag_posuser) g_db->linkSocket()->setPosUser(txt);
 	    if (tag_accesspointssid) g_db->linkSocket()->setAccessPointSsid(txt);
 	    if (tag_accesspointwep128key) g_db->linkSocket()->setAccessPointWep128Key(txt);
-
 	} // end if
 
 
@@ -148,30 +149,28 @@ int callback_processConfigFile(int event, const char* txt, int len, void* tuser)
 	if (tinyxml_event_str(event) == (const char*) "end tag") {
 
 	    if (strTxt == "/CONFIG") {
-
 		/// No se hace nada.
 	      
 	    /// E
 	    } else if (strTxt == "/IPSERVER") {
-	    
+
 		tag_ipserver = false;
 
 	    } else if (strTxt == "/POSUSER") {
-	    
+	      
 		tag_posuser = false;
 
 	    } else if (strTxt == "/ACCESSPOINTSSID") {
-
+	      
 		tag_accesspointssid = false;
 	      
 	    } else if (strTxt == "/ACCESSPOINTWEP128KEY") {
-
+	      
 		tag_accesspointwep128key = false;
 	      
 	    } // end if
 
 	} // end if
-
 
 	return 1;
 }
@@ -312,10 +311,24 @@ int callback_processCategoryArticles(int event, const char* txt, int len, void* 
 }
 
 
+u8 getPixel8bpp ( int x, int y, u16* buffer )
+{
+    return buffer[ y * 128 + (x / 2) ] >> ( 8 * (x % 2) );
+}
+
+
 void drawPixel8bpp ( int x, int y, u16 paletteIndex, u16* buffer )
 {
     buffer[ y * 128 + (x / 2) ] &= 0xFF << ( 8 * !(x % 2) );
     buffer[ y * 128 + (x / 2) ] |= paletteIndex << ( 8 * (x % 2) );
+}
+
+
+void drawPixel1bpp ( int x, int y, bool color, u8* buffer, u16 offset )
+{
+    
+    buffer[ (y * 32 + (x / 8)) + offset ] &= ~(0x1 << (7 - (x % 8) ));
+    buffer[ (y * 32 + (x / 8)) + offset ] |= color << (7 - (x % 8) );
 }
 
 
@@ -379,5 +392,176 @@ void debugStop()
 	  } // end if
 	  
       } // end while
+}
+
+
+void drawLine(int x1, int y1, int x2, int y2, int widthX, int heightY, u16 paletteIndex, u16* buffer)
+{
+    /// Implementa el algoritmo Bresenham para dibujar lineas.
+
+    int dy = y2 - y1;
+    int dx = x2 - x1;
+    int stepx, stepy;
+
+    if (dy < 0) {
+	dy = -dy;
+	stepy = -1;
+    } else {
+	stepy = 1;
+    } // end if
+    
+    if (dx < 0) {
+	dx = -dx;
+	stepx = -1;
+    } else {
+	stepx = 1;
+    } // end if
+    
+    dy <<= 1; /// dy = 2 * dy
+    dx <<= 1; /// dx = 2 * dx
+    
+    /// Centra el recuadro que se va a dibujar con la coordenada donde se ha pulsado.
+    int avXleft = ceil((double)widthX / 2);
+    int avXright =  floor((double)widthX / 2);
+    int avYtop =  ceil((double)heightY / 2);
+    int avYbottom =  floor((double)heightY / 2);
+
+    drawRectangle8bpp ( x1 - avXleft, y1 - avYtop, x1 + avXright, y1 + avYbottom, paletteIndex, buffer);
+
+    if (dx > dy) {
+	/// Es lo mismo que hacer (2 * dy - dx)
+	int fraction = dy - (dx >> 1);
+
+	while (x1 != x2) {
+
+	    if (fraction >= 0) {
+		y1 += stepy;
+		fraction -= dx;
+	    } // end if
+
+	    x1 += stepx;
+	    fraction += dy;
+
+	    drawRectangle8bpp ( x1 - avXleft, y1 - avYtop, x1 + avXright, y1 + avYbottom, paletteIndex, buffer);
+
+	} // end while
+
+    } else {
+	int fraction = dx - (dy >> 1);
+
+	while (y1 != y2) {
+
+	    if (fraction >= 0) {
+		x1 += stepx;
+		fraction -= dy;
+	    } // end if
+
+	    y1 += stepy;
+	    fraction += dx;
+
+	    drawRectangle8bpp ( x1 - avXleft, y1 - avYtop, x1 + avXright, y1 + avYbottom, paletteIndex, buffer);
+
+	} // end while
+
+    } // end if
+
+}
+
+void write8(u8* address, u8 value) {
+
+	u8* first=(u8*)address;
+
+	*first=value&0xff;
+}
+
+
+void write16(u16* address, u16 value) {
+
+	u8* first=(u8*)address;
+	u8* second=first+1;
+
+	*first=value&0xff;
+	*second=value>>8;
+}
+
+
+void write32(u32* address, u32 value) {
+
+	u8* first=(u8*)address;
+	u8* second=first+1;
+	u8* third=first+2;
+	u8* fourth=first+3;
+
+	*first=value&0xff;
+	*second=(value>>8)&0xff;
+	*third=(value>>16)&0xff;
+	*fourth=(value>>24)&0xff;
+}
+
+
+string strHex2IntWep128(string cadena) {
+
+      /// Longitud maxima 25 caracteres para una clade ve 128 bit.
+      if (cadena.size() > 26) {
+	cadena = cadena.substr(0, 26);
+      } // end if
+      
+      unsigned int c;  
+      int j = 0;
+      string tmp;
+      string llave;
+      
+      for (unsigned int i = 0; i < cadena.size(); i = i + 2) {
+	tmp = cadena.substr(i, 2);
+	stringstream convert ( tmp.c_str() );
+	convert >> std::hex >> c;
+	llave[j] = c;
+	j++;
+      } // end for
+
+      return llave;
+}
+
+
+string readWholeFileContent(string fileName)
+{
+      string salida = "";
+      FILE* tmpFile;
+      
+      if ( !(tmpFile = fopen (fileName.c_str(), "r") )) {
+	  /// El archivo no existe. Se debe configurar el programa
+	  /// antes de usarlo.
+      } else {
+	tmpFile = fopen(fileName.c_str(),"r");
+
+	if (tmpFile == NULL) {
+	    PrintConsole conSub = g_video->consoleSub();
+	    consoleSelect( &conSub );
+	    iprintf("Error al abrir el archivo.");
+	    exit(1);
+	} // end if
+	
+	fseek(tmpFile, 0, SEEK_END);
+	unsigned int fileSize = ftell(tmpFile);
+	rewind(tmpFile);
+
+	char* data = (char*) malloc (sizeof(char) * fileSize);
+	
+	fread(data, 1, fileSize, tmpFile);
+
+	if (ferror(tmpFile)) {
+	    PrintConsole conSub = g_video->consoleSub();
+	    consoleSelect( &conSub );
+	    iprintf("Error al leer el archivo.");
+	    exit(1);
+	} // end if
+
+	salida = data;
+	  
+      } // end if
+      
+      fclose(tmpFile);
+      
+      return salida;
 }
 

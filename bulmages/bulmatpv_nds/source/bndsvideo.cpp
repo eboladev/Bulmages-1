@@ -66,6 +66,7 @@ void BndsVideo::ndsInit()
     BG_PALETTE[3] = RGB15(31,0,0); /// Rojo
     BG_PALETTE[4] = RGB15(0,0,31); /// Azul
     BG_PALETTE[5] = RGB15(0,31,31); /// Cyan
+    BG_PALETTE[6] = RGB15(31,31,31); /// Blanco
 
     /// Establece la paleta de colores en la pantalla secundaria.
     BG_PALETTE_SUB[1] = RGB15(31,16,0);
@@ -73,6 +74,7 @@ void BndsVideo::ndsInit()
     BG_PALETTE_SUB[3] = RGB15(31,0,0); /// Rojo
     BG_PALETTE_SUB[4] = RGB15(0,0,31); /// Azul
     BG_PALETTE_SUB[5] = RGB15(0,31,31); /// Cyan
+    BG_PALETTE_SUB[6] = RGB15(31,31,31); /// Blanco
 
 }
 
@@ -94,8 +96,6 @@ void BndsVideo::ndsInitSplash()
 	PrintConsole *defaultConsole = consoleGetDefault();
 	consoleInit(&m_conSub, defaultConsole->bgLayer, BgType_Text4bpp, BgSize_T_256x256, defaultConsole->mapBase, defaultConsole->gfxBase, false, true);
 
-	iprintf("(A) Acceder al programa.\n");
-	iprintf("(L) Configuracion.\n");
 }
 
 
@@ -146,10 +146,36 @@ void BndsVideo::resetBgSub()
 }
 
 
+void BndsVideo::resetAllMain()
+{
+      /// Resetea la capa de texto.
+      PrintConsole conMain = g_video->consoleMain();
+      consoleSelect( &conMain );
+      iprintf("\x1b[0;0H");
+      iprintf("\x1b[2J");
+      
+      /// Resetea la capa grafica.
+      resetBgMain();
+}
+
+
+void BndsVideo::resetAllSub()
+{
+      /// Resetea la capa de texto.
+      PrintConsole conSub = g_video->consoleSub();
+      consoleSelect( &conSub );
+      iprintf("\x1b[0;0H");
+      iprintf("\x1b[2J");
+      
+      /// Resetea la capa grafica.
+      resetBgSub();
+}
+
+
 /*
   Plantilla usada en la lista de categorias y articulos.
 */
-void BndsVideo::showTemplateListA(int totalItems, u16 indexPalette, int offset, bool previousPage)
+void BndsVideo::showTemplateListA(int totalItems, u16 indexPalette, int offset, bool previousPage, bool modificador, bool modificadorActivo)
 {
 
     /// Limite de recuadros en la plantilla.
@@ -161,7 +187,7 @@ void BndsVideo::showTemplateListA(int totalItems, u16 indexPalette, int offset, 
     consoleSelect( &m_conMain );
     iprintf("\x1b[2J");
 
-    iprintf("\x1b[23;0HTicket   <--    -->");
+    iprintf("\x1b[23;0HTicket  <--    -->");
 
     
     resetBgMain();
@@ -169,15 +195,24 @@ void BndsVideo::showTemplateListA(int totalItems, u16 indexPalette, int offset, 
     /// Dibuja boton 'Ver ticket'.
     drawRectangle8bpp ( 0, 176, 52, 192, indexPalette, (u16*) bgGetGfxPtr ( m_bgMain ));
     /// Dibuja boton 'Pagina anterior'.
-    drawRectangle8bpp ( 60, 176, 107, 192, indexPalette, (u16*) bgGetGfxPtr ( m_bgMain ));
+    drawRectangle8bpp ( 57, 176, 102, 192, indexPalette, (u16*) bgGetGfxPtr ( m_bgMain ));
     /// Dibuja boton 'Pagina siguiente'.
-    drawRectangle8bpp ( 115, 176, 162, 192, indexPalette, (u16*) bgGetGfxPtr ( m_bgMain ));
+    drawRectangle8bpp ( 107, 176, 150, 192, indexPalette, (u16*) bgGetGfxPtr ( m_bgMain ));
+
+    /// Dibuja boton 'M' (Activa/desactiva modificadores).
+    if (modificador) {
+      iprintf("\x1b[23;27HMod.");
+      if (modificadorActivo) {
+	  drawRectangle8bpp ( 205, 176, 256, 192, indexPalette + 1, (u16*) bgGetGfxPtr ( m_bgMain ));
+      } else {
+	  drawRectangle8bpp ( 205, 176, 256, 192, indexPalette, (u16*) bgGetGfxPtr ( m_bgMain ));
+      } // end if
+    } // end if
     
+    /// Dibuja boton 'Pantalla anterior'.
     if (previousPage) {
-      iprintf("\x1b[23;24H^");
-      
-      /// Dibuja boton 'Anterior'.
-      drawRectangle8bpp ( 170, 176, 217, 192, indexPalette, (u16*) bgGetGfxPtr ( m_bgMain ));
+      iprintf("\x1b[23;22H^");
+      drawRectangle8bpp ( 155, 176, 200, 192, indexPalette, (u16*) bgGetGfxPtr ( m_bgMain ));
     } // end if
     
     
@@ -210,7 +245,7 @@ void BndsVideo::showTemplateListA(int totalItems, u16 indexPalette, int offset, 
 }
 
 
-int BndsVideo::eventTemplateListA(bool previousPage)
+int BndsVideo::eventTemplateListA(bool previousPage, bool modificador)
 {
     /// Procesa los eventos de la pantalla tactil.
     /// En funcion del numero de elementos devuelve que recuadro u opcion se ha seleccionado.
@@ -231,22 +266,29 @@ int BndsVideo::eventTemplateListA(bool previousPage)
 	  } // end if
 	  
 	  /// Pagina anterior.
-	  if ( ((m_touch.px >= 60) && (m_touch.px <= 107)) && ((m_touch.py >= 176) && (m_touch.py <= 192)) ) {
+	  if ( ((m_touch.px >= 57) && (m_touch.px <= 102)) && ((m_touch.py >= 176) && (m_touch.py <= 192)) ) {
 	      return -2;
 	  } // end if
-	  
+
 	  /// Pagina siguiente.
-	  if ( ((m_touch.px >= 115) && (m_touch.px <= 162)) && ((m_touch.py >= 176) && (m_touch.py <= 192)) ) {
+	  if ( ((m_touch.px >= 107) && (m_touch.px <= 150)) && ((m_touch.py >= 176) && (m_touch.py <= 192)) ) {
 	      return -3;
 	  } // end if
 
+    	  /// Boton 'M' (modificadores).
+	  if (modificador) {
+	      if ( ((m_touch.px >= 205) && (m_touch.px <= 256)) && ((m_touch.py >= 176) && (m_touch.py <= 192)) ) {
+		  return -10;
+	      } // end if
+	  } // end if
+
+	  /// Dibuja boton 'Pantalla anterior'.
 	  if (previousPage) {
-		/// Boton anterior.
 		if ( ((m_touch.px >= 170) && (m_touch.px <= 217)) && ((m_touch.py >= 176) && (m_touch.py <= 192)) ) {
 		    return -4;
 		} // end if
 	  } // end if
-	
+	  	
 	/// Coordenadas de los recuadros:
 	
 	int contador = 0;

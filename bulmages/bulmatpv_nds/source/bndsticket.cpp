@@ -23,6 +23,8 @@
  ***************************************************************************/
 
 #include "bndsticket.h"
+#include "bndsfunctions.h"
+#include "bndsdb.h"
 
 
 BndsTicket::BndsTicket()
@@ -43,32 +45,50 @@ string BndsTicket::defaultTicketName()
 }
 
 
-void BndsTicket::addArticle(BndsArticle* article)
+void BndsTicket::addArticle(BndsArticle* article, BndsModifier *modifier)
 {
 
-    /// Recorre los articulos del ticket para ver si ya existe. Si existe suma 1 unidad a la cantidad.
     list<BndsTicketLine*> ticketLinesList = ticketLines();
     bool previousExist = FALSE;
-    
-    for (list<BndsTicketLine*>::iterator itTicketLine = ticketLinesList.begin(); itTicketLine != ticketLinesList.end(); itTicketLine++) {
 
-	if ( (*itTicketLine)->idArticle() == article->idArticle() ) {
-	    (*itTicketLine)->setQuantityArticle( (*itTicketLine)->quantityArticle() + 1 );
-	    previousExist = TRUE;
-	} // end if
+    
+    /// Si existe modificador siempre se crea una linea de ticket nueva.
+    if (modifier == ( BndsModifier* ) 0) {
       
-    } // end for
+	for (list<BndsTicketLine*>::iterator itTicketLine = ticketLinesList.begin(); itTicketLine != ticketLinesList.end(); itTicketLine++) {
+
+	    if ( (*itTicketLine)->article()->idArticle() == article->idArticle() ) {
+		/// Comprueba que esa linea no tenga modificadores.
+		if ( (*itTicketLine)->getModifier() == ( BndsModifier* ) 0 ) {
+		    (*itTicketLine)->setQuantityArticle( (*itTicketLine)->quantityArticle() + 1 );
+		    previousExist = TRUE;
+		} // end if
+
+	    } // end if
+
+	} // end for  
   
+    } // end if
+    
+
     /// Si no existia antes entonces se crea entrada en la lista de articulos en el ticket.
     if (previousExist == FALSE) {
-
-	BndsTicketLine *ticketLine = (BndsTicketLine*) article;
+     
+	BndsTicketLine *ticketLine = new BndsTicketLine();
+	ticketLine->setArticle(article);
 	ticketLine->setQuantityArticle(1);
-      
-	m_ticketLines.push_back( ticketLine );
-    
-    } // end if
+
+	if (modifier != ( BndsModifier* ) 0) {
+	    /// Si dispone de modificadores se establece.
+	    ticketLine->setModifier(modifier);
+	} else {
+	    ticketLine->setModifier(0);
+	} // end if
 	
+	m_ticketLines.push_back( ticketLine );
+	
+    } // end if
+
     /// Recalcula el total del ticket;
     recalculeTotal();
 }
@@ -115,10 +135,16 @@ list<BndsTicketLine*> BndsTicket::ticketLines()
 
 void BndsTicket::removeTicketLine(BndsTicketLine *ticketLine)
 {
+  
+    
     for (list<BndsTicketLine*>::iterator itTicketLine = m_ticketLines.begin(); itTicketLine != m_ticketLines.end(); itTicketLine++) {
 
 	if ( (*itTicketLine) == ticketLine ) {
 	  
+	    /// Para borrar la una lineas de ticket hay que borrar tambien el
+	    /// modificador si existen.
+	    (*itTicketLine)->removeModifier();
+
 	    m_ticketLines.erase (itTicketLine);
 	    break;
 	    
@@ -131,11 +157,115 @@ void BndsTicket::removeTicketLine(BndsTicketLine *ticketLine)
 }
 
 
-void BndsTicket::cleanTicket()
+void BndsTicket::clearTicket()
 {
-    m_ticketLines.clear ();
+    
+    for (list<BndsTicketLine*>::iterator itTicketLine = m_ticketLines.begin(); itTicketLine != m_ticketLines.end(); itTicketLine++) {
+
+	  /// Para borrar una lineas de ticket hay que borrar tambien el
+	  /// modificador si existen.
+	  (*itTicketLine)->removeModifier();
+
+    } // end for
+
+    /// Se borran todas las lineas de ticket.
+    m_ticketLines.clear();
 
     /// Recalcula el total del ticket;
     recalculeTotal();
 }
 
+
+/// Genera el archivo XML y lo envia por el socket abierto.
+string BndsTicket::ticket2xml(bool envia)
+{
+	string xml = "<DOCUMENT><PUTCOMMAND>ticket_data</PUTCOMMAND><TICKET>";
+	
+	/// TODO:Nombre del usuario.
+	
+	/// Nombre del ticket.
+	xml += "<NOMTICKET>";
+	xml += nomTicket().c_str();
+	xml += "</NOMTICKET>";
+
+	/// Nombre del trabajador.
+	xml += "<NOMTRABAJADOR>";
+	xml += "";
+	xml += "</NOMTRABAJADOR>";
+
+	/// Total ticket.
+	xml += "<TOTALTICKET>";
+	xml += "";
+	xml += "</TOTALTICKET>";
+	
+	/// Envia.
+	if (envia) { g_db->linkSocket()->sendDataToServer(xml); xml= ""; }
+  
+	/// Recorre todos los elementos del ticket y genera un string XML con los datos.
+	list<BndsTicketLine*> listaTicketLines = ticketLines();
+	for (list<BndsTicketLine*>::iterator itTicketLine = listaTicketLines.begin(); itTicketLine != listaTicketLines.end(); itTicketLine++) {
+
+	    xml += "<LINEATICKET>";
+	    
+	      xml += "<IDARTICULO>";
+	      xml += (*itTicketLine)->article()->idArticle().c_str();
+	      xml += "</IDARTICULO>";
+
+	      xml += "<CANTARTICULO>";
+	      xml += float2string3x2 ( (*itTicketLine)->quantityArticle() ).c_str();
+	      xml += "</CANTARTICULO>";
+
+	      xml += "<PVPARTICULO>";
+	      xml += float2string3x2 ( (*itTicketLine)->article()->pvpArticle() ).c_str();
+	      xml += "</PVPARTICULO>";
+
+	      xml += "<SUBTOTAL>";
+	      xml += "";
+	      xml += "</SUBTOTAL>";
+	      
+	      /// Sigue enviando.
+	      if (envia) { g_db->linkSocket()->sendDataToServer(xml); xml= ""; }
+
+	      if ( (*itTicketLine)->getModifier() != ( BndsModifier* ) 0 ) {
+		  /// Esta linea de ticket tiene modificadores.
+
+		  xml += "<MODIFICADORES>";
+		    xml += "<IMAGEN>";
+		    
+			BndsReadFileContent *fc = new BndsReadFileContent();
+			bool r = fc->openFileForRead( (*itTicketLine)->getModifier()->getNombreArchivo() );
+			
+			if (r == false) {
+			  ///TODO:
+			  /// Error al abrir el archivo.
+			} else {
+
+			    while( !fc->isEof() ) {
+				  xml += fc->readContent() ;
+				  /// Sigue enviando.
+				  if (envia) { g_db->linkSocket()->sendDataToServer(xml); xml= ""; }
+			    } // end while
+			
+			} // end if
+    
+			delete fc;
+    
+		    xml += "</IMAGEN>";
+		  xml += "</MODIFICADORES>";
+
+	      } // end if
+	      
+	    xml += "</LINEATICKET>";
+
+	    /// Sigue enviando.
+	    if (envia) { g_db->linkSocket()->sendDataToServer(xml); xml= ""; }
+
+	} // end for
+
+	xml += "</TICKET></DOCUMENT>";
+
+	/// Sigue enviando.
+	if (envia) { g_db->linkSocket()->sendDataToServer(xml); xml= ""; }
+
+	return xml;
+}

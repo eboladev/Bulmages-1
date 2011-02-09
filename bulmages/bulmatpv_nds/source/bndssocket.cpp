@@ -28,13 +28,6 @@
 
 BndsSocket::BndsSocket()
 {
-#ifdef DEMO
-
-#else
-
-  	loadConfigurationFromFile();
-
-#endif
 }
 
 
@@ -58,19 +51,33 @@ void BndsSocket::startWifi()
 
 #else
 
-    Wifi_InitDefault(FALSE);
-    m_ap = findAP();
-
     consoleClear();
-    iprintf("Llamando al router (espere).");
+    iprintf("Llamando al router (espere).\n");
+
+    /// Comprueba los parametros minimos.
+    if (accessPointSsid() == "") {
+	iprintf("Error: No se ha establecido el SSID del router Wifi.\n");
+	return;
+    } // end if
+    if (accessPointWep128Key() == "") {
+	iprintf("Error: No se ha establecido una clave Wep128.\n");
+	return;
+    } // end if
+
     
+    m_ap = findAP(accessPointSsid());
+        
     //this tells the wifi lib to use dhcp for everything
     Wifi_SetIP(0,0,0,0,0);
     
     //unsigned char llave[26] = "F94A1A15BD888291A6E8C2F3F0";
-    unsigned char llave[26] = {0xF9, 0x4A, 0x1A, 0x15, 0xBD, 0x88, 0x82, 0x91, 0xA6, 0xE8, 0xC2, 0xF3, 0xF0};
+    //unsigned char llave[26] = {0xF9, 0x4A, 0x1A, 0x15, 0xBD, 0x88, 0x82, 0x91, 0xA6, 0xE8, 0xC2, 0xF3, 0xF0};
+    //u8 *key = &llave[0];
+    //Wifi_ConnectAP(m_ap, WEPMODE_128BIT, 0, key);
+
+    unsigned char* llave = (unsigned char*) strHex2IntWep128( accessPointWep128Key() ).data(); 
     u8 *key = &llave[0];
-    Wifi_ConnectAP(m_ap, WEPMODE_128BIT, 0, key);
+    Wifi_ConnectAP(m_ap, WEPMODE_128BIT, 0, key );
 
     /// Inicia la consola.
     consoleSelect( &conSub );
@@ -132,9 +139,8 @@ void BndsSocket::openServerSocket()
 	
 	sain.sin_port = htons(11637);
 	//unsigned long ip = 0x0100007F; // IP. localhost 1.0.0.127
-	//unsigned long ip = 0x6401A8C0; // IP. 192.168.1.100 = 6401A8C0
 	
-	unsigned long ip = ipToLong("192.168.1.224");
+	unsigned long ip = ipToLong( ipServer() );
 	
 	char *addr = (char *)&ip;
 	sain.sin_addr.s_addr= *( (unsigned long *)( addr )); // IP. localhost 127.0.0.1
@@ -178,9 +184,25 @@ int BndsSocket::sendDataToServer(string data)
     m_status = Wifi_AssocStatus();
 
     if(m_status == ASSOCSTATUS_ASSOCIATED) {
+      
+	const char* datos = data.c_str();
+	unsigned int datosLenght = strlen(datos);
+	unsigned int bytesSend;
 
-	// send our request
-	send( m_socket, data.c_str(), strlen(data.c_str()), 0 );
+	/// Si el tamanyo de lo que se quiere enviar es grande
+	/// entonces se envia a trozos.
+	while(datosLenght > 0) {
+	  
+	    bytesSend = send( m_socket, datos, datosLenght, 0 );
+	  
+	    //bytesSent = send(sd, s, length);
+	    if (bytesSend == 0)
+		break; //socket probably closed
+	    else if (bytesSend < 0)
+		break; //handle errors appropriately
+	    datos += bytesSend;
+	    datosLenght -= bytesSend;
+	} // end while
       
     } // end if
 
@@ -210,7 +232,7 @@ string BndsSocket::readDataFromServer()
 
     while( ( recvd_len = recv( m_socket, incoming_buffer, 255, 0 ) ) != 0 ) { // if recv returns 0, the socket has been closed.
 
-      if(recvd_len>0) { // data was received!
+      if (recvd_len>0) { // data was received!
 	    incoming_buffer[recvd_len] = 0; // null-terminate
 	    //iprintf( incoming_buffer);
 	    datos += incoming_buffer;
@@ -1209,105 +1231,4 @@ string BndsSocket::pullCategoryArticles()
 	return datos;
 }
 
-
-Wifi_AccessPoint* BndsSocket::findAP(void)
-{
-
-	static Wifi_AccessPoint ap;
-
-#ifdef DEMO
-
-#else
-	
-	int selected = 0;  
-	int i;
-	int count = 0;
-	bool autoSelected = false;
-
-	/// Inicia la consola.
-	PrintConsole conSub = g_video->consoleSub();
-	consoleSelect( &conSub );
-
-	iprintf("Buscando la red: T-R (espere)");
-
-	Wifi_ScanMode(); //this allows us to search for APs
-/*	
-	scanKeys();
-	while(keysDown()) {
-	    /// Si hay alguna tecla pulsada se para.
-	} // end while
-*/	
-	
-//	scanKeys();
-	
-
-	//while(!(keysDown() & KEY_A))
-	while(1)
-	{
-//		scanKeys();
-
-		//find out how many APs there are in the area
-		count = Wifi_GetNumAP();
-
-//		consoleClear();
-
-		//iprintf("Numero de APs encontrados: %d\n", count);
-
-		//display the APs to the user
-		for(i = 0; i < count; i++)
-		{
-			Wifi_AccessPoint ap;
-
-			Wifi_GetAPData(i, &ap);
-
-			// display the name of the AP
-			/*
-			iprintf("%s %s Wep:%s Señal:%i\n", 
-				i == selected ? "*" : " ", 
-				ap.ssid, 
-				ap.flags & WFLAG_APDATA_WEP ? "Si " : "No ",
-				ap.rssi * 100 / 0xD0);
-			*/
-			
-			if (string(ap.ssid) == string("T-R")) {
-			    autoSelected = true;
-			    selected = i;
-			    break;
-			} // end if
-
-		}
-
-		if (autoSelected) {
-		    break;
-		} // end if
-/*
-		//move the selection asterick
-		if(keysDown() & KEY_UP)
-		{
-			selected--;
-			if(selected < 0)
-			{
-				selected = 0;
-			}
-		}
-
-		if(keysDown()&KEY_DOWN)
-		{
-			selected++;
-			if(selected >= count) 
-			{
-				selected = count - 1;
-			}
-		}
-*/
-		swiWaitForVBlank();
-	} // end while
-	
-	//user has made a choice so grab the ap and return it
-	Wifi_GetAPData(selected, &ap);
-
-#endif
-
-	return &ap;
-}
 

@@ -22,52 +22,64 @@
  *                                                                         *
  ***************************************************************************/
 
-#ifndef BNDSCONFIG_H
-#define BNDSCONFIG_H
+#ifndef BNDSMODIFIER_H
+#define BNDSMODIFIER_H
 
 #include <nds.h>
-#include <stdio.h>
-#include <string>
-#include <dswifi9.h>
+#include <fat.h>
+#include <stdlib.h>
+#include <string.h>
+
 
 using namespace std;
 
+/* ----------------------------------------------------------------------- */
+/* Tratamiento de archivos BMP                                             */
 
-class BndsConfig
+typedef struct {
+	u16 type;			/* Magic identifier            */
+	u32 size;                       /* File size in bytes          */
+	u16 reserved1, reserved2;
+	u32 offset;                     /* Offset to image data, bytes */
+} PACKED HEADER;
+
+typedef struct {
+	u32 size;			/* Header size in bytes      */
+	u32 width,height;		/* Width and height of image */
+	u16 planes;			/* Number of colour planes   */
+	u16 bits;			/* Bits per pixel            */
+	u32 compression;		/* Compression type          */
+	u32 imagesize;			/* Image size in bytes       */
+	u32 xresolution,yresolution;	/* Pixels per meter          */
+	u32 ncolours;			/* Number of colours         */
+	u32 importantcolours;		/* Important colours         */
+} PACKED INFOHEADER;
+
+typedef struct {
+	u8 blue;
+	u8 green;
+	u8 red;
+	u8 reserved;
+} PACKED INFOPALETTE;
+
+
+/* ----------------------------------------------------------------------- */
+
+
+/// Permite que los articulos tengan modificadores con imagenes.
+class BndsModifier
 {
-private:
-	string m_ipserver;
-	string m_posuser;
-	string m_accesspointssid;
-	string m_accesspointwep128key;
-  
-public:
-	Wifi_AccessPoint* m_ap;
-
-	BndsConfig();
-	~BndsConfig();
-	
-	void editConfig();
-	
-	void saveConfigurationToFile();
-	void loadConfigurationFromFile();
-
-	void processConfigData(string configdata);
-	
-	void setIpServer(string ip);
-	string ipServer();
-
-	void setPosUser(string posuser);
-	string posUser();
-	
-	void setAccessPointSsid(string ssid);
-	string accessPointSsid();
-	
-	void setAccessPointWep128Key(string wep128key);
-	string accessPointWep128Key();
-	
-	Wifi_AccessPoint* findAP(string ssidName = "");
-
+  private:
+      string m_nombreArchivo;
+    
+  public:
+      BndsModifier();
+      ~BndsModifier();
+      void screenshotToBmp1BitBase64(const char* filename);
+      void show();
+      int exec();
+      void clearCanvas();
+      string getNombreArchivo();
 };
 
 

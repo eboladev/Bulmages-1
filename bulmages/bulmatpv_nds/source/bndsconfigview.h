@@ -35,10 +35,13 @@ using namespace std;
 #include "bndsdb.h"
 
 
-class BndsConfigView : public BndsConfig
+class BndsConfigView
 {
+  private:
+     BndsConfig* m_config;
+     
   public:
-    BndsConfigView();
+    BndsConfigView(BndsConfig* config);
     ~BndsConfigView();
     void showServerIp();
     void showPosUser();

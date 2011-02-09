@@ -31,10 +31,7 @@ BndsDb *g_db = NULL;
 
 BndsDb::BndsDb()
 {
-  	m_bndsSocket = NULL;
-	
-	/// Inicia el sistema de archivos FAT donde leer y escribir configuracion y otros datos.
-	fatInitDefault();
+	m_bndsSocket = new BndsSocket();
 }
 
 
@@ -57,9 +54,7 @@ int BndsDb::loadData()
 
 
 int BndsDb::initConnection()
-{
-	m_bndsSocket = new BndsSocket();
-
+{	
 	m_bndsSocket->startWifi();
 
 #ifdef DEMO
@@ -127,7 +122,7 @@ BndsTicket* BndsDb::currentTicket()
 }
 
 
-void BndsDb::saveTicket(string ticketData)
+void BndsDb::saveTicket()
 {
 
 #ifdef DEMO
@@ -135,7 +130,8 @@ void BndsDb::saveTicket(string ticketData)
 #else
 
 	m_bndsSocket->openServerSocket();
-	m_bndsSocket->sendDataToServer(ticketData);
+	/// Envia datos por el socket.
+	g_db->currentTicket()->ticket2xml(true);
 	m_bndsSocket->closeServerSocket();
 
 #endif

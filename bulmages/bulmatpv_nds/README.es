@@ -1,6 +1,6 @@
 /*******************************************************************************
  *                                                                             *
- *   Copyright (C) 2009-2010 by Fco. Javier M. C.                              *
+ *   Copyright (C) 2009-2011 by Fco. Javier M. C.                              *
  *   comercial@todo-redes.com                                                  *
  *   http://www.todo-redes.com                                                 *
  *                                                                             *
@@ -20,14 +20,7 @@ COMPILACIÓN:
 Para poder compilar el proyecto se debe tener instalado y bien configurado el
 conjunto de librerías devkitPro.
 
-Nota: No hay que olvidar establecer las variables de entorno necesarias para
-que que el compilador pueda encontrar las librerías 'devkitPro' para ello
-se facilita un 'script' ('devkitPro_setenv.sh') que se encuentra dentro
-del directorio 'devkitPro'.
-
-
 Existen dos tipos de compilación posibles: Demo y final.
-
 
 DEMO:
 -----
@@ -57,6 +50,20 @@ compilar en este modo hay que ejecutar:
 
 
 
+
+PARCHEAR ARCHIVO PARA GUARDAR DATOS EN LA MEMORIA:
 ---------------------------------------------------------------------
 
+Algunos cartuchos modernos parchean automáticamente el archivo .nds para
+que se pueda escribir directamente en el sistema de archivos FAT de la
+tarjeta de memoria.
 
+En caso de no disponer de la característica de parcheo automático hay que
+proceder utilizando un programa correspondiente y el archivo DLDI del
+cartucho.
+
+Para GNU/Linux existe la herramienta gráfica 'DLDI Linux GUI'.
+Web del proyecto: http://www.return1.net/site/projects/Linux-DLDI-Gui
+
+En consola 'dlditool':
+http://chishm.drunkencoders.com/DLDI/

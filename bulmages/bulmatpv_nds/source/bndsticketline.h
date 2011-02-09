@@ -33,14 +33,18 @@
 using namespace std;
 
 #include "bndsarticle.h"
+#include "bndsmodifier.h"
 
 
-class BndsTicketLine : public BndsArticle
+//class BndsTicketLine : public BndsArticle
+class BndsTicketLine
 {
 protected:
+      BndsArticle* m_article;
       int m_quantArticle;
       float m_subTotalLine;
       void recalculeSubTotalLine();
+      BndsModifier* m_modifier;
 
 public:
     BndsTicketLine();
@@ -49,6 +53,11 @@ public:
     int quantityArticle();
     float subTotalLine();
     virtual void setPvpArticle(string pvp);
+    void setModifier(BndsModifier* mod);
+    BndsModifier* getModifier();
+    void removeModifier();
+    void setArticle(BndsArticle *art);
+    BndsArticle* article();
 };
 
 

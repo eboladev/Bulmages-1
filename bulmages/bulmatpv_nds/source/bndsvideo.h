@@ -59,8 +59,11 @@ class BndsVideo
       void resetBgMain();
       void resetBgSub();
       
-      void showTemplateListA(int totalItems, u16 indexPalette = 1, int offset = 0, bool previousPage = false);
-      int eventTemplateListA(bool previousPage = false);
+      void resetAllMain();
+      void resetAllSub();      
+      
+      void showTemplateListA(int totalItems, u16 indexPalette = 1, int offset = 0, bool previousPage = false, bool modificador = false, bool modificadorActivo = false);
+      int eventTemplateListA(bool previousPage = false, bool modificador = false);
 
       void showTemplateListB(int totalItems, u16 indexPalette = 1);
       int eventTemplateListB();

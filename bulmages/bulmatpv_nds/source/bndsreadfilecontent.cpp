@@ -22,54 +22,91 @@
  *                                                                         *
  ***************************************************************************/
 
-#ifndef BNDSCONFIG_H
-#define BNDSCONFIG_H
 
-#include <nds.h>
-#include <stdio.h>
-#include <string>
-#include <dswifi9.h>
-
-using namespace std;
+#include "bndsreadfilecontent.h"
 
 
-class BndsConfig
+BndsReadFileContent::BndsReadFileContent()
 {
-private:
-	string m_ipserver;
-	string m_posuser;
-	string m_accesspointssid;
-	string m_accesspointwep128key;
-  
-public:
-	Wifi_AccessPoint* m_ap;
-
-	BndsConfig();
-	~BndsConfig();
-	
-	void editConfig();
-	
-	void saveConfigurationToFile();
-	void loadConfigurationFromFile();
-
-	void processConfigData(string configdata);
-	
-	void setIpServer(string ip);
-	string ipServer();
-
-	void setPosUser(string posuser);
-	string posUser();
-	
-	void setAccessPointSsid(string ssid);
-	string accessPointSsid();
-	
-	void setAccessPointWep128Key(string wep128key);
-	string accessPointWep128Key();
-	
-	Wifi_AccessPoint* findAP(string ssidName = "");
-
-};
+    m_fileSize = 0;
+    m_origin = 0;
+    m_tmpFile = NULL;
+    m_buffer = sizeof(char) * 1024; // 1KB buffer
+    m_salida = "";
+    m_eof = false;
+}
 
 
-#endif
+BndsReadFileContent::~BndsReadFileContent()
+{
+}
+
+
+unsigned int BndsReadFileContent::getFileSize()
+{
+    return m_fileSize;
+}
+
+
+bool BndsReadFileContent::openFileForRead(string fileName)
+{
+
+      if ( !(m_tmpFile = fopen (fileName.c_str(), "rb") )) {
+	  /// El archivo no existe.
+	  return false;
+      } else {
+	  calculateFileLenght();
+	  fseek(m_tmpFile, 0, SEEK_SET);
+	  return true;
+      } // end if
+
+}
+
+bool BndsReadFileContent::isEof()
+{
+    return m_eof;
+}
+
+
+void BndsReadFileContent::calculateFileLenght()
+{
+      /// Se calcula el tamanyo de los datos del archivo.
+      fseek(m_tmpFile, 0, SEEK_END);
+      m_fileSize = ftell(m_tmpFile);
+      rewind(m_tmpFile);
+}
+
+
+string BndsReadFileContent::readContent()
+{
+    string salida = "";
+    int bufferSize = 0;
+
+    /// Calcula la cantidad de datos a leer del archivo.
+    if ((m_fileSize - m_origin) >= m_buffer) {
+	bufferSize = m_buffer;
+    } else {
+	bufferSize = (m_fileSize - m_origin);
+	m_eof = true;
+    } // end if
+
+    char* data = (char*) malloc (bufferSize + 1);
+
+    /// Lee datos de archivo.
+    fread(data, bufferSize, 1, m_tmpFile);
+
+    if (ferror(m_tmpFile)) {
+	/// Error de lectura del archivo.
+    } // end if
+
+    m_origin += m_buffer;
+
+    salida = data;
+    free(data);
+    
+    return salida.substr(0, bufferSize);
+}
+
+
+
 

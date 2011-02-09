@@ -29,6 +29,7 @@ BndsTicketLine::BndsTicketLine()
 {
     m_quantArticle = 0;
     m_subTotalLine = 0.0;
+    m_modifier = 0;
 }
 
 
@@ -59,12 +60,47 @@ float BndsTicketLine::subTotalLine()
 
 void BndsTicketLine::recalculeSubTotalLine()
 {
-    m_subTotalLine = m_quantArticle * pvpArticle();
+    m_subTotalLine = m_quantArticle * m_article->pvpArticle();
 }
 
 
 void BndsTicketLine::setPvpArticle(string pvp)
 {
-    BndsArticle::setPvpArticle(pvp);
+    m_article->setPvpArticle(pvp);
     recalculeSubTotalLine();
 }
+
+
+void BndsTicketLine::setModifier(BndsModifier* mod)
+{    
+    m_modifier = mod;
+}
+
+
+BndsModifier* BndsTicketLine::getModifier()
+{
+    return m_modifier;
+}
+
+
+void BndsTicketLine::removeModifier()
+{
+      /// Si existe un modificador se borra.
+      if (m_modifier != 0) {
+	delete m_modifier;
+      } // end if
+}
+
+ 
+void BndsTicketLine::setArticle(BndsArticle *art)
+{
+    m_article = art;
+}
+
+
+BndsArticle* BndsTicketLine::article()
+{
+    return m_article;
+}
+
+    

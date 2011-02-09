@@ -43,7 +43,7 @@ using namespace std;
 class BndsDb
 {
 
-	BndsSocket *m_bndsSocket;
+	BndsSocket* m_bndsSocket;
 	list<BndsCategoryArticle*> m_categoryArticles;
 	list<BndsTicket*> m_tickets;
 	BndsTicket* m_currentTicket;
@@ -65,7 +65,7 @@ public:
 	list<BndsTicket*> ticketsList();
 	void addTicket(BndsTicket *ticket);
 	BndsTicket* currentTicket();
-	void saveTicket(string ticketData);
+	void saveTicket();
 };
 
 

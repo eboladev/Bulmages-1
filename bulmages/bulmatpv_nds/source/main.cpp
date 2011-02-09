@@ -3,7 +3,7 @@
  *   BulmaTPV remote client for Nintendo DS console.                       *
  *   -----------------------------------------------                       *
  *                                                                         *
- *   Copyright (C) 2010 by Fco. Javier M. C.                               *
+ *   Copyright (C) 2011 by Fco. Javier M. C.                               *
  *   comercial@todo-redes.com                                              *
  *   http://www.todo-redes.com                                             *
  *                                                                         *
@@ -37,21 +37,36 @@ using namespace std;
 #include "bndsarticlesview.h"
 #include "bndsticket.h"
 
-/// VERSION = 1.5 Beta
 
 int main(void) {
 
-	int res;
-	BndsTicket *ticket;
-	BndsCategoriesView *categView = NULL;
-	BndsArticlesView *articView = NULL;
-	PrintConsole conSub;
-	
+    int res;
+    BndsTicket *ticket;
+    BndsCategoriesView *categView = NULL;
+    BndsArticlesView *articView = NULL;
+    PrintConsole conSub;
+    
+#ifdef DEMO
+#else
+    /// Inicia el sistema de archivos FAT donde leer y escribir configuracion y otros datos.
+    fatInitDefault();
+#endif
+
     while(1) {
 
       	/// Inicializa el motor grafico y los modos de video.
 	g_video = new BndsVideo();
 	g_video->ndsInitSplash();
+	/// Inicializa la base de datos.
+	g_db = new BndsDb();
+	g_db->linkSocket()->loadConfigurationFromFile();
+
+	
+	conSub = g_video->consoleSub();
+	consoleSelect( &conSub );
+
+	iprintf("(A) Acceder al programa.\n");
+	iprintf("(L) Configuracion.\n");
       
 	/// Muestra el splash screen.
 	while(1) {
@@ -65,9 +80,7 @@ int main(void) {
 	  } // end if
 
           if (keysDown() & KEY_L) {
-		BndsConfig *config = new BndsConfig();
-		config->editConfig();
-		delete config;
+		g_db->linkSocket()->editConfig();
 		break;
 	  } // end if
 	
@@ -77,9 +90,8 @@ int main(void) {
 	/// Inicializa el modo normal de video para el programa.
 	g_video->ndsInit();
 
-	/// Inicializa la base de datos.
-	g_db = new BndsDb();
 	res = g_db->initConnection();
+	
 	if (res) {
 		iprintf("ERROR FATAL: No se han podido conectar con el servidor.");
 		return -1;
@@ -91,10 +103,9 @@ int main(void) {
 		return -1;
 	} // end if
 	
-
 	conSub = g_video->consoleSub();
 	consoleSelect( &conSub );
-
+	
 	ticket = new BndsTicket();
 	g_db->addTicket(ticket);
 	

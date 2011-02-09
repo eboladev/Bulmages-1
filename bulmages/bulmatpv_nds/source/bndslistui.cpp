@@ -34,6 +34,7 @@ BndsListUi::BndsListUi()
     m_totalItemsCurrentPage = 0;
     m_maxItemsPerPage = 20;
     m_currentLine = 0;
+    m_modifierActive = false;
 }
 
 
@@ -58,6 +59,18 @@ void BndsListUi::show()
 int BndsListUi::exec()
 {
       return 0;
+}
+
+
+void BndsListUi::modifierChangeState()
+{
+     if (m_modifierActive) {
+       m_modifierActive = false;
+     } else {
+       m_modifierActive = true;
+     } // end if
+     
+     show();
 }
 
 

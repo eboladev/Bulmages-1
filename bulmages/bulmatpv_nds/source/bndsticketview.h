@@ -48,7 +48,6 @@ class BndsTicketView : BndsListUi
     BndsTicketView(BndsTicket* ticket);
     ~BndsTicketView();
     void show();
-    string ticket2xml();
     int exec();
     void calculateTotalItemsCurrentPage();
 };

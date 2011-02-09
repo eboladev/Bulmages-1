@@ -85,10 +85,10 @@ void BndsTicketView::show()
 	  if ((contador > primerElemento) && (contador <= ultimoElemento) ) {
 
 	    if ( contador == currentLine() + primerElemento ) {
-		printf("\x1b[%i;0H\x1b[30m%4i %-20.20s %3.2f", lineaInicio, (*itTicketLine)->quantityArticle() , (*itTicketLine)->nomArticle().c_str(), (*itTicketLine)->subTotalLine() );
+		printf("\x1b[%i;0H\x1b[30m%4i %-20.20s %3.2f", lineaInicio, (*itTicketLine)->quantityArticle() , (*itTicketLine)->article()->nomArticle().c_str(), (*itTicketLine)->subTotalLine() );
 		m_currentTicketLine = *itTicketLine;
 	    } else {
-		printf("\x1b[%i;0H\x1b[39m%4i %-20.20s %3.2f", lineaInicio, (*itTicketLine)->quantityArticle() , (*itTicketLine)->nomArticle().c_str(), (*itTicketLine)->subTotalLine() );
+		printf("\x1b[%i;0H\x1b[39m%4i %-20.20s %3.2f", lineaInicio, (*itTicketLine)->quantityArticle() , (*itTicketLine)->article()->nomArticle().c_str(), (*itTicketLine)->subTotalLine() );
 	    } // end if
 	    
 	    lineaInicio++;
@@ -104,59 +104,6 @@ void BndsTicketView::show()
 	  g_video->showTemplateListC(currentLine(), 1);
 	} // end if
 
-}
-
-
-string BndsTicketView::ticket2xml()
-{
-	string xml = "<DOCUMENT><PUTCOMMAND>ticket_data</PUTCOMMAND><TICKET>";
-	
-	/// TODO:Nombre del usuario.
-	
-	/// Nombre del ticket.
-	xml += "<NOMTICKET>";
-	xml += m_ticket->nomTicket().c_str();
-	xml += "</NOMTICKET>";
-
-	/// Nombre del trabajador.
-	xml += "<NOMTRABAJADOR>";
-	xml += "";
-	xml += "</NOMTRABAJADOR>";
-
-	/// Total ticket.
-	xml += "<TOTALTICKET>";
-	xml += "";
-	xml += "</TOTALTICKET>";
-  
-	/// Recorre todos los elementos del ticket y genera un string XML con los datos.
-	list<BndsTicketLine*> listaTicketLines = m_ticket->ticketLines();
-	for (list<BndsTicketLine*>::iterator itTicketLine = listaTicketLines.begin(); itTicketLine != listaTicketLines.end(); itTicketLine++) {
-
-	    xml += "<LINEATICKET>";
-	    
-	      xml += "<IDARTICULO>";
-	      xml += (*itTicketLine)->idArticle().c_str();
-	      xml += "</IDARTICULO>";
-
-	      xml += "<CANTARTICULO>";
-	      xml += float2string3x2 ( (*itTicketLine)->quantityArticle() ).c_str();
-	      xml += "</CANTARTICULO>";
-
-	      xml += "<PVPARTICULO>";
-	      xml += float2string3x2 ( (*itTicketLine)->pvpArticle() ).c_str();
-	      xml += "</PVPARTICULO>";
-
-	      xml += "<SUBTOTAL>";
-	      xml += "";
-	      xml += "</SUBTOTAL>";
-	      
-	    xml += "</LINEATICKET>";
-	  
-	} // end for
-
-	xml += "</TICKET></DOCUMENT>";
-
-	return xml;
 }
 
 
@@ -275,8 +222,8 @@ int BndsTicketView::exec()
 		m_ticket->setNomTicket(t);
 		
 		/// TODO: tecla provisional. Enviar ticket.
-		g_db->saveTicket( ticket2xml() );
-		m_ticket->cleanTicket();
+		g_db->saveTicket();
+		m_ticket->clearTicket(); 
 		setTotalItems( m_ticket->ticketLines().size() );
 		m_ticket->setNomTicket(m_ticket->defaultTicketName());
 		return 0;

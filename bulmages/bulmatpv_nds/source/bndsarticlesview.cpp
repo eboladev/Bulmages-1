@@ -23,6 +23,7 @@
  ***************************************************************************/
 
 #include "bndsarticlesview.h"
+#include "bndsmodifier.h"
 
 
 BndsArticlesView::BndsArticlesView(int category) : BndsListUi()
@@ -60,8 +61,7 @@ void BndsArticlesView::show()
   
 	/// Inicia la consola.
 	PrintConsole conSub = g_video->consoleSub();
-  
-	consoleSelect( &conSub );
+  	consoleSelect( &conSub );
 
 	iprintf("\x1b[0;0H");
 	iprintf("\x1b[2J");
@@ -85,7 +85,7 @@ void BndsArticlesView::show()
 	int totalElementosPaginaActual = ((int) m_listaArtic.size() - (m_maxItemsPerPage * (m_currentPage - 1))) >= m_maxItemsPerPage ? m_maxItemsPerPage : ((int) m_listaArtic.size() - (m_maxItemsPerPage * (m_currentPage - 1)));
 	
 	/// Dibuja la plantilla tactil en la pantalla principal.
-	g_video->showTemplateListA( totalElementosPaginaActual, 2, primerElemento, true );
+	g_video->showTemplateListA( totalElementosPaginaActual, 2, primerElemento, true, true, m_modifierActive );
 	
 	int contador = 1;
 	for (list<BndsArticle*>::iterator itArtic = m_listaArtic.begin(); itArtic != m_listaArtic.end(); itArtic++) {
@@ -127,9 +127,10 @@ int BndsArticlesView::exec()
 	  } // end if
 
 	  /// Procesa los eventos de la pantalla tactil.
-	  int itemSelected = g_video->eventTemplateListA(true);
+	  int itemSelected = g_video->eventTemplateListA(true, true);
 
 	  if (itemSelected == -1) {
+      	      m_modifierActive = false;
 	      /// Necesita repintarse.
 	      show();
 	  } // end if
@@ -146,6 +147,10 @@ int BndsArticlesView::exec()
 	      break;
 	  } // end if
 	  
+	  if (itemSelected == -10) {
+	      modifierChangeState();
+	  } // end if
+	  
 	  /// itemSelected = 0 => No se ha pulsado ningun recuadro. No se hace nada.
 	  if (itemSelected > 0) {
 	      /// Devuelve la posicion de la categoria dentro de la lista de categorias.
@@ -157,7 +162,23 @@ int BndsArticlesView::exec()
 
 		if (contador == (itemSelected - 1 + ((m_currentPage - 1) * m_maxItemsPerPage)) ) {
 		  
-		    g_db->currentTicket()->addArticle( *itArtic );
+		    if ( m_modifierActive ) {
+			/// Se captura la informacion de los modificadores.
+			/// 1) Captura info extra.
+			/// 2) Guarda info si no se ha cancelado la accion.
+			BndsModifier *mod = new BndsModifier();
+			int result = mod->exec();
+			if (result == 1) {
+			    /// Se pulso el boton 'aceptar'. Se guarda la informacion.
+			    g_db->currentTicket()->addArticle( *itArtic, mod );
+			} else {
+			    /// TODO: se pulso otro boton.
+			    g_db->currentTicket()->addArticle( *itArtic, 0 );
+			} // end if
+			m_modifierActive = false;
+		    } else {
+			g_db->currentTicket()->addArticle( *itArtic, 0 );
+		    } // end if
 		    
 		    /// Refresca la informacion en pantalla.
 		    show();

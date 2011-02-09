@@ -30,7 +30,10 @@
 #include <string>
 #include <list>
 
+#include "bndsreadfilecontent.h"
+
 using namespace std;
+
 
 unsigned long ipToLong(string ip);
 
@@ -39,10 +42,18 @@ int callback_processCategoryArticles(int event, const char* txt, int len, void* 
 
 void callback_keyboardOnKeyPressed(int key);
 
+u8 getPixel8bpp ( int x, int y, u16* buffer );
 void drawPixel8bpp ( int x, int y, u16 paletteIndex, u16* buffer );
+void drawPixel1bpp ( int x, int y, bool color, u8* buffer, u16 offset );
 void drawRectangle8bpp ( int x1, int y1, int x2, int y2, u16 paletteIndex, u16* buffer);
+void drawLine(int x1, int y1, int x2, int y2, int widthX, int heightY, u16 paletteIndex, u16* buffer);
 string float2string3x2 (float number);
 void debugStop();
+void write8(u8* address, u8 value);
+void write16(u16* address, u16 value);
+void write32(u32* address, u32 value);
+string strHex2IntWep128(string cadena);
+string readWholeFileContent(string fileName);
 
 #endif
 

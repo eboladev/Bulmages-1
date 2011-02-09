@@ -16,9 +16,9 @@ include $(DEVKITARM)/ds_rules
 #---------------------------------------------------------------------------------
 TARGET		:=	$(shell basename $(CURDIR))_final
 BUILD		:=	build
-SOURCES		:=	source tinyxml
+SOURCES		:=	source tinyxml base64
 DATA		:=  
-INCLUDES	:=	include tinyxml
+INCLUDES	:=	include tinyxml base64
 GRAPHICS	:=	data
 
 #---------------------------------------------------------------------------------
