@@ -1,7 +1,7 @@
 #######
 #Plugins
 #######
-#README.es
+#README.ca
 #20080501
 
 Nombre: Alumnes
@@ -25,7 +25,7 @@ Incompatibles:
 
 Reports: alumno.rml; impers_alumno_faltas_de_asistencia.rml; blform_ActividadView.qs; blform_ClaseView.qs
 
-Categorias: Associacions de pares de alumnes; Experimentals;
+Categorias: Associacions de pares i mares d'alumnes; Experimentals;
 
 Orden: 203
 
