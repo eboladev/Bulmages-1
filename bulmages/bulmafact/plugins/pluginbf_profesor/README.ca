@@ -1,15 +1,15 @@
 #######
 #Plugins
 #######
-#README.es
+#README.ca
 #20080501
 
-Nombre: Profesores
+Nombre: Professors
 
 Biblioteca: libpluginbf_profesor.so
 
-Descripción: <H1>Profesores</H1>
-<P>Gestionar los cobros realizados a los clientes.</P>
+Descripción: <H1>Professors</H1>
+<P>Gestiona les dades dels professors/monitors de les activitats</P>
 <B>Author:</B>Tomeu Borrás (tborras@conetxia.com)<BR>
 <HR>
 
@@ -25,7 +25,7 @@ Incompatibles:
 
 Reports: profesor.rml; impers_profesor_alumnos.rml; impers_profesor_numalumnos.rml; blform_ProfesorView.qs
 
-Categorias: Asociaciones de padres de alumnos; Experimentales;
+Categorias: Associaciones de pares i mares de'alumnes; Experimentals;
 
 Orden: 222
 

@@ -1,15 +1,15 @@
 #######
 #Plugins
 #######
-#README.es
+#README.ca
 #20080501
 
-Nombre: Recibos
+Nombre: Rebuts
 
 Biblioteca: libpluginbf_recibo.so
 
-Descripción: <H1>Recibos</H1>
-<P>Gestionar los recibos emitidos por la asociacion. Es bastante frecuente que una asociación emita recibos a sus socios. Mediante este plugin tenemos toda la funcionalidad de emitir y controlar el pago de los recibos a socios.</P>
+Descripción: <H1>Rebuts</H1>
+<P>Gestionar els resbuts emesos per l'associació. És força freqüent que una associació emeti rebuts als seus socis. Mitjançant aquest plugin tenim tota la funcionalitat d'emetre i controlar el pagament dels rebuts als socis.</P>
 <B>Author:</B>Tomeu Borrás (tborras@conetxia.com)<BR>
 <HR>
 
@@ -26,7 +26,7 @@ Incompatibles:
 
 Reports: recibod.rml; blform_ReciboView.qs
 
-Categorias: Asociaciones de padres de alumnos; Experimentales;
+Categorias: Associacions de pares d'alumnos; Experimentals;
 
 Orden: 211
 
