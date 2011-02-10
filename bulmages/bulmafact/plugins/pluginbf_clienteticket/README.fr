@@ -1,15 +1,15 @@
 #######
 #Plugins
 #######
-#README.es
-#20080501
+#README.fr
+#20110210
 
-Nombre: Tickets a clientes
+Nombre: Tickets clients
 
 Biblioteca: libpluginbf_clienteticket.so
 
-Descripción:  <H1><IMG SRC="@CMAKE_INSTALL_PREFIX@/share/bulmages/imagesrc/images/oxygen/actions/client_delivery_note.svg" WIDTH="100"/><BR>Albaranes a clientes</H1>
-<P>Soporte para emisión de tickets a clientes.</P>
+Descripción:  <H1><IMG SRC="@CMAKE_INSTALL_PREFIX@/share/bulmages/imagesrc/images/oxygen/actions/client_delivery_note.svg" WIDTH="100"/><BR>Bulletin clients</H1>
+<P>Support pour la création de tickets clients.</P>
 <P>Al cargar el plugin tendremos dos nuevas entradas de meńu <B>Listado de Albaranes <IMG SRC="@CMAKE_INSTALL_PREFIX@/share/bulmages/imagesrc/images/oxygen/actions/client_delivery_note_list.svg" WIDTH="22"/></B> desde la que accederemos al listado de albaranes emitidos y <B>Nuevo Albaran <IMG SRC="@CMAKE_INSTALL_PREFIX@/share/bulmages/imagesrc/images/oxygen/actions/client_delivery_note.svg" WIDTH="22"/></B> desde el que podremos emitir un nuevo albaran.</P>
 <H2><IMG SRC="@CMAKE_INSTALL_PREFIX@/share/bulmages/imagesrc/images/oxygen/actions/client_delivery_note.svg" WIDTH="22"/>Listado de Albaranes</H2>
 <P> Mediante el listado de albaranes podremos controlar todos los albaranes emitidos, editarlos y borrarlos. Para ello podemos utilizar la barra de botones superior del listado.</P>
