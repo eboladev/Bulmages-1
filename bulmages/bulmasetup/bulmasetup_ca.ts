@@ -48,17 +48,17 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="aboutbase.py" line="301"/>
         <source>&amp;Cerrar</source>
-        <translation>&amp;Tancar</translation>
+        <translation>&amp;Tanca</translation>
     </message>
     <message>
         <location filename="about.py" line="19"/>
         <source>&lt;center&gt;&lt;h2&gt;Autores de BulmaSetup&lt;/h2&gt;&lt;p&gt;&lt;p&gt;Programaci&amp;oacute;n:&lt;br/&gt; &lt;b&gt;Tomeu Borr&amp;aacute;s.&lt;/b&gt;&amp;nbsp;&lt;a href=&quot;mailto:tborras@conetxia.com&quot;&gt;tborras@conetxia.com&lt;/a&gt;&lt;br/&gt;&lt;b&gt;Toni &amp;Aacute;lvarez. &lt;/b&gt;&amp;nbsp;&lt;a href=&quot;mailto:t.alvarezpascual@gmail.com&quot;&gt;t.alvarezpascual@gmail.com&lt;/a&gt;&lt;br/&gt;&lt;b&gt;Arturo Mart&amp;iacute;n. &lt;/b&gt;&amp;nbsp;&lt;a href=&quot;mailto:amartin@conetxia.com&quot;&gt;amartin@conetxia.com&lt;/a&gt;&lt;br/&gt;&lt;p&gt;Dise&amp;ntilde;o Gr&amp;aacute;fico:&lt;br/&gt; &lt;b&gt;Ra&amp;uacute;l Mart&amp;iacute;nez.&lt;/b&gt;&amp;nbsp;&lt;a href=&quot;mailto:elferrer@gmail.com&quot;&gt;elferrer@gmail.com&lt;/a&gt;&lt;br/&gt;&lt;p&gt;&lt;p&gt;Traducciones:&lt;br/&gt; &lt;b&gt;Henri Girard.&lt;/b&gt;&amp;nbsp;&lt;a href=&quot;mailto:henrigirard@free.fr&quot;&gt;henrigirard@free.fr&lt;/a&gt;&lt;br/&gt;&lt;b&gt;Walter Garcia-Fontes.&lt;/b&gt;&amp;nbsp;&lt;a href=&quot;mailto:walter.garcia@upf.edu&quot;&gt;walter.garcia@upf.edu&lt;/a&gt;&lt;br/&gt;&lt;p&gt;Depuraci&amp;oacute;n y Pruebas:&lt;br/&gt; &lt;b&gt;Qu Zhioxiong.&lt;/b&gt;&amp;nbsp;&lt;a href=&quot;mailto:santlong@gmail.com&quot;&gt;santlong@gmail.com&lt;/a&gt;&lt;br/&gt;&lt;/p&gt;&lt;/center&gt;</source>
-        <translation>&lt;center&gt;&lt;h2&gt;Autors de BulmaSetup&lt;/h2&gt;&lt;p&gt;&lt;p&gt;Programaci&amp;oacute;:&lt;br/&gt; &lt;b&gt;Tomeu Borr&amp;aacute;s.&lt;/b&gt;&amp;nbsp;&lt;a href=&quot;mailto:tborras@conetxia.com&quot;&gt;tborras@conetxia.com&lt;/a&gt;&lt;br/&gt;&lt;b&gt;Toni &amp;Aacute;lvarez. &lt;/b&gt;&amp;nbsp;&lt;a href=&quot;mailto:t.alvarezpascual@gmail.com&quot;&gt;t.alvarezpascual@gmail.com&lt;/a&gt;&lt;br/&gt;&lt;b&gt;Arturo Mart&amp;iacute;n. &lt;/b&gt;&amp;nbsp;&lt;a href=&quot;mailto:amartin@conetxia.com&quot;&gt;amartin@conetxia.com&lt;/a&gt;&lt;br/&gt;&lt;p&gt;Disseny Grafic:&lt;br/&gt; &lt;b&gt;Ra&amp;uacute;l Mart&amp;iacute;nez.&lt;/b&gt;&amp;nbsp;&lt;a href=&quot;mailto:elferrer@gmail.com&quot;&gt;elferrer@gmail.com&lt;/a&gt;&lt;br/&gt;&lt;p&gt;&lt;p&gt;Traduccions:&lt;br/&gt; &lt;b&gt;Henri Girard.&lt;/b&gt;&amp;nbsp;&lt;a href=&quot;mailto:henrigirard@free.fr&quot;&gt;henrigirard@free.fr&lt;/a&gt;&lt;br/&gt;&lt;b&gt;Walter Garcia-Fontes.&lt;/b&gt;&amp;nbsp;&lt;a href=&quot;mailto:walter.garcia@upf.edu&quot;&gt;walter.garcia@upf.edu&lt;/a&gt;&lt;br/&gt;&lt;p&gt;Depuraci&amp;oacute; i Proves:&lt;br/&gt; &lt;b&gt;Qu Zhioxiong.&lt;/b&gt;&amp;nbsp;&lt;a href=&quot;mailto:santlong@gmail.com&quot;&gt;santlong@gmail.com&lt;/a&gt;&lt;br/&gt;&lt;/p&gt;&lt;/center&gt;</translation>
+        <translation>&lt;center&gt;&lt;h2&gt;Autors de BulmaSetup&lt;/h2&gt;&lt;p&gt;&lt;p&gt;Programaci&amp;oacute;:&lt;br/&gt; &lt;b&gt;Tomeu Borr&amp;aacute;s.&lt;/b&gt;&amp;nbsp;&lt;a href=&quot;mailto:tborras@conetxia.com&quot;&gt;tborras@conetxia.com&lt;/a&gt;&lt;br/&gt;&lt;b&gt;Toni &amp;Aacute;lvarez. &lt;/b&gt;&amp;nbsp;&lt;a href=&quot;mailto:t.alvarezpascual@gmail.com&quot;&gt;t.alvarezpascual@gmail.com&lt;/a&gt;&lt;br/&gt;&lt;b&gt;Arturo Mart&amp;iacute;n. &lt;/b&gt;&amp;nbsp;&lt;a href=&quot;mailto:amartin@conetxia.com&quot;&gt;amartin@conetxia.com&lt;/a&gt;&lt;br/&gt;&lt;p&gt;Disseny Gràfic:&lt;br/&gt; &lt;b&gt;Ra&amp;uacute;l Mart&amp;iacute;nez.&lt;/b&gt;&amp;nbsp;&lt;a href=&quot;mailto:elferrer@gmail.com&quot;&gt;elferrer@gmail.com&lt;/a&gt;&lt;br/&gt;&lt;p&gt;&lt;p&gt;Traduccions:&lt;br/&gt; &lt;b&gt;Henri Girard.&lt;/b&gt;&amp;nbsp;&lt;a href=&quot;mailto:henrigirard@free.fr&quot;&gt;henrigirard@free.fr&lt;/a&gt;&lt;br/&gt;&lt;b&gt;Walter Garcia-Fontes.&lt;/b&gt;&amp;nbsp;&lt;a href=&quot;mailto:walter.garcia@upf.edu&quot;&gt;walter.garcia@upf.edu&lt;/a&gt;&lt;br/&gt;&lt;p&gt;Depuraci&amp;oacute; i Proves:&lt;br/&gt; &lt;b&gt;Qu Zhioxiong.&lt;/b&gt;&amp;nbsp;&lt;a href=&quot;mailto:santlong@gmail.com&quot;&gt;santlong@gmail.com&lt;/a&gt;&lt;br/&gt;&lt;/p&gt;&lt;/center&gt;</translation>
     </message>
     <message>
         <location filename="about.py" line="39"/>
         <source>&lt;center&gt;&lt;p&gt;&lt;p&gt;&lt;h2&gt;Entidades que dan soporte al programa:&lt;/h2&gt;&lt;/p&gt;&lt;b&gt;Conetxia:&lt;/b&gt; &lt;a href=&quot;http://www.conetxia.com&quot;&gt;http://www.conetxia.com&lt;/a&gt;&lt;br /&gt;&lt;b&gt;Todo-Redes:&lt;/b&gt; &lt;a href=&quot;http://www.todo-redes.com&quot;&gt;http://www.todo-redes.com&lt;/a&gt;&lt;/p&gt;&lt;/center&gt;</source>
-        <translation>&lt;center&gt;&lt;p&gt;&lt;p&gt;&lt;h2&gt;Entitats que donenn suport al programa:&lt;/h2&gt;&lt;/p&gt;&lt;b&gt;Conetxia:&lt;/b&gt; &lt;a href=&quot;http://www.conetxia.com&quot;&gt;http://www.conetxia.com&lt;/a&gt;&lt;br /&gt;&lt;b&gt;Todo-Redes:&lt;/b&gt; &lt;a href=&quot;http://www.todo-redes.com&quot;&gt;http://www.todo-redes.com&lt;/a&gt;&lt;/p&gt;&lt;/center&gt;</translation>
+        <translation>&lt;center&gt;&lt;p&gt;&lt;p&gt;&lt;h2&gt;Entitats que donen suport al programa:&lt;/h2&gt;&lt;/p&gt;&lt;b&gt;Conetxia:&lt;/b&gt; &lt;a href=&quot;http://www.conetxia.com&quot;&gt;http://www.conetxia.com&lt;/a&gt;&lt;br /&gt;&lt;b&gt;Todo-Redes:&lt;/b&gt; &lt;a href=&quot;http://www.todo-redes.com&quot;&gt;http://www.todo-redes.com&lt;/a&gt;&lt;/p&gt;&lt;/center&gt;</translation>
     </message>
 </context>
 <context>
@@ -76,7 +76,7 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="contabilidad.py" line="265"/>
         <source>&lt;br&gt;&lt;br&gt;&lt;b&gt;Dependencias:&lt;/b&gt; </source>
-        <translation type="unfinished">&lt;br&gt;&lt;br&gt;&lt;b&gt;Dependencies:&lt;/b&gt; </translation>
+        <translation type="unfinished">&lt;br&gt;&lt;br&gt;&lt;b&gt;Dependències:&lt;/b&gt; </translation>
     </message>
     <message>
         <location filename="contabilidad.py" line="265"/>
@@ -86,7 +86,7 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="contabilidad.py" line="265"/>
         <source>&lt;br&gt;&lt;br&gt;&lt;b&gt;Parches SQL:&lt;/b&gt;</source>
-        <translation type="unfinished">&lt;br&gt;&lt;br&gt;&lt;b&gt;Parches SQL:&lt;/b&gt;</translation>
+        <translation type="unfinished">&lt;br&gt;&lt;br&gt;&lt;b&gt;Pegats SQL:&lt;/b&gt;</translation>
     </message>
     <message>
         <location filename="contabilidad.py" line="265"/>
@@ -101,7 +101,7 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="contabilidad.py" line="280"/>
         <source>&lt;/b&gt; tiene incompatibilidades. Quieres desinstalarlas?</source>
-        <translation type="unfinished">&lt;/b&gt; te incompatiblilitats. Desitja desinstalarles?</translation>
+        <translation type="unfinished">&lt;/b&gt; té incompatibilitats. Desitgeu desinstaarles?</translation>
     </message>
     <message>
         <location filename="contabilidad.py" line="297"/>
@@ -232,12 +232,12 @@ p, li { white-space: pre-wrap; }
  Este usuario es necesario para poder administrar PostgreSQL. La contraseï¿½ de este usuario sera &apos;password&apos;. Borre este usuario al terminar la configuracion.</source>
         <translation type="obsolete">Desitgeu afegir l&apos;usuari &lt;b&gt;root&lt;/b&gt; a PostgreSQL 
 
-Aquest usuari s necessari per poder administrar PostgreSQL. La contrassenya d&apos;aquest usuari ser &apos;password&apos;. Esborreu aquest usuari en acabar la configuraci.</translation>
+Aquest usuari és necessari per poder administrar PostgreSQL. La contrassenya d&apos;aquest usuari ser &apos;password&apos;. Esborreu aquest usuari en acabar la configuració.</translation>
     </message>
     <message>
         <location filename="empresa.py" line="163"/>
         <source>Desea agregar el usuario &lt;b&gt;root&lt;/b&gt; a PostgreSQL?&lt;br&gt;Este usuario es necesario para poder administrar PostgreSQL.&lt;br&gt;La contrase&amp;ntilde;a de este usuario sera &apos;password&apos;.&lt;br&gt;&lt;u&gt;&lt;b&gt;Borre este usuario al terminar la configuracion de BulmaGes, ya que genera un grave agujero de seguridad.&lt;/b&gt;&lt;/u&gt;</source>
-        <translation>Desitgeu afegir l&apos;usuari &lt;b&gt;root&lt;/b&gt; a PostgreSQL?&lt;br&gt;Aquest usuari s necessari per poder administrar PostgreSQL.&lt;br&gt;&lt;;u&gt;&lt;b&gt;Esborreu aquest usuari en acabar la configuració de BulmaGes, ja que genera un greu forat de seguretat.&lt;/b&gt;&lt;/u&gt;</translation>
+        <translation>Desitgeu afegir l&apos;usuari &lt;b&gt;root&lt;/b&gt; a PostgreSQL?&lt;br&gt;Aquest usuari és necessari per poder administrar PostgreSQL.&lt;br&gt;&lt;;u&gt;&lt;b&gt;Esborreu aquest usuari en acabar la configuració de BulmaGes, ja que genera un greu forat de seguretat.&lt;/b&gt;&lt;/u&gt;</translation>
     </message>
     <message>
         <location filename="listempresas.py" line="74"/>
@@ -260,27 +260,27 @@ Aquest usuari s necessari per poder administrar PostgreSQL. La contrassenya d&ap
     <message>
         <location filename="facturacion.py" line="142"/>
         <source>Generamos backup de las plantillas de impresion en </source>
-        <translation>Generam el backup de les plantilles d&apos;impressió a </translation>
+        <translation>Generem el backup de les plantilles d&apos;impressió a </translation>
     </message>
     <message>
         <location filename="facturacion.py" line="837"/>
         <source>Tratando </source>
-        <translation>Tratant</translation>
+        <translation>Tractant</translation>
     </message>
     <message>
         <location filename="facturacion.py" line="387"/>
         <source>ESCRIBIENDO CONFIGURACION</source>
-        <translation>ESCRIBINT CONFIGURACIO</translation>
+        <translation>ESCRIVINT CONFIGURACIÓ</translation>
     </message>
     <message>
         <location filename="facturacion.py" line="388"/>
         <source>Escribiendo configuracion en </source>
-        <translation>Escribint configuració a </translation>
+        <translation>Escrivint configuració a </translation>
     </message>
     <message>
         <location filename="facturacion.py" line="526"/>
         <source>Hay que actualizar </source>
-        <translation>Hi ha que actualitzar </translation>
+        <translation>S&apos;ha d&apos;actualitzar </translation>
     </message>
     <message>
         <location filename="facturacion.py" line="704"/>
@@ -290,7 +290,7 @@ Aquest usuari s necessari per poder administrar PostgreSQL. La contrassenya d&ap
     <message>
         <location filename="facturacion.py" line="704"/>
         <source>&lt;br&gt;&lt;br&gt;&lt;b&gt;Dependencias:&lt;/b&gt; </source>
-        <translation>&lt;br&gt;&lt;br&gt;&lt;b&gt;Dependencies:&lt;/b&gt; </translation>
+        <translation>&lt;br&gt;&lt;br&gt;&lt;b&gt;Dependències:&lt;/b&gt; </translation>
     </message>
     <message>
         <location filename="facturacion.py" line="704"/>
@@ -300,7 +300,7 @@ Aquest usuari s necessari per poder administrar PostgreSQL. La contrassenya d&ap
     <message>
         <location filename="facturacion.py" line="704"/>
         <source>&lt;br&gt;&lt;br&gt;&lt;b&gt;Parches SQL:&lt;/b&gt;</source>
-        <translation>&lt;br&gt;&lt;br&gt;&lt;b&gt;Parches SQL:&lt;/b&gt;</translation>
+        <translation>&lt;br&gt;&lt;br&gt;&lt;b&gt;Pegats SQL:&lt;/b&gt;</translation>
     </message>
     <message>
         <location filename="facturacion.py" line="704"/>
@@ -315,17 +315,17 @@ Aquest usuari s necessari per poder administrar PostgreSQL. La contrassenya d&ap
     <message>
         <location filename="facturacion.py" line="720"/>
         <source>&lt;/b&gt; tiene incompatibilidades. Quieres desinstalarlas?</source>
-        <translation>&lt;/b&gt; te incompatiblilitats. Desitja desinstalarles?</translation>
+        <translation>&lt;/b&gt; té incompatibilitats. Desitgeu desinstaŀlar-les?</translation>
     </message>
     <message>
         <location filename="facturacion.py" line="737"/>
         <source>Atencion!</source>
-        <translation>Atenció !</translation>
+        <translation>Atenció!</translation>
     </message>
     <message>
         <location filename="facturacion.py" line="736"/>
         <source>&lt;/b&gt; tiene dependencias. Quieres instalarlas?</source>
-        <translation>&lt;/b&gt; te dependencies. Desitja instalarles?</translation>
+        <translation>&lt;/b&gt; té dependències. Desitgeu instaŀlar-les?</translation>
     </message>
     <message>
         <location filename="facturacion.py" line="750"/>
@@ -378,17 +378,17 @@ Aquest usuari s necessari per poder administrar PostgreSQL. La contrassenya d&ap
     <message>
         <location filename="guardarbackup.py" line="56"/>
         <source>Selecciona la carpeta de destino del Backup</source>
-        <translation>Selecciona la carpeta de destinació del backup</translation>
+        <translation>Seleccioneu la carpeta de destí del backup</translation>
     </message>
     <message>
         <location filename="guardarbackup.py" line="86"/>
         <source>No existe el archivo de configuracion: &lt;b&gt;/etc/bulmages/</source>
-        <translation>No existeix l&apos;arxiu de configuració: &lt;b&gt;/etc/bulmages/</translation>
+        <translation>No existeix el fitxer de configuració: &lt;b&gt;/etc/bulmages/</translation>
     </message>
     <message>
         <location filename="guardarbackup.py" line="111"/>
         <source>&lt;b&gt;Backup guardado satisfactoriamente en : </source>
-        <translation>&lt;b&gt;Backup enrregistrat correctament : </translation>
+        <translation>&lt;b&gt;Backup desat correctament a : </translation>
     </message>
 </context>
 <context>
@@ -436,7 +436,7 @@ Aquest usuari s necessari per poder administrar PostgreSQL. La contrassenya d&ap
     <message>
         <location filename="listempresasbase.py" line="120"/>
         <source>Actualizar Todo</source>
-        <translation>Actualitzar tot</translation>
+        <translation>Actualitza tot</translation>
     </message>
 </context>
 <context>
@@ -485,7 +485,7 @@ p, li { white-space: pre-wrap; }
 &lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;Sans Serif&apos;; font-size:9pt; font-weight:400; font-style:normal; text-decoration:none;&quot;&gt;
 &lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;BulmaSetup v 0.11&lt;/span&gt;&lt;/p&gt;
 &lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Administraci de Bases&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Administració de Bases&lt;/p&gt;
 &lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;de Dades per a BulmaGes&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
@@ -615,7 +615,7 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="modificarcontabilidadbase.py" line="354"/>
         <source>Mostrar todos los plugins o solo los instalados</source>
-        <translation>Mostra tots els plugins o noms els plugins instaŀlats</translation>
+        <translation>Mostra tots els plugins o només els plugins instaŀlats</translation>
     </message>
     <message>
         <location filename="modificarcontabilidadbase.py" line="353"/>
@@ -748,7 +748,7 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="modificarfacturacionbase.py" line="377"/>
         <source>Mostrar todos los plugins o solo los instalados</source>
-        <translation>Mostra tots els plugins o noms els plugins instaŀlats</translation>
+        <translation>Mostra tots els plugins o només els plugins instaŀlats</translation>
     </message>
     <message>
         <location filename="modificarfacturacionbase.py" line="376"/>
@@ -856,12 +856,12 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="modificarusuariobase.py" line="345"/>
         <source>Selecciona una Base de Datos</source>
-        <translation>Selecciona una base de dades</translation>
+        <translation>Seleccioneu una base de dades</translation>
     </message>
     <message>
         <location filename="modificarusuariobase.py" line="348"/>
         <source>Selecciona un Usuario</source>
-        <translation type="obsolete">Selecciona un usuari</translation>
+        <translation type="obsolete">Seleccioneu un usuari</translation>
     </message>
     <message>
         <location filename="modificarusuariobase.py" line="347"/>
