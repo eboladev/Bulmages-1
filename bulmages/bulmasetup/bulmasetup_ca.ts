@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE TS><TS version="1.1" language="ca_ES">
+<!DOCTYPE TS>
+<TS version="2.0" language="ca_ES">
 <context>
     <name>About</name>
     <message>
@@ -53,12 +54,12 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="about.py" line="19"/>
         <source>&lt;center&gt;&lt;h2&gt;Autores de BulmaSetup&lt;/h2&gt;&lt;p&gt;&lt;p&gt;Programaci&amp;oacute;n:&lt;br/&gt; &lt;b&gt;Tomeu Borr&amp;aacute;s.&lt;/b&gt;&amp;nbsp;&lt;a href=&quot;mailto:tborras@conetxia.com&quot;&gt;tborras@conetxia.com&lt;/a&gt;&lt;br/&gt;&lt;b&gt;Toni &amp;Aacute;lvarez. &lt;/b&gt;&amp;nbsp;&lt;a href=&quot;mailto:t.alvarezpascual@gmail.com&quot;&gt;t.alvarezpascual@gmail.com&lt;/a&gt;&lt;br/&gt;&lt;b&gt;Arturo Mart&amp;iacute;n. &lt;/b&gt;&amp;nbsp;&lt;a href=&quot;mailto:amartin@conetxia.com&quot;&gt;amartin@conetxia.com&lt;/a&gt;&lt;br/&gt;&lt;p&gt;Dise&amp;ntilde;o Gr&amp;aacute;fico:&lt;br/&gt; &lt;b&gt;Ra&amp;uacute;l Mart&amp;iacute;nez.&lt;/b&gt;&amp;nbsp;&lt;a href=&quot;mailto:elferrer@gmail.com&quot;&gt;elferrer@gmail.com&lt;/a&gt;&lt;br/&gt;&lt;p&gt;&lt;p&gt;Traducciones:&lt;br/&gt; &lt;b&gt;Henri Girard.&lt;/b&gt;&amp;nbsp;&lt;a href=&quot;mailto:henrigirard@free.fr&quot;&gt;henrigirard@free.fr&lt;/a&gt;&lt;br/&gt;&lt;b&gt;Walter Garcia-Fontes.&lt;/b&gt;&amp;nbsp;&lt;a href=&quot;mailto:walter.garcia@upf.edu&quot;&gt;walter.garcia@upf.edu&lt;/a&gt;&lt;br/&gt;&lt;p&gt;Depuraci&amp;oacute;n y Pruebas:&lt;br/&gt; &lt;b&gt;Qu Zhioxiong.&lt;/b&gt;&amp;nbsp;&lt;a href=&quot;mailto:santlong@gmail.com&quot;&gt;santlong@gmail.com&lt;/a&gt;&lt;br/&gt;&lt;/p&gt;&lt;/center&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;center&gt;&lt;h2&gt;Autors de BulmaSetup&lt;/h2&gt;&lt;p&gt;&lt;p&gt;Programaci&amp;oacute;:&lt;br/&gt; &lt;b&gt;Tomeu Borr&amp;aacute;s.&lt;/b&gt;&amp;nbsp;&lt;a href=&quot;mailto:tborras@conetxia.com&quot;&gt;tborras@conetxia.com&lt;/a&gt;&lt;br/&gt;&lt;b&gt;Toni &amp;Aacute;lvarez. &lt;/b&gt;&amp;nbsp;&lt;a href=&quot;mailto:t.alvarezpascual@gmail.com&quot;&gt;t.alvarezpascual@gmail.com&lt;/a&gt;&lt;br/&gt;&lt;b&gt;Arturo Mart&amp;iacute;n. &lt;/b&gt;&amp;nbsp;&lt;a href=&quot;mailto:amartin@conetxia.com&quot;&gt;amartin@conetxia.com&lt;/a&gt;&lt;br/&gt;&lt;p&gt;Disseny Grafic:&lt;br/&gt; &lt;b&gt;Ra&amp;uacute;l Mart&amp;iacute;nez.&lt;/b&gt;&amp;nbsp;&lt;a href=&quot;mailto:elferrer@gmail.com&quot;&gt;elferrer@gmail.com&lt;/a&gt;&lt;br/&gt;&lt;p&gt;&lt;p&gt;Traduccions:&lt;br/&gt; &lt;b&gt;Henri Girard.&lt;/b&gt;&amp;nbsp;&lt;a href=&quot;mailto:henrigirard@free.fr&quot;&gt;henrigirard@free.fr&lt;/a&gt;&lt;br/&gt;&lt;b&gt;Walter Garcia-Fontes.&lt;/b&gt;&amp;nbsp;&lt;a href=&quot;mailto:walter.garcia@upf.edu&quot;&gt;walter.garcia@upf.edu&lt;/a&gt;&lt;br/&gt;&lt;p&gt;Depuraci&amp;oacute; i Proves:&lt;br/&gt; &lt;b&gt;Qu Zhioxiong.&lt;/b&gt;&amp;nbsp;&lt;a href=&quot;mailto:santlong@gmail.com&quot;&gt;santlong@gmail.com&lt;/a&gt;&lt;br/&gt;&lt;/p&gt;&lt;/center&gt;</translation>
     </message>
     <message>
         <location filename="about.py" line="39"/>
         <source>&lt;center&gt;&lt;p&gt;&lt;p&gt;&lt;h2&gt;Entidades que dan soporte al programa:&lt;/h2&gt;&lt;/p&gt;&lt;b&gt;Conetxia:&lt;/b&gt; &lt;a href=&quot;http://www.conetxia.com&quot;&gt;http://www.conetxia.com&lt;/a&gt;&lt;br /&gt;&lt;b&gt;Todo-Redes:&lt;/b&gt; &lt;a href=&quot;http://www.todo-redes.com&quot;&gt;http://www.todo-redes.com&lt;/a&gt;&lt;/p&gt;&lt;/center&gt;</source>
-        <translation>&lt;center&gt;&lt;p&gt;&lt;p&gt;&lt;h2&gt;Entitats que donen suport al programa:&lt;/h2&gt;&lt;/p&gt;&lt;b&gt;Conetxia:&lt;/b&gt; &lt;a href=&quot;http://www.conetxia.com&quot;&gt;http://www.conetxia.com&lt;/a&gt;&lt;br /&gt;&lt;b&gt;Todo-Redes:&lt;/b&gt; &lt;a href=&quot;http://www.todo-redes.com&quot;&gt;http://www.todo-redes.com&lt;/a&gt;&lt;/p&gt;&lt;/center&gt;</translation>
+        <translation>&lt;center&gt;&lt;p&gt;&lt;p&gt;&lt;h2&gt;Entitats que donenn suport al programa:&lt;/h2&gt;&lt;/p&gt;&lt;b&gt;Conetxia:&lt;/b&gt; &lt;a href=&quot;http://www.conetxia.com&quot;&gt;http://www.conetxia.com&lt;/a&gt;&lt;br /&gt;&lt;b&gt;Todo-Redes:&lt;/b&gt; &lt;a href=&quot;http://www.todo-redes.com&quot;&gt;http://www.todo-redes.com&lt;/a&gt;&lt;/p&gt;&lt;/center&gt;</translation>
     </message>
 </context>
 <context>
@@ -147,7 +148,7 @@ p, li { white-space: pre-wrap; }
 </context>
 <context>
     <name>Empresa</name>
-    <message encoding="UTF-8">
+    <message utf8="true">
         <location filename="empresa.py" line="33"/>
         <source>Desea agregar el usuario &lt;b&gt;root&lt;/b&gt; a PostgreSQL? 
  
@@ -202,17 +203,17 @@ Aquest usuari s necessari per poder administrar PostgreSQL. La contrassenya d&ap
     <message>
         <location filename="guardarbackup.py" line="56"/>
         <source>Selecciona la carpeta de destino del Backup</source>
-        <translation>Seleccioneu la carpeta de destí del Backup</translation>
+        <translation>Selecciona la carpeta de destinació del backup</translation>
     </message>
     <message>
         <location filename="guardarbackup.py" line="86"/>
         <source>No existe el archivo de configuracion: &lt;b&gt;/etc/bulmages/</source>
-        <translation>No existeix el fitxer de configuració &lt;b&gt;/etc/bulmages/</translation>
+        <translation>No existeix l&apos;arxiu de configuració: &lt;b&gt;/etc/bulmages/</translation>
     </message>
     <message>
         <location filename="guardarbackup.py" line="111"/>
         <source>&lt;b&gt;Backup guardado satisfactoriamente en : </source>
-        <translation>&lt;b&gt;Backup desat satisfactòriament a :</translation>
+        <translation>&lt;b&gt;Backup enrregistrat correctament : </translation>
     </message>
 </context>
 <context>
@@ -383,17 +384,17 @@ p, li { white-space: pre-wrap; }
         <source>Acerca de BulmaSetup</source>
         <translation>Quant a BulmaSetup</translation>
     </message>
-    <message encoding="UTF-8">
+    <message utf8="true">
         <location filename="bulmasetupbase.py" line="219"/>
         <source>Gestión de Usuarios</source>
         <translation>Gestió d&apos;Usuaris</translation>
     </message>
-    <message encoding="UTF-8">
+    <message utf8="true">
         <location filename="bulmasetupbase.py" line="224"/>
         <source>Gestión de Empresas</source>
         <translation>Gestió d&apos;Empreses</translation>
     </message>
-    <message encoding="UTF-8">
+    <message utf8="true">
         <location filename="bulmasetupbase.py" line="226"/>
         <source>Nueva Empresa de Facturación / TPV</source>
         <translation>Nova Empresa de Facturació / TPV</translation>
