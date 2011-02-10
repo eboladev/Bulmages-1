@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: info@iglues.org\n"
 "POT-Creation-Date: 2011-01-25 00:21+0100\n"
-"PO-Revision-Date: 2010-07-30 14:54+0200\n"
+"PO-Revision-Date: 2011-02-10 07:28+0100\n"
 "Last-Translator: Walter Garcia-Fontes <walter.garcia@upf.edu>\n"
 "Language-Team:  Catalan\n"
 "MIME-Version: 1.0\n"
@@ -20,7 +20,7 @@ msgstr "&Cancel·la"
 
 #: bgbulmages.cpp:103
 msgid "&Salir"
-msgstr "Abandona"
+msgstr "&Surt"
 
 #: ui_bgbulmagesbase.h:382
 msgid ""
@@ -37,6 +37,11 @@ msgid ""
 "weight:600;\">contabilidad</span><span style=\" font-size:10pt;\">. Adaptado "
 "al plan contable Español.</span></p></body></html>"
 msgstr ""
+"<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
+"<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
+"p, li { white-space: pre-wrap; }\n"
+"</style></head><body style=\" font-family:'Sans Serif'; font-size:14pt; font-weight:400; font-style:normal;\">\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:10pt;\">Programa de </span><span style=\" font-size:10pt; font-weight:600;\">contabilidad</span><span style=\" font-size:10pt;\">. Adaptat al Pla Comptable Espanyol.</span></p></body></html>"
 
 #: ui_bgbulmagesbase.h:390
 msgid ""
@@ -54,6 +59,11 @@ msgid ""
 "control de clientes y proveedores, además de todos los documentos "
 "relacionados con el comercio.</span></p></body></html>"
 msgstr ""
+"<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
+"<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
+"p, li { white-space: pre-wrap; }\n"
+"</style></head><body style=\" font-family:'Sans Serif'; font-size:14pt; font-weight:400; font-style:normal;\">\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:10pt;\">Programa per emetre </span><span style=\" font-size:10pt; font-weight:600;\">factures</span><span style=\" font-size:10pt;\">. Porta un control de clientes i proveïdors, a més de tots els documents relacionats amb el comerç.</span></p></body></html>"
 
 #: ui_bgbulmagesbase.h:398
 msgid ""
@@ -71,6 +81,11 @@ msgid ""
 "style=\" font-size:10pt;\"> Admite la impresión de tickets y lector de "
 "código de barras.</span></p></body></html>"
 msgstr ""
+"<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
+"<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
+"p, li { white-space: pre-wrap; }\n"
+"</style></head><body style=\" font-family:'Sans Serif'; font-size:14pt; font-weight:400; font-style:normal;\">\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:10pt;\">Programa per la gestió d'un Terminal Punt de Venda </span><span style=\" font-size:10pt; font-weight:600;\">(TPV).</span><span style=\" font-size:10pt;\"> Admet la impressió de tickets i lector de codi de barres.</span></p></body></html>"
 
 #: ui_bgbulmagesbase.h:406
 msgid ""
@@ -90,26 +105,31 @@ msgid ""
 "bajas de funcionalidades del resto de programas mediante el uso de 'plugins'."
 "</span></p></body></html>"
 msgstr ""
+"<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
+"<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
+"p, li { white-space: pre-wrap; }\n"
+"</style></head><body style=\" font-family:'Sans Serif'; font-size:7pt; font-weight:400; font-style:normal;\">\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:10pt; font-weight:600;\">Configuració</span><span style=\" font-size:10pt;\"> general del conjunt d'aplicacions </span><span style=\" font-size:10pt; font-weight:600;\">BulmaGes</span><span style=\" font-size:10pt;\">. Administra la base de dades, permisos d'usuaris i altes/baixes de funcionalitats de la resta de programes mitjançant l'ús de 'plugins'.</span></p></body></html>"
 
 #: main.cxx:68
 msgid "Bandeja"
-msgstr ""
+msgstr "Safata"
 
 #: ui_bgbulmagesbase.h:380 bgbulmages.cpp:95
 msgid "BulmaCont"
-msgstr ""
+msgstr "BulmaCont"
 
 #: ui_bgbulmagesbase.h:388 bgbulmages.cpp:97
 msgid "BulmaFact"
-msgstr ""
+msgstr "BulmaFact"
 
 #: ui_bgbulmagesbase.h:404 bgbulmages.cpp:101
 msgid "BulmaSetup"
-msgstr ""
+msgstr "BulmaSetup"
 
 #: ui_bgbulmagesbase.h:396 bgbulmages.cpp:99
 msgid "BulmaTPV"
-msgstr ""
+msgstr "BulmaTPV"
 
 #: ui_bgbulmagesbase.h:379
 #, fuzzy
@@ -118,29 +138,29 @@ msgstr "Diari"
 
 #: ui_bgbulmagesbase.h:412
 msgid "Lanzador"
-msgstr "Llançador"
+msgstr "Llençador"
 
 #: bgbulmages.cpp:33
 msgid "Lanzador BulmaGes"
-msgstr ""
+msgstr "Llençador BulmaGes"
 
 #: ui_bgbulmagesbase.h:395
 msgid "Lanzar Bulma&Fact"
-msgstr ""
+msgstr "Llença Bulma&Fact"
 
 #: ui_bgbulmagesbase.h:411
 msgid "Lanzar Bulma&Setup"
-msgstr ""
+msgstr "Llença Bulma&Setup"
 
 #: ui_bgbulmagesbase.h:403
 msgid "Lanzar Bulma&TPV"
-msgstr ""
+msgstr "Llença Bulma&TPV"
 
 #: ui_bgbulmagesbase.h:387
 msgid "Lanzar BulmaC&ont"
-msgstr ""
+msgstr "Llença BulmaC&cont"
 
 #: main.cxx:69
 msgid "No se detecta ninguna bandeja en el sistema"
-msgstr ""
+msgstr "No es detecta cap safata al sistema"
 
