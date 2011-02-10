@@ -102,7 +102,7 @@ class Facturacion(Ui_ModificarFacturacionBase, Empresa):
       self.arra = self.cadcategorias.split(';')
       self.arra.sort()
       self.j = 0
-      self.mui_categoria.addItem('--Todas las Categorias--')
+      self.mui_categoria.addItem(QtGui.QApplication.translate("Facturacion",'--Todas las Categorias--', None, QtGui.QApplication.UnicodeUTF8))
       while (self.j < len ( self.arra)):
          if (self.j < 1 or self.arra[self.j] <> self.arra[self.j-1]):
             self.mui_categoria.addItem( self.arra[self.j])
@@ -112,7 +112,7 @@ class Facturacion(Ui_ModificarFacturacionBase, Empresa):
       self.tabWidget.setCurrentIndex(0)
 
    def trataOpenReports(self):
-      self.writecommand('Generando plantillas RML y PYS')
+      self.writecommand(QtGui.QApplication.translate("Facturacion",'Generando plantillas RML y PYS', None, QtGui.QApplication.UnicodeUTF8))
       # Creamos el directorio especifico para guardar las plantillas
       self.string = "mkdir -p /opt/bulmages/openreports_" + self.database 
       self.process.start(self.string)
@@ -139,7 +139,7 @@ class Facturacion(Ui_ModificarFacturacionBase, Empresa):
       self.process.start(self.string)
       self.process.waitForFinished(-1)
 
-      self.writecommand('Generamos backup de las plantillas de impresion en ' + '/opt/bulmages/openreports_' + self.database + '_old' + str(i))
+      self.writecommand(QtGui.QApplication.translate("Facturacion",'Generamos backup de las plantillas de impresion en ', None, QtGui.QApplication.UnicodeUTF8) + '/opt/bulmages/openreports_' + self.database + '_old' + str(i))
 
 
       # Copiamos los archivos genericos
@@ -263,7 +263,7 @@ class Facturacion(Ui_ModificarFacturacionBase, Empresa):
       self.i = 0
       while (self.i < self.mui_plugins.rowCount()):
 	# Si el plugin tiene el orden adecuado lo consideramos.
-	self.writecommand('Tratando ' + self.mui_plugins.item(self.i,0).text())
+	self.writecommand(QtGui.QApplication.translate("Facturacion",'Tratando ', None, QtGui.QApplication.UnicodeUTF8) + self.mui_plugins.item(self.i,0).text())
 	# Si el plugin esta checked lo escribimos.
 	if (self.mui_plugins.item(self.i, 0).checkState() == Qt.Checked and len(self.mui_plugins.item(self.i,11).text()) > 3):
 	  # Si hay que aplicar un plugin entonces lo escribimos
@@ -295,7 +295,7 @@ class Facturacion(Ui_ModificarFacturacionBase, Empresa):
       self.i = 0
       while (self.i < self.mui_plugins1.rowCount()):
 	# Si el plugin tiene el orden adecuado lo consideramos.
-	self.writecommand('Tratando ' + self.mui_plugins1.item(self.i,0).text())
+	self.writecommand(QtGui.QApplication.translate("Facturacion",'Tratando ', None, QtGui.QApplication.UnicodeUTF8) + self.mui_plugins1.item(self.i,0).text())
 	# Si el plugin esta checked lo escribimos.
 	if (self.mui_plugins1.item(self.i, 0).checkState() == Qt.Checked and len(self.mui_plugins1.item(self.i,11).text()) > 3):
 	  # Si hay que aplicar un plugin entonces lo escribimos
@@ -384,8 +384,8 @@ class Facturacion(Ui_ModificarFacturacionBase, Empresa):
       self.file1.close()
 
    def writeConfig(self):
-      self.writecommand('ESCRIBIENDO CONFIGURACION')
-      self.writecommand("Escribiendo configuracion en "+ plugins.configfiles + "bulmafact_" + self.database + ".conf " )
+      self.writecommand(QtGui.QApplication.translate("Facturacion",'ESCRIBIENDO CONFIGURACION', None, QtGui.QApplication.UnicodeUTF8))
+      self.writecommand(QtGui.QApplication.translate("Facturacion","Escribiendo configuracion en ", None, QtGui.QApplication.UnicodeUTF8)+ plugins.configfiles + "bulmafact_" + self.database + ".conf " )
       
 
       # TRATAMOS EL ARCHIVO DE BULMAFACT
@@ -441,7 +441,7 @@ class Facturacion(Ui_ModificarFacturacionBase, Empresa):
         while (self.i < self.mui_plugins.rowCount()):
           # Si el plugin tiene el orden adecuado lo consideramos.
           if (str(self.mui_plugins.item(self.i,7).text()) == str(self.x) ):
-            self.writecommand('Tratando ' + self.mui_plugins.item(self.i,0).text())
+            self.writecommand(QtGui.QApplication.translate("Facturacion",'Tratando ', None, QtGui.QApplication.UnicodeUTF8) + self.mui_plugins.item(self.i,0).text())
             # Si el plugin esta checked lo escribimos.
             if (self.mui_plugins.item(self.i, 0).checkState() == Qt.Checked and len(self.mui_plugins.item(self.i,10).text()) > 3):
               if (self.nuevo == 1):
@@ -451,7 +451,7 @@ class Facturacion(Ui_ModificarFacturacionBase, Empresa):
                  self.out << "CONF_PLUGINS_BULMAFACT   "
 	      # Si hay que aplicar un plugin entonces lo escribimos
 	      if (self.mui_plugins.item(self.i,10).text() != 'None' and len(self.mui_plugins.item(self.i,10).text()) > 3):
-		self.writecommand('Hay que actualizar ' + self.mui_plugins.item(self.i,0).text())
+		self.writecommand(QtGui.QApplication.translate("Facturacion",'Hay que actualizar ', None, QtGui.QApplication.UnicodeUTF8) + self.mui_plugins.item(self.i,0).text())
 		self.out << self.terminador << self.mui_plugins.item(self.i,10).text()
 		self.terminador = "; \\\n";
           self.i = self.i + 1
@@ -515,15 +515,15 @@ class Facturacion(Ui_ModificarFacturacionBase, Empresa):
           self.i = 0
           while (self.i < self.mui_plugins1.rowCount()):
               if ( str(self.mui_plugins1.item(self.i,7).text()) == str(self.x)):
-                self.writecommand('Tratando ' + self.mui_plugins1.item(self.i,0).text())
+                self.writecommand(QtGui.QApplication.translate("Facturacion",'Tratando ', None, QtGui.QApplication.UnicodeUTF8) + self.mui_plugins1.item(self.i,0).text())
                 if (self.mui_plugins1.item(self.i, 0).checkState() == Qt.Checked and len (self.mui_plugins1.item (self.i, 10).text()) > 3):
                   if (self.nuevo == 1):
                     self.nuevo = 0
                     self.out << "CONF_PLUGINS_BULMATPV   "
-                  self.writecommand('Hay que actualizar ' + self.mui_plugins1.item(self.i,0).text())
+                  self.writecommand(QtGui.QApplication.translate("Facturacion",'Hay que actualizar ', None, QtGui.QApplication.UnicodeUTF8) + self.mui_plugins1.item(self.i,0).text())
 		  # Si hay que aplicar un plugin entonces lo escribimos
 		  if (self.mui_plugins1.item(self.i,10).text() != 'None' and len(self.mui_plugins1.item(self.i,10).text()) > 3):
-		    self.writecommand('Hay que actualizar ' + self.mui_plugins1.item(self.i,0).text())
+		    self.writecommand(QtGui.QApplication.translate("Facturacion",'Hay que actualizar ', None, QtGui.QApplication.UnicodeUTF8) + self.mui_plugins1.item(self.i,0).text())
 		    self.out << self.terminador << self.mui_plugins1.item(self.i,10).text()
 		    self.terminador = "; \\\n";
               self.i = self.i + 1
@@ -654,7 +654,7 @@ class Facturacion(Ui_ModificarFacturacionBase, Empresa):
    def on_mui_plugins_cellPressed(self, row, col):
       self.estado = self.mui_plugins.item(row,0).checkState()
       # Escribimos la descripcion
-      self.mui_descripcion.setText(self.mui_plugins.item(row,1).text() + "<b>" + self.mui_plugins.item(row,10).text() + "</b><br>"+ self.mui_plugins.item(row,3).text() + "<br><b>Categorias:</b> " + self.mui_plugins.item(row,8).text() + "<br><br><b>Dependencias:</b> " + self.mui_plugins.item(row,5).text() + "<br><br><b>Incompatibilidades:</b> " + self.mui_plugins.item(row,6).text() + "<br><br><b>Parches SQL:</b>" + self.mui_plugins.item(row,4).text() + "<br>" + self.mui_plugins.item(row,9).text() + "<br><b>Informes:</b><br>" + self.mui_plugins.item(row,11).text())
+      self.mui_descripcion.setText(self.mui_plugins.item(row,1).text() + "<b>" + self.mui_plugins.item(row,10).text() + "</b><br>"+ self.mui_plugins.item(row,3).text() + QtGui.QApplication.translate("Facturacion","<br><b>Categorias:</b> ", None, QtGui.QApplication.UnicodeUTF8) + self.mui_plugins.item(row,8).text() + QtGui.QApplication.translate("Facturacion","<br><br><b>Dependencias:</b> ", None, QtGui.QApplication.UnicodeUTF8) + self.mui_plugins.item(row,5).text() + QtGui.QApplication.translate("Facturacion","<br><br><b>Incompatibilidades:</b> ", None, QtGui.QApplication.UnicodeUTF8) + self.mui_plugins.item(row,6).text() + QtGui.QApplication.translate("Facturacion","<br><br><b>Parches SQL:</b>", None, QtGui.QApplication.UnicodeUTF8) + self.mui_plugins.item(row,4).text() + "<br>" + self.mui_plugins.item(row,9).text() + QtGui.QApplication.translate("Facturacion","<br><b>Informes:</b><br>", None, QtGui.QApplication.UnicodeUTF8) + self.mui_plugins.item(row,11).text())
      
    def on_mui_plugins_cellClicked(self, row, col):
     if (self.semaforo == 1):
@@ -670,8 +670,8 @@ class Facturacion(Ui_ModificarFacturacionBase, Empresa):
                     Yes = 'Si'
                     No = 'No'
                     message = QtGui.QMessageBox(self)
-                    message.setText('El plugin <b>' +str(self.mui_plugins.item(row,10).text() + "</b> tiene incompatibilidades. Quieres desinstalarlas?"))
-                    message.setWindowTitle('Atencion!')
+                    message.setText(QtGui.QApplication.translate("Facturacion",'El plugin <b>', None, QtGui.QApplication.UnicodeUTF8) +str(self.mui_plugins.item(row,10).text() + QtGui.QApplication.translate("Facturacion","</b> tiene incompatibilidades. Quieres desinstalarlas?", None, QtGui.QApplication.UnicodeUTF8)))
+                    message.setWindowTitle(QtGui.QApplication.translate("Facturacion",'Atencion!', None, QtGui.QApplication.UnicodeUTF8))
                     message.setIcon(QtGui.QMessageBox.Warning)
                     message.addButton(Yes, QtGui.QMessageBox.AcceptRole)
                     message.addButton(No, QtGui.QMessageBox.RejectRole)
@@ -686,7 +686,7 @@ class Facturacion(Ui_ModificarFacturacionBase, Empresa):
                     Yes = 'Si'
                     No = 'No'
                     message = QtGui.QMessageBox(self)
-                    message.setText('El plugin <b>' +str(self.mui_plugins.item(row,10).text() + "</b> tiene dependencias. Quieres instalarlas?"))
+                    message.setText(QtGui.QApplication.translate("Facturacion",'El plugin <b>', None, QtGui.QApplication.UnicodeUTF8) +str(self.mui_plugins.item(row,10).text() + QtGui.QApplication.translate("Facturacion","</b> tiene dependencias. Quieres instalarlas?", None, QtGui.QApplication.UnicodeUTF8)))
                     message.setWindowTitle('Atencion!')
                     message.setIcon(QtGui.QMessageBox.Warning)
                     message.addButton(Yes, QtGui.QMessageBox.AcceptRole)
@@ -701,7 +701,7 @@ class Facturacion(Ui_ModificarFacturacionBase, Empresa):
    def on_mui_plugins1_cellPressed(self, row, col):
       self.estado = self.mui_plugins1.item(row,0).checkState()
       # Escribimos la descripcion
-      self.mui_descripcion.setText(self.mui_plugins1.item(row,1).text() + "<b>" + self.mui_plugins1.item(row,10).text() + "</b><br>"+ self.mui_plugins1.item(row,3).text() + "<br><b>Categorias:</b> " + self.mui_plugins1.item(row,8).text() + "<br><br><b>Dependencias:</b> " + self.mui_plugins1.item(row,5).text() + "<br><br><b>Incompatibilidades:</b> " + self.mui_plugins1.item(row,6).text() + "<br><br><b>Parches SQL:</b>" + self.mui_plugins1.item(row,4).text() + "<br>" + self.mui_plugins1.item(row,9).text() + "<br><b>Informes:</b><br>" + self.mui_plugins1.item(row,11).text())
+      self.mui_descripcion.setText(self.mui_plugins1.item(row,1).text() + "<b>" + self.mui_plugins1.item(row,10).text() + "</b><br>"+ self.mui_plugins1.item(row,3).text() + QtGui.QApplication.translate("Facturacion","<br><b>Categorias:</b> ", None, QtGui.QApplication.UnicodeUTF8) + self.mui_plugins1.item(row,8).text() + QtGui.QApplication.translate("Facturacion","<br><br><b>Dependencias:</b> ", None, QtGui.QApplication.UnicodeUTF8) + self.mui_plugins1.item(row,5).text() + QtGui.QApplication.translate("Facturacion","<br><br><b>Incompatibilidades:</b> ", None, QtGui.QApplication.UnicodeUTF8) + self.mui_plugins1.item(row,6).text() + QtGui.QApplication.translate("Facturacion","<br><br><b>Parches SQL:</b>", None, QtGui.QApplication.UnicodeUTF8) + self.mui_plugins1.item(row,4).text() + "<br>" + self.mui_plugins1.item(row,9).text() + QtGui.QApplication.translate("Facturacion","<br><b>Informes:</b><br>", None, QtGui.QApplication.UnicodeUTF8) + self.mui_plugins1.item(row,11).text())
       
    def on_mui_plugins1_cellClicked(self, row, col):
       if (self.semaforo == 1):
@@ -717,7 +717,7 @@ class Facturacion(Ui_ModificarFacturacionBase, Empresa):
                     Yes = 'Si'
                     No = 'No'
                     message = QtGui.QMessageBox(self)
-                    message.setText('El plugin <b>' +str(self.mui_plugins1.item(row,10).text() + "</b> tiene incompatibilidades. Quieres desinstalarlas?"))
+                    message.setText(QtGui.QApplication.translate("Facturacion",'El plugin <b>', None, QtGui.QApplication.UnicodeUTF8) +str(self.mui_plugins1.item(row,10).text() + QtGui.QApplication.translate("Facturacion","</b> tiene incompatibilidades. Quieres desinstalarlas?", None, QtGui.QApplication.UnicodeUTF8)))
                     message.setWindowTitle('Atencion!')
                     message.setIcon(QtGui.QMessageBox.Warning)
                     message.addButton(Yes, QtGui.QMessageBox.AcceptRole)
@@ -733,8 +733,8 @@ class Facturacion(Ui_ModificarFacturacionBase, Empresa):
                     Yes = 'Si'
                     No = 'No'
                     message = QtGui.QMessageBox(self)
-                    message.setText('El plugin <b>' +str(self.pluginsbulmatpv[row][1] + "</b> tiene dependencias. Quieres instalarlas?"))
-                    message.setWindowTitle('Atencion!')
+                    message.setText(QtGui.QApplication.translate("Facturacion",'El plugin <b>', None, QtGui.QApplication.UnicodeUTF8) +str(self.pluginsbulmatpv[row][1] + QtGui.QApplication.translate("Facturacion","</b> tiene dependencias. Quieres instalarlas?", None, QtGui.QApplication.UnicodeUTF8)))
+                    message.setWindowTitle(QtGui.QApplication.translate("Facturacion",'Atencion!', None, QtGui.QApplication.UnicodeUTF8))
                     message.setIcon(QtGui.QMessageBox.Warning)
                     message.addButton(Yes, QtGui.QMessageBox.AcceptRole)
                     message.addButton(No, QtGui.QMessageBox.RejectRole)
@@ -747,7 +747,7 @@ class Facturacion(Ui_ModificarFacturacionBase, Empresa):
 
         
    def actualizarPlugins(self):
-      self.writecommand('ACTUALIZANDO PLUGINS')
+      self.writecommand(QtGui.QApplication.translate("Facturacion",'ACTUALIZANDO PLUGINS', None, QtGui.QApplication.UnicodeUTF8))
       
       #Creamos la bara de progreso
       self.progress = QtGui.QProgressBar(self)
@@ -763,9 +763,9 @@ class Facturacion(Ui_ModificarFacturacionBase, Empresa):
         while (self.i < self.mui_plugins.rowCount()):
           # Si el plugin tiene el orden adecuado lo consideramos.
           if (self.mui_plugins.item(self.i,7) <> None and str(self.mui_plugins.item(self.i,7).text()) == str(self.x) ):   
-	    self.writecommand('Tratando ' + self.mui_plugins.item(self.i,0).text())
+	    self.writecommand(QtGui.QApplication.translate("Facturacion",'Tratando ', None, QtGui.QApplication.UnicodeUTF8) + self.mui_plugins.item(self.i,0).text())
 	    if (self.mui_plugins.item(self.i, 0).checkState() == Qt.Checked):
-	      self.writecommand('Actualizando ' + self.mui_plugins.item(self.i,0).text())
+	      self.writecommand(QtGui.QApplication.translate("Facturacion",'Actualizando ', None, QtGui.QApplication.UnicodeUTF8) + self.mui_plugins.item(self.i,0).text())
 	      self.writecommand('============ \n ' )
 	      # Si hay parche de actualizacion lo aplicamos
 	      # En realidad deberia comprobarse si hay archivo para aplicarlo o no en
@@ -789,7 +789,7 @@ class Facturacion(Ui_ModificarFacturacionBase, Empresa):
         while (self.i < self.mui_plugins.rowCount()):
           # Si el plugin tiene el orden adecuado lo consideramos.
           if (self.mui_plugins.item(self.i,7) <> None and str(self.mui_plugins.item(self.i,7).text()) == str(self.x) ):   
-	    self.writecommand('Tratando ' + self.mui_plugins.item(self.i,0).text())
+	    self.writecommand(QtGui.QApplication.translate("Facturacion",'Tratando ', None, QtGui.QApplication.UnicodeUTF8) + self.mui_plugins.item(self.i,0).text())
 	    if (self.mui_plugins.item(self.i, 0).checkState() <> Qt.Checked):
 	      # Si no esta chequeado hacemos un borrado del plugin
 	      if (len(self.mui_plugins.item(self.i,9).text()) > 4):
@@ -812,10 +812,10 @@ class Facturacion(Ui_ModificarFacturacionBase, Empresa):
           while (self.i < self.mui_plugins1.rowCount()):
             # Si el plugin tiene el orden adecuado lo consideramos.
             if (self.mui_plugins1.item(self.i,7) <> None and str(self.mui_plugins1.item(self.i,7).text()) == str(self.x) ): 
-              self.writecommand('Tratando ' + self.mui_plugins1.item(self.i,0).text())
+              self.writecommand(QtGui.QApplication.translate("Facturacion",'Tratando ', None, QtGui.QApplication.UnicodeUTF8) + self.mui_plugins1.item(self.i,0).text())
               if (self.mui_plugins1.item(self.i, 0).checkState() == Qt.Checked):
                 if (len(self.mui_plugins1.item(self.i,4).text()) > 4):
-                  self.writecommand('Actualizando ' + self.mui_plugins1.item(self.i,0).text())
+                  self.writecommand(QtGui.QApplication.translate("Facturacion",'Actualizando ', None, QtGui.QApplication.UnicodeUTF8) + self.mui_plugins1.item(self.i,0).text())
                   self.command = 'su postgres -c \"psql -t -f  ' + plugins.pathdbplugins + self.mui_plugins1.item(self.i,4).text() +' '+ self.database +'\"'
                   self.writecommand(self.command)
                   self.process.start(self.command)
@@ -834,7 +834,7 @@ class Facturacion(Ui_ModificarFacturacionBase, Empresa):
           while (self.i < self.mui_plugins1.rowCount()):
             # Si el plugin tiene el orden adecuado lo consideramos.
             if (self.mui_plugins1.item(self.i,7) <> None and str(self.mui_plugins1.item(self.i,7).text()) == str(self.x) ): 
-              self.writecommand('Tratando ' + self.mui_plugins1.item(self.i,0).text())
+              self.writecommand(QtGui.QApplication.translate("Facturacion",'Tratando ', None, QtGui.QApplication.UnicodeUTF8) + self.mui_plugins1.item(self.i,0).text())
               if (self.mui_plugins1.item(self.i, 0).checkState() <> Qt.Checked):
                 # Si no esta chequeado hacemos un borrado del plugin
                 if (len(self.mui_plugins1.item(self.i,9).text()) > 4):
@@ -853,7 +853,7 @@ class Facturacion(Ui_ModificarFacturacionBase, Empresa):
       self.progress.hide()
 
    def buscaPlugins(self):
-      self.writecommand("Buscando Pluggins")
+      self.writecommand(QtGui.QApplication.translate("Facturacion","Buscando Pluggins", None, QtGui.QApplication.UnicodeUTF8))
 
       #Conectamos con la base de datos
       if (self.database <> None):

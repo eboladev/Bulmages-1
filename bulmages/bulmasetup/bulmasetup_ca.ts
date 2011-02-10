@@ -169,6 +169,104 @@ Aquest usuari s necessari per poder administrar PostgreSQL. La contrassenya d&ap
     </message>
 </context>
 <context>
+    <name>Facturacion</name>
+    <message>
+        <location filename="facturacion.py" line="105"/>
+        <source>--Todas las Categorias--</source>
+        <translation>-- Totes les Categories --</translation>
+    </message>
+    <message>
+        <location filename="facturacion.py" line="115"/>
+        <source>Generando plantillas RML y PYS</source>
+        <translation>Generant plantilles RML i PYS</translation>
+    </message>
+    <message>
+        <location filename="facturacion.py" line="142"/>
+        <source>Generamos backup de las plantillas de impresion en </source>
+        <translation>Generam el backup de les plantilles d&apos;impressió a </translation>
+    </message>
+    <message>
+        <location filename="facturacion.py" line="837"/>
+        <source>Tratando </source>
+        <translation>Tratant</translation>
+    </message>
+    <message>
+        <location filename="facturacion.py" line="387"/>
+        <source>ESCRIBIENDO CONFIGURACION</source>
+        <translation>ESCRIBINT CONFIGURACIO</translation>
+    </message>
+    <message>
+        <location filename="facturacion.py" line="388"/>
+        <source>Escribiendo configuracion en </source>
+        <translation>Escribint configuració a </translation>
+    </message>
+    <message>
+        <location filename="facturacion.py" line="526"/>
+        <source>Hay que actualizar </source>
+        <translation>Hi ha que actualitzar </translation>
+    </message>
+    <message>
+        <location filename="facturacion.py" line="704"/>
+        <source>&lt;br&gt;&lt;b&gt;Categorias:&lt;/b&gt; </source>
+        <translation>&lt;br&gt;&lt;b&gt;Categories:&lt;/b&gt; </translation>
+    </message>
+    <message>
+        <location filename="facturacion.py" line="704"/>
+        <source>&lt;br&gt;&lt;br&gt;&lt;b&gt;Dependencias:&lt;/b&gt; </source>
+        <translation>&lt;br&gt;&lt;br&gt;&lt;b&gt;Dependencies:&lt;/b&gt; </translation>
+    </message>
+    <message>
+        <location filename="facturacion.py" line="704"/>
+        <source>&lt;br&gt;&lt;br&gt;&lt;b&gt;Incompatibilidades:&lt;/b&gt; </source>
+        <translation>&lt;br&gt;&lt;br&gt;&lt;b&gt;Incompatibilitats:&lt;/b&gt; </translation>
+    </message>
+    <message>
+        <location filename="facturacion.py" line="704"/>
+        <source>&lt;br&gt;&lt;br&gt;&lt;b&gt;Parches SQL:&lt;/b&gt;</source>
+        <translation>&lt;br&gt;&lt;br&gt;&lt;b&gt;Parches SQL:&lt;/b&gt;</translation>
+    </message>
+    <message>
+        <location filename="facturacion.py" line="704"/>
+        <source>&lt;br&gt;&lt;b&gt;Informes:&lt;/b&gt;&lt;br&gt;</source>
+        <translation>&lt;br&gt;&lt;b&gt;Informes:&lt;/b&gt;&lt;br&gt;</translation>
+    </message>
+    <message>
+        <location filename="facturacion.py" line="736"/>
+        <source>El plugin &lt;b&gt;</source>
+        <translation>El plugin &lt;b&gt;</translation>
+    </message>
+    <message>
+        <location filename="facturacion.py" line="720"/>
+        <source>&lt;/b&gt; tiene incompatibilidades. Quieres desinstalarlas?</source>
+        <translation>&lt;/b&gt; te incompatiblilitats. Desitja desinstalarles?</translation>
+    </message>
+    <message>
+        <location filename="facturacion.py" line="737"/>
+        <source>Atencion!</source>
+        <translation>Atenció !</translation>
+    </message>
+    <message>
+        <location filename="facturacion.py" line="736"/>
+        <source>&lt;/b&gt; tiene dependencias. Quieres instalarlas?</source>
+        <translation>&lt;/b&gt; te dependencies. Desitja instalarles?</translation>
+    </message>
+    <message>
+        <location filename="facturacion.py" line="750"/>
+        <source>ACTUALIZANDO PLUGINS</source>
+        <translation>ACTUALITZANT PLUGINS</translation>
+    </message>
+    <message>
+        <location filename="facturacion.py" line="818"/>
+        <source>Actualizando </source>
+        <translation>Actualitzant</translation>
+    </message>
+    <message>
+        <location filename="facturacion.py" line="856"/>
+        <source>Buscando Pluggins</source>
+        <translation>Cercant Plugins</translation>
+    </message>
+</context>
+<context>
     <name>GuardarBackup</name>
     <message>
         <location filename="guardarbackupbase.py" line="82"/>
@@ -274,7 +372,7 @@ Aquest usuari s necessari per poder administrar PostgreSQL. La contrassenya d&ap
     <message>
         <location filename="bulmasetupbase.py" line="219"/>
         <source>Gestin de Usuarios</source>
-        <translation>Gestió d&apos;usuaris</translation>
+        <translation type="obsolete">Gestió d&apos;usuaris</translation>
     </message>
     <message>
         <location filename="bulmasetupbase.py" line="220"/>
