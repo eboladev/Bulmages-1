@@ -1,15 +1,15 @@
 #######
 #Plugins
 #######
-#README.es
+#README.ca
 #20091001
 
-Nombre: Inventario Simple Para Asociaciones.
+Nombre: Inventari Simple Per a Associacions
 
 Biblioteca: libpluginbf_inventariosimple.so
 
-Descripción: <H1>Inventario Simple Para Asociaciones</H1>
-<P>Permite crear la relación de posesiones pertenecientes a la asociación, controlar de forma simplificada su stock y hacer cesiones del material..</P>
+Descripción: <H1>Inventari Simple Per a Associacions</H1>
+<P>Permet crear la relació de possessions pertanyents a l'associació, controlar de forma simplificada el seu estoc i fer cessions del material.</P>
 <B>Author:</B>Tomeu Borrás (tborras@conetxia.com)<BR>
 <HR>
 
@@ -23,8 +23,8 @@ Dependencias: libpluginbf_actividad.so
 
 Incompatibles:
 
-Categorias: Asociaciones de padres de alumnos; Experimentales;
+Categorias: Associacions de pares i mares d'alumnes; Experimentalss;
 
 Orden: 550
 
-Comentarios: Imprescindible en los sistema de control de stock. En las asociaciones.
+Comentarios: Imprescindible als sistems de control d'estoc. A les associacions.
