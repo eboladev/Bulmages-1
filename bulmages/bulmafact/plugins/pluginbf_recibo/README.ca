@@ -9,7 +9,7 @@ Nombre: Rebuts
 Biblioteca: libpluginbf_recibo.so
 
 Descripción: <H1>Rebuts</H1>
-<P>Gestionar els resbuts emesos per l'associació. És força freqüent que una associació emeti rebuts als seus socis. Mitjançant aquest plugin tenim tota la funcionalitat d'emetre i controlar el pagament dels rebuts als socis.</P>
+<P>Gestionar els rebuts emesos per l'associació. És força freqüent que una associació emeti rebuts als seus socis. Mitjançant aquest plugin tenim tota la funcionalitat d'emetre i controlar el pagament dels rebuts als socis.</P>
 <B>Author:</B>Tomeu Borrás (tborras@conetxia.com)<BR>
 <HR>
 
@@ -26,7 +26,7 @@ Incompatibles:
 
 Reports: recibod.rml; blform_ReciboView.qs
 
-Categorias: Associacions de pares d'alumnos; Experimentals;
+Categorias: Associacions de pares i mares d'alumnes; Experimentals;
 
 Orden: 211
 
