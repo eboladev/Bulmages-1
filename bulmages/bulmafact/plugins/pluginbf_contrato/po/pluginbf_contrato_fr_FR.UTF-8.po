@@ -1,281 +1,300 @@
+# Header entry was created by Lokalize.
+#
+#: ui_contratobase.h:511
+# aishen <aishen@free.fr>, 2011.
+msgid ""
+msgstr ""
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Mime-Version: 1.0"
+"Last-Translator: aishen <aishen@free.fr>\n"
+"PO-Revision-Date: 2011-02-10 17:33+0100\n"
+"Project-Id-Version: \n"
+"Language-Team: French <kde-i18n-doc@kde.org>\n"
+"Language: fr\n"
+"X-Generator: Lokalize 1.2\n"
+"MIME-Version: 1.0\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
 #: ui_contratobase.h:511
 msgid "&Aceptar"
-msgstr ""
+msgstr "&Accepter"
 
 #: ui_contratobase.h:512
 msgid "&Cancelar"
-msgstr ""
+msgstr "&Annuler"
 
 #: ui_contratobase.h:510
 msgid "&Comentarios"
-msgstr ""
+msgstr "&Libellés "
 
 #: ui_contratobase.h:509
 msgid "&Facturas"
-msgstr ""
+msgstr "&Factures"
 
 #: ui_contratoslistbase.h:319 ui_contratoslistbase.h:324
 msgid "Actualizar listado"
-msgstr ""
+msgstr "Actualiser la liste"
 
 #: contratoview.cpp:406
 msgid "Base imponible"
-msgstr ""
+msgstr "Base Imposable"
 
 #: ui_contratobase.h:471 ui_contratobase.h:476
 msgid "Borrar Contrato"
-msgstr ""
+msgstr "Effacer le contrat"
 
 #: ui_contratoslistbase.h:275 ui_contratoslistbase.h:280
 msgid "Borrar contrato"
-msgstr ""
+msgstr "Effacer le contrat"
 
 #: ui_contratoslistbase.h:339
 msgid "Buscar:"
-msgstr ""
+msgstr "Chercher :"
 
 #: contratoslist.cpp:424
 msgid "C.I.F."
-msgstr ""
+msgstr "C.I.F."
 
 #: contratoview.cpp:413
 msgid "CIF cliente"
-msgstr ""
+msgstr "CIF Client "
 
 #: ui_contratoslistbase.h:340
 msgid "Caducados"
-msgstr ""
+msgstr "Caduques"
 
 #: listlincontratoview.cpp:46
 msgid "Cantidadl contrato"
-msgstr ""
+msgstr "Quantité du contrat"
 
 #: ui_contratoslistbase.h:341
 msgid "Cliente"
-msgstr ""
+msgstr "Client"
 
 #: contratoview.cpp:65 contratoslist.cpp:64
 msgid "Cliente:"
-msgstr ""
+msgstr "Client :"
 
 #: contratoslist.cpp:423
 msgid "Codigo"
-msgstr ""
+msgstr "Code"
 
 #: contratoview.cpp:414
 msgid "Codigo almacen"
-msgstr ""
+msgstr "Code magasin"
 
 #: listlincontratoview.cpp:42
 msgid "Codigo completo articulo"
-msgstr ""
+msgstr "Code complet de l'article"
 
 #: contratoview.cpp:416
 msgid "Comentario factura"
-msgstr ""
+msgstr "Commentaire de la facture"
 
 #: ui_contratoslistbase.h:308 ui_contratoslistbase.h:313
 msgid "Configurar listado"
-msgstr ""
+msgstr "Configurer la liste"
 
 #: contratoview.cpp:415
 msgid "Contact factura"
-msgstr ""
+msgstr "Contact de la Facture"
 
 #: contratoview.cpp:118 contrato.cpp:39
 msgid "Contrato"
-msgstr ""
+msgstr "Contrat"
 
 #: ui_contratoslistbase.h:249
 msgid "Contratos"
-msgstr ""
+msgstr "Contrats"
 
 #: contrato.cpp:45 contrato.cpp:46 contrato.cpp:47 contrato.cpp:48
 #: contrato.cpp:49 contrato.cpp:50
 msgid "Descripcion contrato"
-msgstr ""
+msgstr "Description du contrat"
 
 #: ui_contratobase.h:503
 msgid "Descripcion:"
-msgstr ""
+msgstr "Descripción :"
 
 #: listlincontratoview.cpp:45
 msgid "Descripcionl contrato"
-msgstr ""
+msgstr "Description du contrat"
 
 #: ui_contratobase.h:508
 msgid "Detalle"
-msgstr ""
+msgstr "Détail"
 
 #: ui_contratoslistbase.h:264 ui_contratoslistbase.h:269
 msgid "Editar contrato"
-msgstr ""
+msgstr "Editer le contrat "
 
 #: contratoslist.cpp:203
 msgid "Error al borrar un contrato"
-msgstr ""
+msgstr "Erreur d'effacement d'un contrat"
 
 #: contratoview.cpp:73
 msgid "Error al crear la contrato"
-msgstr ""
+msgstr "Erreur en création du contrat"
 
 #: ui_contratoslistbase.h:330 ui_contratoslistbase.h:335 ui_contratobase.h:482
 #: ui_contratobase.h:487
 msgid "Facturar Periodos Pendientes"
-msgstr ""
+msgstr "Facturer des Périodes en suspens"
 
 #: contratoview.cpp:403
 msgid "Fecha"
-msgstr ""
+msgstr "Date"
 
 #: contratoslist.cpp:428
 msgid "Fecha de alta del contrato"
-msgstr ""
+msgstr "Date d'incorporation du contrat "
 
 #: contratoslist.cpp:429 contratoslist.cpp:430
 msgid "Fecha de baja del contrato"
-msgstr ""
+msgstr "Date d'incorporation du contrat "
 
 #: ui_contratobase.h:507
 msgid "Fecha de creacion:"
-msgstr ""
+msgstr "Date de création :"
 
 #: ui_contratobase.h:506
 msgid "Fecha de finalizacion:"
-msgstr ""
+msgstr "Date de finalisation :"
 
 #: ui_contratoslistbase.h:297 ui_contratoslistbase.h:302
 msgid "Filtrar contratos"
-msgstr ""
+msgstr "Filtrer les contrats"
 
 #: ui_contratobase.h:460 ui_contratobase.h:465
 msgid "Guardar Contrato"
-msgstr ""
+msgstr "Sauvegarder le Contrat"
 
 #: contratoslist.cpp:422
 msgid "ID contrato"
-msgstr ""
+msgstr "ID Contrat"
 
 #: contratoview.cpp:419
 msgid "Id almacen"
-msgstr ""
+msgstr "Id magasin"
 
 #: listlincontratoview.cpp:41
 msgid "Id articulo"
-msgstr ""
+msgstr "Id article"
 
 #: contratoview.cpp:418 contrato.cpp:43
 msgid "Id cliente"
-msgstr ""
+msgstr "Id client"
 
 #: listlincontratoview.cpp:48 contrato.cpp:42
 msgid "Id contrato"
-msgstr ""
+msgstr "Id Contrat"
 
 #: contratoview.cpp:410
 msgid "Id factura"
-msgstr ""
+msgstr "Id de la Facture"
 
 #: contratoview.cpp:417
 msgid "Id trabajador"
-msgstr ""
+msgstr "Id Ouvrier"
 
 #: listlincontratoview.cpp:44
 msgid "Idl contrato"
-msgstr ""
+msgstr "ID Contrat"
 
 #: ui_contratoslistbase.h:286 ui_contratoslistbase.h:291
 msgid "Imprimir listado"
-msgstr ""
+msgstr "Imprimer la liste"
 
 #: contratoview.cpp:407
 msgid "Impuestos"
-msgstr ""
+msgstr "Impôts"
 
 #: contratoslist.cpp:174
 msgid "Listado de Contratos"
-msgstr ""
+msgstr "Liste des contrats"
 
 #: ui_contratobase.h:494 ui_contratobase.h:499
 msgid "Mostrar/ocultar cabecera"
-msgstr ""
+msgstr "Montrer/cacher l'entête"
 
 #: contratoslist.cpp:427
 msgid "Nombre alternativo del contrato"
-msgstr ""
+msgstr "Nom alternatif du contrat"
 
 #: listlincontratoview.cpp:43
 msgid "Nombre articulo"
-msgstr ""
+msgstr "Nom de l'article"
 
 #: contratoview.cpp:404
 msgid "Nombre cliente"
-msgstr ""
+msgstr "Nom du client"
 
 #: contratoslist.cpp:426
 msgid "Nombre de contrato"
-msgstr ""
+msgstr "Nom du contrat"
 
 #: ui_contratobase.h:457
 msgid "Nuevo Contrato"
-msgstr ""
+msgstr "Nouveau contrat"
 
 #: ui_contratoslistbase.h:253 ui_contratoslistbase.h:258
 msgid "Nuevo contrato"
-msgstr ""
+msgstr "Nouveau contrat"
 
 #: contratoview.cpp:402
 msgid "Numero"
-msgstr ""
+msgstr "Numéro"
 
 #: listlincontratoview.cpp:49
 msgid "Orden"
-msgstr ""
+msgstr "Ordre"
 
 #: listlincontratoview.cpp:47
 msgid "PVPl contrato"
-msgstr ""
+msgstr "PVPI Contrat"
 
 #: ui_contratobase.h:504
 msgid "Periodicidad Facturas:"
-msgstr ""
+msgstr "Périodicité des factures :"
 
 #: contratoview.cpp:409
 msgid "Procesada"
-msgstr ""
+msgstr "Accusée"
 
 #: contratoview.cpp:411
 msgid "Ref factura"
-msgstr ""
+msgstr "Réf. : Facture"
 
 #: contratoslist.cpp:425
 msgid "Referencia"
-msgstr ""
+msgstr "Référence"
 
 #: contrato.cpp:44
 msgid "Referencia contrato"
-msgstr ""
+msgstr "Référence du contrat"
 
 #: ui_contratobase.h:491
 msgid "Referencia:"
-msgstr ""
+msgstr "Référence :"
 
 #: contratoslist.cpp:73
 msgid "Selector de contratos"
-msgstr ""
+msgstr "Sélecteur des contrats"
 
 #: contratoview.cpp:412
 msgid "Serie"
-msgstr ""
+msgstr "Série"
 
 #: contratoview.cpp:405
 msgid "Telefono factura"
-msgstr ""
+msgstr "Téléphone de la facturation"
 
 #: contratoview.cpp:408
 msgid "Total"
-msgstr ""
+msgstr "Total"
 
 #: ui_contratobase.h:505
 msgid "Ubicacion:"
-msgstr ""
+msgstr "Situation"
+
