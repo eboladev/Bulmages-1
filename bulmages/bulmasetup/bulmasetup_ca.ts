@@ -58,7 +58,7 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="about.py" line="39"/>
         <source>&lt;center&gt;&lt;p&gt;&lt;p&gt;&lt;h2&gt;Entidades que dan soporte al programa:&lt;/h2&gt;&lt;/p&gt;&lt;b&gt;Conetxia:&lt;/b&gt; &lt;a href=&quot;http://www.conetxia.com&quot;&gt;http://www.conetxia.com&lt;/a&gt;&lt;br /&gt;&lt;b&gt;Todo-Redes:&lt;/b&gt; &lt;a href=&quot;http://www.todo-redes.com&quot;&gt;http://www.todo-redes.com&lt;/a&gt;&lt;/p&gt;&lt;/center&gt;</source>
-        <translation>&lt;center&gt;&lt;p&gt;&lt;p&gt;&lt;h2&gt;Entitats que donen soport al programa:&lt;/h2&gt;&lt;/p&gt;&lt;b&gt;Conetxia:&lt;/b&gt; &lt;a href=&quot;http://www.conetxia.com&quot;&gt;http://www.conetxia.com&lt;/a&gt;&lt;br /&gt;&lt;b&gt;Todo-Redes:&lt;/b&gt; &lt;a href=&quot;http://www.todo-redes.com&quot;&gt;http://www.todo-redes.com&lt;/a&gt;&lt;/p&gt;&lt;/center&gt;</translation>
+        <translation>&lt;center&gt;&lt;p&gt;&lt;p&gt;&lt;h2&gt;Entitats que donen suport al programa:&lt;/h2&gt;&lt;/p&gt;&lt;b&gt;Conetxia:&lt;/b&gt; &lt;a href=&quot;http://www.conetxia.com&quot;&gt;http://www.conetxia.com&lt;/a&gt;&lt;br /&gt;&lt;b&gt;Todo-Redes:&lt;/b&gt; &lt;a href=&quot;http://www.todo-redes.com&quot;&gt;http://www.todo-redes.com&lt;/a&gt;&lt;/p&gt;&lt;/center&gt;</translation>
     </message>
 </context>
 <context>
