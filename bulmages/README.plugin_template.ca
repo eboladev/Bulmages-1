@@ -1,0 +1,24 @@
+#######
+#Plugins
+#######
+#README.es
+#20080501 posar la data de l'última revisió
+
+Nombre: Plugin papiroflèxia
+
+Biblioteca: libpluginpapiroflexia.so
+
+Descripción: Permet fer figures de papiroflèxia amb les factures i els rebuts. 
+Utilitza elements de lògica difusa de manera que el nom del client
+sempre queda a la part visible de la factura. 
+
+ParmBD: DBRev-papiroflexia
+
+ArchivoSQLpatch: revf-pluginpapiroflexia
+
+ArchivoSQLdeins: revf-rmpluginpapiroflexia
+
+Comentarios: Text amb tota la informació que s'ha d'afegir. El límit
+el marca el final del fitxer.
+
+Poden haver-hi pàrrafs i el text que es creï convenient.
