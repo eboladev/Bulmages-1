@@ -1,0 +1,24 @@
+#######
+#Plugins
+#######
+#README.es
+#20080501 put the last revision data
+
+Nombre: Plugin papiroflexia
+
+Biblioteca: libpluginpapiroflexia.so
+
+Descripción: It allows papiroflexia models with invoices and tickets. 
+It uses fuzzy logic elements so that the name of the costumer will be
+always in the visible part of the invoice.
+
+ParmBD: DBRev-papiroflexia
+
+ArchivoSQLpatch: revf-pluginpapiroflexia
+
+ArchivoSQLdeins: revf-rmpluginpapiroflexia
+
+Comentarios: Text with all the information that you want to add. 
+The limit is the end of the file.
+
+There can be paragraphs and as much text as it is convenient.
