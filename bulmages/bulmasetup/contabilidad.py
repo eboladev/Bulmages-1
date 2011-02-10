@@ -62,7 +62,7 @@ class Contabilidad(Ui_ModificarContabilidadBase, Empresa):
       self.arra = self.cadcategorias.split(';')
       self.arra.sort()
       self.j = 0
-      self.mui_categoria.addItem('--Todas las Categorias--')
+      self.mui_categoria.addItem(QtGui.QApplication.translate("Contabilidad",'--Todas las Categorias--', None, QtGui.QApplication.UnicodeUTF8))
       while (self.j < len ( self.arra)):
          if (self.j < 1 or self.arra[self.j] <> self.arra[self.j-1]):
             self.mui_categoria.addItem( self.arra[self.j])
@@ -262,7 +262,7 @@ class Contabilidad(Ui_ModificarContabilidadBase, Empresa):
 
    def on_mui_plugins_cellClicked(self, row, col):
       # Escribimos la descripcion 
-      self.mui_descripcion.setText(self.mui_plugins.item(row,1).text() + "<b>" + self.mui_plugins.item(row,10).text() + "</b><br>"+ self.mui_plugins.item(row,3).text() + "<br><b>Categorias:</b> " + self.mui_plugins.item(row,8).text()+ "<br><br><b>Dependencias:</b> " + self.mui_plugins.item(row,5).text() + "<br><br><b>Incompatibilidades:</b> " + self.mui_plugins.item(row,6).text() + "<br><br><b>Parches SQL:</b>" + self.mui_plugins.item(row,4).text() + "<br>" + self.mui_plugins.item(row,9).text() + "<br><b>Informes:</b><br>" + self.mui_plugins.item(row,11).text() )
+      self.mui_descripcion.setText(self.mui_plugins.item(row,1).text() + "<b>" + self.mui_plugins.item(row,10).text() + "</b><br>"+ self.mui_plugins.item(row,3).text() + QtGui.QApplication.translate("Contabilidad","<br><b>Categorias:</b> ", None, QtGui.QApplication.UnicodeUTF8) + self.mui_plugins.item(row,8).text()+ QtGui.QApplication.translate("Contabilidad","<br><br><b>Dependencias:</b> ", None, QtGui.QApplication.UnicodeUTF8) + self.mui_plugins.item(row,5).text() + QtGui.QApplication.translate("Contabilidad", "<br><br><b>Incompatibilidades:</b> ", None, QtGui.QApplication.UnicodeUTF8) + self.mui_plugins.item(row,6).text() + QtGui.QApplication.translate("Contabilidad","<br><br><b>Parches SQL:</b>", None, QtGui.QApplication.UnicodeUTF8) + self.mui_plugins.item(row,4).text() + "<br>" + self.mui_plugins.item(row,9).text() + QtGui.QApplication.translate("Contabilidad","<br><b>Informes:</b><br>", None, QtGui.QApplication.UnicodeUTF8) + self.mui_plugins.item(row,11).text() )
       
       if (self.semaforo == 1):
 	  if (self.estado != self.mui_plugins.item(row,0).checkState()):
@@ -277,8 +277,8 @@ class Contabilidad(Ui_ModificarContabilidadBase, Empresa):
 		      Yes = 'Si'
 		      No = 'No'
 		      message = QtGui.QMessageBox(self)
-		      message.setText('El plugin <b>' +str(self.mui_plugins.item(row,10).text() + "</b> tiene incompatibilidades. Quieres desinstalarlas?"))
-		      message.setWindowTitle('Atencion!')
+		      message.setText(QtGui.QApplication.translate("Contabilidad",'El plugin <b>', None, QtGui.QApplication.UnicodeUTF8) +str(self.mui_plugins.item(row,10).text() + QtGui.QApplication.translate("Contabilidad","</b> tiene incompatibilidades. Quieres desinstalarlas?", None, QtGui.QApplication.UnicodeUTF8)))
+		      message.setWindowTitle(QtGui.QApplication.translate("Contabilidad",'Atencion!', None, QtGui.QApplication.UnicodeUTF8))
 		      message.setIcon(QtGui.QMessageBox.Warning)
 		      message.addButton(Yes, QtGui.QMessageBox.AcceptRole)
 		      message.addButton(No, QtGui.QMessageBox.RejectRole)
@@ -293,8 +293,8 @@ class Contabilidad(Ui_ModificarContabilidadBase, Empresa):
 		      Yes = 'Si'
 		      No = 'No'
 		      message = QtGui.QMessageBox(self)
-		      message.setText('El plugin <b>' +str(self.mui_plugins.item(row,10).text() + "</b> tiene dependencias. Quieres instalarlas?"))
-		      message.setWindowTitle('Atencion!')
+		      message.setText(QtGui.QApplication.translate("Contabilidad",'El plugin <b>', None, QtGui.QApplication.UnicodeUTF8) +str(self.mui_plugins.item(row,10).text() + QtGui.QApplication.translate("Contabilidad","</b> tiene dependencias. Quieres instalarlas?", None, QtGui.QApplication.UnicodeUTF8)))
+		      message.setWindowTitle(QtGui.QApplication.translate("Contabilidad",'Atencion!', None, QtGui.QApplication.UnicodeUTF8))
 		      message.setIcon(QtGui.QMessageBox.Warning)
 		      message.addButton(Yes, QtGui.QMessageBox.AcceptRole)
 		      message.addButton(No, QtGui.QMessageBox.RejectRole)
@@ -306,7 +306,7 @@ class Contabilidad(Ui_ModificarContabilidadBase, Empresa):
 
 
    def trataOpenReports(self):
-      self.writecommand('Generando plantillas RML y PYS')
+      self.writecommand(QtGui.QApplication.translate("Contabilidad",'Generando plantillas RML y PYS', None, QtGui.QApplication.UnicodeUTF8))
       # Creamos el directorio especifico para guardar las plantillas
       self.string = "mkdir -p /opt/bulmages/openreports_" + self.database 
       self.process.start(self.string)
@@ -332,7 +332,7 @@ class Contabilidad(Ui_ModificarContabilidadBase, Empresa):
       self.process.start(self.string)
       self.process.waitForFinished(-1)
 
-      self.writecommand('Generamos backup de las plantillas de impresion en ' + '/opt/bulmages/openreports_' + self.database + '_old' + str(i))
+      self.writecommand(QtGui.QApplication.translate("Contabilidad",'Generamos backup de las plantillas de impresion en ', None, QtGui.QApplication.UnicodeUTF8) + '/opt/bulmages/openreports_' + self.database + '_old' + str(i))
 
       # Copiamos los archivos genericos
       # Copiamos las plantillas es
@@ -472,7 +472,7 @@ class Contabilidad(Ui_ModificarContabilidadBase, Empresa):
       self.i = 0
       while (self.i < self.mui_plugins.rowCount()):
 	# Si el plugin tiene el orden adecuado lo consideramos.
-	self.writecommand('Tratando ' + self.mui_plugins.item(self.i,0).text())
+	self.writecommand(QtGui.QApplication.translate("Contabilidad",'Tratando ', None, QtGui.QApplication.UnicodeUTF8) + self.mui_plugins.item(self.i,0).text())
 	# Si el plugin esta checked lo escribimos.
 	if (self.mui_plugins.item(self.i, 0).checkState() == Qt.Checked and len(self.mui_plugins.item(self.i,11).text()) > 3):
 	  # Si hay que aplicar un plugin entonces lo escribimos
@@ -543,8 +543,8 @@ class Contabilidad(Ui_ModificarContabilidadBase, Empresa):
 
     
    def writeConfig(self):
-      self.writecommand('ESCRIBIENDO CONFIGURACION')
-      self.writecommand("Escribiendo configuracion en "+ plugins.configfiles)
+      self.writecommand(QtGui.QApplication.translate("Contabilidad",'ESCRIBIENDO CONFIGURACION', None, QtGui.QApplication.UnicodeUTF8))
+      self.writecommand(QtGui.QApplication.translate("Contabilidad","Escribiendo configuracion en ", None, QtGui.QApplication.UnicodeUTF8)+ plugins.configfiles)
       
       # TRATAMOS EL ARCHIVO DE BULMAFACT
       # ================================
@@ -593,7 +593,7 @@ class Contabilidad(Ui_ModificarContabilidadBase, Empresa):
         while (self.i < self.mui_plugins.rowCount()):
           # Si el plugin tiene el orden adecuado lo consideramos.
           if (str(self.mui_plugins.item(self.i,7).text()) == str(self.x )):
-            self.writecommand('Tratando ' + self.mui_plugins.item(self.i,0).text())
+            self.writecommand(QtGui.QApplication.translate("Contabilidad",'Tratando ', None, QtGui.QApplication.UnicodeUTF8) + self.mui_plugins.item(self.i,0).text())
             # Si el plugin esta checked lo escribimos.
             if (self.mui_plugins.item(self.i, 0).checkState() == Qt.Checked and len(self.mui_plugins.item(self.i,1).text()) > 3):
               if (self.nuevo == 1):

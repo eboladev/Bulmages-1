@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE TS>
-<TS version="2.0" language="ca_ES">
+<!DOCTYPE TS><TS version="1.1" language="ca_ES">
 <context>
     <name>About</name>
     <message>
@@ -60,6 +59,84 @@ p, li { white-space: pre-wrap; }
         <location filename="about.py" line="39"/>
         <source>&lt;center&gt;&lt;p&gt;&lt;p&gt;&lt;h2&gt;Entidades que dan soporte al programa:&lt;/h2&gt;&lt;/p&gt;&lt;b&gt;Conetxia:&lt;/b&gt; &lt;a href=&quot;http://www.conetxia.com&quot;&gt;http://www.conetxia.com&lt;/a&gt;&lt;br /&gt;&lt;b&gt;Todo-Redes:&lt;/b&gt; &lt;a href=&quot;http://www.todo-redes.com&quot;&gt;http://www.todo-redes.com&lt;/a&gt;&lt;/p&gt;&lt;/center&gt;</source>
         <translation>&lt;center&gt;&lt;p&gt;&lt;p&gt;&lt;h2&gt;Entitats que donenn suport al programa:&lt;/h2&gt;&lt;/p&gt;&lt;b&gt;Conetxia:&lt;/b&gt; &lt;a href=&quot;http://www.conetxia.com&quot;&gt;http://www.conetxia.com&lt;/a&gt;&lt;br /&gt;&lt;b&gt;Todo-Redes:&lt;/b&gt; &lt;a href=&quot;http://www.todo-redes.com&quot;&gt;http://www.todo-redes.com&lt;/a&gt;&lt;/p&gt;&lt;/center&gt;</translation>
+    </message>
+</context>
+<context>
+    <name>Contabilidad</name>
+    <message>
+        <location filename="contabilidad.py" line="65"/>
+        <source>--Todas las Categorias--</source>
+        <translation type="unfinished">-- Totes les Categories --</translation>
+    </message>
+    <message>
+        <location filename="contabilidad.py" line="265"/>
+        <source>&lt;br&gt;&lt;b&gt;Categorias:&lt;/b&gt; </source>
+        <translation type="unfinished">&lt;br&gt;&lt;b&gt;Categories:&lt;/b&gt; </translation>
+    </message>
+    <message>
+        <location filename="contabilidad.py" line="265"/>
+        <source>&lt;br&gt;&lt;br&gt;&lt;b&gt;Dependencias:&lt;/b&gt; </source>
+        <translation type="unfinished">&lt;br&gt;&lt;br&gt;&lt;b&gt;Dependencies:&lt;/b&gt; </translation>
+    </message>
+    <message>
+        <location filename="contabilidad.py" line="265"/>
+        <source>&lt;br&gt;&lt;br&gt;&lt;b&gt;Incompatibilidades:&lt;/b&gt; </source>
+        <translation type="unfinished">&lt;br&gt;&lt;br&gt;&lt;b&gt;Incompatibilitats:&lt;/b&gt; </translation>
+    </message>
+    <message>
+        <location filename="contabilidad.py" line="265"/>
+        <source>&lt;br&gt;&lt;br&gt;&lt;b&gt;Parches SQL:&lt;/b&gt;</source>
+        <translation type="unfinished">&lt;br&gt;&lt;br&gt;&lt;b&gt;Parches SQL:&lt;/b&gt;</translation>
+    </message>
+    <message>
+        <location filename="contabilidad.py" line="265"/>
+        <source>&lt;br&gt;&lt;b&gt;Informes:&lt;/b&gt;&lt;br&gt;</source>
+        <translation type="unfinished">&lt;br&gt;&lt;b&gt;Informes:&lt;/b&gt;&lt;br&gt;</translation>
+    </message>
+    <message>
+        <location filename="contabilidad.py" line="296"/>
+        <source>El plugin &lt;b&gt;</source>
+        <translation type="unfinished">El plugin &lt;b&gt;</translation>
+    </message>
+    <message>
+        <location filename="contabilidad.py" line="280"/>
+        <source>&lt;/b&gt; tiene incompatibilidades. Quieres desinstalarlas?</source>
+        <translation type="unfinished">&lt;/b&gt; te incompatiblilitats. Desitja desinstalarles?</translation>
+    </message>
+    <message>
+        <location filename="contabilidad.py" line="297"/>
+        <source>Atencion!</source>
+        <translation type="unfinished">Atenció !</translation>
+    </message>
+    <message>
+        <location filename="contabilidad.py" line="296"/>
+        <source>&lt;/b&gt; tiene dependencias. Quieres instalarlas?</source>
+        <translation type="unfinished">&lt;/b&gt; te dependencies. Desitja instalarles?</translation>
+    </message>
+    <message>
+        <location filename="contabilidad.py" line="309"/>
+        <source>Generando plantillas RML y PYS</source>
+        <translation type="unfinished">Generant plantilles RML i PYS</translation>
+    </message>
+    <message>
+        <location filename="contabilidad.py" line="335"/>
+        <source>Generamos backup de las plantillas de impresion en </source>
+        <translation type="unfinished">Generam el backup de les plantilles d&apos;impressió a </translation>
+    </message>
+    <message>
+        <location filename="contabilidad.py" line="596"/>
+        <source>Tratando </source>
+        <translation type="unfinished">Tratant</translation>
+    </message>
+    <message>
+        <location filename="contabilidad.py" line="546"/>
+        <source>ESCRIBIENDO CONFIGURACION</source>
+        <translation type="unfinished">ESCRIBINT CONFIGURACIO</translation>
+    </message>
+    <message>
+        <location filename="contabilidad.py" line="547"/>
+        <source>Escribiendo configuracion en </source>
+        <translation type="unfinished">Escribint configuració a </translation>
     </message>
 </context>
 <context>
@@ -148,7 +225,7 @@ p, li { white-space: pre-wrap; }
 </context>
 <context>
     <name>Empresa</name>
-    <message utf8="true">
+    <message encoding="UTF-8">
         <location filename="empresa.py" line="33"/>
         <source>Desea agregar el usuario &lt;b&gt;root&lt;/b&gt; a PostgreSQL? 
  
@@ -482,17 +559,17 @@ p, li { white-space: pre-wrap; }
         <source>Acerca de BulmaSetup</source>
         <translation>Quant a BulmaSetup</translation>
     </message>
-    <message utf8="true">
+    <message encoding="UTF-8">
         <location filename="bulmasetupbase.py" line="219"/>
         <source>Gestión de Usuarios</source>
         <translation>Gestió d&apos;Usuaris</translation>
     </message>
-    <message utf8="true">
+    <message encoding="UTF-8">
         <location filename="bulmasetupbase.py" line="224"/>
         <source>Gestión de Empresas</source>
         <translation>Gestió d&apos;Empreses</translation>
     </message>
-    <message utf8="true">
+    <message encoding="UTF-8">
         <location filename="bulmasetupbase.py" line="226"/>
         <source>Nueva Empresa de Facturación / TPV</source>
         <translation>Nova Empresa de Facturació / TPV</translation>
