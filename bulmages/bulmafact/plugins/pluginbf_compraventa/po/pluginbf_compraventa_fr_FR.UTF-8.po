@@ -1,292 +1,317 @@
+# Header entry was created by Lokalize.
+#
+#: ui_compraventabase.h:913
+# aishen <aishen@free.fr>, 2011.
+msgid ""
+msgstr ""
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Mime-Version: 1.0"
+"Last-Translator: aishen <aishen@free.fr>\n"
+"PO-Revision-Date: 2011-02-10 16:56+0100\n"
+"Project-Id-Version: \n"
+"Language-Team: French <kde-i18n-doc@kde.org>\n"
+"Language: fr\n"
+"X-Generator: Lokalize 1.2\n"
+"MIME-Version: 1.0\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
 #: ui_compraventabase.h:913
 msgid "&Aceptar"
-msgstr ""
+msgstr "&Accepter"
 
 #: ui_compraventabase.h:914
 msgid "&Cancelar"
-msgstr ""
+msgstr "&Annuler"
 
 #: plugincompraventa.cpp:78
 msgid "&CompraVenta"
-msgstr ""
+msgstr "&AchatVente"
 
 #: ui_compraventabase.h:939
 msgid "&Detalle Compras"
-msgstr ""
+msgstr "&Détail des achats"
 
 #: ui_compraventabase.h:922
 msgid "&Detalle Ventas"
-msgstr ""
+msgstr "&Détail des ventes"
 
 #: compraventaview.cpp:468 compraventaview.cpp:589
 msgid "&No"
-msgstr ""
+msgstr "&Non"
 
 #: compraventaview.cpp:468 compraventaview.cpp:589
 msgid "&Si"
-msgstr ""
+msgstr "&Oui"
 
 #: ui_compraventabase.h:933 ui_compraventabase.h:934 ui_compraventabase.h:935
 #: ui_compraventabase.h:936 ui_compraventabase.h:937 ui_compraventabase.h:938
 msgid "0.00"
-msgstr ""
+msgstr "0.00"
 
 #: ui_compraventabase.h:879 ui_compraventabase.h:884
 msgid "Agregar a factura"
-msgstr ""
+msgstr "Ajouter à la facture"
 
 #: compraventaview.cpp:85
 msgid "Almacen"
-msgstr ""
+msgstr "Magasin"
 
 #: ui_compraventabase.h:921
 msgid "Almacen:"
-msgstr ""
+msgstr "Magasin :"
 
 #: ui_compraventabase.h:928
 msgid "Base imponible:"
-msgstr ""
+msgstr "Base Imposable :"
 
 #: ui_compraventabase.h:835 ui_compraventabase.h:840
 msgid "Borrar albaran"
-msgstr ""
+msgstr "Effacer le bulletin"
 
 #: compraventaview.cpp:84
 msgid "Cliente"
-msgstr ""
+msgstr "Client"
 
 #: compraventaview.cpp:112
 msgid "Cliente:"
-msgstr ""
+msgstr "Client :"
 
 #: compraventaview.cpp:90
 msgid "Comentario"
-msgstr ""
+msgstr "Libellé"
 
 #: compraventaview.cpp:70
 msgid "Comentario albaran proveedor"
-msgstr ""
+msgstr "Libellé du bulletin fournisseur"
 
 #: compraventaview.cpp:91
 msgid "Comentario privado"
-msgstr ""
+msgstr "Commentaire privé"
 
 #: ui_compraventabase.h:926 ui_compraventabase.h:943
 msgid "Comentario&s"
-msgstr ""
+msgstr "Libellé&s"
 
 #: ui_compraventabase.h:925 ui_compraventabase.h:942
 msgid "Comentarios privados:"
-msgstr ""
+msgstr "Commentaires privés :"
 
 #: ui_compraventabase.h:924 ui_compraventabase.h:941
 msgid "Comentarios publicos:"
-msgstr ""
+msgstr "Commentaires publics :"
 
 #: compraventaview.cpp:80
 msgid "Compra Venta"
-msgstr ""
+msgstr "Achat Vente"
 
 #: plugincompraventa.cpp:79 plugincompraventa.cpp:80
 msgid "CompraVenta"
-msgstr ""
+msgstr "AchatVente"
 
 #: compraventaview.cpp:95
 msgid "Descripcion"
-msgstr ""
+msgstr "Description "
 
 #: compraventaview.cpp:75
 msgid "Descripcion albaran proveedor"
-msgstr ""
+msgstr "Description du bulletin fournisseur"
 
 #: ui_compraventabase.h:911
 msgid "Descripcion:"
-msgstr ""
+msgstr "Description :"
 
 #: ui_compraventabase.h:923 ui_compraventabase.h:940
 msgid "Descuen&tos"
-msgstr ""
+msgstr "Remises"
 
 #: ui_compraventabase.h:927
 msgid "Descuentos:"
-msgstr ""
+msgstr "Remises :"
 
 #: compraventaview.cpp:138
 msgid "Error al crear el albaran a cliente"
-msgstr ""
+msgstr "Erreur dans la création du bulletin"
 
 #: compraventaview.cpp:534 compraventaview.cpp:685
 msgid "Error inesperado"
-msgstr ""
+msgstr "Erreur inattendue"
 
 #: compraventaview.cpp:715
 msgid "Error inesperado en la impresion"
-msgstr ""
+msgstr "Erreur inattendue à l'impression"
 
 #: compraventaview.cpp:588
 msgid ""
 "Existe una factura a este cliente con la misma referencia que este albaran. "
 "Desea abrirla para verificar?"
 msgstr ""
+"Il existe une facture pour ce client avec la même référence que "
+"cette commande Souhaitez l'ouvrir pour vérifier ?"
 
 #: compraventaview.cpp:467
 msgid ""
 "Existe una factura de este proveedor con la misma referencia que este "
 "albaran. Desea rehacerla ?"
 msgstr ""
+"Il existe une facturede fournisseur pour ce client avec la même référence que "
+"cette commande Souhaitez l'ouvrir pour vérifier  ?"
 
 #: compraventaview.cpp:466
 msgid "Factura de proveedor existente"
-msgstr ""
+msgstr "Facture fournisseur existante"
 
 #: compraventaview.cpp:587
 msgid "Factura existente"
-msgstr ""
+msgstr "Facture existante"
 
 #: compraventaview.cpp:69
 msgid "Fecha albaran proveedor"
-msgstr ""
+msgstr "Date du bulletin fournisseur"
 
 #: compraventaview.cpp:87
 msgid "Fecha de creacion"
-msgstr ""
+msgstr "Date de création"
 
 #: ui_compraventabase.h:917
 msgid "Fecha de creacion:"
-msgstr ""
+msgstr "Date de création :"
 
 #: compraventaview.cpp:92
 msgid "Forma de pago"
-msgstr ""
+msgstr "Forme de paiement"
 
 #: ui_compraventabase.h:919
 msgid "Forma de pago:"
-msgstr ""
+msgstr "Forme de paiement :"
 
 #: ui_compraventabase.h:868 ui_compraventabase.h:873
 msgid "Generar factura a partir de este albaran"
-msgstr ""
+msgstr "Générer une facture de ce Bulletin"
 
 #: ui_compraventabase.h:824 ui_compraventabase.h:829
 msgid "Guardar albaran"
-msgstr ""
+msgstr "Sauvegarder le bulletin"
 
 #: ui_compraventabase.h:821
 msgid "Hoja de Compra Venta"
 msgstr ""
+""
+"feuille Achat Vente"
 
 #: ui_compraventabase.h:929
 msgid "I.R.P.F.:"
-msgstr ""
+msgstr "I.R.P.F.:"
 
 #: compraventaview.cpp:83
 msgid "Id albaran"
-msgstr ""
+msgstr "Id bulletin"
 
 #: compraventaview.cpp:67
 msgid "Id albaran proveedor"
-msgstr ""
+msgstr "Id bulletin fournisseur"
 
 #: compraventaview.cpp:73
 msgid "Id almacen"
-msgstr ""
+msgstr "Id magasin"
 
 #: compraventaview.cpp:72
 msgid "Id forma de pago"
-msgstr ""
+msgstr "Id Forme de paiement"
 
 #: compraventaview.cpp:71
 msgid "Id proveedor"
-msgstr ""
+msgstr "Id fournisseur"
 
 #: ui_compraventabase.h:846 ui_compraventabase.h:851
 msgid "Imprimir albaran"
-msgstr ""
+msgstr "Imprimer bulletin"
 
 #: ui_compraventabase.h:930
 msgid "Impuestos:"
-msgstr ""
+msgstr "Impôts :"
 
 #: ui_compraventabase.h:902 ui_compraventabase.h:907
 msgid "Mostrar/ocultar cabecera"
-msgstr ""
+msgstr "Montrer/cacher l'entête"
 
 #: compraventaview.cpp:68
 msgid "Numero albaran proveedor"
-msgstr ""
+msgstr "Numéro bulletin fournisseur"
 
 #: compraventaview.cpp:86
 msgid "Numero de albaran"
-msgstr ""
+msgstr "Numéro du bulletin"
 
 #: ui_compraventabase.h:912
 msgid "Numero de albaran:"
-msgstr ""
+msgstr "Numéro du bulletin :"
 
 #: compraventaview.cpp:88
 msgid "Persona de contacto"
-msgstr ""
+msgstr "Contact"
 
 #: ui_compraventabase.h:918
 msgid "Persona de contacto:"
-msgstr ""
+msgstr "Contact :"
 
 #: compraventaview.cpp:94 ui_compraventabase.h:915
 msgid "Procesado"
-msgstr ""
+msgstr "Accusé"
 
 #: ui_compraventabase.h:931
 msgid "R.E.:"
-msgstr ""
+msgstr "R.E.:"
 
 #: compraventaview.cpp:96
 msgid "Referencia"
-msgstr ""
+msgstr "Référence"
 
 #: compraventaview.cpp:74
 msgid "Referencia albaran proveedor"
-msgstr ""
+msgstr "Référence du bulletin fournisseur"
 
 #: ui_compraventabase.h:899
 msgid "Referencia:"
-msgstr ""
+msgstr "Référence :"
 
 #: ui_compraventabase.h:890 ui_compraventabase.h:895
 msgid "Registrar cobro a cliente"
-msgstr ""
+msgstr "Enregistrer paiement au client"
 
 #: compraventaview.cpp:89
 msgid "Telefono de contacto"
-msgstr ""
+msgstr "Téléphone du contact"
 
 #: ui_compraventabase.h:920
 msgid "Telefono de contacto:"
-msgstr ""
+msgstr "Téléphone du contact :"
 
 #: compraventaview.cpp:711
 msgid "Tiene que guardar el documento antes de poder procesarlo."
-msgstr ""
+msgstr "Vous devez sauvegarder le document avant de pouvoir le traiter."
 
 #: compraventaview.cpp:572
 msgid "Tiene que seleccionar un cliente"
-msgstr ""
+msgstr "Vous devez sélectionner un client"
 
 #: compraventaview.cpp:451
 msgid "Tiene que seleccionar un proveedor"
-msgstr ""
+msgstr "Vous devez sélectionner un fournisseur"
 
 #: ui_compraventabase.h:932
 msgid "Total:"
-msgstr ""
+msgstr "Total :"
 
 #: compraventaview.cpp:93
 msgid "Trabajador"
-msgstr ""
+msgstr "Salarié"
 
 #: ui_compraventabase.h:916
 msgid "Trabajador:"
-msgstr ""
+msgstr "Salarié :"
 
 #: ui_compraventabase.h:857 ui_compraventabase.h:862
 msgid "Ver pedidos con la misma referencia"
-msgstr ""
+msgstr "Afficher ceux de même référence"
+

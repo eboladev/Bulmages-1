@@ -1,15 +1,15 @@
 #######
 #Plugins
 #######
-#README.es
-#20080501
+#README.fr
+#20110210
 
-Nombre: Compra-Venta.
+Nombre: Achat - Vente.
 
 Biblioteca: libpluginbf_compraventa.so
 
-Descripción: <H1>Compra Venta</H1>
-<P>Unifica las operaciones de compra y venta.</P>
+Descripción: <H1>Achat vente</H1>
+<P>Unifier les opérations d'achat et de vente.</P>
 <B>Author:</B>Tomeu Borrás (tborras@conetxia.com)<BR>
 <HR>
 
@@ -25,7 +25,7 @@ Incompatibles:
 
 Reports: compraventa.rml
 
-Categorias: Facturacion avanzada; Experimentales;
+Categorias: Facturation avancee; Experimental;
 
 Orden: 600
 
