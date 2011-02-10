@@ -1,79 +1,98 @@
+# Header entry was created by Lokalize.
+#
+#: pluginclientprov.cpp:65
+# aishen <aishen@free.fr>, 2011.
+msgid ""
+msgstr ""
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Mime-Version: 1.0"
+"Last-Translator: aishen <aishen@free.fr>\n"
+"PO-Revision-Date: 2011-02-10 07:28+0100\n"
+"Project-Id-Version: \n"
+"Language-Team: French <kde-i18n-doc@kde.org>\n"
+"Language: fr\n"
+"X-Generator: Lokalize 1.2\n"
+"MIME-Version: 1.0\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
 #: pluginclientprov.cpp:65
 msgid "Banco proveedor"
-msgstr ""
+msgstr "Banque fournisseur"
 
 #: pluginclientprov.cpp:63
 msgid "C.I.F. del proveedor"
-msgstr ""
+msgstr "C.I.F. du fournisseur"
 
 #: pluginclientprov.cpp:75
 msgid "Codigo"
-msgstr ""
+msgstr "Code"
 
 #: pluginclientprov.cpp:64
 msgid "Codigo cliente"
-msgstr ""
+msgstr "Code client"
 
 #: pluginclientprov.cpp:69
 msgid "Codigo postal"
-msgstr ""
+msgstr "Code postal"
 
 #: pluginclientprov.cpp:74
 msgid "Comentarios"
-msgstr ""
+msgstr "Libellés"
 
 #: pluginclientprov.cpp:66
 msgid "Direccion"
-msgstr ""
+msgstr "Direction"
 
 #: pluginclientprov.cpp:72
 msgid "Direccion electronica"
-msgstr ""
+msgstr "Direction électronique"
 
 #: pluginclientprov.cpp:60
 msgid "ID proveedor"
-msgstr ""
+msgstr "ID fournisseur"
 
 #: pluginclientprov.cpp:79
 msgid "IRPF"
-msgstr ""
+msgstr "IRPF"
 
 #: pluginclientprov.cpp:77
 msgid "Id forma de pago"
-msgstr ""
+msgstr "Id Forme de paiement"
 
 #: pluginclientprov.cpp:62
 msgid "Nombre alternativo del proveedor"
-msgstr ""
+msgstr "Nom alternatif du fournisseur"
 
 #: pluginclientprov.cpp:61
 msgid "Nombre del proveedor"
-msgstr ""
+msgstr "Nom du fournisseur"
 
 #: pluginclientprov.cpp:71
 msgid "Numero de fax"
-msgstr ""
+msgstr "Numéro de fax"
 
 #: pluginclientprov.cpp:70
 msgid "Numero de telefono"
-msgstr ""
+msgstr "Numéro de téléphone"
 
 #: pluginclientprov.cpp:67
 msgid "Poblacion"
-msgstr ""
+msgstr "Lieu"
 
 #: pluginclientprov.cpp:68
 msgid "Provincia"
-msgstr ""
+msgstr "Province"
 
 #: pluginclientprov.cpp:78
 msgid "Recargo de equivalencia"
-msgstr ""
+msgstr "Recharge d'équivalence"
 
 #: pluginclientprov.cpp:76
 msgid "Regimen fiscal"
-msgstr ""
+msgstr "Régime fiscal"
 
 #: pluginclientprov.cpp:73
 msgid "URL"
-msgstr ""
+msgstr "URL"
+
