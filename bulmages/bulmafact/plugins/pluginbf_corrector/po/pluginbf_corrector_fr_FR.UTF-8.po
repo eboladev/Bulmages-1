@@ -1,67 +1,88 @@
+# Header entry was created by Lokalize.
+#
+#: ui_confreglasbase.h:283
+# aishen <aishen@free.fr>, 2011.
+msgid ""
+msgstr ""
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Mime-Version: 1.0"
+"Last-Translator: aishen <aishen@free.fr>\n"
+"PO-Revision-Date: 2011-02-10 17:51+0100\n"
+"Project-Id-Version: \n"
+"Language-Team: French <kde-i18n-doc@kde.org>\n"
+"Language: fr\n"
+"X-Generator: Lokalize 1.2\n"
+"MIME-Version: 1.0\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
 #: ui_confreglasbase.h:283
 msgid "Apunte con Cuenta"
-msgstr ""
+msgstr "Libellé de compte"
 
 #: ui_confreglasbase.h:291
 msgid "Apunte con Descripcion"
-msgstr ""
+msgstr "Libellé"
 
 #: ui_confreglasbase.h:284
 msgid "Apunte con Saldo"
-msgstr ""
+msgstr "Libellé de solde"
 
 #: ui_confreglasbase.h:294
 msgid "Cerrar"
-msgstr ""
+msgstr "Fermer"
 
 #: ui_confreglasbase.h:280
 msgid "Comprobacion por asientos"
-msgstr ""
+msgstr "Vérification des écritures"
 
 #: ui_confreglasbase.h:281
 msgid "Condicion:"
-msgstr ""
+msgstr "Condition :"
 
 #: ui_correctorbase.h:106 ui_correctorbase.h:111
 msgid "Configurar"
-msgstr ""
+msgstr "Configurer"
 
 #: ui_correctorbase.h:92
 msgid "Corrector"
-msgstr ""
+msgstr "Correcteur"
 
 #: ui_correctorbase.h:95 ui_correctorbase.h:100
 msgid "Corregir"
-msgstr ""
+msgstr "Corriger"
 
 #: ui_confreglasbase.h:282
 msgid "Deben existir registros que cumplan esta condicion en el periodo"
 msgstr ""
+"Il doit exister des registres qui remplissent cette condition dans cette "
+"période"
 
 #: ui_confreglasbase.h:293
 msgid "Periodicidad"
-msgstr ""
+msgstr "Périodicité"
 
 #: ui_confreglasbase.h:279
 msgid "Regla:"
-msgstr ""
+msgstr "Règle :"
 
 #: ui_confreglasbase.h:275
 msgid "Reglas de Corrector"
-msgstr ""
+msgstr "Règle du correcteur"
 
 #: ui_confreglasbase.h:292
 msgid "Reglas sobre Apuntes"
-msgstr ""
+msgstr "Règle sur les notes"
 
 #: ui_confreglasbase.h:287
 msgid "igual"
-msgstr ""
+msgstr "Egal"
 
 #: ui_confreglasbase.h:289
 msgid "mayor"
-msgstr ""
+msgstr "plus grand"
 
 #: ui_confreglasbase.h:288
 msgid "menor"
-msgstr ""
+msgstr "plus petit"
+
