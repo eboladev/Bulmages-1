@@ -1,19 +1,17 @@
 #######
 #Plugins
 #######
-#README.es
-#20080501
+#README.fr
+#20110211
 
-Nombre: IVA y Tasas de IVA
+Nombre: TVA et taux de TVA
 
 Biblioteca: libpluginbf_iva.so
 
-Descripción: <H1><IMG SRC="@CMAKE_INSTALL_PREFIX@/share/bulmages/imagesrc/images/oxygen/actions/vat.svg" WIDTH="100"/><BR>IVA</H1>
-<P>Gestionar los Impuestos sobre el Valor Añadido.</P>
-<P>Mediante este plugin podremos gestionar los impuestos a aplicar sobre la facturación.
-Una vez instado tendremos en el menu Maestro las entradas "<B>Tipos de IVA</B>" y "<B>Tasas de IVA</B>" con las que podremos gestionar
-los tipos de impuesto a aplicar y las tasas en porcentaje que se aplican a dichos impuestos</P>
-<B>Author:</B>Tomeu Borrás (tborras@conetxia.com)<BR>
+Descripción: <H1><IMG SRC="@CMAKE_INSTALL_PREFIX@/share/bulmages/imagesrc/images/oxygen/actions/vat.svg" WIDTH="100"/><BR>TVA</H1>
+<P>Gestionnaire d'impôts sur la valeur ajoutée.</P>
+<P>Au moyen de ce plugin nous pourrons gérer les impôts à appliquer sur la facturation. Une fois initiée nous aurons dans le menu principal les entrées "<B>Types de TVA</B>" et "<B>Taux de TVA</B>"avec lesquelles nous pourrons gérer les types d'impôt à appliquer et les taxes en pourcentage qui sont appliqués à ces impôts</P>
+<B>Auteur:</B>Tomeu Borrás (tborras@conetxia.com)<BR>
 <HR>
 
 ParmBD:
@@ -26,7 +24,7 @@ Dependencias:
 
 Incompatibles:
 
-Categorias: Facturacion generica;
+Categorias: Facturation generique;
 
 Orden: 782
 
