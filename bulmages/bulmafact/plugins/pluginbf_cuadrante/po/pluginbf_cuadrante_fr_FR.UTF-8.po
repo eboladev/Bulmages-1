@@ -6,15 +6,15 @@ msgid ""
 msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Mime-Version: 1.0"
-"Last-Translator: aishen <aishen@free.fr>\n"
-"PO-Revision-Date: 2011-02-10 20:39+0100\n"
+"Mime-Version: 1.0Last-Translator: aishen <aishen@free.fr>\n"
+"PO-Revision-Date: 2011-02-11 08:12+0100\n"
 "Project-Id-Version: \n"
 "Language-Team: French <kde-i18n-doc@kde.org>\n"
 "Language: fr\n"
 "X-Generator: Lokalize 1.2\n"
 "MIME-Version: 1.0\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"Last-Translator: aishen <aishen@free.fr>\n"
 
 #: ui_cuadrante1base.h:312
 msgid "&Aceptar"
@@ -95,11 +95,11 @@ msgstr "Ctrl+S"
 #: cuadrante1view.cpp:55 ui_cuadrantediariobase.h:280
 #: ui_cuadrantediariobase.h:281 ui_cuadrantebase.h:248
 msgid "Cuadrante"
-msgstr "Quadrant"
+msgstr "Horaire"
 
 #: ui_cuadrante1base.h:303
 msgid "Cuadrante y Uso Horario"
-msgstr "quadrant et utilisation horaire"
+msgstr "Planing et utilisation horaire"
 
 #: cuadranteview.cpp:151 cuadrantediarioview.cpp:172
 msgid "Domingo"
@@ -116,7 +116,7 @@ msgstr "Erreur en création du magasin"
 
 #: cuadrantediarioview.cpp:99
 msgid "Error al iniciar el cuadrante"
-msgstr "Erreur de démarrage du quadrant"
+msgstr "Erreur de démarrage de l'horaire"
 
 #: cuadrante1view.cpp:60 cuadrantediarioview.cpp:72 ui_cuadrante1base.h:343
 msgid "Fecha"
@@ -132,113 +132,114 @@ msgstr "Date initiale d'absence"
 
 #: cuadrante1view.cpp:66 ui_cuadrante1base.h:344
 msgid "Festivo"
-msgstr ""
+msgstr "Fériés"
 
 #: cuadranteview.cpp:251 cuadrantediarioview.cpp:291
 msgid "Fiesta general"
-msgstr ""
+msgstr "Fête générale"
 
 #: cuadranteview.cpp:159
 msgid "Generando Informe"
-msgstr ""
+msgstr "Générer un rapport"
 
 #: ui_cuadrante1base.h:317 ui_cuadrante1base.h:322
 msgid "Guardar almacen"
-msgstr ""
+msgstr "Sauvegarder le Magasin"
 
 #: cuadrantediarioview.cpp:73
 msgid "Hora"
-msgstr ""
+msgstr "Heure"
 
 #: cuadrante1view.cpp:75
 msgid "Hora Fin"
-msgstr ""
+msgstr "Heure de fin"
 
 #: cuadrante1view.cpp:74
 msgid "Hora Inicio"
-msgstr ""
+msgstr "Heure de début"
 
 #: ui_cuadrante1base.h:306 ui_cuadrante1base.h:309
 msgid "Horario"
-msgstr ""
+msgstr "Planing Horaire"
 
 #: cuadrante1view.cpp:76
 msgid "ID Cuadrante"
-msgstr ""
+msgstr "ID horaire"
 
 #: plugincuadrante.cpp:260
 msgid "ID ausencia"
-msgstr ""
+msgstr "ID d'absence"
 
 #: cuadrante1view.cpp:58
 msgid "ID cuadrante"
-msgstr ""
+msgstr "ID horaire"
 
 #: cuadrante1view.cpp:78
 msgid "ID horario"
-msgstr ""
+msgstr "ID Horaire"
 
 #: cuadrante1view.cpp:77 plugincuadrante.cpp:261
 msgid "ID trabajador"
-msgstr ""
+msgstr "ID Salarié"
 
 #: ui_cuadrantediariobase.h:335 ui_cuadrantediariobase.h:340
 #: ui_cuadrantebase.h:300 ui_cuadrantebase.h:305
 msgid "Igual que la Semana Anterior"
-msgstr ""
+msgstr "Egale à la semaine précédente"
 
 #: ui_cuadrantediariobase.h:299 ui_cuadrantediariobase.h:304
 #: ui_cuadrantebase.h:264 ui_cuadrantebase.h:269
 msgid "Imprimir"
-msgstr ""
+msgstr "Imprimer"
 
 #: cuadranteview.cpp:151 cuadrantediarioview.cpp:169
 msgid "Jueves"
-msgstr ""
+msgstr "Jeudi"
 
 #: ui_cuadrantediariobase.h:323 ui_cuadrantediariobase.h:328
 #: ui_cuadrantebase.h:288 ui_cuadrantebase.h:293
 msgid "Limpiar Cuadrante"
-msgstr ""
+msgstr "Nettoyer l'horaire"
 
 #: cuadranteview.cpp:151 cuadrantediarioview.cpp:166
 msgid "Lunes"
-msgstr ""
+msgstr "Lundi"
 
 #: cuadranteview.cpp:151 cuadrantediarioview.cpp:167
 msgid "Martes"
-msgstr ""
+msgstr "Mardi"
 
 #: cuadranteview.cpp:151 cuadrantediarioview.cpp:168
 msgid "Miercoles"
-msgstr ""
+msgstr "Mercredi"
 
 #: plugincuadrante.cpp:259
 msgid "Motivo"
-msgstr ""
+msgstr "Motiver"
 
 #: cuadrante1view.cpp:73
 msgid "Nombre Trabajador"
-msgstr ""
+msgstr "Nom du Salarié"
 
 #: cuadranteview.cpp:250 cuadrantediarioview.cpp:290
 msgid "Normal"
-msgstr ""
+msgstr "Normal"
 
 #: ui_cuadrantediariobase.h:347 ui_cuadrantediariobase.h:352
 #: ui_cuadrantebase.h:312 ui_cuadrantebase.h:317
 msgid "Ocultar Panel"
-msgstr ""
+msgstr "Cacher le panneau"
 
 #: cuadranteview.cpp:151 cuadrantediarioview.cpp:171
 msgid "Sabado"
-msgstr ""
+msgstr "Samedi"
 
 #: ui_cuadrantediariobase.h:282
 msgid "Validaciones"
-msgstr ""
+msgstr "Validation"
 
 #: cuadranteview.cpp:151 cuadrantediarioview.cpp:170
 msgid "Viernes"
-msgstr ""
+msgstr "Vendredi"
+
 

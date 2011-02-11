@@ -1,6 +1,24 @@
+# Header entry was created by Lokalize.
+#
+#: plugindebugbf.cpp:92
+# aishen <aishen@free.fr>, 2011.
+msgid ""
+msgstr ""
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Mime-Version: 1.0"
+"Last-Translator: aishen <aishen@free.fr>\n"
+"PO-Revision-Date: 2011-02-11 08:14+0100\n"
+"Project-Id-Version: \n"
+"Language-Team: French <kde-i18n-doc@kde.org>\n"
+"Language: fr\n"
+"X-Generator: Lokalize 1.2\n"
+"MIME-Version: 1.0\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
 #: plugindebugbf.cpp:92
 msgid "Activa/Desactiva el Modo Debug"
-msgstr ""
+msgstr "Activer/Désactiver le mode débogue"
 
 #: plugindebugbf.cpp:93
 msgid ""
@@ -8,3 +26,7 @@ msgid ""
 "\n"
 "Activa/Desactiva el Modo Debug"
 msgstr ""
+"Débogue.\n"
+"\n"
+"Activer/Desactiver le mode débogue"
+

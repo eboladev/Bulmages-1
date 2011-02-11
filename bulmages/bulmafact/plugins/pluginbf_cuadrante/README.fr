@@ -1,16 +1,15 @@
 #######
 #Plugins
 #######
-#README.es
+#README.fr
 #20080501
 
-Nombre: Cuadrantes de personal
+Nombre: Horaire du personel
 
 Biblioteca: libpluginbf_cuadrante.so
 
-Descripción: <H1>Cuadrante de personal</H1>
-<P>Gestiona la creación de cuadrantes de trabajo pudiendo asignar las horas que
-corresponda a cada trabajador y la plublicación del cuadrante en formato PDF.</P>
+Descripción: <H1>Horaire du personel</H1>
+<P>Gère la création d'horaire de travail en pouvant assigner les heures qui  correspondent à chaque travailleur et la plublication du planing au format PDF.  </P>
 <B>Author:</B>Tomeu Borrás (tborras@conetxia.com)<BR>
 <HR>
 
@@ -26,8 +25,8 @@ Incompatibles:
 
 Reports: cuadrante.rml
 
-Categorias: Utilidades avanzadas; Experimentales;
+Categorias: Utilites avancees; Experimental;
 
 Orden: 780
 
-Comentarios: Muy útil en sistemas de control de personal y en combinacion con el pluginasterisk.
+Comentarios: Très utile dans des systèmes de contrôle de personnel et en combinaison avec le pluginasterisk.

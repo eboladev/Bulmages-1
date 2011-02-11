@@ -1,15 +1,15 @@
 #######
 #Plugins
 #######
-#README.es
-#20080501
+#README.fr
+#20110211
 
-Nombre: Modo Debug
+Nombre: Mode debogue
 
 Biblioteca: libpluginbf_debug.so
 
-Descripción: <H1>Modo Debug</H1>
-<P>Agrega en el menu ver la opcion Modo Debug que comienza a hacer las trazas del programa para poder ser depurado, tambián habilita la aparicion de warnings (si se producen) en ventanas emergentes. <br><br>Sólo tiene interés para los desarrolladores.</P>
+Descripción: <H1>Mode debogue</H1>
+<P>Il ajoute dans le menu afficher l'option Débogue qui commence à faire les plans du programme pour pouvoir être épuré, ainsi elle habilite l'apparition de warnings (s'ils sont produits) dans des fenêtres émergentes. <br><br>N'a d'intérêt que pour le développement.</P>
 <B>Author:</B>Tomeu Borrás (tborras@conetxia.com)<BR>
 <HR>
 
@@ -23,8 +23,8 @@ Dependencias:
 
 Incompatibles:
 
-Categorias: Utilidades avanzadas;
+Categorias: Utilites avancees;
 
 Orden: 90
 
-Comentarios: Sólo tiene interés para los desarrolladores.
+Comentarios: N'a d'intérêt que pour le développement.

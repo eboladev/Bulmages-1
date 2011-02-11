@@ -1,18 +1,16 @@
 #######
 #Plugins
 #######
-#README.es
+#README.fr
 #20080501
 
-Nombre: Datos iniciales
+Nombre: Données initiales
 
 Biblioteca: None
 
-Descripción: <H1>Datos Iniciales</H1>
-<P>Introduce las provincias, los tipos de IVA, Formas de pago mas comunes, El Cliente varios, el articulo generico, etc.<br><br>Perfecto para empezar a trabajar sin tener que introducir toda la informacion inicial.</P>
-<P>Este plugin no tiene repercusión en la ejecución del programa, solo inserta en la base de datos los
-datos genericos de uso comun en la mayoria de las empresas para que el trabajo de introducción inicial de
-datos sea un poco más llevadero y también para que se pueda realizar un testeo mejor del programa</P>
+Descripción: <H1>Données Initiales</H1>
+<P>Introduit les provinces, les taux de TVA, les formes de paiement plus communes, les divers Clients, l'article générique, etc...<br><br>Parfait pour commencer à travailler sans devoir introduire toute l'information initiale.</P>
+<P>Ce greffon  n'a pas de répercussions sur l'exécution du programme, seulement inséré dans la base de données des données génériques d'utilisation commune dans la majorité des entreprises pour que le travail d'introduction initiale de données soit un peu assoupli et aussi pour qu'on puisse effectuer un test du programme</P>
 <B>Author:</B>Tomeu Borrás (tborras@conetxia.com)<BR>
 <HR>
 
@@ -26,11 +24,8 @@ Dependencias:
 
 Incompatibles:
 
-Categorias: Utilidades genericas;
+Categorias: Utilites generiques;
 
 Orden: 900
 
-Comentarios: Perfecto para empezar a trabajar sin tener que introducir toda la informacion inicial.
-
-
-
+Comentarios: Parfait pour commencer à travailler sans devoir introduire toute l'information initiale. 
