@@ -1,16 +1,16 @@
 #######
 #Plugins
 #######
-#README.es
-#20080501
+#README.fr
+#20110211
 
-Nombre: Informe Clientes.
+Nombre: Rapports Clients.
 
 Biblioteca: libpluginbf_informecliente.so
 
-Descripción: <H1>Informe Clientes</H1>
-<P>Genera un informe de ventas a clientes configurable mediante RML.</P>
-<B>Author:</B>Tomeu Borrás (tborras@conetxia.com)<BR>
+Descripción: <H1>Rapports Clients</H1>
+<P>Il produit un rapport de ventes à des clients configurable par RML.</P>
+<B>Auteur:</B>Tomeu Borrás (tborras@conetxia.com)<BR>
 <HR>
 
 ParmBD: 
@@ -23,7 +23,7 @@ Dependencias: libpluginbf_cliente.so
 
 Incompatibles:
 
-Categorias: Facturacion avanzada; 
+Categorias: Facturation avancees; 
 
 Orden: 900
 

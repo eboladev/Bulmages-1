@@ -1,14 +1,14 @@
 #######
 #Plugins
 #######
-#README.es
-#20080501
+#README.fr
+#20110211
 
-Nombre: Informe de Clientes en Hoja de Cálculo.
+Nombre: Rapport de clients sur feuille de calcul.
 
 Biblioteca: libpluginbf_informecliente2sxc.so
 
-Descripción: <H1>Informe clientes en hoja de calculo</H1>
+Descripción: <H1>Rapport de clients sur feuille de calcul</H1>
 <P>Genera un informe de totales en formato SXC que se abre directamente con kspread.</P>
 <B>Author:</B>Tomeu Borrás (tborras@conetxia.com)<BR>
 <HR>
