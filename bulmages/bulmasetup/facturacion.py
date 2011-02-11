@@ -686,7 +686,7 @@ class Facturacion(Ui_ModificarFacturacionBase, Empresa):
                     Yes = 'Si'
                     No = 'No'
                     message = QtGui.QMessageBox(self)
-                    message.setText(QtGui.QApplication.translate("Facturacion",'El plugin <b>', None, QtGui.QApplication.UnicodeUTF8) +str(self.mui_plugins.item(row,10).text() + QtGui.QApplication.translate("Facturacion","</b> tiene dependencias. Quieres instalarlas?", None, QtGui.QApplication.UnicodeUTF8)))
+                    message.setText(QtGui.QApplication.translate("Facturacion",'El plugin <b>', None, QtGui.QApplication.UnicodeUTF8) +str(self.mui_plugins.item(row,10).text())+ QtGui.QApplication.translate("Facturacion","</b> tiene dependencias. Quieres instalarlas?", None, QtGui.QApplication.UnicodeUTF8))
                     message.setWindowTitle('Atencion!')
                     message.setIcon(QtGui.QMessageBox.Warning)
                     message.addButton(Yes, QtGui.QMessageBox.AcceptRole)
