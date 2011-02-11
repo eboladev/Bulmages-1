@@ -1,17 +1,37 @@
+# Header entry was created by Lokalize.
+#
+#: informeqtoolbutton.cpp:96 informeqtoolbutton.cpp:350
+#: informeqtoolbutton1.cpp:97 informeqtoolbutton1.cpp:350
+# aishen <aishen@free.fr>, 2011.
+msgid ""
+msgstr ""
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Mime-Version: 1.0"
+"Last-Translator: aishen <aishen@free.fr>\n"
+"PO-Revision-Date: 2011-02-11 16:33+0100\n"
+"Project-Id-Version: \n"
+"Language-Team: French <kde-i18n-doc@kde.org>\n"
+"Language: fr\n"
+"X-Generator: Lokalize 1.2\n"
+"MIME-Version: 1.0\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
 #: informeqtoolbutton.cpp:96 informeqtoolbutton.cpp:350
 #: informeqtoolbutton1.cpp:97 informeqtoolbutton1.cpp:350
 msgid "Anyo:"
-msgstr ""
+msgstr "Année :"
 
 #: informeqtoolbutton.cpp:95 informeqtoolbutton.cpp:349
 #: informeqtoolbutton1.cpp:96 informeqtoolbutton1.cpp:349
 msgid "Ejercicio del Informe"
-msgstr ""
+msgstr "Exercice du rapport"
 
 #: informeqtoolbutton.cpp:179 informeqtoolbutton1.cpp:179
 msgid "Generando Informe"
-msgstr ""
+msgstr "Générer un rapport"
 
 #: informeqtoolbutton.cpp:432 informeqtoolbutton1.cpp:434
 msgid "Generando informe"
-msgstr ""
+msgstr "Générer un rapport"
+
