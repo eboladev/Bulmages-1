@@ -15,31 +15,34 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: KBabel 1.11.4\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"X-Language: fr_FR\n"
+"X-Source-Language: C\n"
 
 #: pluginbf_example.cpp:84
 msgid "&Herramientas"
-msgstr "&Herramientas"
+msgstr "&Outils"
 
 #: pluginbf_example.cpp:89
 msgid "&Prueba de plugin"
-msgstr "&Prueba de plugin"
+msgstr "&Test de greffon"
 
 #: pluginbf_example.cpp:64
 msgid "Mensaje."
-msgstr "Mensaje."
+msgstr "Message."
 
 #: pluginbf_example.cpp:91
 msgid "Muestra que es esto"
-msgstr "Muestra que es esto"
+msgstr "Montrer à quoi ça sert"
 
 #: pluginbf_example.cpp:90
 msgid "Muestra statustip"
-msgstr "Muestra statustip"
+msgstr "Montrer le status de l'aide"
 
 #: pluginbf_example.cpp:116
 msgid "Prueba de plugin para BfBulmaFact."
-msgstr "Prueba de plugin para BfBulmaFact."
+msgstr "Test de greffon pour BfBulmaFact."
 
 #: pluginbf_example.cpp:63
 msgid "Titulo de la ventana"
-msgstr "Título de la ventana"
+msgstr "Títre de la fenêtre"
