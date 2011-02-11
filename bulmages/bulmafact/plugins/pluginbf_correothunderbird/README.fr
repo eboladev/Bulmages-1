@@ -1,15 +1,15 @@
 #######
 #Plugins
 #######
-#README.es
-#200806017
+#README.fr
+#20110211
 
-Nombre: Envio de Documentos por e-mail usando Thunderbird
+Nombre: Envoie de Documents par courriel Thunderbird
 
 Biblioteca: libpluginbf_correothunderbird.so
 
-Descripción: <H1>E-Mail Thunderbird</H1>
-<P>Permite enviar, mediante un botón nuevo en las fichas, los documentos impresos por e-mail directamente. Al pulsar sobre le botón de enviar por e-mail se abre el Thunderbird con un texto y el documento adjunto.</P>
+Descripción: <H1>Courriel Thunderbird</H1>
+<P>Permet d'envoyer, au moyen d'un bouton "nouveau" dans les fiches, les documents par e-mail directement. En poussant sur le bouton envoyer par e-mail on ouvre Thunderbird avec un texte et le document joint.</P>
 <HR>
 
 ParmBD: 
@@ -22,8 +22,8 @@ Dependencias:
 
 Incompatibles:
 
-Categorias: Utilidades genericas; 
+Categorias: Utilites generiques; 
 
 Orden: 800
 
-Comentarios: Precisa del programa Mozilla Thunderbird.
+Comentarios: Nécessite le programme Mozilla Thunderbird installé.

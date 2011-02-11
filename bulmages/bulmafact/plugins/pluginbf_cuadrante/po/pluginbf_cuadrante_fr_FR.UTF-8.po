@@ -1,65 +1,83 @@
+# Header entry was created by Lokalize.
+#
+#: ui_cuadrante1base.h:312
+# aishen <aishen@free.fr>, 2011.
+msgid ""
+msgstr ""
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Mime-Version: 1.0"
+"Last-Translator: aishen <aishen@free.fr>\n"
+"PO-Revision-Date: 2011-02-10 20:39+0100\n"
+"Project-Id-Version: \n"
+"Language-Team: French <kde-i18n-doc@kde.org>\n"
+"Language: fr\n"
+"X-Generator: Lokalize 1.2\n"
+"MIME-Version: 1.0\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
 #: ui_cuadrante1base.h:312
 msgid "&Aceptar"
-msgstr ""
+msgstr "&Accepter"
 
 #: ui_cuadrante1base.h:313
 msgid "&Cancelar"
-msgstr ""
+msgstr "&Annuler"
 
 #: ui_cuadrantediariobase.h:283 ui_cuadrantebase.h:322
 msgid "1"
-msgstr ""
+msgstr "1"
 
 #: ui_cuadrantediariobase.h:311 ui_cuadrantediariobase.h:316
 #: ui_cuadrantebase.h:276 ui_cuadrantebase.h:281
 msgid "Actualizar"
-msgstr ""
+msgstr "Actualiser"
 
 #: cuadranteview.cpp:58 cuadrante1view.cpp:59 cuadrantediarioview.cpp:61
 #: cuadrantediarioview.cpp:74 cuadrantediarioview.cpp:75
 #: cuadrantediarioview.cpp:76 ui_cuadrante1base.h:311
 msgid "Almacen"
-msgstr ""
+msgstr "Magasin"
 
 #: cuadrante1view.cpp:64
 msgid "Apartura tarde"
-msgstr ""
+msgstr "Ouverture de soirée"
 
 #: ui_cuadrante1base.h:339
 msgid "Apertura Manyana"
-msgstr ""
+msgstr "Ouverture de matinée"
 
 #: ui_cuadrante1base.h:341
 msgid "Apertura Tarde"
-msgstr ""
+msgstr "Ouverture de soirée"
 
 #: cuadrante1view.cpp:62
 msgid "Apertura manyana"
-msgstr ""
+msgstr "Ouverture de matinée"
 
 #: ui_cuadrante1base.h:329 ui_cuadrante1base.h:334
 msgid "Borrar almacen"
-msgstr ""
+msgstr "Effacer le Magasin"
 
 #: ui_cuadrante1base.h:340
 msgid "Cierre Manyana"
-msgstr ""
+msgstr "Fermeture de matinée"
 
 #: ui_cuadrante1base.h:342
 msgid "Cierre Tarde"
-msgstr ""
+msgstr "Fermeture de soirée"
 
 #: cuadrante1view.cpp:63
 msgid "Cierre manyana"
-msgstr ""
+msgstr "Fermeture de matinée"
 
 #: cuadrante1view.cpp:65
 msgid "Cierre tarde"
-msgstr ""
+msgstr "Fermeture de soirée"
 
 #: cuadrante1view.cpp:61 ui_cuadrante1base.h:310
 msgid "Comentarios"
-msgstr ""
+msgstr "Libellés"
 
 #: ui_cuadrante1base.h:338 ui_cuadrantediariobase.h:296
 #: ui_cuadrantediariobase.h:308 ui_cuadrantediariobase.h:320
@@ -68,49 +86,49 @@ msgstr ""
 #: ui_cuadrantebase.h:285 ui_cuadrantebase.h:297 ui_cuadrantebase.h:309
 #: ui_cuadrantebase.h:321
 msgid "Ctrl+D"
-msgstr ""
+msgstr "Ctrl+D"
 
 #: ui_cuadrante1base.h:326
 msgid "Ctrl+S"
-msgstr ""
+msgstr "Ctrl+S"
 
 #: cuadrante1view.cpp:55 ui_cuadrantediariobase.h:280
 #: ui_cuadrantediariobase.h:281 ui_cuadrantebase.h:248
 msgid "Cuadrante"
-msgstr ""
+msgstr "Quadrant"
 
 #: ui_cuadrante1base.h:303
 msgid "Cuadrante y Uso Horario"
-msgstr ""
+msgstr "quadrant et utilisation horaire"
 
 #: cuadranteview.cpp:151 cuadrantediarioview.cpp:172
 msgid "Domingo"
-msgstr ""
+msgstr "Dimanche"
 
 #: ui_cuadrantediariobase.h:287 ui_cuadrantediariobase.h:292
 #: ui_cuadrantebase.h:252 ui_cuadrantebase.h:257
 msgid "Editar"
-msgstr ""
+msgstr "Editer"
 
 #: cuadranteview.cpp:70 cuadrante1view.cpp:86
 msgid "Error al crear el almacen"
-msgstr ""
+msgstr "Erreur en création du magasin"
 
 #: cuadrantediarioview.cpp:99
 msgid "Error al iniciar el cuadrante"
-msgstr ""
+msgstr "Erreur de démarrage du quadrant"
 
 #: cuadrante1view.cpp:60 cuadrantediarioview.cpp:72 ui_cuadrante1base.h:343
 msgid "Fecha"
-msgstr ""
+msgstr "Date"
 
 #: plugincuadrante.cpp:258
 msgid "Fecha final ausencia"
-msgstr ""
+msgstr "Date d'absence finale"
 
 #: plugincuadrante.cpp:257
 msgid "Fecha inicial ausencia"
-msgstr ""
+msgstr "Date initiale d'absence"
 
 #: cuadrante1view.cpp:66 ui_cuadrante1base.h:344
 msgid "Festivo"
@@ -223,3 +241,4 @@ msgstr ""
 #: cuadranteview.cpp:151 cuadrantediarioview.cpp:170
 msgid "Viernes"
 msgstr ""
+
