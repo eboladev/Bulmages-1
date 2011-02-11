@@ -38,8 +38,7 @@ Depends: ${shlibs:Depends}, python-reportlab, python, python-qt4 (>= 4.7.4), pos
 Suggests: bulmages-servers-admin
 Replaces: bulmfact-plugins
 Description: Spanish invoicing program
- This package helps to manage the invoicing of small or medium sized enterprises
- in Spain.
+ This package helps to manage the invoicing of small or medium sized enterprises.
  .
  This program is made in an open community, you are welcome to join us.
 
@@ -50,7 +49,7 @@ Recommends: bulmages-servers-admin
 Replaces: bulmatpv-plugins
 Description: Spanish invoicing program 
  This package contains a Point of Sale (POS) program for a small or medium 
- sized enterprises in Spain.
+ sized enterprises.
  .
  This program is made in an open community, you are welcome to join us.
 
