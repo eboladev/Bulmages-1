@@ -1,16 +1,15 @@
 #######
 #Plugins
 #######
-#README.es
-#20080501
+#README.fr
+#20110211
 
-Nombre: Demostración del funcionamiento de los plugins
+Nombre: Démonstration du fonctionement des greffons
 
 Biblioteca: libpluginbf_example.so
 
-Descripción: <H1>Ejemplo</H1>
-<P>Sirve para demostrar el funcionamiento de los plugins.<br><br>Es, principalmente
-un ejemplo de programacion.</P>
+Descripción: <H1>Exemple</H1>
+<P>Sert à montrer le fonctionnement des greffons.<br><br>C'est principalement un exemple de programmation.</P>
 <B>Author:</B>Tomeu Borrás (tborras@conetxia.com)<BR>
 <HR>
 
@@ -24,25 +23,23 @@ Dependencias:
 
 Incompatibles:
 
-Categorias: Utilidades avanzadas;
+Categorias: Utilites avancees;
 
 Orden: 90
 
 Comentarios: 
 
-Compilacion
+Compilation
 ===========
 
-El plugin se compilará con el resto de bulmages y  se ubicara en bulmages/installbulmages/plugins con el nombre libplugin.so
+Le plugin sera compilé avec le reste de bulmages et il sera placé en bulmages/installbulmages/plugins avec le nom libplugin.so 
 
 
-
-Instalacion
+Instalation
 ===========
 
-Configure la directiva CONF_PLUGINS_BULMAFACT para que contenga la llamada a este plugin. Dicha directiva
-puede ser a modo global en el archivo /etc/bulmages.conf o personalizada con los archivos /etc/bulmafact_<<database>>.conf
+Former la directive CONF_PLUGINS_BULMAFACT pour qu'elle contienne l'appel à ce plugin. Cette directive peut d'une manière globale dans les archives /etc/bulmages.conf ou être personnalisée avec les archives /etc/bulmafact_<<database>>.conf
 
-Copie todos los archivos *.qm al directorio /usr/share/bulmages/traducciones
+Copie tous les fichiers *.qm dans le répertoire /usr/share/bulmages/traducciones
 
 
