@@ -1,16 +1,16 @@
 #######
 #Plugins
 #######
-#README.ca
+#README.en
 #20080501
 
-Nombre: Activitats
+Nombre: Activities
 
 Biblioteca: libpluginbf_actividad.so
 
-Descripción: <H1>Activitats</H1>
-<P>Gestionar les activitats que fa l'associació.</P>
-<P>Aquest plugin s'inclou dins del control d'associacions de mares i pares d'alumnes i serveix per gestionar les diverses activitats que fa l'associació. Per exemple excursions o activitats extraescolars. Les activitats compten amb una sèrie de dades importants (professors, dates, horaris, preus) i tenen associades una llista d'alumnes assistents.</P>
+Descripción: <H1>Activities</H1>
+<P>Manage the activities of the association.</P>
+<P>This plugin is included in the set of management tools for school parental associations and is used to manage the activities performed by the association. For instance out of school visits or school complementary activities. Activities are linked to important data (teachers, dates, schedule, price) and have a list of students linked.</P>
 <B>Author:</B>Tomeu Borrás (tborras@conetxia.com)<BR>
 <HR>
 
@@ -28,7 +28,7 @@ Incompatibles:
 Reports: actividad.rml; impers_actividad_inscripcion.rml; inf_material_mas_prestado.rml; impers_actividad_cartel.rml; impers_actividad_materialpendiente.rml; inf_prestamos_no_devueltos.rml; impers_actividad_faltas_de_asistencia.rml; impers_actividad_plantilla_notas.rml; impers_actividad_faltas.rml; impers_actividad_prestamo.rml; blform_ActividadView.qs; blform_ConvocatoriaView.qs; blform_TipoActividadView.qs
 
 
-Categorias: Associacions de pares i mares d'alumnes; Experimentals;
+Categorias: School parental associations; Experimentals;
 
 Orden: 220
 
