@@ -1,16 +1,16 @@
 #######
 #Plugins
 #######
-#README.es
-#20080501
+#README.fr
+#20110212
 
-Nombre: IVA Incluido
+Nombre: TVA Incluse
 
 Biblioteca: libpluginbf_ivaincluido.so
 
-Descripción: <H1>IVA Incluido</H1>
-<P>Permite trabajar con articulos que llevan el IVA incluido en el precio en lugar de separar la base imponible del IVA.</P>
-<B>Author:</B>Tomeu Borrás (tborras@conetxia.com)<BR>
+Descripción: <H1>TVA Incluse</H1>
+<P>Il permet de travailler avec des articles qui portent la TVA incluse dans le prix au lieu de séparer la base imposable de la TVA.</P>
+<B>Auteur:</B>Tomeu Borrás (tborras@conetxia.com)<BR>
 <HR>
 
 ParmBD: PluginBf_IVAIncluido
@@ -23,7 +23,7 @@ Dependencias:
 
 Incompatibles:
 
-Categorias: Experimentales;IVA incluido;
+Categorias: Experimental;TVA incluse;
 
 Orden: 610
 

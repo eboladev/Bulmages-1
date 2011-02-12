@@ -1,20 +1,20 @@
 #######
 #Plugins
 #######
-#README.es
-#20090501
+#README.fr
+#20110212
 
-Nombre: Control de Ingresos y Gastos
+Nombre: Control d'intérêts et de frais
 
 Biblioteca: libpluginbf_minicontabilidad.so
 
-Descripción: <H1>Control de Ingresos y Gastos</H1>
-<PARA>Este plugin permite realizar una contabilidad sencilla. </PARA>
+Descripción: <H1>Control d'intérêts et de frais</H1>
+<PARA>Ce greffon permet de créer une comptabilité simple </PARA>
 <HR>
-<PARA>Presenta la opcion de introducir ingresos y gastos por partidas para generar un balance.</PARA>
+<PARA>Présente la possibilité de saisir les produits et charges pour produire un équilibre.</PARA>
 <BR>
-<PARA>Tambien permite introducir presupuestos contables y contrastarlos con los presupuestos realizados.</PARA>
-<B>Author:</B>Tomeu Borrás (tborras@conetxia.com)<BR>
+<PARA>Il permet aussi d'introduire des budgets comptables et de les comparer avec les budgets effectués.</PARA>
+<B>Auteur:</B>Tomeu Borrás (tborras@conetxia.com)<BR>
 <HR>
 
 ParmBD: PluginBf_MiniContabilidad
@@ -31,6 +31,6 @@ Orden: 210
 
 Reports: presupuestocontable.pys; presupuestocontable.rml; blform_PresupuestoContableView.qs; inf_ventas.ui; inf_informeeconomico.rml; inf_balance.rml;inf_diario.rml
 
-Categorias: Asociaciones de padres de alumnos; Experimentales; Facturacion generica;
+Categorias: Associations des parents d'élèves; Experimental; Facturation generique;
 
 Comentarios:

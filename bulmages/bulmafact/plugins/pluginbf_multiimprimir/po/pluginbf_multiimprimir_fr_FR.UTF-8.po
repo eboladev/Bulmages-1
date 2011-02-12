@@ -1,28 +1,47 @@
+# Header entry was created by Lokalize.
+#
+#: impmultqtoolbutton.cpp:597 impmultqtoolbutton.cpp:598
+# aishen <aishen@free.fr>, 2011.
+msgid ""
+msgstr ""
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Mime-Version: 1.0"
+"Last-Translator: aishen <aishen@free.fr>\n"
+"PO-Revision-Date: 2011-02-12 09:32+0100\n"
+"Project-Id-Version: \n"
+"Language-Team: French <kde-i18n-doc@kde.org>\n"
+"Language: fr\n"
+"X-Generator: Lokalize 1.2\n"
+"MIME-Version: 1.0\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
 #: impmultqtoolbutton.cpp:597 impmultqtoolbutton.cpp:598
 msgid "Enviar elementos seleccionados por e-mail"
-msgstr ""
+msgstr "Envoi des éléments sélectionnés par courriel"
 
 #: impmultqtoolbutton.cpp:91 impmultqtoolbutton.cpp:92
 msgid "Imprimir elementos seleccionados"
-msgstr ""
+msgstr "Imprimer les éléments sélectionnés"
 
 #: impmultqtoolbutton.cpp:449 impmultqtoolbutton.cpp:450
 msgid "Invertir seleccion de elementos"
-msgstr ""
+msgstr "Inverser la sélection des éléments"
 
 #: impmultqtoolbutton.cpp:238
 msgid "no se pudo crear instancia de albaran"
-msgstr ""
+msgstr "Impossible de créer une instance de bulletin"
 
 #: impmultqtoolbutton.cpp:166 impmultqtoolbutton.cpp:777
 msgid "no se pudo crear instancia de factura"
-msgstr ""
+msgstr "Impossible de créer une instance de facture"
 
 #: impmultqtoolbutton.cpp:202 impmultqtoolbutton.cpp:683
 #: impmultqtoolbutton.cpp:728
 msgid "no se pudo crear instancia de pedido cliente"
-msgstr ""
+msgstr "Impossible de créer une instance de commande client"
 
 #: impmultqtoolbutton.cpp:639
 msgid "no se pudo crear instancia de presupuesto"
-msgstr ""
+msgstr "Impossible de créer une instance de budget"
+

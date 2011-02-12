@@ -1,20 +1,17 @@
 #######
 #Plugins
 #######
-#README.es
-#20080501
+#README.fr
+#20110212
 
-Nombre: Modificadores de Articulos
+Nombre: Modificateurs d'Articles
 
 Biblioteca: libpluginbf_modificadores.so
 
-Descripción: <H1>Modificadores de Articulos</H1>
-<P>Permite establecer alteraciones de artículo. Por ejemplo en un restaurante
-nos  dejará especificar si queremos un filete muy hecho, poco hecho o si
-queremos la bebida sin cubitos, etc</P>
-<P> Para ello en el menu de articulos aparece la opcion modificadores que nos
-permite introducir todos aquellos modificadores que consideremos oportunos</P>
-<B>Author:</B>Tomeu Borrás (tborras@conetxia.com)<BR>
+Descripción: <H1>Modificateurs d'Articles</H1>
+<P>Il permet d'établir des modifications d'article. Par exemple dans un restaurant il nous laissera spécifier si nous voulons un filet très fait, peu fait ou si nous voulons la boisson sans glaçons, etc...</P>
+<P> Pour cela dans le menu d'articles apparaît l'option modificateurs qui nous permet d'introduire tous ces modificateurs que nous considérons opportuns</P>
+<B>Auteur:</B>Tomeu Borrás (tborras@conetxia.com)<BR>
 <HR>
 
 ParmBD: PluginBf_Modificadores
@@ -27,7 +24,7 @@ Dependencias: libpluginbf_articulo
 
 Incompatibles:
 
-Categorias: Facturacion avanzada; Restauracion;
+Categorias: Facturation avancees; Restauration;
 
 Orden: 750
 

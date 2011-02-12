@@ -1,16 +1,16 @@
 #######
 #Plugins
 #######
-#README.es
-#20080501
+#README.fr
+#20110212
 
-Nombre: Trabajo con múltiples documentos.
+Nombre: Travail avec de multiples documents. 
 
 Biblioteca: libpluginbf_multiimprimir.so
 
-Descripción: <H1>Impresiones Multiples</H1>
-<P>Permite la selección de multiples documentos (presupuestos, pedidos, albaranes o facturas) y realizar algunas operacions comunes a todos ellos con un sólo click (imprimir, enviar por e-mail, etc).</P>
-<B>Author:</B>Tomeu Borrás (tborras@conetxia.com)<BR>
+Descripción: <H1>Impressions Multiples</H1>
+<P>Il permet la sélection de multiples documents (budgets, commandes, bulletins de livraison ou factures) et d'effectuer quelques operations communes à tous avec un seul click (imprimer, envoyer par e-mail, etc...).</P>
+<B>Auteur:</B>Tomeu Borrás (tborras@conetxia.com)<BR>
 <HR>
 
 ParmBD: 
@@ -23,8 +23,8 @@ Dependencias:
 
 Incompatibles:
 
-Categorias: Utilidades genericas;
+Categorias: Utilites generiques;
 
 Orden: 900
 
-Comentarios: Agrega varios botones a los listados en los que podemos hacer la manipulación múltiple.
+Comentarios: Il ajoute plusieurs boutons aux listings dans lesquels nous pouvons rendre la manipulation multiple.
