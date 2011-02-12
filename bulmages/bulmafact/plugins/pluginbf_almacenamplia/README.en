@@ -1,0 +1,40 @@
+#######
+#Plugins
+#######
+#README.en
+#20080501
+
+Nombre: Store extension
+
+Biblioteca: libpluginbf_almacenamplia.so
+
+Descripción: <H1>Store extension</H1>
+<P>It creates the file for stores and extends the information presented in them.
+It is useful for those applications needing an improved and extensible use of stores.</P>
+
+<B>Author:</B>Tomeu Borrás (tborras@conetxia.com)<BR>
+<HR>
+
+ParmBD: 
+
+ArchivoSQLpatch: 
+
+ArchivoSQLdeins: 
+
+Dependencias: libpluginbf_almacen.so
+
+Incompatibles: 
+
+Categorias: Advanced invoicing; Experimentals;
+
+Orden: 860
+
+Comentarios: Essential for firms with multiple stores.
+
+
+Installation
+============
+
+Configure the CONF_PLUGINS_BULMAFACT directive so that it calls this plugin. This directive
+can be gloal at the /et/bulmages.conf file or costumized with the /etc/bulmafact_<<database>>.conf files
+
