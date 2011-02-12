@@ -1,7 +1,7 @@
 #######
 #Plugins
 #######
-#README.ca
+#README.en
 #20080501
 
 Nombre: Alias
@@ -9,8 +9,8 @@ Nombre: Alias
 Biblioteca: libpluginbf_alias.so
 
 Descripción: <H1>Alias</H1>
-<P>Permet la instroducicó d'aliases d'article que serveixen com a codis addicionals d'article.
-Aquesta funcionalitat és molt útil quan tenim diversos articles que tenen codis de barres diferents però que es tracten del mateix article.</P>
+<P>It allows the introduction of aliases for items that can be used as additional codes for the item.
+This funcionality is very useful when we have varius items that have different bar codes but that are treated as if was the same item.</P>
 <B>Author:</B>Tomeu Borrás (tborras@conetxia.com)<BR>
 <HR>
 
@@ -24,7 +24,7 @@ Dependencias: libpluginbf_articulo.so
 
 Incompatibles: 
 
-Categorias: Utilitats genèriques;
+Categorias: Generic utilities;
 
 Orden: 900
 
