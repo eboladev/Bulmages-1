@@ -1,0 +1,32 @@
+#######
+#Plugins
+#######
+#README.en
+#20080501
+
+Nombre: Reference opening
+
+Biblioteca: libpluginbf_abrereferencia.so
+
+Descripción: <H1>Referenc opening</H1>
+<P>Whith this plugin an option appears in the Tools menu called Reference opening. Clicking on this option a text window will appear where we can write a reference or read a bar code if we have a reader.</P>
+<P>Clicking on Enter or finishing the scanning with the bar code reader on the reference field, the file with this reference will be opened.</P>
+
+<B>Author:</B>Tomeu Borrás (tborras@conetxia.com)<BR>
+<HR>
+
+ParmBD: 
+
+ArchivoSQLpatch: 
+
+ArchivoSQLdeins: 
+
+Dependencias:
+
+Incompatibles:
+
+Categorias: Generic utilities;
+
+Orden: 900
+
+Comentarios:
