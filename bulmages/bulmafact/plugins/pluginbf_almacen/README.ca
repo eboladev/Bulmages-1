@@ -1,17 +1,17 @@
 #######
 #Plugins
 #######
-#README.es
+#README.ca
 #20080501
 
-Nombre: Almacenes
+Nombre: Magatzems
 
 Biblioteca: libpluginbf_almacen.so
 
-Descripción: <H1><IMG SRC="@CMAKE_INSTALL_PREFIX@/share/bulmages/imagesrc/images/oxygen/actions/warehouse_list.svg" WIDTH="100"/><BR>Almacenes</H1>
-<P> Al instalar este plugin podremos realizar la gestión de los almacenes. Para ello dispondremos en el menu <B>Maestro</B> de la opción <B>Almacenes</B> que nos introducirá en un pantalla de edición de éstos. </P>
-<P> La edición de almacenes es muy sencilla. Consta de un listado editable donde aparecen todos los almacenes creados y sus datos (código y nombre). Desde esta ventana podemos crear nuevos almacenes utilizando el registro en blanco del final del listado. Editar los almacenes existentes cambiando directamente los datos de éstos y borrar almacenes utilizando la opción <B>Borrar Registro</B> que aparece al pulsar con el botón derecho sobre el almacen que deseamos eliminar.</P>
-<P>Los almacenes son la base para muchas otras pantallas donde es importante la introducción del almacen. Si Vd no dispone de almacenes o sólo de uno utilicelo como almacén por defecto</P>
+Descripción: <H1><IMG SRC="@CMAKE_INSTALL_PREFIX@/share/bulmages/imagesrc/images/oxygen/actions/warehouse_list.svg" WIDTH="100"/><BR>Magatzems</H1>
+<P> Instal·lant aquest plugin podrem realitzar la gestió dels magatzems. Per a això disposarem al menú <B>Mestre</B> de l'opció <B>Magatzems</B> que ens introduirà a una pantalla d'edicició dels magatzems.</P>
+<P> L'edició de magatzems és molt senzilla. Consta d'un llistat editable on apareixen tots els magatzems creats i les seves dades (codi i nom). Des d'aquesta finestra podem crar nous magatzems utilitzant el registre en blanc del final del llistat. Podem editar els magatzems existents canviant directament les seves dades i esborrar magatzems utilitzant l'opció <B>Esborrar Registre</B> que apareix en clicar amb el botó dret sobre el magatzem que desitgem eliminar.</P>
+<P>Els magatzems són la base per a moltes altres pantalles on és important la introducció del magatzem. Si no disposeu de magatzems o sols d'un utilitzeu-lo com a magatzem per defecte</P>
 <B>Author:</B>Tomeu Borrás (tborras@conetxia.com)<BR>
 <HR>
 
@@ -25,7 +25,7 @@ Dependencias:
 
 Incompatibles:
 
-Categorias: Facturacion generica;
+Categorias: Facturacio generica;
 
 Orden: 800
 

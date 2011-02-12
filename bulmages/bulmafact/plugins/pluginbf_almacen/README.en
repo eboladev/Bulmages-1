@@ -1,0 +1,32 @@
+#######
+#Plugins
+#######
+#README.en
+#20080501
+
+Nombre: Stores
+
+Biblioteca: libpluginbf_almacen.so
+
+Descripción: <H1><IMG SRC="@CMAKE_INSTALL_PREFIX@/share/bulmages/imagesrc/images/oxygen/actions/warehouse_list.svg" WIDTH="100"/><BR>Stores</H1>
+<P> Installing this plugin we can perform store management. We will have the option <B>Stores<B> at the <B>Master</B> menu, which will provide a screen for editing them.</P>
+<P> Store editing is very simple. It has an editable list where all the created stores with their data (code and name). From this screen we can create new stores using the blank register at the end of the listing. Edit the existing stores by changing directly their data and delete stores using the option <B>Delete Registry</B> that appears when you right-click on the store you want to delete.</P>
+<P>The stores are the basis for many other screens where the introduction of the store is important. If you do not have stores or you have only one use it as the store by default.</P>
+<B>Author:</B>Tomeu Borrás (tborras@conetxia.com)<BR>
+<HR>
+
+ParmBD:
+
+ArchivoSQLpatch:
+
+ArchivoSQLdeins: 
+
+Dependencias:
+
+Incompatibles:
+
+Categorias: Generic invoicing;
+
+Orden: 800
+
+Comentarios:
