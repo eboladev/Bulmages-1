@@ -1,0 +1,30 @@
+#######
+#Plugins
+#######
+#README.en
+#20080501
+
+Nombre: Fast opening of Bar Codes
+
+Biblioteca: libpluginbf_abrecodigobarras.so
+
+Descripción: <H1>Bar Codes</H1>
+<P>It presents a menu option allowing a fast access to a written document by passing it through a reader of bar codes. The printing templates need to have the bar code identification activated.</P>
+<B>Author:</B>Tomeu Borrás (tborras@conetxia.com)<BR>
+<HR>
+
+ParmBD: 
+
+ArchivoSQLpatch: 
+
+ArchivoSQLdeins: 
+
+Dependencias:
+
+Incompatibles:
+
+Categorias: Generic utilities;
+
+Orden: 600
+
+Comentarios: It requires the rlbarcode extension activated in reportlab.
