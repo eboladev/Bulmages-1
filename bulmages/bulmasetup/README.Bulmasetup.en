@@ -1,0 +1,35 @@
+========================================
+BulmaGes Firm Management Software
+
+(C) 2003 - 2008 IGLUES Association
+http://www.iglues.org
+========================================
+#README.Bulmasetup
+20080501
+
+BulmaSetup
+==========
+
+This directory contains all the programming code for Bulmasetup.
+Bulmasetup is a program written in PyQT4 and is used to configure
+the BulmaGes suite.
+
+With BulmaSetup you will be able to:
+===================================
+
+- Create new users in PostgreSQL
+- Modify user permissions in PostgreSWL
+- Delete users in PostgreSQL
+
+- Create a new Firm in Bulmacont
+- Create a new Firm in Bulmafact
+
+- Manage existing firms
+
+- Restore backups of data in PostgreSQL
+
+
+Structure
+==========
+
+All files are in the directory. They do not have plugins.
