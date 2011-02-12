@@ -2,23 +2,19 @@
 #Plugins
 #######
 #README.es
-#20080501
+#20110212
 
-Nombre: Impresion en Cocina
+Nombre: Impression en cuisine
 
 Biblioteca: libpluginbf_printercocina.so
 
-Descripción: <H1>Impresion en Cocina</H1>
-<P>Da el soporte a la impresion de pedidos generados en bulmatpv en la cocina</>
-<P> Este componente modifica la base de datos para agregarle los campos necesarios para la impresion en cocina.</P>
-<P> Tambien agrega el selector de impresora de cocina a la ficha de articulos.
-Las impresoras deben estar guardadas en la tabla printercocina que (de momento) no tiene gestion en bulmafact y 
-debe ser mantenida a través del SQL. Supuestamente es el técnico quien instala las impresoras y modifica la
-base de datos para que estas tenga efecto.
+Descripción: <H1>Impression en cuisine</H1>
+<P>Il donne le support à l'impression de commandes produites dans bulmatpv dans la cuisine</>
+<P>Ce composant modifie la base de données pour lui ajouter les champs nécessaires pour l'impression en cuisine.</P>
+<P>Il ajoute aussi le sélecteur d'imprimante de cuisine à la fiche d'articles. Les imprimantes doivent être gardées dans le tableau printercocina qui (pour l'instant) n'a pas de gestion dans bulmafact et doit être maintenue à travers le SQL. C'est hypothétiquement le technicien qui installe les imprimantes et modifie la base de données pour que celles-ci en ait l'effet.
 </P>
-<P>Importante que las impresoras deben ser ticketeras compatibles <B>ESC/POS</B> y deben estar compartidas con CUPS. En la tabla
-printer cocina hay que poner el nombre de la cola cups de la impresora</P>
-<B>Author:</B>Tomeu Borrás (tborras@conetxia.com)<BR>
+<P>Important que les imprimantes doivent être compatibles ESC/POS et produire des tickets, elles doivent être partagées avec CUPS. Dans le tableau imprimante cuisine il faut mettre le nom de la colle cups de l'imprimante</P>
+<B>Auteur:</B>Tomeu Borrás (tborras@conetxia.com)<BR>
 <HR>
 
 ParmBD: PluginBf_PrinterCocina
@@ -31,11 +27,11 @@ Dependencias:
 
 Incompatibles:
 
-Categorias: Utilidades avanzadas; Experimentales; Restauracion;
+Categorias: Utilites avancees; Experimental; Restauration;
 
 Orden: 900
 
-Comentarios: No se instala propiamente como un plugin ya que no lleva librerías asociadas.
+Comentarios: Il n'est pas proprement installé comme greffon puisqu'il ne porte pas de librairies associées.
 
 
 Prerequisitos:
