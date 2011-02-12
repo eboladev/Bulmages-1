@@ -1,0 +1,816 @@
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+#
+# aishen <aishen@free.fr>, 2011.
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: info@iglues.org\n"
+"POT-Creation-Date: 2010-09-23 18:50+0200\n"
+"PO-Revision-Date: 2011-02-12 09:58+0100\n"
+"Last-Translator: aishen <aishen@free.fr>\n"
+"Language-Team: French <kde-i18n-doc@kde.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"#-#-#-#-#  bulmalib.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginsubformsxc.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginsubformods.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginclipboardbf.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginimpers.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginimpersods.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginimpersmail.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginimportcsv.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  plugininformes.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  plugininformesods.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginbloqueos.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginsubformprint.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginarchivos.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  plugindocked.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  bulmacont.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginregistroiva.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  plugincorrector.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginbc_example.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  plugindebugbc.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginbalancetree.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  plugincanualesods.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginbalance.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginresumcta.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginproyectos.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginbalanceold.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  bulmafact.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginbf_example.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  plugintarifas.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginbf_comercial.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginbf_cliente.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginbf_proveedor.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  plugintrazabilidad.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginbarcodeopen.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  plugincatalogo.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  plugininformeclientes.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  plugininventario.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  plugincontratos.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginticket.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  plugin_tc_articulos.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginpromedios.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginimpresionesmultiples.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginq19.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginmail.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginmailthunderbird.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginalmacen.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  plugintipostrabajo.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  plugincuadrante.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginasterisk.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  plugintpv.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  plugindebugbf.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginpreciocoste.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginresarticulos.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginalias.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginivainc.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  plugininformeclientessxc.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginetiquetado.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginetiquetas.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  plugincompraventa.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginclientprov.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginopenref.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  plugincorrectorbf.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginfacturar.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginpagos.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  plugincobros.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginpresupuesto.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginpedido.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginalbaran.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginfactura.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginfacturaprov.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginalbaranprov.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginpedidoprov.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginz2z.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginprofesor.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginalumno.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  plugintutor.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginactividad.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  bulmages.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  bulmatpv.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginticketbasico.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  plugintecladonumerico.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  plugintotal.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  plugintotalivainc.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginadmin.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  plugincobrar.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginartsubform.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  plugintpvivainc.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginaliastpv.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  plugintcaliastpv.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginticketdesglose.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginbuscaarticulo.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginbuscacliente.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  plugincambio.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  plugincambioivainc.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  plugindevolucion.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  plugindevolucion2.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginticketsdevueltos.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginabrevs.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  bulmages_suite.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"Language: fr\n"
+"X-Generator: Lokalize 1.2\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
+#: ui_partidasbase.h:366 ui_presupuestocontablebase.h:364
+#: ui_acontablebase.h:192
+msgid "&Aceptar"
+msgstr "&Accepter"
+
+#: pluginbf_minicontabilidad.cpp:117
+msgid "&Anotaciones contables"
+msgstr "Annotations comptables"
+
+#: ui_partidasbase.h:367 ui_presupuestocontablebase.h:365
+#: ui_acontablebase.h:193
+msgid "&Cancelar"
+msgstr "&Annuler"
+
+#: ui_presupuestocontablebase.h:362
+msgid "&Detalle"
+msgstr "&Détail"
+
+#: pluginbf_minicontabilidad.cpp:109
+msgid "&Partidas contables"
+msgstr "&Postes comptables"
+
+#: pluginbf_minicontabilidad.cpp:125
+msgid "&Previsiones"
+msgstr "&Prévision"
+
+#: ui_partidasbase.h:350
+msgid "1"
+msgstr "1"
+
+#: ui_presupuestocontablelistbase.h:283 ui_presupuestocontablelistbase.h:286
+msgid "Actualizar listado"
+msgstr "Actualiser la liste"
+
+#: pluginbf_minicontabilidad.cpp:119 pluginbf_minicontabilidad.cpp:120
+msgid "Anotaciones contables"
+msgstr "Annotations comptables"
+
+#: ui_acontablebase.h:166
+msgid "Apuntes Contables"
+msgstr "Ecritures comptables"
+
+#: partidasview.cpp:436 ui_presupuestocontablelistbase.h:255
+#: ui_presupuestocontablelistbase.h:258
+msgid "Borrar"
+msgstr "Effacer"
+
+#: ui_partidasbase.h:329 ui_partidasbase.h:332
+msgid "Borrar Partida"
+msgstr "Effacer le poste"
+
+#: ui_acontablebase.h:177 ui_acontablebase.h:180 ui_acontablebase.h:185
+#: ui_acontablebase.h:188
+msgid "Borrar cobro"
+msgstr "Effacer l'encaissement"
+
+#: ui_presupuestocontablebase.h:337 ui_presupuestocontablebase.h:340
+msgid "Borrar presupuesto"
+msgstr "Borrar presupuesto"
+
+#: presupuestocontablelist.cpp:198
+msgid "Borrar presupuestocontable"
+msgstr "Effacer le budget comptable"
+
+#: ui_presupuestocontablelistbase.h:289
+msgid "Buscar:"
+msgstr "Chercher :"
+
+#: presupuestocontablelist.cpp:220
+msgid "C.I.F."
+msgstr "C.I.F."
+
+#: partidasview.cpp:50 partidasview.cpp:526 presupuestocontablelist.cpp:219
+#: presupuestocontableview.cpp:66
+msgid "Codigo"
+msgstr "Code"
+
+#: acontableview.cpp:61
+msgid "Codigo Partida"
+msgstr "Code poste"
+
+#: partidasview.cpp:50
+msgid "Codigo completo"
+msgstr "Code complet"
+
+#: ui_partidasbase.h:362
+msgid "Codigo completo:"
+msgstr "Code complet :"
+
+#: ui_partidasbase.h:361
+msgid "Codigo reducido:"
+msgstr "Code réduit :"
+
+#: acontableview.cpp:63 presupuestocontableview.cpp:58
+#: presupuestocontableview.cpp:67
+msgid "Concepto"
+msgstr "Concept"
+
+#: ui_presupuestocontablelistbase.h:276 ui_presupuestocontablelistbase.h:279
+msgid "Configurar listado"
+msgstr "Configurer la liste"
+
+#: ui_partidasbase.h:358
+msgid "Contenido de la partida"
+msgstr "Contenu de la famille"
+
+#: ui_presupuestocontablebase.h:343 ui_acontablebase.h:183
+msgid "Ctrl+D"
+msgstr "Ctrl+D"
+
+#: ui_presupuestocontablebase.h:359
+msgid "Ctrl+G"
+msgstr "Ctrl+G"
+
+#: ui_acontablebase.h:191
+msgid "Ctrl+I"
+msgstr "Ctrl+I"
+
+#: ui_presupuestocontablebase.h:351
+msgid "Ctrl+P"
+msgstr "Ctrl+P"
+
+#: ui_presupuestocontablebase.h:335 ui_acontablebase.h:175
+msgid "Ctrl+S"
+msgstr "Ctrl+S"
+
+#: ui_presupuestocontablebase.h:363
+msgid "Datos &generales"
+msgstr "Données générales"
+
+#: partidasview.cpp:340 partidasview.cpp:462
+msgid "Debe seleccionar una partida"
+msgstr "Vous devez sélectionner un poste"
+
+#: partidasview.cpp:50
+msgid "Descripcion"
+msgstr "Description "
+
+#: ui_partidasbase.h:359 ui_presupuestocontablebase.h:360
+msgid "Descripcion:"
+msgstr "Description :"
+
+#: partidasview.cpp:437
+msgid "Desea eliminar"
+msgstr "Voulez vous effacer"
+
+#: partidasview.cpp:318
+msgid "Desea guardar los cambios?"
+msgstr "Sauvegarder les changements ?"
+
+#: acontableview.cpp:48
+msgid "Diario Contable"
+msgstr "Journal comptable"
+
+#: pluginbf_minicontabilidad.cpp:105
+msgid "Economia"
+msgstr "Economie"
+
+#: ui_presupuestocontablelistbase.h:248 ui_presupuestocontablelistbase.h:251
+msgid "Editar"
+msgstr "Editer"
+
+#: presupuestocontablelist.cpp:197
+msgid "Editar presupuestocontable"
+msgstr "Editer le budget comptable"
+
+#: partidasview.cpp:476
+msgid "Error al borrar la partida"
+msgstr "Effacer le poste erreur"
+
+#: presupuestocontablelist.cpp:150
+msgid "Error al borrar un presupuestocontable"
+msgstr "Erreur d'effacement d'un budget"
+
+#: presupuestocontableview.cpp:90
+msgid "Error al crear el presupuesto"
+msgstr "Erreur en création du budget"
+
+#: acontableview.cpp:76
+msgid "Error al crear el recibo"
+msgstr "Erreur en création de reçu"
+
+#: partidasview.cpp:423
+msgid "Error al crear la partida"
+msgstr "Erreur en création de poste"
+
+#: partidasview.cpp:364
+msgid "Error al guardar la partida"
+msgstr "Erreur en sauvegarde du poste"
+
+#: acontableview.cpp:60 presupuestocontableview.cpp:57
+msgid "Fecha"
+msgstr "Date"
+
+#: ui_presupuestocontablebase.h:361
+msgid "Fecha de creacion:"
+msgstr "Date de création :"
+
+#: ui_presupuestocontablelistbase.h:269 ui_presupuestocontablelistbase.h:272
+msgid "Filtrar listado"
+msgstr "Filtrer la liste"
+
+#: acontableview.cpp:65
+msgid "Gasto"
+msgstr "Frais"
+
+#: pluginbf_minicontabilidad.cpp:432 pluginbf_minicontabilidad.cpp:447
+msgid "Gestionar partidas"
+msgstr "Gestionnaire de poste"
+
+#: ui_partidasbase.h:336 ui_partidasbase.h:339
+msgid "Guardar Partida"
+msgstr "Sauvegarder le poste"
+
+#: ui_acontablebase.h:169 ui_acontablebase.h:172
+msgid "Guardar cobro"
+msgstr "Sauvegarder l'encaissement"
+
+#: partidasview.cpp:317
+msgid "Guardar partida"
+msgstr "Sauvegarder le poste"
+
+#: ui_presupuestocontablebase.h:329 ui_presupuestocontablebase.h:332
+msgid "Guardar presupuesto"
+msgstr "Sauvegarder le budget"
+
+#: presupuestocontableview.cpp:63 presupuestocontableview.cpp:64
+msgid "ID lpresupuestocontable"
+msgstr "Id budget"
+
+#: presupuestocontableview.cpp:65
+msgid "ID partida"
+msgstr "ID poste"
+
+#: presupuestocontableview.cpp:56
+msgid "ID presupuesto contable"
+msgstr "Id budget"
+
+#: presupuestocontablelist.cpp:218
+msgid "ID presupuestocontable"
+msgstr "Id budget"
+
+#: partidasview.cpp:50
+msgid "Id partida"
+msgstr "Id poste"
+
+#: acontableview.cpp:59
+msgid "Id. Partida"
+msgstr "Id. poste"
+
+#: acontableview.cpp:58
+msgid "Identificador"
+msgstr "Identificateur"
+
+#: ui_partidasbase.h:343 ui_partidasbase.h:346
+msgid "Imprimir Partidas"
+msgstr "Imprimer le poste"
+
+#: ui_presupuestocontablelistbase.h:262 ui_presupuestocontablelistbase.h:265
+msgid "Imprimir listado"
+msgstr "Imprimer la liste"
+
+#: ui_presupuestocontablebase.h:345 ui_presupuestocontablebase.h:348
+msgid "Imprimir presupuesto"
+msgstr "Imprimer le budget "
+
+#: ui_partidasbase.h:363
+msgid "Imputacion Contable"
+msgstr "Imputation comptable"
+
+#: acontableview.cpp:64
+msgid "Ingreso"
+msgstr "Intérêt"
+
+#: presupuestocontablelist.cpp:126
+msgid "Listado de Presupuestos Contables"
+msgstr "Liste des budgets comptables"
+
+#: ui_partidasbase.h:352 ui_partidasbase.h:355
+msgid "Mostrar / Ocultar Detalle"
+msgstr "Montrer/Occulter les détails"
+
+#: ui_presupuestocontablebase.h:353 ui_presupuestocontablebase.h:356
+msgid "Mostrar/Ocultar cabecera"
+msgstr "Montrer/cacher l'entête"
+
+#: partidasview.cpp:50 partidasview.cpp:527 presupuestocontableview.cpp:68
+msgid "Nombre"
+msgstr "Nom"
+
+#: acontableview.cpp:62
+msgid "Nombre Partida"
+msgstr "Nom du poste"
+
+#: ui_partidasbase.h:360
+msgid "Nombre:"
+msgstr "Nom :"
+
+#: ui_partidasbase.h:322 ui_partidasbase.h:325
+msgid "Nueva Partida"
+msgstr "Nouveau poste"
+
+#: ui_presupuestocontablelistbase.h:241 ui_presupuestocontablelistbase.h:244
+msgid "Nuevo"
+msgstr "Nouveau"
+
+#: ui_presupuestocontablebase.h:327
+msgid "Nuevo presupuesto a cliente"
+msgstr "Nouveau budget"
+
+#: presupuestocontablelist.cpp:181
+msgid "Nuevo presupuestocontable"
+msgstr "Nouveau budget comptable"
+
+#: ui_partidasbase.h:319
+msgid "Partidas"
+msgstr "Poste"
+
+#: partidasview.cpp:122
+msgid "Partidas Contables"
+msgstr "Postes comptables"
+
+#: pluginbf_minicontabilidad.cpp:111 pluginbf_minicontabilidad.cpp:112
+msgid "Partidas contables"
+msgstr "Postes comptables"
+
+#: presupuestocontableview.cpp:53
+msgid "Presupuesto Contable"
+msgstr "Budget comptable"
+
+#: pluginbf_minicontabilidad.cpp:127
+msgid "Presupuesto Contables"
+msgstr "Budget comptables"
+
+#: pluginbf_minicontabilidad.cpp:128 ui_presupuestocontablelistbase.h:238
+msgid "Presupuestos Contables"
+msgstr "Budgets comptables"
+
+#: ui_presupuestocontablelistbase.h:290
+msgid "Pro&cesados"
+msgstr "A&ccusés"
+
+#: ui_partidasbase.h:365
+msgid "Producto."
+msgstr "Produit."
+
+#: presupuestocontableview.cpp:69
+msgid "Saldo"
+msgstr "Solde"
+
+#: pluginbf_minicontabilidad.cpp:433 pluginbf_minicontabilidad.cpp:449
+msgid "Seleccionar partida"
+msgstr "Sélectionner un poste"
+
+#: presupuestocontablelist.cpp:61
+msgid "Selector de presupuesto contable"
+msgstr "Sélecteur de Budget comptable"
+
+#: ui_partidasbase.h:364
+msgid "Servicio."
+msgstr "Service"
+
+#: partidasview.cpp:446
+msgid "no se ha podido borrar"
+msgstr "Il n'a pas pu être effacé"
+
+#~ msgid "&Articulos"
+#~ msgstr "&Articulos"
+
+#~ msgid "&Datos generales"
+#~ msgstr "&Datos generales"
+
+#, fuzzy
+#~ msgid "&Familias"
+#~ msgstr "Familias"
+
+#~ msgid "&Incluir en el catalogo."
+#~ msgstr "&Incluir en el catalogo."
+
+#, fuzzy
+#~ msgid "&Nuevo Articulo"
+#~ msgstr "Nuevo articulo"
+
+#, fuzzy
+#~ msgid "&Tipos de Articulo"
+#~ msgstr "&Tipos de articulo"
+
+#~ msgid "Abreviacion"
+#~ msgstr "Abreviacion"
+
+#~ msgid "Activar el &control de stock."
+#~ msgstr "Activar el &control de stock."
+
+#~ msgid "Activar el control de stock para este articulo."
+#~ msgstr "Activar el control de stock para este articulo."
+
+#~ msgid "Alt+O"
+#~ msgstr "Alt+O"
+
+#~ msgid "Articulo"
+#~ msgstr "Articulo"
+
+#~ msgid "Articulos"
+#~ msgstr "Articulos"
+
+#~ msgid "Borrar Familia"
+#~ msgstr "Borrar Familia"
+
+#~ msgid "Borrar Tipo de articulo"
+#~ msgstr "Borrar Tipo de articulo"
+
+#~ msgid "Borrar articulo"
+#~ msgstr "Borrar articulo"
+
+#~ msgid "Borrar imagen"
+#~ msgstr "Borrar imagen"
+
+#~ msgid "Borrar imagen del articulo"
+#~ msgstr "Borrar imagen del articulo"
+
+#~ msgid "C&omponentes"
+#~ msgstr "C&omponentes"
+
+#~ msgid "Cam&biar imagen"
+#~ msgstr "Cam&biar imagen"
+
+#~ msgid "Cantidad de componente de articulo"
+#~ msgstr "Cantidad de componente de articulo"
+
+#~ msgid "Clientes (*.xml)"
+#~ msgstr "Clientes (*.xml)"
+
+#~ msgid "Codigo completo del articulo"
+#~ msgstr "Codigo completo del articulo"
+
+#~ msgid "Codigo del articulo:"
+#~ msgstr "Codigo del articulo:"
+
+#~ msgid "Codigo:"
+#~ msgstr "Codigo:"
+
+#~ msgid "Contenido de la familia:"
+#~ msgstr "Contenido de la familia:"
+
+#~ msgid "Ctrl+N"
+#~ msgstr "Ctrl+N"
+
+#~ msgid "Debe seleccionar un tipo"
+#~ msgstr "Debe seleccionar un tipo"
+
+#~ msgid "Debe seleccionar una familia"
+#~ msgstr "Debe seleccionar una familia"
+
+#~ msgid "Descripcio&n"
+#~ msgstr "Descripcio&n"
+
+#~ msgid "Descripcion abreviada del articulo"
+#~ msgstr "Descripcion abreviada del articulo"
+
+#~ msgid "Descripcion del tipo de articulo"
+#~ msgstr "Descripcion del tipo de articulo"
+
+#~ msgid "Descripcion tipo de I.V.A."
+#~ msgstr "Descripcion tipo de I.V.A."
+
+#~ msgid "Disponible en stock"
+#~ msgstr "Disponible en stock"
+
+#~ msgid "Editar articulo"
+#~ msgstr "Editar articulo"
+
+#~ msgid "Elija el archivo"
+#~ msgstr "Elija el archivo"
+
+#~ msgid "Error al borrar el articulo"
+#~ msgstr "Error al borrar el articulo"
+
+#~ msgid "Error al borrar la familia"
+#~ msgstr "Error al borrar la familia"
+
+#~ msgid "Error al crear el articulo"
+#~ msgstr "Error al crear el articulo"
+
+#~ msgid "Error al crear la familia"
+#~ msgstr "Error al crear la familia"
+
+#~ msgid "Error al guardar la familia"
+#~ msgstr "Error al guardar la familia"
+
+#~ msgid "Error en la carga"
+#~ msgstr "Error en la carga"
+
+#~ msgid "Error en la creacion"
+#~ msgstr "Error en la creacion"
+
+#~ msgid ""
+#~ "Esta a punto de borrar un articulo. Estos datos pueden dar problemas."
+#~ msgstr ""
+#~ "Esta a punto de borrar un articulo. Estos datos pueden dar problemas."
+
+#~ msgid ""
+#~ "Esta seguro que quiere borrar\n"
+#~ "la imagen asociada a este articulo?"
+#~ msgstr ""
+#~ "Esta seguro que quiere borrar\n"
+#~ "la imagen asociada a este articulo?"
+
+#~ msgid "Exportar"
+#~ msgstr "Exportar"
+
+#~ msgid "Exportar articulos"
+#~ msgstr "Exportar articulos"
+
+#~ msgid "Familia"
+#~ msgstr "Familia"
+
+#~ msgid "Familias"
+#~ msgstr "Familias"
+
+#~ msgid "Guardar"
+#~ msgstr "Guardar"
+
+#~ msgid "Guardar Familia"
+#~ msgstr "Guardar Familia"
+
+#~ msgid "Guardar Tipo de Articulo"
+#~ msgstr "Guardar Tipo de Articulo"
+
+#~ msgid "Guardar Tipo de articulo"
+#~ msgstr "Guardar Tipo de articulo"
+
+#~ msgid "Guardar familia"
+#~ msgstr "Guardar familia"
+
+#~ msgid "ID articulo"
+#~ msgstr "ID articulo"
+
+#~ msgid "ID componente"
+#~ msgstr "ID componente"
+
+#~ msgid "Id"
+#~ msgstr "Id"
+
+#~ msgid "Id familia"
+#~ msgstr "Id familia"
+
+#~ msgid "Imagen del articulo:"
+#~ msgstr "Imagen del articulo:"
+
+#~ msgid "Imagenes (*.jpg)"
+#~ msgstr "Imagenes (*.jpg)"
+
+#~ msgid "Importar articulos"
+#~ msgstr "Importar articulos"
+
+#~ msgid "Imprimir Familias"
+#~ msgstr "Imprimir Familias"
+
+#~ msgid "Inactivo"
+#~ msgstr "Inactivo"
+
+#~ msgid "Incluir en control de stock"
+#~ msgstr "Incluir en control de stock"
+
+#~ msgid "Incluir en presentaciones"
+#~ msgstr "Incluir en presentaciones"
+
+#~ msgid "Incluir este articulo en el catalogo."
+#~ msgstr "Incluir este articulo en el catalogo."
+
+#~ msgid "Informacion del articulo:"
+#~ msgstr "Informacion del articulo:"
+
+#~ msgid "Mostrar / Ocultar detalle"
+#~ msgstr "Mostrar / Ocultar detalle"
+
+#~ msgid ""
+#~ "No se ha podido borrar el archivo.\n"
+#~ "Compruebe que el archivo tenga los permisos correctos."
+#~ msgstr ""
+#~ "No se ha podido borrar el archivo.\n"
+#~ "Compruebe que el archivo tenga los permisos correctos."
+
+#~ msgid ""
+#~ "No se ha podido cargar la imagen.\n"
+#~ "Compruebe que la imagen sea valida."
+#~ msgstr ""
+#~ "No se ha podido cargar la imagen.\n"
+#~ "Compruebe que la imagen sea valida."
+
+#~ msgid ""
+#~ "No se ha podido guardar la imagen.\n"
+#~ "Revise los permisos de escritura y que disponga\n"
+#~ "de espacio libre suficiente en el disco duro."
+#~ msgstr ""
+#~ "No se ha podido guardar la imagen.\n"
+#~ "Revise los permisos de escritura y que disponga\n"
+#~ "de espacio libre suficiente en el disco duro."
+
+#~ msgid "Nombre del articulo"
+#~ msgstr "Nombre del articulo"
+
+#~ msgid "Nombre del articulo:"
+#~ msgstr "Nombre del articulo:"
+
+#~ msgid "Nueva Familia"
+#~ msgstr "Nueva Familia"
+
+#, fuzzy
+#~ msgid "Nuevo Articulo"
+#~ msgstr "Nuevo articulo"
+
+#~ msgid "Nuevo Tipo de articulo"
+#~ msgstr "Nuevo Tipo de articulo"
+
+#~ msgid "Nuevo articulo"
+#~ msgstr "Nuevo articulo"
+
+#~ msgid "Nuevo cliente"
+#~ msgstr "Nuevo cliente"
+
+#~ msgid "Observaciones"
+#~ msgstr "Observaciones"
+
+#~ msgid "Observaciones sobre el articulo"
+#~ msgstr "Observaciones sobre el articulo"
+
+#~ msgid "Otros datos:"
+#~ msgstr "Otros datos:"
+
+#~ msgid "P.V.P. articulo"
+#~ msgstr "P.V.P. articulo"
+
+#~ msgid "P.V.P. base"
+#~ msgstr "P.V.P. base"
+
+#~ msgid "Peso (kg):"
+#~ msgstr "Peso (kg):"
+
+#~ msgid "Peso Unidad"
+#~ msgstr "Peso Unidad"
+
+#~ msgid "Precio venta. s/IVA:"
+#~ msgstr "Precio venta. s/IVA:"
+
+#~ msgid "S&olo presentables"
+#~ msgstr "S&olo presentables"
+
+#~ msgid "Seleccionar articulo"
+#~ msgstr "Seleccionar artículo"
+
+#~ msgid "Seleccione un archivo de imagen"
+#~ msgstr "Seleccione un archivo de imagen"
+
+#~ msgid "Selector de articulos"
+#~ msgstr "Selector de articulos"
+
+#~ msgid "Solo usados"
+#~ msgstr "Solo usados"
+
+#~ msgid "Stock"
+#~ msgstr "Stock"
+
+#~ msgid "Subcodigo:"
+#~ msgstr "Subcodigo:"
+
+#~ msgid "Texto para etiqueta:"
+#~ msgstr "Texto para etiqueta:"
+
+#~ msgid "Tiene que seleccionar un articulo"
+#~ msgstr "Tiene que seleccionar un articulo"
+
+#~ msgid "Tipo Articulos"
+#~ msgstr "Tipo Articulos"
+
+#~ msgid "Tipo de I.V.A."
+#~ msgstr "Tipo de I.V.A."
+
+#~ msgid "Tipo de I.V.A.:"
+#~ msgstr "Tipo de I.V.A.:"
+
+#~ msgid "Tipo de articulo"
+#~ msgstr "Tipo de articulo"
+
+#~ msgid "Tipo de articulo:"
+#~ msgstr "Tipo de articulo:"
+
+#, fuzzy
+#~ msgid "Tipos de Articulo"
+#~ msgstr "Tipos de articulo"
+
+#~ msgid "Tipos de articulo"
+#~ msgstr "Tipos de articulo"
+
+#~ msgid "Volumen (cm3):"
+#~ msgstr "Volumen (cm3):"
+
+#~ msgid "Volumen Unidad"
+#~ msgstr "Volumen Unidad"
