@@ -4,14 +4,14 @@
 #README.es
 #20080501
 
-Nombre: Remesas bancarias
+Nombre: Remises bancaires
 
 Biblioteca: libpluginbf_q19.so
 
-Descripción: <H1>Remesas Bancarias</H1>
-<P>Agrega un botón de generacion de remesas bancarias al listado de facturas. Funciona en conjuncion con el plugin de impresionesmultiples y al seleccionar varias facturas o cobros y darle a este botón genera el archivo q19 para poder pasarlo al banco. El codigo de referencia y devolución los genera como el id de bd con una F añadida al final para las facturas (para no duplicar código si un cobro y una factura tienen el mismo id, luego no sabríamos cuál nos  ha devuelto el banco. ver https://lists.berlios.de/pipermail/bulmages-main/2009-February/000935.html</P>
-<P>Bulamfact marca automáticamente  los recibos que se incluyen en una remesa bancaria  como efectivos (desmarca la casilla "previsión de cobro") para facilitar la gestión de cuáles hay que enviar al banco y cuáles estan ya enviados. Es responsabilidad del usuario que el fichero generado llegue al banco y sea procesado o en caso contrario restablecer los cobros como previsiones, modificarlos, y/o lo que corresponda.</P>
-<B>Author:</B>Tomeu Borrás (tborras@conetxia.com)<BR>
+Descripción: <H1>Remises bancaires</H1>
+<P>Il ajoute un bouton de génération de remises bancaires au listing de factures. Il fonctionne en conjonction avec le plugin d'impressions multiples et en choisissant plusieurs factures ou encaissements et donner à ce bouton il produit les archives q19 pour pouvoir le passer à la banque. Le code référence et le remboursement des produits comme vous allez par vous même avec un F ajoutée à la fin pour les factures (pour ne pas doubler le code si un encaissement et une facture ont ce dernier vous allez, donc nous ne saurions pas lequel nous a restitué la banque. voir https://lists.berlios.de/pipermail/bulmages-main/2009-February/000935.html</P>
+<P>Bulamfact marque automatiquement les reçus qui sont inclus dans une remise bancaire comme effectifs (démarque la case " ; prévision de paiement" ;) pour faciliter la gestion de ceux qu'il faut envoyer à la banque et ceux déjà envoyés. Il est la responsabilité de l'utilisateur que le fichier produit arrive à la banque et est traité ou en cas contraire reconstituer les encaissements comme prévisions, modifier les, et/ou ce qui correspond.</P>
+<B>Auteur:</B>Tomeu Borrás (tborras@conetxia.com)<BR>
 <HR>
 
 ParmBD: 
@@ -24,7 +24,7 @@ Dependencias: libpluginbf_multiimprimir.so; libpluginbf_banco.so
 
 Incompatibles:
 
-Categorias: Facturacion avanzada; Experimentales;
+Categorias: Facturation avancees; Experimental;
 
 Orden: 900
 

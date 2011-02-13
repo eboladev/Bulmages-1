@@ -1,43 +1,52 @@
+msgid ""
+msgstr ""
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"X-Language: fr_FR\n"
+"X-Source-Language: C\n"
+
 #: q19qtoolbutton.cpp:91
 msgid "*.q19"
-msgstr ""
+msgstr "*.q19"
 
 #: ui_q19base.h:222
 msgid "..."
-msgstr ""
+msgstr "..."
 
 #: ui_q19base.h:225
 msgid "Aceptar"
-msgstr ""
+msgstr "Accepter"
 
 #: ui_q19base.h:221
 msgid "Archivo"
-msgstr ""
+msgstr "Fichiers"
 
 #: ui_q19base.h:220
 msgid "Banco"
-msgstr ""
+msgstr "Banque"
 
 #: ui_q19base.h:226
 msgid "Cancelar"
-msgstr ""
+msgstr "Annuler"
 
 #: q19view.cpp:79
 msgid "Error al crear el archivo"
-msgstr ""
+msgstr "Erreur en création du fichier"
 
 #: ui_q19base.h:219
 msgid "Generacion Q19"
-msgstr ""
+msgstr "Générer Q19"
 
 #: ui_q19base.h:224
 msgid "Num. Operaciones"
-msgstr ""
+msgstr "N° des opérations"
 
 #: q19qtoolbutton.cpp:89
 msgid "Save file"
-msgstr ""
+msgstr "Sauver le fichier"
 
 #: ui_q19base.h:223
 msgid "Total"
-msgstr ""
+msgstr "Total"
