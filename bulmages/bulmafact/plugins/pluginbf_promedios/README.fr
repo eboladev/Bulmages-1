@@ -1,17 +1,16 @@
 #######
 #Plugins
 #######
-#README.es
-#20080501
+#README.fr
+#20110212
 
-Nombre: Promedios en artículos
+Nombre: Moyennes dans des articles
 
 Biblioteca: libpluginbf_promedios.so
 
-Descripción: <H1>Promedios en articulos</H1>
-<P>Agrega una pestaña a la ficha de articulos que muestra información relativa a
-las compras y ventas de dicho artículo y algunos datos estadísticos adicionales sobre el mismo.</P>
-<B>Author:</B>Tomeu Borrás (tborras@conetxia.com)<BR>
+Descripción: <H1>Moyennes dans des articles</H1>
+<P>Il ajoute un cil à la fiche d'articles qui montre une information relative aux achats et aux ventes de cet article et de quelques données statistiques additionnelles sur ce dernier.</P>
+<B>Auteur:</B>Tomeu Borrás (tborras@conetxia.com)<BR>
 <HR>
 
 ParmBD: 
@@ -24,7 +23,7 @@ Dependencias: libpluginbf_articulo.so
 
 Incompatibles:
 
-Categorias: Facturacion generica;
+Categorias: Facturation generique;
 
 Orden: 900
 
