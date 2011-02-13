@@ -1,29 +1,23 @@
 #######
 #Plugins
 #######
-#README.es
+#README.fr
 #20080501
 
-Nombre: Facturas de Proveedor
+Nombre: Factures de fournisseur
 
 Biblioteca: libpluginbf_proveedorfactura.so
 
-Descripción:  <H1><IMG SRC="@CMAKE_INSTALL_PREFIX@/share/bulmages/imagesrc/images/oxygen/actions/supplier_invoice_new.svg" WIDTH="100"/><BR>Facturas de proveedores</H1>
-<P>Soporte para gestión de facturares de proveedores.</P>
-<P>Al cargar el plugin tendremos dos nuevas entradas de meńu <B>Listado de Facturas de Proveedores <IMG SRC="@CMAKE_INSTALL_PREFIX@/share/bulmages/imagesrc/images/oxygen/actions/supplier_invoice_list.svg" WIDTH="22"/></B> desde la que accederemos al listado de facturas emitidos y <B>Nuevo Pedido a Proveedor<IMG SRC="@CMAKE_INSTALL_PREFIX@/share/bulmages/imagesrc/images/oxygen/actions/supplier_invoice_new.svg" WIDTH="22"/></B> desde el que podremos emitir una nueva factura.</P>
-<P> Mediante el listado de facturas podremos controlar todas las facturas emitidas, editarlas y borrarlas. Para ello podemos utilizar la barra de botones superior del listado.</P>
-<P> Es común en todos los listados de BulmaGés poder configurarlos presentando los campos que nos interese. Para ello tenemos el <B>menú del subformulario <IMG SRC="@CMAKE_INSTALL_PREFIX@/share/bulmages/imagesrc/images/oxygen/actions/48x48/toggleconfig.png" WIDTH="22"/></B> o la opción <B>Configurar Listado <IMG SRC="@CMAKE_INSTALL_PREFIX@/share/bulmages/imagesrc/images/oxygen/actions/document_properties.svg" WIDTH="22"/></B> que nos presenta en el lateral derecho del listado todos los campos mostrables por el mismo, opciones de paginación y la consulta de base de datos que genera dicho listado</P>
-<P><B>Nota:</B>Puede haber opciones ocultas para usted que se activan mediante la pulsación del botón derecho del ratón en determinadas zonas. Estas opciones pueden verse de forma permanente como una barra de herramientas mediante la acción <B>Mostrar Menu SubFormulario <IMG SRC="@CMAKE_INSTALL_PREFIX@/share/bulmages/imagesrc/images/oxygen/actions/48x48/togglemenu.png" WIDTH="22"/></B> Recuerde que el botón derecho del ratón puede ser su mejor aliado en la búsqueda de determinadas acciones.</P>
-<P>Al crear un nuevo factura los datos necesarios a rellenar son el proveedor y el almacen. El resto de campos pueden
-dejarse en blanco para ser rellenados posteriormente. Los campos que aparecen en la pantalla pueden variar según la configuración
-de plugins que tengamos y que precisen de información adicional en las facturas, dicha información puede ser
-obligatoria o no dependiendo del plugin en cuestión</P>
-<P>Una vez rellenados los datos podemos guardar la factura o darle al boton <B>Aceptar</B> para almacenar los cambios</P>
-<P>Todas las facturas tienen una plantilla de impresión por defecto llamada <B>facturaproveedor.rml</B> que define la forma en que se
-imprime la factura del pulsar sobre el botón imprimir. Además pueden existir informes adicionales que aparecen al pulsar
-con el botón derecho del ratón en cualquier espacio vacio de la pantalla de la factura así como acciones ocultas no
-accesibles de otro modo</P>
-<B>Author:</B>Tomeu Borrás (tborras@conetxia.com)<BR>
+Descripción:  <H1><IMG SRC="@CMAKE_INSTALL_PREFIX@/share/bulmages/imagesrc/images/oxygen/actions/supplier_invoice_new.svg" WIDTH="100"/><BR>Factures de Fournisseurs</H1>
+<P>Support pour gestion de factures de fournisseurs.</P>
+<P>En chargeant le plugin nous aurons deux nouvelles entrées de menu <B>Liste de Factures de fournisseurs <IMG SRC="@CMAKE_INSTALL_PREFIX@/share/bulmages/imagesrc/images/oxygen/actions/supplier_invoice_list.svg" WIDTH="22"/>depuis laquelle nous accéderons au listing de factures émises et </B> <B>Nouvelle commande de fournisseur<IMG SRC="@CMAKE_INSTALL_PREFIX@/share/bulmages/imagesrc/images/oxygen/actions/supplier_invoice_new.svg" WIDTH="22"/>depuis lequel nous pourrons émettre une nouvelle facture.</B> </P>
+<P>Au moyen du listing de factures nous pourrons contrôler toutes les factures émises, les publier et les effacer. Pour cela nous pouvons utiliser la barre de boutons supérieure du listing.</P>
+<P>Il est commun dans tous les listings de BulmaGés de pouvoir les former en présentant les domaines qui nous intéresse. Pour cela nous avons le <B>menu du sous formulaire<IMG SRC="@CMAKE_INSTALL_PREFIX@/share/bulmages/imagesrc/images/oxygen/actions/48x48/toggleconfig.png" WIDTH="22"/></B> ou l'option <B>Configurer la Liste <IMG SRC="@CMAKE_INSTALL_PREFIX@/share/bulmages/imagesrc/images/oxygen/actions/document_properties.svg" WIDTH="22"/></B>qui nous présente dans le côté droit latéral du listing tous les domaines présentables par ce dernier, options de pagination et la consultation de base de données qui produit ce listing</P>
+<P><B>Note :</B>Il peut y avoir des options occultes pour vous qui sont activées par la presson du bouton droit de la souris dans certaines zones. Ces options peuvent être vues de manière permanente comme une barre d'outils par l'action <B>Afficher Menu Sous Formulaire<IMG SRC="@CMAKE_INSTALL_PREFIX@/share/bulmages/imagesrc/images/oxygen/actions/48x48/togglemenu.png" WIDTH="22"/>Rappelez que le bouton droit de la souris peut être votre meilleur allié dans la recherche de certaines actions.</B></P>
+<P>En créant un nouvelle facture les données nécessaires à remplir sont le fournisseur et le magasin. Le reste de domaines peuvent laisser en blanc pour être postérieurement remplis. Les domaines qui apparaissent sur l'écran peuvent varier selon la configuration de plugins que nous avons et qui nécessitent de l'information additionnelle dans les factures, cette information peut être obligatoire ou non suivant le plugin en question</P>
+<P>Une fois remplies les données nous pouvons garder la facture ou la donner au bouton <B>Accepter</B>pour emmagasiner les changements</P>
+<P>Toutes les factures ont un service d'impression par défaut appelé <B>facturaproveedor.rml</B>qui définit la manière dans laquelle s'imprime la facture en poussant sur le bouton imprimer. Peuvent en outre exister des rapports additionnels qui apparaissent en poussant avec le bouton droit de la souris dans tout espace vide de l'écran la facture ainsi que les actions occultes non accessibles d'une autre manière</P>
+<B>Auteur:</B>Tomeu Borrás (tborras@conetxia.com)<BR>
 <HR>
 
 ParmBD:
@@ -36,7 +30,7 @@ Dependencias: libpluginbf_proveedor.so
 
 Incompatibles:
 
-Categorias: Facturacion generica;
+Categorias: Facturation generique;
 
 Reports: blform_FacturaProveedorView.qs
 
