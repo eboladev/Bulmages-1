@@ -1,29 +1,23 @@
 #######
 #Plugins
 #######
-#README.es
-#20080501
+#README.fr
+#20110213
 
-Nombre: Albaranes de Proveedor
+Nombre: Bulletins de livraison de Fournisseur
 
 Biblioteca: libpluginbf_proveedoralbaran.so
 
-Descripción: <H1><IMG SRC="@CMAKE_INSTALL_PREFIX@/share/bulmages/imagesrc/images/oxygen/actions/supplier_delivery_note_new.svg" WIDTH="100"/><BR>Albaranres de proveedores</H1>
-<P>Soporte para emisión de albaranres de proveedores.</P>
-<P>Al cargar el plugin tendremos dos nuevas entradas de meńu <B>Listado de Albaranres de Proveedores <IMG SRC="@CMAKE_INSTALL_PREFIX@/share/bulmages/imagesrc/images/oxygen/actions/supplier_delivery_note_list.svg" WIDTH="22"/></B> desde la que accederemos al listado de albarans emitidos y <B>Nuevo Pedido a Proveedor<IMG SRC="@CMAKE_INSTALL_PREFIX@/share/bulmages/imagesrc/images/oxygen/actions/supplier_delivery_note_new.svg" WIDTH="22"/></B> desde el que podremos emitir una nueva albaran.</P>
-<P> Mediante el listado de albarans podremos controlar todos los albarans emitidas, editarlas y borrarlas. Para ello podemos utilizar la barra de botones superior del listado.</P>
-<P> Es común en todos los listados de BulmaGés poder configurarlos presentando los campos que nos interese. Para ello tenemos el <B>menú del subformulario <IMG SRC="@CMAKE_INSTALL_PREFIX@/share/bulmages/imagesrc/images/oxygen/actions/48x48/toggleconfig.png" WIDTH="22"/></B> o la opción <B>Configurar Listado <IMG SRC="@CMAKE_INSTALL_PREFIX@/share/bulmages/imagesrc/images/oxygen/actions/document_properties.svg" WIDTH="22"/></B> que nos presenta en el lateral derecho del listado todos los campos mostrables por el mismo, opciones de paginación y la consulta de base de datos que genera dicho listado</P>
-<P><B>Nota:</B>Puede haber opciones ocultas para usted que se activan mediante la pulsación del botón derecho del ratón en determinadas zonas. Estas opciones pueden verse de forma permanente como una barra de herramientas mediante la acción <B>Mostrar Menu SubFormulario <IMG SRC="@CMAKE_INSTALL_PREFIX@/share/bulmages/imagesrc/images/oxygen/actions/48x48/togglemenu.png" WIDTH="22"/></B> Recuerde que el botón derecho del ratón puede ser su mejor aliado en la búsqueda de determinadas acciones.</P>
-<P>Al crear un nuevo albaran los datos necesarios a rellenar son el proveedor y el almacen. El resto de campos pueden
-dejarse en blanco para ser rellenados posteriormente. Los campos que aparecen en la pantalla pueden variar según la configuración
-de plugins que tengamos y que precisen de información adicional en los albaranes, dicha información puede ser
-obligatoria o no dependiendo del plugin en cuestión</P>
-<P>Una vez rellenados los datos podemos guardar la albaran o darle al boton <B>Aceptar</B> para almacenar los cambios</P>
-<P>Todos las albarans tienen una plantilla de impresión por defecto llamada <B>albaranproveedor.rml</B> que define la forma en que se
-imprime el albaran del pulsar sobre el botón imprimir. Además pueden existir informes adicionales que aparecen al pulsar
-con el botón derecho del ratón en cualquier espacio vacio de la pantalla del albaran así como acciones ocultas no
-accesibles de otro modo</P>
-<B>Author:</B>Tomeu Borrás (tborras@conetxia.com)<BR>
+Descripción: <H1><IMG SRC="@CMAKE_INSTALL_PREFIX@/share/bulmages/imagesrc/images/oxygen/actions/supplier_delivery_note_new.svg" WIDTH="100"/>Bulletins de livraison de Fournisseur<BR></H1>
+<P>Support pour émission de bulletin de livraison de fournisseurs.</P>
+<P>En chargeant le plugin nous aurons deux nouvelles entrées de menu <B>Liste de bulletin de livraison fournisseur <IMG SRC="@CMAKE_INSTALL_PREFIX@/share/bulmages/imagesrc/images/oxygen/actions/supplier_delivery_note_list.svg" WIDTH="22"/>depuis laquelle nous accéderons au listing de bulletin émis et</B> <B>Nouveau bulletin de commande fournisseur<IMG SRC="@CMAKE_INSTALL_PREFIX@/share/bulmages/imagesrc/images/oxygen/actions/supplier_delivery_note_new.svg" WIDTH="22"/>depuis lequel nous pourrons émettre un nouveau bulletin de livraison.</B> </P>
+<P>Au moyen du listing de bulletin nous pourrons contrôler tous les bulletins émis, les publier et les effacer. Pour cela nous pouvons utiliser la barre de boutons supérieure du listing.</P>
+<P>Il est commun dans tous les listings de BulmaGés de pouvoir les former en présentant les domaines qui nous intéresse. Pour cela nous avons le  <B>menu du sous formulaire <IMG SRC="@CMAKE_INSTALL_PREFIX@/share/bulmages/imagesrc/images/oxygen/actions/48x48/toggleconfig.png" WIDTH="22"/></B> ou l'option <B>Configurer la Liste <IMG SRC="@CMAKE_INSTALL_PREFIX@/share/bulmages/imagesrc/images/oxygen/actions/document_properties.svg" WIDTH="22"/>qui nous présente dans le coin droit latéral du listing tous les domaines présentables par ce dernier, options de pagination et la consultation de base de données que produit ce listing</B></P>
+<P><B>Note :</B> Il peut y avoir des options occultes pour vous qui sont activé par la pression du bouton droit de la souris dans certaines zones. Ces options peuvent être vues de manière permanente comme une barre d'outils par l'action<B>Montrer Menu Sous Formulaire <IMG SRC="@CMAKE_INSTALL_PREFIX@/share/bulmages/imagesrc/images/oxygen/actions/48x48/togglemenu.png" WIDTH="22"/>Rappelez que le bouton droit de la souris peut être votre meilleur allié dans la recherche de certaines actions.</B> En créant un nouveau bulletin de livraison les données nécessaires à remplir sont le fournisseur et le magasin. Le reste des chmps peuvent être laisser en blanc pour être postérieurement remplis. Les champs qui apparaissent sur l'écran peuvent varier selon la configuration des plugins que nous avons et qui nécessitent de l'information additionnelle dans les bulletins de livraison, cette information peut être obligatoire ou non suivant le plugin en question</P>
+<P>Une fois remplies les données nous pouvons garder le bulletin de livraison ou le donner au bouton</P>
+<P> <B>Accepter</B> pour emmagasiner les changements</P>
+<P> Toutes les bulletins ont un service d'impression par défaut appelée<B>albaranproveedor.rml</B> qui définit la manière dans laquelle il imprime le bulletin de livraison en pressant le bouton imprimer. Peuvent en outre exister des rapports additionnels qui apparaissent en poussant avec le bouton droit de la souris dans tout espace vide de l'écran le bulletin de livraison ainsi que les actions occultes non accessibles d'une autre manière</P>
+<B>Auteur:</B>Tomeu Borrás (tborras@conetxia.com)<BR>
 <HR>
 
 ParmBD:
@@ -36,7 +30,7 @@ Dependencias: libpluginbf_proveedor.so
 
 Incompatibles:
 
-Categorias: Facturacion generica;
+Categorias: Facturation generique;
 
 Reports: blform_AlbaranProveedorView.qs
 

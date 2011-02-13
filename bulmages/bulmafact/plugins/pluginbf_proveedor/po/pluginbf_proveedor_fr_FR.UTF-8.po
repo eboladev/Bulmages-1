@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
 "POT-Creation-Date: 2010-09-23 18:23+0200\n"
-"PO-Revision-Date: 2011-02-13 09:22+0100\n"
+"PO-Revision-Date: 2011-02-13 10:55+0100\n"
 "Last-Translator: aishen <aishen@free.fr>\n"
 "Language-Team: French <kde-i18n-doc@kde.org>\n"
 "MIME-Version: 1.0\n"
@@ -117,71 +117,71 @@ msgstr ""
 
 #: ui_proveditbase.h:846
 msgid "&Aceptar"
-msgstr "&Aceptar"
+msgstr "&Accepter"
 
 #: ui_proveditbase.h:866
 msgid "&Aplicar Recargo de Equivalencia."
-msgstr "&Aplicar Recargo de Equivalencia."
+msgstr "&Appliquer la recharge d'équivalence ."
 
 #: ui_proveditbase.h:847
 msgid "&Cancelar"
-msgstr "&Cancelar"
+msgstr "&Annuler"
 
 #: ui_proveditbase.h:848
 msgid "&Codigo:"
-msgstr "&Codigo:"
+msgstr "&Code:"
 
 #: ui_proveditbase.h:867
 msgid "&Comentarios:"
-msgstr "&Comentarios:"
+msgstr "&Libellés :"
 
 #: ui_proveditbase.h:894
 msgid "&Contratos"
-msgstr "&Contratos"
+msgstr "&Contrats"
 
 #: ui_proveditbase.h:869
 msgid "&Datos generales"
-msgstr "&Datos generales"
+msgstr "&Données générales"
 
 #: ui_proveditbase.h:862
 msgid "&IRPF que aplica:"
-msgstr "&IRPF que aplica:"
+msgstr "&IRPF appliquer :"
 
 #: ui_proveditbase.h:850
 msgid "&Nombre empresa:"
-msgstr "&Nombre empresa:"
+msgstr "&Nom d'entreprise :"
 
 #: pluginbf_proveedor.cpp:104
 msgid "&Nuevo proveedor"
-msgstr "&Nuevo proveedor"
+msgstr "&Nouveau Fournisseur"
 
 #: pluginbf_proveedor.cpp:96
 msgid "&Proveedores"
-msgstr "&Proveedores"
+msgstr "&Fournisseurs"
 
 #: ui_proveditbase.h:858
 msgid "&Telefono:"
-msgstr "&Telefono:"
+msgstr "&Téléphone :"
 
 #: ui_providerslistbase.h:312 ui_providerslistbase.h:315
 msgid "Actualizar listado"
-msgstr "Actualizar listado"
+msgstr "Actualiser la liste"
 
 #: provedit.cpp:50
 msgid "Banco proveedor"
-msgstr "Banco proveedor"
+msgstr "Banque fournisseur"
 
 #: ui_providerslistbase.h:284 ui_providerslistbase.h:287
 msgid "Borrar"
-msgstr "Borrar"
+msgstr "Effacer"
 
 #: ui_proveditbase.h:905 ui_proveditbase.h:908
 msgid "Borrar proveedor"
-msgstr "Borrar proveedor"
+msgstr "Effacer fournisseur"
 
 #: ui_providerslistbase.h:332
 msgid "Buscar:"
-msgstr "Buscar:"
+msgstr "Chercher :"
 
 #: ui_proveditbase.h:851
 msgid "C.I.&F. / N.I.F."
@@ -193,35 +193,35 @@ msgstr "C.I.F."
 
 #: provedit.cpp:48
 msgid "C.I.F. del proveedor"
-msgstr "C.I.F. del proveedor"
+msgstr "C.I.F. du fournisseur"
 
 #: providerslist.cpp:347
 msgid "Clave de acceso a la web del proveedor"
-msgstr "Clave de acceso a la web del proveedor"
+msgstr "Clé d'accès au web du fournisseur"
 
 #: providerslist.cpp:333 providerslist.cpp:337 provedit.cpp:61
 msgid "Codigo"
-msgstr "Codigo"
+msgstr "Code"
 
 #: ui_proveditbase.h:855
 msgid "Codigo &postal:"
-msgstr "Codigo &postal:"
+msgstr "Code postal :"
 
 #: provedit.cpp:49
 msgid "Codigo cliente"
-msgstr "Codigo cliente"
+msgstr "Code client"
 
 #: providerslist.cpp:342 provedit.cpp:54
 msgid "Codigo postal"
-msgstr "Codigo postal"
+msgstr "Code postal "
 
 #: providerslist.cpp:339 provedit.cpp:59
 msgid "Comentarios"
-msgstr "Comentarios"
+msgstr "Libellés"
 
 #: ui_providerslistbase.h:305 ui_providerslistbase.h:308
 msgid "Configurar listado"
-msgstr "Configurar listado"
+msgstr "Configurer la liste"
 
 #: ui_proveditbase.h:903
 msgid "Ctrl+S"
@@ -229,92 +229,92 @@ msgstr "Ctrl+S"
 
 #: ui_proveditbase.h:864
 msgid "Datos &bancarios:"
-msgstr "Datos &bancarios:"
+msgstr "Données bancaires :"
 
 #: ui_proveditbase.h:868
 msgid "Datos de comercio &electronico:"
-msgstr "Datos de comercio &electronico:"
+msgstr "Données de commerce électronique :"
 
 #: provedit.cpp:60
 msgid "Datos de comercio electronico"
-msgstr "Datos de comercio electrónico"
+msgstr "Données de commerce électronique"
 
 #: ui_proveditbase.h:853
 msgid "Di&vision:"
-msgstr "Di&vision:"
+msgstr "Di&vision :"
 
 #: ui_proveditbase.h:875
 msgid "Di&visiones"
-msgstr "Di&visiones"
+msgstr "Di&visions"
 
 #: ui_proveditbase.h:854
 msgid "Direccio&n:"
-msgstr "Direccio&n:"
+msgstr "Direction :"
 
 #: providerslist.cpp:340 provedit.cpp:51
 msgid "Direccion"
-msgstr "Direccion"
+msgstr "Direction"
 
 #: providerslist.cpp:346
 msgid "Direccion de URL"
-msgstr "Direccion de URL"
+msgstr "Direction d'URL"
 
 #: providerslist.cpp:345
 msgid "Direccion de correo electronico"
-msgstr "Direccion de correo electronico"
+msgstr "Direction du courrier électronique"
 
 #: provedit.cpp:57
 msgid "Direccion electronica"
-msgstr "Direccion electronica"
+msgstr "Direction électronique"
 
 #: ui_proveditbase.h:861
 msgid "E-&mail:"
-msgstr "E-&mail:"
+msgstr "Courriel :"
 
 #: ui_providerslistbase.h:277 ui_providerslistbase.h:280
 msgid "Editar"
-msgstr "Editar"
+msgstr "Editer"
 
 #: provedit.cpp:149
 msgid "El CIF del proveedor no parece ser valido. Digito:"
-msgstr ""
+msgstr "C.I.F. du fournisseur non valide. Code :"
 
 #: providerslist.cpp:282
 msgid "Elija el archivo"
-msgstr "Elija el archivo"
+msgstr "Choisir le fichier"
 
 #: providerslist.cpp:241
 msgid "Error al borrar el proveedor"
-msgstr "Error al borrar el proveedor"
+msgstr "Erreur d'effacement du fournisseur"
 
 #: provedit.cpp:104
 msgid "Error al crear el proveedor"
-msgstr "Error al crear el proveedor"
+msgstr "Erreur à la création du fournisseur"
 
 #: ui_providerslistbase.h:319 ui_providerslistbase.h:322
 #: ui_providerslistbase.h:331
 msgid "Exportar"
-msgstr "Exportar"
+msgstr "Exporter"
 
 #: ui_providerslistbase.h:298 ui_providerslistbase.h:301
 msgid "Filtrar listado"
-msgstr "Filtrar listado"
+msgstr "Filtrer la liste"
 
 #: ui_proveditbase.h:863
 msgid "Forma de pago:"
-msgstr "Forma de pago:"
+msgstr "Forme de paiement :"
 
 #: provedit.cpp:63
 msgid "Forma_Pago"
-msgstr "Forma_Pago"
+msgstr "Forme de paiement"
 
 #: ui_proveditbase.h:897 ui_proveditbase.h:900
 msgid "Guardar proveedor"
-msgstr "Guardar proveedor"
+msgstr "Sauvegarder le fournisseur"
 
 #: providerslist.cpp:332 provedit.cpp:45
 msgid "ID proveedor"
-msgstr "ID proveedor"
+msgstr "ID fournisseur"
 
 #: provedit.cpp:65
 msgid "IRPF"
@@ -322,47 +322,47 @@ msgstr "IRPF"
 
 #: ui_providerslistbase.h:326 ui_providerslistbase.h:329
 msgid "Importar"
-msgstr "Importar"
+msgstr "Importer"
 
 #: ui_providerslistbase.h:291 ui_providerslistbase.h:294
 msgid "Imprimir listado"
-msgstr "Imprimir listado"
+msgstr "Imprimer la liste"
 
 #: providerslist.cpp:253
 msgid "Listado de Proveedores"
-msgstr "Listado de Proveedores"
+msgstr "Liste de fournisseurs"
 
 #: providerslist.cpp:335
 msgid "Nombre"
-msgstr "Nombre"
+msgstr "Nom"
 
 #: providerslist.cpp:336
 msgid "Nombre alternativo"
-msgstr "Nombre alternativo"
+msgstr "Nom alternatif"
 
 #: provedit.cpp:47
 msgid "Nombre alternativo del proveedor"
-msgstr "Nombre alternativo del proveedor"
+msgstr "Nom alternatif du fournisseur"
 
 #: ui_proveditbase.h:852
 msgid "Nombre comercia&l:"
-msgstr "Nombre comercia&l:"
+msgstr "Nom comercia&l :"
 
 #: provedit.cpp:46
 msgid "Nombre del proveedor"
-msgstr "Nombre del proveedor"
+msgstr "Nom du fournisseur"
 
 #: ui_proveditbase.h:849
 msgid "Nuestro codigo de c&liente:"
-msgstr "Nuestro codigo de c&liente:"
+msgstr "Code du client :"
 
 #: ui_providerslistbase.h:270 ui_providerslistbase.h:273
 msgid "Nuevo"
-msgstr "Nuevo"
+msgstr "Nouveau"
 
 #: providerslist.cpp:188 pluginbf_proveedor.cpp:106 pluginbf_proveedor.cpp:107
 msgid "Nuevo proveedor"
-msgstr "Nuevo proveedor"
+msgstr "Nouveau Fournisseur"
 
 #: ui_proveditbase.h:860
 msgid "Numero de &fax:"
@@ -370,84 +370,84 @@ msgstr "Numero de &fax:"
 
 #: providerslist.cpp:338
 msgid "Numero de cuenta corriente"
-msgstr "Numero de cuenta corriente"
+msgstr "Numéro de compte courant"
 
 #: providerslist.cpp:344 provedit.cpp:56
 msgid "Numero de fax"
-msgstr "Numero de fax"
+msgstr "Numéro de fax"
 
 #: providerslist.cpp:343 provedit.cpp:55
 msgid "Numero de telefono"
-msgstr "Numero de telefono"
+msgstr "Numéro de téléphone"
 
 #: ui_proveditbase.h:859
 msgid "Pagina &web:"
-msgstr "Pagina &web:"
+msgstr "Page web :"
 
 #: ui_proveditbase.h:856
 msgid "Poblacio&n:"
-msgstr "Poblacio&n:"
+msgstr "Lieu :"
 
 #: providerslist.cpp:341 provedit.cpp:52
 msgid "Poblacion"
-msgstr "Poblacion"
+msgstr "Lieu"
 
 #: ui_providerslistbase.h:333
 msgid "Procesa&dos"
-msgstr "Procesa&dos"
+msgstr "A&ccusés"
 
 #: ui_proveditbase.h:880
 msgid "Productos &suministrados"
-msgstr "Productos &suministrados"
+msgstr "Produits &fournis"
 
 #: provedit.cpp:42 ui_proveditbase.h:845
 msgid "Proveedor"
-msgstr "Proveedor"
+msgstr "Fournisseur"
 
 #: pluginbf_proveedor.cpp:98 pluginbf_proveedor.cpp:99
 #: ui_providerslistbase.h:267
 msgid "Proveedores"
-msgstr "Proveedores"
+msgstr "Fournisseurs"
 
 #: providerslist.cpp:266 providerslist.cpp:284
 msgid "Proveedores (*.xml)"
-msgstr "Proveedores (*.xml)"
+msgstr "Fournisseurs (*.xml)"
 
 #: provedit.cpp:53
 msgid "Provincia"
-msgstr "Provincia"
+msgstr "Province"
 
 #: ui_proveditbase.h:857
 msgid "Provincia:"
-msgstr "Provincia:"
+msgstr "Province :"
 
 #: provedit.cpp:64
 msgid "Recargo de Equivalencia"
-msgstr "Recargo de Equivalencia"
+msgstr "Recharge d'équivalence"
 
 #: ui_proveditbase.h:865
 msgid "Regimen &fiscal:"
-msgstr "Regimen &fiscal:"
+msgstr "Régime &fiscal :"
 
 #: provedit.cpp:62
 msgid "Regimen Fiscal"
-msgstr "Regimen Fiscal"
+msgstr "Régime fiscal"
 
 #: ui_proveditbase.h:893
 msgid "Resumen por articulos"
-msgstr "Resumen por articulos"
+msgstr "Résume par articles"
 
 #: providerslist.cpp:264
 msgid "Seleccione el archivo"
-msgstr "Seleccione el archivo"
+msgstr "Sélectionner le fichier"
 
 #: providerslist.cpp:63
 msgid "Selector de proveedores"
-msgstr "Selector de proveedores"
+msgstr "Sélecteur de fournisseurs"
 
 #: ui_proveditbase.h:891
 msgid "Todos"
-msgstr "Todos"
+msgstr "Tous"
 
 #: provedit.cpp:58
 msgid "URL"
@@ -455,15 +455,15 @@ msgstr "URL"
 
 #: ui_proveditbase.h:890
 msgid "Vencidos"
-msgstr "Vencidos"
+msgstr "Echéancier "
 
 #: ui_proveditbase.h:886
 msgid "Ver"
-msgstr "Ver"
+msgstr "Afficher"
 
 #: ui_proveditbase.h:889
 msgid "Vigentes"
-msgstr "Vigentes"
+msgstr "En vigueur"
 
 #~ msgid "&Nuevo Proveedor"
 #~ msgstr "&Nuevo Proveedor"
