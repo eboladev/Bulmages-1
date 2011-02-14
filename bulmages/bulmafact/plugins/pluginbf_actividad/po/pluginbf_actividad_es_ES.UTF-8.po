@@ -10,110 +10,12 @@ msgstr ""
 "Report-Msgid-Bugs-To: info@iglues.org\n"
 "POT-Creation-Date: 2011-02-04 12:53+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
+"Last-Translator: Walter Garcia-Fontes <walter.garcia@upf.edu>\n"
+"Language-Team: Spanish  <LL@li.org>\n"
 "Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"#-#-#-#-#  bulmalib.pot (PACKAGE VERSION)  #-#-#-#-#\n"
-"#-#-#-#-#  pluginsubformsxc.pot (PACKAGE VERSION)  #-#-#-#-#\n"
-"#-#-#-#-#  pluginsubformods.pot (PACKAGE VERSION)  #-#-#-#-#\n"
-"#-#-#-#-#  pluginclipboardbf.pot (PACKAGE VERSION)  #-#-#-#-#\n"
-"#-#-#-#-#  pluginimpers.pot (PACKAGE VERSION)  #-#-#-#-#\n"
-"#-#-#-#-#  pluginimpersods.pot (PACKAGE VERSION)  #-#-#-#-#\n"
-"#-#-#-#-#  pluginimpersmail.pot (PACKAGE VERSION)  #-#-#-#-#\n"
-"#-#-#-#-#  pluginimportcsv.pot (PACKAGE VERSION)  #-#-#-#-#\n"
-"#-#-#-#-#  plugininformes.pot (PACKAGE VERSION)  #-#-#-#-#\n"
-"#-#-#-#-#  plugininformesods.pot (PACKAGE VERSION)  #-#-#-#-#\n"
-"#-#-#-#-#  pluginbloqueos.pot (PACKAGE VERSION)  #-#-#-#-#\n"
-"#-#-#-#-#  pluginsubformprint.pot (PACKAGE VERSION)  #-#-#-#-#\n"
-"#-#-#-#-#  pluginarchivos.pot (PACKAGE VERSION)  #-#-#-#-#\n"
-"#-#-#-#-#  plugindocked.pot (PACKAGE VERSION)  #-#-#-#-#\n"
-"#-#-#-#-#  bulmacont.pot (PACKAGE VERSION)  #-#-#-#-#\n"
-"#-#-#-#-#  pluginregistroiva.pot (PACKAGE VERSION)  #-#-#-#-#\n"
-"#-#-#-#-#  plugincorrector.pot (PACKAGE VERSION)  #-#-#-#-#\n"
-"#-#-#-#-#  pluginbc_example.pot (PACKAGE VERSION)  #-#-#-#-#\n"
-"#-#-#-#-#  plugindebugbc.pot (PACKAGE VERSION)  #-#-#-#-#\n"
-"#-#-#-#-#  pluginbalancetree.pot (PACKAGE VERSION)  #-#-#-#-#\n"
-"#-#-#-#-#  plugincanualesods.pot (PACKAGE VERSION)  #-#-#-#-#\n"
-"#-#-#-#-#  pluginbalance.pot (PACKAGE VERSION)  #-#-#-#-#\n"
-"#-#-#-#-#  pluginresumcta.pot (PACKAGE VERSION)  #-#-#-#-#\n"
-"#-#-#-#-#  pluginproyectos.pot (PACKAGE VERSION)  #-#-#-#-#\n"
-"#-#-#-#-#  pluginbalanceold.pot (PACKAGE VERSION)  #-#-#-#-#\n"
-"#-#-#-#-#  bulmafact.pot (PACKAGE VERSION)  #-#-#-#-#\n"
-"#-#-#-#-#  pluginbf_example.pot (PACKAGE VERSION)  #-#-#-#-#\n"
-"#-#-#-#-#  plugintarifas.pot (PACKAGE VERSION)  #-#-#-#-#\n"
-"#-#-#-#-#  pluginbf_comercial.pot (PACKAGE VERSION)  #-#-#-#-#\n"
-"#-#-#-#-#  pluginbf_cliente.pot (PACKAGE VERSION)  #-#-#-#-#\n"
-"#-#-#-#-#  pluginbf_proveedor.pot (PACKAGE VERSION)  #-#-#-#-#\n"
-"#-#-#-#-#  plugintrazabilidad.pot (PACKAGE VERSION)  #-#-#-#-#\n"
-"#-#-#-#-#  pluginbarcodeopen.pot (PACKAGE VERSION)  #-#-#-#-#\n"
-"#-#-#-#-#  plugincatalogo.pot (PACKAGE VERSION)  #-#-#-#-#\n"
-"#-#-#-#-#  plugininformeclientes.pot (PACKAGE VERSION)  #-#-#-#-#\n"
-"#-#-#-#-#  plugininventario.pot (PACKAGE VERSION)  #-#-#-#-#\n"
-"#-#-#-#-#  plugincontratos.pot (PACKAGE VERSION)  #-#-#-#-#\n"
-"#-#-#-#-#  pluginticket.pot (PACKAGE VERSION)  #-#-#-#-#\n"
-"#-#-#-#-#  plugin_tc_articulos.pot (PACKAGE VERSION)  #-#-#-#-#\n"
-"#-#-#-#-#  pluginpromedios.pot (PACKAGE VERSION)  #-#-#-#-#\n"
-"#-#-#-#-#  pluginimpresionesmultiples.pot (PACKAGE VERSION)  #-#-#-#-#\n"
-"#-#-#-#-#  pluginq19.pot (PACKAGE VERSION)  #-#-#-#-#\n"
-"#-#-#-#-#  pluginmail.pot (PACKAGE VERSION)  #-#-#-#-#\n"
-"#-#-#-#-#  pluginmailthunderbird.pot (PACKAGE VERSION)  #-#-#-#-#\n"
-"#-#-#-#-#  pluginalmacen.pot (PACKAGE VERSION)  #-#-#-#-#\n"
-"#-#-#-#-#  plugintipostrabajo.pot (PACKAGE VERSION)  #-#-#-#-#\n"
-"#-#-#-#-#  plugincuadrante.pot (PACKAGE VERSION)  #-#-#-#-#\n"
-"#-#-#-#-#  pluginasterisk.pot (PACKAGE VERSION)  #-#-#-#-#\n"
-"#-#-#-#-#  plugintpv.pot (PACKAGE VERSION)  #-#-#-#-#\n"
-"#-#-#-#-#  plugindebugbf.pot (PACKAGE VERSION)  #-#-#-#-#\n"
-"#-#-#-#-#  pluginpreciocoste.pot (PACKAGE VERSION)  #-#-#-#-#\n"
-"#-#-#-#-#  pluginresarticulos.pot (PACKAGE VERSION)  #-#-#-#-#\n"
-"#-#-#-#-#  pluginalias.pot (PACKAGE VERSION)  #-#-#-#-#\n"
-"#-#-#-#-#  pluginivainc.pot (PACKAGE VERSION)  #-#-#-#-#\n"
-"#-#-#-#-#  plugininformeclientessxc.pot (PACKAGE VERSION)  #-#-#-#-#\n"
-"#-#-#-#-#  pluginetiquetado.pot (PACKAGE VERSION)  #-#-#-#-#\n"
-"#-#-#-#-#  pluginetiquetas.pot (PACKAGE VERSION)  #-#-#-#-#\n"
-"#-#-#-#-#  plugincompraventa.pot (PACKAGE VERSION)  #-#-#-#-#\n"
-"#-#-#-#-#  pluginclientprov.pot (PACKAGE VERSION)  #-#-#-#-#\n"
-"#-#-#-#-#  pluginopenref.pot (PACKAGE VERSION)  #-#-#-#-#\n"
-"#-#-#-#-#  plugincorrectorbf.pot (PACKAGE VERSION)  #-#-#-#-#\n"
-"#-#-#-#-#  pluginfacturar.pot (PACKAGE VERSION)  #-#-#-#-#\n"
-"#-#-#-#-#  pluginpagos.pot (PACKAGE VERSION)  #-#-#-#-#\n"
-"#-#-#-#-#  plugincobros.pot (PACKAGE VERSION)  #-#-#-#-#\n"
-"#-#-#-#-#  pluginpresupuesto.pot (PACKAGE VERSION)  #-#-#-#-#\n"
-"#-#-#-#-#  pluginpedido.pot (PACKAGE VERSION)  #-#-#-#-#\n"
-"#-#-#-#-#  pluginalbaran.pot (PACKAGE VERSION)  #-#-#-#-#\n"
-"#-#-#-#-#  pluginfactura.pot (PACKAGE VERSION)  #-#-#-#-#\n"
-"#-#-#-#-#  pluginfacturaprov.pot (PACKAGE VERSION)  #-#-#-#-#\n"
-"#-#-#-#-#  pluginalbaranprov.pot (PACKAGE VERSION)  #-#-#-#-#\n"
-"#-#-#-#-#  pluginpedidoprov.pot (PACKAGE VERSION)  #-#-#-#-#\n"
-"#-#-#-#-#  pluginz2z.pot (PACKAGE VERSION)  #-#-#-#-#\n"
-"#-#-#-#-#  pluginprofesor.pot (PACKAGE VERSION)  #-#-#-#-#\n"
-"#-#-#-#-#  pluginalumno.pot (PACKAGE VERSION)  #-#-#-#-#\n"
-"#-#-#-#-#  plugintutor.pot (PACKAGE VERSION)  #-#-#-#-#\n"
-"#-#-#-#-#  pluginactividad.pot (PACKAGE VERSION)  #-#-#-#-#\n"
-"#-#-#-#-#  bulmages.pot (PACKAGE VERSION)  #-#-#-#-#\n"
-"#-#-#-#-#  bulmatpv.pot (PACKAGE VERSION)  #-#-#-#-#\n"
-"#-#-#-#-#  pluginticketbasico.pot (PACKAGE VERSION)  #-#-#-#-#\n"
-"#-#-#-#-#  plugintecladonumerico.pot (PACKAGE VERSION)  #-#-#-#-#\n"
-"#-#-#-#-#  plugintotal.pot (PACKAGE VERSION)  #-#-#-#-#\n"
-"#-#-#-#-#  plugintotalivainc.pot (PACKAGE VERSION)  #-#-#-#-#\n"
-"#-#-#-#-#  pluginadmin.pot (PACKAGE VERSION)  #-#-#-#-#\n"
-"#-#-#-#-#  plugincobrar.pot (PACKAGE VERSION)  #-#-#-#-#\n"
-"#-#-#-#-#  pluginartsubform.pot (PACKAGE VERSION)  #-#-#-#-#\n"
-"#-#-#-#-#  plugintpvivainc.pot (PACKAGE VERSION)  #-#-#-#-#\n"
-"#-#-#-#-#  pluginaliastpv.pot (PACKAGE VERSION)  #-#-#-#-#\n"
-"#-#-#-#-#  plugintcaliastpv.pot (PACKAGE VERSION)  #-#-#-#-#\n"
-"#-#-#-#-#  pluginticketdesglose.pot (PACKAGE VERSION)  #-#-#-#-#\n"
-"#-#-#-#-#  pluginbuscaarticulo.pot (PACKAGE VERSION)  #-#-#-#-#\n"
-"#-#-#-#-#  pluginbuscacliente.pot (PACKAGE VERSION)  #-#-#-#-#\n"
-"#-#-#-#-#  plugincambio.pot (PACKAGE VERSION)  #-#-#-#-#\n"
-"#-#-#-#-#  plugincambioivainc.pot (PACKAGE VERSION)  #-#-#-#-#\n"
-"#-#-#-#-#  plugindevolucion.pot (PACKAGE VERSION)  #-#-#-#-#\n"
-"#-#-#-#-#  plugindevolucion2.pot (PACKAGE VERSION)  #-#-#-#-#\n"
-"#-#-#-#-#  pluginticketsdevueltos.pot (PACKAGE VERSION)  #-#-#-#-#\n"
-"#-#-#-#-#  pluginabrevs.pot (PACKAGE VERSION)  #-#-#-#-#\n"
-"#-#-#-#-#  bulmages_suite.pot (PACKAGE VERSION)  #-#-#-#-#\n"
 
 #: ui_actividadbase.h:591 ui_convocatoriabase.h:450
 msgid "&Aceptar"
@@ -141,7 +43,7 @@ msgstr "&Nueva actividad"
 
 #: tipoactividadview.cpp:200
 msgid "&Si"
-msgstr "&Si"
+msgstr "&Sí"
 
 #: pluginbf_actividad.cpp:106
 msgid "&Tipos de Actividad"
@@ -309,7 +211,7 @@ msgstr "Dirección"
 
 #: ui_actividadbase.h:568 ui_convocatoriabase.h:436
 msgid "Direccion:"
-msgstr "Direccion:"
+msgstr "Dirección:"
 
 #: actividadview.cpp:71 ui_actividadbase.h:579
 msgid "Domingo"
@@ -317,11 +219,11 @@ msgstr "Domingo"
 
 #: actividadeslist.cpp:300 actividadview.cpp:74
 msgid "Duracion"
-msgstr ""
+msgstr "Duración"
 
 #: ui_actividadbase.h:584
 msgid "Duración:"
-msgstr ""
+msgstr "Duración"
 
 #: actividadeslist.cpp:238 ui_convocatoriaslistbase.h:325
 #: ui_convocatoriaslistbase.h:328 ui_actividadeslistbase.h:273
@@ -335,7 +237,7 @@ msgstr "Editar convocatoria"
 
 #: pluginbf_actividad.cpp:275 pluginbf_actividad.cpp:292
 msgid "Editar actividad"
-msgstr ""
+msgstr "Editar actividad"
 
 #: tipoactividadview.cpp:255
 msgid "Error al borrar el TipoActividad"
@@ -367,7 +269,7 @@ msgstr "Fecha final"
 
 #: ui_actividadbase.h:573
 msgid "Fecha Final:"
-msgstr ""
+msgstr "Fecha Final:"
 
 #: actividadeslist.cpp:297 actividadview.cpp:61
 msgid "Fecha Inicial"
@@ -375,11 +277,11 @@ msgstr "Fecha inicial"
 
 #: ui_actividadbase.h:572
 msgid "Fecha Inicial:"
-msgstr ""
+msgstr "Fecha Inicial:"
 
 #: actividadview.cpp:297
 msgid "Fecha de la falta"
-msgstr ""
+msgstr "Fecha de la falta:"
 
 #: ui_convocatoriaslistbase.h:311 ui_actividadeslistbase.h:261
 msgid "Fecha final:"
@@ -420,7 +322,7 @@ msgstr "Guardar datos del tipo de actividad"
 
 #: actividadeslist.cpp:299
 msgid "Hora Inicial"
-msgstr ""
+msgstr "Hora Inicial"
 
 #: actividadview.cpp:73
 msgid "Hora Inicio"
@@ -428,7 +330,7 @@ msgstr "Hora inicio"
 
 #: ui_actividadbase.h:583
 msgid "Hora Inicio:"
-msgstr ""
+msgstr "Hora Inicio:"
 
 #: actividadeslist.cpp:292
 msgid "ID Actividad"
@@ -489,7 +391,7 @@ msgstr "Lugar"
 
 #: ui_actividadbase.h:567
 msgid "Lugar:"
-msgstr ""
+msgstr "Lugar:"
 
 #: actividadview.cpp:65 ui_actividadbase.h:575
 msgid "Lunes"
@@ -521,7 +423,7 @@ msgstr "Nombre del actividad"
 
 #: actividadview.cpp:254
 msgid "Nombre tutor"
-msgstr ""
+msgstr "Nombre tutor"
 
 #: ui_tipoactividadbase.h:244
 msgid "Nombre:"
@@ -546,7 +448,7 @@ msgstr "Nuevo tipo de actividad"
 
 #: pluginbf_actividad.cpp:273 pluginbf_actividad.cpp:298
 msgid "Nuevo actividad"
-msgstr ""
+msgstr "Nueva actividad"
 
 #: ui_actividadbase.h:587 ui_convocatoriabase.h:441
 msgid "Otros datos"
@@ -554,7 +456,7 @@ msgstr "Otros datos"
 
 #: ui_actividadbase.h:582
 msgid "Periodicidad Cuota:"
-msgstr ""
+msgstr "Periodicidad Cuota:"
 
 #: actividadview.cpp:72
 msgid "Periodo"
@@ -566,7 +468,7 @@ msgstr "Precio"
 
 #: ui_actividadbase.h:571
 msgid "Precio Cuota:"
-msgstr ""
+msgstr "Precio Cuota:"
 
 #: actividadeslist.cpp:294
 msgid "Profesor"
@@ -586,11 +488,11 @@ msgstr "Sábado"
 
 #: pluginbf_actividad.cpp:277 pluginbf_actividad.cpp:296
 msgid "Seleccionar actividad"
-msgstr ""
+msgstr "Seleccionar actividad"
 
 #: ui_actividadbase.h:574
 msgid "Sesiones Semanales"
-msgstr ""
+msgstr "Sesiones Semanales"
 
 #: convocatoriaview.cpp:96 actividadview.cpp:143
 msgid "Tiene que guardar el documento antes de poder imprimirlo."
@@ -606,7 +508,7 @@ msgstr "Tipo de actividad"
 
 #: ui_actividadbase.h:570
 msgid "Tipo de Actividad:"
-msgstr ""
+msgstr "Tipo de actividad:"
 
 #: tipoactividadview.cpp:44
 msgid "TipoActividad"
