@@ -1,3 +1,18 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR Free Software Foundation, Inc.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"PO-Revision-Date: 2011-02-14 17:29+0100\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=CHARSET\n"
+"Content-Transfer-Encoding: 8bit\n"
+
 # translation of bulmafact_ca_ES.UTF-8.po to
 # Header entry was created by KBabel!
 #
@@ -139,7 +154,7 @@ msgstr "Base Imponible"
 
 #: ui_bfconfiguracionbase.h:428
 msgid "C.P."
-msgstr ""
+msgstr "C.P."
 
 #: ui_bfconfiguracionbase.h:426
 msgid "CIF"
@@ -175,11 +190,11 @@ msgstr "Arranjament"
 
 #: ui_bfconfiguracionbase.h:437
 msgid "Configuracion Avanzada"
-msgstr ""
+msgstr "Configuració avançada"
 
 #: ui_bfconfiguracionbase.h:436
 msgid "Configuracion Basica"
-msgstr ""
+msgstr "Configuració bàsica"
 
 #: ui_bfbulmafactbase.h:182
 msgid "Ctrl+I"
@@ -202,7 +217,6 @@ msgid "Descuento"
 msgstr "Descompte"
 
 #: ui_bfconfiguracionbase.h:427
-#, fuzzy
 msgid "Direccion"
 msgstr "Adreça:"
 
@@ -258,7 +272,7 @@ msgstr "Família:"
 
 #: ui_bfconfiguracionbase.h:433
 msgid "Fax"
-msgstr ""
+msgstr "Fax"
 
 #: ui_bfbulmafactbase.h:210 ui_bfbulmafactbase.h:212 ui_bfbulmafactbase.h:215
 #: ui_bfbulmafactbase.h:218 ui_bfbulmafactbase.h:221 ui_bfbulmafactbase.h:224
@@ -287,11 +301,11 @@ msgstr "Id article"
 
 #: bfaboutview.cpp:420
 msgid "Idioma:"
-msgstr ""
+msgstr "Llengua:"
 
 #: bfaboutview.cpp:418
 msgid "Idiomas y traducciones:"
-msgstr ""
+msgstr "Llengües i traduccions:"
 
 #: ui_bfbulmafactbase.h:165
 msgid "Iglues/BulmaFact - Facturacion GPL"
@@ -303,7 +317,7 @@ msgstr "Indexador"
 
 #: ui_bfaboutbase.h:317
 msgid "Informacion del &sistema"
-msgstr ""
+msgstr "Informació del &sistema"
 
 #: bfbuscarreferencia.cpp:69
 msgid "Informe"
@@ -340,7 +354,7 @@ msgstr "Mest&re"
 
 #: ui_bfconfiguracionbase.h:429
 msgid "Municipio"
-msgstr ""
+msgstr "Municipi"
 
 #: ui_bfconfiguracionbase.h:425 bfconfiguracionview.cpp:213
 msgid "Nombre"
@@ -372,7 +386,7 @@ msgstr "Pagat"
 
 #: ui_bfconfiguracionbase.h:431
 msgid "Pais"
-msgstr ""
+msgstr "País"
 
 #: ui_bfbulmafactbase.h:185 ui_bfbulmafactbase.h:186
 msgid "Paises / Provincias"
@@ -389,7 +403,7 @@ msgstr "Comanda"
 
 #: bfaboutview.cpp:422
 msgid "Plugins:"
-msgstr ""
+msgstr "Plugins:"
 
 #: bfform.cpp:459
 msgid "Porcentaje"
@@ -465,7 +479,7 @@ msgstr "Total Desc."
 
 #: bfproveedoralbaransubform.cpp:54
 msgid "Total Linea"
-msgstr ""
+msgstr "Total Línia"
 
 #: bfconfiguracionview.cpp:214
 msgid "Valor"
@@ -481,7 +495,7 @@ msgstr "Finestra &Completa"
 
 #: ui_bfconfiguracionbase.h:435
 msgid "Web"
-msgstr ""
+msgstr "Web"
 
 #~ msgid "% Recargo E.Q."
 #~ msgstr "% Recàrrec E.Q."
