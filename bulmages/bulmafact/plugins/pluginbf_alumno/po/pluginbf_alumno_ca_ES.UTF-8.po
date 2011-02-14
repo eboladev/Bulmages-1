@@ -5,7 +5,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
 "POT-Creation-Date: 2011-02-04 12:54+0100\n"
-"PO-Revision-Date: 2010-07-28 14:25+0200\n"
+"PO-Revision-Date: 2011-02-14 17:33+0100\n"
 "Last-Translator: Walter Garcia-Fontes <walter.garcia@upf.edu>\n"
 "Language-Team: CATALAN\n"
 "Language: \n"
@@ -413,14 +413,13 @@ msgid "Nueva Aula"
 msgstr "Nova Aula"
 
 #: ui_alumnoslistbase.h:317 ui_alumnoslistbase.h:320 ui_alumnobase.h:467
-#, fuzzy
 msgid "Nuevo Alumno"
-msgstr "Nou alumne"
+msgstr "Nou alumne/nova alumna"
 
 #: pluginbf_alumno.cpp:139 pluginbf_alumno.cpp:140 pluginbf_alumno.cpp:339
 #: pluginbf_alumno.cpp:364
 msgid "Nuevo alumno"
-msgstr "Nou alumne"
+msgstr "Nou alumne/nova alumna"
 
 #: listcuotasporalumnoview.cpp:97
 msgid "Número de alumnos"
@@ -436,7 +435,7 @@ msgstr "Altres dades"
 
 #: ui_alumnobase.h:533
 msgid "Padres/Tutores"
-msgstr "Tutors"
+msgstr "Pares/Mares/Tutors"
 
 #: alumnoview.cpp:325
 msgid "Porcentaje"
@@ -444,7 +443,7 @@ msgstr "Percentatge"
 
 #: pluginbf_alumno.cpp:343 pluginbf_alumno.cpp:362
 msgid "Seleccionar alumno"
-msgstr "Selecciona alumne"
+msgstr "Selecciona alumne/a"
 
 #: alumnoview.cpp:252
 msgid "Seleccione un archivo de imagen"
