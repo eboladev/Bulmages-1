@@ -5,7 +5,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
 "POT-Creation-Date: 2010-09-23 18:19+0200\n"
-"PO-Revision-Date: 2010-07-28 14:14+0200\n"
+"PO-Revision-Date: 2011-02-14 14:07+0100\n"
 "Last-Translator: Walter Garcia-Fontes <walter.garcia@upf.edu>\n"
 "Language-Team: CATALAN\n"
 "MIME-Version: 1.0\n"
@@ -135,7 +135,7 @@ msgstr "Codi activitat"
 
 #: ui_actividadbase.h:550
 msgid "Codigo Actividad:"
-msgstr ""
+msgstr "Codi activitat:"
 
 #: actividadview.cpp:64
 msgid "Comentarios"
@@ -204,7 +204,6 @@ msgid "Desea guardar los cambios?"
 msgstr "Desitgeu desar els canvis?"
 
 #: actividadview.cpp:76
-#, fuzzy
 msgid "Direccion"
 msgstr "Adreça:"
 
@@ -222,7 +221,7 @@ msgstr "Duració"
 
 #: ui_actividadbase.h:569
 msgid "Duración:"
-msgstr ""
+msgstr "Duració:"
 
 #: actividadeslist.cpp:235 ui_convocatoriaslistbase.h:325
 #: ui_convocatoriaslistbase.h:328 ui_actividadeslistbase.h:273
@@ -232,7 +231,7 @@ msgstr "Edita activitat"
 
 #: convocatoriaslist.cpp:217
 msgid "Editar Convocatoria"
-msgstr "Edita convocatoria"
+msgstr "Edita convocatòria"
 
 #: pluginbf_actividad.cpp:275 pluginbf_actividad.cpp:292
 msgid "Editar actividad"
@@ -268,7 +267,7 @@ msgstr "Data final"
 
 #: ui_actividadbase.h:558
 msgid "Fecha Final:"
-msgstr ""
+msgstr "Data Final:"
 
 #: actividadeslist.cpp:294 actividadview.cpp:61
 msgid "Fecha Inicial"
@@ -276,7 +275,7 @@ msgstr "Data inicial"
 
 #: ui_actividadbase.h:557
 msgid "Fecha Inicial:"
-msgstr ""
+msgstr "Data Inicial:"
 
 #: actividadview.cpp:246
 msgid "Fecha de la falta"
@@ -313,7 +312,7 @@ msgstr "Desa activitat"
 
 #: ui_convocatoriabase.h:409 ui_convocatoriabase.h:412
 msgid "Guardar cobro"
-msgstr "Desa cobro"
+msgstr "Desa cobrament"
 
 #: tipoactividadview.cpp:197
 msgid "Guardar datos del tipoactividad"
@@ -329,7 +328,7 @@ msgstr "Hora inici"
 
 #: ui_actividadbase.h:568
 msgid "Hora Inicio:"
-msgstr ""
+msgstr "Hora Començament:"
 
 #: actividadeslist.cpp:289
 msgid "ID Actividad"
@@ -386,7 +385,7 @@ msgstr "Lloc"
 
 #: ui_actividadbase.h:552
 msgid "Lugar:"
-msgstr ""
+msgstr "Lloc:"
 
 #: actividadview.cpp:65 ui_actividadbase.h:560
 msgid "Lunes"
@@ -447,7 +446,7 @@ msgstr "Altres Dades"
 
 #: ui_actividadbase.h:567
 msgid "Periodicidad Cuota:"
-msgstr ""
+msgstr "Periodicitat quota:"
 
 #: actividadview.cpp:72
 msgid "Periodo"
@@ -459,7 +458,7 @@ msgstr "Preu"
 
 #: ui_actividadbase.h:556
 msgid "Precio Cuota:"
-msgstr ""
+msgstr "Preu quota:"
 
 #: actividadeslist.cpp:291
 msgid "Profesor"
@@ -471,7 +470,7 @@ msgstr "Professor encarregat"
 
 #: convocatoriaview.cpp:59 actividadview.cpp:92
 msgid "Profesor:"
-msgstr "Professor"
+msgstr "Professor:"
 
 #: actividadview.cpp:70 ui_actividadbase.h:563
 msgid "Sabado"
@@ -499,7 +498,7 @@ msgstr "Tipus d'activitat"
 
 #: ui_actividadbase.h:555
 msgid "Tipo de Actividad:"
-msgstr ""
+msgstr "Tipus d'activitat:"
 
 #: tipoactividadview.cpp:44
 msgid "TipoActividad"
