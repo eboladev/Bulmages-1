@@ -1,15 +1,15 @@
 #######
 #Plugins
 #######
-#README.es
-#20080501
+#README.fr
+#20110214
 
-Nombre: Listas de Precios
+Nombre: Listes de Prix
 
 Biblioteca: libpluginbf_resumenarticulo.so
 
-Descripción: <H1>Listas de Precios</H1>
-<P>Permite el control de listas de precios a las que se suscribe cada cliente.</P>
+Descripción: <H1>Listes de Prix</H1>
+<P>Il permet le contrôl de listes de prix auxquelles s'abonne chaque client.</P>
 <B>Author:</B>Tomeu Borrás (tborras@conetxia.com)<BR>
 <HR>
 
@@ -23,7 +23,7 @@ Dependencias:
 
 Incompatibles:
 
-Categorias: Facturacion avanzada; Experimentales;
+Categorias: Facturation avancee; Experimental;
 
 Orden: 900
 

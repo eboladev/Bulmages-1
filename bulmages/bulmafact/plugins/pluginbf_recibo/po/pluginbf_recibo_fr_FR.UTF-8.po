@@ -1,0 +1,337 @@
+# Spanish translations for PACKAGE package
+# Traducciones al español para el paquete PACKAGE.
+# Copyright (C) 2009 THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+#
+# Automatically generated, 2009.
+# aishen <aishen@free.fr>, 2011.
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: info@iglues.org\n"
+"POT-Creation-Date: 2010-09-23 18:50+0200\n"
+"PO-Revision-Date: 2011-02-14 08:33+0100\n"
+"Last-Translator: aishen <aishen@free.fr>\n"
+"Language-Team: French <kde-i18n-doc@kde.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Language: fr\n"
+"X-Generator: Lokalize 1.2\n"
+
+#: ui_recibobase.h:389
+msgid "&Aceptar"
+msgstr "&Accepter"
+
+#: ui_recibobase.h:390
+msgid "&Cancelar"
+msgstr "&Annuler"
+
+#: ui_recibobase.h:386
+msgid "&Datos generales"
+msgstr "&Données générales"
+
+#: pluginbf_recibo.cpp:123
+msgid "&Nuevo recibo"
+msgstr "&Nouveau reçu"
+
+#: pluginbf_recibo.cpp:115
+msgid "&Recibos"
+msgstr "&Reçus"
+
+#: reciboslist.cpp:81 emitirrecibosview.cpp:63
+msgid "Actividad:"
+msgstr "Activité :"
+
+#: ui_reciboslistbase.h:360 ui_reciboslistbase.h:363
+msgid "Actualizar listado"
+msgstr "Actualiser la liste"
+
+#: ui_reciboslistbase.h:308
+msgid "Banco:"
+msgstr "Banque :"
+
+#: ui_reciboslistbase.h:328 ui_reciboslistbase.h:331
+msgid "Borrar Actividad"
+msgstr "Effacer l'activité"
+
+#: ui_recibobase.h:358 ui_recibobase.h:361 ui_recibobase.h:366
+#: ui_recibobase.h:369
+msgid "Borrar cobro"
+msgstr "Effacer l'encaissement"
+
+#: reciboslist.cpp:288
+msgid "Borrar recibo"
+msgstr "Effacer le reçu"
+
+#: ui_reciboslistbase.h:367
+msgid "Buscar:"
+msgstr "Chercher :"
+
+#: reciboslist.cpp:342 emitirrecibosview.cpp:57 reciboview.cpp:52
+msgid "Cantidad"
+msgstr "Quantité"
+
+#: reciboview.cpp:76
+msgid "Cantidad Linea Recibo"
+msgstr "Quantité ligne reçu"
+
+#: ui_recibobase.h:387
+msgid "Comentarios:"
+msgstr "Libellés :"
+
+#: reciboview.cpp:77
+msgid "Concepto"
+msgstr "Concept"
+
+#: ui_reciboslistbase.h:352 ui_reciboslistbase.h:355
+msgid "Configurar listado"
+msgstr "Configurer la liste"
+
+#: ui_reciboslistbase.h:358
+msgid "Ctrl+B"
+msgstr "Ctrl+B"
+
+#: ui_recibobase.h:364 ui_reciboslistbase.h:334
+msgid "Ctrl+D"
+msgstr "Ctrl+D"
+
+#: ui_reciboslistbase.h:326
+msgid "Ctrl+E"
+msgstr "Ctrl+E"
+
+#: ui_reciboslistbase.h:350
+msgid "Ctrl+F"
+msgstr "Ctrl+F"
+
+#: ui_recibobase.h:372 ui_recibobase.h:380
+msgid "Ctrl+I"
+msgstr "Ctrl+I"
+
+#: ui_reciboslistbase.h:318 ui_emitirrecibosbase.h:246
+msgid "Ctrl+N"
+msgstr "Ctrl+N"
+
+#: ui_reciboslistbase.h:342
+msgid "Ctrl+P"
+msgstr "Ctrl+P"
+
+#: ui_recibobase.h:356
+msgid "Ctrl+S"
+msgstr "Ctrl+S"
+
+#: reciboslist.cpp:269
+msgid "Debe seleccionar una fila primero"
+msgstr "Vous devez sélectionner d'abord une fiche"
+
+#: reciboslist.cpp:226
+msgid "Debe seleccionar una linea"
+msgstr "Vous devez sélectionner une ligne"
+
+#: reciboview.cpp:55
+msgid "Descripcion"
+msgstr "Description "
+
+#: reciboslist.cpp:344 reciboview.cpp:58 ui_recibobase.h:382
+msgid "Devuelto"
+msgstr "Restitué"
+
+#: ui_reciboslistbase.h:320 ui_reciboslistbase.h:323
+msgid "Editar Actividad"
+msgstr "Editer l'activité"
+
+#: reciboslist.cpp:287
+msgid "Editar recibo"
+msgstr "Editer le reçu"
+
+#: ui_emitirrecibosbase.h:243
+msgid "Emiitr Recibos"
+msgstr "Créer le reçu"
+
+#: ui_emitirrecibosbase.h:240
+msgid "Emitir Recibos"
+msgstr "Créer le reçu"
+
+#: ui_emitirrecibosbase.h:247
+msgid "Emitir las Cuotas de Socios"
+msgstr "Créer les quotas sociaux"
+
+#: pluginbf_recibo.cpp:134 pluginbf_recibo.cpp:135
+msgid "Emitir recibos"
+msgstr "Créer le reçu"
+
+#: ui_emitirrecibosbase.h:249
+msgid "Emitir sólo la actividad Seleccionada"
+msgstr "Créer seulement l'activité sélectionnée"
+
+#: ui_emitirrecibosbase.h:248
+msgid "Emitir todas las Actividades"
+msgstr "Créer toutes les activités"
+
+#: emitirrecibosview.cpp:53
+msgid "EmitirRecibos"
+msgstr "Emettre le reçu"
+
+#: reciboslist.cpp:241
+msgid "Error al borrar el cobro a cliente"
+msgstr "Erreur à l'effacement de l'encaissement d'un client"
+
+#: emitirrecibosview.cpp:73 reciboview.cpp:87
+msgid "Error al crear el recibo"
+msgstr "Erreur en création du reçu"
+
+#: ui_reciboslistbase.h:366
+msgid "F5"
+msgstr "F5"
+
+#: reciboslist.cpp:345 ui_recibobase.h:384
+msgid "Fecha"
+msgstr "Date"
+
+#: reciboview.cpp:56
+msgid "Fecha de creacion"
+msgstr "Date de création"
+
+#: ui_reciboslistbase.h:307 ui_emitirrecibosbase.h:252
+msgid "Fecha final:"
+msgstr "Date finale :"
+
+#: ui_reciboslistbase.h:306 ui_emitirrecibosbase.h:251
+msgid "Fecha inicial:"
+msgstr "Date initiale :"
+
+#: ui_reciboslistbase.h:344 ui_reciboslistbase.h:347
+msgid "Filtrar Actividades"
+msgstr "Filtrer les activités"
+
+#: reciboslist.cpp:347 ui_recibobase.h:383
+msgid "Forma de Pago"
+msgstr "Forme de paiement"
+
+#: ui_recibobase.h:350 ui_recibobase.h:353
+msgid "Guardar cobro"
+msgstr "Sauvegarder l'encaissement"
+
+#: reciboview.cpp:54
+msgid "ID Forma Pago"
+msgstr "Id Forme de paiement"
+
+#: reciboslist.cpp:341
+msgid "ID Recibo"
+msgstr "Id reçu"
+
+#: reciboslist.cpp:346
+msgid "ID Tutor"
+msgstr "Id tuteur"
+
+#: reciboview.cpp:53
+msgid "ID cliente"
+msgstr "Id client"
+
+#: emitirrecibosview.cpp:56 reciboview.cpp:51 reciboview.cpp:75
+msgid "ID recibo"
+msgstr "Id reçu"
+
+#: emitirrecibosview.cpp:59
+msgid "Id Forma PAgo"
+msgstr "Id Forme de paiement"
+
+#: emitirrecibosview.cpp:58
+msgid "Id cliente"
+msgstr "Id client"
+
+#: reciboview.cpp:74
+msgid "Identificador"
+msgstr "Identificateur"
+
+#: ui_reciboslistbase.h:336 ui_reciboslistbase.h:339
+msgid "Imprimir listado"
+msgstr "Imprimer la liste"
+
+#: ui_reciboslistbase.h:309
+msgid "Mostrar"
+msgstr "Afficher "
+
+#: ui_emitirrecibosbase.h:250
+msgid "Notificar por e-mail"
+msgstr "Convoquer par courriel"
+
+#: ui_reciboslistbase.h:312 ui_reciboslistbase.h:315
+msgid "Nuevo Actividad"
+msgstr "Nouvelle activité"
+
+#: ui_recibobase.h:347
+msgid "Nuevo Recibo"
+msgstr "Nouveau reçu"
+
+#: pluginbf_recibo.cpp:125 pluginbf_recibo.cpp:126
+msgid "Nuevo recibo"
+msgstr "Nouveau reçu"
+
+#: ui_recibobase.h:388
+msgid "Otros datos"
+msgstr "Autres données"
+
+#: reciboslist.cpp:343 reciboview.cpp:57 ui_recibobase.h:381
+msgid "Pagado"
+msgstr "Payé"
+
+#: reciboview.cpp:48
+msgid "Recibo"
+msgstr "Reçu"
+
+#: reciboview.cpp:211
+msgid "Recibo reemitido"
+msgstr "Reçu recrée"
+
+#: reciboslist.cpp:209 pluginbf_recibo.cpp:117 pluginbf_recibo.cpp:118
+#: ui_reciboslistbase.h:305
+msgid "Recibos"
+msgstr "Reçus"
+
+#: pluginbf_recibo.cpp:132
+msgid "Recibos &Automaticos"
+msgstr "Reçus &automatiques"
+
+#: ui_emitirrecibosbase.h:237
+msgid "Recibos Automaticos"
+msgstr "Reçus automatiques"
+
+#: reciboslist.cpp:126
+msgid "Recibos no pagados"
+msgstr "Reçus non payés"
+
+#: reciboslist.cpp:125
+msgid "Recibos pagados"
+msgstr "Reçus payés"
+
+#: ui_recibobase.h:374 ui_recibobase.h:377
+msgid "Reemitir Recibo"
+msgstr "Reçu recrée"
+
+#: emitirrecibosview.cpp:161
+msgid "Terminado"
+msgstr "Fini"
+
+#: reciboview.cpp:118
+msgid "Tiene que guardar el documento antes de poder imprimirlo."
+msgstr "Vous devez sauvegarder le document avant de pouvoir l'imprimer."
+
+#: reciboslist.cpp:124
+msgid "Todos los recibos"
+msgstr "Tous les reçus"
+
+#: ui_recibobase.h:385
+msgid "Total"
+msgstr "Total"
+
+#: reciboslist.cpp:348
+msgid "Tutor"
+msgstr "Tuteur"
+
+#: reciboview.cpp:66
+msgid "Tutor/Socio:"
+msgstr "Tuteur/Socio :"
+
+
