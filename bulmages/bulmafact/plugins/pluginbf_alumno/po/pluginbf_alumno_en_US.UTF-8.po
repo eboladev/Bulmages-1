@@ -1,241 +1,256 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR Free Software Foundation, Inc.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"PO-Revision-Date: 2011-02-14 20:40+0100\n"
+"Last-Translator: Walter Garcia-Fonte <walter.garcia@upf.edu>\n"
+"Language-Team: English <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=CHARSET\n"
+"Content-Transfer-Encoding: 8bit\n"
+
 #: ui_alumnobase.h:521
 msgid "&Aceptar"
-msgstr ""
+msgstr "Accept"
 
 #: pluginalumno.cpp:96
 msgid "&Alumnos"
-msgstr ""
+msgstr "&Students"
 
 #: ui_alumnobase.h:522
 msgid "&Cancelar"
-msgstr ""
+msgstr "&Cancel"
 
 #: ui_alumnobase.h:511
 msgid "&Datos generales"
-msgstr ""
+msgstr "&General data"
 
 #: pluginalumno.cpp:104
 msgid "&Nuevo alumno"
-msgstr ""
+msgstr "&New student"
 
 #: ui_alumnoslistbase.h:389 ui_alumnoslistbase.h:394
 msgid "Actualizar listado"
-msgstr ""
+msgstr "Update listing"
 
 #: alumnoview.cpp:49
 msgid "Alumno"
-msgstr ""
+msgstr "Student"
 
 #: alumnoslist.cpp:144 pluginalumno.cpp:98 pluginalumno.cpp:99
 #: ui_alumnoslistbase.h:308
 msgid "Alumnos"
-msgstr ""
+msgstr "Students"
 
 #: ui_alumnoslistbase.h:309
 msgid "Banco:"
-msgstr ""
+msgstr "Bank:"
 
 #: alumnoslist.cpp:218 ui_alumnoslistbase.h:341 ui_alumnoslistbase.h:346
 msgid "Borrar Alumno"
-msgstr ""
+msgstr "Delete Student"
 
 #: ui_alumnobase.h:472 ui_alumnobase.h:477 ui_alumnobase.h:484
 #: ui_alumnobase.h:489
 msgid "Borrar cobro"
-msgstr ""
+msgstr "Delete payment"
 
 #: ui_alumnobase.h:499
 msgid "Borrar imagen"
-msgstr ""
+msgstr "Delete image"
 
 #: ui_alumnoslistbase.h:399
 msgid "Buscar:"
-msgstr ""
+msgstr "Search:"
 
 #: ui_alumnobase.h:494
 msgid "C.I.F./N.I.F./N.I.E.:"
-msgstr ""
+msgstr "ID number:"
 
 #: ui_alumnobase.h:496
 msgid "Cam&biar imagen"
-msgstr ""
+msgstr "Chan&ge image"
 
 #: ui_alumnoslistbase.h:313
 msgid "Cobros efectivos"
-msgstr ""
+msgstr "Effective payments"
 
 #: ui_alumnoslistbase.h:312
 msgid "Cobros previstos"
-msgstr ""
+msgstr "Predicted payments"
 
 #: ui_alumnobase.h:508
 msgid "Codigo postal:"
-msgstr ""
+msgstr "Postal code:"
 
 #: ui_alumnobase.h:512
 msgid "Comentarios:"
-msgstr ""
+msgstr "Comments:"
 
 #: ui_alumnoslistbase.h:377 ui_alumnoslistbase.h:382
 msgid "Configurar listado"
-msgstr ""
+msgstr "Configure listing"
 
 #: ui_alumnobase.h:509
 msgid "Correo electronico:"
-msgstr ""
+msgstr "Electronic mail:"
 
 #: ui_alumnoslistbase.h:386
 msgid "Ctrl+B"
-msgstr ""
+msgstr "Ctrl+B"
 
 #: ui_alumnoslistbase.h:350 ui_alumnobase.h:481
 msgid "Ctrl+D"
-msgstr ""
+msgstr "Ctrl+D"
 
 #: ui_alumnoslistbase.h:338
 msgid "Ctrl+E"
-msgstr ""
+msgstr "Ctrl+E"
 
 #: ui_alumnoslistbase.h:374
 msgid "Ctrl+F"
-msgstr ""
+msgstr "Ctrol+F"
 
 #: ui_alumnobase.h:493
 msgid "Ctrl+I"
-msgstr ""
+msgstr "Ctrl+I"
 
 #: ui_alumnoslistbase.h:326
 msgid "Ctrl+N"
-msgstr ""
+msgstr "Ctrol+N"
 
 #: ui_alumnoslistbase.h:362
 msgid "Ctrl+P"
-msgstr ""
+msgstr "Ctrl+P"
 
 #: ui_alumnobase.h:469
 msgid "Ctrl+S"
-msgstr ""
+msgstr "Ctrl+S"
 
 #: ui_alumnobase.h:515
 msgid "DNI / NIf"
-msgstr ""
+msgstr "ID"
 
 #: ui_alumnobase.h:513
 msgid "Datos bancarios:"
-msgstr ""
+msgstr "Bank account data:"
 
 #: alumnoslist.cpp:201
 msgid "Debe seleccionar una fila primero"
-msgstr ""
+msgstr "You have to select a row first"
 
 #: alumnoslist.cpp:160
 msgid "Debe seleccionar una linea"
-msgstr ""
+msgstr "You have to select a row"
 
 #: ui_alumnobase.h:504
 msgid "Direccion:"
-msgstr ""
+msgstr "Adress"
 
 #: alumnoslist.cpp:217 ui_alumnoslistbase.h:329 ui_alumnoslistbase.h:334
 msgid "Editar Alumno"
-msgstr ""
+msgstr "Edit Student"
 
 #: alumnoslist.cpp:174
 msgid "Error al borrar el cobro a cliente"
-msgstr ""
+msgstr "Error deleting the payment of a costumer"
 
 #: alumnoview.cpp:69
 msgid "Error al crear el alumno"
-msgstr ""
+msgstr "Error creating a student"
 
 #: ui_alumnoslistbase.h:398
 msgid "F5"
-msgstr ""
+msgstr "F5"
 
 #: ui_alumnoslistbase.h:310
 msgid "Fecha final:"
-msgstr ""
+msgstr "Initial date:"
 
 #: ui_alumnoslistbase.h:311
 msgid "Fecha inicial:"
-msgstr ""
+msgstr "Final Date:"
 
 #: ui_alumnoslistbase.h:365 ui_alumnoslistbase.h:370
 msgid "Filtrar Alumnos"
-msgstr ""
+msgstr "Filter Students"
 
 #: ui_alumnobase.h:495
 msgid "Fotografia"
-msgstr ""
+msgstr "Photograph"
 
 #: ui_alumnobase.h:460 ui_alumnobase.h:465
 msgid "Guardar cobro"
-msgstr ""
+msgstr "Save payment"
 
 #: ui_alumnobase.h:520
 msgid "Hermanos"
-msgstr ""
+msgstr "Sibblings"
 
 #: alumnoview.cpp:52 alumnoslist.cpp:262
 msgid "Id alumno"
-msgstr ""
+msgstr "ID Student"
 
 #: ui_alumnoslistbase.h:353 ui_alumnoslistbase.h:358
 msgid "Imprimir listado"
-msgstr ""
+msgstr "Print listing"
 
 #: alumnoslist.cpp:263 ui_alumnobase.h:516
 msgid "Nombre"
-msgstr ""
+msgstr "Name"
 
 #: ui_alumnobase.h:503
 msgid "Nombre completo:"
-msgstr ""
+msgstr "Complete name:"
 
 #: alumnoview.cpp:53
 msgid "Nombre del alumno"
-msgstr ""
+msgstr "Name of the student"
 
 #: ui_alumnoslistbase.h:317 ui_alumnoslistbase.h:322 ui_alumnobase.h:456
 msgid "Nuevo Alumno"
-msgstr ""
+msgstr "New student"
 
 #: pluginalumno.cpp:106 pluginalumno.cpp:107
 msgid "Nuevo alumno"
-msgstr ""
+msgstr "New student"
 
 #: ui_alumnobase.h:514
 msgid "Otros datos"
-msgstr ""
+msgstr "Other data"
 
 #: ui_alumnobase.h:519
 msgid "Padres/Tutores"
-msgstr ""
+msgstr "Father/Mother/Tutor"
 
 #: ui_alumnobase.h:505
 msgid "Poblacion:"
-msgstr ""
+msgstr "City:"
 
 #: ui_alumnobase.h:518
 msgid "Porcentaje de facturacion"
-msgstr ""
+msgstr "Invoicing percentage"
 
 #: ui_alumnobase.h:510
 msgid "Provincia:"
-msgstr ""
+msgstr "Province/State"
 
 #: ui_alumnobase.h:517
 msgid "Relacion"
-msgstr ""
+msgstr "Relation"
 
 #: ui_alumnobase.h:506
 msgid "Telefono fijo:"
-msgstr ""
+msgstr "Fix phone"
 
 #: ui_alumnobase.h:507
 msgid "Telefono movil:"
-msgstr ""
+msgstr "Cellular phone:"
 
 #: alumnoview.cpp:97
 msgid "Tiene que guardar el documento antes de poder imprimirlo."
-msgstr ""
+msgstr "You have to save the document before being able to print it."
