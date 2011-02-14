@@ -1,17 +1,17 @@
 #######
 #Plugins
 #######
-#README.es
-#20080501
+#README.fr
+#20110214
 
-Nombre: Imprimir tickets
+Nombre: Imprimer les tickets
 
 Biblioteca: libpluginbf_ticket.so
 
-Descripción: <H1>Impresion de Tickets</H1>
-<P>Imprime albaranes en forma de tickets en impresoras ESC/POS.</P>
-<P>Precisa de la impresora conectada al dispositivo serie o usb. De momento no hace control de desconexión por lo que si la impresora se bloquea el programa también lo hace.</P>
-<B>Author:</B>Tomeu Borrás (tborras@conetxia.com)<BR>
+Descripción: <H1>Impression de Tickets</H1>
+<P>Il imprime des bulletins de livraison sous forme de tickets dans des imprimantes ESC/POS.</P>
+<P>Il nécessite une imprimante reliée en série ou usb. Pour l'instant il ne fait pas le contrôle de débranchement c'est pourquoi si l'imprimante est aussi bloquée le programme le fait.</P>
+<B>Auteur:</B>Tomeu Borrás (tborras@conetxia.com)<BR>
 <HR>
 
 ParmBD: 
@@ -24,7 +24,7 @@ Dependencias:
 
 Incompatibles:
 
-Categorias: Utilidades genericas;Experimentales;
+Categorias: Utilites generiques;Experimental;
 
 Orden: 900
 

@@ -1,47 +1,66 @@
+# Header entry was created by Lokalize.
+#
+#: ui_listtipostrabajobase.h:113
+# aishen <aishen@free.fr>, 2011.
+msgid ""
+msgstr ""
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Mime-Version: 1.0"
+"Last-Translator: aishen <aishen@free.fr>\n"
+"PO-Revision-Date: 2011-02-14 10:39+0100\n"
+"Project-Id-Version: \n"
+"Language-Team: French <kde-i18n-doc@kde.org>\n"
+"Language: fr\n"
+"X-Generator: Lokalize 1.2\n"
+"MIME-Version: 1.0\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
 #: ui_listtipostrabajobase.h:113
 msgid "&Aceptar"
-msgstr ""
+msgstr "&Accepter"
 
 #: ui_listtipostrabajobase.h:114
 msgid "&Cancelar"
-msgstr ""
+msgstr "&Annuler"
 
 #: listtipostrabajoview.cpp:58
 msgid "Color tipo trabajo"
-msgstr ""
+msgstr "Couleur du type de travail"
 
 #: plugintipostrabajo.cpp:199
 msgid "ID almacen"
-msgstr ""
+msgstr "ID du magasin"
 
 #: plugintipostrabajo.cpp:197
 msgid "ID nombre del tipo de trabajo"
-msgstr ""
+msgstr "ID nom du type de travail"
 
 #: plugintipostrabajo.cpp:200
 msgid "ID tipo de trabajo"
-msgstr ""
+msgstr "ID type de travail"
 
 #: plugintipostrabajo.cpp:201
 msgid "Id tipo de trabajo"
-msgstr ""
+msgstr "Id type de travail"
 
 #: listtipostrabajoview.cpp:56
 msgid "Id tipo trabajo"
-msgstr ""
+msgstr "Id type de travail"
 
 #: listtipostrabajoview.cpp:57
 msgid "Nombre tipo trabajo"
-msgstr ""
+msgstr "om du type de travail"
 
 #: plugintipostrabajo.cpp:198
 msgid "Numero de cargos necesarios"
-msgstr ""
+msgstr "Nombre de charges nécessaires"
 
 #: ui_listtipostrabajobase.h:112
 msgid "Tipos de Trabajo"
-msgstr ""
+msgstr "Type de travail"
 
 #: listtipostrabajoview.cpp:49
 msgid "almacen"
-msgstr ""
+msgstr "Magasin"
+

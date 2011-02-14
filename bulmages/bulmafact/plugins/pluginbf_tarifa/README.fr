@@ -1,16 +1,16 @@
 #######
 #Plugins
 #######
-#README.es
-#20080501
+#README.fr
+#20110214
 
-Nombre: Tarifas
+Nombre: Tarifs
 
 Biblioteca: libpluginbf_tarifa.so
 
-Descripción: <H1>Tarifas</H1>
-<P>Permite el control de listas de precios a las que se suscribe cada cliente. Agrega la gestión de tarifas a los articulos y la selección de las mismas en los clientes.</P>
-<B>Author:</B>Tomeu Borrás (tborras@conetxia.com)<BR>
+Descripción: <H1>Tarifs</H1>
+<P>Il permet le contrôl de listes de prix auxquelles s'abonne chaque client. Il ajoute la gestion de tarifs aux articles et la sélection de ces dernières aux clients.</P>
+<B>Auteur :</B>Tomeu Borrás (tborras@conetxia.com)<BR>
 <HR>
 
 ParmBD: PluginBf_VariacionTarifa
@@ -23,7 +23,7 @@ Dependencias:
 
 Incompatibles:
 
-Categorias: Facturacion avanzada;
+Categorias: Facturation avancee;
 
 Orden: 600
 

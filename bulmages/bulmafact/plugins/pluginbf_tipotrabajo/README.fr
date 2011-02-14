@@ -1,16 +1,16 @@
 #######
 #Plugins
 #######
-#README.es
-#20080501
+#README.fr
+#20110214
 
-Nombre: Tipos de Trabajo
+Nombre: Types de Travail
 
 Biblioteca: libpluginbf_tipotrabajo.so
 
-Descripción: <H1>Tipos de Trabajo</H1>
-<P>Permite organizar los trabajadores en sus distintas áreas de operacion o conocimiento. Sirve para clasificar los trabajadores en grupos que serán utilizados en la generación de cuadrantes.</P>
-<B>Author:</B>Tomeu Borrás (tborras@conetxia.com)<BR>
+Descripción: <H1>Types de Travail</H1>
+<P>Il permet d'organiser les travailleurs dans les différents secteurs d'opération ou de connaissance. Il sert à classer les travailleurs dans des groupes qui seront utilisé dans la génération d'horaire.</P>
+<B>Auteur:</B>Tomeu Borrás (tborras@conetxia.com)<BR>
 <HR>
 
 ParmBD: PluginBf_TipoTrabajo
@@ -23,8 +23,8 @@ Dependencias: libpluginbf_trabajador.so; libpluginbf_cuadrante.so; libpluginbf_a
 
 Incompatibles:
 
-Categorias: Utilidades genericas;Experimentales;
+Categorias: Utilites generiques;Experimental;
 
 Orden: 900
 
-Comentarios: Funciona en conjuncion con el plugin de cuadrantes.
+Comentarios: Il fonctionne en conjonction avec le plugin d'horaire
