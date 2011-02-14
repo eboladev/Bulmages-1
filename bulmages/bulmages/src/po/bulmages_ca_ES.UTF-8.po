@@ -1,3 +1,18 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR Free Software Foundation, Inc.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"PO-Revision-Date: 2011-02-14 19:33+0100\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=CHARSET\n"
+"Content-Transfer-Encoding: 8bit\n"
+
 # translation of bulmafact_ca_ES.UTF-8.po to
 # Header entry was created by KBabel!
 #
@@ -21,7 +36,7 @@ msgstr "&Cancel·la"
 
 #: bgbulmages.cpp:103
 msgid "&Salir"
-msgstr "Abandona"
+msgstr "&Surt"
 
 #: ui_bgbulmagesbase.h:387
 msgid ""
@@ -72,6 +87,11 @@ msgid ""
 "style=\" font-size:10pt;\"> Admite la impresión de tickets y lector de "
 "código de barras.</span></p></body></html>"
 msgstr ""
+"<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
+"<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
+"p, li { white-space: pre-wrap; }\n"
+"</style></head><body style=\" font-family:'Sans Serif'; font-size:14pt; font-weight:400; font-style:normal;\">\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:10pt;\">Programa per a la gestió d'un Terminal Punt de Venda </span><span style=\" font-size:10pt; font-weight:600;\">(TPV).</span><span style=\" font-size:10pt;\"> Admet la impressió de tickets i lector de codi de barres.</span></p></body></html>"
 
 #: ui_bgbulmagesbase.h:411
 msgid ""
@@ -91,56 +111,60 @@ msgid ""
 "bajas de funcionalidades del resto de programas mediante el uso de 'plugins'."
 "</span></p></body></html>"
 msgstr ""
+"<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
+"<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
+"p, li { white-space: pre-wrap; }\n"
+"</style></head><body style=\" font-family:'Sans Serif'; font-size:7pt; font-weight:400; font-style:normal;\">\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:10pt; font-weight:600;\">Configuració</span><span style=\" font-size:10pt;\"> general del conjunt d'aplicaciones </span><span style=\" font-size:10pt; font-weight:600;\">BulmaGes</span><span style=\" font-size:10pt;\">. Administra la base de dades, permissos de usuaris i altes/baixes de funcionalitats de la resta de programes mitjançant l'ús de 'plugins'.</span></p></body></html>"
 
 #: main.cxx:67
 msgid "Bandeja"
-msgstr ""
+msgstr "Safata"
 
 #: ui_bgbulmagesbase.h:385 bgbulmages.cpp:95
 msgid "BulmaCont"
-msgstr ""
+msgstr "BulmaCont"
 
 #: ui_bgbulmagesbase.h:393 bgbulmages.cpp:97
 msgid "BulmaFact"
-msgstr ""
+msgstr "BulmaFact"
 
 #: ui_bgbulmagesbase.h:409 bgbulmages.cpp:101
 msgid "BulmaSetup"
-msgstr ""
+msgstr "BulmaSetup"
 
 #: ui_bgbulmagesbase.h:401 bgbulmages.cpp:99
 msgid "BulmaTPV"
-msgstr ""
+msgstr "BulmaTPV"
 
 #: ui_bgbulmagesbase.h:384
-#, fuzzy
 msgid "Dialog"
-msgstr "Diari"
+msgstr "Dialog"
 
 #: ui_bgbulmagesbase.h:417
 msgid "Lanzador"
-msgstr "Llançador"
+msgstr "Llençador"
 
 #: bgbulmages.cpp:33
 msgid "Lanzador BulmaGes"
-msgstr ""
+msgstr "Llençador BulmaGes"
 
 #: ui_bgbulmagesbase.h:400
 msgid "Lanzar Bulma&Fact"
-msgstr ""
+msgstr "Llençador Bulma&Fact"
 
 #: ui_bgbulmagesbase.h:416
 msgid "Lanzar Bulma&Setup"
-msgstr ""
+msgstr "Llençador Bulma&Setup"
 
 #: ui_bgbulmagesbase.h:408
 msgid "Lanzar Bulma&TPV"
-msgstr ""
+msgstr "Llençador Bumla&TPV"
 
 #: ui_bgbulmagesbase.h:392
 msgid "Lanzar BulmaC&ont"
-msgstr ""
+msgstr "Llençador BulmaC&ont"
 
 #: main.cxx:68
 msgid "No se detecta ninguna bandeja en el sistema"
-msgstr ""
+msgstr "No es detecta cap safata al sistema"
