@@ -1,75 +1,94 @@
+# Header entry was created by Lokalize.
+#
+#: ui_z2zbase.h:397
+# aishen <aishen@free.fr>, 2011.
+msgid ""
+msgstr ""
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Mime-Version: 1.0"
+"Last-Translator: aishen <aishen@free.fr>\n"
+"PO-Revision-Date: 2011-02-14 11:37+0100\n"
+"Project-Id-Version: \n"
+"Language-Team: French <kde-i18n-doc@kde.org>\n"
+"Language: fr\n"
+"X-Generator: Lokalize 1.2\n"
+"MIME-Version: 1.0\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
 #: ui_z2zbase.h:397
 msgid "&Aceptar"
-msgstr ""
+msgstr "&Accepter"
 
 #: ui_z2zbase.h:398
 msgid "&Cancelar"
-msgstr ""
+msgstr "&Annuler"
 
 #: ui_z2zbase.h:404
 msgid "&Detalle"
-msgstr ""
+msgstr "&Détail"
 
 #: ui_z2zbase.h:406
 msgid "1"
-msgstr ""
+msgstr "1"
 
 #: ui_z2zbase.h:377 ui_z2zbase.h:382
 msgid "Borrar factura"
-msgstr ""
+msgstr "Effacer la Facture"
 
 #: z2zview.cpp:56
 msgid "Error al crear la factura"
-msgstr ""
+msgstr "Erreur à la création de la facture"
 
 #: ui_z2zbase.h:407
 msgid "Excluir Articulo"
-msgstr ""
+msgstr "Exclure l'article"
 
 #: ui_z2zbase.h:405
 msgid "Excluir Familias"
-msgstr ""
+msgstr "Exclure la famille"
 
 #: ui_z2zbase.h:366 ui_z2zbase.h:371
 msgid "Guardar factura"
-msgstr ""
+msgstr "Sauvegarder la Facture"
 
 #: ui_z2zbase.h:388 ui_z2zbase.h:393
 msgid "Imprimir factura"
-msgstr ""
+msgstr "Imprimer la facture"
 
 #: ui_z2zbase.h:409
 msgid "No cambiar precios de articulos"
-msgstr ""
+msgstr "Ne pas changer le prix des articles"
 
 #: ui_z2zbase.h:408
 msgid "Num Minimo lineas ticket"
-msgstr ""
+msgstr "N° minimum de ligne ticket"
 
 #: ui_z2zbase.h:410
 msgid "Opciones"
-msgstr ""
+msgstr "Options"
 
 #: ui_z2zbase.h:399
 msgid "Referencias"
-msgstr ""
+msgstr "Références"
 
 #: ui_z2zbase.h:400
 msgid "Total Tickets"
-msgstr ""
+msgstr "Tickets Totaux"
 
 #: ui_z2zbase.h:401
 msgid "Total Traspasable"
-msgstr ""
+msgstr "Total cession"
 
 #: ui_z2zbase.h:402
 msgid "Total aprox a Traspasar"
-msgstr ""
+msgstr "Total approx cession"
 
 #: ui_z2zbase.h:403
 msgid "Traspasar"
-msgstr ""
+msgstr "Cession"
 
 #: ui_z2zbase.h:363
 msgid "Traspaso de Z"
-msgstr ""
+msgstr "Cession de Z"
+

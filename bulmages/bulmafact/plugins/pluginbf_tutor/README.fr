@@ -4,13 +4,13 @@
 #README.es
 #20080501
 
-Nombre: Tutores
+Nombre: Tuteurs
 
 Biblioteca: libpluginbf_tutor.so
 
-Descripción: <H1>Tutores</H1>
-<P>Gestionar los tutores de una asociación. Es útil en el caso de que una asociación controle menores de edad y se deba tener información sobre los tutores legales de los mismos asi como de sus datos de contacto para poder ser avidados. También forma la base de facturación ante un sistema de alumnos.</P>
-<B>Author:</B>Tomeu Borrás (tborras@conetxia.com)<BR>
+Descripción: <H1>Tuteurs</H1>
+<P>Gérer les tuteurs d'une association. Il est utile au cas où une association contrôle les mineurs d'âge et où on doit avoir une information sur les tuteurs légaux de ces derniers ainsi que des données de contact pour pouvoir être invités. Il forme aussi la base de facturation dans un système d'élèves.</P>
+<B>Auteur :</B>Tomeu Borrás (tborras@conetxia.com)<BR>
 <HR>
 
 
@@ -26,7 +26,7 @@ Incompatibles:
 
 Reports: tutor.rml; blform_TutorView.qs
 
-Categorias: Asociaciones de padres de alumnos; Experimentales;
+Categorias: Association de parents d'eleves; Experimental;
 
 Orden: 202
 

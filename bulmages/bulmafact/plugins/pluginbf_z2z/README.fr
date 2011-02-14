@@ -4,13 +4,13 @@
 #README.es
 #20080501
 
-Nombre: Traspaso de Z
+Nombre: Cession Z
 
 Biblioteca: libpluginbf_z2z.so
 
-Descripción: <H1>Traspaso de Z a Z</H1>
-<P>Mueve lineas de albaran de una facturacion a otra.</P>
-<B>Author:</B>Tomeu Borrás (tborras@conetxia.com)<BR>
+Descripción: <H1>Cession  de Z à Z</H1>
+<P>Il déplace des lignes de bulletin de livraison d'une facturation à une autre.</P>
+<B>Auteur :</B>Tomeu Borrás (tborras@conetxia.com)<BR>
 <HR>
 
 ParmBD: 
@@ -23,8 +23,8 @@ Dependencias:
 
 Incompatibles:
 
-Categorias: Facturacion generica;
+Categorias: Facturation generique;
 
 Orden: 900
 
-Comentarios: Es un complemento bastante util con los TPV's
+Comentarios: C'est un complément assez utile avec les TPV

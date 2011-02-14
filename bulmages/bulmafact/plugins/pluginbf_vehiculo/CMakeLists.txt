@@ -43,7 +43,7 @@ QT4_WRAP_CPP(plugin_MOC_SRCS ${plugin_MOCS})
 
 
 IF(WIN32)
-SET(CMAKE_SHARED_LINKER_FLAGS "${CMAKE_SHARED_LINKER_FLAGS} -Wl,-enable-auto-import")
+SET(CMAKE_SHARED_LINKER_FLAGS "${CMAKE_SHARED_LINKER_FLAGS} -Wl,-enable-auto-import")Gestionar los tutores de una asociación. Es útil en el caso de que una asociación controle menores de edad y se deba tener información sobre los tutores legales de los mismos asi como de sus datos de contacto para poder ser avidados. También forma la base de facturación ante un sistema de alumnos.
 ADD_DEFINITIONS(-DQWT_DLL -DQT_DLL -DQWT_MAKEDLL -DPLUGINBF_VEHICULO)
 ENDIF(WIN32)
 
@@ -69,7 +69,7 @@ if(USE_GETTEXT)
    GETTEXT_CREATE_TEMPLATE(${plugin} ${CMAKE_CURRENT_BINARY_DIR}
                                 ${CMAKE_CURRENT_SOURCE_DIR} plugin_i18n)
    GETTEXT_CREATE_TRANSLATIONS(${CMAKE_CURRENT_BINARY_DIR}/${plugin}.pot
-                                ALL LANGUAGES es_ES.UTF-8 ca_ES.UTF-8)
+                                ALL LANGUAGES es_ES.UTF-8 ca_ES.UTF-8 fr_FR.UTF-8)
 endif(USE_GETTEXT)
 
 
