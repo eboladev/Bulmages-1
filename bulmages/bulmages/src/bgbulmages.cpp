@@ -153,13 +153,16 @@ void BgBulmaGes::launchBulmaSetup()
     /// Entre distintas versiones de KDE el kdesudo cambia de nombre.
     QFile f("/usr/bin/kdesu");
     QFile j("/usr/bin/kdesudo");
+    QFile k("/usr/bin/gksudo");
     if (f.exists()) {
       runCommand ( "kdesu -c bulmasetup --" );
     } else if (j.exists()) {
       runCommand ( "kdesudo -c bulmasetup" );
+    } else if (k.exists()) {
+      runCommand ( "gksudo  bulmasetup" );
     } else {
       QMessageBox msgBox;
-      msgBox.setText("No se encuentra kdesudo");
+      msgBox.setText( _( "No se encuentra kdesudo") );
       msgBox.exec();
     } // end if
 }
