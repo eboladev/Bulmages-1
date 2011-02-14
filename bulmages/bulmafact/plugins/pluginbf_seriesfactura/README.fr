@@ -1,14 +1,14 @@
 #######
 #Plugins
 #######
-#README.es
-#20080501
+#README.fr
+#20110214
 
-Nombre: Series de Factura
+Nombre: Séries de Facture
 
 Biblioteca: libpluginbf_seriesfactura.so
 
-Descripción: <H1><IMG SRC="@CMAKE_INSTALL_PREFIX@/share/bulmages/imagesrc/images/oxygen/actions/client_invoice_series.svg" WIDTH="100"/><BR>Series de Factura</H1>
+Descripción: <H1><IMG SRC="@CMAKE_INSTALL_PREFIX@/share/bulmages/imagesrc/images/oxygen/actions/client_invoice_series.svg" WIDTH="100"/><BR>Séries de Facture</H1>
 <P>Mediante este plugin se pueden gestionar las series de factura a utilizar en la facturación. La facturación de una empresa debe ser correlativa y ordenada por fechas. Pero se pueden tener tantas numeraciones como se desee.</P>
 <P> Al instalar el plugin en el menu <B>Maestro</B> aparece una nueva opción <B>Series de Factura</B> que nos permite gestionar las series de factura que utilizamos. Para ello aparece una ventana con un listado de todas las series que tiene el sistema. En dicha ventana se pueden agregar, modificar y eliminar series.</P>
 <P>Una vez que se ha creado una serie de factura ésta aparecerá en el desplegable serie de la pantalla de facturas</P>
@@ -26,7 +26,7 @@ Dependencias:
 
 Incompatibles:
 
-Categorias: Facturacion generica;
+Categorias: Facturation generique;
 
 Orden: 750
 

@@ -1,14 +1,14 @@
 #######
 #Plugins
 #######
-#README.es
-#20080501
+#README.fr
+#20110214
 
-Nombre: Sincronizar con BulmaCont
+Nombre: Sinchroniser BulmaCont
 
 Biblioteca: 
 
-Descripción: <H1>Sincronizacion BulmaCont</H1>
+Descripción: <H1>Sinchronisation BulmaCont</H1>
 <P>Permite la sincronización con Bulmacont</>
 <P> Precisa de tener instalado dblink.</P>
 <P>No se instala propiamente como un plugin ya que no lleva librerías asociadas.</P>

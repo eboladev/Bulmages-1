@@ -1,8 +1,8 @@
 #######
 #Plugins
 #######
-#README.es
-#20080501
+#README.fr
+#20110214
 
 Nombre: Socios
 
@@ -10,7 +10,7 @@ Biblioteca: libpluginbf_socio.so
 
 Descripción: <H1>Ejemplo</H1>
 <P>Gestion de socios.</P>
-<B>Author:</B>Tomeu Borrás (tborras@conetxia.com)<BR>
+<B>Auteur:</B>Tomeu Borrás (tborras@conetxia.com)<BR>
 <HR>
 
 ParmBD: PluginBf_Socio
@@ -23,25 +23,22 @@ Dependencias:
 
 Incompatibles:
 
-Categorias: Experimentales;
+Categorias: Experimental;
 
 Orden: 90
 
 Comentarios: 
 
-Compilacion
+Compilation
 ===========
 
-El plugin se compilará con el resto de bulmages y  se ubicara en bulmages/installbulmages/plugins con el nombre libplugin.so
+Le plugin sera compilé avec le reste de bulmages et il sera placé en bulmages/installbulmages/plugins avec le nom libplugin.so
 
 
 
-Instalacion
+Installation
 ===========
 
-Configure la directiva CONF_PLUGINS_BULMAFACT para que contenga la llamada a este plugin. Dicha directiva
-puede ser a modo global en el archivo /etc/bulmages.conf o personalizada con los archivos /etc/bulmafact_<<database>>.conf
-
-Copie todos los archivos *.qm al directorio /usr/share/bulmages/traducciones
+Formez la directive CONF_PLUGINS_BULMAFACT pour qu'il contienne l'appel à ce plugin. Cette directive peut de manière globale être dans les archives /etc/bulmages.conf ou être personnalisée avec les archives /etc/bulmafact_.conf Copiez toutes les archives *.qm à /usr/share/bulmages/traducciones
 
 

@@ -1,16 +1,15 @@
 #######
 #Plugins
 #######
-#README.es
-#20080501
+#README.fr
+#20110214
 
-Nombre: Tallas y Colores
+Nombre: Tailles et Couleurs
 
 Biblioteca: libpluginbf_tallascolores.so
 
-Descripción: <H1>Tallas y Colores</H1>
-<P>Permite especificar tallas y colores en los artículos. Para poder poner dicho parámetro en todos los documentos generados y hacer inventarios a partir
-del tallaje y del color.</P>
+Descripción: <H1>Tailles et Couleurs</H1>
+<P>Il permet de spécifier des tailles et des couleurs dans les articles. Pour pouvoir mettre ce paramètre dans tous les documents produits et faire des inventaires pour ajouter des tailles et de la couleur.</P>
 <B>Author:</B>Tomeu Borrás (tborras@conetxia.com)<BR>
 <HR>
 
@@ -26,7 +25,7 @@ Incompatibles:
 
 Reports: inf_stock.rml; inf_ventas.pys; inf_ventas.rml; inf_ventas.ui
 
-Categorias: Facturacion avanzada; Experimentales;Tallas y Colores;
+Categorias: Facturation avancee; Experimental;Tailles et couleurs;
 
 Orden: 890
 
