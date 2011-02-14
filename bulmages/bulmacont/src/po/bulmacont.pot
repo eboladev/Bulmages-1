@@ -8,10 +8,11 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2010-09-23 18:12+0200\n"
+"POT-Creation-Date: 2011-02-04 12:53+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -20,27 +21,27 @@ msgstr ""
 msgid "Iniciando clases"
 msgstr ""
 
-#: main.cxx:131
+#: main.cxx:134
 msgid "Leyendo configuracion"
 msgstr ""
 
-#: main.cxx:161
+#: main.cxx:164
 msgid "Cargando plugins"
 msgstr ""
 
-#: main.cxx:167
+#: main.cxx:170
 msgid "Lanzando plugins"
 msgstr ""
 
-#: main.cxx:173
+#: main.cxx:176
 msgid "Inicializando componentes"
 msgstr ""
 
-#: main.cxx:179 bccompany.cpp:218
+#: main.cxx:182 bccompany.cpp:218
 msgid "Terminado"
 msgstr ""
 
-#: main.cxx:190
+#: main.cxx:193
 msgid "Error inesperado en BulmaCont, el programa se cerrara."
 msgstr ""
 
@@ -784,7 +785,7 @@ msgstr ""
 msgid "Valor"
 msgstr ""
 
-#: bcsubform.cpp:472
+#: bcsubform.cpp:467
 msgid "Submenu de contabilidad"
 msgstr ""
 
@@ -922,45 +923,45 @@ msgstr ""
 msgid "No se pudo borrar el Centro de Coste"
 msgstr ""
 
-#: bcbulmacont.cpp:399 bcbulmacont.cpp:425 bcbulmacont.cpp:437
-#: bcbulmacont.cpp:449 bcbulmacont.cpp:461 bcbulmacont.cpp:479
-#: bcbulmacont.cpp:497
+#: bcbulmacont.cpp:421 bcbulmacont.cpp:447 bcbulmacont.cpp:459
+#: bcbulmacont.cpp:471 bcbulmacont.cpp:483 bcbulmacont.cpp:501
+#: bcbulmacont.cpp:519
 msgid "Listo."
 msgstr ""
 
-#: bcbulmacont.cpp:424
+#: bcbulmacont.cpp:446
 msgid "Deshaciendo la ultima accion..."
 msgstr ""
 
-#: bcbulmacont.cpp:436
+#: bcbulmacont.cpp:458
 msgid "Cortando seleccion..."
 msgstr ""
 
-#: bcbulmacont.cpp:448
+#: bcbulmacont.cpp:470
 msgid "Copiando la seleccion al portapapeles..."
 msgstr ""
 
-#: bcbulmacont.cpp:460
+#: bcbulmacont.cpp:482
 msgid "Insertando el contenido del portapapeles..."
 msgstr ""
 
-#: bcbulmacont.cpp:473
+#: bcbulmacont.cpp:495
 msgid "Cambinado barra de estado..."
 msgstr ""
 
-#: bcbulmacont.cpp:491
+#: bcbulmacont.cpp:513
 msgid "Cambiando a modo de pantalla completa..."
 msgstr ""
 
-#: bcbulmacont.cpp:521
+#: bcbulmacont.cpp:543
 msgid "Listado de cuentas"
 msgstr ""
 
-#: bcbulmacont.cpp:601
+#: bcbulmacont.cpp:623
 msgid "Seguro que desea abandonar el programa "
 msgstr ""
 
-#: bcbulmacont.cpp:602
+#: bcbulmacont.cpp:624
 msgid "Se perderan los cambios no guardados"
 msgstr ""
 

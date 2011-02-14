@@ -1,22 +1,29 @@
 # Header entry was created by Lokalize.
 #
-#: impmultqtoolbutton.cpp:597 impmultqtoolbutton.cpp:598
 # aishen <aishen@free.fr>, 2011.
 msgid ""
 msgstr ""
-"Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
-"Mime-Version: 1.0"
-"Last-Translator: aishen <aishen@free.fr>\n"
-"PO-Revision-Date: 2011-02-12 09:32+0100\n"
 "Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: info@iglues.org\n"
+"POT-Creation-Date: 2011-02-04 12:55+0100\n"
+"PO-Revision-Date: 2011-02-12 09:32+0100\n"
 "Language-Team: French <kde-i18n-doc@kde.org>\n"
 "Language: fr\n"
-"X-Generator: Lokalize 1.2\n"
 "MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Lokalize 1.2\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
-#: impmultqtoolbutton.cpp:597 impmultqtoolbutton.cpp:598
+#: impmultqtoolbutton.cpp:911
+msgid "&No"
+msgstr "&Non"
+
+#: impmultqtoolbutton.cpp:911
+msgid "&Si"
+msgstr "&Oui"
+
+#: impmultqtoolbutton.cpp:587 impmultqtoolbutton.cpp:588
 msgid "Enviar elementos seleccionados por e-mail"
 msgstr "Envoi des éléments sélectionnés par courriel"
 
@@ -24,24 +31,39 @@ msgstr "Envoi des éléments sélectionnés par courriel"
 msgid "Imprimir elementos seleccionados"
 msgstr "Imprimer les éléments sélectionnés"
 
-#: impmultqtoolbutton.cpp:449 impmultqtoolbutton.cpp:450
+#: impmultqtoolbutton.cpp:499 impmultqtoolbutton.cpp:500
 msgid "Invertir seleccion de elementos"
 msgstr "Inverser la sélection des éléments"
 
-#: impmultqtoolbutton.cpp:238
+#: impmultqtoolbutton.cpp:909
+msgid "Procesar elementos"
+msgstr ""
+
+#: impmultqtoolbutton.cpp:892 impmultqtoolbutton.cpp:893
+msgid "Procesar elementos seleccionados"
+msgstr ""
+
+#: impmultqtoolbutton.cpp:1089 impmultqtoolbutton.cpp:1090
+msgid "Totalizar elementos seleccionados"
+msgstr ""
+
+#: impmultqtoolbutton.cpp:910
+msgid "Va a procesar todos los elementos seleccionados. Desea continuar ?"
+msgstr ""
+
+#: impmultqtoolbutton.cpp:247
 msgid "no se pudo crear instancia de albaran"
 msgstr "Impossible de créer une instance de bulletin"
 
-#: impmultqtoolbutton.cpp:166 impmultqtoolbutton.cpp:777
+#: impmultqtoolbutton.cpp:174 impmultqtoolbutton.cpp:767
 msgid "no se pudo crear instancia de factura"
 msgstr "Impossible de créer une instance de facture"
 
-#: impmultqtoolbutton.cpp:202 impmultqtoolbutton.cpp:683
-#: impmultqtoolbutton.cpp:728
+#: impmultqtoolbutton.cpp:210 impmultqtoolbutton.cpp:422
+#: impmultqtoolbutton.cpp:673 impmultqtoolbutton.cpp:718
 msgid "no se pudo crear instancia de pedido cliente"
 msgstr "Impossible de créer une instance de commande client"
 
-#: impmultqtoolbutton.cpp:639
+#: impmultqtoolbutton.cpp:629
 msgid "no se pudo crear instancia de presupuesto"
 msgstr "Impossible de créer une instance de budget"
-

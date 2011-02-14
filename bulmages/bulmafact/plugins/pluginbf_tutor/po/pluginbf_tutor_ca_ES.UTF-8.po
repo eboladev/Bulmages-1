@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2011-01-19 14:15+0100\n"
+"POT-Creation-Date: 2011-02-07 11:21+0100\n"
 "PO-Revision-Date: 2010-07-28 16:12+0200\n"
 "Last-Translator: Walter Garcia-Fontes <walter.garcia@upf.edu>\n"
 "Language-Team: CATALAN\n"
@@ -85,13 +85,13 @@ msgstr "Alumne 4:"
 msgid "Banco:"
 msgstr "Banc"
 
+#: ui_tutorbase.h:556 ui_tutorbase.h:559 ui_tutorbase.h:564 ui_tutorbase.h:567
+msgid "Borrar"
+msgstr "Esborra"
+
 #: tutoreslist.cpp:224 ui_tutoreslistbase.h:262 ui_tutoreslistbase.h:265
 msgid "Borrar Tutor"
 msgstr "Esborra tutor"
-
-#: ui_tutorbase.h:556 ui_tutorbase.h:559 ui_tutorbase.h:564 ui_tutorbase.h:567
-msgid "Borrar cobro"
-msgstr "Esborra cobrament"
 
 #: ui_tutoreslistbase.h:301
 msgid "Buscar:"
@@ -242,8 +242,8 @@ msgid "Forma de Pago"
 msgstr "Forma de pagament"
 
 #: ui_tutorbase.h:548 ui_tutorbase.h:551
-msgid "Guardar cobro"
-msgstr "Desar arxiu"
+msgid "Guardar"
+msgstr "Desa"
 
 #: ui_tutorbase.h:592
 msgid "Hijos"
@@ -429,6 +429,9 @@ msgstr "Heu de desar el document abans de poder imprimir-lo"
 #~ msgid "2o apellido"
 #~ msgstr "2n cognom"
 
+#~ msgid "Borrar cobro"
+#~ msgstr "Esborra cobrament"
+
 #~ msgid "C.I.F./N.I.F./N.I.E.:"
 #~ msgstr "C.I.F./N.I.F./N.I.E.:"
 
@@ -452,6 +455,9 @@ msgstr "Heu de desar el document abans de poder imprimir-lo"
 
 #~ msgid "Forma Pago"
 #~ msgstr "Forma de pagament"
+
+#~ msgid "Guardar cobro"
+#~ msgstr "Desar arxiu"
 
 #~ msgid "Nombre completo:"
 #~ msgstr "Nom d'usuari:"

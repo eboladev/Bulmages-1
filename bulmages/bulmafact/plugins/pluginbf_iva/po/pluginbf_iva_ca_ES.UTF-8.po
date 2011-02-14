@@ -8,10 +8,11 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2010-09-23 18:23+0200\n"
+"POT-Creation-Date: 2011-02-04 12:54+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -32,35 +33,35 @@ msgstr "&Taxes d'IVA"
 msgid "&Tipos de IVA"
 msgstr "&Tipus d'IVA"
 
-#: listtasaivaview.cpp:70
+#: listtasaivaview.cpp:71
 #, fuzzy
 msgid "Error al guardar las tasas de IVA"
 msgstr "IVA"
 
-#: listtipoivaview.cpp:70
+#: listtipoivaview.cpp:71
 #, fuzzy
 msgid "Error al guardar los tipos de IVA"
 msgstr "IVA"
 
-#: listtasaivaview.cpp:98
+#: listtasaivaview.cpp:99
 msgid "Fecha Entrada en Vigor"
 msgstr "Data Entrada en Vigor"
 
-#: listtasaivaview.cpp:93
+#: listtasaivaview.cpp:94
 msgid "Id Tasa IVA"
 msgstr "ID Taxa IVA"
 
-#: listtipoivaview.cpp:105 listtasaivaview.cpp:95
+#: listtipoivaview.cpp:106 listtasaivaview.cpp:96
 #, fuzzy
 msgid "Id Tipo IVA"
 msgstr "Id tipus d'IVA"
 
-#: listtasaivaview.cpp:96
+#: listtasaivaview.cpp:97
 #, fuzzy
 msgid "Porcentaje IVA"
 msgstr "Percent&ual"
 
-#: listtasaivaview.cpp:97
+#: listtasaivaview.cpp:98
 #, fuzzy
 msgid "Porcentaje Recargo Equivalencia"
 msgstr "Percentatge de càrrega..."
@@ -75,7 +76,7 @@ msgstr "Tipus d'IVA"
 msgid "Tasas de IVA"
 msgstr "Tipus d'IVA"
 
-#: listtipoivaview.cpp:49 listtipoivaview.cpp:106 listtasaivaview.cpp:94
+#: listtipoivaview.cpp:49 listtipoivaview.cpp:107 listtasaivaview.cpp:95
 msgid "Tipo IVA"
 msgstr "Tipus d'IVA"
 

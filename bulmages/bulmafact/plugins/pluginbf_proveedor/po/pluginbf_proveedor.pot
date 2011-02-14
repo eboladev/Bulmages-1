@@ -8,10 +8,11 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2010-09-23 18:23+0200\n"
+"POT-Creation-Date: 2011-02-04 12:54+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -20,87 +21,87 @@ msgstr ""
 msgid "Selector de proveedores"
 msgstr ""
 
-#: providerslist.cpp:188 pluginbf_proveedor.cpp:106 pluginbf_proveedor.cpp:107
+#: providerslist.cpp:190 pluginbf_proveedor.cpp:106 pluginbf_proveedor.cpp:107
 msgid "Nuevo proveedor"
 msgstr ""
 
-#: providerslist.cpp:241
+#: providerslist.cpp:243
 msgid "Error al borrar el proveedor"
 msgstr ""
 
-#: providerslist.cpp:253
+#: providerslist.cpp:255
 msgid "Listado de Proveedores"
 msgstr ""
 
-#: providerslist.cpp:264
+#: providerslist.cpp:266
 msgid "Seleccione el archivo"
 msgstr ""
 
-#: providerslist.cpp:266 providerslist.cpp:284
+#: providerslist.cpp:268 providerslist.cpp:286
 msgid "Proveedores (*.xml)"
 msgstr ""
 
-#: providerslist.cpp:282
+#: providerslist.cpp:284
 msgid "Elija el archivo"
 msgstr ""
 
-#: providerslist.cpp:332 provedit.cpp:45
+#: providerslist.cpp:334 provedit.cpp:45
 msgid "ID proveedor"
 msgstr ""
 
-#: providerslist.cpp:333 providerslist.cpp:337 provedit.cpp:61
+#: providerslist.cpp:335 providerslist.cpp:339 provedit.cpp:61
 msgid "Codigo"
 msgstr ""
 
-#: providerslist.cpp:334
+#: providerslist.cpp:336
 msgid "C.I.F."
 msgstr ""
 
-#: providerslist.cpp:335
+#: providerslist.cpp:337
 msgid "Nombre"
 msgstr ""
 
-#: providerslist.cpp:336
+#: providerslist.cpp:338
 msgid "Nombre alternativo"
 msgstr ""
 
-#: providerslist.cpp:338
+#: providerslist.cpp:340
 msgid "Numero de cuenta corriente"
 msgstr ""
 
-#: providerslist.cpp:339 provedit.cpp:59
+#: providerslist.cpp:341 provedit.cpp:59
 msgid "Comentarios"
 msgstr ""
 
-#: providerslist.cpp:340 provedit.cpp:51
+#: providerslist.cpp:342 provedit.cpp:51
 msgid "Direccion"
 msgstr ""
 
-#: providerslist.cpp:341 provedit.cpp:52
+#: providerslist.cpp:343 provedit.cpp:52
 msgid "Poblacion"
 msgstr ""
 
-#: providerslist.cpp:342 provedit.cpp:54
+#: providerslist.cpp:344 provedit.cpp:54
 msgid "Codigo postal"
 msgstr ""
 
-#: providerslist.cpp:343 provedit.cpp:55
+#: providerslist.cpp:345 provedit.cpp:55
 msgid "Numero de telefono"
 msgstr ""
 
-#: providerslist.cpp:344 provedit.cpp:56
+#: providerslist.cpp:346 provedit.cpp:56
 msgid "Numero de fax"
 msgstr ""
 
-#: providerslist.cpp:345
+#: providerslist.cpp:347
 msgid "Direccion de correo electronico"
 msgstr ""
 
-#: providerslist.cpp:346
+#: providerslist.cpp:348
 msgid "Direccion de URL"
 msgstr ""
 
-#: providerslist.cpp:347
+#: providerslist.cpp:349
 msgid "Clave de acceso a la web del proveedor"
 msgstr ""
 
@@ -173,11 +174,11 @@ msgstr ""
 msgid "IRPF"
 msgstr ""
 
-#: provedit.cpp:104
+#: provedit.cpp:105
 msgid "Error al crear el proveedor"
 msgstr ""
 
-#: provedit.cpp:149
+#: provedit.cpp:157
 msgid "El CIF del proveedor no parece ser valido. Digito:"
 msgstr ""
 

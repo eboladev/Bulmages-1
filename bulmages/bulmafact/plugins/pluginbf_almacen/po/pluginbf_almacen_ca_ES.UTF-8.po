@@ -8,10 +8,11 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2010-09-23 18:23+0200\n"
+"POT-Creation-Date: 2011-02-04 12:54+0100\n"
 "PO-Revision-Date: 2009-02-17 10:24+0100\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
+"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -38,20 +39,20 @@ msgstr "Magatzem"
 msgid "Almacenes"
 msgstr "<LI> Magatzem <B>"
 
-#: listalmacenview.cpp:97
+#: listalmacenview.cpp:98
 msgid "Codigo almacen"
 msgstr "Codi magatzem"
 
-#: listalmacenview.cpp:70
+#: listalmacenview.cpp:71
 #, fuzzy
 msgid "Error al guardar los almacenes"
 msgstr "Desitja desar els canvis?"
 
-#: listalmacenview.cpp:96
+#: listalmacenview.cpp:97
 msgid "Id almacen"
 msgstr "Id Magatzem "
 
-#: listalmacenview.cpp:98
+#: listalmacenview.cpp:99
 #, fuzzy
 msgid "Nombre almacen"
 msgstr "Nom del compte"

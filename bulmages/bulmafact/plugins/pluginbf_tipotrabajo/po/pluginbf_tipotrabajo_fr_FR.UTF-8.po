@@ -1,66 +1,64 @@
 # Header entry was created by Lokalize.
 #
-#: ui_listtipostrabajobase.h:113
 # aishen <aishen@free.fr>, 2011.
 msgid ""
 msgstr ""
-"Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
-"Mime-Version: 1.0"
-"Last-Translator: aishen <aishen@free.fr>\n"
-"PO-Revision-Date: 2011-02-14 10:39+0100\n"
 "Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: info@iglues.org\n"
+"POT-Creation-Date: 2011-02-04 12:54+0100\n"
+"PO-Revision-Date: 2011-02-14 10:39+0100\n"
 "Language-Team: French <kde-i18n-doc@kde.org>\n"
 "Language: fr\n"
-"X-Generator: Lokalize 1.2\n"
 "MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Lokalize 1.2\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
-#: ui_listtipostrabajobase.h:113
+#: ui_listtipostrabajobase.h:114
 msgid "&Aceptar"
 msgstr "&Accepter"
 
-#: ui_listtipostrabajobase.h:114
+#: ui_listtipostrabajobase.h:115
 msgid "&Cancelar"
 msgstr "&Annuler"
 
-#: listtipostrabajoview.cpp:58
+#: listtipostrabajoview.cpp:57
 msgid "Color tipo trabajo"
 msgstr "Couleur du type de travail"
 
-#: plugintipostrabajo.cpp:199
+#: pluginbf_tipotrabajo.cpp:207
 msgid "ID almacen"
 msgstr "ID du magasin"
 
-#: plugintipostrabajo.cpp:197
+#: pluginbf_tipotrabajo.cpp:205
 msgid "ID nombre del tipo de trabajo"
 msgstr "ID nom du type de travail"
 
-#: plugintipostrabajo.cpp:200
+#: pluginbf_tipotrabajo.cpp:208
 msgid "ID tipo de trabajo"
 msgstr "ID type de travail"
 
-#: plugintipostrabajo.cpp:201
+#: pluginbf_tipotrabajo.cpp:209
 msgid "Id tipo de trabajo"
 msgstr "Id type de travail"
 
-#: listtipostrabajoview.cpp:56
+#: listtipostrabajoview.cpp:55
 msgid "Id tipo trabajo"
 msgstr "Id type de travail"
 
-#: listtipostrabajoview.cpp:57
+#: listtipostrabajoview.cpp:56
 msgid "Nombre tipo trabajo"
 msgstr "om du type de travail"
 
-#: plugintipostrabajo.cpp:198
+#: pluginbf_tipotrabajo.cpp:206
 msgid "Numero de cargos necesarios"
 msgstr "Nombre de charges nécessaires"
 
-#: ui_listtipostrabajobase.h:112
+#: ui_listtipostrabajobase.h:113
 msgid "Tipos de Trabajo"
 msgstr "Type de travail"
 
-#: listtipostrabajoview.cpp:49
+#: listtipostrabajoview.cpp:48
 msgid "almacen"
 msgstr "Magasin"
-

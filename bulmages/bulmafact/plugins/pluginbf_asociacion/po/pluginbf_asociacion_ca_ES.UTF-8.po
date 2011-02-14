@@ -8,10 +8,11 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2010-09-23 18:50+0200\n"
+"POT-Creation-Date: 2011-02-04 12:54+0100\n"
 "PO-Revision-Date: 2010-07-28 14:54+0200\n"
 "Last-Translator: Walter Garcia-Fontes\n"
 "Language-Team: CATALAN\n"
+"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -21,7 +22,7 @@ msgstr ""
 msgid "&Aceptar"
 msgstr "&Accepta"
 
-#: pluginbf_asociacion.cpp:142 pluginbf_asociacion.cpp:148
+#: pluginbf_asociacion.cpp:142
 msgid "&Asociacion"
 msgstr "&Associació"
 
@@ -29,23 +30,23 @@ msgstr "&Associació"
 msgid "&Cancelar"
 msgstr "&Cancel·la"
 
-#: pluginbf_asociacion.cpp:189
+#: pluginbf_asociacion.cpp:193
 msgid "&Comisiones"
 msgstr "&Comissions"
 
-#: pluginbf_asociacion.cpp:197
+#: pluginbf_asociacion.cpp:201
 msgid "&Convocar Asamblea"
 msgstr "&Convoca Assemblea"
 
-#: pluginbf_asociacion.cpp:164
+#: pluginbf_asociacion.cpp:168
 msgid "&Convocar Junta Directiva"
 msgstr "&Convoca Junta Directiva"
 
-#: pluginbf_asociacion.cpp:181
+#: pluginbf_asociacion.cpp:185
 msgid "&Convocar Reunion"
 msgstr "&Convoca Reunió"
 
-#: pluginbf_asociacion.cpp:156
+#: pluginbf_asociacion.cpp:160
 msgid "&Juntas Directivas"
 msgstr "&Juntes Directives"
 
@@ -57,7 +58,7 @@ msgstr "&Membres"
 msgid "&Orden del dia"
 msgstr "&Ordre del dia"
 
-#: pluginbf_asociacion.cpp:173
+#: pluginbf_asociacion.cpp:177
 msgid "&Reuniones"
 msgstr "&Reunions"
 
@@ -69,7 +70,7 @@ msgstr "1ª Convocatòria"
 msgid "2ª Convocatoria"
 msgstr "2ª Convocatòria"
 
-#: jdirectivalist.cpp:152 comisioneslist.cpp:142
+#: jdirectivalist.cpp:155 comisioneslist.cpp:145
 msgid "Actividades"
 msgstr "Activitats"
 
@@ -83,13 +84,17 @@ msgstr "Actual·litza llistat"
 msgid "Agregar"
 msgstr "Afegeix"
 
+#: jdirectivaview.cpp:68
+msgid "Ap 1 Socio"
+msgstr ""
+
+#: jdirectivaview.cpp:69
+msgid "Ap 2 Socio"
+msgstr ""
+
 #: ui_convreunionbase.h:375
 msgid "Asamblea"
 msgstr "Assemblea"
-
-#: pluginbf_asociacion.cpp:150 pluginbf_asociacion.cpp:151
-msgid "Asociacion"
-msgstr "Associació"
 
 #: ui_comisioneslistbase.h:262 ui_comisioneslistbase.h:265
 #: ui_convreunionlistbase.h:262 ui_convreunionlistbase.h:265
@@ -97,7 +102,7 @@ msgstr "Associació"
 msgid "Borrar Actividad"
 msgstr "Esborra Activitat"
 
-#: jdirectivalist.cpp:229 comisioneslist.cpp:216 convreunionlist.cpp:216
+#: jdirectivalist.cpp:232 comisioneslist.cpp:219 convreunionlist.cpp:219
 msgid "Borrar Junta"
 msgstr "Esborra Junta"
 
@@ -113,7 +118,7 @@ msgstr "Esborra cobrament"
 msgid "Buscar:"
 msgstr "Cerca:"
 
-#: comisionview.cpp:66 jdirectivaview.cpp:68
+#: comisionview.cpp:66 jdirectivaview.cpp:70
 msgid "Cargo"
 msgstr "Càrrec"
 
@@ -133,7 +138,7 @@ msgstr "Comissió"
 msgid "Comisional"
 msgstr "Comissional"
 
-#: pluginbf_asociacion.cpp:191 pluginbf_asociacion.cpp:192
+#: pluginbf_asociacion.cpp:195 pluginbf_asociacion.cpp:196
 #: ui_comisioneslistbase.h:243
 msgid "Comisiones"
 msgstr "Comissions"
@@ -164,7 +169,7 @@ msgstr "Concepte de la reunió"
 msgid "Configurar listado"
 msgstr "Configura llistat"
 
-#: comisioneslist.cpp:261 comisioneslist.cpp:262
+#: comisioneslist.cpp:264 comisioneslist.cpp:265
 msgid "Constitucion"
 msgstr "Constitució"
 
@@ -172,15 +177,15 @@ msgstr "Constitució"
 msgid "Convocados"
 msgstr "Convocats"
 
-#: pluginbf_asociacion.cpp:199 pluginbf_asociacion.cpp:200
+#: pluginbf_asociacion.cpp:203 pluginbf_asociacion.cpp:204
 msgid "Convocar Asamblea"
 msgstr "Convoca Assemblea"
 
-#: pluginbf_asociacion.cpp:166 pluginbf_asociacion.cpp:167
+#: pluginbf_asociacion.cpp:170 pluginbf_asociacion.cpp:171
 msgid "Convocar Junta Directiva"
 msgstr "Convoca Junta directiva"
 
-#: pluginbf_asociacion.cpp:183 pluginbf_asociacion.cpp:184
+#: pluginbf_asociacion.cpp:187 pluginbf_asociacion.cpp:188
 msgid "Convocar Reunion"
 msgstr "Convoca Reunió"
 
@@ -231,11 +236,11 @@ msgstr "Ctrl+P"
 msgid "Ctrl+S"
 msgstr "Ctrl+S"
 
-#: jdirectivalist.cpp:209 comisioneslist.cpp:199 convreunionlist.cpp:199
+#: jdirectivalist.cpp:212 comisioneslist.cpp:202 convreunionlist.cpp:202
 msgid "Debe seleccionar una fila primero"
 msgstr "Heu de seleccionar una fila primer"
 
-#: jdirectivalist.cpp:170 comisioneslist.cpp:158 convreunionlist.cpp:158
+#: jdirectivalist.cpp:173 comisioneslist.cpp:161 convreunionlist.cpp:161
 msgid "Debe seleccionar una linea"
 msgstr "Heu de seleccionar una línia"
 
@@ -245,19 +250,19 @@ msgstr "Heu de seleccionar una línia"
 msgid "Editar Actividad"
 msgstr "Edita Activitat"
 
-#: jdirectivalist.cpp:228 comisioneslist.cpp:215 convreunionlist.cpp:215
+#: jdirectivalist.cpp:231 comisioneslist.cpp:218 convreunionlist.cpp:218
 msgid "Editar Junta"
 msgstr "Edita Junta"
 
-#: jdirectivalist.cpp:185 comisioneslist.cpp:172 convreunionlist.cpp:172
+#: jdirectivalist.cpp:188 comisioneslist.cpp:175 convreunionlist.cpp:175
 msgid "Error al borrar el cobro a cliente"
 msgstr "Error en esborrar el cobrament a client"
 
-#: comisionview.cpp:78
+#: comisionview.cpp:79
 msgid "Error al crear el comision"
 msgstr "Error en crear la comissió"
 
-#: jdirectivaview.cpp:80
+#: jdirectivaview.cpp:84
 msgid "Error al crear el jdirectiva"
 msgstr "Error en crear la junta directiva"
 
@@ -292,11 +297,11 @@ msgstr "Data Cessió"
 msgid "Fecha Constitucion"
 msgstr "Data de Constitució"
 
-#: jdirectivalist.cpp:279
+#: jdirectivalist.cpp:282
 msgid "Fecha de constitucion"
 msgstr "Darta de constitució"
 
-#: jdirectivalist.cpp:280
+#: jdirectivalist.cpp:283
 msgid "Fecha de disolucion"
 msgstr "Data de dissolució"
 
@@ -339,7 +344,7 @@ msgstr "Hora 1ª Convocatòria"
 msgid "Hora 2ª Convocatoria"
 msgstr "Hora 2ª Convocatòria"
 
-#: jdirectivalist.cpp:278 comisioneslist.cpp:260 comisionview.cpp:61
+#: jdirectivalist.cpp:281 comisioneslist.cpp:263 comisionview.cpp:61
 #: jdirectivaview.cpp:63
 msgid "ID Junta Directiva"
 msgstr "ID Junta Directiva"
@@ -372,7 +377,7 @@ msgstr "ID comissió"
 msgid "ID jdirectiva"
 msgstr "ID jdirectiva"
 
-#: convreunionview.cpp:55 convreunionlist.cpp:260
+#: convreunionview.cpp:55 convreunionlist.cpp:263
 msgid "ID reunion"
 msgstr "ID reunió"
 
@@ -390,7 +395,7 @@ msgstr "Imprimeix llistat"
 msgid "Junta Directiva"
 msgstr "Junta Directiva"
 
-#: pluginbf_asociacion.cpp:158 pluginbf_asociacion.cpp:159
+#: pluginbf_asociacion.cpp:162 pluginbf_asociacion.cpp:163
 #: ui_jdirectivalistbase.h:269
 msgid "Juntas Directivas"
 msgstr "Juntes Directives"
@@ -438,8 +443,8 @@ msgstr "Resolució"
 msgid "Reunion"
 msgstr "Reunió"
 
-#: convreunionlist.cpp:142 pluginbf_asociacion.cpp:175
-#: pluginbf_asociacion.cpp:176 ui_jdirectivabase.h:272
+#: convreunionlist.cpp:145 pluginbf_asociacion.cpp:179
+#: pluginbf_asociacion.cpp:180 ui_jdirectivabase.h:272
 #: ui_convreunionlistbase.h:243
 msgid "Reuniones"
 msgstr "Reunions"
@@ -456,11 +461,11 @@ msgstr "Socis"
 msgid "Texto"
 msgstr "Text"
 
-#: convreunionview.cpp:133 comisionview.cpp:106 jdirectivaview.cpp:113
+#: convreunionview.cpp:133 comisionview.cpp:107 jdirectivaview.cpp:117
 msgid "Tiene que guardar el documento antes de poder imprimirlo."
 msgstr "Heu de seleccionar el document abans de poder imprimir-lo"
 
-#: convreunionview.cpp:60 convreunionlist.cpp:263
+#: convreunionview.cpp:60 convreunionlist.cpp:266
 msgid "Tipo"
 msgstr "Tipus"
 
@@ -476,10 +481,13 @@ msgstr "Tots"
 msgid "Tutores"
 msgstr "Tutors"
 
-#: convreunionlist.cpp:261
+#: convreunionlist.cpp:264
 msgid "fecha1convocatoriareunion"
 msgstr "fecha1convocatoriareunion"
 
-#: convreunionlist.cpp:262
+#: convreunionlist.cpp:265
 msgid "fecha2convocatoriareunion"
 msgstr "fecha2convocatoriareunion"
+
+#~ msgid "Asociacion"
+#~ msgstr "Associació"

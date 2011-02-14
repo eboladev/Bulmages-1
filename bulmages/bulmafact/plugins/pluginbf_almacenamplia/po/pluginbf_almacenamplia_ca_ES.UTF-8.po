@@ -4,10 +4,11 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2010-09-23 18:23+0200\n"
+"POT-Creation-Date: 2011-02-04 12:54+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -63,7 +64,7 @@ msgstr "Actual·litza llistat"
 msgid "Almacen"
 msgstr "<LI> Magatzem <B>"
 
-#: almaceneslistview.cpp:218 ui_almaceneslistbase.h:330
+#: almaceneslistview.cpp:222 ui_almaceneslistbase.h:330
 #, fuzzy
 msgid "Almacenes"
 msgstr "<LI> Magatzem <B>"
@@ -83,7 +84,7 @@ msgstr "Cerca:"
 msgid "Codigo Almacen"
 msgstr "Codi compte"
 
-#: almacenview.cpp:58 almaceneslistview.cpp:57 almaceneslistview.cpp:91
+#: almacenview.cpp:58 almaceneslistview.cpp:57 almaceneslistview.cpp:93
 #, fuzzy
 msgid "Codigo almacen"
 msgstr "Codi compte"
@@ -117,7 +118,7 @@ msgstr "Ctrl+P"
 msgid "Ctrl+S"
 msgstr "Ctrl+S"
 
-#: almaceneslistview.cpp:232
+#: almaceneslistview.cpp:236
 #, fuzzy
 msgid "Debe seleccionar una linea"
 msgstr "Cal triar un compte"
@@ -142,17 +143,17 @@ msgstr "Editar compte"
 msgid "Email Almacen"
 msgstr "<LI> Magatzem <B>"
 
-#: almaceneslistview.cpp:254
+#: almaceneslistview.cpp:258
 #, fuzzy
 msgid "Error al borrar el almacen"
 msgstr "Error en la càrrega de l'amortizació"
 
-#: almacenview.cpp:76
+#: almacenview.cpp:77
 #, fuzzy
 msgid "Error al crear el almacen"
 msgstr "Error en la càrrega de l'amortizació"
 
-#: almaceneslistview.cpp:207
+#: almaceneslistview.cpp:211
 #, fuzzy
 msgid "Error al editar el almacen"
 msgstr "Error en la càrrega de l'amortizació"
@@ -198,7 +199,7 @@ msgstr "General"
 msgid "Guardar almacen"
 msgstr "Desa balanç"
 
-#: almacenview.cpp:57 almaceneslistview.cpp:56 almaceneslistview.cpp:90
+#: almacenview.cpp:57 almaceneslistview.cpp:56 almaceneslistview.cpp:92
 #, fuzzy
 msgid "ID almacen"
 msgstr "<LI> Magatzem <B>"
@@ -218,7 +219,7 @@ msgstr "Mostrar assentament"
 msgid "Nombre Almacen"
 msgstr "Nom del compte"
 
-#: almacenview.cpp:59 almaceneslistview.cpp:58 almaceneslistview.cpp:92
+#: almacenview.cpp:59 almaceneslistview.cpp:58 almaceneslistview.cpp:94
 #, fuzzy
 msgid "Nombre almacen"
 msgstr "Nom del compte"

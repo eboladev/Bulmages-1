@@ -8,19 +8,20 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2010-09-23 18:23+0200\n"
+"POT-Creation-Date: 2011-02-04 12:54+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: comparticulolistview.cpp:42 articulolist.cpp:436
+#: comparticulolistview.cpp:42 articulolist.cpp:438
 msgid "Codigo completo del articulo"
 msgstr ""
 
-#: comparticulolistview.cpp:43 articulolist.cpp:437 articuloview.cpp:63
+#: comparticulolistview.cpp:43 articulolist.cpp:439 articuloview.cpp:63
 msgid "Nombre del articulo"
 msgstr ""
 
@@ -32,7 +33,7 @@ msgstr ""
 msgid "ID componente"
 msgstr ""
 
-#: comparticulolistview.cpp:46 articulolist.cpp:435
+#: comparticulolistview.cpp:46 articulolist.cpp:437
 msgid "ID articulo"
 msgstr ""
 
@@ -40,69 +41,69 @@ msgstr ""
 msgid "Selector de articulos"
 msgstr ""
 
-#: articulolist.cpp:162
+#: articulolist.cpp:164
 msgid "Tiene que seleccionar un articulo"
 msgstr ""
 
-#: articulolist.cpp:168 articulolist.cpp:314 ui_articleslistbase.h:306
+#: articulolist.cpp:170 articulolist.cpp:316 ui_articleslistbase.h:306
 #: ui_articleslistbase.h:309
 msgid "Borrar articulo"
 msgstr ""
 
-#: articulolist.cpp:169
+#: articulolist.cpp:171
 msgid "Esta a punto de borrar un articulo. Estos datos pueden dar problemas."
 msgstr ""
 
-#: articulolist.cpp:179
+#: articulolist.cpp:181
 msgid "Error al borrar el articulo"
 msgstr ""
 
-#: articulolist.cpp:260 articulolist.cpp:285
+#: articulolist.cpp:262 articulolist.cpp:287
 msgid "Elija el archivo"
 msgstr ""
 
-#: articulolist.cpp:262 articulolist.cpp:287
+#: articulolist.cpp:264 articulolist.cpp:289
 msgid "Clientes (*.xml)"
 msgstr ""
 
-#: articulolist.cpp:313 pluginbf_articulo.cpp:376 pluginbf_articulo.cpp:393
+#: articulolist.cpp:315 pluginbf_articulo.cpp:376 pluginbf_articulo.cpp:393
 #: ui_articleslistbase.h:299 ui_articleslistbase.h:302
 msgid "Editar articulo"
 msgstr ""
 
-#: articulolist.cpp:376
+#: articulolist.cpp:378
 msgid "Nuevo Articulo"
 msgstr ""
 
-#: articulolist.cpp:438
+#: articulolist.cpp:440
 msgid "Descripcion abreviada del articulo"
 msgstr ""
 
-#: articulolist.cpp:439
+#: articulolist.cpp:441
 msgid "Observaciones sobre el articulo"
 msgstr ""
 
-#: articulolist.cpp:440
+#: articulolist.cpp:442
 msgid "Descripcion del tipo de articulo"
 msgstr ""
 
-#: articulolist.cpp:441
+#: articulolist.cpp:443
 msgid "Descripcion tipo de I.V.A."
 msgstr ""
 
-#: articulolist.cpp:442
+#: articulolist.cpp:444
 msgid "P.V.P. articulo"
 msgstr ""
 
-#: articulolist.cpp:443
+#: articulolist.cpp:445
 msgid "Disponible en stock"
 msgstr ""
 
-#: familiasview.cpp:51 familiasview.cpp:566
+#: familiasview.cpp:51 familiasview.cpp:563
 msgid "Nombre"
 msgstr ""
 
-#: familiasview.cpp:51 familiasview.cpp:565 tiposarticuloview.cpp:46
+#: familiasview.cpp:51 familiasview.cpp:562 tiposarticuloview.cpp:46
 #: articuloview.cpp:62
 msgid "Codigo"
 msgstr ""
@@ -119,45 +120,45 @@ msgstr ""
 msgid "Codigo completo"
 msgstr ""
 
-#: familiasview.cpp:129 pluginbf_articulo.cpp:152 pluginbf_articulo.cpp:153
+#: familiasview.cpp:130 pluginbf_articulo.cpp:152 pluginbf_articulo.cpp:153
 #: ui_familiasbase.h:325
 msgid "Familias"
 msgstr ""
 
-#: familiasview.cpp:331
+#: familiasview.cpp:332
 msgid "Guardar familia"
 msgstr ""
 
-#: familiasview.cpp:332 tiposarticuloview.cpp:291
+#: familiasview.cpp:333 tiposarticuloview.cpp:292
 msgid "Desea guardar los cambios?"
 msgstr ""
 
-#: familiasview.cpp:354 familiasview.cpp:501
+#: familiasview.cpp:355 familiasview.cpp:502
 msgid "Debe seleccionar una familia"
 msgstr ""
 
-#: familiasview.cpp:401
+#: familiasview.cpp:402
 msgid "Error al guardar la familia"
 msgstr ""
 
-#: familiasview.cpp:462
+#: familiasview.cpp:463
 msgid "Error al crear la familia"
 msgstr ""
 
-#: familiasview.cpp:475 tiposarticuloview.cpp:384 ui_articleeditbase.h:594
+#: familiasview.cpp:476 tiposarticuloview.cpp:385 ui_articleeditbase.h:594
 #: ui_articleeditbase.h:597
 msgid "Borrar"
 msgstr ""
 
-#: familiasview.cpp:476 tiposarticuloview.cpp:385
+#: familiasview.cpp:477 tiposarticuloview.cpp:386
 msgid "Desea eliminar"
 msgstr ""
 
-#: familiasview.cpp:485 tiposarticuloview.cpp:394
+#: familiasview.cpp:486 tiposarticuloview.cpp:395
 msgid "no se ha podido borrar"
 msgstr ""
 
-#: familiasview.cpp:515 tiposarticuloview.cpp:425
+#: familiasview.cpp:516 tiposarticuloview.cpp:426
 msgid "Error al borrar la familia"
 msgstr ""
 
@@ -165,19 +166,19 @@ msgstr ""
 msgid "Id"
 msgstr ""
 
-#: tiposarticuloview.cpp:139
+#: tiposarticuloview.cpp:140
 msgid "Error en la carga"
 msgstr ""
 
-#: tiposarticuloview.cpp:290
+#: tiposarticuloview.cpp:291
 msgid "Guardar Tipo de Articulo"
 msgstr ""
 
-#: tiposarticuloview.cpp:366
+#: tiposarticuloview.cpp:367
 msgid "Error en la creacion"
 msgstr ""
 
-#: tiposarticuloview.cpp:411
+#: tiposarticuloview.cpp:412
 msgid "Debe seleccionar un tipo"
 msgstr ""
 
@@ -216,6 +217,10 @@ msgstr ""
 
 #: pluginbf_articulo.cpp:378 pluginbf_articulo.cpp:397
 msgid "Seleccionar articulo"
+msgstr ""
+
+#: pluginbf_articulo.cpp:574
+msgid "<F2> Abre selector de articulos."
 msgstr ""
 
 #: articuloview.cpp:58
@@ -274,42 +279,42 @@ msgstr ""
 msgid "Volumen Unidad"
 msgstr ""
 
-#: articuloview.cpp:117
+#: articuloview.cpp:125
 msgid "Error al crear el articulo"
 msgstr ""
 
-#: articuloview.cpp:233
+#: articuloview.cpp:262
 msgid ""
 "No se ha podido guardar la imagen.\n"
 "Revise los permisos de escritura y que disponga\n"
 "de espacio libre suficiente en el disco duro."
 msgstr ""
 
-#: articuloview.cpp:287
+#: articuloview.cpp:316
 msgid "Seleccione un archivo de imagen"
 msgstr ""
 
-#: articuloview.cpp:289
+#: articuloview.cpp:318
 msgid "Imagenes (*.jpg)"
 msgstr ""
 
-#: articuloview.cpp:295
+#: articuloview.cpp:324
 msgid ""
 "No se ha podido cargar la imagen.\n"
 "Compruebe que la imagen sea valida."
 msgstr ""
 
-#: articuloview.cpp:319
+#: articuloview.cpp:353
 msgid "Borrar imagen del articulo"
 msgstr ""
 
-#: articuloview.cpp:320
+#: articuloview.cpp:354
 msgid ""
 "Esta seguro que quiere borrar\n"
 "la imagen asociada a este articulo?"
 msgstr ""
 
-#: articuloview.cpp:328
+#: articuloview.cpp:362
 msgid ""
 "No se ha podido borrar el archivo.\n"
 "Compruebe que el archivo tenga los permisos correctos."

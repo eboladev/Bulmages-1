@@ -8,10 +8,11 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2010-09-23 18:22+0200\n"
+"POT-Creation-Date: 2011-02-04 12:54+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -20,7 +21,7 @@ msgstr ""
 msgid "Cuenta"
 msgstr ""
 
-#: bccuentaview.cpp:43 bcplancontablelistview.cpp:55 bccuentalistview.cpp:386
+#: bccuentaview.cpp:43 bcplancontablelistview.cpp:55 bccuentalistview.cpp:388
 msgid "ID cuenta"
 msgstr ""
 
@@ -140,24 +141,24 @@ msgstr ""
 msgid "NOMBRE"
 msgstr ""
 
-#: bcplancontablelistview.cpp:371 bcplancontablelistview.cpp:397
+#: bcplancontablelistview.cpp:449 bcplancontablelistview.cpp:475
 msgid "Debe seleccionar una cuenta"
 msgstr ""
 
-#: bcplancontablelistview.cpp:401 ui_bcplancontablelistbase.h:293
-#: ui_bcplancontablelistbase.h:296 ui_bccuentabase.h:809
+#: bcplancontablelistview.cpp:479 ui_bcplancontablelistbase.h:306
+#: ui_bcplancontablelistbase.h:309 ui_bccuentabase.h:809
 msgid "Borrar cuenta"
 msgstr ""
 
-#: bcplancontablelistview.cpp:402
+#: bcplancontablelistview.cpp:480
 msgid "Se procedera a borrar la cuenta."
 msgstr ""
 
-#: bcplancontablelistview.cpp:547 bcplancontablelistview.cpp:566
+#: bcplancontablelistview.cpp:625 bcplancontablelistview.cpp:644
 msgid "Elija el archivo"
 msgstr ""
 
-#: bcplancontablelistview.cpp:549 bcplancontablelistview.cpp:568
+#: bcplancontablelistview.cpp:627 bcplancontablelistview.cpp:646
 msgid "Plan contable (*.xml)"
 msgstr ""
 
@@ -165,19 +166,19 @@ msgstr ""
 msgid "Selector de articulos"
 msgstr ""
 
-#: bccuentalistview.cpp:309
+#: bccuentalistview.cpp:311
 msgid "Editar articulo"
 msgstr ""
 
-#: bccuentalistview.cpp:310
+#: bccuentalistview.cpp:312
 msgid "Borrar articulo"
 msgstr ""
 
-#: bccuentalistview.cpp:387
+#: bccuentalistview.cpp:389
 msgid "Codigo Cuenta"
 msgstr ""
 
-#: bccuentalistview.cpp:388
+#: bccuentalistview.cpp:390
 msgid "Nombre de la cuenta"
 msgstr ""
 
@@ -198,12 +199,12 @@ msgid "Permite ver y modificar el plan contable"
 msgstr ""
 
 #: pluginbc_cuenta.cpp:173 pluginbc_cuenta.cpp:198
-#: ui_bcplancontablelistbase.h:277 ui_bcplancontablelistbase.h:280
+#: ui_bcplancontablelistbase.h:290 ui_bcplancontablelistbase.h:293
 msgid "Nueva cuenta"
 msgstr ""
 
 #: pluginbc_cuenta.cpp:175 pluginbc_cuenta.cpp:192
-#: ui_bcplancontablelistbase.h:285 ui_bcplancontablelistbase.h:288
+#: ui_bcplancontablelistbase.h:298 ui_bcplancontablelistbase.h:301
 msgid "Editar cuenta"
 msgstr ""
 
@@ -211,60 +212,76 @@ msgstr ""
 msgid "Seleccionar cuenta"
 msgstr ""
 
-#: ui_bcplancontablelistbase.h:272
+#: ui_bcplancontablelistbase.h:285
 msgid "Plan de cuentas"
 msgstr ""
 
-#: ui_bcplancontablelistbase.h:283
+#: ui_bcplancontablelistbase.h:296
 msgid "Ctrl+N"
 msgstr ""
 
-#: ui_bcplancontablelistbase.h:291
+#: ui_bcplancontablelistbase.h:304
 msgid "Ctrl+E"
 msgstr ""
 
-#: ui_bcplancontablelistbase.h:299 ui_bccuentabase.h:812
+#: ui_bcplancontablelistbase.h:312 ui_bccuentabase.h:812
 msgid "Ctrl+D"
 msgstr ""
 
-#: ui_bcplancontablelistbase.h:301 ui_bcplancontablelistbase.h:304
+#: ui_bcplancontablelistbase.h:314 ui_bcplancontablelistbase.h:317
 msgid "Imprimir cuentas"
 msgstr ""
 
-#: ui_bcplancontablelistbase.h:307
+#: ui_bcplancontablelistbase.h:320
 msgid "Ctrl+P"
 msgstr ""
 
-#: ui_bcplancontablelistbase.h:309 ui_bcplancontablelistbase.h:312
+#: ui_bcplancontablelistbase.h:322 ui_bcplancontablelistbase.h:325
 msgid "Exportar cuentas"
 msgstr ""
 
-#: ui_bcplancontablelistbase.h:316 ui_bcplancontablelistbase.h:319
+#: ui_bcplancontablelistbase.h:329 ui_bcplancontablelistbase.h:332
 msgid "Importar cuentas"
 msgstr ""
 
-#: ui_bcplancontablelistbase.h:323 ui_bcplancontablelistbase.h:326
+#: ui_bcplancontablelistbase.h:336 ui_bcplancontablelistbase.h:339
 #: ui_bccuentalistbase.h:234 ui_bccuentalistbase.h:237
 msgid "Actualizar listado"
 msgstr ""
 
-#: ui_bcplancontablelistbase.h:329
+#: ui_bcplancontablelistbase.h:342
 msgid "F5"
 msgstr ""
 
-#: ui_bcplancontablelistbase.h:330
+#: ui_bcplancontablelistbase.h:343
 msgid "Busqueda:"
 msgstr ""
 
-#: ui_bcplancontablelistbase.h:332 ui_bccuentalistbase.h:246
+#: ui_bcplancontablelistbase.h:344
+msgid "&Anterior"
+msgstr ""
+
+#: ui_bcplancontablelistbase.h:345
+msgid "Shift+F3"
+msgstr ""
+
+#: ui_bcplancontablelistbase.h:346
+msgid "&Siguiente"
+msgstr ""
+
+#: ui_bcplancontablelistbase.h:347
+msgid "F3"
+msgstr ""
+
+#: ui_bcplancontablelistbase.h:349 ui_bccuentalistbase.h:246
 msgid "1"
 msgstr ""
 
-#: ui_bcplancontablelistbase.h:333
+#: ui_bcplancontablelistbase.h:350
 msgid "Plan &contable"
 msgstr ""
 
-#: ui_bcplancontablelistbase.h:334
+#: ui_bcplancontablelistbase.h:351
 msgid "S&ubcuentas"
 msgstr ""
 

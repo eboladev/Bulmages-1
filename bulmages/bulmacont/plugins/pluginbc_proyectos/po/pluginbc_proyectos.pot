@@ -8,10 +8,11 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2010-09-23 18:22+0200\n"
+"POT-Creation-Date: 2011-02-04 12:54+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -81,7 +82,7 @@ msgstr ""
 msgid "Orden"
 msgstr ""
 
-#: proyectoview.cpp:109
+#: proyectoview.cpp:113
 msgid "Error al crear el almacen"
 msgstr ""
 
@@ -109,7 +110,7 @@ msgstr ""
 msgid "Selector de Proyectos"
 msgstr ""
 
-#: listproyectosview.cpp:114
+#: listproyectosview.cpp:117
 msgid "Error al borrar la amortizacion"
 msgstr ""
 
@@ -121,7 +122,7 @@ msgstr ""
 msgid "Proyectos"
 msgstr ""
 
-#: pluginbc_proyectos.cpp:116
+#: pluginbc_proyectos.cpp:119
 msgid "Proyectos asociados"
 msgstr ""
 

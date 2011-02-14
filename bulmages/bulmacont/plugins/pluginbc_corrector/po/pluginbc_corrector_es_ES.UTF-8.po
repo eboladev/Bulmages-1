@@ -8,10 +8,11 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2010-09-23 18:53+0200\n"
+"POT-Creation-Date: 2011-02-04 12:54+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -114,6 +115,10 @@ msgstr ""
 "#-#-#-#-#  pluginabrevs.pot (PACKAGE VERSION)  #-#-#-#-#\n"
 "#-#-#-#-#  bulmages_suite.pot (PACKAGE VERSION)  #-#-#-#-#\n"
 
+#: correctorwidget.cpp:313
+msgid " a "
+msgstr ""
+
 #: pluginbc_corrector.cpp:81
 msgid "&Corrector"
 msgstr "&Corrector"
@@ -134,6 +139,14 @@ msgstr "Apunte con Descripcion"
 msgid "Apunte con Saldo"
 msgstr "Apunte con Saldo"
 
+#: correctorwidget.cpp:320
+msgid "Cambiado con exito."
+msgstr ""
+
+#: correctorwidget.cpp:313
+msgid "Cambiar codigo de cuenta?"
+msgstr ""
+
 #: ui_confreglasbase.h:295
 msgid "Cerrar"
 msgstr "Cerrar"
@@ -146,11 +159,11 @@ msgstr "Comprobacion por asientos"
 msgid "Condicion:"
 msgstr "Condicion:"
 
-#: ui_correctorbase.h:102 ui_correctorbase.h:105
+#: ui_correctorbase.h:104 ui_correctorbase.h:107
 msgid "Configurar"
 msgstr "Configurar"
 
-#: pluginbc_corrector.cpp:55 ui_correctorbase.h:93
+#: pluginbc_corrector.cpp:55 ui_correctorbase.h:95
 msgid "Corrector"
 msgstr "Corrector"
 
@@ -164,7 +177,7 @@ msgstr ""
 "\n"
 "Muestra/oculta el corrector"
 
-#: ui_correctorbase.h:95 ui_correctorbase.h:98
+#: ui_correctorbase.h:97 ui_correctorbase.h:100
 msgid "Corregir"
 msgstr "Corregir"
 
@@ -172,15 +185,19 @@ msgstr "Corregir"
 msgid "Deben existir registros que cumplan esta condicion en el periodo"
 msgstr "Deben existir registros que cumplan esta condicion en el periodo"
 
+#: correctorwidget.cpp:313
+msgid "El codigo de la cuenta: "
+msgstr ""
+
 #: pluginbc_corrector.cpp:84
 msgid "Muestra/oculta el corrector"
 msgstr "Muestra/oculta el corrector"
 
-#: correctorwidget.cpp:211
+#: correctorwidget.cpp:329
 msgid "No se puede acceder al error"
 msgstr "No se puede acceder al error"
 
-#: correctorwidget.cpp:211
+#: correctorwidget.cpp:329
 msgid "Opcion no implementada"
 msgstr "Opcion no implementada"
 
@@ -214,4 +231,8 @@ msgstr "menor"
 
 #: pluginbc_corrector.cpp:71
 msgid "menuVer"
+msgstr ""
+
+#: correctorwidget.cpp:313
+msgid "se cambiara de "
 msgstr ""

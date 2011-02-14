@@ -8,10 +8,11 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2010-09-23 18:22+0200\n"
+"POT-Creation-Date: 2011-02-04 12:53+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -20,7 +21,7 @@ msgstr ""
 msgid "Asiento Contable"
 msgstr ""
 
-#: bcasientoform.cpp:45 bcasientosubform.cpp:57 bcasientolistsubform.cpp:44
+#: bcasientoform.cpp:45 bcasientosubform.cpp:57 bcasientolistsubform.cpp:46
 msgid "Id asiento"
 msgstr ""
 
@@ -44,15 +45,15 @@ msgstr ""
 msgid "Tipo de asiento"
 msgstr ""
 
-#: bcasientoform.cpp:159 ui_bcasientobase.h:531 ui_bcasientobase.h:534
+#: bcasientoform.cpp:162 ui_bcasientobase.h:531 ui_bcasientobase.h:534
 msgid "Borrar asiento"
 msgstr ""
 
-#: bcasientoform.cpp:160
+#: bcasientoform.cpp:163
 msgid "Se va a borrar el asiento. Esta seguro?"
 msgstr ""
 
-#: bcasientoform.cpp:412
+#: bcasientoform.cpp:415
 msgid "El asiento se ha guardado correctamente."
 msgstr ""
 
@@ -150,22 +151,22 @@ msgid "Num. Factura"
 msgstr ""
 
 #: bcasientosubform.cpp:89 bcasientosubform.cpp:106
-#: bcasientolistsubform.cpp:77 bcasientolistsubform.cpp:94
+#: bcasientolistsubform.cpp:79 bcasientolistsubform.cpp:96
 msgid "Mostrar asiento"
 msgstr ""
 
 #: bcasientosubform.cpp:91 bcasientosubform.cpp:108
-#: bcasientolistsubform.cpp:79 bcasientolistsubform.cpp:98
+#: bcasientolistsubform.cpp:81 bcasientolistsubform.cpp:100
 msgid "Mostrar extracto (dia)"
 msgstr ""
 
 #: bcasientosubform.cpp:92 bcasientosubform.cpp:110
-#: bcasientolistsubform.cpp:80 bcasientolistsubform.cpp:100
+#: bcasientolistsubform.cpp:82 bcasientolistsubform.cpp:102
 msgid "Mostrar extracto (mes)"
 msgstr ""
 
 #: bcasientosubform.cpp:93 bcasientosubform.cpp:112
-#: bcasientolistsubform.cpp:81 bcasientolistsubform.cpp:102
+#: bcasientolistsubform.cpp:83 bcasientolistsubform.cpp:104
 msgid "Mostrar extracto (ano)"
 msgstr ""
 
@@ -181,7 +182,15 @@ msgstr ""
 msgid "Comentarios"
 msgstr ""
 
+#: bcasientolistsubform.cpp:44
+msgid "Debe borrador"
+msgstr ""
+
 #: bcasientolistsubform.cpp:45
+msgid "Haber borrador"
+msgstr ""
+
+#: bcasientolistsubform.cpp:47
 msgid "Clase"
 msgstr ""
 
@@ -197,15 +206,15 @@ msgstr ""
 msgid "Asientos abiertos"
 msgstr ""
 
-#: bcasientolistview.cpp:66
+#: bcasientolistview.cpp:68
 msgid "(todos)"
 msgstr ""
 
-#: bcasientolistview.cpp:234
+#: bcasientolistview.cpp:236
 msgid "La fecha inicial es posterior a la fecha final."
 msgstr ""
 
-#: bcasientolistview.cpp:301
+#: bcasientolistview.cpp:309
 msgid "Asientos"
 msgstr ""
 
@@ -213,11 +222,11 @@ msgstr ""
 msgid "Asiento"
 msgstr ""
 
-#: bcasientointeligenteview.cpp:440
+#: bcasientointeligenteview.cpp:442
 msgid "Cuenta:"
 msgstr ""
 
-#: bcasientointeligenteview.cpp:621
+#: bcasientointeligenteview.cpp:623
 msgid "Error al crear el asiento"
 msgstr ""
 
@@ -325,88 +334,96 @@ msgstr ""
 msgid "Asiento de regularizacion"
 msgstr ""
 
-#: bcasientoview.cpp:333
+#: bcasientoview.cpp:336
 msgid "Asiento inexistente."
 msgstr ""
 
-#: bcasientoview.cpp:334
+#: bcasientoview.cpp:337
 msgid "Desea crear un nuevo asiento en esa posicion?"
 msgstr ""
 
-#: bcasientoview.cpp:335
+#: bcasientoview.cpp:338
 msgid "&Si"
 msgstr ""
 
-#: bcasientoview.cpp:335
+#: bcasientoview.cpp:338
 msgid "&No"
 msgstr ""
 
-#: bcasientoview.cpp:949
+#: bcasientoview.cpp:952
 msgid "Cuenta de Regularizacion incorrecta. Revise la configuracion"
 msgstr ""
 
-#: ui_bcasientolistbase.h:418
+#: ui_bcasientolistbase.h:462
 msgid "Listado de asientos"
 msgstr ""
 
-#: ui_bcasientolistbase.h:419
+#: ui_bcasientolistbase.h:463
 msgid "&Mostrar:"
 msgstr ""
 
-#: ui_bcasientolistbase.h:420
+#: ui_bcasientolistbase.h:464
 msgid "&Ejercicio:"
 msgstr ""
 
-#: ui_bcasientolistbase.h:421
+#: ui_bcasientolistbase.h:465
 msgid "&Concepto:"
 msgstr ""
 
-#: ui_bcasientolistbase.h:422
+#: ui_bcasientolistbase.h:466
 msgid "Fecha &inicial:"
 msgstr ""
 
-#: ui_bcasientolistbase.h:423
+#: ui_bcasientolistbase.h:467
 msgid "Fecha &final:"
 msgstr ""
 
-#: ui_bcasientolistbase.h:424
+#: ui_bcasientolistbase.h:468
 msgid "&Partida igual a:"
 msgstr ""
 
-#: ui_bcasientolistbase.h:425
+#: ui_bcasientolistbase.h:469
 msgid "y   ( >="
 msgstr ""
 
-#: ui_bcasientolistbase.h:426
+#: ui_bcasientolistbase.h:470
 msgid "y <="
 msgstr ""
 
-#: ui_bcasientolistbase.h:427
+#: ui_bcasientolistbase.h:471
 msgid ")"
 msgstr ""
 
-#: ui_bcasientolistbase.h:428 ui_bcasientobase.h:571
-msgid "Total Debe:"
+#: ui_bcasientolistbase.h:472
+msgid "Debe:"
 msgstr ""
 
-#: ui_bcasientolistbase.h:429 ui_bcasientobase.h:572
-msgid "Total Haber:"
+#: ui_bcasientolistbase.h:473
+msgid "Haber:"
 msgstr ""
 
-#: ui_bcasientolistbase.h:431 ui_bcasientolistbase.h:434
+#: ui_bcasientolistbase.h:474
+msgid "Debe (borrador):"
+msgstr ""
+
+#: ui_bcasientolistbase.h:475
+msgid "Haber (borrador):"
+msgstr ""
+
+#: ui_bcasientolistbase.h:477 ui_bcasientolistbase.h:480
 msgid "Imprimir"
 msgstr ""
 
-#: ui_bcasientolistbase.h:438 ui_bcasientolistbase.h:441
+#: ui_bcasientolistbase.h:484 ui_bcasientolistbase.h:487
 msgid "Filtrar"
 msgstr ""
 
-#: ui_bcasientolistbase.h:445 ui_bcasientolistbase.h:448
+#: ui_bcasientolistbase.h:491 ui_bcasientolistbase.h:494
 #: ui_bcasientobase.h:524 ui_bcasientobase.h:527
 msgid "Configurar"
 msgstr ""
 
-#: ui_bcasientolistbase.h:452 ui_bcasientolistbase.h:455
+#: ui_bcasientolistbase.h:498 ui_bcasientolistbase.h:501
 msgid "Actualizar"
 msgstr ""
 
@@ -497,6 +514,14 @@ msgstr ""
 
 #: ui_bcasientobase.h:570
 msgid "Saldo:"
+msgstr ""
+
+#: ui_bcasientobase.h:571
+msgid "Total Debe:"
+msgstr ""
+
+#: ui_bcasientobase.h:572
+msgid "Total Haber:"
 msgstr ""
 
 #: ui_bcasientointeligentebase.h:210

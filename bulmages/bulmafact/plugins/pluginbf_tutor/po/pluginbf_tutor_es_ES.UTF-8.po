@@ -8,10 +8,11 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2010-09-23 18:50+0200\n"
+"POT-Creation-Date: 2011-02-07 11:21+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -114,15 +115,15 @@ msgstr ""
 "#-#-#-#-#  pluginabrevs.pot (PACKAGE VERSION)  #-#-#-#-#\n"
 "#-#-#-#-#  bulmages_suite.pot (PACKAGE VERSION)  #-#-#-#-#\n"
 
-#: ui_tutorbase.h:522
+#: ui_tutorbase.h:571
 msgid "&Aceptar"
 msgstr "&Aceptar"
 
-#: ui_tutorbase.h:523
+#: ui_tutorbase.h:572
 msgid "&Cancelar"
 msgstr "&Cancelar"
 
-#: ui_tutorbase.h:539
+#: ui_tutorbase.h:589
 msgid "&Datos generales"
 msgstr "&Datos generales"
 
@@ -134,7 +135,7 @@ msgstr ""
 msgid "&Padres/Socios"
 msgstr ""
 
-#: tutoreslist.cpp:270
+#: tutoreslist.cpp:273
 msgid "1er Apellido"
 msgstr ""
 
@@ -142,11 +143,11 @@ msgstr ""
 msgid "1er apellido del tutor"
 msgstr ""
 
-#: ui_tutorbase.h:535
+#: ui_tutorbase.h:577
 msgid "1er apellido:"
 msgstr ""
 
-#: tutoreslist.cpp:271
+#: tutoreslist.cpp:274
 msgid "2o Apellido"
 msgstr ""
 
@@ -154,7 +155,7 @@ msgstr ""
 msgid "2o apellido del tutor"
 msgstr ""
 
-#: ui_tutorbase.h:536
+#: ui_tutorbase.h:578
 msgid "2o apellido:"
 msgstr ""
 
@@ -162,23 +163,43 @@ msgstr ""
 msgid "Actualizar listado"
 msgstr "Actualizar listado"
 
-#: ui_tutorbase.h:534
+#: ui_tutorbase.h:588
+msgid "Alta Rápida de Hijos"
+msgstr ""
+
+#: tutorview.cpp:104
+msgid "Alumno 1:"
+msgstr ""
+
+#: tutorview.cpp:111
+msgid "Alumno 2:"
+msgstr ""
+
+#: tutorview.cpp:118
+msgid "Alumno 3:"
+msgstr ""
+
+#: tutorview.cpp:125
+msgid "Alumno 4:"
+msgstr ""
+
+#: ui_tutorbase.h:585
 msgid "Banco:"
 msgstr "Banco:"
 
-#: tutoreslist.cpp:221 ui_tutoreslistbase.h:262 ui_tutoreslistbase.h:265
+#: ui_tutorbase.h:556 ui_tutorbase.h:559 ui_tutorbase.h:564 ui_tutorbase.h:567
+msgid "Borrar"
+msgstr "Borrar"
+
+#: tutoreslist.cpp:224 ui_tutoreslistbase.h:262 ui_tutoreslistbase.h:265
 msgid "Borrar Tutor"
 msgstr "Borrar Tutor"
-
-#: ui_tutorbase.h:507 ui_tutorbase.h:510 ui_tutorbase.h:515 ui_tutorbase.h:518
-msgid "Borrar cobro"
-msgstr "Borrar cobro"
 
 #: ui_tutoreslistbase.h:301
 msgid "Buscar:"
 msgstr "Buscar:"
 
-#: tutoreslist.cpp:273
+#: tutoreslist.cpp:276
 msgid "C.I.F."
 msgstr "C.I.F."
 
@@ -186,23 +207,23 @@ msgstr "C.I.F."
 msgid "Cantidad"
 msgstr "Cantidad"
 
-#: tutoreslist.cpp:272
+#: tutoreslist.cpp:275
 msgid "Codigo"
 msgstr "Código"
 
-#: tutoreslist.cpp:278
+#: tutoreslist.cpp:281
 msgid "Codigo postal"
 msgstr "Código postal"
 
-#: ui_tutorbase.h:538
+#: ui_tutorbase.h:586
 msgid "Codigo postal:"
 msgstr "Codigo postal:"
 
-#: tutoreslist.cpp:286
+#: tutoreslist.cpp:289
 msgid "Comentarios"
 msgstr "Comentarios"
 
-#: ui_tutorbase.h:540
+#: ui_tutorbase.h:590
 msgid "Comentarios:"
 msgstr "Comentarios:"
 
@@ -214,7 +235,7 @@ msgstr "Configurar listado"
 msgid "Ctrl+B"
 msgstr "Ctrl+B"
 
-#: ui_tutorbase.h:513 ui_tutoreslistbase.h:268
+#: ui_tutorbase.h:562 ui_tutoreslistbase.h:268
 msgid "Ctrl+D"
 msgstr "Ctrl+D"
 
@@ -226,7 +247,7 @@ msgstr "Ctrl+E"
 msgid "Ctrl+F"
 msgstr "Ctrl+F"
 
-#: ui_tutorbase.h:521
+#: ui_tutorbase.h:570
 msgid "Ctrl+I"
 msgstr "Ctrl+I"
 
@@ -238,55 +259,55 @@ msgstr "Ctrl+N"
 msgid "Ctrl+P"
 msgstr "Ctrl+P"
 
-#: ui_tutorbase.h:505
+#: ui_tutorbase.h:554
 msgid "Ctrl+S"
 msgstr "Ctrl+S"
 
-#: tutoreslist.cpp:204
+#: tutoreslist.cpp:207
 msgid "Debe seleccionar una fila primero"
 msgstr "Debe seleccionar una fila primero"
 
-#: tutoreslist.cpp:162
+#: tutoreslist.cpp:165
 msgid "Debe seleccionar una linea"
 msgstr "Debe seleccionar una linea"
 
-#: tutoreslist.cpp:276
+#: tutoreslist.cpp:279
 msgid "Direccion"
 msgstr "Dirección"
 
-#: tutoreslist.cpp:282
+#: tutoreslist.cpp:285
 msgid "Direccion URL"
 msgstr "Dirección URL"
 
-#: tutoreslist.cpp:281
+#: tutoreslist.cpp:284
 msgid "Direccion de correo electronica"
 msgstr "Dirección de correo electrónico"
 
-#: ui_tutorbase.h:528
+#: ui_tutorbase.h:579
 msgid "Direccion:"
 msgstr "Direccion:"
 
-#: ui_tutorbase.h:533
+#: ui_tutorbase.h:584
 msgid "E-Mail:"
 msgstr "E-mail:"
 
-#: tutoreslist.cpp:220 ui_tutoreslistbase.h:254 ui_tutoreslistbase.h:257
+#: tutoreslist.cpp:223 ui_tutoreslistbase.h:254 ui_tutoreslistbase.h:257
 msgid "Editar Tutor"
 msgstr "Editar Tutor"
 
-#: pluginbf_tutor.cpp:372 pluginbf_tutor.cpp:389
+#: pluginbf_tutor.cpp:413 pluginbf_tutor.cpp:430
 msgid "Editar tutor"
 msgstr ""
 
-#: tutoreslist.cpp:283
+#: tutoreslist.cpp:286
 msgid "Empresa"
 msgstr "Empresa"
 
-#: tutoreslist.cpp:176
+#: tutoreslist.cpp:179
 msgid "Error al borrar el cobro a cliente"
 msgstr "Error al borrar el cobro a cliente"
 
-#: tutorview.cpp:111
+#: tutorview.cpp:138
 msgid "Error al crear el tutor"
 msgstr "Error al crear el tutor"
 
@@ -302,11 +323,11 @@ msgstr "F5"
 msgid "Fecha"
 msgstr "Fecha"
 
-#: tutoreslist.cpp:284
+#: tutoreslist.cpp:287
 msgid "Fecha de alta del cliente"
 msgstr "Fecha de alta del cliente"
 
-#: tutoreslist.cpp:285
+#: tutoreslist.cpp:288
 msgid "Fecha de baja del cliente"
 msgstr "Fecha de baja del cliente"
 
@@ -314,7 +335,7 @@ msgstr "Fecha de baja del cliente"
 msgid "Filtrar Tutores"
 msgstr "Filtrar Tutores"
 
-#: ui_tutorbase.h:537
+#: ui_tutorbase.h:587
 msgid "Forma Pago:"
 msgstr ""
 
@@ -322,11 +343,11 @@ msgstr ""
 msgid "Forma de Pago"
 msgstr "Forma de pago"
 
-#: ui_tutorbase.h:499 ui_tutorbase.h:502
-msgid "Guardar cobro"
-msgstr "Guardar cobro"
+#: ui_tutorbase.h:548 ui_tutorbase.h:551
+msgid "Guardar"
+msgstr "Guardar"
 
-#: ui_tutorbase.h:542
+#: ui_tutorbase.h:592
 msgid "Hijos"
 msgstr "Hijos"
 
@@ -338,7 +359,7 @@ msgstr ""
 msgid "ID Tutor"
 msgstr ""
 
-#: tutoreslist.cpp:266
+#: tutoreslist.cpp:269
 msgid "ID padre"
 msgstr ""
 
@@ -346,15 +367,15 @@ msgstr ""
 msgid "ID tutor"
 msgstr "ID tutor"
 
-#: tutorview.cpp:257
+#: tutorview.cpp:375
 msgid "Id alumno"
 msgstr "ID alumno"
 
-#: tutorview.cpp:260
+#: tutorview.cpp:378
 msgid "Id tutor"
 msgstr "ID tutor"
 
-#: tutorview.cpp:256
+#: tutorview.cpp:374
 msgid "Identificador"
 msgstr "Identificador"
 
@@ -362,19 +383,19 @@ msgstr "Identificador"
 msgid "Imprimir listado"
 msgstr "Imprimir listado"
 
-#: ui_tutorbase.h:524
+#: ui_tutorbase.h:573
 msgid "NIF:"
 msgstr "N.I.F.:"
 
-#: tutoreslist.cpp:269
+#: tutoreslist.cpp:272
 msgid "Nombre"
 msgstr "Nombre"
 
-#: tutoreslist.cpp:274
+#: tutoreslist.cpp:277
 msgid "Nombre alternativo del cliente"
 msgstr "Nombre alternativo del cliente"
 
-#: tutorview.cpp:258
+#: tutorview.cpp:376
 msgid "Nombre alumno"
 msgstr "Nombre alumno"
 
@@ -382,11 +403,11 @@ msgstr "Nombre alumno"
 msgid "Nombre del tutor"
 msgstr "Nombre del tutor"
 
-#: ui_tutorbase.h:527
+#: ui_tutorbase.h:576
 msgid "Nombre:"
 msgstr "Nombre:"
 
-#: ui_tutorbase.h:496
+#: ui_tutorbase.h:545
 msgid "Nuevo Padre/Socio"
 msgstr ""
 
@@ -398,15 +419,15 @@ msgstr "Nuevo Tutor"
 msgid "Nuevo padre/socio"
 msgstr ""
 
-#: pluginbf_tutor.cpp:370 pluginbf_tutor.cpp:395
+#: pluginbf_tutor.cpp:411 pluginbf_tutor.cpp:436
 msgid "Nuevo tutor"
 msgstr "Nuevo tutor"
 
-#: tutoreslist.cpp:268
+#: tutoreslist.cpp:271
 msgid "Numero Socio"
 msgstr "Número de socio"
 
-#: tutoreslist.cpp:275
+#: tutoreslist.cpp:278
 msgid "Numero cuenta corriente"
 msgstr "Número cuenta corriente"
 
@@ -416,19 +437,19 @@ msgstr "Número cuenta corriente"
 msgid "Numero de Socio"
 msgstr "Número de socio"
 
-#: tutoreslist.cpp:280
+#: tutoreslist.cpp:283
 msgid "Numero de fax"
 msgstr "Número de fax"
 
-#: tutoreslist.cpp:279
+#: tutoreslist.cpp:282
 msgid "Numero de telefono"
 msgstr "Número de teléfono"
 
-#: ui_tutorbase.h:526
+#: ui_tutorbase.h:575
 msgid "Nº Socio:"
 msgstr ""
 
-#: ui_tutorbase.h:541
+#: ui_tutorbase.h:591
 msgid "Otros datos"
 msgstr "Otros datos"
 
@@ -436,7 +457,7 @@ msgstr "Otros datos"
 msgid "Padre"
 msgstr "Padre"
 
-#: tutoreslist.cpp:146 ui_tutoreslistbase.h:243
+#: tutoreslist.cpp:149 ui_tutoreslistbase.h:243
 msgid "Padres"
 msgstr ""
 
@@ -448,15 +469,15 @@ msgstr ""
 msgid "Pagado"
 msgstr "Pagado"
 
-#: tutoreslist.cpp:277
+#: tutoreslist.cpp:280
 msgid "Poblacion"
 msgstr "Población"
 
-#: ui_tutorbase.h:530
+#: ui_tutorbase.h:581
 msgid "Poblacion:"
 msgstr "Poblacion:"
 
-#: tutorview.cpp:259
+#: tutorview.cpp:377
 msgid "Porcentaje Fact."
 msgstr ""
 
@@ -464,31 +485,31 @@ msgstr ""
 msgid "Provincia"
 msgstr "Provincia"
 
-#: ui_tutorbase.h:529
+#: ui_tutorbase.h:580
 msgid "Provincia:"
 msgstr "Provincia:"
 
-#: ui_tutorbase.h:543
+#: ui_tutorbase.h:593
 msgid "Recibos"
 msgstr ""
 
-#: pluginbf_tutor.cpp:374 pluginbf_tutor.cpp:393
+#: pluginbf_tutor.cpp:415 pluginbf_tutor.cpp:434
 msgid "Seleccionar tutor"
 msgstr ""
 
-#: ui_tutorbase.h:525
+#: ui_tutorbase.h:574
 msgid "Socio"
 msgstr "Socio"
 
-#: ui_tutorbase.h:531
+#: ui_tutorbase.h:582
 msgid "Telefono fijo:"
 msgstr "Telefono fijo:"
 
-#: ui_tutorbase.h:532
+#: ui_tutorbase.h:583
 msgid "Telefono movil:"
 msgstr "Telefono movil:"
 
-#: tutorview.cpp:156
+#: tutorview.cpp:183
 msgid "Tiene que guardar el documento antes de poder imprimirlo."
 msgstr "Tiene que guardar el documento antes de poder imprimirlo."
 
@@ -509,6 +530,9 @@ msgstr "Tiene que guardar el documento antes de poder imprimirlo."
 
 #~ msgid "2o apellido"
 #~ msgstr "2o apellido"
+
+#~ msgid "Borrar cobro"
+#~ msgstr "Borrar cobro"
 
 #~ msgid "C.I.F./N.I.F./N.I.E.:"
 #~ msgstr "C.I.F./N.I.F./N.I.E.:"
@@ -536,6 +560,9 @@ msgstr "Tiene que guardar el documento antes de poder imprimirlo."
 
 #~ msgid "Forma Pago"
 #~ msgstr "Forma de pago"
+
+#~ msgid "Guardar cobro"
+#~ msgstr "Guardar cobro"
 
 #~ msgid "Nombre completo:"
 #~ msgstr "Nombre completo:"

@@ -3,10 +3,11 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2010-09-23 18:12+0200\n"
+"POT-Creation-Date: 2011-02-04 12:53+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -331,7 +332,7 @@ msgstr "Esborra forma de pagament"
 msgid "CODIGO"
 msgstr "CODI"
 
-#: bcbulmacont.cpp:491
+#: bcbulmacont.cpp:513
 msgid "Cambiando a modo de pantalla completa..."
 msgstr "Canviant a mode de pantalla completa ..."
 
@@ -339,7 +340,7 @@ msgstr "Canviant a mode de pantalla completa ..."
 msgid "Cambiar Cuenta"
 msgstr "Canviar compte"
 
-#: bcbulmacont.cpp:473
+#: bcbulmacont.cpp:495
 msgid "Cambinado barra de estado..."
 msgstr "Canviant barra de estat..."
 
@@ -361,7 +362,7 @@ msgstr "Canals"
 msgid "Cancelar"
 msgstr "Cancel·la"
 
-#: main.cxx:161
+#: main.cxx:164
 msgid "Cargando plugins"
 msgstr "Carregant plugins"
 
@@ -430,11 +431,11 @@ msgstr "Arranjament"
 msgid "Contabilidad GPL"
 msgstr ""
 
-#: bcbulmacont.cpp:448
+#: bcbulmacont.cpp:470
 msgid "Copiando la seleccion al portapapeles..."
 msgstr "Copiant la selecció al portapapers..."
 
-#: bcbulmacont.cpp:436
+#: bcbulmacont.cpp:458
 msgid "Cortando seleccion..."
 msgstr "Tallant la sel·lecció..."
 
@@ -546,7 +547,7 @@ msgstr "Desitja desar els canvis."
 msgid "Desea guardar los cambios?"
 msgstr "Desitja desar els canvis?"
 
-#: bcbulmacont.cpp:424
+#: bcbulmacont.cpp:446
 msgid "Deshaciendo la ultima accion..."
 msgstr ""
 
@@ -587,7 +588,7 @@ msgstr "Posi l'any:"
 msgid "Error en la carga de centros de coste"
 msgstr "Error en la càrrega de l'amortizació"
 
-#: main.cxx:190
+#: main.cxx:193
 msgid "Error inesperado en BulmaCont, el programa se cerrara."
 msgstr ""
 
@@ -774,9 +775,9 @@ msgstr "Informació de depuració"
 msgid "Informacion del tipo de IVA:"
 msgstr "Informació del programa"
 
-#: main.cxx:173
+#: main.cxx:176
 msgid "Inicializando componentes"
-msgstr ""
+msgstr "Inicialitzant components"
 
 #: main.cxx:105
 msgid "Iniciando clases"
@@ -787,7 +788,7 @@ msgstr "Inicialitzant classes"
 msgid "Inicio"
 msgstr "Inactiu"
 
-#: bcbulmacont.cpp:460
+#: bcbulmacont.cpp:482
 msgid "Insertando el contenido del portapapeles..."
 msgstr "Inserint el contingut en el portapapers..."
 
@@ -796,12 +797,12 @@ msgstr "Inserint el contingut en el portapapers..."
 msgid "Invertir"
 msgstr "Comentari"
 
-#: main.cxx:167
+#: main.cxx:170
 #, fuzzy
 msgid "Lanzando plugins"
 msgstr "Llançador BulmaGés"
 
-#: main.cxx:131
+#: main.cxx:134
 #, fuzzy
 msgid "Leyendo configuracion"
 msgstr "Arranjament"
@@ -811,7 +812,7 @@ msgstr "Arranjament"
 msgid "Listado &347"
 msgstr "&Llistats"
 
-#: bcbulmacont.cpp:521
+#: bcbulmacont.cpp:543
 msgid "Listado de cuentas"
 msgstr ""
 
@@ -819,9 +820,9 @@ msgstr ""
 msgid "Listado para el modelo 347"
 msgstr "Llistat pel model 347"
 
-#: bcbulmacont.cpp:399 bcbulmacont.cpp:425 bcbulmacont.cpp:437
-#: bcbulmacont.cpp:449 bcbulmacont.cpp:461 bcbulmacont.cpp:479
-#: bcbulmacont.cpp:497
+#: bcbulmacont.cpp:421 bcbulmacont.cpp:447 bcbulmacont.cpp:459
+#: bcbulmacont.cpp:471 bcbulmacont.cpp:483 bcbulmacont.cpp:501
+#: bcbulmacont.cpp:519
 msgid "Listo."
 msgstr "Preparat."
 
@@ -922,7 +923,7 @@ msgstr "Nombre de terminis:"
 
 #: ui_bcbulmacontbase.h:281
 msgid "Ordenar &ventanas"
-msgstr ""
+msgstr "Ordena &finestres"
 
 #: ui_bcbulmacontbase.h:282
 msgid "Organizacion en &cascada"
@@ -1026,7 +1027,7 @@ msgstr "Abandona del programa"
 msgid "Se han cerrado los asientos"
 msgstr "Tots els assentaments"
 
-#: bcbulmacont.cpp:602
+#: bcbulmacont.cpp:624
 msgid "Se perderan los cambios no guardados"
 msgstr "Es perdran els canvis no enmagatzemats"
 
@@ -1062,7 +1063,7 @@ msgstr ""
 msgid "Segundo Periodo"
 msgstr "Primer període"
 
-#: bcbulmacont.cpp:601
+#: bcbulmacont.cpp:623
 msgid "Seguro que desea abandonar el programa "
 msgstr "Segur que desitja abandonar el programa"
 
@@ -1097,7 +1098,7 @@ msgstr "Supor&t"
 msgid "Status"
 msgstr ""
 
-#: bcsubform.cpp:472
+#: bcsubform.cpp:467
 msgid "Submenu de contabilidad"
 msgstr ""
 
@@ -1105,7 +1106,7 @@ msgstr ""
 msgid "Suman"
 msgstr "Sumen"
 
-#: main.cxx:179 bccompany.cpp:218
+#: main.cxx:182 bccompany.cpp:218
 #, fuzzy
 msgid "Terminado"
 msgstr "<LI>Terminat</LI>\n"

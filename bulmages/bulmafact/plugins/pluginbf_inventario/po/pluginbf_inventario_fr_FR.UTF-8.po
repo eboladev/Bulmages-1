@@ -1,47 +1,46 @@
 # Header entry was created by Lokalize.
 #
-#: ui_inventariobase.h:365
 # aishen <aishen@free.fr>, 2011.
 msgid ""
 msgstr ""
-"Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
-"Mime-Version: 1.0"
-"Last-Translator: aishen <aishen@free.fr>\n"
-"PO-Revision-Date: 2011-02-11 16:46+0100\n"
 "Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: info@iglues.org\n"
+"POT-Creation-Date: 2011-02-04 12:54+0100\n"
+"PO-Revision-Date: 2011-02-11 16:46+0100\n"
 "Language-Team: French <kde-i18n-doc@kde.org>\n"
 "Language: fr\n"
-"X-Generator: Lokalize 1.2\n"
 "MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Lokalize 1.2\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
-#: ui_inventariobase.h:365
+#: ui_inventariobase.h:340
 msgid "&Aceptar"
 msgstr "&Accepter"
 
-#: ui_inventariobase.h:366
+#: ui_inventariobase.h:341
 msgid "&Cancelar"
 msgstr "&Annuler"
 
-#: ui_inventariobase.h:364
+#: ui_inventariobase.h:339
 msgid "&Detalle"
 msgstr "&Détail"
 
-#: plugininventario.cpp:72
+#: pluginbf_inventario.cpp:78
 msgid "&Inventarios"
 msgstr "&Inventaires"
 
-#: ui_inventariobase.h:341 ui_inventariobase.h:346
+#: ui_inventariobase.h:323 ui_inventariobase.h:326
 msgid "Actualizar listado"
 msgstr "Actualiser la liste"
 
-#: plugininventario.cpp:116
+#: pluginbf_inventario.cpp:125
 msgid "Almacen"
 msgstr "Magasin"
 
-#: inventarioview.cpp:105 ui_inventariobase.h:308 ui_inventariobase.h:313
-#: ui_inventariosbase.h:181 ui_inventariosbase.h:186
+#: inventarioview.cpp:105 ui_inventariobase.h:302 ui_inventariobase.h:305
+#: ui_inventariosbase.h:180 ui_inventariosbase.h:183
 msgid "Borrar inventario"
 msgstr "Effacer l'inventaire"
 
@@ -53,11 +52,11 @@ msgstr "Code magasin"
 msgid "Codigo completo articulo"
 msgstr "Code complet de l'article"
 
-#: ui_inventariobase.h:361
+#: ui_inventariobase.h:336
 msgid "Descripcion:"
 msgstr "Description :"
 
-#: ui_inventariosbase.h:170 ui_inventariosbase.h:175
+#: ui_inventariosbase.h:173 ui_inventariosbase.h:176
 msgid "Editar inventario"
 msgstr "Editer l'inventaire"
 
@@ -65,39 +64,39 @@ msgstr "Editer l'inventaire"
 msgid "Esta a punto de borrar un inventario. Desea continuar?"
 msgstr "Vous êtes sur le point d'effacer l'inventaire. Voulez vous continuer ?"
 
-#: ui_inventariobase.h:360
+#: ui_inventariobase.h:335
 msgid "Familia"
 msgstr "Famille"
 
-#: ui_inventariobase.h:362
+#: ui_inventariobase.h:337
 msgid "Fecha creacion:"
 msgstr "Date de création :"
 
-#: inventariosview.cpp:281
+#: inventariosview.cpp:285
 msgid "Fecha del inventario"
 msgstr "Date d'inventaire"
 
-#: inventario.cpp:42
+#: inventario.cpp:43
 msgid "Fecha inventario"
 msgstr "Date d'inventaire"
 
-#: ui_inventariobase.h:319 ui_inventariobase.h:324
+#: ui_inventariobase.h:309 ui_inventariobase.h:312
 msgid "Filtrar listado"
 msgstr "Filtrer la liste"
 
-#: ui_inventariobase.h:297 ui_inventariobase.h:302
+#: ui_inventariobase.h:295 ui_inventariobase.h:298
 msgid "Guardar inventario"
 msgstr "Sauvegarder l'inventaire"
 
-#: plugininventario.cpp:120
+#: pluginbf_inventario.cpp:129
 msgid "ID Trabajador"
 msgstr "Id Ouvrier"
 
-#: plugininventario.cpp:119
+#: pluginbf_inventario.cpp:128
 msgid "ID Validacion"
 msgstr "Id validation"
 
-#: plugininventario.cpp:117
+#: pluginbf_inventario.cpp:126
 msgid "Id Almacen"
 msgstr "Id du magasin"
 
@@ -105,40 +104,40 @@ msgstr "Id du magasin"
 msgid "Id articulo"
 msgstr "Id article"
 
-#: inventariosview.cpp:279
+#: inventariosview.cpp:283
 msgid "Id inventario"
 msgstr "Id d'inventaire"
 
-#: inventario.cpp:41
+#: inventario.cpp:42
 msgid "Identificador inventario"
 msgstr "Identificateur d'inventaire"
 
-#: ui_inventariosbase.h:192 ui_inventariosbase.h:197 ui_inventariosbase.h:203
-#: ui_inventariosbase.h:208
+#: ui_inventariosbase.h:187 ui_inventariosbase.h:190 ui_inventariosbase.h:194
+#: ui_inventariosbase.h:197
 msgid "Imprimir Stocks Actuales"
 msgstr "Imprimer les stocks courants"
 
-#: ui_inventariobase.h:330 ui_inventariobase.h:335
+#: ui_inventariobase.h:316 ui_inventariobase.h:319
 msgid "Imprimir listado"
 msgstr "Imprimer la liste"
 
-#: inventario.cpp:38 ui_inventariobase.h:294
+#: inventario.cpp:39 ui_inventariobase.h:293
 msgid "Inventario"
 msgstr "Inventaire"
 
-#: plugininventario.cpp:73 plugininventario.cpp:74
+#: pluginbf_inventario.cpp:79 pluginbf_inventario.cpp:80
 msgid "Inventarios"
 msgstr "Inventaires"
 
-#: ui_inventariosbase.h:156
+#: ui_inventariosbase.h:164
 msgid "Listado de inventarios"
 msgstr "Liste des inventaires"
 
-#: plugininventario.cpp:118
+#: pluginbf_inventario.cpp:127
 msgid "Minimo"
 msgstr "Minimum"
 
-#: plugininventario.cpp:112
+#: pluginbf_inventario.cpp:121
 msgid "Minimos almacen"
 msgstr "Minimum Magasin"
 
@@ -154,23 +153,23 @@ msgstr "Nom du magasin"
 msgid "Nombre articulo"
 msgstr "Nom de l'article"
 
-#: inventariosview.cpp:280
+#: inventariosview.cpp:284
 msgid "Nombre del inventario"
 msgstr "Nom d'Inventaire"
 
-#: inventario.cpp:43
+#: inventario.cpp:44
 msgid "Nombre inventario"
 msgstr "Nom d'inventaire"
 
-#: ui_inventariosbase.h:159 ui_inventariosbase.h:164
+#: ui_inventariosbase.h:166 ui_inventariosbase.h:169
 msgid "Nuevo inventario"
 msgstr "Nouvel Inventaire"
 
-#: ui_inventariobase.h:352 ui_inventariobase.h:357
+#: ui_inventariobase.h:330 ui_inventariobase.h:333
 msgid "Pregenerar inventario"
 msgstr "Production d'inventaire"
 
-#: ui_inventariobase.h:363
+#: ui_inventariobase.h:338
 msgid "Procesado"
 msgstr "Accusé"
 
@@ -190,7 +189,7 @@ msgstr "Oui"
 msgid "Stock anterior"
 msgstr "Stock Précédent"
 
-#: plugininventario.cpp:205
+#: pluginbf_inventario.cpp:214
 msgid "Stock minimo superado"
 msgstr "Stock minimal dépassé"
 
@@ -202,7 +201,6 @@ msgstr "Stock révisé"
 msgid "Tiene que escribir una descripcion de inventario antes de guardar"
 msgstr "Voulez vous ajouter une description avant de sauvegarder"
 
-#: inventariosview.cpp:122 inventariosview.cpp:148
+#: inventariosview.cpp:124 inventariosview.cpp:151
 msgid "Tiene que seleccionar un inventario"
 msgstr "Vous devez sélectionner un inventaire"
-

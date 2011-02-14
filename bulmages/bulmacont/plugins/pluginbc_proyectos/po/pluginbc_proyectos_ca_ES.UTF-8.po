@@ -4,10 +4,11 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2010-09-23 18:22+0200\n"
+"POT-Creation-Date: 2011-02-04 12:54+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -111,12 +112,12 @@ msgstr "Descripció"
 msgid "Ejercicio"
 msgstr "Exercici"
 
-#: listproyectosview.cpp:114
+#: listproyectosview.cpp:117
 #, fuzzy
 msgid "Error al borrar la amortizacion"
 msgstr "Error en la càrrega de l'amortizació"
 
-#: proyectoview.cpp:109
+#: proyectoview.cpp:113
 #, fuzzy
 msgid "Error al crear el almacen"
 msgstr "Error en la càrrega de l'amortizació"
@@ -231,7 +232,7 @@ msgstr "Propietari"
 msgid "Proyectos"
 msgstr "Paràmetres"
 
-#: pluginbc_proyectos.cpp:116
+#: pluginbc_proyectos.cpp:119
 #, fuzzy
 msgid "Proyectos asociados"
 msgstr "Paràmetres"

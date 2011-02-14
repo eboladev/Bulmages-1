@@ -8,16 +8,17 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2010-09-23 18:57+0200\n"
+"POT-Creation-Date: 2011-02-04 12:55+0100\n"
 "PO-Revision-Date: 2009-10-12 16:47+0200\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
+"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: pluginbf_carteracobros.cpp:243
+#: pluginbf_carteracobros.cpp:247
 msgid "Cantidad"
 msgstr "Quantitat"
 
@@ -37,7 +38,7 @@ msgstr "Comentaris"
 msgid "Descripcion"
 msgstr "Descripció"
 
-#: pluginbf_carteracobros.cpp:123
+#: pluginbf_carteracobros.cpp:127
 msgid "Dias tras factura"
 msgstr ""
 
@@ -45,7 +46,7 @@ msgstr ""
 msgid "Estado de vencimiento"
 msgstr ""
 
-#: pluginbf_carteracobros.cpp:242
+#: pluginbf_carteracobros.cpp:246
 msgid "Fecha"
 msgstr "Data"
 
@@ -58,11 +59,11 @@ msgstr "Data de l'assentament"
 msgid "Fecha efectiva"
 msgstr ""
 
-#: pluginbf_carteracobros.cpp:125 pluginbf_carteracobros.cpp:244
+#: pluginbf_carteracobros.cpp:129 pluginbf_carteracobros.cpp:248
 msgid "Forma de pago"
 msgstr "Forma de pagament"
 
-#: pluginbf_carteracobros.cpp:126 pluginbf_carteracobros.cpp:248
+#: pluginbf_carteracobros.cpp:130 pluginbf_carteracobros.cpp:252
 #, fuzzy
 msgid "Id cliente"
 msgstr "Id compte"
@@ -72,25 +73,25 @@ msgstr "Id compte"
 msgid "Id cobro"
 msgstr "Id esborrany"
 
-#: pluginbf_carteracobros.cpp:246
+#: pluginbf_carteracobros.cpp:250
 #, fuzzy
 msgid "Id factura"
 msgstr "Factura"
 
-#: pluginbf_carteracobros.cpp:127 pluginbf_carteracobros.cpp:247
+#: pluginbf_carteracobros.cpp:131 pluginbf_carteracobros.cpp:251
 #, fuzzy
 msgid "Id forma de pago"
 msgstr "<LI> Forma de pagament <B>"
 
-#: pluginbf_carteracobros.cpp:122 pluginbf_carteracobros.cpp:241
+#: pluginbf_carteracobros.cpp:126 pluginbf_carteracobros.cpp:245
 msgid "Id vencimiento"
 msgstr ""
 
-#: pluginbf_carteracobros.cpp:124
+#: pluginbf_carteracobros.cpp:128
 msgid "Porcentaje"
 msgstr "Percentual"
 
-#: pluginbf_carteracobros.cpp:245
+#: pluginbf_carteracobros.cpp:249
 #, fuzzy
 msgid "Procesado"
 msgstr "Propietari"

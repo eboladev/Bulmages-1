@@ -4,10 +4,11 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2010-09-23 18:23+0200\n"
+"POT-Creation-Date: 2011-02-04 12:54+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -86,6 +87,10 @@ msgstr "&Tipus d'article"
 msgid "1"
 msgstr "F1"
 
+#: pluginbf_articulo.cpp:574
+msgid "<F2> Abre selector de articulos."
+msgstr ""
+
 #: articuloview.cpp:64
 #, fuzzy
 msgid "Abreviacion"
@@ -119,7 +124,7 @@ msgstr "<P> Article <B>"
 msgid "Articulos"
 msgstr "<P> Article <B>"
 
-#: familiasview.cpp:475 tiposarticuloview.cpp:384 ui_articleeditbase.h:594
+#: familiasview.cpp:476 tiposarticuloview.cpp:385 ui_articleeditbase.h:594
 #: ui_articleeditbase.h:597
 msgid "Borrar"
 msgstr "Esborra"
@@ -134,7 +139,7 @@ msgstr "Esborrar"
 msgid "Borrar Tipo de articulo"
 msgstr "Esborra forma de pagament"
 
-#: articulolist.cpp:168 articulolist.cpp:314 ui_articleslistbase.h:306
+#: articulolist.cpp:170 articulolist.cpp:316 ui_articleslistbase.h:306
 #: ui_articleslistbase.h:309
 #, fuzzy
 msgid "Borrar articulo"
@@ -145,7 +150,7 @@ msgstr "Esborra amortització"
 msgid "Borrar imagen"
 msgstr "Esborra assentament"
 
-#: articuloview.cpp:319
+#: articuloview.cpp:353
 #, fuzzy
 msgid "Borrar imagen del articulo"
 msgstr "Esborra forma de pagament"
@@ -172,12 +177,12 @@ msgstr "Canviar compte"
 msgid "Cantidad de componente de articulo"
 msgstr "Quantitat de components d'article"
 
-#: articulolist.cpp:262 articulolist.cpp:287
+#: articulolist.cpp:264 articulolist.cpp:289
 #, fuzzy
 msgid "Clientes (*.xml)"
 msgstr "Contaplus (*.xml)"
 
-#: familiasview.cpp:51 familiasview.cpp:565 tiposarticuloview.cpp:46
+#: familiasview.cpp:51 familiasview.cpp:562 tiposarticuloview.cpp:46
 #: articuloview.cpp:62
 msgid "Codigo"
 msgstr "Codi"
@@ -187,7 +192,7 @@ msgstr "Codi"
 msgid "Codigo completo"
 msgstr "Codi compte"
 
-#: comparticulolistview.cpp:42 articulolist.cpp:436
+#: comparticulolistview.cpp:42 articulolist.cpp:438
 msgid "Codigo completo del articulo"
 msgstr "Codi complet de l'article"
 
@@ -230,12 +235,12 @@ msgstr "Ctrl+N"
 msgid "Ctrl+S"
 msgstr "Ctrl+S"
 
-#: tiposarticuloview.cpp:411
+#: tiposarticuloview.cpp:412
 #, fuzzy
 msgid "Debe seleccionar un tipo"
 msgstr "Cal triar un compte"
 
-#: familiasview.cpp:354 familiasview.cpp:501
+#: familiasview.cpp:355 familiasview.cpp:502
 #, fuzzy
 msgid "Debe seleccionar una familia"
 msgstr "Cal triar un compte"
@@ -249,17 +254,17 @@ msgstr "Descripció"
 msgid "Descripcion"
 msgstr "Descripció"
 
-#: articulolist.cpp:438
+#: articulolist.cpp:440
 #, fuzzy
 msgid "Descripcion abreviada del articulo"
 msgstr "Descripció de l'amortització"
 
-#: articulolist.cpp:440
+#: articulolist.cpp:442
 #, fuzzy
 msgid "Descripcion del tipo de articulo"
 msgstr "Descripció de l'assentament"
 
-#: articulolist.cpp:441
+#: articulolist.cpp:443
 #, fuzzy
 msgid "Descripcion tipo de I.V.A."
 msgstr "Descripció del compte"
@@ -269,69 +274,69 @@ msgstr "Descripció del compte"
 msgid "Descripcion:"
 msgstr "Descripció"
 
-#: familiasview.cpp:476 tiposarticuloview.cpp:385
+#: familiasview.cpp:477 tiposarticuloview.cpp:386
 #, fuzzy
 msgid "Desea eliminar"
 msgstr "Desitja eliminar '"
 
-#: familiasview.cpp:332 tiposarticuloview.cpp:291
+#: familiasview.cpp:333 tiposarticuloview.cpp:292
 msgid "Desea guardar los cambios?"
 msgstr "Desitja desar els canvis?"
 
-#: articulolist.cpp:443
+#: articulolist.cpp:445
 msgid "Disponible en stock"
 msgstr "Disposable en estoc"
 
-#: articulolist.cpp:313 pluginbf_articulo.cpp:376 pluginbf_articulo.cpp:393
+#: articulolist.cpp:315 pluginbf_articulo.cpp:376 pluginbf_articulo.cpp:393
 #: ui_articleslistbase.h:299 ui_articleslistbase.h:302
 #, fuzzy
 msgid "Editar articulo"
 msgstr "<HR><B>Tractant Article"
 
-#: articulolist.cpp:260 articulolist.cpp:285
+#: articulolist.cpp:262 articulolist.cpp:287
 msgid "Elija el archivo"
 msgstr "Trii el arxiu"
 
-#: articulolist.cpp:179
+#: articulolist.cpp:181
 #, fuzzy
 msgid "Error al borrar el articulo"
 msgstr "Error en la càrrega de l'amortizació"
 
-#: familiasview.cpp:515 tiposarticuloview.cpp:425
+#: familiasview.cpp:516 tiposarticuloview.cpp:426
 msgid "Error al borrar la familia"
 msgstr ""
 
-#: articuloview.cpp:117
+#: articuloview.cpp:125
 #, fuzzy
 msgid "Error al crear el articulo"
 msgstr "Error en la càrrega de l'amortizació"
 
-#: familiasview.cpp:462
+#: familiasview.cpp:463
 #, fuzzy
 msgid "Error al crear la familia"
 msgstr "Error en la càrrega de l'amortizació"
 
-#: familiasview.cpp:401
+#: familiasview.cpp:402
 #, fuzzy
 msgid "Error al guardar la familia"
 msgstr "Error en la càrrega de l'amortizació"
 
-#: tiposarticuloview.cpp:139
+#: tiposarticuloview.cpp:140
 #, fuzzy
 msgid "Error en la carga"
 msgstr "Error del programa"
 
-#: tiposarticuloview.cpp:366
+#: tiposarticuloview.cpp:367
 #, fuzzy
 msgid "Error en la creacion"
 msgstr "Error en la càrrega de l'amortizació"
 
-#: articulolist.cpp:169
+#: articulolist.cpp:171
 msgid "Esta a punto de borrar un articulo. Estos datos pueden dar problemas."
 msgstr ""
 "Està a punt d'esborrar un article. Aquests dades poden donar problemes."
 
-#: articuloview.cpp:320
+#: articuloview.cpp:354
 msgid ""
 "Esta seguro que quiere borrar\n"
 "la imagen asociada a este articulo?"
@@ -352,7 +357,7 @@ msgstr "Exporta dades"
 msgid "Familia"
 msgstr "<P> Família <B>"
 
-#: familiasview.cpp:129 pluginbf_articulo.cpp:152 pluginbf_articulo.cpp:153
+#: familiasview.cpp:130 pluginbf_articulo.cpp:152 pluginbf_articulo.cpp:153
 #: ui_familiasbase.h:325
 #, fuzzy
 msgid "Familias"
@@ -372,7 +377,7 @@ msgstr "Desa"
 msgid "Guardar Familia"
 msgstr "Desar"
 
-#: tiposarticuloview.cpp:290
+#: tiposarticuloview.cpp:291
 #, fuzzy
 msgid "Guardar Tipo de Articulo"
 msgstr "Desa amortització"
@@ -382,12 +387,12 @@ msgstr "Desa amortització"
 msgid "Guardar Tipo de articulo"
 msgstr "Desar el Llibre diari"
 
-#: familiasview.cpp:331
+#: familiasview.cpp:332
 #, fuzzy
 msgid "Guardar familia"
 msgstr "Desar"
 
-#: comparticulolistview.cpp:46 articulolist.cpp:435
+#: comparticulolistview.cpp:46 articulolist.cpp:437
 #, fuzzy
 msgid "ID articulo"
 msgstr "<P> Article <B>"
@@ -415,7 +420,7 @@ msgstr "Identificador"
 msgid "Imagen del articulo:"
 msgstr "<HR><B>Tractant Article"
 
-#: articuloview.cpp:289
+#: articuloview.cpp:318
 msgid "Imagenes (*.jpg)"
 msgstr "Imatges (*.jpg)"
 
@@ -468,21 +473,21 @@ msgstr "Mostra / Amaga Detall"
 msgid "Mostrar / Ocultar detalle"
 msgstr ""
 
-#: articuloview.cpp:328
+#: articuloview.cpp:362
 #, fuzzy
 msgid ""
 "No se ha podido borrar el archivo.\n"
 "Compruebe que el archivo tenga los permisos correctos."
 msgstr "&No."
 
-#: articuloview.cpp:295
+#: articuloview.cpp:324
 #, fuzzy
 msgid ""
 "No se ha podido cargar la imagen.\n"
 "Compruebe que la imagen sea valida."
 msgstr "&No."
 
-#: articuloview.cpp:233
+#: articuloview.cpp:262
 #, fuzzy
 msgid ""
 "No se ha podido guardar la imagen.\n"
@@ -490,11 +495,11 @@ msgid ""
 "de espacio libre suficiente en el disco duro."
 msgstr "&No."
 
-#: familiasview.cpp:51 familiasview.cpp:566
+#: familiasview.cpp:51 familiasview.cpp:563
 msgid "Nombre"
 msgstr "Nom"
 
-#: comparticulolistview.cpp:43 articulolist.cpp:437 articuloview.cpp:63
+#: comparticulolistview.cpp:43 articulolist.cpp:439 articuloview.cpp:63
 #, fuzzy
 msgid "Nombre del articulo"
 msgstr "Nom de l'amortització"
@@ -513,7 +518,7 @@ msgstr "Nom:"
 msgid "Nueva Familia"
 msgstr "<P> Família <B>"
 
-#: articulolist.cpp:376
+#: articulolist.cpp:378
 #, fuzzy
 msgid "Nuevo Articulo"
 msgstr "<P> Article <B>"
@@ -534,7 +539,7 @@ msgstr "Nou assentament"
 msgid "Observaciones"
 msgstr "Observacions"
 
-#: articulolist.cpp:439
+#: articulolist.cpp:441
 msgid "Observaciones sobre el articulo"
 msgstr "Observacions sobre l'article"
 
@@ -543,7 +548,7 @@ msgstr "Observacions sobre l'article"
 msgid "Otros datos:"
 msgstr "Base de dades:"
 
-#: articulolist.cpp:442
+#: articulolist.cpp:444
 #, fuzzy
 msgid "P.V.P. articulo"
 msgstr "<P> Article <B>"
@@ -578,7 +583,7 @@ msgstr "S&olament presentables"
 msgid "Seleccionar articulo"
 msgstr ""
 
-#: articuloview.cpp:287
+#: articuloview.cpp:316
 #, fuzzy
 msgid "Seleccione un archivo de imagen"
 msgstr "Seleccioni una empresa"
@@ -611,7 +616,7 @@ msgstr "codi"
 msgid "Texto para etiqueta:"
 msgstr "Text per a l'etiqueta:"
 
-#: articulolist.cpp:162
+#: articulolist.cpp:164
 #, fuzzy
 msgid "Tiene que seleccionar un articulo"
 msgstr "Ha de seleccionar un element"
@@ -650,7 +655,7 @@ msgstr ""
 msgid "Volumen Unidad"
 msgstr "Volum Unitat"
 
-#: familiasview.cpp:485 tiposarticuloview.cpp:394
+#: familiasview.cpp:486 tiposarticuloview.cpp:395
 #, fuzzy
 msgid "no se ha podido borrar"
 msgstr "No s'ha pogut esborrar"

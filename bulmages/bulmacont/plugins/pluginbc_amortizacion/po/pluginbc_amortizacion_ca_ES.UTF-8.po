@@ -8,10 +8,11 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2010-09-23 18:53+0200\n"
+"POT-Creation-Date: 2011-02-04 12:54+0100\n"
 "PO-Revision-Date: 2009-12-30 00:06+0100\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
+"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -78,8 +79,8 @@ msgstr "Amortització"
 msgid "Amortizado:"
 msgstr "Amortització"
 
-#: bcamortizacionview.cpp:262 bcamortizacionview.cpp:289
-#: bcamortizacionview.cpp:317 bcamortizacionview.cpp:348
+#: bcamortizacionview.cpp:265 bcamortizacionview.cpp:292
+#: bcamortizacionview.cpp:320 bcamortizacionview.cpp:351
 #: ui_bcamortizacionbase.h:653
 msgid "Anual"
 msgstr "Anual"
@@ -90,12 +91,12 @@ msgstr "Anual"
 msgid "Borrar amortizacion"
 msgstr "Esborra amortizació"
 
-#: bcamortizacionview.cpp:402 bcamortizacionview.cpp:443
-#: bcamortizacionview.cpp:452 bcamortizacionview.cpp:459
+#: bcamortizacionview.cpp:405 bcamortizacionview.cpp:446
+#: bcamortizacionview.cpp:455 bcamortizacionview.cpp:462
 msgid "Borrar asiento"
 msgstr "Esborra assentament"
 
-#: bcamortizacionview.cpp:433
+#: bcamortizacionview.cpp:436
 msgid "Borrar cuota"
 msgstr "Esborra quota"
 
@@ -142,7 +143,7 @@ msgstr "Paraula de pas:"
 msgid "Descripcion de la amortizacion"
 msgstr "Descripció de l'amortització"
 
-#: bcamortizacionview.cpp:401 bcamortizacionview.cpp:452
+#: bcamortizacionview.cpp:404 bcamortizacionview.cpp:455
 msgid "Desvincular asiento"
 msgstr "Desvincula assentament"
 
@@ -154,11 +155,11 @@ msgstr "Direcció del proveïdor"
 msgid "Ejercicio"
 msgstr "Exercici"
 
-#: bcamortizacionlistview.cpp:107
+#: bcamortizacionlistview.cpp:111
 msgid "Error al borrar la amortizacion"
 msgstr "Error al esborrar amortització"
 
-#: bcamortizacionview.cpp:227
+#: bcamortizacionview.cpp:230
 msgid "Error en la carga de la amortizacion"
 msgstr "Error en la càrrega de l'amortizació"
 
@@ -196,7 +197,7 @@ msgstr "Data de la compra"
 msgid "Fecha prevista"
 msgstr "Data prevista"
 
-#: bcamortizacionview.cpp:397 bcamortizacionview.cpp:471
+#: bcamortizacionview.cpp:400 bcamortizacionview.cpp:474
 msgid "Generar asiento"
 msgstr "Genera assentament"
 
@@ -236,8 +237,8 @@ msgstr "Línia"
 msgid "Listado de amortizaciones"
 msgstr "Id línies d'amortització"
 
-#: bcamortizacionview.cpp:264 bcamortizacionview.cpp:291
-#: bcamortizacionview.cpp:319 bcamortizacionview.cpp:350
+#: bcamortizacionview.cpp:267 bcamortizacionview.cpp:294
+#: bcamortizacionview.cpp:322 bcamortizacionview.cpp:353
 #: ui_bcamortizacionbase.h:656
 msgid "Mensual"
 msgstr "Mensual"
@@ -316,8 +317,8 @@ msgstr ""
 msgid "Porcent&ual"
 msgstr "Percentual"
 
-#: bcamortizacionview.cpp:266 bcamortizacionview.cpp:293
-#: bcamortizacionview.cpp:321 bcamortizacionview.cpp:352
+#: bcamortizacionview.cpp:269 bcamortizacionview.cpp:296
+#: bcamortizacionview.cpp:324 bcamortizacionview.cpp:355
 #: ui_bcamortizacionbase.h:654
 msgid "Semestral"
 msgstr "Semestral"
@@ -326,8 +327,8 @@ msgstr "Semestral"
 msgid "Telefono del proveedor"
 msgstr "Telèfon del proveïdor"
 
-#: bcamortizacionview.cpp:268 bcamortizacionview.cpp:295
-#: bcamortizacionview.cpp:323 bcamortizacionview.cpp:354
+#: bcamortizacionview.cpp:271 bcamortizacionview.cpp:298
+#: bcamortizacionview.cpp:326 bcamortizacionview.cpp:357
 #: ui_bcamortizacionbase.h:655
 msgid "Trimestral"
 msgstr "Trimestral"
@@ -340,7 +341,7 @@ msgstr "Valor de compra:"
 msgid "Valor de la compra"
 msgstr "Valor de la compra"
 
-#: bcamortizacionview.cpp:399 bcamortizacionview.cpp:443
+#: bcamortizacionview.cpp:402 bcamortizacionview.cpp:446
 msgid "Ver asiento"
 msgstr "Veure assentament"
 

@@ -8,31 +8,32 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2010-09-23 18:24+0200\n"
+"POT-Creation-Date: 2011-02-04 12:54+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: pluginbf_tipotrabajo.cpp:202
+#: pluginbf_tipotrabajo.cpp:205
 msgid "ID nombre del tipo de trabajo"
 msgstr ""
 
-#: pluginbf_tipotrabajo.cpp:203
+#: pluginbf_tipotrabajo.cpp:206
 msgid "Numero de cargos necesarios"
 msgstr ""
 
-#: pluginbf_tipotrabajo.cpp:204
+#: pluginbf_tipotrabajo.cpp:207
 msgid "ID almacen"
 msgstr ""
 
-#: pluginbf_tipotrabajo.cpp:205
+#: pluginbf_tipotrabajo.cpp:208
 msgid "ID tipo de trabajo"
 msgstr ""
 
-#: pluginbf_tipotrabajo.cpp:206
+#: pluginbf_tipotrabajo.cpp:209
 msgid "Id tipo de trabajo"
 msgstr ""
 

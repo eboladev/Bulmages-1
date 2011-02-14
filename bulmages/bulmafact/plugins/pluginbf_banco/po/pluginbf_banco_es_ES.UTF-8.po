@@ -6,10 +6,11 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2010-09-23 18:23+0200\n"
+"POT-Creation-Date: 2011-02-08 13:50+0100\n"
 "PO-Revision-Date: 2009-02-17 10:24+0100\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
+"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -18,11 +19,11 @@ msgstr ""
 msgid "&Bancos"
 msgstr "&Bancos"
 
-#: bancoview.cpp:233
+#: bancoview.cpp:234
 msgid "&No"
 msgstr "&No"
 
-#: bancoview.cpp:233
+#: bancoview.cpp:234
 msgid "&Si"
 msgstr "&Si"
 
@@ -68,11 +69,11 @@ msgstr "Contacto:"
 msgid "D.C.:"
 msgstr "D.C.:"
 
-#: bancoview.cpp:153
+#: bancoview.cpp:154
 msgid "Debe seleccionar un banco"
 msgstr ""
 
-#: bancoview.cpp:232
+#: bancoview.cpp:233
 msgid "Desea guardar los cambios?"
 msgstr "Desea guardar los cambios?"
 
@@ -88,15 +89,15 @@ msgstr "E-mail:"
 msgid "Entidad:"
 msgstr "Entidad:"
 
-#: bancoview.cpp:214
+#: bancoview.cpp:215
 msgid "Error al guardar"
 msgstr "Error al guardar"
 
-#: bancoview.cpp:291
+#: bancoview.cpp:292
 msgid "Error inesperado al borrar el banco"
 msgstr "Error inesperado al borrar el banco"
 
-#: bancoview.cpp:263
+#: bancoview.cpp:264
 msgid "Error inesperado el crear el Banco"
 msgstr "Error inesperado el crear el Banco"
 
@@ -108,7 +109,7 @@ msgstr "Fax:"
 msgid "Guardar banco"
 msgstr "Guardar banco"
 
-#: bancoview.cpp:231
+#: bancoview.cpp:232
 msgid "Guardar datos del trabajador"
 msgstr "Guardar datos del trabajador"
 
@@ -151,5 +152,3 @@ msgstr "Telefono:"
 #: ui_bancobase.h:470
 msgid "URL:"
 msgstr "URL:"
-
-  

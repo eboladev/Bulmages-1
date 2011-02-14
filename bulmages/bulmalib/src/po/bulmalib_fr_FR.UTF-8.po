@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2011-01-21 17:02+0100\n"
+"POT-Creation-Date: 2011-02-04 12:53+0100\n"
 "PO-Revision-Date: 2011-01-26 08:06+0100\n"
 "Last-Translator: Girard Henri <aishen@free.fr>\n"
 "Language-Team: French <kde l10n>\n"
@@ -377,11 +377,11 @@ msgstr "Erreur en effacement du fichier .ods [ blfunctions->blCreateODS() ]"
 msgid "Error al borrar. [BlSubForm::borrar]"
 msgstr "Erreur en effacement. [BlSubForm::borrar]"
 
-#: bldb.cpp:970
+#: bldb.cpp:978
 msgid "Error al copiar el archivo RML [ bldb->generaRML() ]"
 msgstr "Erreur en copie du fichier RML [ bldb->generaRML() ]"
 
-#: bldb.cpp:982
+#: bldb.cpp:990
 msgid "Error al copiar el archivo de logo [ bldb->generaRML() ]"
 msgstr "Erreur en copie du fichier de logo [ [ bldb->generaRML() ]"
 
@@ -398,14 +398,14 @@ msgid ""
 "Error al ejecutar el comando 'sed' [ blfunctions.cpp->blReplaceStringInFile"
 "() ]."
 msgstr ""
-"Erreur à l'exécution de la commande 'sed' [ blfunctions.cpp->"
-"blReplaceStringInFile"
-"() ]."
+"Erreur à l'exécution de la commande 'sed' [ blfunctions.cpp-"
+">blReplaceStringInFile() ]."
 
 #: blfunctions.cpp:428
 msgid "Error al ejecutar el visor de PDF [ blfunctions->blCreateAndLoadPDF() ]"
 msgstr ""
-"Erreur à l'exécution du visualiseur PDF  [ blfunctions->blCreateAndLoadPDF() ]"
+"Erreur à l'exécution du visualiseur PDF  [ blfunctions->blCreateAndLoadPDF"
+"() ]"
 
 #: blfunctions.cpp:442
 msgid "Error al ejecutar mailsend [ blfunctions->blSendPDFMail() ]"
@@ -916,4 +916,28 @@ msgstr "Insérer"
 msgid "no se ha inicializado bien la clase"
 msgstr "La classe ne s'est pas bien initialisée "
 
+#~ msgid "</B> Insertado</P>"
+#~ msgstr "</B>Inserré</P>"
 
+#~ msgid "<LI>Exportando Nueva Forma de Pago</LI>\n"
+#~ msgstr "<LI>Exportant nouvelle forme de payement</LI>\n"
+
+#~ msgid "El almaceÅ del presupuesto no existe<BR>\n"
+#~ msgstr "Le magasin du bulletin n'éxiste pas<BR>"
+
+#~ msgid "El clienteÅ del presupuesto no existe<BR>\n"
+#~ msgstr "Le client  du bulletin n'éxiste<BR>"
+
+#~ msgid "La forma de pagoÅ del presupuesto no existe<BR>\n"
+#~ msgstr "La forme de payement du bulletin n'éxiste pas<BR>"
+
+#, fuzzy
+#~ msgid "Mostrar listado de profesors"
+#~ msgstr "Actualiser liste d'entreprises"
+
+#, fuzzy
+#~ msgid "Nombre Pais"
+#~ msgstr "Nom"
+
+#~ msgid "Porcentaje de carga..."
+#~ msgstr "Pourcentaje de charge..."

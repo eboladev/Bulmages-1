@@ -8,10 +8,11 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2010-09-23 18:53+0200\n"
+"POT-Creation-Date: 2011-02-04 12:54+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -20,7 +21,7 @@ msgstr ""
 msgid "Alumno"
 msgstr ""
 
-#: alumnoview.cpp:56 alumnoview.cpp:321 alumnoview.cpp:354 alumnoslist.cpp:341
+#: alumnoview.cpp:56 alumnoview.cpp:321 alumnoview.cpp:356 alumnoslist.cpp:344
 msgid "Id alumno"
 msgstr ""
 
@@ -28,11 +29,11 @@ msgstr ""
 msgid "Nombre del alumno"
 msgstr ""
 
-#: alumnoview.cpp:59 alumnoslist.cpp:343
+#: alumnoview.cpp:59 alumnoslist.cpp:346
 msgid "1er apellido"
 msgstr ""
 
-#: alumnoview.cpp:60 alumnoslist.cpp:344
+#: alumnoview.cpp:60 alumnoslist.cpp:347
 msgid "2o apellido"
 msgstr ""
 
@@ -115,7 +116,7 @@ msgid ""
 "Compruebe que el archivo tenga los permisos correctos."
 msgstr ""
 
-#: alumnoview.cpp:320 alumnoview.cpp:353
+#: alumnoview.cpp:320 alumnoview.cpp:355
 msgid "Identificador"
 msgstr ""
 
@@ -124,18 +125,26 @@ msgid "Nombre tutor"
 msgstr ""
 
 #: alumnoview.cpp:323
-msgid "Porcentaje"
+msgid "1er Apellido"
 msgstr ""
 
 #: alumnoview.cpp:324
+msgid "2do Apellido"
+msgstr ""
+
+#: alumnoview.cpp:325
+msgid "Porcentaje"
+msgstr ""
+
+#: alumnoview.cpp:326
 msgid "Id tutor"
 msgstr ""
 
-#: alumnoview.cpp:355
+#: alumnoview.cpp:357
 msgid "Nombre actividad"
 msgstr ""
 
-#: alumnoview.cpp:356
+#: alumnoview.cpp:358
 msgid "Id actividad"
 msgstr ""
 
@@ -143,7 +152,7 @@ msgstr ""
 msgid "&Alumnos"
 msgstr ""
 
-#: pluginbf_alumno.cpp:131 pluginbf_alumno.cpp:132 alumnoslist.cpp:211
+#: pluginbf_alumno.cpp:131 pluginbf_alumno.cpp:132 alumnoslist.cpp:214
 #: ui_alumnoslistbase.h:309
 msgid "Alumnos"
 msgstr ""
@@ -152,8 +161,8 @@ msgstr ""
 msgid "&Nuevo alumno"
 msgstr ""
 
-#: pluginbf_alumno.cpp:139 pluginbf_alumno.cpp:140 pluginbf_alumno.cpp:297
-#: pluginbf_alumno.cpp:322
+#: pluginbf_alumno.cpp:139 pluginbf_alumno.cpp:140 pluginbf_alumno.cpp:339
+#: pluginbf_alumno.cpp:364
 msgid "Nuevo alumno"
 msgstr ""
 
@@ -169,47 +178,47 @@ msgstr ""
 msgid "&Clases"
 msgstr ""
 
-#: pluginbf_alumno.cpp:164 pluginbf_alumno.cpp:165
+#: pluginbf_alumno.cpp:163 pluginbf_alumno.cpp:164
 msgid "Clases"
 msgstr ""
 
-#: pluginbf_alumno.cpp:299 pluginbf_alumno.cpp:316
+#: pluginbf_alumno.cpp:341 pluginbf_alumno.cpp:358
 msgid "Editar alumno"
 msgstr ""
 
-#: pluginbf_alumno.cpp:301 pluginbf_alumno.cpp:320
+#: pluginbf_alumno.cpp:343 pluginbf_alumno.cpp:362
 msgid "Seleccionar alumno"
 msgstr ""
 
-#: alumnoslist.cpp:81
+#: alumnoslist.cpp:82
 msgid "Selector de alumnos"
 msgstr ""
 
-#: alumnoslist.cpp:227
+#: alumnoslist.cpp:230
 msgid "Debe seleccionar una linea"
 msgstr ""
 
-#: alumnoslist.cpp:241
+#: alumnoslist.cpp:244
 msgid "Error al borrar el cobro a cliente"
 msgstr ""
 
-#: alumnoslist.cpp:269
+#: alumnoslist.cpp:272
 msgid "Debe seleccionar una fila primero"
 msgstr ""
 
-#: alumnoslist.cpp:285 ui_alumnoslistbase.h:325 ui_alumnoslistbase.h:328
+#: alumnoslist.cpp:288 ui_alumnoslistbase.h:325 ui_alumnoslistbase.h:328
 msgid "Editar Alumno"
 msgstr ""
 
-#: alumnoslist.cpp:286 ui_alumnoslistbase.h:333 ui_alumnoslistbase.h:336
+#: alumnoslist.cpp:289 ui_alumnoslistbase.h:333 ui_alumnoslistbase.h:336
 msgid "Borrar Alumno"
 msgstr ""
 
-#: alumnoslist.cpp:342
+#: alumnoslist.cpp:345
 msgid "Nombre"
 msgstr ""
 
-#: alumnoslist.cpp:345
+#: alumnoslist.cpp:348
 msgid "F. Nacimiento"
 msgstr ""
 
@@ -229,31 +238,31 @@ msgstr ""
 msgid "Cuota"
 msgstr ""
 
-#: claseview.cpp:178
+#: claseview.cpp:179
 msgid "Error al guardar el clase"
 msgstr ""
 
-#: claseview.cpp:197
+#: claseview.cpp:198
 msgid "Guardar datos del clase"
 msgstr ""
 
-#: claseview.cpp:198
+#: claseview.cpp:199
 msgid "Desea guardar los cambios?"
 msgstr ""
 
-#: claseview.cpp:199
+#: claseview.cpp:200
 msgid "&Si"
 msgstr ""
 
-#: claseview.cpp:199
+#: claseview.cpp:200
 msgid "&No"
 msgstr ""
 
-#: claseview.cpp:229
+#: claseview.cpp:230
 msgid "Error al crear un nuevo Clase"
 msgstr ""
 
-#: claseview.cpp:254
+#: claseview.cpp:255
 msgid "Error al borrar el Clase"
 msgstr ""
 
@@ -338,15 +347,15 @@ msgid "Aulas:"
 msgstr ""
 
 #: ui_clasebase.h:224 ui_clasebase.h:227
-msgid "Borrar Tipo de Actividad"
+msgid "Borrar Aula"
 msgstr ""
 
 #: ui_clasebase.h:231 ui_clasebase.h:234
-msgid "Guardar Tipo de Actividad"
+msgid "Guardar"
 msgstr ""
 
 #: ui_clasebase.h:238 ui_clasebase.h:241
-msgid "Nuevo Tipo de Actividad"
+msgid "Nueva Aula"
 msgstr ""
 
 #: ui_clasebase.h:244 ui_alumnobase.h:516

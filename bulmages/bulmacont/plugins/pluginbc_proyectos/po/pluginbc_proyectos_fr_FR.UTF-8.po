@@ -6,10 +6,11 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2010-09-23 18:22+0200\n"
+"POT-Creation-Date: 2011-02-04 12:54+0100\n"
 "PO-Revision-Date: 2011-01-31 16:15+0100\n"
 "Last-Translator: aishen <aishen@free.fr>\n"
 "Language-Team: French <kde-i18n-doc@kde.org>\n"
+"Language: fr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -111,7 +112,6 @@ msgstr ""
 "#-#-#-#-#  pluginticketsdevueltos.pot (PACKAGE VERSION)  #-#-#-#-#\n"
 "#-#-#-#-#  pluginabrevs.pot (PACKAGE VERSION)  #-#-#-#-#\n"
 "#-#-#-#-#  bulmages_suite.pot (PACKAGE VERSION)  #-#-#-#-#\n"
-"Language: fr\n"
 "X-Generator: Lokalize 1.2\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
@@ -182,11 +182,11 @@ msgstr "Description "
 msgid "Ejercicio"
 msgstr "Exercice"
 
-#: listproyectosview.cpp:114
+#: listproyectosview.cpp:117
 msgid "Error al borrar la amortizacion"
 msgstr "Erreur en effacement de l'amortissement"
 
-#: proyectoview.cpp:109
+#: proyectoview.cpp:113
 msgid "Error al crear el almacen"
 msgstr "Erreur en création du magasin"
 
@@ -212,7 +212,7 @@ msgstr "Sauvegarder le projet"
 
 #: proyectoview.cpp:56
 msgid "ID almacen"
-msgstr "Id. du magasin"
+msgstr "ID du magasin"
 
 #: proyectoview.cpp:57
 msgid "Id CCoste"
@@ -228,7 +228,7 @@ msgstr "Id. Compte "
 
 #: proyectoview.cpp:80 proyectoview.cpp:99
 msgid "Id. Proyecto"
-msgstr "Id. du projet"
+msgstr "ID du projet"
 
 #: listproyectosview.cpp:46
 msgid "Identificador"
@@ -274,7 +274,7 @@ msgstr "Projet"
 msgid "Proyectos"
 msgstr "Projets"
 
-#: pluginbc_proyectos.cpp:116
+#: pluginbc_proyectos.cpp:119
 msgid "Proyectos asociados"
 msgstr "Projets associés"
 
@@ -285,5 +285,3 @@ msgstr "Sélecteur de projets"
 #: proyectoview.cpp:59
 msgid "fecha"
 msgstr "Date"
-
-

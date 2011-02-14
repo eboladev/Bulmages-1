@@ -7,10 +7,11 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2010-09-23 18:57+0200\n"
+"POT-Creation-Date: 2011-02-04 12:54+0100\n"
 "PO-Revision-Date: 2011-02-02 08:42+0100\n"
 "Last-Translator: aishen <aishen@free.fr>\n"
 "Language-Team: French <kde l10n>\n"
+"Language: frX-Generator: Lokalize 1.2\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -112,7 +113,6 @@ msgstr ""
 "#-#-#-#-#  pluginticketsdevueltos.pot (PACKAGE VERSION)  #-#-#-#-#\n"
 "#-#-#-#-#  pluginabrevs.pot (PACKAGE VERSION)  #-#-#-#-#\n"
 "#-#-#-#-#  bulmages_suite.pot (PACKAGE VERSION)  #-#-#-#-#\n"
-"Language: frX-Generator: Lokalize 1.2\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 "X-Generator: Lokalize 1.2\n"
 
@@ -200,7 +200,7 @@ msgstr "Effacer le registre"
 msgid "Centro de coste:"
 msgstr "Centre de finance :"
 
-#: balanceview.cpp:274
+#: balanceview.cpp:277
 msgid "Codigo"
 msgstr "Code"
 
@@ -248,11 +248,11 @@ msgstr "Compte initial :"
 msgid "Datos del listado:"
 msgstr "Données de la liste :"
 
-#: balanceview.cpp:274
+#: balanceview.cpp:277
 msgid "Debe"
 msgstr "Débit"
 
-#: balanceview.cpp:274
+#: balanceview.cpp:277
 msgid "Debe "
 msgstr "Débit "
 
@@ -260,7 +260,7 @@ msgstr "Débit "
 msgid "Debe:"
 msgstr "Débit :"
 
-#: balanceview.cpp:274
+#: balanceview.cpp:277
 msgid "Denominacion"
 msgstr "Dénomination"
 
@@ -308,11 +308,11 @@ msgstr "HT&ML"
 msgid "HTML"
 msgstr "HTML"
 
-#: balanceview.cpp:274
+#: balanceview.cpp:277
 msgid "Haber"
 msgstr "Crédit"
 
-#: balanceview.cpp:274
+#: balanceview.cpp:277
 msgid "Haber "
 msgstr "Crédit "
 
@@ -365,15 +365,15 @@ msgstr "Disponibilité de l'information de la balance "
 msgid "Propietario"
 msgstr "Propriétaire"
 
-#: balanceview.cpp:274
+#: balanceview.cpp:277
 msgid "Saldo"
 msgstr "Solde "
 
-#: balanceview.cpp:274
+#: balanceview.cpp:277
 msgid "Saldo "
 msgstr "Solde  "
 
-#: balanceview.cpp:274
+#: balanceview.cpp:277
 msgid "Saldo anterior"
 msgstr "Solde précédent"
 
@@ -444,5 +444,3 @@ msgstr "type de compte"
 #: balancesubform.cpp:43
 msgid "tsaldo"
 msgstr "tsolde"
-
-

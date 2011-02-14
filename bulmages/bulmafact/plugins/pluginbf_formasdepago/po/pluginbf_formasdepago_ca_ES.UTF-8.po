@@ -8,10 +8,11 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2010-09-23 18:23+0200\n"
+"POT-Creation-Date: 2011-02-04 12:54+0100\n"
 "PO-Revision-Date: 2009-11-06 00:12+0100\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
+"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -42,11 +43,11 @@ msgstr "Esborra forma de pagament"
 msgid "Descuento:"
 msgstr "Descompte"
 
-#: fpagoview.cpp:197
+#: fpagoview.cpp:198
 msgid "Desea guardar los cambios."
 msgstr "Desitja desar els canvis."
 
-#: fpagoview.cpp:254
+#: fpagoview.cpp:255
 #, fuzzy
 msgid "Error al intentar borrar la forma de pago"
 msgstr "<LI>Dades insuficients per a tractar la forma de pagament."
@@ -64,7 +65,7 @@ msgstr "Forma de pagament"
 msgid "Formas de pago"
 msgstr "Formes de pagament"
 
-#: fpagoview.cpp:196 ui_fpagobase.h:348 ui_fpagobase.h:351
+#: fpagoview.cpp:197 ui_fpagobase.h:348 ui_fpagobase.h:351
 msgid "Guardar forma de pago"
 msgstr "Desar forma de pagament"
 

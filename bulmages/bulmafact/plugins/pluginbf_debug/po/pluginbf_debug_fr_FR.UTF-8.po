@@ -1,32 +1,39 @@
 # Header entry was created by Lokalize.
 #
-#: plugindebugbf.cpp:92
 # aishen <aishen@free.fr>, 2011.
 msgid ""
 msgstr ""
-"Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
-"Mime-Version: 1.0"
-"Last-Translator: aishen <aishen@free.fr>\n"
-"PO-Revision-Date: 2011-02-11 08:14+0100\n"
 "Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: info@iglues.org\n"
+"POT-Creation-Date: 2011-02-04 12:54+0100\n"
+"PO-Revision-Date: 2011-02-11 08:14+0100\n"
 "Language-Team: French <kde-i18n-doc@kde.org>\n"
 "Language: fr\n"
-"X-Generator: Lokalize 1.2\n"
 "MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Lokalize 1.2\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
-#: plugindebugbf.cpp:92
-msgid "Activa/Desactiva el Modo Debug"
-msgstr "Activer/Désactiver le mode débogue"
-
-#: plugindebugbf.cpp:93
-msgid ""
-"Debug.\n"
-"\n"
-"Activa/Desactiva el Modo Debug"
+#: pluginbf_debug.cpp:94
+msgid "Activa/desactiva el modo de depuracion"
 msgstr ""
-"Débogue.\n"
-"\n"
-"Activer/Desactiver le mode débogue"
 
+#: pluginbf_debug.cpp:95
+msgid ""
+"Depuracion.\n"
+"\n"
+"Activa/desactiva el modo de depuracion"
+msgstr ""
+
+#~ msgid "Activa/Desactiva el Modo Debug"
+#~ msgstr "Activer/Désactiver le mode débogue"
+
+#~ msgid ""
+#~ "Debug.\n"
+#~ "\n"
+#~ "Activa/Desactiva el Modo Debug"
+#~ msgstr ""
+#~ "Débogue.\n"
+#~ "\n"
+#~ "Activer/Desactiver le mode débogue"

@@ -5,15 +5,16 @@
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2011-01-25 00:21+0100\n"
-"PO-Revision-Date: 2011-02-10 08:15+0100\n"
+"POT-Creation-Date: 2011-02-04 12:53+0100\n"
+"PO-Revision-Date: 2009-01-26 09:32+0100\n"
 "Language-Team:  <es@li.org>\n"
+"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: KBabel 1.11.4\n"
 
-#: ui_bgbulmagesbase.h:413
+#: ui_bgbulmagesbase.h:418
 msgid "&Cancelar"
 msgstr "&Cancel"
 
@@ -21,7 +22,7 @@ msgstr "&Cancel"
 msgid "&Salir"
 msgstr "&Leave"
 
-#: ui_bgbulmagesbase.h:382
+#: ui_bgbulmagesbase.h:387
 msgid ""
 "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/"
 "REC-html40/strict.dtd\">\n"
@@ -36,13 +37,8 @@ msgid ""
 "weight:600;\">contabilidad</span><span style=\" font-size:10pt;\">. Adaptado "
 "al plan contable Español.</span></p></body></html>"
 msgstr ""
-"<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
-"<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
-"p, li { white-space: pre-wrap; }\n"
-"</style></head><body style=\" font-family:'Sans Serif'; font-size:14pt; font-weight:400; font-style:normal;\">\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:10pt;\">Programa de </span><span style=\" font-size:10pt; font-weight:600;\">contabilidad</span><span style=\" font-size:10pt;\">. Adapted to the Spanish Accounting Plan.</span></p></body></html>"
 
-#: ui_bgbulmagesbase.h:390
+#: ui_bgbulmagesbase.h:395
 msgid ""
 "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/"
 "REC-html40/strict.dtd\">\n"
@@ -58,13 +54,8 @@ msgid ""
 "control de clientes y proveedores, además de todos los documentos "
 "relacionados con el comercio.</span></p></body></html>"
 msgstr ""
-"<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
-"<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
-"p, li { white-space: pre-wrap; }\n"
-"</style></head><body style=\" font-family:'Sans Serif'; font-size:14pt; font-weight:400; font-style:normal;\">\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:10pt;\">Program for producing</span><span style=\" font-size:10pt; font-weight:600;\">invoices</span><span style=\" font-size:10pt;\">. It allows a control of costumers and providers, as well as all trading documents.</span></p></body></html>"
 
-#: ui_bgbulmagesbase.h:398
+#: ui_bgbulmagesbase.h:403
 msgid ""
 "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/"
 "REC-html40/strict.dtd\">\n"
@@ -81,7 +72,7 @@ msgid ""
 "código de barras.</span></p></body></html>"
 msgstr ""
 
-#: ui_bgbulmagesbase.h:406
+#: ui_bgbulmagesbase.h:411
 msgid ""
 "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/"
 "REC-html40/strict.dtd\">\n"
@@ -99,64 +90,58 @@ msgid ""
 "bajas de funcionalidades del resto de programas mediante el uso de 'plugins'."
 "</span></p></body></html>"
 msgstr ""
-"<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
-"<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
-"p, li { white-space: pre-wrap; }\n"
-"</style></head><body style=\" font-family:'Sans Serif'; font-size:7pt; font-weight:400; font-style:normal;\">\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:10pt; font-weight:600;\">General</span><span style=\" font-size:10pt;\"> configuration of all applications </span><span style=\" font-size:10pt; font-weight:600;\">BulmaGes</span><span style=\" font-size:10pt;\">. It manages the database, user permissions, and enabling/disabling functionality of the rest of programs with the use of plugins.</span></p></body></html>"
 
-#: main.cxx:68
+#: main.cxx:67
 msgid "Bandeja"
-msgstr "Tray"
+msgstr ""
 
-#: ui_bgbulmagesbase.h:380 bgbulmages.cpp:95
+#: ui_bgbulmagesbase.h:385 bgbulmages.cpp:95
 #, fuzzy
 msgid "BulmaCont"
 msgstr "About BulmaCont"
 
-#: ui_bgbulmagesbase.h:388 bgbulmages.cpp:97
+#: ui_bgbulmagesbase.h:393 bgbulmages.cpp:97
 #, fuzzy
 msgid "BulmaFact"
 msgstr "About BulmaFact"
 
-#: ui_bgbulmagesbase.h:404 bgbulmages.cpp:101
+#: ui_bgbulmagesbase.h:409 bgbulmages.cpp:101
 msgid "BulmaSetup"
-msgstr "BulmaSetup"
+msgstr ""
 
-#: ui_bgbulmagesbase.h:396 bgbulmages.cpp:99
+#: ui_bgbulmagesbase.h:401 bgbulmages.cpp:99
 msgid "BulmaTPV"
-msgstr "BulmaTPV"
+msgstr ""
 
-#: ui_bgbulmagesbase.h:379
+#: ui_bgbulmagesbase.h:384
 #, fuzzy
 msgid "Dialog"
-msgstr "Diary"
+msgstr "Newspaper"
 
-#: ui_bgbulmagesbase.h:412
+#: ui_bgbulmagesbase.h:417
 msgid "Lanzador"
-msgstr "Launcher"
+msgstr ""
 
 #: bgbulmages.cpp:33
 msgid "Lanzador BulmaGes"
-msgstr "BulmaGes Launcher"
+msgstr ""
 
-#: ui_bgbulmagesbase.h:395
+#: ui_bgbulmagesbase.h:400
 msgid "Lanzar Bulma&Fact"
-msgstr "Launch Bulma&TPV"
+msgstr ""
 
-#: ui_bgbulmagesbase.h:411
+#: ui_bgbulmagesbase.h:416
 msgid "Lanzar Bulma&Setup"
-msgstr "Launch Bulma&Setup"
+msgstr ""
 
-#: ui_bgbulmagesbase.h:403
+#: ui_bgbulmagesbase.h:408
 msgid "Lanzar Bulma&TPV"
-msgstr "Launch Bulma&TPV"
+msgstr ""
 
-#: ui_bgbulmagesbase.h:387
+#: ui_bgbulmagesbase.h:392
 msgid "Lanzar BulmaC&ont"
-msgstr "Launch BulmaC&ont"
+msgstr ""
 
-#: main.cxx:69
+#: main.cxx:68
 msgid "No se detecta ninguna bandeja en el sistema"
-msgstr "No system tray is detected"
-
+msgstr ""

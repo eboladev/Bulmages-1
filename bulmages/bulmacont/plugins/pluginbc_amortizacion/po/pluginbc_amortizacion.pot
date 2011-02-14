@@ -8,10 +8,11 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2010-09-23 18:53+0200\n"
+"POT-Creation-Date: 2011-02-04 12:54+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -113,52 +114,52 @@ msgstr ""
 msgid "Id lineas de amortizacion"
 msgstr ""
 
-#: bcamortizacionview.cpp:227
+#: bcamortizacionview.cpp:230
 msgid "Error en la carga de la amortizacion"
 msgstr ""
 
-#: bcamortizacionview.cpp:262 bcamortizacionview.cpp:289
-#: bcamortizacionview.cpp:317 bcamortizacionview.cpp:348
+#: bcamortizacionview.cpp:265 bcamortizacionview.cpp:292
+#: bcamortizacionview.cpp:320 bcamortizacionview.cpp:351
 #: ui_bcamortizacionbase.h:653
 msgid "Anual"
 msgstr ""
 
-#: bcamortizacionview.cpp:264 bcamortizacionview.cpp:291
-#: bcamortizacionview.cpp:319 bcamortizacionview.cpp:350
+#: bcamortizacionview.cpp:267 bcamortizacionview.cpp:294
+#: bcamortizacionview.cpp:322 bcamortizacionview.cpp:353
 #: ui_bcamortizacionbase.h:656
 msgid "Mensual"
 msgstr ""
 
-#: bcamortizacionview.cpp:266 bcamortizacionview.cpp:293
-#: bcamortizacionview.cpp:321 bcamortizacionview.cpp:352
+#: bcamortizacionview.cpp:269 bcamortizacionview.cpp:296
+#: bcamortizacionview.cpp:324 bcamortizacionview.cpp:355
 #: ui_bcamortizacionbase.h:654
 msgid "Semestral"
 msgstr ""
 
-#: bcamortizacionview.cpp:268 bcamortizacionview.cpp:295
-#: bcamortizacionview.cpp:323 bcamortizacionview.cpp:354
+#: bcamortizacionview.cpp:271 bcamortizacionview.cpp:298
+#: bcamortizacionview.cpp:326 bcamortizacionview.cpp:357
 #: ui_bcamortizacionbase.h:655
 msgid "Trimestral"
 msgstr ""
 
-#: bcamortizacionview.cpp:397 bcamortizacionview.cpp:471
+#: bcamortizacionview.cpp:400 bcamortizacionview.cpp:474
 msgid "Generar asiento"
 msgstr ""
 
-#: bcamortizacionview.cpp:399 bcamortizacionview.cpp:443
+#: bcamortizacionview.cpp:402 bcamortizacionview.cpp:446
 msgid "Ver asiento"
 msgstr ""
 
-#: bcamortizacionview.cpp:401 bcamortizacionview.cpp:452
+#: bcamortizacionview.cpp:404 bcamortizacionview.cpp:455
 msgid "Desvincular asiento"
 msgstr ""
 
-#: bcamortizacionview.cpp:402 bcamortizacionview.cpp:443
-#: bcamortizacionview.cpp:452 bcamortizacionview.cpp:459
+#: bcamortizacionview.cpp:405 bcamortizacionview.cpp:446
+#: bcamortizacionview.cpp:455 bcamortizacionview.cpp:462
 msgid "Borrar asiento"
 msgstr ""
 
-#: bcamortizacionview.cpp:433
+#: bcamortizacionview.cpp:436
 msgid "Borrar cuota"
 msgstr ""
 
@@ -178,7 +179,7 @@ msgstr ""
 msgid "Num cuotas"
 msgstr ""
 
-#: bcamortizacionlistview.cpp:107
+#: bcamortizacionlistview.cpp:111
 msgid "Error al borrar la amortizacion"
 msgstr ""
 

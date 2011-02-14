@@ -8,10 +8,11 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2010-09-23 18:54+0200\n"
+"POT-Creation-Date: 2011-02-04 12:55+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -88,7 +89,7 @@ msgstr ""
 msgid "Impuestos"
 msgstr ""
 
-#: zview.cpp:93
+#: zview.cpp:94
 msgid "Error al crear el almacen"
 msgstr ""
 
@@ -100,11 +101,11 @@ msgstr ""
 msgid "Tickets"
 msgstr ""
 
-#: zlist.cpp:179
+#: zlist.cpp:181
 msgid "Error al editar el almacen"
 msgstr ""
 
-#: zlist.cpp:191
+#: zlist.cpp:193
 msgid "Almacenes"
 msgstr ""
 

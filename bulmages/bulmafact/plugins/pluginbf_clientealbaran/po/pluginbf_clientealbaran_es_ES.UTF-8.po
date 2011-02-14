@@ -8,10 +8,11 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2010-09-23 18:53+0200\n"
+"POT-Creation-Date: 2011-02-04 12:54+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -114,7 +115,15 @@ msgstr ""
 "#-#-#-#-#  pluginabrevs.pot (PACKAGE VERSION)  #-#-#-#-#\n"
 "#-#-#-#-#  bulmages_suite.pot (PACKAGE VERSION)  #-#-#-#-#\n"
 
-#: ui_albaranclientebase.h:761
+#: bfclientealbarandescuentosubform.cpp:43 bfclientealbaransubform.cpp:56
+msgid "% Descuento"
+msgstr "% Descuento"
+
+#: bfclientealbaransubform.cpp:55
+msgid "% Recargo E.Q."
+msgstr "% Recargo E."
+
+#: ui_albaranclientebase.h:798
 msgid "&Aceptar"
 msgstr "&Aceptar"
 
@@ -122,11 +131,11 @@ msgstr "&Aceptar"
 msgid "&Albaranes a clientes"
 msgstr "&Albaranes a clientes"
 
-#: ui_albaranclientebase.h:762
+#: ui_albaranclientebase.h:799
 msgid "&Cancelar"
 msgstr "&Cancelar"
 
-#: ui_albaranclientebase.h:744
+#: ui_albaranclientebase.h:781
 msgid "&Detalle"
 msgstr "&Detalle"
 
@@ -142,9 +151,9 @@ msgstr "&Nuevo albaran a cliente"
 msgid "&Si"
 msgstr "&Si"
 
-#: ui_albaranclientebase.h:755 ui_albaranclientebase.h:756
-#: ui_albaranclientebase.h:757 ui_albaranclientebase.h:758
-#: ui_albaranclientebase.h:759 ui_albaranclientebase.h:760
+#: ui_albaranclientebase.h:792 ui_albaranclientebase.h:793
+#: ui_albaranclientebase.h:794 ui_albaranclientebase.h:795
+#: ui_albaranclientebase.h:796 ui_albaranclientebase.h:797
 msgid "0.00"
 msgstr "0.00"
 
@@ -160,16 +169,16 @@ msgstr "Albaran"
 msgid "Albaran ya existe"
 msgstr "Albaran ya existe"
 
-#: albaranclientelist.cpp:340 pluginbf_clientealbaran.cpp:101
+#: albaranclientelist.cpp:344 pluginbf_clientealbaran.cpp:101
 #: pluginbf_clientealbaran.cpp:102 ui_albaranclientelistbase.h:448
 msgid "Albaranes a clientes"
 msgstr "Albaranes a clientes"
 
-#: albaranclientelist.cpp:202
+#: albaranclientelist.cpp:206
 msgid "Albaranes no procesados"
 msgstr "Albaranes no procesados"
 
-#: albaranclientelist.cpp:201
+#: albaranclientelist.cpp:205
 msgid "Albaranes procesados"
 msgstr "Albaranes procesados"
 
@@ -177,19 +186,19 @@ msgstr "Albaranes procesados"
 msgid "Almacen"
 msgstr "Almacen"
 
-#: ui_albaranclientebase.h:743
+#: ui_albaranclientebase.h:780
 msgid "Almacen:"
 msgstr "Almacen:"
 
-#: albaranclientelist.cpp:428
+#: albaranclientelist.cpp:432
 msgid "Base imponible"
 msgstr "Base imponible"
 
-#: ui_albaranclientebase.h:750
+#: ui_albaranclientebase.h:787
 msgid "Base imponible:"
 msgstr "Base imponible:"
 
-#: ui_albaranclientebase.h:707 ui_albaranclientebase.h:710
+#: ui_albaranclientebase.h:744 ui_albaranclientebase.h:747
 #: ui_albaranclientelistbase.h:472 ui_albaranclientelistbase.h:475
 msgid "Borrar albaran"
 msgstr "Borrar albaran"
@@ -198,15 +207,23 @@ msgstr "Borrar albaran"
 msgid "Buscar:"
 msgstr "Buscar:"
 
+#: bfclientealbaransubform.cpp:50
+msgid "Cantidad"
+msgstr "Cantidad"
+
 #: albaranclienteview.cpp:73
 msgid "Cliente"
 msgstr "Cliente"
 
-#: albaranclienteview.cpp:105 albaranclientelist.cpp:163
+#: albaranclienteview.cpp:105 albaranclientelist.cpp:165
 msgid "Cliente:"
 msgstr "Cliente:"
 
-#: albaranclientelist.cpp:416
+#: bfclientealbaransubform.cpp:46
+msgid "Codigo completo articulo"
+msgstr "Código completo del artículo"
+
+#: albaranclientelist.cpp:420
 msgid "Codigo de almacen"
 msgstr "Codigo de almacen"
 
@@ -218,21 +235,25 @@ msgstr "Comentario"
 msgid "Comentario privado"
 msgstr "Comentario privado"
 
-#: ui_albaranclientebase.h:748
+#: ui_albaranclientebase.h:785
 msgid "Comentario&s"
 msgstr "Comentario&s"
 
-#: albaranclientelist.cpp:426
+#: albaranclientelist.cpp:430
 msgid "Comentarios del albaran"
 msgstr "Comentarios del albaran"
 
-#: ui_albaranclientebase.h:747
+#: ui_albaranclientebase.h:784
 msgid "Comentarios privados:"
 msgstr "Comentarios privados:"
 
-#: ui_albaranclientebase.h:746
+#: ui_albaranclientebase.h:783
 msgid "Comentarios publicos:"
 msgstr "Comentarios publicos:"
+
+#: bfclientealbarandescuentosubform.cpp:42
+msgid "Concepto descuento"
+msgstr "Concepto descuento"
 
 #: ui_albaranclientelistbase.h:496 ui_albaranclientelistbase.h:499
 msgid "Configurar listado"
@@ -262,27 +283,28 @@ msgstr "Ctrl+N"
 msgid "Ctrl+P"
 msgstr "Ctrl+P"
 
-#: albaranclientelist.cpp:315
+#: albaranclientelist.cpp:319
 msgid "Debe seleccionar una linea"
 msgstr "Debe seleccionar una linea"
 
-#: albaranclienteview.cpp:84 albaranclientelist.cpp:418
+#: albaranclienteview.cpp:84 bfclientealbaransubform.cpp:49
+#: albaranclientelist.cpp:422
 msgid "Descripcion"
 msgstr "Descripcion"
 
-#: albaranclientelist.cpp:422
+#: albaranclientelist.cpp:426
 msgid "Descripcion de forma de pago"
 msgstr "Descripcion de forma de pago"
 
-#: ui_albaranclientebase.h:735
+#: ui_albaranclientebase.h:772
 msgid "Descripcion:"
 msgstr "Descripcion:"
 
-#: ui_albaranclientebase.h:745
+#: ui_albaranclientebase.h:782
 msgid "Descuen&tos"
 msgstr "Descuen&tos"
 
-#: ui_albaranclientebase.h:749
+#: ui_albaranclientebase.h:786
 msgid "Descuentos:"
 msgstr "Descuentos:"
 
@@ -290,15 +312,15 @@ msgstr "Descuentos:"
 msgid "Editar albaran"
 msgstr "Editar albaran"
 
-#: albaranclientelist.cpp:329
+#: albaranclientelist.cpp:333
 msgid "Error al borrar el albaran a cliente"
 msgstr "Error al borrar el albaran a cliente"
 
-#: albaranclienteview.cpp:119
+#: albaranclienteview.cpp:120
 msgid "Error al crear el albaran a cliente"
 msgstr "Error al crear el albaran a cliente"
 
-#: albaranclienteview.cpp:238 genalbqtoolbutton.cpp:227
+#: albaranclienteview.cpp:239 genalbqtoolbutton.cpp:227
 #: genalbqtoolbutton.cpp:359
 msgid "Error inesperado"
 msgstr "Error inesperado"
@@ -327,7 +349,7 @@ msgstr "F5"
 msgid "Factura ya existe"
 msgstr "Factura ya existe"
 
-#: albaranclientelist.cpp:419
+#: albaranclientelist.cpp:423
 msgid "Fecha de albaran"
 msgstr "Fecha de albaran"
 
@@ -335,7 +357,7 @@ msgstr "Fecha de albaran"
 msgid "Fecha de creacion"
 msgstr "Fecha de creacion"
 
-#: ui_albaranclientebase.h:739
+#: ui_albaranclientebase.h:776
 msgid "Fecha de creacion:"
 msgstr "Fecha de creacion:"
 
@@ -355,43 +377,56 @@ msgstr "Filtrar albaranes"
 msgid "Forma de pago"
 msgstr "Forma de pago"
 
-#: ui_albaranclientebase.h:741
+#: ui_albaranclientebase.h:778
 msgid "Forma de pago:"
 msgstr "Forma de pago:"
 
-#: ui_albaranclientebase.h:700 ui_albaranclientebase.h:703
+#: ui_albaranclientebase.h:737 ui_albaranclientebase.h:740
 msgid "Guardar albaran"
 msgstr "Guardar albaran"
 
-#: ui_albaranclientebase.h:751
+#: ui_albaranclientebase.h:788
 msgid "I.R.P.F.:"
 msgstr "I.R.P.F.:"
 
-#: albaranclientelist.cpp:425
+#: bfclientealbaransubform.cpp:54
+msgid "I.V.A."
+msgstr "I.V.A."
+
+#: albaranclientelist.cpp:429
 msgid "ID albaran"
 msgstr "ID albaran"
 
-#: albaranclientelist.cpp:427
+#: albaranclientelist.cpp:431
 msgid "ID almacen"
 msgstr "ID almacen"
 
-#: albaranclientelist.cpp:424
+#: albaranclientelist.cpp:428
 msgid "ID cliente"
 msgstr "ID cliente"
 
-#: albaranclientelist.cpp:421
+#: albaranclientelist.cpp:425
 msgid "ID forma de pago"
 msgstr "ID forma de pago"
 
-#: albaranclientelist.cpp:423
+#: albaranclientelist.cpp:427
 msgid "ID trabajador"
 msgstr "ID trabajador"
 
-#: albaranclienteview.cpp:72
+#: albaranclienteview.cpp:72 bfclientealbarandescuentosubform.cpp:44
+#: bfclientealbaransubform.cpp:57
 msgid "Id albaran"
 msgstr "Id albaran"
 
-#: ui_albaranclientebase.h:714 ui_albaranclientebase.h:717
+#: bfclientealbaransubform.cpp:45
+msgid "Id articulo"
+msgstr "ID artículo"
+
+#: bfclientealbarandescuentosubform.cpp:41
+msgid "Id descuento"
+msgstr "ID descuento"
+
+#: ui_albaranclientebase.h:751 ui_albaranclientebase.h:754
 msgid "Imprimir albaran"
 msgstr "Imprimir albaran"
 
@@ -399,15 +434,15 @@ msgstr "Imprimir albaran"
 msgid "Imprimir listado"
 msgstr "Imprimir listado"
 
-#: albaranclientelist.cpp:429
+#: albaranclientelist.cpp:433
 msgid "Impuestos"
 msgstr "Impuestos"
 
-#: ui_albaranclientebase.h:752
+#: ui_albaranclientebase.h:789
 msgid "Impuestos:"
 msgstr "Impuestos:"
 
-#: ui_albaranclientebase.h:729 ui_albaranclientebase.h:732
+#: ui_albaranclientebase.h:758 ui_albaranclientebase.h:761
 msgid "Mostrar/ocultar cabecera"
 msgstr "Mostrar/ocultar cabecera"
 
@@ -415,11 +450,15 @@ msgstr "Mostrar/ocultar cabecera"
 msgid "Mostrar:"
 msgstr "Mostrar:"
 
-#: albaranclienteview.cpp:231
+#: albaranclienteview.cpp:232
 msgid "No hay pedidos con la misma referencia."
 msgstr "No hay pedidos con la misma referencia."
 
-#: albaranclientelist.cpp:420
+#: bfclientealbaransubform.cpp:47
+msgid "Nombre articulo"
+msgstr "Nombre artículo"
+
+#: albaranclientelist.cpp:424
 msgid "Nombre de cliente"
 msgstr "Nombre de cliente"
 
@@ -428,31 +467,43 @@ msgid "Nuevo albaran"
 msgstr "Nuevo albaran"
 
 #: pluginbf_clientealbaran.cpp:109 pluginbf_clientealbaran.cpp:110
-#: ui_albaranclientebase.h:698
+#: ui_albaranclientebase.h:735
 msgid "Nuevo albaran a cliente"
 msgstr "Nuevo albaran a cliente"
 
-#: albaranclienteview.cpp:75 albaranclientelist.cpp:417
+#: albaranclienteview.cpp:75 albaranclientelist.cpp:421
 msgid "Numero de albaran"
 msgstr "Numero de albaran"
 
-#: ui_albaranclientebase.h:736
-msgid "Numero de albaran:"
-msgstr "Numero de albaran:"
+#: bfclientealbaransubform.cpp:48
+msgid "Nº linea"
+msgstr "Número de línea"
+
+#: ui_albaranclientebase.h:773
+msgid "Número:"
+msgstr ""
+
+#: bfclientealbaransubform.cpp:58
+msgid "Orden"
+msgstr "Orden"
+
+#: bfclientealbaransubform.cpp:51
+msgid "P.V.P."
+msgstr "P.V.P."
 
 #: albaranclienteview.cpp:77
 msgid "Persona de contacto"
 msgstr "Persona de contacto"
 
-#: ui_albaranclientebase.h:740
+#: ui_albaranclientebase.h:777
 msgid "Persona de contacto:"
 msgstr "Persona de contacto:"
 
-#: albaranclienteview.cpp:83 ui_albaranclientebase.h:737
+#: albaranclienteview.cpp:83 ui_albaranclientebase.h:774
 msgid "Procesado"
 msgstr "Procesado"
 
-#: ui_albaranclientebase.h:753
+#: ui_albaranclientebase.h:790
 msgid "R.E.:"
 msgstr "R.E.:"
 
@@ -460,11 +511,11 @@ msgstr "R.E.:"
 msgid "Referencia"
 msgstr "Referencia"
 
-#: albaranclientelist.cpp:415
+#: albaranclientelist.cpp:419
 msgid "Referencia de albaran"
 msgstr "Referencia de albaran"
 
-#: ui_albaranclientebase.h:727
+#: ui_albaranclientebase.h:771
 msgid "Referencia:"
 msgstr "Referencia:"
 
@@ -472,25 +523,29 @@ msgstr "Referencia:"
 msgid "Telefono de contacto"
 msgstr "Telefono de contacto"
 
-#: ui_albaranclientebase.h:742
+#: ui_albaranclientebase.h:779
 msgid "Telefono de contacto:"
 msgstr "Telefono de contacto:"
 
-#: albaranclienteview.cpp:204 genalbqtoolbutton.cpp:141
+#: albaranclienteview.cpp:205 genalbqtoolbutton.cpp:141
 #: genalbqtoolbutton.cpp:273
 msgid "Tiene que seleccionar un cliente"
 msgstr "Tiene que seleccionar un cliente"
 
-#: albaranclientelist.cpp:200
+#: albaranclientelist.cpp:204
 msgid "Todos los albaranes"
 msgstr "Todos los albaranes"
 
-#: albaranclientelist.cpp:430
+#: albaranclientelist.cpp:434
 #, fuzzy
 msgid "Total"
 msgstr "Total:"
 
-#: ui_albaranclientebase.h:754
+#: bfclientealbaransubform.cpp:53
+msgid "Total Linea"
+msgstr ""
+
+#: ui_albaranclientebase.h:791
 msgid "Total:"
 msgstr "Total:"
 
@@ -502,10 +557,13 @@ msgstr "Total:"
 msgid "Trabajador"
 msgstr "Trabajador"
 
-#: ui_albaranclientebase.h:738
+#: ui_albaranclientebase.h:775
 msgid "Trabajador:"
 msgstr "Trabajador:"
 
-#: ui_albaranclientebase.h:721 ui_albaranclientebase.h:724
+#: ui_albaranclientebase.h:765 ui_albaranclientebase.h:768
 msgid "Ver pedidos con la misma referencia"
 msgstr "Ver pedidos con la misma referencia"
+
+#~ msgid "Numero de albaran:"
+#~ msgstr "Numero de albaran:"

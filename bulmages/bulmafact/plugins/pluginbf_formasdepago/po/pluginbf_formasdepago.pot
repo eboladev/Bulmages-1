@@ -8,10 +8,11 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2010-09-23 18:23+0200\n"
+"POT-Creation-Date: 2011-02-04 12:54+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -29,15 +30,15 @@ msgstr ""
 msgid "Forma de Pago"
 msgstr ""
 
-#: fpagoview.cpp:196 ui_fpagobase.h:348 ui_fpagobase.h:351
+#: fpagoview.cpp:197 ui_fpagobase.h:348 ui_fpagobase.h:351
 msgid "Guardar forma de pago"
 msgstr ""
 
-#: fpagoview.cpp:197
+#: fpagoview.cpp:198
 msgid "Desea guardar los cambios."
 msgstr ""
 
-#: fpagoview.cpp:254
+#: fpagoview.cpp:255
 msgid "Error al intentar borrar la forma de pago"
 msgstr ""
 

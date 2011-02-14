@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2011-01-19 14:15+0100\n"
+"POT-Creation-Date: 2011-02-04 12:54+0100\n"
 "PO-Revision-Date: 2010-07-28 14:25+0200\n"
 "Last-Translator: Walter Garcia-Fontes <walter.garcia@upf.edu>\n"
 "Language-Team: CATALAN\n"
@@ -169,7 +169,7 @@ msgstr "Correu electrònic:"
 msgid "Ctrl+B"
 msgstr "Ctrl+B"
 
-#: ui_alumnobase.h:484 ui_alumnoslistbase.h:339
+#: ui_alumnoslistbase.h:339 ui_alumnobase.h:484
 msgid "Ctrl+D"
 msgstr "Ctrl+D"
 
@@ -213,7 +213,7 @@ msgstr "Quotes per alumne"
 msgid "CuotasPorAlumno"
 msgstr "Quotes per alumne"
 
-#: ui_alumnobase.h:523 ui_alumnoslistbase.h:310
+#: ui_alumnoslistbase.h:310 ui_alumnobase.h:523
 msgid "Curso:"
 msgstr "Curs:"
 
@@ -412,7 +412,7 @@ msgstr "Nom:"
 msgid "Nueva Aula"
 msgstr "Nova Aula"
 
-#: ui_alumnobase.h:467 ui_alumnoslistbase.h:317 ui_alumnoslistbase.h:320
+#: ui_alumnoslistbase.h:317 ui_alumnoslistbase.h:320 ui_alumnobase.h:467
 #, fuzzy
 msgid "Nuevo Alumno"
 msgstr "Nou alumne"

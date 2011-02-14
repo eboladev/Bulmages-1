@@ -4,10 +4,11 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2010-09-23 18:54+0200\n"
+"POT-Creation-Date: 2011-02-04 12:55+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -63,7 +64,7 @@ msgstr "Actual·litza llistat"
 msgid "Almacen"
 msgstr "<LI> Magatzem <B>"
 
-#: zlist.cpp:191
+#: zlist.cpp:193
 #, fuzzy
 msgid "Almacenes"
 msgstr "<LI> Magatzem <B>"
@@ -128,12 +129,12 @@ msgstr "Descripció"
 msgid "Editar contrato"
 msgstr "Editar compte"
 
-#: zview.cpp:93
+#: zview.cpp:94
 #, fuzzy
 msgid "Error al crear el almacen"
 msgstr "Error en la càrrega de l'amortizació"
 
-#: zlist.cpp:179
+#: zlist.cpp:181
 #, fuzzy
 msgid "Error al editar el almacen"
 msgstr "Error en la càrrega de l'amortizació"

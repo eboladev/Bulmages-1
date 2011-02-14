@@ -4,10 +4,11 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2010-09-23 18:57+0200\n"
+"POT-Creation-Date: 2011-02-04 12:54+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -134,7 +135,7 @@ msgstr ""
 msgid "Centro de coste:"
 msgstr "Centre de cost:"
 
-#: balanceview.cpp:274
+#: balanceview.cpp:277
 msgid "Codigo"
 msgstr "Codi"
 
@@ -184,11 +185,11 @@ msgstr "Data inicial:"
 msgid "Datos del listado:"
 msgstr "Dades del llistat:"
 
-#: balanceview.cpp:274
+#: balanceview.cpp:277
 msgid "Debe"
 msgstr "Deure"
 
-#: balanceview.cpp:274
+#: balanceview.cpp:277
 #, fuzzy
 msgid "Debe "
 msgstr "Deure"
@@ -198,7 +199,7 @@ msgstr "Deure"
 msgid "Debe:"
 msgstr "Deure"
 
-#: balanceview.cpp:274
+#: balanceview.cpp:277
 msgid "Denominacion"
 msgstr "Denominació"
 
@@ -253,11 +254,11 @@ msgstr "HT&ML"
 msgid "HTML"
 msgstr "HTML"
 
-#: balanceview.cpp:274
+#: balanceview.cpp:277
 msgid "Haber"
 msgstr "Haver"
 
-#: balanceview.cpp:274
+#: balanceview.cpp:277
 #, fuzzy
 msgid "Haber "
 msgstr "Haver"
@@ -320,16 +321,16 @@ msgstr ""
 msgid "Propietario"
 msgstr "Comentari"
 
-#: balanceview.cpp:274
+#: balanceview.cpp:277
 msgid "Saldo"
 msgstr "Saldo"
 
-#: balanceview.cpp:274
+#: balanceview.cpp:277
 #, fuzzy
 msgid "Saldo "
 msgstr "Saldo"
 
-#: balanceview.cpp:274
+#: balanceview.cpp:277
 msgid "Saldo anterior"
 msgstr "Saldo anterior"
 

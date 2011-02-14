@@ -8,10 +8,11 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2010-09-23 18:22+0200\n"
+"POT-Creation-Date: 2011-02-04 12:54+0100\n"
 "PO-Revision-Date: 2009-12-30 14:15+0100\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
+"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -20,6 +21,10 @@ msgstr ""
 #: ui_bccuentabase.h:851
 msgid "&Aceptar"
 msgstr "&Accepta"
+
+#: ui_bcplancontablelistbase.h:344
+msgid "&Anterior"
+msgstr ""
 
 #: ui_bccuentabase.h:852
 msgid "&Cancelar"
@@ -61,7 +66,11 @@ msgstr "&Pasiu"
 msgid "&Plan Contable"
 msgstr "&Pla comptable"
 
-#: ui_bcplancontablelistbase.h:332 ui_bccuentalistbase.h:246
+#: ui_bcplancontablelistbase.h:346
+msgid "&Siguiente"
+msgstr ""
+
+#: ui_bcplancontablelistbase.h:349 ui_bccuentalistbase.h:246
 msgid "1"
 msgstr "1"
 
@@ -97,7 +106,7 @@ msgstr "8"
 msgid "A&ctivo"
 msgstr "A&ctiu"
 
-#: ui_bcplancontablelistbase.h:323 ui_bcplancontablelistbase.h:326
+#: ui_bcplancontablelistbase.h:336 ui_bcplancontablelistbase.h:339
 #: ui_bccuentalistbase.h:234 ui_bccuentalistbase.h:237
 msgid "Actualizar listado"
 msgstr "Actual·litza llistat"
@@ -140,12 +149,12 @@ msgstr "Banc del compte"
 msgid "Bloqueada"
 msgstr "Bloqueja"
 
-#: bccuentalistview.cpp:310
+#: bccuentalistview.cpp:312
 msgid "Borrar articulo"
 msgstr "Esborra article"
 
-#: bcplancontablelistview.cpp:401 ui_bcplancontablelistbase.h:293
-#: ui_bcplancontablelistbase.h:296 ui_bccuentabase.h:809
+#: bcplancontablelistview.cpp:479 ui_bcplancontablelistbase.h:306
+#: ui_bcplancontablelistbase.h:309 ui_bccuentabase.h:809
 #, fuzzy
 msgid "Borrar cuenta"
 msgstr "Esborra"
@@ -154,7 +163,7 @@ msgstr "Esborra"
 msgid "Buscar:"
 msgstr "Cerca:"
 
-#: ui_bcplancontablelistbase.h:330
+#: ui_bcplancontablelistbase.h:343
 #, fuzzy
 msgid "Busqueda:"
 msgstr "Cerca:"
@@ -193,7 +202,7 @@ msgstr "Esborra assentament"
 msgid "Centro de coste por defecto"
 msgstr "Centre de cost por omissió"
 
-#: bccuentalistview.cpp:387
+#: bccuentalistview.cpp:389
 msgid "Codigo Cuenta"
 msgstr "Codi compte"
 
@@ -225,19 +234,19 @@ msgstr "Configura llistat"
 msgid "Correo electronico:"
 msgstr "Correo electrònic:"
 
-#: ui_bcplancontablelistbase.h:299 ui_bccuentabase.h:812
+#: ui_bcplancontablelistbase.h:312 ui_bccuentabase.h:812
 msgid "Ctrl+D"
 msgstr "Ctrl+D"
 
-#: ui_bcplancontablelistbase.h:291
+#: ui_bcplancontablelistbase.h:304
 msgid "Ctrl+E"
 msgstr "Ctrl+E"
 
-#: ui_bcplancontablelistbase.h:283
+#: ui_bcplancontablelistbase.h:296
 msgid "Ctrl+N"
 msgstr "Ctrl+N"
 
-#: ui_bcplancontablelistbase.h:307
+#: ui_bcplancontablelistbase.h:320
 msgid "Ctrl+P"
 msgstr "Ctrl+P"
 
@@ -262,7 +271,7 @@ msgstr "Banc del compte"
 msgid "Debe"
 msgstr "Deure"
 
-#: bcplancontablelistview.cpp:371 bcplancontablelistview.cpp:397
+#: bcplancontablelistview.cpp:449 bcplancontablelistview.cpp:475
 msgid "Debe seleccionar una cuenta"
 msgstr "Cal triar un compte"
 
@@ -292,17 +301,17 @@ msgstr "Desvincula assentament"
 msgid "E-Mail de la cuenta"
 msgstr "Correu electrònic del compte"
 
-#: bccuentalistview.cpp:309
+#: bccuentalistview.cpp:311
 msgid "Editar articulo"
 msgstr "Edita Article"
 
 #: pluginbc_cuenta.cpp:175 pluginbc_cuenta.cpp:192
-#: ui_bcplancontablelistbase.h:285 ui_bcplancontablelistbase.h:288
+#: ui_bcplancontablelistbase.h:298 ui_bcplancontablelistbase.h:301
 #, fuzzy
 msgid "Editar cuenta"
 msgstr "Editar compte"
 
-#: bcplancontablelistview.cpp:547 bcplancontablelistview.cpp:566
+#: bcplancontablelistview.cpp:625 bcplancontablelistview.cpp:644
 msgid "Elija el archivo"
 msgstr "Trii el arxiu"
 
@@ -310,12 +319,16 @@ msgstr "Trii el arxiu"
 msgid "Entidad de la cuenta"
 msgstr "Entitat del compte"
 
-#: ui_bcplancontablelistbase.h:309 ui_bcplancontablelistbase.h:312
+#: ui_bcplancontablelistbase.h:322 ui_bcplancontablelistbase.h:325
 #, fuzzy
 msgid "Exportar cuentas"
 msgstr "Exporta dades"
 
-#: ui_bcplancontablelistbase.h:329
+#: ui_bcplancontablelistbase.h:347
+msgid "F3"
+msgstr ""
+
+#: ui_bcplancontablelistbase.h:342
 msgid "F5"
 msgstr "F5"
 
@@ -342,16 +355,16 @@ msgstr "Haver"
 msgid "Haber:"
 msgstr "Haver"
 
-#: bccuentaview.cpp:43 bcplancontablelistview.cpp:55 bccuentalistview.cpp:386
+#: bccuentaview.cpp:43 bcplancontablelistview.cpp:55 bccuentalistview.cpp:388
 msgid "ID cuenta"
 msgstr "ID compte"
 
-#: ui_bcplancontablelistbase.h:316 ui_bcplancontablelistbase.h:319
+#: ui_bcplancontablelistbase.h:329 ui_bcplancontablelistbase.h:332
 #, fuzzy
 msgid "Importar cuentas"
 msgstr "Importa dades"
 
-#: ui_bcplancontablelistbase.h:301 ui_bcplancontablelistbase.h:304
+#: ui_bcplancontablelistbase.h:314 ui_bcplancontablelistbase.h:317
 #, fuzzy
 msgid "Imprimir cuentas"
 msgstr "Imprimeix comptes"
@@ -403,7 +416,7 @@ msgstr ""
 msgid "Nombre cuenta"
 msgstr "Nom del compte"
 
-#: bccuentalistview.cpp:388
+#: bccuentalistview.cpp:390
 msgid "Nombre de la cuenta"
 msgstr "Nom del compte"
 
@@ -417,7 +430,7 @@ msgid "Nombre:"
 msgstr "Nom:"
 
 #: pluginbc_cuenta.cpp:173 pluginbc_cuenta.cpp:198
-#: ui_bcplancontablelistbase.h:277 ui_bcplancontablelistbase.h:280
+#: ui_bcplancontablelistbase.h:290 ui_bcplancontablelistbase.h:293
 #, fuzzy
 msgid "Nueva cuenta"
 msgstr "Nom del compte"
@@ -435,16 +448,16 @@ msgstr "Pare"
 msgid "Permite ver y modificar el plan contable"
 msgstr ""
 
-#: ui_bcplancontablelistbase.h:333
+#: ui_bcplancontablelistbase.h:350
 #, fuzzy
 msgid "Plan &contable"
 msgstr "Concepte comptable"
 
-#: bcplancontablelistview.cpp:549 bcplancontablelistview.cpp:568
+#: bcplancontablelistview.cpp:627 bcplancontablelistview.cpp:646
 msgid "Plan contable (*.xml)"
 msgstr ""
 
-#: ui_bcplancontablelistbase.h:272
+#: ui_bcplancontablelistbase.h:285
 #, fuzzy
 msgid "Plan de cuentas"
 msgstr "CP del compte"
@@ -468,7 +481,7 @@ msgstr "Regularització"
 msgid "Regularizacion"
 msgstr "Regularització"
 
-#: ui_bcplancontablelistbase.h:334
+#: ui_bcplancontablelistbase.h:351
 #, fuzzy
 msgid "S&ubcuentas"
 msgstr "ID compte"
@@ -478,7 +491,7 @@ msgstr "ID compte"
 msgid "Saldos:"
 msgstr "Saldo"
 
-#: bcplancontablelistview.cpp:402
+#: bcplancontablelistview.cpp:480
 msgid "Se procedera a borrar la cuenta."
 msgstr "S'esborrarà el compte"
 
@@ -489,6 +502,10 @@ msgstr ""
 #: bccuentalistview.cpp:68
 msgid "Selector de articulos"
 msgstr "Selector d'articles"
+
+#: ui_bcplancontablelistbase.h:345
+msgid "Shift+F3"
+msgstr ""
 
 #: ui_bccuentabase.h:834
 #, fuzzy

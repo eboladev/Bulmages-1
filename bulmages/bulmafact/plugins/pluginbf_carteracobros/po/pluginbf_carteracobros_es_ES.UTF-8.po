@@ -2,103 +2,101 @@
 # Traducciones al español para el paquete PACKAGE.
 # Copyright (C) 2009 THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
 # Automatically generated, 2009.
-# aishen <aishen@free.fr>, 2011.
+#
 msgid ""
 msgstr ""
-"Project-Id-Version: \n"
+"Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2010-09-23 18:57+0200\n"
-"PO-Revision-Date: 2011-02-07 17:35+0100\n"
-"Last-Translator: aishen <aishen@free.fr>\n"
-"Language-Team: French <kde-i18n-doc@kde.org>\n"
+"POT-Creation-Date: 2011-02-04 12:55+0100\n"
+"PO-Revision-Date: 2009-10-12 16:47+0200\n"
+"Last-Translator: Automatically generated\n"
+"Language-Team: none\n"
+"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"Language: fr\n"
-"X-Generator: Lokalize 1.2\n"
 
-#: pluginbf_carteracobros.cpp:243
+#: pluginbf_carteracobros.cpp:247
 msgid "Cantidad"
-msgstr "Quantité"
+msgstr "Cantidad"
 
 #: vencimientocview.cpp:76
 msgid "Cantidad de vencimiento"
-msgstr "Quantité d'échéance"
+msgstr ""
 
 #: vencimientocview.cpp:61 carteracobroslist.cpp:64
 msgid "Cliente:"
-msgstr "Client :"
+msgstr "Cliente:"
 
 #: vencimientocview.cpp:72
 msgid "Comentarios"
-msgstr "Libellés"
+msgstr "Comentarios"
 
 #: vencimientocview.cpp:71
 msgid "Descripcion"
-msgstr "Description "
+msgstr "Descripción"
 
-#: pluginbf_carteracobros.cpp:123
+#: pluginbf_carteracobros.cpp:127
 msgid "Dias tras factura"
-msgstr "Jours après facture "
+msgstr ""
 
 #: vencimientocview.cpp:75
 msgid "Estado de vencimiento"
-msgstr "Etat d'échéance"
+msgstr ""
 
-#: pluginbf_carteracobros.cpp:242
+#: pluginbf_carteracobros.cpp:246
 msgid "Fecha"
-msgstr "Date"
+msgstr "Fecha"
 
 #: vencimientocview.cpp:73
 msgid "Fecha de vencimiento"
-msgstr "Date d'échéance"
+msgstr "Fecha de vencimiento"
 
 #: vencimientocview.cpp:74
 msgid "Fecha efectiva"
-msgstr "Date effective"
+msgstr ""
 
-#: pluginbf_carteracobros.cpp:125 pluginbf_carteracobros.cpp:244
+#: pluginbf_carteracobros.cpp:129 pluginbf_carteracobros.cpp:248
 msgid "Forma de pago"
-msgstr "Forme de paiement"
+msgstr "Forma de pago"
 
-#: pluginbf_carteracobros.cpp:126 pluginbf_carteracobros.cpp:248
+#: pluginbf_carteracobros.cpp:130 pluginbf_carteracobros.cpp:252
 msgid "Id cliente"
-msgstr "Id client"
+msgstr "ID cliente"
 
 #: vencimientocview.cpp:69
 msgid "Id cobro"
-msgstr "Id Encaissement"
+msgstr "ID cobro"
 
-#: pluginbf_carteracobros.cpp:246
+#: pluginbf_carteracobros.cpp:250
 msgid "Id factura"
-msgstr "Id de la Facture"
+msgstr "ID factura"
 
-#: pluginbf_carteracobros.cpp:127 pluginbf_carteracobros.cpp:247
+#: pluginbf_carteracobros.cpp:131 pluginbf_carteracobros.cpp:251
 msgid "Id forma de pago"
-msgstr "Id Forme de paiement"
+msgstr "ID forma de pago"
 
-#: pluginbf_carteracobros.cpp:122 pluginbf_carteracobros.cpp:241
+#: pluginbf_carteracobros.cpp:126 pluginbf_carteracobros.cpp:245
 msgid "Id vencimiento"
-msgstr "Id d'échéance"
+msgstr ""
 
-#: pluginbf_carteracobros.cpp:124
+#: pluginbf_carteracobros.cpp:128
 msgid "Porcentaje"
-msgstr "Pourcentage"
+msgstr "Porcentaje"
 
-#: pluginbf_carteracobros.cpp:245
+#: pluginbf_carteracobros.cpp:249
 msgid "Procesado"
-msgstr "Accusé"
+msgstr "Procesado"
 
 #: vencimientocview.cpp:70
 msgid "Referencia de vencimiento"
-msgstr "Référence d'échéance"
+msgstr ""
 
 #: vencimientocview.cpp:77
 msgid "idcliente de Vencimiento"
-msgstr "Id client d'échéance"
+msgstr ""
 
 #~ msgid "Forma de Pago"
 #~ msgstr "Forma de pago"

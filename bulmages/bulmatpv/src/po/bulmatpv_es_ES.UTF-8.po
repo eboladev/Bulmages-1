@@ -8,10 +8,11 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2010-09-23 18:09+0200\n"
+"POT-Creation-Date: 2011-02-04 12:53+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -192,11 +193,19 @@ msgstr "Bloqueado"
 msgid "Borrar"
 msgstr "Borrar"
 
-#: btticket.cpp:117
+#: btticket.cpp:72
+msgid "Cambios"
+msgstr ""
+
+#: btticket.cpp:74
+msgid "Cambios tras guardar"
+msgstr ""
+
+#: btticket.cpp:132
 msgid "Cantidad"
 msgstr "Cantidad"
 
-#: main.cxx:162
+#: main.cxx:165
 msgid "Cargando plugins"
 msgstr "Cargando plugins"
 
@@ -208,7 +217,7 @@ msgstr "Cerrar"
 msgid "Cliente"
 msgstr "Cliente"
 
-#: btticket.cpp:125
+#: btticket.cpp:140
 msgid "Codigo articulo"
 msgstr "Codigo articulo"
 
@@ -220,15 +229,15 @@ msgstr "Compilado usando la version de QT:"
 msgid "Descripcion"
 msgstr "Descripcion"
 
-#: btticket.cpp:120
+#: btticket.cpp:135
 msgid "Descuento"
 msgstr "Descuento"
 
-#: btticket.cpp:1051
+#: btticket.cpp:560
 msgid "El ticket esta vacio."
 msgstr "El ticket esta vacio."
 
-#: main.cxx:224
+#: main.cxx:233
 msgid "Error inesperado en BulmaTPV. El programa se cerrara."
 msgstr "Error inesperado en BulmaTPV. El programa se cerrara."
 
@@ -244,15 +253,15 @@ msgstr "F11"
 msgid "Hora"
 msgstr "Hora"
 
-#: btticket.cpp:119
+#: btticket.cpp:134
 msgid "IVA"
 msgstr "IVA"
 
-#: btticket.cpp:60 btticket.cpp:115
+#: btticket.cpp:60 btticket.cpp:130
 msgid "Id albaran"
 msgstr "Id albaran"
 
-#: btticket.cpp:124
+#: btticket.cpp:139
 msgid "Id articulo"
 msgstr "Id articulo"
 
@@ -264,7 +273,7 @@ msgstr "Id fechaalbaran"
 msgid "Id forma de pago"
 msgstr "Id forma de pago"
 
-#: btticket.cpp:116
+#: btticket.cpp:131
 msgid "Id linea albaran"
 msgstr ""
 
@@ -276,11 +285,11 @@ msgstr "Identificacion"
 msgid "Iglues/BtBulmaTPV"
 msgstr "Iglues/BulmaTPV"
 
-#: main.cxx:174
+#: main.cxx:177
 msgid "Inicializando componentes"
 msgstr "Inicializando componentes"
 
-#: btcompany.cpp:95
+#: btcompany.cpp:123
 msgid "Inicializando listado de articulos"
 msgstr "Inicializando listado de articulos"
 
@@ -288,11 +297,11 @@ msgstr "Inicializando listado de articulos"
 msgid "Iniciando clases"
 msgstr "Iniciando clases"
 
-#: main.cxx:168
+#: main.cxx:171
 msgid "Lanzando plugins"
 msgstr "Lanzando plugins"
 
-#: main.cxx:131
+#: main.cxx:134
 msgid "Leyendo configuracion"
 msgstr "Leyendo configuracion"
 
@@ -304,7 +313,7 @@ msgstr "Modificar"
 msgid "Nombre"
 msgstr "Nombre"
 
-#: btticket.cpp:126 btticket.cpp:127
+#: btticket.cpp:141 btticket.cpp:142
 msgid "Nombre articulo"
 msgstr "Nombre articulo"
 
@@ -312,7 +321,7 @@ msgstr "Nombre articulo"
 msgid "Num"
 msgstr "Num"
 
-#: btticket.cpp:121
+#: btticket.cpp:136
 msgid "Orden"
 msgstr "Orden"
 
@@ -320,7 +329,7 @@ msgstr "Orden"
 msgid "Pendiente"
 msgstr "Pendiente"
 
-#: btticket.cpp:118
+#: btticket.cpp:133
 msgid "Precio"
 msgstr "Precio"
 
@@ -332,7 +341,7 @@ msgstr "Preferencias"
 msgid "Referencia"
 msgstr "Referencia"
 
-#: btticket.cpp:122
+#: btticket.cpp:137
 msgid "Req. eq."
 msgstr "Req. eq."
 
@@ -352,11 +361,11 @@ msgstr "Sobre Qt"
 msgid "Sopor&te"
 msgstr "Sopor&te"
 
-#: main.cxx:180
+#: main.cxx:183
 msgid "Terminado"
 msgstr "Terminado"
 
-#: btcompany.cpp:135
+#: btcompany.cpp:160
 msgid "Terminal Punto de Venta GPL"
 msgstr "Terminal Punto de Venta GPL"
 
@@ -364,7 +373,7 @@ msgstr "Terminal Punto de Venta GPL"
 msgid "Ticket"
 msgstr "Ticket"
 
-#: btticket.cpp:82
+#: btticket.cpp:86
 msgid "Ticket actual"
 msgstr ""
 

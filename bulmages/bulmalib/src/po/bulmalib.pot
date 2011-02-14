@@ -8,10 +8,11 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2010-09-23 18:08+0200\n"
+"POT-Creation-Date: 2011-02-04 12:53+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -68,7 +69,7 @@ msgstr ""
 msgid "&Entra"
 msgstr ""
 
-#: ui_blcompanydialogbase.h:203 blform.cpp:391 blcountryview.cpp:118
+#: ui_blcompanydialogbase.h:203 blform.cpp:460 blcountryview.cpp:118
 #: blcountryview.cpp:225
 msgid "&Cancelar"
 msgstr ""
@@ -81,7 +82,7 @@ msgstr ""
 msgid "&Detalles"
 msgstr ""
 
-#: ui_blerrordialogbase.h:114 ui_blsubformbase.h:665
+#: ui_blerrordialogbase.h:114 ui_blsubformbase.h:681
 msgid "&Cerrar"
 msgstr ""
 
@@ -93,107 +94,111 @@ msgstr ""
 msgid "Ctrl+F"
 msgstr ""
 
-#: ui_blsubformbase.h:645
+#: ui_blsubformbase.h:661
 msgid "Configuracion Subformularios"
 msgstr ""
 
-#: ui_blsubformbase.h:649
+#: ui_blsubformbase.h:665
 msgid "Columnas visibles"
 msgstr ""
 
-#: ui_blsubformbase.h:650
+#: ui_blsubformbase.h:666
 msgid "Total filas:"
 msgstr ""
 
-#: ui_blsubformbase.h:651
+#: ui_blsubformbase.h:667
 msgid "Filas por pagina:"
 msgstr ""
 
-#: ui_blsubformbase.h:652
+#: ui_blsubformbase.h:668
 msgid "Pagina actual:"
 msgstr ""
 
-#: ui_blsubformbase.h:653
+#: ui_blsubformbase.h:669
 msgid "Total paginas:"
 msgstr ""
 
-#: ui_blsubformbase.h:654
+#: ui_blsubformbase.h:670
 msgid "Pagina anterior"
 msgstr ""
 
-#: ui_blsubformbase.h:655
+#: ui_blsubformbase.h:671
 msgid "Pagina siguiente"
 msgstr ""
 
-#: ui_blsubformbase.h:656
+#: ui_blsubformbase.h:672
 msgid "Paginacion"
 msgstr ""
 
-#: ui_blsubformbase.h:658
+#: ui_blsubformbase.h:674
 msgid "Escriba aqui la consulta SQL"
 msgstr ""
 
-#: ui_blsubformbase.h:660
+#: ui_blsubformbase.h:676
 msgid "Query"
 msgstr ""
 
-#: ui_blsubformbase.h:661
+#: ui_blsubformbase.h:677
 msgid "!Opcion reservada a expertos!"
 msgstr ""
 
-#: ui_blsubformbase.h:662
+#: ui_blsubformbase.h:678
 msgid "Ejecutar consulta"
 msgstr ""
 
-#: ui_blsubformbase.h:663
+#: ui_blsubformbase.h:679
 msgid "SQL"
 msgstr ""
 
-#: ui_blsubformbase.h:664
+#: ui_blsubformbase.h:680
 msgid "Aplicar"
 msgstr ""
 
-#: ui_blformconfigbase.h:283 ui_blbankeditbase.h:92
+#: ui_blformconfigbase.h:326 ui_blbankeditbase.h:92
 msgid "Form"
 msgstr ""
 
-#: ui_blformconfigbase.h:284 ui_blformconfigbase.h:286
+#: ui_blformconfigbase.h:327 ui_blformconfigbase.h:329
 msgid "Nombre de la Tabla"
 msgstr ""
 
-#: ui_blformconfigbase.h:285
+#: ui_blformconfigbase.h:328
 msgid "Database Table"
 msgstr ""
 
-#: ui_blformconfigbase.h:287
+#: ui_blformconfigbase.h:330
 msgid "Campo Indice"
 msgstr ""
 
-#: ui_blformconfigbase.h:288
+#: ui_blformconfigbase.h:331
 msgid "Form Elements"
 msgstr ""
 
-#: ui_blformconfigbase.h:289
+#: ui_blformconfigbase.h:332
 msgid "Usuario Actual"
 msgstr ""
 
-#: ui_blformconfigbase.h:290
+#: ui_blformconfigbase.h:333
 msgid "Propietario de la tablas"
 msgstr ""
 
-#: ui_blformconfigbase.h:291
+#: ui_blformconfigbase.h:334
 msgid "User Preferences"
 msgstr ""
 
-#: ui_blformconfigbase.h:292
+#: ui_blformconfigbase.h:335
 msgid "Databse Scripting"
 msgstr ""
 
-#: ui_blformconfigbase.h:293
+#: ui_blformconfigbase.h:337 blformlist.cpp:439
+msgid "Editar"
+msgstr ""
+
+#: ui_blformconfigbase.h:338
 msgid "Qt Scripting"
 msgstr ""
 
-#: ui_blformconfigbase.h:294
+#: ui_blformconfigbase.h:339
 msgid "Cerrar"
 msgstr ""
 
@@ -316,68 +321,68 @@ msgid ""
 "() ]."
 msgstr ""
 
-#: blfunctions.cpp:347
+#: blfunctions.cpp:349
 msgid "Error en PYTHON [ blfunctions->blCreatePDF() ]"
 msgstr ""
 
-#: blfunctions.cpp:354
+#: blfunctions.cpp:358
 msgid "Error en FLIP [ blfunctions->blCreatePDF() ]"
 msgstr ""
 
-#: blfunctions.cpp:364
+#: blfunctions.cpp:368
 msgid "Error en bgtrml2pdf [ blfunctions->blCreatePDF() ]"
 msgstr ""
 
-#: blfunctions.cpp:383
+#: blfunctions.cpp:387
 msgid "Error al borrar archivo .ods [ blfunctions->blCreateODS() ]"
 msgstr ""
 
-#: blfunctions.cpp:389
+#: blfunctions.cpp:393
 msgid "Error al ejecutar PYTHON [ blfunctions->blCreateODS() ]"
 msgstr ""
 
-#: blfunctions.cpp:403
+#: blfunctions.cpp:407
 msgid "Error al ejecutar oocalc [ blfunctions->blCreateAndLoadODS() ]"
 msgstr ""
 
-#: blfunctions.cpp:418
+#: blfunctions.cpp:428
 msgid "Error al ejecutar el visor de PDF [ blfunctions->blCreateAndLoadPDF() ]"
 msgstr ""
 
-#: blfunctions.cpp:432
+#: blfunctions.cpp:442
 msgid "Error al ejecutar mailsend [ blfunctions->blSendPDFMail() ]"
 msgstr ""
 
-#: blfunctions.cpp:451
+#: blfunctions.cpp:461
 msgid "Error al ejecutar xwininfo [ blfunctions->blWindowId() ]"
 msgstr ""
 
-#: blfunctions.cpp:577
+#: blfunctions.cpp:587
 msgid "Informacion de depuracion"
 msgstr ""
 
-#: blfunctions.cpp:579 blfunctions.cpp:608 blfunctions.cpp:618
-#: blfunctions.cpp:628
+#: blfunctions.cpp:589 blfunctions.cpp:618 blfunctions.cpp:628
+#: blfunctions.cpp:638
 msgid "&Continuar"
 msgstr ""
 
-#: blfunctions.cpp:580
+#: blfunctions.cpp:590
 msgid "&Omitir"
 msgstr ""
 
-#: blfunctions.cpp:581
+#: blfunctions.cpp:591
 msgid "Omitir &clase"
 msgstr ""
 
-#: blfunctions.cpp:607
+#: blfunctions.cpp:617
 msgid "Informacion del programa"
 msgstr ""
 
-#: blfunctions.cpp:617
+#: blfunctions.cpp:627
 msgid "Aviso del programa"
 msgstr ""
 
-#: blfunctions.cpp:627
+#: blfunctions.cpp:637
 msgid "Error del programa"
 msgstr ""
 
@@ -393,7 +398,7 @@ msgstr ""
 msgid "Para entrar, antes tiene que seleccionar una empresa."
 msgstr ""
 
-#: blcompanydialog.cpp:498 blsubform.cpp:238
+#: blcompanydialog.cpp:498 blsubform.cpp:239
 msgid "Nombre"
 msgstr ""
 
@@ -672,144 +677,155 @@ msgstr ""
 msgid "Bienal"
 msgstr ""
 
-#: bldb.cpp:959
+#: bldb.cpp:978
 msgid "Error al copiar el archivo RML [ bldb->generaRML() ]"
 msgstr ""
 
-#: bldb.cpp:973
+#: bldb.cpp:990
 msgid "Error al copiar el archivo de logo [ bldb->generaRML() ]"
 msgstr ""
 
-#: blsubform.cpp:238
+#: blsubform.cpp:239
 msgid "Nombre de campo"
 msgstr ""
 
-#: blsubform.cpp:238
+#: blsubform.cpp:239
 msgid "Visible"
 msgstr ""
 
-#: blsubform.cpp:238
+#: blsubform.cpp:239
 msgid "Orden"
 msgstr ""
 
-#: blsubform.cpp:1344
+#: blsubform.cpp:1350
 msgid "Cargando SubFormulario "
 msgstr ""
 
-#: blsubform.cpp:2047 blsubform.cpp:2073
+#: blsubform.cpp:2059 blsubform.cpp:2085
 msgid "Fila inexistente"
 msgstr ""
 
-#: blsubform.cpp:2144
+#: blsubform.cpp:2156
 msgid "Error inesperado en el guardado. [BlSubForm::guardar]"
 msgstr ""
 
-#: blsubform.cpp:2187
+#: blsubform.cpp:2199
 msgid "Error al borrar. [BlSubForm::borrar]"
 msgstr ""
 
-#: blsubform.cpp:2245
+#: blsubform.cpp:2257
 msgid "Error al intentar borrar"
 msgstr ""
 
-#: blsubform.cpp:2578
+#: blsubform.cpp:2678
 msgid "Imprimiendo "
 msgstr ""
 
-#: blsubform.cpp:2674 blsubform.cpp:2692
+#: blsubform.cpp:2774 blsubform.cpp:2792
 msgid "no se ha inicializado bien la clase"
 msgstr ""
 
-#: blsubform.cpp:2829 blsubform.cpp:2843
+#: blsubform.cpp:2928 blsubform.cpp:2940
 msgid "Errr al copiar listado.rml [ BlSubForm->imprimirPDF() ]"
 msgstr ""
 
-#: blsubform.cpp:2977
+#: blsubform.cpp:3074
 msgid "Borrar registro"
 msgstr ""
 
-#: blsubform.cpp:2982 bltreewidget.cpp:71
+#: blsubform.cpp:3079 bltreewidget.cpp:71
 msgid "Ajustar columa"
 msgstr ""
 
-#: blsubform.cpp:2984
+#: blsubform.cpp:3081
 msgid "Ajustar altura"
 msgstr ""
 
-#: blsubform.cpp:2987 bltreewidget.cpp:74
+#: blsubform.cpp:3084 bltreewidget.cpp:74
 msgid "Ajustar columnas"
 msgstr ""
 
-#: blsubform.cpp:2989
+#: blsubform.cpp:3086
 msgid "Ajustar alturas"
 msgstr ""
 
-#: blsubform.cpp:2993
+#: blsubform.cpp:3090
 msgid "Ver/Ocultar menu de subformulario"
 msgstr ""
 
-#: blsubform.cpp:2995
+#: blsubform.cpp:3092
 msgid "Ver/Ocultar configurador de subformulario"
 msgstr ""
 
-#: blwindowlistdock.cpp:161 blwindowlistdock.cpp:162
+#: blwindowlistdock.cpp:164 blwindowlistdock.cpp:166
 msgid "Indexador"
 msgstr ""
 
-#: blworkspace.cpp:90
+#: blworkspace.cpp:102 blworkspace.cpp:140
 msgid "Esc"
 msgstr ""
 
-#: blform.cpp:355 blformlist.cpp:390
+#: blform.cpp:424 blformlist.cpp:440
 msgid "Borrar"
 msgstr ""
 
-#: blform.cpp:356
+#: blform.cpp:425
 msgid "Desea eliminar '"
 msgstr ""
 
-#: blform.cpp:366
+#: blform.cpp:435
 msgid "No se ha podido borrar"
 msgstr ""
 
-#: blform.cpp:389
+#: blform.cpp:458
 msgid "Guardar"
 msgstr ""
 
-#: blform.cpp:390 blcountryview.cpp:117 blcountryview.cpp:189
+#: blform.cpp:459 blcountryview.cpp:117 blcountryview.cpp:189
 msgid "Desea guardar los cambios?"
 msgstr ""
 
-#: blform.cpp:391
+#: blform.cpp:460
 msgid "&Si"
 msgstr ""
 
-#: blform.cpp:391
+#: blform.cpp:460
 msgid "&No"
 msgstr ""
 
-#: blform.cpp:404
+#: blform.cpp:473
 msgid "No se pudo cerrar la ventana debido a un error"
 msgstr ""
 
-#: blform.cpp:463
+#: blform.cpp:532
 msgid "Opciones avanzadas de ficha"
 msgstr ""
 
-#: blform.cpp:464
+#: blform.cpp:535
 msgid "Imprimir ficha"
 msgstr ""
 
-#: bltexteditdelegate.cpp:68
-msgid "BlTextEditDelegate::eventFilter Se ha pulsado return"
+#: blmaincompany.cpp:255
+msgid "La base de datos no esta preparada para el plugin:"
 msgstr ""
 
-#: blformlist.cpp:338
+#: blmaincompany.cpp:255
+msgid "El programa no funcionara adecuadamente."
+msgstr ""
+
+#: blmaincompany.cpp:275
+msgid ""
+"La version de la base de datos no coincide con el programa.\n"
+"\n"
+"El programa no funcionara adecuadamente.\n"
+msgstr ""
+
+#: blformlist.cpp:388
 msgid "Tiene que seleccionar un elemento"
 msgstr ""
 
-#: blformlist.cpp:389
-msgid "Editar"
+#: blformconfig.cpp:111
+msgid "Crear"
 msgstr ""
 
 #: blcountryview.cpp:48 blcountryview.cpp:60 blcountryview.cpp:70
@@ -870,20 +886,20 @@ msgstr ""
 msgid "Error al intentar borrar el pais"
 msgstr ""
 
-#: blgenericcomboboxdelegate.cpp:130
+#: blgenericcomboboxdelegate.cpp:132
 msgid "Falta definir algún parámetro necesario para BlGenericComboBoxDelegate."
 msgstr ""
 
-#: blgenericcomboboxdelegate.cpp:201
+#: blgenericcomboboxdelegate.cpp:212
 #, qt-format
 msgid ""
 "No existen elementos en el listado \"%1\", y el campo \"%2\" requiere alguno."
 msgstr ""
 
-#: blsearchwidget.cpp:627
+#: blsearchwidget.cpp:654
 msgid "Copiar "
 msgstr ""
 
-#: blsearchwidget.cpp:628
+#: blsearchwidget.cpp:655
 msgid "Pegar"
 msgstr ""

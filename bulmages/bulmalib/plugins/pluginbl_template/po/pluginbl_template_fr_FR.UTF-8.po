@@ -1,5 +1,7 @@
 msgid ""
 msgstr ""
+"Report-Msgid-Bugs-To: info@iglues.org\n"
+"POT-Creation-Date: 2011-02-04 12:53+0100\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -7,6 +9,6 @@ msgstr ""
 "X-Language: fr_FR\n"
 "X-Source-Language: C\n"
 
-#: eqtoolbutton.cpp:70
+#: eqtoolbutton.cpp:156
 msgid "Informes personales"
 msgstr "Informations personelles"

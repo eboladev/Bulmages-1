@@ -3,10 +3,11 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2010-09-23 18:23+0200\n"
+"POT-Creation-Date: 2011-02-04 12:55+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -16,7 +17,7 @@ msgstr ""
 msgid "Actualizar listado"
 msgstr "Actual·litza llistat"
 
-#: movimientosview.cpp:180
+#: movimientosview.cpp:181
 msgid "Cantidad"
 msgstr "Quantitat"
 
@@ -24,11 +25,11 @@ msgstr "Quantitat"
 msgid "Cliente:"
 msgstr "Client:"
 
-#: movimientosview.cpp:183
+#: movimientosview.cpp:184
 msgid "Codigo almacen"
 msgstr "Codi magatzem"
 
-#: movimientosview.cpp:178
+#: movimientosview.cpp:179
 msgid "Codigo articulo"
 msgstr "Codi article"
 
@@ -52,19 +53,19 @@ msgstr "Ctrl+P"
 msgid "F5"
 msgstr "F5"
 
-#: movimientosview.cpp:149
+#: movimientosview.cpp:150
 msgid "Facturas a clientes"
 msgstr "Factures a clients"
 
-#: movimientosview.cpp:90
+#: movimientosview.cpp:91
 msgid "Facturas no procesadas"
 msgstr "Factures no processades"
 
-#: movimientosview.cpp:89
+#: movimientosview.cpp:90
 msgid "Facturas procesadas"
 msgstr "factures processades"
 
-#: movimientosview.cpp:176
+#: movimientosview.cpp:177
 msgid "Fecha"
 msgstr "Data"
 
@@ -80,21 +81,21 @@ msgstr "Data inicial:"
 msgid "Filtrar"
 msgstr "Filtrar"
 
-#: movimientosview.cpp:185
+#: movimientosview.cpp:186
 #, fuzzy
 msgid "Id albaran cliente"
 msgstr "Id"
 
-#: movimientosview.cpp:186
+#: movimientosview.cpp:187
 #, fuzzy
 msgid "Id albaran proveedor"
 msgstr "NIF del proveïdor"
 
-#: movimientosview.cpp:182
+#: movimientosview.cpp:183
 msgid "Id almacen"
 msgstr "Id magatzem"
 
-#: movimientosview.cpp:177
+#: movimientosview.cpp:178
 msgid "Id articulo"
 msgstr "Id article"
 
@@ -103,7 +104,7 @@ msgstr "Id article"
 msgid "Imprimir listado"
 msgstr "Imprimeix la comanda"
 
-#: movimientosview.cpp:181
+#: movimientosview.cpp:182
 msgid "Lote"
 msgstr "Lot"
 
@@ -116,18 +117,18 @@ msgstr "Mostrar:"
 msgid "Movimientos"
 msgstr "Assentaments"
 
-#: movimientosview.cpp:184
+#: movimientosview.cpp:185
 msgid "Nombre almacen"
 msgstr "Nom del magatzem"
 
-#: movimientosview.cpp:179
+#: movimientosview.cpp:180
 msgid "Nombre articulo"
 msgstr "Nom article"
 
-#: movimientosview.cpp:88
+#: movimientosview.cpp:89
 msgid "Todas las facturas"
 msgstr "Totes les factures"
 
-#: movimientosview.cpp:175
+#: movimientosview.cpp:176
 msgid "idarticulo"
 msgstr "idarticulo"

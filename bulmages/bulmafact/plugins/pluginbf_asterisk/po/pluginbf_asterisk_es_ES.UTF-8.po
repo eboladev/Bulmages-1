@@ -8,10 +8,11 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2010-09-23 18:24+0200\n"
+"POT-Creation-Date: 2011-02-04 12:54+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -114,66 +115,66 @@ msgstr ""
 "#-#-#-#-#  pluginabrevs.pot (PACKAGE VERSION)  #-#-#-#-#\n"
 "#-#-#-#-#  bulmages_suite.pot (PACKAGE VERSION)  #-#-#-#-#\n"
 
-#: pluginbf_asterisk.cpp:101
+#: pluginbf_asterisk.cpp:104
 msgid "Almacen"
 msgstr "Almacen"
 
-#: pluginbf_asterisk.cpp:165
+#: pluginbf_asterisk.cpp:168
 msgid "Apellidos"
 msgstr "Apellidos"
 
-#: pluginbf_asterisk.cpp:102
+#: pluginbf_asterisk.cpp:105
 msgid "Apertura manyanas"
 msgstr "Apertura manyanas"
 
-#: pluginbf_asterisk.cpp:104
+#: pluginbf_asterisk.cpp:107
 msgid "Apertura tardes"
 msgstr "Apertura tardes"
 
-#: pluginbf_asterisk.cpp:106 pluginbf_asterisk.cpp:166
+#: pluginbf_asterisk.cpp:109 pluginbf_asterisk.cpp:169
 msgid "Audicion"
 msgstr "Audicion"
 
-#: pluginbf_asterisk.cpp:103
+#: pluginbf_asterisk.cpp:106
 msgid "Cierre manyanas"
 msgstr "Cierre manyanas"
 
-#: pluginbf_asterisk.cpp:105
+#: pluginbf_asterisk.cpp:108
 msgid "Cierre tardes"
 msgstr "Cierre tardes"
 
-#: pluginbf_asterisk.cpp:128
+#: pluginbf_asterisk.cpp:131
 msgid "Extension."
 msgstr "Extension."
 
-#: pluginbf_asterisk.cpp:99 pluginbf_asterisk.cpp:162
+#: pluginbf_asterisk.cpp:102 pluginbf_asterisk.cpp:165
 msgid "Fecha"
 msgstr "Fecha"
 
-#: pluginbf_asterisk.cpp:100 pluginbf_asterisk.cpp:163
+#: pluginbf_asterisk.cpp:103 pluginbf_asterisk.cpp:166
 msgid "Hora"
 msgstr "Hora"
 
-#: pluginbf_asterisk.cpp:107 pluginbf_asterisk.cpp:167
+#: pluginbf_asterisk.cpp:110 pluginbf_asterisk.cpp:170
 msgid "Id almacen"
 msgstr "Id almacen"
 
-#: pluginbf_asterisk.cpp:109 pluginbf_asterisk.cpp:169
+#: pluginbf_asterisk.cpp:112 pluginbf_asterisk.cpp:172
 msgid "Id trabajador"
 msgstr "Id trabajador"
 
-#: pluginbf_asterisk.cpp:108 pluginbf_asterisk.cpp:168
+#: pluginbf_asterisk.cpp:111 pluginbf_asterisk.cpp:171
 msgid "Id validacion"
 msgstr "Id validacion"
 
-#: pluginbf_asterisk.cpp:53
+#: pluginbf_asterisk.cpp:56
 msgid "Password."
 msgstr "Password."
 
-#: pluginbf_asterisk.cpp:164
+#: pluginbf_asterisk.cpp:167
 msgid "Trabajador"
 msgstr "Trabajador"
 
-#: pluginbf_asterisk.cpp:54
+#: pluginbf_asterisk.cpp:57
 msgid "Valida siempre."
 msgstr "Valida siempre."

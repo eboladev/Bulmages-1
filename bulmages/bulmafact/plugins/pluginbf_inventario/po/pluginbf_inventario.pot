@@ -8,10 +8,11 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2010-09-23 18:23+0200\n"
+"POT-Creation-Date: 2011-02-04 12:54+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -20,19 +21,19 @@ msgstr ""
 msgid "Selector de Inventarios"
 msgstr ""
 
-#: inventariosview.cpp:122 inventariosview.cpp:149
+#: inventariosview.cpp:124 inventariosview.cpp:151
 msgid "Tiene que seleccionar un inventario"
 msgstr ""
 
-#: inventariosview.cpp:281
+#: inventariosview.cpp:283
 msgid "Id inventario"
 msgstr ""
 
-#: inventariosview.cpp:282
+#: inventariosview.cpp:284
 msgid "Nombre del inventario"
 msgstr ""
 
-#: inventariosview.cpp:283
+#: inventariosview.cpp:285
 msgid "Fecha del inventario"
 msgstr ""
 
@@ -113,31 +114,31 @@ msgstr ""
 msgid "Inventarios"
 msgstr ""
 
-#: pluginbf_inventario.cpp:118
+#: pluginbf_inventario.cpp:121
 msgid "Minimos almacen"
 msgstr ""
 
-#: pluginbf_inventario.cpp:122
+#: pluginbf_inventario.cpp:125
 msgid "Almacen"
 msgstr ""
 
-#: pluginbf_inventario.cpp:123
+#: pluginbf_inventario.cpp:126
 msgid "Id Almacen"
 msgstr ""
 
-#: pluginbf_inventario.cpp:124
+#: pluginbf_inventario.cpp:127
 msgid "Minimo"
 msgstr ""
 
-#: pluginbf_inventario.cpp:125
+#: pluginbf_inventario.cpp:128
 msgid "ID Validacion"
 msgstr ""
 
-#: pluginbf_inventario.cpp:126
+#: pluginbf_inventario.cpp:129
 msgid "ID Trabajador"
 msgstr ""
 
-#: pluginbf_inventario.cpp:211
+#: pluginbf_inventario.cpp:214
 msgid "Stock minimo superado"
 msgstr ""
 

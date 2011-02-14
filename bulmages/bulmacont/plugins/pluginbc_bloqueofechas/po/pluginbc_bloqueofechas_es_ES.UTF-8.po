@@ -8,10 +8,11 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2010-09-23 18:22+0200\n"
+"POT-Creation-Date: 2011-02-04 12:54+0100\n"
 "PO-Revision-Date: 2009-11-27 17:56+0100\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
+"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -33,11 +34,11 @@ msgstr "1"
 msgid "Abierto"
 msgstr "Abierto"
 
-#: bcbloqueafechaview.cpp:179
+#: bcbloqueafechaview.cpp:182
 msgid "Abril"
 msgstr "Abril"
 
-#: bcbloqueafechaview.cpp:163
+#: bcbloqueafechaview.cpp:166
 msgid "Agosto"
 msgstr "Agosto"
 
@@ -73,27 +74,27 @@ msgstr "Cerrar"
 msgid "Ctrl+N"
 msgstr "Ctrl+N"
 
-#: bcbloqueafechaview.cpp:147
+#: bcbloqueafechaview.cpp:150
 msgid "Diciembre"
 msgstr "Diciembre"
 
-#: bcbloqueafechaview.cpp:115
+#: bcbloqueafechaview.cpp:118
 msgid "Ejercicio"
 msgstr "Ejercicio"
 
-#: bcbloqueafechaview.cpp:267
+#: bcbloqueafechaview.cpp:270
 msgid "Ejercicios ya contemplado"
 msgstr "Ejercicio ya contemplado"
 
-#: bcbloqueafechaview.cpp:191
+#: bcbloqueafechaview.cpp:194
 msgid "Enero"
 msgstr "Enero"
 
-#: bcbloqueafechaview.cpp:115
+#: bcbloqueafechaview.cpp:118
 msgid "Estado"
 msgstr "Estado"
 
-#: bcbloqueafechaview.cpp:187
+#: bcbloqueafechaview.cpp:190
 msgid "Febrero"
 msgstr "Febrero"
 
@@ -101,39 +102,39 @@ msgstr "Febrero"
 msgid "Hacer doble click para bloquear/desbloquear fechas"
 msgstr "Hacer doble click para bloquear/desbloquear fechas"
 
-#: bcbloqueafechaview.cpp:253
+#: bcbloqueafechaview.cpp:256
 msgid "Introduzca Ejercicio a Crear"
 msgstr "Introduzca ejercicio a crear"
 
-#: bcbloqueafechaview.cpp:167
+#: bcbloqueafechaview.cpp:170
 msgid "Julio"
 msgstr "Julio"
 
-#: bcbloqueafechaview.cpp:171
+#: bcbloqueafechaview.cpp:174
 msgid "Junio"
 msgstr "Junio"
 
-#: bcbloqueafechaview.cpp:183
+#: bcbloqueafechaview.cpp:186
 msgid "Marzo"
 msgstr "Marzo"
 
-#: bcbloqueafechaview.cpp:175
+#: bcbloqueafechaview.cpp:178
 msgid "Mayo"
 msgstr "Mayo"
 
-#: bcbloqueafechaview.cpp:151
+#: bcbloqueafechaview.cpp:154
 msgid "Noviembre"
 msgstr "Noviembre"
 
-#: bcbloqueafechaview.cpp:155
+#: bcbloqueafechaview.cpp:158
 msgid "Octubre"
 msgstr "Octubre"
 
-#: bcbloqueafechaview.cpp:254
+#: bcbloqueafechaview.cpp:257
 msgid "Ponga el anyo:"
 msgstr "Ponga el año:"
 
-#: bcbloqueafechaview.cpp:159
+#: bcbloqueafechaview.cpp:162
 msgid "Septiembre"
 msgstr "Septiembre"
 

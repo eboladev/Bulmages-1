@@ -8,10 +8,11 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2010-09-23 18:50+0200\n"
+"POT-Creation-Date: 2011-02-04 12:54+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -48,11 +49,11 @@ msgstr ""
 msgid "Presupuestos Contables"
 msgstr ""
 
-#: pluginbf_minicontabilidad.cpp:432 pluginbf_minicontabilidad.cpp:447
+#: pluginbf_minicontabilidad.cpp:435 pluginbf_minicontabilidad.cpp:450
 msgid "Gestionar partidas"
 msgstr ""
 
-#: pluginbf_minicontabilidad.cpp:433 pluginbf_minicontabilidad.cpp:449
+#: pluginbf_minicontabilidad.cpp:436 pluginbf_minicontabilidad.cpp:452
 msgid "Seleccionar partida"
 msgstr ""
 
@@ -93,15 +94,15 @@ msgstr ""
 msgid "Gasto"
 msgstr ""
 
-#: acontableview.cpp:76
+#: acontableview.cpp:77
 msgid "Error al crear el recibo"
 msgstr ""
 
-#: partidasview.cpp:50 partidasview.cpp:527 presupuestocontableview.cpp:68
+#: partidasview.cpp:50 partidasview.cpp:528 presupuestocontableview.cpp:68
 msgid "Nombre"
 msgstr ""
 
-#: partidasview.cpp:50 partidasview.cpp:526 presupuestocontablelist.cpp:219
+#: partidasview.cpp:50 partidasview.cpp:527 presupuestocontablelist.cpp:221
 #: presupuestocontableview.cpp:66
 msgid "Codigo"
 msgstr ""
@@ -118,44 +119,44 @@ msgstr ""
 msgid "Codigo completo"
 msgstr ""
 
-#: partidasview.cpp:122
+#: partidasview.cpp:123
 msgid "Partidas Contables"
 msgstr ""
 
-#: partidasview.cpp:317
+#: partidasview.cpp:318
 msgid "Guardar partida"
 msgstr ""
 
-#: partidasview.cpp:318
+#: partidasview.cpp:319
 msgid "Desea guardar los cambios?"
 msgstr ""
 
-#: partidasview.cpp:340 partidasview.cpp:462
+#: partidasview.cpp:341 partidasview.cpp:463
 msgid "Debe seleccionar una partida"
 msgstr ""
 
-#: partidasview.cpp:364
+#: partidasview.cpp:365
 msgid "Error al guardar la partida"
 msgstr ""
 
-#: partidasview.cpp:423
+#: partidasview.cpp:424
 msgid "Error al crear la partida"
 msgstr ""
 
-#: partidasview.cpp:436 ui_presupuestocontablelistbase.h:255
+#: partidasview.cpp:437 ui_presupuestocontablelistbase.h:255
 #: ui_presupuestocontablelistbase.h:258
 msgid "Borrar"
 msgstr ""
 
-#: partidasview.cpp:437
+#: partidasview.cpp:438
 msgid "Desea eliminar"
 msgstr ""
 
-#: partidasview.cpp:446
+#: partidasview.cpp:447
 msgid "no se ha podido borrar"
 msgstr ""
 
-#: partidasview.cpp:476
+#: partidasview.cpp:477
 msgid "Error al borrar la partida"
 msgstr ""
 
@@ -163,31 +164,31 @@ msgstr ""
 msgid "Selector de presupuesto contable"
 msgstr ""
 
-#: presupuestocontablelist.cpp:126
+#: presupuestocontablelist.cpp:128
 msgid "Listado de Presupuestos Contables"
 msgstr ""
 
-#: presupuestocontablelist.cpp:150
+#: presupuestocontablelist.cpp:152
 msgid "Error al borrar un presupuestocontable"
 msgstr ""
 
-#: presupuestocontablelist.cpp:181
+#: presupuestocontablelist.cpp:183
 msgid "Nuevo presupuestocontable"
 msgstr ""
 
-#: presupuestocontablelist.cpp:197
+#: presupuestocontablelist.cpp:199
 msgid "Editar presupuestocontable"
 msgstr ""
 
-#: presupuestocontablelist.cpp:198
+#: presupuestocontablelist.cpp:200
 msgid "Borrar presupuestocontable"
 msgstr ""
 
-#: presupuestocontablelist.cpp:218
+#: presupuestocontablelist.cpp:220
 msgid "ID presupuestocontable"
 msgstr ""
 
-#: presupuestocontablelist.cpp:220
+#: presupuestocontablelist.cpp:222
 msgid "C.I.F."
 msgstr ""
 
@@ -211,7 +212,7 @@ msgstr ""
 msgid "Saldo"
 msgstr ""
 
-#: presupuestocontableview.cpp:90
+#: presupuestocontableview.cpp:91
 msgid "Error al crear el presupuesto"
 msgstr ""
 
@@ -247,72 +248,60 @@ msgstr ""
 msgid "Pro&cesados"
 msgstr ""
 
-#: ui_partidasbase.h:319
+#: ui_partidasbase.h:293
 msgid "Partidas"
 msgstr ""
 
-#: ui_partidasbase.h:322 ui_partidasbase.h:325
+#: ui_partidasbase.h:296 ui_partidasbase.h:299
 msgid "Nueva Partida"
 msgstr ""
 
-#: ui_partidasbase.h:329 ui_partidasbase.h:332
+#: ui_partidasbase.h:303 ui_partidasbase.h:306
 msgid "Borrar Partida"
 msgstr ""
 
-#: ui_partidasbase.h:336 ui_partidasbase.h:339
+#: ui_partidasbase.h:310 ui_partidasbase.h:313
 msgid "Guardar Partida"
 msgstr ""
 
-#: ui_partidasbase.h:343 ui_partidasbase.h:346
+#: ui_partidasbase.h:317 ui_partidasbase.h:320
 msgid "Imprimir Partidas"
 msgstr ""
 
-#: ui_partidasbase.h:350
+#: ui_partidasbase.h:324
 msgid "1"
 msgstr ""
 
-#: ui_partidasbase.h:352 ui_partidasbase.h:355
+#: ui_partidasbase.h:326 ui_partidasbase.h:329
 msgid "Mostrar / Ocultar Detalle"
 msgstr ""
 
-#: ui_partidasbase.h:358
+#: ui_partidasbase.h:332
 msgid "Contenido de la partida"
 msgstr ""
 
-#: ui_partidasbase.h:359 ui_presupuestocontablebase.h:360
+#: ui_partidasbase.h:333 ui_presupuestocontablebase.h:360
 msgid "Descripcion:"
 msgstr ""
 
-#: ui_partidasbase.h:360
+#: ui_partidasbase.h:334
 msgid "Nombre:"
 msgstr ""
 
-#: ui_partidasbase.h:361
+#: ui_partidasbase.h:335
 msgid "Codigo reducido:"
 msgstr ""
 
-#: ui_partidasbase.h:362
+#: ui_partidasbase.h:336
 msgid "Codigo completo:"
 msgstr ""
 
-#: ui_partidasbase.h:363
-msgid "Imputacion Contable"
-msgstr ""
-
-#: ui_partidasbase.h:364
-msgid "Servicio."
-msgstr ""
-
-#: ui_partidasbase.h:365
-msgid "Producto."
-msgstr ""
-
-#: ui_partidasbase.h:366 ui_presupuestocontablebase.h:364
+#: ui_partidasbase.h:337 ui_presupuestocontablebase.h:364
 #: ui_acontablebase.h:192
 msgid "&Aceptar"
 msgstr ""
 
-#: ui_partidasbase.h:367 ui_presupuestocontablebase.h:365
+#: ui_partidasbase.h:338 ui_presupuestocontablebase.h:365
 #: ui_acontablebase.h:193
 msgid "&Cancelar"
 msgstr ""

@@ -8,28 +8,25 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2010-09-23 18:11+0200\n"
+"POT-Creation-Date: 2011-02-04 12:54+0100\n"
 "PO-Revision-Date: 2010-04-28 14:15+0200\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
+"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: ui_distromesasbase.h:164 ui_distromesasbase.h:165 ui_distromesasbase.h:166
-#: ui_distromesasbase.h:167 ui_distromesasbase.h:168 ui_distromesasbase.h:169
-#: ui_distromesasbase.h:170
-msgid "..."
-msgstr "..."
+#: pluginbt_cliente.cpp:78
+msgid "Cliente"
+msgstr "Client"
 
-#: ui_distromesasbase.h:163 ui_mesasbase.h:60
-msgid "Form"
-msgstr "Form"
+#~ msgid "..."
+#~ msgstr "..."
 
-#: ui_mesasbase.h:61
-msgid "Mesas"
-msgstr ""
+#~ msgid "Form"
+#~ msgstr "Form"
 
 #~ msgid "Salir"
 #~ msgstr "Abandona"

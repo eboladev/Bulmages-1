@@ -9,14 +9,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2010-09-23 18:23+0200\n"
+"POT-Creation-Date: 2011-02-08 13:50+0100\n"
 "PO-Revision-Date: 2011-02-07 09:38+0100\n"
 "Last-Translator: aishen <aishen@free.fr>\n"
 "Language-Team: French <kde-i18n-doc@kde.org>\n"
+"Language: fr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: fr\n"
 "X-Generator: Lokalize 1.2\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
@@ -24,11 +24,11 @@ msgstr ""
 msgid "&Bancos"
 msgstr "&Banques"
 
-#: bancoview.cpp:233
+#: bancoview.cpp:234
 msgid "&No"
 msgstr "&Non"
 
-#: bancoview.cpp:233
+#: bancoview.cpp:234
 msgid "&Si"
 msgstr "&Oui"
 
@@ -84,11 +84,11 @@ msgstr "Contact :"
 msgid "D.C.:"
 msgstr "D.C.:"
 
-#: bancoview.cpp:153
+#: bancoview.cpp:154
 msgid "Debe seleccionar un banco"
 msgstr "Vous devez sélectionner une banque"
 
-#: bancoview.cpp:232
+#: bancoview.cpp:233
 msgid "Desea guardar los cambios?"
 msgstr "Sauvegarder les changements ?"
 
@@ -104,15 +104,15 @@ msgstr "Courriel :"
 msgid "Entidad:"
 msgstr "Entité :"
 
-#: bancoview.cpp:214
+#: bancoview.cpp:215
 msgid "Error al guardar"
 msgstr "Erreur en sauvegarde des changements"
 
-#: bancoview.cpp:291
+#: bancoview.cpp:292
 msgid "Error inesperado al borrar el banco"
 msgstr "Erreur en effacement de la banque"
 
-#: bancoview.cpp:263
+#: bancoview.cpp:264
 msgid "Error inesperado el crear el Banco"
 msgstr "Erreur inattendue en création de banque"
 
@@ -124,7 +124,7 @@ msgstr "Fax :"
 msgid "Guardar banco"
 msgstr "Sauvegarder la banque"
 
-#: bancoview.cpp:231
+#: bancoview.cpp:232
 msgid "Guardar datos del trabajador"
 msgstr "Sauver les données de l'ouvrier"
 

@@ -8,10 +8,11 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2010-09-23 18:54+0200\n"
+"POT-Creation-Date: 2011-02-04 12:54+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -84,39 +85,39 @@ msgstr ""
 msgid "Saldo ejercicio"
 msgstr ""
 
-#: balance1view.cpp:292 balance1view.cpp:346
+#: balance1view.cpp:294 balance1view.cpp:348
 msgid "Error con la base de datos"
 msgstr ""
 
-#: balance1view.cpp:329
+#: balance1view.cpp:331
 msgid "Introduzca la Fecha Inicial"
 msgstr ""
 
-#: balance1view.cpp:334
+#: balance1view.cpp:336
 msgid "Introduzca la Fecha Final"
 msgstr ""
 
-#: balance1view.cpp:577
+#: balance1view.cpp:581
 msgid "Ver Diario (este dia)"
 msgstr ""
 
-#: balance1view.cpp:578
+#: balance1view.cpp:582
 msgid "Ver Diario (este mes)"
 msgstr ""
 
-#: balance1view.cpp:579
+#: balance1view.cpp:583
 msgid "Ver Diario (este anyo)"
 msgstr ""
 
-#: balance1view.cpp:581
+#: balance1view.cpp:585
 msgid "Ver extracto (este dia)"
 msgstr ""
 
-#: balance1view.cpp:582
+#: balance1view.cpp:586
 msgid "Ver extracto (este mes)"
 msgstr ""
 
-#: balance1view.cpp:583
+#: balance1view.cpp:587
 msgid "Ver extracto (este anyo)"
 msgstr ""
 

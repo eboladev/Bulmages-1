@@ -8,10 +8,11 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2010-09-23 18:21+0200\n"
+"POT-Creation-Date: 2011-02-04 12:54+0100\n"
 "PO-Revision-Date: 2009-04-19 20:39+0200\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
+"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -25,7 +26,7 @@ msgstr "&Aceptar"
 msgid "&Cancelar"
 msgstr "&Cancelar"
 
-#: datosview.cpp:109
+#: datosview.cpp:110
 msgid "Calculando Balance y Resultados"
 msgstr "Calculando Balance y Resultados"
 
@@ -33,7 +34,7 @@ msgstr "Calculando Balance y Resultados"
 msgid "Cuenta"
 msgstr "Cuenta"
 
-#: pluginbc_ccaa2ods.cpp:271
+#: pluginbc_ccaa2ods.cpp:204
 msgid "Cuentas Anuales &ODS"
 msgstr ""
 
@@ -57,7 +58,7 @@ msgstr "ERROR: Debe introducir una fecha inicial del balance actual."
 msgid "ERROR: Debe introducir una fecha inicial del balance anterior."
 msgstr "ERROR: Debe introducir una fecha inicial del balance anterior."
 
-#: datosview.cpp:116
+#: datosview.cpp:117
 msgid "ERROR: Ha habido un error generando el informe"
 msgstr "ERROR: Ha habido un error generando el informe."
 

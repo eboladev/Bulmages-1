@@ -1,20 +1,18 @@
 # Header entry was created by Lokalize.
 #
-#: informeqtoolbutton.cpp:196 informeqtoolbutton.cpp:229
-#: informeqtoolbutton.cpp:463
 # aishen <aishen@free.fr>, 2011.
 msgid ""
 msgstr ""
-"Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
-"Mime-Version: 1.0"
-"Last-Translator: aishen <aishen@free.fr>\n"
-"PO-Revision-Date: 2011-02-11 16:32+0100\n"
 "Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: info@iglues.org\n"
+"POT-Creation-Date: 2011-02-04 12:54+0100\n"
+"PO-Revision-Date: 2011-02-11 16:32+0100\n"
 "Language-Team: French <kde-i18n-doc@kde.org>\n"
 "Language: fr\n"
-"X-Generator: Lokalize 1.2\n"
 "MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Lokalize 1.2\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
 #: informeqtoolbutton.cpp:196 informeqtoolbutton.cpp:229
@@ -84,4 +82,3 @@ msgstr "V. Com"
 #: informeqtoolbutton.cpp:467
 msgid "V. Pres."
 msgstr "V. Pres."
-

@@ -1,34 +1,32 @@
 # Header entry was created by Lokalize.
 #
-#: plugindock.cpp:129
 # aishen <aishen@free.fr>, 2011.
 msgid ""
 msgstr ""
-"Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
-"Mime-Version: 1.0"
-"Last-Translator: aishen <aishen@free.fr>\n"
-"PO-Revision-Date: 2011-02-02 16:03+0100\n"
 "Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: info@iglues.org\n"
+"POT-Creation-Date: 2011-02-04 12:54+0100\n"
+"PO-Revision-Date: 2011-02-02 16:03+0100\n"
 "Language-Team: French <kde-i18n-doc@kde.org>\n"
 "Language: fr\n"
-"X-Generator: Lokalize 1.2\n"
 "MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Lokalize 1.2\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
-#: plugindock.cpp:129
-msgid "&Dock Aplicacion"
-msgstr "&Ancrée l'application"
+#: pluginbl_logo.cpp:53
+msgid "Logotipo"
+msgstr ""
 
-#: plugindock.cpp:134
-msgid "&Embeber Aplicacion"
-msgstr "Intégrer l'application"
+#~ msgid "&Dock Aplicacion"
+#~ msgstr "&Ancrée l'application"
 
-#: plugindock.cpp:130 plugindock.cpp:131
-msgid "Dockear Aplicacion"
-msgstr "Application ancrée"
+#~ msgid "&Embeber Aplicacion"
+#~ msgstr "Intégrer l'application"
 
-#: plugindock.cpp:135 plugindock.cpp:136
-msgid "Embeber Aplicacion"
-msgstr "Intégrer l'application"
+#~ msgid "Dockear Aplicacion"
+#~ msgstr "Application ancrée"
 
+#~ msgid "Embeber Aplicacion"
+#~ msgstr "Intégrer l'application"

@@ -8,10 +8,11 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2010-09-23 18:57+0200\n"
+"POT-Creation-Date: 2011-02-04 12:54+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -48,39 +49,39 @@ msgstr ""
 msgid "Cuenta Final:"
 msgstr ""
 
-#: balanceview.cpp:274
+#: balanceview.cpp:277
 msgid "Codigo"
 msgstr ""
 
-#: balanceview.cpp:274
+#: balanceview.cpp:277
 msgid "Denominacion"
 msgstr ""
 
-#: balanceview.cpp:274
+#: balanceview.cpp:277
 msgid "Saldo anterior"
 msgstr ""
 
-#: balanceview.cpp:274
+#: balanceview.cpp:277
 msgid "Debe"
 msgstr ""
 
-#: balanceview.cpp:274
+#: balanceview.cpp:277
 msgid "Haber"
 msgstr ""
 
-#: balanceview.cpp:274
+#: balanceview.cpp:277
 msgid "Saldo"
 msgstr ""
 
-#: balanceview.cpp:274
+#: balanceview.cpp:277
 msgid "Debe "
 msgstr ""
 
-#: balanceview.cpp:274
+#: balanceview.cpp:277
 msgid "Haber "
 msgstr ""
 
-#: balanceview.cpp:274
+#: balanceview.cpp:277
 msgid "Saldo "
 msgstr ""
 

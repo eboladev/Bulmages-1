@@ -8,28 +8,81 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2010-09-23 18:11+0200\n"
+"POT-Creation-Date: 2011-02-04 12:54+0100\n"
 "PO-Revision-Date: 2010-04-28 14:15+0200\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
+"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: ui_distromesasbase.h:164 ui_distromesasbase.h:165 ui_distromesasbase.h:166
-#: ui_distromesasbase.h:167 ui_distromesasbase.h:168 ui_distromesasbase.h:169
-#: ui_distromesasbase.h:170
-msgid "..."
-msgstr "..."
+#: ui_trabajadoresbase.h:272
+msgid "&Cerrar"
+msgstr "Tan&ca"
 
-#: ui_distromesasbase.h:163 ui_mesasbase.h:60
-msgid "Form"
-msgstr "Form"
+#: ui_trabajadoresbase.h:270
+msgid "."
+msgstr "."
 
-#: ui_mesasbase.h:61
-msgid "Mesas"
+#: ui_trabajadoresbase.h:269
+msgid "0"
+msgstr "0"
+
+#: ui_trabajadoresbase.h:266
+msgid "1"
+msgstr "1"
+
+#: ui_trabajadoresbase.h:267
+msgid "2"
+msgstr "2"
+
+#: ui_trabajadoresbase.h:268
+msgid "3"
+msgstr "3"
+
+#: ui_trabajadoresbase.h:263
+msgid "4"
+msgstr "4"
+
+#: ui_trabajadoresbase.h:264
+msgid "5"
+msgstr "5"
+
+#: ui_trabajadoresbase.h:265
+msgid "6"
+msgstr "6"
+
+#: ui_trabajadoresbase.h:260
+msgid "7"
+msgstr "7"
+
+#: ui_trabajadoresbase.h:261
+msgid "8"
+msgstr "8"
+
+#: ui_trabajadoresbase.h:262
+msgid "9"
+msgstr "9"
+
+#: ui_trabajadoresbase.h:271
+msgid "C"
+msgstr "C"
+
+#: pluginbt_camareros.cpp:69
+msgid "Camareros"
 msgstr ""
+
+#: ui_trabajadoresbase.h:259
+msgid "Registro de camarero"
+msgstr ""
+
+#~ msgid "..."
+#~ msgstr "..."
+
+#~ msgid "Form"
+#~ msgstr "Form"
 
 #~ msgid "Salir"
 #~ msgstr "Abandona"

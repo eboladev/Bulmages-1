@@ -92,7 +92,7 @@ void ServerLight::readyRead() {
     lectura = socket->readAll();
     g_buffers[socket]  += lectura;
     array += lectura;
-    QString mensaje = "Mensaje desde: "+ socket->peerAddress().toString() + "\n";
+    QString mensaje = _("Mensaje desde: ")+ socket->peerAddress().toString() + "\n";
     
     QString texto(g_buffers[socket]);
 
@@ -141,7 +141,7 @@ void ServerLight::send(const QString & texto) {
 	socket = m_listaSockets.at(i);
 	if (socket != (QTcpSocket *) sender()) {
 	  //mui_plainText->appendPlainText("Enviando mensaje a:" + socket->peerAddress().toString() + "\n");
-	  QString txt = "Enviando mensaje a:" + socket->peerAddress().toString() + "\n";
+	  QString txt = _("Enviando mensaje a:") + socket->peerAddress().toString() + "\n";
 	  //fprintf(stderr, txt.toAscii() );
 	  socket->write(texto.toLatin1());
 	} // end if

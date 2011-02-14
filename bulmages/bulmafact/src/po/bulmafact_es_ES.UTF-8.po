@@ -5,15 +5,15 @@
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2010-09-23 18:13+0200\n"
+"POT-Creation-Date: 2011-02-04 12:53+0100\n"
 "PO-Revision-Date: 2009-01-26 09:34+0100\n"
 "Language-Team:  <es@li.org>\n"
+"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: KBabel 1.11.4\n"
 
-#: bfclientealbarandescuentosubform.cpp:43 bfclientealbaransubform.cpp:55
 #: bfproveedoralbaransubform.cpp:57
 msgid "% Descuento"
 msgstr "% Descuento"
@@ -26,11 +26,7 @@ msgstr "% I.V.A."
 msgid "% R.E."
 msgstr "% R.E."
 
-#: bfclientealbaransubform.cpp:54
-msgid "% Recargo E.Q."
-msgstr "% Recargo E.Q."
-
-#: ui_bfconfiguracionbase.h:119 ui_bfseriefacturabase.h:85
+#: ui_bfconfiguracionbase.h:422 ui_bfseriefacturabase.h:85
 msgid "&Aceptar"
 msgstr "&Aceptar"
 
@@ -42,7 +38,7 @@ msgstr "&Acerca de"
 msgid "&Acerca de Iglues/BulmaFact"
 msgstr "&Acerca de Iglues/BulmaFact"
 
-#: ui_bfconfiguracionbase.h:120 ui_bfseriefacturabase.h:84
+#: ui_bfconfiguracionbase.h:423 ui_bfseriefacturabase.h:84
 msgid "&Cancelar"
 msgstr "&Cancelar"
 
@@ -124,7 +120,7 @@ msgstr "Acerca de Iglues/BulmaFact"
 msgid "Acuerdo de &licencia"
 msgstr "Acuerdo de &licencia"
 
-#: bfinformereferencia.cpp:141 bfinformereferencia.cpp:174
+#: bfinformereferencia.cpp:137 bfinformereferencia.cpp:170
 msgid "Articulo"
 msgstr "Artículo"
 
@@ -140,19 +136,27 @@ msgstr "Avanzados"
 msgid "Base Imponible"
 msgstr "Base Imponible"
 
-#: bfclientealbaransubform.cpp:50 bfproveedoralbaransubform.cpp:52
+#: ui_bfconfiguracionbase.h:428
+msgid "C.P."
+msgstr ""
+
+#: ui_bfconfiguracionbase.h:426
+msgid "CIF"
+msgstr "CIF"
+
+#: bfproveedoralbaransubform.cpp:52
 msgid "Cantidad"
 msgstr "Cantidad"
 
-#: main.cxx:159
+#: main.cxx:163
 msgid "Cargando plugins"
 msgstr "Cargando plugins"
 
-#: bfinformereferencia.cpp:216
+#: bfinformereferencia.cpp:212
 msgid "Cobrado"
 msgstr "Cobrado"
 
-#: bfclientealbaransubform.cpp:46 bfproveedoralbaransubform.cpp:48
+#: bfproveedoralbaransubform.cpp:48
 msgid "Codigo completo articulo"
 msgstr "Código completo artículo"
 
@@ -164,13 +168,17 @@ msgstr "Código serie factura"
 msgid "Compilado usando la version de QT:"
 msgstr "Compilado usando la versión de QT:"
 
-#: bfclientealbarandescuentosubform.cpp:42
-msgid "Concepto descuento"
-msgstr "Concepto descuento"
-
-#: bfconfiguracionview.cpp:51
+#: bfconfiguracionview.cpp:52
 msgid "Configuracion"
 msgstr "Configuración"
+
+#: ui_bfconfiguracionbase.h:437
+msgid "Configuracion Avanzada"
+msgstr ""
+
+#: ui_bfconfiguracionbase.h:436
+msgid "Configuracion Basica"
+msgstr ""
 
 #: ui_bfbulmafactbase.h:182
 msgid "Ctrl+I"
@@ -180,7 +188,7 @@ msgstr "Ctrl+I"
 msgid "Ctrl+Q"
 msgstr "Ctrl+Q"
 
-#: bfclientealbaransubform.cpp:49 bfproveedoralbaransubform.cpp:51
+#: bfproveedoralbaransubform.cpp:51
 msgid "Descripcion"
 msgstr "Descripción"
 
@@ -192,11 +200,19 @@ msgstr "Descripción serie factura"
 msgid "Descuento"
 msgstr "Descuento"
 
+#: ui_bfconfiguracionbase.h:427
+msgid "Direccion"
+msgstr "Dirección"
+
 #: ui_bfbulmafactbase.h:191
 msgid "E&mpresa"
 msgstr "E&mpresa"
 
-#: bfsubform.cpp:222
+#: ui_bfconfiguracionbase.h:434
+msgid "E-Mail"
+msgstr "Correo-E:"
+
+#: bfsubform.cpp:215
 msgid ""
 "El codigo del articulo no existe.\n"
 "ATENCION: No se guadara bien el documento hasta que sea valido."
@@ -204,12 +220,12 @@ msgstr ""
 "El código del artículo no existe.\n"
 "ATENCIÓN: No se guadará bien el documento hasta que sea válido."
 
-#: bfinformereferencia.cpp:144 bfinformereferencia.cpp:176
-#: bfinformereferencia.cpp:214 bfinformereferencia.cpp:261
+#: bfinformereferencia.cpp:140 bfinformereferencia.cpp:172
+#: bfinformereferencia.cpp:210 bfinformereferencia.cpp:257
 msgid "Entregado"
 msgstr "Entregado"
 
-#: main.cxx:188
+#: main.cxx:192
 msgid "Error inesperado en BulmaFact. El programa se cerrara."
 msgstr "Error inesperado en BulmaFact. El programa se cerrará."
 
@@ -229,14 +245,18 @@ msgstr "F11"
 msgid "Facturacion GPL"
 msgstr "Facturación GPL"
 
-#: bfinformereferencia.cpp:145 bfinformereferencia.cpp:177
-#: bfinformereferencia.cpp:215 bfinformereferencia.cpp:262
+#: bfinformereferencia.cpp:141 bfinformereferencia.cpp:173
+#: bfinformereferencia.cpp:211 bfinformereferencia.cpp:258
 msgid "Facturado"
 msgstr "Facturado"
 
 #: bfbuscarfamilia.cpp:36
 msgid "Familia:"
 msgstr "Familia:"
+
+#: ui_bfconfiguracionbase.h:433
+msgid "Fax"
+msgstr ""
 
 #: ui_bfbulmafactbase.h:210 ui_bfbulmafactbase.h:212 ui_bfbulmafactbase.h:215
 #: ui_bfbulmafactbase.h:218 ui_bfbulmafactbase.h:221 ui_bfbulmafactbase.h:224
@@ -251,22 +271,17 @@ msgstr "Form1"
 msgid "I.R.P.F (-"
 msgstr "I.R.P.F (-"
 
-#: bfform.cpp:518 bfclientealbaransubform.cpp:53
+#: bfform.cpp:518
 msgid "I.V.A."
 msgstr "I.V.A."
 
-#: bfclientealbarandescuentosubform.cpp:44 bfclientealbaransubform.cpp:56
 #: bfproveedoralbaransubform.cpp:58
 msgid "Id albaran"
 msgstr "Id albarán"
 
-#: bfclientealbaransubform.cpp:45 bfproveedoralbaransubform.cpp:47
+#: bfproveedoralbaransubform.cpp:47
 msgid "Id articulo"
 msgstr "Id artículo"
-
-#: bfclientealbarandescuentosubform.cpp:41
-msgid "Id descuento"
-msgstr "Id descuento"
 
 #: bfaboutview.cpp:420
 msgid "Idioma:"
@@ -296,7 +311,7 @@ msgstr "Informe"
 msgid "Informe por referencia"
 msgstr "Informe por referencia"
 
-#: main.cxx:171
+#: main.cxx:175
 msgid "Inicializando componentes"
 msgstr "Inicializando componentes"
 
@@ -304,11 +319,11 @@ msgstr "Inicializando componentes"
 msgid "Iniciando clases"
 msgstr "Iniciando clases"
 
-#: main.cxx:165
+#: main.cxx:169
 msgid "Lanzando plugins"
 msgstr "Lanzando plugins"
 
-#: main.cxx:129
+#: main.cxx:132
 msgid "Leyendo configuracion"
 msgstr "Leyendo configuración"
 
@@ -321,11 +336,15 @@ msgstr "Listados"
 msgid "Maest&ro"
 msgstr "Maest&ro"
 
-#: bfconfiguracionview.cpp:89
+#: ui_bfconfiguracionbase.h:429
+msgid "Municipio"
+msgstr "Municipio"
+
+#: ui_bfconfiguracionbase.h:425 bfconfiguracionview.cpp:213
 msgid "Nombre"
 msgstr "Nombre"
 
-#: bfclientealbaransubform.cpp:47 bfproveedoralbaransubform.cpp:49
+#: bfproveedoralbaransubform.cpp:49
 msgid "Nombre articulo"
 msgstr "Nombre artículo"
 
@@ -333,11 +352,7 @@ msgstr "Nombre artículo"
 msgid "Numero de linea"
 msgstr "Número de línea"
 
-#: bfclientealbaransubform.cpp:48
-msgid "Nº linea"
-msgstr "Nº línea"
-
-#: bfclientealbaransubform.cpp:57 bfproveedoralbaransubform.cpp:59
+#: bfproveedoralbaransubform.cpp:59
 msgid "Orden"
 msgstr "Orden"
 
@@ -349,13 +364,13 @@ msgstr "Ordenar &ventanas"
 msgid "Organizacio&n en cascada"
 msgstr "Organizació&n en cascada"
 
-#: bfclientealbaransubform.cpp:51
-msgid "P.V.P."
-msgstr "P.V.P."
-
-#: bfinformereferencia.cpp:263
+#: bfinformereferencia.cpp:259
 msgid "Pagado"
 msgstr "Pagado"
+
+#: ui_bfconfiguracionbase.h:431
+msgid "Pais"
+msgstr "País"
 
 #: ui_bfbulmafactbase.h:185 ui_bfbulmafactbase.h:186
 msgid "Paises / Provincias"
@@ -365,8 +380,8 @@ msgstr "Paises / Provincias"
 msgid "Paises y provincias"
 msgstr "Paises y provincias"
 
-#: bfinformereferencia.cpp:143 bfinformereferencia.cpp:175
-#: bfinformereferencia.cpp:213 bfinformereferencia.cpp:260
+#: bfinformereferencia.cpp:139 bfinformereferencia.cpp:171
+#: bfinformereferencia.cpp:209 bfinformereferencia.cpp:256
 msgid "Pedido"
 msgstr "Pedido"
 
@@ -382,13 +397,17 @@ msgstr "Porcentaje"
 msgid "Precio"
 msgstr "Precio"
 
-#: bfinformereferencia.cpp:142 bfinformereferencia.cpp:212
+#: bfinformereferencia.cpp:138 bfinformereferencia.cpp:208
 msgid "Pres."
 msgstr "Pres."
 
-#: ui_bfconfiguracionbase.h:118 ui_bfbulmafactbase.h:170
+#: ui_bfconfiguracionbase.h:421 ui_bfbulmafactbase.h:170
 msgid "Propiedades de la empresa"
 msgstr "Propiedades de la empresa"
+
+#: ui_bfconfiguracionbase.h:430
+msgid "Provincia"
+msgstr "Provincia"
 
 #: bfform.cpp:538
 msgid "R.E."
@@ -398,11 +417,11 @@ msgstr "R.E."
 msgid "Referencia"
 msgstr "Referencia"
 
-#: bfbulmafact.cpp:188
+#: bfbulmafact.cpp:199
 msgid "Se perderan los cambios no guardados"
 msgstr "Se perderán los cambios no guardados"
 
-#: bfbulmafact.cpp:187
+#: bfbulmafact.cpp:198
 msgid "Seguro que desea abandonar el programa "
 msgstr "¿ Seguro que desea abandonar el programa ?"
 
@@ -418,7 +437,11 @@ msgstr "Series de factura"
 msgid "Sopor&te"
 msgstr "Sopor&te"
 
-#: main.cxx:177
+#: ui_bfconfiguracionbase.h:432
+msgid "Telefono"
+msgstr "Teléfono"
+
+#: main.cxx:181
 msgid "Terminado"
 msgstr "Terminado"
 
@@ -438,11 +461,11 @@ msgstr "Total"
 msgid "Total Desc."
 msgstr "Total Desc."
 
-#: bfclientealbaransubform.cpp:52 bfproveedoralbaransubform.cpp:54
+#: bfproveedoralbaransubform.cpp:54
 msgid "Total Linea"
 msgstr ""
 
-#: bfconfiguracionview.cpp:90
+#: bfconfiguracionview.cpp:214
 msgid "Valor"
 msgstr "Valor"
 
@@ -453,6 +476,13 @@ msgstr "Venta&na"
 #: ui_bfbulmafactbase.h:172
 msgid "Ventana &completa"
 msgstr "Ventana &completa"
+
+#: ui_bfconfiguracionbase.h:435
+msgid "Web"
+msgstr ""
+
+#~ msgid "% Recargo E.Q."
+#~ msgstr "% Recargo E.Q."
 
 #~ msgid ""
 #~ "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/"
@@ -476,3 +506,15 @@ msgstr "Ventana &completa"
 #~ "<p style=\"-qt-paragraph-type:empty; margin-top:12px; margin-bottom:12px; "
 #~ "margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; "
 #~ "font-size:9pt;\"></p></body></html>"
+
+#~ msgid "Concepto descuento"
+#~ msgstr "Concepto descuento"
+
+#~ msgid "Id descuento"
+#~ msgstr "Id descuento"
+
+#~ msgid "Nº linea"
+#~ msgstr "Nº línea"
+
+#~ msgid "P.V.P."
+#~ msgstr "P.V.P."

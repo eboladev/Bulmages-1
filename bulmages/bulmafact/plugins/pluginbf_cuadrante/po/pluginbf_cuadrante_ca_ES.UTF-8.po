@@ -4,10 +4,11 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2010-09-23 18:24+0200\n"
+"POT-Creation-Date: 2011-02-04 12:54+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -155,7 +156,7 @@ msgstr ""
 msgid "Cuadrante y Uso Horario"
 msgstr "Diari"
 
-#: cuadranteview.cpp:151 cuadrantediarioview.cpp:171
+#: cuadranteview.cpp:152 cuadrantediarioview.cpp:172
 #, fuzzy
 msgid "Domingo"
 msgstr "Denominació"
@@ -170,12 +171,12 @@ msgstr ""
 "#-#-#-#-#  bulmalib_ca_ES.UTF-8.po (PACKAGE VERSION)  #-#-#-#-#\n"
 "Editar"
 
-#: cuadranteview.cpp:70 cuadrante1view.cpp:85
+#: cuadranteview.cpp:71 cuadrante1view.cpp:86
 #, fuzzy
 msgid "Error al crear el almacen"
 msgstr "Error en la càrrega de l'amortizació"
 
-#: cuadrantediarioview.cpp:98
+#: cuadrantediarioview.cpp:99
 msgid "Error al iniciar el cuadrante"
 msgstr ""
 
@@ -183,12 +184,12 @@ msgstr ""
 msgid "Fecha"
 msgstr "Data"
 
-#: pluginbf_cuadrante.cpp:247
+#: pluginbf_cuadrante.cpp:250
 #, fuzzy
 msgid "Fecha final ausencia"
 msgstr "Data &final:"
 
-#: pluginbf_cuadrante.cpp:246
+#: pluginbf_cuadrante.cpp:249
 #, fuzzy
 msgid "Fecha inicial ausencia"
 msgstr "Data &inicial:"
@@ -198,12 +199,12 @@ msgstr "Data &inicial:"
 msgid "Festivo"
 msgstr "Destinació:"
 
-#: cuadranteview.cpp:251 cuadrantediarioview.cpp:290
+#: cuadranteview.cpp:252 cuadrantediarioview.cpp:291
 #, fuzzy
 msgid "Fiesta general"
 msgstr "Propietats generals"
 
-#: cuadranteview.cpp:159
+#: cuadranteview.cpp:160
 #, fuzzy
 msgid "Generando Informe"
 msgstr "Generar de totes formes"
@@ -238,7 +239,7 @@ msgstr "Diari"
 msgid "ID Cuadrante"
 msgstr "ID Canal"
 
-#: pluginbf_cuadrante.cpp:249
+#: pluginbf_cuadrante.cpp:252
 #, fuzzy
 msgid "ID ausencia"
 msgstr "ID compte"
@@ -253,7 +254,7 @@ msgstr "ID compte"
 msgid "ID horario"
 msgstr "Diari"
 
-#: pluginbf_cuadrante.cpp:250 cuadrante1view.cpp:76
+#: pluginbf_cuadrante.cpp:253 cuadrante1view.cpp:76
 msgid "ID trabajador"
 msgstr "ID treballador"
 
@@ -279,7 +280,7 @@ msgstr ""
 "#-#-#-#-#  bulmacont_ca.po (PACKAGE VERSION)  #-#-#-#-#\n"
 "Imprimeix"
 
-#: cuadranteview.cpp:151 cuadrantediarioview.cpp:168
+#: cuadranteview.cpp:152 cuadrantediarioview.cpp:169
 msgid "Jueves"
 msgstr "Dijous"
 
@@ -288,20 +289,20 @@ msgstr "Dijous"
 msgid "Limpiar Cuadrante"
 msgstr "Neteja quadrant"
 
-#: cuadranteview.cpp:151 cuadrantediarioview.cpp:165
+#: cuadranteview.cpp:152 cuadrantediarioview.cpp:166
 #, fuzzy
 msgid "Lunes"
 msgstr "Apunts"
 
-#: cuadranteview.cpp:151 cuadrantediarioview.cpp:166
+#: cuadranteview.cpp:152 cuadrantediarioview.cpp:167
 msgid "Martes"
-msgstr ""
+msgstr "Dimarts"
 
-#: cuadranteview.cpp:151 cuadrantediarioview.cpp:167
+#: cuadranteview.cpp:152 cuadrantediarioview.cpp:168
 msgid "Miercoles"
-msgstr ""
+msgstr "Dimecres"
 
-#: pluginbf_cuadrante.cpp:248
+#: pluginbf_cuadrante.cpp:251
 #, fuzzy
 msgid "Motivo"
 msgstr "tipus"
@@ -311,7 +312,7 @@ msgstr "tipus"
 msgid "Nombre Trabajador"
 msgstr "Nom de camp"
 
-#: cuadranteview.cpp:250 cuadrantediarioview.cpp:289
+#: cuadranteview.cpp:251 cuadrantediarioview.cpp:290
 msgid "Normal"
 msgstr "Normal"
 
@@ -320,7 +321,7 @@ msgstr "Normal"
 msgid "Ocultar Panel"
 msgstr ""
 
-#: cuadranteview.cpp:151 cuadrantediarioview.cpp:170
+#: cuadranteview.cpp:152 cuadrantediarioview.cpp:171
 #, fuzzy
 msgid "Sabado"
 msgstr "Saldo"
@@ -330,7 +331,7 @@ msgstr "Saldo"
 msgid "Validaciones"
 msgstr "Paginació"
 
-#: cuadranteview.cpp:151 cuadrantediarioview.cpp:169
+#: cuadranteview.cpp:152 cuadrantediarioview.cpp:170
 #, fuzzy
 msgid "Viernes"
 msgstr "Tancament"

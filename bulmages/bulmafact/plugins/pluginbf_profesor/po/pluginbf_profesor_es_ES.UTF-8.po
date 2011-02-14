@@ -8,24 +8,25 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2010-09-23 18:50+0200\n"
+"POT-Creation-Date: 2011-02-08 13:51+0100\n"
 "PO-Revision-Date: 2009-10-19 01:16+0200\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
+"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: ui_profesorbase.h:510
+#: ui_profesorbase.h:528
 msgid "&Aceptar"
 msgstr "&Aceptar"
 
-#: ui_profesorbase.h:511
+#: ui_profesorbase.h:529
 msgid "&Cancelar"
 msgstr "&Cancelar"
 
-#: ui_profesorbase.h:495
+#: ui_profesorbase.h:513
 msgid "&Datos generales"
 msgstr "&Datos generales"
 
@@ -66,7 +67,7 @@ msgstr ""
 msgid "About FAPAC"
 msgstr "About FAPAC"
 
-#: ui_profesorbase.h:509
+#: ui_profesorbase.h:527
 msgid "Actividades Impartidas"
 msgstr ""
 
@@ -86,12 +87,12 @@ msgstr "Barcelona"
 msgid "Borrar Monitor"
 msgstr ""
 
-#: ui_profesorbase.h:469 ui_profesorbase.h:472 ui_profesorbase.h:477
-#: ui_profesorbase.h:480
+#: ui_profesorbase.h:487 ui_profesorbase.h:490 ui_profesorbase.h:495
+#: ui_profesorbase.h:498
 msgid "Borrar cobro"
 msgstr "Borrar cobro"
 
-#: profesoreslist.cpp:280
+#: profesoreslist.cpp:282
 msgid "Borrar profesor"
 msgstr "Borrar profesor"
 
@@ -115,7 +116,7 @@ msgstr "Cobros efectivos"
 msgid "Cobros previstos"
 msgstr "Cobros previstos"
 
-#: ui_profesorbase.h:487
+#: ui_profesorbase.h:505
 msgid "Codigo postal:"
 msgstr "Código postal:"
 
@@ -123,7 +124,7 @@ msgstr "Código postal:"
 msgid "Comentarios del profesor"
 msgstr "Comentarios del profesor"
 
-#: ui_profesorbase.h:507
+#: ui_profesorbase.h:525
 msgid "Comentarios:"
 msgstr "Comentarios:"
 
@@ -131,7 +132,7 @@ msgstr "Comentarios:"
 msgid "Configurar listado"
 msgstr "Configurar listado"
 
-#: ui_profesorbase.h:494
+#: ui_profesorbase.h:512
 msgid "Correo electronico:"
 msgstr "Correo electrónico:"
 
@@ -139,7 +140,7 @@ msgstr "Correo electrónico:"
 msgid "Ctrl+B"
 msgstr "Ctrl+B"
 
-#: ui_profesoreslistbase.h:339 ui_profesorbase.h:475
+#: ui_profesoreslistbase.h:339 ui_profesorbase.h:493
 msgid "Ctrl+D"
 msgstr "Ctrl+D"
 
@@ -151,7 +152,7 @@ msgstr "Ctrl+E"
 msgid "Ctrl+F"
 msgstr "Ctrl+F"
 
-#: ui_profesorbase.h:483
+#: ui_profesorbase.h:501
 msgid "Ctrl+I"
 msgstr "Ctrl+I"
 
@@ -163,15 +164,15 @@ msgstr "Ctrl+N"
 msgid "Ctrl+P"
 msgstr "Ctrl+P"
 
-#: ui_profesorbase.h:467
+#: ui_profesorbase.h:485
 msgid "Ctrl+S"
 msgstr "Ctrl+S"
 
-#: ui_profesorbase.h:484
+#: ui_profesorbase.h:502
 msgid "D.N.I."
 msgstr "D.N.I."
 
-#: profesoreslist.cpp:335
+#: profesoreslist.cpp:337
 msgid "DNI"
 msgstr "DNI"
 
@@ -179,11 +180,11 @@ msgstr "DNI"
 msgid "DNI del profesor"
 msgstr "DNI del profesor"
 
-#: profesoreslist.cpp:260
+#: profesoreslist.cpp:262
 msgid "Debe seleccionar una fila primero"
 msgstr "Debe seleccionar una fila primero"
 
-#: profesoreslist.cpp:217
+#: profesoreslist.cpp:219
 msgid "Debe seleccionar una linea"
 msgstr "Debe seleccionar una línea"
 
@@ -191,7 +192,7 @@ msgstr "Debe seleccionar una línea"
 msgid "Direccion del profesor"
 msgstr "Dirección del profesor"
 
-#: ui_profesorbase.h:486
+#: ui_profesorbase.h:504
 msgid "Direccion:"
 msgstr "Dirección:"
 
@@ -199,19 +200,19 @@ msgstr "Dirección:"
 msgid "Editar Monitor"
 msgstr ""
 
-#: profesoreslist.cpp:279
+#: profesoreslist.cpp:281
 msgid "Editar profesor"
 msgstr "Editar profesor"
 
-#: profesoreslist.cpp:232
+#: profesoreslist.cpp:234
 msgid "Error al borrar el cobro a cliente"
 msgstr "Error al borrar el cobro al cliente"
 
-#: profesorview.cpp:96
+#: profesorview.cpp:97
 msgid "Error al crear el profesor"
 msgstr "Error al crear el profesor"
 
-#: ui_profesorbase.h:506
+#: ui_profesorbase.h:524
 msgid "Estudios"
 msgstr "Estudios:"
 
@@ -219,7 +220,7 @@ msgstr "Estudios:"
 msgid "Estudios del profesor"
 msgstr "Estudios del profesor:"
 
-#: ui_profesorbase.h:505
+#: ui_profesorbase.h:523
 msgid "Estudios:"
 msgstr "Estudios:"
 
@@ -255,7 +256,7 @@ msgstr ""
 msgid "Girona"
 msgstr "Girona"
 
-#: ui_profesorbase.h:461 ui_profesorbase.h:464
+#: ui_profesorbase.h:479 ui_profesorbase.h:482
 msgid "Guardar cobro"
 msgstr "Guardar cobro"
 
@@ -267,7 +268,7 @@ msgstr "ID actividad"
 msgid "ID profesor"
 msgstr "ID profesor"
 
-#: profesoreslist.cpp:333
+#: profesoreslist.cpp:335
 msgid "Id profesor"
 msgstr "ID profesor"
 
@@ -283,7 +284,7 @@ msgstr "Lleida"
 msgid "Monitor"
 msgstr ""
 
-#: pluginbf_profesor.cpp:116 pluginbf_profesor.cpp:117 profesoreslist.cpp:199
+#: pluginbf_profesor.cpp:116 pluginbf_profesor.cpp:117 profesoreslist.cpp:201
 #: ui_profesoreslistbase.h:309
 msgid "Monitores"
 msgstr ""
@@ -292,11 +293,11 @@ msgstr ""
 msgid "Movil del profesor"
 msgstr "Móvil del profesor"
 
-#: profesorview.cpp:83 profesoreslist.cpp:334
+#: profesorview.cpp:83 profesoreslist.cpp:336
 msgid "Nombre"
 msgstr "Nombre"
 
-#: ui_profesorbase.h:485
+#: ui_profesorbase.h:503
 msgid "Nombre completo:"
 msgstr "Nombre completo:"
 
@@ -305,7 +306,7 @@ msgid "Nombre del profesor"
 msgstr "Nombre del profesor"
 
 #: ui_profesoreslistbase.h:317 ui_profesoreslistbase.h:320
-#: ui_profesorbase.h:449
+#: ui_profesorbase.h:467
 msgid "Nuevo Monitor"
 msgstr ""
 
@@ -313,19 +314,19 @@ msgstr ""
 msgid "Nuevo profesor"
 msgstr "Nuevo profesor"
 
-#: ui_profesorbase.h:491
+#: ui_profesorbase.h:509
 msgid "Numero de fax:"
 msgstr "Número de fax:"
 
-#: ui_profesorbase.h:508
+#: ui_profesorbase.h:526
 msgid "Otros datos"
 msgstr "Otros datos"
 
-#: ui_profesorbase.h:492
+#: ui_profesorbase.h:510
 msgid "Pagina web:"
 msgstr "Página web:"
 
-#: profesoreslist.cpp:337
+#: profesoreslist.cpp:339
 msgid "Poblacion"
 msgstr "Población"
 
@@ -333,7 +334,7 @@ msgstr "Población"
 msgid "Poblacion del profesor"
 msgstr "Población del profesor"
 
-#: ui_profesorbase.h:488
+#: ui_profesorbase.h:506
 msgid "Poblacion:"
 msgstr "Población:"
 
@@ -341,7 +342,7 @@ msgstr "Población:"
 msgid "Precio"
 msgstr "Precio"
 
-#: ui_profesorbase.h:489
+#: ui_profesorbase.h:507
 msgid "Provincia:"
 msgstr "Provincia:"
 
@@ -349,7 +350,7 @@ msgstr "Provincia:"
 msgid "Tarragona"
 msgstr "Tarragona"
 
-#: profesoreslist.cpp:336
+#: profesoreslist.cpp:338
 msgid "Telefono"
 msgstr "Teléfono"
 
@@ -357,15 +358,15 @@ msgstr "Teléfono"
 msgid "Telefono del profesor"
 msgstr "Teléfono del profesor"
 
-#: ui_profesorbase.h:490
+#: ui_profesorbase.h:508
 msgid "Telefono fijo:"
 msgstr "Teléfono fijo:"
 
-#: ui_profesorbase.h:493
+#: ui_profesorbase.h:511
 msgid "Telefono movil:"
 msgstr "Teléfono movil:"
 
-#: profesorview.cpp:124
+#: profesorview.cpp:125
 msgid "Tiene que guardar el documento antes de poder imprimirlo."
 msgstr "Tiene que guardar el documento antes de poder imprimirlo."
 

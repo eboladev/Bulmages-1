@@ -8,10 +8,11 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2010-09-23 18:49+0200\n"
+"POT-Creation-Date: 2011-02-04 12:54+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -62,96 +63,96 @@ msgstr ""
 msgid "Error inesperado"
 msgstr ""
 
-#: albaranesproveedor.cpp:53 albaranesproveedor.cpp:75
+#: albaranesproveedor.cpp:53 albaranesproveedor.cpp:77
 #: albaranproveedorview.cpp:84
 msgid "Proveedor:"
 msgstr ""
 
-#: albaranesproveedor.cpp:189
+#: albaranesproveedor.cpp:193
 msgid "Todos los albaranes"
 msgstr ""
 
-#: albaranesproveedor.cpp:190
+#: albaranesproveedor.cpp:194
 msgid "Albaranes procesados"
 msgstr ""
 
-#: albaranesproveedor.cpp:191
+#: albaranesproveedor.cpp:195
 msgid "Albaranes no procesados"
 msgstr ""
 
-#: albaranesproveedor.cpp:319 ui_albaranesproveedorlistbase.h:421
+#: albaranesproveedor.cpp:323 ui_albaranesproveedorlistbase.h:421
 msgid "Albaranes de proveedor"
 msgstr ""
 
-#: albaranesproveedor.cpp:338
+#: albaranesproveedor.cpp:342
 msgid "Debe seleccionar una linea"
 msgstr ""
 
-#: albaranesproveedor.cpp:353
+#: albaranesproveedor.cpp:357
 msgid "Error al borrar albaran de proveedor"
 msgstr ""
 
-#: albaranesproveedor.cpp:386
+#: albaranesproveedor.cpp:390
 msgid "ID albaran"
 msgstr ""
 
-#: albaranesproveedor.cpp:387
+#: albaranesproveedor.cpp:391
 msgid "Numero de albaran"
 msgstr ""
 
-#: albaranesproveedor.cpp:388
+#: albaranesproveedor.cpp:392
 msgid "Descripcion"
 msgstr ""
 
-#: albaranesproveedor.cpp:389
+#: albaranesproveedor.cpp:393
 msgid "Referencia"
 msgstr ""
 
-#: albaranesproveedor.cpp:390
+#: albaranesproveedor.cpp:394
 msgid "Fecha"
 msgstr ""
 
-#: albaranesproveedor.cpp:391
+#: albaranesproveedor.cpp:395
 msgid "Comentario"
 msgstr ""
 
-#: albaranesproveedor.cpp:392
+#: albaranesproveedor.cpp:396
 msgid "Procesado"
 msgstr ""
 
-#: albaranesproveedor.cpp:393
+#: albaranesproveedor.cpp:397
 msgid "ID proveedor"
 msgstr ""
 
-#: albaranesproveedor.cpp:394
+#: albaranesproveedor.cpp:398
 msgid "ID forma de pago"
 msgstr ""
 
-#: albaranesproveedor.cpp:395
+#: albaranesproveedor.cpp:399
 msgid "ID almacen"
 msgstr ""
 
-#: albaranesproveedor.cpp:396
+#: albaranesproveedor.cpp:400
 msgid "Nombre del proveedor"
 msgstr ""
 
-#: albaranesproveedor.cpp:397
+#: albaranesproveedor.cpp:401
 msgid "Nombre del almacen"
 msgstr ""
 
-#: albaranesproveedor.cpp:398
+#: albaranesproveedor.cpp:402
 msgid "Descripcion de la forma de pago"
 msgstr ""
 
-#: albaranesproveedor.cpp:399
+#: albaranesproveedor.cpp:403
 msgid "Base imponible"
 msgstr ""
 
-#: albaranesproveedor.cpp:400
+#: albaranesproveedor.cpp:404
 msgid "Impuestos"
 msgstr ""
 
-#: albaranesproveedor.cpp:401
+#: albaranesproveedor.cpp:405
 msgid "Total albaran"
 msgstr ""
 
@@ -168,7 +169,7 @@ msgid "&Nuevo albaran de proveedor"
 msgstr ""
 
 #: pluginbf_proveedoralbaran.cpp:107 pluginbf_proveedoralbaran.cpp:108
-#: ui_albaranproveedorbase.h:569
+#: ui_albaranproveedorbase.h:587
 msgid "Nuevo albaran de proveedor"
 msgstr ""
 
@@ -212,110 +213,110 @@ msgstr ""
 msgid "Descripcion albaran proveedor"
 msgstr ""
 
-#: albaranproveedorview.cpp:101
+#: albaranproveedorview.cpp:102
 msgid "Error al crear el albaran proveedor"
 msgstr ""
 
-#: ui_albaranproveedorbase.h:572 ui_albaranproveedorbase.h:575
+#: ui_albaranproveedorbase.h:590 ui_albaranproveedorbase.h:593
 msgid "Guardar albaran"
 msgstr ""
 
-#: ui_albaranproveedorbase.h:578
+#: ui_albaranproveedorbase.h:596
 msgid "Ctrl+S"
 msgstr ""
 
-#: ui_albaranproveedorbase.h:580 ui_albaranproveedorbase.h:583
+#: ui_albaranproveedorbase.h:598 ui_albaranproveedorbase.h:601
 #: ui_albaranesproveedorlistbase.h:444 ui_albaranesproveedorlistbase.h:447
 msgid "Borrar albaran"
 msgstr ""
 
-#: ui_albaranproveedorbase.h:586 ui_albaranesproveedorlistbase.h:450
+#: ui_albaranproveedorbase.h:604 ui_albaranesproveedorlistbase.h:450
 msgid "Ctrl+D"
 msgstr ""
 
-#: ui_albaranproveedorbase.h:588 ui_albaranproveedorbase.h:591
-msgid "Ver pedidos a proveedor"
-msgstr ""
-
-#: ui_albaranproveedorbase.h:594
-msgid "Referencia:"
-msgstr ""
-
-#: ui_albaranproveedorbase.h:596 ui_albaranproveedorbase.h:599
+#: ui_albaranproveedorbase.h:606 ui_albaranproveedorbase.h:609
 msgid "Mostrar/ocultar cabecera"
 msgstr ""
 
-#: ui_albaranproveedorbase.h:602
+#: ui_albaranproveedorbase.h:612
 msgid "Ctrl+G"
 msgstr ""
 
-#: ui_albaranproveedorbase.h:603
+#: ui_albaranproveedorbase.h:614 ui_albaranproveedorbase.h:617
+msgid "Ver pedidos a proveedor"
+msgstr ""
+
+#: ui_albaranproveedorbase.h:620
+msgid "Referencia:"
+msgstr ""
+
+#: ui_albaranproveedorbase.h:621
 msgid "Descripcion:"
 msgstr ""
 
-#: ui_albaranproveedorbase.h:604
+#: ui_albaranproveedorbase.h:622
 msgid "Numero de albaran:"
 msgstr ""
 
-#: ui_albaranproveedorbase.h:605
+#: ui_albaranproveedorbase.h:623
 msgid "Fecha de creacion:"
 msgstr ""
 
-#: ui_albaranproveedorbase.h:606
+#: ui_albaranproveedorbase.h:624
 msgid "Forma de pago:"
 msgstr ""
 
-#: ui_albaranproveedorbase.h:607
+#: ui_albaranproveedorbase.h:625
 msgid "Almacen:"
 msgstr ""
 
-#: ui_albaranproveedorbase.h:608
+#: ui_albaranproveedorbase.h:626
 msgid "&Detalle"
 msgstr ""
 
-#: ui_albaranproveedorbase.h:609
+#: ui_albaranproveedorbase.h:627
 msgid "Desc&uentos"
 msgstr ""
 
-#: ui_albaranproveedorbase.h:610
+#: ui_albaranproveedorbase.h:628
 msgid "&Comentarios"
 msgstr ""
 
-#: ui_albaranproveedorbase.h:611
+#: ui_albaranproveedorbase.h:629
 msgid "Descuentos:"
 msgstr ""
 
-#: ui_albaranproveedorbase.h:612
+#: ui_albaranproveedorbase.h:630
 msgid "Base imponible:"
 msgstr ""
 
-#: ui_albaranproveedorbase.h:613
+#: ui_albaranproveedorbase.h:631
 msgid "I.R.P.F."
 msgstr ""
 
-#: ui_albaranproveedorbase.h:614
+#: ui_albaranproveedorbase.h:632
 msgid "Impuestos:"
 msgstr ""
 
-#: ui_albaranproveedorbase.h:615
+#: ui_albaranproveedorbase.h:633
 msgid "R.E.:"
 msgstr ""
 
-#: ui_albaranproveedorbase.h:616
+#: ui_albaranproveedorbase.h:634
 msgid "Total:"
 msgstr ""
 
-#: ui_albaranproveedorbase.h:617 ui_albaranproveedorbase.h:618
-#: ui_albaranproveedorbase.h:619 ui_albaranproveedorbase.h:620
-#: ui_albaranproveedorbase.h:621 ui_albaranproveedorbase.h:622
+#: ui_albaranproveedorbase.h:635 ui_albaranproveedorbase.h:636
+#: ui_albaranproveedorbase.h:637 ui_albaranproveedorbase.h:638
+#: ui_albaranproveedorbase.h:639 ui_albaranproveedorbase.h:640
 msgid "0.00"
 msgstr ""
 
-#: ui_albaranproveedorbase.h:626
+#: ui_albaranproveedorbase.h:644
 msgid "&Aceptar"
 msgstr ""
 
-#: ui_albaranproveedorbase.h:630
+#: ui_albaranproveedorbase.h:648
 msgid "&Cancelar"
 msgstr ""
 

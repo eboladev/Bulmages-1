@@ -1,82 +1,80 @@
 # Header entry was created by Lokalize.
 #
-#: pluginasterisk.cpp:101
 # aishen <aishen@free.fr>, 2011.
 msgid ""
 msgstr ""
-"Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
-"Mime-Version: 1.0"
-"Last-Translator: aishen <aishen@free.fr>\n"
-"PO-Revision-Date: 2011-02-07 08:26+0100\n"
 "Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: info@iglues.org\n"
+"POT-Creation-Date: 2011-02-04 12:54+0100\n"
+"PO-Revision-Date: 2011-02-07 08:26+0100\n"
 "Language-Team: French <kde-i18n-doc@kde.org>\n"
 "Language: fr\n"
-"X-Generator: Lokalize 1.2\n"
 "MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Lokalize 1.2\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
-#: pluginasterisk.cpp:101
+#: pluginbf_asterisk.cpp:104
 msgid "Almacen"
 msgstr "Magasin"
 
-#: pluginasterisk.cpp:165
+#: pluginbf_asterisk.cpp:168
 msgid "Apellidos"
 msgstr "Noms"
 
-#: pluginasterisk.cpp:102
+#: pluginbf_asterisk.cpp:105
 msgid "Apertura manyanas"
 msgstr "Ouverture de matinée"
 
-#: pluginasterisk.cpp:104
+#: pluginbf_asterisk.cpp:107
 msgid "Apertura tardes"
 msgstr "Ouverture de soirée"
 
-#: pluginasterisk.cpp:106 pluginasterisk.cpp:166
+#: pluginbf_asterisk.cpp:109 pluginbf_asterisk.cpp:169
 msgid "Audicion"
 msgstr "Audition"
 
-#: pluginasterisk.cpp:103
+#: pluginbf_asterisk.cpp:106
 msgid "Cierre manyanas"
 msgstr "Fermeture de matinée"
 
-#: pluginasterisk.cpp:105
+#: pluginbf_asterisk.cpp:108
 msgid "Cierre tardes"
 msgstr "Fermeture de soirée"
 
-#: pluginasterisk.cpp:128
+#: pluginbf_asterisk.cpp:131
 msgid "Extension."
 msgstr "Extension."
 
-#: pluginasterisk.cpp:99 pluginasterisk.cpp:162
+#: pluginbf_asterisk.cpp:102 pluginbf_asterisk.cpp:165
 msgid "Fecha"
 msgstr "Date"
 
-#: pluginasterisk.cpp:100 pluginasterisk.cpp:163
+#: pluginbf_asterisk.cpp:103 pluginbf_asterisk.cpp:166
 msgid "Hora"
 msgstr "Feuille"
 
-#: pluginasterisk.cpp:107 pluginasterisk.cpp:167
+#: pluginbf_asterisk.cpp:110 pluginbf_asterisk.cpp:170
 msgid "Id almacen"
 msgstr "Id magasin"
 
-#: pluginasterisk.cpp:109 pluginasterisk.cpp:169
+#: pluginbf_asterisk.cpp:112 pluginbf_asterisk.cpp:172
 msgid "Id trabajador"
 msgstr "Id Ouvrier"
 
-#: pluginasterisk.cpp:108 pluginasterisk.cpp:168
+#: pluginbf_asterisk.cpp:111 pluginbf_asterisk.cpp:171
 msgid "Id validacion"
 msgstr "Id validation"
 
-#: pluginasterisk.cpp:53
+#: pluginbf_asterisk.cpp:56
 msgid "Password."
 msgstr "Mot de passe."
 
-#: pluginasterisk.cpp:164
+#: pluginbf_asterisk.cpp:167
 msgid "Trabajador"
 msgstr "Salarié"
 
-#: pluginasterisk.cpp:54
+#: pluginbf_asterisk.cpp:57
 msgid "Valida siempre."
 msgstr "Toujours valide "
-

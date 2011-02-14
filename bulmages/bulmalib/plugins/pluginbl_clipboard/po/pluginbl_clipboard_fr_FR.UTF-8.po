@@ -1,26 +1,31 @@
 # Header entry was created by Lokalize.
 #
-#: pluginclipboardbf.cpp:128
 # aishen <aishen@free.fr>, 2011.
 msgid ""
 msgstr ""
-"Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
-"Mime-Version: 1.0"
-"Last-Translator: aishen <aishen@free.fr>\n"
-"PO-Revision-Date: 2011-02-02 15:50+0100\n"
 "Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: info@iglues.org\n"
+"POT-Creation-Date: 2011-02-04 12:53+0100\n"
+"PO-Revision-Date: 2011-02-02 15:50+0100\n"
 "Language-Team: French <kde-i18n-doc@kde.org>\n"
 "Language: fr\n"
-"X-Generator: Lokalize 1.2\n"
 "MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Lokalize 1.2\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
-#: pluginclipboardbf.cpp:128
-msgid "Pegar desde Hoja de Calculo"
-msgstr "Coller depuis la feuille de calcul"
+#: pluginbl_clipboard.cpp:238
+msgid "Actualizacion completada con exito."
+msgstr ""
 
-#: pluginclipboardbf.cpp:116
+#: pluginbl_clipboard.cpp:109 pluginbl_clipboard.cpp:130
+msgid "Actualizar desde hoja de calculo"
+msgstr ""
+
+#: pluginbl_clipboard.cpp:107 pluginbl_clipboard.cpp:124
 msgid "Pegar desde hoja de calculo"
 msgstr "Coller depuis la feuille de calcul"
 
+#~ msgid "Pegar desde Hoja de Calculo"
+#~ msgstr "Coller depuis la feuille de calcul"
