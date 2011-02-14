@@ -1,0 +1,124 @@
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+#
+# aishen <aishen@free.fr>, 2011.
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: info@iglues.org\n"
+"POT-Creation-Date: 2010-09-23 18:23+0200\n"
+"PO-Revision-Date: 2011-02-14 11:00+0100\n"
+"Last-Translator: aishen <aishen@free.fr>\n"
+"Language-Team: French <kde-i18n-doc@kde.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: fr\n"
+"X-Generator: Lokalize 1.2\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
+#: trabajadorview.cpp:224
+msgid "&No"
+msgstr "&Non"
+
+#: trabajadorview.cpp:224
+msgid "&Si"
+msgstr "&Oui"
+
+#: pluginbf_trabajador.cpp:82
+msgid "&Trabajadores"
+msgstr "&Ouvriers"
+
+#: ui_trabajadorbase.h:342
+msgid "Activo"
+msgstr "Actif"
+
+#: ui_trabajadorbase.h:346
+msgid "Apellidos:"
+msgstr "Noms :"
+
+#: ui_trabajadorbase.h:353 ui_trabajadorbase.h:356
+msgid "Borrar trabajador"
+msgstr "Effacer l'ouvrier"
+
+#: ui_trabajadorbase.h:347
+msgid "Cambiar imagen"
+msgstr "Changer image"
+
+#: trabajadorview.cpp:223
+msgid "Desea guardar los cambios?"
+msgstr "Désirez vous garder les changements ?"
+
+#: ui_trabajadorbase.h:344
+msgid "Direccion:"
+msgstr "Direction :"
+
+#: ui_trabajadorbase.h:349
+msgid "E-mail:"
+msgstr "Courriel :"
+
+#: trabajadorview.cpp:279
+msgid "Error al borrar el Trabajador"
+msgstr "Erreur d'effacement du salarié"
+
+#: trabajadorview.cpp:254
+msgid "Error al crear un nuevo Trabajador"
+msgstr "Erreur en création Nouveau ouvrier"
+
+#: trabajadorview.cpp:205
+msgid "Error al guardar el trabajador"
+msgstr "Erreur en sauvegarde de l'ouvrier"
+
+#: ui_trabajadorbase.h:350
+msgid "General"
+msgstr "Général"
+
+#: trabajadorview.cpp:222
+msgid "Guardar datos del trabajador"
+msgstr "Sauver les données de l'ouvrier"
+
+#: ui_trabajadorbase.h:360 ui_trabajadorbase.h:363
+msgid "Guardar trabajador"
+msgstr "Sauver ouvrier"
+
+#: trabajadorview.cpp:295
+msgid "Imagenes (*.jpg)"
+msgstr "Images (*.jpg)"
+
+#: ui_trabajadorbase.h:351
+msgid "Lista de trabajadores:"
+msgstr "Liste d'ouvriers:"
+
+#: ui_trabajadorbase.h:343
+msgid "Nombre:"
+msgstr "Nom :"
+
+#: ui_trabajadorbase.h:367 ui_trabajadorbase.h:370
+msgid "Nuevo trabajador"
+msgstr "Nouveau ouvrier"
+
+#: ui_trabajadorbase.h:345
+msgid "Numero de la Seguridad Social:"
+msgstr "Numéro de la Sécurité Sociale:"
+
+#: trabajadorview.cpp:293
+msgid "Seleccione archivo"
+msgstr "Sélectionner fichier"
+
+#: ui_trabajadorbase.h:348
+msgid "Telefono movil:"
+msgstr "Téléphone portable :"
+
+#: ui_trabajadorbase.h:341
+msgid "Telefono:"
+msgstr "Téléphone :"
+
+#: trabajadorview.cpp:44
+msgid "Trabajador"
+msgstr "Salarié"
+
+#: pluginbf_trabajador.cpp:84 pluginbf_trabajador.cpp:85
+#: ui_trabajadorbase.h:340
+msgid "Trabajadores"
+msgstr "Ouvrier"
+
