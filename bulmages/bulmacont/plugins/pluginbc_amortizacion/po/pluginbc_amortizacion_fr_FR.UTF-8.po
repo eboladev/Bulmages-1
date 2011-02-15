@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
 "POT-Creation-Date: 2011-02-04 12:54+0100\n"
-"PO-Revision-Date: 2011-02-01 09:43+0100\n"
+"PO-Revision-Date: 2011-02-15 09:27+0100\n"
 "Last-Translator: aishen <aishen@free.fr>\n"
 "Language-Team: French <kde-i18n-doc@kde.org>\n"
 "Language: fr\n"
@@ -28,7 +28,7 @@ msgstr "&Accepter"
 
 #: pluginbc_amortizacion.cpp:101
 msgid "&Amortizaciones"
-msgstr "&Amortizaciones"
+msgstr "&Amortissement"
 
 #: ui_bcamortizacionbase.h:669
 msgid "&Calcular"
@@ -44,7 +44,7 @@ msgstr "&Décrémenter"
 
 #: ui_bcamortizacionbase.h:666
 msgid "&Incremental"
-msgstr "&Incrémental"
+msgstr "&Incrémenter"
 
 #: pluginbc_amortizacion.cpp:97
 msgid "&Ver"
@@ -334,3 +334,4 @@ msgstr "Afficher l'écriture"
 #: pluginbc_amortizacion.cpp:93
 msgid "menuVer"
 msgstr "menuVer"
+

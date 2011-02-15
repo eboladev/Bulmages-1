@@ -1,7 +1,7 @@
 =======
 Plugins
 =======
-#README
+#README.fr
 20110204
 
 Nombre: Balance Hiérarchique.
@@ -22,7 +22,7 @@ Dependencias:
 
 Incompatibles:
 
-Categorias: Comptabilité générale ; Experimental;
+Categorias: Comptabilite generale ; Experimental;
 
 Orden: 20
 

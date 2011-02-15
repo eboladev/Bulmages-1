@@ -1,7 +1,7 @@
 =======
 Plugins
 =======
-#README
+#README.fr
 20110201
 
 Nombre: Ecriture
@@ -10,7 +10,7 @@ Biblioteca: libpluginbc_asiento.so
 
 Descripción: <H1>Ecriture Comptable</H1>
 <P>Introduction des écritures comptables.</P>
-<P>Permet de faire l'introduction des écritures comptables au moyen d'un sous formulaire. CE greffon est indispensable pour le fonctionnement correcte de la comptabilité.</P>
+<P>Permet de faire l'introduction des écritures comptables au moyen d'un sous formulaire. Ce greffon est indispensable pour le fonctionnement correcte de la comptabilité.</P>
 <HR>
 
 ParmBD: -
@@ -25,7 +25,7 @@ Incompatibles:
 
 Reports: 
 
-Categorias: Comptabilité générale ; Expérimental;
+Categorias: Comptabilite generale ; Experimental;
 
 Orden: 10
 

@@ -88,7 +88,7 @@ if(USE_GETTEXT)
    GETTEXT_CREATE_TEMPLATE(bulmatpv ${CMAKE_CURRENT_BINARY_DIR}
                                 ${CMAKE_CURRENT_SOURCE_DIR} bulmatpv_i18n)
    GETTEXT_CREATE_TRANSLATIONS(${CMAKE_CURRENT_BINARY_DIR}/bulmatpv.pot
-                                ALL LANGUAGES es_ES.UTF-8 ca_ES.UTF-8)
+                                ALL LANGUAGES es_ES.UTF-8 ca_ES.UTF-8 fr_FR.UTF-8)
 endif(USE_GETTEXT)
 
 target_link_libraries( bulmatpv libbulmatpv bulmalib ${QT_LIBRARIES} ${PGSQL_LIBRARIES})

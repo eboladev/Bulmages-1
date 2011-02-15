@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
 "POT-Creation-Date: 2011-02-04 12:53+0100\n"
-"PO-Revision-Date: 2011-02-02 08:44+0100\n"
+"PO-Revision-Date: 2011-02-15 09:32+0100\n"
 "Last-Translator: aishen <aishen@free.fr>\n"
 "Language-Team: French <kde l10n>\n"
 "Language: \n"
@@ -154,7 +154,7 @@ msgstr "Ecritures"
 
 #: ui_bcasientobase.h:553 ui_bcasientobase.h:556
 msgid "Asientos Inteligentes"
-msgstr "Assistants de saisie"
+msgstr "Saisie assistée"
 
 #: bcasientolistview.cpp:46
 msgid "Asientos abiertos"
@@ -210,7 +210,7 @@ msgstr "Libellés"
 
 #: bcasientosubform.cpp:44
 msgid "Concepto contable"
-msgstr "Concept comptable"
+msgstr "Concept"
 
 #: bcasientosubform.cpp:51
 msgid "Conciliacion"

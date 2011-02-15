@@ -1,15 +1,15 @@
 =======
 Plugins
 =======
-#README
+#README.fr
 20110203
 
 Nombre: Balance
 
 Biblioteca: libpluginbc_balance.so
 
-Descripción: <H1>Balance hiérarchique</H1>
-<P>Permettre de faire une balance hiérarchique.</P>
+Descripción: <H1>Balance</H1>
+<P>Permettre de faire une balance.</P>
 <HR>
 
 ParmBD: -
@@ -24,7 +24,7 @@ Incompatibles:
 
 Reports: 
 
-Categorias: Comptabilité générale ; Expérimental;
+Categorias: Comptabilite generale ; Experimental;
 
 Orden: 100
 

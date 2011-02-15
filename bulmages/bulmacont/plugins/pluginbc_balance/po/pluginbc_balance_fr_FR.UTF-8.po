@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
 "POT-Creation-Date: 2011-02-04 12:54+0100\n"
-"PO-Revision-Date: 2011-02-02 08:42+0100\n"
+"PO-Revision-Date: 2011-02-15 09:37+0100\n"
 "Last-Translator: aishen <aishen@free.fr>\n"
 "Language-Team: French <kde l10n>\n"
 "Language: frX-Generator: Lokalize 1.2\n"
@@ -118,7 +118,7 @@ msgstr ""
 
 #: pluginbc_balance.cpp:91
 msgid "&Balance jerarquico"
-msgstr "&Balance hiérarchique"
+msgstr "&Balance"
 
 #: ui_balancesprintdlg.h:206
 msgid "&Cancelar"
@@ -427,7 +427,7 @@ msgstr "idcompte"
 
 #: pluginbc_balance.cpp:83
 msgid "menuVentana"
-msgstr "menuVentana "
+msgstr "menuVer"
 
 #: balancesubform.cpp:41
 msgid "tdebe"
@@ -444,3 +444,4 @@ msgstr "type de compte"
 #: balancesubform.cpp:43
 msgid "tsaldo"
 msgstr "tsolde"
+
