@@ -7,6 +7,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: info@iglues.org\n"
 "POT-Creation-Date: 2011-02-09 13:19+0100\n"
 "PO-Revision-Date: 2011-02-15 09:32+0100\n"
+"Last-Translator: Walter Garcia-Fontes <walter.garcia@upf.edu>\n"
 "Language-Team:  Spanish<es@li.org>\n"
 "Language: Spanish\n"
 "MIME-Version: 1.0\n"
@@ -85,7 +86,7 @@ msgstr ""
 "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
 "p, li { white-space: pre-wrap; }\n"
 "</style></head><body style=\" font-family:'Sans Serif'; font-size:14pt; font-weight:400; font-style:normal;\">\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:10pt;\">Application for a Point of Sales terminal management. </span><span style=\" font-size:10pt; font-weight:600;\">(TPV).</span><span style=\" font-size:10pt;\"> It includes ticket printing and bar code reader.</span></p></body></html>"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:10pt;\">Application for a Point of Sales terminal management. </span><span style=\" font-size:10pt; font-weight:600;\">(POS).</span><span style=\" font-size:10pt;\"> It includes ticket printing and bar code reader.</span></p></body></html>"
 
 #: ui_bgbulmagesbase.h:411
 msgid ""
@@ -109,14 +110,13 @@ msgstr ""
 "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
 "p, li { white-space: pre-wrap; }\n"
 "</style></head><body style=\" font-family:'Sans Serif'; font-size:7pt; font-weight:400; font-style:normal;\">\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:10pt; font-weight:600;\">Configuración</span><span style=\" font-size:10pt;\"> general del conjunto de aplicaciones </span><span style=\" font-size:10pt; font-weight:600;\">BulmaGes</span><span style=\" font-size:10pt;\">. It manages the database, users permissions and enabling/disabling the functionalities of the rest of applications using plugins.</span></p></body></html>"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:10pt; font-weight:600;\">General configuration</span><span style=\" font-size:10pt;\"> of the suite of applications </span><span style=\" font-size:10pt; font-weight:600;\">BulmaGes</span><span style=\" font-size:10pt;\">. It manages the database, users permissions and enabling/disabling the functionalities of the rest of applications using plugins.</span></p></body></html>"
 
 #: main.cxx:67
 msgid "Bandeja"
 msgstr "Tray"
 
 #: ui_bgbulmagesbase.h:385 bgbulmages.cpp:95
-#, fuzzy
 msgid "BulmaCont"
 msgstr "About BulmaCont"
 
