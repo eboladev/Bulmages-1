@@ -323,6 +323,10 @@ class Contabilidad(Ui_ModificarContabilidadBase, Empresa):
       self.string = "mkdir -p /opt/bulmages/openreports_" + self.database + "/fr"
       self.process.start(self.string)
       self.process.waitForFinished(-1)
+      # Creamos el directorio especifico para guardar las plantillas
+      self.string = "mkdir -p /opt/bulmages/openreports_" + self.database + "/en"
+      self.process.start(self.string)
+      self.process.waitForFinished(-1)
       i = 1
       while (os.path.exists('/opt/bulmages/openreports_' + self.database + '_old' + str(i))):
 	i = i + 1
@@ -453,7 +457,44 @@ class Contabilidad(Ui_ModificarContabilidadBase, Empresa):
       self.process.start(self.string)
       self.process.waitForFinished(-1)
 
-
+      # Copiamos las plantillas en
+      self.string = "cp " + plugins.confopenreports + "en/canuales.rml" + " /opt/bulmages/openreports_" + self.database + "/en"
+      self.writecommand(self.string)
+      self.process.start(self.string)
+      self.process.waitForFinished(-1)
+      self.string = "cp " + plugins.confopenreports + "en/diario.rml" + " /opt/bulmages/openreports_" + self.database +"/en"
+      self.writecommand(self.string)
+      self.process.start(self.string)
+      self.process.waitForFinished(-1)
+      self.string = "cp " + plugins.confopenreports + "en/extracto.rml" + " /opt/bulmages/openreports_" + self.database + "/en"
+      self.writecommand(self.string)
+      self.process.start(self.string)
+      self.process.waitForFinished(-1)
+      self.string = "cp " + plugins.confopenreports + "en/plantilla.rml" + " /opt/bulmages/openreports_" + self.database + "/en"
+      self.writecommand(self.string)
+      self.process.start(self.string)
+      self.process.waitForFinished(-1)
+      self.string = "cp " + plugins.confopenreports + "en/plantilla1.rml" + " /opt/bulmages/openreports_" + self.database + "/en"
+      self.writecommand(self.string)
+      self.process.start(self.string)
+      self.process.waitForFinished(-1)
+      self.string = "cp " + plugins.confopenreports + "en/estilos.rml" + " /opt/bulmages/openreports_" + self.database + "/en"
+      self.writecommand(self.string)
+      self.process.start(self.string)
+      self.process.waitForFinished(-1)
+      self.string = "cp " + plugins.confopenreports + "en/listado.rml" + " /opt/bulmages/openreports_" + self.database + "/en"
+      self.writecommand(self.string)
+      self.process.start(self.string)
+      self.process.waitForFinished(-1)
+      if (os.path.exists(plugins.confopenreports + "en/logo.jpg")):
+         self.string = "cp " + plugins.confopenreports + "en/logo.jpg" + " /opt/bulmages/openreports_" + self.database + "/en"
+         self.writecommand(self.string)
+         self.process.start(self.string)
+         self.process.waitForFinished(-1)
+      self.string = "cp " + plugins.confopenreports + "en/ficha.rml" + " /opt/bulmages/openreports_" + self.database + "/en"
+      self.writecommand(self.string)
+      self.process.start(self.string)
+      self.process.waitForFinished(-1)
 
       # Pasamos el logotipo
       if (self.mui_textfile.text() != ""):
@@ -461,6 +502,9 @@ class Contabilidad(Ui_ModificarContabilidadBase, Empresa):
          self.process.start(self.string)
          self.process.waitForFinished(-1)
          self.string = "cp "+ self.mui_textfile.text() + " /opt/bulmages/openreports_" + self.database + "/ca/logo.jpg"
+         self.process.start(self.string)
+         self.process.waitForFinished(-1)
+         self.string = "cp "+ self.mui_textfile.text() + " /opt/bulmages/openreports_" + self.database + "/en/logo.jpg"
          self.process.start(self.string)
          self.process.waitForFinished(-1)
          self.string = "cp "+ self.mui_textfile.text() + " /opt/bulmages/openreports_" + self.database + "/fr/logo.jpg"
@@ -494,6 +538,10 @@ class Contabilidad(Ui_ModificarContabilidadBase, Empresa):
 	      self.process.start(self.string)
 	      self.process.waitForFinished(-1)
 	      self.string = "cp " + plugins.confopenreports + "fr/" + self.arra[self.j] + " /opt/bulmages/openreports_" + self.database + "/fr"
+	      self.writecommand(self.string)
+	      self.process.start(self.string)
+	      self.process.waitForFinished(-1)
+	      self.string = "cp " + plugins.confopenreports + "en/" + self.arra[self.j] + " /opt/bulmages/openreports_" + self.database + "/en"
 	      self.writecommand(self.string)
 	      self.process.start(self.string)
 	      self.process.waitForFinished(-1)
