@@ -1,0 +1,479 @@
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+#
+# aishen <aishen@free.fr>, 2011.
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: info@iglues.org\n"
+"POT-Creation-Date: 2010-09-23 18:09+0200\n"
+"PO-Revision-Date: 2011-02-15 09:12+0100\n"
+"Last-Translator: aishen <aishen@free.fr>\n"
+"Language-Team: French <kde-i18n-doc@kde.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"#-#-#-#-#  bulmalib.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginsubformsxc.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginsubformods.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginclipboardbf.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginimpers.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginimpersods.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginimpersmail.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginimportcsv.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  plugininformes.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  plugininformesods.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginbloqueos.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginsubformprint.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginarchivos.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  plugindocked.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  bulmacont.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginregistroiva.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  plugincorrector.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginbc_example.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  plugindebugbc.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginbalancetree.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  plugincanualesods.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginbalance.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginresumcta.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginproyectos.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginbalanceold.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  bulmafact.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginbf_example.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  plugintarifas.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginbf_comercial.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginbf_cliente.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginbf_proveedor.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  plugintrazabilidad.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginbarcodeopen.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  plugincatalogo.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  plugininformeclientes.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  plugininventario.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  plugincontratos.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginticket.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  plugin_tc_articulos.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginpromedios.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginimpresionesmultiples.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginq19.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginmail.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginmailthunderbird.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginalmacen.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  plugintipostrabajo.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  plugincuadrante.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginasterisk.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  plugintpv.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  plugindebugbf.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginpreciocoste.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginresarticulos.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginalias.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginivainc.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  plugininformeclientessxc.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginetiquetado.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginetiquetas.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  plugincompraventa.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginclientprov.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginopenref.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  plugincorrectorbf.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginfacturar.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginpagos.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  plugincobros.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginpresupuesto.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginpedido.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginalbaran.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginfactura.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginfacturaprov.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginalbaranprov.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginpedidoprov.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginz2z.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginprofesor.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginalumno.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  plugintutor.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginactividad.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  bulmages.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  bulmatpv.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginticketbasico.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  plugintecladonumerico.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  plugintotal.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  plugintotalivainc.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginadmin.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  plugincobrar.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginartsubform.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  plugintpvivainc.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginaliastpv.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  plugintcaliastpv.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginticketdesglose.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginbuscaarticulo.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginbuscacliente.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  plugincambio.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  plugincambioivainc.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  plugindevolucion.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  plugindevolucion2.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginticketsdevueltos.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginabrevs.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  bulmages_suite.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"Language: fr\n"
+"X-Generator: Lokalize 1.2\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
+#: ui_btaboutbase.h:286
+msgid "&Acerca de"
+msgstr "&A propos de"
+
+#: ui_btaboutbase.h:295
+msgid "&Cerrar"
+msgstr "&Fermer"
+
+#: ui_btaboutbase.h:287
+msgid ""
+"<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/"
+"REC-html40/strict.dtd\">\n"
+"<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css"
+"\">\n"
+"p, li { white-space: pre-wrap; }\n"
+"</style></head><body style=\" font-family:'Sans Serif'; font-size:10pt; font-"
+"weight:400; font-style:normal;\">\n"
+"<p style=\"-qt-paragraph-type:empty; margin-top:12px; margin-bottom:12px; "
+"margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-"
+"size:9pt;\"></p></body></html>"
+msgstr ""
+"<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/"
+"REC-html40/strict.dtd\">\n"
+"<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css"
+"\">\n"
+"p, li { white-space: pre-wrap; }\n"
+"</style></head><body style=\" font-family:'Sans Serif'; font-size:112pt; font-"
+"weight:4120; font-style:normal;\">\n"
+"<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; "
+"margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"></"
+"p></body></html>"
+
+#: ui_btaboutbase.h:281
+msgid ""
+"<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/"
+"REC-html40/strict.dtd\">\n"
+"<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css"
+"\">\n"
+"p, li { white-space: pre-wrap; }\n"
+"</style></head><body style=\" font-family:'Sans Serif'; font-size:9pt; font-"
+"weight:600; font-style:normal;\">\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-"
+"right:0px; -qt-block-indent:0; text-indent:0px;\">Terminal Punto de Venta "
+"GPL - Version 0.12.0 -</p></body></html>"
+msgstr ""
+"<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/"
+"REC-html40/strict.dtd\">\n"
+"<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css"
+"\">\n"
+"p, li { white-space: pre-wrap; }\n"
+"</style></head><body style=\" font-family:'Sans Serif'; font-size:9pt; font-"
+"weight:600; font-style:normal;\">\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-"
+"right:0px; -qt-block-indent:0; text-indent:0px;\">Terminal Point de Vente"
+"GPL - Version 0.12.0 -</p></body></html>"
+
+#: ui_btaboutbase.h:292
+msgid "A&utores"
+msgstr "A&uteurs"
+
+#: ui_btaboutbase.h:279
+msgid "Acerca de BulmaTPV"
+msgstr "A propos de BulmaTPV"
+
+#: ui_btaboutbase.h:294
+msgid "Acuerdo de &licencia"
+msgstr "Accord de &licence"
+
+#: ui_btbulmatpvbase.h:104
+msgid "Administrador"
+msgstr "Administrateur"
+
+#: btticket.cpp:65
+msgid "Almacen"
+msgstr "Magasin"
+
+#: ui_btbulmatpvbase.h:98
+msgid "Anyadir"
+msgstr "Ajouter"
+
+#: btticket.cpp:70
+msgid "Bloqueado"
+msgstr "Bloqué"
+
+#: ui_btbulmatpvbase.h:100
+msgid "Borrar"
+msgstr "Effacer"
+
+#: btticket.cpp:117
+msgid "Cantidad"
+msgstr "Quantité"
+
+#: main.cxx:162
+msgid "Cargando plugins"
+msgstr "Charger le greffon"
+
+#: ui_btbulmatpvbase.h:96
+msgid "Cerrar"
+msgstr "Fermer"
+
+#: btticket.cpp:64
+msgid "Cliente"
+msgstr "Client"
+
+#: btticket.cpp:125
+msgid "Codigo articulo"
+msgstr "Code de l'article"
+
+#: btaboutview.cpp:38
+msgid "Compilado usando la version de QT:"
+msgstr "Compiler avec la version QT :"
+
+#: btticket.cpp:58
+msgid "Descripcion"
+msgstr "Description "
+
+#: btticket.cpp:120
+msgid "Descuento"
+msgstr "Remise"
+
+#: btticket.cpp:1051
+msgid "El ticket esta vacio."
+msgstr "Le ticket est vide"
+
+#: main.cxx:224
+msgid "Error inesperado en BulmaTPV. El programa se cerrara."
+msgstr "Erreur inattendu dans BulmaTPV. Le programme se fermera."
+
+#: ui_btbulmatpvbase.h:102
+msgid "Estadisticas"
+msgstr "Statistiques"
+
+#: ui_btbulmatpvbase.h:109
+msgid "F11"
+msgstr "F11"
+
+#: btticket.cpp:62
+msgid "Hora"
+msgstr "Heure"
+
+#: btticket.cpp:119
+msgid "IVA"
+msgstr "TVA"
+
+#: btticket.cpp:60 btticket.cpp:115
+msgid "Id albaran"
+msgstr "Id bulletin"
+
+#: btticket.cpp:124
+msgid "Id articulo"
+msgstr "Id article"
+
+#: btticket.cpp:61
+msgid "Id fechaalbaran"
+msgstr "Id date de bulletin"
+
+#: btticket.cpp:69
+msgid "Id forma de pago"
+msgstr "Id Forme de paiement"
+
+#: btticket.cpp:116
+msgid "Id linea albaran"
+msgstr "Id ligne de bulletin"
+
+#: ui_btbulmatpvbase.h:101
+msgid "Identificacion"
+msgstr "Identification"
+
+#: ui_btbulmatpvbase.h:92
+msgid "Iglues/BtBulmaTPV"
+msgstr "Iglues/BulmaTPV"
+
+#: main.cxx:174
+msgid "Inicializando componentes"
+msgstr "Initier les composants"
+
+#: btcompany.cpp:95
+msgid "Inicializando listado de articulos"
+msgstr "Initier la liste d'articles"
+
+#: main.cxx:103
+msgid "Iniciando clases"
+msgstr "Initier les classes"
+
+#: main.cxx:168
+msgid "Lanzando plugins"
+msgstr "Lancer les greffons"
+
+#: main.cxx:131
+msgid "Leyendo configuracion"
+msgstr "Lire la configuration"
+
+#: ui_btbulmatpvbase.h:99
+msgid "Modificar"
+msgstr "Modifier"
+
+#: btticket.cpp:59
+msgid "Nombre"
+msgstr "Nom"
+
+#: btticket.cpp:126 btticket.cpp:127
+msgid "Nombre articulo"
+msgstr "Nom de l'article"
+
+#: btticket.cpp:66
+msgid "Num"
+msgstr "Numéro"
+
+#: btticket.cpp:121
+msgid "Orden"
+msgstr "Ordre"
+
+#: ui_btbulmatpvbase.h:103
+msgid "Pendiente"
+msgstr "En suspens"
+
+#: btticket.cpp:118
+msgid "Precio"
+msgstr "Prix"
+
+#: ui_btbulmatpvbase.h:97
+msgid "Preferencias"
+msgstr "Préference "
+
+#: btticket.cpp:67
+msgid "Referencia"
+msgstr "Référence"
+
+#: btticket.cpp:122
+msgid "Req. eq."
+msgstr "Req. eq."
+
+#: ui_btbulmatpvbase.h:93
+msgid "Sobre BtBulmaTPV"
+msgstr "Sur BulmaTPV"
+
+#: ui_btbulmatpvbase.h:94
+msgid "Sobre Bulmages"
+msgstr "Sur BulmaTPV"
+
+#: ui_btbulmatpvbase.h:95
+msgid "Sobre Qt"
+msgstr "Sur Qt"
+
+#: ui_btaboutbase.h:293
+msgid "Sopor&te"
+msgstr "Suppor&t"
+
+#: main.cxx:180
+msgid "Terminado"
+msgstr "Fini"
+
+#: btcompany.cpp:135
+msgid "Terminal Punto de Venta GPL"
+msgstr "Terminal Point de Vente GPL"
+
+#: btticket.cpp:68
+msgid "Ticket"
+msgstr "Ticket"
+
+#: btticket.cpp:82
+msgid "Ticket actual"
+msgstr "Ticket actuel"
+
+#: btticket.cpp:63
+msgid "Trabajador"
+msgstr "Salarié"
+
+#: ui_btbulmatpvbase.h:105
+msgid "Ventana &Completa"
+msgstr "Plein é&cran"
+
+#: ui_btbulmatpvbase.h:107
+msgid "Ventana Completa"
+msgstr "Plein écran"
+
+#~ msgid "."
+#~ msgstr "."
+
+#~ msgid "0"
+#~ msgstr "0"
+
+#~ msgid "00"
+#~ msgstr "00"
+
+#~ msgid "1"
+#~ msgstr "1"
+
+#~ msgid "2"
+#~ msgstr "2"
+
+#~ msgid "3"
+#~ msgstr "3"
+
+#~ msgid "4"
+#~ msgstr "4"
+
+#~ msgid "5"
+#~ msgstr "5"
+
+#~ msgid "6"
+#~ msgstr "6"
+
+#~ msgid "7"
+#~ msgstr "7"
+
+#~ msgid "8"
+#~ msgstr "8"
+
+#~ msgid "9"
+#~ msgstr "9"
+
+#~ msgid "<p align=\"right\">Codigo</p>"
+#~ msgstr "<p align=\"right\">Codigo</p>"
+
+#~ msgid "<p align=\"right\">Total:</p>"
+#~ msgstr "<p align=\"right\">Total:</p>"
+
+#~ msgid "ATRÁS"
+#~ msgstr "ATRÁS"
+
+#~ msgid "Acerca de BulmaFact"
+#~ msgstr "Acerca de BulmaFact"
+
+#~ msgid "BORRAR"
+#~ msgstr "BORRAR"
+
+#~ msgid "BulmaTPV"
+#~ msgstr "BulmaTPV"
+
+#~ msgid "Cambio Operador"
+#~ msgstr "Cambio Operador"
+
+#~ msgid "Cargando traducciones"
+#~ msgstr "Cargando traducciones"
+
+#~ msgid "Codigo"
+#~ msgstr "Codigo"
+
+#~ msgid "Id Albaran"
+#~ msgstr "Id Albaran"
+
+#~ msgid "Id lalbaran"
+#~ msgstr "Id lalbaran"
+
+#~ msgid "NO"
+#~ msgstr "NO"
+
+#~ msgid "SI"
+#~ msgstr "SI"
+
+#~ msgid "Seleccion Cliente"
+#~ msgstr "Seleccion Cliente"
+
+#~ msgid "Sobre BulmaTPV"
+#~ msgstr "Sobre BulmaTPV"
+
+#~ msgid "Terminal Punto de Venta GPL - Version 0.12.0 -"
+#~ msgstr "Terminal Punto de Venta GPL - Version 0.12.0 -"
+
+#~ msgid "pushButton18"
+#~ msgstr "pushButton18"
