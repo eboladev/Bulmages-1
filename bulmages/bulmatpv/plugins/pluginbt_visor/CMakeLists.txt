@@ -92,6 +92,9 @@ install (FILES ${CMAKE_CURRENT_BINARY_DIR}/README.ca DESTINATION share/bulmages/
 configure_file( ${CMAKE_CURRENT_SOURCE_DIR}/README.fr ${CMAKE_CURRENT_BINARY_DIR}/README.fr @ONLY)
 install (FILES ${CMAKE_CURRENT_BINARY_DIR}/README.fr DESTINATION share/bulmages/bulmatpv-plugins/ RENAME README.fr.${plugin})
 
+configure_file( ${CMAKE_CURRENT_SOURCE_DIR}/README.en ${CMAKE_CURRENT_BINARY_DIR}/README.en @ONLY)
+install (FILES ${CMAKE_CURRENT_BINARY_DIR}/README.en DESTINATION share/bulmages/bulmatpv-plugins/ RENAME README.en.${plugin})
+
 add_dependencies(${plugin} bulmatpv bulmalib)
 
 install_targets(/lib/bulmatpv/plugins ${plugin})
