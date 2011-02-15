@@ -1,0 +1,7 @@
+#PedidosProveedorListBase #mui_list {
+	background-image: url(@CMAKE_INSTALL_PREFIX@/share/bulmages/images/en_EN/pluginbf_proveedorpedido-list.png);
+}
+
+#PedidoProveedorBase #mui_lineasDetalle #mui_list {
+	background-image: url(@CMAKE_INSTALL_PREFIX@/share/bulmages/images/en_EN/pluginbf_proveedorpedido-new.png);
+}

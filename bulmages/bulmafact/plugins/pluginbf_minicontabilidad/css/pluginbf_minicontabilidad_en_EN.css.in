@@ -1,0 +1,7 @@
+#ApunteContableBase #mui_list {
+	background-image: url(@CMAKE_INSTALL_PREFIX@/share/bulmages/images/en_EN/pluginbf_minicontabilidad-list.png);
+}
+
+#PresupuestoContableListBase #mui_list {
+	background-image: url(@CMAKE_INSTALL_PREFIX@/share/bulmages/images/en_EN/pluginbf_minicontabilidadcont-list.png);
+}

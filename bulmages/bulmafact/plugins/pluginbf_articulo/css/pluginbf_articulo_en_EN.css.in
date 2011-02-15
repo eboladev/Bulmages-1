@@ -1,0 +1,4 @@
+#ArticuloListBase #mui_list {
+	background-image: url(@CMAKE_INSTALL_PREFIX@/share/bulmages/images/en_EN/pluginbf_articulo-list.png);
+}
+
