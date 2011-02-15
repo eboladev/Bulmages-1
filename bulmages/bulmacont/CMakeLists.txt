@@ -30,6 +30,8 @@ FILE(APPEND ${CMAKE_BINARY_DIR}/css/bulmacont_ca_ES.css "${VAR_CSS_ca_ES}" )
 FILE(READ css/bulmacont_fr_FR.css VAR_CSS_fr_FR)
 FILE(APPEND ${CMAKE_BINARY_DIR}/css/bulmacont_fr_FR.css "${VAR_CSS_fr_FR}" )
 
+FILE(READ css/bulmacont_en_EN.css VAR_CSS_en_EN)
+FILE(APPEND ${CMAKE_BINARY_DIR}/css/bulmacont_en_EN.css "${VAR_CSS_en_EN}" )
 
 add_subdirectory(src)
 

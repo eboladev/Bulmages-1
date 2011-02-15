@@ -9,6 +9,8 @@ FILE(APPEND ${CMAKE_BINARY_DIR}/css/bulmafact_ca_ES.css "${VAR_CSS_ca_ES}" )
 FILE(READ css/bulmafact_fr_FR.css VAR_CSS_fr_FR)
 FILE(APPEND ${CMAKE_BINARY_DIR}/css/bulmafact_fr_FR.css "${VAR_CSS_fr_FR}" )
 
+FILE(READ css/bulmafact_en_EN.css VAR_CSS_en_EN)
+FILE(APPEND ${CMAKE_BINARY_DIR}/css/bulmafact_en_EN.css "${VAR_CSS_en_EN}" )
 
 add_subdirectory(src)
 add_subdirectory(plugins)
