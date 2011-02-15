@@ -580,7 +580,7 @@ msgid ""
 msgstr ""
 "La versió de la base de dadse no coincideix amb el programa.\n"
 "\n"
-"El programa no funcionarà adequadament."
+"El programa no funcionarà adequadament.\n"
 
 #: ui_bldblogindialogbase.h:151
 msgid "Lanzador Bulmages"
