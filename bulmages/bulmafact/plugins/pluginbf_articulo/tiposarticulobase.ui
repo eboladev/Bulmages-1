@@ -18,175 +18,11 @@
    <iconset resource="../../../bulmages.qrc">
     <normaloff>:/Images/product-family.png</normaloff>:/Images/product-family.png</iconset>
   </property>
-  <layout class="QGridLayout">
+  <layout class="QVBoxLayout" name="verticalLayout">
    <property name="margin">
     <number>5</number>
    </property>
-   <property name="spacing">
-    <number>5</number>
-   </property>
-   <item row="2" column="0">
-    <widget class="QTreeWidget" name="m_listTipos">
-     <column>
-      <property name="text">
-       <string>1</string>
-      </property>
-     </column>
-    </widget>
-   </item>
-   <item row="4" column="0">
-    <layout class="QHBoxLayout">
-     <property name="spacing">
-      <number>5</number>
-     </property>
-     <property name="margin">
-      <number>0</number>
-     </property>
-     <item>
-      <spacer>
-       <property name="orientation">
-        <enum>Qt::Horizontal</enum>
-       </property>
-       <property name="sizeHint" stdset="0">
-        <size>
-         <width>581</width>
-         <height>20</height>
-        </size>
-       </property>
-      </spacer>
-     </item>
-     <item>
-      <widget class="QPushButton" name="mui_aceptar">
-       <property name="text">
-        <string>&amp;Aceptar</string>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QPushButton" name="mui_cancelar">
-       <property name="text">
-        <string>&amp;Cancelar</string>
-       </property>
-      </widget>
-     </item>
-    </layout>
-   </item>
-   <item row="3" column="0">
-    <widget class="QGroupBox" name="groupBox1">
-     <property name="title">
-      <string>Tipo de articulo:</string>
-     </property>
-     <layout class="QVBoxLayout">
-      <property name="spacing">
-       <number>5</number>
-      </property>
-      <property name="margin">
-       <number>5</number>
-      </property>
-      <item>
-       <layout class="QHBoxLayout">
-        <property name="spacing">
-         <number>5</number>
-        </property>
-        <property name="margin">
-         <number>0</number>
-        </property>
-        <item>
-         <widget class="QLabel" name="label_1">
-          <property name="text">
-           <string>Codigo:</string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QLineEdit" name="mui_codigotipo_articulo"/>
-        </item>
-       </layout>
-      </item>
-      <item>
-       <widget class="QLabel" name="label_3">
-        <property name="sizePolicy">
-         <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-          <horstretch>0</horstretch>
-          <verstretch>0</verstretch>
-         </sizepolicy>
-        </property>
-        <property name="text">
-         <string>Descripcion:</string>
-        </property>
-       </widget>
-      </item>
-      <item>
-       <widget class="QTextEdit" name="mui_desctipo_articulo"/>
-      </item>
-     </layout>
-    </widget>
-   </item>
-   <item row="1" column="0">
-    <layout class="QHBoxLayout">
-     <property name="spacing">
-      <number>5</number>
-     </property>
-     <property name="margin">
-      <number>0</number>
-     </property>
-     <item>
-      <widget class="QToolButton" name="mui_detalles">
-       <property name="minimumSize">
-        <size>
-         <width>22</width>
-         <height>22</height>
-        </size>
-       </property>
-       <property name="maximumSize">
-        <size>
-         <width>22</width>
-         <height>22</height>
-        </size>
-       </property>
-       <property name="toolTip">
-        <string>Mostrar / Ocultar detalle</string>
-       </property>
-       <property name="whatsThis">
-        <string>Mostrar / Ocultar detalle</string>
-       </property>
-       <property name="text">
-        <string/>
-       </property>
-       <property name="icon">
-        <iconset resource="../../../bulmages.qrc">
-         <normaloff>:/Images/document-open.png</normaloff>:/Images/document-open.png</iconset>
-       </property>
-       <property name="iconSize">
-        <size>
-         <width>32</width>
-         <height>32</height>
-        </size>
-       </property>
-       <property name="checkable">
-        <bool>true</bool>
-       </property>
-       <property name="checked">
-        <bool>true</bool>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <spacer>
-       <property name="orientation">
-        <enum>Qt::Horizontal</enum>
-       </property>
-       <property name="sizeHint" stdset="0">
-        <size>
-         <width>40</width>
-         <height>20</height>
-        </size>
-       </property>
-      </spacer>
-     </item>
-    </layout>
-   </item>
-   <item row="0" column="0">
+   <item>
     <layout class="QHBoxLayout">
      <property name="spacing">
       <number>5</number>
@@ -310,7 +146,7 @@
           </property>
          </widget>
         </item>
-        <item row="0" column="3">
+        <item row="0" column="4">
          <spacer>
           <property name="orientation">
            <enum>Qt::Horizontal</enum>
@@ -364,7 +200,145 @@
           </property>
          </widget>
         </item>
+        <item row="0" column="3">
+         <widget class="QToolButton" name="mui_detalles">
+          <property name="minimumSize">
+           <size>
+            <width>32</width>
+            <height>32</height>
+           </size>
+          </property>
+          <property name="maximumSize">
+           <size>
+            <width>32</width>
+            <height>32</height>
+           </size>
+          </property>
+          <property name="toolTip">
+           <string>Mostrar / Ocultar detalle</string>
+          </property>
+          <property name="whatsThis">
+           <string>Mostrar / Ocultar detalle</string>
+          </property>
+          <property name="text">
+           <string/>
+          </property>
+          <property name="icon">
+           <iconset resource="../../../bulmages.qrc">
+            <normaloff>:/Images/document-open.png</normaloff>:/Images/document-open.png</iconset>
+          </property>
+          <property name="iconSize">
+           <size>
+            <width>32</width>
+            <height>32</height>
+           </size>
+          </property>
+          <property name="checkable">
+           <bool>true</bool>
+          </property>
+          <property name="checked">
+           <bool>true</bool>
+          </property>
+         </widget>
+        </item>
        </layout>
+      </widget>
+     </item>
+    </layout>
+   </item>
+   <item>
+    <widget class="QTreeWidget" name="m_listTipos">
+     <column>
+      <property name="text">
+       <string>1</string>
+      </property>
+     </column>
+    </widget>
+   </item>
+   <item>
+    <widget class="QGroupBox" name="groupBox1">
+     <property name="title">
+      <string>Tipo de articulo:</string>
+     </property>
+     <layout class="QVBoxLayout">
+      <property name="spacing">
+       <number>5</number>
+      </property>
+      <property name="margin">
+       <number>5</number>
+      </property>
+      <item>
+       <layout class="QHBoxLayout">
+        <property name="spacing">
+         <number>5</number>
+        </property>
+        <property name="margin">
+         <number>0</number>
+        </property>
+        <item>
+         <widget class="QLabel" name="label_1">
+          <property name="text">
+           <string>Codigo:</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLineEdit" name="mui_codigotipo_articulo"/>
+        </item>
+       </layout>
+      </item>
+      <item>
+       <widget class="QLabel" name="label_3">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="text">
+         <string>Descripcion:</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QTextEdit" name="mui_desctipo_articulo"/>
+      </item>
+     </layout>
+    </widget>
+   </item>
+   <item>
+    <layout class="QHBoxLayout">
+     <property name="spacing">
+      <number>5</number>
+     </property>
+     <property name="margin">
+      <number>0</number>
+     </property>
+     <item>
+      <spacer>
+       <property name="orientation">
+        <enum>Qt::Horizontal</enum>
+       </property>
+       <property name="sizeHint" stdset="0">
+        <size>
+         <width>581</width>
+         <height>20</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+     <item>
+      <widget class="QPushButton" name="mui_aceptar">
+       <property name="text">
+        <string>&amp;Aceptar</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="mui_cancelar">
+       <property name="text">
+        <string>&amp;Cancelar</string>
+       </property>
       </widget>
      </item>
     </layout>
@@ -374,7 +348,7 @@
  <layoutdefault spacing="6" margin="11"/>
  <resources>
   <include location="../../../bulmages.qrc"/>
-  <include location="../../bulmages.qrc"/>
+  <include location="../../../bulmages.qrc"/>
  </resources>
  <connections>
   <connection>

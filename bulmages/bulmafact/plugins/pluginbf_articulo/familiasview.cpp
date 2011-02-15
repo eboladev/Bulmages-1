@@ -75,7 +75,7 @@ FamiliasView::FamiliasView ( BfCompany *comp, QWidget *parent, bool modoConsulta
 
     if ( modoConsulta ) {
         setModoConsulta();
-        groupBox1->hide();
+        mui_tab->hide();
 //        mui_detalles->hide();
 //        mui_crear->hide();
 //        mui_guardar->hide();
@@ -208,6 +208,16 @@ QString FamiliasView::idFamilia()
 /**
 \return
 **/
+QString FamiliasView::idFamiliaModified()
+{
+    return m_idfamilia;
+}
+
+
+///
+/**
+\return
+**/
 QString FamiliasView::nombreFamilia()
 {
     blDebug ( "FamiliasView::nombreFamilia", 0 );
@@ -251,8 +261,8 @@ void FamiliasView::on_m_listFamilias_currentItemChanged ( QTreeWidgetItem *curre
     if ( m_semaforoPintar ) return;
     m_semaforoPintar = TRUE;
     blDebug ( "FamiliasView::on_m_listFamilias_currentItemChanged", 0, m_idfamilia );
-    /// Si estamos dentro del proceso de pintado salimos sin hacer nada ya que puede haber problemas.
 
+    /// Si estamos dentro del proceso de pintado salimos sin hacer nada ya que puede haber problemas.    
     if ( previous ) {
         m_idfamilia = previous->text ( COL_IDFAMILIA );
     } // end if
@@ -263,6 +273,13 @@ void FamiliasView::on_m_listFamilias_currentItemChanged ( QTreeWidgetItem *curre
             pintar ( previous );
 
     } // end if
+
+    /// Disparamos los plugins.
+    int res = g_plugins->lanza ( "FamiliasView_currentItemChanged_Post", this );
+    if ( res != 0 ) {
+	return;
+    } // end if
+
     if ( current ) {
         m_idfamilia = current->text ( COL_IDFAMILIA );
     } else {

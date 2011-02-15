@@ -45,6 +45,9 @@ public:
 public:
     QString m_codigoarticulo;
     QString m_nombrearticulo;
+    bool m_etiquetavisible;
+    QString m_etiquetaarticulo;
+    QString m_colortpvarticulo;
 };
 
 // Clase que contiene la informacion necesario sobre la familia y su lista

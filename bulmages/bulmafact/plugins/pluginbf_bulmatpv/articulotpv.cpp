@@ -1,6 +1,6 @@
 /***************************************************************************
- *   Copyright (C) 2007 by Tomeu Borras Riera                              *
- *   tborras@conetxia.com                                                  *
+ *   Copyright (C) 2011 by Fco. Javier M. C.                               *
+ *   fcojavmc@todo-redes.com                                               *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
  *   it under the terms of the GNU General Public License as published by  *
@@ -18,32 +18,36 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#ifndef PLUGINBF_BULMATPV_H
-#define PLUGINBF_BULMATPV_H
 
-#include <QStringList>
-#include <QWidget>
-#include <QIcon>
-#include <QApplication>
-#include <QObject>
+#include <QColorDialog>
 
-#include "bfbulmafact.h"
-#include "articuloview.h"
-#include "familiasview.h"
-#include "blfunctions.h"
-#include "pdefs_pluginbf_bulmatpv.h"
+#include "articulotpv.h"
 
 
-extern "C" PLUGINBF_BULMATPV_EXPORT int entryPoint ( BfBulmaFact * );
-extern "C" PLUGINBF_BULMATPV_EXPORT int ArticuloView_ArticuloView_Post ( ArticuloView * );
-
-/// Familias
-extern "C" PLUGINBF_BULMATPV_EXPORT int FamiliasView_FamiliasView ( FamiliasView * );
-extern "C" PLUGINBF_BULMATPV_EXPORT int FamiliasView_Guardar_Pre ( FamiliasView * );
-extern "C" PLUGINBF_BULMATPV_EXPORT int FamiliasView_Guardar_Post ( FamiliasView * );
-extern "C" PLUGINBF_BULMATPV_EXPORT int FamiliasView_currentItemChanged_Post ( FamiliasView * );
+ArticuloTPV::ArticuloTPV(QWidget *parent, Qt::WFlags fl) : BlWidget (parent, fl)
+{
+    setupUi(this);
+}
 
 
+ArticuloTPV::~ArticuloTPV()
+{
+}
 
-#endif
 
+void ArticuloTPV::on_mui_seleccionarcolor_clicked()
+{
+
+    QColor coloractual;
+
+    if (QColor::isValidColor(mui_colortpvarticulo->text())) {
+        coloractual.setNamedColor(mui_colortpvarticulo->text());
+    } else {
+	coloractual.setNamedColor("#FFFFFF");
+    } // end if
+
+    QColorDialog colordialog;
+    QColor color = colordialog.getColor(coloractual, this);
+    mui_colortpvarticulo->setText(color.name());
+    
+}

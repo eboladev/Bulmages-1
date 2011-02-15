@@ -1,6 +1,6 @@
 /***************************************************************************
- *   Copyright (C) 2007 by Tomeu Borras Riera                              *
- *   tborras@conetxia.com                                                  *
+ *   Copyright (C) 2011 by Fco. Javier M. C.                               *
+ *   fcojavmc@todo-redes.com                                               *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
  *   it under the terms of the GNU General Public License as published by  *
@@ -18,32 +18,26 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#ifndef PLUGINBF_BULMATPV_H
-#define PLUGINBF_BULMATPV_H
 
-#include <QStringList>
-#include <QWidget>
-#include <QIcon>
-#include <QApplication>
-#include <QObject>
+#ifndef ARTICULOTPV_H
+#define ARTICULOTPV_H
 
-#include "bfbulmafact.h"
-#include "articuloview.h"
-#include "familiasview.h"
+#include "blwidget.h"
 #include "blfunctions.h"
-#include "pdefs_pluginbf_bulmatpv.h"
+#include "ui_articulotpvbase.h"
 
 
-extern "C" PLUGINBF_BULMATPV_EXPORT int entryPoint ( BfBulmaFact * );
-extern "C" PLUGINBF_BULMATPV_EXPORT int ArticuloView_ArticuloView_Post ( ArticuloView * );
+class ArticuloTPV : public BlWidget, public Ui_ArticuloTPVBase
+{
+    Q_OBJECT
+  
+public:
+    ArticuloTPV(QWidget *parent, Qt::WFlags fl = 0);
+    ~ArticuloTPV();
 
-/// Familias
-extern "C" PLUGINBF_BULMATPV_EXPORT int FamiliasView_FamiliasView ( FamiliasView * );
-extern "C" PLUGINBF_BULMATPV_EXPORT int FamiliasView_Guardar_Pre ( FamiliasView * );
-extern "C" PLUGINBF_BULMATPV_EXPORT int FamiliasView_Guardar_Post ( FamiliasView * );
-extern "C" PLUGINBF_BULMATPV_EXPORT int FamiliasView_currentItemChanged_Post ( FamiliasView * );
-
-
+public slots:
+    void on_mui_seleccionarcolor_clicked();
+};
 
 #endif
 

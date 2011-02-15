@@ -246,54 +246,75 @@ void ArtGraficosDb::renderPantallas ()
         int nitem = 0;
         NodoArticulo na;
         QPainter painter;
-        painter.begin ( picture ); // paint in picture
-
+        painter.begin ( picture ); /// paint in picture
 
         painter.setPen ( QColor ( 0, 0, 0 ) );
         painter.setBackground ( QColor ( 0, 0, 0 ) );
 
-
         for ( int row = 0; row < numrows; row++ ) {
           for ( int column = 0; column < numcols; column++ ) {
                 if ( nitem < numcells ) {
-                    // Obtenemos el articulo en la posicion nitem
+                    /// Obtenemos el articulo en la posicion nitem
                     na = familia.m_listaarticulos.value ( nitem );
 
-                    QString nombre = na.m_nombrearticulo;
-                    QString codigo = na.m_codigoarticulo;
+		    /// Mira si existe articulo para esa posicion.
+		    if (nitem < familia.m_listaarticulos.size()) {
+		      
+		      QString nombre = na.m_nombrearticulo;
+		      QString codigo = na.m_codigoarticulo;
 
-                    /// Creamos el elemento y lo ponemos en la tabla.
+		      /// Creamos el elemento y lo ponemos en la tabla.
 
-                    lab->m_codigoarticulo[column][row] = codigo;
+		      lab->m_codigoarticulo[column][row] = codigo;
 
-                    // Probamos con una Picture
-                    QFile f ( g_confpr->valor ( CONF_DIR_THUMB_ARTICLES ) + codigo + ".jpg" );
+		      // Probamos con una Picture
+		      QFile f ( g_confpr->valor ( CONF_DIR_THUMB_ARTICLES ) + codigo + ".jpg" );
 
-                    // Si existe la imagen del articulo, esta se superpondra a la de blanco.jpg, dejando 20px por debajo
-                    // para que se vea el texto negro sobre blanco
-                    if ( f.exists() ) {
-                        /// Es importante pasar el pixmap ya escalado porque sino en cada renderizado se reescala de nuevo el pixmap.
-                        QPixmap p = QPixmap ( g_confpr->valor ( CONF_DIR_THUMB_ARTICLES ) + codigo + ".jpg" ).scaled ( cellwidth.toInt() - 1, cellwidth.toInt() - 20 );
-                        painter.drawPixmap ( cellwidth.toInt() *column, cellwidth.toInt() *row, p );
-                        painter.drawText ( cellwidth.toInt() *column + 5, cellwidth.toInt() *row + ( g_confpr->valor ( CONF_TPV_CELL_WIDTH ).toInt() - 5 ), nombre );
-                        
-                    } else {
+		      // Si existe la imagen del articulo, esta se superpondra a la de blanco.jpg, dejando 20px por debajo
+		      // para que se vea el texto negro sobre blanco
+		      if ( f.exists() ) {
+			  /// Es importante pasar el pixmap ya escalado porque sino en cada renderizado se reescala de nuevo el pixmap.
+			  QPixmap p = QPixmap ( g_confpr->valor ( CONF_DIR_THUMB_ARTICLES ) + codigo + ".jpg" ).scaled ( cellwidth.toInt() - 1, cellwidth.toInt() - 20 );
+			  painter.drawPixmap ( cellwidth.toInt() *column, cellwidth.toInt() *row, p );
+			  painter.drawText ( cellwidth.toInt() *column + 5, cellwidth.toInt() *row + ( g_confpr->valor ( CONF_TPV_CELL_WIDTH ).toInt() - 5 ), nombre );
+			  
+		      } else {
 
-                        QFile f1 ( g_confpr->valor ( CONF_DIR_THUMB_ARTICLES ) + codigo + ".png" );
+			  QFile f1 ( g_confpr->valor ( CONF_DIR_THUMB_ARTICLES ) + codigo + ".png" );
 
-	                // Si existe la imagen del articulo, esta se superpondra a la de blanco.jpg, dejando 20px por debajo
-    	            // para que se vea el texto negro sobre blanco
-      	              if ( f1.exists() ) {
-                        /// Es importante pasar el pixmap ya escalado porque sino en cada renderizado se reescala de nuevo el pixmap.
-                        QPixmap p = QPixmap ( g_confpr->valor ( CONF_DIR_THUMB_ARTICLES ) + codigo + ".png" ).scaled ( cellwidth.toInt() - 1, cellwidth.toInt() - 20 );
-                        painter.drawPixmap ( cellwidth.toInt() *column, cellwidth.toInt() *row, p );
-                        painter.drawText ( cellwidth.toInt() *column + 5, cellwidth.toInt() *row + ( g_confpr->valor ( CONF_TPV_CELL_WIDTH ).toInt() - 5 ), nombre );
-                        
-                      } else {
-                        painter.drawText ( cellwidth.toInt() *column + 5, cellwidth.toInt() *row + ( g_confpr->valor ( CONF_TPV_CELL_WIDTH ).toInt() - 25 ), nombre );
+			  /// Si existe la imagen del articulo, esta se superpondra a la de blanco.jpg, dejando 20px por debajo
+			  /// para que se vea el texto negro sobre blanco
+			  if ( f1.exists() ) {
+			    /// Es importante pasar el pixmap ya escalado porque sino en cada renderizado se reescala de nuevo el pixmap.
+			    QPixmap p = QPixmap ( g_confpr->valor ( CONF_DIR_THUMB_ARTICLES ) + codigo + ".png" ).scaled ( cellwidth.toInt() - 1, cellwidth.toInt() - 20 );
+			    painter.drawPixmap ( cellwidth.toInt() *column, cellwidth.toInt() *row, p );
+			    painter.drawText ( cellwidth.toInt() *column + 5, cellwidth.toInt() *row + ( g_confpr->valor ( CONF_TPV_CELL_WIDTH ).toInt() - 5 ), nombre );
+			    
+			  } else {
+			    /// Pinta un recuadro con el color establecido en la ficha del articulo o en su defecto con un color estandar.
+			    QPixmap recuadro = QPixmap( cellwidth.toInt() -1, cellwidth.toInt() - 20);
+			    
+			    QColor recuadroColor = QColor(na.m_colortpvarticulo);
+			    
+			    if ( recuadroColor.isValid() ) {
+				recuadro.fill(recuadroColor);
+			    } else {
+				recuadro.fill(Qt::gray);
+			    } // end if
+			    
+			    painter.drawPixmap ( cellwidth.toInt() *column, cellwidth.toInt() *row, recuadro );
+			    painter.drawText ( cellwidth.toInt() *column + 5, cellwidth.toInt() *row + ( g_confpr->valor ( CONF_TPV_CELL_WIDTH ).toInt() - 5 ), nombre );
+			  } // end if
+			
+		      } // end if
+
+		      /// Si esta marcada la opcion de escribir etiqueta.
+		      if (na.m_etiquetavisible) {
+			    painter.drawText ( cellwidth.toInt() *column + 5, (cellwidth.toInt() *row + ( g_confpr->valor ( CONF_TPV_CELL_WIDTH ).toInt() - 5) / 2 ), na.m_etiquetaarticulo );
+		      } // end if
+
                     } // end if
-                    } // end if
-
+                    
                     nitem++;
 
                 } // end if
@@ -338,7 +359,7 @@ void ArtGraficosDb::ponPantallas()
     hboxLayout1->setObjectName ( QString::fromUtf8 ( "hboxLayout1" ) );
 
     BlDbRecordSet *familias;
-    familias = mainCompany()->loadQuery ( "SELECT idfamilia, nombrefamilia FROM familia ORDER BY nombrefamilia" );
+    familias = mainCompany()->loadQuery ( "SELECT idfamilia, nombrefamilia, colortpvfamilia FROM familia WHERE visibletpvfamilia = TRUE ORDER BY ordentpvfamilia, nombrefamilia" );
 
     int i = 0;
 
@@ -348,7 +369,17 @@ void ArtGraficosDb::ponPantallas()
 
         QString titulo = familias->valor ( "nombrefamilia" );
         QPushButton *pb = new QPushButton ( titulo, g_pantallas );
+	
+	QColor pbColor = QColor(familias->valor ( "colortpvfamilia" ));
 
+	if ( pbColor.isValid() ) {
+	    /// Si el color es valido entonces lo utiliza para pintar el boton de ese color.
+	    QString pbStyles = "QPushButton { background-color: " + familias->valor ( "colortpvfamilia" ) + "; }";
+	    pb->setStyleSheet(pbStyles);
+	    style()->unpolish(pb);
+	    style()->polish(pb);
+	} // end if
+	
         pb->setText ( titulo );
         pb->setObjectName ( QString::number ( i ) );
         pb->setMaximumHeight ( 200 );
@@ -362,13 +393,22 @@ void ArtGraficosDb::ponPantallas()
 
         // Llenamos la lista de articulos
         BlDbRecordSet *articulos;
-        articulos = mainCompany()->loadQuery ( "SELECT codigocompletoarticulo, nomarticulo FROM articulo WHERE idfamilia = " + fa.m_idfamilia + " ORDER BY nomarticulo" );
+        articulos = mainCompany()->loadQuery ( "SELECT codigocompletoarticulo, nomarticulo, etiquetavisibletpvarticulo, abrevarticulo, colortpvarticulo FROM articulo WHERE visibletpvarticulo = TRUE AND idfamilia = " + fa.m_idfamilia + " ORDER BY ordentpvarticulo, nomarticulo" );
 
         while ( !articulos->eof() ) {
 
             NodoArticulo na;
             na.m_codigoarticulo = articulos->valor ( "codigocompletoarticulo" );
             na.m_nombrearticulo = articulos->valor ( "nomarticulo" );
+
+	    if (articulos->valor ( "etiquetavisibletpvarticulo" ) == "f") {
+	      na.m_etiquetavisible = FALSE;
+	    } else {
+	      na.m_etiquetavisible = TRUE;
+	    } // end if
+	    
+	    na.m_etiquetaarticulo = articulos->valor ( "abrevarticulo" );
+	    na.m_colortpvarticulo = articulos->valor ( "colortpvarticulo" );
             fa.m_listaarticulos.append ( na );
             articulos->nextRecord();
 

@@ -56,6 +56,7 @@ public:
     void setModoConsulta();
     void setModoEdicion();
     QString codigoCompletoFamilia();
+    QString idFamiliaModified();
     QString idFamilia();
     QString nombreFamilia();
     void pintar ( QTreeWidgetItem * );

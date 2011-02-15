@@ -69,8 +69,8 @@ void CatalogoQToolButton::setBoton()
     blDebug ( "CatalogoQToolButton::setBoton", 0 );
     connect ( this, SIGNAL ( clicked() ), this, SLOT ( click() ) );
     setObjectName ( QString::fromUtf8 ( "exporta" ) );
-    setStatusTip ( "Imprimir Catalogo" );
-    setToolTip ( "Imprimir Catalogo" );
+    setStatusTip ( _("Imprimir catalogo") );
+    setToolTip ( _("Imprimir catalogo") );
     setMinimumSize ( QSize ( 32, 32 ) );
     setIcon ( QIcon ( g_confpr->valor ( CONF_PROGDATA ) + "icons/catalogo.png" ) );
     setIconSize ( QSize ( 22, 22 ) );

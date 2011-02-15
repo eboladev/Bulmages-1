@@ -31,6 +31,9 @@
 #include "blfunctions.h"
 #include "zlist.h"
 #include "blform.h"
+#include "articulotpv.h"
+#include "familiastpv.h"
+
 
 ///
 /**
@@ -116,4 +119,127 @@ int entryPoint ( BfBulmaFact *bges )
     blDebug ( "END entryPoint", 0, "Punto de Entrada del plugin PluginContratos" );
     return 0;
 }
+
+
+/**
+\param trab
+\return
+**/
+int ArticuloView_ArticuloView_Post ( ArticuloView *trab )
+{
+    blDebug ( "ArticuloView_ArticuloView_Post", 0 );
+
+    trab->addDbField ( "visibletpvarticulo", BlDbField::DbBoolean, BlDbField::DbNothing, _ ( "Visible en TPV" ) );
+    trab->addDbField ( "etiquetavisibletpvarticulo", BlDbField::DbBoolean, BlDbField::DbNothing, _ ( "Etiqueta visible en TPV" ) );
+    trab->addDbField ( "ordentpvarticulo", BlDbField::DbInt, BlDbField::DbNothing, _ ( "Orden en TPV" ) );
+    trab->addDbField ( "colortpvarticulo", BlDbField::DbVarChar, BlDbField::DbNothing, _ ( "Color en TPV" ) );
+
+    ArticuloTPV *a = new ArticuloTPV ( trab );
+    a->setMainCompany ( trab->mainCompany() );
+    a->setObjectName ( QString::fromUtf8 ( "m_articulotpv" ) );
+    trab->mui_tab->addTab ( a, _ ( "T.P.V." ) );
+
+    
+    return 0;
+}
+
+
+
+int FamiliasView_FamiliasView ( FamiliasView *famv )
+{
+    FamiliasTPV *a = new FamiliasTPV ( famv );
+    a->setMainCompany ( famv->mainCompany() );
+    a->setObjectName ( QString::fromUtf8 ( "m_familiatpv" ) );
+    famv->mui_tab->addTab ( a, _ ( "T.P.V." ) );
+
+    return 0;
+}
+
+
+
+int FamiliasView_Guardar_Pre ( FamiliasView *famv )
+{
+    QString query;
+  
+    try {
+
+	QString estado;
+	
+	if ( famv->findChild<QCheckBox *>("mui_visibletpvfamilia")->checkState() == Qt::Checked ) {
+	  estado = "TRUE";
+	} else {
+	  estado = "FALSE";	  
+	} // end if
+      
+	query = "UPDATE familia SET visibletpvfamilia = '" + estado + "', ordentpvfamilia = '" + famv->findChild<QLineEdit *>("mui_ordentpvfamilia")->text() + "', colortpvfamilia = '" + famv->findChild<QLineEdit *>("mui_colortpvfamilia")->text() + "'" + " WHERE idfamilia = " + famv->idFamiliaModified();
+	famv->mainCompany()->runQuery(query);
+      
+    } catch (int e) {
+	throw -1;
+    } // end try
+
+  
+    return 0;
+}
+
+
+int FamiliasView_Guardar_Post ( FamiliasView *famv )
+{
+    return 0;
+}
+
+
+int FamiliasView_currentItemChanged_Post ( FamiliasView *famv )
+{
+  
+    BlDbRecordSet *rec;
+    BlDbRecordSet *rec2;
+
+    if ( famv->idFamilia().isEmpty() ) {
+      
+      famv->findChild<QCheckBox *>("mui_visibletpvfamilia")->setEnabled(FALSE);
+      
+      famv->findChild<QLineEdit *>("mui_ordentpvfamilia")->setEnabled(FALSE);
+      famv->findChild<QLineEdit *>("mui_colortpvfamilia")->setEnabled(FALSE);
+      famv->findChild<QPushButton *>("mui_seleccionarcolor")->setEnabled(FALSE);
+      famv->findChild<QCheckBox *>("mui_visibletpvfamilia")->setCheckState(Qt::Checked);
+      famv->findChild<QLineEdit *>("mui_ordentpvfamilia")->setText("");
+      famv->findChild<QLineEdit *>("mui_colortpvfamilia")->setText("");
+
+    } else {
+      famv->findChild<QCheckBox *>("mui_visibletpvfamilia")->setEnabled(TRUE);
+      famv->findChild<QLineEdit *>("mui_ordentpvfamilia")->setEnabled(TRUE);
+      famv->findChild<QLineEdit *>("mui_colortpvfamilia")->setEnabled(TRUE);
+      famv->findChild<QPushButton *>("mui_seleccionarcolor")->setEnabled(TRUE);
+      
+      
+      famv->mainCompany()->begin();  
+    
+      QString query;
+
+      query = "SELECT visibletpvfamilia, ordentpvfamilia, colortpvfamilia FROM familia WHERE idfamilia = '" + famv->idFamilia() + "' LIMIT 1";
+      rec = famv->mainCompany()->loadQuery(query);
+      
+      // Si no hay datos no se hace nada.
+      if ( rec != NULL ) {
+
+	    if (rec->valor ( "visibletpvfamilia" ) == "f") {
+		famv->findChild<QCheckBox *>("mui_visibletpvfamilia")->setCheckState(Qt::Unchecked);
+	    } else {
+		famv->findChild<QCheckBox *>("mui_visibletpvfamilia")->setCheckState(Qt::Checked);
+	    } // end if
+	    
+	    famv->findChild<QLineEdit *>("mui_ordentpvfamilia")->setText(rec->valor ( "ordentpvfamilia" ));
+	    famv->findChild<QLineEdit *>("mui_colortpvfamilia")->setText(rec->valor ( "colortpvfamilia" ));
+	      
+      } // end if
+    
+      famv->mainCompany()->commit();
+      
+    } // end if
+
+    return 0;
+}
+
+
 

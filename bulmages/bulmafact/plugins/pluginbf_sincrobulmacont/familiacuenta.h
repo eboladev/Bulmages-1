@@ -7,6 +7,7 @@ class FamiliaCuenta : public QWidget
 {
     Q_OBJECT
 
+private:
     FamiliasView *m_familiasview;
 
 public:

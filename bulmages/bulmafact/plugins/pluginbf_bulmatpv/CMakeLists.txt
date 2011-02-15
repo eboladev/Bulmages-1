@@ -32,6 +32,8 @@ include_directories(
 	${CMAKE_SOURCE_DIR}/bulmalib/src/
 	${CMAKE_BINARY_DIR}/bulmafact/src/
 	${CMAKE_SOURCE_DIR}/bulmafact/src/
+	${CMAKE_BINARY_DIR}/bulmafact/plugins/pluginbf_articulo/
+	${CMAKE_SOURCE_DIR}/bulmafact/plugins/pluginbf_articulo/
 	${CMAKE_BINARY_DIR}/bulmafact/plugins/pluginbf_clientealbaran/
 	${CMAKE_SOURCE_DIR}/bulmafact/plugins/pluginbf_clientealbaran/)
 
@@ -101,3 +103,6 @@ configure_file( ${CMAKE_CURRENT_SOURCE_DIR}/README.fr ${CMAKE_CURRENT_BINARY_DIR
 install (FILES ${CMAKE_CURRENT_BINARY_DIR}/README.fr DESTINATION share/bulmages/bulmafact-plugins/ RENAME README.fr.${plugin})
 
 add_dependencies(${plugin} bulmafact bulmalib bulmatpv pluginbf_clientealbaran)
+install(DIRECTORY dbmodels/ 
+		DESTINATION share/bulmages/dbmodels/plugins
+		PATTERN ".svn" EXCLUDE)
