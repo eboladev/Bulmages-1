@@ -6,9 +6,10 @@ msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: info@iglues.org\n"
 "POT-Creation-Date: 2011-02-04 12:53+0100\n"
-"PO-Revision-Date: 2009-01-26 09:32+0100\n"
-"Language-Team:  <es@li.org>\n"
-"Language: \n"
+"PO-Revision-Date: 2011-02-16 15:26+0100\n"
+"Last-Translator: Walter Garcia-Fontes <walter.garcia@upf.edu>\n"
+"Language-Team: English <es@li.org>\n"
+"Language: Language\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -96,15 +97,15 @@ msgstr "A&uthors"
 
 #: ui_bfbulmafactbase.h:190
 msgid "A&yuda"
-msgstr "A&id"
+msgstr "H&elp"
 
 #: ui_bfbuscarreferenciabase.h:95
 msgid "Abre todos los documentos con esta referencia"
-msgstr ""
+msgstr "Open all documents with this reference"
 
 #: ui_bfaboutbase.h:301
 msgid "Acerca de Iglues/BulmaFact"
-msgstr ""
+msgstr "About Iglues/Bulmafact"
 
 #: ui_bfaboutbase.h:316
 msgid "Acuerdo de &licencia"
@@ -120,7 +121,7 @@ msgstr "Article:"
 
 #: ui_bfbulmafactbase.h:226
 msgid "Avanzados"
-msgstr "Advance"
+msgstr "Advanced"
 
 #: bfform.cpp:500
 msgid "Base Imponible"
@@ -128,12 +129,11 @@ msgstr "Tax basis"
 
 #: ui_bfconfiguracionbase.h:428
 msgid "C.P."
-msgstr ""
+msgstr "P.C."
 
 #: ui_bfconfiguracionbase.h:426
-#, fuzzy
 msgid "CIF"
-msgstr "C.I.F."
+msgstr "Tax ID"
 
 #: bfproveedoralbaransubform.cpp:52
 msgid "Cantidad"
@@ -149,7 +149,7 @@ msgstr "Received"
 
 #: bfproveedoralbaransubform.cpp:48
 msgid "Codigo completo articulo"
-msgstr "Complete code article"
+msgstr "Complete article code"
 
 #: bfseriefacturaview.cpp:80
 msgid "Codigo serie factura"
@@ -165,11 +165,11 @@ msgstr "Configuration"
 
 #: ui_bfconfiguracionbase.h:437
 msgid "Configuracion Avanzada"
-msgstr ""
+msgstr "Advanced configuration"
 
 #: ui_bfconfiguracionbase.h:436
 msgid "Configuracion Basica"
-msgstr ""
+msgstr "Basic Configuration"
 
 #: ui_bfbulmafactbase.h:182
 msgid "Ctrl+I"
@@ -185,7 +185,7 @@ msgstr "Description"
 
 #: bfseriefacturaview.cpp:81
 msgid "Descripcion serie factura"
-msgstr "Description series invoices"
+msgstr "Description invoices series"
 
 #: bfform.cpp:458
 msgid "Descuento"
@@ -200,7 +200,6 @@ msgid "E&mpresa"
 msgstr "C&ompany"
 
 #: ui_bfconfiguracionbase.h:434
-#, fuzzy
 msgid "E-Mail"
 msgstr "E-mail:"
 
@@ -209,15 +208,17 @@ msgid ""
 "El codigo del articulo no existe.\n"
 "ATENCION: No se guadara bien el documento hasta que sea valido."
 msgstr ""
+"The code of the article does not exist.\n"
+"WARNING: The document will not be save until it is valid."
 
 #: bfinformereferencia.cpp:140 bfinformereferencia.cpp:172
 #: bfinformereferencia.cpp:210 bfinformereferencia.cpp:257
 msgid "Entregado"
-msgstr "Given"
+msgstr "Delivered"
 
 #: main.cxx:192
 msgid "Error inesperado en BulmaFact. El programa se cerrara."
-msgstr "Unexpected error in BulmaFact. The program was closed."
+msgstr "Unexpected error in BulmaFact. The program will exit."
 
 #: bfform.cpp:1044
 msgid "Error inesperado en la impresion"
@@ -233,7 +234,7 @@ msgstr "F11"
 
 #: bfcompany.cpp:99
 msgid "Facturacion GPL"
-msgstr ""
+msgstr "GPL Invoicing"
 
 #: bfinformereferencia.cpp:141 bfinformereferencia.cpp:173
 #: bfinformereferencia.cpp:211 bfinformereferencia.cpp:258
@@ -246,7 +247,7 @@ msgstr "Family:"
 
 #: ui_bfconfiguracionbase.h:433
 msgid "Fax"
-msgstr ""
+msgstr "Fax"
 
 #: ui_bfbulmafactbase.h:210 ui_bfbulmafactbase.h:212 ui_bfbulmafactbase.h:215
 #: ui_bfbulmafactbase.h:218 ui_bfbulmafactbase.h:221 ui_bfbulmafactbase.h:224
@@ -267,7 +268,7 @@ msgstr "I.V.A."
 
 #: bfproveedoralbaransubform.cpp:58
 msgid "Id albaran"
-msgstr "Id letters patent"
+msgstr "Id invoice"
 
 #: bfproveedoralbaransubform.cpp:47
 msgid "Id articulo"
@@ -275,35 +276,35 @@ msgstr "Id article"
 
 #: bfaboutview.cpp:420
 msgid "Idioma:"
-msgstr ""
+msgstr "Language:"
 
 #: bfaboutview.cpp:418
 msgid "Idiomas y traducciones:"
-msgstr ""
+msgstr "Languages and translations:"
 
 #: ui_bfbulmafactbase.h:165
 msgid "Iglues/BulmaFact - Facturacion GPL"
-msgstr ""
+msgstr "Iglues/Bulmafact - GPL Invoicing"
 
 #: ui_bfbulmafactbase.h:178 ui_bfbulmafactbase.h:180
 msgid "Indexador"
-msgstr "Indexador"
+msgstr "Indexer"
 
 #: ui_bfaboutbase.h:317
 msgid "Informacion del &sistema"
-msgstr ""
+msgstr "S&ystem information"
 
 #: bfbuscarreferencia.cpp:69
 msgid "Informe"
-msgstr ""
+msgstr "Report"
 
 #: ui_bfbuscarreferenciabase.h:92
 msgid "Informe por referencia"
-msgstr ""
+msgstr "Report by reference"
 
 #: main.cxx:175
 msgid "Inicializando componentes"
-msgstr ""
+msgstr "Initializing component"
 
 #: main.cxx:103
 msgid "Iniciando clases"
@@ -311,7 +312,7 @@ msgstr "Initiating classes"
 
 #: main.cxx:169
 msgid "Lanzando plugins"
-msgstr ""
+msgstr "Launching plugins"
 
 #: main.cxx:132
 msgid "Leyendo configuracion"
@@ -324,12 +325,11 @@ msgstr "Listings"
 
 #: ui_bfbulmafactbase.h:192
 msgid "Maest&ro"
-msgstr "Teach&er"
+msgstr "Mast&er"
 
 #: ui_bfconfiguracionbase.h:429
-#, fuzzy
 msgid "Municipio"
-msgstr "Beginning"
+msgstr "City"
 
 #: ui_bfconfiguracionbase.h:425 bfconfiguracionview.cpp:213
 msgid "Nombre"
@@ -353,7 +353,7 @@ msgstr "&Windows order"
 
 #: ui_bfbulmafactbase.h:183
 msgid "Organizacio&n en cascada"
-msgstr ""
+msgstr "Cascade orga&nization"
 
 #: bfinformereferencia.cpp:259
 msgid "Pagado"
@@ -361,7 +361,7 @@ msgstr "Paid"
 
 #: ui_bfconfiguracionbase.h:431
 msgid "Pais"
-msgstr ""
+msgstr "Country"
 
 #: ui_bfbulmafactbase.h:185 ui_bfbulmafactbase.h:186
 msgid "Paises / Provincias"
@@ -369,7 +369,7 @@ msgstr "Countries/Provinces"
 
 #: ui_bfbulmafactbase.h:188
 msgid "Paises y provincias"
-msgstr ""
+msgstr "Countries and provinces/states"
 
 #: bfinformereferencia.cpp:139 bfinformereferencia.cpp:171
 #: bfinformereferencia.cpp:209 bfinformereferencia.cpp:256
@@ -378,7 +378,7 @@ msgstr "Order"
 
 #: bfaboutview.cpp:422
 msgid "Plugins:"
-msgstr ""
+msgstr "Plugins:"
 
 #: bfform.cpp:459
 msgid "Porcentaje"
@@ -410,26 +410,25 @@ msgstr "Reference"
 
 #: bfbulmafact.cpp:199
 msgid "Se perderan los cambios no guardados"
-msgstr ""
+msgstr "The unsaved changes will be lost"
 
 #: bfbulmafact.cpp:198
 msgid "Seguro que desea abandonar el programa "
-msgstr ""
+msgstr "Are you sure you want to quit the program"
 
 #: bfseriefacturaview.cpp:48
 msgid "Serie de Factura"
-msgstr ""
+msgstr "Invoice series"
 
 #: ui_bfseriefacturabase.h:83
 msgid "Series de factura"
-msgstr "Series of invoice"
+msgstr "Invoice series"
 
 #: ui_bfaboutbase.h:315
 msgid "Sopor&te"
-msgstr "Soppor&te"
+msgstr "Suppor&t"
 
 #: ui_bfconfiguracionbase.h:432
-#, fuzzy
 msgid "Telefono"
 msgstr "Telephone:"
 
@@ -439,10 +438,9 @@ msgstr "Finished"
 
 #: bfform.cpp:1041
 msgid "Tiene que guardar el documento antes de poder procesarlo."
-msgstr ""
+msgstr "You have to save the document before being able to process it."
 
 #: bfbuscartipoarticulo.cpp:37
-#, fuzzy
 msgid "Tipo Articulo:"
 msgstr "Article Type "
 
@@ -456,7 +454,7 @@ msgstr "Total discount"
 
 #: bfproveedoralbaransubform.cpp:54
 msgid "Total Linea"
-msgstr ""
+msgstr "Total of the line"
 
 #: bfconfiguracionview.cpp:214
 msgid "Valor"
@@ -472,7 +470,7 @@ msgstr "Full &window"
 
 #: ui_bfconfiguracionbase.h:435
 msgid "Web"
-msgstr ""
+msgstr "Web"
 
 #~ msgid "% Recargo E.Q."
 #~ msgstr "% Additional V.A.T."
