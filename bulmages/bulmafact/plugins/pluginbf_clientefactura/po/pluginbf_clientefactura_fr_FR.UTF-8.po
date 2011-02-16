@@ -14,6 +14,8 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Lokalize 1.2\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"X-Language: fr_FR\n"
+"X-Source-Language: C\n"
 
 #: listdescfacturaview.cpp:42 listlinfacturaview.cpp:57
 msgid "% Descuento"
@@ -43,8 +45,7 @@ msgstr "&Détail"
 msgid "&Facturas a clientes"
 msgstr "&Factures Clients"
 
-#: genfacqtoolbutton.cpp:164 genfacqtoolbutton.cpp:297
-#: genfacqtoolbutton.cpp:429
+#: genfacqtoolbutton.cpp:164 genfacqtoolbutton.cpp:297 genfacqtoolbutton.cpp:429
 msgid "&No"
 msgstr "&Non"
 
@@ -52,8 +53,7 @@ msgstr "&Non"
 msgid "&Nueva factura a cliente"
 msgstr "&Nouvelle facture client"
 
-#: genfacqtoolbutton.cpp:164 genfacqtoolbutton.cpp:297
-#: genfacqtoolbutton.cpp:429
+#: genfacqtoolbutton.cpp:164 genfacqtoolbutton.cpp:297 genfacqtoolbutton.cpp:429
 msgid "&Si"
 msgstr "&Oui"
 
@@ -515,7 +515,7 @@ msgstr "numéro de facture "
 
 #: ui_albaranclientebase.h:773
 msgid "Número:"
-msgstr ""
+msgstr "Numéro :"
 
 #: listlinfacturaview.cpp:59
 msgid "Orden"
@@ -585,8 +585,7 @@ msgstr "Téléphone du contact :"
 msgid "Telefono factura"
 msgstr "Téléphone de la facturation"
 
-#: genfacqtoolbutton.cpp:147 genfacqtoolbutton.cpp:280
-#: genfacqtoolbutton.cpp:412
+#: genfacqtoolbutton.cpp:147 genfacqtoolbutton.cpp:280 genfacqtoolbutton.cpp:412
 msgid "Tiene que seleccionar un cliente"
 msgstr "Vous devez sélectionner un client"
 
@@ -600,7 +599,7 @@ msgstr "Total"
 
 #: listlinfacturaview.cpp:54
 msgid "Total Linea"
-msgstr ""
+msgstr "Total de la ligne"
 
 #: ui_facturaslistbase.h:478 ui_facturabase.h:740 ui_albaranclientebase.h:791
 #: ui_pedidoclientebase.h:736 ui_pedidosclientelistbase.h:439
