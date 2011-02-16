@@ -1,7 +1,7 @@
 =======
 Plugins
 =======
-#README
+#README.fr
 20110204
 
 Nombre: Comptes annuels
@@ -25,7 +25,7 @@ Incompatibles:
 
 Reports: 
 
-Categorias: Comptabilité générale ; Experimental;
+Categorias: Comptabilite generale ; Experimental;
 
 Orden: 500
 

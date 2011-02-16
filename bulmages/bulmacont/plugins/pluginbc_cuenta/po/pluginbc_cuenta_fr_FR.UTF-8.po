@@ -317,7 +317,7 @@ msgstr "Exporter les comptes"
 
 #: ui_bcplancontablelistbase.h:347
 msgid "F3"
-msgstr ""
+msgstr "F3"
 
 #: ui_bcplancontablelistbase.h:342
 msgid "F5"
@@ -478,7 +478,7 @@ msgstr "Sélection des articles"
 
 #: ui_bcplancontablelistbase.h:345
 msgid "Shift+F3"
-msgstr ""
+msgstr "Shift+F3"
 
 #: ui_bccuentabase.h:834
 msgid "Sin &Tipo"

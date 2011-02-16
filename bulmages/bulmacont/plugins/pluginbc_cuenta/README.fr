@@ -4,7 +4,7 @@ Plugins
 #README.fr
 20110204
 
-Nombre: Comptes Comptables
+Nombre: Comptes
 
 Biblioteca: libpluginbc_cuenta.so
 
