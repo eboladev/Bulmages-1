@@ -34,7 +34,7 @@ border: 1px solid #6c6c6c;
 margin-left : 0px;
 */
 /* Tamanyo de las fuentes en los encabezados de las tablas */
-font-size: 9px;
+font-size: 10px;
 }
 
 #BlTableWidgetItem {
@@ -47,13 +47,12 @@ font-size: 9px;
     border: 0px solid #00FF00;
 }
 
-
 /* Configuraciones para la mayoria de subformularios */
-*#mui_list {color: blue;
+*#mui_list {color: black;
 background-color: #DDDDDD;
 selection-color: #AAAAAA;
 selection-background-color: blue;}
 
 /* Configuraciones para los campos de filtrado */
-*#m_filtro {background-color: #FFFF88;}
+*#m_filtro {background-color: #FFFFFF;}
 
