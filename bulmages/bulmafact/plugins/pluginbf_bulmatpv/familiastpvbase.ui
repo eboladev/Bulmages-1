@@ -62,10 +62,10 @@
          <set>Qt::ImhDialableCharactersOnly|Qt::ImhDigitsOnly|Qt::ImhEmailCharactersOnly|Qt::ImhExclusiveInputMask|Qt::ImhFormattedNumbersOnly|Qt::ImhLowercaseOnly|Qt::ImhPreferNumbers|Qt::ImhUppercaseOnly|Qt::ImhUrlCharactersOnly</set>
         </property>
         <property name="inputMask">
-         <string>0000; </string>
+         <string>#0000; </string>
         </property>
         <property name="maxLength">
-         <number>4</number>
+         <number>5</number>
         </property>
        </widget>
       </item>
