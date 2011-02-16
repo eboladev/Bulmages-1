@@ -17,6 +17,8 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Lokalize 1.2\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"X-Language: fr_FR\n"
+"X-Source-Language: C\n"
 
 #: bfproveedoralbaransubform.cpp:57
 msgid "% Descuento"
@@ -28,7 +30,7 @@ msgstr "% T.V.A."
 
 #: bfproveedoralbaransubform.cpp:56
 msgid "% R.E."
-msgstr ""
+msgstr "% R.E."
 
 #: ui_bfconfiguracionbase.h:422 ui_bfseriefacturabase.h:85
 msgid "&Aceptar"
@@ -68,41 +70,51 @@ msgstr "&Quitter le programme"
 
 #: ui_bfaboutbase.h:309
 msgid ""
-"<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/"
-"REC-html40/strict.dtd\">\n"
-"<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css"
-"\">\n"
+"<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" "
+"\"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
+"<html><head><meta name=\"qrichtext\" content=\"1\" /><style "
+"type=\"text/css\">\n"
 "p, li { white-space: pre-wrap; }\n"
-"</style></head><body style=\" font-family:'Sans Serif'; font-size:9pt; font-"
-"weight:400; font-style:normal;\">\n"
+"</style></head><body style=\" font-family:'Sans Serif'; font-size:9pt; "
+"font-weight:400; font-style:normal;\">\n"
 "<p style=\"-qt-paragraph-type:empty; margin-top:12px; margin-bottom:12px; "
-"margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"></"
-"p></body></html>"
+"margin-left:0px; margin-right:0px; -qt-block-indent:0; "
+"text-indent:0px;\"></p></body></html>"
 msgstr ""
+"<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" "
+"\"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
+"<html><head><meta name=\"qrichtext\" content=\"1\" /><style "
+"type=\"text/css\">\n"
+"p, li { white-space: pre-wrap; }\n"
+"</style></head><body style=\" font-family:'Sans Serif'; font-size:9pt; "
+"font-weight:400; font-style:normal;\">\n"
+"<p style=\"-qt-paragraph-type:empty; margin-top:12px; margin-bottom:12px; "
+"margin-left:0px; margin-right:0px; -qt-block-indent:0; "
+"text-indent:0px;\"></p></body></html>"
 
 #: ui_bfaboutbase.h:303
 msgid ""
-"<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/"
-"REC-html40/strict.dtd\">\n"
-"<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css"
-"\">\n"
+"<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" "
+"\"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
+"<html><head><meta name=\"qrichtext\" content=\"1\" /><style "
+"type=\"text/css\">\n"
 "p, li { white-space: pre-wrap; }\n"
-"</style></head><body style=\" font-family:'Sans Serif'; font-size:9pt; font-"
-"weight:600; font-style:normal;\">\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-"
-"right:0px; -qt-block-indent:0; text-indent:0px;\">Facturacion GPL - Version "
-"0.12.0 -</p></body></html>"
+"</style></head><body style=\" font-family:'Sans Serif'; font-size:9pt; "
+"font-weight:600; font-style:normal;\">\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; "
+"margin-right:0px; -qt-block-indent:0; text-indent:0px;\">Facturacion GPL - "
+"Version 0.12.0 -</p></body></html>"
 msgstr ""
-"<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/"
-"REC-html40/strict.dtd\">\n"
-"<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css"
-"\">\n"
+"<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" "
+"\"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
+"<html><head><meta name=\"qrichtext\" content=\"1\" /><style "
+"type=\"text/css\">\n"
 "p, li { white-space: pre-wrap; }\n"
-"</style></head><body style=\" font-family:'Sans Serif'; font-size:9pt; font-"
-"weight:600; font-style:normal;\">\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-"
-"right:0px; -qt-block-indent:0; text-indent:0px;\">Facturation GPL - Version "
-"0.12.0 -</p></body></html>"
+"</style></head><body style=\" font-family:'Sans Serif'; font-size:9pt; "
+"font-weight:600; font-style:normal;\">\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; "
+"margin-right:0px; -qt-block-indent:0; text-indent:0px;\">Facturation GPL - "
+"Version 0.12.0 -</p></body></html>"
 
 #: ui_bfaboutbase.h:314
 msgid "A&utores"
@@ -142,12 +154,11 @@ msgstr "Assiette imposable"
 
 #: ui_bfconfiguracionbase.h:428
 msgid "C.P."
-msgstr ""
+msgstr "C.P."
 
 #: ui_bfconfiguracionbase.h:426
-#, fuzzy
 msgid "CIF"
-msgstr "C.I.F."
+msgstr "C.I.F"
 
 #: bfproveedoralbaransubform.cpp:52
 msgid "Cantidad"
@@ -179,11 +190,11 @@ msgstr "Configuration"
 
 #: ui_bfconfiguracionbase.h:437
 msgid "Configuracion Avanzada"
-msgstr ""
+msgstr "Configuration avancée"
 
 #: ui_bfconfiguracionbase.h:436
 msgid "Configuracion Basica"
-msgstr ""
+msgstr "Configuration basique"
 
 #: ui_bfbulmafactbase.h:182
 msgid "Ctrl+I"
@@ -214,9 +225,8 @@ msgid "E&mpresa"
 msgstr "E&ntreprise"
 
 #: ui_bfconfiguracionbase.h:434
-#, fuzzy
 msgid "E-Mail"
-msgstr "E-mail:"
+msgstr "Courriel"
 
 #: bfsubform.cpp:215
 msgid ""
@@ -237,7 +247,7 @@ msgstr "Erreur inattendu dans BulmaFact. Le programme se fermera."
 
 #: bfform.cpp:1044
 msgid "Error inesperado en la impresion"
-msgstr ""
+msgstr "Erreur d'impression inattendue"
 
 #: ui_bfbulmafactbase.h:176
 msgid "F1"
@@ -262,7 +272,7 @@ msgstr "Famille :"
 
 #: ui_bfconfiguracionbase.h:433
 msgid "Fax"
-msgstr ""
+msgstr "Fax"
 
 #: ui_bfbulmafactbase.h:210 ui_bfbulmafactbase.h:212 ui_bfbulmafactbase.h:215
 #: ui_bfbulmafactbase.h:218 ui_bfbulmafactbase.h:221 ui_bfbulmafactbase.h:224
@@ -342,8 +352,8 @@ msgstr "Listes"
 msgid "Maest&ro"
 msgstr "P&rincipal"
 
+# Commune
 #: ui_bfconfiguracionbase.h:429
-#, fuzzy
 msgid "Municipio"
 msgstr "Début"
 
@@ -377,7 +387,7 @@ msgstr "Payer"
 
 #: ui_bfconfiguracionbase.h:431
 msgid "Pais"
-msgstr ""
+msgstr "Pays"
 
 #: ui_bfbulmafactbase.h:185 ui_bfbulmafactbase.h:186
 msgid "Paises / Provincias"
@@ -445,9 +455,8 @@ msgid "Sopor&te"
 msgstr "Suppor&t"
 
 #: ui_bfconfiguracionbase.h:432
-#, fuzzy
 msgid "Telefono"
-msgstr "Téléphone:"
+msgstr "Téléphone :"
 
 #: main.cxx:181
 msgid "Terminado"
@@ -487,7 +496,7 @@ msgstr "Plein é&cran"
 
 #: ui_bfconfiguracionbase.h:435
 msgid "Web"
-msgstr ""
+msgstr "Web"
 
 #~ msgid "% Recargo E.Q."
 #~ msgstr "% Recharger E.Q."
@@ -513,7 +522,6 @@ msgstr ""
 #~ msgid "&Contratos"
 #~ msgstr "&Contracts"
 
-#, fuzzy
 #~ msgid "&Código:"
 #~ msgstr "Code:"
 
@@ -538,7 +546,6 @@ msgstr ""
 #~ msgid "&Si"
 #~ msgstr "&Oui"
 
-#, fuzzy
 #~ msgid "&Teléfono:"
 #~ msgstr "Téléphone:"
 
@@ -737,7 +744,6 @@ msgstr ""
 #~ msgid "Ctrl+S"
 #~ msgstr "Ctrl+S"
 
-#, fuzzy
 #~ msgid "Código &postal:"
 #~ msgstr "Code postal:"
 
@@ -747,7 +753,6 @@ msgstr ""
 #~ msgid "Datos bancarios:"
 #~ msgstr "Dates bancaires:"
 
-#, fuzzy
 #~ msgid "Datos de comercio &electrónico:"
 #~ msgstr "Donnés de commerce électronique:"
 
@@ -787,7 +792,6 @@ msgstr ""
 #~ msgid "Di&visiones"
 #~ msgstr "Di&visions"
 
-#, fuzzy
 #~ msgid "Di&visión:"
 #~ msgstr "Di&visions"
 
@@ -809,7 +813,6 @@ msgstr ""
 #~ msgid "Direccion:"
 #~ msgstr "Direction:"
 
-#, fuzzy
 #~ msgid "Direcció&n:"
 #~ msgstr "Direction:"
 
@@ -1077,7 +1080,6 @@ msgstr ""
 #~ msgid "Nombre:"
 #~ msgstr "Nom:"
 
-#, fuzzy
 #~ msgid "Nuestro código de c&liente:"
 #~ msgstr "Code de client:"
 
@@ -1138,7 +1140,6 @@ msgstr ""
 #~ msgid "Nº linea"
 #~ msgstr "Nº de ligne"
 
-#, fuzzy
 #~ msgid "Número de &fax:"
 #~ msgstr "Numéro de fax:"
 
@@ -1178,7 +1179,6 @@ msgstr ""
 #~ msgid "Poblacion:"
 #~ msgstr "Peuple:"
 
-#, fuzzy
 #~ msgid "Població&n:"
 #~ msgstr "Peuple:"
 
@@ -1212,7 +1212,6 @@ msgstr ""
 #~ msgid "Provincia:"
 #~ msgstr "Province:"
 
-#, fuzzy
 #~ msgid "Página &web:"
 #~ msgstr "Page web:"
 

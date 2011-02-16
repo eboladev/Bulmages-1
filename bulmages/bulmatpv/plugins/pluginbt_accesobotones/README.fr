@@ -1,19 +1,16 @@
 #######
 #Plugins
 #######
-#README.es
-#20080501 
+#README.fr
+#20110215
 
-Nombre: Acceso rápido
+Nombre: Acces rapide
 
 Biblioteca: libpluginbt_accesobotones.so
 
-Descripción: <H1>Acceso rápido</H1>
-<P>Con este plugin BulmaTPV adquiere la posibilidad de tener trabajando múltiples trabajadores.
-También permite la creación de múltiples tickets a la vez para cada uno de los trabajadores.
-Permitiendo el aparcado de los mismos (botón APARCAR) y recuperación de los mismos (botón RECUPERAR).
-Se permite la inserción del cliente introduciendo el codigo del cliente y pulsando sobre el botón CLIENTE.</P>
-<P>Para el correcto funcionamiento del teclado en pantalla es preciso instalar matchbox-keyboard</P>
+Descripción: <H1>Acces rapide</H1>
+<P>Avec ce greffon BulmaTPV on a la possibilité de travailler avec plusieurs employés. Il permet aussi la création de multiples tickets à la fois pour chacun des travailleurs. avec SAUVER (bouton SAUVER) et récupération de ces derniers (bouton RÉCUPÉRER). On permet l'insertion du client en introduisant le code du client et en poussant sur le bouton CLIENT.</P>
+<P>Pour le fonctionnement correct du clavier sur l'écran il est nécessaire d'installer matchbox-keyboard</P>
 <HR>
 
 ParmBD: 

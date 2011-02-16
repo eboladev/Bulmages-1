@@ -1,7 +1,7 @@
 =======
 Plugins
 =======
-#README
+#README.fr
 20110204
 
 Nombre: Comptes Comptables
@@ -24,7 +24,7 @@ Incompatibles:
 
 Reports: 
 
-Categorias: Comptabilité générales ; Experimental;
+Categorias: Comptabilite generales ; Experimental;
 
 Orden: 20
 

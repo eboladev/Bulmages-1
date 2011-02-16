@@ -1,7 +1,7 @@
 =======
 Plugins
 =======
-#README
+#README.fr
 20080502
 
 Nombre: Correcteur Comptable
@@ -24,7 +24,7 @@ Dependencias:
 
 Incompatibles:
 
-Categorias: Utilités génériques ; Experimental;
+Categorias: Utilites generiques ; Experimental;
 
 Orden: 80
 

@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
 "POT-Creation-Date: 2011-02-04 12:54+0100\n"
-"PO-Revision-Date: 2011-02-02 08:36+0100\n"
+"PO-Revision-Date: 2011-02-15 10:30+0100\n"
 "Last-Translator: aishen <aishen@free.fr>\n"
 "Language-Team: French <kde l10n>\n"
 "Language: frX-Generator: Lokalize 1.2\n"
@@ -30,7 +30,7 @@ msgstr "&Accepter"
 
 #: ui_bcplancontablelistbase.h:344
 msgid "&Anterior"
-msgstr ""
+msgstr "&Précédent"
 
 #: ui_bccuentabase.h:852
 msgid "&Cancelar"
@@ -74,7 +74,7 @@ msgstr "&Plan Comptable"
 
 #: ui_bcplancontablelistbase.h:346
 msgid "&Siguiente"
-msgstr ""
+msgstr "&Suivant"
 
 #: ui_bcplancontablelistbase.h:349 ui_bccuentalistbase.h:246
 msgid "1"
@@ -172,11 +172,11 @@ msgstr "Centre de finance par défaut"
 
 #: ui_bccuentabase.h:840
 msgid "C.I.F.:"
-msgstr "C.I.F.:"
+msgstr "C.I.F. :"
 
 #: ui_bccuentabase.h:843
 msgid "C.P.:"
-msgstr "C.P.:"
+msgstr "C.P. :"
 
 #: bccuentaview.cpp:57
 msgid "CIF de la cuenta"

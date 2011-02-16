@@ -1,7 +1,7 @@
 =======
 Plugins
 =======
-#README
+#README.fr
 20110203
 
 Nombre: Comptes annuels
@@ -25,7 +25,7 @@ Incompatibles:
 Reports: inf_ccaa-pgc1990.pys; inf_ccaa-pgc2007_asl.pys; inf_ccaa-pgc2007_pymes.pys; inf_ccaa-pgc2007_abrev.pys; inf_ccaa-pgc2007_fac.pys; inf_ccaa-pgc2007.pys
 
 
-Categorias: Comptabilité générale
+Categorias: Comptabilite generale
 
 Orden: 70
 
