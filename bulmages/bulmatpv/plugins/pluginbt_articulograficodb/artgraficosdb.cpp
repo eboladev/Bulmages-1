@@ -291,6 +291,12 @@ void ArtGraficosDb::renderPantallas ()
 			    painter.drawText ( cellwidth.toInt() *column + 5, cellwidth.toInt() *row + ( g_confpr->valor ( CONF_TPV_CELL_WIDTH ).toInt() - 5 ), nombre );
 			    
 			  } else {
+			    
+			    /// Pinta el fondo del recuadro.
+			    QPixmap fondoRecuadro = QPixmap( cellwidth.toInt(), cellwidth.toInt() );
+			    fondoRecuadro.fill(palette().color(QPalette::Window));			    
+			    painter.drawPixmap ( cellwidth.toInt() *column, cellwidth.toInt() *row, fondoRecuadro );
+			    
 			    /// Pinta un recuadro con el color establecido en la ficha del articulo o en su defecto con un color estandar.
 			    QPixmap recuadro = QPixmap( cellwidth.toInt() -1, cellwidth.toInt() - 20);
 			    
@@ -347,16 +353,39 @@ void ArtGraficosDb::renderPantallas ()
     blDebug ( "END ArtGraficosDb::muestraPantalla", 0 );
 }
 
+
 void ArtGraficosDb::ponPantallas()
 {
     blDebug ( "ArtGraficosDb::ponPantallas", 0 );
+    int contadorBotones = 0;
+    int columnasBotones;
+    int j;
+    int indice;
+    QList <QVBoxLayout *> listaVBoxLayout;
 
-    /// Creo el Widget que estara ubicado en el dockwidget que se ha creado en pluginbt_articulograficodb.cpp
-    QWidget *widget = new QWidget;
-    QVBoxLayout *hboxLayout1 = new QVBoxLayout;
+    
+    /// Establece el numero de columnas a mostrar. Minimo 1.
+    if ( g_confpr->valor ( CONF_TPV_CATEGORIES_COLUMNS ).toInt() > 1 ) {
+      columnasBotones = g_confpr->valor ( CONF_TPV_CATEGORIES_COLUMNS ).toInt();
+    } else {
+      columnasBotones = 1;
+    } // end if
+    
+    QHBoxLayout *hboxLayout1 = new QHBoxLayout;
     hboxLayout1->setSpacing ( 0 );
     hboxLayout1->setMargin ( 0 );
     hboxLayout1->setObjectName ( QString::fromUtf8 ( "hboxLayout1" ) );
+
+    /// Crea los QVBoxLayout necesarios para colocar los botones.
+    for (j = 0; j < columnasBotones; j++) {
+	QVBoxLayout *vlayout = new QVBoxLayout;
+	listaVBoxLayout.append ( vlayout );
+	hboxLayout1->addLayout ( vlayout );
+    } // end for
+    
+    
+    /// Creo el Widget que estara ubicado en el dockwidget que se ha creado en pluginbt_articulograficodb.cpp
+    QWidget *widget = new QWidget;
 
     BlDbRecordSet *familias;
     familias = mainCompany()->loadQuery ( "SELECT idfamilia, nombrefamilia, colortpvfamilia FROM familia WHERE visibletpvfamilia = TRUE ORDER BY ordentpvfamilia, nombrefamilia" );
@@ -366,7 +395,7 @@ void ArtGraficosDb::ponPantallas()
     FamiliaArticulos fa;
 
     while ( !familias->eof() ) {
-
+      
         QString titulo = familias->valor ( "nombrefamilia" );
         QPushButton *pb = new QPushButton ( titulo, g_pantallas );
 	
@@ -386,12 +415,15 @@ void ArtGraficosDb::ponPantallas()
 
         /// Hago la conexion del pulsado con el metodo pulsadoBoton para que se cambie la pantalla.
         connect ( pb, SIGNAL ( pressed() ), this, SLOT ( pulsadoBoton() ) );
-        hboxLayout1->addWidget ( pb );
+
+	/// Divide a partes iguales los botones entre las columnas.
+	indice = contadorBotones % columnasBotones;
+	listaVBoxLayout[indice]->addWidget ( pb );
 
         fa.m_nombrefamilia = familias->valor ( "nombrefamilia" );
         fa.m_idfamilia = familias->valor ( "idfamilia" );
 
-        // Llenamos la lista de articulos
+        /// Llenamos la lista de articulos
         BlDbRecordSet *articulos;
         articulos = mainCompany()->loadQuery ( "SELECT codigocompletoarticulo, nomarticulo, etiquetavisibletpvarticulo, abrevarticulo, colortpvarticulo FROM articulo WHERE visibletpvarticulo = TRUE AND idfamilia = " + fa.m_idfamilia + " ORDER BY ordentpvarticulo, nomarticulo" );
 
@@ -412,18 +444,30 @@ void ArtGraficosDb::ponPantallas()
             fa.m_listaarticulos.append ( na );
             articulos->nextRecord();
 
-        }
+        } // end while
 
         m_listfamilias.append ( fa );
         fa.m_listaarticulos.clear();
         familias->nextRecord();
         i++;
+	contadorBotones++;
 
         delete articulos;
 
     } // end while
 
+
     delete familias;
+
+    /// Rellena con botones vacios para que todas las columnas tengan el mismo numero de botones.
+    indice++;
+    while (indice < columnasBotones) {
+        QPushButton *pb = new QPushButton ();
+        pb->setMaximumHeight ( 200 );
+	pb->setEnabled(FALSE);
+	listaVBoxLayout[indice]->addWidget ( pb );
+	indice++;
+    } // end while
 
     /// Agrego el widget al BLDockWidget
     widget->setLayout ( hboxLayout1 );
@@ -432,6 +476,7 @@ void ArtGraficosDb::ponPantallas()
 
     blDebug ( "END ArtGraficosDb::ponPantallas", 0 );
 }
+
 
 void ArtGraficosDb::pulsadoBoton()
 {

@@ -437,6 +437,8 @@ QString BlConfiguration::nombre ( int i )
 	return "CONF_RESIZEROWSTOCONTENTS";
     if ( i == CONF_TPV_REIMPRIMIR )
 	return "CONF_TPV_REIMPRIMIR";
+    if ( i == CONF_TPV_CATEGORIES_COLUMNS )
+	return "CONF_TPV_CATEGORIES_COLUMNS";
     return "";
 }
 

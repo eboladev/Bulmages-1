@@ -51,6 +51,8 @@ CONF_ARTICULOS_VARIOS		ESPECIFICAR
 CONF_BACKGROUND_COLOR		#0D1164
 CONF_BACKGROUND_IMAGE		@CMAKE_INSTALL_PREFIX@/share/bulmages/images/bulmatpv-background.png
 
+CONF_TPV_CATEGORIES_COLUMNS	1
+
 # Hoja de estilo a utilizar
 CONF_STYLESHEET                 @CMAKE_INSTALL_PREFIX@/share/bulmages/css/bulmatpv.css
 
