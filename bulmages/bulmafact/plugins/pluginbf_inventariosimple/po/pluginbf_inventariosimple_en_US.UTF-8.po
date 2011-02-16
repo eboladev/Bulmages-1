@@ -1,0 +1,100 @@
+# Spanish translations for PACKAGE package
+# Traducciones al español para el paquete PACKAGE.
+# Copyright (C) 2009 THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# Automatically generated, 2009.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: info@iglues.org\n"
+"POT-Creation-Date: 2011-02-04 12:54+0100\n"
+"PO-Revision-Date: 2009-10-20 14:02+0200\n"
+"Last-Translator: Automatically generated\n"
+"Language-Team: none\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: ui_listinventariosimplebase.h:119
+msgid "&Aceptar"
+msgstr "&Aceptar"
+
+#: ui_listinventariosimplebase.h:120
+msgid "&Cancelar"
+msgstr "&Cancelar"
+
+#: pluginbf_inventariosimple.cpp:77
+msgid "&Inventari"
+msgstr ""
+
+#: pluginbf_inventariosimple.cpp:81
+msgid "&Inventarios"
+msgstr "&Inventarios"
+
+#: pluginbf_inventariosimple.cpp:125
+msgid "Articulo"
+msgstr "Artículo"
+
+#: pluginbf_inventariosimple.cpp:127
+msgid "Cantidad"
+msgstr "Cantidad"
+
+#: listinventariosimpleview.cpp:72
+msgid "Error al guardar el inventario"
+msgstr ""
+
+#: pluginbf_inventariosimple.cpp:126
+msgid "Fecha Prestamo"
+msgstr ""
+
+#: pluginbf_inventariosimple.cpp:123
+msgid "Id Actividad"
+msgstr "ID actividad"
+
+#: pluginbf_inventariosimple.cpp:210 pluginbf_inventariosimple.cpp:338
+#: listinventariosimpleview.cpp:98
+msgid "Id Inventario"
+msgstr ""
+
+#: pluginbf_inventariosimple.cpp:122
+msgid "Id prestamo"
+msgstr ""
+
+#: pluginbf_inventariosimple.cpp:124
+msgid "Id producto"
+msgstr ""
+
+#: ui_listinventariosimplebase.h:118
+msgid "Inventario Simple"
+msgstr ""
+
+#: listinventariosimpleview.cpp:49
+msgid "InventarioSimple"
+msgstr ""
+
+#: pluginbf_inventariosimple.cpp:82 pluginbf_inventariosimple.cpp:83
+msgid "Inventarios"
+msgstr "Inventarios"
+
+#: pluginbf_inventariosimple.cpp:211 pluginbf_inventariosimple.cpp:339
+#: listinventariosimpleview.cpp:99
+msgid "Nombre"
+msgstr "Nombre"
+
+#: pluginbf_inventariosimple.cpp:299 pluginbf_inventariosimple.cpp:314
+msgid "Seleccionar Material"
+msgstr ""
+
+#: pluginbf_inventariosimple.cpp:212 pluginbf_inventariosimple.cpp:340
+#: listinventariosimpleview.cpp:100
+msgid "Stock"
+msgstr "Stock"
+
+#~ msgid "&Articulos"
+#~ msgstr "&Artículos"
+
+#~ msgid "Error al guardar las cuotas"
+#~ msgstr "Error al guardar las cuotas"

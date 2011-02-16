@@ -9,6 +9,7 @@ ADD_DEFINITIONS(-D${plugin})
 configure_file( ${CMAKE_CURRENT_SOURCE_DIR}/css/${plugin}_es_ES.css.in ${CMAKE_BINARY_DIR}/bulmafact/plugins/${plugin}/${plugin}_es_ES.css @ONLY)
 configure_file( ${CMAKE_CURRENT_SOURCE_DIR}/css/${plugin}_ca_ES.css.in ${CMAKE_BINARY_DIR}/bulmafact/plugins/${plugin}/${plugin}_ca_ES.css @ONLY)
 configure_file( ${CMAKE_CURRENT_SOURCE_DIR}/css/${plugin}_en_EN.css.in ${CMAKE_BINARY_DIR}/bulmafact/plugins/${plugin}/${plugin}_en_EN.css @ONLY)
+configure_file( ${CMAKE_CURRENT_SOURCE_DIR}/css/${plugin}_fr_FR.css.in ${CMAKE_BINARY_DIR}/bulmafact/plugins/${plugin}/${plugin}_fr_FR.css @ONLY)
 
 
 
@@ -71,7 +72,7 @@ if(USE_GETTEXT)
    GETTEXT_CREATE_TEMPLATE(${plugin} ${CMAKE_CURRENT_BINARY_DIR}
                                 ${CMAKE_CURRENT_SOURCE_DIR} plugin_i18n)
    GETTEXT_CREATE_TRANSLATIONS(${CMAKE_CURRENT_BINARY_DIR}/${plugin}.pot
-                                ALL LANGUAGES es_ES.UTF-8 ca_ES.UTF-8 fr_FR.UTF-8)
+                                ALL LANGUAGES es_ES.UTF-8 ca_ES.UTF-8 en_US.UTF-8 fr_FR.UTF-8)
 endif(USE_GETTEXT)
 
 # build sources, moc'd sources, and rcc'd sources
@@ -98,13 +99,9 @@ configure_file( ${CMAKE_CURRENT_SOURCE_DIR}/README.ca ${CMAKE_CURRENT_BINARY_DIR
 install (FILES ${CMAKE_CURRENT_BINARY_DIR}/README.ca DESTINATION share/bulmages/bulmafact-plugins/ RENAME README.ca.${plugin})
 
 configure_file( ${CMAKE_CURRENT_SOURCE_DIR}/README.fr ${CMAKE_CURRENT_BINARY_DIR}/README.fr @ONLY)
-
 install (FILES ${CMAKE_CURRENT_BINARY_DIR}/README.fr DESTINATION share/bulmages/bulmafact-plugins/ RENAME README.fr.${plugin})
 
-
-
 configure_file( ${CMAKE_CURRENT_SOURCE_DIR}/README.en ${CMAKE_CURRENT_BINARY_DIR}/README.en @ONLY)
-
 install (FILES ${CMAKE_CURRENT_BINARY_DIR}/README.en DESTINATION share/bulmages/bulmafact-plugins/ RENAME README.en.${plugin})
 
 

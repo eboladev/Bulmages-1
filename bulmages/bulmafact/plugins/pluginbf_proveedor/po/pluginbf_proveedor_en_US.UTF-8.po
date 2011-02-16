@@ -1,0 +1,469 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: info@iglues.org\n"
+"POT-Creation-Date: 2011-02-04 12:54+0100\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"#-#-#-#-#  bulmalib.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginsubformsxc.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginsubformods.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginclipboardbf.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginimpers.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginimpersods.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginimpersmail.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginimportcsv.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  plugininformes.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  plugininformesods.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginbloqueos.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginsubformprint.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginarchivos.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  plugindocked.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  bulmacont.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginregistroiva.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  plugincorrector.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginbc_example.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  plugindebugbc.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginbalancetree.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  plugincanualesods.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginbalance.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginresumcta.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginproyectos.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginbalanceold.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  bulmafact.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginbf_example.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  plugintarifas.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginbf_comercial.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginbf_cliente.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginbf_proveedor.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  plugintrazabilidad.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginbarcodeopen.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  plugincatalogo.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  plugininformeclientes.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  plugininventario.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  plugincontratos.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginticket.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  plugin_tc_articulos.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginpromedios.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginimpresionesmultiples.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginq19.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginmail.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginmailthunderbird.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginalmacen.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  plugintipostrabajo.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  plugincuadrante.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginasterisk.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  plugintpv.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  plugindebugbf.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginpreciocoste.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginresarticulos.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginalias.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginivainc.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  plugininformeclientessxc.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginetiquetado.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginetiquetas.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  plugincompraventa.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginclientprov.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginopenref.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  plugincorrectorbf.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginfacturar.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginpagos.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  plugincobros.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginpresupuesto.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginpedido.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginalbaran.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginfactura.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginfacturaprov.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginalbaranprov.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginpedidoprov.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginz2z.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginprofesor.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginalumno.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  plugintutor.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginactividad.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  bulmages.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  bulmatpv.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginticketbasico.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  plugintecladonumerico.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  plugintotal.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  plugintotalivainc.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginadmin.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  plugincobrar.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginartsubform.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  plugintpvivainc.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginaliastpv.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  plugintcaliastpv.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginticketdesglose.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginbuscaarticulo.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginbuscacliente.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  plugincambio.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  plugincambioivainc.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  plugindevolucion.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  plugindevolucion2.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginticketsdevueltos.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginabrevs.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  bulmages_suite.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+
+#: ui_proveditbase.h:846
+msgid "&Aceptar"
+msgstr "&Aceptar"
+
+#: ui_proveditbase.h:866
+msgid "&Aplicar Recargo de Equivalencia."
+msgstr "&Aplicar Recargo de Equivalencia."
+
+#: ui_proveditbase.h:847
+msgid "&Cancelar"
+msgstr "&Cancelar"
+
+#: ui_proveditbase.h:848
+msgid "&Codigo:"
+msgstr "&Codigo:"
+
+#: ui_proveditbase.h:867
+msgid "&Comentarios:"
+msgstr "&Comentarios:"
+
+#: ui_proveditbase.h:894
+msgid "&Contratos"
+msgstr "&Contratos"
+
+#: ui_proveditbase.h:869
+msgid "&Datos generales"
+msgstr "&Datos generales"
+
+#: ui_proveditbase.h:862
+msgid "&IRPF que aplica:"
+msgstr "&IRPF que aplica:"
+
+#: ui_proveditbase.h:850
+msgid "&Nombre empresa:"
+msgstr "&Nombre empresa:"
+
+#: pluginbf_proveedor.cpp:104
+msgid "&Nuevo proveedor"
+msgstr "&Nuevo proveedor"
+
+#: pluginbf_proveedor.cpp:96
+msgid "&Proveedores"
+msgstr "&Proveedores"
+
+#: ui_proveditbase.h:858
+msgid "&Telefono:"
+msgstr "&Telefono:"
+
+#: ui_providerslistbase.h:312 ui_providerslistbase.h:315
+msgid "Actualizar listado"
+msgstr "Actualizar listado"
+
+#: provedit.cpp:50
+msgid "Banco proveedor"
+msgstr "Banco proveedor"
+
+#: ui_providerslistbase.h:284 ui_providerslistbase.h:287
+msgid "Borrar"
+msgstr "Borrar"
+
+#: ui_proveditbase.h:905 ui_proveditbase.h:908
+msgid "Borrar proveedor"
+msgstr "Borrar proveedor"
+
+#: ui_providerslistbase.h:332
+msgid "Buscar:"
+msgstr "Buscar:"
+
+#: ui_proveditbase.h:851
+msgid "C.I.&F. / N.I.F."
+msgstr "C.I.&F. / N.I.F."
+
+#: providerslist.cpp:336
+msgid "C.I.F."
+msgstr "C.I.F."
+
+#: provedit.cpp:48
+msgid "C.I.F. del proveedor"
+msgstr "C.I.F. del proveedor"
+
+#: providerslist.cpp:349
+msgid "Clave de acceso a la web del proveedor"
+msgstr "Clave de acceso a la web del proveedor"
+
+#: providerslist.cpp:335 providerslist.cpp:339 provedit.cpp:61
+msgid "Codigo"
+msgstr "Codigo"
+
+#: ui_proveditbase.h:855
+msgid "Codigo &postal:"
+msgstr "Codigo &postal:"
+
+#: provedit.cpp:49
+msgid "Codigo cliente"
+msgstr "Codigo cliente"
+
+#: providerslist.cpp:344 provedit.cpp:54
+msgid "Codigo postal"
+msgstr "Codigo postal"
+
+#: providerslist.cpp:341 provedit.cpp:59
+msgid "Comentarios"
+msgstr "Comentarios"
+
+#: ui_providerslistbase.h:305 ui_providerslistbase.h:308
+msgid "Configurar listado"
+msgstr "Configurar listado"
+
+#: ui_proveditbase.h:903
+msgid "Ctrl+S"
+msgstr "Ctrl+S"
+
+#: ui_proveditbase.h:864
+msgid "Datos &bancarios:"
+msgstr "Datos &bancarios:"
+
+#: ui_proveditbase.h:868
+msgid "Datos de comercio &electronico:"
+msgstr "Datos de comercio &electronico:"
+
+#: provedit.cpp:60
+msgid "Datos de comercio electronico"
+msgstr "Datos de comercio electrónico"
+
+#: ui_proveditbase.h:853
+msgid "Di&vision:"
+msgstr "Di&vision:"
+
+#: ui_proveditbase.h:875
+msgid "Di&visiones"
+msgstr "Di&visiones"
+
+#: ui_proveditbase.h:854
+msgid "Direccio&n:"
+msgstr "Direccio&n:"
+
+#: providerslist.cpp:342 provedit.cpp:51
+msgid "Direccion"
+msgstr "Direccion"
+
+#: providerslist.cpp:348
+msgid "Direccion de URL"
+msgstr "Direccion de URL"
+
+#: providerslist.cpp:347
+msgid "Direccion de correo electronico"
+msgstr "Direccion de correo electronico"
+
+#: provedit.cpp:57
+msgid "Direccion electronica"
+msgstr "Direccion electronica"
+
+#: ui_proveditbase.h:861
+msgid "E-&mail:"
+msgstr "E-&mail:"
+
+#: ui_providerslistbase.h:277 ui_providerslistbase.h:280
+msgid "Editar"
+msgstr "Editar"
+
+#: provedit.cpp:157
+msgid "El CIF del proveedor no parece ser valido. Digito:"
+msgstr ""
+
+#: providerslist.cpp:284
+msgid "Elija el archivo"
+msgstr "Elija el archivo"
+
+#: providerslist.cpp:243
+msgid "Error al borrar el proveedor"
+msgstr "Error al borrar el proveedor"
+
+#: provedit.cpp:105
+msgid "Error al crear el proveedor"
+msgstr "Error al crear el proveedor"
+
+#: ui_providerslistbase.h:319 ui_providerslistbase.h:322
+#: ui_providerslistbase.h:331
+msgid "Exportar"
+msgstr "Exportar"
+
+#: ui_providerslistbase.h:298 ui_providerslistbase.h:301
+msgid "Filtrar listado"
+msgstr "Filtrar listado"
+
+#: ui_proveditbase.h:863
+msgid "Forma de pago:"
+msgstr "Forma de pago:"
+
+#: provedit.cpp:63
+msgid "Forma_Pago"
+msgstr "Forma_Pago"
+
+#: ui_proveditbase.h:897 ui_proveditbase.h:900
+msgid "Guardar proveedor"
+msgstr "Guardar proveedor"
+
+#: providerslist.cpp:334 provedit.cpp:45
+msgid "ID proveedor"
+msgstr "ID proveedor"
+
+#: provedit.cpp:65
+msgid "IRPF"
+msgstr "IRPF"
+
+#: ui_providerslistbase.h:326 ui_providerslistbase.h:329
+msgid "Importar"
+msgstr "Importar"
+
+#: ui_providerslistbase.h:291 ui_providerslistbase.h:294
+msgid "Imprimir listado"
+msgstr "Imprimir listado"
+
+#: providerslist.cpp:255
+msgid "Listado de Proveedores"
+msgstr "Listado de Proveedores"
+
+#: providerslist.cpp:337
+msgid "Nombre"
+msgstr "Nombre"
+
+#: providerslist.cpp:338
+msgid "Nombre alternativo"
+msgstr "Nombre alternativo"
+
+#: provedit.cpp:47
+msgid "Nombre alternativo del proveedor"
+msgstr "Nombre alternativo del proveedor"
+
+#: ui_proveditbase.h:852
+msgid "Nombre comercia&l:"
+msgstr "Nombre comercia&l:"
+
+#: provedit.cpp:46
+msgid "Nombre del proveedor"
+msgstr "Nombre del proveedor"
+
+#: ui_proveditbase.h:849
+msgid "Nuestro codigo de c&liente:"
+msgstr "Nuestro codigo de c&liente:"
+
+#: ui_providerslistbase.h:270 ui_providerslistbase.h:273
+msgid "Nuevo"
+msgstr "Nuevo"
+
+#: providerslist.cpp:190 pluginbf_proveedor.cpp:106 pluginbf_proveedor.cpp:107
+msgid "Nuevo proveedor"
+msgstr "Nuevo proveedor"
+
+#: ui_proveditbase.h:860
+msgid "Numero de &fax:"
+msgstr "Numero de &fax:"
+
+#: providerslist.cpp:340
+msgid "Numero de cuenta corriente"
+msgstr "Numero de cuenta corriente"
+
+#: providerslist.cpp:346 provedit.cpp:56
+msgid "Numero de fax"
+msgstr "Numero de fax"
+
+#: providerslist.cpp:345 provedit.cpp:55
+msgid "Numero de telefono"
+msgstr "Numero de telefono"
+
+#: ui_proveditbase.h:859
+msgid "Pagina &web:"
+msgstr "Pagina &web:"
+
+#: ui_proveditbase.h:856
+msgid "Poblacio&n:"
+msgstr "Poblacio&n:"
+
+#: providerslist.cpp:343 provedit.cpp:52
+msgid "Poblacion"
+msgstr "Poblacion"
+
+#: ui_providerslistbase.h:333
+msgid "Procesa&dos"
+msgstr "Procesa&dos"
+
+#: ui_proveditbase.h:880
+msgid "Productos &suministrados"
+msgstr "Productos &suministrados"
+
+#: provedit.cpp:42 ui_proveditbase.h:845
+msgid "Proveedor"
+msgstr "Proveedor"
+
+#: pluginbf_proveedor.cpp:98 pluginbf_proveedor.cpp:99
+#: ui_providerslistbase.h:267
+msgid "Proveedores"
+msgstr "Proveedores"
+
+#: providerslist.cpp:268 providerslist.cpp:286
+msgid "Proveedores (*.xml)"
+msgstr "Proveedores (*.xml)"
+
+#: provedit.cpp:53
+msgid "Provincia"
+msgstr "Provincia"
+
+#: ui_proveditbase.h:857
+msgid "Provincia:"
+msgstr "Provincia:"
+
+#: provedit.cpp:64
+msgid "Recargo de Equivalencia"
+msgstr "Recargo de Equivalencia"
+
+#: ui_proveditbase.h:865
+msgid "Regimen &fiscal:"
+msgstr "Regimen &fiscal:"
+
+#: provedit.cpp:62
+msgid "Regimen Fiscal"
+msgstr "Regimen Fiscal"
+
+#: ui_proveditbase.h:893
+msgid "Resumen por articulos"
+msgstr "Resumen por articulos"
+
+#: providerslist.cpp:266
+msgid "Seleccione el archivo"
+msgstr "Seleccione el archivo"
+
+#: providerslist.cpp:63
+msgid "Selector de proveedores"
+msgstr "Selector de proveedores"
+
+#: ui_proveditbase.h:891
+msgid "Todos"
+msgstr "Todos"
+
+#: provedit.cpp:58
+msgid "URL"
+msgstr "URL"
+
+#: ui_proveditbase.h:890
+msgid "Vencidos"
+msgstr "Vencidos"
+
+#: ui_proveditbase.h:886
+msgid "Ver"
+msgstr "Ver"
+
+#: ui_proveditbase.h:889
+msgid "Vigentes"
+msgstr "Vigentes"
+
+#~ msgid "&Nuevo Proveedor"
+#~ msgstr "&Nuevo Proveedor"

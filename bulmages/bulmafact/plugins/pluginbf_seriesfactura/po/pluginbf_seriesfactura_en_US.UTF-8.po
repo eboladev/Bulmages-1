@@ -1,0 +1,47 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: info@iglues.org\n"
+"POT-Creation-Date: 2011-02-14 14:33+0100\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: listseriefacturaview.cpp:48
+msgid "Serie de Factura"
+msgstr ""
+
+#: listseriefacturaview.cpp:81
+msgid "Codigo serie factura"
+msgstr ""
+
+#: listseriefacturaview.cpp:82
+msgid "Descripcion serie factura"
+msgstr ""
+
+#: pluginbf_seriesfactura.cpp:81
+msgid "&Series de factura"
+msgstr ""
+
+#: pluginbf_seriesfactura.cpp:83 pluginbf_seriesfactura.cpp:84
+#: ui_listseriefacturabase.h:84
+msgid "Series de factura"
+msgstr ""
+
+#: ui_listseriefacturabase.h:85
+msgid "&Cancelar"
+msgstr ""
+
+#: ui_listseriefacturabase.h:86
+msgid "&Aceptar"
+msgstr ""
