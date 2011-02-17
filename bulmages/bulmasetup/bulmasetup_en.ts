@@ -70,17 +70,38 @@ p, li { white-space: pre-wrap; }
 p, li { white-space: pre-wrap; }
 &lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;Sans Serif&apos;; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;
 &lt;p style=&quot;-qt-paragraph-type:empty; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+p, li { white-space: pre-wrap; }
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;Sans Serif&apos;; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <location filename="about.py" line="19"/>
-        <source>&lt;center&gt;&lt;h2&gt;Autores de BulmaSetup&lt;/h2&gt;&lt;p&gt;&lt;p&gt;Programaci&amp;oacute;n:&lt;br/&gt; &lt;b&gt;Tomeu Borr&amp;aacute;s.&lt;/b&gt;&amp;nbsp;&lt;a href=&quot;mailto:tborras@conetxia.com&quot;&gt;tborras@conetxia.com&lt;/a&gt;&lt;br/&gt;&lt;b&gt;Toni &amp;Aacute;lvarez. &lt;/b&gt;&amp;nbsp;&lt;a href=&quot;mailto:t.alvarezpascual@gmail.com&quot;&gt;t.alvarezpascual@gmail.com&lt;/a&gt;&lt;br/&gt;&lt;b&gt;Arturo Mart&amp;iacute;n. &lt;/b&gt;&amp;nbsp;&lt;a href=&quot;mailto:amartin@conetxia.com&quot;&gt;amartin@conetxia.com&lt;/a&gt;&lt;br/&gt;&lt;p&gt;Dise&amp;ntilde;o Gr&amp;aacute;fico:&lt;br/&gt; &lt;b&gt;Ra&amp;uacute;l Mart&amp;iacute;nez.&lt;/b&gt;&amp;nbsp;&lt;a href=&quot;mailto:elferrer@gmail.com&quot;&gt;elferrer@gmail.com&lt;/a&gt;&lt;br/&gt;&lt;p&gt;&lt;p&gt;Traducciones:&lt;br/&gt; &lt;b&gt;Henri Girard.&lt;/b&gt;&amp;nbsp;&lt;a href=&quot;mailto:henrigirard@free.fr&quot;&gt;henrigirard@free.fr&lt;/a&gt;&lt;br/&gt;&lt;b&gt;Walter Garcia-Fontes.&lt;/b&gt;&amp;nbsp;&lt;a href=&quot;mailto:walter.garcia@upf.edu&quot;&gt;walter.garcia@upf.edu&lt;/a&gt;&lt;br/&gt;&lt;p&gt;Depuraci&amp;oacute;n y Pruebas:&lt;br/&gt; &lt;b&gt;Qu Zhioxiong.&lt;/b&gt;&amp;nbsp;&lt;a href=&quot;mailto:santlong@gmail.com&quot;&gt;santlong@gmail.com&lt;/a&gt;&lt;br/&gt;&lt;/p&gt;&lt;/center&gt;</source>
-        <translation type="unfinished"></translation>
+        <source>&lt;center&gt;&lt;h2&gt;Autores de
+        BulmaSetup&lt;/h2&gt;&lt;p&gt;&lt;p&gt;Programaci&amp;oacute;n:&lt;br/&gt;
+        &lt;b&gt;Tomeu Borr&amp;aacute;s.&lt;/b&gt;&amp;nbsp;&lt;a
+        href=&quot;mailto:tborras@conetxia.com&quot;&gt;tborras@conetxia.com&lt;/a&gt;&lt;br/&gt;&lt;b&gt;Toni
+        &amp;Aacute;lvarez. &lt;/b&gt;&amp;nbsp;&lt;a
+        href=&quot;mailto:t.alvarezpascual@gmail.com&quot;&gt;t.alvarezpascual@gmail.com&lt;/a&gt;&lt;br/&gt;&lt;b&gt;Arturo
+        Mart&amp;iacute;n. &lt;/b&gt;&amp;nbsp;&lt;a
+        href=&quot;mailto:amartin@conetxia.com&quot;&gt;amartin@conetxia.com&lt;/a&gt;&lt;br/&gt;&lt;p&gt;Dise&amp;ntilde;o
+        Gr&amp;aacute;fico:&lt;br/&gt; &lt;b&gt;Ra&amp;uacute;l
+        Mart&amp;iacute;nez.&lt;/b&gt;&amp;nbsp;&lt;a
+        href=&quot;mailto:elferrer@gmail.com&quot;&gt;elferrer@gmail.com&lt;/a&gt;&lt;br/&gt;&lt;p&gt;&lt;p&gt;Traducciones:&lt;br/&gt;
+        &lt;b&gt;Henri Girard.&lt;/b&gt;&amp;nbsp;&lt;a
+        href=&quot;mailto:henrigirard@free.fr&quot;&gt;henrigirard@free.fr&lt;/a&gt;&lt;br/&gt;&lt;b&gt;Walter
+        Garcia-Fontes.&lt;/b&gt;&amp;nbsp;&lt;a
+        href=&quot;mailto:walter.garcia@upf.edu&quot;&gt;walter.garcia@upf.edu&lt;/a&gt;&lt;br/&gt;&lt;p&gt;Depuraci&amp;oacute;n
+        y Pruebas:&lt;br/&gt; &lt;b&gt;Qu
+        Zhioxiong.&lt;/b&gt;&amp;nbsp;&lt;a
+        href=&quot;mailto:santlong@gmail.com&quot;&gt;santlong@gmail.com&lt;/a&gt;&lt;br/&gt;&lt;/p&gt;&lt;/center&gt;</source>
+        <translation>&lt;center&gt;&lt;h2&gt;Authors of BulmaSetup&lt;/h2&gt;&lt;p&gt;&lt;p&gt;Programamingn:&lt;br/&gt; &lt;b&gt;Tomeu Borr&amp;aacute;s.&lt;/b&gt;&amp;nbsp;&lt;a href=&quot;mailto:tborras@conetxia.com&quot;&gt;tborras@conetxia.com&lt;/a&gt;&lt;br/&gt;&lt;b&gt;Toni &amp;Aacute;lvarez. &lt;/b&gt;&amp;nbsp;&lt;a href=&quot;mailto:t.alvarezpascual@gmail.com&quot;&gt;t.alvarezpascual@gmail.com&lt;/a&gt;&lt;br/&gt;&lt;b&gt;Arturo Mart&amp;iacute;n. &lt;/b&gt;&amp;nbsp;&lt;a href=&quot;mailto:amartin@conetxia.com&quot;&gt;amartin@conetxia.com&lt;/a&gt;&lt;br/&gt;&lt;p&gt;Design Gr&amp;aacute;fico:&lt;br/&gt; &lt;b&gt;Ra&amp;uacute;l Mart&amp;iacute;nez.&lt;/b&gt;&amp;nbsp;&lt;a href=&quot;mailto:elferrer@gmail.com&quot;&gt;elferrer@gmail.com&lt;/a&gt;&lt;br/&gt;&lt;p&gt;&lt;p&gt;Tranlationss:&lt;br/&gt; &lt;b&gt;Henri Girard.&lt;/b&gt;&amp;nbsp;&lt;a href=&quot;mailto:henrigirard@free.fr&quot;&gt;henrigirard@free.fr&lt;/a&gt;&lt;br/&gt;&lt;b&gt;Walter Garcia-Fontes.&lt;/b&gt;&amp;nbsp;&lt;a href=&quot;mailto:walter.garcia@upf.edu&quot;&gt;walter.garcia@upf.edu&lt;/a&gt;&lt;br/&gt;&lt;p&gt;Debuggins and testing:&lt;br/&gt; &lt;b&gt;Qu Zhioxiong.&lt;/b&gt;&amp;nbsp;&lt;a href=&quot;mailto:santlong@gmail.com&quot;&gt;santlong@gmail.com&lt;/a&gt;&lt;br/&gt;&lt;/p&gt;&lt;/center&gt;</translation>
     </message>
     <message>
         <location filename="about.py" line="39"/>
         <source>&lt;center&gt;&lt;p&gt;&lt;p&gt;&lt;h2&gt;Entidades que dan soporte al programa:&lt;/h2&gt;&lt;/p&gt;&lt;b&gt;Conetxia:&lt;/b&gt; &lt;a href=&quot;http://www.conetxia.com&quot;&gt;http://www.conetxia.com&lt;/a&gt;&lt;br /&gt;&lt;b&gt;Todo-Redes:&lt;/b&gt; &lt;a href=&quot;http://www.todo-redes.com&quot;&gt;http://www.todo-redes.com&lt;/a&gt;&lt;/p&gt;&lt;/center&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;center&gt;&lt;p&gt;&lt;p&gt;&lt;h2&gt;Sponsors of the program :&lt;/h2&gt;&lt;/p&gt;&lt;b&gt;Conetxia:&lt;/b&gt; &lt;a href=&quot;http://www.conetxia.com&quot;&gt;http://www.conetxia.com&lt;/a&gt;&lt;br /&gt;&lt;b&gt;Todo-Redes:&lt;/b&gt; &lt;a href=&quot;http://www.todo-redes.com&quot;&gt;http://www.todo-redes.com&lt;/a&gt;&lt;/p&gt;&lt;/center&gt;</translation>
     </message>
 </context>
 <context>
@@ -88,77 +109,77 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="contabilidad.py" line="65"/>
         <source>--Todas las Categorias--</source>
-        <translation type="unfinished"></translation>
+        <translation>-- All the categories</translation>
     </message>
     <message>
         <location filename="contabilidad.py" line="265"/>
         <source>&lt;br&gt;&lt;b&gt;Categorias:&lt;/b&gt; </source>
-        <translation type="unfinished"></translation>
+        <translation>Categories</translation>
     </message>
     <message>
         <location filename="contabilidad.py" line="265"/>
         <source>&lt;br&gt;&lt;br&gt;&lt;b&gt;Dependencias:&lt;/b&gt; </source>
-        <translation type="unfinished"></translation>
+        <translation>Dependencies</translation>
     </message>
     <message>
         <location filename="contabilidad.py" line="265"/>
         <source>&lt;br&gt;&lt;br&gt;&lt;b&gt;Incompatibilidades:&lt;/b&gt; </source>
-        <translation type="unfinished"></translation>
+        <translation>Incompatibilities</translation>
     </message>
     <message>
         <location filename="contabilidad.py" line="265"/>
         <source>&lt;br&gt;&lt;br&gt;&lt;b&gt;Parches SQL:&lt;/b&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>SQL Patches</translation>
     </message>
     <message>
         <location filename="contabilidad.py" line="265"/>
         <source>&lt;br&gt;&lt;b&gt;Informes:&lt;/b&gt;&lt;br&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>Reports</translation>
     </message>
     <message>
         <location filename="contabilidad.py" line="296"/>
         <source>El plugin &lt;b&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>The plugin &lt;b&gt;</translation>
     </message>
     <message>
         <location filename="contabilidad.py" line="280"/>
         <source>&lt;/b&gt; tiene incompatibilidades. Quieres desinstalarlas?</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;/b&gt; has incompatibilities. Do you want to remove them?</translation>
     </message>
     <message>
         <location filename="contabilidad.py" line="297"/>
         <source>Atencion!</source>
-        <translation type="unfinished"></translation>
+        <translation>Warning!</translation>
     </message>
     <message>
         <location filename="contabilidad.py" line="296"/>
         <source>&lt;/b&gt; tiene dependencias. Quieres instalarlas?</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt; /b&gt; has dependencies. Do you want to install them?</translation>
     </message>
     <message>
         <location filename="contabilidad.py" line="309"/>
         <source>Generando plantillas RML y PYS</source>
-        <translation type="unfinished"></translation>
+        <translation>Generating RML and PYS templates</translation>
     </message>
     <message>
         <location filename="contabilidad.py" line="339"/>
         <source>Generamos backup de las plantillas de impresion en </source>
-        <translation type="unfinished"></translation>
+        <translation>We create a backup fo the printing templates at </translation>
     </message>
     <message>
         <location filename="contabilidad.py" line="644"/>
         <source>Tratando </source>
-        <translation type="unfinished"></translation>
+        <translation>Treating </translation>
     </message>
     <message>
         <location filename="contabilidad.py" line="594"/>
         <source>ESCRIBIENDO CONFIGURACION</source>
-        <translation type="unfinished"></translation>
+        <translation>WRITING THE CONFIGURATION</translation>
     </message>
     <message>
         <location filename="contabilidad.py" line="595"/>
         <source>Escribiendo configuracion en </source>
-        <translation type="unfinished"></translation>
+        <translation>Writing configuation in </translation>
     </message>
 </context>
 <context>
@@ -199,7 +220,7 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="" line="7471221"/>
         <source>Doble clic en la Empresa que deseas eliminar</source>
-        <translation type="obsolete">Double click on the firm that you want to delete</translation>
+        <translation>Double click on the firm that you want to delete</translation>
     </message>
     <message>
         <location filename="eliminarempresabase.py" line="80"/>
@@ -264,7 +285,7 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="listempresas.py" line="74"/>
         <source>Desea actualizar todas las empresas. Esta operacion puede tardar un ratito largo</source>
-        <translation type="unfinished"></translation>
+        <translation>Do you want to update all firms? This operation may take a little while</translation>
     </message>
 </context>
 <context>
@@ -272,97 +293,97 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="facturacion.py" line="105"/>
         <source>--Todas las Categorias--</source>
-        <translation type="unfinished"></translation>
+        <translation>-- All the categories</translation>
     </message>
     <message>
         <location filename="facturacion.py" line="115"/>
         <source>Generando plantillas RML y PYS</source>
-        <translation type="unfinished"></translation>
+        <translation>Generating RML and PYS templates</translation>
     </message>
     <message>
         <location filename="facturacion.py" line="147"/>
         <source>Generamos backup de las plantillas de impresion en </source>
-        <translation type="unfinished"></translation>
+        <translation>We generate a backup of the printing templates at </translation>
     </message>
     <message>
         <location filename="facturacion.py" line="886"/>
         <source>Tratando </source>
-        <translation type="unfinished"></translation>
+        <translation>Treeating </translation>
     </message>
     <message>
         <location filename="facturacion.py" line="436"/>
         <source>ESCRIBIENDO CONFIGURACION</source>
-        <translation type="unfinished"></translation>
+        <translation>WRITING THE CONFIGURATION</translation>
     </message>
     <message>
         <location filename="facturacion.py" line="437"/>
         <source>Escribiendo configuracion en </source>
-        <translation type="unfinished"></translation>
+        <translation>Writing configuration in </translation>
     </message>
     <message>
         <location filename="facturacion.py" line="575"/>
         <source>Hay que actualizar </source>
-        <translation type="unfinished"></translation>
+        <translation>Update has to be done </translation>
     </message>
     <message>
         <location filename="facturacion.py" line="753"/>
         <source>&lt;br&gt;&lt;b&gt;Categorias:&lt;/b&gt; </source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;br&gt;&lt;b&gt;Categories:&lt;/b&gt; </translation>
     </message>
     <message>
         <location filename="facturacion.py" line="753"/>
         <source>&lt;br&gt;&lt;br&gt;&lt;b&gt;Dependencias:&lt;/b&gt; </source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;br&gt;&lt;br&gt;&lt;b&gt;Dependencies:&lt;/b&gt; </translation>
     </message>
     <message>
         <location filename="facturacion.py" line="753"/>
         <source>&lt;br&gt;&lt;br&gt;&lt;b&gt;Incompatibilidades:&lt;/b&gt; </source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;br&gt;&lt;br&gt;&lt;b&gt;Incompatibilities:&lt;/b&gt; </translation>
     </message>
     <message>
         <location filename="facturacion.py" line="753"/>
         <source>&lt;br&gt;&lt;br&gt;&lt;b&gt;Parches SQL:&lt;/b&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;br&gt;&lt;br&gt;&lt;b&gt;SQL patches:&lt;/b&gt;</translation>
     </message>
     <message>
         <location filename="facturacion.py" line="753"/>
         <source>&lt;br&gt;&lt;b&gt;Informes:&lt;/b&gt;&lt;br&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;br&gt;&lt;b&gt;Reports:&lt;/b&gt;&lt;b&gt;</translation>
     </message>
     <message>
         <location filename="facturacion.py" line="785"/>
         <source>El plugin &lt;b&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>The plugin &lt;b&gt;</translation>
     </message>
     <message>
         <location filename="facturacion.py" line="769"/>
         <source>&lt;/b&gt; tiene incompatibilidades. Quieres desinstalarlas?</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;/b&gt; has incompatibilities. Do you want to remove them?</translation>
     </message>
     <message>
         <location filename="facturacion.py" line="786"/>
         <source>Atencion!</source>
-        <translation type="unfinished"></translation>
+        <translation>Warning!</translation>
     </message>
     <message>
         <location filename="facturacion.py" line="785"/>
         <source>&lt;/b&gt; tiene dependencias. Quieres instalarlas?</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;/b&gt; has dependencies. Do you want to install them?</translation>
     </message>
     <message>
         <location filename="facturacion.py" line="799"/>
         <source>ACTUALIZANDO PLUGINS</source>
-        <translation type="unfinished"></translation>
+        <translation>UPDATING PLUGINS</translation>
     </message>
     <message>
         <location filename="facturacion.py" line="867"/>
         <source>Actualizando </source>
-        <translation type="unfinished"></translation>
+        <translation>Updating </translation>
     </message>
     <message>
         <location filename="facturacion.py" line="905"/>
         <source>Buscando Pluggins</source>
-        <translation type="unfinished"></translation>
+        <translation>Searching Pluggins</translation>
     </message>
 </context>
 <context>
@@ -405,12 +426,12 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="guardarbackup.py" line="86"/>
         <source>No existe el archivo de configuracion: &lt;b&gt;/etc/bulmages/</source>
-        <translation type="unfinished"></translation>
+        <translation>The configuration file: &lt;b&gt;/etc/bulmages does not exist</translation>
     </message>
     <message>
         <location filename="guardarbackup.py" line="111"/>
         <source>&lt;b&gt;Backup guardado satisfactoriamente en : </source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;b&gt; Backup saved correctly in : </translation>
     </message>
 </context>
 <context>
@@ -819,7 +840,7 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="" line="7471221"/>
         <source>Selecciona un Usuario</source>
-        <translation type="obsolete">Select a user</translation>
+        <translation>Select a user</translation>
     </message>
     <message>
         <location filename="modificarusuariobase.py" line="347"/>
@@ -964,7 +985,7 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="modificarusuariobase.py" line="346"/>
         <source>Selecciona un Rol</source>
-        <translation type="unfinished"></translation>
+        <translation>Select a Role</translation>
     </message>
 </context>
 <context>
@@ -972,7 +993,7 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="nuevafacturacion.py" line="37"/>
         <source>Debe proporcionar un nombre a la base de datos que va a crearse</source>
-        <translation type="unfinished"></translation>
+        <translation>You have to provide a name for the database to be created</translation>
     </message>
 </context>
 <context>
