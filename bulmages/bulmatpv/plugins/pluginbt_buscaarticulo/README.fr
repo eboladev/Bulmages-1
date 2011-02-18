@@ -1,16 +1,15 @@
 #######
 #Plugins
 #######
-#README.es
-#20080501 
+#README.fr
+#20110218
 
-Nombre: Busca artículos en el TPV.
+Nombre: Cherche des articles dans le TPV.
 
 Biblioteca: libpluginbt_buscaarticulo.so
 
-Descripción: <H1>Búsqueda de artículos en el TPV</H1>
-<P>Muestra una ventana de diálogo de búsqueda de artículos sobre el que podemos escribir el
-nombre o código del artículo.</P>
+Descripción: <H1>Cherche des articles dans le TPV.</H1>
+<P>Il montre une fenêtre de dialogue de recherche d'articles sur lequel nous pouvons écrire le nom ou le code de l'article.</P>
 <HR>
 
 ParmBD: 
@@ -23,8 +22,8 @@ Dependencias: libplugintpv.so
 
 Incompatibles:
 
-Categorias: Utilidades avanzadas; Experimentales;
+Categorias: Utilites avancees; Experimental;
 
 Orden: 10
 
-Comentarios: Ideal para comercios donde haya que buscar los artículos.
+Comentarios: Idéal pour des commerces où il faut chercher des articles.

@@ -1,16 +1,15 @@
 #######
 #Plugins
 #######
-#README.es
-#20080501 
+#README.fr
+#20110218
 
-Nombre: Búscar clientes en el TPV.
+Nombre: Chercher des clients dans le TPV.
 
 Biblioteca: libpluginbt_buscacliente.so
 
-Descripción: <H1>Búsqueda de clientes en el TPV</H1>
-<P>Muestra una ventana de diálogo de búsqueda de clientes sobre el que podemos escribir el
-nombre o código del cliente.</P>
+Descripción: <H1>Chercher des clients dans le TPV.</H1>
+<P>Il montre une fenêtre de dialogue de recherche de clients sur lequel nous pouvons écrire le nom ou le code du client.</P>
 <HR>
 
 ParmBD: 
@@ -25,4 +24,4 @@ Incompatibles:
 
 Orden:
 
-Comentarios: Ideal para comercios donde haya que buscar los clientes.
+Comentarios: Idéal pour des commerces où il faut chercher les clients.
