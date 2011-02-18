@@ -66,77 +66,77 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="contabilidad.py" line="65"/>
         <source>--Todas las Categorias--</source>
-        <translation type="unfinished">-- Totes les Categories --</translation>
+        <translation>-- Totes les Categories --</translation>
     </message>
     <message>
         <location filename="contabilidad.py" line="265"/>
         <source>&lt;br&gt;&lt;b&gt;Categorias:&lt;/b&gt; </source>
-        <translation type="unfinished">&lt;br&gt;&lt;b&gt;Categories:&lt;/b&gt; </translation>
+        <translation>&lt;br&gt;&lt;b&gt;Categories:&lt;/b&gt; </translation>
     </message>
     <message>
         <location filename="contabilidad.py" line="265"/>
         <source>&lt;br&gt;&lt;br&gt;&lt;b&gt;Dependencias:&lt;/b&gt; </source>
-        <translation type="unfinished">&lt;br&gt;&lt;br&gt;&lt;b&gt;Dependències:&lt;/b&gt; </translation>
+        <translation>&lt;br&gt;&lt;br&gt;&lt;b&gt;Dependències:&lt;/b&gt; </translation>
     </message>
     <message>
         <location filename="contabilidad.py" line="265"/>
         <source>&lt;br&gt;&lt;br&gt;&lt;b&gt;Incompatibilidades:&lt;/b&gt; </source>
-        <translation type="unfinished">&lt;br&gt;&lt;br&gt;&lt;b&gt;Incompatibilitats:&lt;/b&gt; </translation>
+        <translation>&lt;br&gt;&lt;br&gt;&lt;b&gt;Incompatibilitats:&lt;/b&gt; </translation>
     </message>
     <message>
         <location filename="contabilidad.py" line="265"/>
         <source>&lt;br&gt;&lt;br&gt;&lt;b&gt;Parches SQL:&lt;/b&gt;</source>
-        <translation type="unfinished">&lt;br&gt;&lt;br&gt;&lt;b&gt;Pegats SQL:&lt;/b&gt;</translation>
+        <translation>&lt;br&gt;&lt;br&gt;&lt;b&gt;Pegats SQL:&lt;/b&gt;</translation>
     </message>
     <message>
         <location filename="contabilidad.py" line="265"/>
         <source>&lt;br&gt;&lt;b&gt;Informes:&lt;/b&gt;&lt;br&gt;</source>
-        <translation type="unfinished">&lt;br&gt;&lt;b&gt;Informes:&lt;/b&gt;&lt;br&gt;</translation>
+        <translation>&lt;br&gt;&lt;b&gt;Informes:&lt;/b&gt;&lt;br&gt;</translation>
     </message>
     <message>
         <location filename="contabilidad.py" line="296"/>
         <source>El plugin &lt;b&gt;</source>
-        <translation type="unfinished">El plugin &lt;b&gt;</translation>
+        <translation>El plugin &lt;b&gt;</translation>
     </message>
     <message>
         <location filename="contabilidad.py" line="280"/>
         <source>&lt;/b&gt; tiene incompatibilidades. Quieres desinstalarlas?</source>
-        <translation type="unfinished">&lt;/b&gt; té incompatibilitats. Desitgeu desinstaarles?</translation>
+        <translation>&lt;/b&gt; té incompatibilitats. Desitgeu desinstaarles?</translation>
     </message>
     <message>
         <location filename="contabilidad.py" line="297"/>
         <source>Atencion!</source>
-        <translation type="unfinished">Atenció !</translation>
+        <translation>Atenció !</translation>
     </message>
     <message>
         <location filename="contabilidad.py" line="296"/>
         <source>&lt;/b&gt; tiene dependencias. Quieres instalarlas?</source>
-        <translation type="unfinished">&lt;/b&gt; te dependencies. Desitja instalarles?</translation>
+        <translation>&lt;/b&gt; te dependencies. Desitja instalarles?</translation>
     </message>
     <message>
         <location filename="contabilidad.py" line="309"/>
         <source>Generando plantillas RML y PYS</source>
-        <translation type="unfinished">Generant plantilles RML i PYS</translation>
+        <translation>Generant plantilles RML i PYS</translation>
     </message>
     <message>
         <location filename="contabilidad.py" line="335"/>
         <source>Generamos backup de las plantillas de impresion en </source>
-        <translation type="unfinished">Generam el backup de les plantilles d&apos;impressió a </translation>
+        <translation>Generam el backup de les plantilles d&apos;impressió a </translation>
     </message>
     <message>
         <location filename="contabilidad.py" line="596"/>
         <source>Tratando </source>
-        <translation type="unfinished">Tratant</translation>
+        <translation>Tractant</translation>
     </message>
     <message>
         <location filename="contabilidad.py" line="546"/>
         <source>ESCRIBIENDO CONFIGURACION</source>
-        <translation type="unfinished">ESCRIBINT CONFIGURACIO</translation>
+        <translation>ESCRIVINT CONFIGURACIO</translation>
     </message>
     <message>
         <location filename="contabilidad.py" line="547"/>
         <source>Escribiendo configuracion en </source>
-        <translation type="unfinished">Escribint configuració a </translation>
+        <translation>Escrivint configuració a </translation>
     </message>
 </context>
 <context>
@@ -177,7 +177,7 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="eliminarempresabase.py" line="77"/>
         <source>Doble clic en la Empresa que deseas eliminar</source>
-        <translation type="obsolete">Doble clic a l&apos;empresa que voleu eliminar</translation>
+        <translation>Doble clic a l&apos;empresa que voleu eliminar</translation>
     </message>
     <message>
         <location filename="eliminarempresabase.py" line="80"/>
@@ -464,7 +464,7 @@ Aquest usuari és necessari per poder administrar PostgreSQL. La contrassenya d&
     <message>
         <location filename="bulmasetupbase.ui" line="123"/>
         <source>Eliminar Usuario de PostgreSQL</source>
-        <translation type="obsolete">Elimina usuari de PostgreSQL</translation>
+        <translation>Elimina usuari de PostgreSQL</translation>
     </message>
     <message>
         <location filename="bulmasetupbase.py" line="222"/>
@@ -491,7 +491,7 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="bulmasetupbase.py" line="224"/>
         <source>Gestin de Empresas</source>
-        <translation type="obsolete">Gestió d&apos;Empreses</translation>
+        <translation>Gestió d&apos;Empreses</translation>
     </message>
     <message>
         <location filename="bulmasetupbase.py" line="225"/>
@@ -501,7 +501,7 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="bulmasetupbase.py" line="226"/>
         <source>Nueva Empresa de Facturacin / TPV</source>
-        <translation type="obsolete">Nova Empresa de Facturació</translation>
+        <translation>Nova Empresa de Facturació</translation>
     </message>
     <message>
         <location filename="bulmasetupbase.py" line="227"/>
@@ -511,7 +511,7 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="bulmasetupbase.ui" line="263"/>
         <source>Restaurar una Copia de Seguridad</source>
-        <translation type="obsolete">Restaura una còpia de seguretat</translation>
+        <translation>Restaura una còpia de seguretat</translation>
     </message>
     <message>
         <location filename="bulmasetupbase.py" line="232"/>
@@ -670,22 +670,22 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="modificarcontabilidadbase.py" line="362"/>
         <source>Idioma Informes</source>
-        <translation type="obsolete">Llengua Informes</translation>
+        <translation>Llengua Informes</translation>
     </message>
     <message>
         <location filename="modificarcontabilidadbase.py" line="363"/>
         <source>ca</source>
-        <translation type="obsolete">ca</translation>
+        <translation>ca</translation>
     </message>
     <message>
         <location filename="modificarcontabilidadbase.py" line="364"/>
         <source>es</source>
-        <translation type="obsolete">es</translation>
+        <translation>es</translation>
     </message>
     <message>
         <location filename="modificarcontabilidadbase.py" line="365"/>
         <source>fr</source>
-        <translation type="obsolete">fr</translation>
+        <translation>fr</translation>
     </message>
     <message>
         <location filename="modificarcontabilidadbase.py" line="359"/>
@@ -738,7 +738,7 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="modificarfacturacionbase.py" line="209"/>
         <source>Instalar Soporte para TPV en esta empresa</source>
-        <translation type="obsolete">Instaŀla suport per a TPV</translation>
+        <translation>Instaŀla suport per a TPV</translation>
     </message>
     <message>
         <location filename="modificarfacturacionbase.py" line="375"/>
@@ -813,22 +813,22 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="modificarfacturacionbase.py" line="387"/>
         <source>Idioma informes</source>
-        <translation type="obsolete">Llengua informes</translation>
+        <translation>Llengua informes</translation>
     </message>
     <message>
         <location filename="modificarfacturacionbase.py" line="388"/>
         <source>ca</source>
-        <translation type="obsolete">ca</translation>
+        <translation>ca</translation>
     </message>
     <message>
         <location filename="modificarfacturacionbase.py" line="389"/>
         <source>es</source>
-        <translation type="obsolete">es</translation>
+        <translation>es</translation>
     </message>
     <message>
         <location filename="modificarfacturacionbase.py" line="390"/>
         <source>fr</source>
-        <translation type="obsolete">fr</translation>
+        <translation>fr</translation>
     </message>
     <message>
         <location filename="modificarfacturacionbase.py" line="383"/>
@@ -861,7 +861,7 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="modificarusuariobase.py" line="348"/>
         <source>Selecciona un Usuario</source>
-        <translation type="obsolete">Seleccioneu un usuari</translation>
+        <translation>Seleccioneu un usuari</translation>
     </message>
     <message>
         <location filename="modificarusuariobase.py" line="347"/>
@@ -881,7 +881,7 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="modificarusuariobase.ui" line="115"/>
         <source>Selecciona permisos para la Base de Datos</source>
-        <translation type="obsolete">Seleccioneu permisos per a la base de dades</translation>
+        <translation>Seleccioneu permisos per a la base de dades</translation>
     </message>
     <message>
         <location filename="modificarusuariobase.py" line="374"/>
@@ -906,7 +906,7 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="modificarusuariobase.ui" line="169"/>
         <source>Permisos para la tabla / tablas</source>
-        <translation type="obsolete">Permisos per a la taula / taules</translation>
+        <translation>Permisos per a la taula / taules</translation>
     </message>
     <message>
         <location filename="modificarusuariobase.py" line="370"/>
