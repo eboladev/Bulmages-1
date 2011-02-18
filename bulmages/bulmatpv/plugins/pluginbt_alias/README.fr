@@ -1,16 +1,15 @@
 #######
 #Plugins
 #######
-#README.es
-#20080501 
+#README.fr
+#20110218
 
 Nombre: Alias TPV
 
 Biblioteca: libpluginbt_alias.so
 
 Descripción: <H1>Alias TPV</H1>
-<P>Permite la introduccion de articulos con alias. Requiere la instalacion de libpluginbf_alias de 
-bulmafact en la empresa.</P>
+<P>Il permet l'introduction d'articles avec alias. Il requiert l'installation de libpluginbf_alias de bulmafact dans l'entreprise.</P>
 <HR>
 
 ParmBD: 
@@ -23,8 +22,8 @@ Dependencias: libpluginbf_alias.so
 
 Incompatibles:
 
-Categorias: Utilidades avanzadas; Experimentales;
+Categorias: Utilites avancees; Experimental;
 
 Orden: 10
 
-Comentarios: Ideal para meter los codigos de barras como alias y poder tickarlos.
+Comentarios: Idéal pour mettre les codes-barres comme alias et pouvoir les utiliser comme tickets.
