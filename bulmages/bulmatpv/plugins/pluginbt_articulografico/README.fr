@@ -1,18 +1,16 @@
 #######
 #Plugins
 #######
-#README.es
-#20080501 
+#README.fr
+#20110218
 
-Nombre: Parrilla gráfica (I.V.A Inc)
+Nombre: Grille graphique  (T.V.A Inc)
 
 Biblioteca: libpluginbt_articulografico.so
 
-Descripción: <H1>Parrilla gráfica</H1>
-<P>Presentación de los articulos en forma de parrilla de elementos. Convierte BulmaTPV en el
-TPV de restauración.</P>
-<P>La parrilla es configurada mediante el archivo /etc/pantallastpv.xml donde se configuran las
-distintas parrillas y su presentación. Ver la documentacion en http://www.iglues.org</P>
+Descripción: <H1>Grille graphique</H1>
+<P>Présentation des articles sous forme de grille d'éléments. Il transforme BulmaTPV en TPV de restauration.</P>
+<P>La grille est formée au moyen des archives /etc/pantallastpv.xml où on forme les différentes grilles et leur présentation. Voir la documentation dans http://www.iglues.org</P>
 <HR>
 
 ParmBD: 
@@ -27,6 +25,6 @@ Incompatibles: libpluginbt_articulosubform.so
 
 Orden: 40
 
-Categorias: Experimentales;IVA incluido;
+Categorias: Experimental;TVA incluse;
 
-Comentarios: Ideal para bares, cafeterías y restaurantes.
+Comentarios: Idéal pour les bars, cafétérias et les restaurants.

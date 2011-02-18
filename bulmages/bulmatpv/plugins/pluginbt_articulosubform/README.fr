@@ -1,16 +1,15 @@
 #######
 #Plugins
 #######
-#README.es
-#20080501 
+#README.fr
+#20110218
 
-Nombre: Parrilla de articulos con subformulario
+Nombre: Grille d'articles avec sous formulaire
 
 Biblioteca: libpluginbt_articulosubform.so
 
-Descripción: <H1>Introduccion de articulos con subformulario</H1>
-<P>Permite la introduccion de los componentes del ticket en forma de subformulario.
-Es incompatible con pluginartgraficos Ya que desempeñan la misma función.</P>
+Descripción: <H1>Introduction d'articles avec sous formulaire</H1>
+<P>Il permet l'introduction des composants du ticket sous forme de sous formulaire. Il est incompatible avec pluginartgraficos Puisqu'ils effectuent la même fonction.</P>
 <HR>
 
 ParmBD: 
@@ -25,6 +24,6 @@ Incompatibles: libpluginbt_articulografico.so
 
 Orden:
 
-Categorias: Experimentales;
+Categorias: Experimental;
 
-Comentarios: Ideal para Sistemas con muchos articulos.
+Comentarios: Idéal pour Systèmes avec beaucoup d'articles.

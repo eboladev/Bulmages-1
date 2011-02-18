@@ -1,16 +1,15 @@
 #######
 #Plugins
 #######
-#README.es
-#20090603 
+#README.fr
+#20110218
 
-Nombre: Parrilla gráfica a partir de la Base de Datos (IVA inc.)
+Nombre: Grille graphique à partir de la Base de Données  (TVA inc.)
 
 Biblioteca: libpluginbt_articulograficodb.so
 
-Descripción: <H1>Parrilla gráfica a partir de la Base de Datos</H1>
-<P>Presentación de los articulos en forma de parrilla de elementos. Convierte BulmaTPV en el
-TPV de restauración.</P>
+Descripción: <H1>Grille graphique à partir de la Base de Données </H1>
+<P>Présentation des articles sous forme de grille d'éléments. Il transforme BulmaTPV en TPV de restauration.</P>
 
 <HR>
 
@@ -24,8 +23,8 @@ Dependencias: libplugintpv.so; libpluginbt_ivaincluido.so
 
 Incompatibles: libpluginbt_articulosubform.so; libpluginbt_articulografico.so
 
-Categorias: Experimentales;IVA incluido;
+Categorias: Experimental;TVA incluse;
 
 Orden: 40
 
-Comentarios: Ideal para bares, cafeterías y restaurantes.
+Comentarios: Idéal pour les bars, cafétérias et restaurants.
