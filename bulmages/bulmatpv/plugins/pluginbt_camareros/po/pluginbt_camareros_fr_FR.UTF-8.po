@@ -1,0 +1,89 @@
+# Spanish translations for PACKAGE package
+# Traducciones al español para el paquete PACKAGE.
+# Copyright (C) 2010 THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+#
+# Automatically generated, 2010, 2011.
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: info@iglues.org\n"
+"POT-Creation-Date: 2011-02-04 12:54+0100\n"
+"PO-Revision-Date: 2011-02-18 17:58+0100\n"
+"Last-Translator: \n"
+"Language-Team: French <kde-i18n-doc@kde.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Lokalize 1.2\n"
+
+#: ui_trabajadoresbase.h:272
+msgid "&Cerrar"
+msgstr "&Fermer"
+
+#: ui_trabajadoresbase.h:270
+msgid "."
+msgstr "."
+
+#: ui_trabajadoresbase.h:269
+msgid "0"
+msgstr "0"
+
+#: ui_trabajadoresbase.h:266
+msgid "1"
+msgstr "1"
+
+#: ui_trabajadoresbase.h:267
+msgid "2"
+msgstr "2"
+
+#: ui_trabajadoresbase.h:268
+msgid "3"
+msgstr "3"
+
+#: ui_trabajadoresbase.h:263
+msgid "4"
+msgstr "4 "
+
+#: ui_trabajadoresbase.h:264
+msgid "5"
+msgstr "5 "
+
+#: ui_trabajadoresbase.h:265
+msgid "6"
+msgstr "6"
+
+#: ui_trabajadoresbase.h:260
+msgid "7"
+msgstr "7"
+
+#: ui_trabajadoresbase.h:261
+msgid "8"
+msgstr "8"
+
+#: ui_trabajadoresbase.h:262
+msgid "9"
+msgstr "9"
+
+#: ui_trabajadoresbase.h:271
+msgid "C"
+msgstr "C"
+
+#: pluginbt_camareros.cpp:69
+msgid "Camareros"
+msgstr "Serveurs"
+
+#: ui_trabajadoresbase.h:259
+msgid "Registro de camarero"
+msgstr "Registre de serveur"
+
+#~ msgid "..."
+#~ msgstr "..."
+
+#~ msgid "Form"
+#~ msgstr "Form"
+
+#~ msgid "Salir"
+#~ msgstr "Salir"
