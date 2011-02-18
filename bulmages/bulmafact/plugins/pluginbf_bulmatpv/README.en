@@ -1,17 +1,16 @@
 #######
 #Plugins
 #######
-#README.es
+#README.en
 #20080501
 
-Nombre: Manejo de TPV
+Nombre: POS management
 
 Biblioteca: libpluginbf_bulmatpv.so
 
 Descripción: <H1>TPV</H1>
-<P>Maneja los tickets emitidos por uno o varios TPV y los muestra. Permite el control de las cajas y las Z
-producidas por un TPV.</P>
-<P>Es imprescindible tener la funcionalidad de TPV instalada o sino este plugin no funcionará</P>
+<P>It handles the tickets produced by one or many POS and it shows them. It allows for the control of the cash registers and the Z produced by a POS.</P>
+<P>It is essential to have the POS funcionalities installed or otherwise this plugin will not work</P>
 <B>Author:</B>Tomeu Borrás (tborras@conetxia.com)<BR>
 <HR>
 
@@ -25,8 +24,8 @@ Dependencias:
 
 Incompatibles:
 
-Categorias: Facturacion avanzada;
+Categorias: Advanced invoicing;
 
 Orden: 900
 
-Comentarios: Es imprescindible tener la funcionalidad de TPV instalada o sino este plugin no funcionará.
+Comentarios: It is essential to have the POS functionality installed or otherwise this plugin will not work.

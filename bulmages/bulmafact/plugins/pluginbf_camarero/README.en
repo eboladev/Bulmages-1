@@ -1,15 +1,15 @@
 #######
 #Plugins
 #######
-#README.es
+#README.en
 #20080501
 
-Nombre: Camareros
+Nombre: Waiters
 
 Biblioteca: libpluginbf_camarero.so
 
-Descripción: <H1>Camarero</H1>
-<P>Permite definir y manejar los campos de trabajo con camareros. Asignar permisos que luego son usados en el TPV y funcionalidades.</P>
+Descripción: <H1>Waiter</H1>
+<P>It allows to define and manage the fields for working with waiters. It allows to assign permissions that later are used by the POS and its functionalities.</P>
 <B>Author:</B>Tomeu Borrás (tborras@conetxia.com)<BR>
 <HR>
 
@@ -23,7 +23,7 @@ Dependencias:
 
 Incompatibles:
 
-Categorias: Experimentales;Restauracion;
+Categorias: Experimentals; Dining;
 
 Orden: 690
 
