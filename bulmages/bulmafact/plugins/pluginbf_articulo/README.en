@@ -4,17 +4,17 @@
 #README.es
 #20080501
 
-Nombre: Articulos
+Nombre: Item
 
 Biblioteca: libpluginbf_articulo.so
 
-Descripción: <H1>Gestion de articulos</H1>
-<PARA>Este plugin permite la introduccion de articulos en el sistema. </PARA>
+Descripción: <H1>Item management</H1>
+<PARA>This plugin is used to introduce items in the system.</PARA>
 <HR>
-<PARA>Presenta el listado de articulos y permite agregar, editar y modificar articulos.</PARA>
+<PARA>It presents a listing of items and it allows to add, edit and modify items</PARA>
 <BR>
-<PARA>Al instalar el plugin aparecerá el menu Articulos en la aplicacion con las opciones <B>Listado de Articulos</B> y la
-opcion <B>Nuevo Articulo</B></PARA>
+<PARA>After installing the plugin the menu Items will appear in the program with the options <B>Item listing</B> and the 
+option <B>New Item</B></PARA>
 <B>Author:</B>Tomeu Borrás (tborras@conetxia.com)<BR>
 <HR>
 
@@ -32,6 +32,6 @@ Orden: 29
 
 Reports: articulos.rml; articuloetiqueta.rml; familias.rml; blform_ArticuloView.qs
 
-Categorias: Facturacion generica;
+Categorias: Generic invoicing;
 
 Comentarios:

@@ -1,20 +1,19 @@
 #######
 #Plugins
 #######
-#README.es
+#README.en
 #20080501
 
-Nombre: Bancos
+Nombre: Banks
 
 Biblioteca: libpluginbf_banco.so
 
-Descripción: <H1><IMG SRC="@CMAKE_INSTALL_PREFIX@/share/bulmages/imagesrc/images/oxygen/actions/bank_list.svg" WIDTH="100"/><BR>Gestion de bancos</H1>
-<P> Permite realizar la gestion de entidades bancarias relacionadas con la empresa. Mostrando el listado de cuentas bancarias y permitiendo hacer altas, bajas y modificaciones</P>
-<P> Este plugin es imprescindible para todos aquellos modelos de negocio donde se trabaje con bancos, principalmente con formas de pago y modelos Q34 y Q19</P>
-<P> Una vez instalado el plugin tendremos dos nuevas opciones en el menú <B>Bancos</B></P>
+Descripción: <H1><IMG SRC="@CMAKE_INSTALL_PREFIX@/share/bulmages/imagesrc/images/oxygen/actions/bank_list.svg" WIDTH="100"/><BR>Bank management</H1>
+<P> It allows to perform the management of bank accounts related with the firm. It shows the list of accounts and allows adding, deleting and modifying accounts.</P>
+<P> This plugin is essential for all business models where it is necessary to work with banks, especially with payment modes and Q34 and Q19 models</P>
+<P> Once the plugin has been installed we will have two new options in the <B>Banks</B> menu.
 <H2> <IMG SRC="@CMAKE_INSTALL_PREFIX@/share/bulmages/imagesrc/images/oxygen/actions/bank_list.svg" WIDTH="22"/>Bancos</H2>
-<P> Esta pantalla nos muestra las cuentas bancarias dadas de alta en la empresa. Desde aqui podremos crear, modificar o borrar los clientes mediante los botones
-situados en la parte superior de la ventana. </P>
+<P> This screen shows us the bank accounts added for the firm. From here we will be able to create, modify and delete all the costumers using buttons located in the upper part of the window. </P>
 <B>Author:</B>Tomeu Borrás (tborras@conetxia.com)<BR>
 <HR>
 
@@ -28,7 +27,7 @@ Dependencias:
 
 Incompatibles:
 
-Categorias: Facturacion generica;
+Categorias: Generic invoicing;
 
 Orden: 880
 

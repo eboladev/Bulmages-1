@@ -1,16 +1,16 @@
 #######
 #Plugins
 #######
-#README.es
+#README.en
 #20080501
 
-Nombre: Asociacion
+Nombre: Association
 
 Biblioteca: libpluginbf_asociacion.so
 
-Descripción: <H1>Asociacion</H1>
-<P>Gestionar las cuestiones asociativas de una asociacion.</P>
-<P>Con este plugin se pueden emitir comunicados a socios, convocar juntas, asambleas o reuniones y registrar las actas.</P>
+Descripción: <H1>Association</H1>
+<P>Managing the associative issues of an association.</P>
+<P>With this plugin notices to the associates, board meetings, assemblies or general meetings, and minutes registering can be performed.</P>
 <B>Author:</B>Tomeu Borrás (tborras@conetxia.com)<BR>
 <HR>
 
@@ -27,7 +27,7 @@ Incompatibles:
 
 Reports: impers_reunion.rml; jdirectiva.rml; reunion.rml; inf_familias_hijos.rml; blform_JDirectivaView.qs; blform_ComisionView.qs; blform_ConvReunionView.qs
 
-Categorias: Asociaciones de padres de alumnos; Experimentales;
+Categorias: Parental school associations; Experimentals;
 
 Orden: 240
 

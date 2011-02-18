@@ -1,18 +1,17 @@
 #######
 #Plugins
 #######
-#README.es
+#README.en
 #20080501
 
-Nombre: Control de presencia por centralita Asterisk
+Nombre: Presence control through Asterisk unit
 
 Biblioteca: libpluginbf_asterisk.so
 
 Descripción: <H1>Asterisk</H1>
-<P>Presenta todas las validaciones realizadas en los usuarios y en los almacenes correspondientes. Modifica la ficha de almacenes y trabajadores para que presenten un cuadro de validaciones realizadas.</P>
-<P>Requiere el pluginalmacen y el plugincuadrante, sin los cuales no funcionará.
-También incluye en el código fuente ejemplos de scritps de validacion hecho en php para ser
-puestos en marcha en la centralita con agi.</P>
+<P>It presents all validations performed by the users and in the corresponding stores. It modifies the stores and workers files in order for them to present a table with performed validations.</P>
+<P>It requieres the store and quadrants plugins, without which it will not work.
+It also includes in the source code examples of scripts of validation written in php to be started in the unit with agi.</P>
 <B>Author:</B>Tomeu Borrás (tborras@conetxia.com)<BR>
 <HR>
 
@@ -26,7 +25,7 @@ Dependencias: libpluginbf_almacen.so; libpluginbf_cuadrante.so
 
 Incompatibles:
 
-Categorias: Utilidades avanzadas; Experimentales;
+Categorias: Advanced utilities: Experimentals;
 
 Orden: 900
 
