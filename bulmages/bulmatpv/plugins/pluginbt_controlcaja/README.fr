@@ -1,15 +1,15 @@
 #######
 #Plugins
 #######
-#README.es
-#20080501 
+#README.fr
+#20110219
 
-Nombre: Administracion del TPV (X Y Z)
+Nombre: Administration du TPV (X Y Z)
 
 Biblioteca: libpluginbt_controlcaja.so
 
-Descripción: <H1>Administración del TPV (X y Z)</H1>
-<P>Control de caja, generación de las X y las Z.</P>
+Descripción: <H1>Administration du TPV (X y Z)</H1>
+<P>Contrôle de la caisse, génération des X et des Z.</P>
 <HR>
 
 ParmBD: 
