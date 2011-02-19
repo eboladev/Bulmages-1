@@ -23,9 +23,4 @@
 
 
 
-var lay = JDirectivaView.findChild("mui_tab");
-if (lay != null) {
-      lay.tabPosition = QTabWidget.East;
-}
-
 

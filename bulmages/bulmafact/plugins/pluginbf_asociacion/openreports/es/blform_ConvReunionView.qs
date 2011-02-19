@@ -23,9 +23,5 @@
 
 
 
-var lay = ConvReunionView.findChild("mui_tab");
-if (lay != null) {
-      lay.tabPosition = QTabWidget.East;
-}
 
 
