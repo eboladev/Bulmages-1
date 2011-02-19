@@ -1,15 +1,15 @@
 #######
 #Plugins
 #######
-#README.es
-#20080501 
+#README.fr
+#20110219
 
-Nombre: Cambio
+Nombre: Change
 
 Biblioteca: libplugincambio.so
 
-Descripción: <H1>Cambio</H1>
-<P>Presenta la ventana de devolucion de cambio en los cobros. Y de seleccion de pago con VISA.</P>
+Descripción: <H1>Change</H1>
+<P>Il présente la fenêtre de remboursement de changement dans les encaissements. Et de sélection de paiement avec VISA.</P>
 <HR>
 
 ParmBD: 
@@ -24,4 +24,4 @@ Incompatibles:
 
 Orden:
 
-Comentarios: Ideal para Bares, Cafeterias y Restaurantes.
+Comentarios: Idéal pour Bars, Cafétérias et Restaurants.

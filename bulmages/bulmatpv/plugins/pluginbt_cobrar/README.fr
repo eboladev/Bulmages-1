@@ -1,15 +1,15 @@
 #######
 #Plugins
 #######
-#README.es
-#20080501 
+#README.fr
+#20110219
 
-Nombre: Cobro de tickets
+Nombre: Encaissement de tickets
 
 Biblioteca: libpluginbt_cobrar.so
 
-Descripción: <H1>Cobro de tickets</H1>
-<P>Muestra una ventana para registrar el cobro de un ticket.</P>
+Descripción: <H1>Encaissement de tickets</H1>
+<P>Il montre une fenêtre pour enregistrer l'encaissement d'un ticket.</P>
 <HR>
 
 ParmBD: 
@@ -24,4 +24,4 @@ Incompatibles:
 
 Orden: 40
 
-Comentarios: Ideal para bares, cafeterías y restaurantes.
+Comentarios: Idéal pour bars, cafétérias et restaurants.

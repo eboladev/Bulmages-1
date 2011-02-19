@@ -1,15 +1,15 @@
 #######
 #Plugins
 #######
-#README.es
-#20101001 
+#README.fr
+#20110219
 
-Nombre: Seleccion de cliente
+nombre: Sélection de client
 
 Biblioteca: libpluginbt_cliente.so
 
-Descripción: <H1>Seleccion de cliente</H1>
-<P>Permite seleccionar el cliente al que va dirigido el ticket.</P>
+Descripción: <H1>Sélection de client</H1>
+<P>Il permet de choisir le client auquel est dirigé le ticket.</P>
 <HR>
 
 ParmBD: 
@@ -22,7 +22,7 @@ Dependencias: libpluginbt_accesobotones.so
 
 Incompatibles:
 
-Categorias: Utilidades avanzadas; Experimentales; Restauracion;
+Categorias: Utilites avancees; Experimental; Restauration;
 
 Orden: 500
 
