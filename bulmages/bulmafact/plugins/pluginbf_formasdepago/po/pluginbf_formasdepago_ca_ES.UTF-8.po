@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
 "POT-Creation-Date: 2011-02-04 12:54+0100\n"
-"PO-Revision-Date: 2011-02-19 13:55+0100\n"
+"PO-Revision-Date: 2011-02-19 16:09+0100\n"
 "Last-Translator: Walter Garcia-Fontes <walter.garcia@upf.edu>\n"
 "Language-Team: Catalan\n"
 "Language: Catalan\n"
@@ -31,7 +31,6 @@ msgid "&Formas de pago"
 msgstr "&Formes de pagament"
 
 #: ui_fpagobase.h:330
-#, fuzzy
 msgid "Banco:"
 msgstr "Banc"
 
