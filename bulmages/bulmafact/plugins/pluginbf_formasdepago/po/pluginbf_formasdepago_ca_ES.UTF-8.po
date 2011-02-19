@@ -9,10 +9,10 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
 "POT-Creation-Date: 2011-02-04 12:54+0100\n"
-"PO-Revision-Date: 2009-11-06 00:12+0100\n"
-"Last-Translator: Automatically generated\n"
-"Language-Team: none\n"
-"Language: \n"
+"PO-Revision-Date: 2011-02-19 13:55+0100\n"
+"Last-Translator: Walter Garcia-Fontes <walter.garcia@upf.edu>\n"
+"Language-Team: Catalan\n"
+"Language: Catalan\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -20,11 +20,11 @@ msgstr ""
 
 #: ui_fpagobase.h:354
 msgid "&Aceptar"
-msgstr "&Acceptar"
+msgstr "&Accepta"
 
 #: ui_fpagobase.h:355
 msgid "&Cancelar"
-msgstr "&Cancel·lar"
+msgstr "&Cancel·la"
 
 #: pluginbf_formasdepago.cpp:81
 msgid "&Formas de pago"
@@ -45,7 +45,7 @@ msgstr "Descompte"
 
 #: fpagoview.cpp:198
 msgid "Desea guardar los cambios."
-msgstr "Desitja desar els canvis."
+msgstr "Desitgeu desar els canvis."
 
 #: fpagoview.cpp:255
 #, fuzzy
@@ -67,7 +67,7 @@ msgstr "Formes de pagament"
 
 #: fpagoview.cpp:197 ui_fpagobase.h:348 ui_fpagobase.h:351
 msgid "Guardar forma de pago"
-msgstr "Desar forma de pagament"
+msgstr "Desa forma de pagament"
 
 #: ui_fpagobase.h:322
 msgid "Informacion de la forma de pago:"
