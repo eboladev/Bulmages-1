@@ -1,7 +1,7 @@
 #AlbaranesProveedorListBase #mui_list {
-	background-image: url(@CMAKE_INSTALL_PREFIX@/share/bulmages/images/en_EN/pluginbf_proveedoralbaran-list.png);
+	background-image: url(@CMAKE_INSTALL_PREFIX@/share/bulmages/images/en_US/pluginbf_proveedoralbaran-list.png);
 }
 
 #AlbaranProveedorBase #subform2 #mui_list {
-	background-image: url(@CMAKE_INSTALL_PREFIX@/share/bulmages/images/en_EN/pluginbf_proveedoralbaran-new.png);
+	background-image: url(@CMAKE_INSTALL_PREFIX@/share/bulmages/images/en_US/pluginbf_proveedoralbaran-new.png);
 }

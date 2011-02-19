@@ -1,7 +1,7 @@
 #FacturasProveedorListBase #mui_list {
-	background-image: url(@CMAKE_INSTALL_PREFIX@/share/bulmages/images/en_EN/pluginbf_proveedorfactura-list.png);
+	background-image: url(@CMAKE_INSTALL_PREFIX@/share/bulmages/images/en_US/pluginbf_proveedorfactura-list.png);
 }
 
 #FacturaProveedorBase #subform2 #mui_list {
-	background-image: url(@CMAKE_INSTALL_PREFIX@/share/bulmages/images/en_EN/pluginbf_proveedorfactura-new.png);
+	background-image: url(@CMAKE_INSTALL_PREFIX@/share/bulmages/images/en_US/pluginbf_proveedorfactura-new.png);
 }

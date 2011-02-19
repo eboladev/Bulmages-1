@@ -1,4 +1,4 @@
 #RecibosListBase #mui_list {
-	background-image: url(@CMAKE_INSTALL_PREFIX@/share/bulmages/images/en_EN/pluginbf_recibo-list.png);
+	background-image: url(@CMAKE_INSTALL_PREFIX@/share/bulmages/images/en_US/pluginbf_recibo-list.png);
 }
 
