@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
 "POT-Creation-Date: 2011-02-04 12:54+0100\n"
-"PO-Revision-Date: 2010-07-28 15:58+0200\n"
+"PO-Revision-Date: 2011-02-19 16:21+0100\n"
 "Last-Translator: Walter Garcia-Fontes\n"
 "Language-Team: CATALAN\n"
 "Language: \n"
@@ -48,7 +48,7 @@ msgstr "Actual·litza llistat"
 
 #: ui_reciboslistbase.h:308
 msgid "Banco:"
-msgstr "Banc"
+msgstr "Banc:"
 
 #: ui_reciboslistbase.h:328 ui_reciboslistbase.h:331
 msgid "Borrar Actividad"
@@ -137,7 +137,7 @@ msgstr "Retornat"
 
 #: ui_reciboslistbase.h:320 ui_reciboslistbase.h:323
 msgid "Editar Actividad"
-msgstr "Editar Activitat"
+msgstr "Edita Activitat"
 
 #: reciboslist.cpp:289
 msgid "Editar recibo"
@@ -249,11 +249,11 @@ msgstr "Imprimeix la comanda"
 
 #: ui_reciboslistbase.h:309
 msgid "Mostrar"
-msgstr "Mostrar"
+msgstr "Mostra"
 
 #: ui_emitirrecibosbase.h:250
 msgid "Notificar por e-mail"
-msgstr "Notificar per e-mail"
+msgstr "Notifica per e-mail"
 
 #: ui_reciboslistbase.h:312 ui_reciboslistbase.h:315
 msgid "Nuevo Actividad"
@@ -330,4 +330,4 @@ msgstr "Tutor"
 
 #: reciboview.cpp:66
 msgid "Tutor/Socio:"
-msgstr "Tutor / Soci"
+msgstr "Tutor/Soci:"
