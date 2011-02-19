@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+<!--IFACE SRC="[CONF_DIR_OPENREPORTS]inf_ventas.ui"-->
+<!--PARAM NAME="fecha_inicial" TYPE="date"-->
+<!--PARAM NAME="fecha_final" TYPE="date"-->
+
+<!DOCTYPE document SYSTEM "rml_1_0.dtd">
+
+<document>
+<!-- # pathtitle="Economia\Informes\Diari Comptable" -->
+  <template pageSize="(29.7cm, 21cm)" title="Diari Comptable" author="Tomeu Borras" allowSplitting="20">
+    <pageTemplate id="first">
+      <frame id="first" x1="0.5cm" y1="0.5cm" width="28.7cm" height="20cm"/>
+    </pageTemplate>
+  </template>
+  <stylesheet>
+    <blockTableStyle id="Standard_Outline">
+      <blockAlignment value="LEFT"/>
+      <blockValign value="TOP"/>
+    </blockTableStyle>
+    <blockTableStyle id="Tabla1">
+      <blockLeftPadding value="0" start="0,0" stop="-1,-1"/>
+      <blockRightPadding value="0" start="0,0" stop="-1,-1"/>
+      <blockBottomPadding value="0" start="0,0" stop="-1,-1"/>
+      <blockTopPadding value="0" start="0,0" stop="-1,-1"/>
+      <blockAlignment value="LEFT" start="0,0" stop="-1,-1"/>
+      <blockAlignment value="RIGHT" start="2,0" stop="-1,-1"/>
+      <blockValign value="TOP" start="0,0" stop="-1,-1"/>
+      <lineStyle kind="LINEBEFORE" colorName="#FFFFFF" start="0,0" stop="-1,-1"/>
+      <lineStyle kind="LINEAFTER" colorName="#FFFFFF" start="0,0" stop="-1,-1"/>
+      <lineStyle kind="LINEABOVE" colorName="#FFFFFF" start="0,0" stop="-1,-1"/>
+      <lineStyle kind="LINEBELOW" colorName="#FFFFFF" start="0,0" stop="-1,-1"/>
+    </blockTableStyle>
+    <initialize>
+      <paraStyle name="all" alignment="justify"/>
+    </initialize>
+    <paraStyle name="Standard" fontName="Times-Roman"/>
+    <paraStyle name="Heading" fontName="Helvetica" fontSize="14.0" leading="17" spaceBefore="12.0" spaceAfter="6.0"/>
+    <paraStyle name="Text body" fontName="Times-Roman" spaceBefore="0.0" spaceAfter="6.0"/>
+    <paraStyle name="List" fontName="Times-Roman" spaceBefore="0.0" spaceAfter="6.0"/>
+    <paraStyle name="Caption" fontName="Times-Roman" fontSize="12.0" leading="15" spaceBefore="6.0" spaceAfter="6.0"/>
+    <paraStyle name="Index" fontName="Times-Roman"/>
+    <paraStyle name="Table Contents" fontName="Times-Roman"/>
+    <paraStyle name="Table Heading" fontName="Times-Roman" alignment="CENTER"/>
+  </stylesheet>
+  <images/>
+  <story>
+    <para style="Standard">Diari comptable entre dues dates ([fecha_inicial]- [fecha_final])</para>
+    <para style="Standard">
+      <font color="black"> </font>
+    </para>
+    <blockTable colWidths="3cm,3cm,6cm,6cm,2cm,2cm" style="Tabla1">
+      <tr>
+        <td><para style="Table Contents"><font color="black" size="8">Data</font></para></td>
+        <td><para style="Table Contents"><font color="black" size="8">Codi</font></para></td>
+        <td><para style="Table Contents"><font color="black" size="8">Partida</font></para></td>
+        <td><para style="Table Contents"><font color="black" size="8">Concepte</font></para></td>
+        <td><para style="Table Contents"><font color="black" size="8">Entrades</font></para></td>
+        <td><para style="Table Contents"><font color="black" size="8">Sortides</font></para></td>
+      </tr>
+
+<!-- QUERY="SELECT * FROM acontable 
+LEFT JOIN partida ON acontable.idpartida = partida.idpartida WHERE fechaacontable >= COALESCE(BgValidDate('[fecha_inicial]'),'01/01/2000'::DATE) AND fechaacontable <= COALESCE(BgValidDate('[fecha_final]'),'01/01/2100'::DATE) ORDER BY fechaacontable"-->
+      <tr>
+        <td><para style="Table Contents"><font color="black" size="8"> [fechaacontable]</font></para></td>
+        <td><para style="Table Contents"><font color="black" size="8"> [codigocompletopartida]</font></para></td>
+        <td><para style="Table Contents"><font color="black" size="8"> [nombrepartida] </font></para></td>
+        <td><para style="Table Contents"><font color="black" size="8"> [conceptoacontable] </font></para></td>
+        <td>[debeacontable]</td>
+        <td>[haberacontable]</td>
+      </tr>
+<!-- END QUERY -->
+
+    </blockTable>
+  </story>
+</document>
+
