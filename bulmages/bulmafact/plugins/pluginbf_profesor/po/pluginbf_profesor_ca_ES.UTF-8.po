@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
 "POT-Creation-Date: 2011-02-08 13:51+0100\n"
-"PO-Revision-Date: 2010-07-28 17:38+0200\n"
+"PO-Revision-Date: 2011-02-19 16:10+0100\n"
 "Last-Translator: Walter Garcia-Fontes\n"
 "Language-Team: CATALAN\n"
 "Language: \n"
@@ -278,7 +278,7 @@ msgstr "Imprimeix la comanda"
 
 #: ui_aboutfapacbase.h:153
 msgid "Lleida"
-msgstr ""
+msgstr "Lleida"
 
 #: profesorview.cpp:52
 msgid "Monitor"
@@ -348,7 +348,7 @@ msgstr "Provincia:"
 
 #: ui_aboutfapacbase.h:154
 msgid "Tarragona"
-msgstr ""
+msgstr "Tarragona"
 
 #: profesoreslist.cpp:338
 msgid "Telefono"
