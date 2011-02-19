@@ -4,12 +4,12 @@
 #README.es
 #20080501 
 
-Nombre: Devoluciones
+Nombre: Remboursement
 
 Biblioteca: libpluginbt_devolucion.so
 
-Descripción: <H1>Devoluciones</H1>
-<P>Presenta la ventana de devolucion de material. Y genera vales de devolucion o abonos de dinero.</P>
+Descripción: <H1>Remboursements</H1>
+<P>Il présente la fenêtre de remboursement de matériel et il produit des bons de remboursements ou d'argent.</P>
 <HR>
 
 ParmBD: 
@@ -24,4 +24,4 @@ Incompatibles: libpluginbt_devolucion2.so
 
 Orden: 50
 
-Comentarios: Ideal todo tipo de comercio.
+Comentarios: Idéal pour tous types de commerce.

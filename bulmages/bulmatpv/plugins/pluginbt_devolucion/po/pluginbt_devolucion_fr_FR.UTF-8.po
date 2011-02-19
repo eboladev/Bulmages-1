@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
 "POT-Creation-Date: 2011-02-04 12:54+0100\n"
-"PO-Revision-Date: 2011-02-19 12:43+0100\n"
+"PO-Revision-Date: 2011-02-19 12:40+0100\n"
 "Last-Translator: \n"
 "Language-Team: French <kde-i18n-doc@kde.org>\n"
 "Language: \n"
@@ -115,72 +115,48 @@ msgstr ""
 "X-Generator: Lokalize 1.2\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
-#: ui_cobrarbase.h:286
-msgid "0"
-msgstr "0"
+#: ui_devolucionbase.h:274
+msgid "A Devolver"
+msgstr "A rembourser"
 
-#: ui_cobrarbase.h:287
-msgid "00"
-msgstr "00"
+#: ui_devolucionbase.h:277
+msgid "CANCELAR"
+msgstr "Annuler"
 
-#: ui_cobrarbase.h:283
-msgid "1"
-msgstr "1"
+#: ui_devolucionbase.h:271
+msgid "Comentarios"
+msgstr "Libellés"
 
-#: ui_cobrarbase.h:284
-msgid "2"
-msgstr "2"
+#: ui_devolucionbase.h:270
+msgid "Detalle"
+msgstr "Détail"
 
-#: ui_cobrarbase.h:285
-msgid "3"
-msgstr "3"
+#: pluginbt_devolucion.cpp:75
+msgid "Devolucion"
+msgstr "Remboursement"
 
-#: ui_cobrarbase.h:280
-msgid "4"
-msgstr "4"
-
-#: ui_cobrarbase.h:281
-msgid "5"
-msgstr "5"
-
-#: ui_cobrarbase.h:282
-msgid "6"
-msgstr "6"
-
-#: ui_cobrarbase.h:277
-msgid "7"
-msgstr "7"
-
-#: ui_cobrarbase.h:278
-msgid "8"
-msgstr "8"
-
-#: ui_cobrarbase.h:279
-msgid "9"
-msgstr "9"
-
-#: ui_cobrarbase.h:275
-msgid "A devolver:"
-msgstr "A rembourser :"
-
-#: ui_cobrarbase.h:288
-msgid "C"
-msgstr "C"
-
-#: pluginbt_cobrar.cpp:54
-msgid "Cobrar"
-msgstr "Encaisser "
-
-#: ui_cobrarbase.h:270
+#: ui_devolucionbase.h:268
 msgid "Dialog"
 msgstr "Dialogue"
 
-#: ui_cobrarbase.h:273
-msgid "Entregado:"
-msgstr "Livrer"
+#: ui_devolucionbase.h:275
+msgid "EFECTIVO"
+msgstr "Effectif"
 
-#: ui_cobrarbase.h:271
-msgid "Total a cobrar:"
-msgstr "Total à encaisser :"
+#: ui_devolucionbase.h:273
+msgid "Nuevo Total"
+msgstr "Nouveau total"
+
+#: ui_devolucionbase.h:269
+msgid "Ticket"
+msgstr "Ticket"
+
+#: ui_devolucionbase.h:272
+msgid "Total Original"
+msgstr "Total Original"
+
+#: ui_devolucionbase.h:276
+msgid "VALE COMPRA"
+msgstr "Bon d'achat"
 
 
