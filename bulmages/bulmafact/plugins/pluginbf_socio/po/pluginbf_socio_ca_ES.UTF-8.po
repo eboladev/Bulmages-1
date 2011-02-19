@@ -5,7 +5,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
 "POT-Creation-Date: 2009-05-16 15:39+0200\n"
-"PO-Revision-Date: 2010-07-28 16:07+0200\n"
+"PO-Revision-Date: 2011-02-19 16:25+0100\n"
 "Last-Translator: Walter Garcia-Fontes <walter.garcia@upf.edu>\n"
 "Language-Team: CATALAN\n"
 "MIME-Version: 1.0\n"
@@ -38,7 +38,7 @@ msgstr "Actual·litza llistat"
 
 #: ui_tutorbase.h:531 ui_tutoreslistbase.h:309
 msgid "Banco:"
-msgstr "Banc"
+msgstr "Banc:"
 
 #: tutoreslist.cpp:218 ui_tutoreslistbase.h:341 ui_tutoreslistbase.h:346
 msgid "Borrar Tutor"
@@ -134,15 +134,15 @@ msgstr "Heu de seleccionar una línia"
 
 #: tutoreslist.cpp:271
 msgid "Direccion"
-msgstr "Adreça:"
+msgstr "Adreça"
 
 #: tutoreslist.cpp:277
 msgid "Direccion URL"
-msgstr "Adreça:"
+msgstr "Adreça"
 
 #: tutoreslist.cpp:276
 msgid "Direccion de correo electronica"
-msgstr "Direcció de correu electrònic"
+msgstr "Adreça de correu electrònic"
 
 #: ui_tutorbase.h:523
 msgid "Direccion:"
@@ -150,7 +150,7 @@ msgstr "Adreça:"
 
 #: ui_tutorbase.h:529
 msgid "E-Mail:"
-msgstr ""
+msgstr "E-Mail:"
 
 #: tutoreslist.cpp:217 ui_tutoreslistbase.h:329 ui_tutoreslistbase.h:334
 msgid "Editar Tutor"
@@ -210,7 +210,7 @@ msgstr "Desa cobrament"
 
 #: ui_tutorbase.h:540
 msgid "Hijos"
-msgstr "Fills"
+msgstr "Fills/Filles"
 
 #: tutoreslist.cpp:263 tutorview.cpp:51
 msgid "ID tutor"
@@ -218,11 +218,11 @@ msgstr "ID tutor"
 
 #: tutorview.cpp:223
 msgid "Id alumno"
-msgstr "Id alumne"
+msgstr "Id alumne/a"
 
 #: tutorview.cpp:225
 msgid "Id tutor"
-msgstr ""
+msgstr "Id tutor"
 
 #: tutorview.cpp:222
 msgid "Identificador"
@@ -234,7 +234,7 @@ msgstr "Imprimeix el llistat"
 
 #: ui_tutorbase.h:519
 msgid "NIF:"
-msgstr ""
+msgstr "NIF:"
 
 #: tutoreslist.cpp:266 ui_tutorbase.h:534
 msgid "Nombre"
@@ -270,7 +270,7 @@ msgstr "Número soci"
 
 #: tutoreslist.cpp:270
 msgid "Numero cuenta corriente"
-msgstr "Codi de compte corrent.:"
+msgstr "Codi de compte corrent:"
 
 #: tutorview.cpp:55 tutorview.cpp:56 tutorview.cpp:57 tutorview.cpp:58
 #: tutorview.cpp:59 tutorview.cpp:60 tutorview.cpp:61 tutorview.cpp:62
@@ -284,7 +284,7 @@ msgstr "Nombre de fax"
 
 #: tutoreslist.cpp:274
 msgid "Numero de telefono"
-msgstr "Nombre de telèfon"
+msgstr "Número de telèfon"
 
 #: ui_tutorbase.h:521
 msgid "Nº Socio"
@@ -308,7 +308,7 @@ msgstr "Població"
 
 #: ui_tutorbase.h:536
 msgid "Porcentaje de facturacion"
-msgstr "Percentatge de càrrega..."
+msgstr "Percentatge de facturació"
 
 #: tutorview.cpp:66
 msgid "Provincia"
@@ -328,11 +328,11 @@ msgstr "Soci"
 
 #: ui_tutorbase.h:527
 msgid "Telefono fijo:"
-msgstr "Telèfon fix:"
+msgstr "Telèfon fix"
 
 #: ui_tutorbase.h:528
 msgid "Telefono movil:"
-msgstr "Telèfon mòbil:"
+msgstr "Telèfon mòbil"
 
 #: tutorview.cpp:126
 msgid "Tiene que guardar el documento antes de poder imprimirlo."
