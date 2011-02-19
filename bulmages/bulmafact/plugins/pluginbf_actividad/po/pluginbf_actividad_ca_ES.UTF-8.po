@@ -5,7 +5,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
 "POT-Creation-Date: 2011-02-04 12:53+0100\n"
-"PO-Revision-Date: 2011-02-14 14:07+0100\n"
+"PO-Revision-Date: 2011-02-19 14:17+0100\n"
 "Last-Translator: Walter Garcia-Fontes <walter.garcia@upf.edu>\n"
 "Language-Team: CATALAN\n"
 "Language: \n"
@@ -85,7 +85,7 @@ msgstr "BLMonthCalendar"
 
 #: ui_convocatoriaslistbase.h:310
 msgid "Banco:"
-msgstr "Bancs"
+msgstr "Banc"
 
 #: actividadeslist.cpp:239 ui_convocatoriaslistbase.h:333
 #: ui_convocatoriaslistbase.h:336 ui_actividadeslistbase.h:281
