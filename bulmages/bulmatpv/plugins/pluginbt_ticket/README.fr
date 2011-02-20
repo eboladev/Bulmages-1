@@ -1,15 +1,15 @@
 #######
 #Plugins
 #######
-#README.es
-#20080501 
+#README.fr
+#20110220 
 
-Nombre: Ticket en pantalla.
+Nombre: Ticket àl'écran.
 
 Biblioteca: libpluginbt_ticket.so
 
-Descripción: <H1>Presentación de ticket en pantalla</H1>
-<P>Muestra la composición del ticket en pantalla, permitiendo la fácil edición del mismo.</P>
+Descripción: <H1>Presentation du ticket à l'écran</H1>
+<P>Il montre la composition du ticket àl'écran, en permettant l'édition facile de ce dernier.</P>
 <HR>
 
 ParmBD: 
@@ -24,4 +24,4 @@ Incompatibles: libpluginbt_ivaincluido.so;libpluginbt_ticketivaincluido.so
 
 Orden: 4
 
-Comentarios: Ideal para bares, cafeterías y restaurantes.
+Comentarios: Idéal pour bars, cafétérias et restaurants.
