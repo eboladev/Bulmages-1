@@ -1,16 +1,15 @@
 #######
 #Plugins
 #######
-#README.es
+#README.fr
 #20080501 
 
-Nombre: Total del ticket en pantalla.
+Nombre: Total du ticket à l'écran.
 
 Biblioteca: libpluginbt_total.so
 
-Descripción: <H1>Total Ticket en Pantalla</H1>
-<P>Muestra el total del ticket en pantalla y botones para registrar el cobro, imprimir ticket y
-abrir el cajón portamonedas.</P>
+Descripción: <H1>Total du ticket à l'écran.</H1>
+<P>Il montre le total du ticket à l'écran et les boutons pour enregistrer l'encaissement, imprimer le ticket et ouvrir le tiroir caisse.</P>
 <HR>
 
 ParmBD: 
@@ -25,4 +24,4 @@ Incompatibles: libpluginbt_ivaincluido.so; libpluginbt_totalivaincluido.so
 
 Orden:
 
-Comentarios: Ideal para tiendas.
+Comentarios: Idéal pour les magasins.

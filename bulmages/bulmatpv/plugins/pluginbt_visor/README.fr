@@ -4,16 +4,14 @@
 #README.es
 #20080501 
 
-Nombre: Visor TPV
+Nombre: Viseur TPV
 
 Biblioteca: libpluginbt_visor.so
 
-Descripción: <H1>Visor TPV</H1>
-<P>Maneja un visor externo para un TPV mostrando los articulos que se van introduciendo,
-el total a pagar y el cambio a devolver en el cobro. Usa el parámetro CONF_TPV_VISOR_FILE para determinar
-en qué dispositivo debe escribir.</P>
-<P>Debe establecersa la velocidad de comunicacion con el visor cada vez que arranca el sistema.
-Una posible forma es editar el archivo /etc/init.d/bootmisc.sh y agregar al final de este el comando
+Descripción: <H1>Viseur TPV</H1>
+<P>Il manie un viseur externe pour TPV en montrant les articles qui sont introduits, le total à payer et le changement à restituer dans l'encaissement. Il utilise le paramètre CONF_TPV_VISOR_FILE pour déterminer dans quel dispositif il doit écrire.</P>
+<P>Il doit établir la vitesse de communication avec le viseur chaque fois qu'il extrait le système. Une possible manière est de publier les archives /etc/init.d/bootmisc.sh et d'ajouter à la fin cette commande
+
 <B>stty -F /dev/ttyUSB0 9600</B></P>
 <HR>
 
@@ -27,8 +25,8 @@ Dependencias:
 
 Incompatibles:
 
-Categorias: Utilidades avanzadas; Experimentales;
+Categorias: Utilites avancees; Experimental;
 
 Orden: 10
 
-Comentarios: Testeado con un visor Samsung Bixolon BCD1000
+Comentarios: Testé avec un viseur Samsung Bixolon BCD1000

@@ -1,15 +1,15 @@
 #######
 #Plugins
 #######
-#README.es
-#20080501 
+#README.fr
+#20110220
 
-Nombre: Total de ticket en pantalla (IVA Inc.)
+Nombre: Total du ticket à l'écran (TVA Incluse.)
 
 Biblioteca: libpluginbt_totalivaincluido.so
 
-Descripción: <H1>Total Ticket en Pantalla (IVA Inc.)</H1>
-<P>Muestra el total del ticket en pantalla</P>
+Descripción: <H1>Total du ticket à l'écran (TVA Incluse.)</H1>
+<P>Il montre le total du ticket à l'écran</P>
 <HR>
 
 ParmBD: 
@@ -24,7 +24,7 @@ Incompatibles: libpluginbt_total.so
 
 Orden:
 
-Categorias: Experimentales;IVA incluido;
+Categorias: Experimental;TVA incluse;
 
 
-Comentarios: Ideal para Bares, Cafeterias y Restaurantes.
+Comentarios: Idéal pour Bars, Cafétérias et Restaurants.
