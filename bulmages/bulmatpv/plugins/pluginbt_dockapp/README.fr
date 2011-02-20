@@ -1,23 +1,18 @@
 #######
 #Plugins
 #######
-#README.es
-#20100501 
+#README.fr
+#20110220
 
-Nombre: Embeber Aplicacion
+Nombre: Application intégrée
 
 Biblioteca: libpluginbt_dockapp.so
 
-Descripción: <H1>Embebido de Aplicaciones</H1>
-<P>Permite incorporar al TPV una aplicación en forma de dockwindow.</P>
-<P>Por ejemplo la incorporacion de un cliente de chat, una calculadora o un teclado virtual sin tener que cambiar el contexto
-de la aplicacion de TPV</P>
-<P>Al instalar este componente aparecera un boton en la barra de accesos con el titulo DockApp. Para embeber una aplicacion externa es 
-importante tener dicha aplicacion visualizada en pantalla. Al pulsar sobre el boton DockApp el cursor del raton cambiara a una mirilla con la que
-hay que pulsar sobre la aplicacion que deseemos embeber. Tras pulsar sobre la ventana ésta del explorador de ventanas y pasara a ubicarse
-en un dockWidget de BulmaTPV. Para hacer aparecer o desaparecer ese dockWidget podemos pulsar con el boton derecho del raton
-en las areas de movimiento de las DockAreas y seleccionando ver el DockWidget apropiado.</P>
-<P>Al cerrar BulmaTPV los programas embebidos volverán a aparecer en el escritorio</P>
+Descripción: <H1>Intégration d'applications</H1>
+<P>Il permet d'incorporer au TPV une application sous forme de dockwindow.</P>
+<P>Par exemple l'intégration d'un client de chat, d'un calculateur ou un clavier virtuel sans devoir changer le contexte de l'application de TPV</P>
+<P>En installant ce composant aparait un bouton dans la barre d'accès avec le titre DockApp. Pour intégrer une application externe il est important d'avoir cette application visualisée sur l'écran. En pressant le bouton DockApp, le curseur de la souris change en un judas qu'il faut pousser sur l'application que nous souhaitons intégrée. Après avoir appuyé sur la fenêtre celle-ci ouvre l'explorateur de fenêtres et il met un dockWidget de BulmaTPV. Pour faire  apparaître ou disparaître le dockWidget nous pouvons presser le bouton droit de la souris dans les secteurs de mouvement des DockAreas et en choisissant, afficher le DockWidget approprié.</P>
+<P>En fermant BulmaTPV les programmes intégrés apparaîtront à nouveau dans le bureau</P>
 <HR>
 
 ParmBD: 
@@ -30,7 +25,7 @@ Dependencias: libpluginbt_accesobotones.so
 
 Incompatibles:
 
-Categorias: Utilidades avanzadas; Experimentales;
+Categorias: Utilites avancees; Experimental;
 
 Orden: 90
 

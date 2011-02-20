@@ -1,8 +1,8 @@
 #######
 #Plugins
 #######
-#README.es
-#20080501 
+#README.fr
+#20110220
 
 Nombre: Remboursement
 
