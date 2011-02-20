@@ -1,15 +1,15 @@
 #######
 #Plugins
 #######
-#README.es
-#20080501 
+#README.fr
+#20110220
 
-Nombre: Introducir compras en el TPV
+Nombre: Introduire des achats dans le TPV
 
 Biblioteca: libpluginbt_stockcompras.so
 
-Descripción: <H1>Plugin de Introduccion de Compras</H1>
-<P>Permite ver el stock de cada articulo, y introducir compras de dichos articulos.</P>
+Descripción: <H1>Greffon d'ntroduction des achats dans le TPV</H1>
+<P>Il permet de voir le stock de chaque article, et d'introduire les achats de ces articles.</P>
 <HR>
 
 ParmBD:
@@ -23,4 +23,4 @@ Dependencias: libpluginbf_articulo.so
 Incompatibles:
 
 Orden: 50
-Comentarios: Ideal todo tipo de comercio.
+Comentarios: Idéal tout type de commerce.
