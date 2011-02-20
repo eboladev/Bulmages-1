@@ -6,7 +6,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
 "POT-Creation-Date: 2011-02-04 12:53+0100\n"
-"PO-Revision-Date: 2011-02-02 15:50+0100\n"
+"PO-Revision-Date: 2011-02-20 09:17+0100\n"
 "Language-Team: French <kde-i18n-doc@kde.org>\n"
 "Language: fr\n"
 "MIME-Version: 1.0\n"
@@ -14,14 +14,15 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Lokalize 1.2\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"Last-Translator: \n"
 
 #: pluginbl_clipboard.cpp:238
 msgid "Actualizacion completada con exito."
-msgstr ""
+msgstr "Mise à jour complétée avec succès."
 
 #: pluginbl_clipboard.cpp:109 pluginbl_clipboard.cpp:130
 msgid "Actualizar desde hoja de calculo"
-msgstr ""
+msgstr "Mettre à jour depuis une feuille de calcul"
 
 #: pluginbl_clipboard.cpp:107 pluginbl_clipboard.cpp:124
 msgid "Pegar desde hoja de calculo"

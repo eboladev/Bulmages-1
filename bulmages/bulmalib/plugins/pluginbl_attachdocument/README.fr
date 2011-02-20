@@ -4,11 +4,11 @@
 #README.fr
 #20110204
 
-Nombre: Ajouter des documents
+Nombre: Joindre des documents
 
 Biblioteca: libpluginbl_attachdocument.so
 
-Descripción: <H1>Ajouter des documents</H1>
+Descripción: <H1>Joindre des documents</H1>
 <P>Permet d'associer des fichiers à des fiches pour les ouvrir postérieurement. Garde un lien vers l'application.</P>
 <P>Une fois installé le greffon fait apparaitre une option dans toutes les fiches du programme dans le menu contextuel de celle-ci qui permet d'ajouter des références aux fiches, afficher les fichiers existants et effacer les références</P>
 <BR>
