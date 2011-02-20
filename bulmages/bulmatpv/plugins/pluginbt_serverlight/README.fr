@@ -1,15 +1,15 @@
 #######
 #Plugins
 #######
-#README.es
-#20100514 
+#README.fr
+#20110220
 
-Nombre: Servidor ligero
+Nombre: Serveur portable
 
 Biblioteca: libpluginbt_serverlight.so
 
-Descripción: <H1>Servidor ligero</H1>
-<P>Permite comunicarse con dispositivos ligeros como PDAs o el cliente NDS para las funciones de gestión de tickets. Necesita que en los dispositivos móviles se instale una aplicación cliente.</P>
+Descripción: <H1>Serveur portables</H1>
+<P>Permet de communiquer avec des dispositifs portables comme PDAs ou le client NDS pour les fonctions de gestion de tickets. Il a besoin dans les dispositifs mobiles  d'avoir une application client.</P>
 
 <HR>
 
@@ -27,4 +27,4 @@ Categorias: Utilidades avanzadas;
 
 Orden: 4
 
-Comentarios: Ideal para un restaurante donde los camareros pueden enviar comandas al TPV directamente a través de la red.
+Comentarios: Idéal pour un restaurant où les serveurs peuvent directement envoyer des commandes au TPV à travers le réseau.
