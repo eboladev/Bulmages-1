@@ -74,20 +74,6 @@ BEGIN
 		ingresopartida BOOLEAN DEFAULT TRUE NOT NULL,
 		padre integer DEFAULT 0
 		);
-		
-		INSERT INTO partida (codigocompletopartida,codigopartida, nombrepartida,ingresopartida, padre) VALUES (''0'',''0'',''Ingressos'',TRUE, NULL);
-		INSERT INTO partida (codigocompletopartida,codigopartida, nombrepartida,ingresopartida, padre) VALUES (''1'',''1'',''Despeses'',TRUE, NULL);
-		INSERT INTO partida (codigocompletopartida,codigopartida, nombrepartida,ingresopartida,padre) VALUES (''001'',''01'',''Quotes cobrades'',TRUE,1);
-		INSERT INTO partida (codigocompletopartida,codigopartida, nombrepartida,ingresopartida,padre) VALUES (''002'',''02'',''Altres ingressos dels associats'',TRUE,1);
-		INSERT INTO partida (codigocompletopartida,codigopartida, nombrepartida,ingresopartida,padre) VALUES (''003'',''03'',''Subvencions'',TRUE,1);
-		INSERT INTO partida (codigocompletopartida,codigopartida, nombrepartida,ingresopartida,padre) VALUES (''101'',''01'',''Activitats pròpies del fi social'',FALSE,2);
-		INSERT INTO partida (codigocompletopartida,codigopartida, nombrepartida,ingresopartida,padre) VALUES (''102'',''02'',''Donacions'',FALSE,2);
-		INSERT INTO partida (codigocompletopartida,codigopartida, nombrepartida,ingresopartida,padre) VALUES (''103'',''03'',''Material oficina i trameses'',FALSE,2);
-		INSERT INTO partida (codigocompletopartida,codigopartida, nombrepartida,ingresopartida,padre) VALUES (''104'',''04'',''Despeses banc'',FALSE,2);
-		INSERT INTO partida (codigocompletopartida,codigopartida, nombrepartida,ingresopartida,padre) VALUES (''105'',''05'',''Serveis públics'',FALSE,2);
-		INSERT INTO partida (codigocompletopartida,codigopartida, nombrepartida,ingresopartida,padre) VALUES (''106'',''06'',''Quota FaPaC'',FALSE,2);
-
-
 
 	END IF;
 

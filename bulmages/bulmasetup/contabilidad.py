@@ -187,6 +187,15 @@ class Contabilidad(Ui_ModificarContabilidadBase, Empresa):
 		  self.process.start(self.command)
 		  self.process.waitForFinished(-1)
 		  self.writecommand(self.process.readAllStandardOutput())
+		  # Tambien tenemos que hacer las comprobaciones de idioma.
+		  locale = QtCore.QLocale()
+		  self.filename = plugins.pathdbplugins + self.mui_plugins.item(self.i,4).text().left(self.mui_plugins.item(self.i,4).text().size() - 4) + "_" + locale.name().left(5) + ".sql"
+		  if (QFile.exists(self.filename)):
+		    self.command = 'su postgres -c \"psql -t -f ' + self.filename + ' ' + self.database + '\"'
+		    self.writecommand(self.command)
+		    self.process.start(self.command)
+		    self.process.waitForFinished(-1)
+		    self.writecommand(self.process.readAllStandardOutput())
 	  self.i = self.i + 1
 	self.x = self.x + 1
         self.progress.setValue(self.progress.value() + 1)
