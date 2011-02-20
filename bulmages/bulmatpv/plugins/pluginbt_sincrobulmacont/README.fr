@@ -1,15 +1,15 @@
 #######
 #Plugins
 #######
-#README.es
-#20080501
+#README.fr
+#20110220
 
-Nombre: Sincronización con BulmaCont
+Nombre: Synchronisation avec BulmaCont
 
 Biblioteca: 
 
-Descripción: <H1>Sincronización con BulmaCont</H1>
-<P>Permite la sincronización del TPV con Bulmacont</P>
+Descripción: <H1>Synchronisation avec BulmaCont</H1>
+<P>Il permet le synchronisation du TPV avec Bulmacont</P>
 <HR>
 
 ParmBD: PluginBt_SincroBulmaCont
@@ -24,43 +24,24 @@ Incompatibles:
 
 Orden:
 
-Comentarios: Precisa de tener instalado dblink.
-No se instala propiamente como un plugin ya que no lleva librerías asociadas.
-
-
-Prerequisitos:
-
-Debe instalarse DBlink que esta en el paquete postgresql-contrib (distros Debian o Ubuntu)
-
-para poner DBlink en la base de datos seleccionada debe hacerse:
-
+Comentarios: Il spécifie d'avoir installé dblink. Il n'est pas proprement installé comme un plugin puisqu'il ne porte pas de librairies associées. Pré-conditions : On doit installer DBlink avec celle-ci dans le paquet postgresql-contrib (distros Debian o Ubuntu) pour mettre DBlink dans la base de données choisie il doit être saisie : 
 	$ psql database < dblink.sql
 
-Instalacion del plugin
+
+Installation du plugin
 ----------------------
 
-Debe ejecutarse el script de funcionamiento en la base de datos seleccionada.
+On doit exécuter le script de fonctionnement dans la base de données choisie. Exemple : 
+	$ psql bulmafact < 
+	revf-pluginsyncbulmacont.sql
 
-Ejemplo:
-	$ psql bulmafact < revf-pluginsyncbulmacont.sql
+Une fois installé, il doit être composé le paramètre de la facturation DataBaseContabilidad et spécifier dans ce paramètre la base de données de comptabilité qui doit automatiquement être mise à jour. Une fois fait, toutes les opérations que nous effectuons avec la facturation seront transférées à la comptabilité. 
 
-Una vez instalado el plugin debe configurarse el parametro de la facturacion DataBaseContabilidad y especificar en dicho parametro la base de datos de contabilidad que se debe actualizar automaticamente.
-
-Una vez hechos estos pasos todas las operaciones que realicemos con faturacion serán traspasadas a contabilidad.
-
-
-Notas
+Notes
 -----
 
-En este plugin se proporcionan dos scripts adicionales.
+Dans ce plugin on fournit deux scripts additionnels.
+- Le premier remet toute la fonctionalité de synchronisation d'une base de données de facturation.
+- Le deuxième synchronise Toutes les données (utile pour des bases de données déjà formées). 
 
-   - El primero quita toda la funcionalidad de sincronizacion de una base de datos de facturacion.
-
-   - El segundo hace un sincronizado de TODOS los datos (util para bases de datos ya formadas).
-
-
-Mediante estos scripts se puede hacer una sincronizacion manual en lugar de una sincronizacion automatica.
-
-
-Las opciones de sincronizacion son ''standar'' si quiere opciones de sincronización especiales modifique los scripts
-para que se ajusten a sus necesidades.
+Au moyen de ceux-ci, on peut faire un synchronisation manuelle au lieu d'un synchronisation automatique. Les options de synchronisation sont ' ; ' ; étendre' ; ' ; s'il veut des options de synchronisation spéciales modifiez les scripts pour qu'ils soient adaptés à leurs nécessités.

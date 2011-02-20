@@ -1,18 +1,17 @@
 #######
 #Plugins
 #######
-#README.es
-#20080501 
+#README.fr
+#20110220
 
-Nombre: Servidor de Sincronización
+Nombre: Serveur de Synchronisation
 
 Biblioteca: libpluginbt_serversync.so
 
-Descripción: <H1>Servidor de Sincronizacion</H1>
-<P>Crea en el TPV un servidor de comparticion de tickets entre los demás TPVs.
-En el resto de TPVs hay que instalar el libpluginbt_clientsync y configurar los parametros de configuración para que accedan al servidor.</P>
+Descripción: <H1>Serveur de Synchronisation</H1>
+<P>Créer dans le TPV un serveur de répartition de tickets entre les autres TPVs. Dans le reste de TPVs il faut installer le libpluginbt_clientsync et composer les paramètres de configuration pour qu'ils accèdent à l'employé.</P>
 
-<P>Una vez configurado todos los TPV's tendran una base comun de tickets abiertos.</P>
+<P>Une fois composés tous les TPV il y aura une base commune de tickets ouverts.</P>
 <HR>
 
 ParmBD: 
@@ -29,4 +28,4 @@ Categorias: Experimentales; Utilidades avanzadas;
 
 Orden: 4
 
-Comentarios: Ideal para lugares donde haya que haber más de un puesto de venta.
+Comentarios: Idéal pour les lieux où il faut avoir plus d'un poste de vente.
