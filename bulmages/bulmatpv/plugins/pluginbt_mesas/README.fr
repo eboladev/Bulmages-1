@@ -1,15 +1,15 @@
 #######
 #Plugins
 #######
-#README.es
-#20100501 
+#README.fr
+#20110220
 
-Nombre: Control de mesas
+Nombre: Contrôle de tables
 
 Biblioteca: libpluginbt_mesas.so
 
-Descripción: <H1>Control de mesas</H1>
-<P>Permite mostrar graficamente la distribución de mesas para el tratamiento de los tickets.</P>
+Descripción: <H1>Contrôle de tables</H1>
+<P>Il permet de montrer graphiquement la distribution des tables pour le traitement des tickets.</P>
 <HR>
 
 ParmBD: 
@@ -22,7 +22,7 @@ Dependencias: libpluginbt_accesobotones.so
 
 Incompatibles:
 
-Categorias: Utilidades avanzadas; Experimentales; Restauracion;
+Categorias: Utilites avancees; Experimental; Restauration;
 
 Orden: 5
 
