@@ -1,15 +1,15 @@
 #######
 #Plugins
 #######
-#README.es
-#20080501 
+#README.fr
+#20110220
 
-Nombre: Resumen de Ticket en pantalla
+Nombre: Résumé de Ticket à l'écran
 
 Biblioteca: libpluginbt_ticketdesglose.so
 
-Descripción: <H1>Presentación de Resumen de Ticket</H1>
-<P>Muestra la información mas relevante del ticket en pantalla.</P>
+Descripción: <H1>Présentation du résumé de Ticket</H1>
+<P>Il montre l'information la plus significative du ticket à l'écran.</P>
 <HR>
 
 ParmBD: 
