@@ -1,17 +1,16 @@
 #######
 #Plugins
 #######
-#README.es
-#20080501 
+#README.fr
+#20110220 
 
-Nombre: Teclado Numérico
+Nombre: Clavier numérique
 
 Biblioteca: libpluginbt_tecladonumerico.so
 
-Descripción: <H1>Teclado Numérico</H1>
-<P>Muestra el teclado numérico en un docket con los principales botones de uso.
-Ideal para pantallas táctiles.</P>
-<P>El teclado permite escribir numeros, establecer cantidad y cambiar precios.</P>
+Descripción: <H1>Clavier numérique</H1>
+<P>Il montre le clavier numérique dans un dock et avec les principaux boutons d'utilisation. Idéal pour écrans tactiles.</P>
+<P>Le clavier permet d'écrire des nombres, d'établir des quantités et de changer des prix.</P>
 <HR>
 
 ParmBD: 
@@ -24,8 +23,8 @@ Dependencias: libplugintpv.so
 
 Incompatibles:
 
-Categorias: Utilidades genericas;
+Categorias: Utilites generiques;
 
 Orden:
 
-Comentarios: Perfecto en todas las instalaciones con pantalla tactil.
+Comentarios: Idéal pour écrans tactiles.
