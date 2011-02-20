@@ -1,15 +1,15 @@
 #######
 #Plugins
 #######
-#README.es
-#20080801 
+#README.fr
+#20110220
 
-Nombre: Tickets Devueltos
+Nombre: Tickets restitués
 
 Biblioteca: libpluginbt_ticketdevuelto.so
 
-Descripción: <H1>Tickets Devueltos</H1>
-<P>Permite indicar que tickets no han sido recogidos por los clientes.</P>
+Descripción: <H1>Tickets restitués</H1>
+<P>Il permet d'indiquer que les tickets n'ont pas été repris par les clients.</P>
 <HR>
 
 ParmBD: PluginBt_TicketDevuelto
@@ -22,8 +22,8 @@ Dependencias: libpluginbt_accesobotones.so
 
 Incompatibles:
 
-Categorias: Facturacion generica; Experimentales;
+Categorias: Facturation generique; Experimental;
 
 Orden: 50
 
-Comentarios: Ideal todo tipo de comercio.
+Comentarios: Idéal pour tout type de commerce.
