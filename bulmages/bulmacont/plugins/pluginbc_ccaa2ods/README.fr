@@ -4,11 +4,11 @@ Plugins
 #README.fr
 20110203
 
-Nombre: Comptes annuels
+Nombre: Balance Comptes annuels
 
 Biblioteca: libpluginbc_ccaa2ods.so
 
-Descripción: <H1>Comptes annuels</H1>
+Descripción: <H1>Balances Comptes annuels</H1>
 <P>Permet d'obtenir une balance de comptes annuels pour les plans comptables espagnols de 2007 : Comptes annuels, abrégés et des PMIs. Et pour les plans comptables avant 2008: Comptes annuels et abrégés des associations à but non lucratif. </P>
 <HR>
 
