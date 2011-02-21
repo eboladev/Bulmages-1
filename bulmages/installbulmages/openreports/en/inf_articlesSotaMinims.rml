@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+<!DOCTYPE document SYSTEM "rml_1_0.dtd">
+<document>
+<template pageSize="(21cm, 29.7cm)" leftMargin="0cm" rightMargin="0cm" topMargin="1.0cm" bottomMargin="2.0cm" title="Articles per sota d'stock mínim" author="Xavi Drudis Ferran" allowSplitting="20">
+
+	<pageTemplate id="main">
+		<pageGraphics>
+		<!-- EL LOGO DE CABECERA -->
+		<image x="3cm" y="26cm" width="8cm" file="logo.jpg"/>
+
+		<!-- EL PIE DE PAGINA -->
+                <setFont name="Helvetica" size="8"/>
+	        
+                <drawCentredString x="10.5cm" y="28.7cm">Pàg. <pageNumber/></drawCentredString> 
+
+		<fill color="(0,0,0)"/>	
+		<stroke color="(0,0,0)"/>
+		<setFont name="Helvetica" size="16"/>
+
+		<drawString x="1.5cm" y="25.7cm">Articles per sota d'stock mínim</drawString>
+
+
+		<!-- FRAME DE CONTENIDOS -->
+		<frame id="column" x1="1cm" y1="3cm" width="19cm" height="23cm"/>
+        </pageGraphics>
+	</pageTemplate>	
+</template>
+<stylesheet>
+
+	<blockTableStyle id="tablatotales">	
+		<blockAlignment value="LEFT" start="0,0" stop="0,-1"/>
+		<blockAlignment value="RIGHT" start="2,0" stop="-1,-1"/>
+		<blockValign value="TOP" start="0,0" stop="-1,-1"/>
+		<blockTextColor colorName="(0,0,0)" start="0,0" stop="-1,0"/>	
+		<blockBackground colorName="(0.7,0.7,0.7)" start="0,0" stop="-1,0"/>
+		<blockFont name="Helvetica-Bold" size="12" start="0,0" stop="-1,0"/>
+		<blockFont name="Helvetica" size="12" start="0,1" stop="-2,-1"/>
+
+		<lineStyle kind="INNERGRID" colorName="(0.5,0.5,0.5)"  start="0,0" stop="-1,-1"/>
+		<lineStyle kind="OUTLINE" colorName="black"  start="0,0" stop="-1,-1"/>	
+         
+	</blockTableStyle>	
+
+        <paraStyle name="import" fontName="Helvetica" fontSize="8" alignment="RIGHT"/>
+        <paraStyle name="unitats" fontName="Helvetica-Bold" fontSize="10" alignment="RIGHT"/>
+
+        <paraStyle name="codi" fontName="Helvetica-Bold" fontSize="8" leading="9" alignment="LEFT"/>
+
+</stylesheet>
+
+<story>
+
+
+
+<spacer length="15"/>
+<blockTable style="tablatotales" colWidths="4.7cm, 3.3cm, 2.75cm, 2.75cm, 2.75cm,2.75cm" repeatRows="1">
+<tr>
+<td>Article</td>
+<td>Codi Complet</td>
+<td>pvp unitari</td>
+<td>Stock mínim</td>
+<td>Stock actual</td>
+<td>Falta</td>
+</tr>
+
+
+
+<!--QUERY="
+select ar.nomarticulo, ar.codigocompletoarticulo, 
+    TO_CHAR(pvparticulo,'FM99999990D00') as pvparticulo,
+        
+
+  rtrim(TO_CHAR(stockminim,'FM99999990D99'),'., ') as stockminim, 
+  rtrim(TO_CHAR(stockarticulo,'FM99999990D99'),'., ') as stockarticulo, 
+  rtrim(TO_CHAR(stockminim -stockarticulo,'FM99999990D99'),'., ')  as unifalta,
+
+  TO_CHAR(     stockminim*pvparticulo,'FM99999990D00') as preuminim , 
+  TO_CHAR(stockarticulo*pvparticulo,'FM99999990D00') as  preu, 
+  TO_CHAR( (stockminim -stockarticulo)*pvparticulo,'FM99999990D00') as preufalta
+        
+ from
+articulo ar, 
+(select idarticulo, sum(valminimsalmacen) as stockminim
+from minimsalmacen ma
+group by idarticulo)
+min
+where 
+ min.idarticulo = ar.idarticulo
+and ar.controlstockarticulo
+and ar.stockarticulo < min.stockminim
+order by codigocompletoarticulo
+"-->
+
+<tr>
+<td>
+<para style="codi">[nomarticulo]</para>
+</td>
+<td>
+<para style="codi">[codigocompletoarticulo]</para>
+</td>
+ <td>
+<para style="import">[pvparticulo] €</para>
+</td>
+<td>
+<para style="unitats">[stockminim]</para>
+<para  style="import">[preuminim] €</para>
+</td>
+<td>
+<para style="unitats">[stockarticulo]</para>
+<para   style="import">[preu] €</para>
+</td>
+<td>
+<para style="unitats">[unifalta]</para>
+<para  style="import">[preufalta] €</para>
+</td>
+</tr>
+<!--END QUERY-->
+
+</blockTable>
+</story>
+</document>

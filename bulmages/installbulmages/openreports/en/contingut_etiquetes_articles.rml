@@ -1,0 +1,15 @@
+       <!-- QUERY[sqetiq]="SELECT '' as sqetiq1 WHERE [hihatextsuperior] " -->
+            <para fontName="Helvetica" fontSize="[midaLletra.value]" alignment="CENTER" leading="[midaLletra.value]"><!-- QUERY[sqetiq1]="SELECT 1 WHERE [textPVP.checked] " --><b>[pvp]</b><!-- END QUERY[sqetiq1]-->[sep][descrip]</para>
+            <spacer length="1mm"/>
+       <!-- END QUERY[sqetiq]-->
+
+
+       <!-- QUERY[sqetiq]="SELECT 1 WHERE [hihabarresalmig] " -->
+          <barCode  height="[talt_barres]mm" code="[format]">[barres]</barCode>
+       <!-- END QUERY[sqetiq]-->
+
+       <!-- QUERY[sqetiq]="SELECT 1 WHERE [hihatextinferior] " -->
+          <spacer length="1mm"/>
+          <para  fontName="Helvetica" fontSize="[midaLletra.value]" alignment="CENTER" leading="[midaLletra.value]">[codigocompletoarticulo]</para>
+       <!-- END QUERY[sqetiq]-->
+

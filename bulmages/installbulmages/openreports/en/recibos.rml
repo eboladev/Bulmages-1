@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+<!DOCTYPE document SYSTEM "rml_1_0.dtd">
+<document>
+<template pageSize="(21cm, 29.7cm)" leftMargin="0cm" rightMargin="0cm" topMargin="1.0cm" bottomMargin="2.0cm" title="Rebuts" author="Tomeu Borras" allowSplitting="20">
+
+	<pageTemplate id="main">
+
+		<pageGraphics>
+
+		
+		<image x="1cm" y="8cm" width="3cm" file="logo.jpg"/>
+		<image x="1cm" y="18cm" width="3cm" file="logo.jpg"/>
+		<image x="1cm" y="28cm" width="3cm" file="logo.jpg"/>
+
+
+		<!-- RECUADROS CONTENEDORES -->
+		<stroke color="(0,0,0)"/>
+		<lineMode width="0.3mm"/>
+		<rect round="0cm" x="1cm" y="0.5cm" width="19cm" height="9cm" fill="no" stroke="yes"/>
+		<rect round="0cm" x="1cm" y="10.5cm" width="19cm" height="9cm" fill="no" stroke="yes"/>
+		<rect round="0cm" x="1cm" y="20.5cm" width="19cm" height="9cm" fill="no" stroke="yes"/>
+
+
+
+		<!-- EL RECUADRO DE CLAUSULAS -->
+		<rect round="0cm" x="4.5cm" y="21cm" width="8.5cm" height="2cm" fill="no" stroke="yes"/>
+		<rect round="0cm" x="4.5cm" y="11cm" width="8.5cm" height="2cm" fill="no" stroke="yes"/>
+		<rect round="0cm" x="4.5cm" y="1cm" width="8.5cm" height="2cm" fill="no" stroke="yes"/>
+
+		<!-- EL RECUADRO DE DOMICILIO -->
+		<rect round="0cm" x="4.5cm" y="23.4cm" width="13.5cm" height="1.4cm" fill="no" stroke="yes"/>
+		<rect round="0cm" x="4.5cm" y="13.4cm" width="13.5cm" height="1.4cm" fill="no" stroke="yes"/>
+		<rect round="0cm" x="4.5cm" y="3.4cm" width="13.5cm" height="1.4cm" fill="no" stroke="yes"/>
+
+		<!-- EL RECUADRO DE CANTIDAD EN TEXTO -->
+		<rect round="0cm" x="4.5cm" y="25.1cm" width="13.5cm" height="1.2cm" fill="no" stroke="yes"/>
+		<rect round="0cm" x="4.5cm" y="15.1cm" width="13.5cm" height="1.2cm" fill="no" stroke="yes"/>
+		<rect round="0cm" x="4.5cm" y="5.1cm" width="13.5cm" height="1.2cm" fill="no" stroke="yes"/>
+
+		<!-- EL RECUADRO DE   LIBRAMIENTO-->
+		<rect round="0cm" x="4.5cm" y="26.7cm" width="6.6cm" height="0.8cm" fill="no" stroke="yes"/>
+		<rect round="0cm" x="4.5cm" y="16.7cm" width="6.6cm" height="0.8cm" fill="no" stroke="yes"/>
+		<rect round="0cm" x="4.5cm" y="6.7cm" width="6.6cm" height="0.8cm" fill="no" stroke="yes"/>
+		
+		<!-- EL RECUADRO DE   VENCIMIENTO-->
+		<rect round="0cm" x="11.1cm" y="26.7cm" width="6.9cm" height="0.8cm" fill="no" stroke="yes"/>
+		<rect round="0cm" x="11.1cm" y="16.7cm" width="6.9cm" height="0.8cm" fill="no" stroke="yes"/>
+		<rect round="0cm" x="11.1cm" y="6.7cm" width="6.9cm" height="0.8cm" fill="no" stroke="yes"/>
+
+		<!-- EL RECUADRO DE RECIBO NUM-->
+		<rect round="0cm" x="4.5cm" y="27.5cm" width="2.5cm" height="0.8cm" fill="no" stroke="yes"/>
+		<rect round="0cm" x="4.5cm" y="17.5cm" width="2.5cm" height="0.8cm" fill="no" stroke="yes"/>
+		<rect round="0cm" x="4.5cm" y="7.5cm" width="2.5cm" height="0.8cm" fill="no" stroke="yes"/>
+
+		<!-- EL RECUADRO DE LUGAR DE LIBRAMIENTO-->
+		<rect round="0cm" x="7cm" y="27.5cm" width="7.1cm" height="0.8cm" fill="no" stroke="yes"/>
+		<rect round="0cm" x="7cm" y="17.5cm" width="7.1cm" height="0.8cm" fill="no" stroke="yes"/>
+		<rect round="0cm" x="7cm" y="7.5cm" width="7.1cm" height="0.8cm" fill="no" stroke="yes"/>
+		
+		<!-- EL RECUADRO DE IMPORTE-->
+		<rect round="0cm" x="14.1cm" y="27.5cm" width="3.9cm" height="0.8cm" fill="no" stroke="yes"/>
+		<rect round="0cm" x="14.1cm" y="17.5cm" width="3.9cm" height="0.8cm" fill="no" stroke="yes"/>
+		<rect round="0cm" x="14.1cm" y="7.5cm" width="3.9cm" height="0.8cm" fill="no" stroke="yes"/>
+
+		<!-- LOS TEXTOS ESTATICOS -->
+		<setFont name="Courier" size="8"/>
+		<drawString x="13.7cm" y="22.6cm">JULIÁN SANZ DE FRUTOS</drawString>
+		<drawString x="13.7cm" y="12.6cm">JULIÁN SANZ DE FRUTOS</drawString>
+		<drawString x="13.7cm" y="2.6cm">JULIÁN SANZ DE FRUTOS</drawString>
+
+		<drawString x="4.5cm" y="23.1cm">CLÀUSULES</drawString>
+		<drawString x="4.5cm" y="13.1cm">CLÀUSULES</drawString>
+		<drawString x="4.5cm" y="3.1cm">CLÀUSULES</drawString>
+
+		<setFont name="Helvetica" size="6"/>
+		<drawString x="4.7cm" y="28cm">REBUT NÚM.</drawString>
+		<drawString x="4.7cm" y="18cm">REBUT NÚM.</drawString>
+		<drawString x="4.7cm" y="8cm">REBUT NÚM.</drawString>
+
+		<drawString x="7.2cm" y="28cm">LLOC DE LLIURAMENT</drawString>
+		<drawString x="7.2cm" y="18cm">LLOC DE LLIURAMENT</drawString>
+		<drawString x="7.2cm" y="8cm">LLOC DE LLIURAMENT</drawString>
+
+
+		<drawString x="14.2cm" y="28cm">IMPORT</drawString>
+		<drawString x="14.2cm" y="18cm">IMPORT</drawString>
+		<drawString x="14.2cm" y="8cm">IMPORT</drawString>
+
+		<drawString x="4.7cm" y="27.2cm">DATA DE LLIURAMENT</drawString>
+		<drawString x="4.7cm" y="17.2cm">DATA DE LLIURAMENT</drawString>
+		<drawString x="4.7cm" y="7.2cm">DATA DE LLIURAMENT</drawString>
+
+		<drawString x="11.4cm" y="27.2cm">VENCIMENT</drawString>
+		<drawString x="11.4cm" y="17.2cm">VENCIMENT</drawString>
+		<drawString x="11.4cm" y="7.2cm">VENCIMENT</drawString>
+
+		<drawString x="9.4cm" y="26.4cm">Per aquest document pagarà vosté al venciment indicat</drawString>
+		<drawString x="9.4cm" y="16.4cm">Per aquest document pagarà vosté al venciment indicat</drawString>
+		<drawString x="9.4cm" y="6.4cm">Per aquest document pagarà vosté al venciment indicat</drawString>
+
+		<drawString x="4.7cm" y="24.9cm">en el següent domicili</drawString>
+		<drawString x="4.7cm" y="14.9cm">en el següent domicili</drawString>
+		<drawString x="4.7cm" y="4.9cm">en el següent domicili</drawString>
+
+		<drawString x="4.7cm" y="24.4cm">Persona o entitat:</drawString>
+		<drawString x="4.7cm" y="14.4cm">Persona o entitat:</drawString>
+		<drawString x="4.7cm" y="4.4cm">Persona o entitat:</drawString>
+
+		<drawString x="4.7cm" y="24.0cm">Adreça:</drawString>
+		<drawString x="4.7cm" y="14.0cm">Adreça:</drawString>
+		<drawString x="4.7cm" y="4.0cm">Adreça:</drawString>
+
+		<drawString x="9.4cm" y="23.5cm">NÚM. DE COMPTE</drawString>
+		<drawString x="9.4cm" y="13.5cm">NÚM. DE COMPTE</drawString>
+		<drawString x="9.4cm" y="3.5cm">NÚM. DE COMPTE</drawString>
+
+		<drawString x="4.7cm" y="22.7cm">NOM I ADREÇA DE QUI LI ÉS LLIURAT;</drawString>
+		<drawString x="4.7cm" y="12.7cm">NOM I ADREÇA DE QUI LI ÉS LLIURAT;</drawString>
+		<drawString x="4.7cm" y="2.7cm">NOM I ADREÇA DE QUI LI ÉS LLIURAT;</drawString>
+
+		</pageGraphics>
+	
+		<!-- FRAME DE CONTENIDOS -->
+		<!-- frame id="main" x1="1cm" y1="20.5cm" width="19cm" height="9cm"/>
+		<frame id="main" x1="1cm" y1="10.5cm" width="19cm" height="9cm"/-->
+		<frame id="main" x1="1cm" y1="0.5cm" width="19cm" height="9cm"/>
+	</pageTemplate>
+	
+</template>
+
+<include src="/var/bulmages/openreports/estilos.rml"/>
+
+
+
+<story>
+
+[story]
+
+</story>
+</document>

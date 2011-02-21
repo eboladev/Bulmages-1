@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+<!DOCTYPE document SYSTEM "rml_1_0.dtd">
+<document>
+<!-- veure comentaris a impers_albaran_etiqueta_paquet.rml -->
+<!-- Títol per al menú contextual d'informes personalitzats <template title="Etiquetes d'articles"/> -->
+<!--IFACE SRC="[CONF_DIR_OPENREPORTS]/etiquetes_articles.ui"-->
+
+<!--SETVAR NAME="fitxer_contingut_etiqueta" VALUE="[CONF_DIR_OPENREPORTS]/contingut_etiquetes_articles.rml"-->
+
+<!--SETVAR NAME="habitual" VALUE="38,21.2,13,5,210,297,10.375,10,10,11.025"-->
+
+<!-- QUERY="
+      SELECT '' as etiquetes, plenes, maxrepeticions,
+             CASE WHEN ordrealies <>'CAP' 
+                  THEN '(SELECT cadalias '
+                      ||'  FROM alias' 
+                      ||' WHERE alias.idarticulo = l.idarticulo' 
+                      ||' ORDER BY length(cadalias) '
+                      || ordrealies
+                      ||' LIMIT 1)' 
+                  ELSE 'codigocompletoarticulo' 
+                  END as alias,
+             btrim(to_char(to_number('[midaBarres.value]','999999D999'), '999999.9999')) as tmidaBarres 
+FROM 
+   (SELECT max(lmax.cantlalbaranp)::integer as maxrepeticions,
+           SUM(lmax.cantlalbaranp)::integer as plenes ,
+           CASE WHEN [barresAliesCurt.checked]  THEN 'ASC' 
+                WHEN [barresAliesLlarg.checked] THEN 'DESC' 
+                ELSE 'CAP' 
+           END as ordrealies 
+  
+      FROM lalbaranp lmax 
+     WHERE idalbaranp=[idalbaranp] ) estadistic
+"-->
+
+<!--SETVAR NAME="valors_buits" VALUE="
+  0 as ordenlalbaranp ,  '' as barres, '' as format, 
+              '' as codigocompletoarticulo, 
+              '' as descrip, '' as pvp, '' as sep, '' as talt_barres,
+              'false' as hihatextsuperior, 
+              'false' as hihabarresalmig, 
+              'false' as hihatextinferior
+"-->
+
+<!-- SETVAR NAME="sql_contingut" VALUE="
+        SELECT  ordenlalbaranp , [alias] as barres,
+          substring('[barresFormat.currentText]' from '^[^( ]+') as format,
+          codigocompletoarticulo, 
+          CASE WHEN [textDescripcio.checked] 
+               THEN desclalbaranp 
+               ELSE '' 
+          END as descrip, 
+          CASE WHEN [textPVP.checked] 
+               THEN pvparticulo::varchar || ' [divisa.text]'
+               ELSE '' 
+          END as pvp, 
+          CASE WHEN [textPVP.checked] AND [textDescripcio.checked] 
+               THEN ' ' 
+               ELSE ''
+          END as sep,
+         btrim(to_char(
+             (CASE WHEN NOT [barresComEtiqueta.checked] 
+                   THEN [tmidabarres] 
+                   ELSE
+                     [talt]  
+                     - (([midaLletra.value]*0.3528)*[liniesSenseBarres.value]
+                        +CASE WHEN [textPVP.checked] OR [textDescripcio.checked]
+                           THEN 1 
+                           ELSE 0 
+                          END 
+                        +CASE WHEN [textCodi.checked] THEN 1 ELSE 0 END
+                       ) 
+             END), '999999.9999')) as talt_barres,       
+          CASE WHEN ([textDescripcio.checked] OR [textPVP.checked]) 
+                  THEN 'true' ELSE 'false' END as hihatextsuperior,
+          CASE WHEN NOT [barresSense.checked] 
+                  THEN 'true' ELSE 'false' END as hihabarresalmig,
+          '[textCodi.checked]' as hihatextinferior
+       FROM lalbaranp l, articulo a, 
+            generate_series(1,[maxrepeticions]) as it(n) 
+      WHERE l.idarticulo = a.idarticulo
+            AND l.idalbaranp=[idalbaranp] 
+            AND it.n <= l.cantlalbaranp
+"-->
+
+<!-- SETVAR NAME="ordre_contingut" VALUE="ordenlalbaranp" -->
+
+<!-- INCLUDE FILE="[CONF_DIR_OPENREPORTS]/etiquetes_personalitzades.rml"-->
+
+<!--END QUERY-->
+</story>
+</document>

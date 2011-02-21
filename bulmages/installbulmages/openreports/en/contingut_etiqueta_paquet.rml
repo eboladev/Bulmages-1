@@ -1,0 +1,36 @@
+<!-- contingut de l'etiqueta. Fitxer inclos des de etiquetes_personalitzades que quan l'utilitza impers_albaran_etiqueta_paquet.rml
+Pot usar: 
+
+   sqetiq : val cadena buida i pot servir per a posar querys aniuats
+            que no s'interpretaran com a tals fins que calgui (veure
+            contingut_etiquetea_article.rml) 
+
+   etiqueta: número d'etiqueta actual, comptant les possibles etiquetes buides 
+             inicials 
+
+   alt:      alçada de l'etiqueta en mílimetres (decimals en comes)
+
+   ample:    amplada de l'etiqueta en mílimetres (decimals en comes)
+
+   numfiles: nombre d'etiquetes per columna
+
+   numcols:  nombre d'etiquetes per fila
+
+   numetiquetespag: nombre d'etiquetes per pàgina (numfiles*numcols)
+
+   sephoritzontal: separacio entre etiquetes en hortizontal 
+                   (mm, amb comes per decimals) 
+
+   sepvertical: separacio entre etiquetes en vertical 
+                (mm, amb comes per decimals) 
+
+   talt, tample, tsephoritzontal, tsepvertical : igual que els homònims sense la t
+                                                 però decimals amb punt.
+
+  -->
+
+<para fontName="Helvetica" fontSize="[midaLletra.value]" alignment="LEFT"  leading="[midaLletra.value]">[nom]</para>
+<para fontName="Helvetica" fontSize="[midaLletra.value]" alignment="LEFT" leading="[midaLletra.value]">[dircliente]</para>
+<para fontName="Helvetica" fontSize="[midaLletra.value]" alignment="LEFT" leading="[midaLletra.value]">[cpcliente] [poblcliente]</para>
+<!--<para fontName="Helvetica" fontSize="[midaLletra.value]" alignment="LEFT" leading="[midaLletra.value]">[descpais]</para>
+-->

@@ -1,0 +1,197 @@
+<ui version="4.0" >
+ <class>Dialog</class>
+ <widget class="QDialog" name="Dialog" >
+  <property name="geometry" >
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>638</width>
+    <height>396</height>
+   </rect>
+  </property>
+  <property name="windowTitle" >
+   <string>Opcions per a l'informe de vendes per treballador/a</string>
+  </property>
+  <property name="exportaRML" stdset="0" >
+   <stringlist>
+    <string>usaDesde.checked</string>
+    <string>usaHasta.checked</string>
+    <string>desde.selectedDate</string>
+    <string>hasta.selectedDate</string>
+    <string>usaFechaCobro.checked</string>
+    <string>usaFechaVencimiento.checked</string>
+   </stringlist>
+  </property>
+  <layout class="QVBoxLayout" name="verticalLayout" >
+   <property name="sizeConstraint" >
+    <enum>QLayout::SetMaximumSize</enum>
+   </property>
+   <item>
+    <widget class="QRadioButton" name="mui_usaFechaCobro" >
+     <property name="text" >
+      <string>Tria els rebuts a incloure al rang de dates per la data de &amp;cobrament.</string>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <widget class="QRadioButton" name="mui_usaFechaVencimiento" >
+     <property name="text" >
+      <string>Tria els rebuts a incloure al rang de dates per la data de &amp;venciment.</string>
+     </property>
+     <property name="checked" >
+      <bool>true</bool>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <widget class="QGroupBox" name="groupBox" >
+     <property name="title" >
+      <string>Comptar vendes entre dates ...</string>
+     </property>
+     <layout class="QGridLayout" name="gridLayout_3" >
+      <item row="0" column="0" >
+       <layout class="QGridLayout" name="gridLayout" >
+        <property name="sizeConstraint" >
+         <enum>QLayout::SetMaximumSize</enum>
+        </property>
+        <item row="2" column="1" >
+         <widget class="QCalendarWidget" name="mui_hasta" >
+          <property name="enabled" >
+           <bool>false</bool>
+          </property>
+          <property name="firstDayOfWeek" >
+           <enum>Qt::Monday</enum>
+          </property>
+          <property name="verticalHeaderFormat" >
+           <enum>QCalendarWidget::NoVerticalHeader</enum>
+          </property>
+         </widget>
+        </item>
+        <item row="2" column="0" >
+         <widget class="QCalendarWidget" name="mui_desde" >
+          <property name="enabled" >
+           <bool>false</bool>
+          </property>
+          <property name="firstDayOfWeek" >
+           <enum>Qt::Monday</enum>
+          </property>
+          <property name="selectionMode" >
+           <enum>QCalendarWidget::SingleSelection</enum>
+          </property>
+          <property name="verticalHeaderFormat" >
+           <enum>QCalendarWidget::NoVerticalHeader</enum>
+          </property>
+          <property name="dateEditEnabled" >
+           <bool>true</bool>
+          </property>
+         </widget>
+        </item>
+        <item row="1" column="1" >
+         <widget class="QCheckBox" name="mui_usaHasta" >
+          <property name="text" >
+           <string>&amp;Fins a data</string>
+          </property>
+         </widget>
+        </item>
+        <item row="1" column="0" >
+         <widget class="QCheckBox" name="mui_usaDesde" >
+          <property name="text" >
+           <string>&amp;Des de data</string>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </item>
+     </layout>
+    </widget>
+   </item>
+   <item>
+    <layout class="QGridLayout" name="gridLayout_2" >
+     <item row="0" column="2" >
+      <widget class="QPushButton" name="mui_aceptar" >
+       <property name="text" >
+        <string>&amp;Bé</string>
+       </property>
+       <property name="default" >
+        <bool>true</bool>
+       </property>
+      </widget>
+     </item>
+     <item row="0" column="1" >
+      <widget class="QPushButton" name="mui_cancelar" >
+       <property name="text" >
+        <string>&amp;Cancel·la</string>
+       </property>
+      </widget>
+     </item>
+     <item row="0" column="0" >
+      <spacer name="horizontalSpacer" >
+       <property name="orientation" >
+        <enum>Qt::Horizontal</enum>
+       </property>
+       <property name="sizeType" >
+        <enum>QSizePolicy::Expanding</enum>
+       </property>
+       <property name="sizeHint" stdset="0" >
+        <size>
+         <width>40</width>
+         <height>9</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+    </layout>
+   </item>
+  </layout>
+  <action name="actionDesde" >
+   <property name="text" >
+    <string>desde</string>
+   </property>
+  </action>
+ </widget>
+ <tabstops>
+  <tabstop>mui_usaFechaCobro</tabstop>
+  <tabstop>mui_usaFechaVencimiento</tabstop>
+  <tabstop>mui_usaDesde</tabstop>
+  <tabstop>mui_desde</tabstop>
+  <tabstop>mui_usaHasta</tabstop>
+  <tabstop>mui_hasta</tabstop>
+  <tabstop>mui_aceptar</tabstop>
+  <tabstop>mui_cancelar</tabstop>
+ </tabstops>
+ <resources/>
+ <connections>
+  <connection>
+   <sender>mui_usaDesde</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>mui_desde</receiver>
+   <slot>setEnabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel" >
+     <x>174</x>
+     <y>103</y>
+    </hint>
+    <hint type="destinationlabel" >
+     <x>174</x>
+     <y>256</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>mui_usaHasta</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>mui_hasta</receiver>
+   <slot>setEnabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel" >
+     <x>486</x>
+     <y>103</y>
+    </hint>
+    <hint type="destinationlabel" >
+     <x>486</x>
+     <y>256</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+</ui>

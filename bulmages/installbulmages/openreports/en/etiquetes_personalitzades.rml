@@ -1,0 +1,273 @@
+<!-- ********************************************************* -->
+
+<!-- QUERY[etiquetes]=" 
+
+SELECT '' as subquery1, 
+       CASE  WHEN '[midaPredefinida.currentText]'='habitual' 
+             THEN '[habitual]' 
+             ELSE substring( '[midaPredefinida.currentText]'
+                              from '\\(([^]]+)\\)\\s*$')  
+       END as predef,
+       CASE WHEN '[plenes]' <> ('['||'plenes]')
+            THEN 'SELECT [plenes] as plenes' 
+            ELSE ('SELECT COUNT(*) FROM  ([sql' ||'_contingut]) contingut')
+       END as sql_numetiquetesplenes
+"--> 
+
+
+   <!-- QUERY[subquery1]=" 
+   SELECT '' as subquery_err,
+          buides, 
+          tw, th, 
+          ample, tample, 
+          alt,  talt, 
+          numfiles, numcols, numetiquetespag,
+          amplePaper, tamplepaper,
+          altPaper, taltpaper,
+          margesuperior, tmargesuperior,
+          margeesquerre, tmargeesquerre,
+          margedret, tmargedret,
+          margeinferior, tmargeinferior,
+          sephoritzontal, 
+           btrim(to_char(sephoritzontal, '999999.9999')) as tsephoritzontal, 
+          sepvertical, 
+           btrim(to_char(sepvertical, '999999.9999')) as tsepvertical, 
+          array_to_string(ARRAY(  SELECT (talt||'mm') 
+                                 UNION ALL
+                                   SELECT (CASE WHEN sepvertical>0 
+                                                THEN btrim(to_char(sepvertical,'999999.9999mm'))||',' 
+                                                ELSE '' END) ||  
+                                          btrim(to_char(alt,'999999.9999mm'))  
+                                              FROM generate_series(1,numfiles-1)
+                               ), 
+                          ',') AS rowheights,
+          array_to_string(ARRAY(  SELECT (tample||'mm') 
+                                 UNION ALL
+                                  SELECT (CASE WHEN sephoritzontal > 0 
+                                         THEN btrim(to_char(sephoritzontal,'999999.9999mm')) ||',' 
+                                         ELSE '' END ) ||  
+btrim(to_char(ample,'999999.9999mm'))  
+                                    FROM generate_series(1,numcols-1)
+                               ), 
+                          ',') AS colwidths,
+          (numetiquetespag - ((plenes + buides) % numetiquetespag)) 
+           % numetiquetespag as numcellesfinal 
+     FROM ( 
+       
+         SELECT
+             ([primeraFila.value]-1)*numcols+[primeraCol.value]-1 as buides, plenes,
+             btrim(to_char(amplePaper - (margeEsquerre + margeDret), '999999.9999')) as tw, 
+             btrim(to_char(altPaper - (margeSuperior + margeInferior), '999999.9999')) as th, 
+             ample, btrim(to_char(ample, '999999.9999')) as tample, 
+             alt,  btrim(to_char(alt, '999999.9999')) as talt, 
+                 numfiles, numcols,
+             numfiles * numcols as numetiquetespag , 
+             amplePaper, btrim(to_char(amplepaper, '999999.9999')) as tamplepaper,
+             altPaper, btrim(to_char(altpaper, '999999.9999')) as taltpaper,
+             margesuperior, btrim(to_char(margesuperior, '999999.9999')) as tmargesuperior,
+             margeesquerre, btrim(to_char(margeesquerre, '999999.9999')) as tmargeesquerre,
+             margedret, btrim(to_char(margedret, '999999.9999')) as tmargedret,
+             margeinferior, btrim(to_char(margeinferior, '999999.9999')) as tmargeinferior,
+             CASE WHEN numfiles <= 1 
+                  THEN 0 
+                  ELSE (altPaper -(margesuperior + margeinferior + numfiles*alt)) / (numfiles -1)
+             END as sepvertical,
+             CASE WHEN numcols <= 1 
+                  THEN 0 
+                  ELSE (amplePaper - (margeDret + margeEsquerre + numcols*ample)) / (numcols -1) 
+             END as sephoritzontal
+             
+      FROM (
+           SELECT 'personalitzades' as mides, 
+                  to_number('[ample.value]','999999D999') as ample, 
+                  to_number('[alt.value]','999999D999') as alt, 
+                  [numfiles.value] as numfiles, 
+                  [numcols.value] as numcols, 
+                  to_number('[amplePaper.value]','999999D999') as amplepaper , 
+                  to_number('[altPaper.value]','999999D999') as altpaper, 
+                  to_number('[margeSuperior.value]','999999D999') as margesuperior, 
+                  to_number('[margeEsquerre.value]','999999D999') as margeesquerre, 
+                  to_number('[margeDret.value]','999999D999') as margedret, 
+                  to_number('[margeInferior.value]','999999D999') as margeinferior
+          UNION
+           SELECT 'predefinides' as mides, [predef]
+           ) opcions, 
+           ([sql_numetiquetesplenes] ) compta_etiquetes
+       
+      
+      WHERE mides = (CASE WHEN [midaPersonalitzada.checked] 
+                          THEN 'personalitzades'  
+                          ELSE 'predefinides' END)
+) opcions_formatades
+"-->
+
+    <!-- QUERY[subquery_err]=" 
+ SELECT 1 WHERE 0 > ANY (ARRAY[ [talt],[tample],[tmargesuperior],[tmargeinferior],[tmargedret],[tmargeesquerre],[tsephoritzontal],[tsepvertical],[tamplepaper],[taltpaper] ] ) OR 1> ANY (ARRAY[ [numfiles],[numcols] ] )
+    "-->
+
+<template pageSize="(210mm, 297mm)" 
+          leftMargin="10mm" rightMargin="10mm" 
+          topMargin="10mm" bottomMargin="10mm" 
+          title="fitxer" author="xdrudis" >
+	<pageTemplate id="main">
+		<pageGraphics>
+
+		</pageGraphics>
+
+	<frame id="column" x1="10mm" y1="10mm" 
+                           width="190mm" height="277mm"
+                 topPadding="0" bottomPadding="0" leftPadding="0" rightPadding="0"
+        />
+
+
+	</pageTemplate>
+</template>
+
+<stylesheet>
+</stylesheet>
+<story>
+<para> Hi ha algun error a les mides. Repasseu-les i torneu-ho a intentar </para>
+
+    <!--END QUERY[subquery_err]-->
+
+    <!-- QUERY[subquery_err]=" 
+ SELECT '' as subquery2 WHERE NOT (0 > ANY (ARRAY[ [talt],[tample],[tmargesuperior],[tmargeinferior],[tmargedret],[tmargeesquerre],[tsephoritzontal],[tsepvertical],[tamplepaper],[taltpaper] ] ) OR 1> ANY (ARRAY[ [numfiles],[numcols] ]))
+"-->
+
+<template pageSize="([tamplepaper]mm, [taltpaper]mm)" 
+          leftMargin="[tmargeesquerre]mm" rightMargin="[tmargedret]mm" 
+          topMargin="[tmargesuperior]mm" bottomMargin="[tmargeinferior]mm" 
+          title="fitxer" author="xdrudis" >
+	<pageTemplate id="main">
+		<pageGraphics>
+
+		</pageGraphics>
+
+	<frame id="column" x1="[tmargeesquerre]mm" y1="[tmargeinferior]mm" 
+                           width="[tw]mm" height="[th]mm"
+                 topPadding="0" bottomPadding="0" leftPadding="0" rightPadding="0"
+        />
+
+
+	</pageTemplate>
+</template>
+
+<stylesheet>
+   <blockTableStyle id="etiquetes">
+       <blockAlignment start="0,0" stop="-1,-1" value="CENTER"/>
+       <blockValign start="0,0" stop="-1,-1" value="MIDDLE"/>
+       <blockTopPadding start="0,0" stop="0,-1" value="0mm"/>
+       <blockLeftPadding start="0,0" stop="0,-1" value="0mm"/>
+       <blockTopPadding start="0,0" stop="-1,0" value="0mm"/>
+       <blockLeftPadding start="0,0" stop="-1,0" value="0mm"/>
+       <blockTopPadding start="1,1" stop="-1,-1" value="0mm"/>
+       <blockLeftPadding start="1,1" stop="-1,-1" value="0mm"/>
+       <blockRightPadding start="0,0" stop="-1,-1" value="0mm"/>
+       <blockBottomPadding start="0,0" stop="-1,-1" value="0mm"/>
+       <blockLeading length="0"/>
+<!--       <lineStyle thickness="1" kind="GRID"/>
+    -->   
+  </blockTableStyle>
+</stylesheet>
+<story>
+    <!-- QUERY[subquery2]=" 
+    CREATE TEMP SEQUENCE numlinia 
+    "-->
+    <!--END QUERY[subquery2]-->
+
+    <!-- QUERY[subquery2]="
+  SELECT  '' as subquery3, continguts.*, 
+          nextval('numlinia') as etiqueta
+   FROM
+     ( SELECT 0 as pos, [valors_buits]
+         FROM  generate_series(1,[buides])
+       UNION ALL
+       SELECT 1 as pos, contingut.*
+         FROM ( [sql_contingut] ) contingut
+      UNION ALL
+       SELECT 2 as pos, [valors_buits]
+         FROM  generate_series(1,[numcellesfinal])
+       
+      ORDER BY pos, [ordre_contingut] ) continguts
+   
+   " -->
+         <!-- QUERY[subquery3]="
+           SELECT 1 WHERE ([numetiquetespag] = 1) 
+                          OR ([etiqueta] % [numetiquetespag] = 1) 
+         "-->       
+<blockTable rowHeights="[rowheights]" colWidths="[colwidths]" style="etiquetes">
+
+         <!--END QUERY[subquery3]-->
+
+
+
+         <!-- QUERY[subquery3]="
+           SELECT 1 WHERE ([numcols] = 1 ) OR (([etiqueta] % [numcols]) = 1)
+         "-->
+         
+  <tr>
+
+         <!--END QUERY[subquery3]-->
+
+         <!-- QUERY[subquery3]="
+           SELECT 1 WHERE [tsephoritzontal]>0 AND ([numcols] > 1 ) AND (([etiqueta] % [numcols]) <> 1)
+         "-->
+         
+  <td></td>
+
+         <!--END QUERY[subquery3]-->
+
+
+   <td>
+
+            <!-- QUERY[subquery3]="
+                SELECT '' as sqetiq WHERE [pos]=1
+            "-->
+                  <!-- INCLUDE FILE="[fitxer_contingut_etiqueta]"-->
+            <!--END QUERY[subquery3]-->
+
+   </td>
+
+
+
+
+         <!-- QUERY[subquery3]="
+           SELECT 1 WHERE [etiqueta] % [numcols] = 0
+         "-->
+         
+  </tr>
+
+         <!--END QUERY[subquery3]-->
+
+
+         <!-- QUERY[subquery3]="
+           SELECT '' as subquery4 WHERE ([tsepvertical] > 0) AND ( ([etiqueta] % [numcols]) = 0 )
+                          AND (([etiqueta] % [numetiquetespag]) <> 0 )
+         "-->
+         
+  <tr>
+             <!-- QUERY[subquery4]="
+               SELECT '' as subquery5 FROM generate_series(1,([numcols]*2)-1 )
+             "-->
+               <td></td>
+             <!--END QUERY[subquery4]-->
+  </tr>
+
+         <!--END QUERY[subquery3]-->
+
+         <!-- QUERY[subquery3]="
+           SELECT 1 WHERE [etiqueta] % [numetiquetespag] = 0
+         "-->
+         
+</blockTable>
+         <!--END QUERY[subquery3]-->
+   <!--END QUERY[subquery2]-->
+   <!-- QUERY[subquery2]="
+   DROP SEQUENCE numlinia 
+   "-->
+   <!--END QUERY[subquery2]-->
+  <!--END QUERY[subquery_err]-->
+<!--END QUERY[subquery1]-->
+<!--END QUERY[etiquetes]-->
+
+
