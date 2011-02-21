@@ -819,7 +819,7 @@ class Facturacion(Ui_ModificarFacturacionBase, Empresa):
 	      # Si hay parche de actualizacion lo aplicamos
 	      # En realidad deberia comprobarse si hay archivo para aplicarlo o no en
 	      # lugar de comprobar la longitud del archivo.
-	      if (len(self.mui_plugins.item(self.i,4).text()) > 4):
+	      if (QFile.exists(plugins.pathdbplugins + self.mui_plugins.item(self.i,4).text())):
 		self.command = 'su postgres -c \"psql -t -f  ' + plugins.pathdbplugins + self.mui_plugins.item(self.i,4).text() +' '+ self.database +'\"'
 		self.writecommand(self.command)
 		self.process.start(self.command)
@@ -851,7 +851,7 @@ class Facturacion(Ui_ModificarFacturacionBase, Empresa):
 	    self.writecommand(QtGui.QApplication.translate("Facturacion",'Tratando ', None, QtGui.QApplication.UnicodeUTF8) + self.mui_plugins.item(self.i,0).text())
 	    if (self.mui_plugins.item(self.i, 0).checkState() <> Qt.Checked):
 	      # Si no esta chequeado hacemos un borrado del plugin
-	      if (len(self.mui_plugins.item(self.i,9).text()) > 4):
+	      if (QFile.exists(plugins.pathdbplugins + self.mui_plugins.item(self.i,9).text())):
 		# Aplicamos el parche  de borrado.
 		self.command = 'su postgres -c \"psql -t -f  ' + plugins.pathdbplugins + self.mui_plugins.item(self.i,9).text() +' '+ self.database +'\"'
 		self.writecommand(self.command)
@@ -873,7 +873,7 @@ class Facturacion(Ui_ModificarFacturacionBase, Empresa):
             if (self.mui_plugins1.item(self.i,7) <> None and str(self.mui_plugins1.item(self.i,7).text()) == str(self.x) ): 
               self.writecommand(QtGui.QApplication.translate("Facturacion",'Tratando ', None, QtGui.QApplication.UnicodeUTF8) + self.mui_plugins1.item(self.i,0).text())
               if (self.mui_plugins1.item(self.i, 0).checkState() == Qt.Checked):
-                if (len(self.mui_plugins1.item(self.i,4).text()) > 4):
+                if (QFile.exists(plugins.pathdbplugins + self.mui_plugins1.item(self.i,4).text())):
                   self.writecommand(QtGui.QApplication.translate("Facturacion",'Actualizando ', None, QtGui.QApplication.UnicodeUTF8) + self.mui_plugins1.item(self.i,0).text())
                   self.command = 'su postgres -c \"psql -t -f  ' + plugins.pathdbplugins + self.mui_plugins1.item(self.i,4).text() +' '+ self.database +'\"'
                   self.writecommand(self.command)
@@ -906,7 +906,7 @@ class Facturacion(Ui_ModificarFacturacionBase, Empresa):
               self.writecommand(QtGui.QApplication.translate("Facturacion",'Tratando ', None, QtGui.QApplication.UnicodeUTF8) + self.mui_plugins1.item(self.i,0).text())
               if (self.mui_plugins1.item(self.i, 0).checkState() <> Qt.Checked):
                 # Si no esta chequeado hacemos un borrado del plugin
-                if (len(self.mui_plugins1.item(self.i,9).text()) > 4):
+                if (QFile.exists(plugins.pathdbplugins + self.mui_plugins1.item(self.i,9).text())):
                   # Aplicamos el parche  de borrado.
                   self.command = 'su postgres -c \"psql -t -f  ' + plugins.pathdbplugins + self.mui_plugins1.item(self.i,9).text() +' '+ self.database +'\"'
                   self.writecommand(self.command)
