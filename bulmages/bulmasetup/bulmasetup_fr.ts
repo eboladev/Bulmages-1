@@ -234,9 +234,7 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="empresa.py" line="163"/>
         <source>Desea agregar el usuario &lt;b&gt;root&lt;/b&gt; a PostgreSQL?&lt;br&gt;Este usuario es necesario para poder administrar PostgreSQL.&lt;br&gt;La contrase&amp;ntilde;a de este usuario sera &apos;password&apos;.&lt;br&gt;&lt;u&gt;&lt;b&gt;Borre este usuario al terminar la configuracion de BulmaGes, ya que genera un grave agujero de seguridad.&lt;/b&gt;&lt;/u&gt;</source>
-        <translation>Voulez vous assigner l&apos;utilisateur &lt;b&gt;root&lt;/b&gt; à PostgreSQL ? 
- 
- Cet utilisateur est nécessaire pour administrer PostgreSQL. Le mot de passe de cet utilisateur sera &apos;mot de passe&apos;. Effacez cet utilisateur à la fin de la configuration.</translation>
+        <translation>Voulez vous assigner l&apos;utilisateur &lt;b&gt;root&lt;/b&gt; à PostgreSQL ?&lt;br&gt;Cet utilisateur est nécessaire pour administrer PostgreSQL.&lt;br&gt; Le mot de passe de cet utilisateur sera &apos;password&apos;.&lt;br&gt;&lt;u&gt;&lt;b&gt; Effacez cet utilisateur à la fin de la configuration.&lt;/b&gt;&lt;/u&gt;</translation>
     </message>
     <message>
         <location filename="listempresas.py" line="74"/>
