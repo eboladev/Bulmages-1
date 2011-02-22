@@ -8,8 +8,8 @@ Nombre: Ouverture rapide depuis des codes bar
 
 Biblioteca: libpluginbf_abrecodigobarras.so
 
-Descripción: <H1>Code bar</H1>
-<P>Présente une option de menu qui permet d'accéder de manière rapide, à la fiche d'un document imprimé, en le passant par le lecteur de codes bar. Les services d'impression doivent être activés pour l'identification à code bar.</P>
+Descripción: <H1>Code-barre</H1>
+<P>Présente une option de menu qui permet d'accéder de manière rapide, à la fiche d'un document imprimé, en le passant par le lecteur de codes barres. Les services d'impression doivent être activés pour l'identification à code barre.</P>
 <B>Author:</B>Tomeu Borrás (tborras@conetxia.com)<BR>
 <HR>
 

@@ -456,7 +456,7 @@ msgstr "Suppor&t"
 
 #: ui_bfconfiguracionbase.h:432
 msgid "Telefono"
-msgstr "Téléphone :"
+msgstr "Téléphone "
 
 #: main.cxx:181
 msgid "Terminado"
@@ -476,7 +476,7 @@ msgstr "Total"
 
 #: bfform.cpp:460
 msgid "Total Desc."
-msgstr "Total Remise"
+msgstr "Total Remise."
 
 #: bfproveedoralbaransubform.cpp:54
 msgid "Total Linea"
