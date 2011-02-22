@@ -8,7 +8,7 @@ Nombre: Budgets clients
 
 Biblioteca: libpluginbf_clientepresupuesto.so
 
-Descripción:  <H1><IMG SRC="@CMAKE_INSTALL_PREFIX@/share/bulmages/imagesrc/images/oxygen/actions/client_quote.svg" WIDTH="100"/><BR>Budgets clients</H1>
+Descripción:  <H1><IMG SRC="@CMAKE_INSTALL_PREFIX@/share/bulmages/imagesrc/images/oxygen/actions/client_quote.svg" WIDTH="100"/>Budgets clients<BR></H1>
 <P>Support pour la création de budgets clients.</P>
 <P>En chargeant le plugin nous aurons deux nouvelles entrées de menu <B>Liste de budget <IMG SRC="@CMAKE_INSTALL_PREFIX@/share/bulmages/imagesrc/images/oxygen/actions/client_quote_list.svg" WIDTH="22"/></B>à partir de laquelle nous accéderons au listing de budget émis et<B>Nouveau budget <IMG SRC="@CMAKE_INSTALL_PREFIX@/share/bulmages/imagesrc/images/oxygen/actions/client_quote.svg" WIDTH="22"/></B> de là nous pourrons émettre un nouveau budget.</P>
 <P>Au moyen du listing de budget nous pourrons contrôler toutes les budgets émis, les publier et les effacer. Pour cela nous pouvons utiliser la barre de boutons supérieure du listing.</P>
@@ -17,7 +17,7 @@ Descripción:  <H1><IMG SRC="@CMAKE_INSTALL_PREFIX@/share/bulmages/imagesrc/imag
 <P>En créant une nouvelle commande les données nécessaires à remplir sont : le client et le magasin. Le reste des données peut être laisser en blanc pour être postérieurement remplis. Les domaines qui apparaissent sur l'écran peuvent varier selon la configuration des plugins que nous avons et qui nécessitent des informations additionnelles dans les budgets, cette information peut être obligatoire ou non suivant le plugin en question</P>
 <P>Une fois remplies les données nous pouvons garder le budget ou cliquer le bouton <B>Accepter</B> pour stocker les changements</P>
 <P>Toutes les commandes ont un service d'impression par défaut appelé<B>presupuesto.rml</B>qui définit la manière dans laquelle il imprime le budget en pressant sur le bouton imprimer. Peuvent en outre exister des rapports additionnels qui apparaissent en pressant avec le bouton droit de la souris dans tout espace vide de l'écran, le budget ainsi que les actions occultes non accessibles d'une autre manière</P>
-<B>Author:</B>Tomeu Borrás (tborras@conetxia.com)<BR>
+<B>Auteur:</B>Tomeu Borrás (tborras@conetxia.com)<BR>
 <HR>
 
 ParmBD:
