@@ -5,7 +5,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
 "POT-Creation-Date: 2011-02-07 11:21+0100\n"
-"PO-Revision-Date: 2010-07-28 16:12+0200\n"
+"PO-Revision-Date: 2011-02-22 16:02+0100\n"
 "Last-Translator: Walter Garcia-Fontes <walter.garcia@upf.edu>\n"
 "Language-Team: CATALAN\n"
 "Language: \n"
@@ -199,7 +199,7 @@ msgstr "Edita tutor"
 
 #: tutoreslist.cpp:286
 msgid "Empresa"
-msgstr "&Empresa"
+msgstr "&Entitat"
 
 #: tutoreslist.cpp:179
 msgid "Error al borrar el cobro a cliente"
