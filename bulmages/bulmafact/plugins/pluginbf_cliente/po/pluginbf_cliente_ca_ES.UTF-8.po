@@ -1,66 +1,53 @@
-#, fuzzy
+# Spanish translations for PACKAGE package
+# Traducciones al español para el paquete PACKAGE.
+# Copyright (C) 2009 THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# Automatically generated, 2009.
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
 "POT-Creation-Date: 2011-02-04 12:54+0100\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
-"Language: \n"
+"PO-Revision-Date: 2011-02-22 15:54+0100\n"
+"Last-Translator: Walter Garcia-Fontes <walter.garcia@upf.edu>\n"
+"Language-Team: Catalan\n"
+"Language: Catalan\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Translate Toolkit 1.1.1\n"
 
 #: ui_clientebase.h:593
-#, fuzzy
 msgid "&Aceptar"
-msgstr ""
-"#-#-#-#-#  bulmacont_ca.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"&Accepta\n"
-"#-#-#-#-#  bulmacont_ca.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"D'&acord\n"
-"#-#-#-#-#  bulmacont_ca.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"&Accepta\n"
-"#-#-#-#-#  bulmacont_ca.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"&Accepta\n"
-"#-#-#-#-#  bulmacont_ca.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"&Accepta\n"
-"#-#-#-#-#  bulmacont_ca.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"&Accepta\n"
-"#-#-#-#-#  bulmacont_ca.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"&Accepta"
+msgstr "&Accepta"
 
 #: ui_clientebase.h:594
 msgid "&Cancelar"
 msgstr "&Cancel·la"
 
 #: pluginbf_cliente.cpp:96
-#, fuzzy
 msgid "&Clientes"
-msgstr "&Assentaments"
+msgstr "&Clients"
 
 #: ui_clientebase.h:613
-#, fuzzy
 msgid "&Datos generales"
-msgstr "&Dades comptables"
+msgstr "&Dades generals"
 
 #: ui_clientebase.h:600
 msgid "&Direccion:"
-msgstr ""
+msgstr "&Adreça"
 
 #: ui_clientebase.h:598
 msgid "&Empresa:"
-msgstr ""
+msgstr "&Empresa:"
 
 #: ui_clientebase.h:610
 msgid "&Forma de pago:"
-msgstr ""
+msgstr "&Forma de pagament"
 
 #: ui_clientebase.h:597
 msgid "&Nombre completo:"
-msgstr ""
+msgstr "&Nom complet:"
 
 #: pluginbf_cliente.cpp:104
 msgid "&Nuevo cliente"
@@ -72,15 +59,15 @@ msgstr "&Altres dades"
 
 #: ui_clientebase.h:602
 msgid "&Poblacion:"
-msgstr ""
+msgstr "&Població:"
 
 #: ui_clientebase.h:612
 msgid "&Regimen fiscal:"
-msgstr ""
+msgstr "&Règim fiscal:"
 
 #: ui_clientebase.h:604
 msgid "&Telefono fijo:"
-msgstr ""
+msgstr "&Telèfon fix:"
 
 #: ui_clientslistbase.h:320 ui_clientslistbase.h:323
 msgid "Actualizar listado"
@@ -88,23 +75,21 @@ msgstr "Actual·litza llistat"
 
 #: ui_clientebase.h:611
 msgid "Aplicar Recargo de Equivalencia"
-msgstr "Aplicar Recarreg d'equivalència"
+msgstr "Aplica Recàrregc d'equivalència"
 
 #: ui_clientslistbase.h:292 ui_clientslistbase.h:295
 msgid "Borrar"
 msgstr "Esborra"
 
 #: clientslist.cpp:329 ui_clientebase.h:579 ui_clientebase.h:582
-#, fuzzy
 msgid "Borrar cliente"
-msgstr "Esborra assentament"
+msgstr "Esborra client"
 
 #: ui_clientslistbase.h:340
 msgid "Buscar:"
 msgstr "Cerca:"
 
 #: clientslist.cpp:352
-#, fuzzy
 msgid "C.I.F."
 msgstr "C.I.F.:"
 
@@ -121,23 +106,20 @@ msgid "Cliente"
 msgstr "Client"
 
 #: clienteview.cpp:74
-#, fuzzy
 msgid "Cliente inactivo"
-msgstr "Compte d'actiu:"
+msgstr "Client inactiu"
 
 #: pluginbf_cliente.cpp:98 pluginbf_cliente.cpp:99 ui_clientslistbase.h:275
-#, fuzzy
 msgid "Clientes"
-msgstr "Assentaments"
+msgstr "Clients"
 
 #: clientslist.cpp:199 clientslist.cpp:222
-#, fuzzy
 msgid "Clientes (*.xml)"
-msgstr "Contaplus (*.xml)"
+msgstr "Clients (*.xml)"
 
 #: ui_clientebase.h:601
 msgid "Codi&go postal:"
-msgstr ""
+msgstr "Codi& postal:"
 
 #: clienteview.cpp:76 clientslist.cpp:351
 msgid "Codigo"
@@ -145,25 +127,19 @@ msgstr "Codi"
 
 #: ui_clientebase.h:596
 msgid "Codigo de c&liente:"
-msgstr ""
+msgstr "Codi de c&lient:"
 
 #: clienteview.cpp:63 clientslist.cpp:358
-#, fuzzy
 msgid "Codigo postal"
-msgstr "Codi compte"
+msgstr "Codi postal"
 
 #: ui_clientebase.h:614
 msgid "Comen&tarios:"
-msgstr ""
+msgstr "Comen&taris:"
 
 #: clienteview.cpp:72 clientslist.cpp:366
-#, fuzzy
 msgid "Comentarios"
-msgstr ""
-"#-#-#-#-#  bulmacont_ca.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"Comentari\n"
-"#-#-#-#-#  bulmacont_ca.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"Comentaris"
+msgstr "Comentaris"
 
 #: ui_clientslistbase.h:313 ui_clientslistbase.h:316
 msgid "Configurar listado"
@@ -171,7 +147,7 @@ msgstr "Configura llistat"
 
 #: ui_clientebase.h:609
 msgid "Correo electro&nico:"
-msgstr ""
+msgstr "Correu electrò&nic:"
 
 #: ui_clientebase.h:585
 msgid "Ctrl+D"
@@ -183,135 +159,115 @@ msgstr "Ctrl+S"
 
 #: ui_clientebase.h:616
 msgid "Datos &bancarios:"
-msgstr "Dades &bancaris:"
+msgstr "Dades &bancàries:"
 
 #: ui_clientebase.h:615
-#, fuzzy
 msgid "Datos de comercio &electronico:"
-msgstr "Correo electrònic:"
+msgstr "Dades de comerç &electrònic::"
 
 #: clienteview.cpp:73
-#, fuzzy
 msgid "Datos de comercio electronico"
-msgstr "Correo electrònic:"
+msgstr "Dades de comerç electrònic"
 
 #: clienteview.cpp:60 clientslist.cpp:356
-#, fuzzy
 msgid "Direccion"
 msgstr "Adreça:"
 
 #: clientslist.cpp:362
-#, fuzzy
 msgid "Direccion URL"
-msgstr "Adreça:"
+msgstr "Adreça URL"
 
 #: clientslist.cpp:361
-#, fuzzy
 msgid "Direccion de correo electronica"
-msgstr "Direcció del proveïdor"
+msgstr "Adreça de correu electrònic"
 
 #: clienteview.cpp:68
-#, fuzzy
 msgid "Direccion electronica"
-msgstr "Correo electrònic:"
+msgstr "Adreça electrònica"
 
 #: ui_clientslistbase.h:285 ui_clientslistbase.h:288
 msgid "Editar"
 msgstr "Edita"
 
 #: clientslist.cpp:328
-#, fuzzy
 msgid "Editar cliente"
-msgstr "Editar compte"
+msgstr "Edita compte"
 
 #: clientslist.cpp:197 clientslist.cpp:220
 msgid "Elija el archivo"
-msgstr "Trii el arxiu"
+msgstr "Trieu l'arxiu"
 
 #: clienteview.cpp:77 clientslist.cpp:363
-#, fuzzy
 msgid "Empresa"
 msgstr "&Empresa"
 
 #: clientslist.cpp:182
 msgid "Error al borrar un cliente"
-msgstr "Esborrar un client"
+msgstr "Error en esborrar el client"
 
 #: clienteview.cpp:106
 msgid "Error al crear el cliente"
-msgstr "Error al crear el client"
+msgstr "Error en crear el client"
 
 #: ui_clientslistbase.h:327 ui_clientslistbase.h:330 ui_clientslistbase.h:339
 msgid "Exportar"
-msgstr "Exportar"
+msgstr "Exporta"
 
 #: clienteview.cpp:70 clientslist.cpp:364
-#, fuzzy
 msgid "Fecha de alta del cliente"
-msgstr "Data de l'assentament"
+msgstr "Data d'alta del client"
 
 #: clienteview.cpp:71 clientslist.cpp:365
-#, fuzzy
 msgid "Fecha de baja del cliente"
-msgstr "Data de l'assentament"
+msgstr "Data de baixa del client"
 
 #: ui_clientslistbase.h:306 ui_clientslistbase.h:309
-#, fuzzy
 msgid "Filtrar listado"
-msgstr "Configura llistat"
+msgstr "Filtra llistat"
 
 #: clienteview.cpp:78
-#, fuzzy
 msgid "Forma de pago"
 msgstr "Forma de pagament:"
 
 #: ui_clientebase.h:571 ui_clientebase.h:574
-#, fuzzy
 msgid "Guardar cliente"
-msgstr "Desa assentament"
+msgstr "Desa client"
 
 #: clienteview.cpp:55 clientslist.cpp:350
-#, fuzzy
 msgid "ID cliente"
-msgstr "Id assentament"
+msgstr "Id client"
 
 #: clienteview.cpp:69
-#, fuzzy
 msgid "Identificador de presupuesto"
-msgstr "Identificador"
+msgstr "Identificador de pressupost"
 
 #: ui_clientslistbase.h:334 ui_clientslistbase.h:337
 msgid "Importar"
-msgstr "Importar"
+msgstr "Importa"
 
 #: ui_clientebase.h:587 ui_clientebase.h:590
-#, fuzzy
 msgid "Imprimir informe"
-msgstr "Imprimeix la comanda"
+msgstr "Imprimeix informe"
 
 #: ui_clientslistbase.h:299 ui_clientslistbase.h:302
-#, fuzzy
 msgid "Imprimir listado"
-msgstr "Imprimeix la comanda"
+msgstr "Imprimeix llistat"
 
 #: clientslist.cpp:158
-#, fuzzy
 msgid "Listado de Clientes"
-msgstr "Llistat d'assentaments"
+msgstr "Llistat de clients"
 
 #: ui_clientebase.h:599
 msgid "No&mbre comercial:"
-msgstr ""
+msgstr "No&m comercial:"
 
 #: clienteview.cpp:57 clientslist.cpp:354
-#, fuzzy
 msgid "Nombre alternativo del cliente"
-msgstr "Nom del compte"
+msgstr "Nom alternatiu del client"
 
 #: clientslist.cpp:353
-#, fuzzy
 msgid "Nombre de cliente"
-msgstr "Nom del compte"
+msgstr "Nom del client"
 
 #: clienteview.cpp:56
 msgid "Nombre del cliente"
@@ -322,54 +278,48 @@ msgid "Nuevo"
 msgstr "Nou"
 
 #: clientslist.cpp:308 pluginbf_cliente.cpp:106 pluginbf_cliente.cpp:107
-#, fuzzy
 msgid "Nuevo cliente"
-msgstr "Nou assentament"
+msgstr "Nou client"
 
 #: clienteview.cpp:59 clientslist.cpp:355
-#, fuzzy
 msgid "Numero cuenta corriente"
-msgstr "Codi de compte corrent.:"
+msgstr "Codi de compte corrent"
 
 #: ui_clientebase.h:605
 msgid "Numero de fa&x:"
-msgstr ""
+msgstr "Número de fa&x:"
 
 #: clienteview.cpp:67 clientslist.cpp:360
-#, fuzzy
 msgid "Numero de fax"
-msgstr "Nombre de quotes"
+msgstr "Número de fax"
 
 #: clienteview.cpp:64 clientslist.cpp:359
-#, fuzzy
 msgid "Numero de telefono"
-msgstr "Nombre de quotes"
+msgstr "Número de telèfon"
 
 #: clienteview.cpp:65
 msgid "Numero de telefono en el trabajo"
-msgstr "Nombre de telèfon en el treball"
+msgstr "Nombre de telèfon a la feina"
 
 #: clienteview.cpp:66
 msgid "Numero de telefono movil"
-msgstr "Nombre de telèfon mòbil"
+msgstr "Número de telèfon mòbil"
 
 #: ui_clientebase.h:608
-#, fuzzy
 msgid "Pagina &web:"
-msgstr "Pàgina actual:"
+msgstr "Pàgina &web:"
 
 #: clienteview.cpp:61 clientslist.cpp:357
-#, fuzzy
 msgid "Poblacion"
-msgstr "Paginació"
+msgstr "Població"
 
 #: ui_clientebase.h:603
 msgid "Pro&vincia:"
-msgstr ""
+msgstr "Pro&víncia:"
 
 #: clienteview.cpp:62
 msgid "Provincia"
-msgstr "Provincia"
+msgstr "Província"
 
 #: clienteview.cpp:79
 msgid "Recargo de Equivalencia"
@@ -380,34 +330,28 @@ msgid "Regimen fiscal"
 msgstr "Règim fiscal"
 
 #: clientslist.cpp:62
-#, fuzzy
 msgid "Selector de clientes"
-msgstr "Sel·lector de BulmaGés"
+msgstr "Selector de BulmaGés"
 
 #: ui_clientslistbase.h:342
 msgid "Sólo Clientes con Albaranes sin Procesar"
-msgstr ""
+msgstr "Sols clients amb albarans sense processar"
 
 #: ui_clientslistbase.h:341
 msgid "Sólo Clientes con Facturas sin Procesar"
-msgstr ""
+msgstr "Sols clients amb factures sense processar"
 
 #: ui_clientebase.h:606
 msgid "Tele&fono del trabajo:"
-msgstr ""
+msgstr "Tele&fon del treball:"
 
 #: ui_clientebase.h:607
 msgid "Telefono &movil:"
-msgstr ""
+msgstr "Telèfon &mòbil:"
 
 #: clienteview.cpp:191
-#, fuzzy
 msgid "Tiene que guardar el documento antes de poder imprimirlo."
-msgstr ""
-"#-#-#-#-#  pluginbf_asociacion_ca_ES.UTF-8.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"Ha de guardar el document abans de poder imprimir-lo\n"
-"#-#-#-#-#  pluginbf_recibo_ca_ES.UTF-8.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"Ha de desar el document abans de poder imprimir-lo"
+msgstr "Heu de desar el document abans de poder imprimir-lo"
 
 #, fuzzy
 #~ msgid "&Nuevo Cliente"
