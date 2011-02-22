@@ -62,6 +62,8 @@ BcCuentaView::BcCuentaView ( BcCompany  *emp, QWidget *parent, Qt::WFlags fl )
     addDbField ( "webent_cuenta", BlDbField::DbVarChar, BlDbField::DbNothing, _ ( "Web de la cuenta" ) );
     addDbField ( "emailent_cuenta", BlDbField::DbVarChar, BlDbField::DbNothing, _ ( "E-Mail de la cuenta" ) );
     addDbField ( "dirent_cuenta", BlDbField::DbVarChar, BlDbField::DbNothing, _ ( "Direccion de la cuenta" ) );
+    addDbField ( "idprovincia", BlDbField::DbInt, BlDbField::DbNothing, _ ( "Provincia" ) );
+    addDbField ( "poblacion", BlDbField::DbVarChar, BlDbField::DbNothing, _ ( "Poblacion" ) );
 
     mui_padre->setMainCompany ( mainCompany() );
     mui_idc_coste->setMainCompany ( mainCompany() );
@@ -78,8 +80,10 @@ BcCuentaView::BcCuentaView ( BcCompany  *emp, QWidget *parent, Qt::WFlags fl )
     mui_idprovincia->setQuery ( "SELECT * FROM provincia LEFT JOIN pais ON provincia.idpais = pais.idpais ORDER BY descpais, provincia" );
     mui_idprovincia->setTableName ( "provincia" );
     mui_idprovincia->setFieldId ( "idprovincia" );
-    mui_idprovincia->m_valores["nomprovincia"] = "";
+    mui_idprovincia->m_valores["provincia"] = "";
     mui_idprovincia->m_valores["descpais"] = "";
+    mui_idprovincia->setAllowNull(TRUE);
+    mui_idprovincia->setId("");
 
     /// Arreglamos la cuenta
     mui_padre->setMainCompany(mainCompany());

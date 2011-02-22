@@ -235,6 +235,25 @@ CREATE TRIGGER cambiadoivat
    EXECUTE PROCEDURE cambiadoiva(); 
 
 
+
+CREATE OR REPLACE FUNCTION aux() RETURNS INTEGER AS '
+DECLARE
+        bs RECORD;
+BEGIN
+	SELECT INTO bs * FROM pg_attribute WHERE attname=''pais'';
+	IF FOUND THEN
+		ALTER TABLE cuenta RENAME COLUMN pais TO idpais;
+		ALTER TABLE cuenta RENAME COLUMN provincia TO idprovincia;
+	END IF;
+	RETURN 0;
+END;
+' LANGUAGE plpgsql;
+SELECT aux();
+DROP FUNCTION aux() CASCADE;
+\echo -n ':: Modificada tabla cuenta ... '
+
+
+
 -- ================================== FIN PARCHE. ACTUALIZACION  =======================
 -- =====================================================================================
 
@@ -246,9 +265,9 @@ DECLARE
 BEGIN
 	SELECT INTO as * FROM configuracion WHERE nombre = ''DatabaseRevision'';
 	IF FOUND THEN
-		UPDATE CONFIGURACION SET valor = ''0.12.1-0003'' WHERE nombre = ''DatabaseRevision'';
+		UPDATE CONFIGURACION SET valor = ''0.12.1-0004'' WHERE nombre = ''DatabaseRevision'';
 	ELSE
-		INSERT INTO configuracion (nombre, valor) VALUES (''DatabaseRevision'', ''0.12.1-0003'');
+		INSERT INTO configuracion (nombre, valor) VALUES (''DatabaseRevision'', ''0.12.1-0004'');
 	END IF;
 	RETURN 0;
 END;

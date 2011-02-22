@@ -173,8 +173,8 @@ CREATE TABLE cuenta (
     webent_cuenta character varying(150),
     tipocuenta integer DEFAULT 1,
     idc_coste integer REFERENCES c_coste (idc_coste),
-    pais INTEGER REFERENCES pais (idpais),
-    provincia INTEGER REFERENCES provincia (idprovincia),
+    idpais INTEGER REFERENCES pais (idpais),
+    idprovincia INTEGER REFERENCES provincia (idprovincia),
     poblacion CHARACTER VARYING(150)
 );
 
@@ -1990,9 +1990,9 @@ DECLARE
 BEGIN
 	SELECT INTO as * FROM configuracion WHERE nombre = ''DatabaseRevision'';
 	IF FOUND THEN
-		UPDATE CONFIGURACION SET valor = ''0.12.1-0003'' WHERE nombre = ''DatabaseRevision'';
+		UPDATE CONFIGURACION SET valor = ''0.12.1-0004'' WHERE nombre = ''DatabaseRevision'';
 	ELSE
-		INSERT INTO configuracion (nombre, valor) VALUES (''DatabaseRevision'', ''0.12.1-0003'');
+		INSERT INTO configuracion (nombre, valor) VALUES (''DatabaseRevision'', ''0.12.1-0004'');
 	END IF;
 	RETURN 0;
 END;
