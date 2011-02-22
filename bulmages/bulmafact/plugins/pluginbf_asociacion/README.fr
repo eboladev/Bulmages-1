@@ -27,7 +27,7 @@ Incompatibles:
 
 Reports: impers_reunion.rml; jdirectiva.rml; reunion.rml; inf_familias_hijos.rml; blform_JDirectivaView.qs; blform_ComisionView.qs; blform_ConvReunionView.qs
 
-Categorias: Association des parents d'élèves; Experimental;
+Categorias: Association des parents d'eleves; Experimental;
 
 Orden: 240
 

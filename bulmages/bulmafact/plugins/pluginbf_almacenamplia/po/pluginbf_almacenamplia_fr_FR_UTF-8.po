@@ -1,3 +1,4 @@
+# , 2011.
 msgid ""
 msgstr ""
 "MIME-Version: 1.0\n"
@@ -6,6 +7,11 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 "X-Language: fr_FR\n"
 "X-Source-Language: C\n"
+"Last-Translator: \n"
+"PO-Revision-Date: 2011-02-22 16:45+0100\n"
+"Project-Id-Version: \n"
+"Language-Team: French <kde-i18n-doc@kde.org>\n"
+"X-Generator: Lokalize 1.1\n"
 
 #: ui_almacenbase.h:354
 msgid "&Aceptar"
@@ -170,7 +176,7 @@ msgstr "Lieu du magasin"
 
 #: ui_almacenbase.h:349
 msgid "Telefono Almacen"
-msgstr "Téléphone du magasin"
+msgstr "Téléphone du Magasin"
 
 #: almacenview.cpp:64
 msgid "Telefono almacen"
@@ -191,3 +197,4 @@ msgstr "Type de magasin"
 #: almacenview.cpp:66
 msgid "email almacen"
 msgstr "Courriel du magasin"
+

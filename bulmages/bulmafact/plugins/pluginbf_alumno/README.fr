@@ -4,7 +4,7 @@
 #README.fr
 #20110207
 
-Nombre: Elèves
+Nombre: Eleves
 
 Biblioteca: libpluginbf_alumno.so
 
@@ -25,7 +25,7 @@ Incompatibles:
 
 Reports: alumno.rml; impers_alumno_faltas_de_asistencia.rml; blform_AlumnoView.qs; blform_ClaseView.qs
 
-Categorias: Association des parents d'élèves; Experimental;
+Categorias: Association des parents d'eleves; Experimental;
 
 Orden: 203
 

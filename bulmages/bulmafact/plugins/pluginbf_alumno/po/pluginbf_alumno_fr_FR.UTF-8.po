@@ -6,16 +6,17 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
 "POT-Creation-Date: 2011-02-04 12:54+0100\n"
-"PO-Revision-Date: 2011-02-06 20:01+0100\n"
+"PO-Revision-Date: 2011-02-22 15:56+0100\n"
 "Language-Team: French <kde-i18n-doc@kde.org>\n"
 "Language: fr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Lokalize 1.2\n"
+"X-Generator: Lokalize 1.1\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 "X-Language: fr_FR\n"
 "X-Source-Language: C\n"
+"Last-Translator: \n"
 
 #: ui_listcuotasporalumnobase.h:119 ui_alumnobase.h:535
 msgid "&Aceptar"
@@ -403,7 +404,7 @@ msgstr "Nom du tuteur"
 
 #: ui_clasebase.h:244 ui_alumnobase.h:516
 msgid "Nombre:"
-msgstr "Nom:"
+msgstr "Nom :"
 
 #: ui_clasebase.h:238 ui_clasebase.h:241
 msgid "Nueva Aula"
@@ -432,11 +433,11 @@ msgstr "Autres données"
 
 #: ui_alumnobase.h:533
 msgid "Padres/Tutores"
-msgstr "Père/Tuteurs"
+msgstr "Parents/Tuteurs"
 
 #: alumnoview.cpp:325
 msgid "Porcentaje"
-msgstr "Pourcentaje"
+msgstr "Pourcentage"
 
 #: pluginbf_alumno.cpp:343 pluginbf_alumno.cpp:362
 msgid "Seleccionar alumno"
