@@ -6,7 +6,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
 "POT-Creation-Date: 2011-02-04 12:55+0100\n"
-"PO-Revision-Date: 2011-02-23 12:02+0100\n"
+"PO-Revision-Date: 2011-02-23 12:11+0100\n"
 "Language-Team: French <kde-i18n-doc@kde.org>\n"
 "Language: fr\n"
 "MIME-Version: 1.0\n"
@@ -30,11 +30,11 @@ msgstr "&Annuler"
 
 #: pluginbf_clientecobro.cpp:100
 msgid "&Cobros de clientes"
-msgstr ""
+msgstr "&Encaissement de clients"
 
 #: pluginbf_clientecobro.cpp:108
 msgid "&Nuevo cobro de cliente"
-msgstr ""
+msgstr "&Nouvel encaissement"
 
 #: ui_cobroslistbase.h:434 ui_cobroslistbase.h:437
 msgid "Actualizar listado"
@@ -71,13 +71,11 @@ msgstr "Client :"
 
 #: cobroview.cpp:60
 msgid "Cobro"
-msgstr ""
-"Encaissement"
-"[M@QO[M@SO"
+msgstr "Encaissement"
 
 #: cobroslist.cpp:58
 msgid "Cobro real"
-msgstr ""
+msgstr "Encaissement réel"
 
 #: cobroslist.cpp:194 ui_cobroslistbase.h:382
 msgid "Cobros a clientes"
@@ -201,7 +199,7 @@ msgstr "Forme de payement"
 
 #: ui_cobrobase.h:415 ui_cobroslistbase.h:445
 msgid "Forma de pago:"
-msgstr "Forme de payement:"
+msgstr "Forme de payement :"
 
 #: ui_cobrobase.h:385 ui_cobrobase.h:388
 msgid "Guardar cobro"
@@ -261,7 +259,7 @@ msgstr "Prévision d'encaissement "
 
 #: ui_cobrobase.h:410
 msgid "Prevision de fondos"
-msgstr ""
+msgstr "Prévision de fonds"
 
 #: cobroview.cpp:68
 msgid "Referencia"
@@ -277,7 +275,7 @@ msgstr "Référence :"
 
 #: cobroslist.cpp:57
 msgid "Solo previsiones"
-msgstr ""
+msgstr "Prévisions seules"
 
 #: cobroview.cpp:127
 msgid "Tiene que guardar el documento antes de poder imprimirlo."
@@ -285,17 +283,19 @@ msgstr "Vous devez sauvegarder le document avant de pouvoir l'imprimer."
 
 #: ui_cobroslistbase.h:442
 msgid "Tipo de cobro:"
-msgstr ""
+msgstr "Type d'encaissement :"
 
 #: cobroview.cpp:154
 msgid ""
 "Toda la referencia esta cobrada. Se procesaran todos los documentos con esta "
 "referencia"
 msgstr ""
+"Toute la référence est perçue. On peut traiter tous les documents avec cette "
+"référence"
 
 #: cobroslist.cpp:56
 msgid "Todos los cobros"
-msgstr ""
+msgstr "Tous les encaissements"
 
 #: cobroview.cpp:69
 msgid "Total cobro"
@@ -311,12 +311,11 @@ msgstr "Total :"
 
 #: cobroview.cpp:72
 msgid "Trabajador"
-msgstr "Ouvrier"
+msgstr "Salarié"
 
 #: ui_cobrobase.h:416
-#, fuzzy
 msgid "Trabajador:"
-msgstr "Ouvrier"
+msgstr "Salarié :"
 
 #~ msgid "&Cobros a clientes"
 #~ msgstr "Encaissement de &Clients"
