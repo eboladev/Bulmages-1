@@ -7,8 +7,8 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
 "POT-Creation-Date: 2011-02-04 12:54+0100\n"
-"PO-Revision-Date: 2011-02-12 09:58+0100\n"
-"Last-Translator: aishen <aishen@free.fr>\n"
+"PO-Revision-Date: 2011-02-23 09:44+0100\n"
+"Last-Translator: \n"
 "Language-Team: French <kde-i18n-doc@kde.org>\n"
 "Language: fr\n"
 "MIME-Version: 1.0\n"
@@ -112,7 +112,7 @@ msgstr ""
 "#-#-#-#-#  pluginticketsdevueltos.pot (PACKAGE VERSION)  #-#-#-#-#\n"
 "#-#-#-#-#  pluginabrevs.pot (PACKAGE VERSION)  #-#-#-#-#\n"
 "#-#-#-#-#  bulmages_suite.pot (PACKAGE VERSION)  #-#-#-#-#\n"
-"X-Generator: Lokalize 1.2\n"
+"X-Generator: Lokalize 1.1\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
 #: ui_partidasbase.h:337 ui_presupuestocontablebase.h:364
@@ -173,7 +173,7 @@ msgstr "Effacer l'encaissement"
 
 #: ui_presupuestocontablebase.h:337 ui_presupuestocontablebase.h:340
 msgid "Borrar presupuesto"
-msgstr "Borrar presupuesto"
+msgstr "Effacer le budget"
 
 #: presupuestocontablelist.cpp:200
 msgid "Borrar presupuestocontable"
@@ -319,7 +319,7 @@ msgstr "Filtrer la liste"
 
 #: acontableview.cpp:65
 msgid "Gasto"
-msgstr "Frais"
+msgstr "Dépense"
 
 #: pluginbf_minicontabilidad.cpp:435 pluginbf_minicontabilidad.cpp:450
 msgid "Gestionar partidas"
@@ -383,7 +383,7 @@ msgstr "Imprimer le budget "
 
 #: acontableview.cpp:64
 msgid "Ingreso"
-msgstr "Intérêt"
+msgstr "Recette"
 
 #: presupuestocontablelist.cpp:128
 msgid "Listado de Presupuestos Contables"

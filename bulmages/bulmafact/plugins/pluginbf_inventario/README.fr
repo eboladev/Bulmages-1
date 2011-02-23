@@ -1,16 +1,16 @@
 #######
 #Plugins
 #######
-#README.es
-#20080501
+#README.fr
+#20110223
 
-Nombre: Inventarios.
+Nombre: Inventaires.
 
 Biblioteca: libpluginbf_inventario.so
 
-Descripción: <H1>Inventarios</H1>
-<P>Creación de inventarios y control de stock. Inventarios en múltiples almacenes y con rehubicación.</P>
-<B>Author:</B>Tomeu Borrás (tborras@conetxia.com)<BR>
+Descripción: <H1>Inventaires</H1>
+<P>Création inventaires et contrôle de stock. Inventaires dans de multiples magasins et avec relocation.</P>
+<B>Auteur:</B>Tomeu Borrás (tborras@conetxia.com)<BR>
 <HR>
 
 ParmBD: PluginBf_Inventario
@@ -23,8 +23,8 @@ Dependencias: libpluginbf_articulo.so; libpluginbf_almacen.so
 
 Incompatibles:
 
-Categorias: Facturacion generica; Experimentales;
+Categorias: Facturation generique; Experimental;
 
 Orden: 550
 
-Comentarios: Imprescindible en los sistema de control de stock.
+Comentarios: Indispensable dans le système de contrôle de stock.

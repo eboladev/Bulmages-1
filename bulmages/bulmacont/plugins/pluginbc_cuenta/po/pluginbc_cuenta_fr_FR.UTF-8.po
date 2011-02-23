@@ -54,7 +54,7 @@ msgstr "&Imputation"
 
 #: ui_bccuentabase.h:828
 msgid "&Ingreso"
-msgstr "&Intérêt"
+msgstr "&Recette"
 
 #: ui_bccuentabase.h:833
 msgid "&Neto"
