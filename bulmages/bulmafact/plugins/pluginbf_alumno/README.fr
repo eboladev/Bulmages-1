@@ -8,9 +8,9 @@ Nombre: Eleves
 
 Biblioteca: libpluginbf_alumno.so
 
-Descripción: <H1> Elèves</H1>
+Descripción: <H1>Elèves</H1>
 <P>Gestionnaire d'élèves d'une APA.</P>
-<B>Author:</B>Tomeu Borrás (tborras@conetxia.com)<BR>
+<B>Auteur:</B>Tomeu Borrás (tborras@conetxia.com)<BR>
 <HR>
 
 ParmBD:

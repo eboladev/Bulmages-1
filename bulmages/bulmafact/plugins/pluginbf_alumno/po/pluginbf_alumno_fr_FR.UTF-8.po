@@ -6,7 +6,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
 "POT-Creation-Date: 2011-02-04 12:54+0100\n"
-"PO-Revision-Date: 2011-02-22 15:56+0100\n"
+"PO-Revision-Date: 2011-02-23 08:56+0100\n"
 "Language-Team: French <kde-i18n-doc@kde.org>\n"
 "Language: fr\n"
 "MIME-Version: 1.0\n"
@@ -56,27 +56,27 @@ msgstr "&Oui"
 
 #: alumnoview.cpp:323
 msgid "1er Apellido"
-msgstr "1er Nom"
+msgstr "Prénom 1"
 
 #: alumnoview.cpp:59 alumnoslist.cpp:346
 msgid "1er apellido"
-msgstr "1er Nom"
+msgstr "Prénom 1"
 
 #: ui_alumnobase.h:517
 msgid "1er. apellido:"
-msgstr "1er Nom :"
+msgstr "Prénom 1 :"
 
 #: alumnoview.cpp:324
 msgid "2do Apellido"
-msgstr "2 ème Nom"
+msgstr "Prénom 2"
 
 #: alumnoview.cpp:60 alumnoslist.cpp:347
 msgid "2o apellido"
-msgstr "2 ème Nom"
+msgstr "Prénom 2"
 
 #: ui_alumnobase.h:518
 msgid "2º apellido"
-msgstr "2º Nom"
+msgstr "Prénom 2"
 
 #: ui_alumnobase.h:534
 msgid "Actividades"
@@ -214,7 +214,7 @@ msgstr "Quota par élève"
 
 #: ui_alumnoslistbase.h:310 ui_alumnobase.h:523
 msgid "Curso:"
-msgstr "Cours !"
+msgstr "Cours :"
 
 #: ui_alumnobase.h:508
 msgid "DNI"
@@ -234,7 +234,7 @@ msgstr "Désirez vous garder les changements ?"
 
 #: alumnoview.cpp:64
 msgid "E-Mail"
-msgstr "Courriel :"
+msgstr "Courriel "
 
 #: alumnoslist.cpp:288 ui_alumnoslistbase.h:325 ui_alumnoslistbase.h:328
 msgid "Editar Alumno"
@@ -274,7 +274,7 @@ msgid ""
 "la imagen asociada a este alumno?"
 msgstr ""
 "Etes vous sûr de vouloir effacer\n"
-"l'image associée à cette élève"
+"l'image associée à cette élève ?"
 
 #: alumnoslist.cpp:348
 msgid "F. Nacimiento"
@@ -358,7 +358,7 @@ msgid ""
 "Compruebe que el archivo tenga los permisos correctos."
 msgstr ""
 "Impossible d'effacer le fichier\n"
-"Vérifiez que le fichier à les permissions requises"
+"Vérifiez que le fichier ait les permissions requises."
 
 #: alumnoview.cpp:207
 msgid ""
@@ -366,7 +366,7 @@ msgid ""
 "Compruebe que el archivo tenga los permisos correctos."
 msgstr ""
 "Impossible d'effacer l'image de l'élève\n"
-"Vérifiez que le fichier à les permissions requises"
+"Vérifiez que le fichier ait les permissions requises."
 
 #: alumnoview.cpp:261
 msgid ""
@@ -392,7 +392,7 @@ msgstr "Nom"
 
 #: alumnoview.cpp:357
 msgid "Nombre actividad"
-msgstr "Nom de l'activité :"
+msgstr "Nom de l'activité"
 
 #: alumnoview.cpp:57 alumnoview.cpp:58
 msgid "Nombre del alumno"

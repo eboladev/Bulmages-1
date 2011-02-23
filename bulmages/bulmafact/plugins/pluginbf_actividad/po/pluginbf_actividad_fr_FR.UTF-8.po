@@ -14,6 +14,8 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Lokalize 1.2\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"X-Language: fr_FR\n"
+"X-Source-Language: C\n"
 
 #: ui_actividadbase.h:591 ui_convocatoriabase.h:450
 msgid "&Aceptar"
@@ -44,7 +46,6 @@ msgid "&Si"
 msgstr "&Oui"
 
 #: pluginbf_actividad.cpp:106
-#, fuzzy
 msgid "&Tipos de Actividad"
 msgstr "&Types d'article"
 
@@ -90,19 +91,16 @@ msgid "Borrar Actividad"
 msgstr "Effacer l'activité"
 
 #: convocatoriaslist.cpp:221
-#, fuzzy
 msgid "Borrar Convocatoria"
-msgstr "Éraser quote"
+msgstr "Effacer la convocation"
 
 #: ui_tipoactividadbase.h:224 ui_tipoactividadbase.h:227
-#, fuzzy
 msgid "Borrar Tipo de Actividad"
-msgstr "Code compte"
+msgstr "Effacer le type d'activité"
 
 #: ui_actividadbase.h:550 ui_actividadbase.h:553
-#, fuzzy
 msgid "Borrar actividad"
-msgstr "Éraser quote"
+msgstr "Effacer l'activité"
 
 #: ui_convocatoriabase.h:417 ui_convocatoriabase.h:420
 #: ui_convocatoriabase.h:425 ui_convocatoriabase.h:428
@@ -114,9 +112,8 @@ msgid "Buscar:"
 msgstr "Chercher :"
 
 #: actividadview.cpp:255
-#, fuzzy
 msgid "CIF"
-msgstr "C.I.F."
+msgstr "CIF"
 
 #: ui_convocatoriabase.h:448
 msgid "Calendario"
@@ -140,16 +137,11 @@ msgstr "Code activité"
 
 #: ui_actividadbase.h:565
 msgid "Codigo Actividad:"
-msgstr ""
+msgstr "Code activité :"
 
 #: actividadview.cpp:64
-#, fuzzy
 msgid "Comentarios"
-msgstr ""
-"#-#-#-#-#  bulmacont_fr_FR.UTF-8.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"Comentaires\n"
-"#-#-#-#-#  bulmafact_fr_FR.UTF-8.po  #-#-#-#-#\n"
-"Commentaires"
+msgstr "Commentaires"
 
 #: ui_actividadbase.h:586 ui_convocatoriabase.h:440
 msgid "Comentarios:"
@@ -161,14 +153,12 @@ msgid "Configurar listado"
 msgstr "Configurer la liste"
 
 #: convocatoriaview.cpp:48
-#, fuzzy
 msgid "Convocatoria"
-msgstr "Concept"
+msgstr "Convocation"
 
 #: convocatoriaslist.cpp:147
-#, fuzzy
 msgid "Convocatorias"
-msgstr "&Contracts"
+msgstr "Convocations"
 
 #: ui_convocatoriaslistbase.h:363 ui_actividadeslistbase.h:311
 msgid "Ctrl+B"
@@ -212,15 +202,8 @@ msgid "Debe seleccionar una linea"
 msgstr "Vous devez sélectionner une ligne"
 
 #: tipoactividadview.cpp:199
-#, fuzzy
 msgid "Desea guardar los cambios?"
-msgstr ""
-"#-#-#-#-#  bulmalib_fr_FR.UTF-8.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"Désirés vous garder les changes?\n"
-"#-#-#-#-#  bulmacont_fr_FR.UTF-8.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"Désirez vous garder les changes?\n"
-"#-#-#-#-#  bulmafact_fr_FR.UTF-8.po  #-#-#-#-#\n"
-"Voulez vous sauver les changes?"
+msgstr "Désirez vous garder les changements ?"
 
 #: actividadview.cpp:76
 msgid "Direccion"
@@ -231,17 +214,16 @@ msgid "Direccion:"
 msgstr "Direction :"
 
 #: actividadview.cpp:71 ui_actividadbase.h:579
-#, fuzzy
 msgid "Domingo"
-msgstr "Dénomination"
+msgstr "Dimanche"
 
 #: actividadeslist.cpp:300 actividadview.cpp:74
 msgid "Duracion"
-msgstr ""
+msgstr "Durée"
 
 #: ui_actividadbase.h:584
 msgid "Duración:"
-msgstr ""
+msgstr "Durée :"
 
 #: actividadeslist.cpp:238 ui_convocatoriaslistbase.h:325
 #: ui_convocatoriaslistbase.h:328 ui_actividadeslistbase.h:273
@@ -250,18 +232,16 @@ msgid "Editar Actividad"
 msgstr "Editer l'activité"
 
 #: convocatoriaslist.cpp:220
-#, fuzzy
 msgid "Editar Convocatoria"
-msgstr "Éditer client"
+msgstr "Editer la convocation"
 
 #: pluginbf_actividad.cpp:275 pluginbf_actividad.cpp:292
 msgid "Editar actividad"
-msgstr ""
+msgstr "Editer l'activité"
 
 #: tipoactividadview.cpp:255
-#, fuzzy
 msgid "Error al borrar el TipoActividad"
-msgstr "Erreur en créant l'article"
+msgstr "Erreur à l'effacement du type d'activité"
 
 #: convocatoriaslist.cpp:177 actividadeslist.cpp:189
 msgid "Error al borrar el cobro a cliente"
@@ -272,14 +252,12 @@ msgid "Error al crear el actividad"
 msgstr "Erreur de création d'activité"
 
 #: tipoactividadview.cpp:230
-#, fuzzy
 msgid "Error al crear un nuevo TipoActividad"
-msgstr "Erreur en créant l'article"
+msgstr "Erreur en créant un nouveau type d'activité"
 
 #: tipoactividadview.cpp:179
-#, fuzzy
 msgid "Error al guardar el tipoactividad"
-msgstr "Erreur en créant l'article"
+msgstr "Erreur de sauvegarde du nouveau type d'activité"
 
 #: ui_convocatoriaslistbase.h:371 ui_actividadeslistbase.h:319
 msgid "F5"
@@ -291,7 +269,7 @@ msgstr "Date finale"
 
 #: ui_actividadbase.h:573
 msgid "Fecha Final:"
-msgstr ""
+msgstr "Date finale :"
 
 #: actividadeslist.cpp:297 actividadview.cpp:61
 msgid "Fecha Inicial"
@@ -299,11 +277,11 @@ msgstr "Date initiale"
 
 #: ui_actividadbase.h:572
 msgid "Fecha Inicial:"
-msgstr ""
+msgstr "Date initiale :"
 
 #: actividadview.cpp:297
 msgid "Fecha de la falta"
-msgstr ""
+msgstr "Date d'absence"
 
 #: ui_convocatoriaslistbase.h:311 ui_actividadeslistbase.h:261
 msgid "Fecha final:"
@@ -327,82 +305,72 @@ msgid "General"
 msgstr "Général"
 
 #: ui_tipoactividadbase.h:231 ui_tipoactividadbase.h:234
-#, fuzzy
 msgid "Guardar Tipo de Actividad"
-msgstr "Code compte"
+msgstr "Sauvegarde du type d'activité"
 
 #: ui_actividadbase.h:542 ui_actividadbase.h:545
-#, fuzzy
 msgid "Guardar actividad"
-msgstr "Code compte"
+msgstr "Sauvegarder l'activité"
 
 #: ui_convocatoriabase.h:409 ui_convocatoriabase.h:412
 msgid "Guardar cobro"
 msgstr "Sauvegarder l'encaissement"
 
 #: tipoactividadview.cpp:198
-#, fuzzy
 msgid "Guardar datos del tipoactividad"
-msgstr "Sauver données de l'ouvrier"
+msgstr "Sauvegarder les données du type d'activité"
 
 #: actividadeslist.cpp:299
 msgid "Hora Inicial"
-msgstr ""
+msgstr "Heure initiale"
 
 #: actividadview.cpp:73
-#, fuzzy
 msgid "Hora Inicio"
-msgstr "Début"
+msgstr "Heure de début"
 
 #: ui_actividadbase.h:583
 msgid "Hora Inicio:"
-msgstr ""
+msgstr "Heure de début :"
 
 #: actividadeslist.cpp:292
 msgid "ID Actividad"
 msgstr "ID Activité"
 
 #: convocatoriaslist.cpp:265
-#, fuzzy
 msgid "ID Convocatoria"
-msgstr "Nom commercial:"
+msgstr "ID Convocation"
 
 #: convocatoriaview.cpp:51 actividadview.cpp:55
 msgid "ID actividad"
 msgstr "ID Activité"
 
 #: actividadview.cpp:56
-#, fuzzy
 msgid "ID tipo actividad"
-msgstr "idtypetva"
+msgstr "ID type d'activité"
 
 #: actividadview.cpp:220 actividadview.cpp:257 actividadview.cpp:295
-#, fuzzy
 msgid "Id Actividad"
-msgstr "idtypetva"
+msgstr "ID Activité"
 
 #: actividadview.cpp:218 actividadview.cpp:294
-#, fuzzy
 msgid "Id alumno"
-msgstr "Id magasin"
+msgstr "ID Elèves"
 
 #: convocatoriaview.cpp:53 actividadview.cpp:59
 msgid "Id profesor"
 msgstr "Id professeur"
 
 #: actividadview.cpp:253
-#, fuzzy
 msgid "Id tutor"
-msgstr "ID article"
+msgstr "Id tuteur"
 
 #: actividadview.cpp:217 actividadview.cpp:252 actividadview.cpp:293
 msgid "Identificador"
 msgstr "Identifieur"
 
 #: ui_actividadbase.h:558 ui_actividadbase.h:561
-#, fuzzy
 msgid "Imprimir actividad"
-msgstr "Imprimer bulletin"
+msgstr "Imprimer l'activité"
 
 #: ui_convocatoriaslistbase.h:341 ui_convocatoriaslistbase.h:344
 #: ui_actividadeslistbase.h:289 ui_actividadeslistbase.h:292
@@ -411,12 +379,11 @@ msgstr "Imprimer la liste"
 
 #: actividadview.cpp:68 ui_actividadbase.h:581
 msgid "Jueves"
-msgstr ""
+msgstr "Jeudi"
 
 #: ui_tipoactividadbase.h:222
-#, fuzzy
 msgid "Lista de Tipos:"
-msgstr " Listes de banques:"
+msgstr " Liste de types :"
 
 #: actividadview.cpp:75 ui_convocatoriabase.h:434
 msgid "Lugar"
@@ -424,29 +391,27 @@ msgstr "Lieu"
 
 #: ui_actividadbase.h:567
 msgid "Lugar:"
-msgstr ""
+msgstr "Lieu :"
 
 #: actividadview.cpp:65 ui_actividadbase.h:575
-#, fuzzy
 msgid "Lunes"
-msgstr "Notes"
+msgstr "Lundi"
 
 #: actividadview.cpp:66 ui_actividadbase.h:576
 msgid "Martes"
-msgstr ""
+msgstr "Mardi"
 
 #: actividadview.cpp:67 ui_actividadbase.h:577
 msgid "Miercoles"
-msgstr ""
+msgstr "Mercredi"
 
 #: convocatoriaslist.cpp:266 actividadeslist.cpp:293
 msgid "Nombre"
 msgstr "Nom"
 
 #: actividadview.cpp:219 actividadview.cpp:296
-#, fuzzy
 msgid "Nombre alumno"
-msgstr "Nom de  champ"
+msgstr "Nom de l'élève"
 
 #: ui_actividadbase.h:566 ui_convocatoriabase.h:433
 msgid "Nombre completo:"
@@ -458,7 +423,7 @@ msgstr "Nom de l'activité"
 
 #: actividadview.cpp:254
 msgid "Nombre tutor"
-msgstr ""
+msgstr "Nom du tuteur"
 
 #: ui_tipoactividadbase.h:244
 msgid "Nombre:"
@@ -478,13 +443,12 @@ msgid "Nuevo Actividad"
 msgstr "Nouvelle activité"
 
 #: ui_tipoactividadbase.h:238 ui_tipoactividadbase.h:241
-#, fuzzy
 msgid "Nuevo Tipo de Actividad"
-msgstr "Code compte"
+msgstr "Nouveau type d'activité"
 
 #: pluginbf_actividad.cpp:273 pluginbf_actividad.cpp:298
 msgid "Nuevo actividad"
-msgstr ""
+msgstr "Nouvelle activité"
 
 #: ui_actividadbase.h:587 ui_convocatoriabase.h:441
 msgid "Otros datos"
@@ -492,12 +456,11 @@ msgstr "Autres données"
 
 #: ui_actividadbase.h:582
 msgid "Periodicidad Cuota:"
-msgstr ""
+msgstr "Périodicité du quota :"
 
 #: actividadview.cpp:72
-#, fuzzy
 msgid "Periodo"
-msgstr "Demandé"
+msgstr "Période"
 
 #: actividadeslist.cpp:296 actividadview.cpp:60
 msgid "Precio"
@@ -505,12 +468,11 @@ msgstr "Prix"
 
 #: ui_actividadbase.h:571
 msgid "Precio Cuota:"
-msgstr ""
+msgstr "Prix du quota :"
 
 #: actividadeslist.cpp:294
-#, fuzzy
 msgid "Profesor"
-msgstr "Fournisseur"
+msgstr "Professeur "
 
 #: ui_convocatoriabase.h:435
 msgid "Profesor Encargado"
@@ -521,17 +483,16 @@ msgid "Profesor:"
 msgstr "Professeur :"
 
 #: actividadview.cpp:70 ui_actividadbase.h:578
-#, fuzzy
 msgid "Sabado"
-msgstr "Solde"
+msgstr "Samedi"
 
 #: pluginbf_actividad.cpp:277 pluginbf_actividad.cpp:296
 msgid "Seleccionar actividad"
-msgstr ""
+msgstr "Sélectionner l'activité"
 
 #: ui_actividadbase.h:574
 msgid "Sesiones Semanales"
-msgstr ""
+msgstr "Sessions hebdomadaires"
 
 #: convocatoriaview.cpp:96 actividadview.cpp:143
 msgid "Tiene que guardar el documento antes de poder imprimirlo."
@@ -542,34 +503,29 @@ msgid "Tipo"
 msgstr "Tipe"
 
 #: ui_convocatoriabase.h:438
-#, fuzzy
 msgid "Tipo de Actividad"
-msgstr "Code compte"
+msgstr "Type d'activité"
 
 #: ui_actividadbase.h:570
 msgid "Tipo de Actividad:"
-msgstr ""
+msgstr "Type d'activité :"
 
 #: tipoactividadview.cpp:44
-#, fuzzy
 msgid "TipoActividad"
-msgstr "Actif"
+msgstr "Type d'activité"
 
 #: pluginbf_actividad.cpp:108 pluginbf_actividad.cpp:109
 #: ui_tipoactividadbase.h:221
-#, fuzzy
 msgid "Tipos de Actividad"
-msgstr "Code compte"
+msgstr "Type d'activité"
 
 #: ui_actividadbase.h:589
-#, fuzzy
 msgid "Tutores"
-msgstr "A&uteurs"
+msgstr "Tuteur"
 
 #: actividadview.cpp:69 ui_actividadbase.h:580
-#, fuzzy
 msgid "Viernes"
-msgstr "Actuelles"
+msgstr "Vendredi"
 
 #: actividadview.cpp:63 ui_actividadbase.h:569 ui_convocatoriabase.h:437
 msgid "Vigente"
