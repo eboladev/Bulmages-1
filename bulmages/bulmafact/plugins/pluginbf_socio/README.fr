@@ -8,7 +8,7 @@ Nombre: Socios
 
 Biblioteca: libpluginbf_socio.so
 
-Descripción: <H1>Ejemplo</H1>
+Descripción: <H1>Exemples</H1>
 <P>Gestion de socios.</P>
 <B>Auteur:</B>Tomeu Borrás (tborras@conetxia.com)<BR>
 <HR>

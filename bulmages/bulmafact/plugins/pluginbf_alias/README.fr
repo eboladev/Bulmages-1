@@ -1,8 +1,8 @@
 #######
 #Plugins
 #######
-#README.es
-#20080501
+#README.fr
+#20110223
 
 Nombre: Alias
 
@@ -10,7 +10,7 @@ Biblioteca: libpluginbf_alias.so
 
 Descripción: <H1>Alias</H1>
 <P>Permet l'introduction d'alias d'article qui servent comme codes additionnels d'article. Cette possibilité est très utile quand on a plusieurs articles qui ont des codes bar différents mais qui sont traités comme le même article.</P>
-<B>Author:</B>Tomeu Borrás (tborras@conetxia.com)<BR>
+<B>Auteur:</B>Tomeu Borrás (tborras@conetxia.com)<BR>
 <HR>
 
 ParmBD: PluginBf_Alias
