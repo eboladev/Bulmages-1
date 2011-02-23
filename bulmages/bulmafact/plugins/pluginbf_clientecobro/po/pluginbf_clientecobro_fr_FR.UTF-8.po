@@ -71,7 +71,7 @@ msgstr "Client :"
 #: cobroview.cpp:60
 msgid "Cobro"
 msgstr "Encaissement"
-
+[M@QO[M@SO
 #: cobroslist.cpp:58
 msgid "Cobro real"
 msgstr ""

@@ -41,7 +41,7 @@ msgstr "&Détail"
 
 #: pluginbf_proveedorfactura.cpp:97
 msgid "&Facturas de proveedores"
-msgstr ""
+msgstr "&Factures de Fournisseurs"
 
 #: genfactqtoolbutton.cpp:154 genfactqtoolbutton.cpp:261
 msgid "&No"
