@@ -74,8 +74,8 @@ void GenPagoQToolButton::setBoton()
     blDebug ( "GenPagoQToolButton::setBoton", 0 );
     connect ( this, SIGNAL ( clicked() ), this, SLOT ( click() ) );
     setObjectName ( QString::fromUtf8 ( "exporta" ) );
-    setStatusTip ( "Generar Pago" );
-    setToolTip ( "Generar Pago" );
+    setStatusTip ( _("Generar pago") );
+    setToolTip ( _("Generar pago") );
     setMinimumSize ( QSize ( 32, 32 ) );
     setMaximumSize ( QSize ( 32, 32 ) );
     setIcon ( QIcon ( QString::fromUtf8 ( ":/Images/pay.png" ) ) );
@@ -92,7 +92,7 @@ void GenPagoQToolButton::click()
 {
     blDebug ( "ImpQToolButton::click", 0 );
 
-    if ( m_object->objectName() == "FacturaProveedorBase" ) {      
+    if ( m_object->objectName() == "FacturaProveedorBase" ) {
 
 	FacturaProveedorView *fpv = ( FacturaProveedorView * ) m_object;
         int nuevo = 1;
@@ -101,9 +101,9 @@ void GenPagoQToolButton::click()
         BlDbRecordSet *cur = fpv->mainCompany()->loadQuery ( query );
         if ( cur->numregistros() > 0 ) {
             QMessageBox msgBox;
-            msgBox.setText ( tr ( "Ya existe un pago con esta referencia\n" ) );
-            msgBox.setInformativeText ( tr ( "Desea abrir el pago existente, registrar un nuevo pago o salir?" ) );
-            msgBox.addButton ( tr ( "Crear" ), QMessageBox::ActionRole );
+            msgBox.setText ( _( "Ya existe un pago con esta referencia\n" ) );
+            msgBox.setInformativeText ( _( "Desea abrir el pago existente, registrar un nuevo pago o salir?" ) );
+            msgBox.addButton ( _( "Crear" ), QMessageBox::ActionRole );
             QPushButton *openButton = msgBox.addButton ( QMessageBox::Open );
             QPushButton *abortButton = msgBox.addButton ( QMessageBox::Cancel );
             msgBox.setDefaultButton ( QMessageBox::Cancel );
@@ -152,9 +152,9 @@ void GenPagoQToolButton::click()
         BlDbRecordSet *cur = fpv->mainCompany()->loadQuery ( query );
         if ( cur->numregistros() > 0 ) {
             QMessageBox msgBox;
-            msgBox.setText ( tr ( "Ya existe un pago con esta referencia\n" ) );
-            msgBox.setInformativeText ( tr ( "Desea abrir el pago existente, registrar un nuevo pago o salir?" ) );
-            msgBox.addButton ( tr ( "Crear" ), QMessageBox::ActionRole );
+            msgBox.setText ( _( "Ya existe un pago con esta referencia\n" ) );
+            msgBox.setInformativeText ( _( "Desea abrir el pago existente, registrar un nuevo pago o salir?" ) );
+            msgBox.addButton ( _( "Crear" ), QMessageBox::ActionRole );
             QPushButton *openButton = msgBox.addButton ( QMessageBox::Open );
             QPushButton *abortButton = msgBox.addButton ( QMessageBox::Cancel );
             msgBox.setDefaultButton ( QMessageBox::Cancel );
@@ -201,9 +201,9 @@ void GenPagoQToolButton::click()
         BlDbRecordSet *cur = fpv->mainCompany()->loadQuery ( query );
         if ( cur->numregistros() > 0 ) {
             QMessageBox msgBox;
-            msgBox.setText ( tr ( "Ya existe un pago con esta referencia\n" ) );
-            msgBox.setInformativeText ( tr ( "Desea abrir el pago existente, registrar un nuevo pago o salir?" ) );
-            msgBox.addButton ( tr ( "Crear" ), QMessageBox::ActionRole );
+            msgBox.setText ( _( "Ya existe un pago con esta referencia\n" ) );
+            msgBox.setInformativeText ( _( "Desea abrir el pago existente, registrar un nuevo pago o salir?" ) );
+            msgBox.addButton ( _( "Crear" ), QMessageBox::ActionRole );
             QPushButton *openButton = msgBox.addButton ( QMessageBox::Open );
             QPushButton *abortButton = msgBox.addButton ( QMessageBox::Cancel );
             msgBox.setDefaultButton ( QMessageBox::Cancel );

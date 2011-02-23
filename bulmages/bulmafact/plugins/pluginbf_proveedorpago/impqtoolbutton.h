@@ -40,8 +40,10 @@ public:
     GenPagoQToolButton ( QWidget *fac,   QWidget *parent = NULL );
     ~GenPagoQToolButton();
     void setBoton();
+
 public slots:
     virtual void click();
 
 };
+
 
