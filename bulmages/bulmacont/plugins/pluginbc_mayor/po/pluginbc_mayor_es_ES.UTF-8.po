@@ -362,10 +362,6 @@ msgstr "idtipoiva"
 msgid "marcaconciliacion"
 msgstr "marcaconciliacion"
 
-#: pluginbc_mayor.cpp:93
-msgid "menuVer"
-msgstr ""
-
 #: bcextractosubform.cpp:63
 msgid "tipocuenta"
 msgstr "tipocuenta"

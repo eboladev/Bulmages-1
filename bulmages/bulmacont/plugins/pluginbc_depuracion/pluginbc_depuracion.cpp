@@ -81,7 +81,7 @@ int entryPoint ( BcBulmaCont *bcont )
 
     QMenu *pPluginMenu;
     /// Miramos si existe un menu Herramientas
-    pPluginMenu = bcont->menuBar() ->findChild<QMenu *> ( _ ( "menuVer" ) );
+    pPluginMenu = bcont->menuBar() ->findChild<QMenu *> ( "menuVer" );
 
     /// Creamos el men&uacute;.
     if ( !pPluginMenu ) {

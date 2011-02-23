@@ -92,7 +92,7 @@ void MyPluginCuentasAnuales::inicializa ( BcBulmaCont *bges )
     m_bulmacont = bges;
     QMenu *pPluginMenu;
     /// Miramos si existe un menu Herramientas
-    pPluginMenu = bges->menuBar() ->findChild<QMenu *> ( _ ( "menuListados" ) );
+    pPluginMenu = bges->menuBar() ->findChild<QMenu *> ( "menuListados" );
 
     /// Creamos el men&uacute;.
     if ( !pPluginMenu ) {

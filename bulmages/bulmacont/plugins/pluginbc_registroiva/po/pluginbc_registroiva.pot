@@ -22,10 +22,6 @@ msgstr ""
 msgid "Registro de IVA"
 msgstr ""
 
-#: pluginbc_registroiva.cpp:100
-msgid "menuVer"
-msgstr ""
-
 #: pluginbc_registroiva.cpp:104
 msgid "&Ver"
 msgstr ""

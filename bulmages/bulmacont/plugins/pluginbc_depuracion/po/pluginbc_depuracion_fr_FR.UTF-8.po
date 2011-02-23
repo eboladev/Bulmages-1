@@ -138,6 +138,3 @@ msgstr ""
 "\n"
 "Activer/Désactiver  le mode déboguer"
 
-#: pluginbc_depuracion.cpp:84
-msgid "menuVer"
-msgstr "menuVer"

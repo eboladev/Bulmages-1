@@ -25,10 +25,6 @@ msgstr ""
 msgid "Archivo"
 msgstr ""
 
-#: pluginbc_cuentasanuales.cpp:95
-msgid "menuListados"
-msgstr ""
-
 #: pluginbc_cuentasanuales.cpp:99
 msgid "&Listados"
 msgstr ""

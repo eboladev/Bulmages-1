@@ -38,6 +38,3 @@ msgid ""
 "Activa/Desactiva el modo debug"
 msgstr ""
 
-#: pluginbc_depuracion.cpp:84
-msgid "menuVer"
-msgstr ""

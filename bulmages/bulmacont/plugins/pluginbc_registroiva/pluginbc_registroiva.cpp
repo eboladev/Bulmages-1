@@ -97,7 +97,7 @@ void myRegIVA::inicializa ( BcBulmaCont *bges )
 
     QMenu *pPluginMenu;
     /// Miramos si existe un menu Ver
-    pPluginMenu = bges->menuBar() ->findChild<QMenu *> ( _ ( "menuVer" ) );
+    pPluginMenu = bges->menuBar() ->findChild<QMenu *> ( "menuVer" );
 
     /// Creamos el men&uacute;.
     if ( !pPluginMenu ) {

@@ -363,10 +363,6 @@ msgstr "idtypetva"
 msgid "marcaconciliacion"
 msgstr "Marque de réconciliation"
 
-#: pluginbc_mayor.cpp:93
-msgid "menuVer"
-msgstr "menuVer "
-
 #: bcextractosubform.cpp:63
 msgid "tipocuenta"
 msgstr "type de compte"

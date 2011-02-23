@@ -75,6 +75,3 @@ msgstr "Primer període"
 msgid "Segundo Periodo"
 msgstr "Primer període"
 
-#: pluginbc_cuentasanuales.cpp:95
-msgid "menuListados"
-msgstr ""

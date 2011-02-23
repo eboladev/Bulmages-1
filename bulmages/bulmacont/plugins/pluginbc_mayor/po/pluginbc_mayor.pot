@@ -17,10 +17,6 @@ msgstr ""
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: pluginbc_mayor.cpp:93
-msgid "menuVer"
-msgstr ""
-
 #: pluginbc_mayor.cpp:97
 msgid "&Ver"
 msgstr ""

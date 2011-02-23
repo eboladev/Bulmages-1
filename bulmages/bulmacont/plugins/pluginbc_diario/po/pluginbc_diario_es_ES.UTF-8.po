@@ -258,10 +258,6 @@ msgstr "idregistroiva"
 msgid "idtipoiva"
 msgstr "idtipoiva"
 
-#: pluginbc_diario.cpp:89
-msgid "menuVer"
-msgstr ""
-
 #: bcdiariosubform.cpp:48
 msgid "tipocuenta"
 msgstr "tipocuenta"

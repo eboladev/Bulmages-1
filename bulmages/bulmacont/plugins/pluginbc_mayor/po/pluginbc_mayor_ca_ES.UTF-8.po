@@ -386,10 +386,6 @@ msgstr ""
 msgid "marcaconciliacion"
 msgstr ""
 
-#: pluginbc_mayor.cpp:93
-msgid "menuVer"
-msgstr ""
-
 #: bcextractosubform.cpp:63
 msgid "tipocuenta"
 msgstr "tipocuenta"

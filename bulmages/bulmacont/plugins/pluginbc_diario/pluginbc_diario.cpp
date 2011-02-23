@@ -86,7 +86,7 @@ void MyPluginDiario::inicializa ( BcBulmaCont *bges )
     m_bulmacont = bges;
     QMenu *pPluginMenu;
     /// Miramos si existe un menu Herramientas
-    pPluginMenu = bges->menuBar() ->findChild<QMenu *> ( _ ( "menuVer" ) );
+    pPluginMenu = bges->menuBar() ->findChild<QMenu *> ( "menuVer" );
 
     /// Creamos el men&uacute;.
     if ( !pPluginMenu ) {

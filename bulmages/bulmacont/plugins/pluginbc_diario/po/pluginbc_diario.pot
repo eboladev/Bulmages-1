@@ -149,10 +149,6 @@ msgstr ""
 msgid "Diarios (*.txt)"
 msgstr ""
 
-#: pluginbc_diario.cpp:89
-msgid "menuVer"
-msgstr ""
-
 #: pluginbc_diario.cpp:93
 msgid "&Ver"
 msgstr ""

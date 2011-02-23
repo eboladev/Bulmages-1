@@ -557,10 +557,6 @@ msgstr ""
 msgid "ivaiva"
 msgstr "ivaiva"
 
-#: pluginbc_registroiva.cpp:100
-msgid "menuVer"
-msgstr ""
-
 #: registroivaview.cpp:80 listregistroivaview.cpp:98
 #: listregistroivaview.cpp:107
 msgid "nombretipoiva"
