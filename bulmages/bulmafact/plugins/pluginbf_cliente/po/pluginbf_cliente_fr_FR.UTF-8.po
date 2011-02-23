@@ -14,6 +14,8 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Lokalize 1.2\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"X-Language: fr_FR\n"
+"X-Source-Language: C\n"
 
 #: ui_clientebase.h:593
 msgid "&Aceptar"
@@ -33,24 +35,23 @@ msgstr "&Données générales"
 
 #: ui_clientebase.h:600
 msgid "&Direccion:"
-msgstr ""
+msgstr "Direction :"
 
 #: ui_clientebase.h:598
 msgid "&Empresa:"
-msgstr ""
+msgstr "Entreprise :"
 
 #: ui_clientebase.h:610
 msgid "&Forma de pago:"
-msgstr ""
+msgstr "Forme de paiement :"
 
 #: ui_clientebase.h:597
 msgid "&Nombre completo:"
-msgstr ""
+msgstr "Nom complet :"
 
 #: pluginbf_cliente.cpp:104
-#, fuzzy
 msgid "&Nuevo cliente"
-msgstr "Nouveau client"
+msgstr "&Nouveau client"
 
 #: ui_clientebase.h:617
 msgid "&Otros datos"
@@ -58,15 +59,15 @@ msgstr "&Autres données"
 
 #: ui_clientebase.h:602
 msgid "&Poblacion:"
-msgstr ""
+msgstr "Ville :"
 
 #: ui_clientebase.h:612
 msgid "&Regimen fiscal:"
-msgstr ""
+msgstr "Régime fiscal :"
 
 #: ui_clientebase.h:604
 msgid "&Telefono fijo:"
-msgstr ""
+msgstr "Téléphone fixe :"
 
 #: ui_clientslistbase.h:320 ui_clientslistbase.h:323
 msgid "Actualizar listado"
@@ -118,7 +119,7 @@ msgstr "Clients (*.xml)"
 
 #: ui_clientebase.h:601
 msgid "Codi&go postal:"
-msgstr ""
+msgstr "&Code postal :"
 
 #: clienteview.cpp:76 clientslist.cpp:351
 msgid "Codigo"
@@ -126,7 +127,7 @@ msgstr "Code"
 
 #: ui_clientebase.h:596
 msgid "Codigo de c&liente:"
-msgstr ""
+msgstr "Code c&lient :"
 
 #: clienteview.cpp:63 clientslist.cpp:358
 msgid "Codigo postal"
@@ -134,7 +135,7 @@ msgstr "Code postal"
 
 #: ui_clientebase.h:614
 msgid "Comen&tarios:"
-msgstr ""
+msgstr "&Libellés :"
 
 #: clienteview.cpp:72 clientslist.cpp:366
 msgid "Comentarios"
@@ -146,7 +147,7 @@ msgstr "Configurer la liste"
 
 #: ui_clientebase.h:609
 msgid "Correo electro&nico:"
-msgstr ""
+msgstr "Courrier électro&nique :"
 
 #: ui_clientebase.h:585
 msgid "Ctrl+D"
@@ -161,9 +162,8 @@ msgid "Datos &bancarios:"
 msgstr "Donées &bancaires:"
 
 #: ui_clientebase.h:615
-#, fuzzy
 msgid "Datos de comercio &electronico:"
-msgstr "Donnés de commerce électronique:"
+msgstr "Donnés de commerce &électronique :"
 
 #: clienteview.cpp:73
 msgid "Datos de comercio electronico"
@@ -259,7 +259,7 @@ msgstr "Liste de clients"
 
 #: ui_clientebase.h:599
 msgid "No&mbre comercial:"
-msgstr ""
+msgstr "No&m commercial :"
 
 #: clienteview.cpp:57 clientslist.cpp:354
 msgid "Nombre alternativo del cliente"
@@ -287,7 +287,7 @@ msgstr "Numéro de compte courant"
 
 #: ui_clientebase.h:605
 msgid "Numero de fa&x:"
-msgstr ""
+msgstr "Numéro de fa&x :"
 
 #: clienteview.cpp:67 clientslist.cpp:360
 msgid "Numero de fax"
@@ -306,9 +306,8 @@ msgid "Numero de telefono movil"
 msgstr "Numéro de téléphone portable"
 
 #: ui_clientebase.h:608
-#, fuzzy
 msgid "Pagina &web:"
-msgstr "Page web:"
+msgstr "Page &web:"
 
 #: clienteview.cpp:61 clientslist.cpp:357
 msgid "Poblacion"
@@ -316,7 +315,7 @@ msgstr "Population "
 
 #: ui_clientebase.h:603
 msgid "Pro&vincia:"
-msgstr ""
+msgstr "Pro&vince :"
 
 #: clienteview.cpp:62
 msgid "Provincia"
@@ -336,19 +335,19 @@ msgstr "Sélecteur de clients"
 
 #: ui_clientslistbase.h:342
 msgid "Sólo Clientes con Albaranes sin Procesar"
-msgstr ""
+msgstr "Seuls les clients avec bulletin de livraison seront traités"
 
 #: ui_clientslistbase.h:341
 msgid "Sólo Clientes con Facturas sin Procesar"
-msgstr ""
+msgstr "Seuls les clients avec factures seront traités"
 
 #: ui_clientebase.h:606
 msgid "Tele&fono del trabajo:"
-msgstr ""
+msgstr "Télép&hone au travail :"
 
 #: ui_clientebase.h:607
 msgid "Telefono &movil:"
-msgstr ""
+msgstr "Téléphone &portable :"
 
 #: clienteview.cpp:191
 msgid "Tiene que guardar el documento antes de poder imprimirlo."

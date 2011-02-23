@@ -6,14 +6,14 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
 "POT-Creation-Date: 2011-02-04 12:53+0100\n"
-"PO-Revision-Date: 2011-02-09 11:23+0100\n"
-"Last-Translator: aishen <aishen@free.fr>\n"
+"PO-Revision-Date: 2011-02-23 18:12+0100\n"
+"Last-Translator: \n"
 "Language-Team: French <kde-i18n-doc@kde.org>\n"
 "Language: fr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Lokalize 1.2\n"
+"X-Generator: Lokalize 1.1\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
 #: listlinpedidoclienteview.cpp:56 listdescpedidoclienteview.cpp:42
@@ -49,9 +49,8 @@ msgid "&No"
 msgstr "&Non"
 
 #: pluginbf_clientepedido.cpp:107
-#, fuzzy
 msgid "&Nuevo pedido de cliente"
-msgstr "Code de client:"
+msgstr "Code de client :"
 
 #: pluginbf_clientepedido.cpp:99
 msgid "&Pedidos de clientes"
@@ -195,7 +194,7 @@ msgstr "Description "
 
 #: ui_pedidoclientebase.h:719 ui_presupuestoclientebase.h:802
 msgid "Descripcion:"
-msgstr "Descripción :"
+msgstr "Description :"
 
 #: ui_pedidoclientebase.h:731 ui_presupuestoclientebase.h:815
 msgid "Descuentos:"
@@ -390,7 +389,7 @@ msgstr "Numéro de commande "
 
 #: ui_presupuestoclientebase.h:803
 msgid "Numero:"
-msgstr ""
+msgstr "Numéro :"
 
 #: listlinpedidoclienteview.cpp:58
 msgid "Orden"
@@ -483,7 +482,7 @@ msgstr "Total"
 
 #: listlinpedidoclienteview.cpp:53
 msgid "Total Linea"
-msgstr ""
+msgstr "Total de la ligne"
 
 #: ui_pedidoclientebase.h:736 ui_pedidosclientelistbase.h:439
 #: ui_presupuestoslistbase.h:422 ui_presupuestoclientebase.h:820
