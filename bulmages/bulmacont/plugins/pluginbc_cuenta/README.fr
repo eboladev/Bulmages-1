@@ -4,11 +4,11 @@ Plugins
 #README.fr
 20110204
 
-Nombre: Comptes 
+Nombre: Plan comptable
 
 Biblioteca: libpluginbc_cuenta.so
 
-Descripción: <H1>Comptes comptables</H1>
+Descripción: <H1>Plan comptable</H1>
 <P>Permet de gérer les comptes comptables.</P>
 <HR>
 
