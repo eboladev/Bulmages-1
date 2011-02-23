@@ -46,7 +46,7 @@ class PageReset(platypus.Flowable):
         self.canv._pageNumber = 0
 
 class _rml_styles(object,):
-    def __init__(self, nodes, localcontext):
+    def __init__(self, nodes = {}, localcontext = None):
         self.localcontext = localcontext
         self.styles = {}
         self.names = {}
@@ -155,6 +155,11 @@ class _rml_doc(object):
 		    nodo.getparent().insert(nodo.getparent().index(nodo), nnnode)
 	    nodo.getparent().remove(nodo)
 
+    def get_localcontext(self):
+        return self.localcontext
+
+    def get_etree(self):
+        return self.etree
 
     def docinit(self, els):
         from reportlab.lib.fonts import addMapping
@@ -313,7 +318,7 @@ class _rml_canvas(object):
         self.canvas.circle(x_cen=bgutils.unit_get(node.get('x')), y_cen=bgutils.unit_get(node.get('y')), r=bgutils.unit_get(node.get('radius')), **bgutils.attr_get(node, [], {'fill':'bool','stroke':'bool'}))
 
     def _place(self, node):
-        flows = _rml_flowable(self.doc, self.localcontext, images=self.images, path=self.path, title=self.title).render(node)
+        flows = _rml_flowable(self.doc, self.localcontext, images=self.images, path=self.path,        title=self.title).render(node)
         infos = bgutils.attr_get(node, ['x','y','width','height'])
 
         infos['y']+=infos['height']
@@ -459,10 +464,13 @@ class _rml_draw(object):
         canvas.restoreState()
 
 class _rml_flowable(object):
-    def __init__(self, doc, localcontext, images={}, path='.', title=None):
+    def __init__(self, doc=None, localcontext=None, images={}, path='.', title=None):
         self.localcontext = localcontext
         self.doc = doc
-        self.styles = doc.styles
+        if hasattr(doc, 'styles'):
+           self.styles = doc.styles
+        else:
+           self.styles = _rml_styles()
         self.images = images
         self.path = path
         self.title = title
@@ -806,7 +814,7 @@ class _rml_template(object):
 
     def render(self, node_stories):
         fis = []
-        r = _rml_flowable(self.doc,self.localcontext, images=self.images, path=self.path, title=self.title)
+        r = _rml_flowable(self.doc, self.localcontext, images=self.images, path=self.path, title=self.title)
         story_cnt = 0
         for node_story in node_stories:
             if story_cnt > 0:
@@ -1054,5 +1062,7 @@ if __name__=="__main__":
     else:
         print 'Usage: trml2pdf input.rml >output.pdf'
         print 'Try \'trml2pdf --help\' for more information.'
+
+
 
 
