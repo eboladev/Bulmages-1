@@ -570,10 +570,6 @@ msgstr "Totals:"
 msgid "Total Haber:"
 msgstr "Total Haver:"
 
-#: pluginbc_asiento.cpp:250
-msgid "menuAsiento"
-msgstr ""
-
 #: ui_bcasientolistbase.h:469
 msgid "y   ( >="
 msgstr "y   ( >="

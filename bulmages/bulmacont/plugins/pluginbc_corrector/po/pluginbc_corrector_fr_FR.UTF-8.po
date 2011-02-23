@@ -216,8 +216,5 @@ msgstr "plus grand"
 msgid "menor"
 msgstr "plus petit"
 
-#: pluginbc_corrector.cpp:71
-msgid "menuVer"
-msgstr "menuVer"
 
 

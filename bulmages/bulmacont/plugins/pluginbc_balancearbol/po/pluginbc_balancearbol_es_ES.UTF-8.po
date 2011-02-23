@@ -267,10 +267,6 @@ msgstr "Ver extracto (este dia)"
 msgid "Ver extracto (este mes)"
 msgstr "Ver extracto (este mes)"
 
-#: pluginbc_balancearbol.cpp:88
-msgid "menuVentana"
-msgstr "menuVentana"
-
 #~ msgid "1"
 #~ msgstr "1"
 

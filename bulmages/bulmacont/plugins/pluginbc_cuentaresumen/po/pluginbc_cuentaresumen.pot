@@ -21,10 +21,6 @@ msgstr ""
 msgid "Resumen cuenta"
 msgstr ""
 
-#: pluginbc_cuentaresumen.cpp:75
-msgid "menuVer"
-msgstr ""
-
 #: pluginbc_cuentaresumen.cpp:79
 msgid "&Ver"
 msgstr ""

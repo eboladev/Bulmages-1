@@ -267,10 +267,6 @@ msgstr "Afficher l'extrait (d'aujourd'hui)"
 msgid "Ver extracto (este mes)"
 msgstr "Afficher l'extrait (de ce mois)"
 
-#: pluginbc_balancearbol.cpp:88
-msgid "menuVentana"
-msgstr "menuVer"
-
 #~ msgid "1"
 #~ msgstr "1"
 

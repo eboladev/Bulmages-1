@@ -138,6 +138,3 @@ msgstr "Ponga el año:"
 msgid "Septiembre"
 msgstr "Septiembre"
 
-#: pluginbc_bloqueofechas.cpp:84
-msgid "menuHerramientas"
-msgstr ""

@@ -543,9 +543,6 @@ msgstr "URL de la pàgina web:"
 msgid "Web de la cuenta"
 msgstr "Web del compte"
 
-#: pluginbc_cuenta.cpp:92
-msgid "menuCuentas"
-msgstr ""
 
 #~ msgid "&Ver"
 #~ msgstr "&Veure"

@@ -97,10 +97,6 @@ msgstr ""
 msgid "Ejercicios ya contemplado"
 msgstr ""
 
-#: pluginbc_bloqueofechas.cpp:84
-msgid "menuHerramientas"
-msgstr ""
-
 #: pluginbc_bloqueofechas.cpp:88
 msgid "&Herramientas"
 msgstr ""

@@ -17,10 +17,6 @@ msgstr ""
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: pluginbc_balancearbol.cpp:88
-msgid "menuVentana"
-msgstr ""
-
 #: pluginbc_balancearbol.cpp:92
 msgid "&Ver"
 msgstr ""

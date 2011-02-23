@@ -345,6 +345,3 @@ msgstr "Valor de la compra"
 msgid "Ver asiento"
 msgstr "Veure assentament"
 
-#: pluginbc_amortizacion.cpp:93
-msgid "menuVer"
-msgstr ""

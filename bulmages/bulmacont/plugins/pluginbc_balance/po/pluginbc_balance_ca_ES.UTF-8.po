@@ -386,11 +386,6 @@ msgstr ""
 msgid "idcuenta"
 msgstr ""
 
-#: pluginbc_balance.cpp:83
-#, fuzzy
-msgid "menuVentana"
-msgstr "Finestre"
-
 #: balancesubform.cpp:41
 msgid "tdebe"
 msgstr "tdebe"

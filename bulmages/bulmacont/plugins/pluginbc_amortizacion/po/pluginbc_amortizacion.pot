@@ -183,10 +183,6 @@ msgstr ""
 msgid "Error al borrar la amortizacion"
 msgstr ""
 
-#: pluginbc_amortizacion.cpp:93
-msgid "menuVer"
-msgstr ""
-
 #: pluginbc_amortizacion.cpp:97
 msgid "&Ver"
 msgstr ""

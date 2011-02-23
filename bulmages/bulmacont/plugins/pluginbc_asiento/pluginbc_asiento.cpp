@@ -247,7 +247,7 @@ void MyPluginAsiento::inicializa ( BcBulmaCont *bges )
     m_bulmacont = bges;
     QMenu *pPluginMenu;
     /// Miramos si existe un menu Herramientas
-    pPluginMenu = bges->menuBar() ->findChild<QMenu *> ( _ ( "menuAsiento" ) );
+    pPluginMenu = bges->menuBar() ->findChild<QMenu *> ( "menuAsiento" );
 
     /// Creamos el men&uacute;.
     if ( !pPluginMenu ) {

@@ -266,10 +266,6 @@ msgstr ""
 msgid "Fecha final regularizacion:"
 msgstr ""
 
-#: pluginbc_asiento.cpp:250
-msgid "menuAsiento"
-msgstr ""
-
 #: pluginbc_asiento.cpp:254
 msgid "&Asiento"
 msgstr ""

@@ -81,7 +81,7 @@ void myBloqFechas::inicializa ( BcBulmaCont *bges )
 
     /// Miramos si existe un menu Herramientas
     QMenu *pPluginMenu;
-    pPluginMenu = bges->menuBar() ->findChild<QMenu *> ( _ ( "menuHerramientas" ) );
+    pPluginMenu = bges->menuBar() ->findChild<QMenu *> ( "menuHerramientas" );
 
     /// Creamos el men&uacute;.
     if ( !pPluginMenu ) {

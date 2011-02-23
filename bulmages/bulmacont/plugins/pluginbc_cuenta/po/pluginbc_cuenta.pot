@@ -182,10 +182,6 @@ msgstr ""
 msgid "Nombre de la cuenta"
 msgstr ""
 
-#: pluginbc_cuenta.cpp:92
-msgid "menuCuentas"
-msgstr ""
-
 #: pluginbc_cuenta.cpp:96
 msgid "&Cuentas Contables"
 msgstr ""

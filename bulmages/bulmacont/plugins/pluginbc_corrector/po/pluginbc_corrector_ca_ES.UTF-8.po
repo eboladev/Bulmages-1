@@ -143,10 +143,6 @@ msgstr "Maig"
 msgid "menor"
 msgstr ""
 
-#: pluginbc_corrector.cpp:71
-msgid "menuVer"
-msgstr ""
-
 #: correctorwidget.cpp:313
 msgid "se cambiara de "
 msgstr ""

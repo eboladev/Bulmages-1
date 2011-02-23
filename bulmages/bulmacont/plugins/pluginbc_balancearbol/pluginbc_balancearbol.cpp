@@ -76,16 +76,12 @@ void myplugin4::inicializa ( BcBulmaCont *bges )
 {
     blDebug ( "myplugin4::inicializa", 0 );
 
-    /// Inicializa el sistema de traducciones 'gettext'.
-    setlocale ( LC_ALL, "" );
-    blBindTextDomain ( "PluginBc_BalanceArbol", g_confpr->valor ( CONF_DIR_TRADUCCION ).toAscii().constData() );
-
     /// Creamos el men&uacute;.
     setMainCompany ( bges->empresaactual() );
     m_bulmacont = bges;
     QMenu *pPluginMenu;
     /// Miramos si existe un menu Herramientas
-    pPluginMenu = bges->menuBar() ->findChild<QMenu *> ( _ ( "menuVentana" ) );
+    pPluginMenu = bges->menuBar() ->findChild<QMenu *> ( "menuVentana" );
 
     /// Creamos el men&uacute;.
     if ( !pPluginMenu ) {
@@ -118,7 +114,7 @@ int entryPoint ( BcBulmaCont *bcont )
 
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale ( LC_ALL, "" );
-    blBindTextDomain ( "PluginBc_BalanceArbol", g_confpr->valor ( CONF_DIR_TRADUCCION ).toAscii().constData() );
+    blBindTextDomain ( "plugincc_balancearbol", g_confpr->valor ( CONF_DIR_TRADUCCION ).toAscii().constData() );
 
     myplugin4 *plug = new myplugin4();
     plug->inicializa ( bcont );

@@ -145,6 +145,3 @@ msgstr "Resumen cuenta"
 msgid "Resumen de Cuenta"
 msgstr "Resumen de Cuenta"
 
-#: pluginbc_cuentaresumen.cpp:75
-msgid "menuVer"
-msgstr ""

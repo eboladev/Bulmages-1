@@ -547,10 +547,6 @@ msgstr "Débit total :"
 msgid "Total Haber:"
 msgstr "Crédit total :"
 
-#: pluginbc_asiento.cpp:250
-msgid "menuAsiento"
-msgstr "menuAsiento"
-
 #: ui_bcasientolistbase.h:469
 msgid "y   ( >="
 msgstr "et   ( >="

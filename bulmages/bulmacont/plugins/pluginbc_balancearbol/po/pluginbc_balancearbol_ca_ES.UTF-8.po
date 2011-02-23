@@ -188,11 +188,6 @@ msgstr "Veure extracte (aquest dia)"
 msgid "Ver extracto (este mes)"
 msgstr "Veure extracte (aquest mes)"
 
-#: pluginbc_balancearbol.cpp:88
-#, fuzzy
-msgid "menuVentana"
-msgstr "Finestre"
-
 #~ msgid "1"
 #~ msgstr "1"
 

@@ -80,7 +80,7 @@ void myplugin4::inicializa ( BcBulmaCont *bges )
     m_bulmacont = bges;
     QMenu *pPluginMenu;
     /// Miramos si existe un menu Herramientas
-    pPluginMenu = bges->menuBar() ->findChild<QMenu *> ( _ ( "menuVentana" ) );
+    pPluginMenu = bges->menuBar() ->findChild<QMenu *> ( "menuVentana" );
 
     /// Creamos el men&uacute;.
     if ( !pPluginMenu ) {

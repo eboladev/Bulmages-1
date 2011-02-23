@@ -49,10 +49,6 @@ msgstr ""
 msgid "Corrector"
 msgstr ""
 
-#: pluginbc_corrector.cpp:71
-msgid "menuVer"
-msgstr ""
-
 #: pluginbc_corrector.cpp:75
 msgid "&Ver"
 msgstr ""

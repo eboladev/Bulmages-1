@@ -425,10 +425,6 @@ msgstr "ejsolde"
 msgid "idcuenta"
 msgstr "idcompte"
 
-#: pluginbc_balance.cpp:83
-msgid "menuVentana"
-msgstr "menuVer"
-
 #: balancesubform.cpp:41
 msgid "tdebe"
 msgstr "tdébit"

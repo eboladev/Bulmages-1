@@ -51,7 +51,7 @@ int entryPoint ( BcBulmaCont *bcont )
 
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale ( LC_ALL, "" );
-    blBindTextDomain ( "PluginBc_CuentaResumeb", g_confpr->valor ( CONF_DIR_TRADUCCION ).toAscii().constData() );
+    blBindTextDomain ( "pluginbc_cuentaresumen", g_confpr->valor ( CONF_DIR_TRADUCCION ).toAscii().constData() );
 
     BcCompany *emp = bcont->empresaactual();
     /// Vamos a probar con un docwindow.
@@ -72,7 +72,7 @@ int entryPoint ( BcBulmaCont *bcont )
 
     QMenu *pPluginMenu;
     /// Miramos si existe un menu Herramientas
-    pPluginMenu = bcont->menuBar() ->findChild<QMenu *> ( _ ( "menuVer" ) );
+    pPluginMenu = bcont->menuBar() ->findChild<QMenu *> ( "menuVer" );
 
     /// Creamos el men&uacute;.
     if ( !pPluginMenu ) {

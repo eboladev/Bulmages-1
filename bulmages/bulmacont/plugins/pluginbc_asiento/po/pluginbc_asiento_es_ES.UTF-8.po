@@ -541,10 +541,6 @@ msgstr "Total Debe:"
 msgid "Total Haber:"
 msgstr "Total Haber:"
 
-#: pluginbc_asiento.cpp:250
-msgid "menuAsiento"
-msgstr ""
-
 #: ui_bcasientolistbase.h:469
 msgid "y   ( >="
 msgstr "y   ( >="
