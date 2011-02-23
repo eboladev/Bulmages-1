@@ -50,11 +50,11 @@ msgstr "&Détail"
 
 #: pluginbf_clientepresupuesto.cpp:109
 msgid "&Nuevo presupuesto a cliente"
-msgstr "&Nouveau budget"
+msgstr "&Nouveau Devis"
 
 #: pluginbf_clientepresupuesto.cpp:101
 msgid "&Presupuestos a clientes"
-msgstr "&Budget clients"
+msgstr "&Devis clients"
 
 #: ui_presupuestoclientebase.h:821 ui_presupuestoclientebase.h:822
 #: ui_presupuestoclientebase.h:823 ui_presupuestoclientebase.h:824
@@ -121,7 +121,7 @@ msgstr "Effacer la Commande"
 #: ui_presupuestoslistbase.h:381 ui_presupuestoslistbase.h:384
 #: ui_presupuestoclientebase.h:778 ui_presupuestoclientebase.h:781
 msgid "Borrar presupuesto"
-msgstr "Effacer le budget"
+msgstr "Effacer le Devis"
 
 #: ui_presupuestoslistbase.h:418 ui_albaranclientelistbase.h:511
 #: ui_pedidosclientelistbase.h:438 ui_facturaslistbase.h:536
@@ -260,19 +260,19 @@ msgstr "Editer la commande "
 
 #: ui_presupuestoslistbase.h:373 ui_presupuestoslistbase.h:376
 msgid "Editar presupuesto"
-msgstr "Editer le budget"
+msgstr "Editer le Devis"
 
 #: presupuestolist.cpp:336
 msgid "Error al borrar el presupuesto"
-msgstr "Effacer le budget erreur"
+msgstr "Effacer le Devis erreur"
 
 #: presupuestoview.cpp:108
 msgid "Error al crear el presupuesto"
-msgstr "Erreur en création du budget"
+msgstr "Erreur en création du Devis"
 
 #: presupuestolist.cpp:296
 msgid "Error al editar el presupuesto"
-msgstr "Editer le budget erreur"
+msgstr "Editer le Devis erreur"
 
 #: genpreqtoolbutton.cpp:629
 msgid "Error inesperado."
@@ -354,7 +354,7 @@ msgstr "Sauvegarder la commande"
 
 #: ui_presupuestoclientebase.h:770 ui_presupuestoclientebase.h:773
 msgid "Guardar presupuesto"
-msgstr "Sauvegarder le budget"
+msgstr "Sauvegarder le Devis"
 
 #: ui_presupuestoclientebase.h:817 ui_albaranclientebase.h:788
 #: ui_pedidoclientebase.h:733 ui_facturabase.h:737
@@ -371,7 +371,7 @@ msgstr "Id client"
 
 #: presupuestoview.cpp:60 presupuestolist.cpp:361
 msgid "ID presupuesto"
-msgstr "Id budget"
+msgstr "Id Devis"
 
 #: presupuestolist.cpp:374
 msgid "ID trabajador"
@@ -387,7 +387,7 @@ msgstr "Id remise"
 
 #: listdescpresupuestoview.cpp:43 listlinpresupuestoview.cpp:57
 msgid "Id presupuesto"
-msgstr "Id budget"
+msgstr "Id Devis"
 
 #: ui_albaranclientebase.h:751 ui_albaranclientebase.h:754
 msgid "Imprimir albaran"
@@ -410,7 +410,7 @@ msgstr "Imprimer commande"
 
 #: ui_presupuestoclientebase.h:786 ui_presupuestoclientebase.h:789
 msgid "Imprimir presupuesto"
-msgstr "Imprimer le budget "
+msgstr "Imprimer le Devis "
 
 #: presupuestolist.cpp:367
 msgid "Impuestos"
@@ -478,12 +478,12 @@ msgstr "Nouvelle Commande"
 
 #: ui_presupuestoslistbase.h:365 ui_presupuestoslistbase.h:368
 msgid "Nuevo presupuesto"
-msgstr "Nouveau budget"
+msgstr "Nouveau Devis"
 
 #: pluginbf_clientepresupuesto.cpp:111 pluginbf_clientepresupuesto.cpp:112
 #: ui_presupuestoclientebase.h:768
 msgid "Nuevo presupuesto a cliente"
-msgstr "Nouveau budget"
+msgstr "Nouveau Devis"
 
 #: ui_pedidoclientebase.h:720
 msgid "Numero de pedido:"
@@ -491,7 +491,7 @@ msgstr "Numéro de commande :"
 
 #: presupuestoview.cpp:63
 msgid "Numero de presupuesto"
-msgstr "Numéro du budget "
+msgstr "Numéro du Devis "
 
 #: presupuestoview.cpp:67
 msgid "Numero de telefono"
@@ -528,20 +528,20 @@ msgstr "Prix de ventes /TVA"
 
 #: presupuestoview.cpp:57 presupuestolist.cpp:362
 msgid "Presupuesto"
-msgstr "Budget"
+msgstr "Devis"
 
 #: pluginbf_clientepresupuesto.cpp:103 pluginbf_clientepresupuesto.cpp:104
 #: presupuestolist.cpp:308 ui_presupuestoslistbase.h:362
 msgid "Presupuestos a clientes"
-msgstr "Budget clients"
+msgstr "Devis clients"
 
 #: presupuestolist.cpp:119
 msgid "Presupuestos no procesados"
-msgstr "Budget non traité"
+msgstr "Devis non traité"
 
 #: presupuestolist.cpp:118
 msgid "Presupuestos procesados"
-msgstr "Budget traité"
+msgstr "Devis traité"
 
 #: ui_presupuestoclientebase.h:805
 msgid "Pro&cesado"
@@ -589,7 +589,7 @@ msgstr "Vous devez sélectionner un client"
 
 #: presupuestolist.cpp:117
 msgid "Todos los presupuestos"
-msgstr "Tous les Budgets"
+msgstr "Tous les Deviss"
 
 #: presupuestolist.cpp:368
 msgid "Total"
@@ -629,7 +629,7 @@ msgstr "Afficher ceux de même référence"
 
 #: genpreqtoolbutton.cpp:545 genpreqtoolbutton.cpp:546
 msgid "Ver presupuesto con la misma referencia"
-msgstr "Afficher le budget avec la même référence"
+msgstr "Afficher le Devis avec la même référence"
 
 #~ msgid "&No"
 #~ msgstr "&Non"
@@ -674,4 +674,4 @@ msgstr "Afficher le budget avec la même référence"
 #~ msgstr "Numéro du bulletin :"
 
 #~ msgid "Numero de presupuesto:"
-#~ msgstr "Numéro du budget :"
+#~ msgstr "Numéro du Devis :"
