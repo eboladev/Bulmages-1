@@ -14,6 +14,8 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Lokalize 1.2\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"X-Language: fr_FR\n"
+"X-Source-Language: C\n"
 
 #: bfclientealbarandescuentosubform.cpp:43 bfclientealbaransubform.cpp:56
 msgid "% Descuento"
@@ -49,7 +51,7 @@ msgstr "&Oui"
 
 #: pluginbf_clienteticket.cpp:99
 msgid "&Ticketes a clientes"
-msgstr ""
+msgstr "Tickets clients"
 
 #: ui_ticketclientebase.h:788 ui_ticketclientebase.h:789
 #: ui_ticketclientebase.h:790 ui_ticketclientebase.h:791
@@ -83,20 +85,15 @@ msgstr "Effacer le bulletin"
 
 #: ui_ticketclientebase.h:744 ui_ticketclientebase.h:747
 msgid "Borrar ticket"
-msgstr ""
+msgstr "Effacer le ticket"
 
 #: ui_ticketclientelistbase.h:511
 msgid "Buscar:"
 msgstr "Chercher :"
 
 #: bfclientealbaransubform.cpp:50
-#, fuzzy
 msgid "Cantidad"
-msgstr ""
-"#-#-#-#-#  bulmacont_fr_FR.UTF-8.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"Cantité\n"
-"#-#-#-#-#  bulmafact_fr_FR.UTF-8.po  #-#-#-#-#\n"
-"Cantitée"
+msgstr "Quantité"
 
 #: ticketclienteview.cpp:69
 msgid "Cliente"
@@ -140,7 +137,7 @@ msgstr "Commentaires publics :"
 
 #: bfclientealbarandescuentosubform.cpp:42
 msgid "Concepto descuento"
-msgstr ""
+msgstr "Raison de la remise"
 
 #: ui_ticketclientelistbase.h:496 ui_ticketclientelistbase.h:499
 msgid "Configurar listado"
@@ -273,7 +270,7 @@ msgstr "Sauvegarder le bulletin"
 
 #: ui_ticketclientebase.h:737
 msgid "Guardar ticket"
-msgstr ""
+msgstr "Sauvegarder le ticket"
 
 #: ui_ticketclientebase.h:784
 msgid "I.R.P.F.:"
@@ -314,16 +311,15 @@ msgstr "Id article"
 
 #: bfclientealbarandescuentosubform.cpp:41
 msgid "Id descuento"
-msgstr ""
+msgstr "Id remise"
 
 #: ui_ticketclientelistbase.h:480 ui_ticketclientelistbase.h:483
 msgid "Imprimir listado"
 msgstr "Imprimer la liste"
 
 #: ui_ticketclientebase.h:751 ui_ticketclientebase.h:754
-#, fuzzy
 msgid "Imprimir ticket"
-msgstr "Imprimer comptes"
+msgstr "Imprimer le ticket"
 
 #: ticketclientelist.cpp:433
 msgid "Impuestos"
@@ -359,7 +355,7 @@ msgstr "Nouveau bulletin de livraison de client"
 
 #: ui_ticketclientebase.h:735
 msgid "Nuevo ticket a cliente"
-msgstr ""
+msgstr "Nouveau ticket client"
 
 #: ticketclientelist.cpp:421 ticketclienteview.cpp:71
 msgid "Numero de albaran"
@@ -367,11 +363,11 @@ msgstr "Numéro du bulletin"
 
 #: ui_ticketclientebase.h:766
 msgid "Numero de ticket:"
-msgstr ""
+msgstr "N° de ticket :"
 
 #: bfclientealbaransubform.cpp:48
 msgid "Nº linea"
-msgstr ""
+msgstr "N° de ligne"
 
 #: bfclientealbaransubform.cpp:58
 msgid "Orden"
@@ -411,15 +407,15 @@ msgstr "Référence :"
 
 #: ui_ticketclientebase.h:781
 msgid "Registro"
-msgstr ""
+msgstr "Registre"
 
 #: ticketclienteview.cpp:82 ui_ticketclientebase.h:779
 msgid "Sucesos antes de imprimir"
-msgstr ""
+msgstr "Evénements avant d'imprimer"
 
 #: ticketclienteview.cpp:83 ui_ticketclientebase.h:780
 msgid "Sucesos tras imprimir"
-msgstr ""
+msgstr "Evénements après l'imprission"
 
 #: ticketclienteview.cpp:74
 msgid "Telefono de contacto"
@@ -431,28 +427,28 @@ msgstr "Téléphone du contact :"
 
 #: ticketclienteview.cpp:65
 msgid "Ticket"
-msgstr ""
+msgstr "Ticket"
 
 #: genalbqtoolbutton.cpp:156
 msgid "Ticket ya existe"
-msgstr ""
+msgstr "Le ticket existe déjà"
 
 #: ticketclientelist.cpp:344 pluginbf_clienteticket.cpp:101
 #: pluginbf_clienteticket.cpp:102
 msgid "Ticketes a clientes"
-msgstr ""
+msgstr "Tickets clients"
 
 #: ui_ticketclientelistbase.h:448
 msgid "Tickets a clientes"
-msgstr ""
+msgstr "Tickets clients"
 
 #: ticketclientelist.cpp:206
 msgid "Tickets no procesados"
-msgstr ""
+msgstr "Tickets non traités"
 
 #: ticketclientelist.cpp:205
 msgid "Tickets procesados"
-msgstr ""
+msgstr "Tickets traités"
 
 #: genalbqtoolbutton.cpp:141 genalbqtoolbutton.cpp:273
 msgid "Tiene que seleccionar un cliente"
@@ -460,7 +456,7 @@ msgstr "Vous devez sélectionner un client"
 
 #: ticketclientelist.cpp:204
 msgid "Todos los tickets"
-msgstr ""
+msgstr "Tous les tickets"
 
 #: ticketclientelist.cpp:434
 msgid "Total"
@@ -468,7 +464,7 @@ msgstr "Total"
 
 #: bfclientealbaransubform.cpp:53
 msgid "Total Linea"
-msgstr ""
+msgstr "Total de la ligne"
 
 #: ui_ticketclientebase.h:787
 msgid "Total:"

@@ -33,7 +33,7 @@ Incompatibles:
 
 Reports:
 
-Categorias: TVA inclue;
+Categorias: TVA incluse;
 
 Orden: 622
 
