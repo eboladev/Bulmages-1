@@ -150,7 +150,7 @@ msgstr "Avancer"
 
 #: bfform.cpp:500
 msgid "Base Imponible"
-msgstr "Assiette imposable"
+msgstr "Base imposable"
 
 #: ui_bfconfiguracionbase.h:428
 msgid "C.P."
@@ -285,7 +285,7 @@ msgstr "Form1"
 
 #: bfform.cpp:547
 msgid "I.R.P.F (-"
-msgstr "I.R. (-"
+msgstr "I.R.P.F.(-"
 
 #: bfform.cpp:518
 msgid "I.V.A."
