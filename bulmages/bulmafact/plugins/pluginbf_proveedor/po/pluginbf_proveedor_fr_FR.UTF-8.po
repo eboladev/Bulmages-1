@@ -7,8 +7,8 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
 "POT-Creation-Date: 2011-02-04 12:54+0100\n"
-"PO-Revision-Date: 2011-02-13 10:55+0100\n"
-"Last-Translator: aishen <aishen@free.fr>\n"
+"PO-Revision-Date: 2011-02-24 21:06+0100\n"
+"Last-Translator: \n"
 "Language-Team: French <kde-i18n-doc@kde.org>\n"
 "Language: fr\n"
 "MIME-Version: 1.0\n"
@@ -112,7 +112,7 @@ msgstr ""
 "#-#-#-#-#  pluginticketsdevueltos.pot (PACKAGE VERSION)  #-#-#-#-#\n"
 "#-#-#-#-#  pluginabrevs.pot (PACKAGE VERSION)  #-#-#-#-#\n"
 "#-#-#-#-#  bulmages_suite.pot (PACKAGE VERSION)  #-#-#-#-#\n"
-"X-Generator: Lokalize 1.2\n"
+"X-Generator: Lokalize 1.1\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
 #: ui_proveditbase.h:846
@@ -129,7 +129,7 @@ msgstr "&Annuler"
 
 #: ui_proveditbase.h:848
 msgid "&Codigo:"
-msgstr "&Code:"
+msgstr "&Code :"
 
 #: ui_proveditbase.h:867
 msgid "&Comentarios:"
@@ -185,7 +185,7 @@ msgstr "Chercher :"
 
 #: ui_proveditbase.h:851
 msgid "C.I.&F. / N.I.F."
-msgstr "C.I.&F. / N.I.F."
+msgstr "C.I.&F.-N.I.F."
 
 #: providerslist.cpp:336
 msgid "C.I.F."
@@ -249,11 +249,11 @@ msgstr "Di&visions"
 
 #: ui_proveditbase.h:854
 msgid "Direccio&n:"
-msgstr "Direction :"
+msgstr "&Adresse :"
 
 #: providerslist.cpp:342 provedit.cpp:51
 msgid "Direccion"
-msgstr "Direction"
+msgstr "Adresse"
 
 #: providerslist.cpp:348
 msgid "Direccion de URL"
@@ -306,7 +306,7 @@ msgstr "Forme de paiement :"
 
 #: provedit.cpp:63
 msgid "Forma_Pago"
-msgstr "Forme de paiement"
+msgstr "Forme_paiement"
 
 #: ui_proveditbase.h:897 ui_proveditbase.h:900
 msgid "Guardar proveedor"
@@ -390,7 +390,7 @@ msgstr "Lieu :"
 
 #: providerslist.cpp:343 provedit.cpp:52
 msgid "Poblacion"
-msgstr "Lieu"
+msgstr "Ville"
 
 #: ui_providerslistbase.h:333
 msgid "Procesa&dos"
@@ -455,7 +455,7 @@ msgstr "URL"
 
 #: ui_proveditbase.h:890
 msgid "Vencidos"
-msgstr "Echéancier "
+msgstr "Echéanciers "
 
 #: ui_proveditbase.h:886
 msgid "Ver"
