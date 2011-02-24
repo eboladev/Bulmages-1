@@ -36,7 +36,8 @@ msgid ""
 ".El fichero de remesa bancaria generado no es aprovechable. Ha fallado la "
 "generacion en el recibo con referencia %1"
 msgstr ""
-"%2 \ n . Le fichier de remise bancaire produit n'est pas utilisable. Il a "
+"%2\n"
+".Le fichier de remise bancaire produit n'est pas utilisable. Il a "
 "raté la génération du reçu avec référence %1"
 
 #: q19writer.cpp:73 q19view.cpp:90
@@ -191,8 +192,7 @@ msgid ""
 "Banco de Cliente '%1'  (para mi '%2') invalido en el recibo con id %3 (ref. "
 "%4), para cliente %5 (%6)"
 msgstr ""
-"Banque du Client ' ; %1' ; (pour mon ' ; %2' ;) invalide  le reçu avec id %3 "
-"(ref. %4), du client %5 (%6)"
+"Banque du Client '%1'  (pour mon '%2') invalide  le reçu avec id %3 (ref. "  "%4), du client %5 (%6)"
 
 #: ui_q19base.h:310
 msgid "Cancelar"
@@ -338,20 +338,9 @@ msgstr "Votre guichet de banque"
 msgid ""
 "Tiene los siguientes ficheros de recibos para los bancos:\n"
 "%1"
-msgstr "Voici les fichiers de reçus suivants pour les banques : \ n %1"
+msgstr "Voici les fichiers de reçus suivants pour les banques :\n"
+"%1"
 
 #: ui_q19base.h:272
 msgid "dd/MM/yyyy"
 msgstr "dd/MM/yyyy"
-
-#~ msgid "*.q19"
-#~ msgstr "*.q19"
-
-#~ msgid "Num. Operaciones"
-#~ msgstr "N° des opérations"
-
-#~ msgid "Save file"
-#~ msgstr "Sauver le fichier"
-
-#~ msgid "Total"
-#~ msgstr "Total"
