@@ -1,47 +1,48 @@
-# SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
-#, fuzzy
+# , 2011.
 msgid ""
 msgstr ""
-"Project-Id-Version: PACKAGE VERSION\n"
+"Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
 "POT-Creation-Date: 2011-02-14 14:33+0100\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
+"PO-Revision-Date: 2011-02-24 16:41+0100\n"
+"Last-Translator: \n"
+"Language-Team: French <kde-i18n-doc@kde.org>\n"
 "Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Lokalize 1.1\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
 #: listmodificadoresview.cpp:46 pluginbf_modificadores.cpp:83
 #: pluginbf_modificadores.cpp:84
 msgid "Modificadores"
-msgstr ""
+msgstr "Modificateurs"
 
 #: listmodificadoresview.cpp:80 pluginbf_modificadores.cpp:142
 msgid "Nombre Modificador"
-msgstr ""
+msgstr "Nom du modificateur"
 
 #: listmodificadoresview.cpp:81 pluginbf_modificadores.cpp:143
 msgid "Alt. Precio"
-msgstr ""
+msgstr "Prix"
 
 #: pluginbf_modificadores.cpp:81
 msgid "&Modificadores"
-msgstr ""
+msgstr "&Modificateurs"
 
 #: ui_listmodificadoresbase.h:84
 msgid "Modificadores de Articulo"
-msgstr ""
+msgstr "Modificateurs de l'article"
 
 #: ui_listmodificadoresbase.h:85
 msgid "&Cancelar"
-msgstr ""
+msgstr "&Annuler"
 
 #: ui_listmodificadoresbase.h:86
 msgid "&Aceptar"
-msgstr ""
+msgstr "&Accepter"
+

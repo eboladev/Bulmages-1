@@ -6,7 +6,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
 "POT-Creation-Date: 2011-02-07 11:21+0100\n"
-"PO-Revision-Date: 2011-02-23 15:28+0100\n"
+"PO-Revision-Date: 2011-02-24 16:46+0100\n"
 "Language-Team: French <kde-i18n-doc@kde.org>\n"
 "Language: fr\n"
 "MIME-Version: 1.0\n"
@@ -34,7 +34,7 @@ msgstr "&Nouveau parent"
 
 #: pluginbf_tutor.cpp:98
 msgid "&Padres/Socios"
-msgstr "&Parent/Socios"
+msgstr "&Parent-Socios"
 
 #: tutoreslist.cpp:273
 msgid "1er Apellido"
@@ -82,7 +82,7 @@ msgstr "Elève 3"
 
 #: tutorview.cpp:125
 msgid "Alumno 4:"
-msgstr ""
+msgstr "Elève 4 :"
 
 #: ui_tutorbase.h:585
 msgid "Banco:"
@@ -190,7 +190,7 @@ msgstr "Direction :"
 
 #: ui_tutorbase.h:584
 msgid "E-Mail:"
-msgstr "E-mail :"
+msgstr "Courriel :"
 
 #: tutoreslist.cpp:223 ui_tutoreslistbase.h:254 ui_tutoreslistbase.h:257
 msgid "Editar Tutor"
@@ -372,11 +372,11 @@ msgstr "Payé"
 
 #: tutoreslist.cpp:280
 msgid "Poblacion"
-msgstr "Lieu"
+msgstr "Ville"
 
 #: ui_tutorbase.h:581
 msgid "Poblacion:"
-msgstr "Lieu :"
+msgstr "Ville :"
 
 #: tutorview.cpp:377
 msgid "Porcentaje Fact."

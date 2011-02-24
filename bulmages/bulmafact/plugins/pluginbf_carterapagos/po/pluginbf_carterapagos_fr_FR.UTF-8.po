@@ -1,98 +1,99 @@
-# SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
-#, fuzzy
+# , 2011.
 msgid ""
 msgstr ""
-"Project-Id-Version: PACKAGE VERSION\n"
+"Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
 "POT-Creation-Date: 2011-02-14 14:33+0100\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
+"PO-Revision-Date: 2011-02-24 16:52+0100\n"
+"Last-Translator: \n"
+"Language-Team: French <kde-i18n-doc@kde.org>\n"
 "Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Lokalize 1.1\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
 #: carterapagoslist.cpp:61 vencimientopview.cpp:59
 msgid "Proveedor:"
-msgstr ""
+msgstr "Fournisseur :"
 
 #: vencimientopview.cpp:68
 msgid "Id pago"
-msgstr ""
+msgstr "Id paiement"
 
 #: vencimientopview.cpp:69
 msgid "Referencia de Vencimiento"
-msgstr ""
+msgstr "Référence d'échéance"
 
 #: vencimientopview.cpp:70
 msgid "Descripcion"
-msgstr ""
+msgstr "Description"
 
 #: vencimientopview.cpp:71
 msgid "Comentarios"
-msgstr ""
+msgstr "Libellés"
 
 #: vencimientopview.cpp:72
 msgid "Fecha de Vencimiento"
-msgstr ""
+msgstr "Date d'échéance"
 
 #: vencimientopview.cpp:73
 msgid "Fecha Efectiva"
-msgstr ""
+msgstr "Date effective"
 
 #: vencimientopview.cpp:74
 msgid "estado de Vencimiento"
-msgstr ""
+msgstr "Etat d'écheance"
 
 #: vencimientopview.cpp:75
 msgid "cantidad de Vencimiento"
-msgstr ""
+msgstr "Quantité d'échéance"
 
 #: vencimientopview.cpp:76
 msgid "idproveedor de Vencimiento"
-msgstr ""
+msgstr "Id fournisseur d'échéance"
 
 #: pluginbf_carterapagos.cpp:128 pluginbf_carterapagos.cpp:246
 msgid "ID Vencimiento"
-msgstr ""
+msgstr "ID d'échéance"
 
 #: pluginbf_carterapagos.cpp:129
 msgid "Dias tras Factura"
-msgstr ""
+msgstr "Jours après facturation"
 
 #: pluginbf_carterapagos.cpp:130
 msgid "Porcentaje"
-msgstr ""
+msgstr "Pourcentage"
 
 #: pluginbf_carterapagos.cpp:131 pluginbf_carterapagos.cpp:249
 msgid "Forma de Pago"
-msgstr ""
+msgstr "Forme de paiement"
 
 #: pluginbf_carterapagos.cpp:132 pluginbf_carterapagos.cpp:251
 msgid "Id Articulo"
-msgstr ""
+msgstr "Id Article"
 
 #: pluginbf_carterapagos.cpp:133 pluginbf_carterapagos.cpp:252
 msgid "ID Forma de Pago"
-msgstr ""
+msgstr "ID Forme de paiement"
 
 #: pluginbf_carterapagos.cpp:247
 msgid "Fecha"
-msgstr ""
+msgstr "Date"
 
 #: pluginbf_carterapagos.cpp:248
 msgid "Cantidad"
-msgstr ""
+msgstr "Quantité"
 
 #: pluginbf_carterapagos.cpp:250
 msgid "Procesado"
-msgstr ""
+msgstr "Accusé"
 
 #: pluginbf_carterapagos.cpp:253
 msgid "Id Proveedor"
 msgstr ""
+
