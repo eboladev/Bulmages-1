@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
 "POT-Creation-Date: 2011-02-04 12:54+0100\n"
-"PO-Revision-Date: 2011-02-22 16:38+0100\n"
+"PO-Revision-Date: 2011-02-24 15:33+0100\n"
 "Last-Translator: \n"
 "Language-Team: French <kde-i18n-doc@kde.org>\n"
 "Language: \n"
@@ -158,11 +158,11 @@ msgstr "Communiqués"
 
 #: convreunionview.cpp:61 convreunionview.cpp:84
 msgid "Concepto"
-msgstr "Concept"
+msgstr "Raison"
 
 #: ui_convreunionbase.h:382
 msgid "Concepto de la reunion"
-msgstr "Objectif de la réunion"
+msgstr "Raison de la réunion"
 
 #: ui_comisioneslistbase.h:286 ui_comisioneslistbase.h:289
 #: ui_convreunionlistbase.h:286 ui_convreunionlistbase.h:289
@@ -300,7 +300,7 @@ msgstr "Date de Constitution"
 
 #: jdirectivalist.cpp:282
 msgid "Fecha de constitucion"
-msgstr "Date de Constitution"
+msgstr "Date de formation"
 
 #: jdirectivalist.cpp:283
 msgid "Fecha de disolucion"

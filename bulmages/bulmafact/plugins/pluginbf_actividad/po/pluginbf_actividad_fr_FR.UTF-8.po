@@ -6,16 +6,17 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
 "POT-Creation-Date: 2011-02-04 12:53+0100\n"
-"PO-Revision-Date: 2011-02-06 09:21+0100\n"
+"PO-Revision-Date: 2011-02-24 15:18+0100\n"
 "Language-Team: French <kde-i18n-doc@kde.org>\n"
 "Language: fr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Lokalize 1.2\n"
+"X-Generator: Lokalize 1.1\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 "X-Language: fr_FR\n"
 "X-Source-Language: C\n"
+"Last-Translator: \n"
 
 #: ui_actividadbase.h:591 ui_convocatoriabase.h:450
 msgid "&Aceptar"
@@ -207,11 +208,11 @@ msgstr "Désirez vous garder les changements ?"
 
 #: actividadview.cpp:76
 msgid "Direccion"
-msgstr "Direction"
+msgstr "Adresse"
 
 #: ui_actividadbase.h:568 ui_convocatoriabase.h:436
 msgid "Direccion:"
-msgstr "Direction :"
+msgstr "Adresse :"
 
 #: actividadview.cpp:71 ui_actividadbase.h:579
 msgid "Domingo"
@@ -427,7 +428,7 @@ msgstr "Nom du tuteur"
 
 #: ui_tipoactividadbase.h:244
 msgid "Nombre:"
-msgstr "Nom:"
+msgstr "Nom :"
 
 #: ui_actividadbase.h:539 ui_convocatoriabase.h:406
 msgid "Nueva Actividad"
@@ -530,3 +531,4 @@ msgstr "Vendredi"
 #: actividadview.cpp:63 ui_actividadbase.h:569 ui_convocatoriabase.h:437
 msgid "Vigente"
 msgstr "En vigueur"
+

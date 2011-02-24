@@ -6,7 +6,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
 "POT-Creation-Date: 2011-02-04 12:54+0100\n"
-"PO-Revision-Date: 2011-02-22 17:16+0100\n"
+"PO-Revision-Date: 2011-02-24 15:34+0100\n"
 "Language-Team: French <kde-i18n-doc@kde.org>\n"
 "Language: fr\n"
 "MIME-Version: 1.0\n"
@@ -235,7 +235,7 @@ msgstr "Description "
 #: ui_presupuestoclientebase.h:802 ui_albaranclientebase.h:772
 #: ui_pedidoclientebase.h:719 ui_facturabase.h:730
 msgid "Descripcion:"
-msgstr "Descripción :"
+msgstr "Description :"
 
 #: ui_albaranclientebase.h:782
 msgid "Descuen&tos"
