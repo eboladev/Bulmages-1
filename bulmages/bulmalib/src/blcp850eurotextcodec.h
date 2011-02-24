@@ -65,7 +65,7 @@ QT_BEGIN_NAMESPACE
 
 template <typename T> class QAtomicPointer;
 
-class BT_EXPORT BlCP850EuroTextCodec: public QTextCodec
+class BL_EXPORT BlCP850EuroTextCodec: public QTextCodec
 {
 public:
     enum { numSimpleCodecs = 1 };

@@ -131,7 +131,7 @@ enum qrErrorCorrection {
 
 };
 
-class BT_EXPORT BlEscPrinter
+class BL_EXPORT BlEscPrinter
 {
 
 public:
