@@ -4,13 +4,13 @@
 #README.fr
 #20110210
 
-Nombre: Achat - Vente.
+Nombre: Achat-Vente.
 
 Biblioteca: libpluginbf_compraventa.so
 
-Descripción: <H1>Achat vente</H1>
+Descripción: <H1>Achat-Vente</H1>
 <P>Unifier les opérations d'achat et de vente.</P>
-<B>Author:</B>Tomeu Borrás (tborras@conetxia.com)<BR>
+<B>Auteur:</B>Tomeu Borrás (tborras@conetxia.com)<BR>
 <HR>
 
 ParmBD:
