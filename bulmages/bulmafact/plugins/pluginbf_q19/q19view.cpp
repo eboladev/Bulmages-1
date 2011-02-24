@@ -189,7 +189,7 @@ void Q19View::on_mui_aceptar_clicked()
               close();
           }
     } catch ( ... ) {
-       blDebug ( "Error al generar remesa bancaria", 2 );
+       blDebug ( _("Error al generar remesa bancaria"), 2 );
     } // end try
     blDebug ( "END Q19View::on_mui_aceptar_clicked", 0 );
 }

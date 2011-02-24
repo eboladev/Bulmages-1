@@ -87,7 +87,7 @@ void MyPlugProf::inicializa ( BfBulmaFact *bges )
     if ( bges->company()->hasTablePrivilege ( "cliente", "SELECT" ) ) {
 
         /// Miramos si existe un menu Ventas
-        QMenu *pPluginMenu = bges->newMenu ( "&Associats", "menuAssociats", "menuMaestro" );
+        QMenu *pPluginMenu = bges->newMenu ( _("&Associats"), "menuAssociats", "menuMaestro" );
 
 	/// Agrego un Separador
 	pPluginMenu->addSeparator();
@@ -570,8 +570,8 @@ int BlSubForm_preparaMenu ( BlSubForm *sub ) {
         
         if ( ! ( header->options() & BlSubFormHeader::DbNoWrite ) )  {
           QToolButton *sel = new QToolButton ( sub->mui_menusubform );
-          sel->setStatusTip ( "Nuevo Tutor" );
-          sel->setToolTip ( "Nuevo Tutor" );
+          sel->setStatusTip ( _("Nuevo Tutor") );
+          sel->setToolTip ( _("Nuevo Tutor") );
           sel->setMinimumSize ( QSize ( 18, 18 ) );
           sel->setIcon ( QIcon ( QString::fromUtf8 ( ":/ImgGestionAula/icons/tutor-new.png" ) ));
           sel->setIconSize ( QSize ( 18, 18 ) );    
@@ -579,11 +579,11 @@ int BlSubForm_preparaMenu ( BlSubForm *sub ) {
           sel->connect (sel, SIGNAL(released()), subformods, SLOT(nuevoTutor()));
         
           QToolButton *sel1 = new QToolButton ( sub->mui_menusubform );
-          sel1->setStatusTip ( "Seleccionar Tutor" );
-          sel1->setToolTip ( "Seleccionar Tutor" );
+          sel1->setStatusTip ( _("Seleccionar Tutor") );
+          sel1->setToolTip ( _("Seleccionar Tutor") );
           sel1->setMinimumSize ( QSize ( 18, 18 ) );
           sel1->setIcon ( QIcon ( QString::fromUtf8 ( ":/ImgGestionAula/icons/tutor-list.png" ) ) );
-          sel1->setIconSize ( QSize ( 18, 18 ) );    
+          sel1->setIconSize ( QSize ( 18, 18 ) );
           m_hboxLayout1->addWidget ( sel1 );
           sel1->connect (sel1, SIGNAL(released()), subformods, SLOT(seleccionarTutor()));
         } // end if

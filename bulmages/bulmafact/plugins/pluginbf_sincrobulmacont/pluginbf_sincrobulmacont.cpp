@@ -353,7 +353,7 @@ int BancoView_Guardar_Pre ( BancoView *bancov )
 
     } catch (int e) {
 	if (e == -300) {
-	  blMsgError("La cuenta no existe en la contabilidad.");
+	  blMsgError(_("La cuenta no existe en la contabilidad."));
 	} // end if
 	throw -1;
     } // end try
@@ -523,7 +523,7 @@ int ProveedorView_Guardar_Post ( ProveedorView *proveedor )
 */
     } catch (int e) {
 	if (e == -300) {
-	  blMsgError("La cuenta no existe en la contabilidad.");
+	  blMsgError(_("La cuenta no existe en la contabilidad."));
 	} // end if
 	throw -1;
     } // end try
@@ -541,7 +541,7 @@ int ClienteView_ClienteView_Post ( ClienteView *cliente )
   
     ClienteCuenta *clientecuenta = new ClienteCuenta(cliente);
 
-    cliente->addDbField ( "idcuentacliente", BlDbField::DbInt, BlDbField::DbNothing, _ ( "idcuentacliente" ) );
+    cliente->addDbField ( "idcuentacliente", BlDbField::DbInt, BlDbField::DbNothing, _ ( "Id cuenta cliente" ) );
     
     return 0;
 }
@@ -685,7 +685,7 @@ int ClienteView_Guardar_Post ( ClienteView *cliente )
 	
     } catch (int e) {
 	if (e == -300) {
-	  blMsgError("La cuenta no existe en la contabilidad.");
+	  blMsgError(_("La cuenta no existe en la contabilidad."));
 	} // end if
 	throw -1;
     } // end try

@@ -50,7 +50,7 @@ EmitirRecibosView::EmitirRecibosView ( BfCompany *comp, QWidget *parent )
         setupUi ( this );
         blCenterOnScreen ( this );
 
-        setTitleName ( _ ( "EmitirRecibos" ) );
+        setTitleName ( _ ( "Emitir Recibos" ) );
         setDbTableName ( "recibo" );
         setDbFieldId ( "idrecibo" );
         addDbField ( "idrecibo", BlDbField::DbInt, BlDbField::DbPrimaryKey, _ ( "ID recibo" ) );

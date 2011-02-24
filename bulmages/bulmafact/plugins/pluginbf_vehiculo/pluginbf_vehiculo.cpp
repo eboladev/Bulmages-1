@@ -75,10 +75,10 @@ void myplugin::inicializa ( BfBulmaFact *bges )
     /// Creamos el men&uacute;.
     m_dbConnection = bges->company();
     m_bulmafact = bges;
-    QMenu *pPluginMenu = new QMenu ( "&Vehiculos" );
-    QAction *accion = new QAction ( "&Nuevo vehiculo", 0 );
-    accion->setStatusTip ( "Vehiculos" );
-    accion->setWhatsThis ( "Vehiculos" );
+    QMenu *pPluginMenu = new QMenu ( _("&Vehiculos") );
+    QAction *accion = new QAction ( _("&Nuevo vehiculo"), 0 );
+    accion->setStatusTip ( _("Vehiculos") );
+    accion->setWhatsThis ( _("Vehiculos") );
     connect ( accion, SIGNAL ( activated() ), this, SLOT ( elslot() ) );
     pPluginMenu->addAction ( accion );
     /// A&ntilde;adimos la nueva opci&oacute;n al men&uacute; principal del programa.

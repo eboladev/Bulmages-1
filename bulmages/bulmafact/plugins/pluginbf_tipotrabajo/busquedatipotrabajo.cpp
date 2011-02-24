@@ -193,7 +193,3 @@ QString BusquedaTipoTrabajoDelegate::id()
     return m_cursorcombo->valor ( "idtipotrabajo", currentIndex() );
 }
 
-
-
-
-

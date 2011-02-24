@@ -106,6 +106,7 @@ RecibosList::RecibosList ( BfCompany *comp, QWidget *parent, Qt::WFlags flag, ed
     blDebug ( "END RecibosList::RecibosList", 0 );
 }
 
+
 /** No requiere acciones especiales en el destructor.
 */
 RecibosList::~RecibosList()
@@ -113,6 +114,7 @@ RecibosList::~RecibosList()
     blDebug ( "RecibosList::~RecibosList", 0 );
     blDebug ( "END RecibosList::~RecibosList", 0 );
 }
+
 
 void RecibosList::iniciaForm()
 {
@@ -130,6 +132,7 @@ void RecibosList::iniciaForm()
     
     blDebug ( "END RecibosList::iniciaForm" );
 }
+
 
 /** Hace la carga del listado.
     Para ello genera los SELECTS con ayuda de generaFiltro y los pasa al SubFormulario para que los presente.
@@ -274,6 +277,7 @@ void RecibosList::editar ( int )
     blDebug ( "END RecibosList::editar", 0 );
 }
 
+
 /** SLOT que responde a la peticion de menu contextual en el subformulario.
 */
 /// \TODO: Revisar si este metodo es util.
@@ -323,6 +327,7 @@ QString RecibosList::idrecibo()
     return mdb_idrecibo;
 }
 
+
 /// =============================================================================
 ///                    SUBFORMULARIO
 /// =============================================================================
@@ -356,8 +361,10 @@ RecibosListSubForm::RecibosListSubForm ( QWidget *parent ) : BfSubForm ( parent 
     blDebug ( "END RecibosListSubForm::RecibosListSubForm", 0 );
 }
 
+
 RecibosListSubForm::~RecibosListSubForm()
 {
     blDebug ( "RecibosListSubForm::~RecibosListSubForm", 0 );
     blDebug ( "END RecibosListSubForm::~RecibosListSubForm", 0 );
 }
+

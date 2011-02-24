@@ -118,7 +118,7 @@ int TrabajadorView_TrabajadorView_Post ( TrabajadorView *trab )
     QLabel *textLabel2_9_26 = new QLabel ( trab->m_frameplugin );
     textLabel2_9_26->setObjectName ( QString::fromUtf8 ( "textLabel2_9_2" ) );
     hboxLayout160->addWidget ( textLabel2_9_26 );
-    textLabel2_9_26->setText ( "Tipo Trabajo" );
+    textLabel2_9_26->setText ( _("Tipo de trabajo") );
 
     BusquedaTipoTrabajo *tipotraba = new BusquedaTipoTrabajo ( trab->m_frameplugin );
     tipotraba->setMainCompany ( trab->mainCompany() );

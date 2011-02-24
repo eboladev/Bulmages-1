@@ -79,8 +79,8 @@ void Q19QToolButton::setBoton()
     blDebug ( "Q19QToolButton::setBoton", 0 );
     connect ( this, SIGNAL ( clicked() ), this, SLOT ( click() ) );
     setObjectName ( QString::fromUtf8 ( "exporta" ) );
-    setStatusTip ( "Generar Q19" );
-    setToolTip ( "Generar archivo Q19 de los elementos seleccionados" );
+    setStatusTip ( _("Generar Q19") );
+    setToolTip ( _("Generar archivo Q19 de los elementos seleccionados.") );
     setMinimumSize ( QSize ( 32, 32 ) );
     setIcon ( QIcon ( g_confpr->valor ( CONF_PROGDATA ) + "icons/q19.png"  ) );
     setIconSize ( QSize ( 22, 22 ) );

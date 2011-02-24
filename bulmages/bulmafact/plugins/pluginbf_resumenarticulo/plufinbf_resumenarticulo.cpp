@@ -55,25 +55,25 @@ int ArticuloView_ArticuloView ( ArticuloView *art )
     lc->setObjectName ( QString::fromUtf8 ( "lcompras" ) );
     lc->setMainCompany ( art->mainCompany() );
     lc->cargar ( "0" );
-    art->mui_tab->addTab ( lc, "Compras" );
+    art->mui_tab->addTab ( lc, _("Compras") );
 
     ListLResArticulo *l = new ListLResArticulo ( art );
     l->setObjectName ( QString::fromUtf8 ( "lresfacturacion" ) );
     l->setMainCompany ( art->mainCompany() );
     l->cargar ( "0" );
-    art->mui_tab->addTab ( l, "Ventas" );
+    art->mui_tab->addTab ( l, _("Ventas") );
 
     ListEntregas *l1 = new ListEntregas ( art );
     l1->setObjectName ( QString::fromUtf8 ( "lentregas" ) );
     l1->setMainCompany ( art->mainCompany() );
     l1->cargar ( "0" );
-    art->mui_tab->addTab ( l1, "Entregas" );
+    art->mui_tab->addTab ( l1, _("Entregas") );
 
     ListRecogidas *lr = new ListRecogidas ( art );
     lr->setObjectName ( QString::fromUtf8 ( "lrecogidas" ) );
     lr->setMainCompany ( art->mainCompany() );
     lr->cargar ( "0" );
-    art->mui_tab->addTab ( lr, "Recogidas" );
+    art->mui_tab->addTab ( lr, _("Recogidas") );
 
     blDebug ( "END ArticuloView_ArticuloView", 0 );
     return 0;

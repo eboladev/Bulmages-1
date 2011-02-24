@@ -24,9 +24,9 @@ FPagoCuenta::FPagoCuenta (QWidget *parent) : QWidget(parent)
     QLineEdit *lineedit_fpago = new QLineEdit();
     lineedit_fpago->setObjectName("mui_cuenta_forma_pago");
     lineedit_fpago->setFixedWidth(100);
-    lineedit_fpago->setStatusTip("Sobreescribe la configuracion por defecto para la cuenta contable de esta forma de pago. La cuenta debe existir en la contabilidad.");
+    lineedit_fpago->setStatusTip(_("Sobreescribe la configuracion por defecto para la cuenta contable de esta forma de pago. La cuenta debe existir en la contabilidad."));
     lineedit_fpago->setEnabled(FALSE);
-    QLabel *label_fpago = new QLabel("Cuenta contable:");
+    QLabel *label_fpago = new QLabel(_("Cuenta contable:"));
 
 
     QHBoxLayout *layout_fpago = new QHBoxLayout;

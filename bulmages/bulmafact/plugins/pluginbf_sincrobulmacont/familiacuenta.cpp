@@ -20,16 +20,16 @@ FamiliaCuenta::FamiliaCuenta (QWidget *parent) : QWidget(parent)
     QLineEdit *lineedit_venta = new QLineEdit();
     lineedit_venta->setObjectName("mui_cuenta_venta");
     lineedit_venta->setFixedWidth(100);
-    lineedit_venta->setStatusTip("Sobreescribe la configuracion por defecto para la cuenta contable de esta familia. La cuenta debe existir en la contabilidad.");
+    lineedit_venta->setStatusTip(_("Sobreescribe la configuracion por defecto para la cuenta contable de esta familia. La cuenta debe existir en la contabilidad."));
     lineedit_venta->setEnabled(FALSE);
-    QLabel *label_venta = new QLabel("Cuenta venta:");
+    QLabel *label_venta = new QLabel(_("Cuenta venta:"));
 
     QLineEdit *lineedit_compra = new QLineEdit();
     lineedit_compra->setObjectName("mui_cuenta_compra");
     lineedit_compra->setFixedWidth(100);
-    lineedit_compra->setStatusTip("Sobreescribe la configuracion por defecto para la cuenta contable de esta familia. La cuenta debe existir en la contabilidad.");
+    lineedit_compra->setStatusTip(_("Sobreescribe la configuracion por defecto para la cuenta contable de esta familia. La cuenta debe existir en la contabilidad."));
     lineedit_compra->setEnabled(FALSE);
-    QLabel *label_compra = new QLabel("Cuenta compra:");
+    QLabel *label_compra = new QLabel(_("Cuenta compra:"));
 
 
     QHBoxLayout *layout_venta = new QHBoxLayout;

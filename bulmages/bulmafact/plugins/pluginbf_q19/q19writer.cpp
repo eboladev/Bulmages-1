@@ -386,7 +386,7 @@ void Q19Writer::cabeceraOrdenante ( QTextStream &out, QString sufijo , BlDbRecor
 	<< ( "80" )
 
 	/// Codigo de ordenante (NIF + Sufijo alineado a la derecha y rellenado con ceros) Longitud: 12
-	<< comprova ( nifOrdenante(),9,tr ( "El CIF del ordenante" ),'0' )
+	<< comprova ( nifOrdenante(),9, _("El CIF del ordenante") ,'0' )
 	<< sufijo.rightJustified ( 3,'0',true )
 
 	/// Fecha de emision del archivo
@@ -396,15 +396,15 @@ void Q19Writer::cabeceraOrdenante ( QTextStream &out, QString sufijo , BlDbRecor
 	/// Nombre del cliente Ordenante Longitud: 40
 	<< nombreOrdenante().leftJustified ( 40,' ',true )
 	/// Entidad Receptora del fichero Longitud: 4
-	<< comprova ( curbanco->valor ( "codentidadbanco" ),-4,tr ( "Su entidad bancaria" ),'0' )
+	<< comprova ( curbanco->valor ( "codentidadbanco" ),-4,_ ( "Su entidad bancaria" ),'0' )
 	/// Oficina Receptora del fichero Longitud: 4
-	<< comprova ( curbanco->valor ( "codagenciabanco" ),-4,tr ( "Su oficina bancaria" ),'0' )
+	<< comprova ( curbanco->valor ( "codagenciabanco" ),-4,_ ( "Su oficina bancaria" ),'0' )
 	/// DC Receptora del fichero Longitud: 2
 	<< comprova ( curbanco->valor ( "dcbanco" ) ,-2,
-	              tr ( "Los digitos de control de su cuenta bancaria" ),'0' )
+	              _ ( "Los digitos de control de su cuenta bancaria" ),'0' )
 	/// Oficina Receptora del fichero Longitud: 10
 	<< comprova ( curbanco->valor ( "numcuentabanco" ), -10,
-	              tr ( "Su numero de cuenta bancaria" ) ,'0' )
+	              _ ( "Su numero de cuenta bancaria" ) ,'0' )
 	/// Espacio libre Longitud: 8
 	<<  QString ( 8, ' ' )
 	/// Procedimiento de realizacion del adeudo (01 o 02) Longitud: 2
@@ -431,11 +431,11 @@ QString Q19Writer::import ( BlFixed f, int longitud )
 	QString res = QString::number ( f.value );
 	if ( f.value < 0 )
 	{
-		throw tr ( "Datos incorrectos" ) +"\n"+tr ( "Importe negativo (%1) ! " ).arg ( f.toQString() );
+		throw _ ( "Datos incorrectos" ) +"\n" + _ ( "Importe negativo (%1) ! " ).arg ( f.toQString() );
 	}
 	if ( res.length() >longitud )
 	{
-		throw tr ( "Datos incorrectos" ) +"\n"+tr ( "Importe excesivo (%1) !. El limite son %2 digitos, incluyendo los 2 decimales " ).arg ( f.toQString() ).arg ( abs ( longitud ) );
+		throw _ ( "Datos incorrectos" ) +"\n" + _ ( "Importe excesivo (%1) !. El limite son %2 digitos, incluyendo los 2 decimales " ).arg ( f.toQString() ).arg ( abs ( longitud ) );
 	}
 	return res.rightJustified ( longitud,'0',true );
 }
@@ -452,7 +452,7 @@ int Q19Writer::cobroQ19 ( QTextStream &out, QString sufijo,   BlDbRecordSet *cur
 	QString bancocliente = curcobro->valor ( "bancocliente" ).remove ( QRegExp ( "[^0-9]" ) );
 	if ( bancocliente.size() != 20 )
 	{
-		throw _ ( "Datos incorrectos" ) +"\n"+
+		throw _ ( "Datos incorrectos" ) + "\n"+
 		_ ( "Banco de Cliente '%1'  (para mi '%2') invalido en el recibo con id %3 (ref. %4), para cliente %5 (%6)" )
 		.arg ( curcobro->valor ( "bancocliente" ) )
 		.arg ( bancocliente )

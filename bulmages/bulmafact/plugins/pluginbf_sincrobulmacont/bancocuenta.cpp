@@ -21,9 +21,9 @@ BancoCuenta::BancoCuenta (QWidget *parent) : QWidget(parent)
     QLineEdit *lineedit_banco = new QLineEdit();
     lineedit_banco->setObjectName("mui_cuenta_banco");
     lineedit_banco->setFixedWidth(100);
-    lineedit_banco->setStatusTip("Sobreescribe la configuracion por defecto para la cuenta contable de este banco. La cuenta debe existir en la contabilidad.");
+    lineedit_banco->setStatusTip(_("Sobreescribe la configuracion por defecto para la cuenta contable de este banco. La cuenta debe existir en la contabilidad."));
     lineedit_banco->setEnabled(FALSE);
-    QLabel *label_banco = new QLabel("Cuenta contable:");
+    QLabel *label_banco = new QLabel(_("Cuenta contable:"));
 
     QHBoxLayout *layout_banco = new QHBoxLayout;
     layout_banco->addWidget(label_banco);
@@ -105,6 +105,4 @@ void BancoCuenta::mui_lista_currentItemChanged ( QListWidgetItem *current, QList
     m_bancoview->dialogChanges_cargaInicial();
 
 }
-
-
 

@@ -74,7 +74,7 @@ void myplugin1::inicializa ( BfBulmaFact *bges )
     setMainCompany ( bges->company() );
 
     /// Miramos si existe un menu Articulos
-    QMenu *pPluginMenu = bges->newMenu ( "&Articulos", "menuArticulos", "menuMaestro" );
+    QMenu *pPluginMenu = bges->newMenu ( _("&Articulos"), "menuArticulos", "menuMaestro" );
     pPluginMenu->addSeparator();
 
 
@@ -196,7 +196,7 @@ int ArticuloView_ArticuloView ( ArticuloView *art )
     l->setSortingEnabled ( FALSE );
     art->dialogChanges_setQObjectExcluido ( l->mui_list );
 
-    art->mui_tab->addTab ( l, "Variacion Tarifas" );
+    art->mui_tab->addTab ( l, _("Variacion de tarifas") );
 
     /// Establece anchos de las columnas.
     l->setColumnWidth ( 1, 150 );

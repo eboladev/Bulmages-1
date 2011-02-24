@@ -91,14 +91,14 @@ int entryPoint ( BfBulmaFact *bges )
 
     /// A&ntilde;ade en el men&uacute; del programa la opci&oacuteMn para
     /// acceder al corrector.
-    QAction *viewCorrector = new QAction ( "&Traspaso de Z", 0 );
+    QAction *viewCorrector = new QAction ( _("&Traspaso de Z"), 0 );
 
     /// Miramos si existe un menu Herramientas
-    QMenu *pPluginMenu = bges->newMenu ( "&Herramientas", "menuHerramientas", "menuAcerca_de" );
+    QMenu *pPluginMenu = bges->newMenu ( _("&Herramientas"), "menuHerramientas", "menuAcerca_de" );
 
 
-    viewCorrector->setStatusTip ( "Traspaso de Z" );
-    viewCorrector->setWhatsThis ( "Traspaso de Z" );
+    viewCorrector->setStatusTip ( _("Traspaso de Z") );
+    viewCorrector->setWhatsThis ( _("Traspaso de Z") );
     QObject::connect ( viewCorrector, SIGNAL ( activated (  ) ), corr, SLOT ( elslot ( ) ) );
     pPluginMenu->addSeparator();
     pPluginMenu->addAction ( viewCorrector );

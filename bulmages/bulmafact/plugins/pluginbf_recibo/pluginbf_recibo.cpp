@@ -106,7 +106,7 @@ void MyPlugProf::inicializa ( BfBulmaFact *bges )
     if ( bges->company()->hasTablePrivilege ( "cobro", "SELECT" ) ) {
 
         /// Miramos si existe un menu Ventas
-        QMenu *pPluginMenu = bges->newMenu ( "&Economia", "menuEconomia", "menuMaestro" );
+        QMenu *pPluginMenu = bges->newMenu ( _("&Economia"), "menuEconomia", "menuMaestro" );
         pPluginMenu->addSeparator();
 
         /// El men&uacute; de Tarifas en la secci&oacute;n de art&iacute;culos.
@@ -185,8 +185,8 @@ int ActividadView_ActividadView ( ActividadView *l )
 
     QToolButton *mui_generar_recibos = new QToolButton ( l->mui_plugbotones );
     mui_generar_recibos->setObjectName ( QString::fromUtf8 ( "genrecibo" ) );
-    mui_generar_recibos->setStatusTip ( "Generar Pedido" );
-    mui_generar_recibos->setToolTip ( "Generar Pedido" );
+    mui_generar_recibos->setStatusTip ( _("Generar pedido") );
+    mui_generar_recibos->setToolTip ( _("Generar pedido") );
     mui_generar_recibos->setMinimumSize ( QSize ( 32, 32 ) );
     mui_generar_recibos->setMaximumSize ( QSize ( 32, 32 ) );
     mui_generar_recibos->setIcon ( QIcon ( QString::fromUtf8 ( ":/Images/supplier-delivery-note-to-invoice.png" ) ) );

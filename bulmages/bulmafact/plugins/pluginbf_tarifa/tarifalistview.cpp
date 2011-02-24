@@ -86,7 +86,7 @@ void TarifaListView::crear()
     TarifaView *tar = new TarifaView ( ( BfCompany * ) mainCompany(), parentWidget() );
     QObject::connect ( tar, SIGNAL ( guardartarifa() ), this, SLOT ( actualizar() ) );
     mainCompany() ->m_pWorkspace->addSubWindow ( tar );
-    tar->setWindowTitle ( tr ( "Nueva tarifa" ) );
+    tar->setWindowTitle ( _ ( "Nueva tarifa" ) );
     tar->show();
     blDebug ( "END  TarifaListView::crear", 0 );
 }
@@ -106,7 +106,7 @@ void TarifaListView::borrar()
         tar->on_mui_borrar_clicked();
         delete tar;
     } else {
-        blMsgInfo ( tr ( "No ha seleccionado ninguna tarifa" ) );
+        blMsgInfo ( _ ( "No ha seleccionado ninguna tarifa" ) );
     } // end if
     blDebug ( "END TarifaListView::borrar\n", 0 );
 }

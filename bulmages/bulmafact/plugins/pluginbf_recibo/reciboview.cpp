@@ -31,6 +31,7 @@
 #include "bldatesearch.h"
 #include "blfunctions.h"
 
+
 /** inicializa todos los componentes de la clase.
     Resetea el sistema de control de cambios para que considere que no hay cambios por parte del usuario.
     Mete la ventana en el workSpace.
@@ -96,6 +97,7 @@ ReciboView::ReciboView ( BfCompany *comp, QWidget *parent ) : BfForm ( comp, par
     blDebug ( "END ReciboView::ReciboView", 0 );
 }
 
+
 /** No precisa acciones adicionales en el destructor.
 */
 ReciboView::~ReciboView()
@@ -104,6 +106,7 @@ ReciboView::~ReciboView()
     blDebug ( "END ReciboView::~ReciboView", 0 );
 }
 
+
 QString ReciboView::nombrePlantilla ( void )
 {
     blDebug ( "ReciboView::nombrePlantilla", 0 );
@@ -111,6 +114,7 @@ QString ReciboView::nombrePlantilla ( void )
     
     return QString ( "recibod" );
 }
+
 
 void ReciboView::imprimir()
 {
@@ -137,6 +141,7 @@ void ReciboView::imprimir()
     blDebug ( "END ReciboView::imprimir", 0 );
 }
 
+
 int ReciboView::guardarPost()
 {
     blDebug ( "ReciboView::guardarPost", 0 );
@@ -148,6 +153,7 @@ int ReciboView::guardarPost()
     return 0;
 }
 
+
 int ReciboView::borrarPre()
 {
     blDebug ( "ReciboView::borrarPre", 0 );
@@ -158,6 +164,7 @@ int ReciboView::borrarPre()
     
     return 0;
 }
+
 
 int ReciboView::cargarPost ( QString id )
 {
@@ -174,6 +181,7 @@ int ReciboView::cargarPost ( QString id )
     return 0;
 }
 
+
 ///
 /**
 **/
@@ -185,6 +193,7 @@ void ReciboView::on_mui_list_editFinish ( int, int )
     
     blDebug ( "END ReciboView::on_mui_list_editFinish", 0 );
 }
+
 
 /// Esta funcion trabaja a muy bajo nivel ya que aprovecha una ficha cargada para hacer otra ficha.
 /**
@@ -216,7 +225,7 @@ void ReciboView::on_mui_reemitir_clicked (  )
    cargar(dbValue("idrecibo"));
    blMsgInfo(_("Recibo reemitido"));
    } catch(...) {
-      blMsgError("Error en la creacion del recibo");
+      blMsgError(_("Error en la creacion del recibo"));
    } // end try
 
     blDebug ( "END ReciboView::on_mui_reemitir_clicked", 0 );
