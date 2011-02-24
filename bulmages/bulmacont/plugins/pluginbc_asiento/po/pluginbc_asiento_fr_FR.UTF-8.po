@@ -210,14 +210,14 @@ msgstr "Libellés"
 
 #: bcasientosubform.cpp:44
 msgid "Concepto contable"
-msgstr "Concept"
+msgstr "Raison"
 
 #: bcasientosubform.cpp:51
 msgid "Conciliacion"
 msgstr "Conciliation"
 
-#: ui_bcasientolistbase.h:491 ui_bcasientolistbase.h:494
-#: ui_bcasientobase.h:524 ui_bcasientobase.h:527
+#: ui_bcasientolistbase.h:491 ui_bcasientolistbase.h:494 ui_bcasientobase.h:524
+#: ui_bcasientobase.h:527
 msgid "Configurar"
 msgstr "Configurer"
 
@@ -313,8 +313,7 @@ msgstr "Exporter l'écriture"
 msgid "Extender asiento"
 msgstr "Arborer l'écriture"
 
-#: bcasientosubform.cpp:40 bcasientolistsubform.cpp:38
-#: pluginbc_asiento.cpp:148
+#: bcasientosubform.cpp:40 bcasientolistsubform.cpp:38 pluginbc_asiento.cpp:148
 msgid "Fecha"
 msgstr "Date"
 
@@ -434,23 +433,23 @@ msgstr "Date initiale postérieure à la date finale."
 msgid "Listado de asientos"
 msgstr "Liste des écritures"
 
-#: bcasientosubform.cpp:89 bcasientosubform.cpp:106
-#: bcasientolistsubform.cpp:79 bcasientolistsubform.cpp:96
+#: bcasientosubform.cpp:89 bcasientosubform.cpp:106 bcasientolistsubform.cpp:79
+#: bcasientolistsubform.cpp:96
 msgid "Mostrar asiento"
 msgstr "Afficher l'écriture"
 
-#: bcasientosubform.cpp:93 bcasientosubform.cpp:112
-#: bcasientolistsubform.cpp:83 bcasientolistsubform.cpp:104
+#: bcasientosubform.cpp:93 bcasientosubform.cpp:112 bcasientolistsubform.cpp:83
+#: bcasientolistsubform.cpp:104
 msgid "Mostrar extracto (ano)"
 msgstr "Afficher l'extrait (an)"
 
-#: bcasientosubform.cpp:91 bcasientosubform.cpp:108
-#: bcasientolistsubform.cpp:81 bcasientolistsubform.cpp:100
+#: bcasientosubform.cpp:91 bcasientosubform.cpp:108 bcasientolistsubform.cpp:81
+#: bcasientolistsubform.cpp:100
 msgid "Mostrar extracto (dia)"
 msgstr "Afficher l'extrait (jour)"
 
-#: bcasientosubform.cpp:92 bcasientosubform.cpp:110
-#: bcasientolistsubform.cpp:82 bcasientolistsubform.cpp:102
+#: bcasientosubform.cpp:92 bcasientosubform.cpp:110 bcasientolistsubform.cpp:82
+#: bcasientolistsubform.cpp:102
 msgid "Mostrar extracto (mes)"
 msgstr "Afficher l'extrait (mois)"
 

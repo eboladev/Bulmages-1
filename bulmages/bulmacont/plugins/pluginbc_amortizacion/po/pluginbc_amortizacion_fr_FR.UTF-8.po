@@ -28,7 +28,7 @@ msgstr "&Accepter"
 
 #: pluginbc_amortizacion.cpp:101
 msgid "&Amortizaciones"
-msgstr "&Amortissement"
+msgstr "&Amortissements"
 
 #: ui_bcamortizacionbase.h:669
 msgid "&Calcular"
@@ -118,7 +118,7 @@ msgstr "Ctrl+S"
 
 #: bcamortizacionview.cpp:53
 msgid "Cuenta Activo:"
-msgstr "Compte activé"
+msgstr "Compte activé :"
 
 #: bcamortizacionview.cpp:63
 msgid "Cuenta de Amortizacion:"
@@ -174,7 +174,7 @@ msgstr "Date 1a du quota"
 
 #: ui_bcamortizacionbase.h:658
 msgid "Fecha 1ª cuota:"
-msgstr "Date 1.ª du quota"
+msgstr "Date 1.ª du quota :"
 
 #: bcamortizacionlistview.cpp:49
 msgid "Fecha compra"
@@ -330,4 +330,3 @@ msgstr "Valeur d'achat "
 #: bcamortizacionview.cpp:402 bcamortizacionview.cpp:446
 msgid "Ver asiento"
 msgstr "Afficher l'écriture"
-
