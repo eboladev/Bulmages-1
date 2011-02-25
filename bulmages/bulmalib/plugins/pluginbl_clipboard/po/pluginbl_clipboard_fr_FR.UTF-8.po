@@ -28,5 +28,3 @@ msgstr "Mettre à jour depuis une feuille de calcul"
 msgid "Pegar desde hoja de calculo"
 msgstr "Coller depuis la feuille de calcul"
 
-#~ msgid "Pegar desde Hoja de Calculo"
-#~ msgstr "Coller depuis la feuille de calcul"

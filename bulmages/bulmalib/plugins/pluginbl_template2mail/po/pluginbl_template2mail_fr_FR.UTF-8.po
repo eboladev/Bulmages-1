@@ -11,4 +11,4 @@ msgstr ""
 
 #: eqtoolbutton.cpp:68
 msgid "Inf. personales por e-mail"
-msgstr "Infos personelles par courriel"
+msgstr "Infos personnelles par courriel"

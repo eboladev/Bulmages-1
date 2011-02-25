@@ -33,4 +33,4 @@ msgstr "Intégrer l'application"
 
 #: pluginbl_embed.cpp:347
 msgid "Informes &ODS"
-msgstr ""
+msgstr "Rapports &ODS"

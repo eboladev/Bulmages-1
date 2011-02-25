@@ -1,8 +1,8 @@
 =======
 Plugins
 =======
-#README
-20080502
+#README.fr
+20110225
 
 Nombre: Importer des données séparées par des virgules
 

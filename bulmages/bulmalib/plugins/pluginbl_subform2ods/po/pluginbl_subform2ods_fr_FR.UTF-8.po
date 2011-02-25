@@ -11,7 +11,7 @@ msgstr ""
 
 #: pluginbl_subform2ods.cpp:301
 msgid "Error al ejecutar el editor de ODS."
-msgstr ""
+msgstr "Erreur d'exécution de l'éditeur ODS."
 
 #: pluginbl_subform2ods.cpp:91 pluginbl_subform2ods.cpp:103
 #: pluginbl_subform2ods.cpp:115 pluginbl_subform2ods.cpp:129

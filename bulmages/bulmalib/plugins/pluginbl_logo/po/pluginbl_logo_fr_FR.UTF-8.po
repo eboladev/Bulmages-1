@@ -14,19 +14,10 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Lokalize 1.2\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"X-Language: fr_FR\n"
+"X-Source-Language: C\n"
 
 #: pluginbl_logo.cpp:53
 msgid "Logotipo"
-msgstr ""
+msgstr "Type de logo"
 
-#~ msgid "&Dock Aplicacion"
-#~ msgstr "&Ancrée l'application"
-
-#~ msgid "&Embeber Aplicacion"
-#~ msgstr "Intégrer l'application"
-
-#~ msgid "Dockear Aplicacion"
-#~ msgstr "Application ancrée"
-
-#~ msgid "Embeber Aplicacion"
-#~ msgstr "Intégrer l'application"

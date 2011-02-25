@@ -14,13 +14,10 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Lokalize 1.2\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"X-Language: fr_FR\n"
+"X-Source-Language: C\n"
 
 #: pluginbl_report.cpp:175
 msgid "Informes"
-msgstr ""
+msgstr "Rapports"
 
-#~ msgid "&Informes"
-#~ msgstr "&Rapports"
-
-#~ msgid "Informe"
-#~ msgstr "Rapport"
