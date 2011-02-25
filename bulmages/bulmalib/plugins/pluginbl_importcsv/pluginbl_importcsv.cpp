@@ -40,7 +40,7 @@ QMainWindow *g_bges_importcsv = NULL;
 BlMainCompany *g_emp_importcsv = NULL;
 
 
-int entryPoint ( QMainWindow *bges )
+int entryPoint ( BlMainWindow *bges )
 {
     blDebug ( "Entrada del plugin ImportCSV", 0 );
 
@@ -58,26 +58,12 @@ int entryPoint ( QMainWindow *bges )
     accion->setWhatsThis ( _ ( "Importacion CSV" ) );
 
     mcont->connect ( accion, SIGNAL ( activated() ), mcont, SLOT ( elslot() ) );
-
-    QMenu *pPluginMenu = NULL;
+    
     /// Miramos si existe un menu Herramientas
-    pPluginMenu = bges->menuBar() ->findChild<QMenu *> ( "Herramientas" );
-    /// En BulmaCont el menu de Herramientas tiene otro nombre.
-    if ( !pPluginMenu ) {
-        pPluginMenu = bges->menuBar() ->findChild<QMenu *> ( "menuHerramientas" );
-    } // end if
-
-    /// Creamos el men&uacute;.
-    if ( !pPluginMenu ) {
-        pPluginMenu = new QMenu ( "&Herramientas", bges->menuBar() );
-        pPluginMenu->setObjectName ( QString::fromUtf8 ( "Herramientas" ) );
-    } // end if
+    QMenu *pPluginMenu = bges->newMenu ( _("&Herramientas"), "menuHerramientas", "menuAcerca_de" );
 
     pPluginMenu->addSeparator();
     pPluginMenu->addAction ( accion );
-
-    /// A&ntilde;adimos la nueva opci&oacute;n al men&uacute; principal del programa.
-    bges->menuBar() ->insertMenu ( 0, pPluginMenu );
 
 
     blDebug ( "Iniciado correctamente el plugin imoprtcsv", 10 );

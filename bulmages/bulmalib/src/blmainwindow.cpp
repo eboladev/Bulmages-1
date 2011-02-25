@@ -53,7 +53,6 @@ QMenu *BlMainWindow::newMenu ( const QString &name, const QString &objname, cons
         pPluginMenu->setObjectName (  objname );
         menuBar()->insertMenu ( pPluginMaestro->menuAction(), pPluginMenu );
     } // end if
-
     return pPluginMenu;
 }
 

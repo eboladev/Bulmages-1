@@ -25,10 +25,11 @@
 #include "blpostgresqlclient.h"
 #include "bccompany.h"
 #include "bfcompany.h"
+#include "blmainwindow.h"
 #include "pdefs_pluginbl_importcsv.h"
 
 
-extern "C" PLUGINBL_IMPORTCSV_EXPORT int entryPoint ( QMainWindow * );
+extern "C" PLUGINBL_IMPORTCSV_EXPORT int entryPoint ( BlMainWindow * );
 extern "C" PLUGINBL_IMPORTCSV_EXPORT int BfCompany_createMainWindows_Post ( BfCompany * );
 extern "C" PLUGINBL_IMPORTCSV_EXPORT int BcCompany_createMainWindows_Post ( BcCompany * );
 
