@@ -9,7 +9,7 @@ Nombre: Formes de paiement
 Biblioteca: libpluginbf_formasdepago.so
 
 Descripción: <H1><IMG SRC="@CMAKE_INSTALL_PREFIX@/share/bulmages/imagesrc/images/oxygen/actions/payment_method_list.svg" WIDTH="100"/>
-<BR>Forme de paiement</H1>
+<BR>Formes de paiement</H1>
 <P>Gestionnaire de forme de paiement.</P>
 <P>Avec ce plugin nous pouvons ajouter, modifier et éliminer les différentes formes de paiement qu'utilisent nos clients et fournisseurs. Des commandes sont indispensable pour utiliser des budgets, bulletins de livraison et factures où on sollicite la forme de paiement. Il apparaît la forme de paiement préférée (ou par défaut) aussi dans les clients et les fournisseurs . Dans les gestions bancaires et dans le TPV on utilise ce qui est identificateurs de forme de paiement pour déterminer si c'est un paiement bancaire ou c'est un paiement avec VISA.</P>
 <P>Les paramètres dans les fichiers de configurations sont <B>CONF_IDFORMA_PAGO_VISA</B> ou <B>CONF_IDFORMA_PAGO_CONTADO</B></P>
