@@ -19,6 +19,8 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Lokalize 1.2\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"X-Language: fr_FR\n"
+"X-Source-Language: C\n"
 
 #: ui_listalmacenbase.h:118
 msgid "&Aceptar"
@@ -46,7 +48,7 @@ msgstr "Code magasin"
 
 #: listalmacenview.cpp:71
 msgid "Error al guardar los almacenes"
-msgstr "Erreur en sauvegarde des changements"
+msgstr "Erreur en sauvegarde des magasins"
 
 #: listalmacenview.cpp:97
 msgid "Id almacen"

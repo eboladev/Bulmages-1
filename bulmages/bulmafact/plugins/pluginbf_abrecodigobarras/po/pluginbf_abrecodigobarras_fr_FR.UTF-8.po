@@ -15,4 +15,4 @@ msgstr "Introduction du code"
 
 #: pluginbf_abrecodigobarras.cpp:72
 msgid "QInputDialog::getText()"
-msgstr ""
+msgstr "QInputDialog::getText()"

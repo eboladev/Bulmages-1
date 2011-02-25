@@ -1,17 +1,15 @@
-# SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
-#, fuzzy
+# , 2011.
 msgid ""
 msgstr ""
-"Project-Id-Version: PACKAGE VERSION\n"
+"Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
 "POT-Creation-Date: 2011-02-04 12:54+0100\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
+"PO-Revision-Date: 2011-02-25 08:17+0100\n"
+"Last-Translator: \n"
+"Language-Team: French <kde-i18n-doc@kde.org>\n"
 "Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -114,51 +112,53 @@ msgstr ""
 "#-#-#-#-#  pluginticketsdevueltos.pot (PACKAGE VERSION)  #-#-#-#-#\n"
 "#-#-#-#-#  pluginabrevs.pot (PACKAGE VERSION)  #-#-#-#-#\n"
 "#-#-#-#-#  bulmages_suite.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"X-Generator: Lokalize 1.1\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
 #: ui_almacenbase.h:345
 msgid "&Aceptar"
-msgstr "&Aceptar"
+msgstr "&Accepter"
 
 #: ui_almacenbase.h:346
 msgid "&Cancelar"
-msgstr "&Cancelar"
+msgstr "&Annuler"
 
 #: ui_almaceneslistbase.h:379 ui_almaceneslistbase.h:382
 msgid "Actualizar listado"
-msgstr "Actualizar listado"
+msgstr "Actualiser la liste"
 
 #: almacenview.cpp:54 ui_almacenbase.h:337
 msgid "Almacen"
-msgstr "Almacen"
+msgstr "Magasin"
 
 #: almaceneslistview.cpp:222 ui_almaceneslistbase.h:330
 msgid "Almacenes"
-msgstr "Almacenes"
+msgstr "Magasins"
 
 #: ui_almacenbase.h:328 ui_almacenbase.h:331 ui_almaceneslistbase.h:349
 #: ui_almaceneslistbase.h:352
 msgid "Borrar almacen"
-msgstr "Borrar almacen"
+msgstr "Effacer le magasin"
 
 #: ui_almaceneslistbase.h:386
 msgid "Buscar:"
-msgstr "Buscar:"
+msgstr "Chercher : "
 
 #: ui_almacenbase.h:343
 msgid "Codigo Almacen"
-msgstr "Codigo Almacen"
+msgstr "Code Magasin"
 
 #: almacenview.cpp:58 almaceneslistview.cpp:57 almaceneslistview.cpp:93
 msgid "Codigo almacen"
-msgstr "Codigo almacen"
+msgstr "Code Magasin"
 
 #: almacenview.cpp:62
 msgid "Codigo postal"
-msgstr "Codigo postal"
+msgstr "Code postal"
 
 #: ui_almaceneslistbase.h:372 ui_almaceneslistbase.h:375
 msgid "Configurar listado"
-msgstr "Configurar listado"
+msgstr "Configurer la liste"
 
 #: ui_almacenbase.h:334 ui_almaceneslistbase.h:355
 msgid "Ctrl+D"
@@ -182,35 +182,35 @@ msgstr "Ctrl+S"
 
 #: almaceneslistview.cpp:236
 msgid "Debe seleccionar una linea"
-msgstr "Debe seleccionar una linea"
+msgstr "Vous devez d'abord sélectionner une ligne"
 
 #: ui_almacenbase.h:341
 msgid "Direccion Almacen"
-msgstr "Direccion Almacen"
+msgstr "Adresse du magasin"
 
 #: almacenview.cpp:60
 msgid "Direccion almacen"
-msgstr "Direccion almacen"
+msgstr "Adresse du magasin"
 
 #: ui_almaceneslistbase.h:341 ui_almaceneslistbase.h:344
 msgid "Editar almacen"
-msgstr "Editar almacen"
+msgstr "Editer le Magasin"
 
 #: ui_almacenbase.h:338
 msgid "Email Almacen"
-msgstr "Email Almacen"
+msgstr "Courriel"
 
 #: almaceneslistview.cpp:258
 msgid "Error al borrar el almacen"
-msgstr "Error al borrar el almacen"
+msgstr "Erreur en effacement du magasin"
 
 #: almacenview.cpp:77
 msgid "Error al crear el almacen"
-msgstr "Error al crear el almacen"
+msgstr "Erreur en création du magasin"
 
 #: almaceneslistview.cpp:211
 msgid "Error al editar el almacen"
-msgstr "Error al editar el almacen"
+msgstr "Erreur en édition du magasin"
 
 #: ui_almaceneslistbase.h:385
 msgid "F5"
@@ -218,84 +218,85 @@ msgstr "F5"
 
 #: ui_almacenbase.h:339
 msgid "Fax Almacen"
-msgstr "Fax Almacen"
+msgstr "Fax Magasin"
 
 #: almacenview.cpp:64
 msgid "Fax almacen"
-msgstr "Fax almacen"
+msgstr "Fax Magasin"
 
 #: almacenview.cpp:66
 msgid "Fecha almacen"
-msgstr "Fecha almacen"
+msgstr "Date Magasin"
 
 #: ui_almaceneslistbase.h:389
 msgid "Fecha final:"
-msgstr "Fecha final:"
+msgstr "Date finale :"
 
 #: ui_almaceneslistbase.h:388
 msgid "Fecha inicial:"
-msgstr "Fecha inicial:"
+msgstr "Date initiale :"
 
 #: ui_almaceneslistbase.h:365 ui_almaceneslistbase.h:368
 msgid "Filtrar pedidos"
-msgstr "Filtrar pedidos"
+msgstr "Filtrer les commandes"
 
 #: ui_almacenbase.h:344
 msgid "General"
-msgstr "General"
+msgstr "Général"
 
 #: ui_almacenbase.h:320 ui_almacenbase.h:323
 msgid "Guardar almacen"
-msgstr "Guardar almacen"
+msgstr "Sauvegarder Magasin"
 
 #: almacenview.cpp:57 almaceneslistview.cpp:56 almaceneslistview.cpp:92
 msgid "ID almacen"
-msgstr "ID almacen"
+msgstr "ID Magasin"
 
 #: ui_almaceneslistbase.h:357 ui_almaceneslistbase.h:360
 msgid "Imprimir listado"
-msgstr "Imprimir listado"
+msgstr "Imprimer la liste "
 
 #: ui_almaceneslistbase.h:387
 msgid "Mostrar:"
-msgstr "Mostrar:"
+msgstr "Afficher :"
 
 #: ui_almacenbase.h:342
 msgid "Nombre Almacen"
-msgstr "Nombre Almacen"
+msgstr "Nom du Magasin"
 
 #: almacenview.cpp:59 almaceneslistview.cpp:58 almaceneslistview.cpp:94
 msgid "Nombre almacen"
-msgstr "Nombre almacen"
+msgstr "Nom du Magasin"
 
 #: ui_almacenbase.h:317 ui_almaceneslistbase.h:333 ui_almaceneslistbase.h:336
 msgid "Nuevo almacen"
-msgstr "Nuevo almacen"
+msgstr "Nouveau Magasin"
 
 #: almacenview.cpp:61
 msgid "Poblacion almacen"
-msgstr "Poblacion almacen"
+msgstr "Ville du magasin"
 
 #: ui_almacenbase.h:340
 msgid "Telefono Almacen"
-msgstr "Telefono Almacen"
+msgstr "Téléphone du Magasin"
 
 #: almacenview.cpp:63
 msgid "Telefono almacen"
-msgstr "Telefono almacen"
+msgstr "Téléphone du Magasin"
 
 #: ui_almacenbase.h:336
 msgid "Tienda"
-msgstr "Tienda"
+msgstr "Magasin"
 
 #: almacenview.cpp:69
 msgid "Tipo almacen"
-msgstr "Tipo almacen"
+msgstr "Type magasin"
 
 #: ui_almacenbase.h:335
 msgid "Tipo de Almacen"
-msgstr "Tipo de Almacen"
+msgstr "Type magasin"
 
 #: almacenview.cpp:65
 msgid "email almacen"
-msgstr "email almacen"
+msgstr "Courriel"
+

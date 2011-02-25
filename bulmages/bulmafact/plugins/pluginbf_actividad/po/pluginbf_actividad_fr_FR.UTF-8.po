@@ -388,11 +388,11 @@ msgstr " Liste de types :"
 
 #: actividadview.cpp:75 ui_convocatoriabase.h:434
 msgid "Lugar"
-msgstr "Lieu"
+msgstr "Ville"
 
 #: ui_actividadbase.h:567
 msgid "Lugar:"
-msgstr "Lieu :"
+msgstr "Ville :"
 
 #: actividadview.cpp:65 ui_actividadbase.h:575
 msgid "Lunes"
@@ -531,4 +531,3 @@ msgstr "Vendredi"
 #: actividadview.cpp:63 ui_actividadbase.h:569 ui_convocatoriabase.h:437
 msgid "Vigente"
 msgstr "En vigueur"
-
