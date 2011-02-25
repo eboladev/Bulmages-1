@@ -1,14 +1,14 @@
 #######
 #Plugins
 #######
-#README.es
-#20080501
+#README.fr
+#20110225
 
-Nombre: Cession Z
+Nombre: Cession z
 
 Biblioteca: libpluginbf_z2z.so
 
-Descripción: <H1>Cession  de Z à Z</H1>
+Descripción: <H1>Cession  de z à z</H1>
 <P>Il déplace des lignes de bulletin de livraison d'une facturation à une autre.</P>
 <B>Auteur :</B>Tomeu Borrás (tborras@conetxia.com)<BR>
 <HR>

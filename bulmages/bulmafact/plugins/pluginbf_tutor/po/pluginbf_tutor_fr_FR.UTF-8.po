@@ -15,6 +15,8 @@ msgstr ""
 "X-Generator: Lokalize 1.1\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 "Last-Translator: \n"
+"X-Language: fr_FR\n"
+"X-Source-Language: C\n"
 
 #: ui_tutorbase.h:571
 msgid "&Aceptar"
@@ -70,15 +72,15 @@ msgstr "Saisie rapide des fils"
 
 #: tutorview.cpp:104
 msgid "Alumno 1:"
-msgstr "Elève 1"
+msgstr "Elève 1 :"
 
 #: tutorview.cpp:111
 msgid "Alumno 2:"
-msgstr "Elève 2"
+msgstr "Elève 2 :"
 
 #: tutorview.cpp:118
 msgid "Alumno 3:"
-msgstr "Elève 3"
+msgstr "Elève 3 :"
 
 #: tutorview.cpp:125
 msgid "Alumno 4:"
@@ -414,53 +416,4 @@ msgstr "Téléphone portable :"
 msgid "Tiene que guardar el documento antes de poder imprimirlo."
 msgstr "Vous devez sauvegarder le document avant de pouvoir l'imprimer."
 
-#~ msgid "&Nuevo tutor"
-#~ msgstr "&Nouveau Tuteur"
 
-#~ msgid "&Tutores"
-#~ msgstr "&Tuteurs"
-
-#~ msgid "Borrar cobro"
-#~ msgstr "Effacer l'encaissement"
-
-#~ msgid "C.I.F./N.I.F./N.I.E.:"
-#~ msgstr "C.I.F./N.I.F./N.I.E.:"
-
-#~ msgid "Cobros efectivos"
-#~ msgstr "Encaissements effectifs"
-
-#~ msgid "Cobros previstos"
-#~ msgstr "Encaissements prévus"
-
-#~ msgid "Correo electronico:"
-#~ msgstr "Courrier électronique :"
-
-#~ msgid "DNI / NIf"
-#~ msgstr "CIF / NIF"
-
-#~ msgid "Datos bancarios:"
-#~ msgstr "Données bancaires :"
-
-#~ msgid "Fecha final:"
-#~ msgstr "Date finale :"
-
-#~ msgid "Fecha inicial:"
-#~ msgstr "Date initiale :"
-
-#~ msgid "Guardar cobro"
-#~ msgstr "Sauvegarder l'encaissement"
-
-#~ msgid "Nombre completo:"
-#~ msgstr "Nom complet :"
-
-#~ msgid "Porcentaje de facturacion"
-#~ msgstr "Pourcentage de facturation"
-
-#~ msgid "Relacion"
-#~ msgstr "Relation"
-
-#~ msgid "Tutor"
-#~ msgstr "Tuteur"
-
-#~ msgid "Tutores"
-#~ msgstr "Tuteurs"

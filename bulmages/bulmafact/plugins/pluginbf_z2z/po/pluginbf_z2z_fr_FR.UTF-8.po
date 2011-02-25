@@ -14,6 +14,8 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Lokalize 1.2\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"X-Language: fr_FR\n"
+"X-Source-Language: C\n"
 
 #: ui_z2zbase.h:384
 msgid "&Aceptar"
@@ -41,7 +43,7 @@ msgstr "Erreur à la création de la facture"
 
 #: z2zview.cpp:272
 msgid "Error en el traspaso"
-msgstr ""
+msgstr "Erreur dans la cession"
 
 #: ui_z2zbase.h:395
 msgid "Excluir Articulo"
@@ -61,7 +63,7 @@ msgstr "Imprimer la facture"
 
 #: z2zview.cpp:108
 msgid "Lista vacia"
-msgstr ""
+msgstr "Liste vide"
 
 #: ui_z2zbase.h:397
 msgid "No cambiar precios de articulos"
