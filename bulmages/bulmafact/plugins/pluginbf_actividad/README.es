@@ -13,7 +13,8 @@ Descripción: <H1>Actividades</H1>
 <P>Este plugin se enmarca dentro del control de asociaciones de padres y alumnos y sirve para gestionar las distintas actividades que lleva a cabo la asociación. Por ejemplo excursiones o actividades extraescolares. Las actividades tienen una serie de datos importantes (profesores, fechas, horarios, precios) y tienen asociados una lista de alumnos asistentes a la misma.</P>
 <B>Author:</B>Tomeu Borrás (tborras@conetxia.com)<BR>
 <HR>
-
+<IMG SRC="@CMAKE_INSTALL_PREFIX@/share/bulmages/images/logopeq.png"/>
+<HR>
 
 ParmBD:
 

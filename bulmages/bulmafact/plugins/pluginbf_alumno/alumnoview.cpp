@@ -72,6 +72,11 @@ AlumnoView::AlumnoView ( BfCompany *comp, QWidget *parent ) : BfForm ( comp, par
         mui_tutoresList->setMainCompany ( mainCompany() );
         mui_actividadesList->setMainCompany ( mainCompany() );
 
+	
+	/// Presentamos una carga ficticia para que se acabe de iniciar el subformulario.
+        mui_tutoresList->cargar ( "0" );
+
+	
 
         mui_idclase->setMainCompany ( mainCompany() );
         mui_idclase->setQuery ( "SELECT * FROM clase ORDER BY nomclase" );

@@ -127,7 +127,9 @@ TutorView::TutorView ( BfCompany *comp, QWidget *parent ) : BfForm ( comp, paren
         m_idalumno4->setFieldId("idalumno");
         m_idalumno4->m_valores["nombrealumno"] = "";
 	
-	
+	/// Simulamos una carga para que el subformulario este operativo desde el principio.
+        mui_alumnosList->cargar ( "0" );
+
 	
         meteWindow ( windowTitle(), this, FALSE );
         pintar();
