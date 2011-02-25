@@ -18,10 +18,6 @@ msgstr ""
 "X-Language: fr_FR\n"
 "X-Source-Language: C\n"
 
-#: ui_cobrobase.h:412
-msgid "#mui_idcliente{min-height: 3em; } #mui_idcliente * {min-height: 0px; }"
-msgstr "#mui_idcliente{min-height: 3em; } #mui_idcliente * {min-height: 0px; }"
-
 #: ui_cobrobase.h:417
 msgid "&Aceptar"
 msgstr "&Accepter"

@@ -352,9 +352,6 @@
           <verstretch>0</verstretch>
          </sizepolicy>
         </property>
-        <property name="styleSheet">
-         <string>#mui_idcliente{min-height: 3em; } #mui_idcliente * {min-height: 0px; }</string>
-        </property>
        </widget>
       </item>
       <item row="3" column="0" colspan="2">

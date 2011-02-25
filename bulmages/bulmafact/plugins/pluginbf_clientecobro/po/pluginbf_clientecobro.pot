@@ -224,10 +224,6 @@ msgstr ""
 msgid "Fecha de vencimiento:"
 msgstr ""
 
-#: ui_cobrobase.h:412
-msgid "#mui_idcliente{min-height: 3em; } #mui_idcliente * {min-height: 0px; }"
-msgstr ""
-
 #: ui_cobrobase.h:413
 msgid "Descripcion del cobro:"
 msgstr ""
