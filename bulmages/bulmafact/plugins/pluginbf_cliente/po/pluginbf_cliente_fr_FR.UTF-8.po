@@ -35,7 +35,7 @@ msgstr "&Données générales"
 
 #: ui_clientebase.h:600
 msgid "&Direccion:"
-msgstr "Direction :"
+msgstr "Adresse :"
 
 #: ui_clientebase.h:598
 msgid "&Empresa:"
@@ -159,11 +159,11 @@ msgstr "Ctrl+S"
 
 #: ui_clientebase.h:616
 msgid "Datos &bancarios:"
-msgstr "Donées &bancaires:"
+msgstr "Données &bancaires:"
 
 #: ui_clientebase.h:615
 msgid "Datos de comercio &electronico:"
-msgstr "Donnés de commerce &électronique :"
+msgstr "Données de commerce &électronique :"
 
 #: clienteview.cpp:73
 msgid "Datos de comercio electronico"
@@ -239,7 +239,7 @@ msgstr "Id client"
 
 #: clienteview.cpp:69
 msgid "Identificador de presupuesto"
-msgstr "Identifieur du budget"
+msgstr "Identifieur du devis"
 
 #: ui_clientslistbase.h:334 ui_clientslistbase.h:337
 msgid "Importar"
@@ -335,11 +335,11 @@ msgstr "Sélecteur de clients"
 
 #: ui_clientslistbase.h:342
 msgid "Sólo Clientes con Albaranes sin Procesar"
-msgstr "Seuls les clients avec bulletin de livraison seront traités"
+msgstr "Seuls les clients avec bulletin de livraison sont traités"
 
 #: ui_clientslistbase.h:341
 msgid "Sólo Clientes con Facturas sin Procesar"
-msgstr "Seuls les clients avec factures seront traités"
+msgstr "Seuls les clients avec factures sont traités"
 
 #: ui_clientebase.h:606
 msgid "Tele&fono del trabajo:"
@@ -353,68 +353,3 @@ msgstr "Téléphone &portable :"
 msgid "Tiene que guardar el documento antes de poder imprimirlo."
 msgstr "Vous devez sauvegarder le document avant de pouvoir l'imprimer."
 
-#~ msgid "&Nuevo Cliente"
-#~ msgstr "&Nouveau client"
-
-#~ msgid "Codigo de cliente:"
-#~ msgstr "Code du client :"
-
-#~ msgid "Codigo postal:"
-#~ msgstr "Code postal :"
-
-#~ msgid "Comentarios:"
-#~ msgstr "Libellés :"
-
-#~ msgid "Correo electronico:"
-#~ msgstr "Courrier électronique :"
-
-#~ msgid "Datos bancarios:"
-#~ msgstr "Données bancaires :"
-
-#~ msgid "Datos de comercio electronico:"
-#~ msgstr "Données de commerce électronique :"
-
-#~ msgid "Direccion:"
-#~ msgstr "Direction :"
-
-#~ msgid "Empresa:"
-#~ msgstr "Entreprise :"
-
-#~ msgid "Forma de pago:"
-#~ msgstr "Forme de paiement :"
-
-#~ msgid "Nombre comercial:"
-#~ msgstr "Nom commercial :"
-
-#~ msgid "Nombre completo:"
-#~ msgstr "Nom complet :"
-
-#~ msgid "Numero de fax:"
-#~ msgstr "Numéro de fax :"
-
-#~ msgid "Otros datos"
-#~ msgstr "Autres données"
-
-#~ msgid "Pagina web:"
-#~ msgstr "Page web :"
-
-#~ msgid "Poblacion:"
-#~ msgstr "Population :"
-
-#~ msgid "Pro&cesados"
-#~ msgstr "Tra&ités"
-
-#~ msgid "Provincia:"
-#~ msgstr "Province :"
-
-#~ msgid "Regimen fiscal:"
-#~ msgstr "Régime fiscal :"
-
-#~ msgid "Telefono del trabajo:"
-#~ msgstr "Téléphone du travail :"
-
-#~ msgid "Telefono fijo:"
-#~ msgstr "Téléphone fixe :"
-
-#~ msgid "Telefono movil:"
-#~ msgstr "Téléphone portable :"

@@ -1,16 +1,16 @@
 #######
 #Plugins
 #######
-#README.es
-#20080501
+#README.fr
+#20110225
 
-Nombre: Passer des bulletins de livraison à des factures de client
+Nombre: Passer des bulletins de livraison à des factures clients
 
 Biblioteca: libpluginbf_clientealbaranesfactura.so
 
 Descripción: <H1>Bulletins de livraison à factures de client</H1>
 <P>Support pour bulletins de livraison de clients et de factures. </P>
-<B>Author:</B>Tomeu Borrás (tborras@conetxia.com)<BR>
+<B>Auteur:</B>Tomeu Borrás (tborras@conetxia.com)<BR>
 <HR>
 
 ParmBD:

@@ -318,24 +318,3 @@ msgstr "Salarié"
 #: ui_cobrobase.h:416
 msgid "Trabajador:"
 msgstr "Salarié :"
-
-#~ msgid "&Cobros a clientes"
-#~ msgstr "Encaissement de &Clients"
-
-#~ msgid "&Nuevo cobro a cliente"
-#~ msgstr "&Nouvel encaissement"
-
-#~ msgid "Banco"
-#~ msgstr "Banque"
-
-#~ msgid "Banco:"
-#~ msgstr "Banque :"
-
-#~ msgid "Cobros efectivos"
-#~ msgstr "Encaissements effectifs"
-
-#~ msgid "Cobros previstos"
-#~ msgstr "Encaissements prévus"
-
-#~ msgid "Provision de fondos"
-#~ msgstr "Provision de fonds"

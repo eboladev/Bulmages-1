@@ -10,7 +10,7 @@ Biblioteca: libpluginbf_catalogo.so
 
 Descripción: <H1>Catalogue d'article</H1>
 <P>Il permet la création d'un catalogue d'articles par le biais du RML de catalogue d'articles.</P>
-<B>Author:</B>Tomeu Borrás (tborras@conetxia.com)<BR>
+<B>Auteur:</B>Tomeu Borrás (tborras@conetxia.com)<BR>
 <HR>
 
 ParmBD: 

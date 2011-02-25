@@ -32,7 +32,7 @@ msgstr "&Accepter"
 
 #: pluginbf_clientealbaran.cpp:99
 msgid "&Albaranes a clientes"
-msgstr "Bulletin de livr&aison aux Clients"
+msgstr "Bulletin de livr&aison"
 
 #: ui_albaranclientebase.h:799
 msgid "&Cancelar"
@@ -48,7 +48,7 @@ msgstr "&Non"
 
 #: pluginbf_clientealbaran.cpp:107
 msgid "&Nuevo albaran a cliente"
-msgstr "&Nouveau bulletin de livraison de client"
+msgstr "&Nouveau bulletin de livraison"
 
 #: genalbqtoolbutton.cpp:158 genalbqtoolbutton.cpp:290
 msgid "&Si"
@@ -75,7 +75,7 @@ msgstr "Le bulletin existe déjà"
 #: albaranclientelist.cpp:344 pluginbf_clientealbaran.cpp:101
 #: pluginbf_clientealbaran.cpp:102 ui_albaranclientelistbase.h:448
 msgid "Albaranes a clientes"
-msgstr "Bulletin de livraison aux Clients"
+msgstr "Bulletin de livraison"
 
 #: albaranclientelist.cpp:206
 msgid "Albaranes no procesados"
@@ -217,7 +217,7 @@ msgstr "Id bulletin"
 
 #: albaranclientelist.cpp:333
 msgid "Error al borrar el albaran a cliente"
-msgstr "Erreur d'effacement d'un bulletin de livraison"
+msgstr "Erreur d'effacement d'un bulletin"
 
 #: albaranclienteview.cpp:120
 msgid "Error al crear el albaran a cliente"
@@ -314,7 +314,7 @@ msgstr "Id Forme de paiement"
 
 #: albaranclientelist.cpp:427
 msgid "ID trabajador"
-msgstr "Id Ouvrier"
+msgstr "Id salarié"
 
 #: albaranclienteview.cpp:72 bfclientealbarandescuentosubform.cpp:44
 #: bfclientealbaransubform.cpp:57
@@ -372,7 +372,7 @@ msgstr "Nouveau bulletin"
 #: pluginbf_clientealbaran.cpp:109 pluginbf_clientealbaran.cpp:110
 #: ui_albaranclientebase.h:735
 msgid "Nuevo albaran a cliente"
-msgstr "Nouveau bulletin de livraison de client"
+msgstr "Nouveau bulletin de livraison"
 
 #: albaranclienteview.cpp:75 albaranclientelist.cpp:421
 msgid "Numero de albaran"
@@ -467,5 +467,3 @@ msgstr "Salarié :"
 msgid "Ver pedidos con la misma referencia"
 msgstr "Afficher ceux de même référence"
 
-#~ msgid "Numero de albaran:"
-#~ msgstr "Numéro du bulletin :"
