@@ -46,7 +46,7 @@ msgstr "&Données comptables"
 
 #: ui_bccuentabase.h:831
 msgid "&Gasto"
-msgstr "&Frais"
+msgstr "&Dépense"
 
 #: ui_bccuentabase.h:823
 msgid "&Imputacion"
@@ -422,7 +422,7 @@ msgstr "Options du compte:"
 
 #: bccuentaview.cpp:46
 msgid "Padre"
-msgstr "Père "
+msgstr "Principal"
 
 #: pluginbc_cuenta.cpp:101 pluginbc_cuenta.cpp:102
 msgid "Permite ver y modificar el plan contable"
@@ -442,7 +442,7 @@ msgstr "Plan comptable"
 
 #: ui_bccuentabase.h:848
 msgid "Poblacion:"
-msgstr "Population :"
+msgstr "Ville :"
 
 #: ui_bccuentabase.h:846
 msgid "Provincia:"
