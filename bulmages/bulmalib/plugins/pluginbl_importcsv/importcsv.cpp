@@ -74,58 +74,89 @@ void ImportCSV::on_mui_buscarArchivo_clicked()
 void ImportCSV::on_mui_aceptar_clicked()
 {
     blDebug ( "ImportCSV::on_mui_aceptar_clicked", 0 );
-    blMsgInfo ( "aceptar pulsado" );
-
+    
     QFile file ( mui_archivo->text() );
     if ( !file.open ( QIODevice::ReadOnly | QIODevice::Text ) )
         return;
 
+    QString linea = "";
+    QStringList list1;
     if ( mui_cabeceras->isChecked() ) {
-        file.readLine();
+	/// La primera fila deberia decirnos que campos hay en el fichero.
+	/// La leemos y almacenamos estos datos poque nos seran utiles.    
+	linea = file.readLine();
+	/// Dependiendo del separador que usemos hacemos un split en funcion de ello
+	if ( mui_radioSeparadorTab->isChecked() ) {
+	    list1   = linea.split ( "\t" );
+	} else {
+	    list1   = linea.split ( mui_separador->text() );
+	} // end if
     } // end if
 
     mainCompany()->begin();
-    while ( !file.atEnd() ) {
-        QByteArray line = file.readLine();
-        procesarLinea ( line );
-    } // end while
-    mainCompany()->commit();
+    try {
+	while ( !file.atEnd() ) {
+	    /// Las lineas siguientes son los datos
+	    /// Los leemos y segun su orden los vamos colocando.
+	    linea = file.readLine();
+	    QStringList list2;
+	    /// Dependiendo del separador que usemos hacemos un split en funcion de ello
+	    if ( mui_radioSeparadorTab->isChecked() ) {
+		list2   = linea.split ( "\t" );
+	    } else {
+		list2   = linea.split ( mui_separador->text() );
+	    } // end if
+	    /// Montamos el query
+	    QString query = "INSERT INTO " + mui_combotablas->currentText() +" ("+list1.join(",").replace("\"","")+") VALUES("+list2.join(",").replace("\"","'")+")";
+	    mainCompany()->runQuery(query);
+	} // end while
+	mainCompany()->commit();
+    } catch (...) {
+	mainCompany()->rollback();
+	blMsgInfo("Hubo un error en la importacion");
+    } // end try
     file.close();
 
     blDebug ( "END ImportCSV::on_mui_aceptar_clicked", 0 );
 }
 
+
+/// Segun las cabeceras presentamos una forma u otra.
 void ImportCSV::on_mui_cabeceras_stateChanged ( int state )
 {
     if ( state != 0 ) {
         m_claves.clear();
+	/// Abrimos el fichero
         QFile file ( mui_archivo->text() );
         if ( !file.open ( QIODevice::ReadOnly | QIODevice::Text ) )
             return;
-
+	/// Cogemos la cabecera y la leemos
         QString linea = file.readLine();
         QStringList list1;
+	/// Dependiendo del separador que usemos hacemos un split en funcion de ello
         if ( mui_radioSeparadorTab->isChecked() ) {
             list1   = linea.split ( "\t" );
         } else {
             list1   = linea.split ( mui_separador->text() );
         } // end if
 
+	/// Ponemos cada campo entre corchetes y generamos la cadena de cabeceras.
         QString text = "";
-
         for ( int i = 0; i < list1.size(); ++i ) {
             m_claves.append ( "[" + list1.at ( i ) + "]" );
             text += "[" + list1.at ( i ) + "] ";
         } // end for
-
+	/// Escribimos la cabecera.
         mui_cabecerasEdit->setText ( text );
         file.close();
     } // end if
 }
 
 
+/// Para cada linea del archivo leido la procesamos y hacemos la insercion en la base de datos.
 void ImportCSV::procesarLinea ( const QString &linea )
 {
+    /// Primero trabajamos sobre el separado de campos segun el delimitador establecido.
     QStringList list1;
     if ( mui_radioSeparadorTab->isChecked() ) {
         list1   = linea.split ( "\t" );
@@ -133,6 +164,7 @@ void ImportCSV::procesarLinea ( const QString &linea )
         list1   = linea.split ( mui_separador->text() );
     } // end if
 
+    /// Luego componemos en query de insercion
     QString query = "INSERT INTO " + mui_combotablas->currentText() + "(";
     QString coma = "";
     for ( int i = 0; i < mui_list->rowCount(); ++i ) {
@@ -145,7 +177,7 @@ void ImportCSV::procesarLinea ( const QString &linea )
 
     query += ") VALUES (";
 
-
+    /// Para procesar los valores nos vamos a la tabla.
     coma = "";
     for ( int i = 0; i < mui_list->rowCount(); ++i ) {
         if ( mui_list->item ( i, 1 ) )
@@ -165,6 +197,7 @@ void ImportCSV::procesarLinea ( const QString &linea )
 }
 
 
+/// Rellenamos el ComboBox de tablas.
 void ImportCSV::rellenarTablas()
 {
     QString query = "select * from information_schema.tables where table_schema='public' and table_type='BASE TABLE' ORDER BY table_name";
@@ -178,20 +211,72 @@ void ImportCSV::rellenarTablas()
 }
 
 
+/// Detectamos el cambio en el combo de tablas y presentamos los atributos.
 void ImportCSV::on_mui_combotablas_activated ( const QString & text )
 {
 
+    /// Cogemos la tabla y la presentamos.
+    QStringList lista_campos;
     QString query = "SELECT a.attnum, a.attname AS field, t.typname AS type, a.attlen AS length, a.atttypmod AS lengthvar, a.attnotnull AS notnull FROM pg_class c, pg_attribute a, pg_type t WHERE c.relname = $1 and  a.attnum > 0 and a.attrelid = c.oid and a.atttypid = t.oid ORDER BY a.attnum";
     BlDbRecordSet *cur = mainCompany()->load ( query,text );
-    mui_list->setRowCount ( cur->numregistros() );
-    mui_list->setColumnCount ( 2 );
-    int row = 0;
+    mui_list->setRowCount ( 2 );
+    mui_list->setColumnCount ( cur->numregistros() );
+    int col = 0;
     while ( !cur->eof() ) {
         QTableWidgetItem *newItem = new QTableWidgetItem ( cur->valor ( "field" ) );
-        mui_list->setItem ( row, 0, newItem );
+	lista_campos << cur->valor( "field" );
+        mui_list->setItem ( 0, col, newItem );
         cur->nextRecord();
-        row ++;
+        col ++;
     } // end while
     delete cur;
+    
+    /// Ahora si hay archivo lo leemos e intentamos hacer una presentacion de los datos tambien.
+    QFile file ( mui_archivo->text() );
+    if ( !file.open ( QIODevice::ReadOnly | QIODevice::Text ) )
+        return;
+    if (file.atEnd())
+	return;
+
+    /// La primera fila deberia decirnos que campos hay en el fichero.
+    /// La leemos y almacenamos estos datos poque nos seran utiles.    
+    QString linea = file.readLine();
+    QStringList list1;
+    /// Dependiendo del separador que usemos hacemos un split en funcion de ello
+    if ( mui_radioSeparadorTab->isChecked() ) {
+	list1   = linea.split ( "\t" );
+    } else {
+	list1   = linea.split ( mui_separador->text() );
+    } // end if
+
+	
+    /// Procesamos todo el fichero.
+    int row = 1;  /// Las filas en la tabla (ya hay una que son los encabezados)
+    while ( !file.atEnd() ) {
+	/// Las lineas siguientes son los datos
+	/// Los leemos y segun su orden los vamos colocando.
+	linea = file.readLine();
+	QStringList list2;
+	/// Dependiendo del separador que usemos hacemos un split en funcion de ello
+	if ( mui_radioSeparadorTab->isChecked() ) {
+	    list2   = linea.split ( "\t" );
+	} else {
+	    list2   = linea.split ( mui_separador->text() );
+	} // end if
+	
+	mui_list->setRowCount ( row + 1 );
+	/// Ahora buscamos los valores en la tabla y los vamos colocando segun aparezcan.
+	for (int campo = 0; campo < lista_campos.size(); ++campo) {
+	    QString nomcampo = lista_campos.at(campo);
+	    int index = list1.indexOf("\""+nomcampo+"\"");
+	    if (index != -1) {
+		/// Se ha encontrado un elemento y podemos poner el texto.
+		QTableWidgetItem *newItem = new QTableWidgetItem ( list2.at(index) );
+		mui_list->setItem ( row, campo, newItem );
+	    } // end if
+	} // end for
+	row++;
+    } // end while
+    file.close();
 }
 
