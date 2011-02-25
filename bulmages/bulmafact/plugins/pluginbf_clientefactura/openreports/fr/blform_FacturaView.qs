@@ -25,7 +25,7 @@
 
 var lay = FacturaView.findChild("m_desdfgs");
 if (lay != null) {
-      lay.tabPosition = QTabWidget.East;
+      lay.tabPosition = QTabWidget.Top;
 }
 
 

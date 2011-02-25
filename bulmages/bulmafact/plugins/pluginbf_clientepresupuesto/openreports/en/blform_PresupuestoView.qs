@@ -25,7 +25,7 @@
 
 var lay = PresupuestoView.findChild("m_general");
 if (lay != null) {
-      lay.tabPosition = QTabWidget.East;
+      lay.tabPosition = QTabWidget.Top;
 }
 
 

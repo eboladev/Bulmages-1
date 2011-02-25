@@ -25,7 +25,7 @@
 
 var lay = AlbaranClienteView.findChild("discounts");
 if (lay != null) {
-      lay.tabPosition = QTabWidget.East;
+      lay.tabPosition = QTabWidget.Top;
 }
 
 

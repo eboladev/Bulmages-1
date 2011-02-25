@@ -148,7 +148,7 @@ chart.data = {
 var lay = ArticuloView.findChild("mui_tab");
 
 if (lay != null) {
-      lay.tabPosition = QTabWidget.East;
+      lay.tabPosition = QTabWidget.Top;
 
 }
 
