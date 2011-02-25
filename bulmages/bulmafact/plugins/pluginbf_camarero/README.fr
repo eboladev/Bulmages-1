@@ -10,7 +10,7 @@ Biblioteca: libpluginbf_camarero.so
 
 Descripción: <H1>Serveur</H1>
 <P>Permet de définir et de manier les domaines de travail avec des serveurs. Assigner des autorisations qui sont ensuite utilisé dans le TPV et avec les fonctionalités.</P>
-<B>Author:</B>Tomeu Borrás (tborras@conetxia.com)<BR>
+<B>Auteur:</B>Tomeu Borrás (tborras@conetxia.com)<BR>
 <HR>
 
 ParmBD: PluginBf_Camarero

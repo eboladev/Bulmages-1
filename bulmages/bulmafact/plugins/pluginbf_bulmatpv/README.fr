@@ -1,7 +1,7 @@
 #######
 #Plugins
 #######
-#README.es
+#README.fr
 #20080501
 
 Nombre: Maniement de TPV
@@ -11,7 +11,7 @@ Biblioteca: libpluginbf_bulmatpv.so
 Descripción: <H1>TPV</H1>
 <P>Manipule les tickets émis par un ou plusieurs TPV et leurs échantillons. Il permet le contrôle des caisses et les Z produites par un TPV.</P>
 <P>On doit avoir la fonctionalité de TPV installée sinon ce plugin ne fonctionnera pas</P>
-<B>Author:</B>Tomeu Borrás (tborras@conetxia.com)<BR>
+<B>Auteur:</B>Tomeu Borrás (tborras@conetxia.com)<BR>
 <HR>
 
 ParmBD: 

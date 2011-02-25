@@ -4,14 +4,14 @@
 #README.fr
 #20110207
 
-Nombre: Control de présence par centrale Asterisk
+Nombre: Controle de présence par centrale Asterisk
 
 Biblioteca: libpluginbf_asterisk.so
 
 Descripción: <H1>Asterisk</H1>
 <P>Présente toutes les validations effectuées par les utilisateurs et dans les magasins correspondants. Il modifie la fiche magasins et travailleurs pour qu'ils présentent un tableau de validations effectuées.</P>
 <P>Requiert le pluginalmacen ainsi que plugincuadrante, sans lesquels il ne fonctionnera pas. Il inclut aussi dans le code source des exemples de scripts de validation fait en php pour créer des postes dans le standard agi.</P>
-<B>Author:</B>Tomeu Borrás (tborras@conetxia.com)<BR>
+<B>Auteur:</B>Tomeu Borrás (tborras@conetxia.com)<BR>
 <HR>
 
 ParmBD: PluginBf_Asterisk

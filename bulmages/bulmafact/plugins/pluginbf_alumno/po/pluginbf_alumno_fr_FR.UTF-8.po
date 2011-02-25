@@ -467,38 +467,3 @@ msgstr "Téléphone portable :"
 msgid "Tiene que guardar el documento antes de poder imprimirlo."
 msgstr "Vous devez sauvegarder le document avant de pouvoir l'imprimer."
 
-#~ msgid "Banco:"
-#~ msgstr "Banque :"
-
-#~ msgid "C.I.F./N.I.F./N.I.E.:"
-#~ msgstr "C.I.F./N.I.F./N.I.E.:"
-
-#~ msgid "Codigo postal:"
-#~ msgstr "Code postal :"
-
-#~ msgid "DNI / NIf"
-#~ msgstr "CIF / NIF"
-
-#~ msgid "Datos bancarios:"
-#~ msgstr "Dates bancaires :"
-
-#~ msgid "Direccion:"
-#~ msgstr "Direction :"
-
-#~ msgid "Hermanos"
-#~ msgstr "Outils"
-
-#~ msgid "Nombre completo:"
-#~ msgstr "Nom complet :"
-
-#~ msgid "Poblacion:"
-#~ msgstr "Population :"
-
-#~ msgid "Porcentaje de facturacion"
-#~ msgstr "Pourcentage de facturation"
-
-#~ msgid "Provincia:"
-#~ msgstr "Province :"
-
-#~ msgid "Relacion"
-#~ msgstr "Relation"

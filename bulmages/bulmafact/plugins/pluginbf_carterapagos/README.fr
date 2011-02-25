@@ -16,7 +16,7 @@ Descripción: <H1>Carte de paiement</H1>
 <PARA>En créant une facture il créera directement les encaissements de cette dernière de manière automatique, bien que ces actions puissent être manuellement changées.</B></PARA>
 <PARA>Il incorpore une gestion de tous les paiements à effectuer, ainsi que ceux expédiés par la banque et le contrôle d'état de chacun des paiements avec la norme Q34</PARA>
 <PARA>C'est un bon substitut, plus élaboré que la gestion de paiements de facture. Utile pour ces entreprises qui prétendent porter une gestion de paiements avancée.</PARA>
-<B>Author:</B>Tomeu Borrás (tborras@conetxia.com)<BR>
+<B>Auteur:</B>Tomeu Borrás (tborras@conetxia.com)<BR>
 <HR>
 
 ParmBD:

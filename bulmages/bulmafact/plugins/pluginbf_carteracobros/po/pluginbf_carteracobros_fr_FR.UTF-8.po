@@ -99,11 +99,4 @@ msgstr "Référence d'échéance"
 msgid "idcliente de Vencimiento"
 msgstr "Id client d'échéance"
 
-#~ msgid "Forma de Pago"
-#~ msgstr "Forma de pago"
 
-#~ msgid "Id Articulo"
-#~ msgstr "ID artículo"
-
-#~ msgid "Id pago"
-#~ msgstr "ID pago"

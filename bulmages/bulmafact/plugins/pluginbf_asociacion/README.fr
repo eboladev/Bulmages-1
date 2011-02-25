@@ -11,7 +11,7 @@ Biblioteca: libpluginbf_asociacion.so
 Descripción: <H1>Association</H1>
 <P>Gestionnaire de questions associatives d'une association.</P>
 <P>Avec ce plugin on peut émettre des communiqués aux partenaires, convoquer l'assemblée, ou des réunions et enregistrer les actes.</P>
-<B>Author:</B>Tomeu Borrás (tborras@conetxia.com)<BR>
+<B>Auteur:</B>Tomeu Borrás (tborras@conetxia.com)<BR>
 <HR>
 
 

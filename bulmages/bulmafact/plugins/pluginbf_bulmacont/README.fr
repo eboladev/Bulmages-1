@@ -4,13 +4,13 @@
 #README.fr
 #20110207
 
-Nombre: Comptabilité dans la facturation
+Nombre: Comptabilite dans la facturation
 
 Biblioteca: libpluginbf_bulmacont.so
 
 Descripción: <H1>Comptabilité dans bulmaFact</H1>
 <P>Ouvre une instance de comptabilité avec la facturation pour pouvoir utiliser des écrans de la comptabilité dans la facturation.</P>
-<B>Author:</B>Tomeu Borrás (tborras@conetxia.com)<BR>
+<B>Auteur:</B>Tomeu Borrás (tborras@conetxia.com)<BR>
 <HR>
 
 ParmBD: 

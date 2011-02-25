@@ -16,6 +16,8 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Lokalize 1.1\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"X-Language: fr_FR\n"
+"X-Source-Language: C\n"
 
 #: carterapagoslist.cpp:61 vencimientopview.cpp:59
 msgid "Proveedor:"
@@ -95,5 +97,4 @@ msgstr "Accusé"
 
 #: pluginbf_carterapagos.cpp:253
 msgid "Id Proveedor"
-msgstr ""
-
+msgstr "Id fournisseur"

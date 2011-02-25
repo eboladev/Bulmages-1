@@ -15,7 +15,7 @@ Descripción: <H1>Gestion des articles</H1>
 <BR>
 <PARA>En installant le greffon apparaît le menu Articles dans l'application avec les options <B>Liste d'Articles</B> y la
 opcion <B>Nouvel Article</B></PARA>
-<B>Author:</B>Tomeu Borrás (tborras@conetxia.com)<BR>
+<B>Auteur:</B>Tomeu Borrás (tborras@conetxia.com)<BR>
 <HR>
 
 ParmBD:
