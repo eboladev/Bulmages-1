@@ -54,8 +54,8 @@
         <td><para style="Table Contents"><font color="black" size="8">Partida</font></para></td>
         <td><para style="Table Contents"><font color="black" size="8">Deure Ant.</font></para></td>
         <td><para style="Table Contents"><font color="black" size="8">Haver Ant.</font></para></td>
-        <td><para style="Table Contents"><font color="black" size="8">Deure Periodo</font></para></td>
-        <td><para style="Table Contents"><font color="black" size="8">Haver Periodo</font></para></td>
+        <td><para style="Table Contents"><font color="black" size="8">Deure Periode</font></para></td>
+        <td><para style="Table Contents"><font color="black" size="8">Haver Periode</font></para></td>
         <td><para style="Table Contents"><font color="black" size="8">Saldo Fi Periode</font></para></td>
       </tr>
 <!-- QU ER Y="SELECT row_number() over (order by codigocompletopartida) AS orden , * FROM partida"-->
