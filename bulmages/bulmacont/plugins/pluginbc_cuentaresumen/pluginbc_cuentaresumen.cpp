@@ -70,15 +70,7 @@ int entryPoint ( BcBulmaCont *bcont )
 
     doc1->setWidget ( g_res );
 
-    QMenu *pPluginMenu;
-    /// Miramos si existe un menu Herramientas
-    pPluginMenu = bcont->menuBar() ->findChild<QMenu *> ( "menuVer" );
-
-    /// Creamos el men&uacute;.
-    if ( !pPluginMenu ) {
-        pPluginMenu = new QMenu ( _ ( "&Ver" ), bcont->menuBar() );
-        pPluginMenu->setObjectName ( QString::fromUtf8 ( "menuVer" ) );
-    } // end if
+    QMenu *pPluginMenu = bcont->newMenu( "&Ver", "menuVer", "menuMaestro");
 
 
     /// A&ntilde;ade en el men&uacute; del programa la opci&oacuteMn para
