@@ -14,6 +14,8 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Lokalize 1.2\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"X-Language: fr_FR\n"
+"X-Source-Language: C\n"
 
 #: ui_blsubformbase.h:677
 msgid "!Opcion reservada a expertos!"
@@ -231,7 +233,7 @@ msgstr "Code à 2 chiffres"
 
 #: ui_blcountrybase.h:264
 msgid "Codigo 2 letras:"
-msgstr "Code à 2 lettres"
+msgstr "Code à 2 lettres :"
 
 #: blcountryview.cpp:51 blcountryview.cpp:73
 msgid "Codigo 3 digitos"
@@ -239,7 +241,7 @@ msgstr "Code à 3 chiffres"
 
 #: ui_blcountrybase.h:263
 msgid "Codigo 3 letras:"
-msgstr "Code à 3 lettres"
+msgstr "Code à 3 lettres :"
 
 #: ui_blsubformbase.h:665
 msgid "Columnas visibles"
@@ -287,7 +289,7 @@ msgstr "Partie quelconque du champs"
 
 #: blbankedit.cpp:89
 msgid "Cuenta bancaria incorrecta"
-msgstr ""
+msgstr "Compte bancaire incorrect"
 
 #: ui_blformconfigbase.h:328
 msgid "Database Table"
@@ -399,17 +401,17 @@ msgstr "Erreur à l'exécution de PYTHON [ blfunctions->blCreateODS() ]"
 
 #: blfunctions.cpp:328
 msgid ""
-"Error al ejecutar el comando 'sed' [ blfunctions.cpp->blReplaceStringInFile"
-"() ]."
+"Error al ejecutar el comando 'sed' [ "
+"blfunctions.cpp->blReplaceStringInFile() ]."
 msgstr ""
-"Erreur à l'exécution de la commande 'sed' [ blfunctions.cpp-"
-">blReplaceStringInFile() ]."
+"Erreur à l'exécution de la commande 'sed' [ "
+"blfunctions.cpp->blReplaceStringInFile() ]."
 
 #: blfunctions.cpp:428
 msgid "Error al ejecutar el visor de PDF [ blfunctions->blCreateAndLoadPDF() ]"
 msgstr ""
-"Erreur à l'exécution du visualiseur PDF  [ blfunctions->blCreateAndLoadPDF"
-"() ]"
+"Erreur à l'exécution du visualiseur PDF  [ blfunctions->blCreateAndLoadPDF() "
+"]"
 
 #: blfunctions.cpp:442
 msgid "Error al ejecutar mailsend [ blfunctions->blSendPDFMail() ]"
@@ -461,7 +463,7 @@ msgstr ""
 
 #: blform.cpp:920 blform.cpp:926
 msgid "Error inesperado al guardar"
-msgstr ""
+msgstr "Error inattendue en sauvegarde"
 
 #: blsubform.cpp:2156
 msgid "Error inesperado en el guardado. [BlSubForm::guardar]"
@@ -939,11 +941,9 @@ msgstr "La classe ne s'est pas bien initialisée "
 #~ msgid "La forma de pagoÅ del presupuesto no existe<BR>\n"
 #~ msgstr "La forme de payement du bulletin n'éxiste pas<BR>"
 
-#, fuzzy
 #~ msgid "Mostrar listado de profesors"
 #~ msgstr "Actualiser liste d'entreprises"
 
-#, fuzzy
 #~ msgid "Nombre Pais"
 #~ msgstr "Nom"
 
