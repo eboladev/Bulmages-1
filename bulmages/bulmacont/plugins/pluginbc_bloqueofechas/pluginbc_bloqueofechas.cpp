@@ -80,7 +80,7 @@ void myBloqFechas::inicializa ( BcBulmaCont *bges )
     m_bulmacont = bges;
 
     /// Miramos si existe un menu Herramientas
-    QMenu *pPluginMenu = bges->newMenu("&Herramientas", "menuHerramientas", "menuVentana");
+    QMenu *pPluginMenu = bges->newMenu(_("&Herramientas"), "menuHerramientas", "menuVentana");
 
     QAction *accion = new QAction ( _ ( "&Bloqueo de Fechas" ), 0 );
     accion->setStatusTip ( _ ( "Bloqueo de Fechas" ) );

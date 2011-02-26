@@ -88,7 +88,7 @@ void MyPluginMayor::inicializa ( BcBulmaCont *bges )
     /// Creamos el men&uacute;.
     setMainCompany ( (BlMainCompany *)bges->empresaactual() );
     m_bulmacont = bges;
-    QMenu *pPluginMenu = bges->newMenu("&Ver", "menuVer", "menuMaestro");
+    QMenu *pPluginMenu = bges->newMenu( _("&Ver"), "menuVer", "menuMaestro");
 
     QAction *accion = new QAction ( _ ( "&Libro Mayor" ), 0 );
     accion->setStatusTip ( _ ( "Permite ver el mayor" ) );

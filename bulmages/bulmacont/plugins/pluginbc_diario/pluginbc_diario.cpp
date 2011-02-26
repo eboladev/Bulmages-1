@@ -84,15 +84,7 @@ void MyPluginDiario::inicializa ( BcBulmaCont *bges )
     /// Creamos el men&uacute;.
     setMainCompany ( bges->empresaactual() );
     m_bulmacont = bges;
-    QMenu *pPluginMenu;
-    /// Miramos si existe un menu Herramientas
-    pPluginMenu = bges->menuBar() ->findChild<QMenu *> ( "menuVer" );
-
-    /// Creamos el men&uacute;.
-    if ( !pPluginMenu ) {
-        pPluginMenu = new QMenu ( _ ( "&Ver" ), bges->menuBar() );
-        pPluginMenu->setObjectName ( QString::fromUtf8 ( "menuVer" ) );
-    } // end if
+    QMenu *pPluginMenu = bges->newMenu(_("&Ver"), "menuVer", "menuMaestro");
 
     QAction *accion = new QAction ( _ ( "&Libro Diario" ), 0 );
     accion->setStatusTip ( _ ( "Permite ver el diario" ) );
@@ -102,7 +94,6 @@ void MyPluginDiario::inicializa ( BcBulmaCont *bges )
     pPluginMenu->addAction ( accion );
 
     /// A&ntilde;adimos la nueva opci&oacute;n al men&uacute; principal del programa.
-    bges->menuBar() ->insertMenu ( bges->menuMaestro->menuAction(), pPluginMenu );
     bges->toolBar->addAction ( accion );
 
     blDebug ( "END MyPluginDiario::inicializa", 0 );

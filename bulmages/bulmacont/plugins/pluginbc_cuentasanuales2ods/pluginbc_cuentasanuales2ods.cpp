@@ -413,7 +413,7 @@ void PluginBc_CuentasAnuales2ODS::inicializa ( BcBulmaCont *bcont )
     /// Creamos el men&uacute;.
 //    QMenu *pPluginMenu = new QMenu ( _ ( "&Cuentas Anuales" ) );
     /// Miramos si existe un menu Herramientas
-    QMenu *pPluginMenu = bcont->newMenu ( _("&Cuentas Anuales fgfg"), "menuCAnuales", "menuHerramientas" );
+    QMenu *pPluginMenu = bcont->newMenu ( _("&Cuentas Anuales"), "menuCAnuales", "menuHerramientas" );
 
     
     
