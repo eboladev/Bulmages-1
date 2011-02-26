@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2011-02-26 06:09+0100\n"
-"PO-Revision-Date: 2011-02-26 07:06+0100\n"
+"POT-Creation-Date: 2011-02-26 07:04+0100\n"
+"PO-Revision-Date: 2011-02-26 07:11+0100\n"
 "Last-Translator: Walter Garcia-Fontes <walter.garcia@upf.edu>\n"
 "Language-Team: English\n"
 "Language: English\n"
@@ -343,22 +343,22 @@ msgstr "Execute query"
 #: blimportexport.cpp:2396 blimportexport.cpp:2625 blimportexport.cpp:2850
 #: blimportexport.cpp:3088
 msgid "El almacen del presupuesto no existe"
-msgstr "The store of the budget does not exist<BR>"
+msgstr "The store of the budget does not exist<BR>\n"
 
 #: blimportexport.cpp:2477 blimportexport.cpp:2703 blimportexport.cpp:2941
 #: blimportexport.cpp:3170
 msgid "El articulo de la linea de presupuesto no existe"
-msgstr "Article of the line of budget does not exist<BR>"
+msgstr "Article of the line of budget does not exist<BR>\n"
 
 #: blimportexport.cpp:2406 blimportexport.cpp:2635 blimportexport.cpp:2859
 #: blimportexport.cpp:3098
 msgid "El cliente del presupuesto no existe"
-msgstr "The client of the budget does not exist<BR>"
+msgstr "The client of the budget does not exist<BR>\n"
 
 #: blimportexport.cpp:2426 blimportexport.cpp:2653 blimportexport.cpp:2878
 #: blimportexport.cpp:3118
 msgid "El empleado del presupuesto no existe"
-msgstr "The employee of the budget does not exist<BR>"
+msgstr "The employee of the budget does not exist<BR>\n"
 
 #: blmaincompany.cpp:255
 msgid "El programa no funcionara adecuadamente."
@@ -366,11 +366,11 @@ msgstr "The program will not work adequately."
 
 #: blimportexport.cpp:2024
 msgid "El proveedor no existe, se debe hacer una insercion de este"
-msgstr "<LI> The supplier does not exist, you have to insert it first</LI>"
+msgstr "<LI> The supplier does not exist, you have to insert it first</LI>\n"
 
 #: blimportexport.cpp:2019
 msgid "El proveedor ya existe, se pueden hacer modificaciones"
-msgstr "<LI> The supplier already exists, you can be made modifications</LI>"
+msgstr "<LI> The supplier already exists, you can be made modifications</LI>\n"
 
 #: ui_blcompanydialogbase.h:201
 msgid "Empresas disponibles:"
@@ -404,7 +404,8 @@ msgstr "PYTHON execution error [ blfunctions->blCreateODS() ]"
 msgid ""
 "Error al ejecutar el comando 'sed' [ blfunctions.cpp->blReplaceStringInFile"
 "() ]."
-msgstr "'sed' command execution error [ blfunctions.cpp->blReplaceStringInFile() ]."
+msgstr ""
+"'sed' command execution error [ blfunctions.cpp->blReplaceStringInFile() ]."
 
 #: blfunctions.cpp:428
 msgid "Error al ejecutar el visor de PDF [ blfunctions->blCreateAndLoadPDF() ]"
@@ -457,6 +458,10 @@ msgid ""
 msgstr ""
 "Error in the XML.\n"
 "Document badly formed."
+
+#: blform.cpp:920 blform.cpp:926
+msgid "Error inesperado al guardar"
+msgstr "Unexpected save error"
 
 #: blsubform.cpp:2156
 msgid "Error inesperado en el guardado. [BlSubForm::guardar]"
@@ -582,7 +587,7 @@ msgstr "The article family does not exist<BR>\n"
 #: blimportexport.cpp:2416 blimportexport.cpp:2644 blimportexport.cpp:2868
 #: blimportexport.cpp:3108
 msgid "La forma de pago del presupuesto no existe"
-msgstr "The mode of payment of the budget does not exist<BR>"
+msgstr "The mode of payment of the budget does not exist<BR>\n"
 
 #: blmaincompany.cpp:275
 msgid ""
@@ -592,7 +597,7 @@ msgid ""
 msgstr ""
 "The database version does not coincide with the program.\n"
 "\n"
-"The program will not work correctly."
+"The program will not work correctly.\n"
 
 #: ui_bldblogindialogbase.h:151
 msgid "Lanzador Bulmages"
@@ -626,7 +631,8 @@ msgstr "Show/hide detail"
 #, qt-format
 msgid ""
 "No existen elementos en el listado \"%1\", y el campo \"%2\" requiere alguno."
-msgstr "No elements exist in listing \"%1\", and the field \"%2\" needs at least one."
+msgstr ""
+"No elements exist in listing \"%1\", and the field \"%2\" needs at least one."
 
 #: blimportexport.cpp:2158
 msgid "No se ha encontrado el padre de esta familia."

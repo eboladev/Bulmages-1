@@ -917,13 +917,13 @@ int BlForm::guardar()
         /// Valor del error diferente a -1 significa que ya se ha mostrado algun mensaje de
         /// error y no hay que mostrar otro.
         if ( valor == -1 ) {
-            blMsgInfo ( "Error inesperado al guardar" );
+	  blMsgInfo (_ ( "Error inesperado al guardar" ));
         } // end if
         mainCompany() ->rollback();
         return -1;
 
     } catch ( ... ) {
-        blMsgInfo ( "Error inesperado al guardar" );
+        blMsgInfo (_ ( "Error inesperado al guardar" ));
         mainCompany() ->rollback();
         return -1;
     } // end try

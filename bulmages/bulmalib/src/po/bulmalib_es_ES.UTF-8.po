@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: bulmalib_es_ES.UTF-8\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2011-02-26 06:09+0100\n"
+"POT-Creation-Date: 2011-02-26 07:04+0100\n"
 "PO-Revision-Date: 2009-05-08 23:36+0200\n"
 "Last-Translator: \n"
 "Language-Team: Spanish <kde-i18n-doc@kde.org>\n"
@@ -455,6 +455,10 @@ msgid ""
 msgstr ""
 "Error en el XML.\n"
 "Documento mal formateado."
+
+#: blform.cpp:920 blform.cpp:926
+msgid "Error inesperado al guardar"
+msgstr ""
 
 #: blsubform.cpp:2156
 msgid "Error inesperado en el guardado. [BlSubForm::guardar]"

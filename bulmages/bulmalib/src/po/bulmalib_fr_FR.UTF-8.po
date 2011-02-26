@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2011-02-26 06:09+0100\n"
+"POT-Creation-Date: 2011-02-26 07:04+0100\n"
 "PO-Revision-Date: 2011-01-26 08:06+0100\n"
 "Last-Translator: Girard Henri <aishen@free.fr>\n"
 "Language-Team: French <kde l10n>\n"
@@ -458,6 +458,10 @@ msgid ""
 msgstr ""
 "Erreur dans XML\n"
 "Document mal formé."
+
+#: blform.cpp:920 blform.cpp:926
+msgid "Error inesperado al guardar"
+msgstr ""
 
 #: blsubform.cpp:2156
 msgid "Error inesperado en el guardado. [BlSubForm::guardar]"

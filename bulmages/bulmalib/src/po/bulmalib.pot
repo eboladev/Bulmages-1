@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
-"POT-Creation-Date: 2011-02-26 06:09+0100\n"
+"POT-Creation-Date: 2011-02-26 07:04+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -803,6 +803,10 @@ msgstr ""
 
 #: blform.cpp:535
 msgid "Imprimir ficha"
+msgstr ""
+
+#: blform.cpp:920 blform.cpp:926
+msgid "Error inesperado al guardar"
 msgstr ""
 
 #: blmaincompany.cpp:255
