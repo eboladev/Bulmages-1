@@ -66,15 +66,7 @@ int entryPoint ( BcBulmaCont *bcont )
 
     doc1->setWidget ( corr );
     
-    QMenu *pPluginMenu;
-    /// Miramos si existe un menu Herramientas
-    pPluginMenu = bcont->menuBar() ->findChild<QMenu *> ( "menuVer" );
-
-    /// Creamos el men&uacute;.
-    if ( !pPluginMenu ) {
-        pPluginMenu = new QMenu ( _ ( "&Ver" ), bcont->menuBar() );
-        pPluginMenu->setObjectName ( QString::fromUtf8 ( "menuVer" ) );
-    } // end if
+    QMenu *pPluginMenu = bcont->newMenu(_("&Ver"), "menuVer", "menuMaestro");
 
     /// A&ntilde;ade en el men&uacute; del programa la opci&oacuteMn para
     /// acceder al corrector.
@@ -90,7 +82,8 @@ int entryPoint ( BcBulmaCont *bcont )
     pPluginMenu ->addSeparator();
     pPluginMenu ->addAction ( viewCorrector );
 
-    bcont->toolBar->addAction ( viewCorrector );
+    /// Mientras no haya icono para el corrector lo mantengo quitado.
+//    bcont->toolBar->addAction ( viewCorrector );
 
     corr->m_viewCorrector = viewCorrector;
 

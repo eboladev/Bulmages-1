@@ -87,7 +87,7 @@ void myplugin4::inicializa ( BcBulmaCont *bges )
     pPluginMenu->addAction ( accion );
 
     /// A&ntilde;adimos la nueva opci&oacute;n al men&uacute; principal del programa.
-    bges->toolBar->addAction ( accion );
+//    bges->toolBar->addAction ( accion );
     blDebug ( "END myplugin4::inicializa", 0 );
 }
 
