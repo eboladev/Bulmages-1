@@ -80,14 +80,7 @@ void myBloqFechas::inicializa ( BcBulmaCont *bges )
     m_bulmacont = bges;
 
     /// Miramos si existe un menu Herramientas
-    QMenu *pPluginMenu;
-    pPluginMenu = bges->menuBar() ->findChild<QMenu *> ( "menuHerramientas" );
-
-    /// Creamos el men&uacute;.
-    if ( !pPluginMenu ) {
-        pPluginMenu = new QMenu ( _ ( "&Herramientas" ), bges->menuBar() );
-        pPluginMenu->setObjectName ( QString::fromUtf8 ( "menuHerramientas" ) );
-    } // end if
+    QMenu *pPluginMenu = bges->newMenu("&Herramientas", "menuHerramientas", "menuVentana");
 
     QAction *accion = new QAction ( _ ( "&Bloqueo de Fechas" ), 0 );
     accion->setStatusTip ( _ ( "Bloqueo de Fechas" ) );
@@ -98,8 +91,6 @@ void myBloqFechas::inicializa ( BcBulmaCont *bges )
     pPluginMenu->addSeparator();
     pPluginMenu->addAction ( accion );
 
-    /// A&ntilde;adimos la nueva opci&oacute;n al men&uacute; principal del programa.
-    bges->menuBar() ->insertMenu ( bges->menuMaestro->menuAction(), pPluginMenu );
 }
 
 

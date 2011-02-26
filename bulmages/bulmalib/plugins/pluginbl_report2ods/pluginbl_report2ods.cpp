@@ -39,7 +39,7 @@
 #include "blform.h"
 
 
-QMainWindow *g_bges = NULL;
+BlMainWindow *g_bges = NULL;
 BlMainCompany *g_emp = NULL;
 
 
@@ -84,7 +84,7 @@ void MyPluginInformesODS::elslot1( )
 }
 
 
-int entryPoint ( QMainWindow *bges )
+int entryPoint ( BlMainWindow *bges )
 {
     g_bges = bges;
     return 0;
@@ -104,9 +104,6 @@ int init (  )
     MyPluginInformesODS *mcont = new MyPluginInformesODS;
 
     QMenu *pPluginMenu = NULL;
-    /// Miramos si existe un menu Informes
-    pPluginMenu = g_bges->menuBar() ->findChild<QMenu *> ( "menuInformesODS" );
-    QMenu *pPluginVer = g_bges->menuBar()->findChild<QMenu *> ( "menuVentana" );
 
     /// Buscamos ficheros que tengan el nombre de la tabla
     QDir dir ( g_confpr->valor ( CONF_DIR_OPENREPORTS ) );
@@ -170,16 +167,15 @@ int init (  )
 		    } // end for
 
 		    if (!encontrado) {
-			QMenu *pPluginMenu1 = new QMenu (  path[0] , menubar );
-			menubar->insertMenu ( pPluginVer->menuAction(), pPluginMenu1 );
-			menu = pPluginMenu1;
+			//QMenu *pPluginMenu1 = new QMenu (  path[0] , menubar );
+			//menubar->insertMenu ( pPluginVer->menuAction(), pPluginMenu1 );
+        		/// Miramos si existe un menu Herramientas
+			menu = g_bges->newMenu ( path[0], "", "menuHerramientas" );
 		    } // end if
 	} else {
 
 		    if (!pPluginMenu) {
-			    pPluginMenu = new QMenu ( _ ( "Informes &ODS" ), g_bges->menuBar() );
-			    pPluginMenu->setObjectName ( QString::fromUtf8 ( "menuInformesODS" ) );
-			    g_bges->menuBar()->insertMenu ( pPluginVer->menuAction(), pPluginMenu );
+			    pPluginMenu = g_bges->newMenu ( "Informes &ODS", "menuInfODS", "menuHerramientas" );
 		    } // end if
 		    menu = pPluginMenu;
 	} // end if

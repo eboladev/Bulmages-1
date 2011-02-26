@@ -90,15 +90,9 @@ void MyPluginCuentasAnuales::inicializa ( BcBulmaCont *bges )
     g_cuentasAnuales = NULL;
 
     m_bulmacont = bges;
-    QMenu *pPluginMenu;
     /// Miramos si existe un menu Herramientas
-    pPluginMenu = bges->menuBar() ->findChild<QMenu *> ( "menuListados" );
+    QMenu *pPluginMenu = bges->newMenu ( _("&Cuentas Anuales"), "menuCAnuales", "menuHerramientas" );
 
-    /// Creamos el men&uacute;.
-    if ( !pPluginMenu ) {
-        pPluginMenu = new QMenu ( _ ( "&Listados" ), bges->menuBar() );
-        pPluginMenu->setObjectName ( QString::fromUtf8 ( "menuListados" ) );
-    } // end if
 
     QAction *accion = new QAction ( _ ( "&Cuentas Anuales" ), 0 );
     accion->setStatusTip ( _ ( "Cuentas anuales" ) );
@@ -108,7 +102,7 @@ void MyPluginCuentasAnuales::inicializa ( BcBulmaCont *bges )
 
 
     /// A&ntilde;adimos la nueva opci&oacute;n al men&uacute; principal del programa.
-    bges->menuBar() ->insertMenu ( bges->menuVentana->menuAction(), pPluginMenu );
+//    bges->menuBar() ->insertMenu ( bges->menuVentana->menuAction(), pPluginMenu );
 
     blDebug ( "END MyPluginCuentasAnuales::inicializa", 0 );
 }

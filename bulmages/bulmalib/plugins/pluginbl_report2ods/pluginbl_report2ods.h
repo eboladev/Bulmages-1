@@ -22,10 +22,11 @@
 #include "blpostgresqlclient.h"
 #include "bccompany.h"
 #include "bfcompany.h"
+#include "blmainwindow.h"
 #include "pdefs_pluginbl_report2ods.h"
 
 
-extern "C" PLUGINBL_REPORT2ODS_EXPORT int entryPoint ( QMainWindow * );
+extern "C" PLUGINBL_REPORT2ODS_EXPORT int entryPoint ( BlMainWindow * );
 extern "C" PLUGINBL_REPORT2ODS_EXPORT int BfCompany_createMainWindows_Post ( BfCompany * );
 extern "C" PLUGINBL_REPORT2ODS_EXPORT int BcCompany_createMainWindows_Post ( BcCompany * );
 
