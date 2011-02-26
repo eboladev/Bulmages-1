@@ -10,7 +10,7 @@
     Aquí van los elementos gráficos de la página (headers, footers, frames, etc...).
     No puede estar vacío.
 -->
-<template pageSize="(21cm, 29.7cm)" leftMargin="0cm" rightMargin="0cm" topMargin="1.0cm" bottomMargin="2.0cm" title="Cartel de una actividad" author="Arturo Martin Llado" allowSplitting="20">
+<template pageSize="(21cm, 29.7cm)" leftMargin="0cm" rightMargin="0cm" topMargin="1.0cm" bottomMargin="2.0cm" title="Cartell d'una activitat" author="Arturo Martin Llado" allowSplitting="20">
     <pageTemplate id="main">
     
         <!-- FRAME DE CONTENIDOS -->
@@ -37,10 +37,10 @@
             <setFont name="Helvetica" size="22"/>
             <drawString x="1.5cm" y="24cm">[nombreactividad]</drawString>
             <setFont name="Helvetica" size="13"/>
-            <drawString x="1.5cm" y="23.2cm">Tipo: [nombretipoactividad]</drawString>
-            <drawString x="1.5cm" y="22.4cm">Profesor: [nombreprofesor]</drawString>
-            <drawString x="1.5cm" y="21.6cm">Periodo (inicio | fin): [finicialactividad] | [ffinalactividad]</drawString>
-            <drawString x="1.5cm" y="21.0cm">Precio [precioactividad]</drawString>
+            <drawString x="1.5cm" y="23.2cm">Tipus: [nombretipoactividad]</drawString>
+            <drawString x="1.5cm" y="22.4cm">Monitor: [nombreprofesor]</drawString>
+            <drawString x="1.5cm" y="21.6cm">Període (inici | fi): [finicialactividad] | [ffinalactividad]</drawString>
+            <drawString x="1.5cm" y="21.0cm">Preu [precioactividad]</drawString>
             
 <!--END QUERY-->
             

@@ -40,13 +40,13 @@
   </stylesheet>
   <images/>
   <story>
-    <para style="Standard">Material mes emprat</para>
+    <para style="Standard">Material més emprat</para>
     <para style="Standard">
       <font color="black"> </font>
     </para>
 
 
-<para> Top 10 Material utilizado</para>
+<para> Top 10 Material utilitzat</para>
 <illustration width="10cm" height="9cm">
 <barChart x="0cm" y="0cm" >               
 <!-- QUERY="SELECT row_number() over (order by nominventariosimple) AS orden , nominventariosimple, sum(cantprestamo) AS total FROM 

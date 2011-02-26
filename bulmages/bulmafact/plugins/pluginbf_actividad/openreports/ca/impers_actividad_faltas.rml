@@ -2,7 +2,7 @@
 <!DOCTYPE document SYSTEM "rml_1_0.dtd">
 
 <document filename="test.pdf">
-  <template pageSize="(29.7cm, 21cm)" title="Plantilla de faltas de asistencia" author="Tomeu Borras" allowSplitting="20">
+  <template pageSize="(29.7cm, 21cm)" title="Plantilla de faltes de assistència" author="Tomeu Borras" allowSplitting="20">
     <pageTemplate id="first">
       <frame id="first" x1="0.5cm" y1="0.5cm" width="28.7cm" height="20cm"/>
     </pageTemplate>
@@ -42,9 +42,9 @@
   </stylesheet>
   <images/>
   <story>
-    <para style="Standard">Faltas de Asistencia: [nombreactividad]</para>
+    <para style="Standard">Faltes d'Assistència: [nombreactividad]</para>
 <!-- QUERY="SELECT * FROM profesor WHERE idprofesor=[idprofesor]"-->
-    <para style="Standard">Profesor: [nombreprofesor]</para>
+    <para style="Standard">Monitor: [nombreprofesor]</para>
 <!-- END QUERY -->
     <para style="Standard">
       <font color="black"> </font>

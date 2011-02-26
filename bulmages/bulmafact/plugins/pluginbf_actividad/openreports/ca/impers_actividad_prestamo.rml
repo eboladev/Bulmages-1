@@ -39,9 +39,9 @@
   </stylesheet>
   <images/>
   <story>
-    <para style="Standard">Prestamo de Material para la actividad: [nombreactividad]</para>
+    <para style="Standard">Préstec de Material per a l'activitat: [nombreactividad]</para>
 <!-- QUERY="SELECT * FROM profesor WHERE idprofesor=[idprofesor]"-->
-    <para style="Standard">Profesor: [nombreprofesor]</para>
+    <para style="Standard">Monitor: [nombreprofesor]</para>
 <!-- END QUERY -->
     <para style="Standard">
       <font color="black"> </font>
@@ -97,7 +97,7 @@
     <para style="Standard">
       <font color="black"> </font>
     </para>
-    <para style="Standard">Firma</para>
+    <para style="Standard">Signatura</para>
   </story>
 </document>
 

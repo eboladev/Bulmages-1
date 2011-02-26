@@ -40,17 +40,17 @@
   </stylesheet>
   <images/>
   <story>
-    <para style="Standard">Prestec de Material no tornat</para>
+    <para style="Standard">Préstec de Material no retornat</para>
     <para style="Standard">
       <font color="black"> </font>
     </para>
     <blockTable colWidths="7cm,7cm,7cm,4cm,4cm" style="Tabla1">
       <tr>
-        <td><para style="Table Contents"><font color="black" size="8">Profesor</font></para></td>
-        <td><para style="Table Contents"><font color="black" size="8">Actividad</font></para></td>
-        <td><para style="Table Contents"><font color="black" size="8">Articulo</font></para></td>
-        <td><para style="Table Contents"><font color="black" size="8">A devolver</font></para></td>
-        <td><para style="Table Contents"><font color="black" size="8">Inventariados</font></para></td>
+        <td><para style="Table Contents"><font color="black" size="8">Monitor</font></para></td>
+        <td><para style="Table Contents"><font color="black" size="8">Activitat</font></para></td>
+        <td><para style="Table Contents"><font color="black" size="8">Article</font></para></td>
+        <td><para style="Table Contents"><font color="black" size="8">A tornar</font></para></td>
+        <td><para style="Table Contents"><font color="black" size="8">Inventaris</font></para></td>
       </tr>
 <!-- QUERY="SELECT row_number() over (order by nominventariosimple) AS orden , *, stockinventariosimple - total AS restantes FROM inventariosimple 
 LEFT JOIN (
@@ -75,4 +75,3 @@ WHERE total IS NOT NULL AND TOTAL <> 0"-->
 
   </story>
 </document>
-

@@ -44,9 +44,9 @@
   </stylesheet>
   <images/>
   <story>
-    <para style="Standard">Notas: [nombreactividad]</para>
+    <para style="Standard">Notes: [nombreactividad]</para>
 <!-- QUERY="SELECT * FROM profesor WHERE idprofesor=[idprofesor]"-->
-    <para style="Standard">Profesor: [nombreprofesor]</para>
+    <para style="Standard">Monitorr: [nombreprofesor]</para>
 <!-- END QUERY -->
     <para style="Standard">
       <font color="black"> </font>
@@ -90,7 +90,7 @@
         </td>
         <td>
           <para style="Table Heading">
-            <font color="black">Notas</font>
+            <font color="black">Notes</font>
           </para>
         </td>
       </tr>
@@ -148,7 +148,7 @@
     <para style="Standard">
       <font color="black"> </font>
     </para>
-    <para style="Standard">Firma</para>
+    <para style="Standard">Signatura</para>
   </story>
 </document>
 
