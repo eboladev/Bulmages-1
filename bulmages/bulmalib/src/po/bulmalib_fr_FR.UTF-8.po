@@ -297,11 +297,11 @@ msgstr "Table de la base de données"
 
 #: ui_blformconfigbase.h:335
 msgid "Databse Scripting"
-msgstr "Base de données scriptes"
+msgstr "Base de données scripts"
 
 #: ui_blcountrybase.h:261
 msgid "Datos del pais:"
-msgstr "Date du pays :"
+msgstr "Infos du pays :"
 
 #: blimportexport.cpp:2102
 msgid "Datos insuficientes para tratar el almacen."
@@ -342,7 +342,7 @@ msgstr "Exécuter la consultation"
 #: blimportexport.cpp:2396 blimportexport.cpp:2625 blimportexport.cpp:2850
 #: blimportexport.cpp:3088
 msgid "El almacen del presupuesto no existe"
-msgstr "La magasin du bulletin n'existe pas"
+msgstr "Le magasin du devis n'existe pas"
 
 #: blimportexport.cpp:2477 blimportexport.cpp:2703 blimportexport.cpp:2941
 #: blimportexport.cpp:3170
@@ -365,7 +365,7 @@ msgstr "Le programme ne fonctionne pas correctement."
 
 #: blimportexport.cpp:2024
 msgid "El proveedor no existe, se debe hacer una insercion de este"
-msgstr "Le fournisseur n'existe pas, on doit faire une insertion de celui-ci"
+msgstr "Le fournisseur n'existe pas, il doit être inséré"
 
 #: blimportexport.cpp:2019
 msgid "El proveedor ya existe, se pueden hacer modificaciones"
@@ -373,7 +373,7 @@ msgstr "Le fournisseur existe déjà, on peut faire des modifications"
 
 #: ui_blcompanydialogbase.h:201
 msgid "Empresas disponibles:"
-msgstr "Entreprises disponibles:"
+msgstr "Entreprises disponibles :"
 
 #: blfunctions.cpp:387
 msgid "Error al borrar archivo .ods [ blfunctions->blCreateODS() ]"
@@ -639,7 +639,7 @@ msgstr ""
 
 #: blimportexport.cpp:2158
 msgid "No se ha encontrado el padre de esta familia."
-msgstr "On n'a pas trouvé le père de cette famille"
+msgstr "On n'a pas trouvé de parent à cette famille."
 
 #: blform.cpp:435
 msgid "No se ha podido borrar"
@@ -926,26 +926,3 @@ msgstr "Insérer"
 msgid "no se ha inicializado bien la clase"
 msgstr "La classe ne s'est pas bien initialisée "
 
-#~ msgid "</B> Insertado</P>"
-#~ msgstr "</B>Inserré</P>"
-
-#~ msgid "<LI>Exportando Nueva Forma de Pago</LI>\n"
-#~ msgstr "<LI>Exportant nouvelle forme de payement</LI>\n"
-
-#~ msgid "El almaceÅ del presupuesto no existe<BR>\n"
-#~ msgstr "Le magasin du bulletin n'éxiste pas<BR>"
-
-#~ msgid "El clienteÅ del presupuesto no existe<BR>\n"
-#~ msgstr "Le client  du bulletin n'éxiste<BR>"
-
-#~ msgid "La forma de pagoÅ del presupuesto no existe<BR>\n"
-#~ msgstr "La forme de payement du bulletin n'éxiste pas<BR>"
-
-#~ msgid "Mostrar listado de profesors"
-#~ msgstr "Actualiser liste d'entreprises"
-
-#~ msgid "Nombre Pais"
-#~ msgstr "Nom"
-
-#~ msgid "Porcentaje de carga..."
-#~ msgstr "Pourcentaje de charge..."
