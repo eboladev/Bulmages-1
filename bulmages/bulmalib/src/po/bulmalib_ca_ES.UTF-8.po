@@ -5,9 +5,12 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"PO-Revision-Date: 2011-02-15 10:00:00 +1\n"
+"Report-Msgid-Bugs-To: info@iglues.org\n"
+"POT-Creation-Date: 2011-02-26 06:09+0100\n"
+"PO-Revision-Date: 2011-02-26 06:20+0100\n"
 "Last-Translator: Walter Garcia-Fontes <walter.garcia@upf.edu\n"
 "Language-Team: Catalan <LL@li.org>\n"
+"Language: ca\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -84,7 +87,8 @@ msgstr "<HR><B>Tractant el client"
 
 #: blimportexport.cpp:1952
 msgid "<LI> El cliente no existe, se debe hacer una insercion de este</LI>\n"
-msgstr "<LI> El client no existeix, s'ha de fer una insersió d'un client</LI>\n"
+msgstr ""
+"<LI> El client no existeix, s'ha de fer una insersió d'un client</LI>\n"
 
 #: blimportexport.cpp:1918
 msgid "<LI> El cliente ya existe se pueden hacer modificaciones</LI>\n"
@@ -282,6 +286,10 @@ msgstr "Ctrl+N"
 msgid "Cualquier parte del campo"
 msgstr "Qualsevol part del camp"
 
+#: blbankedit.cpp:89
+msgid "Cuenta bancaria incorrecta"
+msgstr "Compte bancari incorrecte"
+
 #: ui_blformconfigbase.h:328
 msgid "Database Table"
 msgstr "Taula de la base de dades"
@@ -391,12 +399,17 @@ msgid "Error al ejecutar PYTHON [ blfunctions->blCreateODS() ]"
 msgstr "Error en executar PYTHON [ blfunctions->blCreateODS() ]"
 
 #: blfunctions.cpp:328
-msgid "Error al ejecutar el comando 'sed' [ blfunctions.cpp->blReplaceStringInFile() ]."
-msgstr "Error en executar la comanda 'sed' [ blfunctions.cpp->blReplaceStringInFile() ]."
+msgid ""
+"Error al ejecutar el comando 'sed' [ blfunctions.cpp->blReplaceStringInFile"
+"() ]."
+msgstr ""
+"Error en executar la comanda 'sed' [ blfunctions.cpp->blReplaceStringInFile"
+"() ]."
 
 #: blfunctions.cpp:428
 msgid "Error al ejecutar el visor de PDF [ blfunctions->blCreateAndLoadPDF() ]"
-msgstr "Error en executar el visor de PDF [ blfunctions->blCreateAndLoadPDF() ]"
+msgstr ""
+"Error en executar el visor de PDF [ blfunctions->blCreateAndLoadPDF() ]"
 
 #: blfunctions.cpp:442
 msgid "Error al ejecutar mailsend [ blfunctions->blSendPDFMail() ]"
@@ -476,7 +489,8 @@ msgstr "Exportant nova forma de pagament"
 
 #: blgenericcomboboxdelegate.cpp:132
 msgid "Falta definir algún parámetro necesario para BlGenericComboBoxDelegate."
-msgstr "Falta definir algún paràmetre necessari per a BlGenericComboBoxDelegate."
+msgstr ""
+"Falta definir algún paràmetre necessari per a BlGenericComboBoxDelegate."
 
 #: blimportexport.cpp:2180
 msgid "Familia"
@@ -614,7 +628,8 @@ msgstr "Mostrar/ocultar detall"
 #, qt-format
 msgid ""
 "No existen elementos en el listado \"%1\", y el campo \"%2\" requiere alguno."
-msgstr "No existeixen elements al llistat \"%1\", i el camp \"%2\" requereix algun."
+msgstr ""
+"No existeixen elements al llistat \"%1\", i el camp \"%2\" requereix algun."
 
 #: blimportexport.cpp:2158
 msgid "No se ha encontrado el padre de esta familia."

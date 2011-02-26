@@ -86,7 +86,7 @@ void BlBankEdit::checkDC()
 
     /// Si los digitos de control no se corresponden damos un error.
     if ( dc != m_dc->text() ) {
-        blMsgInfo ( "Cuenta bancaria incorrecta" );
+      blMsgInfo (_ ( "Cuenta bancaria incorrecta" ));
         throw - 1;
     } // end if
     blDebug ( "END BlBankEdit::checkDC", 0 );
