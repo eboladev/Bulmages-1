@@ -1,6 +1,6 @@
 # bulmalib_ca_ES.UTF-8
 # Copyright (C) YEAR Free Software Foundation, Inc.
-# Walter Garcia-Fontes <walter.garciaL@upf.edu>, 2011.
+# Walter Garcia-Fontes <walter.garcia@upf.edu>, 2011.
 #
 msgid ""
 msgstr ""
