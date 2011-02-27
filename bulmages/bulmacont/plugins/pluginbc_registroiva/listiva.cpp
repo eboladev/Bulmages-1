@@ -18,6 +18,8 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
+#ifdef TOMEU
+
 #include "listiva.h"
 #include "bccompany.h"
 #include "blfunctions.h"
@@ -224,3 +226,5 @@ void ListIva::borraIva ( int pos )
     blDebug ( "ListIva::borraIva", 0 );
 }
 
+
+#endif

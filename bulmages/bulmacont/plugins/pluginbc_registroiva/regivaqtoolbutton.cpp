@@ -18,10 +18,6 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-
-#include <stdio.h>
-#include <stdlib.h>
-
 #include <QFile>
 #include <QTextStream>
 #include <QString>
@@ -86,7 +82,9 @@ void RegIVAQToolButton::setBoton()
 void RegIVAQToolButton::click()
 {
     blDebug ( "ImpQToolButton::click", 0 );
-    BcAsientoSubForm *las = m_asiento1View->mui_list;
+
+    BlSubForm *las = m_asiento1View->findChild<BlSubForm *> ("mui_list");
+//    BcAsientoSubForm *las = m_asiento1View->mui_list;
     las->guardar();
     try {
         int idborrador = las->dbValue ( "idborrador" ).toInt();
@@ -95,10 +93,9 @@ void RegIVAQToolButton::click()
         ( ( BcCompany * ) las->mainCompany() ) ->pWorkspace() ->addSubWindow ( nuevae );
         nuevae->show();
     } catch ( ... ) {
-        blMsgInfo ( "Debe seleccionar un apunte" );
+        blMsgInfo ( _("Debe seleccionar un apunte" ));
     } // end try
 
     blDebug ( "END ImpQToolButton::click", 0 );
 }
-
 

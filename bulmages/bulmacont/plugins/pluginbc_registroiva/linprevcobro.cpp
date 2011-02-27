@@ -18,6 +18,8 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
+#ifdef TOMEU
+
 #include "linprevcobro.h"
 #include "bcasientointeligenteview.h"
 #include "bcasientoview.h"
@@ -397,3 +399,4 @@ void linprevcobro::setidctacliente ( QString val )
     blDebug ( "END slinprevcobro::setidctacliente", 0 );
 }
 
+#endif

@@ -17,6 +17,7 @@
  *   Free Software Foundation, Inc.,                                       *
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
+#ifdef TOMEU
 
 #include "listlinprevcobro.h"
 #include "bccompany.h"
@@ -282,3 +283,5 @@ BlFixed ListLinPrevCobro::totalPago()
     return tpago;
 }
 
+
+#endif

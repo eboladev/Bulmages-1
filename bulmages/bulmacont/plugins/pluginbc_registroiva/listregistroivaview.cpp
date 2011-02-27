@@ -327,3 +327,4 @@ void ListRegistroIvaView::on_mui_tablarepercutido_trataMenu ( QAction *ac )
     blDebug ( "END ListRegistroIvaView::on_mui_tablarepercutido_trataMenu", 0 );
 }
 
+

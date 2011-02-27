@@ -18,6 +18,7 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
+
 #ifndef REGIVAQTOOLBUTTON_H
 #define REGIVAQTOOLBUTTON_H
 
@@ -53,3 +54,5 @@ public slots:
 };
 
 #endif
+
+

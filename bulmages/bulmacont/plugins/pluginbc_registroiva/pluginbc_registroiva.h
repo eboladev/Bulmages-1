@@ -22,20 +22,31 @@
 #define PLUGINBC_REGISTROIVA_H
 
 #include "bcbulmacont.h"
-#include "blpostgresqlclient.h"
-#include "bccompany.h"
+#include "pdefs_pluginbc_registroiva.h"
+#include "blaction.h"
+#include "bcasientoview.h"
 #include "bcasientoform.h"
 #include "bcasientosubform.h"
-#include "bcasientoview.h"
-#include "pdefs_pluginbc_registroiva.h"
 
 
 extern "C" PLUGINBC_REGISTROIVA_EXPORT int entryPoint ( BcBulmaCont * );
-extern "C" PLUGINBC_REGISTROIVA_EXPORT int BcAsientoForm_guardaAsiento1_post ( BcAsientoForm * );
+extern "C" PLUGINBC_REGISTROIVA_EXPORT int BlAction_triggered(BlAction *);
+
+
+
+#ifdef TOMEU
 extern "C" PLUGINBC_REGISTROIVA_EXPORT int empresa_cobPag ( BcCompany * );
 extern "C" PLUGINBC_REGISTROIVA_EXPORT int empresa_registroiva ( BcCompany * );
+#endif
+
+extern "C" PLUGINBC_REGISTROIVA_EXPORT int BcAsientoForm_guardaAsiento1_post ( BcAsientoForm * );
 extern "C" PLUGINBC_REGISTROIVA_EXPORT int BcAsientoSubForm_boton_iva ( BcAsientoSubForm * );
+
+
 extern "C" PLUGINBC_REGISTROIVA_EXPORT int BcAsientoView_BcAsientoView ( BcAsientoView * );
+
+
+
 
 
 #endif

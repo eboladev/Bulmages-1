@@ -275,4 +275,3 @@ void RegistroIvaView::on_mui_generarPrevisiones_clicked()
     } // end for
     blDebug ( "END RegistroIvaView::on_mui_generarPrevisiones_clicked", 0 );
 }
-

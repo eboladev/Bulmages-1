@@ -17,6 +17,8 @@
  *   Free Software Foundation, Inc.,                                       *
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
+#ifdef TOMEU
+
 
 #ifndef LISTIVAVIEW_H
 #define LISTIVAVIEW_H
@@ -52,5 +54,7 @@ public slots:
     virtual void contextMenu ( int, int, const QPoint & );
     virtual void borraIvaAct();
 };
+
+#endif
 
 #endif

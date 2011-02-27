@@ -18,6 +18,9 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
+#ifdef TOMEU
+
+
 /// @todo Hay que hacer dos lineas de presentacion (una para el listado en las facturas y otro para el listado por si solo)
 /// Incluimos las imagenes que catalogan los tipos de cuentas.
 #include "registroivaview.h"
@@ -572,3 +575,4 @@ void ListLinPrevCobroView::s_creaPago()
     blDebug ( "END ListLinPrevCobroView::s_creaPago", 0 );
 }
 
+#endif

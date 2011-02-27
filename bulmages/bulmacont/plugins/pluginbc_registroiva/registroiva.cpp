@@ -554,4 +554,3 @@ void RegistroIva::buscaNumFactura ( int idborrador )
     delete recordset; /// Fin proposici&oacute;n n&uacute;meros factura y orden.
     blDebug ( "END RegistroIva::buscaNumFactura", 0 );
 }
-

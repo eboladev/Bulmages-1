@@ -18,6 +18,9 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
+#ifdef TOMEU
+
+
 #ifndef LISTLINPREVCOBROVIEW1_H
 #define LISTLINPREVCOBROVIEW1_H
 
@@ -80,3 +83,4 @@ public slots:
 
 #endif
 
+#endif

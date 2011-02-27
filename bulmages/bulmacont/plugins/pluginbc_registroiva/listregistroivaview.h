@@ -69,4 +69,3 @@ public slots:
 };
 
 #endif
-

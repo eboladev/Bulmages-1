@@ -35,26 +35,6 @@
 
 class BcCompany;
 
-
-class myRegIVA : public QObject
-{
-    Q_OBJECT
-
-public:
-    BcBulmaCont *m_bulmacont;
-
-public:
-    myRegIVA();
-    ~myRegIVA();
-    void inicializa ( BcBulmaCont * );
-
-public slots:
-    void elslot();
-    void elslot1();
-};
-
-
-
 class RegistroIvaView : public RegistroIva, public Ui_RegistroIvaBase
 {
     Q_OBJECT
@@ -155,3 +135,4 @@ public slots:
 };
 
 #endif
+

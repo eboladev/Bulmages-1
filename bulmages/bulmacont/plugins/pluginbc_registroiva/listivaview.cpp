@@ -18,6 +18,8 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
+#ifdef TOMEU
+
 #define COL_IDIVA           0
 #define COL_IDREGISTROIVA   1
 #define COL_IDTIPOIVA       2
@@ -329,3 +331,5 @@ Iva *ListIvaView::lineaat ( int row )
     }// end if
 }
 
+
+#endif
