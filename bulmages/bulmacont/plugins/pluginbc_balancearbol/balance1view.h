@@ -22,25 +22,23 @@
 #ifndef BALANCE1VIEW_H
 #define BALANCE1VIEW_H
 
-#include <QWidget>
-#include <QLineEdit>
-#include <QToolButton>
-#include <QTreeWidgetItem>
 
-#include "qlayout.h"
+
+#ifdef TOMEU
 #include "bcplancontablelistview.h"
+#include "qlayout.h"
+
 #include "blpostgresqlclient.h"
 #include "blconfiguration.h"
+#endif
 #include "ui_balancetreebase.h"
 #include "bcform.h"
 #include "bcplancontablearbol.h"
-#include "bcasientoview.h"
-
-
+/*
 class intapunts3view;
 class BcExtractoView;
 class BcCompany ;
-
+*/
 
 /// Pantalla de presentación del balnace de sumas y saldos (jerarquica)
 /** \todo Hay que eliminar el array de ccostes y sustituirlo por un BlDbRecordSet.
@@ -92,3 +90,5 @@ public slots:
 };
 
 #endif
+
+

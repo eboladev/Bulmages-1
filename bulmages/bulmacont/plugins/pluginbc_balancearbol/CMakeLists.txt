@@ -35,9 +35,11 @@ include_directories(
 	${CMAKE_SOURCE_DIR}/bulmacont/src/
    ${CMAKE_BINARY_DIR}/bulmacont/plugins/pluginbc_asiento/
    ${CMAKE_SOURCE_DIR}/bulmacont/plugins/pluginbc_asiento/
-   ${CMAKE_BINARY_DIR}/bulmacont/plugins/pluginbc_cuenta/
-   ${CMAKE_SOURCE_DIR}/bulmacont/plugins/pluginbc_cuenta/
 )
+
+#   ${CMAKE_BINARY_DIR}/bulmacont/plugins/pluginbc_cuenta/
+#   ${CMAKE_SOURCE_DIR}/bulmacont/plugins/pluginbc_cuenta/
+
 
 # generate rules for building source files from the resources
 #QT4_WRAP_CPP(plugin_MOC_SRCS ${plugin_MOCS})
@@ -92,7 +94,7 @@ set_target_properties( ${plugin} PROPERTIES
   SOVERSION "${BULMAGES_VERSION_MAJOR}.${BULMAGES_VERSION_MINOR}"
   VERSION "${BULMAGES_VERSION}")
 
-target_link_libraries(${plugin} libbulmacont bulmalib pluginbc_asiento pluginbc_cuenta ${QT_LIBRARIES} ${PGSQL_LIBRARIES})
+target_link_libraries(${plugin} libbulmacont bulmalib ${QT_LIBRARIES} ${PGSQL_LIBRARIES})
 
 add_dependencies(${plugin} bulmacont bulmalib pluginbc_asiento pluginbc_cuenta)
 

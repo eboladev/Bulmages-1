@@ -28,11 +28,11 @@
 #include <bldatesearch.h>
 
 #include "balance1view.h"
-#include "bcplancontablelistview.h"
+//#include "bcplancontablelistview.h"
 #include "bccompany.h"
 #include "bccanalseleccionarview.h"
 #include "bccentrocosteseleccionarview.h"
-#include "pluginbc_asiento.h"
+//#include "pluginbc_asiento.h"
 
 
 #define CUENTA         m_ccuenta
@@ -248,8 +248,12 @@ void BalanceTreeView::boton_diario1 ( int tipo )
 void BalanceTreeView::boton_asiento()
 {
     blDebug ( "BalanceTreeView::boton_asiento", 0 );
+    
+#ifdef TOMEU    
     g_asiento ->show();
     g_asiento ->setFocus();
+    
+#endif
     blDebug ( "END BalanceTreeView::boton_asiento", 0 );
 }
 
@@ -755,4 +759,6 @@ void BalanceTreeView::on_mui_hojacalculo_clicked()
 
     blDebug ( "END BalanceTreeView::on_mui_hojacalculo_clicked", 0 );
 }
+
+
 

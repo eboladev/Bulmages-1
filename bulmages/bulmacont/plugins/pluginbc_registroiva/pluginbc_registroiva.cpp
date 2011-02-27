@@ -94,7 +94,7 @@ int BlAction_triggered(BlAction *accion) {
 	g_bcont->empresaactual() ->pWorkspace() ->addSubWindow ( adoc );
 	adoc->show();
     } // end if
-    
+    return 0;
 } // end if
 
 
@@ -114,17 +114,17 @@ int BcAsientoView_BcAsientoView ( BcAsientoView *l )
     QFrame *plug = l->findChild<QFrame *> ("mui_plugbotones");
 
     RegIVAQToolButton *mui_exporta_efactura2 = new RegIVAQToolButton ( l,  plug );
-
-/*    
-    QHBoxLayout *m_hboxLayout1 = plug->findChild<QHBoxLayout *> ( "hboxLayout1" );
-    if ( !m_hboxLayout1 ) {
-        m_hboxLayout1 = new QHBoxLayout ( l->mui_plugbotones );
-        m_hboxLayout1->setSpacing ( 5 );
-        m_hboxLayout1->setMargin ( 5 );
-        m_hboxLayout1->setObjectName ( QString::fromUtf8 ( "hboxLayout1" ) );
+    mui_exporta_efactura2->setObjectName("m_registroiva");
+    if (plug) {
+	QHBoxLayout *m_hboxLayout1 = plug->findChild<QHBoxLayout *> ( "hboxLayout1" );
+	if ( !m_hboxLayout1 ) {
+	    m_hboxLayout1 = new QHBoxLayout ( plug );
+	    m_hboxLayout1->setSpacing ( 5 );
+	    m_hboxLayout1->setMargin ( 5 );
+	    m_hboxLayout1->setObjectName ( QString::fromUtf8 ( "hboxLayout1" ) );
+	} // end if
+	m_hboxLayout1->addWidget ( mui_exporta_efactura2 );
     } // end if
-    m_hboxLayout1->addWidget ( mui_exporta_efactura2 );
-*/
     blDebug ( "END BcAsientoView_BcAsientoView", 0 );
     return 0;
 }

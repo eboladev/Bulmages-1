@@ -22,30 +22,13 @@
 #define PLUGINBC_BALANCEARBOL_H
 
 #include "bcbulmacont.h"
-#include "blpostgresqlclient.h"
-#include "bccompany.h"
-#include "blmaincompanypointer.h"
 #include "pdefs_pluginbc_balancearbol.h"
-
+#include "blaction.h"
 
 extern "C" PLUGINBC_BALANCEARBOL_EXPORT int entryPoint ( BcBulmaCont * );
+extern "C" PLUGINBC_BALANCEARBOL_EXPORT int BlAction_triggered(BlAction *);
 
 
-class myplugin4 : public QObject, BlMainCompanyPointer
-{
-    Q_OBJECT
-
-public:
-    BcBulmaCont *m_bulmacont;
-
-public:
-    myplugin4();
-    ~myplugin4();
-    void inicializa ( BcBulmaCont * );
-
-public slots:
-    void elslot();
-};
 
 
 #endif

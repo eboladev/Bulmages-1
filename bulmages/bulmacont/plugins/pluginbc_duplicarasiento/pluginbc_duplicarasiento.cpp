@@ -104,18 +104,21 @@ int entryPoint ( BcBulmaCont *bcont )
 int BcAsientoView_BcAsientoView ( BcAsientoView *l )
 {
     blDebug ( "BcAsientoView_BcAsientoView", 0 );
-//================================
     MyPluginDuplicarAsiento *mui_exporta_efactura2 = new MyPluginDuplicarAsiento ( l, l->mainCompany(),  l );
-
-    QHBoxLayout *m_hboxLayout1 = l->mui_plugbotones->findChild<QHBoxLayout *> ( "hboxLayout1" );
-    if ( !m_hboxLayout1 ) {
-        m_hboxLayout1 = new QHBoxLayout ( l->mui_plugbotones );
-        m_hboxLayout1->setSpacing ( 5 );
-        m_hboxLayout1->setMargin ( 5 );
-        m_hboxLayout1->setObjectName ( QString::fromUtf8 ( "hboxLayout1" ) );
+    mui_exporta_efactura2->setObjectName("m_duplicarasiento");
+    
+    QFrame *frame = l->findChild<QFrame *> ("mui_plugbotones");
+    if (frame) {
+	QHBoxLayout *m_hboxLayout1 = frame->findChild<QHBoxLayout *> ( "hboxLayout1" );
+	if ( !m_hboxLayout1 ) {
+	    m_hboxLayout1 = new QHBoxLayout ( frame );
+	    m_hboxLayout1->setSpacing ( 5 );
+	    m_hboxLayout1->setMargin ( 5 );
+	    m_hboxLayout1->setObjectName ( QString::fromUtf8 ( "hboxLayout1" ) );
+	} // end if
+	m_hboxLayout1->addWidget ( mui_exporta_efactura2 );
     } // end if
-    m_hboxLayout1->addWidget ( mui_exporta_efactura2 );
-//================================
+
     blDebug ( "END BcAsientoView_BcAsientoView", 0 );
     return 0;
 }

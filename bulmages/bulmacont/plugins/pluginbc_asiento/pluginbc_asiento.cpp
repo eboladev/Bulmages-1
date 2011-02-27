@@ -106,7 +106,7 @@ void MyPluginAsiento::elslot2()
         delete cur;
         blDebug ( "END BcCompany::Abrirasientos", 0 );
     } catch ( ... ) {
-        blMsgError ( "Ha habido un error al espaciar los asientos" );
+        blMsgError ( _("Ha habido un error al espaciar los asientos") );
         if ( cur ) delete cur;
         return;
     } // end try
@@ -127,7 +127,7 @@ void MyPluginAsiento::elslot3()
         delete cur;
         blDebug ( "END BcCompany::Ordenarasientos", 10 );
     } catch ( ... ) {
-        blMsgError ( "Ha habido un error al ordenar los asientos" );
+        blMsgError ( _("Ha habido un error al ordenar los asientos") );
         if ( cur ) delete cur;
         return;
     }
@@ -245,15 +245,7 @@ void MyPluginAsiento::inicializa ( BcBulmaCont *bges )
     mainCompany() ->pWorkspace() ->addSubWindow ( g_asiento );
 
     m_bulmacont = bges;
-    QMenu *pPluginMenu;
-    /// Miramos si existe un menu Herramientas
-    pPluginMenu = bges->menuBar() ->findChild<QMenu *> ( "menuAsiento" );
-
-    /// Creamos el men&uacute;.
-    if ( !pPluginMenu ) {
-        pPluginMenu = new QMenu ( _ ( "&Asiento" ), bges->menuBar() );
-        pPluginMenu->setObjectName ( QString::fromUtf8 ( "menuAsiento" ) );
-    } // end if
+    QMenu *pPluginMenu = bges->newMenu(_("&Asiento"), "menuAsiento", "menuMaestro");
 
     QAction *accion = new QAction ( _ ( "&Asiento Contable" ), 0 );
     accion->setStatusTip ( _ ( "Permite ver y modificar asientos" ) );
@@ -306,9 +298,6 @@ void MyPluginAsiento::inicializa ( BcBulmaCont *bges )
     accion7->setWhatsThis ( _ ( "Asiento de regularizacion" ) );
     connect ( accion7, SIGNAL ( activated() ), this, SLOT ( elslot6() ) );
     pPluginMenu->addAction ( accion7 );
-
-    /// A&ntilde;adimos la nueva opci&oacute;n al men&uacute; principal del programa.
-    bges->menuBar() ->insertMenu ( bges->menuMaestro->menuAction(), pPluginMenu );
 
     blDebug ( "END MyPluginAsiento::inicializa", 0 );
 }

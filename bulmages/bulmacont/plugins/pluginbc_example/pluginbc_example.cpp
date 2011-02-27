@@ -81,14 +81,13 @@ void myplugin::inicializa ( BcBulmaCont *bcont )
     blBindTextDomain ( "pluginbc_example", g_confpr->valor ( CONF_DIR_TRADUCCION ).toAscii().constData() );
 
     /// Creamos el men&uacute;.
-    QMenu *pPluginMenu = new QMenu ( _ ( "&Plugin" ) );
+    QMenu *pPluginMenu = bcont->newMenu ( _ ( "&Plugin" ), "menuPlugin", "menuHerramientas" );
     QAction *accion = new QAction ( _ ( "&Prueba de plugin BcBulmaCont" ), 0 );
     accion->setStatusTip ( _ ( "Muestra statustip" ) );
     accion->setWhatsThis ( _ ( "Muestra que es esto" ) );
     connect ( accion, SIGNAL ( activated() ), this, SLOT ( elslot() ) );
     pPluginMenu->addAction ( accion );
-    /// A&ntilde;adimos la nueva opci&oacute;n al men&uacute; principal del programa.
-    bcont->menuBar() ->addMenu ( pPluginMenu );
+
     blDebug ( "END myplugin::inicializa", 0 );
 }
 
