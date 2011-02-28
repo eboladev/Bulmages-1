@@ -582,12 +582,12 @@ msgstr "The invoice already exists and it is not going to be inserted."
 
 #: blimportexport.cpp:2226
 msgid "La familia del articulo no existe"
-msgstr "The article family does not exist<BR>\n"
+msgstr "The article family does not exist"
 
 #: blimportexport.cpp:2416 blimportexport.cpp:2644 blimportexport.cpp:2868
 #: blimportexport.cpp:3108
 msgid "La forma de pago del presupuesto no existe"
-msgstr "The mode of payment of the budget does not exist<BR>\n"
+msgstr "The mode of payment of the budget does not exist"
 
 #: blmaincompany.cpp:275
 msgid ""
