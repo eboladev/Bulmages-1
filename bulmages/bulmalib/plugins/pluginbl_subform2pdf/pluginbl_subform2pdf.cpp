@@ -145,8 +145,8 @@ int BlSubForm_preparaMenu ( BlSubForm *sub ) {
     
 
       QToolButton *sel = new QToolButton ( sub->mui_menusubform );
-      sel->setStatusTip ( "Imprimir" );
-      sel->setToolTip ( "Imprimir" );
+      sel->setStatusTip ( _("Imprimir") );
+      sel->setToolTip ( _("Imprimir") );
       sel->setMinimumSize ( QSize ( 18, 18 ) );
       sel->setIcon ( QIcon ( ":/Images/document-print.png" ) );
       sel->setIconSize ( QSize ( 18, 18 ) );    

@@ -175,7 +175,7 @@ int init (  )
 	} else {
 
 		    if (!pPluginMenu) {
-			    pPluginMenu = g_bges->newMenu ( "Informes &ODS", "menuInfODS", "menuHerramientas" );
+			    pPluginMenu = g_bges->newMenu ( _("Informes &ODS"), "menuInfODS", "menuHerramientas" );
 		    } // end if
 		    menu = pPluginMenu;
 	} // end if
