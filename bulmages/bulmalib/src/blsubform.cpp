@@ -2464,23 +2464,34 @@ void BlSubForm::cargaconfigXML()
 	    } // end for	    
 	} // end if
     } // end form
-    
-
 
         /// Restaura el estado de mui_list.
 	QString horizontalheader = docElem.firstChildElement ( "HORIZONTALHEADER" ).toElement().text();
-	if (horizontalheader != "")
+	if (horizontalheader != "") {
+	    /// Numero de secciones (columnas) en la tabla antes de restaurar su estado original.
+	    int seccionesInicial = mui_list->horizontalHeader()->count ();
+	    
 	    mui_list->horizontalHeader()->restoreState ( QByteArray::fromBase64 ( horizontalheader.toAscii() ) );
-        //linea = stream.readLine();
-        //mui_list->verticalHeader()->restoreState ( QByteArray::fromBase64 ( linea.toAscii() ) );
+	    
+	    /// Numero de secciones (columnas) despues de restaurar su estado original.
+	    int seccionesFinal = mui_list->horizontalHeader()->count ();
+	    
+	    /// Si el numero de secciones (columnas) antes y despues de restaurar no son iguales entonces
+	    /// la configuracion de columnas ha cambiado o no corresponde con la estructura de la tabla
+	    /// y por tanto se tiene que configurar la tabla por defecto.
+	    if (seccionesInicial != seccionesFinal) {
+		mui_list->horizontalHeader()->reset();
+	    } // end if
+	    
+	} // end if
+
 
         /// Restaura el estado de mui_listcolumnas.
         /// Restaura el estado de mui_list.
 	QString columnashorizontalheader = docElem.firstChildElement ( "COLUMNASHORIZONTALHEADER" ).toElement().text();
-	if (columnashorizontalheader != "")
+	if (columnashorizontalheader != "") {
 	    mui_listcolumnas->horizontalHeader()->restoreState ( QByteArray::fromBase64 ( columnashorizontalheader.toAscii() ) );
-        //linea = stream.readLine();
-        //mui_listcolumnas->verticalHeader()->restoreState ( QByteArray::fromBase64 ( linea.toAscii() ) );
+	} // end if
 
 	    
     /// Leemos la visibilidad de las columnas. Se hace antes de ordenarlas.
