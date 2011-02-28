@@ -172,9 +172,7 @@ msgstr "Corriger"
 
 #: ui_confreglasbase.h:283
 msgid "Deben existir registros que cumplan esta condicion en el periodo"
-msgstr ""
-"Il doit exister des registres qui remplissent cette condition dans cette "
-"période"
+msgstr "Il doit exister des registres qui remplissent cette condition dans cette période"
 
 #: pluginbc_corrector.cpp:84
 msgid "Muestra/oculta el corrector"

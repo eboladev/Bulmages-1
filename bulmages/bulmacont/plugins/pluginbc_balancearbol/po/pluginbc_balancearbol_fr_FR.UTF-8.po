@@ -267,11 +267,3 @@ msgstr "Afficher l'extrait (d'aujourd'hui)"
 msgid "Ver extracto (este mes)"
 msgstr "Afficher l'extrait (de ce mois)"
 
-#~ msgid "1"
-#~ msgstr "1"
-
-#~ msgid "Balance Jerarquico"
-#~ msgstr "Balance Jerarquico"
-
-#~ msgid "Balance jerarquico de Cuentas"
-#~ msgstr "Balance jerarquico de Cuentas"

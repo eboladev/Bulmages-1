@@ -122,7 +122,7 @@ msgstr "Ecriture comptable"
 
 #: pluginbc_asiento.cpp:298
 msgid "Asiento de &cierre"
-msgstr "Ecriture de fermeture"
+msgstr "Ecriture de &fermeture"
 
 #: pluginbc_asiento.cpp:304
 msgid "Asiento de &regularizacion"
@@ -553,9 +553,3 @@ msgstr "et   ( >="
 #: ui_bcasientolistbase.h:470
 msgid "y <="
 msgstr "et <="
-
-#~ msgid "&Ver"
-#~ msgstr "&Ver"
-
-#~ msgid "menuVentana"
-#~ msgstr "menuVentana"

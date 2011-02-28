@@ -426,7 +426,7 @@ msgstr "Principal"
 
 #: pluginbc_cuenta.cpp:101 pluginbc_cuenta.cpp:102
 msgid "Permite ver y modificar el plan contable"
-msgstr "Modi&fier le plan comptable"
+msgstr "Modifier le plan comptable"
 
 #: ui_bcplancontablelistbase.h:350
 msgid "Plan &contable"
@@ -512,5 +512,4 @@ msgstr "Adresse de la page web :"
 msgid "Web de la cuenta"
 msgstr "Web du compte"
 
-#~ msgid "&Ver"
-#~ msgstr "&Ver"
+
