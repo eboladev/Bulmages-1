@@ -30,7 +30,7 @@
      <x>0</x>
      <y>0</y>
      <width>800</width>
-     <height>26</height>
+     <height>19</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuVentana">
@@ -68,15 +68,6 @@
     <addaction name="actionConfiguracion"/>
     <addaction name="actionSalir"/>
    </widget>
-   <widget class="QMenu" name="menuListados">
-    <property name="title">
-     <string>&amp;Listados</string>
-    </property>
-    <addaction name="separator"/>
-    <addaction name="separator"/>
-    <addaction name="actionListado_347"/>
-    <addaction name="separator"/>
-   </widget>
    <widget class="QMenu" name="menuHerramientas">
     <property name="title">
      <string>&amp;Herramientas</string>
@@ -89,7 +80,6 @@
     <addaction name="actionCentro_de_Coste_por_Defecto"/>
    </widget>
    <addaction name="menuEmpresa"/>
-   <addaction name="menuListados"/>
    <addaction name="menuMaestro"/>
    <addaction name="menuHerramientas"/>
    <addaction name="menuVentana"/>

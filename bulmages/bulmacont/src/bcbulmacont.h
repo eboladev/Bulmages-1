@@ -131,7 +131,7 @@ public slots:
     virtual void on_actionAcerca_de_triggered();
     virtual void on_actionCuentas_Anuales_triggered();
     virtual void on_actionMasas_Patrimoniales_triggered();
-    virtual void on_actionListado_347_triggered();
+//    virtual void on_actionListado_347_triggered();
     virtual void on_actionAmortizaciones_triggered();
     virtual void on_actionPantalla_Completa_triggered();
     virtual void on_actionPaises_triggered();

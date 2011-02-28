@@ -38,6 +38,7 @@
 #include "listregistroivaview.h"
 #include "registroivaview.h"
 #include "regivaqtoolbutton.h"
+#include "bcmodelo347listview.h"
 
 BcBulmaCont *g_bcont;
 
@@ -51,22 +52,31 @@ int entryPoint ( BcBulmaCont *bcont )
 
     g_bcont = bcont;
     
-    QMenu *pPluginMenu = bcont->newMenu(_("&Ver"), "menuVer", "menuMaestro");
+    QMenu *pPluginMenu = bcont->newMenu(_("&Iva"), "menuIva", "menuMaestro");
 
     /// Creamos el men&uacute;.
 
     BlAction *accion = new BlAction ( _ ( "&Registro de IVA" ), 0 );
     accion->setStatusTip ( _ ( "Registro de IVA" ) );
     accion->setWhatsThis ( _ ( "Registro de IVA" ) );
+    accion->setIcon ( QIcon ( QString::fromUtf8 ( ":/Images/vat.png" ) ) );
     accion->setObjectName("regiva");
     
     BlAction *accion1 = new BlAction ( _ ( "&Cobros y pagos" ), 0 );
     accion1->setStatusTip ( _ ( "Cobros y pagos" ) );
     accion1->setWhatsThis ( _ ( "Cobros y pagos" ) );
+    accion1->setIcon ( QIcon ( QString::fromUtf8 ( ":/Images/bank-list.png") ) );
     accion1->setObjectName ("cobrospagos");
+
+    BlAction *accion2 = new BlAction ( _ ( "&Modelo 347" ), 0 );
+    accion2->setStatusTip ( _ ( "Modelo 347" ) );
+    accion2->setWhatsThis ( _ ( "Modelo 347" ) );
+//    accion2->setIcon ( QIcon ( QString::fromUtf8 ( ":/Images/bank-list.png") ) );
+    accion2->setObjectName ("m347");
     
     pPluginMenu->addAction ( accion );
     pPluginMenu->addAction ( accion1 );
+    pPluginMenu->addAction ( accion2 );
 
     /// A&ntilde;adimos la nueva opci&oacute;n al men&uacute; principal del programa.
     bcont->toolBar->addAction ( accion );
@@ -89,10 +99,14 @@ int BlAction_triggered(BlAction *accion) {
     } // end if
     
     if (accion->objectName() == "cobrospagos") {
-         
 	cobropagoview *adoc = new cobropagoview ( g_bcont->empresaactual(), 0 );
 	g_bcont->empresaactual() ->pWorkspace() ->addSubWindow ( adoc );
 	adoc->show();
+    } // end if
+    if (accion->objectName() == "m347") {
+      BcModelo347ListView *dlg347 = new BcModelo347ListView ( g_bcont->empresaactual(), "0" );
+      dlg347->exec();
+      delete dlg347;
     } // end if
     return 0;
 } // end if

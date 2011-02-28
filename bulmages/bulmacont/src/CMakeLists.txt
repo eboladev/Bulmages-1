@@ -30,14 +30,12 @@ set(bulmacontEx main.cxx)
 
 set(bulmacont_MOCS bcbulmacont.h
            bcaboutview.h
-           bcregistroivaimprimirview.h
            bcmasapatrimonialview.h
            bcmasapatrimoniallistview.h
            bccanalview.h
            bccentrocosteview.h
            bcconfiguracionview.h
            bccambiacuentaview.h
-           bcmodelo347listview.h
            bccentrocosteseleccionarview.h
            bccanalseleccionarview.h
            bctipoivaview.h
@@ -50,8 +48,8 @@ set(bulmacont_MOCS bcbulmacont.h
 
 
 # Exclude files with no QObject macro.
-file(GLOB bulmacont_NO_MOCS bcmodelo300imprimir2ps.h)
-list(REMOVE_ITEM bulmacont_MOCS ${bulmacont_NO_MOCS}) 
+#file(GLOB bulmacont_NO_MOCS bcmodelo300imprimir2ps.h)
+#list(REMOVE_ITEM bulmacont_MOCS ${bulmacont_NO_MOCS}) 
 
 
 set(QT_USE_QTASSISTANT false)

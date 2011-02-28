@@ -347,13 +347,14 @@ void BcBulmaCont::on_actionMasas_Patrimoniales_triggered()
 ///
 /**
 **/
+#ifdef TOMEU
 void BcBulmaCont::on_actionListado_347_triggered()
 {
     blDebug ( "BcBulmaCont::on_actionListado_347_triggered", 0 );
     m_empresaactual->listado347();
     blDebug ( "END BcBulmaCont::on_actionListado_347_triggered", 0 );
 }
-
+#endif
 
 ///
 /**

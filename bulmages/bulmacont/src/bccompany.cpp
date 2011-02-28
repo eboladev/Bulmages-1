@@ -35,7 +35,7 @@
 #include "bccentrocosteseleccionarview.h"
 #include "bccanalseleccionarview.h"
 #include "blplugins.h"
-#include "bcmodelo347listview.h"
+//#include "bcmodelo347listview.h"
 #include "blcountryview.h"
 #include "bcbulmacont.h"
 
@@ -445,6 +445,8 @@ void BcCompany::cerrarAsientos()
 
 
 
+
+#ifdef TOMEU
 ///
 /**
 \return
@@ -458,7 +460,7 @@ int BcCompany::listado347()
     blDebug ( "END BcCompany::modelo347", 0 );
     return 0;
 }
-
+#endif
 
 /// Esta funci&oacute;n reemplaza en los apuntes todas las ocurrencias de una
 /// determinada cuenta por otra cuenta.

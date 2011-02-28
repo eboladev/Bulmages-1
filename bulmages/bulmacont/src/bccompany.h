@@ -90,7 +90,7 @@ public:
     int muestracuentas();
 //    int nuevacuenta();
     int propiedadempresa();
-    int listado347();
+//    int listado347();
     int createMainWindows ( BlSplashScreen * );
     int ccostes();
     int canales();
