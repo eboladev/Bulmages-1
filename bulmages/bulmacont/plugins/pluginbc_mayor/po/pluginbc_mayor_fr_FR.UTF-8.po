@@ -18,8 +18,10 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
 "X-Generator: Lokalize 1.2\n"
+"X-Language: fr_FR\n"
+"X-Source-Language: C\n"
 
 #: ui_bcextractoimprimirbase.h:141
 msgid "&Cancelar"
@@ -55,7 +57,7 @@ msgstr "Actualiser"
 
 #: ui_bcextractobase.h:730
 msgid "Ap&untes punteados"
-msgstr "Rubriques pointées"
+msgstr "Ecrit&ures pointées"
 
 #: ui_bcextractobase.h:729
 msgid "Apuntes &no punteados"
@@ -119,7 +121,7 @@ msgstr "Compte"
 
 #: bcextractoview.cpp:73
 msgid "Cuenta Contrapartida:"
-msgstr "Compte de contrepartie"
+msgstr "Compte de contrepartie :"
 
 #: bcextractoview.cpp:66
 msgid "Cuenta Final:"
@@ -307,10 +309,9 @@ msgstr "Solde partiel :"
 
 #: bcextractoview.cpp:624
 msgid ""
-"Se dispone a borrar el punteo. Este "
-"cambio                                                 es irrecuperable si "
-"no ha guardado su punteo.                                                 "
-"Desea continuar?"
+"Se dispone a borrar el punteo. Este cambio                                   "
+"              es irrecuperable si no ha guardado su punteo.                  "
+"                               Desea continuar?"
 msgstr ""
 "Vous vous préparez à effacer le pointage. Ce changement est irréversible si "
 "le pointage n'a pas été sauvegardé.   Désirez vous continuer ?"
@@ -367,20 +368,3 @@ msgstr "Marque de réconciliation"
 msgid "tipocuenta"
 msgstr "type de compte"
 
-#~ msgid "Debe:"
-#~ msgstr "Debe:"
-
-#~ msgid "Diarios (*.txt)"
-#~ msgstr "Diarios (*.txt)"
-
-#~ msgid "Guardar libro diario"
-#~ msgstr "Guardar Libro Diario"
-
-#~ msgid "Haber:"
-#~ msgstr "Haber:"
-
-#~ msgid "Saldo:"
-#~ msgstr "Saldo:"
-
-#~ msgid "menuVentana"
-#~ msgstr "menuVentana"

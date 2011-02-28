@@ -44,7 +44,7 @@ msgstr "&Kugar"
 
 #: pluginbc_diario.cpp:97
 msgid "&Libro Diario"
-msgstr "Livre du journal"
+msgstr "&Journal"
 
 #: ui_bcdiarioprintbase.h:151
 msgid "&Texto Plano"
@@ -266,5 +266,4 @@ msgstr "idtypetva"
 msgid "tipocuenta"
 msgstr "typecompte"
 
-#~ msgid "menuVentana"
-#~ msgstr "menuVentana"
+
