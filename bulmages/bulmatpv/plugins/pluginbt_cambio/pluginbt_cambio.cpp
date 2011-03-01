@@ -39,7 +39,7 @@ int entryPoint ( BtBulmaTPV *tpv )
 
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale ( LC_ALL, "" );
-    blBindTextDomain ( "plugincambio", g_confpr->valor ( CONF_DIR_TRADUCCION ).toAscii().constData() );
+    blBindTextDomain ( "pluginbt_cambio", g_confpr->valor ( CONF_DIR_TRADUCCION ).toAscii().constData() );
 
     blDebug ( "END entryPoint", 0 );
     return 0;
@@ -88,8 +88,8 @@ int BtCompany_cobrar ( BtCompany *etpv )
 }
 
 int BtTicket_BtTicket_Post(BtTicket *tick) {
-    tick->addDbField ( "pagado", BlDbField::DbNumeric, BlDbField::DbNoSave, _( "pagado" ) );
-    tick->addDbField ( "cambio", BlDbField::DbNumeric, BlDbField::DbNoSave, _( "cambio" ) );
+    tick->addDbField ( "pagado", BlDbField::DbNumeric, BlDbField::DbNoSave, _( "Pagado" ) );
+    tick->addDbField ( "cambio", BlDbField::DbNumeric, BlDbField::DbNoSave, _( "Cambio" ) );
 
     return 0;
 }

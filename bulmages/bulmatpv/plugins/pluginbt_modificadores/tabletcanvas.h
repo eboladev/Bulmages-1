@@ -51,6 +51,9 @@
 #include <QPen>
 #include <QPoint>
 
+#include "blfunctions.h"
+
+
 QT_BEGIN_NAMESPACE
 class QPaintEvent;
 class QString;

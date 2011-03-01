@@ -37,7 +37,7 @@
 #include "modificadores.h"
 #include "mticketivainc.h"
 
-extern TabletCanvas *g_tablet;
+//extern TabletCanvas *g_tablet;
 
 ///
 /**
@@ -71,8 +71,8 @@ void ModificadoresQToolButton::setBoton()
     blDebug ( "ModificadoresQToolButton::setBoton", 0 );
     connect ( this, SIGNAL ( clicked() ), this, SLOT ( click() ) );
     setObjectName ( QString::fromUtf8 ( "exporta" ) );
-    setStatusTip ( "Generar Q19" );
-    setToolTip ( "Generar archivo Q19 de los elementos seleccionados" );
+    setStatusTip ( _("Generar Q19") );
+    setToolTip ( _("Generar archivo Q19 de los elementos seleccionados") );
     setMinimumSize ( QSize ( 32, 32 ) );
     setIcon ( QIcon ( g_confpr->valor ( CONF_PROGDATA ) + "icons/q19.png" ) );
     setIconSize ( QSize ( 22, 22 ) );
@@ -87,10 +87,18 @@ void ModificadoresQToolButton::setBoton()
 void ModificadoresQToolButton::click()
 {
     blDebug ( "ModificadoresQToolButton::click", 0 );
-    BtTicket *ticket = ( ( BtCompany * ) m_companyact )->ticketActual();
-    Modificadores * trab = new Modificadores ( m_companyact, 0 );
-    trab->exec();
-    ticket->pintar();
+
+    /// Solo muestra la ventana de modificadores si se ha seleccionado una linea del ticket que se
+    /// pueda modificar.
+    if (! ( ( BtCompany * ) m_companyact )->ticketActual()->lineaActBtTicket() ) {
+	blMsgWarning(_("Primero seleccione una linea del ticket."));
+    } else {
+	BtTicket *ticket = ( ( BtCompany * ) m_companyact )->ticketActual();
+	Modificadores * trab = new Modificadores ( m_companyact, 0 );
+	trab->exec();
+	ticket->pintar();      
+    } // end if
+    
     blDebug ( "END ModificadoresQToolButton::click", 0 );
 
 }
@@ -133,8 +141,8 @@ void MTabletQToolButton::setBoton()
     blDebug ( "ModificadoresQToolButton::setBoton", 0 );
     connect ( this, SIGNAL ( clicked() ), this, SLOT ( click() ) );
     setObjectName ( QString::fromUtf8 ( "exporta" ) );
-    setStatusTip ( "Generar Q19" );
-    setToolTip ( "Generar archivo Q19 de los elementos seleccionados" );
+    setStatusTip ( _("Generar Q19") );
+    setToolTip ( _("Generar archivo Q19 de los elementos seleccionados") );
     setMinimumSize ( QSize ( 32, 32 ) );
     setIcon ( QIcon ( g_confpr->valor ( CONF_PROGDATA ) + "icons/q19.png" ) );
     setIconSize ( QSize ( 22, 22 ) );
@@ -149,6 +157,7 @@ void MTabletQToolButton::setBoton()
 void MTabletQToolButton::click()
 {
     blDebug ( "ModificadoresQToolButton::click", 0 );
+    /*
 	  BtTicket *ticket = ( ( BtCompany * ) m_companyact )->ticketActual();
 	  if (g_tablet->m_vacio == TRUE) {
 	      ticket->lineaActBtTicket()->setDbValue ( "imglalbaran", "" );
@@ -161,6 +170,7 @@ void MTabletQToolButton::click()
 	      ticket->lineaActBtTicket()->setDbValue ( "imglalbaran", text );
 	  } // end if
 	 ticket->pintar();
+    */
     blDebug ( "END ModificadoresQToolButton::click", 0 );
 
 }

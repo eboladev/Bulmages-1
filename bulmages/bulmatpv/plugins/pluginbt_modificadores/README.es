@@ -4,11 +4,11 @@
 #README.es
 #20080501 
 
-Nombre: Modificadores de Articulos
+Nombre: Modificadores de articulos
 
 Biblioteca: libpluginbt_modificadores.so
 
-Descripción: <H1>Modificadores de Articulos</H1>
+Descripción: <H1>Modificadores de articulos</H1>
 <P>Permite indicar modificadores del TPV</P>
 <HR>
 

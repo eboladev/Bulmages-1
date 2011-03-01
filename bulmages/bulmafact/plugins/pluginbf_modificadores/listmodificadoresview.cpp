@@ -75,10 +75,10 @@ ListModificadoresSubForm::ListModificadoresSubForm ( QWidget *parent ) : BfSubFo
     blDebug ( "ListModificadoresSubForm::ListModificadoresSubForm", 0 );
     setDbTableName ( "modificador" );
     setDbFieldId ( "idmodificador" );
-    addSubFormHeader ( "idmodificador", BlDbField::DbInt, BlDbField::DbPrimaryKey, BlSubFormHeader::DbHideView | BlSubFormHeader::DbDisableView, "Id" );
-    addSubFormHeader ( "idarticulo", BlDbField::DbInt, BlDbField::DbNotNull, BlSubFormHeader::DbHideView | BlSubFormHeader::DbDisableView, "Id" );
-    addSubFormHeader ( "nombremodificador", BlDbField::DbVarChar, BlDbField::DbNotNull, BlSubFormHeader::DbNone, _ ( "Nombre Modificador" ) );
-    addSubFormHeader ( "varpreciomodificador", BlDbField::DbNumeric, BlDbField::DbNotNull, BlSubFormHeader::DbNone, _ ( "Alt. Precio" ) );
+    addSubFormHeader ( "idmodificador", BlDbField::DbInt, BlDbField::DbPrimaryKey, BlSubFormHeader::DbHideView | BlSubFormHeader::DbDisableView, "Id modificador" );
+    addSubFormHeader ( "idarticulo", BlDbField::DbInt, BlDbField::DbNotNull, BlSubFormHeader::DbHideView | BlSubFormHeader::DbDisableView, "Id articulo" );
+    addSubFormHeader ( "nombremodificador", BlDbField::DbVarChar, BlDbField::DbNotNull, BlSubFormHeader::DbNone, _ ( "Nombre modificador" ) );
+    addSubFormHeader ( "varpreciomodificador", BlDbField::DbNumeric, BlDbField::DbNotNull, BlSubFormHeader::DbNone, _ ( "Alt. precio" ) );
     setInsert ( TRUE );
     blDebug ( "END ListModificadoresSubForm::ListModificadoresSubForm", 0 );
 }

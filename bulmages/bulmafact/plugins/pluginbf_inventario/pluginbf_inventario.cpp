@@ -71,7 +71,7 @@ void myplugininv::inicializa ( BfBulmaFact *bges )
     setMainCompany ( bges->company() );
 
     /// Miramos si existe un menu Articulos
-    QMenu *pPluginMenu = bges->newMenu ( "&Articulos", "menuArticulos", "menuMaestro" );
+    QMenu *pPluginMenu = bges->newMenu ( _("&Articulos"), "menuArticulos", "menuMaestro" );
     pPluginMenu->addSeparator();
 
 
@@ -92,7 +92,7 @@ void myplugininv::inicializa ( BfBulmaFact *bges )
 **/
 int entryPoint ( BfBulmaFact *bges )
 {
-    blDebug ( "Punto de Entrada del plugin de Tarifas\n", 0 );
+    blDebug ( "Punto de Entrada del plugin de inventario\n", 0 );
 
     /// El plugin necesita un parche en la base de datos para funcionar.
     bges->company()->dbPatchVersionCheck("PluginBf_Inventario", "0.10.1-0001");
@@ -125,8 +125,8 @@ int ArticuloView_ArticuloView ( ArticuloView *art )
     l->addSubFormHeader ( "nomalmacen", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone, _ ( "Almacen" ) );
     l->addSubFormHeader ( "idalmacen", BlDbField::DbInt, BlDbField::DbNotNull, BlSubFormHeader::DbNoWrite, _ ( "Id Almacen" ) );
     l->addSubFormHeader ( "valminimsalmacen", BlDbField::DbNumeric, BlDbField::DbNotNull, BlSubFormHeader::DbNone, _ ( "Minimo" ) );
-    l->addSubFormHeader ( "idminimsalmacen", BlDbField::DbInt, BlDbField::DbPrimaryKey, BlSubFormHeader::DbHideView | BlSubFormHeader::DbNoWrite, _ ( "ID Validacion" ) );
-    l->addSubFormHeader ( "idarticulo", BlDbField::DbInt, BlDbField::DbNotNull, BlSubFormHeader::DbHideView | BlSubFormHeader::DbNoWrite, _ ( "ID Trabajador" ) );
+    l->addSubFormHeader ( "idminimsalmacen", BlDbField::DbInt, BlDbField::DbPrimaryKey, BlSubFormHeader::DbHideView | BlSubFormHeader::DbNoWrite, _ ( "ID validacion" ) );
+    l->addSubFormHeader ( "idarticulo", BlDbField::DbInt, BlDbField::DbNotNull, BlSubFormHeader::DbHideView | BlSubFormHeader::DbNoWrite, _ ( "Id trabajador" ) );
     l->setInsert ( TRUE );
     l->setDelete ( TRUE );
     l->setSortingEnabled ( FALSE );

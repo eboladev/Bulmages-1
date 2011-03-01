@@ -96,7 +96,7 @@ int entryPoint ( BtBulmaTPV *tpv )
 int BtCompany_createMainWindows_Post ( BtCompany *etpv )
 {
     // ============ Pruebas con abrevs
-    g_plug = new MyDevButton ( "DEVOLUCION", etpv, etpv );
+    g_plug = new MyDevButton ( _("DEVOLUCION"), etpv, etpv );
     g_plug->setMinimumSize ( QSize ( 72, 72 ) );
     g_plug->setMaximumSize ( QSize ( 200, 72 ) );
     g_doc1->setWidget ( g_plug );

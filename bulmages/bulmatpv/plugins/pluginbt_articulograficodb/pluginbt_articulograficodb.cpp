@@ -47,7 +47,7 @@ int entryPoint ( BtBulmaTPV *tpv )
     blBindTextDomain ( "pluginbt_articulograficodb", g_confpr->valor ( CONF_DIR_TRADUCCION ).toAscii().constData() );
 
     /// Ponemos el widget de pantallas.
-    g_pantallas = new BlDockWidget ( "Pantallas", tpv, "pantallasdock" );
+    g_pantallas = new BlDockWidget ( _("Pantallas"), tpv, "pantallasdock" );
     g_pantallas->setObjectName ( "pantallasdock" );
     g_pantallas->setFeatures ( QDockWidget::AllDockWidgetFeatures );
     tpv->addDockWidget ( Qt::RightDockWidgetArea, g_pantallas );

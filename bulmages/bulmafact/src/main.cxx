@@ -126,7 +126,7 @@ int main ( int argc, char **argv )
       delete argParser;
 
       /// Verifica la version de la base de datos para funcionar adecuadamente.
-      bges->company()->dbVersionCheck("DatabaseRevision", "0.12.1-0007");
+      bges->company()->dbVersionCheck("DatabaseRevision", "0.12.1-0008");
 
       splashScr->show();
       splashScr->mensaje ( _( "Leyendo configuracion" ) );

@@ -34,14 +34,14 @@
 
 #include "tabletcanvas.h"
 
-TabletCanvas *g_tablet = NULL;
+//TabletCanvas *g_tablet = NULL;
 BlDockWidget *g_doc1 = NULL;
 
 
 int BtTicket_agregarLinea_Post ( BtTicket *tick )
 {
     blDebug ( "PluginBt_Modificadores::BtTicket_agregarLinea_Post", 0 );
-    
+
     BlDbRecord *item = (BlDbRecord *) g_plugParams;
 
     item->addDbField ( "imglalbaran", BlDbField::DbVarChar, BlDbField::DbNothing, _( "Imagen." ) );
@@ -54,10 +54,8 @@ int BtTicket_agregarLinea_Post ( BtTicket *tick )
     item->addDbField ( "idmodificador8", BlDbField::DbInt, BlDbField::DbNothing, _( "Imagen." ) );
     item->addDbField ( "idmodificador9", BlDbField::DbInt, BlDbField::DbNothing, _( "Imagen." ) );
 
-    
-    
     blDebug ( "END PluginBt_Modificadores::BtTicket_agregarLinea_Post", 0 );
-    
+
     return 0;
 }
 
@@ -75,6 +73,7 @@ int entryPoint ( BtBulmaTPV *tpv )
     blBindTextDomain ( "pluginbt_modificadores", g_confpr->valor ( CONF_DIR_TRADUCCION ).toAscii().constData() );
 
     /// Vamos a probar con un docwindow.
+    /*
     g_doc1 = new BlDockWidget ( _ ( "Tablet" ), tpv, "pluginmodificadoresdock" );
     g_doc1->setFeatures ( QDockWidget::AllDockWidgetFeatures );
     g_doc1->setGeometry ( 100, 100, 100, 500 );
@@ -82,10 +81,11 @@ int entryPoint ( BtBulmaTPV *tpv )
     g_doc1->setWindowIcon(QIcon ( g_confpr->valor ( CONF_PROGDATA ) + "icons/modificadores.png"  ));
     tpv->addDockWidget ( Qt::LeftDockWidgetArea, g_doc1 );
     g_doc1->cargaconf();
-    g_doc1->show();    
-    
+    g_doc1->show();
+
     g_tablet = new TabletCanvas();
     g_tablet->setWindowIcon(QIcon ( g_confpr->valor ( CONF_PROGDATA ) + "icons/modificadoresg.png"  ));
+    */
     
     blDebug ( "END entryPoint", 0 );
     return 0;
@@ -95,7 +95,7 @@ int entryPoint ( BtBulmaTPV *tpv )
 int BtCompany_createMainWindows_Post ( BtCompany *etpv )
 {
 
-    g_doc1->setWidget ( g_tablet );
+//    g_doc1->setWidget ( g_tablet );
 
     return 0;
 }
@@ -105,22 +105,22 @@ int MTicketIVAInc_MTicketIVAInc_Post (MTicketIVAInc *tick) {
     ModificadoresQToolButton *sel = new ModificadoresQToolButton (  (BtCompany *)tick->mainCompany(), tick );
     sel->setFixedSize (48, 48);
     sel->setObjectName ( QString::fromUtf8 ( "exporta" ) );
-    sel->setStatusTip ( "Modificadores" );
-    sel->setToolTip ( "Establecer los modificadores de producto" );
+    sel->setStatusTip ( _("Modificadores") );
+    sel->setToolTip ( _("Establecer los modificadores de producto") );
     sel->setMinimumSize ( QSize ( 32, 32 ) );
     sel->setIcon ( QIcon ( g_confpr->valor ( CONF_PROGDATA ) + "icons/modificadores.png"  ) );
     sel->setIconSize ( QSize ( 32, 32 ) );    
 
-    
+/*    
     MTabletQToolButton *sel1 = new MTabletQToolButton (  (BtCompany *)tick->mainCompany(), tick );
     sel1->setFixedSize (48, 48);
     sel1->setObjectName ( QString::fromUtf8 ( "Captura Tablet" ) );
-    sel1->setStatusTip ( "Captura Tablet" );
-    sel1->setToolTip ( "Captura Tablet" );
+    sel1->setStatusTip ( _("Captura tablet") );
+    sel1->setToolTip ( _("Captura tablet") );
     sel1->setMinimumSize ( QSize ( 32, 32 ) );
     sel1->setIcon ( QIcon ( g_confpr->valor ( CONF_PROGDATA ) + "icons/modificadoresg.png"  ) );
-    sel1->setIconSize ( QSize ( 32, 32 ) );    
-        
+    sel1->setIconSize ( QSize ( 32, 32 ) );
+*/
     QHBoxLayout *m_hboxLayout1 = tick->mui_plugbotones->findChild<QHBoxLayout *> ( "hboxLayout1" );
     if ( !m_hboxLayout1 ) {
         m_hboxLayout1 = new QHBoxLayout ( tick->mui_plugbotones );
@@ -129,7 +129,7 @@ int MTicketIVAInc_MTicketIVAInc_Post (MTicketIVAInc *tick) {
         m_hboxLayout1->setObjectName ( QString::fromUtf8 ( "hboxLayout1" ) );
     } // end if
     m_hboxLayout1->addWidget ( sel );
-    m_hboxLayout1->addWidget ( sel1 );
+//    m_hboxLayout1->addWidget ( sel1 );
 }
 
 
@@ -138,11 +138,11 @@ int MTicket_MTicket_Post (MTicket *tick) {
     ModificadoresQToolButton *sel = new ModificadoresQToolButton ( (BtCompany *)tick->mainCompany(), tick );
     sel->setFixedSize (48, 48);
     sel->setObjectName ( QString::fromUtf8 ( "exporta" ) );
-    sel->setStatusTip ( "Modificadores" );
-    sel->setToolTip ( "Establecer los modificadores de producto" );
+    sel->setStatusTip ( _("Modificadores") );
+    sel->setToolTip ( _("Establecer los modificadores de producto") );
     sel->setMinimumSize ( QSize ( 32, 32 ) );
     sel->setIcon ( QIcon ( g_confpr->valor ( CONF_PROGDATA ) + "icons/modificadores.png"  ) );
-    sel->setIconSize ( QSize ( 32, 32 ) );    
+    sel->setIconSize ( QSize ( 32, 32 ) );
     
     QFrame *frame = tick->findChild<QFrame *>("mui_plugbotones");
 //    QHBoxLayout *m_hboxLayout1 = tick->mui_plugbotones->findChild<QHBoxLayout *> ( "hboxLayout1" );
@@ -230,8 +230,8 @@ int BtTicket_insertarArticulo_Post ( BtTicket *tick )
 {
 
     blDebug ( "PluginBt_Modificadores::BtTicket_insertarArticulo_Post", 0 );
-    
     int valor = 0;
+    /*
     static int semaforo = 0;
     
     if ( semaforo == 0 ) {
@@ -248,7 +248,7 @@ int BtTicket_insertarArticulo_Post ( BtTicket *tick )
 	  } // end if 
         semaforo = 0;
     } // end if
-    
+    */
     blDebug ( "END PluginBt_Modificadores::BtTicket_insertarArticulo_Post", 0 );
 
     return valor;

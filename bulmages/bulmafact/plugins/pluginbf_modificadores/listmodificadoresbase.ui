@@ -12,7 +12,7 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Modificadores de Articulo</string>
+   <string>Modificadores de articulo</string>
   </property>
   <property name="windowIcon">
    <iconset resource="../../../bulmages.qrc">
@@ -77,7 +77,7 @@
  </customwidgets>
  <resources>
   <include location="../../../bulmages.qrc"/>
-  <include location="../../bulmages.qrc"/>
+  <include location="../../../bulmages.qrc"/>
  </resources>
  <connections>
   <connection>

@@ -64,7 +64,7 @@ BEGIN
 		RETURN 0;
 	ELSE
 		RAISE EXCEPTION '' Version de la base de datos invalida, aplique parches anteriores'';
-		RETURN -1;		 
+		RETURN -1;
 	END IF;
 END;
 '   LANGUAGE plpgsql;
@@ -665,6 +665,24 @@ END;
 
 
 
+CREATE OR REPLACE FUNCTION aux() RETURNS INTEGER AS '
+DECLARE
+        bs RECORD;
+BEGIN
+	SELECT INTO bs * FROM pg_tables WHERE tablename=''comparticulo'';
+	IF FOUND THEN
+		ALTER TABLE comparticulo ALTER COLUMN cantcomparticulo TYPE numeric(12, 2);
+		ALTER TABLE comparticulo ALTER COLUMN cantcomparticulo SET NOT NULL;
+		ALTER TABLE comparticulo ALTER COLUMN cantcomparticulo SET DEFAULT 1;
+	END IF;
+	RETURN 0;
+END;
+' LANGUAGE plpgsql;
+SELECT aux();
+DROP FUNCTION aux() CASCADE;
+\echo -n ':: Modificada tabla comparticulo ... '
+
+
 
 
 -- =====================================================================================
@@ -677,16 +695,16 @@ DECLARE
 BEGIN
 	SELECT INTO as * FROM configuracion WHERE nombre = ''DatabaseRevision'';
 	IF FOUND THEN
-		UPDATE CONFIGURACION SET valor = ''0.12.1-0007'' WHERE nombre = ''DatabaseRevision'';
+		UPDATE CONFIGURACION SET valor = ''0.12.1-0008'' WHERE nombre = ''DatabaseRevision'';
 	ELSE
-		INSERT INTO configuracion (nombre, valor) VALUES (''DatabaseRevision'', ''0.12.1-0007'');
+		INSERT INTO configuracion (nombre, valor) VALUES (''DatabaseRevision'', ''0.12.1-0008'');
 	END IF;
 	RETURN 0;
 END;
 '   LANGUAGE plpgsql;
 SELECT actualizarevision();
 DROP FUNCTION actualizarevision() CASCADE;
-\echo "Actualizada la revision de la base de datos a la version 0.12-1.0007"
+\echo "Actualizada la revision de la base de datos a la version 0.12.1"
 
 DROP FUNCTION drop_if_exists_table(text) CASCADE;
 DROP FUNCTION drop_if_exists_proc(text, text) CASCADE;

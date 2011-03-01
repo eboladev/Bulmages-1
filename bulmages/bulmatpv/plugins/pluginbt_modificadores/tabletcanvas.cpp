@@ -207,7 +207,7 @@ void TabletCanvas::paintPixmap(QPainter &painter, QTabletEvent *event)
         case QTabletEvent::FourDMouse:
         case QTabletEvent::RotationStylus:
             {
-                const QString error(tr("This input device is not supported by the example."));
+                const QString error(_("This input device is not supported by the example."));
 #ifndef QT_NO_STATUSTIP
                 QStatusTipEvent status(error);
                 QApplication::sendEvent(this, &status);
@@ -218,7 +218,7 @@ void TabletCanvas::paintPixmap(QPainter &painter, QTabletEvent *event)
             break;
         default:
             {
-                const QString error(tr("Unknown tablet device - treating as stylus"));
+                const QString error(_("Unknown tablet device - treating as stylus"));
 #ifndef QT_NO_STATUSTIP
                 QStatusTipEvent status(error);
                 QApplication::sendEvent(this, &status);

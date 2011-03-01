@@ -69,7 +69,7 @@ int exitPoint ( BtBulmaTPV *tpv )
 {
     blDebug ( "PluginBt_ControlCaja::exitPoint", 0 );
     delete g_admin;
-    blDebug ( "END PluginBt_VontrolCaja::exitPoint", 0 );
+    blDebug ( "END PluginBt_ControlCaja::exitPoint", 0 );
     return 0;
 }
 

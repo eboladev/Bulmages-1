@@ -42,15 +42,15 @@ ListCompArticuloView::ListCompArticuloView ( QWidget *parent, const char * )
     addSubFormHeader ( "codigocompletoarticulo", BlDbField::DbVarChar, BlDbField::DbNoSave | BlDbField::DbNotNull, BlSubFormHeader::DbNone, _ ( "Codigo completo del articulo" ) );
     addSubFormHeader ( "nomarticulo", BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNoWrite, _ ( "Nombre del articulo" ) );
     addSubFormHeader ( "cantcomparticulo", BlDbField::DbNumeric, BlDbField::DbNotNull, BlSubFormHeader::DbNone, _ ( "Cantidad de componente de articulo" ) );
-    addSubFormHeader ( "idcomponente", BlDbField::DbInt, BlDbField::DbPrimaryKey | BlDbField::DbNotNull, BlSubFormHeader::DbNoWrite, _ ( "ID componente" ) );
-    addSubFormHeader ( "idarticulo", BlDbField::DbInt, BlDbField::DbPrimaryKey | BlDbField::DbNotNull, BlSubFormHeader::DbHideView | BlSubFormHeader::DbNoWrite, _ ( "ID articulo" ) );
+    addSubFormHeader ( "idcomponente", BlDbField::DbInt, BlDbField::DbPrimaryKey, BlSubFormHeader::DbHideView, _ ( "Id componente" ) );
+    addSubFormHeader ( "idarticulo", BlDbField::DbInt, BlDbField::DbPrimaryKey | BlDbField::DbNotNull, BlSubFormHeader::DbHideView | BlSubFormHeader::DbNoWrite, _ ( "Id articulo" ) );
     setInsert ( TRUE );
     setOrdenEnabled ( FALSE );
     blDebug ( "END ListCompArticuloView::ListCompArticuloView", 0 );
 }
 
 
-/** SLOT que responde a la pulsacion de Ctrl + * en el subformulario.
+/** SLOT que responde a la pulsacion de Ctrl + * o F2 en el subformulario.
     Dependiendo de la columna que este seleccionada saca el buscador de articulos.
 */
 /**
@@ -58,15 +58,15 @@ ListCompArticuloView::ListCompArticuloView ( QWidget *parent, const char * )
 \param col
 \return
 **/
-void ListCompArticuloView::pressedAsterisk ( int row, int col )
+void ListCompArticuloView::pressedAsterisk ( int row, int col, BlDbSubFormRecord *rec, BlDbSubFormField *camp )
 {
     blDebug ( "ListCompArticuloView::pressedAsterisk", 0 );
-    BlDbSubFormRecord *rec = lineaat ( row );
-    BlDbSubFormField *camp = ( BlDbSubFormField * ) item ( row, col );
     if ( camp->nomcampo() != "codigocompletoarticulo" )
         return;
     blDebug ( "ListCompArticuloView::searchArticle", 0 );
     ArticuloList *artlist = new ArticuloList ( ( BfCompany * ) mainCompany(), NULL, 0, BL_SELECT_MODE );
+    blCenterOnScreen(artlist);
+    artlist->m_filtro->setFocus(Qt::PopupFocusReason);
     /// Esto es convertir un QWidget en un sistema modal de dialogo.
     this->setEnabled ( false );
     artlist->show();
@@ -92,11 +92,9 @@ void ListCompArticuloView::pressedAsterisk ( int row, int col )
 \param row
 \param col
 **/
-void ListCompArticuloView::editFinished ( int row, int col )
+void ListCompArticuloView::editFinished ( int row, int col, BlDbSubFormRecord *rec, BlDbSubFormField *camp )
 {
     blDebug ( "ListCompArticuloView::editFinished", 0 );
-    BlDbSubFormRecord *rec = lineaat ( row );
-    BlDbSubFormField *camp = ( BlDbSubFormField * ) item ( row, col );
     camp->refresh();
     if ( camp->nomcampo() == "codigocompletoarticulo" ) {
         BlDbRecordSet * cur = mainCompany() ->loadQuery ( "SELECT * FROM articulo WHERE codigocompletoarticulo='" + camp->text() + "'" );
@@ -104,6 +102,7 @@ void ListCompArticuloView::editFinished ( int row, int col )
             rec->setDbValue ( "idcomponente", cur->valor ( "idarticulo" ) );
             rec->setDbValue ( "codigocompletoarticulo", cur->valor ( "codigocompletoarticulo" ) );
             rec->setDbValue ( "nomarticulo", cur->valor ( "nomarticulo" ) );
+	    rec->setDbValue ( "cantcomparticulo", "1.00" );
         } // end if
     } // end if
     blDebug ( "END ListCompArticuloView::editFinished", 0 );

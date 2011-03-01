@@ -1144,7 +1144,7 @@ void BlSubForm::situarse ( unsigned int row, unsigned int col, bool back )
     if (!invalido) {
        mui_list->setCurrentCell ( nrow, ncol );
     } else {
-       blDebug("No hay más elementos editables en el subformulario", 2);
+       blDebug("No hay mas elementos editables en el subformulario", 2);
     } // end if
     blDebug ( "END BlSubForm::situarse", 0, QString::number ( nrow ) + " " + QString::number ( ncol ) );
 }

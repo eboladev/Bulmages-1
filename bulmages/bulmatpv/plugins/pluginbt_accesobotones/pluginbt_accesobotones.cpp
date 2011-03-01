@@ -51,7 +51,7 @@ int entryPoint ( BtBulmaTPV *tpv )
     blBindTextDomain ( "pluginabrevs", g_confpr->valor ( CONF_DIR_TRADUCCION ).toAscii().constData() );
 
     /// Vamos a probar con un docwindow.
-    g_doc1 = new BlDockWidget ( "Abreviaturas", tpv, "abrevsdock" );
+    g_doc1 = new BlDockWidget ( _("Abreviaturas"), tpv, "abrevsdock" );
     g_doc1->setObjectName ( "abrevsdock" );
     g_doc1->setFeatures ( QDockWidget::AllDockWidgetFeatures );
     tpv->addDockWidget ( Qt::BottomDockWidgetArea, g_doc1 );

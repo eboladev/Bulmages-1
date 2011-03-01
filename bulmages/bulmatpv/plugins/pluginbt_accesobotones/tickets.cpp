@@ -62,9 +62,8 @@ void Tickets::ticketClicked()
 	
 	    /// Pintamos los tickets bloqueados como no seleccionables.
 	    if (ticket->dbValue( "bloqueadoticket") == "TRUE" && ticket->dbValue("nomticket") != "" ) {
-		  if( QMessageBox::warning(this, _("Ticket Bloqueado"),
-                                _("Este ticket esta bloqueado por otro terminal.\n"
-                                   "Desa abrirlo de todos modos?"),
+		  if( QMessageBox::warning(this, _("Ticket bloqueado"),
+                                _("Este ticket esta bloqueado por otro terminal.\nDesea abrirlo de todos modos?"),
                                  QMessageBox::Yes
                                 | QMessageBox::No,
                                 QMessageBox::No) == QMessageBox::No) {

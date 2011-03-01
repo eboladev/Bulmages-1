@@ -73,9 +73,9 @@ void MyPlugModificadores::inicializa ( BfBulmaFact *bges )
     if ( bges->company()->hasTablePrivilege ( "serie_factura", "SELECT" ) ) {
 
         /// Miramos si existe un menu Articulos
-        QMenu *pPluginMenu = bges->newMenu ( "&Articulos", "menuArticulos", "menuMaestro" );
+        QMenu *pPluginMenu = bges->newMenu ( _("&Articulos"), "menuArticulos", "menuMaestro" );
         pPluginMenu->addSeparator();
-	
+
         m_bges = bges;
         setMainCompany ( bges->company() );
         QAction *modificadoresArticulo = new QAction ( _ ( "&Modificadores" ), 0 );
@@ -89,9 +89,6 @@ void MyPlugModificadores::inicializa ( BfBulmaFact *bges )
     }// end if
     blDebug ( "END MyPlugModificadores::inicializa", 0 );
 }
-
-
-
 
 
 ///
@@ -115,6 +112,7 @@ int entryPoint ( BfBulmaFact *bges )
     return 0;
 }
 
+
 ///
 /**
 \param art
@@ -137,10 +135,10 @@ int ArticuloView_ArticuloView ( ArticuloView *art )
     l->addSubFormHeader ( "idalias", BlDbField::DbInt, BlDbField::DbPrimaryKey, BlSubFormHeader::DbHideView | BlSubFormHeader::DbNoWrite, _ ( "Id validacion" ) );
     */
     
-    l->addSubFormHeader ( "idmodificador", BlDbField::DbInt, BlDbField::DbPrimaryKey, BlSubFormHeader::DbHideView | BlSubFormHeader::DbDisableView, "Id" );
-    l->addSubFormHeader ( "idarticulo", BlDbField::DbInt, BlDbField::DbNotNull, BlSubFormHeader::DbHideView | BlSubFormHeader::DbDisableView, "Id" );
-    l->addSubFormHeader ( "nombremodificador", BlDbField::DbVarChar, BlDbField::DbNotNull, BlSubFormHeader::DbNone, _ ( "Nombre Modificador" ) );
-    l->addSubFormHeader ( "varpreciomodificador", BlDbField::DbNumeric, BlDbField::DbNotNull, BlSubFormHeader::DbNone, _ ( "Alt. Precio" ) );
+    l->addSubFormHeader ( "idmodificador", BlDbField::DbInt, BlDbField::DbPrimaryKey, BlSubFormHeader::DbHideView | BlSubFormHeader::DbDisableView, "Id modificador" );
+    l->addSubFormHeader ( "idarticulo", BlDbField::DbInt, BlDbField::DbNotNull, BlSubFormHeader::DbHideView | BlSubFormHeader::DbDisableView, "Id articulo" );
+    l->addSubFormHeader ( "nombremodificador", BlDbField::DbVarChar, BlDbField::DbNotNull, BlSubFormHeader::DbNone, _ ( "Nombre modificador" ) );
+    l->addSubFormHeader ( "varpreciomodificador", BlDbField::DbNumeric, BlDbField::DbNotNull, BlSubFormHeader::DbNone, _ ( "Alt. precio" ) );
     
     l->setInsert ( TRUE );
     l->setDelete ( TRUE );
@@ -171,7 +169,6 @@ int ArticuloView_cargar ( ArticuloView *art )
 }
 
 
-
 ///
 /**
 \param art
@@ -187,7 +184,7 @@ int ArticuloView_guardar_post ( ArticuloView *art )
 //        invalidaEstadAlias();
         return 0;
     } catch ( ... ) {
-        blDebug ( "Hubo un error al guardar los alias", 2 );
+        blMsgError ( _("Hubo un error al guardar los alias") );
         return 0;
     }
 }

@@ -462,12 +462,13 @@ CREATE TRIGGER calculacodigocompletoarticulotrigger
 
 
 -- ** comparticulo **
+-- idarticulo: Referencia del articulo que incluye componentes.
 -- cantcomparticulo: Cantidad del articulo referenciado.
--- idcomponente: 
+-- idcomponente: Referencia al articulo componente.
 \echo -n ':: Componentes de articulo ... '
 CREATE TABLE comparticulo (
     idarticulo integer NOT NULL REFERENCES articulo(idarticulo),
-    cantcomparticulo integer NOT NULL DEFAULT 1,
+    cantcomparticulo numeric(12, 2) NOT NULL DEFAULT 1,
     idcomponente integer NOT NULL REFERENCES articulo(idarticulo),
     PRIMARY KEY (idarticulo, idcomponente)
 );
@@ -3097,9 +3098,9 @@ DECLARE
 BEGIN
 	SELECT INTO as * FROM configuracion WHERE nombre = ''DatabaseRevision'';
 	IF FOUND THEN
-		UPDATE CONFIGURACION SET valor = ''0.12.1-0007'' WHERE nombre = ''DatabaseRevision'';
+		UPDATE CONFIGURACION SET valor = ''0.12.1-0008'' WHERE nombre = ''DatabaseRevision'';
 	ELSE
-		INSERT INTO configuracion (nombre, valor) VALUES (''DatabaseRevision'', ''0.12.1-0007'');
+		INSERT INTO configuracion (nombre, valor) VALUES (''DatabaseRevision'', ''0.12.1-0008'');
 	END IF;
 	RETURN 0;
 END;
