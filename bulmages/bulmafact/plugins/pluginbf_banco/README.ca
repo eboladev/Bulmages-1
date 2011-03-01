@@ -1,20 +1,19 @@
 #######
 #Plugins
 #######
-#README.es
+#README.ca
 #20080501
 
-Nombre: Bancos
+Nombre: Bancs
 
 Biblioteca: libpluginbf_banco.so
 
-Descripción: <H1><IMG SRC="@CMAKE_INSTALL_PREFIX@/share/bulmages/imagesrc/images/oxygen/actions/bank_list.svg" WIDTH="100"/><BR>Gestion de bancos</H1>
-<P> Permite realizar la gestion de entidades bancarias relacionadas con la empresa. Mostrando el listado de cuentas bancarias y permitiendo hacer altas, bajas y modificaciones</P>
-<P> Este plugin es imprescindible para todos aquellos modelos de negocio donde se trabaje con bancos, principalmente con formas de pago y modelos Q34 y Q19</P>
-<P> Una vez instalado el plugin tendremos dos nuevas opciones en el menú <B>Bancos</B></P>
-<H2> <IMG SRC="@CMAKE_INSTALL_PREFIX@/share/bulmages/imagesrc/images/oxygen/actions/bank_list.svg" WIDTH="22"/>Bancos</H2>
-<P> Esta pantalla nos muestra las cuentas bancarias dadas de alta en la empresa. Desde aqui podremos crear, modificar o borrar los clientes mediante los botones
-situados en la parte superior de la ventana. </P>
+Descripción: <H1><IMG SRC="@CMAKE_INSTALL_PREFIX@/share/bulmages/imagesrc/images/oxygen/actions/bank_list.svg" WIDTH="100"/><BR>Gestió de bancs</H1>
+<P> Permet realitzar la gestió d'entitats bancàries relacionades amb l'empresa. Mostra el llistat de comptes bancaris i permet fer altes, baixes i modificacions.</P>
+<P>Aquest plugin és imprescindible per a tots aquells models de negoci on es treballi amb bancs, principalment amb formes de pagament i models Q34 i Q19.</P>
+<P> un cop instal·lat el plugin tindrem dues noves opcions al menú <B>Bancs</B>>/P>
+<H2> <IMG SRC="@CMAKE_INSTALL_PREFIX@/share/bulmages/imagesrc/images/oxygen/actions/bank_list.svg" WIDTH="22"/>Bancs</H2>
+<P> Aquesta pantalla ens mostra els comptse bancaris donats d'alta a l'ampersa. Des d'aquí podrem crear, modificar o esborrar els clients mitjançant els botons situats a la part superior de la finestra. </P>
 <B>Author:</B>Tomeu Borrás (tborras@conetxia.com)<BR>
 <HR>
 
@@ -28,7 +27,7 @@ Dependencias:
 
 Incompatibles:
 
-Categorias: Facturacion generica;
+Categorias: Facturacio generica;
 
 Orden: 880
 
