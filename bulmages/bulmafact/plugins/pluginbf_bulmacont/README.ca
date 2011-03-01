@@ -1,16 +1,15 @@
 #######
 #Plugins
 #######
-#README.es
+#README.ca
 #20080501
 
-Nombre: Contabilidad en la facturacion
+Nombre: Comptabilitat a la facturació
 
 Biblioteca: libpluginbf_bulmacont.so
 
-Descripción: <H1>Contabilidad en bulmaFact</H1>
-<P>Abre una instancia de contabilidad junto a la facturacion para poder usar pantallas de la contabilidad
-en la facturacion.</P>
+Descripción: <H1>Comptabilitat en bulmaFact</H1>
+<P>Obre una instància de comptabilitat junt a la facturació per poder usar pantalles de la comptabilitat a la facturació.</P>
 <B>Author:</B>Tomeu Borrás (tborras@conetxia.com)<BR>
 <HR>
 
@@ -24,7 +23,7 @@ Dependencias:
 
 Incompatibles:
 
-Caracteristicas: Utilidades avanzadas; Experimentales;
+Caracteristicas: Utilitats avancadas; Experimentals;
 
 Orden: 800
 
