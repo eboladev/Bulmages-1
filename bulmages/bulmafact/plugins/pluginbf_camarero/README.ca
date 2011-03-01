@@ -1,15 +1,15 @@
 #######
 #Plugins
 #######
-#README.es
+#README.ca
 #20080501
 
-Nombre: Camareros
+Nombre: Cambrers
 
 Biblioteca: libpluginbf_camarero.so
 
-Descripción: <H1>Camarero</H1>
-<P>Permite definir y manejar los campos de trabajo con camareros. Asignar permisos que luego son usados en el TPV y funcionalidades.</P>
+Descripción: <H1>Cambrer</H1>
+<P>Permet definir i manejar els camps de treball amb cambrers. Assignar permisso que després són usats en el TPV i funcionalitats.</P>
 <B>Author:</B>Tomeu Borrás (tborras@conetxia.com)<BR>
 <HR>
 
@@ -23,7 +23,7 @@ Dependencias:
 
 Incompatibles:
 
-Categorias: Experimentales;Restauracion;
+Categorias: Experimentals;Restauracio;
 
 Orden: 690
 
