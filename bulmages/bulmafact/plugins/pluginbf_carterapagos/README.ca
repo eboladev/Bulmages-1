@@ -1,24 +1,21 @@
 #######
 #Plugins
 #######
-#README.es
+#README.ca
 #20080501
 
-Nombre: Cartera de Pagos
+Nombre: Cartera de Pagaments
 
 Biblioteca: libpluginbf_carterapagos.so
 
-Descripción: <H1>Cartera de Pagos</H1>
-<PARA>Permite gestion avanzada de pagos a proveedores, con faccionado de facturas y control de vencimientos.</PARA>
+Descripción: <H1>Cartera de Pagaments</H1>
+<PARA>Permet gestió avançada de pagaments a proveïdors, amb fraccionat de factures i control de venciments.</PARA>
 <HR>
-<PARA>En el listado de proveedores se eligen las fracciones (porcentajes) de cobro para cada cliente.</PARA>
+<PARA>Al llistat de proveïdors s'escullen les fraccions (percentatges) de cobramente per a cada client.</PARA>
 <BR>
-<PARA>Al crear una factura directamente creará las entras de cobro de la misma de forma automática, aunque dichas previsiones
-podran cambiarse manualmente.</B></PARA>
-<PARA>Incorpora una gestion de todos los pagos a realizar, permitiendo el remesado bancario y control de estado de cada uno de los
-pagos con la norma Q34</PARA>
-<PARA>Es un buen sustituto, algo más elaborado que la gestion de pagos de factura. Útil para aquellas empresas que pretenden
-llevar una gestión de pagos avanzada.</PARA>
+<PARA>En crear una factura directament crearà les entrades de cobramente d'aquesta factura de forma automàtica, tot i que aquestes previsions podran canviar-se manualment.</B></PARA>
+<PARA>Incorpora un gestió de tots els pagaments a realitzar, permetent el remesat bancari i control d'estat de cada un dels pagaments amb la norma Q34.</PARA>
+<PARA>És un bon substitut, una mica més elaborat que la gestió de pagaments de factura. Útil per aquelles empreses que pretenen portar una gestió de pagaments avançada.</PARA>
 <B>Author:</B>Tomeu Borrás (tborras@conetxia.com)<BR>
 <HR>
 
@@ -36,7 +33,7 @@ Orden: 450
 
 Reports: 
 
-Categorias: Facturacion avanzada;Experimentales;
+Categorias: Facturacio avancada;Experimentals;
 
 Comentarios:
 
