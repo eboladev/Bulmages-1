@@ -424,7 +424,7 @@ msgstr "Propriétés de l'entreprise"
 
 #: ui_bfconfiguracionbase.h:430
 msgid "Provincia"
-msgstr "Province"
+msgstr "Ville"
 
 #: bfform.cpp:538
 msgid "R.E."
