@@ -1,24 +1,21 @@
 #######
 #Plugins
 #######
-#README.es
+#README.ca
 #20080501
 
-Nombre: Cartera de Cobros
+Nombre: Cartera de Cobraments
 
 Biblioteca: libpluginbf_carteracobros.so
 
-Descripción: <H1>Cartera de Cobros</H1>
-<PARA>Permite gestion avanzada de cobros a clientes, con faccionado de facturas y control de vencimientos.</PARA>
+Descripción: <H1>Cartera de Cobraments</H1>
+<PARA>Permet la gestió avançada de cobraments a clients, amb fraccionat de facture i control de venciments.</PARA>
 <HR>
-<PARA>Una vez instalado el plugin, en la ficha de cada cliente clientes aparecerá la pestaña de vencimientos que permite indicar las fracciones (porcentajes) de cobro para cada factura que se emita a dicho cliente asi como los dias que deben transcurrir hasta que sea efectivo el vencimiento.</PARA>
+<PARA>Un cop instal·lat el plugin, a la fitxa de cada client apareixerà la pestanya de venciments de permet indicar les fraccions (percentatges) de cobrament per a cada factura que s'emeti a aquest client així com els dies que han de trancórrer fins que sigui efectiu el venciment.</PARA>
 <BR>
-<PARA>Al crear una factura directamente creará los vencimientos de la misma de forma automática utilizando los vencimientos que hayamos indicando para el cliente de la factura. Dichas previsiones
-podran cambiarse manualmente.</B></PARA>
-<PARA>También incorpora una gestion de todos los cobros a realizar, permitiendo el remesado bancario y control de estado de cada uno de los
-cobros</PARA>
-<PARA>Es un buen sustituto, algo más elaborado que la gestion de cobros de factura. Útil para aquellas empresas que pretenden
-llevar una gestión de cobros y ofrezcan facilidades de pago a sus clientes.</PARA>
+<PARA>En crear una factura directament crearà els venciments d'aquesta factura de forma automàtica utilitzant els venciments que hàgim indicat per al client de la factura. Aquests previsions es podrien canviar manualment.</B></PARA>
+<PARA>També incorpora una gestió de tots els cobraments a realitzar, permetent el remesat bancari i control d'estat de cada un dels cobraments</PARA>
+<PARA>És un bon substitut, una mica més elaborar que la gestío de cobraments de factura. Útil per a aquelles empreses que pretenen portar una gestió de cobraments i que ofereixin facilitats de pagament als seus clients.</PARA>
 <B>Author:</B>Tomeu Borrás (tborras@conetxia.com)<BR>
 <HR>
 
@@ -36,7 +33,7 @@ Orden: 450
 
 Reports: impers_vencimientoc.rml
 
-Categorias: Facturacion avanzada;Experimentales;
+Categorias: Facturacio avancada;Experimentals;
 
 Comentarios:
 
