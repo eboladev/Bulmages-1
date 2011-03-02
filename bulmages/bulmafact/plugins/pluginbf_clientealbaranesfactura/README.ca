@@ -1,15 +1,15 @@
 #######
 #Plugins
 #######
-#README.es
+#README.ca
 #20080501
 
-Nombre: Pasar de albaranes a facturas de cliente
+Nombre: Passar de albarans a factures de client
 
 Biblioteca: libpluginbf_clientealbaranesfactura.so
 
-Descripción: <H1>Albaranes a clientes y facturas</H1>
-<P> Soporte para albaranes a clientes y facturas.</P>
+Descripción: <H1>Albarans a clients i factures</H1>
+<P> Suport per a albarans a clients i factures.</P>
 <B>Author:</B>Tomeu Borrás (tborras@conetxia.com)<BR>
 <HR>
 
@@ -23,7 +23,7 @@ Dependencias: libpluginbf_cliente.so; libpluginbf_clientealbaran.so
 
 Incompatibles:
 
-Categorias: Facturacion generica;
+Categorias: Facturacio generica;
 
 Orden: 622
 
