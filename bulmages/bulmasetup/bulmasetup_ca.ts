@@ -126,7 +126,7 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="contabilidad.py" line="596"/>
         <source>Tratando </source>
-        <translation>Tractant</translation>
+        <translation>Tractant </translation>
     </message>
     <message>
         <location filename="contabilidad.py" line="546"/>
