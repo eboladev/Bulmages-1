@@ -105,7 +105,7 @@ class Facturacion(Ui_ModificarFacturacionBase, Empresa):
       self.mui_categoria.addItem(QtGui.QApplication.translate("Facturacion",'--Todas las Categorias--', None, QtGui.QApplication.UnicodeUTF8))
       while (self.j < len ( self.arra)):
          if (self.j < 1 or self.arra[self.j] <> self.arra[self.j-1]):
-            self.mui_categoria.addItem( self.arra[self.j])
+            self.mui_categoria.addItem( self.arra[self.j].decode('string-escape').decode("utf-8"))
          self.j = self.j + 1
          
       #Ponemos la pestanya de seleccion de plugins como la visible.
