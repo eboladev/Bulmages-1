@@ -7,8 +7,8 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
 "POT-Creation-Date: 2011-02-04 12:54+0100\n"
-"PO-Revision-Date: 2011-01-31 16:15+0100\n"
-"Last-Translator: aishen <aishen@free.fr>\n"
+"PO-Revision-Date: 2011-03-04 12:54+0100\n"
+"Last-Translator: \n"
 "Language-Team: French <kde-i18n-doc@kde.org>\n"
 "Language: fr\n"
 "MIME-Version: 1.0\n"
@@ -112,7 +112,7 @@ msgstr ""
 "#-#-#-#-#  pluginticketsdevueltos.pot (PACKAGE VERSION)  #-#-#-#-#\n"
 "#-#-#-#-#  pluginabrevs.pot (PACKAGE VERSION)  #-#-#-#-#\n"
 "#-#-#-#-#  bulmages_suite.pot (PACKAGE VERSION)  #-#-#-#-#\n"
-"X-Generator: Lokalize 1.2\n"
+"X-Generator: Lokalize 1.1\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
 #: ui_proyectobase.h:270
@@ -264,7 +264,7 @@ msgstr "Ordre"
 
 #: proyectoview.cpp:75 proyectoview.cpp:94
 msgid "Precio Und"
-msgstr "Prix Und"
+msgstr "Prix Unitaire"
 
 #: proyectoview.cpp:53
 msgid "Proyecto"
@@ -285,3 +285,4 @@ msgstr "Sélecteur de projets"
 #: proyectoview.cpp:59
 msgid "fecha"
 msgstr "Date"
+
