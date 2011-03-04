@@ -1,15 +1,15 @@
 #######
 #Plugins
 #######
-#README.es
+#README.ca
 #20080501
 
-Nombre: Traspaso de Z
+Nombre: Traspàs de Z
 
 Biblioteca: libpluginbf_z2z.so
 
 Descripción: <H1>Traspaso de Z a Z</H1>
-<P>Mueve lineas de albaran de una facturacion a otra.</P>
+<P>Mou línies d'ablarà d'una facturació a una altra.</P>
 <B>Author:</B>Tomeu Borrás (tborras@conetxia.com)<BR>
 <HR>
 
@@ -23,8 +23,8 @@ Dependencias:
 
 Incompatibles:
 
-Categorias: Facturacion generica;
+Categorias: Facturació genèrica;
 
 Orden: 900
 
-Comentarios: Es un complemento bastante util con los TPV's
+Comentarios: És un complemente força útil amb els TPV's.

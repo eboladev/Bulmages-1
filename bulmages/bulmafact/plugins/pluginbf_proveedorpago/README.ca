@@ -30,7 +30,7 @@ Dependencias: libpluginbf_proveedor.so
 
 Incompatibles:
 
-Categorias: Facturacion generica;
+Categorias: Facturació genèrica;
 
 Reports: blform_PagoView.qs
 

@@ -23,8 +23,8 @@ ArchivoSQLdeins: pluginbf_alias-rm.sql
 Dependencias: libpluginbf_articulo.so
 
 Incompatibles: 
-
-Categorias: Utilitats generiques;
+ 
+Categorias: Utilitats genèriques;
 
 Orden: 900
 

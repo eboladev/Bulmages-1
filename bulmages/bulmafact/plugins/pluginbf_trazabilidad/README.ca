@@ -1,16 +1,15 @@
 #######
 #Plugins
 #######
-#README.es
+#README.ca
 #20080501
 
-Nombre: Trazabilidad
+Nombre: Traçabilitat
 
 Biblioteca: libpluginbf_trazabilidad.so
 
-Descripción: <H1>Trazabilidad</H1>
-<P>Permite el control de trazabilidad por lotes. Agrega una tabla de movimientos de material y un campo
-    "lote" que permite identificar productos desde su compra hasta su venta.</P>
+Descripción: <H1>Traçabilitat</H1>
+<P>Permet el control de traçabilitat per lots. Afegeix una taula de moviments de material i un camp "lot" que permet identificar productes des de la seva compra fins la seva venda.</P>
 <B>Author:</B>Tomeu Borrás (tborras@conetxia.com)<BR>
 <HR>
 
@@ -24,7 +23,7 @@ Dependencias:
 
 Incompatibles:
 
-Categorias: Facturacion avanzada; Experimentales;
+Categorias: Facturació avançada; Experimentals;
 
 Orden: 730
 

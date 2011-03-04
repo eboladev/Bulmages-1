@@ -32,7 +32,7 @@ Dependencias: libpluginbf_cliente.so
 
 Incompatibles:
 
-Categorias: Facturacio generica;
+Categorias: Facturació genèrica;
 
 Reports: blform_PedidoClienteView.qs
 
