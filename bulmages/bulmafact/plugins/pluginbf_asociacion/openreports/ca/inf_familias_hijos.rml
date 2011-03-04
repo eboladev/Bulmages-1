@@ -2,7 +2,7 @@
 <!DOCTYPE document SYSTEM "rml_1_0.dtd">
 
 <document>
-<!-- # pathtitle="&Associació\Informes\Families per nombre de fills" -->
+<!-- # pathtitle="&Associats\Informes\Families per nombre de fills" -->
   <template pageSize="(29.7cm, 21cm)" title="Families per nombre de fills" author="Tomeu Borras" allowSplitting="20">
     <pageTemplate id="first">
       <frame id="first" x1="0.5cm" y1="0.5cm" width="28.7cm" height="20cm"/>
