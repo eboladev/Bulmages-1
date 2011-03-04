@@ -5,7 +5,7 @@
     template/stylesheet/story
 -->
 <document>
-
+<!-- # pathtitle="&Associació\Informes\Convocatòria de reunió" -->
 <!--
     Aquí van los elementos gráficos de la página (headers, footers, frames, etc...).
     No puede estar vacío.
@@ -26,9 +26,6 @@
     
             <!-- EL PIE DE PAGINA -->
             <setFont name="Helvetica" size="8"/>
-            <drawString x="7.3cm" y="1.2cm">www.iglues.org :: info@iglues.org</drawString>             
-            <drawString x="0.3cm" y="0.2cm">Estas plantillas son de demostracion.</drawString>
-            
             <!-- Color del relleno de las figuras -->
             <!--<fill color="red" />-->
             <!-- Color del borde de las figuras -->
@@ -36,11 +33,11 @@
             <!--<circle x="127.5" y="672.75" radius="1in" fill="yes" stroke="no" />-->
             
             <setFont name="Helvetica" size="22"/>
-            <drawString x="1.5cm" y="24cm">CONVOCATORIA DE REUNIÓN</drawString>
+            <drawString x="1.5cm" y="24cm">CONVOCATÒRIA DE REUNIÓ</drawString>
             <setFont name="Helvetica" size="16"/>
-            <drawString x="1.5cm" y="23cm">- 1ª convocatoria: [fecha1convocatoriareunion] a las [hora1convocatoriareunion]</drawString>
-            <drawString x="1.5cm" y="22.3cm">- 2ª convocatoria: [fecha2convocatoriareunion] a las [hora2convocatoriareunion]</drawString>
-            <drawString x="1.5cm" y="21.6cm">- Tipo de reunión: [tiporeunion]</drawString>
+            <drawString x="1.5cm" y="23cm">- 1era convocatòria: [fecha1convocatoriareunion] a las [hora1convocatoriareunion]</drawString>
+            <drawString x="1.5cm" y="22.3cm">- 2ona convocatòria: [fecha2convocatoriareunion] a las [hora2convocatoriareunion]</drawString>
+            <drawString x="1.5cm" y="21.6cm">- Tipus de reunió: [tiporeunion]</drawString>
             <setFont name="Helvetica" size="13"/>
             
 <!--END QUERY-->
@@ -87,14 +84,14 @@
 -->
 <story>
 
-    <para style="titulo"><b>Convocados</b></para>
+    <para style="titulo"><b>Convocats</b></para>
     
     <spacer length="0.5cm" />
     
     <blockTable style="tablaMiembros" colWidths="18.2cm" repeatRows="0">
     
         <tr>
-            <td>Nombre</td>
+            <td>Nom</td>
         </tr>
             
 <!--QUERY="SELECT * FROM reunion, asistentereunion, cliente WHERE reunion.idreunion = asistentereunion.idreunion AND asistentereunion.idcliente = cliente.idcliente AND reunion.idreunion = [idreunion] ORDER BY cliente.nomcliente"-->
@@ -111,13 +108,13 @@
     
 <!--QUERY="SELECT * FROM reunion WHERE idreunion = [idreunion]"-->
     
-    <para style="titulo"><b>Concepto</b></para>
+    <para style="titulo"><b>Concepte</b></para>
     
     <para style="texto">[conceptoreunion]</para>
     
     <spacer length="0.5cm" />
     
-    <para style="titulo"><b>Resolución</b></para>
+    <para style="titulo"><b>Resolució</b></para>
     
     <para style="texto">[resolucionreunion]</para>
     
@@ -125,16 +122,16 @@
     
 <!--END QUERY-->
     
-    <para style="titulo"><b>Orden del día</b></para>
+    <para style="titulo"><b>Ordre del dia</b></para>
     
     <spacer length="0.5cm" />
     
     <blockTable style="tablaOrdenDelDia" colWidths="6.1cm,6.1cm,6cm" repeatRows="0">
     
         <tr>
-            <td>Concepto</td>
-            <td>Texto</td>
-            <td>Resolución</td>
+            <td>Concepte</td>
+            <td>Text</td>
+            <td>Resolució</td>
         </tr>
         
 <!--QUERY="SELECT * FROM ordendiareunion WHERE idreunion = [idreunion] ORDER BY idordendiareunion ASC"-->

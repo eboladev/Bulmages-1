@@ -5,7 +5,7 @@
     template/stylesheet/story
 -->
 <document>
-
+<!-- # pathtitle="&Associació\Informes\Informe de reunió" -->
 <!--
     Aquí van los elementos gráficos de la página (headers, footers, frames, etc...).
     No puede estar vacío.
@@ -23,9 +23,6 @@
     
             <!-- EL PIE DE PAGINA -->
             <setFont name="Helvetica" size="8"/>
-            <drawString x="7.3cm" y="1.2cm">www.iglues.org :: info@iglues.org</drawString>             
-            <drawString x="0.3cm" y="0.2cm">Estas plantillas son de demostracion.</drawString>
-            
             <!-- Color del relleno de las figuras -->
             <!--<fill color="red" />-->
             <!-- Color del borde de las figuras -->
@@ -68,15 +65,15 @@
     No puede estar vacío.
 -->
 <story>    
-    <para style="titulo"><b>Listado de miembros</b></para>
+    <para style="titulo"><b>Llistat de membres</b></para>
     
     <spacer length="0.5cm" />
     
     <blockTable style="tablaMiembros" colWidths="9.1cm,9.1cm" repeatRows="0">
     
         <tr>
-            <td>Cargo</td>
-            <td>Nombre</td>
+            <td>Càrrec</td>
+            <td>Nom</td>
         </tr>
             
 <!--QUERY="SELECT * FROM jdirectiva, miembrojdirectiva, cliente WHERE jdirectiva.idjdirectiva = miembrojdirectiva.idjdirectiva AND miembrojdirectiva.idcliente = cliente.idcliente AND jdirectiva.idjdirectiva = [idjdirectiva] ORDER BY miembrojdirectiva.cargomiembrojdirectiva"-->
