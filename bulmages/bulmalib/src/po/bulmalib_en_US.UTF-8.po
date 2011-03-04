@@ -89,8 +89,7 @@ msgstr "<HR><B>Treating the client "
 
 #: blimportexport.cpp:1952
 msgid "<LI> El cliente no existe, se debe hacer una insercion de este</LI>\n"
-msgstr ""
-"<LI>The client does not exist, is due to make an insertion of this</LI>\n"
+msgstr "<LI>The client does not exist, is due to make an insertion of this</LI>\n"
 
 #: blimportexport.cpp:1918
 msgid "<LI> El cliente ya existe se pueden hacer modificaciones</LI>\n"
@@ -401,11 +400,8 @@ msgid "Error al ejecutar PYTHON [ blfunctions->blCreateODS() ]"
 msgstr "PYTHON execution error [ blfunctions->blCreateODS() ]"
 
 #: blfunctions.cpp:328
-msgid ""
-"Error al ejecutar el comando 'sed' [ blfunctions.cpp->blReplaceStringInFile"
-"() ]."
-msgstr ""
-"'sed' command execution error [ blfunctions.cpp->blReplaceStringInFile() ]."
+msgid "Error al ejecutar el comando 'sed' [ blfunctions.cpp->blReplaceStringInFile() ]."
+msgstr "'sed' command execution error [ blfunctions.cpp->blReplaceStringInFile() ]."
 
 #: blfunctions.cpp:428
 msgid "Error al ejecutar el visor de PDF [ blfunctions->blCreateAndLoadPDF() ]"

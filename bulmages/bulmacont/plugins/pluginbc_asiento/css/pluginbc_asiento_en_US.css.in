@@ -1,0 +1,7 @@
+#BcAsientoBase #mui_list {
+	background-image: url(@CMAKE_INSTALL_PREFIX@/share/bulmages/images/en_US/pluginbc_asiento.png);
+}
+
+#BcAsientoListBase #mui_list {
+	background-image: url(@CMAKE_INSTALL_PREFIX@/share/bulmages/images/en_US/pluginbc_asiento-list.png);
+}

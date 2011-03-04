@@ -5,6 +5,13 @@
 
 set (plugin pluginbc_asiento)
 
+#preproceso de las plantillas CSS
+configure_file( ${CMAKE_CURRENT_SOURCE_DIR}/css/${plugin}_es_ES.css.in ${CMAKE_BINARY_DIR}/bulmacont/plugins/${plugin}/${plugin}_es_ES.css @ONLY)
+configure_file( ${CMAKE_CURRENT_SOURCE_DIR}/css/${plugin}_ca_ES.css.in ${CMAKE_BINARY_DIR}/bulmacont/plugins/${plugin}/${plugin}_ca_ES.css @ONLY)
+configure_file( ${CMAKE_CURRENT_SOURCE_DIR}/css/${plugin}_en_US.css.in ${CMAKE_BINARY_DIR}/bulmacont/plugins/${plugin}/${plugin}_en_US.css @ONLY)
+configure_file( ${CMAKE_CURRENT_SOURCE_DIR}/css/${plugin}_fr_FR.css.in ${CMAKE_BINARY_DIR}/bulmacont/plugins/${plugin}/${plugin}_fr_FR.css @ONLY)
+
+
 file(GLOB plugin_SRC *.c *.cpp *.cxx)
 file(GLOB plugin_MOCS *.hpp *.h)
 file(GLOB plugin_UIS *.ui)
@@ -110,5 +117,22 @@ install (FILES ${CMAKE_CURRENT_BINARY_DIR}/README.en DESTINATION share/bulmages/
 
 set(plugin_STR ${plugin_SRC} ${plugin_MOC_SRCS}
    ${plugin_UIS_H} ${plugin_SRCS} ${plugin_MOCS})
+
+
+FILE(READ ${CMAKE_BINARY_DIR}/bulmacont/plugins/${plugin}/${plugin}_es_ES.css VAR_CSS_es_ES)
+FILE(APPEND ${CMAKE_BINARY_DIR}/css/bulmacont_es_ES.css "${VAR_CSS_es_ES}" )
+
+FILE(READ ${CMAKE_BINARY_DIR}/bulmacont/plugins/${plugin}/${plugin}_ca_ES.css VAR_CSS_ca_ES)
+FILE(APPEND ${CMAKE_BINARY_DIR}/css/bulmacont_ca_ES.css "${VAR_CSS_ca_ES}" )
+
+FILE(READ ${CMAKE_BINARY_DIR}/bulmacont/plugins/${plugin}/${plugin}_fr_FR.css VAR_CSS_fr_FR)
+FILE(APPEND ${CMAKE_BINARY_DIR}/css/bulmacont_fr_FR.css "${VAR_CSS_fr_FR}" )
+
+FILE(READ ${CMAKE_BINARY_DIR}/bulmacont/plugins/${plugin}/${plugin}_en_US.css VAR_CSS_en_US)
+FILE(APPEND ${CMAKE_BINARY_DIR}/css/bulmacont_en_US.css "${VAR_CSS_en_US}" )
+
+install(DIRECTORY images DESTINATION share/bulmages PATTERN ".svn" EXCLUDE)
+
+
 
 #GETTEXT_CREATE_TEMPLATE(${plugin} ${CMAKE_CURRENT_SOURCE_DIR} plugin_STR)
