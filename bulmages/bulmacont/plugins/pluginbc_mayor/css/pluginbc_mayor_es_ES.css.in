@@ -1,0 +1,3 @@
+#BcExtractoBase #mui_list {
+	background-image: url(@CMAKE_INSTALL_PREFIX@/share/bulmages/images/es_ES/pluginbc_mayor.png);
+}
