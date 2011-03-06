@@ -69,7 +69,7 @@ class Contabilidad(Ui_ModificarContabilidadBase, Empresa):
          self.j = self.j + 1
 
    def actualizarDatabase(self):
-      self.revisiones = ["rev-0.5.3.sql", "rev-0.9.1.sql", "rev-0.9.3.sql", "rev-0.10.sql", "rev-0.11.sql", "rev-0.12.sql"]
+      self.revisiones = ["rev-0.5.3.sql", "rev-0.9.1.sql", "rev-0.9.3.sql", "rev-0.10.sql", "rev-0.11.sql", "rev-0.12.sql", "rev-0.13.sql"]
       #Parcheamos todo lo que hay que parchear
       for self.parche in self.revisiones:
          self.command = 'su postgres -c \"psql -t -f ' + plugins.pathdbparches + self.parche + ' ' + self.database  + '\"'
