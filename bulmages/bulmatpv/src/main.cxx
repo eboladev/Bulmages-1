@@ -128,7 +128,7 @@ int main ( int argc, char **argv )
         delete argParser;
 
         /// Verifica la version de la base de datos para funcionar adecuadamente.
-        bges->empresaTPV()->dbVersionCheck("DBRev-BulmaTPV", "0.12.1-0007");
+        bges->empresaTPV()->dbVersionCheck("DBRev-BulmaTPV", "0.13.1-0000");
 
         splashScr->show();
         splashScr->mensaje ( _( "Leyendo configuracion" ) );
