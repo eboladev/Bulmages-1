@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'modificarfacturacionbase.ui'
 #
-# Created: Tue Feb  8 17:12:48 2011
+# Created: Tue Mar  8 00:36:47 2011
 #      by: PyQt4 UI code generator 4.8.3
 #
 # WARNING! All changes made in this file will be lost!
@@ -17,7 +17,7 @@ except AttributeError:
 class Ui_ModificarFacturacionBase(object):
     def setupUi(self, ModificarFacturacionBase):
         ModificarFacturacionBase.setObjectName(_fromUtf8("ModificarFacturacionBase"))
-        ModificarFacturacionBase.resize(1016, 470)
+        ModificarFacturacionBase.resize(957, 642)
         sizePolicy = QtGui.QSizePolicy(QtGui.QSizePolicy.Preferred, QtGui.QSizePolicy.Preferred)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
@@ -39,8 +39,8 @@ class Ui_ModificarFacturacionBase(object):
         self.verticalLayout_2.addLayout(self.gridLayout)
         self.groupBox = QtGui.QGroupBox(ModificarFacturacionBase)
         self.groupBox.setObjectName(_fromUtf8("groupBox"))
-        self.verticalLayout_4 = QtGui.QVBoxLayout(self.groupBox)
-        self.verticalLayout_4.setObjectName(_fromUtf8("verticalLayout_4"))
+        self.gridLayout_4 = QtGui.QGridLayout(self.groupBox)
+        self.gridLayout_4.setObjectName(_fromUtf8("gridLayout_4"))
         self.horizontalLayout = QtGui.QHBoxLayout()
         self.horizontalLayout.setSpacing(0)
         self.horizontalLayout.setObjectName(_fromUtf8("horizontalLayout"))
@@ -52,10 +52,17 @@ class Ui_ModificarFacturacionBase(object):
         self.horizontalLayout.addWidget(self.mui_categoria)
         spacerItem = QtGui.QSpacerItem(40, 20, QtGui.QSizePolicy.Expanding, QtGui.QSizePolicy.Minimum)
         self.horizontalLayout.addItem(spacerItem)
-        self.verticalLayout_4.addLayout(self.horizontalLayout)
+        self.gridLayout_4.addLayout(self.horizontalLayout, 0, 0, 1, 1)
+        self.horizontalLayout_2 = QtGui.QHBoxLayout()
+        self.horizontalLayout_2.setObjectName(_fromUtf8("horizontalLayout_2"))
         self.mui_vertodos = QtGui.QCheckBox(self.groupBox)
         self.mui_vertodos.setObjectName(_fromUtf8("mui_vertodos"))
-        self.verticalLayout_4.addWidget(self.mui_vertodos)
+        self.horizontalLayout_2.addWidget(self.mui_vertodos)
+        self.mui_seltodos = QtGui.QPushButton(self.groupBox)
+        self.mui_seltodos.setMaximumSize(QtCore.QSize(250, 16777215))
+        self.mui_seltodos.setObjectName(_fromUtf8("mui_seltodos"))
+        self.horizontalLayout_2.addWidget(self.mui_seltodos)
+        self.gridLayout_4.addLayout(self.horizontalLayout_2, 1, 0, 1, 1)
         self.verticalLayout_2.addWidget(self.groupBox)
         self.tabWidget = QtGui.QTabWidget(ModificarFacturacionBase)
         self.tabWidget.setObjectName(_fromUtf8("tabWidget"))
@@ -364,7 +371,7 @@ class Ui_ModificarFacturacionBase(object):
         self.label_2.setBuddy(self.mui_nomdb)
 
         self.retranslateUi(ModificarFacturacionBase)
-        self.tabWidget.setCurrentIndex(0)
+        self.tabWidget.setCurrentIndex(1)
         QtCore.QObject.connect(self.mui_cancelar, QtCore.SIGNAL(_fromUtf8("released()")), ModificarFacturacionBase.reject)
         QtCore.QObject.connect(self.mui_soporteTPV, QtCore.SIGNAL(_fromUtf8("toggled(bool)")), self.mui_plugins1.setEnabled)
         QtCore.QObject.connect(self.toolButton, QtCore.SIGNAL(_fromUtf8("toggled(bool)")), self.mui_descripcion.setHidden)
@@ -375,6 +382,7 @@ class Ui_ModificarFacturacionBase(object):
         self.groupBox.setTitle(QtGui.QApplication.translate("ModificarFacturacionBase", "Opciones de Filtrado de Plugins", None, QtGui.QApplication.UnicodeUTF8))
         self.label_5.setText(QtGui.QApplication.translate("ModificarFacturacionBase", "Categoria ", None, QtGui.QApplication.UnicodeUTF8))
         self.mui_vertodos.setText(QtGui.QApplication.translate("ModificarFacturacionBase", "Mostrar todos los plugins o solo los instalados", None, QtGui.QApplication.UnicodeUTF8))
+        self.mui_seltodos.setText(QtGui.QApplication.translate("ModificarFacturacionBase", "Seleccionar Todo", None, QtGui.QApplication.UnicodeUTF8))
         self.label.setText(QtGui.QApplication.translate("ModificarFacturacionBase", "Nombre Empresa", None, QtGui.QApplication.UnicodeUTF8))
         self.label_2.setText(QtGui.QApplication.translate("ModificarFacturacionBase", "Nombre Base de Datos", None, QtGui.QApplication.UnicodeUTF8))
         self.mui_actualizarDB.setText(QtGui.QApplication.translate("ModificarFacturacionBase", "Actualizar Base de Datos", None, QtGui.QApplication.UnicodeUTF8))

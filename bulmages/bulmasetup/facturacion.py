@@ -746,7 +746,34 @@ class Facturacion(Ui_ModificarFacturacionBase, Empresa):
                         for self.dep in self.arr:
                             self.marcar(self.dep,1,1)
 
-                    
+
+   def on_mui_seltodos_released(self):
+      Yes = 'Si'
+      No = 'No'
+      message = QtGui.QMessageBox(self)
+      message.setText(QtGui.QApplication.translate("Facturacion",'Instalar todos los plugins visibles', None, QtGui.QApplication.UnicodeUTF8) )
+      message.setWindowTitle('Atencion!')
+      message.setIcon(QtGui.QMessageBox.Warning)
+      message.addButton(Yes, QtGui.QMessageBox.AcceptRole)
+      message.addButton(No, QtGui.QMessageBox.RejectRole)
+      message.exec_()
+      respuesta = message.clickedButton().text()
+      if respuesta == Yes:
+	i = 0
+	# Iteramos para la lista de plugins de bulmafact
+	while (i < self.mui_plugins1.rowCount()):
+	   if (not (self.mui_plugins1.isRowHidden(i))):
+	      self.marcar(self.mui_plugins1.item(i,10).text(),1,1)
+	   i = i + 1
+
+	i = 0
+	# Iteramos para la lista de plugins de bulmafact
+	while (i < self.mui_plugins.rowCount()):
+	   if (not self.mui_plugins.isRowHidden(i)):
+   	      self.marcar(self.mui_plugins.item(i,10).text(),1,1)
+	   i = i + 1
+	   
+	   
    def on_mui_plugins1_cellPressed(self, row, col):
       self.estado = self.mui_plugins1.item(row,0).checkState()
       # Escribimos la descripcion

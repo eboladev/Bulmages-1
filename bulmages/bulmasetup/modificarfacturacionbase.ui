@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1016</width>
-    <height>470</height>
+    <width>957</width>
+    <height>642</height>
    </rect>
   </property>
   <property name="sizePolicy">
@@ -45,8 +45,8 @@
          <property name="title">
           <string>Opciones de Filtrado de Plugins</string>
          </property>
-         <layout class="QVBoxLayout" name="verticalLayout_4">
-          <item>
+         <layout class="QGridLayout" name="gridLayout_4">
+          <item row="0" column="0">
            <layout class="QHBoxLayout" name="horizontalLayout">
             <property name="spacing">
              <number>0</number>
@@ -79,12 +79,29 @@
             </item>
            </layout>
           </item>
-          <item>
-           <widget class="QCheckBox" name="mui_vertodos">
-            <property name="text">
-             <string>Mostrar todos los plugins o solo los instalados</string>
-            </property>
-           </widget>
+          <item row="1" column="0">
+           <layout class="QHBoxLayout" name="horizontalLayout_2">
+            <item>
+             <widget class="QCheckBox" name="mui_vertodos">
+              <property name="text">
+               <string>Mostrar todos los plugins o solo los instalados</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QPushButton" name="mui_seltodos">
+              <property name="maximumSize">
+               <size>
+                <width>250</width>
+                <height>16777215</height>
+               </size>
+              </property>
+              <property name="text">
+               <string>Seleccionar Todo</string>
+              </property>
+             </widget>
+            </item>
+           </layout>
           </item>
          </layout>
         </widget>
@@ -92,7 +109,7 @@
        <item>
         <widget class="QTabWidget" name="tabWidget">
          <property name="currentIndex">
-          <number>0</number>
+          <number>1</number>
          </property>
          <widget class="QWidget" name="tab_4">
           <attribute name="title">
