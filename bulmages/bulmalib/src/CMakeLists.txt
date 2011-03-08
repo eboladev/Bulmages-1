@@ -247,7 +247,7 @@ if(USE_GETTEXT)
    set(bulmalib_STR ${bulmalib} ${bulmalib_MOCS} ${bulmalib_MOC_SRCS}
                 ${bulmalib_UIS_H} ${bulmalib_SRC} ${bulmalib_SRCS})
    GETTEXT_CREATE_TEMPLATE("bulmalib" ${CMAKE_CURRENT_BINARY_DIR} ${CMAKE_CURRENT_SOURCE_DIR} bulmalib_STR)
-   GETTEXT_CREATE_TRANSLATIONS(${CMAKE_CURRENT_BINARY_DIR}/bulmalib.pot ALL LANGUAGES es_ES.UTF-8 ca_ES.UTF-8 en_US.UTF-8 fr_FR.UTF-8)
+   GETTEXT_CREATE_TRANSLATIONS(${CMAKE_CURRENT_BINARY_DIR}/bulmalib.pot ALL LANGUAGES es_ES ca_ES en_US fr_FR)
 endif(USE_GETTEXT)
 
 

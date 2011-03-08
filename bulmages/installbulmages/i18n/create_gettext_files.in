@@ -20,7 +20,7 @@ then
 fi  
 # Usage: scriptname -options
 # Note: dash (-) necessary
-default_langs="ca_ES.UTF-8 es_ES.UTF-8"
+default_langs="ca_ES es_ES"
 
 for lang in $default_langs;
 do

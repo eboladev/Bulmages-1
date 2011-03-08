@@ -1,0 +1,67 @@
+# translation of bulmages_suite_ca.po to
+# Leopold Palomo Avellaneda <leo@alaxarxa.net>, 2009.
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: info@iglues.org\n"
+"POT-Creation-Date: 2011-02-04 12:54+0100\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"#-#-#-#-#  bulmacont_ca2.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"X-Generator: KBabel 1.11.4\n"
+"#-#-#-#-#  bulmages_ca.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"X-Generator: Translate Toolkit 1.1.1\n"
+"#-#-#-#-#  bulmalib_ca_ES.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"X-Generator: Translate Toolkit 1.1.1\n"
+
+#: ui_abrevsbase.h:81
+msgid "Aparcar"
+msgstr ""
+
+#: abrevs.cpp:41
+msgid "Asigne un nombre al ticket antes de aparcarlo."
+msgstr "Assigna un nombre al ticket abans d'aparcar-lo."
+
+#: abrevs.cpp:50
+#, fuzzy
+msgid "El ticket esta vacio. No se puede aparcar."
+msgstr "&No."
+
+#: tickets.cpp:66
+msgid ""
+"Este ticket esta bloqueado por otro terminal.\n"
+"Desa abrirlo de todos modos?"
+msgstr ""
+
+#: ui_abrevsbase.h:80 ui_ticketsbase.h:58
+msgid "Form"
+msgstr "Form"
+
+#: ui_abrevsbase.h:82
+msgid "Recuperar"
+msgstr ""
+
+#: tickets.cpp:65
+msgid "Ticket Bloqueado"
+msgstr ""
+
+#: abrevs.cpp:60
+msgid "Ya existe un ticket aparcado con el mismo nombre."
+msgstr ""
+
+#~ msgid "APARCAR"
+#~ msgstr "APARCAR"
+
+#~ msgid "CLIENTE"
+#~ msgstr "CLIENT"
+
+#~ msgid "Cliente"
+#~ msgstr "Client"
+
+#~ msgid "Teclado"
+#~ msgstr "Teclat"

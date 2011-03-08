@@ -1,0 +1,30 @@
+# #-#-#-#-#  bulmafact_fr_FR.po  #-#-#-#-#
+# translation of bulmafact_fr_FR.po to
+# Header entry was created by KBabel!
+#
+# Fco. Javier M. C. <fcojavmc@gmail.com>, 2009.
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: info@iglues.org\n"
+"POT-Creation-Date: 2011-02-08 13:50+0100\n"
+"PO-Revision-Date: 2009-01-26 09:35+0100\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team:  <es@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: ivaincluido.cpp:31
+msgid "Calc. precio s.IVA"
+msgstr ""
+
+#: ivaincluido.cpp:19
+msgid "PVP Iva Inc."
+msgstr ""
+
+#: ivaincluido.cpp:8
+msgid "Precio de coste"
+msgstr "Prix de revient"

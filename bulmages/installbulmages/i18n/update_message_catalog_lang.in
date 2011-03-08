@@ -12,7 +12,7 @@ E_OPTERROR=65
 
 if [ $# -eq "$NO_ARGS" ]  # Script invoked with no command-line args?
 then
-  echo "Usage: `basename $0` Languages (ex:ca_ES.UTF-8, es_ES.UTF-8, ..."
+  echo "Usage: `basename $0` Languages (ex:ca_ES, es_ES, ..."
   exit $E_OPTERROR        # Exit and explain usage, if no argument(s) given.
 fi  
 # Usage: scriptname -options

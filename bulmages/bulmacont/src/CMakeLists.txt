@@ -104,8 +104,8 @@ if(USE_GETTEXT)
    GETTEXT_CREATE_TEMPLATE(bulmacont ${CMAKE_CURRENT_BINARY_DIR}
                                 ${CMAKE_CURRENT_SOURCE_DIR} bulmacont_i18n)
    GETTEXT_CREATE_TRANSLATIONS(${CMAKE_CURRENT_BINARY_DIR}/bulmacont.pot
-                                ALL LANGUAGES es_ES.UTF-8 ca_ES.UTF-8
-					      en_US.UTF-8 fr_FR.UTF-8)
+                                ALL LANGUAGES es_ES ca_ES
+					      en_US fr_FR)
 endif(USE_GETTEXT)
 
 

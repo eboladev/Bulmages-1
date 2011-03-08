@@ -1,0 +1,116 @@
+# translation of bulmages_suite_ca.po to
+# Leopold Palomo Avellaneda <leo@alaxarxa.net>, 2009.
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: info@iglues.org\n"
+"POT-Creation-Date: 2011-02-04 12:54+0100\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"#-#-#-#-#  bulmacont_ca2.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"X-Generator: KBabel 1.11.4\n"
+"#-#-#-#-#  bulmages_ca.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"X-Generator: Translate Toolkit 1.1.1\n"
+"#-#-#-#-#  bulmalib_ca_ES.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"X-Generator: Translate Toolkit 1.1.1\n"
+
+#: ui_cambiobase.h:519
+msgid "0"
+msgstr "0"
+
+#: ui_cambiobase.h:520
+msgid "00"
+msgstr "00"
+
+#: ui_cambiobase.h:516
+msgid "1"
+msgstr "1"
+
+#: ui_cambiobase.h:517
+#, fuzzy
+msgid "2"
+msgstr "F2"
+
+#: ui_cambiobase.h:518
+msgid "3"
+msgstr "3"
+
+#: ui_cambiobase.h:513
+msgid "4"
+msgstr "4"
+
+#: ui_cambiobase.h:514
+#, fuzzy
+msgid "5"
+msgstr "F5"
+
+#: ui_cambiobase.h:515
+msgid "6"
+msgstr "6"
+
+#: ui_cambiobase.h:510
+msgid "7"
+msgstr "7"
+
+#: ui_cambiobase.h:511
+msgid "8"
+msgstr "8"
+
+#: ui_cambiobase.h:512
+msgid "9"
+msgstr "9"
+
+#: ui_cambiobase.h:509
+msgid "A devolver:"
+msgstr "A retornar:"
+
+#: ui_cambiobase.h:521
+msgid "C"
+msgstr "C"
+
+#: ui_cambiobase.h:524
+msgid "CANCELAR"
+msgstr "CANCELA"
+
+#: pluginbt_cambio.cpp:79
+msgid "Cobro"
+msgstr "Cobrament"
+
+#: ui_cambiobase.h:506
+#, fuzzy
+msgid "Dialog"
+msgstr "Diari"
+
+#: ui_cambiobase.h:522
+msgid "EFECTIVO"
+msgstr ""
+
+#: pluginbt_cambio.cpp:59
+msgid "El ticket esta vacio."
+msgstr ""
+
+#: ui_cambiobase.h:508
+#, fuzzy
+msgid "Entregado:"
+msgstr "Estat"
+
+#: ui_cambiobase.h:507
+msgid "Total a cobrar:"
+msgstr "Total a cobrar:"
+
+#: ui_cambiobase.h:523
+msgid "VISA"
+msgstr ""
+
+#: pluginbt_cambio.cpp:92
+msgid "cambio"
+msgstr ""
+
+#: pluginbt_cambio.cpp:91
+msgid "pagado"
+msgstr ""

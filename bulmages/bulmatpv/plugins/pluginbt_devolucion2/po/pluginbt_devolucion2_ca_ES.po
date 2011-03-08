@@ -1,0 +1,123 @@
+# translation of bulmages_suite_ca.po to
+# Leopold Palomo Avellaneda <leo@alaxarxa.net>, 2009.
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: info@iglues.org\n"
+"POT-Creation-Date: 2011-02-04 12:54+0100\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"#-#-#-#-#  bulmacont_ca2.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"X-Generator: KBabel 1.11.4\n"
+"#-#-#-#-#  bulmages_ca.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"X-Generator: Translate Toolkit 1.1.1\n"
+"#-#-#-#-#  bulmalib_ca_ES.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"X-Generator: Translate Toolkit 1.1.1\n"
+
+#: ui_untitled.h:295 ui_untitled.h:297 ui_devolucion.h:382 ui_devolucion.h:384
+msgid "-"
+msgstr "-"
+
+#: ui_untitled.h:305 ui_devolucion.h:386
+msgid "->"
+msgstr "->"
+
+#: ui_untitled.h:306 ui_devolucion.h:387
+msgid "<-"
+msgstr "<-"
+
+#: ui_devolucion.h:390
+msgid "A DEVOLVER"
+msgstr "A retornar"
+
+#: pluginbt_devolucion2.cpp:86
+#, fuzzy
+msgid "Articulo"
+msgstr "<P> Article <B>"
+
+#: ui_untitled.h:317 ui_devolucion.h:394
+msgid "CANCELAR"
+msgstr "CANCELA"
+
+#: ui_untitled.h:294 ui_devolucion.h:381
+#, fuzzy
+msgid "Cliente:"
+msgstr "Pendent:"
+
+#: ui_devolucion.h:379
+#, fuzzy
+msgid "Devoluciones"
+msgstr "Denominació"
+
+#: ui_untitled.h:292
+#, fuzzy
+msgid "Dialog"
+msgstr "Diari"
+
+#: ui_untitled.h:315 ui_devolucion.h:392
+msgid "EFECTIVO"
+msgstr ""
+
+#: ui_untitled.h:296 ui_devolucion.h:383
+#, fuzzy
+msgid "Fecha: del ticket"
+msgstr "Data de l'assentament"
+
+#: devolucion2.cpp:232 devolucion2.cpp:247
+msgid "Linea"
+msgstr "Línia"
+
+#: ui_untitled.h:298 ui_devolucion.h:385
+#, fuzzy
+msgid "Lineas Ticket"
+msgstr "Totals:"
+
+#: ui_untitled.h:308 ui_devolucion.h:389
+msgid "Lineas a devolver"
+msgstr ""
+
+#: devolucion2.cpp:439
+msgid "NO IMPLEMENTADO"
+msgstr ""
+
+#: devolucion2.cpp:230 devolucion2.cpp:245
+#, fuzzy
+msgid "P.U."
+msgstr "..."
+
+#: ui_untitled.h:304 ui_untitled.h:314
+#, fuzzy
+msgid "Precio"
+msgstr "Adreça:"
+
+#: devolucion2.cpp:229 devolucion2.cpp:244 ui_untitled.h:302 ui_untitled.h:312
+#, fuzzy
+msgid "Producto"
+msgstr "Propietari"
+
+#: ui_untitled.h:307 ui_devolucion.h:388
+#, fuzzy
+msgid "Todo"
+msgstr "Tots"
+
+#: devolucion2.cpp:231 devolucion2.cpp:246
+#, fuzzy
+msgid "Total"
+msgstr "Totals:"
+
+#: ui_untitled.h:300 ui_untitled.h:310
+msgid "Und."
+msgstr ""
+
+#: devolucion2.cpp:228 devolucion2.cpp:243
+msgid "Unds."
+msgstr ""
+
+#: ui_untitled.h:316 ui_devolucion.h:393
+msgid "VALE"
+msgstr ""
