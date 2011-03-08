@@ -15,6 +15,8 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Lokalize 1.1\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"X-Language: fr_FR\n"
+"X-Source-Language: C\n"
 
 #: listlinpedidoclienteview.cpp:56 listdescpedidoclienteview.cpp:42
 msgid "% Descuento"
@@ -50,7 +52,7 @@ msgstr "&Non"
 
 #: pluginbf_clientepedido.cpp:107
 msgid "&Nuevo pedido de cliente"
-msgstr "Code de client :"
+msgstr "&Nouveau code client"
 
 #: pluginbf_clientepedido.cpp:99
 msgid "&Pedidos de clientes"
@@ -98,7 +100,7 @@ msgstr "Effacer la Commande"
 #: ui_presupuestoslistbase.h:381 ui_presupuestoslistbase.h:384
 #: ui_presupuestoclientebase.h:778 ui_presupuestoclientebase.h:781
 msgid "Borrar presupuesto"
-msgstr "Effacer le budget"
+msgstr "Effacer le devis"
 
 #: ui_pedidosclientelistbase.h:438 ui_presupuestoslistbase.h:418
 msgid "Buscar:"
@@ -112,8 +114,7 @@ msgstr "Quantité"
 msgid "Cliente"
 msgstr "Client"
 
-#: pedidosclientelist.cpp:52 pedidosclientelist.cpp:86
-#: pedidoclienteview.cpp:91
+#: pedidosclientelist.cpp:52 pedidosclientelist.cpp:86 pedidoclienteview.cpp:91
 msgid "Cliente:"
 msgstr "Client :"
 
@@ -178,7 +179,7 @@ msgstr "Ctrl+S"
 
 #: ui_presupuestoclientebase.h:814
 msgid "Datos &generales"
-msgstr "Données générales"
+msgstr "Données &générales"
 
 #: pedidosclientelist.cpp:267
 msgid "Debe seleccionar una linea"
@@ -206,7 +207,7 @@ msgstr "Editer la commande "
 
 #: ui_presupuestoslistbase.h:373 ui_presupuestoslistbase.h:376
 msgid "Editar presupuesto"
-msgstr "Editer le budget"
+msgstr "Editer le devis"
 
 #: pedidosclientelist.cpp:282
 msgid "Error al borrar el pedido de cliente"
@@ -275,7 +276,7 @@ msgstr "Sauvegarder la commande"
 
 #: ui_presupuestoclientebase.h:770 ui_presupuestoclientebase.h:773
 msgid "Guardar presupuesto"
-msgstr "Sauvegarder le budget"
+msgstr "Sauvegarder le devis"
 
 #: ui_pedidoclientebase.h:733 ui_presupuestoclientebase.h:817
 msgid "I.R.P.F.:"
@@ -319,7 +320,7 @@ msgstr "Identificateur"
 
 #: pedidoclienteview.cpp:63
 msgid "Identificador presupuesto"
-msgstr "Identifieur du budget"
+msgstr "Identifieur de devis"
 
 #: ui_pedidosclientelistbase.h:407 ui_pedidosclientelistbase.h:410
 #: ui_presupuestoslistbase.h:389 ui_presupuestoslistbase.h:392
@@ -332,7 +333,7 @@ msgstr "Imprimer la commande"
 
 #: ui_presupuestoclientebase.h:786 ui_presupuestoclientebase.h:789
 msgid "Imprimir presupuesto"
-msgstr "Imprimer le budget "
+msgstr "Imprimer le devis"
 
 #: pedidosclientelist.cpp:346
 msgid "Impuestos"
@@ -373,11 +374,11 @@ msgstr "Nouvelle Commande"
 
 #: ui_presupuestoslistbase.h:365 ui_presupuestoslistbase.h:368
 msgid "Nuevo presupuesto"
-msgstr "Nouveau budget"
+msgstr "Nouveau devis"
 
 #: ui_presupuestoclientebase.h:768
 msgid "Nuevo presupuesto a cliente"
-msgstr "Nouveau budget"
+msgstr "Nouveau devis client"
 
 #: ui_pedidoclientebase.h:720
 msgid "Numero de pedido:"
@@ -434,11 +435,11 @@ msgstr "Prix de ventes /IVA"
 
 #: ui_presupuestoslistbase.h:362
 msgid "Presupuestos a clientes"
-msgstr "Budget clients"
+msgstr "Devis clients"
 
 #: ui_presupuestoclientebase.h:805
 msgid "Pro&cesado"
-msgstr "Accusé"
+msgstr "A&ccusé"
 
 #: pedidoclienteview.cpp:70 ui_pedidoclientebase.h:721
 msgid "Procesado"
@@ -497,11 +498,4 @@ msgstr "Salarié"
 msgid "Trabajador:"
 msgstr "Salarié :"
 
-#~ msgid "&Nueva pedido de cliente"
-#~ msgstr "&Nouvelle Commande"
 
-#~ msgid "Nueva pedido de cliente"
-#~ msgstr "Nouvelle Commande"
-
-#~ msgid "Numero de presupuesto:"
-#~ msgstr "Numéro du budget :"
