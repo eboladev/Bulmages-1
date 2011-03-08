@@ -225,7 +225,7 @@ $$ LANGUAGE plpgsql;
 --           TRATO DE LOS PAGOS
 -- =================================================================
 SELECT drop_if_exists_proc ('syncbulmacontpagod','');
-CREATE FUNCTION syncbulmacontpagod () RETURNS "trigger"
+CREATE OR REPLACE FUNCTION syncbulmacontpagod () RETURNS "trigger"
 AS $$
 DECLARE
 	query TEXT;
@@ -258,7 +258,7 @@ CREATE TRIGGER syncbulmacontpagotriggerd
 
 
 SELECT drop_if_exists_proc ('syncbulmacontpagou','');
-CREATE FUNCTION syncbulmacontpagou () RETURNS "trigger"
+CREATE OR REPLACE FUNCTION syncbulmacontpagou () RETURNS "trigger"
 AS $$
 DECLARE
 	cs RECORD;
@@ -358,7 +358,7 @@ CREATE TRIGGER syncbulmacontpagotriggeru
 
 
 SELECT drop_if_exists_proc ('syncbulmacontpagoup','');
-CREATE FUNCTION syncbulmacontpagoup () RETURNS "trigger"
+CREATE OR REPLACE FUNCTION syncbulmacontpagoup () RETURNS "trigger"
 AS $$
 DECLARE
       check_dblink_connection BOOLEAN;
@@ -391,7 +391,7 @@ CREATE TRIGGER syncbulmacontpagotriggerup
 --           TRATO DE LOS COBROS
 -- =================================================================
 SELECT drop_if_exists_proc ('syncbulmacontcobrod','');
-CREATE FUNCTION syncbulmacontcobrod () RETURNS "trigger"
+CREATE OR REPLACE FUNCTION syncbulmacontcobrod () RETURNS "trigger"
 AS $$
 DECLARE
 	query TEXT;
@@ -424,7 +424,7 @@ CREATE TRIGGER syncbulmacontcobrotriggerd
 
 
 SELECT drop_if_exists_proc ('syncbulmacontcobrou','');
-CREATE FUNCTION syncbulmacontcobrou () RETURNS "trigger"
+CREATE OR REPLACE FUNCTION syncbulmacontcobrou () RETURNS "trigger"
 AS $$
 DECLARE
 	cs RECORD;
@@ -539,7 +539,7 @@ CREATE TRIGGER syncbulmacontcobrotriggeru
 
 
 SELECT drop_if_exists_proc ('syncbulmacontcobroup','');
-CREATE FUNCTION syncbulmacontcobroup () RETURNS "trigger"
+CREATE OR REPLACE FUNCTION syncbulmacontcobroup () RETURNS "trigger"
 AS $$
 DECLARE
       check_dblink_connection BOOLEAN;
@@ -573,7 +573,7 @@ CREATE TRIGGER syncbulmacontcobrotriggerup
 --           TRATO DE LAS FACTURAS A CLIENTE
 -- =================================================================
 SELECT drop_if_exists_proc ('syncbulmacontfacturad','');
-CREATE FUNCTION syncbulmacontfacturad () RETURNS "trigger"
+CREATE OR REPLACE FUNCTION syncbulmacontfacturad () RETURNS "trigger"
 AS $$
 DECLARE
 	query TEXT;
@@ -606,7 +606,7 @@ CREATE TRIGGER syncbulmacontfacturatriggerd
 
 
 SELECT drop_if_exists_proc ('syncbulmacontfacturau','');
-CREATE FUNCTION syncbulmacontfacturau () RETURNS "trigger"
+CREATE OR REPLACE FUNCTION syncbulmacontfacturau () RETURNS "trigger"
 AS $$
 DECLARE
 	bs RECORD;
@@ -809,7 +809,7 @@ CREATE TRIGGER syncbulmacontfacturatriggeru
 -- =================================================================
 
 SELECT drop_if_exists_proc ('syncbulmacontfacturapd','');
-CREATE FUNCTION syncbulmacontfacturapd () RETURNS "trigger"
+CREATE OR REPLACE FUNCTION syncbulmacontfacturapd () RETURNS "trigger"
 AS $$
 DECLARE
 	query TEXT;
@@ -843,7 +843,7 @@ CREATE TRIGGER syncbulmacontfacturaptriggerd
 
 
 SELECT drop_if_exists_proc ('syncbulmacontfacturapu','');
-CREATE FUNCTION syncbulmacontfacturapu () RETURNS "trigger"
+CREATE OR REPLACE FUNCTION syncbulmacontfacturapu () RETURNS "trigger"
 AS $$
 DECLARE
 	bs RECORD;
@@ -1021,7 +1021,7 @@ CREATE TRIGGER syncbulmacontfacturaptriggeru
 -- ==============================================================================
 
 SELECT drop_if_exists_proc ('syncbulmacontcliented','');
-CREATE FUNCTION syncbulmacontcliented () RETURNS "trigger"
+CREATE OR REPLACE FUNCTION syncbulmacontcliented () RETURNS "trigger"
 AS $$
 DECLARE
 	query TEXT;
@@ -1051,7 +1051,7 @@ CREATE TRIGGER syncbulmacontclientetriggerd
 
 
 SELECT drop_if_exists_proc ('syncbulmacontclienteupre','');
-CREATE FUNCTION syncbulmacontclienteupre () RETURNS "trigger"
+CREATE OR REPLACE FUNCTION syncbulmacontclienteupre () RETURNS "trigger"
 AS $$
 DECLARE
 BEGIN
@@ -1079,7 +1079,7 @@ CREATE TRIGGER syncbulmacontclientetriggerupre
 
 
 SELECT drop_if_exists_proc ('syncbulmacontclienteu','');
-CREATE FUNCTION syncbulmacontclienteu () RETURNS "trigger"
+CREATE OR REPLACE FUNCTION syncbulmacontclienteu () RETURNS "trigger"
 AS $$
 DECLARE
 	bs RECORD;
@@ -1143,7 +1143,7 @@ CREATE TRIGGER syncbulmacontclientetriggeru
 
 
 SELECT drop_if_exists_proc ('syncbulmacontclienteup','');
-CREATE FUNCTION syncbulmacontclienteup () RETURNS "trigger"
+CREATE OR REPLACE FUNCTION syncbulmacontclienteup () RETURNS "trigger"
 AS $$
 DECLARE
       check_dblink_connection BOOLEAN;
@@ -1178,7 +1178,7 @@ CREATE TRIGGER syncbulmacontclientetriggerup
 
 
 SELECT drop_if_exists_proc ('syncbulmacontproveedord','');
-CREATE FUNCTION syncbulmacontproveedord () RETURNS "trigger"
+CREATE OR REPLACE FUNCTION syncbulmacontproveedord () RETURNS "trigger"
 AS $$
 DECLARE
 	query TEXT;
@@ -1207,7 +1207,7 @@ CREATE TRIGGER syncbulmacontproveedortriggerd
 
 
 SELECT drop_if_exists_proc ('syncbulmacontproveedorupre','');
-CREATE FUNCTION syncbulmacontproveedorupre () RETURNS "trigger"
+CREATE OR REPLACE FUNCTION syncbulmacontproveedorupre () RETURNS "trigger"
 AS $$
 DECLARE
 BEGIN
@@ -1233,7 +1233,7 @@ CREATE TRIGGER syncbulmacontproveedortriggerupre
 
 
 SELECT drop_if_exists_proc ('syncbulmacontproveedoru','');
-CREATE FUNCTION syncbulmacontproveedoru () RETURNS "trigger"
+CREATE OR REPLACE FUNCTION syncbulmacontproveedoru () RETURNS "trigger"
 AS $$
 DECLARE
 	bs RECORD;
@@ -1292,7 +1292,7 @@ CREATE TRIGGER syncbulmacontproveedortriggeru
 
 
 SELECT drop_if_exists_proc ('syncbulmacontproveedorup','');
-CREATE FUNCTION syncbulmacontproveedorup () RETURNS "trigger"
+CREATE OR REPLACE FUNCTION syncbulmacontproveedorup () RETURNS "trigger"
 AS $$
 DECLARE
       check_dblink_connection BOOLEAN;
@@ -1325,7 +1325,7 @@ CREATE TRIGGER syncbulmacontproveedortriggerup
 -- =================================================================
 
 SELECT drop_if_exists_proc ('syncbulmacontbancod','');
-CREATE FUNCTION syncbulmacontbancod () RETURNS "trigger"
+CREATE OR REPLACE FUNCTION syncbulmacontbancod () RETURNS "trigger"
 AS $$
 DECLARE
 	query TEXT;
@@ -1357,7 +1357,7 @@ CREATE TRIGGER syncbulmacontbancotriggerd
 
 
 SELECT drop_if_exists_proc ('syncbulmacontbancou','');
-CREATE FUNCTION syncbulmacontbancou () RETURNS "trigger"
+CREATE OR REPLACE FUNCTION syncbulmacontbancou () RETURNS "trigger"
 AS $$
 DECLARE
 	cs RECORD;
@@ -1436,7 +1436,7 @@ CREATE TRIGGER syncbulmacontbancotriggeru
 
 
 SELECT drop_if_exists_proc ('syncbulmacontbancoup','');
-CREATE FUNCTION syncbulmacontbancoup () RETURNS "trigger"
+CREATE OR REPLACE FUNCTION syncbulmacontbancoup () RETURNS "trigger"
 AS $$
 DECLARE
       check_dblink_connection BOOLEAN;
@@ -1470,7 +1470,7 @@ CREATE TRIGGER syncbulmacontbancotriggerup
 -- =================================================================
 
 SELECT drop_if_exists_proc ('syncbulmacontforma_pagod','');
-CREATE FUNCTION syncbulmacontforma_pagod () RETURNS "trigger"
+CREATE OR REPLACE FUNCTION syncbulmacontforma_pagod () RETURNS "trigger"
 AS $$
 DECLARE
 	query TEXT;
@@ -1502,7 +1502,7 @@ CREATE TRIGGER syncbulmacontforma_pagotriggerd
 
 
 SELECT drop_if_exists_proc ('syncbulmacontforma_pagou','');
-CREATE FUNCTION syncbulmacontforma_pagou () RETURNS "trigger"
+CREATE OR REPLACE FUNCTION syncbulmacontforma_pagou () RETURNS "trigger"
 AS $$
 DECLARE
 	cs RECORD;
@@ -1581,7 +1581,7 @@ CREATE TRIGGER syncbulmacontforma_pagotriggeru
 
 
 SELECT drop_if_exists_proc ('syncbulmacontforma_pagoup','');
-CREATE FUNCTION syncbulmacontforma_pagoup () RETURNS "trigger"
+CREATE OR REPLACE FUNCTION syncbulmacontforma_pagoup () RETURNS "trigger"
 AS $$
 DECLARE
       check_dblink_connection BOOLEAN;
@@ -1615,7 +1615,7 @@ CREATE TRIGGER syncbulmacontforma_pagotriggerup
 -- =================================================================
 
 SELECT drop_if_exists_proc ('syncbulmacontalmacend','');
-CREATE FUNCTION syncbulmacontalmacend () RETURNS "trigger"
+CREATE OR REPLACE FUNCTION syncbulmacontalmacend () RETURNS "trigger"
 AS $$
 DECLARE
 	query TEXT;
@@ -1644,7 +1644,7 @@ CREATE TRIGGER syncbulmacontalmacentriggerd
 
 
 SELECT drop_if_exists_proc ('syncbulmacontalmacenu','');
-CREATE FUNCTION syncbulmacontalmacenu () RETURNS "trigger"
+CREATE OR REPLACE FUNCTION syncbulmacontalmacenu () RETURNS "trigger"
 AS $$
 DECLARE
 	cs RECORD;
@@ -1703,7 +1703,7 @@ CREATE TRIGGER syncbulmacontalmacentriggeru
 
 
 SELECT drop_if_exists_proc ('syncbulmacontalmacenup','');
-CREATE FUNCTION syncbulmacontalmacenup () RETURNS "trigger"
+CREATE OR REPLACE FUNCTION syncbulmacontalmacenup () RETURNS "trigger"
 AS $$
 DECLARE
       check_dblink_connection BOOLEAN;
@@ -1736,7 +1736,7 @@ CREATE TRIGGER syncbulmacontfamiliatriggerup
 -- =================================================================
 
 SELECT drop_if_exists_proc ('syncbulmacontfamiliad','');
-CREATE FUNCTION syncbulmacontfamiliad () RETURNS "trigger"
+CREATE OR REPLACE FUNCTION syncbulmacontfamiliad () RETURNS "trigger"
 AS $$
 DECLARE
 	query TEXT;
@@ -1773,7 +1773,7 @@ CREATE TRIGGER syncbulmacontfamiliatriggerd
 
 
 SELECT drop_if_exists_proc ('syncbulmacontfamiliaupre','');
-CREATE FUNCTION syncbulmacontfamiliaupre () RETURNS "trigger"
+CREATE OR REPLACE FUNCTION syncbulmacontfamiliaupre () RETURNS "trigger"
 AS $$
 DECLARE
 BEGIN
@@ -1810,7 +1810,7 @@ CREATE TRIGGER syncbulmacontfamiliatriggerupre
 --hay que cambiar como las facturas se contabilizan para separar los servicios y los productos en su cuenta adecuada.
 
 SELECT drop_if_exists_proc ('syncbulmacontfamiliau','');
-CREATE FUNCTION syncbulmacontfamiliau () RETURNS "trigger"
+CREATE OR REPLACE FUNCTION syncbulmacontfamiliau () RETURNS "trigger"
 AS $$
 DECLARE
 	cs RECORD;
@@ -2076,7 +2076,7 @@ CREATE TRIGGER syncbulmacontfamiliatriggeru
 
 
 SELECT drop_if_exists_proc ('syncbulmacontfamiliaup','');
-CREATE FUNCTION syncbulmacontfamiliaup () RETURNS "trigger"
+CREATE OR REPLACE FUNCTION syncbulmacontfamiliaup () RETURNS "trigger"
 AS $$
 DECLARE
   check_dblink_connection BOOLEAN;
