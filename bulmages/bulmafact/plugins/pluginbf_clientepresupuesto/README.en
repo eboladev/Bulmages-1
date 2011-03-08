@@ -38,7 +38,7 @@ Incompatibles:
 
 Reports: presupuesto.rml; blform_PresupuestoView.qs
 
-Categorias: Facturacion generica;
+Categorias: Generic invoicing;
 
 Orden: 620
 

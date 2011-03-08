@@ -40,7 +40,7 @@ Incompatibles:
 
 Reports: albarancliente.rml; albaran.rml; blform_AlbaranClienteView.qs
 
-Categorias: Facturacion generica;
+Categorias: Generic invoicing;
 
 Orden: 622
 

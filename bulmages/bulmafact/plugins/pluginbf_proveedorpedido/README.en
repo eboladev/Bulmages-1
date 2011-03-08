@@ -38,7 +38,7 @@ Incompatibles:
 
 Reports: pedidoproveedor.rml; blform_PedidoProveedorView.qs
 
-Categorias: Facturacion generica;
+Categorias: Generic invoicing;
 
 Orden: 630
 

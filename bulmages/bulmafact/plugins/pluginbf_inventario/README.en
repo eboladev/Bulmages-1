@@ -23,7 +23,7 @@ Dependencias: libpluginbf_articulo.so; libpluginbf_almacen.so
 
 Incompatibles:
 
-Categorias: Facturacion generica; Experimentales;
+Categorias: Generic invoicing; Experimentals;
 
 Orden: 550
 

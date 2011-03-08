@@ -38,7 +38,7 @@ Dependencias: libpluginbf_cliente.so
 
 Incompatibles:
 
-Categorias: Facturacion generica;
+Categorias: Generic invoicing;
 
 Reports: blform_PedidoClienteView.qs
 
