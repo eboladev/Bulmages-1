@@ -2115,7 +2115,7 @@ DECLARE
 BEGIN
 	SELECT INTO as * FROM configuracion WHERE nombre=''PluginBf_SincroBulmaCont'';
 	IF FOUND THEN
-		UPDATE CONFIGURACION SET valor=''0.9.1-003'' WHERE nombre=''PluginBf-SincroBulmaCont'';
+		UPDATE CONFIGURACION SET valor=''0.9.1-003'' WHERE nombre=''PluginBf_SincroBulmaCont'';
 	ELSE
 		INSERT INTO configuracion (nombre, valor) VALUES (''PluginBf_SincroBulmaCont'', ''0.9.1-003'');
 	END IF;
