@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'modificarcontabilidadbase.ui'
 #
-# Created: Tue Feb  8 17:13:41 2011
+# Created: Tue Mar  8 15:52:17 2011
 #      by: PyQt4 UI code generator 4.8.3
 #
 # WARNING! All changes made in this file will be lost!
@@ -34,15 +34,11 @@ class Ui_ModificarContabilidadBase(object):
         self.horizontalLayout_4.setObjectName(_fromUtf8("horizontalLayout_4"))
         self.verticalLayout_2 = QtGui.QVBoxLayout()
         self.verticalLayout_2.setObjectName(_fromUtf8("verticalLayout_2"))
-        self.gridLayout = QtGui.QGridLayout()
-        self.gridLayout.setObjectName(_fromUtf8("gridLayout"))
-        self.verticalLayout_2.addLayout(self.gridLayout)
         self.groupBox = QtGui.QGroupBox(ModificarContabilidadBase)
+        self.groupBox.setMinimumSize(QtCore.QSize(0, 0))
         self.groupBox.setObjectName(_fromUtf8("groupBox"))
-        self.horizontalLayout_2 = QtGui.QHBoxLayout(self.groupBox)
-        self.horizontalLayout_2.setSpacing(0)
-        self.horizontalLayout_2.setMargin(0)
-        self.horizontalLayout_2.setObjectName(_fromUtf8("horizontalLayout_2"))
+        self.gridLayout = QtGui.QGridLayout(self.groupBox)
+        self.gridLayout.setObjectName(_fromUtf8("gridLayout"))
         self.horizontalLayout = QtGui.QHBoxLayout()
         self.horizontalLayout.setSpacing(0)
         self.horizontalLayout.setObjectName(_fromUtf8("horizontalLayout"))
@@ -57,13 +53,20 @@ class Ui_ModificarContabilidadBase(object):
         self.mui_categoria.setSizePolicy(sizePolicy)
         self.mui_categoria.setObjectName(_fromUtf8("mui_categoria"))
         self.horizontalLayout.addWidget(self.mui_categoria)
-        self.horizontalLayout_2.addLayout(self.horizontalLayout)
+        self.gridLayout.addLayout(self.horizontalLayout, 0, 0, 1, 1)
         spacerItem = QtGui.QSpacerItem(43, 20, QtGui.QSizePolicy.Expanding, QtGui.QSizePolicy.Minimum)
-        self.horizontalLayout_2.addItem(spacerItem)
-        self.verticalLayout_2.addWidget(self.groupBox)
-        self.mui_vertodos = QtGui.QCheckBox(ModificarContabilidadBase)
+        self.gridLayout.addItem(spacerItem, 0, 1, 1, 1)
+        self.horizontalLayout_2 = QtGui.QHBoxLayout()
+        self.horizontalLayout_2.setObjectName(_fromUtf8("horizontalLayout_2"))
+        self.mui_vertodos = QtGui.QCheckBox(self.groupBox)
         self.mui_vertodos.setObjectName(_fromUtf8("mui_vertodos"))
-        self.verticalLayout_2.addWidget(self.mui_vertodos)
+        self.horizontalLayout_2.addWidget(self.mui_vertodos)
+        self.mui_seltodos = QtGui.QPushButton(self.groupBox)
+        self.mui_seltodos.setMaximumSize(QtCore.QSize(250, 16777215))
+        self.mui_seltodos.setObjectName(_fromUtf8("mui_seltodos"))
+        self.horizontalLayout_2.addWidget(self.mui_seltodos)
+        self.gridLayout.addLayout(self.horizontalLayout_2, 1, 0, 1, 2)
+        self.verticalLayout_2.addWidget(self.groupBox)
         self.tabWidget = QtGui.QTabWidget(ModificarContabilidadBase)
         self.tabWidget.setObjectName(_fromUtf8("tabWidget"))
         self.tab_2 = QtGui.QWidget()
@@ -352,6 +355,7 @@ class Ui_ModificarContabilidadBase(object):
         self.groupBox.setTitle(QtGui.QApplication.translate("ModificarContabilidadBase", "Opciones de Filtrado de Plugins", None, QtGui.QApplication.UnicodeUTF8))
         self.label_5.setText(QtGui.QApplication.translate("ModificarContabilidadBase", "Categoria ", None, QtGui.QApplication.UnicodeUTF8))
         self.mui_vertodos.setText(QtGui.QApplication.translate("ModificarContabilidadBase", "Mostrar todos los plugins o solo los instalados", None, QtGui.QApplication.UnicodeUTF8))
+        self.mui_seltodos.setText(QtGui.QApplication.translate("ModificarContabilidadBase", "Seleccionar Todo", None, QtGui.QApplication.UnicodeUTF8))
         self.label.setText(QtGui.QApplication.translate("ModificarContabilidadBase", "Nombre Empresa", None, QtGui.QApplication.UnicodeUTF8))
         self.label_2.setText(QtGui.QApplication.translate("ModificarContabilidadBase", "Nombre Base de Datos", None, QtGui.QApplication.UnicodeUTF8))
         self.label_3.setText(QtGui.QApplication.translate("ModificarContabilidadBase", "Version de la Base de Datos", None, QtGui.QApplication.UnicodeUTF8))

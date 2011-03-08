@@ -690,7 +690,25 @@ class Contabilidad(Ui_ModificarContabilidadBase, Empresa):
    def on_mui_categoria_currentIndexChanged(self, index):
       self.presentar()
   
-  
+   def on_mui_seltodos_released(self):
+      Yes = 'Si'
+      No = 'No'
+      message = QtGui.QMessageBox(self)
+      message.setText(QtGui.QApplication.translate("Contabilidad",'Instalar todos los plugins visibles', None, QtGui.QApplication.UnicodeUTF8) )
+      message.setWindowTitle('Atencion!')
+      message.setIcon(QtGui.QMessageBox.Warning)
+      message.addButton(Yes, QtGui.QMessageBox.AcceptRole)
+      message.addButton(No, QtGui.QMessageBox.RejectRole)
+      message.exec_()
+      respuesta = message.clickedButton().text()
+      if respuesta == Yes:
+	i = 0
+	# Iteramos para la lista de plugins de bulmafact
+	while (i < self.mui_plugins.rowCount()):
+	   if (not self.mui_plugins.isRowHidden(i)):
+   	      self.marcar(self.mui_plugins.item(i,10).text(),1,1)
+	   i = i + 1
+
    def on_mui_vertodos_stateChanged(self, status):
       self.presentar()
   
