@@ -27,7 +27,7 @@ Dependencias:
 
 Incompatibles:
 
-Categorias: Utilidades genericas;Experimentales;
+Categorias: Asociaciones de padres de alumnos;Utilidades genericas;Experimentales;
 
 Orden: 90
 
