@@ -12,15 +12,16 @@ class BtCompany;
 class Modificadores : public QDialog, BlMainCompanyPointer, public Ui_ModificadoresBase
 {
     Q_OBJECT
+
 private:
-    void moveCursor();
+    void sendKey(int tecla, QString texto);
 
 public:
     Modificadores ( BlMainCompany *emp, QWidget *parent );
     virtual ~Modificadores();
     
 public slots:
-    virtual void trabajadorClicked();
+    virtual void modificadorClicked();
     void on_mui_tecla_limpiar_clicked();
     void on_mui_tecla_1_clicked();
     void on_mui_tecla_2_clicked();
@@ -65,6 +66,14 @@ public slots:
     void on_mui_tecla_punto_clicked();
     void on_mui_tecla_guion_clicked();
     void on_mui_tecla_espacio_clicked();
+    void on_mui_tecla_inicio_clicked();
+    void on_mui_tecla_fin_clicked();
+    void on_mui_tecla_izquierda_clicked();
+    void on_mui_tecla_derecha_clicked();
+    void on_mui_tecla_arriba_clicked();
+    void on_mui_tecla_abajo_clicked();
+    void on_mui_tecla_suprimir_clicked();    
+    void on_mui_aceptar_clicked();
 };
 
 #endif

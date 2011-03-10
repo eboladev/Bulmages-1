@@ -46,6 +46,8 @@ int BtTicket_agregarLinea_Post ( BtTicket *tick )
 
     item->addDbField ( "imglalbaran", BlDbField::DbVarChar, BlDbField::DbNothing, _( "Imagen." ) );
 
+    item->addDbField ( "textolibremodificador", BlDbField::DbVarChar, BlDbField::DbNothing, _( "Texto." ) );
+
     item->addDbField ( "idmodificador3", BlDbField::DbInt, BlDbField::DbNothing, _( "Imagen." ) );
     item->addDbField ( "idmodificador4", BlDbField::DbInt, BlDbField::DbNothing, _( "Imagen." ) );
     item->addDbField ( "idmodificador5", BlDbField::DbInt, BlDbField::DbNothing, _( "Imagen." ) );

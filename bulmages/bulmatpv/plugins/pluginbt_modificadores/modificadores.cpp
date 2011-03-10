@@ -1,5 +1,6 @@
 #include <QWidget>
 #include <QPushButton>
+#include <QKeyEvent>
 
 #include "modificadores.h"
 #include "blfunctions.h"
@@ -31,11 +32,13 @@ Modificadores::Modificadores ( BlMainCompany *emp, QWidget *parent ) : QDialog (
             m_hboxLayout1->setObjectName ( QString::fromUtf8 ( "hboxLayout1" ) );
         } // end if
         m_hboxLayout1->addWidget ( toolbutton );
-        connect ( toolbutton, SIGNAL ( pressed() ), this, SLOT ( trabajadorClicked() ) );
-        cur->nextRecord();
+        connect ( toolbutton, SIGNAL ( pressed() ), this, SLOT ( modificadorClicked() ) );
+        cur->nextRecord();	
     } // end while
     delete cur;
 
+    mui_texto->setPlainText( ((BtCompany *) emp)->ticketActual()->lineaActBtTicket()->dbValue ( "textolibremodificador") );
+    
     if (!hayModificadores) {
 	/// Si no hay modificadores predeterminados. Se situa el 'tab' en escritura texto.
 	mui_tab->setCurrentWidget(tab_texto);
@@ -46,6 +49,7 @@ Modificadores::Modificadores ( BlMainCompany *emp, QWidget *parent ) : QDialog (
     blDebug("END Modificadores::Modificadores");
 
     mui_texto->ensureCursorVisible();
+    mui_texto->setFocus(Qt::MouseFocusReason);
     
 }
 
@@ -55,7 +59,7 @@ Modificadores::~Modificadores()
 
 
 
-void Modificadores::trabajadorClicked()
+void Modificadores::modificadorClicked()
 {
     blDebug("Modificadores::trabajadorClicked");
 
@@ -64,8 +68,8 @@ void Modificadores::trabajadorClicked()
     BtTicket *ticketv = NULL;
     bool encontrado = FALSE;
 
-    QString idarticulo =  emp1->ticketActual()->lineaActBtTicket()->dbValue ( "idarticulo");
-	
+    QString idarticulo = emp1->ticketActual()->lineaActBtTicket()->dbValue ( "idarticulo");
+
     /// Buscamos cual ha sido el modificador pulsado.
     BlDbRecordSet *cur = mainCompany() ->loadQuery ( "SELECT * FROM modificador WHERE idarticulo = " + idarticulo );
     while ( !encontrado ) {
@@ -84,8 +88,6 @@ void Modificadores::trabajadorClicked()
     if (i <= 9) 
       emp1->ticketActual()->lineaActBtTicket()->setDbValue ( "idmodificador" + QString::number(i), cur->valor("idmodificador"));
 
-
-
     delete cur;
 
     done ( 0 );
@@ -94,276 +96,277 @@ void Modificadores::trabajadorClicked()
 
 }
 
-void Modificadores::moveCursor()
+void Modificadores::sendKey(int tecla, QString texto)
 {
     mui_texto->setFocus(Qt::MouseFocusReason);
-    QTextCursor cursor = mui_texto->textCursor();
-    cursor.movePosition(QTextCursor::End, QTextCursor::MoveAnchor);
-    mui_texto->setTextCursor(cursor);
+    QKeyEvent key(QKeyEvent::KeyPress, tecla,  NULL, texto, false, 1 );
+    QApplication::sendEvent(mui_texto, &key);
 }
 
 void Modificadores::on_mui_tecla_limpiar_clicked()
 {
+    mui_texto->setFocus(Qt::MouseFocusReason);
     mui_texto->clear();
-    moveCursor();
 }
 
 void Modificadores::on_mui_tecla_1_clicked()
 {
-    mui_texto->setPlainText(mui_texto->toPlainText() + "1");
-    moveCursor();
+    sendKey(Qt::Key_1, "1");
 }
 
 void Modificadores::on_mui_tecla_2_clicked()
 {
-    mui_texto->setPlainText(mui_texto->toPlainText() + "2");
-    moveCursor();
+    sendKey(Qt::Key_2, "2");
 }
 
 
 void Modificadores::on_mui_tecla_3_clicked()
 {
-    mui_texto->setPlainText(mui_texto->toPlainText() + "3");
-    moveCursor();
+    sendKey(Qt::Key_3, "3");
 }
 
 void Modificadores::on_mui_tecla_4_clicked()
 {
-    mui_texto->setPlainText(mui_texto->toPlainText() + "4");
-    moveCursor();
+    sendKey(Qt::Key_4, "4");
 }
 
 void Modificadores::on_mui_tecla_5_clicked()
 {
-    mui_texto->setPlainText(mui_texto->toPlainText() + "5");
-    moveCursor();
+    sendKey(Qt::Key_5, "5");
 }
 
 void Modificadores::on_mui_tecla_6_clicked()
 {
-    mui_texto->setPlainText(mui_texto->toPlainText() + "6");
-    moveCursor();
+    sendKey(Qt::Key_6, "6");
 }
 
 void Modificadores::on_mui_tecla_7_clicked()
 {
-    mui_texto->setPlainText(mui_texto->toPlainText() + "7");
-    moveCursor();
+    sendKey(Qt::Key_7, "7");
 }
 
 void Modificadores::on_mui_tecla_8_clicked()
 {
-    mui_texto->setPlainText(mui_texto->toPlainText() + "8");
-    moveCursor();
+    sendKey(Qt::Key_8, "8");
 }
 
 void Modificadores::on_mui_tecla_9_clicked()
 {
-    mui_texto->setPlainText(mui_texto->toPlainText() + "9");
-    moveCursor();
+    sendKey(Qt::Key_9, "9");
 }
 
 void Modificadores::on_mui_tecla_0_clicked()
 {
-    mui_texto->setPlainText(mui_texto->toPlainText() + "0");
-    moveCursor();
+    sendKey(Qt::Key_0, "0");
 }
 
 void Modificadores::on_mui_tecla_borrar_clicked()
 {
-    mui_texto->setPlainText(mui_texto->toPlainText().mid(0, mui_texto->toPlainText().length() - 1));
-    moveCursor();
+      sendKey(Qt::Key_Backspace, "Backspace");
 }
 
 void Modificadores::on_mui_tecla_q_clicked()
 {
-    mui_texto->setPlainText(mui_texto->toPlainText() + "Q");
-    moveCursor();
+      sendKey(Qt::Key_Q, "Q");
 }
 
 void Modificadores::on_mui_tecla_w_clicked()
 {
-    mui_texto->setPlainText(mui_texto->toPlainText() + "W");
-    moveCursor();
+      sendKey(Qt::Key_W, "W");
 }
 
 void Modificadores::on_mui_tecla_e_clicked()
 {
-    mui_texto->setPlainText(mui_texto->toPlainText() + "E");
-    moveCursor();
+      sendKey(Qt::Key_E, "E");
 }
 
 void Modificadores::on_mui_tecla_r_clicked()
 {
-    mui_texto->setPlainText(mui_texto->toPlainText() + "R");
-    moveCursor();
+      sendKey(Qt::Key_R, "R");
 }
 
 void Modificadores::on_mui_tecla_t_clicked()
 {
-    mui_texto->setPlainText(mui_texto->toPlainText() + "T");
-    moveCursor();
+      sendKey(Qt::Key_T, "T");
 }
 
 void Modificadores::on_mui_tecla_y_clicked()
 {
-    mui_texto->setPlainText(mui_texto->toPlainText() + "Y");
-    moveCursor();
+      sendKey(Qt::Key_Y, "Y");
 }
 
 void Modificadores::on_mui_tecla_u_clicked()
 {
-    mui_texto->setPlainText(mui_texto->toPlainText() + "U");
-    moveCursor();
+      sendKey(Qt::Key_U, "U");
 }
 
 void Modificadores::on_mui_tecla_i_clicked()
 {
-    mui_texto->setPlainText(mui_texto->toPlainText() + "I");
-    moveCursor();
+      sendKey(Qt::Key_I, "I");
 }
 
 void Modificadores::on_mui_tecla_o_clicked()
 {
-    mui_texto->setPlainText(mui_texto->toPlainText() + "O");
-    moveCursor();
+      sendKey(Qt::Key_O, "O");
 }
 
 void Modificadores::on_mui_tecla_p_clicked()
 {
-    mui_texto->setPlainText(mui_texto->toPlainText() + "P");
-    moveCursor();
+      sendKey(Qt::Key_P, "P");
 }
 
 void Modificadores::on_mui_tecla_a_clicked()
 {
-    mui_texto->setPlainText(mui_texto->toPlainText() + "A");
-    moveCursor();
+      sendKey(Qt::Key_A, "A");
 }
 
 void Modificadores::on_mui_tecla_s_clicked()
 {
-    mui_texto->setPlainText(mui_texto->toPlainText() + "S");
-    moveCursor();
+      sendKey(Qt::Key_S, "S");
 }
 
 void Modificadores::on_mui_tecla_d_clicked()
 {
-    mui_texto->setPlainText(mui_texto->toPlainText() + "D");
-    moveCursor();
+      sendKey(Qt::Key_D, "D");
 }
 
 void Modificadores::on_mui_tecla_f_clicked()
 {
-    mui_texto->setPlainText(mui_texto->toPlainText() + "F");
-    moveCursor();
+      sendKey(Qt::Key_F, "F");
 }
 
 void Modificadores::on_mui_tecla_g_clicked()
 {
-    mui_texto->setPlainText(mui_texto->toPlainText() + "G");
-    moveCursor();
+      sendKey(Qt::Key_G, "G");
 }
 
 void Modificadores::on_mui_tecla_h_clicked()
 {
-    mui_texto->setPlainText(mui_texto->toPlainText() + "H");
-    moveCursor();
+      sendKey(Qt::Key_H, "H");
 }
 
 void Modificadores::on_mui_tecla_j_clicked()
 {
-    mui_texto->setPlainText(mui_texto->toPlainText() + "J");
-    moveCursor();
+      sendKey(Qt::Key_J, "J");
 }
 
 void Modificadores::on_mui_tecla_k_clicked()
 {
-    mui_texto->setPlainText(mui_texto->toPlainText() + "K");
-    moveCursor();
+      sendKey(Qt::Key_K, "K");
 }
 
 void Modificadores::on_mui_tecla_l_clicked()
 {
-    mui_texto->setPlainText(mui_texto->toPlainText() + "L");
-    moveCursor();
+      sendKey(Qt::Key_L, "L");
 }
 
 void Modificadores::on_mui_tecla_enye_clicked()
 {
-    mui_texto->setPlainText(mui_texto->toPlainText() + "Ñ");
-    moveCursor();
+      sendKey(Qt::Key_Ntilde, "Ñ");
 }
 
 void Modificadores::on_mui_tecla_intro_clicked()
 {
-    mui_texto->setPlainText(mui_texto->toPlainText() + "\n");
-    moveCursor();
+      sendKey(Qt::Key_Enter, "Enter");
 }
 
 void Modificadores::on_mui_tecla_z_clicked()
 {
-    mui_texto->setPlainText(mui_texto->toPlainText() + "Z");
-    moveCursor();
+      sendKey(Qt::Key_Z, "Z");
 }
 
 void Modificadores::on_mui_tecla_x_clicked()
 {
-    mui_texto->setPlainText(mui_texto->toPlainText() + "X");
-    moveCursor();
+    sendKey(Qt::Key_X, "X");
 }
 
 void Modificadores::on_mui_tecla_c_clicked()
 {
-    mui_texto->setPlainText(mui_texto->toPlainText() + "C");
-    moveCursor();
+    sendKey(Qt::Key_C, "C");
 }
 
 void Modificadores::on_mui_tecla_v_clicked()
 {
-    mui_texto->setPlainText(mui_texto->toPlainText() + "V");
-    moveCursor();
+    sendKey(Qt::Key_V, "V");
 }
 
 void Modificadores::on_mui_tecla_b_clicked()
 {
-    mui_texto->setPlainText(mui_texto->toPlainText() + "B");
-    moveCursor();
+    sendKey(Qt::Key_B, "B");
 }
 
 void Modificadores::on_mui_tecla_n_clicked()
 {
-    mui_texto->setPlainText(mui_texto->toPlainText() + "N");
-    moveCursor();
+    sendKey(Qt::Key_N, "N");
 }
 
 void Modificadores::on_mui_tecla_m_clicked()
 {
-    mui_texto->setPlainText(mui_texto->toPlainText() + "M");
-    moveCursor();
+    sendKey(Qt::Key_M, "M");
 }
 
 void Modificadores::on_mui_tecla_coma_clicked()
 {
-    mui_texto->setPlainText(mui_texto->toPlainText() + ",");
-    moveCursor();
+    sendKey(Qt::Key_Comma, ",");
 }
 
 void Modificadores::on_mui_tecla_punto_clicked()
 {
-    mui_texto->setPlainText(mui_texto->toPlainText() + ".");
-    moveCursor();
+    sendKey(Qt::Key_Period, ".");
 }
 
 void Modificadores::on_mui_tecla_guion_clicked()
 {
-    mui_texto->setPlainText(mui_texto->toPlainText() + "-");
-    moveCursor();
+    sendKey(Qt::Key_Minus, "-");
 }
 
 void Modificadores::on_mui_tecla_espacio_clicked()
 {
-    mui_texto->setPlainText(mui_texto->toPlainText() + " ");
-    moveCursor();
+    sendKey(Qt::Key_Space, " ");
+}
+
+void Modificadores::on_mui_tecla_inicio_clicked()
+{
+    sendKey(Qt::Key_Home, "Home");
+}
+
+void Modificadores::on_mui_tecla_fin_clicked()
+{
+    sendKey(Qt::Key_End, "End");
+}
+
+void Modificadores::on_mui_tecla_izquierda_clicked()
+{
+    sendKey(Qt::Key_Left, "Left");
+}
+
+void Modificadores::on_mui_tecla_derecha_clicked()
+{
+    sendKey(Qt::Key_Right, "Right");
+}
+
+void Modificadores::on_mui_tecla_arriba_clicked()
+{
+    sendKey(Qt::Key_Up, "Up");
+}
+
+void Modificadores::on_mui_tecla_abajo_clicked()
+{
+    sendKey(Qt::Key_Down, "Down");
+}
+
+void Modificadores::on_mui_tecla_suprimir_clicked()
+{
+    sendKey(Qt::Key_Delete, "Delete");
+}
+
+
+
+
+void Modificadores::on_mui_aceptar_clicked()
+{
+    BtCompany * emp1 = ( BtCompany * ) mainCompany();
+    emp1->ticketActual()->lineaActBtTicket()->setDbValue ( "textolibremodificador", mui_texto->toPlainText() );
+    done ( 0 );
 }
 
