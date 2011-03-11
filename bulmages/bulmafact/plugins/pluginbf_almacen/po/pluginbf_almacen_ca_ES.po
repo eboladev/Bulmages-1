@@ -9,10 +9,10 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: info@iglues.org\n"
 "POT-Creation-Date: 2011-02-04 12:54+0100\n"
-"PO-Revision-Date: 2009-02-17 10:24+0100\n"
-"Last-Translator: Automatically generated\n"
-"Language-Team: none\n"
-"Language: \n"
+"PO-Revision-Date: 2011-03-11 14:25+0100\n"
+"Last-Translator: Walter Garcia-Fontes <walter.garcia@upf.edu>\n"
+"Language-Team: Catalan\n"
+"Language: Catalan\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -35,24 +35,21 @@ msgid "Almacen"
 msgstr "Magatzem"
 
 #: pluginbf_almacen.cpp:84 pluginbf_almacen.cpp:85 ui_listalmacenbase.h:117
-#, fuzzy
 msgid "Almacenes"
-msgstr "<LI> Magatzem <B>"
+msgstr " Magatzems"
 
 #: listalmacenview.cpp:98
 msgid "Codigo almacen"
 msgstr "Codi magatzem"
 
 #: listalmacenview.cpp:71
-#, fuzzy
 msgid "Error al guardar los almacenes"
-msgstr "Desitja desar els canvis?"
+msgstr "Error en desar els magatzems"
 
 #: listalmacenview.cpp:97
 msgid "Id almacen"
 msgstr "Id Magatzem "
 
 #: listalmacenview.cpp:99
-#, fuzzy
 msgid "Nombre almacen"
-msgstr "Nom del compte"
+msgstr "Nom del magatzem"
