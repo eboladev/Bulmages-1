@@ -29,5 +29,5 @@ extern "C" PLUGINBL_REPORT_EXPORT int entryPoint ( QMainWindow * );
 extern "C" PLUGINBL_REPORT_EXPORT int BfCompany_createMainWindows_Post ( BfCompany * );
 extern "C" PLUGINBL_REPORT_EXPORT int BcCompany_createMainWindows_Post ( BcCompany * );
 
-int init();
+extern "C" PLUGINBL_REPORT_EXPORT int init();
 
