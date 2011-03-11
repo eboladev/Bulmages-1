@@ -29,9 +29,9 @@
 #include "blfunctions.h"
 #include "blmaincompany.h"
 #include "blform.h"
+#include "pdefs_pluginbl_template.h"
 
-
-class EQToolButton : public QToolButton
+class PLUGINBL_TEMPLATE_EXPORT EQToolButton : public QToolButton
 {
     Q_OBJECT
 
