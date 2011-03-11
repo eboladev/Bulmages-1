@@ -288,7 +288,7 @@ class Ui_About(object):
 
     def retranslateUi(self, About):
         About.setWindowTitle(QtGui.QApplication.translate("About", "Acerca de Iglues/BulmaSetup", None, QtGui.QApplication.UnicodeUTF8))
-        self.mui_lbversion.setText(QtGui.QApplication.translate("About", "BulmaSetup GPL - Version 0.12.0", None, QtGui.QApplication.UnicodeUTF8))
+        self.mui_lbversion.setText(QtGui.QApplication.translate("About", "BulmaSetup GPL - Version 0.13.0", None, QtGui.QApplication.UnicodeUTF8))
         self.TabWidget.setTabText(self.TabWidget.indexOf(self.Acercade_2), QtGui.QApplication.translate("About", "&Acerca de", None, QtGui.QApplication.UnicodeUTF8))
         self.textEdit_autores.setHtml(QtGui.QApplication.translate("About", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
 "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"

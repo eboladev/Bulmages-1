@@ -7,7 +7,7 @@ http://www.iglues.org
 ========================================
 #README.es
 
-BulmaGés 0.12.0 (Setiembre 2009)
+BulmaGés 0.13.0 (Setiembre 2009)
 
 Contenido
 ---------

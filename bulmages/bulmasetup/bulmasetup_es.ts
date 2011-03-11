@@ -9,7 +9,7 @@
     </message>
     <message>
         <location filename="aboutbase.py" line="291"/>
-        <source>BulmaSetup GPL - Version 0.12.0</source>
+        <source>BulmaSetup GPL - Version 0.13.0</source>
         <translation type="unfinished"></translation>
     </message>
     <message>

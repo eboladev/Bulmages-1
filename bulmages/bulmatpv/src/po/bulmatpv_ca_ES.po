@@ -62,7 +62,7 @@ msgid ""
 "weight:600; font-style:normal;\">\n"
 "<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-"
 "right:0px; -qt-block-indent:0; text-indent:0px;\">Terminal Punto de Venta "
-"GPL - Version 0.12.0 -</p></body></html>"
+"GPL - Version 0.13.0 -</p></body></html>"
 msgstr ""
 
 #: ui_btaboutbase.h:292
@@ -375,8 +375,8 @@ msgstr ""
 #~ msgstr "BulmaTPV"
 
 #, fuzzy
-#~ msgid "Terminal Punto de Venta GPL - Version 0.12.0 -"
-#~ msgstr "Terminal Punto de Venta GPL - Versió 0.12.0 -"
+#~ msgid "Terminal Punto de Venta GPL - Version 0.13.0 -"
+#~ msgstr "Terminal Punto de Venta GPL - Versió 0.13.0 -"
 
 #~ msgid "pushButton18"
 #~ msgstr "pushButton18"
