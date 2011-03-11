@@ -13,7 +13,7 @@ add_subdirectory(pluginbl_subform2pdf)
 add_subdirectory(pluginbl_attachdocument)
 add_subdirectory(pluginbl_bloqconf)
 add_subdirectory(pluginbl_logo)
-add_subdirectory(pluginbl_backup)
+#add_subdirectory(pluginbl_backup)
 
 if(NOT WIN32)
 if(NOT APPLE)
