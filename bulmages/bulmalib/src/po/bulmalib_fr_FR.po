@@ -225,7 +225,7 @@ msgstr "Configuration des sous formulaires"
 
 #: ui_blformconfigbase.h:339
 msgid "Cerrar"
-msgstr "&Fermer"
+msgstr "Fermer"
 
 #: blcountryview.cpp:50 blcountryview.cpp:72
 msgid "Codigo 2 digitos"
@@ -925,4 +925,3 @@ msgstr "Insérer"
 #: blsubform.cpp:2774 blsubform.cpp:2792
 msgid "no se ha inicializado bien la clase"
 msgstr "La classe ne s'est pas bien initialisée "
-
