@@ -208,7 +208,7 @@ void MTicketIVAInc::on_mui_borrar_clicked()
 void MTicketIVAInc::on_mui_imprimir_clicked()
 {
     /// Llamamos al atajo de teclado que llama a BtTicket::imprimir()
-    ( ( BtCompany * ) mainCompany() )->pulsaTecla ( Qt::Key_F2 );
+    ( ( BtCompany * ) mainCompany() )->pulsaTecla ( Qt::Key_F6 );
 }
 
 void MTicketIVAInc::on_mui_borrarticket_clicked()
