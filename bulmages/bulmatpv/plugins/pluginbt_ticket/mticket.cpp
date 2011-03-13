@@ -194,7 +194,7 @@ void MTicket::on_mui_imprimir_clicked()
      blDebug ( "MTicket::on_mui_imprimir_clicked", 0 );
 
     /// Llamamos al atajo de teclado que llama a BtTicket::imprimir()
-    ( ( BtCompany * ) mainCompany() )->pulsaTecla ( Qt::Key_F2 );
+    ( ( BtCompany * ) mainCompany() )->pulsaTecla ( Qt::Key_F6 );
 
     blDebug ( "END MTicket::on_mui_imprimir_clicked", 0 );
 }
