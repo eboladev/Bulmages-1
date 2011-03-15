@@ -378,16 +378,35 @@ void blCreatePDF ( const QString arch )
 void blCreateODS ( const QString arch )
 {
     blDebug ( "blCreateODS " + arch, 0 );
+    /// Entramos en el directorio correspondiente
     QDir::setCurrent ( g_confpr->valor ( CONF_DIR_USER ) );
     QString cadsys;
 
+    /// Borramos algun archivo que pudiera haber
+#ifdef Q_OS_WIN32
+    cadena1 = g_confpr->valor ( CONF_DIR_USER );
+    cadena1.replace("/", "\\");
+    cadena1 = "\"del \"" + arch + ".ods\"\"";
+#else
     QString cadena = "rm " + g_confpr->valor ( CONF_DIR_USER ) + arch + ".ods";
+#endif
     int result1 = system ( cadena.toAscii() );
     if (result1 == -1) {
 	blMsgError(_("Error al borrar archivo .ods [ blfunctions->blCreateODS() ]"));
     } // end if
 
+    /// Hacemos la invocacion del python
+#ifdef Q_OS_WIN32
+
+    cadena = g_confpr->valor ( CONF_DIR_USER );
+    cadena.replace("/", "\\");
+
+    cadena = "\"cd \"" + cadena + "\" & ";
+    cadena = cadena + "\"" + g_confpr->valor ( CONF_PYTHON ) + "\" \"" + arch + ".pys\"\"";
+
+#else
     cadena = " cd " + g_confpr->valor ( CONF_DIR_USER ) + "; python " + arch + ".pys";
+#endif
     int result2 = system ( cadena.toAscii() );
     if (result2 == -1) {
 	blMsgError(_("Error al ejecutar PYTHON [ blfunctions->blCreateODS() ]"));
@@ -401,7 +420,18 @@ void blCreateAndLoadODS ( const QString arch )
 {
     blCreateODS ( arch );
     if (QFile::exists(g_confpr->valor ( CONF_DIR_USER ) + arch + ".ods")) {
-      QString cadena = g_confpr->valor ( CONF_ODS ) + " " + g_confpr->valor ( CONF_DIR_USER ) + arch + ".ods &";
+      QString cadena = "";
+#ifdef Q_OS_WIN32
+    if (g_confpr->valor ( CONF_ODS ).isEmpty()) {
+	    /// Abre con el programa por defecto del sistema.
+	    cadena = "\"start \"\" \"" + g_confpr->valor ( CONF_DIR_USER ) + arch +  ".ods" + "\"\"";
+    } else {
+	    /// Abre con la configuracion forzada.
+	    cadena = "\"start \"\" \"" + g_confpr->valor ( CONF_ODS ) + "\" \"" + g_confpr->valor ( CONF_DIR_USER ) +  arch + ".ods" + "\"\"";
+    } // end if
+#else
+      cadena = g_confpr->valor ( CONF_ODS ) + " " + g_confpr->valor ( CONF_DIR_USER ) + arch + ".ods &";
+#endif
       int result = system ( cadena.toAscii() );
       if (result == -1) {
 	  blMsgError(_("Error al ejecutar oocalc [ blfunctions->blCreateAndLoadODS() ]"));
