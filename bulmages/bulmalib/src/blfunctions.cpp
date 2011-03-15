@@ -384,9 +384,9 @@ void blCreateODS ( const QString arch )
 
     /// Borramos algun archivo que pudiera haber
 #ifdef Q_OS_WIN32
-    cadena1 = g_confpr->valor ( CONF_DIR_USER );
-    cadena1.replace("/", "\\");
-    cadena1 = "\"del \"" + arch + ".ods\"\"";
+    QString cadena = g_confpr->valor ( CONF_DIR_USER );
+    cadena.replace("/", "\\");
+    cadena = "\"del \"" + arch + ".ods\"\"";
 #else
     QString cadena = "rm " + g_confpr->valor ( CONF_DIR_USER ) + arch + ".ods";
 #endif
