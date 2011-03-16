@@ -1,15 +1,15 @@
 #######
 #Plugins
 #######
-#README.es
+#README.ca
 #20080501
 
-Nombre: Compra-Venta.
+Nombre: Compra-Venda.
 
 Biblioteca: libpluginbf_compraventa.so
 
-Descripción: <H1>Compra Venta</H1>
-<P>Unifica las operaciones de compra y venta.</P>
+Descripción: <H1>Compra Venda</H1>
+<P>Unifica les operacions de compra i venda.</P>
 <B>Author:</B>Tomeu Borrás (tborras@conetxia.com)<BR>
 <HR>
 

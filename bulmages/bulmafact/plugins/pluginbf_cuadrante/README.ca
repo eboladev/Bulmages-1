@@ -1,16 +1,15 @@
 #######
 #Plugins
 #######
-#README.es
+#README.ca
 #20080501
 
-Nombre: Cuadrantes de personal
+Nombre: Quadrants de personal
 
 Biblioteca: libpluginbf_cuadrante.so
 
-Descripción: <H1>Cuadrante de personal</H1>
-<P>Gestiona la creación de cuadrantes de trabajo pudiendo asignar las horas que
-corresponda a cada trabajador y la plublicación del cuadrante en formato PDF.</P>
+Descripción: <H1>Quadrant de personal</H1>
+<P>Gestiona la creació de quadrants de treball podent assignar les hores que correspongui a cada treballador i la publicació del quadrant en format PDF.</P>
 <B>Author:</B>Tomeu Borrás (tborras@conetxia.com)<BR>
 <HR>
 
@@ -30,4 +29,4 @@ Categorias: Utilitats avançades; Experimentals;
 
 Orden: 780
 
-Comentarios: Muy útil en sistemas de control de personal y en combinacion con el pluginasterisk.
+Comentarios: Molt útill en sistemes de control de personal i en combinarció amb el pluginasterisk.

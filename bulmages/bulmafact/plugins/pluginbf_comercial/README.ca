@@ -1,16 +1,16 @@
 #######
 #Plugins
 #######
-#README.es
+#README.ca
 #20080501
 
-Nombre: Comerciales
+Nombre: Comercials
 
 Biblioteca: libpluginbf_comercial.so
 
-Descripción: <H1>Comerciales</H1>
-<P>Permite llevar la gestión de los comerciales de la empresa.
-Teniendo un planing de visitas y de rutas a realizar.</P>
+Descripción: <H1>Comercials</H1>
+<P>Permet portar la gestió dels comercials de l'empresa. 
+Es pot tenir un planing de visitese i de rutes a realitzar.</P>
 <B>Author:</B>Tomeu Borrás (tborras@conetxia.com)<BR>
 <HR>
 
@@ -30,6 +30,6 @@ Categorias: Facturació genèrica;Experimentals;
 
 Orden: 700
 
-Comentarios: Imprescindible para empresas con comerciales.
+Comentarios: Imprescindible per a empreses amb comercials.
 
 
