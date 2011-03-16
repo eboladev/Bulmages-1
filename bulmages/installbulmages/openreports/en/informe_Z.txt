@@ -2,29 +2,29 @@
 <!-- SETCHARACTERPRINTMODE "DOUBLE_HEIGHT CHARACTER_FONTB_SELECTED" -->
 <!-- SETJUSTIFICATION "LEFT" -->
 <!-- QUERY="SELECT count(idalbaran)::NUMERIC(12,2) AS numtickets FROM albaran WHERE idz IN (SELECT max(idz) AS id FROM z) AND ticketalbaran = TRUE AND idforma_pago = [CONF_IDFORMA_PAGO_CONTADO]" -->
-<!-- SUBQUERY="SELECT sum(cantlalbaran) AS unidades, sum(pvpivainclalbaran * cantlalbaran)::NUMERIC(12,2) as total FROM lalbaran NATURAL LEFT JOIN articulo  WHERE idalbaran IN (SELECT idalbaran FROM albaran WHERE idz IN (SELECT max(idz) AS id FROM z) AND idforma_pago = [CONF_IDFORMA_PAGO_CONTADO])" -->
+<!-- SUBQUERY="SELECT sum(cantlalbaran) AS unidades, sum(pvpivainclalbaran * cantlalbaran)::NUMERIC(12,2) AS sumatotal FROM lalbaran NATURAL LEFT JOIN articulo  WHERE idalbaran IN (SELECT idalbaran FROM albaran WHERE idz IN (SELECT max(idz) AS id FROM z) AND idforma_pago = [CONF_IDFORMA_PAGO_CONTADO])" -->
 <!-- LEFTJUSTIFIED "Total Tickets Contado:" "35" " " "TRUE"--> <!-- RIGHTJUSTIFIED "[numtickets]" "10" " " "TRUE" -->
 <!-- LEFTJUSTIFIED "Unidades Vendidas Contado:" "35" " " "TRUE"--> <!-- RIGHTJUSTIFIED "[unidades]" "10" " " "TRUE" -->
-<!-- LEFTJUSTIFIED "Total Vendido Contado:" "35" " " "TRUE"--> <!-- RIGHTJUSTIFIED "[total]" "10" " " "TRUE" --><!-- END SUBQUERY --><!-- END QUERY --> 
+<!-- LEFTJUSTIFIED "Total Vendido Contado:" "35" " " "TRUE"--> <!-- RIGHTJUSTIFIED "[sumatotal]" "10" " " "TRUE" --><!-- END SUBQUERY --><!-- END QUERY --> 
 
 <!-- QUERY="SELECT count(idalbaran)::NUMERIC(12,2) AS numtickets FROM albaran WHERE idz IN (SELECT max(idz) AS id FROM z) AND ticketalbaran = TRUE AND idforma_pago = [CONF_IDFORMA_PAGO_VISA]" -->
-<!-- SUBQUERY="SELECT sum(cantlalbaran) AS unidades, sum(pvpivainclalbaran * cantlalbaran)::NUMERIC(12,2) as total FROM lalbaran NATURAL LEFT JOIN articulo  WHERE idalbaran IN (SELECT idalbaran FROM albaran WHERE idz IN (SELECT max(idz) AS id FROM z) AND idforma_pago = [CONF_IDFORMA_PAGO_VISA])" -->
+<!-- SUBQUERY="SELECT sum(cantlalbaran) AS unidades, sum(pvpivainclalbaran * cantlalbaran)::NUMERIC(12,2) AS sumatotal FROM lalbaran NATURAL LEFT JOIN articulo  WHERE idalbaran IN (SELECT idalbaran FROM albaran WHERE idz IN (SELECT max(idz) AS id FROM z) AND idforma_pago = [CONF_IDFORMA_PAGO_VISA])" -->
 <!-- LEFTJUSTIFIED "Total Tickets Visa:" "35" " " "TRUE"--> <!-- RIGHTJUSTIFIED "[numtickets]" "10" " " "TRUE" -->
 <!-- LEFTJUSTIFIED "Unidades Vendidas Visa:" "35" " " "TRUE"--> <!-- RIGHTJUSTIFIED "[unidades]" "10" " " "TRUE" -->
-<!-- LEFTJUSTIFIED "Total Vendido Visa:" "35" " " "TRUE"--> <!-- RIGHTJUSTIFIED "[total]" "10" " " "TRUE" --><!-- END SUBQUERY --> <!-- END QUERY --> 
+<!-- LEFTJUSTIFIED "Total Vendido Visa:" "35" " " "TRUE"--> <!-- RIGHTJUSTIFIED "[sumatotal]" "10" " " "TRUE" --><!-- END SUBQUERY --> <!-- END QUERY --> 
 
 <!-- QUERY="SELECT count(idalbaran)::NUMERIC(12,2) AS numtickets FROM albaran WHERE idz IN (SELECT max(idz) AS id FROM z) AND ticketalbaran = TRUE" -->
-<!-- SUBQUERY="SELECT sum(cantlalbaran) AS unidades, sum(pvpivainclalbaran * cantlalbaran)::NUMERIC(12,2) as total FROM lalbaran NATURAL LEFT JOIN articulo  WHERE idalbaran IN (SELECT idalbaran FROM albaran WHERE idz IN (SELECT max(idz) AS id FROM z))" -->
+<!-- SUBQUERY="SELECT sum(cantlalbaran) AS unidades, sum(pvpivainclalbaran * cantlalbaran)::NUMERIC(12,2) AS sumatotal FROM lalbaran NATURAL LEFT JOIN articulo  WHERE idalbaran IN (SELECT idalbaran FROM albaran WHERE idz IN (SELECT max(idz) AS id FROM z))" -->
 <!-- LEFTJUSTIFIED "Total Tickets:" "35" " " "TRUE"--> <!-- RIGHTJUSTIFIED "[numtickets]" "10" " " "TRUE" -->
 <!-- LEFTJUSTIFIED "Unidades Vendidas:" "35" " " "TRUE"--> <!-- RIGHTJUSTIFIED "[unidades]" "10" " " "TRUE" -->
-<!-- LEFTJUSTIFIED "Total Vendido:" "35" " " "TRUE"--> <!-- RIGHTJUSTIFIED "[total]" "10" " " "TRUE" --><!-- END SUBQUERY --><!-- END QUERY -->
+<!-- LEFTJUSTIFIED "Total Vendido:" "35" " " "TRUE"--> <!-- RIGHTJUSTIFIED "[sumatotal]" "10" " " "TRUE" --><!-- END SUBQUERY --><!-- END QUERY -->
 <!-- SETJUSTIFICATION "CENTER" -->
 Informe por familias
 ------------------------------------------
 <!-- SETCHARACTERPRINTMODE " " --><!-- SETJUSTIFICATION "LEFT" -->
-<!-- QUERY="SELECT * FROM familia" --><!-- SETUNDERLINEMODE "1" -->[codigofamilia] [nombrefamilia]<!-- SETUNDERLINEMODE "0" --><!-- SUBQUERY="SELECT sum(cantlalbaran) AS unidades, sum(pvpivainclalbaran * cantlalbaran)::NUMERIC(12,2) as total FROM lalbaran NATURAL LEFT JOIN articulo  WHERE idalbaran IN (SELECT idalbaran FROM albaran WHERE idz IN (SELECT max(idz) AS id FROM z))  AND idfamilia = [idfamilia]"-->
+<!-- QUERY="SELECT * FROM familia" --><!-- SETUNDERLINEMODE "1" -->[codigofamilia] [nombrefamilia]<!-- SETUNDERLINEMODE "0" --><!-- SUBQUERY="SELECT sum(cantlalbaran) AS unidades, sum(pvpivainclalbaran * cantlalbaran)::NUMERIC(12,2) AS sumatotal FROM lalbaran NATURAL LEFT JOIN articulo  WHERE idalbaran IN (SELECT idalbaran FROM albaran WHERE idz IN (SELECT max(idz) AS id FROM z))  AND idfamilia = [idfamilia]"-->
 <!-- LEFTJUSTIFIED "Unidades Vendidas:" "20" " " "TRUE"--> <!-- RIGHTJUSTIFIED "[unidades]" "10" " " "TRUE" -->
-<!-- LEFTJUSTIFIED "Total Vendido:" "20" " " "TRUE"--> <!-- RIGHTJUSTIFIED "[total]" "10" " " "TRUE" -->
+<!-- LEFTJUSTIFIED "Total Vendido:" "20" " " "TRUE"--> <!-- RIGHTJUSTIFIED "[sumatotal]" "10" " " "TRUE" -->
 <!-- END SUBQUERY --> 
 <!-- END QUERY --> 
 
