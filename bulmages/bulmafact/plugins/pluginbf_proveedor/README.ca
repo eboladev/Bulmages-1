@@ -1,30 +1,22 @@
 #######
 #Plugins
 #######
-#README.es
+#README.ca
 #20080501
 
-Nombre: Proveedores
+Nombre: Proveïdors
 
 Biblioteca: libpluginbf_proveedor.so
 
-Descripción: Descripción: <H1><IMG SRC="@CMAKE_INSTALL_PREFIX@/share/bulmages/imagesrc/images/oxygen/actions/supplier.svg" WIDTH="100"/><BR>Gestion de proveedores</H1>
-<P> Permite realizar la gestion de proveedores de la empresa. Mostrando el listado de proveedores y permitiendo
-hacer altas, bajas y modificaciones</P>
-<P> Este plugin es imprescindible para todos aquellos modelos de negocio donde se trabaje con proveedores</P>
-<P> Tambien sirve como base muchos otros plugins que extienden la capacidad de éste</P>
-<P> Una vez instalado el plugin tendremos dos nuevas opciones en el menú <B>Listado de proveedores</B> y <B>Nuevo Proveedor</B></P>
-<H2> <IMG SRC="@CMAKE_INSTALL_PREFIX@/share/bulmages/imagesrc/images/oxygen/actions/supplier_list.svg" WIDTH="22"/>Listado de Proveedores</H2>
-<P> Esta pantalla nos muestra los proveedores dados de alta en la empresa. Desde aqui podremos crear, modificar o borrar los proveedores mediante los botones
-situados en la parte superior de la ventana. Además podremos obtener en forma de listado los datos más importantes
-de nuestros proveedores pudiendo configurar su presentación para ser impresos o exportados a otros formatos.</P>
-<P> Desde esta ventana además podremos establecer opciones de filtrado con las que podremos ver aquellos
-proveedores que cumplan unas características determinadas.</P>
-<H2> <IMG SRC="@CMAKE_INSTALL_PREFIX@/share/bulmages/imagesrc/images/oxygen/actions/supplier.svg" WIDTH="22"/>Nuevo Proveedor</H2>
-<P>Mediante esta opción podremos crear un nuevo proveedor. Al iniciar esta acción aparecerá una nueva ventana que nos
-presentará todos los campos a rellenar del proveedor. Es imprescindible poner el cif del proveedor para que el proveedor esté
-bien creado. Una vez rellenados los campos podremos guardar la ficha o darle al botón aceptar para tener los datos 
-introducidos en el sistema. Si por el contrario pulsamos sobre cancelar podremos cerrar la ventana sin guardar los cambios</P>
+Descripción: Descripción: <H1><IMG SRC="@CMAKE_INSTALL_PREFIX@/share/bulmages/imagesrc/images/oxygen/actions/supplier.svg" WIDTH="100"/><BR>Gestió de proveïdors</H1>
+<P> Permet realitzar la gestió de proveïdors de l'empresa. Mostra el llista de proveïdors i permet fer altes, baixes i modificacions.</P>
+<P> Aquest plugin és imporescindible per a tots aquells models de ngeoci on es treballi amb proveïdors.</P>
+<P> També serveix com a base de molts altre plugins que estenen la capacitat d'aquest plugin.</P>
+<P>En carregar el plugin tindrem dues noves entrades de menú <B>Llistat de proveïdors <IMG SRC="@CMAKE_INSTALL_PREFIX@/share/bulmages/imagesrc/images/oxygen/actions/supplier_list.svg" WIDTH="22"/></B> des de la qual accedirem al llistat de proveïdors i <B>Nou Proveïdor</B>
+<P> Aquest pantalla ens mostra els proveïdors donats d'alta a l'empresa. Des d'aquí podrem crear, modificar i esborrar els proveïdors mitjançant els botons situats a la part superior de la finestra. A més podrem obtenir en forma de llistat les dades més importants dels nostres proveïdors podent configurar la seva presentació per ser imprimits o exportats a altres formats.</P>
+<P> Des de aquest finestra podrem establir opcions de filtrat amb les podrem veure aquells proveïdors que compleixin amb unes característiques determinades.</P>
+<H2> <IMG SRC="@CMAKE_INSTALL_PREFIX@/share/bulmages/imagesrc/images/oxygen/actions/supplier.svg" WIDTH="22"/>Nou Proveïdor</H2>
+<P>Mitjançant aquest opció podrem crear un nou proveïdor. En iniciar aquesta acció apareixerà una nova finestra que ens presentarà tots els camps a omplir del proveïdor. És imprescindibel posar el cif del proveïdors perque`el proveïdor estigui ben creat. Un cop omplerts els camps podrem desar la fitxa o donar-li al botó acceptar per tenir les dades introduïdes al sistema. Si pel contrari pulsem sobre cancel·lar podrem tancar la finestra sense desar els canvis.</P>
 <B>Author:</B>Tomeu Borrás (tborras@conetxia.com)<BR>
 <HR>
 

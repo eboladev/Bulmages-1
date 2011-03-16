@@ -1,16 +1,15 @@
 #######
 #Plugins
 #######
-#README.es
+#README.ca
 #20080501
 
-Nombre: Promedios en artículos
+Nombre: Mitjanes d'articles
 
 Biblioteca: libpluginbf_promedios.so
 
-Descripción: <H1>Promedios en articulos</H1>
-<P>Agrega una pestaña a la ficha de articulos que muestra información relativa a
-las compras y ventas de dicho artículo y algunos datos estadísticos adicionales sobre el mismo.</P>
+Descripción: <H1>Mitjanes d'articles</H1>
+<P>Afegeix una pestanya a la fitxa d'articles que mostra informació relativa a les compres i vendes d'aquest article i algunes dades estadístiques addicionals sobre l'article.</P>
 <B>Author:</B>Tomeu Borrás (tborras@conetxia.com)<BR>
 <HR>
 
