@@ -87,7 +87,7 @@ CREATE OR REPLACE FUNCTION actualizarevision() RETURNS INTEGER AS '
 DECLARE
 	asd RECORD;
 BEGIN
-	SELECT INTO asd * FROM configuracion WHERE nombre=''PluginBf_IVAIncluido'';
+	SELECT INTO asd * FROM configuracion WHERE nombre=''PluginBf_BulmaTPV'';
 	IF FOUND THEN
 		UPDATE configuracion SET valor=''0.12.1-0000'' WHERE nombre=''PluginBf_BulmaTPV'';
 	ELSE

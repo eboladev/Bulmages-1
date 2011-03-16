@@ -16,9 +16,9 @@ Descripción: <H1>TPV</H1>
 
 ParmBD: 
 
-ArchivoSQLpatch: 
+ArchivoSQLpatch: pluginbf_bulmatpv.sql
 
-ArchivoSQLdeins: 
+ArchivoSQLdeins: pluginbf_bulmatpv-rm.sql
 
 Dependencias:
 

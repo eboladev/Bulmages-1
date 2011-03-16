@@ -17,9 +17,9 @@ producidas por un TPV.</P>
 
 ParmBD: 
 
-ArchivoSQLpatch: 
+ArchivoSQLpatch: pluginbf_bulmatpv.sql
 
-ArchivoSQLdeins: 
+ArchivoSQLdeins: pluginbf_bulmatpv-rm.sql
 
 Dependencias:
 
