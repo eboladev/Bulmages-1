@@ -1,15 +1,15 @@
 #######
 #Plugins
 #######
-#README.es
+#README.ca
 #20080501
 
-Nombre: Modo Debug
+Nombre: Mode Debug
 
 Biblioteca: libpluginbf_debug.so
 
-Descripción: <H1>Modo Debug</H1>
-<P>Agrega en el menu ver la opcion Modo Debug que comienza a hacer las trazas del programa para poder ser depurado, tambián habilita la aparicion de warnings (si se producen) en ventanas emergentes. <br><br>Sólo tiene interés para los desarrolladores.</P>
+Descripción: <H1>Mode Debug</H1>
+<P>Afegeix al menú veure l'opció Mode Debug que comença a fer les traces del programa per poder ser depurat, també habilita l'aparició de warning (si es produeixen) a finestres emergents. <br><br>Sols té interès per als desenvolupadors.</P>
 <B>Author:</B>Tomeu Borrás (tborras@conetxia.com)<BR>
 <HR>
 
@@ -27,4 +27,4 @@ Categorias: Utilitats avançades;
 
 Orden: 90
 
-Comentarios: Sólo tiene interés para los desarrolladores.
+Comentarios: Sols té interès per als desenvolupadors.
