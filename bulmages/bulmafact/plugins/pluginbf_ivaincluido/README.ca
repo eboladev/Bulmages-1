@@ -1,15 +1,15 @@
 #######
 #Plugins
 #######
-#README.es
+#README.ca
 #20080501
 
-Nombre: IVA Incluido
+Nombre: IVA Inclòs
 
 Biblioteca: libpluginbf_ivaincluido.so
 
-Descripción: <H1>IVA Incluido</H1>
-<P>Permite trabajar con articulos que llevan el IVA incluido en el precio en lugar de separar la base imponible del IVA.</P>
+Descripción: <H1>IVA Inclòs</H1>
+<P>Permet treballar amb articles que porten l'IVA inclòs al preu en lloc de seperar la base imposable de l'IVA.</P>
 <B>Author:</B>Tomeu Borrás (tborras@conetxia.com)<BR>
 <HR>
 

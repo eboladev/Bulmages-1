@@ -1,18 +1,17 @@
 #######
 #Plugins
 #######
-#README.es
+#README.ca
 #20080501
 
-Nombre: IVA y Tasas de IVA
+Nombre: IVA i Tases d'IVA
 
 Biblioteca: libpluginbf_iva.so
 
 Descripción: <H1><IMG SRC="@CMAKE_INSTALL_PREFIX@/share/bulmages/imagesrc/images/oxygen/actions/vat.svg" WIDTH="100"/><BR>IVA</H1>
-<P>Gestionar los Impuestos sobre el Valor Añadido.</P>
-<P>Mediante este plugin podremos gestionar los impuestos a aplicar sobre la facturación.
-Una vez instado tendremos en el menu Maestro las entradas "<B>Tipos de IVA</B>" y "<B>Tasas de IVA</B>" con las que podremos gestionar
-los tipos de impuesto a aplicar y las tasas en porcentaje que se aplican a dichos impuestos</P>
+<P>Gestiona els Impostos sobre el Valor Afegit.</P>
+<P>Mitjançant aquest plugin podrem gestionar els impostos a aplicar sobre la facturació.
+Un cop instat tindrem al menú Mestre les entrades "<B>Tipus d'IVA</B>" i "<B>Tases d'IVA</B> amb les que podrem gestionar els tipus de l'impost a aplicar i les tases de percentatge que s'apliquen a aquests impostos.</P>
 <B>Author:</B>Tomeu Borrás (tborras@conetxia.com)<BR>
 <HR>
 

@@ -1,15 +1,15 @@
 #######
 #Plugins
 #######
-#README.es
+#README.ca
 #20080501
 
-Nombre: Inventarios.
+Nombre: Inventaris.
 
 Biblioteca: libpluginbf_inventario.so
 
-Descripción: <H1>Inventarios</H1>
-<P>Creación de inventarios y control de stock. Inventarios en múltiples almacenes y con rehubicación.</P>
+Descripción: <H1>Inventaris</H1>
+<P>Creacó d'inventaris i control d'estoc. Inventaris en mútiples magatzems i amb reubicació.</P>
 <B>Author:</B>Tomeu Borrás (tborras@conetxia.com)<BR>
 <HR>
 
@@ -27,4 +27,4 @@ Categorias: Facturació genèrica; Experimentals;
 
 Orden: 550
 
-Comentarios: Imprescindible en los sistema de control de stock.
+Comentarios: Imprescindible al control d'estoc.
