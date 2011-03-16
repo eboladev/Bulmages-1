@@ -1,16 +1,15 @@
 #######
 #Plugins
 #######
-#README.es
+#README.ca
 #20080501
 
-Nombre: Demostración del funcionamiento de los plugins
+Nombre: Demostració del funcionament dels plugins
 
 Biblioteca: libpluginbf_example.so
 
-Descripción: <H1>Ejemplo</H1>
-<P>Sirve para demostrar el funcionamiento de los plugins.<br><br>Es, principalmente
-un ejemplo de programacion.</P>
+Descripción: <H1>Exemple</H1>
+<P>Serveis per demostrar el funcionament dels plugins.<br><br>És, principalment un exemple de programació.</P>
 <B>Author:</B>Tomeu Borrás (tborras@conetxia.com)<BR>
 <HR>
 
@@ -30,19 +29,17 @@ Orden: 90
 
 Comentarios: 
 
-Compilacion
-===========
+Compilació
+==========
 
-El plugin se compilará con el resto de bulmages y  se ubicara en bulmages/installbulmages/plugins con el nombre libplugin.so
+El plugin es compilarà amb la resta de bulmages i s'ubicarà a bulmages/installbulmages/plugins amb el nom de libplugin.so
 
 
+Instal·lació
+============
 
-Instalacion
-===========
+Configureu la directiva CONF_PLUGINS_BULMAFACT perquè contingui la crida a aquest plugin. Aquesta directiva pot ser a mode global al fitxer /etc/bulmages.conf o personalitzada amb els fitxers /etc/bulmafat_<<database>>.conf
 
-Configure la directiva CONF_PLUGINS_BULMAFACT para que contenga la llamada a este plugin. Dicha directiva
-puede ser a modo global en el archivo /etc/bulmages.conf o personalizada con los archivos /etc/bulmafact_<<database>>.conf
-
-Copie todos los archivos *.qm al directorio /usr/share/bulmages/traducciones
+Copiï totes els fitxers *.qm al directori /usr/share/bulmages/traducciones .
 
 

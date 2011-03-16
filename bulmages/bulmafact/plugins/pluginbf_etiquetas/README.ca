@@ -1,15 +1,15 @@
 #######
 #Plugins
 #######
-#README.es
+#README.ca
 #20080501
 
-Nombre: Crear etiquetas
+Nombre: Crear etiquetes
 
 Biblioteca: libpluginbf_etiquetas.so
 
-Descripción: <H1>Crear etiquetas</H1> 
-<P>Permite la creación de etiquetas para los artículos, la etiqueta es personalizable mediante el archivo RML correspondiente.<br>Útil en comercios donde hay que etiquetar los productos.</P>
+Descripción: <H1>Crear etiquetes</H1> 
+<P>Permet la creació d'etiquetes per als articles, l'etiqueta és personalitzada mitjançant el fitxer RML corresponent.<br>Útil a comerços on s'han d'etiquetar els productes.</P>
 <B>Author:</B>Tomeu Borrás (tborras@conetxia.com)<BR>
 <HR>
 
@@ -28,4 +28,5 @@ Categorias: Experimentals;
 
 Orden:
 
-Comentarios: Útil en comercios donde hay que etiquetar los productos.
+Comentarios: Útil a comerços on s'han d'etiquetar els productes.
+
