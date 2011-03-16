@@ -1,20 +1,20 @@
 #######
 #Plugins
 #######
-#README.es
+#README.ca
 #20080501
 
-Nombre: Formas de pago
+Nombre: Formes de pagament
 
 Biblioteca: libpluginbf_formasdepago.so
 
-Descripción: <H1><IMG SRC="@CMAKE_INSTALL_PREFIX@/share/bulmages/imagesrc/images/oxygen/actions/payment_method_list.svg" WIDTH="100"/><BR>Formas de Pago</H1>
-<P>Gestionar las formas de pago.</P>
-<P>Con este plugin podemos agregar, modificar y eliminar las distintas formas de pago que utilizan nuestros clientes y proveedores con nosotros.
-Es imprescindible para utilizar presupuestos, pedidos, albaranes y facturas donde se solicita la forma de pago.
-También aparece en los clientes y proveedores la forma de pago preferida (o por defecto).
-En las gestiones bancarias y en el TPV se utilizan los identificadores de forma de pago para determinar si es un pago bancario o es un pago con VISA.</P>
-<P>Los parametros en los archivos de configuracion son <B>CONF_IDFORMA_PAGO_VISA</B> y <B>CONF_IDFORMA_PAGO_CONTADO</B></P>
+Descripción: <H1><IMG SRC="@CMAKE_INSTALL_PREFIX@/share/bulmages/imagesrc/images/oxygen/actions/payment_method_list.svg" WIDTH="100"/><BR>Formes de Pagament</H1>
+<P>Gestionar les formes de pagament.</P>
+<P>Amb aquest plugin podem afegir, modificar i eliminar les diverses formes de pagament que utilitzen el nostres clients i proveïdores amb nosaltres.
+És imprescindible per utilitzar pressupostos, comandes, albarans i factures on se sol·licita la forma de pagament.
+També apareix als clients i als proveïdors la forma de pagament preferida (o per defecte). 
+A les gestions bancàries i al TPV s'utilitzen els identificadors de forma de pagament per determinar si és un pagament bancari o és un pagament amb VISA.</P>
+<P>Els paràmetres als fitxers de configuració són <B>CONF_IDFORMA_PAGO_VISA</B> y <B>CONF_IDFORMA_PAGO_CONTADO</B></P>
 <B>Author:</B>Tomeu Borrás (tborras@conetxia.com)<BR>
 <HR>
 
