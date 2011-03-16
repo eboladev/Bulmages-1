@@ -1,15 +1,15 @@
 #######
 #Plugins
 #######
-#README.es
+#README.ca
 #20080501
 
-Nombre: Trabajo con múltiples documentos.
+Nombre: Trebaell amb múltiple documents
 
 Biblioteca: libpluginbf_multiimprimir.so
 
-Descripción: <H1>Impresiones Multiples</H1>
-<P>Permite la selección de multiples documentos (presupuestos, pedidos, albaranes o facturas) y realizar algunas operacions comunes a todos ellos con un sólo click (imprimir, enviar por e-mail, etc).</P>
+Descripción: <H1>Impressions Múltiples</H1>
+<P>Permet la selecció de múltiples documents (pressupostos, comandes, albarans o factures) i realitzar algunes operacions comuns a tots ells amb un sol clic (imprimar, enviar per e-mail, etc.).</P>
 <B>Author:</B>Tomeu Borrás (tborras@conetxia.com)<BR>
 <HR>
 
@@ -27,4 +27,4 @@ Categorias: Utilitats genèriques;
 
 Orden: 900
 
-Comentarios: Agrega varios botones a los listados en los que podemos hacer la manipulación múltiple.
+Comentarios: Afegeix diversos botons als llistats als quals podem fer la manipulació múltiple.

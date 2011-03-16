@@ -1,19 +1,19 @@
 #######
 #Plugins
 #######
-#README.es
+#README.ca
 #20080501
 
-Nombre: Modificadores de Articulos
+Nombre: Modificadors d'Articles
 
 Biblioteca: libpluginbf_modificadores.so
 
-Descripción: <H1>Modificadores de Articulos</H1>
-<P>Permite establecer alteraciones de artículo. Por ejemplo en un restaurante
-nos  dejará especificar si queremos un filete muy hecho, poco hecho o si
-queremos la bebida sin cubitos, etc</P>
-<P> Para ello en el menu de articulos aparece la opcion modificadores que nos
-permite introducir todos aquellos modificadores que consideremos oportunos</P>
+Descripción: <H1>Modificadors d'Articles</H1>
+<P>Permet establir alteracions d'article. Per exemple a un restaurant 
+ens deixarà especificar si volem un filet molt fet, poc fet o si volem una
+beguda sense gel, etc.</P>
+<P> Per a això al menú d'articles apareix l'opció modificadors que ens permet 
+introduir totes aquells modificadors que considerem oportuns.</P>
 <B>Author:</B>Tomeu Borrás (tborras@conetxia.com)<BR>
 <HR>
 
