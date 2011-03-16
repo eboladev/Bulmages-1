@@ -572,9 +572,10 @@ int BtTicket::guardar()
             item = listaLineas() ->at ( i );
             int f = item->setDbValue ( "idalbaran", id );
             item->setDbValue ( "ordenlalbaran", QString::number ( i ) );
-            item->DBsave ( id1 );
+            /// TODO: Recargo de equivalencia siempre a 0 ?? Algo hay que poner.
+            item->setDbValue ( "reqeqlalbaran", QString::number ( 0 ) );
+            item->guardar();
         } // end for
-	    fprintf(stderr, "G\n");
         
         setDbValue("idalbaran", id);
         BlDbRecordSet *cur = mainCompany() ->loadQuery ( "SELECT * FROM albaran WHERE idalbaran = " + id );
@@ -628,6 +629,8 @@ void BtTicket::borrarLinea ( BlDbRecord *linea )
     } else {
         listaLineas() ->removeAt ( listaLineas() ->indexOf ( linea ) );
     } // end if
+    
+    linea->borrar();
 }
 
 
