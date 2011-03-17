@@ -1,15 +1,15 @@
 #######
 #Plugins
 #######
-#README.es
+#README.ca
 #20080501
 
-Nombre: Tipos de Trabajo
+Nombre: Tipus de Treball
 
 Biblioteca: libpluginbf_tipotrabajo.so
 
-Descripción: <H1>Tipos de Trabajo</H1>
-<P>Permite organizar los trabajadores en sus distintas áreas de operacion o conocimiento. Sirve para clasificar los trabajadores en grupos que serán utilizados en la generación de cuadrantes.</P>
+Descripción: <H1>Tipus de Treball</H1>
+<P>Permet organitzar els treballadors a les seves diferents àrees d'operació o coneixement. Serveix per classificar els treballadors en grups que seran utilitzats en la generació de quadrants.</P>
 <B>Author:</B>Tomeu Borrás (tborras@conetxia.com)<BR>
 <HR>
 
@@ -27,4 +27,4 @@ Categorias: Utilitats genèriques;Experimentals;
 
 Orden: 900
 
-Comentarios: Funciona en conjuncion con el plugin de cuadrantes.
+Comentarios: Funciona en conjunció amb el plugin de quadrants.

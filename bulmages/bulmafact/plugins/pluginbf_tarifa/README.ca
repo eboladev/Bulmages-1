@@ -1,15 +1,15 @@
 #######
 #Plugins
 #######
-#README.es
+#README.ca
 #20080501
 
-Nombre: Tarifas
+Nombre: Tarifes
 
 Biblioteca: libpluginbf_tarifa.so
 
-Descripción: <H1>Tarifas</H1>
-<P>Permite el control de listas de precios a las que se suscribe cada cliente. Agrega la gestión de tarifas a los articulos y la selección de las mismas en los clientes.</P>
+Descripción: <H1>Tarifes</H1>
+<P>Permet el control de llistes de preus als quals se subscriu cada client. Afefeix la gestió de tarifes als articles i la selecció d'aquestes tarifes als clients.</P>
 <B>Author:</B>Tomeu Borrás (tborras@conetxia.com)<BR>
 <HR>
 
