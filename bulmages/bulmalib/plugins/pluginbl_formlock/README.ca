@@ -1,17 +1,16 @@
 #######
 #Plugins
 #######
-#README
+#README.ca
 #20080501
 
-Nombre: Bloqueo de fichas
+Nombre: Bloqueig de fitxes
 
 Biblioteca: libpluginbl_formlock.so
 
-Descripción: <H1>Bloqueos</H1>
-<P>Detecta la apertura duplicada de fichas y avisa al usuario de que la
-ficha que esta intentando abrir ya esta siendo utilizada. El plugin permite ver la ficha aunque desabilita los botones de guardado, eliminación y de aceptar.</P>
-<P>Este plugin es importante en entornos multi-usuario ya que sin el se puede cometer facilmente un cambio que sea borrado por otro usuario.</P>
+Descripción: <H1>Bloquejos</H1>
+<P>Deteca l'obertura duplicada de fitxes i avisa l'usuari que la fitxa que està intentan obrir ja està sent utilitzada. El plugin permet veure la fitxa tot i que deshabilita els botons de desar, eliminar i acceptar.</P>
+<P>Aquest plugin és important a entorns multi-usuari ja que sense ells es pot cometre fàcilment un canvi que sigui esborrat per un altre usuari.</P>
 <BR>
 <IMG SRC="@CMAKE_INSTALL_PREFIX@/share/bulmages/images/logopeq.png"/>
 <HR>

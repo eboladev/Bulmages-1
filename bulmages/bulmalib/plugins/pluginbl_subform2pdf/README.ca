@@ -1,18 +1,16 @@
 =======
 Plugins
 =======
-#README
+#README.ca
 20080502
 
-Nombre: Imprimir subformularios
+Nombre: Imprimir subformularis
 
 Biblioteca: libpluginbl_subform2pdf.so
 
-Descripción: <H1>Impresion de subformularios</H1>
-<P>Permite la impresion de cualquier subformulario en formato PDF</P>
-<P>Una vez instalado el plugin al pulsar con el boton derecho sobre cualquier subformulario
-aparecera la opcion <B>Imprimir Subformulario</B> en el menu contextual que generara un
-documento PDF con los contenidos del mismo</P>
+Descripción: <H1>Impressió de subformularis</H1>
+<P>Permet la impressío de qualsevol subformulari en format PDF<P>
+<P>Un cop instal·lat el plugin en pulsar amb el botó dret sobre qualsevol subformulari apareixerà l'opcó <B>Imprimir Subformulari</B> al menú contextrual que generarà un document PDF amb els continguts del subformulari.</P>
 <BR>
 <IMG SRC="@CMAKE_INSTALL_PREFIX@/share/bulmages/images/logopeq.png"/>
 <HR>
@@ -31,7 +29,7 @@ Categorias: Utilitats genèriques;
 
 Orden: 50
 
-Comentarios: Basado en el plugin 'pluginsubformsxc'. (c) 2007 Conetxia Soluciones Informaticas.
+Comentarios: Basat en el plugin 'pluginsubformsxc'. (c) 2007 Conetxia Soluciones Informaticas.
 Software Bajo Licencia G.P.L.
 
 

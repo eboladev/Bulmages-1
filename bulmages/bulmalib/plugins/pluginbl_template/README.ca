@@ -1,23 +1,19 @@
 =======
 Plugins
 =======
-#README
+#README.ca
 20080502
 
-Nombre: Informes personalizados por ficha
+Nombre: Informes personalitzats per fitxa
 
 Biblioteca: libpluginbl_template.so
 
-Descripción: <H1>Informes Personales</H1>
-<P style="align:justify;">Permite la generacion de informes personalizados relacionados con
-una ficha generica. Sin necesidad de programar. Para ello utiliza directrices y
-marcas en el RML.</P>
-<P style="align:justify;">Una vez instalado al pulsar con el boton derecho en cualquier parte vacia de una ficha
-aparecera la opcion informes personales que desplegara todos los informes disponibles para
-dicha ficha</P>
-<P style="align:justify;">Se pueden crear informes personalizados generando plantillas RML que contengan la subcadena
-impers_tabla en el nombre del fichero .rml, en el directorio de plantillas, donde (tabla) es la tabla sobre la que actua el informe (Ver opciones avanzadas de ficha
-si se desconoce el nombre de la tabla</P>
+Descripción: <H1>Informes Personals</H1>
+<P style="align:justify;">Permet la generació d'informes personalitzats relacionats amb una fitxa genèrica. Sense necessitat de programar. Per a això utilitza directrius i maruqe al RML.</P>
+<P style="align:justify;">Un cop instal·lat en pulsasr amb el botó dret a qualsevol part buida d'una fitxa 
+apareixerà l'opcío informes personals que desplegarà tots els informes disponibles per a aqusta fitxa.</P>
+<P style="align:justify;">Es poden crear informes personalitzats generant plantilles RML que continguin la subcadena impers_tabla al nom del fitxer .rml al directori de plantilles, on (taula) és la taula sobre la qual actua l'informe (Veure opcions avançades de fitxa
+si es desconeix el nom de la taula.</P>
 <BR>
 <IMG SRC="@CMAKE_INSTALL_PREFIX@/share/bulmages/images/logopeq.png"/>
 <HR>
@@ -38,5 +34,5 @@ Orden: 60
 
 Comentarios:
 
-(c) 2007 Asociación IGLUES. Software Bajo Licencia G.P.L.
+(c) 2007 Associació IGLUES. Software sota Llicència G.P.L.
 

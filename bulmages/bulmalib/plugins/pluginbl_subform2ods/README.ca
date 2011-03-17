@@ -1,20 +1,17 @@
 =======
 Plugins
 =======
-#README
+#README.ca
 20080502
 
-Nombre: Exportar subformularios a ODS.
+Nombre: Exportar subformularis a ODS.
 
 Biblioteca: libpluginbl_subform2ods.so
 
 Descripción: <H1>Exportar a ODS</H1>
-<P>Permite la exportación de cualquier subformulario a formato de hoja
-de cálculo. </P>
-<P>Una vez instalado el plugin al pulsar con el boton derecho sobre cualquier subformulario aparecera
-la opcion de menu contextual <B>Exportar a hoja de calculo ODS</B> que hara la exportacion del 
-subformulario a formato <B>ODS</B></P>
-<P>Puede seleccionarse el programa que se desea utilizar por defecto para abrir este tipo de documentos mediante el parametro de configuración <B>CONF_ODS</B>   que por defecto usa   <B>xdg-open</B> que viene a ser el programa por defecto de Linux.</P>
+<P>Permet l'exportació de qualsevol subformulari a format de full de càlcul.</P>
+<P>Un cop instal·lat el plugin en pulsar amb el botó dret sobre qualsevol subformulari apareixerà l'opcó de menú contextrual <B>Exportar a full de càlcul ODS</B> que farà l'exportació del subformulari a format <B>ODS.</B></P>
+<P>Pot seleccionar-se el programa que es desitja utilitzar per defecte per obrir aquest tipus de docuements mitjançatn el paràmetre de configuració <B>CONF_ODS</B>, que per defecte utilitza <B>xdg-open</B> que és el programa per defecte de linx.</P>
 <BR>
 <IMG SRC="@CMAKE_INSTALL_PREFIX@/share/bulmages/images/logopeq.png"/>
 <HR>
@@ -33,7 +30,7 @@ Categorias: Utilitats genèriques;
 
 Orden: 50
 
-Comentarios: Agrega la opción de menu desplegable exportar a hoja de cálculo en
-todos los subformularios. ODS es la hoja de calculo de formato Open Document.
+Comentarios: Afegeix l'opció de menú desplegable exportar a full de càlcul a tots els subformularis. ODS és el full de càlcul de format Open Docment.
+
 
 

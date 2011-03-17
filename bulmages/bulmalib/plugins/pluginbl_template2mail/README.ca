@@ -1,16 +1,16 @@
 =======
 Plugins
 =======
-#README
+#README.ca
 20080502
 
-Nombre: Informes personalizados por e-mail
+Nombre: Informes personalitzats per e-mail
 
 Biblioteca: libpluginbl_template2mail.so
 
-Descripción: <H1>Informes personalizados por e-mail</H1>
-<P>Permite el envio por correo electronico de los informes personalizados utilizados con el plugin de Informes Personalizados.</P>
-<P>El programa de correo electronico soportado es <B>kmail</B></P>
+Descripción: <H1>Informes personalitzats per e-mail</H1>
+<P>Permet l'enviament per correu electrònic dels informes personalitzats utilitzsts amb el plugin d'Informes Personalitzats.</P>
+<P>El programa de correu electrònic suportat és <B>kmail</B></P>
 <BR>
 <IMG SRC="@CMAKE_INSTALL_PREFIX@/share/bulmages/images/logopeq.png"/>
 <HR>
@@ -29,10 +29,10 @@ Categorias: Utilitats genèriques;Experimentals;
 
 Orden: 60
 
-Comentarios: Su funcionamiento se basa en que haya un documento RML cuyo nombre
-contenga el nombre de la tabla a la que representa la ficha. De este modo el
-informe aparecerá como opcion al pulsar sobre la opcion informes personalizados
-en el menu contextual de la ficha.
+Comentarios: El seu funcionament es basa en què hi hagi un document RML 
+el nom del qual contingui el nom de la taula a la qual representa la fitxa. 
+D'aquesta manera l'informe apareixerà com a opció al pulsar sobre l'opció 
+informes personalitzats al menú contextual de la fitxa.
 
 (c) 2008 Asociación IGLUES. Software Bajo Licencia G.P.L.
 

@@ -1,19 +1,15 @@
 #######
 #Plugins
 #######
-#README.es
+#README.ca
 #20080501
 
-Nombre: Embeber aplicaciones
+Nombre: Embeure aplicacions
 
 Biblioteca: libpluginbl_embed.so
 
-Descripción: <H1>Embeber aplicaciones</H1>
-<P>Presenta dos opciones en el menu Herramienas Embeber Aplicacion hace que el cursor se convierta en
-una cruz con la que podemos seleccionar una aplicación corriendo en el sistema, dicha aplicación pasará
-a ser una ventana más de BulmaFact. La opcion Docked Aplication tiene un funcionamiento similar pero hace que la aplicación se
-presente como una ToolBar. Util para trabajos en ventana completa donde queremos tener algunas aplicaciones
-Visibles sin perder la capacidad de controlar el correo o el jabber.</P>
+Descripción: <H1>Embeure aplicacions</H1>
+<P>Presenta dues opcions al menú Eines. Embeure Aplicació fa que el cursor es coverteixi en uan creu amb la qual podem seleccionar una aplicació corrent al sistema. Aquesta aplicació passarà a ser una finestra més del Bulmafact. L'opció Docked Application té un funcionament similar però fa que l'aplicació es presenti com un Toolbar. Útil per a treballs a finestra completa on volem tenir algunes aplicacions visibles sense perdre la capacitat de controlar el correu o el jabber.</P>
 <BR>
 <IMG SRC="@CMAKE_INSTALL_PREFIX@/share/bulmages/images/logopeq.png"/>
 <HR>
@@ -32,5 +28,5 @@ Categorias: Utilitats genèriques;Experimentals;
 
 Orden: 90
 
-Comentarios: Util para trabajos en ventana completa donde queremos tener algunas aplicaciones
-Visibles sin perder la capacidad de controlar el correo o el jabber.
+Comentarios: Útil per a treballs a finestra completa on volem tenir algunes aplicaciones visible sense perdre la capacitat de controlar el correu o el jabber.
+

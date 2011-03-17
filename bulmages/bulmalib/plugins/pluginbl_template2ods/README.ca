@@ -1,25 +1,21 @@
 =======
 Plugins
 =======
-#README
+#README.ca
 20080502
 
-Nombre: Informes personalizados de ficha en ODS
+Nombre: Informes personalitzats de fitxa en ODS
 
 Biblioteca: libpluginbl_template2ods.so
 
-Descripción: <H1>Informes personalizados ODS</H1>
-<P>Permite la generacion de informes personalizados relacionados con
-una ficha generica. Los informes realizados mediante plantillas PYS (Python) generan
-documentos en hoja de calculo.</P>
-<P>Una vez instalado el plugin al pulsar con el botón derecho sobre cualquier zona en blanco de la pantalla
-aparecera una nueva opcion de menu <B>Informes Personales ODS</P> que desplegara los posibles informes personales
-que haya para dicha ficha</P>
-<P>Las plantillas PYS son, básicamente, archivos en python que antes de su ejecucion son interpretados por
-BulmaGes sustituyendo los tags especiales por sus correspondientes valores</P>
-<P>Para ligar una plantilla con una ficha el programa buscara todos aquellos archivos cuyo nombre empiece por impers_ y contenga el
-nombre de la tabla asociada a dicha ficha</P>
-<P>Visite <A HREF="http://www.iglues.org/wiki1/doku.php?id=bulmages:rml" TARGET="_blank">http://www.iglues.org/wiki1/doku.php?id=bulmages:rml</A> para encontrar informacion mas detallada</P>
+Descripción: <H1>Informes personalitzats ODS</H1>
+<P>Permet la generació d'informes personalitzats relacionats amb una fitxa genèrica. Els informes realitzats mitjançant plantilles PYS (Python) generen
+document en full de càlcul.</P>
+<P>Un cop instal·lat el plugin en pulsar amb el botó dret sobre qualsevol zona en blan de la pantalla apareixerà una nova opció de menú <B>Informes Personals ODS</B> que desplegarà els possibles informes personals que hi hagi per a aquesta fitxa.</P>
+<P>Les plantilles PYS són, bàsicament, fitxers en python que abans de la seva execució són interpretats per BulmaGe substituint els tags especials pels seus corresponents valors.</P>
+<P>Per lligar una plantilla amb una fitxa el programa buscarà tots aquells fitxeers el noms del qual comenci per impers_ i contingui el
+nom de la taula associada a aquestas fitxa.</P>
+<P>Visiti <A HREF="http://www.iglues.org/wiki1/doku.php?id=bulmages:rml" TARGET="_blank">http://www.iglues.org/wiki1/doku.php?id=bulmages:rml</A> per trobar informació més detallada.</P>
 <BR>
 <IMG SRC="@CMAKE_INSTALL_PREFIX@/share/bulmages/images/logopeq.png"/>
 <HR>
@@ -39,10 +35,10 @@ Orden: 60
 Categorias: Utilitats genèriques;
 
 
-Comentarios: Su funcionamiento se basa en que haya un documento RML cuyo nombre
-contenga el nombre de la tabla a la que representa la ficha. De este modo el
-informe aparecerá como opcion al pulsar sobre la opcion informes personalizados
-en el menu contextual de la ficha.
+Comentarios: El seu funcionament es basa en què hi hagi un document RML el 
+nom del qual contingui el nom de la taula a la qual representa la fitxa. 
+D'aquesta manera l'informe apareixerà com a opció en pulsar sobre l'opció 
+informes personalitzats al menú contextual de la fitxa.
 
-(c) 2007 Asociación IGLUES. Software Bajo Licencia G.P.L.
+(c) 2007 Associació IGLUES. Software sota Llicència G.P.L.
 

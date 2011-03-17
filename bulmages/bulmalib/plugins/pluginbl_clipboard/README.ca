@@ -1,24 +1,23 @@
 =======
 Plugins
 =======
-#README
+#README.ca
 20080501
 
-Nombre: Pegar desde el portapapeles
+Nombre: Enganxar des del portapapers
 
 Biblioteca: libpluginbl_clipboard.so
 
-Descripción: <H1>Pegar desde el portapapeles</H1>
-<P>Permite pegar desde una hoja de calculo en las
-facturas. Pega contenidos de forma rápida en la facturación.</P>
+Descripción: <H1>Enganxar des del portapapers</H1>
+<P>Permet enganxar des d'un full de càlcul a les factures. Enganxa continguts de forma ràpida a la facturació.</P>
 
-<P>Es importante que la primera fila de la hoja de cálculo contenga los nombres de campo exactos en los que va a ser insertada la columna de datos. </P>
+<P>És important que la primera fila del full de càlcul contingui els noms de camp exactes als quals s'insertarà la columna de dades.</P>
 
-<P>El plugin no hace verificación de datos, es posible que si los datos insertados no son correctos se produzca un error al guardar.</P>
+<P>El plugin no fa verificació de dades, és possible que si les dades inserides no són correctes es produeixi un error en desar.</P>
 
-<P>Una vez hecho el copiado en la hoja de calculo para realizar el pegado existe la opción de menú contextual Pegar desde hoja de calculo.</P>
+<P>Un cop fet el copiat al full de càlcul per enganxar existeix l'opció de menú contextual Enganxar des de full de càlcul.</P>
 
-<P>Las hojas de calculo soportadas son OpenOffice y KOffice</P>
+<P>Els fulls de càlcul soportats són OpenOffice i KOffice.</P>
 <BR>
 <IMG SRC="@CMAKE_INSTALL_PREFIX@/share/bulmages/images/logopeq.png"/>
 <HR>
