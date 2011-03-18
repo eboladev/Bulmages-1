@@ -41,7 +41,7 @@ int impresionCocina(BtTicket *);
 int BtTicket_borrarLinea ( BtTicket *tick ) {
 
   BlDbRecord *item = (BlDbRecord *) g_plugParams;
-  if (BlFixed(item->dbValue("unidadescocina")) == 0) {
+  if (BlFixed(item->dbValue("unidadescocina")) != 0) {
       item->setDbValue("cantlalbaran","0");
       impresionCocina(tick);
   } // end if
@@ -171,6 +171,7 @@ int impresionCocina(BtTicket *tick) {
       BlEscPrinter pr ( g_confpr->valor(CONF_DIR_USER) + "bulmatpv_cocina.txt" );
       pr.initializePrinter();
       pr.setCharacterCodeTable ( page19 );
+/*
       pr.setJustification ( BlEscPrinter::center );
 
 //      if ( g_confpr->valor ( CONF_TPV_PRINTER_LOGO ) != "" ) {
@@ -203,7 +204,10 @@ int impresionCocina(BtTicket *tick) {
       pr.turnWhiteBlack ( 0 );
 
       pr.setCharacterSize ( CHAR_WIDTH_1 | CHAR_HEIGHT_2 );
-
+*/
+      /// Establecemos la variable de idprintercocina para que el sistema pueda identificarla.
+      tick->clearVars();
+      
        /// Iteramos sobre las lineas del ticket para ver que pasa.
        for ( int i = 0; i < tick->listaLineas() ->size(); ++i ) {
           linea = tick->listaLineas() ->at ( i );
@@ -219,6 +223,7 @@ int impresionCocina(BtTicket *tick) {
               pr.printText ( linea->dbValue ( "desclalbaran" ).leftJustified ( 27, ' ', true ) + " " );
               pr.printText ( "\n" );
               linea->setDbValue("unidadescocina", linea->dbValue("cantlalbaran"));
+	      tick->setVar("unidadescocina"+linea->dbValue("idarticulo"), resta.toQString());
             } // end if
           } // end if
           delete curarticulos;
@@ -236,8 +241,8 @@ int impresionCocina(BtTicket *tick) {
       pr.print();
 */
 
-      /// Establecemos la variable de idprintercocina para que el sistema pueda identificarla.
-      tick->clearVars();
+      /// Establecemos la variable cambioscocina para que incorpore los cambios realizados.
+      tick->setVar("cambioscocina", pr.buffer());
       tick->setVar("idprintercocina", curimpresoras->valor("idprintercocina"));
 //      tick->clearVars();
 /// ============================      
