@@ -16,6 +16,8 @@ Q_OBJECT
 
 public:
   QString m_background;
+  QString m_pantallaactual;
+  QList <QString> m_listapantallas;
 
 public:
   DistroMesas( BtCompany *emp, QWidget *parent);
@@ -34,6 +36,11 @@ public slots:
   virtual void on_mui_cambiar_nombre_clicked();
   virtual void on_mui_cambiar_imagen_clicked();
   virtual void on_mui_bloquear_toggled(bool bloq);
+  
+  virtual void on_mui_nuevapantalla_clicked();
+  virtual void on_mui_eliminarpantalla_clicked();
+
+  virtual void cambiarPantalla();
 };
 
 
@@ -68,6 +75,7 @@ public:
   QPoint offset;
   QString m_filename;
   QString m_nombreMesa;
+  QString m_pantalla;
   int m_XScale;
   int m_YScale;
   int m_escalando;

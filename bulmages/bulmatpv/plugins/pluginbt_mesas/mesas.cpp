@@ -69,7 +69,8 @@ DistroMesas::DistroMesas ( BtCompany *emp, QWidget *parent ) : BlWidget ( emp, p
   mui_cambiar_imagen -> setVisible(!g_bloqueo);
   mui_mesa6 -> setVisible(!g_bloqueo);
   mui_cambiar_nombre -> setVisible(!g_bloqueo);
-
+  mui_eliminarpantalla -> setVisible (!g_bloqueo);
+  mui_nuevapantalla -> setVisible (!g_bloqueo);
 
 
   importXML("");
@@ -92,6 +93,7 @@ void DistroMesas::on_mui_mesa6_clicked() {
 
   Mesa *mesa = new Mesa((BtCompany *) mainCompany(), mui_widget);
   mesa->setGeometry(50,50,g_escala + 20 , g_escala + 20);
+  mesa->m_pantalla = m_pantallaactual;
   mesa->show();
 
 }
@@ -151,6 +153,8 @@ void DistroMesas::on_mui_bloquear_toggled(bool bloq) {
   mui_cambiar_imagen -> setVisible(!g_bloqueo);
   mui_mesa6 -> setVisible(!g_bloqueo);
   mui_cambiar_nombre -> setVisible(!g_bloqueo);
+  mui_eliminarpantalla -> setVisible (!g_bloqueo);
+  mui_nuevapantalla -> setVisible (!g_bloqueo);
   repaint();
 }
 
@@ -162,14 +166,19 @@ void DistroMesas::paintEvent ( QPaintEvent * event ) {
         QSvgRenderer arender(m_background, mui_widget);
         arender.render(&painter);
         painter.end();
+	
+	QList<Mesa *> mesas = findChildren<Mesa *>();
+	for (int i = 0; i < mesas.size(); ++i) {
+	    if ( mesas.at(i)->m_pantalla == m_pantallaactual) {
+		mesas.at(i)->setVisible(TRUE);
+	    } else {
+		mesas.at(i)->setVisible(FALSE);
+	    } // end if
+	} // end for
 
 }
 
 void DistroMesas::importXML(const QString val) {
-
-
-
-
   QFile file ( g_confpr->valor ( CONF_DIR_USER ) + "distromesas_" + mainCompany()->dbName() + ".cfn" );
 
     if (file.exists()) {
@@ -210,7 +219,22 @@ void DistroMesas::importXML(const QString val) {
 
             Mesa *mesa = new Mesa((BtCompany *) mainCompany(), mui_widget);
             mesa->importXML(result);
-            mesa->show();
+	    
+	    if (! m_listapantallas.contains(mesa->m_pantalla)) {
+	        if (m_pantallaactual == "") {
+		    m_pantallaactual = mesa->m_pantalla;
+		} // end if
+		m_listapantallas.append(mesa->m_pantalla);
+		QToolButton *but = new QToolButton(this);
+		but->setObjectName("p_"+mesa->m_pantalla);
+		but->setText(mesa->m_pantalla);
+		but->setMinimumHeight(32);
+		but->setCheckable(TRUE);
+		mui_espaciopantallas->addWidget(but);
+		connect(but, SIGNAL(clicked()), this, SLOT(cambiarPantalla()));
+	    } // end if
+	    if (mesa->m_pantalla == m_pantallaactual) 
+		mesa->show();
 
         } // end if
     } // end while
@@ -220,28 +244,80 @@ void DistroMesas::importXML(const QString val) {
 }
 
 
+void DistroMesas::cambiarPantalla() {
+  m_pantallaactual = ((QToolButton *)sender())->text();
+  ((QToolButton *) sender())->setChecked(TRUE);
+  QList<QToolButton *> allPButtons = findChildren<QToolButton *>(QRegExp("p_*"));
+  for (int i = 0; i < allPButtons.size(); ++i) {
+      if (allPButtons.at(i) != sender()) {
+	  allPButtons.at(i)->setChecked(FALSE);
+      } // end if
+  } // end for
+  repaint();
+}
+
+void DistroMesas::on_mui_nuevapantalla_clicked() {
+            bool ok;
+        QString text = QInputDialog::getText(this, tr("QInputDialog::getText()"),
+                                             tr("Nombre Pantalla:"), QLineEdit::Normal,
+                                             "", &ok);
+        if (ok && !text.isEmpty())
+            	m_listapantallas.append(text);
+	
+	QToolButton *but = new QToolButton(this);
+	but->setObjectName("p_" + text);
+	but->setText(text);
+	but->setCheckable(TRUE);
+	but->setMinimumHeight(32);
+	mui_espaciopantallas->addWidget(but);
+	connect(but, SIGNAL(clicked()), this, SLOT(cambiarPantalla()));
+    repaint();
+}
+
+
+void DistroMesas::on_mui_eliminarpantalla_clicked() {
+  
+  QString pantalla = m_pantallaactual;
+  
+  /// Tambien borramos las mesas de la pantalla
+  QList<Mesa *> mesas = findChildren<Mesa *>();
+  for (int i = 0; i < mesas.size(); ++i) {
+      if (mesas.at(i)->m_pantalla == pantalla ) {
+	  delete mesas.at(i);
+      } // end if
+  } // end for
+  
+  QList<QToolButton *> allPButtons = findChildren<QToolButton *>(QRegExp("p_*"));
+  for (int i = 0; i < allPButtons.size(); ++i) {
+      if (allPButtons.at(i)->text() == pantalla) {
+	  delete allPButtons.at(i);
+      } else {
+	  m_pantallaactual = allPButtons.at(i)->text();
+      } // end if
+  } // end for
+  
+}
+
+
 QString DistroMesas::exportXML() {
   QFile file ( g_confpr->valor ( CONF_DIR_USER ) + "distromesas_" + mainCompany()->dbName() + ".cfn" );
   QString val;
     if ( file.open ( QIODevice::WriteOnly ) ) {
         QTextStream stream ( &file );
+	val = "<DISTROMESAS>\n";
+	val += "\t<BACKGROUND>" + m_background + "</BACKGROUND>\n";
+	val += "\t<ESCALA>" + QString::number(g_escala) + "</ESCALA>\n";
 
+	QList<Mesa *> mesas = findChildren<Mesa *>();
+	for (int i = 0; i < mesas.size(); ++i) {
+	    val += mesas.at(i)->exportXML();
+	} // end for
+	val += "</DISTROMESAS>\n";
 
-  val = "<DISTROMESAS>\n";
-  val += "\t<BACKGROUND>" + m_background + "</BACKGROUND>\n";
-  val += "\t<ESCALA>" + QString::number(g_escala) + "</ESCALA>\n";
+	stream << val;
+	file.close();
 
-  QList<Mesa *> mesas = findChildren<Mesa *>();
- for (int i = 0; i < mesas.size(); ++i) {
-     val += mesas.at(i)->exportXML();
-
- } // end for
-  val += "</DISTROMESAS>\n";
-
-  stream << val;
-  file.close();
-
-} // end if
+      } // end if
   return val;
 }
 
@@ -630,6 +706,7 @@ QString Mesa::exportXML() {
   val = "<MESA>\n";
   val += "\t<IMAGEN>" + m_filename + "</IMAGEN>\n";
   val += "\t<NOMBRE>" + m_nombreMesa + "</NOMBRE>\n";
+  val += "\t<PANTALLA>" + m_pantalla + "</PANTALLA>\n";
   val += "\t<POSX>" + QString::number(x()) + "</POSX>\n";
   val += "\t<POSY>" + QString::number(y()) + "</POSY>\n";
   val += "\t<XSCALE>" + QString::number(m_XScale) + "</XSCALE>\n";
@@ -656,6 +733,10 @@ void Mesa::importXML(const QString val) {
     QDomElement nombre = docElem.firstChildElement ( "NOMBRE" );
     m_nombreMesa = nombre.text();
 
+    QDomElement pantalla = docElem.firstChildElement ( "PANTALLA" );
+    m_pantalla = pantalla.text();
+    
+    
     QDomElement posx = docElem.firstChildElement ( "POSX" );
     QDomElement posy = docElem.firstChildElement ( "POSY" );
 //    setGeometry(posx.text().toInt(),posy.text().toInt(),g_escala + 20 , g_escala + 20);
