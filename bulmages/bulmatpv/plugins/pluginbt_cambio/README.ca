@@ -1,15 +1,15 @@
 #######
 #Plugins
 #######
-#README.es
+#README.ca
 #20080501 
 
-Nombre: Cambio
+Nombre: Canvi
 
 Biblioteca: libplugincambio.so
 
-Descripción: <H1>Cambio</H1>
-<P>Presenta la ventana de devolucion de cambio en los cobros. Y de seleccion de pago con VISA.</P>
+Descripción: <H1>Canvi</H1>
+<P>Presenta la finestra de devolució de canvi als cobraments. I de selecció de pagament amb VISA.</P>
 <HR>
 
 ParmBD: 
@@ -26,4 +26,4 @@ Categorias: Experimentals;IVA inclòs;
 
 Orden:
 
-Comentarios: Ideal para Bares, Cafeterias y Restaurantes.
+Comentarios: Ideal per a bars, cafeteries i restaurants.

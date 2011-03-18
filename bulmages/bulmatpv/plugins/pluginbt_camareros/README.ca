@@ -1,15 +1,15 @@
 #######
 #Plugins
 #######
-#README.es
+#README.ca
 #20101001 
 
-Nombre: Control de camareros
+Nombre: Control de cambrers
 
 Biblioteca: libpluginbt_camareros.so
 
-Descripción: <H1>Control de camareros</H1>
-<P>Permite mostrar graficamente la distribución de mesas para el tratamiento de los tickets.</P>
+Descripción: <H1>Control de cambrers</H1>
+<P>Permet mostrar gràficament la distribució de taules per al tractament dels tickets.</P>
 <HR>
 
 ParmBD: 

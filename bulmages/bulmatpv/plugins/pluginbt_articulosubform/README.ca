@@ -1,16 +1,16 @@
 #######
 #Plugins
 #######
-#README.es
+#README.ca
 #20080501 
 
-Nombre: Parrilla de articulos con subformulario
+Nombre: Parrilla d'articles amb subformulari
 
 Biblioteca: libpluginbt_articulosubform.so
 
-Descripción: <H1>Introduccion de articulos con subformulario</H1>
-<P>Permite la introduccion de los componentes del ticket en forma de subformulario.
-Es incompatible con pluginartgraficos Ya que desempeñan la misma función.</P>
+Descripción: <H1>Introducció d'articles amb subformulari</H1>
+<P>Permet la introducció dels components del ticket en forma de subformluari.
+És compatible amb pluginartgraficos ja que tenen la mateixa funció.</P>
 <HR>
 
 ParmBD: 
@@ -27,4 +27,4 @@ Orden:
 
 Categorias: Experimentals;
 
-Comentarios: Ideal para Sistemas con muchos articulos.
+Comentarios: Idea per a sistemes amb molts articles.

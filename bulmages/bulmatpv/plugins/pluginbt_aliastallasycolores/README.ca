@@ -1,15 +1,15 @@
 #######
 #Plugins
 #######
-#README.es
+#README.ca
 #20080501 
 
-Nombre: Alias TPV Tallas y Colores
+Nombre: Àlias TPV Talles i Colors
 
 Biblioteca: libpluginbt_aliastallasycolores.so
 
-Descripción: <H1>Alias TPV Tallas y Colores</H1>
-<P>Permite la introduccion de articulos con alias. Requiere la instalacion de tallas y colores en la empresa.</P>
+Descripción: <H1>Àlias TPV Talles i Colors</H1>
+<P>Permet la introducció d'articles amb àlias. Requereix la instal·lació de talles i colors a l'empresa.</P>
 <HR>
 
 ParmBD: 
@@ -26,4 +26,4 @@ Orden: 700
 
 Categorias: Facturació avançada;Experimentals;Talles i Colors;
 
-Comentarios: Ideal para tiendas de ropa y zapateria.
+Comentarios: Ideal per a botigues de bora i sabateria.
