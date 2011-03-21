@@ -220,14 +220,14 @@ int impresionCocina(BtTicket *tick) {
               BlFixed resta = cantlalbaran - undcocina;
               hayalgoqueimprimir = TRUE;
               pr.printText ( resta.toQString().rightJustified ( 5, ' ', TRUE ) + " " );
-              pr.printText ( linea->dbValue ( "desclalbaran" ).leftJustified ( 27, ' ', true ) + " " );
+              pr.printText ( blStringToUsAscii(linea->dbValue ( "desclalbaran" ).leftJustified ( 27, ' ', true )) + " " );
               pr.printText ( "\n" );
 
 	      /// Imprime los componentes del articulo si la cantidad es positiva.
 	      if (resta > 0) {
-	                BlDbRecordSet *componentes = tick -> mainCompany() -> loadQuery( "SELECT articulo.nomarticulo AS nomarticulo2, comparticulo.cantcomparticulo AS cantarticulo2  FROM comparticulo LEFT JOIN articulo ON comparticulo.idcomponente = articulo.idarticulo WHERE comparticulo.idarticulo = " + linea->dbValue ( "idarticulo" ) );
+	                BlDbRecordSet *componentes = tick -> mainCompany() -> loadQuery( "SELECT sinacentos(articulo.nomarticulo) AS nomarticulo2, comparticulo.cantcomparticulo AS cantarticulo2  FROM comparticulo LEFT JOIN articulo ON comparticulo.idcomponente = articulo.idarticulo WHERE comparticulo.idarticulo = " + linea->dbValue ( "idarticulo" ) );
 		        while ( !componentes->eof() ) {
-	            	    pr.printText("* <!-- RIGHTJUSTIFIED \"" + componentes->valor("cantarticulo2") + "\" \"5\" \" \" \"TRUE\"--> <!-- LEFTJUSTIFIED \"" + componentes->valor("nomarticulo2") + "\" \"18\" \" \" \"TRUE\"-->");
+	            	    pr.printText("* <!-- RIGHTJUSTIFIED \"" + componentes->valor("cantarticulo2") + "\" \"5\" \" \" \"TRUE\"--> <!-- LEFTJUSTIFIED \"" + componentes->valor("nomarticulo2") + "\" \"18\" \" \" \"TRUE\"-->\n");
 	    		    componentes->nextRecord();
 			} // end while
 	      } // end if

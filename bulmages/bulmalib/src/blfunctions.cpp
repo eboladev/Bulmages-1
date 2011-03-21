@@ -893,7 +893,7 @@ QString blStringToUsAscii ( const QString &orig )
     cadena = cadena.replace ( "e", "e" );
     cadena = cadena.replace ( "i", "i" );
     cadena = cadena.replace ( "o", "o" );
-    cadena = cadena.replace ( "i", "u" );
+    cadena = cadena.replace ( "u", "u" );
 
     cadena = cadena.replace ( "à", "a" );
     cadena = cadena.replace ( "è", "e" );
