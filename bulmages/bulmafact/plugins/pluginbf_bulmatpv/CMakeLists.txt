@@ -93,7 +93,7 @@ set_target_properties( ${plugin} PROPERTIES
 if(WIN32)
 target_link_libraries(${plugin} libbulmafact bulmalib pluginbf_articulo ${QT_LIBRARIES} ${PGSQL_LIBRARIES})
 else(WIN32)
-target_link_libraries(${plugin} libbulmafact bulmalib ${QT_LIBRARIES} ${PGSQL_LIBRARIES})
+target_link_libraries(${plugin} libbulmafact bulmalib pluginbf_articulo ${QT_LIBRARIES} ${PGSQL_LIBRARIES})
 endif(WIN32)
 
 

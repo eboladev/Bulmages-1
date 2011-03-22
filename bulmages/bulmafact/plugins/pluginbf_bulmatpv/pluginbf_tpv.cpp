@@ -191,14 +191,13 @@ int FamiliasView_Guardar_Post ( FamiliasView *famv )
 
 int FamiliasView_currentItemChanged_Post ( FamiliasView *famv )
 {
-  
+    blDebug("pluginbf_bulmatpv::FamiliasView_currentItemChanged_Post");
+
     BlDbRecordSet *rec;
     BlDbRecordSet *rec2;
 
     if ( famv->idFamilia().isEmpty() ) {
-      
       famv->findChild<QCheckBox *>("mui_visibletpvfamilia")->setEnabled(FALSE);
-      
       famv->findChild<QLineEdit *>("mui_ordentpvfamilia")->setEnabled(FALSE);
       famv->findChild<QLineEdit *>("mui_colortpvfamilia")->setEnabled(FALSE);
       famv->findChild<QPushButton *>("mui_seleccionarcolor")->setEnabled(FALSE);
@@ -211,7 +210,6 @@ int FamiliasView_currentItemChanged_Post ( FamiliasView *famv )
       famv->findChild<QLineEdit *>("mui_ordentpvfamilia")->setEnabled(TRUE);
       famv->findChild<QLineEdit *>("mui_colortpvfamilia")->setEnabled(TRUE);
       famv->findChild<QPushButton *>("mui_seleccionarcolor")->setEnabled(TRUE);
-      
       
       famv->mainCompany()->begin();  
     
@@ -237,7 +235,7 @@ int FamiliasView_currentItemChanged_Post ( FamiliasView *famv )
       famv->mainCompany()->commit();
       
     } // end if
-
+    blDebug("END pluginbf_bulmatpv::FamiliasView_currentItemChanged_Post");
     return 0;
 }
 
