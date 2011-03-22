@@ -730,7 +730,33 @@ class _rml_flowable(object):
             color_hr=node.get('color')  or 'black'
             thickness_hr=node.get('thickness') or 1
             lineCap_hr=node.get('lineCap') or 'round'
-            return platypus.flowables.HRFlowable(width=width_hr,color=color.get(color_hr),thickness=float(thickness_hr),lineCap=str(lineCap_hr))
+            #return platypus.flowables.HRFlowable(width=width_hr,color=color.get(color_hr),thickness=float(thickness_hr),lineCap=str(lineCap_hr))
+            return platypus.flowables.HRFlowable(width=width_hr,color=color_hr,thickness=float(thickness_hr),lineCap=str(lineCap_hr))
+        elif node.tag == 'keepInFrame':
+	    if node.get('maxWidth'):
+	      maxWidth = bgutils.unit_get(node.get('maxWidth'))
+	    else:
+	      maxWidth = bgutils.unit_get('1cm')
+
+	    if node.get('maxHeight'):
+	      maxHeight = bgutils.unit_get(node.get('maxHeight'))
+	    else:
+	      maxHeight = bgutils.unit_get('1cm')
+	    
+	    if node.get('onOverflow'):
+	      mmode = node.get('onOverflow')
+	    else:
+	      mmode = "truncate"
+	      
+	    style = self.styles.para_style_get(node)
+            result = []
+            for i in self._textual(node).split('\n'):
+                result.append(platypus.Paragraph(i, style, **(bgutils.attr_get(node, [], {'bulletText':'str'}))))
+
+	    # return patypus.KeepInFrame(width, height, paragraphs, mode=mode)
+	    # return platypus.KeepInFrame(100, 100, node, mode=platypus.overflow)
+	    #return platypus.KeepInFrame(maxWidth, maxHeight)
+	    return platypus.KeepInFrame(maxWidth, maxHeight, result, mmode)
         else:
             sys.stderr.write('Warning: flowable not yet implemented: %s !\n' % (node.tag,))
             return None
