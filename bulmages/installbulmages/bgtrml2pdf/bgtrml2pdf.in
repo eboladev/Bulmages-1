@@ -965,7 +965,7 @@ class LinePlot(_DrawingEditorMixin,Drawing):
         apply(Drawing.__init__,(self,width,height)+args,kw)
 
         # sample data
-        self._colors    = Color(0,0,.901961), Color(.501961,.501961,.501961), Color(.780392,.780392,.780392)
+        self._colors    = [Color(0,0,.901961), Color(.901961,.501961,.501961), Color(.501961,.901961,.501961)]
 	self._catNames = []
         for tj in node.findall('serie'):
 		self._catNames.append(tj.find("name").text)
@@ -988,9 +988,13 @@ class LinePlot(_DrawingEditorMixin,Drawing):
         self.plot.lineLabelNudge                = 10
         self.plot.joinedLines                   = 1
         self.plot.lines.strokeWidth             = 1.5
-#        self.plot.lines[0].strokeColor          = self._colors[0]
-#        self.plot.lines[1].strokeColor          = self._colors[1]
-#        self.plot.lines[2].strokeColor          = self._colors[2]
+        
+        i = 0
+        for x in self._catNames:
+	  self.plot.lines[i].strokeColor = self._colors[i]
+	  i = i + 1
+	  
+	  
         #sample data
 
 	self.plot.data = []

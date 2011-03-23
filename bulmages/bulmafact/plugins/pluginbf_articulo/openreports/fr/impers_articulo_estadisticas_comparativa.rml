@@ -1,0 +1,207 @@
+<?xml version="1.0" encoding="utf-8" standalone="no" ?>
+<!DOCTYPE document SYSTEM "rml_1_0.dtd">
+<document>
+<template pageSize="(21cm, 29.7cm)" leftMargin="0cm" rightMargin="0cm" topMargin="1.0cm" bottomMargin="2.0cm" title="Estadisticas de articulo - Comparativas" author="">
+	<pageTemplate id="main">
+		<pageGraphics>
+
+		<fill color="(0,0,0)"/>	
+		<stroke color="(0,0,0)"/>
+		
+		<setFont name="Helvetica-Bold" size="11"/>
+		<fill color="(1,1,1)"/>
+		<drawString x="10cm" y="26.53cm">Articulo:</drawString>
+
+		<!-- LOS DATOS DEL ARTICULO -->
+		<setFont name="Helvetica" size="10"/>
+		<fill color="(0,0,0)"/>
+		<drawString x="13.5cm" y="26.05cm">[idarticulo]</drawString>
+		<drawString x="13.5cm" y="25.6cm">[nomarticulo]</drawString>
+		<drawString x="13.5cm" y="25.15cm">[codigocompletoarticulo]</drawString>
+		<drawString x="13.5cm" y="24.7cm">[idfamilia]</drawString>
+		<drawString x="13.5cm" y="24.25cm">[idtipo_articulo]</drawString>
+		<drawString x="13.5cm" y="23.8cm">[pvparticulo]</drawString>
+		<drawString x="13.5cm" y="23.35cm">[idtipo_iva]</drawString>
+
+
+		<setFont name="Helvetica" size="10"/>
+		<fill color="(0,0,0)"/>	
+		<drawString x="10cm" y="26.05cm">Nº Articulo:</drawString>
+		<drawString x="10cm" y="25.6cm">Nombre:</drawString>
+		<drawString x="10cm" y="25.15cm">Codigo:</drawString>
+		<drawString x="10cm" y="24.7cm">Familia:</drawString>
+		<drawString x="10cm" y="24.25cm">Tipo:</drawString>
+		<drawString x="10cm" y="23.8cm">PVP:</drawString>
+		<drawString x="10cm" y="23.35cm">Tipo IVA:</drawString>
+
+		<!--Fecha presupuesto-->
+		<!-- setFont name="Helvetica" size="11"/>
+
+		<drawString x="10cm" y="27.95cm">Fecha fra:</drawString>
+		<drawString x="10cm" y="27.5cm">Nº fra:</drawString>
+		<drawString x="17.0cm" y="27.95cm">Referencia:</drawString>
+
+		<drawString x="13.5cm" y="27.95cm">[fpresupuesto]</drawString>
+		<drawString x="13.5cm" y="27.5cm">[numpresupuesto]</drawString>
+		<drawString x="17.0cm" y="27.5cm">[refpresupuesto]</drawString -->
+		
+		<drawString x="10cm" y="27.95cm">Ventas mensuales</drawString>
+
+
+		<setFont name="Helvetica-Bold" size="12"/>
+		<drawCentredString x="5.3cm" y="26.3cm">- ESTADISTICAS -</drawCentredString>
+
+		<setFont name="Helvetica" size="7"/>
+		<drawString x="15cm" y="22.7cm">Los importes están expresados en euros.</drawString>
+
+		<setFont name="Helvetica" size="10"/>
+
+	</pageGraphics>
+
+
+		<!-- FRAME DE CONTENIDOS -->
+		<frame id="column" x1="1cm" y1="8cm" width="19cm" height="14.6cm" />
+
+		
+	</pageTemplate>
+
+</template>
+
+<include src="[CONF_DIR_OPENREPORTS]estilos.rml"/>
+
+<story>	
+
+<para> - </para>
+<para> - </para>
+<para> - </para>
+<para> - </para>
+<!--
+
+<!-- QUERY="SELECT sum(cantlpresupuesto) AS totalpresupuestado FROM lpresupuesto WHERE idarticulo = [idarticulo]" -->
+<para>Total presupuestado: [totalpresupuestado]</para>
+<!-- END QUERY -->
+
+<!-- QUERY="SELECT sum(cantlpedidocliente) AS totalpedido FROM lpedidocliente WHERE idarticulo = [idarticulo]" -->
+<para>Total confirmado: [totalpedido]</para>
+<!-- END QUERY -->
+
+<!-- QUERY="SELECT sum(cantlalbaran) AS totalalbaraneado FROM lalbaran WHERE idarticulo = [idarticulo]" -->
+<para>Total entregado: [totalalbaraneado]</para>
+<!-- END QUERY -->
+
+<!-- QUERY="SELECT sum(cantlfactura) AS totalfacturado FROM lfactura WHERE idarticulo = [idarticulo]" -->
+<para>Total facturado: [totalfacturado]</para>
+<!-- END QUERY -->
+
+ -->
+ 
+ 
+<illustration width="19cm" height="5cm">
+<linePlot x="0cm" y="0cm" width="19cm">               
+ <serie>
+   <name>Facturas</name>
+<!--QUERY="select '01/01/2011'::date as fin,  '31/01/2011'::date as fout, '01' as tf
+union select '01/02/2011'::date, '28/02/2011'::date, '02'
+union select '01/03/2011'::date, '31/03/2011'::date, '03'
+union select '01/04/2011'::date, '30/04/2011'::date, '04'
+union select '01/05/2011'::date, '31/05/2011'::date, '05'
+union select '01/06/2011'::date, '30/06/2011'::date, '06'
+union select '01/07/2011'::date, '31/07/2011'::date, '07'
+union select '01/08/2011'::date, '31/08/2011'::date, '08'
+union select '01/09/2011'::date, '30/09/2011'::date, '09'
+union select '01/10/2011'::date, '31/10/2011'::date, '10'
+union select '01/11/2011'::date, '30/11/2011'::date, '11'
+union select '01/12/2011'::date, '31/12/2011'::date, '12'
+ORDER BY tf"-->
+
+
+   
+<!--IF SUBQUERY="SELECT COALESCE(sum(cantlfactura),0) AS totalr FROM (SELECT * FROM lfactura WHERE idarticulo=[idarticulo]) AS t1 LEFT JOIN factura ON t1.idfactura = factura.idfactura WHERE ffactura >= '[fin]'::date AND ffactura <= '[fout]'::date"-->
+<!-- SUBQUERY="SELECT COALESCE(sum(cantlfactura),1) AS totalr FROM (SELECT * FROM lfactura WHERE idarticulo=[idarticulo]) AS t1 LEFT JOIN factura ON t1.idfactura = factura.idfactura WHERE ffactura >= '[fin]'::date AND ffactura <= '[fout]'::date"-->
+  <plot>
+   <label>2011-[tf]-01</label>
+   <data>[totalr]</data>
+ </plot>
+<!-- END SUBQUERY-->
+<!--END IF SUBQUERY-->
+
+<!--END QUERY-->
+</serie>
+
+ <serie>
+   <name>Presupuestos</name>
+<!--QUERY="select '01/01/2011'::date as fin,  '31/01/2011'::date as fout, '01' as tf
+union select '01/02/2011'::date, '28/02/2011'::date, '02'
+union select '01/03/2011'::date, '31/03/2011'::date, '03'
+union select '01/04/2011'::date, '30/04/2011'::date, '04'
+union select '01/05/2011'::date, '31/05/2011'::date, '05'
+union select '01/06/2011'::date, '30/06/2011'::date, '06'
+union select '01/07/2011'::date, '31/07/2011'::date, '07'
+union select '01/08/2011'::date, '31/08/2011'::date, '08'
+union select '01/09/2011'::date, '30/09/2011'::date, '09'
+union select '01/10/2011'::date, '31/10/2011'::date, '10'
+union select '01/11/2011'::date, '30/11/2011'::date, '11'
+union select '01/12/2011'::date, '31/12/2011'::date, '12'
+ORDER BY tf"-->
+
+
+   
+<!--IF SUBQUERY="SELECT COALESCE(sum(cantlpresupuesto),0) AS totalr FROM (SELECT * FROM lpresupuesto WHERE idarticulo=[idarticulo]) AS t1 LEFT JOIN presupuesto ON t1.idpresupuesto = presupuesto.idpresupuesto WHERE fpresupuesto >= '[fin]'::date AND fpresupuesto <= '[fout]'::date"-->
+<!-- SUBQUERY="SELECT COALESCE(sum(cantlpresupuesto),1) AS totalr FROM (SELECT * FROM lpresupuesto WHERE idarticulo=[idarticulo]) AS t1 LEFT JOIN presupuesto ON t1.idpresupuesto = presupuesto.idpresupuesto WHERE fpresupuesto >= '[fin]'::date AND fpresupuesto <= '[fout]'::date"-->
+  <plot>
+   <label>2011-[tf]-01</label>
+   <data>[totalr]</data>
+ </plot>
+<!-- END SUBQUERY-->
+<!--END IF SUBQUERY-->
+
+<!--END QUERY-->
+</serie>
+
+</linePlot>  
+</illustration>
+
+
+ <para> - </para>
+<para> - </para>
+<para> - </para>
+<para> - </para>
+
+
+ <illustration width="19cm" height="5cm">
+<linePlot x="0cm" y="0cm" width="19cm">               
+ <serie>
+   <name>Facturas Proveedor</name>
+<!--QUERY="select '01/01/2011'::date as fin,  '31/01/2011'::date as fout, '01' as tf
+union select '01/02/2011'::date, '28/02/2011'::date, '02'
+union select '01/03/2011'::date, '31/03/2011'::date, '03'
+union select '01/04/2011'::date, '30/04/2011'::date, '04'
+union select '01/05/2011'::date, '31/05/2011'::date, '05'
+union select '01/06/2011'::date, '30/06/2011'::date, '06'
+union select '01/07/2011'::date, '31/07/2011'::date, '07'
+union select '01/08/2011'::date, '31/08/2011'::date, '08'
+union select '01/09/2011'::date, '30/09/2011'::date, '09'
+union select '01/10/2011'::date, '31/10/2011'::date, '10'
+union select '01/11/2011'::date, '30/11/2011'::date, '11'
+union select '01/12/2011'::date, '31/12/2011'::date, '12'
+ORDER BY tf"-->
+
+
+   
+<!--IF SUBQUERY="SELECT COALESCE(sum(cantlfacturap),0) AS totalr FROM (SELECT * FROM lfacturap WHERE idarticulo=[idarticulo]) AS t1 LEFT JOIN facturap ON t1.idfacturap = facturap.idfacturap WHERE ffacturap >= '[fin]'::date AND ffacturap <= '[fout]'::date"-->
+<!-- SUBQUERY="SELECT COALESCE(sum(cantlfacturap),1) AS totalr FROM (SELECT * FROM lfacturap WHERE idarticulo=[idarticulo]) AS t1 LEFT JOIN facturap ON t1.idfacturap = facturap.idfacturap WHERE ffacturap >= '[fin]'::date AND ffacturap <= '[fout]'::date"-->
+  <plot>
+   <label>2011-[tf]-01</label>
+   <data>[totalr]</data>
+ </plot>
+<!-- END SUBQUERY-->
+<!--END IF SUBQUERY-->
+
+<!--END QUERY-->
+</serie>
+
+</linePlot>  
+</illustration>
+
+</story>
+</document>
