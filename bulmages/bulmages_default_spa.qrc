@@ -18,6 +18,7 @@
         <file alias="product-list.svg">images/default-spa/mimetypes/product-list.svg</file>
 	<file alias="product.svg">images/default-spa/mimetypes/product.svg</file>
 	<file alias="product-family.svg">images/default-spa/mimetypes/product-family.svg</file>
+	<file alias="product-type.png">images/oxygen/actions/48x48/product_type.png</file>
 	<file alias="client.svg">images/default-spa/mimetypes/client.svg</file>
 	<file alias="client-list.svg">images/default-spa/mimetypes/client-list.svg</file>
 	<file alias="supplier.svg">images/default-spa/mimetypes/supplier.svg</file>

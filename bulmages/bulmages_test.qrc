@@ -17,6 +17,7 @@
         <file alias="product-list.svg">images/oxygen/actions/document_save.svg</file>
 	<file alias="product.svg">images/oxygen/actions/document_save.svg</file>
 	<file alias="product-family.svg">images/oxygen/actions/document_save.svg</file>
+	<file alias="product-type.png">images/oxygen/actions/48x48/product_type.png</file>
 	<file alias="client.svg">images/oxygen/actions/document_save.svg</file>
 	<file alias="client-list.svg">images/oxygen/actions/document_save.svg</file>
 	<file alias="supplier.svg">images/oxygen/actions/document_save.svg</file>

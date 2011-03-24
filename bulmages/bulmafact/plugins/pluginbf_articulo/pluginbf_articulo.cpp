@@ -139,7 +139,7 @@ void MyPlugArt::inicializa ( BfBulmaFact *bges )
 
         pPluginMenu->addSeparator();
         QAction *tart = new QAction ( _ ( "&Tipos de articulo" ), 0 );
-        tart->setIcon ( QIcon ( QString::fromUtf8 ( ":/Images/product-family.png" ) ) );
+        tart->setIcon ( QIcon ( QString::fromUtf8 ( ":/Images/product-type.png" ) ) );
         tart->setStatusTip ( _ ( "Tipos de articulo" ) );
         tart->setWhatsThis ( _ ( "Tipos de articulo" ) );
         pPluginMenu->addAction ( tart );

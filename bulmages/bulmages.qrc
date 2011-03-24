@@ -17,6 +17,7 @@
         <file alias="product-list.png">images/oxygen/actions/48x48/product_window.png</file>
 	<file alias="product.png">images/oxygen/actions/48x48/product.png</file>
 	<file alias="product-family.png">images/oxygen/actions/48x48/product_group.png</file>
+	<file alias="product-type.png">images/oxygen/actions/48x48/product_type.png</file>
 	<file alias="client.png">images/oxygen/actions/48x48/client.png</file>
 	<file alias="client-list.png">images/oxygen/actions/48x48/client_list.png</file>
 	<file alias="supplier.png">images/oxygen/actions/48x48/supplier.png</file>

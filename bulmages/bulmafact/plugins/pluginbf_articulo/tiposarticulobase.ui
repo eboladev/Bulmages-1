@@ -16,7 +16,7 @@
   </property>
   <property name="windowIcon">
    <iconset resource="../../../bulmages.qrc">
-    <normaloff>:/Images/product-family.png</normaloff>:/Images/product-family.png</iconset>
+    <normaloff>:/Images/product-type.png</normaloff>:/Images/product-type.png</iconset>
   </property>
   <layout class="QVBoxLayout" name="verticalLayout">
    <property name="margin">
@@ -48,7 +48,7 @@
         <string/>
        </property>
        <property name="pixmap">
-        <pixmap resource="../../../bulmages.qrc">:/Images/product-family.png</pixmap>
+        <pixmap resource="../../../bulmages.qrc">:/Images/product-type.png</pixmap>
        </property>
        <property name="scaledContents">
         <bool>true</bool>
