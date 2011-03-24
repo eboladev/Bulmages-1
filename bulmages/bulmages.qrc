@@ -42,6 +42,7 @@
 	<file alias="client-invoice-list.png">images/oxygen/actions/48x48/client_invoice_list.png</file>
 	<file alias="client-invoice-series.png">images/oxygen/actions/48x48/client_invoice_series.png</file>
 	<file alias="vat.png">images/oxygen/actions/48x48/vat.png</file>
+	<file alias="vattax.png">images/oxygen/actions/48x48/vattax.png</file>
 	<file alias="vat-list.png">images/oxygen/actions/48x48/vat.png</file>
 	<file alias="employee-list.png">images/oxygen/actions/48x48/employee_list.png</file>
 	<file alias="account_plan.png">images/oxygen/actions/48x48/account_plan.png</file>

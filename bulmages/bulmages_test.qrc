@@ -40,6 +40,7 @@
 	<file alias="client-invoice.svg">images/oxygen/actions/document_save.svg</file>
 	<file alias="client-invoice-list.svg">images/oxygen/actions/document_save.svg</file>
 	<file alias="vat.svg">images/oxygen/actions/document_save.svg</file>
+	<file alias="vattax.png">images/oxygen/actions/48x48/vattax.png</file>
 	<file alias="vat-list.svg">images/oxygen/actions/document_save.svg</file>
 	<file alias="employee-list.svg">images/oxygen/actions/document_save.svg</file>
 	<file alias="account_plan.svg">images/oxygen/actions/document_save.svg</file>

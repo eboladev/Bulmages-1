@@ -15,7 +15,7 @@
   </property>
   <property name="windowIcon" >
    <iconset resource="../../../bulmages.qrc" >
-    <normaloff>:/Images/vat.png</normaloff>:/Images/vat.png</iconset>
+    <normaloff>:/Images/vattax.png</normaloff>:/Images/vattax.png</iconset>
   </property>
   <layout class="QGridLayout" >
    <property name="margin" >
@@ -84,7 +84,7 @@
         </size>
        </property>
        <property name="pixmap" >
-        <pixmap resource="../../../bulmages.qrc" >:/Images/vat.png</pixmap>
+        <pixmap resource="../../../bulmages.qrc" >:/Images/vattax.png</pixmap>
        </property>
        <property name="scaledContents" >
         <bool>true</bool>
