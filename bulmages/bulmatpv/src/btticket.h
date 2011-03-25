@@ -37,7 +37,7 @@
 #include "blfixed.h"
 
 
-class BT_EXPORT BtTicket :  public BlWidget, public BlDbRecord, public QTime
+class BT_EXPORT BtTicket : public BlWidget, public BlDbRecord, public QTime
 {
     Q_OBJECT
 

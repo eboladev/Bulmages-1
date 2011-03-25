@@ -269,7 +269,32 @@
        </widget>
       </item>
       <item>
+       <widget class="QToolButton" name="mui_table_move">
+        <property name="minimumSize">
+         <size>
+          <width>42</width>
+          <height>42</height>
+         </size>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>42</width>
+          <height>42</height>
+         </size>
+        </property>
+        <property name="text">
+         <string>Unir</string>
+        </property>
+        <property name="checkable">
+         <bool>true</bool>
+        </property>
+       </widget>
+      </item>
+      <item>
        <layout class="QHBoxLayout" name="mui_espaciopantallas"/>
+      </item>
+      <item>
+       <widget class="QFrame" name="mui_frame_buttons"/>
       </item>
       <item>
        <spacer name="horizontalSpacer">

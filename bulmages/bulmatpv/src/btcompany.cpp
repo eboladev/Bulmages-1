@@ -991,3 +991,26 @@ void BtCompany::syncXML(const QString &textxml) {
 
 
 
+void BtCompany::joinTickets(BtTicket *origin, BtTicket *destiny)
+{
+      /// TODO:
+      /// Se ha imprimido?
+      /// Se ha creado un albaran? se tiene que borrar el albaran?
+
+    if ( QMessageBox::warning ( this,
+                                _ ( "Unir tickets" ),
+                                QString(_("Unir ticket '")) + origin->dbValue ( "nomticket" ) + QString(_("' en '")) + destiny->dbValue ( "nomticket" ) + QString(_("'?")),
+                                QMessageBox::Ok,
+                                QMessageBox::Cancel ) == QMessageBox::Ok ) {
+              
+	/// Transpasa todas las lineas al ticket destino.
+	while (!origin->listaLineas()->isEmpty()) {
+	    destiny->listaLineas()->append( origin->listaLineas()->takeFirst() );
+	} // while
+
+	/// Elimina el ticket original.
+	m_listaTickets.removeAll(origin);
+    } // end if      
+
+}
+

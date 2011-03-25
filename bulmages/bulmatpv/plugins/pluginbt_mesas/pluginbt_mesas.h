@@ -18,8 +18,8 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#ifndef PLUGINBT_CONTROLMESAS_H
-#define PLUGINBT_CONTROLMESAS_H
+#ifndef PLUGINBT_MESAS_H
+#define PLUGINBT_MESAS_H
 
 #include "blfunctions.h"
 #include "btbulmatpv.h"

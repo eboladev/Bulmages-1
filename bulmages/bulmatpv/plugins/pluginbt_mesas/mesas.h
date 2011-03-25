@@ -4,11 +4,8 @@
 #include <QTableWidget>
 #include "btcompany.h"
 #include "blwidget.h"
-
-
-
-
 #include "ui_distromesasbase.h"
+
 
 class DistroMesas : public BlWidget, public Ui_DistroMesasBase
 {
@@ -36,6 +33,7 @@ public slots:
   virtual void on_mui_cambiar_nombre_clicked();
   virtual void on_mui_cambiar_imagen_clicked();
   virtual void on_mui_bloquear_toggled(bool bloq);
+  virtual void on_mui_table_move_toggled(bool togg);
   
   virtual void on_mui_nuevapantalla_clicked();
   virtual void on_mui_eliminarpantalla_clicked();

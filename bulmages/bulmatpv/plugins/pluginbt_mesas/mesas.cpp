@@ -13,9 +13,15 @@
 #include "blplugins.h"
 
 int g_escala;
-Mesas * g_mesas;
-Mesa  * g_mesaAct;
-bool  g_bloqueo;
+Mesas *g_mesas;
+Mesa  *g_mesaAct;
+/// Modo configuracion de mesas o no.
+bool g_bloqueo;
+/// Modo selector de mesas: normal (TRUE) o especial (FALSE) (no activa mesas).
+bool g_selectMode;
+bool g_joinTables;
+QList<QString> g_selectedTables;
+
 
 
 Mesas::Mesas ( BtCompany *emp, QWidget *parent ) : BlWidget ( emp, parent )
@@ -38,6 +44,10 @@ Mesas::~Mesas()
 void Mesas::on_mui_mesas_clicked()
 {
 
+    /// Se asegura que esta en modo normal.
+    g_selectMode = TRUE;
+    g_joinTables = FALSE;
+
     if (m_centralWidget == NULL) {
         /// Creamos y presentamos el plugin de mesas.
          if (m_distro == NULL)
@@ -49,6 +59,8 @@ void Mesas::on_mui_mesas_clicked()
         m_centralWidget = NULL;
         m_distro->exportXML();
     } // end if
+
+    m_distro->mui_table_move -> setChecked (FALSE);
 
 }
 
@@ -64,6 +76,8 @@ DistroMesas::DistroMesas ( BtCompany *emp, QWidget *parent ) : BlWidget ( emp, p
   m_background = "";
   g_escala = 200;
   g_bloqueo = TRUE;
+  g_selectMode = TRUE;
+  g_joinTables = FALSE;
 
   mui_borrar -> setVisible(!g_bloqueo);
   mui_cambiar_imagen -> setVisible(!g_bloqueo);
@@ -71,6 +85,7 @@ DistroMesas::DistroMesas ( BtCompany *emp, QWidget *parent ) : BlWidget ( emp, p
   mui_cambiar_nombre -> setVisible(!g_bloqueo);
   mui_eliminarpantalla -> setVisible (!g_bloqueo);
   mui_nuevapantalla -> setVisible (!g_bloqueo);
+  mui_table_move -> setVisible (g_bloqueo);
 
 
   importXML("");
@@ -86,6 +101,29 @@ DistroMesas::DistroMesas ( BtCompany *emp, QWidget *parent ) : BlWidget ( emp, p
 DistroMesas::~DistroMesas()
 {
   exportXML();
+}
+
+
+
+void DistroMesas::on_mui_table_move_toggled(bool togg) {
+  /// Si se pulsa la primera vez se activa el procedimiento de mover mesas.
+  /// Si se vuelve a pulsar antes de completarse el procedimiento este queda cancelado
+  /// y el boton vuelve a su estado de reposo.
+
+  if (g_selectMode == TRUE) {
+      /// Modo especial.
+      g_selectMode = FALSE;
+      g_joinTables = TRUE;
+      g_selectedTables.clear();
+      
+  } else {
+      /// Modo normal.
+      g_selectMode = TRUE;
+      g_joinTables = FALSE;
+      g_selectedTables.clear();
+  } // end if
+  
+  update();
 }
 
 
@@ -155,6 +193,7 @@ void DistroMesas::on_mui_bloquear_toggled(bool bloq) {
   mui_cambiar_nombre -> setVisible(!g_bloqueo);
   mui_eliminarpantalla -> setVisible (!g_bloqueo);
   mui_nuevapantalla -> setVisible (!g_bloqueo);
+  mui_table_move -> setVisible (g_bloqueo);
   repaint();
 }
 
@@ -163,8 +202,16 @@ void DistroMesas::paintEvent ( QPaintEvent * event ) {
 
         QPainter painter;
         painter.begin ( this ); // paint in picture
-        QSvgRenderer arender(m_background, mui_widget);
-        arender.render(&painter);
+	
+	QSvgRenderer *arender;
+	
+	if (m_background.isEmpty()) {
+	  arender = new QSvgRenderer(mui_widget);
+	} else {
+	  arender = new QSvgRenderer(m_background, mui_widget);
+	} // end if
+	
+        arender->render(&painter);
         painter.end();
 	
 	QList<Mesa *> mesas = findChildren<Mesa *>();
@@ -175,6 +222,8 @@ void DistroMesas::paintEvent ( QPaintEvent * event ) {
 		mesas.at(i)->setVisible(FALSE);
 	    } // end if
 	} // end for
+	
+	delete arender;
 
 }
 
@@ -349,7 +398,12 @@ void Mesa::paintEvent ( QPaintEvent * event ) {
 	painter.setFont(normal);
 	
     BtCompany * emp = ( BtCompany * ) mainCompany();
-
+    
+    
+    if (g_selectedTables.contains(m_nombreMesa) && (!g_selectMode)) {    
+      painter.fillRect(0,0,m_XScale,m_YScale, QColor(255,255,0));
+    } // end if
+    
     /// Miramos que no haya ningun ticket abierto con el nombre usado
     BtTicket *ticket = NULL;
     for ( int i = 0; i < emp->listaTickets() ->size(); ++i ) {
@@ -406,7 +460,7 @@ if (m_escalando == 0)  {
         
       } else {
             painter.setPen(Qt::DashDotLine);
-            painter.drawRect(0,0,m_XScale,m_YScale);
+	    painter.drawRect(0,0,m_XScale,m_YScale);
       }// end if
     } //end if
 
@@ -571,6 +625,9 @@ void Mesa::mouseMoveEvent(QMouseEvent* event)
 
 void Mesa::mouseReleaseEvent(QMouseEvent* event)
 {
+    BtTicket *ticket;
+    BtCompany * emp = ( BtCompany * ) mainCompany();
+  
     if (event -> button() == Qt::LeftButton) {
       if (!g_bloqueo) {
         event->accept(); // do not propagate
@@ -580,7 +637,68 @@ void Mesa::mouseReleaseEvent(QMouseEvent* event)
           repaint();
         } // end if
       } else {
-        abrirMesa();
+	
+	if (g_selectMode) {
+	  abrirMesa();
+	} else {
+	  
+	  /// Comprueba que la mesa no este seleccionada previamente.
+	  /// Si es el caso se deselecciona.
+	  int indexNombreMesa = g_selectedTables.indexOf(m_nombreMesa);
+	  
+	  if (indexNombreMesa == -1) {
+	    /// No esta en la lista.
+	    /// Comprueba que la mesa este abierta. Si no no se puede seleccionar.	  
+	    for ( int i = 0; i < emp->listaTickets() ->size(); ++i ) {
+		ticket = emp->listaTickets() ->at ( i );
+		if ( m_nombreMesa == ticket->dbValue ( "nomticket" )) {
+		    g_selectedTables.push_back(m_nombreMesa);
+		    break;
+		} // end if
+	    } // end for
+	    
+	  } else {
+	    /// Esta en la lista. Se borra.
+	    g_selectedTables.removeAt(indexNombreMesa);
+	  } // end if
+	  
+	  update();
+	  	  
+	  if ((g_selectedTables.count() == 2) && g_joinTables) {
+	      /// Se han seleccionado 2 mesas y esta activo el modo 'unir mesas'.
+	      /// Encuentra a que 2 tickets corresponden.
+	      BtTicket *ticket1;
+	      BtTicket *ticket2;
+
+	      for ( int i = 0; i < emp->listaTickets() ->size(); ++i ) {
+		  ticket1 = emp->listaTickets() ->at ( i );
+		  if ( g_selectedTables[0] == ticket1->dbValue ( "nomticket" ) ) {
+		      break;
+		  } // end if
+	      } // end for
+	      
+	      for ( int i = 0; i < emp->listaTickets() ->size(); ++i ) {
+		  ticket2 = emp->listaTickets() ->at ( i );
+		  if ( g_selectedTables[1] == ticket2->dbValue ( "nomticket" ) ) {
+		      break;
+		  } // end if
+	      } // end for
+	      
+	      emp->joinTickets(ticket1, ticket2);
+	      
+	      g_selectMode = TRUE;
+	      g_joinTables = FALSE;
+	      g_selectedTables.clear();
+	      g_mesas->m_distro->mui_table_move -> setChecked (FALSE);
+
+	      update();
+	      
+	      abrirMesa();
+	      
+	  } // end if
+	  
+	} // end if
+	
       } // end if
     } // end if
 }

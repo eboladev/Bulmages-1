@@ -76,6 +76,7 @@ public:
     void setDecimalesCantidad(int numd);
     int decimalesPrecio();
     void setDecimalesPrecio(int numd);
+    void joinTickets(BtTicket *origin, BtTicket *destiny);
 };
 
 #endif
