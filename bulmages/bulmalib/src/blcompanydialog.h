@@ -97,7 +97,8 @@ private:
 
 private slots:
     /// Al pulsar el bot&oacute;n de cancelar se aborta la ejecuci&oacute;n del programa.
-    virtual void s_botonCancelar();
+    void on_mui_cancelar_clicked();
+    void on_mui_aceptar_clicked();
     bool close ( bool );
     void mui_empresasdobleclick();
 

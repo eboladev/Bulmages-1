@@ -189,7 +189,7 @@
     </spacer>
    </item>
    <item row="3" column="0" colspan="2">
-    <widget class="QPushButton" name="botonAceptar">
+    <widget class="QPushButton" name="mui_aceptar">
      <property name="sizePolicy">
       <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
        <horstretch>0</horstretch>
@@ -220,7 +220,7 @@
     </widget>
    </item>
    <item row="3" column="2">
-    <widget class="QPushButton" name="botonCancelar">
+    <widget class="QPushButton" name="mui_cancelar">
      <property name="sizePolicy">
       <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
        <horstretch>0</horstretch>
@@ -289,16 +289,16 @@
    </item>
   </layout>
  </widget>
- <includes>
-  <include location="local">local_blI18n.h</include>
- </includes>
  <layoutdefault spacing="2" margin="5"/>
  <tabstops>
   <tabstop>mui_empresas</tabstop>
   <tabstop>mui_actualizar</tabstop>
-  <tabstop>botonAceptar</tabstop>
-  <tabstop>botonCancelar</tabstop>
+  <tabstop>mui_aceptar</tabstop>
+  <tabstop>mui_cancelar</tabstop>
  </tabstops>
+ <includes>
+  <include location="local">local_blI18n.h</include>
+ </includes>
  <resources>
   <include location="../../bulmages.qrc"/>
  </resources>

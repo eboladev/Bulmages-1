@@ -156,15 +156,26 @@ QString BlCompanyDialog::tipoEmpresa()
 ///
 /**
 **/
-void BlCompanyDialog::s_botonCancelar()
+void BlCompanyDialog::on_mui_aceptar_clicked()
 {
-    blDebug ( "BlCompanyDialog::s_botonCancelar", 0 );
+    blDebug ( "BlCompanyDialog::on_mui_aceptar_clicked", 0 );
+    accept();
+    blDebug ( "END BlCompanyDialog::on_mui_aceptar_clicked", 0 );
+}
+
+
+///
+/**
+**/
+void BlCompanyDialog::on_mui_cancelar_clicked()
+{
+    blDebug ( "BlCompanyDialog::on_mui_cancelar_clicked", 0 );
     if ( !modoDestructivo() )
         exit ( 1 );
     else
         done ( 1 );
     // end if
-    blDebug ( "END BlCompanyDialog::s_botonCancelar", 0 );
+    blDebug ( "END BlCompanyDialog::on_mui_cancelar_clicked", 0 );
 }
 
 
@@ -175,7 +186,7 @@ void BlCompanyDialog::s_botonCancelar()
 bool BlCompanyDialog::close ( bool )
 {
     blDebug ( "BlCompanyDialog::close", 0 );
-    s_botonCancelar();
+    on_mui_cancelar_clicked();
     blDebug ( "END BlCompanyDialog::close", 0 );
     return TRUE;
 }
@@ -198,8 +209,6 @@ BlCompanyDialog::BlCompanyDialog ( QWidget *parent, QString tipo, const char *na
     blCenterOnScreen ( this );
 
     mui_empresas->installEventFilter ( this );
-    QObject::connect ( botonCancelar, SIGNAL ( clicked ( bool ) ), this, SLOT ( s_botonCancelar() ) );
-    QObject::connect ( botonAceptar, SIGNAL ( clicked ( bool ) ), this, SLOT ( accept() ) );
     QObject::connect ( mui_empresas, SIGNAL ( itemDoubleClicked ( QTableWidgetItem * ) ), this,
                        SLOT ( mui_empresasdobleclick() ) );
 
@@ -209,7 +218,7 @@ BlCompanyDialog::BlCompanyDialog ( QWidget *parent, QString tipo, const char *na
     /// Si el m_modo es false (salir del programa si se cancela la ventana) entonces se pone
     /// un t&iacute;tulo adecuado al bot&oacute;n.
     if ( !modoDestructivo() )
-        botonCancelar->setText ( _ ( "&Cierra el programa" ) );
+        mui_cancelar->setText ( _ ( "&Cierra el programa" ) );
     // end if
     cargaArchivo();
     /// Seleccionar la primera empresa de la lista inicialmente, de este modo,
