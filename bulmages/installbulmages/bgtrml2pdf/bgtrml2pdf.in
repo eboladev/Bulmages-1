@@ -149,7 +149,7 @@ class _rml_doc(object):
 	for nodo in self.etree.iterfind('.//include'):
 	    filename = nodo.get('src').encode('ascii')
 	    doc =  etree.XML(file(filename, 'r').read())
-	    print file(filename, 'r').read()
+#	    print file(filename, 'r').read()
 	    for nnode in doc:
 		    nnnode = nnode
 		    nodo.getparent().insert(nodo.getparent().index(nodo), nnnode)
