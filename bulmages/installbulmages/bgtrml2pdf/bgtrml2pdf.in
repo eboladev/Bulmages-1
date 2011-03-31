@@ -965,19 +965,25 @@ class LinePlot(_DrawingEditorMixin,Drawing):
         apply(Drawing.__init__,(self,width,height)+args,kw)
 
         # sample data
-        self._colors    = [Color(0,0,.901961), Color(.901961,.501961,.501961), Color(.501961,.901961,.501961)]
+        self._colors1    = [Color(0,0,.901961), Color(.901961,.501961,.501961), Color(.501961,.901961,.501961)]
+        self._colors = []
 	self._catNames = []
+	i = 0
         for tj in node.findall('serie'):
 		self._catNames.append(tj.find("name").text)
-
-        #self._catNames  = 'Fund', 'Benchmark', 'Sector'
+		if (node.get('color')):
+		    self._colors.append(self._colors1[i])
+		    i = i + 1
+		else:
+		    tupla = bgcolor.get(str(tj.get('color')))
+		    self._colors.append(Color(tupla[0], tupla[1], tupla[2]))
 
         # adding the actual chart here.
         self._add(self,GridLinePlot(),name='plot',validate=None,desc=None)
         self.plot.y                             = 40
         self.plot.x                             = 30 
-        self.plot.width                         = self.width-2*self.plot.x
-        self.plot.height                        = self.height-2*self.plot.y
+        self.plot.width                      = bgutils.unit_get(node.get('width'))-2*self.plot.x or self.width-2*self.plot.x
+        self.plot.height                     = bgutils.unit_get(node.get('height'))-2*self.plot.y or self.height-2*self.plot.y
         self.plot.xValueAxis.xLabelFormat       = '{mmm} {yy}'
         self.plot.xValueAxis.monthName = [ 'Enero', 'Febrero','Marzo','Abril','Mayo','Junio','Julio','Agosto','Septiembre','Octubre','Noviembre','Diciembre' ]
         self.plot.lineLabels.fontSize           = 4
