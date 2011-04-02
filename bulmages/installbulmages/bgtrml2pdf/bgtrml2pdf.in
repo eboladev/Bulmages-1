@@ -870,22 +870,32 @@ class PieChart(_DrawingEditorMixin,Drawing):
         self.legend.subCols[1].align    = 'right'  
         # these data can be read from external sources  
 
+	self._colors1    = [PCMYKColor(x,0,0,x) for x in (100,95,90,80,85,70,75,60,65,50,55,40,45,30,35,20,25,10,5)]
         data = []
         categories = []
-
+        self._colors = []
+        
         for td in node.findall('data'):
 		data.append(float(td.text.replace(",",".")))
-
+	i = 0
         for td in node.findall('categorie'):
 		categories.append(td.text)
-
+		if (td.get('color')):
+		    tupla = bgcolor.get(str(td.get('color')))
+		    self._colors.append(Color(tupla[0], tupla[1], tupla[2]))
+		else:
+		    self._colors.append(self._colors1[i])
+		    i = i + 1
+		    if (i > 10):
+		         i = 0
+		         
         #data                = [9, 7, 6, 4, 2.5, 1.0]  
         #categories          = ('A','B','C','D','E','F',)  
-        colors              = [PCMYKColor(0,x,0,x) for x in (100,80,60,40,20,5)]  
+        #colors              = [PCMYKColor(0,x,0,x) for x in (100,80,60,40,20,5)]  
         self.chart.data     = data  
         self.chart.labels   = map(str, self.chart.data)  
-        self.legend.colorNamePairs = zip(colors, categories)  
-        for i, color in enumerate(colors): self.chart.slices[i].fillColor  = color  
+        self.legend.colorNamePairs = zip(self._colors, categories)  
+        for i, color in enumerate(self._colors): self.chart.slices[i].fillColor  = color  
 
 class BarChart(_DrawingEditorMixin,Drawing):  
     def __init__(self, node, width=400,height=200,*args,**kw):  
