@@ -112,7 +112,6 @@
   <include location="local">local_blI18n.h</include>
  </includes>
  <layoutdefault spacing="2" margin="5" />
- <pixmapfunction>qPixmapFromMimeSource</pixmapfunction>
  <resources/>
  <connections>
   <connection>

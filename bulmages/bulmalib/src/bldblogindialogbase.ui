@@ -168,7 +168,6 @@
   <include location="local">local_blI18n.h</include>
  </includes>
  <layoutdefault spacing="6" margin="11" />
- <pixmapfunction>qPixmapFromMimeSource</pixmapfunction>
  <tabstops>
   <tabstop>m_login</tabstop>
   <tabstop>m_password</tabstop>

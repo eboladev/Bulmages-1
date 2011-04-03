@@ -2,6 +2,7 @@
 
 #include "cambio.h"
 #include "blfixed.h"
+#include "blplugins.h"
 
 
 /// Una factura puede tener multiples bases imponibles. Por eso definimos el tipo base
@@ -19,6 +20,14 @@ Cambio::Cambio ( BtCompany *emp, QWidget *parent ) : BlWidget ( emp, parent )
     BlDbRecord *linea;
 
     BtTicket *tick = emp->ticketActual();
+
+
+    /// Disparamos los plugins.
+    int res = g_plugins->lanza ( "Cambio_ivainc_pre", this );
+    if ( res != 0 ) {
+        return;
+    } // end if
+    
 
     /// Impresion de los contenidos.
     QString l;

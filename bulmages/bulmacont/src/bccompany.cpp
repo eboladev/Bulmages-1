@@ -469,7 +469,7 @@ int BcCompany::listado347()
 void BcCompany::reemplazacuentaenasientos()
 {
     blDebug ( "BcCompany::reemplazacuentaenasientos", 0 );
-    BcCambiaCuentaView *ctac = new BcCambiaCuentaView ( this, 0, false );
+    BcCambiaCuentaView *ctac = new BcCambiaCuentaView ( this, 0, 0 );
     ctac->exec();
     blDebug ( "END BcCompany::reemplazacuentaenasientos", 0 );
 }
