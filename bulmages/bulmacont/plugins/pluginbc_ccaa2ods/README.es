@@ -1,7 +1,7 @@
-=======
-Plugins
-=======
-#README
+#######
+#Plugins
+#######
+#README.es
 20090419
 
 Nombre: Cuentas anuales 

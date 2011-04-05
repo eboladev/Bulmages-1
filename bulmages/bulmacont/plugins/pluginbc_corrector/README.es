@@ -1,7 +1,7 @@
-=======
-Plugins
-=======
-#README
+#######
+#Plugins
+#######
+#README.es
 20080502
 
 Nombre: Corrector Contable

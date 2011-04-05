@@ -1,7 +1,7 @@
-=======
-Plugins
-=======
-#README
+#######
+#Plugins
+#######
+#README.es
 20090706
 
 Nombre: Balance Jerárquico.

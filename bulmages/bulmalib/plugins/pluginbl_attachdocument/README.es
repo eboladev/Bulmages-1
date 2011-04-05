@@ -1,7 +1,7 @@
 #######
 #Plugins
 #######
-#README
+#README.es
 #20080801
 
 Nombre: Adjuntar documentos

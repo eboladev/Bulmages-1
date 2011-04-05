@@ -1,7 +1,7 @@
 #######
 #Plugins
 #######
-#README
+#README.fr
 #20110205
 
 Nombre: Bloquage de fiches

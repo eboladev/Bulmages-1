@@ -1,6 +1,6 @@
-=======
-Plugins
-=======
+#######
+#Plugins
+#######
 #README.es
 20080502
 
@@ -32,7 +32,7 @@ En desarrollo:
 
 
 Código antiguo
-==============
+##############
 
 En el directorio gdchart hay un plugin antiguo que utiliza la biblioteca
 gdchart.

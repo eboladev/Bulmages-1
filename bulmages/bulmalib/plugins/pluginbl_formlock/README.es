@@ -1,7 +1,7 @@
 #######
 #Plugins
 #######
-#README
+#README.es
 #20080501
 
 Nombre: Bloqueo de fichas
