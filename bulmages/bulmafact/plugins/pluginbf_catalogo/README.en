@@ -24,6 +24,8 @@ Dependencias: libpluginbf_articulo.so
 
 Incompatibles:
 
-Orden:
+Categorias: Experimentals;
 
-Comentarios: 
+Orden: 450
+
+Comentarios:

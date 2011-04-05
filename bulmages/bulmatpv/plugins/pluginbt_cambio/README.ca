@@ -6,7 +6,7 @@
 
 Nombre: Canvi
 
-Biblioteca: libplugincambio.so
+Biblioteca: libpluginbt_cambio.so
 
 Descripción: <H1>Canvi</H1>
 <P>Presenta la finestra de devolució de canvi als cobraments. I de selecció de pagament amb VISA.</P>

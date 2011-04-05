@@ -6,7 +6,7 @@
 
 Nombre: Cambio
 
-Biblioteca: libplugincambio.so
+Biblioteca: libpluginbt_cambio.so
 
 Descripción: <H1>Cambio</H1>
 <P>Presenta la ventana de devolucion de cambio en los cobros. Y de seleccion de pago con VISA.</P>

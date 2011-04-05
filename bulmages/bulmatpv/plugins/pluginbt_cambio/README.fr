@@ -6,7 +6,7 @@
 
 Nombre: Change
 
-Biblioteca: libplugincambio.so
+Biblioteca: libpluginbt_cambio.so
 
 Descripción: <H1>Change</H1>
 <P>Il présente la fenêtre de remboursement de changement dans les encaissements. Et de sélection de paiement avec VISA.</P>
