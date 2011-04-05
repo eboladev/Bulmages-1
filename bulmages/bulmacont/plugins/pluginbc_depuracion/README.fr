@@ -1,7 +1,7 @@
 #######
 #Plugins
 #######
-#README.es
+#README.fr
 #200110204 Mettre la date de la dernière révision
 
 Nombre: Mode Débogage

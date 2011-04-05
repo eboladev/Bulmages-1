@@ -4,13 +4,12 @@
 #README.es
 #20080501
 
-Nombre: Promedios en Artículos
+Nombre: Plugin para Webcam
 
-Biblioteca: libpluginpromedios.so
+Biblioteca: libpluginbf_qwebcam.so
 
-Descripción: <H1>Promedios en Articulos</H1>
-<P>Agrega una pestaña a la ficha de articulos que muestra información relativa a
-las compras y ventas de dicho artículo y algunos datos estadísticos adicionales sobre el mismo.</P>
+Descripción: <H1>Plugin para Webcam</H1>
+<P>Plugin para Webcam.</P>
 <B>Author:</B>Tomeu Borrás (tborras@conetxia.com)<BR>
 <HR>
 
@@ -20,7 +19,7 @@ ArchivoSQLpatch:
 
 ArchivoSQLdeins: 
 
-Dependencias: libpluginbf_articulo
+Dependencias: libpluginbf_articulo.so
 
 Incompatibles:
 

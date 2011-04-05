@@ -1,7 +1,7 @@
 #######
 #Plugins
 #######
-#README.es
+#README.fr
 #20110212
 
 Nombre: Impression en cuisine
