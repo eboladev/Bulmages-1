@@ -95,7 +95,7 @@ int entryPoint ( BfBulmaFact *bges )
     blDebug ( "Punto de Entrada del plugin de inventario\n", 0 );
 
     /// El plugin necesita un parche en la base de datos para funcionar.
-    bges->company()->dbPatchVersionCheck("PluginBf_Inventario", "0.10.1-0001");
+    bges->company()->dbPatchVersionCheck("PluginBf_Inventario", "0.10.1-0002");
 
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale ( LC_ALL, "" );

@@ -60,10 +60,10 @@ language 'plpgsql';
 
 CREATE OR REPLACE FUNCTION aux() RETURNS INTEGER AS '
 DECLARE
-	as RECORD;
+	bs RECORD;
 BEGIN
 
-	SELECT INTO as * FROM pg_tables  WHERE tablename=''inventario'';
+	SELECT INTO bs * FROM pg_tables  WHERE tablename=''inventario'';
 	IF NOT FOUND THEN
 
 		CREATE TABLE inventario (
@@ -92,7 +92,7 @@ BEGIN
 		);
 	END IF;
 
-	SELECT INTO as * FROM pg_tables WHERE tablename=''minimsalmacen'';
+	SELECT INTO bs * FROM pg_tables WHERE tablename=''minimsalmacen'';
 	IF NOT FOUND THEN
 		CREATE TABLE minimsalmacen (
 		idminimsalmacen SERIAL PRIMARY KEY,
@@ -114,10 +114,10 @@ SELECT drop_if_exists_proc('s_narticulo', '');
 CREATE FUNCTION s_narticulo() RETURNS "trigger"
 AS '
 DECLARE
-    as RECORD;
+    bs RECORD;
 BEGIN
-    FOR as IN SELECT * FROM almacen LOOP
-	INSERT INTO stock_almacen (idarticulo, idalmacen, stock) VALUES (NEW.idarticulo, as.idalmacen, 0);
+    FOR bs IN SELECT * FROM almacen LOOP
+	INSERT INTO stock_almacen (idarticulo, idalmacen, stock) VALUES (NEW.idarticulo, bs.idalmacen, 0);
     END LOOP;
     RETURN NEW;
 END;
@@ -156,10 +156,10 @@ SELECT drop_if_exists_proc('s_nalmacen', '');
 CREATE FUNCTION s_nalmacen() RETURNS "trigger"
 AS '
 DECLARE
-    as RECORD;
+    bs RECORD;
 BEGIN
-    FOR as IN SELECT * FROM articulo LOOP
-	INSERT INTO stock_almacen (idarticulo, idalmacen, stock) VALUES (as.idarticulo, NEW.idalmacen, 0);
+    FOR bs IN SELECT * FROM articulo LOOP
+	INSERT INTO stock_almacen (idarticulo, idalmacen, stock) VALUES (bs.idarticulo, NEW.idalmacen, 0);
     END LOOP;
     RETURN NEW;
 END;
@@ -276,12 +276,12 @@ CREATE OR REPLACE FUNCTION s_modificadostockalmacen() RETURNS "trigger"
 AS '
 DECLARE 
     cant numeric;
-    as RECORD;
+    bs RECORD;
 BEGIN
     IF NEW.stock <> OLD.stock THEN
 	cant := NEW.stock - OLD.stock;
-	FOR as IN SELECT * FROM comparticulo WHERE idarticulo = NEW.idarticulo LOOP
-	    UPDATE stock_almacen SET stock = stock + cant * as.cantcomparticulo WHERE idarticulo = as.idcomponente AND idalmacen = NEW.idalmacen;
+	FOR bs IN SELECT * FROM comparticulo WHERE idarticulo = NEW.idarticulo LOOP
+	    UPDATE stock_almacen SET stock = stock + cant * bs.cantcomparticulo WHERE idarticulo = bs.idcomponente AND idalmacen = NEW.idalmacen;
 	END LOOP;
     END IF;
     RETURN NEW;
@@ -400,13 +400,13 @@ SELECT drop_if_exists_proc('s_cambiaalbaran', '');
 CREATE FUNCTION s_cambiaalbaran() RETURNS "trigger"
 AS '
 DECLARE
-    as RECORD;
+    bs RECORD;
 
 BEGIN
     IF NEW.idalmacen <> OLD.idalmacen THEN
-	FOR as IN SELECT * FROM lalbaran WHERE idalbaran = NEW.idalbaran LOOP
-    	    UPDATE stock_almacen SET stock = stock + as.cantlalbaran WHERE idarticulo = as.idarticulo AND idalmacen = OLD.idalmacen;
-	    UPDATE stock_almacen SET stock = stock - as.cantlalbaran WHERE idarticulo = as.idarticulo AND idalmacen = NEW.idalmacen;
+	FOR bs IN SELECT * FROM lalbaran WHERE idalbaran = NEW.idalbaran LOOP
+    	    UPDATE stock_almacen SET stock = stock + bs.cantlalbaran WHERE idarticulo = bs.idarticulo AND idalmacen = OLD.idalmacen;
+	    UPDATE stock_almacen SET stock = stock - bs.cantlalbaran WHERE idarticulo = bs.idarticulo AND idalmacen = NEW.idalmacen;
 	END LOOP;
     END IF;
     RETURN NEW;
@@ -426,13 +426,13 @@ SELECT drop_if_exists_proc('s_cambiaalbaranp', '');
 CREATE FUNCTION s_cambiaalbaranp() RETURNS "trigger"
 AS '
 DECLARE
-    as RECORD;
+    bs RECORD;
 
 BEGIN
     IF NEW.idalmacen <> OLD.idalmacen THEN
-	FOR as IN SELECT * FROM lalbaranp WHERE idalbaranp = NEW.idalbaranp LOOP
-	    UPDATE stock_almacen SET stock = stock - as.cantlalbaranp WHERE idarticulo = as.idarticulo AND idalmacen = OLD.idalmacen;
-	    UPDATE stock_almacen SET stock = stock + as.cantlalbaranp WHERE idarticulo = as.idarticulo AND idalmacen = NEW.idalmacen;
+	FOR bs IN SELECT * FROM lalbaranp WHERE idalbaranp = NEW.idalbaranp LOOP
+	    UPDATE stock_almacen SET stock = stock - bs.cantlalbaranp WHERE idarticulo = bs.idarticulo AND idalmacen = OLD.idalmacen;
+	    UPDATE stock_almacen SET stock = stock + bs.cantlalbaranp WHERE idarticulo = bs.idarticulo AND idalmacen = NEW.idalmacen;
 	END LOOP;
     END IF;
     RETURN NEW;
@@ -456,13 +456,13 @@ CREATE TRIGGER s_cambiadoalbaranpt
 --
 CREATE OR REPLACE FUNCTION actualizarevision() RETURNS INTEGER AS '
 DECLARE
-	as RECORD;
+	bs RECORD;
 BEGIN
-	SELECT INTO as * FROM configuracion WHERE nombre=''PluginBf_Inventario'';
+	SELECT INTO bs * FROM configuracion WHERE nombre=''PluginBf_Inventario'';
 	IF FOUND THEN
-		UPDATE CONFIGURACION SET valor=''0.10.1-0001'' WHERE nombre=''PluginBf_Inventario'';
+		UPDATE CONFIGURACION SET valor=''0.10.1-0002'' WHERE nombre=''PluginBf_Inventario'';
 	ELSE
-		INSERT INTO configuracion (nombre, valor) VALUES (''PluginBf_Inventario'', ''0.10.1-0001'');
+		INSERT INTO configuracion (nombre, valor) VALUES (''PluginBf_Inventario'', ''0.10.1-0002'');
 	END IF;
 	RETURN 0;
 END;
