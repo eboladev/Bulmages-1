@@ -9,7 +9,7 @@ Nombre: Maneig de TPV
 Biblioteca: libpluginbf_bulmatpv.so
 
 Descripción: <H1>TPV</H1>
-<P>Maneja els tickets emesos per un o diversos TPV i els mostra. Permet el control de les caixes i les Z produïdes per un TPV.</P>
+<P>Manega els tickets emesos per un o diversos TPV i els mostra. Permet el control de les caixes i les Z produïdes per un TPV.</P>
 <P>És imprescindible tenir la funcionalitat de TPV instal·lada o sinó aquest plugin no funcionarà.</P>
 <B>Author:</B>Tomeu Borrás (tborras@conetxia.com)<BR>
 <HR>
