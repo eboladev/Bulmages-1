@@ -74,6 +74,10 @@ ConvReunionList::ConvReunionList ( BfCompany *comp, QWidget *parent, Qt::WFlags 
 
 
     setSubForm ( mui_list );
+    
+    /// Cargamos los filtros guardados.
+    cargaFiltrosXML();
+    
     presentar();
     mdb_idreunion = "";
     if ( modoEdicion() )

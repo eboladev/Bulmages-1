@@ -76,7 +76,6 @@ PedidosProveedorList::PedidosProveedorList ( BfCompany *comp, QWidget *parent, Q
     m_proveedor->m_valores["cifproveedor"] = "";
     m_proveedor->m_valores["nomproveedor"] = "";
 
-    presentar();
     setSubForm ( mui_list );
     mdb_idpedidoproveedor = "";
     if ( modoEdicion() ) {
@@ -84,6 +83,12 @@ PedidosProveedorList::PedidosProveedorList ( BfCompany *comp, QWidget *parent, Q
     } // end if
     hideBusqueda();
     iniciaForm();
+    
+    /// Cargamos los filtros guardados.
+    cargaFiltrosXML();
+
+    presentar();
+    
     /// Hacemos el tratamiento de los permisos que desabilita botones en caso de no haber suficientes permisos.
     trataPermisos ( "pedidoproveedor" );
     /// Llamamos a los scripts

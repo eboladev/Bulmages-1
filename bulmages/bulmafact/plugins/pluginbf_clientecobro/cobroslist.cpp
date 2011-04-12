@@ -86,6 +86,10 @@ CobrosList::CobrosList ( BfCompany *comp, QWidget *parent, Qt::WFlags flag, edmo
     m_cliente->setTableName ( "cliente" );
     m_cliente->m_valores["cifcliente"] = "";
     m_cliente->m_valores["nomcliente"] = "";
+    
+    /// Cargamos los filtros guardados.
+    cargaFiltrosXML();
+    
     presentar();
     mdb_idcobro = "";
     if ( modoEdicion() )

@@ -79,6 +79,10 @@ JDirectivaList::JDirectivaList ( BfCompany *comp, QWidget *parent, Qt::WFlags fl
     mui_list->setMainCompany ( comp );
 
     setSubForm ( mui_list );
+    
+    /// Cargamos los filtros guardados.
+    cargaFiltrosXML();
+    
     presentar();
     mdb_idjdirectiva = "";
     

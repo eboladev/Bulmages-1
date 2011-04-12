@@ -64,6 +64,11 @@ PresupuestoContableList::PresupuestoContableList ( BfCompany *comp, QWidget *par
         mui_borrar->setHidden ( TRUE );
         mui_imprimir->setHidden ( TRUE );
     } // end if
+    
+    
+    /// Cargamos los filtros guardados.
+    cargaFiltrosXML();
+    
     presentar();
     /// Hacemos el tratamiento de los permisos que desabilita botones en caso de no haber suficientes permisos.
     trataPermisos ( "presupuestocontable" );

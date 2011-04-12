@@ -78,6 +78,10 @@ ProfesoresList::ProfesoresList ( BfCompany *comp, QWidget *parent, Qt::WFlags fl
 
 
     setSubForm ( mui_list );
+    
+    /// Cargamos los filtros guardados.
+    cargaFiltrosXML();
+    
     presentar();
     mdb_idprofesor = "";
     

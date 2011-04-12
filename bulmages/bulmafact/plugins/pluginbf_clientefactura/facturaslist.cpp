@@ -113,6 +113,9 @@ FacturasList::FacturasList ( BfCompany *comp, QWidget *parent, Qt::WFlags flag, 
     mui_almacen->setAllowNull ( TRUE );
     mui_almacen->setId("");
     
+    /// Cargamos los filtros guardados.
+    cargaFiltrosXML();
+    
     presentar();
     mdb_idfactura = "";
     if ( modoEdicion() ) {

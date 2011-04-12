@@ -74,13 +74,17 @@ ArticuloList::ArticuloList ( BfCompany *comp, QWidget *parent, Qt::WFlags flag, 
     } else {
         setWindowTitle ( _ ( "Selector de articulos" ) );
         mui_editar->setHidden ( TRUE );
-//        mui_crear->setHidden ( TRUE );
         mui_borrar->setHidden ( TRUE );
         mui_exportar->setHidden ( TRUE );
         mui_importar->setHidden ( TRUE );
         mui_imprimir->setHidden ( TRUE );
     } // end if
+    
+    cargaFiltrosXML();
+    
     presentar();
+    
+    
     hideBusqueda();
     /// Hacemos el tratamiento de los permisos que desabilita botones en caso de no haber suficientes permisos.
     trataPermisos ( "articulo" );

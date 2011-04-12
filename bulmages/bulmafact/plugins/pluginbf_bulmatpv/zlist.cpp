@@ -65,7 +65,10 @@ ZList::ZList ( BfCompany *comp, QWidget *parent, Qt::WFlags flag )
     mui_list->setInsert ( FALSE );
     mui_list->setDelete ( FALSE );
     mui_list->setSortingEnabled ( TRUE );
-
+    
+    /// Cargamos los filtros guardados.
+    cargaFiltrosXML();
+    
     presentar();
     m_idz = "";
     mainCompany() ->meteWindow ( windowTitle(), this );

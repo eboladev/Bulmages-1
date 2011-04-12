@@ -78,6 +78,10 @@ ActividadesList::ActividadesList ( BfCompany *comp, QWidget *parent, Qt::WFlags 
     mui_list->setMainCompany ( comp );
 
     setSubForm ( mui_list );
+    
+    /// Cargamos los filtros guardados.
+    cargaFiltrosXML();
+    
     presentar();
     mdb_idactividad = "";
     

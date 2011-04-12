@@ -81,6 +81,10 @@ CarteraPagosList::CarteraPagosList ( BfCompany *comp, QWidget *parent, Qt::WFlag
         mui_borrar->setHidden ( TRUE );
         mui_imprimir->setHidden ( TRUE );
     } // end if
+    
+    /// Cargamos los filtros guardados.
+    cargaFiltrosXML();
+    
     presenta();
     trataPermisos ( "vencimientop" );
     /// Llamamos a los scripts

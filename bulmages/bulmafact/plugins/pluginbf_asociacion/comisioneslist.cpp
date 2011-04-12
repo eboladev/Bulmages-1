@@ -74,6 +74,10 @@ ComisionesList::ComisionesList ( BfCompany *comp, QWidget *parent, Qt::WFlags fl
 
 
     setSubForm ( mui_list );
+    
+    /// Cargamos los filtros guardados.
+    cargaFiltrosXML();
+    
     presentar();
     mdb_idcomision = "";
     if ( modoEdicion() )

@@ -46,6 +46,8 @@ private:
     /// doble click sobre la lista)
     edmode m_modo;
     QScriptEngine m_myEngine;
+    const QString nameFileConfig(); 
+    const QString nameFileDefaultConfig(); 
     
 protected:
     void setSubForm ( BlSubForm * );
@@ -73,6 +75,9 @@ public:
     void trataPermisos ( QString nomtabla );
     BlSubForm *subForm();
     void blScript(QObject * obj);
+    void guardaFiltrosXML();
+    void cargaFiltrosXML();
+
 
 public slots:
     virtual void on_mui_list_customContextMenuRequested ( const QPoint & );

@@ -86,7 +86,8 @@ FacturasProveedorList::FacturasProveedorList ( BfCompany *comp, QWidget *parent,
     m_proveedor->setMainCompany ( mainCompany() );
     m_articulo->setMainCompany ( mainCompany() );
     mui_list->setMainCompany ( comp );
-    presentar();
+    
+
     setSubForm ( mui_list );
     mdb_idfacturap = "";
     /// Establecemos los parametros de busqueda del Cliente
@@ -102,6 +103,11 @@ FacturasProveedorList::FacturasProveedorList ( BfCompany *comp, QWidget *parent,
     /// Hacemos el tratamiento de los permisos que desabilita botones en caso de no haber suficientes permisos.
     trataPermisos ( "facturap" );
 
+    /// Cargamos los filtros guardados.
+    cargaFiltrosXML();
+    
+    presentar();
+    
     /// Disparamos los plugins.
     g_plugins->lanza ( "FacturasProveedorList_FacturasProveedorList_Post", this );
     /// Llamamos a los scripts

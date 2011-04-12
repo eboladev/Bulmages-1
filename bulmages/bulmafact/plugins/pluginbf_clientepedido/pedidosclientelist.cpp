@@ -80,6 +80,10 @@ PedidosClienteList::PedidosClienteList ( BfCompany *comp, QWidget *parent, Qt::W
     mui_list->setMainCompany ( comp );
     setSubForm ( mui_list );
     iniciaForm();
+    
+    /// Cargamos los filtros guardados.
+    cargaFiltrosXML();
+    
     presentar();
     m_idpedidocliente = "";
     /// Establecemos los parametros de busqueda del Cliente

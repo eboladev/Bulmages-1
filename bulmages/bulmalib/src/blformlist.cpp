@@ -23,8 +23,15 @@
 #include "blformlist.h"
 #include "blmaincompany.h"
 
+#include "bldatesearch.h"
+
 #include <QFile>
 #include <QTextStream>
+#include <QDomDocument>
+#include <QDomNode>
+
+
+
 
 
 /// By R. Cabezas
@@ -36,6 +43,7 @@ Importa el script y lo lanza.
 */
 void BlFormList::blScript(QObject * obj) {
     
+    /// Lanzamos los scripts de QScript
     QString fileName = g_confpr->valor ( CONF_DIR_OPENREPORTS ) + "blformlist_"+metaObject()->className()+".qs";
     QFile scriptFile1(fileName);
     if (scriptFile1.open(QIODevice::ReadOnly)) {
@@ -158,6 +166,7 @@ BlFormList::BlFormList ( BlMainCompany *emp, QWidget *parent, Qt::WFlags f, edmo
 BlFormList::~BlFormList()
 {
     blDebug ( "BlFormList::~BlFormList", 0, this->windowTitle() );
+    guardaFiltrosXML();
     sacaWindow();
     blDebug ( "END BlFormList::~BlFormList", 0 );
 }
@@ -543,3 +552,126 @@ void BlFormList::trataPermisos ( QString nomtabla )
     blDebug ( "END BlFormList::trataPermisos", 0 );
 }
 
+
+/// Guarda todos los parametros de filtraje que pudiera tener el listado.
+/**
+ **/
+void BlFormList::guardaFiltrosXML() {
+      QString aux = "";
+    QFile file ( nameFileConfig() );
+    /// Guardado del orden y de configuraciones varias.
+    if ( file.open ( QIODevice::WriteOnly ) ) {
+        QTextStream stream ( &file );
+	stream << "<DOCUMENT>" << "\n";
+	QList<BlDateSearch *> l7 = findChildren<BlDateSearch *>();
+	QListIterator<BlDateSearch *> it7 ( l7 );
+	while ( it7.hasNext() ) {
+	    BlDateSearch * item = it7.next();
+	    QString objname = item->objectName();
+	    QString date = item->text();
+	    stream << "<BLDATESEARCH>\n\t<OBJNAME>" << objname << "</OBJNAME>\n\t<OBJVALUE>" << date << "</OBJVALUE>\n</BLDATESEARCH>";
+	} // end while
+	
+	QList<QLineEdit *> l8 = findChildren<QLineEdit *>();
+	QListIterator<QLineEdit *> it8 ( l8 );
+	while ( it8.hasNext() ) {
+	    QLineEdit * item = it8.next();
+	    QString objname = item->objectName();
+	    QString date = item->text();
+	    stream << "<QLINEEDIT>\n\t<OBJNAME>" << objname << "</OBJNAME>\n\t<OBJVALUE>" << date << "</OBJVALUE>\n</QLINEEDIT>";
+	} // end while
+	
+	stream << "</DOCUMENT>\n";
+	file.close();
+    } // end if
+}
+
+
+/// Guarda todos los parametros de filtraje que pudiera tener el listado.
+/**
+ **/
+void BlFormList::cargaFiltrosXML() {
+    blDebug ( "BlFormList::cargaconfigXML", 0 );
+    QFile file ( nameFileConfig() );
+    if(!file.exists())
+      file.setFileName(nameFileDefaultConfig());
+    
+    
+    QDomDocument doc ( "mydocument" );
+    if ( !file.open ( QIODevice::ReadOnly ) ) {
+        blDebug ( "END BlFormList::cargaconfigXML", 0, "No se pudo abrir archivo" );
+        return;
+    }
+    if ( !doc.setContent ( &file ) ) {
+        file.close();
+        blDebug ( "END BlSubForm::cargaconfigXML", 0, "XML no valido" );
+        return;
+    }
+    file.close();
+
+    QDomElement docElem = doc.documentElement();
+
+    /// Leemos la visibilidad de las columnas. Se hace antes de ordenarlas.
+    QDomNodeList nodos = docElem.elementsByTagName ( "BLDATESEARCH" );
+    for ( int i = 0; i < nodos.count(); i++ ) {
+        QDomNode visible = nodos.item ( i );
+        QDomElement e1 = visible.toElement(); /// try to convert the node to an element.
+        if ( !e1.isNull() ) { /// the node was really an element.
+
+	    /// Cogemos el nombre y el valor
+	    QString objname = e1.firstChildElement ( "OBJNAME" ).toElement().text();
+	    QString objvalue = e1.firstChildElement ( "OBJVALUE" ).toElement().text();
+	    BlDateSearch *dates = findChild<BlDateSearch *>(objname);
+	    if (dates)
+		dates->setText(objvalue);
+	    
+	} // end if
+    } // end form
+  
+    /// Leemos la visibilidad de las columnas. Se hace antes de ordenarlas.
+    nodos = docElem.elementsByTagName ( "QLINEEDIT" );
+    for ( int i = 0; i < nodos.count(); i++ ) {
+        QDomNode visible = nodos.item ( i );
+        QDomElement e1 = visible.toElement(); /// try to convert the node to an element.
+        if ( !e1.isNull() ) { /// the node was really an element.
+
+	    /// Cogemos el nombre y el valor
+	    QString objname = e1.firstChildElement ( "OBJNAME" ).toElement().text();
+	    QString objvalue = e1.firstChildElement ( "OBJVALUE" ).toElement().text();
+	    QLineEdit *dates = findChild<QLineEdit *>(objname);
+	    if (dates) {
+		dates->setText(objvalue);
+	    } // end if
+	    
+	} // end if
+    } // end form
+  
+}
+
+
+/// Sacamos cual es el archivo en el que guardar/cargar configuraciones
+const QString BlFormList::nameFileConfig() 
+{
+   QString directorio = g_confpr->valor(CONF_DIR_USER);
+   if (g_confpr->valor(CONF_GLOBAL_CONFIG_USER) == "TRUE") {
+      directorio = g_confpr->valor(CONF_DIR_CONFIG);
+   } // end if
+
+   QString empresa = mainCompany()->dbName();
+   if (g_confpr->valor(CONF_GLOBAL_CONFIG_COMPANY) == "TRUE") {
+      empresa  = "";
+   } // end if
+
+  QString nombre = directorio  + "blformlist_" + empresa + "_" + objectName() +"_cfn.cfn" ;
+  return nombre;
+}
+
+/// Sacamos cual es el archivo de configuraciones por defecto en caso de que no exista un archivo de configuraciones.
+/// Lo usamos para mejorar la presentacion en la primera ejecucion ya que la primera impresion es la que queda.
+const QString BlFormList::nameFileDefaultConfig() 
+{
+   QString directorio = g_confpr->valor(CONF_DIR_DEFAULT_CONFS);
+
+  QString nombre = directorio + "blformlist_" + objectName() + "_cfn.cfn" ;
+  return nombre;
+}

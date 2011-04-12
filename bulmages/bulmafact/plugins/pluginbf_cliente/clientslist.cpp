@@ -61,12 +61,15 @@ ClientsList::ClientsList ( BfCompany *comp, QWidget *parent, Qt::WFlags flag, ed
     } else {
         setWindowTitle ( _ ( "Selector de clientes" ) );
         mui_editar->setHidden ( TRUE );
-//        mui_crear->setHidden ( TRUE );
         mui_borrar->setHidden ( TRUE );
         mui_exportar->setHidden ( TRUE );
         mui_importar->setHidden ( TRUE );
         mui_imprimir->setHidden ( TRUE );
     } // end if
+    
+    /// Cargamos los filtros guardados.
+    cargaFiltrosXML();
+    
     presentar();
     /// Hacemos el tratamiento de los permisos que desabilita botones en caso de no haber suficientes permisos.
     trataPermisos ( "cliente" );

@@ -177,6 +177,9 @@ AlbaranClienteList::AlbaranClienteList ( BfCompany *comp, QWidget *parent, Qt::W
     m_idtrabajador->setAllowNull ( TRUE );
     m_idtrabajador->setId("");
     
+    /// Cargamos los filtros guardados.
+    cargaFiltrosXML();
+    
     presentar();
     mdb_idalbaran = "";
     if ( modoEdicion() )

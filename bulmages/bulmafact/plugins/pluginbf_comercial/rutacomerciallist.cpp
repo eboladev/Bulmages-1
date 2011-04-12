@@ -68,6 +68,10 @@ RutaComercialList::RutaComercialList ( BfCompany *comp, QWidget *parent )
     setSubForm ( mui_list );
     m_idcliente->setMainCompany ( mainCompany() );
     mui_list->setMainCompany ( comp );
+    
+    /// Cargamos los filtros guardados.
+    cargaFiltrosXML();
+    
     presenta();
     m_idpresupuesto = "";
     hideBusqueda();

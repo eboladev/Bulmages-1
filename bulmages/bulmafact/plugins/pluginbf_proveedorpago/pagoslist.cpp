@@ -78,6 +78,9 @@ PagosList::PagosList ( BfCompany *comp, QWidget *parent, Qt::WFlags flag, edmode
     m_proveedor->m_valores["cifproveedor"] = "";
     m_proveedor->m_valores["nomproveedor"] = "";
 
+    /// Cargamos los filtros guardados.
+    cargaFiltrosXML();
+
     presentar();
     mdb_idpago = "";
     setSubForm ( mui_list );

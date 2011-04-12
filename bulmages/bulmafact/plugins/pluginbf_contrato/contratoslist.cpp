@@ -75,6 +75,11 @@ ContratosList::ContratosList ( BfCompany *comp, QWidget *parent, Qt::WFlags flag
         mui_borrar->setHidden ( TRUE );
         mui_imprimir->setHidden ( TRUE );
     } // end if
+    
+    
+    /// Cargamos los filtros guardados.
+    cargaFiltrosXML();
+    
     presenta();
     setSubForm(mui_list);
     trataPermisos ( "contrato" );
