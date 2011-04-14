@@ -416,29 +416,31 @@ QString BlConfiguration::nombre ( int i )
     if ( i == CONF_BLOCK_WINDOWS )
 	return "CONF_BLOCK_WINDOWS";
     if ( i == CONF_DIR_CONFIG )
-	return "CONF_DIR_CONFIG";
+        return "CONF_DIR_CONFIG";
     if ( i == CONF_GLOBAL_CONFIG_USER )
-	return "CONF_GLOBAL_CONFIG_USER";
+        return "CONF_GLOBAL_CONFIG_USER";
     if ( i == CONF_GLOBAL_CONFIG_COMPANY )
-	return "CONF_GLOBAL_CONFIG_COMPANY";
+        return "CONF_GLOBAL_CONFIG_COMPANY";
     if ( i == CONF_TPV_SERVER_SYNC_IP )
-	return "CONF_TPV_SERVER_SYNC_IP";
+        return "CONF_TPV_SERVER_SYNC_IP";
     if ( i == CONF_CENTER_TEXT_FIELDS )
-	return "CONF_CENTER_TEXT_FIELDS";
+        return "CONF_CENTER_TEXT_FIELDS";
     if ( i == CONF_ASK_BEFORE_EXIT )
-	return "CONF_ASK_BEFORE_EXIT";
+        return "CONF_ASK_BEFORE_EXIT";
     if ( i == CONF_TPV_BASCULA_FILE )
-	return "CONF_TPV_BASCULA_FILE";
+        return "CONF_TPV_BASCULA_FILE";
     if ( i == CONF_MODO_EXPERTO )
-	return "CONF_MODO_EXPERTO";
+        return "CONF_MODO_EXPERTO";
     if ( i == CONF_DIR_DEFAULT_CONFS )
-	return "CONF_DIR_DEFAULT_CONFS";
+        return "CONF_DIR_DEFAULT_CONFS";
     if ( i == CONF_RESIZEROWSTOCONTENTS )
-	return "CONF_RESIZEROWSTOCONTENTS";
+        return "CONF_RESIZEROWSTOCONTENTS";
     if ( i == CONF_TPV_REIMPRIMIR )
-	return "CONF_TPV_REIMPRIMIR";
+        return "CONF_TPV_REIMPRIMIR";
     if ( i == CONF_TPV_CATEGORIES_COLUMNS )
-	return "CONF_TPV_CATEGORIES_COLUMNS";
+        return "CONF_TPV_CATEGORIES_COLUMNS";
+    if ( i == CONF_MAIN_WINDOW_TITLE )
+        return "CONF_MAIN_WINDOW_TITLE";
     return "";
 }
 
@@ -489,6 +491,10 @@ bool BlConfiguration::leeconfig ( QString fich )
         fprintf ( stderr, "%s", cadaux1.toAscii().constData() );
         fprintf ( stderr, "%s", "\n" );
         QTextStream in ( &arch );
+        
+        // Esto es necesario para que se lean bien los caracteres especiales
+        in.setCodec("UTF-8");
+
         while ( !in.atEnd() ) {
             QString cad = in.readLine();
             /// Hacemos la lectura de lineas de configuracion multilinea.
