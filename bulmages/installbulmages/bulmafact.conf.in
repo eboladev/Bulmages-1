@@ -5,6 +5,7 @@
 #--------------------------------------------------------------------#
 
 CONF_SPLASH_BULMAFACT         @CMAKE_INSTALL_PREFIX@/share/bulmages/images/splashbulmafact.jpg
+CONF_MAIN_WINDOW_TITLE Facturación GPL
 
 
 # Estos parametros indican si los numeradores son automaticos.

@@ -228,9 +228,8 @@ int BcCompany::createMainWindows ( BlSplashScreen *splash )
         cargaConf();
 
 	/// Ponemos el titulo de la ventana
-	m_bulmacont->statusBar() ->showMessage ( dbName(), 2000 );
-	m_bulmacont->setWindowTitle ( _ ( "Contabilidad GPL" ) + " :: " + dbName() );
-
+    m_bulmacont->statusBar() ->showMessage ( dbName(), 2000 );
+    m_bulmacont->setWindowTitle ( g_confpr->valor ( CONF_MAIN_WINDOW_TITLE ).isEmpty() ? _( "Contabilidad GPL" ) : g_confpr->valor ( CONF_MAIN_WINDOW_TITLE ) + " :: " + currentUser() + "@" + dbName() ); 
 
     } catch ( ... ) {
         blDebug ( "Error al iniciar la clase company", 2 );

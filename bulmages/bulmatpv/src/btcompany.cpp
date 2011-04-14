@@ -157,8 +157,7 @@ void BtCompany::createMainWindows ( BlSplashScreen *splash )
 
     /// Ponemos el titulo de la ventana
     m_bulmaTPV->statusBar() ->showMessage ( dbName(), 2000 );
-    m_bulmaTPV->setWindowTitle ( _ ( "Terminal Punto de Venta GPL" ) + " :: " + dbName() );
-    
+   m_bulmaTPV->setWindowTitle ( g_confpr->valor ( CONF_MAIN_WINDOW_TITLE ).isEmpty() ? _( "Terminal Punto de Venta GPL" ) : g_confpr->valor ( CONF_MAIN_WINDOW_TITLE ) + " :: " + currentUser() + "@" + dbName() ); 
     /// Hacemos la comprobacion de Z
     compruebaUltimaZ();
 

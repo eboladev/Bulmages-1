@@ -43,6 +43,7 @@ CONF_BG_BALANCETREE            #CCCC66
 
 # Parametros de configuracion del splash y del fondo del area de trabajo.
 CONF_SPLASH_BULMACONT          @CMAKE_INSTALL_PREFIX@/share/bulmages/images/splashbulmacont.jpg
+CONF_MAIN_WINDOW_TITLE Contabilidad GPL
 
 CONF_DIR_AINTELIGENTES         @CMAKE_INSTALL_PREFIX@/share/bulmages/ainteligentes/
 
