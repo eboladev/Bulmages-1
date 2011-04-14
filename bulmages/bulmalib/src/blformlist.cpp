@@ -569,7 +569,8 @@ void BlFormList::guardaFiltrosXML() {
 	    BlDateSearch * item = it7.next();
 	    QString objname = item->objectName();
 	    QString date = item->text();
-	    stream << "<BLDATESEARCH>\n\t<OBJNAME>" << objname << "</OBJNAME>\n\t<OBJVALUE>" << date << "</OBJVALUE>\n</BLDATESEARCH>";
+	    QString objparent = item->parent()->objectName();
+	    stream << "<BLDATESEARCH>\n\t<OBJNAME>" << objname << "</OBJNAME>\n\t<OBJVALUE>" << date << "</OBJVALUE>\n\t<OBJPARENT>" << objparent << "</OBJPARENT>\n</BLDATESEARCH>";
 	} // end while
 	
 	QList<QLineEdit *> l8 = findChildren<QLineEdit *>();
@@ -577,8 +578,9 @@ void BlFormList::guardaFiltrosXML() {
 	while ( it8.hasNext() ) {
 	    QLineEdit * item = it8.next();
 	    QString objname = item->objectName();
+	    QString objparent = item->parent()->objectName();
 	    QString date = item->text();
-	    stream << "<QLINEEDIT>\n\t<OBJNAME>" << objname << "</OBJNAME>\n\t<OBJVALUE>" << date << "</OBJVALUE>\n</QLINEEDIT>";
+	    stream << "<QLINEEDIT>\n\t<OBJNAME>" << objname << "</OBJNAME>\n\t<OBJVALUE>" << date << "</OBJVALUE>\n\t<OBJPARENT>" << objparent << "</OBJPARENT>\n</QLINEEDIT>";
 	} // end while
 	
 	stream << "</DOCUMENT>\n";
@@ -617,14 +619,16 @@ void BlFormList::cargaFiltrosXML() {
         QDomNode visible = nodos.item ( i );
         QDomElement e1 = visible.toElement(); /// try to convert the node to an element.
         if ( !e1.isNull() ) { /// the node was really an element.
-
 	    /// Cogemos el nombre y el valor
 	    QString objname = e1.firstChildElement ( "OBJNAME" ).toElement().text();
 	    QString objvalue = e1.firstChildElement ( "OBJVALUE" ).toElement().text();
+	    QString objparent = e1.firstChildElement ( "OBJPARENT" ).toElement().text();
 	    BlDateSearch *dates = findChild<BlDateSearch *>(objname);
-	    if (dates)
-		dates->setText(objvalue);
-	    
+	    if (dates) {
+		if (dates->parent()->objectName() == objparent) {
+		    dates->setText(objvalue);
+		} // end if
+	    } // end if
 	} // end if
     } // end form
   
@@ -638,9 +642,12 @@ void BlFormList::cargaFiltrosXML() {
 	    /// Cogemos el nombre y el valor
 	    QString objname = e1.firstChildElement ( "OBJNAME" ).toElement().text();
 	    QString objvalue = e1.firstChildElement ( "OBJVALUE" ).toElement().text();
+	    QString objparent = e1.firstChildElement ( "OBJPARENT" ).toElement().text();
 	    QLineEdit *dates = findChild<QLineEdit *>(objname);
 	    if (dates) {
-		dates->setText(objvalue);
+		if (dates->parent()->objectName() == objparent) {
+		    dates->setText(objvalue);
+		} // end if
 	    } // end if
 	    
 	} // end if

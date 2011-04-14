@@ -117,6 +117,7 @@ FacturasList::FacturasList ( BfCompany *comp, QWidget *parent, Qt::WFlags flag, 
     cargaFiltrosXML();
     
     presentar();
+
     mdb_idfactura = "";
     if ( modoEdicion() ) {
         mainCompany() ->meteWindow ( windowTitle(), this );
