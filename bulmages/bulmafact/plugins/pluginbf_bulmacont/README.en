@@ -4,13 +4,13 @@
 #README.en
 #20080501
 
-Nombre: Contabilidad en la facturacion
+Nombre: Accounting in invoicing
 
 Biblioteca: libpluginbf_bulmacont.so
 
-Descripción: <H1>Contabilidad en bulmaFact</H1>
-<P>Abre una instancia de contabilidad junto a la facturacion para poder usar pantallas de la contabilidad
-en la facturacion.</P>
+Descripción: <H1>Accounting in bulmaFact</H1>
+<P>Opens an accounting instance together with invoicing to be able to use accounting screens
+in invoicing.<P>
 <B>Author:</B>Tomeu Borrás (tborras@conetxia.com)<BR>
 <HR>
 
