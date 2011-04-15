@@ -21,8 +21,6 @@
 #include "blfunctions.h"
 #include "blpostgresqlclient.h"
 #include "blmaincompany.h"
-#include "bcbulmacont.h"
-#include "bfbulmafact.h"
 #include "blform.h"
 #include "pdefs_pluginbl_formlock.h"
 
