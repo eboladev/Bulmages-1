@@ -8,7 +8,7 @@ Nombre: Tickets a clientes
 
 Biblioteca: libpluginbf_clienteticket.so
 
-Descripción:  <H1><IMG SRC="@CMAKE_INSTALL_PREFIX@/share/bulmages/imagesrc/images/oxygen/actions/client_delivery_note.svg" WIDTH="100"/><BR>Albaranes a clientes</H1>
+Descripción:  <H1><IMG SRC="@CMAKE_INSTALL_PREFIX@/share/bulmages/imagesrc/images/oxygen/actions/client_delivery_note.svg" WIDTH="100"/><BR>Tickets a clientes</H1>
 <P>Soporte para emisión de tickets a clientes.</P>
 <P>Al cargar el plugin tendremos dos nuevas entradas de meńu <B>Listado de Albaranes <IMG SRC="@CMAKE_INSTALL_PREFIX@/share/bulmages/imagesrc/images/oxygen/actions/client_delivery_note_list.svg" WIDTH="22"/></B> desde la que accederemos al listado de albaranes emitidos y <B>Nuevo Albaran <IMG SRC="@CMAKE_INSTALL_PREFIX@/share/bulmages/imagesrc/images/oxygen/actions/client_delivery_note.svg" WIDTH="22"/></B> desde el que podremos emitir un nuevo albaran.</P>
 <H2><IMG SRC="@CMAKE_INSTALL_PREFIX@/share/bulmages/imagesrc/images/oxygen/actions/client_delivery_note.svg" WIDTH="22"/>Listado de Albaranes</H2>
