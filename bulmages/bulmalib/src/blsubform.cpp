@@ -2970,6 +2970,10 @@ void BlSubForm::imprimirPDF ( const QString &titular )
     /// en todos los listados
     buff.replace ( "[titulo]", titular );
 
+    /// Ofrecer el uso de unas variables con la fecha y hora de impresi&oacute;n (por ejemplo, en el pie)
+    buff.replace("[fecha_actual]", QDate::currentDate().toString(Qt::DefaultLocaleShortDate));
+    buff.replace("[hora_actual]", QTime::currentTime().toString("HH:mm"));
+
     if ( file.open ( QIODevice::WriteOnly ) ) {
 
         QTextStream stream ( &file );
