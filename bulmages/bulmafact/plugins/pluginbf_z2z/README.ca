@@ -9,7 +9,7 @@ Nombre: Traspàs de Z
 Biblioteca: libpluginbf_z2z.so
 
 Descripción: <H1>Traspaso de Z a Z</H1>
-<P>Mou línies d'ablarà d'una facturació a una altra.</P>
+<P>Mou línies d'albarà d'una facturació a una altra.</P>
 <B>Author:</B>Tomeu Borrás (tborras@conetxia.com)<BR>
 <HR>
 
@@ -27,4 +27,4 @@ Categorias: Facturació genèrica;
 
 Orden: 900
 
-Comentarios: És un complemente força útil amb els TPV's.
+Comentarios: És un complement força útil amb els TPV's.
