@@ -9,7 +9,7 @@ Nombre: Cartera de Pagos
 Biblioteca: libpluginbf_carterapagos.so
 
 Descripción: <H1>Cartera de Pagos</H1>
-<PARA>Permite gestion avanzada de pagos a proveedores, con faccionado de facturas y control de vencimientos.</PARA>
+<PARA>Permite gestion avanzada de pagos a proveedores, con fraccionado de facturas y control de vencimientos.</PARA>
 <HR>
 <PARA>En el listado de proveedores se eligen las fracciones (porcentajes) de cobro para cada cliente.</PARA>
 <BR>
