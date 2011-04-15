@@ -4,12 +4,12 @@
 #README.en
 #20080501
 
-Nombre: Compra-Venta.
+Nombre: Buying and selling operations
 
 Biblioteca: libpluginbf_compraventa.so
 
-Descripción: <H1>Compra Venta</H1>
-<P>Unifica las operaciones de compra y venta.</P>
+Descripción: <H1>Buying and selling</H1>
+<P>It unifies buying and selling operations.</P>
 <B>Author:</B>Tomeu Borrás (tborras@conetxia.com)<BR>
 <HR>
 
