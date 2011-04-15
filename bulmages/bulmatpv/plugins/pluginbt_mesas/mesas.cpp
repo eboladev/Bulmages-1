@@ -277,7 +277,8 @@ void DistroMesas::importXML(const QString val) {
 		QToolButton *but = new QToolButton(this);
 		but->setObjectName("p_"+mesa->m_pantalla);
 		but->setText(mesa->m_pantalla);
-		but->setMinimumHeight(32);
+		but->setMinimumHeight(42);
+		but->setMinimumWidth(42);
 		but->setCheckable(TRUE);
 		mui_espaciopantallas->addWidget(but);
 		connect(but, SIGNAL(clicked()), this, SLOT(cambiarPantalla()));
@@ -317,7 +318,8 @@ void DistroMesas::on_mui_nuevapantalla_clicked() {
 	but->setObjectName("p_" + text);
 	but->setText(text);
 	but->setCheckable(TRUE);
-	but->setMinimumHeight(32);
+	but->setMinimumHeight(42);
+	but->setMinimumWidth(42);
 	mui_espaciopantallas->addWidget(but);
 	connect(but, SIGNAL(clicked()), this, SLOT(cambiarPantalla()));
     repaint();
