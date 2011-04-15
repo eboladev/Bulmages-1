@@ -29,11 +29,11 @@
 #include <QObject>
 #include <QProcess>
 #include <QTextStream>
+#include <QMenu>
+#include <QMenuBar>
 
 #include "local_blI18n.h"
 #include "pluginbl_report.h"
-#include "bfbulmafact.h"
-#include "bcbulmacont.h"
 #include "myplugininformes.h"
 #include "blworkspace.h"
 #include "blform.h"

@@ -32,8 +32,6 @@
 
 #include "local_blI18n.h"
 #include "pluginbl_logo.h"
-#include "bfbulmafact.h"
-#include "bcbulmacont.h"
 #include "bldockwidget.h"
 #include "blworkspace.h"
 #include "blform.h"

@@ -27,13 +27,11 @@
 #include <QApplication>
 #include <QObject>
 #include <QProcess>
+#include <QMenu>
 
 #include "local_blI18n.h"
 #include "pluginbl_importcsv.h"
 #include "mypluginimportcsv.h"
-
-#include "bfbulmafact.h"
-#include "bcbulmacont.h"
 
 
 QMainWindow *g_bges_importcsv = NULL;

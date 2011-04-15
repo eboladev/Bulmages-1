@@ -33,11 +33,11 @@
 #include <QProcess>
 #include <QX11EmbedContainer>
 #include <QTextStream>
+#include <QMenu>
+#include <QMenuBar>
 
 #include "local_blI18n.h"
 #include "pluginbl_embed.h"
-#include "bfbulmafact.h"
-#include "bcbulmacont.h"
 #include "myplugindock.h"
 #include "bldockwidget.h"
 #include "blworkspace.h"

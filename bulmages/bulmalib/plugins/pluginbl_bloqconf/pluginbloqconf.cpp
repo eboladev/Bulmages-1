@@ -33,8 +33,6 @@
 #include <QTextStream>
 
 #include "pluginbloqconf.h"
-#include "bfbulmafact.h"
-#include "bcbulmacont.h"
 #include "myplugingbloqconf.h"
 #include "blworkspace.h"
 #include "blform.h"
