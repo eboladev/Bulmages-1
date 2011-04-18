@@ -248,6 +248,8 @@ public:
     QString dbName();
     /// Returns table privileges of current user
     bool hasTablePrivilege ( QString table, QString privilege );
+    /// Returns "true" if exists at least one record that satisfies the condition
+    bool existsAnyRecord ( QString table, QString cond = "" );
     /// Evalua expresiones con el motor de calculo de la base de datos
     QString PGEval(QString evalexp, int precision = 2 );
 };
