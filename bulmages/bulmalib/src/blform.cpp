@@ -1503,6 +1503,10 @@ int BlForm::generaRML ( const QString &arch )
     m_variables["CONF_DBNAME"] = mainCompany()->dbName();
     m_variables["CONF_DBUSER"] = mainCompany()->currentUser();
 
+    /// Ofrecer el uso de unas variables con la fecha y hora de impresi&oacute;n (por ejemplo, en el pie)
+    m_variables["fecha_actual"] = QDate::currentDate().toString ( Qt::DefaultLocaleShortDate );
+    m_variables["hora_actual"] = QTime::currentTime().toString ( "HH:mm" );
+
     /// Disparamos los plugins
     int res = g_plugins->lanza ( "BlForm_generaRML", this );
     if ( res != 0 ) {
