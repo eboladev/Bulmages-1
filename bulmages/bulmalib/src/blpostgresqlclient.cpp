@@ -1029,6 +1029,34 @@ bool BlPostgreSqlClient::hasTablePrivilege ( QString table, QString privilege )
 }
 
 
+/// Comprueba si existe alg&uacute;n registro en la tabla que cumpla cierta condici&oacute;n
+/// \param table
+/// \param cond Condición, por defecto ninguna (se comprueba si hay algún registro en la tabla)
+/// \return TRUE si existe algún registro
+bool BlPostgreSqlClient::existsAnyRecord ( QString table, QString cond )
+{
+   blDebug ( "BlPostgreSqlClient::existsAnyRecord", 0 );
+
+   QString cons = QString ( "SELECT * FROM %1" )
+            .arg ( table );
+
+   /// Agregamos la condici&oacute;n si es que la hay
+   if ( !cond.isEmpty() )
+   {
+    cons += QString ( " WHERE %1" )
+            .arg ( cond );
+   }
+
+   /// Con un resultado positivo nos basta
+   cons += " LIMIT 1";
+
+   BlDbRecordSet rs = *loadQuery ( cons );
+
+   blDebug ( "END BlPostgreSqlClient::existsAnyRecord", 0 );
+   return ( !rs.eof() );
+}
+
+
 /// Evaluacion de formulas usando la base de dato como motor de calculo
 QString BlPostgreSqlClient::PGEval ( QString evalexp, int precision )
 {
