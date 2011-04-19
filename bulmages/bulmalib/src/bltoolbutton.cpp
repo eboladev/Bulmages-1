@@ -30,7 +30,7 @@
 BlToolButton::BlToolButton ( QWidget *parent )        : QToolButton ( parent ), BlMainCompanyPointer()
 {
     blDebug ( "BlToolButton::BlToolButton", 0 );
-    connect (this, SIGNAL(released()), this, SLOT(buttonreleased()));
+    connect (this, SIGNAL(released()), this, SLOT(buttonReleased()));
     blDebug ( "END BlToolButton::BlToolButton", 0 );
 }
 
@@ -59,7 +59,9 @@ BlToolButton::~BlToolButton()
 }
 
 void BlToolButton::buttonReleased() {
+    blDebug ( "BlToolButton::buttonReleased", 0 );
     g_plugins->lanza("BlToolButton_released", this);
+    blDebug ( "END BlToolButton::buttonReleased", 0 );
 }
 
 

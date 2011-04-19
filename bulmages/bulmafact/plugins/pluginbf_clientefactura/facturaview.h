@@ -55,7 +55,6 @@ public:
     virtual int borrarPre();
 
 public slots:
-    virtual void on_mui_agregaralbaran_clicked();
     virtual void on_m_descuentos_editFinish ( int, int );
     virtual void on_subform2_editFinish ( int, int );
     virtual void on_mui_veralbaranes_clicked();
