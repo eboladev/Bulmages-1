@@ -28,7 +28,7 @@ ArchivoSQLdeins:
 
 Dependencias: libpluginbf_proveedor.so
 
-Incompatibles:
+Incompatibles: libpluginbf_carterapagos.so
 
 Categorias: Facturacion generica;
 

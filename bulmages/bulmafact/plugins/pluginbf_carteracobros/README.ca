@@ -21,7 +21,7 @@ Descripción: <H1>Cartera de Cobraments</H1>
 
 ParmBD:
 
-ArchivoSQLpatch:revf-pluginbf_carteracobros.sql
+ArchivoSQLpatch: revf-pluginbf_carteracobros.sql
 
 ArchivoSQLdeins: 
 

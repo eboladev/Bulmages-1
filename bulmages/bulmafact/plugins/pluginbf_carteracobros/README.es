@@ -24,7 +24,7 @@ llevar una gestión de cobros y ofrezcan facilidades de pago a sus clientes.</PA
 
 ParmBD:
 
-ArchivoSQLpatch:revf-pluginbf_carteracobros.sql
+ArchivoSQLpatch: revf-pluginbf_carteracobros.sql
 
 ArchivoSQLdeins: 
 

@@ -21,7 +21,7 @@ Descripción: <H1>Carte de paiement</H1>
 
 ParmBD:
 
-ArchivoSQLpatch:revf-pluginbf_carteracobros.sql
+ArchivoSQLpatch: revf-pluginbf_carteracobros.sql
 
 ArchivoSQLdeins: 
 

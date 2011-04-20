@@ -24,13 +24,13 @@ llevar una gestión de pagos avanzada.</PARA>
 
 ParmBD:
 
-ArchivoSQLpatch:revf-pluginbf_carterapagos.sql
+ArchivoSQLpatch: revf-pluginbf_carterapagos.sql
 
 ArchivoSQLdeins: 
 
 Dependencias:
 
-Incompatibles: pluginbf_proveedorpago
+Incompatibles: libpluginbf_proveedorpago.so
 
 Orden: 450
 

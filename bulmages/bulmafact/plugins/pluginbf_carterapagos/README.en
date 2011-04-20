@@ -22,13 +22,13 @@ In the provider listing the fractions (percentages) of payments are chosen for e
 
 ParmBD:
 
-ArchivoSQLpatch:revf-pluginbf_carterapagos.sql
+ArchivoSQLpatch: revf-pluginbf_carterapagos.sql
 
 ArchivoSQLdeins: 
 
 Dependencias:
 
-Incompatibles: pluginbf_proveedorpago
+Incompatibles: libpluginbf_proveedorpago.so
 
 Orden: 450
 
