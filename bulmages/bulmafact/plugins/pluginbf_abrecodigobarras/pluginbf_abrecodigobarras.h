@@ -36,7 +36,7 @@
 extern "C" PLUGINBF_ABRECODIGOBARRAS_EXPORT int entryPoint ( BfBulmaFact * );
 
 
-class myplugin : public QObject, BlMainCompanyPointer
+class PluginBf_AbreCodigoBarras : public QObject, BlMainCompanyPointer
 {
     Q_OBJECT
 
@@ -44,8 +44,8 @@ public:
     BfBulmaFact *m_bulmafact;
 
 public:
-    myplugin();
-    ~myplugin();
+    PluginBf_AbreCodigoBarras();
+    ~PluginBf_AbreCodigoBarras();
     void inicializa ( BfBulmaFact * );
 
 public slots:

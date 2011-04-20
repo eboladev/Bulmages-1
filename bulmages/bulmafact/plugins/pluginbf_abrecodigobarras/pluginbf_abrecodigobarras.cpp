@@ -44,20 +44,20 @@
 ///
 /**
 **/
-myplugin::myplugin()
+PluginBf_AbreCodigoBarras::PluginBf_AbreCodigoBarras()
 {
-    blDebug ( "myplugin::myplugin", 0 );
-    blDebug ( "END myplugin::myplugin", 0 );
+    blDebug ( "PluginBf_AbreCodigoBarras::PluginBf_AbreCodigoBarras", 0 );
+    blDebug ( "END PluginBf_AbreCodigoBarras::PluginBf_AbreCodigoBarras", 0 );
 }
 
 
 ///
 /**
 **/
-myplugin::~myplugin()
+PluginBf_AbreCodigoBarras::~PluginBf_AbreCodigoBarras()
 {
-    blDebug ( "myplugin::~myplugin", 0 );
-    blDebug ( "END myplugin::~myplugin", 0 );
+    blDebug ( "PluginBf_AbreCodigoBarras::~PluginBf_AbreCodigoBarras", 0 );
+    blDebug ( "END PluginBf_AbreCodigoBarras::~PluginBf_AbreCodigoBarras", 0 );
 }
 
 
@@ -65,9 +65,9 @@ myplugin::~myplugin()
 /**
 \return
 **/
-void myplugin::elslot()
+void PluginBf_AbreCodigoBarras::elslot()
 {
-    blDebug ( "myplugin::elslot", 0 );
+    blDebug ( "PluginBf_AbreCodigoBarras::elslot", 0 );
     bool ok;
     QString text = QInputDialog::getText ( 0, _ ( "QInputDialog::getText()" ),
                                            _ ( "Introduzca codigo" ), QLineEdit::Normal, "", &ok );
@@ -141,7 +141,7 @@ void myplugin::elslot()
             prov->show();
         } // end if
     } // end if
-    blDebug ( "END myplugin::elslot", 0 );
+    blDebug ( "END PluginBf_AbreCodigoBarras::elslot", 0 );
 }
 
 
@@ -149,9 +149,9 @@ void myplugin::elslot()
 /**
 \param bges
 **/
-void myplugin::inicializa ( BfBulmaFact *bges )
+void PluginBf_AbreCodigoBarras::inicializa ( BfBulmaFact *bges )
 {
-    blDebug ( "myplugin::inicializa", 0 );
+    blDebug ( "PluginBf_AbreCodigoBarras::inicializa", 0 );
     /// Creamos el men&uacute;.
     setMainCompany ( bges->company() );
     m_bulmafact = bges;
@@ -164,7 +164,7 @@ void myplugin::inicializa ( BfBulmaFact *bges )
     accion->setWhatsThis ( "Abre documentos a partir del codigo de barras" );
     connect ( accion, SIGNAL ( activated() ), this, SLOT ( elslot() ) );
     pPluginMenu->addAction ( accion );
-    blDebug ( "END myplugin::inicializa", 0 );
+    blDebug ( "END PluginBf_AbreCodigoBarras::inicializa", 0 );
 }
 
 
@@ -180,7 +180,7 @@ int entryPoint ( BfBulmaFact *bges )
     setlocale ( LC_ALL, "" );
     blBindTextDomain ( "pluginbf_abrecodigobarras", g_confpr->valor ( CONF_DIR_TRADUCCION ).toAscii().constData() );
 
-    myplugin *plug = new myplugin();
+    PluginBf_AbreCodigoBarras *plug = new PluginBf_AbreCodigoBarras();
     plug->inicializa ( bges );
     blDebug ( "END entryPoint", 0 );
     return 0;
