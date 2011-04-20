@@ -33,7 +33,7 @@ extern "C" PLUGINBF_ALMACEN_EXPORT int entryPoint ( BfBulmaFact * );
 extern "C" PLUGINBF_ALMACEN_EXPORT int SNewAlmacenView (BfCompany *);
 
 
-class MyPlugAlm : public QObject, BlMainCompanyPointer
+class PluginBf_Almacen : public QObject, BlMainCompanyPointer
 {
     Q_OBJECT
 
@@ -41,8 +41,8 @@ public:
     BfBulmaFact *m_bges;
 
 public:
-    MyPlugAlm();
-    ~MyPlugAlm();
+    PluginBf_Almacen();
+    ~PluginBf_Almacen();
     void inicializa ( BfBulmaFact * );
 
 public slots:

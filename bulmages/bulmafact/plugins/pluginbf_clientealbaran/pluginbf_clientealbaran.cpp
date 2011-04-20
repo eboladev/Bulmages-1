@@ -243,6 +243,118 @@ int PresupuestoView_PresupuestoView ( PresupuestoView *l )
     return 0;
 }
 
+
+
+
+///
+/**
+\param l
+\return
+**/
+int FacturaView_FacturaView ( FacturaView *l )
+{
+
+    blDebug ( "PluginBfClienteAlbaran_FacturaView_FacturaView", 0 );
+
+    BlToolButton *agalbaran = new BlToolButton ( l );
+    agalbaran->setObjectName("mui_agalbaran12");
+    
+    agalbaran->setStatusTip ( "Agregar Albaran" );
+    agalbaran->setToolTip ( "Agregar Albaran" );
+    agalbaran->setMinimumSize ( QSize ( 32, 32 ) );
+    agalbaran->setMaximumSize ( QSize ( 32, 32 ) );
+    agalbaran->setIcon ( QIcon ( QString::fromUtf8 ( ":/Images/client-delivery-note-add-to-invoice.png" ) ) );
+    agalbaran->setIconSize ( QSize ( 32, 32 ) );
+    agalbaran->setContentsMargins ( 0, 0, 0, 0 );
+    
+    
+    QHBoxLayout *m_hboxLayout1 = l->mui_plugbotones->findChild<QHBoxLayout *> ( "hboxLayout1" );
+
+    if ( !m_hboxLayout1 ) {
+        m_hboxLayout1 = new QHBoxLayout ( l->mui_plugbotones );
+        m_hboxLayout1->setSpacing ( 5 );
+        m_hboxLayout1->setMargin ( 0 );
+        m_hboxLayout1->setObjectName ( QString::fromUtf8 ( "hboxLayout1" ) );
+    }// end if
+    
+    m_hboxLayout1->addWidget ( agalbaran );
+
+    blDebug ( "END PluginBfClienteAlbaran_FacturaView_FacturaView", 0 );
+
+    return 0;
+}
+
+
+int BlToolButton_released(BlToolButton *bot) {
+
+  if (bot->objectName() == "mui_agalbaran12") {
+      FacturaView *fact1 = (FacturaView *) bot->parent()->parent()->parent();
+
+      /// AGREGAR ALBARAN A LA FACTURA
+    
+        QDialog *diag = new QDialog ( 0 );
+	diag->setModal ( true );
+	AlbaranClienteList *fac = new AlbaranClienteList ( fact1->mainCompany(), diag, 0, BL_SELECT_MODE );
+	
+
+	QObject::connect ( fac, SIGNAL ( selected ( QString ) ), diag, SLOT ( accept() ) );
+
+	/// Hacemos que las opciones de filtrado del listado ya esten bien.
+	fac->m_cliente->setId ( fact1->dbValue ( "idcliente" ) );
+	fac->on_mui_actualizar_clicked();
+
+	/// Lanzamos el dialogo.
+	diag->exec();
+	QString idalbaran = fac->idCliDelivNote();
+	delete diag;
+
+	/// Si no hay idfactura es que hemos abortado y por tanto cancelamos la operacion.
+	if ( idalbaran == "" )
+	    return 1;
+
+	/// Creamos la factura.
+	AlbaranClienteView *bud = new AlbaranClienteView ( fact1->mainCompany(), NULL );
+	bud->cargar ( idalbaran );
+
+	/// Agregamos a comentarios que albaran se corresponde.
+	QString comm = fact1->dbValue ( "comentfactura" ) + "(" + _ ( "ALBARAN: Num " ) + bud->dbValue ( "numalbaran" ) + _ ( "Ref:" ) + " " + bud->dbValue ( "refalbaran" ) + _ ( "Fecha:" ) + " " + bud->dbValue ( "fechaalbaran" ) + ")\n";
+
+	fact1->setDbValue ( "comentfactura", comm );
+	fact1->pintar();
+
+	/// EN TEORIA SE DEBERIA COMPROBAR QUE LA FACTURA Y EL ALBARAN SON DEL MISMO CLIENTE, pero por ahora no lo hacemos.
+	BlDbSubFormRecord *linea, *linea1;
+	for ( int i = 0; i < bud->getlistalineas() ->rowCount(); ++i ) {
+	    linea = bud->getlistalineas() ->lineaat ( i );
+	    /// Los registros vacios no se tienen en cuenta.
+	    if ( linea->dbValue ( "idarticulo" ) != "" ) {
+		linea1 = fact1->getlistalineas() ->lineaat ( fact1->getlistalineas() ->rowCount() - 1 );
+		linea1->setDbValue ( "codigocompletoarticulo", linea->dbValue ( "codigocompletoarticulo" ) );
+		linea1->setDbValue ( "desclfactura", linea->dbValue ( "desclalbaran" ) );
+		linea1->setDbValue ( "cantlfactura", linea->dbValue ( "cantlalbaran" ) );
+		linea1->setDbValue ( "pvplfactura", linea->dbValue ( "pvplalbaran" ) );
+		linea1->setDbValue ( "descuentolfactura", linea->dbValue ( "descuentolalbaran" ) );
+		linea1->setDbValue ( "idarticulo", linea->dbValue ( "idarticulo" ) );
+		linea1->setDbValue ( "nomarticulo", linea->dbValue ( "nomarticulo" ) );
+		linea1->setDbValue ( "ivalfactura", linea->dbValue ( "ivalalbaran" ) );
+		fact1->getlistalineas() ->nuevoRegistro();
+	    } // end if
+	} // end for
+
+	/// Procesamos el albaran.
+	bud->mui_procesadoalbaran->setChecked ( TRUE );
+	bud->guardar();
+	delete bud;
+
+	/// Pintamos los totales.
+	fact1->calculaypintatotales();
+    
+      /// AGREGAR ALBARAN A LA FACTURA
+  } //end if
+  return 0;
+}
+
+
 /// Esta llamada de plugin es bastante novedosa ya es una llamada que no responde a una funcion
 /// Sino que se llama desde multiples partes del sistema.
 int SNewAlbaranClienteView ( BfCompany *v )

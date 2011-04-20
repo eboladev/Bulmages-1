@@ -31,33 +31,33 @@
 ///
 /**
 **/
-MyPlugAlm::MyPlugAlm()
+PluginBf_Almacen::PluginBf_Almacen()
 {
-    blDebug ( "MyPlugAlm::MyPlugAlm", 0 );
-    blDebug ( "END MyPlugAlm::MyPlugAlm", 0 );
+    blDebug ( "PluginBf_Almacen::PluginBf_Almacen", 0 );
+    blDebug ( "END PluginBf_Almacen::PluginBf_Almacen", 0 );
 }
 
 
 ///
 /**
 **/
-MyPlugAlm::~MyPlugAlm()
+PluginBf_Almacen::~PluginBf_Almacen()
 {
-    blDebug ( "MyPlugAlm::~MyPlugAlm", 0 );
-    blDebug ( "END MyPlugAlm::~MyPlugAlm", 0 );
+    blDebug ( "PluginBf_Almacen::~PluginBf_Almacen", 0 );
+    blDebug ( "END PluginBf_Almacen::~PluginBf_Almacen", 0 );
 }
 
 
 ///
 /**
 **/
-void MyPlugAlm::elslot1()
+void PluginBf_Almacen::elslot1()
 {
-    blDebug ( "MyPlugAlm::elslot1", 0 );
+    blDebug ( "PluginBf_Almacen::elslot1", 0 );
     ListAlmacenView * bud = new ListAlmacenView ( ( BfCompany * ) mainCompany(), NULL );
     mainCompany() ->m_pWorkspace->addSubWindow ( bud );
     bud->show();
-    blDebug ( "END MyPlugAlm::elslot1", 0 );
+    blDebug ( "END PluginBf_Almacen::elslot1", 0 );
 }
 
 
@@ -66,9 +66,9 @@ void MyPlugAlm::elslot1()
 /**
 \param bges
 **/
-void MyPlugAlm::inicializa ( BfBulmaFact *bges )
+void PluginBf_Almacen::inicializa ( BfBulmaFact *bges )
 {
-    blDebug ( "MyPlugAlm::inicializa", 0 );
+    blDebug ( "PluginBf_Almacen::inicializa", 0 );
 
     if ( bges->company()->hasTablePrivilege ( "almacen", "SELECT" ) ) {
 
@@ -88,7 +88,7 @@ void MyPlugAlm::inicializa ( BfBulmaFact *bges )
         connect ( planCuentas, SIGNAL ( activated() ), this, SLOT ( elslot1() ) );
 
     }// end if
-    blDebug ( "END MyPlugAlm::inicializa", 0 );
+    blDebug ( "END PluginBf_Almacen::inicializa", 0 );
 }
 
 
@@ -108,7 +108,7 @@ int entryPoint ( BfBulmaFact *bges )
     setlocale ( LC_ALL, "" );
     blBindTextDomain ( "pluginbf_almacen", g_confpr->valor ( CONF_DIR_TRADUCCION ).toAscii().constData() );
 
-    MyPlugAlm *plug = new MyPlugAlm();
+    PluginBf_Almacen *plug = new PluginBf_Almacen();
     plug->inicializa ( bges );
     return 0;
 }
