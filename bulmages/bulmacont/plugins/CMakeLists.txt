@@ -18,7 +18,9 @@
 # 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             #
 #                                                                       #
 
+if(NOT WIN32)
 add_subdirectory(pluginbc_registroiva)
+endif(NOT WIN32)
 add_subdirectory(pluginbc_corrector)
 add_subdirectory(pluginbc_example)
 add_subdirectory(pluginbc_depuracion)
