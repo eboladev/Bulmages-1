@@ -243,19 +243,19 @@ int BlSubForm_editFinished ( BlSubForm *sub )
 /**
 \param parent
 **/
-MyPlugAct1::MyPlugAct1 ( BlSubForm *parent ) : QObject ( parent )
+PluginBf_Actividad::PluginBf_Actividad ( BlSubForm *parent ) : QObject ( parent )
 {
-    blDebug ( "MyPlugAct1::MyPlugAct1", 0 );
-    blDebug ( "END MyPlugAct1::MyPlugAct1", 0 );
+    blDebug ( "PluginBf_Actividad::PluginBf_Actividad", 0 );
+    blDebug ( "END PluginBf_Actividad::PluginBf_Actividad", 0 );
 }
 
 ///
 /**
 **/
-MyPlugAct1::~MyPlugAct1()
+PluginBf_Actividad::~PluginBf_Actividad()
 {
-    blDebug ( "MyPlugAct1::~MyPlugAct1", 0 );
-    blDebug ( "END MyPlugAct1::~MyPlugAct1", 0 );
+    blDebug ( "PluginBf_Actividad::~PluginBf_Actividad", 0 );
+    blDebug ( "END PluginBf_Actividad::~PluginBf_Actividad", 0 );
 }
 
 
@@ -263,9 +263,9 @@ MyPlugAct1::~MyPlugAct1()
 /**
 \param menu
 **/
-void MyPlugAct1::s_pintaMenu ( QMenu *menu )
+void PluginBf_Actividad::s_pintaMenu ( QMenu *menu )
 {
-    blDebug ( "MyPlugAct1::s_pintaMenu", 0 );
+    blDebug ( "PluginBf_Actividad::s_pintaMenu", 0 );
     BfSubForm *sub = ( BfSubForm * ) parent();
     BlSubFormHeader *header = sub->header ( "nombreactividad" );
     if ( header ) {
@@ -277,7 +277,7 @@ void MyPlugAct1::s_pintaMenu ( QMenu *menu )
             menu->addAction ( _ ( "Seleccionar actividad" ) );
         } // end if
     } // end if
-    blDebug ( "END MyPlugAct1::s_pintaMenu", 0 );
+    blDebug ( "END PluginBf_Actividad::s_pintaMenu", 0 );
 }
 
 
@@ -285,9 +285,9 @@ void MyPlugAct1::s_pintaMenu ( QMenu *menu )
 /**
 \param action
 **/
-void MyPlugAct1::s_trataMenu ( QAction *action )
+void PluginBf_Actividad::s_trataMenu ( QAction *action )
 {
-    blDebug ( "MyPlugAct1::s_trataMenu", 0 );
+    blDebug ( "PluginBf_Actividad::s_trataMenu", 0 );
     BfSubForm *sub = ( BfSubForm * ) parent();
     if ( action->text() == _ ( "Editar actividad" ) ) {
         QString idactividad = sub->dbValue ( "idactividad" );
@@ -299,16 +299,16 @@ void MyPlugAct1::s_trataMenu ( QAction *action )
         nuevoActividad();
     } // end if
 
-    blDebug ( "END MyPlugAct1::s_trataMenu", 0 );
+    blDebug ( "END PluginBf_Actividad::s_trataMenu", 0 );
 }
 
 
 ///
 /**
 **/
-void MyPlugAct1::editarActividad ( QString idactividad )
+void PluginBf_Actividad::editarActividad ( QString idactividad )
 {
-    blDebug ( "MyPlugAct1::editarActividad", 0 );
+    blDebug ( "PluginBf_Actividad::editarActividad", 0 );
     BlSubForm * subf = ( BlSubForm * ) parent();
     ActividadView * art = new ActividadView ( ( BfCompany * ) subf->mainCompany(), 0 );
     subf->mainCompany() ->m_pWorkspace->addSubWindow ( art );
@@ -320,7 +320,7 @@ void MyPlugAct1::editarActividad ( QString idactividad )
     } // end if
     art->hide();
     art->show();
-    blDebug ( "END MyPlugAct1::editarActividad", 0 );
+    blDebug ( "END PluginBf_Actividad::editarActividad", 0 );
 }
 
 
@@ -328,24 +328,24 @@ void MyPlugAct1::editarActividad ( QString idactividad )
 ///
 /**
 **/
-void MyPlugAct1::nuevoActividad( )
+void PluginBf_Actividad::nuevoActividad( )
 {
-    blDebug ( "MyPlugAct1::editarActividad", 0 );
+    blDebug ( "PluginBf_Actividad::editarActividad", 0 );
     BlSubForm * subf = ( BlSubForm * ) parent();
     ActividadView * art = new ActividadView ( ( BfCompany * ) subf->mainCompany(), 0 );
     subf->mainCompany() ->m_pWorkspace->addSubWindow ( art );
     art->hide();
     art->show();
-    blDebug ( "END MyPlugAct1::editarActividad", 0 );
+    blDebug ( "END PluginBf_Actividad::editarActividad", 0 );
 }
 
 
 ///
 /**
 **/
-void MyPlugAct1::seleccionarActividad ( BfSubForm *sub )
+void PluginBf_Actividad::seleccionarActividad ( BfSubForm *sub )
 {
-    blDebug ( "MyPlugAct1::editarActividad", 0 );
+    blDebug ( "PluginBf_Actividad::editarActividad", 0 );
 
     ActividadesList *artlist = new ActividadesList ( ( BfCompany * ) sub->mainCompany(), NULL, 0, BL_SELECT_MODE );
     /// Esto es convertir un QWidget en un sistema modal de dialogo.
@@ -371,7 +371,7 @@ void MyPlugAct1::seleccionarActividad ( BfSubForm *sub )
     } // end if
     delete cur;
 
-    blDebug ( "END MyPlugAct1::editarActividad", 0 );
+    blDebug ( "END PluginBf_Actividad::editarActividad", 0 );
 }
 
 
@@ -383,7 +383,7 @@ void MyPlugAct1::seleccionarActividad ( BfSubForm *sub )
 int BlSubForm_BlSubForm_Post ( BlSubForm *sub )
 {
     blDebug ( "BlSubForm_BlSubForm_Post", 0 );
-    MyPlugAct1 *subformods = new MyPlugAct1 ( sub );
+    PluginBf_Actividad *subformods = new PluginBf_Actividad ( sub );
     sub->QObject::connect ( sub, SIGNAL ( pintaMenu ( QMenu * ) ), subformods, SLOT ( s_pintaMenu ( QMenu * ) ) );
     sub->QObject::connect ( sub, SIGNAL ( trataMenu ( QAction * ) ), subformods, SLOT ( s_trataMenu ( QAction * ) ) );
     blDebug ( "END BlSubForm_BlSubForm_Post", 0 );

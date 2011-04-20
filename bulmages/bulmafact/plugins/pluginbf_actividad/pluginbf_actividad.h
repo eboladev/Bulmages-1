@@ -60,13 +60,13 @@ public slots:
 
 
 
-class MyPlugAct1 : public QObject
+class PluginBf_Actividad : public QObject
 {
     Q_OBJECT
 
 public:
-    MyPlugAct1 ( BlSubForm * );
-    ~MyPlugAct1();
+    PluginBf_Actividad ( BlSubForm * );
+    ~PluginBf_Actividad();
     void editarActividad( QString);
     void nuevoActividad();
     void seleccionarActividad(BfSubForm *);
