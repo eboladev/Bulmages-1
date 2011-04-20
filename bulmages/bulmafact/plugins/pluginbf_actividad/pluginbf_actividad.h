@@ -40,7 +40,7 @@ extern "C" PLUGINBF_ACTIVIDAD_EXPORT int BlSubForm_BlSubForm_Post ( BlSubForm * 
 extern "C" PLUGINBF_ACTIVIDAD_EXPORT int Busqueda_on_mui_buscar_clicked ( BlSearchWidget * );
 
 
-class MyPlugProf : public QObject, BlMainCompanyPointer
+class PluginBf_Actividad : public QObject, BlMainCompanyPointer
 {
     Q_OBJECT
 
@@ -48,8 +48,8 @@ public:
     BfBulmaFact *m_bges;
 
 public:
-    MyPlugProf();
-    ~MyPlugProf();
+    PluginBf_Actividad();
+    ~PluginBf_Actividad();
     void inicializa ( BfBulmaFact * );
 
 public slots:
@@ -60,13 +60,13 @@ public slots:
 
 
 
-class PluginBf_Actividad : public QObject
+class Subform_Actividad : public QObject
 {
     Q_OBJECT
 
 public:
-    PluginBf_Actividad ( BlSubForm * );
-    ~PluginBf_Actividad();
+    Subform_Actividad ( BlSubForm * );
+    ~Subform_Actividad();
     void editarActividad( QString);
     void nuevoActividad();
     void seleccionarActividad(BfSubForm *);
