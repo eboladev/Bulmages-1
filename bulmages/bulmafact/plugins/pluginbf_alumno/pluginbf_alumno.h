@@ -38,7 +38,7 @@ extern "C" PLUGINBF_ALUMNO_EXPORT int BlSubForm_preparaMenu ( BlSubForm * );
 extern "C" PLUGINBF_ALUMNO_EXPORT int Busqueda_on_mui_buscar_clicked ( BlSearchWidget * );
 
 
-class MyPlugProf : public QObject, BlMainCompanyPointer
+class PluginBf_Alumno : public QObject, BlMainCompanyPointer
 {
     Q_OBJECT
 
@@ -46,8 +46,8 @@ public:
     BfBulmaFact *m_bges;
 
 public:
-    MyPlugProf();
-    ~MyPlugProf();
+    PluginBf_Alumno();
+    ~PluginBf_Alumno();
     void inicializa ( BfBulmaFact * );
 
 public slots:
@@ -59,13 +59,13 @@ public slots:
 
 
 
-class MyPlugAl1 : public QObject
+class Subform_Alumno : public QObject
 {
     Q_OBJECT
 
 public:
-    MyPlugAl1 ( BlSubForm * );
-    ~MyPlugAl1();
+    Subform_Alumno ( BlSubForm * );
+    ~Subform_Alumno();
 
 
 public slots:
