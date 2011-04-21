@@ -8,7 +8,7 @@ Nombre: Adjuntar documents
 
 Biblioteca: libpluginbl_attachdocument.so
 
-Descripción: <H1>Adjuntr documents</H1>
+Descripción: <H1>Adjuntar documents</H1>
 <P>Permet associar fitxers a fitxes per obrir-los posterioment. Desa un vincle a l'aplicació.</P>
 <P>Un cop instal·lat el plugin a tote les fitxes del programa apareixerà una opció al menú contextual de la fitxa que ens permetrà afegir referències a la fitxa, veure els fitxers existents i esborar les referències.</P>
 <BR>
