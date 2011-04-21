@@ -31,10 +31,13 @@
 #include "blmaincompanypointer.h"
 #include "blmaincompany.h"
 #include "pdefs_pluginbl_clipboard.h"
-
+#include "bltoolbutton.h"
 
 extern "C" PLUGINBL_CLIPBOARD_EXPORT int entryPoint ( QApplication * );
 extern "C" PLUGINBL_CLIPBOARD_EXPORT int BlSubForm_BlSubForm_Post ( BlSubForm * );
+extern "C" PLUGINBL_CLIPBOARD_EXPORT int BlSubForm_BlSubForm_Post ( BlSubForm * );
+extern "C" PLUGINBL_CLIPBOARD_EXPORT int BlSubForm_preparaMenu ( BlSubForm * );
+extern "C" PLUGINBL_CLIPBOARD_EXPORT int BlToolButton_released(BlToolButton *);
 
 
 class BlMainCompany;

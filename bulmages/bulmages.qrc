@@ -97,7 +97,7 @@
         <file alias="externalapp.png">images/oxygen/actions/48x48/xorg.png</file>
         <file alias="modificadoresg.png">images/oxygen/actions/48x48/modificadoresg.png</file>
         <file alias="modificadores.png">images/oxygen/actions/48x48/modificadores.png</file>
-
+        <file alias="clipboard.png">images/png/i_xClipboard.png</file>
     </qresource>
     <qresource prefix="/BulmaCont32x32" >
         <file>images/png/decrypted.png</file>

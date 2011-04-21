@@ -104,9 +104,9 @@ void myplugclipboard::s_pintaMenu ( QMenu *menu )
     menu->addSeparator();
 
     if (subform->isInsert() ) {
-        menu->addAction ( _ ( "Pegar desde hoja de calculo" ) );
+        menu->addAction (QIcon( ":/Images/clipboard.png" ), _ ( "Pegar desde hoja de calculo" ) );
     } else {
-        menu->addAction ( _ ( "Actualizar desde hoja de calculo" ) );
+        menu->addAction (QIcon( ":/Images/clipboard.png" ), _ ( "Actualizar desde hoja de calculo" ) );
     } // end if
 
     blDebug ( "END myplugclipboard::s_pintaMenu", 0 );
@@ -287,4 +287,50 @@ void myplugclipboard::pegaODS()
     blDebug ( "END myplugclipboard::pegaODS", 0 );
 }
 
+///
+/**
+\param sub
+\return
+**/
+int BlSubForm_preparaMenu ( BlSubForm *sub ) {
+    blDebug ( "BlSubForm_preparaMenu", 0 );
 
+
+    if (sub->isInsert() ) {
+    QHBoxLayout *m_hboxLayout1 = sub->mui_menusubform->findChild<QHBoxLayout *> ( "hboxLayout1" );
+    if ( !m_hboxLayout1 ) {
+        m_hboxLayout1 = new QHBoxLayout ( sub->mui_menusubform );
+        m_hboxLayout1->setSpacing (0 );
+        m_hboxLayout1->setMargin ( 0 );
+        m_hboxLayout1->setObjectName ( QString::fromUtf8 ( "hboxLayout1" ) );
+    } // end if
+    
+
+      BlToolButton *sel = new BlToolButton ( sub->mui_menusubform );
+      sel->setStatusTip ( _ ( "Pegar desde hoja de calculo" ) );
+      sel->setToolTip ( _ ( "Pegar desde hoja de calculo" ) );
+      sel->setMinimumSize ( QSize ( 18, 18 ) );
+      sel->setIcon ( QIcon ( ":/Images/clipboard.png" ) );
+      sel->setIconSize ( QSize ( 18, 18 ) );    
+      sel->setObjectName("mui_clipboardinput");
+      m_hboxLayout1->addWidget ( sel );
+
+    } // end if
+    blDebug ( "END BlSubForm_preparaMenu", 0 );
+    return 0;
+}
+
+
+
+int BlToolButton_released(BlToolButton *bot) {
+
+  if (bot->objectName() == "mui_clipboardinput") {
+	myplugclipboard clip( (BlSubForm *) bot->parent()->parent());
+        if ( g_theApp->clipboard() ->text().contains ( "\t" ) ) {
+            clip.pegaODS();
+        } else {
+            clip.pegaSXC();
+        } // end if
+  } //end if
+  return 0;
+}
