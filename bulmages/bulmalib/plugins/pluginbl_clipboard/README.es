@@ -8,17 +8,26 @@ Nombre: Pegar desde el portapapeles
 
 Biblioteca: libpluginbl_clipboard.so
 
-Descripción: <H1>Pegar desde el portapapeles</H1>
+Descripción: <H1><IMG SRC="@CMAKE_INSTALL_PREFIX@/share/bulmages/imagesrc/images/png/i_xClipboard.png" WIDTH="100"/><BR>Pegar desde el portapapeles</H1>
 <P>Permite pegar desde una hoja de calculo en las
 facturas. Pega contenidos de forma rápida en la facturación.</P>
 
-<P>Es importante que la primera fila de la hoja de cálculo contenga los nombres de campo exactos en los que va a ser insertada la columna de datos. </P>
+<P>Es importante que la primera fila de la hoja de cálculo contenga los nombres de campo exactos en los que va a ser insertada la columna de datos. </P><BR>
+
+<IMG SRC="@CMAKE_INSTALL_PREFIX@/share/bulmages/imagesrc/pluginbl_clipboard/pluginbl_clipboard1.png"/><BR>
+
+<IMG SRC="@CMAKE_INSTALL_PREFIX@/share/bulmages/imagesrc/pluginbl_clipboard/pluginbl_clipboard2.png"/><BR>
+
+<P> En las figuras anteriores se puede observar la correspondencia de los nombres de las columnas en la hoja de calculo con los
+nombres de las columnas en las opciones avanzadas de subformulario.</P>
 
 <P>El plugin no hace verificación de datos, es posible que si los datos insertados no son correctos se produzca un error al guardar.</P>
 
-<P>Una vez hecho el copiado en la hoja de calculo para realizar el pegado existe la opción de menú contextual Pegar desde hoja de calculo.</P>
+<P>Una vez hecho el copiado en la hoja de calculo para realizar el pegado existe la opción de menú contextual Pegar desde hoja de calculo.</P><BR>
 
-<P>Las hojas de calculo soportadas son OpenOffice y KOffice</P>
+<IMG SRC="@CMAKE_INSTALL_PREFIX@/share/bulmages/imagesrc/pluginbl_clipboard/pluginbl_clipboard3.png"/><BR>
+
+<P>Las hojas de calculo soportadas son OpenOffice, LibreOffice y KOffice. No se ha verificado su funcionamiento en otras hojas de cálculo.</P>
 <BR>
 <IMG SRC="@CMAKE_INSTALL_PREFIX@/share/bulmages/images/logopeq.png"/>
 <HR>

@@ -98,4 +98,8 @@ install (FILES ${CMAKE_CURRENT_BINARY_DIR}/README.fr DESTINATION share/bulmages/
 configure_file( ${CMAKE_CURRENT_SOURCE_DIR}/README.en ${CMAKE_CURRENT_BINARY_DIR}/README.en @ONLY)
 install (FILES ${CMAKE_CURRENT_BINARY_DIR}/README.en DESTINATION share/bulmages/bulmalib-plugins/ RENAME README.en.${plugin})
 
+install(DIRECTORY imagesrc/ 
+      DESTINATION share/bulmages/imagesrc
+      PATTERN ".svn" EXCLUDE)
+
 ADD_LOCAL_BLI18N_HEADER( ${plugin} )

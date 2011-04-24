@@ -24,7 +24,7 @@ Dependencias: libpluginbf_articulo.so
 
 Incompatibles:
 
-Categorias: Experimentals;
+Categorias: Experimentales;
 
 Orden: 450
 
