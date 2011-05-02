@@ -32,46 +32,46 @@ TutoresList *g_tutoresList = NULL;
 ///
 /**
 **/
-MyPlugProf::MyPlugProf()
+PluginBf_Tutor::PluginBf_Tutor()
 {
-    blDebug ( "MyPlugProf::MyPlugProf", 0 );
-    blDebug ( "END MyPlugProf::MyPlugProf", 0 );
+    blDebug ( "PluginBf_Tutor::PluginBf_Tutor", 0 );
+    blDebug ( "END PluginBf_Tutor::PluginBf_Tutor", 0 );
 }
 
 
 ///
 /**
 **/
-MyPlugProf::~MyPlugProf()
+PluginBf_Tutor::~PluginBf_Tutor()
 {
-    blDebug ( "MyPlugProf::~MyPlugProf", 0 );
-    blDebug ( "END MyPlugProf::~MyPlugProf", 0 );
+    blDebug ( "PluginBf_Tutor::~PluginBf_Tutor", 0 );
+    blDebug ( "END PluginBf_Tutor::~PluginBf_Tutor", 0 );
 }
 
 
 ///
 /**
 **/
-void MyPlugProf::elslot()
+void PluginBf_Tutor::elslot()
 {
-    blDebug ( "MyPlugProf::elslot", 0 );
+    blDebug ( "PluginBf_Tutor::elslot", 0 );
     if ( g_tutoresList ) {
         g_tutoresList->hide();
         g_tutoresList->show();
     }// end if
-    blDebug ( "END MyPlugProf::elslot", 0 );
+    blDebug ( "END PluginBf_Tutor::elslot", 0 );
 }
 
 ///
 /**
 **/
-void MyPlugProf::elslot1()
+void PluginBf_Tutor::elslot1()
 {
-    blDebug ( "MyPlugProf::elslot1", 0 );
+    blDebug ( "PluginBf_Tutor::elslot1", 0 );
     TutorView * bud = new TutorView ( ( BfCompany * ) mainCompany(), NULL );
     mainCompany() ->m_pWorkspace->addSubWindow ( bud );
     bud->show();
-    blDebug ( "END MyPlugProf::elslot1", 0 );
+    blDebug ( "END PluginBf_Tutor::elslot1", 0 );
 }
 
 
@@ -80,9 +80,9 @@ void MyPlugProf::elslot1()
 /**
 \param bges
 **/
-void MyPlugProf::inicializa ( BfBulmaFact *bges )
+void PluginBf_Tutor::inicializa ( BfBulmaFact *bges )
 {
-    blDebug ( "MyPlugProf::inicializa", 0 );
+    blDebug ( "PluginBf_Tutor::inicializa", 0 );
 
     if ( bges->company()->hasTablePrivilege ( "cliente", "SELECT" ) ) {
 
@@ -111,7 +111,7 @@ void MyPlugProf::inicializa ( BfBulmaFact *bges )
         bges->Fichas->addAction ( npago );
         connect ( npago, SIGNAL ( activated() ), this, SLOT ( elslot1() ) );
     }// end if
-    blDebug ( "END MyPlugProf::inicializa", 0 );
+    blDebug ( "END PluginBf_Tutor::inicializa", 0 );
 }
 
 
@@ -128,7 +128,7 @@ int entryPoint ( BfBulmaFact *bges )
     setlocale ( LC_ALL, "" );
     blBindTextDomain ( "pluginbf_tutor", g_confpr->valor ( CONF_DIR_TRADUCCION ).toAscii().constData() );
 
-    MyPlugProf *plug = new MyPlugProf();
+    PluginBf_Tutor *plug = new PluginBf_Tutor();
     plug->inicializa ( bges );
     return 0;
 }
@@ -379,19 +379,19 @@ int Busqueda_on_mui_buscar_clicked ( BlSearchWidget *busq )
 /**
 \param parent
 **/
-MyPlugTutor1::MyPlugTutor1 ( BlSubForm *parent ) : QObject ( parent )
+SubForm_Tutor::SubForm_Tutor ( BlSubForm *parent ) : QObject ( parent )
 {
-    blDebug ( "MyPlugTutor1::MyPlugTutor1", 0 );
-    blDebug ( "END MyPlugTutor1::MyPlugTutor1", 0 );
+    blDebug ( "SubForm_Tutor::SubForm_Tutor", 0 );
+    blDebug ( "END SubForm_Tutor::SubForm_Tutor", 0 );
 }
 
 ///
 /**
 **/
-MyPlugTutor1::~MyPlugTutor1()
+SubForm_Tutor::~SubForm_Tutor()
 {
-    blDebug ( "MyPlugTutor1::~MyPlugTutor1", 0 );
-    blDebug ( "END MyPlugTutor1::~MyPlugTutor1", 0 );
+    blDebug ( "SubForm_Tutor::~SubForm_Tutor", 0 );
+    blDebug ( "END SubForm_Tutor::~SubForm_Tutor", 0 );
 }
 
 
@@ -399,9 +399,9 @@ MyPlugTutor1::~MyPlugTutor1()
 /**
 \param menu
 **/
-void MyPlugTutor1::s_pintaMenu ( QMenu *menu )
+void SubForm_Tutor::s_pintaMenu ( QMenu *menu )
 {
-    blDebug ( "MyPlugTutor1::s_pintaMenu", 0 );
+    blDebug ( "SubForm_Tutor::s_pintaMenu", 0 );
     BfSubForm *sub = ( BfSubForm * ) parent();
     BlSubFormHeader *header = sub->header ( "cifcliente" );
     if (!header)
@@ -415,7 +415,7 @@ void MyPlugTutor1::s_pintaMenu ( QMenu *menu )
             menu->addAction ( QIcon ( QString::fromUtf8 ( ":/ImgGestionAula/icons/tutor-list.png" ) ), _ ( "Seleccionar tutor" ) );
         } // end if
     } // end if
-    blDebug ( "END MyPlugTutor1::s_pintaMenu", 0 );
+    blDebug ( "END SubForm_Tutor::s_pintaMenu", 0 );
 }
 
 
@@ -423,9 +423,9 @@ void MyPlugTutor1::s_pintaMenu ( QMenu *menu )
 /**
 \param action
 **/
-void MyPlugTutor1::s_trataMenu ( QAction *action )
+void SubForm_Tutor::s_trataMenu ( QAction *action )
 {
-    blDebug ( "MyPlugTutor1::s_trataMenu", 0 );
+    blDebug ( "SubForm_Tutor::s_trataMenu", 0 );
     BfSubForm *sub = ( BfSubForm * ) parent();
     if ( action->text() == _ ( "Editar tutor" ) ) {
         QString idtutor = sub->dbValue ( "idcliente" );
@@ -437,28 +437,28 @@ void MyPlugTutor1::s_trataMenu ( QAction *action )
         nuevoTutor();
     } // end if
 
-    blDebug ( "END MyPlugTutor1::s_trataMenu", 0 );
+    blDebug ( "END SubForm_Tutor::s_trataMenu", 0 );
 }
 
 
 ///
 /**
 **/
-void MyPlugTutor1::editarTutor ( QString idtutor )
+void SubForm_Tutor::editarTutor ( QString idtutor )
 {
-    blDebug ( "MyPlugTutor1::editarTutor", 0 );
+    blDebug ( "SubForm_Tutor::editarTutor", 0 );
     BlSubForm * subf = ( BlSubForm * ) parent();
     TutorView * art = new TutorView ( ( BfCompany * ) subf->mainCompany(), 0 );
     subf->mainCompany() ->m_pWorkspace->addSubWindow ( art );
     /// Si la carga no va bien entonces terminamos.
     if ( art->cargar ( idtutor ) ) {
         delete art;
-        blDebug ( "END MyPlugTutor1::editarTutor", 0, "Carga Erronea" );
+        blDebug ( "END SubForm_Tutor::editarTutor", 0, "Carga Erronea" );
         return;
     } // end if
     art->hide();
     art->show();
-    blDebug ( "END MyPlugTutor1::editarTutor", 0 );
+    blDebug ( "END SubForm_Tutor::editarTutor", 0 );
 }
 
 
@@ -466,9 +466,9 @@ void MyPlugTutor1::editarTutor ( QString idtutor )
 ///
 /**
 **/
-void MyPlugTutor1::nuevoTutor( )
+void SubForm_Tutor::nuevoTutor( )
 {
-    blDebug ( "MyPlugTutor1::nuevoTutor", 0 );
+    blDebug ( "SubForm_Tutor::nuevoTutor", 0 );
     
     BlSubForm * subf = ( BlSubForm * ) parent();
     TutorView * art = new TutorView ( ( BfCompany * ) subf->mainCompany(), 0 );
@@ -488,16 +488,16 @@ void MyPlugTutor1::nuevoTutor( )
     } // end if
     delete art;  
     
-    blDebug ( "END MyPlugTutor1::nuevoTutor", 0 );
+    blDebug ( "END SubForm_Tutor::nuevoTutor", 0 );
 }
 
 
 ///
 /**
 **/
-void MyPlugTutor1::seleccionarTutor ( BfSubForm *sub )
+void SubForm_Tutor::seleccionarTutor ( BfSubForm *sub )
 {
-    blDebug ( "MyPlugTutor1::editarTutor", 0 );
+    blDebug ( "SubForm_Tutor::editarTutor", 0 );
     
     if (!sub) sub= (BfSubForm *) parent();
     
@@ -525,7 +525,7 @@ void MyPlugTutor1::seleccionarTutor ( BfSubForm *sub )
     } // end if
     delete cur;
 
-    blDebug ( "END MyPlugTutor1::editarTutor", 0 );
+    blDebug ( "END SubForm_Tutor::editarTutor", 0 );
 }
 
 
@@ -537,7 +537,7 @@ void MyPlugTutor1::seleccionarTutor ( BfSubForm *sub )
 int BlSubForm_BlSubForm_Post ( BlSubForm *sub )
 {
     blDebug ( "BlSubForm_BlSubForm_Post", 0 );
-    MyPlugTutor1 *subformods = new MyPlugTutor1 ( sub );
+    SubForm_Tutor *subformods = new SubForm_Tutor ( sub );
     sub->QObject::connect ( sub, SIGNAL ( pintaMenu ( QMenu * ) ), subformods, SLOT ( s_pintaMenu ( QMenu * ) ) );
     sub->QObject::connect ( sub, SIGNAL ( trataMenu ( QAction * ) ), subformods, SLOT ( s_trataMenu ( QAction * ) ) );
     blDebug ( "END BlSubForm_BlSubForm_Post", 0 );
@@ -558,7 +558,7 @@ int BlSubForm_preparaMenu ( BlSubForm *sub ) {
     if (!header)
       header = sub->header ( "nomcliente" );
     if ( header ) {
-        MyPlugTutor1 *subformods = new MyPlugTutor1 ( sub );
+        SubForm_Tutor *subformods = new SubForm_Tutor ( sub );
         
         QHBoxLayout *m_hboxLayout1 = sub->mui_menusubform->findChild<QHBoxLayout *> ( "hboxLayout1" );
         if ( !m_hboxLayout1 ) {
