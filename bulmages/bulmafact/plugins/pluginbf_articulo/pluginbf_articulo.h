@@ -43,13 +43,13 @@ extern "C" PLUGINBF_ARTICULO_EXPORT int BlSubForm_editFinished(BlSubForm *);
 extern "C" PLUGINBF_ARTICULO_EXPORT int BlDbCompleterComboBox_textChanged (BlDbCompleterComboBox *);
 extern "C" PLUGINBF_ARTICULO_EXPORT int BlSubForm_preparaMenu ( BlSubForm *);
 
-class MyPlugArt1 : public QObject
+class Subform_Articulo : public QObject
 {
     Q_OBJECT
 
 public:
-    MyPlugArt1 ( BlSubForm * );
-    ~MyPlugArt1();
+    Subform_Articulo ( BlSubForm * );
+    ~Subform_Articulo();
 
 
 public slots:
@@ -61,7 +61,7 @@ public slots:
 };
 
 
-class MyPlugArt : public QObject, BlMainCompanyPointer
+class PluginBf_Articulo : public QObject, BlMainCompanyPointer
 {
     Q_OBJECT
 
@@ -69,8 +69,8 @@ public:
     BfBulmaFact *m_bges;
 
 public:
-    MyPlugArt();
-    ~MyPlugArt();
+    PluginBf_Articulo();
+    ~PluginBf_Articulo();
     void inicializa ( BfBulmaFact * );
 
 public slots:

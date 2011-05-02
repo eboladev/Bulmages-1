@@ -34,73 +34,73 @@ ArticuloList *g_articulosList = NULL;
 ///
 /**
 **/
-MyPlugArt::MyPlugArt()
+PluginBf_Articulo::PluginBf_Articulo()
 {
-    blDebug ( "MyPlugArt::MyPlugArt", 0 );
-    blDebug ( "END MyPlugArt::MyPlugArt", 0 );
+    blDebug ( "PluginBf_Articulo::PluginBf_Articulo", 0 );
+    blDebug ( "END PluginBf_Articulo::PluginBf_Articulo", 0 );
 }
 
 
 ///
 /**
 **/
-MyPlugArt::~MyPlugArt()
+PluginBf_Articulo::~PluginBf_Articulo()
 {
-    blDebug ( "MyPlugArt::~MyPlugArt", 0 );
-    blDebug ( "END MyPlugArt::~MyPlugArt", 0 );
+    blDebug ( "PluginBf_Articulo::~PluginBf_Articulo", 0 );
+    blDebug ( "END PluginBf_Articulo::~PluginBf_Articulo", 0 );
 }
 
 
 ///
 /**
 **/
-void MyPlugArt::elslot()
+void PluginBf_Articulo::elslot()
 {
-    blDebug ( "MyPlugArt::elslot", 0 );
+    blDebug ( "PluginBf_Articulo::elslot", 0 );
     if ( g_articulosList ) {
         g_articulosList->hide();
         g_articulosList->show();
     }// end if
-    blDebug ( "END MyPlugArt::elslot", 0 );
+    blDebug ( "END PluginBf_Articulo::elslot", 0 );
 }
 
 
 ///
 /**
 **/
-void MyPlugArt::elslot1()
+void PluginBf_Articulo::elslot1()
 {
-    blDebug ( "MyPlugArt::elslot1", 0 );
+    blDebug ( "PluginBf_Articulo::elslot1", 0 );
     ArticuloView * bud = new ArticuloView ( ( BfCompany * ) mainCompany(), NULL );
     mainCompany() ->m_pWorkspace->addSubWindow ( bud );
     bud->show();
-    blDebug ( "END MyPlugArt::elslot1", 0 );
+    blDebug ( "END PluginBf_Articulo::elslot1", 0 );
 }
 
 
 ///
 /**
 **/
-void MyPlugArt::elslot2()
+void PluginBf_Articulo::elslot2()
 {
-    blDebug ( "MyPlugArt::elslot2", 0 );
+    blDebug ( "PluginBf_Articulo::elslot2", 0 );
     TipoArticuloList *pag = new TipoArticuloList ( ( BfCompany * ) mainCompany(), 0, FALSE );
     mainCompany() ->m_pWorkspace->addSubWindow ( pag );
     pag->show();
-    blDebug ( "END MyPlugArt::elslot2", 0 );
+    blDebug ( "END PluginBf_Articulo::elslot2", 0 );
 }
 
 
 ///
 /**
 **/
-void MyPlugArt::elslot3()
+void PluginBf_Articulo::elslot3()
 {
-    blDebug ( "MyPlugArt::elslot3", 0 );
+    blDebug ( "PluginBf_Articulo::elslot3", 0 );
     FamiliasView *pag = new FamiliasView ( ( BfCompany * ) mainCompany(), 0, FALSE );
     mainCompany() ->m_pWorkspace->addSubWindow ( pag );
     pag->show();
-    blDebug ( "END MyPlugArt::elslot3", 0 );
+    blDebug ( "END PluginBf_Articulo::elslot3", 0 );
 }
 
 
@@ -108,9 +108,9 @@ void MyPlugArt::elslot3()
 /**
 \param bges
 **/
-void MyPlugArt::inicializa ( BfBulmaFact *bges )
+void PluginBf_Articulo::inicializa ( BfBulmaFact *bges )
 {
-    blDebug ( "MyPlugArt::inicializa", 0 );
+    blDebug ( "PluginBf_Articulo::inicializa", 0 );
 
     if ( bges->company()->hasTablePrivilege ( "articulo", "SELECT" ) ) {
 
@@ -156,7 +156,7 @@ void MyPlugArt::inicializa ( BfBulmaFact *bges )
         connect ( tfam, SIGNAL ( activated() ), this, SLOT ( elslot3() ) );
 
     }// end if
-    blDebug ( "END MyPlugArt::inicializa", 0 );
+    blDebug ( "END PluginBf_Articulo::inicializa", 0 );
 }
 
 
@@ -173,7 +173,7 @@ int entryPoint ( BfBulmaFact *bges )
     setlocale ( LC_ALL, "" );
     blBindTextDomain ( "pluginbf_articulo", g_confpr->valor ( CONF_DIR_TRADUCCION ).toAscii().constData() );
 
-    MyPlugArt *plug = new MyPlugArt();
+    PluginBf_Articulo *plug = new PluginBf_Articulo();
     plug->inicializa ( bges );
     return 0;
 }
@@ -344,19 +344,19 @@ int SNewArticuloView ( BfCompany *v )
 /**
 \param parent
 **/
-MyPlugArt1::MyPlugArt1 ( BlSubForm *parent ) : QObject ( parent )
+Subform_Articulo::Subform_Articulo ( BlSubForm *parent ) : QObject ( parent )
 {
-    blDebug ( "MyPlugArt1::MyPlugArt1", 0 );
-    blDebug ( "END MyPlugArt1::MyPlugArt1", 0 );
+    blDebug ( "Subform_Articulo::Subform_Articulo", 0 );
+    blDebug ( "END Subform_Articulo::Subform_Articulo", 0 );
 }
 
 ///
 /**
 **/
-MyPlugArt1::~MyPlugArt1()
+Subform_Articulo::~Subform_Articulo()
 {
-    blDebug ( "MyPlugArt1::~MyPlugArt1", 0 );
-    blDebug ( "END MyPlugArt1::~MyPlugArt1", 0 );
+    blDebug ( "Subform_Articulo::~Subform_Articulo", 0 );
+    blDebug ( "END Subform_Articulo::~Subform_Articulo", 0 );
 }
 
 
@@ -364,9 +364,9 @@ MyPlugArt1::~MyPlugArt1()
 /**
 \param menu
 **/
-void MyPlugArt1::s_pintaMenu ( QMenu *menu )
+void Subform_Articulo::s_pintaMenu ( QMenu *menu )
 {
-    blDebug ( "MyPlugArt1::s_pintaMenu", 0 );
+    blDebug ( "Subform_Articulo::s_pintaMenu", 0 );
     BfSubForm *sub = ( BfSubForm * ) parent();
     BlSubFormHeader *header = sub->header ( "codigocompletoarticulo" );
     if ( header ) {
@@ -378,7 +378,7 @@ void MyPlugArt1::s_pintaMenu ( QMenu *menu )
             menu->addAction ( QIcon ( ":/Images/product-list.png"), _ ( "Seleccionar articulo" ) );
         } // end if
     } // end if
-    blDebug ( "END MyPlugArt1::s_pintaMenu", 0 );
+    blDebug ( "END Subform_Articulo::s_pintaMenu", 0 );
 }
 
 
@@ -386,9 +386,9 @@ void MyPlugArt1::s_pintaMenu ( QMenu *menu )
 /**
 \param action
 **/
-void MyPlugArt1::s_trataMenu ( QAction *action )
+void Subform_Articulo::s_trataMenu ( QAction *action )
 {
-    blDebug ( "MyPlugArt1::s_trataMenu", 0 );
+    blDebug ( "Subform_Articulo::s_trataMenu", 0 );
     BfSubForm *sub = ( BfSubForm * ) parent();
     if ( action->text() == _ ( "Editar articulo" ) ) {
         QString idarticulo = sub->dbValue ( "idarticulo" );
@@ -400,16 +400,16 @@ void MyPlugArt1::s_trataMenu ( QAction *action )
         nuevoArticulo();
     } // end if
 
-    blDebug ( "END MyPlugArt1::s_trataMenu", 0 );
+    blDebug ( "END Subform_Articulo::s_trataMenu", 0 );
 }
 
 
 ///
 /**
 **/
-void MyPlugArt1::editarArticulo ( QString idarticulo )
+void Subform_Articulo::editarArticulo ( QString idarticulo )
 {
-    blDebug ( "MyPlugArt1::editarArticulo", 0 );
+    blDebug ( "Subform_Articulo::editarArticulo", 0 );
     BlSubForm * subf = ( BlSubForm * ) parent();
     ArticuloView * art = new ArticuloView ( ( BfCompany * ) subf->mainCompany(), 0 );
     subf->mainCompany() ->m_pWorkspace->addSubWindow ( art );
@@ -421,16 +421,16 @@ void MyPlugArt1::editarArticulo ( QString idarticulo )
     } // end if
     art->hide();
     art->show();
-    blDebug ( "END MyPlugArt1::editarArticulo", 0 );
+    blDebug ( "END Subform_Articulo::editarArticulo", 0 );
 }
 
 
 ///
 /**
 **/
-void MyPlugArt1::nuevoArticulo( )
+void Subform_Articulo::nuevoArticulo( )
 {
-    blDebug ( "MyPlugArt1::editarArticulo", 0 );
+    blDebug ( "Subform_Articulo::editarArticulo", 0 );
   
     BlSubForm * sub = ( BlSubForm * ) parent();
     
@@ -459,16 +459,16 @@ void MyPlugArt1::nuevoArticulo( )
 	} // end if
     } // end if
     delete cur;
-    blDebug ( "END MyPlugArt1::editarArticulo", 0 );
+    blDebug ( "END Subform_Articulo::editarArticulo", 0 );
 }
 
 
 ///
 /**
 **/
-void MyPlugArt1::seleccionarArticulo ( BfSubForm *sub )
+void Subform_Articulo::seleccionarArticulo ( BfSubForm *sub )
 {
-    blDebug ( "MyPlugArt1::editarArticulo", 0 );
+    blDebug ( "Subform_Articulo::editarArticulo", 0 );
 
     if (!sub) sub= (BfSubForm *) parent();
     
@@ -497,7 +497,7 @@ void MyPlugArt1::seleccionarArticulo ( BfSubForm *sub )
     } // end if
     delete cur;
 
-    blDebug ( "END MyPlugArt1::editarArticulo", 0 );
+    blDebug ( "END Subform_Articulo::editarArticulo", 0 );
 }
 
 
@@ -509,7 +509,7 @@ void MyPlugArt1::seleccionarArticulo ( BfSubForm *sub )
 int BlSubForm_BlSubForm_Post ( BlSubForm *sub )
 {
     blDebug ( "BlSubForm_BlSubForm_Post", 0 );
-    MyPlugArt1 *subformods = new MyPlugArt1 ( sub );
+    Subform_Articulo *subformods = new Subform_Articulo ( sub );
     sub->QObject::connect ( sub, SIGNAL ( pintaMenu ( QMenu * ) ), subformods, SLOT ( s_pintaMenu ( QMenu * ) ) );
     sub->QObject::connect ( sub, SIGNAL ( trataMenu ( QAction * ) ), subformods, SLOT ( s_trataMenu ( QAction * ) ) );
     blDebug ( "END BlSubForm_BlSubForm_Post", 0 );
@@ -529,7 +529,7 @@ int BlSubForm_preparaMenu ( BlSubForm *sub ) {
     blDebug ( "BlSubForm_preparaMenu", 0 );
     BlSubFormHeader *header = sub->header ( "codigocompletoarticulo" );
     if ( header ) {
-	MyPlugArt1 *subformods = new MyPlugArt1 ( sub );
+	Subform_Articulo *subformods = new Subform_Articulo ( sub );
 	
 	QHBoxLayout *m_hboxLayout1 = sub->mui_menusubform->findChild<QHBoxLayout *> ( "hboxLayout1" );
 	if ( !m_hboxLayout1 ) {
