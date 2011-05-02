@@ -60,13 +60,13 @@ public slots:
 
 
 
-class Subform_Actividad : public QObject
+class SubForm_Actividad : public QObject
 {
     Q_OBJECT
 
 public:
-    Subform_Actividad ( BlSubForm * );
-    ~Subform_Actividad();
+    SubForm_Actividad ( BlSubForm * );
+    ~SubForm_Actividad();
     void editarActividad( QString);
     void nuevoActividad();
     void seleccionarActividad(BfSubForm *);

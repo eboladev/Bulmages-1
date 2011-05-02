@@ -344,19 +344,19 @@ int SNewArticuloView ( BfCompany *v )
 /**
 \param parent
 **/
-Subform_Articulo::Subform_Articulo ( BlSubForm *parent ) : QObject ( parent )
+SubForm_Articulo::SubForm_Articulo ( BlSubForm *parent ) : QObject ( parent )
 {
-    blDebug ( "Subform_Articulo::Subform_Articulo", 0 );
-    blDebug ( "END Subform_Articulo::Subform_Articulo", 0 );
+    blDebug ( "SubForm_Articulo::SubForm_Articulo", 0 );
+    blDebug ( "END SubForm_Articulo::SubForm_Articulo", 0 );
 }
 
 ///
 /**
 **/
-Subform_Articulo::~Subform_Articulo()
+SubForm_Articulo::~SubForm_Articulo()
 {
-    blDebug ( "Subform_Articulo::~Subform_Articulo", 0 );
-    blDebug ( "END Subform_Articulo::~Subform_Articulo", 0 );
+    blDebug ( "SubForm_Articulo::~SubForm_Articulo", 0 );
+    blDebug ( "END SubForm_Articulo::~SubForm_Articulo", 0 );
 }
 
 
@@ -364,9 +364,9 @@ Subform_Articulo::~Subform_Articulo()
 /**
 \param menu
 **/
-void Subform_Articulo::s_pintaMenu ( QMenu *menu )
+void SubForm_Articulo::s_pintaMenu ( QMenu *menu )
 {
-    blDebug ( "Subform_Articulo::s_pintaMenu", 0 );
+    blDebug ( "SubForm_Articulo::s_pintaMenu", 0 );
     BfSubForm *sub = ( BfSubForm * ) parent();
     BlSubFormHeader *header = sub->header ( "codigocompletoarticulo" );
     if ( header ) {
@@ -378,7 +378,7 @@ void Subform_Articulo::s_pintaMenu ( QMenu *menu )
             menu->addAction ( QIcon ( ":/Images/product-list.png"), _ ( "Seleccionar articulo" ) );
         } // end if
     } // end if
-    blDebug ( "END Subform_Articulo::s_pintaMenu", 0 );
+    blDebug ( "END SubForm_Articulo::s_pintaMenu", 0 );
 }
 
 
@@ -386,9 +386,9 @@ void Subform_Articulo::s_pintaMenu ( QMenu *menu )
 /**
 \param action
 **/
-void Subform_Articulo::s_trataMenu ( QAction *action )
+void SubForm_Articulo::s_trataMenu ( QAction *action )
 {
-    blDebug ( "Subform_Articulo::s_trataMenu", 0 );
+    blDebug ( "SubForm_Articulo::s_trataMenu", 0 );
     BfSubForm *sub = ( BfSubForm * ) parent();
     if ( action->text() == _ ( "Editar articulo" ) ) {
         QString idarticulo = sub->dbValue ( "idarticulo" );
@@ -400,16 +400,16 @@ void Subform_Articulo::s_trataMenu ( QAction *action )
         nuevoArticulo();
     } // end if
 
-    blDebug ( "END Subform_Articulo::s_trataMenu", 0 );
+    blDebug ( "END SubForm_Articulo::s_trataMenu", 0 );
 }
 
 
 ///
 /**
 **/
-void Subform_Articulo::editarArticulo ( QString idarticulo )
+void SubForm_Articulo::editarArticulo ( QString idarticulo )
 {
-    blDebug ( "Subform_Articulo::editarArticulo", 0 );
+    blDebug ( "SubForm_Articulo::editarArticulo", 0 );
     BlSubForm * subf = ( BlSubForm * ) parent();
     ArticuloView * art = new ArticuloView ( ( BfCompany * ) subf->mainCompany(), 0 );
     subf->mainCompany() ->m_pWorkspace->addSubWindow ( art );
@@ -421,16 +421,16 @@ void Subform_Articulo::editarArticulo ( QString idarticulo )
     } // end if
     art->hide();
     art->show();
-    blDebug ( "END Subform_Articulo::editarArticulo", 0 );
+    blDebug ( "END SubForm_Articulo::editarArticulo", 0 );
 }
 
 
 ///
 /**
 **/
-void Subform_Articulo::nuevoArticulo( )
+void SubForm_Articulo::nuevoArticulo( )
 {
-    blDebug ( "Subform_Articulo::editarArticulo", 0 );
+    blDebug ( "SubForm_Articulo::editarArticulo", 0 );
   
     BlSubForm * sub = ( BlSubForm * ) parent();
     
@@ -459,16 +459,16 @@ void Subform_Articulo::nuevoArticulo( )
 	} // end if
     } // end if
     delete cur;
-    blDebug ( "END Subform_Articulo::editarArticulo", 0 );
+    blDebug ( "END SubForm_Articulo::editarArticulo", 0 );
 }
 
 
 ///
 /**
 **/
-void Subform_Articulo::seleccionarArticulo ( BfSubForm *sub )
+void SubForm_Articulo::seleccionarArticulo ( BfSubForm *sub )
 {
-    blDebug ( "Subform_Articulo::editarArticulo", 0 );
+    blDebug ( "SubForm_Articulo::editarArticulo", 0 );
 
     if (!sub) sub= (BfSubForm *) parent();
     
@@ -497,7 +497,7 @@ void Subform_Articulo::seleccionarArticulo ( BfSubForm *sub )
     } // end if
     delete cur;
 
-    blDebug ( "END Subform_Articulo::editarArticulo", 0 );
+    blDebug ( "END SubForm_Articulo::editarArticulo", 0 );
 }
 
 
@@ -509,7 +509,7 @@ void Subform_Articulo::seleccionarArticulo ( BfSubForm *sub )
 int BlSubForm_BlSubForm_Post ( BlSubForm *sub )
 {
     blDebug ( "BlSubForm_BlSubForm_Post", 0 );
-    Subform_Articulo *subformods = new Subform_Articulo ( sub );
+    SubForm_Articulo *subformods = new SubForm_Articulo ( sub );
     sub->QObject::connect ( sub, SIGNAL ( pintaMenu ( QMenu * ) ), subformods, SLOT ( s_pintaMenu ( QMenu * ) ) );
     sub->QObject::connect ( sub, SIGNAL ( trataMenu ( QAction * ) ), subformods, SLOT ( s_trataMenu ( QAction * ) ) );
     blDebug ( "END BlSubForm_BlSubForm_Post", 0 );
@@ -529,7 +529,7 @@ int BlSubForm_preparaMenu ( BlSubForm *sub ) {
     blDebug ( "BlSubForm_preparaMenu", 0 );
     BlSubFormHeader *header = sub->header ( "codigocompletoarticulo" );
     if ( header ) {
-	Subform_Articulo *subformods = new Subform_Articulo ( sub );
+	SubForm_Articulo *subformods = new SubForm_Articulo ( sub );
 	
 	QHBoxLayout *m_hboxLayout1 = sub->mui_menusubform->findChild<QHBoxLayout *> ( "hboxLayout1" );
 	if ( !m_hboxLayout1 ) {

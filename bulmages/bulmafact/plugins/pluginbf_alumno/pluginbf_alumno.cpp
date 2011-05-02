@@ -307,19 +307,19 @@ int Busqueda_on_mui_buscar_clicked ( BlSearchWidget *busq )
 /**
 \param parent
 **/
-Subform_Alumno::Subform_Alumno ( BlSubForm *parent ) : QObject ( parent )
+SubForm_Alumno::SubForm_Alumno ( BlSubForm *parent ) : QObject ( parent )
 {
-    blDebug ( "Subform_Alumno::Subform_Alumno", 0 );
-    blDebug ( "END Subform_Alumno::Subform_Alumno", 0 );
+    blDebug ( "SubForm_Alumno::SubForm_Alumno", 0 );
+    blDebug ( "END SubForm_Alumno::SubForm_Alumno", 0 );
 }
 
 ///
 /**
 **/
-Subform_Alumno::~Subform_Alumno()
+SubForm_Alumno::~SubForm_Alumno()
 {
-    blDebug ( "Subform_Alumno::~Subform_Alumno", 0 );
-    blDebug ( "END Subform_Alumno::~Subform_Alumno", 0 );
+    blDebug ( "SubForm_Alumno::~SubForm_Alumno", 0 );
+    blDebug ( "END SubForm_Alumno::~SubForm_Alumno", 0 );
 }
 
 
@@ -327,9 +327,9 @@ Subform_Alumno::~Subform_Alumno()
 /**
 \param menu
 **/
-void Subform_Alumno::s_pintaMenu ( QMenu *menu )
+void SubForm_Alumno::s_pintaMenu ( QMenu *menu )
 {
-    blDebug ( "Subform_Alumno::s_pintaMenu", 0 );
+    blDebug ( "SubForm_Alumno::s_pintaMenu", 0 );
     BfSubForm *sub = ( BfSubForm * ) parent();
     BlSubFormHeader *header = sub->header ( "nombrealumno1" );
     if (!header) 
@@ -343,7 +343,7 @@ void Subform_Alumno::s_pintaMenu ( QMenu *menu )
             menu->addAction ( QIcon ( ":/ImgGestionAula/icons/alumno-list.png" ), _ ( "Seleccionar alumno" ) );
         } // end if
     } // end if
-    blDebug ( "END Subform_Alumno::s_pintaMenu", 0 );
+    blDebug ( "END SubForm_Alumno::s_pintaMenu", 0 );
 }
 
 
@@ -351,9 +351,9 @@ void Subform_Alumno::s_pintaMenu ( QMenu *menu )
 /**
 \param action
 **/
-void Subform_Alumno::s_trataMenu ( QAction *action )
+void SubForm_Alumno::s_trataMenu ( QAction *action )
 {
-    blDebug ( "Subform_Alumno::s_trataMenu", 0 );
+    blDebug ( "SubForm_Alumno::s_trataMenu", 0 );
     BfSubForm *sub = ( BfSubForm * ) parent();
     if ( action->text() == _ ( "Editar alumno" ) ) {
         QString idalumno = sub->dbValue ( "idalumno" );
@@ -365,16 +365,16 @@ void Subform_Alumno::s_trataMenu ( QAction *action )
         nuevoAlumno();
     } // end if
 
-    blDebug ( "END Subform_Alumno::s_trataMenu", 0 );
+    blDebug ( "END SubForm_Alumno::s_trataMenu", 0 );
 }
 
 
 ///
 /**
 **/
-void Subform_Alumno::editarAlumno ( QString idalumno )
+void SubForm_Alumno::editarAlumno ( QString idalumno )
 {
-    blDebug ( "Subform_Alumno::editarAlumno", 0 );
+    blDebug ( "SubForm_Alumno::editarAlumno", 0 );
     BlSubForm * subf = ( BlSubForm * ) parent();
     AlumnoView * art = new AlumnoView ( ( BfCompany * ) subf->mainCompany(), 0 );
     subf->mainCompany() ->m_pWorkspace->addSubWindow ( art );
@@ -386,7 +386,7 @@ void Subform_Alumno::editarAlumno ( QString idalumno )
     } // end if
     art->hide();
     art->show();
-    blDebug ( "END Subform_Alumno::editarAlumno", 0 );
+    blDebug ( "END SubForm_Alumno::editarAlumno", 0 );
 }
 
 
@@ -394,9 +394,9 @@ void Subform_Alumno::editarAlumno ( QString idalumno )
 ///
 /**
 **/
-void Subform_Alumno::nuevoAlumno( )
+void SubForm_Alumno::nuevoAlumno( )
 {
-    blDebug ( "Subform_Alumno::editarAlumno", 0 );
+    blDebug ( "SubForm_Alumno::editarAlumno", 0 );
     BlSubForm * subf = ( BlSubForm * ) parent();
     AlumnoView * art = new AlumnoView ( ( BfCompany * ) subf->mainCompany(), 0 );
     subf->mainCompany() ->m_pWorkspace->addSubWindow ( art );
@@ -414,16 +414,16 @@ void Subform_Alumno::nuevoAlumno( )
     } // end if
     delete art;    
     
-    blDebug ( "END Subform_Alumno::editarAlumno", 0 );
+    blDebug ( "END SubForm_Alumno::editarAlumno", 0 );
 }
 
 
 ///
 /**
 **/
-void Subform_Alumno::seleccionarAlumno ( BfSubForm *sub )
+void SubForm_Alumno::seleccionarAlumno ( BfSubForm *sub )
 {
-    blDebug ( "Subform_Alumno::editarAlumno", 0 );
+    blDebug ( "SubForm_Alumno::editarAlumno", 0 );
     
     if (!sub) sub= (BfSubForm *) parent();
     
@@ -450,7 +450,7 @@ void Subform_Alumno::seleccionarAlumno ( BfSubForm *sub )
     } // end if
     delete cur;
 
-    blDebug ( "END Subform_Alumno::editarAlumno", 0 );
+    blDebug ( "END SubForm_Alumno::editarAlumno", 0 );
 }
 
 
@@ -462,7 +462,7 @@ void Subform_Alumno::seleccionarAlumno ( BfSubForm *sub )
 int BlSubForm_BlSubForm_Post ( BlSubForm *sub )
 {
     blDebug ( "BlSubForm_BlSubForm_Post", 0 );
-    Subform_Alumno *subformods = new Subform_Alumno ( sub );
+    SubForm_Alumno *subformods = new SubForm_Alumno ( sub );
     sub->QObject::connect ( sub, SIGNAL ( pintaMenu ( QMenu * ) ), subformods, SLOT ( s_pintaMenu ( QMenu * ) ) );
     sub->QObject::connect ( sub, SIGNAL ( trataMenu ( QAction * ) ), subformods, SLOT ( s_trataMenu ( QAction * ) ) );
     blDebug ( "END BlSubForm_BlSubForm_Post", 0 );
@@ -484,7 +484,7 @@ int BlSubForm_preparaMenu ( BlSubForm *sub ) {
     if (!header) 
         header = sub->header ( "nombrealumno" );
     if ( header ) {
-        Subform_Alumno *subformods = new Subform_Alumno ( sub );
+        SubForm_Alumno *subformods = new SubForm_Alumno ( sub );
         
         QHBoxLayout *m_hboxLayout1 = sub->mui_menusubform->findChild<QHBoxLayout *> ( "hboxLayout1" );
         if ( !m_hboxLayout1 ) {

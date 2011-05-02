@@ -43,13 +43,13 @@ extern "C" PLUGINBF_ARTICULO_EXPORT int BlSubForm_editFinished(BlSubForm *);
 extern "C" PLUGINBF_ARTICULO_EXPORT int BlDbCompleterComboBox_textChanged (BlDbCompleterComboBox *);
 extern "C" PLUGINBF_ARTICULO_EXPORT int BlSubForm_preparaMenu ( BlSubForm *);
 
-class Subform_Articulo : public QObject
+class SubForm_Articulo : public QObject
 {
     Q_OBJECT
 
 public:
-    Subform_Articulo ( BlSubForm * );
-    ~Subform_Articulo();
+    SubForm_Articulo ( BlSubForm * );
+    ~SubForm_Articulo();
 
 
 public slots:

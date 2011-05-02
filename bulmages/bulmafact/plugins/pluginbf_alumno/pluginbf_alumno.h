@@ -59,13 +59,13 @@ public slots:
 
 
 
-class Subform_Alumno : public QObject
+class SubForm_Alumno : public QObject
 {
     Q_OBJECT
 
 public:
-    Subform_Alumno ( BlSubForm * );
-    ~Subform_Alumno();
+    SubForm_Alumno ( BlSubForm * );
+    ~SubForm_Alumno();
 
 
 public slots:
