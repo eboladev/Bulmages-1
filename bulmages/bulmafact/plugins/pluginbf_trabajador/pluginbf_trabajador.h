@@ -33,7 +33,7 @@ extern "C" PLUGINBF_TRABAJADOR_EXPORT int entryPoint ( BfBulmaFact * );
 extern "C" PLUGINBF_TRABAJADOR_EXPORT int SNewTrabajadorView (BfCompany *);
 
 
-class MyPlugTrab : public QObject, BlMainCompanyPointer
+class PluginBf_Trabajo : public QObject, BlMainCompanyPointer
 {
     Q_OBJECT
 
@@ -41,8 +41,8 @@ public:
     BfBulmaFact *m_bges;
 
 public:
-    MyPlugTrab();
-    ~MyPlugTrab();
+    PluginBf_Trabajo();
+    ~PluginBf_Trabajo();
     void inicializa ( BfBulmaFact * );
 
 public slots:

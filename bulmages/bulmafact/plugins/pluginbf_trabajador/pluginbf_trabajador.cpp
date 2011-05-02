@@ -31,33 +31,33 @@
 ///
 /**
 **/
-MyPlugTrab::MyPlugTrab()
+PluginBf_Trabajo::PluginBf_Trabajo()
 {
-    blDebug ( "MyPlugTrab::MyPlugTrab", 0 );
-    blDebug ( "END MyPlugTrab::MyPlugTrab", 0 );
+    blDebug ( "PluginBf_Trabajo::PluginBf_Trabajo", 0 );
+    blDebug ( "END PluginBf_Trabajo::PluginBf_Trabajo", 0 );
 }
 
 
 ///
 /**
 **/
-MyPlugTrab::~MyPlugTrab()
+PluginBf_Trabajo::~PluginBf_Trabajo()
 {
-    blDebug ( "MyPlugTrab::~MyPlugTrab", 0 );
-    blDebug ( "END MyPlugTrab::~MyPlugTrab", 0 );
+    blDebug ( "PluginBf_Trabajo::~PluginBf_Trabajo", 0 );
+    blDebug ( "END PluginBf_Trabajo::~PluginBf_Trabajo", 0 );
 }
 
 
 ///
 /**
 **/
-void MyPlugTrab::elslot1()
+void PluginBf_Trabajo::elslot1()
 {
-    blDebug ( "MyPlugTrab::elslot1", 0 );
+    blDebug ( "PluginBf_Trabajo::elslot1", 0 );
     TrabajadorView * bud = new TrabajadorView ( ( BfCompany * ) mainCompany(), NULL );
     mainCompany() ->m_pWorkspace->addSubWindow ( bud );
     bud->show();
-    blDebug ( "END MyPlugTrab::elslot1", 0 );
+    blDebug ( "END PluginBf_Trabajo::elslot1", 0 );
 }
 
 
@@ -66,9 +66,9 @@ void MyPlugTrab::elslot1()
 /**
 \param bges
 **/
-void MyPlugTrab::inicializa ( BfBulmaFact *bges )
+void PluginBf_Trabajo::inicializa ( BfBulmaFact *bges )
 {
-    blDebug ( "MyPlugTrab::inicializa", 0 );
+    blDebug ( "PluginBf_Trabajo::inicializa", 0 );
 
     if ( bges->company()->hasTablePrivilege ( "trabajador", "SELECT" ) ) {
 
@@ -88,7 +88,7 @@ void MyPlugTrab::inicializa ( BfBulmaFact *bges )
         connect ( planCuentas, SIGNAL ( activated() ), this, SLOT ( elslot1() ) );
 
     }// end if
-    blDebug ( "END MyPlugTrab::inicializa", 0 );
+    blDebug ( "END PluginBf_Trabajo::inicializa", 0 );
 }
 
 
@@ -108,7 +108,7 @@ int entryPoint ( BfBulmaFact *bges )
     setlocale ( LC_ALL, "" );
     blBindTextDomain ( "pluginbf_trabajador", g_confpr->valor ( CONF_DIR_TRADUCCION ).toAscii().constData() );
 
-    MyPlugTrab *plug = new MyPlugTrab();
+    PluginBf_Trabajo *plug = new PluginBf_Trabajo();
     plug->inicializa ( bges );
     return 0;
 }
