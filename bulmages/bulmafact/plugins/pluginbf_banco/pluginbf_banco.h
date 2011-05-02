@@ -33,7 +33,7 @@ extern "C" PLUGINBF_BANCO_EXPORT int entryPoint ( BfBulmaFact * );
 extern "C" PLUGINBF_BANCO_EXPORT int SNewBancoView (BfCompany *);
 
 
-class MyPlugBanc : public QObject, BlMainCompanyPointer
+class PluginBf_Banco : public QObject, BlMainCompanyPointer
 {
     Q_OBJECT
 
@@ -41,8 +41,8 @@ public:
     BfBulmaFact *m_bges;
 
 public:
-    MyPlugBanc();
-    ~MyPlugBanc();
+    PluginBf_Banco();
+    ~PluginBf_Banco();
     void inicializa ( BfBulmaFact * );
 
 public slots:

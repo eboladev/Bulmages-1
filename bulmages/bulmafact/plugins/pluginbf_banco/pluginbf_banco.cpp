@@ -31,33 +31,33 @@
 ///
 /**
 **/
-MyPlugBanc::MyPlugBanc()
+PluginBf_Banco::PluginBf_Banco()
 {
-    blDebug ( "MyPlugBanc::MyPlugBanc", 0 );
-    blDebug ( "END MyPlugBanc::MyPlugBanc", 0 );
+    blDebug ( "PluginBf_Banco::PluginBf_Banco", 0 );
+    blDebug ( "END PluginBf_Banco::PluginBf_Banco", 0 );
 }
 
 
 ///
 /**
 **/
-MyPlugBanc::~MyPlugBanc()
+PluginBf_Banco::~PluginBf_Banco()
 {
-    blDebug ( "MyPlugBanc::~MyPlugBanc", 0 );
-    blDebug ( "END MyPlugBanc::~MyPlugBanc", 0 );
+    blDebug ( "PluginBf_Banco::~PluginBf_Banco", 0 );
+    blDebug ( "END PluginBf_Banco::~PluginBf_Banco", 0 );
 }
 
 
 ///
 /**
 **/
-void MyPlugBanc::elslot1()
+void PluginBf_Banco::elslot1()
 {
-    blDebug ( "MyPlugBanc::elslot1", 0 );
+    blDebug ( "PluginBf_Banco::elslot1", 0 );
     BancoView * bud = new BancoView ( ( BfCompany * ) mainCompany(), NULL );
     mainCompany() ->m_pWorkspace->addSubWindow ( bud );
     bud->show();
-    blDebug ( "END MyPlugBanc::elslot1", 0 );
+    blDebug ( "END PluginBf_Banco::elslot1", 0 );
 }
 
 
@@ -66,9 +66,9 @@ void MyPlugBanc::elslot1()
 /**
 \param bges
 **/
-void MyPlugBanc::inicializa ( BfBulmaFact *bges )
+void PluginBf_Banco::inicializa ( BfBulmaFact *bges )
 {
-    blDebug ( "MyPlugBanc::inicializa", 0 );
+    blDebug ( "PluginBf_Banco::inicializa", 0 );
 
     if ( bges->company()->hasTablePrivilege ( "banco", "SELECT" ) ) {
 
@@ -88,7 +88,7 @@ void MyPlugBanc::inicializa ( BfBulmaFact *bges )
         connect ( planCuentas, SIGNAL ( activated() ), this, SLOT ( elslot1() ) );
 
     }// end if
-    blDebug ( "END MyPlugBanc::inicializa", 0 );
+    blDebug ( "END PluginBf_Banco::inicializa", 0 );
 }
 
 
@@ -108,7 +108,7 @@ int entryPoint ( BfBulmaFact *bges )
     setlocale ( LC_ALL, "" );
     blBindTextDomain ( "pluginbf_banco", g_confpr->valor ( CONF_DIR_TRADUCCION ).toAscii().constData() );
 
-    MyPlugBanc *plug = new MyPlugBanc();
+    PluginBf_Banco *plug = new PluginBf_Banco();
     plug->inicializa ( bges );
     return 0;
 }
