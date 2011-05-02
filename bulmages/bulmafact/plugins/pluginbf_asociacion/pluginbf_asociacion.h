@@ -32,7 +32,7 @@ extern "C" PLUGINBF_ASOCIACION_EXPORT int entryPoint ( BfBulmaFact * );
 extern "C" PLUGINBF_ASOCIACION_EXPORT int BfCompany_createMainWindows_Post(BfCompany *);
 
 
-class MyPlugAsoc : public QObject, BlMainCompanyPointer
+class PluginBf_Asociacion : public QObject, BlMainCompanyPointer
 {
     Q_OBJECT
 
@@ -40,8 +40,8 @@ public:
     BfBulmaFact *m_bges;
 
 public:
-    MyPlugAsoc();
-    ~MyPlugAsoc();
+    PluginBf_Asociacion();
+    ~PluginBf_Asociacion();
     void inicializa ( BfBulmaFact * );
 
 public slots:

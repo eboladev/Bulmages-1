@@ -32,42 +32,42 @@
 ///
 /**
 **/
-MyPlugAsoc::MyPlugAsoc()
+PluginBf_Asociacion::PluginBf_Asociacion()
 {
-    blDebug ( "MyPlugAsoc::MyPlugAsoc", 0 );
-    blDebug ( "END MyPlugAsoc::MyPlugAsoc", 0 );
+    blDebug ( "PluginBf_Asociacion::PluginBf_Asociacion", 0 );
+    blDebug ( "END PluginBf_Asociacion::PluginBf_Asociacion", 0 );
 }
 
 
 ///
 /**
 **/
-MyPlugAsoc::~MyPlugAsoc()
+PluginBf_Asociacion::~PluginBf_Asociacion()
 {
-    blDebug ( "MyPlugAsoc::~MyPlugAsoc", 0 );
-    blDebug ( "END MyPlugAsoc::~MyPlugAsoc", 0 );
+    blDebug ( "PluginBf_Asociacion::~PluginBf_Asociacion", 0 );
+    blDebug ( "END PluginBf_Asociacion::~PluginBf_Asociacion", 0 );
 }
 
 
 ///
 /**
 **/
-void MyPlugAsoc::elslot()
+void PluginBf_Asociacion::elslot()
 {
-    blDebug ( "MyPlugAsoc::elslot", 0 );
-    blDebug ( "END MyPlugAsoc::elslot", 0 );
+    blDebug ( "PluginBf_Asociacion::elslot", 0 );
+    blDebug ( "END PluginBf_Asociacion::elslot", 0 );
 }
 
 ///
 /**
 **/
-void MyPlugAsoc::elslot1()
+void PluginBf_Asociacion::elslot1()
 {
-    blDebug ( "MyPlugAsoc::elslot1", 0 );
+    blDebug ( "PluginBf_Asociacion::elslot1", 0 );
     JDirectivaList * bud = new JDirectivaList ( ( BfCompany * ) mainCompany(), NULL );
     mainCompany() ->m_pWorkspace->addSubWindow ( bud );
     bud->show();
-    blDebug ( "END MyPlugAsoc::elslot1", 0 );
+    blDebug ( "END PluginBf_Asociacion::elslot1", 0 );
 }
 
 
@@ -76,13 +76,13 @@ void MyPlugAsoc::elslot1()
 ///
 /**
 **/
-void MyPlugAsoc::comision()
+void PluginBf_Asociacion::comision()
 {
-    blDebug ( "MyPlugAsoc::comision", 0 );
+    blDebug ( "PluginBf_Asociacion::comision", 0 );
     ComisionesList * bud = new ComisionesList ( ( BfCompany * ) mainCompany(), NULL );
     mainCompany() ->m_pWorkspace->addSubWindow ( bud );
     bud->show();
-    blDebug ( "END MyPlugAsoc::comision", 0 );
+    blDebug ( "END PluginBf_Asociacion::comision", 0 );
 }
 
 
@@ -91,50 +91,50 @@ void MyPlugAsoc::comision()
 ///
 /** Convocar Asamblea
 **/
-void MyPlugAsoc::convjunta()
+void PluginBf_Asociacion::convjunta()
 {
-    blDebug ( "MyPlugAsoc::convjunta", 0 );
+    blDebug ( "PluginBf_Asociacion::convjunta", 0 );
     JDirectivaView *bud = new JDirectivaView ( ( BfCompany * ) mainCompany(), 0 );
     mainCompany() ->m_pWorkspace->addSubWindow ( bud );
     bud->show();
     bud->pintar();
 //     bud->junta();
-    blDebug ( "END MyPlugAsoc::convjunta", 0 );
+    blDebug ( "END PluginBf_Asociacion::convjunta", 0 );
 }
 
 ///
 /** Convocar Asamblea
 **/
-void MyPlugAsoc::elslot2()
+void PluginBf_Asociacion::elslot2()
 {
-    blDebug ( "MyPlugAsoc::elslot2", 0 );
+    blDebug ( "PluginBf_Asociacion::elslot2", 0 );
     ConvReunionView *bud = new ConvReunionView ( ( BfCompany * ) mainCompany(), 0 );
     mainCompany() ->m_pWorkspace->addSubWindow ( bud );
     bud->show();
     bud->pintar();
-    blDebug ( "END MyPlugAsoc::elslot2", 0 );
+    blDebug ( "END PluginBf_Asociacion::elslot2", 0 );
 }
 
 
 ///
 /** Lista de Reuniones
 **/
-void MyPlugAsoc::elslot3()
+void PluginBf_Asociacion::elslot3()
 {
-    blDebug ( "MyPlugAsoc::elslot2", 0 );
+    blDebug ( "PluginBf_Asociacion::elslot2", 0 );
     ConvReunionList * bud = new ConvReunionList ( ( BfCompany * ) mainCompany(), NULL );
     mainCompany() ->m_pWorkspace->addSubWindow ( bud );
     bud->show();
-    blDebug ( "END MyPlugAsoc::elslot2", 0 );
+    blDebug ( "END PluginBf_Asociacion::elslot2", 0 );
 }
 
 ///
 /**
 \param bges
 **/
-void MyPlugAsoc::inicializa ( BfBulmaFact *bges )
+void PluginBf_Asociacion::inicializa ( BfBulmaFact *bges )
 {
-    blDebug ( "MyPlugAsoc::inicializa", 0 );
+    blDebug ( "PluginBf_Asociacion::inicializa", 0 );
 
     if ( bges->company()->hasTablePrivilege ( "reunion", "SELECT" ) ) {
 
@@ -210,7 +210,7 @@ void MyPlugAsoc::inicializa ( BfBulmaFact *bges )
 
     } // end if
     
-    blDebug ( "END MyPlugAsoc::inicializa", 0 );
+    blDebug ( "END PluginBf_Asociacion::inicializa", 0 );
 }
 
 
@@ -227,7 +227,7 @@ int entryPoint ( BfBulmaFact *bges )
     setlocale ( LC_ALL, "" );
     blBindTextDomain ( "pluginbf_asociacion", g_confpr->valor ( CONF_DIR_TRADUCCION ).toAscii().constData() );
 
-    MyPlugAsoc *plug = new MyPlugAsoc();
+    PluginBf_Asociacion *plug = new PluginBf_Asociacion();
     plug->inicializa ( bges );
     return 0;
 }
