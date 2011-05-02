@@ -31,33 +31,33 @@
 ///
 /**
 **/
-PluginBf_Trabajo::PluginBf_Trabajo()
+PluginBf_Trabajador::PluginBf_Trabajador()
 {
-    blDebug ( "PluginBf_Trabajo::PluginBf_Trabajo", 0 );
-    blDebug ( "END PluginBf_Trabajo::PluginBf_Trabajo", 0 );
+    blDebug ( "PluginBf_Trabajador::PluginBf_Trabajador", 0 );
+    blDebug ( "END PluginBf_Trabajador::PluginBf_Trabajador", 0 );
 }
 
 
 ///
 /**
 **/
-PluginBf_Trabajo::~PluginBf_Trabajo()
+PluginBf_Trabajador::~PluginBf_Trabajador()
 {
-    blDebug ( "PluginBf_Trabajo::~PluginBf_Trabajo", 0 );
-    blDebug ( "END PluginBf_Trabajo::~PluginBf_Trabajo", 0 );
+    blDebug ( "PluginBf_Trabajador::~PluginBf_Trabajador", 0 );
+    blDebug ( "END PluginBf_Trabajador::~PluginBf_Trabajador", 0 );
 }
 
 
 ///
 /**
 **/
-void PluginBf_Trabajo::elslot1()
+void PluginBf_Trabajador::elslot1()
 {
-    blDebug ( "PluginBf_Trabajo::elslot1", 0 );
+    blDebug ( "PluginBf_Trabajador::elslot1", 0 );
     TrabajadorView * bud = new TrabajadorView ( ( BfCompany * ) mainCompany(), NULL );
     mainCompany() ->m_pWorkspace->addSubWindow ( bud );
     bud->show();
-    blDebug ( "END PluginBf_Trabajo::elslot1", 0 );
+    blDebug ( "END PluginBf_Trabajador::elslot1", 0 );
 }
 
 
@@ -66,9 +66,9 @@ void PluginBf_Trabajo::elslot1()
 /**
 \param bges
 **/
-void PluginBf_Trabajo::inicializa ( BfBulmaFact *bges )
+void PluginBf_Trabajador::inicializa ( BfBulmaFact *bges )
 {
-    blDebug ( "PluginBf_Trabajo::inicializa", 0 );
+    blDebug ( "PluginBf_Trabajador::inicializa", 0 );
 
     if ( bges->company()->hasTablePrivilege ( "trabajador", "SELECT" ) ) {
 
@@ -88,7 +88,7 @@ void PluginBf_Trabajo::inicializa ( BfBulmaFact *bges )
         connect ( planCuentas, SIGNAL ( activated() ), this, SLOT ( elslot1() ) );
 
     }// end if
-    blDebug ( "END PluginBf_Trabajo::inicializa", 0 );
+    blDebug ( "END PluginBf_Trabajador::inicializa", 0 );
 }
 
 
@@ -108,7 +108,7 @@ int entryPoint ( BfBulmaFact *bges )
     setlocale ( LC_ALL, "" );
     blBindTextDomain ( "pluginbf_trabajador", g_confpr->valor ( CONF_DIR_TRADUCCION ).toAscii().constData() );
 
-    PluginBf_Trabajo *plug = new PluginBf_Trabajo();
+    PluginBf_Trabajador *plug = new PluginBf_Trabajador();
     plug->inicializa ( bges );
     return 0;
 }
