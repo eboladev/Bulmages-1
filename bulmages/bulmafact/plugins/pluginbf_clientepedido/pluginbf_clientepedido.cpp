@@ -35,47 +35,47 @@ PedidosClienteList *g_pedidosClienteList = NULL;
 ///
 /**
 **/
-mypluginped::mypluginped()
+PluginBf_ClientePedido::PluginBf_ClientePedido()
 {
-    blDebug ( "mypluginped::mypluginped", 0 );
-    blDebug ( "END mypluginped::mypluginped", 0 );
+    blDebug ( "PluginBf_ClientePedido::PluginBf_ClientePedido", 0 );
+    blDebug ( "END PluginBf_ClientePedido::PluginBf_ClientePedido", 0 );
 }
 
 
 ///
 /**
 **/
-mypluginped::~mypluginped()
+PluginBf_ClientePedido::~PluginBf_ClientePedido()
 {
-    blDebug ( "mypluginped::~mypluginped", 0 );
-    blDebug ( "END mypluginped::~mypluginped", 0 );
+    blDebug ( "PluginBf_ClientePedido::~PluginBf_ClientePedido", 0 );
+    blDebug ( "END PluginBf_ClientePedido::~PluginBf_ClientePedido", 0 );
 }
 
 
 ///
 /**
 **/
-void mypluginped::elslot()
+void PluginBf_ClientePedido::elslot()
 {
-    blDebug ( "mypluginped::elslot", 0 );
+    blDebug ( "PluginBf_ClientePedido::elslot", 0 );
     if ( g_pedidosClienteList ) {
         g_pedidosClienteList->hide();
         g_pedidosClienteList->show();
     }// end if
-    blDebug ( "END mypluginped::elslot", 0 );
+    blDebug ( "END PluginBf_ClientePedido::elslot", 0 );
 }
 
 ///
 /**
 **/
-void mypluginped::elslot1()
+void PluginBf_ClientePedido::elslot1()
 {
-    blDebug ( "mypluginped::elslot1", 0 );
+    blDebug ( "PluginBf_ClientePedido::elslot1", 0 );
     PedidoClienteView * bud = new PedidoClienteView ( ( BfCompany * ) mainCompany(), NULL );
     mainCompany() ->m_pWorkspace->addSubWindow ( bud );
     bud->inicializar();
     bud->show();
-    blDebug ( "END mypluginped::elslot1", 0 );
+    blDebug ( "END PluginBf_ClientePedido::elslot1", 0 );
 }
 
 
@@ -84,9 +84,9 @@ void mypluginped::elslot1()
 /**
 \param bges
 **/
-void mypluginped::inicializa ( BfBulmaFact *bges )
+void PluginBf_ClientePedido::inicializa ( BfBulmaFact *bges )
 {
-    blDebug ( "mypluginped::inicializa", 0 );
+    blDebug ( "PluginBf_ClientePedido::inicializa", 0 );
 
     if ( bges->company()->hasTablePrivilege ( "pedidocliente", "SELECT" ) ) {
 
@@ -114,7 +114,7 @@ void mypluginped::inicializa ( BfBulmaFact *bges )
 
 
     }// end if
-    blDebug ( "END mypluginped::inicializa", 0 );
+    blDebug ( "END PluginBf_ClientePedido::inicializa", 0 );
 }
 
 
@@ -131,7 +131,7 @@ int entryPoint ( BfBulmaFact *bges )
     setlocale ( LC_ALL, "" );
     blBindTextDomain ( "pluginbf_clientepedido", g_confpr->valor ( CONF_DIR_TRADUCCION ).toAscii().constData() );
 
-    mypluginped *plug = new mypluginped();
+    PluginBf_ClientePedido *plug = new PluginBf_ClientePedido();
     plug->inicializa ( bges );
     return 0;
 }

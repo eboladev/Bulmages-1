@@ -36,7 +36,7 @@ extern "C" PLUGINBF_PROVEEDORPEDIDO_EXPORT int ProveedorView_cargarPost_Post (Pr
 extern "C" PLUGINBF_PROVEEDORPEDIDO_EXPORT int BfBuscarReferencia_on_mui_abrirtodo_clicked_Post (BfBuscarReferencia *);
 
 
-class mypluginpedp : public QObject, BlMainCompanyPointer
+class PluginBf_ProveedorPedido : public QObject, BlMainCompanyPointer
 {
     Q_OBJECT
 
@@ -44,8 +44,8 @@ public:
     BfBulmaFact *m_bges;
 
 public:
-    mypluginpedp();
-    ~mypluginpedp();
+    PluginBf_ProveedorPedido();
+    ~PluginBf_ProveedorPedido();
     void inicializa ( BfBulmaFact * );
 
 public slots:

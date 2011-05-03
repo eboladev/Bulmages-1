@@ -42,7 +42,7 @@ extern "C" PLUGINBF_CLIENTEPEDIDO_EXPORT int PresupuestoView_PresupuestoView ( P
 
 
 // 
-class mypluginped : public QObject, BlMainCompanyPointer
+class PluginBf_ClientePedido : public QObject, BlMainCompanyPointer
 {
     Q_OBJECT
 
@@ -50,8 +50,8 @@ public:
     BfBulmaFact *m_bges;
 
 public:
-    mypluginped();
-    ~mypluginped();
+    PluginBf_ClientePedido();
+    ~PluginBf_ClientePedido();
     void inicializa ( BfBulmaFact * );
 
 public slots:

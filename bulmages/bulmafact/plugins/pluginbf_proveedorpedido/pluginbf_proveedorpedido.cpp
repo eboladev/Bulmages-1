@@ -33,46 +33,46 @@ PedidosProveedorList *g_pedidosProveedorList = NULL;
 ///
 /**
 **/
-mypluginpedp::mypluginpedp()
+PluginBf_ProveedorPedido::PluginBf_ProveedorPedido()
 {
-    blDebug ( "mypluginpedp::mypluginpedp", 0 );
-    blDebug ( "END mypluginpedp::mypluginpedp", 0 );
+    blDebug ( "PluginBf_ProveedorPedido::PluginBf_ProveedorPedido", 0 );
+    blDebug ( "END PluginBf_ProveedorPedido::PluginBf_ProveedorPedido", 0 );
 }
 
 
 ///
 /**
 **/
-mypluginpedp::~mypluginpedp()
+PluginBf_ProveedorPedido::~PluginBf_ProveedorPedido()
 {
-    blDebug ( "mypluginpedp::~mypluginpedp", 0 );
-    blDebug ( "END mypluginpedp::~mypluginpedp", 0 );
+    blDebug ( "PluginBf_ProveedorPedido::~PluginBf_ProveedorPedido", 0 );
+    blDebug ( "END PluginBf_ProveedorPedido::~PluginBf_ProveedorPedido", 0 );
 }
 
 
 ///
 /**
 **/
-void mypluginpedp::elslot()
+void PluginBf_ProveedorPedido::elslot()
 {
-    blDebug ( "mypluginpedp::elslot", 0 );
+    blDebug ( "PluginBf_ProveedorPedido::elslot", 0 );
     if ( g_pedidosProveedorList ) {
         g_pedidosProveedorList->hide();
         g_pedidosProveedorList->show();
     }// end if
-    blDebug ( "END mypluginpedp::elslot", 0 );
+    blDebug ( "END PluginBf_ProveedorPedido::elslot", 0 );
 }
 
 ///
 /**
 **/
-void mypluginpedp::elslot1()
+void PluginBf_ProveedorPedido::elslot1()
 {
-    blDebug ( "mypluginpedp::elslot1", 0 );
+    blDebug ( "PluginBf_ProveedorPedido::elslot1", 0 );
     PedidoProveedorView * bud = new PedidoProveedorView ( ( BfCompany * ) mainCompany(), NULL );
     mainCompany() ->m_pWorkspace->addSubWindow ( bud );
     bud->show();
-    blDebug ( "END mypluginpedp::elslot1", 0 );
+    blDebug ( "END PluginBf_ProveedorPedido::elslot1", 0 );
 }
 
 
@@ -81,9 +81,9 @@ void mypluginpedp::elslot1()
 /**
 \param bges
 **/
-void mypluginpedp::inicializa ( BfBulmaFact *bges )
+void PluginBf_ProveedorPedido::inicializa ( BfBulmaFact *bges )
 {
-    blDebug ( "mypluginpedp::inicializa", 0 );
+    blDebug ( "PluginBf_ProveedorPedido::inicializa", 0 );
 
     if ( bges->company()->hasTablePrivilege ( "pedidoproveedor", "SELECT" ) ) {
 
@@ -112,7 +112,7 @@ void mypluginpedp::inicializa ( BfBulmaFact *bges )
 
 
     }// end if
-    blDebug ( "END mypluginpedp::inicializa", 0 );
+    blDebug ( "END PluginBf_ProveedorPedido::inicializa", 0 );
 }
 
 
@@ -129,7 +129,7 @@ int entryPoint ( BfBulmaFact *bges )
     setlocale ( LC_ALL, "" );
     blBindTextDomain ( "pluginbf_proveedorpedido", g_confpr->valor ( CONF_DIR_TRADUCCION ).toAscii().constData() );
 
-    mypluginpedp *plug = new mypluginpedp();
+    PluginBf_ProveedorPedido *plug = new PluginBf_ProveedorPedido();
     plug->inicializa ( bges );
     return 0;
 }
