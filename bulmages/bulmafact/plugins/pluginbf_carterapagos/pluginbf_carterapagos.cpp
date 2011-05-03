@@ -32,32 +32,32 @@
 ///
 /**
 **/
-MyPluginCarteraPagos::MyPluginCarteraPagos()
+PluginBf_CarteraPagos::PluginBf_CarteraPagos()
 {
-    blDebug ( "MyPluginCarteraPagos::MyPluginCarteraPagos", 0 );
-    blDebug ( "END MyPluginCarteraPagos::MyPluginCarteraPagos", 0 );
+    blDebug ( "PluginBf_CarteraPagos::PluginBf_CarteraPagos", 0 );
+    blDebug ( "END PluginBf_CarteraPagos::PluginBf_CarteraPagos", 0 );
 }
 
 ///
 /**
 **/
-MyPluginCarteraPagos::~MyPluginCarteraPagos()
+PluginBf_CarteraPagos::~PluginBf_CarteraPagos()
 {
-    blDebug ( "MyPluginCarteraPagos::~MyPluginCarteraPagos", 0 );
-    blDebug ( "END MyPluginCarteraPagos::~MyPluginCarteraPagos", 0 );
+    blDebug ( "PluginBf_CarteraPagos::~PluginBf_CarteraPagos", 0 );
+    blDebug ( "END PluginBf_CarteraPagos::~PluginBf_CarteraPagos", 0 );
 }
 
 
 ///
 /**
 **/
-void MyPluginCarteraPagos::elslot()
+void PluginBf_CarteraPagos::elslot()
 {
-    blDebug ( "MyPluginCarteraPagos::elslot", 0 );
+    blDebug ( "PluginBf_CarteraPagos::elslot", 0 );
     CarteraPagosList *vehiculoview = new CarteraPagosList ( ( BfCompany * ) m_conexionbase );
     m_bulmafact->workspace() ->addSubWindow ( vehiculoview );
     vehiculoview->show();
-    blDebug ( "END MyPluginCarteraPagos::elslot", 0 );
+    blDebug ( "END PluginBf_CarteraPagos::elslot", 0 );
 }
 
 
@@ -65,9 +65,9 @@ void MyPluginCarteraPagos::elslot()
 /**
 \param bges
 **/
-void MyPluginCarteraPagos::inicializa ( BfBulmaFact *bges )
+void PluginBf_CarteraPagos::inicializa ( BfBulmaFact *bges )
 {
-    blDebug ( "MyPluginCarteraPagos::inicializa", 0 );
+    blDebug ( "PluginBf_CarteraPagos::inicializa", 0 );
     /// Creamos el men&uacute;.
     m_conexionbase = bges->company();
     m_bulmafact = bges;
@@ -84,7 +84,7 @@ void MyPluginCarteraPagos::inicializa ( BfBulmaFact *bges )
     pPluginMenu->addSeparator();
     pPluginMenu->addAction ( accion );
 	bges->Listados->addAction (accion);
-    blDebug ( "END MyPluginCarteraPagos::inicializa", 0 );
+    blDebug ( "END PluginBf_CarteraPagos::inicializa", 0 );
 }
 
 
@@ -104,7 +104,7 @@ int entryPoint ( BfBulmaFact *bges )
     /// El plugin necesita un parche en la base de datos para funcionar.
     bges->company()->dbPatchVersionCheck("DBRev-CarteraPagos", "0.11.1-0001");
     
-    MyPluginCarteraPagos *plug = new MyPluginCarteraPagos();
+    PluginBf_CarteraPagos *plug = new PluginBf_CarteraPagos();
     plug->inicializa ( bges );
     return 0;
 }
