@@ -43,7 +43,7 @@ extern "C" PLUGINBF_CLIENTECOBRO_EXPORT int AlbaranClienteView_AlbaranClienteVie
 extern "C" PLUGINBF_CLIENTECOBRO_EXPORT int PedidoClienteView_PedidoClienteView ( PedidoClienteView * );
 
 
-class myplugincob : public QObject, BlMainCompanyPointer
+class PluginBf_ClienteCobro : public QObject, BlMainCompanyPointer
 {
     Q_OBJECT
 
@@ -51,8 +51,8 @@ public:
     BfBulmaFact *m_bges;
 
 public:
-    myplugincob();
-    ~myplugincob();
+    PluginBf_ClienteCobro();
+    ~PluginBf_ClienteCobro();
     void inicializa ( BfBulmaFact * );
 
 public slots:

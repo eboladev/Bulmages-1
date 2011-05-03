@@ -36,46 +36,46 @@ CobrosList *g_cobrosList = NULL;
 ///
 /**
 **/
-myplugincob::myplugincob()
+PluginBf_ClienteCobro::PluginBf_ClienteCobro()
 {
-    blDebug ( "myplugincob::myplugincob", 0 );
-    blDebug ( "END myplugincob::myplugincob", 0 );
+    blDebug ( "PluginBf_ClienteCobro::PluginBf_ClienteCobro", 0 );
+    blDebug ( "END PluginBf_ClienteCobro::PluginBf_ClienteCobro", 0 );
 }
 
 
 ///
 /**
 **/
-myplugincob::~myplugincob()
+PluginBf_ClienteCobro::~PluginBf_ClienteCobro()
 {
-    blDebug ( "myplugincob::~myplugincob", 0 );
-    blDebug ( "END myplugincob::~myplugincob", 0 );
+    blDebug ( "PluginBf_ClienteCobro::~PluginBf_ClienteCobro", 0 );
+    blDebug ( "END PluginBf_ClienteCobro::~PluginBf_ClienteCobro", 0 );
 }
 
 
 ///
 /**
 **/
-void myplugincob::elslot()
+void PluginBf_ClienteCobro::elslot()
 {
-    blDebug ( "myplugincob::elslot", 0 );
+    blDebug ( "PluginBf_ClienteCobro::elslot", 0 );
     if ( g_cobrosList ) {
         g_cobrosList->hide();
         g_cobrosList->show();
     }// end if
-    blDebug ( "END myplugincob::elslot", 0 );
+    blDebug ( "END PluginBf_ClienteCobro::elslot", 0 );
 }
 
 ///
 /**
 **/
-void myplugincob::elslot1()
+void PluginBf_ClienteCobro::elslot1()
 {
-    blDebug ( "myplugincob::elslot1", 0 );
+    blDebug ( "PluginBf_ClienteCobro::elslot1", 0 );
     CobroView * bud = new CobroView ( ( BfCompany * ) mainCompany(), NULL );
     mainCompany() ->m_pWorkspace->addSubWindow ( bud );
     bud->show();
-    blDebug ( "END myplugincob::elslot1", 0 );
+    blDebug ( "END PluginBf_ClienteCobro::elslot1", 0 );
 }
 
 
@@ -84,9 +84,9 @@ void myplugincob::elslot1()
 /**
 \param bges
 **/
-void myplugincob::inicializa ( BfBulmaFact *bges )
+void PluginBf_ClienteCobro::inicializa ( BfBulmaFact *bges )
 {
-    blDebug ( "myplugincob::inicializa", 0 );
+    blDebug ( "PluginBf_ClienteCobro::inicializa", 0 );
 
     if ( bges->company()->hasTablePrivilege ( "cobro", "SELECT" ) ) {
 
@@ -113,7 +113,7 @@ void myplugincob::inicializa ( BfBulmaFact *bges )
         bges->Fichas->addAction ( npago );
         connect ( npago, SIGNAL ( activated() ), this, SLOT ( elslot1() ) );
     }// end if
-    blDebug ( "END myplugincob::inicializa", 0 );
+    blDebug ( "END PluginBf_ClienteCobro::inicializa", 0 );
 }
 
 
@@ -130,7 +130,7 @@ int entryPoint ( BfBulmaFact *bges )
     setlocale ( LC_ALL, "" );
     blBindTextDomain ( "pluginbf_clientecobro", g_confpr->valor ( CONF_DIR_TRADUCCION ).toAscii().constData() );
 
-    myplugincob *plug = new myplugincob();
+    PluginBf_ClienteCobro *plug = new PluginBf_ClienteCobro();
     plug->inicializa ( bges );
     return 0;
 }
