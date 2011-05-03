@@ -8,7 +8,7 @@ Nombre: Cartera de Pagos
 
 Biblioteca: libpluginbf_carterapagos.so
 
-Descripción: <H1>Cartera de Pagos</H1>
+Descripción: <H1><IMG SRC="@CMAKE_INSTALL_PREFIX@/share/bulmages/imagesrc/images/oxygen/actions/payment_list.svg" WIDTH="100"/><BR>Cartera de Pagos</H1>
 <PARA>Permite gestion avanzada de pagos a proveedores, con fraccionado de facturas y control de vencimientos.</PARA>
 <HR>
 <PARA>En el listado de proveedores se eligen las fracciones (porcentajes) de cobro para cada cliente.</PARA>

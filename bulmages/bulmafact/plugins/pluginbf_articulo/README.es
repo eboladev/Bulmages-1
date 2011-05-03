@@ -8,13 +8,13 @@ Nombre: Articulos
 
 Biblioteca: libpluginbf_articulo.so
 
-Descripción: <H1>Gestion de articulos</H1>
+Descripción: <H1><IMG SRC="@CMAKE_INSTALL_PREFIX@/share/bulmages/imagesrc/images/oxygen/actions/product.svg" WIDTH="100"/><BR>Gestion de articulos</H1>
 <PARA>Este plugin permite la introduccion de articulos en el sistema. </PARA>
 <HR>
 <PARA>Presenta el listado de articulos y permite agregar, editar y modificar articulos.</PARA>
 <BR>
 <PARA>Al instalar el plugin aparecerá el menu Articulos en la aplicacion con las opciones <B>Listado de Articulos</B> y la
-opcion <B>Nuevo Articulo</B></PARA>
+opcion <B>Nuevo Articulo</B></PARA><BR>
 <B>Author:</B>Tomeu Borrás (tborras@conetxia.com)<BR>
 <HR>
 

@@ -8,7 +8,7 @@ Nombre: Pagos
 
 Biblioteca: libpluginbf_proveedorpago.so
 
-Descripción: <H1>Pagos</H1>
+Descripción: <H1><IMG SRC="@CMAKE_INSTALL_PREFIX@/share/bulmages/imagesrc/images/default-spa/mimetypes/pay.svg" WIDTH="100"/><BR>Pagos a proveedores</H1>
 <P>Gestion de pagos a proveedores.</P>
 <P>Mediante este plugin podremos gestionar de forma sencilla los pagos a proveedores.</P>
 <P>Para ello dispondremos en los documentos de proveedor (pedidos, albaranes y facturas) de un botón para generar
