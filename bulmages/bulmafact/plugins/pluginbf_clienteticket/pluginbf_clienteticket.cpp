@@ -35,47 +35,47 @@ TicketClienteList *g_albaranClienteList = NULL;
 ///
 /**
 **/
-mypluginalb::mypluginalb()
+PluginBf_ClienteTicket::PluginBf_ClienteTicket()
 {
-    blDebug ( "mypluginalb::mypluginalb", 0 );
-    blDebug ( "END mypluginalb::mypluginalb", 0 );
+    blDebug ( "PluginBf_ClienteTicket::PluginBf_ClienteTicket", 0 );
+    blDebug ( "END PluginBf_ClienteTicket::PluginBf_ClienteTicket", 0 );
 }
 
 
 ///
 /**
 **/
-mypluginalb::~mypluginalb()
+PluginBf_ClienteTicket::~PluginBf_ClienteTicket()
 {
-    blDebug ( "mypluginalb::~mypluginalb", 0 );
-    blDebug ( "END mypluginalb::~mypluginalb", 0 );
+    blDebug ( "PluginBf_ClienteTicket::~PluginBf_ClienteTicket", 0 );
+    blDebug ( "END PluginBf_ClienteTicket::~PluginBf_ClienteTicket", 0 );
 }
 
 
 ///
 /**
 **/
-void mypluginalb::elslot()
+void PluginBf_ClienteTicket::elslot()
 {
-    blDebug ( "mypluginalb::elslot", 0 );
+    blDebug ( "PluginBf_ClienteTicket::elslot", 0 );
     if ( g_albaranClienteList ) {
         g_albaranClienteList->hide();
         g_albaranClienteList->show();
     }// end if
-    blDebug ( "END mypluginalb::elslot", 0 );
+    blDebug ( "END PluginBf_ClienteTicket::elslot", 0 );
 }
 
 ///
 /**
 **/
-void mypluginalb::elslot1()
+void PluginBf_ClienteTicket::elslot1()
 {
-    blDebug ( "mypluginalb::elslot1", 0 );
+    blDebug ( "PluginBf_ClienteTicket::elslot1", 0 );
     TicketClienteView * bud = new TicketClienteView ( ( BfCompany * ) mainCompany(), NULL );
     mainCompany() ->m_pWorkspace->addSubWindow ( bud );
     bud->inicializar();
     bud->show();
-    blDebug ( "END mypluginalb::elslot1", 0 );
+    blDebug ( "END PluginBf_ClienteTicket::elslot1", 0 );
 }
 
 
@@ -84,9 +84,9 @@ void mypluginalb::elslot1()
 /**
 \param bges
 **/
-void mypluginalb::inicializa ( BfBulmaFact *bges )
+void PluginBf_ClienteTicket::inicializa ( BfBulmaFact *bges )
 {
-    blDebug ( "mypluginalb::inicializa", 0 );
+    blDebug ( "PluginBf_ClienteTicket::inicializa", 0 );
 
     if ( bges->company()->hasTablePrivilege ( "albaran", "SELECT" ) ) {
 
@@ -114,7 +114,7 @@ void mypluginalb::inicializa ( BfBulmaFact *bges )
 
 
     }// end if
-    blDebug ( "END mypluginalb::inicializa", 0 );
+    blDebug ( "END PluginBf_ClienteTicket::inicializa", 0 );
 }
 
 
@@ -131,7 +131,7 @@ int entryPoint ( BfBulmaFact *bges )
     setlocale ( LC_ALL, "" );
     blBindTextDomain ( "pluginbf_clienteticket", g_confpr->valor ( CONF_DIR_TRADUCCION ).toAscii().constData() );
 
-    mypluginalb *plug = new mypluginalb();
+    PluginBf_ClienteTicket *plug = new PluginBf_ClienteTicket();
     plug->inicializa ( bges );
     return 0;
 }

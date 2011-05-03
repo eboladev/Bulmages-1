@@ -33,47 +33,47 @@ AlbaranesProveedor *g_albaranesProveedor = NULL;
 ///
 /**
 **/
-mypluginalbp::mypluginalbp()
+PluginBf_ProveedorAlbaran::PluginBf_ProveedorAlbaran()
 {
-    blDebug ( "mypluginalbp::mypluginalbp", 0 );
-    blDebug ( "END mypluginalbp::mypluginalbp", 0 );
+    blDebug ( "PluginBf_ProveedorAlbaran::PluginBf_ProveedorAlbaran", 0 );
+    blDebug ( "END PluginBf_ProveedorAlbaran::PluginBf_ProveedorAlbaran", 0 );
 }
 
 
 ///
 /**
 **/
-mypluginalbp::~mypluginalbp()
+PluginBf_ProveedorAlbaran::~PluginBf_ProveedorAlbaran()
 {
-    blDebug ( "mypluginalbp::~mypluginalbp", 0 );
-    blDebug ( "END mypluginalbp::~mypluginalbp", 0 );
+    blDebug ( "PluginBf_ProveedorAlbaran::~PluginBf_ProveedorAlbaran", 0 );
+    blDebug ( "END PluginBf_ProveedorAlbaran::~PluginBf_ProveedorAlbaran", 0 );
 }
 
 
 ///
 /**
 **/
-void mypluginalbp::elslot()
+void PluginBf_ProveedorAlbaran::elslot()
 {
-    blDebug ( "mypluginalbp::elslot", 0 );
+    blDebug ( "PluginBf_ProveedorAlbaran::elslot", 0 );
     if ( g_albaranesProveedor ) {
         g_albaranesProveedor->hide();
         g_albaranesProveedor->show();
     }// end if
-    blDebug ( "END mypluginalbp::elslot", 0 );
+    blDebug ( "END PluginBf_ProveedorAlbaran::elslot", 0 );
 }
 
 ///
 /**
 **/
-void mypluginalbp::elslot1()
+void PluginBf_ProveedorAlbaran::elslot1()
 {
-    blDebug ( "mypluginalbp::elslot1", 0 );
+    blDebug ( "PluginBf_ProveedorAlbaran::elslot1", 0 );
     AlbaranProveedorView * bud = new AlbaranProveedorView ( ( BfCompany * ) mainCompany(), NULL );
     mainCompany() ->m_pWorkspace->addSubWindow ( bud );
     bud->inicializar();
     bud->show();
-    blDebug ( "END mypluginalbp::elslot1", 0 );
+    blDebug ( "END PluginBf_ProveedorAlbaran::elslot1", 0 );
 }
 
 
@@ -82,9 +82,9 @@ void mypluginalbp::elslot1()
 /**
 \param bges
 **/
-void mypluginalbp::inicializa ( BfBulmaFact *bges )
+void PluginBf_ProveedorAlbaran::inicializa ( BfBulmaFact *bges )
 {
-    blDebug ( "mypluginalbp::inicializa", 0 );
+    blDebug ( "PluginBf_ProveedorAlbaran::inicializa", 0 );
 
     if ( bges->company()->hasTablePrivilege ( "albaranp", "SELECT" ) ) {
         /// Miramos si existe un menu Compras
@@ -112,7 +112,7 @@ void mypluginalbp::inicializa ( BfBulmaFact *bges )
 
 
     }// end if
-    blDebug ( "END mypluginalbp::inicializa", 0 );
+    blDebug ( "END PluginBf_ProveedorAlbaran::inicializa", 0 );
 }
 
 
@@ -129,7 +129,7 @@ int entryPoint ( BfBulmaFact *bges )
     setlocale ( LC_ALL, "" );
     blBindTextDomain ( "pluginbf_proveedoralbaran", g_confpr->valor ( CONF_DIR_TRADUCCION ).toAscii().constData() );
 
-    mypluginalbp *plug = new mypluginalbp();
+    PluginBf_ProveedorAlbaran *plug = new PluginBf_ProveedorAlbaran();
     plug->inicializa ( bges );
     return 0;
 }

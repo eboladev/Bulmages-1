@@ -45,7 +45,7 @@ extern "C" PLUGINBF_CLIENTEALBARAN_EXPORT int PresupuestoView_PresupuestoView ( 
 extern "C" PLUGINBF_CLIENTEALBARAN_EXPORT int BlToolButton_released(BlToolButton *);
 extern "C" PLUGINBF_CLIENTEALBARAN_EXPORT int FacturaView_FacturaView ( FacturaView * );
 // 
-class mypluginalb : public QObject, BlMainCompanyPointer
+class PluginBf_ClienteAlbaran : public QObject, BlMainCompanyPointer
 {
     Q_OBJECT
 
@@ -53,8 +53,8 @@ public:
     BfBulmaFact *m_bges;
 
 public:
-    mypluginalb();
-    ~mypluginalb();
+    PluginBf_ClienteAlbaran();
+    ~PluginBf_ClienteAlbaran();
     void inicializa ( BfBulmaFact * );
 
 public slots:

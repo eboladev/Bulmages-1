@@ -41,7 +41,7 @@ extern "C" PLUGINBF_CLIENTETICKET_EXPORT int BfBuscarReferencia_on_mui_abrirtodo
 
 
 // 
-class mypluginalb : public QObject, BlMainCompanyPointer
+class PluginBf_ClienteTicket : public QObject, BlMainCompanyPointer
 {
     Q_OBJECT
 
@@ -49,8 +49,8 @@ public:
     BfBulmaFact *m_bges;
 
 public:
-    mypluginalb();
-    ~mypluginalb();
+    PluginBf_ClienteTicket();
+    ~PluginBf_ClienteTicket();
     void inicializa ( BfBulmaFact * );
 
 public slots:

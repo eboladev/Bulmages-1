@@ -35,47 +35,47 @@ AlbaranClienteList *g_albaranClienteList = NULL;
 ///
 /**
 **/
-mypluginalb::mypluginalb()
+PluginBf_ClienteAlbaran::PluginBf_ClienteAlbaran()
 {
-    blDebug ( "mypluginalb::mypluginalb", 0 );
-    blDebug ( "END mypluginalb::mypluginalb", 0 );
+    blDebug ( "PluginBf_ClienteAlbaran::PluginBf_ClienteAlbaran", 0 );
+    blDebug ( "END PluginBf_ClienteAlbaran::PluginBf_ClienteAlbaran", 0 );
 }
 
 
 ///
 /**
 **/
-mypluginalb::~mypluginalb()
+PluginBf_ClienteAlbaran::~PluginBf_ClienteAlbaran()
 {
-    blDebug ( "mypluginalb::~mypluginalb", 0 );
-    blDebug ( "END mypluginalb::~mypluginalb", 0 );
+    blDebug ( "PluginBf_ClienteAlbaran::~PluginBf_ClienteAlbaran", 0 );
+    blDebug ( "END PluginBf_ClienteAlbaran::~PluginBf_ClienteAlbaran", 0 );
 }
 
 
 ///
 /**
 **/
-void mypluginalb::elslot()
+void PluginBf_ClienteAlbaran::elslot()
 {
-    blDebug ( "mypluginalb::elslot", 0 );
+    blDebug ( "PluginBf_ClienteAlbaran::elslot", 0 );
     if ( g_albaranClienteList ) {
         g_albaranClienteList->hide();
         g_albaranClienteList->show();
     }// end if
-    blDebug ( "END mypluginalb::elslot", 0 );
+    blDebug ( "END PluginBf_ClienteAlbaran::elslot", 0 );
 }
 
 ///
 /**
 **/
-void mypluginalb::elslot1()
+void PluginBf_ClienteAlbaran::elslot1()
 {
-    blDebug ( "mypluginalb::elslot1", 0 );
+    blDebug ( "PluginBf_ClienteAlbaran::elslot1", 0 );
     AlbaranClienteView * bud = new AlbaranClienteView ( ( BfCompany * ) mainCompany(), NULL );
     mainCompany() ->m_pWorkspace->addSubWindow ( bud );
     bud->inicializar();
     bud->show();
-    blDebug ( "END mypluginalb::elslot1", 0 );
+    blDebug ( "END PluginBf_ClienteAlbaran::elslot1", 0 );
 }
 
 
@@ -84,9 +84,9 @@ void mypluginalb::elslot1()
 /**
 \param bges
 **/
-void mypluginalb::inicializa ( BfBulmaFact *bges )
+void PluginBf_ClienteAlbaran::inicializa ( BfBulmaFact *bges )
 {
-    blDebug ( "mypluginalb::inicializa", 0 );
+    blDebug ( "PluginBf_ClienteAlbaran::inicializa", 0 );
 
     if ( bges->company()->hasTablePrivilege ( "albaran", "SELECT" ) ) {
 
@@ -114,7 +114,7 @@ void mypluginalb::inicializa ( BfBulmaFact *bges )
 
 
     }// end if
-    blDebug ( "END mypluginalb::inicializa", 0 );
+    blDebug ( "END PluginBf_ClienteAlbaran::inicializa", 0 );
 }
 
 
@@ -131,7 +131,7 @@ int entryPoint ( BfBulmaFact *bges )
     setlocale ( LC_ALL, "" );
     blBindTextDomain ( "pluginbf_clientealbaran", g_confpr->valor ( CONF_DIR_TRADUCCION ).toAscii().constData() );
 
-    mypluginalb *plug = new mypluginalb();
+    PluginBf_ClienteAlbaran *plug = new PluginBf_ClienteAlbaran();
     plug->inicializa ( bges );
     return 0;
 }

@@ -40,7 +40,7 @@ extern "C" PLUGINBF_PROVEEDORALBARAN_EXPORT int BfBuscarReferencia_on_mui_abrirt
 extern "C" PLUGINBF_PROVEEDORALBARAN_EXPORT int PedidoProveedorView_PedidoProveedorView ( PedidoProveedorView * );
 
 
-class mypluginalbp : public QObject, BlMainCompanyPointer
+class PluginBf_ProveedorAlbaran : public QObject, BlMainCompanyPointer
 {
     Q_OBJECT
 
@@ -48,8 +48,8 @@ public:
     BfBulmaFact *m_bges;
 
 public:
-    mypluginalbp();
-    ~mypluginalbp();
+    PluginBf_ProveedorAlbaran();
+    ~PluginBf_ProveedorAlbaran();
     void inicializa ( BfBulmaFact * );
 
 public slots:
