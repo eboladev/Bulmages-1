@@ -33,46 +33,46 @@ ClientsList *g_clientesList = NULL;
 ///
 /**
 **/
-MyPlugCli::MyPlugCli()
+PluginBf_Cliente::PluginBf_Cliente()
 {
-    blDebug ( "MyPlugCli::MyPlugCli", 0 );
-    blDebug ( "END MyPlugCli::MyPlugCli", 0 );
+    blDebug ( "PluginBf_Cliente::PluginBf_Cliente", 0 );
+    blDebug ( "END PluginBf_Cliente::PluginBf_Cliente", 0 );
 }
 
 
 ///
 /**
 **/
-MyPlugCli::~MyPlugCli()
+PluginBf_Cliente::~PluginBf_Cliente()
 {
-    blDebug ( "MyPlugCli::~MyPlugCli", 0 );
-    blDebug ( "END MyPlugCli::~MyPlugCli", 0 );
+    blDebug ( "PluginBf_Cliente::~PluginBf_Cliente", 0 );
+    blDebug ( "END PluginBf_Cliente::~PluginBf_Cliente", 0 );
 }
 
 
 ///
 /**
 **/
-void MyPlugCli::elslot()
+void PluginBf_Cliente::elslot()
 {
-    blDebug ( "MyPlugCli::elslot", 0 );
+    blDebug ( "PluginBf_Cliente::elslot", 0 );
     if ( g_clientesList ) {
         g_clientesList->hide();
         g_clientesList->show();
     }// end if
-    blDebug ( "END MyPlugCli::elslot", 0 );
+    blDebug ( "END PluginBf_Cliente::elslot", 0 );
 }
 
 ///
 /**
 **/
-void MyPlugCli::elslot1()
+void PluginBf_Cliente::elslot1()
 {
-    blDebug ( "MyPlugCli::elslot1", 0 );
+    blDebug ( "PluginBf_Cliente::elslot1", 0 );
     ClienteView * bud = new ClienteView ( ( BfCompany * ) mainCompany(), NULL );
     mainCompany() ->m_pWorkspace->addSubWindow ( bud );
     bud->show();
-    blDebug ( "END MyPlugCli::elslot1", 0 );
+    blDebug ( "END PluginBf_Cliente::elslot1", 0 );
 }
 
 
@@ -81,9 +81,9 @@ void MyPlugCli::elslot1()
 /**
 \param bges
 **/
-void MyPlugCli::inicializa ( BfBulmaFact *bges )
+void PluginBf_Cliente::inicializa ( BfBulmaFact *bges )
 {
-    blDebug ( "MyPlugCli::inicializa", 0 );
+    blDebug ( "PluginBf_Cliente::inicializa", 0 );
 
     if ( bges->company()->hasTablePrivilege ( "cliente", "SELECT" ) ) {
 
@@ -110,7 +110,7 @@ void MyPlugCli::inicializa ( BfBulmaFact *bges )
         connect ( npago, SIGNAL ( activated() ), this, SLOT ( elslot1() ) );
 
     }// end if
-    blDebug ( "END MyPlugCli::inicializa", 0 );
+    blDebug ( "END PluginBf_Cliente::inicializa", 0 );
 }
 
 
@@ -130,7 +130,7 @@ int entryPoint ( BfBulmaFact *bges )
     setlocale ( LC_ALL, "" );
     blBindTextDomain ( "pluginbf_cliente", g_confpr->valor ( CONF_DIR_TRADUCCION ).toAscii().constData() );
 
-    MyPlugCli *plug = new MyPlugCli();
+    PluginBf_Cliente *plug = new PluginBf_Cliente();
     plug->inicializa ( bges );
     return 0;
 }

@@ -35,7 +35,7 @@ extern "C" PLUGINBF_CLIENTE_EXPORT int Busqueda_on_mui_buscar_clicked(BlSearchWi
 extern "C" PLUGINBF_CLIENTE_EXPORT int SNewClienteView (BfCompany *);
 
 
-class MyPlugCli : public QObject, BlMainCompanyPointer
+class PluginBf_Cliente : public QObject, BlMainCompanyPointer
 {
     Q_OBJECT
 
@@ -43,8 +43,8 @@ public:
     BfBulmaFact *m_bges;
 
 public:
-    MyPlugCli();
-    ~MyPlugCli();
+    PluginBf_Cliente();
+    ~PluginBf_Cliente();
     void inicializa ( BfBulmaFact * );
 
 public slots:
