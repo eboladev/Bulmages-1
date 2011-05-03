@@ -36,47 +36,47 @@ FacturasList *g_facturasList = NULL;
 ///
 /**
 **/
-mypluginfact::mypluginfact()
+PluginBf_ClienteFactura::PluginBf_ClienteFactura()
 {
-    blDebug ( "mypluginfact::mypluginfact", 0 );
-    blDebug ( "END mypluginfact::mypluginfact", 0 );
+    blDebug ( "PluginBf_ClienteFactura::PluginBf_ClienteFactura", 0 );
+    blDebug ( "END PluginBf_ClienteFactura::PluginBf_ClienteFactura", 0 );
 }
 
 
 ///
 /**
 **/
-mypluginfact::~mypluginfact()
+PluginBf_ClienteFactura::~PluginBf_ClienteFactura()
 {
-    blDebug ( "mypluginfact::~mypluginfact", 0 );
-    blDebug ( "END mypluginfact::~mypluginfact", 0 );
+    blDebug ( "PluginBf_ClienteFactura::~PluginBf_ClienteFactura", 0 );
+    blDebug ( "END PluginBf_ClienteFactura::~PluginBf_ClienteFactura", 0 );
 }
 
 
 ///
 /**
 **/
-void mypluginfact::elslot()
+void PluginBf_ClienteFactura::elslot()
 {
-    blDebug ( "mypluginfact::elslot", 0 );
+    blDebug ( "PluginBf_ClienteFactura::elslot", 0 );
     if ( g_facturasList ) {
         g_facturasList->hide();
         g_facturasList->show();
     }// end if
-    blDebug ( "END mypluginfact::elslot", 0 );
+    blDebug ( "END PluginBf_ClienteFactura::elslot", 0 );
 }
 
 ///
 /**
 **/
-void mypluginfact::elslot1()
+void PluginBf_ClienteFactura::elslot1()
 {
-    blDebug ( "mypluginfact::elslot1", 0 );
+    blDebug ( "PluginBf_ClienteFactura::elslot1", 0 );
     FacturaView * bud = new FacturaView ( ( BfCompany * ) mainCompany(), NULL );
     mainCompany() ->m_pWorkspace->addSubWindow ( bud );
     bud->inicializar();
     bud->show();
-    blDebug ( "END mypluginfact::elslot1", 0 );
+    blDebug ( "END PluginBf_ClienteFactura::elslot1", 0 );
 }
 
 
@@ -85,9 +85,9 @@ void mypluginfact::elslot1()
 /**
 \param bges
 **/
-void mypluginfact::inicializa ( BfBulmaFact *bges )
+void PluginBf_ClienteFactura::inicializa ( BfBulmaFact *bges )
 {
-    blDebug ( "mypluginfact::inicializa", 0 );
+    blDebug ( "PluginBf_ClienteFactura::inicializa", 0 );
 
     if ( bges->company()->hasTablePrivilege ( "factura", "SELECT" ) ) {
         /// Miramos si existe un menu Ventas
@@ -115,7 +115,7 @@ void mypluginfact::inicializa ( BfBulmaFact *bges )
 
 
     }// end if
-    blDebug ( "END mypluginfact::inicializa", 0 );
+    blDebug ( "END PluginBf_ClienteFactura::inicializa", 0 );
 }
 
 
@@ -132,7 +132,7 @@ int entryPoint ( BfBulmaFact *bges )
     setlocale ( LC_ALL, "" );
     blBindTextDomain ( "pluginbf_clientefactura", g_confpr->valor ( CONF_DIR_TRADUCCION ).toAscii().constData() );
 
-    mypluginfact *plug = new mypluginfact();
+    PluginBf_ClienteFactura *plug = new PluginBf_ClienteFactura();
     plug->inicializa ( bges );
     return 0;
 }

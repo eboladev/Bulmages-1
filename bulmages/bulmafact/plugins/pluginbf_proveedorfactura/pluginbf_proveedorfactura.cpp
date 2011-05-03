@@ -33,47 +33,47 @@ FacturasProveedorList *g_facturasProveedorList = NULL;
 ///
 /**
 **/
-mypluginfactp::mypluginfactp()
+PluginBf_ProveedorFactura::PluginBf_ProveedorFactura()
 {
-    blDebug ( "mypluginfactp::mypluginfactp", 0 );
-    blDebug ( "END mypluginfactp::mypluginfactp", 0 );
+    blDebug ( "PluginBf_ProveedorFactura::PluginBf_ProveedorFactura", 0 );
+    blDebug ( "END PluginBf_ProveedorFactura::PluginBf_ProveedorFactura", 0 );
 }
 
 
 ///
 /**
 **/
-mypluginfactp::~mypluginfactp()
+PluginBf_ProveedorFactura::~PluginBf_ProveedorFactura()
 {
-    blDebug ( "mypluginfactp::~mypluginfactp", 0 );
-    blDebug ( "END mypluginfactp::~mypluginfactp", 0 );
+    blDebug ( "PluginBf_ProveedorFactura::~PluginBf_ProveedorFactura", 0 );
+    blDebug ( "END PluginBf_ProveedorFactura::~PluginBf_ProveedorFactura", 0 );
 }
 
 
 ///
 /**
 **/
-void mypluginfactp::elslot()
+void PluginBf_ProveedorFactura::elslot()
 {
-    blDebug ( "mypluginfactp::elslot", 0 );
+    blDebug ( "PluginBf_ProveedorFactura::elslot", 0 );
     if ( g_facturasProveedorList ) {
         g_facturasProveedorList->hide();
         g_facturasProveedorList->show();
     }// end if
-    blDebug ( "END mypluginfactp::elslot", 0 );
+    blDebug ( "END PluginBf_ProveedorFactura::elslot", 0 );
 }
 
 ///
 /**
 **/
-void mypluginfactp::elslot1()
+void PluginBf_ProveedorFactura::elslot1()
 {
-    blDebug ( "mypluginfactp::elslot1", 0 );
+    blDebug ( "PluginBf_ProveedorFactura::elslot1", 0 );
     FacturaProveedorView * bud = new FacturaProveedorView ( ( BfCompany * ) mainCompany(), NULL );
     mainCompany() ->m_pWorkspace->addSubWindow ( bud );
     bud->inicializar();
     bud->show();
-    blDebug ( "END mypluginfactp::elslot1", 0 );
+    blDebug ( "END PluginBf_ProveedorFactura::elslot1", 0 );
 }
 
 
@@ -82,9 +82,9 @@ void mypluginfactp::elslot1()
 /**
 \param bges
 **/
-void mypluginfactp::inicializa ( BfBulmaFact *bges )
+void PluginBf_ProveedorFactura::inicializa ( BfBulmaFact *bges )
 {
-    blDebug ( "mypluginfactp::inicializa", 0 );
+    blDebug ( "PluginBf_ProveedorFactura::inicializa", 0 );
 
     if ( bges->company()->hasTablePrivilege ( "facturap", "SELECT" ) ) {
         /// Miramos si existe un menu Compras
@@ -112,7 +112,7 @@ void mypluginfactp::inicializa ( BfBulmaFact *bges )
 
 
     }// end if
-    blDebug ( "END mypluginfactp::inicializa", 0 );
+    blDebug ( "END PluginBf_ProveedorFactura::inicializa", 0 );
 }
 
 
@@ -129,7 +129,7 @@ int entryPoint ( BfBulmaFact *bges )
     setlocale ( LC_ALL, "" );
     blBindTextDomain ( "pluginbf_proveedorfactura", g_confpr->valor ( CONF_DIR_TRADUCCION ).toAscii().constData() );
 
-    mypluginfactp *plug = new mypluginfactp();
+    PluginBf_ProveedorFactura *plug = new PluginBf_ProveedorFactura();
     plug->inicializa ( bges );
     return 0;
 }

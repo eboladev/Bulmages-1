@@ -42,7 +42,7 @@ extern "C" PLUGINBF_PROVEEDORFACTURA_EXPORT int AlbaranProveedorView_AlbaranProv
 extern "C" PLUGINBF_PROVEEDORFACTURA_EXPORT int PedidoProveedorView_PedidoProveedorView ( PedidoProveedorView * );
 
 
-class mypluginfactp : public QObject, BlMainCompanyPointer
+class PluginBf_ProveedorFactura : public QObject, BlMainCompanyPointer
 {
     Q_OBJECT
 
@@ -50,8 +50,8 @@ public:
     BfBulmaFact *m_bges;
 
 public:
-    mypluginfactp();
-    ~mypluginfactp();
+    PluginBf_ProveedorFactura();
+    ~PluginBf_ProveedorFactura();
     void inicializa ( BfBulmaFact * );
 
 public slots:
