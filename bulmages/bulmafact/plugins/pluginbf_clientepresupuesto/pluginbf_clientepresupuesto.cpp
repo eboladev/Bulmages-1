@@ -35,47 +35,47 @@ PresupuestoList *g_presupuestosList = NULL;
 ///
 /**
 **/
-mypluginpres::mypluginpres()
+PluginBf_ClientePresupuesto::PluginBf_ClientePresupuesto()
 {
-    blDebug ( "mypluginpres::mypluginpres", 0 );
-    blDebug ( "END mypluginpres::mypluginpres", 0 );
+    blDebug ( "PluginBf_ClientePresupuesto::PluginBf_ClientePresupuesto", 0 );
+    blDebug ( "END PluginBf_ClientePresupuesto::PluginBf_ClientePresupuesto", 0 );
 }
 
 
 ///
 /**
 **/
-mypluginpres::~mypluginpres()
+PluginBf_ClientePresupuesto::~PluginBf_ClientePresupuesto()
 {
-    blDebug ( "mypluginpres::~mypluginpres", 0 );
-    blDebug ( "END mypluginpres::~mypluginpres", 0 );
+    blDebug ( "PluginBf_ClientePresupuesto::~PluginBf_ClientePresupuesto", 0 );
+    blDebug ( "END PluginBf_ClientePresupuesto::~PluginBf_ClientePresupuesto", 0 );
 }
 
 
 ///
 /**
 **/
-void mypluginpres::elslot()
+void PluginBf_ClientePresupuesto::elslot()
 {
-    blDebug ( "mypluginpres::elslot", 0 );
+    blDebug ( "PluginBf_ClientePresupuesto::elslot", 0 );
     if ( g_presupuestosList ) {
         g_presupuestosList->hide();
         g_presupuestosList->show();
     }// end if
-    blDebug ( "END mypluginpres::elslot", 0 );
+    blDebug ( "END PluginBf_ClientePresupuesto::elslot", 0 );
 }
 
 ///
 /**
 **/
-void mypluginpres::elslot1()
+void PluginBf_ClientePresupuesto::elslot1()
 {
-    blDebug ( "mypluginpres::elslot1", 0 );
+    blDebug ( "PluginBf_ClientePresupuesto::elslot1", 0 );
     PresupuestoView * bud = new PresupuestoView ( ( BfCompany * ) mainCompany(), NULL );
     mainCompany() ->m_pWorkspace->addSubWindow ( bud );
     bud->inicializar();
     bud->show();
-    blDebug ( "END mypluginpres::elslot1", 0 );
+    blDebug ( "END PluginBf_ClientePresupuesto::elslot1", 0 );
 }
 
 
@@ -84,9 +84,9 @@ void mypluginpres::elslot1()
 /**
 \param bges
 **/
-void mypluginpres::inicializa ( BfBulmaFact *bges )
+void PluginBf_ClientePresupuesto::inicializa ( BfBulmaFact *bges )
 {
-    blDebug ( "mypluginpres::inicializa", 0 );
+    blDebug ( "PluginBf_ClientePresupuesto::inicializa", 0 );
 
     if ( bges->company()->hasTablePrivilege ( "presupuesto", "SELECT" ) ) {
 
@@ -114,7 +114,7 @@ void mypluginpres::inicializa ( BfBulmaFact *bges )
         bges->Fichas->addAction ( npago );
         connect ( npago, SIGNAL ( activated() ), this, SLOT ( elslot1() ) );
     }// end if
-    blDebug ( "END mypluginpres::inicializa", 0 );
+    blDebug ( "END PluginBf_ClientePresupuesto::inicializa", 0 );
 }
 
 
@@ -131,7 +131,7 @@ int entryPoint ( BfBulmaFact *bges )
     setlocale ( LC_ALL, "" );
     blBindTextDomain ( "pluginbf_clientepresupuesto", g_confpr->valor ( CONF_DIR_TRADUCCION ).toAscii().constData() );
 
-    mypluginpres *plug = new mypluginpres();
+    PluginBf_ClientePresupuesto *plug = new PluginBf_ClientePresupuesto();
     plug->inicializa ( bges );
     return 0;
 }
