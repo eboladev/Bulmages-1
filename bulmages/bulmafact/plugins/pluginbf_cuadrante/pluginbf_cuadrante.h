@@ -42,7 +42,7 @@ extern "C" PLUGINBF_CUADRANTE_EXPORT int TrabajadorView_on_mui_lista_currentItem
 extern "C" PLUGINBF_CUADRANTE_EXPORT int TrabajadorView_on_mui_guardar_clicked ( TrabajadorView *trab );
 
 
-class myplugin4 : public QObject, BlMainCompanyPointer
+class PlugibnBf_Cuadrante : public QObject, BlMainCompanyPointer
 {
     Q_OBJECT
 
@@ -50,8 +50,8 @@ public:
     BfBulmaFact *m_bulmafact;
 
 public:
-    myplugin4();
-    ~myplugin4();
+    PlugibnBf_Cuadrante();
+    ~PlugibnBf_Cuadrante();
     void inicializa ( BfBulmaFact * );
 
 public slots:

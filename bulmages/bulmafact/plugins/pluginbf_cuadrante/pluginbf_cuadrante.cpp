@@ -39,46 +39,46 @@
 ///
 /**
 **/
-myplugin4::myplugin4()
+PlugibnBf_Cuadrante::PlugibnBf_Cuadrante()
 {
-    blDebug ( "myplugin4::myplugin4", 0 );
-    blDebug ( "END myplugin4::myplugin4", 0 );
+    blDebug ( "PlugibnBf_Cuadrante::PlugibnBf_Cuadrante", 0 );
+    blDebug ( "END PlugibnBf_Cuadrante::PlugibnBf_Cuadrante", 0 );
 }
 
 
 ///
 /**
 **/
-myplugin4::~myplugin4()
+PlugibnBf_Cuadrante::~PlugibnBf_Cuadrante()
 {
-    blDebug ( "myplugin4::~myplugin4", 0 );
-    blDebug ( "END myplugin4::~myplugin4", 0 );
+    blDebug ( "PlugibnBf_Cuadrante::~PlugibnBf_Cuadrante", 0 );
+    blDebug ( "END PlugibnBf_Cuadrante::~PlugibnBf_Cuadrante", 0 );
 }
 
 
 ///
 /**
 **/
-void myplugin4::elslot()
+void PlugibnBf_Cuadrante::elslot()
 {
-    blDebug ( "myplugin4::elslot", 0 );
+    blDebug ( "PlugibnBf_Cuadrante::elslot", 0 );
     CuadranteView *cuad = new CuadranteView ( ( BfCompany * ) mainCompany(), 0 );
     mainCompany() ->pWorkspace() ->addSubWindow ( cuad );
     cuad->show();
-    blDebug ( "END myplugin4::elslot", 0 );
+    blDebug ( "END PlugibnBf_Cuadrante::elslot", 0 );
 }
 
 
 ///
 /**
 **/
-void myplugin4::elslot1()
+void PlugibnBf_Cuadrante::elslot1()
 {
-    blDebug ( "myplugin4::elslot1", 0 );
+    blDebug ( "PlugibnBf_Cuadrante::elslot1", 0 );
     CuadranteDiarioView *cuad = new CuadranteDiarioView ( ( BfCompany * ) mainCompany(), 0 );
     mainCompany() ->pWorkspace() ->addSubWindow ( cuad );
     cuad->show();
-    blDebug ( "END myplugin4::elslot1", 0 );
+    blDebug ( "END PlugibnBf_Cuadrante::elslot1", 0 );
 }
 
 
@@ -86,9 +86,9 @@ void myplugin4::elslot1()
 /**
 \param bges
 **/
-void myplugin4::inicializa ( BfBulmaFact *bges )
+void PlugibnBf_Cuadrante::inicializa ( BfBulmaFact *bges )
 {
-    blDebug ( "myplugin4::inicializa", 0 );
+    blDebug ( "PlugibnBf_Cuadrante::inicializa", 0 );
     /// Creamos el men&uacute;.
     setMainCompany ( bges->company() );
     m_bulmafact = bges;
@@ -116,7 +116,7 @@ void myplugin4::inicializa ( BfBulmaFact *bges )
 
     /// A&ntilde;adimos la nueva opci&oacute;n al men&uacute; principal del programa.
     bges->menuBar() ->insertMenu ( bges->menuVentana->menuAction(), pPluginMenu );
-    blDebug ( "END myplugin4::inicializa", 0 );
+    blDebug ( "END PlugibnBf_Cuadrante::inicializa", 0 );
 }
 
 
@@ -135,7 +135,7 @@ int entryPoint ( BfBulmaFact *bges )
     setlocale ( LC_ALL, "" );
     blBindTextDomain ( "pluginbf_cuadrante", g_confpr->valor ( CONF_DIR_TRADUCCION ).toAscii().constData() );
 
-    myplugin4 *plug = new myplugin4();
+    PlugibnBf_Cuadrante *plug = new PlugibnBf_Cuadrante();
     plug->inicializa ( bges );
 
     blDebug ( "END entryPoint", 0 );
