@@ -42,23 +42,6 @@ extern "C" PLUGINBF_CARTERAPAGOS_EXPORT int BlForm_guardar_Post (BlForm *);
 extern "C" PLUGINBF_CARTERAPAGOS_EXPORT int FacturaProveedorView_FacturaProveedorView (FacturaProveedorView *);
 extern "C" PLUGINBF_CARTERAPAGOS_EXPORT int FacturaProveedorView_cargarPost_Post ( FacturaProveedorView * );
 
-class PluginBf_CarteraPagos : public QObject
-{
-    Q_OBJECT
-
-    public:
-        BlPostgreSqlClient *m_conexionbase;
-        BfBulmaFact *m_bulmafact;
-
-    public:
-        PluginBf_CarteraPagos();
-        ~PluginBf_CarteraPagos();
-        void inicializa ( BfBulmaFact * );
-
-    public slots:
-        void elslot();
-};
-
 
 void generarVencimientos (FacturaProveedorView *);
 

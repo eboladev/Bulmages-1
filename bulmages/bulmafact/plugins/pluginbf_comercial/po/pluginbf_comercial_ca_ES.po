@@ -38,7 +38,7 @@ msgstr ""
 msgid "&Cancelar"
 msgstr "&Cancel·la"
 
-#: pluginbf_comercial.cpp:77
+#: comercial.cpp:77
 #, fuzzy
 msgid "&Comercial"
 msgstr "&Comercial"
@@ -47,7 +47,7 @@ msgstr "&Comercial"
 msgid "&No"
 msgstr "&No"
 
-#: myplugin.cpp:93
+#: comercial.cpp:93
 msgid "&Rutas comerciales"
 msgstr "&Rutes comercials"
 
@@ -55,7 +55,7 @@ msgstr "&Rutes comercials"
 msgid "&Si"
 msgstr "&Sí"
 
-#: myplugin.cpp:87
+#: comercial.cpp:87
 msgid "&Zonas comerciales"
 msgstr "&Zones comercials"
 
@@ -124,7 +124,7 @@ msgstr ""
 msgid "Comentarios comerciales:"
 msgstr "Comentaris:"
 
-#: pluginbf_comercial.cpp:72
+#: comercial.cpp:72
 #, fuzzy
 msgid "Comentarios para el comercial"
 msgstr "Comentaris de l'assentament"
@@ -179,7 +179,7 @@ msgstr "<P> Família <B>"
 msgid "Fecha"
 msgstr "Data"
 
-#: pluginbf_comercial.cpp:70
+#: comercial.cpp:70
 #, fuzzy
 msgid "Fecha base"
 msgstr "Data de l'assentament"
@@ -358,7 +358,7 @@ msgstr "Nou assentament"
 msgid "Pendiente"
 msgstr "Pendent:"
 
-#: pluginbf_comercial.cpp:71
+#: comercial.cpp:71
 #, fuzzy
 msgid "Periodo"
 msgstr "Primer període"
@@ -410,7 +410,7 @@ msgstr ""
 msgid "Ruta comercial:"
 msgstr ""
 
-#: myplugin.cpp:94 myplugin.cpp:95 ui_rutacomerciallistbase.h:300
+#: comercial.cpp:94 comercial.cpp:95 ui_rutacomerciallistbase.h:300
 msgid "Rutas comerciales"
 msgstr ""
 
@@ -431,7 +431,7 @@ msgstr "Treballador:"
 msgid "Ver Albaran"
 msgstr "Esborra albarà"
 
-#: pluginbf_comercial.cpp:69
+#: comercial.cpp:69
 msgid "Zona comercial"
 msgstr ""
 
@@ -439,6 +439,6 @@ msgstr ""
 msgid "Zona comercial:"
 msgstr ""
 
-#: myplugin.cpp:88 myplugin.cpp:89 ui_listzonacomercialbase.h:84
+#: comercial.cpp:88 comercial.cpp:89 ui_listzonacomercialbase.h:84
 msgid "Zonas comerciales"
 msgstr ""

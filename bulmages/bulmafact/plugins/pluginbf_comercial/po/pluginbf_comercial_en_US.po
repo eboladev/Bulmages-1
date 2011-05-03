@@ -16,7 +16,7 @@ msgstr ""
 msgid "&No"
 msgstr ""
 
-#: myplugin.cpp:93
+#: comercial.cpp:93
 msgid "&Rutas comerciales"
 msgstr ""
 
@@ -24,7 +24,7 @@ msgstr ""
 msgid "&Si"
 msgstr ""
 
-#: myplugin.cpp:87
+#: comercial.cpp:87
 msgid "&Zonas comerciales"
 msgstr ""
 
@@ -327,7 +327,7 @@ msgstr ""
 msgid "Ruta comercial:"
 msgstr ""
 
-#: myplugin.cpp:94 myplugin.cpp:95 ui_rutacomerciallistbase.h:299
+#: comercial.cpp:94 comercial.cpp:95 ui_rutacomerciallistbase.h:299
 msgid "Rutas comerciales"
 msgstr ""
 
@@ -355,6 +355,6 @@ msgstr ""
 msgid "Zona comercial:"
 msgstr ""
 
-#: myplugin.cpp:88 myplugin.cpp:89 ui_listzonacomercialbase.h:83
+#: comercial.cpp:88 comercial.cpp:89 ui_listzonacomercialbase.h:83
 msgid "Zonas comerciales"
 msgstr ""

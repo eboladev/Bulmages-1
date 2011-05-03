@@ -30,12 +30,18 @@
 #include "blpostgresqlclient.h"
 #include "clienteview.h"
 #include "bfbulmafact.h"
+#include "blwidget.h"
+
+#include "comercial.h"
+
 #include "pdefs_pluginbf_comercial.h"
 
 
 extern "C" PLUGINBF_COMERCIAL_EXPORT int entryPoint ( BfBulmaFact * );
 extern "C" PLUGINBF_COMERCIAL_EXPORT int ClienteView_ClienteView_Post ( ClienteView * );
 extern "C" PLUGINBF_COMERCIAL_EXPORT int ClienteView_Des_ClienteView ( ClienteView * );
+
+
 /*
 extern "C" PLUGINBF_COMERCIAL_EXPORT int ClienteView_saveClient(ClienteView *);
 extern "C" PLUGINBF_COMERCIAL_EXPORT int Cliente_pintaCliente(Cliente *);

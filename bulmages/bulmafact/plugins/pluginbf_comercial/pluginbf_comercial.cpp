@@ -29,9 +29,86 @@
 #include <QLocale>
 
 #include "bfcompany.h"
-#include "myplugin.h"
+#include "blfunctions.h"
 #include "pluginbf_comercial.h"
 #include "comercialclienteview.h"
+#include "rutacomerciallist.h"
+#include "listzonacomercialview.h"
+
+///
+/**
+**/
+PluginBf_Comercial::PluginBf_Comercial() : QObject()
+{
+    blDebug ( "PluginBf_Comercial::PluginBf_Comercial", 0 );
+    blDebug ( "END PluginBf_Comercial::PluginBf_Comercial", 0 );
+}
+
+
+///
+/**
+**/
+PluginBf_Comercial::~PluginBf_Comercial()
+{
+    blDebug ( "PluginBf_Comercial::~PluginBf_Comercial", 0 );
+    blDebug ( "END PluginBf_Comercial::~PluginBf_Comercial", 0 );
+}
+
+
+///
+/**
+**/
+void PluginBf_Comercial::elslot()
+{
+    blDebug ( "PluginBf_Comercial::elslot", 0 );
+    RutaComercialList *list  = new RutaComercialList ( ( BfCompany * ) mainCompany(), NULL );
+    mainCompany() ->m_pWorkspace->addSubWindow ( list );
+    list->show();
+    blDebug ( "END PluginBf_Comercial::elslot", 0 );
+}
+
+
+///
+/**
+**/
+void PluginBf_Comercial::elslot1()
+{
+    blDebug ( "PluginBf_Comercial::elslot1", 0 );
+    ListZonaComercialView *list = new ListZonaComercialView ( ( BfCompany * ) mainCompany(), NULL );
+    mainCompany() ->m_pWorkspace->addSubWindow ( list );
+    list->show();
+    blDebug ( "END PluginBf_Comercial::elslot1", 0 );
+}
+
+
+///
+/**
+\param bges
+**/
+void PluginBf_Comercial::inicializa ( BfBulmaFact *bges )
+{
+    blDebug ( "PluginBf_Comercial::inicializa", 0 );
+    /// El men&uacute; de empresa.
+    m_bges = bges;
+    /// Cogemos la 'company' para tener acceso a todo y sobretodo a BD.
+    setMainCompany ( bges->company() );
+    /// Insertamos un separador en el men&uacute;.
+    bges->menuMaestro->addSeparator();
+    /// Creamos la opci&oacute;n para Zonas Comerciales que dispare el m&eacute;todo adecuado.
+    QAction *planCuentas1 = new QAction ( _ ( "&Zonas comerciales" ), 0 );
+    planCuentas1->setStatusTip ( _ ( "Zonas comerciales" ) );
+    planCuentas1->setWhatsThis ( _ ( "Zonas comerciales" ) );
+    bges->menuMaestro->addAction ( planCuentas1 );
+    connect ( planCuentas1, SIGNAL ( activated() ), this, SLOT ( elslot1() ) );
+    /// Creamos la opci&oacute;n para Rutas Comerciales que dispare el m&eacute;todo adecuado.
+    QAction *planCuentas = new QAction ( _ ( "&Rutas comerciales" ), 0 );
+    planCuentas->setStatusTip ( _ ( "Rutas comerciales" ) );
+    planCuentas->setWhatsThis ( _ ( "Rutas comerciales" ) );
+    bges->menuMaestro->addAction ( planCuentas );
+    connect ( planCuentas, SIGNAL ( activated() ), this, SLOT ( elslot() ) );
+    blDebug ( "END PluginBf_Comercial::inicializa", 0 );
+}
+
 
 
 ///
@@ -50,7 +127,7 @@ int entryPoint ( BfBulmaFact *bges )
     setlocale ( LC_ALL, "" );
     blBindTextDomain ( "pluginbf_comercial", g_confpr->valor ( CONF_DIR_TRADUCCION ).toAscii().constData() );
 
-    mypluginbf *plug = new mypluginbf();
+    PluginBf_Comercial *plug = new PluginBf_Comercial();
     plug->inicializa ( bges );
     blDebug ( "END entryPoint", 0, "Punto de Entrada del plugin ComercialBF" );
     return 0;

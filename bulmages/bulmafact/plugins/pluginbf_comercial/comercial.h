@@ -18,24 +18,23 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#ifndef MYPLUGIN_H
-#define MYPLUGIN_H
+#ifndef COMERCIAL_H
+#define COMERCIAL_H
 
 #include <QObject>
 
 #include "bfbulmafact.h"
 #include "blwidget.h"
 
-
-class mypluginbf : public QObject, BlMainCompanyPointer
+class PluginBf_Comercial : public QObject, BlMainCompanyPointer
 {
     Q_OBJECT
 
 private:
     BfBulmaFact *m_bges;
 public:
-    mypluginbf();
-    virtual ~mypluginbf();
+    PluginBf_Comercial();
+    virtual ~PluginBf_Comercial();
     virtual void inicializa ( BfBulmaFact * );
 
 public slots:
@@ -44,5 +43,5 @@ public slots:
 };
 
 
-#endif
 
+#endif

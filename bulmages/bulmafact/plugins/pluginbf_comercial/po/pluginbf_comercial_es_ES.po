@@ -44,7 +44,7 @@ msgstr ""
 "#-#-#-#-#  bulmafact.pot (PACKAGE VERSION)  #-#-#-#-#\n"
 "#-#-#-#-#  pluginbf_example.pot (PACKAGE VERSION)  #-#-#-#-#\n"
 "#-#-#-#-#  plugintarifas.pot (PACKAGE VERSION)  #-#-#-#-#\n"
-"#-#-#-#-#  pluginbf_comercial.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  comercial.pot (PACKAGE VERSION)  #-#-#-#-#\n"
 "#-#-#-#-#  pluginbf_cliente.pot (PACKAGE VERSION)  #-#-#-#-#\n"
 "#-#-#-#-#  pluginbf_proveedor.pot (PACKAGE VERSION)  #-#-#-#-#\n"
 "#-#-#-#-#  plugintrazabilidad.pot (PACKAGE VERSION)  #-#-#-#-#\n"
@@ -125,7 +125,7 @@ msgstr "&Aceptar"
 msgid "&Cancelar"
 msgstr "&Cancelar"
 
-#: pluginbf_comercial.cpp:77
+#: comercial.cpp:77
 msgid "&Comercial"
 msgstr "&Comercial"
 
@@ -133,7 +133,7 @@ msgstr "&Comercial"
 msgid "&No"
 msgstr "&No"
 
-#: myplugin.cpp:93
+#: comercial.cpp:93
 msgid "&Rutas comerciales"
 msgstr "&Rutas comerciales"
 
@@ -141,7 +141,7 @@ msgstr "&Rutas comerciales"
 msgid "&Si"
 msgstr "&Si"
 
-#: myplugin.cpp:87
+#: comercial.cpp:87
 msgid "&Zonas comerciales"
 msgstr "&Zonas comerciales"
 
@@ -197,7 +197,7 @@ msgstr "Comentarios"
 msgid "Comentarios comerciales:"
 msgstr "Comentarios comerciales:"
 
-#: pluginbf_comercial.cpp:72
+#: comercial.cpp:72
 msgid "Comentarios para el comercial"
 msgstr "Comentarios para el comercial"
 
@@ -245,7 +245,7 @@ msgstr "Familia"
 msgid "Fecha"
 msgstr "Fecha"
 
-#: pluginbf_comercial.cpp:70
+#: comercial.cpp:70
 msgid "Fecha base"
 msgstr "Fecha base"
 
@@ -398,7 +398,7 @@ msgstr "Nuevo Pedido"
 msgid "Pendiente"
 msgstr "Pendiente"
 
-#: pluginbf_comercial.cpp:71
+#: comercial.cpp:71
 msgid "Periodo"
 msgstr "Periodo"
 
@@ -445,7 +445,7 @@ msgstr "Ruta comercial"
 msgid "Ruta comercial:"
 msgstr "Ruta comercial:"
 
-#: myplugin.cpp:94 myplugin.cpp:95 ui_rutacomerciallistbase.h:300
+#: comercial.cpp:94 comercial.cpp:95 ui_rutacomerciallistbase.h:300
 msgid "Rutas comerciales"
 msgstr "Rutas comerciales"
 
@@ -465,7 +465,7 @@ msgstr "Trabajador:"
 msgid "Ver Albaran"
 msgstr "Ver Albaran"
 
-#: pluginbf_comercial.cpp:69
+#: comercial.cpp:69
 msgid "Zona comercial"
 msgstr "Zona comercial"
 
@@ -473,6 +473,6 @@ msgstr "Zona comercial"
 msgid "Zona comercial:"
 msgstr "Zona comercial:"
 
-#: myplugin.cpp:88 myplugin.cpp:89 ui_listzonacomercialbase.h:84
+#: comercial.cpp:88 comercial.cpp:89 ui_listzonacomercialbase.h:84
 msgid "Zonas comerciales"
 msgstr "Zonas comerciales"

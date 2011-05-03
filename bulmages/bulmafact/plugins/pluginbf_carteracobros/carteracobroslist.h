@@ -28,7 +28,22 @@
 #include "bfcompany.h"
 #include "pdefs_pluginbf_carteracobros.h"
 
+class PluginBf_CarteraCobros : public QObject
+{
+    Q_OBJECT
 
+    public:
+        BlPostgreSqlClient *m_conexionbase;
+        BfBulmaFact *m_bulmafact;
+
+    public:
+        PluginBf_CarteraCobros();
+        ~PluginBf_CarteraCobros();
+        void inicializa ( BfBulmaFact * );
+
+     public slots:
+         void elslot();
+};
 
 /** Subformulario de contratoes.
     Esta clase derivada de BfSubForm presenta todo el listado de contratoes.
