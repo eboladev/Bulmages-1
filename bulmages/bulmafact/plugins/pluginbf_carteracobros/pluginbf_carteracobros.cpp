@@ -30,32 +30,32 @@
 ///
 /**
 **/
-MyPluginCarteraCobros::MyPluginCarteraCobros()
+PluginBf_CarteraCobros::PluginBf_CarteraCobros()
 {
-    blDebug ( "MyPluginCarteraCobros::MyPluginCarteraCobros", 0 );
-    blDebug ( "END MyPluginCarteraCobros::MyPluginCarteraCobros", 0 );
+    blDebug ( "PluginBf_CarteraCobros::PluginBf_CarteraCobros", 0 );
+    blDebug ( "END PluginBf_CarteraCobros::PluginBf_CarteraCobros", 0 );
 }
 
 ///
 /**
 **/
-MyPluginCarteraCobros::~MyPluginCarteraCobros()
+PluginBf_CarteraCobros::~PluginBf_CarteraCobros()
 {
-    blDebug ( "MyPluginCarteraCobros::~MyPluginCarteraCobros", 0 );
-    blDebug ( "END MyPluginCarteraCobros::~MyPluginCarteraCobros", 0 );
+    blDebug ( "PluginBf_CarteraCobros::~PluginBf_CarteraCobros", 0 );
+    blDebug ( "END PluginBf_CarteraCobros::~PluginBf_CarteraCobros", 0 );
 }
 
 
 ///
 /**
 **/
-void MyPluginCarteraCobros::elslot()
+void PluginBf_CarteraCobros::elslot()
 {
-    blDebug ( "MyPluginCarteraCobros::elslot", 0 );
+    blDebug ( "PluginBf_CarteraCobros::elslot", 0 );
     CarteraCobrosList *carteracobrosview = new CarteraCobrosList ( ( BfCompany * ) m_conexionbase );
     m_bulmafact->workspace() ->addSubWindow ( carteracobrosview );
     carteracobrosview->show();
-    blDebug ( "END MyPluginCarteraCobros::elslot", 0 );
+    blDebug ( "END PluginBf_CarteraCobros::elslot", 0 );
 }
 
 
@@ -63,9 +63,9 @@ void MyPluginCarteraCobros::elslot()
 /**
 \param bges
 **/
-void MyPluginCarteraCobros::inicializa ( BfBulmaFact *bges )
+void PluginBf_CarteraCobros::inicializa ( BfBulmaFact *bges )
 {
-    blDebug ( "MyPluginCarteraCobros::inicializa", 0 );
+    blDebug ( "PluginBf_CarteraCobros::inicializa", 0 );
     /// Creamos el men&uacute;.
     m_conexionbase = bges->company();
     m_bulmafact = bges;
@@ -82,7 +82,7 @@ void MyPluginCarteraCobros::inicializa ( BfBulmaFact *bges )
     pPluginMenu->addSeparator();
     pPluginMenu->addAction ( accion );
 	bges->Listados->addAction (accion);
-    blDebug ( "END MyPluginCarteraCobros::inicializa", 0 );
+    blDebug ( "END PluginBf_CarteraCobros::inicializa", 0 );
 }
 
 
@@ -102,7 +102,7 @@ int entryPoint ( BfBulmaFact *bges )
     /// El plugin necesita un parche en la base de datos para funcionar.
     bges->company()->dbPatchVersionCheck("DBRev-CarteraCobros", "0.11.1-0001");
 
-    MyPluginCarteraCobros *plug = new MyPluginCarteraCobros();
+    PluginBf_CarteraCobros *plug = new PluginBf_CarteraCobros();
     plug->inicializa ( bges );
     return 0;
 }

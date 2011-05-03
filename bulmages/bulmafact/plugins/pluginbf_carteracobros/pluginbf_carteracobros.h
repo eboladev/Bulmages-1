@@ -42,6 +42,24 @@ extern "C" PLUGINBF_CARTERACOBROS_EXPORT int FacturaView_FacturaView (FacturaVie
 extern "C" PLUGINBF_CARTERACOBROS_EXPORT int FacturaView_cargarPost_Post ( FacturaView * );
 extern "C" PLUGINBF_CARTERACOBROS_EXPORT int FacturaView_borrarPre ( FacturaView * );
 
+class PluginBf_CarteraCobros : public QObject
+{
+    Q_OBJECT
+
+    public:
+        BlPostgreSqlClient *m_conexionbase;
+        BfBulmaFact *m_bulmafact;
+
+    public:
+        PluginBf_CarteraCobros();
+        ~PluginBf_CarteraCobros();
+        void inicializa ( BfBulmaFact * );
+
+     public slots:
+         void elslot();
+};
+
+
 void generarVencimientos (FacturaView *);
 
 

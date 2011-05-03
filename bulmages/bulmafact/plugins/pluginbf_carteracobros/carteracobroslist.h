@@ -30,27 +30,6 @@
 
 
 
-class MyPluginCarteraCobros : public QObject
-{
-    Q_OBJECT
-
-public:
-    BlPostgreSqlClient *m_conexionbase;
-    BfBulmaFact *m_bulmafact;
-
-public:
-    MyPluginCarteraCobros();
-    ~MyPluginCarteraCobros();
-    void inicializa ( BfBulmaFact * );
-
-public slots:
-    void elslot();
-};
-
-
-
-
-
 /** Subformulario de contratoes.
     Esta clase derivada de BfSubForm presenta todo el listado de contratoes.
 */
