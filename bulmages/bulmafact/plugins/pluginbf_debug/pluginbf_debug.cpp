@@ -36,20 +36,20 @@
 ///
 /**
 **/
-myplugin::myplugin()
+PluginBf_Debug::PluginBf_Debug()
 {
-    blDebug ( "myplugin::myplugin", 0 );
-    blDebug ( "END myplugin::myplugin", 0 );
+    blDebug ( "PluginBf_Debug::PluginBf_Debug", 0 );
+    blDebug ( "END PluginBf_Debug::PluginBf_Debug", 0 );
 }
 
 
 ///
 /**
 **/
-myplugin::~myplugin()
+PluginBf_Debug::~PluginBf_Debug()
 {
-    blDebug ( "myplugin::~myplugin", 0 );
-    blDebug ( "END myplugin::~myplugin", 0 );
+    blDebug ( "PluginBf_Debug::~PluginBf_Debug", 0 );
+    blDebug ( "END PluginBf_Debug::~PluginBf_Debug", 0 );
 }
 
 
@@ -57,11 +57,11 @@ myplugin::~myplugin()
 /**
 \return
 **/
-void myplugin::cambia ( bool valor )
+void PluginBf_Debug::cambia ( bool valor )
 {
-    blDebug ( "myplugin::cambia", 0 );
+    blDebug ( "PluginBf_Debug::cambia", 0 );
     g_confpr->setValor ( CONF_DEBUG, ( valor ? "TRUE" : "FALSE" ) );
-    blDebug ( "END myplugin::cambia", 0 );
+    blDebug ( "END PluginBf_Debug::cambia", 0 );
 }
 
 
@@ -78,7 +78,7 @@ int entryPoint ( BfBulmaFact *bcont )
     setlocale ( LC_ALL, "" );
     blBindTextDomain ( "pluginbf_debug", g_confpr->valor ( CONF_DIR_TRADUCCION ).toAscii().constData() );
 
-    myplugin *corr = new myplugin();
+    PluginBf_Debug *corr = new PluginBf_Debug();
 
     /// A&ntilde;ade en el men&uacute; del programa la opci&oacuteMn para
     /// acceder al corrector.

@@ -30,13 +30,13 @@
 extern "C" PLUGINBF_DEBUG_EXPORT int entryPoint ( BfBulmaFact * );
 
 
-class myplugin : public QObject
+class PluginBf_Debug : public QObject
 {
     Q_OBJECT
 
 public:
-    myplugin();
-    ~myplugin();
+    PluginBf_Debug();
+    ~PluginBf_Debug();
 
 public slots:
     void cambia ( bool );
