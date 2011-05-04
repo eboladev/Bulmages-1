@@ -29,35 +29,35 @@
 ///
 /**
 **/
-myplugincv::myplugincv()
+PluginBf_CompraVenta::PluginBf_CompraVenta()
 {
-    blDebug ( "myplugincv::myplugincv", 0 );
-    blDebug ( "END myplugincv::myplugincv", 0 );
+    blDebug ( "PluginBf_CompraVenta::PluginBf_CompraVenta", 0 );
+    blDebug ( "END PluginBf_CompraVenta::PluginBf_CompraVenta", 0 );
 }
 
 
 ///
 /**
 **/
-myplugincv::~myplugincv()
+PluginBf_CompraVenta::~PluginBf_CompraVenta()
 {
-    blDebug ( "myplugincv::~myplugincv", 0 );
-    blDebug ( "END myplugincv::~myplugincv", 0 );
+    blDebug ( "PluginBf_CompraVenta::~PluginBf_CompraVenta", 0 );
+    blDebug ( "END PluginBf_CompraVenta::~PluginBf_CompraVenta", 0 );
 }
 
 
 ///
 /**
 **/
-void myplugincv::elslot()
+void PluginBf_CompraVenta::elslot()
 {
-    blDebug ( "myplugincv::elslot", 0 );
+    blDebug ( "PluginBf_CompraVenta::elslot", 0 );
 
     CompraVentaView *tar = new CompraVentaView ( ( BfCompany * ) mainCompany(), NULL );
     mainCompany() ->m_pWorkspace->addSubWindow ( tar );
     tar->show();
 
-    blDebug ( "END myplugincv::elslot", 0 );
+    blDebug ( "END PluginBf_CompraVenta::elslot", 0 );
 }
 
 
@@ -65,9 +65,9 @@ void myplugincv::elslot()
 /**
 \param bges
 **/
-void myplugincv::inicializa ( BfBulmaFact *bges )
+void PluginBf_CompraVenta::inicializa ( BfBulmaFact *bges )
 {
-    blDebug ( "myplugincv::inicializa", 0 );
+    blDebug ( "PluginBf_CompraVenta::inicializa", 0 );
     /// El men&uacute; de Tarifas en la secci&oacute;n de art&iacute;culos.
     m_bges = bges;
     setMainCompany ( bges->company() );
@@ -82,7 +82,7 @@ void myplugincv::inicializa ( BfBulmaFact *bges )
     pPluginMenu->addAction ( planCuentas );
     bges->Listados->addAction ( planCuentas );
     connect ( planCuentas, SIGNAL ( activated() ), this, SLOT ( elslot() ) );
-    blDebug ( "END myplugincv::inicializa", 0 );
+    blDebug ( "END PluginBf_CompraVenta::inicializa", 0 );
 }
 
 
@@ -99,7 +99,7 @@ int entryPoint ( BfBulmaFact *bges )
     setlocale ( LC_ALL, "" );
     blBindTextDomain ( "pluginbf_compraventa", g_confpr->valor ( CONF_DIR_TRADUCCION ).toAscii().constData() );
 
-    myplugincv *plug = new myplugincv();
+    PluginBf_CompraVenta *plug = new PluginBf_CompraVenta();
     plug->inicializa ( bges );
     return 0;
 }

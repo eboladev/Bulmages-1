@@ -30,7 +30,7 @@
 extern "C" PLUGINBF_COMPRAVENTA_EXPORT int entryPoint ( BfBulmaFact * );
 
 
-class myplugincv : public QObject, BlMainCompanyPointer
+class PluginBf_CompraVenta : public QObject, BlMainCompanyPointer
 {
     Q_OBJECT
 
@@ -38,8 +38,8 @@ public:
     BfBulmaFact *m_bges;
 
 public:
-    myplugincv();
-    ~myplugincv();
+    PluginBf_CompraVenta();
+    ~PluginBf_CompraVenta();
     void inicializa ( BfBulmaFact * );
 
 public slots:
