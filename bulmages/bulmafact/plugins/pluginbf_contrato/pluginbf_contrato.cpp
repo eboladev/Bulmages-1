@@ -35,32 +35,32 @@
 ///
 /**
 **/
-myplugincont::myplugincont()
+PluginBf_Contrato::PluginBf_Contrato()
 {
-    blDebug ( "myplugincont::myplugincont", 0 );
-    blDebug ( "END myplugincont::myplugincont", 0 );
+    blDebug ( "PluginBf_Contrato::PluginBf_Contrato", 0 );
+    blDebug ( "END PluginBf_Contrato::PluginBf_Contrato", 0 );
 }
 
 ///
 /**
 **/
-myplugincont::~myplugincont()
+PluginBf_Contrato::~PluginBf_Contrato()
 {
-    blDebug ( "myplugincont::~myplugincont", 0 );
-    blDebug ( "END myplugincont::~myplugincont", 0 );
+    blDebug ( "PluginBf_Contrato::~PluginBf_Contrato", 0 );
+    blDebug ( "END PluginBf_Contrato::~PluginBf_Contrato", 0 );
 }
 
 
 ///
 /**
 **/
-void myplugincont::elslot()
+void PluginBf_Contrato::elslot()
 {
-    blDebug ( "myplugincont::elslot", 0 );
+    blDebug ( "PluginBf_Contrato::elslot", 0 );
     ContratosList *vehiculoview = new ContratosList ( ( BfCompany * ) m_dbConnection );
     m_bulmafact->workspace() ->addSubWindow ( vehiculoview );
     vehiculoview->show();
-    blDebug ( "END myplugincont::elslot", 0 );
+    blDebug ( "END PluginBf_Contrato::elslot", 0 );
 }
 
 
@@ -68,9 +68,9 @@ void myplugincont::elslot()
 /**
 \param bges
 **/
-void myplugincont::inicializa ( BfBulmaFact *bges )
+void PluginBf_Contrato::inicializa ( BfBulmaFact *bges )
 {
-    blDebug ( "myplugincont::inicializa", 0 );
+    blDebug ( "PluginBf_Contrato::inicializa", 0 );
     /// Creamos el men&uacute;.
     m_dbConnection = bges->company();
     m_bulmafact = bges;
@@ -87,7 +87,7 @@ void myplugincont::inicializa ( BfBulmaFact *bges )
     pPluginMenu->addSeparator();
     pPluginMenu->addAction ( accion );
     bges->Listados->addAction ( accion );
-    blDebug ( "END myplugincont::inicializa", 0 );
+    blDebug ( "END PluginBf_Contrato::inicializa", 0 );
 }
 
 
@@ -107,7 +107,7 @@ int entryPoint ( BfBulmaFact *bges )
     setlocale ( LC_ALL, "" );
     blBindTextDomain ( "pluginbf_contrato", g_confpr->valor ( CONF_DIR_TRADUCCION ).toAscii().constData() );
 
-    myplugincont *plug = new myplugincont();
+    PluginBf_Contrato *plug = new PluginBf_Contrato();
     plug->inicializa ( bges );
     blDebug ( "END entryPoint", 0, "Punto de Entrada del plugin PluginBf_Contrato" );
     return 0;

@@ -28,7 +28,7 @@
 #include "bfbulmafact.h"
 
 
-class myplugincont : public QObject
+class PluginBf_Contrato : public QObject
 {
     Q_OBJECT
 
@@ -37,8 +37,8 @@ public:
     BfBulmaFact *m_bulmafact;
 
 public:
-    myplugincont();
-    ~myplugincont();
+    PluginBf_Contrato();
+    ~PluginBf_Contrato();
     void inicializa ( BfBulmaFact * );
 
 public slots:
