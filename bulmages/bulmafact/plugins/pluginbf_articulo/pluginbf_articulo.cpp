@@ -433,7 +433,7 @@ void SubForm_Articulo::nuevoArticulo( )
     blDebug ( "SubForm_Articulo::editarArticulo", 0 );
   
     BlSubForm * sub = ( BlSubForm * ) parent();
-    
+
     QString idarticleold="0";
     BlDbRecordSet *cur = sub->mainCompany() ->loadQuery ( "SELECT max(idarticulo) as id FROM articulo " );
     if ( !cur->eof() ) {
@@ -442,24 +442,26 @@ void SubForm_Articulo::nuevoArticulo( )
     delete cur;
     
     ArticuloView *artlist = new ArticuloView ( ( BfCompany * ) sub->mainCompany(), 0 );
+	/// Desabilitamos el borrado automatico de la clase y lo realizaremos manualmente para que no se llame al isHidden sobre un objeto eliminado.
+    artlist->setAttribute ( Qt::WA_DeleteOnClose, FALSE );
     /// Esto es convertir un QWidget en un sistema modal de dialogo.
     sub->setEnabled ( false );
     artlist->show();
     while ( !artlist->isHidden() )
         g_theApp->processEvents();
     sub->setEnabled ( true );
-    /// Creo que el articulo ya se borra solo (tiene el WADeleteOnClose) y no hace falta borrarlo.
-    // delete artlist;
-
+    delete artlist;
+	
     cur = sub->mainCompany() ->loadQuery ( "SELECT * FROM articulo ORDER BY idarticulo DESC LIMIT 1" );
     if ( !cur->eof() ) {
-	if (cur->valor("idarticulo") != idarticleold) {
-	  sub->lineaact()->setDbValue ( "idarticulo", cur->valor("idarticulo") );
-	  sub->lineaact()->setDbValue ( "codigocompletoarticulo", cur->valor ( "codigocompletoarticulo" ) );
-	  sub->lineaact()->setDbValue ( "nomarticulo", cur->valor ( "nomarticulo" ) );
-	} // end if
+		if (cur->valor("idarticulo") != idarticleold) {
+		  sub->lineaact()->setDbValue ( "idarticulo", cur->valor("idarticulo") );
+		  sub->lineaact()->setDbValue ( "codigocompletoarticulo", cur->valor ( "codigocompletoarticulo" ) );
+		  sub->lineaact()->setDbValue ( "nomarticulo", cur->valor ( "nomarticulo" ) );
+		} // end if
     } // end if
     delete cur;
+
     blDebug ( "END SubForm_Articulo::editarArticulo", 0 );
 }
 
