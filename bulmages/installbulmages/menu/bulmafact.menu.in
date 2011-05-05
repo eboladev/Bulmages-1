@@ -1,0 +1,6 @@
+?package(bulmages):\
+  needs="X11"\
+  section="Applications/Office"\
+  icon="@CMAKE_INSTALL_PREFIX@/share/pixmaps/bulmafact.xpm"\
+  title="QCad"\
+  command="@CMAKE_INSTALL_PREFIX@/bin/bulmafact"

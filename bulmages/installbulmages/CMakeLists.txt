@@ -34,6 +34,17 @@ configure_file( ${CMAKE_SOURCE_DIR}/installbulmages/i18n/create_gettext_files.in
 configure_file( ${CMAKE_SOURCE_DIR}/installbulmages/i18n/create_message_catalog.in ${CMAKE_BINARY_DIR}/create_message_catalog @ONLY)
 configure_file( ${CMAKE_SOURCE_DIR}/installbulmages/i18n/update_message_catalog_lang.in ${CMAKE_BINARY_DIR}/update_message_catalog_lang @ONLY)
 
+configure_file( ${CMAKE_SOURCE_DIR}/installbulmages/applications/bulmasetup.desktop.in ${CMAKE_BINARY_DIR}/applications/bulmasetup.desktop @ONLY)
+configure_file( ${CMAKE_SOURCE_DIR}/installbulmages/applications/bulmages.desktop.in ${CMAKE_BINARY_DIR}/applications/bulmages.desktop @ONLY)
+configure_file( ${CMAKE_SOURCE_DIR}/installbulmages/applications/bulmacont.desktop.in ${CMAKE_BINARY_DIR}/applications/bulmacont.desktop @ONLY)
+configure_file( ${CMAKE_SOURCE_DIR}/installbulmages/applications/bulmafact.desktop.in ${CMAKE_BINARY_DIR}/applications/bulmafact.desktop @ONLY)
+configure_file( ${CMAKE_SOURCE_DIR}/installbulmages/applications/bulmatpv.desktop.in ${CMAKE_BINARY_DIR}/applications/bulmatpv.desktop @ONLY)
+
+configure_file( ${CMAKE_SOURCE_DIR}/installbulmages/menu/bulmasetup.menu.in ${CMAKE_BINARY_DIR}/menu/bulmasetup.menu @ONLY)
+configure_file( ${CMAKE_SOURCE_DIR}/installbulmages/menu/bulmages.menu.in ${CMAKE_BINARY_DIR}/menu/bulmages.menu @ONLY)
+configure_file( ${CMAKE_SOURCE_DIR}/installbulmages/menu/bulmacont.menu.in ${CMAKE_BINARY_DIR}/menu/bulmacont.menu @ONLY)
+configure_file( ${CMAKE_SOURCE_DIR}/installbulmages/menu/bulmafact.menu.in ${CMAKE_BINARY_DIR}/menu/bulmafact.menu @ONLY)
+configure_file( ${CMAKE_SOURCE_DIR}/installbulmages/menu/bulmatpv.menu.in ${CMAKE_BINARY_DIR}/menu/bulmatpv.menu @ONLY)
 
 
 install(DIRECTORY ainteligentes canuales planescontables rev-conf
@@ -65,7 +76,7 @@ install(DIRECTORY ainteligentes canuales planescontables ${CMAKE_BINARY_DIR}/css
             DESTINATION share/bulmages
             PATTERN ".svn" EXCLUDE)
 
-install(DIRECTORY man DESTINATION share/
+install(DIRECTORY man pixmaps ${CMAKE_BINARY_DIR}/applications ${CMAKE_BINARY_DIR}/menu doc DESTINATION share/
 				PATTERN ".svn" EXCLUDE)
 			
 FILE(GLOB files ${CMAKE_CURRENT_SOURCE_DIR}/COPYING.txt ${CMAKE_BINARY_DIR}/version)
@@ -93,3 +104,8 @@ install(FILES ${scripts_ex} DESTINATION share/bulmages/examples/scripts
                             WORLD_READ )
 
 
+add_custom_command (
+	COMMENT "Creando Menus"
+	OUTPUT ${CMAKE_BINARY_DIR}/out.temp
+	COMMAND update-menus
+)
