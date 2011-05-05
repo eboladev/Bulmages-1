@@ -32,33 +32,33 @@
 ///
 /**
 **/
-myplugin1::myplugin1() : BlMainCompanyPointer()
+PluginBf_Tarifa::PluginBf_Tarifa() : BlMainCompanyPointer()
 {
-    blDebug ( "myplugin1::myplugin1", 0 );
-    blDebug ( "END myplugin1::myplugin1", 0 );
+    blDebug ( "PluginBf_Tarifa::PluginBf_Tarifa", 0 );
+    blDebug ( "END PluginBf_Tarifa::PluginBf_Tarifa", 0 );
 }
 
 
 ///
 /**
 **/
-myplugin1::~myplugin1()
+PluginBf_Tarifa::~PluginBf_Tarifa()
 {
-    blDebug ( "myplugin1::~myplugin1", 0 );
-    blDebug ( "END myplugin1::~myplugin1", 0 );
+    blDebug ( "PluginBf_Tarifa::~PluginBf_Tarifa", 0 );
+    blDebug ( "END PluginBf_Tarifa::~PluginBf_Tarifa", 0 );
 }
 
 
 ///
 /**
 **/
-void myplugin1::elslot()
+void PluginBf_Tarifa::elslot()
 {
-    blDebug ( "myplugin1::elslot", 0 );
+    blDebug ( "PluginBf_Tarifa::elslot", 0 );
     TarifaListView *tar = new TarifaListView ( ( ( BfCompany * ) mainCompany() ), NULL );
     mainCompany() ->m_pWorkspace->addSubWindow ( tar );
     tar->show();
-    blDebug ( "END myplugin1::elslot", 0 );
+    blDebug ( "END PluginBf_Tarifa::elslot", 0 );
 }
 
 
@@ -66,9 +66,9 @@ void myplugin1::elslot()
 /**
 \param bges
 **/
-void myplugin1::inicializa ( BfBulmaFact *bges )
+void PluginBf_Tarifa::inicializa ( BfBulmaFact *bges )
 {
-    blDebug ( "myplugin1::inicializa", 0 );
+    blDebug ( "PluginBf_Tarifa::inicializa", 0 );
     /// El men&uacute; de Tarifas en la secci&oacute;n de art&iacute;culos.
     m_bges = bges;
     setMainCompany ( bges->company() );
@@ -84,7 +84,7 @@ void myplugin1::inicializa ( BfBulmaFact *bges )
 
     pPluginMenu->addAction ( planCuentas );
     connect ( planCuentas, SIGNAL ( activated() ), this, SLOT ( elslot() ) );
-    blDebug ( "END myplugin1::inicializa", 0 );
+    blDebug ( "END PluginBf_Tarifa::inicializa", 0 );
 }
 
 
@@ -104,7 +104,7 @@ int entryPoint ( BfBulmaFact *bges )
     setlocale ( LC_ALL, "" );
     blBindTextDomain ( "pluginbf_tarifa", g_confpr->valor ( CONF_DIR_TRADUCCION ).toAscii().constData() );
 
-    myplugin1 *plug = new myplugin1();
+    PluginBf_Tarifa *plug = new PluginBf_Tarifa();
     plug->inicializa ( bges );
     return 0;
 }

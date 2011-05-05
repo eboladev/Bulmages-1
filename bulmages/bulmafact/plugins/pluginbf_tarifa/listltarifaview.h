@@ -70,7 +70,7 @@ public slots:
 
 /// OJO. Esta clase est&aacute; definida aqu&iacute; pero es el lanzador del plugin para las
 /// entradas del men&uacute; del plugin.
-class myplugin1 : public QObject, public BlMainCompanyPointer
+class PluginBf_Tarifa : public QObject, public BlMainCompanyPointer
 {
     Q_OBJECT
 
@@ -78,8 +78,8 @@ public:
     BfBulmaFact *m_bges;
 
 public:
-    myplugin1();
-    ~myplugin1();
+    PluginBf_Tarifa();
+    ~PluginBf_Tarifa();
     void inicializa ( BfBulmaFact * );
 
 public slots:
