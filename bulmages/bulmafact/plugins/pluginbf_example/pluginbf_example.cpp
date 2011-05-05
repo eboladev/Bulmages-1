@@ -35,36 +35,36 @@
 ///
 /**
 **/
-myplugin::myplugin()
+PluginBf_Example::PluginBf_Example()
 {
-    blDebug ( "myplugin::myplugin", 0 );
-    blDebug ( "END myplugin::myplugin", 0 );
+    blDebug ( "PluginBf_Example::PluginBf_Example", 0 );
+    blDebug ( "END PluginBf_Example::PluginBf_Example", 0 );
 }
 
 
 ///
 /**
 **/
-myplugin::~myplugin()
+PluginBf_Example::~PluginBf_Example()
 {
-    blDebug ( "myplugin::~myplugin", 0 );
-    blDebug ( "END myplugin::~myplugin", 0 );
+    blDebug ( "PluginBf_Example::~PluginBf_Example", 0 );
+    blDebug ( "END PluginBf_Example::~PluginBf_Example", 0 );
 }
 
 
 ///
 /**
 **/
-void myplugin::elslot()
+void PluginBf_Example::elslot()
 {
-    blDebug ( "myplugin::elslot", 0 );
+    blDebug ( "PluginBf_Example::elslot", 0 );
     fprintf ( stderr, "S'ha activado el slot\n" );
     QMessageBox::warning ( 0,
                            _ ( "Titulo de la ventana" ),
                            _ ( "Mensaje." ),
                            QMessageBox::Ok,
                            QMessageBox::Cancel );
-    blDebug ( "END myplugin::elslot", 0 );
+    blDebug ( "END PluginBf_Example::elslot", 0 );
 }
 
 
@@ -72,9 +72,9 @@ void myplugin::elslot()
 /**
 \param bges
 **/
-void myplugin::inicializa ( BfBulmaFact *bges )
+void PluginBf_Example::inicializa ( BfBulmaFact *bges )
 {
-    blDebug ( "myplugin::inicializa", 0 );
+    blDebug ( "PluginBf_Example::inicializa", 0 );
     QMenu *pPluginMenu;
     /// Miramos si existe un menu Herramientas
     pPluginMenu = bges->menuBar() ->findChild<QMenu *> ( "Herramientas" );
@@ -93,7 +93,7 @@ void myplugin::inicializa ( BfBulmaFact *bges )
     pPluginMenu->addAction ( accion );
     /// A&ntilde;adimos la nueva opci&oacute;n al men&uacute; principal del programa.
     bges->menuBar() ->insertMenu ( bges->menuVentana->menuAction(), pPluginMenu );
-    blDebug ( "END myplugin::inicializa", 0 );
+    blDebug ( "END PluginBf_Example::inicializa", 0 );
 }
 
 
@@ -109,7 +109,7 @@ int entryPoint ( BfBulmaFact *bges )
     setlocale ( LC_ALL, "" );
     blBindTextDomain ( "pluginbf_example", g_confpr->valor ( CONF_DIR_TRADUCCION ).toAscii().constData() );
 
-    myplugin *plug = new myplugin();
+    PluginBf_Example *plug = new PluginBf_Example();
     plug->inicializa ( bges );
     /// S&Oacute;LO A MODO DE EJEMPLO: se modifica el t&iacute;tulo de la ventana principal
     /// del programa para indicar que el plugin se ha cargado.
