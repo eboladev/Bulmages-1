@@ -1,4 +1,4 @@
-/***************************************************************************
+OB/***************************************************************************
  *   Copyright (C) 2005 by Tomeu Borras Riera                              *
  *   tborras@conetxia.com                                                  *
  *                                                                         *
@@ -35,7 +35,7 @@ extern "C" PLUGINBF_RECIBO_EXPORT int BfCompany_createMainWindows_Post(BfCompany
 extern "C" PLUGINBF_RECIBO_EXPORT int ActividadView_ActividadView(ActividadView *);
 
 
-class MyPlugProf : public QObject, BlMainCompanyPointer
+class PluginBf_Recibo : public QObject, BlMainCompanyPointer
 {
     Q_OBJECT
 
@@ -43,8 +43,8 @@ public:
     BfBulmaFact *m_bges;
 
 public:
-    MyPlugProf();
-    ~MyPlugProf();
+    PluginBf_Recibo();
+    ~PluginBf_Recibo();
     void inicializa ( BfBulmaFact * );
 
 public slots:
@@ -54,7 +54,7 @@ public slots:
 };
 
 
-class MyPlugRecibo1 : public QObject, BlMainCompanyPointer
+class EmitirRecibos : public QObject, BlMainCompanyPointer
 {
     Q_OBJECT
 
@@ -63,8 +63,8 @@ public:
     ActividadView *m_actividad;
 
 public:
-    MyPlugRecibo1(BlMainCompany *);
-    ~MyPlugRecibo1();
+    EmitirRecibos(BlMainCompany *);
+    ~EmitirRecibos();
 public slots:
     void elslot();
 };

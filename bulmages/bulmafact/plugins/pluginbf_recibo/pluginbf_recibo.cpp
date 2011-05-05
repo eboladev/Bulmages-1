@@ -36,72 +36,72 @@ RecibosList *g_recibosList = NULL;
 ///
 /**
 **/
-MyPlugProf::MyPlugProf()
+PluginBf_Recibo::PluginBf_Recibo()
 {
-    blDebug ( "MyPlugProf::MyPlugProf", 0 );
-    blDebug ( "END MyPlugProf::MyPlugProf", 0 );
+    blDebug ( "PluginBf_Recibo::PluginBf_Recibo", 0 );
+    blDebug ( "END PluginBf_Recibo::PluginBf_Recibo", 0 );
 }
 
 ///
 /**
 **/
-MyPlugProf::~MyPlugProf()
+PluginBf_Recibo::~PluginBf_Recibo()
 {
-    blDebug ( "MyPlugProf::~MyPlugProf", 0 );
-    blDebug ( "END MyPlugProf::~MyPlugProf", 0 );
+    blDebug ( "PluginBf_Recibo::~PluginBf_Recibo", 0 );
+    blDebug ( "END PluginBf_Recibo::~PluginBf_Recibo", 0 );
 }
 
 ///
 /**
 **/
-void MyPlugProf::elslot()
+void PluginBf_Recibo::elslot()
 {
-    blDebug ( "MyPlugProf::elslot", 0 );
+    blDebug ( "PluginBf_Recibo::elslot", 0 );
     
     if ( g_recibosList ) {
         g_recibosList->hide();
         g_recibosList->show();
     } // end if
     
-    blDebug ( "END MyPlugProf::elslot", 0 );
+    blDebug ( "END PluginBf_Recibo::elslot", 0 );
 }
 
 ///
 /**
 **/
-void MyPlugProf::elslot1()
+void PluginBf_Recibo::elslot1()
 {
-    blDebug ( "MyPlugProf::elslot1", 0 );
+    blDebug ( "PluginBf_Recibo::elslot1", 0 );
     
     ReciboView * bud = new ReciboView ( ( BfCompany * ) mainCompany(), NULL );
     mainCompany() ->m_pWorkspace->addSubWindow ( bud );
     bud->show();
     
-    blDebug ( "END MyPlugProf::elslot1", 0 );
+    blDebug ( "END PluginBf_Recibo::elslot1", 0 );
 }
 
 
 ///
 /**
 **/
-void MyPlugProf::elslot2()
+void PluginBf_Recibo::elslot2()
 {
-    blDebug ( "MyPlugProf::elslot2", 0 );
+    blDebug ( "PluginBf_Recibo::elslot2", 0 );
     
     EmitirRecibosView * bud = new EmitirRecibosView ( ( BfCompany * ) mainCompany(), NULL );
     mainCompany() ->m_pWorkspace->addSubWindow ( bud );
     bud->show();
     
-    blDebug ( "END MyPlugProf::elslot2", 0 );
+    blDebug ( "END PluginBf_Recibo::elslot2", 0 );
 }
 
 ///
 /**
 \param bges
 **/
-void MyPlugProf::inicializa ( BfBulmaFact *bges )
+void PluginBf_Recibo::inicializa ( BfBulmaFact *bges )
 {
-    blDebug ( "MyPlugProf::inicializa", 0 );
+    blDebug ( "PluginBf_Recibo::inicializa", 0 );
 
     if ( bges->company()->hasTablePrivilege ( "cobro", "SELECT" ) ) {
 
@@ -139,7 +139,7 @@ void MyPlugProf::inicializa ( BfBulmaFact *bges )
 
     } // end if
     
-    blDebug ( "END MyPlugProf::inicializa", 0 );
+    blDebug ( "END PluginBf_Recibo::inicializa", 0 );
 }
 
 ///
@@ -155,7 +155,7 @@ int entryPoint ( BfBulmaFact *bges )
     setlocale ( LC_ALL, "" );
     blBindTextDomain ( "pluginbf_recibo", g_confpr->valor ( CONF_DIR_TRADUCCION ).toAscii().constData() );
 
-    MyPlugProf *plug = new MyPlugProf();
+    PluginBf_Recibo *plug = new PluginBf_Recibo();
     plug->inicializa ( bges );
     
     return 0;
@@ -195,7 +195,7 @@ int ActividadView_ActividadView ( ActividadView *l )
 
 
 
-    MyPlugRecibo1 *p = new MyPlugRecibo1(l->mainCompany());
+    EmitirRecibos *p = new EmitirRecibos(l->mainCompany());
 
     QHBoxLayout *m_hboxLayout1 = l->mui_plugbotones->findChild<QHBoxLayout *> ( "hboxLayout1" );
 
@@ -221,27 +221,27 @@ int ActividadView_ActividadView ( ActividadView *l )
 ///
 /**
 **/
-MyPlugRecibo1::MyPlugRecibo1(BlMainCompany *comp) : BlMainCompanyPointer(comp)
+EmitirRecibos::EmitirRecibos(BlMainCompany *comp) : BlMainCompanyPointer(comp)
 {
-    blDebug ( "MyPlugRecibo1::MyPlugRecibo1", 0 );
-    blDebug ( "END MyPlugRecibo1::MyPlugRecibo1", 0 );
+    blDebug ( "EmitirRecibos::EmitirRecibos", 0 );
+    blDebug ( "END EmitirRecibos::EmitirRecibos", 0 );
 }
 
 ///
 /**
 **/
-MyPlugRecibo1::~MyPlugRecibo1()
+EmitirRecibos::~EmitirRecibos()
 {
-    blDebug ( "MyPlugRecibo1::~MyPlugRecibo1", 0 );
-    blDebug ( "END MyPlugRecibo1::~MyPlugRecibo1", 0 );
+    blDebug ( "EmitirRecibos::~EmitirRecibos", 0 );
+    blDebug ( "END EmitirRecibos::~EmitirRecibos", 0 );
 }
 
 ///
 /**
 **/
-void MyPlugRecibo1::elslot()
+void EmitirRecibos::elslot()
 {
-    blDebug ( "MyPlugRecibo1::elslot", 0 );
+    blDebug ( "EmitirRecibos::elslot", 0 );
     
     EmitirRecibosView * bud = new EmitirRecibosView ( ( BfCompany * ) mainCompany(), NULL );
     mainCompany() ->m_pWorkspace->addSubWindow ( bud );
@@ -249,7 +249,7 @@ void MyPlugRecibo1::elslot()
     bud->mui_idactividad->setId(m_actividad->dbValue("idactividad"));
     bud->show();
     
-    blDebug ( "END MyPlugRecibo1::elslot", 0 );
+    blDebug ( "END EmitirRecibos::elslot", 0 );
 }
 
 // ==========================
