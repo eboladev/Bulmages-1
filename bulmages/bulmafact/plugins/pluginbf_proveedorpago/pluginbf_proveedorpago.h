@@ -43,7 +43,7 @@ extern "C" PLUGINBF_PROVEEDORPAGO_EXPORT int PedidoProveedorView_PedidoProveedor
 
 
 // 
-class mypluginpag : public QObject, BlMainCompanyPointer
+class PluginBf_ProveedorPago : public QObject, BlMainCompanyPointer
 {
     Q_OBJECT
 
@@ -51,8 +51,8 @@ public:
     BfBulmaFact *m_bges;
 
 public:
-    mypluginpag();
-    ~mypluginpag();
+    PluginBf_ProveedorPago();
+    ~PluginBf_ProveedorPago();
     void inicializa ( BfBulmaFact * );
 
 public slots:
