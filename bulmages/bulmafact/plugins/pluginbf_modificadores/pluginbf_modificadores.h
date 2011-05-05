@@ -34,7 +34,7 @@ extern "C" PLUGINBF_MODIFICADORES_EXPORT int ArticuloView_cargar ( ArticuloView 
 extern "C" PLUGINBF_MODIFICADORES_EXPORT int ArticuloView_guardar_post ( ArticuloView * );
 
 
-class MyPlugModificadores : public QObject, BlMainCompanyPointer
+class PluginBf_Modificadores : public QObject, BlMainCompanyPointer
 {
     Q_OBJECT
 
@@ -42,8 +42,8 @@ public:
     BfBulmaFact *m_bges;
 
 public:
-    MyPlugModificadores();
-    ~MyPlugModificadores();
+    PluginBf_Modificadores();
+    ~PluginBf_Modificadores();
     void inicializa ( BfBulmaFact * );
 
 public slots:
