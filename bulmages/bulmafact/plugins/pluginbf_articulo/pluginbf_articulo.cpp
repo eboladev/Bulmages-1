@@ -448,7 +448,8 @@ void SubForm_Articulo::nuevoArticulo( )
     while ( !artlist->isHidden() )
         g_theApp->processEvents();
     sub->setEnabled ( true );
-    delete artlist;
+    /// Creo que el articulo ya se borra solo (tiene el WADeleteOnClose) y no hace falta borrarlo.
+    // delete artlist;
 
     cur = sub->mainCompany() ->loadQuery ( "SELECT * FROM articulo ORDER BY idarticulo DESC LIMIT 1" );
     if ( !cur->eof() ) {
