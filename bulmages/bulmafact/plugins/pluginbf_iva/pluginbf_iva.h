@@ -32,7 +32,7 @@
 extern "C" PLUGINBF_IVA_EXPORT int entryPoint ( BfBulmaFact * );
 
 
-class MyPlugIVA : public QObject, BlMainCompanyPointer
+class PluginBf_IVA : public QObject, BlMainCompanyPointer
 {
     Q_OBJECT
 
@@ -40,8 +40,8 @@ public:
     BfBulmaFact *m_bges;
 
 public:
-    MyPlugIVA();
-    ~MyPlugIVA();
+    PluginBf_IVA();
+    ~PluginBf_IVA();
     void inicializa ( BfBulmaFact * );
 
 public slots:

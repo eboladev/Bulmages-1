@@ -42,13 +42,13 @@ extern "C" PLUGINBF_MINICONTABILIDAD_EXPORT int BlSubFormDelegate_setEditorData(
 extern "C" PLUGINBF_MINICONTABILIDAD_EXPORT int BlSubForm_editFinished(BlSubForm *);
 
 
-class MyPlugArt1 : public QObject
+class SubForm_MiniContabilidad : public QObject
 {
     Q_OBJECT
 
 public:
-    MyPlugArt1 ( BlSubForm * );
-    ~MyPlugArt1();
+    SubForm_MiniContabilidad ( BlSubForm * );
+    ~SubForm_MiniContabilidad();
     void gestionarPartidas( BfSubForm * );
     void seleccionarPartida(BfSubForm *);
 
@@ -58,7 +58,7 @@ public slots:
 };
 
 
-class MyPlugArt : public QObject, BlMainCompanyPointer
+class PluginBf_MiniContabilidad : public QObject, BlMainCompanyPointer
 {
     Q_OBJECT
 
@@ -66,8 +66,8 @@ private:
     BfBulmaFact *m_bges;
 
 public:
-    MyPlugArt( BfBulmaFact *);
-    ~MyPlugArt();
+    PluginBf_MiniContabilidad( BfBulmaFact *);
+    ~PluginBf_MiniContabilidad();
     void inicializa (  );
 
 public slots:

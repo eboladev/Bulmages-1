@@ -33,46 +33,46 @@ ApunteContableView *g_ap = NULL;
 ///
 /**
 **/
-MyPlugArt::MyPlugArt( BfBulmaFact *bges) 
+PluginBf_MiniContabilidad::PluginBf_MiniContabilidad( BfBulmaFact *bges) 
 {
-    blDebug ( "MyPlugArt::MyPlugArt", 0 );
+    blDebug ( "PluginBf_MiniContabilidad::PluginBf_MiniContabilidad", 0 );
     setMainCompany(bges->company());
     m_bges = bges;
-    blDebug ( "END MyPlugArt::MyPlugArt", 0 );
+    blDebug ( "END PluginBf_MiniContabilidad::PluginBf_MiniContabilidad", 0 );
 }
 
 
 ///
 /**
 **/
-MyPlugArt::~MyPlugArt()
+PluginBf_MiniContabilidad::~PluginBf_MiniContabilidad()
 {
-    blDebug ( "MyPlugArt::~MyPlugArt", 0 );
-    blDebug ( "END MyPlugArt::~MyPlugArt", 0 );
+    blDebug ( "PluginBf_MiniContabilidad::~PluginBf_MiniContabilidad", 0 );
+    blDebug ( "END PluginBf_MiniContabilidad::~PluginBf_MiniContabilidad", 0 );
 }
 
 ///
 /**
 **/
-void MyPlugArt::elslot1()
+void PluginBf_MiniContabilidad::elslot1()
 {
-    blDebug ( "MyPlugArt::elslot1", 0 );
+    blDebug ( "PluginBf_MiniContabilidad::elslot1", 0 );
     PresupuestoContableList *pag = new PresupuestoContableList ( ( BfCompany * ) mainCompany(), 0 );
     mainCompany() ->m_pWorkspace->addSubWindow ( pag );
     pag->show();
-    blDebug ( "END MyPlugArt::elslot1", 0 );
+    blDebug ( "END PluginBf_MiniContabilidad::elslot1", 0 );
 }
 
 
 ///
 /**
 **/
-void MyPlugArt::elslot2()
+void PluginBf_MiniContabilidad::elslot2()
 {
-    blDebug ( "MyPlugArt::elslot3", 0 );
+    blDebug ( "PluginBf_MiniContabilidad::elslot3", 0 );
     g_ap->hide();
     g_ap->show();
-    blDebug ( "END MyPlugArt::elslot3", 0 );
+    blDebug ( "END PluginBf_MiniContabilidad::elslot3", 0 );
 }
 
 
@@ -80,13 +80,13 @@ void MyPlugArt::elslot2()
 ///
 /**
 **/
-void MyPlugArt::elslot3()
+void PluginBf_MiniContabilidad::elslot3()
 {
-    blDebug ( "MyPlugArt::elslot3", 0 );
+    blDebug ( "PluginBf_MiniContabilidad::elslot3", 0 );
     PartidasView *pag = new PartidasView ( ( BfCompany * ) mainCompany(), 0, FALSE );
     mainCompany() ->m_pWorkspace->addSubWindow ( pag );
     pag->show();
-    blDebug ( "END MyPlugArt::elslot3", 0 );
+    blDebug ( "END PluginBf_MiniContabilidad::elslot3", 0 );
 }
 
 
@@ -95,9 +95,9 @@ void MyPlugArt::elslot3()
 /**
 \param bges
 **/
-void MyPlugArt::inicializa ( ) 
+void PluginBf_MiniContabilidad::inicializa ( ) 
 {
-    blDebug ( "MyPlugArt::inicializa", 0 );
+    blDebug ( "PluginBf_MiniContabilidad::inicializa", 0 );
 
     if ( m_bges->company()->hasTablePrivilege ( "partida", "SELECT" ) ) {
 
@@ -131,7 +131,7 @@ void MyPlugArt::inicializa ( )
         connect ( tfam2, SIGNAL ( activated() ), this, SLOT ( elslot1() ) );
 
      }// end if
-    blDebug ( "END MyPlugArt::inicializa", 0 );
+    blDebug ( "END PluginBf_MiniContabilidad::inicializa", 0 );
 }
 
 
@@ -154,7 +154,7 @@ int entryPoint ( BfBulmaFact *bges )
     setlocale ( LC_ALL, "" );
     blBindTextDomain ( "pluginbf_minicontabilidad", g_confpr->valor ( CONF_DIR_TRADUCCION ).toAscii().constData() );
 
-    MyPlugArt *plug = new MyPlugArt(bges);
+    PluginBf_MiniContabilidad *plug = new PluginBf_MiniContabilidad(bges);
     plug->inicializa ( );
 
     g_ap = new ApunteContableView ( ( BfCompany * ) bges->company(), 0 );
@@ -405,19 +405,19 @@ int BfSubForm_pressedAsterisk ( BfSubForm *sub )
 /**
 \param parent
 **/
-MyPlugArt1::MyPlugArt1 ( BlSubForm *parent ) : QObject ( parent )
+SubForm_MiniContabilidad::SubForm_MiniContabilidad ( BlSubForm *parent ) : QObject ( parent )
 {
-    blDebug ( "MyPlugArt1::MyPlugArt1", 0 );
-    blDebug ( "END MyPlugArt1::MyPlugArt1", 0 );
+    blDebug ( "SubForm_MiniContabilidad::SubForm_MiniContabilidad", 0 );
+    blDebug ( "END SubForm_MiniContabilidad::SubForm_MiniContabilidad", 0 );
 }
 
 ///
 /**
 **/
-MyPlugArt1::~MyPlugArt1()
+SubForm_MiniContabilidad::~SubForm_MiniContabilidad()
 {
-    blDebug ( "MyPlugArt1::~MyPlugArt1", 0 );
-    blDebug ( "END MyPlugArt1::~MyPlugArt1", 0 );
+    blDebug ( "SubForm_MiniContabilidad::~SubForm_MiniContabilidad", 0 );
+    blDebug ( "END SubForm_MiniContabilidad::~SubForm_MiniContabilidad", 0 );
 }
 
 
@@ -425,9 +425,9 @@ MyPlugArt1::~MyPlugArt1()
 /**
 \param menu
 **/
-void MyPlugArt1::s_pintaMenu ( QMenu *menu )
+void SubForm_MiniContabilidad::s_pintaMenu ( QMenu *menu )
 {
-    blDebug ( "MyPlugArt1::s_pintaMenu", 0 );
+    blDebug ( "SubForm_MiniContabilidad::s_pintaMenu", 0 );
     BfSubForm *sub = ( BfSubForm * ) parent();
     BlSubFormHeader *header = sub->header ( "codigocompletopartida" );
     if ( header ) {
@@ -435,7 +435,7 @@ void MyPlugArt1::s_pintaMenu ( QMenu *menu )
         menu->addAction ( _ ( "Gestionar partidas" ) );
 	menu->addAction ( _ ( "Seleccionar partida" ) );
     } // end if
-    blDebug ( "END MyPlugArt1::s_pintaMenu", 0 );
+    blDebug ( "END SubForm_MiniContabilidad::s_pintaMenu", 0 );
 }
 
 
@@ -443,9 +443,9 @@ void MyPlugArt1::s_pintaMenu ( QMenu *menu )
 /**
 \param action
 **/
-void MyPlugArt1::s_trataMenu ( QAction *action )
+void SubForm_MiniContabilidad::s_trataMenu ( QAction *action )
 {
-    blDebug ( "MyPlugArt1::s_trataMenu", 0 );
+    blDebug ( "SubForm_MiniContabilidad::s_trataMenu", 0 );
     BfSubForm *sub = ( BfSubForm * ) parent();
     if ( action->text() == _ ( "Gestionar partidas" ) ) {
             gestionarPartidas ( sub);
@@ -453,20 +453,20 @@ void MyPlugArt1::s_trataMenu ( QAction *action )
         seleccionarPartida ( sub );
     } // end if
 
-    blDebug ( "END MyPlugArt1::s_trataMenu", 0 );
+    blDebug ( "END SubForm_MiniContabilidad::s_trataMenu", 0 );
 }
 
 
 ///
 /**
 **/
-void MyPlugArt1::gestionarPartidas (  BfSubForm *sub )
+void SubForm_MiniContabilidad::gestionarPartidas (  BfSubForm *sub )
 {
-    blDebug ( "MyPlugArt1::editarArticulo", 0 );
+    blDebug ( "SubForm_MiniContabilidad::editarArticulo", 0 );
     PartidasView *pag = new PartidasView ( ( BfCompany * ) sub->mainCompany(), 0, FALSE );
     sub->mainCompany() ->m_pWorkspace->addSubWindow ( pag );
     pag->show();
-    blDebug ( "END MyPlugArt1::editarArticulo", 0 );
+    blDebug ( "END SubForm_MiniContabilidad::editarArticulo", 0 );
 }
 
 
@@ -474,9 +474,9 @@ void MyPlugArt1::gestionarPartidas (  BfSubForm *sub )
 ///
 /**
 **/
-void MyPlugArt1::seleccionarPartida ( BfSubForm *sub )
+void SubForm_MiniContabilidad::seleccionarPartida ( BfSubForm *sub )
 {
-    blDebug ( "MyPlugArt1::editarArticulo", 0 );
+    blDebug ( "SubForm_MiniContabilidad::editarArticulo", 0 );
 
         QDialog *diag = new QDialog ( 0 );
         diag->setModal ( true );
@@ -510,7 +510,7 @@ void MyPlugArt1::seleccionarPartida ( BfSubForm *sub )
 	} // end if
     delete diag;
     
-    blDebug ( "END MyPlugArt1::editarArticulo", 0 );
+    blDebug ( "END SubForm_MiniContabilidad::editarArticulo", 0 );
 }
 
 
@@ -522,7 +522,7 @@ void MyPlugArt1::seleccionarPartida ( BfSubForm *sub )
 int BlSubForm_BlSubForm_Post ( BlSubForm *sub )
 {
     blDebug ( "BlSubForm_BlSubForm_Post", 0 );
-    MyPlugArt1 *subformods = new MyPlugArt1 ( sub );
+    SubForm_MiniContabilidad *subformods = new SubForm_MiniContabilidad ( sub );
     sub->QObject::connect ( sub, SIGNAL ( pintaMenu ( QMenu * ) ), subformods, SLOT ( s_pintaMenu ( QMenu * ) ) );
     sub->QObject::connect ( sub, SIGNAL ( trataMenu ( QAction * ) ), subformods, SLOT ( s_trataMenu ( QAction * ) ) );
     blDebug ( "END BlSubForm_BlSubForm_Post", 0 );

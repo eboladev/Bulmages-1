@@ -32,29 +32,29 @@
 ///
 /**
 **/
-MyPlugIVA::MyPlugIVA()
+PluginBf_IVA::PluginBf_IVA()
 {
-    blDebug ( "MyPlugIVA::MyPlugIVA", 0 );
-    blDebug ( "END MyPlugIVA::MyPlugIVA", 0 );
+    blDebug ( "PluginBf_IVA::PluginBf_IVA", 0 );
+    blDebug ( "END PluginBf_IVA::PluginBf_IVA", 0 );
 }
 
 
 ///
 /**
 **/
-MyPlugIVA::~MyPlugIVA()
+PluginBf_IVA::~PluginBf_IVA()
 {
-    blDebug ( "MyPlugIVA::~MyPlugIVA", 0 );
-    blDebug ( "END MyPlugIVA::~MyPlugIVA", 0 );
+    blDebug ( "PluginBf_IVA::~PluginBf_IVA", 0 );
+    blDebug ( "END PluginBf_IVA::~PluginBf_IVA", 0 );
 }
 
 
 ///
 /**
 **/
-void MyPlugIVA::elslot()
+void PluginBf_IVA::elslot()
 {
-    blDebug ( "MyPlugIVA::elslot", 0 );
+    blDebug ( "PluginBf_IVA::elslot", 0 );
     ListTasaIVAView *pag = new ListTasaIVAView ( ( BfCompany * ) mainCompany(), NULL );
     mainCompany() ->m_pWorkspace->addSubWindow ( pag );
     pag->show();
@@ -62,16 +62,16 @@ void MyPlugIVA::elslot()
             mainCompany() ->m_pWorkspace->addSubWindow ( bud );
             bud->show();
     */
-    blDebug ( "END MyPlugIVA::elslot", 0 );
+    blDebug ( "END PluginBf_IVA::elslot", 0 );
 }
 
 
 ///
 /**
 **/
-void MyPlugIVA::elslot1()
+void PluginBf_IVA::elslot1()
 {
-    blDebug ( "MyPlugIVA::elslot1", 0 );
+    blDebug ( "PluginBf_IVA::elslot1", 0 );
     ListTipoIVAView *pag = new ListTipoIVAView ( ( BfCompany * ) mainCompany(), NULL );
     mainCompany() ->m_pWorkspace->addSubWindow ( pag );
     pag->show();
@@ -79,7 +79,7 @@ void MyPlugIVA::elslot1()
             mainCompany() ->m_pWorkspace->addSubWindow ( bud );
             bud->show();
     */
-    blDebug ( "END MyPlugIVA::elslot1", 0 );
+    blDebug ( "END PluginBf_IVA::elslot1", 0 );
 }
 
 
@@ -88,9 +88,9 @@ void MyPlugIVA::elslot1()
 /**
 \param bges
 **/
-void MyPlugIVA::inicializa ( BfBulmaFact *bges )
+void PluginBf_IVA::inicializa ( BfBulmaFact *bges )
 {
-    blDebug ( "MyPlugIVA::inicializa", 0 );
+    blDebug ( "PluginBf_IVA::inicializa", 0 );
 
     if ( bges->company()->hasTablePrivilege ( "tipo_iva", "SELECT" ) ) {
 
@@ -122,7 +122,7 @@ void MyPlugIVA::inicializa ( BfBulmaFact *bges )
         connect ( planCuentas1, SIGNAL ( activated() ), this, SLOT ( elslot() ) );
 
     }// end if
-    blDebug ( "END MyPlugIVA::inicializa", 0 );
+    blDebug ( "END PluginBf_IVA::inicializa", 0 );
 }
 
 
@@ -142,7 +142,7 @@ int entryPoint ( BfBulmaFact *bges )
     setlocale ( LC_ALL, "" );
     blBindTextDomain ( "pluginbf_iva", g_confpr->valor ( CONF_DIR_TRADUCCION ).toAscii().constData() );
 
-    MyPlugIVA *plug = new MyPlugIVA();
+    PluginBf_IVA *plug = new PluginBf_IVA();
     plug->inicializa ( bges );
     return 0;
 }
