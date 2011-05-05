@@ -37,7 +37,7 @@ extern "C" PLUGINBF_PROFESOR_EXPORT int BfCompany_createMainWindows_Post(BfCompa
 extern "C" PLUGINBF_PROFESOR_EXPORT int Busqueda_on_mui_buscar_clicked(BlSearchWidget *);
 
 
-class MyPlugProf : public QObject, BlMainCompanyPointer
+class PluginBf_Profesor : public QObject, BlMainCompanyPointer
 {
     Q_OBJECT
 
@@ -45,8 +45,8 @@ public:
     BfBulmaFact *m_bges;
 
 public:
-    MyPlugProf();
-    ~MyPlugProf();
+    PluginBf_Profesor();
+    ~PluginBf_Profesor();
     void inicializa ( BfBulmaFact * );
 
 public slots:

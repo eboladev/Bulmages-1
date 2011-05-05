@@ -31,33 +31,33 @@
 ///
 /**
 **/
-MyPlugModificadores::MyPlugModificadores()
+PluginBf_Modificadores::PluginBf_Modificadores()
 {
-    blDebug ( "MyPlugModificadores::MyPlugModificadores", 0 );
-    blDebug ( "END MyPlugModificadores::MyPlugModificadores", 0 );
+    blDebug ( "PluginBf_Modificadores::PluginBf_Modificadores", 0 );
+    blDebug ( "END PluginBf_Modificadores::PluginBf_Modificadores", 0 );
 }
 
 
 ///
 /**
 **/
-MyPlugModificadores::~MyPlugModificadores()
+PluginBf_Modificadores::~PluginBf_Modificadores()
 {
-    blDebug ( "MyPlugModificadores::~MyPlugModificadores", 0 );
-    blDebug ( "END MyPlugModificadores::~MyPlugModificadores", 0 );
+    blDebug ( "PluginBf_Modificadores::~PluginBf_Modificadores", 0 );
+    blDebug ( "END PluginBf_Modificadores::~PluginBf_Modificadores", 0 );
 }
 
 
 ///
 /**
 **/
-void MyPlugModificadores::elslot1()
+void PluginBf_Modificadores::elslot1()
 {
-    blDebug ( "MyPlugModificadores::elslot1", 0 );
+    blDebug ( "PluginBf_Modificadores::elslot1", 0 );
     ListModificadoresView * bud = new ListModificadoresView ( ( BfCompany * ) mainCompany(), NULL );
     mainCompany() ->m_pWorkspace->addSubWindow ( bud );
     bud->show();
-    blDebug ( "END MyPlugModificadores::elslot1", 0 );
+    blDebug ( "END PluginBf_Modificadores::elslot1", 0 );
 }
 
 
@@ -66,9 +66,9 @@ void MyPlugModificadores::elslot1()
 /**
 \param bges
 **/
-void MyPlugModificadores::inicializa ( BfBulmaFact *bges )
+void PluginBf_Modificadores::inicializa ( BfBulmaFact *bges )
 {
-    blDebug ( "MyPlugModificadores::inicializa", 0 );
+    blDebug ( "PluginBf_Modificadores::inicializa", 0 );
 
     if ( bges->company()->hasTablePrivilege ( "serie_factura", "SELECT" ) ) {
 
@@ -87,7 +87,7 @@ void MyPlugModificadores::inicializa ( BfBulmaFact *bges )
         connect ( modificadoresArticulo, SIGNAL ( activated() ), this, SLOT ( elslot1() ) );
 
     }// end if
-    blDebug ( "END MyPlugModificadores::inicializa", 0 );
+    blDebug ( "END PluginBf_Modificadores::inicializa", 0 );
 }
 
 
@@ -107,7 +107,7 @@ int entryPoint ( BfBulmaFact *bges )
     setlocale ( LC_ALL, "" );
     blBindTextDomain ( "pluginbf_modificadores", g_confpr->valor ( CONF_DIR_TRADUCCION ).toAscii().constData() );
 
-//    MyPlugModificadores *plug = new MyPlugModificadores();
+//    PluginBf_Modificadores *plug = new PluginBf_Modificadores();
 //    plug->inicializa ( bges );
     return 0;
 }

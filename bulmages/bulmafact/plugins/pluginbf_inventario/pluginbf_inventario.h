@@ -35,7 +35,7 @@ extern "C" PLUGINBF_INVENTARIO_EXPORT int BlForm_guardar_Post ( BlForm * );
 extern "C" PLUGINBF_INVENTARIO_EXPORT int BfSubForm_on_mui_list_editFinished ( BfSubForm * );
 
 
-class myplugininv : public QObject, BlMainCompanyPointer
+class PluginBf_Inventario : public QObject, BlMainCompanyPointer
 {
     Q_OBJECT
 
@@ -43,8 +43,8 @@ public:
     BfBulmaFact *m_bges;
 
 public:
-    myplugininv();
-    ~myplugininv();
+    PluginBf_Inventario();
+    ~PluginBf_Inventario();
     void inicializa ( BfBulmaFact * );
 
 public slots:

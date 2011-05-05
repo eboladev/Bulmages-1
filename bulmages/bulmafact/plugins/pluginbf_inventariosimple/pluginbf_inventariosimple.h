@@ -36,7 +36,7 @@ extern "C" PLUGINBF_INVENTARIOSIMPLE_EXPORT int BfSubForm_pressedAsterisk ( BfSu
 extern "C" PLUGINBF_INVENTARIOSIMPLE_EXPORT int BlSubForm_BlSubForm_Post ( BlSubForm * );
 extern "C" PLUGINBF_INVENTARIOSIMPLE_EXPORT int BlSubForm_preparaMenu ( BlSubForm * );
 
-class myplugininvsimple : public QObject, BlMainCompanyPointer
+class PluginBf_InventarioSimple : public QObject, BlMainCompanyPointer
 {
     Q_OBJECT
 
@@ -44,8 +44,8 @@ public:
     BfBulmaFact *m_bges;
 
 public:
-    myplugininvsimple();
-    ~myplugininvsimple();
+    PluginBf_InventarioSimple();
+    ~PluginBf_InventarioSimple();
     void inicializa ( BfBulmaFact * );
 
 public slots:

@@ -33,46 +33,46 @@ ProveedorList *g_providersList = NULL;
 ///
 /**
 **/
-MyPlugPro::MyPlugPro()
+PluginBf_Proveedor::PluginBf_Proveedor()
 {
-    blDebug ( "MyPlugPro::MyPlugPro", 0 );
-    blDebug ( "END MyPlugPro::MyPlugPro", 0 );
+    blDebug ( "PluginBf_Proveedor::PluginBf_Proveedor", 0 );
+    blDebug ( "END PluginBf_Proveedor::PluginBf_Proveedor", 0 );
 }
 
 
 ///
 /**
 **/
-MyPlugPro::~MyPlugPro()
+PluginBf_Proveedor::~PluginBf_Proveedor()
 {
-    blDebug ( "MyPlugPro::~MyPlugPro", 0 );
-    blDebug ( "END MyPlugPro::~MyPlugPro", 0 );
+    blDebug ( "PluginBf_Proveedor::~PluginBf_Proveedor", 0 );
+    blDebug ( "END PluginBf_Proveedor::~PluginBf_Proveedor", 0 );
 }
 
 
 ///
 /**
 **/
-void MyPlugPro::elslot()
+void PluginBf_Proveedor::elslot()
 {
-    blDebug ( "MyPlugPro::elslot", 0 );
+    blDebug ( "PluginBf_Proveedor::elslot", 0 );
     if ( g_providersList ) {
         g_providersList->hide();
         g_providersList->show();
     }// end if
-    blDebug ( "END MyPlugPro::elslot", 0 );
+    blDebug ( "END PluginBf_Proveedor::elslot", 0 );
 }
 
 ///
 /**
 **/
-void MyPlugPro::elslot1()
+void PluginBf_Proveedor::elslot1()
 {
-    blDebug ( "MyPlugPro::elslot1", 0 );
+    blDebug ( "PluginBf_Proveedor::elslot1", 0 );
     ProveedorView * bud = new ProveedorView ( ( BfCompany * ) mainCompany(), NULL );
     mainCompany() ->m_pWorkspace->addSubWindow ( bud );
     bud->show();
-    blDebug ( "END MyPlugPro::elslot1", 0 );
+    blDebug ( "END PluginBf_Proveedor::elslot1", 0 );
 }
 
 
@@ -81,9 +81,9 @@ void MyPlugPro::elslot1()
 /**
 \param bges
 **/
-void MyPlugPro::inicializa ( BfBulmaFact *bges )
+void PluginBf_Proveedor::inicializa ( BfBulmaFact *bges )
 {
-    blDebug ( "MyPlugPro::inicializa", 0 );
+    blDebug ( "PluginBf_Proveedor::inicializa", 0 );
 
     if ( bges->company()->hasTablePrivilege ( "proveedor", "SELECT" ) ) {
 
@@ -110,7 +110,7 @@ void MyPlugPro::inicializa ( BfBulmaFact *bges )
         connect ( npago, SIGNAL ( activated() ), this, SLOT ( elslot1() ) );
 
     }// end if
-    blDebug ( "END MyPlugPro::inicializa", 0 );
+    blDebug ( "END PluginBf_Proveedor::inicializa", 0 );
 }
 
 
@@ -128,7 +128,7 @@ int entryPoint ( BfBulmaFact *bges )
     setlocale ( LC_ALL, "" );
     blBindTextDomain ( "pluginbf_proveedor", g_confpr->valor ( CONF_DIR_TRADUCCION ).toAscii().constData() );
 
-    MyPlugPro *plug = new MyPlugPro();
+    PluginBf_Proveedor *plug = new PluginBf_Proveedor();
     plug->inicializa ( bges );
     return 0;
 }

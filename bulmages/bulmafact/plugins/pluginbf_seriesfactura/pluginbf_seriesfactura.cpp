@@ -31,33 +31,33 @@
 ///
 /**
 **/
-MyPlugSeriesFactura::MyPlugSeriesFactura()
+PluginBf_SeriesFactura::PluginBf_SeriesFactura()
 {
-    blDebug ( "MyPlugSeriesFactura::MyPlugSeriesFactura", 0 );
-    blDebug ( "END MyPlugSeriesFactura::MyPlugSeriesFactura", 0 );
+    blDebug ( "PluginBf_SeriesFactura::PluginBf_SeriesFactura", 0 );
+    blDebug ( "END PluginBf_SeriesFactura::PluginBf_SeriesFactura", 0 );
 }
 
 
 ///
 /**
 **/
-MyPlugSeriesFactura::~MyPlugSeriesFactura()
+PluginBf_SeriesFactura::~PluginBf_SeriesFactura()
 {
-    blDebug ( "MyPlugSeriesFactura::~MyPlugSeriesFactura", 0 );
-    blDebug ( "END MyPlugSeriesFactura::~MyPlugSeriesFactura", 0 );
+    blDebug ( "PluginBf_SeriesFactura::~PluginBf_SeriesFactura", 0 );
+    blDebug ( "END PluginBf_SeriesFactura::~PluginBf_SeriesFactura", 0 );
 }
 
 
 ///
 /**
 **/
-void MyPlugSeriesFactura::elslot1()
+void PluginBf_SeriesFactura::elslot1()
 {
-    blDebug ( "MyPlugSeriesFactura::elslot1", 0 );
+    blDebug ( "PluginBf_SeriesFactura::elslot1", 0 );
     BfSerieFacturaView * bud = new BfSerieFacturaView ( ( BfCompany * ) mainCompany(), NULL );
     mainCompany() ->m_pWorkspace->addSubWindow ( bud );
     bud->show();
-    blDebug ( "END MyPlugSeriesFactura::elslot1", 0 );
+    blDebug ( "END PluginBf_SeriesFactura::elslot1", 0 );
 }
 
 
@@ -66,9 +66,9 @@ void MyPlugSeriesFactura::elslot1()
 /**
 \param bges
 **/
-void MyPlugSeriesFactura::inicializa ( BfBulmaFact *bges )
+void PluginBf_SeriesFactura::inicializa ( BfBulmaFact *bges )
 {
-    blDebug ( "MyPlugSeriesFactura::inicializa", 0 );
+    blDebug ( "PluginBf_SeriesFactura::inicializa", 0 );
 
     if ( bges->company()->hasTablePrivilege ( "serie_factura", "SELECT" ) ) {
 
@@ -87,7 +87,7 @@ void MyPlugSeriesFactura::inicializa ( BfBulmaFact *bges )
         connect ( seriesFactura, SIGNAL ( activated() ), this, SLOT ( elslot1() ) );
 
     }// end if
-    blDebug ( "END MyPlugSeriesFactura::inicializa", 0 );
+    blDebug ( "END PluginBf_SeriesFactura::inicializa", 0 );
 }
 
 
@@ -107,7 +107,7 @@ int entryPoint ( BfBulmaFact *bges )
     setlocale ( LC_ALL, "" );
     blBindTextDomain ( "pluginbf_seriesfactura", g_confpr->valor ( CONF_DIR_TRADUCCION ).toAscii().constData() );
 
-    MyPlugSeriesFactura *plug = new MyPlugSeriesFactura();
+    PluginBf_SeriesFactura *plug = new PluginBf_SeriesFactura();
     plug->inicializa ( bges );
     return 0;
 }

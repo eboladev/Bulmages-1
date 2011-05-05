@@ -33,7 +33,7 @@ extern "C" PLUGINBF_SERIESFACTURA_EXPORT int entryPoint ( BfBulmaFact * );
 extern "C" PLUGINBF_SERIESFACTURA_EXPORT int SNewBfSerieFacturaView (BfCompany *);
 
 
-class MyPlugSeriesFactura : public QObject, BlMainCompanyPointer
+class PluginBf_SeriesFactura : public QObject, BlMainCompanyPointer
 {
     Q_OBJECT
 
@@ -41,8 +41,8 @@ public:
     BfBulmaFact *m_bges;
 
 public:
-    MyPlugSeriesFactura();
-    ~MyPlugSeriesFactura();
+    PluginBf_SeriesFactura();
+    ~PluginBf_SeriesFactura();
     void inicializa ( BfBulmaFact * );
 
 public slots:

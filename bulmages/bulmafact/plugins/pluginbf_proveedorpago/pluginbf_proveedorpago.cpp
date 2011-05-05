@@ -33,46 +33,46 @@ PagosList *g_pagosList = NULL;
 ///
 /**
 **/
-mypluginpag::mypluginpag()
+PluginBf_ProveedorPago::PluginBf_ProveedorPago()
 {
-    blDebug ( "mypluginpag::mypluginpag", 0 );
-    blDebug ( "END mypluginpag::mypluginpag", 0 );
+    blDebug ( "PluginBf_ProveedorPago::PluginBf_ProveedorPago", 0 );
+    blDebug ( "END PluginBf_ProveedorPago::PluginBf_ProveedorPago", 0 );
 }
 
 
 ///
 /**
 **/
-mypluginpag::~mypluginpag()
+PluginBf_ProveedorPago::~PluginBf_ProveedorPago()
 {
-    blDebug ( "mypluginpag::~mypluginpag", 0 );
-    blDebug ( "END mypluginpag::~mypluginpag", 0 );
+    blDebug ( "PluginBf_ProveedorPago::~PluginBf_ProveedorPago", 0 );
+    blDebug ( "END PluginBf_ProveedorPago::~PluginBf_ProveedorPago", 0 );
 }
 
 
 ///
 /**
 **/
-void mypluginpag::elslot()
+void PluginBf_ProveedorPago::elslot()
 {
-    blDebug ( "mypluginpag::elslot", 0 );
+    blDebug ( "PluginBf_ProveedorPago::elslot", 0 );
     if ( g_pagosList ) {
         g_pagosList->hide();
         g_pagosList->show();
     }// end if
-    blDebug ( "END mypluginpag::elslot", 0 );
+    blDebug ( "END PluginBf_ProveedorPago::elslot", 0 );
 }
 
 ///
 /**
 **/
-void mypluginpag::elslot1()
+void PluginBf_ProveedorPago::elslot1()
 {
-    blDebug ( "mypluginpag::elslot1", 0 );
+    blDebug ( "PluginBf_ProveedorPago::elslot1", 0 );
     PagoView * bud = new PagoView ( ( BfCompany * ) mainCompany(), NULL );
     mainCompany() ->m_pWorkspace->addSubWindow ( bud );
     bud->show();
-    blDebug ( "END mypluginpag::elslot1", 0 );
+    blDebug ( "END PluginBf_ProveedorPago::elslot1", 0 );
 }
 
 
@@ -81,9 +81,9 @@ void mypluginpag::elslot1()
 /**
 \param bges
 **/
-void mypluginpag::inicializa ( BfBulmaFact *bges )
+void PluginBf_ProveedorPago::inicializa ( BfBulmaFact *bges )
 {
-    blDebug ( "mypluginpag::inicializa", 0 );
+    blDebug ( "PluginBf_ProveedorPago::inicializa", 0 );
 
     if ( bges->company()->hasTablePrivilege ( "pago", "SELECT" ) ) {
         /// Miramos si existe un menu Compras
@@ -111,7 +111,7 @@ void mypluginpag::inicializa ( BfBulmaFact *bges )
 
 
     }// end if
-    blDebug ( "END mypluginpag::inicializa", 0 );
+    blDebug ( "END PluginBf_ProveedorPago::inicializa", 0 );
 }
 
 
@@ -128,7 +128,7 @@ int entryPoint ( BfBulmaFact *bges )
     setlocale ( LC_ALL, "" );
     blBindTextDomain ( "pluginbf_proveedorpago", g_confpr->valor ( CONF_DIR_TRADUCCION ).toAscii().constData() );
 
-    mypluginpag *plug = new mypluginpag();
+    PluginBf_ProveedorPago *plug = new PluginBf_ProveedorPago();
     plug->inicializa ( bges );
     return 0;
 }

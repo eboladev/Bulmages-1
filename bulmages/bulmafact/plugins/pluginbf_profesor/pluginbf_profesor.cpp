@@ -35,70 +35,70 @@ ProfesoresList *g_profesoresList = NULL;
 ///
 /**
 **/
-MyPlugProf::MyPlugProf()
+PluginBf_Profesor::PluginBf_Profesor()
 {
-    blDebug ( "MyPlugProf::MyPlugProf", 0 );
-    blDebug ( "END MyPlugProf::MyPlugProf", 0 );
+    blDebug ( "PluginBf_Profesor::PluginBf_Profesor", 0 );
+    blDebug ( "END PluginBf_Profesor::PluginBf_Profesor", 0 );
 }
 
 ///
 /**
 **/
-MyPlugProf::~MyPlugProf()
+PluginBf_Profesor::~PluginBf_Profesor()
 {
-    blDebug ( "MyPlugProf::~MyPlugProf", 0 );
-    blDebug ( "END MyPlugProf::~MyPlugProf", 0 );
+    blDebug ( "PluginBf_Profesor::~PluginBf_Profesor", 0 );
+    blDebug ( "END PluginBf_Profesor::~PluginBf_Profesor", 0 );
 }
 
 ///
 /**
 **/
-void MyPlugProf::elslot()
+void PluginBf_Profesor::elslot()
 {
-    blDebug ( "MyPlugProf::elslot", 0 );
+    blDebug ( "PluginBf_Profesor::elslot", 0 );
     
     if ( g_profesoresList ) {
         g_profesoresList->hide();
         g_profesoresList->show();
     } // end if
     
-    blDebug ( "END MyPlugProf::elslot", 0 );
+    blDebug ( "END PluginBf_Profesor::elslot", 0 );
 }
 
 ///
 /**
 **/
-void MyPlugProf::elslot1()
+void PluginBf_Profesor::elslot1()
 {
-    blDebug ( "MyPlugProf::elslot1", 0 );
+    blDebug ( "PluginBf_Profesor::elslot1", 0 );
     
     ProfesorView * bud = new ProfesorView ( ( BfCompany * ) mainCompany(), NULL );
     mainCompany() ->m_pWorkspace->addSubWindow ( bud );
     bud->show();
     
-    blDebug ( "END MyPlugProf::elslot1", 0 );
+    blDebug ( "END PluginBf_Profesor::elslot1", 0 );
 }
 
 ///
 /**
 **/
-void MyPlugProf::elslot2()
+void PluginBf_Profesor::elslot2()
 {
-    blDebug ( "MyPlugProf::elslot2", 0 );
+    blDebug ( "PluginBf_Profesor::elslot2", 0 );
     
     AboutFapacView *afv = new AboutFapacView();
     afv->show();
     
-    blDebug ( "END MyPlugProf::elslot2", 0 );
+    blDebug ( "END PluginBf_Profesor::elslot2", 0 );
 }
 
 ///
 /**
 \param bges
 **/
-void MyPlugProf::inicializa ( BfBulmaFact *bges )
+void PluginBf_Profesor::inicializa ( BfBulmaFact *bges )
 {
-    blDebug ( "MyPlugProf::inicializa", 0 );
+    blDebug ( "PluginBf_Profesor::inicializa", 0 );
 
     if ( bges->company()->hasTablePrivilege ( "profesor", "SELECT" ) ) {
 
@@ -135,7 +135,7 @@ void MyPlugProf::inicializa ( BfBulmaFact *bges )
 
     } // end if
     
-    blDebug ( "END MyPlugProf::inicializa", 0 );
+    blDebug ( "END PluginBf_Profesor::inicializa", 0 );
 }
 
 ///
@@ -154,7 +154,7 @@ int entryPoint ( BfBulmaFact *bges )
     setlocale ( LC_ALL, "" );
     blBindTextDomain ( "pluginbf_profesor", g_confpr->valor ( CONF_DIR_TRADUCCION ).toAscii().constData() );
 
-    MyPlugProf *plug = new MyPlugProf();
+    PluginBf_Profesor *plug = new PluginBf_Profesor();
     plug->inicializa ( bges );
     
     blDebug ( "END Punto de Entrada del plugin de Monitores", 0 );
