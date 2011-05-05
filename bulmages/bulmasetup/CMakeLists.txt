@@ -29,6 +29,10 @@ install(FILES ${CMAKE_BINARY_DIR}/bulmasetup/bulmasetup.py DESTINATION bin RENAM
 
 install(FILES ${CMAKE_BINARY_DIR}/bulmasetup/config.py DESTINATION share/bulmages/bulmasetup)
 
+install(FILES ${CMAKE_SOURCE_DIR}/bulmasetup/runbulmasetup DESTINATION bin 
+               PERMISSIONS OWNER_EXECUTE OWNER_WRITE OWNER_READ
+                	    GROUP_EXECUTE GROUP_READ
+                            WORLD_READ WORLD_EXECUTE)
 
 file(GLOB py_files *.py *.qm)
 install(FILES ${py_files} 
