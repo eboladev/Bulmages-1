@@ -472,6 +472,7 @@ void SubForm_Tutor::nuevoTutor( )
     
     BlSubForm * subf = ( BlSubForm * ) parent();
     TutorView * art = new TutorView ( ( BfCompany * ) subf->mainCompany(), 0 );
+    art->setAttribute ( Qt::WA_DeleteOnClose, FALSE );
     subf->mainCompany() ->m_pWorkspace->addSubWindow ( art );
     subf->setEnabled(false);
     art->hide();

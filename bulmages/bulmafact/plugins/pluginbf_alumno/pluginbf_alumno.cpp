@@ -399,6 +399,8 @@ void SubForm_Alumno::nuevoAlumno( )
     blDebug ( "SubForm_Alumno::editarAlumno", 0 );
     BlSubForm * subf = ( BlSubForm * ) parent();
     AlumnoView * art = new AlumnoView ( ( BfCompany * ) subf->mainCompany(), 0 );
+    art->setAttribute ( Qt::WA_DeleteOnClose, FALSE );
+    
     subf->mainCompany() ->m_pWorkspace->addSubWindow ( art );
     subf->setEnabled(false);
     art->hide();
