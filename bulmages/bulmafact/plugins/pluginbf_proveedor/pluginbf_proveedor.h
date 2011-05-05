@@ -35,7 +35,7 @@ extern "C" PLUGINBF_PROVEEDOR_EXPORT int Busqueda_on_mui_buscar_clicked(BlSearch
 extern "C" PLUGINBF_PROVEEDOR_EXPORT int SNewProveedorView (BfCompany *);
 
 
-class MyPlugPro : public QObject, BlMainCompanyPointer
+class PluginBf_Proveedor : public QObject, BlMainCompanyPointer
 {
     Q_OBJECT
 
@@ -43,8 +43,8 @@ public:
     BfBulmaFact *m_bges;
 
 public:
-    MyPlugPro();
-    ~MyPlugPro();
+    PluginBf_Proveedor();
+    ~PluginBf_Proveedor();
     void inicializa ( BfBulmaFact * );
 
 public slots:
