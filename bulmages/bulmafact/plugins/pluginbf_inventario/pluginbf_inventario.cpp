@@ -29,33 +29,33 @@
 ///
 /**
 **/
-myplugininv::myplugininv()
+PluginBf_Inventario::PluginBf_Inventario()
 {
-    blDebug ( "myplugininv::myplugininv", 0 );
-    blDebug ( "END myplugininv::myplugininv", 0 );
+    blDebug ( "PluginBf_Inventario::PluginBf_Inventario", 0 );
+    blDebug ( "END PluginBf_Inventario::PluginBf_Inventario", 0 );
 }
 
 
 ///
 /**
 **/
-myplugininv::~myplugininv()
+PluginBf_Inventario::~PluginBf_Inventario()
 {
-    blDebug ( "myplugininv::~myplugininv", 0 );
-    blDebug ( "END myplugininv::~myplugininv", 0 );
+    blDebug ( "PluginBf_Inventario::~PluginBf_Inventario", 0 );
+    blDebug ( "END PluginBf_Inventario::~PluginBf_Inventario", 0 );
 }
 
 
 ///
 /**
 **/
-void myplugininv::elslot()
+void PluginBf_Inventario::elslot()
 {
-    blDebug ( "myplugininv::elslot", 0 );
+    blDebug ( "PluginBf_Inventario::elslot", 0 );
     InventariosView *tar = new InventariosView ( ( BfCompany * ) mainCompany(), NULL );
     mainCompany() ->m_pWorkspace->addSubWindow ( tar );
     tar->show();
-    blDebug ( "END myplugininv::elslot", 0 );
+    blDebug ( "END PluginBf_Inventario::elslot", 0 );
 }
 
 
@@ -63,9 +63,9 @@ void myplugininv::elslot()
 /**
 \param bges
 **/
-void myplugininv::inicializa ( BfBulmaFact *bges )
+void PluginBf_Inventario::inicializa ( BfBulmaFact *bges )
 {
-    blDebug ( "myplugininv::inicializa", 0 );
+    blDebug ( "PluginBf_Inventario::inicializa", 0 );
     /// El men&uacute; de Tarifas en la secci&oacute;n de art&iacute;culos.
     m_bges = bges;
     setMainCompany ( bges->company() );
@@ -81,7 +81,7 @@ void myplugininv::inicializa ( BfBulmaFact *bges )
 
     pPluginMenu->addAction ( planCuentas );
     connect ( planCuentas, SIGNAL ( activated() ), this, SLOT ( elslot() ) );
-    blDebug ( "END myplugininv::inicializa", 0 );
+    blDebug ( "END PluginBf_Inventario::inicializa", 0 );
 }
 
 
@@ -101,7 +101,7 @@ int entryPoint ( BfBulmaFact *bges )
     setlocale ( LC_ALL, "" );
     blBindTextDomain ( "pluginbf_inventario", g_confpr->valor ( CONF_DIR_TRADUCCION ).toAscii().constData() );
 
-    myplugininv *plug = new myplugininv();
+    PluginBf_Inventario *plug = new PluginBf_Inventario();
     plug->inicializa ( bges );
     return 0;
 }

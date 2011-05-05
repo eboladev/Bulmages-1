@@ -31,33 +31,33 @@
 ///
 /**
 **/
-MyPlugFPago::MyPlugFPago()
+PluginBf_FormasDePago::PluginBf_FormasDePago()
 {
-    blDebug ( "MyPlugFPago::MyPlugFPago", 0 );
-    blDebug ( "END MyPlugFPago::MyPlugFPago", 0 );
+    blDebug ( "PluginBf_FormasDePago::PluginBf_FormasDePago", 0 );
+    blDebug ( "END PluginBf_FormasDePago::PluginBf_FormasDePago", 0 );
 }
 
 
 ///
 /**
 **/
-MyPlugFPago::~MyPlugFPago()
+PluginBf_FormasDePago::~PluginBf_FormasDePago()
 {
-    blDebug ( "MyPlugFPago::~MyPlugFPago", 0 );
-    blDebug ( "END MyPlugFPago::~MyPlugFPago", 0 );
+    blDebug ( "PluginBf_FormasDePago::~PluginBf_FormasDePago", 0 );
+    blDebug ( "END PluginBf_FormasDePago::~PluginBf_FormasDePago", 0 );
 }
 
 
 ///
 /**
 **/
-void MyPlugFPago::elslot1()
+void PluginBf_FormasDePago::elslot1()
 {
-    blDebug ( "MyPlugFPago::elslot1", 0 );
+    blDebug ( "PluginBf_FormasDePago::elslot1", 0 );
     FPagoView * bud = new FPagoView ( ( BfCompany * ) mainCompany(), NULL );
     mainCompany() ->m_pWorkspace->addSubWindow ( bud );
     bud->show();
-    blDebug ( "END MyPlugFPago::elslot1", 0 );
+    blDebug ( "END PluginBf_FormasDePago::elslot1", 0 );
 }
 
 
@@ -66,9 +66,9 @@ void MyPlugFPago::elslot1()
 /**
 \param bges
 **/
-void MyPlugFPago::inicializa ( BfBulmaFact *bges )
+void PluginBf_FormasDePago::inicializa ( BfBulmaFact *bges )
 {
-    blDebug ( "MyPlugFPago::inicializa", 0 );
+    blDebug ( "PluginBf_FormasDePago::inicializa", 0 );
 
     if ( bges->company()->hasTablePrivilege ( "forma_pago", "SELECT" ) ) {
 
@@ -87,7 +87,7 @@ void MyPlugFPago::inicializa ( BfBulmaFact *bges )
         connect ( planCuentas, SIGNAL ( activated() ), this, SLOT ( elslot1() ) );
 
     }// end if
-    blDebug ( "END MyPlugFPago::inicializa", 0 );
+    blDebug ( "END PluginBf_FormasDePago::inicializa", 0 );
 }
 
 
@@ -107,7 +107,7 @@ int entryPoint ( BfBulmaFact *bges )
     setlocale ( LC_ALL, "" );
     blBindTextDomain ( "pluginbf_formasdepago", g_confpr->valor ( CONF_DIR_TRADUCCION ).toAscii().constData() );
 
-    MyPlugFPago *plug = new MyPlugFPago();
+    PluginBf_FormasDePago *plug = new PluginBf_FormasDePago();
     plug->inicializa ( bges );
     return 0;
 }

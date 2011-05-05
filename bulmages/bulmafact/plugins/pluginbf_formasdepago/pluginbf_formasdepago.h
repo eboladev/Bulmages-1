@@ -37,7 +37,7 @@ extern "C" PLUGINBF_FORMASDEPAGO_EXPORT int BlSubFormDelegate_setModelData(BlSub
 extern "C" PLUGINBF_FORMASDEPAGO_EXPORT int BlSubFormDelegate_setEditorData(BlSubFormDelegate *);
 extern "C" PLUGINBF_FORMASDEPAGO_EXPORT int BlSubForm_editFinished(BlSubForm *);
 
-class MyPlugFPago : public QObject, BlMainCompanyPointer
+class PluginBf_FormasDePago : public QObject, BlMainCompanyPointer
 {
     Q_OBJECT
 
@@ -45,8 +45,8 @@ public:
     BfBulmaFact *m_bges;
 
 public:
-    MyPlugFPago();
-    ~MyPlugFPago();
+    PluginBf_FormasDePago();
+    ~PluginBf_FormasDePago();
     void inicializa ( BfBulmaFact * );
 
 public slots:

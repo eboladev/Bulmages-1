@@ -30,35 +30,35 @@
 ///
 /**
 **/
-myplugininvsimple::myplugininvsimple()
+PluginBf_InventarioSimple::PluginBf_InventarioSimple()
 {
-    blDebug ( "myplugininvsimple::myplugininvsimple", 0 );
-    blDebug ( "END myplugininvsimple::myplugininvsimple", 0 );
+    blDebug ( "PluginBf_InventarioSimple::PluginBf_InventarioSimple", 0 );
+    blDebug ( "END PluginBf_InventarioSimple::PluginBf_InventarioSimple", 0 );
 }
 
 
 ///
 /**
 **/
-myplugininvsimple::~myplugininvsimple()
+PluginBf_InventarioSimple::~PluginBf_InventarioSimple()
 {
-    blDebug ( "myplugininvsimple::~myplugininvsimple", 0 );
-    blDebug ( "END myplugininvsimple::~myplugininvsimple", 0 );
+    blDebug ( "PluginBf_InventarioSimple::~PluginBf_InventarioSimple", 0 );
+    blDebug ( "END PluginBf_InventarioSimple::~PluginBf_InventarioSimple", 0 );
 }
 
 
 ///
 /**
 **/
-void myplugininvsimple::elslot()
+void PluginBf_InventarioSimple::elslot()
 {
-    blDebug ( "myplugininvsimple::elslot", 0 );
+    blDebug ( "PluginBf_InventarioSimple::elslot", 0 );
 
     ListInventarioSimpleView *tar = new ListInventarioSimpleView ( ( BfCompany * ) mainCompany(), NULL );
     mainCompany() ->m_pWorkspace->addSubWindow ( tar );
     tar->show();
 
-    blDebug ( "END myplugininvsimple::elslot", 0 );
+    blDebug ( "END PluginBf_InventarioSimple::elslot", 0 );
 }
 
 
@@ -66,9 +66,9 @@ void myplugininvsimple::elslot()
 /**
 \param bges
 **/
-void myplugininvsimple::inicializa ( BfBulmaFact *bges )
+void PluginBf_InventarioSimple::inicializa ( BfBulmaFact *bges )
 {
-    blDebug ( "myplugininvsimple::inicializa", 0 );
+    blDebug ( "PluginBf_InventarioSimple::inicializa", 0 );
     /// El men&uacute; de Tarifas en la secci&oacute;n de art&iacute;culos.
     m_bges = bges;
     setMainCompany ( bges->company() );
@@ -84,7 +84,7 @@ void myplugininvsimple::inicializa ( BfBulmaFact *bges )
 
     pPluginMenu->addAction ( planCuentas );
     connect ( planCuentas, SIGNAL ( activated() ), this, SLOT ( elslot() ) );
-    blDebug ( "END myplugininvsimple::inicializa", 0 );
+    blDebug ( "END PluginBf_InventarioSimple::inicializa", 0 );
 }
 
 
@@ -104,7 +104,7 @@ int entryPoint ( BfBulmaFact *bges )
     setlocale ( LC_ALL, "" );
     blBindTextDomain ( "pluginbf_inventariosimple", g_confpr->valor ( CONF_DIR_TRADUCCION ).toAscii().constData() );
 
-    myplugininvsimple *plug = new myplugininvsimple();
+    PluginBf_InventarioSimple *plug = new PluginBf_InventarioSimple();
     plug->inicializa ( bges );
     return 0;
 }
