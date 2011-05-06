@@ -45,7 +45,7 @@ extern "C" PLUGINBF_TRAZABILIDAD_EXPORT int ListLinFacturaProveedorView_ListLinF
 extern "C" PLUGINBF_TRAZABILIDAD_EXPORT int BfSubForm_on_mui_list_editFinished ( BfSubForm * );
 
 
-class myplugin : public QObject, BlMainCompanyPointer
+class PluginBf_Trazabilidad : public QObject, BlMainCompanyPointer
 {
     Q_OBJECT
 
@@ -53,8 +53,8 @@ public:
     BfBulmaFact *m_bulmafact;
 
 public:
-    myplugin();
-    ~myplugin();
+    PluginBf_Trazabilidad();
+    ~PluginBf_Trazabilidad();
     void inicializa ( BfBulmaFact * );
 
 public slots:
