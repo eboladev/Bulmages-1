@@ -1,3 +1,9 @@
+bulmages (0.13+git-1) unstable; urgency=low
+
+  * Added dependency for python-qt4 in bulmages.
+
+ -- Tomeu Borras Riera <tborras@gmail.com>  Thu, 6 May 2011 16:59:33 +0100
+
 bulmages (0.12+svn4413-1) unstable; urgency=low
 
   * Added dependency for python-qt4 in bulmages.

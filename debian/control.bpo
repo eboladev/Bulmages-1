@@ -11,7 +11,7 @@ XS-Vcs-Browser: http://svn.berlios.de/wsvn/bulmages/trunk/debian/
 
 Package: bulmages
 Architecture: any
-Depends: ${shlibs:Depends}, bulmages-common (>= 0.11), bulmages-admin (>= 0.11), bulmacont-plugins (>= 0.11), bulmafact-plugins (>= 0.11), bulmatpv-plugins (>= 0.11)
+Depends: ${shlibs:Depends}, bulmages-common (>= 0.13), bulmages-admin (>= 0.13), bulmacont-plugins (>= 0.13), bulmafact-plugins (>= 0.13), bulmatpv-plugins (>= 0.13)
 Description: Accounting and invoicing programs for Spanish little businesses
  This package provides the entire Bulmages financial suite for Spanish
  businesses.  Bulmages includes an accounting program (bulmacont), an invoicing
@@ -21,7 +21,7 @@ Description: Accounting and invoicing programs for Spanish little businesses
 
 Package: bulmages-admin
 Architecture: any
-Depends: ${shlibs:Depends}, postgresql-client (>= 8.1.0), bulmages-common (>= 0.11), python (>= 2.4), python-qt4 (>=4.4.2-1~bpo40+1)
+Depends: ${shlibs:Depends}, postgresql-client (>= 8.1.0), bulmages-common (>= 0.13), python (>= 2.4), python-qt4 (>=4.4.2-1~bpo40+1)
 Description: Small GUI to launch some management programs for little businesses
  This package helps to start BulmaCont, and when available BulmaFact and 
  BulmaTPV.
@@ -39,7 +39,7 @@ Description: Bulmages invoicing and accounting, config and common stuff
 
 Package: bulmacont
 Architecture: any
-Depends: ${shlibs:Depends}, python-reportlab, python, postgresql-client (>= 8.1.0), bulmages-common (>= 0.11)
+Depends: ${shlibs:Depends}, python-reportlab, python, postgresql-client (>= 8.1.0), bulmages-common (>= 0.13)
 Recommends: bulmages-admin, bulmages-servers, bulmacont-plugins
 Description: Spanish accounting program
  This package helps with the accounting task for small or medium sized 
@@ -49,7 +49,7 @@ Description: Spanish accounting program
 
 Package: bulmafact
 Architecture: any
-Depends: ${shlibs:Depends}, python-reportlab, python, postgresql-client (>= 8.1.0), bulmages-common (>= 0.11)
+Depends: ${shlibs:Depends}, python-reportlab, python, postgresql-client (>= 8.1.0), bulmages-common (>= 0.13)
 Recommends: bulmages-admin, bulmages-servers, bulmafact-plugins
 Description: Spanish invoicing program
  This package helps to manage the invoicing of small or medium sized businesses
@@ -59,7 +59,7 @@ Description: Spanish invoicing program
 
 Package: bulmatpv
 Architecture: any
-Depends: ${shlibs:Depends}, python-reportlab, python, postgresql-client (>= 8.1.0), bulmages-common (>= 0.11)
+Depends: ${shlibs:Depends}, python-reportlab, python, postgresql-client (>= 8.1.0), bulmages-common (>= 0.13)
 Recommends: bulmages-admin, bulmages-servers, bulmatpv-plugins
 Description: Spanish invoicing program 
  This package contains a Point of sale (POS) program for a small or medium 
@@ -69,8 +69,8 @@ Description: Spanish invoicing program
 
 Package: bulmages-servers
 Architecture: all
-Depends: ${shlibs:Depends}, postgresql-client (>= 8.1.0), bulmages-common (>= 0.11), postgresql (>= 8.1.0)
-Conflicts: bulmacont-server (<= 0.10), bulmafact-server (<= 0.10)
+Depends: ${shlibs:Depends}, postgresql-client (>= 8.1.0), bulmages-common (>= 0.13), postgresql (>= 8.1.0)
+Conflicts: bulmacont-server (<= 0.10), bulmafact-server (<= 0.12)
 Recommends: bulmages-admin
 Description: Spanish accounting program server
  This package helps with the accounting tasks for small or medium sized 
@@ -80,19 +80,19 @@ Description: Spanish accounting program server
  .
  This program is made in an open community, you are welcome to join us.
 
-Package: libbulmalib0.11-dev
+Package: libbulmalib0.13-dev
 Conflicts: libbulmalib-1-dev, libbulmalib0
 Section: libdevel
 Architecture: any
-Depends: libbulmalib0.11, ${shlibs:Depends}
+Depends: libbulmalib0.13, ${shlibs:Depends}
 Description: bulmages headers for development
  Bulmages is invoicing and accounting for small businesses.
  .
  In this package you can find all files needed for a developer
  environment (Headers, plus shared library).
 
-Package: libbulmalib0.11
-Conflicts: libbulmalib-1, libbulmalib0
+Package: libbulmalib0.13
+Conflicts: libbulmalib-1, libbulmalib0, libbulmalib0.11, libbulmalib0.12
 Section: libs
 Architecture: any
 Depends: ${shlibs:Depends}, kspread
@@ -115,7 +115,7 @@ Description: plugins collection for Bulmages
 
 Package: bulmafact-plugins
 Architecture: any
-Depends: ${shlibs:Depends}, bulmafact (>= 0.11), kmail, postgresql-contrib
+Depends: ${shlibs:Depends}, bulmafact (>= 0.13), kmail, postgresql-contrib
 Description: plugins collection for BfBulmaFact
  Provides a optional plugin collection for bulmafact.
  Some of them need a patched database, so read the README file.
@@ -126,7 +126,7 @@ Description: plugins collection for BfBulmaFact
 
 Package: bulmatpv-plugins
 Architecture: any
-Depends: ${shlibs:Depends}, bulmatpv (>= 0.11)
+Depends: ${shlibs:Depends}, bulmatpv (>= 0.13)
 Description: plugins collection for Bulmatpv
  Provides a optional plugin collection for bulmatpv.
  Some of them need a patched database, so read the README file.

@@ -12,7 +12,7 @@ XS-Vcs-Browser: http://svn.berlios.de/wsvn/bulmages/trunk/debian/
 Package: bulmages
 Architecture: any
 Depends: ${shlibs:Depends}, python, python-qt4 (>= 4.7.4), libqtscript4-gui (>= 0.1.0)
-Recommends: bulmages-servers-admin (>= 0.12), bulmacont (>= 0.12), bulmafact (>= 0.12), bulmatpv (>= 0.12)
+Recommends: bulmages-servers-admin (>= 0.13), bulmacont (>= 0.13), bulmafact (>= 0.13), bulmatpv (>= 0.13)
 Description: Accounting and invoicing programs for Spanish SMEes
  This package provides the entire Bulmages financial suite for Spanish
  SMEs.  Bulmages includes an accounting program (bulmacont), an invoicing
