@@ -31,12 +31,12 @@
 #include "clienteview.h"
 #include "blform.h"
 #include "pdefs_pluginbf_contrato.h"
-
+#include "blaction.h"
 
 extern "C" PLUGINBF_CONTRATO_EXPORT int entryPoint ( BfBulmaFact * );
 extern "C" PLUGINBF_CONTRATO_EXPORT int ClienteView_ClienteView ( ClienteView * );
 extern "C" PLUGINBF_CONTRATO_EXPORT int BlForm_cargar ( BlForm * );
-
+extern "C" PLUGINBF_CONTRATO_EXPORT int BlAction_triggered(BlAction *);
 
 #endif
 

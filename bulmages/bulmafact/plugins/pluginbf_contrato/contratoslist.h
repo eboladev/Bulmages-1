@@ -28,23 +28,6 @@
 #include "bfbulmafact.h"
 
 
-class PluginBf_Contrato : public QObject
-{
-    Q_OBJECT
-
-public:
-    BlPostgreSqlClient *m_dbConnection;
-    BfBulmaFact *m_bulmafact;
-
-public:
-    PluginBf_Contrato();
-    ~PluginBf_Contrato();
-    void inicializa ( BfBulmaFact * );
-
-public slots:
-    void elslot();
-};
-
 
 /** Subformulario de contratoes.
     Esta clase derivada de BfSubForm presenta todo el listado de contratoes.

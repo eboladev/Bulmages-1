@@ -5,4 +5,6 @@ usr/lib/bulmatpv/plugins/*
 usr/lib/libbulmatpv.so*
 usr/share/man/bulmatpv.1
 usr/share/man/bulmatpv.conf.1
-
+usr/share/menu/bulmatpv.menu
+usr/share/applications/bulmatpv.desktop
+usr/share/pixmaps/bulmatpv.xpm

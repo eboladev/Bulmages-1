@@ -48,3 +48,6 @@ usr/share/man/bulmages.conf.1
 /usr/share/docs/*
 /usr/share/doc/*
 
+usr/share/menu/bulmages.menu
+usr/share/applications/bulmages.desktop
+usr/share/pixmaps/bulmages.xpm

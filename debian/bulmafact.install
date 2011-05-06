@@ -8,4 +8,7 @@ usr/share/man/bulmafact.1
 usr/share/man/bulmafact.1
 usr/share/man/bulmafact.conf.1
 usr/share/man/bulmafact.conf.1
+usr/share/menu/bulmafact.menu
+usr/share/applications/bulmafact.desktop
+usr/share/pixmaps/bulmafact.xpm
 

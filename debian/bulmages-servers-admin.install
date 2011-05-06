@@ -1,4 +1,5 @@
 /usr/bin/bulmasetup
+/usr/bin/runbulmasetup
 /usr/share/bulmages/bulmalib-plugins/README.*
 /usr/share/bulmages/bulmafact-plugins/README.*
 /usr/share/bulmages/bulmacont-plugins/README.*
@@ -40,3 +41,6 @@
 /usr/share/bulmages/dbmodels/*
 /usr/share/bulmages/rev-conf/*
 /usr/share/man/bulmasetup.1
+usr/share/menu/bulmasetup.menu
+usr/share/applications/bulmasetup.desktop
+usr/share/pixmaps/bulmasetup.xpm

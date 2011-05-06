@@ -32,63 +32,9 @@
 #include "contratoslist.h"
 #include "blform.h"
 
-///
-/**
-**/
-PluginBf_Contrato::PluginBf_Contrato()
-{
-    blDebug ( "PluginBf_Contrato::PluginBf_Contrato", 0 );
-    blDebug ( "END PluginBf_Contrato::PluginBf_Contrato", 0 );
-}
-
-///
-/**
-**/
-PluginBf_Contrato::~PluginBf_Contrato()
-{
-    blDebug ( "PluginBf_Contrato::~PluginBf_Contrato", 0 );
-    blDebug ( "END PluginBf_Contrato::~PluginBf_Contrato", 0 );
-}
+BfBulmaFact *g_bges = NULL;
 
 
-///
-/**
-**/
-void PluginBf_Contrato::elslot()
-{
-    blDebug ( "PluginBf_Contrato::elslot", 0 );
-    ContratosList *vehiculoview = new ContratosList ( ( BfCompany * ) m_dbConnection );
-    m_bulmafact->workspace() ->addSubWindow ( vehiculoview );
-    vehiculoview->show();
-    blDebug ( "END PluginBf_Contrato::elslot", 0 );
-}
-
-
-///
-/**
-\param bges
-**/
-void PluginBf_Contrato::inicializa ( BfBulmaFact *bges )
-{
-    blDebug ( "PluginBf_Contrato::inicializa", 0 );
-    /// Creamos el men&uacute;.
-    m_dbConnection = bges->company();
-    m_bulmafact = bges;
-
-    /// Miramos si existe un menu Ventas
-    QMenu *pPluginMenu = bges->newMenu ( "&Ventas", "menuVentas", "menuMaestro" );
-
-    QAction *accion = new QAction ( "&Contratos", 0 );
-    accion->setStatusTip ( "Listado de Contratos" );
-    accion->setWhatsThis ( "Listado de Contratos" );
-    accion->setIcon ( QIcon ( QString::fromUtf8 ( ":/Images/contract-list.png" ) ) );
-    connect ( accion, SIGNAL ( activated() ), this, SLOT ( elslot() ) );
-    /// A&ntilde;adimos la nueva opci&oacute;n al men&uacute; principal del programa.
-    pPluginMenu->addSeparator();
-    pPluginMenu->addAction ( accion );
-    bges->Listados->addAction ( accion );
-    blDebug ( "END PluginBf_Contrato::inicializa", 0 );
-}
 
 
 ///
@@ -103,15 +49,45 @@ int entryPoint ( BfBulmaFact *bges )
     /// El plugin necesita un parche en la base de datos para funcionar.
     bges->company()->dbPatchVersionCheck("PluginBf_Contrato", "0.11.1-0001");
 
+    g_bges = bges;
+    
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale ( LC_ALL, "" );
     blBindTextDomain ( "pluginbf_contrato", g_confpr->valor ( CONF_DIR_TRADUCCION ).toAscii().constData() );
 
-    PluginBf_Contrato *plug = new PluginBf_Contrato();
-    plug->inicializa ( bges );
+    
+    /// Miramos si existe un menu Ventas
+    QMenu *pPluginMenu = bges->newMenu ( "&Ventas", "menuVentas", "menuMaestro" );
+
+    BlAction *accion = new BlAction ( "&Contratos", 0 );
+    accion->setStatusTip ( "Listado de Contratos" );
+    accion->setWhatsThis ( "Listado de Contratos" );
+    accion->setIcon ( QIcon ( QString::fromUtf8 ( ":/Images/contract-list.png" ) ) );
+    accion->setObjectName("tratamientoContratos");
+
+    pPluginMenu->addAction(accion);
+    
     blDebug ( "END entryPoint", 0, "Punto de Entrada del plugin PluginBf_Contrato" );
     return 0;
 }
+
+
+
+
+
+int BlAction_triggered(BlAction *accion) {
+    if (accion->objectName() == "tratamientoContratos") {
+	ContratosList *contratoslist = new ContratosList ( ( BfCompany * ) g_bges->company() );
+	g_bges->company()->m_pWorkspace->addSubWindow ( contratoslist );
+	contratoslist->show();
+    } // end if
+    
+    return 0;
+} // end if
+
+
+
+
 
 
 ///
