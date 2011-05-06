@@ -38,32 +38,32 @@
 ///
 /**
 **/
-myplugincont::myplugincont()
+PluginBf_BulmaTPV::PluginBf_BulmaTPV()
 {
-    blDebug ( "myplugincont::myplugincont", 0 );
-    blDebug ( "END myplugincont::myplugincont", 0 );
+    blDebug ( "PluginBf_BulmaTPV::PluginBf_BulmaTPV", 0 );
+    blDebug ( "END PluginBf_BulmaTPV::PluginBf_BulmaTPV", 0 );
 }
 
 ///
 /**
 **/
-myplugincont::~myplugincont()
+PluginBf_BulmaTPV::~PluginBf_BulmaTPV()
 {
-    blDebug ( "myplugincont::~myplugincont", 0 );
-    blDebug ( "END myplugincont::~myplugincont", 0 );
+    blDebug ( "PluginBf_BulmaTPV::~PluginBf_BulmaTPV", 0 );
+    blDebug ( "END PluginBf_BulmaTPV::~PluginBf_BulmaTPV", 0 );
 }
 
 
 ///
 /**
 **/
-void myplugincont::elslot()
+void PluginBf_BulmaTPV::elslot()
 {
-    blDebug ( "myplugincont::elslot", 0 );
+    blDebug ( "PluginBf_BulmaTPV::elslot", 0 );
     ZList *vehiculoview = new ZList ( ( BfCompany * ) m_dbConnection );
     m_bulmafact->workspace() ->addSubWindow ( vehiculoview );
     vehiculoview->show();
-    blDebug ( "END myplugincont::elslot", 0 );
+    blDebug ( "END PluginBf_BulmaTPV::elslot", 0 );
 }
 
 
@@ -71,9 +71,9 @@ void myplugincont::elslot()
 /**
 \param bges
 **/
-void myplugincont::inicializa ( BfBulmaFact *bges )
+void PluginBf_BulmaTPV::inicializa ( BfBulmaFact *bges )
 {
-    blDebug ( "myplugincont::inicializa", 0 );
+    blDebug ( "PluginBf_BulmaTPV::inicializa", 0 );
 
     /// Miramos si existe un menu Ventas
     QMenu *pPluginMenu = NULL;
@@ -97,7 +97,7 @@ void myplugincont::inicializa ( BfBulmaFact *bges )
     /// A&ntilde;adimos la nueva opci&oacute;n al men&uacute; principal del programa.
     pPluginMenu->addSeparator();
     pPluginMenu->addAction ( accion );
-    blDebug ( "END myplugincont::inicializa", 0 );
+    blDebug ( "END PluginBf_BulmaTPV::inicializa", 0 );
 }
 
 
@@ -114,7 +114,7 @@ int entryPoint ( BfBulmaFact *bges )
     setlocale ( LC_ALL, "" );
     blBindTextDomain ( "pluginbf_tpv", g_confpr->valor ( CONF_DIR_TRADUCCION ).toAscii().constData() );
 
-    myplugincont *plug = new myplugincont();
+    PluginBf_BulmaTPV *plug = new PluginBf_BulmaTPV();
     plug->inicializa ( bges );
     blDebug ( "END entryPoint", 0, "Punto de Entrada del plugin PluginContratos" );
     return 0;

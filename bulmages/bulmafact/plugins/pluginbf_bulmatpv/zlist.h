@@ -29,7 +29,7 @@
 #include "pdefs_pluginbf_bulmatpv.h"
 
 
-class myplugincont : public QObject
+class PluginBf_BulmaTPV : public QObject
 {
     Q_OBJECT
 
@@ -38,8 +38,8 @@ public:
     BfBulmaFact *m_bulmafact;
 
 public:
-    myplugincont();
-    ~myplugincont();
+    PluginBf_BulmaTPV();
+    ~PluginBf_BulmaTPV();
     void inicializa ( BfBulmaFact * );
 
 public slots:
