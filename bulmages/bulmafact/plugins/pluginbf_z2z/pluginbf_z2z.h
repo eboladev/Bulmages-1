@@ -30,13 +30,13 @@
 extern "C" PLUGINBF_Z2Z_EXPORT int entryPoint ( BfBulmaFact * );
 
 
-class mypluginzz : public QObject
+class PluginBf_Z2Z : public QObject
 {
     Q_OBJECT
 
 public:
-    mypluginzz();
-    ~mypluginzz();
+    PluginBf_Z2Z();
+    ~PluginBf_Z2Z();
 
 public slots:
     void elslot ( );

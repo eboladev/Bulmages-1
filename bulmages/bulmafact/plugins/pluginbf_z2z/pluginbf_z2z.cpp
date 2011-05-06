@@ -41,20 +41,20 @@ BfCompany *g_bges;
 ///
 /**
 **/
-mypluginzz::mypluginzz()
+PluginBf_Z2Z::PluginBf_Z2Z()
 {
-    blDebug ( "mypluginzz::mypluginzz", 0 );
-    blDebug ( "END mypluginzz::mypluginzz", 0 );
+    blDebug ( "PluginBf_Z2Z::PluginBf_Z2Z", 0 );
+    blDebug ( "END PluginBf_Z2Z::PluginBf_Z2Z", 0 );
 }
 
 
 ///
 /**
 **/
-mypluginzz::~mypluginzz()
+PluginBf_Z2Z::~PluginBf_Z2Z()
 {
-    blDebug ( "mypluginzz::~mypluginzz", 0 );
-    blDebug ( "END mypluginzz::~mypluginzz", 0 );
+    blDebug ( "PluginBf_Z2Z::~PluginBf_Z2Z", 0 );
+    blDebug ( "END PluginBf_Z2Z::~PluginBf_Z2Z", 0 );
 }
 
 
@@ -62,13 +62,13 @@ mypluginzz::~mypluginzz()
 /**
 \return
 **/
-void mypluginzz::elslot (  )
+void PluginBf_Z2Z::elslot (  )
 {
-    blDebug ( "mypluginzz::cambia", 0 );
+    blDebug ( "PluginBf_Z2Z::cambia", 0 );
     Z2ZView * bud = new Z2ZView ( g_bges, NULL );
     g_bges ->m_pWorkspace->addSubWindow ( bud );
     bud->show();
-    blDebug ( "END mypluginzz::cambia", 0 );
+    blDebug ( "END PluginBf_Z2Z::cambia", 0 );
 }
 
 
@@ -87,7 +87,7 @@ int entryPoint ( BfBulmaFact *bges )
 
     g_bges = bges->company();
 
-    mypluginzz *corr = new mypluginzz();
+    PluginBf_Z2Z *corr = new PluginBf_Z2Z();
 
     /// A&ntilde;ade en el men&uacute; del programa la opci&oacuteMn para
     /// acceder al corrector.

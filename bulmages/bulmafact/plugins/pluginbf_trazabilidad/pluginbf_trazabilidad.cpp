@@ -35,33 +35,33 @@
 ///
 /**
 **/
-myplugin::myplugin()
+PluginBf_Trazabilidad::PluginBf_Trazabilidad()
 {
-    blDebug ( "myplugin::myplugin", 0 );
-    blDebug ( "END myplugin::myplugin", 0 );
+    blDebug ( "PluginBf_Trazabilidad::PluginBf_Trazabilidad", 0 );
+    blDebug ( "END PluginBf_Trazabilidad::PluginBf_Trazabilidad", 0 );
 }
 
 
 ///
 /**
 **/
-myplugin::~myplugin()
+PluginBf_Trazabilidad::~PluginBf_Trazabilidad()
 {
-    blDebug ( "myplugin::~myplugin", 0 );
-    blDebug ( "END myplugin::~myplugin", 0 );
+    blDebug ( "PluginBf_Trazabilidad::~PluginBf_Trazabilidad", 0 );
+    blDebug ( "END PluginBf_Trazabilidad::~PluginBf_Trazabilidad", 0 );
 }
 
 
 ///
 /**
 **/
-void myplugin::elslot()
+void PluginBf_Trazabilidad::elslot()
 {
-    blDebug ( "myplugin::elslot", 0 );
+    blDebug ( "PluginBf_Trazabilidad::elslot", 0 );
     MovimientosView *mov = new MovimientosView ( ( BfCompany * ) mainCompany() );
     mainCompany() ->pWorkspace() ->addSubWindow ( mov );
     mov->show();
-    blDebug ( "END myplugin::elslot", 0 );
+    blDebug ( "END PluginBf_Trazabilidad::elslot", 0 );
 }
 
 
@@ -69,9 +69,9 @@ void myplugin::elslot()
 /**
 \param bges
 **/
-void myplugin::inicializa ( BfBulmaFact *bges )
+void PluginBf_Trazabilidad::inicializa ( BfBulmaFact *bges )
 {
-    blDebug ( "myplugin::inicializa", 0 );
+    blDebug ( "PluginBf_Trazabilidad::inicializa", 0 );
     /// Creamos el men&uacute;.
     setMainCompany ( bges->company() );
     m_bulmafact = bges;
@@ -84,7 +84,7 @@ void myplugin::inicializa ( BfBulmaFact *bges )
     bges->menuMaestro->addAction ( accion );
 
     connect ( accion, SIGNAL ( activated() ), this, SLOT ( elslot() ) );
-    blDebug ( "END myplugin::inicializa", 0 );
+    blDebug ( "END PluginBf_Trazabilidad::inicializa", 0 );
 }
 
 
@@ -104,7 +104,7 @@ int entryPoint ( BfBulmaFact *bges )
     setlocale ( LC_ALL, "" );
     blBindTextDomain ( "pluginbf_trazabilidad", g_confpr->valor ( CONF_DIR_TRADUCCION ).toAscii().constData() );
 
-    myplugin *plug = new myplugin();
+    PluginBf_Trazabilidad *plug = new PluginBf_Trazabilidad();
     plug->inicializa ( bges );
     blDebug ( "END entryPoint", 0, "Punto de Entrada del plugin PluginTrazabilidad" );
     return 0;
