@@ -1,0 +1,27 @@
+Plugin Cobrar Parcial
+======================
+
+(C) 2011 Todo-Redes de Comunicacion Global, S.L.
+Software Bajo Licencia G.P.L. (Vea el archivo COPYNG adjunto)
+
+
+Versión: 0.13.0
+
+
+Descripcion: Plugin para dividir un ticket para cobrar por partes.
+
+Compilacion
+===========
+
+El plugin se compilará con el resto de bulmages y  se ubicara en bulmages/installbulmages/plugins con el nombre libpluginbt_cobrarparcialivaincluido.so
+
+
+
+Instalacion
+===========
+
+Configure la directiva CONF_PLUGINS_BULMATPV para que contenga la llamada a este plugin. Dicha directiva
+puede ser a modo global en el archivo /etc/bulmages.conf o personalizada con los archivos /etc/bulmatpv_<<database>>.conf
+
+
+

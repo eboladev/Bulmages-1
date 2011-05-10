@@ -1,0 +1,114 @@
+# translation of pluginbf_example_es_ES.po to Catalan
+# Header entry was created by KBabel!
+#
+# Leopold Palomo Avellaneda <leo@alaxarxa.net>, 2009.
+# Leopold Palomo Avellaneda <lepalom@wol.es>, 2009.
+msgid ""
+msgstr ""
+"Project-Id-Version: pluginbf_example_es_ES\n"
+"Report-Msgid-Bugs-To: info@iglues.org\n"
+"POT-Creation-Date: 2011-05-10 10:10+0200\n"
+"PO-Revision-Date: 2009-02-11 11:29+0100\n"
+"Last-Translator: Leopold Palomo Avellaneda <lepalom@wol.es>\n"
+"Language-Team: Catalan <ca@dodds.net >\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: \n"
+"X-Generator: KBabel 1.11.4\n"
+
+#: ui_cobrarparcialbase.h:235
+msgid "&Aceptar"
+msgstr "&Accepter"
+
+#: ui_cobrarparcialbase.h:236
+#, fuzzy
+msgid "&Cancelar"
+msgstr ""
+"#-#-#-#-#  bulmalib_fr_FR.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"&Cancéler\n"
+"#-#-#-#-#  bulmacont_fr_FR.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"&Cancéler\n"
+"#-#-#-#-#  bulmafact_fr_FR.po  #-#-#-#-#\n"
+"&Annuler"
+
+#: cobrarparcialview.cpp:107 cobrarparcialview.cpp:108
+#: cobrarparcialview.cpp:212 cobrarparcialview.cpp:213
+msgid "(I.V.A. inc.)"
+msgstr ""
+
+#: ui_cobrarparcialbase.h:230
+msgid "(Linea) =>"
+msgstr ""
+
+#: ui_cobrarparcialbase.h:229
+msgid "(unidad) ->"
+msgstr ""
+
+#: ui_cobrarparcialbase.h:231
+msgid "<- (Unidad)"
+msgstr ""
+
+#: ui_cobrarparcialbase.h:232
+msgid "<= (Linea)"
+msgstr ""
+
+#: cobrarparcialview.cpp:112 cobrarparcialview.cpp:115
+#: cobrarparcialview.cpp:217 cobrarparcialview.cpp:220
+msgid "ARTICULO:"
+msgstr ""
+
+#: cobrarparcialview.cpp:112 cobrarparcialview.cpp:115
+#: cobrarparcialview.cpp:217 cobrarparcialview.cpp:220
+msgid "CANT:"
+msgstr ""
+
+#: pluginbt_cobrarparcialivaincluido.cpp:73
+msgid "Cobrar parcial"
+msgstr ""
+
+#: pluginbt_cobrarparcialivaincluido.cpp:107 ui_cobrarparcialbase.h:226
+msgid "Cobro parcial"
+msgstr ""
+
+#: cobrarparcialview.cpp:398
+msgid "El nuevo ticket no puede estar vacio para crearlo."
+msgstr ""
+
+#: cobrarparcialview.cpp:330
+msgid "El ticket origen no puede estar vacio. Deje al menos 1 linea."
+msgstr ""
+
+#: cobrarparcialview.cpp:112 cobrarparcialview.cpp:115
+#: cobrarparcialview.cpp:217 cobrarparcialview.cpp:220
+msgid "PRECIO:"
+msgstr ""
+
+#: ui_cobrarparcialbase.h:227 ui_cobrarparcialbase.h:233
+msgid "^"
+msgstr ""
+
+#: ui_cobrarparcialbase.h:228 ui_cobrarparcialbase.h:234
+msgid "v"
+msgstr ""
+
+#~ msgid "&Herramientas"
+#~ msgstr "&Herramientas"
+
+#~ msgid "&Prueba de plugin"
+#~ msgstr "&Prueba de plugin"
+
+#~ msgid "Mensaje."
+#~ msgstr "Mensaje."
+
+#~ msgid "Muestra que es esto"
+#~ msgstr "Muestra que es esto"
+
+#~ msgid "Muestra statustip"
+#~ msgstr "Muestra statustip"
+
+#~ msgid "Prueba de plugin para BfBulmaFact."
+#~ msgstr "Prueba de plugin para BfBulmaFact."
+
+#~ msgid "Titulo de la ventana"
+#~ msgstr "Título de la ventana"
