@@ -70,7 +70,7 @@ if(USE_GETTEXT)
    GETTEXT_CREATE_TEMPLATE(${plugin} ${CMAKE_CURRENT_BINARY_DIR}
                                 ${CMAKE_CURRENT_SOURCE_DIR} plugin_i18n)
    GETTEXT_CREATE_TRANSLATIONS(${CMAKE_CURRENT_BINARY_DIR}/${plugin}.pot
-                                ALL LANGUAGES es_ES ca_ES en_US fr_FR)
+                                ALL LANGUAGES es_ES ca_ES fr_FR)
 endif(USE_GETTEXT)
 
 
