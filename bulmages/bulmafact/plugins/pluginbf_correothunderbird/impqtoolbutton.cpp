@@ -37,7 +37,7 @@
 #else
 #define CAD_MOVE QString("mv ")
 #define CAD_THUNDERBIRD QString("thunderbird ")
-#define CAD_COMILLAS("")
+#define CAD_COMILLAS QString("")
 #endif
 
 ///
