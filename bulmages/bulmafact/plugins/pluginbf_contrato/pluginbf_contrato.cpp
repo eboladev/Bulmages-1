@@ -44,7 +44,7 @@ BfBulmaFact *g_bges = NULL;
 **/
 int entryPoint ( BfBulmaFact *bges )
 {
-    blDebug ( "entryPoint", 0, "Punto de Entrada del plugin PluginBf_Contrato" );
+    blDebug ( "entryPoint", 0, "Punto de entrada del plugin PluginBf_Contrato" );
 
     /// El plugin necesita un parche en la base de datos para funcionar.
     bges->company()->dbPatchVersionCheck("PluginBf_Contrato", "0.11.1-0001");
@@ -57,17 +57,17 @@ int entryPoint ( BfBulmaFact *bges )
 
     
     /// Miramos si existe un menu Ventas
-    QMenu *pPluginMenu = bges->newMenu ( "&Ventas", "menuVentas", "menuMaestro" );
+    QMenu *pPluginMenu = bges->newMenu ( _("&Ventas"), "menuVentas", "menuMaestro" );
 
-    BlAction *accion = new BlAction ( "&Contratos", 0 );
-    accion->setStatusTip ( "Listado de Contratos" );
-    accion->setWhatsThis ( "Listado de Contratos" );
+    BlAction *accion = new BlAction ( _("&Contratos"), 0 );
+    accion->setStatusTip ( _("Listado de contratos") );
+    accion->setWhatsThis ( _("Listado de contratos") );
     accion->setIcon ( QIcon ( QString::fromUtf8 ( ":/Images/contract-list.png" ) ) );
     accion->setObjectName("tratamientoContratos");
 
     pPluginMenu->addAction(accion);
     
-    blDebug ( "END entryPoint", 0, "Punto de Entrada del plugin PluginBf_Contrato" );
+    blDebug ( "END entryPoint", 0, "Punto de entrada del plugin PluginBf_Contrato" );
     return 0;
 }
 
@@ -101,7 +101,7 @@ int ClienteView_ClienteView ( ClienteView *art )
     /// Para que funcione bien debemos iniciar con BL_SELECT_MODE y luego pasar a BL_EDIT_MODE ya que si no se hace un meteWindow y no es deseable.
     ContratosList *l = new ContratosList ( ( ( BfCompany * ) art->mainCompany() ), art, 0, BL_SELECT_MODE );
     l->setObjectName ( QString::fromUtf8 ( "ccontratoslist" ) );
-    art->mui_tab->addTab ( l, "Contratos" );
+    art->mui_tab->addTab ( l, _("Contratos") );
     l->setModoEdicion();
     blDebug ( "END ClienteView_ClienteView", 0 );
     return 0;
