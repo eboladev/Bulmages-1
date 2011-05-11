@@ -33,7 +33,7 @@ extern "C" PLUGINBC_DIARIO_EXPORT int entryPoint ( BcBulmaCont * );
 
 
 
-class MyPluginDiario : public QObject, BlMainCompanyPointer
+class PluginBc_Diario : public QObject, BlMainCompanyPointer
 {
     Q_OBJECT
 
@@ -41,8 +41,8 @@ public:
     BcBulmaCont *m_bulmacont;
 
 public:
-    MyPluginDiario();
-    ~MyPluginDiario();
+    PluginBc_Diario();
+    ~PluginBc_Diario();
     void inicializa ( BcBulmaCont * );
 
 public slots:

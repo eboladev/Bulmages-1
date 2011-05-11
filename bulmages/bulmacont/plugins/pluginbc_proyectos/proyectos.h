@@ -25,7 +25,7 @@
 #include "bcbulmacont.h"
 
 
-class mytiptrab : public QObject
+class PluginBc_Proyectos : public QObject
 {
     Q_OBJECT
 
@@ -33,8 +33,8 @@ public:
     BcBulmaCont *m_bulmacont;
 
 public:
-    mytiptrab();
-    ~mytiptrab();
+    PluginBc_Proyectos();
+    ~PluginBc_Proyectos();
     void inicializa ( BcBulmaCont * );
 
 public slots:

@@ -37,33 +37,33 @@
 ///
 /**
 **/
-myBloqFechas::myBloqFechas()
+PluginBc_BloqueFechas::PluginBc_BloqueFechas()
 {
-    blDebug ( "myBloqFechas::myBloqFechas", 0 );
-    blDebug ( "END myBloqFechas::myBloqFechas", 0 );
+    blDebug ( "PluginBc_BloqueFechas::PluginBc_BloqueFechas", 0 );
+    blDebug ( "END PluginBc_BloqueFechas::PluginBc_BloqueFechas", 0 );
 }
 
 
 ///
 /**
 **/
-myBloqFechas::~myBloqFechas()
+PluginBc_BloqueFechas::~PluginBc_BloqueFechas()
 {
-    blDebug ( "myBloqFechas::~myBloqFechas", 0 );
-    blDebug ( "END myBloqFechas::~myBloqFechas", 0 );
+    blDebug ( "PluginBc_BloqueFechas::~PluginBc_BloqueFechas", 0 );
+    blDebug ( "END PluginBc_BloqueFechas::~PluginBc_BloqueFechas", 0 );
 }
 
 
 ///
 /**
 **/
-void myBloqFechas::elslot()
+void PluginBc_BloqueFechas::elslot()
 {
-    blDebug ( "myBloqFechas::elslot", 0 );
+    blDebug ( "PluginBc_BloqueFechas::elslot", 0 );
     BcBloqueaFechaView *tip = new BcBloqueaFechaView ( (BcCompany *)m_bulmacont->empresaactual(), 0 );
     m_bulmacont->workspace()->addSubWindow ( tip );
     tip->show();
-    blDebug ( "END myBloqFechas::elslot", 0 );
+    blDebug ( "END PluginBc_BloqueFechas::elslot", 0 );
 }
 
 
@@ -74,7 +74,7 @@ void myBloqFechas::elslot()
 /**
 \param bges
 **/
-void myBloqFechas::inicializa ( BcBulmaCont *bges )
+void PluginBc_BloqueFechas::inicializa ( BcBulmaCont *bges )
 {
     /// Creamos el men&uacute;.
     m_bulmacont = bges;
@@ -106,7 +106,7 @@ int entryPoint ( BcBulmaCont *bcont )
     setlocale ( LC_ALL, "" );
     blBindTextDomain ( "pluginbc_bloqueofechas", g_confpr->valor ( CONF_DIR_TRADUCCION ).toAscii().constData() );
 
-    myBloqFechas *my = new myBloqFechas();
+    PluginBc_BloqueFechas *my = new PluginBc_BloqueFechas();
     my->inicializa ( bcont );
     return 0;
 }

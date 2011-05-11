@@ -21,8 +21,8 @@ extern "C" MY_EXPORT int entryPoint ( Bulmages01 * );
 extern QApplication *g_theApp;
 
 
-//class QT_WIDGET_PLUGIN_EXPORT myplugin : public QObject {
-class myplugin : public QObject
+//class QT_WIDGET_PLUGIN_EXPORT PluginBc_Online : public QObject {
+class PluginBc_Online : public QObject
 {
     Q_OBJECT
 
@@ -30,8 +30,8 @@ public:
     BlPostgreSqlClient *dbConnection;
 
 public:
-    myplugin();
-    ~myplugin();
+    PluginBc_Online();
+    ~PluginBc_Online();
     void inicializa ( Bulmages01 * );
 
 public slots:

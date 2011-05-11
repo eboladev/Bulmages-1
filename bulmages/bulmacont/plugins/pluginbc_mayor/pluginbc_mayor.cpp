@@ -42,20 +42,20 @@ BcExtractoView *g_mayor;
 ///
 /**
 **/
-MyPluginMayor::MyPluginMayor()
+PluginBc_Mayor::PluginBc_Mayor()
 {
-    blDebug ( "MyPluginMayor::MyPluginMayor", 0 );
-    blDebug ( "END MyPluginMayor::MyPluginMayor", 0 );
+    blDebug ( "PluginBc_Mayor::PluginBc_Mayor", 0 );
+    blDebug ( "END PluginBc_Mayor::PluginBc_Mayor", 0 );
 }
 
 
 ///
 /**
 **/
-MyPluginMayor::~MyPluginMayor()
+PluginBc_Mayor::~PluginBc_Mayor()
 {
-    blDebug ( "MyPluginMayor::~MyPluginMayor", 0 );
-    blDebug ( "END MyPluginMayor::~MyPluginMayor", 0 );
+    blDebug ( "PluginBc_Mayor::~PluginBc_Mayor", 0 );
+    blDebug ( "END PluginBc_Mayor::~PluginBc_Mayor", 0 );
 }
 
 
@@ -63,16 +63,16 @@ MyPluginMayor::~MyPluginMayor()
 ///
 /**
 **/
-void MyPluginMayor::elslot()
+void PluginBc_Mayor::elslot()
 {
-    blDebug ( "MyPluginMayor::elslot", 0 );
+    blDebug ( "PluginBc_Mayor::elslot", 0 );
     if (g_mayor == NULL) {
       g_mayor = new BcExtractoView ( ( BcCompany * ) mainCompany(), 0 );
       mainCompany() ->pWorkspace() ->addSubWindow ( g_mayor );
     } // end if
     g_mayor->hide();
     g_mayor->show();
-    blDebug ( "END MyPluginMayor::elslot", 0 );
+    blDebug ( "END PluginBc_Mayor::elslot", 0 );
 }
 
 
@@ -81,9 +81,9 @@ void MyPluginMayor::elslot()
 /**
 \param bges
 **/
-void MyPluginMayor::inicializa ( BcBulmaCont *bges )
+void PluginBc_Mayor::inicializa ( BcBulmaCont *bges )
 {
-    blDebug ( "MyPluginMayor::inicializa", 0 );
+    blDebug ( "PluginBc_Mayor::inicializa", 0 );
 
     /// Creamos el men&uacute;.
     setMainCompany ( (BlMainCompany *)bges->empresaactual() );
@@ -100,7 +100,7 @@ void MyPluginMayor::inicializa ( BcBulmaCont *bges )
     /// A&ntilde;adimos la nueva opci&oacute;n al men&uacute; principal del programa.
     bges->toolBar->addAction ( accion );
 
-    blDebug ( "END MyPluginMayor::inicializa", 0 );
+    blDebug ( "END PluginBc_Mayor::inicializa", 0 );
 }
 
 
@@ -120,7 +120,7 @@ int entryPoint ( BcBulmaCont *bcont )
 
     g_mayor = NULL;
 
-    MyPluginMayor *plug = new MyPluginMayor();
+    PluginBc_Mayor *plug = new PluginBc_Mayor();
     plug->inicializa ( bcont );
 
     blDebug ( "END entryPoint::entryPoint", 0 );

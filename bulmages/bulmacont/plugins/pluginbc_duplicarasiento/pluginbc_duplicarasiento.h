@@ -32,7 +32,7 @@ extern "C" PLUGINBC_DUPLICARASIENTO_EXPORT int entryPoint ( BcBulmaCont * );
 extern "C" PLUGINBC_DUPLICARASIENTO_EXPORT int BcAsientoView_BcAsientoView ( BcAsientoView * );
 
 
-class MyPluginDuplicarAsiento : public QToolButton, BlMainCompanyPointer
+class PluginBc_DuplicarAsiento : public QToolButton, BlMainCompanyPointer
 {
     Q_OBJECT
 
@@ -40,8 +40,8 @@ public:
     BcAsientoView *m_asiento;
 
 public:
-    MyPluginDuplicarAsiento(BcAsientoView *as, BcCompany *comp, QWidget *parent = NULL);
-    ~MyPluginDuplicarAsiento();
+    PluginBc_DuplicarAsiento(BcAsientoView *as, BcCompany *comp, QWidget *parent = NULL);
+    ~PluginBc_DuplicarAsiento();
 
 public slots:
     void elslot();

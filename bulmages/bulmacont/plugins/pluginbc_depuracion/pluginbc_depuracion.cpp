@@ -35,20 +35,20 @@
 ///
 /**
 **/
-myplugin::myplugin()
+PluginBc_Debug::PluginBc_Debug()
 {
-    blDebug ( "myplugin::myplugin", 0 );
-    blDebug ( "END myplugin::myplugin", 0 );
+    blDebug ( "PluginBc_Debug::PluginBc_Debug", 0 );
+    blDebug ( "END PluginBc_Debug::PluginBc_Debug", 0 );
 }
 
 
 ///
 /**
 **/
-myplugin::~myplugin()
+PluginBc_Debug::~PluginBc_Debug()
 {
-    blDebug ( "myplugin::~myplugin", 0 );
-    blDebug ( "END myplugin::~myplugin", 0 );
+    blDebug ( "PluginBc_Debug::~PluginBc_Debug", 0 );
+    blDebug ( "END PluginBc_Debug::~PluginBc_Debug", 0 );
 }
 
 
@@ -56,11 +56,11 @@ myplugin::~myplugin()
 /**
 \return
 **/
-void myplugin::cambia ( bool valor )
+void PluginBc_Debug::cambia ( bool valor )
 {
-    blDebug ( "myplugin::cambia", 0 );
+    blDebug ( "PluginBc_Debug::cambia", 0 );
     g_confpr->setValor ( CONF_DEBUG, ( valor ? "TRUE" : "FALSE" ) );
-    blDebug ( "END myplugin::cambia", 0 );
+    blDebug ( "END PluginBc_Debug::cambia", 0 );
 }
 
 
@@ -77,7 +77,7 @@ int entryPoint ( BcBulmaCont *bcont )
     setlocale ( LC_ALL, "" );
     blBindTextDomain ( "pluginbc_depuracion", g_confpr->valor ( CONF_DIR_TRADUCCION ).toAscii().constData() );
 
-    myplugin *corr = new myplugin();
+    PluginBc_Debug *corr = new PluginBc_Debug();
 
     QMenu *pPluginMenu = bcont->newMenu(_("&Ver"), "menuVer", "menuMaestro");
 

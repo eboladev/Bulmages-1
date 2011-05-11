@@ -38,33 +38,33 @@
 ///
 /**
 **/
-myplugin4::myplugin4()
+PluginBc_Balance::PluginBc_Balance()
 {
-    blDebug ( "myplugin4::myplugin4", 0 );
-    blDebug ( "END myplugin4::myplugin4", 0 );
+    blDebug ( "PluginBc_Balance::PluginBc_Balance", 0 );
+    blDebug ( "END PluginBc_Balance::PluginBc_Balance", 0 );
 }
 
 
 ///
 /**
 **/
-myplugin4::~myplugin4()
+PluginBc_Balance::~PluginBc_Balance()
 {
-    blDebug ( "myplugin4::~myplugin4", 0 );
-    blDebug ( "END myplugin4::~myplugin4", 0 );
+    blDebug ( "PluginBc_Balance::~PluginBc_Balance", 0 );
+    blDebug ( "END PluginBc_Balance::~PluginBc_Balance", 0 );
 }
 
 
 ///
 /**
 **/
-void myplugin4::elslot()
+void PluginBc_Balance::elslot()
 {
-    blDebug ( "myplugin4::elslot", 0 );
+    blDebug ( "PluginBc_Balance::elslot", 0 );
     BalanceView *cuad = new BalanceView ( ( BcCompany * ) mainCompany(), 0 );
     mainCompany() ->pWorkspace() ->addSubWindow ( cuad );
     cuad->show();
-    blDebug ( "END myplugin4::elslot", 0 );
+    blDebug ( "END PluginBc_Balance::elslot", 0 );
 }
 
 
@@ -72,9 +72,9 @@ void myplugin4::elslot()
 /**
 \param bges
 **/
-void myplugin4::inicializa ( BcBulmaCont *bges )
+void PluginBc_Balance::inicializa ( BcBulmaCont *bges )
 {
-    blDebug ( "myplugin4::inicializa", 0 );
+    blDebug ( "PluginBc_Balance::inicializa", 0 );
     /// Creamos el men&uacute;.
     setMainCompany ( bges->empresaactual() );
     m_bulmacont = bges;
@@ -88,7 +88,7 @@ void myplugin4::inicializa ( BcBulmaCont *bges )
 
     /// A&ntilde;adimos la nueva opci&oacute;n al men&uacute; principal del programa.
 //    bges->toolBar->addAction ( accion );
-    blDebug ( "END myplugin4::inicializa", 0 );
+    blDebug ( "END PluginBc_Balance::inicializa", 0 );
 }
 
 
@@ -105,7 +105,7 @@ int entryPoint ( BcBulmaCont *bcont )
     setlocale ( LC_ALL, "" );
     blBindTextDomain ( "pluginbc_balance", g_confpr->valor ( CONF_DIR_TRADUCCION ).toAscii().constData() );
 
-    myplugin4 *plug = new myplugin4();
+    PluginBc_Balance *plug = new PluginBc_Balance();
     plug->inicializa ( bcont );
     blDebug ( "END entryPoint::entryPoint", 0 );
     return 0;

@@ -35,36 +35,36 @@
 ///
 /**
 **/
-myplugin::myplugin()
+PluginBc_Example::PluginBc_Example()
 {
-    blDebug ( "myplugin::myplugin", 0 );
-    blDebug ( "myplugin::myplugin", 0 );
+    blDebug ( "PluginBc_Example::PluginBc_Example", 0 );
+    blDebug ( "PluginBc_Example::PluginBc_Example", 0 );
 }
 
 
 ///
 /**
 **/
-myplugin::~myplugin()
+PluginBc_Example::~PluginBc_Example()
 {
-    blDebug ( "myplugin::~myplugin", 0 );
-    blDebug ( "myplugin::~myplugin", 0 );
+    blDebug ( "PluginBc_Example::~PluginBc_Example", 0 );
+    blDebug ( "PluginBc_Example::~PluginBc_Example", 0 );
 }
 
 
 ///
 /**
 **/
-void myplugin::elslot()
+void PluginBc_Example::elslot()
 {
-    blDebug ( "myplugin::elslot", 0 );
+    blDebug ( "PluginBc_Example::elslot", 0 );
     fprintf ( stderr, "Sa ha activado el slot\n" );
     QMessageBox::warning ( 0,
                            _ ( "Titulo de la ventana" ),
                            ( "Mensaje." ),
                            QMessageBox::Ok,
                            QMessageBox::Cancel );
-    blDebug ( "END myplugin::elslot", 0 );
+    blDebug ( "END PluginBc_Example::elslot", 0 );
 }
 
 
@@ -72,9 +72,9 @@ void myplugin::elslot()
 /**
 \param bcont
 **/
-void myplugin::inicializa ( BcBulmaCont *bcont )
+void PluginBc_Example::inicializa ( BcBulmaCont *bcont )
 {
-    blDebug ( "myplugin::inicializa", 0 );
+    blDebug ( "PluginBc_Example::inicializa", 0 );
 
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale ( LC_ALL, "" );
@@ -88,7 +88,7 @@ void myplugin::inicializa ( BcBulmaCont *bcont )
     connect ( accion, SIGNAL ( activated() ), this, SLOT ( elslot() ) );
     pPluginMenu->addAction ( accion );
 
-    blDebug ( "END myplugin::inicializa", 0 );
+    blDebug ( "END PluginBc_Example::inicializa", 0 );
 }
 
 
@@ -99,7 +99,7 @@ void myplugin::inicializa ( BcBulmaCont *bcont )
 int entryPoint ( BcBulmaCont *bcont )
 {
     blDebug ( "Estoy dentro del plugin\n", 0 );
-    myplugin *plug = new myplugin();
+    PluginBc_Example *plug = new PluginBc_Example();
     plug->inicializa ( bcont );
     /// S&Oacute;LO A MODO DE EJEMPLO: se modifica el t&iacute;tulo de la ventana principal
     /// del programa para indicar que el plugin se ha cargado.

@@ -33,7 +33,7 @@ extern "C" PLUGINBC_ASIENTO_EXPORT int entryPoint ( BcBulmaCont * );
 extern "C" PLUGINBC_ASIENTO_EXPORT int SNewBcAsientoView ( BcCompany * );
 
 
-class MyPluginAsiento : public QObject, BlMainCompanyPointer
+class PluginBc_Asiento : public QObject, BlMainCompanyPointer
 {
     Q_OBJECT
 
@@ -41,8 +41,8 @@ public:
     BcBulmaCont *m_bulmacont;
 
 public:
-    MyPluginAsiento();
-    ~MyPluginAsiento();
+    PluginBc_Asiento();
+    ~PluginBc_Asiento();
     void inicializa ( BcBulmaCont * );
 
 public slots:

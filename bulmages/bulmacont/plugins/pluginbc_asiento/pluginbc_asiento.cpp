@@ -44,45 +44,45 @@ BcAsientoListView *g_listasientos;
 ///
 /**
 **/
-MyPluginAsiento::MyPluginAsiento()
+PluginBc_Asiento::PluginBc_Asiento()
 {
-    blDebug ( "MyPluginAsiento::MyPluginAsiento", 0 );
-    blDebug ( "END MyPluginAsiento::MyPluginAsiento", 0 );
+    blDebug ( "PluginBc_Asiento::PluginBc_Asiento", 0 );
+    blDebug ( "END PluginBc_Asiento::PluginBc_Asiento", 0 );
 }
 
 
 ///
 /**
 **/
-MyPluginAsiento::~MyPluginAsiento()
+PluginBc_Asiento::~PluginBc_Asiento()
 {
-    blDebug ( "MyPluginAsiento::~MyPluginAsiento", 0 );
-    blDebug ( "END MyPluginAsiento::~MyPluginAsiento", 0 );
+    blDebug ( "PluginBc_Asiento::~PluginBc_Asiento", 0 );
+    blDebug ( "END PluginBc_Asiento::~PluginBc_Asiento", 0 );
 }
 
 
 ///
 /**
 **/
-void MyPluginAsiento::elslot()
+void PluginBc_Asiento::elslot()
 {
-    blDebug ( "MyPluginAsiento::elslot", 0 );
+    blDebug ( "PluginBc_Asiento::elslot", 0 );
     if (g_asiento == NULL) {
       g_asiento = new BcAsientoView ( ( BcCompany * ) mainCompany(), 0 );
       mainCompany() ->pWorkspace() -> addSubWindow ( g_asiento );
     } // end if
     g_asiento->hide();
     g_asiento->show();
-    blDebug ( "END MyPluginAsiento::elslot", 0 );
+    blDebug ( "END PluginBc_Asiento::elslot", 0 );
 }
 
 
 ///
 /**
 **/
-void MyPluginAsiento::elslot1()
+void PluginBc_Asiento::elslot1()
 {
-    blDebug ( "MyPluginAsiento::elslot1", 0 );
+    blDebug ( "PluginBc_Asiento::elslot1", 0 );
     if (g_listasientos == NULL) {
       g_listasientos = new BcAsientoListView ( ( BcCompany * ) mainCompany() );
       g_listasientos->presentar();
@@ -90,15 +90,15 @@ void MyPluginAsiento::elslot1()
     } // end if
     g_listasientos->hide();
     g_listasientos->show();
-    blDebug ( "END MyPluginAsiento::elslot1", 0 );
+    blDebug ( "END PluginBc_Asiento::elslot1", 0 );
 }
 
 /// Espaciar Asientos
 /**
 **/
-void MyPluginAsiento::elslot2()
+void PluginBc_Asiento::elslot2()
 {
-    blDebug ( "MyPluginAsiento::elslot2", 0 );
+    blDebug ( "PluginBc_Asiento::elslot2", 0 );
     BlDbRecordSet *cur = NULL;
     try {
         cur = mainCompany()->loadQuery ( "SELECT abreasientos()" );
@@ -110,15 +110,15 @@ void MyPluginAsiento::elslot2()
         if ( cur ) delete cur;
         return;
     } // end try
-    blDebug ( "END MyPluginAsiento::elslot2", 0 );
+    blDebug ( "END PluginBc_Asiento::elslot2", 0 );
 }
 
 /// Ordenar Asientos
 /**
 **/
-void MyPluginAsiento::elslot3()
+void PluginBc_Asiento::elslot3()
 {
-    blDebug ( "MyPluginAsiento::elslot3", 0 );
+    blDebug ( "PluginBc_Asiento::elslot3", 0 );
     QString query = "SELECT reordenaasientosall()";
     BlDbRecordSet *cur = NULL;
     try {
@@ -131,15 +131,15 @@ void MyPluginAsiento::elslot3()
         if ( cur ) delete cur;
         return;
     }
-    blDebug ( "END MyPluginAsiento::elslot3", 0 );
+    blDebug ( "END PluginBc_Asiento::elslot3", 0 );
 }
 
 /// Asiento de Apertura
 /**
 **/
-void MyPluginAsiento::elslot4()
+void PluginBc_Asiento::elslot4()
 {
-    blDebug ( "MyPluginAsiento::elslot4", 0 );
+    blDebug ( "PluginBc_Asiento::elslot4", 0 );
     QString hoy = QDate::currentDate().toString ( "dd/MM/yyyy" );
     QString finicial = "01/01/" + hoy.right ( 4 );
 
@@ -155,15 +155,15 @@ void MyPluginAsiento::elslot4()
 
     g_asiento->show();
     g_asiento->asiento_apertura ( hoy );
-    blDebug ( "END MyPluginAsiento::elslot4", 0 );
+    blDebug ( "END PluginBc_Asiento::elslot4", 0 );
 }
 
 /// Asiento de Cierre
 /**
 **/
-void MyPluginAsiento::elslot5()
+void PluginBc_Asiento::elslot5()
 {
-    blDebug ( "MyPluginAsiento::elslot5", 0 );
+    blDebug ( "PluginBc_Asiento::elslot5", 0 );
     QString hoy = QDate::currentDate().toString ( "dd/MM/yyyy" );
     QString finicial = "01/01/" + hoy.right ( 4 );
 
@@ -188,15 +188,15 @@ void MyPluginAsiento::elslot5()
 
     g_asiento->show();
     g_asiento->asiento_cierre ( finicial, hoy );
-    blDebug ( "END MyPluginAsiento::elslot5", 0 );
+    blDebug ( "END PluginBc_Asiento::elslot5", 0 );
 }
 
 /// Asiento de Regularización
 /**
 **/
-void MyPluginAsiento::elslot6()
+void PluginBc_Asiento::elslot6()
 {
-    blDebug ( "MyPluginAsiento::elslot6", 0 );
+    blDebug ( "PluginBc_Asiento::elslot6", 0 );
 
 
     QString hoy = QDate::currentDate().toString ( "dd/MM/yyyy" );
@@ -226,16 +226,16 @@ void MyPluginAsiento::elslot6()
     g_asiento->asiento_regularizacion ( finicial, hoy );
 
 
-    blDebug ( "END MyPluginAsiento::elslot6", 0 );
+    blDebug ( "END PluginBc_Asiento::elslot6", 0 );
 }
 
 ///
 /**
 \param bges
 **/
-void MyPluginAsiento::inicializa ( BcBulmaCont *bges )
+void PluginBc_Asiento::inicializa ( BcBulmaCont *bges )
 {
-    blDebug ( "MyPluginAsiento::inicializa", 0 );
+    blDebug ( "PluginBc_Asiento::inicializa", 0 );
 
     /// Creamos el men&uacute;.
     setMainCompany ( bges->empresaactual() );
@@ -299,7 +299,7 @@ void MyPluginAsiento::inicializa ( BcBulmaCont *bges )
     connect ( accion7, SIGNAL ( activated() ), this, SLOT ( elslot6() ) );
     pPluginMenu->addAction ( accion7 );
 
-    blDebug ( "END MyPluginAsiento::inicializa", 0 );
+    blDebug ( "END PluginBc_Asiento::inicializa", 0 );
 }
 
 
@@ -318,7 +318,7 @@ int entryPoint ( BcBulmaCont *bcont )
 
     g_asiento = NULL;
 
-    MyPluginAsiento *plug = new MyPluginAsiento();
+    PluginBc_Asiento *plug = new PluginBc_Asiento();
     plug->inicializa ( bcont );
     blDebug ( "END entryPoint::entryPoint", 0 );
     return 0;

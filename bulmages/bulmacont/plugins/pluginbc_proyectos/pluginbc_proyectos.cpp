@@ -23,7 +23,7 @@
 #include <QToolButton>
 
 #include "pluginbc_proyectos.h"
-#include "tiptrab.h"
+#include "proyectos.h"
 #include "blformlist.h"
 #include "listproyectosview.h"
 
@@ -31,36 +31,36 @@
 ///
 /**
 **/
-mytiptrab::mytiptrab()
+PluginBc_Proyectos::PluginBc_Proyectos()
 {
-    blDebug ( "mytiptrab::mytiptrab", 0 );
-    blDebug ( "END mytiptrab::mytiptrab", 0 );
+    blDebug ( "PluginBc_Proyectos::PluginBc_Proyectos", 0 );
+    blDebug ( "END PluginBc_Proyectos::PluginBc_Proyectos", 0 );
 }
 
 
 ///
 /**
 **/
-mytiptrab::~mytiptrab()
+PluginBc_Proyectos::~PluginBc_Proyectos()
 {
-    blDebug ( "mytiptrab::~mytiptrab", 0 );
-    blDebug ( "END mytiptrab::~mytiptrab", 0 );
+    blDebug ( "PluginBc_Proyectos::~PluginBc_Proyectos", 0 );
+    blDebug ( "END PluginBc_Proyectos::~PluginBc_Proyectos", 0 );
 }
 
 
 ///
 /**
 **/
-void mytiptrab::elslot()
+void PluginBc_Proyectos::elslot()
 {
-    blDebug ( "mytiptrab::elslot", 0 );
+    blDebug ( "PluginBc_Proyectos::elslot", 0 );
     /// Agregamos el subformulario de proyectos.
     ListProyectosView *l = new ListProyectosView ( m_bulmacont->empresaactual(), 0, 0, BL_EDIT_MODE );
     l->setObjectName ( QString::fromUtf8 ( "mui_proyectos" ) );
 //    m_bulmacont->empresaactual()->meteWindow(l);
     m_bulmacont->workspace() ->addSubWindow ( l );
     l->show();
-    blDebug ( "END mytiptrab::elslot", 0 );
+    blDebug ( "END PluginBc_Proyectos::elslot", 0 );
 }
 
 
@@ -68,7 +68,7 @@ void mytiptrab::elslot()
 /**
 \param bges
 **/
-void mytiptrab::inicializa ( BcBulmaCont *bges )
+void PluginBc_Proyectos::inicializa ( BcBulmaCont *bges )
 {
     /// Creamos el men&uacute;.
     m_bulmacont = bges;
@@ -97,7 +97,7 @@ int entryPoint ( BcBulmaCont *bges )
     setlocale ( LC_ALL, "" );
     blBindTextDomain ( "pluginbc_proyectos", g_confpr->valor ( CONF_DIR_TRADUCCION ).toAscii().constData() );
 
-    mytiptrab *plug = new mytiptrab();
+    PluginBc_Proyectos *plug = new PluginBc_Proyectos();
     plug->inicializa ( bges );
     return 0;
 }

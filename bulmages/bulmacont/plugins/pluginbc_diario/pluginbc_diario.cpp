@@ -40,36 +40,36 @@ BcDiarioView *g_diario;
 ///
 /**
 **/
-MyPluginDiario::MyPluginDiario()
+PluginBc_Diario::PluginBc_Diario()
 {
-    blDebug ( "MyPluginDiario::MyPluginDiario", 0 );
-    blDebug ( "END MyPluginDiario::MyPluginDiario", 0 );
+    blDebug ( "PluginBc_Diario::PluginBc_Diario", 0 );
+    blDebug ( "END PluginBc_Diario::PluginBc_Diario", 0 );
 }
 
 
 ///
 /**
 **/
-MyPluginDiario::~MyPluginDiario()
+PluginBc_Diario::~PluginBc_Diario()
 {
-    blDebug ( "MyPluginDiario::~MyPluginDiario", 0 );
-    blDebug ( "END MyPluginDiario::~MyPluginDiario", 0 );
+    blDebug ( "PluginBc_Diario::~PluginBc_Diario", 0 );
+    blDebug ( "END PluginBc_Diario::~PluginBc_Diario", 0 );
 }
 
 
 ///
 /**
 **/
-void MyPluginDiario::elslot()
+void PluginBc_Diario::elslot()
 {
-    blDebug ( "MyPluginDiario::elslot", 0 );
+    blDebug ( "PluginBc_Diario::elslot", 0 );
     if (g_diario == NULL) {
       g_diario = new BcDiarioView ( ( BcCompany * ) mainCompany(), 0 );
       mainCompany() ->pWorkspace() ->addSubWindow ( g_diario );
     } // end if
     g_diario->hide();
     g_diario->show();
-    blDebug ( "END MyPluginDiario::elslot", 0 );
+    blDebug ( "END PluginBc_Diario::elslot", 0 );
 }
 
 
@@ -77,9 +77,9 @@ void MyPluginDiario::elslot()
 /**
 \param bges
 **/
-void MyPluginDiario::inicializa ( BcBulmaCont *bges )
+void PluginBc_Diario::inicializa ( BcBulmaCont *bges )
 {
-    blDebug ( "MyPluginDiario::inicializa", 0 );
+    blDebug ( "PluginBc_Diario::inicializa", 0 );
 
     /// Creamos el men&uacute;.
     setMainCompany ( bges->empresaactual() );
@@ -96,7 +96,7 @@ void MyPluginDiario::inicializa ( BcBulmaCont *bges )
     /// A&ntilde;adimos la nueva opci&oacute;n al men&uacute; principal del programa.
     bges->toolBar->addAction ( accion );
 
-    blDebug ( "END MyPluginDiario::inicializa", 0 );
+    blDebug ( "END PluginBc_Diario::inicializa", 0 );
 }
 
 
@@ -115,7 +115,7 @@ int entryPoint ( BcBulmaCont *bcont )
 
     g_diario = NULL;
 
-    MyPluginDiario *plug = new MyPluginDiario();
+    PluginBc_Diario *plug = new PluginBc_Diario();
     plug->inicializa ( bcont );
     blDebug ( "END entryPoint::entryPoint", 0 );
     return 0;

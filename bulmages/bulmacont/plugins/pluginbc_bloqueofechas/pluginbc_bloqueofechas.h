@@ -30,7 +30,7 @@
 extern "C" PLUGINBC_BLOQUEOFECHAS_EXPORT int entryPoint ( BcBulmaCont * );
 
 
-class myBloqFechas : public QObject
+class PluginBc_BloqueFechas : public QObject
 {
     Q_OBJECT
 
@@ -38,8 +38,8 @@ public:
     BcBulmaCont *m_bulmacont;
 
 public:
-    myBloqFechas();
-    ~myBloqFechas();
+    PluginBc_BloqueFechas();
+    ~PluginBc_BloqueFechas();
     void inicializa ( BcBulmaCont * );
 
 public slots:

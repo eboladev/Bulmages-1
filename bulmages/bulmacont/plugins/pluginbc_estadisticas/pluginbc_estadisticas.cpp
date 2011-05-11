@@ -12,13 +12,19 @@
 #include <qmessagebox.h>
 
 
-myplugin:: myplugin()
-{}
-myplugin::~myplugin()
-{}
+PluginBc_Estadisticas:: PluginBc_Estadisticas()
+{
+    blDebug ( "PluginBc_Estadisticas::PluginBc_Estadisticas", 0 );
+    blDebug ( "END PluginBc_Estadisticas::PluginBc_Estadisticas", 0 );
+}
+PluginBc_Estadisticas::~PluginBc_Estadisticas()
+{
+    blDebug ( "PluginBc_Estadisticas::~PluginBc_Estadisticas", 0 );
+    blDebug ( "END PluginBc_Estadisticas::~PluginBc_Estadisticas", 0 );
+}
 
 
-void myplugin::SegCuentas()
+void PluginBc_Estadisticas::SegCuentas()
 {
 // Aprovechamos para empezar a trabajar con estadisticas a ver que tal van.
     resmensualview * rmen = new resmensualview ( empresaactual, 0, 0 );
@@ -27,7 +33,7 @@ void myplugin::SegCuentas()
     delete rmen;
 }// end SegCuentas
 
-void myplugin::BalanceGrafico()
+void PluginBc_Estadisticas::BalanceGrafico()
 {
     // Aprovechamos para empezar a trabajar con estadisticas a ver que tal van.
     estadisticasview * est = new estadisticasview ( 0, 0 );
@@ -36,7 +42,7 @@ void myplugin::BalanceGrafico()
     delete est;
 }// end BalanceGrafico
 
-void myplugin::inicializa ( Bulmages01 *bges )
+void PluginBc_Estadisticas::inicializa ( Bulmages01 *bges )
 {
 
     QPixmap * estadisticasIcon = new QPixmap ( estadisticas );
@@ -66,7 +72,7 @@ void myplugin::inicializa ( Bulmages01 *bges )
 int entryPoint ( Bulmages01 *bges )
 {
     fprintf ( stderr, "Estoy dentro del plugin\n" );
-    myplugin *plug = new myplugin( );
+    PluginBc_Estadisticas *plug = new PluginBc_Estadisticas( );
     plug->inicializa ( bges );
     bges->setCaption ( "Prueba de plugin." );
 

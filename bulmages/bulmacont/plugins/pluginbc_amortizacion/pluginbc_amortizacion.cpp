@@ -42,20 +42,20 @@ BcAmortizacionListView *g_amortizacionlist;
 ///
 /**
 **/
-MyPluginAmortizacion::MyPluginAmortizacion()
+PluginBc_Amortizacion::PluginBc_Amortizacion()
 {
-    blDebug ( "MyPluginAmortizacion::MyPluginAmortizacion", 0 );
-    blDebug ( "END MyPluginAmortizacion::MyPluginAmortizacion", 0 );
+    blDebug ( "PluginBc_Amortizacion::PluginBc_Amortizacion", 0 );
+    blDebug ( "END PluginBc_Amortizacion::PluginBc_Amortizacion", 0 );
 }
 
 
 ///
 /**
 **/
-MyPluginAmortizacion::~MyPluginAmortizacion()
+PluginBc_Amortizacion::~PluginBc_Amortizacion()
 {
-    blDebug ( "MyPluginAmortizacion::~MyPluginAmortizacion", 0 );
-    blDebug ( "END MyPluginAmortizacion::~MyPluginAmortizacion", 0 );
+    blDebug ( "PluginBc_Amortizacion::~PluginBc_Amortizacion", 0 );
+    blDebug ( "END PluginBc_Amortizacion::~PluginBc_Amortizacion", 0 );
 }
 
 
@@ -63,16 +63,16 @@ MyPluginAmortizacion::~MyPluginAmortizacion()
 ///
 /**
 **/
-void MyPluginAmortizacion::elslot()
+void PluginBc_Amortizacion::elslot()
 {
-    blDebug ( "MyPluginAmortizacion::elslot", 0 );
+    blDebug ( "PluginBc_Amortizacion::elslot", 0 );
     if (g_amortizacionlist == NULL) {
       g_amortizacionlist = new BcAmortizacionListView ( ( BcCompany * ) mainCompany(), 0 );
       mainCompany() ->pWorkspace() ->addSubWindow ( g_amortizacionlist );
     } // end if
     g_amortizacionlist->hide();
     g_amortizacionlist->show();
-    blDebug ( "END MyPluginAmortizacion::elslot", 0 );
+    blDebug ( "END PluginBc_Amortizacion::elslot", 0 );
 }
 
 
@@ -81,9 +81,9 @@ void MyPluginAmortizacion::elslot()
 /**
 \param bges
 **/
-void MyPluginAmortizacion::inicializa ( BcBulmaCont *bges )
+void PluginBc_Amortizacion::inicializa ( BcBulmaCont *bges )
 {
-    blDebug ( "MyPluginAmortizacion::inicializa", 0 );
+    blDebug ( "PluginBc_Amortizacion::inicializa", 0 );
 
     /// Creamos el men&uacute;.
     setMainCompany ( (BlMainCompany *)bges->empresaactual() );
@@ -100,7 +100,7 @@ void MyPluginAmortizacion::inicializa ( BcBulmaCont *bges )
     /// A&ntilde;adimos la nueva opci&oacute;n al men&uacute; principal del programa.
     bges->toolBar->addAction ( accion );
 
-    blDebug ( "END MyPluginAmortizacion::inicializa", 0 );
+    blDebug ( "END PluginBc_Amortizacion::inicializa", 0 );
 }
 
 
@@ -120,7 +120,7 @@ int entryPoint ( BcBulmaCont *bcont )
 
     g_amortizacionlist = NULL;
 
-    MyPluginAmortizacion *plug = new MyPluginAmortizacion();
+    PluginBc_Amortizacion *plug = new PluginBc_Amortizacion();
     plug->inicializa ( bcont );
 
     blDebug ( "END entryPoint::entryPoint", 0 );

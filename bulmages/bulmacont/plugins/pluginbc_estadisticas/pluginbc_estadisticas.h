@@ -36,7 +36,7 @@ extern "C" PLUGINBC_ESTADISTICAS_EXPORT int entryPoint ( Bulmages01 * );
 extern QApplication *g_theApp;
 
 
-class QT_WIDGET_PLUGIN_EXPORT myplugin : public QObject
+class QT_WIDGET_PLUGIN_EXPORT PluginBc_Estadisticas : public QObject
 {
     Q_OBJECT
 
@@ -45,8 +45,8 @@ public:
     empresa *empresaactual;
 
 public:
-    myplugin();
-    ~myplugin();
+    PluginBc_Estadisticas();
+    ~PluginBc_Estadisticas();
     void inicializa ( Bulmages01 * );
 
 public slots:

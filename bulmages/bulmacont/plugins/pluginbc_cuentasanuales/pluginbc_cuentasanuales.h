@@ -32,7 +32,7 @@ extern "C" PLUGINBC_CUENTASANUALES_EXPORT BcCuentasAnualesView *g_cuentasAnuales
 extern "C" PLUGINBC_CUENTASANUALES_EXPORT int entryPoint ( BcBulmaCont * );
 
 
-class MyPluginCuentasAnuales : public QObject, BlMainCompanyPointer
+class PluginBc_CuentasAnuales : public QObject, BlMainCompanyPointer
 {
     Q_OBJECT
 
@@ -40,8 +40,8 @@ public:
     BcBulmaCont *m_bulmacont;
 
 public:
-    MyPluginCuentasAnuales();
-    ~MyPluginCuentasAnuales();
+    PluginBc_CuentasAnuales();
+    ~PluginBc_CuentasAnuales();
     void inicializa ( BcBulmaCont * );
 
 public slots:

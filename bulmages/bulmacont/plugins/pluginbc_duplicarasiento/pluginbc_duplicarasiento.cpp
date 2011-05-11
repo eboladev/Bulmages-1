@@ -37,10 +37,10 @@
 ///
 /**
 **/
-MyPluginDuplicarAsiento::MyPluginDuplicarAsiento(BcAsientoView * as, BcCompany *comp, QWidget *parent ) : BlMainCompanyPointer(comp), QToolButton(parent)
+PluginBc_DuplicarAsiento::PluginBc_DuplicarAsiento(BcAsientoView * as, BcCompany *comp, QWidget *parent ) : BlMainCompanyPointer(comp), QToolButton(parent)
 {
-    blDebug ( "MyPluginDuplicarAsiento::MyPluginDuplicarAsiento", 0 );
-    setObjectName ( QString::fromUtf8 ( "MyPluginDuplicarAsiento" ) );
+    blDebug ( "PluginBc_DuplicarAsiento::PluginBc_DuplicarAsiento", 0 );
+    setObjectName ( QString::fromUtf8 ( "PluginBc_DuplicarAsiento" ) );
     setStatusTip ( _ ( "Duplicar Asiento" ) );
     setToolTip ( _ ( "Duplicar Asiento" ) );
     setMinimumSize ( QSize ( 32, 32 ) );
@@ -49,26 +49,26 @@ MyPluginDuplicarAsiento::MyPluginDuplicarAsiento(BcAsientoView * as, BcCompany *
     setIconSize ( QSize ( 32, 32 ) );
     m_asiento = as;
     connect (this, SIGNAL(released()), this, SLOT(elslot()));
-    blDebug ( "END MyPluginDuplicarAsiento::MyPluginDuplicarAsiento", 0 );
+    blDebug ( "END PluginBc_DuplicarAsiento::PluginBc_DuplicarAsiento", 0 );
 }
 
 
 ///
 /**
 **/
-MyPluginDuplicarAsiento::~MyPluginDuplicarAsiento()
+PluginBc_DuplicarAsiento::~PluginBc_DuplicarAsiento()
 {
-    blDebug ( "MyPluginDuplicarAsiento::~MyPluginDuplicarAsiento", 0 );
-    blDebug ( "END MyPluginDuplicarAsiento::~MyPluginDuplicarAsiento", 0 );
+    blDebug ( "PluginBc_DuplicarAsiento::~PluginBc_DuplicarAsiento", 0 );
+    blDebug ( "END PluginBc_DuplicarAsiento::~PluginBc_DuplicarAsiento", 0 );
 }
 
 
 ///
 /**
 **/
-void MyPluginDuplicarAsiento::elslot()
+void PluginBc_DuplicarAsiento::elslot()
 {
-    blDebug ( "MyPluginDuplicarAsiento::elslot", 0 );
+    blDebug ( "PluginBc_DuplicarAsiento::elslot", 0 );
     DuplicarAsientoView *dupli = new DuplicarAsientoView ( (BcCompany *)mainCompany(), 0 );
     /// Establecemos los par&aacute;metros para el nuevo asiento a duplicar.
     dupli->inicializa ( m_asiento->mui_ordenasiento->text(), m_asiento->mui_ordenasiento->text() );
@@ -76,7 +76,7 @@ void MyPluginDuplicarAsiento::elslot()
     m_asiento->cargaasientos();
     m_asiento->boton_fin();
     delete dupli;
-    blDebug ( "END MyPluginDuplicarAsiento::elslot", 0 );
+    blDebug ( "END PluginBc_DuplicarAsiento::elslot", 0 );
 }
 
 
@@ -104,7 +104,7 @@ int entryPoint ( BcBulmaCont *bcont )
 int BcAsientoView_BcAsientoView ( BcAsientoView *l )
 {
     blDebug ( "BcAsientoView_BcAsientoView", 0 );
-    MyPluginDuplicarAsiento *mui_exporta_efactura2 = new MyPluginDuplicarAsiento ( l, l->mainCompany(),  l );
+    PluginBc_DuplicarAsiento *mui_exporta_efactura2 = new PluginBc_DuplicarAsiento ( l, l->mainCompany(),  l );
     mui_exporta_efactura2->setObjectName("m_duplicarasiento");
     
     QFrame *frame = l->findChild<QFrame *> ("mui_plugbotones");

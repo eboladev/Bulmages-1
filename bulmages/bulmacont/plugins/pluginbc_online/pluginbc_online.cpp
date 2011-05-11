@@ -8,13 +8,20 @@
 #include <qmessagebox.h>
 
 
-myplugin:: myplugin()
-{}
-myplugin::~myplugin()
-{}
+PluginBc_Online:: PluginBc_Online()
+{
+    blDebug ( "PluginBc_Online::PluginBc_Online", 0 );
+    blDebug ( "END PluginBc_Online::PluginBc_Online", 0 );
+
+}
+PluginBc_Online::~PluginBc_Online()
+{
+    blDebug ( "PluginBc_Online::~PluginBc_Online", 0 );
+    blDebug ( "END PluginBc_Online::~PluginBc_Online", 0 );
+}
 
 
-void myplugin::elslot()
+void PluginBc_Online::elslot()
 {
     char * args[] = {"http://www.iglues.org/documentacion.php", "http://www.iglues.org/documentacion.php", NULL};
     int pid;
@@ -30,7 +37,7 @@ void myplugin::elslot()
 #endif
 }// end elslot
 
-void myplugin::soporte()
+void PluginBc_Online::soporte()
 {
     char * args[] = {"http://www.iglues.org/soporte.php", "http://www.iglues.org/soporte.php", NULL};
     int pid;
@@ -47,7 +54,7 @@ void myplugin::soporte()
 }// end elslot
 
 
-void myplugin::inicializa ( Bulmages01 *bges )
+void PluginBc_Online::inicializa ( Bulmages01 *bges )
 {
     //El menu de empresa
 //    QAction *planCuentas = new QAction("Ayuda On-Line", "&Ayuda On-Line", 0, 0);
@@ -70,11 +77,11 @@ void myplugin::inicializa ( Bulmages01 *bges )
 int entryPoint ( Bulmages01 *bges )
 {
     fprintf ( stderr, "Estoy dentro del plugin\n" );
-    myplugin *plug = new myplugin( );
+    PluginBc_Online *plug = new PluginBc_Online( );
     plug->inicializa ( bges );
     return 0;
 }
 
-// Q_EXPORT_PLUGIN(myplugin)
+// Q_EXPORT_PLUGIN(PluginBc_Online)
 
 

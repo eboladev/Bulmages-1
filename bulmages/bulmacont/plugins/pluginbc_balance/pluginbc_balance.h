@@ -31,7 +31,7 @@
 extern "C" PLUGINBC_BALANCE_EXPORT int entryPoint ( BcBulmaCont * );
 
 
-class myplugin4 : public QObject, BlMainCompanyPointer
+class PluginBc_Balance : public QObject, BlMainCompanyPointer
 {
     Q_OBJECT
 
@@ -39,8 +39,8 @@ public:
     BcBulmaCont *m_bulmacont;
 
 public:
-    myplugin4();
-    ~myplugin4();
+    PluginBc_Balance();
+    ~PluginBc_Balance();
     void inicializa ( BcBulmaCont * );
 
 public slots:

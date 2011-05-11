@@ -42,36 +42,36 @@ BcCuentasAnualesView *g_cuentasAnuales;
 ///
 /**
 **/
-MyPluginCuentasAnuales::MyPluginCuentasAnuales()
+PluginBc_CuentasAnuales::PluginBc_CuentasAnuales()
 {
-    blDebug ( "MyPluginCuentasAnuales::MyPluginCuentasAnuales", 0 );
-    blDebug ( "END MyPluginCuentasAnuales::MyPluginCuentasAnuales", 0 );
+    blDebug ( "PluginBc_CuentasAnuales::PluginBc_CuentasAnuales", 0 );
+    blDebug ( "END PluginBc_CuentasAnuales::PluginBc_CuentasAnuales", 0 );
 }
 
 
 ///
 /**
 **/
-MyPluginCuentasAnuales::~MyPluginCuentasAnuales()
+PluginBc_CuentasAnuales::~PluginBc_CuentasAnuales()
 {
-    blDebug ( "MyPluginCuentasAnuales::~MyPluginCuentasAnuales", 0 );
-    blDebug ( "END MyPluginCuentasAnuales::~MyPluginCuentasAnuales", 0 );
+    blDebug ( "PluginBc_CuentasAnuales::~PluginBc_CuentasAnuales", 0 );
+    blDebug ( "END PluginBc_CuentasAnuales::~PluginBc_CuentasAnuales", 0 );
 }
 
 
 ///
 /**
 **/
-void MyPluginCuentasAnuales::elslot()
+void PluginBc_CuentasAnuales::elslot()
 {
-    blDebug ( "MyPluginCuentasAnuales::elslot", 0 );
+    blDebug ( "PluginBc_CuentasAnuales::elslot", 0 );
     if (g_cuentasAnuales == NULL) {
       g_cuentasAnuales = new BcCuentasAnualesView ( ( BcCompany * ) mainCompany(), 0 );
       mainCompany() ->pWorkspace() -> addSubWindow ( g_cuentasAnuales );
     } // end if
     g_cuentasAnuales->hide();
     g_cuentasAnuales->show();
-    blDebug ( "END MyPluginCuentasAnuales::elslot", 0 );
+    blDebug ( "END PluginBc_CuentasAnuales::elslot", 0 );
 }
 
 
@@ -79,9 +79,9 @@ void MyPluginCuentasAnuales::elslot()
 /**
 \param bges
 **/
-void MyPluginCuentasAnuales::inicializa ( BcBulmaCont *bges )
+void PluginBc_CuentasAnuales::inicializa ( BcBulmaCont *bges )
 {
-    blDebug ( "MyPluginCuentasAnuales::inicializa", 0 );
+    blDebug ( "PluginBc_CuentasAnuales::inicializa", 0 );
 
     /// Creamos el men&uacute;.
     setMainCompany ( bges->empresaactual() );
@@ -104,7 +104,7 @@ void MyPluginCuentasAnuales::inicializa ( BcBulmaCont *bges )
     /// A&ntilde;adimos la nueva opci&oacute;n al men&uacute; principal del programa.
 //    bges->menuBar() ->insertMenu ( bges->menuVentana->menuAction(), pPluginMenu );
 
-    blDebug ( "END MyPluginCuentasAnuales::inicializa", 0 );
+    blDebug ( "END PluginBc_CuentasAnuales::inicializa", 0 );
 }
 
 
@@ -123,7 +123,7 @@ int entryPoint ( BcBulmaCont *bcont )
 
     g_cuentasAnuales = NULL;
 
-    MyPluginCuentasAnuales *plug = new MyPluginCuentasAnuales();
+    PluginBc_CuentasAnuales *plug = new PluginBc_CuentasAnuales();
     plug->inicializa ( bcont );
     blDebug ( "END entryPoint::entryPoint", 0 );
     return 0;

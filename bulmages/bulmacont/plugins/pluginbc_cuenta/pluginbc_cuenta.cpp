@@ -40,20 +40,20 @@ BcPlanContableListView *g_plancontable;
 ///
 /**
 **/
-MyPluginCuenta::MyPluginCuenta()
+PluginBc_Cuenta::PluginBc_Cuenta()
 {
-    blDebug ( "MyPluginCuenta::MyPluginCuenta", 0 );
-    blDebug ( "END MyPluginCuenta::MyPluginCuenta", 0 );
+    blDebug ( "PluginBc_Cuenta::PluginBc_Cuenta", 0 );
+    blDebug ( "END PluginBc_Cuenta::PluginBc_Cuenta", 0 );
 }
 
 
 ///
 /**
 **/
-MyPluginCuenta::~MyPluginCuenta()
+PluginBc_Cuenta::~PluginBc_Cuenta()
 {
-    blDebug ( "MyPluginCuenta::~MyPluginCuenta", 0 );
-    blDebug ( "END MyPluginCuenta::~MyPluginCuenta", 0 );
+    blDebug ( "PluginBc_Cuenta::~PluginBc_Cuenta", 0 );
+    blDebug ( "END PluginBc_Cuenta::~PluginBc_Cuenta", 0 );
 }
 
 
@@ -61,9 +61,9 @@ MyPluginCuenta::~MyPluginCuenta()
 ///
 /**
 **/
-void MyPluginCuenta::elslot()
+void PluginBc_Cuenta::elslot()
 {
-    blDebug ( "MyPluginCuenta::elslot", 0 );
+    blDebug ( "PluginBc_Cuenta::elslot", 0 );
     if (g_plancontable == NULL) {
       g_plancontable = new BcPlanContableListView ( ( BcCompany * ) mainCompany(), 0 );
       g_plancontable->inicializa();
@@ -71,7 +71,7 @@ void MyPluginCuenta::elslot()
     } // end if
     g_plancontable->hide();
     g_plancontable->show();
-    blDebug ( "END MyPluginCuenta::elslot", 0 );
+    blDebug ( "END PluginBc_Cuenta::elslot", 0 );
 }
 
 
@@ -80,9 +80,9 @@ void MyPluginCuenta::elslot()
 /**
 \param bges
 **/
-void MyPluginCuenta::inicializa ( BcBulmaCont *bges )
+void PluginBc_Cuenta::inicializa ( BcBulmaCont *bges )
 {
-    blDebug ( "MyPluginCuenta::inicializa", 0 );
+    blDebug ( "PluginBc_Cuenta::inicializa", 0 );
 
     /// Creamos el men&uacute;.
     setMainCompany ( (BlMainCompany *)bges->empresaactual() );
@@ -108,7 +108,7 @@ void MyPluginCuenta::inicializa ( BcBulmaCont *bges )
     bges->menuBar() ->insertMenu ( bges->menuMaestro->menuAction(), pPluginMenu );
     bges->toolBar->addAction ( accion );
 
-    blDebug ( "END MyPluginCuenta::inicializa", 0 );
+    blDebug ( "END PluginBc_Cuenta::inicializa", 0 );
 }
 
 
@@ -126,7 +126,7 @@ int entryPoint ( BcBulmaCont *bcont )
 
     g_plancontable = NULL;
 
-    MyPluginCuenta *plug = new MyPluginCuenta();
+    PluginBc_Cuenta *plug = new PluginBc_Cuenta();
     plug->inicializa ( bcont );
 
     blDebug ( "END entryPoint::entryPoint", 0 );
@@ -143,19 +143,19 @@ int entryPoint ( BcBulmaCont *bcont )
 /**
 \param parent
 **/
-MyPluginCuenta1::MyPluginCuenta1 ( BlSubForm *parent ) : QObject ( parent )
+Subform_Cuenta::Subform_Cuenta ( BlSubForm *parent ) : QObject ( parent )
 {
-    blDebug ( "MyPluginCuenta1::MyPluginCuenta1", 0 );
-    blDebug ( "END MyPluginCuenta1::MyPluginCuenta1", 0 );
+    blDebug ( "Subform_Cuenta::Subform_Cuenta", 0 );
+    blDebug ( "END Subform_Cuenta::Subform_Cuenta", 0 );
 }
 
 ///
 /**
 **/
-MyPluginCuenta1::~MyPluginCuenta1()
+Subform_Cuenta::~Subform_Cuenta()
 {
-    blDebug ( "MyPluginCuenta1::~MyPluginCuenta1", 0 );
-    blDebug ( "END MyPluginCuenta1::~MyPluginCuenta1", 0 );
+    blDebug ( "Subform_Cuenta::~Subform_Cuenta", 0 );
+    blDebug ( "END Subform_Cuenta::~Subform_Cuenta", 0 );
 }
 
 
@@ -163,9 +163,9 @@ MyPluginCuenta1::~MyPluginCuenta1()
 /**
 \param menu
 **/
-void MyPluginCuenta1::s_pintaMenu ( QMenu *menu )
+void Subform_Cuenta::s_pintaMenu ( QMenu *menu )
 {
-    blDebug ( "MyPluginCuenta1::s_pintaMenu", 0 );
+    blDebug ( "Subform_Cuenta::s_pintaMenu", 0 );
     BlSubForm *sub = ( BlSubForm * ) parent();
     BlSubFormHeader *header = sub->header ( "codigo" );
     if ( header ) {
@@ -177,7 +177,7 @@ void MyPluginCuenta1::s_pintaMenu ( QMenu *menu )
             menu->addAction ( _ ( "Seleccionar cuenta" ) );
         } // end if
     } // end if
-    blDebug ( "END MyPluginCuenta1::s_pintaMenu", 0 );
+    blDebug ( "END Subform_Cuenta::s_pintaMenu", 0 );
 }
 
 
@@ -185,9 +185,9 @@ void MyPluginCuenta1::s_pintaMenu ( QMenu *menu )
 /**
 \param action
 **/
-void MyPluginCuenta1::s_trataMenu ( QAction *action )
+void Subform_Cuenta::s_trataMenu ( QAction *action )
 {
-    blDebug ( "MyPluginCuenta1::s_trataMenu", 0 );
+    blDebug ( "Subform_Cuenta::s_trataMenu", 0 );
     BlSubForm *sub = ( BlSubForm * ) parent();
     if ( action->text() == _ ( "Editar cuenta" ) ) {
         QString idcuenta = sub->dbValue ( "idcuenta" );
@@ -199,44 +199,44 @@ void MyPluginCuenta1::s_trataMenu ( QAction *action )
         nuevoCuenta();
     } // end if
 
-    blDebug ( "END MyPluginCuenta1::s_trataMenu", 0 );
+    blDebug ( "END Subform_Cuenta::s_trataMenu", 0 );
 }
 
 
 ///
 /**
 **/
-void MyPluginCuenta1::editarCuenta ( QString idcuenta )
+void Subform_Cuenta::editarCuenta ( QString idcuenta )
 {
-    blDebug ( "MyPluginCuenta1::editarCuenta", 0 );
+    blDebug ( "Subform_Cuenta::editarCuenta", 0 );
         BcCuentaView * nuevae = new BcCuentaView ( ((BcBulmaCont *)g_main)->empresaactual(), 0 );
         nuevae->cargar ( idcuenta );
         ((BcBulmaCont *)g_main)->empresaactual() ->pWorkspace() ->addSubWindow ( nuevae );
         nuevae->show();
-    blDebug ( "END MyPluginCuenta1::editarCuenta", 0 );
+    blDebug ( "END Subform_Cuenta::editarCuenta", 0 );
 }
 
 
 ///
 /**
 **/
-void MyPluginCuenta1::nuevoCuenta( )
+void Subform_Cuenta::nuevoCuenta( )
 {
-    blDebug ( "MyPluginCuenta1::editarCuenta", 0 );
+    blDebug ( "Subform_Cuenta::editarCuenta", 0 );
         BcCuentaView * nuevae = new BcCuentaView ( ((BcBulmaCont *)g_main)->empresaactual(), 0 );
         ((BcBulmaCont *)g_main)->empresaactual() ->pWorkspace() ->addSubWindow ( nuevae );
         nuevae->mui_padre->setEnabled(TRUE);
         nuevae->show();
-    blDebug ( "END MyPluginCuenta1::editarCuenta", 0 );
+    blDebug ( "END Subform_Cuenta::editarCuenta", 0 );
 }
 
 
 ///
 /**
 **/
-void MyPluginCuenta1::seleccionarCuenta ( BlSubForm *sub )
+void Subform_Cuenta::seleccionarCuenta ( BlSubForm *sub )
 {
-    blDebug ( "MyPluginCuenta1::editarCuenta", 0 );
+    blDebug ( "Subform_Cuenta::editarCuenta", 0 );
 /*
     CuentaList *artlist = new CuentaList ( ( BcCompany * ) sub->mainCompany(), NULL, 0, BL_SELECT_MODE );
     /// Esto es convertir un QWidget en un sistema modal de dialogo.
@@ -262,7 +262,7 @@ void MyPluginCuenta1::seleccionarCuenta ( BlSubForm *sub )
     } // end if
     delete cur;
 */
-    blDebug ( "END MyPluginCuenta1::editarCuenta", 0 );
+    blDebug ( "END Subform_Cuenta::editarCuenta", 0 );
 }
 
 
@@ -274,7 +274,7 @@ void MyPluginCuenta1::seleccionarCuenta ( BlSubForm *sub )
 int BlSubForm_BlSubForm_Post ( BlSubForm *sub )
 {
     blDebug ( "BlSubForm_BlSubForm_Post", 0 );
-    MyPluginCuenta1 *subformods = new MyPluginCuenta1 ( sub );
+    Subform_Cuenta *subformods = new Subform_Cuenta ( sub );
     sub->QObject::connect ( sub, SIGNAL ( pintaMenu ( QMenu * ) ), subformods, SLOT ( s_pintaMenu ( QMenu * ) ) );
     sub->QObject::connect ( sub, SIGNAL ( trataMenu ( QAction * ) ), subformods, SLOT ( s_trataMenu ( QAction * ) ) );
     blDebug ( "END BlSubForm_BlSubForm_Post", 0 );

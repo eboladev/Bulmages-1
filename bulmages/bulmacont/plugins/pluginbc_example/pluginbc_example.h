@@ -36,7 +36,7 @@
 extern "C" PLUGINBC_EXAMPLE_EXPORT int entryPoint ( BcBulmaCont * );
 
 
-class myplugin : public QObject
+class PluginBc_Example : public QObject
 {
     Q_OBJECT
 
@@ -44,8 +44,8 @@ public:
     BlPostgreSqlClient *dbConnection;
 
 public:
-    myplugin();
-    ~myplugin();
+    PluginBc_Example();
+    ~PluginBc_Example();
     void inicializa ( BcBulmaCont * );
 
 public slots:

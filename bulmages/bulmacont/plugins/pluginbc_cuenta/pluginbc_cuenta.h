@@ -43,7 +43,7 @@ extern "C" PLUGINBC_CUENTA_EXPORT int Busqueda_on_m_inputBusqueda_textChanged (B
 
 
 
-class MyPluginCuenta : public QObject, BlMainCompanyPointer
+class PluginBc_Cuenta : public QObject, BlMainCompanyPointer
 {
     Q_OBJECT
 
@@ -51,8 +51,8 @@ public:
     BcBulmaCont *m_bulmacont;
 
 public:
-    MyPluginCuenta();
-    ~MyPluginCuenta();
+    PluginBc_Cuenta();
+    ~PluginBc_Cuenta();
     void inicializa ( BcBulmaCont * );
 
 public slots:
@@ -61,13 +61,13 @@ public slots:
 };
 
 
-class MyPluginCuenta1 : public QObject
+class Subform_Cuenta : public QObject
 {
     Q_OBJECT
 
 public:
-    MyPluginCuenta1 ( BlSubForm * );
-    ~MyPluginCuenta1();
+    Subform_Cuenta ( BlSubForm * );
+    ~Subform_Cuenta();
     void editarCuenta( QString);
     void nuevoCuenta();
     void seleccionarCuenta(BlSubForm *);

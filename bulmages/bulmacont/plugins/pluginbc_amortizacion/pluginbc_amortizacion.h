@@ -30,7 +30,7 @@
 extern "C" PLUGINBC_AMORTIZACION_EXPORT int entryPoint ( BcBulmaCont * );
 
 
-class MyPluginAmortizacion : public QObject, BlMainCompanyPointer
+class PluginBc_Amortizacion : public QObject, BlMainCompanyPointer
 {
     Q_OBJECT
 
@@ -38,8 +38,8 @@ public:
     BcBulmaCont *m_bulmacont;
 
 public:
-    MyPluginAmortizacion();
-    ~MyPluginAmortizacion();
+    PluginBc_Amortizacion();
+    ~PluginBc_Amortizacion();
     void inicializa ( BcBulmaCont * );
 
 public slots:

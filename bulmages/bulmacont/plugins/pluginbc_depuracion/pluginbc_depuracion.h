@@ -29,13 +29,13 @@
 extern "C" PLUGINBC_DEPURACION_EXPORT int entryPoint ( BcBulmaCont * );
 
 
-class myplugin : public QObject
+class PluginBc_Debug : public QObject
 {
     Q_OBJECT
 
 public:
-    myplugin();
-    ~myplugin();
+    PluginBc_Debug();
+    ~PluginBc_Debug();
 
 public slots:
     void cambia ( bool );

@@ -30,7 +30,7 @@
 extern "C" PLUGINBC_MAYOR_EXPORT int entryPoint ( BcBulmaCont * );
 
 
-class MyPluginMayor : public QObject, BlMainCompanyPointer
+class PluginBc_Mayor : public QObject, BlMainCompanyPointer
 {
     Q_OBJECT
 
@@ -38,8 +38,8 @@ public:
     BcBulmaCont *m_bulmacont;
 
 public:
-    MyPluginMayor();
-    ~MyPluginMayor();
+    PluginBc_Mayor();
+    ~PluginBc_Mayor();
     void inicializa ( BcBulmaCont * );
 
 public slots:
