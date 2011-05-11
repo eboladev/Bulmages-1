@@ -38,14 +38,14 @@ extern "C" PLUGINBL_SUBFORM2ODS_EXPORT int BlTreeWidget_BlTreeWidget_Post ( BlTr
 extern "C" PLUGINBL_SUBFORM2ODS_EXPORT int BlSubForm_preparaMenu ( BlSubForm * );
 
 
-class myplugsubformods : public QObject
+class PluginBl_SubForm2ODS : public QObject
 {
     Q_OBJECT
 
 public:
-    myplugsubformods ( BlSubForm * );
-    myplugsubformods ( BlTreeWidget * );
-    ~myplugsubformods();
+    PluginBl_SubForm2ODS ( BlSubForm * );
+    PluginBl_SubForm2ODS ( BlTreeWidget * );
+    ~PluginBl_SubForm2ODS();
     void sacaods1();
 
 public slots:

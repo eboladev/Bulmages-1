@@ -1,5 +1,5 @@
-#ifndef MYPLUGINDOCK_H
-#define MYPLUGINDOCK_H
+#ifndef PLBLEMBED_H
+#define PLBLEMBED_H
 
 #ifndef Q_OS_WIN32
 
@@ -7,14 +7,14 @@
 
 
 
-class myplugincont : public QObject
+class PluginBl_Embed : public QObject
 {
     Q_OBJECT
 
 public:
    
-    myplugincont();
-    virtual ~myplugincont();
+    PluginBl_Embed();
+    virtual ~PluginBl_Embed();
 
 public slots:
     virtual void elslot();

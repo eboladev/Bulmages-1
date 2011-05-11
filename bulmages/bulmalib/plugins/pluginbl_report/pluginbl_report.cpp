@@ -34,7 +34,7 @@
 
 #include "local_blI18n.h"
 #include "pluginbl_report.h"
-#include "myplugininformes.h"
+#include "plblreport.h"
 #include "blworkspace.h"
 #include "blform.h"
 
@@ -46,35 +46,35 @@ BlMainCompany *g_emp = NULL;
 ///
 /**
 **/
-MyPluginInformes::MyPluginInformes()
+PluginBl_Report::PluginBl_Report()
 {
-    blDebug ( "MyPluginInformes::MyPluginInformes", 0 );
-    blDebug ( "END MyPluginInformes::MyPluginInformes", 0 );
+    blDebug ( "PluginBl_Report::PluginBl_Report", 0 );
+    blDebug ( "END PluginBl_Report::PluginBl_Report", 0 );
 }
 
 
 ///
 /**
 **/
-MyPluginInformes::~MyPluginInformes()
+PluginBl_Report::~PluginBl_Report()
 {
-    blDebug ( "MyPluginInformes::~MyPluginInformes", 0 );
-    blDebug ( "END MyPluginInformes::~MyPluginInformes", 0 );
+    blDebug ( "PluginBl_Report::~PluginBl_Report", 0 );
+    blDebug ( "END PluginBl_Report::~PluginBl_Report", 0 );
 }
 
 
 ///
 /**
 **/
-void MyPluginInformes::elslot1( )
+void PluginBl_Report::elslot1( )
 {
-    blDebug ( "MyPluginInformes::elslot", 0 );
+    blDebug ( "PluginBl_Report::elslot", 0 );
 
     BlForm *ficha = new BlForm ( g_emp, 0 );
     if ( !ficha->generaRML ( sender()->objectName() ) ) return;
     blCreateAndLoadPDF ( sender()->objectName().left ( sender()->objectName().size() - 4 ) );
 
-    blDebug ( "END MyPluginInformes::elslot", 0 );
+    blDebug ( "END PluginBl_Report::elslot", 0 );
 }
 
 
@@ -93,7 +93,7 @@ int init (  )
     setlocale ( LC_ALL, "" );
     blBindTextDomain ( "pluginbl_report", g_confpr->valor ( CONF_DIR_TRADUCCION ).toAscii().constData() );
 
-    MyPluginInformes *mcont = new MyPluginInformes;
+    PluginBl_Report *mcont = new PluginBl_Report;
 
     QMenu *pPluginMenu = NULL;
     /// Miramos si existe un menu Informes

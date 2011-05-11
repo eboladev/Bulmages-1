@@ -53,10 +53,10 @@ int entryPoint ( QApplication * )
 /**
 \param parent
 **/
-myplugsubformods::myplugsubformods ( BlSubForm *parent ) : QObject ( parent )
+PluginBl_SubForm2ODS::PluginBl_SubForm2ODS ( BlSubForm *parent ) : QObject ( parent )
 {
-    blDebug ( "myplugsubformods::myplugsubformods", 0 );
-    blDebug ( "END myplugsubformods::myplugsubformods", 0 );
+    blDebug ( "PluginBl_SubForm2ODS::PluginBl_SubForm2ODS", 0 );
+    blDebug ( "END PluginBl_SubForm2ODS::PluginBl_SubForm2ODS", 0 );
 }
 
 
@@ -64,44 +64,44 @@ myplugsubformods::myplugsubformods ( BlSubForm *parent ) : QObject ( parent )
 /**
 \param parent
 **/
-myplugsubformods::myplugsubformods ( BlTreeWidget *parent ) : QObject ( parent )
+PluginBl_SubForm2ODS::PluginBl_SubForm2ODS ( BlTreeWidget *parent ) : QObject ( parent )
 {
-    blDebug ( "myplugsubformods::myplugsubformods", 0 );
-    blDebug ( "END myplugsubformods::myplugsubformods", 0 );
+    blDebug ( "PluginBl_SubForm2ODS::PluginBl_SubForm2ODS", 0 );
+    blDebug ( "END PluginBl_SubForm2ODS::PluginBl_SubForm2ODS", 0 );
 }
 
 ///
 /**
 **/
-myplugsubformods::~myplugsubformods()
+PluginBl_SubForm2ODS::~PluginBl_SubForm2ODS()
 {
-    blDebug ( "myplugsubformods::~myplugsubformods", 0 );
-    blDebug ( "END myplugsubformods::~myplugsubformods", 0 );
+    blDebug ( "PluginBl_SubForm2ODS::~PluginBl_SubForm2ODS", 0 );
+    blDebug ( "END PluginBl_SubForm2ODS::~PluginBl_SubForm2ODS", 0 );
 }
 
-
-///
-/**
-\param menu
-**/
-void myplugsubformods::s_pintaMenu ( QMenu *menu )
-{
-    blDebug ( "myplugsubformods::s_pintaMenu", 0 );
-    menu->addSeparator();
-    menu->addAction ( QIcon( ":/Images/exportods.png" ), _ ( "Exportar a hoja de calculo (ODS)" ) );
-    blDebug ( "END myplugsubformods::s_pintaMenu", 0 );
-}
 
 ///
 /**
 \param menu
 **/
-void myplugsubformods::s_pintaMenu1 ( QMenu *menu )
+void PluginBl_SubForm2ODS::s_pintaMenu ( QMenu *menu )
 {
-    blDebug ( "myplugsubformods::s_pintaMenu1", 0 );
+    blDebug ( "PluginBl_SubForm2ODS::s_pintaMenu", 0 );
     menu->addSeparator();
     menu->addAction ( QIcon( ":/Images/exportods.png" ), _ ( "Exportar a hoja de calculo (ODS)" ) );
-    blDebug ( "END myplugsubformods::s_pintaMenu1", 0 );
+    blDebug ( "END PluginBl_SubForm2ODS::s_pintaMenu", 0 );
+}
+
+///
+/**
+\param menu
+**/
+void PluginBl_SubForm2ODS::s_pintaMenu1 ( QMenu *menu )
+{
+    blDebug ( "PluginBl_SubForm2ODS::s_pintaMenu1", 0 );
+    menu->addSeparator();
+    menu->addAction ( QIcon( ":/Images/exportods.png" ), _ ( "Exportar a hoja de calculo (ODS)" ) );
+    blDebug ( "END PluginBl_SubForm2ODS::s_pintaMenu1", 0 );
 }
 
 
@@ -109,13 +109,13 @@ void myplugsubformods::s_pintaMenu1 ( QMenu *menu )
 /**
 \param action
 **/
-void myplugsubformods::s_trataMenu ( QAction *action )
+void PluginBl_SubForm2ODS::s_trataMenu ( QAction *action )
 {
-    blDebug ( "myplugsubformods::s_trataMenu", 0 );
+    blDebug ( "PluginBl_SubForm2ODS::s_trataMenu", 0 );
     if ( action->text() == _ ( "Exportar a hoja de calculo (ODS)" ) ) {
         sacaods();
     } // end if
-    blDebug ( "END myplugsubformods::s_trataMenu", 0 );
+    blDebug ( "END PluginBl_SubForm2ODS::s_trataMenu", 0 );
 }
 
 
@@ -123,22 +123,22 @@ void myplugsubformods::s_trataMenu ( QAction *action )
 /**
 \param action
 **/
-void myplugsubformods::s_trataMenu1 ( QAction *action )
+void PluginBl_SubForm2ODS::s_trataMenu1 ( QAction *action )
 {
-    blDebug ( "myplugsubformods::s_trataMenu1", 0 );
+    blDebug ( "PluginBl_SubForm2ODS::s_trataMenu1", 0 );
     if ( action->text() == _ ( "Exportar a hoja de calculo (ODS)" ) ) {
         sacaods1();
     } // end if
-    blDebug ( "END myplugsubformods::s_trataMenu1", 0 );
+    blDebug ( "END PluginBl_SubForm2ODS::s_trataMenu1", 0 );
 }
 
 
 ///
 /**
 **/
-void myplugsubformods::sacaods()
+void PluginBl_SubForm2ODS::sacaods()
 {
-    blDebug ( "myplugsubformods::sacaods", 0 );
+    blDebug ( "PluginBl_SubForm2ODS::sacaods", 0 );
 
     QString archivod = g_confpr->valor ( CONF_DIR_USER ) + "listadoods.py";
     BlSubForm * subf = ( BlSubForm * ) parent();
@@ -279,7 +279,7 @@ void myplugsubformods::sacaods()
     /// Si no existe el archivo avisamos
     if (!QFile::exists(g_confpr->valor ( CONF_DIR_USER ) + "listadoods.ods") ) {
 	  blMsgInfo ("Ha ocurrido un error. Verifique que la libreria python-ooolib esta correctamente instalada");
-          blDebug ( "END myplugsubformods::sacaods", 0 );
+          blDebug ( "END PluginBl_SubForm2ODS::sacaods", 0 );
 	  return;
     } // end if
     
@@ -301,7 +301,7 @@ void myplugsubformods::sacaods()
 	blMsgError(_("Error al ejecutar el editor de ODS."));
     } // end if
 
-    blDebug ( "END myplugsubformods::sacaods", 0 );
+    blDebug ( "END PluginBl_SubForm2ODS::sacaods", 0 );
 }
 
 
@@ -312,9 +312,9 @@ void myplugsubformods::sacaods()
 ///
 /**
 **/
-void myplugsubformods::sacaods1()
+void PluginBl_SubForm2ODS::sacaods1()
 {
-    blDebug ( "myplugsubformods::sacaods", 0 );
+    blDebug ( "PluginBl_SubForm2ODS::sacaods", 0 );
 
     QString archivod = g_confpr->valor ( CONF_DIR_USER ) + "listadoods.py";
     BlTreeWidget * subf = ( BlTreeWidget * ) parent();
@@ -432,7 +432,7 @@ void myplugsubformods::sacaods1()
     cadena = g_confpr->valor(CONF_ODS) + " " + g_confpr->valor ( CONF_DIR_USER ) + "listadoods.ods &";
     system ( cadena.toAscii() );
 
-    blDebug ( "END myplugsubformods::sacaods", 0 );
+    blDebug ( "END PluginBl_SubForm2ODS::sacaods", 0 );
 }
 
 
@@ -450,7 +450,7 @@ void myplugsubformods::sacaods1()
 int BlSubForm_BlSubForm_Post ( BlSubForm *sub )
 {
     blDebug ( "BlSubForm_BlSubForm_Post", 0 );
-    myplugsubformods *subformods = new myplugsubformods ( sub );
+    PluginBl_SubForm2ODS *subformods = new PluginBl_SubForm2ODS ( sub );
     sub->QObject::connect ( sub, SIGNAL ( pintaMenu ( QMenu * ) ), subformods, SLOT ( s_pintaMenu ( QMenu * ) ) );
     sub->QObject::connect ( sub, SIGNAL ( trataMenu ( QAction * ) ), subformods, SLOT ( s_trataMenu ( QAction * ) ) );
     blDebug ( "END BlSubForm_BlSubForm_Post", 0 );
@@ -466,7 +466,7 @@ int BlSubForm_BlSubForm_Post ( BlSubForm *sub )
 int BlSubForm_preparaMenu ( BlSubForm *sub ) {
     blDebug ( "BlSubForm_preparaMenu", 0 );
 
-    myplugsubformods *subformods = new myplugsubformods ( sub );
+    PluginBl_SubForm2ODS *subformods = new PluginBl_SubForm2ODS ( sub );
     
     QHBoxLayout *m_hboxLayout1 = sub->mui_menusubform->findChild<QHBoxLayout *> ( "hboxLayout1" );
     if ( !m_hboxLayout1 ) {
@@ -505,7 +505,7 @@ int BlSubForm_preparaMenu ( BlSubForm *sub ) {
 int BlTreeWidget_BlTreeWidget_Post ( BlTreeWidget *sub )
 {
     blDebug ( "BlTreeWidget_BlTreeWidget_Post", 0 );
-    myplugsubformods *subformods = new myplugsubformods ( sub );
+    PluginBl_SubForm2ODS *subformods = new PluginBl_SubForm2ODS ( sub );
     sub->QObject::connect ( sub, SIGNAL ( pintaMenu ( QMenu * ) ), subformods, SLOT ( s_pintaMenu1 ( QMenu * ) ) );
     sub->QObject::connect ( sub, SIGNAL ( trataMenu ( QAction * ) ), subformods, SLOT ( s_trataMenu1 ( QAction * ) ) );
     blDebug ( "END BlTreeWidget_BlTreeWidget_Post", 0 );

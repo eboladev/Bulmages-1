@@ -32,13 +32,13 @@ extern "C" PLUGINBL_SUBFORM2SXC_EXPORT int entryPoint ( QApplication * );
 extern "C" PLUGINBL_SUBFORM2SXC_EXPORT int BlSubForm_BlSubForm_Post ( BlSubForm * );
 
 
-class myplugsubformsxc : public QObject
+class PluginBl_SubForm2SXC : public QObject
 {
     Q_OBJECT
 
 public:
-    myplugsubformsxc ( BlSubForm * );
-    ~myplugsubformsxc();
+    PluginBl_SubForm2SXC ( BlSubForm * );
+    ~PluginBl_SubForm2SXC();
     void sacaSXC();
 
 public slots:

@@ -32,8 +32,8 @@
 #include <QProcess>
 #include <QTextStream>
 
-#include "pluginbloqconf.h"
-#include "myplugingbloqconf.h"
+#include "pluginbl_bloqconf.h"
+#include "plblbloqconf.h"
 #include "blworkspace.h"
 #include "blform.h"
 
@@ -44,19 +44,19 @@ BlMainCompany *g_emp = NULL;
 ///
 /**
 **/
-MyPluginBloqConf::MyPluginBloqConf()
+PluginBl_BloqConf::PluginBl_BloqConf()
 {
-    blDebug ( "MyPluginBloqConf::MyPluginBloqConf", 0 );
-    blDebug ( "END MyPluginBloqConf::MyPluginBloqConf", 0 );
+    blDebug ( "PluginBl_BloqConf::PluginBl_BloqConf", 0 );
+    blDebug ( "END PluginBl_BloqConf::PluginBl_BloqConf", 0 );
 }
 
 ///
 /**
 **/
-MyPluginBloqConf::~MyPluginBloqConf()
+PluginBl_BloqConf::~PluginBl_BloqConf()
 {
-    blDebug ( "MyPluginBloqConf::~MyPluginBloqConf", 0 );
-    blDebug ( "END MyPluginBloqConf::~MyPluginBloqConf", 0 );
+    blDebug ( "PluginBl_BloqConf::~PluginBl_BloqConf", 0 );
+    blDebug ( "END PluginBl_BloqConf::~PluginBl_BloqConf", 0 );
 }
 
 
@@ -65,51 +65,51 @@ MyPluginBloqConf::~MyPluginBloqConf()
 ///
 /**
 **/
-void MyPluginBloqConf::elslot( )
+void PluginBl_BloqConf::elslot( )
 {
-    blDebug ( "MyPluginBloqConf::elslot", 0 );
+    blDebug ( "PluginBl_BloqConf::elslot", 0 );
 
     QString cad = "chmod a-w " + g_confpr->valor(CONF_DIR_USER) + "*.cfn";
     system ( cad.toAscii().constData() );
     blMsgInfo("Configuraciones Bloqueadas. Se mantendra la configuracion establecida al cargar el programa. Cualquier configuracion posterior a la carga del programa se perdera.");
-    blDebug ( "END MyPluginBloqConf::elslot", 0 );
+    blDebug ( "END PluginBl_BloqConf::elslot", 0 );
 }
 
 ///
 /**
 **/
-void MyPluginBloqConf::elslot1( )
+void PluginBl_BloqConf::elslot1( )
 {
-    blDebug ( "MyPluginBloqConf::elslot", 0 );
+    blDebug ( "PluginBl_BloqConf::elslot", 0 );
 
     QString cad = "chmod a+w " + g_confpr->valor(CONF_DIR_USER) + "*.cfn";
     system ( cad.toAscii().constData() );
     blMsgInfo("Configuraciones Desbloqueadas. Las configuraciones se guardaran al cerrar el programa.");
 
-    blDebug ( "END MyPluginBloqConf::elslot", 0 );
+    blDebug ( "END PluginBl_BloqConf::elslot", 0 );
 }
 
 ///
 /**
 **/
-void MyPluginBloqConf::elslot2( )
+void PluginBl_BloqConf::elslot2( )
 {
-    blDebug ( "MyPluginBloqConf::elslot2", 0 );
+    blDebug ( "PluginBl_BloqConf::elslot2", 0 );
 
     QString cad = "rm" + g_confpr->valor(CONF_DIR_USER) + "*.cfn";
     system ( cad.toAscii().constData() );
     blMsgInfo("Configuraciones Borradas. Las configuraciones se guardaran al cerrar el programa.");
 
-    blDebug ( "END MyPluginBloqConf::elslot2", 0 );
+    blDebug ( "END PluginBl_BloqConf::elslot2", 0 );
 }
 
 ///
 /**
 \param menu
 **/
-void MyPluginBloqConf::s_pintaMenu ( QMenu *menu )
+void PluginBl_BloqConf::s_pintaMenu ( QMenu *menu )
 {
-    blDebug ( "MyPluginBloqConf::s_pintaMenu", 0 );
+    blDebug ( "PluginBl_BloqConf::s_pintaMenu", 0 );
     
     BlSubForm *sub = (BlSubForm *) sender();
     int modo = !sub->modoEdicion();
@@ -128,7 +128,7 @@ void MyPluginBloqConf::s_pintaMenu ( QMenu *menu )
     
     
     menu->addAction ( ac );
-    blDebug ( "END MyPluginBloqConf::s_pintaMenu", 0 );
+    blDebug ( "END PluginBl_BloqConf::s_pintaMenu", 0 );
 }
 
 
@@ -136,9 +136,9 @@ void MyPluginBloqConf::s_pintaMenu ( QMenu *menu )
 /**
 \param action
 **/
-void MyPluginBloqConf::s_trataMenu ( QAction *action )
+void PluginBl_BloqConf::s_trataMenu ( QAction *action )
 {
-    blDebug ( "MyPluginBloqConf::s_trataMenu", 0 );
+    blDebug ( "PluginBl_BloqConf::s_trataMenu", 0 );
     if ( action->text() == _ ( "Bloqueo Configuracion" ) ) {
             BlSubForm *sub = (BlSubForm *) sender();
             int modo = !sub->modoEdicion();
@@ -154,7 +154,7 @@ void MyPluginBloqConf::s_trataMenu ( QAction *action )
               system ( cad.toAscii().constData() );
             } // end if
     } // end if
-    blDebug ( "END MyPluginBloqConf::s_trataMenu", 0 );
+    blDebug ( "END PluginBl_BloqConf::s_trataMenu", 0 );
 }
 
 
@@ -171,7 +171,7 @@ int entryPoint ( BlMainWindow *bges )
     blBindTextDomain ( "pluginbl_bloqconf", g_confpr->valor ( CONF_DIR_TRADUCCION ).toAscii().constData() );
 
 
-    MyPluginBloqConf *mcont = new MyPluginBloqConf;
+    PluginBl_BloqConf *mcont = new PluginBl_BloqConf;
 
 
 
@@ -232,7 +232,7 @@ int BcCompany_createMainWindows_Post ( BcCompany *cmp )
 int BlSubForm_BlSubForm_Post ( BlSubForm *sub )
 {
     blDebug ( "BlSubForm_BlSubForm_Post", 0 );
-    MyPluginBloqConf *subformods = new MyPluginBloqConf (  );
+    PluginBl_BloqConf *subformods = new PluginBl_BloqConf (  );
     sub->QObject::connect ( sub, SIGNAL ( pintaMenu ( QMenu * ) ), subformods, SLOT ( s_pintaMenu ( QMenu * ) ) );
     sub->QObject::connect ( sub, SIGNAL ( trataMenu ( QAction * ) ), subformods, SLOT ( s_trataMenu ( QAction * ) ) );
     blDebug ( "END BlSubForm_BlSubForm_Post", 0 );

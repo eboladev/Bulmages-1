@@ -43,13 +43,13 @@ extern "C" PLUGINBL_CLIPBOARD_EXPORT int BlToolButton_released(BlToolButton *);
 class BlMainCompany;
 
 
-class myplugclipboard : public QObject, public BlMainCompanyPointer
+class PluginBl_Clipboard : public QObject, public BlMainCompanyPointer
 {
     Q_OBJECT
 
 public:
-    myplugclipboard ( BlSubForm * );
-    ~myplugclipboard();
+    PluginBl_Clipboard ( BlSubForm * );
+    ~PluginBl_Clipboard();
     void pegaSXC();
     void pegaODS();
     void pegaActualizaODS();

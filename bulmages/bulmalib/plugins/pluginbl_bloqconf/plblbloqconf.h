@@ -1,18 +1,18 @@
-#ifndef MYPLUGININFORMES_H
-#define MYPLUGININFORMES_H
+#ifndef BLPLREPORT_H
+#define BLPLREPORT_H
 
 #include <QObject>
 #include <QMenu>
 #include <QAction>
 
 
-class MyPluginBloqConf : public QObject
+class PluginBl_BloqConf : public QObject
 {
     Q_OBJECT
 
 public:
-    MyPluginBloqConf();
-    virtual ~MyPluginBloqConf();
+    PluginBl_BloqConf();
+    virtual ~PluginBl_BloqConf();
 
 public slots:
     virtual void elslot();

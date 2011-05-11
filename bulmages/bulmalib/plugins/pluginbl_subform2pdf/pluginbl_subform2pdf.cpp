@@ -52,19 +52,19 @@ int entryPoint ( QApplication * )
 /**
 \param parent
 **/
-myplugsubformods::myplugsubformods ( BlSubForm *parent ) : QObject ( parent )
+PluginBl_SubForm2PDF::PluginBl_SubForm2PDF ( BlSubForm *parent ) : QObject ( parent )
 {
-    blDebug ( "myplugsubformods::myplugsubformods", 0 );
-    blDebug ( "END myplugsubformods::myplugsubformods", 0 );
+    blDebug ( "PluginBl_SubForm2PDF::PluginBl_SubForm2PDF", 0 );
+    blDebug ( "END PluginBl_SubForm2PDF::PluginBl_SubForm2PDF", 0 );
 }
 
 ///
 /**
 **/
-myplugsubformods::~myplugsubformods()
+PluginBl_SubForm2PDF::~PluginBl_SubForm2PDF()
 {
-    blDebug ( "myplugsubformods::~myplugsubformods", 0 );
-    blDebug ( "END myplugsubformods::~myplugsubformods", 0 );
+    blDebug ( "PluginBl_SubForm2PDF::~PluginBl_SubForm2PDF", 0 );
+    blDebug ( "END PluginBl_SubForm2PDF::~PluginBl_SubForm2PDF", 0 );
 }
 
 
@@ -72,12 +72,12 @@ myplugsubformods::~myplugsubformods()
 /**
 \param menu
 **/
-void myplugsubformods::s_pintaMenu ( QMenu *menu )
+void PluginBl_SubForm2PDF::s_pintaMenu ( QMenu *menu )
 {
-    blDebug ( "myplugsubformods::s_pintaMenu", 0 );
+    blDebug ( "PluginBl_SubForm2PDF::s_pintaMenu", 0 );
     menu->addSeparator();
     menu->addAction ( QIcon(":/Images/document-print.png"), _ ( "Imprimir" ) );
-    blDebug ( "END myplugsubformods::s_pintaMenu", 0 );
+    blDebug ( "END PluginBl_SubForm2PDF::s_pintaMenu", 0 );
 }
 
 
@@ -85,27 +85,27 @@ void myplugsubformods::s_pintaMenu ( QMenu *menu )
 /**
 \param action
 **/
-void myplugsubformods::s_trataMenu ( QAction *action )
+void PluginBl_SubForm2PDF::s_trataMenu ( QAction *action )
 {
-    blDebug ( "myplugsubformods::s_trataMenu", 0 );
+    blDebug ( "PluginBl_SubForm2PDF::s_trataMenu", 0 );
     if ( action->text() == _ ( "Imprimir" ) ) {
         imprimir();
     } // end if
-    blDebug ( "END myplugsubformods::s_trataMenu", 0 );
+    blDebug ( "END PluginBl_SubForm2PDF::s_trataMenu", 0 );
 }
 
 
 ///
 /**
 **/
-void myplugsubformods::imprimir()
+void PluginBl_SubForm2PDF::imprimir()
 {
-    blDebug ( "myplugsubformods::sacaods", 0 );
+    blDebug ( "PluginBl_SubForm2PDF::sacaods", 0 );
 
     BlSubForm * subf = ( BlSubForm * ) parent();
 
     subf->imprimirPDF ( "" );
-    blDebug ( "END myplugsubformods::sacaods", 0 );
+    blDebug ( "END PluginBl_SubForm2PDF::sacaods", 0 );
 }
 
 
@@ -117,7 +117,7 @@ void myplugsubformods::imprimir()
 int BlSubForm_BlSubForm_Post ( BlSubForm *sub )
 {
     blDebug ( "BlSubForm_BlSubForm_Post", 0 );
-    myplugsubformods *subformods = new myplugsubformods ( sub );
+    PluginBl_SubForm2PDF *subformods = new PluginBl_SubForm2PDF ( sub );
     sub->QObject::connect ( sub, SIGNAL ( pintaMenu ( QMenu * ) ), subformods, SLOT ( s_pintaMenu ( QMenu * ) ) );
     sub->QObject::connect ( sub, SIGNAL ( trataMenu ( QAction * ) ), subformods, SLOT ( s_trataMenu ( QAction * ) ) );
     blDebug ( "END BlSubForm_BlSubForm_Post", 0 );
@@ -133,7 +133,7 @@ int BlSubForm_BlSubForm_Post ( BlSubForm *sub )
 int BlSubForm_preparaMenu ( BlSubForm *sub ) {
     blDebug ( "BlSubForm_preparaMenu", 0 );
 
-    myplugsubformods *subformods = new myplugsubformods ( sub );
+    PluginBl_SubForm2PDF *subformods = new PluginBl_SubForm2PDF ( sub );
     
     QHBoxLayout *m_hboxLayout1 = sub->mui_menusubform->findChild<QHBoxLayout *> ( "hboxLayout1" );
     if ( !m_hboxLayout1 ) {

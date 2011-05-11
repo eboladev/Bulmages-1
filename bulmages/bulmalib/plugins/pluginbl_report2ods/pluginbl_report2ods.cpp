@@ -19,7 +19,6 @@
  ***************************************************************************/
 
 #include <stdio.h>
-
 #include <QAction>
 #include <QMessageBox>
 #include <QStringList>
@@ -33,7 +32,7 @@
 
 #include "local_blI18n.h"
 #include "pluginbl_report2ods.h"
-#include "myplugininformesods.h"
+#include "plblreport2ods.h"
 #include "blworkspace.h"
 #include "blform.h"
 
@@ -45,19 +44,19 @@ BlMainCompany *g_emp = NULL;
 ///
 /**
 **/
-MyPluginInformesODS::MyPluginInformesODS()
+PluginBl_Report2ODS::PluginBl_Report2ODS()
 {
-    blDebug ( "MyPluginInformesODS::MyPluginInformesODS", 0 );
-    blDebug ( "END MyPluginInformesODS::MyPluginInformesODS", 0 );
+    blDebug ( "PluginBl_Report2ODS::PluginBl_Report2ODS", 0 );
+    blDebug ( "END PluginBl_Report2ODS::PluginBl_Report2ODS", 0 );
 }
 
 ///
 /**
 **/
-MyPluginInformesODS::~MyPluginInformesODS()
+PluginBl_Report2ODS::~PluginBl_Report2ODS()
 {
-    blDebug ( "MyPluginInformesODS::~MyPluginInformesODS", 0 );
-    blDebug ( "END MyPluginInformesODS::~MyPluginInformesODS", 0 );
+    blDebug ( "PluginBl_Report2ODS::~PluginBl_Report2ODS", 0 );
+    blDebug ( "END PluginBl_Report2ODS::~PluginBl_Report2ODS", 0 );
 }
 
 
@@ -66,9 +65,9 @@ MyPluginInformesODS::~MyPluginInformesODS()
 ///
 /**
 **/
-void MyPluginInformesODS::elslot1( )
+void PluginBl_Report2ODS::elslot1( )
 {
-    blDebug ( "MyPluginInformesODS::elslot", 0 );
+    blDebug ( "PluginBl_Report2ODS::elslot", 0 );
 
     BlForm *ficha = new BlForm ( g_emp, 0 );
 
@@ -79,7 +78,7 @@ void MyPluginInformesODS::elslot1( )
     blCreateAndLoadODS ( archivo );
 
     delete ficha;
-    blDebug ( "END MyPluginInformesODS::elslot", 0 );
+    blDebug ( "END PluginBl_Report2ODS::elslot", 0 );
 }
 
 
@@ -100,7 +99,7 @@ int init (  )
 
 
 
-    MyPluginInformesODS *mcont = new MyPluginInformesODS;
+    PluginBl_Report2ODS *mcont = new PluginBl_Report2ODS;
 
     QMenu *pPluginMenu = NULL;
 
@@ -154,7 +153,6 @@ int init (  )
 	QMenu *menu = NULL;
 	QStringList path = pathtitulo.split("\\");
 
-
 	if (path.size() > 1) {
 		    QList<QMenu *> allPButtons = menubar->findChildren<QMenu *>();
 		    bool encontrado = FALSE;
@@ -164,7 +162,6 @@ int init (  )
 			    menu = allPButtons.at(j);
 			} // end if
 		    } // end for
-
 		    if (!encontrado) {
 			//QMenu *pPluginMenu1 = new QMenu (  path[0] , menubar );
 			//menubar->insertMenu ( pPluginVer->menuAction(), pPluginMenu1 );

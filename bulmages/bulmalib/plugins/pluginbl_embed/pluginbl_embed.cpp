@@ -38,7 +38,7 @@
 
 #include "local_blI18n.h"
 #include "pluginbl_embed.h"
-#include "myplugindock.h"
+#include "plblembed.h"
 #include "bldockwidget.h"
 #include "blworkspace.h"
 #include "bx11embedcontainer.h"
@@ -79,7 +79,7 @@ MyPluginEmbedODS::~MyPluginEmbedODS()
 /**
 **/
 
-void myplugincont::embedPYS( )
+void PluginBl_Embed::embedPYS( )
 {
     blDebug ( "MyPluginEmbedODS::elslot", 0 );
 
@@ -153,28 +153,28 @@ void myplugincont::embedPYS( )
 ///
 /**
 **/
-myplugincont::myplugincont()
+PluginBl_Embed::PluginBl_Embed()
 {
-    blDebug ( "myplugincont::myplugincont", 0 );
-    blDebug ( "END myplugincont::myplugincont", 0 );
+    blDebug ( "PluginBl_Embed::PluginBl_Embed", 0 );
+    blDebug ( "END PluginBl_Embed::PluginBl_Embed", 0 );
 }
 
 ///
 /**
 **/
-myplugincont::~myplugincont()
+PluginBl_Embed::~PluginBl_Embed()
 {
-    blDebug ( "myplugincont::~myplugincont", 0 );
-    blDebug ( "END myplugincont::~myplugincont", 0 );
+    blDebug ( "PluginBl_Embed::~PluginBl_Embed", 0 );
+    blDebug ( "END PluginBl_Embed::~PluginBl_Embed", 0 );
 }
 
 
 ///
 /**
 **/
-void myplugincont::elslot()
+void PluginBl_Embed::elslot()
 {
-    blDebug ( "myplugincont::elslot", 0 );
+    blDebug ( "PluginBl_Embed::elslot", 0 );
 
     /// Vamos a probar con un docwindow.
     BlDockWidget *doc1 = new BlDockWidget ( "Aplicacion Externa", g_main );
@@ -194,15 +194,15 @@ void myplugincont::elslot()
     container->embedClient ( winId.toInt() );
     doc1->setWidget ( container );
 
-    blDebug ( "END myplugincont::elslot", 0 );
+    blDebug ( "END PluginBl_Embed::elslot", 0 );
 }
 
 ///
 /**
 **/
-void myplugincont::elslot1()
+void PluginBl_Embed::elslot1()
 {
-    blDebug ( "myplugincont::elslot", 0 );
+    blDebug ( "PluginBl_Embed::elslot", 0 );
     QString winId = "";
     while ( winId == "" ) winId = blWindowId ( "" );
     BlWorkspace *work = g_bges ->findChild<BlWorkspace *> (  );
@@ -217,7 +217,7 @@ void myplugincont::elslot1()
         container->show();
     } // end if
 
-    blDebug ( "END myplugincont::elslot", 0 );
+    blDebug ( "END PluginBl_Embed::elslot", 0 );
 }
 
 
@@ -232,7 +232,7 @@ int entryPoint ( BlMainWindow *bges )
 
     g_bges = bges;
 
-    myplugincont *mcont = new myplugincont;
+    PluginBl_Embed *mcont = new PluginBl_Embed;
 
     /// Creamos el men&uacute;.
     QAction *accion = new QAction ( _ ( "&Dock Aplicacion" ), 0 );
@@ -263,7 +263,7 @@ int init67 (  )
 {
 
 
-    myplugincont *mcont = new myplugincont;
+    PluginBl_Embed *mcont = new PluginBl_Embed;
     
 
     QMenu *pPluginMenu = NULL;

@@ -17,35 +17,35 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: pluginbloqconf.cpp:181
+#: pluginbl_bloqconf.cpp:181
 msgid "&Bloquear Configuraciones"
 msgstr "&Bloquejar Configuracions"
 
-#: pluginbloqconf.cpp:192
+#: pluginbl_bloqconf.cpp:192
 msgid "&Borrar Configuraciones"
 msgstr "Es&borrar Configuracions"
 
-#: pluginbloqconf.cpp:186
+#: pluginbl_bloqconf.cpp:186
 msgid "&Desbloquear Configuraciones"
 msgstr "&Desbloquejar Configuracions"
 
-#: pluginbloqconf.cpp:202
+#: pluginbl_bloqconf.cpp:202
 msgid "&Herramientas"
 msgstr "&Eines"
 
-#: pluginbloqconf.cpp:182 pluginbloqconf.cpp:183
+#: pluginbl_bloqconf.cpp:182 pluginbl_bloqconf.cpp:183
 msgid "Bloquear Configuraciones"
 msgstr "Bloquejar Configuracions"
 
-#: pluginbloqconf.cpp:144
+#: pluginbl_bloqconf.cpp:144
 #, fuzzy
 msgid "Bloqueo Configuracion"
 msgstr "Arranjament"
 
-#: pluginbloqconf.cpp:193 pluginbloqconf.cpp:194
+#: pluginbl_bloqconf.cpp:193 pluginbl_bloqconf.cpp:194
 msgid "Borrar Configuraciones"
 msgstr "Esborrar Configuracions"
 
-#: pluginbloqconf.cpp:187 pluginbloqconf.cpp:188
+#: pluginbl_bloqconf.cpp:187 pluginbl_bloqconf.cpp:188
 msgid "Desbloquear Configuraciones"
 msgstr "Desbloquejar Configuracions"

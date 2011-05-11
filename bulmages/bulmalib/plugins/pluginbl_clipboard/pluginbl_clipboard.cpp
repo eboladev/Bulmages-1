@@ -62,7 +62,7 @@ int entryPoint ( QApplication * )
 int BlSubForm_BlSubForm_Post ( BlSubForm *sub )
 {
     blDebug ( "BlSubForm_BlSubForm_Post", 0 );
-    myplugclipboard *subformclip = new myplugclipboard ( sub );
+    PluginBl_Clipboard *subformclip = new PluginBl_Clipboard ( sub );
     sub->connect ( sub, SIGNAL ( pintaMenu ( QMenu * ) ), subformclip, SLOT ( s_pintaMenu ( QMenu * ) ) );
     sub->connect ( sub, SIGNAL ( trataMenu ( QAction * ) ), subformclip, SLOT ( s_trataMenu ( QAction * ) ) );
     blDebug ( "END BlSubForm_BlSubForm_Post", 0 );
@@ -74,20 +74,20 @@ int BlSubForm_BlSubForm_Post ( BlSubForm *sub )
 /**
 \param parent
 **/
-myplugclipboard::myplugclipboard ( BlSubForm *parent ) : QObject ( parent )
+PluginBl_Clipboard::PluginBl_Clipboard ( BlSubForm *parent ) : QObject ( parent )
 {
-    blDebug ( "myplugclipboard::myplugclipboard", 0 );
-    blDebug ( "END myplugclipboard::myplugclipboard", 0 );
+    blDebug ( "PluginBl_Clipboard::PluginBl_Clipboard", 0 );
+    blDebug ( "END PluginBl_Clipboard::PluginBl_Clipboard", 0 );
 }
 
 
 ///
 /**
 **/
-myplugclipboard::~myplugclipboard()
+PluginBl_Clipboard::~PluginBl_Clipboard()
 {
-    blDebug ( "myplugclipboard::~myplugclipboard", 0 );
-    blDebug ( "END myplugclipboard::~myplugclipboard", 0 );
+    blDebug ( "PluginBl_Clipboard::~PluginBl_Clipboard", 0 );
+    blDebug ( "END PluginBl_Clipboard::~PluginBl_Clipboard", 0 );
 }
 
 
@@ -95,9 +95,9 @@ myplugclipboard::~myplugclipboard()
 /**
 \param menu
 **/
-void myplugclipboard::s_pintaMenu ( QMenu *menu )
+void PluginBl_Clipboard::s_pintaMenu ( QMenu *menu )
 {
-    blDebug ( "myplugclipboard::s_pintaMenu", 0 );
+    blDebug ( "PluginBl_Clipboard::s_pintaMenu", 0 );
 
     BlSubForm *subform = ( BlSubForm * ) parent();
 
@@ -109,7 +109,7 @@ void myplugclipboard::s_pintaMenu ( QMenu *menu )
         menu->addAction (QIcon( ":/Images/clipboard.png" ), _ ( "Actualizar desde hoja de calculo" ) );
     } // end if
 
-    blDebug ( "END myplugclipboard::s_pintaMenu", 0 );
+    blDebug ( "END PluginBl_Clipboard::s_pintaMenu", 0 );
 }
 
 
@@ -117,9 +117,9 @@ void myplugclipboard::s_pintaMenu ( QMenu *menu )
 /**
 \param action
 **/
-void myplugclipboard::s_trataMenu ( QAction *action )
+void PluginBl_Clipboard::s_trataMenu ( QAction *action )
 {
-    blDebug ( "myplugclipboard::s_trataMenu", 0 );
+    blDebug ( "PluginBl_Clipboard::s_trataMenu", 0 );
 
     if ( action->text() == _ ( "Pegar desde hoja de calculo" ) ) {
         if ( g_theApp->clipboard() ->text().contains ( "\t" ) ) {
@@ -134,16 +134,16 @@ void myplugclipboard::s_trataMenu ( QAction *action )
         } // end if
     } // end if
     
-    blDebug ( "myplugclipboard::s_trataMenu", 0 );
+    blDebug ( "PluginBl_Clipboard::s_trataMenu", 0 );
 }
 
 
 /// Funcion que pega desde KSpread, que copia al portapapeles la informacion con campos de tamanyo fijo.
 /**
 **/
-void myplugclipboard::pegaSXC()
+void PluginBl_Clipboard::pegaSXC()
 {
-    blDebug ( "myplugclipboard::pegaSXC", 0 );
+    blDebug ( "PluginBl_Clipboard::pegaSXC", 0 );
     BlSubForm *subform = ( BlSubForm * ) parent();
     QString clipboard = g_theApp->clipboard() ->text();
 
@@ -174,16 +174,16 @@ void myplugclipboard::pegaSXC()
             linea1->setDbValue ( campos.at ( j ), valorcampo );
         } // end for
     } // end for
-    blDebug ( "END myplugclipboard::pegaSXC", 0 );
+    blDebug ( "END PluginBl_Clipboard::pegaSXC", 0 );
 }
 
 
 /// Funcion que pega desde OpenOffice.org, que copia al portapapeles la informacion con separador de campos un tabulador.
 /**
 **/
-void myplugclipboard::pegaActualizaODS()
+void PluginBl_Clipboard::pegaActualizaODS()
 {
-    blDebug ( "myplugclipboard::pegaActualizaODS", 0 );
+    blDebug ( "PluginBl_Clipboard::pegaActualizaODS", 0 );
 
     BlSubForm *subform = ( BlSubForm * ) parent();
     QString clipboard = g_theApp->clipboard() ->text();
@@ -245,7 +245,7 @@ void myplugclipboard::pegaActualizaODS()
     
 
 
-    blDebug ( "END myplugclipboard::pegaActualizaODS", 0 );
+    blDebug ( "END PluginBl_Clipboard::pegaActualizaODS", 0 );
 }
 
 
@@ -253,9 +253,9 @@ void myplugclipboard::pegaActualizaODS()
 /// Funcion que pega desde OpenOffice.org, que copia al portapapeles la informacion con separador de campos un tabulador.
 /**
 **/
-void myplugclipboard::pegaODS()
+void PluginBl_Clipboard::pegaODS()
 {
-    blDebug ( "myplugclipboard::pegaODS", 0 );
+    blDebug ( "PluginBl_Clipboard::pegaODS", 0 );
     BlSubForm *subform = ( BlSubForm * ) parent();
     QString clipboard = g_theApp->clipboard() ->text();
 
@@ -284,7 +284,7 @@ void myplugclipboard::pegaODS()
             linea1->setDbValue ( campos.at ( j ), campos_valores.at ( j ) );
         } // end for
     } // end for
-    blDebug ( "END myplugclipboard::pegaODS", 0 );
+    blDebug ( "END PluginBl_Clipboard::pegaODS", 0 );
 }
 
 ///
@@ -325,7 +325,7 @@ int BlSubForm_preparaMenu ( BlSubForm *sub ) {
 int BlToolButton_released(BlToolButton *bot) {
 
   if (bot->objectName() == "mui_clipboardinput") {
-	myplugclipboard clip( (BlSubForm *) bot->parent()->parent());
+	PluginBl_Clipboard clip( (BlSubForm *) bot->parent()->parent());
         if ( g_theApp->clipboard() ->text().contains ( "\t" ) ) {
             clip.pegaODS();
         } else {

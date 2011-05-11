@@ -35,13 +35,13 @@ extern "C" PLUGINBL_SUBFORM2PDF_EXPORT int entryPoint ( QApplication * );
 extern "C" PLUGINBL_SUBFORM2PDF_EXPORT int BlSubForm_BlSubForm_Post ( BlSubForm * );
 extern "C" PLUGINBL_SUBFORM2PDF_EXPORT int BlSubForm_preparaMenu ( BlSubForm * );
 
-class myplugsubformods : public QObject
+class PluginBl_SubForm2PDF : public QObject
 {
     Q_OBJECT
 
 public:
-    myplugsubformods ( BlSubForm * );
-    ~myplugsubformods();
+    PluginBl_SubForm2PDF ( BlSubForm * );
+    ~PluginBl_SubForm2PDF();
 
 
 public slots:

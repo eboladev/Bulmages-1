@@ -31,11 +31,49 @@
 
 #include "local_blI18n.h"
 #include "pluginbl_importcsv.h"
-#include "mypluginimportcsv.h"
+#include "plblimportcsv.h"
+#include "importcsv.h"
+#include "blmaincompany.h"
 
 
 QMainWindow *g_bges_importcsv = NULL;
 BlMainCompany *g_emp_importcsv = NULL;
+
+
+///
+/**
+**/
+PluginBl_ImportCSV::PluginBl_ImportCSV()
+{
+    blDebug ( "PluginBl_ImportCSV::PluginBl_ImportCSV", 0 );
+    blDebug ( "END PluginBl_ImportCSV::PluginBl_ImportCSV", 0 );
+}
+
+///
+/**
+**/
+PluginBl_ImportCSV::~PluginBl_ImportCSV()
+{
+    blDebug ( "PluginBl_ImportCSV::~PluginBl_ImportCSV", 0 );
+    blDebug ( "END PluginBl_ImportCSV::~PluginBl_ImportCSV", 0 );
+}
+
+
+///
+/**
+**/
+void PluginBl_ImportCSV::elslot()
+{
+    blDebug ( "PluginBl_ImportCSV::elslot", 0 );
+
+    ImportCSV *imp = new ImportCSV ( g_emp_importcsv, 0 );
+    g_emp_importcsv->pWorkspace() ->addSubWindow ( imp );
+    imp->show();
+
+    blDebug ( "END PluginBl_ImportCSV::elslot", 0 );
+}
+
+
 
 
 int entryPoint ( BlMainWindow *bges )
@@ -48,7 +86,7 @@ int entryPoint ( BlMainWindow *bges )
 
     g_bges_importcsv = bges;
 
-    mypluginimportcsv *mcont = new mypluginimportcsv;
+    PluginBl_ImportCSV *mcont = new PluginBl_ImportCSV;
 
     /// Creamos el men&uacute;.
     QAction *accion = new QAction ( _ ( "&Importacion CSV" ), 0 );
