@@ -2563,9 +2563,19 @@ void BlSubForm::on_mui_confcol_clicked()
 ///
 /**
 **/
+void BlSubForm::bpressedSlash ( ) {
+  blDebug ( "BlSubForm::bpressedSlash", 0 );
+  on_mui_list_pressedSlash(currentRow(), currentColumn());
+  blDebug ( "END BlSubForm::bpressedSlash", 0 );
+}
+
+///
+/**
+**/
 void BlSubForm::on_mui_list_pressedSlash ( int row, int col )
 {
     blDebug ( "BlSubForm::on_mui_list_pressedSlash", 0 );
+    
     BlDbSubFormRecord *rec = lineaat ( row );
     if ( rec == NULL ) {
         blDebug ( "END BlSubForm::on_mui_list_pressedSlash", 0, QString::number ( row ) + " " + QString::number ( col ) + "la linea no existe" );
@@ -2576,6 +2586,7 @@ void BlSubForm::on_mui_list_pressedSlash ( int row, int col )
     camp->refresh();
 
     if ( m_procesacambios ) {
+
         m_procesacambios = FALSE;
         m_prevRow = row;
         m_prevCol = col;
@@ -3011,6 +3022,16 @@ void BlSubForm::preparaMenu() {
       connect (sel, SIGNAL(released()), this, SLOT(borrarLineaActual()));
     } // end if
     
+    /// Editar en menu aparte
+    QToolButton *sel9 = new QToolButton ( mui_menusubform );
+    sel9->setStatusTip ( "Usar Editor" );
+    sel9->setToolTip ( "Usar Editor" );
+    sel9->setMinimumSize ( QSize ( 18, 18 ) );
+    sel9->setIcon ( QIcon ( ":/Images/edit_edit.png" ) );
+    sel9->setIconSize ( QSize ( 18, 18 ) );    
+    m_hboxLayout1->addWidget ( sel9 );    
+    connect (sel9, SIGNAL(released()), this, SLOT(bpressedSlash ( )));   
+    
     /// Ajuste de la columna
     QToolButton *sel1 = new QToolButton ( mui_menusubform );
     sel1->setStatusTip ( "Ajustar Columnas" );
@@ -3091,6 +3112,10 @@ void BlSubForm::contextMenuEvent ( QContextMenuEvent * )
     } // end if
     popup->addSeparator();
 
+    
+    QAction *editinslash = popup->addAction ( _ ( "Usar editor") );
+    editinslash->setIcon ( QIcon ( ":Images/edit_edit.png"));
+    
     QAction *ajustc = popup->addAction ( _ ( "Ajustar columa" ) );
     ajustc->setIcon ( QIcon ( ":/Images/adjust-one-row.png" ) );
     QAction *ajustac = popup->addAction ( _ ( "Ajustar altura" ) );
@@ -3128,6 +3153,8 @@ void BlSubForm::contextMenuEvent ( QContextMenuEvent * )
         toogleConfig();
     if ( opcion == menuconfig )
         toogleMenuConfig();
+    if (opcion == editinslash)
+	on_mui_list_pressedSlash ( row, col );
     
     emit trataMenu ( opcion );
 

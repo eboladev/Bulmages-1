@@ -377,6 +377,7 @@ public slots:
     virtual void toogleConfig();
     virtual void toogleMenuConfig();
     virtual int borrarLineaActual();
+    virtual void bpressedSlash ( );
     
 signals:
     void toogledConfig ( bool );
