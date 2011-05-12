@@ -2572,6 +2572,25 @@ void BlSubForm::bpressedSlash ( ) {
 ///
 /**
 **/
+void BlSubForm::bSubir ( ) {
+  blDebug ( "BlSubForm::bSubir", 0 );
+  on_mui_list_ctrlSubir(currentRow(), currentColumn());
+  blDebug ( "END BlSubForm::bSubir", 0 );
+}
+
+///
+/**
+**/
+void BlSubForm::bBajar ( ) {
+  blDebug ( "BlSubForm::bBajar", 0 );
+  on_mui_list_ctrlBajar(currentRow(), currentColumn());
+  blDebug ( "END BlSubForm::bBajar", 0 );
+}
+
+
+///
+/**
+**/
 void BlSubForm::on_mui_list_pressedSlash ( int row, int col )
 {
     blDebug ( "BlSubForm::on_mui_list_pressedSlash", 0 );
@@ -3031,6 +3050,27 @@ void BlSubForm::preparaMenu() {
     sel9->setIconSize ( QSize ( 18, 18 ) );    
     m_hboxLayout1->addWidget ( sel9 );    
     connect (sel9, SIGNAL(released()), this, SLOT(bpressedSlash ( )));   
+
+    /// Subir registro
+    QToolButton *sel90 = new QToolButton ( mui_menusubform );
+    sel90->setStatusTip ( "Subir Registro" );
+    sel90->setToolTip ( "Subir Registro" );
+    sel90->setMinimumSize ( QSize ( 18, 18 ) );
+    sel90->setIcon ( QIcon ( ":/Images/edit_up.png" ) );
+    sel90->setIconSize ( QSize ( 18, 18 ) );    
+    m_hboxLayout1->addWidget ( sel90 );    
+    connect (sel90, SIGNAL(released()), this, SLOT(bSubir ( )));   
+    
+
+    /// Subir registro
+    QToolButton *sel91 = new QToolButton ( mui_menusubform );
+    sel91->setStatusTip ( "Bajar Registro" );
+    sel91->setToolTip ( "Bajar Registro" );
+    sel91->setMinimumSize ( QSize ( 18, 18 ) );
+    sel91->setIcon ( QIcon ( ":/Images/edit_down.png" ) );
+    sel91->setIconSize ( QSize ( 18, 18 ) );    
+    m_hboxLayout1->addWidget ( sel91 );    
+    connect (sel91, SIGNAL(released()), this, SLOT(bBajar ( )));   
     
     /// Ajuste de la columna
     QToolButton *sel1 = new QToolButton ( mui_menusubform );
@@ -3112,6 +3152,12 @@ void BlSubForm::contextMenuEvent ( QContextMenuEvent * )
     } // end if
     popup->addSeparator();
 
+    QAction *editup = popup->addAction ( _ ( "Subir fila") );
+    editup->setIcon ( QIcon ( ":Images/edit_up.png"));
+
+    QAction *editdown = popup->addAction ( _ ( "Bajar fila") );
+    editdown->setIcon ( QIcon ( ":Images/edit_down.png"));
+    
     
     QAction *editinslash = popup->addAction ( _ ( "Usar editor") );
     editinslash->setIcon ( QIcon ( ":Images/edit_edit.png"));
@@ -3155,6 +3201,10 @@ void BlSubForm::contextMenuEvent ( QContextMenuEvent * )
         toogleMenuConfig();
     if (opcion == editinslash)
 	on_mui_list_pressedSlash ( row, col );
+    if (opcion == editup)
+	on_mui_list_ctrlSubir(row, col);
+    if (opcion == editdown)
+	on_mui_list_ctrlBajar(row, col);
     
     emit trataMenu ( opcion );
 

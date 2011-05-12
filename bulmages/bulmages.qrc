@@ -99,6 +99,8 @@
         <file alias="modificadores.png">images/oxygen/actions/48x48/modificadores.png</file>
         <file alias="clipboard.png">images/png/i_xClipboard.png</file>
         <file alias="edit_edit.png">images/oxygen/actions/48x48/edit_edit.png</file>
+        <file alias="edit_up.png">images/oxygen/actions/48x48/edit_up.png</file>
+        <file alias="edit_down.png">images/oxygen/actions/48x48/edit_down.png</file>
     </qresource>
     <qresource prefix="/BulmaCont32x32" >
         <file>images/png/decrypted.png</file>
