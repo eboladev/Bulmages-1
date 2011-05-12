@@ -33,6 +33,9 @@
 #include <QMainWindow>
 #include <QProgressBar>
 
+#include <QDesktopServices>
+#include <QUrl>
+
 #include "blworkspace.h"
 #include "bfbulmafact.h"
 #include "blwindowlistdock.h"
@@ -266,7 +269,8 @@ void BfBulmaFact::on_actionDocumentacion_triggered()
 
   
     blDebug ( "BfBulmaFact::on_actionDocumentacion_triggered", 0 );
-  system("konqueror http://www.iglues.org/wiki_users/doku.php &");
+    //system("konqueror http://www.iglues.org/wiki_users/doku.php &");
+    QDesktopServices::openUrl(QUrl("http://www.iglues.org/wiki_users/doku.php", QUrl::TolerantMode));
 /*
 QAssistantClient *asistenteAyuda = new QAssistantClient ( QLibraryInfo::location ( QLibraryInfo::BinariesPath ), 0 );
     connect ( asistenteAyuda, SIGNAL ( error ( const QString ) ), this, SLOT ( documentacionError ( const QString ) ) );

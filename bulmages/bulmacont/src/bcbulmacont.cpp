@@ -25,6 +25,8 @@
 #include <QPixmap>
 #include <QEvent>
 #include <QProgressBar>
+#include <QDesktopServices>
+#include <QUrl>
 
 #include "bcbulmacont.h"
 #include "blconfiguration.h"
@@ -655,7 +657,8 @@ void BcBulmaCont::closeEvent ( QCloseEvent *event )
 void BcBulmaCont::on_actionAyuda_triggered()
 {
     blDebug ( "BcBulmaCont::on_actionAyuda_triggered", 0 );
-  system("konqueror http://www.iglues.org/wiki_users/doku.php &");
+    QDesktopServices::openUrl(QUrl("http://www.iglues.org/wiki_users/doku.php", QUrl::TolerantMode));
+    //system("konqueror http://www.iglues.org/wiki_users/doku.php &");
   /*
     QAssistantClient *asistenteAyuda = new QAssistantClient ( QLibraryInfo::location ( QLibraryInfo::BinariesPath ), 0 );
     connect ( asistenteAyuda, SIGNAL ( error ( const QString ) ), this, SLOT ( documentacionError ( const QString ) ) );
