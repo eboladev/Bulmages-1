@@ -149,10 +149,18 @@ int FPagoView::guardar()
             return -1;
         } // end if
 	
-        QString query = "UPDATE forma_pago SET idbanco = "+ idbanco +", descforma_pago = '" +
-                        mainCompany() ->sanearCadena ( mui_descforma_pago->text() ) + "', dias1tforma_pago= " +
-                        mainCompany() ->sanearCadena ( mui_dias1tforma_pago->text() ) + " , descuentoforma_pago = " +
-                        mainCompany() ->sanearCadena ( mui_descuentoforma_pago->text() ) + " WHERE idforma_pago =" + mdb_idforma_pago;
+	
+	QString dias1tforma_pago = mainCompany() ->sanearCadena ( mui_dias1tforma_pago->text() );
+	if (dias1tforma_pago.isEmpty()) 
+	    dias1tforma_pago = "NULL";
+	
+	QString descuentoforma_pago = mainCompany() ->sanearCadena ( mui_descuentoforma_pago->text() );
+	if (descuentoforma_pago.isEmpty())
+	    descuentoforma_pago = "NULL";
+	
+	
+	
+        QString query = "UPDATE forma_pago SET idbanco = "+ idbanco +", descforma_pago = '" + mainCompany() ->sanearCadena ( mui_descforma_pago->text() ) + "', dias1tforma_pago= " + dias1tforma_pago + " , descuentoforma_pago = " + descuentoforma_pago + " WHERE idforma_pago =" + mdb_idforma_pago;
         mainCompany() ->runQuery ( query );
 	
         if ( m_cursorFPagoView != NULL ) {
