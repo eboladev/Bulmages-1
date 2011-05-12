@@ -165,6 +165,9 @@ void BfConfiguracionView::on_mui_aceptar_clicked() {
 	
 	mainCompany()->runQuery("DELETE FROM configuracion WHERE nombre='NombreEmpresa'");
 	mainCompany()->runQuery("INSERT INTO configuracion (nombre,valor) VALUES ('NombreEmpresa','"+m_nombre->text()+"')");
+
+	mainCompany()->runQuery("DELETE FROM configuracion WHERE nombre='CodPostal'");
+	mainCompany()->runQuery("INSERT INTO configuracion (nombre,valor) VALUES ('CodPostal','"+m_cp->text()+"')");
 	
 	mainCompany()->runQuery("DELETE FROM configuracion WHERE nombre='CIF'");
 	mainCompany()->runQuery("INSERT INTO configuracion (nombre,valor) VALUES ('CIF','"+m_cif->text()+"')");
