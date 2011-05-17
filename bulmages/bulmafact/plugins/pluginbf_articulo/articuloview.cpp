@@ -70,7 +70,7 @@ ArticuloView::ArticuloView ( BfCompany *comp, QWidget *parent )
         addDbField ( "codigocompletoarticulo", BlDbField::DbVarChar, BlDbField::DbNoSave, _ ( "Codigo completo" ) );
         addDbField ( "idfamilia", BlDbField::DbInt, BlDbField::DbNotNull, _ ( "Familia" ) );
         addDbField ( "stockarticulo", BlDbField::DbNumeric, BlDbField::DbNothing, _ ( "Stock" ) );
-        addDbField ( "inactivoarticulo", BlDbField::DbBoolean, BlDbField::DbNothing, _ ( "Inactivo" ) );
+        addDbField ( "inactivoarticulo", BlDbField::DbVarChar, BlDbField::DbNothing, _ ( "Inactivo" ) );
         addDbField ( "pvparticulo", BlDbField::DbNumeric, BlDbField::DbNotNull, _ ( "P.V.P. base" ) );
         addDbField ( "pesoundarticulo", BlDbField::DbNumeric, BlDbField::DbNothing, _ ( "Peso unidad" ) );
         addDbField ( "volumenundarticulo", BlDbField::DbNumeric, BlDbField::DbNothing, _ ( "Volumen unidad" ) );
