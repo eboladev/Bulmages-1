@@ -38,29 +38,92 @@
 #include "bldb.h"
 #include "archmenu.h"
 #include "archivo.h"
-
+#include "blfunctions.h"
 
 ///
 /**
 \param parent
 **/
-ArchMenu::ArchMenu ( QWidget *parent ) : QWidget ( parent )
+EQToolButton::EQToolButton ( QWidget *parent ) : QToolButton ( parent )
 {
-    blDebug ( "ArchMenu::ArchMenu", 0 );
+    blDebug ( "EQToolButton::EQToolButton", 0 );
+   /// Buscamos alguna otra instancia y si la hay nos quitamos de enmedio
+    EQToolButton *tool = parent->findChild<EQToolButton *>("BotonArchDoc");
+    if (tool) {
+      hide();
+      return;
+    } // end if
+    setObjectName("BotonArchDoc");
+
     connect ( parent, SIGNAL ( pintaMenu ( QMenu * ) ), this, SLOT ( pintaMenu ( QMenu * ) ) );
     connect ( parent, SIGNAL ( trataMenu ( QAction * ) ), this, SLOT ( trataMenu ( QAction * ) ) );
+
     m_BlForm = ( BlForm * ) parent;
-    blDebug ( "END ArchMenu::ArchMenu", 0 );
+
+    QFrame *plugbotones = m_BlForm->findChild<QFrame *>("mui_plugbotones");
+    if (plugbotones) {
+	QHBoxLayout *m_hboxLayout1 = plugbotones->findChild<QHBoxLayout *> ( "hboxLayout1" );
+	if ( !m_hboxLayout1 ) {
+	    m_hboxLayout1 = new QHBoxLayout ( plugbotones );
+	    m_hboxLayout1->setSpacing ( 5 );
+	    m_hboxLayout1->setMargin ( 0 );
+	    m_hboxLayout1->setObjectName ( QString::fromUtf8 ( "hboxLayout1" ) );
+	} // end if
+	m_hboxLayout1->addWidget ( this );
+
+	setMinimumSize ( QSize ( 32, 32 ) );
+        setMaximumSize ( QSize ( 32, 32 ) );
+	setIcon ( QIcon ( ":/Images/attach_document.png" ) );
+	setIconSize ( QSize ( 32, 32 ) );  	
+	setPopupMode(QToolButton::InstantPopup);  
+	
+	hazMenu();
+
+    } else {
+        hide();
+    } // end if
+    blDebug ( "END EQToolButton::EQToolButton", 0 );
 }
 
+
+void EQToolButton::hazMenu() {
+  	/// Creamos el menu
+	QMenu *menu = new QMenu(this);
+	
+	QAction *addaction = new QAction( _ ( "Agregar Archivo " ) , m_BlForm);
+	addaction->setIcon(QIcon( ":/Images/attach_document.png" ));
+	menu->addAction (addaction);
+	addaction->setObjectName ( "addarchivo" );
+	connect ( addaction, SIGNAL ( triggered ( bool ) ), this, SLOT ( trataMenu (  ) ) );
+	menu->addSeparator();
+	QString query = "SELECT * FROM archivo WHERE fichaarchivo = '" + m_BlForm->fieldId() + "' AND identificadorfichaarchivo= '" + m_BlForm->dbValue ( m_BlForm->fieldId() ) + "'";
+	BlDbRecordSet *cur = m_BlForm->mainCompany()->loadQuery ( query );
+	while ( !cur->eof() ) {
+	    QMenu *n1menu = menu->addMenu ( cur->valor ( "rutaarchivo" ) );
+	    QAction *addaction1 = new QAction ( _ ( "Abrir"), m_BlForm );
+	    n1menu->addAction (addaction1);
+	    addaction1->setObjectName ( "abrir_archivo_" + cur->valor ( "idarchivo" ) );
+	    connect ( addaction1, SIGNAL ( triggered ( bool ) ), this, SLOT ( trataMenu (  ) ) );
+		    
+	    QAction *delaction = new QAction ( _ ( "Borrar"), m_BlForm );
+	    n1menu->addAction (delaction);
+	    delaction->setObjectName ( "borrar_archivo_" + cur->valor ( "idarchivo" ) );
+	    connect ( delaction, SIGNAL ( triggered ( bool ) ), this, SLOT ( trataMenu ( ) ) );
+	    
+	    cur->nextRecord();
+	} // end while
+	delete cur;
+	
+	setMenu(menu);
+}
 
 ///
 /**
 **/
-ArchMenu::~ArchMenu()
+EQToolButton::~EQToolButton()
 {
-    blDebug ( "ArchMenu::~ArchMenu", 0 );
-    blDebug ( "END ArchMenu::~ArchMenu", 0 );
+    blDebug ( "EQToolButton::~EQToolButton", 0 );
+    blDebug ( "END EQToolButton::~EQToolButton", 0 );
 }
 
 
@@ -68,27 +131,34 @@ ArchMenu::~ArchMenu()
 /**
 \param menu El menu sobre el que pintar la opcion
 **/
-void ArchMenu::pintaMenu ( QMenu *menu )
+void EQToolButton::pintaMenu ( QMenu *menu )
 {
-    blDebug ( "ArchMenu::pintaMenu", 0 );
-    QMenu *nmenu = menu->addMenu ( tr ( "Archivo Documental" ) );
-    QAction *addaction = nmenu->addAction ( tr ( "Agregar Archivo " ) );
-    addaction->setObjectName ( "addarchivo" );
-    nmenu->addSeparator();
-    QString query = "SELECT * FROM archivo WHERE fichaarchivo = '" + m_BlForm->fieldId() + "' AND identificadorfichaarchivo= '" + m_BlForm->dbValue ( m_BlForm->fieldId() ) + "'";
-    BlDbRecordSet *cur = m_BlForm->mainCompany()->loadQuery ( query );
-    while ( !cur->eof() ) {
-        QMenu *n1menu = nmenu->addMenu ( cur->valor ( "rutaarchivo" ) );
-        QAction *addaction = n1menu->addAction ( tr ( "Abrir") );
-        addaction->setObjectName ( "abrir_archivo_" + cur->valor ( "idarchivo" ) );
-	
-        QAction *delaction = n1menu->addAction ( tr ( "Borrar") );
-        delaction->setObjectName ( "borrar_archivo_" + cur->valor ( "idarchivo" ) );
-	
-        cur->nextRecord();
-    } // end while
-    delete cur;
-    blDebug ( "END ArchMenu::pintaMenu", 0 );
+    blDebug ( "EQToolButton::pintaMenu", 0 );
+    QMenu *ajust = menu->addMenu (QIcon(":/Images/attach_document.png"), _ ( "Archivo Documental" ) );
+
+    
+	QAction *addaction = new QAction( _ ( "Agregar Archivo " ) , m_BlForm);
+	addaction->setIcon(QIcon( ":/Images/attach_document.png" ));
+	ajust->addAction (addaction);
+	addaction->setObjectName ( "addarchivo" );
+	ajust->addSeparator();
+	QString query = "SELECT * FROM archivo WHERE fichaarchivo = '" + m_BlForm->fieldId() + "' AND identificadorfichaarchivo= '" + m_BlForm->dbValue ( m_BlForm->fieldId() ) + "'";
+	BlDbRecordSet *cur = m_BlForm->mainCompany()->loadQuery ( query );
+	while ( !cur->eof() ) {
+	    QMenu *n1menu = ajust->addMenu ( cur->valor ( "rutaarchivo" ) );
+	    QAction *addaction1 = new QAction ( _ ( "Abrir"), m_BlForm );
+	    n1menu->addAction (addaction1);
+	    addaction->setObjectName ( "abrir_archivo_" + cur->valor ( "idarchivo" ) );
+	    
+	    QAction *delaction = new QAction ( _ ( "Borrar"), m_BlForm );
+	    n1menu->addAction (delaction);
+	    delaction->setObjectName ( "borrar_archivo_" + cur->valor ( "idarchivo" ) );
+	    
+	    cur->nextRecord();
+	} // end while
+	delete cur;
+
+    blDebug ( "END EQToolButton::pintaMenu", 0 );
 }
 
 
@@ -96,10 +166,16 @@ void ArchMenu::pintaMenu ( QMenu *menu )
 /**
 \param menu El menu sobre el que pintar la opcion
 **/
-void ArchMenu::trataMenu ( QAction *action )
+void EQToolButton::trataMenu ( QAction *action )
 {
-    blDebug ( "ArchMenu::trataMenu", 0 );
+    blDebug ( "EQToolButton::trataMenu", 0 );
+    
+     if (action == NULL) action = (QAction *) sender();
+    
+
     if ( action->objectName() == "addarchivo" ) {
+      
+
         QDialog *diag = new QDialog;
         Archivo *camb = new Archivo ( m_BlForm->mainCompany(), diag );
         diag->setModal ( true );
@@ -118,12 +194,15 @@ void ArchMenu::trataMenu ( QAction *action )
         diag->setLayout ( layout );
         diag->setWindowTitle ( "Agregar Archivo Documental" );
 
+	
+
         if ( diag->exec() ) {
             QString query = "INSERT INTO archivo (fichaarchivo, identificadorfichaarchivo, rutaarchivo) VALUES ('" + m_BlForm->fieldId() + "', '" + m_BlForm->dbValue ( m_BlForm->fieldId() ) + "' , '" + camb->mui_archivo->text() + "') ";
             m_BlForm->mainCompany()->runQuery ( query );
         } // end if
 
         delete diag;
+	hazMenu();
     } // end if
 
     if ( action->objectName().left ( 14 ) == "abrir_archivo_" ) {
@@ -143,11 +222,13 @@ void ArchMenu::trataMenu ( QAction *action )
         QString idarchivo = action->objectName().right ( action->objectName().size() - 15 );
         QString query = "DELETE FROM archivo WHERE idarchivo = " + idarchivo;
         m_BlForm->mainCompany()->runQuery ( query );
+	hazMenu();
     } // end if
 
-    blDebug ( "END ArchMenu::trataMenu", 0 );
-    return;
+    
+    blDebug ( "END EQToolButton::trataMenu", 0 );
 }
+
 
 
 

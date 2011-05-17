@@ -30,15 +30,18 @@
 #include <QFile>
 #include <QMenu>
 #include <QMenuBar>
-#include <QToolButton>
 #include <QPushButton>
+#include <QHBoxLayout>
+#include <QDesktopServices>
 
 #include "local_blI18n.h"
 #include "pluginbl_attachdocument.h"
 #include "blform.h"
 #include "blmaincompany.h"
 #include "archmenu.h"
-
+#include "bltoolbutton.h"
+#include "blaction.h"
+#include "archivo.h"
 
 int entryPoint ( QMainWindow *bcont )
 {
@@ -55,6 +58,8 @@ int entryPoint ( QMainWindow *bcont )
 int BlForm_cargar ( BlForm *ficha )
 {
     blDebug ( "PluginBl_AttachDocument::BlForm_cargar", 0 );
+    EQToolButton *eq = ficha->findChild<EQToolButton *>("BotonArchDoc");
+    eq->hazMenu();
     return 0;
     blDebug ( "END PluginBl_AttachDocument::BlForm_cargar", 0 );
 }
@@ -79,8 +84,29 @@ int BlForm_BlForm ( BlForm *l )
     /// No se puede comprobar en entryPoint porque no se tiene acceso a MainCompany
     l->mainCompany()->dbPatchVersionCheck("PluginBl_AttachDocument", "0.11.1-0001");
 
+    /*
     new ArchMenu ( l );
+    new EQToolButton( l );
+*/
+
     blDebug ( "END PluginBl_AttachDocument::BlForm_BlForm", 0 );
     return 0;
 }
+
+
+
+///
+/**
+\param l
+\return
+**/
+int BlForm_cargaSpecs ( BlForm *l )
+{
+    blDebug ( "BlForm_BlForm", 0 );
+    new EQToolButton ( l );
+    blDebug ( "END BlForm_BlForm", 0 );
+    return 0;
+}
+
+
 

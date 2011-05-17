@@ -127,7 +127,7 @@ EQToolButton::EQToolButton ( QWidget *parent ) : QToolButton ( parent )
 	    accion->setObjectName ( fileInfo.fileName() );
 	    accion->setIcon(QIcon(icon));
 	    connect ( accion, SIGNAL ( triggered ( bool ) ), this, SLOT ( trataMenu ( ) ) );
-	}
+	} // end for
 	setMenu(menu);
     } else {
 	hide();

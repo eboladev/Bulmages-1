@@ -101,6 +101,7 @@
         <file alias="edit_edit.png">images/oxygen/actions/48x48/edit_edit.png</file>
         <file alias="edit_up.png">images/oxygen/actions/48x48/edit_up.png</file>
         <file alias="edit_down.png">images/oxygen/actions/48x48/edit_down.png</file>
+        <file alias="attach_document.png">images/oxygen/actions/48x48/attach_document.png</file>
     </qresource>
     <qresource prefix="/BulmaCont32x32" >
         <file>images/png/decrypted.png</file>

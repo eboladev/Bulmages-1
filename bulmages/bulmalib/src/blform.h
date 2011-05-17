@@ -103,7 +103,6 @@ public slots:
     virtual void on_mui_imprimir_clicked();
 
 signals:
-    //virtual void cerrar();
     void pintaMenu ( QMenu * );
     void trataMenu ( QAction * );
 };
