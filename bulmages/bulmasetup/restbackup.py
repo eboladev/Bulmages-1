@@ -9,52 +9,52 @@ from restbackupbase import *
 class RestBackup(QtGui.QDialog, Ui_RestBackupBase):
     def __init__(self, parent = None):
         QtGui.QDialog.__init__(self,parent)
-	self.setupUi(self)
-	self.proceso = QtCore.QProcess()	
-	
+        self.setupUi(self)
+        self.proceso = QtCore.QProcess()
+
     def on_mui_aceptar_released(self):
-    
-	self.command = 'tar xzf ' + self.mui_filename.text() + ' --directory /'
-	self.proceso.start(self.command)
-	self.proceso.waitForFinished(-1)
-	
-	self.nomdb = self.mui_dbname.text()
-	
-	# Creamos la base de datos
-	self.command = 'su postgres -c "createdb -E UNICODE ' + self.nomdb +'"'
-	self.proceso.start(self.command)
-	self.proceso.waitForFinished(-1)
-	
-	# Cargamos la esquematica de la base de datos
-	self.command = 'su postgres -c \"psql  -f /etc/bulmages/' + self.database + '.sql ' + self.nomdb + ' \"'
-	self.proceso.start(self.command)
-	self.proceso.waitForFinished(-1)
-	
-	# Borramos el sql recien extraido en /etc/bulmages, ya que se conserva una copia dentro del backup
-	self.command = 'rm /etc/bulmages/' + self.database + '.sql'
-	self.proceso.start(self.command)
-	self.proceso.waitForFinished(-1)
-	
-	Yes = 'Ok'
-	yasta = QtGui.QMessageBox(self)
-	yasta.setWindowTitle('Restauracion de Backup')
-	yasta.setIcon(QtGui.QMessageBox.Information)
-	yasta.addButton(Yes, QtGui.QMessageBox.AcceptRole)
-	yasta.setText('<b>El backup ha sido restaurado correctamente</b>')
-	yasta.exec_()
-	
-	self.accept()
+
+        self.command = 'tar xzf ' + self.mui_filename.text() + ' --directory /'
+        self.proceso.start(self.command)
+        self.proceso.waitForFinished(-1)
+
+        self.nomdb = self.mui_dbname.text()
+
+        # Creamos la base de datos
+        self.command = 'su postgres -c "createdb -E UNICODE ' + self.nomdb +'"'
+        self.proceso.start(self.command)
+        self.proceso.waitForFinished(-1)
+
+        # Cargamos la esquematica de la base de datos
+        self.command = 'su postgres -c \"psql  -f /etc/bulmages/' + self.database + '.sql ' + self.nomdb + ' \"'
+        self.proceso.start(self.command)
+        self.proceso.waitForFinished(-1)
+
+        # Borramos el sql recien extraido en /etc/bulmages, ya que se conserva una copia dentro del backup
+        self.command = 'rm /etc/bulmages/' + self.database + '.sql'
+        self.proceso.start(self.command)
+        self.proceso.waitForFinished(-1)
+
+        Yes = 'Ok'
+        yasta = QtGui.QMessageBox(self)
+        yasta.setWindowTitle('Restauracion de Backup')
+        yasta.setIcon(QtGui.QMessageBox.Information)
+        yasta.addButton(Yes, QtGui.QMessageBox.AcceptRole)
+        yasta.setText('<b>El backup ha sido restaurado correctamente</b>')
+        yasta.exec_()
+
+        self.accept()
 
     def on_mui_filesearch_released(self):
-	self.openfile = QFileDialog.getOpenFileName(self,"Restaurar - Elija archivo de backup","/home","TAR.GZ (*.tar.gz)")
-	self.mui_filename.setText(self.openfile)
+        self.openfile = QFileDialog.getOpenFileName(self,"Restaurar - Elija archivo de backup","/home","TAR.GZ (*.tar.gz)")
+        self.mui_filename.setText(self.openfile)
 
-	self.arra = self.openfile.split('/')
-	self.database = self.arra[-1]
-	if self.database.contains('.tar.gz'):
-	  self.database.remove('.tar.gz')
-	self.mui_dbname.setText(self.database)
-	
+        self.arra = self.openfile.split('/')
+        self.database = self.arra[-1]
+        if self.database.contains('.tar.gz'):
+            self.database.remove('.tar.gz')
+        self.mui_dbname.setText(self.database)
+
 def main(args):
     app=QtGui.QApplication(args)
     win=RestBackup()

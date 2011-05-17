@@ -31,78 +31,78 @@ from about import About
 class HelloWindow(QtGui.QMainWindow, Ui_MainWindow, PluginsBulmaSetup):
     def __init__(self, *args):
         apply(QtGui.QMainWindow.__init__, (self,) + args)
-	self.setupUi(self)
-	
-	# Detecta si hemos accedido como 'root' o no y deshabilita las opciones que necesitan esos permisos.
-	if commands.getstatusoutput("whoami")[1] == 'root':
+        self.setupUi(self)
+
+        # Detecta si hemos accedido como 'root' o no y deshabilita las opciones que necesitan esos permisos.
+        if commands.getstatusoutput("whoami")[1] == 'root':
             self.nuevo_usuario.setEnabled(True)
             self.editar_usuario.setEnabled(True)
             self.eliminar_usuario.setEnabled(True)
             self.permisos_usuario.setEnabled(True)
-	    self.mui_crearbulmafact.setEnabled(True)
-	    self.mui_crearbulmacont.setEnabled(True)
+            self.mui_crearbulmafact.setEnabled(True)
+            self.mui_crearbulmacont.setEnabled(True)
             self.eliminar_empresa.setEnabled(True)
-	    self.mui_adminempresas.setEnabled(True)
-	    self.mui_restbackup.setEnabled(True)
-	    self.mui_creabackup.setEnabled(True)
+            self.mui_adminempresas.setEnabled(True)
+            self.mui_restbackup.setEnabled(True)
+            self.mui_creabackup.setEnabled(True)
 
-            
-	# Evento al hacer clic en el Boton para crear un nuevo usuario
+
+        # Evento al hacer clic en el Boton para crear un nuevo usuario
     def on_nuevo_usuario_released(self):
-	    win = NuevoUsuario()
-	    win.exec_()
-            
+        win = NuevoUsuario()
+        win.exec_()
+
         # Evento al hacer clic en el Boton para crear un nuevo usuario
     def on_editar_usuario_released(self):
-            win = EditarUsuario()
-            win.exec_()
-            
+        win = EditarUsuario()
+        win.exec_()
+
         # Evento al hacer clic en el Boton para crear un nuevo usuario
     def on_eliminar_usuario_released(self):
-            win = EliminarUsuario()
-            win.exec_()
-            
+        win = EliminarUsuario()
+        win.exec_()
+
         # Evento al hacer clic en el Boton para crear un nuevo usuario
     def on_permisos_usuario_released(self):
-            win = ModificarUsuario()
-            win.exec_()
-            
+        win = ModificarUsuario()
+        win.exec_()
+
         # Evento al hacer clic en el Boton para crear nueva Empresa de Facturacion
     def on_mui_crearbulmafact_released(self):
-	    win = NuevaFacturacion()
-	    win.exec_()
-	    
+        win = NuevaFacturacion()
+        win.exec_()
+
         # Evento al hacer clck en el Boton para crear nueva Empresa de Contablidad
     def on_mui_crearbulmacont_released(self):
-	    win = NuevaContabilidad()
-	    win.exec_()
-            
+        win = NuevaContabilidad()
+        win.exec_()
+
         # Evento al hacer clck en el Boton para eliminar Empresas
     def on_eliminar_empresa_released(self):
-            win = EliminarEmpresa()
-            win.exec_()
-	    
+        win = EliminarEmpresa()
+        win.exec_()
+
         # Evento al hacer clic en el Boton para Administrar una Empresa ya existente
     def on_mui_adminempresas_released(self):
-	    win = ListEmpresas()
-	    win.exec_()
-	    
+        win = ListEmpresas()
+        win.exec_()
+
         # Evento al hacer clic en el Boton para restaurar Copia de Seguridad
     def on_mui_restbackup_released(self):
-	    win = RestBackup()
-	    win.exec_()
-	    
+        win = RestBackup()
+        win.exec_()
+
         # Evento al hacer clic en el Boton para crear Copia de Seguridad
     def on_mui_creabackup_released(self):
-	    win = GuardarBackup()
-	    win.exec_()
-	    
-	    
+        win = GuardarBackup()
+        win.exec_()
+
+
         # Evento al hacer clic en el Boton Acerca de BulmaSetup
     def on_mui_acerca_released(self):
-	    win = About()
-	    win.exec_()
-	    
+        win = About()
+        win.exec_()
+
 def main(args):
     app=QtGui.QApplication(args)
 

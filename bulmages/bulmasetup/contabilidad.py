@@ -11,735 +11,732 @@ from empresa import Empresa
 import plugins
 
 class Contabilidad(Ui_ModificarContabilidadBase, Empresa):
-   def __init__(self, database, parent = None):
-      Empresa.__init__(self, database)
-      self.setupUi(self)
+    def __init__(self, database, parent = None):
+        Empresa.__init__(self, database)
+        self.setupUi(self)
 
-      # Ocultamos la columna de las descripciones.
-      self.mui_plugins.setColumnCount(12)
-      self.mui_plugins.hideColumn(1)
-      self.mui_plugins.hideColumn(3)
-      self.mui_plugins.hideColumn(4)
-      self.mui_plugins.hideColumn(5)
-      self.mui_plugins.hideColumn(6)
-      self.mui_plugins.hideColumn(7)
-      self.mui_plugins.hideColumn(8)
-      self.mui_plugins.hideColumn(9)
-      self.mui_plugins.hideColumn(10)
-      self.mui_plugins.hideColumn(11)
+        # Ocultamos la columna de las descripciones.
+        self.mui_plugins.setColumnCount(12)
+        self.mui_plugins.hideColumn(1)
+        self.mui_plugins.hideColumn(3)
+        self.mui_plugins.hideColumn(4)
+        self.mui_plugins.hideColumn(5)
+        self.mui_plugins.hideColumn(6)
+        self.mui_plugins.hideColumn(7)
+        self.mui_plugins.hideColumn(8)
+        self.mui_plugins.hideColumn(9)
+        self.mui_plugins.hideColumn(10)
+        self.mui_plugins.hideColumn(11)
 
-      # Desabilitamos el sorting para que se rellenen bien las tablas.
-      self.mui_plugins.setSortingEnabled(False)
+        # Desabilitamos el sorting para que se rellenen bien las tablas.
+        self.mui_plugins.setSortingEnabled(False)
 
-      # Buscamos los Plugins
-      self.buscaPlugins()
-      # Ajustamos la presentacion
-      self.mui_plugins.resizeColumnsToContents()
-      
-      # Mostramos la ventana para que el padre tome el control
-      self.show()
-      # iniciialzamos
-      self.inicializar()
-      self.mui_plugins.setSortingEnabled(True)
-      
-      #Comprobamos que exista la imagen y si es asi la presentamos.
-      if (self.database != None):
-         if (os.path.exists('/opt/bulmages/openreports_' + self.database + '/es/logo.jpg' )):
-            self.pixmap = QtGui.QPixmap('/opt/bulmages/openreports_' + self.database + '/es/logo.jpg')
-            self.mui_img.setPixmap(self.pixmap)
-            
-   def inicializar(self):
-      # Inicializamos el combo de categoria.
-      self.mui_categoria.clear()
-      self.i =0 ;
-      self.cadcategorias = '';
-      while (self.i < len(self.pluginsbulmacont)):
-         self.cadcategorias = self.cadcategorias + self.pluginsbulmacont[self.i][8]
-         self.i = self.i + 1
-      # Tratamos toda la cadena de categorias.
-      self.cadcategorias = self.cadcategorias.replace('; ',';')
-      self.cadcategorias = self.cadcategorias.replace(' ;',';')
-      self.arra = self.cadcategorias.split(';')
-      self.arra.sort()
-      self.j = 0
-      self.mui_categoria.addItem(QtGui.QApplication.translate("Contabilidad",'--Todas las Categorias--', None, QtGui.QApplication.UnicodeUTF8))
-      while (self.j < len ( self.arra)):
-         if (self.j < 1 or self.arra[self.j] <> self.arra[self.j-1]):
-            self.mui_categoria.addItem( self.arra[self.j])
-         self.j = self.j + 1
+        # Buscamos los Plugins
+        self.buscaPlugins()
+        # Ajustamos la presentacion
+        self.mui_plugins.resizeColumnsToContents()
 
-   def actualizarDatabase(self):
-      self.revisiones = ["rev-0.5.3.sql", "rev-0.9.1.sql", "rev-0.9.3.sql", "rev-0.10.sql", "rev-0.11.sql", "rev-0.12.sql", "rev-0.13.sql"]
-      #Parcheamos todo lo que hay que parchear
-      for self.parche in self.revisiones:
-         self.command = 'su postgres -c \"psql -t -f ' + plugins.pathdbparches + self.parche + ' ' + self.database  + '\"'
-         self.writecommand(self.command)
-         self.process.start(self.command)
-         self.process.waitForFinished(-1)
-         self.writecommand(self.process.readAllStandardOutput())
-         self.actualizarPlugins()
-   
+        # Mostramos la ventana para que el padre tome el control
+        self.show()
+        # iniciialzamos
+        self.inicializar()
+        self.mui_plugins.setSortingEnabled(True)
 
-   def buscaPlugins1(self):
-      self.plugins = self.execQuery('SELECT nombre, valor FROM configuracion WHERE nombre LIKE \'DBRev-%\'')
-      self.writecommand(self.plugins)
-      self.arrplugins = self.plugins.split(QString("\n"))
-      self.mui_plugins.setRowCount(self.arrplugins.count() -3)
-      self.i = 0
-      while (self.i < self.arrplugins.count() ):
-         self.writecommand(self.arrplugins[self.i])
-         self.valores = self.arrplugins[self.i].split(QString("|"))
-         if (self.valores.count() >= 2):
-            self.mui_plugins.setItem(self.i-1 , 1 , QTableWidgetItem(self.valores[1].replace('\n', '')))
-            self.mui_plugins.setItem(self.i-1 , 0 , QTableWidgetItem(self.valores[0].replace('\n', '')))
-   
-         self.i = self.i + 1
-   
-   def buscaPluginInstalado(self, plugin, libreria):
-      self.version = self.execQuery('SELECT valor FROM configuracion WHERE nombre = \'' + plugin +'\'').replace('\n','').replace(' ','')
-      if (len(self.version) > 2):
-         return self.version
-   
-      if (libreria == ''):
-         return ''
+        #Comprobamos que exista la imagen y si es asi la presentamos.
+        if (self.database != None):
+            if (os.path.exists('/opt/bulmages/openreports_' + self.database + '/es/logo.jpg' )):
+                self.pixmap = QtGui.QPixmap('/opt/bulmages/openreports_' + self.database + '/es/logo.jpg')
+                self.mui_img.setPixmap(self.pixmap)
 
-      self.process1 = QtCore.QProcess()
-      self.mfile = QFile(plugins.configfiles + 'bulmacont_' + self.database + '.conf')
-      if (self.mfile.exists()):
-         self.command = 'grep '+libreria+' '+ plugins.configfiles + 'bulmacont_' + self.database + '.conf'
-         self.writecommand(self.command)
-         self.process1.start(self.command)
-         self.process1.waitForFinished(-1)
-         self.version = self.process1.readAllStandardOutput()
+    def inicializar(self):
+        # Inicializamos el combo de categoria.
+        self.mui_categoria.clear()
+        self.i =0 ;
+        self.cadcategorias = '';
+        while (self.i < len(self.pluginsbulmacont)):
+            self.cadcategorias = self.cadcategorias + self.pluginsbulmacont[self.i][8]
+            self.i = self.i + 1
+        # Tratamos toda la cadena de categorias.
+        self.cadcategorias = self.cadcategorias.replace('; ',';')
+        self.cadcategorias = self.cadcategorias.replace(' ;',';')
+        self.arra = self.cadcategorias.split(';')
+        self.arra.sort()
+        self.j = 0
+        self.mui_categoria.addItem(QtGui.QApplication.translate("Contabilidad",'--Todas las Categorias--', None, QtGui.QApplication.UnicodeUTF8))
+        while (self.j < len ( self.arra)):
+            if (self.j < 1 or self.arra[self.j] <> self.arra[self.j-1]):
+                self.mui_categoria.addItem( self.arra[self.j])
+            self.j = self.j + 1
 
-      if (self.version != ''):
-         self.version = '0.12'
-      return QString(self.version)
-   
-   
-   def buscaPlugins(self):
-      self.writecommand("Buscando Plugins")
-      
-      #Creamos la bara de progreso
-      self.progress = QtGui.QProgressBar()
-      self.progress.setGeometry(self.width() / 2 -100, self.height() /2 -10, 200, 40)
-      self.progress.setRange(0, len(self.pluginsbulmacont))
-      self.progress.show()
-      
-      self.semaforo = 0
-   
-      self.mui_plugins.setRowCount(len(self.pluginsbulmacont))
-      self.i = 0
-      while (self.i < len(self.pluginsbulmacont)):
-         self.versioninst = self.buscaPluginInstalado(self.pluginsbulmacont[self.i][3], self.pluginsbulmacont[self.i][1])
-         self.check = QTableWidgetItem(QtGui.QApplication.translate("MainWindow", self.pluginsbulmacont[self.i][0], None, QtGui.QApplication.UnicodeUTF8))
-         self.check.setFlags(Qt.ItemIsUserCheckable | Qt.ItemIsEnabled)
-         self.check.setCheckState(Qt.Unchecked)
-         if (self.versioninst != ''):
-            self.check.setCheckState(Qt.Checked)
-         self.mui_plugins.setItem(self.i, 0, self.check)
-         self.mui_plugins.setItem(self.i, 2, QTableWidgetItem(self.versioninst))
-         self.mui_plugins.setItem(self.i , 1 , QTableWidgetItem(QtGui.QApplication.translate("MainWindow",self.pluginsbulmacont[self.i][2], None, QtGui.QApplication.UnicodeUTF8)))
-         self.mui_plugins.setItem(self.i , 3 , QTableWidgetItem(QtGui.QApplication.translate("MainWindow",self.pluginsbulmacont[self.i][3], None, QtGui.QApplication.UnicodeUTF8)))
-         self.mui_plugins.setItem(self.i , 4 , QTableWidgetItem(QtGui.QApplication.translate("MainWindow",self.pluginsbulmacont[self.i][4], None, QtGui.QApplication.UnicodeUTF8)))
-         self.mui_plugins.setItem(self.i , 5 , QTableWidgetItem(QtGui.QApplication.translate("MainWindow",self.pluginsbulmacont[self.i][5], None, QtGui.QApplication.UnicodeUTF8)))
-         self.mui_plugins.setItem(self.i , 6 , QTableWidgetItem(QtGui.QApplication.translate("MainWindow",self.pluginsbulmacont[self.i][6], None, QtGui.QApplication.UnicodeUTF8)))
-         self.mui_plugins.setItem(self.i , 7 , QTableWidgetItem(QtCore.QString.number(self.pluginsbulmacont[self.i][7])))
-         self.mui_plugins.setItem(self.i , 8 , QTableWidgetItem(QtGui.QApplication.translate("MainWindow",self.pluginsbulmacont[self.i][8], None, QtGui.QApplication.UnicodeUTF8)))
-         self.mui_plugins.setItem(self.i , 9 , QTableWidgetItem(QtGui.QApplication.translate("MainWindow",self.pluginsbulmacont[self.i][9], None, QtGui.QApplication.UnicodeUTF8)))
-         self.mui_plugins.setItem(self.i , 10 , QTableWidgetItem(QtGui.QApplication.translate("MainWindow",self.pluginsbulmacont[self.i][1], None, QtGui.QApplication.UnicodeUTF8)))
-         self.mui_plugins.setItem(self.i , 11 , QTableWidgetItem(QtGui.QApplication.translate("MainWindow",self.pluginsbulmacont[self.i][10], None, QtGui.QApplication.UnicodeUTF8)))
+    def actualizarDatabase(self):
+        self.revisiones = ["rev-0.5.3.sql", "rev-0.9.1.sql", "rev-0.9.3.sql", "rev-0.10.sql", "rev-0.11.sql", "rev-0.12.sql", "rev-0.13.sql"]
+        #Parcheamos todo lo que hay que parchear
+        for self.parche in self.revisiones:
+            self.command = 'su postgres -c \"psql -t -f ' + plugins.pathdbparches + self.parche + ' ' + self.database  + '\"'
+            self.writecommand(self.command)
+            self.process.start(self.command)
+            self.process.waitForFinished(-1)
+            self.writecommand(self.process.readAllStandardOutput())
+            self.actualizarPlugins()
 
 
-         self.i = self.i + 1
-         self.progress.setValue(self.progress.value() + 1)
-         
-      self.semaforo = 1
-      self.progress.hide()
-        
-
-
-   def actualizarPlugins(self):
-      self.writecommand('ACTUALIZANDO PLUGINS')
-      
-      #Creamos la bara de progreso
-      self.progress = QtGui.QProgressBar(self)
-      self.progress.setGeometry(self.width() / 2 -100, self.height() /2 -10, 200, 40)
-      self.progress.setRange(0, 2000)
-      self.progress.show()
-      
-
-      # Como los plugins van por orden iteramos sobre el orden para arreglarlo.
-      self.x = 1
-      while (self.x < 1000) :
-        # Iteramos sobre la lista de plugins disponibles en bulmafact
+    def buscaPlugins1(self):
+        self.plugins = self.execQuery('SELECT nombre, valor FROM configuracion WHERE nombre LIKE \'DBRev-%\'')
+        self.writecommand(self.plugins)
+        self.arrplugins = self.plugins.split(QString("\n"))
+        self.mui_plugins.setRowCount(self.arrplugins.count() -3)
         self.i = 0
-        while (self.i < self.mui_plugins.rowCount()):
-          # Si el plugin tiene el orden adecuado lo consideramos.
-          if (str(self.mui_plugins.item(self.i,7).text()) == str(self.x) ):      
-	    self.writecommand('Tratando ' + self.mui_plugins.item(self.i, 0).text())
-	    if (self.mui_plugins.item(self.i, 0).checkState() == Qt.Checked):
-		self.writecommand('Ha que actualizar ' + self.mui_plugins.item(self.i,0).text())
-		# Comprueba que el archivo existe.
-		if (QFile.exists(plugins.pathdbplugins + self.mui_plugins.item(self.i,4).text()) and self.mui_plugins.item(self.i,4).text().size() > 3):
-		  self.command = 'su postgres -c \"psql -t -f ' + plugins.pathdbplugins + self.mui_plugins.item(self.i,4).text() + ' ' + self.database + '\"'
-		  self.writecommand(self.command)
-		  self.process.start(self.command)
-		  self.process.waitForFinished(-1)
-		  self.writecommand(self.process.readAllStandardOutput())
-		  # Tambien tenemos que hacer las comprobaciones de idioma.
-		  locale = QtCore.QLocale()
-		  self.filename = plugins.pathdbplugins + self.mui_plugins.item(self.i,4).text().left(self.mui_plugins.item(self.i,4).text().size() - 4) + "_" + locale.name().left(5) + ".sql"
-		  if (QFile.exists(self.filename)):
-		    self.command = 'su postgres -c \"psql -t -f ' + self.filename + ' ' + self.database + '\"'
-		    self.writecommand(self.command)
-		    self.process.start(self.command)
-		    self.process.waitForFinished(-1)
-		    self.writecommand(self.process.readAllStandardOutput())
-	  self.i = self.i + 1
-	self.x = self.x + 1
-        self.progress.setValue(self.progress.value() + 1)
+        while (self.i < self.arrplugins.count() ):
+            self.writecommand(self.arrplugins[self.i])
+            self.valores = self.arrplugins[self.i].split(QString("|"))
+            if (self.valores.count() >= 2):
+                self.mui_plugins.setItem(self.i-1 , 1 , QTableWidgetItem(self.valores[1].replace('\n', '')))
+                self.mui_plugins.setItem(self.i-1 , 0 , QTableWidgetItem(self.valores[0].replace('\n', '')))
+
+            self.i = self.i + 1
+
+    def buscaPluginInstalado(self, plugin, libreria):
+        self.version = self.execQuery('SELECT valor FROM configuracion WHERE nombre = \'' + plugin +'\'').replace('\n','').replace(' ','')
+        if (len(self.version) > 2):
+            return self.version
+
+        if (libreria == ''):
+            return ''
+
+        self.process1 = QtCore.QProcess()
+        self.mfile = QFile(plugins.configfiles + 'bulmacont_' + self.database + '.conf')
+        if (self.mfile.exists()):
+            self.command = 'grep '+libreria+' '+ plugins.configfiles + 'bulmacont_' + self.database + '.conf'
+            self.writecommand(self.command)
+            self.process1.start(self.command)
+            self.process1.waitForFinished(-1)
+            self.version = self.process1.readAllStandardOutput()
+
+        if (self.version != ''):
+            self.version = '0.12'
+        return QString(self.version)
 
 
-      # Como los plugins van por orden iteramos sobre el orden para arreglarlo.
-      self.x = 1000
-      while (self.x >= 1) :
-        # Iteramos sobre la lista de plugins disponibles en bulmafact
+    def buscaPlugins(self):
+        self.writecommand("Buscando Plugins")
+
+        #Creamos la bara de progreso
+        self.progress = QtGui.QProgressBar()
+        self.progress.setGeometry(self.width() / 2 -100, self.height() /2 -10, 200, 40)
+        self.progress.setRange(0, len(self.pluginsbulmacont))
+        self.progress.show()
+
+        self.semaforo = 0
+
+        self.mui_plugins.setRowCount(len(self.pluginsbulmacont))
         self.i = 0
-        while (self.i < self.mui_plugins.rowCount()):
-          # Si el plugin tiene el orden adecuado lo consideramos.
-          if (str(self.mui_plugins.item(self.i,7).text()) == str(self.x) ):      
-	    self.writecommand('Tratando ' + self.mui_plugins.item(self.i, 0).text())
-	    if (self.mui_plugins.item(self.i, 0).checkState() <> Qt.Checked):
-		# Si no esta chequeado hacemos un borrado del plugin
-		if (QFile.exists(plugins.pathdbplugins + self.mui_plugins.item(self.i,9).text()) and self.mui_plugins.item(self.i,9).text().size > 3 ):
-		  # Aplicamos el parche  de borrado.
-		  self.command = 'su postgres -c \"psql -t -f  ' + plugins.pathdbplugins + self.mui_plugins.item(self.i,9).text() +' '+ self.database +'\"'
-		  self.writecommand(self.command)
-		  self.process.start(self.command)
-		  self.process.waitForFinished(-1)
-		  self.writecommand(self.process.readAllStandardOutput())
-	  self.i = self.i + 1
-	self.x = self.x - 1
-        self.progress.setValue(self.progress.value() + 1)
-      self.progress.hide()
+        while (self.i < len(self.pluginsbulmacont)):
+            self.versioninst = self.buscaPluginInstalado(self.pluginsbulmacont[self.i][3], self.pluginsbulmacont[self.i][1])
+            self.check = QTableWidgetItem(QtGui.QApplication.translate("MainWindow", self.pluginsbulmacont[self.i][0], None, QtGui.QApplication.UnicodeUTF8))
+            self.check.setFlags(Qt.ItemIsUserCheckable | Qt.ItemIsEnabled)
+            self.check.setCheckState(Qt.Unchecked)
+            if (self.versioninst != ''):
+                self.check.setCheckState(Qt.Checked)
+            self.mui_plugins.setItem(self.i, 0, self.check)
+            self.mui_plugins.setItem(self.i, 2, QTableWidgetItem(self.versioninst))
+            self.mui_plugins.setItem(self.i , 1 , QTableWidgetItem(QtGui.QApplication.translate("MainWindow",self.pluginsbulmacont[self.i][2], None, QtGui.QApplication.UnicodeUTF8)))
+            self.mui_plugins.setItem(self.i , 3 , QTableWidgetItem(QtGui.QApplication.translate("MainWindow",self.pluginsbulmacont[self.i][3], None, QtGui.QApplication.UnicodeUTF8)))
+            self.mui_plugins.setItem(self.i , 4 , QTableWidgetItem(QtGui.QApplication.translate("MainWindow",self.pluginsbulmacont[self.i][4], None, QtGui.QApplication.UnicodeUTF8)))
+            self.mui_plugins.setItem(self.i , 5 , QTableWidgetItem(QtGui.QApplication.translate("MainWindow",self.pluginsbulmacont[self.i][5], None, QtGui.QApplication.UnicodeUTF8)))
+            self.mui_plugins.setItem(self.i , 6 , QTableWidgetItem(QtGui.QApplication.translate("MainWindow",self.pluginsbulmacont[self.i][6], None, QtGui.QApplication.UnicodeUTF8)))
+            self.mui_plugins.setItem(self.i , 7 , QTableWidgetItem(QtCore.QString.number(self.pluginsbulmacont[self.i][7])))
+            self.mui_plugins.setItem(self.i , 8 , QTableWidgetItem(QtGui.QApplication.translate("MainWindow",self.pluginsbulmacont[self.i][8], None, QtGui.QApplication.UnicodeUTF8)))
+            self.mui_plugins.setItem(self.i , 9 , QTableWidgetItem(QtGui.QApplication.translate("MainWindow",self.pluginsbulmacont[self.i][9], None, QtGui.QApplication.UnicodeUTF8)))
+            self.mui_plugins.setItem(self.i , 10 , QTableWidgetItem(QtGui.QApplication.translate("MainWindow",self.pluginsbulmacont[self.i][1], None, QtGui.QApplication.UnicodeUTF8)))
+            self.mui_plugins.setItem(self.i , 11 , QTableWidgetItem(QtGui.QApplication.translate("MainWindow",self.pluginsbulmacont[self.i][10], None, QtGui.QApplication.UnicodeUTF8)))
 
 
-   def marcar(self, plug, rec, first = 0):
-      i = 0
-      while (i < self.mui_plugins.rowCount()):
-         if (self.mui_plugins.item(i,10).text() == plug):
-            if (self.mui_plugins.item(i, 0).checkState() == Qt.Unchecked or first == 1):
-              self.mui_plugins.item(i,0).setCheckState(Qt.Checked)
-              if (rec == 1):
-                # Desmarcamos las incompatibilidades
-                self.arr = self.mui_plugins.item(i,6).text().replace(' ;',';').replace('; ',';').split(QString(";"))
-                if self.arr != ['']:
+            self.i = self.i + 1
+            self.progress.setValue(self.progress.value() + 1)
+
+        self.semaforo = 1
+        self.progress.hide()
+
+
+
+    def actualizarPlugins(self):
+        self.writecommand('ACTUALIZANDO PLUGINS')
+
+        #Creamos la bara de progreso
+        self.progress = QtGui.QProgressBar(self)
+        self.progress.setGeometry(self.width() / 2 -100, self.height() /2 -10, 200, 40)
+        self.progress.setRange(0, 2000)
+        self.progress.show()
+
+
+        # Como los plugins van por orden iteramos sobre el orden para arreglarlo.
+        self.x = 1
+        while (self.x < 1000) :
+            # Iteramos sobre la lista de plugins disponibles en bulmafact
+            self.i = 0
+            while (self.i < self.mui_plugins.rowCount()):
+                # Si el plugin tiene el orden adecuado lo consideramos.
+                if (str(self.mui_plugins.item(self.i,7).text()) == str(self.x) ):
+                    self.writecommand('Tratando ' + self.mui_plugins.item(self.i, 0).text())
+                    if (self.mui_plugins.item(self.i, 0).checkState() == Qt.Checked):
+                        self.writecommand('Ha que actualizar ' + self.mui_plugins.item(self.i,0).text())
+                        # Comprueba que el archivo existe.
+                        if (QFile.exists(plugins.pathdbplugins + self.mui_plugins.item(self.i,4).text()) and self.mui_plugins.item(self.i,4).text().size() > 3):
+                            self.command = 'su postgres -c \"psql -t -f ' + plugins.pathdbplugins + self.mui_plugins.item(self.i,4).text() + ' ' + self.database + '\"'
+                            self.writecommand(self.command)
+                            self.process.start(self.command)
+                            self.process.waitForFinished(-1)
+                            self.writecommand(self.process.readAllStandardOutput())
+                            # Tambien tenemos que hacer las comprobaciones de idioma.
+                            locale = QtCore.QLocale()
+                            self.filename = plugins.pathdbplugins + self.mui_plugins.item(self.i,4).text().left(self.mui_plugins.item(self.i,4).text().size() - 4) + "_" + locale.name().left(5) + ".sql"
+                            if (QFile.exists(self.filename)):
+                                self.command = 'su postgres -c \"psql -t -f ' + self.filename + ' ' + self.database + '\"'
+                                self.writecommand(self.command)
+                                self.process.start(self.command)
+                                self.process.waitForFinished(-1)
+                                self.writecommand(self.process.readAllStandardOutput())
+                self.i = self.i + 1
+            self.x = self.x + 1
+            self.progress.setValue(self.progress.value() + 1)
+
+
+        # Como los plugins van por orden iteramos sobre el orden para arreglarlo.
+        self.x = 1000
+        while (self.x >= 1) :
+            # Iteramos sobre la lista de plugins disponibles en bulmafact
+            self.i = 0
+            while (self.i < self.mui_plugins.rowCount()):
+                # Si el plugin tiene el orden adecuado lo consideramos.
+                if (str(self.mui_plugins.item(self.i,7).text()) == str(self.x) ):
+                    self.writecommand('Tratando ' + self.mui_plugins.item(self.i, 0).text())
+                    if (self.mui_plugins.item(self.i, 0).checkState() <> Qt.Checked):
+                        # Si no esta chequeado hacemos un borrado del plugin
+                        if (QFile.exists(plugins.pathdbplugins + self.mui_plugins.item(self.i,9).text()) and self.mui_plugins.item(self.i,9).text().size > 3 ):
+                            # Aplicamos el parche  de borrado.
+                            self.command = 'su postgres -c \"psql -t -f  ' + plugins.pathdbplugins + self.mui_plugins.item(self.i,9).text() +' '+ self.database +'\"'
+                            self.writecommand(self.command)
+                            self.process.start(self.command)
+                            self.process.waitForFinished(-1)
+                            self.writecommand(self.process.readAllStandardOutput())
+                self.i = self.i + 1
+            self.x = self.x - 1
+            self.progress.setValue(self.progress.value() + 1)
+        self.progress.hide()
+
+
+    def marcar(self, plug, rec, first = 0):
+        i = 0
+        while (i < self.mui_plugins.rowCount()):
+            if (self.mui_plugins.item(i,10).text() == plug):
+                if (self.mui_plugins.item(i, 0).checkState() == Qt.Unchecked or first == 1):
+                    self.mui_plugins.item(i,0).setCheckState(Qt.Checked)
+                    if (rec == 1):
+                        # Desmarcamos las incompatibilidades
+                        self.arr = self.mui_plugins.item(i,6).text().replace(' ;',';').replace('; ',';').split(QString(";"))
+                        if self.arr != ['']:
+                            for self.dep in self.arr:
+                                self.desmarcar(self.dep,1)
+                        # Marcamos las dependencias
+                        self.arr = self.mui_plugins.item(i,5).text().replace(' ;',';').replace('; ',';').split(QString(";"))
+                        if self.arr != ['']:
+                            for self.dep in self.arr:
+                                self.marcar(self.dep,1)
+            i = i + 1
+
+    def desmarcar(self, plug, rec, first = 0):
+        i = 0
+        while (i < self.mui_plugins.rowCount()):
+            if (self.mui_plugins.item(i, 0).checkState() == Qt.Checked or first == 1):
+                # Si encontramos al plugin que hay que desmarcar lo desmarcamos.
+                if (plug == self.mui_plugins.item(i,10).text()) :
+                    self.mui_plugins.item(i,0).setCheckState(Qt.Unchecked)
+                # Si estamos en modo recursivo desmarcamos y revisamos las dependencias.
+                if (rec == 1):
+                    # Marcamos las dependencias
+                    self.arr = self.mui_plugins.item(i,5).text().replace(' ;',';').replace('; ',';').split(QString(";"))
+                    if self.arr != ['']:
                         for self.dep in self.arr:
-                            self.desmarcar(self.dep,1)
-                # Marcamos las dependencias
-                self.arr = self.mui_plugins.item(i,5).text().replace(' ;',';').replace('; ',';').split(QString(";"))
-                if self.arr != ['']:
-                        for self.dep in self.arr:
-                            self.marcar(self.dep,1)
-         i = i + 1
-
-   def desmarcar(self, plug, rec, first = 0):
-      i = 0
-      while (i < self.mui_plugins.rowCount()):
-         if (self.mui_plugins.item(i, 0).checkState() == Qt.Checked or first == 1):
-	   # Si encontramos al plugin que hay que desmarcar lo desmarcamos.
-	   if (plug == self.mui_plugins.item(i,10).text()) :
-	     self.mui_plugins.item(i,0).setCheckState(Qt.Unchecked)
-	   # Si estamos en modo recursivo desmarcamos y revisamos las dependencias.
-           if (rec == 1):
-              # Marcamos las dependencias
-              self.arr = self.mui_plugins.item(i,5).text().replace(' ;',';').replace('; ',';').split(QString(";"))
-              if self.arr != ['']:
-                 for self.dep in self.arr:
-                    if (self.dep == plug):
-                       self.desmarcar(self.mui_plugins.item(i,10).text(),1)
-                       self.mui_plugins.item(i,0).setCheckState(Qt.Unchecked)
-         i = i + 1
+                            if (self.dep == plug):
+                                self.desmarcar(self.mui_plugins.item(i,10).text(),1)
+                                self.mui_plugins.item(i,0).setCheckState(Qt.Unchecked)
+            i = i + 1
 
 
-   def on_mui_plugins_cellPressed(self, row, col):
-      self.estado = self.mui_plugins.item(row,0).checkState()
-      # Escribimos la descripcion
-      self.mui_descripcion.setText(self.mui_plugins.item(row,1).text() + "<b>" + self.mui_plugins.item(row,10).text() + "</b><br>"+ self.mui_plugins.item(row,3).text() + "<br><b>Categorias:</b> " + self.mui_plugins.item(row,8).text() + "<br><br><b>Dependencias:</b> " + self.mui_plugins.item(row,5).text() + "<br><br><b>Incompatibilidades:</b> " + self.mui_plugins.item(row,6).text() + "<br><br><b>Parches SQL:</b>" + self.mui_plugins.item(row,4).text() + "<br>" + self.mui_plugins.item(row,9).text() + "<br><b>Informes:</b><br>" + self.mui_plugins.item(row,11).text())
+    def on_mui_plugins_cellPressed(self, row, col):
+        self.estado = self.mui_plugins.item(row,0).checkState()
+        # Escribimos la descripcion
+        self.mui_descripcion.setText(self.mui_plugins.item(row,1).text() + "<b>" + self.mui_plugins.item(row,10).text() + "</b><br>"+ self.mui_plugins.item(row,3).text() + "<br><b>Categorias:</b> " + self.mui_plugins.item(row,8).text() + "<br><br><b>Dependencias:</b> " + self.mui_plugins.item(row,5).text() + "<br><br><b>Incompatibilidades:</b> " + self.mui_plugins.item(row,6).text() + "<br><br><b>Parches SQL:</b>" + self.mui_plugins.item(row,4).text() + "<br>" + self.mui_plugins.item(row,9).text() + "<br><b>Informes:</b><br>" + self.mui_plugins.item(row,11).text())
 
 
-   def on_mui_plugins_cellClicked(self, row, col):
-      # Escribimos la descripcion 
-      self.mui_descripcion.setText(self.mui_plugins.item(row,1).text() + "<b>" + self.mui_plugins.item(row,10).text() + "</b><br>"+ self.mui_plugins.item(row,3).text() + QtGui.QApplication.translate("Contabilidad","<br><b>Categorias:</b> ", None, QtGui.QApplication.UnicodeUTF8) + self.mui_plugins.item(row,8).text()+ QtGui.QApplication.translate("Contabilidad","<br><br><b>Dependencias:</b> ", None, QtGui.QApplication.UnicodeUTF8) + self.mui_plugins.item(row,5).text() + QtGui.QApplication.translate("Contabilidad", "<br><br><b>Incompatibilidades:</b> ", None, QtGui.QApplication.UnicodeUTF8) + self.mui_plugins.item(row,6).text() + QtGui.QApplication.translate("Contabilidad","<br><br><b>Parches SQL:</b>", None, QtGui.QApplication.UnicodeUTF8) + self.mui_plugins.item(row,4).text() + "<br>" + self.mui_plugins.item(row,9).text() + QtGui.QApplication.translate("Contabilidad","<br><b>Informes:</b><br>", None, QtGui.QApplication.UnicodeUTF8) + self.mui_plugins.item(row,11).text() )
-      
-      if (self.semaforo == 1):
-	  if (self.estado != self.mui_plugins.item(row,0).checkState()):
-	      # Comprobamos que esta marcado el checkbox de la fila donde hemos clicado:
-	      if (self.mui_plugins.item(row, 0).checkState() == Qt.Unchecked):
-	      # Comprobamos que esta marcado el checkbox de la fila donde hemos clicado:
-		  self.desmarcar(self.mui_plugins.item(row,10).text(),1,1)
-	      if (self.mui_plugins.item(row, 0).checkState() == Qt.Checked):
-		  # Desmarcamos las incompatibilidades
-		  self.arr = self.mui_plugins.item(row,6).text().replace(' ;',';').replace('; ',';').split(QString(";"))
-		  if self.arr != ['']:
-		      Yes = 'Si'
-		      No = 'No'
-		      message = QtGui.QMessageBox(self)
-		      message.setText(QtGui.QApplication.translate("Contabilidad",'El plugin <b>', None, QtGui.QApplication.UnicodeUTF8) +str(self.mui_plugins.item(row,10).text() + QtGui.QApplication.translate("Contabilidad","</b> tiene incompatibilidades. Quieres desinstalarlas?", None, QtGui.QApplication.UnicodeUTF8)))
-		      message.setWindowTitle(QtGui.QApplication.translate("Contabilidad",'Atencion!', None, QtGui.QApplication.UnicodeUTF8))
-		      message.setIcon(QtGui.QMessageBox.Warning)
-		      message.addButton(Yes, QtGui.QMessageBox.AcceptRole)
-		      message.addButton(No, QtGui.QMessageBox.RejectRole)
-		      message.exec_()
-		      respuesta = message.clickedButton().text()
-		      if respuesta == Yes:
-			  for self.dep in self.arr:
-			      self.desmarcar(self.dep,1,1)
-		  # Marcamos las dependencias
-		  self.arr = self.mui_plugins.item(row,5).text().replace(' ;',';').replace('; ',';').split(QString(";"))
-		  if self.arr != ['']:
-		      Yes = 'Si'
-		      No = 'No'
-		      message = QtGui.QMessageBox(self)
-		      message.setText(QtGui.QApplication.translate("Contabilidad",'El plugin <b>', None, QtGui.QApplication.UnicodeUTF8) +str(self.mui_plugins.item(row,10).text() + QtGui.QApplication.translate("Contabilidad","</b> tiene dependencias. Quieres instalarlas?", None, QtGui.QApplication.UnicodeUTF8)))
-		      message.setWindowTitle(QtGui.QApplication.translate("Contabilidad",'Atencion!', None, QtGui.QApplication.UnicodeUTF8))
-		      message.setIcon(QtGui.QMessageBox.Warning)
-		      message.addButton(Yes, QtGui.QMessageBox.AcceptRole)
-		      message.addButton(No, QtGui.QMessageBox.RejectRole)
-		      message.exec_()
-		      respuesta = message.clickedButton().text()
-		      if respuesta == Yes:
-			  for self.dep in self.arr:
-			      self.marcar(self.dep,1,1)
+    def on_mui_plugins_cellClicked(self, row, col):
+        # Escribimos la descripcion
+        self.mui_descripcion.setText(self.mui_plugins.item(row,1).text() + "<b>" + self.mui_plugins.item(row,10).text() + "</b><br>"+ self.mui_plugins.item(row,3).text() + QtGui.QApplication.translate("Contabilidad","<br><b>Categorias:</b> ", None, QtGui.QApplication.UnicodeUTF8) + self.mui_plugins.item(row,8).text()+ QtGui.QApplication.translate("Contabilidad","<br><br><b>Dependencias:</b> ", None, QtGui.QApplication.UnicodeUTF8) + self.mui_plugins.item(row,5).text() + QtGui.QApplication.translate("Contabilidad", "<br><br><b>Incompatibilidades:</b> ", None, QtGui.QApplication.UnicodeUTF8) + self.mui_plugins.item(row,6).text() + QtGui.QApplication.translate("Contabilidad","<br><br><b>Parches SQL:</b>", None, QtGui.QApplication.UnicodeUTF8) + self.mui_plugins.item(row,4).text() + "<br>" + self.mui_plugins.item(row,9).text() + QtGui.QApplication.translate("Contabilidad","<br><b>Informes:</b><br>", None, QtGui.QApplication.UnicodeUTF8) + self.mui_plugins.item(row,11).text() )
+
+        if (self.semaforo == 1):
+            if (self.estado != self.mui_plugins.item(row,0).checkState()):
+                    # Comprobamos que esta marcado el checkbox de la fila donde hemos clicado:
+                if (self.mui_plugins.item(row, 0).checkState() == Qt.Unchecked):
+                # Comprobamos que esta marcado el checkbox de la fila donde hemos clicado:
+                    self.desmarcar(self.mui_plugins.item(row,10).text(),1,1)
+                if (self.mui_plugins.item(row, 0).checkState() == Qt.Checked):
+                    # Desmarcamos las incompatibilidades
+                    self.arr = self.mui_plugins.item(row,6).text().replace(' ;',';').replace('; ',';').split(QString(";"))
+                    if self.arr != ['']:
+                        Yes = 'Si'
+                        No = 'No'
+                        message = QtGui.QMessageBox(self)
+                        message.setText(QtGui.QApplication.translate("Contabilidad",'El plugin <b>', None, QtGui.QApplication.UnicodeUTF8) +str(self.mui_plugins.item(row,10).text() + QtGui.QApplication.translate("Contabilidad","</b> tiene incompatibilidades. Quieres desinstalarlas?", None, QtGui.QApplication.UnicodeUTF8)))
+                        message.setWindowTitle(QtGui.QApplication.translate("Contabilidad",'Atencion!', None, QtGui.QApplication.UnicodeUTF8))
+                        message.setIcon(QtGui.QMessageBox.Warning)
+                        message.addButton(Yes, QtGui.QMessageBox.AcceptRole)
+                        message.addButton(No, QtGui.QMessageBox.RejectRole)
+                        message.exec_()
+                        respuesta = message.clickedButton().text()
+                        if respuesta == Yes:
+                            for self.dep in self.arr:
+                                self.desmarcar(self.dep,1,1)
+                    # Marcamos las dependencias
+                    self.arr = self.mui_plugins.item(row,5).text().replace(' ;',';').replace('; ',';').split(QString(";"))
+                    if self.arr != ['']:
+                        Yes = 'Si'
+                        No = 'No'
+                        message = QtGui.QMessageBox(self)
+                        message.setText(QtGui.QApplication.translate("Contabilidad",'El plugin <b>', None, QtGui.QApplication.UnicodeUTF8) +str(self.mui_plugins.item(row,10).text() + QtGui.QApplication.translate("Contabilidad","</b> tiene dependencias. Quieres instalarlas?", None, QtGui.QApplication.UnicodeUTF8)))
+                        message.setWindowTitle(QtGui.QApplication.translate("Contabilidad",'Atencion!', None, QtGui.QApplication.UnicodeUTF8))
+                        message.setIcon(QtGui.QMessageBox.Warning)
+                        message.addButton(Yes, QtGui.QMessageBox.AcceptRole)
+                        message.addButton(No, QtGui.QMessageBox.RejectRole)
+                        message.exec_()
+                        respuesta = message.clickedButton().text()
+                        if respuesta == Yes:
+                            for self.dep in self.arr:
+                                self.marcar(self.dep,1,1)
 
 
-   def trataOpenReports(self):
-      self.writecommand(QtGui.QApplication.translate("Contabilidad",'Generando plantillas RML y PYS', None, QtGui.QApplication.UnicodeUTF8))
-      # Creamos el directorio especifico para guardar las plantillas
-      self.string = "mkdir -p /opt/bulmages/openreports_" + self.database 
-      self.process.start(self.string)
-      self.process.waitForFinished(-1)
-      # Creamos el directorio especifico para guardar las plantillas
-      self.string = "mkdir -p /opt/bulmages/openreports_" + self.database + "/es"
-      self.process.start(self.string)
-      self.process.waitForFinished(-1)
-      # Creamos el directorio especifico para guardar las plantillas
-      self.string = "mkdir -p /opt/bulmages/openreports_" + self.database + "/ca"
-      self.process.start(self.string)
-      self.process.waitForFinished(-1)
-      # Creamos el directorio especifico para guardar las plantillas
-      self.string = "mkdir -p /opt/bulmages/openreports_" + self.database + "/fr"
-      self.process.start(self.string)
-      self.process.waitForFinished(-1)
-      # Creamos el directorio especifico para guardar las plantillas
-      self.string = "mkdir -p /opt/bulmages/openreports_" + self.database + "/en"
-      self.process.start(self.string)
-      self.process.waitForFinished(-1)
-      i = 1
-      while (os.path.exists('/opt/bulmages/openreports_' + self.database + '_old' + str(i))):
-	i = i + 1
+    def trataOpenReports(self):
+        self.writecommand(QtGui.QApplication.translate("Contabilidad",'Generando plantillas RML y PYS', None, QtGui.QApplication.UnicodeUTF8))
+        # Creamos el directorio especifico para guardar las plantillas
+        self.string = "mkdir -p /opt/bulmages/openreports_" + self.database
+        self.process.start(self.string)
+        self.process.waitForFinished(-1)
+        # Creamos el directorio especifico para guardar las plantillas
+        self.string = "mkdir -p /opt/bulmages/openreports_" + self.database + "/es"
+        self.process.start(self.string)
+        self.process.waitForFinished(-1)
+        # Creamos el directorio especifico para guardar las plantillas
+        self.string = "mkdir -p /opt/bulmages/openreports_" + self.database + "/ca"
+        self.process.start(self.string)
+        self.process.waitForFinished(-1)
+        # Creamos el directorio especifico para guardar las plantillas
+        self.string = "mkdir -p /opt/bulmages/openreports_" + self.database + "/fr"
+        self.process.start(self.string)
+        self.process.waitForFinished(-1)
+        # Creamos el directorio especifico para guardar las plantillas
+        self.string = "mkdir -p /opt/bulmages/openreports_" + self.database + "/en"
+        self.process.start(self.string)
+        self.process.waitForFinished(-1)
+        i = 1
+        while (os.path.exists('/opt/bulmages/openreports_' + self.database + '_old' + str(i))):
+            i = i + 1
 
-      # Hacemos un backup de openreports
-      self.string = "cp -R /opt/bulmages/openreports_" + self.database + " /opt/bulmages/openreports_" + self.database + "_old" + str(i)
-      self.process.start(self.string)
-      self.process.waitForFinished(-1)
+        # Hacemos un backup de openreports
+        self.string = "cp -R /opt/bulmages/openreports_" + self.database + " /opt/bulmages/openreports_" + self.database + "_old" + str(i)
+        self.process.start(self.string)
+        self.process.waitForFinished(-1)
 
-      self.writecommand(QtGui.QApplication.translate("Contabilidad",'Generamos backup de las plantillas de impresion en ', None, QtGui.QApplication.UnicodeUTF8) + '/opt/bulmages/openreports_' + self.database + '_old' + str(i))
+        self.writecommand(QtGui.QApplication.translate("Contabilidad",'Generamos backup de las plantillas de impresion en ', None, QtGui.QApplication.UnicodeUTF8) + '/opt/bulmages/openreports_' + self.database + '_old' + str(i))
 
-      # Copiamos los archivos genericos
-      # Copiamos las plantillas es
-      self.string = "cp " + plugins.confopenreports + "es/canuales.rml" + " /opt/bulmages/openreports_" + self.database + "/es"
-      self.writecommand(self.string)
-      self.process.start(self.string)
-      self.process.waitForFinished(-1)
-      self.string = "cp " + plugins.confopenreports + "es/diario.rml" + " /opt/bulmages/openreports_" + self.database +"/es"
-      self.writecommand(self.string)
-      self.process.start(self.string)
-      self.process.waitForFinished(-1)
-      self.string = "cp " + plugins.confopenreports + "es/extracto.rml" + " /opt/bulmages/openreports_" + self.database + "/es"
-      self.writecommand(self.string)
-      self.process.start(self.string)
-      self.process.waitForFinished(-1)
-      self.string = "cp " + plugins.confopenreports + "es/plantilla.rml" + " /opt/bulmages/openreports_" + self.database + "/es"
-      self.writecommand(self.string)
-      self.process.start(self.string)
-      self.process.waitForFinished(-1)
-      self.string = "cp " + plugins.confopenreports + "es/plantilla1.rml" + " /opt/bulmages/openreports_" + self.database + "/es"
-      self.writecommand(self.string)
-      self.process.start(self.string)
-      self.process.waitForFinished(-1)
-      self.string = "cp " + plugins.confopenreports + "es/estilos.rml" + " /opt/bulmages/openreports_" + self.database + "/es"
-      self.writecommand(self.string)
-      self.process.start(self.string)
-      self.process.waitForFinished(-1)
-      self.string = "cp " + plugins.confopenreports + "es/listado.rml" + " /opt/bulmages/openreports_" + self.database + "/es"
-      self.writecommand(self.string)
-      self.process.start(self.string)
-      self.process.waitForFinished(-1)
-      if (os.path.exists(plugins.confopenreports + "es/logo.jpg")):
-         self.string = "cp " + plugins.confopenreports + "es/logo.jpg" + " /opt/bulmages/openreports_" + self.database + "/es"
-         self.writecommand(self.string)
-         self.process.start(self.string)
-         self.process.waitForFinished(-1)
-      self.string = "cp " + plugins.confopenreports + "es/ficha.rml" + " /opt/bulmages/openreports_" + self.database + "/es"
-      self.writecommand(self.string)
-      self.process.start(self.string)
-      self.process.waitForFinished(-1)
-
-
-      # Copiamos las plantillas ca
-      self.string = "cp " + plugins.confopenreports + "ca/canuales.rml" + " /opt/bulmages/openreports_" + self.database + "/ca"
-      self.writecommand(self.string)
-      self.process.start(self.string)
-      self.process.waitForFinished(-1)
-      self.string = "cp " + plugins.confopenreports + "ca/diario.rml" + " /opt/bulmages/openreports_" + self.database +"/ca"
-      self.writecommand(self.string)
-      self.process.start(self.string)
-      self.process.waitForFinished(-1)
-      self.string = "cp " + plugins.confopenreports + "ca/extracto.rml" + " /opt/bulmages/openreports_" + self.database + "/ca"
-      self.writecommand(self.string)
-      self.process.start(self.string)
-      self.process.waitForFinished(-1)
-      self.string = "cp " + plugins.confopenreports + "ca/plantilla.rml" + " /opt/bulmages/openreports_" + self.database + "/ca"
-      self.writecommand(self.string)
-      self.process.start(self.string)
-      self.process.waitForFinished(-1)
-      self.string = "cp " + plugins.confopenreports + "ca/plantilla1.rml" + " /opt/bulmages/openreports_" + self.database + "/ca"
-      self.writecommand(self.string)
-      self.process.start(self.string)
-      self.process.waitForFinished(-1)
-      self.string = "cp " + plugins.confopenreports + "ca/estilos.rml" + " /opt/bulmages/openreports_" + self.database + "/ca"
-      self.writecommand(self.string)
-      self.process.start(self.string)
-      self.process.waitForFinished(-1)
-      self.string = "cp " + plugins.confopenreports + "ca/listado.rml" + " /opt/bulmages/openreports_" + self.database + "/ca"
-      self.writecommand(self.string)
-      self.process.start(self.string)
-      self.process.waitForFinished(-1)
-      if (os.path.exists(plugins.confopenreports + "ca/logo.jpg")):
-         self.string = "cp " + plugins.confopenreports + "ca/logo.jpg" + " /opt/bulmages/openreports_" + self.database + "/ca"
-         self.writecommand(self.string)
-         self.process.start(self.string)
-         self.process.waitForFinished(-1)
-      self.string = "cp " + plugins.confopenreports + "ca/ficha.rml" + " /opt/bulmages/openreports_" + self.database + "/ca"
-      self.writecommand(self.string)
-      self.process.start(self.string)
-      self.process.waitForFinished(-1)
-
-      # Copiamos las plantillas fr
-      self.string = "cp " + plugins.confopenreports + "fr/canuales.rml" + " /opt/bulmages/openreports_" + self.database + "/fr"
-      self.writecommand(self.string)
-      self.process.start(self.string)
-      self.process.waitForFinished(-1)
-      self.string = "cp " + plugins.confopenreports + "fr/diario.rml" + " /opt/bulmages/openreports_" + self.database +"/fr"
-      self.writecommand(self.string)
-      self.process.start(self.string)
-      self.process.waitForFinished(-1)
-      self.string = "cp " + plugins.confopenreports + "fr/extracto.rml" + " /opt/bulmages/openreports_" + self.database + "/fr"
-      self.writecommand(self.string)
-      self.process.start(self.string)
-      self.process.waitForFinished(-1)
-      self.string = "cp " + plugins.confopenreports + "fr/plantilla.rml" + " /opt/bulmages/openreports_" + self.database + "/fr"
-      self.writecommand(self.string)
-      self.process.start(self.string)
-      self.process.waitForFinished(-1)
-      self.string = "cp " + plugins.confopenreports + "fr/plantilla1.rml" + " /opt/bulmages/openreports_" + self.database + "/fr"
-      self.writecommand(self.string)
-      self.process.start(self.string)
-      self.process.waitForFinished(-1)
-      self.string = "cp " + plugins.confopenreports + "fr/estilos.rml" + " /opt/bulmages/openreports_" + self.database + "/fr"
-      self.writecommand(self.string)
-      self.process.start(self.string)
-      self.process.waitForFinished(-1)
-      self.string = "cp " + plugins.confopenreports + "fr/listado.rml" + " /opt/bulmages/openreports_" + self.database + "/fr"
-      self.writecommand(self.string)
-      self.process.start(self.string)
-      self.process.waitForFinished(-1)
-      if (os.path.exists(plugins.confopenreports + "fr/logo.jpg")):
-         self.string = "cp " + plugins.confopenreports + "fr/logo.jpg" + " /opt/bulmages/openreports_" + self.database + "/fr"
-         self.writecommand(self.string)
-         self.process.start(self.string)
-         self.process.waitForFinished(-1)
-      self.string = "cp " + plugins.confopenreports + "fr/ficha.rml" + " /opt/bulmages/openreports_" + self.database + "/fr"
-      self.writecommand(self.string)
-      self.process.start(self.string)
-      self.process.waitForFinished(-1)
-
-      # Copiamos las plantillas en
-      self.string = "cp " + plugins.confopenreports + "en/canuales.rml" + " /opt/bulmages/openreports_" + self.database + "/en"
-      self.writecommand(self.string)
-      self.process.start(self.string)
-      self.process.waitForFinished(-1)
-      self.string = "cp " + plugins.confopenreports + "en/diario.rml" + " /opt/bulmages/openreports_" + self.database +"/en"
-      self.writecommand(self.string)
-      self.process.start(self.string)
-      self.process.waitForFinished(-1)
-      self.string = "cp " + plugins.confopenreports + "en/extracto.rml" + " /opt/bulmages/openreports_" + self.database + "/en"
-      self.writecommand(self.string)
-      self.process.start(self.string)
-      self.process.waitForFinished(-1)
-      self.string = "cp " + plugins.confopenreports + "en/plantilla.rml" + " /opt/bulmages/openreports_" + self.database + "/en"
-      self.writecommand(self.string)
-      self.process.start(self.string)
-      self.process.waitForFinished(-1)
-      self.string = "cp " + plugins.confopenreports + "en/plantilla1.rml" + " /opt/bulmages/openreports_" + self.database + "/en"
-      self.writecommand(self.string)
-      self.process.start(self.string)
-      self.process.waitForFinished(-1)
-      self.string = "cp " + plugins.confopenreports + "en/estilos.rml" + " /opt/bulmages/openreports_" + self.database + "/en"
-      self.writecommand(self.string)
-      self.process.start(self.string)
-      self.process.waitForFinished(-1)
-      self.string = "cp " + plugins.confopenreports + "en/listado.rml" + " /opt/bulmages/openreports_" + self.database + "/en"
-      self.writecommand(self.string)
-      self.process.start(self.string)
-      self.process.waitForFinished(-1)
-      if (os.path.exists(plugins.confopenreports + "en/logo.jpg")):
-         self.string = "cp " + plugins.confopenreports + "en/logo.jpg" + " /opt/bulmages/openreports_" + self.database + "/en"
-         self.writecommand(self.string)
-         self.process.start(self.string)
-         self.process.waitForFinished(-1)
-      self.string = "cp " + plugins.confopenreports + "en/ficha.rml" + " /opt/bulmages/openreports_" + self.database + "/en"
-      self.writecommand(self.string)
-      self.process.start(self.string)
-      self.process.waitForFinished(-1)
-
-      # Pasamos el logotipo
-      if (self.mui_textfile.text() != ""):
-         self.string = "cp "+ self.mui_textfile.text() + " /opt/bulmages/openreports_" + self.database + "/es/logo.jpg"
-         self.process.start(self.string)
-         self.process.waitForFinished(-1)
-         self.string = "cp "+ self.mui_textfile.text() + " /opt/bulmages/openreports_" + self.database + "/ca/logo.jpg"
-         self.process.start(self.string)
-         self.process.waitForFinished(-1)
-         self.string = "cp "+ self.mui_textfile.text() + " /opt/bulmages/openreports_" + self.database + "/en/logo.jpg"
-         self.process.start(self.string)
-         self.process.waitForFinished(-1)
-         self.string = "cp "+ self.mui_textfile.text() + " /opt/bulmages/openreports_" + self.database + "/fr/logo.jpg"
-         self.process.start(self.string)
-         self.process.waitForFinished(-1)
-         
-         
-      # Iteramos sobre la lista de plugins disponibles en bulmafact para copiar sus plantillas
-      self.i = 0
-      while (self.i < self.mui_plugins.rowCount()):
-	# Si el plugin tiene el orden adecuado lo consideramos.
-	self.writecommand(QtGui.QApplication.translate("Contabilidad",'Tratando ', None, QtGui.QApplication.UnicodeUTF8) + self.mui_plugins.item(self.i,0).text())
-	# Si el plugin esta checked lo escribimos.
-	if (self.mui_plugins.item(self.i, 0).checkState() == Qt.Checked and len(self.mui_plugins.item(self.i,11).text()) > 3):
-	  # Si hay que aplicar un plugin entonces lo escribimos
-	  if (self.mui_plugins.item(self.i,11).text() != 'None' and len(self.mui_plugins.item(self.i,11).text()) > 3):
-	    # Tratamos toda la cadena de categorias.
-	    self.cadreports = self.mui_plugins.item(self.i,11).text().replace('; ',';')
-	    self.cadreports = self.cadreports.replace(' ;',';')
-	    self.arra = self.cadreports.split(';')
-	    self.arra.sort()
-	    self.j = 0
-	    while (self.j < len ( self.arra)):
-	      # Copiamos las plantillas
-	      self.string = "cp " + plugins.confopenreports + "es/" + self.arra[self.j] + " /opt/bulmages/openreports_" + self.database + "/es"
-	      self.writecommand(self.string)
-	      self.process.start(self.string)
-	      self.process.waitForFinished(-1)
-	      self.string = "cp " + plugins.confopenreports + "ca/" + self.arra[self.j] + " /opt/bulmages/openreports_" + self.database + "/ca"
-	      self.writecommand(self.string)
-	      self.process.start(self.string)
-	      self.process.waitForFinished(-1)
-	      self.string = "cp " + plugins.confopenreports + "fr/" + self.arra[self.j] + " /opt/bulmages/openreports_" + self.database + "/fr"
-	      self.writecommand(self.string)
-	      self.process.start(self.string)
-	      self.process.waitForFinished(-1)
-	      self.string = "cp " + plugins.confopenreports + "en/" + self.arra[self.j] + " /opt/bulmages/openreports_" + self.database + "/en"
-	      self.writecommand(self.string)
-	      self.process.start(self.string)
-	      self.process.waitForFinished(-1)
-	      self.j = self.j + 1
-	self.i = self.i + 1
-
-      # Hacemos un backup del archivo
-      self.string = "cp " + plugins.configfiles + "bulmacont_" + self.database + ".conf " + plugins.configfiles + "bulmacont_" + self.database + ".conf~ "
-      self.process.start(self.string)
-      self.process.waitForFinished(-1)
-      self.writecommand(self.process.readAllStandardOutput())
+        # Copiamos los archivos genericos
+        # Copiamos las plantillas es
+        self.string = "cp " + plugins.confopenreports + "es/canuales.rml" + " /opt/bulmages/openreports_" + self.database + "/es"
+        self.writecommand(self.string)
+        self.process.start(self.string)
+        self.process.waitForFinished(-1)
+        self.string = "cp " + plugins.confopenreports + "es/diario.rml" + " /opt/bulmages/openreports_" + self.database +"/es"
+        self.writecommand(self.string)
+        self.process.start(self.string)
+        self.process.waitForFinished(-1)
+        self.string = "cp " + plugins.confopenreports + "es/extracto.rml" + " /opt/bulmages/openreports_" + self.database + "/es"
+        self.writecommand(self.string)
+        self.process.start(self.string)
+        self.process.waitForFinished(-1)
+        self.string = "cp " + plugins.confopenreports + "es/plantilla.rml" + " /opt/bulmages/openreports_" + self.database + "/es"
+        self.writecommand(self.string)
+        self.process.start(self.string)
+        self.process.waitForFinished(-1)
+        self.string = "cp " + plugins.confopenreports + "es/plantilla1.rml" + " /opt/bulmages/openreports_" + self.database + "/es"
+        self.writecommand(self.string)
+        self.process.start(self.string)
+        self.process.waitForFinished(-1)
+        self.string = "cp " + plugins.confopenreports + "es/estilos.rml" + " /opt/bulmages/openreports_" + self.database + "/es"
+        self.writecommand(self.string)
+        self.process.start(self.string)
+        self.process.waitForFinished(-1)
+        self.string = "cp " + plugins.confopenreports + "es/listado.rml" + " /opt/bulmages/openreports_" + self.database + "/es"
+        self.writecommand(self.string)
+        self.process.start(self.string)
+        self.process.waitForFinished(-1)
+        if (os.path.exists(plugins.confopenreports + "es/logo.jpg")):
+            self.string = "cp " + plugins.confopenreports + "es/logo.jpg" + " /opt/bulmages/openreports_" + self.database + "/es"
+            self.writecommand(self.string)
+            self.process.start(self.string)
+            self.process.waitForFinished(-1)
+        self.string = "cp " + plugins.confopenreports + "es/ficha.rml" + " /opt/bulmages/openreports_" + self.database + "/es"
+        self.writecommand(self.string)
+        self.process.start(self.string)
+        self.process.waitForFinished(-1)
 
 
-      # Abrimos el backup para lectura
-      self.file1 = QFile( plugins.configfiles + "bulmacont_" + self.database + ".conf~");
-      if not(self.file1.open(QIODevice.ReadOnly | QIODevice.Text)):
-        return;
-      self.vin = QTextStream(self.file1)
-      
-      # Abrimos el archivo para escritura.
-      self.file = QFile( plugins.configfiles + "bulmacont_" + self.database + ".conf");
-      if not(self.file.open(QIODevice.WriteOnly | QIODevice.Text)):
-        return;
-      self.out = QTextStream(self.file)
-      
-      # Leemos las lineas iniciales (hasta el parametro deseado) y las ponemos de nuevo.
-      self.text = self.vin.readLine()
-      while (not (self.text.isNull()) and not(self.text.contains("CONF_DIR_OPENREPORTS")) ):
-        self.out << self.text << "\n"
-        self.text = self.vin.readLine()
+        # Copiamos las plantillas ca
+        self.string = "cp " + plugins.confopenreports + "ca/canuales.rml" + " /opt/bulmages/openreports_" + self.database + "/ca"
+        self.writecommand(self.string)
+        self.process.start(self.string)
+        self.process.waitForFinished(-1)
+        self.string = "cp " + plugins.confopenreports + "ca/diario.rml" + " /opt/bulmages/openreports_" + self.database +"/ca"
+        self.writecommand(self.string)
+        self.process.start(self.string)
+        self.process.waitForFinished(-1)
+        self.string = "cp " + plugins.confopenreports + "ca/extracto.rml" + " /opt/bulmages/openreports_" + self.database + "/ca"
+        self.writecommand(self.string)
+        self.process.start(self.string)
+        self.process.waitForFinished(-1)
+        self.string = "cp " + plugins.confopenreports + "ca/plantilla.rml" + " /opt/bulmages/openreports_" + self.database + "/ca"
+        self.writecommand(self.string)
+        self.process.start(self.string)
+        self.process.waitForFinished(-1)
+        self.string = "cp " + plugins.confopenreports + "ca/plantilla1.rml" + " /opt/bulmages/openreports_" + self.database + "/ca"
+        self.writecommand(self.string)
+        self.process.start(self.string)
+        self.process.waitForFinished(-1)
+        self.string = "cp " + plugins.confopenreports + "ca/estilos.rml" + " /opt/bulmages/openreports_" + self.database + "/ca"
+        self.writecommand(self.string)
+        self.process.start(self.string)
+        self.process.waitForFinished(-1)
+        self.string = "cp " + plugins.confopenreports + "ca/listado.rml" + " /opt/bulmages/openreports_" + self.database + "/ca"
+        self.writecommand(self.string)
+        self.process.start(self.string)
+        self.process.waitForFinished(-1)
+        if (os.path.exists(plugins.confopenreports + "ca/logo.jpg")):
+            self.string = "cp " + plugins.confopenreports + "ca/logo.jpg" + " /opt/bulmages/openreports_" + self.database + "/ca"
+            self.writecommand(self.string)
+            self.process.start(self.string)
+            self.process.waitForFinished(-1)
+        self.string = "cp " + plugins.confopenreports + "ca/ficha.rml" + " /opt/bulmages/openreports_" + self.database + "/ca"
+        self.writecommand(self.string)
+        self.process.start(self.string)
+        self.process.waitForFinished(-1)
 
-      # Escribimos el parametro como lo deseamos
-      locale = QtCore.QLocale()
-      self.out << "\n\nCONF_DIR_OPENREPORTS /opt/bulmages/openreports_" + self.database +"/"+str(locale.name().left(2))+"/\n\n"
+        # Copiamos las plantillas fr
+        self.string = "cp " + plugins.confopenreports + "fr/canuales.rml" + " /opt/bulmages/openreports_" + self.database + "/fr"
+        self.writecommand(self.string)
+        self.process.start(self.string)
+        self.process.waitForFinished(-1)
+        self.string = "cp " + plugins.confopenreports + "fr/diario.rml" + " /opt/bulmages/openreports_" + self.database +"/fr"
+        self.writecommand(self.string)
+        self.process.start(self.string)
+        self.process.waitForFinished(-1)
+        self.string = "cp " + plugins.confopenreports + "fr/extracto.rml" + " /opt/bulmages/openreports_" + self.database + "/fr"
+        self.writecommand(self.string)
+        self.process.start(self.string)
+        self.process.waitForFinished(-1)
+        self.string = "cp " + plugins.confopenreports + "fr/plantilla.rml" + " /opt/bulmages/openreports_" + self.database + "/fr"
+        self.writecommand(self.string)
+        self.process.start(self.string)
+        self.process.waitForFinished(-1)
+        self.string = "cp " + plugins.confopenreports + "fr/plantilla1.rml" + " /opt/bulmages/openreports_" + self.database + "/fr"
+        self.writecommand(self.string)
+        self.process.start(self.string)
+        self.process.waitForFinished(-1)
+        self.string = "cp " + plugins.confopenreports + "fr/estilos.rml" + " /opt/bulmages/openreports_" + self.database + "/fr"
+        self.writecommand(self.string)
+        self.process.start(self.string)
+        self.process.waitForFinished(-1)
+        self.string = "cp " + plugins.confopenreports + "fr/listado.rml" + " /opt/bulmages/openreports_" + self.database + "/fr"
+        self.writecommand(self.string)
+        self.process.start(self.string)
+        self.process.waitForFinished(-1)
+        if (os.path.exists(plugins.confopenreports + "fr/logo.jpg")):
+            self.string = "cp " + plugins.confopenreports + "fr/logo.jpg" + " /opt/bulmages/openreports_" + self.database + "/fr"
+            self.writecommand(self.string)
+            self.process.start(self.string)
+            self.process.waitForFinished(-1)
+        self.string = "cp " + plugins.confopenreports + "fr/ficha.rml" + " /opt/bulmages/openreports_" + self.database + "/fr"
+        self.writecommand(self.string)
+        self.process.start(self.string)
+        self.process.waitForFinished(-1)
+
+        # Copiamos las plantillas en
+        self.string = "cp " + plugins.confopenreports + "en/canuales.rml" + " /opt/bulmages/openreports_" + self.database + "/en"
+        self.writecommand(self.string)
+        self.process.start(self.string)
+        self.process.waitForFinished(-1)
+        self.string = "cp " + plugins.confopenreports + "en/diario.rml" + " /opt/bulmages/openreports_" + self.database +"/en"
+        self.writecommand(self.string)
+        self.process.start(self.string)
+        self.process.waitForFinished(-1)
+        self.string = "cp " + plugins.confopenreports + "en/extracto.rml" + " /opt/bulmages/openreports_" + self.database + "/en"
+        self.writecommand(self.string)
+        self.process.start(self.string)
+        self.process.waitForFinished(-1)
+        self.string = "cp " + plugins.confopenreports + "en/plantilla.rml" + " /opt/bulmages/openreports_" + self.database + "/en"
+        self.writecommand(self.string)
+        self.process.start(self.string)
+        self.process.waitForFinished(-1)
+        self.string = "cp " + plugins.confopenreports + "en/plantilla1.rml" + " /opt/bulmages/openreports_" + self.database + "/en"
+        self.writecommand(self.string)
+        self.process.start(self.string)
+        self.process.waitForFinished(-1)
+        self.string = "cp " + plugins.confopenreports + "en/estilos.rml" + " /opt/bulmages/openreports_" + self.database + "/en"
+        self.writecommand(self.string)
+        self.process.start(self.string)
+        self.process.waitForFinished(-1)
+        self.string = "cp " + plugins.confopenreports + "en/listado.rml" + " /opt/bulmages/openreports_" + self.database + "/en"
+        self.writecommand(self.string)
+        self.process.start(self.string)
+        self.process.waitForFinished(-1)
+        if (os.path.exists(plugins.confopenreports + "en/logo.jpg")):
+            self.string = "cp " + plugins.confopenreports + "en/logo.jpg" + " /opt/bulmages/openreports_" + self.database + "/en"
+            self.writecommand(self.string)
+            self.process.start(self.string)
+            self.process.waitForFinished(-1)
+        self.string = "cp " + plugins.confopenreports + "en/ficha.rml" + " /opt/bulmages/openreports_" + self.database + "/en"
+        self.writecommand(self.string)
+        self.process.start(self.string)
+        self.process.waitForFinished(-1)
+
+        # Pasamos el logotipo
+        if (self.mui_textfile.text() != ""):
+            self.string = "cp "+ self.mui_textfile.text() + " /opt/bulmages/openreports_" + self.database + "/es/logo.jpg"
+            self.process.start(self.string)
+            self.process.waitForFinished(-1)
+            self.string = "cp "+ self.mui_textfile.text() + " /opt/bulmages/openreports_" + self.database + "/ca/logo.jpg"
+            self.process.start(self.string)
+            self.process.waitForFinished(-1)
+            self.string = "cp "+ self.mui_textfile.text() + " /opt/bulmages/openreports_" + self.database + "/en/logo.jpg"
+            self.process.start(self.string)
+            self.process.waitForFinished(-1)
+            self.string = "cp "+ self.mui_textfile.text() + " /opt/bulmages/openreports_" + self.database + "/fr/logo.jpg"
+            self.process.start(self.string)
+            self.process.waitForFinished(-1)
 
 
-      # Terminamos de poner el resto de las linea.
-      if (not (self.text.isNull()) ):
-        self.text = self.vin.readLine()
-      while (not (self.text.isNull()) ):
-        self.out << self.text << "\n"
-        self.text = self.vin.readLine()
-        
-      # Cerramos los ficheros.
-      self.file.close()
-      self.file1.close()
-
-    
-   def writeConfig(self):
-      self.writecommand(QtGui.QApplication.translate("Contabilidad",'ESCRIBIENDO CONFIGURACION', None, QtGui.QApplication.UnicodeUTF8))
-      self.writecommand(QtGui.QApplication.translate("Contabilidad","Escribiendo configuracion en ", None, QtGui.QApplication.UnicodeUTF8)+ plugins.configfiles)
-      
-      # TRATAMOS EL ARCHIVO DE BULMAFACT
-      # ================================
-
-      # Tocamos el archivo por si no existe
-      self.string = "touch " + plugins.configfiles + "bulmacont_" + self.database + ".conf "
-      self.process.start(self.string)
-      self.process.waitForFinished(-1)
-      self.writecommand(self.process.readAllStandardOutput())
-
-      # Hacemos un backup del archivo
-      self.string = "cp " + plugins.configfiles + "bulmacont_" + self.database + ".conf " + plugins.configfiles + "bulmacont_" + self.database + ".conf~ "
-      self.process.start(self.string)
-      self.process.waitForFinished(-1)
-      self.writecommand(self.process.readAllStandardOutput())
-      
-      # Abrimos el backup para lectura
-      self.file1 = QFile( plugins.configfiles + "bulmacont_" + self.database + ".conf~");
-      if not(self.file1.open(QIODevice.ReadOnly | QIODevice.Text)):
-        return;
-      self.vin = QTextStream(self.file1)
-      
-      # Abrimos el archivo para escritura.
-      self.file = QFile( plugins.configfiles + "bulmacont_" + self.database + ".conf");
-      if not(self.file.open(QIODevice.WriteOnly | QIODevice.Text)):
-        return;
-      self.out = QTextStream(self.file)
-      
-      # Leemos las lineas iniciales (hasta el parametro deseado) y las ponemos de nuevo.
-      self.text = self.vin.readLine()
-      while (not (self.text.isNull()) and not(self.text.contains("CONF_PLUGINS_BULMACONT")) ):
-        self.out << self.text << "\n"
-        self.text = self.vin.readLine()
-        
-      # Quitamos todo lo que es el parametro porque no debe estar
-      while (not (self.text.isNull()) and self.text.contains("lib")):
-        self.text = self.vin.readLine()
-      
-      self.nuevo = 1
-   
-      # Como los plugins van por orden iteramos sobre el orden para arreglarlo.
-      self.x = 1
-      while (self.x < 1000) :
-        # Iteramos sobre la lista de plugins disponibles en bulmafact
+        # Iteramos sobre la lista de plugins disponibles en bulmafact para copiar sus plantillas
         self.i = 0
         while (self.i < self.mui_plugins.rowCount()):
-          # Si el plugin tiene el orden adecuado lo consideramos.
-          if (str(self.mui_plugins.item(self.i,7).text()) == str(self.x )):
+            # Si el plugin tiene el orden adecuado lo consideramos.
             self.writecommand(QtGui.QApplication.translate("Contabilidad",'Tratando ', None, QtGui.QApplication.UnicodeUTF8) + self.mui_plugins.item(self.i,0).text())
             # Si el plugin esta checked lo escribimos.
-            if (self.mui_plugins.item(self.i, 0).checkState() == Qt.Checked and len(self.mui_plugins.item(self.i,1).text()) > 3):
-              if (self.nuevo == 1):
-                 self.nuevo = 0
-                 # Escribimos la configuracion de plugins.
-                 self.terminador = ""
-                 self.out << "CONF_PLUGINS_BULMACONT   "
-	      # Si hay que aplicar un plugin entonces lo escribimos
-	      if (self.mui_plugins.item(self.i,10).text() != 'None' and len(self.mui_plugins.item(self.i,10).text()) > 3):
-		self.writecommand('Hay que actualizar ' + self.mui_plugins.item(self.i,0).text())
-		self.out << self.terminador << self.mui_plugins.item(self.i,10).text()
-		self.terminador = "; \\\n";
-          self.i = self.i + 1
-        self.x = self.x + 1
-      self.out << "\n"
-      
-      # Terminamos de poner el resto de las linea.
-      while (not (self.text.isNull()) ):
-        self.out << self.text << "\n"
+            if (self.mui_plugins.item(self.i, 0).checkState() == Qt.Checked and len(self.mui_plugins.item(self.i,11).text()) > 3):
+            # Si hay que aplicar un plugin entonces lo escribimos
+                if (self.mui_plugins.item(self.i,11).text() != 'None' and len(self.mui_plugins.item(self.i,11).text()) > 3):
+                # Tratamos toda la cadena de categorias.
+                    self.cadreports = self.mui_plugins.item(self.i,11).text().replace('; ',';')
+                    self.cadreports = self.cadreports.replace(' ;',';')
+                    self.arra = self.cadreports.split(';')
+                    self.arra.sort()
+                    self.j = 0
+                    while (self.j < len ( self.arra)):
+                # Copiamos las plantillas
+                        self.string = "cp " + plugins.confopenreports + "es/" + self.arra[self.j] + " /opt/bulmages/openreports_" + self.database + "/es"
+                        self.writecommand(self.string)
+                        self.process.start(self.string)
+                        self.process.waitForFinished(-1)
+                        self.string = "cp " + plugins.confopenreports + "ca/" + self.arra[self.j] + " /opt/bulmages/openreports_" + self.database + "/ca"
+                        self.writecommand(self.string)
+                        self.process.start(self.string)
+                        self.process.waitForFinished(-1)
+                        self.string = "cp " + plugins.confopenreports + "fr/" + self.arra[self.j] + " /opt/bulmages/openreports_" + self.database + "/fr"
+                        self.writecommand(self.string)
+                        self.process.start(self.string)
+                        self.process.waitForFinished(-1)
+                        self.string = "cp " + plugins.confopenreports + "en/" + self.arra[self.j] + " /opt/bulmages/openreports_" + self.database + "/en"
+                        self.writecommand(self.string)
+                        self.process.start(self.string)
+                        self.process.waitForFinished(-1)
+                        self.j = self.j + 1
+            self.i = self.i + 1
+
+        # Hacemos un backup del archivo
+        self.string = "cp " + plugins.configfiles + "bulmacont_" + self.database + ".conf " + plugins.configfiles + "bulmacont_" + self.database + ".conf~ "
+        self.process.start(self.string)
+        self.process.waitForFinished(-1)
+        self.writecommand(self.process.readAllStandardOutput())
+
+
+        # Abrimos el backup para lectura
+        self.file1 = QFile( plugins.configfiles + "bulmacont_" + self.database + ".conf~");
+        if not(self.file1.open(QIODevice.ReadOnly | QIODevice.Text)):
+            return;
+        self.vin = QTextStream(self.file1)
+
+        # Abrimos el archivo para escritura.
+        self.file = QFile( plugins.configfiles + "bulmacont_" + self.database + ".conf");
+        if not(self.file.open(QIODevice.WriteOnly | QIODevice.Text)):
+            return;
+        self.out = QTextStream(self.file)
+
+        # Leemos las lineas iniciales (hasta el parametro deseado) y las ponemos de nuevo.
         self.text = self.vin.readLine()
-        
-      # Cerramos los ficheros.
-      self.file.close()
-      self.file1.close()
+        while (not (self.text.isNull()) and not(self.text.contains("CONF_DIR_OPENREPORTS")) ):
+            self.out << self.text << "\n"
+            self.text = self.vin.readLine()
 
-      self.trataOpenReports()
-
-   def on_mui_chosefile_pressed(self):
-      self.fileName = QtGui.QFileDialog.getOpenFileName(self, "Open File", "~", "Images (*.jpg)")
-      self.mui_textfile.setText(self.fileName)
-      #Comprobamos que exista la imagen y si es asi la presentamos.
-      if (self.fileName):
-         self.pixmap = QtGui.QPixmap(self.fileName)
-         self.mui_img.setPixmap(self.pixmap)
+        # Escribimos el parametro como lo deseamos
+        locale = QtCore.QLocale()
+        self.out << "\n\nCONF_DIR_OPENREPORTS /opt/bulmages/openreports_" + self.database +"/"+str(locale.name().left(2))+"/\n\n"
 
 
-   def on_mui_categoria_currentIndexChanged(self, index):
-      self.presentar()
-  
-   def on_mui_seltodos_released(self):
-      Yes = 'Si'
-      No = 'No'
-      message = QtGui.QMessageBox(self)
-      message.setText(QtGui.QApplication.translate("Contabilidad",'Instalar todos los plugins visibles', None, QtGui.QApplication.UnicodeUTF8) )
-      message.setWindowTitle('Atencion!')
-      message.setIcon(QtGui.QMessageBox.Warning)
-      message.addButton(Yes, QtGui.QMessageBox.AcceptRole)
-      message.addButton(No, QtGui.QMessageBox.RejectRole)
-      message.exec_()
-      respuesta = message.clickedButton().text()
-      if respuesta == Yes:
-	i = 0
-	# Iteramos para la lista de plugins de bulmafact
-	while (i < self.mui_plugins.rowCount()):
-	   if (not self.mui_plugins.isRowHidden(i)):
-   	      self.marcar(self.mui_plugins.item(i,10).text(),1,1)
-	   i = i + 1
+        # Terminamos de poner el resto de las linea.
+        if (not (self.text.isNull()) ):
+            self.text = self.vin.readLine()
+        while (not (self.text.isNull()) ):
+            self.out << self.text << "\n"
+            self.text = self.vin.readLine()
 
-   def on_mui_vertodos_stateChanged(self, status):
-      self.presentar()
-  
-   def presentar(self):
-      status = self.mui_vertodos.checkState()
-      
-      # Hacemos todas las lineas visibles para luego ocultarlas.
-      self.i = 0
-      while (self.i < self.mui_plugins.rowCount()):
-        self.mui_plugins.showRow(self.i)
-        self.i = self.i + 1
-      
-      if (status == 2):
-        # Establezco la tabla de bulmafact
+        # Cerramos los ficheros.
+        self.file.close()
+        self.file1.close()
+
+
+    def writeConfig(self):
+        self.writecommand(QtGui.QApplication.translate("Contabilidad",'ESCRIBIENDO CONFIGURACION', None, QtGui.QApplication.UnicodeUTF8))
+        self.writecommand(QtGui.QApplication.translate("Contabilidad","Escribiendo configuracion en ", None, QtGui.QApplication.UnicodeUTF8)+ plugins.configfiles)
+
+        # TRATAMOS EL ARCHIVO DE BULMAFACT
+        # ================================
+
+        # Tocamos el archivo por si no existe
+        self.string = "touch " + plugins.configfiles + "bulmacont_" + self.database + ".conf "
+        self.process.start(self.string)
+        self.process.waitForFinished(-1)
+        self.writecommand(self.process.readAllStandardOutput())
+
+        # Hacemos un backup del archivo
+        self.string = "cp " + plugins.configfiles + "bulmacont_" + self.database + ".conf " + plugins.configfiles + "bulmacont_" + self.database + ".conf~ "
+        self.process.start(self.string)
+        self.process.waitForFinished(-1)
+        self.writecommand(self.process.readAllStandardOutput())
+
+        # Abrimos el backup para lectura
+        self.file1 = QFile( plugins.configfiles + "bulmacont_" + self.database + ".conf~");
+        if not(self.file1.open(QIODevice.ReadOnly | QIODevice.Text)):
+            return;
+        self.vin = QTextStream(self.file1)
+
+        # Abrimos el archivo para escritura.
+        self.file = QFile( plugins.configfiles + "bulmacont_" + self.database + ".conf");
+        if not(self.file.open(QIODevice.WriteOnly | QIODevice.Text)):
+            return;
+        self.out = QTextStream(self.file)
+
+        # Leemos las lineas iniciales (hasta el parametro deseado) y las ponemos de nuevo.
+        self.text = self.vin.readLine()
+        while (not (self.text.isNull()) and not(self.text.contains("CONF_PLUGINS_BULMACONT")) ):
+            self.out << self.text << "\n"
+            self.text = self.vin.readLine()
+
+        # Quitamos todo lo que es el parametro porque no debe estar
+        while (not (self.text.isNull()) and self.text.contains("lib")):
+            self.text = self.vin.readLine()
+
+        self.nuevo = 1
+
+        # Como los plugins van por orden iteramos sobre el orden para arreglarlo.
+        self.x = 1
+        while (self.x < 1000) :
+            # Iteramos sobre la lista de plugins disponibles en bulmafact
+            self.i = 0
+            while (self.i < self.mui_plugins.rowCount()):
+                # Si el plugin tiene el orden adecuado lo consideramos.
+                if (str(self.mui_plugins.item(self.i,7).text()) == str(self.x )):
+                    self.writecommand(QtGui.QApplication.translate("Contabilidad",'Tratando ', None, QtGui.QApplication.UnicodeUTF8) + self.mui_plugins.item(self.i,0).text())
+                    # Si el plugin esta checked lo escribimos.
+                    if (self.mui_plugins.item(self.i, 0).checkState() == Qt.Checked and len(self.mui_plugins.item(self.i,1).text()) > 3):
+                        if (self.nuevo == 1):
+                            self.nuevo = 0
+                            # Escribimos la configuracion de plugins.
+                            self.terminador = ""
+                            self.out << "CONF_PLUGINS_BULMACONT   "
+                        # Si hay que aplicar un plugin entonces lo escribimos
+                        if (self.mui_plugins.item(self.i,10).text() != 'None' and len(self.mui_plugins.item(self.i,10).text()) > 3):
+                            self.writecommand('Hay que actualizar ' + self.mui_plugins.item(self.i,0).text())
+                            self.out << self.terminador << self.mui_plugins.item(self.i,10).text()
+                            self.terminador = "; \\\n";
+                self.i = self.i + 1
+            self.x = self.x + 1
+        self.out << "\n"
+
+        # Terminamos de poner el resto de las linea.
+        while (not (self.text.isNull()) ):
+            self.out << self.text << "\n"
+            self.text = self.vin.readLine()
+
+        # Cerramos los ficheros.
+        self.file.close()
+        self.file1.close()
+
+        self.trataOpenReports()
+
+    def on_mui_chosefile_pressed(self):
+        self.fileName = QtGui.QFileDialog.getOpenFileName(self, "Open File", "~", "Images (*.jpg)")
+        self.mui_textfile.setText(self.fileName)
+        #Comprobamos que exista la imagen y si es asi la presentamos.
+        if (self.fileName):
+            self.pixmap = QtGui.QPixmap(self.fileName)
+            self.mui_img.setPixmap(self.pixmap)
+
+
+    def on_mui_categoria_currentIndexChanged(self, index):
+        self.presentar()
+
+    def on_mui_seltodos_released(self):
+        Yes = 'Si'
+        No = 'No'
+        message = QtGui.QMessageBox(self)
+        message.setText(QtGui.QApplication.translate("Contabilidad",'Instalar todos los plugins visibles', None, QtGui.QApplication.UnicodeUTF8) )
+        message.setWindowTitle('Atencion!')
+        message.setIcon(QtGui.QMessageBox.Warning)
+        message.addButton(Yes, QtGui.QMessageBox.AcceptRole)
+        message.addButton(No, QtGui.QMessageBox.RejectRole)
+        message.exec_()
+        respuesta = message.clickedButton().text()
+        if respuesta == Yes:
+            i = 0
+            # Iteramos para la lista de plugins de bulmafact
+            while (i < self.mui_plugins.rowCount()):
+                if (not self.mui_plugins.isRowHidden(i)):
+                    self.marcar(self.mui_plugins.item(i,10).text(),1,1)
+                i = i + 1
+
+    def on_mui_vertodos_stateChanged(self, status):
+        self.presentar()
+
+    def presentar(self):
+        status = self.mui_vertodos.checkState()
+
+        # Hacemos todas las lineas visibles para luego ocultarlas.
         self.i = 0
         while (self.i < self.mui_plugins.rowCount()):
-          if (self.mui_plugins.item(self.i, 0).checkState() != Qt.Checked ):
-            self.mui_plugins.hideRow(self.i)
-          self.i = self.i + 1
+            self.mui_plugins.showRow(self.i)
+            self.i = self.i + 1
 
-      if (self.mui_categoria.currentIndex() > 0):
-        # Vamos a trabajar con el combo Box
-        cat = self.mui_categoria.currentText()
-        self.i = 0
-        while (self.i < self.mui_plugins.rowCount()):
-	  if self.mui_plugins.item(self.i,8) <> None:
-            text = QString(self.mui_plugins.item(self.i,8).text())
-            a = text.contains(cat)
-            if (not a):
-              self.mui_plugins.hideRow(self.i)
-          self.i = self.i +1
+        if (status == 2):
+            # Establezco la tabla de bulmafact
+            self.i = 0
+            while (self.i < self.mui_plugins.rowCount()):
+                if (self.mui_plugins.item(self.i, 0).checkState() != Qt.Checked ):
+                    self.mui_plugins.hideRow(self.i)
+                self.i = self.i + 1
 
-
-
+        if (self.mui_categoria.currentIndex() > 0):
+            # Vamos a trabajar con el combo Box
+            cat = self.mui_categoria.currentText()
+            self.i = 0
+            while (self.i < self.mui_plugins.rowCount()):
+                if self.mui_plugins.item(self.i,8) <> None:
+                    text = QString(self.mui_plugins.item(self.i,8).text())
+                    a = text.contains(cat)
+                    if (not a):
+                        self.mui_plugins.hideRow(self.i)
+                self.i = self.i +1

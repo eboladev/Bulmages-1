@@ -13,14 +13,14 @@ import psycopg2
 class GuardarBackup(Ui_GuardarBackup, Empresa):
 
     def __init__(self, parent = None):
-	Empresa.__init__(self,parent)
+        Empresa.__init__(self,parent)
         self.setupUi(self)
         self.proceso = QtCore.QProcess()
         self.initListaEmpresas()
-	
+
     def initListaEmpresas(self):
 
-	self.conectar('template1')
+        self.conectar('template1')
         self.databases = self.execute("SELECT datname FROM pg_database ORDER BY datname")
         self.desconectar()
 
@@ -41,77 +41,77 @@ class GuardarBackup(Ui_GuardarBackup, Empresa):
                     self.lista_empresas.showRow(self.i)
                     self.i = self.i + 1
                 self.desconectar()
-	self.lista_empresas.resizeColumnsToContents()
-		
+        self.lista_empresas.resizeColumnsToContents()
+
     def on_guardar_backup_released(self):
 
-	# Pasamos el nombre de la base de datos seleccionada en listWidget a la variable database
+        # Pasamos el nombre de la base de datos seleccionada en listWidget a la variable database
         i = 0
         while (i < self.lista_empresas.rowCount()):
             if self.lista_empresas.item(i,1).isSelected():
-	      self.database = self.lista_empresas.item(i,1).text()
-	      break
-	    i = i + 1 
-	    
-	self.directorio = QFileDialog.getExistingDirectory(self, QtGui.QApplication.translate("GuardarBackup","Selecciona la carpeta de destino del Backup", None, QtGui.QApplication.UnicodeUTF8),"/home")
-	self.command = 'pg_dump -f ' + '/etc/bulmages/' + self.database + '.sql ' + self.database
+                self.database = self.lista_empresas.item(i,1).text()
+                break
+            i = i + 1
+
+        self.directorio = QFileDialog.getExistingDirectory(self, QtGui.QApplication.translate("GuardarBackup","Selecciona la carpeta de destino del Backup", None, QtGui.QApplication.UnicodeUTF8),"/home")
+        self.command = 'pg_dump -f ' + '/etc/bulmages/' + self.database + '.sql ' + self.database
         self.proceso.start(self.command)
         self.proceso.waitForFinished(-1)
-	
-	self.conffact = 'bulmafact_' + self.database + '.conf'
-	self.conftpv = 'bulmatpv_' + self.database + '.conf'
-	self.confcont = 'bulmacont_' + self.database + '.conf'
-	self.quehehecho = 0
-	
-	Yes = 'Ok'
-	error = QtGui.QMessageBox(self)
-	error.setWindowTitle('Error')
-	error.setIcon(QtGui.QMessageBox.Warning)
-	error.addButton(Yes, QtGui.QMessageBox.AcceptRole)
 
-	if (self.lista_empresas.item(i,2).text() == QString('BulmaFact')):
-	  self.quehehecho = 1
-	  if os.path.exists('/etc/bulmages/' + self.conffact):
-	    self.quehehecho = 1
-	  else:
-	    error.setText(QtGui.QApplication.translate("GuardarBackup",'No existe el archivo de configuracion: <b>/etc/bulmages/', None, QtGui.QApplication.UnicodeUTF8) + self.conffact + '</b>')
-	    error.exec_()
-	  if os.path.exists('/etc/bulmages/' + self.conftpv):
-	    self.quehehecho = 2
-	elif (self.lista_empresas.item(i,2).text() == QString('BulmaCont')):
-	  self.quehehecho = 3
-	  if os.path.exists('/etc/bulmages/' + self.confcont):
-	    self.quehehecho = 3
-	  else:
-	    error.setText(QtGui.QApplication.translate("GuardarBackup",'No existe el archivo de configuracion: <b>/etc/bulmages/', None, QtGui.QApplication.UnicodeUTF8) + self.confcont + '</b>')
-            error.exec_()
+        self.conffact = 'bulmafact_' + self.database + '.conf'
+        self.conftpv = 'bulmatpv_' + self.database + '.conf'
+        self.confcont = 'bulmacont_' + self.database + '.conf'
+        self.quehehecho = 0
 
-	if self.quehehecho == 1:
-	  self.command = 'tar czf ' + self.directorio + '/' + self.database + '.tar.gz ' + '/etc/bulmages/' + self.conffact + ' ' + '/etc/bulmages/' + self.database + '.sql'
-	  self.proceso.start(self.command)
-	  self.proceso.waitForFinished(-1)
-	if self.quehehecho == 2:
-	  self.command = 'tar czf ' + self.directorio + '/' + self.database + '.tar.gz ' + '/etc/bulmages/' + self.conffact + ' ' + '/etc/bulmages/' + self.conftpv + ' ' + '/etc/bulmages/' + self.database + '.sql'
-	  self.proceso.start(self.command)
-	  self.proceso.waitForFinished(-1)
-	if self.quehehecho == 3:
-	  self.command = 'tar czf ' + self.directorio + '/' + self.database + '.tar.gz ' + '/etc/bulmages/' + self.confcont + ' ' + '/etc/bulmages/' + self.database + '.sql'
-	  self.proceso.start(self.command)
-	  self.proceso.waitForFinished(-1)
+        Yes = 'Ok'
+        error = QtGui.QMessageBox(self)
+        error.setWindowTitle('Error')
+        error.setIcon(QtGui.QMessageBox.Warning)
+        error.addButton(Yes, QtGui.QMessageBox.AcceptRole)
 
-	self.command = 'rm /etc/bulmages/' + self.database + '.sql'
-	self.proceso.start(self.command)
-	self.proceso.waitForFinished(-1)
-	
-	Yes = 'Ok'
-	yasta = QtGui.QMessageBox(self)
-	yasta.setWindowTitle('Guardar Backup')
-	yasta.setIcon(QtGui.QMessageBox.Information)
-	yasta.addButton(Yes, QtGui.QMessageBox.AcceptRole)
-	yasta.setText(QtGui.QApplication.translate("GuardarBackup",'<b>Backup guardado satisfactoriamente en : ', None, QtGui.QApplication.UnicodeUTF8) + self.directorio + '</b>')
-	yasta.exec_()
+        if (self.lista_empresas.item(i,2).text() == QString('BulmaFact')):
+            self.quehehecho = 1
+            if os.path.exists('/etc/bulmages/' + self.conffact):
+                self.quehehecho = 1
+            else:
+                error.setText(QtGui.QApplication.translate("GuardarBackup",'No existe el archivo de configuracion: <b>/etc/bulmages/', None, QtGui.QApplication.UnicodeUTF8) + self.conffact + '</b>')
+                error.exec_()
+            if os.path.exists('/etc/bulmages/' + self.conftpv):
+                self.quehehecho = 2
+        elif (self.lista_empresas.item(i,2).text() == QString('BulmaCont')):
+            self.quehehecho = 3
+            if os.path.exists('/etc/bulmages/' + self.confcont):
+                self.quehehecho = 3
+            else:
+                error.setText(QtGui.QApplication.translate("GuardarBackup",'No existe el archivo de configuracion: <b>/etc/bulmages/', None, QtGui.QApplication.UnicodeUTF8) + self.confcont + '</b>')
+                error.exec_()
 
-	self.accept()
+        if self.quehehecho == 1:
+            self.command = 'tar czf ' + self.directorio + '/' + self.database + '.tar.gz ' + '/etc/bulmages/' + self.conffact + ' ' + '/etc/bulmages/' + self.database + '.sql'
+            self.proceso.start(self.command)
+            self.proceso.waitForFinished(-1)
+        if self.quehehecho == 2:
+            self.command = 'tar czf ' + self.directorio + '/' + self.database + '.tar.gz ' + '/etc/bulmages/' + self.conffact + ' ' + '/etc/bulmages/' + self.conftpv + ' ' + '/etc/bulmages/' + self.database + '.sql'
+            self.proceso.start(self.command)
+            self.proceso.waitForFinished(-1)
+        if self.quehehecho == 3:
+            self.command = 'tar czf ' + self.directorio + '/' + self.database + '.tar.gz ' + '/etc/bulmages/' + self.confcont + ' ' + '/etc/bulmages/' + self.database + '.sql'
+            self.proceso.start(self.command)
+            self.proceso.waitForFinished(-1)
+
+        self.command = 'rm /etc/bulmages/' + self.database + '.sql'
+        self.proceso.start(self.command)
+        self.proceso.waitForFinished(-1)
+
+        Yes = 'Ok'
+        yasta = QtGui.QMessageBox(self)
+        yasta.setWindowTitle('Guardar Backup')
+        yasta.setIcon(QtGui.QMessageBox.Information)
+        yasta.addButton(Yes, QtGui.QMessageBox.AcceptRole)
+        yasta.setText(QtGui.QApplication.translate("GuardarBackup",'<b>Backup guardado satisfactoriamente en : ', None, QtGui.QApplication.UnicodeUTF8) + self.directorio + '</b>')
+        yasta.exec_()
+
+        self.accept()
 
 def main(args):
     app=QtGui.QApplication(args)

@@ -26,37 +26,37 @@ class ModificarContabilidad(Contabilidad):
     def on_mui_hacerbackup_released(self):
         # Ponemos la pestanya de consola como la visible
         self.tabWidget.setCurrentIndex(2)
-    
+
         self.mui_textBrowser.clear()
-    
+
         self.writecommand("===== Backup =====<br>")
-	self.command = 'pg_dump -f ' + '/etc/bulmages/' + self.database + '.sql ' + self.database
+        self.command = 'pg_dump -f ' + '/etc/bulmages/' + self.database + '.sql ' + self.database
         self.writecommand(self.command)
         self.process.start(self.command)
         self.process.waitForFinished(-1)
         self.writecommand(self.process.readAllStandardOutput())
-	
-	self.directorio = QFileDialog.getExistingDirectory(self, "Selecciona la carpeta de destino del Backup","/home")
-	self.confcont = 'bulmacont_' + self.database + '.conf'
-	
-	if os.path.exists('/etc/bulmages/' + self.confcont):
-	  self.writecommand('Buscando archivo de configuracion: /etc/bulmages/' + self.confcont + '<br>')
-	else:
-	  self.writecommand('<font color =\"#FF0000\">No existe el archivo de configuracion: /etc/bulmages/' + self.confcont + '</font>')
-	  
-	self.writecommand('Empaquetando archivos de configuracion y datos de la BD<br>')
-	self.command = 'tar czf ' + self.directorio + '/' + self.database + '.tar.gz ' + '/etc/bulmages/' + self.confcont + ' ' + '/etc/bulmages/' + self.database + '.sql'
+
+        self.directorio = QFileDialog.getExistingDirectory(self, "Selecciona la carpeta de destino del Backup","/home")
+        self.confcont = 'bulmacont_' + self.database + '.conf'
+
+        if os.path.exists('/etc/bulmages/' + self.confcont):
+            self.writecommand('Buscando archivo de configuracion: /etc/bulmages/' + self.confcont + '<br>')
+        else:
+            self.writecommand('<font color =\"#FF0000\">No existe el archivo de configuracion: /etc/bulmages/' + self.confcont + '</font>')
+
+        self.writecommand('Empaquetando archivos de configuracion y datos de la BD<br>')
+        self.command = 'tar czf ' + self.directorio + '/' + self.database + '.tar.gz ' + '/etc/bulmages/' + self.confcont + ' ' + '/etc/bulmages/' + self.database + '.sql'
         self.writecommand(self.command)
-	self.process.start(self.command)
-	self.process.waitForFinished(-1)
-	
-	self.writecommand("===== Backup Guardado Satisfactoriamente En : " + self.directorio + ' =====<br><br>')
-	
-	self.command = 'rm /etc/bulmages/' + self.database + '.sql'
-	self.writecommand('Eliminando archivos temporales')
-	self.process.start(self.command)
-	self.process.waitForFinished(-1)
-	    
+        self.process.start(self.command)
+        self.process.waitForFinished(-1)
+
+        self.writecommand("===== Backup Guardado Satisfactoriamente En : " + self.directorio + ' =====<br><br>')
+
+        self.command = 'rm /etc/bulmages/' + self.database + '.sql'
+        self.writecommand('Eliminando archivos temporales')
+        self.process.start(self.command)
+        self.process.waitForFinished(-1)
+
     def on_mui_aceptar_released(self):
         # Ponemos la pestanya de consola como la visible
         self.tabWidget.setCurrentIndex(1)
@@ -66,7 +66,7 @@ class ModificarContabilidad(Contabilidad):
         self.mui_textBrowser.clear()
         self.actualizarPlugins()
         self.writeConfig()
-    
+
     def on_mui_permisos_released(self):
         win = ModificarUsuario()
         win.exec_()

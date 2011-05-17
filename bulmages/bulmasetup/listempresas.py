@@ -36,29 +36,29 @@ class ListEmpresas(Ui_ListEmpresasBase, Empresa):
         self.desconectar()
         self.mui_listado.setRowCount(0)
         self.i = 0
-        
+
         for row in self.databases:
             if (str(row[0]) != 'template0' and str(row[0]) != 'template1' ):
                 self.conectar(str(row[0]))
                 existconf = self.executeone('SELECT * FROM pg_tables WHERE tablename=\'configuracion\'')
                 if existconf != None:
-                   nombre = self.executeone('SELECT valor FROM configuracion where nombre =\'NombreEmpresa\'')
-                   tipo = self.executeone('SELECT valor FROM configuracion where nombre =\'Tipo\'')
-                   databaserevision = self.executeone('SELECT valor FROM configuracion where nombre =\'DatabaseRevision\'')
-                   if (nombre != None and tipo != None and databaserevision != None):
-		     self.mui_listado.setRowCount(self.mui_listado.rowCount() + 1)
-                     self.mui_listado.setItem(self.i, 0 , QTableWidgetItem(str(nombre[0])))
-                     self.mui_listado.setItem(self.i, 1 , QTableWidgetItem(row[0]))
-                     self.mui_listado.setItem(self.i, 2 , QTableWidgetItem(str(tipo[0])))
-                     self.mui_listado.setItem(self.i, 3 , QTableWidgetItem(str(databaserevision[0])))
-                     self.mui_listado.showRow(self.i)
-        	     self.i = self.i + 1
+                    nombre = self.executeone('SELECT valor FROM configuracion where nombre =\'NombreEmpresa\'')
+                    tipo = self.executeone('SELECT valor FROM configuracion where nombre =\'Tipo\'')
+                    databaserevision = self.executeone('SELECT valor FROM configuracion where nombre =\'DatabaseRevision\'')
+                    if (nombre != None and tipo != None and databaserevision != None):
+                        self.mui_listado.setRowCount(self.mui_listado.rowCount() + 1)
+                        self.mui_listado.setItem(self.i, 0 , QTableWidgetItem(str(nombre[0])))
+                        self.mui_listado.setItem(self.i, 1 , QTableWidgetItem(row[0]))
+                        self.mui_listado.setItem(self.i, 2 , QTableWidgetItem(str(tipo[0])))
+                        self.mui_listado.setItem(self.i, 3 , QTableWidgetItem(str(databaserevision[0])))
+                        self.mui_listado.showRow(self.i)
+                        self.i = self.i + 1
                 self.desconectar()
-                            
+
         # Ponemos la pestanya principal como la visible
         self.tabWidget.setCurrentIndex(0)
-        
-        
+
+
     def on_mui_listado_cellDoubleClicked(self, row, col):
         if (self.mui_listado.item(row,2).text() == QString('BulmaFact')):
             self.fact = ModificarFacturacion(str(self.mui_listado.item(row,1).text()))
@@ -66,40 +66,40 @@ class ListEmpresas(Ui_ListEmpresasBase, Empresa):
         if (self.mui_listado.item(row,2).text() == QString('BulmaCont')):
             self.cont = ModificarContabilidad(str(self.mui_listado.item(row,1).text()))
             self.cont.exec_()
-            
+
     def on_mui_actualizar_released(self):
-	Yes = 'Si'
-	No = 'No'
-	message = QtGui.QMessageBox(self)
-	message.setText(QtGui.QApplication.translate("Empresa", "Desea actualizar todas las empresas. Esta operacion puede tardar un ratito largo", None, QtGui.QApplication.UnicodeUTF8))
-	message.setWindowTitle('Atencion!')
-	message.setIcon(QtGui.QMessageBox.Warning)
-	message.addButton(Yes, QtGui.QMessageBox.AcceptRole)
-	message.addButton(No, QtGui.QMessageBox.RejectRole)
-	message.exec_()
-	respuesta = message.clickedButton().text()
-	if respuesta == Yes:
-	    print "Vamos a modificar todas y cada una de las empresas"
-	    i = 0;
-	    while (i < self.mui_listado.rowCount()):
-	      print "Tratando la empresa " + self.mui_listado.item(i,1).text()
-	      if (self.mui_listado.item(i,2).text() == QString('BulmaFact')):
-		  self.fact = ModificarFacturacion(str(self.mui_listado.item(i,1).text()))
-		  self.fact.mui_actualizarDB.setCheckState(Qt.Checked)
-		  self.fact.show()
-		  self.fact.on_mui_aceptar_released()
-		  self.fact.close()
-		  #self.fact.exec_()
-	      if (self.mui_listado.item(i,2).text() == QString('BulmaCont')):
-		  self.cont = ModificarContabilidad(str(self.mui_listado.item(i,1).text()))
-		  self.cont.mui_actualizarDB.setCheckState(Qt.Checked)
-		  self.cont.show()
-		  self.cont.on_mui_aceptar_released()
-		  self.cont.close()
-		  #self.cont.exec_()
-	      i = i + 1
-	    
-	    
+        Yes = 'Si'
+        No = 'No'
+        message = QtGui.QMessageBox(self)
+        message.setText(QtGui.QApplication.translate("Empresa", "Desea actualizar todas las empresas. Esta operacion puede tardar un ratito largo", None, QtGui.QApplication.UnicodeUTF8))
+        message.setWindowTitle('Atencion!')
+        message.setIcon(QtGui.QMessageBox.Warning)
+        message.addButton(Yes, QtGui.QMessageBox.AcceptRole)
+        message.addButton(No, QtGui.QMessageBox.RejectRole)
+        message.exec_()
+        respuesta = message.clickedButton().text()
+        if respuesta == Yes:
+            print "Vamos a modificar todas y cada una de las empresas"
+            i = 0;
+            while (i < self.mui_listado.rowCount()):
+                print "Tratando la empresa " + self.mui_listado.item(i,1).text()
+                if (self.mui_listado.item(i,2).text() == QString('BulmaFact')):
+                    self.fact = ModificarFacturacion(str(self.mui_listado.item(i,1).text()))
+                    self.fact.mui_actualizarDB.setCheckState(Qt.Checked)
+                    self.fact.show()
+                    self.fact.on_mui_aceptar_released()
+                    self.fact.close()
+                    #self.fact.exec_()
+                if (self.mui_listado.item(i,2).text() == QString('BulmaCont')):
+                    self.cont = ModificarContabilidad(str(self.mui_listado.item(i,1).text()))
+                    self.cont.mui_actualizarDB.setCheckState(Qt.Checked)
+                    self.cont.show()
+                    self.cont.on_mui_aceptar_released()
+                    self.cont.close()
+                    #self.cont.exec_()
+                i = i + 1
+
+
 def main(args):
     app=QtGui.QApplication(args)
     win=ListEmpresas()

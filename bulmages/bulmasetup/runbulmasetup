@@ -12,10 +12,10 @@ import sys
 import os
 
 def main(args):
-  if os.environ.get('KDE_FULL_SESSION') == 'true':
-    os.execv("/usr/bin/kdesudo",["kdesudo", "bulmasetup"])
-  else:
-    os.execv("/usr/bin/gksudo",["gksudo", "bulmasetup"])
+    if os.environ.get('KDE_FULL_SESSION') == 'true':
+        os.execv("/usr/bin/kdesudo",["kdesudo", "bulmasetup"])
+    else:
+        os.execv("/usr/bin/gksudo",["gksudo", "bulmasetup"])
 
 if __name__=="__main__":
     main(sys.argv)

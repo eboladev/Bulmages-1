@@ -13,27 +13,27 @@ class NuevoUsuario(Ui_NuevoUsuario, Empresa):
 
     def __init__(self, parent = None):
         Empresa.__init__(self,parent)
-	self.setupUi(self)
-	self.proceso = QtCore.QProcess()	
-	
+        self.setupUi(self)
+        self.proceso = QtCore.QProcess()
+
     def on_mui_botonera_accepted(self):
-	# Creamos el usuario
-        
+        # Creamos el usuario
+
         if (self.mui_superusuario.isChecked()):
             self.execComando("su postgres -c \"createuser -s -d -r  \'" + self.mui_nombre.text() + "\'\"")
         else:
             self.execComando("su postgres -c \"createuser -S -d -r  \'" + self.mui_nombre.text() + "\'\"")
-            
-	# Cambiamos el password del usuario
+
+        # Cambiamos el password del usuario
         self.execComando("psql template1 -c \"ALTER ROLE " + self.mui_nombre.text() + " WITH PASSWORD '" + self.mui_password.text() + "'\"")
-        
+
         # Y como ya hemos acabado, cerramos la aplicacion.
         self.accept()
-        
+
     def execComando(self, command):
         self.proceso.start(command)
         self.proceso.waitForFinished(-1)
-        
+
 def main(args):
     app=QtGui.QApplication(args)
     win=NuevoUsuario()

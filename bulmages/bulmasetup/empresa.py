@@ -15,14 +15,14 @@ class Empresa(QtGui.QDialog, PluginsBulmaSetup):
         PluginsBulmaSetup.__init__(self)
         QtGui.QDialog.__init__(self,parent)
         self.database = database
-        
+
         # Establecemos cual va a ser la base de datos con la que trabajaremos todo el rato
         self.process = QtCore.QProcess()
-        
+
         """Hacemos una conexion de prueba para comprobar si esta creado el usuario ROOT en PostgreSQL
         Ya que es necesario para poder administrar los permisos de las Bases de Datos.
         Si no existe, saltara un QMessageBox preguntando si se quiere crear el usuario ROOT."""
-        
+
         try:
             conn = psycopg2.connect("dbname='template1' user='root' password='password'")
             conn.close()
@@ -41,21 +41,21 @@ class Empresa(QtGui.QDialog, PluginsBulmaSetup):
                 comandoroot = "su postgres -c \"createuser -s root\""
                 self.process.start(comandoroot)
                 self.process.waitForFinished(-1)
-		self.execQuerySinConsola ("ALTER USER ROOT WITH password 'password'")
+                self.execQuerySinConsola ("ALTER USER ROOT WITH password 'password'")
             else:
                 print "Para poder modificar los permisos de las bases de datos es necesario agregar el usuario ROOT a PostgreSQL"
                 print "Cerrando la aplicacion"
                 sys.exit()
-                
+
         try:
             conn = psycopg2.connect("dbname='template1' user='root' password='password'")
         except:
             print "Error"
             sys.exit()
-            
+
         conn.close()
-        
-        
+
+
         self.connect(self.process, SIGNAL("readyReadStandardOutput()"), self.readOutput)
         self.connect(self.process, SIGNAL("readyReadStandardError()"), self.readErrors)
         self.connect(self.process, SIGNAL("finished(int,QProcess::ExitStatus)"), self.finished)
@@ -70,7 +70,7 @@ class Empresa(QtGui.QDialog, PluginsBulmaSetup):
         self.cur = self.conn.cursor()
 
     def desconectar(self):
-      self.conn.close()
+        self.conn.close()
 
     def execute(self, query):
         try:
@@ -79,37 +79,37 @@ class Empresa(QtGui.QDialog, PluginsBulmaSetup):
             print "Fallo en la consulta: " + query
             return None
         return self.cur.fetchall()
-        
+
     def executeprocess(self, proceso):
         try:
             self.cur.execute(proceso)
         except:
             print "Fallo al ejecutar: " + proceso
-            
+
     def executeone(self, query):
         try:
             self.cur.execute(query)
         except:
             return None
         return self.cur.fetchone()
-        
+
     def conectarIsolation(self, db):
         try:
             self.conn = psycopg2.connect("dbname='" + db + "' user='root'" + "password='password'")
-	    self.conn.set_isolation_level(0)
+            self.conn.set_isolation_level(0)
         except:
             print "Error en la conexion con la base de datos " + db
             sys.exit()
-	    
+
         self.cur = self.conn.cursor()
-            
+
     def executeGrant(self, permiso):
         try:
             self.cur.execute(permiso)
             self.writecommand(permiso)
         except:
             self.writecommand("<font color =\"#FF0000\">Fallo al intentar cambiar los permisos: " + str(permiso) + "</font>")
-	
+
 
     def guardaQuery(self, query):
         self.query = query
@@ -128,7 +128,7 @@ class Empresa(QtGui.QDialog, PluginsBulmaSetup):
             self.process.waitForFinished(-1)
             return QString(self.process.readAllStandardOutput())
         return QString('')
-   
+
     def execQuerySinConsola(self, query):
         if (self.database != ''):
             self.subcomand = query
@@ -157,12 +157,12 @@ class Empresa(QtGui.QDialog, PluginsBulmaSetup):
 
 
     def mensaje(self):
-	Yes = 'Si'
-	No = 'No'
-	message = QtGui.QMessageBox(self)
-	message.setText(QtGui.QApplication.translate("Empresa", "Desea agregar el usuario <b>root</b> a PostgreSQL?<br>Este usuario es necesario para poder administrar PostgreSQL.<br>La contrase&ntilde;a de este usuario sera \'password\'.<br><u><b>Borre este usuario al terminar la configuracion de BulmaGes, ya que genera un grave agujero de seguridad.</b></u>", None, QtGui.QApplication.UnicodeUTF8))
-	message.setWindowTitle('Atencion!')
-	message.setIcon(QtGui.QMessageBox.Warning)
-	message.addButton(Yes, QtGui.QMessageBox.AcceptRole)
-	message.addButton(No, QtGui.QMessageBox.RejectRole)
-	message.exec_()
+        Yes = 'Si'
+        No = 'No'
+        message = QtGui.QMessageBox(self)
+        message.setText(QtGui.QApplication.translate("Empresa", "Desea agregar el usuario <b>root</b> a PostgreSQL?<br>Este usuario es necesario para poder administrar PostgreSQL.<br>La contrase&ntilde;a de este usuario sera \'password\'.<br><u><b>Borre este usuario al terminar la configuracion de BulmaGes, ya que genera un grave agujero de seguridad.</b></u>", None, QtGui.QApplication.UnicodeUTF8))
+        message.setWindowTitle('Atencion!')
+        message.setIcon(QtGui.QMessageBox.Warning)
+        message.addButton(Yes, QtGui.QMessageBox.AcceptRole)
+        message.addButton(No, QtGui.QMessageBox.RejectRole)
+        message.exec_()
