@@ -22,7 +22,7 @@
 #include <QToolButton>
 
 #include "pluginbf_ivaincluido.h"
-#include "ivaincluido.h"
+#include "ivaincluidoview.h"
 
 
 ///
@@ -56,7 +56,7 @@ int ArticuloView_ArticuloView_Post ( ArticuloView *trab )
 {
     blDebug ( "ArticuloView_ArticuloView_Post", 0 );
 
-    IVAincluido *i = new IVAincluido(trab);
+    IVAincluidoView *i = new IVAincluidoView(trab);
 
     return 0;
 }
