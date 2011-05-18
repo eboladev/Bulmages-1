@@ -75,7 +75,8 @@ int BlAction_triggered(BlAction *accion) {
         CarteraCobrosList *carteracobrosview = new CarteraCobrosList ( ( BfCompany * ) g_bges->company() );
         g_bges->company()->m_pWorkspace->addSubWindow ( carteracobrosview );
         carteracobrosview->show();
-    }
+    } // end if 
+    return 0;
 }
  
 

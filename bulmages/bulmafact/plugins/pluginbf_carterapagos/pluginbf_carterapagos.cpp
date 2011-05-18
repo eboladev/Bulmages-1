@@ -73,8 +73,8 @@ int BlAction_triggered(BlAction *accion) {
         g_bges->company()->m_pWorkspace ->addSubWindow ( vehiculoview );
         //m_bulmafact->workspace() ->addSubWindow ( vehiculoview );
         vehiculoview->show();
-
-    }
+    } // endi if
+    return 0;
 }
 
 ///

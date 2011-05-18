@@ -26,7 +26,7 @@
 #include "articuloview.h"
 #include "bfbulmafact.h"
 #include "pdefs_pluginbf_tarifa.h"
-
+#include "blaction.h"
 
 extern "C" PLUGINBF_TARIFA_EXPORT int entryPoint ( BfBulmaFact * );
 extern "C" PLUGINBF_TARIFA_EXPORT int ClienteView_ClienteView ( ClienteView * );
@@ -36,7 +36,7 @@ extern "C" PLUGINBF_TARIFA_EXPORT int ArticuloView_guardar_post ( ArticuloView *
 extern "C" PLUGINBF_TARIFA_EXPORT int ArticuloView_borrar ( ArticuloView * );
 extern "C" PLUGINBF_TARIFA_EXPORT int BfSubForm_BfSubForm ( BfSubForm * );
 extern "C" PLUGINBF_TARIFA_EXPORT int BfSubForm_calculaPVP ( BfSubForm * );
-
+extern "C" PLUGINBF_TARIFA_EXPORT int BlAction_triggered(BlAction *);
 
 #endif
 
