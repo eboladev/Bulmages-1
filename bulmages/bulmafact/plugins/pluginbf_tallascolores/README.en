@@ -14,11 +14,11 @@ del tallaje y del color.</P>
 <B>Author:</B>Tomeu Borrás (tborras@conetxia.com)<BR>
 <HR>
 
-ParmBD: PluginBf_Tallas-y-Colores
+ParmBD: PluginBf_TallasColores
 
-ArchivoSQLpatch: pluginbf_tc_articulos.sql
+ArchivoSQLpatch: pluginbf_tallascolores.sql
 
-ArchivoSQLdeins: pluginbf_tc_articulos-rm.sql
+ArchivoSQLdeins: pluginbf_tallascolores-rm.sql
 
 Dependencias: libpluginbf_articulo.so
 

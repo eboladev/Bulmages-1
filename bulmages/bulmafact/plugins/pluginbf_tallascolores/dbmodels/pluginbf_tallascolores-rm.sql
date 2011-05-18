@@ -135,9 +135,9 @@ CREATE OR REPLACE FUNCTION actualizarevision() RETURNS INTEGER AS '
 DECLARE
 	bs RECORD;
 BEGIN
-	SELECT INTO bs * FROM configuracion WHERE nombre=''PluginBf_-Tallas-y-Colores'';
+	SELECT INTO bs * FROM configuracion WHERE nombre=''PluginBf_TallasColores'';
 	IF FOUND THEN
-		DELETE FROM CONFIGURACION WHERE nombre=''PluginBf_Tallas-y-Colores'';
+		DELETE FROM CONFIGURACION WHERE nombre=''PluginBf_TallasColores'';
 	END IF;
 	RETURN 0;
 END;

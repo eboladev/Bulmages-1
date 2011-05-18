@@ -21,6 +21,9 @@
 #ifndef PLUGINBF_TALLASCOLORES_H
 #define PLUGINBF_TALLASCOLORES_H
 
+#include <QObject>
+
+
 #include "bfbulmafact.h"
 #include "articuloview.h"
 #include "blsearchwidget.h"
@@ -29,6 +32,11 @@
 #include "listlinfacturaview.h"
 #include "listlinfacturapview.h"
 #include "pdefs_pluginbf_tallascolores.h"
+#include "blaction.h"
+#include "bfsubform.h"
+
+
+
 
 
 extern "C" PLUGINBF_TALLASCOLORES_EXPORT int entryPoint ( BfBulmaFact * );
@@ -47,6 +55,22 @@ extern "C" PLUGINBF_TALLASCOLORES_EXPORT int ListLinFacturaProveedorView_ListLin
 extern "C" PLUGINBF_TALLASCOLORES_EXPORT int BfClienteAlbaranSubForm_cargar ( BfClienteAlbaranSubForm * );
 
 extern "C" PLUGINBF_TALLASCOLORES_EXPORT int ListLinFacturaView_cargar ( ListLinFacturaView * );
+
+extern "C" PLUGINBF_TALLASCOLORES_EXPORT int BlAction_triggered(BlAction *);
+
+
+/// Clase BfSubFormDelegate
+/** Se encarga del control de los Widgets de Edicion del sistema.*/
+class QSubForm3BfDelegate : public BfSubFormDelegate
+{
+public:
+    QSubForm3BfDelegate ( QObject * );
+    virtual ~QSubForm3BfDelegate();
+    virtual void setEditorData ( QWidget *, const QModelIndex &index ) const;
+    virtual void setModelData ( QWidget *editor,  QAbstractItemModel *model, const QModelIndex &index ) const;
+    virtual QWidget *createEditor ( QWidget *parent, const QStyleOptionViewItem &option, const QModelIndex &index ) const;
+};
+
 
 
 #endif

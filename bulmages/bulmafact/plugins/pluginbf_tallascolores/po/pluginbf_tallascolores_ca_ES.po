@@ -53,17 +53,17 @@ msgstr ""
 "#-#-#-#-#  bulmalib_ca_ES.po (PACKAGE VERSION)  #-#-#-#-#\n"
 "&Cancel·lar"
 
-#: plugarticulos.cpp:83
+#: pluginbf_tallascolores.cpp:83
 #, fuzzy
 msgid "&Colores"
 msgstr "&Canals"
 
-#: plugarticulos.cpp:77
+#: pluginbf_tallascolores.cpp:77
 #, fuzzy
 msgid "&Tallas"
 msgstr "Total files:"
 
-#: plugarticulos.cpp:72
+#: pluginbf_tallascolores.cpp:72
 msgid "&Tallas y colores"
 msgstr "&Talles i colors"
 
@@ -72,7 +72,7 @@ msgstr "&Talles i colors"
 msgid "Alias"
 msgstr "Aplicar"
 
-#: listcoloresview.cpp:49 plugarticulos.cpp:84 plugarticulos.cpp:85
+#: listcoloresview.cpp:49 pluginbf_tallascolores.cpp:84 pluginbf_tallascolores.cpp:85
 #: ui_listcoloresbase.h:117
 msgid "Colores"
 msgstr "Colors"
@@ -127,7 +127,7 @@ msgstr "Color"
 msgid "Talla"
 msgstr ""
 
-#: plugarticulos.cpp:78 plugarticulos.cpp:79 listtallasview.cpp:49
+#: pluginbf_tallascolores.cpp:78 pluginbf_tallascolores.cpp:79 listtallasview.cpp:49
 #: ui_listtallasbase.h:117
 #, fuzzy
 msgid "Tallas"

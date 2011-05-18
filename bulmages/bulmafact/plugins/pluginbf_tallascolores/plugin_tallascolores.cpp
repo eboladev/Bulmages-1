@@ -27,13 +27,15 @@
 #include <QApplication>
 #include <QObject>
 
-#include "plugin_tc_articulos.h"
+#include "plugin_tallascolores.h"
 #include "bfcompany.h"
 #include "blfunctions.h"
-#include "plugarticulos.h"
 #include "busquedacolor.h"
 #include "busquedatalla.h"
+#include "listcoloresview.h"
+#include "listtallasview.h"
 
+BfBulmaFact *g_bges = NULL;
 
 ///
 /**
@@ -44,16 +46,68 @@ int entryPoint ( BfBulmaFact *bges )
     blDebug ( "Estoy dentro del plugin de tallas y colores", 0 );
 
     /// El plugin necesita un parche en la base de datos para funcionar.
-    bges->company()->dbPatchVersionCheck("PluginBf_Tallas-y-Colores", "0.11.1-0001");
+    bges->company()->dbPatchVersionCheck("PluginBf_TallasColores", "0.11.1-0001");
+    g_bges = bges;
 
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale ( LC_ALL, "" );
-    blBindTextDomain ( "plugin_tc_articulos", g_confpr->valor ( CONF_DIR_TRADUCCION ).toAscii().constData() );
+    blBindTextDomain ( "PluginBf_TallasColores", g_confpr->valor ( CONF_DIR_TRADUCCION ).toAscii().constData() );
 
-    plugin_tc_articulos *plug = new plugin_tc_articulos();
-    plug->inicializa ( bges );
+
+
+
+
+    QMenu *pPluginMenuTallasColores;
+    /// Miramos si existe un menu Herramientas
+    pPluginMenuTallasColores = bges->menuBar() ->findChild<QMenu *> ( "Tallas y colores" );
+
+    /// Creamos el men&uacute;.
+    if ( !pPluginMenuTallasColores ) {
+        pPluginMenuTallasColores = new QMenu ( _ ( "&Tallas y colores" ), bges->menuBar() );
+        pPluginMenuTallasColores->setObjectName ( QString::fromUtf8 ( "Tallas y colores" ) );
+    } // end if
+    /// Creamos el men&uacute;.
+
+    BlAction *accionTallas = new BlAction ( _ ( "&Tallas" ), 0 );
+    accionTallas->setStatusTip ( _ ( "Tallas" ) );
+    accionTallas->setWhatsThis ( _ ( "Tallas" ) );
+//    connect ( acciontallas, SIGNAL ( activated() ), this, SLOT ( tallas() ) );
+    accionTallas->setObjectName("tallas");    
+    
+    pPluginMenuTallasColores->addAction ( accionTallas );
+
+    BlAction *accionColores = new BlAction ( _ ( "&Colores" ), 0 );
+    accionColores->setStatusTip ( _ ( "Colores" ) );
+    accionColores->setWhatsThis ( _ ( "Colores" ) );
+    accionColores->setObjectName("colores");
+
+//    connect ( accioncolores, SIGNAL ( activated() ), this, SLOT ( colores() ) );
+    pPluginMenuTallasColores->addAction ( accionColores );
+
+    /// A&ntilde;adimos la nueva opci&oacute;n al men&uacute; principal del programa.
+    bges->menuBar() ->insertMenu ( bges->menuVentana->menuAction(), pPluginMenuTallasColores );
+
+  //  PluginBf_TallasColores *plug = new PluginBf_TallasColores();
+    //plug->inicializa ( bges );
     return 0;
 }
+
+int BlAction_triggered(BlAction *accion) {
+    if (accion->objectName() == "tallas") {
+        ListTallasView *tallas = new ListTallasView ( g_bges->company(), 0 );
+        g_bges->company()->m_pWorkspace->addSubWindow ( tallas );
+        tallas->show();
+    } // end if
+
+    if (accion->objectName() == "colores") {
+        ListColoresView *colores = new ListColoresView ( g_bges->company(), 0 );
+        g_bges->company()->m_pWorkspace->addSubWindow ( colores );
+        colores->show();
+    } // end if
+
+    return 0;
+}
+
 
 
 ///

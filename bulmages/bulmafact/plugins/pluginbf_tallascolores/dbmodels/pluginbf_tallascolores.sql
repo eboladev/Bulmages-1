@@ -215,11 +215,11 @@ CREATE OR REPLACE FUNCTION actualizarevision() RETURNS INTEGER AS '
 DECLARE
 	bs RECORD;
 BEGIN
-	SELECT INTO bs * FROM configuracion WHERE nombre=''PluginBf_Tallas-y-Colores'';
+	SELECT INTO bs * FROM configuracion WHERE nombre=''PluginBf_TallasColores'';
 	IF FOUND THEN
-		UPDATE CONFIGURACION SET valor=''0.11.1-0001'' WHERE nombre=''PluginBf_Tallas-y-Colores'';
+		UPDATE CONFIGURACION SET valor=''0.11.1-0001'' WHERE nombre=''PluginBf_TallasColores'';
 	ELSE
-		INSERT INTO configuracion (nombre, valor) VALUES (''PluginBf_Tallas-y-Colores'', ''0.11.1-0001'');
+		INSERT INTO configuracion (nombre, valor) VALUES (''PluginBf_TallasColores'', ''0.11.1-0001'');
 	END IF;
 	RETURN 0;
 END;
