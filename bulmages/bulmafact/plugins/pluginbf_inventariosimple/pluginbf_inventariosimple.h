@@ -55,13 +55,13 @@ public slots:
 
 
 
-class MyPlugInv1 : public QObject
+class SubForm_InventarioSimple : public QObject
 {
     Q_OBJECT
 
 public:
-    MyPlugInv1 ( BlSubForm * );
-    ~MyPlugInv1();
+    SubForm_InventarioSimple ( BlSubForm * );
+    ~SubForm_InventarioSimple();
 
 
 public slots:

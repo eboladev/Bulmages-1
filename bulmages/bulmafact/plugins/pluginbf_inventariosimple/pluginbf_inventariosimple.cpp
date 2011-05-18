@@ -268,19 +268,19 @@ int BfSubForm_pressedAsterisk ( BfSubForm *sub )
 /**
 \param parent
 **/
-MyPlugInv1::MyPlugInv1 ( BlSubForm *parent ) : QObject ( parent )
+SubForm_InventarioSimple::SubForm_InventarioSimple ( BlSubForm *parent ) : QObject ( parent )
 {
-    blDebug ( "MyPlugInv1::MyPlugInv1", 0 );
-    blDebug ( "END MyPlugInv1::MyPlugInv1", 0 );
+    blDebug ( "SubForm_InventarioSimple::SubForm_InventarioSimple", 0 );
+    blDebug ( "END SubForm_InventarioSimple::SubForm_InventarioSimple", 0 );
 }
 
 ///
 /**
 **/
-MyPlugInv1::~MyPlugInv1()
+SubForm_InventarioSimple::~SubForm_InventarioSimple()
 {
-    blDebug ( "MyPlugInv1::~MyPlugInv1", 0 );
-    blDebug ( "END MyPlugInv1::~MyPlugInv1", 0 );
+    blDebug ( "SubForm_InventarioSimple::~SubForm_InventarioSimple", 0 );
+    blDebug ( "END SubForm_InventarioSimple::~SubForm_InventarioSimple", 0 );
 }
 
 
@@ -288,9 +288,9 @@ MyPlugInv1::~MyPlugInv1()
 /**
 \param menu
 **/
-void MyPlugInv1::s_pintaMenu ( QMenu *menu )
+void SubForm_InventarioSimple::s_pintaMenu ( QMenu *menu )
 {
-    blDebug ( "MyPlugInv1::s_pintaMenu", 0 );
+    blDebug ( "SubForm_InventarioSimple::s_pintaMenu", 0 );
     BfSubForm *sub = ( BfSubForm * ) parent();
     BlSubFormHeader *header = sub->header ( "nominventariosimple" );
     if ( header ) {
@@ -299,7 +299,7 @@ void MyPlugInv1::s_pintaMenu ( QMenu *menu )
             menu->addAction ( QIcon ( ":/Images/product-family.png" ), _ ( "Seleccionar Material" ) );
         } // end if
     } // end if
-    blDebug ( "END MyPlugInv1::s_pintaMenu", 0 );
+    blDebug ( "END SubForm_InventarioSimple::s_pintaMenu", 0 );
 }
 
 
@@ -307,22 +307,22 @@ void MyPlugInv1::s_pintaMenu ( QMenu *menu )
 /**
 \param action
 **/
-void MyPlugInv1::s_trataMenu ( QAction *action )
+void SubForm_InventarioSimple::s_trataMenu ( QAction *action )
 {
-    blDebug ( "MyPlugInv1::s_trataMenu", 0 );
+    blDebug ( "SubForm_InventarioSimple::s_trataMenu", 0 );
     BfSubForm *sub = ( BfSubForm * ) parent();
     if ( action->text() == _ ( "Seleccionar Material" ) ) {
         seleccionarMaterial ();
     } // end if
     
-    blDebug ( "END MyPlugInv1::s_trataMenu", 0 );
+    blDebug ( "END SubForm_InventarioSimple::s_trataMenu", 0 );
 }
 
 
 ///
 /**
 **/
-void MyPlugInv1::seleccionarMaterial ( BfSubForm *sub )
+void SubForm_InventarioSimple::seleccionarMaterial ( BfSubForm *sub )
 {
     blDebug ( metaObject()->className()+ QString("::seleccionarMaterial"), 0 );
     
@@ -358,7 +358,7 @@ void MyPlugInv1::seleccionarMaterial ( BfSubForm *sub )
     delete list;
     
     if ( idinv == "" ) {
-        blDebug ( "END MyPlugInv1::editarMaterial" );
+        blDebug ( "END SubForm_InventarioSimple::editarMaterial" );
         return ;
     } // end if
 
@@ -372,7 +372,7 @@ void MyPlugInv1::seleccionarMaterial ( BfSubForm *sub )
     delete cur;
 
 
-    blDebug ( "END MyPlugInv1::seleccionarMaterial", 0 );
+    blDebug ( "END SubForm_InventarioSimple::seleccionarMaterial", 0 );
 }
 
 
@@ -384,7 +384,7 @@ void MyPlugInv1::seleccionarMaterial ( BfSubForm *sub )
 int BlSubForm_BlSubForm_Post ( BlSubForm *sub )
 {
     blDebug ( "BlSubForm_BlSubForm_Post", 0 );
-    MyPlugInv1 *subformods = new MyPlugInv1 ( (BfSubForm *) sub );
+    SubForm_InventarioSimple *subformods = new SubForm_InventarioSimple ( (BfSubForm *) sub );
     sub->QObject::connect ( sub, SIGNAL ( pintaMenu ( QMenu * ) ), subformods, SLOT ( s_pintaMenu ( QMenu * ) ) );
     sub->QObject::connect ( sub, SIGNAL ( trataMenu ( QAction * ) ), subformods, SLOT ( s_trataMenu ( QAction * ) ) );
     blDebug ( "END BlSubForm_BlSubForm_Post", 0 );
@@ -406,7 +406,7 @@ int BlSubForm_preparaMenu ( BlSubForm *sub ) {
     if (!header) 
         header = sub->header ( "nominventariosimple" );
     if ( header ) {
-        MyPlugInv1 *subformods = new MyPlugInv1 ( sub );
+        SubForm_InventarioSimple *subformods = new SubForm_InventarioSimple ( sub );
         
         QHBoxLayout *m_hboxLayout1 = sub->mui_menusubform->findChild<QHBoxLayout *> ( "hboxLayout1" );
         if ( !m_hboxLayout1 ) {
