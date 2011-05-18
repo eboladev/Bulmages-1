@@ -28,26 +28,6 @@
 #include "ui_zlistbase.h"
 #include "pdefs_pluginbf_bulmatpv.h"
 
-
-class PluginBf_BulmaTPV : public QObject
-{
-    Q_OBJECT
-
-public:
-    BlPostgreSqlClient *m_dbConnection;
-    BfBulmaFact *m_bulmafact;
-
-public:
-    PluginBf_BulmaTPV();
-    ~PluginBf_BulmaTPV();
-    void inicializa ( BfBulmaFact * );
-
-public slots:
-    void elslot();
-};
-
-
-
 /** Esta clase implementa la pantalla de listado de Clientes.
     Deriva de Ficha para la estandarizacion de Pantallas.
     Tiene dos modos de funcionamiento (Edicion y Seleccion)

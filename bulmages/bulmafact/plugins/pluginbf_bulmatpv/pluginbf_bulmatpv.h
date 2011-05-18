@@ -32,10 +32,11 @@
 #include "familiasview.h"
 #include "blfunctions.h"
 #include "pdefs_pluginbf_bulmatpv.h"
-
+#include "blaction.h"   
 
 extern "C" PLUGINBF_BULMATPV_EXPORT int entryPoint ( BfBulmaFact * );
 extern "C" PLUGINBF_BULMATPV_EXPORT int ArticuloView_ArticuloView_Post ( ArticuloView * );
+extern "C" PLUGINBF_BULMATPV_EXPORT int BlAction_triggered(BlAction *);
 
 /// Familias
 extern "C" PLUGINBF_BULMATPV_EXPORT int FamiliasView_FamiliasView ( FamiliasView * );

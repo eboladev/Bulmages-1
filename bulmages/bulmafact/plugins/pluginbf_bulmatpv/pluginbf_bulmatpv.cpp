@@ -27,78 +27,14 @@
 #include <QTabWidget>
 
 #include "bfcompany.h"
-#include "pluginbf_tpv.h"
+#include "pluginbf_bulmatpv.h"
 #include "blfunctions.h"
 #include "zlist.h"
 #include "blform.h"
 #include "articulotpv.h"
 #include "familiastpv.h"
 
-
-///
-/**
-**/
-PluginBf_BulmaTPV::PluginBf_BulmaTPV()
-{
-    blDebug ( "PluginBf_BulmaTPV::PluginBf_BulmaTPV", 0 );
-    blDebug ( "END PluginBf_BulmaTPV::PluginBf_BulmaTPV", 0 );
-}
-
-///
-/**
-**/
-PluginBf_BulmaTPV::~PluginBf_BulmaTPV()
-{
-    blDebug ( "PluginBf_BulmaTPV::~PluginBf_BulmaTPV", 0 );
-    blDebug ( "END PluginBf_BulmaTPV::~PluginBf_BulmaTPV", 0 );
-}
-
-
-///
-/**
-**/
-void PluginBf_BulmaTPV::elslot()
-{
-    blDebug ( "PluginBf_BulmaTPV::elslot", 0 );
-    ZList *vehiculoview = new ZList ( ( BfCompany * ) m_dbConnection );
-    m_bulmafact->workspace() ->addSubWindow ( vehiculoview );
-    vehiculoview->show();
-    blDebug ( "END PluginBf_BulmaTPV::elslot", 0 );
-}
-
-
-///
-/**
-\param bges
-**/
-void PluginBf_BulmaTPV::inicializa ( BfBulmaFact *bges )
-{
-    blDebug ( "PluginBf_BulmaTPV::inicializa", 0 );
-
-    /// Miramos si existe un menu Ventas
-    QMenu *pPluginMenu = NULL;
-    pPluginMenu = bges->menuBar() ->findChild<QMenu *> ( "menuVentas" );
-    /// Creamos el men&uacute;.
-    if ( !pPluginMenu ) {
-        QMenu *pPluginVentas = NULL;
-        pPluginVentas = bges->menuBar() ->findChild<QMenu *> ( "menuMaestro" );
-        pPluginMenu = new QMenu ( "&Ventas", bges->menuBar() );
-        pPluginMenu->setObjectName ( QString::fromUtf8 ( "menuVentas" ) );
-        bges->menuBar()->insertMenu ( pPluginVentas->menuAction(), pPluginMenu );
-    } // end if
-
-    /// Creamos el men&uacute;.
-    m_dbConnection = bges->company();
-    m_bulmafact = bges;
-    QAction *accion = new QAction ( "&Cuadres de Caja", 0 );
-    accion->setStatusTip ( "Listado de Cuadres de Caja" );
-    accion->setWhatsThis ( "Listado de Cuadres de Caja" );
-    connect ( accion, SIGNAL ( activated() ), this, SLOT ( elslot() ) );
-    /// A&ntilde;adimos la nueva opci&oacute;n al men&uacute; principal del programa.
-    pPluginMenu->addSeparator();
-    pPluginMenu->addAction ( accion );
-    blDebug ( "END PluginBf_BulmaTPV::inicializa", 0 );
-}
+BfBulmaFact *g_bges = NULL;
 
 
 ///
@@ -108,16 +44,47 @@ void PluginBf_BulmaTPV::inicializa ( BfBulmaFact *bges )
 **/
 int entryPoint ( BfBulmaFact *bges )
 {
-    blDebug ( "entryPoint", 0, "Punto de Entrada del plugin PluginContratos" );
+    blDebug ( "entryPoint", 0, "Punto de Entrada del plugin Plugin_BulmaTPV" );
 
+    g_bges = bges;
+    
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale ( LC_ALL, "" );
-    blBindTextDomain ( "pluginbf_tpv", g_confpr->valor ( CONF_DIR_TRADUCCION ).toAscii().constData() );
+    blBindTextDomain ( "pluginbf_bulmatpv", g_confpr->valor ( CONF_DIR_TRADUCCION ).toAscii().constData() );
 
-    PluginBf_BulmaTPV *plug = new PluginBf_BulmaTPV();
-    plug->inicializa ( bges );
-    blDebug ( "END entryPoint", 0, "Punto de Entrada del plugin PluginContratos" );
+    /// Miramos si existe un menu Ventas
+    QMenu *pPluginMenu = NULL;
+    pPluginMenu = bges->menuBar() ->findChild<QMenu *> ( "menuVentas" );
+    
+    /// Creamos el men&uacute;.
+    if ( !pPluginMenu ) {
+        QMenu *pPluginVentas = NULL;
+        pPluginVentas = bges->menuBar() ->findChild<QMenu *> ( "menuMaestro" );
+        pPluginMenu = new QMenu ( _("&Ventas"), bges->menuBar() );
+        pPluginMenu->setObjectName ( QString::fromUtf8 ( "menuVentas" ) );
+        bges->menuBar()->insertMenu ( pPluginVentas->menuAction(), pPluginMenu );
+    } // end if
+
+    /// Creamos el men&uacute;.
+    BlAction *accion = new BlAction ( _("&Cuadres de Caja"), 0 );
+    accion->setStatusTip ( _("Listado de Cuadres de Caja") );
+    accion->setWhatsThis ( _("Listado de Cuadres de Caja") );
+    accion->setObjectName("listadoCuadres");
+    
+    /// A&ntilde;adimos la nueva opci&oacute;n al men&uacute; principal del programa.
+    pPluginMenu->addSeparator();
+    pPluginMenu->addAction ( accion );
+
+
+    blDebug ( "END entryPoint", 0, "Punto de Entrada del plugin Plugin_BulmaTPV" );
     return 0;
+}
+int BlAction_triggered(BlAction *accion) {
+    if (accion->objectName() == "listadoCuadres") {
+        ZList *vehiculoview = new ZList ( ( BfCompany * ) g_bges->company() );
+        g_bges->company()->m_pWorkspace->addSubWindow ( vehiculoview );
+        vehiculoview->show();
+    } //end if
 }
 
 
