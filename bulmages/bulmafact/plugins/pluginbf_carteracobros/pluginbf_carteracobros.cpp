@@ -27,66 +27,8 @@
 #include "blfunctions.h"
 #include "carteracobroslist.h"
 
-///
-/**
-**/
-PluginBf_CarteraCobros::PluginBf_CarteraCobros()
-{
-    blDebug ( "PluginBf_CarteraCobros::PluginBf_CarteraCobros", 0 );
-    blDebug ( "END PluginBf_CarteraCobros::PluginBf_CarteraCobros", 0 );
-}
 
-///
-/**
-**/
-PluginBf_CarteraCobros::~PluginBf_CarteraCobros()
-{
-    blDebug ( "PluginBf_CarteraCobros::~PluginBf_CarteraCobros", 0 );
-    blDebug ( "END PluginBf_CarteraCobros::~PluginBf_CarteraCobros", 0 );
-}
-
-
-///
-/**
-**/
-void PluginBf_CarteraCobros::elslot()
-{
-    blDebug ( "PluginBf_CarteraCobros::elslot", 0 );
-    CarteraCobrosList *carteracobrosview = new CarteraCobrosList ( ( BfCompany * ) m_conexionbase );
-    m_bulmafact->workspace() ->addSubWindow ( carteracobrosview );
-    carteracobrosview->show();
-    blDebug ( "END PluginBf_CarteraCobros::elslot", 0 );
-}
-
-
-///
-/**
-\param bges
-**/
-void PluginBf_CarteraCobros::inicializa ( BfBulmaFact *bges )
-{
-    blDebug ( "PluginBf_CarteraCobros::inicializa", 0 );
-    /// Creamos el men&uacute;.
-    m_conexionbase = bges->company();
-    m_bulmafact = bges;
-
-    /// Miramos si existe un menu Ventas
-	QMenu *pPluginMenu = bges->newMenu("&Compras", "menuVentas", "menuMaestro");
-
-    QAction *accion = new QAction ( "&Cartera de cobros", 0 );
-    accion->setStatusTip ( "Cartera de cobros" );
-    accion->setWhatsThis ( "Cartera de cobros" );
-    accion->setIcon ( QIcon ( QString::fromUtf8 ( ":/Images/receive-list.png" ) ) );
-    connect ( accion, SIGNAL ( activated() ), this, SLOT ( elslot() ) );
-    /// A&ntilde;adimos la nueva opci&oacute;n al men&uacute; principal del programa.
-    pPluginMenu->addSeparator();
-    pPluginMenu->addAction ( accion );
-	bges->Listados->addAction (accion);
-    blDebug ( "END PluginBf_CarteraCobros::inicializa", 0 );
-}
-
-
-
+BfBulmaFact *g_bges = NULL;
 
 
 
@@ -97,16 +39,45 @@ void PluginBf_CarteraCobros::inicializa ( BfBulmaFact *bges )
 **/
 int entryPoint ( BfBulmaFact *bges )
 {
-    blDebug ( "Punto de Entrada del plugin de cartera de cobros\n", 0 );
+    blDebug ( "entryPoint, 0, Punto de Entrada el pluginbf_contrato\n");
 
     /// El plugin necesita un parche en la base de datos para funcionar.
     bges->company()->dbPatchVersionCheck("DBRev-CarteraCobros", "0.11.1-0001");
 
-    PluginBf_CarteraCobros *plug = new PluginBf_CarteraCobros();
-    plug->inicializa ( bges );
+    g_bges = bges;
+
+    /// Inicializa el sistema de traducciones 'gettext'.
+    setlocale ( LC_ALL, "" );
+    blBindTextDomain ( "pluginbf_carteracobros", g_confpr->valor ( CONF_DIR_TRADUCCION ).toAscii().constData() );
+ 
+    /// Miramos si existe un menu Ventas
+	QMenu *pPluginMenu = bges->newMenu(_("&Compras"), "menuVentas", "menuMaestro");
+
+    BlAction *accion = new BlAction ( _("&Cartera de cobros"), 0 );
+    accion->setStatusTip ( _("Cartera de cobros") );
+    accion->setWhatsThis ( _("Cartera de cobros") );
+    accion->setIcon ( QIcon ( QString::fromUtf8 ( ":/Images/receive-list.png" ) ) );
+    accion->setObjectName("carteraCobros");
+    
+    /// A&ntilde;adimos la nueva opci&oacute;n al men&uacute; principal del programa.
+    pPluginMenu->addSeparator();
+    pPluginMenu->addAction ( accion );
+	bges->Listados->addAction (accion);
+
     return 0;
+
+    blDebug("entryPoint, 0, Punto de salida del pluginbf_contrato");
 }
 
+
+int BlAction_triggered(BlAction *accion) {
+    if (accion->objectName() == "carteraCobros") {
+        CarteraCobrosList *carteracobrosview = new CarteraCobrosList ( ( BfCompany * ) g_bges->company() );
+        g_bges->company()->m_pWorkspace->addSubWindow ( carteracobrosview );
+        carteracobrosview->show();
+    }
+}
+ 
 
 ///
 /**
@@ -160,7 +131,7 @@ int ClienteView_cargarPost_Post ( ClienteView *art )
 
 void generarVencimientos (FacturaView *art) {
 			BlDbRecordSet *cur1 = art->mainCompany()->loadQuery("SELECT totalfactura FROM factura WHERE idfactura = " + art->dbValue("idfactura"));
-			blMsgInfo( "El total de la factura es :" + cur1->valor("totalfactura"));
+			blMsgInfo( _("El total de la factura es :") + cur1->valor("totalfactura"));
 			BlFixed contado("0.00");
 
 			BlDbRecordSet *cur = art->mainCompany()->loadQuery("SELECT * FROM vencimientocliente WHERE idcliente = " + art->dbValue("idcliente"));

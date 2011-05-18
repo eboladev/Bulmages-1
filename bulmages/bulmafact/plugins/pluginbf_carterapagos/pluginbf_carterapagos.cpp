@@ -46,7 +46,7 @@ int entryPoint ( BfBulmaFact *bges )
  
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale ( LC_ALL, "" );
-    blBindTextDomain ( "pluginbf_contrato", g_confpr->valor ( CONF_DIR_TRADUCCION ).toAscii().constData() );
+    blBindTextDomain ( "pluginbf_carteracobros", g_confpr->valor ( CONF_DIR_TRADUCCION ).toAscii().constData() );
 
     /// Creamos el men&uacute;.
     /// Miramos si existe un menu Ventas
@@ -129,7 +129,7 @@ int ProveedorView_cargarPost_Post ( ProveedorView *art )
 
 void generarVencimientos (FacturaProveedorView *art) {
 			BlDbRecordSet *cur1 = art->mainCompany()->loadQuery("SELECT totalfacturap FROM facturap WHERE idfacturap = " + art->dbValue("idfacturap"));
-			blMsgInfo( "El total de la factura es :" + cur1->valor("totalfacturap"));
+			blMsgInfo( _("El total de la factura es :") + cur1->valor("totalfacturap"));
 			BlFixed contado("0.00");
 
 			BlDbRecordSet *cur = art->mainCompany()->loadQuery("SELECT * FROM vencimientoproveedor WHERE idproveedor = " + art->dbValue("idproveedor"));
