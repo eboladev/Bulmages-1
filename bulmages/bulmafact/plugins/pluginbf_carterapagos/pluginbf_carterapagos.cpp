@@ -52,7 +52,7 @@ int entryPoint ( BfBulmaFact *bges )
     /// Miramos si existe un menu Ventas
 	QMenu *pPluginMenu = bges->newMenu( _("&Compras"), "menuCompras", "menuMaestro");
 
-    QAction *accion = new BlAction ( _("&Cartera de Pagos"), 0 );
+    BlAction *accion = new BlAction ( _("&Cartera de Pagos"), 0 );
     accion->setStatusTip ( _("Cartera de Pagos" ));
     accion->setWhatsThis ( _("Cartera de Pagos" ) );
     accion->setIcon ( QIcon ( QString::fromUtf8 ( ":/Images/pay-list.png" ) ) );
