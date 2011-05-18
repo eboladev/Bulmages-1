@@ -29,25 +29,6 @@
 #include "pdefs_pluginbf_carterapagos.h"
 
 
-class PluginBf_CarteraPagos : public QObject
-{
-    Q_OBJECT
-
-    public:
-        BlPostgreSqlClient *m_conexionbase;
-        BfBulmaFact *m_bulmafact;
-
-    public:
-        PluginBf_CarteraPagos();
-        ~PluginBf_CarteraPagos();
-        void inicializa ( BfBulmaFact * );
-
-    public slots:
-        void elslot();
-};
-
-
-
 /** Subformulario de contratoes.
     Esta clase derivada de BfSubForm presenta todo el blformlist de contratoes.
 */

@@ -20,7 +20,6 @@
 
 #include <stdio.h>
 #include <QTime>
-#include <QWidget>
 
 #include "pluginbf_carterapagos.h"
 #include "bfcompany.h"
@@ -28,68 +27,7 @@
 #include "carterapagoslist.h"
 
 
-
-///
-/**
-**/
-PluginBf_CarteraPagos::PluginBf_CarteraPagos()
-{
-    blDebug ( "PluginBf_CarteraPagos::PluginBf_CarteraPagos", 0 );
-    blDebug ( "END PluginBf_CarteraPagos::PluginBf_CarteraPagos", 0 );
-}
-
-///
-/**
-**/
-PluginBf_CarteraPagos::~PluginBf_CarteraPagos()
-{
-    blDebug ( "PluginBf_CarteraPagos::~PluginBf_CarteraPagos", 0 );
-    blDebug ( "END PluginBf_CarteraPagos::~PluginBf_CarteraPagos", 0 );
-}
-
-
-///
-/**
-**/
-void PluginBf_CarteraPagos::elslot()
-{
-    blDebug ( "PluginBf_CarteraPagos::elslot", 0 );
-    CarteraPagosList *vehiculoview = new CarteraPagosList ( ( BfCompany * ) m_conexionbase );
-    m_bulmafact->workspace() ->addSubWindow ( vehiculoview );
-    vehiculoview->show();
-    blDebug ( "END PluginBf_CarteraPagos::elslot", 0 );
-}
-
-
-///
-/**
-\param bges
-**/
-void PluginBf_CarteraPagos::inicializa ( BfBulmaFact *bges )
-{
-    blDebug ( "PluginBf_CarteraPagos::inicializa", 0 );
-    /// Creamos el men&uacute;.
-    m_conexionbase = bges->company();
-    m_bulmafact = bges;
-
-    /// Miramos si existe un menu Ventas
-	QMenu *pPluginMenu = bges->newMenu("&Compras", "menuCompras", "menuMaestro");
-
-    QAction *accion = new QAction ( "&Cartera de Pagos", 0 );
-    accion->setStatusTip ( "Cartera de Pagos" );
-    accion->setWhatsThis ( "Cartera de Pagos" );
-    accion->setIcon ( QIcon ( QString::fromUtf8 ( ":/Images/pay-list.png" ) ) );
-    connect ( accion, SIGNAL ( activated() ), this, SLOT ( elslot() ) );
-    /// A&ntilde;adimos la nueva opci&oacute;n al men&uacute; principal del programa.
-    pPluginMenu->addSeparator();
-    pPluginMenu->addAction ( accion );
-	bges->Listados->addAction (accion);
-    blDebug ( "END PluginBf_CarteraPagos::inicializa", 0 );
-}
-
-
-
-
+BfBulmaFact *g_bges = NULL;
 
 
 ///
@@ -99,16 +37,45 @@ void PluginBf_CarteraPagos::inicializa ( BfBulmaFact *bges )
 **/
 int entryPoint ( BfBulmaFact *bges )
 {
-    blDebug ( "Punto de Entrada del plugin de Cartera de Pagos\n", 0 );
+    blDebug ( "entryPoint, 0, Punto de Entrada del plugin de Cartera de Pagos\n" );
 
     /// El plugin necesita un parche en la base de datos para funcionar.
     bges->company()->dbPatchVersionCheck("DBRev-CarteraPagos", "0.11.1-0001");
-    
-    PluginBf_CarteraPagos *plug = new PluginBf_CarteraPagos();
-    plug->inicializa ( bges );
+
+    g_bges = bges;
+ 
+    /// Inicializa el sistema de traducciones 'gettext'.
+    setlocale ( LC_ALL, "" );
+    blBindTextDomain ( "pluginbf_contrato", g_confpr->valor ( CONF_DIR_TRADUCCION ).toAscii().constData() );
+
+    /// Creamos el men&uacute;.
+    /// Miramos si existe un menu Ventas
+	QMenu *pPluginMenu = bges->newMenu( _("&Compras"), "menuCompras", "menuMaestro");
+
+    QAction *accion = new BlAction ( _("&Cartera de Pagos"), 0 );
+    accion->setStatusTip ( _("Cartera de Pagos" ));
+    accion->setWhatsThis ( _("Cartera de Pagos" ) );
+    accion->setIcon ( QIcon ( QString::fromUtf8 ( ":/Images/pay-list.png" ) ) );
+    accion->setObjectName("carteraPagos");
+
+    /// A&ntilde;adimos la nueva opci&oacute;n al men&uacute; principal del programa.
+    pPluginMenu->addSeparator();
+    pPluginMenu->addAction ( accion );
+	g_bges->Listados->addAction (accion);
+
     return 0;
+    blDebug ("END entryPoint, 0, Punto de Entrada del plugin de Cartera pagos\n");
 }
 
+int BlAction_triggered(BlAction *accion) {
+    if (accion->objectName() == "carteraPagos") {
+        CarteraPagosList *vehiculoview = new CarteraPagosList ( ( BfCompany * )  g_bges->company() );
+        g_bges->company()->m_pWorkspace ->addSubWindow ( vehiculoview );
+        //m_bulmafact->workspace() ->addSubWindow ( vehiculoview );
+        vehiculoview->show();
+
+    }
+}
 
 ///
 /**
@@ -207,7 +174,7 @@ int BlForm_guardar_Post ( BlForm *art )
 		if (l1->rowCount() > 1) {
 
 			QMessageBox msgBox;
-			msgBox.setText("Hay Vencimientos generados para esta factura. Que desea hacer?");
+			msgBox.setText(_("Hay Vencimientos generados para esta factura. Que desea hacer?"));
 			QPushButton *guardarButton = msgBox.addButton("Guardar", QMessageBox::ActionRole);
 			QPushButton *regenerarButton = msgBox.addButton("Regenerar", QMessageBox::ActionRole);
 			QPushButton *nadaButton = msgBox.addButton("Dejar Actuales", QMessageBox::ActionRole);
