@@ -33,6 +33,7 @@
 #include "bfcompany.h"
 #include "pdefs_pluginbf_clientealbaran.h"
 #include "bltoolbutton.h"
+#include "blaction.h"
 
 extern "C" PLUGINBF_CLIENTEALBARAN_EXPORT int SNewAlbaranClienteView (BfCompany *);
 extern "C" PLUGINBF_CLIENTEALBARAN_EXPORT int entryPoint ( BfBulmaFact * );
@@ -44,24 +45,7 @@ extern "C" PLUGINBF_CLIENTEALBARAN_EXPORT int PedidoClienteView_PedidoClienteVie
 extern "C" PLUGINBF_CLIENTEALBARAN_EXPORT int PresupuestoView_PresupuestoView ( PresupuestoView * );
 extern "C" PLUGINBF_CLIENTEALBARAN_EXPORT int BlToolButton_released(BlToolButton *);
 extern "C" PLUGINBF_CLIENTEALBARAN_EXPORT int FacturaView_FacturaView ( FacturaView * );
-// 
-class PluginBf_ClienteAlbaran : public QObject, BlMainCompanyPointer
-{
-    Q_OBJECT
-
-public:
-    BfBulmaFact *m_bges;
-
-public:
-    PluginBf_ClienteAlbaran();
-    ~PluginBf_ClienteAlbaran();
-    void inicializa ( BfBulmaFact * );
-
-public slots:
-    void elslot();
-    void elslot1();
-};
-
+extern "C" PLUGINBF_CLIENTEALBARAN_EXPORT int BlAction_triggered(BlAction *);
 
 #endif
 
