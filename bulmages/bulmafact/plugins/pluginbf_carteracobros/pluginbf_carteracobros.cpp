@@ -51,18 +51,18 @@ int entryPoint ( BfBulmaFact *bges )
     blBindTextDomain ( "pluginbf_carteracobros", g_confpr->valor ( CONF_DIR_TRADUCCION ).toAscii().constData() );
  
     /// Miramos si existe un menu Ventas
-	QMenu *pPluginMenu = bges->newMenu(_("&Compras"), "menuVentas", "menuMaestro");
+	QMenu *pPluginMenu = bges->newMenu( _("&Compras"), "menuVentas", "menuMaestro");
 
-    BlAction *accion = new BlAction ( _("&Cartera de cobros"), 0 );
-    accion->setStatusTip ( _("Cartera de cobros") );
-    accion->setWhatsThis ( _("Cartera de cobros") );
-    accion->setIcon ( QIcon ( QString::fromUtf8 ( ":/Images/receive-list.png" ) ) );
-    accion->setObjectName("mui_actionCarteraCobros");
+    BlAction *accionA = new BlAction ( _("&Cartera de cobros"), 0 );
+    accionA->setStatusTip ( _("Cartera de cobros") );
+    accionA->setWhatsThis ( _("Cartera de cobros") );
+    accionA->setIcon ( QIcon ( QString::fromUtf8 ( ":/Images/receive-list.png" ) ) );
+    accionA->setObjectName("mui_actionCarteraCobros");
     
     /// A&ntilde;adimos la nueva opci&oacute;n al men&uacute; principal del programa.
     pPluginMenu->addSeparator();
-    pPluginMenu->addAction ( accion );
-	bges->Listados->addAction (accion);
+    pPluginMenu->addAction ( accionA );
+	bges->Listados->addAction (accionA);
 
     return 0;
 

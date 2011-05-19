@@ -52,26 +52,26 @@ int entryPoint ( BfBulmaFact *bges )
     if ( bges->company()->hasTablePrivilege ( "albaran", "SELECT" ) ) {
 
         /// Miramos si existe un menu Ventas
-        QMenu *pPluginMenu = bges->newMenu ( "&Ventas", "menuVentas", "menuMaestro" );
+        QMenu *pPluginMenu = bges->newMenu ( _("&Ventas"), "menuVentas", "menuMaestro" );
         pPluginMenu->addSeparator();
 
         g_bges = bges;
 
-        BlAction *accionAlbaranCliente = new BlAction ( _ ( "&Albaranes a clientes" ), 0 );
-        accionAlbaranCliente->setIcon ( QIcon ( QString::fromUtf8 ( ":/Images/client-delivery-note-list.png" ) ) );
-        accionAlbaranCliente->setStatusTip ( _ ( "Albaranes a clientes" ) );
-        accionAlbaranCliente->setWhatsThis ( _ ( "Albaranes a clientes" ) );
-        accionAlbaranCliente->setObjectName("mui_actionAlbaranesClientes");
-        pPluginMenu->addAction ( accionAlbaranCliente );
-        bges->Listados->addAction ( accionAlbaranCliente );
+        BlAction *accionA = new BlAction ( _ ( "&Albaranes a clientes" ), 0 );
+        accionA->setIcon ( QIcon ( QString::fromUtf8 ( ":/Images/client-delivery-note-list.png" ) ) );
+        accionA->setStatusTip ( _ ( "Albaranes a clientes" ) );
+        accionA->setWhatsThis ( _ ( "Albaranes a clientes" ) );
+        accionA->setObjectName("mui_actionAlbaranesClientes");
+        pPluginMenu->addAction ( accionA );
+        bges->Listados->addAction ( accionA );
 
-        BlAction *accionNuevoAlbaranCliente = new BlAction ( _ ( "&Nuevo albaran a cliente" ), 0 );
-        accionNuevoAlbaranCliente->setIcon ( QIcon ( QString::fromUtf8 ( ":/Images/client-delivery-note.png" ) ) );
-        accionNuevoAlbaranCliente->setStatusTip ( _ ( "Nuevo albaran a cliente" ) );
-        accionNuevoAlbaranCliente->setWhatsThis ( _ ( "Nuevo albaran a cliente" ) );
-        accionNuevoAlbaranCliente->setObjectName("mui_actionNuevoAlbaranCliente");
-        pPluginMenu->addAction ( accionNuevoAlbaranCliente );
-        bges->Fichas->addAction ( accionNuevoAlbaranCliente );
+        BlAction *accionB = new BlAction ( _ ( "&Nuevo albaran a cliente" ), 0 );
+        accionB->setIcon ( QIcon ( QString::fromUtf8 ( ":/Images/client-delivery-note.png" ) ) );
+        accionB->setStatusTip ( _ ( "Nuevo albaran a cliente" ) );
+        accionB->setWhatsThis ( _ ( "Nuevo albaran a cliente" ) );
+        accionB->setObjectName("mui_actionNuevoAlbaranCliente");
+        pPluginMenu->addAction ( accionB );
+        bges->Fichas->addAction ( accionB );
 
     }// end if
 

@@ -50,30 +50,29 @@ int entryPoint ( BfBulmaFact *bges )
     if ( bges->company()->hasTablePrivilege ( "cobro", "SELECT" ) ) {
 
         /// Miramos si existe un menu Ventas
-        QMenu *pPluginMenu = bges->newMenu ( "&Ventas", "menuVentas", "menuMaestro" );
+        QMenu *pPluginMenu = bges->newMenu ( _("&Ventas"), "menuVentas", "menuMaestro" );
         pPluginMenu->addSeparator();
 
-        /// El men&uacute; de Tarifas en la secci&oacute;n de art&iacute;culos.
         g_bges = bges;
 
-        BlAction *CobroCliente = new BlAction ( _ ( "&Cobros de clientes" ), 0 );
-        CobroCliente->setIcon ( QIcon ( QString::fromUtf8 ( ":/Images/receive-list.png" ) ) );
-        CobroCliente->setStatusTip ( _ ( "Cobros de clientes" ) );
-        CobroCliente->setWhatsThis ( _ ( "Cobros de clientes" ) );
-        CobroCliente->setObjectName("mui_actionCobroCliente");
+        BlAction *accionA = new BlAction ( _ ( "&Cobros de clientes" ), 0 );
+        accionA->setIcon ( QIcon ( QString::fromUtf8 ( ":/Images/receive-list.png" ) ) );
+        accionA->setStatusTip ( _ ( "Cobros de clientes" ) );
+        accionA->setWhatsThis ( _ ( "Cobros de clientes" ) );
+        accionA->setObjectName("mui_actionCobroCliente");
 
-        pPluginMenu->addAction ( CobroCliente );
-        bges->Listados->addAction ( CobroCliente );
+        pPluginMenu->addAction ( accionA );
+        bges->Listados->addAction ( accionA );
 
-        BlAction *NuevoCobroCliente = new BlAction ( _ ( "&Nuevo cobro de cliente" ), 0 );
-        NuevoCobroCliente->setIcon ( QIcon ( QString::fromUtf8 ( ":/Images/receive.png" ) ) );
-        NuevoCobroCliente->setStatusTip ( _ ( "Nuevo cobro de cliente" ) );
-        NuevoCobroCliente->setWhatsThis ( _ ( "Nuevo cobro de cliente" ) );
-        NuevoCobroCliente->setObjectName("mui_actionNuevoCobroCliente");
+        BlAction *accionB = new BlAction ( _ ( "&Nuevo cobro de cliente" ), 0 );
+        accionB->setIcon ( QIcon ( QString::fromUtf8 ( ":/Images/receive.png" ) ) );
+        accionB->setStatusTip ( _ ( "Nuevo cobro de cliente" ) );
+        accionB->setWhatsThis ( _ ( "Nuevo cobro de cliente" ) );
+        accionB->setObjectName("mui_actionNuevoCobroCliente");
 
-        pPluginMenu->addAction ( NuevoCobroCliente );
-        bges->Fichas->addAction ( NuevoCobroCliente );
-    }// end if
+        pPluginMenu->addAction ( accionB );
+        bges->Fichas->addAction ( accionB );
+    } // end if
     
     return 0;
 }

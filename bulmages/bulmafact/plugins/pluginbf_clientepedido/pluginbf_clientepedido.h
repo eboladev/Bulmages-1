@@ -30,7 +30,7 @@
 #include "presupuestoview.h"
 #include "bfcompany.h"
 #include "pdefs_pluginbf_clientepedido.h"
-
+#include "blaction.h"
 
 extern "C" PLUGINBF_CLIENTEPEDIDO_EXPORT int SNewPedidoClienteView (BfCompany *);
 extern "C" PLUGINBF_CLIENTEPEDIDO_EXPORT int entryPoint ( BfBulmaFact * );
@@ -39,26 +39,7 @@ extern "C" PLUGINBF_CLIENTEPEDIDO_EXPORT int ClienteView_ClienteView_Post (Clien
 extern "C" PLUGINBF_CLIENTEPEDIDO_EXPORT int ClienteView_cargarPost_Post (ClienteView *);
 extern "C" PLUGINBF_CLIENTEPEDIDO_EXPORT int BfBuscarReferencia_on_mui_abrirtodo_clicked_Post (BfBuscarReferencia *);
 extern "C" PLUGINBF_CLIENTEPEDIDO_EXPORT int PresupuestoView_PresupuestoView ( PresupuestoView * );
-
-
-// 
-class PluginBf_ClientePedido : public QObject, BlMainCompanyPointer
-{
-    Q_OBJECT
-
-public:
-    BfBulmaFact *m_bges;
-
-public:
-    PluginBf_ClientePedido();
-    ~PluginBf_ClientePedido();
-    void inicializa ( BfBulmaFact * );
-
-public slots:
-    void elslot();
-    void elslot1();
-};
-
+extern "C" PLUGINBF_CLIENTEPEDIDO_EXPORT int BlAction_triggered(BlAction *);
 
 #endif
 

@@ -51,28 +51,28 @@ int entryPoint ( BfBulmaFact *bges )
     if ( bges->company()->hasTablePrivilege ( "cliente", "SELECT" ) ) {
 
         /// Miramos si existe un menu Ventas
-        QMenu *pPluginMenu = bges->newMenu ( "&Ventas", "menuVentas", "menuMaestro" );
+        QMenu *pPluginMenu = bges->newMenu ( _("&Ventas"), "menuVentas", "menuMaestro" );
         pPluginMenu->addSeparator();
 
         g_bges = bges;
         
-        BlAction *accionClientes = new BlAction ( _ ( "&Clientes" ), 0 );
-        accionClientes->setIcon ( QIcon ( QString::fromUtf8 ( ":/Images/client-list.png" ) ) );
-        accionClientes->setStatusTip ( _ ( "Clientes" ) );
-        accionClientes->setWhatsThis ( _ ( "Clientes" ) );
-        accionClientes->setObjectName("mui_actionClientes");
+        BlAction *accionA = new BlAction ( _ ( "&Clientes" ), 0 );
+        accionA->setIcon ( QIcon ( QString::fromUtf8 ( ":/Images/client-list.png" ) ) );
+        accionA->setStatusTip ( _ ( "Clientes" ) );
+        accionA->setWhatsThis ( _ ( "Clientes" ) );
+        accionA->setObjectName("mui_actionClientes");
 
-        pPluginMenu->addAction ( accionClientes );
-        bges->Listados->addAction ( accionClientes );
+        pPluginMenu->addAction ( accionA );
+        bges->Listados->addAction ( accionA );
 
-        BlAction *accionNuevoCliente = new BlAction ( _ ( "&Nuevo cliente" ), 0 );
-        accionNuevoCliente->setIcon ( QIcon ( QString::fromUtf8 ( ":/Images/client.png" ) ) );
-        accionNuevoCliente->setStatusTip ( _ ( "Nuevo cliente" ) );
-        accionNuevoCliente->setWhatsThis ( _ ( "Nuevo cliente" ) );
-        accionNuevoCliente->setObjectName("mui_actionNuevoCliente");
+        BlAction *accionB = new BlAction ( _ ( "&Nuevo cliente" ), 0 );
+        accionB->setIcon ( QIcon ( QString::fromUtf8 ( ":/Images/client.png" ) ) );
+        accionB->setStatusTip ( _ ( "Nuevo cliente" ) );
+        accionB->setWhatsThis ( _ ( "Nuevo cliente" ) );
+        accionB->setObjectName("mui_actionNuevoCliente");
 
-        pPluginMenu->addAction ( accionNuevoCliente );
-        bges->Fichas->addAction ( accionNuevoCliente );
+        pPluginMenu->addAction ( accionB );
+        bges->Fichas->addAction ( accionB );
 
     } // end if
 

@@ -51,25 +51,24 @@ int entryPoint ( BfBulmaFact *bges )
 
     if ( bges->company()->hasTablePrivilege ( "factura", "SELECT" ) ) {
         /// Miramos si existe un menu Ventas
-        QMenu *pPluginMenu = bges->newMenu ( "&Ventas", "menuVentas", "menuMaestro" );
+        QMenu *pPluginMenu = bges->newMenu ( _("&Ventas"), "menuVentas", "menuMaestro" );
         pPluginMenu->addSeparator();
 
-        /// El men&uacute; de Tarifas en la secci&oacute;n de art&iacute;culos.
         g_bges = bges;
         
-        BlAction *accionFacturaCliente = new BlAction ( _ ( "&Facturas a clientes" ), 0 );
-        accionFacturaCliente->setIcon ( QIcon ( QString::fromUtf8 ( ":/Images/client-invoice-list.png" ) ) );
-        accionFacturaCliente->setStatusTip ( _ ( "Facturas a clientes" ) );
-        accionFacturaCliente->setWhatsThis ( _ ( "Facturas a clientes" ) );
-        pPluginMenu->addAction ( accionFacturaCliente );
-        bges->Listados->addAction ( accionFacturaCliente );
+        BlAction *accionA = new BlAction ( _ ( "&Facturas a clientes" ), 0 );
+        accionA->setIcon ( QIcon ( QString::fromUtf8 ( ":/Images/client-invoice-list.png" ) ) );
+        accionA->setStatusTip ( _ ( "Facturas a clientes" ) );
+        accionA->setWhatsThis ( _ ( "Facturas a clientes" ) );
+        pPluginMenu->addAction ( accionA );
+        bges->Listados->addAction ( accionA );
 
-        BlAction *accionNuevaFacturaCliente = new BlAction ( _ ( "&Nueva factura a cliente" ), 0 );
-        accionNuevaFacturaCliente->setIcon ( QIcon ( QString::fromUtf8 ( ":/Images/client-invoice.png" ) ) );
-        accionNuevaFacturaCliente->setStatusTip ( _ ( "Nueva factura a cliente" ) );
-        accionNuevaFacturaCliente->setWhatsThis ( _ ( "Nueva factura a cliente" ) );
-        pPluginMenu->addAction ( accionNuevaFacturaCliente );
-        bges->Fichas->addAction ( accionNuevaFacturaCliente );
+        BlAction *accionB = new BlAction ( _ ( "&Nueva factura a cliente" ), 0 );
+        accionB->setIcon ( QIcon ( QString::fromUtf8 ( ":/Images/client-invoice.png" ) ) );
+        accionB->setStatusTip ( _ ( "Nueva factura a cliente" ) );
+        accionB->setWhatsThis ( _ ( "Nueva factura a cliente" ) );
+        pPluginMenu->addAction ( accionB );
+        bges->Fichas->addAction ( accionB );
 
 
     }// end if
