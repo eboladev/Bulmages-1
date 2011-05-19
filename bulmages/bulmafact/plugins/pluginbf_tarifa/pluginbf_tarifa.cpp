@@ -58,7 +58,7 @@ int entryPoint ( BfBulmaFact *bges )
     BlAction *accion = new BlAction ( _ ( "&Tarifas" ), 0 );
     accion->setStatusTip ( _ ( "Tarifas" ) );
     accion->setWhatsThis ( _ ( "Tarifas" ) );
-    accion->setObjectName("tarifas");
+    accion->setObjectName("mui_actionTarifas");
 
     pPluginMenu->addAction ( accion );
  
@@ -67,7 +67,7 @@ int entryPoint ( BfBulmaFact *bges )
 
 
 int BlAction_triggered(BlAction *accion) {
-    if (accion->objectName() == "tarifas") {
+    if (accion->objectName() == "mui_actionTarifas") {
         TarifaListView *tar = new TarifaListView ( ( ( BfCompany * ) g_bges->company() ), NULL );
         g_bges->company() ->m_pWorkspace->addSubWindow ( tar );
         tar->show();        

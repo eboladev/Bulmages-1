@@ -63,7 +63,7 @@ int entryPoint ( BfBulmaFact *bges )
     accion->setStatusTip ( _("Listado de contratos") );
     accion->setWhatsThis ( _("Listado de contratos") );
     accion->setIcon ( QIcon ( QString::fromUtf8 ( ":/Images/contract-list.png" ) ) );
-    accion->setObjectName("tratamientoContratos");
+    accion->setObjectName("mui_actionListadoContratos");
 
     pPluginMenu->addAction(accion);
     
@@ -76,7 +76,7 @@ int entryPoint ( BfBulmaFact *bges )
 
 
 int BlAction_triggered(BlAction *accion) {
-    if (accion->objectName() == "tratamientoContratos") {
+    if (accion->objectName() == "mui_actionListadoContratos") {
 	ContratosList *contratoslist = new ContratosList ( ( BfCompany * ) g_bges->company() );
 	g_bges->company()->m_pWorkspace->addSubWindow ( contratoslist );
 	contratoslist->show();

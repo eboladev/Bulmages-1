@@ -48,7 +48,7 @@ int entryPoint ( BfBulmaFact *bges )
     BlAction *accion = new BlAction (  _("&Tipos de trabajo"), 0 );
     accion->setStatusTip ( _("Tipos de trabajo") );
     accion->setWhatsThis ( _("Tipos de trabajo") );
-    accion->setObjectName("tiposTrabajo");
+    accion->setObjectName("mui_actionTipoTrabajo");
     /// A&ntilde;adimos la nueva opci&oacute;n al men&uacute; principal del programa.
     bges->menuMaestro->addAction ( accion );
                     
@@ -56,7 +56,7 @@ int entryPoint ( BfBulmaFact *bges )
 }
 
 int BlAction_triggered(BlAction *accion) {
-    if (accion->objectName() == "tiposTrabajo") {
+    if (accion->objectName() == "mui_actionTipoTrabajo") {
         ListTiposTrabajoView *l = new ListTiposTrabajoView ( ( BfCompany * ) g_bges->company(), 0 );
         g_bges->company()->m_pWorkspace->addSubWindow ( l );
         l->show();

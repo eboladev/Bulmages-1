@@ -56,7 +56,7 @@ int entryPoint ( BfBulmaFact *bges )
     accion->setStatusTip ( _("Cartera de Pagos" ));
     accion->setWhatsThis ( _("Cartera de Pagos" ) );
     accion->setIcon ( QIcon ( QString::fromUtf8 ( ":/Images/pay-list.png" ) ) );
-    accion->setObjectName("carteraPagos");
+    accion->setObjectName("mui_actionCarteraPagos");
 
     /// A&ntilde;adimos la nueva opci&oacute;n al men&uacute; principal del programa.
     pPluginMenu->addSeparator();

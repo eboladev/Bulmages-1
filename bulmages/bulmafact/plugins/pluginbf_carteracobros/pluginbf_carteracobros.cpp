@@ -57,7 +57,7 @@ int entryPoint ( BfBulmaFact *bges )
     accion->setStatusTip ( _("Cartera de cobros") );
     accion->setWhatsThis ( _("Cartera de cobros") );
     accion->setIcon ( QIcon ( QString::fromUtf8 ( ":/Images/receive-list.png" ) ) );
-    accion->setObjectName("carteraCobros");
+    accion->setObjectName("mui_actionCarteraCobros");
     
     /// A&ntilde;adimos la nueva opci&oacute;n al men&uacute; principal del programa.
     pPluginMenu->addSeparator();

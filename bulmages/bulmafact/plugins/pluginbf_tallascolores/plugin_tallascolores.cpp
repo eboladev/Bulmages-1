@@ -72,14 +72,14 @@ int entryPoint ( BfBulmaFact *bges )
     accionTallas->setStatusTip ( _ ( "Tallas" ) );
     accionTallas->setWhatsThis ( _ ( "Tallas" ) );
 //    connect ( acciontallas, SIGNAL ( activated() ), this, SLOT ( tallas() ) );
-    accionTallas->setObjectName("tallas");    
+    accionTallas->setObjectName("mui_actionTallas");    
     
     pPluginMenuTallasColores->addAction ( accionTallas );
 
     BlAction *accionColores = new BlAction ( _ ( "&Colores" ), 0 );
     accionColores->setStatusTip ( _ ( "Colores" ) );
     accionColores->setWhatsThis ( _ ( "Colores" ) );
-    accionColores->setObjectName("colores");
+    accionColores->setObjectName("mui_actionColores");
 
 //    connect ( accioncolores, SIGNAL ( activated() ), this, SLOT ( colores() ) );
     pPluginMenuTallasColores->addAction ( accionColores );
@@ -93,13 +93,13 @@ int entryPoint ( BfBulmaFact *bges )
 }
 
 int BlAction_triggered(BlAction *accion) {
-    if (accion->objectName() == "tallas") {
+    if (accion->objectName() == "mui_actionTallas") {
         ListTallasView *tallas = new ListTallasView ( g_bges->company(), 0 );
         g_bges->company()->m_pWorkspace->addSubWindow ( tallas );
         tallas->show();
     } // end if
 
-    if (accion->objectName() == "colores") {
+    if (accion->objectName() == "mui_actionColores") {
         ListColoresView *colores = new ListColoresView ( g_bges->company(), 0 );
         g_bges->company()->m_pWorkspace->addSubWindow ( colores );
         colores->show();

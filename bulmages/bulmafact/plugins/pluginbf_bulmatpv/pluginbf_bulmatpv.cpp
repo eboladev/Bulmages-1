@@ -80,7 +80,7 @@ int entryPoint ( BfBulmaFact *bges )
     return 0;
 }
 int BlAction_triggered(BlAction *accion) {
-    if (accion->objectName() == "listadoCuadres") {
+    if (accion->objectName() == "mui_actionCuadresCaja") {
         ZList *vehiculoview = new ZList ( ( BfCompany * ) g_bges->company() );
         g_bges->company()->m_pWorkspace->addSubWindow ( vehiculoview );
         vehiculoview->show();
