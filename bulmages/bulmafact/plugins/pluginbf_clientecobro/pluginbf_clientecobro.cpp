@@ -32,90 +32,7 @@
 
 
 CobrosList *g_cobrosList = NULL;
-
-///
-/**
-**/
-PluginBf_ClienteCobro::PluginBf_ClienteCobro()
-{
-    blDebug ( "PluginBf_ClienteCobro::PluginBf_ClienteCobro", 0 );
-    blDebug ( "END PluginBf_ClienteCobro::PluginBf_ClienteCobro", 0 );
-}
-
-
-///
-/**
-**/
-PluginBf_ClienteCobro::~PluginBf_ClienteCobro()
-{
-    blDebug ( "PluginBf_ClienteCobro::~PluginBf_ClienteCobro", 0 );
-    blDebug ( "END PluginBf_ClienteCobro::~PluginBf_ClienteCobro", 0 );
-}
-
-
-///
-/**
-**/
-void PluginBf_ClienteCobro::elslot()
-{
-    blDebug ( "PluginBf_ClienteCobro::elslot", 0 );
-    if ( g_cobrosList ) {
-        g_cobrosList->hide();
-        g_cobrosList->show();
-    }// end if
-    blDebug ( "END PluginBf_ClienteCobro::elslot", 0 );
-}
-
-///
-/**
-**/
-void PluginBf_ClienteCobro::elslot1()
-{
-    blDebug ( "PluginBf_ClienteCobro::elslot1", 0 );
-    CobroView * bud = new CobroView ( ( BfCompany * ) mainCompany(), NULL );
-    mainCompany() ->m_pWorkspace->addSubWindow ( bud );
-    bud->show();
-    blDebug ( "END PluginBf_ClienteCobro::elslot1", 0 );
-}
-
-
-
-///
-/**
-\param bges
-**/
-void PluginBf_ClienteCobro::inicializa ( BfBulmaFact *bges )
-{
-    blDebug ( "PluginBf_ClienteCobro::inicializa", 0 );
-
-    if ( bges->company()->hasTablePrivilege ( "cobro", "SELECT" ) ) {
-
-        /// Miramos si existe un menu Ventas
-        QMenu *pPluginMenu = bges->newMenu ( "&Ventas", "menuVentas", "menuMaestro" );
-        pPluginMenu->addSeparator();
-
-        /// El men&uacute; de Tarifas en la secci&oacute;n de art&iacute;culos.
-        m_bges = bges;
-        setMainCompany ( bges->company() );
-        QAction *planCuentas = new QAction ( _ ( "&Cobros de clientes" ), 0 );
-        planCuentas->setIcon ( QIcon ( QString::fromUtf8 ( ":/Images/receive-list.png" ) ) );
-        planCuentas->setStatusTip ( _ ( "Cobros de clientes" ) );
-        planCuentas->setWhatsThis ( _ ( "Cobros de clientes" ) );
-        pPluginMenu->addAction ( planCuentas );
-        bges->Listados->addAction ( planCuentas );
-        connect ( planCuentas, SIGNAL ( activated() ), this, SLOT ( elslot() ) );
-
-        QAction *npago = new QAction ( _ ( "&Nuevo cobro de cliente" ), 0 );
-        npago->setIcon ( QIcon ( QString::fromUtf8 ( ":/Images/receive.png" ) ) );
-        npago->setStatusTip ( _ ( "Nuevo cobro de cliente" ) );
-        npago->setWhatsThis ( _ ( "Nuevo cobro de cliente" ) );
-        pPluginMenu->addAction ( npago );
-        bges->Fichas->addAction ( npago );
-        connect ( npago, SIGNAL ( activated() ), this, SLOT ( elslot1() ) );
-    }// end if
-    blDebug ( "END PluginBf_ClienteCobro::inicializa", 0 );
-}
-
+BfBulmaFact *g_bges = NULL;
 
 ///
 /**
@@ -129,11 +46,55 @@ int entryPoint ( BfBulmaFact *bges )
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale ( LC_ALL, "" );
     blBindTextDomain ( "pluginbf_clientecobro", g_confpr->valor ( CONF_DIR_TRADUCCION ).toAscii().constData() );
+    
+    if ( bges->company()->hasTablePrivilege ( "cobro", "SELECT" ) ) {
 
-    PluginBf_ClienteCobro *plug = new PluginBf_ClienteCobro();
-    plug->inicializa ( bges );
+        /// Miramos si existe un menu Ventas
+        QMenu *pPluginMenu = bges->newMenu ( "&Ventas", "menuVentas", "menuMaestro" );
+        pPluginMenu->addSeparator();
+
+        /// El men&uacute; de Tarifas en la secci&oacute;n de art&iacute;culos.
+        g_bges = bges;
+
+        BlAction *CobroCliente = new BlAction ( _ ( "&Cobros de clientes" ), 0 );
+        CobroCliente->setIcon ( QIcon ( QString::fromUtf8 ( ":/Images/receive-list.png" ) ) );
+        CobroCliente->setStatusTip ( _ ( "Cobros de clientes" ) );
+        CobroCliente->setWhatsThis ( _ ( "Cobros de clientes" ) );
+        CobroCliente->setObjectName("mui_actionCobroCliente");
+
+        pPluginMenu->addAction ( CobroCliente );
+        bges->Listados->addAction ( CobroCliente );
+
+        BlAction *NuevoCobroCliente = new BlAction ( _ ( "&Nuevo cobro de cliente" ), 0 );
+        NuevoCobroCliente->setIcon ( QIcon ( QString::fromUtf8 ( ":/Images/receive.png" ) ) );
+        NuevoCobroCliente->setStatusTip ( _ ( "Nuevo cobro de cliente" ) );
+        NuevoCobroCliente->setWhatsThis ( _ ( "Nuevo cobro de cliente" ) );
+        NuevoCobroCliente->setObjectName("mui_actionNuevoCobroCliente");
+
+        pPluginMenu->addAction ( NuevoCobroCliente );
+        bges->Fichas->addAction ( NuevoCobroCliente );
+    }// end if
+    
     return 0;
 }
+
+int BlAction_triggered(BlAction *accion) {
+    if (accion->objectName() == "mui_actionCobroCliente") {
+        if ( g_cobrosList ) {
+            g_cobrosList->hide();
+            g_cobrosList->show();
+        }// end if
+    } // end if
+
+    if (accion->objectName() == "mui_actionNuevoCobroCliente") {
+        CobroView * bud = new CobroView ( ( BfCompany * ) g_bges->company(), NULL );
+        g_bges->company()->m_pWorkspace->addSubWindow ( bud );
+        bud->show();                 
+    } // end if
+
+
+    return 0;
+} // end if
 
 
 int BfCompany_createMainWindows_Post ( BfCompany *comp )
