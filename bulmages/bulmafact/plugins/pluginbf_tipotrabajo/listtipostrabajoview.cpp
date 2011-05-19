@@ -71,6 +71,7 @@ void ListTiposTrabajoView::on_mui_aceptar_clicked()
 {
     try {
         mui_listado->guardar();
+        g_theApp->emitDbTableChanged ( "tipotrabajo" );
         close();
     } catch ( ... ) {
         blMsgInfo ( "Error al guardar los tipos de trabajo" );

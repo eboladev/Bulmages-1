@@ -24,60 +24,10 @@
 
 #include "pluginbf_tipotrabajo.h"
 #include "listtipostrabajoview.h"
-#include "tiptrab.h"
 #include "busquedatipotrabajo.h"
 #include "bfbuscararticulo.h"
 
-
-///
-/**
-**/
-mytiptrab::mytiptrab()
-{
-    blDebug ( "mytiptrab::mytiptrab", 0 );
-    blDebug ( "END mytiptrab::mytiptrab", 0 );
-}
-
-
-///
-/**
-**/
-mytiptrab::~mytiptrab()
-{
-    blDebug ( "mytiptrab::~mytiptrab", 0 );
-    blDebug ( "END mytiptrab::~mytiptrab", 0 );
-}
-
-
-///
-/**
-**/
-void mytiptrab::elslot()
-{
-    blDebug ( "mytiptrab::elslot", 0 );
-    ListTiposTrabajoView *l = new ListTiposTrabajoView ( ( BfCompany * ) m_bulmafact->company(), 0 );
-    m_bulmafact->workspace() ->addSubWindow ( l );
-    l->show();
-    blDebug ( "END mytiptrab::elslot", 0 );
-}
-
-
-///
-/**
-\param bges
-**/
-void mytiptrab::inicializa ( BfBulmaFact *bges )
-{
-    /// Creamos el men&uacute;.
-    m_bulmafact = bges;
-    QAction *accion = new QAction ( "&Tipos de Trabajo", 0 );
-    accion->setStatusTip ( "Tipos de Trabajo" );
-    accion->setWhatsThis ( "Tipos de Trabajo" );
-    connect ( accion, SIGNAL ( activated() ), this, SLOT ( elslot() ) );
-    /// A&ntilde;adimos la nueva opci&oacute;n al men&uacute; principal del programa.
-    bges->menuMaestro->addAction ( accion );
-}
-
+BfBulmaFact *g_bges = NULL;
 
 ///
 /**
@@ -90,15 +40,30 @@ int entryPoint ( BfBulmaFact *bges )
 
     /// El plugin necesita un parche en la base de datos para funcionar.
     bges->company()->dbPatchVersionCheck("PluginBf_TipoTrabajo", "0.10.1-0001");
-    
+    g_bges = bges;
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale ( LC_ALL, "" );
     blBindTextDomain ( "pluginbf_tipotrabajo", g_confpr->valor ( CONF_DIR_TRADUCCION ).toAscii().constData() );
 
-    mytiptrab *plug = new mytiptrab();
-    plug->inicializa ( bges );
+    BlAction *accion = new BlAction (  _("&Tipos de trabajo"), 0 );
+    accion->setStatusTip ( _("Tipos de Trabajo") );
+    accion->setWhatsThis ( _("Tipos de Trabajo") );
+    accion->setObjectName("tiposTrabajo");
+    /// A&ntilde;adimos la nueva opci&oacute;n al men&uacute; principal del programa.
+    bges->menuMaestro->addAction ( accion );
+                    
     return 0;
 }
+
+int BlAction_triggered(BlAction *accion) {
+    if (accion->objectName() == "tiposTrabajo") {
+        ListTiposTrabajoView *l = new ListTiposTrabajoView ( ( BfCompany * ) g_bges->company(), 0 );
+        g_bges->company()->m_pWorkspace->addSubWindow ( l );
+        l->show();
+    } // end if
+    return 0;
+}
+ 
 
 
 /// Al crear la ventana de trabajadores tambien creamos un combo box para el tipo de trabajador.
@@ -122,7 +87,7 @@ int TrabajadorView_TrabajadorView_Post ( TrabajadorView *trab )
 
     BusquedaTipoTrabajo *tipotraba = new BusquedaTipoTrabajo ( trab->m_frameplugin );
     tipotraba->setMainCompany ( trab->mainCompany() );
-    tipotraba->setidtipotrabajo ( "" );
+    tipotraba->setId ( "" );
     tipotraba->setObjectName ( QString::fromUtf8 ( "tipotraba" ) );
     hboxLayout160->addWidget ( tipotraba );
 
@@ -153,7 +118,7 @@ int TrabajadorView_on_mui_guardar_clicked ( TrabajadorView *trab )
 
     BusquedaTipoTrabajo * l = trab->findChild<BusquedaTipoTrabajo *> ( "tipotraba" );
     QString query = "UPDATE trabajador SET ";
-    query += " idtipotrabajo = " + l->idtipotrabajo();
+    query += " id = " + l->id();
     query += " WHERE idtrabajador=" + trab->mainCompany() ->sanearCadena ( trab->mdb_idtrabajador );
     trab->mainCompany() ->begin();
     trab->mainCompany() ->runQuery ( query );
@@ -175,7 +140,7 @@ int TrabajadorView_on_mui_lista_currentItemChanged_Post ( TrabajadorView *trab )
 	if (l) {
 	    BlDbRecordSet *cur = trab->mainCompany() ->loadQuery ( "SELECT idtipotrabajo FROM trabajador WHERE idtrabajador = " + trab->mdb_idtrabajador );
 	    if ( !cur->eof() ) {
-		l->setidtipotrabajo ( cur->valor ( "idtipotrabajo" ) );
+		l->setId( cur->valor ( "idtipotrabajo" ) );
 	    } // end if
 	    delete cur;
 	} // end if
@@ -342,7 +307,7 @@ void QSubForm3BfDelegate::setEditorData ( QWidget* editor, const QModelIndex& in
     if ( linea->nomcampo() == "nomtipotrabajo" ) {
         QString value = index.model() ->data ( index, Qt::DisplayRole ).toString();
         BusquedaTipoTrabajoDelegate *comboBox = static_cast<BusquedaTipoTrabajoDelegate*> ( editor );
-        comboBox->set ( value );
+        comboBox->setId ( value );
     } else {
         BfSubFormDelegate::setEditorData ( editor, index );
     } // end if

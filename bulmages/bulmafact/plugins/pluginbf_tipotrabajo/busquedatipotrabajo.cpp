@@ -30,10 +30,11 @@
 \param parent
 **/
 BusquedaTipoTrabajo::BusquedaTipoTrabajo ( QWidget *parent, const char * )
-        : QComboBox ( parent ), BlMainCompanyPointer()
+        : BlComboBox ( parent )
 {
     blDebug ( "BusquedaTipoTrabajo::BusquedaTipoTrabajo", 0 );
     m_cursorcombo = NULL;
+    m_table = "tipotrabajo";
     connect ( this, SIGNAL ( activated ( int ) ), this, SLOT ( m_activated ( int ) ) );
     m_idtipotrabajo = "";
     blDebug ( "END BusquedaTipoTrabajo::BusquedaTipoTrabajo", 0 );
@@ -50,16 +51,16 @@ BusquedaTipoTrabajo::~BusquedaTipoTrabajo()
 }
 
 
-/** Mediante este metodo establecemos el almacen que debe presentar el Widget
+/** Mediante este metodo establecemos el tipo de trabajo que debe presentar el Widget
     como seleccionado.
     Recarga el cursor y presenta en el combo aquel que se ajusta al id pasado.
 */
 /**
 \param idtipotrabajo
 **/
-void BusquedaTipoTrabajo::setidtipotrabajo ( QString idtipotrabajo )
+void BusquedaTipoTrabajo::setId ( QString idtipotrabajo )
 {
-    blDebug ( "BusquedaTipoTrabajo::setidtipotrabajo", 0, idtipotrabajo );
+    blDebug ( "BusquedaTipoTrabajo::setId", 0, idtipotrabajo );
     if ( m_cursorcombo != NULL ) {
         delete m_cursorcombo;
     } // end if
@@ -79,7 +80,7 @@ void BusquedaTipoTrabajo::setidtipotrabajo ( QString idtipotrabajo )
     if ( i1 != 0 ) {
         setCurrentIndex ( i1 );
     } // end if
-    blDebug ( "END BusquedaTipoTrabajo::setidtipotrabajo", 0, idtipotrabajo );
+    blDebug ( "END BusquedaTipoTrabajo::setId", 0, idtipotrabajo );
 }
 
 
@@ -87,15 +88,15 @@ void BusquedaTipoTrabajo::setidtipotrabajo ( QString idtipotrabajo )
 /**
 \return
 **/
-QString BusquedaTipoTrabajo::idtipotrabajo()
+QString BusquedaTipoTrabajo::id()
 {
-    blDebug ( "BusquedaTipoTrabajo::idtipotrabajo", 0 );
+    blDebug ( "BusquedaTipoTrabajo::id", 0 );
     int index = currentIndex();
     if ( index > 0 ) {
-        blDebug ( "END BusquedaTipoTrabajo::idtipotrabajo", 0 );
+        blDebug ( "END BusquedaTipoTrabajo::idt", 0 );
         return ( m_cursorcombo->valor ( "idtipotrabajo", index - 1 ) );
     } else {
-        blDebug ( "END BusquedaTipoTrabajo::idtipotrabajo", 0 );
+        blDebug ( "END BusquedaTipoTrabajo::idt", 0 );
         return "";
     } // end if
 }
@@ -132,7 +133,7 @@ BusquedaTipoTrabajoDelegate::BusquedaTipoTrabajoDelegate ( QWidget *parent )
 {
     blDebug ( "BusquedaTipoTrabajoDelegate::BusquedaTipoTrabajoDelegate", 0 );
     m_cursorcombo = NULL;
-    setSizeAdjustPolicy ( QComboBox::AdjustToContents );
+    setSizeAdjustPolicy ( BlComboBox::AdjustToContents );
     connect ( this, SIGNAL ( activated ( int ) ), this, SLOT ( m_activated ( int ) ) );
     blDebug ( "END BusquedaTipoTrabajoDelegate::BusquedaTipoTrabajoDelegate", 0 );
 }
@@ -151,8 +152,8 @@ BusquedaTipoTrabajoDelegate::~BusquedaTipoTrabajoDelegate()
 }
 
 
-/** Permite indicar al Widget cual es la serie de factura seleccionada por defecto.
-    Recarga cursor de serie_factura y cuando encuentra un registro cuyo codigoserie_factura coincide con el pasado
+/** Permite indicar al Widget cual es el tipo de trabajo seleccionado por defecto.
+    Recarga cursor de nomtipotrabajo y cuando encuentra un registro cuyo idtrabajo coincide con el pasado
     como parametro lo establece como el registro activo por el comboBox.
 */
 /**
@@ -174,7 +175,7 @@ void BusquedaTipoTrabajoDelegate::set ( const QString &cod )
         m_cursorcombo->nextRecord();
         if ( m_cursorcombo->valor ( "nomtipotrabajo" ) == cod )
             index = m_cursorcombo->currentRecord();
-    }// end while
+    } // end while
     setEditText ( cod );
     setCurrentIndex ( index );
 
