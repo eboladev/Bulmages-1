@@ -46,8 +46,8 @@ int entryPoint ( BfBulmaFact *bges )
     blBindTextDomain ( "pluginbf_tipotrabajo", g_confpr->valor ( CONF_DIR_TRADUCCION ).toAscii().constData() );
 
     BlAction *accion = new BlAction (  _("&Tipos de trabajo"), 0 );
-    accion->setStatusTip ( _("Tipos de Trabajo") );
-    accion->setWhatsThis ( _("Tipos de Trabajo") );
+    accion->setStatusTip ( _("Tipos de trabajo") );
+    accion->setWhatsThis ( _("Tipos de trabajo") );
     accion->setObjectName("tiposTrabajo");
     /// A&ntilde;adimos la nueva opci&oacute;n al men&uacute; principal del programa.
     bges->menuMaestro->addAction ( accion );
