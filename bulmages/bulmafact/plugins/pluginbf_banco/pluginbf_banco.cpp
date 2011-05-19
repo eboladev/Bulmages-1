@@ -49,7 +49,7 @@ int entryPoint ( BfBulmaFact *bges )
 
         /// El men&uacute; de Tarifas en la secci&oacute;n de art&iacute;culos.
         g_bges = bges;
-        QAction *accion = new QAction ( _ ( "&Bancos" ), 0 );
+        BlAction *accion = new BlAction ( _ ( "&Bancos" ), 0 );
         accion->setIcon ( QIcon ( QString::fromUtf8 ( ":/Images/bank.png" ) ) );
         accion->setStatusTip ( _ ( "Bancos" ) );
         accion->setWhatsThis ( _ ( "Bancos" ) );
