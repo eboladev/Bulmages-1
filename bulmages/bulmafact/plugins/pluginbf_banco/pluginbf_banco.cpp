@@ -25,75 +25,7 @@
 #include "blfunctions.h"
 #include "bancoview.h"
 
-
-
-
-///
-/**
-**/
-PluginBf_Banco::PluginBf_Banco()
-{
-    blDebug ( "PluginBf_Banco::PluginBf_Banco", 0 );
-    blDebug ( "END PluginBf_Banco::PluginBf_Banco", 0 );
-}
-
-
-///
-/**
-**/
-PluginBf_Banco::~PluginBf_Banco()
-{
-    blDebug ( "PluginBf_Banco::~PluginBf_Banco", 0 );
-    blDebug ( "END PluginBf_Banco::~PluginBf_Banco", 0 );
-}
-
-
-///
-/**
-**/
-void PluginBf_Banco::elslot1()
-{
-    blDebug ( "PluginBf_Banco::elslot1", 0 );
-    BancoView * bud = new BancoView ( ( BfCompany * ) mainCompany(), NULL );
-    mainCompany() ->m_pWorkspace->addSubWindow ( bud );
-    bud->show();
-    blDebug ( "END PluginBf_Banco::elslot1", 0 );
-}
-
-
-
-///
-/**
-\param bges
-**/
-void PluginBf_Banco::inicializa ( BfBulmaFact *bges )
-{
-    blDebug ( "PluginBf_Banco::inicializa", 0 );
-
-    if ( bges->company()->hasTablePrivilege ( "banco", "SELECT" ) ) {
-
-        /// Miramos si existe un menu Ventas
-        QMenu *pPluginMenu = bges->menuMaestro;
-        pPluginMenu->addSeparator();
-
-        /// El men&uacute; de Tarifas en la secci&oacute;n de art&iacute;culos.
-        m_bges = bges;
-        setMainCompany ( bges->company() );
-        QAction *planCuentas = new QAction ( _ ( "&Bancos" ), 0 );
-        planCuentas->setIcon ( QIcon ( QString::fromUtf8 ( ":/Images/bank.png" ) ) );
-        planCuentas->setStatusTip ( _ ( "Bancos" ) );
-        planCuentas->setWhatsThis ( _ ( "Bancos" ) );
-        pPluginMenu->addAction ( planCuentas );
-        bges->Listados->addAction ( planCuentas );
-        connect ( planCuentas, SIGNAL ( activated() ), this, SLOT ( elslot1() ) );
-
-    }// end if
-    blDebug ( "END PluginBf_Banco::inicializa", 0 );
-}
-
-
-
-
+BfBulmaFact *g_bges = NULL;
 
 ///
 /**
@@ -108,11 +40,36 @@ int entryPoint ( BfBulmaFact *bges )
     setlocale ( LC_ALL, "" );
     blBindTextDomain ( "pluginbf_banco", g_confpr->valor ( CONF_DIR_TRADUCCION ).toAscii().constData() );
 
-    PluginBf_Banco *plug = new PluginBf_Banco();
-    plug->inicializa ( bges );
+
+    if ( bges->company()->hasTablePrivilege ( "banco", "SELECT" ) ) {
+
+        /// Miramos si existe un menu Ventas
+        QMenu *pPluginMenu = bges->menuMaestro;
+        pPluginMenu->addSeparator();
+
+        /// El men&uacute; de Tarifas en la secci&oacute;n de art&iacute;culos.
+        g_bges = bges;
+        QAction *accion = new QAction ( _ ( "&Bancos" ), 0 );
+        accion->setIcon ( QIcon ( QString::fromUtf8 ( ":/Images/bank.png" ) ) );
+        accion->setStatusTip ( _ ( "Bancos" ) );
+        accion->setWhatsThis ( _ ( "Bancos" ) );
+        accion->setObjectName("mui_actionBancos");
+        
+        pPluginMenu->addAction ( accion );
+        bges->Listados->addAction ( accion );
+
+    } // end if
     return 0;
 }
 
+int BlAction_triggered(BlAction *accion) {
+    if (accion->objectName() == "mui_actionBancos") {
+        BancoView * bud = new BancoView ( ( BfCompany * ) g_bges->company(), NULL );
+        g_bges->company()->m_pWorkspace->addSubWindow ( bud );
+        bud->show();
+    } // end if
+}
+ 
 
 
 /// Esta llamada de plugin es bastante novedosa ya es una llamada que no responde a una funcion

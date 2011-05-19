@@ -49,19 +49,19 @@ int entryPoint ( BfBulmaFact *bges )
 
         /// El men&uacute; de Tarifas en la secci&oacute;n de art&iacute;culos.
         g_bges = bges;
-        BlAction *accionAlmacen = new BlAction ( _ ( "&Almacenes" ), 0 );
-        accionAlmacen->setIcon ( QIcon ( QString::fromUtf8 ( ":/Images/warehouse-list.png" ) ) );
-        accionAlmacen->setStatusTip ( _ ( "Almacenes" ) );
-        accionAlmacen->setWhatsThis ( _ ( "Almacenes" ) );
-        accionAlmacen->setObjectName("PluginBf_Almacen");
-        pPluginMenu->addAction ( accionAlmacen );
-        bges->Listados->addAction ( accionAlmacen );
+        BlAction *accion = new BlAction ( _ ( "&Almacenes" ), 0 );
+        accion->setIcon ( QIcon ( QString::fromUtf8 ( ":/Images/warehouse-list.png" ) ) );
+        accion->setStatusTip ( _ ( "Almacenes" ) );
+        accion->setWhatsThis ( _ ( "Almacenes" ) );
+        accion->setObjectName("mui_actionAlmacen");
+        pPluginMenu->addAction ( accion );
+        bges->Listados->addAction ( accion );
         return 0;
     }
 }
 
 int BlAction_triggered(BlAction *accion) {
-    if (accion->objectName() == "PluginBf_Almacen") {
+    if (accion->objectName() == "mui_actionAlmacen") {
         ListAlmacenView * bud = new ListAlmacenView ( ( BfCompany * ) g_bges->company(), NULL );
         g_bges->company()->m_pWorkspace->addSubWindow ( bud );
         bud->show();
