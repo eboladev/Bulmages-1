@@ -27,72 +27,7 @@
 #include "blcombobox.h"
 
 
-
-///
-/**
-**/
-PluginBf_FormasDePago::PluginBf_FormasDePago()
-{
-    blDebug ( "PluginBf_FormasDePago::PluginBf_FormasDePago", 0 );
-    blDebug ( "END PluginBf_FormasDePago::PluginBf_FormasDePago", 0 );
-}
-
-
-///
-/**
-**/
-PluginBf_FormasDePago::~PluginBf_FormasDePago()
-{
-    blDebug ( "PluginBf_FormasDePago::~PluginBf_FormasDePago", 0 );
-    blDebug ( "END PluginBf_FormasDePago::~PluginBf_FormasDePago", 0 );
-}
-
-
-///
-/**
-**/
-void PluginBf_FormasDePago::elslot1()
-{
-    blDebug ( "PluginBf_FormasDePago::elslot1", 0 );
-    FPagoView * bud = new FPagoView ( ( BfCompany * ) mainCompany(), NULL );
-    mainCompany() ->m_pWorkspace->addSubWindow ( bud );
-    bud->show();
-    blDebug ( "END PluginBf_FormasDePago::elslot1", 0 );
-}
-
-
-
-///
-/**
-\param bges
-**/
-void PluginBf_FormasDePago::inicializa ( BfBulmaFact *bges )
-{
-    blDebug ( "PluginBf_FormasDePago::inicializa", 0 );
-
-    if ( bges->company()->hasTablePrivilege ( "forma_pago", "SELECT" ) ) {
-
-        /// Miramos si existe un menu Ventas
-        QMenu *pPluginMenu = bges->menuMaestro;
-        pPluginMenu->addSeparator();
-
-        m_bges = bges;
-        setMainCompany ( bges->company() );
-        QAction *planCuentas = new QAction ( _ ( "&Formas de pago" ), 0 );
-        planCuentas->setIcon ( QIcon ( QString::fromUtf8 ( ":/Images/payment-method.png" ) ) );
-        planCuentas->setStatusTip ( _ ( "Formas de pago" ) );
-        planCuentas->setWhatsThis ( _ ( "Formas de pago" ) );
-        pPluginMenu->addAction ( planCuentas );
-        bges->Listados->addAction ( planCuentas );
-        connect ( planCuentas, SIGNAL ( activated() ), this, SLOT ( elslot1() ) );
-
-    }// end if
-    blDebug ( "END PluginBf_FormasDePago::inicializa", 0 );
-}
-
-
-
-
+BfBulmaFact *g_bges = NULL;
 
 ///
 /**
@@ -106,13 +41,36 @@ int entryPoint ( BfBulmaFact *bges )
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale ( LC_ALL, "" );
     blBindTextDomain ( "pluginbf_formasdepago", g_confpr->valor ( CONF_DIR_TRADUCCION ).toAscii().constData() );
+    g_bges = bges;
 
-    PluginBf_FormasDePago *plug = new PluginBf_FormasDePago();
-    plug->inicializa ( bges );
+    if ( bges->company()->hasTablePrivilege ( "forma_pago", "SELECT" ) ) {
+
+        /// Miramos si existe un menu Ventas
+        QMenu *pPluginMenu = bges->menuMaestro;
+        pPluginMenu->addSeparator();
+        
+        BlAction *accionA = new BlAction ( _ ( "&Formas de pago" ), 0 );
+        accionA->setIcon ( QIcon ( QString::fromUtf8 ( ":/Images/payment-method.png" ) ) );
+        accionA->setStatusTip ( _ ( "Formas de pago" ) );
+        accionA->setWhatsThis ( _ ( "Formas de pago" ) );
+        accionA->setObjectName("mui_actionFormasPago");
+
+        pPluginMenu->addAction ( accionA );
+        bges->Listados->addAction ( accionA );
+
+    } // end if
+
     return 0;
 }
 
-
+int BlAction_triggered(BlAction *accion) {
+    if (accion->objectName() == "mui_actionFormasPago") {
+        FPagoView * bud = new FPagoView ( ( BfCompany * ) g_bges->company(), NULL );
+        g_bges->company() ->m_pWorkspace->addSubWindow ( bud );
+        bud->show();       
+    } // end if
+    return 0;
+} 
 
 /// Esta llamada de plugin es bastante novedosa ya es una llamada que no responde a una funcion
 /// Sino que se llama desde multiples partes del sistema.

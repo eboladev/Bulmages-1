@@ -35,27 +35,5 @@ extern "C" PLUGINBF_CORREO_EXPORT int PresupuestoView_PresupuestoView ( Presupue
 extern "C" PLUGINBF_CORREO_EXPORT int FacturaView_FacturaView ( FacturaView * );
 extern "C" PLUGINBF_CORREO_EXPORT int entryPoint ( BfBulmaFact * );
 
-
-// 
-
-/*
-class myplugin : public QObject {
-    Q_OBJECT
-
-public:
-    BlPostgreSqlClient *dbConnection;
-
-public:
-    myplugin();
-    ~myplugin();
-    void inicializa(bulmafact *);
-
-public slots:
-    void elslot();
-};
-
-*/
-
-
 #endif
 
