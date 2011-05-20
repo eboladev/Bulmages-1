@@ -31,91 +31,7 @@
 
 
 PresupuestoList *g_presupuestosList = NULL;
-
-///
-/**
-**/
-PluginBf_ClientePresupuesto::PluginBf_ClientePresupuesto()
-{
-    blDebug ( "PluginBf_ClientePresupuesto::PluginBf_ClientePresupuesto", 0 );
-    blDebug ( "END PluginBf_ClientePresupuesto::PluginBf_ClientePresupuesto", 0 );
-}
-
-
-///
-/**
-**/
-PluginBf_ClientePresupuesto::~PluginBf_ClientePresupuesto()
-{
-    blDebug ( "PluginBf_ClientePresupuesto::~PluginBf_ClientePresupuesto", 0 );
-    blDebug ( "END PluginBf_ClientePresupuesto::~PluginBf_ClientePresupuesto", 0 );
-}
-
-
-///
-/**
-**/
-void PluginBf_ClientePresupuesto::elslot()
-{
-    blDebug ( "PluginBf_ClientePresupuesto::elslot", 0 );
-    if ( g_presupuestosList ) {
-        g_presupuestosList->hide();
-        g_presupuestosList->show();
-    }// end if
-    blDebug ( "END PluginBf_ClientePresupuesto::elslot", 0 );
-}
-
-///
-/**
-**/
-void PluginBf_ClientePresupuesto::elslot1()
-{
-    blDebug ( "PluginBf_ClientePresupuesto::elslot1", 0 );
-    PresupuestoView * bud = new PresupuestoView ( ( BfCompany * ) mainCompany(), NULL );
-    mainCompany() ->m_pWorkspace->addSubWindow ( bud );
-    bud->inicializar();
-    bud->show();
-    blDebug ( "END PluginBf_ClientePresupuesto::elslot1", 0 );
-}
-
-
-
-///
-/**
-\param bges
-**/
-void PluginBf_ClientePresupuesto::inicializa ( BfBulmaFact *bges )
-{
-    blDebug ( "PluginBf_ClientePresupuesto::inicializa", 0 );
-
-    if ( bges->company()->hasTablePrivilege ( "presupuesto", "SELECT" ) ) {
-
-
-        /// Miramos si existe un menu Ventas
-        QMenu *pPluginMenu = bges->newMenu ( "&Ventas", "menuVentas", "menuMaestro" );
-        pPluginMenu->addSeparator();
-
-        /// El men&uacute; de Tarifas en la secci&oacute;n de art&iacute;culos.
-        m_bges = bges;
-        setMainCompany ( bges->company() );
-        QAction *planCuentas = new QAction ( _ ( "&Presupuestos a clientes" ), 0 );
-        planCuentas->setIcon ( QIcon ( QString::fromUtf8 ( ":/Images/client-quote-list.png" ) ) );
-        planCuentas->setStatusTip ( _ ( "Presupuestos a clientes" ) );
-        planCuentas->setWhatsThis ( _ ( "Presupuestos a clientes" ) );
-        pPluginMenu->addAction ( planCuentas );
-        bges->Listados->addAction ( planCuentas );
-        connect ( planCuentas, SIGNAL ( activated() ), this, SLOT ( elslot() ) );
-
-        QAction *npago = new QAction ( _ ( "&Nuevo presupuesto a cliente" ), 0 );
-        npago->setIcon ( QIcon ( QString::fromUtf8 ( ":/Images/client-quote.png" ) ) );
-        npago->setStatusTip ( _ ( "Nuevo presupuesto a cliente" ) );
-        npago->setWhatsThis ( _ ( "Nuevo presupuesto a cliente" ) );
-        pPluginMenu->addAction ( npago );
-        bges->Fichas->addAction ( npago );
-        connect ( npago, SIGNAL ( activated() ), this, SLOT ( elslot1() ) );
-    }// end if
-    blDebug ( "END PluginBf_ClientePresupuesto::inicializa", 0 );
-}
+BfBulmaFact *g_bges = NULL;
 
 
 ///
@@ -131,8 +47,47 @@ int entryPoint ( BfBulmaFact *bges )
     setlocale ( LC_ALL, "" );
     blBindTextDomain ( "pluginbf_clientepresupuesto", g_confpr->valor ( CONF_DIR_TRADUCCION ).toAscii().constData() );
 
-    PluginBf_ClientePresupuesto *plug = new PluginBf_ClientePresupuesto();
-    plug->inicializa ( bges );
+    if ( bges->company()->hasTablePrivilege ( "presupuesto", "SELECT" ) ) {
+
+        /// Miramos si existe un menu Ventas
+        QMenu *pPluginMenu = bges->newMenu ( _("&Ventas"), "menuVentas", "menuMaestro" );
+        pPluginMenu->addSeparator();
+
+        /// El men&uacute; de Tarifas en la secci&oacute;n de art&iacute;culos.
+        g_bges = bges;
+        BlAction *accionA = new BlAction ( _ ( "&Presupuestos a clientes" ), 0 );
+        accionA->setIcon ( QIcon ( QString::fromUtf8 ( ":/Images/client-quote-list.png" ) ) );
+        accionA->setStatusTip ( _ ( "Presupuestos a clientes" ) );
+        accionA->setWhatsThis ( _ ( "Presupuestos a clientes" ) );
+        accionA->setObjectName("mui_actionClientePresupuesto");
+        pPluginMenu->addAction ( accionA );
+        bges->Listados->addAction ( accionA );
+
+        BlAction *accionB = new BlAction ( _ ( "&Nuevo presupuesto a cliente" ), 0 );
+        accionB->setIcon ( QIcon ( QString::fromUtf8 ( ":/Images/client-quote.png" ) ) );
+        accionB->setStatusTip ( _ ( "Nuevo presupuesto a cliente" ) );
+        accionB->setWhatsThis ( _ ( "Nuevo presupuesto a cliente" ) );
+        accionB->setObjectName("mui_actionClienteNuevoPresupuesto");
+        pPluginMenu->addAction ( accionB );
+        bges->Fichas->addAction ( accionB );
+    } // end if
+ 
+    return 0;
+}
+
+int BlAction_triggered(BlAction *accion) {
+    if (accion->objectName() == "mui_actionClientePresupuesto") {
+        if ( g_presupuestosList ) {
+            g_presupuestosList->hide();
+            g_presupuestosList->show();
+        } // end if
+    } // end if
+    if (accion->objectName() == "mui_actionClienteNuevoPresupuesto") {
+        PresupuestoView * bud = new PresupuestoView ( ( BfCompany * ) g_bges->company(), NULL );
+        g_bges->company()->m_pWorkspace->addSubWindow ( bud );
+        bud->inicializar();
+        bud->show();
+    } // end if
     return 0;
 }
 
@@ -143,7 +98,7 @@ int BfCompany_createMainWindows_Post ( BfCompany *comp )
         g_presupuestosList = new PresupuestoList ( comp, NULL );
         comp->m_pWorkspace->addSubWindow ( g_presupuestosList );
         g_presupuestosList->hide();
-    }// end if
+    } // end if
     return 0;
 }
 

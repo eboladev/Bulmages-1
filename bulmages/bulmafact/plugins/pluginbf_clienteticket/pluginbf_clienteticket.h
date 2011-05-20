@@ -30,7 +30,7 @@
 #include "ticketclienteview.h"
 #include "bfcompany.h"
 #include "pdefs_pluginbf_clienteticket.h"
-
+#include "blaction.h"
 
 extern "C" PLUGINBF_CLIENTETICKET_EXPORT int SNewTicketClienteView (BfCompany *);
 extern "C" PLUGINBF_CLIENTETICKET_EXPORT int entryPoint ( BfBulmaFact * );
@@ -38,26 +38,7 @@ extern "C" PLUGINBF_CLIENTETICKET_EXPORT int BfCompany_createMainWindows_Post(Bf
 extern "C" PLUGINBF_CLIENTETICKET_EXPORT int ClienteView_ClienteView_Post (ClienteView *);
 extern "C" PLUGINBF_CLIENTETICKET_EXPORT int ClienteView_cargarPost_Post (ClienteView *);
 extern "C" PLUGINBF_CLIENTETICKET_EXPORT int BfBuscarReferencia_on_mui_abrirtodo_clicked_Post (BfBuscarReferencia *);
-
-
-// 
-class PluginBf_ClienteTicket : public QObject, BlMainCompanyPointer
-{
-    Q_OBJECT
-
-public:
-    BfBulmaFact *m_bges;
-
-public:
-    PluginBf_ClienteTicket();
-    ~PluginBf_ClienteTicket();
-    void inicializa ( BfBulmaFact * );
-
-public slots:
-    void elslot();
-    void elslot1();
-};
-
+extern "C" PLUGINBF_CLIENTETICKET_EXPORT int BlAction_triggered(BlAction *);
 
 #endif
 
