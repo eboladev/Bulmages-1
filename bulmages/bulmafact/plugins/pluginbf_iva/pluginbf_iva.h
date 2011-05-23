@@ -27,28 +27,10 @@
 #include "bfbuscarreferencia.h"
 #include "blsearchwidget.h"
 #include "pdefs_pluginbf_iva.h"
-
+#include "blaction.h"
 
 extern "C" PLUGINBF_IVA_EXPORT int entryPoint ( BfBulmaFact * );
-
-
-class PluginBf_IVA : public QObject, BlMainCompanyPointer
-{
-    Q_OBJECT
-
-public:
-    BfBulmaFact *m_bges;
-
-public:
-    PluginBf_IVA();
-    ~PluginBf_IVA();
-    void inicializa ( BfBulmaFact * );
-
-public slots:
-    void elslot1();
-    void elslot();
-};
-
+extern "C" PLUGINBF_IVA_EXPORT int BlAction_triggered(BlAction *);
 
 #endif
 

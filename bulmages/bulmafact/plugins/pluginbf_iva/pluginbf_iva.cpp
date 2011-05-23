@@ -27,105 +27,7 @@
 #include "listtasaivaview.h"
 
 
-
-
-///
-/**
-**/
-PluginBf_IVA::PluginBf_IVA()
-{
-    blDebug ( "PluginBf_IVA::PluginBf_IVA", 0 );
-    blDebug ( "END PluginBf_IVA::PluginBf_IVA", 0 );
-}
-
-
-///
-/**
-**/
-PluginBf_IVA::~PluginBf_IVA()
-{
-    blDebug ( "PluginBf_IVA::~PluginBf_IVA", 0 );
-    blDebug ( "END PluginBf_IVA::~PluginBf_IVA", 0 );
-}
-
-
-///
-/**
-**/
-void PluginBf_IVA::elslot()
-{
-    blDebug ( "PluginBf_IVA::elslot", 0 );
-    ListTasaIVAView *pag = new ListTasaIVAView ( ( BfCompany * ) mainCompany(), NULL );
-    mainCompany() ->m_pWorkspace->addSubWindow ( pag );
-    pag->show();
-    /*        TrabajadorView * bud = new TrabajadorView((BfCompany *)mainCompany(), NULL);
-            mainCompany() ->m_pWorkspace->addSubWindow ( bud );
-            bud->show();
-    */
-    blDebug ( "END PluginBf_IVA::elslot", 0 );
-}
-
-
-///
-/**
-**/
-void PluginBf_IVA::elslot1()
-{
-    blDebug ( "PluginBf_IVA::elslot1", 0 );
-    ListTipoIVAView *pag = new ListTipoIVAView ( ( BfCompany * ) mainCompany(), NULL );
-    mainCompany() ->m_pWorkspace->addSubWindow ( pag );
-    pag->show();
-    /*        TrabajadorView * bud = new TrabajadorView((BfCompany *)mainCompany(), NULL);
-            mainCompany() ->m_pWorkspace->addSubWindow ( bud );
-            bud->show();
-    */
-    blDebug ( "END PluginBf_IVA::elslot1", 0 );
-}
-
-
-
-///
-/**
-\param bges
-**/
-void PluginBf_IVA::inicializa ( BfBulmaFact *bges )
-{
-    blDebug ( "PluginBf_IVA::inicializa", 0 );
-
-    if ( bges->company()->hasTablePrivilege ( "tipo_iva", "SELECT" ) ) {
-
-        /// Miramos si existe un menu Ventas
-        QMenu *pPluginMenu = bges->menuMaestro;
-        pPluginMenu->addSeparator();
-
-        /// El men&uacute; de Tipos de IVA en la secci&oacute;n de art&iacute;culos.
-        m_bges = bges;
-        setMainCompany ( bges->company() );
-        QAction *planCuentas = new QAction ( _ ( "&Tipos de IVA" ), 0 );
-        planCuentas->setIcon ( QIcon ( QString::fromUtf8 ( ":/Images/vat.png" ) ) );
-        planCuentas->setStatusTip ( _ ( "Tipos de IVA" ) );
-        planCuentas->setWhatsThis ( _ ( "Tipos de IVA" ) );
-        pPluginMenu->addAction ( planCuentas );
-        bges->Listados->addAction ( planCuentas );
-        connect ( planCuentas, SIGNAL ( activated() ), this, SLOT ( elslot1() ) );
-
-
-        /// El men&uacute; de Tasa de IVA en la secci&oacute;n de art&iacute;culos.
-        m_bges = bges;
-        setMainCompany ( bges->company() );
-        QAction *planCuentas1 = new QAction ( _ ( "&Tasas de IVA" ), 0 );
-        planCuentas1->setIcon ( QIcon ( QString::fromUtf8 ( ":/Images/vattax.png" ) ) );
-        planCuentas1->setStatusTip ( _ ( "Tasas de IVA" ) );
-        planCuentas1->setWhatsThis ( _ ( "Tasas de IVA" ) );
-        pPluginMenu->addAction ( planCuentas1 );
-        bges->Listados->addAction ( planCuentas1 );
-        connect ( planCuentas1, SIGNAL ( activated() ), this, SLOT ( elslot() ) );
-
-    }// end if
-    blDebug ( "END PluginBf_IVA::inicializa", 0 );
-}
-
-
+BfBulmaFact *g_bges = NULL;
 
 
 
@@ -141,10 +43,53 @@ int entryPoint ( BfBulmaFact *bges )
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale ( LC_ALL, "" );
     blBindTextDomain ( "pluginbf_iva", g_confpr->valor ( CONF_DIR_TRADUCCION ).toAscii().constData() );
+    g_bges = bges;
 
-    PluginBf_IVA *plug = new PluginBf_IVA();
-    plug->inicializa ( bges );
+
+    if ( bges->company()->hasTablePrivilege ( "tipo_iva", "SELECT" ) ) {
+
+        /// Miramos si existe un menu Ventas
+        QMenu *pPluginMenu = bges->menuMaestro;
+        pPluginMenu->addSeparator();
+
+        /// El men&uacute; de Tipos de IVA en la secci&oacute;n de art&iacute;culos.
+        
+        BlAction *accionA = new BlAction ( _ ( "&Tipos de IVA" ), 0 );
+        accionA->setIcon ( QIcon ( QString::fromUtf8 ( ":/Images/vat.png" ) ) );
+        accionA->setStatusTip ( _ ( "Tipos de IVA" ) );
+        accionA->setWhatsThis ( _ ( "Tipos de IVA" ) );
+        accionA->setObjectName("mui_actionIVATipos");
+        pPluginMenu->addAction ( accionA );
+        bges->Listados->addAction ( accionA );
+
+
+        /// El men&uacute; de Tasa de IVA en la secci&oacute;n de art&iacute;culos.
+        BlAction *accionB = new BlAction ( _ ( "&Tasas de IVA" ), 0 );
+        accionB->setIcon ( QIcon ( QString::fromUtf8 ( ":/Images/vattax.png" ) ) );
+        accionB->setStatusTip ( _ ( "Tasas de IVA" ) );
+        accionB->setWhatsThis ( _ ( "Tasas de IVA" ) );
+        accionB->setObjectName("mui_actionIVATasas");
+        pPluginMenu->addAction ( accionB );
+        bges->Listados->addAction ( accionB );
+
+    } // end if
     return 0;
 }
 
-
+int BlAction_triggered(BlAction *accion) {
+     if (accion->objectName() == "mui_actionIVATipos") {
+         blDebug ( "PluginBf_IVA::BlAction_triggered::mui_actionIVATipos", 0 );
+         ListTipoIVAView *pag = new ListTipoIVAView ( ( BfCompany * ) g_bges->company(), NULL );
+         g_bges->company()->m_pWorkspace->addSubWindow ( pag );
+         pag->show();
+         blDebug ( "END PluginBf_IVA::BlAction_triggered::mui_actionIVATipos", 0 );
+    }
+     if (accion->objectName() == "mui_actionIVATasas") {
+         blDebug ( "PluginBf_IVA::PluginBf_IVA::BlAction_triggered::mui_actionIVATasas", 0 );
+         ListTasaIVAView *pag = new ListTasaIVAView ( ( BfCompany * ) g_bges->company(), NULL );
+         g_bges->company()->m_pWorkspace->addSubWindow ( pag );
+         pag->show();
+         blDebug ( "END PluginBf_IVA::PluginBf_IVA::BlAction_triggered::mui_actionIVATasas", 0 );
+    }
+    return 0;
+}
