@@ -44,7 +44,7 @@ int entryPoint ( BfBulmaFact *bges )
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale ( LC_ALL, "" );
     blBindTextDomain ( "pluginbf_articulo", g_confpr->valor ( CONF_DIR_TRADUCCION ).toAscii().constData() );
-
+    g_bges = bges;
 
     if ( bges->company()->hasTablePrivilege ( "articulo", "SELECT" ) ) {
 
@@ -53,7 +53,7 @@ int entryPoint ( BfBulmaFact *bges )
         pPluginMenu->addSeparator();
 
         /// El men&uacute; de Articulos en la secci&oacute;n de art&iacute;culos.
-        g_bges = bges;
+        
 
         BlAction *accionA = new BlAction ( _ ( "&Articulos" ), 0 );
         accionA->setIcon ( QIcon ( QString::fromUtf8 ( ":/Images/product-list.png" ) ) );
