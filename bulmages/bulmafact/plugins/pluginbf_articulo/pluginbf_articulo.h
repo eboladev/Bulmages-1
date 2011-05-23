@@ -28,7 +28,7 @@
 #include "blsearchwidget.h"
 #include "bfsubform.h"
 #include "pdefs_pluginbf_articulo.h"
-
+#include "blaction.h"
 
 extern "C" PLUGINBF_ARTICULO_EXPORT int entryPoint ( BfBulmaFact * );
 extern "C" PLUGINBF_ARTICULO_EXPORT int BfCompany_createMainWindows_Post(BfCompany *);
@@ -42,6 +42,7 @@ extern "C" PLUGINBF_ARTICULO_EXPORT int BlSubFormDelegate_setEditorData(BlSubFor
 extern "C" PLUGINBF_ARTICULO_EXPORT int BlSubForm_editFinished(BlSubForm *);
 extern "C" PLUGINBF_ARTICULO_EXPORT int BlDbCompleterComboBox_textChanged (BlDbCompleterComboBox *);
 extern "C" PLUGINBF_ARTICULO_EXPORT int BlSubForm_preparaMenu ( BlSubForm *);
+extern "C" PLUGINBF_ARTICULO_EXPORT int BlAction_triggered(BlAction *);
 
 class SubForm_Articulo : public QObject
 {
@@ -59,27 +60,6 @@ public slots:
     void nuevoArticulo();
     void seleccionarArticulo(BfSubForm *sub=NULL);
 };
-
-
-class PluginBf_Articulo : public QObject, BlMainCompanyPointer
-{
-    Q_OBJECT
-
-public:
-    BfBulmaFact *m_bges;
-
-public:
-    PluginBf_Articulo();
-    ~PluginBf_Articulo();
-    void inicializa ( BfBulmaFact * );
-
-public slots:
-    void elslot();
-    void elslot1();
-    void elslot2();
-    void elslot3();
-};
-
 
 #endif
 

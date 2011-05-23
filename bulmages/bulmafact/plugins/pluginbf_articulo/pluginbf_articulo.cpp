@@ -30,135 +30,7 @@
 
 
 ArticuloList *g_articulosList = NULL;
-
-///
-/**
-**/
-PluginBf_Articulo::PluginBf_Articulo()
-{
-    blDebug ( "PluginBf_Articulo::PluginBf_Articulo", 0 );
-    blDebug ( "END PluginBf_Articulo::PluginBf_Articulo", 0 );
-}
-
-
-///
-/**
-**/
-PluginBf_Articulo::~PluginBf_Articulo()
-{
-    blDebug ( "PluginBf_Articulo::~PluginBf_Articulo", 0 );
-    blDebug ( "END PluginBf_Articulo::~PluginBf_Articulo", 0 );
-}
-
-
-///
-/**
-**/
-void PluginBf_Articulo::elslot()
-{
-    blDebug ( "PluginBf_Articulo::elslot", 0 );
-    if ( g_articulosList ) {
-        g_articulosList->hide();
-        g_articulosList->show();
-    }// end if
-    blDebug ( "END PluginBf_Articulo::elslot", 0 );
-}
-
-
-///
-/**
-**/
-void PluginBf_Articulo::elslot1()
-{
-    blDebug ( "PluginBf_Articulo::elslot1", 0 );
-    ArticuloView * bud = new ArticuloView ( ( BfCompany * ) mainCompany(), NULL );
-    mainCompany() ->m_pWorkspace->addSubWindow ( bud );
-    bud->show();
-    blDebug ( "END PluginBf_Articulo::elslot1", 0 );
-}
-
-
-///
-/**
-**/
-void PluginBf_Articulo::elslot2()
-{
-    blDebug ( "PluginBf_Articulo::elslot2", 0 );
-    TipoArticuloList *pag = new TipoArticuloList ( ( BfCompany * ) mainCompany(), 0, FALSE );
-    mainCompany() ->m_pWorkspace->addSubWindow ( pag );
-    pag->show();
-    blDebug ( "END PluginBf_Articulo::elslot2", 0 );
-}
-
-
-///
-/**
-**/
-void PluginBf_Articulo::elslot3()
-{
-    blDebug ( "PluginBf_Articulo::elslot3", 0 );
-    FamiliasView *pag = new FamiliasView ( ( BfCompany * ) mainCompany(), 0, FALSE );
-    mainCompany() ->m_pWorkspace->addSubWindow ( pag );
-    pag->show();
-    blDebug ( "END PluginBf_Articulo::elslot3", 0 );
-}
-
-
-///
-/**
-\param bges
-**/
-void PluginBf_Articulo::inicializa ( BfBulmaFact *bges )
-{
-    blDebug ( "PluginBf_Articulo::inicializa", 0 );
-
-    if ( bges->company()->hasTablePrivilege ( "articulo", "SELECT" ) ) {
-
-        /// Miramos si existe un menu Articulos
-        QMenu *pPluginMenu = bges->newMenu ( "&Articulos", "menuArticulos", "menuMaestro" );
-        pPluginMenu->addSeparator();
-
-        /// El men&uacute; de Tarifas en la secci&oacute;n de art&iacute;culos.
-        m_bges = bges;
-        setMainCompany ( bges->company() );
-        QAction *planCuentas = new QAction ( _ ( "&Articulos" ), 0 );
-        planCuentas->setIcon ( QIcon ( QString::fromUtf8 ( ":/Images/product-list.png" ) ) );
-        planCuentas->setStatusTip ( _ ( "Articulos" ) );
-        planCuentas->setWhatsThis ( _ ( "Articulos" ) );
-        pPluginMenu->addAction ( planCuentas );
-        bges->Listados->addAction ( planCuentas );
-        connect ( planCuentas, SIGNAL ( activated() ), this, SLOT ( elslot() ) );
-
-        QAction *npago = new QAction ( _ ( "&Nuevo articulo" ), 0 );
-        npago->setIcon ( QIcon ( QString::fromUtf8 ( ":/Images/product.png" ) ) );
-        npago->setStatusTip ( _ ( "Nuevo articulo" ) );
-        npago->setWhatsThis ( _ ( "Nuevo articulo" ) );
-        pPluginMenu->addAction ( npago );
-        bges->Fichas->addAction ( npago );
-        connect ( npago, SIGNAL ( activated() ), this, SLOT ( elslot1() ) );
-
-        pPluginMenu->addSeparator();
-        QAction *tart = new QAction ( _ ( "&Tipos de articulo" ), 0 );
-        tart->setIcon ( QIcon ( QString::fromUtf8 ( ":/Images/product-type.png" ) ) );
-        tart->setStatusTip ( _ ( "Tipos de articulo" ) );
-        tart->setWhatsThis ( _ ( "Tipos de articulo" ) );
-        pPluginMenu->addAction ( tart );
-        bges->Fichas->addAction ( tart );
-        connect ( tart, SIGNAL ( activated() ), this, SLOT ( elslot2() ) );
-
-        pPluginMenu->addSeparator();
-        QAction *tfam = new QAction ( _ ( "&Familias" ), 0 );
-        tfam->setIcon ( QIcon ( QString::fromUtf8 ( ":/Images/product-family.png" ) ) );
-        tfam->setStatusTip ( _ ( "Familias" ) );
-        tfam->setWhatsThis ( _ ( "Familias" ) );
-        pPluginMenu->addAction ( tfam );
-        bges->Fichas->addAction ( tfam );
-        connect ( tfam, SIGNAL ( activated() ), this, SLOT ( elslot3() ) );
-
-    }// end if
-    blDebug ( "END PluginBf_Articulo::inicializa", 0 );
-}
-
+BfBulmaFact *g_bges = NULL;
 
 ///
 /**
@@ -173,8 +45,89 @@ int entryPoint ( BfBulmaFact *bges )
     setlocale ( LC_ALL, "" );
     blBindTextDomain ( "pluginbf_articulo", g_confpr->valor ( CONF_DIR_TRADUCCION ).toAscii().constData() );
 
-    PluginBf_Articulo *plug = new PluginBf_Articulo();
-    plug->inicializa ( bges );
+
+    if ( bges->company()->hasTablePrivilege ( "articulo", "SELECT" ) ) {
+
+        /// Miramos si existe un menu Articulos
+        QMenu *pPluginMenu = bges->newMenu ( "&Articulos", "menuArticulos", "menuMaestro" );
+        pPluginMenu->addSeparator();
+
+        /// El men&uacute; de Articulos en la secci&oacute;n de art&iacute;culos.
+        g_bges = bges;
+
+        BlAction *accionA = new BlAction ( _ ( "&Articulos" ), 0 );
+        accionA->setIcon ( QIcon ( QString::fromUtf8 ( ":/Images/product-list.png" ) ) );
+        accionA->setStatusTip ( _ ( "Articulos" ) );
+        accionA->setWhatsThis ( _ ( "Articulos" ) );
+        accionA->setObjectName("mui_actionArticulos");
+        pPluginMenu->addAction ( accionA );
+        bges->Listados->addAction ( accionA );
+
+        BlAction *accionB = new BlAction ( _ ( "&Nuevo articulo" ), 0 );
+        accionB->setIcon ( QIcon ( QString::fromUtf8 ( ":/Images/product.png" ) ) );
+        accionB->setStatusTip ( _ ( "Nuevo articulo" ) );
+        accionB->setWhatsThis ( _ ( "Nuevo articulo" ) );
+        accionB->setObjectName("mui_actionArticuloNuevo");
+        pPluginMenu->addAction ( accionB );
+        bges->Fichas->addAction ( accionB );
+
+        pPluginMenu->addSeparator();
+        BlAction *accionC = new BlAction ( _ ( "&Tipos de articulo" ), 0 );
+        accionC->setIcon ( QIcon ( QString::fromUtf8 ( ":/Images/product-type.png" ) ) );
+        accionC->setStatusTip ( _ ( "Tipos de articulo" ) );
+        accionC->setWhatsThis ( _ ( "Tipos de articulo" ) );
+        accionC->setObjectName("mui_actionArticulosTipo");
+        pPluginMenu->addAction ( accionC );
+        bges->Fichas->addAction ( accionC );
+
+        pPluginMenu->addSeparator();
+        BlAction *accionD = new BlAction ( _ ( "&Familias" ), 0 );
+        accionD->setIcon ( QIcon ( QString::fromUtf8 ( ":/Images/product-family.png" ) ) );
+        accionD->setStatusTip ( _ ( "Familias" ) );
+        accionD->setWhatsThis ( _ ( "Familias" ) );
+        accionD->setObjectName("mui_actionFamilias");
+        pPluginMenu->addAction ( accionD );
+        bges->Fichas->addAction ( accionD );
+
+    } // end if
+
+    return 0;
+}
+
+int BlAction_triggered(BlAction *accion) {
+    if (accion->objectName() == "mui_actionArticulos") {
+        blDebug ( "PluginBf_Articulo::BlAction_triggered::mui_actionArticulos", 0 );
+        if ( g_articulosList ) {
+            g_articulosList->hide();
+            g_articulosList->show();
+        }// end if
+        blDebug ( "END PluginBf_Articulo::BlAction_triggered::mui_actionArticulos", 0 );
+   
+    } // end if
+    if (accion->objectName() == "mui_actionArticuloNuevo") {
+        blDebug ( "PluginBf_Articulo::BlAction_triggered::mui_actionArticuloNuevo", 0 );
+        ArticuloView * bud = new ArticuloView ( ( BfCompany * ) g_bges->company(), NULL );
+        g_bges->company()->m_pWorkspace->addSubWindow ( bud );
+        bud->show();
+        blDebug ( "END PluginBf_Articulo::BlAction_triggered::mui_actionArticuloNuevo", 0 );
+   
+    } // end if
+
+    if (accion->objectName() == "mui_actionArticuloNuevo") {
+        blDebug ( "PluginBf_Articulo::BlAction_triggered::mui_actionArticuloNuevo", 0 );
+        TipoArticuloList *pag = new TipoArticuloList ( ( BfCompany * ) g_bges->company(), 0, FALSE );
+        g_bges->company()->m_pWorkspace->addSubWindow ( pag );
+        pag->show();
+        blDebug ( "END PluginBf_Articulo::BlAction_triggered::mui_actionArticuloNuevo", 0 );   
+    } // end if
+    if (accion->objectName() == "") {
+        blDebug ( "PluginBf_Articulo::BlAction_triggered::mui_actionFamilias", 0 );
+        FamiliasView *pag = new FamiliasView ( ( BfCompany * ) g_bges->company(), 0, FALSE );
+        g_bges->company()->m_pWorkspace->addSubWindow ( pag );
+        pag->show();
+        blDebug ( "END PluginBf_Articulo::BlAction_triggered::mui_actionFamilias", 0 );
+    } // end if
+
     return 0;
 }
 
