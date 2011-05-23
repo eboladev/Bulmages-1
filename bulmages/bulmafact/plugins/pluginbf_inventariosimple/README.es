@@ -21,7 +21,7 @@ ArchivoSQLdeins: pluginbf_inventariosimple-rm.sql
 
 Dependencias: libpluginbf_actividad.so
 
-Incompatibles:
+Incompatibles: libpluginbf_inventario.so
 
 Categorias: Asociaciones de padres de alumnos; Experimentales;
 

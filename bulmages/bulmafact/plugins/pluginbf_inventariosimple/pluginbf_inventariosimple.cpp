@@ -27,66 +27,8 @@
 
 #include "actividadview.h"
 
-///
-/**
-**/
-PluginBf_InventarioSimple::PluginBf_InventarioSimple()
-{
-    blDebug ( "PluginBf_InventarioSimple::PluginBf_InventarioSimple", 0 );
-    blDebug ( "END PluginBf_InventarioSimple::PluginBf_InventarioSimple", 0 );
-}
 
-
-///
-/**
-**/
-PluginBf_InventarioSimple::~PluginBf_InventarioSimple()
-{
-    blDebug ( "PluginBf_InventarioSimple::~PluginBf_InventarioSimple", 0 );
-    blDebug ( "END PluginBf_InventarioSimple::~PluginBf_InventarioSimple", 0 );
-}
-
-
-///
-/**
-**/
-void PluginBf_InventarioSimple::elslot()
-{
-    blDebug ( "PluginBf_InventarioSimple::elslot", 0 );
-
-    ListInventarioSimpleView *tar = new ListInventarioSimpleView ( ( BfCompany * ) mainCompany(), NULL );
-    mainCompany() ->m_pWorkspace->addSubWindow ( tar );
-    tar->show();
-
-    blDebug ( "END PluginBf_InventarioSimple::elslot", 0 );
-}
-
-
-///
-/**
-\param bges
-**/
-void PluginBf_InventarioSimple::inicializa ( BfBulmaFact *bges )
-{
-    blDebug ( "PluginBf_InventarioSimple::inicializa", 0 );
-    /// El men&uacute; de Tarifas en la secci&oacute;n de art&iacute;culos.
-    m_bges = bges;
-    setMainCompany ( bges->company() );
-
-    /// Miramos si existe un menu Articulos
-    QMenu *pPluginMenu = bges->newMenu ( _("&Inventari"), "menuInventari", "menuMaestro" );
-    pPluginMenu->addSeparator();
-
-
-    QAction *planCuentas = new QAction ( _ ( "&Inventarios" ), 0 );
-    planCuentas->setStatusTip ( _ ( "Inventarios" ) );
-    planCuentas->setWhatsThis ( _ ( "Inventarios" ) );
-
-    pPluginMenu->addAction ( planCuentas );
-    connect ( planCuentas, SIGNAL ( activated() ), this, SLOT ( elslot() ) );
-    blDebug ( "END PluginBf_InventarioSimple::inicializa", 0 );
-}
-
+BfBulmaFact *g_bges = NULL;
 
 ///
 /**
@@ -103,11 +45,31 @@ int entryPoint ( BfBulmaFact *bges )
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale ( LC_ALL, "" );
     blBindTextDomain ( "pluginbf_inventariosimple", g_confpr->valor ( CONF_DIR_TRADUCCION ).toAscii().constData() );
+    g_bges = bges;
 
-    PluginBf_InventarioSimple *plug = new PluginBf_InventarioSimple();
-    plug->inicializa ( bges );
+
+    QMenu *pPluginMenu = bges->newMenu ( _("&Articulos"), "menuArticulos", "menuMaestro" );
+    pPluginMenu->addSeparator();
+
+
+    BlAction *accionA = new BlAction ( _ ( "&Inventarios" ), 0 );
+    accionA->setIcon ( QIcon ( QString::fromUtf8 ( ":/Images/product-list.png" ) ) );
+    accionA->setStatusTip ( _ ( "Inventarios" ) );
+    accionA->setWhatsThis ( _ ( "Inventarios" ) );
+    accionA->setObjectName("mui_actionInventarios");
+    pPluginMenu->addAction ( accionA );
+
     return 0;
 }
+int BlAction_triggered(BlAction *accion) {
+    if (accion->objectName() == "mui_actionInventarios") {
+        ListInventarioSimpleView *tar = new ListInventarioSimpleView ( ( BfCompany * ) g_bges->company(), NULL );
+        g_bges->company()->m_pWorkspace->addSubWindow ( tar );
+        tar->show();
+    } // end if
+    return 0;
+}
+
 
 
 int ActividadView_ActividadView(ActividadView *act) {

@@ -163,6 +163,7 @@ int BlAction_triggered(BlAction *accion) {
         bud->pintar();
         blDebug ( "END PluginBf_Asociacion:BlAction_triggered::mui_actionComisionConvocar", 0 );
     }
+    return 0;
 }
 
 int BfCompany_createMainWindows_Post ( BfCompany *comp )

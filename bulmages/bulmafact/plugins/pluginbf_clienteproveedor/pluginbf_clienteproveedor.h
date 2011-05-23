@@ -30,26 +30,6 @@ extern "C" PLUGINBF_CLIENTEPROVEEDOR_EXPORT int BlForm_guardar_Post ( BlForm * )
 extern "C" PLUGINBF_CLIENTEPROVEEDOR_EXPORT int entryPoint ( BfBulmaFact * );
 
 
-// 
-
-/*
-class myplugin : public QObject {
-    Q_OBJECT
-
-public:
-    BlPostgreSqlClient *dbConnection;
-
-public:
-    myplugin();
-    ~myplugin();
-    void inicializa(bulmafact *);
-
-public slots:
-    void elslot();
-};
-
-*/
-
 
 #endif
 
