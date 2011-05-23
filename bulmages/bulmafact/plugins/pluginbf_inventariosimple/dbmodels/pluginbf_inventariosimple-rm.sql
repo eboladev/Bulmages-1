@@ -114,9 +114,9 @@ CREATE OR REPLACE FUNCTION actualizarevision() RETURNS INTEGER AS '
 DECLARE
 	as RECORD;
 BEGIN
-	SELECT INTO as * FROM configuracion WHERE nombre=''PluginBf_Profesor'';
+	SELECT INTO as * FROM configuracion WHERE nombre=''PluginBf_InventarioSimple'';
 	IF FOUND THEN
-		DELETE FROM CONFIGURACION WHERE nombre=''PluginBf_Profesor'';
+		DELETE FROM CONFIGURACION WHERE nombre=''PluginBf_InventarioSimple'';
 	END IF;
 	RETURN 0;
 END;

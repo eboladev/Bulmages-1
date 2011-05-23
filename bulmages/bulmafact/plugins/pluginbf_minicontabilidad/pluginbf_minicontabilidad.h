@@ -28,7 +28,7 @@
 #include "blsearchwidget.h"
 #include "bfsubform.h"
 #include "pdefs_pluginbf_minicontabilidad.h"
-
+#include "blaction.h"
 
 extern "C" PLUGINBF_MINICONTABILIDAD_EXPORT int entryPoint ( BfBulmaFact * );
 extern "C" PLUGINBF_MINICONTABILIDAD_EXPORT int BfCompany_createMainWindows_Post(BfCompany *);
@@ -40,6 +40,7 @@ extern "C" PLUGINBF_MINICONTABILIDAD_EXPORT int BlSubFormDelegate_createEditor(B
 extern "C" PLUGINBF_MINICONTABILIDAD_EXPORT int BlSubFormDelegate_setModelData(BlSubFormDelegate *);
 extern "C" PLUGINBF_MINICONTABILIDAD_EXPORT int BlSubFormDelegate_setEditorData(BlSubFormDelegate *);
 extern "C" PLUGINBF_MINICONTABILIDAD_EXPORT int BlSubForm_editFinished(BlSubForm *);
+extern "C" PLUGINBF_MINICONTABILIDAD_EXPORT int BlAction_triggered(BlAction *);
 
 
 class SubForm_MiniContabilidad : public QObject
@@ -56,26 +57,6 @@ public slots:
     virtual void s_pintaMenu ( QMenu * );
     virtual void s_trataMenu ( QAction * );
 };
-
-
-class PluginBf_MiniContabilidad : public QObject, BlMainCompanyPointer
-{
-    Q_OBJECT
-
-private:
-    BfBulmaFact *m_bges;
-
-public:
-    PluginBf_MiniContabilidad( BfBulmaFact *);
-    ~PluginBf_MiniContabilidad();
-    void inicializa (  );
-
-public slots:
-    void elslot3();
-    void elslot2();
-    void elslot1();
-};
-
 
 #endif
 

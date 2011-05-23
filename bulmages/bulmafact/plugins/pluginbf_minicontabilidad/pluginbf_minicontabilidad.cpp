@@ -29,113 +29,7 @@
 
 
 ApunteContableView *g_ap = NULL;
-
-///
-/**
-**/
-PluginBf_MiniContabilidad::PluginBf_MiniContabilidad( BfBulmaFact *bges) 
-{
-    blDebug ( "PluginBf_MiniContabilidad::PluginBf_MiniContabilidad", 0 );
-    setMainCompany(bges->company());
-    m_bges = bges;
-    blDebug ( "END PluginBf_MiniContabilidad::PluginBf_MiniContabilidad", 0 );
-}
-
-
-///
-/**
-**/
-PluginBf_MiniContabilidad::~PluginBf_MiniContabilidad()
-{
-    blDebug ( "PluginBf_MiniContabilidad::~PluginBf_MiniContabilidad", 0 );
-    blDebug ( "END PluginBf_MiniContabilidad::~PluginBf_MiniContabilidad", 0 );
-}
-
-///
-/**
-**/
-void PluginBf_MiniContabilidad::elslot1()
-{
-    blDebug ( "PluginBf_MiniContabilidad::elslot1", 0 );
-    PresupuestoContableList *pag = new PresupuestoContableList ( ( BfCompany * ) mainCompany(), 0 );
-    mainCompany() ->m_pWorkspace->addSubWindow ( pag );
-    pag->show();
-    blDebug ( "END PluginBf_MiniContabilidad::elslot1", 0 );
-}
-
-
-///
-/**
-**/
-void PluginBf_MiniContabilidad::elslot2()
-{
-    blDebug ( "PluginBf_MiniContabilidad::elslot3", 0 );
-    g_ap->hide();
-    g_ap->show();
-    blDebug ( "END PluginBf_MiniContabilidad::elslot3", 0 );
-}
-
-
-
-///
-/**
-**/
-void PluginBf_MiniContabilidad::elslot3()
-{
-    blDebug ( "PluginBf_MiniContabilidad::elslot3", 0 );
-    PartidasView *pag = new PartidasView ( ( BfCompany * ) mainCompany(), 0, FALSE );
-    mainCompany() ->m_pWorkspace->addSubWindow ( pag );
-    pag->show();
-    blDebug ( "END PluginBf_MiniContabilidad::elslot3", 0 );
-}
-
-
-
-///
-/**
-\param bges
-**/
-void PluginBf_MiniContabilidad::inicializa ( ) 
-{
-    blDebug ( "PluginBf_MiniContabilidad::inicializa", 0 );
-
-    if ( m_bges->company()->hasTablePrivilege ( "partida", "SELECT" ) ) {
-
-        /// Miramos si existe un menu Articulos
-        QMenu *pPluginMenu = m_bges->newMenu ( _("Economia"), "menuEconomia", "menuMaestro" );
-        pPluginMenu->addSeparator();
-
-        pPluginMenu->addSeparator();
-        QAction *tfam = new QAction ( _ ( "&Partidas contables" ), 0 );
-        tfam->setIcon ( QIcon ( QString::fromUtf8 ( ":/Images/account_plan.png" ) ) );
-        tfam->setStatusTip ( _ ( "Partidas contables" ) );
-        tfam->setWhatsThis ( _ ( "Partidas contables" ) );
-        pPluginMenu->addAction ( tfam );
-        m_bges->Fichas->addAction ( tfam );
-        connect ( tfam, SIGNAL ( activated() ), this, SLOT ( elslot3() ) );
-
-        QAction *tfam1 = new QAction ( _ ( "&Anotaciones contables" ), 0 );
-        tfam1->setIcon ( QIcon ( QString::fromUtf8 ( ":/Images/balance-sheet.png" ) ) );
-        tfam1->setStatusTip ( _ ( "Anotaciones contables" ) );
-        tfam1->setWhatsThis ( _ ( "Anotaciones contables" ) );
-        pPluginMenu->addAction ( tfam1 );
-        m_bges->Fichas->addAction ( tfam1 );
-        connect ( tfam1, SIGNAL ( activated() ), this, SLOT ( elslot2() ) );
-
-        QAction *tfam2 = new QAction ( _ ( "&Previsiones" ), 0 );
-        tfam2->setIcon ( QIcon ( QString::fromUtf8 ( ":/Images/book-list.png" ) ) );
-        tfam2->setStatusTip ( _ ( "Presupuesto Contables" ) );
-        tfam2->setWhatsThis ( _ ( "Presupuestos Contables" ) );
-        pPluginMenu->addAction ( tfam2 );
-        m_bges->Fichas->addAction ( tfam2 );
-        connect ( tfam2, SIGNAL ( activated() ), this, SLOT ( elslot1() ) );
-
-     }// end if
-    blDebug ( "END PluginBf_MiniContabilidad::inicializa", 0 );
-}
-
-
-
+BfBulmaFact *g_bges = NULL;
 
 
 ///
@@ -153,14 +47,75 @@ int entryPoint ( BfBulmaFact *bges )
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale ( LC_ALL, "" );
     blBindTextDomain ( "pluginbf_minicontabilidad", g_confpr->valor ( CONF_DIR_TRADUCCION ).toAscii().constData() );
+    g_bges = bges;
 
-    PluginBf_MiniContabilidad *plug = new PluginBf_MiniContabilidad(bges);
-    plug->inicializa ( );
+
+
+    if ( g_bges->company()->hasTablePrivilege ( "partida", "SELECT" ) ) {
+
+        /// Miramos si existe un menu Articulos
+        QMenu *pPluginMenu = g_bges->newMenu ( _("Economia"), "menuEconomia", "menuMaestro" );
+        pPluginMenu->addSeparator();
+
+        pPluginMenu->addSeparator();
+        QAction *accionA = new QAction ( _ ( "&Partidas contables" ), 0 );
+        accionA->setIcon ( QIcon ( QString::fromUtf8 ( ":/Images/account_plan.png" ) ) );
+        accionA->setStatusTip ( _ ( "Partidas contables" ) );
+        accionA->setWhatsThis ( _ ( "Partidas contables" ) );
+        accionA->setObjectName("mui_actionContablesPartidas");
+        pPluginMenu->addAction ( accionA );
+        g_bges->Fichas->addAction ( accionA );
+
+        QAction *accionB = new QAction ( _ ( "&Anotaciones contables" ), 0 );
+        accionB->setIcon ( QIcon ( QString::fromUtf8 ( ":/Images/balance-sheet.png" ) ) );
+        accionB->setStatusTip ( _ ( "Anotaciones contables" ) );
+        accionB->setWhatsThis ( _ ( "Anotaciones contables" ) );
+        accionA->setObjectName("mui_actionContablesAnotaciones");
+        pPluginMenu->addAction ( accionB );
+        g_bges->Fichas->addAction ( accionB );
+
+        QAction *accionC = new QAction ( _ ( "&Previsiones" ), 0 );
+        accionC->setIcon ( QIcon ( QString::fromUtf8 ( ":/Images/book-list.png" ) ) );
+        accionC->setStatusTip ( _ ( "Presupuesto Contables" ) );
+        accionC->setWhatsThis ( _ ( "Presupuestos Contables" ) );
+        accionA->setObjectName("mui_actionContablesPresupuestos");
+        pPluginMenu->addAction ( accionC );
+        g_bges->Fichas->addAction ( accionC );
+
+     } // end if
+
 
     g_ap = new ApunteContableView ( ( BfCompany * ) bges->company(), 0 );
     bges->company() ->m_pWorkspace->addSubWindow ( g_ap );
     
-    
+    return 0;
+}
+
+int BlAction_triggered(BlAction *accion) {
+    if (accion->objectName() == "mui_actionContablesPartidas") {
+        blDebug ( "PluginBf_MiniContabilidad::BlAction_triggered::mui_actionContablesPartidas", 0 );
+        PartidasView *pag = new PartidasView ( ( BfCompany * ) g_bges->company(), 0, FALSE );
+        g_bges->company()->m_pWorkspace->addSubWindow ( pag );
+        pag->show();
+    blDebug ( "END PluginBf_MiniContabilidad::BlAction_triggered::mui_actionContablesPartidas", 0 );
+    }
+
+    if (accion->objectName() == "mui_actionContablesAnotaciones") {
+        blDebug ( "PluginBf_MiniContabilidad::BlAction_triggered::mui_actionContablesPartidas", 0 );
+        g_ap->hide();
+        g_ap->show();
+        blDebug ( "END PluginBf_MiniContabilidad::BlAction_triggered::mui_actionContablesPartidas", 0 );
+    }
+
+
+    if (accion->objectName() == "mui_actionContablesPresupuestos") {
+        blDebug ( "PluginBf_MiniContabilidad::BlAction_triggered::mui_actionContablesPresupuestos", 0 );
+        PresupuestoContableList *pag = new PresupuestoContableList ( ( BfCompany * ) g_bges->company(), 0 );
+        g_bges->company()->m_pWorkspace->addSubWindow ( pag );
+        pag->show();
+        blDebug ( "END PluginBf_MiniContabilidad::BlAction_triggered::mui_actionContablesPresupuestos", 0 );
+
+    }
     return 0;
 }
 
