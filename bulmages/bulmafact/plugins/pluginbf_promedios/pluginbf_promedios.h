@@ -33,18 +33,5 @@ extern "C" PLUGINBF_PROMEDIOS_EXPORT int ArticuloView_ArticuloView ( ArticuloVie
 extern "C" PLUGINBF_PROMEDIOS_EXPORT int ArticuloView_cargar ( ArticuloView * );
 
 
-/*
-class myplugin1 : public QObject {
-Q_OBJECT
-public:
-company *m_companyact;
-myplugin1();
-~myplugin1();
-void elslot();
-void inicializa(bulmafact *bges);
-};
-*/
-
-
 #endif
 
