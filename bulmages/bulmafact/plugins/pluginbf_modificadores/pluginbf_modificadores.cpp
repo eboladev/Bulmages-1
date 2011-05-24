@@ -23,72 +23,7 @@
 #include "pluginbf_modificadores.h"
 #include "bfcompany.h"
 #include "blfunctions.h"
-#include "listmodificadoresview.h"
 
-
-
-
-///
-/**
-**/
-PluginBf_Modificadores::PluginBf_Modificadores()
-{
-    blDebug ( "PluginBf_Modificadores::PluginBf_Modificadores", 0 );
-    blDebug ( "END PluginBf_Modificadores::PluginBf_Modificadores", 0 );
-}
-
-
-///
-/**
-**/
-PluginBf_Modificadores::~PluginBf_Modificadores()
-{
-    blDebug ( "PluginBf_Modificadores::~PluginBf_Modificadores", 0 );
-    blDebug ( "END PluginBf_Modificadores::~PluginBf_Modificadores", 0 );
-}
-
-
-///
-/**
-**/
-void PluginBf_Modificadores::elslot1()
-{
-    blDebug ( "PluginBf_Modificadores::elslot1", 0 );
-    ListModificadoresView * bud = new ListModificadoresView ( ( BfCompany * ) mainCompany(), NULL );
-    mainCompany() ->m_pWorkspace->addSubWindow ( bud );
-    bud->show();
-    blDebug ( "END PluginBf_Modificadores::elslot1", 0 );
-}
-
-
-
-///
-/**
-\param bges
-**/
-void PluginBf_Modificadores::inicializa ( BfBulmaFact *bges )
-{
-    blDebug ( "PluginBf_Modificadores::inicializa", 0 );
-
-    if ( bges->company()->hasTablePrivilege ( "serie_factura", "SELECT" ) ) {
-
-        /// Miramos si existe un menu Articulos
-        QMenu *pPluginMenu = bges->newMenu ( _("&Articulos"), "menuArticulos", "menuMaestro" );
-        pPluginMenu->addSeparator();
-
-        m_bges = bges;
-        setMainCompany ( bges->company() );
-        QAction *modificadoresArticulo = new QAction ( _ ( "&Modificadores" ), 0 );
-        modificadoresArticulo->setIcon(QIcon ( QString::fromUtf8 ( ":/Images/product.png" ) ));
-        modificadoresArticulo->setStatusTip ( _ ( "Modificadores" ) );
-        modificadoresArticulo->setWhatsThis ( _ ( "Modificadores" ) );
-        pPluginMenu->addAction ( modificadoresArticulo );
-        bges->Listados->addAction ( modificadoresArticulo );
-        connect ( modificadoresArticulo, SIGNAL ( activated() ), this, SLOT ( elslot1() ) );
-
-    }// end if
-    blDebug ( "END PluginBf_Modificadores::inicializa", 0 );
-}
 
 
 ///
@@ -107,8 +42,6 @@ int entryPoint ( BfBulmaFact *bges )
     setlocale ( LC_ALL, "" );
     blBindTextDomain ( "pluginbf_modificadores", g_confpr->valor ( CONF_DIR_TRADUCCION ).toAscii().constData() );
 
-//    PluginBf_Modificadores *plug = new PluginBf_Modificadores();
-//    plug->inicializa ( bges );
     return 0;
 }
 
