@@ -113,12 +113,12 @@ int BlAction_triggered(BlAction *accion) {
    
     } // end if
 
-    if (accion->objectName() == "mui_actionArticuloNuevo") {
-        blDebug ( "PluginBf_Articulo::BlAction_triggered::mui_actionArticuloNuevo", 0 );
+    if (accion->objectName() == "mui_actionArticulosTipo") {
+        blDebug ( "PluginBf_Articulo::BlAction_triggered::mui_actionArticulosTipo", 0 );
         TipoArticuloList *pag = new TipoArticuloList ( ( BfCompany * ) g_bges->company(), 0, FALSE );
         g_bges->company()->m_pWorkspace->addSubWindow ( pag );
         pag->show();
-        blDebug ( "END PluginBf_Articulo::BlAction_triggered::mui_actionArticuloNuevo", 0 );   
+        blDebug ( "END PluginBf_Articulo::BlAction_triggered::mui_actionArticulosTipo", 0 );   
     } // end if
     if (accion->objectName() == "") {
         blDebug ( "PluginBf_Articulo::BlAction_triggered::mui_actionFamilias", 0 );

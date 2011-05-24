@@ -69,7 +69,7 @@ int entryPoint ( BfBulmaFact *bges )
     BlAction *accion = new BlAction ( _("&Cuadres de Caja"), 0 );
     accion->setStatusTip ( _("Listado de Cuadres de Caja") );
     accion->setWhatsThis ( _("Listado de Cuadres de Caja") );
-    accion->setObjectName("listadoCuadres");
+    accion->setObjectName("mui_actionCuadresCaja");
     
     /// A&ntilde;adimos la nueva opci&oacute;n al men&uacute; principal del programa.
     pPluginMenu->addSeparator();
