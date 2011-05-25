@@ -25,75 +25,7 @@
 #include "blfunctions.h"
 #include "bfseriefacturaview.h"
 
-
-
-
-///
-/**
-**/
-PluginBf_SeriesFactura::PluginBf_SeriesFactura()
-{
-    blDebug ( "PluginBf_SeriesFactura::PluginBf_SeriesFactura", 0 );
-    blDebug ( "END PluginBf_SeriesFactura::PluginBf_SeriesFactura", 0 );
-}
-
-
-///
-/**
-**/
-PluginBf_SeriesFactura::~PluginBf_SeriesFactura()
-{
-    blDebug ( "PluginBf_SeriesFactura::~PluginBf_SeriesFactura", 0 );
-    blDebug ( "END PluginBf_SeriesFactura::~PluginBf_SeriesFactura", 0 );
-}
-
-
-///
-/**
-**/
-void PluginBf_SeriesFactura::elslot1()
-{
-    blDebug ( "PluginBf_SeriesFactura::elslot1", 0 );
-    BfSerieFacturaView * bud = new BfSerieFacturaView ( ( BfCompany * ) mainCompany(), NULL );
-    mainCompany() ->m_pWorkspace->addSubWindow ( bud );
-    bud->show();
-    blDebug ( "END PluginBf_SeriesFactura::elslot1", 0 );
-}
-
-
-
-///
-/**
-\param bges
-**/
-void PluginBf_SeriesFactura::inicializa ( BfBulmaFact *bges )
-{
-    blDebug ( "PluginBf_SeriesFactura::inicializa", 0 );
-
-    if ( bges->company()->hasTablePrivilege ( "serie_factura", "SELECT" ) ) {
-
-        /// Miramos si existe un menu Ventas
-        QMenu *pPluginMenu = bges->menuMaestro;
-        pPluginMenu->addSeparator();
-
-        m_bges = bges;
-        setMainCompany ( bges->company() );
-        QAction *seriesFactura = new QAction ( _ ( "&Series de factura" ), 0 );
-        seriesFactura->setIcon(QIcon ( QString::fromUtf8 ( ":/Images/client-invoice-series.png" ) ));
-        seriesFactura->setStatusTip ( _ ( "Series de factura" ) );
-        seriesFactura->setWhatsThis ( _ ( "Series de factura" ) );
-        pPluginMenu->addAction ( seriesFactura );
-        bges->Listados->addAction ( seriesFactura );
-        connect ( seriesFactura, SIGNAL ( activated() ), this, SLOT ( elslot1() ) );
-
-    }// end if
-    blDebug ( "END PluginBf_SeriesFactura::inicializa", 0 );
-}
-
-
-
-
-
+BfBulmaFact *g_bges = NULL;
 ///
 /**
 \param bges
@@ -106,12 +38,37 @@ int entryPoint ( BfBulmaFact *bges )
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale ( LC_ALL, "" );
     blBindTextDomain ( "pluginbf_seriesfactura", g_confpr->valor ( CONF_DIR_TRADUCCION ).toAscii().constData() );
+    g_bges = bges;
 
-    PluginBf_SeriesFactura *plug = new PluginBf_SeriesFactura();
-    plug->inicializa ( bges );
+    if ( bges->company()->hasTablePrivilege ( "serie_factura", "SELECT" ) ) {
+
+        /// Miramos si existe un menu Ventas
+        QMenu *pPluginMenu = bges->menuMaestro;
+        pPluginMenu->addSeparator();
+        
+        BlAction *accionA = new BlAction ( _ ( "&Series de factura" ), 0 );
+        accionA->setIcon(QIcon ( QString::fromUtf8 ( ":/Images/client-invoice-series.png" ) ));
+        accionA->setStatusTip ( _ ( "Series de factura" ) );
+        accionA->setWhatsThis ( _ ( "Series de factura" ) );
+        accionA->setObjectName("mui_actionSeriesFactura");
+        pPluginMenu->addAction ( accionA );
+        bges->Listados->addAction ( accionA );
+
+    } // end if
+
     return 0;
 }
 
+
+int BlAction_triggered(BlAction *accion) {
+    if (accion->objectName() == "mui_actionSeriesFactura") {
+        BfSerieFacturaView * bud = new BfSerieFacturaView ( ( BfCompany * ) g_bges->company(), NULL );
+        g_bges->company() ->m_pWorkspace->addSubWindow ( bud );
+        bud->show();
+    } // end if
+    
+    return 0;
+}
 
 
 /// Esta llamada de plugin es bastante novedosa ya es una llamada que no responde a una funcion

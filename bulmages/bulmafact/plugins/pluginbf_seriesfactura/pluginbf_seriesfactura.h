@@ -27,28 +27,11 @@
 #include "bfbuscarreferencia.h"
 #include "blsearchwidget.h"
 #include "pdefs_pluginbf_seriesfactura.h"
-
+#include "blaction.h"
 
 extern "C" PLUGINBF_SERIESFACTURA_EXPORT int entryPoint ( BfBulmaFact * );
 extern "C" PLUGINBF_SERIESFACTURA_EXPORT int SNewBfSerieFacturaView (BfCompany *);
-
-
-class PluginBf_SeriesFactura : public QObject, BlMainCompanyPointer
-{
-    Q_OBJECT
-
-public:
-    BfBulmaFact *m_bges;
-
-public:
-    PluginBf_SeriesFactura();
-    ~PluginBf_SeriesFactura();
-    void inicializa ( BfBulmaFact * );
-
-public slots:
-    void elslot1();
-};
-
+extern "C" PLUGINBF_SERIESFACTURA_EXPORT int BlAction_triggered(BlAction *);
 
 #endif
 
