@@ -27,31 +27,13 @@
 #include "bfbuscarreferencia.h"
 #include "actividadview.h"
 #include "pdefs_pluginbf_recibo.h"
-
+#include "blaction.h"
 
 extern "C" PLUGINBF_RECIBO_EXPORT int SNewReciboView (BfCompany *);
 extern "C" PLUGINBF_RECIBO_EXPORT int entryPoint ( BfBulmaFact * );
 extern "C" PLUGINBF_RECIBO_EXPORT int BfCompany_createMainWindows_Post(BfCompany *);
 extern "C" PLUGINBF_RECIBO_EXPORT int ActividadView_ActividadView(ActividadView *);
-
-
-class PluginBf_Recibo : public QObject, BlMainCompanyPointer
-{
-    Q_OBJECT
-
-public:
-    BfBulmaFact *m_bges;
-
-public:
-    PluginBf_Recibo();
-    ~PluginBf_Recibo();
-    void inicializa ( BfBulmaFact * );
-
-public slots:
-    void elslot();
-    void elslot1();
-    void elslot2();
-};
+extern "C" PLUGINBF_RECIBO_EXPORT  int BlAction_triggered(BlAction *);
 
 
 class EmitirRecibos : public QObject, BlMainCompanyPointer
