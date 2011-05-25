@@ -30,7 +30,7 @@
 #include "albaranproveedorview.h"
 #include "pedidoproveedorview.h"
 #include "pdefs_pluginbf_proveedorpago.h"
-
+#include "blaction.h"
 
 extern "C" PLUGINBF_PROVEEDORPAGO_EXPORT int entryPoint ( BfBulmaFact * );
 extern "C" PLUGINBF_PROVEEDORPAGO_EXPORT int BfCompany_createMainWindows_Post(BfCompany *);
@@ -40,26 +40,7 @@ extern "C" PLUGINBF_PROVEEDORPAGO_EXPORT int BfBuscarReferencia_on_mui_abrirtodo
 extern "C" PLUGINBF_PROVEEDORPAGO_EXPORT int FacturaProveedorView_FacturaProveedorView ( FacturaProveedorView * );
 extern "C" PLUGINBF_PROVEEDORPAGO_EXPORT int AlbaranProveedorView_AlbaranProveedorView ( AlbaranProveedorView * );
 extern "C" PLUGINBF_PROVEEDORPAGO_EXPORT int PedidoProveedorView_PedidoProveedorView ( PedidoProveedorView * );
-
-
-// 
-class PluginBf_ProveedorPago : public QObject, BlMainCompanyPointer
-{
-    Q_OBJECT
-
-public:
-    BfBulmaFact *m_bges;
-
-public:
-    PluginBf_ProveedorPago();
-    ~PluginBf_ProveedorPago();
-    void inicializa ( BfBulmaFact * );
-
-public slots:
-    void elslot();
-    void elslot1();
-};
-
+extern "C" PLUGINBF_PROVEEDORPAGO_EXPORT int BlAction_triggered(BlAction *);
 
 #endif
 

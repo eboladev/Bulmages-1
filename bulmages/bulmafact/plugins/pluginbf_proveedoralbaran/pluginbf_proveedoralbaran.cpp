@@ -92,7 +92,7 @@ int BlAction_triggered(BlAction *accion) {
         g_bges->company()->m_pWorkspace->addSubWindow ( bud );
         bud->inicializar();
         bud->show();
-        blDebug ( "PluginBf_Proveedor::BlAction_triggered::mui_actionProveedAlbaranNuevo", 0 );
+        blDebug ( "END PluginBf_Proveedor::BlAction_triggered::mui_actionProveedAlbaranNuevo", 0 );
     } // end if
     return 0;
 }

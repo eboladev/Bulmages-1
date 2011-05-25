@@ -29,91 +29,7 @@
 
 
 FacturasProveedorList *g_facturasProveedorList = NULL;
-
-///
-/**
-**/
-PluginBf_ProveedorFactura::PluginBf_ProveedorFactura()
-{
-    blDebug ( "PluginBf_ProveedorFactura::PluginBf_ProveedorFactura", 0 );
-    blDebug ( "END PluginBf_ProveedorFactura::PluginBf_ProveedorFactura", 0 );
-}
-
-
-///
-/**
-**/
-PluginBf_ProveedorFactura::~PluginBf_ProveedorFactura()
-{
-    blDebug ( "PluginBf_ProveedorFactura::~PluginBf_ProveedorFactura", 0 );
-    blDebug ( "END PluginBf_ProveedorFactura::~PluginBf_ProveedorFactura", 0 );
-}
-
-
-///
-/**
-**/
-void PluginBf_ProveedorFactura::elslot()
-{
-    blDebug ( "PluginBf_ProveedorFactura::elslot", 0 );
-    if ( g_facturasProveedorList ) {
-        g_facturasProveedorList->hide();
-        g_facturasProveedorList->show();
-    }// end if
-    blDebug ( "END PluginBf_ProveedorFactura::elslot", 0 );
-}
-
-///
-/**
-**/
-void PluginBf_ProveedorFactura::elslot1()
-{
-    blDebug ( "PluginBf_ProveedorFactura::elslot1", 0 );
-    FacturaProveedorView * bud = new FacturaProveedorView ( ( BfCompany * ) mainCompany(), NULL );
-    mainCompany() ->m_pWorkspace->addSubWindow ( bud );
-    bud->inicializar();
-    bud->show();
-    blDebug ( "END PluginBf_ProveedorFactura::elslot1", 0 );
-}
-
-
-
-///
-/**
-\param bges
-**/
-void PluginBf_ProveedorFactura::inicializa ( BfBulmaFact *bges )
-{
-    blDebug ( "PluginBf_ProveedorFactura::inicializa", 0 );
-
-    if ( bges->company()->hasTablePrivilege ( "facturap", "SELECT" ) ) {
-        /// Miramos si existe un menu Compras
-        QMenu *pPluginMenu = bges->newMenu ( "&Compras", "menuCompras", "menuMaestro" );
-        pPluginMenu->addSeparator();
-
-        /// El men&uacute; de Tarifas en la secci&oacute;n de art&iacute;culos.
-        m_bges = bges;
-        setMainCompany ( bges->company() );
-        QAction *planCuentas = new QAction ( _ ( "&Facturas de proveedores" ), 0 );
-        planCuentas->setIcon ( QIcon ( QString::fromUtf8 ( ":/Images/supplier-invoice-list.png" ) ) );
-        planCuentas->setStatusTip ( _ ( "Facturas de proveedores" ) );
-        planCuentas->setWhatsThis ( _ ( "Facturas de proveedores" ) );
-        pPluginMenu->addAction ( planCuentas );
-        bges->Listados->addAction ( planCuentas );
-        connect ( planCuentas, SIGNAL ( activated() ), this, SLOT ( elslot() ) );
-
-        QAction *npago = new QAction ( _ ( "&Nueva factura de proveedor" ), 0 );
-        npago->setIcon ( QIcon ( QString::fromUtf8 ( ":/Images/supplier-invoice.png" ) ) );
-        npago->setStatusTip ( _ ( "Nueva factura de proveedor" ) );
-        npago->setWhatsThis ( _ ( "Nueva factura de proveedor" ) );
-        pPluginMenu->addAction ( npago );
-        bges->Fichas->addAction ( npago );
-        connect ( npago, SIGNAL ( activated() ), this, SLOT ( elslot1() ) );
-
-
-    }// end if
-    blDebug ( "END PluginBf_ProveedorFactura::inicializa", 0 );
-}
+BfBulmaFact *g_bges = NULL;
 
 
 ///
@@ -128,12 +44,52 @@ int entryPoint ( BfBulmaFact *bges )
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale ( LC_ALL, "" );
     blBindTextDomain ( "pluginbf_proveedorfactura", g_confpr->valor ( CONF_DIR_TRADUCCION ).toAscii().constData() );
+    g_bges = bges;
 
-    PluginBf_ProveedorFactura *plug = new PluginBf_ProveedorFactura();
-    plug->inicializa ( bges );
-    return 0;
+    if ( bges->company()->hasTablePrivilege ( "facturap", "SELECT" ) ) {
+        /// Miramos si existe un menu Compras
+        QMenu *pPluginMenu = bges->newMenu ( _("&Compras"), "menuCompras", "menuMaestro" );
+        pPluginMenu->addSeparator();
+
+        BlAction *accionA = new BlAction ( _ ( "&Facturas de proveedores" ), 0 );
+        accionA->setIcon ( QIcon ( QString::fromUtf8 ( ":/Images/supplier-invoice-list.png" ) ) );
+        accionA->setStatusTip ( _ ( "Facturas de proveedores" ) );
+        accionA->setWhatsThis ( _ ( "Facturas de proveedores" ) );
+        accionA->setObjectName("mui_actionProveedoresFacturas");
+        pPluginMenu->addAction ( accionA );
+        bges->Listados->addAction ( accionA );
+
+        BlAction *accionB = new BlAction ( _ ( "&Nueva factura de proveedor" ), 0 );
+        accionB->setIcon ( QIcon ( QString::fromUtf8 ( ":/Images/supplier-invoice.png" ) ) );
+        accionB->setStatusTip ( _ ( "Nueva factura de proveedor" ) );
+        accionB->setWhatsThis ( _ ( "Nueva factura de proveedor" ) );
+        accionB->setObjectName("mui_actionProveedorFacturaNueva");
+        pPluginMenu->addAction ( accionB );
+        bges->Fichas->addAction ( accionB );
+
+
+    } // end if
+
 }
 
+
+int BlAction_triggered(BlAction *accion) {
+    if (accion->objectName() == "mui_actionProveedoresFacturas") {
+        if ( g_facturasProveedorList ) {
+            g_facturasProveedorList->hide();
+            g_facturasProveedorList->show();
+        } // end if
+    }  // end if
+
+    if (accion->objectName() == "mui_actionProveedorFacturaNueva") {
+        FacturaProveedorView * bud = new FacturaProveedorView ( ( BfCompany * ) g_bges->company(), NULL );
+        g_bges->company()->m_pWorkspace->addSubWindow ( bud );
+        bud->inicializar();
+        bud->show();
+       }  // end if
+
+    return 0;
+}
 
 int BfCompany_createMainWindows_Post ( BfCompany *comp )
 {
@@ -141,7 +97,7 @@ int BfCompany_createMainWindows_Post ( BfCompany *comp )
         g_facturasProveedorList = new FacturasProveedorList ( comp, NULL );
         comp->m_pWorkspace->addSubWindow ( g_facturasProveedorList );
         g_facturasProveedorList->hide();
-    }// end if
+    } // end if
     return 0;
 }
 
@@ -164,9 +120,9 @@ int ProveedorView_cargarPost_Post ( ProveedorView *prov )
         FacturasProveedorList *facturasProveedorList = prov->findChild<FacturasProveedorList *> ( "listpagosproveedor" );
         facturasProveedorList->setidproveedor ( prov->dbValue ( "idproveedor" ) );
         facturasProveedorList->presentar();
-    }// end if
+    } // end if
     return 0;
-}// end if
+}
 
 
 int BfBuscarReferencia_on_mui_abrirtodo_clicked_Post ( BfBuscarReferencia *ref )
@@ -182,7 +138,7 @@ int BfBuscarReferencia_on_mui_abrirtodo_clicked_Post ( BfBuscarReferencia *ref )
     } // end while
     delete cur;
     return 0;
-}// end if
+}
 
 
 ///
@@ -202,7 +158,7 @@ int AlbaranProveedorView_AlbaranProveedorView ( AlbaranProveedorView *l )
         m_hboxLayout1->setSpacing ( 5 );
         m_hboxLayout1->setMargin ( 0 );
         m_hboxLayout1->setObjectName ( QString::fromUtf8 ( "hboxLayout1" ) );
-    }// end if
+    } // end if
     m_hboxLayout1->addWidget ( mui_exporta_efactura2 );
 
     blDebug ( "END PluginPagos_AlbaranProveedorView_AlbaranProveedorView", 0 );
@@ -227,7 +183,7 @@ int PedidoProveedorView_PedidoProveedorView ( PedidoProveedorView *l )
         m_hboxLayout1->setSpacing ( 5 );
         m_hboxLayout1->setMargin ( 0 );
         m_hboxLayout1->setObjectName ( QString::fromUtf8 ( "hboxLayout1" ) );
-    }// end if
+    } // end if
     m_hboxLayout1->addWidget ( mui_exporta_efactura2 );
 
     blDebug ( "END PluginPagos_PedidoProveedorView_PedidoProveedorView", 0 );
