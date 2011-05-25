@@ -93,7 +93,7 @@ int BlAction_triggered(BlAction *accion) {
         ProveedorView * bud = new ProveedorView ( ( BfCompany * ) g_bges->company(), NULL );
         g_bges->company()->m_pWorkspace->addSubWindow ( bud );
         bud->show();
-        blDebug ( "END PluginBf_Proveedor::BlAction_triggered::mui_actionProveedorNuevo", 0 )
+        blDebug ( "END PluginBf_Proveedor::BlAction_triggered::mui_actionProveedorNuevo", 0 );
     } // end if
     return 0;
 }
