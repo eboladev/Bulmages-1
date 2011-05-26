@@ -31,61 +31,7 @@
 #include "blfunctions.h"
 #include "movimientosview.h"
 
-
-///
-/**
-**/
-PluginBf_Trazabilidad::PluginBf_Trazabilidad()
-{
-    blDebug ( "PluginBf_Trazabilidad::PluginBf_Trazabilidad", 0 );
-    blDebug ( "END PluginBf_Trazabilidad::PluginBf_Trazabilidad", 0 );
-}
-
-
-///
-/**
-**/
-PluginBf_Trazabilidad::~PluginBf_Trazabilidad()
-{
-    blDebug ( "PluginBf_Trazabilidad::~PluginBf_Trazabilidad", 0 );
-    blDebug ( "END PluginBf_Trazabilidad::~PluginBf_Trazabilidad", 0 );
-}
-
-
-///
-/**
-**/
-void PluginBf_Trazabilidad::elslot()
-{
-    blDebug ( "PluginBf_Trazabilidad::elslot", 0 );
-    MovimientosView *mov = new MovimientosView ( ( BfCompany * ) mainCompany() );
-    mainCompany() ->pWorkspace() ->addSubWindow ( mov );
-    mov->show();
-    blDebug ( "END PluginBf_Trazabilidad::elslot", 0 );
-}
-
-
-///
-/**
-\param bges
-**/
-void PluginBf_Trazabilidad::inicializa ( BfBulmaFact *bges )
-{
-    blDebug ( "PluginBf_Trazabilidad::inicializa", 0 );
-    /// Creamos el men&uacute;.
-    setMainCompany ( bges->company() );
-    m_bulmafact = bges;
-    QAction *accion = new QAction ( _("&Movimientos"), 0 );
-    accion->setStatusTip ( _("Ventana de Movimientos") );
-    accion->setWhatsThis ( _("Movimientos") );
-    accion->setIcon ( QIcon ( QString::fromUtf8 ( ":/Images/product-family.png" ) ) );
-
-    bges->menuMaestro->addSeparator();
-    bges->menuMaestro->addAction ( accion );
-
-    connect ( accion, SIGNAL ( activated() ), this, SLOT ( elslot() ) );
-    blDebug ( "END PluginBf_Trazabilidad::inicializa", 0 );
-}
+BfBulmaFact *g_bges = NULL;
 
 
 ///
@@ -95,7 +41,7 @@ void PluginBf_Trazabilidad::inicializa ( BfBulmaFact *bges )
 **/
 int entryPoint ( BfBulmaFact *bges )
 {
-    blDebug ( "entryPoint", 0, "Punto de Entrada del plugin PluginTrazabilidad" );
+    blDebug ( "entryPoint", 0, "Punto de Entrada de PluginBf_Trazabilidad" );
 
     /// El plugin necesita un parche en la base de datos para funcionar.
     bges->company()->dbPatchVersionCheck("PluginBf_Trazabilidad", "0.9.1");
@@ -103,12 +49,35 @@ int entryPoint ( BfBulmaFact *bges )
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale ( LC_ALL, "" );
     blBindTextDomain ( "pluginbf_trazabilidad", g_confpr->valor ( CONF_DIR_TRADUCCION ).toAscii().constData() );
+    g_bges = bges;
 
-    PluginBf_Trazabilidad *plug = new PluginBf_Trazabilidad();
-    plug->inicializa ( bges );
-    blDebug ( "END entryPoint", 0, "Punto de Entrada del plugin PluginTrazabilidad" );
+    /// Creamos el men&uacute;.
+    BlAction *accionA = new BlAction ( _("&Movimientos"), 0 );
+    accionA->setStatusTip ( _("Ventana de Movimientos") );
+    accionA->setWhatsThis ( _("Movimientos") );
+    accionA->setObjectName("mui_actionMovimientos");
+    accionA->setIcon ( QIcon ( QString::fromUtf8 ( ":/Images/product-family.png" ) ) );
+
+    bges->menuMaestro->addSeparator();
+    bges->menuMaestro->addAction ( accionA );
+
+
+    blDebug ( "END entryPoint", 0, "Punto de Entrada de PluginBf_Trazabilidad" );
     return 0;
 }
+
+
+int BlAction_triggered(BlAction *accion) {
+    if (accion->objectName() == "mui_actionMovimientos") {
+        blDebug ( "PluginBf_Trazabilidad::BlAction_triggered::mui_actionMovimientos", 0 );
+        MovimientosView *mov = new MovimientosView ( ( BfCompany * ) g_bges->company() );
+        g_bges->company() ->pWorkspace() ->addSubWindow ( mov );
+        mov->show();
+        blDebug ( "END PluginBf_Trazabilidad::BlAction_triggered::mui_actionMovimientos", 0 );        
+    } // end if
+    return 0;
+}
+
 
 
 ///

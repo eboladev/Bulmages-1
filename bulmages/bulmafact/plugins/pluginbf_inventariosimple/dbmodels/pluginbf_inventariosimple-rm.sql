@@ -1,7 +1,7 @@
 --
--- Modificacion de campos y funciones de la BD para la adaptacion para el plugin de profesores
+-- Modificacion de campos y funciones de la BD para la adaptacion para el pluginbf_inventariosimple
 --
-\echo "********* INICIADO FICHERO DE ESTRUCTURA DEL PLUGIN DE VARIACION TARIFA POR CANTIDAD *********"
+\echo "********* INICIADO FICHERO DE ESTRUCTURA DEL PLUGIN DE VARIACION INVENTARIO SIMPLE*********"
 
 \echo ":: Establecemos los mensajes minimos a avisos y otros parametros ... "
 \echo -n ":: "
@@ -41,60 +41,21 @@ END;
 '
 language 'plpgsql';
 
-DROP FUNCTION IF EXISTS actualizacantrecibo_insert() CASCADE;
-DROP FUNCTION IF EXISTS actualizacantrecibo_update() CASCADE;
-DROP FUNCTION IF EXISTS actualizacantrecibo_delete() CASCADE;
-
--- ========================== VARIACION DE TARIFA =======================
+-- ========================== TABLAS INVENTARIO SIMPLE =======================
 
 CREATE OR REPLACE FUNCTION aux() RETURNS INTEGER AS '
 DECLARE
 	as RECORD;
 BEGIN
 
-    SELECT INTO as * FROM pg_tables  WHERE tablename=''alumnotutor'';
+    SELECT INTO as * FROM pg_tables  WHERE tablename=''inventariosimple'';
     IF FOUND THEN
-        DROP TABLE alumnotutor CASCADE;
+        DROP TABLE inventariosimple CASCADE;
     END IF;
 
-    SELECT INTO as * FROM pg_tables  WHERE tablename=''alumno'';
+    SELECT INTO as * FROM pg_tables  WHERE tablename=''prestamo'';
     IF FOUND THEN
-        DROP TABLE alumno CASCADE;
-    END IF;
-
-    SELECT INTO as * FROM pg_tables WHERE tablename=''cuota'';
-    IF FOUND THEN
-        DROP TABLE cuota CASCADE;
-    END IF;
-    
-    SELECT INTO as * FROM pg_tables WHERE tablename = ''socio'';
-    IF FOUND THEN
-        DROP TABLE socio CASCADE;
-    END IF;
-
-    SELECT INTO as * FROM pg_tables  WHERE tablename=''tutor'';
-    IF FOUND THEN
-        DROP TABLE tutor CASCADE;
-    END IF;
-    
-    SELECT INTO as * FROM pg_tables  WHERE tablename=''faltaasistenciaalumnoactividad'';
-    IF FOUND THEN
-        DROP TABLE faltaasistenciaalumnoactividad CASCADE;
-    END IF;
-        
-    SELECT INTO as * FROM pg_tables  WHERE tablename=''sesionactividad'';
-    IF FOUND THEN
-        DROP TABLE sesionactividad CASCADE;
-    END IF;
-        
-    SELECT INTO as * FROM pg_tables  WHERE tablename=''actividad'';
-    IF FOUND THEN
-        DROP TABLE actividad CASCADE;
-    END IF;
-
-    SELECT INTO as * FROM pg_tables  WHERE tablename=''profesor'';
-    IF FOUND THEN
-        DROP TABLE profesor CASCADE;
+        DROP TABLE prestamo CASCADE;
     END IF;
 
     RETURN 0;

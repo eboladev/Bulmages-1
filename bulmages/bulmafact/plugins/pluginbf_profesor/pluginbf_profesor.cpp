@@ -145,7 +145,7 @@ void PluginBf_Profesor::inicializa ( BfBulmaFact *bges )
 **/
 int entryPoint ( BfBulmaFact *bges )
 {
-    blDebug ( "Punto de Entrada del plugin de Monitores", 0 );
+    blDebug ( "Punto de entrada de PluginBf_Profesor", 0 );
 
     /// El plugin necesita un parche en la base de datos para funcionar.
     bges->company()->dbPatchVersionCheck("PluginBf_Profesor", "0.12.1-0002");
@@ -157,7 +157,7 @@ int entryPoint ( BfBulmaFact *bges )
     PluginBf_Profesor *plug = new PluginBf_Profesor();
     plug->inicializa ( bges );
     
-    blDebug ( "END Punto de Entrada del plugin de Monitores", 0 );
+    blDebug ( "END Punto de entrada de PluginBf_Profesor", 0 );
     
     return 0;
 }

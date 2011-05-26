@@ -37,42 +37,6 @@
 
 BfCompany *g_bges;
 
-
-///
-/**
-**/
-PluginBf_Z2Z::PluginBf_Z2Z()
-{
-    blDebug ( "PluginBf_Z2Z::PluginBf_Z2Z", 0 );
-    blDebug ( "END PluginBf_Z2Z::PluginBf_Z2Z", 0 );
-}
-
-
-///
-/**
-**/
-PluginBf_Z2Z::~PluginBf_Z2Z()
-{
-    blDebug ( "PluginBf_Z2Z::~PluginBf_Z2Z", 0 );
-    blDebug ( "END PluginBf_Z2Z::~PluginBf_Z2Z", 0 );
-}
-
-
-///
-/**
-\return
-**/
-void PluginBf_Z2Z::elslot (  )
-{
-    blDebug ( "PluginBf_Z2Z::cambia", 0 );
-    Z2ZView * bud = new Z2ZView ( g_bges, NULL );
-    g_bges ->m_pWorkspace->addSubWindow ( bud );
-    bud->show();
-    blDebug ( "END PluginBf_Z2Z::cambia", 0 );
-}
-
-
-
 ///
 /**
 \param bcont
@@ -87,22 +51,31 @@ int entryPoint ( BfBulmaFact *bges )
 
     g_bges = bges->company();
 
-    PluginBf_Z2Z *corr = new PluginBf_Z2Z();
 
-    /// A&ntilde;ade en el men&uacute; del programa la opci&oacuteMn para
-    /// acceder al corrector.
-    QAction *viewCorrector = new QAction ( _("&Traspaso de Z"), 0 );
 
     /// Miramos si existe un menu Herramientas
     QMenu *pPluginMenu = bges->newMenu ( _("&Herramientas"), "menuHerramientas", "menuAcerca_de" );
 
-
-    viewCorrector->setStatusTip ( _("Traspaso de Z") );
-    viewCorrector->setWhatsThis ( _("Traspaso de Z") );
-    QObject::connect ( viewCorrector, SIGNAL ( activated (  ) ), corr, SLOT ( elslot ( ) ) );
+    /// A&ntilde;ade en el men&uacute; del programa la opci&oacuteMn para
+    /// acceder al corrector.
+    BlAction *accionA = new BlAction ( _("&Traspaso de Z"), 0 );
+    accionA->setStatusTip ( _("Traspaso de Z") );
+    accionA->setWhatsThis ( _("Traspaso de Z") );
+    accionA->setObjectName("mui_actionZ2Z");
+    //QObject::connect ( accionA, SIGNAL ( activated (  ) ), corr, SLOT ( elslot ( ) ) );
     pPluginMenu->addSeparator();
-    pPluginMenu->addAction ( viewCorrector );
+    pPluginMenu->addAction ( accionA );
     blDebug ( "Iniciado correctamente el plugin 'Traspaso de Z'", 10 );
     return 0;
 }
 
+
+int BlAction_triggered(BlAction *accion) {
+    if (accion->objectName() == "tratamientoContratos") {
+        Z2ZView * bud = new Z2ZView ( g_bges, NULL );
+        g_bges->m_pWorkspace->addSubWindow ( bud );
+        bud->show();
+    } // end if
+    
+    return 0;
+}

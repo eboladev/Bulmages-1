@@ -25,23 +25,10 @@
 #include "blpostgresqlclient.h"
 #include "bfcompany.h"
 #include "pdefs_pluginbf_z2z.h"
-
+#include "blaction.h"
 
 extern "C" PLUGINBF_Z2Z_EXPORT int entryPoint ( BfBulmaFact * );
-
-
-class PluginBf_Z2Z : public QObject
-{
-    Q_OBJECT
-
-public:
-    PluginBf_Z2Z();
-    ~PluginBf_Z2Z();
-
-public slots:
-    void elslot ( );
-};
-
+extern "C" PLUGINBF_Z2Z_EXPORT int BlAction_triggered(BlAction *);
 
 #endif
 

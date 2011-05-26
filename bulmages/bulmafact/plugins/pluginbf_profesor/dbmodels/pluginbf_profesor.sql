@@ -47,10 +47,10 @@ language 'plpgsql';
 
 CREATE OR REPLACE FUNCTION aux() RETURNS INTEGER AS '
 DECLARE
-	as RECORD;
+	rsa RECORD;
 BEGIN
 
-    SELECT INTO as * FROM pg_tables  WHERE tablename=''profesor'';
+    SELECT INTO rsa * FROM pg_tables  WHERE tablename=''profesor'';
     IF NOT FOUND THEN
 
         CREATE TABLE profesor (
@@ -72,7 +72,7 @@ BEGIN
 
     END IF;
 
-    SELECT INTO as * FROM pg_tables  WHERE tablename=''clase'';
+    SELECT INTO rsa * FROM pg_tables  WHERE tablename=''clase'';
     IF NOT FOUND THEN
         CREATE TABLE clase (
             idclase SERIAL PRIMARY KEY,
@@ -80,7 +80,7 @@ BEGIN
         );
     END IF;
 
-    SELECT INTO as * FROM pg_tables  WHERE tablename=''alumno'';
+    SELECT INTO rsa * FROM pg_tables  WHERE tablename=''alumno'';
     IF NOT FOUND THEN
 
         CREATE TABLE alumno (
@@ -104,24 +104,24 @@ BEGIN
         
     END IF;
 
-    SELECT INTO as attname, relname FROM pg_attribute LEFT JOIN pg_class ON pg_attribute.attrelid=pg_class.oid WHERE attname=''idclase'' AND relname=''alumno'';
+    SELECT INTO rsa attname, relname FROM pg_attribute LEFT JOIN pg_class ON pg_attribute.attrelid=pg_class.oid WHERE attname=''idclase'' AND relname=''alumno'';
     IF NOT FOUND THEN
         ALTER TABLE alumno ADD COLUMN idclase INTEGER REFERENCES clase (idclase);
     END IF;
 
-    SELECT INTO as * FROM pg_attribute WHERE attname = ''activoalumno'';
+    SELECT INTO rsa * FROM pg_attribute WHERE attname = ''activoalumno'';
     IF NOT FOUND THEN
         ALTER TABLE alumno ADD COLUMN activoalumno BOOLEAN;
     END IF;
 
     
-    SELECT INTO as * FROM pg_attribute WHERE attname = ''apellido1alumno'';
+    SELECT INTO rsa * FROM pg_attribute WHERE attname = ''apellido1alumno'';
     IF NOT FOUND THEN
         ALTER TABLE alumno ADD COLUMN apellido1alumno VARCHAR;
         ALTER TABLE alumno ADD COLUMN fechanacimientoalumno DATE;
     END IF;
     
-    SELECT INTO as * FROM pg_attribute WHERE attname = ''apellido2alumno'';
+    SELECT INTO rsa * FROM pg_attribute WHERE attname = ''apellido2alumno'';
     IF NOT FOUND THEN
         ALTER TABLE alumno ADD COLUMN apellido2alumno VARCHAR;
         ALTER TABLE alumno ADD COLUMN diralumno VARCHAR;
@@ -133,7 +133,7 @@ BEGIN
         ALTER TABLE alumno ADD COLUMN emailalumno VARCHAR;
     END IF;
 
-    SELECT INTO as * FROM pg_tables  WHERE tablename=''recibo'';
+    SELECT INTO rsa * FROM pg_tables  WHERE tablename=''recibo'';
     IF NOT FOUND THEN
         CREATE TABLE recibo (
             idrecibo SERIAL PRIMARY KEY,
@@ -148,42 +148,42 @@ BEGIN
         );
     END IF;
   
-    SELECT INTO as attname, relname FROM pg_attribute LEFT JOIN pg_class ON pg_attribute.attrelid=pg_class.oid WHERE attname=''idcliente'' AND relname=''recibo'';
+    SELECT INTO rsa attname, relname FROM pg_attribute LEFT JOIN pg_class ON pg_attribute.attrelid=pg_class.oid WHERE attname=''idcliente'' AND relname=''recibo'';
     IF NOT FOUND THEN
         ALTER TABLE recibo ADD COLUMN idcliente INTEGER REFERENCES cliente(idcliente);
     END IF;
 
-   SELECT INTO as attname, relname FROM pg_attribute LEFT JOIN pg_class ON pg_attribute.attrelid=pg_class.oid WHERE attname=''devueltorecibo'' AND relname=''recibo'';
+   SELECT INTO rsa attname, relname FROM pg_attribute LEFT JOIN pg_class ON pg_attribute.attrelid=pg_class.oid WHERE attname=''devueltorecibo'' AND relname=''recibo'';
     IF NOT FOUND THEN
         ALTER TABLE recibo ADD COLUMN devueltorecibo BOOLEAN DEFAULT false;
     END IF;
 
-    SELECT INTO as attname, relname FROM pg_attribute LEFT JOIN pg_class ON pg_attribute.attrelid=pg_class.oid WHERE attname=''idforma_pago'' AND relname=''recibo'';
+    SELECT INTO rsa attname, relname FROM pg_attribute LEFT JOIN pg_class ON pg_attribute.attrelid=pg_class.oid WHERE attname=''idforma_pago'' AND relname=''recibo'';
     IF NOT FOUND THEN
         ALTER TABLE recibo ADD COLUMN idforma_pago INTEGER REFERENCES forma_pago(idforma_pago);
     END IF;
 
-    SELECT INTO as attname, relname FROM pg_attribute LEFT JOIN pg_class ON pg_attribute.attrelid=pg_class.oid WHERE attname=''descrecibo'' AND relname=''recibo'';
+    SELECT INTO rsa attname, relname FROM pg_attribute LEFT JOIN pg_class ON pg_attribute.attrelid=pg_class.oid WHERE attname=''descrecibo'' AND relname=''recibo'';
     IF NOT FOUND THEN
         ALTER TABLE recibo ADD COLUMN descrecibo VARCHAR;
     END IF;
 
-    SELECT INTO as * FROM pg_attribute WHERE attname = ''cantrecibo'';
+    SELECT INTO rsa * FROM pg_attribute WHERE attname = ''cantrecibo'';
     IF NOT FOUND THEN
         ALTER TABLE recibo ADD COLUMN cantrecibo NUMERIC(12,2);
     END IF;
     
-    SELECT INTO as * FROM pg_attribute WHERE attname = ''fecharecibo'';
+    SELECT INTO rsa * FROM pg_attribute WHERE attname = ''fecharecibo'';
     IF NOT FOUND THEN
         ALTER TABLE recibo ADD COLUMN fecharecibo DATE DEFAULT now();
     END IF;
     
-    SELECT INTO as * FROM pg_attribute WHERE attname = ''nombrerecibo'';
+    SELECT INTO rsa * FROM pg_attribute WHERE attname = ''nombrerecibo'';
     IF FOUND THEN
         ALTER TABLE recibo DROP COLUMN nombrerecibo;
     END IF;
 
-    SELECT INTO as * FROM pg_tables  WHERE tablename=''lrecibo'';
+    SELECT INTO rsa * FROM pg_tables  WHERE tablename=''lrecibo'';
     IF NOT FOUND THEN
         CREATE TABLE lrecibo (
             idlrecibo SERIAL PRIMARY KEY,
@@ -194,32 +194,32 @@ BEGIN
         );
     END IF;
 
-    SELECT INTO as * FROM pg_attribute WHERE attname = ''ordenlrecibo'';
+    SELECT INTO rsa * FROM pg_attribute WHERE attname = ''ordenlrecibo'';
     IF NOT FOUND THEN
             ALTER TABLE lrecibo ADD COLUMN ordenlrecibo integer;
     END IF;
 
-    SELECT INTO as * FROM pg_attribute WHERE attname = ''sociocliente'';
+    SELECT INTO rsa * FROM pg_attribute WHERE attname = ''sociocliente'';
     IF NOT FOUND THEN
             ALTER TABLE cliente ADD COLUMN sociocliente boolean DEFAULT FALSE;
     END IF;
     
-    SELECT INTO as * FROM pg_attribute WHERE attname = ''numsociocliente'';
+    SELECT INTO rsa * FROM pg_attribute WHERE attname = ''numsociocliente'';
     IF NOT FOUND THEN
         ALTER TABLE cliente ADD COLUMN numsociocliente int;
     END IF;
     
-    SELECT INTO as * FROM pg_attribute WHERE attname = ''apellido1cliente'';
+    SELECT INTO rsa * FROM pg_attribute WHERE attname = ''apellido1cliente'';
     IF NOT FOUND THEN
         ALTER TABLE cliente ADD COLUMN apellido1cliente varchar;
     END IF;
 
-    SELECT INTO as * FROM pg_attribute WHERE attname = ''apellido2cliente'';
+    SELECT INTO rsa * FROM pg_attribute WHERE attname = ''apellido2cliente'';
     IF NOT FOUND THEN
         ALTER TABLE cliente ADD COLUMN apellido2cliente varchar;
     END IF;
 
-    SELECT INTO as * FROM pg_tables WHERE tablename = ''socio'';
+    SELECT INTO rsa * FROM pg_tables WHERE tablename = ''socio'';
     IF NOT FOUND THEN
         CREATE TABLE socio (
             idsocio SERIAL PRIMARY KEY,
@@ -229,7 +229,7 @@ BEGIN
         );
     END IF;
     
-    SELECT INTO as * FROM pg_tables  WHERE tablename=''alumnocliente'';
+    SELECT INTO rsa * FROM pg_tables  WHERE tablename=''alumnocliente'';
     IF NOT FOUND THEN
         CREATE TABLE alumnocliente (
             idalumnocliente SERIAL PRIMARY KEY,
@@ -239,13 +239,13 @@ BEGIN
         );
     END IF;
    
-    SELECT INTO as * FROM pg_attribute WHERE attname = ''porcentalumnocliente'';
+    SELECT INTO rsa * FROM pg_attribute WHERE attname = ''porcentalumnocliente'';
     IF NOT FOUND THEN
         ALTER TABLE alumnocliente ADD COLUMN porcentalumnocliente NUMERIC(12,2) DEFAULT 100;
     END IF;
 
 
-    SELECT INTO as * FROM pg_tables WHERE tablename = ''cuota'';
+    SELECT INTO rsa * FROM pg_tables WHERE tablename = ''cuota'';
     IF NOT FOUND THEN
         CREATE TABLE cuota (
             idcuota SERIAL PRIMARY KEY,
@@ -255,7 +255,7 @@ BEGIN
         );
     END IF;
 
-    SELECT INTO as * FROM pg_tables  WHERE tablename=''tipoactividad'';
+    SELECT INTO rsa * FROM pg_tables  WHERE tablename=''tipoactividad'';
     IF NOT FOUND THEN
         CREATE TABLE tipoactividad (
             idtipoactividad SERIAL PRIMARY KEY,
@@ -263,7 +263,7 @@ BEGIN
         );
     END IF;
 
-    SELECT INTO as * FROM pg_tables  WHERE tablename=''actividad'';
+    SELECT INTO rsa * FROM pg_tables  WHERE tablename=''actividad'';
     IF NOT FOUND THEN
         CREATE TABLE actividad (
             idactividad SERIAL PRIMARY KEY,
@@ -292,7 +292,7 @@ BEGIN
         );
     END IF;
     
-    SELECT INTO as * FROM pg_tables  WHERE tablename=''faltaasistenciaalumnoactividad'';
+    SELECT INTO rsa * FROM pg_tables  WHERE tablename=''faltaasistenciaalumnoactividad'';
     IF NOT FOUND THEN
         CREATE TABLE faltaasistenciaalumnoactividad (
             idfaltaasistenciaalumnoactividad SERIAL PRIMARY KEY,
@@ -302,37 +302,37 @@ BEGIN
         );
     END IF;
 
-    SELECT INTO as attname, relname FROM pg_attribute LEFT JOIN pg_class ON pg_attribute.attrelid=pg_class.oid WHERE attname=''periodoactividad'' AND relname=''actividad'';
+    SELECT INTO rsa attname, relname FROM pg_attribute LEFT JOIN pg_class ON pg_attribute.attrelid=pg_class.oid WHERE attname=''periodoactividad'' AND relname=''actividad'';
     IF NOT FOUND THEN
         ALTER TABLE actividad ADD COLUMN periodoactividad INTERVAL;
     END IF;
 
-    SELECT INTO as attname, relname FROM pg_attribute LEFT JOIN pg_class ON pg_attribute.attrelid=pg_class.oid WHERE attname=''idtipoactividad'' AND relname=''actividad'';
+    SELECT INTO rsa attname, relname FROM pg_attribute LEFT JOIN pg_class ON pg_attribute.attrelid=pg_class.oid WHERE attname=''idtipoactividad'' AND relname=''actividad'';
     IF NOT FOUND THEN
         ALTER TABLE actividad ADD COLUMN idtipoactividad INTEGER REFERENCES tipoactividad(idtipoactividad);
     END IF;
     
-    SELECT INTO as attname, relname FROM pg_attribute LEFT JOIN pg_class ON pg_attribute.attrelid=pg_class.oid WHERE attname=''lugaractividad'' AND relname=''actividad'';
+    SELECT INTO rsa attname, relname FROM pg_attribute LEFT JOIN pg_class ON pg_attribute.attrelid=pg_class.oid WHERE attname=''lugaractividad'' AND relname=''actividad'';
     IF NOT FOUND THEN
         ALTER TABLE actividad ADD COLUMN lugaractividad VARCHAR;
         ALTER TABLE actividad ADD COLUMN diractividad VARCHAR;
     END IF;
 
 
-    SELECT INTO as attname, relname FROM pg_attribute LEFT JOIN pg_class ON pg_attribute.attrelid=pg_class.oid WHERE attname=''hinicialactividad'' AND relname=''actividad'';
+    SELECT INTO rsa attname, relname FROM pg_attribute LEFT JOIN pg_class ON pg_attribute.attrelid=pg_class.oid WHERE attname=''hinicialactividad'' AND relname=''actividad'';
     IF NOT FOUND THEN
         ALTER TABLE actividad ADD COLUMN hinicialactividad VARCHAR;
         ALTER TABLE actividad ADD COLUMN duracionactividad VARCHAR;
     END IF;
 
-    SELECT INTO as attname, relname FROM pg_attribute LEFT JOIN pg_class ON pg_attribute.attrelid=pg_class.oid WHERE attname=''precioactividad'' AND relname=''actividad'';
+    SELECT INTO rsa attname, relname FROM pg_attribute LEFT JOIN pg_class ON pg_attribute.attrelid=pg_class.oid WHERE attname=''precioactividad'' AND relname=''actividad'';
     IF NOT FOUND THEN
         ALTER TABLE actividad ADD COLUMN precioactividad NUMERIC (12,2);
         ALTER TABLE actividad ADD COLUMN finicialactividad DATE;
         ALTER TABLE actividad ADD COLUMN ffinalactividad DATE;
     END IF;
 
-    SELECT INTO as attname, relname FROM pg_attribute LEFT JOIN pg_class ON pg_attribute.attrelid=pg_class.oid WHERE attname=''lunesactividad'' AND relname=''actividad'';
+    SELECT INTO rsa attname, relname FROM pg_attribute LEFT JOIN pg_class ON pg_attribute.attrelid=pg_class.oid WHERE attname=''lunesactividad'' AND relname=''actividad'';
     IF NOT FOUND THEN
         ALTER TABLE actividad ADD COLUMN lunesactividad BOOLEAN;
         ALTER TABLE actividad ADD COLUMN martesactividad BOOLEAN;
@@ -344,12 +344,12 @@ BEGIN
     END IF;
 
     
-    SELECT INTO as attname, relname FROM pg_attribute LEFT JOIN pg_class ON pg_attribute.attrelid=pg_class.oid WHERE attname=''codigoactividad'' AND relname=''actividad'';
+    SELECT INTO rsa attname, relname FROM pg_attribute LEFT JOIN pg_class ON pg_attribute.attrelid=pg_class.oid WHERE attname=''codigoactividad'' AND relname=''actividad'';
     IF NOT FOUND THEN
         ALTER TABLE actividad ADD COLUMN codigoactividad VARCHAR;
     END IF;
       
-    SELECT INTO as * FROM pg_tables  WHERE tablename=''alumnoactividad'';
+    SELECT INTO rsa * FROM pg_tables  WHERE tablename=''alumnoactividad'';
     IF NOT FOUND THEN
         CREATE TABLE alumnoactividad (
             idalumnoactividad SERIAL PRIMARY KEY,
@@ -358,7 +358,7 @@ BEGIN
         );
     END IF;
 
-    SELECT INTO as * FROM pg_tables  WHERE tablename=''clienteactividad'';
+    SELECT INTO rsa * FROM pg_tables  WHERE tablename=''clienteactividad'';
     IF NOT FOUND THEN
         CREATE TABLE clienteactividad (
             idclienteactividad SERIAL PRIMARY KEY,
@@ -369,7 +369,7 @@ BEGIN
 
 
     
-    SELECT INTO as * FROM pg_tables  WHERE tablename=''sesionactividad'';
+    SELECT INTO rsa * FROM pg_tables  WHERE tablename=''sesionactividad'';
     IF NOT FOUND THEN
         CREATE TABLE sesionactividad (
             idsesionactividad SERIAL PRIMARY KEY,
@@ -380,7 +380,7 @@ BEGIN
         );
     END IF;
 
-    SELECT INTO as * FROM pg_tables  WHERE tablename=''cuotaporalumno'';
+    SELECT INTO rsa * FROM pg_tables  WHERE tablename=''cuotaporalumno'';
     IF NOT FOUND THEN
         CREATE TABLE cuotaporalumno (
             numalumnoscuotaporalumno INTEGER NOT NULL PRIMARY KEY,
@@ -388,7 +388,7 @@ BEGIN
         );
     END IF;
 
-    SELECT INTO as * FROM pg_tables  WHERE tablename=''jdirectiva'';
+    SELECT INTO rsa * FROM pg_tables  WHERE tablename=''jdirectiva'';
     IF NOT FOUND THEN
         CREATE TABLE jdirectiva (
             idjdirectiva SERIAL PRIMARY KEY,
@@ -397,7 +397,7 @@ BEGIN
         );
     END IF;
     
-    SELECT INTO as * FROM pg_tables  WHERE tablename=''miembrojdirectiva'';
+    SELECT INTO rsa * FROM pg_tables  WHERE tablename=''miembrojdirectiva'';
     IF NOT FOUND THEN
         CREATE TABLE miembrojdirectiva (
             idmiembrojdirectiva SERIAL PRIMARY KEY,
@@ -409,12 +409,12 @@ BEGIN
         );
     END IF;
     
-    SELECT INTO as attname, relname FROM pg_attribute LEFT JOIN pg_class ON pg_attribute.attrelid=pg_class.oid WHERE attname=''cargomiembrojdirectiva'' AND relname=''miembrojdirectiva'';
+    SELECT INTO rsa attname, relname FROM pg_attribute LEFT JOIN pg_class ON pg_attribute.attrelid=pg_class.oid WHERE attname=''cargomiembrojdirectiva'' AND relname=''miembrojdirectiva'';
     IF NOT FOUND THEN
         ALTER TABLE miembrojdirectiva ADD COLUMN cargomiembrojdirectiva VARCHAR;
     END IF;
 
-    SELECT INTO as * FROM pg_tables  WHERE tablename=''reunion'';
+    SELECT INTO rsa * FROM pg_tables  WHERE tablename=''reunion'';
     IF NOT FOUND THEN
         CREATE TABLE reunion (
             idreunion SERIAL PRIMARY KEY,
@@ -428,18 +428,18 @@ BEGIN
         );
     END IF;
 
-    SELECT INTO as attname, relname FROM pg_attribute LEFT JOIN pg_class ON pg_attribute.attrelid=pg_class.oid WHERE attname=''hora1convocatoriareunion'' AND relname=''reunion'';
+    SELECT INTO rsa attname, relname FROM pg_attribute LEFT JOIN pg_class ON pg_attribute.attrelid=pg_class.oid WHERE attname=''hora1convocatoriareunion'' AND relname=''reunion'';
     IF NOT FOUND THEN
         ALTER TABLE reunion ADD COLUMN hora1convocatoriareunion varchar NOT NULL;
         ALTER TABLE reunion ADD COLUMN hora2convocatoriareunion varchar NOT NULL;
     END IF;
 
-    SELECT INTO as attname, relname FROM pg_attribute LEFT JOIN pg_class ON pg_attribute.attrelid=pg_class.oid WHERE attname=''resolucionreunion'' AND relname=''reunion'';
+    SELECT INTO rsa attname, relname FROM pg_attribute LEFT JOIN pg_class ON pg_attribute.attrelid=pg_class.oid WHERE attname=''resolucionreunion'' AND relname=''reunion'';
     IF NOT FOUND THEN
         ALTER TABLE reunion ADD COLUMN resolucionreunion TEXT;
     END IF;
 
-    SELECT INTO as * FROM pg_tables  WHERE tablename=''ordendiareunion'';
+    SELECT INTO rsa * FROM pg_tables  WHERE tablename=''ordendiareunion'';
     IF NOT FOUND THEN
         CREATE TABLE ordendiareunion (
             idordendiareunion SERIAL PRIMARY KEY,
@@ -450,7 +450,7 @@ BEGIN
         );
     END IF;
 
-    SELECT INTO as * FROM pg_tables  WHERE tablename=''asistentereunion'';
+    SELECT INTO rsa * FROM pg_tables  WHERE tablename=''asistentereunion'';
     IF NOT FOUND THEN
         CREATE TABLE asistentereunion (
             idasistentereunion SERIAL PRIMARY KEY,
@@ -459,7 +459,7 @@ BEGIN
         );
     END IF;
 
-    SELECT INTO as * FROM pg_tables  WHERE tablename=''comision'';
+    SELECT INTO rsa * FROM pg_tables  WHERE tablename=''comision'';
     IF NOT FOUND THEN
         CREATE TABLE comision (
             idcomision SERIAL PRIMARY KEY,
@@ -470,7 +470,7 @@ BEGIN
         );
     END IF;
 
-    SELECT INTO as * FROM pg_tables  WHERE tablename=''miembrocomision'';
+    SELECT INTO rsa * FROM pg_tables  WHERE tablename=''miembrocomision'';
     IF NOT FOUND THEN
         CREATE TABLE miembrocomision (
             idmiembrocomision SERIAL PRIMARY KEY,
@@ -485,21 +485,21 @@ BEGIN
 
 
 -- Agregamos el campo de cuota por reemision de recibo
-   SELECT INTO as * FROM configuracion WHERE nombre=''CuotaReemisionRecibo'';
+   SELECT INTO rsa * FROM configuracion WHERE nombre=''CuotaReemisionRecibo'';
    IF NOT FOUND THEN
       INSERT INTO configuracion (nombre, valor) VALUES (''CuotaReemisionRecibo'', ''3.5'');
    END IF;
 
 -- Quitamos restricciones para la tabla de clientes
 -- y agregamos unas menos restrictivas
-   SELECT INTO as * FROM pg_constraint WHERE conname =''cliente_codcliente_key'';
+   SELECT INTO rsa * FROM pg_constraint WHERE conname =''cliente_codcliente_key'';
    IF FOUND THEN
       ALTER TABLE cliente DROP constraint cliente_nomcliente_key;
       ALTER TABLE cliente DROP CONSTRAINT cliente_codcliente_key;
       ALTER TABLE cliente DROP CONSTRAINT cliente_cifcliente_key;
    END IF;
 
-   SELECT INTO as * FROM pg_constraint WHERE conname =''cliente_fapac_key'';
+   SELECT INTO rsa * FROM pg_constraint WHERE conname =''cliente_fapac_key'';
    IF NOT FOUND THEN
       ALTER TABLE cliente ADD CONSTRAINT cliente_fapac_key UNIQUE (nomcliente, cifcliente, apellido1cliente, apellido2cliente);
    END IF;
@@ -511,7 +511,7 @@ END;
 
 SELECT aux();
 DROP FUNCTION aux() CASCADE;
-\echo "Creamos la tabla profesor."
+\echo "Creamos la tabla profesor 333333."
 
 -- 
 -- Agregamos tres tristes triggers para que se actualice debidamente el campo
@@ -523,7 +523,7 @@ SELECT drop_if_exists_proc('actualizacantrecibo_insert', '');
 CREATE FUNCTION actualizacantrecibo_insert() RETURNS "trigger"
 AS '
 DECLARE
-    as RECORD;
+    rsa RECORD;
     total numeric(12,2);
 
 BEGIN
@@ -545,7 +545,7 @@ SELECT drop_if_exists_proc('actualizacantrecibo_update', '');
 CREATE FUNCTION actualizacantrecibo_update() RETURNS "trigger"
 AS '
 DECLARE
-    as RECORD;
+    rsa RECORD;
     total numeric(12,2);
 
 BEGIN
@@ -567,7 +567,7 @@ SELECT drop_if_exists_proc('actualizacantrecibo_delete', '');
 CREATE FUNCTION actualizacantrecibo_delete() RETURNS "trigger"
 AS '
 DECLARE
-    as RECORD;
+    rsa RECORD;
     total numeric(12,2);
 
 BEGIN
@@ -591,9 +591,9 @@ CREATE TRIGGER actualizacantrecibotrigger_delete
 --
 CREATE OR REPLACE FUNCTION actualizarevision() RETURNS INTEGER AS '
 DECLARE
-	as RECORD;
+	rsa RECORD;
 BEGIN
-	SELECT INTO as * FROM configuracion WHERE nombre=''PluginBf_Profesor'';
+	SELECT INTO rsa * FROM configuracion WHERE nombre=''PluginBf_Profesor'';
 	IF FOUND THEN
 		UPDATE CONFIGURACION SET valor=''0.12.1-0002'' WHERE nombre=''PluginBf_Profesor'';
 	ELSE

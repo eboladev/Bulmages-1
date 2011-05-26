@@ -49,72 +49,72 @@ DROP FUNCTION IF EXISTS actualizacantrecibo_delete() CASCADE;
 
 CREATE OR REPLACE FUNCTION aux() RETURNS INTEGER AS '
 DECLARE
-	as RECORD;
+	rsa  RECORD;
 BEGIN
 
-    SELECT INTO as * FROM pg_tables  WHERE tablename=''alumnotutor'';
+    SELECT INTO rsa * FROM pg_tables  WHERE tablename=''alumnotutor'';
     IF FOUND THEN
         DROP TABLE alumnotutor CASCADE;
     END IF;
 
-    SELECT INTO as * FROM pg_tables  WHERE tablename=''alumno'';
+    SELECT INTO rsa * FROM pg_tables  WHERE tablename=''alumno'';
     IF FOUND THEN
         DROP TABLE alumno CASCADE;
     END IF;
 
-    SELECT INTO as * FROM pg_tables WHERE tablename=''cuota'';
+    SELECT INTO rsa * FROM pg_tables WHERE tablename=''cuota'';
     IF FOUND THEN
         DROP TABLE cuota CASCADE;
     END IF;
     
-    SELECT INTO as * FROM pg_tables WHERE tablename = ''socio'';
+    SELECT INTO rsa * FROM pg_tables WHERE tablename = ''socio'';
     IF FOUND THEN
         DROP TABLE socio CASCADE;
     END IF;
 
-    SELECT INTO as * FROM pg_tables  WHERE tablename=''tutor'';
+    SELECT INTO rsa * FROM pg_tables  WHERE tablename=''tutor'';
     IF FOUND THEN
         DROP TABLE tutor CASCADE;
     END IF;
     
-    SELECT INTO as * FROM pg_tables  WHERE tablename=''faltaasistenciaalumnoactividad'';
+    SELECT INTO rsa * FROM pg_tables  WHERE tablename=''faltaasistenciaalumnoactividad'';
     IF FOUND THEN
         DROP TABLE faltaasistenciaalumnoactividad CASCADE;
     END IF;
         
-    SELECT INTO as * FROM pg_tables  WHERE tablename=''sesionactividad'';
+    SELECT INTO rsa * FROM pg_tables  WHERE tablename=''sesionactividad'';
     IF FOUND THEN
         DROP TABLE sesionactividad CASCADE;
     END IF;
         
-    SELECT INTO as * FROM pg_tables  WHERE tablename=''actividad'';
+    SELECT INTO rsa * FROM pg_tables  WHERE tablename=''actividad'';
     IF FOUND THEN
         DROP TABLE actividad CASCADE;
     END IF;
 
-    SELECT INTO as * FROM pg_tables  WHERE tablename=''profesor'';
+    SELECT INTO rsa * FROM pg_tables  WHERE tablename=''profesor'';
     IF FOUND THEN
         DROP TABLE profesor CASCADE;
     END IF;
 
 -- Quitamos restricciones para la tabla de clientes
--- y agregamos unas menos restrictivas
-   SELECT INTO as * FROM pg_constraint WHERE conname =''cliente_codcliente_key'';
+-- y agregamos unrsa  menos restrictivas
+   SELECT INTO rsa * FROM pg_constraint WHERE conname =''cliente_codcliente_key'';
    IF NOT FOUND THEN
       ALTER TABLE cliente ADD CONSTRAINT cliente_codcliente_key UNIQUE (codcliente);
     END IF;
 
-   SELECT INTO as * FROM pg_constraint WHERE conname =''cliente_nomcliente_key'';
+   SELECT INTO rsa * FROM pg_constraint WHERE conname =''cliente_nomcliente_key'';
    IF NOT FOUND THEN
       ALTER TABLE cliente ADD constraint cliente_nomcliente_key UNIQUE (nomcliente);
     END IF;
 
-   SELECT INTO as * FROM pg_constraint WHERE conname =''cliente_cifcliente_key'';
+   SELECT INTO rsa * FROM pg_constraint WHERE conname =''cliente_cifcliente_key'';
    IF NOT FOUND THEN
       ALTER TABLE cliente ADD CONSTRAINT cliente_cifcliente_key UNIQUE (cifcliente);
     END IF;
 
-   SELECT INTO as * FROM pg_constraint WHERE conname =''cliente_fapac_key'';
+   SELECT INTO rsa * FROM pg_constraint WHERE conname =''cliente_fapac_key'';
    IF FOUND THEN
       ALTER TABLE cliente DROP CONSTRAINT cliente_fapac_key;
    END IF;
@@ -135,9 +135,9 @@ DROP FUNCTION aux() CASCADE;
 --
 CREATE OR REPLACE FUNCTION actualizarevision() RETURNS INTEGER AS '
 DECLARE
-	as RECORD;
+	rsa  RECORD;
 BEGIN
-	SELECT INTO as * FROM configuracion WHERE nombre=''PluginBf_Profesor'';
+	SELECT INTO rsa * FROM configuracion WHERE nombre=''PluginBf_Profesor'';
 	IF FOUND THEN
 		DELETE FROM CONFIGURACION WHERE nombre=''PluginBf_Profesor'';
 	END IF;

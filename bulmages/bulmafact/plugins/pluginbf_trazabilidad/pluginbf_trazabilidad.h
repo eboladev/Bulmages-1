@@ -34,7 +34,9 @@
 #include "listlinfacturaview.h"
 #include "listlinfacturapview.h"
 #include "blwidget.h"
+#include "blaction.h"
 #include "pdefs_pluginbf_trazabilidad.h"
+
 
 
 extern "C" PLUGINBF_TRAZABILIDAD_EXPORT int entryPoint ( BfBulmaFact * );
@@ -43,23 +45,7 @@ extern "C" PLUGINBF_TRAZABILIDAD_EXPORT int BfClienteAlbaranSubForm_BfClienteAlb
 extern "C" PLUGINBF_TRAZABILIDAD_EXPORT int ListLinFacturaView_ListLinFacturaView ( ListLinFacturaView * );
 extern "C" PLUGINBF_TRAZABILIDAD_EXPORT int ListLinFacturaProveedorView_ListLinFacturaProveedorView ( ListLinFacturaProveedorView * );
 extern "C" PLUGINBF_TRAZABILIDAD_EXPORT int BfSubForm_on_mui_list_editFinished ( BfSubForm * );
-
-
-class PluginBf_Trazabilidad : public QObject, BlMainCompanyPointer
-{
-    Q_OBJECT
-
-public:
-    BfBulmaFact *m_bulmafact;
-
-public:
-    PluginBf_Trazabilidad();
-    ~PluginBf_Trazabilidad();
-    void inicializa ( BfBulmaFact * );
-
-public slots:
-    void elslot();
-};
+extern "C" PLUGINBF_TRAZABILIDAD_EXPORT int BlAction_triggered(BlAction *);
 
 
 #endif
