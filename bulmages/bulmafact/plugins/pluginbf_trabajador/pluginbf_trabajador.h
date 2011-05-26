@@ -27,27 +27,11 @@
 #include "bfbuscarreferencia.h"
 #include "blsearchwidget.h"
 #include "pdefs_pluginbf_trabajador.h"
-
+#include "blaction.h"
 
 extern "C" PLUGINBF_TRABAJADOR_EXPORT int entryPoint ( BfBulmaFact * );
 extern "C" PLUGINBF_TRABAJADOR_EXPORT int SNewTrabajadorView (BfCompany *);
-
-
-class PluginBf_Trabajador : public QObject, BlMainCompanyPointer
-{
-    Q_OBJECT
-
-public:
-    BfBulmaFact *m_bges;
-
-public:
-    PluginBf_Trabajador();
-    ~PluginBf_Trabajador();
-    void inicializa ( BfBulmaFact * );
-
-public slots:
-    void elslot1();
-};
+extern "C" PLUGINBF_TRABAJADOR_EXPORT int BlAction_triggered(BlAction *);
 
 
 #endif

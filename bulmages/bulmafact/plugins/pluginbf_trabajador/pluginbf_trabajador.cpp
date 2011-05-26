@@ -25,75 +25,7 @@
 #include "blfunctions.h"
 #include "trabajadorview.h"
 
-
-
-
-///
-/**
-**/
-PluginBf_Trabajador::PluginBf_Trabajador()
-{
-    blDebug ( "PluginBf_Trabajador::PluginBf_Trabajador", 0 );
-    blDebug ( "END PluginBf_Trabajador::PluginBf_Trabajador", 0 );
-}
-
-
-///
-/**
-**/
-PluginBf_Trabajador::~PluginBf_Trabajador()
-{
-    blDebug ( "PluginBf_Trabajador::~PluginBf_Trabajador", 0 );
-    blDebug ( "END PluginBf_Trabajador::~PluginBf_Trabajador", 0 );
-}
-
-
-///
-/**
-**/
-void PluginBf_Trabajador::elslot1()
-{
-    blDebug ( "PluginBf_Trabajador::elslot1", 0 );
-    TrabajadorView * bud = new TrabajadorView ( ( BfCompany * ) mainCompany(), NULL );
-    mainCompany() ->m_pWorkspace->addSubWindow ( bud );
-    bud->show();
-    blDebug ( "END PluginBf_Trabajador::elslot1", 0 );
-}
-
-
-
-///
-/**
-\param bges
-**/
-void PluginBf_Trabajador::inicializa ( BfBulmaFact *bges )
-{
-    blDebug ( "PluginBf_Trabajador::inicializa", 0 );
-
-    if ( bges->company()->hasTablePrivilege ( "trabajador", "SELECT" ) ) {
-
-        /// Miramos si existe un menu Ventas
-        QMenu *pPluginMenu = bges->menuMaestro;
-        pPluginMenu->addSeparator();
-
-        /// El men&uacute; de Tarifas en la secci&oacute;n de art&iacute;culos.
-        m_bges = bges;
-        setMainCompany ( bges->company() );
-        QAction *planCuentas = new QAction ( _ ( "&Trabajadores" ), 0 );
-        planCuentas->setIcon ( QIcon ( QString::fromUtf8 ( ":/Images/employee-list.png" ) ) );
-        planCuentas->setStatusTip ( _ ( "Trabajadores" ) );
-        planCuentas->setWhatsThis ( _ ( "Trabajadores" ) );
-        pPluginMenu->addAction ( planCuentas );
-        bges->Listados->addAction ( planCuentas );
-        connect ( planCuentas, SIGNAL ( activated() ), this, SLOT ( elslot1() ) );
-
-    }// end if
-    blDebug ( "END PluginBf_Trabajador::inicializa", 0 );
-}
-
-
-
-
+BfBulmaFact *g_bges = NULL;
 
 ///
 /**
@@ -107,9 +39,36 @@ int entryPoint ( BfBulmaFact *bges )
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale ( LC_ALL, "" );
     blBindTextDomain ( "pluginbf_trabajador", g_confpr->valor ( CONF_DIR_TRADUCCION ).toAscii().constData() );
+    g_bges = bges;
 
-    PluginBf_Trabajador *plug = new PluginBf_Trabajador();
-    plug->inicializa ( bges );
+
+    if ( bges->company()->hasTablePrivilege ( "trabajador", "SELECT" ) ) {
+
+        /// Miramos si existe un menu Ventas
+        QMenu *pPluginMenu = bges->menuMaestro;
+        pPluginMenu->addSeparator();
+
+        BlAction *accionA = new BlAction ( _ ( "&Trabajadores" ), 0 );
+        accionA->setIcon ( QIcon ( QString::fromUtf8 ( ":/Images/employee-list.png" ) ) );
+        accionA->setStatusTip ( _ ( "Trabajadores" ) );
+        accionA->setWhatsThis ( _ ( "Trabajadores" ) );
+        accionA->setObjectName("mui_actionTrabajadores");
+        pPluginMenu->addAction ( accionA );
+        bges->Listados->addAction ( accionA );
+
+    } // end if
+
+    return 0;
+}
+
+
+int BlAction_triggered(BlAction *accion) {
+    if (accion->objectName() == "mui_actionTrabajadores") {
+        TrabajadorView * bud = new TrabajadorView ( ( BfCompany * ) g_bges->company(), NULL );
+        g_bges->company() ->m_pWorkspace->addSubWindow ( bud );
+        bud->show();
+    } // end if
+
     return 0;
 }
 
