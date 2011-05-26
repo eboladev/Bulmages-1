@@ -28,91 +28,7 @@
 #include "blsearchwidget.h"
 
 TutoresList *g_tutoresList = NULL;
-
-///
-/**
-**/
-PluginBf_Tutor::PluginBf_Tutor()
-{
-    blDebug ( "PluginBf_Tutor::PluginBf_Tutor", 0 );
-    blDebug ( "END PluginBf_Tutor::PluginBf_Tutor", 0 );
-}
-
-
-///
-/**
-**/
-PluginBf_Tutor::~PluginBf_Tutor()
-{
-    blDebug ( "PluginBf_Tutor::~PluginBf_Tutor", 0 );
-    blDebug ( "END PluginBf_Tutor::~PluginBf_Tutor", 0 );
-}
-
-
-///
-/**
-**/
-void PluginBf_Tutor::elslot()
-{
-    blDebug ( "PluginBf_Tutor::elslot", 0 );
-    if ( g_tutoresList ) {
-        g_tutoresList->hide();
-        g_tutoresList->show();
-    }// end if
-    blDebug ( "END PluginBf_Tutor::elslot", 0 );
-}
-
-///
-/**
-**/
-void PluginBf_Tutor::elslot1()
-{
-    blDebug ( "PluginBf_Tutor::elslot1", 0 );
-    TutorView * bud = new TutorView ( ( BfCompany * ) mainCompany(), NULL );
-    mainCompany() ->m_pWorkspace->addSubWindow ( bud );
-    bud->show();
-    blDebug ( "END PluginBf_Tutor::elslot1", 0 );
-}
-
-
-
-///
-/**
-\param bges
-**/
-void PluginBf_Tutor::inicializa ( BfBulmaFact *bges )
-{
-    blDebug ( "PluginBf_Tutor::inicializa", 0 );
-
-    if ( bges->company()->hasTablePrivilege ( "cliente", "SELECT" ) ) {
-
-        /// Miramos si existe un menu Ventas
-        QMenu *pPluginMenu = bges->newMenu ( _("&Associats"), "menuAssociats", "menuMaestro" );
-
-	/// Agrego un Separador
-	pPluginMenu->addSeparator();
-
-        /// El men&uacute; de Tarifas en la secci&oacute;n de art&iacute;culos.
-        m_bges = bges;
-        setMainCompany ( bges->company() );
-        QAction *planCuentas = new QAction ( _ ( "&Padres/Socios" ), 0 );
-        planCuentas->setIcon ( QIcon ( QString::fromUtf8 ( ":/ImgGestionAula/icons/tutor-list.png" ) ) );
-        planCuentas->setStatusTip ( _ ( "Padres/Socios" ) );
-        planCuentas->setWhatsThis ( _ ( "Padres/Socios" ) );
-        pPluginMenu->addAction ( planCuentas );
-        bges->Listados->addAction ( planCuentas );
-        connect ( planCuentas, SIGNAL ( activated() ), this, SLOT ( elslot() ) );
-
-        QAction *npago = new QAction ( _ ( "&Nuevo padre/socio" ), 0 );
-        npago->setIcon ( QIcon ( QString::fromUtf8 ( ":/ImgGestionAula/icons/tutor-new.png" ) ) );
-        npago->setStatusTip ( _ ( "Nuevo padre/socio" ) );
-        npago->setWhatsThis ( _ ( "Nuevo padre/socio" ) );
-        pPluginMenu->addAction ( npago );
-        bges->Fichas->addAction ( npago );
-        connect ( npago, SIGNAL ( activated() ), this, SLOT ( elslot1() ) );
-    }// end if
-    blDebug ( "END PluginBf_Tutor::inicializa", 0 );
-}
+BfBulmaFact *g_bges = NULL;
 
 
 ///
@@ -127,12 +43,55 @@ int entryPoint ( BfBulmaFact *bges )
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale ( LC_ALL, "" );
     blBindTextDomain ( "pluginbf_tutor", g_confpr->valor ( CONF_DIR_TRADUCCION ).toAscii().constData() );
+    g_bges = bges;
 
-    PluginBf_Tutor *plug = new PluginBf_Tutor();
-    plug->inicializa ( bges );
+    if ( bges->company()->hasTablePrivilege ( "cliente", "SELECT" ) ) {
+
+        /// Miramos si existe un menu Ventas
+        QMenu *pPluginMenu = bges->newMenu ( _("&Associats"), "menuAssociats", "menuMaestro" );
+
+        /// Agrego un Separador
+        pPluginMenu->addSeparator();
+
+        BlAction *accionA = new BlAction ( _ ( "&Padres/Socios" ), 0 );
+        accionA->setIcon ( QIcon ( QString::fromUtf8 ( ":/ImgGestionAula/icons/tutor-list.png" ) ) );
+        accionA->setStatusTip ( _ ( "Padres/Socios" ) );
+        accionA->setWhatsThis ( _ ( "Padres/Socios" ) );
+        accionA->setObjectName("mui_actionSocio");
+        pPluginMenu->addAction ( accionA );
+        bges->Listados->addAction ( accionA );
+
+        BlAction *accionB = new BlAction ( _ ( "&Nuevo padre/socio" ), 0 );
+        accionB->setIcon ( QIcon ( QString::fromUtf8 ( ":/ImgGestionAula/icons/tutor-new.png" ) ) );
+        accionB->setStatusTip ( _ ( "Nuevo padre/socio" ) );
+        accionB->setWhatsThis ( _ ( "Nuevo padre/socio" ) );
+        accionB->setObjectName("mui_actionSocioNuevo");
+        pPluginMenu->addAction ( accionB );
+        bges->Fichas->addAction ( accionB );
+    } // end if
+
+
     return 0;
 }
 
+
+
+int BlAction_triggered(BlAction *accion) {
+    if (accion->objectName() == "mui_actionSocio") {
+        if ( g_tutoresList ) {
+            g_tutoresList->hide();
+            g_tutoresList->show();
+        } // end if
+    } // end if
+
+    if (accion->objectName() == "mui_actionSocioNuevo") {
+        TutorView * bud = new TutorView ( ( BfCompany * ) g_bges->company(), NULL );
+        g_bges->company()->m_pWorkspace->addSubWindow ( bud );
+        bud->show();
+    } // end if
+
+    return 0;
+}
 
 int BfCompany_createMainWindows_Post ( BfCompany *comp )
 {
