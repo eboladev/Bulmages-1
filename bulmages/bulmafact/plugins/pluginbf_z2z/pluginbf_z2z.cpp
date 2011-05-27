@@ -71,10 +71,12 @@ int entryPoint ( BfBulmaFact *bges )
 
 
 int BlAction_triggered(BlAction *accion) {
-    if (accion->objectName() == "tratamientoContratos") {
+    if (accion->objectName() == "mui_actionZ2Z") {
+        blDebug ( "PluginBf_Z2Z::BlAction_triggered::mui_actionZ2Z", 0 );
         Z2ZView * bud = new Z2ZView ( g_bges, NULL );
         g_bges->m_pWorkspace->addSubWindow ( bud );
         bud->show();
+        blDebug ( "END PluginBf_Z2Z::BlAction_triggered::mui_actionZ2Z", 0 );
     } // end if
     
     return 0;

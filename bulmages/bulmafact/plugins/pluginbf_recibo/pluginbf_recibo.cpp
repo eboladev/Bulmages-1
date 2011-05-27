@@ -96,19 +96,19 @@ int BlAction_triggered(BlAction *accion) {
     } // end if
 
     if (accion->objectName() == "mui_actionReciboNuevo") {
-        blDebug ( "PluginBf_Recibo::BlAction_triggered::mui_actionRecibos", 0 );
+        blDebug ( "PluginBf_Recibo::BlAction_triggered::mui_actionReciboNuevo", 0 );
         ReciboView * bud = new ReciboView ( ( BfCompany * ) g_bges->company(), NULL );
         g_bges->company()->m_pWorkspace->addSubWindow ( bud );
         bud->show();
-        blDebug ( "END PluginBf_Recibo::BlAction_triggered::mui_actionRecibos", 0 );
+        blDebug ( "END PluginBf_Recibo::BlAction_triggered::mui_actionReciboNuevo", 0 );
     } // end if
 
     if (accion->objectName() == "mui_actionRecibosEmitir") {
-        blDebug ( "PluginBf_Recibo::BlAction_triggered::mui_actionRecibos", 0 );
+        blDebug ( "PluginBf_Recibo::BlAction_triggered::mui_actionRecibosEmitir", 0 );
         EmitirRecibosView * bud = new EmitirRecibosView ( ( BfCompany * ) g_bges->company(), NULL );
         g_bges->company()->m_pWorkspace->addSubWindow ( bud );
         bud->show();
-        blDebug ( "END PluginBf_Recibo::BlAction_triggered::mui_actionRecibos", 0 );
+        blDebug ( "END PluginBf_Recibo::BlAction_triggered::mui_actionRecibosEmitir", 0 );
     } // end if
 
     return 0;

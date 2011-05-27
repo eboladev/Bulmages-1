@@ -98,7 +98,7 @@ int BfCompany_createMainWindows_Post ( BfCompany *comp )
         g_pedidosProveedorList = new PedidosProveedorList ( comp, NULL );
         comp->m_pWorkspace->addSubWindow ( g_pedidosProveedorList );
         g_pedidosProveedorList->hide();
-    }// end if
+    } // end if
     return 0;
 }
 
@@ -111,7 +111,7 @@ int ProveedorView_ProveedorView_Post ( ProveedorView *prov )
         pedidosProveedorList->setObjectName ( "listPedidosProveedorList" );
         pedidosProveedorList->hideBusqueda();
         prov->mui_tab->addTab ( pedidosProveedorList, "Pedidos" );
-    }// end if
+    } // end if
     return 0;
 }
 
@@ -121,9 +121,9 @@ int ProveedorView_cargarPost_Post ( ProveedorView *prov )
         PedidosProveedorList *pedidosProveedorList = prov->findChild<PedidosProveedorList *> ( "listPedidosProveedorList" );
         pedidosProveedorList->setidproveedor ( prov->dbValue ( "idproveedor" ) );
         pedidosProveedorList->presentar();
-    }// end if
+    } // end if
     return 0;
-}// end if
+} // end if
 
 
 int BfBuscarReferencia_on_mui_abrirtodo_clicked_Post ( BfBuscarReferencia *ref )
@@ -139,5 +139,5 @@ int BfBuscarReferencia_on_mui_abrirtodo_clicked_Post ( BfBuscarReferencia *ref )
     } // end while
     delete cur;
     return 0;
-}// end if
+} // end if
 
