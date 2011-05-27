@@ -36,7 +36,7 @@ BfBulmaFact *g_bges = NULL;
 **/
 int entryPoint ( BfBulmaFact *bges )
 {
-    blDebug ( "Estoy dentro del plugin de tipos de trabajo", 0 );
+    blDebug ( "Punto de entrada de PluginBf_TipoTrabajo", 0 );
 
     /// El plugin necesita un parche en la base de datos para funcionar.
     bges->company()->dbPatchVersionCheck("PluginBf_TipoTrabajo", "0.10.1-0001");
@@ -53,13 +53,16 @@ int entryPoint ( BfBulmaFact *bges )
     bges->menuMaestro->addAction ( accion );
                     
     return 0;
+    blDebug ( "END Punto de entrada de PluginBf_TipoTrabajo", 0 );
 }
 
 int BlAction_triggered(BlAction *accion) {
     if (accion->objectName() == "mui_actionTipoTrabajo") {
+        blDebug ( "PluginBf_TipoTrabajo::BlAction_triggered::mui_actionTipoTrabajo", 0 );
         ListTiposTrabajoView *l = new ListTiposTrabajoView ( ( BfCompany * ) g_bges->company(), 0 );
         g_bges->company()->m_pWorkspace->addSubWindow ( l );
         l->show();
+        blDebug ( "PluginBf_TipoTrabajo::BlAction_triggered::mui_actionTipoTrabajo", 0 );
     } // end if
     return 0;
 }

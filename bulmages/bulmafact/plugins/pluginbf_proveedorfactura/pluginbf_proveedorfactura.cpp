@@ -75,17 +75,22 @@ int entryPoint ( BfBulmaFact *bges )
 
 int BlAction_triggered(BlAction *accion) {
     if (accion->objectName() == "mui_actionProveedoresFacturas") {
+        blDebug ( "PluginBf_ProveedorFacuta::BlAction_triggered::mui_actionProveedoresFacturas", 0 );
         if ( g_facturasProveedorList ) {
             g_facturasProveedorList->hide();
             g_facturasProveedorList->show();
         } // end if
+        blDebug ( "PluginBf_ProveedorFacuta::BlAction_triggered::mui_actionProveedoresFacturas", 0 );
+
     }  // end if
 
     if (accion->objectName() == "mui_actionProveedorFacturaNueva") {
+        blDebug ( "PluginBf_ProveedorFacuta::BlAction_triggered::mui_actionProveedorFacturaNueva", 0 );
         FacturaProveedorView * bud = new FacturaProveedorView ( ( BfCompany * ) g_bges->company(), NULL );
         g_bges->company()->m_pWorkspace->addSubWindow ( bud );
         bud->inicializar();
         bud->show();
+        blDebug ( "PluginBf_ProveedorFacuta::BlAction_triggered::mui_actionProveedorFacturaNueva", 0 );        
        }  // end if
 
     return 0;

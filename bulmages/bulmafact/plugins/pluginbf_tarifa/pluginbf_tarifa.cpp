@@ -68,8 +68,10 @@ int entryPoint ( BfBulmaFact *bges )
 
 int BlAction_triggered(BlAction *accion) {
     if (accion->objectName() == "mui_actionTarifas") {
+        blDebug ( "PluginBf_Tarifa::BlAction_triggered::mui_actionTarifas", 0 );
         TarifaListView *tar = new TarifaListView ( ( ( BfCompany * ) g_bges->company() ), NULL );
         g_bges->company() ->m_pWorkspace->addSubWindow ( tar );
+        blDebug ( "END PluginBf_Tarifa::BlAction_triggered::mui_actionTarifas", 0 );
         tar->show();        
     } // end if
     return 0;
@@ -84,7 +86,7 @@ int BlAction_triggered(BlAction *accion) {
 **/
 int ClienteView_ClienteView ( ClienteView *cli )
 {
-    blDebug ( "dentro del plugin", 0 );
+    blDebug ( "ClienteView_ClienteView", 0 );
 
     cli->addDbField ( "idtarifa", BlDbField::DbInt, BlDbField::DbNothing, _ ( "plugintarifas" ) );
 

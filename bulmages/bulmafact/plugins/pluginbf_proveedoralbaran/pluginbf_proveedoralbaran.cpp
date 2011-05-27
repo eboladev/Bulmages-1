@@ -38,7 +38,7 @@ BfBulmaFact *g_bges = NULL;
 **/
 int entryPoint ( BfBulmaFact *bges )
 {
-    blDebug ( "Punto de entrada del plugin de facturas de proveedor\n", 0 );
+    blDebug ( "Punto de entrada de PluginBf_ProveedorAlbaran \n", 0 );
 
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale ( LC_ALL, "" );

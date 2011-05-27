@@ -43,7 +43,7 @@ BfBulmaFact *g_bges = NULL;
 **/
 int entryPoint ( BfBulmaFact *bges )
 {
-    blDebug ( "Estoy dentro del plugin de tallas y colores", 0 );
+    blDebug ( "Punto de entrada de PluginBf_TallasColores", 0 );
 
     /// El plugin necesita un parche en la base de datos para funcionar.
     bges->company()->dbPatchVersionCheck("PluginBf_TallasColores", "0.11.1-0001");
@@ -68,41 +68,41 @@ int entryPoint ( BfBulmaFact *bges )
     } // end if
     /// Creamos el men&uacute;.
 
-    BlAction *accionTallas = new BlAction ( _ ( "&Tallas" ), 0 );
-    accionTallas->setStatusTip ( _ ( "Tallas" ) );
-    accionTallas->setWhatsThis ( _ ( "Tallas" ) );
-//    connect ( acciontallas, SIGNAL ( activated() ), this, SLOT ( tallas() ) );
-    accionTallas->setObjectName("mui_actionTallas");    
+    BlAction *accionA = new BlAction ( _ ( "&Tallas" ), 0 );
+    accionA->setStatusTip ( _ ( "Tallas" ) );
+    accionA->setWhatsThis ( _ ( "Tallas" ) );
+    accionA->setObjectName("mui_actionTallas");    
     
-    pPluginMenuTallasColores->addAction ( accionTallas );
+    pPluginMenuTallasColores->addAction ( accionA );
 
-    BlAction *accionColores = new BlAction ( _ ( "&Colores" ), 0 );
-    accionColores->setStatusTip ( _ ( "Colores" ) );
-    accionColores->setWhatsThis ( _ ( "Colores" ) );
-    accionColores->setObjectName("mui_actionColores");
+    BlAction *accionB = new BlAction ( _ ( "&Colores" ), 0 );
+    accionB->setStatusTip ( _ ( "Colores" ) );
+    accionB->setWhatsThis ( _ ( "Colores" ) );
+    accionB->setObjectName("mui_actionColores");
 
-//    connect ( accioncolores, SIGNAL ( activated() ), this, SLOT ( colores() ) );
-    pPluginMenuTallasColores->addAction ( accionColores );
+    pPluginMenuTallasColores->addAction ( accionB );
 
     /// A&ntilde;adimos la nueva opci&oacute;n al men&uacute; principal del programa.
     bges->menuBar() ->insertMenu ( bges->menuVentana->menuAction(), pPluginMenuTallasColores );
 
-  //  PluginBf_TallasColores *plug = new PluginBf_TallasColores();
-    //plug->inicializa ( bges );
     return 0;
 }
 
 int BlAction_triggered(BlAction *accion) {
     if (accion->objectName() == "mui_actionTallas") {
+        blDebug ( "PluginBf_TallasColores::BlAction_triggered::mui_actionTallas", 0 );
         ListTallasView *tallas = new ListTallasView ( g_bges->company(), 0 );
         g_bges->company()->m_pWorkspace->addSubWindow ( tallas );
         tallas->show();
+        blDebug ( "END PluginBf_TallasColores::BlAction_triggered::mui_actionTallas", 0 );
     } // end if
 
     if (accion->objectName() == "mui_actionColores") {
+        blDebug ( "PluginBf_TallasColores::BlAction_triggered::mui_actionColores", 0 );
         ListColoresView *colores = new ListColoresView ( g_bges->company(), 0 );
         g_bges->company()->m_pWorkspace->addSubWindow ( colores );
         colores->show();
+        blDebug ( "END PluginBf_TallasColores::BlAction_triggered::mui_actionColores", 0 );
     } // end if
 
     return 0;

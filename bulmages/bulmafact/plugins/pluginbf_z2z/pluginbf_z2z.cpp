@@ -43,15 +43,13 @@ BfCompany *g_bges;
 **/
 int entryPoint ( BfBulmaFact *bges )
 {
-    blDebug ( "Entrada del plugin 'Traspaso de Z'", 10 );
+    blDebug ( "Entrada del PluginBf_Z2Z", 10 );
 
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale ( LC_ALL, "" );
     blBindTextDomain ( "pluginbf_z2z", g_confpr->valor ( CONF_DIR_TRADUCCION ).toAscii().constData() );
 
     g_bges = bges->company();
-
-
 
     /// Miramos si existe un menu Herramientas
     QMenu *pPluginMenu = bges->newMenu ( _("&Herramientas"), "menuHerramientas", "menuAcerca_de" );
@@ -65,7 +63,7 @@ int entryPoint ( BfBulmaFact *bges )
     //QObject::connect ( accionA, SIGNAL ( activated (  ) ), corr, SLOT ( elslot ( ) ) );
     pPluginMenu->addSeparator();
     pPluginMenu->addAction ( accionA );
-    blDebug ( "Iniciado correctamente el plugin 'Traspaso de Z'", 10 );
+    blDebug ( "END Entrada del PluginBf_Z2Z", 10 );
     return 0;
 }
 

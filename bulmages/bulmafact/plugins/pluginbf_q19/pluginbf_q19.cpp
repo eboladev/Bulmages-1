@@ -36,7 +36,7 @@
 **/
 int entryPoint ( BfBulmaFact * )
 {
-    blDebug ( "Estoy dentro del plugin de Q19", 0 );
+    blDebug ( "Punto de entrada de PluginBf_Q19", 0 );
     new Q19TextCodec(); // no us espanteu, els codecs els arxiva i destrueix QT (espero)
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale ( LC_ALL, "" );

@@ -33,7 +33,7 @@ BfBulmaFact *g_bges = NULL;
 **/
 int entryPoint ( BfBulmaFact *bges )
 {
-    blDebug ( "Punto de Entrada del plugin de Trabajadors\n", 0 );
+    blDebug ( "Punto de entrada de PluginBf_SeriesFactura\n", 0 );
 
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale ( LC_ALL, "" );
@@ -55,6 +55,7 @@ int entryPoint ( BfBulmaFact *bges )
         bges->Listados->addAction ( accionA );
 
     } // end if
+    blDebug ( "END Punto de Entrada de PluginBf_SeriesFactura\n", 0 );
 
     return 0;
 }
@@ -62,8 +63,10 @@ int entryPoint ( BfBulmaFact *bges )
 
 int BlAction_triggered(BlAction *accion) {
     if (accion->objectName() == "mui_actionSeriesFactura") {
+        blDebug ( "PluginBf_SeriesFactura::BlAction_triggered::mui_actionSeriesFactura", 0 );
         BfSerieFacturaView * bud = new BfSerieFacturaView ( ( BfCompany * ) g_bges->company(), NULL );
         g_bges->company() ->m_pWorkspace->addSubWindow ( bud );
+        blDebug ( "PluginBf_SeriesFactura::BlAction_triggered::mui_actionSeriesFactura", 0 );
         bud->show();
     } // end if
     

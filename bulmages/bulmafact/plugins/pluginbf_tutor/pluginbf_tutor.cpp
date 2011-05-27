@@ -38,7 +38,7 @@ BfBulmaFact *g_bges = NULL;
 **/
 int entryPoint ( BfBulmaFact *bges )
 {
-    blDebug ( "Punto de entrada del plugin de tutores\n", 0 );
+    blDebug ( "Punto de entrada de PluginBf_Tutor\n", 0 );
 
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale ( LC_ALL, "" );
@@ -70,7 +70,8 @@ int entryPoint ( BfBulmaFact *bges )
         bges->Fichas->addAction ( accionB );
     } // end if
 
-
+    blDebug ( "END Punto de entrada de PluginBf_Tutor\n", 0 );
+    
     return 0;
 }
 
@@ -78,16 +79,20 @@ int entryPoint ( BfBulmaFact *bges )
 
 int BlAction_triggered(BlAction *accion) {
     if (accion->objectName() == "mui_actionSocio") {
+        blDebug ( "PluginBf_Tutor::BlAction_triggered::mui_actionSocio", 0 );
         if ( g_tutoresList ) {
             g_tutoresList->hide();
             g_tutoresList->show();
         } // end if
+        blDebug ( "END PluginBf_Tutor::BlAction_triggered::mui_actionSocio", 0 );
     } // end if
 
     if (accion->objectName() == "mui_actionSocioNuevo") {
+        blDebug ( "PluginBf_Tutor::BlAction_triggered::mui_actionSocioNuevo", 0 );
         TutorView * bud = new TutorView ( ( BfCompany * ) g_bges->company(), NULL );
         g_bges->company()->m_pWorkspace->addSubWindow ( bud );
         bud->show();
+        blDebug ( "END PluginBf_Tutor::BlAction_triggered::mui_actionSocioNuevo", 0 );
     } // end if
 
     return 0;

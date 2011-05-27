@@ -39,7 +39,7 @@ BfBulmaFact *g_bges = NULL;
 **/
 int entryPoint ( BfBulmaFact *bges )
 {
-    blDebug ( "Punto de Entrada del plugin de Tarifas\n", 0 );
+    blDebug ( "Punto de entrada del plugin de PluginBf_ProveedorPago\n", 0 );
 
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale ( LC_ALL, "" );

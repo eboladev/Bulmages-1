@@ -34,7 +34,7 @@ BfBulmaFact *g_bges = NULL;
 **/
 int entryPoint ( BfBulmaFact *bges )
 {
-    blDebug ( "Punto de Entrada del plugin de Trabajadors\n", 0 );
+    blDebug ( "Punto de Entrada del plugin de PluginBf_Trabajador\n", 0 );
 
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale ( LC_ALL, "" );
@@ -57,6 +57,7 @@ int entryPoint ( BfBulmaFact *bges )
         bges->Listados->addAction ( accionA );
 
     } // end if
+    blDebug ( "END Punto de Entrada del plugin de PluginBf_Trabajador\n", 0 );
 
     return 0;
 }
@@ -64,9 +65,11 @@ int entryPoint ( BfBulmaFact *bges )
 
 int BlAction_triggered(BlAction *accion) {
     if (accion->objectName() == "mui_actionTrabajadores") {
+        blDebug ( "PluginBf_Trabajador::BlAction_triggered::mui_actionTrabajadores", 0 );
         TrabajadorView * bud = new TrabajadorView ( ( BfCompany * ) g_bges->company(), NULL );
         g_bges->company() ->m_pWorkspace->addSubWindow ( bud );
         bud->show();
+        blDebug ( "END PluginBf_Trabajador::BlAction_triggered::mui_actionTrabajadores", 0 );
     } // end if
 
     return 0;
