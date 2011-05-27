@@ -29,110 +29,7 @@
 #include "blsearchwidget.h"
 
 ActividadesList *g_actividadesList = NULL;
-
-///
-/**
-**/
-PluginBf_Actividad::PluginBf_Actividad()
-{
-    blDebug ( "PluginBf_Actividad::PluginBf_Actividad", 0 );
-    blDebug ( "END PluginBf_Actividad::PluginBf_Actividad", 0 );
-}
-
-
-///
-/**
-**/
-PluginBf_Actividad::~PluginBf_Actividad()
-{
-    blDebug ( "PluginBf_Actividad::~PluginBf_Actividad", 0 );
-    blDebug ( "END PluginBf_Actividad::~PluginBf_Actividad", 0 );
-}
-
-
-///
-/**
-**/
-void PluginBf_Actividad::elslot()
-{
-    blDebug ( "PluginBf_Actividad::elslot", 0 );
-    if ( g_actividadesList ) {
-        g_actividadesList->hide();
-        g_actividadesList->show();
-    }// end if
-    blDebug ( "END PluginBf_Actividad::elslot", 0 );
-}
-
-///
-/**
-**/
-void PluginBf_Actividad::elslot1()
-{
-    blDebug ( "PluginBf_Actividad::elslot1", 0 );
-    ActividadView * bud = new ActividadView ( ( BfCompany * ) mainCompany(), NULL );
-    mainCompany() ->m_pWorkspace->addSubWindow ( bud );
-    bud->show();
-    blDebug ( "END PluginBf_Actividad::elslot1", 0 );
-}
-
-
-///
-/**
-**/
-void PluginBf_Actividad::elslot2()
-{
-    blDebug ( "PluginBf_Actividad::elslot2", 0 );
-    TipoActividadView * bud = new TipoActividadView ( ( BfCompany * ) mainCompany(), NULL );
-    mainCompany() ->m_pWorkspace->addSubWindow ( bud );
-    bud->show();
-    blDebug ( "END PluginBf_Actividad::elslot2", 0 );
-}
-
-
-///
-/**
-\param bges
-**/
-void PluginBf_Actividad::inicializa ( BfBulmaFact *bges )
-{
-    blDebug ( "PluginBf_Actividad::inicializa", 0 );
-
-    if ( bges->company()->hasTablePrivilege ( "cobro", "SELECT" ) ) {
-
-        /// Miramos si existe un menu Ventas
-        QMenu *pPluginMenu = bges->newMenu ( "&Activitats", "menuActivitats", "menuMaestro" );
-        pPluginMenu->addSeparator();
-
-        QAction *ntipoact = new QAction ( _ ( "&Tipos de Actividad" ), 0 );
-        ntipoact->setIcon ( QIcon ( QString::fromUtf8 ( ":/ImgGestionAula/icons/actividad.png" ) ) );
-        ntipoact->setStatusTip ( _ ( "Tipos de Actividad" ) );
-        ntipoact->setWhatsThis ( _ ( "Tipos de Actividad" ) );
-        pPluginMenu->addAction ( ntipoact );
-        bges->Fichas->addAction ( ntipoact );
-        connect ( ntipoact, SIGNAL ( activated() ), this, SLOT ( elslot2() ) );
-        
-        pPluginMenu->addSeparator();
-        m_bges = bges;
-        
-        setMainCompany ( bges->company() );
-        QAction *planCuentas = new QAction ( _ ( "&Actividades" ), 0 );
-        planCuentas->setIcon ( QIcon ( QString::fromUtf8 ( ":/ImgGestionAula/icons/actividad.png" ) ) );
-        planCuentas->setStatusTip ( _ ( "Actividades" ) );
-        planCuentas->setWhatsThis ( _ ( "Actividades" ) );
-        pPluginMenu->addAction ( planCuentas );
-        bges->Listados->addAction ( planCuentas );
-        connect ( planCuentas, SIGNAL ( activated() ), this, SLOT ( elslot() ) );
-
-        QAction *npago = new QAction ( _ ( "&Nueva actividad" ), 0 );
-        npago->setIcon ( QIcon ( QString::fromUtf8 ( ":/ImgGestionAula/icons/actividad_add.png" ) ) );
-        npago->setStatusTip ( _ ( "Nueva actividad" ) );
-        npago->setWhatsThis ( _ ( "Nueva actividad" ) );
-        pPluginMenu->addAction ( npago );
-        bges->Fichas->addAction ( npago );
-        connect ( npago, SIGNAL ( activated() ), this, SLOT ( elslot1() ) );
-    }// end if
-    blDebug ( "END PluginBf_Actividad::inicializa", 0 );
-}
+BfBulmaFact *g_bges = NULL;
 
 
 ///
@@ -147,13 +44,68 @@ int entryPoint ( BfBulmaFact *bges )
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale ( LC_ALL, "" );
     blBindTextDomain ( "pluginbf_actividad", g_confpr->valor ( CONF_DIR_TRADUCCION ).toAscii().constData() );
+    g_bges = bges;
 
-    PluginBf_Actividad *plug = new PluginBf_Actividad();
-    plug->inicializa ( bges );
+    if ( bges->company()->hasTablePrivilege ( "cobro", "SELECT" ) ) {
+
+        /// Miramos si existe un menu Ventas
+        QMenu *pPluginMenu = bges->newMenu ( _("&Activitats"), "menuActivitats", "menuMaestro" );
+
+        pPluginMenu->addSeparator();
+        
+        BlAction *accionA = new BlAction ( _ ( "&Actividades" ), 0 );
+        accionA->setIcon ( QIcon ( QString::fromUtf8 ( ":/ImgGestionAula/icons/actividad.png" ) ) );
+        accionA->setStatusTip ( _ ( "Actividades" ) );
+        accionA->setWhatsThis ( _ ( "Actividades" ) );
+        accionA->setObjectName("mui_actionActividades");
+        pPluginMenu->addAction ( accionA );
+        bges->Listados->addAction ( accionA );
+        //connect ( accionA, SIGNAL ( activated() ), this, SLOT ( elslot() ) );
+
+        BlAction *accionB = new BlAction ( _ ( "&Nueva actividad" ), 0 );
+        accionB->setIcon ( QIcon ( QString::fromUtf8 ( ":/ImgGestionAula/icons/actividad_add.png" ) ) );
+        accionB->setStatusTip ( _ ( "Nueva actividad" ) );
+        accionB->setWhatsThis ( _ ( "Nueva actividad" ) );
+        accionB->setObjectName("mui_actionActividadNueva");
+        pPluginMenu->addAction ( accionB );
+        bges->Fichas->addAction ( accionB );
+        //connect ( accionB, SIGNAL ( activated() ), this, SLOT ( elslot1() ) );
+
+        pPluginMenu->addSeparator();
+
+        BlAction *accionC = new BlAction ( _ ( "&Tipos de Actividad" ), 0 );
+        accionC->setIcon ( QIcon ( QString::fromUtf8 ( ":/ImgGestionAula/icons/actividad.png" ) ) );
+        accionC->setStatusTip ( _ ( "Tipos de Actividad" ) );
+        accionC->setWhatsThis ( _ ( "Tipos de Actividad" ) );
+        accionC->setObjectName("mui_actionActividadTipos");
+        pPluginMenu->addAction ( accionC );
+        bges->Fichas->addAction ( accionC );
+        //connect ( accionC, SIGNAL ( activated() ), this, SLOT ( elslot2() ) );
+        
+    } // end if
+
     return 0;
 }
 
-
+int BlAction_triggered(BlAction *accion) {
+    if (accion->objectName() == "mui_actionActividades") {
+        if ( g_actividadesList ) {
+            g_actividadesList->hide();
+            g_actividadesList->show();
+        } // end if
+    }
+    if (accion->objectName() == "mui_actionActividadNueva") {
+        ActividadView * bud = new ActividadView ( ( BfCompany * ) g_bges->company(), NULL );
+        g_bges->company() ->m_pWorkspace->addSubWindow ( bud );
+        bud->show();
+    }
+    if (accion->objectName() == "mui_actionActividadTipos") {
+        TipoActividadView * bud = new TipoActividadView ( ( BfCompany * ) g_bges->company(), NULL );
+        g_bges->company() ->m_pWorkspace->addSubWindow ( bud );
+        bud->show();
+    }
+    return 0;
+}
 int BfCompany_createMainWindows_Post ( BfCompany *comp )
 {
     if ( comp->hasTablePrivilege ( "actividad", "SELECT" ) ) {

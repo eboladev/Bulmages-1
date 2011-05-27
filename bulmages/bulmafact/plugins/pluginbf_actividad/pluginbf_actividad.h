@@ -28,7 +28,7 @@
 #include "bfbuscarreferencia.h"
 #include "blsearchwidget.h"
 #include "pdefs_pluginbf_actividad.h"
-
+#include "blaction.h"
 
 extern "C" PLUGINBF_ACTIVIDAD_EXPORT int entryPoint ( BfBulmaFact * );
 extern "C" PLUGINBF_ACTIVIDAD_EXPORT int BfCompany_createMainWindows_Post(BfCompany *);
@@ -38,27 +38,7 @@ extern "C" PLUGINBF_ACTIVIDAD_EXPORT int BlSubFormDelegate_setEditorData(BlSubFo
 extern "C" PLUGINBF_ACTIVIDAD_EXPORT int BlSubForm_editFinished(BlSubForm *);
 extern "C" PLUGINBF_ACTIVIDAD_EXPORT int BlSubForm_BlSubForm_Post ( BlSubForm * );
 extern "C" PLUGINBF_ACTIVIDAD_EXPORT int Busqueda_on_mui_buscar_clicked ( BlSearchWidget * );
-
-
-class PluginBf_Actividad : public QObject, BlMainCompanyPointer
-{
-    Q_OBJECT
-
-public:
-    BfBulmaFact *m_bges;
-
-public:
-    PluginBf_Actividad();
-    ~PluginBf_Actividad();
-    void inicializa ( BfBulmaFact * );
-
-public slots:
-    void elslot();
-    void elslot1();
-    void elslot2();
-};
-
-
+extern "C" PLUGINBF_ACTIVIDAD_EXPORT int BlAction_triggered(BlAction *);
 
 class SubForm_Actividad : public QObject
 {
