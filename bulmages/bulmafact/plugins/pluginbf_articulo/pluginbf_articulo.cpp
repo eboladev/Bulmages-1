@@ -49,7 +49,7 @@ int entryPoint ( BfBulmaFact *bges )
     if ( bges->company()->hasTablePrivilege ( "articulo", "SELECT" ) ) {
 
         /// Miramos si existe un menu Articulos
-        QMenu *pPluginMenu = bges->newMenu ( "&Articulos", "menuArticulos", "menuMaestro" );
+        QMenu *pPluginMenu = bges->newMenu ( _("&Articulos"), "menuArticulos", "menuMaestro" );
         pPluginMenu->addSeparator();
 
         /// El men&uacute; de Articulos en la secci&oacute;n de art&iacute;culos.
