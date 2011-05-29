@@ -301,7 +301,7 @@ int BlToolButton_released(BlToolButton *bot) {
 		linea1->setDbValue ( "idarticulo", linea->dbValue ( "idarticulo" ) );
 		linea1->setDbValue ( "nomarticulo", linea->dbValue ( "nomarticulo" ) );
 		linea1->setDbValue ( "ivalfactura", linea->dbValue ( "ivalalbaran" ) );
-		fact1->getlistalineas() ->nuevoRegistro();
+		fact1->getlistalineas() ->newRecord();
 	    } // end if
 	} // end for
 

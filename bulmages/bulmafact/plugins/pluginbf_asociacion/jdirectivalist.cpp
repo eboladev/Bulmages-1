@@ -156,7 +156,7 @@ void JDirectivaList::imprimir()
 {
     blDebug ( "JDirectivaList::imprimir", 0 );
     
-    mui_list->imprimirPDF ( _ ( "Actividades" ) );
+    mui_list->printPDF ( _ ( "Actividades" ) );
     
     blDebug ( "END JDirectivaList::imprimir", 0 );
 }

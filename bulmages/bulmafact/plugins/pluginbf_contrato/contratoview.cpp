@@ -343,7 +343,7 @@ void ContratoView::on_mui_facturar_clicked()
                 if ( linea->dbValue ( "idarticulo" ) != "" ) {
                     linea1 = fac->getlistalineas() ->lineaat ( fac->getlistalineas() ->rowCount() - 1 );
                     /// Haciendo la nueva linea antes nos evitamos problemas de foco
-                    fac->getlistalineas() ->nuevoRegistro();
+                    fac->getlistalineas() ->newRecord();
                     fac->getlistalineas() ->setProcesarCambios ( FALSE );
                     linea1->setDbValue ( "idarticulo", linea->dbValue ( "idarticulo" ) );
                     linea1->setDbValue ( "codigocompletoarticulo", linea->dbValue ( "codigocompletoarticulo" ) );

@@ -46,8 +46,8 @@ public:
     void inicializaTrabajadores();
     void inicializaCuadrante ( const QDate &dateorig );
     virtual void on_mui_imprimir_clicked();
-    void cargaconfig();
-    void guardaconfig();
+    void loadConfig();
+    void saveConfig();
 
 public slots:
     virtual void on_mui_calendario_clicked ( const QDate &date );

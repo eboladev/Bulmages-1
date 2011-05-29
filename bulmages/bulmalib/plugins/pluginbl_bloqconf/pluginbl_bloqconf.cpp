@@ -145,11 +145,11 @@ void PluginBl_BloqConf::s_trataMenu ( QAction *action )
             QString archivo = g_confpr->value( CONF_DIR_USER ) + sub->fileConfig() + "_" + sub->mainCompany()->dbName() + "_" + QString::number ( modo ) + "_tablecfn.cfn";
             QFile file ( archivo );
             if (file.permissions() & QFile::WriteOwner) {
-              sub->guardaconfig();
+              sub->saveConfig();
               QString cad = "chmod a-w " + archivo;
               system ( cad.toAscii().constData() );
             } else {
-              sub->guardaconfig();
+              sub->saveConfig();
               QString cad = "chmod a+w " + archivo;
               system ( cad.toAscii().constData() );
             } // end if

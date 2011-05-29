@@ -51,7 +51,7 @@ public:
     ApunteContableView ( BfCompany *, QWidget * );
     ~ApunteContableView();
     virtual void imprimir();
-    virtual QString nombrePlantilla(void) ;
+    virtual QString templateName(void) ;
     virtual int guardar();
     virtual int cargar(QString );
 

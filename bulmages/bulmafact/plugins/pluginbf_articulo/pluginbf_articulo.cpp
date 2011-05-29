@@ -242,7 +242,7 @@ int Busqueda_on_mui_buscar_clicked ( BlSearchWidget *busq )
 int BfSubForm_pressedAsterisk ( BfSubForm *sub )
 {
 
-    if ( sub->m_campoactual->nomcampo() != "codigocompletoarticulo" ) {
+    if ( sub->m_campoactual->fieldName() != "codigocompletoarticulo" ) {
         blDebug ( "END BfSubForm::pressedAsterisk", 0 );
         return 0;
     } // end if
@@ -526,7 +526,7 @@ int BlSubFormDelegate_createEditor ( BlSubFormDelegate *bl )
 {
     blDebug ( "pluginbf_articulo::BlSubFormDelegate_createEditor", 0 );
     int ret = 0;
-    if ( g_nomcampo == "codigocompletoarticulo" ) {
+    if ( g_fieldName == "codigocompletoarticulo" ) {
         g_main->statusBar()->showMessage(_("<F2> Abre selector de articulos."), 2000);
         BlDbCompleterComboBox * editor = new BlDbCompleterComboBox ( g_editor );
         editor->setObjectName ( "EditCodigoCompletoArticulo" );
@@ -579,7 +579,7 @@ int BlSubFormDelegate_setEditorData ( BlSubFormDelegate *bl )
 int BlSubForm_editFinished ( BlSubForm *sub )
 {
     blDebug ( "pluginbf_articulo::BlSubForm_editFinished", 0 );
-    if ( sub->m_campoactual->nomcampo() == "codigocompletoarticulo" ) {
+    if ( sub->m_campoactual->fieldName() == "codigocompletoarticulo" ) {
         QString params[1]= {  sub->m_campoactual->text() };
 	QString query = "SELECT idarticulo FROM articulo WHERE codigocompletoarticulo = $1";
         BlDbRecordSet *cur = sub->mainCompany() -> loadQuery( query, 1, params );

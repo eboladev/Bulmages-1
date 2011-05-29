@@ -87,7 +87,7 @@ int BlSubFormDelegate_createEditor ( BlSubFormDelegate *bl )
 {
     blDebug ( "pluginbf_formasdepago::BlSubFormDelegate_createEditor", 0 );
     int ret = 0;
-    if ( g_nomcampo == "descforma_pago" ) {
+    if ( g_fieldName == "descforma_pago" ) {
         BlComboBox * editor = new BlComboBox ( g_editor );
         editor->setObjectName ( "EditFormaPago" );
         editor->setMainCompany ( ( BfCompany * ) bl->m_subform->mainCompany() );
@@ -142,7 +142,7 @@ int BlSubFormDelegate_setEditorData ( BlSubFormDelegate *bl )
 int BlSubForm_editFinished ( BlSubForm *sub )
 {
     blDebug ( "pluginbf_articulo::BlSubForm_editFinished", 0 );
-    if ( sub->m_campoactual->nomcampo() == "descforma_pago" ) {
+    if ( sub->m_campoactual->fieldName() == "descforma_pago" ) {
         QString params[1]= {  sub->m_campoactual->text() };
 	QString query = "SELECT idforma_pago FROM forma_pago WHERE descforma_pago = $1";
         BlDbRecordSet *cur = sub->mainCompany() -> loadQuery( query, 1, params );

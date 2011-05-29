@@ -50,18 +50,18 @@ class BL_EXPORT BlTableWidget : public QTableWidget
 
 private:
     int modo; /// Indica el modo de dibujo.
-    int m_tipoorden;
-    int m_colorden;
+    int m_orderType;
+    int m_columnOrder;
 
 public:
     int m_teclasalida; /// Indica con que tecla se ha salido de la edicion.
 
 public:
     void moveRow(int oldRow, int newRow);
-    int tipoorden();
-    int colorden();
-    void settipoorden ( int t );
-    void setcolorden ( int t );
+    int orderType();
+    int columnOrder();
+    void setOrderType ( int t );
+    void setColumnOrder ( int t );
     BlTableWidget ( QWidget *parent = 0 );
     ~BlTableWidget();
     void editItem ( QTableWidgetItem *it );
@@ -88,10 +88,10 @@ signals:
     void pressedPlus ( int, int );
     void pressedMinus ( int, int );
     void pressedSlash ( int, int );
-    void ctrlSubir ( int, int );
-    void ctrlBajar ( int, int );
-    void ctrlDerecha ( int, int );
-    void ctrlIzquierda ( int, int );
+    void ctrlUp ( int, int );
+    void ctrlDown ( int, int );
+    void ctrlRight ( int, int );
+    void ctrlLeft ( int, int );
 };
 
 #endif

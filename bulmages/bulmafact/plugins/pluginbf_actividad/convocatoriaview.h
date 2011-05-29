@@ -53,7 +53,7 @@ public:
     ConvocatoriaView ( BfCompany *, QWidget * );
     ~ConvocatoriaView();
     virtual void imprimir();
-    virtual QString nombrePlantilla(void) ;
+    virtual QString templateName(void) ;
     virtual int guardarPost();
 };
 

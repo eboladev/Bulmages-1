@@ -108,7 +108,7 @@ ProfesorView::~ProfesorView()
     blDebug ( "END ProfesorView::~ProfesorView", 0 );
 }
 
-QString ProfesorView::nombrePlantilla ( void )
+QString ProfesorView::templateName ( void )
 {
     return QString ( "profesor" );
 }

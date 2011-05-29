@@ -144,7 +144,7 @@ void BfSubForm::pressedMinus ( int row, int col, BlDbSubFormRecord *rec, BlDbSub
     } // end if
 
     if ( !cur->eof() ) {
-        rec->setDbValue ( camp->nomcampo(), cur->value( "obserarticulo" ) );
+        rec->setDbValue ( camp->fieldName(), cur->value( "obserarticulo" ) );
     } // end if
     delete cur;
 
@@ -172,28 +172,28 @@ void BfSubForm::editFinished ( int row, int col, BlDbSubFormRecord *rec, BlDbSub
     /// Lanzamos el manejador de la SuperClase para que se atiendan las opciones mas genericas.
     BlSubForm::editFinished ( row, col, rec, camp );
 
-    if ( camp->nomcampo() == "desctipo_iva" ) {
+    if ( camp->fieldName() == "desctipo_iva" ) {
         cur = mainCompany() ->load ( "SELECT * FROM tipo_iva WHERE desctipo_iva = $1",  camp->text());
         if ( !cur->eof() ) {
             rec->setDbValue ( "idtipo_iva", cur->value( "idtipo_iva" ) );
         } // end if
     } // end if
 
-    if ( camp->nomcampo() == "nomtrabajador" ) {
+    if ( camp->fieldName() == "nomtrabajador" ) {
         cur = mainCompany() ->load ( "SELECT * FROM trabajador WHERE apellidostrabajador ||', '||nomtrabajador = $1'", camp->text()  );
         if ( !cur->eof() ) {
             rec->setDbValue ( "idtrabajador", cur->value( "idtrabajador" ) );
         } // end if
     } // end if
 
-    if ( camp->nomcampo() == "nomalmacen" ) {
+    if ( camp->fieldName() == "nomalmacen" ) {
         cur = mainCompany() ->load ( "SELECT * FROM almacen WHERE nomalmacen ||', '||codigoalmacen = $1" , camp->text() );
         if ( !cur->eof() ) {
             rec->setDbValue ( "idalmacen", cur->value( "idalmacen" ) );
         } // end if
     } // end if
 
-    if ( camp->nomcampo() == "codigocompletoarticulo" ) {
+    if ( camp->fieldName() == "codigocompletoarticulo" ) {
         cur = mainCompany() ->load( "SELECT * FROM articulo WHERE codigocompletoarticulo = $1", camp->text()  );
         if ( !cur->eof() ) {
             rec->setDbValue ( "idarticulo", cur->value( "idarticulo" ) );
@@ -267,7 +267,7 @@ void BfSubForm::editFinished ( int row, int col, BlDbSubFormRecord *rec, BlDbSub
     } // end if
 
     /// Hago la actualizacion del campo total
-    if ( (camp->nomcampo() == "codigocompletoarticulo") || (camp->nomcampo() == "cant" + m_tablename) || (camp->nomcampo() == "pvp" + m_tablename)) {
+    if ( (camp->fieldName() == "codigocompletoarticulo") || (camp->fieldName() == "cant" + m_tablename) || (camp->fieldName() == "pvp" + m_tablename)) {
       if (existsHeader("cant" + m_tablename) && existsHeader("pvp" + m_tablename) && existsHeader("total" + m_tablename) ) {
 	/// El campo total es calculado, asi que tratamos su actualización aqui aunque bien podri
 	BlFixed total = BlFixed(rec->dbValue("cant" + m_tablename)) * BlFixed(rec->dbValue("pvp" + m_tablename));
@@ -511,18 +511,18 @@ QWidget *BfSubFormDelegate::createEditor ( QWidget *parent, const QStyleOptionVi
 {
     blDebug ( "BfSubFormDelegate::createEditor", 0, "CurrentColumn: " + QString::number ( index.column() ) + "CurrentRow" + QString::number ( index.row() )  );
     BlSubFormHeader *linea;
-    linea = m_subform->cabecera() ->at ( index.column() );
+    linea = m_subform->headerList() ->at ( index.column() );
 
-    if ( linea->nomcampo() == "desc" + m_subform->tableName() ) {
+    if ( linea->fieldName() == "desc" + m_subform->tableName() ) {
         BlTextEditDelegate * editor = new BlTextEditDelegate ( parent );
         editor->setObjectName ( "BlTextEditDelegate" );
         blDebug ( "END BfSubFormDelegate::createEditor", 0, "QTextEdit" );
         return editor;
-    } else if ( linea->nomcampo() == "cant" + m_subform->tableName()
-                || linea->nomcampo() == "pvp" + m_subform->tableName()
-                || linea->nomcampo() == "descuento" + m_subform->tableName()
-                || linea->nomcampo() == "iva" + m_subform->tableName()
-                || linea->nomcampo() == "reqeq" + m_subform->tableName() ) {
+    } else if ( linea->fieldName() == "cant" + m_subform->tableName()
+                || linea->fieldName() == "pvp" + m_subform->tableName()
+                || linea->fieldName() == "descuento" + m_subform->tableName()
+                || linea->fieldName() == "iva" + m_subform->tableName()
+                || linea->fieldName() == "reqeq" + m_subform->tableName() ) {
 
         BlDoubleSpinBox * editor = new BlDoubleSpinBox ( parent );
         editor->setMinimum ( -10000000 );
@@ -530,17 +530,17 @@ QWidget *BfSubFormDelegate::createEditor ( QWidget *parent, const QStyleOptionVi
         editor->setDecimals(linea->numericPrecision());
         blDebug ( "END BfSubFormDelegate::createEditor", 0, "QSPinBox" );
         return editor;
-    } else if ( linea->nomcampo() == "desctipo_iva" ) {
+    } else if ( linea->fieldName() == "desctipo_iva" ) {
         BfBuscarTipoIVADelegate * editor = new BfBuscarTipoIVADelegate ( parent );
         editor->setMainCompany ( ( BfCompany * ) m_subform->mainCompany() );
         blDebug ( "END BfSubFormDelegate::createEditor", 0, "BfBuscarTipoIVA" );
         return editor;
-    } else if ( linea->nomcampo() == "nomtrabajador" && m_subform->tableName() != "trabajador" ) {
+    } else if ( linea->fieldName() == "nomtrabajador" && m_subform->tableName() != "trabajador" ) {
         BfBuscarTrabajadorDelegate * editor = new BfBuscarTrabajadorDelegate ( parent );
         editor->setMainCompany ( ( BfCompany * ) m_subform->mainCompany() );
         blDebug ( "END BfSubFormDelegate::createEditor", 0, "BfBuscarTrabajadorDelegate" );
         return editor;
-    } else if ( linea->nomcampo() == "nomalmacen"  && m_subform->tableName() != "almacen" ) {
+    } else if ( linea->fieldName() == "nomalmacen"  && m_subform->tableName() != "almacen" ) {
         BfBuscarAlmacenDelegate * editor = new BfBuscarAlmacenDelegate ( parent );
         editor->setMainCompany ( ( BfCompany * ) m_subform->mainCompany() );
         blDebug ( "END BfSubFormDelegate::createEditor", 0, "BfBuscarAlmacenDelegate" );
@@ -570,15 +570,15 @@ void BfSubFormDelegate::setModelData ( QWidget *editor, QAbstractItemModel *mode
     } // end if
 
     BlSubFormHeader *linea;
-    linea = m_subform->cabecera() ->at ( index.column() );
-    if ( linea->nomcampo() == "desc" + m_subform->tableName() ) {
+    linea = m_subform->headerList() ->at ( index.column() );
+    if ( linea->fieldName() == "desc" + m_subform->tableName() ) {
         BlTextEditDelegate * textedit = qobject_cast<BlTextEditDelegate *> ( editor );
         model->setData ( index, textedit->toPlainText() );
-    } else if ( linea->nomcampo() == "cant" + m_subform->tableName()
-                || linea->nomcampo() == "pvp" + m_subform->tableName()
-                || linea->nomcampo() == "descuento" + m_subform->tableName()
-                || linea->nomcampo() == "reqeq" + m_subform->tableName()
-                || linea->nomcampo() == "iva" + m_subform->tableName() ) {
+    } else if ( linea->fieldName() == "cant" + m_subform->tableName()
+                || linea->fieldName() == "pvp" + m_subform->tableName()
+                || linea->fieldName() == "descuento" + m_subform->tableName()
+                || linea->fieldName() == "reqeq" + m_subform->tableName()
+                || linea->fieldName() == "iva" + m_subform->tableName() ) {
 
         BlDoubleSpinBox * spinBox = static_cast<BlDoubleSpinBox*> ( editor );
         spinBox->interpretText();
@@ -588,21 +588,21 @@ void BfSubFormDelegate::setModelData ( QWidget *editor, QAbstractItemModel *mode
         model->setData ( index, value );
 
         /// Dispara senyales:
-        if ( linea->nomcampo() == "cant" + m_subform->tableName() ) {
+        if ( linea->fieldName() == "cant" + m_subform->tableName() ) {
             /// Mira si se ha cambiado la cantidad o es la misma que habia.
             if ( valueanterior.toDouble() != value.toDouble() ) {
                 emit cant_changed ( m_subform->lista()->at ( index.row() ) );
             } // end if
         } // end if
-    } else if ( linea->nomcampo() == "desctipo_iva" ) {
+    } else if ( linea->fieldName() == "desctipo_iva" ) {
         BfBuscarTipoIVADelegate * comboBox = static_cast<BfBuscarTipoIVADelegate*> ( editor );
         QString value = comboBox->currentText();
         model->setData ( index, value );
-    } else if ( linea->nomcampo() == "nomtrabajador"  && m_subform->tableName() != "trabajador" ) {
+    } else if ( linea->fieldName() == "nomtrabajador"  && m_subform->tableName() != "trabajador" ) {
         BfBuscarTrabajadorDelegate * comboBox = static_cast<BfBuscarTrabajadorDelegate*> ( editor );
         QString value = comboBox->currentText();
         model->setData ( index, value );
-    } else if ( linea->nomcampo() == "nomalmacen" && m_subform->tableName() != "almacen" ) {
+    } else if ( linea->fieldName() == "nomalmacen" && m_subform->tableName() != "almacen" ) {
         BfBuscarAlmacenDelegate * comboBox = static_cast<BfBuscarAlmacenDelegate*> ( editor );
         QString value = comboBox->currentText();
         model->setData ( index, value );
@@ -622,30 +622,30 @@ void BfSubFormDelegate::setEditorData ( QWidget* editor, const QModelIndex& inde
 {
     blDebug ( "BfSubFormDelegate::setEditorData", 0, "CurrentColumn: " + QString::number ( index.column() ) +  "CurrentRow: " + QString::number ( index.row() )  );
     BlSubFormHeader *linea;
-    linea = m_subform->cabecera() ->at ( index.column() );
-    if ( linea->nomcampo() == "desc" + m_subform->tableName() ) {
+    linea = m_subform->headerList() ->at ( index.column() );
+    if ( linea->fieldName() == "desc" + m_subform->tableName() ) {
         QString data = index.model() ->data ( index, Qt::DisplayRole ).toString();
         BlTextEditDelegate *textedit = qobject_cast<BlTextEditDelegate*> ( editor );
         textedit->setText ( data );
-    } else if ( linea->nomcampo() == "cant" + m_subform->tableName()
-                || linea->nomcampo() == "pvp" + m_subform->tableName()
-                || linea->nomcampo() == "descuento" + m_subform->tableName()
-                || linea->nomcampo() == "reqeq" + m_subform->tableName()
-                || linea->nomcampo() == "iva" + m_subform->tableName() ) {
+    } else if ( linea->fieldName() == "cant" + m_subform->tableName()
+                || linea->fieldName() == "pvp" + m_subform->tableName()
+                || linea->fieldName() == "descuento" + m_subform->tableName()
+                || linea->fieldName() == "reqeq" + m_subform->tableName()
+                || linea->fieldName() == "iva" + m_subform->tableName() ) {
 
         QString value = index.model() ->data ( index, Qt::DisplayRole ).toString();
         BlDoubleSpinBox *spinBox = static_cast<BlDoubleSpinBox*> ( editor );
         spinBox->setValue ( value.toDouble() );
         spinBox->selectAll();
-    } else if ( linea->nomcampo() == "desctipo_iva" ) {
+    } else if ( linea->fieldName() == "desctipo_iva" ) {
         QString value = index.model() ->data ( index, Qt::DisplayRole ).toString();
         BfBuscarTipoIVADelegate *comboBox = static_cast<BfBuscarTipoIVADelegate*> ( editor );
         comboBox->set ( value );
-    } else if ( linea->nomcampo() == "nomtrabajador"  && m_subform->tableName() != "trabajador" ) {
+    } else if ( linea->fieldName() == "nomtrabajador"  && m_subform->tableName() != "trabajador" ) {
         QString value = index.model() ->data ( index, Qt::DisplayRole ).toString();
         BfBuscarTrabajadorDelegate *comboBox = static_cast<BfBuscarTrabajadorDelegate*> ( editor );
         comboBox->set ( value );
-    } else if ( linea->nomcampo() == "nomalmacen" && m_subform->tableName() != "almacen" ) {
+    } else if ( linea->fieldName() == "nomalmacen" && m_subform->tableName() != "almacen" ) {
         QString value = index.model() ->data ( index, Qt::DisplayRole ).toString();
         BfBuscarAlmacenDelegate *comboBox = static_cast<BfBuscarAlmacenDelegate*> ( editor );
         comboBox->set ( value );

@@ -136,11 +136,11 @@ int BlDbField::restrictcampo()
 /**
 \return
 **/
-QString BlDbField::nomcampo()
+QString BlDbField::fieldName()
 {
-    blDebug ( "BlDbField::nomcampo", 0 );
-    blDebug ( "END BlDbField::nomcampo", 0 );
-    return m_nomcampo;
+    blDebug ( "BlDbField::fieldName", 0 );
+    blDebug ( "END BlDbField::fieldName", 0 );
+    return m_fieldName;
 }
 
 
@@ -189,7 +189,7 @@ BlDbField::BlDbField ( BlPostgreSqlClient *com, QString nom, DbType typ, int res
 {
     blDebug ( "BlDbField::BlDbField", 0 );
     setDbConnection(com);
-    m_nomcampo = nom;
+    m_fieldName = nom;
     m_tipo = typ;
     m_restrict = res;
     m_nompresentacion = nomp;
@@ -213,7 +213,7 @@ QString BlDbField::valorcampoprep ( int &error )
         if ( m_valorcampo == "" ) {
             blMsgWarning ( "El campo '" + m_nompresentacion + "' no puede estar vacio." );
             error = -20200;
-            blDebug ( "END BlDbField::valorcampoprep", 0, m_nomcampo + " " + m_valorcampo + "-->" + valor );
+            blDebug ( "END BlDbField::valorcampoprep", 0, m_fieldName + " " + m_valorcampo + "-->" + valor );
             return valor;
         } // end if
     } // end if
@@ -262,7 +262,7 @@ QString BlDbField::valorcampoprep ( int &error )
         error = -1;
     } // end switch
 
-    blDebug ( "END BlDbField::valorcampoprep", 0, m_nomcampo + " " + m_valorcampo + "-->" + valor );
+    blDebug ( "END BlDbField::valorcampoprep", 0, m_fieldName + " " + m_valorcampo + "-->" + valor );
     return valor;
 }
 
@@ -274,7 +274,7 @@ QString BlDbField::exportXML() {
     int error;
 
     val = "<BLDBFIELD>\n";
-    val += "\t<NOMCAMPO>" + blXMLEncode(m_nomcampo) + "</NOMCAMPO>\n";
+    val += "\t<NOMCAMPO>" + blXMLEncode(m_fieldName) + "</NOMCAMPO>\n";
     val += "\t<VALORCAMPO>"+ blXMLEncode(m_valorcampo)+"</VALORCAMPO>\n";
     val += "\t<VALORCAMPOORIG>"+ blXMLEncode(m_valorcampoorig)+"</VALORCAMPOORIG>\n";
     if (m_valorcampo != "") {
@@ -304,7 +304,7 @@ void BlDbField::syncXML(const QString &text) {
 
     QDomElement docElem = doc.documentElement();
     QDomElement principal = docElem.firstChildElement ( "NOMCAMPO" );
-    if (principal.text() == m_nomcampo) {
+    if (principal.text() == m_fieldName) {
         principal = docElem.firstChildElement ( "VALORCAMPO" );
         m_valorcampo = principal.text();
     } // end if
@@ -486,7 +486,7 @@ int BlDbRecord::DBload ( BlDbRecordSet *cur )
         for ( int i = 0; i < m_lista.size(); ++i ) {
             campo = m_lista.at ( i );
             if ( ! ( campo->restrictcampo() & BlDbField::DbNoLoad ) ) {
-                QString nom = campo->nomcampo();
+                QString nom = campo->fieldName();
                 QString val = cur->value( nom );
                 if ( ( campo->restrictcampo() & BlDbField::DbPrimaryKey ) && ( val == "" ) )
                     m_nuevoCampo = TRUE;
@@ -564,24 +564,24 @@ int BlDbRecord::dbSave ( QString &id )
                     QString lin = campo->valorcampoprep ( err );
                     if ( err )
                         throw ( err );
-                    querywhere += separadorwhere + campo->nomcampo() + " = " + lin;
+                    querywhere += separadorwhere + campo->fieldName() + " = " + lin;
                     separadorwhere = " AND ";
                 } // end if
                 if ( campo->valorcampoprep ( err ) != "" ) {
-                    queryupdate += separador1 + campo->nomcampo() + "=" + campo->valorcampoprep ( err );
+                    queryupdate += separador1 + campo->fieldName() + "=" + campo->valorcampoprep ( err );
                     separador1 = ", ";
                 } // end if
                 if ( err )
                     throw ( err );
                 if ( ( campo->valorcampoprep ( err ) != "NULL" ) && ( campo->valorcampoprep ( err ) != "" ) ) {
-                    listcampos += separador + campo->nomcampo();
+                    listcampos += separador + campo->fieldName();
                     listvalores += separador + campo->valorcampoprep ( err );
                     if ( err )
                         throw ( err );
                     separador = ", ";
                 } // end if
                 /// Si es el ID entonces lo asignamos porque ya tiene el valor correspondiente.
-                if ( m_campoid == campo->nomcampo() ) {
+                if ( m_campoid == campo->fieldName() ) {
                     id = campo->valorcampo();
                 } // end if
             } // end if
@@ -626,7 +626,7 @@ int BlDbRecord::setDbValue ( QString nomb, QString valor )
     int i = 0;
     campo = m_lista.value ( i );
 
-    while ( campo && campo->nomcampo() != nomb ) {
+    while ( campo && campo->fieldName() != nomb ) {
         campo = m_lista.value ( ++i ) ;
     } // end while
 
@@ -635,7 +635,7 @@ int BlDbRecord::setDbValue ( QString nomb, QString valor )
         return -1;
     } // end if
 
-    if ( campo->nomcampo() == nomb ) {
+    if ( campo->fieldName() == nomb ) {
         error = campo->set ( valor );
     } // end if
 
@@ -658,12 +658,12 @@ QString BlDbRecord::dbValue ( QString nomb )
 
     /// Recorremos la lista en busqueda del campo.
     campo = m_lista.value ( i );
-    while ( campo && campo->nomcampo() != nomb )
+    while ( campo && campo->fieldName() != nomb )
         campo = m_lista.value ( ++i );
 
     if ( !campo ) {
         blDebug ( "Campo " + nomb + " no encontrado", 2 );
-    } else if ( campo->nomcampo() == nomb ) {
+    } else if ( campo->fieldName() == nomb ) {
         valor = campo->valorcampo();
     } // end if
     blDebug ( "END BlDbRecord::dbValue", 0, nomb );
@@ -688,14 +688,14 @@ bool BlDbRecord::exists ( QString nomb )
     if (!m_lista.isEmpty()) {
       blDebug ( "BlDbRecord::exists_1", 0, nomb );
       campo = m_lista.value ( i );
-      blDebug ( "BlDbRecord::exists_2", 0, campo->nomcampo() );
+      blDebug ( "BlDbRecord::exists_2", 0, campo->fieldName() );
       if (campo) {
-	while (i < m_lista.size() && campo && campo->nomcampo() != nomb ) {
+	while (i < m_lista.size() && campo && campo->fieldName() != nomb ) {
 	    campo = m_lista.value ( ++i );
 	    blDebug ( "BlDbRecord::exists_3", 0, nomb );
 	} // end while
 	if ( campo ) {
-	    if ( campo->nomcampo() == nomb ) {
+	    if ( campo->fieldName() == nomb ) {
 		existe = TRUE;
 	    } // end if
 	    blDebug ( "BlDbRecord::exists_4", 0, nomb );
@@ -720,7 +720,7 @@ QString BlDbRecord::dbValueprep ( QString nomb )
     int i = 0;
     campo = m_lista.value ( i );
 
-    while ( campo && campo->nomcampo() != nomb ) {
+    while ( campo && campo->fieldName() != nomb ) {
         campo = m_lista.value ( ++i );
     } // end while
 
@@ -729,7 +729,7 @@ QString BlDbRecord::dbValueprep ( QString nomb )
         return "";
     } // end if
 
-    if ( campo->nomcampo() == nomb ) {
+    if ( campo->fieldName() == nomb ) {
         int err;
         return campo->valorcampoprep ( err );
     } // end if
@@ -804,7 +804,7 @@ int BlDbRecord::borrar()
                     QString lin = campo->valorcampoprep ( err );
                     if ( err )
                         throw - 1;
-                    querywhere += separadorwhere + campo->nomcampo() + " = " + lin;
+                    querywhere += separadorwhere + campo->fieldName() + " = " + lin;
                     separadorwhere = " AND ";
                 } // end if
             } // end if
@@ -873,7 +873,7 @@ int BlDbRecord::cargar ( QString id )
 
 void BlDbRecord::substrConf ( QString &buff )
 {
-    ///\TODO: Este tratamiento esta repetido en BlForm::trataTags y en PedidoProveedorView::imprimir.
+    ///\TODO: Este tratamiento esta repetido en BlForm::parseTags y en PedidoProveedorView::imprimir.
     ///       Se puede simplificar?
     /// Tratamos la sustitucion de los valores de configuracion.
     for ( int i = 0; i < 1000; i++ ) {
@@ -885,7 +885,7 @@ void BlDbRecord::substrConf ( QString &buff )
 
 void BlDbRecord::substrConf ( QByteArray &buff )
 {
-    ///\TODO: Este tratamiento esta repetido en BlForm::trataTags y en PedidoProveedorView::imprimir.
+    ///\TODO: Este tratamiento esta repetido en BlForm::parseTags y en PedidoProveedorView::imprimir.
     ///       Se puede simplificar?
     /// Tratamos la sustitucion de los valores de configuracion.
     for ( int i = 0; i < 1000; i++ ) {
@@ -895,7 +895,7 @@ void BlDbRecord::substrConf ( QByteArray &buff )
     } // end for
 }
 
-int BlDbRecord::trataTags ( QString &buff, int tipoEscape )
+int BlDbRecord::parseTags ( QString &buff, int tipoEscape )
 {
     QString fitxersortidatxt = "";
 
@@ -907,7 +907,7 @@ int BlDbRecord::trataTags ( QString &buff, int tipoEscape )
 }
 
 /*
-int BlDbRecord::trataTags ( QByteArray &buff, int tipoEscape )
+int BlDbRecord::parseTags ( QByteArray &buff, int tipoEscape )
 {
     QString fitxersortidatxt = "";
 
@@ -931,7 +931,7 @@ QString BlDbRecord::story ( void )
     for ( int i = 0; i < m_lista.size(); ++i ) {
         campo = m_lista.at ( i );
         fitxersortidatxt += "<tr>\n";
-        fitxersortidatxt += "   <td>" + blXMLEscape ( campo->nomcampo() ) + "</td>\n";
+        fitxersortidatxt += "   <td>" + blXMLEscape ( campo->fieldName() ) + "</td>\n";
         fitxersortidatxt += "   <td>" + blXMLEscape ( campo->nompresentacion() ) + "</td>\n";
         if ( campo->dbFieldType() & BlDbField::DbNumeric )
             fitxersortidatxt += "   <td>" + blXMLEscape ( spanish.toString ( campo->valorcampo().toDouble(), 'f', 2 ) ) + "</td>\n";
@@ -1041,7 +1041,7 @@ if (tipoescape != 0) {
     file.close();
 
     /// Hacemos el tratamiento avanzado de TAGS
-    if ( !trataTags ( buff, tipoescape ) ) {
+    if ( !parseTags ( buff, tipoescape ) ) {
         return 0;
     } // end if
 
@@ -1101,7 +1101,7 @@ if (tipoescape != 0) {
     file.close();
 
     /// Hacemos el tratamiento avanzado de TAGS
-    if ( !trataTags ( buff, tipoescape ) ) {
+    if ( !parseTags ( buff, tipoescape ) ) {
         return 0;
     } // end if
 
@@ -1114,14 +1114,14 @@ if (tipoescape != 0) {
     return 1;
 }
 
-QString BlDbRecord::nombrePlantilla ( void )
+QString BlDbRecord::templateName ( void )
 {
     return QString ( "ficha" );
 }
 
 int BlDbRecord::generaRML ( void )
 {
-    return generaRML ( nombrePlantilla() + ".rml" );
+    return generaRML ( templateName() + ".rml" );
 }
 
 /// Realiza una impresion generica del registro a partir de la plantilla ficha.rml
@@ -1130,10 +1130,10 @@ int BlDbRecord::generaRML ( void )
 void BlDbRecord::imprimir()
 {
     /// Usa la plantilla ficha.rml para realizar la impresion.
-    blDebug ( "BlDbRecord::imprimir", 0, nombrePlantilla() );
+    blDebug ( "BlDbRecord::imprimir", 0, templateName() );
 
     if ( generaRML() ) {
-        blCreateAndLoadPDF ( nombrePlantilla() );
+        blCreateAndLoadPDF ( templateName() );
     } // end if
 
     blDebug ( "END BlDbRecord::imprimir", 0 );
@@ -1226,9 +1226,9 @@ void BlDbRecord::syncXML(const QString &text) {
 /**
 \param buff El texto entero sobre el que se hace el reemplazo de sentencias.
 **/
-int BlDbRecord::trataTags ( QByteArray &buff, int tipoEscape )
+int BlDbRecord::parseTags ( QByteArray &buff, int tipoEscape )
 {
-    blDebug ( "BlDbRecord::trataTags", 0 );
+    blDebug ( "BlDbRecord::parseTags", 0 );
 
 
     substrConf ( buff );
@@ -1430,7 +1430,7 @@ int BlDbRecord::trataTags ( QByteArray &buff, int tipoEscape )
     QRegExp rx4 ( "<!--\\s*IF\\s*QUERY\\s*=\\s*\"([^\"]*)\"\\s*-->(.*)<!--\\s*END\\s*IF\\s*QUERY\\s*-->" );
     rx4.setMinimal ( TRUE );
     while ( ( pos = rx4.indexIn ( buff, 0 ) ) != -1 ) {
-        QString ldetalle = trataIfQuery ( rx4.cap ( 1 ), rx4.cap ( 2 ).toAscii() );
+        QString ldetalle = parseIfQuery ( rx4.cap ( 1 ), rx4.cap ( 2 ).toAscii() );
         buff.replace ( pos, rx4.matchedLength(), ldetalle.toAscii() );
         pos = buff.indexOf("<!--");
     } // end while
@@ -1444,7 +1444,7 @@ int BlDbRecord::trataTags ( QByteArray &buff, int tipoEscape )
     QRegExp rx1 ( "<!--\\s*QUERY\\s*=\\s*\"([^\"]*)\"\\s*-->(.*)<!--\\s*END\\s*QUERY\\s*-->" );
     rx1.setMinimal ( TRUE );
     while ( ( pos = rx1.indexIn ( buff, 0 ) ) != -1 ) {
-        QByteArray ldetalle = trataQuery ( rx1.cap ( 1 ), rx1.cap ( 2 ).toAscii(), tipoEscape );
+        QByteArray ldetalle = parseQuery ( rx1.cap ( 1 ), rx1.cap ( 2 ).toAscii(), tipoEscape );
         buff.replace ( pos, rx1.matchedLength(), ldetalle );
         pos = buff.indexOf("<!--");
     } // end while
@@ -1457,7 +1457,7 @@ int BlDbRecord::trataTags ( QByteArray &buff, int tipoEscape )
     QRegExp rx14 ( "<!--\\s*IF\\s*SUBQUERY\\s*=\\s*\"([^\"]*)\"\\s*-->(.*)<!--\\s*END\\s*IF\\s*SUBQUERY\\s*-->" );
     rx14.setMinimal ( TRUE );
     while ( ( pos = rx14.indexIn ( buff, 0 ) ) != -1 ) {
-        QString ldetalle = trataIfQuery ( rx14.cap ( 1 ), rx14.cap ( 2 ).toAscii() );
+        QString ldetalle = parseIfQuery ( rx14.cap ( 1 ), rx14.cap ( 2 ).toAscii() );
         buff.replace ( pos, rx14.matchedLength(), ldetalle.toAscii() );
         pos = buff.indexOf("<!--");
     } // end while
@@ -1470,7 +1470,7 @@ int BlDbRecord::trataTags ( QByteArray &buff, int tipoEscape )
     QRegExp rx7 ( "<!--\\s*SUBQUERY\\s*=\\s*\"([^\"]*)\"\\s*-->(.*)<!--\\s*END\\s*SUBQUERY\\s*-->" );
     rx7.setMinimal ( TRUE );
     while ( ( pos = rx7.indexIn ( buff, 0 ) ) != -1 ) {
-        QString ldetalle = trataQuery ( rx7.cap ( 1 ), rx7.cap ( 2 ).toAscii(), tipoEscape );
+        QString ldetalle = parseQuery ( rx7.cap ( 1 ), rx7.cap ( 2 ).toAscii(), tipoEscape );
         buff.replace ( pos, rx7.matchedLength(), ldetalle.toAscii() );
         pos = buff.indexOf("<!--");
     } // end while
@@ -1483,7 +1483,7 @@ int BlDbRecord::trataTags ( QByteArray &buff, int tipoEscape )
     QRegExp rx11 ( "<!--\\s*IF\\s*=\\s*\"([^\"]*)\"\\s*-->(.*)<!--\\s*ELSE\\s*-->(.*)<!--\\s*END\\s*IF\\s*-->" );
     rx11.setMinimal ( TRUE );
     while ( ( pos = rx11.indexIn ( buff, 0 ) ) != -1 ) {
-        QString ldetalle = trataIf ( rx11.cap ( 1 ), rx11.cap ( 2 ).toAscii(), rx11.cap ( 3 ).toAscii() );
+        QString ldetalle = parseIf ( rx11.cap ( 1 ), rx11.cap ( 2 ).toAscii(), rx11.cap ( 3 ).toAscii() );
         buff.replace ( pos, rx11.matchedLength(), ldetalle.toAscii() );
         pos = buff.indexOf("<!--");
     } // end while
@@ -1890,11 +1890,11 @@ int BlDbRecord::trataTags ( QByteArray &buff, int tipoEscape )
     
     profundidad --;
     if (profundidad == 0) {
-      trataTagsPost(buff, tipoEscape);
+      parseTagsPost(buff, tipoEscape);
     } // end if
     
     
-    blDebug ( "END BlDbRecord::trataTags", 0 );
+    blDebug ( "END BlDbRecord::parseTags", 0 );
     return 1;
 }
 
@@ -1907,9 +1907,9 @@ int BlDbRecord::trataTags ( QByteArray &buff, int tipoEscape )
 /**
 \param buff El texto entero sobre el que se hace el reemplazo de sentencias.
 **/
-int BlDbRecord::trataTagsPost ( QByteArray &buff, int tipoEscape )
+int BlDbRecord::parseTagsPost ( QByteArray &buff, int tipoEscape )
 {
-    blDebug ( "BlDbRecord::trataTagsPost", 0 );
+    blDebug ( "BlDbRecord::parseTagsPost", 0 );
 
     ///Buscamos interfaces, los preguntamos y los ponemos.
     int pos = 0;
@@ -2036,7 +2036,7 @@ int BlDbRecord::trataTagsPost ( QByteArray &buff, int tipoEscape )
     } // end while
     buff = cadant + buff;
     
-    blDebug ( "END BlDbRecord::trataTagsPost", 0 );
+    blDebug ( "END BlDbRecord::parseTagsPost", 0 );
     return 1;
 }
 
@@ -2047,9 +2047,9 @@ int BlDbRecord::trataTagsPost ( QByteArray &buff, int tipoEscape )
 \param det Texto de entrada para ser tratado por iteracion.
 \return Si el query tiene elementos lo devuelve el parametro. En caso contrario no devuelve nada.
 **/
-QByteArray BlDbRecord::trataIfQuery ( const QString &query, const QByteArray &datos )
+QByteArray BlDbRecord::parseIfQuery ( const QString &query, const QByteArray &datos )
 {
-    blDebug ( "BlDbRecord::trataIfQuery", 0 );
+    blDebug ( "BlDbRecord::parseIfQuery", 0 );
     QByteArray result = "";
     QByteArray query1 = query.toAscii();
 
@@ -2063,7 +2063,7 @@ QByteArray BlDbRecord::trataIfQuery ( const QString &query, const QByteArray &da
         result = datos;
     } // end while
     delete cur;
-    blDebug ( "END BlDbRecord::trataIfQuery", 0 );
+    blDebug ( "END BlDbRecord::parseIfQuery", 0 );
     return result;
 }
 
@@ -2073,9 +2073,9 @@ QByteArray BlDbRecord::trataIfQuery ( const QString &query, const QByteArray &da
 \param det Texto de entrada para ser tratado por iteracion.
 \return Si el query tiene elementos lo devuelve el parametro. En caso contrario no devuelve nada.
 **/
-QByteArray BlDbRecord::trataIf ( const QString &query, const QByteArray &datos, const QByteArray &datos1 )
+QByteArray BlDbRecord::parseIf ( const QString &query, const QByteArray &datos, const QByteArray &datos1 )
 {
-    blDebug ( "BlDbRecord::trataIfQuery", 0 );
+    blDebug ( "BlDbRecord::parseIfQuery", 0 );
     QByteArray result = "";
     QByteArray query1 = query.toAscii();
 
@@ -2094,7 +2094,7 @@ QByteArray BlDbRecord::trataIf ( const QString &query, const QByteArray &datos, 
         } // end if
     } // end while
     delete cur;
-    blDebug ( "END BlDbRecord::trataIf", 0 );
+    blDebug ( "END BlDbRecord::parseIf", 0 );
     return result;
 }
 
@@ -2954,9 +2954,9 @@ void BlDbRecord::substrVars ( QByteArray &buff, int tipoEscape )
 \param det Texto de entrada para ser tratado por iteracion.
 \return
 **/
-QByteArray BlDbRecord::trataQuery ( const QString &query, const QByteArray &datos, int tipoEscape )
+QByteArray BlDbRecord::parseQuery ( const QString &query, const QByteArray &datos, int tipoEscape )
 {
-    blDebug ( "BlDbRecord::trataQuery", 0 );
+    blDebug ( "BlDbRecord::parseQuery", 0 );
     QByteArray result = "";
     QByteArray query1 = query.toAscii();
 
@@ -2965,7 +2965,7 @@ QByteArray BlDbRecord::trataQuery ( const QString &query, const QByteArray &dato
 
     /// Cargamos el query y lo recorremos
     result = trataCursor ( m_dbConnection->loadQuery ( query1 ), datos, tipoEscape );
-    blDebug ( "END BlDbRecord::trataQuery", 0 );
+    blDebug ( "END BlDbRecord::parseQuery", 0 );
     return result;
 
 }

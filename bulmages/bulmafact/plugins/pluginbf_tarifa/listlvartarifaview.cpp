@@ -71,19 +71,19 @@ QWidget *QSubFormVarTarifaBfDelegate::createEditor ( QWidget *parent, const QSty
 {
     blDebug ( "QSubFormVarTarifaBfDelegate::createEditor", 0 );
     BlSubFormHeader *linea;
-    linea = m_subform->cabecera() ->at ( index.column() );
+    linea = m_subform->headerList() ->at ( index.column() );
 
-    if ( linea->nomcampo() == "nomtarifa" ) {
+    if ( linea->fieldName() == "nomtarifa" ) {
         BusquedaTarifa *editor = new BusquedaTarifa ( parent );
         editor->setMainCompany ( ( BfCompany * ) m_subform->mainCompany() );
         return editor;
-    } else if ( linea->nomcampo() == "nomalmacen" ) {
+    } else if ( linea->fieldName() == "nomalmacen" ) {
         BfBuscarAlmacen *editor = new BfBuscarAlmacen ( parent );
         editor->setMainCompany ( ( BfCompany * ) m_subform->mainCompany() );
         return editor;
 
-    } else if ( linea->nomcampo() == "cantidadmayoroigualque"
-                || linea->nomcampo() == "porcentajevariacion" ) {
+    } else if ( linea->fieldName() == "cantidadmayoroigualque"
+                || linea->fieldName() == "porcentajevariacion" ) {
 
         BlDoubleSpinBox * editor = new BlDoubleSpinBox ( parent );
         editor->setMinimum ( -1000000 );
@@ -114,22 +114,22 @@ void QSubFormVarTarifaBfDelegate::setModelData ( QWidget *editor, QAbstractItemM
         return;
 
     BlSubFormHeader *linea;
-    linea = m_subform->cabecera() ->at ( index.column() );
-    if ( linea->nomcampo() == "nomtarifa" ) {
+    linea = m_subform->headerList() ->at ( index.column() );
+    if ( linea->fieldName() == "nomtarifa" ) {
         BusquedaTarifa *comboBox = static_cast<BusquedaTarifa*> ( editor );
         QString value = comboBox->currentText();
         QString idvalue = comboBox->idtarifa();
         model->setData ( index, value );
         m_subform->lineaat ( index.row() ) ->setDbValue ( "idtarifa", idvalue );
-    } else if ( linea->nomcampo() == "nomalmacen" ) {
+    } else if ( linea->fieldName() == "nomalmacen" ) {
         BfBuscarAlmacen *comboBox = static_cast<BfBuscarAlmacen*> ( editor );
         QString value = comboBox->currentText();
         QString idvalue = comboBox->id();
         model->setData ( index, value );
         m_subform->lineaat ( index.row() ) ->setDbValue ( "idalmacen", idvalue );
 
-    } else if ( linea->nomcampo() == "cantidadmayoroigualque"
-                || linea->nomcampo() == "porcentajevariacion" ) {
+    } else if ( linea->fieldName() == "cantidadmayoroigualque"
+                || linea->fieldName() == "porcentajevariacion" ) {
 
         BlDoubleSpinBox * spinBox = static_cast<BlDoubleSpinBox*> ( editor );
         spinBox->interpretText();
@@ -152,18 +152,18 @@ void QSubFormVarTarifaBfDelegate::setEditorData ( QWidget* editor, const QModelI
 {
     blDebug ( "QSubFormVarTarifaBfDelegate::setEditorData", 0 );
     BlSubFormHeader *linea;
-    linea = m_subform->cabecera() ->at ( index.column() );
-    if ( linea->nomcampo() == "nomtarifa" ) {
+    linea = m_subform->headerList() ->at ( index.column() );
+    if ( linea->fieldName() == "nomtarifa" ) {
         QString value = index.model() ->data ( index, Qt::DisplayRole ).toString();
         BusquedaTarifa *comboBox = static_cast<BusquedaTarifa*> ( editor );
         comboBox->setIdTarifa ( m_subform->lineaat ( index.row() ) ->dbValue ( "idtarifa" ) );
-    } else if ( linea->nomcampo() == "nomalmacen" ) {
+    } else if ( linea->fieldName() == "nomalmacen" ) {
         QString value = index.model() ->data ( index, Qt::DisplayRole ).toString();
         BfBuscarAlmacen *comboBox = static_cast<BfBuscarAlmacen*> ( editor );
         comboBox->setId ( m_subform->lineaat ( index.row() ) ->dbValue ( "idalmacen" ) );
 
-    } else if ( linea->nomcampo() == "cantidadmayoroigualque"
-                || linea->nomcampo() == "porcentajevariacion" ) {
+    } else if ( linea->fieldName() == "cantidadmayoroigualque"
+                || linea->fieldName() == "porcentajevariacion" ) {
 
         QString value = index.model() ->data ( index, Qt::DisplayRole ).toString();
         BlDoubleSpinBox *spinBox = static_cast<BlDoubleSpinBox*> ( editor );

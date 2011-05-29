@@ -107,10 +107,10 @@ AlumnoView::~AlumnoView()
     blDebug ( "END AlumnoView::~AlumnoView", 0 );
 }
 
-QString AlumnoView::nombrePlantilla ( void )
+QString AlumnoView::templateName ( void )
 {
-    blDebug ( "AlumnoView::nombrePlantilla", 0 );
-    blDebug ( "END AlumnoView::nombrePlantilla", 0 );
+    blDebug ( "AlumnoView::templateName", 0 );
+    blDebug ( "END AlumnoView::templateName", 0 );
 
     return QString ( "alumno" );
 }

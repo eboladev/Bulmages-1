@@ -309,7 +309,7 @@ void PresupuestoList::editar ( int row )
 void PresupuestoList::imprimir()
 {
     blDebug ( "PresupuestoList::imprimir", 0 );
-    mui_list->imprimirPDF ( _ ( "Presupuestos a clientes" ) );
+    mui_list->printPDF ( _ ( "Presupuestos a clientes" ) );
     blDebug ( "END PresupuestoList::imprimir", 0 );
 }
 

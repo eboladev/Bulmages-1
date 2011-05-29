@@ -173,7 +173,7 @@ int BlSubFormDelegate_createEditor ( BlSubFormDelegate *bl )
 {
     blDebug ( "pluginbf_minicontabilidad::BlSubFormDelegate_createEditor", 0 );
     int ret = 0;
-    if ( g_nomcampo == "codigocompletopartida"  ) {
+    if ( g_fieldName == "codigocompletopartida"  ) {
         BlDbCompleterComboBox * editor = new BlDbCompleterComboBox ( g_editor );
         editor->setObjectName ( "EditCodigoCompletoPartida" );
         editor->setMainCompany ( ( BfCompany * ) bl->m_subform->mainCompany() );
@@ -225,7 +225,7 @@ int BlSubFormDelegate_setEditorData ( BlSubFormDelegate *bl )
 int BlSubForm_editFinished ( BlSubForm *sub )
 {
     blDebug ( "pluginbf_minicontabilidad::BlSubForm_editFinished", 0 );
-    if ( sub->m_campoactual->nomcampo() == "codigocompletopartida" ) {
+    if ( sub->m_campoactual->fieldName() == "codigocompletopartida" ) {
 	QString query = "SELECT idpartida, nombrepartida, codigocompletopartida FROM partida WHERE upper (codigocompletopartida) LIKE upper('" + sub->m_campoactual->text() + "%')";
 
         BlDbRecordSet *cur = sub->mainCompany() ->loadQuery ( query );
@@ -302,7 +302,7 @@ int BfSubForm_pressedAsterisk ( BfSubForm *sub )
 {
     blDebug ( "BfSubForm_pressedAsterisk" );
 
-    if ( sub->m_campoactual->nomcampo() != "codigocompletopartida" ) {
+    if ( sub->m_campoactual->fieldName() != "codigocompletopartida" ) {
         blDebug ( "END BfSubForm::pressedAsterisk", 0 );
         return 0;
     } // end if

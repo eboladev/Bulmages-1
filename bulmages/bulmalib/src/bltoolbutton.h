@@ -25,8 +25,8 @@
 #define BLTOOLBUTTON_H
 
 #include <QToolButton>
-
 #include "blmaincompanypointer.h"
+
 
 class BL_EXPORT BlToolButton : public QToolButton, public BlMainCompanyPointer
 {
@@ -42,7 +42,5 @@ public slots:
     
 };
 
-// BlToolButton * newBlToolButton(BlMainCompany *, QWidget *parent = 0, Qt::WFlags f = 0 );
-
-
 #endif
+

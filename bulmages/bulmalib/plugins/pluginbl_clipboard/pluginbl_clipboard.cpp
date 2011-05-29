@@ -164,7 +164,7 @@ void PluginBl_Clipboard::pegaSXC()
         BlDbSubFormRecord  *linea1;
         linea1 = subform->lineaat ( subform->rowCount() - 1 );
         /// Haciendo el nuevo registro antes nos evitamos problemas de foco.
-        subform->nuevoRegistro();
+        subform->newRecord();
 
         /// Iteramos para cada columna.
         for ( int j = 0; j < numcampos; ++j ) {
@@ -276,7 +276,7 @@ void PluginBl_Clipboard::pegaODS()
         BlDbSubFormRecord  *linea1;
         linea1 = subform->lineaat ( subform->rowCount() - 1 );
         /// Haciendo el nuevo registro antes nos evitamos problemas de foco.
-        subform->nuevoRegistro();
+        subform->newRecord();
 
         /// Iteramos para cada columna.
         for ( int j = 0; j < numcampos; ++j ) {

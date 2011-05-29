@@ -235,7 +235,7 @@ int BfSubForm_on_mui_list_editFinished ( BfSubForm *sf )
 {
     blDebug ( "BfSubForm_on_mui_list_editFinished", 0 );
     BlDbSubFormField *camp = sf->m_campoactual;
-    if  ( camp->nomcampo() == "codigocompletoarticulo" ) {
+    if  ( camp->fieldName() == "codigocompletoarticulo" ) {
       if ( posibleAlias ( camp->text(), sf->mainCompany() ) ) {
         blDebug ( "possible Alias ", 0, camp->text() );
         QString SQLQuery = "SELECT codigocompletoarticulo FROM alias LEFT JOIN articulo ON alias.idarticulo = articulo.idarticulo WHERE cadalias ~=~ $1";
@@ -261,7 +261,7 @@ int BfSubForm_on_mui_list_editFinished ( BfSubForm *sf )
 int BlSubForm_editFinished ( BlSubForm *sub )
 {
     blDebug ( "pluginbf_alias::BlSubForm_editFinished", 0 );
-    if ( sub->m_campoactual->nomcampo() == "codigocompletoarticulo" ) {
+    if ( sub->m_campoactual->fieldName() == "codigocompletoarticulo" ) {
       QString val = sub->m_campoactual->text();
         QString valors[1] = {val};
         QString query = "SELECT idarticulo FROM articulo WHERE codigocompletoarticulo = $1";

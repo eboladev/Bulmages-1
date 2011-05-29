@@ -183,7 +183,7 @@ void GenFacProQToolButton::generarFacturaProveedor()
             linea = fpv->m_listalineas->lineaat ( i );
             if ( linea->dbValue ( "idarticulo" ) != "" ) {
                 linea1 = bud->getlistalineas() ->lineaat ( bud->getlistalineas() ->rowCount() - 1 );
-                bud->getlistalineas() ->nuevoRegistro();
+                bud->getlistalineas() ->newRecord();
                 bud->getlistalineas() ->setProcesarCambios ( FALSE );
                 linea1->setDbValue ( "desclfacturap", linea->dbValue ( "desclalbaranp" ) );
                 linea1->setDbValue ( "cantlfacturap", linea->dbValue ( "cantlalbaranp" ) );
@@ -290,7 +290,7 @@ void GenFacProQToolButton::generarFacturaProveedor1()
             linea = fpv->m_listalineas->lineaat ( i );
             if ( linea->dbValue ( "idarticulo" ) != "" ) {
                 linea1 = bud->getlistalineas() ->lineaat ( bud->getlistalineas() ->rowCount() - 1 );
-                bud->getlistalineas() ->nuevoRegistro();
+                bud->getlistalineas() ->newRecord();
                 bud->getlistalineas() ->setProcesarCambios ( FALSE );
                 linea1->setDbValue ( "desclfacturap", linea->dbValue ( "desclpedidoproveedor" ) );
                 linea1->setDbValue ( "cantlfacturap", linea->dbValue ( "cantlpedidoproveedor" ) );

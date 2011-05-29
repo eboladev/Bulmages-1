@@ -182,7 +182,7 @@ void GenPedQToolButton::generarFactura1()
             linea = fpv->m_listalineas->lineaat ( i );
             if ( linea->dbValue ( "idarticulo" ) != "" ) {
                 linea1 = bud->getlistalineas() ->lineaat ( bud->getlistalineas() ->rowCount() - 1 );
-                bud->getlistalineas() ->nuevoRegistro();
+                bud->getlistalineas() ->newRecord();
                 bud->getlistalineas() ->setProcesarCambios ( FALSE );
                 linea1->setDbValue ( "desclpedidocliente", linea->dbValue ( "desclpresupuesto" ) );
                 linea1->setDbValue ( "cantlpedidocliente", linea->dbValue ( "cantlpresupuesto" ) );
@@ -205,7 +205,7 @@ void GenPedQToolButton::generarFactura1()
                 linea->setDbValue ( "conceptdpedidocliente", linea1->dbValue ( "conceptdpresupuesto" ) );
                 linea->setDbValue ( "proporciondpedidocliente", linea1->dbValue ( "proporciondpresupuesto" ) );
                 bud->getlistadescuentos() ->setProcesarCambios ( TRUE );
-                bud->getlistadescuentos() ->nuevoRegistro();
+                bud->getlistadescuentos() ->newRecord();
             } // end if
         } // end for
         /// Pintamos el pedido y lo presentamos.

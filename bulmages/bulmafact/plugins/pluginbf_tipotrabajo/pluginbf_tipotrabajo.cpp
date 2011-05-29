@@ -255,9 +255,9 @@ QWidget *QSubForm3BfDelegate::createEditor ( QWidget *parent, const QStyleOption
 {
     blDebug ( "QSubForm3BfDelegate::createEditor", 0 );
     BlSubFormHeader *linea;
-    linea = m_subform->cabecera() ->at ( index.column() );
+    linea = m_subform->headerList() ->at ( index.column() );
 
-    if ( linea->nomcampo() == "nomtipotrabajo" ) {
+    if ( linea->fieldName() == "nomtipotrabajo" ) {
         BusquedaTipoTrabajoDelegate * editor = new BusquedaTipoTrabajoDelegate ( parent );
         editor->setMainCompany ( ( BfCompany * ) m_subform->mainCompany() );
         return editor;
@@ -284,8 +284,8 @@ void QSubForm3BfDelegate::setModelData ( QWidget *editor, QAbstractItemModel *mo
         return;
 
     BlSubFormHeader *linea;
-    linea = m_subform->cabecera() ->at ( index.column() );
-    if ( linea->nomcampo() == "nomtipotrabajo" ) {
+    linea = m_subform->headerList() ->at ( index.column() );
+    if ( linea->fieldName() == "nomtipotrabajo" ) {
         BusquedaTipoTrabajoDelegate * comboBox = static_cast<BusquedaTipoTrabajoDelegate*> ( editor );
         QString value = comboBox->currentText();
         model->setData ( index, value );
@@ -306,8 +306,8 @@ void QSubForm3BfDelegate::setEditorData ( QWidget* editor, const QModelIndex& in
 {
     blDebug ( "QSubForm3BfDelegate::setEditorData", 0 );
     BlSubFormHeader *linea;
-    linea = m_subform->cabecera() ->at ( index.column() );
-    if ( linea->nomcampo() == "nomtipotrabajo" ) {
+    linea = m_subform->headerList() ->at ( index.column() );
+    if ( linea->fieldName() == "nomtipotrabajo" ) {
         QString value = index.model() ->data ( index, Qt::DisplayRole ).toString();
         BusquedaTipoTrabajoDelegate *comboBox = static_cast<BusquedaTipoTrabajoDelegate*> ( editor );
         comboBox->setId ( value );

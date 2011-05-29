@@ -246,7 +246,7 @@ void BlFormList::borrar()
 void BlFormList::imprimir()
 {
     blDebug ( "BlFormList::imprimir", 0 );
-    m_listado->imprimirPDF ( "" );
+    m_listado->printPDF ( "" );
     blDebug ( "END BlFormList::imprimir", 0 );
 }
 
@@ -593,7 +593,7 @@ void BlFormList::guardaFiltrosXML() {
 /**
  **/
 void BlFormList::cargaFiltrosXML() {
-    blDebug ( "BlFormList::cargaconfigXML", 0 );
+    blDebug ( "BlFormList::loadConfigXML", 0 );
     QFile file ( nameFileConfig() );
     if(!file.exists())
       file.setFileName(nameFileDefaultConfig());
@@ -601,12 +601,12 @@ void BlFormList::cargaFiltrosXML() {
     
     QDomDocument doc ( "mydocument" );
     if ( !file.open ( QIODevice::ReadOnly ) ) {
-        blDebug ( "END BlFormList::cargaconfigXML", 0, "No se pudo abrir archivo" );
+        blDebug ( "END BlFormList::loadConfigXML", 0, "No se pudo abrir archivo" );
         return;
     }
     if ( !doc.setContent ( &file ) ) {
         file.close();
-        blDebug ( "END BlSubForm::cargaconfigXML", 0, "XML no valido" );
+        blDebug ( "END BlSubForm::loadConfigXML", 0, "XML no valido" );
         return;
     }
     file.close();

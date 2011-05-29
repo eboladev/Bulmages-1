@@ -255,7 +255,7 @@ void BcAmortizacionView::on_mui_btcalcular_clicked()
         valcuotastr.sprintf ( "%10.2f", valcuota );
         for ( int i = 0; i < ncuotas; i++ ) {
             mui_listcuotas->setInsert ( TRUE );
-            mui_listcuotas->nuevoRegistro();
+            mui_listcuotas->newRecord();
             mui_listcuotas->setInsert ( FALSE );
             BlDbSubFormRecord *rec = mui_listcuotas->lista() ->last();
             rec->setDbValue ( "fechaprevista", f1cuota.toString ( "dd/MM/yyyy" ) );
@@ -283,7 +283,7 @@ void BcAmortizacionView::on_mui_btcalcular_clicked()
             valcuota = valorcompra->text().toDouble() * i / total;
             valcuotastr.sprintf ( "%10.2f", valcuota );
             mui_listcuotas->setInsert ( TRUE );
-            mui_listcuotas->nuevoRegistro();
+            mui_listcuotas->newRecord();
             mui_listcuotas->setInsert ( FALSE );
             BlDbSubFormRecord *rec = mui_listcuotas->lista() ->last();
             rec->setDbValue ( "fechaprevista", f1cuota.toString ( "dd/MM/yyyy" ) );
@@ -310,7 +310,7 @@ void BcAmortizacionView::on_mui_btcalcular_clicked()
             valcuota = valorcompra->text().toDouble() * ( ncuotas - i ) / total;
             valcuotastr.sprintf ( "%10.2f", valcuota );
             mui_listcuotas->setInsert ( TRUE );
-            mui_listcuotas->nuevoRegistro();
+            mui_listcuotas->newRecord();
             mui_listcuotas->setInsert ( FALSE );
             BlDbSubFormRecord *rec = mui_listcuotas->lista() ->last();
             rec->setDbValue ( "fechaprevista", f1cuota.toString ( "dd/MM/yyyy" ) );
@@ -342,7 +342,7 @@ void BcAmortizacionView::on_mui_btcalcular_clicked()
             } // end if
             valcuotastr.sprintf ( "%10.2f", valcuota );
             mui_listcuotas->setInsert ( TRUE );
-            mui_listcuotas->nuevoRegistro();
+            mui_listcuotas->newRecord();
             mui_listcuotas->setInsert ( FALSE );
             BlDbSubFormRecord *rec = mui_listcuotas->lista() ->last();
             rec->setDbValue ( "fechaprevista", f1cuota.toString ( "dd/MM/yyyy" ) );

@@ -127,7 +127,7 @@ int BlSubFormDelegate_createEditor ( BlSubFormDelegate *bl )
 {
     blDebug ( "pluginbf_actividad::BlSubFormDelegate_createEditor", 0 );
     int ret = 0;
-    if ( g_nomcampo == "nombreactividad" ) {
+    if ( g_fieldName == "nombreactividad" ) {
         BlDbCompleterComboBox * editor = new BlDbCompleterComboBox ( g_editor );
         editor->setObjectName ( "EditNombreActividad" );
         editor->setMainCompany ( ( BfCompany * ) bl->m_subform->mainCompany() );
@@ -173,7 +173,7 @@ int BlSubFormDelegate_setEditorData ( BlSubFormDelegate *bl )
 int BlSubForm_editFinished ( BlSubForm *sub )
 {
     blDebug ( "pluginbf_actividad::BlSubForm_editFinished", 0 );
-    if ( sub->m_campoactual->nomcampo() == "nombreactividad" ) {
+    if ( sub->m_campoactual->fieldName() == "nombreactividad" ) {
         BlDbRecordSet *cur = sub->mainCompany() ->loadQuery ( "SELECT idactividad FROM actividad WHERE nombreactividad = '" + sub->m_campoactual->text() + "'" );
         if ( !cur->eof() ) {
             sub->m_registrolinea->setDbValue ( "idactividad", cur->value( "idactividad" ) );

@@ -156,8 +156,8 @@ void BlDbRecordSet::inicializa ( QString nombre, PGconn *conn1, QString SQLQuery
         /// Rellenamos el hash que luego nos sirve en la consulta.
         m_campos.clear();
         for ( int i = 0; i < ncampos; i++ ) {
-            if ( !m_campos.contains ( nomcampo ( i ) ) )
-                m_campos[nomcampo ( i ) ] = i;
+            if ( !m_campos.contains ( fieldName ( i ) ) )
+                m_campos[fieldName ( i ) ] = i;
         } // end for
 
         blDebug ( "------------ RESULTADO DE LA CONSULTA -----------------" );
@@ -223,10 +223,10 @@ int BlDbRecordSet::numcampos()
 /**
 \return
 **/
-QString BlDbRecordSet::nomcampo ( int campo )
+QString BlDbRecordSet::fieldName ( int campo )
 {
-    blDebug ( "BlDbRecordSet::nomcampo", 0 );
-    blDebug ( "END BlDbRecordSet::nomcampo", 0 );
+    blDebug ( "BlDbRecordSet::fieldName", 0 );
+    blDebug ( "END BlDbRecordSet::fieldName", 0 );
     if ( campo >= 0 ) {
         return ( ( QString ) PQfname ( result, campo ) );
     } else {

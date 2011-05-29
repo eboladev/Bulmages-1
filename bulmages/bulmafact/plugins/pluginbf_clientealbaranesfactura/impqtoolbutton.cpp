@@ -161,7 +161,7 @@ void ImpQToolButton::click()
                     if ( linea->dbValue ( "idarticulo" ) != "" ) {
                         linea1 = fac->getlistalineas() ->lineaat ( fac->getlistalineas() ->rowCount() - 1 );
                         /// Haciendo el nuevo registro antes nos evitamos problemas de foco.
-                        fac->getlistalineas() ->nuevoRegistro();
+                        fac->getlistalineas() ->newRecord();
                         fac->getlistalineas() ->setProcesarCambios ( FALSE );
                         linea1->setDbValue ( "codigocompletoarticulo", linea->dbValue ( "codigocompletoarticulo" ) );
                         linea1->setDbValue ( "desclfactura", linea->dbValue ( "desclalbaran" ) );

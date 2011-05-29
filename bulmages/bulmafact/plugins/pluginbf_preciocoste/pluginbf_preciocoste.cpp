@@ -127,7 +127,7 @@ int BfSubForm_on_mui_list_editFinished ( BfSubForm *subform )
     BlDbSubFormField *camp = ( BlDbSubFormField * ) subform->item ( subform->m_prevRow, subform->m_prevCol );
     camp->refresh();
 
-    if ( camp->nomcampo() == "pvplpedidoproveedor" ||  camp->nomcampo() == "pvplalbaranp"  || camp->nomcampo() == "pvplfacturap" ) {
+    if ( camp->fieldName() == "pvplpedidoproveedor" ||  camp->fieldName() == "pvplalbaranp"  || camp->fieldName() == "pvplfacturap" ) {
         BlDbSubFormRecord * rec = subform->lineaat ( subform->currentRow() );
 
         if ( rec->dbValue ( "idarticulo" ) == "" ) return 0;
@@ -156,7 +156,7 @@ int BfSubForm_on_mui_list_editFinished ( BfSubForm *subform )
         return 0;
     } // end if
 
-    if ( camp->nomcampo() == "codigocompletoarticulo" ) {
+    if ( camp->fieldName() == "codigocompletoarticulo" ) {
 
         cur = subform->mainCompany() ->loadQuery ( "SELECT * FROM articulo WHERE codigocompletoarticulo = '" + camp->text() + "'" );
         if ( !cur->eof() ) {

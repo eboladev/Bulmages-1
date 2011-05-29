@@ -54,7 +54,7 @@ public:
     ReciboView ( BfCompany *, QWidget * );
     ~ReciboView();
     virtual void imprimir();
-    virtual QString nombrePlantilla(void) ;
+    virtual QString templateName(void) ;
     virtual int guardarPost();
     virtual int borrarPre();
     virtual int cargarPost(QString );

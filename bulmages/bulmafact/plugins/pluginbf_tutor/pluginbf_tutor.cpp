@@ -115,7 +115,7 @@ int BlSubFormDelegate_createEditor ( BlSubFormDelegate *bl )
 {
     blDebug ( "pluginbf_tutor::BlSubFormDelegate_createEditor", 0 );
     int ret = 0;
-    if ( g_nomcampo == "nombrealumno" || g_nomcampo == "nombrealumno1" ) {
+    if ( g_fieldName == "nombrealumno" || g_fieldName == "nombrealumno1" ) {
         BlDbCompleterComboBox * editor = new BlDbCompleterComboBox ( g_editor );
         editor->setObjectName ( "EditNombreAlumno" );
         editor->setMainCompany ( ( BfCompany * ) bl->m_subform->mainCompany() );
@@ -127,7 +127,7 @@ int BlSubFormDelegate_createEditor ( BlSubFormDelegate *bl )
         ret = -1;
     } // end if
 
-    if ( g_nomcampo == "nomcliente" ) {
+    if ( g_fieldName == "nomcliente" ) {
         BlDbCompleterComboBox * editor = new BlDbCompleterComboBox ( g_editor );
         editor->setObjectName ( "EditNombreCliente" );
         editor->setMainCompany ( ( BfCompany * ) bl->m_subform->mainCompany() );
@@ -179,7 +179,7 @@ int BlSubFormDelegate_setEditorData ( BlSubFormDelegate *bl )
 int BlSubForm_editFinished ( BlSubForm *sub )
 {
     blDebug ( "pluginbf_tutor::BlSubForm_editFinished", 0 );
-    if ( sub->m_campoactual->nomcampo() == "nombrealumno1" ) {
+    if ( sub->m_campoactual->fieldName() == "nombrealumno1" ) {
 	QString query = "SELECT idalumno FROM alumno WHERE upper (apellido1alumno || ' ' || apellido2alumno || ' ' || nombrealumno) LIKE upper('" + sub->m_campoactual->text() + "%')";
 //	blMsgInfo(query);
         BlDbRecordSet *cur = sub->mainCompany() ->loadQuery ( query );
@@ -188,7 +188,7 @@ int BlSubForm_editFinished ( BlSubForm *sub )
         } // end if
         delete cur;
     } // end if
-    if ( sub->m_campoactual->nomcampo() == "nomcliente" ) {
+    if ( sub->m_campoactual->fieldName() == "nomcliente" ) {
         BlDbRecordSet *cur = sub->mainCompany() ->loadQuery ( "SELECT idcliente, apellido1cliente, apellido2cliente, nomcliente FROM cliente WHERE upper(apellido1cliente || ' ' || apellido2cliente || ' ' || nomcliente) LIKE upper('" + sub->m_campoactual->text() + "%')");
         if ( !cur->eof() ) {
             sub->m_registrolinea->setDbValue ( "idcliente", cur->value( "idcliente" ) );
@@ -255,7 +255,7 @@ int BfSubForm_pressedAsterisk ( BfSubForm *sub )
 {
     blDebug ( "BfSubForm_pressedAsterisk" );
 
-    if ( sub->m_campoactual->nomcampo() != "nomcliente" ) {
+    if ( sub->m_campoactual->fieldName() != "nomcliente" ) {
         blDebug ( "END BfSubForm::pressedAsterisk", 0 );
         return 0;
     } // end if

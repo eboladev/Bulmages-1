@@ -256,7 +256,7 @@ void ProveedorList::borrar()
 void ProveedorList::imprimir()
 {
     blDebug ( "ProveedorList::on_mui_imprimir_clicked", 0 );
-    mui_list->imprimirPDF ( _ ( "Listado de Proveedores" ) );
+    mui_list->printPDF ( _ ( "Listado de Proveedores" ) );
     blDebug ( "END ProveedorList::on_mui_imprimir_clicked", 0 );
 }
 

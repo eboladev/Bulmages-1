@@ -472,8 +472,8 @@ msgid "Error: usuario y/o contrasenya incorrectos"
 msgstr "Error: usuari i/o contrasenya incorrecta"
 
 #: blsubform.cpp:2928 blsubform.cpp:2940
-msgid "Errr al copiar listado.rml [ BlSubForm->imprimirPDF() ]"
-msgstr "Error en copiar listado.rml [ BlSubForm->imprimirPDF() ]"
+msgid "Errr al copiar listado.rml [ BlSubForm->printPDF() ]"
+msgstr "Error en copiar listado.rml [ BlSubForm->printPDF() ]"
 
 #: blworkspace.cpp:102 blworkspace.cpp:140
 msgid "Esc"

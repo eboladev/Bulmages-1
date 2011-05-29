@@ -48,13 +48,13 @@ public:
     BfSubForm* getlistalineas();
     BfSubForm* getlistadescuentos();
     virtual void imprimir();
-    virtual QString nombrePlantilla(void) ;
+    virtual QString templateName(void) ;
     virtual int generaRML ( void );
     virtual int generaRML ( const QString &arch );
     virtual void calculaypintatotales();
     virtual void pintatotales ( BlFixed, BlFixed, BlFixed, BlFixed, BlFixed, BlFixed ) {};
-    virtual int trataTags ( QString &buff, int tipoEscape = 0 );
-    virtual void trataTagsBf( QString &buff, int tipoEscape = 0 );
+    virtual int parseTags ( QString &buff, int tipoEscape = 0 );
+    virtual void parseTagsBf( QString &buff, int tipoEscape = 0 );
     virtual QString trataLineasDetalle ( const QString &det, int tipoEscape = 0 );
     virtual QString trataLineasDescuento ( const QString &det, int tipoEscape = 0 );
     virtual QString trataTotales ( const QString &det, int bimporeq = 1 );

@@ -88,10 +88,10 @@ ApunteContableView::~ApunteContableView()
     blDebug ( "END ApunteContableView::~ApunteContableView", 0 );
 }
 
-QString ApunteContableView::nombrePlantilla ( void )
+QString ApunteContableView::templateName ( void )
 {
-    blDebug ( "ApunteContableView::nombrePlantilla", 0 );
-    blDebug ( "END ApunteContableView::nombrePlantilla", 0 );
+    blDebug ( "ApunteContableView::templateName", 0 );
+    blDebug ( "END ApunteContableView::templateName", 0 );
     
     return QString ( "acontable" );
 }

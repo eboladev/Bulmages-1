@@ -42,9 +42,9 @@
 ///
 /**
 **/
-void ListIvaView::guardaconfig()
+void ListIvaView::saveConfig()
 {
-    blDebug ( "ListIvaView::guardaconfig", 0 );
+    blDebug ( "ListIvaView::saveConfig", 0 );
     QString aux = "";
     QFile file ( g_confpr->value( CONF_DIR_USER ) + "confListIvaView.cfn" );
     if ( file.open ( QIODevice::WriteOnly ) ) {
@@ -55,16 +55,16 @@ void ListIvaView::guardaconfig()
         } // end for
         file.close();
     } // end if
-    blDebug ( "END ListIvaView::guardaconfig", 0 );
+    blDebug ( "END ListIvaView::saveConfig", 0 );
 }
 
 
 ///
 /**
 **/
-void ListIvaView::cargaconfig()
+void ListIvaView::loadConfig()
 {
-    blDebug ( "ListIvaView::cargaconfig", 0 );
+    blDebug ( "ListIvaView::loadConfig", 0 );
     QFile file ( g_confpr->value( CONF_DIR_USER ) + "confListIvaView.cfn" );
     QString line;
     if ( file.open ( QIODevice::ReadOnly ) ) {
@@ -75,7 +75,7 @@ void ListIvaView::cargaconfig()
         } // end for
         file.close();
     } // end if
-    blDebug ( "END ListIvaView::cargaconfig", 0 );
+    blDebug ( "END ListIvaView::loadConfig", 0 );
 }
 
 
@@ -117,7 +117,7 @@ ListIvaView::ListIvaView ( QWidget * parent ) : QTableWidget ( parent ), ListIva
     connect ( this, SIGNAL ( valueChanged ( int, int ) ), this, SLOT ( valueBudgetLineChanged ( int, int ) ) );
     connect ( this, SIGNAL ( contextMenuRequested ( int, int, const QPoint & ) ), this, SLOT ( contextMenu ( int, int, const QPoint & ) ) );
     installEventFilter ( this );
-    cargaconfig();
+    loadConfig();
     blDebug ( "END ListIvaView::ListIvaView", 0 );
 }
 
@@ -128,7 +128,7 @@ ListIvaView::ListIvaView ( QWidget * parent ) : QTableWidget ( parent ), ListIva
 ListIvaView::~ListIvaView()
 {
     blDebug ( "ListIvaView::~ListIvaView()", 0 );
-    guardaconfig();
+    saveConfig();
     blDebug ( "END ListIvaView::~ListIvaView()", 0 );
 }
 

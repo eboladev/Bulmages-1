@@ -38,8 +38,8 @@ un eventHandler especifico
 BlTableWidget::BlTableWidget ( QWidget *parent ) : QTableWidget ( parent )
 {
     blDebug ( "BlTableWidget::BlTableWidget", 0 );
-    setcolorden ( -1 );
-    settipoorden ( -1 );
+    setColumnOrder ( -1 );
+    setOrderType ( -1 );
     installEventFilter ( this );
     connect ( this, SIGNAL ( itemChanged ( QTableWidgetItem * ) ), this, SLOT ( sitemChanged ( QTableWidgetItem * ) ) );
     blDebug ( "END BlTableWidget::BlTableWidget", 0 );
@@ -170,11 +170,11 @@ bool BlTableWidgetItem::operator< ( const QTableWidgetItem & other ) const
 /**
 \return
 **/
-int BlTableWidget::tipoorden()
+int BlTableWidget::orderType()
 {
-    blDebug ( "BlTableWidget::tipoorden", 0 );
-    blDebug ( "END BlTableWidget::tipoorden", 0 );
-    return m_tipoorden;
+    blDebug ( "BlTableWidget::orderType", 0 );
+    blDebug ( "END BlTableWidget::orderType", 0 );
+    return m_orderType;
 }
 
 
@@ -182,11 +182,11 @@ int BlTableWidget::tipoorden()
 /**
 \return
 **/
-int BlTableWidget::colorden()
+int BlTableWidget::columnOrder()
 {
-    blDebug ( "BlTableWidget::colorden", 0 );
-    blDebug ( "END BlTableWidget::colorden", 0 );
-    return m_colorden;
+    blDebug ( "BlTableWidget::columnOrder", 0 );
+    blDebug ( "END BlTableWidget::columnOrder", 0 );
+    return m_columnOrder;
 }
 
 
@@ -194,11 +194,11 @@ int BlTableWidget::colorden()
 /**
 \param t
 **/
-void BlTableWidget::settipoorden ( int t )
+void BlTableWidget::setOrderType ( int t )
 {
-    blDebug ( "BlTableWidget::settipoorden", 0 );
-    m_tipoorden = t;
-    blDebug ( "END BlTableWidget::settipoorden", 0 );
+    blDebug ( "BlTableWidget::setOrderType", 0 );
+    m_orderType = t;
+    blDebug ( "END BlTableWidget::setOrderType", 0 );
 }
 
 
@@ -206,11 +206,11 @@ void BlTableWidget::settipoorden ( int t )
 /**
 \param t
 **/
-void BlTableWidget::setcolorden ( int t )
+void BlTableWidget::setColumnOrder ( int t )
 {
-    blDebug ( "BlTableWidget::setcolorden", 0 );
-    m_colorden = t;
-    blDebug ( "END BlTableWidget::setcolorden", 0 );
+    blDebug ( "BlTableWidget::setColumnOrder", 0 );
+    m_columnOrder = t;
+    blDebug ( "END BlTableWidget::setColumnOrder", 0 );
 }
 
 ///
@@ -338,25 +338,25 @@ bool BlTableWidget::eventFilter ( QObject *obj, QEvent *event )
             break;
         case Qt::Key_Up:
             if ( ( mod & Qt::ControlModifier ) || ( mod & Qt::AltModifier ) ) {
-                emit ctrlSubir ( row, col );
+                emit ctrlUp ( row, col );
                 return TRUE;
             } // end if
             /// Al pulsar la tecla 'arriba' se considera que es el fin de la edici&oacute;n de la celda.
         case Qt::Key_Down:
             if ( ( mod & Qt::ControlModifier ) || ( mod & Qt::AltModifier ) ) {
-                emit ctrlBajar ( row, col );
+                emit ctrlDown ( row, col );
                 return TRUE;
             } // end if
             /// Al pulsar la tecla 'abajo' se considera que es el fin de la edici&oacute; de la celda.
             return TRUE;
         case Qt::Key_Left:
             if ( ( mod & Qt::ControlModifier ) || ( mod & Qt::AltModifier ) ) {
-                emit ctrlIzquierda ( row, col );
+                emit ctrlLeft ( row, col );
                 return TRUE;
             } // end if
         case Qt::Key_Right:
             if ( ( mod & Qt::ControlModifier ) || ( mod & Qt::AltModifier ) ) {
-                emit ctrlDerecha ( row, col );
+                emit ctrlRight ( row, col );
                 return TRUE;
             } // end if
         } // end switch
@@ -374,12 +374,12 @@ metodo de ordenacion.
 **/
 void BlTableWidget::ordenar()
 {
-    blDebug ( "BlTableWidget::ordenar", 0, QString::number ( m_colorden ) );
+    blDebug ( "BlTableWidget::ordenar", 0, QString::number ( m_columnOrder ) );
     /// Puede ocurrir que el parametro de ordenacion sea invalido por cualquier extranyo motivo.
-    if ( m_colorden < columnCount() && m_colorden >= 0 ) {
-        sortByColumn ( m_colorden );
+    if ( m_columnOrder < columnCount() && m_columnOrder >= 0 ) {
+        sortByColumn ( m_columnOrder );
     } // end if
-    blDebug ( "END BlTableWidget::ordenar", 0, QString::number ( m_colorden ) );
+    blDebug ( "END BlTableWidget::ordenar", 0, QString::number ( m_columnOrder ) );
 }
 
 

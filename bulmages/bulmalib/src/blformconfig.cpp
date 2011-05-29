@@ -69,7 +69,7 @@ BlFormConfig::BlFormConfig ( BlMainCompany *emp, BlForm *parent, Qt::WFlags f ) 
     /// Impresion de la tabla de contenidos.
     for ( int j = 0; j < lista->size(); ++j ) {
         BlDbField *campo = lista->at ( j );
-        QTableWidgetItem *newItem = new QTableWidgetItem ( campo->nomcampo() );
+        QTableWidgetItem *newItem = new QTableWidgetItem ( campo->fieldName() );
         mui_formelements->setItem ( j, 0, newItem );
 
         QTableWidgetItem *newItem1 = new QTableWidgetItem ( campo->nompresentacion() );

@@ -59,7 +59,7 @@ public:
     enum DbOptions {DbNone = 0, DbReadOnly = 1, DbHideView = 2, DbNoWrite = 4, DbDisableView = 8};
 
 protected:
-    QString m_nomcampo;   ///< El nombre de la cabecera en el recordset
+    QString m_fieldName;   ///< El nombre de la cabecera en el recordset
     QString m_nompresentacion;  ///< El nombre para mostrar en los errores
     unsigned int m_restricciones; ///< Las restricciones de la columna en el recordset
     BlDbField::DbType m_tipo;  ///< El tipo de los datos
@@ -71,11 +71,11 @@ public:
     BlSubFormHeader ( QString nom, BlDbField::DbType typ, int res, int opt, QString nomp = "" );
     ~BlSubFormHeader();
     unsigned int options();
-    unsigned int restricciones();
+    unsigned int restrictions();
     BlDbField::DbType dbFieldType();
     QString nompresentacion();
     int restrictcampo();
-    QString nomcampo();
+    QString fieldName();
     virtual QString exportXML();
     const int numericPrecision();
     void setNumericPrecision(int pres);
@@ -88,7 +88,7 @@ public:
 extern  BL_EXPORT QModelIndex g_index;
 extern  BL_EXPORT QWidget *g_editor;
 extern  BL_EXPORT QAbstractItemModel *g_model;
-extern  BL_EXPORT QString g_nomcampo;
+extern  BL_EXPORT QString g_fieldName;
 
 
 /// Clase BfSubFormDelegate
@@ -204,17 +204,17 @@ protected:
 public:
     /// Guarda la configuraci&oacute;n de presentaci&oacute;n del subformulario
     /// en el directorio .bulmages situado dentro del directorio 'home' del usuario.
-    void guardaconfig();
-    void guardaconfigXML();
+    void saveConfig();
+    void saveConfigXML();
     /// Carga la configuraci&oacute;n que ten&iacute;a el formulario la &uacute;ltima
     /// vez que fue utilizado por el usuario.
-    void cargaconfig();
-    void cargaconfigXML();
+    void loadConfig();
+    void loadConfigXML();
     /// Devuelve la lista de registros de la base de datos que
     /// se presentan en el subformulario.
     QList<BlDbSubFormRecord *> *lista();
     /// Devuelve la lista de cabeceras que forman el subformulario.
-    QList<BlSubFormHeader *> *cabecera();
+    QList<BlSubFormHeader *> *headerList();
 
 public:
     BlSubForm ( QWidget *parent );
@@ -312,7 +312,7 @@ public:
     void setDbValue ( const QString &campo, int row, const QString &valor );
     BlDbSubFormRecord *lineaact();
     BlDbSubFormRecord *lineaat ( int row );
-    virtual void nuevoRegistro();
+    virtual void newRecord();
     virtual int borrar ( int );
     virtual int guardar();
     virtual void cargar ( QString query );
@@ -342,7 +342,7 @@ public:
     virtual QString exportXML();
 
 public slots:
-    virtual void imprimirPDF ( const QString & );
+    virtual void printPDF ( const QString & );
     virtual int borrar();
     void columnMovedByUser(int column, int oldIndex, int newIndex);
     virtual void on_mui_list_cellRePosition ( int, int );
@@ -354,8 +354,8 @@ public slots:
     void on_mui_list_pressedAsterisk ( int row, int col );
     void on_mui_list_pressedPlus ( int row, int col );
     void on_mui_list_pressedMinus ( int row, int col );
-    virtual void on_mui_list_ctrlSubir ( int row, int col );
-    virtual void on_mui_list_ctrlBajar ( int row, int col );
+    virtual void on_mui_list_ctrlUp ( int row, int col );
+    virtual void on_mui_list_ctrlDown ( int row, int col );
     virtual void on_mui_pagsiguiente_clicked();
     virtual void on_mui_paganterior_clicked();
     virtual void on_mui_list_itemDoubleClicked ( QTableWidgetItem *item );
@@ -376,7 +376,7 @@ public slots:
     void resizeRowsToContents();
     virtual void toogleConfig();
     virtual void toogleMenuConfig();
-    virtual int borrarLineaActual();
+    virtual int deleteCurrentRow();
     virtual void bpressedSlash ( );
     virtual void bSubir ( );
     virtual void bBajar ( );

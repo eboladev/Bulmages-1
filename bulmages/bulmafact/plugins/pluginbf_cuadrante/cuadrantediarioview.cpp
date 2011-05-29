@@ -110,7 +110,7 @@ CuadranteDiarioView::CuadranteDiarioView ( BfCompany *comp, QWidget *parent )
 CuadranteDiarioView::~CuadranteDiarioView()
 {
     blDebug ( "CuadranteDiarioView::~CuadranteDiarioView", 0 );
-    guardaconfig();
+    saveConfig();
     blDebug ( "END CuadranteDiarioView::~CuadranteDiarioView", 0 );
 }
 
@@ -175,7 +175,7 @@ void CuadranteDiarioView::inicializaCuadrante ( const QDate &dateorig )
     try {
         /// Si el cuadrante ha sido manipulado guardamos las configuracion del mismo.
         if ( mui_cuadrante->rowCount() != 0 )
-            guardaconfig();
+            saveConfig();
 
         mui_cuadrante->clear();
 
@@ -221,7 +221,7 @@ void CuadranteDiarioView::inicializaCuadrante ( const QDate &dateorig )
         mui_listvalidaciones->cargar ( query1 );
 
 
-        cargaconfig();
+        loadConfig();
         blDebug ( "CuadranteDiarioView::inicializaCuadrante", 0 );
     } catch ( ... ) {
         blDebug ( "Error en la carga del calendario", 2 );
@@ -485,9 +485,9 @@ void CuadranteDiarioView::on_mui_imprimir_clicked()
 /// Guardamos el archivo de configuracion.
 /**
 **/
-void CuadranteDiarioView::guardaconfig()
+void CuadranteDiarioView::saveConfig()
 {
-    blDebug ( "CuadranteDiarioView::guardaconfig", 0 );
+    blDebug ( "CuadranteDiarioView::saveConfig", 0 );
     QString aux = "";
     QFile file ( g_confpr->value( CONF_DIR_USER ) + "cuadrantedcfn.cfn" );
     /// Guardado del orden y de configuraciones varias.
@@ -506,16 +506,16 @@ void CuadranteDiarioView::guardaconfig()
 
         file.close();
     } // end if
-    blDebug ( "END CuadranteDiarioView::guardaconfig", 0 );
+    blDebug ( "END CuadranteDiarioView::saveConfig", 0 );
 }
 
 
 ///
 /**
 **/
-void CuadranteDiarioView::cargaconfig()
+void CuadranteDiarioView::loadConfig()
 {
-    blDebug ( "CuadranteDiarioView::cargaconfig", 0 );
+    blDebug ( "CuadranteDiarioView::loadConfig", 0 );
     QFile file ( g_confpr->value( CONF_DIR_USER ) + "cuadrantedcfn.cfn" );
     QString line;
     int error = 1;
@@ -555,6 +555,6 @@ void CuadranteDiarioView::cargaconfig()
     }
 
     file.close();
-    blDebug ( "END CuadranteDiarioView::cargaconfig", 0 );
+    blDebug ( "END CuadranteDiarioView::loadConfig", 0 );
 }
 

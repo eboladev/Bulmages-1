@@ -508,7 +508,7 @@ void CompraVentaView::generarFacturaProveedor()
             linea = subform3->lineaat ( i );
             if ( linea->dbValue ( "idarticulo" ) != "" ) {
                 linea1 = bud->getlistalineas() ->lineaat ( bud->getlistalineas() ->rowCount() - 1 );
-                bud->getlistalineas() ->nuevoRegistro();
+                bud->getlistalineas() ->newRecord();
                 bud->getlistalineas() ->setProcesarCambios ( FALSE );
                 linea1->setDbValue ( "desclfacturap", linea->dbValue ( "desclalbaranp" ) );
                 linea1->setDbValue ( "cantlfacturap", linea->dbValue ( "cantlalbaranp" ) );
@@ -639,7 +639,7 @@ void CompraVentaView::generarFactura()
             if ( linea->dbValue ( "idarticulo" ) != "" ) {
                 linea1 = bud->getlistalineas() ->lineaat ( bud->getlistalineas() ->rowCount() - 1 );
                 /// Haciendo el nuevo registro antes nos evitamos problemas de foco.
-                bud->getlistalineas() ->nuevoRegistro();
+                bud->getlistalineas() ->newRecord();
                 bud->getlistalineas() ->setProcesarCambios ( FALSE );
                 linea1->setDbValue ( "codigocompletoarticulo", linea->dbValue ( "codigocompletoarticulo" ) );
                 linea1->setDbValue ( "desclfactura", linea->dbValue ( "desclalbaran" ) );
@@ -670,7 +670,7 @@ void CompraVentaView::generarFactura()
                     linea->setDbValue ( "conceptdfactura", linea1->dbValue ( "conceptdalbaran" ) );
                     linea->setDbValue ( "proporciondfactura", linea1->dbValue ( "proporciondalbaran" ) );
                     bud->getlistadescuentos() ->setProcesarCambios ( TRUE );
-                    bud->getlistadescuentos() ->nuevoRegistro();
+                    bud->getlistadescuentos() ->newRecord();
                 } // end if
             } // end for
         } // end if

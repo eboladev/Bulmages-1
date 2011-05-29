@@ -107,10 +107,10 @@ ReciboView::~ReciboView()
 }
 
 
-QString ReciboView::nombrePlantilla ( void )
+QString ReciboView::templateName ( void )
 {
-    blDebug ( "ReciboView::nombrePlantilla", 0 );
-    blDebug ( "END ReciboView::nombrePlantilla", 0 );
+    blDebug ( "ReciboView::templateName", 0 );
+    blDebug ( "END ReciboView::templateName", 0 );
     
     return QString ( "recibod" );
 }

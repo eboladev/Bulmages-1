@@ -329,7 +329,7 @@ void AlbaranClienteView::generarFactura()
                 if ( linea->dbValue ( "idarticulo" ) != "" ) {
                     linea1 = bud->getlistalineas() ->lineaat ( bud->getlistalineas() ->rowCount() - 1 );
                     /// Haciendo el nuevo registro antes nos evitamos problemas de foco.
-                    bud->getlistalineas() ->nuevoRegistro();
+                    bud->getlistalineas() ->newRecord();
                     bud->getlistalineas() ->setProcesarCambios ( FALSE );
                     linea1->setDbValue ( "codigocompletoarticulo", linea->dbValue ( "codigocompletoarticulo" ) );
                     linea1->setDbValue ( "desclfactura", linea->dbValue ( "desclalbaran" ) );
@@ -353,7 +353,7 @@ void AlbaranClienteView::generarFactura()
                     linea->setDbValue ( "conceptdfactura", linea1->dbValue ( "conceptdalbaran" ) );
                     linea->setDbValue ( "proporciondfactura", linea1->dbValue ( "proporciondalbaran" ) );
                     bud->getlistadescuentos() ->setProcesarCambios ( TRUE );
-                    bud->getlistadescuentos() ->nuevoRegistro();
+                    bud->getlistadescuentos() ->newRecord();
                 } // end if
             } // end for
 
@@ -430,7 +430,7 @@ void AlbaranClienteView::agregarFactura()
                 linea1->setDbValue ( "nomarticulo", linea->dbValue ( "nomarticulo" ) );
                 linea1->setDbValue ( "ivalfactura", linea->dbValue ( "ivalalbaran" ) );
                 bud->getlistalineas() ->setProcesarCambios ( TRUE );
-                bud->getlistalineas() ->nuevoRegistro();
+                bud->getlistalineas() ->newRecord();
             } // end if
         } // end for
         bud->calculaypintatotales();

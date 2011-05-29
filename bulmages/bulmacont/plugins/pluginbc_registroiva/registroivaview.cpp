@@ -271,7 +271,7 @@ void RegistroIvaView::on_mui_generarPrevisiones_clicked()
         rec->setDbValue ( "nomctacliente", m_contrapartida->fieldValue("descripcion") );
         blDebug ( "Pintamos", 3 );
         fpcobro = fpcobro.addDays ( plazoentrerecibo );
-        mui_listPrevCobro->nuevoRegistro();
+        mui_listPrevCobro->newRecord();
     } // end for
     blDebug ( "END RegistroIvaView::on_mui_generarPrevisiones_clicked", 0 );
 }
