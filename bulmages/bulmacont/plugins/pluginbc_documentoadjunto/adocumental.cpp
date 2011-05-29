@@ -81,7 +81,7 @@ void myplugin1::boton_adjuntar()
 {
     blDebug ( "myplugin1::boton_adjuntar", 10 );
     adocumental *adoc = new adocumental ( empresaactual, 0 );
-    adoc->setmodoconsulta();
+    adoc->setModoConsulta();
     adoc->exec();
     /// Falta por resolver esta salvedad.
     BcAsientoView *intapunts = empresaactual->intapuntsempresa();
@@ -177,19 +177,19 @@ void adocumental::inicializa()
     m_listado->setRowCount ( cursoraux1->numregistros() );
     int i = 0;
     while ( !cursoraux1->eof() ) {
-        QTableWidgetItem * nuevoItem0 = new QTableWidgetItem ( cursoraux1->valor ( "idadocumental" ) );
+        QTableWidgetItem * nuevoItem0 = new QTableWidgetItem ( cursoraux1->value( "idadocumental" ) );
         m_listado->setItem ( i, COL_IDADOCUMENTAL, nuevoItem0 );
-        QTableWidgetItem *nuevoItem1 = new QTableWidgetItem ( cursoraux1->valor ( "idasiento" ) );
+        QTableWidgetItem *nuevoItem1 = new QTableWidgetItem ( cursoraux1->value( "idasiento" ) );
         m_listado->setItem ( i, COL_IDASIENTO, nuevoItem1 );
-        QTableWidgetItem *nuevoItem2 = new QTableWidgetItem ( cursoraux1->valor ( "descripcionadocumental" ) );
+        QTableWidgetItem *nuevoItem2 = new QTableWidgetItem ( cursoraux1->value( "descripcionadocumental" ) );
         m_listado->setItem ( i, COL_DESCRIPCIONADOCUMENTAL, nuevoItem2 );
-        QTableWidgetItem *nuevoItem3 = new QTableWidgetItem ( cursoraux1->valor ( "fechaintadocumental" ) );
+        QTableWidgetItem *nuevoItem3 = new QTableWidgetItem ( cursoraux1->value( "fechaintadocumental" ) );
         m_listado->setItem ( i, COL_FECHAINTADOCUMENTAL, nuevoItem3 );
-        QTableWidgetItem *nuevoItem4 = new QTableWidgetItem ( cursoraux1->valor ( "fechaasadocumental" ) );
+        QTableWidgetItem *nuevoItem4 = new QTableWidgetItem ( cursoraux1->value( "fechaasadocumental" ) );
         m_listado->setItem ( i, COL_FECHAASADOCUMENTAL, nuevoItem4 );
-        QTableWidgetItem *nuevoItem5 = new QTableWidgetItem ( cursoraux1->valor ( "archivoadocumental" ) );
+        QTableWidgetItem *nuevoItem5 = new QTableWidgetItem ( cursoraux1->value( "archivoadocumental" ) );
         m_listado->setItem ( i, COL_ARCHIVOADOCUMENTAL, nuevoItem5 );
-        QTableWidgetItem *nuevoItem6 = new QTableWidgetItem ( cursoraux1->valor ( "ordenasiento" ) );
+        QTableWidgetItem *nuevoItem6 = new QTableWidgetItem ( cursoraux1->value( "ordenasiento" ) );
         m_listado->setItem ( i, COL_ORDENASIENTO, nuevoItem6 );
         cursoraux1->nextRecord();
         i++;
@@ -244,7 +244,7 @@ void adocumental::boton_newadocumental()
 {
     blDebug ( "adocumental::boton_newadocumental", 0 );
     QString fn = QFileDialog::getOpenFileName ( this, _ ( "Elija el nombre del archivo" ),
-                 g_confpr->valor ( CONF_DIR_USER ),
+                 g_confpr->value( CONF_DIR_USER ),
                  _ ( "Todos (*.*)" ) );
 
     if ( !fn.isEmpty() ) {
@@ -368,7 +368,7 @@ void adocumental::s_agregarDirectorio()
 {
     blDebug ( "adocumental::s_agregarDirectorio", 0 );
     QString fn = QFileDialog::getExistingDirectory ( this, _ ( "Elija un directorio" ),
-                 g_confpr->valor ( CONF_DIR_USER ),
+                 g_confpr->value( CONF_DIR_USER ),
                  QFileDialog::ShowDirsOnly
                  | QFileDialog::DontResolveSymlinks );
 

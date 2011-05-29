@@ -45,7 +45,7 @@ private:
 public:
     BcAmortizacionListView ( BcCompany *, QWidget * );
     ~BcAmortizacionListView();
-    void inicializatabla();
+    void inicializaTabla();
     void editar ( int );
     virtual void crear();
     virtual void borrar();

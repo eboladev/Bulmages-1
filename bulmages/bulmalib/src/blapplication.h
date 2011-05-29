@@ -27,6 +27,7 @@
 #include <QMainWindow>
 #include "bldefs.h"
 
+
 class BlForm;
 
 
@@ -40,7 +41,7 @@ private:
 public:
     BlApplication ( int &argc, char **argv );
     ~BlApplication();
-    bool notify ( QObject *o, QEvent *e );
+    virtual bool notify ( QObject *o, QEvent *e );
     void emitDbTableChanged(const QString &);
 
 signals:

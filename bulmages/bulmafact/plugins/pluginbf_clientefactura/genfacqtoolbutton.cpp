@@ -166,7 +166,7 @@ void GenFacQToolButton::generarFactura()
             }
             bud = new FacturaView ( ( BfCompany * ) fpv->mainCompany(), 0 );
             fpv->mainCompany() ->m_pWorkspace->addSubWindow ( bud );
-            bud->cargar ( cur->valor ( "idfactura" ) );
+            bud->cargar ( cur->value( "idfactura" ) );
             bud->show();
             return;
         } // end if
@@ -299,7 +299,7 @@ void GenFacQToolButton::generarFactura1()
             } // end if
             bud = new FacturaView ( fpv->mainCompany(), NULL );
             fpv->mainCompany() ->m_pWorkspace->addSubWindow ( bud );
-            bud->cargar ( cur->valor ( "idfactura" ) );
+            bud->cargar ( cur->value( "idfactura" ) );
             bud->show();
             return;
         } // end if
@@ -431,7 +431,7 @@ void GenFacQToolButton::generarFactura2()
             } // end if
             bud = new FacturaView ( fpv->mainCompany(), NULL );
             fpv->mainCompany() ->m_pWorkspace->addSubWindow ( bud );
-            bud->cargar ( cur->valor ( "idfactura" ) );
+            bud->cargar ( cur->value( "idfactura" ) );
             bud->show();
             return;
         } // end if

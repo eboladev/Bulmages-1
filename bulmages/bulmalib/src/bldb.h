@@ -122,7 +122,7 @@ public:
     void setDbConnection ( BlMainCompany *comp );
     BlMainCompany *dbConnection();
     int DBload ( BlDbRecordSet * );
-    virtual int DBsave ( QString &id );
+    virtual int dbSave ( QString &id );
     virtual int setDbValue ( QString, QString );
     QString dbValue ( QString );
     bool exists ( QString );

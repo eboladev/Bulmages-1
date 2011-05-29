@@ -29,7 +29,7 @@ Mesas::Mesas ( BtCompany *emp, QWidget *parent ) : BlWidget ( emp, parent )
     setupUi ( this );
 
     /// Cambiamos el icono de las mesas.
-    mui_mesas->setIcon ( QIcon ( g_confpr->valor ( CONF_PROGDATA ) + "icons/table.svg" ) );
+    mui_mesas->setIcon ( QIcon ( g_confpr->value( CONF_PROGDATA ) + "icons/table.svg" ) );
 
     m_centralWidget = NULL;
     m_distro = NULL;
@@ -228,7 +228,7 @@ void DistroMesas::paintEvent ( QPaintEvent * event ) {
 }
 
 void DistroMesas::importXML(const QString val) {
-  QFile file ( g_confpr->valor ( CONF_DIR_USER ) + "distromesas_" + mainCompany()->dbName() + ".cfn" );
+  QFile file ( g_confpr->value( CONF_DIR_USER ) + "distromesas_" + mainCompany()->dbName() + ".cfn" );
 
     if (file.exists()) {
         if ( !file.open ( QIODevice::ReadOnly ) ) {
@@ -351,7 +351,7 @@ void DistroMesas::on_mui_eliminarpantalla_clicked() {
 
 
 QString DistroMesas::exportXML() {
-  QFile file ( g_confpr->valor ( CONF_DIR_USER ) + "distromesas_" + mainCompany()->dbName() + ".cfn" );
+  QFile file ( g_confpr->value( CONF_DIR_USER ) + "distromesas_" + mainCompany()->dbName() + ".cfn" );
   QString val;
     if ( file.open ( QIODevice::WriteOnly ) ) {
         QTextStream stream ( &file );
@@ -727,7 +727,7 @@ void Mesa::cambiarImagen() {
    m_filename = QFileDialog::getOpenFileName(
                     this,
                     "Choose a file",
-                    g_confpr->valor ( CONF_PROGDATA ) + "images/clipart/",
+                    g_confpr->value( CONF_PROGDATA ) + "images/clipart/",
                     "Images (*.svg)");
     repaint();
 }

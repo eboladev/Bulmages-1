@@ -113,11 +113,11 @@ void resmensualview::presentar()
                 BlDbRecordSet *curs = dbConnection->loadQuery ( query, "midursor" );
                 dbConnection->commit();
                 if ( !curs->eof() ) {
-                    milistad[i].push_back ( movant + atof ( curs->valor ( "tdebe" ).ascii() ) + atof ( curs->valor ( "thaber" ).ascii() ) );
-                    milistas[i].push_back ( saldoant + atof ( curs->valor ( "tdebe" ).ascii() ) - atof ( curs->valor ( "thaber" ).ascii() ) );
-                    saldoant = saldoant + atof ( curs->valor ( "tdebe" ).ascii() ) - atof ( curs->valor ( "thaber" ).ascii() );
-                    movant = movant +  atof ( curs->valor ( "tdebe" ).ascii() ) + atof ( curs->valor ( "thaber" ).ascii() );
-                    fprintf ( stderr, "metido en el grafico%s\n", curs->valor ( "tdebe" ).ascii() );
+                    milistad[i].push_back ( movant + atof ( curs->value( "tdebe" ).ascii() ) + atof ( curs->value( "thaber" ).ascii() ) );
+                    milistas[i].push_back ( saldoant + atof ( curs->value( "tdebe" ).ascii() ) - atof ( curs->value( "thaber" ).ascii() ) );
+                    saldoant = saldoant + atof ( curs->value( "tdebe" ).ascii() ) - atof ( curs->value( "thaber" ).ascii() );
+                    movant = movant +  atof ( curs->value( "tdebe" ).ascii() ) + atof ( curs->value( "thaber" ).ascii() );
+                    fprintf ( stderr, "metido en el grafico%s\n", curs->value( "tdebe" ).ascii() );
                 } else {
                     milistad[i].push_back ( movant );
                     //            milistad[i].push_back(0);
@@ -180,7 +180,7 @@ void resmensualview::buscampatrimonial1()
 {
     BcMasaPatrimonialListView * nuevae = new BcMasaPatrimonialListView ( 0, "mpatrimoniales", true );
     nuevae->inicializa ( dbConnection );
-    nuevae->setmodoselector();
+    nuevae->setModoSelector();
     nuevae->exec();
     mpatrimonial1->setText ( ( char * ) ( nuevae->getnommasa() ).ascii() );
     idmpatrimonial1 = nuevae->getidmasa();
@@ -192,7 +192,7 @@ void resmensualview::buscampatrimonial2()
 {
     BcMasaPatrimonialListView * nuevae = new BcMasaPatrimonialListView ( 0, "mpatrimoniales", true );
     nuevae->inicializa ( dbConnection );
-    nuevae->setmodoselector();
+    nuevae->setModoSelector();
     nuevae->exec();
     mpatrimonial2->setText ( ( char * ) ( nuevae->getnommasa() ).ascii() );
     idmpatrimonial2 = nuevae->getidmasa();
@@ -204,7 +204,7 @@ void resmensualview::buscampatrimonial3()
 {
     BcMasaPatrimonialListView * nuevae = new BcMasaPatrimonialListView ( 0, "mpatrimoniales", true );
     nuevae->inicializa ( dbConnection );
-    nuevae->setmodoselector();
+    nuevae->setModoSelector();
     nuevae->exec();
     mpatrimonial3->setText ( ( char * ) ( nuevae->getnommasa() ).ascii() );
     idmpatrimonial3 = nuevae->getidmasa();
@@ -255,22 +255,22 @@ void resmensualview::presentarpie()
         while ( !cursorapt->eof() ) {
             QString nomcuenta;
             // Acumulamos los totales para al final poder escribirlos
-            sprintf ( query, "SELECT * FROM cuenta WHERE idcuenta = %s", cursorapt->valor ( "contrapartida" ).ascii() );
+            sprintf ( query, "SELECT * FROM cuenta WHERE idcuenta = %s", cursorapt->value( "contrapartida" ).ascii() );
             dbConnection->begin();
             BlDbRecordSet *micurs = dbConnection->loadQuery ( query, "mioldcursor" );
             if ( !micurs->eof() ) {
-                nomcuenta = micurs->valor ( "codigo" ) + " " + micurs->valor ( "descripcion" );
+                nomcuenta = micurs->value( "codigo" ) + " " + micurs->value( "descripcion" );
             }// end if
             delete micurs;
 
-            float valor =  atof ( cursorapt->valor ( "tdebe" ).ascii() ) + atof ( cursorapt->valor ( "thaber" ).ascii() );
+            float valor =  atof ( cursorapt->value( "tdebe" ).ascii() ) + atof ( cursorapt->value( "thaber" ).ascii() );
             if ( valor > 0 ) {
                 //                  pie->addValue(valor,nomcuenta.substr(0,25).c_str());
                 valores.push_back ( valor );
                 labels.push_back ( nomcuenta.mid ( 0, 25 ).ascii() );
 #ifdef GDCHART
                 label[j] = new char[30];
-                strcpy ( label[j], cursorapt->valor ( "descripcion" ).mid ( 0, 15 ).ascii() );
+                strcpy ( label[j], cursorapt->value( "descripcion" ).mid ( 0, 15 ).ascii() );
                 p[j] = valor;
                 fprintf ( stderr, "%s %d", label[j], p[j] );
 #endif
@@ -281,7 +281,7 @@ void resmensualview::presentarpie()
                 labels.push_back ( nomcuenta.mid ( 0, 25 ).ascii() );
 #ifdef GDCHART
                 label[j] = new char[30];
-                strcpy ( label[j], cursorapt->valor ( "descripcion" ).mid ( 0, 15 ).ascii() );
+                strcpy ( label[j], cursorapt->value( "descripcion" ).mid ( 0, 15 ).ascii() );
                 p[j] = -valor;
                 fprintf ( stderr, "%s %d", label[j], p[j] );
 #endif

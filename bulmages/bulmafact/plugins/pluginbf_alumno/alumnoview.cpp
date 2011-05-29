@@ -66,7 +66,7 @@ AlumnoView::AlumnoView ( BfCompany *comp, QWidget *parent ) : BfForm ( comp, par
         addDbField ( "activoalumno", BlDbField::DbBoolean, BlDbField::DbNothing, _ ( "Activo" ) );
         addDbField ( "idclase", BlDbField::DbInt, BlDbField::DbNothing, _ ( "Clase" ) );        
         m_archivoimagen = "";
-        mui_imagen->setPixmap ( QPixmap ( g_confpr->valor ( CONF_PROGDATA ) + "images/logopeq.png" ) );
+        mui_imagen->setPixmap ( QPixmap ( g_confpr->value( CONF_PROGDATA ) + "images/logopeq.png" ) );
 
         /// Datos por defecto.
         mui_tutoresList->setMainCompany ( mainCompany() );
@@ -86,9 +86,9 @@ AlumnoView::AlumnoView ( BfCompany *comp, QWidget *parent ) : BfForm ( comp, par
         mui_idclase->setAllowNull ( TRUE );
         mui_idclase->setId ( "" );
 
-        meteWindow ( windowTitle(), this, FALSE );
+        insertWindow ( windowTitle(), this, FALSE );
         pintar();
-        dialogChanges_cargaInicial();
+        dialogChanges_readValues();
         blScript(this);
     } catch ( ... ) {
     
@@ -152,7 +152,7 @@ void AlumnoView::pintarPost()
     /// que el alumno no tiene imagen asociada.
 
     QString archivoimagen;
-    archivoimagen = g_confpr->valor ( CONF_DIR_IMG_ALUMNOS ) + dbValue ( "idalumno" ) + ".jpg";
+    archivoimagen = g_confpr->value( CONF_DIR_IMG_ALUMNOS ) + dbValue ( "idalumno" ) + ".jpg";
 
     QFile archivo;
     archivo.setFileName ( archivoimagen );
@@ -162,7 +162,7 @@ void AlumnoView::pintarPost()
         mui_imagen->setPixmap ( QPixmap ( archivoimagen ) );
     } else  {
         /// Muestra la imagen por defecto.
-        mui_imagen->setPixmap ( QPixmap ( g_confpr->valor ( CONF_PROGDATA ) + "images/logopeq.png" ) );
+        mui_imagen->setPixmap ( QPixmap ( g_confpr->value( CONF_PROGDATA ) + "images/logopeq.png" ) );
     } // end if
 
     blDebug ( "END AlumnoView::pintar", 0 );
@@ -184,7 +184,7 @@ int AlumnoView::guardarPost()
         m_archivoimagen = m_archivoimagen.replace ( " ", "\\ " );
 
         /// Coge la imagen del recuadro y la guarda en un archivo con el nombre correcto.
-        if ( mui_imagen->pixmap()->save ( g_confpr->valor ( CONF_DIR_IMG_ALUMNOS ) + dbValue ( "idalumno" ) + ".jpg" ) == false ) {
+        if ( mui_imagen->pixmap()->save ( g_confpr->value( CONF_DIR_IMG_ALUMNOS ) + dbValue ( "idalumno" ) + ".jpg" ) == false ) {
             blMsgError ( _ ( "No se ha podido guardar la imagen.\nRevise los permisos de escritura y que disponga\nde espacio libre suficiente en el disco duro." ) );
         } // end if
 
@@ -201,7 +201,7 @@ int AlumnoView::borrarPre()
     
     /// Borramos la imagen
     QString archivoimagen;
-    archivoimagen = g_confpr->valor ( CONF_DIR_IMG_ALUMNOS ) + dbValue ( "idalumno" ) + ".jpg";
+    archivoimagen = g_confpr->value( CONF_DIR_IMG_ALUMNOS ) + dbValue ( "idalumno" ) + ".jpg";
 
     QFile archivo;
     archivo.setFileName ( archivoimagen );
@@ -281,7 +281,7 @@ void AlumnoView::on_mui_borrarimagen_clicked()
     blDebug ( "AlumnoView::on_mui_borrarimagen_clicked()", 0 );
 
     QString archivoimagen;
-    archivoimagen = g_confpr->valor ( CONF_DIR_IMG_ALUMNOS ) + dbValue ( "idalumno" ) + ".jpg";
+    archivoimagen = g_confpr->value( CONF_DIR_IMG_ALUMNOS ) + dbValue ( "idalumno" ) + ".jpg";
 
     QFile archivo;
     archivo.setFileName ( archivoimagen );

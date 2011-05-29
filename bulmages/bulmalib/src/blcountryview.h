@@ -1,7 +1,6 @@
 /***************************************************************************
  *   Copyright (C) 2007 by Fco. Javier M. C.                               *
  *   fcojavmc@todo-redes.com                                               *
- *   http://www.iglues.org Asociacion Iglues -- Contabilidad Linux         *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
  *   it under the terms of the GNU General Public License as published by  *
@@ -35,16 +34,12 @@
 class BlMainCompany;
 
 
-/// Visualiza un centro de coste.
-/** */
 class BL_EXPORT BlCountryView : public BlForm, public Ui_BlCountryBase
 {
     Q_OBJECT
 
 public:
     QString m_countryId; /// Indica cual es el pais que se esta visualizando.
-    /// Si su valor es 0 entonces es que no se esta visualizando ning&uacute;n centro de coste.
-
 
 public:
     BlCountryView ( BlMainCompany *, QWidget *parent = 0 );

@@ -60,7 +60,7 @@ TrabajadorView::TrabajadorView ( BfCompany *emp, QWidget *parent )
         return;
     } // end if
     pintar();
-    meteWindow ( windowTitle(), this, FALSE );
+    insertWindow ( windowTitle(), this, FALSE );
     blScript(this);
     blDebug ( "END TrabajadorView::TrabajadorView", 0 );
 }
@@ -89,16 +89,16 @@ void TrabajadorView::pintar()
     } // end if
     m_cursortrabajadores = mainCompany() ->loadQuery ( "SELECT * FROM trabajador ORDER BY apellidostrabajador, idtrabajador" );
     while ( !m_cursortrabajadores->eof() ) {
-        QString apellidos = m_cursortrabajadores->valor ( "apellidostrabajador");
+        QString apellidos = m_cursortrabajadores->value( "apellidostrabajador");
         if ( apellidos != "") {
 	  apellidos += " ";
 	} // end if
-        new QListWidgetItem ( apellidos + m_cursortrabajadores->valor ( "nomtrabajador" ), mui_lista );
+        new QListWidgetItem ( apellidos + m_cursortrabajadores->value( "nomtrabajador" ), mui_lista );
         m_cursortrabajadores->nextRecord();
     } // end while
 
     /// Comprobamos cual es la cadena inicial.
-    dialogChanges_cargaInicial();
+    dialogChanges_readValues();
     blDebug ( "END TrabajadorView::pintar", 0 );
 }
 
@@ -129,15 +129,15 @@ void TrabajadorView::on_mui_lista_currentItemChanged ( QListWidgetItem *cur, QLi
 
     int row = mui_lista->row ( cur );
     trataModificado();
-    m_nomtrabajador->setText ( m_cursortrabajadores->valor ( "nomtrabajador", row ) );
-    mdb_idtrabajador = m_cursortrabajadores->valor ( "idtrabajador", row );
-    m_apellidostrabajador->setText ( m_cursortrabajadores->valor ( "apellidostrabajador", row ) );
-    m_nsstrabajador->setText ( m_cursortrabajadores->valor ( "nsstrabajador", row ) );
-    m_dirtrabajador->setText ( m_cursortrabajadores->valor ( "dirtrabajador", row ) );
-    m_teltrabajador->setText ( m_cursortrabajadores->valor ( "teltrabajador", row ) );
-    m_moviltrabajador->setText ( m_cursortrabajadores->valor ( "moviltrabajador", row ) );
-    m_emailtrabajador->setText ( m_cursortrabajadores->valor ( "emailtrabajador", row ) );
-    if ( m_cursortrabajadores->valor ( "activotrabajador", row ) == "t" ) {
+    m_nomtrabajador->setText ( m_cursortrabajadores->value( "nomtrabajador", row ) );
+    mdb_idtrabajador = m_cursortrabajadores->value( "idtrabajador", row );
+    m_apellidostrabajador->setText ( m_cursortrabajadores->value( "apellidostrabajador", row ) );
+    m_nsstrabajador->setText ( m_cursortrabajadores->value( "nsstrabajador", row ) );
+    m_dirtrabajador->setText ( m_cursortrabajadores->value( "dirtrabajador", row ) );
+    m_teltrabajador->setText ( m_cursortrabajadores->value( "teltrabajador", row ) );
+    m_moviltrabajador->setText ( m_cursortrabajadores->value( "moviltrabajador", row ) );
+    m_emailtrabajador->setText ( m_cursortrabajadores->value( "emailtrabajador", row ) );
+    if ( m_cursortrabajadores->value( "activotrabajador", row ) == "t" ) {
         m_activotrabajador->setChecked ( TRUE );
     } else {
         m_activotrabajador->setChecked ( FALSE );
@@ -150,8 +150,8 @@ void TrabajadorView::on_mui_lista_currentItemChanged ( QListWidgetItem *cur, QLi
 	blDebug ( "END on_mui_lista_currentItemChanged", 0, "Salida por Plugins" );
         return;
     } // end if
-    dialogChanges_cargaInicial();
-    m_imagen->setPixmap ( QPixmap ( g_confpr->valor ( CONF_DIR_IMG_PERSONAL ) + mdb_idtrabajador + ".jpg" ) );
+    dialogChanges_readValues();
+    m_imagen->setPixmap ( QPixmap ( g_confpr->value( CONF_DIR_IMG_PERSONAL ) + mdb_idtrabajador + ".jpg" ) );
     blDebug ( "END TrabajadorView::on_mui_lista_currentItemChanged", 0 );
 }
 
@@ -197,7 +197,7 @@ void TrabajadorView::on_mui_guardar_clicked()
             m_item->setText ( m_apellidostrabajador->text() + m_nomtrabajador->text() );
         } // end if
         if ( m_archivoimagen != "" ) {
-            QString cadena = "cp " + m_archivoimagen + " " + g_confpr->valor ( CONF_DIR_IMG_PERSONAL ) + mdb_idtrabajador + ".jpg";
+            QString cadena = "cp " + m_archivoimagen + " " + g_confpr->value( CONF_DIR_IMG_PERSONAL ) + mdb_idtrabajador + ".jpg";
             system ( cadena.toAscii().constData() );
         } // end if
 
@@ -205,7 +205,7 @@ void TrabajadorView::on_mui_guardar_clicked()
         g_theApp->emitDbTableChanged ( "trabajador" );
 
         /// Comprobamos cual es la cadena inicial.
-        dialogChanges_cargaInicial();
+        dialogChanges_readValues();
     } catch ( ... ) {
         blMsgInfo ( _ ( "Error al guardar el trabajador" ) );
         mainCompany() ->rollback();
@@ -222,7 +222,7 @@ bool TrabajadorView::trataModificado()
 {
     blDebug ( "TrabajadorView::trataModificado", 0 );
     /// Si se ha modificado el contenido advertimos y guardamos.
-    if ( dialogChanges_hayCambios() ) {
+    if ( dialogChanges_isChanged() ) {
         if ( QMessageBox::warning ( this,
                                     _ ( "Guardar datos del trabajador" ),
                                     _ ( "Desea guardar los cambios?" ),
@@ -251,7 +251,7 @@ void TrabajadorView::on_mui_nuevo_clicked()
         mainCompany() ->runQuery ( query );
         BlDbRecordSet *cur = mainCompany() ->loadQuery ( "SELECT max(idtrabajador) AS idtrabajador FROM trabajador" );
         mainCompany() ->commit();
-        mdb_idtrabajador = cur->valor ( "idtrabajador" );
+        mdb_idtrabajador = cur->value( "idtrabajador" );
         delete cur;
         pintar();
         blDebug ( "END TrabajadorView::on_mui_nuevo_clicked", 0 );

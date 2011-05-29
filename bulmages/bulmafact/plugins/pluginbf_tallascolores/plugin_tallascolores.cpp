@@ -51,7 +51,7 @@ int entryPoint ( BfBulmaFact *bges )
 
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale ( LC_ALL, "" );
-    blBindTextDomain ( "PluginBf_TallasColores", g_confpr->valor ( CONF_DIR_TRADUCCION ).toAscii().constData() );
+    blBindTextDomain ( "PluginBf_TallasColores", g_confpr->value( CONF_DIR_TRADUCCION ).toAscii().constData() );
 
 
 
@@ -147,7 +147,7 @@ int ArticuloView_ArticuloView ( ArticuloView *art )
     l->setInsert ( TRUE );
     l->setDelete ( TRUE );
     l->setSortingEnabled ( FALSE );
-    art->dialogChanges_setQObjectExcluido ( l->mui_list );
+    art->dialogChanges_setExcludedObject ( l->mui_list );
 
     art->mui_tab->addTab ( l, _("Tallas y colores") );
 
@@ -322,7 +322,7 @@ int Busqueda_on_m_inputBusqueda_textChanged ( BlSearchWidget *busc )
         QString SQLQuery = "SELECT * FROM tc_articulo_alias LEFT JOIN articulo ON tc_articulo_alias.idarticulo = articulo.idarticulo WHERE aliastc_articulo_tallacolor = '" + val + "'";
         BlDbRecordSet *cur = busc->mainCompany() ->loadQuery ( SQLQuery );
         if ( !cur->eof() ) {
-            busc->setId ( cur->valor ( "idarticulo" ) );
+            busc->setId ( cur->value( "idarticulo" ) );
             encontrado = TRUE;
         }
         delete cur;

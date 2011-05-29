@@ -41,7 +41,7 @@ ListRegistroIvaView::ListRegistroIvaView ( BcCompany * emp, QString, QWidget *pa
     m_companyact = emp;
     finicial->setText ( blNormalizeDate ( "01/01" ).toString ( "dd/MM/yyyy" ) );
     ffinal->setText ( blNormalizeDate ( "31/12" ).toString ( "dd/MM/yyyy" ) );
-    emp->meteWindow ( windowTitle(), this );
+    emp->insertWindow ( windowTitle(), this );
 
     /// DEFINICIONES PARA LA TABLA DE IVA Soportado.
     mui_tablasoportado->setMainCompany ( emp );
@@ -119,7 +119,7 @@ ListRegistroIvaView::ListRegistroIvaView ( BcCompany * emp, QString, QWidget *pa
 ListRegistroIvaView::~ListRegistroIvaView()
 {
     blDebug ( "ListRegistroIvaView::~ListRegistroIvaView", 0 );
-    m_companyact->sacaWindow ( this );
+    m_companyact->removeWindow ( this );
     blDebug ( "END ListRegistroIvaView::~ListRegistroIvaView", 0 );
 }
 
@@ -216,14 +216,14 @@ void ListRegistroIvaView::inicializa()
 
     SQLQuery = "SELECT SUM(baseimp) AS tbaseimp, sum(iva) AS tbaseiva FROM registroiva WHERE factemitida AND ffactura >='" + finicial->text() + "' AND ffactura <='" + ffinal->text() + "'";
     cur = m_companyact->loadQuery ( SQLQuery );
-    m_baseimps->setText ( cur->valor ( "tbaseimp" ) );
-    m_ivas->setText ( cur->valor ( "tbaseiva" ) );
+    m_baseimps->setText ( cur->value( "tbaseimp" ) );
+    m_ivas->setText ( cur->value( "tbaseiva" ) );
     delete cur;
 
     SQLQuery = "SELECT SUM(baseimp) AS tbaseimp, sum(iva) AS tbaseiva FROM registroiva WHERE NOT factemitida AND ffactura >='" + finicial->text() + "' AND ffactura <='" + ffinal->text() + "'";
     cur = m_companyact->loadQuery ( SQLQuery );
-    m_baseimpr->setText ( cur->valor ( "tbaseimp" ) );
-    m_ivar->setText ( cur->valor ( "tbaseiva" ) );
+    m_baseimpr->setText ( cur->value( "tbaseimp" ) );
+    m_ivar->setText ( cur->value( "tbaseiva" ) );
     delete cur;
 
     query.sprintf ( "SELECT *, (registroiva.baseimp + registroiva.iva) AS totalfactura FROM registroiva LEFT JOIN (SELECT  * FROM cuenta, borrador, asiento  WHERE cuenta.idcuenta = borrador.idcuenta AND asiento.idasiento = borrador.idasiento ) AS t1 ON t1.idborrador = registroiva.idborrador WHERE factemitida AND ffactura >= '%s' AND ffactura <= '%s' ", finicial->text().toAscii().constData(), ffinal->text().toAscii().constData() );

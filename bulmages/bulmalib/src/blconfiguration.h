@@ -294,11 +294,11 @@ private:
 public:
     BlConfiguration ( QString nombreprograma );
     ~BlConfiguration();
-    QString valor ( int );
-    void setValor ( int, QString );
-    bool leeconfig ( QString );
-    void saveconfig();
-    QString nombre ( int );
+    QString value( int );
+    void setValue ( int, QString );
+    bool readConfig ( QString );
+    void saveConfig();
+    QString name( int );
 };
 
 

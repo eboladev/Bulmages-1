@@ -60,9 +60,9 @@ public:
     /// Establece cual es la lista subformulario del presupuesto.
     void setListLinAsiento1 ( BcAsientoSubForm *a );
     virtual int borrar ( bool );
-    virtual void pintaidasiento ( QString );
-    virtual void pintadescripcion ( QString );
-    virtual void pintafecha ( QString );
+    virtual void pintaIdAsiento ( QString );
+    virtual void pintaDescripcion ( QString );
+    virtual void pintaFecha ( QString );
     virtual void pintacomentariosasiento ( QString );
     virtual void pintaordenasiento ( QString );
     virtual void pintaclase ( QString );

@@ -196,15 +196,15 @@ void ListLinPrevCobroView::pintalistlinprevcobro ( linprevcobro *linea, int pos 
     /// Ponemos los iconos para que la cosa parezca mas guay.
     BlDbRecordSet *cursoraux1 = m_companyact->loadQuery ( "SELECT tipocuenta FROM cuenta WHERE idcuenta = " + linea->idcuenta() );
     if ( !cursoraux1->eof() ) {
-        if ( cursoraux1->valor ( "tipocuenta" ) == "1" ) {
+        if ( cursoraux1->value( "tipocuenta" ) == "1" ) {
             item ( pos, COL_CODIGOCUENTA ) ->setIcon ( QIcon ( QPixmap ( cactivo ) ) );
-        } else if ( cursoraux1->valor ( "tipocuenta" ) == "2" ) {
+        } else if ( cursoraux1->value( "tipocuenta" ) == "2" ) {
             item ( pos, COL_CODIGOCUENTA ) ->setIcon ( QIcon ( QPixmap ( cpasivo ) ) );
-        } else if ( cursoraux1->valor ( "tipocuenta" ) == "3" ) {
+        } else if ( cursoraux1->value( "tipocuenta" ) == "3" ) {
             item ( pos, COL_CODIGOCUENTA ) ->setIcon ( QIcon ( QPixmap ( cneto ) ) );
-        } else if ( cursoraux1->valor ( "tipocuenta" ) == "4" ) {
+        } else if ( cursoraux1->value( "tipocuenta" ) == "4" ) {
             item ( pos, COL_CODIGOCUENTA ) ->setIcon ( QIcon ( QPixmap ( cingresos ) ) );
-        } else if ( cursoraux1->valor ( "tipocuenta" ) == "5" ) {
+        } else if ( cursoraux1->value( "tipocuenta" ) == "5" ) {
             item ( pos, COL_CODIGOCUENTA ) ->setIcon ( QIcon ( QPixmap ( cgastos ) ) );
         } // end if
     } // end if
@@ -213,15 +213,15 @@ void ListLinPrevCobroView::pintalistlinprevcobro ( linprevcobro *linea, int pos 
     /// Ponemos los iconos para que la cosa parezca mas guay.
     cursoraux1 = m_companyact->loadQuery ( "SELECT tipocuenta FROM cuenta WHERE idcuenta = " + linea->idctacliente() );
     if ( !cursoraux1->eof() ) {
-        if ( cursoraux1->valor ( "tipocuenta" ) == "1" ) {
+        if ( cursoraux1->value( "tipocuenta" ) == "1" ) {
             item ( pos, COL_CODIGOCTACLIENTE ) ->setIcon ( QIcon ( QPixmap ( cactivo ) ) );
-        } else if ( cursoraux1->valor ( "tipocuenta" ) == "2" ) {
+        } else if ( cursoraux1->value( "tipocuenta" ) == "2" ) {
             item ( pos, COL_CODIGOCTACLIENTE ) ->setIcon ( QIcon ( QPixmap ( cpasivo ) ) );
-        } else if ( cursoraux1->valor ( "tipocuenta" ) == "3" ) {
+        } else if ( cursoraux1->value( "tipocuenta" ) == "3" ) {
             item ( pos, COL_CODIGOCTACLIENTE ) ->setIcon ( QIcon ( QPixmap ( cneto ) ) );
-        } else if ( cursoraux1->valor ( "tipocuenta" ) == "4" ) {
+        } else if ( cursoraux1->value( "tipocuenta" ) == "4" ) {
             item ( pos, COL_CODIGOCTACLIENTE ) ->setIcon ( QIcon ( QPixmap ( cingresos ) ) );
-        } else if ( cursoraux1->valor ( "tipocuenta" ) == "5" ) {
+        } else if ( cursoraux1->value( "tipocuenta" ) == "5" ) {
             item ( pos, COL_CODIGOCTACLIENTE ) ->setIcon ( QIcon ( QPixmap ( cgastos ) ) );
         } // end if
     } // end if
@@ -341,7 +341,7 @@ void ListLinPrevCobroView::contextMenu ( int row, int col, const QPoint & pos )
         cur = m_companyact->loadQuery ( query );
         if ( linea->idregistroiva() != "" ) {
             RegistroIvaView * iva = new RegistroIvaView ( m_companyact, 0 );
-            iva->inicializa1 ( cur->valor ( "idborrador" ).toInt() );
+            iva->inicializa1 ( cur->value( "idborrador" ).toInt() );
             m_companyact->pWorkspace() ->addSubWindow ( iva );
             iva->show();
         } // end if

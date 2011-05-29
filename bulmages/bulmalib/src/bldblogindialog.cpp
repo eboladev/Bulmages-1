@@ -49,9 +49,9 @@ BlDbLoginDialog::BlDbLoginDialog ( QWidget *parent, const char *name ) : QDialog
     setWindowTitle ( name );
     setupUi ( this );
     grpAuthError->setVisible ( TRUE );
-    QObject::connect ( pbValidar, SIGNAL ( clicked() ), this, SLOT ( validar() ) );
+    QObject::connect ( pbValidar, SIGNAL ( clicked() ), this, SLOT ( validate() ) );
     QObject::connect ( pbCerrar, SIGNAL ( clicked() ), this, SLOT ( close() ) );
-    validar();
+    validate();
     blDebug ( "END BlDbLoginDialog::BlDbLoginDialog", 0 );
 }
 
@@ -69,15 +69,15 @@ BlDbLoginDialog::~BlDbLoginDialog()
 /// Valida si postgres puede abrir bases de datos y si no es asi pide login y password.
 /**
 **/
-void BlDbLoginDialog::validar()
+void BlDbLoginDialog::validate()
 {
-    blDebug ( "BlDbLoginDialog::validar" );
+    blDebug ( "BlDbLoginDialog::validate" );
     // inicializa escapa correctamente, la cadena de conexión no debe escaparse como el sql
     //m_login->setText ( BlPostgreSqlClient::sanearCadena ( m_login->text() ) );
     m_authOK = false;
 
-    g_confpr->setValor ( CONF_LOGIN_USER, m_login->text() );
-    g_confpr->setValor ( CONF_PASSWORD_USER, m_password->text() );
+    g_confpr->setValue ( CONF_LOGIN_USER, m_login->text() );
+    g_confpr->setValue ( CONF_PASSWORD_USER, m_password->text() );
 
     /// Comprobamos si es un usuario v&aacute;lido.
     metabase = new BlPostgreSqlClient();
@@ -112,6 +112,6 @@ void BlDbLoginDialog::validar()
         m_password->setText ( "" );
         m_login->setFocus();
     } // end if
-    blDebug ( "END BlDbLoginDialog::validar" );
+    blDebug ( "END BlDbLoginDialog::validate" );
 }
 

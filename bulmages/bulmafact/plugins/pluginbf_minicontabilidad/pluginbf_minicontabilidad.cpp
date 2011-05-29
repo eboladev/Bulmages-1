@@ -46,7 +46,7 @@ int entryPoint ( BfBulmaFact *bges )
 
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale ( LC_ALL, "" );
-    blBindTextDomain ( "pluginbf_minicontabilidad", g_confpr->valor ( CONF_DIR_TRADUCCION ).toAscii().constData() );
+    blBindTextDomain ( "pluginbf_minicontabilidad", g_confpr->value( CONF_DIR_TRADUCCION ).toAscii().constData() );
     g_bges = bges;
 
 
@@ -230,9 +230,9 @@ int BlSubForm_editFinished ( BlSubForm *sub )
 
         BlDbRecordSet *cur = sub->mainCompany() ->loadQuery ( query );
         if ( !cur->eof() ) {
-            sub->m_registrolinea->setDbValue ( "idpartida", cur->valor ( "idpartida" ) );
-            sub->m_registrolinea->setDbValue ( "codigocompletopartida", cur->valor ( "codigocompletopartida" ) );
-            sub->m_registrolinea->setDbValue ( "nombrepartida", cur->valor ( "nombrepartida" ) );
+            sub->m_registrolinea->setDbValue ( "idpartida", cur->value( "idpartida" ) );
+            sub->m_registrolinea->setDbValue ( "codigocompletopartida", cur->value( "codigocompletopartida" ) );
+            sub->m_registrolinea->setDbValue ( "nombrepartida", cur->value( "nombrepartida" ) );
         } // end if
         delete cur;
     } // end if
@@ -266,13 +266,13 @@ int BlDbCompleterComboBox_textChanged (BlDbCompleterComboBox *bl) {
                     QString cad1 = "";
                     while ( i.hasNext() ) {
                         i.next();
-                        cad = cad + sep + bl->m_cursorcombo->valor ( i.key() );
+                        cad = cad + sep + bl->m_cursorcombo->value( i.key() );
                         if ( sep == "" ) {
                             cad1 = i.key();
                             sep = " ";
                         } // end if
                     } // end while
-                    bl->addItem ( cad , QVariant ( bl->m_cursorcombo->valor ( cad1 ) ) );
+                    bl->addItem ( cad , QVariant ( bl->m_cursorcombo->value( cad1 ) ) );
                     bl->m_cursorcombo->nextRecord();
                 } // end while
                 delete bl->m_cursorcombo;
@@ -331,8 +331,8 @@ int BfSubForm_pressedAsterisk ( BfSubForm *sub )
     BlDbRecordSet *cur = sub->mainCompany() ->loadQuery ( "SELECT * FROM partida WHERE idpartida = " + arts->idPartida() );
     if ( !cur->eof() ) {
         sub->m_registrolinea->setDbValue ( "idpartida", arts->idPartida() );
-        sub->m_registrolinea->setDbValue ( "codigocompletopartida", cur->valor ( "codigocompletopartida" ));
-        sub->m_registrolinea->setDbValue ( "nombrepartida", cur->valor ( "nombrepartida" ));
+        sub->m_registrolinea->setDbValue ( "codigocompletopartida", cur->value( "codigocompletopartida" ));
+        sub->m_registrolinea->setDbValue ( "nombrepartida", cur->value( "nombrepartida" ));
     } // end if
     
     delete cur;
@@ -458,8 +458,8 @@ void SubForm_MiniContabilidad::seleccionarPartida ( BfSubForm *sub )
 
     if ( !cur->eof() ) {
         sub->lineaact()->setDbValue ( "idpartida", arts->idPartida() );
-        sub->lineaact()->setDbValue ( "codigocompletopartida", cur->valor ( "codigocompletopartida" ) );
-        sub->lineaact()->setDbValue ( "nombrepartida", cur->valor ( "nombrepartida" ) );
+        sub->lineaact()->setDbValue ( "codigocompletopartida", cur->value( "codigocompletopartida" ) );
+        sub->lineaact()->setDbValue ( "nombrepartida", cur->value( "nombrepartida" ) );
     } // end if
     delete cur;
 	} // end if

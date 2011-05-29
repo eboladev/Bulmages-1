@@ -74,9 +74,9 @@ VencimientoPView::VencimientoPView ( BfCompany *comp, QWidget *parent )
         addDbField ( "estadovencimientop", BlDbField::DbVarChar, BlDbField::DbNothing, QApplication::translate ( "Vencimiento", "estado de Vencimiento" ) );
         addDbField ( "cantvencimientop", BlDbField::DbNumeric, BlDbField::DbNothing, QApplication::translate ( "Vencimiento", "cantidad de Vencimiento" ) );
         addDbField ( "idproveedor", BlDbField::DbInt, BlDbField::DbNothing, QApplication::translate ( "Vencimiento", "idproveedor de Vencimiento" ) );
-        meteWindow ( windowTitle(), this, FALSE );
+        insertWindow ( windowTitle(), this, FALSE );
         pintar();
-        dialogChanges_cargaInicial();
+        dialogChanges_readValues();
 	blScript(this);
     } catch ( ... ) {
         blMsgInfo ( tr ( "Error al crear el pago" ), this );

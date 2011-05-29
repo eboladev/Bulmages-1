@@ -96,7 +96,7 @@ FacturasProveedorList::FacturasProveedorList ( BfCompany *comp, QWidget *parent,
     m_proveedor->m_valores["cifproveedor"] = "";
     m_proveedor->m_valores["nomproveedor"] = "";
     if ( modoEdicion() ) {
-        mainCompany() ->meteWindow ( windowTitle(), this );
+        mainCompany() ->insertWindow ( windowTitle(), this );
     } // end if
     hideBusqueda();
     iniciaForm();
@@ -158,7 +158,7 @@ void FacturasProveedorList::presentar()
     BlDbRecordSet *cur = mainCompany() ->loadQuery ( "SELECT SUM(totalfacturap) AS total FROM facturap LEFT JOIN proveedor ON facturap.idproveedor=proveedor.idproveedor WHERE 1=1  " + generaFiltro() );
     /// Si ha habido un error con el query salimos
     if ( !cur ) return;
-    m_total->setText ( cur->valor ( "total" ) );
+    m_total->setText ( cur->value( "total" ) );
     delete cur;
     blDebug ( "END FacturasProveedorList::presentar", 0 );
 }

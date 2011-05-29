@@ -123,7 +123,7 @@ int entryPoint ( BcBulmaCont *bcont )
 
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale ( LC_ALL, "" );
-    blBindTextDomain ( "pluginbc_ccaa2ods", g_confpr->valor ( CONF_DIR_TRADUCCION ).toAscii().constData() );
+    blBindTextDomain ( "pluginbc_ccaa2ods", g_confpr->value( CONF_DIR_TRADUCCION ).toAscii().constData() );
 
     PluginBc_ccaa2ods *plug = new PluginBc_ccaa2ods();
 
@@ -140,7 +140,7 @@ int entryPoint ( BcBulmaCont *bcont )
     } // end if
 
     /// Buscamos ficheros que tengan el nombre de la tabla
-    QDir dir ( g_confpr->valor ( CONF_DIR_OPENREPORTS ) );
+    QDir dir ( g_confpr->value( CONF_DIR_OPENREPORTS ) );
     dir.setFilter ( QDir::Files | QDir::NoSymLinks );
     dir.setSorting ( QDir::Size | QDir::Reversed );
     /// Hacemos un filtrado de busqueda
@@ -154,7 +154,7 @@ int entryPoint ( BcBulmaCont *bcont )
         QFileInfo fileInfo = list.at ( i );
 
         QFile file;
-        file.setFileName ( g_confpr->valor ( CONF_DIR_OPENREPORTS ) + fileInfo.fileName() );
+        file.setFileName ( g_confpr->value( CONF_DIR_OPENREPORTS ) + fileInfo.fileName() );
         file.open ( QIODevice::ReadOnly );
         QTextStream stream ( &file );
         QString buff = stream.readAll();

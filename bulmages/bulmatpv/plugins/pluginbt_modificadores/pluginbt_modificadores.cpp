@@ -72,7 +72,7 @@ int entryPoint ( BtBulmaTPV *tpv )
 
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale ( LC_ALL, "" );
-    blBindTextDomain ( "pluginbt_modificadores", g_confpr->valor ( CONF_DIR_TRADUCCION ).toAscii().constData() );
+    blBindTextDomain ( "pluginbt_modificadores", g_confpr->value( CONF_DIR_TRADUCCION ).toAscii().constData() );
 
     /// Vamos a probar con un docwindow.
     /*
@@ -80,13 +80,13 @@ int entryPoint ( BtBulmaTPV *tpv )
     g_doc1->setFeatures ( QDockWidget::AllDockWidgetFeatures );
     g_doc1->setGeometry ( 100, 100, 100, 500 );
     g_doc1->resize ( 250, 200 );
-    g_doc1->setWindowIcon(QIcon ( g_confpr->valor ( CONF_PROGDATA ) + "icons/modificadores.png"  ));
+    g_doc1->setWindowIcon(QIcon ( g_confpr->value( CONF_PROGDATA ) + "icons/modificadores.png"  ));
     tpv->addDockWidget ( Qt::LeftDockWidgetArea, g_doc1 );
     g_doc1->cargaconf();
     g_doc1->show();
 
     g_tablet = new TabletCanvas();
-    g_tablet->setWindowIcon(QIcon ( g_confpr->valor ( CONF_PROGDATA ) + "icons/modificadoresg.png"  ));
+    g_tablet->setWindowIcon(QIcon ( g_confpr->value( CONF_PROGDATA ) + "icons/modificadoresg.png"  ));
     */
     
     blDebug ( "END entryPoint", 0 );
@@ -110,7 +110,7 @@ int MTicketIVAInc_MTicketIVAInc_Post (MTicketIVAInc *tick) {
     sel->setStatusTip ( _("Modificadores") );
     sel->setToolTip ( _("Establecer los modificadores de producto") );
     sel->setMinimumSize ( QSize ( 32, 32 ) );
-    sel->setIcon ( QIcon ( g_confpr->valor ( CONF_PROGDATA ) + "icons/modificadores.png"  ) );
+    sel->setIcon ( QIcon ( g_confpr->value( CONF_PROGDATA ) + "icons/modificadores.png"  ) );
     sel->setIconSize ( QSize ( 32, 32 ) );    
 
 /*    
@@ -120,7 +120,7 @@ int MTicketIVAInc_MTicketIVAInc_Post (MTicketIVAInc *tick) {
     sel1->setStatusTip ( _("Captura tablet") );
     sel1->setToolTip ( _("Captura tablet") );
     sel1->setMinimumSize ( QSize ( 32, 32 ) );
-    sel1->setIcon ( QIcon ( g_confpr->valor ( CONF_PROGDATA ) + "icons/modificadoresg.png"  ) );
+    sel1->setIcon ( QIcon ( g_confpr->value( CONF_PROGDATA ) + "icons/modificadoresg.png"  ) );
     sel1->setIconSize ( QSize ( 32, 32 ) );
 */
     QHBoxLayout *m_hboxLayout1 = tick->mui_plugbotones->findChild<QHBoxLayout *> ( "hboxLayout1" );
@@ -143,7 +143,7 @@ int MTicket_MTicket_Post (MTicket *tick) {
     sel->setStatusTip ( _("Modificadores") );
     sel->setToolTip ( _("Establecer los modificadores de producto") );
     sel->setMinimumSize ( QSize ( 32, 32 ) );
-    sel->setIcon ( QIcon ( g_confpr->valor ( CONF_PROGDATA ) + "icons/modificadores.png"  ) );
+    sel->setIcon ( QIcon ( g_confpr->value( CONF_PROGDATA ) + "icons/modificadores.png"  ) );
     sel->setIconSize ( QSize ( 32, 32 ) );
     
     QFrame *frame = tick->findChild<QFrame *>("mui_plugbotones");

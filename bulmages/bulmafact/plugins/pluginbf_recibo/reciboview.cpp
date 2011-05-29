@@ -58,7 +58,7 @@ ReciboView::ReciboView ( BfCompany *comp, QWidget *parent ) : BfForm ( comp, par
         addDbField ( "pagadorecibo", BlDbField::DbBoolean, BlDbField::DbNothing, _ ( "Pagado" ) );
         addDbField ( "devueltorecibo", BlDbField::DbBoolean, BlDbField::DbNothing, _ ( "Devuelto" ) );
 
-        meteWindow ( windowTitle(), this, FALSE );
+        insertWindow ( windowTitle(), this, FALSE );
 
         mui_idforma_pago->setMainCompany ( comp );
 
@@ -88,7 +88,7 @@ ReciboView::ReciboView ( BfCompany *comp, QWidget *parent ) : BfForm ( comp, par
         mui_list->cargar("SELECT * from lrecibo WHERE 1=2");
 
         pintar();
-        dialogChanges_cargaInicial();
+        dialogChanges_readValues();
 	blScript(this);
     } catch ( ... ) {
         blMsgInfo ( _ ( "Error al crear el recibo" ), this );
@@ -210,7 +210,7 @@ void ReciboView::on_mui_reemitir_clicked (  )
    mui_fecharecibo->setText("");
    recogeValores();
    mainCompany() ->begin();
-   DBsave ( id );
+   dbSave ( id );
    setDbValue ( m_campoid, id );
    mainCompany() ->commit();
    mui_list->setColumnValue("idrecibo", dbValue("idrecibo"));
@@ -218,7 +218,7 @@ void ReciboView::on_mui_reemitir_clicked (  )
 
    BlDbRecordSet *curcuota = mainCompany() ->loadQuery ( "SELECT * FROM configuracion WHERE nombre='CuotaReemisionRecibo'" );
    if (!curcuota->eof()) {
-      QString query = "INSERT INTO lrecibo (idrecibo, cantlrecibo, conceptolrecibo) VALUES ("+dbValue("idrecibo")+", "+curcuota->valor("valor")+", \'Cuota por devolucion recibo\')";
+      QString query = "INSERT INTO lrecibo (idrecibo, cantlrecibo, conceptolrecibo) VALUES ("+dbValue("idrecibo")+", "+curcuota->value("valor")+", \'Cuota por devolucion recibo\')";
       mainCompany()->runQuery(query);
    } // end if
 

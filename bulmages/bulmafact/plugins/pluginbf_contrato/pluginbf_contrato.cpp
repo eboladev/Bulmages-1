@@ -53,7 +53,7 @@ int entryPoint ( BfBulmaFact *bges )
     
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale ( LC_ALL, "" );
-    blBindTextDomain ( "pluginbf_contrato", g_confpr->valor ( CONF_DIR_TRADUCCION ).toAscii().constData() );
+    blBindTextDomain ( "pluginbf_contrato", g_confpr->value( CONF_DIR_TRADUCCION ).toAscii().constData() );
 
     
     /// Miramos si existe un menu Ventas
@@ -98,7 +98,7 @@ int BlAction_triggered(BlAction *accion) {
 int ClienteView_ClienteView ( ClienteView *art )
 {
     blDebug ( "ClienteView_ClienteView", 0 );
-    /// Para que funcione bien debemos iniciar con BL_SELECT_MODE y luego pasar a BL_EDIT_MODE ya que si no se hace un meteWindow y no es deseable.
+    /// Para que funcione bien debemos iniciar con BL_SELECT_MODE y luego pasar a BL_EDIT_MODE ya que si no se hace un insertWindow y no es deseable.
     ContratosList *l = new ContratosList ( ( ( BfCompany * ) art->mainCompany() ), art, 0, BL_SELECT_MODE );
     l->setObjectName ( QString::fromUtf8 ( "ccontratoslist" ) );
     art->mui_tab->addTab ( l, _("Contratos") );

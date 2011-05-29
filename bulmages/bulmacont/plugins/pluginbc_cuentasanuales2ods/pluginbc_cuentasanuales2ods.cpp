@@ -78,7 +78,7 @@ bool PluginBc_CuentasAnuales2ODS::Arboles()
     arbolEjercicioActual = new BcPlanContableArbol;
     arbolEjercicioAnterior = new BcPlanContableArbol;
     while ( !ramas->eof() ) {
-        if ( ramas->valor ( "nivel" ).toInt() == 2 ) { /// Cuenta raiz.
+        if ( ramas->value( "nivel" ).toInt() == 2 ) { /// Cuenta raiz.
             arbolEjercicioActual->nuevaRama ( ramas );
             arbolEjercicioAnterior->nuevaRama ( ramas );
         } // end if
@@ -157,7 +157,7 @@ OK, aqui poden haver passat 3 coses.
         Imagina que per exemple amb un query buid intentem accedir a una dada del
   registre.
 
-  valor = cur->valor("idcuenta");
+  valor = cur->value("idcuenta");
 
         Això petaria perque es un acces ilegal a una casella que no existeix.
 
@@ -202,7 +202,7 @@ OK, aqui poden haver passat 3 coses.
 //     cur = dbConnection->loadQuery ( query );
 //     dbConnection->commit();
 //     if (cur != NULL)
-//  resultado = cur->valor ( "saldototal" );
+//  resultado = cur->value( "saldototal" );
 //     else
 //  blMsgInfo(_("Error con la base de datos"));
 //
@@ -253,7 +253,7 @@ BlFixed PluginBc_CuentasAnuales2ODS::saldoCuentaAnt ( int cuenta )
 //     cur = dbConnection->loadQuery ( query );
 //     dbConnection->commit();
 //     if (cur != NULL)
-//  resultado = cur->valor ( "saldototal" );
+//  resultado = cur->value( "saldototal" );
 //     else
 //  blMsgInfo(_("Error con la base de datos"));
 //
@@ -373,9 +373,9 @@ void PluginBc_CuentasAnuales2ODS::balanceSituacionODS ( CAnuales tipus )
         break;
     }
 
-    QString archivod = g_confpr->valor ( CONF_DIR_USER ) + "canualesods.py";
+    QString archivod = g_confpr->value( CONF_DIR_USER ) + "canualesods.py";
 
-    QString cadena = "rm " + g_confpr->valor ( CONF_DIR_USER ) + "canualesods.ods";
+    QString cadena = "rm " + g_confpr->value( CONF_DIR_USER ) + "canualesods.ods";
     system ( cadena.toAscii() );
     cadena = "rm " + archivod;
     system ( cadena.toAscii() );
@@ -389,9 +389,9 @@ void PluginBc_CuentasAnuales2ODS::balanceSituacionODS ( CAnuales tipus )
     } else
         blMsgError ( _ ( "ERROR: No se ha podido crear el archivo" ) );
 
-    cadena = " cd " + g_confpr->valor ( CONF_DIR_USER ) + "; python " + archivod;
+    cadena = " cd " + g_confpr->value( CONF_DIR_USER ) + "; python " + archivod;
     system ( cadena.toAscii() );
-    cadena = g_confpr->valor ( CONF_ODS ) + " " + g_confpr->valor ( CONF_DIR_USER ) + "canualesods.ods &";
+    cadena = g_confpr->value( CONF_ODS ) + " " + g_confpr->value( CONF_DIR_USER ) + "canualesods.ods &";
     system ( cadena.toAscii() );
     blDebug ( "END PluginBc_CuentasAnuales2ODS::balanceSituacionODS", 0 );
 }
@@ -480,7 +480,7 @@ int entryPoint ( BcBulmaCont *bcont )
 
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale ( LC_ALL, "" );
-    blBindTextDomain ( "plugincanualesods", g_confpr->valor ( CONF_DIR_TRADUCCION ).toAscii().constData() );
+    blBindTextDomain ( "plugincanualesods", g_confpr->value( CONF_DIR_TRADUCCION ).toAscii().constData() );
 
     PluginBc_CuentasAnuales2ODS *plug = new PluginBc_CuentasAnuales2ODS();
     plug->inicializa ( bcont );

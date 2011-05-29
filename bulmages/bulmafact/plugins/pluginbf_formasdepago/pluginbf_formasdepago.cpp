@@ -40,7 +40,7 @@ int entryPoint ( BfBulmaFact *bges )
 
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale ( LC_ALL, "" );
-    blBindTextDomain ( "pluginbf_formasdepago", g_confpr->valor ( CONF_DIR_TRADUCCION ).toAscii().constData() );
+    blBindTextDomain ( "pluginbf_formasdepago", g_confpr->value( CONF_DIR_TRADUCCION ).toAscii().constData() );
     g_bges = bges;
 
     if ( bges->company()->hasTablePrivilege ( "forma_pago", "SELECT" ) ) {
@@ -147,7 +147,7 @@ int BlSubForm_editFinished ( BlSubForm *sub )
 	QString query = "SELECT idforma_pago FROM forma_pago WHERE descforma_pago = $1";
         BlDbRecordSet *cur = sub->mainCompany() -> loadQuery( query, 1, params );
         if ( !cur->eof() ) {
-            sub->m_registrolinea->setDbValue ( "idforma_pago", cur->valor ( "idforma_pago" ) );
+            sub->m_registrolinea->setDbValue ( "idforma_pago", cur->value( "idforma_pago" ) );
         } // end if
         delete cur;
     } // end if

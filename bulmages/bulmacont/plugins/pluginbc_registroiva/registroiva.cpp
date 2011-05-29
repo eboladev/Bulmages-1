@@ -97,7 +97,7 @@ int RegistroIva::borrar()
 
             mainCompany() ->commit();
             blDebug ( "Registro borrado satisfactoriamente", 2 );
-            dialogChanges_cargaInicial();
+            dialogChanges_readValues();
             close();
         } catch ( ... ) {
             blDebug ( "No se pudo borrar el registro de IVA", 2 );
@@ -174,7 +174,7 @@ int RegistroIva::cargar ( QString id )
         return -1;
     } // end if
 
-    dialogChanges_cargaInicial();
+    dialogChanges_readValues();
     blDebug ( "END RegistroIva::cargaRegistroIva", 0 );
     return 0;
 }
@@ -189,7 +189,7 @@ int RegistroIva::guardar()
     blDebug ( "RegistroIva::guardaRegistroIva", 0 );
     QString id;
     try {
-        DBsave ( id );
+        dbSave ( id );
         setidregistroiva ( id );
     } catch ( ... ) {
         blDebug ( "RegistroIva::guardar Error al guardar", 2 );
@@ -238,7 +238,7 @@ int RegistroIva::buscaborradorservicio ( int idborrador )
         BlDbRecordSet *cur = mainCompany() ->loadQuery ( SQLQuery );
 
         if ( !cur->eof() ) {
-            cuentas += cur->valor ( "valor" );
+            cuentas += cur->value( "valor" );
         } // end if
 
         delete cur;
@@ -246,7 +246,7 @@ int RegistroIva::buscaborradorservicio ( int idborrador )
         cur = mainCompany() ->loadQuery ( SQLQuery );
 
         if ( !cur->eof() ) {
-            cuentas += ";" + cur->valor ( "valor" );
+            cuentas += ";" + cur->value( "valor" );
         } // end if
 
         delete cur;
@@ -258,7 +258,7 @@ int RegistroIva::buscaborradorservicio ( int idborrador )
         cur = mainCompany() ->loadQuery ( SQLQuery );
 
         if ( !cur->eof() ) {
-            cuentasIVA += cur->valor ( "valor" );
+            cuentasIVA += cur->value( "valor" );
         } // end if
 
         delete cur;
@@ -266,7 +266,7 @@ int RegistroIva::buscaborradorservicio ( int idborrador )
         cur = mainCompany() ->loadQuery ( SQLQuery );
 
         if ( !cur->eof() ) {
-            cuentasIVA += ";" + cur->valor ( "valor" );
+            cuentasIVA += ";" + cur->value( "valor" );
         } // end if
 
         delete cur;
@@ -277,8 +277,8 @@ int RegistroIva::buscaborradorservicio ( int idborrador )
         cur = mainCompany() ->loadQuery ( SQLQuery );
 
         while ( !cur->eof() ) {
-            fprintf ( stderr, "idborrador: %s contrapartida: %s cuenta: %s\n", cur->valor ( "idborrador" ).toAscii().constData(), cur->valor ( "contrapartida" ).toAscii().constData(), cur->valor ( "codigo" ).toAscii().constData() );
-            registro = atoi ( cur->valor ( "idborrador" ).toAscii().constData() );
+            fprintf ( stderr, "idborrador: %s contrapartida: %s cuenta: %s\n", cur->value( "idborrador" ).toAscii().constData(), cur->value( "contrapartida" ).toAscii().constData(), cur->value( "codigo" ).toAscii().constData() );
+            registro = atoi ( cur->value( "idborrador" ).toAscii().constData() );
             cur->nextRecord();
         } //end while
 
@@ -290,7 +290,7 @@ int RegistroIva::buscaborradorservicio ( int idborrador )
         cur = mainCompany() ->loadQuery ( SQLQuery );
 
         if ( !cur->eof() ) {
-            setbaseimp ( cur->valor ( "subtotal" ) );
+            setbaseimp ( cur->value( "subtotal" ) );
         } // end while
 
         delete cur;
@@ -335,13 +335,13 @@ int RegistroIva::buscaborradorcliente ( int idborrador )
         SQLQuery = "SELECT valor FROM configuracion WHERE nombre = 'CuentasDerechos'";
         BlDbRecordSet *cur1 = mainCompany() ->loadQuery ( SQLQuery );
         if ( !cur1->eof() ) {
-            cuentas += cur1->valor ( "valor" );
+            cuentas += cur1->value( "valor" );
         } // end if
         delete cur1;
         SQLQuery = "SELECT valor FROM configuracion WHERE nombre = 'CuentasObligaciones'";
         cur1 = mainCompany() ->loadQuery ( SQLQuery );
         if ( !cur1->eof() ) {
-            cuentas += ";" + cur1->valor ( "valor" );
+            cuentas += ";" + cur1->value( "valor" );
         } // end if
         delete cur1;
         cuentas.replace ( ';', "%|^" );
@@ -352,16 +352,16 @@ int RegistroIva::buscaborradorcliente ( int idborrador )
         BlDbRecordSet *cur = mainCompany() ->loadQuery ( SQLQuery );
         while ( !cur->eof() ) {
             /// Ponemos la cuenta de cliente y los valores adyacentes.
-            setcontrapartida ( cur->valor ( "idcuenta" ) );
-            setcif ( cur->valor ( "cifent_cuenta" ) );
+            setcontrapartida ( cur->value( "idcuenta" ) );
+            setcif ( cur->value( "cifent_cuenta" ) );
             /// Comprobamos si es un cliente o un proveedor y segun sea actuamos en
             /// consecuencia.
-            if ( cur->valor ( "codigo" ).left ( 2 ) == "43" ) {
+            if ( cur->value( "codigo" ).left ( 2 ) == "43" ) {
                 setfactemitida ( "t" );
             } else {
                 setfactemitida ( "f" );
             } // end if
-            registro = cur->valor ( "idborrador" ).toInt();
+            registro = cur->value( "idborrador" ).toInt();
             cur->nextRecord();
         } // end while
         delete cur;
@@ -405,7 +405,7 @@ void RegistroIva::inicializa1 ( int idapunte1 )
     BlDbRecordSet *cursoriva = mainCompany() ->loadQuery ( query );
     if ( !cursoriva->eof() ) {
         /// El registro ya existe.
-        cargar ( cursoriva->valor ( "idregistroiva" ) );
+        cargar ( cursoriva->value( "idregistroiva" ) );
     } else {
         /// El registro no existe y hay que hacer la propuesta m&aacute;s acertada de registro.
         /// Buscamos en todo el asiento las cuentas de IVA y lo reflejamos.
@@ -489,8 +489,8 @@ void RegistroIva::buscafecha ( int idborrador )
     QString SQLQuery;
     BlDbRecordSet *cur = mainCompany() ->loadQuery ( "SELECT fecha from borrador WHERE idborrador = " + QString::number ( idborrador ) );
     if ( !cur->eof() ) {
-        setffactura ( cur->valor ( "fecha" ).left ( 10 ) );
-        setfemisionregistroiva ( cur->valor ( "fecha" ).left ( 10 ) );
+        setffactura ( cur->value( "fecha" ).left ( 10 ) );
+        setfemisionregistroiva ( cur->value( "fecha" ).left ( 10 ) );
     } // end if
     delete cur;
     blDebug ( "END RegistroIva::buscafecha", 0 );
@@ -515,8 +515,8 @@ void RegistroIva::buscaNumFactura ( int idborrador )
     query.sprintf ( "SELECT factura, numorden FROM registroiva WHERE idborrador IN (SELECT idborrador FROM borrador WHERE idasiento=(SELECT idasiento FROM borrador WHERE idborrador = '%i'))", idborrador );
     recordset = mainCompany() ->loadQuery ( query );
     if ( !recordset->eof() ) {
-        setfactura ( recordset->valor ( "factura" ) );
-        setnumorden ( recordset->valor ( "numorden" ) );
+        setfactura ( recordset->value( "factura" ) );
+        setnumorden ( recordset->value( "numorden" ) );
     } else {
         /// La factura no existe, entonces proponemos el siguiente n&uacute;mero de factura.
         /// Vemos si podemos extraer de la descripci&oacute;n del apunte el
@@ -524,7 +524,7 @@ void RegistroIva::buscaNumFactura ( int idborrador )
         query.sprintf ( "SELECT * FROM borrador WHERE idasiento IN (SELECT idasiento FROM borrador WHERE idborrador = '%i') AND debe = 0", idborrador );
         recordset = mainCompany() ->loadQuery ( query, "recordset" );
 
-        QString num_ser = recordset->valor ( "conceptocontable" );
+        QString num_ser = recordset->value( "conceptocontable" );
         QRegExp patrons ( " ([A-Z]*)[0-9]+$" );
         if ( patrons.indexIn ( num_ser ) > -1 ) { /// Si se cumple el patr&oacute;n
             num_ser = patrons.cap ( 1 );
@@ -533,7 +533,7 @@ void RegistroIva::buscaNumFactura ( int idborrador )
         } // end if
         setserieregistroiva ( num_ser );
 
-        QString num_fra = recordset->valor ( "conceptocontable" );
+        QString num_fra = recordset->value( "conceptocontable" );
         QRegExp patron ( " [A-Z]*([0-9]+)$" );
         if ( patron.indexIn ( num_fra ) > -1 ) { /// Si se cumple el patr&oacute;n
             num_fra = patron.cap ( 1 );
@@ -545,7 +545,7 @@ void RegistroIva::buscaNumFactura ( int idborrador )
         query.sprintf ( "SELECT MAX(to_number(numorden,'99999')) AS numorden FROM registroiva WHERE numorden <> ''" );
         recordset = mainCompany() ->loadQuery ( query, "recordset" );
         if ( !recordset->eof() ) {
-            numord = 1 + atoi ( recordset->valor ( "numorden" ).toAscii().constData() );
+            numord = 1 + atoi ( recordset->value( "numorden" ).toAscii().constData() );
         } else {
             numord = 1;
         } // end if

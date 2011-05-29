@@ -32,7 +32,7 @@ void PluginBc_Online::elslot()
         exit ( errno );
     }// end if
     if ( !pid ) {
-        error = execvp ( g_confpr->valor ( CONF_NAVEGADOR ).ascii(), args );
+        error = execvp ( g_confpr->value( CONF_NAVEGADOR ).ascii(), args );
     }// end if
 #endif
 }// end elslot
@@ -48,7 +48,7 @@ void PluginBc_Online::soporte()
         exit ( errno );
     }// end if
     if ( !pid ) {
-        error = execvp ( g_confpr->valor ( CONF_NAVEGADOR ).ascii(), args );
+        error = execvp ( g_confpr->value( CONF_NAVEGADOR ).ascii(), args );
     }// end if
 #endif
 }// end elslot

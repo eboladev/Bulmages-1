@@ -192,7 +192,7 @@ int BcCompany::createMainWindows ( BlSplashScreen *splash )
         /// de la Empresa.
         QString query = "SELECT length(valor) AS numdigitos FROM configuracion WHERE nombre = 'CodCuenta'";
         BlDbRecordSet *cursoraux1 = loadQuery ( query );
-        numdigitos = cursoraux1->valor ( "numdigitos" ).toInt();
+        numdigitos = cursoraux1->value( "numdigitos" ).toInt();
         delete cursoraux1;
         if ( selccostes != NULL ) {
             delete selccostes;
@@ -229,7 +229,7 @@ int BcCompany::createMainWindows ( BlSplashScreen *splash )
 
 	/// Ponemos el titulo de la ventana
     m_bulmacont->statusBar() ->showMessage ( dbName(), 2000 );
-    m_bulmacont->setWindowTitle ( g_confpr->valor ( CONF_MAIN_WINDOW_TITLE ).isEmpty() ? _( "Contabilidad GPL" ) : g_confpr->valor ( CONF_MAIN_WINDOW_TITLE ) + " :: " + currentUser() + "@" + dbName() ); 
+    m_bulmacont->setWindowTitle ( g_confpr->value( CONF_MAIN_WINDOW_TITLE ).isEmpty() ? _( "Contabilidad GPL" ) : g_confpr->value( CONF_MAIN_WINDOW_TITLE ) + " :: " + currentUser() + "@" + dbName() ); 
 
     } catch ( ... ) {
         blDebug ( "Error al iniciar la clase company", 2 );
@@ -544,7 +544,7 @@ void BcCompany::guardaConf()
     /// guardamos la configuracion.
     if ( !m_bulmacont ) return;
 
-    QFile file ( g_confpr->valor ( CONF_DIR_USER ) + "bulmacont_" + dbName() + ".cfn" );
+    QFile file ( g_confpr->value( CONF_DIR_USER ) + "bulmacont_" + dbName() + ".cfn" );
     /// Guardado del orden y de configuraciones varias.
     if ( file.open ( QIODevice::WriteOnly ) ) {
         QTextStream stream ( &file );
@@ -593,7 +593,7 @@ void BcCompany::cargaConf()
     /// guardamos la configuracion.
     if ( !m_bulmacont ) return;
 
-    QFile file ( g_confpr->valor ( CONF_DIR_USER ) + "bulmacont_" + dbName() + ".cfn" );
+    QFile file ( g_confpr->value( CONF_DIR_USER ) + "bulmacont_" + dbName() + ".cfn" );
     QDomDocument doc ( "mydocument" );
     if ( !file.open ( QIODevice::ReadOnly ) )
         return;

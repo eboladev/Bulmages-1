@@ -38,7 +38,7 @@ void IVAincluidoView::on_mui_calcula_sin_iva_clicked()
     BlDbRecordSet *cur = m_trab->mainCompany() ->loadQuery ( SQlQuery );
    
     if ( !cur->eof() ) {
-	m_trab->mui_pvparticulo->setValue( mui_pvpivaincarticulo->value() / (1 + (cur->valor ( "porcentasa_iva" ).toDouble() / 100)) );
+	m_trab->mui_pvparticulo->setValue( mui_pvpivaincarticulo->value() / (1 + (cur->value( "porcentasa_iva" ).toDouble() / 100)) );
     } else {
 	m_trab->mui_pvparticulo->setValue( mui_pvpivaincarticulo->value() );
     } // end if
@@ -56,7 +56,7 @@ void IVAincluidoView::on_mui_calcula_iva_inc_clicked()
     BlDbRecordSet *cur = m_trab->mainCompany() ->loadQuery ( SQlQuery );
 
     if ( !cur->eof() ) {
-        mui_pvpivaincarticulo->setValue( m_trab->mui_pvparticulo->value() * (1 + (cur->valor ( "porcentasa_iva" ).toDouble() / 100)) );
+        mui_pvpivaincarticulo->setValue( m_trab->mui_pvparticulo->value() * (1 + (cur->value( "porcentasa_iva" ).toDouble() / 100)) );
     } else {
         mui_pvpivaincarticulo->setValue( m_trab->mui_pvparticulo->value() );
     } // end if

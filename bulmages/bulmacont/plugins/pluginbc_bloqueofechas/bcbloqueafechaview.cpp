@@ -84,7 +84,7 @@ BcBloqueaFechaView::BcBloqueaFechaView ( BcCompany *emp, QWidget *parent )
     setupUi ( this );
     QString query;
     inicializa();
-    mainCompany() ->meteWindow ( windowTitle(), this );
+    mainCompany() ->insertWindow ( windowTitle(), this );
     /// Llamamos a los scripts
     blScript(this);
 
@@ -98,7 +98,7 @@ BcBloqueaFechaView::BcBloqueaFechaView ( BcCompany *emp, QWidget *parent )
 BcBloqueaFechaView::~BcBloqueaFechaView()
 {
     blDebug ( "BcBloqueaFechaView::~BcBloqueaFechaView", 0 );
-    mainCompany() ->sacaWindow ( this );
+    mainCompany() ->removeWindow ( this );
     blDebug ( "ENd BcBloqueaFechaView::~BcBloqueaFechaView", 0 );
 }
 
@@ -129,22 +129,22 @@ void BcBloqueaFechaView::inicializa()
     while ( !curEjer->eof() ) {
 
         itemlevel0 = new BcTreeWidgetItem ( mui_treeWidget );
-        itemlevel0->setText ( 0, curEjer->valor ( "ejercicio" ) ); /// Columna 0.
+        itemlevel0->setText ( 0, curEjer->value( "ejercicio" ) ); /// Columna 0.
 
-        if ( curEjer->valor ( "bloqueado" ) == "t" ) {
+        if ( curEjer->value( "bloqueado" ) == "t" ) {
             itemlevel0->setText ( 1, qsbloqueado );
         } else {
             itemlevel0->setText ( 1, qsabierto );
         } // end if
 
-        itemlevel0->ej = curEjer->valor ( "ejercicio" );
-        itemlevel0->per = curEjer->valor ( "periodo" );
+        itemlevel0->ej = curEjer->value( "ejercicio" );
+        itemlevel0->per = curEjer->value( "periodo" );
 
 
-        consultabd.sprintf ( "SELECT * FROM ejercicios WHERE ejercicio = '%s' ORDER BY periodo DESC", curEjer->valor ( "ejercicio" ).toAscii().constData() );
+        consultabd.sprintf ( "SELECT * FROM ejercicios WHERE ejercicio = '%s' ORDER BY periodo DESC", curEjer->value( "ejercicio" ).toAscii().constData() );
         curPeri = mainCompany() ->loadQuery ( consultabd );
         while ( !curPeri->eof() ) {
-            switch ( curPeri->valor ( "periodo" ).toInt() ) {
+            switch ( curPeri->value( "periodo" ).toInt() ) {
             case 12:
                 itemlevel1 = new BcTreeWidgetItem ( itemlevel0 );
                 itemlevel1->setText ( 0, _ ( "Diciembre" ) ); /// Columna 0.
@@ -194,9 +194,9 @@ void BcBloqueaFechaView::inicializa()
                 itemlevel1->setText ( 0, _ ( "Enero" ) ); /// Columna 0.
                 break;
             } // end switch
-            itemlevel1->ej = curEjer->valor ( "ejercicio" );
-            itemlevel1->per = curPeri->valor ( "periodo" );
-            curPeri->valor ( "bloqueado" ) == "t" ? itemlevel1->setText ( 1, qsbloqueado ) : itemlevel1->setText ( 1, qsabierto );
+            itemlevel1->ej = curEjer->value( "ejercicio" );
+            itemlevel1->per = curPeri->value( "periodo" );
+            curPeri->value( "bloqueado" ) == "t" ? itemlevel1->setText ( 1, qsbloqueado ) : itemlevel1->setText ( 1, qsabierto );
             curPeri->nextRecord();
         } // end while
         curEjer->nextRecord();
@@ -244,8 +244,8 @@ void BcBloqueaFechaView::on_mui_crear_clicked()
     BlDbRecordSet *cur = mainCompany()->loadQuery ( consultabd );
     if ( cur ) {
         if ( !cur->eof() ) {
-            if ( cur->valor ( "ej" ).toInt() != 0 )
-                ejer = cur->valor ( "ej" ).toInt();
+            if ( cur->value( "ej" ).toInt() != 0 )
+                ejer = cur->value( "ej" ).toInt();
         } // end if
         delete cur;
     } // end if

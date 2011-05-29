@@ -43,7 +43,7 @@ int entryPoint ( BlMainWindow *bges )
 
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale ( LC_ALL, "" );
-    blBindTextDomain ( "pluginbl_logo", g_confpr->valor ( CONF_DIR_TRADUCCION ).toAscii().constData() );
+    blBindTextDomain ( "pluginbl_logo", g_confpr->value( CONF_DIR_TRADUCCION ).toAscii().constData() );
 
     blDebug ( "myplugincont::elslot", 0 );
 
@@ -59,7 +59,7 @@ int entryPoint ( BlMainWindow *bges )
     QLabel *label = new QLabel();
     label->setFrameStyle(QFrame::Panel | QFrame::Sunken);
     label->setAlignment(Qt::AlignBottom | Qt::AlignRight);
-    label->setPixmap(QPixmap(g_confpr->valor(CONF_DIR_OPENREPORTS) + "logo.jpg"));
+    label->setPixmap(QPixmap(g_confpr->value(CONF_DIR_OPENREPORTS) + "logo.jpg"));
     label->setScaledContents(true);
     label->setMinimumSize(100, 100);
 
@@ -67,7 +67,7 @@ int entryPoint ( BlMainWindow *bges )
     */
 
 
-    doc1->setPixmap(QPixmap(g_confpr->valor(CONF_DIR_OPENREPORTS) + "logo.jpg"));
+    doc1->setPixmap(QPixmap(g_confpr->value(CONF_DIR_OPENREPORTS) + "logo.jpg"));
 
 
     doc1->show();

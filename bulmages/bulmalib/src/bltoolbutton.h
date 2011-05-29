@@ -36,6 +36,7 @@ public:
     BlToolButton ( QWidget *parent = 0 );
     BlToolButton ( BlMainCompany *, QWidget *parent = 0);
     virtual ~BlToolButton();
+
 public slots:
     virtual void buttonReleased();
     

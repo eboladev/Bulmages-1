@@ -1,6 +1,6 @@
 /****************************************************************************
 **
-** Copyright (C) 2010-2010 Tomeu Borrás Riera. All rights reserved.
+** Copyright (C) 2010-2010 Tomeu Borras Riera. All rights reserved.
 **
 ** This file is part of the documentation of the Qt Toolkit.
 **
@@ -37,6 +37,7 @@ public:
     BlAction ( const QString &text, QWidget *parent = 0 );
     BlAction ( BlMainCompany *,const QString &text, QWidget *parent = 0);
     virtual ~BlAction();
+
 public slots:
     virtual void actionTriggered(bool trigg);
     

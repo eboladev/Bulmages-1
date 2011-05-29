@@ -73,9 +73,9 @@ PagoView::PagoView ( BfCompany *comp, QWidget *parent )
         mui_idproveedor->m_valores["cifproveedor"] = "";
         mui_idproveedor->m_valores["nomproveedor"] = "";
 
-        meteWindow ( windowTitle(), this, FALSE );
+        insertWindow ( windowTitle(), this, FALSE );
         pintar();
-        dialogChanges_cargaInicial();
+        dialogChanges_readValues();
 	blScript(this);
     } catch ( ... ) {
         blMsgInfo ( _ ( "Error al crear el pago" ), this );

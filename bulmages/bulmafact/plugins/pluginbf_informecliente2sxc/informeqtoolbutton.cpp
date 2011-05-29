@@ -71,7 +71,7 @@ void InformeQToolButton::setBoton()
     setStatusTip ( "Informe en Hoja de Calculo" );
     setToolTip ( "Informe en Hoja de Calculo" );
     setMinimumSize ( QSize ( 32, 32 ) );
-    setIcon ( QIcon ( g_confpr->valor ( CONF_PROGDATA ) + "icons/informeclientessxc.png" ) );
+    setIcon ( QIcon ( g_confpr->value( CONF_PROGDATA ) + "icons/informeclientessxc.png" ) );
     setIconSize ( QSize ( 22, 22 ) );
     blDebug ( "END InformeQToolButton::setBoton", 0 );
 }
@@ -96,15 +96,15 @@ void InformeQToolButton::click()
                                           _ ( "Anyo:" ), 2008, 1900, 4000, 1, &ok );
 
 
-    QString archivod = g_confpr->valor ( CONF_DIR_USER ) + "informeclientessxc.perl";
-    QString archivologo = g_confpr->valor ( CONF_DIR_OPENREPORTS ) + "logo.jpg";
+    QString archivod = g_confpr->value( CONF_DIR_USER ) + "informeclientessxc.perl";
+    QString archivologo = g_confpr->value( CONF_DIR_OPENREPORTS ) + "logo.jpg";
 
 
     /// Copiamos el logo.
 #ifdef Q_OS_WIN32
-    archivologo = "copy " + archivologo + " " + g_confpr->valor ( CONF_DIR_USER ) + "logo.jpg";
+    archivologo = "copy " + archivologo + " " + g_confpr->value( CONF_DIR_USER ) + "logo.jpg";
 #else
-    archivologo = "cp " + archivologo + " " + g_confpr->valor ( CONF_DIR_USER ) + "logo.jpg";
+    archivologo = "cp " + archivologo + " " + g_confpr->value( CONF_DIR_USER ) + "logo.jpg";
 #endif
 
 
@@ -179,14 +179,14 @@ void InformeQToolButton::click()
     barra.setText ( _ ( "Generando Informe" ) );
 
     while ( !cur->eof() ) {
-        QString gen = generarCliente ( cur->valor ( "idcliente" ), y, anyo );
+        QString gen = generarCliente ( cur->value( "idcliente" ), y, anyo );
         if ( gen != "" ) {
             fitxersortidatxt += "# Fila " + QString::number ( y ) + "\n";
             fitxersortidatxt += "$doc->oooSet(\"bold\", \"on\");\n";
             fitxersortidatxt += "$doc->oooSet(\"cell-loc\", 1, " + QString::number ( y ) + ");\n";
-            fitxersortidatxt += "$doc->oooData(\"cell-text\", \"" + blScriptEscape ( cur->valor ( "cifcliente" ) ) + "\");\n";
+            fitxersortidatxt += "$doc->oooData(\"cell-text\", \"" + blScriptEscape ( cur->value( "cifcliente" ) ) + "\");\n";
 //   fitxersortidatxt += "$doc->oooSet(\"cell-loc\", 2, "+ QString::number ( y ) +");\n";
-            fitxersortidatxt += "$doc->oooData(\"cell-text\", \"" + blScriptEscape ( cur->valor ( "nomcliente" ) ) + "\");\n";
+            fitxersortidatxt += "$doc->oooData(\"cell-text\", \"" + blScriptEscape ( cur->value( "nomcliente" ) ) + "\");\n";
             fitxersortidatxt += "$doc->oooSet(\"bold\", \"off\");\n";
             fitxersortidatxt += gen;
             fitxersortidatxt += "\n";
@@ -223,7 +223,7 @@ void InformeQToolButton::click()
     fitxersortidatxt += "exit;\n";
 
 
-    QString cadena = "rm " + g_confpr->valor ( CONF_DIR_USER ) + "informeclientessxc.sxc";
+    QString cadena = "rm " + g_confpr->value( CONF_DIR_USER ) + "informeclientessxc.sxc";
     system ( cadena.toAscii() );
     cadena = "rm " + archivod;
     system ( cadena.toAscii() );
@@ -235,9 +235,9 @@ void InformeQToolButton::click()
         file.close();
     } // end if
 
-    cadena = " cd " + g_confpr->valor ( CONF_DIR_USER ) + "; perl " + archivod;
+    cadena = " cd " + g_confpr->value( CONF_DIR_USER ) + "; perl " + archivod;
     system ( cadena.toAscii() );
-    cadena = "kspread " + g_confpr->valor ( CONF_DIR_USER ) + "informeclientessxc.sxc &";
+    cadena = "kspread " + g_confpr->value( CONF_DIR_USER ) + "informeclientessxc.sxc &";
     system ( cadena.toAscii() );
 
     blDebug ( "END InformeQToolButton::click", 0 );
@@ -268,7 +268,7 @@ QString InformeQToolButton::generarCliente ( QString idcliente, int row, int any
         if ( !cur->eof() ) {
             fitxersortidatxt += "$doc->oooSet(\"cell-loc\", " + QString::number ( mes + 3 ) + ", " + QString::number ( row ) + ");\n";
             fitxersortidatxt += "$doc->oooSet(\"text-color\", \"00FF\");\n";
-            fitxersortidatxt += "$doc->oooData(\"cell-text\", \"" + cur->valor ( "total" ) + "\");\n";
+            fitxersortidatxt += "$doc->oooData(\"cell-text\", \"" + cur->value( "total" ) + "\");\n";
             fitxersortidatxt += "\n";
         } // end if
         delete cur;
@@ -325,7 +325,7 @@ void InformeProveedorQToolButton::setBoton()
     setStatusTip ( "Informe en Hoja de Calculo" );
     setToolTip ( "Informe en Hoja de Calculo" );
     setMinimumSize ( QSize ( 32, 32 ) );
-    setIcon ( QIcon ( g_confpr->valor ( CONF_PROGDATA ) + "icons/informeclientessxc.png" ) );
+    setIcon ( QIcon ( g_confpr->value( CONF_PROGDATA ) + "icons/informeclientessxc.png" ) );
     setIconSize ( QSize ( 22, 22 ) );
     blDebug ( "END InformeProveedorQToolButton::setBoton", 0 );
 }
@@ -350,15 +350,15 @@ void InformeProveedorQToolButton::click()
                                           _ ( "Anyo:" ), 2008, 1900, 4000, 1, &ok );
 
 
-    QString archivod = g_confpr->valor ( CONF_DIR_USER ) + "informeproveedoressxc.perl";
-    QString archivologo = g_confpr->valor ( CONF_DIR_OPENREPORTS ) + "logo.jpg";
+    QString archivod = g_confpr->value( CONF_DIR_USER ) + "informeproveedoressxc.perl";
+    QString archivologo = g_confpr->value( CONF_DIR_OPENREPORTS ) + "logo.jpg";
 
 
     /// Copiamos el logo.
 #ifdef Q_OS_WIN32
-    archivologo = "copy " + archivologo + " " + g_confpr->valor ( CONF_DIR_USER ) + "logo.jpg";
+    archivologo = "copy " + archivologo + " " + g_confpr->value( CONF_DIR_USER ) + "logo.jpg";
 #else
-    archivologo = "cp " + archivologo + " " + g_confpr->valor ( CONF_DIR_USER ) + "logo.jpg";
+    archivologo = "cp " + archivologo + " " + g_confpr->value( CONF_DIR_USER ) + "logo.jpg";
 #endif
 
 
@@ -432,13 +432,13 @@ void InformeProveedorQToolButton::click()
     barra.setText ( _ ( "Generando informe" ) );
 
     while ( !cur->eof() ) {
-        QString gen = generarProveedor ( cur->valor ( "idproveedor" ), y, anyo );
+        QString gen = generarProveedor ( cur->value( "idproveedor" ), y, anyo );
         if ( gen != "" ) {
             fitxersortidatxt += "# Fila " + QString::number ( y ) + "\n";
             fitxersortidatxt += "$doc->oooSet(\"bold\", \"on\");\n";
             fitxersortidatxt += "$doc->oooSet(\"cell-loc\", 1, " + QString::number ( y ) + ");\n";
-            fitxersortidatxt += "$doc->oooData(\"cell-text\", \"" + blScriptEscape ( cur->valor ( "cifproveedor" ) ) + "\");\n";
-            fitxersortidatxt += "$doc->oooData(\"cell-text\", \"" + blScriptEscape ( cur->valor ( "nomproveedor" ) ) + "\");\n";
+            fitxersortidatxt += "$doc->oooData(\"cell-text\", \"" + blScriptEscape ( cur->value( "cifproveedor" ) ) + "\");\n";
+            fitxersortidatxt += "$doc->oooData(\"cell-text\", \"" + blScriptEscape ( cur->value( "nomproveedor" ) ) + "\");\n";
             fitxersortidatxt += "$doc->oooSet(\"bold\", \"off\");\n";
             fitxersortidatxt += gen;
             fitxersortidatxt += "\n";
@@ -475,7 +475,7 @@ void InformeProveedorQToolButton::click()
     fitxersortidatxt += "exit;\n";
 
 
-    QString cadena = "rm " + g_confpr->valor ( CONF_DIR_USER ) + "informeproveedoressxc.sxc";
+    QString cadena = "rm " + g_confpr->value( CONF_DIR_USER ) + "informeproveedoressxc.sxc";
     system ( cadena.toAscii() );
     cadena = "rm " + archivod;
     system ( cadena.toAscii() );
@@ -487,9 +487,9 @@ void InformeProveedorQToolButton::click()
         file.close();
     } // end if
 
-    cadena = " cd " + g_confpr->valor ( CONF_DIR_USER ) + "; perl " + archivod;
+    cadena = " cd " + g_confpr->value( CONF_DIR_USER ) + "; perl " + archivod;
     system ( cadena.toAscii() );
-    cadena = "kspread " + g_confpr->valor ( CONF_DIR_USER ) + "informeproveedoressxc.sxc &";
+    cadena = "kspread " + g_confpr->value( CONF_DIR_USER ) + "informeproveedoressxc.sxc &";
     system ( cadena.toAscii() );
 
     blDebug ( "END InformeProveedorQToolButton::click", 0 );
@@ -517,7 +517,7 @@ QString InformeProveedorQToolButton::generarProveedor ( QString idproveedor, int
         if ( !cur->eof() ) {
             fitxersortidatxt += "$doc->oooSet(\"cell-loc\", " + QString::number ( mes + 3 ) + ", " + QString::number ( row ) + ");\n";
             fitxersortidatxt += "$doc->oooSet(\"text-color\", \"00FF\");\n";
-            fitxersortidatxt += "$doc->oooData(\"cell-text\", \"" + cur->valor ( "total" ) + "\");\n";
+            fitxersortidatxt += "$doc->oooData(\"cell-text\", \"" + cur->value( "total" ) + "\");\n";
             fitxersortidatxt += "\n";
         } // end if
         delete cur;

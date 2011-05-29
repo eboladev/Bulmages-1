@@ -47,7 +47,7 @@ BcConfiguracionView::BcConfiguracionView ( BcCompany *emp, QWidget *parent )
     mui_subform->cargar();
     //mui_subform->setResizeMode(QHeaderView::Stretch);
 
-    mainCompany() ->meteWindow ( windowTitle(), this );
+    mainCompany() ->insertWindow ( windowTitle(), this );
     blDebug ( "END BcConfiguracionView::BcConfiguracionView", 0 );
 }
 
@@ -58,7 +58,7 @@ BcConfiguracionView::BcConfiguracionView ( BcCompany *emp, QWidget *parent )
 BcConfiguracionView::~BcConfiguracionView()
 {
     blDebug ( "BcConfiguracionView::~BcConfiguracionView", 0 );
-    mainCompany() ->sacaWindow ( this );
+    mainCompany() ->removeWindow ( this );
     blDebug ( "END BcConfiguracionView::~BcConfiguracionView", 0 );
 
 }
@@ -77,7 +77,7 @@ int BcConfiguracionView::inicializa()
     BlDbRecordSet *curs = mainCompany() ->loadQuery ( query );
     num = curs->numregistros();
     if ( num > 0 ) {
-        modcodigo->setText ( curs->valor ( "valor" ) );
+        modcodigo->setText ( curs->value( "valor" ) );
     } // end if
     delete curs;
 
@@ -98,7 +98,7 @@ void BcConfiguracionView::on_mui_guardar_clicked()
 
     /// Procesamos la transaccion.
     mainCompany() ->commit();
-    dialogChanges_cargaInicial();
+    dialogChanges_readValues();
     blDebug ( "END BcConfiguracionView::on_mui_guardar_clicked", 0 );
 }
 
@@ -111,7 +111,7 @@ bool BcConfiguracionView::close()
 {
     blDebug ( "BcConfiguracionView::close", 0 );
     /// Si se ha modificado el contenido advertimos y guardamos.
-    if ( dialogChanges_hayCambios() ) {
+    if ( dialogChanges_isChanged() ) {
         if ( QMessageBox::question ( this,
                                      _ ( "Guardar cambios" ),
                                      _ ( "Desea guardar los cambios?" ),
@@ -141,10 +141,10 @@ void BcConfiguracionView::on_mui_modificarplan_clicked()
     QString query = "SELECT * FROM cuenta";
     BlDbRecordSet *cur = mainCompany() ->loadQuery ( query );
     while ( !cur->eof() ) {
-        codigo = cur->valor ( "codigo" );
+        codigo = cur->value( "codigo" );
         codigo = blExtendCodeLength ( codigo, nlong );
         mainCompany() ->begin();
-        query = "UPDATE cuenta SET codigo = '" + codigo + "' WHERE idcuenta = " + cur->valor ( "idcuenta" );
+        query = "UPDATE cuenta SET codigo = '" + codigo + "' WHERE idcuenta = " + cur->value( "idcuenta" );
         mainCompany() ->runQuery ( query );
         mainCompany() ->commit();
         cur->nextRecord();
@@ -160,7 +160,7 @@ void BcConfiguracionView::on_mui_modificarplan_clicked()
                                 _ ( "&Salir" ), _ ( "&No salir" ), 0, 0, 1 ) == 0 ) {
         exit ( 1 );
     } // end if
-    dialogChanges_cargaInicial();
+    dialogChanges_readValues();
     blDebug ( "END BcConfiguracionView::on_mui_modificarplan_clicked", 0 );
 }
 

@@ -51,7 +51,7 @@ ListSerieFacturaView::ListSerieFacturaView ( BfCompany *comp, QWidget *parent )
     setupUi ( this );
     mui_listado->setMainCompany ( comp );
     mui_listado->cargar();
-    meteWindow ( windowTitle(), this );
+    insertWindow ( windowTitle(), this );
     blScript(this);
     blDebug ( "END_ListSerieFacturaView::ListSerieFacturaView", 1 );
 }

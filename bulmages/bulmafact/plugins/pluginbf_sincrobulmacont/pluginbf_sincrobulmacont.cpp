@@ -45,7 +45,7 @@ int entryPoint ( BfBulmaFact *bf )
     
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale ( LC_ALL, "" );
-    blBindTextDomain ( "pluginbf_sincrobulmacont", g_confpr->valor ( CONF_DIR_TRADUCCION ).toAscii().constData() );
+    blBindTextDomain ( "pluginbf_sincrobulmacont", g_confpr->value( CONF_DIR_TRADUCCION ).toAscii().constData() );
 
     return 0;
 }
@@ -88,9 +88,9 @@ int FamiliasView_Guardar_Pre ( FamiliasView *famv )
 	/// y restaura la cuenta original.
 	query = "SELECT origenidcuentaventafamilia FROM familia WHERE idfamilia = " + famv->idFamilia();
 	tmp_venta = famv->mainCompany()->loadQuery(query);
-	if (!tmp_venta->valor("origenidcuentaventafamilia").isEmpty()) {
+	if (!tmp_venta->value("origenidcuentaventafamilia").isEmpty()) {
 	    /// Restaura cuenta original
-	    query = "UPDATE familia SET idcuentaventafamilia = " + tmp_venta->valor("origenidcuentaventafamilia") + " WHERE idfamilia = " + famv->idFamilia();
+	    query = "UPDATE familia SET idcuentaventafamilia = " + tmp_venta->value("origenidcuentaventafamilia") + " WHERE idfamilia = " + famv->idFamilia();
 	    famv->mainCompany()->runQuery(query);
 	    
 	    /// Vacia campo origen.
@@ -111,14 +111,14 @@ int FamiliasView_Guardar_Pre ( FamiliasView *famv )
 	query = "SELECT origenidcuentaventafamilia FROM familia WHERE idfamilia = " + famv->idFamilia();
 	tmp_venta = famv->mainCompany()->loadQuery(query);
 	
-	if (tmp_venta->valor("origenidcuentaventafamilia").isEmpty()) {
+	if (tmp_venta->value("origenidcuentaventafamilia").isEmpty()) {
 	  query = "SELECT idcuentaventafamilia FROM familia WHERE idfamilia = " + famv->idFamilia();
 	  tmp_venta = famv->mainCompany()->loadQuery(query);
-	  query = "UPDATE familia SET origenidcuentaventafamilia = " + tmp_venta->valor("idcuentaventafamilia") + " WHERE idfamilia = " + famv->idFamilia();
+	  query = "UPDATE familia SET origenidcuentaventafamilia = " + tmp_venta->value("idcuentaventafamilia") + " WHERE idfamilia = " + famv->idFamilia();
 	  famv->mainCompany()->runQuery(query);
 	} // end if
 
-	query = "UPDATE familia SET idcuentaventafamilia = " + rec_venta->valor("idcuenta") + " WHERE idfamilia = " + famv->idFamilia();
+	query = "UPDATE familia SET idcuentaventafamilia = " + rec_venta->value("idcuenta") + " WHERE idfamilia = " + famv->idFamilia();
 	famv->mainCompany()->runQuery(query);
 	
       }// end if
@@ -133,9 +133,9 @@ int FamiliasView_Guardar_Pre ( FamiliasView *famv )
 	/// y restaura la cuenta original.
 	query = "SELECT origenidcuentacomprafamilia FROM familia WHERE idfamilia = " + famv->idFamilia();
 	tmp_compra = famv->mainCompany()->loadQuery(query);
-	if (!tmp_compra->valor("origenidcuentacomprafamilia").isEmpty()) {
+	if (!tmp_compra->value("origenidcuentacomprafamilia").isEmpty()) {
 	    /// Restaura cuenta original
-	    query = "UPDATE familia SET idcuentacomprafamilia = " + tmp_compra->valor("origenidcuentacomprafamilia") + " WHERE idfamilia = " + famv->idFamilia();
+	    query = "UPDATE familia SET idcuentacomprafamilia = " + tmp_compra->value("origenidcuentacomprafamilia") + " WHERE idfamilia = " + famv->idFamilia();
 	    famv->mainCompany()->runQuery(query);
 	    
 	    /// Vacia campo origen.
@@ -156,14 +156,14 @@ int FamiliasView_Guardar_Pre ( FamiliasView *famv )
 	/// Verifica primero que el campo este vacio.
 	query = "SELECT origenidcuentacomprafamilia FROM familia WHERE idfamilia = " + famv->idFamilia();
 	tmp_compra = famv->mainCompany()->loadQuery(query);
-	if (tmp_compra->valor("origenidcuentacomprafamilia").isEmpty()) {
+	if (tmp_compra->value("origenidcuentacomprafamilia").isEmpty()) {
 	  query = "SELECT idcuentacomprafamilia FROM familia WHERE idfamilia = " + famv->idFamilia();
 	  BlDbRecordSet *tmp_compra = famv->mainCompany()->loadQuery(query);
-	  query = "UPDATE familia SET origenidcuentacomprafamilia = " + tmp_compra->valor("idcuentacomprafamilia") + " WHERE idfamilia = " + famv->idFamilia();
+	  query = "UPDATE familia SET origenidcuentacomprafamilia = " + tmp_compra->value("idcuentacomprafamilia") + " WHERE idfamilia = " + famv->idFamilia();
 	  famv->mainCompany()->runQuery(query);	
 	} // end if
 
-	query = "UPDATE familia SET idcuentacomprafamilia = " + rec_compra->valor("idcuenta") + " WHERE idfamilia = " + famv->idFamilia();
+	query = "UPDATE familia SET idcuentacomprafamilia = " + rec_compra->value("idcuenta") + " WHERE idfamilia = " + famv->idFamilia();
 	famv->mainCompany()->runQuery(query);
 	
      } // end if
@@ -222,9 +222,9 @@ int FPagoView_Guardar_Pre ( FPagoView *fpagov )
 	/// y restaura la cuenta original.
 	query = "SELECT origenidcuentaforma_pago FROM forma_pago WHERE idforma_pago = " + fpagov->idFormaPago();
 	tmp_forma_pago = fpagov->mainCompany()->loadQuery(query);
-	if (!tmp_forma_pago->valor("origenidcuentaforma_pago").isEmpty()) {
+	if (!tmp_forma_pago->value("origenidcuentaforma_pago").isEmpty()) {
 	    /// Restaura cuenta original
-	    query = "UPDATE forma_pago SET idcuentaforma_pago = " + tmp_forma_pago->valor("origenidcuentaforma_pago") + " WHERE idforma_pago = " + fpagov->idFormaPago();
+	    query = "UPDATE forma_pago SET idcuentaforma_pago = " + tmp_forma_pago->value("origenidcuentaforma_pago") + " WHERE idforma_pago = " + fpagov->idFormaPago();
 	    fpagov->mainCompany()->runQuery(query);
 	    
 	    /// Vacia campo origen.
@@ -245,14 +245,14 @@ int FPagoView_Guardar_Pre ( FPagoView *fpagov )
 	query = "SELECT origenidcuentaforma_pago FROM forma_pago WHERE idforma_pago = " + fpagov->idFormaPago();
 	tmp_forma_pago = fpagov->mainCompany()->loadQuery(query);
 	
-	if (tmp_forma_pago->valor("origenidcuentaforma_pago").isEmpty()) {
+	if (tmp_forma_pago->value("origenidcuentaforma_pago").isEmpty()) {
 	  query = "SELECT idcuentaforma_pago FROM forma_pago WHERE idforma_pago = " + fpagov->idFormaPago();
 	  tmp_forma_pago = fpagov->mainCompany()->loadQuery(query);
-	  query = "UPDATE forma_pago SET origenidcuentaforma_pago = " + tmp_forma_pago->valor("idcuentaforma_pago") + " WHERE idforma_pago = " + fpagov->idFormaPago();
+	  query = "UPDATE forma_pago SET origenidcuentaforma_pago = " + tmp_forma_pago->value("idcuentaforma_pago") + " WHERE idforma_pago = " + fpagov->idFormaPago();
 	  fpagov->mainCompany()->runQuery(query);
 	} // end if
 
-	query = "UPDATE forma_pago SET idcuentaforma_pago = " + rec_forma_pago->valor("idcuenta") + " WHERE idforma_pago = " + fpagov->idFormaPago();
+	query = "UPDATE forma_pago SET idcuentaforma_pago = " + rec_forma_pago->value("idcuenta") + " WHERE idforma_pago = " + fpagov->idFormaPago();
 	fpagov->mainCompany()->runQuery(query);
 	
       }// end if
@@ -314,9 +314,9 @@ int BancoView_Guardar_Pre ( BancoView *bancov )
 	query = "SELECT origenidcuentabanco FROM banco WHERE idbanco = " + bancov->idBanco();
 	tmp_banco = bancov->mainCompany()->loadQuery(query);
 
-	if (!tmp_banco->valor("origenidcuentabanco").isEmpty()) {
+	if (!tmp_banco->value("origenidcuentabanco").isEmpty()) {
 	    /// Restaura cuenta original
-	    query = "UPDATE banco SET idcuentabanco = " + tmp_banco->valor("origenidcuentabanco") + " WHERE idbanco = " + bancov->idBanco();
+	    query = "UPDATE banco SET idcuentabanco = " + tmp_banco->value("origenidcuentabanco") + " WHERE idbanco = " + bancov->idBanco();
 	    bancov->mainCompany()->runQuery(query);
 	    
 	    /// Vacia campo origen.
@@ -337,15 +337,15 @@ int BancoView_Guardar_Pre ( BancoView *bancov )
 	query = "SELECT origenidcuentabanco FROM banco WHERE idbanco = " + bancov->idBanco();
 	tmp_banco = bancov->mainCompany()->loadQuery(query);
 	
-	if (tmp_banco->valor("origenidcuentabanco").isEmpty()) {
+	if (tmp_banco->value("origenidcuentabanco").isEmpty()) {
 	  //query = "SELECT idcuentabanco FROM banco WHERE idbanco = " + bancov->idBanco();
 	  query = "SELECT idcuentabanco FROM banco WHERE idbanco = " + bancov->idBanco();
 	  tmp_banco = bancov->mainCompany()->loadQuery(query);
-	  query = "UPDATE banco SET origenidcuentabanco = " + tmp_banco->valor("idcuentabanco") + " WHERE idbanco = " + bancov->idBanco();
+	  query = "UPDATE banco SET origenidcuentabanco = " + tmp_banco->value("idcuentabanco") + " WHERE idbanco = " + bancov->idBanco();
 	  bancov->mainCompany()->runQuery(query);
 	} // end if
 
-	query = "UPDATE banco SET idcuentabanco = " + rec_banco->valor("idcuenta") + " WHERE idbanco = " + bancov->idBanco();
+	query = "UPDATE banco SET idcuentabanco = " + rec_banco->value("idcuenta") + " WHERE idbanco = " + bancov->idBanco();
 	bancov->mainCompany()->runQuery(query);
 	
       }// end if
@@ -403,10 +403,10 @@ int ProveedorView_cargarPost_Post ( ProveedorView *proveedor )
 
 	proveedor->mainCompany()->run("SELECT conectabulmacont()");
 	
-	QString query = "SELECT codigo FROM bc_cuenta WHERE idcuenta = '" + rec->valor("idcuentaproveedor") + "' LIMIT 1";
+	QString query = "SELECT codigo FROM bc_cuenta WHERE idcuenta = '" + rec->value("idcuentaproveedor") + "' LIMIT 1";
 	rec = proveedor->mainCompany()->loadQuery(query);
 	
-	proveedor->findChild<QLineEdit *>("mui_cuenta_proveedor")->setText( rec->valor("codigo") );
+	proveedor->findChild<QLineEdit *>("mui_cuenta_proveedor")->setText( rec->value("codigo") );
 	
     } // end if
 
@@ -468,9 +468,9 @@ int ProveedorView_Guardar_Post ( ProveedorView *proveedor )
 	query = "SELECT origenidcuentaproveedor FROM proveedor WHERE idproveedor = " + proveedor->dbValue(proveedor->fieldId());
 	tmp_proveedor = proveedor->mainCompany()->loadQuery(query);
 
-	if (!tmp_proveedor->valor("origenidcuentaproveedor").isEmpty()) {
+	if (!tmp_proveedor->value("origenidcuentaproveedor").isEmpty()) {
 	    /// Restaura cuenta original
-	    query = "UPDATE proveedor SET idcuentaproveedor = " + tmp_proveedor->valor("origenidcuentaproveedor") + " WHERE idproveedor = " + proveedor->dbValue(proveedor->fieldId());
+	    query = "UPDATE proveedor SET idcuentaproveedor = " + tmp_proveedor->value("origenidcuentaproveedor") + " WHERE idproveedor = " + proveedor->dbValue(proveedor->fieldId());
 	    proveedor->mainCompany()->runQuery(query);
 	    
 	    /// Vacia campo origen.
@@ -487,7 +487,7 @@ int ProveedorView_Guardar_Post ( ProveedorView *proveedor )
 	rsa = proveedor->mainCompany()->loadQuery(query);
 	if (rsa != NULL) {
 	  
-	  if (rsa->valor("codigo") != cuentaproveedor) {
+	  if (rsa->value("codigo") != cuentaproveedor) {
 	
 	      QString query_proveedor = "SELECT idcuenta FROM bc_cuenta WHERE codigo = '" + cuentaproveedor + "' LIMIT 1";
 	      rec_proveedor = proveedor->mainCompany()->loadQuery(query_proveedor);
@@ -501,14 +501,14 @@ int ProveedorView_Guardar_Post ( ProveedorView *proveedor )
 	      query = "SELECT origenidcuentaproveedor FROM proveedor WHERE idproveedor = " + proveedor->dbValue(proveedor->fieldId());
 	      tmp_proveedor = proveedor->mainCompany()->loadQuery(query);
 	      
-	      if (tmp_proveedor->valor("origenidcuentaproveedor").isEmpty()) {
+	      if (tmp_proveedor->value("origenidcuentaproveedor").isEmpty()) {
 		query = "SELECT idcuentaproveedor FROM proveedor WHERE idproveedor = " + proveedor->dbValue(proveedor->fieldId());
 		tmp_proveedor = proveedor->mainCompany()->loadQuery(query);
-		query = "UPDATE proveedor SET origenidcuentaproveedor = " + tmp_proveedor->valor("idcuentaproveedor") + " WHERE idproveedor = " + proveedor->dbValue(proveedor->fieldId());
+		query = "UPDATE proveedor SET origenidcuentaproveedor = " + tmp_proveedor->value("idcuentaproveedor") + " WHERE idproveedor = " + proveedor->dbValue(proveedor->fieldId());
 		proveedor->mainCompany()->runQuery(query);
 	      } // end if
 
-	      query = "UPDATE proveedor SET idcuentaproveedor = " + rec_proveedor->valor("idcuenta") + " WHERE idproveedor = " + proveedor->dbValue(proveedor->fieldId());
+	      query = "UPDATE proveedor SET idcuentaproveedor = " + rec_proveedor->value("idcuenta") + " WHERE idproveedor = " + proveedor->dbValue(proveedor->fieldId());
 	      proveedor->mainCompany()->runQuery(query);
 	      
 	    } // end if
@@ -568,10 +568,10 @@ int ClienteView_cargarPost_Post ( ClienteView *cliente )
 
 	cliente->mainCompany()->run("SELECT conectabulmacont()");
 	
-	QString query = "SELECT codigo FROM bc_cuenta WHERE idcuenta = '" + rec->valor("idcuentacliente") + "' LIMIT 1";
+	QString query = "SELECT codigo FROM bc_cuenta WHERE idcuenta = '" + rec->value("idcuentacliente") + "' LIMIT 1";
 	rec = cliente->mainCompany()->loadQuery(query);
 	
-	cliente->findChild<QLineEdit *>("mui_cuenta_cliente")->setText( rec->valor("codigo") );
+	cliente->findChild<QLineEdit *>("mui_cuenta_cliente")->setText( rec->value("codigo") );
 	
     } // end if
 
@@ -634,9 +634,9 @@ int ClienteView_Guardar_Post ( ClienteView *cliente )
 	query = "SELECT origenidcuentacliente FROM cliente WHERE idcliente = " + cliente->dbValue(cliente->fieldId());
 	tmp_cliente = cliente->mainCompany()->loadQuery(query);
 
-	if (!tmp_cliente->valor("origenidcuentacliente").isEmpty()) {
+	if (!tmp_cliente->value("origenidcuentacliente").isEmpty()) {
 	    /// Restaura cuenta original
-	    query = "UPDATE cliente SET idcuentacliente = " + tmp_cliente->valor("origenidcuentacliente") + " WHERE idcliente = " + cliente->dbValue(cliente->fieldId());
+	    query = "UPDATE cliente SET idcuentacliente = " + tmp_cliente->value("origenidcuentacliente") + " WHERE idcliente = " + cliente->dbValue(cliente->fieldId());
 	    cliente->mainCompany()->runQuery(query);
 	    
 	    /// Vacia campo origen.
@@ -653,7 +653,7 @@ int ClienteView_Guardar_Post ( ClienteView *cliente )
 	rsa = cliente->mainCompany()->loadQuery(query);
 	if (rsa != NULL) {
 	  
-	  if (rsa->valor("codigo") != cuentacliente) {
+	  if (rsa->value("codigo") != cuentacliente) {
 		  
 	      QString query_cliente = "SELECT idcuenta FROM bc_cuenta WHERE codigo = '" + cuentacliente + "' LIMIT 1";
 	      rec_cliente = cliente->mainCompany()->loadQuery(query_cliente);
@@ -667,14 +667,14 @@ int ClienteView_Guardar_Post ( ClienteView *cliente )
 	      query = "SELECT origenidcuentacliente FROM cliente WHERE idcliente = " + cliente->dbValue(cliente->fieldId());
 	      tmp_cliente = cliente->mainCompany()->loadQuery(query);
 	      
-	      if (tmp_cliente->valor("origenidcuentacliente").isEmpty()) {
+	      if (tmp_cliente->value("origenidcuentacliente").isEmpty()) {
 		query = "SELECT idcuentacliente FROM cliente WHERE idcliente = " + cliente->dbValue(cliente->fieldId());
 		tmp_cliente = cliente->mainCompany()->loadQuery(query);
-		query = "UPDATE cliente SET origenidcuentacliente = " + tmp_cliente->valor("idcuentacliente") + " WHERE idcliente = " + cliente->dbValue(cliente->fieldId());
+		query = "UPDATE cliente SET origenidcuentacliente = " + tmp_cliente->value("idcuentacliente") + " WHERE idcliente = " + cliente->dbValue(cliente->fieldId());
 		cliente->mainCompany()->runQuery(query);
 	      } // end if
 
-	      query = "UPDATE cliente SET idcuentacliente = " + rec_cliente->valor("idcuenta") + " WHERE idcliente = " + cliente->dbValue(cliente->fieldId());
+	      query = "UPDATE cliente SET idcuentacliente = " + rec_cliente->value("idcuenta") + " WHERE idcliente = " + cliente->dbValue(cliente->fieldId());
 	      cliente->mainCompany()->runQuery(query);
 	      
 	    } // end if

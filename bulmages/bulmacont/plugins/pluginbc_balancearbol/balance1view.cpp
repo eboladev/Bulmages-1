@@ -138,7 +138,7 @@ BalanceTreeView::BalanceTreeView ( BcCompany *emp, QWidget *parent, int )
     m_fechainicial1->setText ( cadena );
     cadena.sprintf ( "%2.2d/%2.2d/%4.4d", 31, 12, QDate::currentDate().year() );
     m_fechafinal1->setText ( cadena );
-    meteWindow ( windowTitle(), this, FALSE );
+    insertWindow ( windowTitle(), this, FALSE );
     /// Llamamos a los scripts
     blScript(this);
 
@@ -153,7 +153,7 @@ BalanceTreeView::~BalanceTreeView()
 {
     blDebug ( "BalanceTreeView::~BalanceTreeView", 0 );
 
-    sacaWindow();
+    removeWindow();
 
     blDebug ( "END BalanceTreeView::~BalanceTreeView", 0 );
 }
@@ -301,7 +301,7 @@ bool BalanceTreeView::generaBalance()
 
     m_arbol = new BcPlanContableArbol;
     while ( !ramas->eof() ) {
-        if ( ramas->valor ( "nivel" ).toInt() == 2 )
+        if ( ramas->value( "nivel" ).toInt() == 2 )
             m_arbol->nuevaRama ( ramas );
         ramas->nextRecord();
     } // end while
@@ -658,7 +658,7 @@ void BalanceTreeView::on_mui_hojacalculo_clicked()
 //
 // // =================================================================
 //
-//     QString archivod = g_confpr->valor ( CONF_DIR_USER ) + "listadosxc.perl";
+//     QString archivod = g_confpr->value( CONF_DIR_USER ) + "listadosxc.perl";
 //     BlSubForm * subf = ( BlSubForm * ) parent();
 //
 //     QString fitxersortidatxt = "";
@@ -719,7 +719,7 @@ void BalanceTreeView::on_mui_hojacalculo_clicked()
 //             fitxersortidatxt += "# Fila " + QString::number ( y ) + "\n";
 //             fitxersortidatxt += "$doc->oooSet(\"bold\", \"on\");\n";
 //             fitxersortidatxt += "$doc->oooSet(\"cell-loc\", " + QString::number ( x++ ) + ", " + QString::number ( y ) + ");\n";
-//             fitxersortidatxt += "$doc->oooData(\"cell-text\", \"" + blScriptEscape ( cursorapt1->valor ( j ) ) + "\");\n";
+//             fitxersortidatxt += "$doc->oooData(\"cell-text\", \"" + blScriptEscape ( cursorapt1->value( j ) ) + "\");\n";
 //             fitxersortidatxt += "$doc->oooSet(\"bold\", \"off\");\n";
 //             fitxersortidatxt += "\n";
 //
@@ -739,7 +739,7 @@ void BalanceTreeView::on_mui_hojacalculo_clicked()
 //     fitxersortidatxt += "\n";
 //     fitxersortidatxt += "exit;\n";
 //
-//     QString cadena = "rm " + g_confpr->valor ( CONF_DIR_USER ) + "listadosxc.sxc";
+//     QString cadena = "rm " + g_confpr->value( CONF_DIR_USER ) + "listadosxc.sxc";
 //     system ( cadena.toAscii() );
 //     cadena = "rm " + archivod;
 //     system ( cadena.toAscii() );
@@ -752,9 +752,9 @@ void BalanceTreeView::on_mui_hojacalculo_clicked()
 //         file.close();
 //     } // end if
 //
-//     cadena = " cd " + g_confpr->valor ( CONF_DIR_USER ) + "; perl " + archivod;
+//     cadena = " cd " + g_confpr->value( CONF_DIR_USER ) + "; perl " + archivod;
 //     system ( cadena.toAscii() );
-//     cadena = "kspread " + g_confpr->valor ( CONF_DIR_USER ) + "listadosxc.sxc &";
+//     cadena = "kspread " + g_confpr->value( CONF_DIR_USER ) + "listadosxc.sxc &";
 //     system ( cadena.toAscii() );
 
     blDebug ( "END BalanceTreeView::on_mui_hojacalculo_clicked", 0 );

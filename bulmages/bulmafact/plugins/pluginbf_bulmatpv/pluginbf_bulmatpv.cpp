@@ -50,7 +50,7 @@ int entryPoint ( BfBulmaFact *bges )
     
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale ( LC_ALL, "" );
-    blBindTextDomain ( "pluginbf_bulmatpv", g_confpr->valor ( CONF_DIR_TRADUCCION ).toAscii().constData() );
+    blBindTextDomain ( "pluginbf_bulmatpv", g_confpr->value( CONF_DIR_TRADUCCION ).toAscii().constData() );
 
     /// Miramos si existe un menu Ventas
     QMenu *pPluginMenu = NULL;
@@ -189,14 +189,14 @@ int FamiliasView_currentItemChanged_Post ( FamiliasView *famv )
       // Si no hay datos no se hace nada.
       if ( rec != NULL ) {
 
-	    if (rec->valor ( "visibletpvfamilia" ) == "f") {
+	    if (rec->value( "visibletpvfamilia" ) == "f") {
 		famv->findChild<QCheckBox *>("mui_visibletpvfamilia")->setCheckState(Qt::Unchecked);
 	    } else {
 		famv->findChild<QCheckBox *>("mui_visibletpvfamilia")->setCheckState(Qt::Checked);
 	    } // end if
 	    
-	    famv->findChild<QLineEdit *>("mui_ordentpvfamilia")->setText(rec->valor ( "ordentpvfamilia" ));
-	    famv->findChild<QLineEdit *>("mui_colortpvfamilia")->setText(rec->valor ( "colortpvfamilia" ));
+	    famv->findChild<QLineEdit *>("mui_ordentpvfamilia")->setText(rec->value( "ordentpvfamilia" ));
+	    famv->findChild<QLineEdit *>("mui_colortpvfamilia")->setText(rec->value( "colortpvfamilia" ));
 	      
       } // end if
     

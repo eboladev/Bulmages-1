@@ -58,7 +58,7 @@ ListTiposTrabajoView::ListTiposTrabajoView ( BfCompany *comp, QWidget *parent )
     mui_listado->setInsert ( TRUE );
 
     mui_listado->cargar ( "SELECT * FROM tipotrabajo" );
-    meteWindow ( windowTitle(), this );
+    insertWindow ( windowTitle(), this );
     blScript(this);
     blDebug ( "END ListTiposTrabajoView::ListTiposTrabajoView", 1 );
 }

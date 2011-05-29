@@ -42,7 +42,7 @@ public:
     ~BlDbSubFormRecord();
     int addDbField ( QString nom, BlDbField::DbType typ, int res, QString nomp = "" );
     void refresh();
-    virtual int DBsave ( QString & );
+    virtual int dbSave ( QString & );
 };
 
 

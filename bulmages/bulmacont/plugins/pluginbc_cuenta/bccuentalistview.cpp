@@ -63,7 +63,7 @@ BcCuentaListView::BcCuentaListView ( BcCompany *comp, QWidget *parent, Qt::WFlag
     setSubForm ( mui_list );
 
     if ( modoEdicion() ) {
-        mainCompany() ->meteWindow ( windowTitle(), this );
+        mainCompany() ->insertWindow ( windowTitle(), this );
     } else {
         setWindowTitle ( _ ( "Selector de articulos" ) );
         mui_imprimir->setHidden ( TRUE );
@@ -252,7 +252,7 @@ void BcCuentaListView::on_mui_exportar_clicked()
         blDebug ( "BcCuentaListView::on_mui_exportar_clicked", 0 );
         QFile filexml ( QFileDialog::getSaveFileName ( this,
                         _( "Elija el archivo" ),
-                        g_confpr->valor ( CONF_DIR_USER ),
+                        g_confpr->value( CONF_DIR_USER ),
                         _( "Clientes (*.xml)" ) ) );
 
         if ( filexml.open ( QIODevice::WriteOnly ) ) {
@@ -279,7 +279,7 @@ void BcCuentaListView::on_mui_importar_clicked()
         blDebug ( "BcCuentaListView::INIT_s_importar", 0 );
         QFile filexml ( QFileDialog::getOpenFileName ( this,
                         _( "Elija el archivo" ),
-                        g_confpr->valor ( CONF_DIR_USER ),
+                        g_confpr->value( CONF_DIR_USER ),
                         _( "Clientes (*.xml)" ) ) );
 
         if ( filexml.open ( QIODevice::ReadOnly ) ) {

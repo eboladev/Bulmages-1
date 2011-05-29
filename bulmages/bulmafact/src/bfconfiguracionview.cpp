@@ -56,7 +56,7 @@ BfConfiguracionView::BfConfiguracionView ( BfCompany *comp, QWidget *parent ) : 
     this->setAttribute ( Qt::WA_DeleteOnClose );
     mui_listado->setMainCompany ( mainCompany() );
     mui_listado->cargar();
-    if (g_confpr->valor(CONF_MODO_EXPERTO) != "TRUE") {
+    if (g_confpr->value(CONF_MODO_EXPERTO) != "TRUE") {
      tabWidget->removeTab(tabWidget->indexOf(tab_2));
     } // end if
 
@@ -70,49 +70,49 @@ BfConfiguracionView::BfConfiguracionView ( BfCompany *comp, QWidget *parent ) : 
     QString query = "SELECT * FROM configuracion WHERE nombre = 'NombreEmpresa'";
     BlDbRecordSet *cur = mainCompany() ->loadQuery ( query );
     if (!cur->eof()) {
-      m_nombre->setText(cur->valor("valor"));
+      m_nombre->setText(cur->value("valor"));
     } // end if
     delete cur;
 
     query = "SELECT * FROM configuracion WHERE nombre = 'CIF'";
     cur = mainCompany() ->loadQuery ( query );
     if (!cur->eof()) {
-      m_cif->setText(cur->valor("valor"));
+      m_cif->setText(cur->value("valor"));
     } // end if
     delete cur;
     
     query = "SELECT * FROM configuracion WHERE nombre = 'DireccionCompleta'";
     cur = mainCompany() ->loadQuery ( query );
     if (!cur->eof()) {
-      m_direccion->setText(cur->valor("valor"));
+      m_direccion->setText(cur->value("valor"));
     } // end if
     delete cur;
 
     query = "SELECT * FROM configuracion WHERE nombre = 'Municipio'";
     cur = mainCompany() ->loadQuery ( query );
     if (!cur->eof()) {
-      m_municipio->setText(cur->valor("valor"));
+      m_municipio->setText(cur->value("valor"));
     } // end if
     delete cur;
 
     query = "SELECT * FROM configuracion WHERE nombre = 'CodPostal'";
     cur = mainCompany() ->loadQuery ( query );
     if (!cur->eof()) {
-      m_cp->setText(cur->valor("valor"));
+      m_cp->setText(cur->value("valor"));
     } // end if
     delete cur;
 
     query = "SELECT * FROM configuracion WHERE nombre = 'Provincia'";
     cur = mainCompany() ->loadQuery ( query );
     if (!cur->eof()) {
-      m_provincia->setText(cur->valor("valor"));
+      m_provincia->setText(cur->value("valor"));
     } // end if
     delete cur;
 
     query = "SELECT * FROM configuracion WHERE nombre = 'Pais'";
     cur = mainCompany() ->loadQuery ( query );
     if (!cur->eof()) {
-      m_pais->setText(cur->valor("valor"));
+      m_pais->setText(cur->value("valor"));
     } // end if
     delete cur;
 
@@ -120,32 +120,32 @@ BfConfiguracionView::BfConfiguracionView ( BfCompany *comp, QWidget *parent ) : 
     query = "SELECT * FROM configuracion WHERE nombre = 'Telefono'";
     cur = mainCompany() ->loadQuery ( query );
     if (!cur->eof()) {
-      m_telefono->setText(cur->valor("valor"));
+      m_telefono->setText(cur->value("valor"));
     } // end if
     delete cur;
 
     query = "SELECT * FROM configuracion WHERE nombre = 'Fax'";
     cur = mainCompany() ->loadQuery ( query );
     if (!cur->eof()) {
-      m_fax->setText(cur->valor("valor"));
+      m_fax->setText(cur->value("valor"));
     } // end if
     delete cur;
     
     query = "SELECT * FROM configuracion WHERE nombre = 'Email'";
     cur = mainCompany() ->loadQuery ( query );
     if (!cur->eof()) {
-      m_mail->setText(cur->valor("valor"));
+      m_mail->setText(cur->value("valor"));
     } // end if
     delete cur;
     
     query = "SELECT * FROM configuracion WHERE nombre = 'Web'";
     cur = mainCompany() ->loadQuery ( query );
     if (!cur->eof()) {
-      m_web->setText(cur->valor("valor"));
+      m_web->setText(cur->value("valor"));
     } // end if
     delete cur;
     
-    meteWindow ( windowTitle(), this, FALSE );
+    insertWindow ( windowTitle(), this, FALSE );
     blDebug ( "END BfConfiguracionView::BfConfiguracionView", 1 );
 }
 

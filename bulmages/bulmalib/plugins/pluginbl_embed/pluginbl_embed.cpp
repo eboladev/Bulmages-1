@@ -94,7 +94,7 @@ void PluginBl_Embed::embedPYS( )
 
 
         QFile file;
-        file.setFileName ( g_confpr->valor ( CONF_DIR_OPENREPORTS ) + archivod );
+        file.setFileName ( g_confpr->value( CONF_DIR_OPENREPORTS ) + archivod );
         file.open ( QIODevice::ReadOnly );
         QTextStream stream ( &file );
         QString buff = stream.readAll();
@@ -118,7 +118,7 @@ void PluginBl_Embed::embedPYS( )
     
     
     
-    QDir::setCurrent ( g_confpr->valor ( CONF_DIR_USER ) );
+    QDir::setCurrent ( g_confpr->value( CONF_DIR_USER ) );
     QString cadsys;
 
     QString cadena = " python " + archivo + ".pys";
@@ -141,7 +141,7 @@ void PluginBl_Embed::embedPYS( )
         container->setWindowIcon ( QIcon ( icon ) );
         work->addSubWindow ( container );
         if ( g_emp )
-            g_emp->meteWindow ( titulo, container, FALSE );
+            g_emp->insertWindow ( titulo, container, FALSE );
         container->embedClient ( winId.toInt() );
         container->show();
     } // end if
@@ -212,7 +212,7 @@ void PluginBl_Embed::elslot1()
         container->setWindowIcon ( QIcon ( QString::fromUtf8 ( ":/BulmaCont32x32/images/png/i_lo32-app-bulmages.png" ) ) );
         work->addSubWindow ( container );
         if ( g_emp )
-            g_emp->meteWindow ( "Aplicacion Externa", container, FALSE );
+            g_emp->insertWindow ( "Aplicacion Externa", container, FALSE );
         container->embedClient ( winId.toInt() );
         container->show();
     } // end if
@@ -228,7 +228,7 @@ int entryPoint ( BlMainWindow *bges )
 
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale ( LC_ALL, "" );
-    blBindTextDomain ( "pluginbl_embed", g_confpr->valor ( CONF_DIR_TRADUCCION ).toAscii().constData() );
+    blBindTextDomain ( "pluginbl_embed", g_confpr->value( CONF_DIR_TRADUCCION ).toAscii().constData() );
 
     g_bges = bges;
 
@@ -272,7 +272,7 @@ int init67 (  )
     QMenu *pPluginVer = g_bges->menuBar()->findChild<QMenu *> ( "menuVentana" );
 
     /// Buscamos ficheros que tengan el nombre de la tabla
-    QDir dir ( g_confpr->valor ( CONF_DIR_OPENREPORTS ) );
+    QDir dir ( g_confpr->value( CONF_DIR_OPENREPORTS ) );
     dir.setFilter ( QDir::Files | QDir::NoSymLinks );
     dir.setSorting ( QDir::Size | QDir::Reversed );
     /// Hacemos un filtrado de busqueda
@@ -286,7 +286,7 @@ int init67 (  )
         QFileInfo fileInfo = list.at ( i );
 
         QFile file;
-        file.setFileName ( g_confpr->valor ( CONF_DIR_OPENREPORTS ) + fileInfo.fileName() );
+        file.setFileName ( g_confpr->value( CONF_DIR_OPENREPORTS ) + fileInfo.fileName() );
         file.open ( QIODevice::ReadOnly );
         QTextStream stream ( &file );
         QString buff = stream.readAll();

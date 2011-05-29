@@ -62,11 +62,11 @@ int BtTicket_insertarArticuloCodigo_Post ( BtTicket *tick )
         QString query = "SELECT * FROM tc_articulo_alias LEFT JOIN tc_talla AS t1 ON tc_articulo_alias.idtc_talla = t1.idtc_talla LEFT JOIN tc_color AS t2 ON tc_articulo_alias.idtc_color = t2.idtc_color WHERE aliastc_articulo_tallacolor = '" + ( ( BtCompany * ) tick->mainCompany() )->valorBtInput() + "'";
         BlDbRecordSet *cur = tick->mainCompany() ->loadQuery ( query );
         if ( !cur->eof() ) {
-            BlDbRecord * rec = tick->insertarArticulo ( cur->valor ( "idarticulo" ), BlFixed ( "1" ), TRUE );
-            rec->setDbValue ( "idtc_talla", cur->valor ( "idtc_talla" ) );
-            rec->setDbValue ( "idtc_color", cur->valor ( "idtc_color" ) );
-            rec->setDbValue ( "nomtc_talla", cur->valor ( "nomtc_talla" ) );
-            rec->setDbValue ( "nomtc_color", cur->valor ( "nomtc_color" ) );
+            BlDbRecord * rec = tick->insertarArticulo ( cur->value( "idarticulo" ), BlFixed ( "1" ), TRUE );
+            rec->setDbValue ( "idtc_talla", cur->value( "idtc_talla" ) );
+            rec->setDbValue ( "idtc_color", cur->value( "idtc_color" ) );
+            rec->setDbValue ( "nomtc_talla", cur->value( "nomtc_talla" ) );
+            rec->setDbValue ( "nomtc_color", cur->value( "nomtc_color" ) );
         } else {
 	    valor = -1;
 	} // end if
@@ -89,11 +89,11 @@ int BtTicket_insertarArticuloCodigoNL_Post ( BtTicket *tick )
         QString query = "SELECT * FROM tc_articulo_alias LEFT JOIN tc_talla AS t1 ON tc_articulo_alias.idtc_talla = t1.idtc_talla LEFT JOIN tc_color AS t2 ON tc_articulo_alias.idtc_color = t2.idtc_color WHERE aliastc_articulo_tallacolor = '" + ( ( BtCompany * ) tick->mainCompany() )->valorBtInput() + "'";
         BlDbRecordSet *cur = tick->mainCompany() ->loadQuery ( query );
         if ( !cur->eof() ) {
-            BlDbRecord * rec = tick->insertarArticulo ( cur->valor ( "idarticulo" ), BlFixed ( "1" ), TRUE );
-            rec->setDbValue ( "idtc_talla", cur->valor ( "idtc_talla" ) );
-            rec->setDbValue ( "idtc_color", cur->valor ( "idtc_color" ) );
-            rec->setDbValue ( "nomtc_talla", cur->valor ( "nomtc_talla" ) );
-            rec->setDbValue ( "nomtc_color", cur->valor ( "nomtc_color" ) );
+            BlDbRecord * rec = tick->insertarArticulo ( cur->value( "idarticulo" ), BlFixed ( "1" ), TRUE );
+            rec->setDbValue ( "idtc_talla", cur->value( "idtc_talla" ) );
+            rec->setDbValue ( "idtc_color", cur->value( "idtc_color" ) );
+            rec->setDbValue ( "nomtc_talla", cur->value( "nomtc_talla" ) );
+            rec->setDbValue ( "nomtc_color", cur->value( "nomtc_color" ) );
         } else {
 	    valor = -1;
 	} // end if
@@ -123,14 +123,14 @@ int MTicket_pintar ( MTicket *mtick )
 
     query = "SELECT idtrabajador, nomtrabajador FROM trabajador WHERE idtrabajador = " + tick->dbValue ( "idtrabajador" );
     BlDbRecordSet *rsTrabajador = mtick->mainCompany()->loadQuery ( query );
-    plainTextContent += "Trabajador: " + rsTrabajador->valor ( "nomtrabajador" ) + "\n";
-    htmlContent += "Trabajador: " + rsTrabajador->valor ( "nomtrabajador" ) + "<br>";
+    plainTextContent += "Trabajador: " + rsTrabajador->value( "nomtrabajador" ) + "\n";
+    htmlContent += "Trabajador: " + rsTrabajador->value( "nomtrabajador" ) + "<br>";
     delete rsTrabajador;
     
     query = "SELECT idcliente, nomcliente FROM cliente WHERE idcliente = " + tick->dbValue ( "idcliente" );
     BlDbRecordSet *rsCliente = mtick->mainCompany()->loadQuery ( query );
-    plainTextContent += "Cliente: " + rsCliente->valor ( "nomcliente" ) + "\n";
-    htmlContent += "Cliente: " + rsCliente->valor ( "nomcliente" ) + "<br>";
+    plainTextContent += "Cliente: " + rsCliente->value( "nomcliente" ) + "\n";
+    htmlContent += "Cliente: " + rsCliente->value( "nomcliente" ) + "<br>";
     delete rsCliente;
 
     htmlContent += "<TABLE border=\"0\">";
@@ -188,7 +188,7 @@ int MTicket_pintar ( MTicket *mtick )
     BlDbRecordSet *cur = mtick->mainCompany() ->loadQuery ( "SELECT * FROM configuracion WHERE nombre = 'IRPF'" );
     if ( cur ) {
         if ( !cur->eof() ) {
-            irpf = BlFixed ( cur->valor ( "valor" ) );
+            irpf = BlFixed ( cur->value( "valor" ) );
         } // end if
         delete cur;
     } // end if
@@ -296,14 +296,14 @@ int MTicketIVAInc_pintar ( MTicketIVAInc *mtick )
   
   query = "SELECT idtrabajador, nomtrabajador FROM trabajador WHERE idtrabajador = " + tick->dbValue ( "idtrabajador" );
   BlDbRecordSet *rsTrabajador = mtick->mainCompany()->loadQuery ( query );
-  plainTextContent += "Trabajador: " + rsTrabajador->valor ( "nomtrabajador" ) + "\n";
-  htmlContent += "Trabajador: " + rsTrabajador->valor ( "nomtrabajador" ) + "<br>";
+  plainTextContent += "Trabajador: " + rsTrabajador->value( "nomtrabajador" ) + "\n";
+  htmlContent += "Trabajador: " + rsTrabajador->value( "nomtrabajador" ) + "<br>";
   delete rsTrabajador;
  
   query = "SELECT idcliente, nomcliente FROM cliente WHERE idcliente = " + tick->dbValue ( "idcliente" );
   BlDbRecordSet *rsCliente = mtick->mainCompany()->loadQuery ( query );
-  plainTextContent += "Cliente: " + rsCliente->valor ( "nomcliente" ) + "\n";
-  htmlContent += "Cliente: " + rsCliente->valor ( "nomcliente" ) + "<br>";
+  plainTextContent += "Cliente: " + rsCliente->value( "nomcliente" ) + "\n";
+  htmlContent += "Cliente: " + rsCliente->value( "nomcliente" ) + "<br>";
   delete rsCliente;
   
   htmlContent += "<br>";
@@ -360,7 +360,7 @@ int MTicketIVAInc_pintar ( MTicketIVAInc *mtick )
   
   if ( cur ) {
       if ( !cur->eof() ) {
-	  irpf = BlFixed ( cur->valor ( "valor" ) );
+	  irpf = BlFixed ( cur->value( "valor" ) );
       } // end if
       delete cur;
   } // end if
@@ -409,12 +409,12 @@ int MTicketIVAInc_pintar ( MTicketIVAInc *mtick )
 // 
 //     QString querytrab = "SELECT * FROM trabajador WHERE idtrabajador = " + tick->dbValue ( "idtrabajador" );
 //     BlDbRecordSet *curtrab = mtick->mainCompany()->loadQuery ( querytrab );
-//     html1 += "Trabajador: " + tick->dbValue ( "idtrabajador" ) + " " + curtrab->valor ( "nomtrabajador" ) + "<BR>";
+//     html1 += "Trabajador: " + tick->dbValue ( "idtrabajador" ) + " " + curtrab->value( "nomtrabajador" ) + "<BR>";
 //     delete curtrab;
 //     
 //     QString query = "SELECT * FROM cliente WHERE idcliente = " + tick->dbValue ( "idcliente" );
 //     BlDbRecordSet *cur1 = mtick->mainCompany()->loadQuery ( query );
-//     html1 += "Cliente: " + tick->dbValue ( "idcliente" ) + " " + cur1->valor ( "nomcliente" ) + "<BR>";
+//     html1 += "Cliente: " + tick->dbValue ( "idcliente" ) + " " + cur1->value( "nomcliente" ) + "<BR>";
 //     delete cur1;
 // 
 //     html += "<TABLE border=\"0\" width=\"100%\">";
@@ -452,7 +452,7 @@ int MTicketIVAInc_pintar ( MTicketIVAInc *mtick )
 //     
 //     if ( cur ) {
 //         if ( !cur->eof() ) {
-//             irpf = BlFixed ( cur->valor ( "valor" ) );
+//             irpf = BlFixed ( cur->value( "valor" ) );
 //         } // end if
 //         delete cur;
 //     } // end if
@@ -600,37 +600,37 @@ int BtTicket_imprimir(BtTicket *tick)
 
     BlDbRecordSet *cur = tick->mainCompany()->loadQuery ( "SELECT * FROM configuracion WHERE nombre='NombreEmpresa'" );
     if ( !cur->eof() )
-        empresa.nombre = cur->valor ( "valor" );
+        empresa.nombre = cur->value( "valor" );
     delete cur;
     
     cur = tick->mainCompany()->loadQuery ( "SELECT * FROM configuracion WHERE nombre='CIF'" );
     if ( !cur->eof() )
-        empresa.nombre += "\n" + cur->valor ( "valor" );
+        empresa.nombre += "\n" + cur->value( "valor" );
     delete cur;
 
     cur = tick->mainCompany()->loadQuery ( "SELECT * FROM configuracion WHERE nombre='DireccionCompleta'" );
     if ( !cur->eof() )
-        empresa.direccionCompleta = cur->valor ( "valor" );
+        empresa.direccionCompleta = cur->value( "valor" );
     delete cur;
 
     cur = tick->mainCompany()->loadQuery ( "SELECT * FROM configuracion WHERE nombre='CodPostal'" );
     if ( !cur->eof() )
-        empresa.codigoPostal = cur->valor ( "valor" ).toAscii();
+        empresa.codigoPostal = cur->value( "valor" ).toAscii();
     delete cur;
 
     cur = tick->mainCompany()->loadQuery ( "SELECT * FROM configuracion WHERE nombre='Ciudad'" );
     if ( !cur->eof() )
-        empresa.ciudad = cur->valor ( "valor" );
+        empresa.ciudad = cur->value( "valor" );
     delete cur;
 
     cur = tick->mainCompany()->loadQuery ( "SELECT * FROM configuracion WHERE nombre='Telefono'" );
     if ( !cur->eof() )
-        empresa.telefono = cur->valor ( "valor" );
+        empresa.telefono = cur->value( "valor" );
     delete cur;
 
     cur = tick->mainCompany()->loadQuery ( "SELECT * FROM configuracion WHERE nombre='Provincia'" );
     if ( !cur->eof() )
-        empresa.provincia = cur->valor ( "valor" );
+        empresa.provincia = cur->value( "valor" );
     delete cur;
 
     fecha.dia = QDate::currentDate().toString ( "d-M-yyyy" );
@@ -639,20 +639,20 @@ int BtTicket_imprimir(BtTicket *tick)
     trabajador.id = tick->dbValue ( "idtrabajador" );
     cur = tick->mainCompany()->loadQuery ( "SELECT * FROM trabajador WHERE idtrabajador=" + tick->dbValue ( "idtrabajador" ) );
     if ( !cur->eof() )
-        trabajador.nombre = cur->valor ( "nomtrabajador" );
+        trabajador.nombre = cur->value( "nomtrabajador" );
     
     delete cur;
     
     cur = tick->mainCompany()->loadQuery ( "SELECT * FROM cliente WHERE idcliente=" + tick->dbValue ( "idcliente" ) );
     if ( !cur->eof() ) {
-        cliente.cif = cur->valor ( "cifcliente" ).toAscii();
-        cliente.nombre = cur->valor ( "nomcliente" ).toAscii();
+        cliente.cif = cur->value( "cifcliente" ).toAscii();
+        cliente.nombre = cur->value( "nomcliente" ).toAscii();
     } // end if
     delete cur;
 
     cur = tick->mainCompany()->loadQuery ( "SELECT * FROM almacen WHERE idalmacen=" + tick->dbValue ( "idalmacen" ) );
     if ( !cur->eof() )
-        almacen.nombre = cur->valor ( "nomalmacen" ).toAscii() ;
+        almacen.nombre = cur->value( "nomalmacen" ).toAscii() ;
     delete cur;
 
     BlDbRecord *linea;
@@ -669,13 +669,13 @@ int BtTicket_imprimir(BtTicket *tick)
     
     total.totalIva = total.baseImponible + total.baseImponible * total.iva / BlFixed ( "100" );
 
-    BlEscPrinter pr ( g_confpr->valor(CONF_DIR_USER) + "bulmatpv_ticket_tc.esc" );
+    BlEscPrinter pr ( g_confpr->value(CONF_DIR_USER) + "bulmatpv_ticket_tc.esc" );
     pr.initializePrinter();
     pr.setCharacterCodeTable ( page19 );
     pr.setJustification ( BlEscPrinter::center );
 
-    if ( g_confpr->valor ( CONF_TPV_PRINTER_LOGO ) != "" ) {
-        pr.printImage ( g_confpr->valor ( CONF_TPV_PRINTER_LOGO ) );
+    if ( g_confpr->value( CONF_TPV_PRINTER_LOGO ) != "" ) {
+        pr.printImage ( g_confpr->value( CONF_TPV_PRINTER_LOGO ) );
     } // end if
     
     pr.printText ( empresa.nombre + "\n" );
@@ -742,13 +742,13 @@ int BtTicket_imprimir(BtTicket *tick)
     pr.print();
     
     /// Si queremos imprimir con CUPS lo hacemos de esta otra forma
-    if (!g_confpr->valor ( CONF_TICKET_PRINTER_FILE).isEmpty() && g_confpr->valor ( CONF_TICKET_PRINTER_FILE) != "/dev/null") {
-        QString comando = "cat " + g_confpr->valor(CONF_DIR_USER) + "bulmatpv_ticket_tc.esc" + "  > " + g_confpr->valor ( CONF_TICKET_PRINTER_FILE );
+    if (!g_confpr->value( CONF_TICKET_PRINTER_FILE).isEmpty() && g_confpr->value( CONF_TICKET_PRINTER_FILE) != "/dev/null") {
+        QString comando = "cat " + g_confpr->value(CONF_DIR_USER) + "bulmatpv_ticket_tc.esc" + "  > " + g_confpr->value( CONF_TICKET_PRINTER_FILE );
         system ( comando.toAscii().data() );
-    } else if (g_confpr->valor(CONF_CUPS_DEFAULT_PRINTER).isEmpty() || g_confpr->valor(CONF_CUPS_DEFAULT_PRINTER) == "None") {
+    } else if (g_confpr->value(CONF_CUPS_DEFAULT_PRINTER).isEmpty() || g_confpr->value(CONF_CUPS_DEFAULT_PRINTER) == "None") {
         blDebug("Debe establecer el parametro CONF_CUPS_DEFAULT_PRINTER o CONF_TICKET_PRINTER_FILE para imprimir el ticket " , 2);
     } else {
-        QString comando = "lp -d" + g_confpr->valor(CONF_CUPS_DEFAULT_PRINTER) + " " + g_confpr->valor(CONF_DIR_USER) + "bulmatpv_ticket_tc.esc";
+        QString comando = "lp -d" + g_confpr->value(CONF_CUPS_DEFAULT_PRINTER) + " " + g_confpr->value(CONF_DIR_USER) + "bulmatpv_ticket_tc.esc";
         system ( comando.toAscii().data() );
     } // end if
     
@@ -797,37 +797,37 @@ int BtTicket_imprimirIVAInc(BtTicket *tick)
 
     BlDbRecordSet *cur = tick->mainCompany() ->loadQuery ( "SELECT * FROM configuracion WHERE nombre='NombreEmpresa'" );
     if ( !cur->eof() )
-        empresa.nombre = cur->valor ( "valor" );
+        empresa.nombre = cur->value( "valor" );
     delete cur;
 
     cur = tick->mainCompany() ->loadQuery ( "SELECT * FROM configuracion WHERE nombre='CIF'" );
     if ( !cur->eof() )
-        empresa.nombre += "\n" + cur->valor ( "valor" );
+        empresa.nombre += "\n" + cur->value( "valor" );
     delete cur;
 
     cur = tick->mainCompany() ->loadQuery ( "SELECT * FROM configuracion WHERE nombre='DireccionCompleta'" );
     if ( !cur->eof() )
-        empresa.direccionCompleta = cur->valor ( "valor" );
+        empresa.direccionCompleta = cur->value( "valor" );
     delete cur;
 
     cur = tick->mainCompany() ->loadQuery ( "SELECT * FROM configuracion WHERE nombre='CodPostal'" );
     if ( !cur->eof() )
-        empresa.codigoPostal = cur->valor ( "valor" ).toAscii();
+        empresa.codigoPostal = cur->value( "valor" ).toAscii();
     delete cur;
 
     cur = tick->mainCompany() ->loadQuery ( "SELECT * FROM configuracion WHERE nombre='Ciudad'" );
     if ( !cur->eof() )
-        empresa.ciudad = cur->valor ( "valor" );
+        empresa.ciudad = cur->value( "valor" );
     delete cur;
 
     cur = tick->mainCompany() ->loadQuery ( "SELECT * FROM configuracion WHERE nombre='Telefono'" );
     if ( !cur->eof() )
-        empresa.telefono = cur->valor ( "valor" );
+        empresa.telefono = cur->value( "valor" );
     delete cur;
 
     cur = tick->mainCompany() ->loadQuery ( "SELECT * FROM configuracion WHERE nombre='Provincia'" );
     if ( !cur->eof() )
-        empresa.provincia = cur->valor ( "valor" );
+        empresa.provincia = cur->value( "valor" );
     delete cur;
 
     fecha.dia = QDate::currentDate().toString ( "d-M-yyyy" );
@@ -836,14 +836,14 @@ int BtTicket_imprimirIVAInc(BtTicket *tick)
     trabajador.id = tick->dbValue ( "idtrabajador" );
     cur = tick->mainCompany() ->loadQuery ( "SELECT * FROM trabajador WHERE idtrabajador=" + tick->dbValue ( "idtrabajador" ) );
     if ( !cur->eof() )
-        trabajador.nombre = cur->valor ( "nomtrabajador" );
+        trabajador.nombre = cur->value( "nomtrabajador" );
     delete cur;
 
     cur = tick->mainCompany() ->loadQuery ( "SELECT * FROM cliente WHERE idcliente=" + tick->dbValue ( "idcliente" ) );
     if ( !cur->eof() ) {
-	if (cur->valor ("idcliente") != g_confpr->valor(CONF_IDCLIENTE_DEFECTO)) {
-        cliente.cif = cur->valor ( "cifcliente" ).toAscii();
-        cliente.nombre = cur->valor ( "nomcliente" ).toAscii();
+	if (cur->value("idcliente") != g_confpr->value(CONF_IDCLIENTE_DEFECTO)) {
+        cliente.cif = cur->value( "cifcliente" ).toAscii();
+        cliente.nombre = cur->value( "nomcliente" ).toAscii();
 	} else {
 	cliente.cif = "";
         cliente.nombre = "";
@@ -853,7 +853,7 @@ int BtTicket_imprimirIVAInc(BtTicket *tick)
 
     cur = tick->mainCompany() ->loadQuery ( "SELECT * FROM almacen WHERE idalmacen=" + tick->dbValue ( "idalmacen" ) );
     if ( !cur->eof() )
-        almacen.nombre = cur->valor ( "nomalmacen" ).toAscii() ;
+        almacen.nombre = cur->value( "nomalmacen" ).toAscii() ;
     delete cur;
 
     BlDbRecord *linea;
@@ -874,13 +874,13 @@ int BtTicket_imprimirIVAInc(BtTicket *tick)
         totales[linea->dbValue ( "ivalalbaran" ) ] = totales[linea->dbValue ( "ivalalbaran" ) ] + totlinea;
     } // end for
 
-    BlEscPrinter pr ( g_confpr->valor(CONF_DIR_USER) + "bulmatpv_ticket_tc_ivainc.esc" );
+    BlEscPrinter pr ( g_confpr->value(CONF_DIR_USER) + "bulmatpv_ticket_tc_ivainc.esc" );
     pr.initializePrinter();
     pr.setCharacterCodeTable ( page19 );
     pr.setJustification ( BlEscPrinter::center );
 
-    if ( g_confpr->valor ( CONF_TPV_PRINTER_LOGO ) != "" ) {
-        pr.printImage ( g_confpr->valor ( CONF_TPV_PRINTER_LOGO ) );
+    if ( g_confpr->value( CONF_TPV_PRINTER_LOGO ) != "" ) {
+        pr.printImage ( g_confpr->value( CONF_TPV_PRINTER_LOGO ) );
     } // end if
     
     pr.printText ( empresa.nombre + "\n" );
@@ -928,8 +928,8 @@ int BtTicket_imprimirIVAInc(BtTicket *tick)
       QString tipoIva = it.key();	
       QString sqlquery = "SELECT (" +it.value().toQString('.') + "/ ( 1 + " + tipoIva.replace(",",".") + "/100 ))::NUMERIC(12,2) AS base, " + it.value().toQString('.') + "- ("+it.value().toQString('.') + "/ ( 1 + " + tipoIva.replace(",",".") + "/100 ))::NUMERIC(12,2) AS iva";
       BlDbRecordSet *cur = tick->mainCompany()->loadQuery(sqlquery);
-      pr.printText ( "Base Imponible: " + cur-> valor("base") + "�\n" );
-      pr.printText ( "IVA " +it.key() + "%  " + cur->valor("iva") + "�\n" );
+      pr.printText ( "Base Imponible: " + cur->value("base") + "�\n" );
+      pr.printText ( "IVA " +it.key() + "%  " + cur->value("iva") + "�\n" );
       delete cur;
     } // end for
     pr.setCharacterPrintMode ( CHARACTER_FONTA_SELECTED | EMPHASIZED_MODE | DOUBLE_HEIGHT | DOUBLE_WIDTH );
@@ -952,13 +952,13 @@ int BtTicket_imprimirIVAInc(BtTicket *tick)
     pr.print();
 
     /// Si queremos imprimir con CUPS lo hacemos de esta otra forma
-    if (!g_confpr->valor ( CONF_TICKET_PRINTER_FILE).isEmpty() && g_confpr->valor ( CONF_TICKET_PRINTER_FILE) != "/dev/null") {
-        QString comando = "cat " + g_confpr->valor(CONF_DIR_USER) + "bulmatpv_ticket_tc_ivainc.esc" + "  > " + g_confpr->valor ( CONF_TICKET_PRINTER_FILE );
+    if (!g_confpr->value( CONF_TICKET_PRINTER_FILE).isEmpty() && g_confpr->value( CONF_TICKET_PRINTER_FILE) != "/dev/null") {
+        QString comando = "cat " + g_confpr->value(CONF_DIR_USER) + "bulmatpv_ticket_tc_ivainc.esc" + "  > " + g_confpr->value( CONF_TICKET_PRINTER_FILE );
         system ( comando.toAscii().data() );
-    } else if (g_confpr->valor(CONF_CUPS_DEFAULT_PRINTER).isEmpty() || g_confpr->valor(CONF_CUPS_DEFAULT_PRINTER) == "None") {
+    } else if (g_confpr->value(CONF_CUPS_DEFAULT_PRINTER).isEmpty() || g_confpr->value(CONF_CUPS_DEFAULT_PRINTER) == "None") {
         blDebug("Debe establecer el parametro CONF_CUPS_DEFAULT_PRINTER o CONF_TICKET_PRINTER_FILE para imprimir el ticket " , 2);
     } else {
-        QString comando = "lp -d" + g_confpr->valor(CONF_CUPS_DEFAULT_PRINTER) + " " + g_confpr->valor(CONF_DIR_USER) + "bulmatpv_ticket_tc_ivainc.esc";
+        QString comando = "lp -d" + g_confpr->value(CONF_CUPS_DEFAULT_PRINTER) + " " + g_confpr->value(CONF_DIR_USER) + "bulmatpv_ticket_tc_ivainc.esc";
         system ( comando.toAscii().data() );
     } // end if
     blDebug ( "END pluginbt_aliastallasycolores::BtTicket_imprimirIVAInc", 0 );

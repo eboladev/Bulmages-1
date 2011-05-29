@@ -74,7 +74,7 @@ CarteraPagosList::CarteraPagosList ( BfCompany *comp, QWidget *parent, Qt::WFlag
     hideBusqueda();
     /// Si estamos en el modo edici&oacute;n metemos la ventana en el workSpace.
     if ( m_modo == EditMode ) {
-        mainCompany() ->meteWindow ( windowTitle(), this );
+        mainCompany() ->insertWindow ( windowTitle(), this );
     } else {
         setWindowTitle ( tr ( "Selector de vencimientops" ) );
         mui_editar->setHidden ( TRUE );
@@ -100,7 +100,7 @@ CarteraPagosList::CarteraPagosList ( BfCompany *comp, QWidget *parent, Qt::WFlag
 CarteraPagosList::~CarteraPagosList()
 {
     blDebug ( "CarteraPagosList::~CarteraPagosList", 0 );
-    mainCompany() ->sacaWindow ( this );
+    mainCompany() ->removeWindow ( this );
     blDebug ( "END CarteraPagosList::~CarteraPagosList", 0 );
 }
 

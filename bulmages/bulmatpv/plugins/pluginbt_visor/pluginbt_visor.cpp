@@ -47,9 +47,9 @@ int entryPoint ( BtBulmaTPV *tpv )
 
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale ( LC_ALL, "" );
-    blBindTextDomain ( "pluginvisor", g_confpr->valor ( CONF_DIR_TRADUCCION ).toAscii().constData() );
+    blBindTextDomain ( "pluginvisor", g_confpr->value( CONF_DIR_TRADUCCION ).toAscii().constData() );
 
-    g_file = new QFile ( g_confpr->valor ( CONF_TPV_VISOR_FILE ) );
+    g_file = new QFile ( g_confpr->value( CONF_TPV_VISOR_FILE ) );
     if ( g_file->open ( QIODevice::WriteOnly | QIODevice::Unbuffered ) ) {
         g_file->write ( "\x0Ch", 1 );
         g_file->write ( "Gracias por visitarnos.", 6 );

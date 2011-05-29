@@ -85,7 +85,7 @@ int entryPoint ( BcBulmaCont *bcont )
     
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale ( LC_ALL, "" );
-    blBindTextDomain ( "pluginbc_registroiva", g_confpr->valor ( CONF_DIR_TRADUCCION ).toAscii().constData() );
+    blBindTextDomain ( "pluginbc_registroiva", g_confpr->value( CONF_DIR_TRADUCCION ).toAscii().constData() );
 
     return 0;
 }
@@ -161,7 +161,7 @@ int BcAsientoForm_guardaAsiento1_post ( BcAsientoForm *as )
     BlDbRecordSet *curvalor = companyact->loadQuery ( query );
     while ( !curvalor->eof() ) {
         /// Preparamos una expresi&oacute;n regular para usar en la consulta.
-        cuentas += curvalor->valor ( "valor" ) + "%|";
+        cuentas += curvalor->value( "valor" ) + "%|";
         curvalor->nextRecord();
     } // end while
     delete curvalor;
@@ -174,7 +174,7 @@ int BcAsientoForm_guardaAsiento1_post ( BcAsientoForm *as )
 
     BlDbRecordSet *cursborr = companyact->loadQuery ( SQLQuery );
     while ( !cursborr->eof() ) {
-        int idborrador = cursborr->valor ( "contra" ).toInt();
+        int idborrador = cursborr->value( "contra" ).toInt();
         RegistroIvaView *reg = new RegistroIvaView ( companyact, 0 );
         reg->inicializa1 ( idborrador );
         companyact->pWorkspace() ->addSubWindow ( reg );

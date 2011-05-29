@@ -43,7 +43,7 @@ int entryPoint ( BfBulmaFact *bges )
     g_bges = bges;
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale ( LC_ALL, "" );
-    blBindTextDomain ( "pluginbf_tipotrabajo", g_confpr->valor ( CONF_DIR_TRADUCCION ).toAscii().constData() );
+    blBindTextDomain ( "pluginbf_tipotrabajo", g_confpr->value( CONF_DIR_TRADUCCION ).toAscii().constData() );
 
     BlAction *accion = new BlAction (  _("&Tipos de trabajo"), 0 );
     accion->setStatusTip ( _("Tipos de trabajo") );
@@ -143,7 +143,7 @@ int TrabajadorView_on_mui_lista_currentItemChanged_Post ( TrabajadorView *trab )
 	if (l) {
 	    BlDbRecordSet *cur = trab->mainCompany() ->loadQuery ( "SELECT idtipotrabajo FROM trabajador WHERE idtrabajador = " + trab->mdb_idtrabajador );
 	    if ( !cur->eof() ) {
-		l->setId( cur->valor ( "idtipotrabajo" ) );
+		l->setId( cur->value( "idtipotrabajo" ) );
 	    } // end if
 	    delete cur;
 	} // end if

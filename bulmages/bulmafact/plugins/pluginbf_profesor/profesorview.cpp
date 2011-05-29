@@ -89,9 +89,9 @@ ProfesorView::ProfesorView ( BfCompany *comp, QWidget *parent )
 	m_actividades->setInsert ( FALSE );
 	m_actividades->setSortingEnabled ( TRUE );
 
-        meteWindow ( windowTitle(), this, FALSE );
+        insertWindow ( windowTitle(), this, FALSE );
         pintar();
-        dialogChanges_cargaInicial();
+        dialogChanges_readValues();
 	blScript(this);
     } catch ( ... ) {
         blMsgInfo ( _ ( "Error al crear el profesor" ), this );

@@ -49,7 +49,7 @@ int entryPoint ( BtBulmaTPV *tpv )
 
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale ( LC_ALL, "" );
-    blBindTextDomain ( "pluginbt_cliente", g_confpr->valor ( CONF_DIR_TRADUCCION ).toAscii().constData() );
+    blBindTextDomain ( "pluginbt_cliente", g_confpr->value( CONF_DIR_TRADUCCION ).toAscii().constData() );
 
     blDebug ( "END entryPoint", 0 );
     return 0;
@@ -115,9 +115,9 @@ int BlToolButton_released(BlToolButton *bot) {
     QString query = "SELECT * FROM cliente WHERE codcliente = '" + emp->valorBtInput() + "'";
     BlDbRecordSet *cur = emp->loadQuery ( query );
     if ( !cur->eof() ) {
-        emp->ticketActual() ->setDbValue ( "idcliente", cur->valor ( "idcliente" ) );
+        emp->ticketActual() ->setDbValue ( "idcliente", cur->value( "idcliente" ) );
     } else {
-        emp->ticketActual() ->setDbValue ( "idcliente", g_confpr->valor ( CONF_IDCLIENTE_DEFECTO ) );
+        emp->ticketActual() ->setDbValue ( "idcliente", g_confpr->value( CONF_IDCLIENTE_DEFECTO ) );
     } // end if
     delete cur;
     emp->ticketActual() ->pintar();

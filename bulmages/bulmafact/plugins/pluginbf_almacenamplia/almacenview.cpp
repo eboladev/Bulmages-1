@@ -70,8 +70,8 @@ AlmacenView::AlmacenView ( BfCompany *comp, QWidget *parent )
         mui_tipoalmacen_t->setFieldValue ( "Tienda" );
         mui_tipoalmacen_a->setFieldValue ( "Almacen" );
 
-        dialogChanges_cargaInicial();
-        meteWindow ( windowTitle(), this, FALSE );
+        dialogChanges_readValues();
+        insertWindow ( windowTitle(), this, FALSE );
 	blScript(this);
     } catch ( ... ) {
         blMsgInfo ( _ ( "Error al crear el almacen" ) );

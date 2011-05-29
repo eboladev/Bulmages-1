@@ -82,8 +82,8 @@ void FamiliaCuenta::on_m_listFamilias_currentItemChanged ( QTreeWidgetItem *curr
       
       rec = m_familiasview->mainCompany()->loadQuery(query);
       
-      m_familiasview->findChild<QLineEdit *>("mui_cuenta_venta")->setText( rec->valor("prefcuentaventafamilia") );
-      m_familiasview->findChild<QLineEdit *>("mui_cuenta_compra")->setText( rec->valor("prefcuentacomprafamilia") );
+      m_familiasview->findChild<QLineEdit *>("mui_cuenta_venta")->setText( rec->value("prefcuentaventafamilia") );
+      m_familiasview->findChild<QLineEdit *>("mui_cuenta_compra")->setText( rec->value("prefcuentacomprafamilia") );
       
       m_familiasview->mainCompany()->commit();
 */
@@ -105,15 +105,15 @@ void FamiliaCuenta::on_m_listFamilias_currentItemChanged ( QTreeWidgetItem *curr
 
 	    m_familiasview->mainCompany()->run("SELECT conectabulmacont()");
 	    
-	    query = "SELECT codigo FROM bc_cuenta WHERE idcuenta = '" + rec->valor("idcuentaventafamilia") + "' LIMIT 1";
+	    query = "SELECT codigo FROM bc_cuenta WHERE idcuenta = '" + rec->value("idcuentaventafamilia") + "' LIMIT 1";
 	    rec2 = m_familiasview->mainCompany()->loadQuery(query);
 	    
-	    m_familiasview->findChild<QLineEdit *>("mui_cuenta_venta")->setText( rec2->valor("codigo") );
+	    m_familiasview->findChild<QLineEdit *>("mui_cuenta_venta")->setText( rec2->value("codigo") );
 
-	    query = "SELECT codigo FROM bc_cuenta WHERE idcuenta = '" + rec->valor("idcuentacomprafamilia") + "' LIMIT 1";
+	    query = "SELECT codigo FROM bc_cuenta WHERE idcuenta = '" + rec->value("idcuentacomprafamilia") + "' LIMIT 1";
 	    rec2 = m_familiasview->mainCompany()->loadQuery(query);
 
-	    m_familiasview->findChild<QLineEdit *>("mui_cuenta_compra")->setText( rec2->valor("codigo") );
+	    m_familiasview->findChild<QLineEdit *>("mui_cuenta_compra")->setText( rec2->value("codigo") );
 	    
 	} // end if
     
@@ -121,7 +121,7 @@ void FamiliaCuenta::on_m_listFamilias_currentItemChanged ( QTreeWidgetItem *curr
 	m_familiasview->mainCompany()->commit();
 
     } // end if
-    m_familiasview->dialogChanges_cargaInicial();
+    m_familiasview->dialogChanges_readValues();
     
 }
 

@@ -76,9 +76,9 @@ JDirectivaView::JDirectivaView ( BfCompany *comp, QWidget *parent )
 	// Cargar una contradiccion para que el subformulario deje insertar elementos.
         mui_list->cargar("SELECT * from miembrojdirectiva NATURAL LEFT JOIN cliente WHERE 1 = 2");
         
-        meteWindow ( windowTitle(), this, FALSE );
+        insertWindow ( windowTitle(), this, FALSE );
         pintar();
-        dialogChanges_cargaInicial();
+        dialogChanges_readValues();
 	blScript(this);
     } catch ( ... ) {
         blMsgInfo ( _ ( "Error al crear el jdirectiva" ), this );

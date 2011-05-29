@@ -487,7 +487,7 @@ int BlDbRecord::DBload ( BlDbRecordSet *cur )
             campo = m_lista.at ( i );
             if ( ! ( campo->restrictcampo() & BlDbField::DbNoLoad ) ) {
                 QString nom = campo->nomcampo();
-                QString val = cur->valor ( nom );
+                QString val = cur->value( nom );
                 if ( ( campo->restrictcampo() & BlDbField::DbPrimaryKey ) && ( val == "" ) )
                     m_nuevoCampo = TRUE;
                 if ( ( campo->restrictcampo() & BlDbField::DbDupPrimaryKey ) && ( val == "" ) )
@@ -526,9 +526,9 @@ void BlDbRecord::DBclear()
 /**
 \param id Devuelve el identificador (primary key) con que ha quedado guardado el registro.
 **/
-int BlDbRecord::DBsave ( QString &id )
+int BlDbRecord::dbSave ( QString &id )
 {
-    blDebug ( "BlDbRecord::DBsave", 0, id );
+    blDebug ( "BlDbRecord::dbSave", 0, id );
     try {
         BlDbField *campo;
         QString listcampos = "";
@@ -556,7 +556,7 @@ int BlDbRecord::DBsave ( QString &id )
             if ( ! ( campo->restrictcampo() & BlDbField::DbNoSave ) ) {
                 if ( campo->restrictcampo() & BlDbField::DbRequired ) {
                     if ( campo->valorcampo() == "" ) {
-                        blDebug ( "END BlDbRecord::DBsave", 0, "Campo requerido vacio" );
+                        blDebug ( "END BlDbRecord::dbSave", 0, "Campo requerido vacio" );
                         return 0;
                     } // end if
                 } // end if
@@ -591,7 +591,7 @@ int BlDbRecord::DBsave ( QString &id )
             m_dbConnection->runQuery ( query );
             blDebug ( query, 0 );
             BlDbRecordSet *cur = m_dbConnection->loadQuery ( "SELECT " + m_campoid + " FROM " + m_tablename + " ORDER BY " + m_campoid + " DESC LIMIT 1" );
-            id = cur->valor ( m_campoid );
+            id = cur->value( m_campoid );
             delete cur;
         } else {
             QString query = "UPDATE " + m_tablename + " SET " + queryupdate + " WHERE " + querywhere;
@@ -604,7 +604,7 @@ int BlDbRecord::DBsave ( QString &id )
         g_theApp->emitDbTableChanged ( m_tablename );
 
     } catch ( int error ) {
-        blDebug ( "END BlDbRecord::DBsave", 0, "Error de guardado" );
+        blDebug ( "END BlDbRecord::dbSave", 0, "Error de guardado" );
         throw error;
     } // end try
     blDebug ( "END BlDbRecord::DBSave", 0 );
@@ -826,7 +826,7 @@ int BlDbRecord::borrar()
 
 /// Guarda el registro actual en la base de datos
 /**
-Esta funcion, de un nivel algo superior a la llamada DBsave hace el guardado y maneja las
+Esta funcion, de un nivel algo superior a la llamada dbSave hace el guardado y maneja las
 excepciones que se hayan podido producir
 \return si no se producen errores devuelve 0 en caso contrario genera una excepcion
 **/
@@ -835,7 +835,7 @@ int BlDbRecord::guardar()
     blDebug ( "BlDbRecord::guardar", 0 );
     QString id;
     try {
-        DBsave ( id );
+        dbSave ( id );
         setDbValue ( m_campoid, id );
         blDebug ( "END BlDbRecord::guardar", 0 );
         return 0;
@@ -877,8 +877,8 @@ void BlDbRecord::substrConf ( QString &buff )
     ///       Se puede simplificar?
     /// Tratamos la sustitucion de los valores de configuracion.
     for ( int i = 0; i < 1000; i++ ) {
-        if ( g_confpr->nombre ( i ) != "" ) {
-            buff.replace ( "[" + g_confpr->nombre ( i ) + "]", g_confpr->valor ( i ) );
+        if ( g_confpr->name( i ) != "" ) {
+            buff.replace ( "[" + g_confpr->name( i ) + "]", g_confpr->value( i ) );
         } // end if
     } // end for
 }
@@ -889,8 +889,8 @@ void BlDbRecord::substrConf ( QByteArray &buff )
     ///       Se puede simplificar?
     /// Tratamos la sustitucion de los valores de configuracion.
     for ( int i = 0; i < 1000; i++ ) {
-        if ( g_confpr->nombre ( i ) != "" ) {
-            buff.replace ( QString("[" + g_confpr->nombre ( i ) + "]").toAscii(), g_confpr->valor ( i ).toAscii() );
+        if ( g_confpr->name( i ) != "" ) {
+            buff.replace ( QString("[" + g_confpr->name( i ) + "]").toAscii(), g_confpr->value( i ).toAscii() );
         } // end if
     } // end for
 }
@@ -962,9 +962,9 @@ int BlDbRecord::generaRML ( const QString &arch )
         tipoescape = 2;
 
 
-    QString archivo = g_confpr->valor ( CONF_DIR_OPENREPORTS ) + arch;
-    QString archivod = g_confpr->valor ( CONF_DIR_USER ) + arch;
-    QString archivologo = g_confpr->valor ( CONF_DIR_OPENREPORTS ) + "logo.jpg";
+    QString archivo = g_confpr->value( CONF_DIR_OPENREPORTS ) + arch;
+    QString archivod = g_confpr->value( CONF_DIR_USER ) + arch;
+    QString archivologo = g_confpr->value( CONF_DIR_OPENREPORTS ) + "logo.jpg";
 
     /// Copiamos el archivo.
 #ifdef Q_OS_WIN32
@@ -980,9 +980,9 @@ int BlDbRecord::generaRML ( const QString &arch )
     
     /// Copiamos el logo
 #ifdef Q_OS_WIN32
-    archivologo = "copy \"" + archivologo + "\" \"" + g_confpr->valor ( CONF_DIR_USER ) + "logo.jpg \"";
+    archivologo = "copy \"" + archivologo + "\" \"" + g_confpr->value( CONF_DIR_USER ) + "logo.jpg \"";
 #else
-    archivologo = "cp " + archivologo + " " + g_confpr->valor ( CONF_DIR_USER ) + "logo.jpg";
+    archivologo = "cp " + archivologo + " " + g_confpr->value( CONF_DIR_USER ) + "logo.jpg";
 #endif
 
     int result2 = system ( archivologo.toAscii().constData() );
@@ -2087,7 +2087,7 @@ QByteArray BlDbRecord::trataIf ( const QString &query, const QByteArray &datos, 
     BlDbRecordSet *cur = m_dbConnection ->loadQuery ( query2 );
     if ( !cur ) return "";
     if ( !cur->eof() ) {
-        if ( cur->valor ( "res" ) == "t" ) {
+        if ( cur->value( "res" ) == "t" ) {
             result = datos;
         } else {
             result = datos1;
@@ -3036,13 +3036,13 @@ QByteArray BlDbRecord::trataCursor ( BlDbRecordSet *cur, const QByteArray &datos
             if ( cur->numcampo ( rx.cap ( 1 ) ) != -1 ) {
                 switch ( tipoEscape ) {
                 case 1:
-                    salidatemp.replace ( pos, rx.matchedLength(), blXMLEscape ( cur->valor ( rx.cap ( 1 ), -1, TRUE ) ).toAscii()  );
+                    salidatemp.replace ( pos, rx.matchedLength(), blXMLEscape ( cur->value( rx.cap ( 1 ), -1, TRUE ) ).toAscii()  );
                     break;
                 case 2:
-                    salidatemp.replace ( pos, rx.matchedLength(), blPythonEscape ( cur->valor ( rx.cap ( 1 ), -1, TRUE ) ).toAscii()  );
+                    salidatemp.replace ( pos, rx.matchedLength(), blPythonEscape ( cur->value( rx.cap ( 1 ), -1, TRUE ) ).toAscii()  );
                     break;
                 default:
-                    salidatemp.replace ( pos, rx.matchedLength(), cur->valor ( rx.cap ( 1 ), -1, TRUE ).toAscii() );
+                    salidatemp.replace ( pos, rx.matchedLength(), cur->value( rx.cap ( 1 ), -1, TRUE ).toAscii() );
                     break;
                 } // emd switch
                 pos = 0;

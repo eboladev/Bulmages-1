@@ -242,12 +242,12 @@ void ServerLight::processTicketDataXML(QString data)
 	    BlDbRecordSet *cur = mainCompany() ->loadQuery ( query );
 
 	    if ( !cur->eof() ) {
-		linea->setDbValue ( "pvplalbaran", cur->valor ( "pvparticulo" ) );
-		linea->setDbValue ( "pvpivainclalbaran", cur->valor ( "pvpivaincarticulo" ) );		
-		linea->setDbValue ( "codigocompletoarticulo", cur->valor ( "codigocompletoarticulo" ) );
-		linea->setDbValue ( "nomarticulo", cur->valor ( "nomarticulo" ) );
-		linea->setDbValue ( "desclalbaran", cur->valor ( "nomarticulo" ) );
-		linea->setDbValue ( "ivalalbaran", cur->valor ( "porcentasa_iva") );
+		linea->setDbValue ( "pvplalbaran", cur->value( "pvparticulo" ) );
+		linea->setDbValue ( "pvpivainclalbaran", cur->value( "pvpivaincarticulo" ) );		
+		linea->setDbValue ( "codigocompletoarticulo", cur->value( "codigocompletoarticulo" ) );
+		linea->setDbValue ( "nomarticulo", cur->value( "nomarticulo" ) );
+		linea->setDbValue ( "desclalbaran", cur->value( "nomarticulo" ) );
+		linea->setDbValue ( "ivalalbaran", cur->value( "porcentasa_iva") );
 
 	    } // end if
 	    delete cur;
@@ -281,14 +281,14 @@ QString ServerLight::categoryArticleXML()
 	textoXML += "<CATEGORIA>\\\n";
 
 	  textoXML += "<CODCATEGORIA>";
-	  textoXML += familias->valor("codigocompletofamilia");
+	  textoXML += familias->value("codigocompletofamilia");
 	  textoXML += "</CODCATEGORIA>\\\n";
 
 	  textoXML += "<NOMCATEGORIA>";
-	  textoXML += familias->valor("nombrefamilia");
+	  textoXML += familias->value("nombrefamilia");
 	  textoXML += "</NOMCATEGORIA>\\\n";
 
-	      query = "SELECT idarticulo, nomarticulo, pvpivaincarticulo FROM articulo WHERE idfamilia = " + familias->valor("idfamilia") + "ORDER BY nomarticulo";
+	      query = "SELECT idarticulo, nomarticulo, pvpivaincarticulo FROM articulo WHERE idfamilia = " + familias->value("idfamilia") + "ORDER BY nomarticulo";
 	      articulos = mainCompany()->loadQuery(query);
 	      
 	      if (articulos->numregistros() > 0) {
@@ -298,15 +298,15 @@ QString ServerLight::categoryArticleXML()
 		      textoXML += "<ARTICULO>\\\n";
 
 			  textoXML += "<IDARTICULO>";
-			  textoXML += articulos->valor("idarticulo");
+			  textoXML += articulos->value("idarticulo");
 			  textoXML += "</IDARTICULO>\\\n";
 
 			  textoXML += "<NOMARTICULO>";
-			  textoXML += articulos->valor("nomarticulo");
+			  textoXML += articulos->value("nomarticulo");
 			  textoXML += "</NOMARTICULO>\\\n";
 
 			  textoXML += "<PVPARTICULO>";
-			  textoXML += articulos->valor("pvpivaincarticulo");
+			  textoXML += articulos->value("pvpivaincarticulo");
 			  textoXML += "</PVPARTICULO>\\\n";
 		      
 		      textoXML += "</ARTICULO>\\\n";

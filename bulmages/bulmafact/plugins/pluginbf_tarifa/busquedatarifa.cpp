@@ -67,9 +67,9 @@ void BusquedaTarifa::setIdTarifa ( QString idtarifa )
     addItem ( "--" );
     while ( !m_cursorcombo->eof() ) {
         i++;
-        if ( m_cursorcombo->valor ( "idtarifa" ) == idtarifa )
+        if ( m_cursorcombo->value( "idtarifa" ) == idtarifa )
             i1 = i;
-        addItem ( m_cursorcombo->valor ( "nomtarifa" ) );
+        addItem ( m_cursorcombo->value( "nomtarifa" ) );
         m_cursorcombo->nextRecord();
     }
     setCurrentIndex ( i1 );
@@ -81,7 +81,7 @@ void BusquedaTarifa::m_activated ( int index )
 {
     blDebug ( "BusquedaTarifa::m_activated", 0 );
     if ( index > 0 ) {
-        emit ( valueChanged ( m_cursorcombo->valor ( "idtarifa", index - 1 ) ) );
+        emit ( valueChanged ( m_cursorcombo->value( "idtarifa", index - 1 ) ) );
     } else {
         emit ( valueChanged ( "" ) );
     } // end if
@@ -97,8 +97,8 @@ QString BusquedaTarifa::idtarifa()
 
     int index = currentIndex();
     if ( index > 0 ) {
-        blDebug ( "END BusquedaTarifa::idtarifa", 0, m_cursorcombo->valor ( "idtarifa", index - 1 ) );
-        return ( m_cursorcombo->valor ( "idtarifa", index - 1 ) );
+        blDebug ( "END BusquedaTarifa::idtarifa", 0, m_cursorcombo->value( "idtarifa", index - 1 ) );
+        return ( m_cursorcombo->value( "idtarifa", index - 1 ) );
     } else {
         blDebug ( "END BusquedaTarifa::idtarifa", 0 );
         return "";

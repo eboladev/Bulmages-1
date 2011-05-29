@@ -59,8 +59,8 @@ public:
     virtual void imprimir();
     virtual void presentar();
     virtual ~BlFormList();
-    virtual int sacaWindow();
-    virtual int meteWindow ( QString title );
+    virtual int removeWindow();
+    virtual int insertWindow ( QString title );
     virtual void submenu ( const QPoint & );
     virtual void crear();
     virtual void borrar();

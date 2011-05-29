@@ -31,7 +31,7 @@ Devolucion::Devolucion ( BtCompany *emp, QWidget *parent ) : BlWidget ( emp, par
         BlDbRecordSet *cur = emp->loadQuery ( "SELECT * FROM configuracion WHERE nombre = 'IRPF'" );
         if ( cur ) {
             if ( !cur->eof() ) {
-                irpf = BlFixed ( cur->valor ( "valor" ) );
+                irpf = BlFixed ( cur->value( "valor" ) );
             } // end if
             delete cur;
         } // end if
@@ -125,7 +125,7 @@ void Devolucion::on_mui_refLineEdit_returnPressed()
     BlDbRecordSet *curs = mainCompany()->loadQuery ( query1 );
     if ( !curs->eof() ) {
         m_ticket = new BtTicket ( mainCompany(), NULL );
-        m_ticket->cargar ( curs->valor ( "idalbaran" ) );
+        m_ticket->cargar ( curs->value( "idalbaran" ) );
         this->mui_tablesFrame->setEnabled ( TRUE );
         pintar();
 
@@ -205,7 +205,7 @@ void Devolucion::pintar()
 
     BlDbRecordSet *cur = mainCompany() ->loadQuery ( "SELECT * FROM cliente WHERE idcliente=" + m_ticket->dbValue ( "idcliente" ) );
     if ( !cur->eof() ) {
-        mui_clienteLabel->setText ( cur->valor ( "cifcliente" ).toAscii() + " " + cur->valor ( "nomcliente" ).toAscii() );
+        mui_clienteLabel->setText ( cur->value( "cifcliente" ).toAscii() + " " + cur->value( "nomcliente" ).toAscii() );
     }
     delete cur;
     mui_fechaLabel->setText ( m_ticket->dbValue ( "fechalbaran" ) + " " + m_ticket->dbValue ( "horaalbaran" ) );

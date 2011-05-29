@@ -397,23 +397,23 @@ void EFQToolButtonImportar::importa_factura_ubl()
             query = "SELECT valor FROM configuracion WHERE nombre = 'CodArticuloGenerico'";
             articulo = mainCompany() ->loadQuery ( query );
 
-            mapa_lfactura["idarticulo"] = articulo->valor ( "valor" );
+            mapa_lfactura["idarticulo"] = articulo->value( "valor" );
 
             /// Datos necesarios para guardar correctamente la linea de factura
-            query = "SELECT idarticulo, nomarticulo FROM articulo WHERE codigocompletoarticulo = '" + articulo->valor ( "valor" ) + "'";
+            query = "SELECT idarticulo, nomarticulo FROM articulo WHERE codigocompletoarticulo = '" + articulo->value( "valor" ) + "'";
             articulo = mainCompany() ->loadQuery ( query );
         } // end if
 
-        idarticulo  = articulo->valor ( "idarticulo" );
-        nomarticulo = articulo->valor ( "nomarticulo" );
+        idarticulo  = articulo->value( "idarticulo" );
+        nomarticulo = articulo->value( "nomarticulo" );
 
         rec->setDbValue ( "codigocompletoarticulo", mapa_lfactura["idarticulo"] );
 
 //   rec->refresh();
 
-        rec->setDbValue ( "idarticulo", articulo->valor ( "idarticulo" ) );
+        rec->setDbValue ( "idarticulo", articulo->value( "idarticulo" ) );
 
-        rec->setDbValue ( "nomarticulo", articulo->valor ( "nomarticulo" ) );
+        rec->setDbValue ( "nomarticulo", articulo->value( "nomarticulo" ) );
         rec->setDbValue ( "desclfacturap", mapa_lfactura["desclfactura"] );
         rec->setDbValue ( "cantlfacturap", mapa_lfactura["cantlfactura"] );
         rec->setDbValue ( "pvplfacturap", mapa_lfactura["pvplfactura"] );
@@ -435,7 +435,7 @@ void EFQToolButtonImportar::importa_factura_ubl()
      fp->pintanumfacturap(numeroFactura);
      fp->pintafechafacturap(fechaFactura);
      fp->pintadescfacturap(descFactura);
-     fp->pintaidproveedor(proveedor->valor("idproveedor"));
+     fp->pintaidproveedor(proveedor->value("idproveedor"));
     */
     fp->pintar();
 

@@ -77,7 +77,7 @@ CarteraCobrosList::CarteraCobrosList ( BfCompany *comp, QWidget *parent, Qt::WFl
     hideBusqueda();
     /// Si estamos en el modo edici&oacute;n metemos la ventana en el workSpace.
     if ( m_modo == EditMode ) {
-        mainCompany() ->meteWindow ( windowTitle(), this );
+        mainCompany() ->insertWindow ( windowTitle(), this );
     } else {
         setWindowTitle ( tr ( "Selector de vencimientocs" ) );
         mui_editar->setHidden ( TRUE );
@@ -103,7 +103,7 @@ CarteraCobrosList::CarteraCobrosList ( BfCompany *comp, QWidget *parent, Qt::WFl
 CarteraCobrosList::~CarteraCobrosList()
 {
     blDebug ( "CarteraCobrosList::~CarteraCobrosList", 0 );
-    mainCompany() ->sacaWindow ( this );
+    mainCompany() ->removeWindow ( this );
     blDebug ( "END CarteraCobrosList::~CarteraCobrosList", 0 );
 }
 

@@ -44,7 +44,7 @@ int entryPoint ( BfBulmaFact *bges )
 
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale ( LC_ALL, "" );
-    blBindTextDomain ( "pluginbf_inventariosimple", g_confpr->valor ( CONF_DIR_TRADUCCION ).toAscii().constData() );
+    blBindTextDomain ( "pluginbf_inventariosimple", g_confpr->value( CONF_DIR_TRADUCCION ).toAscii().constData() );
     g_bges = bges;
 
 
@@ -90,7 +90,7 @@ int ActividadView_ActividadView(ActividadView *act) {
     l->setInsert ( TRUE );
     l->setDelete ( TRUE );
     l->setSortingEnabled ( FALSE );
-    act->dialogChanges_setQObjectExcluido ( l->mui_list );
+    act->dialogChanges_setExcludedObject ( l->mui_list );
 
     act->mui_tab->addTab ( l, "Material" );
     l->cargar("SELECT * FROM prestamo NATURAL LEFT JOIN inventariosimple WHERE idprestamo IS NULL");
@@ -199,7 +199,7 @@ int BfSubForm_pressedAsterisk ( BfSubForm *sub )
     BlDbRecordSet *cur = sub->mainCompany() ->loadQuery ( "SELECT * FROM inventariosimple WHERE idinventariosimple = " + idinv );
     if ( !cur->eof() ) {
         sub->m_registrolinea->setDbValue ( "idinventariosimple", idinv );
-        sub->m_registrolinea->setDbValue ( "nominventariosimple", cur->valor( "nominventariosimple") );
+        sub->m_registrolinea->setDbValue ( "nominventariosimple", cur->value( "nominventariosimple") );
     } // end if
     
     delete cur;
@@ -328,7 +328,7 @@ void SubForm_InventarioSimple::seleccionarMaterial ( BfSubForm *sub )
     BlDbRecordSet *cur = sub->mainCompany() ->loadQuery ( query );
     if ( !cur->eof() ) {
         sub->lineaact()->setDbValue ( "idinventariosimple", idinv );
-        sub->lineaact()->setDbValue ( "nominventariosimple", cur->valor( "nominventariosimple") );
+        sub->lineaact()->setDbValue ( "nominventariosimple", cur->value( "nominventariosimple") );
     } // end if
     
     delete cur;

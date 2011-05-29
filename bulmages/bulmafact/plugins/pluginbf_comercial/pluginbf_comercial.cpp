@@ -125,7 +125,7 @@ int entryPoint ( BfBulmaFact *bges )
 
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale ( LC_ALL, "" );
-    blBindTextDomain ( "pluginbf_comercial", g_confpr->valor ( CONF_DIR_TRADUCCION ).toAscii().constData() );
+    blBindTextDomain ( "pluginbf_comercial", g_confpr->value( CONF_DIR_TRADUCCION ).toAscii().constData() );
 
     PluginBf_Comercial *plug = new PluginBf_Comercial();
     plug->inicializa ( bges );
@@ -191,7 +191,7 @@ int Cliente_pintaCliente(Cliente *cli) {
     ClienteView *clo = (ClienteView *) cli;
     ComercialClienteView *bus = clo->findChild<ComercialClienteView *>("lcomercial");
     bus->mui_zonacomercial->setidzonacomercial(clo->dbValue("idzonacomercial"));
-    bus->mui_fechabasecomercialcliente->setfecha(clo->dbValue("fechabasecomercialcliente"));
+    bus->mui_fechabasecomercialcliente->setDate(clo->dbValue("fechabasecomercialcliente"));
     bus->mui_periodocomercialcliente->setperiodo(clo->dbValue("periodocomercialcliente"));
     bus->mui_comentcomercialcliente->setPlainText(clo->dbValue("comentcomercialcliente"));
     blDebug("END Cliente_pintaCliente", 0);

@@ -76,9 +76,9 @@ void BfBuscarBanco::setidbanco ( QString idbanco )
     addItem ( "--" );
     while ( !m_cursorcombo->eof() ) {
         i ++;
-        if ( m_cursorcombo->valor ( "idbanco" ) == idbanco )
+        if ( m_cursorcombo->value( "idbanco" ) == idbanco )
             i1 = i;
-        addItem ( m_cursorcombo->valor ( "nombanco" ) );
+        addItem ( m_cursorcombo->value( "nombanco" ) );
         m_cursorcombo->nextRecord();
     } // end while
     setCurrentIndex ( i1 );
@@ -109,7 +109,7 @@ QString BfBuscarBanco::idbanco()
     /// Como puede haber habido un error con la base de datos debemos tratar dicho caso.
     if ( !m_cursorcombo ) return "0";
     if ( currentIndex() > 0 ) {
-        return m_cursorcombo->valor ( "idbanco", currentIndex() - 1 );
+        return m_cursorcombo->value( "idbanco", currentIndex() - 1 );
     } // end if
     return "";
 }
@@ -134,7 +134,7 @@ void BfBuscarBanco::m_activated ( int index )
 {
     blDebug ( "BfBuscarBanco::m_activated", 0 );
     if ( index > 0 ) {
-        emit ( valueChanged ( m_cursorcombo->valor ( "idbanco", index - 1 ) ) );
+        emit ( valueChanged ( m_cursorcombo->value( "idbanco", index - 1 ) ) );
     } else {
         emit ( valueChanged ( "" ) );
     }

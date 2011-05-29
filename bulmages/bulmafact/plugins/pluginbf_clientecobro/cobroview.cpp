@@ -71,9 +71,9 @@ CobroView::CobroView ( BfCompany *comp, QWidget *parent )
         addDbField ( "idforma_pago", BlDbField::DbInt, BlDbField::DbNothing, _ ( "Forma de Pago" ) );
         addDbField ( "idtrabajador", BlDbField::DbInt, BlDbField::DbNothing, _ ( "Trabajador" ) );
 
-        meteWindow ( windowTitle(), this, FALSE );
+        insertWindow ( windowTitle(), this, FALSE );
         pintar();
-        dialogChanges_cargaInicial();
+        dialogChanges_readValues();
 	blScript(this);
     } catch ( ... ) {
         blMsgInfo ( _ ( "Error al crear el cobro" ), this );
@@ -150,7 +150,7 @@ int CobroView::guardarPost()
     QString query = "SELECT COALESCE(sum(totalfactura), 0) AS total FROM factura WHERE reffactura='" + dbValue ( "refcobro" ) + "'";
     BlDbRecordSet *cur = mainCompany()->loadQuery ( query );
 
-    if ( cur->valor ( "total" ) == cur1->valor ( "totalc" ) ) {
+    if ( cur->value( "total" ) == cur1->value( "totalc" ) ) {
         blMsgInfo ( _("Toda la referencia esta cobrada. Se procesaran todos los documentos con esta referencia") );
         QString query2 = "UPDATE factura set procesadafactura = TRUE WHERE reffactura='" + dbValue ( "refcobro" ) + "'";
         mainCompany()->runQuery ( query2 );

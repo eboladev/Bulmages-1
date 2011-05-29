@@ -54,9 +54,9 @@ public:
     BcMasaPatrimonialListView ( BcCompany *emp, QWidget *parent = 0 );
     ~BcMasaPatrimonialListView();
     int inicializa();
-    void inicializatabla();
-    void setmodoselector();
-    void setmodoeditor();
+    void inicializaTabla();
+    void setModoSelector();
+    void setModoEditor();
     QString getnommasa();
     QString getidmasa();
 

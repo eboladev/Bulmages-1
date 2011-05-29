@@ -96,7 +96,7 @@ FacturaProveedorView::FacturaProveedorView ( BfCompany *comp, QWidget *parent )
         m_totalDiscounts->setAlignment ( Qt::AlignRight );
         m_totalfacturap->setReadOnly ( TRUE );
         m_totalfacturap->setAlignment ( Qt::AlignRight );
-        meteWindow ( windowTitle(), this, FALSE );
+        insertWindow ( windowTitle(), this, FALSE );
 	blScript(this);
     } catch ( ... ) {
         blMsgInfo ( _ ( "Error al crear la factura proveedor" ), this );
@@ -149,7 +149,7 @@ void FacturaProveedorView::inicializar()
     subform2->inicializar();
     m_descuentos->inicializar();
     pintar();
-    dialogChanges_cargaInicial();
+    dialogChanges_readValues();
     blDebug ( "END FacturaProveedorView::inicializar", 0 );
 }
 
@@ -190,7 +190,7 @@ void FacturaProveedorView::on_mui_veralbaranes_clicked()
     BlDbRecordSet *cur = mainCompany() ->loadQuery ( query );
     while ( !cur->eof() ) {
         AlbaranProveedorView * albpro = new AlbaranProveedorView ( ( BfCompany * ) mainCompany(), 0 );
-        albpro->cargar ( cur->valor ( "idalbaranp" ) );
+        albpro->cargar ( cur->value( "idalbaranp" ) );
         mainCompany() ->m_pWorkspace->addSubWindow ( albpro );
         albpro->show();
         cur->nextRecord();
@@ -294,9 +294,9 @@ void FacturaProveedorView::imprimirFacturaProveedor()
 
     base basesimp;
 
-    QString archivo = g_confpr->valor ( CONF_DIR_OPENREPORTS ) + "facturap.rml";
-    QString archivod = g_confpr->valor ( CONF_DIR_USER ) + "facturap.rml";
-    QString archivologo = g_confpr->valor ( CONF_DIR_OPENREPORTS ) + "logo.jpg";
+    QString archivo = g_confpr->value( CONF_DIR_OPENREPORTS ) + "facturap.rml";
+    QString archivod = g_confpr->value( CONF_DIR_USER ) + "facturap.rml";
+    QString archivologo = g_confpr->value( CONF_DIR_OPENREPORTS ) + "logo.jpg";
 
     /// Copiamos el archivo.
 #ifdef Q_OS_WIN32
@@ -312,10 +312,10 @@ void FacturaProveedorView::imprimirFacturaProveedor()
     /// Copiamos el logo.
 #ifdef Q_OS_WIN32
 
-    archivologo = "copy " + archivologo + " " + g_confpr->valor ( CONF_DIR_USER ) + "logo.jpg";
+    archivologo = "copy " + archivologo + " " + g_confpr->value( CONF_DIR_USER ) + "logo.jpg";
 #else
 
-    archivologo = "cp " + archivologo + " " + g_confpr->valor ( CONF_DIR_USER ) + "logo.jpg";
+    archivologo = "cp " + archivologo + " " + g_confpr->value( CONF_DIR_USER ) + "logo.jpg";
 #endif
 
     system ( archivologo.toAscii().constData() );
@@ -332,11 +332,11 @@ void FacturaProveedorView::imprimirFacturaProveedor()
     QString SQLQuery = "SELECT * FROM proveedor WHERE idproveedor = " + dbValue ( "idproveedor" );
     BlDbRecordSet *cur = mainCompany() ->loadQuery ( SQLQuery );
     if ( !cur->eof() ) {
-        buff.replace ( "[dirproveedor]", cur->valor ( "dirproveedor" ) );
-        buff.replace ( "[poblproveedor]", cur->valor ( "poblproveedor" ) );
-        buff.replace ( "[telproveedor]", cur->valor ( "telproveedor" ) );
-        buff.replace ( "[nomproveedor]", cur->valor ( "nomproveedor" ) );
-        buff.replace ( "[cifproveedor]", cur->valor ( "cifproveedor" ) );
+        buff.replace ( "[dirproveedor]", cur->value( "dirproveedor" ) );
+        buff.replace ( "[poblproveedor]", cur->value( "poblproveedor" ) );
+        buff.replace ( "[telproveedor]", cur->value( "telproveedor" ) );
+        buff.replace ( "[nomproveedor]", cur->value( "nomproveedor" ) );
+        buff.replace ( "[cifproveedor]", cur->value( "cifproveedor" ) );
     } // end if
     delete cur;
 

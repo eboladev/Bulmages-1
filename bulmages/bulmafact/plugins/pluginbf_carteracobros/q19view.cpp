@@ -77,8 +77,8 @@ Q19View::Q19View ( CarteraCobrosList *fac, BfCompany *comp, QWidget *parent )
 	mui_total->setText(a.toQString());
 	mui_numop->setText(QString::number(numop));
 
-        meteWindow ( windowTitle(), this, FALSE );
-        dialogChanges_cargaInicial();
+        insertWindow ( windowTitle(), this, FALSE );
+        dialogChanges_readValues();
 	blScript(this);
     } catch ( ... ) {
         blMsgInfo ( tr ( "Error al crear el archivo" ) );
@@ -122,7 +122,7 @@ QByteArray Q19View::cabeceraPresentador ( QTextStream &out, QString idvencimient
 
     /// Codigo de presentador (NIF + Sufijo alineado a la derecha y rellenado con ceros) Longitud: 12
     BlDbRecordSet *cur = mainCompany() ->loadQuery ( "SELECT * FROM configuracion WHERE nombre='CIF'" );
-    QString nif = cur->valor ( "valor" );
+    QString nif = cur->value( "valor" );
     delete cur;
     QString sufijo = "000";
     QString codpresent = nif + sufijo;
@@ -139,7 +139,7 @@ QByteArray Q19View::cabeceraPresentador ( QTextStream &out, QString idvencimient
 
     /// Nombre del cliente Presentador Longitud: 40
     cur = mainCompany() ->loadQuery ( "SELECT * FROM configuracion WHERE nombre='NombreEmpresa'" );
-    QString clientepresentador = cur->valor ( "valor" );
+    QString clientepresentador = cur->value( "valor" );
     delete cur;
     clientepresentador = clientepresentador.leftJustified ( 40, ' ' );
     clientepresentador = clientepresentador.left ( 40 );
@@ -149,12 +149,12 @@ QByteArray Q19View::cabeceraPresentador ( QTextStream &out, QString idvencimient
     cab_present.append ( QString ( 20, ' ' ).toAscii() );
 
     /// Entidad Receptora del fichero Longitud: 4
-    QString ent_recept = curbanco->valor ( "codentidadbanco" ).leftJustified ( 4, '0' );
+    QString ent_recept = curbanco->value( "codentidadbanco" ).leftJustified ( 4, '0' );
     if ( ent_recept.size() > 4 ) blDebug ( "Entidad bancaria supera longitud maxima", 2 );
     cab_present.append ( ent_recept.toAscii() );
 
     /// Oficina Receptora del fichero Longitud: 4
-    QString ofi_recept = curbanco->valor ( "codagenciabanco" ).leftJustified ( 4, '0' );
+    QString ofi_recept = curbanco->value( "codagenciabanco" ).leftJustified ( 4, '0' );
     if ( ofi_recept.size() > 4 ) blDebug ( "Oficina bancaria supera longitud maxima", 2 );
     cab_present.append ( ofi_recept.toAscii() );
 
@@ -198,7 +198,7 @@ QByteArray Q19View::cabeceraOrdenante ( QTextStream &out, QString idvencimientoc
 
     /// Codigo de presentador (NIF + Sufijo alineado a la derecha y rellenado con ceros) Longitud: 12
     BlDbRecordSet *cur = mainCompany() ->loadQuery ( "SELECT * FROM configuracion WHERE nombre='CIF'" );
-    QString nif = cur->valor ( "valor" );
+    QString nif = cur->value( "valor" );
     delete cur;
     QString sufijo = "000";
     QString codpresent = nif + sufijo;
@@ -211,34 +211,34 @@ QByteArray Q19View::cabeceraOrdenante ( QTextStream &out, QString idvencimientoc
     cab_orden.append ( fechaemfich.toAscii() );
 
     /// Fecha de cargo
-    QString fechacargo = blNormalizeDate ( curcobro->valor ( "fechacobro" ) ).toString ( "ddMMyy" );
+    QString fechacargo = blNormalizeDate ( curcobro->value( "fechacobro" ) ).toString ( "ddMMyy" );
     cab_orden.append ( fechacargo.toAscii() );
 
     /// Nombre del cliente Ordenante Longitud: 40
     cur = mainCompany() ->loadQuery ( "SELECT * FROM configuracion WHERE nombre='NombreEmpresa'" );
-    QString clientepresentador = cur->valor ( "valor" );
+    QString clientepresentador = cur->value( "valor" );
     delete cur;
     clientepresentador = clientepresentador.leftJustified ( 40, ' ' );
     if ( clientepresentador.size() > 40 ) blDebug ( "Nombre de empresa demasiado largo", 2 );
     cab_orden.append ( clientepresentador.toAscii() );
 
     /// Entidad Receptora del fichero Longitud: 4
-    QString ent_recept = curbanco->valor ( "codentidadbanco" ).leftJustified ( 4, '0' );
+    QString ent_recept = curbanco->value( "codentidadbanco" ).leftJustified ( 4, '0' );
     if ( ent_recept.size() > 4 ) blDebug ( "Entidad bancaria demasiado larga", 2 );
     cab_orden.append ( ent_recept.toAscii() );
 
     /// Oficina Receptora del fichero Longitud: 4
-    QString ofi_recept = curbanco->valor ( "codagenciabanco" ).leftJustified ( 4, '0' );
+    QString ofi_recept = curbanco->value( "codagenciabanco" ).leftJustified ( 4, '0' );
     if ( ofi_recept.size() > 4 ) blDebug ( "Oficina bancaria demasiado larga", 2 );
     cab_orden.append ( ofi_recept.toAscii() );
 
     /// DC Receptora del fichero Longitud: 2
-    QString dc_recept = curbanco->valor ( "dcbanco" ).leftJustified ( 2, '0' );
+    QString dc_recept = curbanco->value( "dcbanco" ).leftJustified ( 2, '0' );
     if ( dc_recept.size() > 4 ) blDebug ( "Control bancario demasiado larga", 2 );
     cab_orden.append ( dc_recept.toAscii() );
 
     /// Oficina Receptora del fichero Longitud: 10
-    QString cta_recept = curbanco->valor ( "numcuentabanco" ).leftJustified ( 10, '0' );
+    QString cta_recept = curbanco->value( "numcuentabanco" ).leftJustified ( 10, '0' );
     if ( cta_recept.size() > 10 ) blDebug ( "Cuenta bancaria demasiado larga", 2 );
     cab_orden.append ( cta_recept.toAscii() );
 
@@ -287,7 +287,7 @@ QByteArray Q19View::cobroQ19 ( QTextStream &out, QString idvencimientoc )
     /// Codigo de presentador (NIF + Sufijo alineado a la derecha y rellenado con ceros) Longitud: 12
     /// Codigo de presentador (NIF + Sufijo alineado a la derecha y rellenado con ceros) Longitud: 12
     BlDbRecordSet *cur = mainCompany() ->loadQuery ( "SELECT * FROM configuracion WHERE nombre='CIF'" );
-    QString nif = cur->valor ( "valor" );
+    QString nif = cur->value( "valor" );
     delete cur;
     QString sufijo = "000";
     QString codpresent = nif + sufijo;
@@ -296,14 +296,14 @@ QByteArray Q19View::cobroQ19 ( QTextStream &out, QString idvencimientoc )
     cab_indob.append ( codpresent.toAscii() );
 
     /// Codigo de referencia Longitud: 12
-    QString cod_ref = curcobro->valor ( "idcliente" );
+    QString cod_ref = curcobro->value( "idcliente" );
     cod_ref = cod_ref.rightJustified ( 12, '0' );
     cab_indob.append ( cod_ref.toAscii() );
 
 
     /// Nombre del titular de la domiciliacion: 40
-    cur = mainCompany() ->loadQuery ( "SELECT * FROM cliente WHERE idcliente= " + curcobro->valor ( "idcliente" ) );
-    QString clientedomiciliacion = cur->valor ( "nomcliente" );
+    cur = mainCompany() ->loadQuery ( "SELECT * FROM cliente WHERE idcliente= " + curcobro->value( "idcliente" ) );
+    QString clientedomiciliacion = cur->value( "nomcliente" );
 
     clientedomiciliacion = clientedomiciliacion.leftJustified ( 40, ' ' );
     if ( clientedomiciliacion.size() > 40 ) blDebug ( "Nombre cliente demasiado largo", 2 );
@@ -311,7 +311,7 @@ QByteArray Q19View::cobroQ19 ( QTextStream &out, QString idvencimientoc )
 
 
     /// Entidad domiciliacion del fichero Longitud: 4
-    QString bancocliente = cur->valor ( "bancocliente" ).remove ( QChar ( ' ' ) );
+    QString bancocliente = cur->value( "bancocliente" ).remove ( QChar ( ' ' ) );
     if ( bancocliente.size() != 20 )
         blDebug ( "Banco de Cliente invalido en el cobro", 2 );
     bancocliente = bancocliente.leftJustified ( 20, ' ' );
@@ -336,22 +336,22 @@ QByteArray Q19View::cobroQ19 ( QTextStream &out, QString idvencimientoc )
     delete cur;
 
     /// Total Importe domiciliacion Longitud: 10
-    QString importe = curcobro->valor ( "cantvencimientoc" ).remove ( '.' ).remove ( ',' );
+    QString importe = curcobro->value( "cantvencimientoc" ).remove ( '.' ).remove ( ',' );
     importe = importe.rightJustified ( 10, '0' );
     cab_indob.append ( importe.toAscii() );
 
     /// Codigo para devoluciones Longitud : 6
-    QString coddev = curcobro->valor ( "idvencimientoc" );
+    QString coddev = curcobro->value( "idvencimientoc" );
     coddev = coddev.rightJustified ( 6, '0' );
     cab_indob.append ( coddev.toAscii() );
 
     /// Codigo de referencia interna Longitud 10
-    QString codrefint = curcobro->valor ( "numfactura" );
+    QString codrefint = curcobro->value( "numfactura" );
     codrefint = codrefint.rightJustified ( 10, ' ' );
     cab_indob.append ( codrefint.toAscii() );
 
     /// Primer campo de concepto Longitud: 40
-    QString concepto = "FRA " + curcobro->valor ( "codigoserie_factura" ) +  curcobro->valor ( "numfactura" ) + " " + curcobro->valor ( "descfactura" );
+    QString concepto = "FRA " + curcobro->value( "codigoserie_factura" ) +  curcobro->value( "numfactura" ) + " " + curcobro->value( "descfactura" );
     concepto = concepto.leftJustified ( 40, ' ' );
     concepto = concepto.left ( 40 );
     cab_indob.append ( concepto.toAscii() );
@@ -387,7 +387,7 @@ QByteArray Q19View::totalOrdenante ( QTextStream &out, QString importes, QString
     /// Codigo de presentador (NIF + Sufijo alineado a la derecha y rellenado con ceros) Longitud: 12
     /// Codigo de presentador (NIF + Sufijo alineado a la derecha y rellenado con ceros) Longitud: 12
     BlDbRecordSet *cur = mainCompany() ->loadQuery ( "SELECT * FROM configuracion WHERE nombre='CIF'" );
-    QString nif = cur->valor ( "valor" );
+    QString nif = cur->value( "valor" );
     delete cur;
     QString sufijo = "000";
     QString codpresent = nif + sufijo;
@@ -461,7 +461,7 @@ QByteArray Q19View::totalGeneral ( QTextStream &out, QString importes, QString d
     /// Codigo de presentador (NIF + Sufijo alineado a la derecha y rellenado con ceros) Longitud: 12
     /// Codigo de presentador (NIF + Sufijo alineado a la derecha y rellenado con ceros) Longitud: 12
     BlDbRecordSet *cur = mainCompany() ->loadQuery ( "SELECT * FROM configuracion WHERE nombre='CIF'" );
-    QString nif = cur->valor ( "valor" );
+    QString nif = cur->value( "valor" );
     delete cur;
     QString sufijo = "000";
     QString codpresent = nif + sufijo;
@@ -562,7 +562,7 @@ void Q19View::on_mui_aceptar_clicked()
         totalGeneral ( out, total.toQString().remove ( ',' ).remove ( '.' ), QString::number ( j ), QString::number ( j + 4 ) );
         file.close();
 
-        dialogChanges_cargaInicial();
+        dialogChanges_readValues();
         close();
     } catch ( ... ) {
         blDebug ( "Error al guardar la ficha", 2 );

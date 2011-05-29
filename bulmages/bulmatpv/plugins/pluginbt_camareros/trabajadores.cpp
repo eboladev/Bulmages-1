@@ -22,7 +22,7 @@ Trabajadores::Trabajadores ( BlMainCompany *emp, QWidget *parent, bool deleteOnC
     BlDbRecordSet *cur = mainCompany() ->loadQuery ( "SELECT * FROM trabajador" );
     while ( !cur->eof() ) {
         QPushButton * toolbutton = new QPushButton ( mui_frame );
-        toolbutton->setText ( cur->valor ( "nomtrabajador" ) + " " + cur->valor ( "apellidostrabajador" ) );
+        toolbutton->setText ( cur->value( "nomtrabajador" ) + " " + cur->value( "apellidostrabajador" ) );
         toolbutton->setMaximumHeight(200);
 
         QVBoxLayout *m_hboxLayout1 = mui_frame->findChild<QVBoxLayout *> ( "hboxLayout1" );
@@ -77,8 +77,8 @@ void Trabajadores::trabajadorClicked()
     /// Buscamos cual ha sido el trabajador pulsado.
     BlDbRecordSet *cur = mainCompany() ->loadQuery ( "SELECT * FROM trabajador" );
     while ( !encontrado && !cur->eof() ) {
-        if ( ( ( QPushButton * ) sender() ) ->text() == cur->valor ( "nomtrabajador" ) + " " + cur->valor ( "apellidostrabajador" )  
-	&& ((cur->valor("passwordtrabajador") == mui_password->text() || cur->valor("passwordtrabajador") == "")) ) {
+        if ( ( ( QPushButton * ) sender() ) ->text() == cur->value( "nomtrabajador" ) + " " + cur->value( "apellidostrabajador" )  
+	&& ((cur->value("passwordtrabajador") == mui_password->text() || cur->value("passwordtrabajador") == "")) ) {
             encontrado = TRUE;
 
         } else {
@@ -91,7 +91,7 @@ void Trabajadores::trabajadorClicked()
       for ( int i = 0; i < emp1->listaTickets() ->size(); ++i ) {
 	  ticket = emp1->listaTickets() ->at ( i );
 
-	  if ( ticket->nomTicketDefecto() == ticket->dbValue ( "nomticket" ) && cur->valor ( "idtrabajador" ) == ticket->dbValue ( "idtrabajador" ) ) {
+	  if ( ticket->nomTicketDefecto() == ticket->dbValue ( "nomticket" ) && cur->value( "idtrabajador" ) == ticket->dbValue ( "idtrabajador" ) ) {
 	      ( ( BtCompany * ) mainCompany() ) ->setTicketActual ( ticket );
 	      ticket->pintar();
 	      ticketv = ticket;
@@ -102,7 +102,7 @@ void Trabajadores::trabajadorClicked()
       /// Si el trabajador no tiene ticket vacio lo creamos y le ponemos el idtrabajador.
       if ( !ticketv ) {
 	  BtTicket * tick = emp1->newBtTicket();
-	  tick->setDbValue ( "idtrabajador", cur->valor ( "idtrabajador" ) );
+	  tick->setDbValue ( "idtrabajador", cur->value( "idtrabajador" ) );
 	  emp1->setTicketActual ( tick );
 	  emp1->listaTickets() ->append ( tick );
 	  tick->pintar();

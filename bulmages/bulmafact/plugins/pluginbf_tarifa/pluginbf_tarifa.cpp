@@ -46,7 +46,7 @@ int entryPoint ( BfBulmaFact *bges )
 
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale ( LC_ALL, "" );
-    blBindTextDomain ( "pluginbf_tarifa", g_confpr->valor ( CONF_DIR_TRADUCCION ).toAscii().constData() );
+    blBindTextDomain ( "pluginbf_tarifa", g_confpr->value( CONF_DIR_TRADUCCION ).toAscii().constData() );
 
 
 
@@ -163,7 +163,7 @@ int ArticuloView_ArticuloView ( ArticuloView *art )
     l->setInsert ( TRUE );
     l->setDelete ( TRUE );
     l->setSortingEnabled ( FALSE );
-    art->dialogChanges_setQObjectExcluido ( l->mui_list );
+    art->dialogChanges_setExcludedObject ( l->mui_list );
 
     art->mui_tab->addTab ( l, _("Variacion de tarifas") );
 
@@ -290,7 +290,7 @@ int BfSubForm_calculaPVP ( BfSubForm *sub )
 
     /// Si no se devuelve ningun resultado no se aplica variacion a la tarifa.
     if ( cur->numregistros() > 0 ) {
-        variacionpvp = cur->valor ( "porcentajevariacion" );
+        variacionpvp = cur->value( "porcentajevariacion" );
 
         /// Aplica al precio la variacion correspondiente.
         QString res = sub->mainCompany()->PGEval ( pvpactual + " * (1 + " + variacionpvp + " / 100)", 2 );

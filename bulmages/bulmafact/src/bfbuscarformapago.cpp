@@ -70,7 +70,7 @@ void BfBuscarFormaPago::setId ( QString idforma_pago )
 
     /// Si lo que se pasa como forma de pago es un valor malo cogemos la forma de pago por defecto.
     if ( idforma_pago.isEmpty() || idforma_pago == "0" ) {
-        idforma_pago = g_confpr->valor ( CONF_IDFORMA_PAGO_DEFECTO );
+        idforma_pago = g_confpr->value( CONF_IDFORMA_PAGO_DEFECTO );
     } // end if
 
     if ( m_comboRecordSet != NULL ) {
@@ -89,11 +89,11 @@ void BfBuscarFormaPago::setId ( QString idforma_pago )
     while ( !m_comboRecordSet->eof() ) {
         i ++;
 
-        if ( m_comboRecordSet->valor ( "idforma_pago" ) == idforma_pago ) {
+        if ( m_comboRecordSet->value( "idforma_pago" ) == idforma_pago ) {
             i1 = i;
         } // end if
 
-        addItem ( m_comboRecordSet->valor ( "descforma_pago" ) );
+        addItem ( m_comboRecordSet->value( "descforma_pago" ) );
         m_comboRecordSet->nextRecord();
     } // end while
 
@@ -121,7 +121,7 @@ void BfBuscarFormaPago::setIdCliente ( QString idcliente )
     BlDbRecordSet *cur = mainCompany() ->loadQuery ( "SELECT idforma_pago FROM cliente WHERE idcliente = " + idcliente );
 
     if ( !cur->eof() ) {
-        setId ( cur->valor ( "idforma_pago" ) );
+        setId ( cur->value( "idforma_pago" ) );
     } // end if
 
     delete cur;
@@ -146,7 +146,7 @@ void BfBuscarFormaPago::setIdProveedor ( QString idproveedor )
     BlDbRecordSet * cur = mainCompany() ->loadQuery ( "SELECT idforma_pago FROM proveedor WHERE idproveedor=" + idproveedor );
 
     if ( !cur->eof() ) {
-        setId ( cur->valor ( "idforma_pago" ) );
+        setId ( cur->value( "idforma_pago" ) );
     } // end if
     delete cur;
     blDebug ( "END BfBuscarFormaPago::setIdProveedor", 0 );
@@ -162,7 +162,7 @@ void BfBuscarFormaPago::m_activated ( int index )
     blDebug ( "BfBuscarFormaPago::m_activated", 0 );
 
     if ( index > 0 ) {
-        emit ( valueChanged ( m_comboRecordSet->valor ( "idforma_pago", index - 1 ) ) );
+        emit ( valueChanged ( m_comboRecordSet->value( "idforma_pago", index - 1 ) ) );
     } else {
         emit ( valueChanged ( "" ) );
     } // end if
@@ -184,7 +184,7 @@ QString BfBuscarFormaPago::id()
     if ( !m_comboRecordSet ) return "0";
 
     if ( currentIndex() > 0 ) {
-        return ( m_comboRecordSet->valor ( "idforma_pago", currentIndex() - 1 ) );
+        return ( m_comboRecordSet->value( "idforma_pago", currentIndex() - 1 ) );
     } // end if
 
     return "";

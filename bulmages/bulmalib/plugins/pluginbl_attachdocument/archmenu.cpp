@@ -99,15 +99,15 @@ void EQToolButton::hazMenu() {
 	QString query = "SELECT * FROM archivo WHERE fichaarchivo = '" + m_BlForm->fieldId() + "' AND identificadorfichaarchivo= '" + m_BlForm->dbValue ( m_BlForm->fieldId() ) + "'";
 	BlDbRecordSet *cur = m_BlForm->mainCompany()->loadQuery ( query );
 	while ( !cur->eof() ) {
-	    QMenu *n1menu = menu->addMenu ( cur->valor ( "rutaarchivo" ) );
+	    QMenu *n1menu = menu->addMenu ( cur->value( "rutaarchivo" ) );
 	    QAction *addaction1 = new QAction ( _ ( "Abrir"), m_BlForm );
 	    n1menu->addAction (addaction1);
-	    addaction1->setObjectName ( "abrir_archivo_" + cur->valor ( "idarchivo" ) );
+	    addaction1->setObjectName ( "abrir_archivo_" + cur->value( "idarchivo" ) );
 	    connect ( addaction1, SIGNAL ( triggered ( bool ) ), this, SLOT ( trataMenu (  ) ) );
 		    
 	    QAction *delaction = new QAction ( _ ( "Borrar"), m_BlForm );
 	    n1menu->addAction (delaction);
-	    delaction->setObjectName ( "borrar_archivo_" + cur->valor ( "idarchivo" ) );
+	    delaction->setObjectName ( "borrar_archivo_" + cur->value( "idarchivo" ) );
 	    connect ( delaction, SIGNAL ( triggered ( bool ) ), this, SLOT ( trataMenu ( ) ) );
 	    
 	    cur->nextRecord();
@@ -145,14 +145,14 @@ void EQToolButton::pintaMenu ( QMenu *menu )
 	QString query = "SELECT * FROM archivo WHERE fichaarchivo = '" + m_BlForm->fieldId() + "' AND identificadorfichaarchivo= '" + m_BlForm->dbValue ( m_BlForm->fieldId() ) + "'";
 	BlDbRecordSet *cur = m_BlForm->mainCompany()->loadQuery ( query );
 	while ( !cur->eof() ) {
-	    QMenu *n1menu = ajust->addMenu ( cur->valor ( "rutaarchivo" ) );
+	    QMenu *n1menu = ajust->addMenu ( cur->value( "rutaarchivo" ) );
 	    QAction *addaction1 = new QAction ( _ ( "Abrir"), m_BlForm );
 	    n1menu->addAction (addaction1);
-	    addaction->setObjectName ( "abrir_archivo_" + cur->valor ( "idarchivo" ) );
+	    addaction->setObjectName ( "abrir_archivo_" + cur->value( "idarchivo" ) );
 	    
 	    QAction *delaction = new QAction ( _ ( "Borrar"), m_BlForm );
 	    n1menu->addAction (delaction);
-	    delaction->setObjectName ( "borrar_archivo_" + cur->valor ( "idarchivo" ) );
+	    delaction->setObjectName ( "borrar_archivo_" + cur->value( "idarchivo" ) );
 	    
 	    cur->nextRecord();
 	} // end while
@@ -210,8 +210,8 @@ void EQToolButton::trataMenu ( QAction *action )
         QString query = "SELECT * FROM archivo WHERE idarchivo = " + idarchivo;
         BlDbRecordSet *cur = m_BlForm->mainCompany()->loadQuery ( query );
         if ( !cur->eof() ) {
-             QDesktopServices::openUrl(QUrl( cur->valor ( "rutaarchivo" ), QUrl::TolerantMode));
-            //QString comando = "konqueror " + cur->valor ( "rutaarchivo" ) + " &";
+             QDesktopServices::openUrl(QUrl( cur->value( "rutaarchivo" ), QUrl::TolerantMode));
+            //QString comando = "konqueror " + cur->value( "rutaarchivo" ) + " &";
            // system ( comando.toAscii() );
         } // end if
         delete cur;

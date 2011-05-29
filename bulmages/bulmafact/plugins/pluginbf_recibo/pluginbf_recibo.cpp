@@ -46,7 +46,7 @@ int entryPoint ( BfBulmaFact *bges )
 
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale ( LC_ALL, "" );
-    blBindTextDomain ( "pluginbf_recibo", g_confpr->valor ( CONF_DIR_TRADUCCION ).toAscii().constData() );
+    blBindTextDomain ( "pluginbf_recibo", g_confpr->value( CONF_DIR_TRADUCCION ).toAscii().constData() );
     g_bges = bges;
 
     if ( bges->company()->hasTablePrivilege ( "cobro", "SELECT" ) ) {

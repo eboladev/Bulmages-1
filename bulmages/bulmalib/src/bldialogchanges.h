@@ -59,10 +59,10 @@ private:
 public:
     BlDialogChanges ( QObject *ob );
     ~BlDialogChanges();
-    void dialogChanges_cargaInicial();
-    bool dialogChanges_hayCambios();
-    void dialogChanges_setQObjectExcluido ( QObject *objetoexcluido );
-    bool objExcluido ( QObject *item );
+    void dialogChanges_readValues();
+    bool dialogChanges_isChanged();
+    void dialogChanges_setExcludedObject ( QObject *objetoexcluido );
+    bool dialogChanges_isObjectExcluded ( QObject *item );
 
 private:
     QString calculateValues();

@@ -49,7 +49,7 @@ BcForm::BcForm ( BcCompany *comp, QWidget *parent, Qt::WFlags f )
 BcForm::~BcForm()
 {
     blDebug ( "BcForm::~BcForm", 0 );
-    mainCompany() ->sacaWindow ( this );
+    mainCompany() ->removeWindow ( this );
     blDebug ( "END BcForm::~BcForm", 0 );
 }
 

@@ -48,7 +48,7 @@ ListZonaComercialView::ListZonaComercialView ( BfCompany *comp, QWidget *parent 
     setupUi ( this );
     mui_listado->setMainCompany ( comp );
     mui_listado->cargar();
-    meteWindow ( windowTitle(), this );
+    insertWindow ( windowTitle(), this );
     blScript(this);
     blDebug ( "END_ListZonaComercialView::ListZonaComercialView", 0 );
 }
@@ -60,7 +60,7 @@ ListZonaComercialView::ListZonaComercialView ( BfCompany *comp, QWidget *parent 
 ListZonaComercialView::~ListZonaComercialView()
 {
     blDebug ( "ListZonaComercialView::~ListZonaComercialView", 0 );
-    mainCompany() ->sacaWindow ( this );
+    mainCompany() ->removeWindow ( this );
     blDebug ( "ListZonaComercialView::~ListZonaComercialView", 0 );
 }
 

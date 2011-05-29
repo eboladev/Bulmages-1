@@ -93,15 +93,15 @@ void BcModelo347ListView::on_m_boton_recalcular_clicked()
     int i = 0;
     QTableWidgetItem *item;
     while ( !recordSet->eof() ) {
-        item = new QTableWidgetItem ( recordSet->valor ( "codigo" ) );
+        item = new QTableWidgetItem ( recordSet->value( "codigo" ) );
         tablaventas->setItem ( i, 0, item );
-        item = new QTableWidgetItem ( recordSet->valor ( "descripcion" ) );
+        item = new QTableWidgetItem ( recordSet->value( "descripcion" ) );
         tablaventas->setItem ( i, 1, item );
-        item = new QTableWidgetItem ( recordSet->valor ( "cif" ) );
+        item = new QTableWidgetItem ( recordSet->value( "cif" ) );
         tablaventas->setItem ( i, 2, item );
-        item = new QTableWidgetItem ( recordSet->valor ( "cp" ) );
+        item = new QTableWidgetItem ( recordSet->value( "cp" ) );
         tablaventas->setItem ( i, 3, item );
-        query = spanish.toString ( recordSet->valor ( "importe" ).toDouble(), 'f', 2 );
+        query = spanish.toString ( recordSet->value( "importe" ).toDouble(), 'f', 2 );
         item = new QTableWidgetItem ( query );
         item->setTextAlignment ( Qt::AlignRight | Qt::AlignVCenter );
         tablaventas->setItem ( i, 4, item );
@@ -129,15 +129,15 @@ void BcModelo347ListView::on_m_boton_recalcular_clicked()
     tablacompras->setHorizontalHeaderLabels ( cabecera );
     i = 0;
     while ( !recordSet->eof() ) {
-        item = new QTableWidgetItem ( recordSet->valor ( "codigo" ) );
+        item = new QTableWidgetItem ( recordSet->value( "codigo" ) );
         tablacompras->setItem ( i, 0, item );
-        item = new QTableWidgetItem ( recordSet->valor ( "descripcion" ) );
+        item = new QTableWidgetItem ( recordSet->value( "descripcion" ) );
         tablacompras->setItem ( i, 1, item );
-        item = new QTableWidgetItem ( recordSet->valor ( "cif" ) );
+        item = new QTableWidgetItem ( recordSet->value( "cif" ) );
         tablacompras->setItem ( i, 2, item );
-        item = new QTableWidgetItem ( recordSet->valor ( "cp" ) );
+        item = new QTableWidgetItem ( recordSet->value( "cp" ) );
         tablacompras->setItem ( i, 3, item );
-        query = spanish.toString ( recordSet->valor ( "importe" ).toDouble(), 'f', 2 );
+        query = spanish.toString ( recordSet->value( "importe" ).toDouble(), 'f', 2 );
         item = new QTableWidgetItem ( query );
         item->setTextAlignment ( Qt::AlignRight | Qt::AlignVCenter );
         tablacompras->setItem ( i, 4, item );
@@ -161,7 +161,7 @@ void BcModelo347ListView::on_m_boton_imprimir_clicked()
     blDebug ( "BcModelo347ListView::click_imprimir", 0 );
     int i, numventas, numcompras;
     QString codigo, descripcion, cif, importe, cp;
-    QFile fichero ( g_confpr->valor ( CONF_DIR_USER ) + "listado347.txt" );
+    QFile fichero ( g_confpr->value( CONF_DIR_USER ) + "listado347.txt" );
     if ( fichero.open ( QIODevice::WriteOnly | QIODevice::Text ) ) {
         QTextStream listado ( &fichero );
         listado << "LISTADO 347\n";
@@ -190,7 +190,7 @@ void BcModelo347ListView::on_m_boton_imprimir_clicked()
         } // end for
         fichero.close();
     } // end if
-    QString comando = g_confpr->valor ( CONF_EDITOR ).toAscii() + " " + fichero.fileName();
+    QString comando = g_confpr->value( CONF_EDITOR ).toAscii() + " " + fichero.fileName();
     system ( comando.toAscii().constData() );
 
     blDebug ( "END BcModelo347ListView::click_imprimir", 0 );

@@ -50,7 +50,7 @@ int entryPoint ( BfBulmaFact *bges )
 
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale ( LC_ALL, "" );
-    blBindTextDomain ( "pluginbf_cuadrante", g_confpr->valor ( CONF_DIR_TRADUCCION ).toAscii().constData() );
+    blBindTextDomain ( "pluginbf_cuadrante", g_confpr->value( CONF_DIR_TRADUCCION ).toAscii().constData() );
     g_bges = bges;
 
     /// Creamos el men&uacute;.
@@ -221,7 +221,7 @@ int TrabajadorView_TrabajadorView ( TrabajadorView *trab )
     l->setDelete ( TRUE );
     l->setSortingEnabled ( FALSE );
     trab->mui_tab->addTab ( l, "Ausencias" );
-    trab->dialogChanges_setQObjectExcluido ( l->mui_list );
+    trab->dialogChanges_setExcludedObject ( l->mui_list );
 
     blDebug ( "END TrabajadorView_TrabajadorView", 0 );
     return 0;

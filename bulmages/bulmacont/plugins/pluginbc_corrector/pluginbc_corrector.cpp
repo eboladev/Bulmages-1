@@ -48,7 +48,7 @@ int entryPoint ( BcBulmaCont *bcont )
 
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale ( LC_ALL, "" );
-    blBindTextDomain ( "pluginbc_corrector", g_confpr->valor ( CONF_DIR_TRADUCCION ).toAscii().constData() );
+    blBindTextDomain ( "pluginbc_corrector", g_confpr->value( CONF_DIR_TRADUCCION ).toAscii().constData() );
 
     BcCompany *emp = bcont->empresaactual();
     /// Vamos a probar con un docwindow.
@@ -87,7 +87,7 @@ int entryPoint ( BcBulmaCont *bcont )
 
     corr->m_viewCorrector = viewCorrector;
 
-    QFile file ( g_confpr->valor ( CONF_DIR_USER ) + "pluginbc_corrector_" + emp->dbName() + ".cfn" );
+    QFile file ( g_confpr->value( CONF_DIR_USER ) + "pluginbc_corrector_" + emp->dbName() + ".cfn" );
     if ( file.exists () ) {
         doc1->show();
         viewCorrector->setChecked ( TRUE );
@@ -107,7 +107,7 @@ int entryPoint ( BcBulmaCont *bcont )
 int BcBulmaCont_closeEvent ( BcBulmaCont *bcont )
 {
     BcCompany * emp = bcont->empresaactual();
-    QFile file ( g_confpr->valor ( CONF_DIR_USER ) + "pluginbc_corrector_" + emp->dbName() + ".cfn" );
+    QFile file ( g_confpr->value( CONF_DIR_USER ) + "pluginbc_corrector_" + emp->dbName() + ".cfn" );
     if ( !viewCorrector->isChecked() ) {
         file.remove();
     } else {

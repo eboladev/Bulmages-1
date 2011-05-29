@@ -72,7 +72,7 @@ void Q19QToolButton1::setBoton()
     setStatusTip ( _("Generar Q19") );
     setToolTip ( _("Generar archivo Q19 de los elementos seleccionados.") );
     setMinimumSize ( QSize ( 32, 32 ) );
-    setIcon ( QIcon ( g_confpr->valor ( CONF_PROGDATA ) + "icons/q19.png" ) );
+    setIcon ( QIcon ( g_confpr->value( CONF_PROGDATA ) + "icons/q19.png" ) );
     setIconSize ( QSize ( 22, 22 ) );
     blDebug ( "END Q19QToolButton1::setBoton", 0 );
 }
@@ -87,7 +87,7 @@ void Q19QToolButton1::click()
     blDebug ( "Q19QToolButton1::click", 0 );
 
     Q19View *q19 = new Q19View ( m_facturasList, ( BfCompany * ) m_facturasList->mainCompany(), 0 );
-// m_facturasList->mainCompany()->meteWindow("Domiciliaciones Bancarias", q19);
+// m_facturasList->mainCompany()->insertWindow("Domiciliaciones Bancarias", q19);
     m_facturasList->mainCompany() ->pWorkspace() ->addSubWindow ( q19 );
     q19->show();
 

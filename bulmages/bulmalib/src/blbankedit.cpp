@@ -53,9 +53,9 @@ BlBankEdit::~BlBankEdit()
 
 
 /// Comprueba que los DC son correctos y si no lo son da un mensaje de aviso
-void BlBankEdit::checkDC()
+void BlBankEdit::checkControlDigit()
 {
-    blDebug ( "BlBankEdit::checkDC", 0 );
+    blDebug ( "BlBankEdit::checkControlDigit", 0 );
     QString cad1 = m_entidad->text() + m_oficina->text();
     QString cad2 = m_cuenta->text();
     int dc1 = 0;
@@ -89,7 +89,7 @@ void BlBankEdit::checkDC()
       blMsgInfo (_ ( "Cuenta bancaria incorrecta" ));
         throw - 1;
     } // end if
-    blDebug ( "END BlBankEdit::checkDC", 0 );
+    blDebug ( "END BlBankEdit::checkControlDigit", 0 );
 }
 
 
@@ -133,7 +133,7 @@ QString BlBankEdit::text()
     blDebug ( "END BlBankEdit::text", 0 );
     s_cuentalostFocus();
     QString val = m_entidad->text() + m_oficina->text() + m_dc->text() + m_cuenta->text();
-    checkDC();
+    checkControlDigit();
     return val;
 }
 

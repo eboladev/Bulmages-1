@@ -44,7 +44,7 @@ ClientSync::ClientSync ( BtCompany *emp, QWidget *parent ) : BlWidget ( emp, par
     setWindowTitle ( "Cliente" );
     
     m_socket = new QTcpSocket(this);
-    m_socket->connectToHost(g_confpr->valor(CONF_TPV_SERVER_SYNC_IP), 5899);
+    m_socket->connectToHost(g_confpr->value(CONF_TPV_SERVER_SYNC_IP), 5899);
 
     QString mensaje = "Nueva Conexion: "+ m_socket->peerAddress().toString() + "\n";
     mui_plainText->appendPlainText(mensaje);

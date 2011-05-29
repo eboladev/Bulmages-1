@@ -72,8 +72,8 @@ BcAsientoView::BcAsientoView ( BcCompany *emp, QWidget *parent, int )
     cargaasientos();
     /// Desplazamos hasta el ultimo asiento.
     boton_fin();
-    mainCompany() ->meteWindow ( windowTitle(), this );
-    dialogChanges_cargaInicial();
+    mainCompany() ->insertWindow ( windowTitle(), this );
+    dialogChanges_readValues();
 
     /// Conectamos los botones del menu con las acciones de esta ventana.
     connect (((BcBulmaCont *)g_main)->actionSiguiente, SIGNAL(triggered()), this, SLOT(boton_siguiente()));
@@ -215,7 +215,7 @@ void BcAsientoView::iniciar_asiento_nuevo ( QString nuevoordenasiento )
         if ( nuevoordenasiento == "" ) {
             QString query = "SELECT COALESCE(MAX(ordenasiento) + 1, 1) AS orden FROM asiento WHERE EXTRACT(YEAR FROM fecha) = '" + fecha.left ( 10 ).right ( 4 ) + "'";
             cur = mainCompany() ->loadQuery ( query );
-            ordenasiento = cur->valor ( "orden" );
+            ordenasiento = cur->value( "orden" );
         } else {
             ordenasiento = nuevoordenasiento;
         } // end if
@@ -230,7 +230,7 @@ void BcAsientoView::iniciar_asiento_nuevo ( QString nuevoordenasiento )
         query = "SELECT MAX(idasiento) AS id FROM asiento";
         cur = mainCompany() ->loadQuery ( query );
         if ( !cur->eof() )
-            idasiento = cur->valor ( "id" ).toInt();
+            idasiento = cur->value( "id" ).toInt();
         delete cur;
 
 
@@ -328,7 +328,7 @@ void BcAsientoView::boton_cargarasiento()
     QString query = "SELECT idasiento FROM asiento WHERE ordenasiento = " + mui_ordenasiento->text() + " ORDER BY ordenasiento DESC";
     BlDbRecordSet *curs = mainCompany() ->loadQuery ( query );
     if ( !curs->eof() ) {
-        idas = curs->valor ( "idasiento" );
+        idas = curs->value( "idasiento" );
         cargar ( idas );
     } else {
         /// Si el asiento no existe se da la posibilidad de crear uno nuevo.
@@ -545,7 +545,7 @@ void BcAsientoList::boton_inicio()
     if(mainCompany()->pWorkspace()->activeWindow() == this) {
     if ( cursorasientos->numregistros() != 0 ) {
         cursorasientos->firstRecord();
-        cargar ( cursorasientos->valor ( "idasiento" ) );
+        cargar ( cursorasientos->value( "idasiento" ) );
     } // end if
     } // end if
     blDebug ( "END BcAsientoList::boton_inicio", 0 );
@@ -564,7 +564,7 @@ void BcAsientoList::boton_fin()
     if(mainCompany()->pWorkspace()->activeWindow() == this) {
     if ( cursorasientos->numregistros() != 0 ) {
         cursorasientos->lastRecord();
-        cargar ( cursorasientos->valor ( "idasiento" ) );
+        cargar ( cursorasientos->value( "idasiento" ) );
     } // end if
     } // end if
     blDebug ( "END BcAsientoList::boton_fin", 0 );
@@ -588,7 +588,7 @@ void BcAsientoList::boton_siguiente()
     } // end if
     if ( !cursorasientos->isLastRecord() ) {
         cursorasientos->nextRecord();
-        cargar ( cursorasientos->valor ( "idasiento" ) );
+        cargar ( cursorasientos->value( "idasiento" ) );
     }// end if
     } // end if
     blDebug ( "END BcAsientoList::boton_siguiente", 0 );
@@ -613,7 +613,7 @@ void BcAsientoList::boton_anterior()
     } // end if
     if ( !cursorasientos->isFirstRecord() ) {
         cursorasientos->previousRecord();
-        cargar ( cursorasientos->valor ( "idasiento" ) );
+        cargar ( cursorasientos->value( "idasiento" ) );
     } // end if
     } // end if
     blDebug ( "END BcAsientoList::boton_anterior", 0 );
@@ -634,7 +634,7 @@ void BcAsientoList::situarasiento ( QString idasiento )
         if ( cursorasientos == NULL )
             throw - 1;
         cursorasientos->firstRecord();
-        while ( cursorasientos->valor ( "idasiento" ) != idasiento && !cursorasientos->isLastRecord() ) {
+        while ( cursorasientos->value( "idasiento" ) != idasiento && !cursorasientos->isLastRecord() ) {
             cursorasientos->nextRecord();
         } // end while
     } catch ( ... ) {
@@ -654,7 +654,7 @@ QString BcAsientoList::idasientoanterior()
     blDebug ( "BcAsientoList::idasientoanterior", 0 );
     if ( !cursorasientos->isFirstRecord() ) {
         cursorasientos->previousRecord();
-        QString id = cursorasientos->valor ( "idasiento" );
+        QString id = cursorasientos->value( "idasiento" );
         cursorasientos->nextRecord();
         blDebug ( "END BcAsientoList::idasientoanterior", 0 );
         return id;
@@ -674,7 +674,7 @@ QString BcAsientoList::idasientosiguiente()
     blDebug ( "BcAsientoList::idasientosiguiente", 0 );
     if ( !cursorasientos->isLastRecord() ) {
         cursorasientos->nextRecord();
-        QString id = cursorasientos->valor ( "idasiento" );
+        QString id = cursorasientos->value( "idasiento" );
         cursorasientos->previousRecord();
         blDebug ( "END BcAsientoList::idasientosiguiente", 0 );
         return id;
@@ -756,11 +756,11 @@ bool BcAsientoList::esultimoasiento()
 /**
 \param val
 **/
-void BcAsientoView::pintafecha ( QString val )
+void BcAsientoView::pintaFecha ( QString val )
 {
-    blDebug ( "BcAsientoView::pintafecha", 0 );
+    blDebug ( "BcAsientoView::pintaFecha", 0 );
     mui_fecha->setText ( val );
-    blDebug ( "END BcAsientoView::pintafecha", 0 );
+    blDebug ( "END BcAsientoView::pintaFecha", 0 );
 }
 
 
@@ -813,14 +813,14 @@ void BcAsientoView::muestraasiento ( int v )
 }
 
 
-/// Desabilitamos el sacaWindow ya que esta ventana no debe ser sacada ante un close.
+/// Desabilitamos el removeWindow ya que esta ventana no debe ser sacada ante un close.
 /**
 \return
 **/
-int BcAsientoView::sacaWindow()
+int BcAsientoView::removeWindow()
 {
-    blDebug ( "BcAsientoView::sacaWindow", 0 );
-    blDebug ( "END BcAsientoView::sacaWindow", 0 );
+    blDebug ( "BcAsientoView::removeWindow", 0 );
+    blDebug ( "END BcAsientoView::removeWindow", 0 );
     return 0;
 }
 
@@ -927,8 +927,8 @@ void BcAsientoView::asiento_regularizacion ( QString finicial, QString ffinal )
 /*        QString querycomp = "SELECT * FROM asiento where clase = 1 and fecha <= '" + ffinal + "' AND fecha >= '" + ffinal + "'";                                                      
         BlDbRecordSet *curcomp = mainCompany() -> loadQuery(querycomp);                        
         while (!curcomp -> eof() ) {                                                       
-                blMsgInfo("Vamos a borrar el asiento " + curcomp->valor("ordenasiento"));
-                muestraasiento(curcomp->valor("idasiento").toInt());                       
+                blMsgInfo("Vamos a borrar el asiento " + curcomp->value("ordenasiento"));
+                muestraasiento(curcomp->value("idasiento").toInt());                       
                 BcAsientoForm::borrar ( FALSE );                                                
                 curcomp->nextRecord();                                              
         } // end if                                                                        
@@ -940,7 +940,7 @@ void BcAsientoView::asiento_regularizacion ( QString finicial, QString ffinal )
         mainCompany() ->runQuery ( supquery );
         supquery = "SELECT max(idasiento) as id FROM asiento";
         BlDbRecordSet *cur = mainCompany() ->loadQuery ( supquery );
-        int idasiento = cur->valor ( "id" ).toInt();
+        int idasiento = cur->value( "id" ).toInt();
         delete cur;
 
 
@@ -952,7 +952,7 @@ void BcAsientoView::asiento_regularizacion ( QString finicial, QString ffinal )
           blMsgInfo(_("Cuenta de Regularizacion incorrecta. Revise la configuracion"));
           throw - 1;
         } // end if
-        idcuenta1 = cur->valor ( "idcuenta" ).toInt();
+        idcuenta1 = cur->value( "idcuenta" ).toInt();
         delete cur;
 
         /// Hacemos el calculo de saldos hasta la fecha.
@@ -962,8 +962,8 @@ void BcAsientoView::asiento_regularizacion ( QString finicial, QString ffinal )
         int orden = 0;
         while ( !cur->eof() ) {
             orden++;
-            idcuenta = cur->valor ( "idcuenta" ).toInt();
-            diferencia = BlFixed ( cur->valor ( "sumdebe" ) ) - BlFixed ( cur->valor ( "sumhaber" ) );
+            idcuenta = cur->value( "idcuenta" ).toInt();
+            diferencia = BlFixed ( cur->value( "sumdebe" ) ) - BlFixed ( cur->value( "sumhaber" ) );
             if ( diferencia > 0 ) {
                 totalhaber = diferencia;
                 totaldebe = 0;
@@ -1046,8 +1046,8 @@ void BcAsientoView::asiento_cierre ( QString finicial, QString ffinal )
         QString querycomp = "SELECT * FROM asiento where clase = 2 and fecha <= '" + ffinal + "' AND fecha >= '" + ffinal + "'";                                                      
         BlDbRecordSet *curcomp = mainCompany() -> loadQuery(querycomp);                        
         while (!curcomp -> eof() ) {                                                       
-                blMsgInfo("Vamos a borrar el asiento " + curcomp->valor("ordenasiento"));
-                muestraasiento(curcomp->valor("idasiento").toInt());                       
+                blMsgInfo("Vamos a borrar el asiento " + curcomp->value("ordenasiento"));
+                muestraasiento(curcomp->value("idasiento").toInt());                       
                 BcAsientoForm::borrar ( FALSE );                                                
                 curcomp->nextRecord();                                              
         } // end if                                                                        
@@ -1058,7 +1058,7 @@ void BcAsientoView::asiento_cierre ( QString finicial, QString ffinal )
         mainCompany() ->runQuery ( supquery );
         supquery = "SELECT max(idasiento) as id FROM asiento";
         BlDbRecordSet *cur = mainCompany() ->loadQuery ( supquery );
-        int idasiento = cur->valor ( "id" ).toInt();
+        int idasiento = cur->value( "id" ).toInt();
         delete cur;
 
         int idcuenta;
@@ -1076,15 +1076,15 @@ void BcAsientoView::asiento_cierre ( QString finicial, QString ffinal )
         QString fecha = ffinal;
         while ( ! cursor->eof() ) {
             orden++;
-            idcuenta = cursor->valor ( "idcuenta" ).toInt();
-            if ( cursor->valor ( "saldito" ).left ( 1 ) != "-" ) {
-                snuevohaber = cursor->valor ( "saldito" );
+            idcuenta = cursor->value( "idcuenta" ).toInt();
+            if ( cursor->value( "saldito" ).left ( 1 ) != "-" ) {
+                snuevohaber = cursor->value( "saldito" );
                 snuevodebe = "0";
             } else {
-                snuevodebe = "ABS(" + cursor->valor ( "saldito" ) + ")";
+                snuevodebe = "ABS(" + cursor->value( "saldito" ) + ")";
                 snuevohaber = "0";
             }// end if
-            if ( cursor->valor ( "saldito" ) != "0.00" ) {
+            if ( cursor->value( "saldito" ) != "0.00" ) {
                 /// Insercion de Borrador
                 /// El borrador no existe, por lo que hay que hacer un insert
                 query = "INSERT INTO borrador (orden, conceptocontable, fecha, idcuenta, debe, haber, idasiento) VALUES (",
@@ -1124,8 +1124,8 @@ void BcAsientoView::asiento_apertura ( QString ffinal )
         QString querycomp = "SELECT * FROM asiento where clase = 3 and fecha <= '" + ffinal + "' AND fecha >= '" + ffinal + "'";                                                      
         BlDbRecordSet *curcomp = mainCompany() -> loadQuery(querycomp);                        
         while (!curcomp -> eof() ) {                                                       
-                blMsgInfo("Vamos a borrar el asiento " + curcomp->valor("ordenasiento"));
-                muestraasiento(curcomp->valor("idasiento").toInt());                       
+                blMsgInfo("Vamos a borrar el asiento " + curcomp->value("ordenasiento"));
+                muestraasiento(curcomp->value("idasiento").toInt());                       
                 BcAsientoForm::borrar ( FALSE );                                                
                 curcomp->nextRecord();                                              
         } // end if                                                                        
@@ -1137,7 +1137,7 @@ void BcAsientoView::asiento_apertura ( QString ffinal )
         mainCompany() ->runQuery ( supquery );
         supquery = "SELECT max(idasiento) as id FROM asiento";
         BlDbRecordSet *cur = mainCompany() ->loadQuery ( supquery );
-        int idasiento = cur->valor ( "id" ).toInt();
+        int idasiento = cur->value( "id" ).toInt();
         delete cur;
 
         /// Preparamos los datos.
@@ -1151,7 +1151,7 @@ void BcAsientoView::asiento_apertura ( QString ffinal )
 	QString SQLQuery = "SELECT * FROM asiento WHERE descripcion similar to 'Asiento de Cierre%' AND EXTRACT(YEAR FROM fecha)=" + QString::number ( anyo ) + " ORDER BY ordenasiento DESC";
         cur = mainCompany() ->loadQuery ( SQLQuery );
         if ( !cur->eof() ) {
-            idasientocierre = cur->valor ( "idasiento" );
+            idasientocierre = cur->value( "idasiento" );
         }// end if
         delete cur;
 
@@ -1160,9 +1160,9 @@ void BcAsientoView::asiento_apertura ( QString ffinal )
         QString SQLQuery1 = "SELECT * FROM borrador WHERE idasiento=" + idasientocierre + " ORDER BY orden";
         cur = mainCompany() ->loadQuery ( SQLQuery1 );
         while ( !cur->eof() ) {
-            QString idcuenta = cur->valor ( "idcuenta" );
-            QString totaldebe = cur->valor ( "debe" );
-            QString totalhaber = cur->valor ( "haber" );
+            QString idcuenta = cur->value( "idcuenta" );
+            QString totaldebe = cur->value( "debe" );
+            QString totalhaber = cur->value( "haber" );
             SQLQuery1  = "INSERT INTO borrador (orden, conceptocontable, fecha, idcuenta, debe, haber, idasiento) VALUES (",
                          SQLQuery1 += QString::number ( orden++ );
             SQLQuery1 += ", '" + mainCompany() ->sanearCadena ( concepto ) + "'";

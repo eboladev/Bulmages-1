@@ -61,22 +61,22 @@ public:
     BlWorkspace *pWorkspace();
     void setWorkspace ( BlWorkspace *qw );
     void setProgressBar ( QProgressBar *pb );
-    int meteWindow ( QString nom, QObject *obj, bool compdup = TRUE, QString titulo = "" );
+    int insertWindow ( QString nom, QObject *obj, bool compdup = TRUE, QString titulo = "" );
 
 #ifdef AREA_QMDI
-    int seleccionaWindow ( QString nom, QMdiSubWindow *obj );
+    int selectWindow ( QString nom, QMdiSubWindow *obj );
 #else
-    int seleccionaWindow ( QString nom, QObject *obj );
+    int selectWindow ( QString nom, QObject *obj );
 #endif
     
-    void sacaWindow ( QObject *nom );
+    void removeWindow ( QObject *nom );
     void s_indexadorCambiaEstado ( bool );
     void muestraPaises();
     void dbPatchVersionCheck(QString, QString);
     void dbVersionCheck(QString, QString);
 
 public slots:
-    int deSeleccionaWindow();
+    int deselectWindow();
 
 };
 

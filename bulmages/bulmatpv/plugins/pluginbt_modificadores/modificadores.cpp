@@ -22,7 +22,7 @@ Modificadores::Modificadores ( BlMainCompany *emp, QWidget *parent ) : QDialog (
     while ( !cur->eof() ) {
 	hayModificadores = TRUE;
         QPushButton * toolbutton = new QPushButton ( mui_frame );
-        toolbutton->setText ( cur->valor ( "nombremodificador" ) );
+        toolbutton->setText ( cur->value( "nombremodificador" ) );
 
         QVBoxLayout *m_hboxLayout1 = mui_frame->findChild<QVBoxLayout *> ( "hboxLayout1" );
         if ( !m_hboxLayout1 ) {
@@ -73,7 +73,7 @@ void Modificadores::modificadorClicked()
     /// Buscamos cual ha sido el modificador pulsado.
     BlDbRecordSet *cur = mainCompany() ->loadQuery ( "SELECT * FROM modificador WHERE idarticulo = " + idarticulo );
     while ( !encontrado ) {
-        if ( ( ( QPushButton * ) sender() ) ->text() == cur->valor ( "nombremodificador" ) ) {
+        if ( ( ( QPushButton * ) sender() ) ->text() == cur->value( "nombremodificador" ) ) {
             encontrado = TRUE;
         } else {
             cur->nextRecord();
@@ -86,7 +86,7 @@ void Modificadores::modificadorClicked()
       i++;
     } // end while
     if (i <= 9) 
-      emp1->ticketActual()->lineaActBtTicket()->setDbValue ( "idmodificador" + QString::number(i), cur->valor("idmodificador"));
+      emp1->ticketActual()->lineaActBtTicket()->setDbValue ( "idmodificador" + QString::number(i), cur->value("idmodificador"));
 
     delete cur;
 

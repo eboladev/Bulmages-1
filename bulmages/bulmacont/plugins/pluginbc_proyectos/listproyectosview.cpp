@@ -53,7 +53,7 @@ ListProyectosView::ListProyectosView ( BcCompany *emp, QWidget *parent,  Qt::WFl
 
     presentar();
     if ( modoEdicion() ) {
-        mainCompany() ->meteWindow ( windowTitle(), this );
+        mainCompany() ->insertWindow ( windowTitle(), this );
     } else {
         setWindowTitle ( _ ( "Selector de Proyectos" ) );
         mui_crear->setHidden ( TRUE );
@@ -75,7 +75,7 @@ ListProyectosView::ListProyectosView ( BcCompany *emp, QWidget *parent,  Qt::WFl
 ListProyectosView::~ListProyectosView()
 {
     blDebug ( "ListProyectosView::~ListProyectosView", 0 );
-    sacaWindow();
+    removeWindow();
     blDebug ( "END ListProyectosView::~ListProyectosView", 0 );
 }
 

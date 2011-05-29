@@ -82,14 +82,14 @@ void MTicket::pintar()
 
     query = "SELECT * FROM trabajador WHERE idtrabajador = " + tick->dbValue ( "idtrabajador" );
     BlDbRecordSet *rsTrabajador = mainCompany() ->loadQuery ( query );
-    plainTextContent += "Trabajador: " + rsTrabajador->valor ( "nomtrabajador" ) + "\n";
-    htmlContent += "Trabajador: " + rsTrabajador->valor ( "nomtrabajador" ) + "<BR>";
+    plainTextContent += "Trabajador: " + rsTrabajador->value( "nomtrabajador" ) + "\n";
+    htmlContent += "Trabajador: " + rsTrabajador->value( "nomtrabajador" ) + "<BR>";
     delete rsTrabajador;
 
     query = "SELECT * FROM cliente WHERE idcliente = " + tick->dbValue ( "idcliente" );
     BlDbRecordSet *rsCliente = mainCompany() ->loadQuery ( query );
-    plainTextContent += "Cliente: " + rsCliente->valor ( "nomcliente" ) + "\n";
-    htmlContent += "Cliente: " + rsCliente->valor ( "nomcliente" ) + "<BR>";
+    plainTextContent += "Cliente: " + rsCliente->value( "nomcliente" ) + "\n";
+    htmlContent += "Cliente: " + rsCliente->value( "nomcliente" ) + "<BR>";
     delete rsCliente;
     
 
@@ -214,10 +214,10 @@ void MTicket::on_mui_reimprimir_clicked()
 
     } else {
 
-        previousTicket->setDbValue("idalbaran", cur->valor("idalbaran"));
+        previousTicket->setDbValue("idalbaran", cur->value("idalbaran"));
 
 	// Cargamos las lineas de albaran
-        cur = mainCompany()->loadQuery ( "SELECT * FROM lalbaran LEFT JOIN articulo ON lalbaran.idarticulo = articulo.idarticulo WHERE idalbaran = " + cur->valor("idalbaran") );
+        cur = mainCompany()->loadQuery ( "SELECT * FROM lalbaran LEFT JOIN articulo ON lalbaran.idarticulo = articulo.idarticulo WHERE idalbaran = " + cur->value("idalbaran") );
 
 	while ( !cur->eof() ) {
     	    BlDbRecord *l = previousTicket->agregarLinea();

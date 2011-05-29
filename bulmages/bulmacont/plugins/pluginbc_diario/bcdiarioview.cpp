@@ -67,7 +67,7 @@ BcDiarioView::BcDiarioView ( BcCompany  *emp, QWidget *parent, int )
     /// como el a&ntilde;o inicial.
     mui_fechainicial->setText ( "01/01/" + QString::number(QDate::currentDate().year()) );
     mui_fechafinal->setText ( "31/12/" + QString::number(QDate::currentDate().year()) );
-    meteWindow ( windowTitle(), this );
+    insertWindow ( windowTitle(), this );
     /// Llamamos a los scripts
     blScript(this);
 
@@ -81,7 +81,7 @@ BcDiarioView::BcDiarioView ( BcCompany  *emp, QWidget *parent, int )
 BcDiarioView::~BcDiarioView()
 {
     blDebug ( "BcDiarioView::~BcDiarioView", 0 );
-    mainCompany() ->sacaWindow ( this );
+    mainCompany() ->removeWindow ( this );
     blDebug ( "END BcDiarioView::~BcDiarioView", 0 );
 }
 
@@ -166,7 +166,7 @@ void BcDiarioView::boton_guardar()
     blDebug ( "BcDiarioView::boton_guardar", 0 );
     QString fn = QFileDialog::getSaveFileName ( this,
                  _ ( "Guardar Libro Diario" ),
-                 g_confpr->valor ( CONF_DIR_USER ),
+                 g_confpr->value( CONF_DIR_USER ),
                  _ ( "Diarios (*.txt)" ) );
 
     if ( !fn.isEmpty() ) {
@@ -285,8 +285,8 @@ void BcDiarioView::presentar()
 
         cur = mainCompany() ->loadQuery ( "SELECT sum(debe) as totaldebe, sum(haber) as totalhaber from " + tabla + cad );
         if ( !cur->eof() ) {
-            totaldebe->setText ( cur->valor ( "totaldebe" ) );
-            totalhaber->setText ( cur->valor ( "totalhaber" ) );
+            totaldebe->setText ( cur->value( "totaldebe" ) );
+            totalhaber->setText ( cur->value( "totalhaber" ) );
         } // end if
         delete cur;
         blDebug ( "END BcDiarioView::presentar", 0 );

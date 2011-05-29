@@ -60,7 +60,7 @@ ClaseView::ClaseView ( BfCompany *emp, QWidget *parent )
         return;
     } // end if
     pintar();
-    meteWindow ( windowTitle(), this, FALSE );
+    insertWindow ( windowTitle(), this, FALSE );
     blScript(this);
     blDebug ( "END ClaseView::ClaseView", 0 );
 }
@@ -89,12 +89,12 @@ void ClaseView::pintar()
     } // end if
     m_cursorclasees = mainCompany() ->loadQuery ( "SELECT * FROM clase ORDER BY ascii(nomclase), nomclase" );
     while ( !m_cursorclasees->eof() ) {
-        new QListWidgetItem ( m_cursorclasees->valor ( "nomclase" ), mui_lista );
+        new QListWidgetItem ( m_cursorclasees->value( "nomclase" ), mui_lista );
         m_cursorclasees->nextRecord();
     } // end while
 
     /// Comprobamos cual es la cadena inicial.
-    dialogChanges_cargaInicial();
+    dialogChanges_readValues();
     blDebug ( "END ClaseView::pintar", 0 );
 }
 
@@ -125,8 +125,8 @@ void ClaseView::on_mui_lista_currentItemChanged ( QListWidgetItem *cur, QListWid
 
     int row = mui_lista->row ( cur );
     trataModificado();
-    mdb_idclase = m_cursorclasees->valor ( "idclase", row );
-    m_nomclase->setText ( m_cursorclasees->valor ( "nomclase", row ) );
+    mdb_idclase = m_cursorclasees->value( "idclase", row );
+    m_nomclase->setText ( m_cursorclasees->value( "nomclase", row ) );
 
     m_item = cur;
     /// Comprobamos cual es la cadena inicial.
@@ -136,7 +136,7 @@ void ClaseView::on_mui_lista_currentItemChanged ( QListWidgetItem *cur, QListWid
         return;
     } // end if
 
-    dialogChanges_cargaInicial();
+    dialogChanges_readValues();
 
     blDebug ( "END on_mui_lista_currentItemChanged", 0 );
 }
@@ -174,7 +174,7 @@ void ClaseView::on_mui_guardar_clicked()
         g_theApp->emitDbTableChanged ( "clase" );
 
         /// Comprobamos cual es la cadena inicial.
-        dialogChanges_cargaInicial();
+        dialogChanges_readValues();
     } catch ( ... ) {
         blMsgInfo ( _ ( "Error al guardar el clase" ) );
         mainCompany() ->rollback();
@@ -193,7 +193,7 @@ bool ClaseView::trataModificado()
 {
     blDebug ( "ClaseView::trataModificado", 0 );
     /// Si se ha modificado el contenido advertimos y guardamos.
-    if ( dialogChanges_hayCambios() ) {
+    if ( dialogChanges_isChanged() ) {
         if ( QMessageBox::warning ( this,
                                     _ ( "Guardar datos del clase" ),
                                     _ ( "Desea guardar los cambios?" ),
@@ -222,7 +222,7 @@ void ClaseView::on_mui_nuevo_clicked()
         mainCompany() ->runQuery ( query );
         BlDbRecordSet *cur = mainCompany() ->loadQuery ( "SELECT max(idclase) AS idclase FROM clase" );
         mainCompany() ->commit();
-        mdb_idclase = cur->valor ( "idclase" );
+        mdb_idclase = cur->value( "idclase" );
         delete cur;
         pintar();
         blDebug ( "END ClaseView::on_mui_nuevo_clicked", 0 );

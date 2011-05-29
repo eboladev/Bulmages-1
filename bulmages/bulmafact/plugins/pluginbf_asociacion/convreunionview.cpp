@@ -92,9 +92,9 @@ ConvReunionView::ConvReunionView ( BfCompany *comp, QWidget *parent ) : BfForm (
 	 /// Hacemos una carga vacia para que se inicie bien el subformulario
          mui_ordendia->cargar("SELECT * from ordendiareunion WHERE 1 = 2");
 
-        meteWindow ( windowTitle(), this, FALSE );
+        insertWindow ( windowTitle(), this, FALSE );
         pintar();
-        dialogChanges_cargaInicial();
+        dialogChanges_readValues();
         blScript(this);
     } catch ( ... ) {
     
@@ -185,7 +185,7 @@ void ConvReunionView::on_mui_email_clicked (  )
 {
     blDebug ( " ConvReunionView::cargarPost", 0 );
     
-//    cad = "kmail -s \" El Subject\" --body \" Adjunto remito \n Atentamente\n\" --attach " + g_confpr->valor ( CONF_DIR_USER ) + doc + num + ".pdf " + email;
+//    cad = "kmail -s \" El Subject\" --body \" Adjunto remito \n Atentamente\n\" --attach " + g_confpr->value( CONF_DIR_USER ) + doc + num + ".pdf " + email;
     QString bcc = "";
     QString separador = "";
     
@@ -193,7 +193,7 @@ void ConvReunionView::on_mui_email_clicked (  )
     BlDbRecordSet *cur = mainCompany()->loadQuery(query);
     
     while (! cur->eof()) {
-        bcc = bcc + separador + cur->valor("mailcliente");
+        bcc = bcc + separador + cur->value("mailcliente");
         separador = ";";
         cur->nextRecord();
     } // end while
@@ -222,8 +222,8 @@ void ConvReunionView::on_m_agregarconvocados_clicked()
         linea1 = mui_list->lineaat ( mui_list->rowCount() - 1 );
         mui_list->nuevoRegistro();
         mui_list->setProcesarCambios ( FALSE );
-        linea1->setDbValue ( "idcliente", cur->valor ( "idcliente" ) );
-        linea1->setDbValue ( "nomcliente", cur->valor ( "nomcliente" ) );
+        linea1->setDbValue ( "idcliente", cur->value( "idcliente" ) );
+        linea1->setDbValue ( "nomcliente", cur->value( "nomcliente" ) );
         mui_list->setProcesarCambios ( TRUE );
         cur->nextRecord();
     } // end while
@@ -249,8 +249,8 @@ int ConvReunionView::junta()
         linea1 = mui_list->lineaat ( mui_list->rowCount() - 1 );
         mui_list->nuevoRegistro();
         mui_list->setProcesarCambios ( FALSE );
-        linea1->setDbValue ( "idcliente", cur->valor ( "idcliente" ) );
-        linea1->setDbValue ( "nomcliente", cur->valor ( "nomcliente" ) );
+        linea1->setDbValue ( "idcliente", cur->value( "idcliente" ) );
+        linea1->setDbValue ( "nomcliente", cur->value( "nomcliente" ) );
         mui_list->setProcesarCambios ( TRUE );
         cur->nextRecord();
     } // end while

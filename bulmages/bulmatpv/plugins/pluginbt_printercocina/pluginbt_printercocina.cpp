@@ -107,37 +107,37 @@ int impresionCocina(BtTicket *tick) {
 
     BlDbRecordSet *cur = tick->mainCompany() ->loadQuery ( "SELECT * FROM configuracion WHERE nombre='NombreEmpresa'" );
     if ( !cur->eof() )
-        empresa.nombre = cur->valor ( "valor" );
+        empresa.nombre = cur->value( "valor" );
     delete cur;
 
     cur = tick->mainCompany() ->loadQuery ( "SELECT * FROM configuracion WHERE nombre='CIF'" );
     if ( !cur->eof() )
-        empresa.nombre += "\n" + cur->valor ( "valor" );
+        empresa.nombre += "\n" + cur->value( "valor" );
     delete cur;
 
     cur = tick->mainCompany() ->loadQuery ( "SELECT * FROM configuracion WHERE nombre='DireccionCompleta'" );
     if ( !cur->eof() )
-        empresa.direccionCompleta = cur->valor ( "valor" );
+        empresa.direccionCompleta = cur->value( "valor" );
     delete cur;
 
     cur = tick->mainCompany() ->loadQuery ( "SELECT * FROM configuracion WHERE nombre='CodPostal'" );
     if ( !cur->eof() )
-        empresa.codigoPostal = cur->valor ( "valor" ).toAscii();
+        empresa.codigoPostal = cur->value( "valor" ).toAscii();
     delete cur;
 
     cur = tick->mainCompany() ->loadQuery ( "SELECT * FROM configuracion WHERE nombre='Ciudad'" );
     if ( !cur->eof() )
-        empresa.ciudad = cur->valor ( "valor" );
+        empresa.ciudad = cur->value( "valor" );
     delete cur;
 
     cur = tick->mainCompany() ->loadQuery ( "SELECT * FROM configuracion WHERE nombre='Telefono'" );
     if ( !cur->eof() )
-        empresa.telefono = cur->valor ( "valor" );
+        empresa.telefono = cur->value( "valor" );
     delete cur;
 
     cur = tick->mainCompany() ->loadQuery ( "SELECT * FROM configuracion WHERE nombre='Provincia'" );
     if ( !cur->eof() )
-        empresa.provincia = cur->valor ( "valor" );
+        empresa.provincia = cur->value( "valor" );
     delete cur;
 
     fecha.dia = QDate::currentDate().toString ( "d-M-yyyy" );
@@ -146,19 +146,19 @@ int impresionCocina(BtTicket *tick) {
     trabajador.id = tick->dbValue ( "idtrabajador" );
     cur = tick->mainCompany() ->loadQuery ( "SELECT * FROM trabajador WHERE idtrabajador=" + tick->dbValue ( "idtrabajador" ) );
     if ( !cur->eof() )
-        trabajador.nombre = cur->valor ( "nomtrabajador" );
+        trabajador.nombre = cur->value( "nomtrabajador" );
     delete cur;
 
     cur = tick->mainCompany() ->loadQuery ( "SELECT * FROM cliente WHERE idcliente=" + tick->dbValue ( "idcliente" ) );
     if ( !cur->eof() ) {
-        cliente.cif = cur->valor ( "cifcliente" ).toAscii();
-        cliente.nombre = cur->valor ( "nomcliente" ).toAscii();
+        cliente.cif = cur->value( "cifcliente" ).toAscii();
+        cliente.nombre = cur->value( "nomcliente" ).toAscii();
     } // end if
     delete cur;
 
     cur = tick->mainCompany() ->loadQuery ( "SELECT * FROM almacen WHERE idalmacen=" + tick->dbValue ( "idalmacen" ) );
     if ( !cur->eof() )
-        almacen.nombre = cur->valor ( "nomalmacen" ).toAscii() ;
+        almacen.nombre = cur->value( "nomalmacen" ).toAscii() ;
     delete cur;
 
     BlDbRecord *linea;
@@ -168,14 +168,14 @@ int impresionCocina(BtTicket *tick) {
     while ( !curimpresoras->eof() ) {
       bool hayalgoqueimprimir = FALSE;
 
-      BlEscPrinter pr ( g_confpr->valor(CONF_DIR_USER) + "bulmatpv_cocina.txt" );
+      BlEscPrinter pr ( g_confpr->value(CONF_DIR_USER) + "bulmatpv_cocina.txt" );
       pr.initializePrinter();
       pr.setCharacterCodeTable ( page19 );
 /*
       pr.setJustification ( BlEscPrinter::center );
 
-//      if ( g_confpr->valor ( CONF_TPV_PRINTER_LOGO ) != "" ) {
-//          pr.printImage ( g_confpr->valor ( CONF_TPV_PRINTER_LOGO ) );
+//      if ( g_confpr->value( CONF_TPV_PRINTER_LOGO ) != "" ) {
+//          pr.printImage ( g_confpr->value( CONF_TPV_PRINTER_LOGO ) );
 //      } // end if
 
 
@@ -213,7 +213,7 @@ int impresionCocina(BtTicket *tick) {
           linea = tick->listaLineas() ->at ( i );
           BlDbRecordSet *curarticulos = tick -> mainCompany() -> loadQuery( "SELECT idprintercocina FROM articulo WHERE idarticulo = " + linea->dbValue ( "idarticulo" ) );
           /// Si la linea tiene que salir por cocina hacemos lo pertinente.
-          if (curarticulos -> valor("idprintercocina") == curimpresoras -> valor ("idprintercocina")) {
+          if (curarticulos ->value("idprintercocina") == curimpresoras -> value("idprintercocina")) {
             BlFixed undcocina ( linea->dbValue("unidadescocina"));
             BlFixed cantlalbaran (linea->dbValue("cantlalbaran"));
             if (undcocina != cantlalbaran) {
@@ -227,7 +227,7 @@ int impresionCocina(BtTicket *tick) {
 	      if (resta > 0) {
 	                BlDbRecordSet *componentes = tick -> mainCompany() -> loadQuery( "SELECT sinacentos(articulo.nomarticulo) AS nomarticulo2, comparticulo.cantcomparticulo AS cantarticulo2  FROM comparticulo LEFT JOIN articulo ON comparticulo.idcomponente = articulo.idarticulo WHERE comparticulo.idarticulo = " + linea->dbValue ( "idarticulo" ) );
 		        while ( !componentes->eof() ) {
-	            	    pr.printText("* <!-- RIGHTJUSTIFIED \"" + componentes->valor("cantarticulo2") + "\" \"5\" \" \" \"TRUE\"--> <!-- LEFTJUSTIFIED \"" + componentes->valor("nomarticulo2") + "\" \"18\" \" \" \"TRUE\"-->\n");
+	            	    pr.printText("* <!-- RIGHTJUSTIFIED \"" + componentes->value("cantarticulo2") + "\" \"5\" \" \" \"TRUE\"--> <!-- LEFTJUSTIFIED \"" + componentes->value("nomarticulo2") + "\" \"18\" \" \" \"TRUE\"-->\n");
 	    		    componentes->nextRecord();
 			} // end while
 	      } // end if
@@ -253,7 +253,7 @@ int impresionCocina(BtTicket *tick) {
 
       /// Establecemos la variable cambioscocina para que incorpore los cambios realizados.
       tick->setVar("cambioscocina", pr.buffer());
-      tick->setVar("idprintercocina", curimpresoras->valor("idprintercocina"));
+      tick->setVar("idprintercocina", curimpresoras->value("idprintercocina"));
 //      tick->clearVars();
 /// ============================      
       tick->generaRML("ticket_cocina.txt");
@@ -261,7 +261,7 @@ int impresionCocina(BtTicket *tick) {
       
        /// Si realmente hay algo que imprimir entonces lo sacamos.
        if (hayalgoqueimprimir) {
-              QString comando = "lp -d " + curimpresoras->valor("colaprintercocina") +" " +g_confpr->valor(CONF_DIR_USER) + "ticket_cocina.txt";
+              QString comando = "lp -d " + curimpresoras->value("colaprintercocina") +" " +g_confpr->value(CONF_DIR_USER) + "ticket_cocina.txt";
               system ( comando.toAscii().data() );
        } // end if
 

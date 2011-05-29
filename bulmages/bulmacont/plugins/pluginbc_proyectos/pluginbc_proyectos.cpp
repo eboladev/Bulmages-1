@@ -57,7 +57,7 @@ void PluginBc_Proyectos::elslot()
     /// Agregamos el subformulario de proyectos.
     ListProyectosView *l = new ListProyectosView ( m_bulmacont->empresaactual(), 0, 0, BL_EDIT_MODE );
     l->setObjectName ( QString::fromUtf8 ( "mui_proyectos" ) );
-//    m_bulmacont->empresaactual()->meteWindow(l);
+//    m_bulmacont->empresaactual()->insertWindow(l);
     m_bulmacont->workspace() ->addSubWindow ( l );
     l->show();
     blDebug ( "END PluginBc_Proyectos::elslot", 0 );
@@ -95,7 +95,7 @@ int entryPoint ( BcBulmaCont *bges )
 
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale ( LC_ALL, "" );
-    blBindTextDomain ( "pluginbc_proyectos", g_confpr->valor ( CONF_DIR_TRADUCCION ).toAscii().constData() );
+    blBindTextDomain ( "pluginbc_proyectos", g_confpr->value( CONF_DIR_TRADUCCION ).toAscii().constData() );
 
     PluginBc_Proyectos *plug = new PluginBc_Proyectos();
     plug->inicializa ( bges );

@@ -43,17 +43,17 @@ class BL_EXPORT BlCompanyDialog : public QDialog, public Ui_BlCompanyDialogBase
 
 public:
     /// Asigna el modo de la ventana a destructivo (true) o no destructivo (false)
-    void setModoDestructivo ( bool );
+    void setDestroyMode ( bool );
     /// Inicia las variables m_tipo y m_tipoempresa y carga el archivo para hacer la
     /// presentaci&oacute;n.
     BlCompanyDialog ( QWidget *parent = 0, QString tipo = 0, const char *name = 0, bool modal = true );
     ~BlCompanyDialog();
     /// Devuelve el nombre de la base de datos seleccionada.
-    QString nomDB();
+    QString dbName();
     /// Devuelve el nombre de la empresa seleccionada.
-    QString nomEmpresa();
+    QString companyName();
     /// Devuelve el tipo de empresa que se ha seleccionado.
-    QString tipoEmpresa();
+    QString companyType();
     /// Devuelve si se est&aacute; en modo destructivo o no.
     bool modoDestructivo();
 
@@ -80,20 +80,20 @@ private:
     /// o cerrando solo la ventana. Por defecto es 0 -> cerrar aplicaci&oacute;n.
     bool m_modo;
     /// Guarda en el archivo especificado en LISTEMPRESAS la lista de mui_empresas disponibles.
-    void guardaArchivo();
+    void saveFile();
     /// Carga del archivo especificado en LISTEMPRESAS la lista de mui_empresas disponibles.
-    void cargaArchivo();
+    void loadFile();
     /// Inserta una compa&ntilde;ia en el QList mui_empresas definido en el di&aacute;logo.
     void insertCompany ( QString, QString, QString, QString );
     void preparamui_empresas();
     void trataEmpresa ( QString, QFile * );
 
     /// Asigna el nombre de la base de datos seleccionada.
-    void setNomDB ( QString );
+    void setDbName ( QString );
     /// Asigna el nombre de la empresa seleccionada.
-    void setNomEmpresa ( QString );
+    void setCompanyName ( QString );
     /// Asigna el tipo de empresa que se ha seleccionado.
-    void setTipoEmpresa ( QString );
+    void setCompanyType ( QString );
 
 private slots:
     /// Al pulsar el bot&oacute;n de cancelar se aborta la ejecuci&oacute;n del programa.

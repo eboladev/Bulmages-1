@@ -97,8 +97,8 @@ ClienteView::ClienteView ( BfCompany *comp, QWidget *parent )
         mui_idforma_pago->setId ( 0 );
 
         /// Metemos la ventana en el workSpace.
-        meteWindow ( windowTitle(), this, FALSE );
-        dialogChanges_cargaInicial();
+        insertWindow ( windowTitle(), this, FALSE );
+        dialogChanges_readValues();
         /// Disparamos los plugins.
         res = g_plugins->lanza ( "ClienteView_ClienteView_Post", this );
 	blScript(this);
@@ -118,7 +118,7 @@ ClienteView::~ClienteView()
     blDebug ( "ClienteView::~ClienteView", 0 );
     /// Disparamos los plugins.
     g_plugins->lanza ( "ClienteView_Des_ClienteView", this );
-    mainCompany() ->sacaWindow ( this );
+    mainCompany() ->removeWindow ( this );
     blDebug ( "END ClienteView::~ClienteView", 0 );
 }
 

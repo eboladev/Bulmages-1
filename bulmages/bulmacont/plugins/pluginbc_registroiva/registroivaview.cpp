@@ -106,7 +106,7 @@ RegistroIvaView::RegistroIvaView ( BcCompany *comp, QWidget *parent )
     mui_listPrevCobro->addSubFormHeader ( "tipocuenta", BlDbField::DbNumeric, BlDbField::DbNoSave, BlSubFormHeader::DbNone, _ ( "tipocuenta" ) );
 
     mui_listPrevCobro->setInsert ( TRUE );
-    mainCompany() ->meteWindow ( windowTitle(), this );
+    mainCompany() ->insertWindow ( windowTitle(), this );
     g_plugins->lanza ( "RegistroIvaView_RegistroIvaView_Post", this );
     blDebug ( "Fin de la inicializacion de RegistroIvaView", 0 );
 }
@@ -142,10 +142,10 @@ void RegistroIvaView::cargarComboFPago ( QString idfpago )
     int i1 = 0;
     while ( !m_cursorFPago->eof() ) {
         i ++;
-        if ( m_cursorFPago->valor ( "idfpago" ) == idfpago ) {
+        if ( m_cursorFPago->value( "idfpago" ) == idfpago ) {
             i1 = i;
         } // end if
-        m_fPago->addItem ( m_cursorFPago->valor ( "nomfpago" ) );
+        m_fPago->addItem ( m_cursorFPago->value( "nomfpago" ) );
         m_cursorFPago->nextRecord();
     } // end while
     if ( i1 != 0 ) {
@@ -190,7 +190,7 @@ int RegistroIvaView::cargar ( QString id )
                                 " WHERE idregistroiva = " + id + " ORDER BY fcobroprevcobro " );
 
     setWindowTitle ( _ ( "Registro factura" ) + " " + factura() );
-    dialogChanges_cargaInicial();
+    dialogChanges_readValues();
     return 0;
 }
 
@@ -221,7 +221,7 @@ int RegistroIvaView::guardar()
         mui_listPrevCobro->setColumnValue ( "idregistroiva", dbValue ( "idregistroiva" ) );
         mui_listPrevCobro->guardar();
         mainCompany() ->commit();
-        dialogChanges_cargaInicial();
+        dialogChanges_readValues();
     } catch ( ... ) {
         blMsgInfo ( "Error al guardar el Registro de IVA" );
         mainCompany() ->rollback();
@@ -242,9 +242,9 @@ int RegistroIvaView::guardar()
 void RegistroIvaView::on_mui_generarPrevisiones_clicked()
 {
     blDebug ( "RegistroIvaView::on_mui_generarPrevisiones_clicked", 0 );
-    QString snumpagos = m_cursorFPago->valor ( "nplazosfpago", m_fPago->currentIndex() );
-    QString splazoprimerpago = m_cursorFPago->valor ( "plazoprimerpagofpago", m_fPago->currentIndex() );
-    QString splazoentrerecibo = m_cursorFPago->valor ( "plazoentrerecibofpago", m_fPago->currentIndex() );
+    QString snumpagos = m_cursorFPago->value( "nplazosfpago", m_fPago->currentIndex() );
+    QString splazoprimerpago = m_cursorFPago->value( "plazoprimerpagofpago", m_fPago->currentIndex() );
+    QString splazoentrerecibo = m_cursorFPago->value( "plazoentrerecibofpago", m_fPago->currentIndex() );
     BlFixed totalfactura = BlFixed ( baseimp() ) + BlFixed ( iva() );
     int plazoentrerecibo = splazoentrerecibo.toInt();
     int plazoprimerpago = splazoprimerpago.toInt();

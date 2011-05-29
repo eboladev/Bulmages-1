@@ -50,7 +50,7 @@ BcAsientoListView::BcAsientoListView ( BcCompany *comp, QWidget *parent, Qt::WFl
     mui_filtrar->toggle();
     mui_list->setMainCompany ( comp );
     setSubForm ( mui_list );
-    mainCompany() ->meteWindow ( windowTitle(), this );
+    mainCompany() ->insertWindow ( windowTitle(), this );
     /// Lanzamos los posibles scripts
     blScript(this);
     blDebug ( "END BcAsientoListView::BcAsientoListView", 0 );
@@ -69,7 +69,7 @@ void BcAsientoListView::rellenaListaEjercicio()
     QString SQLQuery = "SELECT DISTINCT EXTRACT (YEAR FROM fecha) AS ano FROM borrador";
     BlDbRecordSet *cur = mainCompany() ->loadQuery ( SQLQuery );
     while ( !cur->eof() ) {
-        mui_ejercicio->addItem ( cur->valor ( "ano" ) );
+        mui_ejercicio->addItem ( cur->value( "ano" ) );
         cur->nextRecord();
     } // end while
     delete cur;
@@ -83,7 +83,7 @@ void BcAsientoListView::rellenaListaEjercicio()
 BcAsientoListView::~BcAsientoListView()
 {
     blDebug ( "BcAsientoListView::~BcAsientoListView\n", 0 );
-    mainCompany() ->sacaWindow ( this );
+    mainCompany() ->removeWindow ( this );
     blDebug ( "END BcAsientoListView::~BcAsientoListView\n", 0 );
 }
 

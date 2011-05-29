@@ -43,7 +43,7 @@ int entryPoint ( BfBulmaFact *bges )
 
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale ( LC_ALL, "" );
-    blBindTextDomain ( "pluginbf_actividad", g_confpr->valor ( CONF_DIR_TRADUCCION ).toAscii().constData() );
+    blBindTextDomain ( "pluginbf_actividad", g_confpr->value( CONF_DIR_TRADUCCION ).toAscii().constData() );
     g_bges = bges;
 
     if ( bges->company()->hasTablePrivilege ( "cobro", "SELECT" ) ) {
@@ -172,7 +172,7 @@ int BlSubForm_editFinished ( BlSubForm *sub )
     if ( sub->m_campoactual->nomcampo() == "nombreactividad" ) {
         BlDbRecordSet *cur = sub->mainCompany() ->loadQuery ( "SELECT idactividad FROM actividad WHERE nombreactividad = '" + sub->m_campoactual->text() + "'" );
         if ( !cur->eof() ) {
-            sub->m_registrolinea->setDbValue ( "idactividad", cur->valor ( "idactividad" ) );
+            sub->m_registrolinea->setDbValue ( "idactividad", cur->value( "idactividad" ) );
         } // end if
         delete cur;
     } // end if
@@ -318,8 +318,8 @@ void SubForm_Actividad::seleccionarActividad ( BfSubForm *sub )
     BlDbRecordSet *cur = sub->mainCompany() ->loadQuery ( "SELECT * FROM actividad WHERE idactividad = " + idActividad );
     if ( !cur->eof() ) {
         sub->lineaact()->setDbValue ( "idactividad", idActividad );
-        sub->lineaact()->setDbValue ( "codigoactividad", cur->valor ( "codigoactividad" ) );
-        sub->lineaact()->setDbValue ( "nombreactividad", cur->valor ( "nombreactividad" ) );
+        sub->lineaact()->setDbValue ( "codigoactividad", cur->value( "codigoactividad" ) );
+        sub->lineaact()->setDbValue ( "nombreactividad", cur->value( "nombreactividad" ) );
     } // end if
     delete cur;
 

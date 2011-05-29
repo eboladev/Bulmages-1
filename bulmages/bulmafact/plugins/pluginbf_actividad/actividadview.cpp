@@ -81,7 +81,7 @@ ActividadView::ActividadView ( BfCompany *comp, QWidget *parent )
             return;
         } // end if
 
-        meteWindow ( windowTitle(), this, FALSE );
+        insertWindow ( windowTitle(), this, FALSE );
 
         /// Inicializamos el subformulario de alumnos
         mui_alumnosList->setMainCompany ( comp );
@@ -104,7 +104,7 @@ ActividadView::ActividadView ( BfCompany *comp, QWidget *parent )
         mui_idtipoactividad->setAllowNull ( FALSE );
 
         pintar();
-        dialogChanges_cargaInicial();
+        dialogChanges_readValues();
 
         mui_idtipoactividad->setId ( "" );
 	blScript(this);

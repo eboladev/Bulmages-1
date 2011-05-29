@@ -46,7 +46,7 @@ int entryPoint ( BfBulmaFact *bges )
 
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale ( LC_ALL, "" );
-    blBindTextDomain ( "pluginbf_clientealbaran", g_confpr->valor ( CONF_DIR_TRADUCCION ).toAscii().constData() );
+    blBindTextDomain ( "pluginbf_clientealbaran", g_confpr->value( CONF_DIR_TRADUCCION ).toAscii().constData() );
 
 
     if ( bges->company()->hasTablePrivilege ( "albaran", "SELECT" ) ) {
@@ -143,7 +143,7 @@ int BfBuscarReferencia_on_mui_abrirtodo_clicked_Post ( BfBuscarReferencia *ref )
     while ( !cur->eof() ) {
         AlbaranClienteView * bud = new AlbaranClienteView ( ( BfCompany * ) ref->mainCompany(), NULL );
         ref->mainCompany() ->m_pWorkspace->addSubWindow ( bud );
-        bud->cargar ( cur->valor ( "idfactura" ) );
+        bud->cargar ( cur->value( "idfactura" ) );
         bud->show();
         cur->nextRecord();
     } // end while

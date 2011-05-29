@@ -60,7 +60,7 @@ VehiculoView::VehiculoView ( BfCompany *emp, QWidget *parent )
     mui_listadomantvehiculo->setInsert ( TRUE );
 
     /// Fin de nuevas amortizaciones
-    mainCompany() ->meteWindow ( windowTitle(), this );
+    mainCompany() ->insertWindow ( windowTitle(), this );
     cargar ( "1" );
     blScript(this);
     blDebug ( "END VehiculoView::VehiculoView", 0 );
@@ -73,7 +73,7 @@ VehiculoView::VehiculoView ( BfCompany *emp, QWidget *parent )
 VehiculoView::~VehiculoView()
 {
     blDebug ( "VehiculoView::~VehiculoView", 0 );
-    mainCompany() ->sacaWindow ( this );
+    mainCompany() ->removeWindow ( this );
     blDebug ( "END VehiculoView::~VehiculoView", 0 );
 }
 
@@ -93,10 +93,10 @@ int VehiculoView::guardar()
         setDbValue ( "preciovehiculo", mui_preciovehiculo->text() );
 
         QString id = "";
-        BlDbRecord::DBsave ( id );
+        BlDbRecord::dbSave ( id );
         mui_listadomantvehiculo->setColumnValue ( "idvehiculo", id );
         mui_listadomantvehiculo->guardar();
-        dialogChanges_cargaInicial();
+        dialogChanges_readValues();
         return 0;
     } catch ( ... ) {
         blMsgInfo ( _ ( "Error al guardar la ficha" ) );
@@ -127,8 +127,8 @@ int VehiculoView::cargar ( QString idvehiculo )
         QString mantenimientos = "SELECT * FROM mantvehiculo WHERE idvehiculo = '" + idvehiculo + "'";
         mui_listadomantvehiculo->cargar ( mantenimientos );
 
-        dialogChanges_cargaInicial();
-        mainCompany() ->meteWindow ( windowTitle(), this );
+        dialogChanges_readValues();
+        mainCompany() ->insertWindow ( windowTitle(), this );
         blDebug ( "END VehiculoView::cargar", 0 );
         return 0;
     } catch ( ... ) {

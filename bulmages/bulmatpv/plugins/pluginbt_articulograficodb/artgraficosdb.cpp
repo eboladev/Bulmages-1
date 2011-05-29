@@ -51,7 +51,7 @@ BtLabel::BtLabel() {}
 BtLabel::~BtLabel() {}
 void BtLabel::mousePressEvent ( QMouseEvent * e ) {
      if (e->button() == Qt::LeftButton) {
-         int cellwidth = g_confpr->valor(CONF_TPV_CELL_WIDTH ).toInt();
+         int cellwidth = g_confpr->value(CONF_TPV_CELL_WIDTH ).toInt();
          /// Evitamos un posible SegFault por division por 0.
          if (cellwidth == 0) cellwidth = 1;
 //         blMsgInfo(QString::number(e->x()));
@@ -110,7 +110,7 @@ void ArtGraficosDb::cellClicked ( int row, int column )
         return;
     }
 
-    QString artvarios = g_confpr->valor ( CONF_ARTICULOS_VARIOS );
+    QString artvarios = g_confpr->value( CONF_ARTICULOS_VARIOS );
 
     QString codigo = label->m_codigoarticulo[row][column];
 
@@ -189,10 +189,10 @@ void ArtGraficosDb::renderPantallas ()
     m_numPantallas = m_listfamilias.count();
 
     /// Celdas por fila
-    QString grid = g_confpr->valor ( CONF_TPV_CELLS_PER_ROW );
+    QString grid = g_confpr->value( CONF_TPV_CELLS_PER_ROW );
 
     /// Ancho y alto de la celda en pixeles
-    QString cellwidth = g_confpr->valor ( CONF_TPV_CELL_WIDTH );
+    QString cellwidth = g_confpr->value( CONF_TPV_CELL_WIDTH );
 
     /// Recorremos todas las familias para crear todas las pantallas.
     for ( int i = 0; i < m_numPantallas; i++ ) {
@@ -268,27 +268,27 @@ void ArtGraficosDb::renderPantallas ()
 		      lab->m_codigoarticulo[column][row] = codigo;
 
 		      // Probamos con una Picture
-		      QFile f ( g_confpr->valor ( CONF_DIR_THUMB_ARTICLES ) + codigo + ".jpg" );
+		      QFile f ( g_confpr->value( CONF_DIR_THUMB_ARTICLES ) + codigo + ".jpg" );
 
 		      // Si existe la imagen del articulo, esta se superpondra a la de blanco.jpg, dejando 20px por debajo
 		      // para que se vea el texto negro sobre blanco
 		      if ( f.exists() ) {
 			  /// Es importante pasar el pixmap ya escalado porque sino en cada renderizado se reescala de nuevo el pixmap.
-			  QPixmap p = QPixmap ( g_confpr->valor ( CONF_DIR_THUMB_ARTICLES ) + codigo + ".jpg" ).scaled ( cellwidth.toInt() - 1, cellwidth.toInt() - 20 );
+			  QPixmap p = QPixmap ( g_confpr->value( CONF_DIR_THUMB_ARTICLES ) + codigo + ".jpg" ).scaled ( cellwidth.toInt() - 1, cellwidth.toInt() - 20 );
 			  painter.drawPixmap ( cellwidth.toInt() *column, cellwidth.toInt() *row, p );
-			  painter.drawText ( cellwidth.toInt() *column + 5, cellwidth.toInt() *row + ( g_confpr->valor ( CONF_TPV_CELL_WIDTH ).toInt() - 5 ), nombre );
+			  painter.drawText ( cellwidth.toInt() *column + 5, cellwidth.toInt() *row + ( g_confpr->value( CONF_TPV_CELL_WIDTH ).toInt() - 5 ), nombre );
 			  
 		      } else {
 
-			  QFile f1 ( g_confpr->valor ( CONF_DIR_THUMB_ARTICLES ) + codigo + ".png" );
+			  QFile f1 ( g_confpr->value( CONF_DIR_THUMB_ARTICLES ) + codigo + ".png" );
 
 			  /// Si existe la imagen del articulo, esta se superpondra a la de blanco.jpg, dejando 20px por debajo
 			  /// para que se vea el texto negro sobre blanco
 			  if ( f1.exists() ) {
 			    /// Es importante pasar el pixmap ya escalado porque sino en cada renderizado se reescala de nuevo el pixmap.
-			    QPixmap p = QPixmap ( g_confpr->valor ( CONF_DIR_THUMB_ARTICLES ) + codigo + ".png" ).scaled ( cellwidth.toInt() - 1, cellwidth.toInt() - 20 );
+			    QPixmap p = QPixmap ( g_confpr->value( CONF_DIR_THUMB_ARTICLES ) + codigo + ".png" ).scaled ( cellwidth.toInt() - 1, cellwidth.toInt() - 20 );
 			    painter.drawPixmap ( cellwidth.toInt() *column, cellwidth.toInt() *row, p );
-			    painter.drawText ( cellwidth.toInt() *column + 5, cellwidth.toInt() *row + ( g_confpr->valor ( CONF_TPV_CELL_WIDTH ).toInt() - 5 ), nombre );
+			    painter.drawText ( cellwidth.toInt() *column + 5, cellwidth.toInt() *row + ( g_confpr->value( CONF_TPV_CELL_WIDTH ).toInt() - 5 ), nombre );
 			    
 			  } else {
 			    
@@ -309,14 +309,14 @@ void ArtGraficosDb::renderPantallas ()
 			    } // end if
 			    
 			    painter.drawPixmap ( cellwidth.toInt() *column, cellwidth.toInt() *row, recuadro );
-			    painter.drawText ( cellwidth.toInt() *column + 5, cellwidth.toInt() *row + ( g_confpr->valor ( CONF_TPV_CELL_WIDTH ).toInt() - 5 ), nombre );
+			    painter.drawText ( cellwidth.toInt() *column + 5, cellwidth.toInt() *row + ( g_confpr->value( CONF_TPV_CELL_WIDTH ).toInt() - 5 ), nombre );
 			  } // end if
 			
 		      } // end if
 
 		      /// Si esta marcada la opcion de escribir etiqueta.
 		      if (na.m_etiquetavisible) {
-			    painter.drawText ( cellwidth.toInt() *column + 5, (cellwidth.toInt() *row + ( g_confpr->valor ( CONF_TPV_CELL_WIDTH ).toInt() - 5) / 2 ), na.m_etiquetaarticulo );
+			    painter.drawText ( cellwidth.toInt() *column + 5, (cellwidth.toInt() *row + ( g_confpr->value( CONF_TPV_CELL_WIDTH ).toInt() - 5) / 2 ), na.m_etiquetaarticulo );
 		      } // end if
 
                     } // end if
@@ -328,7 +328,7 @@ void ArtGraficosDb::renderPantallas ()
         } // end for
 
 
-//         painter.drawText ( cellwidth.toInt() * numcols/2 - 30 , cellwidth.toInt() *numrows + ( g_confpr->valor ( CONF_TPV_CELL_WIDTH ).toInt() + 25 ), "Iglues/BulmaTPV" );
+//         painter.drawText ( cellwidth.toInt() * numcols/2 - 30 , cellwidth.toInt() *numrows + ( g_confpr->value( CONF_TPV_CELL_WIDTH ).toInt() + 25 ), "Iglues/BulmaTPV" );
 //         QPixmap p = QPixmap ( 100, 100  );
 //         p.fill();
 //         painter.drawPixmap ( 0, cellwidth.toInt() * (numrows+1), p );
@@ -365,8 +365,8 @@ void ArtGraficosDb::ponPantallas()
 
     
     /// Establece el numero de columnas a mostrar. Minimo 1.
-    if ( g_confpr->valor ( CONF_TPV_CATEGORIES_COLUMNS ).toInt() > 1 ) {
-      columnasBotones = g_confpr->valor ( CONF_TPV_CATEGORIES_COLUMNS ).toInt();
+    if ( g_confpr->value( CONF_TPV_CATEGORIES_COLUMNS ).toInt() > 1 ) {
+      columnasBotones = g_confpr->value( CONF_TPV_CATEGORIES_COLUMNS ).toInt();
     } else {
       columnasBotones = 1;
     } // end if
@@ -396,14 +396,14 @@ void ArtGraficosDb::ponPantallas()
 
     while ( !familias->eof() ) {
       
-        QString titulo = familias->valor ( "nombrefamilia" );
+        QString titulo = familias->value( "nombrefamilia" );
         QPushButton *pb = new QPushButton ( titulo, g_pantallas );
 	
-	QColor pbColor = QColor(familias->valor ( "colortpvfamilia" ));
+	QColor pbColor = QColor(familias->value( "colortpvfamilia" ));
 
 	if ( pbColor.isValid() ) {
 	    /// Si el color es valido entonces lo utiliza para pintar el boton de ese color.
-	    QString pbStyles = "QPushButton { background-color: " + familias->valor ( "colortpvfamilia" ) + "; }";
+	    QString pbStyles = "QPushButton { background-color: " + familias->value( "colortpvfamilia" ) + "; }";
 	    pb->setStyleSheet(pbStyles);
 	    style()->unpolish(pb);
 	    style()->polish(pb);
@@ -420,8 +420,8 @@ void ArtGraficosDb::ponPantallas()
 	indice = contadorBotones % columnasBotones;
 	listaVBoxLayout[indice]->addWidget ( pb );
 
-        fa.m_nombrefamilia = familias->valor ( "nombrefamilia" );
-        fa.m_idfamilia = familias->valor ( "idfamilia" );
+        fa.m_nombrefamilia = familias->value( "nombrefamilia" );
+        fa.m_idfamilia = familias->value( "idfamilia" );
 
         /// Llenamos la lista de articulos
         BlDbRecordSet *articulos;
@@ -430,17 +430,17 @@ void ArtGraficosDb::ponPantallas()
         while ( !articulos->eof() ) {
 
             NodoArticulo na;
-            na.m_codigoarticulo = articulos->valor ( "codigocompletoarticulo" );
-            na.m_nombrearticulo = articulos->valor ( "nomarticulo" );
+            na.m_codigoarticulo = articulos->value( "codigocompletoarticulo" );
+            na.m_nombrearticulo = articulos->value( "nomarticulo" );
 
-	    if (articulos->valor ( "etiquetavisibletpvarticulo" ) == "f") {
+	    if (articulos->value( "etiquetavisibletpvarticulo" ) == "f") {
 	      na.m_etiquetavisible = FALSE;
 	    } else {
 	      na.m_etiquetavisible = TRUE;
 	    } // end if
 	    
-	    na.m_etiquetaarticulo = articulos->valor ( "abrevarticulo" );
-	    na.m_colortpvarticulo = articulos->valor ( "colortpvarticulo" );
+	    na.m_etiquetaarticulo = articulos->value( "abrevarticulo" );
+	    na.m_colortpvarticulo = articulos->value( "colortpvarticulo" );
             fa.m_listaarticulos.append ( na );
             articulos->nextRecord();
 

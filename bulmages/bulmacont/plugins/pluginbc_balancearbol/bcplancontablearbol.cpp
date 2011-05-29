@@ -52,9 +52,9 @@ void BcPlanContableArbol::nuevaRama ( BlDbRecordSet *ramas )
 
     /// Rellenamos los valores de inicializacion para una hoja.
     hoja = new tipohoja;
-    hoja->idcuenta = atoi ( ramas->valor ( "idcuenta" ).toAscii().constData() );
-    hoja->codigo = QString ( ramas->valor ( "codigo" ) );
-    hoja->descripcion = QString ( ramas->valor ( "descripcion" ) );
+    hoja->idcuenta = atoi ( ramas->value( "idcuenta" ).toAscii().constData() );
+    hoja->codigo = QString ( ramas->value( "codigo" ) );
+    hoja->descripcion = QString ( ramas->value( "descripcion" ) );
     hoja->saldoant = hoja->debe = hoja->haber = hoja->saldo = hoja->debeej = hoja->haberej = hoja->saldoej = BlFixed ( "0.00" );
     hoja->numapuntes = 0;
     hoja->ramas = NULL;
@@ -80,13 +80,13 @@ void BcPlanContableArbol::inicializa ( BlDbRecordSet *ramas )
         padre = raiz.at ( i )->codigo;
         /// Creamos las primeras hojas en la ra&iacute;z y sintetizamos el resto
         /// recursivamente (si es que existen aun m&aacute;s hojas hijas).
-        while ( !ramas->eof() && ramas->valor ( "codigo" ).startsWith ( padre ) ) {
-            if ( ramas->valor ( "nivel" ).toInt() > 2 ) {
+        while ( !ramas->eof() && ramas->value( "codigo" ).startsWith ( padre ) ) {
+            if ( ramas->value( "nivel" ).toInt() > 2 ) {
                 /// Creamos una hoja.
                 hoja = new tipohoja;
-                hoja->idcuenta = ramas->valor ( "idcuenta" ).toInt();
-                hoja->codigo = ramas->valor ( "codigo" );
-                hoja->descripcion = ramas->valor ( "descripcion" );
+                hoja->idcuenta = ramas->value( "idcuenta" ).toInt();
+                hoja->codigo = ramas->value( "codigo" );
+                hoja->descripcion = ramas->value( "descripcion" );
                 hoja->saldoant = hoja->debe = hoja->haber = hoja->saldo = hoja->debeej = hoja->haberej = hoja->saldoej = BlFixed ( "0.00" );
                 hoja->numapuntes = 0;
                 hoja->ramas = NULL;
@@ -126,10 +126,10 @@ void BcPlanContableArbol::SintetizarRamas ( BlDbRecordSet **cuentas, tiporama **
     tipohoja *hoja;
     int nivel;
     BlDbRecordSet *ptrcuentas = *cuentas;
-    nivel = atoi ( ptrcuentas->valor ( "nivel" ).toAscii().constData() );
+    nivel = atoi ( ptrcuentas->value( "nivel" ).toAscii().constData() );
     ptrcuentas->nextRecord();
     guia = NULL;
-    while ( !ptrcuentas->eof() && ( atoi ( ptrcuentas->valor ( "nivel" ).toAscii().constData() ) > nivel ) ) {
+    while ( !ptrcuentas->eof() && ( atoi ( ptrcuentas->value( "nivel" ).toAscii().constData() ) > nivel ) ) {
         /// Reservamos un huequecito de memoria para almacenar los datos de la rama.
         rama = new tiporama;
         if ( !guia ) {
@@ -139,9 +139,9 @@ void BcPlanContableArbol::SintetizarRamas ( BlDbRecordSet **cuentas, tiporama **
             guia = guia->sgte;
         } // end if
         hoja = new tipohoja; /// Idem para una hojita.
-        hoja->idcuenta = atoi ( ptrcuentas->valor ( "idcuenta" ).toAscii().constData() );
-        hoja->codigo = ptrcuentas->valor ( "codigo" );
-        hoja->descripcion = ptrcuentas->valor ( "descripcion" );
+        hoja->idcuenta = atoi ( ptrcuentas->value( "idcuenta" ).toAscii().constData() );
+        hoja->codigo = ptrcuentas->value( "codigo" );
+        hoja->descripcion = ptrcuentas->value( "descripcion" );
         hoja->saldoant = hoja->debe = hoja->haber = hoja->saldo = hoja->debeej = hoja->haberej = hoja->saldoej = BlFixed ( "0.00" );
         hoja->numapuntes = 0;
         hoja->ramas = NULL;
@@ -167,7 +167,7 @@ void BcPlanContableArbol::actualizaHojas ( BlDbRecordSet *cuenta )
     int i = 0;
     bool actualizado = false;
     tipohoja *hojaraiz;
-    QString cuentapadre = cuenta->valor ( "codigo" ).left ( 2 );
+    QString cuentapadre = cuenta->value( "codigo" ).left ( 2 );
 
     /// Buscamos la rama del arbol que es la padre la cuenta pasada.
     for ( ; i < raiz.size(); ++i ) {
@@ -180,14 +180,14 @@ void BcPlanContableArbol::actualizaHojas ( BlDbRecordSet *cuenta )
     if ( i < raiz.size() && hojaraiz->ramas ) {
         ActualizarHoja ( & ( hojaraiz->ramas ), cuenta, &actualizado );
         if ( actualizado ) {
-            hojaraiz->saldoant = hojaraiz->saldoant + BlFixed ( cuenta->valor ( "saldoant" ) );
-            hojaraiz->debe = hojaraiz->debe + BlFixed ( cuenta->valor ( "debe" ) );
-            hojaraiz->haber = hojaraiz->haber + BlFixed ( cuenta->valor ( "haber" ) );
-            hojaraiz->saldo = hojaraiz->saldo + BlFixed ( cuenta->valor ( "saldo" ) );
-            hojaraiz->debeej = hojaraiz->debeej + BlFixed ( cuenta->valor ( "debeej" ) );
-            hojaraiz->haberej = hojaraiz->haberej + BlFixed ( cuenta->valor ( "haberej" ) );
-            hojaraiz->saldoej = hojaraiz->saldoej + BlFixed ( cuenta->valor ( "saldoej" ) );
-            hojaraiz->numapuntes += cuenta->valor ( "numapuntes" ).toInt();
+            hojaraiz->saldoant = hojaraiz->saldoant + BlFixed ( cuenta->value( "saldoant" ) );
+            hojaraiz->debe = hojaraiz->debe + BlFixed ( cuenta->value( "debe" ) );
+            hojaraiz->haber = hojaraiz->haber + BlFixed ( cuenta->value( "haber" ) );
+            hojaraiz->saldo = hojaraiz->saldo + BlFixed ( cuenta->value( "saldo" ) );
+            hojaraiz->debeej = hojaraiz->debeej + BlFixed ( cuenta->value( "debeej" ) );
+            hojaraiz->haberej = hojaraiz->haberej + BlFixed ( cuenta->value( "haberej" ) );
+            hojaraiz->saldoej = hojaraiz->saldoej + BlFixed ( cuenta->value( "saldoej" ) );
+            hojaraiz->numapuntes += cuenta->value( "numapuntes" ).toInt();
         } // end if
     } // end if
 
@@ -206,35 +206,35 @@ void BcPlanContableArbol::ActualizarHoja ( tiporama** ramaraiz, BlDbRecordSet* c
     blDebug ( "BcPlanContableArbol::ActualizarHoja", 0 );
 
     tiporama* rama = *ramaraiz;
-    int idcuenta = cuenta->valor ( "idcuenta" ).toInt();
+    int idcuenta = cuenta->value( "idcuenta" ).toInt();
 
     /// Buscamos por cada una de las ramas.
     while ( rama && ! ( *actualizado ) ) {
         if ( rama->hoja->idcuenta == idcuenta ) {
             /// Ponemos los valores obtenidos de la BD.
-            rama->hoja->saldoant = BlFixed ( cuenta->valor ( "saldoant" ) );
-            rama->hoja->debe = BlFixed ( cuenta->valor ( "debe" ) );
-            rama->hoja->haber = BlFixed ( cuenta->valor ( "haber" ) );
-            rama->hoja->saldo = BlFixed ( cuenta->valor ( "saldo" ) );
-            rama->hoja->debeej = BlFixed ( cuenta->valor ( "debeej" ) );
-            rama->hoja->haberej = BlFixed ( cuenta->valor ( "haberej" ) );
-            rama->hoja->saldoej = BlFixed ( cuenta->valor ( "saldoej" ) );
-            rama->hoja->numapuntes = cuenta->valor ( "numapuntes" ).toInt();
-            blDebug ( "BcPlanContableArbol::ActualizarHoja", 2, cuenta->valor ( "codigo" ) + " " + QString::number ( rama->hoja->numapuntes ) );
+            rama->hoja->saldoant = BlFixed ( cuenta->value( "saldoant" ) );
+            rama->hoja->debe = BlFixed ( cuenta->value( "debe" ) );
+            rama->hoja->haber = BlFixed ( cuenta->value( "haber" ) );
+            rama->hoja->saldo = BlFixed ( cuenta->value( "saldo" ) );
+            rama->hoja->debeej = BlFixed ( cuenta->value( "debeej" ) );
+            rama->hoja->haberej = BlFixed ( cuenta->value( "haberej" ) );
+            rama->hoja->saldoej = BlFixed ( cuenta->value( "saldoej" ) );
+            rama->hoja->numapuntes = cuenta->value( "numapuntes" ).toInt();
+            blDebug ( "BcPlanContableArbol::ActualizarHoja", 2, cuenta->value( "codigo" ) + " " + QString::number ( rama->hoja->numapuntes ) );
             *actualizado = true;
         } else {
             if ( rama->hoja->ramas ) {
                 ActualizarHoja ( & ( rama->hoja->ramas ), cuenta, & ( *actualizado ) );
                 /// A la vuelta, actualizamos los valores si alguna hoja fue actualizada.
                 if ( *actualizado ) {
-                    rama->hoja->saldoant = rama->hoja->saldoant + BlFixed ( cuenta->valor ( "saldoant" ) );
-                    rama->hoja->debe = rama->hoja->debe + BlFixed ( cuenta->valor ( "debe" ) );
-                    rama->hoja->haber = rama->hoja->haber + BlFixed ( cuenta->valor ( "haber" ) );
-                    rama->hoja->saldo = rama->hoja->saldo + BlFixed ( cuenta->valor ( "saldo" ) );
-                    rama->hoja->debeej = rama->hoja->debeej + BlFixed ( cuenta->valor ( "debeej" ) );
-                    rama->hoja->haberej = rama->hoja->haberej + BlFixed ( cuenta->valor ( "haberej" ) );
-                    rama->hoja->saldoej = rama->hoja->saldoej + BlFixed ( cuenta->valor ( "saldoej" ) );
-                    rama->hoja->numapuntes += cuenta->valor ( "numapuntes" ).toInt();
+                    rama->hoja->saldoant = rama->hoja->saldoant + BlFixed ( cuenta->value( "saldoant" ) );
+                    rama->hoja->debe = rama->hoja->debe + BlFixed ( cuenta->value( "debe" ) );
+                    rama->hoja->haber = rama->hoja->haber + BlFixed ( cuenta->value( "haber" ) );
+                    rama->hoja->saldo = rama->hoja->saldo + BlFixed ( cuenta->value( "saldo" ) );
+                    rama->hoja->debeej = rama->hoja->debeej + BlFixed ( cuenta->value( "debeej" ) );
+                    rama->hoja->haberej = rama->hoja->haberej + BlFixed ( cuenta->value( "haberej" ) );
+                    rama->hoja->saldoej = rama->hoja->saldoej + BlFixed ( cuenta->value( "saldoej" ) );
+                    rama->hoja->numapuntes += cuenta->value( "numapuntes" ).toInt();
                 } // end if
             } // end if
         } // end if

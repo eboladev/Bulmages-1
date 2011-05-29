@@ -75,7 +75,7 @@ void BfBuscarFamilia::setcodigocompletofamilia ( QString val )
     BlDbRecordSet *cur = mainCompany() ->loadQuery ( SQLQuery );
 
     if ( !cur->eof() ) {
-        setId ( cur->valor ( "idfamilia" ) );
+        setId ( cur->value( "idfamilia" ) );
     } else {
         setId ( "" );
     } // end if

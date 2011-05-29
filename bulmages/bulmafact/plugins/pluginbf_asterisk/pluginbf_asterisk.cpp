@@ -38,7 +38,7 @@ int entryPoint ( BfBulmaFact *bges )
 
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale ( LC_ALL, "" );
-    blBindTextDomain ( "pluginbf_asterisk", g_confpr->valor ( CONF_DIR_TRADUCCION ).toAscii().constData() );
+    blBindTextDomain ( "pluginbf_asterisk", g_confpr->value( CONF_DIR_TRADUCCION ).toAscii().constData() );
 
     return 0;
 }
@@ -113,7 +113,7 @@ int TrabajadorView_TrabajadorView_Post ( TrabajadorView *trab )
     l->setInsert ( TRUE );
     l->setDelete ( TRUE );
     l->setSortingEnabled ( FALSE );
-    trab->dialogChanges_setQObjectExcluido ( l->mui_list );
+    trab->dialogChanges_setExcludedObject ( l->mui_list );
     trab->mui_tab->addTab ( l, "Validaciones Asterisk" );
     return 0;
 }
@@ -224,8 +224,8 @@ int TrabajadorView_on_mui_lista_currentItemChanged_Post ( TrabajadorView *trab )
 
     BlDbRecordSet *cur = trab->mainCompany() ->loadQuery ( "SELECT passasterisktrabajador, validasiempreasterisktrabajador FROM trabajador WHERE idtrabajador = " + trab->mdb_idtrabajador );
     if ( !cur->eof() ) {
-        l->setText ( cur->valor ( "passasterisktrabajador" ) );
-        l9->setChecked ( ( cur->valor ( "validasiempreasterisktrabajador" ) == "t" ) );
+        l->setText ( cur->value( "passasterisktrabajador" ) );
+        l9->setChecked ( ( cur->value( "validasiempreasterisktrabajador" ) == "t" ) );
     } // end if
     delete cur;
 

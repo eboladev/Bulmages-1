@@ -270,7 +270,7 @@ BlSubForm::BlSubForm ( QWidget *parent ) : BlWidget ( parent )
     g_plugins->lanza ( "BlSubForm_BlSubForm_Post", this );
     m_procesacambios = TRUE;
     
-   if (g_confpr->valor(CONF_MODO_EXPERTO) != "TRUE") {
+   if (g_confpr->value(CONF_MODO_EXPERTO) != "TRUE") {
      mui_selectorblsubform->removeTab(mui_selectorblsubform->indexOf(tab3));
    } // end if
    
@@ -325,7 +325,7 @@ void BlSubForm::setMainCompany ( BlMainCompany *emp )
                 QString query2 = "SELECT numeric_scale FROM information_schema.columns WHERE table_name = '" + tableName() + "' and column_name = '" + linea->nomcampo() + "';";
                 BlDbRecordSet *cur = mainCompany() ->loadQuery ( query2 );
                 if ( !cur->eof() ) {
-                    linea->setNumericPrecision(cur->valor("numeric_scale").toInt());
+                    linea->setNumericPrecision(cur->value("numeric_scale").toInt());
                 } // end if
                 delete cur;
           } // end if
@@ -343,7 +343,7 @@ void BlSubForm::setMainCompany ( BlMainCompany *emp )
 void BlSubForm::cargaSpecs()
 {
     blDebug ( "BlSubForm::cargaSpecs", 0 );
-//    QFile file(g_confpr->valor(CONF_DIR_USER) + m_fileconfig + "_" + mainCompany()->dbName() + "_specs.spc");
+//    QFile file(g_confpr->value(CONF_DIR_USER) + m_fileconfig + "_" + mainCompany()->dbName() + "_specs.spc");
     QFile file ( CONFIG_DIR_CONFIG + m_fileconfig + "_" + mainCompany() ->dbName() + "_specs.spc" );
     QDomDocument doc ( "mydocument" );
     if ( !file.open ( QIODevice::ReadOnly ) ) {
@@ -1564,7 +1564,7 @@ void BlSubForm::cargar ( BlDbRecordSet *cur )
     m_procesacambios = TRUE;
 
     /// Ajustamos las columnas al contenido.
-    if (g_confpr->valor(CONF_RESIZEROWSTOCONTENTS) == "TRUE") {
+    if (g_confpr->value(CONF_RESIZEROWSTOCONTENTS) == "TRUE") {
       mui_listcolumnas->resizeRowsToContents();
       resizeRowsToContents();
     } // end if
@@ -1972,7 +1972,7 @@ int BlSubForm::addSubFormHeader ( QString nom, BlDbField::DbType typ, int res, i
           QString query2 = "SELECT numeric_scale FROM information_schema.columns WHERE table_name = '"+tableName()+"' and column_name='"+nom+"';";
           BlDbRecordSet *cur = mainCompany() ->loadQuery ( query2 );
           if ( !cur->eof() ) {
-              camp->setNumericPrecision(cur->valor("numeric_scale").toInt());
+              camp->setNumericPrecision(cur->value("numeric_scale").toInt());
           } // end if
           delete cur;
       } else {
@@ -2275,13 +2275,13 @@ int BlSubForm::cerrarEditor()
 /// Sacamos cual es el archivo en el que guardar/cargar configuraciones
 const QString BlSubForm::nameFileConfig() 
 {
-   QString directorio = g_confpr->valor(CONF_DIR_USER);
-   if (g_confpr->valor(CONF_GLOBAL_CONFIG_USER) == "TRUE") {
-      directorio = g_confpr->valor(CONF_DIR_CONFIG);
+   QString directorio = g_confpr->value(CONF_DIR_USER);
+   if (g_confpr->value(CONF_GLOBAL_CONFIG_USER) == "TRUE") {
+      directorio = g_confpr->value(CONF_DIR_CONFIG);
    } // end if
 
    QString empresa = mainCompany()->dbName();
-   if (g_confpr->valor(CONF_GLOBAL_CONFIG_COMPANY) == "TRUE") {
+   if (g_confpr->value(CONF_GLOBAL_CONFIG_COMPANY) == "TRUE") {
       empresa  = "";
    } // end if
 
@@ -2293,7 +2293,7 @@ const QString BlSubForm::nameFileConfig()
 /// Lo usamos para mejorar la presentacion en la primera ejecucion ya que la primera impresion es la que queda.
 const QString BlSubForm::nameFileDefaultConfig() 
 {
-   QString directorio = g_confpr->valor(CONF_DIR_DEFAULT_CONFS);
+   QString directorio = g_confpr->value(CONF_DIR_DEFAULT_CONFS);
 
   QString nombre = directorio + m_fileconfig + "_" + QString::number ( m_modo ) + "_tablecfn.cfn" ;
   return nombre;
@@ -2951,11 +2951,11 @@ void BlSubForm::imprimirPDF ( const QString &titular )
     blDebug ( "BlSubForm::imprimir", 0 );
 
     /// Los listados siempre usan la misma plantilla para imprimir listado.
-    QString archivo = g_confpr->valor ( CONF_DIR_OPENREPORTS ) + "listado.rml";
-//    QString archivo = g_confpr->valor ( CONF_DIR_OPENREPORTS ) + titular + ".rml";
-    QString archivod = g_confpr->valor ( CONF_DIR_USER ) + "listado.rml";
-//    QString archivod = g_confpr->valor ( CONF_DIR_USER ) + titular + ".rml";
-    QString archivologo = g_confpr->valor ( CONF_DIR_OPENREPORTS ) + "logo.jpg";
+    QString archivo = g_confpr->value( CONF_DIR_OPENREPORTS ) + "listado.rml";
+//    QString archivo = g_confpr->value( CONF_DIR_OPENREPORTS ) + titular + ".rml";
+    QString archivod = g_confpr->value( CONF_DIR_USER ) + "listado.rml";
+//    QString archivod = g_confpr->value( CONF_DIR_USER ) + titular + ".rml";
+    QString archivologo = g_confpr->value( CONF_DIR_OPENREPORTS ) + "logo.jpg";
 
     /// Copiamos el archivo.
 #ifdef Q_OS_WIN32
@@ -2971,9 +2971,9 @@ void BlSubForm::imprimirPDF ( const QString &titular )
     
     /// Copiamos el logo.
 #ifdef Q_OS_WIN32
-    archivologo = "copy \"" + archivologo + "\" \"" + g_confpr->valor ( CONF_DIR_USER ) + "logo.jpg\"";
+    archivologo = "copy \"" + archivologo + "\" \"" + g_confpr->value( CONF_DIR_USER ) + "logo.jpg\"";
 #else
-    archivologo = "cp " + archivologo + " " + g_confpr->valor ( CONF_DIR_USER ) + "logo.jpg";
+    archivologo = "cp " + archivologo + " " + g_confpr->value( CONF_DIR_USER ) + "logo.jpg";
 #endif
 
     int result2 = system ( archivologo.toAscii() );

@@ -44,7 +44,7 @@ Importa el script y lo lanza.
 void BlFormList::blScript(QObject * obj) {
     
     /// Lanzamos los scripts de QScript
-    QString fileName = g_confpr->valor ( CONF_DIR_OPENREPORTS ) + "blformlist_"+metaObject()->className()+".qs";
+    QString fileName = g_confpr->value( CONF_DIR_OPENREPORTS ) + "blformlist_"+metaObject()->className()+".qs";
     QFile scriptFile1(fileName);
     if (scriptFile1.open(QIODevice::ReadOnly)) {
 	  QTextStream stream(&scriptFile1);
@@ -63,7 +63,7 @@ void BlFormList::blScript(QObject * obj) {
     } // end if
     
     
-    fileName = g_confpr->valor ( CONF_DIR_OPENREPORTS ) + "blformlist"+".qs";
+    fileName = g_confpr->value( CONF_DIR_OPENREPORTS ) + "blformlist"+".qs";
     scriptFile1.setFileName(fileName);
     if (scriptFile1.open(QIODevice::ReadOnly)) {
 	  QTextStream stream(&scriptFile1);
@@ -167,7 +167,7 @@ BlFormList::~BlFormList()
 {
     blDebug ( "BlFormList::~BlFormList", 0, this->windowTitle() );
     guardaFiltrosXML();
-    sacaWindow();
+    removeWindow();
     blDebug ( "END BlFormList::~BlFormList", 0 );
 }
 
@@ -176,11 +176,11 @@ BlFormList::~BlFormList()
 /**
 \return
 **/
-int BlFormList::sacaWindow()
+int BlFormList::removeWindow()
 {
-    blDebug ( "BlFormList::sacaWindow", 0 );
-    mainCompany() ->sacaWindow ( this );
-    blDebug ( "END BlFormList::sacaWindow", 0 );
+    blDebug ( "BlFormList::removeWindow", 0 );
+    mainCompany() ->removeWindow ( this );
+    blDebug ( "END BlFormList::removeWindow", 0 );
     return 0;
 }
 
@@ -190,11 +190,11 @@ int BlFormList::sacaWindow()
 \param title
 \return
 **/
-int BlFormList::meteWindow ( QString title )
+int BlFormList::insertWindow ( QString title )
 {
-    blDebug ( "BlFormList::meteWindow", 0 );
-    mainCompany() ->meteWindow ( title, this );
-    blDebug ( "END BlFormList::meteWindow", 0 );
+    blDebug ( "BlFormList::insertWindow", 0 );
+    mainCompany() ->insertWindow ( title, this );
+    blDebug ( "END BlFormList::insertWindow", 0 );
     return 0;
 }
 
@@ -659,13 +659,13 @@ void BlFormList::cargaFiltrosXML() {
 /// Sacamos cual es el archivo en el que guardar/cargar configuraciones
 const QString BlFormList::nameFileConfig() 
 {
-   QString directorio = g_confpr->valor(CONF_DIR_USER);
-   if (g_confpr->valor(CONF_GLOBAL_CONFIG_USER) == "TRUE") {
-      directorio = g_confpr->valor(CONF_DIR_CONFIG);
+   QString directorio = g_confpr->value(CONF_DIR_USER);
+   if (g_confpr->value(CONF_GLOBAL_CONFIG_USER) == "TRUE") {
+      directorio = g_confpr->value(CONF_DIR_CONFIG);
    } // end if
 
    QString empresa = mainCompany()->dbName();
-   if (g_confpr->valor(CONF_GLOBAL_CONFIG_COMPANY) == "TRUE") {
+   if (g_confpr->value(CONF_GLOBAL_CONFIG_COMPANY) == "TRUE") {
       empresa  = "";
    } // end if
 
@@ -677,7 +677,7 @@ const QString BlFormList::nameFileConfig()
 /// Lo usamos para mejorar la presentacion en la primera ejecucion ya que la primera impresion es la que queda.
 const QString BlFormList::nameFileDefaultConfig() 
 {
-   QString directorio = g_confpr->valor(CONF_DIR_DEFAULT_CONFS);
+   QString directorio = g_confpr->value(CONF_DIR_DEFAULT_CONFS);
 
   QString nombre = directorio + "blformlist_" + objectName() + "_cfn.cfn" ;
   return nombre;

@@ -72,9 +72,9 @@ void BusquedaColor::setidtc_color ( QString idtc_color )
     addItem ( "--" );
     while ( !m_comboRecordSet->eof() ) {
         i++;
-        if ( m_comboRecordSet->valor ( "idtc_color" ) == idtc_color )
+        if ( m_comboRecordSet->value( "idtc_color" ) == idtc_color )
             i1 = i;
-        addItem ( m_comboRecordSet->valor ( "nomtc_color" ) );
+        addItem ( m_comboRecordSet->value( "nomtc_color" ) );
         m_comboRecordSet->nextRecord();
     } //end while
     if ( i1 != 0 ) {
@@ -107,8 +107,8 @@ QString BusquedaColor::idtc_color()
     blDebug ( "BusquedaColor::idtc_color", 0 );
     int index = currentIndex();
     if ( index > 0 ) {
-        blDebug ( "END BusquedaColor::idtc_color", 0, m_comboRecordSet->valor ( "idtc_color", index - 1 ) );
-        return ( m_comboRecordSet->valor ( "idtc_color", index - 1 ) );
+        blDebug ( "END BusquedaColor::idtc_color", 0, m_comboRecordSet->value( "idtc_color", index - 1 ) );
+        return ( m_comboRecordSet->value( "idtc_color", index - 1 ) );
     } else {
         blDebug ( "END BusquedaColor::idtc_color", 0 );
         return "";
@@ -148,7 +148,7 @@ void BusquedaColor::m_activated ( int index )
 {
     blDebug ( "BusquedaColor::m_activated", 0 );
     if ( index > 0 ) {
-        emit ( valueChanged ( m_comboRecordSet->valor ( "idtc_color", index - 1 ) ) );
+        emit ( valueChanged ( m_comboRecordSet->value( "idtc_color", index - 1 ) ) );
     } else {
         emit ( valueChanged ( "" ) );
     } // end if

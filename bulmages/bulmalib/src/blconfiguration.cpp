@@ -51,7 +51,7 @@ void initConfiguration ( QString config )
 
 	/// Inicializa el sistema de traducciones 'gettext'.
 	setlocale(LC_ALL, "");
-	blBindTextDomain ("bulmalib", g_confpr->valor(CONF_DIR_TRADUCCION).toAscii().constData());
+	blBindTextDomain ("bulmalib", g_confpr->value(CONF_DIR_TRADUCCION).toAscii().constData());
 	blTextDomain ("bulmalib");
 }
 
@@ -126,7 +126,7 @@ BlConfiguration::BlConfiguration ( QString nombreprograma )
             /// 1) Leemos la configuracion del archivo generico global.
             mensaje = "--> Leyendo el archivo '" + m_dirGlobalConf + m_genericGlobalConfFile + "'<--\n";
             fprintf ( stderr, "%s", mensaje.toAscii().constData() );
-            leeconfig ( m_dirGlobalConf + m_genericGlobalConfFile );
+            readConfig ( m_dirGlobalConf + m_genericGlobalConfFile );
         }// end if
     } // end if
 
@@ -138,7 +138,7 @@ BlConfiguration::BlConfiguration ( QString nombreprograma )
         /// 2) Leemos la configuracion del archivo especifico global.
         mensaje = "--> El archivo '" + m_dirGlobalConf + m_programGlobalConfFile + "' existe. Se va a leer.<--\n";
         fprintf ( stderr, "%s", mensaje.toAscii().constData() );
-        leeconfig ( m_dirGlobalConf + m_programGlobalConfFile );
+        readConfig ( m_dirGlobalConf + m_programGlobalConfFile );
     }// end if
 
     /// Comprobamos si el usuario tiene creado su '/home/~/.bulmages/' directorio
@@ -161,7 +161,7 @@ BlConfiguration::BlConfiguration ( QString nombreprograma )
         /// 3) Leemos la configuracion del archivo generico local.
         mensaje = "--> El archivo '" + m_dirLocalConf + m_genericLocalConfFile + "' existe. Se va a leer.<--\n";
         fprintf ( stderr, "%s", mensaje.toAscii().constData() );
-        leeconfig ( m_dirLocalConf + m_genericLocalConfFile );
+        readConfig ( m_dirLocalConf + m_genericLocalConfFile );
     }// end if
 
     if ( !programLocalConfFile.exists ( m_dirLocalConf + m_programLocalConfFile ) ) {
@@ -171,13 +171,13 @@ BlConfiguration::BlConfiguration ( QString nombreprograma )
         /// 4) Leemos la configuracion del archivo especifico local.
         mensaje = "--> El archivo '" + m_dirLocalConf + m_programLocalConfFile + "' existe. Se va a leer.<--\n";
         fprintf ( stderr, "%s", mensaje.toAscii().constData() );
-        leeconfig ( m_dirLocalConf + m_programLocalConfFile );
+        readConfig ( m_dirLocalConf + m_programLocalConfFile );
     }// end if
 
-    setValor ( CONF_DIR_USER, m_dirLocalConf );
-    setValor ( CONF_PRIVILEGIOS_USUARIO, "1" );
-    setValor ( CONF_LOGIN_USER, "" );
-    setValor ( CONF_PASSWORD_USER, "" );
+    setValue ( CONF_DIR_USER, m_dirLocalConf );
+    setValue ( CONF_PRIVILEGIOS_USUARIO, "1" );
+    setValue ( CONF_LOGIN_USER, "" );
+    setValue ( CONF_PASSWORD_USER, "" );
 
 //    blDebug("END BlConfiguration::BlConfiguration", 0);
 }
@@ -201,7 +201,7 @@ BlConfiguration::~BlConfiguration()
 \param i
 \return
 **/
-QString BlConfiguration::nombre ( int i )
+QString BlConfiguration::name( int i )
 {
     if ( i == CONF_BG_APUNTES )
         return "CONF_BG_APUNTES";
@@ -451,9 +451,9 @@ QString BlConfiguration::nombre ( int i )
 /// 'home' del usuario.
 /**
 **/
-void BlConfiguration::saveconfig()
+void BlConfiguration::saveConfig()
 {
-//    blDebug("BlConfiguration::saveconfig", 0);
+//    blDebug("BlConfiguration::saveConfig", 0);
     QString dir1 = getenv ( "HOME" );
     dir1 = dir1 + "/.bulmages/" + m_dirLocalConf;
 
@@ -463,15 +463,15 @@ void BlConfiguration::saveconfig()
 
     QTextStream filestr ( &file );
     for ( int i = 0; i < 1000; i++ ) {
-        if ( nombre ( i ) != "" ) {
-            filestr << nombre ( i ).toAscii().data();
+        if ( name( i ) != "" ) {
+            filestr << name( i ).toAscii().data();
             filestr << "   ";
-            filestr << valor ( i ).toAscii().data();
+            filestr << value( i ).toAscii().data();
             filestr << endl;
         } // end if
     } // end for
     file.close();
-//    blDebug("END BlConfiguration::saveconfig", 0);
+//    blDebug("END BlConfiguration::saveConfig", 0);
 }
 
 
@@ -482,9 +482,9 @@ void BlConfiguration::saveconfig()
 \param fich
 \return
 **/
-bool BlConfiguration::leeconfig ( QString fich )
+bool BlConfiguration::readConfig ( QString fich )
 {
-//    blDebug("BlConfiguration::leeconfig", 0);
+//    blDebug("BlConfiguration::readConfig", 0);
     QFile arch ( fich );
     if ( arch.open ( QIODevice::ReadOnly ) ) {
         QString cadaux1 = "Leyendo configuracion" + fich + "\n";
@@ -506,9 +506,9 @@ bool BlConfiguration::leeconfig ( QString fich )
             QStringList list = simplificada.split ( QRegExp ( "\\s+" ) );
 
             for ( int i = 0; i < 1000; i++ ) {
-                if (  list[0] == nombre ( i )  && nombre ( i ) != "" ) {
-                    blDebug ( "[" + nombre ( i ) + "]" + "--->" + cad, 0 );
-                    cad = cad.right ( cad.length() - nombre ( i ).length() );
+                if (  list[0] == name( i )  && name( i ) != "" ) {
+                    blDebug ( "[" + name( i ) + "]" + "--->" + cad, 0 );
+                    cad = cad.right ( cad.length() - name( i ).length() );
                     cad = cad.trimmed();
                     m_valores[i] = cad;
                 } // end if
@@ -518,7 +518,7 @@ bool BlConfiguration::leeconfig ( QString fich )
         fprintf ( stderr, "%s", "FIN Leyendo configuracion\n" );
         return TRUE;
     } // end if
-//    blDebug("END BlConfiguration::leeconfig", 0);
+//    blDebug("END BlConfiguration::readConfig", 0);
     return FALSE;
 }
 
@@ -528,7 +528,7 @@ bool BlConfiguration::leeconfig ( QString fich )
 \param i Par&aacute;metro del que se quiere el valor.
 \return El valor que tiene dicho par&aacute;metro.
 **/
-QString BlConfiguration::valor ( int i )
+QString BlConfiguration::value( int i )
 {
 //    blDebug("BlConfiguration::valor", 0);
     if ( m_valores.contains ( i ) ) {
@@ -544,10 +544,10 @@ QString BlConfiguration::valor ( int i )
 \param i El &iacute;ndice del par&aacute;metro a cambiar.
 \param valor El valor que tomar&iacute;a dicho par&aacute;metro.
 **/
-void BlConfiguration::setValor ( int i, QString valor )
+void BlConfiguration::setValue ( int i, QString valor )
 {
-//    blDebug("BlConfiguration::setValor", 0);
+//    blDebug("BlConfiguration::setValue", 0);
     m_valores[i] = valor;
-//    blDebug("END BlConfiguration::setValor", 0);
+//    blDebug("END BlConfiguration::setValue", 0);
 }
 

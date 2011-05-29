@@ -81,8 +81,8 @@ void correctorwidget::on_mui_corregir_clicked()
     cur = dbConnection->loadQuery ( query );
     while ( !cur->eof() ) {
         QString cadena;
-        cadena = "<img src='" + g_confpr->valor ( CONF_PROGDATA ) + "icons/messagebox_warning.png'>&nbsp;&nbsp;<B><I>Warning:</I></B><BR>El asiento num. <B>" + cur->valor ( "ordenasiento" ) + "</B> con fecha <B>" + cur->valor ( "fecha" ) + "</B> esta abierto, esto causa que el asiento no modifique el estado de las cuentas.";
-        agregarError ( cadena, "asiento", "idasiento=" + cur->valor ( "idas" ) );
+        cadena = "<img src='" + g_confpr->value( CONF_PROGDATA ) + "icons/messagebox_warning.png'>&nbsp;&nbsp;<B><I>Warning:</I></B><BR>El asiento num. <B>" + cur->value( "ordenasiento" ) + "</B> con fecha <B>" + cur->value( "fecha" ) + "</B> esta abierto, esto causa que el asiento no modifique el estado de las cuentas.";
+        agregarError ( cadena, "asiento", "idasiento=" + cur->value( "idas" ) );
         cur->nextRecord();
     } // end while
     delete cur;
@@ -93,8 +93,8 @@ void correctorwidget::on_mui_corregir_clicked()
     cur = dbConnection->loadQuery ( query );
     while ( !cur->eof() ) {
         QString cadena;
-        cadena = "<img src='" + g_confpr->valor ( CONF_PROGDATA ) + "icons/messagebox_critical.png'>&nbsp;&nbsp;<B><I>Critial Error:</I></B><BR>El asiento num. <B>" + cur->valor ( "ordenasiento" ) + "</B> tiene un apunte con la cuenta <B>" + cur->valor ( "codigo" ) + "</B> no hija..";
-        agregarError ( cadena, "asiento", "idasiento=" + cur->valor ( "idasiento" ) );
+        cadena = "<img src='" + g_confpr->value( CONF_PROGDATA ) + "icons/messagebox_critical.png'>&nbsp;&nbsp;<B><I>Critial Error:</I></B><BR>El asiento num. <B>" + cur->value( "ordenasiento" ) + "</B> tiene un apunte con la cuenta <B>" + cur->value( "codigo" ) + "</B> no hija..";
+        agregarError ( cadena, "asiento", "idasiento=" + cur->value( "idasiento" ) );
         cur->nextRecord();
     } // end while
     delete cur;
@@ -111,15 +111,15 @@ void correctorwidget::on_mui_corregir_clicked()
     cur = dbConnection->loadQuery ( query );
     while ( !cur->eof() ) {
         float ing, gas, act, pas, net;
-        ing = cur->valor ( "ingresos" ).toFloat();
-        gas = cur->valor ( "gastos" ).toFloat();
-        act = cur->valor ( "activos" ).toFloat();
-        pas = cur->valor ( "pasivos" ).toFloat();
-        net = cur->valor ( "netos" ).toFloat();
+        ing = cur->value( "ingresos" ).toFloat();
+        gas = cur->value( "gastos" ).toFloat();
+        act = cur->value( "activos" ).toFloat();
+        pas = cur->value( "pasivos" ).toFloat();
+        net = cur->value( "netos" ).toFloat();
         if ( abs( act + gas + pas + net + ing ) > 0.01 ) {
             QString cadena;
-            cadena = "<img src='" + g_confpr->valor ( CONF_PROGDATA ) + "icons/messagebox_critical.png'>&nbsp;&nbsp;<B><I>Error critico:</I></B><BR>El asiento num. <B>" + cur->valor ( "ordenasiento" ) + "</B> no cumple la ecuacion fundamental." + QString::number ( act ) + " + " + QString::number ( gas ) + " = " + QString::number ( pas ) + " + " + QString::number ( net ) + " + " + QString::number ( ing );
-            agregarError ( cadena, "asiento", "idasiento=" + cur->valor ( "idasiento" ) );
+            cadena = "<img src='" + g_confpr->value( CONF_PROGDATA ) + "icons/messagebox_critical.png'>&nbsp;&nbsp;<B><I>Error critico:</I></B><BR>El asiento num. <B>" + cur->value( "ordenasiento" ) + "</B> no cumple la ecuacion fundamental." + QString::number ( act ) + " + " + QString::number ( gas ) + " = " + QString::number ( pas ) + " + " + QString::number ( net ) + " + " + QString::number ( ing );
+            agregarError ( cadena, "asiento", "idasiento=" + cur->value( "idasiento" ) );
         } // end if
         cur->nextRecord();
     } // end while
@@ -132,8 +132,8 @@ void correctorwidget::on_mui_corregir_clicked()
     cur = dbConnection->loadQuery ( query, "hola1" );
     while ( !cur->eof() ) {
         QString cadena;
-        cadena = "<img src='" + g_confpr->valor ( CONF_PROGDATA ) + "icons/messagebox_warning.png'>&nbsp;&nbsp;<B><I>Warning:</I></B><BR>El asiento num. <B>" + cur->valor ( "ordenasiento" ) + "</B> tiene una insercion en el debe de la cuenta <B>" + cur->valor ( "codigo" ) + "</B> que no permite inserciones en el debe de dicha cuenta.";
-        agregarError ( cadena, "asiento", "idasiento=" + cur->valor ( "idasiento" ) );
+        cadena = "<img src='" + g_confpr->value( CONF_PROGDATA ) + "icons/messagebox_warning.png'>&nbsp;&nbsp;<B><I>Warning:</I></B><BR>El asiento num. <B>" + cur->value( "ordenasiento" ) + "</B> tiene una insercion en el debe de la cuenta <B>" + cur->value( "codigo" ) + "</B> que no permite inserciones en el debe de dicha cuenta.";
+        agregarError ( cadena, "asiento", "idasiento=" + cur->value( "idasiento" ) );
         cur->nextRecord();
     } // end while
     delete cur;
@@ -144,8 +144,8 @@ void correctorwidget::on_mui_corregir_clicked()
     cur = dbConnection->loadQuery ( query );
     while ( !cur->eof() ) {
         QString cadena;
-        cadena = "<img src='" + g_confpr->valor ( CONF_PROGDATA ) + "icons/messagebox_warning.png'>&nbsp;&nbsp;<B><I>Warning:</I></B><BR>El asiento num. <B>" + cur->valor ( "ordenasiento" ) + "</B> tiene una insercion en el haber de la cuenta <B>" + cur->valor ( "codigo" ) + "</B> que no permite inserciones en el haber de dicha cuenta.";
-        agregarError ( cadena, "asiento", "idasiento=" + cur->valor ( "idasiento" ) );
+        cadena = "<img src='" + g_confpr->value( CONF_PROGDATA ) + "icons/messagebox_warning.png'>&nbsp;&nbsp;<B><I>Warning:</I></B><BR>El asiento num. <B>" + cur->value( "ordenasiento" ) + "</B> tiene una insercion en el haber de la cuenta <B>" + cur->value( "codigo" ) + "</B> que no permite inserciones en el haber de dicha cuenta.";
+        agregarError ( cadena, "asiento", "idasiento=" + cur->value( "idasiento" ) );
         cur->nextRecord();
     } // end while
     delete cur;
@@ -156,8 +156,8 @@ void correctorwidget::on_mui_corregir_clicked()
     cur = dbConnection->loadQuery ( query );
     while ( !cur->eof() ) {
         QString cadena;
-        cadena = "<img src='" + g_confpr->valor ( CONF_PROGDATA ) + "icons/messagebox_warning.png'>&nbsp;&nbsp;<B><I>Warning:</I></B><BR>La amortizacion num. <B>" + cur->valor ( "idamortizacion" ) + "</B> tiene un plazo expirado <B>" + cur->valor ( "fechaprevista" ) + "</B>.";
-        agregarError ( cadena, "amortizacion", "idamortizacion=" + cur->valor ( "idamortizacion" ) );
+        cadena = "<img src='" + g_confpr->value( CONF_PROGDATA ) + "icons/messagebox_warning.png'>&nbsp;&nbsp;<B><I>Warning:</I></B><BR>La amortizacion num. <B>" + cur->value( "idamortizacion" ) + "</B> tiene un plazo expirado <B>" + cur->value( "fechaprevista" ) + "</B>.";
+        agregarError ( cadena, "amortizacion", "idamortizacion=" + cur->value( "idamortizacion" ) );
         cur->nextRecord();
     } // end while
     delete cur;
@@ -168,8 +168,8 @@ void correctorwidget::on_mui_corregir_clicked()
     cur = dbConnection->loadQuery ( query );
     while ( !cur->eof() ) {
         QString cadena;
-        cadena = "<img src='" + g_confpr->valor ( CONF_PROGDATA ) + "icons/messagebox_warning.png'>&nbsp;&nbsp;<B><I>Warning:</I></B><BR>El asiento num. <B>" + cur->valor ( "orden" ) + "</B> tiene una insercion en cuentas de IVA (" + cur->valor ( "codigo" ) + ") sin que haya una factura asociada.";
-        agregarError ( cadena, "asiento", "idasiento=" + cur->valor ( "idasiento" ) );
+        cadena = "<img src='" + g_confpr->value( CONF_PROGDATA ) + "icons/messagebox_warning.png'>&nbsp;&nbsp;<B><I>Warning:</I></B><BR>El asiento num. <B>" + cur->value( "orden" ) + "</B> tiene una insercion en cuentas de IVA (" + cur->value( "codigo" ) + ") sin que haya una factura asociada.";
+        agregarError ( cadena, "asiento", "idasiento=" + cur->value( "idasiento" ) );
         cur->nextRecord();
     } // end while
     delete cur;
@@ -182,8 +182,8 @@ void correctorwidget::on_mui_corregir_clicked()
     cur = dbConnection->loadQuery ( query );
 
     /// Longitud de x.
-    int longitudx = cur->valor ( "valor" ).replace(QString("y"), QString("")).trimmed().length();
-    int totallongitud = cur->valor ( "valor" ).trimmed().length();
+    int longitudx = cur->value( "valor" ).replace(QString("y"), QString("")).trimmed().length();
+    int totallongitud = cur->value( "valor" ).trimmed().length();
 
     /// Busca errores.
     query = "SELECT * FROM cuenta WHERE char_length(codigo) > '" + QString::number(longitudx) + "' AND char_length(codigo) != '" + QString::number(totallongitud) + "'";
@@ -191,7 +191,7 @@ void correctorwidget::on_mui_corregir_clicked()
 
     while ( !cur2->eof() ) {
 	QString cadena;
-	cadena = "<img src='" + g_confpr->valor ( CONF_PROGDATA ) + "icons/messagebox_warning.png'>&nbsp;&nbsp;<B><I>Warning:</I></B><BR>El codigo de la cuenta <B>" + cur2->valor ( "codigo" ) + "</B> no tiene la longitud adecuada.";
+	cadena = "<img src='" + g_confpr->value( CONF_PROGDATA ) + "icons/messagebox_warning.png'>&nbsp;&nbsp;<B><I>Warning:</I></B><BR>El codigo de la cuenta <B>" + cur2->value( "codigo" ) + "</B> no tiene la longitud adecuada.";
 	agregarError ( cadena, "", "" );
 	cur2->nextRecord();
     } // end while
@@ -209,19 +209,19 @@ void correctorwidget::on_mui_corregir_clicked()
 	QString cadena;
 	QString cadena2;
 	
-	cadena = "<img src='" + g_confpr->valor ( CONF_PROGDATA ) + "icons/messagebox_warning.png'>&nbsp;&nbsp;<B><I>Warning:</I></B><BR>El codigo de la cuenta <B>" + cur->valor ( "codigo" ) + "</B> esta repedido <B>" + cur->valor ( "repeticiones" ) + "</B> veces:<BR>";
+	cadena = "<img src='" + g_confpr->value( CONF_PROGDATA ) + "icons/messagebox_warning.png'>&nbsp;&nbsp;<B><I>Warning:</I></B><BR>El codigo de la cuenta <B>" + cur->value( "codigo" ) + "</B> esta repedido <B>" + cur->value( "repeticiones" ) + "</B> veces:<BR>";
 	
 	
-	query = "SELECT idcuenta, codigo, descripcion FROM cuenta WHERE codigo = '" + cur->valor ( "codigo" ) + "'";
+	query = "SELECT idcuenta, codigo, descripcion FROM cuenta WHERE codigo = '" + cur->value( "codigo" ) + "'";
 	cur2 = dbConnection->loadQuery ( query );
 	while ( !cur2->eof() ) {
 	    /// Muestra las 3 primeras letras de la descripcion de la cuenta.
-	    cadena2 += "<tr><td>Cuenta: <B>'" + cur2->valor("descripcion").left(7) + "...</B>' <a name='idcuenta' href='#idcuenta=" + cur2->valor ( "idcuenta" ) + "'>corregir</a></td></tr>";
+	    cadena2 += "<tr><td>Cuenta: <B>'" + cur2->value("descripcion").left(7) + "...</B>' <a name='idcuenta' href='#idcuenta=" + cur2->value( "idcuenta" ) + "'>corregir</a></td></tr>";
 	    cur2->nextRecord();
 	} // end while
 	delete cur2;
 		
-	//agregarError ( cadena, "idcuenta", "idcuenta=" + cur->valor ( "idcuenta" ) );
+	//agregarError ( cadena, "idcuenta", "idcuenta=" + cur->value( "idcuenta" ) );
 	textBrowser += "<HR><table><tr><td>" + cadena + "</td></tr>" + cadena2 + "</table>";
 
 	cur->nextRecord();
@@ -274,7 +274,7 @@ void correctorwidget::alink ( const QUrl &url )
       query = "SELECT codigo FROM cuenta WHERE idcuenta = '" + list[1] + "';";
       cur = dbConnection->loadQuery ( query );
       
-      codigoOld = cur->valor ( "codigo" );
+      codigoOld = cur->value( "codigo" );
       delete cur;
 
       /// 1) Coge el codigo padre 'las x'.      
@@ -282,8 +282,8 @@ void correctorwidget::alink ( const QUrl &url )
       cur = dbConnection->loadQuery ( query );
 
       /// Longitud de x.
-      int longitudx = cur->valor ( "valor" ).replace(QString("y"), QString("")).trimmed().length();
-      int totallongitud = cur->valor ( "valor" ).trimmed().length();
+      int longitudx = cur->value( "valor" ).replace(QString("y"), QString("")).trimmed().length();
+      int totallongitud = cur->value( "valor" ).trimmed().length();
       
       codigoX = codigoOld.left(longitudx);
       delete cur;

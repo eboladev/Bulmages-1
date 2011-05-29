@@ -50,7 +50,7 @@ IncidenciaComercialView::IncidenciaComercialView ( BfCompany *comp, QWidget *par
     blDebug ( "IncidenciaComercialView::IncidenciaComercialView", 0 );
     setAttribute ( Qt::WA_DeleteOnClose );
     setupUi ( this );
-    dialogChanges_cargaInicial();
+    dialogChanges_readValues();
 
     /// Establecemos los parametros de busqueda del Cliente
     mui_idcliente->setMainCompany ( comp );
@@ -73,7 +73,7 @@ IncidenciaComercialView::IncidenciaComercialView ( QWidget *parent )
     setAttribute ( Qt::WA_DeleteOnClose );
     setupUi ( this );
     /// Usurpamos la identidad de mlist y ponemos nuestro propio widget con sus cosillas.
-    dialogChanges_cargaInicial();
+    dialogChanges_readValues();
 
     /// Establecemos los parametros de busqueda del Cliente
     mui_idcliente->setLabel ( _ ( "Cliente:" ) );
@@ -100,7 +100,7 @@ IncidenciaComercialView::~IncidenciaComercialView()
 void IncidenciaComercialView::closeEvent ( QCloseEvent *e )
 {
     blDebug ( "closeEvent", 0 );
-    if ( dialogChanges_hayCambios() ) {
+    if ( dialogChanges_isChanged() ) {
         int val = QMessageBox::warning ( this,
                                          _ ( "Guardar la incidencia" ),
                                          _ ( "Desea guardar los cambios?" ), _ ( "&Si" ), _ ( "&No" ), _ ( "&Cancelar" ), 0, 2 );
@@ -167,7 +167,7 @@ int IncidenciaComercialView::cargar ( QString id )
     mui_estadoincidenciacomercial->setestado ( dbValue ( "estadoincidenciacomercial" ) );
     mui_horaincidenciacomercial->setText ( dbValue ( "horaincidenciacomercial" ) );
     mui_refincidenciacomercial->setText ( dbValue ( "refincidenciacomercial" ) );
-    dialogChanges_cargaInicial();
+    dialogChanges_readValues();
     blDebug ( "END IncidenciaComercialView::cargar", 0 );
     return err;
 }

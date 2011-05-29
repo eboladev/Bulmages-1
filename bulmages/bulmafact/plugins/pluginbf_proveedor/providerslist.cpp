@@ -58,7 +58,7 @@ ProveedorList::ProveedorList ( BfCompany *comp, QWidget *parent, Qt::WFlags flag
     m_cifprovider = "";
     m_nomprovider = "";
     if ( modoEdicion() ) {
-        mainCompany() ->meteWindow ( windowTitle(), this );
+        mainCompany() ->insertWindow ( windowTitle(), this );
     } else {
         setWindowTitle ( _ ( "Selector de proveedores" ) );
         mui_editar->setHidden ( TRUE );
@@ -170,7 +170,7 @@ void ProveedorList::crear()
 	QString idproveedorold = "";
 	BlDbRecordSet *curold = mainCompany()->loadQuery("SELECT max(idproveedor) AS id FROM proveedor");
 	if( !curold->eof()) {
-		      idproveedorold = curold->valor("id");
+		      idproveedorold = curold->value("id");
 	} // end if
 	delete curold;
 	
@@ -179,8 +179,8 @@ void ProveedorList::crear()
       
 	BlDbRecordSet *cur = mainCompany()->loadQuery("SELECT max(idproveedor) AS id FROM proveedor");
 	if( !cur->eof()) {
-		  if (cur->valor("id") != idproveedorold) {
-		      m_idprovider = cur->valor("id");
+		  if (cur->value("id") != idproveedorold) {
+		      m_idprovider = cur->value("id");
 	              emit ( selected ( m_idprovider ) );
 		  } // end if
 	} // end if
@@ -268,7 +268,7 @@ void ProveedorList::on_mui_exportar_clicked()
 {
     QFile filexml ( QFileDialog::getSaveFileName ( this,
                     _ ( "Seleccione el archivo" ),
-                    g_confpr->valor ( CONF_DIR_USER ),
+                    g_confpr->value( CONF_DIR_USER ),
                     _ ( "Proveedores (*.xml)" ) ) );
 
     if ( filexml.open ( QIODevice::WriteOnly ) ) {
@@ -286,7 +286,7 @@ void ProveedorList::on_mui_importar_clicked()
 {
     QFile filexml ( QFileDialog::getOpenFileName ( this,
                     _ ( "Elija el archivo" ),
-                    g_confpr->valor ( CONF_DIR_USER ),
+                    g_confpr->value( CONF_DIR_USER ),
                     _ ( "Proveedores (*.xml)" ) ) );
 
     if ( filexml.open ( QIODevice::ReadOnly ) ) {

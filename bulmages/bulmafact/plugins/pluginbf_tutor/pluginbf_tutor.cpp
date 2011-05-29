@@ -42,7 +42,7 @@ int entryPoint ( BfBulmaFact *bges )
 
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale ( LC_ALL, "" );
-    blBindTextDomain ( "pluginbf_tutor", g_confpr->valor ( CONF_DIR_TRADUCCION ).toAscii().constData() );
+    blBindTextDomain ( "pluginbf_tutor", g_confpr->value( CONF_DIR_TRADUCCION ).toAscii().constData() );
     g_bges = bges;
 
     if ( bges->company()->hasTablePrivilege ( "cliente", "SELECT" ) ) {
@@ -184,19 +184,19 @@ int BlSubForm_editFinished ( BlSubForm *sub )
 //	blMsgInfo(query);
         BlDbRecordSet *cur = sub->mainCompany() ->loadQuery ( query );
         if ( !cur->eof() ) {
-            sub->m_registrolinea->setDbValue ( "idalumno", cur->valor ( "idalumno" ) );
+            sub->m_registrolinea->setDbValue ( "idalumno", cur->value( "idalumno" ) );
         } // end if
         delete cur;
     } // end if
     if ( sub->m_campoactual->nomcampo() == "nomcliente" ) {
         BlDbRecordSet *cur = sub->mainCompany() ->loadQuery ( "SELECT idcliente, apellido1cliente, apellido2cliente, nomcliente FROM cliente WHERE upper(apellido1cliente || ' ' || apellido2cliente || ' ' || nomcliente) LIKE upper('" + sub->m_campoactual->text() + "%')");
         if ( !cur->eof() ) {
-            sub->m_registrolinea->setDbValue ( "idcliente", cur->valor ( "idcliente" ) );
+            sub->m_registrolinea->setDbValue ( "idcliente", cur->value( "idcliente" ) );
 	    if (sub->existsHeader("apellido1cliente"))
-	      sub->m_registrolinea->setDbValue ( "apellido1cliente", cur->valor ( "apellido1cliente" ) );
+	      sub->m_registrolinea->setDbValue ( "apellido1cliente", cur->value( "apellido1cliente" ) );
 	    if (sub->existsHeader("apellido2cliente"))
-            sub->m_registrolinea->setDbValue ( "apellido2cliente", cur->valor ( "apellido2cliente" ) );
-            sub->m_registrolinea->setDbValue ( "nomcliente", cur->valor ( "nomcliente" ) );
+            sub->m_registrolinea->setDbValue ( "apellido2cliente", cur->value( "apellido2cliente" ) );
+            sub->m_registrolinea->setDbValue ( "nomcliente", cur->value( "nomcliente" ) );
         } // end if
         delete cur;
     } // end if
@@ -229,13 +229,13 @@ int BlDbCompleterComboBox_textChanged (BlDbCompleterComboBox *bl) {
                     QString cad1 = "";
                     while ( i.hasNext() ) {
                         i.next();
-                        cad = cad + sep + bl->m_cursorcombo->valor ( i.key() );
+                        cad = cad + sep + bl->m_cursorcombo->value( i.key() );
                         if ( sep == "" ) {
                             cad1 = i.key();
                             sep = " ";
                         } // end if
                     } // end while
-                    bl->addItem ( cad , QVariant ( bl->m_cursorcombo->valor ( cad1 ) ) );
+                    bl->addItem ( cad , QVariant ( bl->m_cursorcombo->value( cad1 ) ) );
                     bl->m_cursorcombo->nextRecord();
                 } // end while
                 delete bl->m_cursorcombo;
@@ -283,7 +283,7 @@ int BfSubForm_pressedAsterisk ( BfSubForm *sub )
     BlDbRecordSet *cur = sub->mainCompany() ->loadQuery ( "SELECT * FROM cliente WHERE idcliente = " + idCliente );
     if ( !cur->eof() ) {
         sub->m_registrolinea->setDbValue ( "idcliente", idCliente );
-        sub->m_registrolinea->setDbValue ( "nomcliente", cur->valor ( "nomcliente" ));
+        sub->m_registrolinea->setDbValue ( "nomcliente", cur->value( "nomcliente" ));
     } // end if
     
     delete cur;
@@ -485,8 +485,8 @@ void SubForm_Tutor::seleccionarTutor ( BfSubForm *sub )
     BlDbRecordSet *cur = sub->mainCompany() ->loadQuery ( "SELECT * FROM cliente WHERE idcliente = " + idTutor );
     if ( !cur->eof() ) {
         sub->lineaact()->setDbValue ( "idcliente", idTutor );
-        sub->lineaact()->setDbValue ( "cifcliente", cur->valor ( "cifcliente" ) );
-        sub->lineaact()->setDbValue ( "nomcliente", cur->valor ( "nomcliente" ) );
+        sub->lineaact()->setDbValue ( "cifcliente", cur->value( "cifcliente" ) );
+        sub->lineaact()->setDbValue ( "nomcliente", cur->value( "nomcliente" ) );
     } // end if
     delete cur;
 

@@ -43,7 +43,7 @@ int entryPoint ( BfBulmaFact *bges )
 
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale ( LC_ALL, "" );
-    blBindTextDomain ( "pluginbf_articulo", g_confpr->valor ( CONF_DIR_TRADUCCION ).toAscii().constData() );
+    blBindTextDomain ( "pluginbf_articulo", g_confpr->value( CONF_DIR_TRADUCCION ).toAscii().constData() );
     g_bges = bges;
 
     if ( bges->company()->hasTablePrivilege ( "articulo", "SELECT" ) ) {
@@ -268,8 +268,8 @@ int BfSubForm_pressedAsterisk ( BfSubForm *sub )
     BlDbRecordSet *cur = sub->mainCompany() ->loadQuery ( "SELECT * FROM articulo WHERE idarticulo = " + idArticle );
     if ( !cur->eof() ) {
         sub->m_registrolinea->setDbValue ( "idarticulo", idArticle );
-        sub->m_registrolinea->setDbValue ( "codigocompletoarticulo", cur->valor ( "codigocompletoarticulo" ) );
-        sub->m_registrolinea->setDbValue ( "nomarticulo", cur->valor ( "nomarticulo" ) );
+        sub->m_registrolinea->setDbValue ( "codigocompletoarticulo", cur->value( "codigocompletoarticulo" ) );
+        sub->m_registrolinea->setDbValue ( "nomarticulo", cur->value( "nomarticulo" ) );
     } // end if
     delete cur;
 
@@ -390,7 +390,7 @@ void SubForm_Articulo::nuevoArticulo( )
     QString idarticleold="0";
     BlDbRecordSet *cur = sub->mainCompany() ->loadQuery ( "SELECT max(idarticulo) as id FROM articulo " );
     if ( !cur->eof() ) {
-	idarticleold = cur->valor("id");
+	idarticleold = cur->value("id");
     } // end if
     delete cur;
     
@@ -407,10 +407,10 @@ void SubForm_Articulo::nuevoArticulo( )
 	
     cur = sub->mainCompany() ->loadQuery ( "SELECT * FROM articulo ORDER BY idarticulo DESC LIMIT 1" );
     if ( !cur->eof() ) {
-		if (cur->valor("idarticulo") != idarticleold) {
-		  sub->lineaact()->setDbValue ( "idarticulo", cur->valor("idarticulo") );
-		  sub->lineaact()->setDbValue ( "codigocompletoarticulo", cur->valor ( "codigocompletoarticulo" ) );
-		  sub->lineaact()->setDbValue ( "nomarticulo", cur->valor ( "nomarticulo" ) );
+		if (cur->value("idarticulo") != idarticleold) {
+		  sub->lineaact()->setDbValue ( "idarticulo", cur->value("idarticulo") );
+		  sub->lineaact()->setDbValue ( "codigocompletoarticulo", cur->value( "codigocompletoarticulo" ) );
+		  sub->lineaact()->setDbValue ( "nomarticulo", cur->value( "nomarticulo" ) );
 		} // end if
     } // end if
     delete cur;
@@ -448,8 +448,8 @@ void SubForm_Articulo::seleccionarArticulo ( BfSubForm *sub )
     BlDbRecordSet *cur = sub->mainCompany() ->loadQuery ( "SELECT * FROM articulo WHERE idarticulo = " + idArticle );
     if ( !cur->eof() ) {
         sub->lineaact()->setDbValue ( "idarticulo", idArticle );
-        sub->lineaact()->setDbValue ( "codigocompletoarticulo", cur->valor ( "codigocompletoarticulo" ) );
-        sub->lineaact()->setDbValue ( "nomarticulo", cur->valor ( "nomarticulo" ) );
+        sub->lineaact()->setDbValue ( "codigocompletoarticulo", cur->value( "codigocompletoarticulo" ) );
+        sub->lineaact()->setDbValue ( "nomarticulo", cur->value( "nomarticulo" ) );
     } // end if
     delete cur;
 
@@ -584,7 +584,7 @@ int BlSubForm_editFinished ( BlSubForm *sub )
 	QString query = "SELECT idarticulo FROM articulo WHERE codigocompletoarticulo = $1";
         BlDbRecordSet *cur = sub->mainCompany() -> loadQuery( query, 1, params );
         if ( !cur->eof() ) {
-            sub->m_registrolinea->setDbValue ( "idarticulo", cur->valor ( "idarticulo" ) );
+            sub->m_registrolinea->setDbValue ( "idarticulo", cur->value( "idarticulo" ) );
         } // end if
         delete cur;
     } // end if
@@ -615,13 +615,13 @@ int BlDbCompleterComboBox_textChanged (BlDbCompleterComboBox *bl) {
                     QString cad1 = "";
                     while ( i.hasNext() ) {
                         i.next();
-                        cad = cad + sep + bl->m_cursorcombo->valor ( i.key() );
+                        cad = cad + sep + bl->m_cursorcombo->value( i.key() );
                         if ( sep == "" ) {
                             cad1 = i.key();
                             sep = ".-";
                         } // end if
                     } // end while
-                    bl->addItem ( cad , QVariant ( bl->m_cursorcombo->valor ( cad1 ) ) );
+                    bl->addItem ( cad , QVariant ( bl->m_cursorcombo->value( cad1 ) ) );
                     bl->m_cursorcombo->nextRecord();
                 } // end while
                 delete bl->m_cursorcombo;

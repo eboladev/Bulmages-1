@@ -76,7 +76,7 @@ BalancePrintView::BalancePrintView ( BcCompany *emp )
     int i = 0;
     while ( !niveles->eof() ) {
         /// Inicializamos la tabla de nivel.
-        combonivel->insertItem ( i, niveles->valor ( "nivel" ) );
+        combonivel->insertItem ( i, niveles->value( "nivel" ) );
         niveles->nextRecord();
         i++;
     } // end while
@@ -162,9 +162,9 @@ void BalancePrintView::presentar ( const char* tipus )
     bool superiores = checksuperiores->isChecked();
 
     if ( txt | html | kugar ) {
-        QString archivo = g_confpr->valor ( CONF_DIR_USER ) + "balance.txt";
-        QString archivokugar = g_confpr->valor ( CONF_DIR_USER ) + "balance.kud";
-        QString archivohtml = g_confpr->valor ( CONF_DIR_USER ) + "balance.html";
+        QString archivo = g_confpr->value( CONF_DIR_USER ) + "balance.txt";
+        QString archivokugar = g_confpr->value( CONF_DIR_USER ) + "balance.kud";
+        QString archivohtml = g_confpr->value( CONF_DIR_USER ) + "balance.html";
 
         /// Creamos los ficheros de salida.
         QFile filekugar;
@@ -207,7 +207,7 @@ void BalancePrintView::presentar ( const char* tipus )
             BcPlanContableArbol *arbol;
             arbol = new BcPlanContableArbol;
             while ( !ramas->eof() ) {
-                if ( atoi ( ramas->valor ( "nivel" ).toAscii().constData() ) == 2 ) { /// Cuenta ra&iacute;z.
+                if ( atoi ( ramas->value( "nivel" ).toAscii().constData() ) == 2 ) { /// Cuenta ra&iacute;z.
                     arbol->nuevaRama ( ramas );
                 } // end if
                 ramas->nextRecord();
@@ -239,7 +239,7 @@ void BalancePrintView::presentar ( const char* tipus )
                 fitxersortidakugar << "\t\thaberej CDATA #IMPLIED\n";
                 fitxersortidakugar << "\t\tsaldoej CDATA #IMPLIED>\n";
                 fitxersortidakugar << "]>\n\n";
-                fitxersortidakugar << "<KugarData Template=\"" << g_confpr->valor ( CONF_DIR_KUGAR ).toAscii().constData() << "balance.kut\">\n";
+                fitxersortidakugar << "<KugarData Template=\"" << g_confpr->value( CONF_DIR_KUGAR ).toAscii().constData() << "balance.kut\">\n";
                 fitxersortidakugar << "\t<Row";
                 fitxersortidakugar << " level=\"0\"";
                 fitxersortidakugar << " finicial='" << finicial.toAscii().constData() << "'";
@@ -408,19 +408,19 @@ void BalancePrintView::presentar ( const char* tipus )
             /// Dependiendo del formato de salida ejecutaremos el programa correspondiente.
             /// Presentaci&oacxute;n txt normal.
             if ( txt ) {
-                QString cadena = g_confpr->valor ( CONF_EDITOR ) + " " + g_confpr->valor ( CONF_DIR_USER ) + "balance.txt";
+                QString cadena = g_confpr->value( CONF_EDITOR ) + " " + g_confpr->value( CONF_DIR_USER ) + "balance.txt";
                 system ( cadena.toAscii().constData() );
             } // end if
 
             /// Presentaci&oacute;n html normal.
             if ( html ) {
-                QString cadena = g_confpr->valor ( CONF_NAVEGADOR ) + " " + g_confpr->valor ( CONF_DIR_USER ) + "balance.html";
+                QString cadena = g_confpr->value( CONF_NAVEGADOR ) + " " + g_confpr->value( CONF_DIR_USER ) + "balance.html";
                 system ( cadena.toAscii().constData() );
             }
 
             /// Presentaci&oacute;n Kugar normal.
             if ( kugar ) {
-                QString cadena = "kugar " + g_confpr->valor ( CONF_DIR_USER ) + "balance.kud";
+                QString cadena = "kugar " + g_confpr->value( CONF_DIR_USER ) + "balance.kud";
                 system ( cadena.toAscii().constData() );
             }
         }

@@ -56,7 +56,7 @@ BancoView::BancoView ( BfCompany *emp, QWidget *parent )
     } // end if
 
     pintar();
-    meteWindow ( windowTitle(), this );
+    insertWindow ( windowTitle(), this );
     blScript(this);
     blDebug ( "END BancoView::BancoView", 0 );
 }
@@ -74,12 +74,12 @@ void BancoView::pintar()
     } // end if
     m_cursorbancos = mainCompany() ->loadQuery ( "SELECT * FROM banco ORDER BY nombanco" );
     while ( !m_cursorbancos->eof() ) {
-        new QListWidgetItem ( m_cursorbancos->valor ( "nombanco" ) , mui_lista );
+        new QListWidgetItem ( m_cursorbancos->value( "nombanco" ) , mui_lista );
         m_cursorbancos->nextRecord();
     } // end while
 
     /// Comprobamos cual es la cadena inicial.
-    dialogChanges_cargaInicial();
+    dialogChanges_readValues();
     blDebug ( "END BancoView::pintar", 0 );
 }
 
@@ -118,25 +118,25 @@ void BancoView::on_mui_lista_currentItemChanged ( QListWidgetItem *cur, QListWid
         groupBox1->setEnabled ( TRUE );
     int row = mui_lista->row ( cur );
     trataModificado();
-    mui_nombanco->setText ( m_cursorbancos->valor ( "nombanco", row ) );
-    mdb_idbanco = m_cursorbancos->valor ( "idbanco", row );
-    mui_dirbanco->setText ( m_cursorbancos->valor ( "dirbanco", row ) );
-    mui_poblbanco->setText ( m_cursorbancos->valor ( "poblbanco", row ) );
-    mui_cpbanco->setText ( m_cursorbancos->valor ( "cpbanco", row ) );
-    mui_telbanco->setText ( m_cursorbancos->valor ( "telbanco", row ) );
-    mui_faxbanco->setText ( m_cursorbancos->valor ( "faxbanco", row ) );
-    mui_emailbanco->setText ( m_cursorbancos->valor ( "emailbanco", row ) );
-    mui_contactobanco->setText ( m_cursorbancos->valor ( "contactobanco", row ) );
-    mui_codentidadbanco->setText ( m_cursorbancos->valor ( "codentidadbanco", row ) );
-    mui_codagenciabanco->setText ( m_cursorbancos->valor ( "codagenciabanco", row ) );
-    mui_numcuentabanco->setText ( m_cursorbancos->valor ( "numcuentabanco", row ) );
-    mui_dcbanco->setText ( m_cursorbancos->valor ( "dcbanco", row ) );
-    mui_comentbanco->setText ( m_cursorbancos->valor ( "comentbanco", row ) );
-    mui_webbanco->setText ( m_cursorbancos->valor ( "webbanco", row ) );
+    mui_nombanco->setText ( m_cursorbancos->value( "nombanco", row ) );
+    mdb_idbanco = m_cursorbancos->value( "idbanco", row );
+    mui_dirbanco->setText ( m_cursorbancos->value( "dirbanco", row ) );
+    mui_poblbanco->setText ( m_cursorbancos->value( "poblbanco", row ) );
+    mui_cpbanco->setText ( m_cursorbancos->value( "cpbanco", row ) );
+    mui_telbanco->setText ( m_cursorbancos->value( "telbanco", row ) );
+    mui_faxbanco->setText ( m_cursorbancos->value( "faxbanco", row ) );
+    mui_emailbanco->setText ( m_cursorbancos->value( "emailbanco", row ) );
+    mui_contactobanco->setText ( m_cursorbancos->value( "contactobanco", row ) );
+    mui_codentidadbanco->setText ( m_cursorbancos->value( "codentidadbanco", row ) );
+    mui_codagenciabanco->setText ( m_cursorbancos->value( "codagenciabanco", row ) );
+    mui_numcuentabanco->setText ( m_cursorbancos->value( "numcuentabanco", row ) );
+    mui_dcbanco->setText ( m_cursorbancos->value( "dcbanco", row ) );
+    mui_comentbanco->setText ( m_cursorbancos->value( "comentbanco", row ) );
+    mui_webbanco->setText ( m_cursorbancos->value( "webbanco", row ) );
     mui_sufijobanco->setValue ( m_cursorbancos->valorInt ( "sufijobanco", row ) );
     m_item = cur;
     /// Comprobamos cual es la cadena inicial.
-    dialogChanges_cargaInicial();
+    dialogChanges_readValues();
     blDebug ( "END on_mui_lista_currentItemChanged", 0 );
 }
 
@@ -205,7 +205,7 @@ int BancoView::guardar()
         } // end if
 
         /// Comprobamos cual es la cadena inicial.
-        dialogChanges_cargaInicial();
+        dialogChanges_readValues();
         blDebug ( "END BancoView::guardar", 0 );
 
 //	mainCompany()->commit();
@@ -227,7 +227,7 @@ bool BancoView::trataModificado()
 {
     blDebug ( "BancoView::trataModificado", 0 );
     /// Si se ha modificado el contenido advertimos y guardamos.
-    if ( dialogChanges_hayCambios() ) {
+    if ( dialogChanges_isChanged() ) {
         if ( QMessageBox::warning ( this,
                                     _ ( "Guardar datos del trabajador" ),
                                     _ ( "Desea guardar los cambios?" ),
@@ -256,7 +256,7 @@ void BancoView::on_mui_nuevo_clicked()
         mainCompany() ->runQuery ( query );
         BlDbRecordSet *cur = mainCompany() ->loadQuery ( "SELECT max(idbanco) AS idbanco FROM banco" );
         mainCompany() ->commit();
-        mdb_idbanco = cur->valor ( "idbanco" );
+        mdb_idbanco = cur->value( "idbanco" );
         delete cur;
         pintar();
         blDebug ( "END BancoView::on_mui_nuevo_clicked", 0 );

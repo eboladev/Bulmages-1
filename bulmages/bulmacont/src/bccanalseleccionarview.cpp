@@ -78,12 +78,12 @@ void BcCanalSeleccionarView::cargacanales()
     cursoraux1 = mainCompany() ->loadQuery ( "SELECT * FROM canal", "canalillos" );
     mainCompany() ->commit();
     while ( !cursoraux1->eof() ) {
-        idcanal = atoi ( cursoraux1->valor ( "idcanal" ).toAscii() );
+        idcanal = atoi ( cursoraux1->value( "idcanal" ).toAscii() );
         it = new QTreeWidgetItem ( m_listCanales );
         Lista[idcanal] = it;
-        it->setText ( 3, cursoraux1->valor ( "idcanal" ) );
-        it->setText ( 1, cursoraux1->valor ( "descripcion" ) );
-        it->setText ( 0, cursoraux1->valor ( "nombre" ) );
+        it->setText ( 3, cursoraux1->value( "idcanal" ) );
+        it->setText ( 1, cursoraux1->value( "descripcion" ) );
+        it->setText ( 0, cursoraux1->value( "nombre" ) );
         it->setCheckState ( 0, Qt::Unchecked );
         it->setExpanded ( TRUE );
         cursoraux1->nextRecord();

@@ -41,7 +41,7 @@ int entryPoint ( BfBulmaFact *bges )
 
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale ( LC_ALL, "" );
-    blBindTextDomain ( "pluginbf_inventario", g_confpr->valor ( CONF_DIR_TRADUCCION ).toAscii().constData() );
+    blBindTextDomain ( "pluginbf_inventario", g_confpr->value( CONF_DIR_TRADUCCION ).toAscii().constData() );
 
 
 
@@ -98,7 +98,7 @@ int ArticuloView_ArticuloView ( ArticuloView *art )
     l->setInsert ( TRUE );
     l->setDelete ( TRUE );
     l->setSortingEnabled ( FALSE );
-    art->dialogChanges_setQObjectExcluido ( l->mui_list );
+    art->dialogChanges_setExcludedObject ( l->mui_list );
 
     blDebug ( "END ArticuloView_ArticuloView", 0 );
     return 0;
@@ -166,7 +166,7 @@ int BfSubForm_on_mui_list_editFinished ( BfSubForm *subform )
         BlFixed stock ( "0" );
         if ( !cur1 ) return 0;
         if ( !cur1->eof() ) {
-            stock = BlFixed ( cur1->valor ( "stock" ) );
+            stock = BlFixed ( cur1->value( "stock" ) );
         } // end if
         delete cur1;
 
@@ -176,7 +176,7 @@ int BfSubForm_on_mui_list_editFinished ( BfSubForm *subform )
         BlDbRecordSet *cur = subform->mainCompany() ->loadQuery ( query );
         if ( !cur ) return 0;
         if ( !cur->eof() ) {
-            BlFixed val = BlFixed ( cur->valor ( "valminimsalmacen" ) );
+            BlFixed val = BlFixed ( cur->value( "valminimsalmacen" ) );
             BlFixed valb = BlFixed ( camp->valorcampo() );
             if ( stock - valb <= val )
                 blMsgWarning ( _ ( "Stock minimo superado" ) );

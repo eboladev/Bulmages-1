@@ -80,7 +80,7 @@ void TicketQToolButton::setBoton()
     setStatusTip ( _ ( "Imprimir Ticket" ) );
     setToolTip ( _ ( "Imprimir Ticket" ) );
     setMinimumSize ( QSize ( 32, 32 ) );
-    setIcon ( QIcon ( g_confpr->valor ( CONF_PROGDATA ) + "icons/ticket.png"  ) );
+    setIcon ( QIcon ( g_confpr->value( CONF_PROGDATA ) + "icons/ticket.png"  ) );
     setIconSize ( QSize ( 22, 22 ) );
     blDebug ( "END TicketQToolButton::setBoton", 0 );
 }
@@ -102,13 +102,13 @@ void TicketQToolButton::click()
     m_albaranClienteView->generaRML("ticket_normal.txt");
 
 
-    if (!g_confpr->valor ( CONF_TICKET_PRINTER_FILE).isEmpty() && g_confpr->valor ( CONF_TICKET_PRINTER_FILE) != "/dev/null") {
-        QString comando = "cat " + g_confpr->valor(CONF_DIR_USER) + "ticket_normal.txt" + "  > " + g_confpr->valor ( CONF_TICKET_PRINTER_FILE );
+    if (!g_confpr->value( CONF_TICKET_PRINTER_FILE).isEmpty() && g_confpr->value( CONF_TICKET_PRINTER_FILE) != "/dev/null") {
+        QString comando = "cat " + g_confpr->value(CONF_DIR_USER) + "ticket_normal.txt" + "  > " + g_confpr->value( CONF_TICKET_PRINTER_FILE );
         system ( comando.toAscii().data() );
-    } else if (g_confpr->valor(CONF_CUPS_DEFAULT_PRINTER).isEmpty() || g_confpr->valor(CONF_CUPS_DEFAULT_PRINTER) == "None") {
+    } else if (g_confpr->value(CONF_CUPS_DEFAULT_PRINTER).isEmpty() || g_confpr->value(CONF_CUPS_DEFAULT_PRINTER) == "None") {
         blDebug("Debe establecer el parametro CONF_CUPS_DEFAULT_PRINTER o CONF_CASHBOX_FILE para abrir el cajon " , 2);
     } else {
-        QString comando = "lp -d" + g_confpr->valor(CONF_CUPS_DEFAULT_PRINTER) + " " + g_confpr->valor(CONF_DIR_USER) + "ticket_normal.txt";
+        QString comando = "lp -d" + g_confpr->value(CONF_CUPS_DEFAULT_PRINTER) + " " + g_confpr->value(CONF_DIR_USER) + "ticket_normal.txt";
         system ( comando.toAscii().data() );
     } // end if    
 

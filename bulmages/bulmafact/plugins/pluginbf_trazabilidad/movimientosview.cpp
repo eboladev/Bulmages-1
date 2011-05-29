@@ -67,7 +67,7 @@ MovimientosView::MovimientosView ( BfCompany *comp, QWidget *parent, edmode edit
     m_cliente->m_valores["cifcliente"] = "";
     m_cliente->m_valores["nomcliente"] = "";
     if ( m_modo == BL_EDIT_MODE ) {
-        meteWindow ( windowTitle(), this );
+        insertWindow ( windowTitle(), this );
     } // end if
     hideBusqueda();
     blScript(this);
@@ -101,7 +101,7 @@ void MovimientosView::iniciaForm()
 MovimientosView::~MovimientosView()
 {
     blDebug ( "MovimientosView::~MovimientosView", 0 );
-    mainCompany() ->sacaWindow ( this );
+    mainCompany() ->removeWindow ( this );
     blDebug ( "END MovimientosView::~MovimientosView", 0 );
 }
 

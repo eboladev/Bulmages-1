@@ -92,7 +92,7 @@ PedidoClienteView::PedidoClienteView ( BfCompany *comp, QWidget *parent )
         mui_idcliente->setTableName ( "cliente" );
         mui_idcliente->m_valores["cifcliente"] = "";
         mui_idcliente->m_valores["nomcliente"] = "";
-        meteWindow ( windowTitle(), this, FALSE );
+        insertWindow ( windowTitle(), this, FALSE );
 	blScript(this);
     } catch ( ... ) {
         blMsgInfo ( _ ( "Error al crear el pedido cliente" ), this );
@@ -120,7 +120,7 @@ void PedidoClienteView::inicializar()
     subform3->inicializar();
     m_descuentos->inicializar();
     pintar();
-    dialogChanges_cargaInicial();
+    dialogChanges_readValues();
     blDebug ( "END PedidoClienteView::inicializar", 0 );
 }
 
@@ -207,7 +207,7 @@ void PedidoClienteView::generarAlbaran()
                 } // end if
                 bud = new AlbaranClienteView ( mainCompany(), NULL );
                 mainCompany() ->m_pWorkspace->addSubWindow ( bud );
-                bud->cargar ( cur->valor ( "idalbaran" ) );
+                bud->cargar ( cur->value( "idalbaran" ) );
                 bud->show();
                 return;
             } // end if

@@ -46,7 +46,7 @@ int entryPoint ( BfBulmaFact *bges )
 
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale ( LC_ALL, "" );
-    blBindTextDomain ( "pluginbf_alumno", g_confpr->valor ( CONF_DIR_TRADUCCION ).toAscii().constData() );
+    blBindTextDomain ( "pluginbf_alumno", g_confpr->value( CONF_DIR_TRADUCCION ).toAscii().constData() );
     g_bges = bges;
 
 
@@ -197,7 +197,7 @@ int BfSubForm_pressedAsterisk ( BfSubForm *sub )
     BlDbRecordSet *cur = sub->mainCompany() ->loadQuery ( "SELECT * FROM alumno WHERE idalumno = " + idAlumno );
     if ( !cur->eof() ) {
         sub->m_registrolinea->setDbValue ( "idalumno", idAlumno );
-        sub->m_registrolinea->setDbValue ( "nombrealumno1", cur->valor( "apellido1alumno") + " " + cur->valor("apellido2alumno") + ", " + cur->valor ( "nombrealumno" ));
+        sub->m_registrolinea->setDbValue ( "nombrealumno1", cur->value( "apellido1alumno") + " " + cur->value("apellido2alumno") + ", " + cur->value( "nombrealumno" ));
     } // end if
     
     delete cur;
@@ -405,7 +405,7 @@ void SubForm_Alumno::seleccionarAlumno ( BfSubForm *sub )
     BlDbRecordSet *cur = sub->mainCompany() ->loadQuery ( "SELECT * FROM alumno WHERE idalumno = " + idAlumno );
     if ( !cur->eof() ) {
         sub->lineaact()->setDbValue ( "idalumno", idAlumno );
-        sub->lineaact()->setDbValue ( "nombrealumno1", cur->valor ( "nombrealumno" ) );
+        sub->lineaact()->setDbValue ( "nombrealumno1", cur->value( "nombrealumno" ) );
     } // end if
     delete cur;
 

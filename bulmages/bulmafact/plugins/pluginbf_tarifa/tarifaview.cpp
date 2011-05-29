@@ -64,9 +64,9 @@ TarifaView::TarifaView ( BfCompany *comp, QWidget *parent )
     mui_actualizar->setEnabled ( FALSE );
     mui_borrar->setEnabled ( FALSE );
 
-    meteWindow ( _ ( "Tarifa edicion" ), this );
+    insertWindow ( _ ( "Tarifa edicion" ), this );
 
-    dialogChanges_cargaInicial();
+    dialogChanges_readValues();
     blScript(this);
     blDebug ( "TarifaView::END_constructor()\n", 0 );
 }
@@ -78,7 +78,7 @@ TarifaView::TarifaView ( BfCompany *comp, QWidget *parent )
 TarifaView::~TarifaView()
 {
     blDebug ( "TarifaView::INIT_destructor()\n", 0 );
-    mainCompany() ->sacaWindow ( this );
+    mainCompany() ->removeWindow ( this );
     blDebug ( "TarifaView::END_destructor()\n", 0 );
 }
 
@@ -159,7 +159,7 @@ int TarifaView::cargar ( QString idtarifa )
     mui_list->cargar ( formaQuery ( m_idtarifa ) );
 
     setWindowTitle ( _ ( "Tarifa" ) + " " + dbValue ( "nomtarifa" ) );
-    meteWindow ( windowTitle(), this );
+    insertWindow ( windowTitle(), this );
 
     /// Tratamiento de excepciones.
     if ( error == 1 ) {
@@ -168,7 +168,7 @@ int TarifaView::cargar ( QString idtarifa )
     } // end if
     pintar();
 
-    dialogChanges_cargaInicial();
+    dialogChanges_readValues();
     blDebug ( "END TarifaView::cargar\n", 0 );
     return 0;
 }
@@ -197,7 +197,7 @@ int TarifaView::guardar()
     /// Guardamos la lista de componentes.
     mui_list->setColumnValue ( "idtarifa", dbValue ( "idtarifa" ) );
     mui_list->guardar();
-    dialogChanges_cargaInicial();
+    dialogChanges_readValues();
 
     /// Se recarga el listado de articulos para poder establecer precios a esa tarifa.
     cargar ( dbValue ( "idtarifa" ) );
@@ -252,7 +252,7 @@ void TarifaView::on_mui_borrar_clicked()
                 mainCompany() ->commit();
                 emit guardartarifa();
             } // end if
-            dialogChanges_cargaInicial();
+            dialogChanges_readValues();
             close();
         } // end if
     } // end if

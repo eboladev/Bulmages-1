@@ -96,7 +96,7 @@ AlbaranProveedorView::AlbaranProveedorView ( BfCompany *comp, QWidget *parent )
         m_totalalbaranp->setAlignment ( Qt::AlignRight );
         mui_idforma_pago->setId ( "0" );
         mui_idalmacen->setId ( "0" );
-        meteWindow ( windowTitle(), this, FALSE );
+        insertWindow ( windowTitle(), this, FALSE );
 	blScript(this);
     } catch ( ... ) {
         blMsgInfo ( _ ( "Error al crear el albaran proveedor" ), this );
@@ -150,7 +150,7 @@ void AlbaranProveedorView::inicializar()
     subform2->inicializar();
     m_descuentos->inicializar();
     pintar();
-    dialogChanges_cargaInicial();
+    dialogChanges_readValues();
     blDebug ( "END AlbaranProveedorView::inicializar", 0 );
 }
 
@@ -191,7 +191,7 @@ void AlbaranProveedorView::on_mui_verpedidosproveedor_clicked()
     BlDbRecordSet *cur = mainCompany() ->loadQuery ( query );
     while ( !cur->eof() ) {
         PedidoProveedorView * pedpro = new PedidoProveedorView ( ( BfCompany * ) mainCompany(), 0 );
-        pedpro->cargar ( cur->valor ( "idpedidoproveedor" ) );
+        pedpro->cargar ( cur->value( "idpedidoproveedor" ) );
         mainCompany() ->m_pWorkspace->addSubWindow ( pedpro );
         pedpro->show();
         cur->nextRecord();

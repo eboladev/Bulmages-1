@@ -37,7 +37,7 @@ int entryPoint ( BfBulmaFact * )
 
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale ( LC_ALL, "" );
-    blBindTextDomain ( "pluginbf_abrereferencia", g_confpr->valor ( CONF_DIR_TRADUCCION ).toAscii().constData() );
+    blBindTextDomain ( "pluginbf_abrereferencia", g_confpr->value( CONF_DIR_TRADUCCION ).toAscii().constData() );
 
     return 0;
 }
@@ -65,7 +65,7 @@ int BfBuscarReferencia_on_mui_rferencia_returnPressed ( BfBuscarReferencia *l )
         QString query = "SELECT * FROM " + ficha->tableName() + " WHERE ref" + ficha->tableName() + " = '" + l->text() + "'";
         BlDbRecordSet *cur = l->mainCompany()->loadQuery ( query );
         if ( !cur->eof() ) {
-            ficha->cargar ( cur->valor ( "id" + ficha->tableName() ) );
+            ficha->cargar ( cur->value( "id" + ficha->tableName() ) );
         } // end if
         delete cur;
     }// end if

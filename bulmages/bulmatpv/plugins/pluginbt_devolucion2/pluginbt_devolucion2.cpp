@@ -81,7 +81,7 @@ int entryPoint ( BtBulmaTPV *tpv )
 
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale ( LC_ALL, "" );
-    blBindTextDomain ( "pluginbt_devolucion2", g_confpr->valor ( CONF_DIR_TRADUCCION ).toAscii().constData() );
+    blBindTextDomain ( "pluginbt_devolucion2", g_confpr->value( CONF_DIR_TRADUCCION ).toAscii().constData() );
 
     g_doc1 = new BlDockWidget ( _ ( "Articulo" ), tpv, "articulodock" );
     g_doc1->setFeatures ( QDockWidget::AllDockWidgetFeatures );

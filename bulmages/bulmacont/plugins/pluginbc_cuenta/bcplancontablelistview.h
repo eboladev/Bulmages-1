@@ -76,7 +76,7 @@ public:
     virtual void on_mui_borrar_clicked();
 
 private:
-    void inicializatabla();
+    void inicializaTabla();
     void setSearchButtonsState();
 
 private slots:

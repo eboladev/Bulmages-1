@@ -89,7 +89,7 @@ RecibosList::RecibosList ( BfCompany *comp, QWidget *parent, Qt::WFlags flag, ed
     mdb_idrecibo = "";
     
     if ( modoEdicion() )
-        mainCompany()->meteWindow ( windowTitle(), this );
+        mainCompany()->insertWindow ( windowTitle(), this );
         
     hideBusqueda();
     iniciaForm();

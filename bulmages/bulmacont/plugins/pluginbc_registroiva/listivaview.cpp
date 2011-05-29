@@ -46,7 +46,7 @@ void ListIvaView::guardaconfig()
 {
     blDebug ( "ListIvaView::guardaconfig", 0 );
     QString aux = "";
-    QFile file ( g_confpr->valor ( CONF_DIR_USER ) + "confListIvaView.cfn" );
+    QFile file ( g_confpr->value( CONF_DIR_USER ) + "confListIvaView.cfn" );
     if ( file.open ( QIODevice::WriteOnly ) ) {
         QTextStream stream ( &file );
         for ( int i = 0; i < columnCount(); i++ ) {
@@ -65,7 +65,7 @@ void ListIvaView::guardaconfig()
 void ListIvaView::cargaconfig()
 {
     blDebug ( "ListIvaView::cargaconfig", 0 );
-    QFile file ( g_confpr->valor ( CONF_DIR_USER ) + "confListIvaView.cfn" );
+    QFile file ( g_confpr->value( CONF_DIR_USER ) + "confListIvaView.cfn" );
     QString line;
     if ( file.open ( QIODevice::ReadOnly ) ) {
         QTextStream stream ( &file );
@@ -111,7 +111,7 @@ ListIvaView::ListIvaView ( QWidget * parent ) : QTableWidget ( parent ), ListIva
     /// Establecemos el color de fondo de la rejilla. El valor lo tiene la clase
     /// configuraci&oacute;n que es global.
     QPalette palette;
-    palette.setColor ( this->backgroundRole(), g_confpr->valor ( CONF_BG_LINPRESUPUESTOS ) );
+    palette.setColor ( this->backgroundRole(), g_confpr->value( CONF_BG_LINPRESUPUESTOS ) );
     this->setPalette ( palette );
 
     connect ( this, SIGNAL ( valueChanged ( int, int ) ), this, SLOT ( valueBudgetLineChanged ( int, int ) ) );

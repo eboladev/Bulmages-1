@@ -94,8 +94,8 @@ PedidoProveedorView::PedidoProveedorView ( BfCompany *comp, QWidget *parent )
         setListaLineas ( mui_lineasDetalle );
         setListaDescuentos ( mui_descuentos );
 
-        dialogChanges_cargaInicial();
-        meteWindow ( windowTitle(), this, FALSE );
+        dialogChanges_readValues();
+        insertWindow ( windowTitle(), this, FALSE );
 	blScript(this);
     } catch ( ... ) {
         blMsgInfo ( _ ( "Error al crear el pedido a proveedor" ), this );
@@ -245,9 +245,9 @@ void PedidoProveedorView::imprimir()
 
         base basesimp;
 
-        QString archivo = g_confpr->valor ( CONF_DIR_OPENREPORTS ) + "pedidoproveedor.rml";
-        QString archivod = g_confpr->valor ( CONF_DIR_USER ) + "pedidoproveedor.rml";
-        QString archivologo = g_confpr->valor ( CONF_DIR_OPENREPORTS ) + "logo.jpg";
+        QString archivo = g_confpr->value( CONF_DIR_OPENREPORTS ) + "pedidoproveedor.rml";
+        QString archivod = g_confpr->value( CONF_DIR_USER ) + "pedidoproveedor.rml";
+        QString archivologo = g_confpr->value( CONF_DIR_OPENREPORTS ) + "logo.jpg";
 
         /// Copiamos el archivo.
 #ifdef Q_OS_WIN32
@@ -260,9 +260,9 @@ void PedidoProveedorView::imprimir()
 
         /// Copiamos el logo.
 #ifdef Q_OS_WIN32
-	archivologo = "copy \"" + archivologo + "\" \"" + g_confpr->valor ( CONF_DIR_USER ) + "logo.jpg\"";
+	archivologo = "copy \"" + archivologo + "\" \"" + g_confpr->value( CONF_DIR_USER ) + "logo.jpg\"";
 #else
-        archivologo = "cp " + archivologo + " " + g_confpr->valor ( CONF_DIR_USER ) + "logo.jpg";
+        archivologo = "cp " + archivologo + " " + g_confpr->value( CONF_DIR_USER ) + "logo.jpg";
 #endif
 
         system ( archivologo.toAscii().constData() );
@@ -280,13 +280,13 @@ void PedidoProveedorView::imprimir()
         /// Linea de totales del pedido.
         cur = mainCompany() ->loadQuery ( SQLQuery );
         if ( !cur->eof() ) {
-            buff.replace ( "[dirproveedor]", cur->valor ( "dirproveedor" ) );
-            buff.replace ( "[poblproveedor]", cur->valor ( "poblproveedor" ) );
-            buff.replace ( "[telproveedor]", cur->valor ( "telproveedor" ) );
-            buff.replace ( "[nomproveedor]", cur->valor ( "nomproveedor" ) );
-            buff.replace ( "[cifproveedor]", cur->valor ( "cifproveedor" ) );
-            buff.replace ( "[idproveedor]", cur->valor ( "idproveedor" ) );
-            buff.replace ( "[cpproveedor]", cur->valor ( "cpproveedor" ) );
+            buff.replace ( "[dirproveedor]", cur->value( "dirproveedor" ) );
+            buff.replace ( "[poblproveedor]", cur->value( "poblproveedor" ) );
+            buff.replace ( "[telproveedor]", cur->value( "telproveedor" ) );
+            buff.replace ( "[nomproveedor]", cur->value( "nomproveedor" ) );
+            buff.replace ( "[cifproveedor]", cur->value( "cifproveedor" ) );
+            buff.replace ( "[idproveedor]", cur->value( "idproveedor" ) );
+            buff.replace ( "[cpproveedor]", cur->value( "cpproveedor" ) );
         } // end if
         delete cur;
 

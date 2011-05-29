@@ -621,7 +621,7 @@ void BcBulmaCont::closeEvent ( QCloseEvent *event )
 
 
     /// Antes de salir hacemos un mensaje de advertencia.
-    if ( g_confpr->valor ( CONF_ASK_BEFORE_EXIT ) == "TRUE" ) {
+    if ( g_confpr->value( CONF_ASK_BEFORE_EXIT ) == "TRUE" ) {
 	 QMessageBox msgBox;
 	 msgBox.setText(_("Seguro que desea abandonar el programa "));
 	 msgBox.setInformativeText(_("Se perderan los cambios no guardados"));
@@ -663,7 +663,7 @@ void BcBulmaCont::on_actionAyuda_triggered()
     QAssistantClient *asistenteAyuda = new QAssistantClient ( QLibraryInfo::location ( QLibraryInfo::BinariesPath ), 0 );
     connect ( asistenteAyuda, SIGNAL ( error ( const QString ) ), this, SLOT ( documentacionError ( const QString ) ) );
     QStringList parametros;
-    parametros << "-profile" << QString ( g_confpr->valor ( CONF_PROGDATA ) + "ayuda/bulmacont/bulmacont.adp" );
+    parametros << "-profile" << QString ( g_confpr->value( CONF_PROGDATA ) + "ayuda/bulmacont/bulmacont.adp" );
     asistenteAyuda->setArguments ( parametros );
     asistenteAyuda->openAssistant();
     */
@@ -717,12 +717,12 @@ void BcBulmaCont::on_actionPaises_triggered()
     } // end if
 
     if ( w == NULL ) {
-        m_empresaactual->deSeleccionaWindow();
+        m_empresaactual->deselectWindow();
         blDebug ( "END BcBulmaCont::informaindexador", 0, "Sin Widget" );
         return;
     } // end if
-    m_empresaactual->deSeleccionaWindow();
-    m_empresaactual->seleccionaWindow ( w->windowTitle(), w );
+    m_empresaactual->deselectWindow();
+    m_empresaactual->selectWindow ( w->windowTitle(), w );
 
     QString texto = "Window activated. " + w->windowTitle() + "\n";
     printf ( "%s", texto.toAscii().constData() );

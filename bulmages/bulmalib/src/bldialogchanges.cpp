@@ -55,9 +55,9 @@ BlDialogChanges::~BlDialogChanges()
 \param item
 \return
 **/
-bool BlDialogChanges::objExcluido ( QObject *item )
+bool BlDialogChanges::dialogChanges_isObjectExcluded ( QObject *item )
 {
-    blDebug ( "BlDialogChanges::objExcluido", 0 );
+    blDebug ( "BlDialogChanges::dialogChanges_isObjectExcluded", 0 );
     bool excluido = FALSE;
 
     QListIterator<QObject *> it_excluidos ( m_listaExcluidos );
@@ -69,7 +69,7 @@ bool BlDialogChanges::objExcluido ( QObject *item )
             excluido = TRUE;
         } // end if
     } // end while
-    blDebug ( "END BlDialogChanges::objExcluido", 0 );
+    blDebug ( "END BlDialogChanges::dialogChanges_isObjectExcluded", 0 );
     return excluido;
 }
 
@@ -77,9 +77,9 @@ bool BlDialogChanges::objExcluido ( QObject *item )
 ///
 /**
 **/
-void BlDialogChanges::dialogChanges_cargaInicial()
+void BlDialogChanges::dialogChanges_readValues()
 {
-    blDebug ( "BlDialogChanges::dialogChanges_cargaInicial", 0 );
+    blDebug ( "BlDialogChanges::dialogChanges_readValues", 0 );
     try {
         m_maxQLine = 0;
         m_maxQPlainText = 0;
@@ -95,7 +95,7 @@ void BlDialogChanges::dialogChanges_cargaInicial()
         QListIterator<QComboBox *> it4 ( l4 );
         while ( it4.hasNext() ) {
             QComboBox * item = it4.next();
-            if ( item->objectName().startsWith ( "mui_" ) && !objExcluido ( item ) ) {
+            if ( item->objectName().startsWith ( "mui_" ) && !dialogChanges_isObjectExcluded ( item ) ) {
                 m_listaQComboBox[m_maxQComboBox++] = item;
             } // end if
         } // end while
@@ -104,7 +104,7 @@ void BlDialogChanges::dialogChanges_cargaInicial()
         QListIterator<QPlainTextEdit *> it5 ( l5 );
         while ( it5.hasNext() ) {
             QPlainTextEdit * item = it5.next();
-            if ( item->objectName().startsWith ( "mui_" ) && !objExcluido ( item ) ) {
+            if ( item->objectName().startsWith ( "mui_" ) && !dialogChanges_isObjectExcluded ( item ) ) {
                 m_listaQPlainText[m_maxQPlainText++] = item;
             } // end if
         } // end while
@@ -113,7 +113,7 @@ void BlDialogChanges::dialogChanges_cargaInicial()
         QListIterator<QTextEdit *> it1 ( l1 );
         while ( it1.hasNext() ) {
             QTextEdit * item = it1.next();
-            if ( item->objectName().startsWith ( "mui_" ) && !objExcluido ( item ) ) {
+            if ( item->objectName().startsWith ( "mui_" ) && !dialogChanges_isObjectExcluded ( item ) ) {
                 m_listaQText[m_maxQText++] = item;
             } // end if
         } // end while
@@ -122,7 +122,7 @@ void BlDialogChanges::dialogChanges_cargaInicial()
         QListIterator<QLineEdit *> it2 ( l2 );
         while ( it2.hasNext() ) {
             QLineEdit * item = it2.next();
-            if ( item->objectName().startsWith ( "mui_" ) && !objExcluido ( item ) ) {
+            if ( item->objectName().startsWith ( "mui_" ) && !dialogChanges_isObjectExcluded ( item ) ) {
                 m_listaQLine[m_maxQLine++] = item;
             } // end if
         } // end while
@@ -131,7 +131,7 @@ void BlDialogChanges::dialogChanges_cargaInicial()
         QListIterator<QTableWidget *> it3 ( l3 );
         while ( it3.hasNext() ) {
             QTableWidget * item = it3.next();
-            if ( item->objectName().startsWith ( "mui_" ) && !objExcluido ( item ) ) {
+            if ( item->objectName().startsWith ( "mui_" ) && !dialogChanges_isObjectExcluded ( item ) ) {
                 m_listaQTable[m_maxQTable++] = item;
             } // end if
         } // end while
@@ -140,7 +140,7 @@ void BlDialogChanges::dialogChanges_cargaInicial()
         QListIterator<QCheckBox *> it6 ( l6 );
         while ( it6.hasNext() ) {
             QCheckBox * item = it6.next();
-            if ( item->objectName().startsWith ( "mui_" ) && !objExcluido ( item ) ) {
+            if ( item->objectName().startsWith ( "mui_" ) && !dialogChanges_isObjectExcluded ( item ) ) {
                 m_listaQCheckBox[m_maxQCheckBox++] = item;
             } // end if
         } // end while
@@ -149,15 +149,15 @@ void BlDialogChanges::dialogChanges_cargaInicial()
 	  QListIterator<BlDateSearch *> it7 ( l7 );
 	  while ( it7.hasNext() ) {
 		BlDateSearch * item = it7.next();
-		if ( item->objectName().startsWith ( "mui_" ) && !objExcluido ( item ) ) {
+		if ( item->objectName().startsWith ( "mui_" ) && !dialogChanges_isObjectExcluded ( item ) ) {
 		    m_listaBlDateSearch[m_maxBlDateSearch++] = item;
 		} // end if
 	  } // end while
 
         m_valorinicial = calculateValues();
-        blDebug ( "END BlDialogChanges::dialogChanges_cargaInicial", 0, m_valorinicial.toAscii() );
+        blDebug ( "END BlDialogChanges::dialogChanges_readValues", 0, m_valorinicial.toAscii() );
     } catch ( ... ) {
-        blDebug ( "ERROR BlDialogChanges::dialogChanges_cargaInicial", 0, " error en el calculo" );
+        blDebug ( "ERROR BlDialogChanges::dialogChanges_readValues", 0, " error en el calculo" );
         return;
     } // end try
 }
@@ -167,11 +167,11 @@ void BlDialogChanges::dialogChanges_cargaInicial()
 /**
 \return
 **/
-bool BlDialogChanges::dialogChanges_hayCambios()
+bool BlDialogChanges::dialogChanges_isChanged()
 {
-    blDebug ( "BlDialogChanges::dialogChanges_hayCambios", 0 );
+    blDebug ( "BlDialogChanges::dialogChanges_isChanged", 0 );
     QString valorfinal = calculateValues();
-    blDebug ( "END BlDialogChanges::dialogChanges_hayCambios", 0, m_valorinicial + "==== " + valorfinal );
+    blDebug ( "END BlDialogChanges::dialogChanges_isChanged", 0, m_valorinicial + "==== " + valorfinal );
     return ( m_valorinicial != valorfinal );
 }
 
@@ -200,11 +200,11 @@ QString BlDialogChanges::calculateValues()
 /**
 \param objetoexcluido
 **/
-void BlDialogChanges::dialogChanges_setQObjectExcluido ( QObject *objetoexcluido )
+void BlDialogChanges::dialogChanges_setExcludedObject ( QObject *objetoexcluido )
 {
-    blDebug ( "BlDialogChanges::dialogChanges_setQObjectExcluido", 0 );
+    blDebug ( "BlDialogChanges::dialogChanges_setExcludedObject", 0 );
     m_listaExcluidos.append ( objetoexcluido );
-    blDebug ( "END BlDialogChanges::dialogChanges_setQObjectExcluido", 0 );
+    blDebug ( "END BlDialogChanges::dialogChanges_setExcludedObject", 0 );
 }
 
 

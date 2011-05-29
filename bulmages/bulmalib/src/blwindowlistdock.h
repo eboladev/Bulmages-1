@@ -56,10 +56,10 @@ public:
     BlListWidgetItem ( BlListWidget *l, QPixmap &p );
     ~BlListWidgetItem();
     void setObject ( QObject *m );
-    void setNombre ( QString m );
-    void setTitulo (QString titulo);
+    void setName ( QString m );
+    void setTitle (QString titulo);
     QObject *object();
-    QString nombre();
+    QString name();
 };
 
 
@@ -80,16 +80,16 @@ public:
     ~BlWindowListDock();
 
 public:
-    int meteWindow ( QString, QObject *, bool compdup = TRUE, QString titulo="" );
+    int insertWindow ( QString, QObject *, bool compdup = TRUE, QString titulo="" );
     
 #ifdef AREA_QMDI
-    int seleccionaWindow ( QString nombre, QMdiSubWindow *obj );
+    int selectWindow ( QString nombre, QMdiSubWindow *obj );
 #else
-    int seleccionaWindow ( QString nombre, QObject *obj );
+    int selectWindow ( QString nombre, QObject *obj );
 #endif
     
-    int deSeleccionaWindow();
-    void sacaWindow ( QObject * );
+    int deselectWindow();
+    void removeWindow ( QObject * );
     void cambiaVisible ( bool );
     void vaciar();
     void vaciarCompleto();

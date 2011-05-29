@@ -43,14 +43,14 @@ int entryPoint ( BfBulmaFact *bcont )
 
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale ( LC_ALL, "" );
-    blBindTextDomain ( "pluginbf_debug", g_confpr->valor ( CONF_DIR_TRADUCCION ).toAscii().constData() );
+    blBindTextDomain ( "pluginbf_debug", g_confpr->value( CONF_DIR_TRADUCCION ).toAscii().constData() );
 
     /// A&ntilde;ade en el men&uacute; del programa la opci&oacuteMn para
     /// acceder al modo de depuraci&oacuteMm.
     BlAction *accionA = new BlAction ( _("&Modo depuracion"), 0 );
     accionA->setCheckable ( TRUE );
 
-    if ( g_confpr->valor ( CONF_DEBUG ) == "TRUE" ) {
+    if ( g_confpr->value( CONF_DEBUG ) == "TRUE" ) {
         accionA->setChecked ( TRUE );
     } else {
         accionA->setChecked ( FALSE );
@@ -70,9 +70,9 @@ int BlAction_triggered(BlAction *accion) {
     if (accion->objectName() == "mui_actionDebug") {
 
         if (accion->isChecked ()) {
-            g_confpr->setValor( CONF_DEBUG, "TRUE");
+            g_confpr->setValue( CONF_DEBUG, "TRUE");
         } else {
-            g_confpr->setValor( CONF_DEBUG, "FALSE");
+            g_confpr->setValue( CONF_DEBUG, "FALSE");
         } // end if
 
     } // end if

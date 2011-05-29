@@ -60,7 +60,7 @@ BtCompany::~BtCompany()
 /// Pruebas de exportacion a XML
 /// ======================================
     /// Guardamos los tickets para poder recuperarlos despues
-    QFile file ( g_confpr->valor ( CONF_DIR_USER ) + "tickets_bulmatpv.xml" );
+    QFile file ( g_confpr->value( CONF_DIR_USER ) + "tickets_bulmatpv.xml" );
     /// Guardado del orden y de configuraciones varias.
     if ( file.open ( QIODevice::WriteOnly ) ) {
         QTextStream stream ( &file );
@@ -112,7 +112,7 @@ void BtCompany::createMainWindows ( BlSplashScreen *splash )
     QString query = "SELECT  pg_attribute.atttypmod / 65536 AS decimal, pg_attribute.atttypmod - pg_attribute.atttypmod / 65536 * 65536 - 4 AS precision  FROM pg_attribute WHERE attname='cantlalbaran'";
     BlDbRecordSet *cur = loadQuery ( query );
     if ( !cur->eof() ) {
-       m_decimalesCantidad = cur->valor("precision").toInt();
+       m_decimalesCantidad = cur->value("precision").toInt();
     } // end if
     delete cur;
 
@@ -134,7 +134,7 @@ void BtCompany::createMainWindows ( BlSplashScreen *splash )
     listaTickets()->append(m_ticketActual);
 
     /// Hacemos la sincronizacioin del XML por si hubo tickets sin guardar
-    QFile file ( g_confpr->valor ( CONF_DIR_USER ) + "tickets_bulmatpv.xml" );
+    QFile file ( g_confpr->value( CONF_DIR_USER ) + "tickets_bulmatpv.xml" );
 
     if (file.exists()) {
         if ( !file.open ( QIODevice::ReadOnly ) ) {
@@ -157,7 +157,7 @@ void BtCompany::createMainWindows ( BlSplashScreen *splash )
 
     /// Ponemos el titulo de la ventana
     m_bulmaTPV->statusBar() ->showMessage ( dbName(), 2000 );
-   m_bulmaTPV->setWindowTitle ( g_confpr->valor ( CONF_MAIN_WINDOW_TITLE ).isEmpty() ? _( "Terminal Punto de Venta GPL" ) : g_confpr->valor ( CONF_MAIN_WINDOW_TITLE ) + " :: " + currentUser() + "@" + dbName() ); 
+   m_bulmaTPV->setWindowTitle ( g_confpr->value( CONF_MAIN_WINDOW_TITLE ).isEmpty() ? _( "Terminal Punto de Venta GPL" ) : g_confpr->value( CONF_MAIN_WINDOW_TITLE ) + " :: " + currentUser() + "@" + dbName() ); 
     /// Hacemos la comprobacion de Z
     compruebaUltimaZ();
 
@@ -183,7 +183,7 @@ void BtCompany::z()
     if ( curFechaUltimaZ->numregistros() == 0) {
         queryfechas = "SELECT DISTINCT fechaalbaran FROM albaran WHERE idz IS NULL ORDER BY fechaalbaran ASC";
     } else {
-        queryfechas = "SELECT DISTINCT fechaalbaran FROM albaran WHERE idz IS NULL AND fechaalbaran >= '" + curFechaUltimaZ->valor("fechaz") + "' ORDER BY fechaalbaran ASC";
+        queryfechas = "SELECT DISTINCT fechaalbaran FROM albaran WHERE idz IS NULL AND fechaalbaran >= '" + curFechaUltimaZ->value("fechaz") + "' ORDER BY fechaalbaran ASC";
     } // end if
     
     /// Buscamos las fechas de los tickets que quedan pendientes de hacer Z
@@ -192,59 +192,59 @@ void BtCompany::z()
     
     while ( !curfechas->eof() ) {
         
-        //blMsgInfo(curfechas->valor("fechaalbaran"));
+        //blMsgInfo(curfechas->value("fechaalbaran"));
         
-        query = "SELECT count(idz) AS numtickets, sum(totalalbaran) AS total FROM albaran WHERE idz IS NULL AND ticketalbaran = TRUE AND fechaalbaran = '" + curfechas->valor("fechaalbaran") + "'";
+        query = "SELECT count(idz) AS numtickets, sum(totalalbaran) AS total FROM albaran WHERE idz IS NULL AND ticketalbaran = TRUE AND fechaalbaran = '" + curfechas->value("fechaalbaran") + "'";
         BlDbRecordSet *cur = loadQuery ( query );
-        QString numtickets = cur->valor ( "numtickets" );
-        QString total = cur->valor ( "total" );
+        QString numtickets = cur->value( "numtickets" );
+        QString total = cur->value( "total" );
         
         if ( total == "" )
             total = "0";
         
         delete cur;
         
-        query = "INSERT INTO z (idalmacen, totalz, numtickets, fechaz) VALUES(" + g_confpr->valor ( CONF_IDALMACEN_DEFECTO ) + ", " + total + "," + numtickets + ", '" + curfechas->valor("fechaalbaran") + "')";
+        query = "INSERT INTO z (idalmacen, totalz, numtickets, fechaz) VALUES(" + g_confpr->value( CONF_IDALMACEN_DEFECTO ) + ", " + total + "," + numtickets + ", '" + curfechas->value("fechaalbaran") + "')";
         runQuery ( query );
         query = "SELECT max(idz) AS id FROM z";
         cur = loadQuery ( query );
-        QString idz = cur->valor ( "id" );
+        QString idz = cur->value( "id" );
         
         delete cur;
         
-        query = "UPDATE albaran SET idz = " + idz + " WHERE idz IS NULL AND ticketalbaran = TRUE AND fechaalbaran = '" + curfechas->valor("fechaalbaran") + "'";
+        query = "UPDATE albaran SET idz = " + idz + " WHERE idz IS NULL AND ticketalbaran = TRUE AND fechaalbaran = '" + curfechas->value("fechaalbaran") + "'";
         runQuery ( query );
 
         commit();
 	
 	m_ticketActual -> generaRML("informe_Z.txt");
 
-	if (!g_confpr->valor ( CONF_CASHBOX_FILE).isEmpty() && g_confpr->valor ( CONF_CASHBOX_FILE) != "/dev/null") {
-	    QString comando = "cat " + g_confpr->valor(CONF_DIR_USER) + "informe_Z.txt" + "  > " + g_confpr->valor ( CONF_CASHBOX_FILE );
+	if (!g_confpr->value( CONF_CASHBOX_FILE).isEmpty() && g_confpr->value( CONF_CASHBOX_FILE) != "/dev/null") {
+	    QString comando = "cat " + g_confpr->value(CONF_DIR_USER) + "informe_Z.txt" + "  > " + g_confpr->value( CONF_CASHBOX_FILE );
 	    system ( comando.toAscii().data() );
-	} else if (g_confpr->valor(CONF_CUPS_DEFAULT_PRINTER).isEmpty() || g_confpr->valor(CONF_CUPS_DEFAULT_PRINTER) == "None") {
+	} else if (g_confpr->value(CONF_CUPS_DEFAULT_PRINTER).isEmpty() || g_confpr->value(CONF_CUPS_DEFAULT_PRINTER) == "None") {
 	    blDebug("Debe establecer el parametro CONF_CUPS_DEFAULT_PRINTER o CONF_CASHBOX_FILE para abrir el cajon " , 2);
 	} else {
-	    QString comando = "lp -d" + g_confpr->valor(CONF_CUPS_DEFAULT_PRINTER) + " " + g_confpr->valor(CONF_DIR_USER) + "informe_Z.txt";
+	    QString comando = "lp -d" + g_confpr->value(CONF_CUPS_DEFAULT_PRINTER) + " " + g_confpr->value(CONF_DIR_USER) + "informe_Z.txt";
 	    system ( comando.toAscii().data() );
 	} // end if 
 	
 	
 /*
-        QString querycont = "SELECT count(idalbaran) AS numtickets, sum(totalalbaran) as total FROM albaran WHERE idz = " + idz + " AND ticketalbaran = TRUE AND idforma_pago = " + g_confpr->valor ( CONF_IDFORMA_PAGO_CONTADO );
+        QString querycont = "SELECT count(idalbaran) AS numtickets, sum(totalalbaran) as total FROM albaran WHERE idz = " + idz + " AND ticketalbaran = TRUE AND idforma_pago = " + g_confpr->value( CONF_IDFORMA_PAGO_CONTADO );
         BlDbRecordSet *cur1 = loadQuery ( querycont );
-        QString numticketscont = cur1->valor ( "numtickets" );
-        QString totalcont = cur1->valor ( "total" );
+        QString numticketscont = cur1->value( "numtickets" );
+        QString totalcont = cur1->value( "total" );
         
         if ( totalcont == "" )
             totalcont = "0";
             
         delete cur1;
 
-        QString queryvisa = "SELECT count(idalbaran) AS numtickets, sum(totalalbaran) as total FROM albaran WHERE idz = " + idz + " AND ticketalbaran = TRUE AND idforma_pago = " + g_confpr->valor ( CONF_IDFORMA_PAGO_VISA );
+        QString queryvisa = "SELECT count(idalbaran) AS numtickets, sum(totalalbaran) as total FROM albaran WHERE idz = " + idz + " AND ticketalbaran = TRUE AND idforma_pago = " + g_confpr->value( CONF_IDFORMA_PAGO_VISA );
         BlDbRecordSet *cur2 = loadQuery ( queryvisa );
-        QString numticketsvisa = cur2->valor ( "numtickets" );
-        QString totalvisa = cur2->valor ( "total" );
+        QString numticketsvisa = cur2->value( "numtickets" );
+        QString totalvisa = cur2->value( "total" );
         
         if ( totalvisa == "" )
             totalvisa = "0";
@@ -253,7 +253,7 @@ void BtCompany::z()
 
     // ========================================
 
-        QFile file ( g_confpr->valor ( CONF_TICKET_PRINTER_FILE ) );
+        QFile file ( g_confpr->value( CONF_TICKET_PRINTER_FILE ) );
         
         if ( !file.open ( QIODevice::WriteOnly | QIODevice::Unbuffered ) ) {
             blDebug ( "Error en la Impresion de ticket", 2 );
@@ -265,7 +265,7 @@ void BtCompany::z()
         BlDbRecordSet *curemp = loadQuery ( "SELECT * FROM configuracion WHERE nombre='NombreEmpresa'" );
         
         if ( !curemp->eof() ) {
-            file.write ( curemp->valor ( "valor" ).toAscii() );
+            file.write ( curemp->value( "valor" ).toAscii() );
             file.write ( "\n", 1 );
         } // end if
         
@@ -275,7 +275,7 @@ void BtCompany::z()
         cur = loadQuery ( "SELECT * FROM configuracion WHERE nombre='DireccionCompleta'" );
         
         if ( !cur->eof() ) {
-            file.write ( cur->valor ( "valor" ).toAscii() );
+            file.write ( cur->value( "valor" ).toAscii() );
             file.write ( "\n", 1 );
         } // end if
         
@@ -283,7 +283,7 @@ void BtCompany::z()
         cur = loadQuery ( "SELECT * FROM configuracion WHERE nombre='CodPostal'" );
         
         if ( !cur->eof() ) {
-            file.write ( cur->valor ( "valor" ).toAscii() );
+            file.write ( cur->value( "valor" ).toAscii() );
         } // end if
         
         delete cur;
@@ -292,7 +292,7 @@ void BtCompany::z()
         cur = loadQuery ( "SELECT * FROM configuracion WHERE nombre='Ciudad'" );
         
         if ( !cur->eof() ) {
-            file.write ( cur->valor ( "valor" ).toAscii() );
+            file.write ( cur->value( "valor" ).toAscii() );
             file.write ( QString ( " " ).toAscii() );
         } // end if
         
@@ -302,7 +302,7 @@ void BtCompany::z()
         
         if ( !cur->eof() ) {
             file.write ( QString ( "(" ).toAscii() );
-            file.write ( cur->valor ( "valor" ).toAscii() );
+            file.write ( cur->value( "valor" ).toAscii() );
             file.write ( QString ( ")" ).toAscii() );
             file.write ( "\n", 1 );
         } // end if
@@ -317,18 +317,18 @@ void BtCompany::z()
         //QDate fecha = QDate::currentDate();
         //QString sfecha = fecha.toString ( "d-M-yyyy" );
         //file.write ( sfecha.toAscii() );
-        file.write ( (curfechas->valor("fechaalbaran")).toAscii() );
+        file.write ( (curfechas->value("fechaalbaran")).toAscii() );
         QTime hora = QTime::currentTime();
         QString stime = " " + hora.toString ( "HH:mm" );
         file.write ( stime.toAscii() );
         file.write ( "\n", 1 );
 
         /// Imprimimos el almacen
-        cur = loadQuery ( "SELECT * FROM almacen WHERE idalmacen=" + g_confpr->valor ( CONF_IDALMACEN_DEFECTO ) );
+        cur = loadQuery ( "SELECT * FROM almacen WHERE idalmacen=" + g_confpr->value( CONF_IDALMACEN_DEFECTO ) );
         
         if ( !cur->eof() ) {
             file.write ( QString ( "Almacen: " ).toAscii() );
-            file.write ( cur->valor ( "nomalmacen" ).toAscii() );
+            file.write ( cur->value( "nomalmacen" ).toAscii() );
             file.write ( "\n", 1 );
         } // end if
         
@@ -377,10 +377,10 @@ void BtCompany::z()
         
         while ( !cur->eof() ) {
 
-            QString querycont = "SELECT sum(cantlalbaran) AS unidades, sum(pvpivainclalbaran * cantlalbaran) as total FROM lalbaran NATURAL LEFT JOIN articulo  WHERE idalbaran IN (SELECT idalbaran FROM albaran WHERE idz=" + idz + ")  AND idfamilia = " + cur->valor ( "idfamilia" );
+            QString querycont = "SELECT sum(cantlalbaran) AS unidades, sum(pvpivainclalbaran * cantlalbaran) as total FROM lalbaran NATURAL LEFT JOIN articulo  WHERE idalbaran IN (SELECT idalbaran FROM albaran WHERE idz=" + idz + ")  AND idfamilia = " + cur->value( "idfamilia" );
             BlDbRecordSet *cur1 = loadQuery ( querycont );
-            QString numticketscont = cur1->valor ( "unidades" );
-            QString totalcont = cur1->valor ( "total" );
+            QString numticketscont = cur1->value( "unidades" );
+            QString totalcont = cur1->value( "total" );
             
             if ( totalcont == "" )
                 totalcont = "0";
@@ -389,7 +389,7 @@ void BtCompany::z()
 
             if ( totalcont != "" ) {
                 file.write ( QString ( "Familia: " ).toAscii() );
-                file.write ( cur->valor ( "nomfamilia" ).toAscii() );
+                file.write ( cur->value( "nomfamilia" ).toAscii() );
                 file.write ( "\n", 1 );
 
                 str = "Und. Vendidas: " + numticketscont.rightJustified ( 10, ' ' );
@@ -461,13 +461,13 @@ void BtCompany::x()
 
     m_ticketActual -> generaRML("informe_X.txt");
 
-    if (!g_confpr->valor ( CONF_CASHBOX_FILE).isEmpty() && g_confpr->valor ( CONF_CASHBOX_FILE) != "/dev/null") {
-        QString comando = "cat " + g_confpr->valor(CONF_DIR_USER) + "informe_X.txt" + "  > " + g_confpr->valor ( CONF_CASHBOX_FILE );
+    if (!g_confpr->value( CONF_CASHBOX_FILE).isEmpty() && g_confpr->value( CONF_CASHBOX_FILE) != "/dev/null") {
+        QString comando = "cat " + g_confpr->value(CONF_DIR_USER) + "informe_X.txt" + "  > " + g_confpr->value( CONF_CASHBOX_FILE );
         system ( comando.toAscii().data() );
-    } else if (g_confpr->valor(CONF_CUPS_DEFAULT_PRINTER).isEmpty() || g_confpr->valor(CONF_CUPS_DEFAULT_PRINTER) == "None") {
+    } else if (g_confpr->value(CONF_CUPS_DEFAULT_PRINTER).isEmpty() || g_confpr->value(CONF_CUPS_DEFAULT_PRINTER) == "None") {
         blDebug("Debe establecer el parametro CONF_CUPS_DEFAULT_PRINTER o CONF_CASHBOX_FILE para abrir el cajon " , 2);
     } else {
-        QString comando = "lp -d" + g_confpr->valor(CONF_CUPS_DEFAULT_PRINTER) + " " + g_confpr->valor(CONF_DIR_USER) + "informe_X.txt";
+        QString comando = "lp -d" + g_confpr->value(CONF_CUPS_DEFAULT_PRINTER) + " " + g_confpr->value(CONF_DIR_USER) + "informe_X.txt";
         system ( comando.toAscii().data() );
     } // end if    
 
@@ -475,28 +475,28 @@ void BtCompany::x()
 /*
     QString query = "SELECT count(idalbaran) AS numtickets, sum(totalalbaran) as total FROM albaran WHERE idz IS NULL AND ticketalbaran = TRUE";
     BlDbRecordSet *cur = loadQuery ( query );
-    QString numtickets = cur->valor ( "numtickets" );
-    QString total = cur->valor ( "total" );
+    QString numtickets = cur->value( "numtickets" );
+    QString total = cur->value( "total" );
     
     if ( total == "" )
         total = "0";
     
     delete cur;
 
-    QString querycont = "SELECT count(idalbaran) AS numtickets, sum(totalalbaran) as total FROM albaran WHERE idz IS NULL AND ticketalbaran = TRUE AND idforma_pago = " + g_confpr->valor ( CONF_IDFORMA_PAGO_CONTADO );
+    QString querycont = "SELECT count(idalbaran) AS numtickets, sum(totalalbaran) as total FROM albaran WHERE idz IS NULL AND ticketalbaran = TRUE AND idforma_pago = " + g_confpr->value( CONF_IDFORMA_PAGO_CONTADO );
     BlDbRecordSet *cur1 = loadQuery ( querycont );
-    QString numticketscont = cur1->valor ( "numtickets" );
-    QString totalcont = cur1->valor ( "total" );
+    QString numticketscont = cur1->value( "numtickets" );
+    QString totalcont = cur1->value( "total" );
     
     if ( totalcont == "" )
         totalcont = "0";
     
     delete cur1;
 
-    QString queryvisa = "SELECT count(idalbaran) AS numtickets, sum(totalalbaran) as total FROM albaran WHERE idz IS NULL AND ticketalbaran = TRUE AND idforma_pago = " + g_confpr->valor ( CONF_IDFORMA_PAGO_VISA );
+    QString queryvisa = "SELECT count(idalbaran) AS numtickets, sum(totalalbaran) as total FROM albaran WHERE idz IS NULL AND ticketalbaran = TRUE AND idforma_pago = " + g_confpr->value( CONF_IDFORMA_PAGO_VISA );
     BlDbRecordSet *cur2 = loadQuery ( queryvisa );
-    QString numticketsvisa = cur2->valor ( "numtickets" );
-    QString totalvisa = cur2->valor ( "total" );
+    QString numticketsvisa = cur2->value( "numtickets" );
+    QString totalvisa = cur2->value( "total" );
     
     if ( totalvisa == "" )
         totalvisa = "0";
@@ -505,7 +505,7 @@ void BtCompany::x()
 
 // ========================================
 
-    QFile file ( g_confpr->valor ( CONF_TICKET_PRINTER_FILE ) );
+    QFile file ( g_confpr->value( CONF_TICKET_PRINTER_FILE ) );
     
     if ( !file.open ( QIODevice::WriteOnly | QIODevice::Unbuffered ) ) {
         blDebug ( "Error en la Impresion de ticket", 2 );
@@ -517,7 +517,7 @@ void BtCompany::x()
     BlDbRecordSet *curemp = loadQuery ( "SELECT * FROM configuracion WHERE nombre='NombreEmpresa'" );
     
     if ( !curemp->eof() ) {
-        file.write ( curemp->valor ( "valor" ).toAscii() );
+        file.write ( curemp->value( "valor" ).toAscii() );
         file.write ( "\n", 1 );
     } // end if
     
@@ -527,7 +527,7 @@ void BtCompany::x()
     cur = loadQuery ( "SELECT * FROM configuracion WHERE nombre='DireccionCompleta'" );
     
     if ( !cur->eof() ) {
-        file.write ( cur->valor ( "valor" ).toAscii() );
+        file.write ( cur->value( "valor" ).toAscii() );
         file.write ( "\n", 1 );
     } // end if
     
@@ -538,7 +538,7 @@ void BtCompany::x()
     cur = loadQuery ( "SELECT * FROM configuracion WHERE nombre='CodPostal'" );
     
     if ( !cur->eof() ) {
-        file.write ( cur->valor ( "valor" ).toAscii() );
+        file.write ( cur->value( "valor" ).toAscii() );
     } // end if
     
     delete cur;
@@ -547,7 +547,7 @@ void BtCompany::x()
     cur = loadQuery ( "SELECT * FROM configuracion WHERE nombre='Ciudad'" );
     
     if ( !cur->eof() ) {
-        file.write ( cur->valor ( "valor" ).toAscii() );
+        file.write ( cur->value( "valor" ).toAscii() );
         file.write ( QString ( " " ).toAscii() );
     } // end if
     
@@ -557,7 +557,7 @@ void BtCompany::x()
     
     if ( !cur->eof() ) {
         file.write ( QString ( "(" ).toAscii() );
-        file.write ( cur->valor ( "valor" ).toAscii() );
+        file.write ( cur->value( "valor" ).toAscii() );
         file.write ( QString ( ")" ).toAscii() );
         file.write ( "\n", 1 );
     } // end if
@@ -578,11 +578,11 @@ void BtCompany::x()
     file.write ( "\n", 1 );
 
     /// Imprimimos el almacen
-    cur = loadQuery ( "SELECT * FROM almacen WHERE idalmacen=" + g_confpr->valor ( CONF_IDALMACEN_DEFECTO ) );
+    cur = loadQuery ( "SELECT * FROM almacen WHERE idalmacen=" + g_confpr->value( CONF_IDALMACEN_DEFECTO ) );
     
     if ( !cur->eof() ) {
         file.write ( QString ( "Almacen: " ).toAscii() );
-        file.write ( cur->valor ( "nomalmacen" ).toAscii() );
+        file.write ( cur->value( "nomalmacen" ).toAscii() );
         file.write ( "\n", 1 );
     } // end if
     
@@ -666,7 +666,7 @@ void BtCompany::cobrar(bool imprimir)
             return;
         }// end if
 
-        if (imprimir || g_confpr->valor(CONF_TPV_REIMPRIMIR) == "TRUE") {
+        if (imprimir || g_confpr->value(CONF_TPV_REIMPRIMIR) == "TRUE") {
             m_ticketActual->imprimir();
         }// end if
 
@@ -752,7 +752,7 @@ void BtCompany::setTicketActual ( BtTicket *tick )
 void BtCompany::guardaConf()
 {
     blDebug ( "Company::guardaConf", 0 );
-    QFile file ( g_confpr->valor ( CONF_DIR_USER ) + "bulmatpv_" + dbName() + ".cfn" );
+    QFile file ( g_confpr->value( CONF_DIR_USER ) + "bulmatpv_" + dbName() + ".cfn" );
     /// Guardado del orden y de configuraciones varias.
     if ( file.open ( QIODevice::WriteOnly ) ) {
         QTextStream stream ( &file );
@@ -778,7 +778,7 @@ void BtCompany::cargaConf()
 {
     blDebug ( "BtCompany::cargaConf", 0 );
     
-    QFile file ( g_confpr->valor ( CONF_DIR_USER ) + "bulmatpv_" + dbName() + ".cfn" );
+    QFile file ( g_confpr->value( CONF_DIR_USER ) + "bulmatpv_" + dbName() + ".cfn" );
     QDomDocument doc ( "mydocument" );
     
     if ( !file.open ( QIODevice::ReadOnly ) )
@@ -824,7 +824,7 @@ void BtCompany::compruebaUltimaZ()
     QString query = "SELECT COUNT(idz) AS numzetas FROM z";
     BlDbRecordSet *curNumzetas = loadQuery ( query );
     
-    if ( (curNumzetas->valor("numzetas")).toInt() > 0) {
+    if ( (curNumzetas->value("numzetas")).toInt() > 0) {
     
         // Obtenemos fecha de la ultima Z
         query = "SELECT idz, fechaz FROM z ORDER BY idz DESC LIMIT 1";
@@ -835,23 +835,23 @@ void BtCompany::compruebaUltimaZ()
         BlDbRecordSet *curFechaActual = loadQuery ( query );
         
         // Obtenemos diferencia en dias entre la fecha de la ultima Z y la fecha actual
-        query = "SELECT to_date('" + curFechaActual->valor("fecha") + "','dd/mm/yyyy') - to_date('" + curFechaUltimaZ->valor("fechaz") + "','dd/mm/yyyy') AS diferencia;";
+        query = "SELECT to_date('" + curFechaActual->value("fecha") + "','dd/mm/yyyy') - to_date('" + curFechaUltimaZ->value("fechaz") + "','dd/mm/yyyy') AS diferencia;";
         BlDbRecordSet *curDiferencia = loadQuery ( query );
                 
-        if ( (curDiferencia->valor("diferencia")).toInt() > 1 ) {
+        if ( (curDiferencia->value("diferencia")).toInt() > 1 ) {
         
             // Comprobamos si hay tickets pendientes desde la ultima Z
-            query = "SELECT COUNT(idalbaran) AS numtickets FROM albaran where ticketalbaran = TRUE AND idz IS NULL AND fechaalbaran > '" + curFechaUltimaZ->valor("fechaz") + "'";
+            query = "SELECT COUNT(idalbaran) AS numtickets FROM albaran where ticketalbaran = TRUE AND idz IS NULL AND fechaalbaran > '" + curFechaUltimaZ->value("fechaz") + "'";
             BlDbRecordSet *curNumtickets = loadQuery ( query );
             
-            if ( (curNumtickets->valor("numtickets")).toInt() > 1 ) {
+            if ( (curNumtickets->value("numtickets")).toInt() > 1 ) {
 
                 QMessageBox msgBox(this);
                 QAbstractButton *si = (QAbstractButton *) msgBox.addButton("Si", QMessageBox::ActionRole);
                 QAbstractButton *no = (QAbstractButton *) msgBox.addButton("No", QMessageBox::ActionRole);
                 msgBox.setEscapeButton(no);
                 msgBox.setWindowTitle("Inconsistencia en Zetas");
-                msgBox.setText("La fecha de la ultima Zeta es " + curFechaUltimaZ->valor("fechaz") + " y la fecha actual es " + curFechaActual->valor("fecha") + ". Hay tickets entre este periodo que tienen pendiente asociarse a una Zeta. ¿Desea hacer las Zetas necesarias para los tickets pendientes?");
+                msgBox.setText("La fecha de la ultima Zeta es " + curFechaUltimaZ->value("fechaz") + " y la fecha actual es " + curFechaActual->value("fecha") + ". Hay tickets entre este periodo que tienen pendiente asociarse a una Zeta. ¿Desea hacer las Zetas necesarias para los tickets pendientes?");
                 msgBox.exec();
                 
                 if (msgBox.clickedButton() == si) {
@@ -868,9 +868,9 @@ void BtCompany::compruebaUltimaZ()
         
         /// Diferencia negativa de fechas (algo esta mal en la fecha del distema
         /// o ya se hizo alguna Z con la fecha mal establecida en este)
-        if ( (curDiferencia->valor("diferencia")).toInt() < 0 ) {
+        if ( (curDiferencia->value("diferencia")).toInt() < 0 ) {
         
-            blMsgInfo("La fecha de la ultima Zeta es " + curFechaUltimaZ->valor("fechaz") + " y la fecha actual es " + curFechaActual->valor("fecha") + ". Parece que hay un problema con la fecha del sistema ya que no es coherente con la fecha de la ultima Zeta (el programa no se podra seguir usando hasta no resolver este problema)");
+            blMsgInfo("La fecha de la ultima Zeta es " + curFechaUltimaZ->value("fechaz") + " y la fecha actual es " + curFechaActual->value("fecha") + ". Parece que hay un problema con la fecha del sistema ya que no es coherente con la fecha de la ultima Zeta (el programa no se podra seguir usando hasta no resolver este problema)");
             exit(0);
                     
         } // end if

@@ -82,12 +82,12 @@ void BlComboBoxDelegate::setId ( QString id, QString fieldSearch )
 
 	if (fieldSearch.isEmpty()) {
 	    /// Busca en el campo ID establecido la coincidencia.
-            if ( m_comboRecordSet->valor ( m_fieldId ) == id ) {
+            if ( m_comboRecordSet->value( m_fieldId ) == id ) {
 	        i1 = i;
 	    } // end if
 	} else {
 	    /// Busca en un campo diferente al campo ID establecido la coincidencia.
-            if ( m_comboRecordSet->valor ( fieldSearch ) == id ) {
+            if ( m_comboRecordSet->value( fieldSearch ) == id ) {
 	        i1 = i;
 	    } // end if
 	} // end if
@@ -100,7 +100,7 @@ void BlComboBoxDelegate::setId ( QString id, QString fieldSearch )
 	    if (cad != "") {
 	        cad = cad + " ";
 	    } // end if
-            cad = cad  + m_comboRecordSet->valor ( it.key() );
+            cad = cad  + m_comboRecordSet->value( it.key() );
         } // end while
 
         addItem ( cad );
@@ -140,12 +140,12 @@ QString BlComboBoxDelegate::id()
             if ( currentIndex() == 0 ) {
                 return "";
             } else {
-                return m_comboRecordSet->valor ( m_fieldId, currentIndex() - 1 );
+                return m_comboRecordSet->value( m_fieldId, currentIndex() - 1 );
             } // end if
 
         /// Si el campo no tiene valor nulo, el orden coincide con el n&uacute;mero de &iacute;ndice
         } else {
-            return m_comboRecordSet->valor ( m_fieldId, currentIndex() );
+            return m_comboRecordSet->value( m_fieldId, currentIndex() );
         } // end if
 
     } // end if
@@ -172,12 +172,12 @@ QString BlComboBoxDelegate::id(QString value)
 	    if (cad != "") {
 	        cad = cad + " ";
 	    } // end if
-            cad = cad  + m_comboRecordSet->valor ( it.key() );
+            cad = cad  + m_comboRecordSet->value( it.key() );
         } // end while      
       
        if (cad == value) {
 	  blDebug ( "END BlComboBoxDelegate::id", 0, value );
-	  return m_comboRecordSet->valor ( m_fieldId );
+	  return m_comboRecordSet->value( m_fieldId );
        } // end if
        m_comboRecordSet->nextRecord();
     } // end while

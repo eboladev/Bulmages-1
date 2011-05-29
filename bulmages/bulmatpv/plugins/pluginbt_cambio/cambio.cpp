@@ -27,7 +27,7 @@ Cambio::Cambio ( BtCompany *emp, QWidget *parent ) : BlWidget ( emp, parent )
     BlDbRecordSet *cur = emp->loadQuery ( "SELECT * FROM configuracion WHERE nombre = 'IRPF'" );
     if ( cur ) {
         if ( !cur->eof() ) {
-            irpf = BlFixed ( cur->valor ( "valor" ) );
+            irpf = BlFixed ( cur->value( "valor" ) );
         } // end if
         delete cur;
     } // end if
@@ -134,7 +134,7 @@ void Cambio::on_mui_cobrar_clicked()
 
 void Cambio::on_mui_visa_clicked()
 {
-    ( ( BtCompany * ) mainCompany() )->ticketActual()->setDbValue ( "idforma_pago", g_confpr->valor ( CONF_IDFORMA_PAGO_VISA ) );
+    ( ( BtCompany * ) mainCompany() )->ticketActual()->setDbValue ( "idforma_pago", g_confpr->value( CONF_IDFORMA_PAGO_VISA ) );
     ( ( QDialog * ) parent() )->accept();
 }
 

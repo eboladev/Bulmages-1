@@ -336,12 +336,12 @@ void blCreatePDF ( const QString arch )
 {
     blDebug ( "blCreatePDF " + arch, 0 );
 
-    QDir::setCurrent ( g_confpr->valor ( CONF_DIR_USER ) );
+    QDir::setCurrent ( g_confpr->value( CONF_DIR_USER ) );
     QString cadsys;
 
 #ifdef Q_OS_WIN32
 
-    cadsys = "\"" + g_confpr->valor ( CONF_PYTHON ) + "\" \"" + g_confpr->valor ( CONF_PROGDATA ) + "bgtrml2pdf\\bgtrml2pdf\" " + arch + ".rml > \"" + g_confpr->valor ( CONF_DIR_USER ) + arch + ".pdf\"";
+    cadsys = "\"" + g_confpr->value( CONF_PYTHON ) + "\" \"" + g_confpr->value( CONF_PROGDATA ) + "bgtrml2pdf\\bgtrml2pdf\" " + arch + ".rml > \"" + g_confpr->value( CONF_DIR_USER ) + arch + ".pdf\"";
     cadsys = "\"" + cadsys + "\"";
 
     int result1 = system ( cadsys.toAscii() );
@@ -350,7 +350,7 @@ void blCreatePDF ( const QString arch )
     } // end if
     
     blDebug ( cadsys, 0 );
-    cadsys = "\"" + g_confpr->valor ( CONF_FLIP ) + "\" -u \"" + g_confpr->valor ( CONF_DIR_USER ) + arch + ".pdf\"";
+    cadsys = "\"" + g_confpr->value( CONF_FLIP ) + "\" -u \"" + g_confpr->value( CONF_DIR_USER ) + arch + ".pdf\"";
     cadsys = "\"" + cadsys + "\"";
     
     int result2 = system ( cadsys.toAscii().data() );
@@ -379,16 +379,16 @@ void blCreateODS ( const QString arch )
 {
     blDebug ( "blCreateODS " + arch, 0 );
     /// Entramos en el directorio correspondiente
-    QDir::setCurrent ( g_confpr->valor ( CONF_DIR_USER ) );
+    QDir::setCurrent ( g_confpr->value( CONF_DIR_USER ) );
     QString cadsys;
 
     /// Borramos algun archivo que pudiera haber
 #ifdef Q_OS_WIN32
-    QString cadena = g_confpr->valor ( CONF_DIR_USER );
+    QString cadena = g_confpr->value( CONF_DIR_USER );
     cadena.replace("/", "\\");
     cadena = "\"del \"" + arch + ".ods\"\"";
 #else
-    QString cadena = "rm " + g_confpr->valor ( CONF_DIR_USER ) + arch + ".ods";
+    QString cadena = "rm " + g_confpr->value( CONF_DIR_USER ) + arch + ".ods";
 #endif
     int result1 = system ( cadena.toAscii() );
     if (result1 == -1) {
@@ -398,14 +398,14 @@ void blCreateODS ( const QString arch )
     /// Hacemos la invocacion del python
 #ifdef Q_OS_WIN32
 
-    cadena = g_confpr->valor ( CONF_DIR_USER );
+    cadena = g_confpr->value( CONF_DIR_USER );
     cadena.replace("/", "\\");
 
     cadena = "\"cd \"" + cadena + "\" & ";
-    cadena = cadena + "\"" + g_confpr->valor ( CONF_PYTHON ) + "\" \"" + arch + ".pys\"\"";
+    cadena = cadena + "\"" + g_confpr->value( CONF_PYTHON ) + "\" \"" + arch + ".pys\"\"";
 
 #else
-    cadena = " cd " + g_confpr->valor ( CONF_DIR_USER ) + "; python " + arch + ".pys";
+    cadena = " cd " + g_confpr->value( CONF_DIR_USER ) + "; python " + arch + ".pys";
 #endif
     int result2 = system ( cadena.toAscii() );
     if (result2 == -1) {
@@ -419,18 +419,18 @@ void blCreateODS ( const QString arch )
 void blCreateAndLoadODS ( const QString arch )
 {
     blCreateODS ( arch );
-    if (QFile::exists(g_confpr->valor ( CONF_DIR_USER ) + arch + ".ods")) {
+    if (QFile::exists(g_confpr->value( CONF_DIR_USER ) + arch + ".ods")) {
       QString cadena = "";
 #ifdef Q_OS_WIN32
-    if (g_confpr->valor ( CONF_ODS ).isEmpty()) {
+    if (g_confpr->value( CONF_ODS ).isEmpty()) {
 	    /// Abre con el programa por defecto del sistema.
-	    cadena = "\"start \"\" \"" + g_confpr->valor ( CONF_DIR_USER ) + arch +  ".ods" + "\"\"";
+	    cadena = "\"start \"\" \"" + g_confpr->value( CONF_DIR_USER ) + arch +  ".ods" + "\"\"";
     } else {
 	    /// Abre con la configuracion forzada.
-	    cadena = "\"start \"\" \"" + g_confpr->valor ( CONF_ODS ) + "\" \"" + g_confpr->valor ( CONF_DIR_USER ) +  arch + ".ods" + "\"\"";
+	    cadena = "\"start \"\" \"" + g_confpr->value( CONF_ODS ) + "\" \"" + g_confpr->value( CONF_DIR_USER ) +  arch + ".ods" + "\"\"";
     } // end if
 #else
-      cadena = g_confpr->valor ( CONF_ODS ) + " " + g_confpr->valor ( CONF_DIR_USER ) + arch + ".ods &";
+      cadena = g_confpr->value( CONF_ODS ) + " " + g_confpr->value( CONF_DIR_USER ) + arch + ".ods &";
 #endif
       int result = system ( cadena.toAscii() );
       if (result == -1) {
@@ -448,9 +448,9 @@ void blCreateAndLoadPDF ( const QString arch )
     blCreatePDF ( arch );
 
 #ifdef Q_OS_WIN32
-    QString cadsys = "\"start \"\" \"" + g_confpr->valor ( CONF_PDF ) + "\" \"" + g_confpr->valor ( CONF_DIR_USER ) + arch + ".pdf\"\"";
+    QString cadsys = "\"start \"\" \"" + g_confpr->value( CONF_PDF ) + "\" \"" + g_confpr->value( CONF_DIR_USER ) + arch + ".pdf\"\"";
 #else
-    QString cadsys = g_confpr->valor ( CONF_PDF ) + " " + g_confpr->valor ( CONF_DIR_USER ) + arch + ".pdf &";
+    QString cadsys = g_confpr->value( CONF_PDF ) + " " + g_confpr->value( CONF_DIR_USER ) + arch + ".pdf &";
 #endif
     
     int result = system ( cadsys.toAscii().data() );
@@ -512,13 +512,13 @@ QString blWindowId ( const QString &app )
 
 void blDebugOn ()
 {
-    g_confpr->setValor ( CONF_DEBUG, "TRUE" );
+    g_confpr->setValue ( CONF_DEBUG, "TRUE" );
 }
 
 
 void blDebugOff ()
 {
-    g_confpr->setValor ( CONF_DEBUG, "FALSE" );
+    g_confpr->setValue ( CONF_DEBUG, "FALSE" );
 }
 
 
@@ -540,11 +540,11 @@ void blDebug ( const QString &cad, int nivel, const QString &param )
     static bool semaforo = 0;
 
 
-    if ( g_confpr->valor ( CONF_DEBUG ) == "TRUE" ) {
-        static QFile file ( g_confpr->valor ( CONF_DIR_USER ) + "bulmagesout.txt" );
+    if ( g_confpr->value( CONF_DEBUG ) == "TRUE" ) {
+        static QFile file ( g_confpr->value( CONF_DIR_USER ) + "bulmagesout.txt" );
         static QTextStream out ( &file );
 
-        static QFile filexml ( g_confpr->valor ( CONF_DIR_USER ) + "bulmagesout.xml" );
+        static QFile filexml ( g_confpr->value( CONF_DIR_USER ) + "bulmagesout.xml" );
         static QTextStream outxml ( &filexml );
 
         static int auxxml = 0;

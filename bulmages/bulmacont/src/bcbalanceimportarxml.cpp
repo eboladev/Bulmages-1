@@ -106,7 +106,7 @@ bool BcBalanceImportarXML::startElement1 ( const QString&, const QString&, const
         BlDbRecordSet *cur = mainCompany() ->loadQuery ( SQLQuery, "unquerymas" );
         mainCompany() ->commit();
         if ( !cur->eof() ) {
-            m_tvalores["idbalance"] = cur->valor ( "idbalance" );
+            m_tvalores["idbalance"] = cur->value( "idbalance" );
         } // end if
         delete cur;
     } // end if
@@ -118,7 +118,7 @@ bool BcBalanceImportarXML::startElement1 ( const QString&, const QString&, const
         BlDbRecordSet *cur = mainCompany() ->loadQuery ( SQLQuery, "unquerymas" );
         mainCompany() ->commit();
         if ( !cur->eof() ) {
-            m_tvalores["idmpatrimonial_nueva"] = cur->valor ( "idmpatrimonial" );
+            m_tvalores["idmpatrimonial_nueva"] = cur->value( "idmpatrimonial" );
         } // end if
         delete cur;
     } // end if
@@ -232,7 +232,7 @@ bool BcBalanceImportarXML::endElement2 ( const QString&, const QString&, const Q
         BlDbRecordSet *cur = mainCompany() ->loadQuery ( SQLQuery, "unquerymas" );
         mainCompany() ->commit();
         if ( !cur->eof() ) {
-            m_tvalores["idcompmasap"] = cur->valor ( "idcompmasap" );
+            m_tvalores["idcompmasap"] = cur->value( "idcompmasap" );
         } // end if
         delete cur;
     } // end if
@@ -244,7 +244,7 @@ bool BcBalanceImportarXML::endElement2 ( const QString&, const QString&, const Q
         BlDbRecordSet *cur = mainCompany() ->loadQuery ( SQLQuery, "unquerymas" );
         mainCompany() ->commit();
         if ( !cur->eof() ) {
-            m_tvalores["idcompbalance"] = cur->valor ( "idcompbalance" );
+            m_tvalores["idcompbalance"] = cur->value( "idcompbalance" );
         } // end if
         delete cur;
     } // end if

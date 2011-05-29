@@ -87,7 +87,7 @@ JDirectivaList::JDirectivaList ( BfCompany *comp, QWidget *parent, Qt::WFlags fl
     mdb_idjdirectiva = "";
     
     if ( modoEdicion() )
-        mainCompany() ->meteWindow ( windowTitle(), this );
+        mainCompany() ->insertWindow ( windowTitle(), this );
         
     hideBusqueda();
     

@@ -87,8 +87,8 @@ ZView::ZView ( BfCompany *comp, QWidget *parent )
         mui_list->setDelete ( FALSE );
         mui_list->setSortingEnabled ( TRUE );
 
-        dialogChanges_cargaInicial();
-        meteWindow ( windowTitle(), this, FALSE );
+        dialogChanges_readValues();
+        insertWindow ( windowTitle(), this, FALSE );
 	blScript(this);
     } catch ( ... ) {
         blMsgInfo ( _ ( "Error al crear el almacen" ) );

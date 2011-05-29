@@ -145,7 +145,7 @@ void Iva::guardaIva()
     blDebug ( "Iva::guardaIva", 0 );
     QString id;
     m_companyact->begin();
-    int error = DBsave ( id );
+    int error = dbSave ( id );
     if ( error ) {
         m_companyact->rollback();
         return;
@@ -166,10 +166,10 @@ void Iva::setidtipoiva ( const QString &val )
     QString SQLQuery = "SELECT * FROM tipoiva LEFT JOIN cuenta ON cuenta.idcuenta = tipoiva.idcuenta WHERE idtipoiva = " + val;
     BlDbRecordSet *cur = m_companyact->loadQuery ( SQLQuery );
     if ( !cur->eof() ) {
-        blDebug ( cur->valor ( "codigo" ), 0 );
-        setDbValue ( "idcuenta", cur->valor ( "idcuenta" ) );
-        setDbValue ( "codigo", cur->valor ( "codigo" ) );
-        setDbValue ( "nombretipoiva", cur->valor ( "nombretipoiva" ) );
+        blDebug ( cur->value( "codigo" ), 0 );
+        setDbValue ( "idcuenta", cur->value( "idcuenta" ) );
+        setDbValue ( "codigo", cur->value( "codigo" ) );
+        setDbValue ( "nombretipoiva", cur->value( "nombretipoiva" ) );
     } // end if
     delete cur;
     setDbValue ( "idtipoiva", val );

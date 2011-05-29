@@ -178,7 +178,7 @@ int Contrato::guardar()
         /// Calculamos el proximo numero de contrato para poder insertarlo en caso de que este sea nulo.
         QString id;
         mainCompany() ->begin();
-        DBsave ( id );
+        dbSave ( id );
         setDbValue ( "idcontrato", id );
         m_listalineas->setColumnValue ( "idcontrato", id );
         m_listalineas->guardar();

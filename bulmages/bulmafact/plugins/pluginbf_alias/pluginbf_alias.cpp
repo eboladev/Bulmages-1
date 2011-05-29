@@ -48,7 +48,7 @@ int entryPoint ( BfBulmaFact *bges )
 
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale ( LC_ALL, "" );
-    blBindTextDomain ( "pluginbf_alias", g_confpr->valor ( CONF_DIR_TRADUCCION ).toAscii().constData() );
+    blBindTextDomain ( "pluginbf_alias", g_confpr->value( CONF_DIR_TRADUCCION ).toAscii().constData() );
 
     g_ultimRefrescAlias.start();
     return 0;
@@ -77,8 +77,8 @@ bool posibleAlias ( QString alias, BlMainCompany *eb )
    (SELECT cadalias FROM alias ORDER by cadalias  USING ~>~ LIMIT 1) as maxalias,\
    (SELECT max(length(cadalias)) FROM alias ) as maxlenalias,\
    (SELECT min(length(cadalias)) FROM alias ) as minlenalias" );
-        g_minAlias = cur->valor ( "minalias" );
-        g_maxAlias = cur->valor ( "maxalias" );
+        g_minAlias = cur->value( "minalias" );
+        g_maxAlias = cur->value( "maxalias" );
         g_minLenAlias = cur->valorInt ( "minlenalias" );
         g_maxLenAlias = cur->valorInt ( "maxlenalias" );
 
@@ -118,7 +118,7 @@ int ArticuloView_ArticuloView ( ArticuloView *art )
     l->setInsert ( TRUE );
     l->setDelete ( TRUE );
     l->setSortingEnabled ( FALSE );
-    art->dialogChanges_setQObjectExcluido ( l->mui_list );
+    art->dialogChanges_setExcludedObject ( l->mui_list );
 
     art->mui_tab->addTab ( l, "Alias" );
 
@@ -183,7 +183,7 @@ int Busqueda_on_m_inputBusqueda_textChanged ( BlSearchWidget *busc )
             QString SQLQuery = "SELECT * FROM alias LEFT JOIN articulo ON alias.idarticulo = articulo.idarticulo WHERE cadalias ILIKE '" + busc->mainCompany() ->sanearCadena(val) + "'";
             BlDbRecordSet *cur = busc->mainCompany() ->loadQuery ( SQLQuery );
             if ( !cur->eof() ) {
-                busc->setId ( cur->valor ( "idarticulo" ) );
+                busc->setId ( cur->value( "idarticulo" ) );
                 encontrado = TRUE;
             }
             delete cur;
@@ -211,10 +211,10 @@ int BfBuscarArticuloDelegate_textChanged_Post ( BfBuscarArticuloDelegate *baDel 
         BlDbRecordSet *cur = baDel->mainCompany() ->loadQuery ( SQLQuery, 1, valors );
 
         if ( !cur->eof() ) {
-            baDel->insertItem ( 0, cur->valor ( "codigocompletoarticulo" )
-                                + ".-" + cur->valor ( "nomarticulo" )
-                                + " (" + cur->valor ( "cadalias" ) + ") ",
-                                QVariant ( cur->valor ( "codigocompletoarticulo" ) )
+            baDel->insertItem ( 0, cur->value( "codigocompletoarticulo" )
+                                + ".-" + cur->value( "nomarticulo" )
+                                + " (" + cur->value( "cadalias" ) + ") ",
+                                QVariant ( cur->value( "codigocompletoarticulo" ) )
                               );
             baDel->setEditText ( baDel->entrada() );
             encontrado = TRUE;
@@ -242,7 +242,7 @@ int BfSubForm_on_mui_list_editFinished ( BfSubForm *sf )
         QString valors[1] = { camp->text() };
         BlDbRecordSet *cur = sf->mainCompany() ->loadQuery ( SQLQuery, 1, valors );
         if ( !cur->eof() ) {
-            camp->setText( cur->valor ( "codigocompletoarticulo" ) ); 
+            camp->setText( cur->value( "codigocompletoarticulo" ) ); 
         }
         delete cur;
       }
@@ -268,7 +268,7 @@ int BlSubForm_editFinished ( BlSubForm *sub )
 	BlDbSubFormField *camp = sub->m_campoactual;
         BlDbRecordSet *cur = sub->mainCompany() ->loadQuery ( query,1, valors);
         if ( !cur->eof() ) {
-            sub->m_registrolinea->setDbValue ( "idarticulo", cur->valor ( "idarticulo" ) );
+            sub->m_registrolinea->setDbValue ( "idarticulo", cur->value( "idarticulo" ) );
 	} else {
            /// No hay codigos y buscamos alias
            if (posibleAlias(val, sub->mainCompany())) {
@@ -276,9 +276,9 @@ int BlSubForm_editFinished ( BlSubForm *sub )
              BlDbRecordSet *cur1 = sub->mainCompany() ->loadQuery ( SQLQuery, 1, valors );
           
              if ( !cur1->eof() ) {
-                sub->m_registrolinea->setDbValue ( "idarticulo", cur1->valor ( "idarticulo" ) );
-                sub->m_registrolinea->setDbValue ( "codigocompletoarticulo", cur1->valor ( "codigocompletoarticulo" ) );
-                camp->setText( cur1->valor ( "codigocompletoarticulo" ) ); 
+                sub->m_registrolinea->setDbValue ( "idarticulo", cur1->value( "idarticulo" ) );
+                sub->m_registrolinea->setDbValue ( "codigocompletoarticulo", cur1->value( "codigocompletoarticulo" ) );
+                camp->setText( cur1->value( "codigocompletoarticulo" ) ); 
 	        camp->refresh();
              } // end if
              delete cur1;
@@ -315,13 +315,13 @@ int BlDbCompleterComboBox_textChanged (BlDbCompleterComboBox *bl) {
                     QString cad1 = "";
                     while ( i.hasNext() ) {
                         i.next();
-                        cad = cad + sep + bl->m_cursorcombo->valor ( i.key() );
+                        cad = cad + sep + bl->m_cursorcombo->value( i.key() );
                         if ( sep == "" ) {
                             cad1 = i.key();
                             sep = ".-";
                         } // end if
                     } // end while
-                    bl->addItem ( cad , QVariant ( bl->m_cursorcombo->valor ( cad1 ) ) );
+                    bl->addItem ( cad , QVariant ( bl->m_cursorcombo->value( cad1 ) ) );
                     bl->m_cursorcombo->nextRecord();
                 } // end while
                 delete bl->m_cursorcombo;
@@ -329,10 +329,10 @@ int BlDbCompleterComboBox_textChanged (BlDbCompleterComboBox *bl) {
                   QString SQLQuery = "SELECT articulo.idarticulo, codigocompletoarticulo, cadalias, nomarticulo FROM alias LEFT JOIN articulo ON alias.idarticulo = articulo.idarticulo WHERE cadalias ~=~ $1 ORDER BY nomarticulo";
                   bl->m_cursorcombo = bl->mainCompany() ->load( SQLQuery, bl->m_entrada );
                   while ( !bl->m_cursorcombo->eof() ) {
-                    bl->addItem ( bl->m_cursorcombo->valor ( "codigocompletoarticulo" )
-                                + ".-" + bl->m_cursorcombo->valor ( "nomarticulo" )
-                                + " (" + bl->m_cursorcombo->valor ( "cadalias" ) + ") ",
-                                QVariant ( bl->m_cursorcombo->valor ( "codigocompletoarticulo" ) )
+                    bl->addItem ( bl->m_cursorcombo->value( "codigocompletoarticulo" )
+                                + ".-" + bl->m_cursorcombo->value( "nomarticulo" )
+                                + " (" + bl->m_cursorcombo->value( "cadalias" ) + ") ",
+                                QVariant ( bl->m_cursorcombo->value( "codigocompletoarticulo" ) )
                               );
                     bl->m_cursorcombo->nextRecord();
                   } // end while

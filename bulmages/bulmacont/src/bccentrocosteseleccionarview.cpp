@@ -77,12 +77,12 @@ void BcCentroCosteSeleccionarView::cargacostes()
     mui_listCostes->clear();
     cursoraux1 = mainCompany() ->loadQuery ( "SELECT * FROM c_coste WHERE padre ISNULL ORDER BY idc_coste" );
     while ( !cursoraux1->eof() ) {
-        idc_coste = cursoraux1->valor ( "idc_coste" ).toInt();
+        idc_coste = cursoraux1->value( "idc_coste" ).toInt();
 
         item = new QTreeWidgetItem ( mui_listCostes );
-        item->setText ( 3, cursoraux1->valor ( "idc_coste" ) );
-        item->setText ( 1, cursoraux1->valor ( "descripcion" ) );
-        item->setText ( 0, cursoraux1->valor ( "nombre" ) );
+        item->setText ( 3, cursoraux1->value( "idc_coste" ) );
+        item->setText ( 1, cursoraux1->value( "descripcion" ) );
+        item->setText ( 0, cursoraux1->value( "nombre" ) );
         item->setCheckState ( 0, Qt::Unchecked );
 // descomentarlo si Qt>=4.2        item->setExpanded(TRUE);
         Lista[idc_coste] = item;
@@ -95,14 +95,14 @@ void BcCentroCosteSeleccionarView::cargacostes()
     /// deja de ser recursivo y pasa a ser lineal.
     cursoraux2 = mainCompany() ->loadQuery ( "SELECT * FROM c_coste WHERE padre IS NOT NULL ORDER BY idc_coste" );
     while ( !cursoraux2->eof() ) {
-        padre = cursoraux2->valor ( "padre" ).toInt();
-        idc_coste = cursoraux2->valor ( "idc_coste" ).toInt();
+        padre = cursoraux2->value( "padre" ).toInt();
+        idc_coste = cursoraux2->value( "idc_coste" ).toInt();
         fprintf ( stderr, "Cuentas de subnivel:%d", padre );
 
         item = new QTreeWidgetItem ( Lista[padre] );
-        item->setText ( 3, cursoraux2->valor ( "idc_coste" ) );
-        item->setText ( 1, cursoraux2->valor ( "descripcion" ) );
-        item->setText ( 0, cursoraux2->valor ( "nombre" ) );
+        item->setText ( 3, cursoraux2->value( "idc_coste" ) );
+        item->setText ( 1, cursoraux2->value( "descripcion" ) );
+        item->setText ( 0, cursoraux2->value( "nombre" ) );
         item->setCheckState ( 0, Qt::Unchecked );
 // descomentarlo si Qt>=4.2        item->setExpanded(TRUE);
         Lista[idc_coste] = item;

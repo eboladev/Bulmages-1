@@ -53,13 +53,13 @@ private:
 public:
     BcCuentasAnualesView ( BcCompany *, QWidget *parent = 0 );
     ~BcCuentasAnualesView();
-    void inicializatabla();
+    void inicializaTabla();
     /// Establece el funcionamiento de la ventana como selector (afecta sobre
     /// el dobleclick en el listado)
-    void setmodoselector();
+    void setModoSelector();
     /// Establece el funcionamiento de la ventana como editor (afecta sobre el
     /// dobleclick en el listado)
-    void setmodoeditor();
+    void setModoEditor();
     /// Devuelve el nombre del Balance seleccionado por la clase.
     QString nomBalance();
     /// Devuelve el identificador del Balance que se ha seleccionado.

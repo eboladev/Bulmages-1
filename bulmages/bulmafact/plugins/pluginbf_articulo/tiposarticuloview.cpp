@@ -62,7 +62,7 @@ TipoArticuloList::TipoArticuloList ( BfCompany *comp, QWidget *parent, bool modo
     } else {
         setModoEdicion();
         setAttribute ( Qt::WA_DeleteOnClose );
-        mainCompany()->meteWindow ( windowTitle(), this, FALSE );
+        mainCompany()->insertWindow ( windowTitle(), this, FALSE );
     } // end if
     pintar();
     blScript(this);
@@ -124,16 +124,16 @@ void TipoArticuloList::pintar()
         cursoraux1 = mainCompany()->loadQuery ( "SELECT * FROM tipo_articulo ORDER BY codtipo_articulo" );
         while ( !cursoraux1->eof() ) {
             it = new QTreeWidgetItem ( m_listTipos );
-            it->setText ( COL_IDTIPOARTICULO, cursoraux1->valor ( "idtipo_articulo" ) );
-            it->setText ( COL_CODTIPOARTICULO, cursoraux1->valor ( "codtipo_articulo" ) );
-            it->setText ( COL_DESCTIPOARTICULO, cursoraux1->valor ( "desctipo_articulo" ) );
+            it->setText ( COL_IDTIPOARTICULO, cursoraux1->value( "idtipo_articulo" ) );
+            it->setText ( COL_CODTIPOARTICULO, cursoraux1->value( "codtipo_articulo" ) );
+            it->setText ( COL_DESCTIPOARTICULO, cursoraux1->value( "desctipo_articulo" ) );
             //it->setOpen(true);
             cursoraux1->nextRecord();
         } // end while
         delete cursoraux1;
         m_idtipo = "";
         /// Comprobamos cual es la cadena inicial.
-        dialogChanges_cargaInicial();
+        dialogChanges_readValues();
         m_semaforoPintar = FALSE;
         blDebug ( "END TipoArticuloList::pintar", 0 );
     } catch ( ... ) {
@@ -260,8 +260,8 @@ void TipoArticuloList::mostrarplantilla()
         query = "SELECT * from tipo_articulo WHERE idtipo_articulo = " + m_idtipo;
         BlDbRecordSet *cursortipo = mainCompany()->loadQuery ( query );
         if ( !cursortipo->eof() ) {
-            mui_codigotipo_articulo->setText ( cursortipo->valor ( "codtipo_articulo" ) );
-            mui_desctipo_articulo->setPlainText ( cursortipo->valor ( "desctipo_articulo" ) );
+            mui_codigotipo_articulo->setText ( cursortipo->value( "codtipo_articulo" ) );
+            mui_desctipo_articulo->setPlainText ( cursortipo->value( "desctipo_articulo" ) );
         } // end if
         delete cursortipo;
 
@@ -272,7 +272,7 @@ void TipoArticuloList::mostrarplantilla()
         mui_desctipo_articulo->setText ( "" );
     } // end if
     /// Comprobamos cual es la cadena inicial.
-    dialogChanges_cargaInicial();
+    dialogChanges_readValues();
     blDebug ( "END TipoArticuloList::mostrarplantilla", 0 );
 }
 
@@ -286,7 +286,7 @@ bool TipoArticuloList::trataModificado()
 {
     blDebug ( "TipoArticuloList::trataModificado", 0 );
     /// Si se ha modificado el contenido advertimos y guardamos.
-    if ( dialogChanges_hayCambios() ) {
+    if ( dialogChanges_isChanged() ) {
         if ( QMessageBox::warning ( this,
                                     _ ( "Guardar Tipo de Articulo" ),
                                     _ ( "Desea guardar los cambios?" ),
@@ -331,9 +331,9 @@ int TipoArticuloList::guardar()
     if ( it ) {
         BlDbRecordSet *cursoraux1 = mainCompany()->loadQuery ( "SELECT * FROM tipo_articulo WHERE idtipo_articulo = " + m_idtipo );
         if ( !cursoraux1->eof() ) {
-            it->setText ( COL_IDTIPOARTICULO, cursoraux1->valor ( "idtipo_articulo" ) );
-            it->setText ( COL_CODTIPOARTICULO, cursoraux1->valor ( "codtipo_articulo" ) );
-            it->setText ( COL_DESCTIPOARTICULO, cursoraux1->valor ( "desctipo_articulo" ) );
+            it->setText ( COL_IDTIPOARTICULO, cursoraux1->value( "idtipo_articulo" ) );
+            it->setText ( COL_CODTIPOARTICULO, cursoraux1->value( "codtipo_articulo" ) );
+            it->setText ( COL_DESCTIPOARTICULO, cursoraux1->value( "desctipo_articulo" ) );
         } // end if
         delete cursoraux1;
     } // end if
@@ -359,7 +359,7 @@ void TipoArticuloList::on_mui_crear_clicked()
         if ( error ) throw - 1;
         cur = mainCompany()->loadQuery ( "SELECT max(idtipo_articulo) AS idtipo FROM tipo_articulo" );
         mainCompany()->commit();
-        m_idtipo = cur->valor ( "idtipo" );
+        m_idtipo = cur->value( "idtipo" );
         delete cur;
         pintar();
         blDebug ( "END TipoArticuloList::on_mui_crear_clicked", 0 );
@@ -389,7 +389,7 @@ void TipoArticuloList::on_mui_borrar_clicked()
 
     if ( val == QMessageBox::Yes ) {
         if ( !borrar() ) {
-            dialogChanges_cargaInicial();
+            dialogChanges_readValues();
             blDebug ( windowTitle() + " " + "borrado satisfactoriamente.", 10 );
         } else {
             blMsgInfo ( windowTitle() + " " + _ ( "no se ha podido borrar" ) );
@@ -419,7 +419,7 @@ int TipoArticuloList::borrar()
             throw - 1;
         } // end if
         m_idtipo = "";
-        dialogChanges_cargaInicial();
+        dialogChanges_readValues();
         pintar();
         blDebug ( "END TipoArticuloList::borrar", 0 );
     } catch ( ... ) {
@@ -440,9 +440,9 @@ void TipoArticuloList::pintar ( QTreeWidgetItem *it )
     if ( it ) {
         BlDbRecordSet * cursoraux1 = mainCompany()->loadQuery ( "SELECT * FROM tipo_articulo WHERE idtipo_articulo = " + idtipo );
         if ( !cursoraux1->eof() ) {
-            it->setText ( COL_IDTIPOARTICULO, cursoraux1->valor ( "idtipo_articulo" ) );
-            it->setText ( COL_CODTIPOARTICULO, cursoraux1->valor ( "codtipo_articulo" ) );
-            it->setText ( COL_DESCTIPOARTICULO, cursoraux1->valor ( "desctipo_articulo" ) );
+            it->setText ( COL_IDTIPOARTICULO, cursoraux1->value( "idtipo_articulo" ) );
+            it->setText ( COL_CODTIPOARTICULO, cursoraux1->value( "codtipo_articulo" ) );
+            it->setText ( COL_DESCTIPOARTICULO, cursoraux1->value( "desctipo_articulo" ) );
         } // end if
         delete cursoraux1;
     } // end if

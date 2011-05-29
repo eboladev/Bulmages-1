@@ -112,7 +112,7 @@ AlbaranClienteView::AlbaranClienteView ( BfCompany *comp, QWidget *parent )
         mui_idalmacen->setFieldValue ( "0" );
         mui_idtrabajador->setFieldValue ( "0" );
 
-        meteWindow ( windowTitle(), this, FALSE );
+        insertWindow ( windowTitle(), this, FALSE );
         /// Disparamos los plugins por flanco descendente.
         g_plugins->lanza ( "AlbaranClienteView_AlbaranClienteView_Post", this );
 	blScript(this);
@@ -145,7 +145,7 @@ void AlbaranClienteView::inicializar()
     blDebug ( "AlbaranClienteView::inicializar", 0 );
     subform2->inicializar();
     m_descuentos->inicializar();
-    dialogChanges_cargaInicial();
+    dialogChanges_readValues();
     blDebug ( "END AlbaranClienteView::inicializar", 0 );
 }
 
@@ -224,7 +224,7 @@ void AlbaranClienteView::on_mui_verpedidocliente_clicked()
                 } // end if
                 bud = ( PedidoClienteView * ) g_plugParams;
                 mainCompany() ->m_pWorkspace->addSubWindow ( bud );
-                bud->cargar ( cur->valor ( "idpedidocliente" ) );
+                bud->cargar ( cur->value( "idpedidocliente" ) );
                 bud->show();
                 cur->nextRecord();
             } // end while
@@ -301,7 +301,7 @@ void AlbaranClienteView::generarFactura()
                 }
                 bud = mainCompany() ->newFacturaView();
                 mainCompany() ->m_pWorkspace->addSubWindow ( bud );
-                bud->cargar ( cur->valor ( "idfactura" ) );
+                bud->cargar ( cur->value( "idfactura" ) );
                 bud->show();
                 return;
             } // end if

@@ -71,7 +71,7 @@ void BlMainCompany::setWorkspace ( BlWorkspace *qw )
 {
     blDebug ( "BlMainCompany::setWorkspace", 0 );
     m_pWorkspace = qw;
-    connect( qw, SIGNAL( deselectDockAll() ), this, SLOT( deSeleccionaWindow() ) );
+    connect( qw, SIGNAL( deselectDockAll() ), this, SLOT( deselectWindow() ) );
     blDebug ( "END BlMainCompany::setWorkspace", 0 );
 }
 
@@ -95,11 +95,11 @@ void BlMainCompany::setProgressBar ( QProgressBar *pb )
 \param compdup
 \return
 **/
-int BlMainCompany::meteWindow ( QString nom, QObject *obj, bool compdup, QString titulo )
+int BlMainCompany::insertWindow ( QString nom, QObject *obj, bool compdup, QString titulo )
 {
-    blDebug ( "BlMainCompany::meteWindow", 0 );
-    blDebug ( "END BlMainCompany::meteWindow", 0 );
-    return m_listventanas->meteWindow ( nom, obj, compdup, titulo );
+    blDebug ( "BlMainCompany::insertWindow", 0 );
+    blDebug ( "END BlMainCompany::insertWindow", 0 );
+    return m_listventanas->insertWindow ( nom, obj, compdup, titulo );
 }
 
 
@@ -110,14 +110,14 @@ int BlMainCompany::meteWindow ( QString nom, QObject *obj, bool compdup, QString
 \return
 **/
 #ifdef AREA_QMDI
-  int BlMainCompany::seleccionaWindow ( QString nom, QMdiSubWindow *obj )
+  int BlMainCompany::selectWindow ( QString nom, QMdiSubWindow *obj )
 #else
-  int BlMainCompany::seleccionaWindow ( QString nom, QObject *obj )
+  int BlMainCompany::selectWindow ( QString nom, QObject *obj )
 #endif
 {
-    blDebug ( "BlMainCompany::seleccionaWindow", 0 );
-    blDebug ( "END BlMainCompany::seleccionaWindow", 0 );
-    return m_listventanas->seleccionaWindow ( nom, obj );
+    blDebug ( "BlMainCompany::selectWindow", 0 );
+    blDebug ( "END BlMainCompany::selectWindow", 0 );
+    return m_listventanas->selectWindow ( nom, obj );
 }
 
 
@@ -125,11 +125,11 @@ int BlMainCompany::meteWindow ( QString nom, QObject *obj, bool compdup, QString
 /**
 \return
 **/
-int BlMainCompany::deSeleccionaWindow()
+int BlMainCompany::deselectWindow()
 {
-    blDebug ( "BlMainCompany::deSeleccionaWindow", 0 );
-    blDebug ( "END BlMainCompany::deSeleccionaWindow", 0 );
-    return m_listventanas->deSeleccionaWindow();
+    blDebug ( "BlMainCompany::deselectWindow", 0 );
+    blDebug ( "END BlMainCompany::deselectWindow", 0 );
+    return m_listventanas->deselectWindow();
 }
 
 
@@ -137,11 +137,11 @@ int BlMainCompany::deSeleccionaWindow()
 /**
 \param nom
 **/
-void BlMainCompany::sacaWindow ( QObject *nom )
+void BlMainCompany::removeWindow ( QObject *nom )
 {
-    blDebug ( "BlMainCompany::sacaWindow", 0 );
-    m_listventanas->sacaWindow ( nom );
-    blDebug ( "END BlMainCompany::sacaWindow", 0 );
+    blDebug ( "BlMainCompany::removeWindow", 0 );
+    m_listventanas->removeWindow ( nom );
+    blDebug ( "END BlMainCompany::removeWindow", 0 );
 }
 
 
@@ -203,7 +203,7 @@ QString BlMainCompany::searchCompany ( QString tipo )
     BlCompanyDialog *nuevae = new BlCompanyDialog ( 0, tipo );
     nuevae->exec();
     blDebug ( "Vamos a cambiar la empresa", 0 );
-    QString bd = nuevae->nomDB();
+    QString bd = nuevae->dbName();
     blDebug ( "Empresa cambiada a " + bd, 0 );
     delete nuevae;
     /// Si no se ha seleccionado ninguna base de datos entonces abortamos.
@@ -250,7 +250,7 @@ void BlMainCompany::dbPatchVersionCheck(QString plugin, QString version)
     rs = loadQuery ( query );
 
     if ( rs != NULL ) {
-      if (rs->valor("valor") != version) {
+      if (rs->value("valor") != version) {
         /// La version del plugin no coincide con la version del parche instalado en la base de datos.
         blMsgError(_("La base de datos no esta preparada para el plugin:") + " " + plugin + ".\n" + _("El programa no funcionara adecuadamente.") );
       } // end if
@@ -270,7 +270,7 @@ void BlMainCompany::dbVersionCheck(QString program, QString version)
     rs = loadQuery ( query );
 
     if ( rs != NULL ) {
-      if (rs->valor("valor") != version) {
+      if (rs->value("valor") != version) {
         /// La version del programa no coincide con la version de la base de datos instalada.
         blMsgError(_("La version de la base de datos no coincide con el programa.\n\nEl programa no funcionara adecuadamente.\n")+program+"\n"+version+"\n" );
       } // end if

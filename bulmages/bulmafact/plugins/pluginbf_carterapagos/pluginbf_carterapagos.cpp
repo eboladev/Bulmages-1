@@ -46,7 +46,7 @@ int entryPoint ( BfBulmaFact *bges )
  
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale ( LC_ALL, "" );
-    blBindTextDomain ( "pluginbf_carteracobros", g_confpr->valor ( CONF_DIR_TRADUCCION ).toAscii().constData() );
+    blBindTextDomain ( "pluginbf_carteracobros", g_confpr->value( CONF_DIR_TRADUCCION ).toAscii().constData() );
 
     /// Creamos el men&uacute;.
     /// Miramos si existe un menu Ventas
@@ -101,7 +101,7 @@ int ProveedorView_ProveedorView_Post ( ProveedorView *art )
     l->setInsert ( TRUE );
     l->setDelete ( TRUE );
     l->setSortingEnabled ( FALSE );
-    art->dialogChanges_setQObjectExcluido ( l->mui_list );
+    art->dialogChanges_setExcludedObject ( l->mui_list );
 
     art->mui_tab->addTab ( l, "Vencimientos" );
     l->cargar("SELECT * FROM vencimientoproveedor WHERE idproveedor IS NULL");
@@ -129,19 +129,19 @@ int ProveedorView_cargarPost_Post ( ProveedorView *art )
 
 void generarVencimientos (FacturaProveedorView *art) {
 			BlDbRecordSet *cur1 = art->mainCompany()->loadQuery("SELECT totalfacturap FROM facturap WHERE idfacturap = " + art->dbValue("idfacturap"));
-			blMsgInfo( _("El total de la factura es :") + cur1->valor("totalfacturap"));
+			blMsgInfo( _("El total de la factura es :") + cur1->value("totalfacturap"));
 			BlFixed contado("0.00");
 
 			BlDbRecordSet *cur = art->mainCompany()->loadQuery("SELECT * FROM vencimientoproveedor WHERE idproveedor = " + art->dbValue("idproveedor"));
 			while (!cur->eof())  {
-				QString query = "SELECT ffacturap + " + cur->valor("diasvencimientoproveedor") + " AS fechav, totalfacturap / 100 * "+cur->valor("porcentajevencimientoproveedor")+" AS porcent FROM facturap WHERE idfacturap = " + art->dbValue("idfacturap");
+				QString query = "SELECT ffacturap + " + cur->value("diasvencimientoproveedor") + " AS fechav, totalfacturap / 100 * "+cur->value("porcentajevencimientoproveedor")+" AS porcent FROM facturap WHERE idfacturap = " + art->dbValue("idfacturap");
 				if (cur->isLastRecord()) {
-					query = "SELECT ffacturap + " + cur->valor("diasvencimientoproveedor") + " AS fechav, totalfacturap - "+ contado.toQString('.') +" AS porcent FROM facturap WHERE idfacturap = " + art->dbValue("idfacturap");
+					query = "SELECT ffacturap + " + cur->value("diasvencimientoproveedor") + " AS fechav, totalfacturap - "+ contado.toQString('.') +" AS porcent FROM facturap WHERE idfacturap = " + art->dbValue("idfacturap");
 				} //end if
 				BlDbRecordSet *cur2 = art->mainCompany()->loadQuery(query);
 				/// REALIZAMOS EL QUERY
-				query = "INSERT INTO vencimientop (idfacturap, fechavencimientop, cantvencimientop, idforma_pago, refvencimientop, idproveedor) VALUES ("+art->dbValue("idfacturap")+",'"+cur2->valor("fechav")+"',"+cur2->valor("porcent")+","+cur->valor("idforma_pago")+",'"+art->dbValue("reffacturap")+"',"+art->dbValue("idproveedor")+")";
-				contado = contado + BlFixed(cur2->valor("porcent"));
+				query = "INSERT INTO vencimientop (idfacturap, fechavencimientop, cantvencimientop, idforma_pago, refvencimientop, idproveedor) VALUES ("+art->dbValue("idfacturap")+",'"+cur2->value("fechav")+"',"+cur2->value("porcent")+","+cur->value("idforma_pago")+",'"+art->dbValue("reffacturap")+"',"+art->dbValue("idproveedor")+")";
+				contado = contado + BlFixed(cur2->value("porcent"));
 				art->mainCompany()->runQuery(query);
 				delete cur2;
 				cur->nextRecord();
@@ -221,7 +221,7 @@ int FacturaProveedorView_FacturaProveedorView (FacturaProveedorView *factp) {
     l->setInsert ( TRUE );
     l->setDelete ( TRUE );
     l->setSortingEnabled ( FALSE );
-    factp->dialogChanges_setQObjectExcluido ( l->mui_list );
+    factp->dialogChanges_setExcludedObject ( l->mui_list );
 
     factp->discounts->addTab ( l, "Vencimientos" );
     l->cargar("SELECT * FROM vencimientop WHERE idfacturap IS NULL");

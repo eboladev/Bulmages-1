@@ -122,7 +122,7 @@ int entryPoint ( BcBulmaCont *bcont )
 
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale ( LC_ALL, "" );
-    blBindTextDomain ( "pluginbc_cuenta", g_confpr->valor ( CONF_DIR_TRADUCCION ).toAscii().constData() );
+    blBindTextDomain ( "pluginbc_cuenta", g_confpr->value( CONF_DIR_TRADUCCION ).toAscii().constData() );
 
     g_plancontable = NULL;
 
@@ -257,8 +257,8 @@ void Subform_Cuenta::seleccionarCuenta ( BlSubForm *sub )
     BlDbRecordSet *cur = sub->mainCompany() ->loadQuery ( "SELECT * FROM articulo WHERE idcuenta = " + idArticle );
     if ( !cur->eof() ) {
         sub->lineaact()->setDbValue ( "idcuenta", idArticle );
-        sub->lineaact()->setDbValue ( "codigocompletoarticulo", cur->valor ( "codigocompletoarticulo" ) );
-        sub->lineaact()->setDbValue ( "nomarticulo", cur->valor ( "nomarticulo" ) );
+        sub->lineaact()->setDbValue ( "codigocompletoarticulo", cur->value( "codigocompletoarticulo" ) );
+        sub->lineaact()->setDbValue ( "nomarticulo", cur->value( "nomarticulo" ) );
     } // end if
     delete cur;
 */
@@ -389,7 +389,7 @@ int BlSubForm_editFinished ( BlSubForm *sub )
 // blMsgInfo(query);
         BlDbRecordSet *cur = sub->mainCompany() ->loadQuery ( query );
         if ( !cur->eof() ) {
-            sub->m_registrolinea->setDbValue ( "idcuenta", cur->valor ( "idcuenta" ) );
+            sub->m_registrolinea->setDbValue ( "idcuenta", cur->value( "idcuenta" ) );
         } // end if
         delete cur;
     } // end if
@@ -423,13 +423,13 @@ int BlDbCompleterComboBox_textChanged (BlDbCompleterComboBox *bl)
                     QString cad1 = "";
                     while ( i.hasNext() ) {
                         i.next();
-                        cad = cad + sep + bl->m_cursorcombo->valor ( i.key() );
+                        cad = cad + sep + bl->m_cursorcombo->value( i.key() );
                         if ( sep == "" ) {
                             cad1 = i.key();
                             sep = ".-";
                         } // end if
                     } // end while
-                    bl->addItem ( cad , QVariant ( bl->m_cursorcombo->valor ( cad1 ) ) );
+                    bl->addItem ( cad , QVariant ( bl->m_cursorcombo->value( cad1 ) ) );
                     bl->m_cursorcombo->nextRecord();
                 } // end while
                 delete bl->m_cursorcombo;
@@ -478,14 +478,14 @@ int Busqueda_on_m_inputBusqueda_textChanged (BlSearchWidget *wid) {
     BlDbRecordSet *cur = wid->mainCompany() ->loadQuery ( SQLQuery );
     if ( cur->numregistros() == 1 ) {
         /// Ponemos el id sin hacer una carga adicional
-        wid->setId( cur->valor ( "idcuenta" ), FALSE);
+        wid->setId( cur->value( "idcuenta" ), FALSE);
         /// Inicializamos los valores de vuelta a ""
         QMapIterator<QString, QString> i ( wid->m_valores );
         while ( i.hasNext() ) {
             i.next();
-            wid->m_valores.insert ( i.key(), cur->valor ( i.key() ) );
+            wid->m_valores.insert ( i.key(), cur->value( i.key() ) );
         } // end while
-        wid->m_textBusqueda->setText(cur->valor("codigo") + " " + cur->valor("descripcion"));
+        wid->m_textBusqueda->setText(cur->value("codigo") + " " + cur->value("descripcion"));
         delete cur;
         return 1;
     } // end if

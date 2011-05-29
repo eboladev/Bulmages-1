@@ -51,22 +51,22 @@ BcMasaPatrimonialListView::~BcMasaPatrimonialListView()
 ///
 /**
 **/
-void BcMasaPatrimonialListView::setmodoselector()
+void BcMasaPatrimonialListView::setModoSelector()
 {
-    blDebug ( "BcMasaPatrimonialListView::setmodoselector", 0 );
+    blDebug ( "BcMasaPatrimonialListView::setModoSelector", 0 );
     modo = 1;
-    blDebug ( "END BcMasaPatrimonialListView::setmodoselector", 0 );
+    blDebug ( "END BcMasaPatrimonialListView::setModoSelector", 0 );
 }
 
 
 ///
 /**
 **/
-void BcMasaPatrimonialListView::setmodoeditor()
+void BcMasaPatrimonialListView::setModoEditor()
 {
-    blDebug ( "BcMasaPatrimonialListView::setmodoeditor", 0 );
+    blDebug ( "BcMasaPatrimonialListView::setModoEditor", 0 );
     modo = 0;
-    blDebug ( "END BcMasaPatrimonialListView::setmodoeditor", 0 );
+    blDebug ( "END BcMasaPatrimonialListView::setModoEditor", 0 );
 }
 
 
@@ -111,10 +111,10 @@ int BcMasaPatrimonialListView::inicializa()
     QString query = "SELECT valor FROM configuracion WHERE nombre = 'CodCuenta'";
     cursoraux1 = mainCompany() ->loadQuery ( query, "codcuenta" );
     mainCompany() ->commit();
-    numdigitos = cursoraux1->valor ( "valor" ).length();
+    numdigitos = cursoraux1->value( "valor" ).length();
     delete cursoraux1;
     fprintf ( stderr, "las cuentas tienen %d digitos\n", numdigitos );
-    inicializatabla();
+    inicializaTabla();
     blDebug ( "END BcMasaPatrimonialListView::inicializa", 0 );
     return ( 0 );
 }
@@ -123,9 +123,9 @@ int BcMasaPatrimonialListView::inicializa()
 ///
 /**
 **/
-void BcMasaPatrimonialListView::inicializatabla()
+void BcMasaPatrimonialListView::inicializaTabla()
 {
-    blDebug ( "BcMasaPatrimonialListView::inicializatabla", 0 );
+    blDebug ( "BcMasaPatrimonialListView::inicializaTabla", 0 );
     QTableWidgetItem *item0, *item1;
     mui_tabla->setRowCount ( 0 );
     mui_tabla->setColumnCount ( 2 );
@@ -144,15 +144,15 @@ void BcMasaPatrimonialListView::inicializatabla()
     mui_tabla->setRowCount ( cursoraux1->numregistros() );
     int i = 0;
     while ( !cursoraux1->eof() ) {
-        item0 = new QTableWidgetItem ( cursoraux1->valor ( "idmpatrimonial" ) );
+        item0 = new QTableWidgetItem ( cursoraux1->value( "idmpatrimonial" ) );
         mui_tabla->setItem ( i, 0, item0 );
-        item1 = new QTableWidgetItem ( cursoraux1->valor ( "descmpatrimonial" ) );
+        item1 = new QTableWidgetItem ( cursoraux1->value( "descmpatrimonial" ) );
         mui_tabla->setItem ( i, 1, item1 );
         cursoraux1->nextRecord();
         i++;
     } // end while
     delete cursoraux1;
-    blDebug ( "END BcMasaPatrimonialListView::inicializatabla", 0 );
+    blDebug ( "END BcMasaPatrimonialListView::inicializaTabla", 0 );
 }
 
 
@@ -176,7 +176,7 @@ void BcMasaPatrimonialListView::dbtabla ( int row, int colummn, int button, cons
         masa->exec();
         delete masa;
         /// Como existe la posibilidad de que hayan cambiado las cosas forzamos un repintado.
-        inicializatabla();
+        inicializaTabla();
     } else {
         idmasa = mui_tabla->item ( mui_tabla->currentRow(), 0 ) ->text();
         nommasa = mui_tabla->item ( mui_tabla->currentRow(), 1 ) ->text();
@@ -200,7 +200,7 @@ void BcMasaPatrimonialListView::on_mui_editar_clicked()
     int col = mui_tabla->currentColumn();
     QPoint mouse;
     dbtabla ( row, col, 0, mouse );
-    inicializatabla();
+    inicializaTabla();
     blDebug ( "END BcMasaPatrimonialListView::on_mui_editar_clicked", 0 );
 }
 
@@ -221,7 +221,7 @@ void BcMasaPatrimonialListView::on_mui_borrar_clicked()
     query.sprintf ( "DELETE FROM mpatrimonial WHERE idmpatrimonial=%s", idmasa.toAscii().constData() );
     mainCompany() ->runQuery ( query );
     mainCompany() ->commit();
-    inicializatabla();
+    inicializaTabla();
     blDebug ( "END BcMasaPatrimonialListView::on_mui_borrar_clicked", 0 );
 }
 
@@ -236,7 +236,7 @@ void BcMasaPatrimonialListView::on_mui_nuevo_clicked()
     masa->exec();
     delete masa;
     /// Como existe la posibilidad de que hayan cambiado las cosas forzamos un repintado.
-    inicializatabla();
+    inicializaTabla();
     blDebug ( "END BcMasaPatrimonialListView::on_mui_nuevo_clicked", 0 );
 }
 

@@ -196,7 +196,7 @@ void BfBulmaFact::closeEvent ( QCloseEvent *event )
 
 
     /// Antes de salir hacemos un mensaje de advertencia.
-    if ( g_confpr->valor ( CONF_ASK_BEFORE_EXIT ) == "TRUE" ) {
+    if ( g_confpr->value( CONF_ASK_BEFORE_EXIT ) == "TRUE" ) {
 	 QMessageBox msgBox;
 	 msgBox.setText(_("Seguro que desea abandonar el programa "));
 	 msgBox.setInformativeText(_("Se perderan los cambios no guardados"));
@@ -250,11 +250,11 @@ void BfBulmaFact::closeEvent ( QCloseEvent *event )
 
     /// No existe una ventana que activar.
     if ( w == NULL ) {
-        m_company->deSeleccionaWindow();
+        m_company->deselectWindow();
         blDebug ( "END BfBulmaFact::informaindexador", 0, "No existe la ventana a activar" );
         return;
     } // end if
-    m_company->seleccionaWindow ( w->windowTitle(), w );
+    m_company->selectWindow ( w->windowTitle(), w );
 
     blDebug ( "END BfBulmaFact::informaindexador", 0 );
 }
@@ -275,7 +275,7 @@ void BfBulmaFact::on_actionDocumentacion_triggered()
 QAssistantClient *asistenteAyuda = new QAssistantClient ( QLibraryInfo::location ( QLibraryInfo::BinariesPath ), 0 );
     connect ( asistenteAyuda, SIGNAL ( error ( const QString ) ), this, SLOT ( documentacionError ( const QString ) ) );
     QStringList parametros;
-    parametros << "-profile" << QString ( g_confpr->valor ( CONF_PROGDATA ) + "ayuda/bulmafact/bulmafact.adp" );
+    parametros << "-profile" << QString ( g_confpr->value( CONF_PROGDATA ) + "ayuda/bulmafact/bulmafact.adp" );
     asistenteAyuda->setArguments ( parametros );
     asistenteAyuda->openAssistant();
 */

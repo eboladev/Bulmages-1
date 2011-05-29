@@ -56,7 +56,7 @@ PresupuestoContableList::PresupuestoContableList ( BfCompany *comp, QWidget *par
     hideBusqueda();
     /// Si estamos en el modo edici&oacute;n metemos la ventana en el workSpace.
     if ( modoEdicion() ) {
-        mainCompany() ->meteWindow ( windowTitle(), this );
+        mainCompany() ->insertWindow ( windowTitle(), this );
     } else {
         setWindowTitle ( _ ( "Selector de presupuesto contable" ) );
         mui_editar->setHidden ( TRUE );

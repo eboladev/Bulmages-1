@@ -70,7 +70,7 @@ ArticuloList::ArticuloList ( BfCompany *comp, QWidget *parent, Qt::WFlags flag, 
     m_usadoarticulo->setCheckState ( Qt::Unchecked );
 
     if ( modoEdicion() ) {
-        mainCompany() ->meteWindow ( windowTitle(), this );
+        mainCompany() ->insertWindow ( windowTitle(), this );
     } else {
         setWindowTitle ( _ ( "Selector de articulos" ) );
         mui_editar->setHidden ( TRUE );
@@ -264,7 +264,7 @@ void ArticuloList::on_mui_exportar_clicked()
     blDebug ( "ArticuloList::on_mui_exportar_clicked", 0 );
     QFile filexml ( QFileDialog::getSaveFileName ( this,
                     _ ( "Elija el archivo" ),
-                    g_confpr->valor ( CONF_DIR_USER ),
+                    g_confpr->value( CONF_DIR_USER ),
                     _ ( "Clientes (*.xml)" ) ) );
 
     if ( filexml.open ( QIODevice::WriteOnly ) ) {
@@ -289,7 +289,7 @@ void ArticuloList::on_mui_importar_clicked()
     blDebug ( "ArticuloList::INIT_s_importar", 0 );
     QFile filexml ( QFileDialog::getOpenFileName ( this,
                     _ ( "Elija el archivo" ),
-                    g_confpr->valor ( CONF_DIR_USER ),
+                    g_confpr->value( CONF_DIR_USER ),
                     _ ( "Clientes (*.xml)" ) ) );
 
     if ( filexml.open ( QIODevice::ReadOnly ) ) {
@@ -358,7 +358,7 @@ void ArticuloList::crear()
 	QString idarticuloold = "";
 	BlDbRecordSet *curold = mainCompany()->loadQuery("SELECT max(idarticulo) AS id FROM articulo");
 	if( !curold->eof()) {
-		      idarticuloold = curold->valor("id");
+		      idarticuloold = curold->value("id");
 	} // end if
 	delete curold;
 	
@@ -366,8 +366,8 @@ void ArticuloList::crear()
       
 	BlDbRecordSet *cur = mainCompany()->loadQuery("SELECT max(idarticulo) AS id FROM articulo");
 	if( !cur->eof()) {
-		      if (idarticuloold != cur->valor("id")) {
-			mdb_idarticulo = cur->valor("id");
+		      if (idarticuloold != cur->value("id")) {
+			mdb_idarticulo = cur->value("id");
 			close();
 			emit ( selected ( mdb_idarticulo ) );
 		      } // end if

@@ -76,11 +76,11 @@ void estadisticasview::presentar()
     cursorapt = dbConnection->loadQuery ( query, "Balance1view" );
 
     while ( !cursorapt->eof() )  {
-        query.sprintf ( "SELECT * FROM balance WHERE idcuenta=%s", cursorapt->valor ( "idcuenta" ).ascii() );
+        query.sprintf ( "SELECT * FROM balance WHERE idcuenta=%s", cursorapt->value( "idcuenta" ).ascii() );
         BlDbRecordSet *mycur = dbConnection->loadQuery ( query, "cursorrefresco" );
 
-        query.sprintf ( "UPDATE balance SET tsaldo = tsaldo + (%2.2f), tdebe = tdebe + (%2.2f), thaber = thaber +(%2.2f), asaldo= asaldo+(%2.2f) WHERE idcuenta = %d", atof ( mycur->valor ( "tsaldo" ).ascii() ), atof ( mycur->valor ( "tdebe" ).ascii() ), atof ( mycur->valor ( "thaber" ).ascii() ), atof ( mycur->valor ( "asaldo" ).ascii() ),  atoi ( mycur->valor ( "padre" ).ascii() ) );
-        //   fprintf(stderr,"%s para el codigo\n",query, cursorapt->valor("codigo").c_str());
+        query.sprintf ( "UPDATE balance SET tsaldo = tsaldo + (%2.2f), tdebe = tdebe + (%2.2f), thaber = thaber +(%2.2f), asaldo= asaldo+(%2.2f) WHERE idcuenta = %d", atof ( mycur->value( "tsaldo" ).ascii() ), atof ( mycur->value( "tdebe" ).ascii() ), atof ( mycur->value( "thaber" ).ascii() ), atof ( mycur->value( "asaldo" ).ascii() ),  atoi ( mycur->value( "padre" ).ascii() ) );
+        //   fprintf(stderr,"%s para el codigo\n",query, cursorapt->value("codigo").c_str());
         dbConnection->runQuery ( query );
         delete mycur;
         cursorapt->nextRecord();
@@ -107,7 +107,7 @@ void estadisticasview::presentar()
     while ( !cursorapt->eof() ) {
         if ( init != 0 ) valores += ",";
         // Acumulamos los totales para al final poder escribirlos
-        valores += "(\\\"" + cursorapt->valor ( "descripcion" ) + "\\\"," + QString::number ( cursorapt->valor ( "tsaldoi" ).toInt() ) + ")";
+        valores += "(\\\"" + cursorapt->value( "descripcion" ) + "\\\"," + QString::number ( cursorapt->value( "tsaldoi" ).toInt() ) + ")";
         cursorapt->nextRecord();
         init = 1;
     }// end while
@@ -175,11 +175,11 @@ void estadisticasview::presentarbarras()
     cursorapt = dbConnection->loadQuery ( query, "Balance1view" );
 
     while ( !cursorapt->eof() )  {
-        query.sprintf ( "SELECT * FROM balance WHERE idcuenta=%s", cursorapt->valor ( "idcuenta" ).ascii() );
+        query.sprintf ( "SELECT * FROM balance WHERE idcuenta=%s", cursorapt->value( "idcuenta" ).ascii() );
         BlDbRecordSet *mycur = dbConnection->loadQuery ( query, "cursorrefresco" );
 
-        query.sprintf ( "UPDATE balance SET tsaldo = tsaldo + (%2.2f), tdebe = tdebe + (%2.2f), thaber = thaber +(%2.2f), asaldo= asaldo+(%2.2f) WHERE idcuenta = %d", atof ( mycur->valor ( "tsaldo" ).ascii() ), atof ( mycur->valor ( "tdebe" ).ascii() ), atof ( mycur->valor ( "thaber" ).ascii() ), atof ( mycur->valor ( "asaldo" ).ascii() ),  atoi ( mycur->valor ( "padre" ).ascii() ) );
-        //   fprintf(stderr,"%s para el codigo\n",query, cursorapt->valor("codigo").c_str());
+        query.sprintf ( "UPDATE balance SET tsaldo = tsaldo + (%2.2f), tdebe = tdebe + (%2.2f), thaber = thaber +(%2.2f), asaldo= asaldo+(%2.2f) WHERE idcuenta = %d", atof ( mycur->value( "tsaldo" ).ascii() ), atof ( mycur->value( "tdebe" ).ascii() ), atof ( mycur->value( "thaber" ).ascii() ), atof ( mycur->value( "asaldo" ).ascii() ),  atoi ( mycur->value( "padre" ).ascii() ) );
+        //   fprintf(stderr,"%s para el codigo\n",query, cursorapt->value("codigo").c_str());
         dbConnection->runQuery ( query );
         delete mycur;
         cursorapt->nextRecord();
@@ -207,9 +207,9 @@ void estadisticasview::presentarbarras()
     while ( !cursorapt->eof() ) {
         if ( init != 0 ) valores += ",";
         // Acumulamos los totales para al final poder escribirlos
-        valores += QString::number ( cursorapt->valor ( "tsaldoi" ).toInt() );
+        valores += QString::number ( cursorapt->value( "tsaldoi" ).toInt() );
 
-        plot += "plot" + QString::number ( iplot ) + "=bar_plot.T(label=\\\"" + cursorapt->valor ( "descripcion" ) + "\\\", hcol=" + QString::number ( iplot - 1 ) + ", cluster=(" + QString::number ( iplot - 1 ) + ",3)) \\n";
+        plot += "plot" + QString::number ( iplot ) + "=bar_plot.T(label=\\\"" + cursorapt->value( "descripcion" ) + "\\\", hcol=" + QString::number ( iplot - 1 ) + ", cluster=(" + QString::number ( iplot - 1 ) + ",3)) \\n";
         iplot++;
         cursorapt->nextRecord();
         init = 1;

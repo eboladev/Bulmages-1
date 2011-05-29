@@ -72,9 +72,9 @@ void BusquedaTipoTrabajo::setId ( QString idtipotrabajo )
     addItem ( "--" );
     while ( !m_cursorcombo->eof() ) {
         i++;
-        if ( m_cursorcombo->valor ( "idtipotrabajo" ) == idtipotrabajo )
+        if ( m_cursorcombo->value( "idtipotrabajo" ) == idtipotrabajo )
             i1 = i;
-        addItem ( m_cursorcombo->valor ( "nomtipotrabajo" ) );
+        addItem ( m_cursorcombo->value( "nomtipotrabajo" ) );
         m_cursorcombo->nextRecord();
     } //end while
     if ( i1 != 0 ) {
@@ -94,7 +94,7 @@ QString BusquedaTipoTrabajo::id()
     int index = currentIndex();
     if ( index > 0 ) {
         blDebug ( "END BusquedaTipoTrabajo::idt", 0 );
-        return ( m_cursorcombo->valor ( "idtipotrabajo", index - 1 ) );
+        return ( m_cursorcombo->value( "idtipotrabajo", index - 1 ) );
     } else {
         blDebug ( "END BusquedaTipoTrabajo::idt", 0 );
         return "";
@@ -110,7 +110,7 @@ void BusquedaTipoTrabajo::m_activated ( int index )
 {
     blDebug ( "BusquedaTipoTrabajo::m_activated", 0 );
     if ( index > 0 ) {
-        emit ( valueChanged ( m_cursorcombo->valor ( "idtipotrabajo", index - 1 ) ) );
+        emit ( valueChanged ( m_cursorcombo->value( "idtipotrabajo", index - 1 ) ) );
     } else {
         emit ( valueChanged ( "" ) );
     } // end if
@@ -171,9 +171,9 @@ void BusquedaTipoTrabajoDelegate::set ( const QString &cod )
     m_cursorcombo = mainCompany() ->loadQuery ( "SELECT idtipotrabajo, nomtipotrabajo FROM tipotrabajo " );
     clear();
     while ( !m_cursorcombo->eof() ) {
-        addItem ( m_cursorcombo->valor ( "nomtipotrabajo" ) );
+        addItem ( m_cursorcombo->value( "nomtipotrabajo" ) );
         m_cursorcombo->nextRecord();
-        if ( m_cursorcombo->valor ( "nomtipotrabajo" ) == cod )
+        if ( m_cursorcombo->value( "nomtipotrabajo" ) == cod )
             index = m_cursorcombo->currentRecord();
     } // end while
     setEditText ( cod );
@@ -191,6 +191,6 @@ QString BusquedaTipoTrabajoDelegate::id()
 {
     blDebug ( "BusquedaTipoTrabajoDelegate::id", 0 );
     blDebug ( "END BusquedaTipoTrabajoDelegate::id", 0 );
-    return m_cursorcombo->valor ( "idtipotrabajo", currentIndex() );
+    return m_cursorcombo->value( "idtipotrabajo", currentIndex() );
 }
 

@@ -120,12 +120,12 @@ public:
     void inicializavariables();
     void cifcuenta ( int );
     void selectfirst();
-    void muestraplantilla ( QString );
-    void setvalores ( QString, QString );
-    void setfechaasiento ( QString fecha );
+    void muestraPlantilla ( QString );
+    void setValores ( QString, QString );
+    void setFechaAsiento ( QString fecha );
     /// La funci&oacute;n sirve para especificar el modo de funcionamiento de los asientos
     /// intelgientes. Consultar la variable m&eacute;todo para m&aacute;s detalles.
-    void setmodo ( int i );
+    void setModo ( int i );
     void on_mui_aceptar_clicked();
     virtual void on_mui_guardar_clicked();
 

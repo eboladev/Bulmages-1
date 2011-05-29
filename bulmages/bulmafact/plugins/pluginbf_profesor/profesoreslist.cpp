@@ -86,7 +86,7 @@ ProfesoresList::ProfesoresList ( BfCompany *comp, QWidget *parent, Qt::WFlags fl
     mdb_idprofesor = "";
     
     if ( modoEdicion() )
-        mainCompany() ->meteWindow ( windowTitle(), this );
+        mainCompany() ->insertWindow ( windowTitle(), this );
         
     hideBusqueda();
     
@@ -171,7 +171,7 @@ void ProfesoresList::crear()
 	QString idprofesorold = "";
 	BlDbRecordSet *curold = mainCompany()->loadQuery("SELECT max(idprofesor) AS id FROM profesor");
 	if( !curold->eof()) {
-		      idprofesorold = curold->valor("id");
+		      idprofesorold = curold->value("id");
 	} // end if
 	delete curold;
 	
@@ -180,8 +180,8 @@ void ProfesoresList::crear()
       
 	BlDbRecordSet *cur = mainCompany()->loadQuery("SELECT max(idprofesor) AS id FROM profesor");
 	if( !cur->eof()) {
-		  if (cur->valor("id") != idprofesorold) {
-		      mdb_idprofesor = cur->valor("id");
+		  if (cur->value("id") != idprofesorold) {
+		      mdb_idprofesor = cur->value("id");
 	              emit ( selected ( mdb_idprofesor ) );
 		  } // end if
 	} // end if

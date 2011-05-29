@@ -48,7 +48,7 @@ int entryPoint ( BfBulmaFact *bges )
 
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale ( LC_ALL, "" );
-    blBindTextDomain ( "pluginbf_trazabilidad", g_confpr->valor ( CONF_DIR_TRADUCCION ).toAscii().constData() );
+    blBindTextDomain ( "pluginbf_trazabilidad", g_confpr->value( CONF_DIR_TRADUCCION ).toAscii().constData() );
     g_bges = bges;
 
     /// Creamos el men&uacute;.
@@ -162,11 +162,11 @@ int BfSubForm_on_mui_list_editFinished ( BfSubForm * )
      if (!cur->eof()) {
       if (campact->nomcampo() == "codigocompletoarticulo") {
        subform->situarse1(subform->m_prevRow, subform->m_prevCol);
-       campact->setText(cur->valor("codigocompletoarticulo"));
+       campact->setText(cur->value("codigocompletoarticulo"));
       } else {
-       rec->setDbValue("idarticulo", cur->valor("idarticulo"));
-       rec->setDbValue("codigocompletoarticulo", cur->valor("codigocompletoarticulo"));
-       rec->setDbValue("nomarticulo", cur->valor("nomarticulo"));
+       rec->setDbValue("idarticulo", cur->value("idarticulo"));
+       rec->setDbValue("codigocompletoarticulo", cur->value("codigocompletoarticulo"));
+       rec->setDbValue("nomarticulo", cur->value("nomarticulo"));
        rec->refresh();
       } // end if
      } // end if

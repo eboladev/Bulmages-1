@@ -100,7 +100,7 @@ void BlComboBox::setId ( QString id )
 
     while ( !m_comboRecordSet->eof() ) {
 
-        if ( m_comboRecordSet->valor ( m_fieldId ) == id ) {
+        if ( m_comboRecordSet->value( m_fieldId ) == id ) {
             i1 = i;
         } // end if
 
@@ -112,7 +112,7 @@ void BlComboBox::setId ( QString id )
 	    if (cad != "") {
 	        cad = cad + " ";
 	    } // end if
-            cad = cad  + m_comboRecordSet->valor ( it.key() );
+            cad = cad  + m_comboRecordSet->value( it.key() );
         } // end while
 
         addItem ( cad );
@@ -146,9 +146,9 @@ void BlComboBox::m_activated ( int index )
     blDebug ( "BlComboBox::m_activated", 0 );
     if ( index > 0 ) {
         if ( m_null ) {
-            emit ( valueChanged ( m_comboRecordSet->valor ( m_fieldId, index - 1 ) ) );
+            emit ( valueChanged ( m_comboRecordSet->value( m_fieldId, index - 1 ) ) );
         } else {
-            emit ( valueChanged ( m_comboRecordSet->valor ( m_fieldId, index ) ) );
+            emit ( valueChanged ( m_comboRecordSet->value( m_fieldId, index ) ) );
         } // end if
     } else {
         emit ( valueChanged ( "" ) );
@@ -172,12 +172,12 @@ QString BlComboBox::id()
             if ( currentIndex() == 0 ) {
                 return "";
             } else {
-                return m_comboRecordSet->valor ( m_fieldId, currentIndex() - 1 );
+                return m_comboRecordSet->value( m_fieldId, currentIndex() - 1 );
             } // end if
 
         /// Si el campo no tiene valor nulo, el orden coincide con el n&uacute;mero de &iacute;ndice
         } else {
-            return m_comboRecordSet->valor ( m_fieldId, currentIndex() );
+            return m_comboRecordSet->value( m_fieldId, currentIndex() );
         } // end if
 
     } // end if

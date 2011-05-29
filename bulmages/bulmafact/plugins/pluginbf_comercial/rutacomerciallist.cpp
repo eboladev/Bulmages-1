@@ -75,7 +75,7 @@ RutaComercialList::RutaComercialList ( BfCompany *comp, QWidget *parent )
     presenta();
     m_idpresupuesto = "";
     hideBusqueda();
-    mainCompany() ->meteWindow ( windowTitle(), this );
+    mainCompany() ->insertWindow ( windowTitle(), this );
     blDebug ( "END RutaComercialList::RutaComercialList", 0 );
 
     /// Establecemos los parametros de busqueda del Cliente
@@ -159,7 +159,7 @@ void RutaComercialList::editar ( int row )
     if ( rut->cargar ( idrutacomercial, idincidenciacomercial ) )
         return;
     mainCompany() ->m_pWorkspace->addSubWindow ( rut );
-    mainCompany() ->meteWindow ( _ ( "Nueva incidencia comercial" ), rut );
+    mainCompany() ->insertWindow ( _ ( "Nueva incidencia comercial" ), rut );
     rut->show();
     blDebug ( "END RutaComercialList::editar", 0 );
 }
@@ -173,7 +173,7 @@ void RutaComercialList::crear()
     blDebug ( "RutaComercialList::crear", 0 );
     RutaComercialIncView *rut = new RutaComercialIncView ( ( BfCompany * ) mainCompany(), NULL );
     mainCompany() ->m_pWorkspace->addSubWindow ( rut );
-    mainCompany() ->meteWindow ( _ ( "Nueva incidencia comercial" ), rut );
+    mainCompany() ->insertWindow ( _ ( "Nueva incidencia comercial" ), rut );
     rut->show();
     blDebug ( "END RutaComercialList::crear", 0 );
 }
@@ -185,9 +185,9 @@ void RutaComercialList::crear()
 void RutaComercialList::imprimir()
 {
     blDebug ( "RutaComercialList::imprimir", 0 );
-    QString archivo = g_confpr->valor ( CONF_DIR_OPENREPORTS ) + "rutascomerciales.rml";
-    QString archivod = g_confpr->valor ( CONF_DIR_USER ) + "rutascomerciales.rml";
-    QString archivologo = g_confpr->valor ( CONF_DIR_OPENREPORTS ) + "logo.jpg";
+    QString archivo = g_confpr->value( CONF_DIR_OPENREPORTS ) + "rutascomerciales.rml";
+    QString archivod = g_confpr->value( CONF_DIR_USER ) + "rutascomerciales.rml";
+    QString archivologo = g_confpr->value( CONF_DIR_OPENREPORTS ) + "logo.jpg";
     /// Copiamos el archivo.
 #ifdef Q_OS_WIN32
 
@@ -201,10 +201,10 @@ void RutaComercialList::imprimir()
     /// Copiamos el logo.
 #ifdef Q_OS_WIN32
 
-    archivologo = "copy " + archivologo + " " + g_confpr->valor ( CONF_DIR_USER ) + "logo.jpg";
+    archivologo = "copy " + archivologo + " " + g_confpr->value( CONF_DIR_USER ) + "logo.jpg";
 #else
 
-    archivologo = "cp " + archivologo + " " + g_confpr->valor ( CONF_DIR_USER ) + "logo.jpg";
+    archivologo = "cp " + archivologo + " " + g_confpr->value( CONF_DIR_USER ) + "logo.jpg";
 #endif
 
     system ( archivologo.toAscii() );
