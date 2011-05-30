@@ -34,64 +34,7 @@
 #include "balanceview.h"
 #include "bccompany.h"
 
-
-///
-/**
-**/
-PluginBc_Balance::PluginBc_Balance()
-{
-    blDebug ( "PluginBc_Balance::PluginBc_Balance", 0 );
-    blDebug ( "END PluginBc_Balance::PluginBc_Balance", 0 );
-}
-
-
-///
-/**
-**/
-PluginBc_Balance::~PluginBc_Balance()
-{
-    blDebug ( "PluginBc_Balance::~PluginBc_Balance", 0 );
-    blDebug ( "END PluginBc_Balance::~PluginBc_Balance", 0 );
-}
-
-
-///
-/**
-**/
-void PluginBc_Balance::elslot()
-{
-    blDebug ( "PluginBc_Balance::elslot", 0 );
-    BalanceView *cuad = new BalanceView ( ( BcCompany * ) mainCompany(), 0 );
-    mainCompany() ->pWorkspace() ->addSubWindow ( cuad );
-    cuad->show();
-    blDebug ( "END PluginBc_Balance::elslot", 0 );
-}
-
-
-///
-/**
-\param bges
-**/
-void PluginBc_Balance::inicializa ( BcBulmaCont *bges )
-{
-    blDebug ( "PluginBc_Balance::inicializa", 0 );
-    /// Creamos el men&uacute;.
-    setMainCompany ( bges->company() );
-    m_bulmacont = bges;
-    QMenu *pPluginMenu = bges->newMenu("&Ver", "menuVer", "menuMaestro");
-
-    QAction *accion = new QAction ( _ ( "&Balance jerarquico" ), 0 );
-    accion->setStatusTip ( _ ( "Permite realizar balances" ) );
-    accion->setWhatsThis ( _ ( "Podra disponer de la informacion del balance" ) );
-    connect ( accion, SIGNAL ( activated() ), this, SLOT ( elslot() ) );
-    pPluginMenu->addAction ( accion );
-
-    /// A&ntilde;adimos la nueva opci&oacute;n al men&uacute; principal del programa.
-//    bges->toolBar->addAction ( accion );
-    blDebug ( "END PluginBc_Balance::inicializa", 0 );
-}
-
-
+BcBulmaCont *g_bcont = NULL;
 
 ///
 /**
@@ -99,15 +42,36 @@ void PluginBc_Balance::inicializa ( BcBulmaCont *bges )
 **/
 int entryPoint ( BcBulmaCont *bcont )
 {
-    blDebug ( "entryPoint::entryPoint", 0 );
+    blDebug ( "entryPoint", 0, "Punto de entrada de PluginBc_Balance" );
 
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale ( LC_ALL, "" );
     blBindTextDomain ( "pluginbc_balance", g_confpr->value( CONF_DIR_TRADUCCION ).toAscii().constData() );
+    g_bcont = bcont;
 
-    PluginBc_Balance *plug = new PluginBc_Balance();
-    plug->inicializa ( bcont );
-    blDebug ( "END entryPoint::entryPoint", 0 );
+    QMenu *pPluginMenu = bcont->newMenu( _("&Ver"), "menuVer", "menuMaestro");
+
+    BlAction *accionA = new BlAction ( _ ( "&Balance jerarquico" ), 0 );
+    accionA->setStatusTip ( _ ( "Permite realizar balances" ) );
+    accionA->setWhatsThis ( _ ( "Podra disponer de la informacion del balance" ) );
+    //connect ( accion, SIGNAL ( activated() ), this, SLOT ( elslot() ) );
+    accionA->setObjectName("mui_actionBalance");
+    pPluginMenu->addAction ( accionA );
+
+
+    blDebug ( "END entryPoint", 0, "Punto de entrada de PluginBc_Balance" );
+    return 0;
+}
+
+
+int BlAction_triggered(BlAction *accion) {
+    blDebug ("PluginBc_Balance::BlAction_triggered");
+    if (accion->objectName() == "mui_actionBalance") {
+        BalanceView *cuad = new BalanceView ( ( BcCompany * ) g_bcont->company(), 0 );
+        g_bcont->company()->pWorkspace() ->addSubWindow ( cuad );
+        cuad->show();
+    } // end if
+    blDebug ("END PluginBc_Balance::BlAction_triggered");
     return 0;
 }
 
