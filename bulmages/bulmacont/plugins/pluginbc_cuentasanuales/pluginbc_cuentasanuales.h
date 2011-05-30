@@ -26,28 +26,10 @@
 #include "bccompany.h"
 #include "bccuentasanualesview.h"
 #include "pdefs_pluginbc_cuentasanuales.h"
-
+#include "blaction.h"
 
 extern "C" PLUGINBC_CUENTASANUALES_EXPORT BcCuentasAnualesView *g_cuentasAnuales;
 extern "C" PLUGINBC_CUENTASANUALES_EXPORT int entryPoint ( BcBulmaCont * );
-
-
-class PluginBc_CuentasAnuales : public QObject, BlMainCompanyPointer
-{
-    Q_OBJECT
-
-public:
-    BcBulmaCont *m_bulmacont;
-
-public:
-    PluginBc_CuentasAnuales();
-    ~PluginBc_CuentasAnuales();
-    void inicializa ( BcBulmaCont * );
-
-public slots:
-    void elslot();
-};
-
-
+extern "C" PLUGINBC_CUENTASANUALES_EXPORT int BlAction_triggered ( BlAction * );
 #endif
 

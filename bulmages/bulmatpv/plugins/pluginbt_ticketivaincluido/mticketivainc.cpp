@@ -89,31 +89,19 @@ void MTicketIVAInc::pintar()
 
     query = "SELECT idtrabajador, nomtrabajador FROM trabajador WHERE idtrabajador = " + ticket->dbValue ( "idtrabajador" );
     BlDbRecordSet *rsTrabajador = mainCompany()->loadQuery ( query );
-<<<<<<< HEAD:bulmages/bulmatpv/plugins/pluginbt_ticketivaincluido/mticketivainc.cpp
 	if (rsTrabajador) {
-		plainTextContent += "Trabajador: " + rsTrabajador->valor ( "nomtrabajador" ) + "\n";
-		htmlContent += "Trabajador: " + rsTrabajador->valor ( "nomtrabajador" ) + "<br>";
+		plainTextContent += "Trabajador: " + rsTrabajador->value ( "nomtrabajador" ) + "\n";
+		htmlContent += "Trabajador: " + rsTrabajador->value ( "nomtrabajador" ) + "<br>";
 		delete rsTrabajador;
 	} // end if
 	
     query = "SELECT idcliente, nomcliente FROM cliente WHERE idcliente = " + ticket->dbValue ( "idcliente" );
-		BlDbRecordSet *rsCliente = mainCompany()->loadQuery ( query );
+    BlDbRecordSet *rsCliente = mainCompany()->loadQuery ( query );
 	if (rsCliente) {
-		plainTextContent += "Cliente: " + rsCliente->valor ( "nomcliente" ) + "\n";
-		htmlContent += "Cliente: " + rsCliente->valor ( "nomcliente" ) + "<br>";
+		plainTextContent += "Cliente: " + rsCliente->value ( "nomcliente" ) + "\n";
+		htmlContent += "Cliente: " + rsCliente->value ( "nomcliente" ) + "<br>";
 		delete rsCliente;
 	} // end if
-=======
-    plainTextContent += "Trabajador: " + rsTrabajador->value( "nomtrabajador" ) + "\n";
-    htmlContent += "Trabajador: " + rsTrabajador->value( "nomtrabajador" ) + "<br>";
-    delete rsTrabajador;
-
-    query = "SELECT idcliente, nomcliente FROM cliente WHERE idcliente = " + ticket->dbValue ( "idcliente" );
-    BlDbRecordSet *rsCliente = mainCompany()->loadQuery ( query );
-    plainTextContent += "Cliente: " + rsCliente->value( "nomcliente" ) + "\n";
-    htmlContent += "Cliente: " + rsCliente->value( "nomcliente" ) + "<br>";
-    delete rsCliente;
->>>>>>> bdf11afad51e27c6fdb6711ee46147b545eeaa4f:bulmages/bulmatpv/plugins/pluginbt_ticketivaincluido/mticketivainc.cpp
 
     htmlContent += "<table border=\"0\" width=\"100%\">";
 

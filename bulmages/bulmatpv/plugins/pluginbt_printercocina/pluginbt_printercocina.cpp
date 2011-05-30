@@ -260,12 +260,7 @@ int impresionCocina(BtTicket *tick) {
       
        /// Si realmente hay algo que imprimir entonces lo sacamos.
        if (hayalgoqueimprimir) {
-<<<<<<< HEAD:bulmages/bulmatpv/plugins/pluginbt_printercocina/pluginbt_printercocina.cpp
-			  blRawPrint("ticket_cocina.txt", TRUE, curimpresoras->valor("colaprintercocina"));
-=======
-              QString comando = "lp -d " + curimpresoras->value("colaprintercocina") +" " +g_confpr->value(CONF_DIR_USER) + "ticket_cocina.txt";
-              system ( comando.toAscii().data() );
->>>>>>> bdf11afad51e27c6fdb6711ee46147b545eeaa4f:bulmages/bulmatpv/plugins/pluginbt_printercocina/pluginbt_printercocina.cpp
+			  blRawPrint("ticket_cocina.txt", TRUE, curimpresoras->value("colaprintercocina"));
        } // end if
 
        curimpresoras->nextRecord();

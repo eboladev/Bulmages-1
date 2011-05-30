@@ -36,78 +36,7 @@
 #include "bccuentasanualesview.h"
 
 BcCuentasAnualesView *g_cuentasAnuales;
-
-
-
-///
-/**
-**/
-PluginBc_CuentasAnuales::PluginBc_CuentasAnuales()
-{
-    blDebug ( "PluginBc_CuentasAnuales::PluginBc_CuentasAnuales", 0 );
-    blDebug ( "END PluginBc_CuentasAnuales::PluginBc_CuentasAnuales", 0 );
-}
-
-
-///
-/**
-**/
-PluginBc_CuentasAnuales::~PluginBc_CuentasAnuales()
-{
-    blDebug ( "PluginBc_CuentasAnuales::~PluginBc_CuentasAnuales", 0 );
-    blDebug ( "END PluginBc_CuentasAnuales::~PluginBc_CuentasAnuales", 0 );
-}
-
-
-///
-/**
-**/
-void PluginBc_CuentasAnuales::elslot()
-{
-    blDebug ( "PluginBc_CuentasAnuales::elslot", 0 );
-    if (g_cuentasAnuales == NULL) {
-      g_cuentasAnuales = new BcCuentasAnualesView ( ( BcCompany * ) mainCompany(), 0 );
-      mainCompany() ->pWorkspace() -> addSubWindow ( g_cuentasAnuales );
-    } // end if
-    g_cuentasAnuales->hide();
-    g_cuentasAnuales->show();
-    blDebug ( "END PluginBc_CuentasAnuales::elslot", 0 );
-}
-
-
-///
-/**
-\param bges
-**/
-void PluginBc_CuentasAnuales::inicializa ( BcBulmaCont *bges )
-{
-    blDebug ( "PluginBc_CuentasAnuales::inicializa", 0 );
-
-    /// Creamos el men&uacute;.
-    setMainCompany ( bges->company() );
-
-    /// Creamos la ventana de asientos que va a ser fija.
-    g_cuentasAnuales = NULL;
-
-    m_bulmacont = bges;
-    /// Miramos si existe un menu Herramientas
-    QMenu *pPluginMenu = bges->newMenu ( _("&Cuentas Anuales"), "menuCAnuales", "menuHerramientas" );
-
-
-    QAction *accion = new QAction ( _ ( "&Cuentas Anuales" ), 0 );
-    accion->setStatusTip ( _ ( "Cuentas anuales" ) );
-    accion->setWhatsThis ( _ ( "Cuentas anuales" ) );
-    connect ( accion, SIGNAL ( activated() ), this, SLOT ( elslot() ) );
-    pPluginMenu->addAction ( accion );
-
-
-    /// A&ntilde;adimos la nueva opci&oacute;n al men&uacute; principal del programa.
-//    bges->menuBar() ->insertMenu ( bges->menuVentana->menuAction(), pPluginMenu );
-
-    blDebug ( "END PluginBc_CuentasAnuales::inicializa", 0 );
-}
-
-
+BcBulmaCont *g_bcont = NULL;
 
 ///
 /**
@@ -123,9 +52,32 @@ int entryPoint ( BcBulmaCont *bcont )
 
     g_cuentasAnuales = NULL;
 
-    PluginBc_CuentasAnuales *plug = new PluginBc_CuentasAnuales();
-    plug->inicializa ( bcont );
+    g_bcont = bcont;
+    /// Creamos la ventana de asientos que va a ser fija.
+    g_cuentasAnuales = NULL;
+
+    /// Miramos si existe un menu Herramientas
+    QMenu *pPluginMenu = bcont->newMenu ( _("&Cuentas Anuales"), "menuCAnuales", "menuHerramientas" );
+
+
+    QAction *accionA = new QAction ( _ ( "&Cuentas Anuales" ), 0 );
+    accionA->setStatusTip ( _ ( "Cuentas anuales" ) );
+    accionA->setWhatsThis ( _ ( "Cuentas anuales" ) );
+    pPluginMenu->addAction ( accionA );
+    
     blDebug ( "END entryPoint::entryPoint", 0 );
     return 0;
 }
 
+
+int BlAction_triggered(BlAction *accion) {
+    if (accion->objectName() == "mui_actionCuentasAnuales") {
+        if (g_cuentasAnuales == NULL) {
+            g_cuentasAnuales = new BcCuentasAnualesView ( ( BcCompany * ) g_bcont->company(), 0 );
+            g_bcont->company() ->pWorkspace() -> addSubWindow ( g_cuentasAnuales );
+        } // end if
+        g_cuentasAnuales->hide();
+        g_cuentasAnuales->show();
+    } // end if
+    return 0;
+}
