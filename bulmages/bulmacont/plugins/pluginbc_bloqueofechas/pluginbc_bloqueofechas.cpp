@@ -32,67 +32,7 @@
 #include "bccompany.h"
 #include "bcbloqueafechaview.h"
 
-
-
-///
-/**
-**/
-PluginBc_BloqueFechas::PluginBc_BloqueFechas()
-{
-    blDebug ( "PluginBc_BloqueFechas::PluginBc_BloqueFechas", 0 );
-    blDebug ( "END PluginBc_BloqueFechas::PluginBc_BloqueFechas", 0 );
-}
-
-
-///
-/**
-**/
-PluginBc_BloqueFechas::~PluginBc_BloqueFechas()
-{
-    blDebug ( "PluginBc_BloqueFechas::~PluginBc_BloqueFechas", 0 );
-    blDebug ( "END PluginBc_BloqueFechas::~PluginBc_BloqueFechas", 0 );
-}
-
-
-///
-/**
-**/
-void PluginBc_BloqueFechas::elslot()
-{
-    blDebug ( "PluginBc_BloqueFechas::elslot", 0 );
-    BcBloqueaFechaView *tip = new BcBloqueaFechaView ( (BcCompany *)m_bulmacont->company(), 0 );
-    m_bulmacont->workspace()->addSubWindow ( tip );
-    tip->show();
-    blDebug ( "END PluginBc_BloqueFechas::elslot", 0 );
-}
-
-
-
-
-
-///
-/**
-\param bges
-**/
-void PluginBc_BloqueFechas::inicializa ( BcBulmaCont *bges )
-{
-    /// Creamos el men&uacute;.
-    m_bulmacont = bges;
-
-    /// Miramos si existe un menu Herramientas
-    QMenu *pPluginMenu = bges->newMenu(_("&Herramientas"), "menuHerramientas", "menuVentana");
-
-    QAction *accion = new QAction ( _ ( "&Bloqueo de Fechas" ), 0 );
-    accion->setStatusTip ( _ ( "Bloqueo de Fechas" ) );
-    accion->setWhatsThis ( _ ( "Bloqueo de Fechas" ) );
-
-    connect ( accion, SIGNAL ( activated() ), this, SLOT ( elslot() ) );
-
-    pPluginMenu->addSeparator();
-    pPluginMenu->addAction ( accion );
-
-}
-
+BcBulmaCont *g_bcont = NULL;
 
 ///
 /**
@@ -105,9 +45,26 @@ int entryPoint ( BcBulmaCont *bcont )
     /// Inicializa el sistema de traducciones 'gettext'.
     setlocale ( LC_ALL, "" );
     blBindTextDomain ( "pluginbc_bloqueofechas", g_confpr->value( CONF_DIR_TRADUCCION ).toAscii().constData() );
+    g_bcont = bcont;
+    /// Miramos si existe un menu Herramientas
+    QMenu *pPluginMenu = bcont->newMenu( _("&Herramientas"), "menuHerramientas", "menuVentana" );
 
-    PluginBc_BloqueFechas *my = new PluginBc_BloqueFechas();
-    my->inicializa ( bcont );
+    BlAction *accionA = new BlAction ( _ ( "&Bloqueo de Fechas" ), 0 );
+    accionA->setStatusTip ( _ ( "Bloqueo de Fechas" ) );
+    accionA->setWhatsThis ( _ ( "Bloqueo de Fechas" ) );
+    accionA->setObjectName("mui_actionBloqueoFechas");
+
+    pPluginMenu->addSeparator();
+    pPluginMenu->addAction ( accionA );
+
     return 0;
 }
 
+int BlAction_triggered(BlAction *accion) {
+    if (accion->objectName() == "mui_actionBloqueoFechas") {
+        BcBloqueaFechaView *tip = new BcBloqueaFechaView ( (BcCompany *) g_bcont->company(), 0 );
+        g_bcont->workspace()->addSubWindow ( tip );
+        tip->show();
+    } // end if
+    return 0;
+}
