@@ -143,18 +143,18 @@ public:
     virtual int parseTags ( QString &buff, int tipoEscape = 0 );
 //    virtual int parseTags ( QByteArray &buff, int tipoEscape = 0 );
     virtual QString story ( void );
-    virtual int generaRML ( const QString & );
+    virtual int generateRML ( const QString & );
     virtual void substrConf( QString &buff) ;
     virtual void substrConf( QByteArray &buff) ;
     virtual QString templateName(void);
-    virtual int generaRML ( void );
+    virtual int generateRML ( void );
     virtual QString exportXML();
     virtual void syncXML(const QString &);
 
     //===========
     virtual int parseTags ( QByteArray &buff, int tipoEscape = 0 );
     virtual int parseTagsPost ( QByteArray &buff, int tipoEscape = 0 );
-    virtual QByteArray trataIncludeFileTXT ( const QString &file, int tipoEscape = 0 );
+    virtual QByteArray parseIncludeFileTXT ( const QString &file, int tipoEscape = 0 );
     virtual QByteArray trataIncludeImg ( const QString &file, int tipoEscape = 0 );
     virtual QByteArray trataPngRaw64 ( const QByteArray &data, int tipoEscape = 0 );
     virtual QByteArray trataSetCharacterPrintMode( const QString &param, int tipoEscape = 0 );
@@ -190,7 +190,7 @@ public:
     virtual QByteArray trataRightJustified( const QString &param, const QString &param1, const QString &param2, const QString &param3, int tipoEscape = 0 );
     virtual QByteArray trataLeftJustified( const QString &param, const QString &param1, const QString &param2, const QString &param3, int tipoEscape = 0 );
 //    virtual QByteArray trataLineasDetalle( const QByteArray &datos, int tipoEscape=0 );
-    QByteArray trataCursor ( BlDbRecordSet *cur, const QByteArray &datos, int tipoEscape = 0 );
+    QByteArray parseRecordset ( BlDbRecordSet *cur, const QByteArray &datos, int tipoEscape = 0 );
     virtual QByteArray parseIfQuery ( const QString &query, const QByteArray &datos );
     virtual QByteArray parseIf ( const QString &query, const QByteArray &datos, const QByteArray &datos1 );
     virtual QByteArray trataExists ( const QString &query, const QByteArray &datos );

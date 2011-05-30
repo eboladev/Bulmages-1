@@ -310,7 +310,7 @@ void ClientsList::crear()
 	bud->show();
 	bud->setWindowTitle ( _ ( "Nuevo cliente" ) );
 	/// Deshabilitamos las pestanyas que no se utilizan al crear un nuevo cliente.
-	bud->desactivaDocumentos();
+	bud->deactivateDocuments();
 	bud->mui_cifcliente->setFocus ( Qt::OtherFocusReason );
     } // end if
     blDebug ( "END ClientsList::crear", 0 );

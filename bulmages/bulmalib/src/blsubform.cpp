@@ -332,7 +332,7 @@ void BlSubForm::setMainCompany ( BlMainCompany *emp )
       } // end for
     } // end if
 
-    cargaSpecs();
+    loadSpecs();
     blDebug ( "END BlMainCompanyPointer::setMainCompany", 0 );
 }
 
@@ -340,19 +340,19 @@ void BlSubForm::setMainCompany ( BlMainCompany *emp )
 ///
 /**
 **/
-void BlSubForm::cargaSpecs()
+void BlSubForm::loadSpecs()
 {
-    blDebug ( "BlSubForm::cargaSpecs", 0 );
+    blDebug ( "BlSubForm::loadSpecs", 0 );
 //    QFile file(g_confpr->value(CONF_DIR_USER) + m_fileconfig + "_" + mainCompany()->dbName() + "_specs.spc");
     QFile file ( CONFIG_DIR_CONFIG + m_fileconfig + "_" + mainCompany() ->dbName() + "_specs.spc" );
     QDomDocument doc ( "mydocument" );
     if ( !file.open ( QIODevice::ReadOnly ) ) {
-        blDebug ( "END BlSubForm::cargaSpecs", 0, "No se pudo abrir archivo" );
+        blDebug ( "END BlSubForm::loadSpecs", 0, "No se pudo abrir archivo" );
         return;
     }
     if ( !doc.setContent ( &file ) ) {
         file.close();
-        blDebug ( "END BlSubForm::cargaSpecs", 0, "XML no valido" );
+        blDebug ( "END BlSubForm::loadSpecs", 0, "XML no valido" );
         return;
     }
     file.close();
@@ -430,7 +430,7 @@ void BlSubForm::cargaSpecs()
         } // end if
     } // end for
 
-    blDebug ( "END BlSubForm::cargaSpecs", 0 );
+    blDebug ( "END BlSubForm::loadSpecs", 0 );
 }
 
 

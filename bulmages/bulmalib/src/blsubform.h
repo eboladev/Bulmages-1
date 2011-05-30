@@ -193,7 +193,7 @@ protected:
     /// Carga la configuración de especificaciones.
     /// Los specs son archivos en /etc/bulmages que suplen o Incrementan los campos presentados en un subformulario.
     /// Son utiles para hacer ampliaciones sin programacion.
-    void cargaSpecs();
+    void loadSpecs();
     /// Prepara las columnas de la tabla del formulario y pone en
     /// ella los encabezados.
     virtual void pintaCabeceras();

@@ -332,7 +332,7 @@ void BtTicket::imprimir(bool save)
         return;
     } // end if
     
-    generaRML("ticket_normal.txt");
+    generateRML("ticket_normal.txt");
 
 
     if (!g_confpr->value( CONF_CASHBOX_FILE).isEmpty() && g_confpr->value( CONF_CASHBOX_FILE) != "/dev/null") {
@@ -728,20 +728,20 @@ bool BtTicket::syncXML(const QString &text, bool insertarSiempre) {
 
 
 
-int BtTicket::generaRML ( void )
+int BtTicket::generateRML ( void )
 {
-    blDebug ( "BtTicket::generaRML", 0 );
-    int err = BlDbRecord::generaRML();
-    blDebug ( "END BtTicket::generaRML", 0 );
+    blDebug ( "BtTicket::generateRML", 0 );
+    int err = BlDbRecord::generateRML();
+    blDebug ( "END BtTicket::generateRML", 0 );
     return err;
 }
 
 ///
 /**
 **/
-int BtTicket::generaRML ( const QString &arch )
+int BtTicket::generateRML ( const QString &arch )
 {
-    blDebug ( "BtTicket::generaRML", 0, arch );
+    blDebug ( "BtTicket::generateRML", 0, arch );
 
     /// Vaciamos las variables de RML
     m_variables.clear();
@@ -751,14 +751,14 @@ int BtTicket::generaRML ( const QString &arch )
     m_variables["CONF_DBUSER"] = mainCompany()->currentUser();
 
     /// Disparamos los plugins
-    int res = g_plugins->lanza ( "BtTicket_generaRML", this );
+    int res = g_plugins->lanza ( "BtTicket_generateRML", this );
     if ( res != 0 ) {
         return 1;
     } // end if
 
-    res = BlDbRecord::generaRML ( arch );
+    res = BlDbRecord::generateRML ( arch );
 
-    blDebug ( "END BtTicket::generaRML", 0 );
+    blDebug ( "END BtTicket::generateRML", 0 );
     return res;
 }
 

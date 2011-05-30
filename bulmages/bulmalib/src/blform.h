@@ -74,10 +74,10 @@ public:
     virtual void recogeValores();
     virtual void creaMenu ( QMenu * );
     virtual void procesaMenu ( QAction * );
-    virtual int generaRML ( const QString & );
-    virtual int generaRML ( void );
+    virtual int generateRML ( const QString & );
+    virtual int generateRML ( void );
     virtual int parseTags ( QString &buff, int tipoEscape = 0 );
-    virtual QString trataIncludeFile ( const QString &file, int tipoEscape = 0 );
+    virtual QString parseIncludeFile ( const QString &file, int tipoEscape = 0 );
     virtual QString parseQuery ( const QString &query, const QString &datos, int tipoEscape = 0 );
     QString trataCursor ( BlDbRecordSet *cur, const QString &datos, int tipoEscape = 0 );
     virtual QString parseIfQuery ( const QString &query, const QString &datos );
@@ -85,10 +85,10 @@ public:
     virtual QString trataExists ( const QString &query, const QString &datos );
     void setVar(const QString &varname, const QString &varvalue);
     void clearVars();
-    virtual void cargaSpecs();
+    virtual void loadSpecs();
     virtual void generaCampo ( const QString &objname, const QString &textname, const QString &type );
-    virtual void activaDocumentos();
-    virtual void desactivaDocumentos();
+    virtual void activateDocuments();
+    virtual void deactivateDocuments();
     void blScript(QObject * obj);
 protected:
     virtual void closeEvent ( QCloseEvent * );

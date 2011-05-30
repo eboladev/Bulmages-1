@@ -90,7 +90,7 @@ public:
     
     int deselectWindow();
     void removeWindow ( QObject * );
-    void cambiaVisible ( bool );
+    void setVisibilityState ( bool );
     void vaciar();
     void vaciarCompleto();
     int numVentanas();
@@ -104,7 +104,7 @@ public slots:
     virtual void clicked();
 
 signals:
-    void cambiaEstadoVisible ( bool );
+    void visibilityStateChanged ( bool );
 };
 
 #endif

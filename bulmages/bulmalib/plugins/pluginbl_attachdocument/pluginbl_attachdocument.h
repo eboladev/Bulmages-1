@@ -32,7 +32,7 @@ extern "C" PLUGINBL_ATTACHDOCUMENT_EXPORT int entryPoint ( QMainWindow * );
 extern "C" PLUGINBL_ATTACHDOCUMENT_EXPORT int BlForm_cargar ( BlForm * );
 extern "C" PLUGINBL_ATTACHDOCUMENT_EXPORT int BlForm_DesBlForm ( BlForm * );
 extern "C" PLUGINBL_ATTACHDOCUMENT_EXPORT int BlForm_BlForm ( BlForm * );
-extern "C" PLUGINBL_ATTACHDOCUMENT_EXPORT int BlForm_cargaSpecs ( BlForm * );
+extern "C" PLUGINBL_ATTACHDOCUMENT_EXPORT int BlForm_loadSpecs ( BlForm * );
 
 
 #endif

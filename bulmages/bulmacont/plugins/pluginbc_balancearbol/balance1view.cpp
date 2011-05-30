@@ -625,7 +625,7 @@ void BalanceTreeView::imprimir()
     blDebug ( "BalanceTreeView::on_mui_imprimir_clicked", 0 );
 //      QString queryalance();
 //
-    generaRML ( "balance.rml" );
+    generateRML ( "balance.rml" );
     blCreateAndLoadPDF ( "balance" );
 
     blDebug ( "END BalanceTreeView::on_mui_imprimir_clicked", 0 );

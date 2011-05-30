@@ -99,7 +99,7 @@ BfBulmaFact::BfBulmaFact ( QString bd ) : BlMainWindow()
     /// Iniciamos el listventanas con el workspace para que pueda operar con el.
     m_list->setWorkspace ( pWorkspace );
 
-    connect ( m_list, SIGNAL ( cambiaEstadoVisible ( bool ) ), this, SLOT ( setActionIndexador ( bool ) ) );
+    connect ( m_list, SIGNAL ( visibilityStateChanged ( bool ) ), this, SLOT ( setActionIndexador ( bool ) ) );
     addDockWidget ( Qt::LeftDockWidgetArea, m_list );
 
     m_company->setListVentanas ( m_list );

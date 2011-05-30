@@ -66,7 +66,7 @@ BlDockWidget::BlDockWidget ( const QString & title, QWidget * parent, const QStr
 BlDockWidget::~BlDockWidget()
 {
     blDebug ( "BlDockWidget::~BlDockWidget", 0 );
-    guardaconf();
+    saveConfig();
     blDebug ( "END BlDockWidget::~BlDockWidget", 0 );
 }
 
@@ -76,15 +76,15 @@ BlDockWidget::~BlDockWidget()
 /**
 \param visible
 **/
-void BlDockWidget::cambiaVisible ( bool visible )
+void BlDockWidget::setVisibilityState ( bool visible )
 {
-    blDebug ( "BlDockWidget::cambiaVisible", 0 );
+    blDebug ( "BlDockWidget::setVisibilityState", 0 );
     if ( visible == TRUE ) {
         this->show();
     } else {
         this->hide();
     } // end if
-    blDebug ( "END BlDockWidget::cambiaVisible", 0 );
+    blDebug ( "END BlDockWidget::setVisibilityState", 0 );
 }
 
 
@@ -94,7 +94,7 @@ void BlDockWidget::cambiaVisible ( bool visible )
 void BlDockWidget::closeEvent ( QCloseEvent * )
 {
     blDebug ( "BlDockWidget::closeEvent", 0 );
-    emit ( cambiaEstadoVisible ( FALSE ) );
+    emit ( visibilityStateChanged ( FALSE ) );
     blDebug ( "END BlDockWidget::closeEvent", 0 );
 }
 
@@ -103,7 +103,7 @@ void BlDockWidget::mi_dockLocationChanged ( Qt::DockWidgetArea area )
     m_area = area;
 }
 
-void BlDockWidget::cargaconf()
+void BlDockWidget::loadConfig()
 {
     /// Si existe el archivo de configuracion lo cargamos y configuramos el aspecto del widget.
 // ============================
@@ -134,9 +134,9 @@ void BlDockWidget::cargaconf()
 }
 
 
-void BlDockWidget::guardaconf()
+void BlDockWidget::saveConfig()
 {
-    blDebug ( "BlDockWidget::guardaconf", 0 );
+    blDebug ( "BlDockWidget::saveConfig", 0 );
     /// Vamos a probar con un docwindow.
     int lwidth = width();
     int lheight = height();
@@ -151,7 +151,7 @@ void BlDockWidget::guardaconf()
         stream << lheight << "\n";
         file.close();
     } // end if
-    blDebug ( "END BlDockWidget::guardaconf", 0 );
+    blDebug ( "END BlDockWidget::saveConfig", 0 );
 }
 
 

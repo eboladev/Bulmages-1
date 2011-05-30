@@ -82,7 +82,7 @@ int entryPoint ( BtBulmaTPV *tpv )
     g_doc1->resize ( 250, 200 );
     g_doc1->setWindowIcon(QIcon ( g_confpr->value( CONF_PROGDATA ) + "icons/modificadores.png"  ));
     tpv->addDockWidget ( Qt::LeftDockWidgetArea, g_doc1 );
-    g_doc1->cargaconf();
+    g_doc1->loadConfig();
     g_doc1->show();
 
     g_tablet = new TabletCanvas();

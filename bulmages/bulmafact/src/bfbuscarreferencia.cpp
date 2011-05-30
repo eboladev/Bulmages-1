@@ -69,7 +69,7 @@ void BfBuscarReferencia::on_mui_informe_clicked()
     newfich.setTitleName ( _ ( "Informe" ) );
     newfich.addDbField ( "referencia", BlDbField::DbVarChar, BlDbField::DbPrimaryKey, _ ( "Referencia" ) );
     newfich.setDbValue ( "referencia", mui_referencia->text() );
-    if ( newfich.generaRML ( "informereferencia.rml" ) ) {
+    if ( newfich.generateRML ( "informereferencia.rml" ) ) {
         blCreateAndLoadPDF ( "informereferencia" );
     } // end if
 

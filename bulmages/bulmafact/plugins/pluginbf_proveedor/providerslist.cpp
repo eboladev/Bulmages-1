@@ -193,7 +193,7 @@ void ProveedorList::crear()
 	prov->show();
 	prov->setWindowTitle ( _ ( "Nuevo proveedor" ) );
 	/// Deshabilitamos las pestanyas que no se utilizan al crear un nuevo cliente.
-	prov->desactivaDocumentos();
+	prov->deactivateDocuments();
 	prov->mui_cifproveedor->setFocus ( Qt::OtherFocusReason );
     } // end if
     blDebug ( "END ProveedorList::crear", 0 );

@@ -217,7 +217,7 @@ void BtCompany::z()
 
         commit();
 	
-	m_ticketActual -> generaRML("informe_Z.txt");
+	m_ticketActual -> generateRML("informe_Z.txt");
 
 	if (!g_confpr->value( CONF_CASHBOX_FILE).isEmpty() && g_confpr->value( CONF_CASHBOX_FILE) != "/dev/null") {
 	    QString comando = "cat " + g_confpr->value(CONF_DIR_USER) + "informe_Z.txt" + "  > " + g_confpr->value( CONF_CASHBOX_FILE );
@@ -459,7 +459,7 @@ void BtCompany::x()
     if ( g_plugins->lanza ( "BtCompany_x", this ) )
         return;
 
-    m_ticketActual -> generaRML("informe_X.txt");
+    m_ticketActual -> generateRML("informe_X.txt");
 
     if (!g_confpr->value( CONF_CASHBOX_FILE).isEmpty() && g_confpr->value( CONF_CASHBOX_FILE) != "/dev/null") {
         QString comando = "cat " + g_confpr->value(CONF_DIR_USER) + "informe_X.txt" + "  > " + g_confpr->value( CONF_CASHBOX_FILE );

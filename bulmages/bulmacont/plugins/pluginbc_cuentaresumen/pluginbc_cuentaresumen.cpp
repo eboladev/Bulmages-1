@@ -80,8 +80,8 @@ int entryPoint ( BcBulmaCont *bcont )
     viewCorrector->setChecked ( TRUE );
     viewCorrector->setStatusTip ( _ ( "Muestra/oculta el resumen de cuenta" ) );
     viewCorrector->setWhatsThis ( _ ( "Corrector.\n\nMuestra/oculta el corrector" ) );
-    QObject::connect ( viewCorrector, SIGNAL ( toggled ( bool ) ), doc1, SLOT ( cambiaVisible ( bool ) ) );
-    QObject::connect ( doc1, SIGNAL ( cambiaEstadoVisible ( bool ) ), viewCorrector, SLOT ( setChecked ( bool ) ) );
+    QObject::connect ( viewCorrector, SIGNAL ( toggled ( bool ) ), doc1, SLOT ( setVisibilityState ( bool ) ) );
+    QObject::connect ( doc1, SIGNAL ( visibilityStateChanged ( bool ) ), viewCorrector, SLOT ( setChecked ( bool ) ) );
 
     pPluginMenu ->addSeparator();
     pPluginMenu ->addAction ( viewCorrector );

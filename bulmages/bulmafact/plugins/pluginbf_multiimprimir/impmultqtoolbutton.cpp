@@ -140,7 +140,7 @@ void ImpQToolButton::click()
                     PresupuestoView *pres = ( PresupuestoView * ) g_plugParams;
                     pres->cargar ( id );
 
-                    if ( pres->generaRML() ) {
+                    if ( pres->generateRML() ) {
 
 
                         blCreatePDF ( "presupuesto" );
@@ -178,7 +178,7 @@ void ImpQToolButton::click()
 
                     pres->cargar ( id );
 
-                    if ( pres->generaRML() ) {
+                    if ( pres->generateRML() ) {
 
 
                         blCreatePDF ( "factura" );
@@ -213,7 +213,7 @@ void ImpQToolButton::click()
                     PedidoClienteView *pres = ( PedidoClienteView * ) g_plugParams;
                     pres->cargar ( id );
 
-                    if ( pres->generaRML() ) {
+                    if ( pres->generateRML() ) {
 
 
                         blCreatePDF ( "pedidocliente" );
@@ -250,7 +250,7 @@ void ImpQToolButton::click()
                     AlbaranClienteView *pres = ( AlbaranClienteView * ) g_plugParams;
                     pres->cargar ( id );
 
-                    if ( pres->generaRML() ) {
+                    if ( pres->generateRML() ) {
 
 
                         blCreatePDF ( "albaran" );
@@ -425,7 +425,7 @@ void ImpQToolButton::click()
                     ReciboView *pres = ( ReciboView * ) g_plugParams;
                     pres->cargar ( id );
 
-                    if ( pres->generaRML() ) {
+                    if ( pres->generateRML() ) {
 
 
                         blCreatePDF ( "recibo" );
@@ -632,7 +632,7 @@ void EmailQToolButton::click()
                 PresupuestoView *pres = ( PresupuestoView * ) g_plugParams;
                 pres->cargar ( id );
 
-                if ( pres->generaRML() ) {
+                if ( pres->generateRML() ) {
 
 
                     blCreatePDF ( "presupuesto" );
@@ -676,7 +676,7 @@ void EmailQToolButton::click()
                 PedidoClienteView *pres = ( PedidoClienteView * ) g_plugParams;
                 pres->cargar ( id );
 
-                if ( pres->generaRML() ) {
+                if ( pres->generateRML() ) {
 
 
                     blCreatePDF ( "pedidocliente" );
@@ -720,7 +720,7 @@ void EmailQToolButton::click()
                 } // end if
                 PedidoClienteView *pres = ( PedidoClienteView * ) g_plugParams;                pres->cargar ( id );
 
-                if ( pres->generaRML() ) {
+                if ( pres->generateRML() ) {
 
 
                     blCreatePDF ( "albaran" );
@@ -770,7 +770,7 @@ void EmailQToolButton::click()
                 FacturaView *pres = ( FacturaView * ) g_plugParams;
                 pres->cargar ( id );
 
-                if ( pres->generaRML() ) {
+                if ( pres->generateRML() ) {
 
 
                     blCreatePDF ( "factura" );

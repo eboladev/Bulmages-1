@@ -700,7 +700,7 @@ void CompraVentaView::imprimir()
 
         /// Si devuelve 0 significa que el archivo RML se ha generado mal
         /// el PDF correspondiente.
-        if ( generaRML ( "compraventa.rml" ) ) {
+        if ( generateRML ( "compraventa.rml" ) ) {
             blCreateAndLoadPDF ( "compraventa" );
         } // end if
 

@@ -5288,11 +5288,11 @@ msgid "Error al cargar la factura proveedor"
 msgstr "Error al cargar la factura proveedor"
 
 #: bldb.cpp:978
-msgid "Error al copiar el archivo RML [ bldb->generaRML() ]"
+msgid "Error al copiar el archivo RML [ bldb->generateRML() ]"
 msgstr ""
 
 #: bldb.cpp:990
-msgid "Error al copiar el archivo de logo [ bldb->generaRML() ]"
+msgid "Error al copiar el archivo de logo [ bldb->generateRML() ]"
 msgstr ""
 
 #: actividadview.cpp:112 convocatoriaview.cpp:68

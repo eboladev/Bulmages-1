@@ -99,7 +99,7 @@ void TicketQToolButton::click()
 
 
     
-    m_albaranClienteView->generaRML("ticket_normal.txt");
+    m_albaranClienteView->generateRML("ticket_normal.txt");
 
 
     if (!g_confpr->value( CONF_TICKET_PRINTER_FILE).isEmpty() && g_confpr->value( CONF_TICKET_PRINTER_FILE) != "/dev/null") {

@@ -94,7 +94,7 @@ int CobroView::parseTags ( QString &buff )
 {
     // pillar los datos de cliente equivale a un <!--QUERY-->      implicito que contiene toda la plantilla.
     QString params[1] = {dbValue ( "idcliente" ) };
-    buff = trataCursor ( mainCompany() ->loadQuery (
+    buff = parseRecordset ( mainCompany() ->loadQuery (
                              "SELECT * FROM cliente WHERE idcliente = $1" ,
                              1, params , NULL, 0, 0 ), buff );
 

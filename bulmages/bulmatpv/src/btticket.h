@@ -76,8 +76,8 @@ public:
     virtual QString exportXML();
     virtual bool syncXML(const QString &text, bool insertarSiempre = FALSE);
 /*
-    virtual int generaRML ( const QString & );
-    virtual int generaRML ( void );
+    virtual int generateRML ( const QString & );
+    virtual int generateRML ( void );
 */
     void agregarLog(const QString &log);
     

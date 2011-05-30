@@ -121,7 +121,7 @@ void EmailThunderbirdQToolButton::click()
         BlDbRecordSet *curs = m_companyact->loadQuery ( query );
         QString email = curs->value( "mailcliente" );
 
-        if ( m_presupuestoView->generaRML() ) {
+        if ( m_presupuestoView->generateRML() ) {
             blCreatePDF ( "presupuesto" );
 
             QString cad = CAD_MOVE + CAD_COMILLAS + g_confpr->value( CONF_DIR_USER ) + "presupuesto.pdf" + CAD_COMILLAS +" "+ CAD_COMILLAS + g_confpr->value( CONF_DIR_USER ) + "presupuesto" + num + ".pdf"+ CAD_COMILLAS;
@@ -163,7 +163,7 @@ void EmailThunderbirdQToolButton::click()
         BlDbRecordSet *curs = m_companyact->loadQuery ( query );
         QString email = curs->value( "mailcliente" );
 
-        if ( m_pedidoClienteView->generaRML() ) {
+        if ( m_pedidoClienteView->generateRML() ) {
             blCreatePDF ( "pedidocliente" );
 
             QString cad = CAD_MOVE + CAD_COMILLAS + g_confpr->value( CONF_DIR_USER ) + "pedidocliente.pdf"+ CAD_COMILLAS +" " + CAD_COMILLAS + g_confpr->value( CONF_DIR_USER ) + "pedidocliente" + num + ".pdf" + CAD_COMILLAS;
@@ -205,7 +205,7 @@ void EmailThunderbirdQToolButton::click()
         BlDbRecordSet *curs = m_companyact->loadQuery ( query );
         QString email = curs->value( "mailcliente" );
 
-        if ( m_albaranClienteView->generaRML() ) {
+        if ( m_albaranClienteView->generateRML() ) {
             blCreatePDF ( "albaran" );
 
             QString cad = CAD_MOVE + CAD_COMILLAS + g_confpr->value( CONF_DIR_USER ) + "albaran.pdf"+ CAD_COMILLAS +" " + CAD_COMILLAS + g_confpr->value( CONF_DIR_USER ) + "albaran" + num + ".pdf"+ CAD_COMILLAS;
@@ -249,7 +249,7 @@ void EmailThunderbirdQToolButton::click()
         BlDbRecordSet *curs = m_companyact->loadQuery ( query );
         QString email = curs->value( "mailcliente" );
 
-        if ( m_facturaView->generaRML() ) {
+        if ( m_facturaView->generateRML() ) {
             blCreatePDF ( "factura" );
 
             QString cad = CAD_MOVE + CAD_COMILLAS + g_confpr->value( CONF_DIR_USER ) + "factura.pdf "  + CAD_COMILLAS +" "+ CAD_COMILLAS + g_confpr->value( CONF_DIR_USER ) + "factura" + serie + num + ".pdf" + CAD_COMILLAS;

@@ -187,7 +187,7 @@ void PresupuestoContableList::crear()
     bud->show();
     bud->setWindowTitle ( _ ( "Nuevo presupuestocontable" ) );
     /// Deshabilitamos las pestanyas que no se utilizan al crear un nuevo presupuestocontable.
-    bud->desactivaDocumentos();
+    bud->deactivateDocuments();
 }
 
 

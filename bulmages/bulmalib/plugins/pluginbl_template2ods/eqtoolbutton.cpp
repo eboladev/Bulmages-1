@@ -229,7 +229,7 @@ void EQToolButton::trataMenu ( QAction *action )
 	for ( int i = 0; i < list.size(); ++i ) {
 	    QFileInfo fileInfo = list.at ( i );
 	    if ( action->objectName() == fileInfo.fileName() ) {
-		if ( m_BlForm->generaRML ( fileInfo.fileName() ) ) {
+		if ( m_BlForm->generateRML ( fileInfo.fileName() ) ) {
 		    blCreateAndLoadODS ( fileInfo.fileName().left ( fileInfo.fileName().size() - 4 ) );
 		} // end if
 	    } // end if

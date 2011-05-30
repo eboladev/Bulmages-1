@@ -53,7 +53,7 @@ int entryPoint ( BtBulmaTPV *tpv )
         g_admin1->resize ( 330, 400 );
         tpv->addDockWidget ( Qt::BottomDockWidgetArea, g_admin1 );
         g_admin1->show();
-        g_admin1->cargaconf();
+        g_admin1->loadConfig();
     */
 
 

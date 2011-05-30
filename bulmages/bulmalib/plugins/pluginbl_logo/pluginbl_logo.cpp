@@ -71,7 +71,7 @@ int entryPoint ( BlMainWindow *bges )
 
 
     doc1->show();
-    doc1->cargaconf();
+    doc1->loadConfig();
 
     blDebug ( "END myplugincont::elslot", 0 );
 

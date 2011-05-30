@@ -41,8 +41,8 @@ public:
 
 public:
     int cargarPost ( QString client );
-    void activaDocumentos();
-    void desactivaDocumentos();
+    void activateDocuments();
+    void deactivateDocuments();
     virtual int guardarPre();
     virtual int guardarPost();
 

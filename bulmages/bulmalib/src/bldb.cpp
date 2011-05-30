@@ -944,12 +944,12 @@ QString BlDbRecord::story ( void )
     return fitxersortidatxt;
 }
 
-int BlDbRecord::generaRML ( const QString &arch )
+int BlDbRecord::generateRML ( const QString &arch )
 {
-    blDebug ( "BlDbRecord::generaRML", 0 );
+    blDebug ( "BlDbRecord::generateRML", 0 );
 
     /// Disparamos los plugins
-    int res = g_plugins->lanza ( "BlDbRecord_generaRML", this );
+    int res = g_plugins->lanza ( "BlDbRecord_generateRML", this );
     if ( res != 0 ) {
         return 1;
     } // end if
@@ -975,7 +975,7 @@ int BlDbRecord::generaRML ( const QString &arch )
 
     int result1 = system ( archivo.toAscii().constData() );
     if (result1 == -1) {
-	blMsgError(_("Error al copiar el archivo RML [ bldb->generaRML() ]"));
+	blMsgError(_("Error al copiar el archivo RML [ bldb->generateRML() ]"));
     } // end if
     
     /// Copiamos el logo
@@ -987,7 +987,7 @@ int BlDbRecord::generaRML ( const QString &arch )
 
     int result2 = system ( archivologo.toAscii().constData() );
     if (result2 == -1) {
-	blMsgError(_("Error al copiar el archivo de logo [ bldb->generaRML() ]"));
+	blMsgError(_("Error al copiar el archivo de logo [ bldb->generateRML() ]"));
     } // end if
     
     QFile file;
@@ -1110,7 +1110,7 @@ if (tipoescape != 0) {
         file.close();
     } // end if
 } // end if
-    blDebug ( "END BlDbRecord::generaRML", 0 );
+    blDebug ( "END BlDbRecord::generateRML", 0 );
     return 1;
 }
 
@@ -1119,9 +1119,9 @@ QString BlDbRecord::templateName ( void )
     return QString ( "ficha" );
 }
 
-int BlDbRecord::generaRML ( void )
+int BlDbRecord::generateRML ( void )
 {
-    return generaRML ( templateName() + ".rml" );
+    return generateRML ( templateName() + ".rml" );
 }
 
 /// Realiza una impresion generica del registro a partir de la plantilla ficha.rml
@@ -1132,7 +1132,7 @@ void BlDbRecord::imprimir()
     /// Usa la plantilla ficha.rml para realizar la impresion.
     blDebug ( "BlDbRecord::imprimir", 0, templateName() );
 
-    if ( generaRML() ) {
+    if ( generateRML() ) {
         blCreateAndLoadPDF ( templateName() );
     } // end if
 
@@ -1404,7 +1404,7 @@ int BlDbRecord::parseTags ( QByteArray &buff, int tipoEscape )
     QRegExp rx19 ( "<!--\\s*INCLUDE\\s*FILE\\s*=\\s*\"([^\"]*)\"\\s*-->" );
     rx19.setMinimal ( TRUE );
     while ( ( pos = rx19.indexIn ( buff, 0 ) ) != -1 ) {
-        QString ldetalle = trataIncludeFileTXT ( rx19.cap ( 1 ), tipoEscape );
+        QString ldetalle = parseIncludeFileTXT ( rx19.cap ( 1 ), tipoEscape );
         buff.replace ( pos, rx19.matchedLength(), ldetalle.toAscii() );
         pos = buff.indexOf("<!--");
     } // end while
@@ -2104,9 +2104,9 @@ QByteArray BlDbRecord::parseIf ( const QString &query, const QByteArray &datos, 
 \param det Texto de entrada para ser tratado por iteracion.
 \return
 **/
-QByteArray BlDbRecord::trataIncludeFileTXT ( const QString &file, int tipoEscape )
+QByteArray BlDbRecord::parseIncludeFileTXT ( const QString &file, int tipoEscape )
 {
-    blDebug ( "BlDbRecord::trataIncludeFileTXT", 0 );
+    blDebug ( "BlDbRecord::parseIncludeFileTXT", 0 );
     QByteArray read = "";
     QFile arch ( file );
     if ( arch.open ( QIODevice::ReadOnly ) ) {
@@ -2117,7 +2117,7 @@ QByteArray BlDbRecord::trataIncludeFileTXT ( const QString &file, int tipoEscape
     substrVars ( read, tipoEscape );
 
 
-    blDebug ( "END BlDbRecord::trataIncludeFileTXT", 0 );
+    blDebug ( "END BlDbRecord::parseIncludeFileTXT", 0 );
     return read;
 
 }
@@ -2964,7 +2964,7 @@ QByteArray BlDbRecord::parseQuery ( const QString &query, const QByteArray &dato
     substrVars ( query1, tipoEscape );
 
     /// Cargamos el query y lo recorremos
-    result = trataCursor ( m_dbConnection->loadQuery ( query1 ), datos, tipoEscape );
+    result = parseRecordset ( m_dbConnection->loadQuery ( query1 ), datos, tipoEscape );
     blDebug ( "END BlDbRecord::parseQuery", 0 );
     return result;
 
@@ -3015,13 +3015,13 @@ QByteArray BlDbRecord::trataLineasDetalle( const QByteArray &datos, int tipoEsca
 }
 */
 
-QByteArray BlDbRecord::trataCursor ( BlDbRecordSet *cur, const QByteArray &datos, int tipoEscape )
+QByteArray BlDbRecord::parseRecordset ( BlDbRecordSet *cur, const QByteArray &datos, int tipoEscape )
 {
-    blDebug ( "BlDbRecord::trataCursor", 0 );
+    blDebug ( "BlDbRecord::parseRecordset", 0 );
     QByteArray result = "";
     
     if ( !cur ) {
-        blDebug ( "END BlDbRecord::trataCursor", 0 , "cur==NULL" );
+        blDebug ( "END BlDbRecord::parseRecordset", 0 , "cur==NULL" );
         return "";
     };
     while ( !cur->eof() ) {
@@ -3055,7 +3055,7 @@ QByteArray BlDbRecord::trataCursor ( BlDbRecordSet *cur, const QByteArray &datos
         cur->nextRecord();
     } // end while
     delete cur;
-    blDebug ( "END BlDbRecord::trataCursor", 0 );
+    blDebug ( "END BlDbRecord::parseRecordset", 0 );
     return result;
 }
 

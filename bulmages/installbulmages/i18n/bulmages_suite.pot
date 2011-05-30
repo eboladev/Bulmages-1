@@ -7092,11 +7092,11 @@ msgid "Bienal"
 msgstr ""
 
 #: bldb.cpp:978
-msgid "Error al copiar el archivo RML [ bldb->generaRML() ]"
+msgid "Error al copiar el archivo RML [ bldb->generateRML() ]"
 msgstr ""
 
 #: bldb.cpp:990
-msgid "Error al copiar el archivo de logo [ bldb->generaRML() ]"
+msgid "Error al copiar el archivo de logo [ bldb->generateRML() ]"
 msgstr ""
 
 #: blsubform.cpp:239

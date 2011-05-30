@@ -221,15 +221,15 @@ void ClienteView::on_mui_cifcliente_lostFocus()
 */
 /**
 **/
-void ClienteView::activaDocumentos()
+void ClienteView::activateDocuments()
 {
-    blDebug ( "ClienteView::activaDocumentos", 0 );
+    blDebug ( "ClienteView::activateDocuments", 0 );
     mui_tab->setTabEnabled ( 2, TRUE );
     mui_tab->setTabEnabled ( 3, TRUE );
     mui_tab->setTabEnabled ( 4, TRUE );
     mui_tab->setTabEnabled ( 5, TRUE );
     mui_tab->setTabEnabled ( 6, TRUE );
-    blDebug ( "END ClienteView::activaDocumentos", 0 );
+    blDebug ( "END ClienteView::activateDocuments", 0 );
 }
 
 
@@ -237,14 +237,14 @@ void ClienteView::activaDocumentos()
 */
 /**
 **/
-void ClienteView::desactivaDocumentos()
+void ClienteView::deactivateDocuments()
 {
-    blDebug ( "ClienteView::desactivaDocumentos", 0 );
+    blDebug ( "ClienteView::deactivateDocuments", 0 );
     mui_tab->setTabEnabled ( 2, FALSE );
     mui_tab->setTabEnabled ( 3, FALSE );
     mui_tab->setTabEnabled ( 4, FALSE );
     mui_tab->setTabEnabled ( 5, FALSE );
     mui_tab->setTabEnabled ( 6, FALSE );
-    blDebug ( "END ClienteView::desactivaDocumentos", 0 );
+    blDebug ( "END ClienteView::deactivateDocuments", 0 );
 }
 
