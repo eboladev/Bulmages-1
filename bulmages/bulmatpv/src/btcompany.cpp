@@ -225,8 +225,7 @@ void BtCompany::z()
 	} else if (g_confpr->valor(CONF_CUPS_DEFAULT_PRINTER).isEmpty() || g_confpr->valor(CONF_CUPS_DEFAULT_PRINTER) == "None") {
 	    blDebug("Debe establecer el parametro CONF_CUPS_DEFAULT_PRINTER o CONF_CASHBOX_FILE para abrir el cajon " , 2);
 	} else {
-	    QString comando = "lp -d" + g_confpr->valor(CONF_CUPS_DEFAULT_PRINTER) + " " + g_confpr->valor(CONF_DIR_USER) + "informe_Z.txt";
-	    system ( comando.toAscii().data() );
+		blRawPrint("informe_Z.txt");
 	} // end if 
 	
 	

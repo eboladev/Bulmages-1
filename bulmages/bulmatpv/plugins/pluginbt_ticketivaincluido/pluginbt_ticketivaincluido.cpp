@@ -85,10 +85,12 @@ int exitPoint ( BtBulmaTPV *tpv )
 int BtCompany_createMainWindows_Post ( BtCompany *etpv )
 {
     blDebug ( "pluginticketbasicoivainc::BtCompany_createMainWindows_Post", 0 );
-    
+
+ 
     g_bud =  new MTicketIVAInc ( etpv, g_doc1 );
     g_doc1->setWidget ( ( QWidget * ) g_bud );
-    
+
+
     blDebug ( "END pluginticketbasicoivainc::BtCompany_createMainWindows_Post", 0 );
     
     return 0;

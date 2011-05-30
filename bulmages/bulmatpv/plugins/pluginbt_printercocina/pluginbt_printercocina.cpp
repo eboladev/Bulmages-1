@@ -255,14 +255,12 @@ int impresionCocina(BtTicket *tick) {
       tick->setVar("cambioscocina", pr.buffer());
       tick->setVar("idprintercocina", curimpresoras->valor("idprintercocina"));
 //      tick->clearVars();
-/// ============================      
+
       tick->generaRML("ticket_cocina.txt");
-/// ============================
       
        /// Si realmente hay algo que imprimir entonces lo sacamos.
        if (hayalgoqueimprimir) {
-              QString comando = "lp -d " + curimpresoras->valor("colaprintercocina") +" " +g_confpr->valor(CONF_DIR_USER) + "ticket_cocina.txt";
-              system ( comando.toAscii().data() );
+			  blRawPrint("ticket_cocina.txt", TRUE, curimpresoras->valor("colaprintercocina"));
        } // end if
 
        curimpresoras->nextRecord();

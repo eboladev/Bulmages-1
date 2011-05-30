@@ -42,18 +42,20 @@ MTicketIVAInc::MTicketIVAInc ( BtCompany *emp, QWidget *parent ) : BlWidget ( em
     blDebug ( "MTicketIVAInc::MTicketIVAInc", 0 );
     setupUi ( this );
     setFocusPolicy ( Qt::NoFocus );
+	
     emp->pWorkspace()->addSubWindow ( this );
     //setWindowTitle ( "Ticket" );
     m_parent = parent;
-
+	
     /// Por defecto hacemos el browser invisible porque es leeeento
     mui_plainText->setVisible(FALSE);
     mui_frame->setVisible(FALSE);
 
-
     g_plugins->lanza ( "MTicketIVAInc_MTicketIVAInc_Post", this );
-    blDebug ( "END MTicketIVAInc::MTicketIVAInc", 0 );
+	
     pintar();
+	
+	blDebug ( "END MTicketIVAInc::MTicketIVAInc", 0 );
 }
 
 MTicketIVAInc::~MTicketIVAInc()
@@ -65,7 +67,7 @@ MTicketIVAInc::~MTicketIVAInc()
 void MTicketIVAInc::pintar()
 {
     blDebug ( "MTicketIVAInc::pintar", 0 );
-
+	
     QString query;
     BlDbRecord *item;
 
@@ -73,8 +75,7 @@ void MTicketIVAInc::pintar()
         blDebug ( "END MTicketIVAInc::pintar", 0 );
         return;
     } // end if
-
-
+	
     QString buscar;
 
     BtTicket *ticket = ( ( BtCompany * ) mainCompany() )->ticketActual();
@@ -83,20 +84,24 @@ void MTicketIVAInc::pintar()
     QString htmlContent = "<p style=\"font-family:monospace; font-size: 12pt;\">";
 
     QString tituloTicket = "Ticket: " + ticket->dbValue ( "nomticket" ) + " " + _("(I.V.A. inc.)");
-    
+	
     m_parent->setWindowTitle(tituloTicket);
 
     query = "SELECT idtrabajador, nomtrabajador FROM trabajador WHERE idtrabajador = " + ticket->dbValue ( "idtrabajador" );
     BlDbRecordSet *rsTrabajador = mainCompany()->loadQuery ( query );
-    plainTextContent += "Trabajador: " + rsTrabajador->valor ( "nomtrabajador" ) + "\n";
-    htmlContent += "Trabajador: " + rsTrabajador->valor ( "nomtrabajador" ) + "<br>";
-    delete rsTrabajador;
-
+	if (rsTrabajador) {
+		plainTextContent += "Trabajador: " + rsTrabajador->valor ( "nomtrabajador" ) + "\n";
+		htmlContent += "Trabajador: " + rsTrabajador->valor ( "nomtrabajador" ) + "<br>";
+		delete rsTrabajador;
+	} // end if
+	
     query = "SELECT idcliente, nomcliente FROM cliente WHERE idcliente = " + ticket->dbValue ( "idcliente" );
-    BlDbRecordSet *rsCliente = mainCompany()->loadQuery ( query );
-    plainTextContent += "Cliente: " + rsCliente->valor ( "nomcliente" ) + "\n";
-    htmlContent += "Cliente: " + rsCliente->valor ( "nomcliente" ) + "<br>";
-    delete rsCliente;
+		BlDbRecordSet *rsCliente = mainCompany()->loadQuery ( query );
+	if (rsCliente) {
+		plainTextContent += "Cliente: " + rsCliente->valor ( "nomcliente" ) + "\n";
+		htmlContent += "Cliente: " + rsCliente->valor ( "nomcliente" ) + "<br>";
+		delete rsCliente;
+	} // end if
 
     htmlContent += "<table border=\"0\" width=\"100%\">";
 
@@ -105,7 +110,7 @@ void MTicketIVAInc::pintar()
 
     htmlContent += "<tr><td width=\"10%\">" + QString(_("CANT:")) + "</td><td width=\"80%\">" + QString(_("ARTICULO:")) + "</td><td width=\"10%\">" + QString(_("PRECIO:")) + "</td></tr>";
     htmlContent += "<tr><td colspan=\"3\" style=\"font-size:1px;\"><hr></td></tr>";
-
+	
     for ( int i = 0; i < ticket->listaLineas()->size(); ++i ) {
         item = ticket->listaLineas()->at ( i );
         QString bgColor = "#FFFFFF";
@@ -173,7 +178,7 @@ void MTicketIVAInc::pintar()
     htmlContent += "<tr><td colspan=\"3\" style=\"font-size:1px;\"><hr></td></tr>";
     htmlContent += "</table>";
     htmlContent += "</p>";
-
+	
     mui_browser->setText ( htmlContent );
     mui_plainText->setPlainText ( plainTextContent );
     
@@ -181,7 +186,7 @@ void MTicketIVAInc::pintar()
     QTextCursor cursor = mui_browser->textCursor();
     cursor.clearSelection();
     mui_browser->setTextCursor( cursor );
-
+	
     blDebug ( "END MTicketIVAInc::pintar", 0 );
 }
 

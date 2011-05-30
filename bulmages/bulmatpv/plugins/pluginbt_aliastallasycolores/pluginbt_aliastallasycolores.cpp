@@ -748,8 +748,7 @@ int BtTicket_imprimir(BtTicket *tick)
     } else if (g_confpr->valor(CONF_CUPS_DEFAULT_PRINTER).isEmpty() || g_confpr->valor(CONF_CUPS_DEFAULT_PRINTER) == "None") {
         blDebug("Debe establecer el parametro CONF_CUPS_DEFAULT_PRINTER o CONF_TICKET_PRINTER_FILE para imprimir el ticket " , 2);
     } else {
-        QString comando = "lp -d" + g_confpr->valor(CONF_CUPS_DEFAULT_PRINTER) + " " + g_confpr->valor(CONF_DIR_USER) + "bulmatpv_ticket_tc.esc";
-        system ( comando.toAscii().data() );
+		blRawPrint ("bulmatpv_ticket_tc.esc");
     } // end if
     
     blDebug("END pluginbt_aliastallasycolores::BtTicket_imprimir",0);

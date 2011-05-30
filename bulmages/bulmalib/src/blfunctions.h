@@ -111,5 +111,6 @@ bool BL_EXPORT blValidateSpainNIFCode(QString nif1, QChar &digit);
 int BL_EXPORT blSumAllDigits(int val);
 bool BL_EXPORT blValidateSpainCIFNIFCode(QString nifcif, QChar &digit);
 
+void BL_EXPORT blRawPrint(const QString &archivo, bool diruser=TRUE, const QString &defprinter="");
 #endif
 

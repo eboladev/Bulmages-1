@@ -257,6 +257,8 @@ QString BlConfiguration::nombre ( int i )
         return "CONF_SERVIDOR";
     if ( i == CONF_PUERTO )
         return "CONF_PUERTO";
+    if ( i == CONF_SPOOL )
+        return "CONF_SPOOL";
     if ( i == CONF_FLIP )
         return "CONF_FLIP";
     if ( i == CONF_PYTHON )

@@ -117,6 +117,7 @@
 #define CONF_PUERTO                  182
 
 /// Indica que visor de documentos PDF va a utilizar el programa.
+#define CONF_SPOOL					 191
 #define CONF_FLIP                    192
 #define CONF_PYTHON                  193
 #define CONF_DIR_TMP                 194
