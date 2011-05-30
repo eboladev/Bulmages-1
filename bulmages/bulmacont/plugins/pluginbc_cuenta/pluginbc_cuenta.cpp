@@ -66,6 +66,7 @@ int entryPoint ( BcBulmaCont *bcont )
     accionA->setStatusTip ( _ ( "Permite ver y modificar el plan contable" ) );
     accionA->setWhatsThis ( _ ( "Permite ver y modificar el plan contable" ) );
     accionA->setIcon(QIcon(QString::fromUtf8(":/Images/account_plan.png")));
+    accionA->setObjectName("mui_actionPlanContable");
     pPluginMenu->addAction ( accionA );
 
     /// A&ntilde;adimos la nueva opci&oacute;n al men&uacute; principal del programa.
