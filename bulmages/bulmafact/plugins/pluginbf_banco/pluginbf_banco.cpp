@@ -49,25 +49,27 @@ int entryPoint ( BfBulmaFact *bges )
 
         /// El men&uacute; de Tarifas en la secci&oacute;n de art&iacute;culos.
         g_bges = bges;
-        BlAction *accion = new BlAction ( _ ( "&Bancos" ), 0 );
-        accion->setIcon ( QIcon ( QString::fromUtf8 ( ":/Images/bank.png" ) ) );
-        accion->setStatusTip ( _ ( "Bancos" ) );
-        accion->setWhatsThis ( _ ( "Bancos" ) );
-        accion->setObjectName("mui_actionBancos");
+        BlAction *accionA = new BlAction ( _ ( "&Bancos" ), 0 );
+        accionA->setIcon ( QIcon ( QString::fromUtf8 ( ":/Images/bank.png" ) ) );
+        accionA->setStatusTip ( _ ( "Bancos" ) );
+        accionA->setWhatsThis ( _ ( "Bancos" ) );
+        accionA->setObjectName("mui_actionBancos");
         
-        pPluginMenu->addAction ( accion );
-        bges->Listados->addAction ( accion );
+        pPluginMenu->addAction ( accionA );
+        bges->Listados->addAction ( accionA );
 
     } // end if
     return 0;
 }
 
 int BlAction_triggered(BlAction *accion) {
+    blDebug ( "PluginBf_Banco::BlAction_triggered", 0 );
     if (accion->objectName() == "mui_actionBancos") {
         BancoView * bud = new BancoView ( ( BfCompany * ) g_bges->company(), NULL );
         g_bges->company()->m_pWorkspace->addSubWindow ( bud );
         bud->show();
     } // end if
+    blDebug ( "END PluginBf_Banco::BlAction_triggered", 0 );
 }
  
 

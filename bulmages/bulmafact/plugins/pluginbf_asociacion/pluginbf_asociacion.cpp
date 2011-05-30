@@ -112,57 +112,47 @@ int entryPoint ( BfBulmaFact *bges )
 }
 
 int BlAction_triggered(BlAction *accion) {
-
+   
+   blDebug ( "PluginBf_Asociacion:BlAction_triggered", 0 );
    if (accion->objectName() == "mui_actionJuntasDirectivas") {
-       blDebug ( "PluginBf_Asociacion:BlAction_triggered::mui_actionJuntasDirectivas", 0 );
        JDirectivaList * bud = new JDirectivaList ( ( BfCompany * ) g_bges->company(), NULL );
        g_bges->company()->m_pWorkspace->addSubWindow ( bud );
        bud->show();
-       blDebug ( "END PluginBf_Asociacion:BlAction_triggered::mui_actionJuntasDirectivas", 0 );
     }
 
    if (accion->objectName() == "mui_actionJuntaConvocar") {
-       blDebug ( "PluginBf_Asociacion:BlAction_triggered::mui_actionJuntaDirectivaConvocar", 0 );
        JDirectivaView *bud = new JDirectivaView ( ( BfCompany * ) g_bges->company(), 0 );
        g_bges->company()->m_pWorkspace->addSubWindow ( bud );
        bud->show();
        bud->pintar();
-       blDebug ( "END PluginBf_Asociacion:BlAction_triggered::mui_actionJuntaDirectivaConvocar", 0 );
     }
 
    if (accion->objectName() == "mui_actionReunion") {
-       blDebug ( "PluginBf_Asociacion:BlAction_triggered::mui_actionReunion", 0 );
        ConvReunionList * bud = new ConvReunionList ( ( BfCompany * ) g_bges->company(), NULL );
        g_bges->company() ->m_pWorkspace->addSubWindow ( bud );
        bud->show();
-       blDebug ( "END PluginBf_Asociacion:BlAction_triggered::mui_actionReunion", 0 );
     }
 
    if (accion->objectName() == "mui_actionReunionConvocar") {
-       blDebug ( "PluginBf_Asociacion:BlAction_triggered::mui_actionReunionConvocar", 0 );
        ConvReunionView *bud = new ConvReunionView ( ( BfCompany * ) g_bges->company(), 0 );
        g_bges->company() ->m_pWorkspace->addSubWindow ( bud );
        bud->show();
        bud->pintar();
-       blDebug ( "END PluginBf_Asociacion:BlAction_triggered::mui_actionReunionConvocar", 0 );
     }
 
     if (accion->objectName() == "mui_actionComisiones") {
-        blDebug ( "PluginBf_Asociacion:BlAction_triggered::mui_actionComisiones", 0 );
         ComisionesList * bud = new ComisionesList ( ( BfCompany * ) g_bges->company(), NULL );
         g_bges->company() ->m_pWorkspace->addSubWindow ( bud );
         bud->show();
-        blDebug ( "END PluginBf_Asociacion:BlAction_triggered::mui_actionComisiones", 0 );
     }
 
     if (accion->objectName() == "mui_actionComisionConvocar") {
-        blDebug ( "PluginBf_Asociacion:BlAction_triggered::mui_actionComisionConvocar", 0 );
         ComisionView *bud = new ComisionView ( ( BfCompany * ) g_bges->company(), 0 );
         g_bges->company()->m_pWorkspace->addSubWindow ( bud );
         bud->show();
         bud->pintar();
-        blDebug ( "END PluginBf_Asociacion:BlAction_triggered::mui_actionComisionConvocar", 0 );
     }
+    blDebug ( "END PluginBf_Asociacion:BlAction_triggered", 0 );
     return 0;
 }
 

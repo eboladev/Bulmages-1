@@ -59,7 +59,7 @@ int entryPoint ( BfBulmaFact *bges )
 
     QMenu *pPluginMenuTallasColores;
     /// Miramos si existe un menu Herramientas
-    pPluginMenuTallasColores = bges->menuBar() ->findChild<QMenu *> ( _("Tallas y colores") );
+    pPluginMenuTallasColores = bges->menuBar() ->findChild<QMenu *> ("Tallas y colores");
 
     /// Creamos el men&uacute;.
     if ( !pPluginMenuTallasColores ) {

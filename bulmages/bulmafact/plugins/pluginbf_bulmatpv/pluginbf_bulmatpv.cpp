@@ -66,25 +66,27 @@ int entryPoint ( BfBulmaFact *bges )
     } // end if
 
     /// Creamos el men&uacute;.
-    BlAction *accion = new BlAction ( _("&Cuadres de Caja"), 0 );
-    accion->setStatusTip ( _("Listado de Cuadres de Caja") );
-    accion->setWhatsThis ( _("Listado de Cuadres de Caja") );
-    accion->setObjectName("mui_actionCuadresCaja");
+    BlAction *accionA = new BlAction ( _("&Cuadres de Caja"), 0 );
+    accionA->setStatusTip ( _("Listado de Cuadres de Caja") );
+    accionA->setWhatsThis ( _("Listado de Cuadres de Caja") );
+    accionA->setObjectName("mui_actionCuadresCaja");
     
     /// A&ntilde;adimos la nueva opci&oacute;n al men&uacute; principal del programa.
     pPluginMenu->addSeparator();
-    pPluginMenu->addAction ( accion );
+    pPluginMenu->addAction ( accionA );
 
 
     blDebug ( "END entryPoint", 0, "Punto de Entrada del plugin Plugin_BulmaTPV" );
     return 0;
 }
 int BlAction_triggered(BlAction *accion) {
+    blDebug ( "PluginBf_BulmaTPV::BlAction_triggered", 0 );
     if (accion->objectName() == "mui_actionCuadresCaja") {
         ZList *vehiculoview = new ZList ( ( BfCompany * ) g_bges->company() );
         g_bges->company()->m_pWorkspace->addSubWindow ( vehiculoview );
         vehiculoview->show();
     } //end if
+    blDebug ( "END PluginBf_BulmaTPV::BlAction_triggered", 0 );
     return 0;
 }
 
