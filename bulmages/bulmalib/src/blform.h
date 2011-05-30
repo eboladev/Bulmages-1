@@ -79,7 +79,7 @@ public:
     virtual int parseTags ( QString &buff, int tipoEscape = 0 );
     virtual QString parseIncludeFile ( const QString &file, int tipoEscape = 0 );
     virtual QString parseQuery ( const QString &query, const QString &datos, int tipoEscape = 0 );
-    QString trataCursor ( BlDbRecordSet *cur, const QString &datos, int tipoEscape = 0 );
+    QString parseRecordset ( BlDbRecordSet *cur, const QString &datos, int tipoEscape = 0 );
     virtual QString parseIfQuery ( const QString &query, const QString &datos );
     virtual QString parseIf ( const QString &query, const QString &datos, const QString &datos1 );
     virtual QString trataExists ( const QString &query, const QString &datos );

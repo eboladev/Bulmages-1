@@ -1420,7 +1420,7 @@ QString BlForm::parseRecordset ( BlDbRecordSet *cur, const QString &datos, int t
     QString result = "";
     
     if ( !cur ) {
-        blDebug ( "END BlForm::trataCursor", 0 , "cur==NULL" );
+        blDebug ( "END BlForm::parseRecordset", 0 , "cur==NULL" );
         return "";
     };
     while ( !cur->eof() ) {
@@ -1452,7 +1452,7 @@ QString BlForm::parseRecordset ( BlDbRecordSet *cur, const QString &datos, int t
         cur->nextRecord();
     } // end while
     delete cur;
-    blDebug ( "END BlForm::trataCursor", 0 );
+    blDebug ( "END BlForm::parseRecordset", 0 );
     return result;
 }
 
